@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="game rerun.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="muerte instancia 10000" x="36" y="36" width="1261" height="635" frameX="0" frameY="-1" frameWidth="1261" frameHeight="636"/>
+	<SubTexture name="muerte instancia 10001" x="1317" y="36" width="1261" height="635" frameX="0" frameY="-1" frameWidth="1261" frameHeight="636"/>
+	<SubTexture name="muerte instancia 10002" x="2598" y="36" width="1261" height="636"/>
+	<SubTexture name="muerte instancia 10003" x="2598" y="36" width="1261" height="636"/>
+</TextureAtlas>

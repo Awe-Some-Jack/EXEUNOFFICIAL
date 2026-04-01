@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sonic.exe game over.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="loop instancia 10000" x="36" y="36" width="832" height="749" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10001" x="36" y="36" width="832" height="749" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10002" x="888" y="36" width="832" height="749" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10003" x="1740" y="36" width="832" height="750" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10004" x="2592" y="36" width="832" height="751" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10005" x="3444" y="36" width="832" height="751" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10006" x="4296" y="36" width="832" height="752" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10007" x="5148" y="36" width="832" height="753" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10008" x="36" y="809" width="832" height="754" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10009" x="888" y="809" width="832" height="755" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10010" x="1740" y="809" width="832" height="755" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10011" x="2592" y="809" width="832" height="756"/>
+	<SubTexture name="loop instancia 10012" x="3444" y="809" width="832" height="756"/>
+	<SubTexture name="loop instancia 10013" x="3444" y="809" width="832" height="756"/>
+	<SubTexture name="loop instancia 10014" x="4296" y="809" width="832" height="756"/>
+	<SubTexture name="loop instancia 10015" x="5148" y="809" width="832" height="755" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10016" x="36" y="1585" width="832" height="755" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10017" x="888" y="1585" width="832" height="755" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10018" x="1740" y="1585" width="832" height="754" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10019" x="2592" y="1585" width="832" height="754" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10020" x="3444" y="1585" width="832" height="753" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10021" x="4296" y="1585" width="832" height="752" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10022" x="5148" y="1585" width="832" height="752" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10023" x="36" y="2360" width="832" height="751" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10024" x="888" y="2360" width="832" height="751" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10025" x="1740" y="2360" width="832" height="750" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10026" x="2592" y="2360" width="832" height="750" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10027" x="3444" y="2360" width="832" height="750" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10028" x="4296" y="2360" width="832" height="750" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="loop instancia 10029" x="5148" y="2360" width="832" height="750" frameX="0" frameY="0" frameWidth="832" frameHeight="756"/>
+	<SubTexture name="muerte instancia 10000" x="36" y="3131" width="809" height="755"/>
+	<SubTexture name="muerte instancia 10001" x="865" y="3131" width="809" height="755"/>
+	<SubTexture name="muerte instancia 10002" x="1694" y="3131" width="809" height="755"/>
+	<SubTexture name="muerte instancia 10003" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10004" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10005" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10006" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10007" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10008" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10009" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10010" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10011" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10012" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10013" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10014" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10015" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10016" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10017" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10018" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10019" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+	<SubTexture name="muerte instancia 10020" x="2523" y="3131" width="0" height="0" frameX="1016" frameY="-639" frameWidth="809" frameHeight="755"/>
+</TextureAtlas>

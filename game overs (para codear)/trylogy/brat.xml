@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="brat.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="retry instancia 10000" x="36" y="36" width="1960" height="1108"/>
+	<SubTexture name="retry instancia 10001" x="36" y="36" width="1960" height="1108"/>
+	<SubTexture name="retry instancia 10002" x="2016" y="36" width="1960" height="1108"/>
+	<SubTexture name="retry instancia 10003" x="2016" y="36" width="1960" height="1108"/>
+</TextureAtlas>

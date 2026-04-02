@@ -7,7 +7,7 @@ import backend.Song;
 import flixel.util.FlxStringUtil;
 
 import states.StoryMenuState;
-import states.EXEFreeplay;
+import states.FreeplayState;
 import options.OptionsState;
 
 class PauseSubStateOLD extends MusicBeatSubstate
@@ -59,9 +59,10 @@ class PauseSubStateOLD extends MusicBeatSubstate
 		try
 		{
 			var pauseSong:String = getPauseSong();
-			if(pauseSong != null) pauseMusic.load(Paths.music(pauseSong)).setup(0, true, false);
+			if(pauseSong != null) pauseMusic.loadEmbedded(Paths.music(pauseSong), true, true);
 		}
 		catch(e:Dynamic) {}
+		pauseMusic.volume = 0;
 		pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseMusic.length / 2)));
 
 		FlxG.sound.list.add(pauseMusic);
@@ -324,7 +325,7 @@ class PauseSubStateOLD extends MusicBeatSubstate
 					if(PlayState.isStoryMode)
 						FlxG.switchState(() -> new StoryMenuState());
 					else 
-						FlxG.switchState(() -> new EXEFreeplay());
+						FlxG.switchState(() -> new FreeplayState());
 
 					FlxG.sound.playMusic(Paths.music('freakyMenu'));
 					PlayState.changedDifficulty = false;

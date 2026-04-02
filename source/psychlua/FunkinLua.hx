@@ -1674,7 +1674,7 @@ class FunkinLua {
 		#end
 	}
 
-	function oldTweenFunction(tag:String, vars:String, tweenValue:Any, duration:Float, ease:String, funcName:String)
+	public static function oldTweenFunction(tag:String, vars:String, tweenValue:Any, duration:Float, ease:String, funcName:String)
 	{
 		var target:Dynamic = LuaUtils.tweenPrepare(tag, vars);
 		var variables = MusicBeatState.getVariables();

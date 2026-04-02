@@ -3,7 +3,7 @@ package substates;
 import flixel.effects.FlxFlicker;
 
 import states.StoryModeState;
-import states.EXEFreeplay;
+import states.FreeplayState;
 import options.OptionsState;
 import substates.PauseSubStateOLD;
 
@@ -109,9 +109,13 @@ class PauseSubState extends MusicBeatSubstate
 		miniSonic.x = menuItems.members[0].x - miniSonic.width + miniSonicOffsets[0];
 		miniSonic.y = (menuItems.members[0].y + menuItems.members[0].height) - miniSonic.height + miniSonicOffsets[1];
 
-		camera = camPause;
+		cameras = camPause;
 
-		FlxG.sound.list.add(pauseMusic = new FlxSound().load(Paths.music('breakfast')).setup(0, true, false).play(false, 0));
+		pauseMusic = new FlxSound();
+		pauseMusic.loadEmbedded(Paths.music('breakfast'), true, true);
+		pauseMusic.volume = 0;
+		pauseMusic.play(false, 0);
+		FlxG.sound.list.add(pauseMusic);
 	}
 
 	static inline final MUSIC_FADE_RATE:Float = 0.01;
@@ -203,7 +207,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.seenCutscene    = false;
 					PlayState.instance.canResync = false;
 					Mods.loadTopMod();
-					FlxG.switchState(() -> PlayState.isStoryMode ? new StoryModeState() : new EXEFreeplay());
+					FlxG.switchState(() -> PlayState.isStoryMode ? new StoryModeState() : new FreeplayState());
 					FlxG.sound.playMusic(Paths.music('freakyMenu'));
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode      = false;

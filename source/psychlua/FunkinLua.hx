@@ -27,7 +27,7 @@ import states.MainMenuState;
 import states.StoryMenuState;
 import states.FreeplayState;
 
-import substates.PauseSubState;
+import substates.PauseSubStateOLD;
 import substates.GameOverSubstate;
 
 import psychlua.LuaUtils;
@@ -741,7 +741,7 @@ class FunkinLua {
 		Lua_helper.add_callback(lua, "restartSong", function(?skipTransition:Bool = false) {
 			game.persistentUpdate = false;
 			FlxG.camera.followLerp = 0;
-			PauseSubState.restartSong(skipTransition);
+			PauseSubStateOLD.restartSong(skipTransition);
 			return true;
 		});
 		Lua_helper.add_callback(lua, "exitSong", function(?skipTransition:Bool = false) {

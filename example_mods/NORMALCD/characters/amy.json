@@ -1,0 +1,103 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "danceLeft",
+			"indices": [],
+			"name": "dancel"
+		},
+		{
+			"offsets": [-10, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "danceRight",
+			"indices": [],
+			"name": "dancer"
+		},
+		{
+			"offsets": [85, 6],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Amy_Nervous_LEFT"
+		},
+		{
+			"offsets": [40, -1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Amy_Nervous_DOWN"
+		},
+		{
+			"offsets": [53, 52],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Amy_Nervous_UP"
+		},
+		{
+			"offsets": [30, -1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Amy_Nervous_RIGHT"
+		},
+		{
+			"offsets": [61, 10],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "Amy_MISS_LEFT"
+		},
+		{
+			"offsets": [34, -8],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "Amy_MISS_DOWN"
+		},
+		{
+			"offsets": [54, 41],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "Amy_MISS_UP"
+		},
+		{
+			"offsets": [27, -4],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "Amy_MISS_RIGHT"
+		},
+		{
+			"offsets": [-8, 48],
+			"loop": false,
+			"fps": 24,
+			"anim": "endinganim",
+			"indices": [],
+			"name": "anim"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/amy",
+	"position": [0, 0],
+	"healthicon": "amy",
+	"flip_x": false,
+	"healthbar_colors": [252, 144, 252],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

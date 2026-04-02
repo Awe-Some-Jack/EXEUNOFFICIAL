@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="atem.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="s down instancia 10000" x="36" y="36" width="521" height="569"/>
+	<SubTexture name="s down instancia 10001" x="36" y="36" width="521" height="569"/>
+	<SubTexture name="s down instancia 10002" x="577" y="36" width="515" height="542" frameX="-3" frameY="-9" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="s down instancia 10003" x="577" y="36" width="515" height="542" frameX="-3" frameY="-9" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="s down instancia 10004" x="1112" y="36" width="514" height="523" frameX="-3" frameY="-18" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="s down instancia 10005" x="1112" y="36" width="514" height="523" frameX="-3" frameY="-18" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="s down instancia 10006" x="1646" y="36" width="513" height="520" frameX="-4" frameY="-17" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="s down instancia 10007" x="1646" y="36" width="513" height="520" frameX="-4" frameY="-17" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="s down instancia 10008" x="1646" y="36" width="513" height="520" frameX="-4" frameY="-17" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="s down instancia 10009" x="1646" y="36" width="513" height="520" frameX="-4" frameY="-17" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="s down instancia 10010" x="1646" y="36" width="513" height="520" frameX="-4" frameY="-17" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="s down instancia 10011" x="1646" y="36" width="513" height="520" frameX="-4" frameY="-17" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="s down instancia 10012" x="1646" y="36" width="513" height="520" frameX="-4" frameY="-17" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="s down instancia 10013" x="1646" y="36" width="513" height="520" frameX="-4" frameY="-17" frameWidth="521" frameHeight="569"/>
+	<SubTexture name="sarah idle instancia 10000" x="2179" y="36" width="460" height="424" frameX="-1" frameY="0" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10001" x="2179" y="36" width="460" height="424" frameX="-1" frameY="0" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10002" x="36" y="625" width="460" height="415" frameX="0" frameY="-11" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10003" x="36" y="625" width="460" height="415" frameX="0" frameY="-11" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10004" x="516" y="625" width="454" height="406" frameX="-6" frameY="-14" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10005" x="516" y="625" width="454" height="406" frameX="-6" frameY="-14" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10006" x="990" y="625" width="454" height="414" frameX="-7" frameY="-5" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10007" x="990" y="625" width="454" height="414" frameX="-7" frameY="-5" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10008" x="1464" y="625" width="454" height="417" frameX="-7" frameY="-2" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10009" x="1464" y="625" width="454" height="417" frameX="-7" frameY="-2" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10010" x="1464" y="625" width="454" height="417" frameX="-7" frameY="-2" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10011" x="1464" y="625" width="454" height="417" frameX="-7" frameY="-2" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10012" x="1464" y="625" width="454" height="417" frameX="-7" frameY="-2" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah idle instancia 10013" x="1464" y="625" width="454" height="417" frameX="-7" frameY="-2" frameWidth="461" frameHeight="426"/>
+	<SubTexture name="sarah left instancia 10000" x="1938" y="625" width="698" height="338" frameX="0" frameY="0" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10001" x="1938" y="625" width="698" height="338" frameX="0" frameY="0" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10002" x="36" y="1062" width="670" height="335" frameX="-25" frameY="-4" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10003" x="36" y="1062" width="670" height="335" frameX="-25" frameY="-4" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10004" x="726" y="1062" width="653" height="332" frameX="-40" frameY="-7" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10005" x="726" y="1062" width="653" height="332" frameX="-40" frameY="-7" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10006" x="1399" y="1062" width="647" height="331" frameX="-45" frameY="-8" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10007" x="1399" y="1062" width="647" height="331" frameX="-45" frameY="-8" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10008" x="1399" y="1062" width="647" height="331" frameX="-45" frameY="-8" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10009" x="1399" y="1062" width="647" height="331" frameX="-45" frameY="-8" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10010" x="1399" y="1062" width="647" height="331" frameX="-45" frameY="-8" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10011" x="1399" y="1062" width="647" height="331" frameX="-45" frameY="-8" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10012" x="1399" y="1062" width="647" height="331" frameX="-45" frameY="-8" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah left instancia 10013" x="1399" y="1062" width="647" height="331" frameX="-45" frameY="-8" frameWidth="698" frameHeight="339"/>
+	<SubTexture name="sarah right instancia 10000" x="2066" y="1062" width="545" height="493"/>
+	<SubTexture name="sarah right instancia 10001" x="2066" y="1062" width="545" height="493"/>
+	<SubTexture name="sarah right instancia 10002" x="36" y="1575" width="526" height="493" frameX="-4" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah right instancia 10003" x="36" y="1575" width="526" height="493" frameX="-4" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah right instancia 10004" x="582" y="1575" width="514" height="493" frameX="-7" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah right instancia 10005" x="582" y="1575" width="514" height="493" frameX="-7" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah right instancia 10006" x="1116" y="1575" width="510" height="493" frameX="-8" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah right instancia 10007" x="1116" y="1575" width="510" height="493" frameX="-8" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah right instancia 10008" x="1116" y="1575" width="510" height="493" frameX="-8" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah right instancia 10009" x="1116" y="1575" width="510" height="493" frameX="-8" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah right instancia 10010" x="1116" y="1575" width="510" height="493" frameX="-8" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah right instancia 10011" x="1116" y="1575" width="510" height="493" frameX="-8" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah right instancia 10012" x="1116" y="1575" width="510" height="493" frameX="-8" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah right instancia 10013" x="1116" y="1575" width="510" height="493" frameX="-8" frameY="0" frameWidth="545" frameHeight="493"/>
+	<SubTexture name="sarah up instancia 10000" x="1646" y="1575" width="454" height="579"/>
+	<SubTexture name="sarah up instancia 10001" x="1646" y="1575" width="454" height="579"/>
+	<SubTexture name="sarah up instancia 10002" x="2120" y="1575" width="429" height="565" frameX="-6" frameY="-9" frameWidth="454" frameHeight="579"/>
+	<SubTexture name="sarah up instancia 10003" x="2120" y="1575" width="429" height="565" frameX="-6" frameY="-9" frameWidth="454" frameHeight="579"/>
+	<SubTexture name="sarah up instancia 10004" x="2569" y="1575" width="414" height="555" frameX="-10" frameY="-15" frameWidth="454" frameHeight="579"/>
+	<SubTexture name="sarah up instancia 10005" x="2569" y="1575" width="414" height="555" frameX="-10" frameY="-15" frameWidth="454" frameHeight="579"/>
+	<SubTexture name="sarah up instancia 10006" x="36" y="2174" width="408" height="552" frameX="-11" frameY="-17" frameWidth="454" frameHeight="579"/>
+	<SubTexture name="sarah up instancia 10007" x="36" y="2174" width="408" height="552" frameX="-11" frameY="-17" frameWidth="454" frameHeight="579"/>
+	<SubTexture name="sarah up instancia 10008" x="36" y="2174" width="408" height="552" frameX="-11" frameY="-17" frameWidth="454" frameHeight="579"/>
+	<SubTexture name="sarah up instancia 10009" x="36" y="2174" width="408" height="552" frameX="-11" frameY="-17" frameWidth="454" frameHeight="579"/>
+	<SubTexture name="sarah up instancia 10010" x="36" y="2174" width="408" height="552" frameX="-11" frameY="-17" frameWidth="454" frameHeight="579"/>
+	<SubTexture name="sarah up instancia 10011" x="36" y="2174" width="408" height="552" frameX="-11" frameY="-17" frameWidth="454" frameHeight="579"/>
+	<SubTexture name="sarah up instancia 10012" x="36" y="2174" width="408" height="552" frameX="-11" frameY="-17" frameWidth="454" frameHeight="579"/>
+	<SubTexture name="sarah up instancia 10013" x="36" y="2174" width="408" height="552" frameX="-11" frameY="-17" frameWidth="454" frameHeight="579"/>
+</TextureAtlas>

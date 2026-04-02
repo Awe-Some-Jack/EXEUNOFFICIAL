@@ -1,0 +1,135 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "sonic idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "sonic left sing",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "sonic sing down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "sonic sing up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "sonic sing right",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "sonic left miss",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "sonic down miss",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "sonic up miss",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "sonic right miss",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "singLEFT-loop",
+			"fps": 24,
+			"name": "sonic left sing",
+			"indices": [4, 5, 6, 7]
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "singDOWN-loop",
+			"fps": 24,
+			"name": "sonic sing down",
+			"indices": [4, 5, 6, 7]
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "singUP-loop",
+			"fps": 24,
+			"name": "sonic sing up",
+			"indices": [4, 5, 6, 7]
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "singRIGHT-loop",
+			"fps": 24,
+			"name": "sonic sing right",
+			"indices": [4, 5, 6, 7]
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "dialogue",
+			"indices": [],
+			"name": "dialogue"
+		},
+		{
+			"loop": false,
+			"offsets": [162, 30],
+			"anim": "dead_h",
+			"fps": 16,
+			"name": "Sonic_Death",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 0]
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "characters/peelout_sonic_sheet",
+	"position": [155, 60],
+	"healthicon": "sonicprey",
+	"flip_x": true,
+	"healthbar_colors": [36, 36, 144],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 6,
+	"_editor_isPlayer": true
+}

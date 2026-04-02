@@ -1,0 +1,63 @@
+{
+	"animations": [
+		{
+			"offsets": [50, 60],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [-79, -50],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [-82, 169],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "singUP"
+		},
+		{
+			"offsets": [-137, 308],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "singRIGHT"
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "danceLeft",
+			"fps": 24,
+			"name": "idle",
+			"indices": [0, 1, 2, 3, 4, 5, 6]
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "danceRight",
+			"fps": 24,
+			"name": "idle",
+			"indices": [7, 8, 9, 10, 11, 12, 13]
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/sunkyclassic",
+	"position": [-290, 130],
+	"healthicon": "sunky",
+	"flip_x": false,
+	"healthbar_colors": [38, 72, 251],
+	"camera_position": [300, 180],
+	"sing_duration": 5,
+	"scale": 0.6,
+	"_editor_isPlayer": false
+}

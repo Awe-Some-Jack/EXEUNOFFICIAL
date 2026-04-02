@@ -1,0 +1,32 @@
+{
+	"storyName": "Tornt Sonic.EXE Trilogy",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"Life And Death",
+			"bratwurst",
+			[
+				55,
+				90,
+				75
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Tornt Sonic.EXE Trilogy",
+	"exeTitle": "Bratwurst",
+	"exeCover": "trilogy",
+	"exeLabel": "EXE",
+	"exeColor": "0xFFFF0000",
+	"soundTestCode": [0, 0, false]
+}

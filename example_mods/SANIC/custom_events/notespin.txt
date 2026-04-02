@@ -1,0 +1,2 @@
+value1: angle
+value2: time

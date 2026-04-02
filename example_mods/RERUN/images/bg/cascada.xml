@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="cascada.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 9 instancia 10000" x="36" y="36" width="236" height="376" frameX="0" frameY="-2" frameWidth="272" frameHeight="389"/>
+	<SubTexture name="Símbolo 9 instancia 10001" x="292" y="36" width="238" height="380" frameX="0" frameY="-2" frameWidth="272" frameHeight="389"/>
+	<SubTexture name="Símbolo 9 instancia 10002" x="550" y="36" width="266" height="389" frameX="-1" frameY="0" frameWidth="272" frameHeight="389"/>
+	<SubTexture name="Símbolo 9 instancia 10003" x="36" y="445" width="271" height="382" frameX="-1" frameY="-2" frameWidth="272" frameHeight="389"/>
+</TextureAtlas>

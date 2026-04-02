@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="starved_sheet.png">
+	<!-- Created with Adobe Animate version 24.0.7.61 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="starved dialogue0000" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0001" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0002" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0003" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0004" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0005" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0006" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0007" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0008" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0009" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0010" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0011" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0012" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0013" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0014" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0015" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0016" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0017" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0018" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0019" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0020" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0021" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0022" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0023" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0024" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0025" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0026" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0027" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0028" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0029" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0030" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0031" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0032" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0033" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0034" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0035" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0036" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0037" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0038" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0039" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0040" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0041" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0042" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0043" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0044" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0045" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0046" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0047" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0048" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0049" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0050" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0051" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0052" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0053" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0054" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0055" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0056" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0057" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0058" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0059" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0060" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0061" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0062" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0063" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0064" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0065" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0066" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0067" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0068" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0069" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0070" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0071" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0072" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0073" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0074" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0075" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0076" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0077" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0078" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0079" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0080" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0081" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0082" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0083" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0084" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0085" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0086" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0087" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0088" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0089" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0090" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0091" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0092" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0093" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0094" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0095" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0096" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0097" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0098" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0099" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0100" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0101" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0102" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0103" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0104" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0105" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0106" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0107" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0108" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0109" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0110" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0111" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0112" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0113" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0114" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0115" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0116" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0117" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0118" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0119" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0120" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0121" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0122" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0123" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0124" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0125" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0126" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0127" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0128" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0129" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0130" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0131" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0132" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0133" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0134" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0135" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0136" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0137" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0138" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0139" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0140" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0141" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0142" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0143" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0144" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0145" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0146" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0147" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0148" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0149" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0150" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0151" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0152" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0153" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0154" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0155" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0156" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0157" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0158" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0159" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0160" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0161" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0162" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0163" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0164" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0165" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0166" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0167" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0168" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0169" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0170" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0171" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0172" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0173" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0174" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0175" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0176" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0177" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0178" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0179" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0180" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0181" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0182" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0183" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0184" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0185" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0186" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0187" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0188" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0189" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0190" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0191" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0192" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0193" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0194" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0195" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0196" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0197" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0198" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0199" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0200" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0201" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0202" x="305" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0203" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0204" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0205" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0206" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0207" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0208" x="244" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0209" x="183" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0210" x="122" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0211" x="61" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0212" x="0" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0213" x="366" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0214" x="427" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0215" x="366" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0216" x="488" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0217" x="549" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0218" x="610" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0219" x="671" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0220" x="732" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0221" x="671" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0222" x="793" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0223" x="854" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0224" x="915" y="0" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0225" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0226" x="61" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0227" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0228" x="122" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0229" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0230" x="61" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0231" x="183" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0232" x="244" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0233" x="183" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0234" x="305" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0235" x="183" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0236" x="244" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0237" x="183" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0238" x="305" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0239" x="183" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0240" x="244" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0241" x="183" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0242" x="305" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0243" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0244" x="122" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0245" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0246" x="61" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0247" x="183" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0248" x="244" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0249" x="366" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0250" x="427" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0251" x="366" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0252" x="488" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0253" x="366" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0254" x="427" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0255" x="366" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0256" x="488" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0257" x="366" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0258" x="427" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0259" x="366" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0260" x="488" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0261" x="366" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0262" x="427" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0263" x="366" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0264" x="488" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0265" x="366" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0266" x="427" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0267" x="183" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0268" x="244" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0269" x="183" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0270" x="61" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0271" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0272" x="122" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0273" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0274" x="61" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0275" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0276" x="122" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0277" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0278" x="61" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0279" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0280" x="122" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0281" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0282" x="61" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0283" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0284" x="122" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0285" x="0" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0286" x="549" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0287" x="610" y="75" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0288" x="671" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0289" x="733" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0290" x="795" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0291" x="733" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0292" x="857" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0293" x="919" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0294" x="0" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0295" x="919" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0296" x="671" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0297" x="733" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0298" x="795" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0299" x="733" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0300" x="857" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0301" x="919" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0302" x="0" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0303" x="919" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0304" x="671" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0305" x="733" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0306" x="795" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0307" x="733" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0308" x="857" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0309" x="919" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0310" x="0" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0311" x="919" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0312" x="671" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0313" x="733" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0314" x="795" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0315" x="733" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0316" x="857" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0317" x="919" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0318" x="0" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0319" x="919" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0320" x="671" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0321" x="733" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0322" x="795" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0323" x="733" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0324" x="857" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0325" x="919" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0326" x="0" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0327" x="919" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0328" x="671" y="75" width="62" height="75"/>
+	<SubTexture name="starved dialogue0329" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0330" x="124" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0331" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0332" x="186" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0333" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0334" x="310" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0335" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0336" x="372" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0337" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0338" x="124" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0339" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0340" x="186" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0341" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0342" x="310" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0343" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0344" x="372" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0345" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0346" x="124" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0347" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0348" x="186" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0349" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0350" x="310" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0351" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0352" x="372" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0353" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0354" x="124" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0355" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0356" x="186" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0357" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0358" x="310" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0359" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0360" x="372" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0361" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0362" x="124" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0363" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0364" x="186" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0365" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0366" x="310" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0367" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0368" x="372" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0369" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0370" x="124" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0371" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0372" x="186" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0373" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0374" x="310" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0375" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0376" x="372" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0377" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0378" x="124" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0379" x="62" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0380" x="186" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0381" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0382" x="310" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0383" x="248" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0384" x="434" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0385" x="496" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0386" x="558" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0387" x="620" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0388" x="682" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0389" x="744" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0390" x="806" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0391" x="620" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0392" x="868" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0393" x="620" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0394" x="806" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0395" x="744" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0396" x="682" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0397" x="620" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0398" x="930" y="150" width="62" height="75"/>
+	<SubTexture name="starved dialogue0399" x="0" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0400" x="62" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0401" x="124" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0402" x="186" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0403" x="248" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0404" x="310" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0405" x="248" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0406" x="186" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0407" x="124" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0408" x="62" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0409" x="248" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0410" x="372" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0411" x="248" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0412" x="62" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0413" x="124" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0414" x="186" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0415" x="248" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0416" x="310" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0417" x="124" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0418" x="434" y="225" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0419" x="495" y="225" width="61" height="75" frameX="0" frameY="0" frameWidth="62" frameHeight="75"/>
+	<SubTexture name="starved dialogue0420" x="556" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0421" x="618" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0422" x="680" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0423" x="742" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0424" x="804" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0425" x="618" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0426" x="866" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0427" x="618" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0428" x="804" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0429" x="742" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0430" x="680" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0431" x="618" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0432" x="556" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0433" x="618" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0434" x="680" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0435" x="742" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0436" x="804" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0437" x="618" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0438" x="866" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0439" x="618" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0440" x="804" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0441" x="742" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0442" x="680" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0443" x="618" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0444" x="556" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0445" x="618" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0446" x="680" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0447" x="742" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0448" x="928" y="225" width="62" height="75"/>
+	<SubTexture name="starved dialogue0449" x="0" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0450" x="62" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0451" x="124" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0452" x="186" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0453" x="124" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0454" x="248" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0455" x="310" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0456" x="372" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0457" x="310" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0458" x="434" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0459" x="496" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0460" x="372" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0461" x="310" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0462" x="434" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0463" x="496" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0464" x="372" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0465" x="310" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0466" x="434" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0467" x="496" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0468" x="372" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0469" x="310" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0470" x="434" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0471" x="496" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0472" x="372" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0473" x="310" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0474" x="434" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0475" x="496" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0476" x="558" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0477" x="620" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0478" x="682" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0479" x="682" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0480" x="744" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0481" x="744" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0482" x="682" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0483" x="682" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0484" x="744" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0485" x="744" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0486" x="682" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0487" x="682" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0488" x="744" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0489" x="744" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0490" x="682" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0491" x="682" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0492" x="806" y="300" width="62" height="75"/>
+	<SubTexture name="starved dialogue0493" x="744" y="300" width="62" height="75"/>
+	<SubTexture name="starved down0000" x="868" y="300" width="61" height="75"/>
+	<SubTexture name="starved down0001" x="929" y="300" width="61" height="75"/>
+	<SubTexture name="starved down0002" x="0" y="375" width="61" height="75"/>
+	<SubTexture name="starved down0003" x="61" y="375" width="61" height="75"/>
+	<SubTexture name="starved down0004" x="122" y="375" width="61" height="75"/>
+	<SubTexture name="starved down0005" x="61" y="375" width="61" height="75"/>
+	<SubTexture name="starved down0006" x="0" y="375" width="61" height="75"/>
+	<SubTexture name="starved down0007" x="61" y="375" width="61" height="75"/>
+	<SubTexture name="starved idle0000" x="744" y="300" width="62" height="75"/>
+	<SubTexture name="starved idle0001" x="806" y="300" width="62" height="75"/>
+	<SubTexture name="starved idle0002" x="682" y="300" width="62" height="75"/>
+	<SubTexture name="starved idle0003" x="806" y="300" width="62" height="75"/>
+	<SubTexture name="starved idle0004" x="744" y="300" width="62" height="75"/>
+	<SubTexture name="starved idle0005" x="806" y="300" width="62" height="75"/>
+	<SubTexture name="starved idle0006" x="682" y="300" width="62" height="75"/>
+	<SubTexture name="starved idle0007" x="806" y="300" width="62" height="75"/>
+	<SubTexture name="starved left0000" x="183" y="375" width="61" height="75"/>
+	<SubTexture name="starved left0001" x="244" y="375" width="61" height="75"/>
+	<SubTexture name="starved left0002" x="305" y="375" width="61" height="75"/>
+	<SubTexture name="starved left0003" x="366" y="375" width="61" height="75"/>
+	<SubTexture name="starved left0004" x="427" y="375" width="61" height="75"/>
+	<SubTexture name="starved left0005" x="366" y="375" width="61" height="75"/>
+	<SubTexture name="starved left0006" x="305" y="375" width="61" height="75"/>
+	<SubTexture name="starved left0007" x="366" y="375" width="61" height="75"/>
+	<SubTexture name="starved right0000" x="488" y="375" width="61" height="75"/>
+	<SubTexture name="starved right0001" x="549" y="375" width="61" height="75"/>
+	<SubTexture name="starved right0002" x="610" y="375" width="61" height="75"/>
+	<SubTexture name="starved right0003" x="671" y="375" width="61" height="75"/>
+	<SubTexture name="starved right0004" x="732" y="375" width="61" height="75"/>
+	<SubTexture name="starved right0005" x="671" y="375" width="61" height="75"/>
+	<SubTexture name="starved right0006" x="610" y="375" width="61" height="75"/>
+	<SubTexture name="starved right0007" x="671" y="375" width="61" height="75"/>
+	<SubTexture name="starved up0000" x="793" y="375" width="61" height="75"/>
+	<SubTexture name="starved up0001" x="854" y="375" width="61" height="75"/>
+	<SubTexture name="starved up0002" x="915" y="375" width="61" height="75"/>
+	<SubTexture name="starved up0003" x="0" y="450" width="61" height="75"/>
+	<SubTexture name="starved up0004" x="61" y="450" width="61" height="75"/>
+	<SubTexture name="starved up0005" x="0" y="450" width="61" height="75"/>
+	<SubTexture name="starved up0006" x="915" y="375" width="61" height="75"/>
+	<SubTexture name="starved up0007" x="0" y="450" width="61" height="75"/>
+</TextureAtlas>

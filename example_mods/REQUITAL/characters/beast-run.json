@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 1,
+			"anim": "idle",
+			"indices": [],
+			"name": "Símbolo 5"
+		},
+		{
+			"offsets": [33, 28],
+			"loop": false,
+			"fps": 1,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "hleft"
+		},
+		{
+			"offsets": [-33, 50],
+			"loop": false,
+			"fps": 1,
+			"anim": "singUP",
+			"indices": [],
+			"name": "hup"
+		},
+		{
+			"offsets": [-93, 3],
+			"loop": false,
+			"fps": 1,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "hright"
+		},
+		{
+			"offsets": [-17, -16],
+			"indices": [],
+			"fps": 1,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "hdowm"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/deception/cabeza",
+	"position": [0, 0],
+	"healthicon": "requital-beast",
+	"flip_x": false,
+	"healthbar_colors": [255, 255, 255],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 0.4,
+	"_editor_isPlayer": false
+}

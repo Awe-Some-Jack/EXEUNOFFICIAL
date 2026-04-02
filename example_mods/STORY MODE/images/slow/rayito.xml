@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="rayito.png">
+<SubTexture name="rayito rayito0000" x="0" y="0" width="145" height="720" frameX="-558" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="rayito rayito0001" x="0" y="0" width="145" height="720" frameX="-558" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="rayito rayito0002" x="145" y="0" width="109" height="720" frameX="-576" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="rayito rayito0003" x="145" y="0" width="109" height="720" frameX="-576" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="rayito rayito0004" x="254" y="0" width="142" height="720" frameX="-542" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="rayito rayito0005" x="254" y="0" width="142" height="720" frameX="-542" frameY="0" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

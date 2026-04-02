@@ -1,0 +1,41 @@
+{
+	"storyName": "Your New Week",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"Forestall Desire",
+			"requital",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"Deception",
+			"requital-beast",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Custom Week",
+	"exeTitle": "REQUITAL",
+	"exeCover": "requital",
+	"exeLabel": "EXE",
+	"exeColor": "0xFFFF0000",
+	"soundTestCode": [0, 0, false]
+}

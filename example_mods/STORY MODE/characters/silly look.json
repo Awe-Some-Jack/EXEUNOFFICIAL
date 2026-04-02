@@ -1,0 +1,63 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [670, 9],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idlee",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [662, -20],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Símbolo 221",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [652, 64],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Símbolo 222",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [664, 19],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Símbolo 219",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [688, 13],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Símbolo 220",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [930, 239],
+			"anim": "ha",
+			"fps": 24,
+			"name": "talk",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/Silly LookALike",
+	"position": [685, 420],
+	"healthicon": "minilook",
+	"flip_x": false,
+	"healthbar_colors": [81, 121, 161],
+	"camera_position": [-610, -10],
+	"sing_duration": 5.99999999999999,
+	"scale": 1.1,
+	"_editor_isPlayer": false
+}

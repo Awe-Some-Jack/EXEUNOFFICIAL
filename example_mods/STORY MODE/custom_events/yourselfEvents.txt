@@ -1,0 +1,3 @@
+[
+    fuckyoublackscreen, startMiddleScroll, revealYourself, fadeLights, fadeHUD[appear, fuckyou], fadeNotes, separateNotes, changeIcon, removeSprite, moveDad[x, y], lightsInteraction[dad, bf, fade, tweenToBF], tweenCamHUDAlphaDown, showOffNewStage, fadeBG, fadeGameBro, cortinas
+]

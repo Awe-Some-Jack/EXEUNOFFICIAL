@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"offsets": [256, -68],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [6, -324],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [-26, 65],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [-48, -324],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [-19, -87],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/eso brat",
+	"position": [210, -130],
+	"healthicon": "icon-bratwurst",
+	"flip_x": false,
+	"healthbar_colors": [51, 73, 91],
+	"camera_position": [-210, 110],
+	"sing_duration": 8,
+	"scale": 1.2,
+	"_editor_isPlayer": false
+}

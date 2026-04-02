@@ -1,0 +1,135 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Pico Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [77, -52],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Pico Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-16, -67],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Pico Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-20, 72],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Pico Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-49, -6],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Pico Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [71, -55],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "Pico mLeft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-22, -67],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "Pico mDown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 34],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "Pico mUp",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-52, -5],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "Pico mRight",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [153, -68],
+			"anim": "dodge",
+			"fps": 24,
+			"name": "Pico Dodge",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [35, -1],
+			"anim": "cabron",
+			"fps": 24,
+			"name": "ay",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [48, -58],
+			"anim": "reload",
+			"fps": 24,
+			"name": "picoReload",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [52, 110],
+			"anim": "shoot1",
+			"fps": 24,
+			"name": "picoShoot1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [106, 194],
+			"anim": "shoot2",
+			"fps": 24,
+			"name": "picoShoot2",
+			"indices": []
+		},
+		{
+			"offsets": [70, -55],
+			"indices": [],
+			"fps": 24,
+			"anim": "hit",
+			"loop": false,
+			"name": "Pico ay"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/pico requital",
+	"position": [0, 0],
+	"healthicon": "pico-req",
+	"flip_x": true,
+	"healthbar_colors": [255, 102, 31],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": true
+}

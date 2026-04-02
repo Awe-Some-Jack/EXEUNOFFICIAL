@@ -1,0 +1,41 @@
+{
+	"songs": [
+		[
+			"round-a-bout",
+			"needlemouse",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"her world",
+			"luther",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"difficulties": "",
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"storyName": "Your New Week",
+	"weekName": "Custom Week",
+	"hideStoryMode": false,
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"exeTitle": "NEEDLEMOUSE",
+	"exeCover": "needlemouse",
+	"exeLabel": "EXE",
+	"exeColor": "0xFFFF0000",
+	"soundTestCode": [0, 0, false]
+}

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="gfp.png">
+	<!-- Created with Adobe Animate version 24.0.10.14 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="dance instancia 10000" x="8" y="8" width="45" height="52"/>
+	<SubTexture name="dance instancia 10001" x="8" y="8" width="45" height="52"/>
+	<SubTexture name="dance instancia 10002" x="75" y="8" width="45" height="52"/>
+	<SubTexture name="dance instancia 10003" x="75" y="8" width="45" height="52"/>
+	<SubTexture name="dance instancia 10004" x="75" y="8" width="45" height="52"/>
+	<SubTexture name="dance instancia 10005" x="142" y="8" width="45" height="52"/>
+	<SubTexture name="dance instancia 10006" x="142" y="8" width="45" height="52"/>
+	<SubTexture name="dance instancia 10007" x="142" y="8" width="45" height="52"/>
+	<SubTexture name="dance instancia 10008" x="8" y="82" width="45" height="52"/>
+	<SubTexture name="dance instancia 10009" x="8" y="82" width="45" height="52"/>
+	<SubTexture name="dance instancia 10010" x="75" y="82" width="45" height="52"/>
+	<SubTexture name="dance instancia 10011" x="75" y="82" width="45" height="52"/>
+	<SubTexture name="dance instancia 10012" x="142" y="82" width="45" height="52"/>
+	<SubTexture name="dance instancia 10013" x="142" y="82" width="45" height="52"/>
+	<SubTexture name="dance instancia 10014" x="142" y="82" width="45" height="52"/>
+	<SubTexture name="dance instancia 10015" x="8" y="156" width="45" height="52"/>
+	<SubTexture name="dance instancia 10016" x="8" y="156" width="45" height="52"/>
+	<SubTexture name="dance instancia 10017" x="8" y="156" width="45" height="52"/>
+	<SubTexture name="dance instancia 10018" x="75" y="156" width="45" height="52"/>
+	<SubTexture name="dance instancia 10019" x="75" y="156" width="45" height="52"/>
+	<SubTexture name="dance instancia 10020" x="142" y="156" width="45" height="52"/>
+	<SubTexture name="dance instancia 10021" x="142" y="156" width="45" height="52"/>
+</TextureAtlas>

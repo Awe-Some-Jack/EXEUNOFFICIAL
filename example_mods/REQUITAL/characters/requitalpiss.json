@@ -1,0 +1,71 @@
+{
+	"animations": [
+		{
+			"offsets": [40, -53],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "alt idle"
+		},
+		{
+			"offsets": [351, -23],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Símbolo 90"
+		},
+		{
+			"offsets": [199, -31],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [36, 128],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [32, -30],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [91, -72],
+			"loop": false,
+			"fps": 24,
+			"anim": "dodged",
+			"indices": [],
+			"name": "dogged"
+		},
+		{
+			"offsets": [195, -49],
+			"loop": false,
+			"fps": 24,
+			"anim": "attack",
+			"indices": [],
+			"name": "atack"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/requitalp2",
+	"position": [0, 0],
+	"healthicon": "requital",
+	"flip_x": false,
+	"healthbar_colors": [1, 1, 1],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

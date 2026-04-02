@@ -1,0 +1,63 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 28,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [141, 45],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [77, 1],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [41, 250],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-4, 53],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [79, 325],
+			"anim": "laugh",
+			"fps": 30,
+			"name": "cuando tu elfa te esta dando unos ricos sentones pero se le sale tu nepe y se dobla :V",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/eggman tt ",
+	"position": [-20, 240],
+	"healthicon": "eggman",
+	"flip_x": false,
+	"healthbar_colors": [153, 101, 0],
+	"camera_position": [-10, -10],
+	"sing_duration": 6.99999999999999,
+	"scale": 1.15,
+	"_editor_isPlayer": false
+}

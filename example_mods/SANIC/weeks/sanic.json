@@ -1,0 +1,32 @@
+{
+	"storyName": "Your New Week",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"Too Fest",
+			"sanic",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Custom Week",
+	"exeTitle": "SANIC",
+	"exeCover": "sanic",
+	"exeLabel": "NON EXE",
+	"exeColor": "0xFF8888FF",
+	"soundTestCode": [0, 0, false]
+}

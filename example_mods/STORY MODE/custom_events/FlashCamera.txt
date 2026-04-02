@@ -1,0 +1,5 @@
+A Flash Event with more features than usual
+- V1 is flashColor and alpha (use commas)
+- V2 is fadeTime and blendMode (use commas)
+
+Script by Raimbowcore12

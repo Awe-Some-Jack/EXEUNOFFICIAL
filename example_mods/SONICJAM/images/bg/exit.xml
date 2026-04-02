@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="exit.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="digitalized new exit frames00010000" x="1615" y="1445" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00020000" x="646" y="1445" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00030000" x="323" y="1156" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00040000" x="646" y="1156" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00050000" x="969" y="1156" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00060000" x="0" y="1445" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00070000" x="0" y="867" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00080000" x="646" y="289" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00090000" x="969" y="289" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00100000" x="1938" y="289" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00110000" x="1615" y="0" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00120000" x="323" y="1445" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00130000" x="323" y="578" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00140000" x="969" y="578" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00150000" x="969" y="867" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00160000" x="1615" y="578" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00170000" x="1938" y="867" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00180000" x="323" y="867" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00190000" x="969" y="1445" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00200000" x="1938" y="578" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00210000" x="1292" y="1156" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00220000" x="1292" y="289" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00230000" x="646" y="867" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00240000" x="646" y="0" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00250000" x="0" y="0" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00260000" x="646" y="578" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00270000" x="969" y="0" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00280000" x="0" y="578" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00290000" x="1292" y="1445" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00300000" x="1292" y="578" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00310000" x="1938" y="0" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00320000" x="0" y="1156" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00330000" x="323" y="0" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00340000" x="1615" y="867" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00350000" x="0" y="289" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00360000" x="1292" y="0" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00370000" x="323" y="289" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00380000" x="1292" y="867" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00390000" x="1615" y="289" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+	<SubTexture name="digitalized new exit frames00400000" x="1615" y="1156" width="323" height="289" frameX="-583" frameY="-399" frameWidth="1471" frameHeight="1068"/>
+</TextureAtlas>

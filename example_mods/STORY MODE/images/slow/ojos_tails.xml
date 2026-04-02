@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="ojos_tails.png">
+	<SubTexture name="Símbolo 10 instancia 10000" x="0" y="0" width="198" height="105" frameX="0" frameY="0" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10001" x="208" y="0" width="198" height="105" frameX="0" frameY="0" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10002" x="416" y="0" width="198" height="105" frameX="0" frameY="0" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10003" x="624" y="0" width="198" height="105" frameX="0" frameY="0" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10004" x="0" y="115" width="198" height="105" frameX="0" frameY="0" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10005" x="208" y="115" width="177" height="103" frameX="-11" frameY="-2" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10006" x="395" y="115" width="177" height="103" frameX="-11" frameY="-2" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10007" x="582" y="115" width="177" height="103" frameX="-11" frameY="-2" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10008" x="769" y="115" width="177" height="103" frameX="-11" frameY="-2" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10009" x="0" y="230" width="177" height="103" frameX="-11" frameY="-2" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10010" x="187" y="230" width="172" height="108" frameX="-11" frameY="0" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10011" x="369" y="230" width="172" height="108" frameX="-11" frameY="0" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10012" x="551" y="230" width="172" height="108" frameX="-11" frameY="0" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10013" x="733" y="230" width="172" height="108" frameX="-11" frameY="0" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10014" x="0" y="348" width="172" height="108" frameX="-11" frameY="0" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10015" x="182" y="348" width="166" height="104" frameX="-15" frameY="-9" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10016" x="358" y="348" width="166" height="104" frameX="-15" frameY="-9" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10017" x="534" y="348" width="166" height="104" frameX="-15" frameY="-9" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10018" x="710" y="348" width="166" height="104" frameX="-15" frameY="-9" frameWidth="198" frameHeight="113"/>
+	<SubTexture name="Símbolo 10 instancia 10019" x="0" y="466" width="166" height="104" frameX="-15" frameY="-9" frameWidth="198" frameHeight="113"/>
+</TextureAtlas>

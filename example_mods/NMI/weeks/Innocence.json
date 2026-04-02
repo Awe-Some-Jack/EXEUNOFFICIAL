@@ -1,0 +1,32 @@
+{
+	"songs": [
+		[
+			"Fakebaby",
+			"face",
+			[
+				255,
+				255,
+				255
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"difficulties": "",
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"storyName": "Your New Week",
+	"weekName": "NMI",
+	"hideStoryMode": false,
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"exeTitle": "No More Innocence",
+	"exeCover": "nmi",
+	"exeLabel": "NON EXE",
+	"exeColor": "0xFF8888FF",
+	"soundTestCode": [0, 0, false]
+}

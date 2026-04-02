@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"offsets": [-25, 74],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"offsets": [536, 96],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [149, 72],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [57, 265],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [-23, 73],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/starveddream",
+	"position": [-80, 260],
+	"healthicon": "starved",
+	"flip_x": false,
+	"healthbar_colors": [255, 36, 0],
+	"camera_position": [-240, -90],
+	"sing_duration": 8.1,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

@@ -1,0 +1,68 @@
+{
+	"storyName": "Your New Week",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"Too slow",
+			"sonicexe",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"You cant run",
+			"XENO-P2",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"Triple trouble",
+			"XENO-P3",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"Final escape",
+			"XENO-P4",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"Yourself",
+			"minilook",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Custom Week",
+	"exeTitle": "SONIC.EXE",
+	"exeCover": "sonicexe",
+	"exeLabel": "EXE",
+	"exeColor": "0xFFFF0000",
+	"soundTestCode": [0, 0, false]
+}

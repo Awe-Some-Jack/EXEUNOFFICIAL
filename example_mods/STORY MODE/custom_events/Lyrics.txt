@@ -1,0 +1,7 @@
+A Lyrics event that displays smoothly and dissapears whenever you want!
+
+Value 1 = Text and Alpha
+
+Value 2 = The time the text lasts in screen
+
+Script by Raimbowcore12

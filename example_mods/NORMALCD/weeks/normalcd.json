@@ -1,0 +1,32 @@
+{
+	"storyName": "Your New Week",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"Found You",
+			"normal",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Custom Week",
+	"exeTitle": "NORMAL CD",
+	"exeCover": "normalcd",
+	"exeLabel": "NON EXE",
+	"exeColor": "0xFF8888FF",
+	"soundTestCode": [0, 0, false]
+}

@@ -1,0 +1,8 @@
+
+    -- Cambiar modo de mezcla (blend mode)
+
+
+    setBlendMode('miSprite', 'add')       -- modos: 'normal', 'add', 'multiply', 'screen', 'overlay', 'subtract
+
+
+usar el setblend mode en multiply para la imagen lyer

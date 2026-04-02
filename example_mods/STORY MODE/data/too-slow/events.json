@@ -1,0 +1,924 @@
+{
+	"events": [
+		[
+			0,
+			[
+				["Tweening Camera", "-450, 50", "0.001, smootherStepInOut"],
+				["Tween Camera Zoom", "1.4, true", "0.001, linear"]
+			]
+		],
+		[
+			217.391304347826,
+			[
+				["Tween Camera Zoom", "0.8, true", "15, cubeInOut"]
+			]
+		],
+		[
+			2173.91304347826,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			9130.4347826087,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			13695.6521739131,
+			[
+				["Tweening Camera", "450, 90", "5, smootherStepInOut"],
+				["Tween Camera Zoom", "1.1, true", "5, smootherStepInOut"]
+			]
+		],
+		[
+			14782.6086956522,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			20434.7826086956,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			20869.5652173913,
+			[
+				["Tweening Camera", "0, 0", "5, smootherStepInOut"],
+				["Tween Camera Zoom", "0.45, true", "5, smootherStepInOut"]
+			]
+		],
+		[
+			23260.8695652174,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			27826.0869565217,
+			[
+				["Tweening Camera", "-450, 50", "6, smootherStepInOut"],
+				["Tween Camera Zoom", "0.9, true", "6, smootherStepInOut"]
+			]
+		],
+		[
+			28152.1739130435,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			32173.9130434783,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			35978.2608695652,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			38260.8695652173,
+			[
+				["Tweening Camera", "350, 60", "3, sineInOut"],
+				["Tween Camera Zoom", "0.8, true", "3, sineInOut"]
+			]
+		],
+		[
+			39456.5217391304,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			41739.1304347826,
+			[
+				["Tween Camera Zoom", "1.2, true", "4, smootherStepInOut"],
+				["Tweening Camera", "550, 120", "4, smootherStepInOut"]
+			]
+		],
+		[
+			43152.1739130435,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			45652.1739130435,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			48695.652173913,
+			[
+				["Tweening Camera", "0, 0", "6, smootherStepInOut"],
+				["Tween Camera Zoom", "0.6, true", "6, smootherStepInOut"]
+			]
+		],
+		[
+			48913.0434782609,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			51630.4347826087,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			53586.9565217391,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			53913.0434782609,
+			[
+				["Tweening Camera", "-250, 0", "1.5, sineInOut"],
+				["Tween Camera Zoom", "0.8, true", "1.5, sineInOut"]
+			]
+		],
+		[
+			55652.1739130435,
+			[
+				["Tween Camera Zoom", "0.9, true", "6, sineInOut"],
+				["Tweening Camera", "-490, 60", "6, sineInOut"]
+			]
+		],
+		[
+			56847.8260869565,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			60108.6956521739,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			65108.6956521739,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			66086.9565217391,
+			[
+				["Tweening Camera", "350, 60", "3, sineInOut"],
+				["Tween Camera Zoom", "0.8, true", "3, sineInOut"]
+			]
+		],
+		[
+			68913.0434782609,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			69565.2173913043,
+			[
+				["Tween Camera Zoom", "1.2, true", "5, smootherStepInOut"],
+				["Tweening Camera", "550, 120", "5, smootherStepInOut"]
+			]
+		],
+		[
+			72391.3043478261,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			76521.7391304351,
+			[
+				["Tween Camera Zoom", "1, true", "4.5, smootherStepInOut"],
+				["Tweening Camera", "250, 30", "4.5, smootherStepInOut"]
+			]
+		],
+		[
+			77500,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			80000,
+			[
+				["Tween Camera Zoom", "1.4, true", "2.4, smootherStepInOut"],
+				["Tweening Camera", "-450, 50", "2.4, smootherStepInOut"]
+			]
+		],
+		[
+			83590.9822866344,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			85442.8341384863,
+			[
+				["Change Scroll Speed", "1.4", "0"]
+			]
+		],
+		[
+			85442.8341384863,
+			[
+				["Change Scroll Speed", "1.4", "0"]
+			]
+		],
+		[
+			85813.2045088567,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			86461.3526570048,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			88405.7971014492,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			90442.8341384863,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			93313.2045088566,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			97294.6859903381,
+			[
+				["Tween Camera Zoom", "1.6, true", "0.7, circIn"],
+				["Tweening Camera", "120, 120", "0.7, circIn"]
+			]
+		],
+		[
+			97479.8711755233,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			98035.4267310788,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Tween Camera Zoom", "0.7", ""],
+				["EXEJumscareBIG", "", ""]
+			]
+		],
+		[
+			100998.389694042,
+			[
+				["Tween Camera Zoom", "0.8", ""],
+				["Tweening Camera", "-50, 30", "0.001, linear"]
+			]
+		],
+		[
+			101461.352657005,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			103220.611916264,
+			[
+				["Tweening Camera", "-80, 50", "0.2, circOut"],
+				["Tween Camera Zoom", "1, true", "0.5, backOut"]
+			]
+		],
+		[
+			103961.352657005,
+			[
+				["Tween Camera Zoom", "0.8", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			104979.871175523,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			109146.53784219,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			109887.278582931,
+			[
+				["Tween Camera Zoom", "1", ""],
+				["Tweening Camera", "-90, 50", "0.001, linear"]
+			]
+		],
+		[
+			112492.069002092,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			112761.530079937,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			114198.65582844,
+			[
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			114917.218702691,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			115635.781576943,
+			[
+				["Tweening Camera", "90, 80", "0.001, linear"],
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			118240.571996104,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			118510.033073949,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			120665.721696703,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			121384.284570955,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			121474.104930236,
+			[
+				["EXEJumscareBIG", "", ""]
+			]
+		],
+		[
+			123270.512115865,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			127941.170798499,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			132881.290558979,
+			[
+				["tooSlowEvents", "flashBack", ""]
+			]
+		],
+		[
+			133404.546372932,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			134974.313814792,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			135671.988233397,
+			[
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			137067.337070606,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			137765.011489211,
+			[
+				["Tween Camera Zoom", "1, true", "0.5, backOut"]
+			]
+		],
+		[
+			138201.058000839,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			138462.685907816,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			141166.174279909,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			141253.383582234,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			142648.732419444,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			143346.406838048,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.3, circOut"]
+			]
+		],
+		[
+			143695.244047351,
+			[
+				["Tween Camera Zoom", "1, true", "0.3, circOut"]
+			]
+		],
+		[
+			144044.081256653,
+			[
+				["Tween Camera Zoom", "0.8", ""],
+				["EXEJumscareBIG", "", ""]
+			]
+		],
+		[
+			146049.895210141,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			150061.523117118,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			151369.662652002,
+			[
+				["tooSlowEvents", "flashBack", "fade"]
+			]
+		],
+		[
+			154160.360326421,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			155206.871954328,
+			[
+				["Change Character", "dad", "im god"],
+				["Play Animation", "god", "dad"]
+			]
+		],
+		[
+			155206.871954328,
+			[
+				["Change Character", "dad", "im god"],
+				["Play Animation", "god", "dad"],
+				["Tweening Camera", "-120, 20", "2, sineInOut"],
+				["Cinematics (With HUD)", "1.4", "90"],
+				["tooslowlyric", "im", ""]
+			]
+		],
+		[
+			155291.617717039,
+			[
+				["Tween Camera Zoom", "1.3, true", "2, sineInOut"]
+			]
+		],
+		[
+			155715.346530599,
+			[
+				["tooslowlyric", "gonna", ""]
+			]
+		],
+		[
+			156223.82110687,
+			[
+				["tooslowlyric", "getcha", ""]
+			]
+		],
+		[
+			157579.75331026,
+			[
+				["tooslowlyric", "end", ""]
+			]
+		],
+		[
+			157918.736361107,
+			[
+				["TooSlowStatic", "", ""],
+				["EXEJumscareBIG", "", ""]
+			]
+		],
+		[
+			158342.465174666,
+			[
+				["Tweening Camera", "-145, 25", "0.8, sineOut"]
+			]
+		],
+		[
+			158384.838056022,
+			[
+				["tooslowlyric", "i", ""]
+			]
+		],
+		[
+			158935.68551365,
+			[
+				["tooslowlyric", "am", ""]
+			]
+		],
+		[
+			160033.143140768,
+			[
+				["Tweening Camera", "-85, 22", "0.9, circOut"],
+				["Tween Camera Zoom", "1.1", ""]
+			]
+		],
+		[
+			160079.75331026,
+			[
+				["tooslowlyric", "god", ""]
+			]
+		],
+		[
+			160383.425626644,
+			[
+				["Tweening Camera", "-115, 32", "1.3, smootherStepOut"]
+			]
+		],
+		[
+			160969.583818734,
+			[
+				["tooslowlyric", "endlyrics", ""]
+			]
+		],
+		[
+			162495.007547548,
+			[
+				["Tween Camera Zoom", "0.8, true", "2, smootherStepInOut"],
+				["Tweening Camera", "-120, 50", "2, smootherStepInOut"]
+			]
+		],
+		[
+			162636.250485401,
+			[
+				["Normal Lyrics", "Ha,; ha,; ha,; ha,; ha!", "1"]
+			]
+		],
+		[
+			162664.499072972,
+			[
+				["Cinematics (With HUD)", "2.6", "0"]
+			]
+		],
+		[
+			163257.719411955,
+			[
+				["Normal Lyrics", "Ha,; ha,; ha,; ha,; ha!", "2"]
+			]
+		],
+		[
+			163681.448225514,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			163850.939750938,
+			[
+				["Normal Lyrics", "Ha,; ha,; ha,; ha,; ha!", "3"]
+			]
+		],
+		[
+			164528.905852633,
+			[
+				["Normal Lyrics", "Ha,; ha,; ha,; ha,; ha!", "4"]
+			]
+		],
+		[
+			165206.871954327,
+			[
+				["Normal Lyrics", "Ha,; ha,; ha,; ha,; ha!", "5"]
+			]
+		],
+		[
+			165295.855005175,
+			[
+				["Tween Camera Zoom", "1.6, true", "0.71, backIn"]
+			]
+		],
+		[
+			165884.838056022,
+			[
+				["Normal Lyrics", "", ""]
+			]
+		],
+		[
+			166054.329581446,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Change Character", "dad", "sonic.exe"],
+				["Tween Camera Zoom", "0.7", ""],
+				["Change Character", "dad", "sonic.exe"]
+			]
+		],
+		[
+			166637.662914779,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			168720.996248113,
+			[
+				["Tween Camera Zoom", "0.8", ""],
+				["Tweening Camera", "-60, 40", "0.001, linear"]
+			]
+		],
+		[
+			170054.329581446,
+			[
+				["Tween Camera Zoom", "1", ""],
+				["Tweening Camera", "-90, 60", "0.001, linear"]
+			]
+		],
+		[
+			170887.662914779,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			171387.662914779,
+			[
+				["Tween Camera Zoom", "0.7", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			174054.329581446,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["Tweening Camera", "50, 50", "0.001, linear"]
+			]
+		],
+		[
+			174554.329581446,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			176054.329581446,
+			[
+				["Tween Camera Zoom", "1.1", ""],
+				["Tweening Camera", "60, 60", "0.001, linear"]
+			]
+		],
+		[
+			176720.996248113,
+			[
+				["Tween Camera Zoom", "0.7", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			178054.329581446,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["Tweening Camera", "-80, 80", "0.001, linear"]
+			]
+		],
+		[
+			178637.66291478,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			179387.66291478,
+			[
+				["Tween Camera Zoom", "0.7", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			180054.329581446,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			180720.996248113,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["Tweening Camera", "-80, 80", "0.001, linear"]
+			]
+		],
+		[
+			182054.329581446,
+			[
+				["Tween Camera Zoom", "0.7", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			183387.66291478,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["Tweening Camera", "80, 80", "0.001, linear"]
+			]
+		],
+		[
+			184554.329581446,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			184720.996248113,
+			[
+				["Tween Camera Zoom", "0.7", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			186054.329581446,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["Tweening Camera", "80, 80", "0.001, linear"]
+			]
+		],
+		[
+			187387.66291478,
+			[
+				["Tween Camera Zoom", "1", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["EXEJumscareBIG", "", ""]
+			]
+		],
+		[
+			188387.66291478,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			191137.66291478,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			191137.66291478,
+			[
+				["EXEJumpscare", "", ""]
+			]
+		],
+		[
+			197220.996248113,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			198054.329581446,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			199387.66291478,
+			[
+				["Tween Camera Zoom", "1.1", ""]
+			]
+		],
+		[
+			200720.996248113,
+			[
+				["Split Screen", "0.3, circOut, 1, 1.2, false", "-120, 50, 120, 80"]
+			]
+		],
+		[
+			201554.329581446,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			203387.66291478,
+			[
+				["Split Screen", "0.5, circOut", ""]
+			]
+		],
+		[
+			204720.996248113,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			205887.66291478,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			206054.329581446,
+			[
+				["Split Screen", "0.3, circOut, 1, 1.2, false", "-120, 50, 120, 80"]
+			]
+		],
+		[
+			206804.329581446,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			207637.66291478,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		],
+		[
+			208387.66291478,
+			[
+				["Play Animation", "as", "dad"]
+			]
+		],
+		[
+			208720.996248113,
+			[
+				["Split Screen", "0.5, circOut", ""]
+			]
+		],
+		[
+			208804.329581446,
+			[
+				["Tween Camera Zoom", "1.6, true", "6, sineInOut"],
+				["Tweening Camera", "-120, 20", "6, sineInOut"]
+			]
+		],
+		[
+			209554.329581446,
+			[
+				["TooSlowStatic", "", ""]
+			]
+		]
+	],
+	"format": "psych_v1"
+}

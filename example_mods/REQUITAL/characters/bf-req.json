@@ -1,0 +1,119 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "BF Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [38, -22],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "BF Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [24, -61],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "BF Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-16, 36],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "BF Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-51, -4],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "BF Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [30, -22],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "BF mLeft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [23, -62],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "BF mDown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-6, 23],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "BF mUp",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-48, 19],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "BF mRight",
+			"indices": []
+		},
+		{
+			"offsets": [81, -27],
+			"loop": false,
+			"fps": 24,
+			"anim": "dodge",
+			"indices": [],
+			"name": "BF Dodge"
+		},
+		{
+			"offsets": [-2, -11],
+			"loop": false,
+			"fps": 24,
+			"anim": "cabron",
+			"indices": [],
+			"name": "cabron"
+		},
+		{
+			"offsets": [48, -27],
+			"indices": [],
+			"fps": 24,
+			"anim": "hit",
+			"loop": false,
+			"name": "BF ay"
+		},
+		{
+			"offsets": [41, -46],
+			"indices": [],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "BF Pose"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/BF_Requital",
+	"position": [0, 0],
+	"healthicon": "bf-req",
+	"flip_x": true,
+	"healthbar_colors": [80, 165, 234],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": true
+}

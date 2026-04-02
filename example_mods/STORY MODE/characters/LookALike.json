@@ -1,0 +1,71 @@
+{
+	"animations": [
+		{
+			"offsets": [614, 189],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [595, 321],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [594, 189],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [660, 189],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [613, 195],
+			"loop": false,
+			"fps": 24,
+			"anim": "short",
+			"indices": [],
+			"name": "short"
+		},
+		{
+			"offsets": [598, 225],
+			"loop": false,
+			"fps": 24,
+			"anim": "bit",
+			"indices": [],
+			"name": "bitbox"
+		},
+		{
+			"offsets": [595, 197],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/LookALike",
+	"position": [605, 250],
+	"healthicon": "lookalike",
+	"flip_x": false,
+	"healthbar_colors": [67, 106, 144],
+	"camera_position": [-650, -330],
+	"sing_duration": 12,
+	"scale": 1.1,
+	"_editor_isPlayer": false
+}

@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [18, -143],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [520, -150],
+			"anim": "ah",
+			"fps": 24,
+			"name": "sah",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [264, -96],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "f left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [126, -145],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [14, -144],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "f right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [156, 80],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "f up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [104, -177],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "risa",
+			"indices": []
+		},
+		{
+			"offsets": [20, -138],
+			"indices": [],
+			"fps": 24,
+			"anim": "muerete conglo",
+			"loop": false,
+			"name": "just"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/luis22",
+	"position": [20, 60],
+	"healthicon": "XENO-P22",
+	"flip_x": false,
+	"healthbar_colors": [39, 7, 117],
+	"camera_position": [-10, 110],
+	"sing_duration": 6.99999999999999,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="wholsome.png">
+	<!-- Created with Adobe Animate version 24.0.10.14 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="voltea instancia 10000" x="40" y="40" width="527" height="571" frameX="-51" frameY="-7" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10001" x="40" y="40" width="527" height="571" frameX="-51" frameY="-7" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10002" x="642" y="40" width="527" height="571" frameX="-51" frameY="-7" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10003" x="642" y="40" width="527" height="571" frameX="-51" frameY="-7" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10004" x="40" y="40" width="527" height="571" frameX="-51" frameY="-7" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10005" x="40" y="40" width="527" height="571" frameX="-51" frameY="-7" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10006" x="1244" y="40" width="527" height="571" frameX="-51" frameY="-7" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10007" x="1244" y="40" width="527" height="571" frameX="-51" frameY="-7" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10008" x="1846" y="40" width="525" height="575" frameX="-53" frameY="-3" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10009" x="1846" y="40" width="525" height="575" frameX="-53" frameY="-3" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10010" x="2446" y="40" width="524" height="575" frameX="-54" frameY="-3" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10011" x="3045" y="40" width="525" height="578" frameX="-56" frameY="0" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10012" x="3045" y="40" width="525" height="578" frameX="-56" frameY="0" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10013" x="3645" y="40" width="521" height="578" frameX="-56" frameY="0" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10014" x="3645" y="40" width="521" height="578" frameX="-56" frameY="0" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10015" x="4241" y="40" width="441" height="570" frameX="-48" frameY="-8" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10016" x="40" y="693" width="441" height="570" frameX="-48" frameY="-8" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10017" x="556" y="693" width="472" height="572" frameX="-26" frameY="-6" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10018" x="556" y="693" width="472" height="572" frameX="-26" frameY="-6" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10019" x="1103" y="693" width="475" height="570" frameX="-14" frameY="-8" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10020" x="1103" y="693" width="475" height="570" frameX="-14" frameY="-8" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10021" x="1653" y="693" width="477" height="569" frameX="-6" frameY="-9" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10022" x="1653" y="693" width="477" height="569" frameX="-6" frameY="-9" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10023" x="2205" y="693" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10024" x="2205" y="693" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10025" x="2759" y="693" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10026" x="2759" y="693" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10027" x="2759" y="693" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10028" x="2759" y="693" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10029" x="2759" y="693" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10030" x="2759" y="693" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10031" x="3313" y="693" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10032" x="3867" y="693" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10033" x="40" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10034" x="594" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10035" x="1148" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10036" x="1148" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10037" x="1702" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10038" x="1702" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10039" x="2256" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10040" x="2256" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10041" x="2810" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10042" x="2810" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10043" x="3364" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10044" x="3364" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10045" x="3364" y="1340" width="479" height="568" frameX="-2" frameY="-10" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10046" x="3918" y="1340" width="470" height="567" frameX="0" frameY="-11" frameWidth="581" frameHeight="578"/>
+	<SubTexture name="voltea instancia 10047" x="3918" y="1340" width="470" height="567" frameX="0" frameY="-11" frameWidth="581" frameHeight="578"/>
+</TextureAtlas>

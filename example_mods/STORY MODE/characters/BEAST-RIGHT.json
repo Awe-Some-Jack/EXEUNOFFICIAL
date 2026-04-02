@@ -1,0 +1,63 @@
+{
+	"animations": [
+		{
+			"offsets": [379, 345],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [273, 244],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [401, 244],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Símbolo 47",
+			"indices": []
+		},
+		{
+			"offsets": [273, 277],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [688, 278],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [440, 50],
+			"indices": [],
+			"fps": 24,
+			"anim": "laugh",
+			"loop": false,
+			"name": "risa instancia"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/luis tt",
+	"position": [1020, -120],
+	"healthicon": "XENO-P3",
+	"flip_x": true,
+	"healthbar_colors": [36, 0, 116],
+	"camera_position": [-340, -10],
+	"sing_duration": 7.99999999999999,
+	"scale": 1.7,
+	"_editor_isPlayer": false
+}

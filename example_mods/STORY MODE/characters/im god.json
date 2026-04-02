@@ -1,0 +1,31 @@
+{
+	"animations": [
+		{
+			"offsets": [157, 368],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Símbolo 9"
+		},
+		{
+			"loop": true,
+			"offsets": [156, 368],
+			"anim": "god",
+			"fps": 24,
+			"name": "Símbolo 9",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/anim",
+	"position": [50, 30],
+	"healthicon": "sonicexe",
+	"flip_x": false,
+	"healthbar_colors": [0, 85, 142],
+	"camera_position": [120, 500],
+	"sing_duration": 6.99999999999999,
+	"scale": 0.9,
+	"_editor_isPlayer": false
+}

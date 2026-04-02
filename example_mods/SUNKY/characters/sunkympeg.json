@@ -1,0 +1,71 @@
+{
+	"animations": [
+		{
+			"offsets": [3, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [-160, -100],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [-160, 190],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "singUP"
+		},
+		{
+			"offsets": [-270, 110],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "singRIGHT"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "danceLeft",
+			"indices": [6, 7, 8, 9, 10, 11],
+			"name": "idle"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "danceRight",
+			"indices": [0, 1, 2, 3, 4, 5],
+			"name": "idle"
+		},
+		{
+			"offsets": [-12, 39],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "UP ALT"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/sunky-vanilla",
+	"position": [-140, 260],
+	"healthicon": "sunkympeg",
+	"flip_x": false,
+	"healthbar_colors": [38, 72, 251],
+	"camera_position": [90, 80],
+	"sing_duration": 5,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

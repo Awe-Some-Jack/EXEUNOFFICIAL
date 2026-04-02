@@ -1,0 +1,41 @@
+{
+	"storyName": "OMW",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"Longstrider",
+			"icon-omw-p1",
+			[
+				46,
+				30,
+				195
+			]
+		],
+		[
+			"Universal Collapse",
+			"icon-omw-p2",
+			[
+				46,
+				30,
+				253
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Custom Week",
+	"exeTitle": "OMW",
+	"exeCover": "omw",
+	"exeLabel": "EXE",
+	"exeColor": "0xFF2A1EC3",
+	"soundTestCode": [0, 0, false]
+}

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="speaker.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="dance lol0000" x="22" y="22" width="674" height="999"/>
+	<SubTexture name="dance lol0001" x="22" y="22" width="674" height="999"/>
+	<SubTexture name="dance lol0002" x="696" y="22" width="674" height="999"/>
+	<SubTexture name="dance lol0003" x="696" y="22" width="674" height="999"/>
+	<SubTexture name="dance lol0004" x="22" y="1021" width="674" height="999"/>
+	<SubTexture name="dance lol0005" x="22" y="1021" width="674" height="999"/>
+	<SubTexture name="dance lol0006" x="696" y="1021" width="674" height="999"/>
+	<SubTexture name="dance lol0007" x="696" y="1021" width="674" height="999"/>
+	<SubTexture name="dance lol0008" x="696" y="1021" width="674" height="999"/>
+	<SubTexture name="dance lol0009" x="696" y="1021" width="674" height="999"/>
+	<SubTexture name="dance lol0010" x="696" y="1021" width="674" height="999"/>
+	<SubTexture name="dance lol0011" x="696" y="1021" width="674" height="999"/>
+	<SubTexture name="dance lol0012" x="696" y="1021" width="674" height="999"/>
+	<SubTexture name="dance lol0013" x="696" y="1021" width="674" height="999"/>
+</TextureAtlas>

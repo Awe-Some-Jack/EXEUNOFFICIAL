@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="anto oscuridad.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 1 instancia 10000" x="58" y="58" width="1111" height="1110"/>
+	<SubTexture name="Símbolo 1 instancia 10001" x="1227" y="58" width="1111" height="1110"/>
+	<SubTexture name="Símbolo 1 instancia 10002" x="1227" y="58" width="1111" height="1110"/>
+	<SubTexture name="Símbolo 1 instancia 10003" x="2396" y="58" width="1111" height="1110"/>
+	<SubTexture name="Símbolo 1 instancia 10004" x="58" y="1226" width="1111" height="1110"/>
+	<SubTexture name="Símbolo 1 instancia 10005" x="1227" y="1226" width="1111" height="1110"/>
+	<SubTexture name="Símbolo 1 instancia 10006" x="2396" y="1226" width="1111" height="1110"/>
+	<SubTexture name="Símbolo 1 instancia 10007" x="58" y="2394" width="1111" height="1110"/>
+</TextureAtlas>

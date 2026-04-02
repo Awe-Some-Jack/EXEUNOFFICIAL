@@ -1,0 +1,87 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Idle",
+			"indices": []
+		},
+		{
+			"offsets": [122, -3],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Left instancia 1"
+		},
+		{
+			"offsets": [27, -32],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Down instancia 1"
+		},
+		{
+			"offsets": [23, 40],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Up instancia 1"
+		},
+		{
+			"offsets": [-63, -26],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Right instancia 1"
+		},
+		{
+			"offsets": [82, -3],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "Left instancia 2"
+		},
+		{
+			"offsets": [5, -37],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "Down instancia 2"
+		},
+		{
+			"offsets": [23, 28],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "Up instancia 2"
+		},
+		{
+			"offsets": [-69, -29],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "Right instancia 2"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/picoos",
+	"position": [0, 0],
+	"healthicon": "pico-reqos",
+	"flip_x": true,
+	"healthbar_colors": [255, 102, 31],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": true
+}

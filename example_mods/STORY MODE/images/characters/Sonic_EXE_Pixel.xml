@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Sonic_EXE_Pixel.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Sonic_EXE_Pixel NOTE RIGHT0000" x="201" y="342" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel NOTE RIGHT0001" x="201" y="399" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel NOTE RIGHT0002" x="268" y="0" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel NOTE RIGHT0003" x="268" y="57" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel NOTE RIGHT0004" x="268" y="114" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel NOTE RIGHT0005" x="268" y="171" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel NOTE UP0000" x="67" y="228" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel NOTE UP0001" x="67" y="285" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel NOTE UP0002" x="67" y="342" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel NOTE UP0003" x="67" y="399" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel NOTE UP0004" x="134" y="0" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel NOTE UP0005" x="134" y="57" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE DOWN0000" x="201" y="0" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE DOWN0001" x="201" y="57" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE DOWN0002" x="201" y="114" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE DOWN0003" x="201" y="171" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE DOWN0004" x="201" y="228" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE DOWN0005" x="201" y="285" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE LEFT0000" x="134" y="114" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE LEFT0001" x="134" y="171" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE LEFT0002" x="134" y="228" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE LEFT0003" x="134" y="285" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE LEFT0004" x="134" y="342" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel Sonic_EXE_Pixel NOTE LEFT0005" x="134" y="399" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0000" x="0" y="0" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0001" x="0" y="57" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0002" x="0" y="114" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0003" x="0" y="171" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0004" x="0" y="228" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0005" x="0" y="285" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0006" x="0" y="342" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0007" x="0" y="399" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0008" x="67" y="0" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0009" x="67" y="57" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0010" x="67" y="114" width="67" height="57"/>
+	<SubTexture name="Sonic_EXE_Pixel idle0011" x="67" y="171" width="67" height="57"/>
+</TextureAtlas>

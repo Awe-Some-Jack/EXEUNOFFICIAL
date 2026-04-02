@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idlee"
+		},
+		{
+			"offsets": [21, 2],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "izquierda"
+		},
+		{
+			"offsets": [2, -11],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "abajo"
+		},
+		{
+			"offsets": [-1, -7],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "derecha instancia 1"
+		},
+		{
+			"offsets": [-5, 31],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "SÃ­mbolo 438"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/Lookalike bg character",
+	"position": [685, 420],
+	"healthicon": "minilook",
+	"flip_x": false,
+	"healthbar_colors": [81, 121, 161],
+	"camera_position": [-610, -10],
+	"sing_duration": 5.99999999999999,
+	"scale": 0.5,
+	"_editor_isPlayer": false
+}

@@ -1,0 +1,26 @@
+{
+    "mustHitSection": true,
+
+    "BFx": 1200,
+    "BFy": 590,
+
+    "DADx": 650,
+    "DADy": 590,
+
+    "GFx": 250,
+    "GFy": 590,
+
+    "MiddleCamera": true,
+    "MiddleX": 930,
+    "MiddleY": 530,
+
+    "OverrideZoom": false,
+
+    "OGZoom": 0.65,
+    "MiddleZoom": 0.6,
+
+    "OffsetsBF": 25,
+    "OffsetsDAD": 25,
+    "OffsetsGF": 25
+
+}

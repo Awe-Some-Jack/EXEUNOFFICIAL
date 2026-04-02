@@ -1,0 +1,20 @@
+{
+	"images/characters/wholsome" : 3,
+
+	"images/tt/particles/dust1": 2,
+	"images/tt/particles/dust2": 2,
+	"images/tt/particles/dust3": 2,
+	"images/tt/particles/dust4": 2,
+	"images/tt/particles/dust5": 2,
+	"images/tt/particles/dust6": 2,
+
+	"images/tt/bgx/fire/FIRE 2": 3,
+	"images/tt/bgx/fire/FIRE": 3,
+
+	"images/tt/bgn/fire/FIRE 2": 3,
+	"images/tt/bgn/fire/FIRE": 3,
+
+	"sounds/TailsScreamV2": 3,
+	"sounds/KnucklesScream": 3,
+	"sounds/EggmanScream": 3
+}

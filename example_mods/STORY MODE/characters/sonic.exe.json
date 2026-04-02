@@ -1,0 +1,71 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [-38, -207],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [241, -206],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [120, -207],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-33, -199],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "rigth",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-22, -57],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-74, -187],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "sigma",
+			"indices": []
+		},
+		{
+			"offsets": [-40, -111],
+			"loop": false,
+			"fps": 24,
+			"anim": "as",
+			"indices": [],
+			"name": "grito"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/luis",
+	"position": [80, 30],
+	"healthicon": "sonicexe",
+	"flip_x": false,
+	"healthbar_colors": [0, 85, 142],
+	"camera_position": [-220, 130],
+	"sing_duration": 6.99999999999999,
+	"scale": 1.3,
+	"_editor_isPlayer": false
+}

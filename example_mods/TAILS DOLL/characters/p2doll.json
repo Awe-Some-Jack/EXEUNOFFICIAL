@@ -1,0 +1,71 @@
+{
+	"animations": [
+		{
+			"offsets": [77, -50],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+			"name": "idle"
+		},
+		{
+			"offsets": [-53, -1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+			"name": "singUP"
+		},
+		{
+			"offsets": [130, -171],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+			"name": "singDOWN"
+		},
+		{
+			"offsets": [287, -80],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+			"name": "singLEFT"
+		},
+		{
+			"offsets": [-306, -49],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+			"name": "singRIGHT"
+		},
+		{
+			"loop": true,
+			"offsets": [-200, -230],
+			"anim": "laugh",
+			"fps": 24,
+			"name": "creepystare",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+		},
+		{
+			"offsets": [-200, -230],
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15],
+			"fps": 24,
+			"anim": "smile",
+			"loop": false,
+			"name": "creepysmile"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/tailsdoll_p2",
+	"position": [0, 0],
+	"healthicon": "soultails",
+	"flip_x": false,
+	"healthbar_colors": [247, 156, 25],
+	"camera_position": [20, 190],
+	"sing_duration": 4,
+	"scale": 1.05,
+	"_editor_isPlayer": false
+}

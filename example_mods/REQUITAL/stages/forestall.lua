@@ -1,0 +1,152 @@
+local staticSprites = {
+	{name = 'bgf',  path = 'bg/bg-f', scale = 2.5},
+	{name = 'bgg',  path = 'bg/bg-g', scale = 2.5},
+}
+
+local animatedSprites = {
+	{name = 'anto',  path = 'bg/anto',   x = 1420, y = -130, prefix = 'Símbolo 9',  fps = 24, scale = 1.5},
+	{name = 'anto2', path = 'bg/anto',   x = -110, y = 110,  prefix = 'Símbolo 9',  fps = 24, scale = 1.35},
+	{name = 'lava',  path = 'bg/lava',   x = 0,    y = 0,    prefix = 'Símbolo 17', fps = 24, scale = 2.5},
+}
+
+local altAnimatedSprites = {
+	{name = 'antoos',  path = 'bg/anto oscuridad', x = 800,  y = 760, prefix = 'Símbolo 1', fps = 24, scale = 0.5, flipX = true},
+	{name = 'anto2os', path = 'bg/anto oscuridad', x = 1850, y = 760, prefix = 'Símbolo 1', fps = 24, scale = 0.5},
+}
+
+local function addStatic(def)
+	makeLuaSprite(def.name, def.path)
+	addLuaSprite(def.name)
+	scaleObject(def.name, def.scale, def.scale)
+end
+
+local function addAnimated(def, visible)
+	makeAnimatedLuaSprite(def.name, def.path, def.x or 0, def.y or 0)
+	addAnimationByPrefix(def.name, 'idle', def.prefix, def.fps, true)
+	scaleObject(def.name, def.scale, def.scale)
+	if visible == false then setProperty(def.name .. '.visible', false) end
+	if def.flipX then setProperty(def.name .. '.flipX', true) end
+	addLuaSprite(def.name)
+end
+
+function onCreatePost()
+	addStatic(staticSprites[1])
+
+	if not lowQuality then
+		addAnimated(animatedSprites[1])
+	end
+
+	addStatic(staticSprites[2])
+
+	if not lowQuality then
+		addAnimated(animatedSprites[2])
+		addAnimated(animatedSprites[3])
+	end
+
+	makeLuaSprite('bgf2', 'bg/bg-2')
+	addLuaSprite('bgf2')
+	scaleObject('bgf2', 2.5 / 3, 2.5 / 3)
+	setProperty('bgf2.visible', false)
+
+	if not lowQuality then
+		for _, spr in ipairs(altAnimatedSprites) do
+			addAnimated(spr, false)
+		end
+	end
+
+	setProperty('gf.flipX', false)
+	setScrollFactor('gf', 1, 1)
+	setObjectOrder('gfGroup', getObjectOrder('boyfriendGroup') + 1)
+
+	makeLuaSprite('blackbg')
+	makeGraphic('blackbg', 3500, 1800, '000000')
+	setProperty('blackbg.alpha', 0)
+	addLuaSprite('blackbg')
+
+	addCharacterToList('requitalpiss', 'dad')
+	addCharacterToList('requitalos', 'dad')
+	addCharacterToList('bf-reqos', 'bf')
+	addCharacterToList('pico-reqos', 'gf')
+end
+
+local separation = 50
+local function switchToAlt()
+	setProperty('bgf.visible', false)
+	setProperty('bgf2.visible', true)
+	setProperty('antoos.visible', true)
+	setProperty('anto2os.visible', true)
+	cameraFlash('game', 'FFFFFF', 1, true)
+	setProperty('BlackGraphicGame.alpha', 1)
+	setProperty('BlackGraphicOther.alpha', 1)
+	runTimer('fadeBlackGraphic', crochet / (1000 / 4) / playbackRate)
+	triggerEvent('Change Character', 'dad', 'requitalos')
+	triggerEvent('Change Character', 'bf', 'bf-reqos')
+	triggerEvent('Change Character', 'gf', 'pico-reqos')
+	setProperty('gf.flipX', false)
+	callMethod('boyfriend.setPosition', {700, 1400})
+	callMethod('dad.setPosition', {1490, 930})
+	callMethod('gf.setPosition', {1780, 1350})
+
+	for i = 0,3 do
+		setProperty('opponentStrums.members['..i..'].x', -1000)
+		setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+	end
+end
+
+local function switchToNormal()
+	setProperty('bgf.visible', true)
+	setProperty('bgf2.visible', false)
+	setProperty('antoos.visible', false)
+	setProperty('anto2os.visible', false)
+	cameraFlash('other', 'FFFFFF', 3, true)
+	triggerEvent('Change Character', 'dad', 'requital')
+	triggerEvent('Change Character', 'bf', 'bf-req')
+	triggerEvent('Change Character', 'gf', 'pico-req')
+	setProperty('gf.flipX', false)
+
+	callMethod('boyfriend.setPosition', {712, 800})
+	callMethod('dad.setPosition', {1960, 386})
+	callMethod('gf.setPosition', {1010, 895})
+
+	doTweenX('boyfriendX', 'boyfriend', 612, 1, 'cubeOut')
+	doTweenY('boyfriendY', 'boyfriend', 900, 1, 'cubeOut')
+	doTweenX('dadX', 'dad', 2060, 1, 'cubeOut')
+	doTweenY('dadY', 'dad', 286, 1, 'cubeOut')
+	doTweenX('gfX', 'gf', 910, 1, 'cubeOut')
+	doTweenY('gfY', 'gf', 995, 1, 'cubeOut')
+
+	for i = 0, 3 do
+        setProperty('playerStrums.members['..i..'].x', _G['defaultOpponentStrumX'..i])
+        setProperty('opponentStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i])
+    end
+end
+
+local function startTransition()
+	local dur = crochet / (1000 / 6) / playbackRate
+	doTweenAlpha('blackbgFade', 'blackbg', 0.9, dur)
+	doTweenAlpha('camHUDFade', 'camHUD', 0, dur)
+	doTweenAlpha('gfFade', 'gf', 0, dur)
+	doTweenAlpha('bfFade', 'boyfriend', 0, dur)
+end
+
+function onEvent(n, v1)
+	if n ~= 'BGchange' then return end
+
+	if v1 == 'blackout' then
+		switchToAlt()
+	elseif v1 == 'blackin' then
+		switchToNormal()
+	elseif v1 == 'starttrans' then
+		startTransition()
+	elseif v1 == 'camerablack' then
+		setProperty('camGame.alpha', 0)
+		setProperty('camOther.alpha', 0)
+	end
+end
+
+function onTimerCompleted(t)
+	if t == 'fadeBlackGraphic' then
+		doTweenAlpha('BlackGraphicGame', 'BlackGraphicGame', 0, 3)
+		doTweenAlpha('BlackGraphicOther', 'BlackGraphicOther', 0, 3)
+	end
+end

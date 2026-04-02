@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="dani.png">
+	<!-- Created with Adobe Animate version 24.0.10.14 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="blue0000" x="40" y="40" width="194" height="196"/>
+	<SubTexture name="green0000" x="309" y="40" width="194" height="196"/>
+	<SubTexture name="purple0000" x="40" y="311" width="196" height="194"/>
+	<SubTexture name="red0000" x="311" y="311" width="196" height="192"/>
+</TextureAtlas>

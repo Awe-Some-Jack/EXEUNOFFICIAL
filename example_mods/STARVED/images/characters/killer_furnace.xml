@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="killer_furnace.png">
+	<!-- Created with Adobe Animate version 24.0.7.61 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Furnace_Kill0000" x="0" y="0" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0001" x="153" y="0" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0002" x="306" y="0" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0003" x="459" y="0" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0004" x="612" y="0" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0005" x="765" y="0" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0006" x="0" y="77" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0007" x="153" y="77" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0008" x="306" y="77" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0009" x="459" y="77" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0010" x="612" y="77" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0011" x="765" y="77" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0012" x="0" y="154" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0013" x="153" y="154" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0014" x="306" y="154" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0015" x="459" y="154" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0016" x="612" y="154" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0017" x="765" y="154" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0018" x="0" y="231" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0019" x="153" y="231" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0020" x="306" y="231" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0021" x="459" y="231" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0022" x="612" y="231" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0023" x="765" y="231" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0024" x="0" y="308" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0025" x="153" y="308" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0026" x="306" y="308" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0027" x="459" y="308" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0028" x="612" y="308" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0029" x="765" y="308" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0030" x="0" y="385" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0031" x="153" y="385" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0032" x="306" y="385" width="153" height="77"/>
+	<SubTexture name="Furnace_Kill0033" x="459" y="385" width="153" height="77"/>
+</TextureAtlas>

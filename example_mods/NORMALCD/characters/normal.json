@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"offsets": [107, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Normal_LEFT"
+		},
+		{
+			"offsets": [66, -8],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Normal_DOWN"
+		},
+		{
+			"offsets": [3, 69],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Normal_UP"
+		},
+		{
+			"offsets": [-12, -1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Normal_RIGHT"
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "danceRight",
+			"fps": 24,
+			"name": "Normal_IDLE",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "danceLeft",
+			"fps": 24,
+			"name": "Normal_IDLE",
+			"indices": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		},
+		{
+			"offsets": [-2, 227],
+			"loop": false,
+			"fps": 24,
+			"anim": "dialogue",
+			"indices": [],
+			"name": "dialogue"
+		},
+		{
+			"loop": false,
+			"offsets": [762, 224],
+			"anim": "intro",
+			"fps": 30,
+			"name": "treno copia",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/Normal",
+	"position": [0, 0],
+	"healthicon": "normal",
+	"flip_x": false,
+	"healthbar_colors": [94, 116, 163],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

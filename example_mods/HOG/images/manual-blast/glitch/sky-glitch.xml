@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="sky-glitch.png">
+<SubTexture name="idle0000" x="0" y="4265" width="3972" height="1412" frameX="-11" frameY="-10" frameWidth="3984" frameHeight="1422" />
+<SubTexture name="idle0001" x="0" y="0" width="3984" height="1422" frameX="0" frameY="0" frameWidth="3984" frameHeight="1422" />
+<SubTexture name="idle0002" x="3984" y="1422" width="3644" height="1419" frameX="0" frameY="-3" frameWidth="3984" frameHeight="1422" />
+<SubTexture name="idle0003" x="3657" y="2844" width="3626" height="1414" frameX="-7" frameY="-8" frameWidth="3984" frameHeight="1422" />
+<SubTexture name="idle0004" x="3972" y="4265" width="3284" height="1314" frameX="-350" frameY="-108" frameWidth="3984" frameHeight="1422" />
+<SubTexture name="idle0005" x="3292" y="5677" width="3277" height="1311" frameX="-335" frameY="-111" frameWidth="3984" frameHeight="1422" />
+<SubTexture name="idle0006" x="0" y="2844" width="3657" height="1421" frameX="-327" frameY="-1" frameWidth="3984" frameHeight="1422" />
+<SubTexture name="idle0007" x="0" y="5677" width="3292" height="1313" frameX="-365" frameY="-109" frameWidth="3984" frameHeight="1422" />
+<SubTexture name="idle0008" x="0" y="1422" width="3984" height="1422" frameX="0" frameY="0" frameWidth="3984" frameHeight="1422" />
+<SubTexture name="idle0009" x="3984" y="0" width="3652" height="1422" frameX="-332" frameY="0" frameWidth="3984" frameHeight="1422" />
+<SubTexture name="idle0010" x="7636" y="0" width="3294" height="1309" frameX="-355" frameY="-113" frameWidth="3984" frameHeight="1422" />
+<SubTexture name="idle0011" x="7636" y="1309" width="3284" height="1309" frameX="-340" frameY="-113" frameWidth="3984" frameHeight="1422" />
+</TextureAtlas>

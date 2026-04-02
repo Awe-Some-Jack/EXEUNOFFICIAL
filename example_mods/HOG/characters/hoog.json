@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [86, 23],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [222, 323],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [-97, 12],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"loop": false,
+			"offsets": [120, 289],
+			"anim": "good",
+			"fps": 24,
+			"name": "good",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [212, 775],
+			"anim": "f",
+			"fps": 24,
+			"name": "f",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [160, 280],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [713, 558],
+			"anim": "getfuckedlol",
+			"fps": 24,
+			"name": "lmao",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/Hoog",
+	"position": [103, 485],
+	"healthicon": "hog",
+	"flip_x": false,
+	"healthbar_colors": [28, 45, 166],
+	"camera_position": [-220, 220],
+	"sing_duration": 8,
+	"scale": 1.44,
+	"_editor_isPlayer": false
+}

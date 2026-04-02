@@ -1,0 +1,11 @@
+function onEvent(n)
+	if n == 'illegalTxtDebug' then
+		local tag = 'illegal'..math.floor(getSongPosition())
+		makeLuaSprite(tag, 'manual-blast/glitch/illegalinstruction')
+		setObjectCamera(tag, 'other')
+		setScrollFactor(tag, 0, 0)
+		scaleObject(tag, 2.5, 2.5)
+		callMethod(tag..'.setPosition', {getRandomInt(0, screenWidth - getProperty(tag..'.width')), getRandomInt(0, screenHeight - getProperty(tag..'.height'))})
+		setProperty(tag..'.color', getColorFromHex('0000000'))
+	end
+end

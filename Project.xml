@@ -66,6 +66,8 @@
 
 	<!-- Assets -->
 	<assets path="assets/fonts" />
+	<assets path="assets/exe"     	    exclude="*.ogg" if="web"/>
+	<assets path="assets/exe"     	    exclude="*.mp3" unless="web"/>
 	<assets path="assets/shared"        exclude="*.ogg" if="web"/>
 	<assets path="assets/shared"        exclude="*.mp3" unless="web"/>
 	<assets path="assets/embed"         exclude="*.ogg" if="web" embed="true"/>
@@ -75,7 +77,7 @@
 	<assets path="assets/songs"         exclude="*.mp3" unless="web"/>
 
 	<haxelib name="grig.audio" if="BASE_GAME_FILES"/>
-		<haxelib name="funkin.vis" if="BASE_GAME_FILES"/>
+	<haxelib name="funkin.vis" if="BASE_GAME_FILES"/>
 
 	<define name="CHECK_FOR_UPDATES" if="desktop officialBuild"/>
 

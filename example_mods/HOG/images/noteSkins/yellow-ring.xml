@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="yellow-ring.png">
-<SubTexture name="red0000" x="0" y="0" width="155" height="155" frameX="0" frameY="0" frameWidth="155" frameHeight="155" />
-<SubTexture name="blue0000" x="0" y="0" width="155" height="155" frameX="0" frameY="0" frameWidth="155" frameHeight="155" />
-<SubTexture name="green0000" x="0" y="0" width="155" height="155" frameX="0" frameY="0" frameWidth="155" frameHeight="155" />
-<SubTexture name="purple0000" x="0" y="0" width="155" height="155" frameX="0" frameY="0" frameWidth="155" frameHeight="155" />
-</TextureAtlas>

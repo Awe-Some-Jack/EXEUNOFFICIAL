@@ -2,7 +2,7 @@ package substates;
 
 import flixel.effects.FlxFlicker;
 
-import states.StoryModeState;
+import states.StoryMenuState;
 import states.FreeplayState;
 import options.OptionsState;
 import substates.PauseSubStateOLD;
@@ -109,7 +109,7 @@ class PauseSubState extends MusicBeatSubstate
 		miniSonic.x = menuItems.members[0].x - miniSonic.width + miniSonicOffsets[0];
 		miniSonic.y = (menuItems.members[0].y + menuItems.members[0].height) - miniSonic.height + miniSonicOffsets[1];
 
-		cameras = camPause;
+		cameras = [camPause];
 
 		pauseMusic = new FlxSound();
 		pauseMusic.loadEmbedded(Paths.music('breakfast'), true, true);
@@ -207,7 +207,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.seenCutscene    = false;
 					PlayState.instance.canResync = false;
 					Mods.loadTopMod();
-					FlxG.switchState(() -> PlayState.isStoryMode ? new StoryModeState() : new FreeplayState());
+					FlxG.switchState(() -> PlayState.isStoryMode ? new StoryMenuState() : new FreeplayState());
 					FlxG.sound.playMusic(Paths.music('freakyMenu'));
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode      = false;

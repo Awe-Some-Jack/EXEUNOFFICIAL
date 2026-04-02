@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="gf.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="who is this guy? instancia 10000" x="36" y="36" width="553" height="736" frameX="-1" frameY="-8" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10001" x="36" y="36" width="553" height="736" frameX="-1" frameY="-8" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10002" x="609" y="36" width="555" height="742" frameX="0" frameY="-2" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10003" x="609" y="36" width="555" height="742" frameX="0" frameY="-2" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10004" x="1184" y="36" width="556" height="744" frameX="-6" frameY="0" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10005" x="1184" y="36" width="556" height="744" frameX="-6" frameY="0" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10006" x="1760" y="36" width="556" height="742" frameX="-8" frameY="-3" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10007" x="1760" y="36" width="556" height="742" frameX="-8" frameY="-3" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10008" x="2336" y="36" width="555" height="741" frameX="-9" frameY="-4" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10009" x="2336" y="36" width="555" height="741" frameX="-9" frameY="-4" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10010" x="2911" y="36" width="555" height="734" frameX="-15" frameY="-10" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10011" x="2911" y="36" width="555" height="734" frameX="-15" frameY="-10" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10012" x="36" y="800" width="554" height="740" frameX="-16" frameY="-4" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10013" x="36" y="800" width="554" height="740" frameX="-16" frameY="-4" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10014" x="610" y="800" width="555" height="741" frameX="-12" frameY="-4" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10015" x="610" y="800" width="555" height="741" frameX="-12" frameY="-4" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10016" x="1185" y="800" width="555" height="740" frameX="-10" frameY="-5" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10017" x="1185" y="800" width="555" height="740" frameX="-10" frameY="-5" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10018" x="1760" y="800" width="555" height="741" frameX="-9" frameY="-4" frameWidth="570" frameHeight="745"/>
+	<SubTexture name="who is this guy? instancia 10019" x="1760" y="800" width="555" height="741" frameX="-9" frameY="-4" frameWidth="570" frameHeight="745"/>
+</TextureAtlas>

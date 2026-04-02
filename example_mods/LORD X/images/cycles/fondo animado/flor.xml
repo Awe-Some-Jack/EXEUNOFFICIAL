@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="flor.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 39 instancia 10000" x="36" y="36" width="415" height="505" frameX="-1" frameY="0" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10001" x="471" y="36" width="414" height="504" frameX="-2" frameY="-1" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10002" x="36" y="36" width="415" height="505" frameX="-1" frameY="0" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10003" x="905" y="36" width="414" height="504" frameX="-2" frameY="-1" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10004" x="1339" y="36" width="415" height="504" frameX="-1" frameY="-1" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10005" x="905" y="36" width="414" height="504" frameX="-2" frameY="-1" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10006" x="1774" y="36" width="415" height="500" frameX="0" frameY="-4" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10007" x="2209" y="36" width="414" height="500" frameX="-1" frameY="-4" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10008" x="1774" y="36" width="415" height="500" frameX="0" frameY="-4" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10009" x="36" y="561" width="414" height="499" frameX="0" frameY="-5" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10010" x="470" y="561" width="414" height="499" frameX="0" frameY="-5" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10011" x="904" y="561" width="414" height="499" frameX="0" frameY="-5" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10012" x="1338" y="561" width="415" height="500" frameX="0" frameY="-4" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10013" x="1773" y="561" width="414" height="500" frameX="-1" frameY="-4" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10014" x="2207" y="561" width="415" height="500" frameX="0" frameY="-4" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10015" x="36" y="1081" width="414" height="503" frameX="-2" frameY="-1" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10016" x="470" y="1081" width="415" height="503" frameX="-1" frameY="-1" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10017" x="905" y="1081" width="414" height="503" frameX="-2" frameY="-1" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10018" x="1339" y="1081" width="415" height="505" frameX="-1" frameY="0" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10019" x="1774" y="1081" width="414" height="504" frameX="-2" frameY="-1" frameWidth="416" frameHeight="505"/>
+	<SubTexture name="Símbolo 39 instancia 10020" x="36" y="36" width="415" height="505" frameX="-1" frameY="0" frameWidth="416" frameHeight="505"/>
+</TextureAtlas>

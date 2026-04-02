@@ -1,0 +1,6 @@
+Some Graphics SHIT LMAO
+
+value 1 = game, hud OR other
+value 2 = alpha value, time value
+
+Script by Raimbowcore12

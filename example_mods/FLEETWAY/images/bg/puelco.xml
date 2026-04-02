@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="puelco.png">
+	<!-- Created with Adobe Animate version 24.0.10.14 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Porker Lewis instancia 10000" x="40" y="40" width="652" height="617" frameX="-12" frameY="-38" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10001" x="40" y="40" width="652" height="617" frameX="-12" frameY="-38" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10002" x="767" y="40" width="657" height="625" frameX="-7" frameY="-18" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10003" x="767" y="40" width="657" height="625" frameX="-7" frameY="-18" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10004" x="1499" y="40" width="660" height="636" frameX="-4" frameY="-3" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10005" x="1499" y="40" width="660" height="636" frameX="-4" frameY="-3" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10006" x="40" y="751" width="663" height="635" frameX="-1" frameY="-2" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10007" x="40" y="751" width="663" height="635" frameX="-1" frameY="-2" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10008" x="778" y="751" width="664" height="636" frameX="0" frameY="0" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10009" x="778" y="751" width="664" height="636" frameX="0" frameY="0" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10010" x="778" y="751" width="664" height="636" frameX="0" frameY="0" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10011" x="778" y="751" width="664" height="636" frameX="0" frameY="0" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10012" x="778" y="751" width="664" height="636" frameX="0" frameY="0" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10013" x="778" y="751" width="664" height="636" frameX="0" frameY="0" frameWidth="664" frameHeight="655"/>
+	<SubTexture name="Porker Lewis instancia 10014" x="778" y="751" width="664" height="636" frameX="0" frameY="0" frameWidth="664" frameHeight="655"/>
+</TextureAtlas>

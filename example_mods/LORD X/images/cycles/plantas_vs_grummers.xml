@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="plantas_vs_grummers.png">
+	<!-- Created with Adobe Animate version 22.0.8.217 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="skividi instancia 10000" x="0" y="0" width="1559" height="1037" frameX="-88" frameY="-4" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10001" x="0" y="0" width="1559" height="1037" frameX="-88" frameY="-4" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10002" x="0" y="0" width="1559" height="1037" frameX="-88" frameY="-4" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10003" x="1559" y="0" width="1532" height="1041" frameX="-98" frameY="0" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10004" x="1559" y="0" width="1532" height="1041" frameX="-98" frameY="0" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10005" x="1559" y="0" width="1532" height="1041" frameX="-98" frameY="0" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10006" x="3091" y="0" width="1554" height="1037" frameX="-86" frameY="-4" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10007" x="3091" y="0" width="1554" height="1037" frameX="-86" frameY="-4" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10008" x="4645" y="0" width="1575" height="1038" frameX="-72" frameY="-3" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10009" x="6220" y="0" width="1601" height="992" frameX="-59" frameY="-49" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10010" x="6220" y="0" width="1601" height="992" frameX="-59" frameY="-49" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10011" x="0" y="1041" width="1705" height="974" frameX="-8" frameY="-67" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10012" x="0" y="1041" width="1705" height="974" frameX="-8" frameY="-67" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10013" x="1705" y="1041" width="1721" height="966" frameX="0" frameY="-75" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10014" x="1705" y="1041" width="1721" height="966" frameX="0" frameY="-75" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10015" x="1705" y="1041" width="1721" height="966" frameX="0" frameY="-75" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10016" x="3426" y="1041" width="1681" height="987" frameX="-18" frameY="-54" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10017" x="3426" y="1041" width="1681" height="987" frameX="-18" frameY="-54" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10018" x="5107" y="1041" width="1656" height="1023" frameX="-37" frameY="-18" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10019" x="5107" y="1041" width="1656" height="1023" frameX="-37" frameY="-18" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10020" x="0" y="2064" width="1639" height="1033" frameX="-48" frameY="-8" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10021" x="0" y="2064" width="1639" height="1033" frameX="-48" frameY="-8" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10022" x="0" y="2064" width="1639" height="1033" frameX="-48" frameY="-8" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10023" x="1639" y="2064" width="1585" height="1033" frameX="-73" frameY="-8" frameWidth="1721" frameHeight="1041"/>
+	<SubTexture name="skividi instancia 10024" x="1639" y="2064" width="1585" height="1033" frameX="-73" frameY="-8" frameWidth="1721" frameHeight="1041"/>
+</TextureAtlas>

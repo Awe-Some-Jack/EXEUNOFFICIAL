@@ -1,0 +1,127 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [199, -43],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Símbolo 412",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [37, -115],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-4, 231],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-71, -35],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [150, -42],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "mleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [38, -116],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "mdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-11, 148],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "mup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-71, -50],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "mright",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [199, -43],
+			"anim": "singLEFT-loop",
+			"fps": 24,
+			"name": "Símbolo 412 instancia 1",
+			"indices": [11, 12, 13]
+		},
+		{
+			"loop": true,
+			"offsets": [37, -115],
+			"anim": "singDOWN-loop",
+			"fps": 24,
+			"name": "down instancia 1",
+			"indices": [11, 12, 13]
+		},
+		{
+			"loop": true,
+			"offsets": [-4, 231],
+			"anim": "singUP-loop",
+			"fps": 24,
+			"name": "up instancia 1",
+			"indices": [11, 12, 13]
+		},
+		{
+			"loop": true,
+			"offsets": [-71, -35],
+			"anim": "singRIGHT-loop",
+			"fps": 24,
+			"name": "right instancia 1",
+			"indices": [11, 12, 13]
+		},
+		{
+			"offsets": [828, 29],
+			"indices": [],
+			"fps": 24,
+			"anim": "dodge",
+			"loop": false,
+			"name": "sDodge"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/bf super fleet",
+	"position": [0, 0],
+	"healthicon": "bfsuperfleet",
+	"flip_x": true,
+	"healthbar_colors": [252, 209, 79],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": true
+}

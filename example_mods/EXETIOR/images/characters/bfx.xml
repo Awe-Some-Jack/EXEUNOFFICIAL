@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bfx.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle instancia 10000" x="58" y="58" width="453" height="361" frameX="0" frameY="-7" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10001" x="58" y="58" width="453" height="361" frameX="0" frameY="-7" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10002" x="569" y="58" width="453" height="353" frameX="-2" frameY="-12" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10003" x="569" y="58" width="453" height="353" frameX="-2" frameY="-12" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10004" x="58" y="477" width="453" height="351" frameX="-9" frameY="-4" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10005" x="58" y="477" width="453" height="351" frameX="-9" frameY="-4" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10006" x="569" y="477" width="450" height="348" frameX="-12" frameY="0" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10007" x="569" y="477" width="450" height="348" frameX="-12" frameY="0" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10008" x="58" y="886" width="450" height="347" frameX="-13" frameY="0" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10009" x="58" y="886" width="450" height="347" frameX="-13" frameY="0" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10010" x="58" y="886" width="450" height="347" frameX="-13" frameY="0" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10011" x="58" y="886" width="450" height="347" frameX="-13" frameY="0" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10012" x="58" y="886" width="450" height="347" frameX="-13" frameY="0" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="idle instancia 10013" x="58" y="886" width="450" height="347" frameX="-13" frameY="0" frameWidth="463" frameHeight="368"/>
+	<SubTexture name="up instancia 10000" x="566" y="886" width="378" height="307" frameX="-26" frameY="0" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10001" x="566" y="886" width="378" height="307" frameX="-26" frameY="0" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10002" x="1002" y="886" width="373" height="311" frameX="-29" frameY="-4" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10003" x="1002" y="886" width="373" height="311" frameX="-29" frameY="-4" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10004" x="58" y="1291" width="392" height="301" frameX="-14" frameY="-12" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10005" x="58" y="1291" width="392" height="301" frameX="-14" frameY="-12" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10006" x="508" y="1291" width="411" height="292" frameX="-2" frameY="-26" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10007" x="508" y="1291" width="411" height="292" frameX="-2" frameY="-26" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10008" x="977" y="1291" width="414" height="294" frameX="0" frameY="-26" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10009" x="977" y="1291" width="414" height="294" frameX="0" frameY="-26" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10010" x="977" y="1291" width="414" height="294" frameX="0" frameY="-26" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10011" x="977" y="1291" width="414" height="294" frameX="0" frameY="-26" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10012" x="977" y="1291" width="414" height="294" frameX="0" frameY="-26" frameWidth="414" frameHeight="320"/>
+	<SubTexture name="up instancia 10013" x="977" y="1291" width="414" height="294" frameX="0" frameY="-26" frameWidth="414" frameHeight="320"/>
+</TextureAtlas>

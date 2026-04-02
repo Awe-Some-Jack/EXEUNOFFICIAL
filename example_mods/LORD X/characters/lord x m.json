@@ -1,0 +1,23 @@
+{
+	"animations": [
+		{
+			"offsets": [110, -219],
+			"indices": [],
+			"fps": 12,
+			"anim": "idle",
+			"loop": true,
+			"name": "Símbolo 28"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/cuerpoM",
+	"position": [-90, -70],
+	"healthicon": "lordx-p2",
+	"flip_x": false,
+	"healthbar_colors": [86, 90, 103],
+	"camera_position": [-30, 260],
+	"sing_duration": 8,
+	"scale": 1.1,
+	"_editor_isPlayer": false
+}

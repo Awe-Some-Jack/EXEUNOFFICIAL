@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="demo3.png" width="5927" height="6065">
+	<SubTexture name="down instancia 10000.png" x="4115" y="5071" width="555" height="457" frameX="-17" frameY="-133" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10001.png" x="4115" y="5071" width="555" height="457" frameX="-17" frameY="-133" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10002.png" x="5477" y="1" width="449" height="544" rotated="true" frameX="-25" frameY="-141" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10003.png" x="5477" y="1" width="449" height="544" rotated="true" frameX="-25" frameY="-141" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10004.png" x="5411" y="2783" width="459" height="539" rotated="true" frameX="-30" frameY="-131" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10005.png" x="5411" y="2783" width="459" height="539" rotated="true" frameX="-30" frameY="-131" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10006.png" x="1085" y="5600" width="537" height="462" frameX="-33" frameY="-129" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10007.png" x="1085" y="5600" width="537" height="462" frameX="-33" frameY="-129" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10008.png" x="5405" y="4935" width="462" height="538" rotated="true" frameX="-32" frameY="-129" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10009.png" x="5405" y="4935" width="462" height="538" rotated="true" frameX="-32" frameY="-129" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10010.png" x="1" y="5602" width="538" height="462" frameX="-32" frameY="-129" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10011.png" x="1" y="5602" width="538" height="462" frameX="-32" frameY="-129" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10012.png" x="543" y="5602" width="538" height="462" frameX="-32" frameY="-129" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10013.png" x="543" y="5602" width="538" height="462" frameX="-32" frameY="-129" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10014.png" x="1626" y="5490" width="469" height="528" rotated="true" frameX="-37" frameY="-122" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10015.png" x="1626" y="5490" width="469" height="528" rotated="true" frameX="-37" frameY="-122" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10016.png" x="2099" y="5600" width="522" height="450" rotated="true" frameX="-72" frameY="-69" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10017.png" x="2099" y="5600" width="522" height="450" rotated="true" frameX="-72" frameY="-69" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10018.png" x="4226" y="4607" width="597" height="460" rotated="true" frameX="-2" frameY="-5" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10019.png" x="4226" y="4607" width="597" height="460" rotated="true" frameX="-2" frameY="-5" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10020.png" x="3648" y="1819" width="456" height="601" frameX="-1" frameY="-1" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10021.png" x="3648" y="1819" width="456" height="601" frameX="-1" frameY="-1" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10022.png" x="1830" y="3397" width="602" height="455" rotated="true" frameX="-0" frameY="-0" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="down instancia 10023.png" x="1830" y="3397" width="602" height="455" rotated="true" frameX="-0" frameY="-0" frameWidth="572" frameHeight="602"/>
+	<SubTexture name="idle instancia 10000.png" x="3260" y="5010" width="457" height="582" frameX="-3" frameY="-18" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10001.png" x="3260" y="5010" width="457" height="582" frameX="-3" frameY="-18" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10002.png" x="2802" y="5011" width="454" height="584" frameX="-7" frameY="-16" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10003.png" x="2802" y="5011" width="454" height="584" frameX="-7" frameY="-16" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10004.png" x="5025" y="1" width="448" height="597" frameX="-2" frameY="-3" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10005.png" x="5025" y="1" width="448" height="597" frameX="-2" frameY="-3" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10006.png" x="4119" y="1" width="449" height="599" frameX="-0" frameY="-1" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10007.png" x="4119" y="1" width="449" height="599" frameX="-0" frameY="-1" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10008.png" x="4119" y="604" width="449" height="599" frameX="-0" frameY="-1" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10009.png" x="4119" y="604" width="449" height="599" frameX="-0" frameY="-1" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10010.png" x="4119" y="1207" width="449" height="599" frameX="-0" frameY="-1" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10011.png" x="4119" y="1207" width="449" height="599" frameX="-0" frameY="-1" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10012.png" x="4108" y="1810" width="449" height="599" frameX="-0" frameY="-1" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10013.png" x="4108" y="1810" width="449" height="599" frameX="-0" frameY="-1" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="idle instancia 10014.png" x="4108" y="2413" width="449" height="599" frameX="-0" frameY="-1" frameWidth="461" frameHeight="600"/>
+	<SubTexture name="left instancia 10000.png" x="5413" y="1694" width="491" height="541" frameX="-12" frameY="-61" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10001.png" x="5413" y="1694" width="491" height="541" frameX="-12" frameY="-61" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10002.png" x="4115" y="5532" width="538" height="506" rotated="true" frameX="-0" frameY="-63" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10003.png" x="4115" y="5532" width="538" height="506" rotated="true" frameX="-0" frameY="-63" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10004.png" x="5429" y="4389" width="497" height="542" frameX="-22" frameY="-59" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10005.png" x="5429" y="4389" width="497" height="542" frameX="-22" frameY="-59" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10006.png" x="5413" y="602" width="497" height="542" frameX="-25" frameY="-59" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10007.png" x="5413" y="602" width="497" height="542" frameX="-25" frameY="-59" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10008.png" x="5413" y="1148" width="496" height="542" frameX="-26" frameY="-59" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10009.png" x="5413" y="1148" width="496" height="542" frameX="-26" frameY="-59" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10010.png" x="5413" y="1148" width="496" height="542" frameX="-26" frameY="-59" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10011.png" x="5413" y="1148" width="496" height="542" frameX="-26" frameY="-59" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10012.png" x="5413" y="1148" width="496" height="542" frameX="-26" frameY="-59" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10013.png" x="5413" y="1148" width="496" height="542" frameX="-26" frameY="-59" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10014.png" x="5411" y="2239" width="477" height="540" frameX="-49" frameY="-60" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10015.png" x="5411" y="2239" width="477" height="540" frameX="-49" frameY="-60" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10016.png" x="5475" y="3326" width="420" height="534" frameX="-111" frameY="-66" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10017.png" x="5475" y="3326" width="420" height="534" frameX="-111" frameY="-66" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10018.png" x="2436" y="3397" width="602" height="455" rotated="true" frameX="-137" frameY="-1" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10019.png" x="2436" y="3397" width="602" height="455" rotated="true" frameX="-137" frameY="-1" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10020.png" x="3042" y="3389" width="602" height="453" rotated="true" frameX="-145" frameY="-0" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10021.png" x="3042" y="3389" width="602" height="453" rotated="true" frameX="-145" frameY="-0" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10022.png" x="3661" y="1" width="454" height="602" frameX="-147" frameY="-0" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="left instancia 10023.png" x="3661" y="1" width="454" height="602" frameX="-147" frameY="-0" frameWidth="601" frameHeight="603"/>
+	<SubTexture name="look instancia 10000.png" x="3176" y="1830" width="452" height="603" frameX="-0" frameY="-43" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10001.png" x="3176" y="1830" width="452" height="603" frameX="-0" frameY="-43" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10002.png" x="613" y="2974" width="606" height="445" rotated="true" frameX="-4" frameY="-40" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10003.png" x="2727" y="1880" width="445" height="606" frameX="-4" frameY="-40" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10004.png" x="2458" y="2499" width="608" height="435" rotated="true" frameX="-1" frameY="-38" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10005.png" x="2458" y="2499" width="608" height="435" rotated="true" frameX="-1" frameY="-38" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10006.png" x="1843" y="637" width="384" height="619" frameX="-35" frameY="-27" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10007.png" x="1843" y="637" width="384" height="619" frameX="-35" frameY="-27" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10008.png" x="1" y="1617" width="646" height="395" rotated="true" frameX="-8" frameY="-0" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10009.png" x="1" y="1617" width="646" height="395" rotated="true" frameX="-8" frameY="-0" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10010.png" x="651" y="1617" width="637" height="392" rotated="true" frameX="-13" frameY="-9" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10011.png" x="651" y="1617" width="637" height="392" rotated="true" frameX="-13" frameY="-9" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10012.png" x="1843" y="1" width="390" height="632" frameX="-31" frameY="-14" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10013.png" x="1843" y="1" width="390" height="632" frameX="-31" frameY="-14" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10014.png" x="618" y="2542" width="610" height="378" rotated="true" frameX="-58" frameY="-36" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10015.png" x="618" y="2542" width="610" height="378" rotated="true" frameX="-58" frameY="-36" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10016.png" x="4106" y="3016" width="402" height="599" frameX="-67" frameY="-47" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10017.png" x="4106" y="3016" width="402" height="599" frameX="-67" frameY="-47" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10018.png" x="1" y="2542" width="613" height="428" rotated="true" frameX="-94" frameY="-33" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10019.png" x="1" y="2542" width="613" height="428" rotated="true" frameX="-94" frameY="-33" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10020.png" x="1274" y="2013" width="618" height="429" rotated="true" frameX="-94" frameY="-28" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10021.png" x="1274" y="2013" width="618" height="429" rotated="true" frameX="-94" frameY="-28" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10022.png" x="1335" y="1325" width="422" height="641" frameX="-93" frameY="-5" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10023.png" x="1335" y="1325" width="422" height="641" frameX="-93" frameY="-5" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10024.png" x="1761" y="1325" width="435" height="627" frameX="-53" frameY="-19" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10025.png" x="1761" y="1325" width="435" height="627" frameX="-53" frameY="-19" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10026.png" x="2734" y="1245" width="437" height="604" frameX="-29" frameY="-42" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10027.png" x="2734" y="1245" width="437" height="604" frameX="-29" frameY="-42" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10028.png" x="1" y="2974" width="608" height="447" rotated="true" frameX="-5" frameY="-38" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="look instancia 10029.png" x="1" y="2974" width="608" height="447" rotated="true" frameX="-5" frameY="-38" frameWidth="523" frameHeight="647"/>
+	<SubTexture name="miedo instancia 10000.png" x="4572" y="1" width="449" height="598" frameX="-4" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10001.png" x="4572" y="603" width="449" height="598" frameX="-4" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10002.png" x="4572" y="1205" width="449" height="598" frameX="-4" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10003.png" x="4572" y="1807" width="449" height="598" frameX="-4" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10004.png" x="4561" y="2409" width="449" height="598" frameX="-4" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10005.png" x="4561" y="3011" width="449" height="598" frameX="-4" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10006.png" x="3176" y="2437" width="447" height="603" frameX="-0" frameY="-1" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10007.png" x="2457" y="2938" width="603" height="447" rotated="true" frameX="-0" frameY="-1" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10008.png" x="1" y="3425" width="603" height="447" rotated="true" frameX="-0" frameY="-1" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10009.png" x="608" y="3425" width="603" height="447" rotated="true" frameX="-0" frameY="-1" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10010.png" x="2763" y="614" width="447" height="604" frameX="-0" frameY="-0" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10011.png" x="3176" y="1222" width="447" height="604" frameX="-0" frameY="-0" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10012.png" x="5014" y="3003" width="387" height="593" frameX="-46" frameY="-11" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10013.png" x="5014" y="3003" width="387" height="593" frameX="-46" frameY="-11" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10014.png" x="5025" y="2404" width="382" height="595" frameX="-41" frameY="-9" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10015.png" x="5025" y="2404" width="382" height="595" frameX="-41" frameY="-9" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10016.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10017.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10018.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10019.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10020.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10021.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10022.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10023.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10024.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10025.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10026.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10027.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10028.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10029.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10030.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10031.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10032.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10033.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10034.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10035.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10036.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10037.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10038.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10039.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10040.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10041.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10042.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10043.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10044.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10045.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10046.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10047.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10048.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10049.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10050.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10051.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10052.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10053.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10054.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10055.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10056.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10057.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10058.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10059.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10060.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10061.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10062.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10063.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10064.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10065.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10066.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10067.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10068.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10069.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10070.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10071.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10072.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10073.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10074.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10075.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10076.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10077.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10078.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10079.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10080.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10081.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10082.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10083.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10084.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10085.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10086.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10087.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10088.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10089.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10090.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10091.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10092.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10093.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10094.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10095.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10096.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10097.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10098.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10099.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10100.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10101.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10102.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10103.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10104.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10105.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10106.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10107.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10108.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10109.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10110.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10111.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10112.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10113.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10114.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10115.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10116.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10117.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10118.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10119.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10120.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10121.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10122.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10123.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10124.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10125.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10126.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10127.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10128.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10129.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10130.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10131.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10132.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10133.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10134.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10135.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10136.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10137.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10138.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10139.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10140.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10141.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10142.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10143.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10144.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10145.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10146.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10147.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10148.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10149.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10150.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10151.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10152.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10153.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10154.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10155.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10156.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10157.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10158.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10159.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10160.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10161.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10162.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10163.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10164.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10165.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10166.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10167.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10168.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10169.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10170.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10171.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10172.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10173.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10174.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10175.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10176.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10177.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10178.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10179.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10180.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10181.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10182.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10183.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10184.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10185.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10186.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10187.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10188.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10189.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10190.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10191.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10192.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10193.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10194.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10195.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10196.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10197.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10198.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10199.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10200.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10201.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10202.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10203.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10204.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10205.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10206.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10207.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10208.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10209.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10210.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10211.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10212.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10213.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10214.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10215.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10216.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10217.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10218.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10219.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10220.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10221.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10222.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10223.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10224.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10225.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10226.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10227.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10228.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10229.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10230.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10231.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10232.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10233.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10234.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10235.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10236.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10237.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10238.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10239.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10240.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10241.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10242.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10243.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10244.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10245.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10246.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10247.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10248.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10249.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10250.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10251.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10252.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10253.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10254.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10255.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10256.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10257.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10258.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10259.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10260.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10261.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10262.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10263.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10264.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10265.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10266.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10267.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10268.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10269.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10270.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10271.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10272.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10273.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10274.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10275.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10276.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10277.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10278.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10279.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10280.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10281.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10282.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10283.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10284.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10285.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10286.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10287.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10288.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10289.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10290.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10291.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10292.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10293.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10294.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10295.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10296.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10297.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10298.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10299.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10300.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10301.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10302.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10303.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10304.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10305.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10306.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10307.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10308.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10309.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10310.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10311.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10312.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10313.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10314.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10315.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10316.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10317.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10318.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10319.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10320.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10321.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10322.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10323.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10324.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10325.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10326.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10327.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10328.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10329.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10330.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10331.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10332.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10333.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10334.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10335.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10336.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10337.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10338.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10339.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10340.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10341.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10342.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10343.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10344.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10345.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10346.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10347.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10348.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10349.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10350.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10351.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10352.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10353.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10354.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10355.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10356.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10357.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10358.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10359.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10360.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10361.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10362.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10363.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10364.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10365.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10366.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10367.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10368.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10369.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10370.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10371.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10372.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10373.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10374.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10375.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10376.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10377.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10378.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10379.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10380.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10381.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10382.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10383.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10384.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10385.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10386.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10387.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10388.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10389.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10390.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10391.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10392.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10393.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10394.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10395.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10396.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10397.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10398.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10399.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10400.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10401.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10402.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10403.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10404.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10405.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10406.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10407.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10408.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10409.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10410.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10411.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10412.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10413.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10414.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10415.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10416.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10417.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10418.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10419.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10420.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10421.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10422.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10423.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10424.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10425.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10426.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10427.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10428.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10429.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10430.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10431.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10432.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10433.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10434.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10435.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10436.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10437.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10438.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10439.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10440.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10441.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10442.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10443.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10444.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10445.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10446.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10447.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10448.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10449.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10450.png" x="3648" y="3029" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10451.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10452.png" x="4874" y="4001" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10453.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10454.png" x="1206" y="4257" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10455.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10456.png" x="605" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10457.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10458.png" x="1807" y="4642" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10459.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10460.png" x="4226" y="4222" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10461.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10462.png" x="1813" y="3856" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10463.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10464.png" x="4874" y="3613" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10465.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10466.png" x="604" y="4258" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10467.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10468.png" x="1" y="3876" width="600" height="378" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10469.png" x="1" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10470.png" x="3622" y="4622" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10471.png" x="3042" y="3846" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10472.png" x="3624" y="4237" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10473.png" x="5025" y="602" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10474.png" x="1209" y="3876" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10475.png" x="603" y="4687" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10476.png" x="2408" y="4623" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10477.png" x="2417" y="3856" width="600" height="377" rotated="true" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10478.png" x="4489" y="3619" width="381" height="598" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10479.png" x="5025" y="1203" width="384" height="597" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10480.png" x="3648" y="3633" width="377" height="600" frameX="-41" frameY="-4" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10481.png" x="1813" y="4238" width="598" height="381" rotated="true" frameX="-39" frameY="-6" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="miedo instancia 10482.png" x="4828" y="4389" width="597" height="384" rotated="true" frameX="-39" frameY="-7" frameWidth="454" frameHeight="605"/>
+	<SubTexture name="right instancia 10000.png" x="2200" y="1260" width="530" height="616" rotated="true" frameX="-111" frameY="-63" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10001.png" x="2200" y="1260" width="530" height="616" rotated="true" frameX="-111" frameY="-63" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10002.png" x="1845" y="2870" width="608" height="523" frameX="-97" frameY="-70" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10003.png" x="3134" y="1" width="523" height="608" rotated="true" frameX="-97" frameY="-70" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10004.png" x="2200" y="1880" width="523" height="615" rotated="true" frameX="-81" frameY="-70" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10005.png" x="2200" y="1880" width="523" height="615" rotated="true" frameX="-81" frameY="-70" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10006.png" x="2237" y="1" width="522" height="618" rotated="true" frameX="-79" frameY="-71" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10007.png" x="2237" y="623" width="522" height="618" rotated="true" frameX="-79" frameY="-71" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10008.png" x="1" y="2016" width="619" height="522" frameX="-79" frameY="-71" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10009.png" x="1" y="2016" width="619" height="522" frameX="-79" frameY="-71" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10010.png" x="651" y="2013" width="619" height="523" frameX="-79" frameY="-70" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10011.png" x="651" y="2013" width="619" height="523" frameX="-79" frameY="-70" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10012.png" x="1" y="5072" width="593" height="526" frameX="-63" frameY="-67" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10013.png" x="1" y="5072" width="593" height="526" frameX="-63" frameY="-67" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10014.png" x="4657" y="5532" width="534" height="492" rotated="true" frameX="-56" frameY="-61" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10015.png" x="4657" y="5532" width="534" height="492" rotated="true" frameX="-56" frameY="-61" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10016.png" x="1205" y="5027" width="592" height="459" rotated="true" frameX="-6" frameY="-10" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10017.png" x="1205" y="5027" width="592" height="459" rotated="true" frameX="-6" frameY="-10" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10018.png" x="4029" y="3619" width="456" height="599" frameX="-1" frameY="-3" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10019.png" x="4029" y="3619" width="456" height="599" frameX="-1" frameY="-3" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10020.png" x="3661" y="607" width="454" height="602" frameX="-0" frameY="-0" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="right instancia 10021.png" x="3661" y="607" width="454" height="602" frameX="-0" frameY="-0" frameWidth="727" frameHeight="602"/>
+	<SubTexture name="uh oh instancia 10000.png" x="1" y="4258" width="599" height="425" rotated="true" frameX="-0" frameY="-13" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10001.png" x="3021" y="4227" width="599" height="381" rotated="true" frameX="-35" frameY="-10" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10002.png" x="2417" y="4237" width="599" height="382" rotated="true" frameX="-35" frameY="-10" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10003.png" x="1232" y="2911" width="608" height="369" rotated="true" frameX="-36" frameY="-1" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10004.png" x="1232" y="2911" width="608" height="369" rotated="true" frameX="-36" frameY="-1" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10005.png" x="1232" y="2540" width="609" height="367" rotated="true" frameX="-36" frameY="-0" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10006.png" x="1232" y="2540" width="609" height="367" rotated="true" frameX="-36" frameY="-0" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10007.png" x="1845" y="2499" width="609" height="367" rotated="true" frameX="-36" frameY="-0" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10008.png" x="2763" y="1" width="367" height="609" frameX="-36" frameY="-0" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10009.png" x="2763" y="1" width="367" height="609" frameX="-36" frameY="-0" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10010.png" x="3214" y="613" width="373" height="602" frameX="-36" frameY="-7" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10011.png" x="3214" y="613" width="373" height="602" frameX="-36" frameY="-7" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10012.png" x="3721" y="5010" width="390" height="576" frameX="-38" frameY="-33" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10013.png" x="598" y="5072" width="575" height="391" rotated="true" frameX="-38" frameY="-34" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10014.png" x="598" y="5072" width="575" height="391" rotated="true" frameX="-38" frameY="-34" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10015.png" x="1801" y="5030" width="574" height="391" rotated="true" frameX="-38" frameY="-34" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10016.png" x="1801" y="5030" width="574" height="391" rotated="true" frameX="-38" frameY="-34" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10017.png" x="4827" y="4777" width="574" height="391" rotated="true" frameX="-38" frameY="-34" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10018.png" x="2408" y="5011" width="390" height="585" frameX="-36" frameY="-23" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10019.png" x="2408" y="5011" width="390" height="585" frameX="-36" frameY="-23" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10020.png" x="5025" y="1804" width="382" height="596" frameX="-35" frameY="-12" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10021.png" x="5025" y="1804" width="382" height="596" frameX="-35" frameY="-12" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10022.png" x="3020" y="4612" width="598" height="380" rotated="true" frameX="-35" frameY="-11" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10023.png" x="3020" y="4612" width="598" height="380" rotated="true" frameX="-35" frameY="-11" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10024.png" x="1205" y="4643" width="598" height="380" rotated="true" frameX="-35" frameY="-11" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10025.png" x="1205" y="4643" width="598" height="380" rotated="true" frameX="-35" frameY="-11" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="up instancia 10000.png" x="452" y="1" width="461" height="679" frameX="-45" frameY="-3" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10001.png" x="452" y="1" width="461" height="679" frameX="-45" frameY="-3" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10002.png" x="1" y="1" width="447" height="681" frameX="-45" frameY="-0" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10003.png" x="1" y="1" width="447" height="681" frameX="-45" frameY="-0" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10004.png" x="1" y="686" width="667" height="461" rotated="true" frameX="-43" frameY="-14" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10005.png" x="1" y="686" width="667" height="461" rotated="true" frameX="-43" frameY="-14" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10006.png" x="917" y="1" width="462" height="664" frameX="-43" frameY="-16" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10007.png" x="917" y="1" width="462" height="664" frameX="-43" frameY="-16" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10008.png" x="672" y="684" width="663" height="462" rotated="true" frameX="-43" frameY="-17" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10009.png" x="672" y="684" width="663" height="462" rotated="true" frameX="-43" frameY="-17" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10010.png" x="1" y="1151" width="663" height="462" rotated="true" frameX="-43" frameY="-17" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10011.png" x="1" y="1151" width="663" height="462" rotated="true" frameX="-43" frameY="-17" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10012.png" x="668" y="1151" width="663" height="462" rotated="true" frameX="-43" frameY="-17" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10013.png" x="668" y="1151" width="663" height="462" rotated="true" frameX="-43" frameY="-17" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10014.png" x="1383" y="1" width="456" height="662" frameX="-44" frameY="-20" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10015.png" x="1383" y="1" width="456" height="662" frameX="-44" frameY="-20" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10016.png" x="1383" y="667" width="431" height="654" frameX="-50" frameY="-31" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10017.png" x="1383" y="667" width="431" height="654" frameX="-50" frameY="-31" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10018.png" x="3627" y="1213" width="452" height="602" frameX="-4" frameY="-83" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10019.png" x="3627" y="1213" width="452" height="602" frameX="-4" frameY="-83" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10020.png" x="1223" y="3284" width="603" height="455" rotated="true" frameX="-1" frameY="-83" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10021.png" x="1223" y="3284" width="603" height="455" rotated="true" frameX="-1" frameY="-83" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10022.png" x="3648" y="2424" width="454" height="601" frameX="-1" frameY="-84" frameWidth="506" frameHeight="687"/>
+	<SubTexture name="up instancia 10023.png" x="3648" y="2424" width="454" height="601" frameX="-1" frameY="-84" frameWidth="506" frameHeight="687"/>
+</TextureAtlas>

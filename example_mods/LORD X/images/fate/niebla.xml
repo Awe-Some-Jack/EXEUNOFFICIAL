@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="niebla.png">
+	<!-- Created with Adobe Animate version 24.0.10.14 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 29 instancia 10000" x="100" y="100" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10001" x="1415" y="100" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10002" x="2730" y="100" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10003" x="4045" y="100" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10004" x="5360" y="100" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10005" x="6675" y="100" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10006" x="100" y="716" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10007" x="1415" y="716" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10008" x="2730" y="716" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10009" x="4045" y="716" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10010" x="5360" y="716" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10011" x="6675" y="716" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10012" x="100" y="1332" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10013" x="1415" y="1332" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10014" x="2730" y="1332" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10015" x="4045" y="1332" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10016" x="5360" y="1332" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10017" x="6675" y="1332" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10018" x="100" y="1948" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10019" x="1415" y="1948" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10020" x="2730" y="1948" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10021" x="4045" y="1948" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10022" x="5360" y="1948" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10023" x="6675" y="1948" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10024" x="100" y="2564" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10025" x="1415" y="2564" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10026" x="2730" y="2564" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10027" x="4045" y="2564" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10028" x="5360" y="2564" width="1280" height="581"/>
+	<SubTexture name="Símbolo 29 instancia 10029" x="6675" y="2564" width="1280" height="581"/>
+</TextureAtlas>

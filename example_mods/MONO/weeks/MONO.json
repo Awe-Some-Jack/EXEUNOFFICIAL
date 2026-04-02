@@ -1,0 +1,32 @@
+{
+	"storyName": "mono",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"monochromatic",
+			"mono",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Mono.bw",
+	"exeTitle": "MONO.BW",
+	"exeCover": "mono",
+	"exeLabel": "EXE",
+	"exeColor": "0xFFFF0000",
+	"soundTestCode": [0, 0, false]
+}

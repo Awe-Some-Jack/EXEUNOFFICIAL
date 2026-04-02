@@ -1,0 +1,23 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "replaced",
+			"indices": [],
+			"name": "idle"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/scorched-scream",
+	"position": [74, -443],
+	"healthicon": "scorched",
+	"flip_x": false,
+	"healthbar_colors": [23, 30, 74],
+	"camera_position": [-110, 140],
+	"sing_duration": 6.1,
+	"scale": 1.79,
+	"_editor_isPlayer": false
+}

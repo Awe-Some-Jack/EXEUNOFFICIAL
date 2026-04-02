@@ -1,0 +1,41 @@
+{
+	"storyName": "majin",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"endless-us",
+			"majin",
+			[
+				66,
+				113,
+				253
+			]
+		],
+		[
+			"endless-jp",
+			"majin",
+			[
+				66,
+				113,
+				253
+			]
+		]
+	],
+	"weekName": "Custom Week",
+	"hiddenUntilUnlocked": false,
+	"exeTitle": "MAJIN",
+	"exeCover": "majin",
+	"exeLabel": "EXE",
+	"exeColor": "0xFFFF0000",
+	"soundTestCode": [0, 0, false]
+}

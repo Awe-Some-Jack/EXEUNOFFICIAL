@@ -31,7 +31,7 @@ class MainMenuState extends MusicBeatState
 		'credits'
 	];
 
-	var leftOption:String = #if ACHIEVEMENTS_ALLOWED 'achievements' #else null #end;
+	var leftOption:String = null;
 	var rightOption:String = 'options';
 
 	var magenta:FlxSprite;
@@ -303,11 +303,6 @@ class MainMenuState extends MusicBeatState
 							MusicBeatState.switchState(new ModsMenuState());
 						#end
 
-						#if ACHIEVEMENTS_ALLOWED
-						case 'achievements':
-							MusicBeatState.switchState(new AchievementsMenuState());
-						#end
-
 						case 'credits':
 							MusicBeatState.switchState(new CreditsState());
 						case 'options':
@@ -319,10 +314,6 @@ class MainMenuState extends MusicBeatState
 								PlayState.SONG.splashSkin = null;
 								PlayState.stageUI = 'normal';
 							}
-						case 'donate':
-							CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
-							selectedSomethin = false;
-							item.visible = true;
 						default:
 							trace('Menu Item ${option} doesn\'t do anything');
 							selectedSomethin = false;

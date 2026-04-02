@@ -1,0 +1,3 @@
+[
+    overlay[show, hide], tweenObject[(object, alpha, time)], hideEverything
+]

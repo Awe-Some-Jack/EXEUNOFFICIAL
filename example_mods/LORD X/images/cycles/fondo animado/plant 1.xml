@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="plant 1.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 43 instancia 10000" x="36" y="36" width="956" height="1393" frameX="0" frameY="0" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10001" x="36" y="36" width="956" height="1393" frameX="0" frameY="0" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10002" x="1012" y="36" width="956" height="1391" frameX="0" frameY="-2" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10003" x="1012" y="36" width="956" height="1391" frameX="0" frameY="-2" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10004" x="1988" y="36" width="956" height="1387" frameX="0" frameY="-6" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10005" x="2964" y="36" width="956" height="1387" frameX="0" frameY="-6" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10006" x="3940" y="36" width="958" height="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10007" x="36" y="1449" width="958" height="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10008" x="1014" y="1449" width="956" height="1393" frameX="0" frameY="0" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10009" x="1990" y="1449" width="956" height="1393" frameX="0" frameY="0" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10010" x="1012" y="36" width="956" height="1391" frameX="0" frameY="-2" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10011" x="1012" y="36" width="956" height="1391" frameX="0" frameY="-2" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10012" x="2966" y="1449" width="956" height="1387" frameX="0" frameY="-6" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10013" x="3942" y="1449" width="956" height="1387" frameX="0" frameY="-6" frameWidth="958" frameHeight="1393"/>
+	<SubTexture name="Símbolo 43 instancia 10014" x="36" y="2862" width="958" height="1393"/>
+</TextureAtlas>

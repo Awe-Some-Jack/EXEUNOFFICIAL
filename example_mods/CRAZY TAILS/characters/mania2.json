@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"offsets": [698, -19],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left2"
+		},
+		{
+			"offsets": [381, -181],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Símbolo 212"
+		},
+		{
+			"offsets": [138, 213],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Símbolo 201"
+		},
+		{
+			"offsets": [180, -58],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right2"
+		},
+		{
+			"offsets": [138, -7],
+			"loop": true,
+			"fps": 18,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle2"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/shtails2",
+	"position": [350, -330],
+	"healthicon": "crazytails",
+	"flip_x": false,
+	"healthbar_colors": [255, 178, 109],
+	"camera_position": [-170, 120],
+	"sing_duration": 6.1,
+	"scale": 0.7,
+	"_editor_isPlayer": false
+}

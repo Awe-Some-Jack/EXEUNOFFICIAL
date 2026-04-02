@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="eggman.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="eggman instancia 10000" x="36" y="36" width="523" height="656" frameX="-7" frameY="-13" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10001" x="36" y="36" width="523" height="656" frameX="-7" frameY="-13" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10002" x="579" y="36" width="517" height="658" frameX="-6" frameY="-11" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10003" x="579" y="36" width="517" height="658" frameX="-6" frameY="-11" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10004" x="1116" y="36" width="511" height="663" frameX="-3" frameY="-6" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10005" x="1116" y="36" width="511" height="663" frameX="-3" frameY="-6" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10006" x="1647" y="36" width="514" height="668" frameX="-1" frameY="-1" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10007" x="1647" y="36" width="514" height="668" frameX="-1" frameY="-1" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10008" x="36" y="724" width="514" height="669" frameX="0" frameY="0" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10009" x="36" y="724" width="514" height="669" frameX="0" frameY="0" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10010" x="570" y="724" width="516" height="669" frameX="0" frameY="0" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10011" x="570" y="724" width="516" height="669" frameX="0" frameY="0" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10012" x="570" y="724" width="516" height="669" frameX="0" frameY="0" frameWidth="530" frameHeight="669"/>
+	<SubTexture name="eggman instancia 10013" x="570" y="724" width="516" height="669" frameX="0" frameY="0" frameWidth="530" frameHeight="669"/>
+</TextureAtlas>

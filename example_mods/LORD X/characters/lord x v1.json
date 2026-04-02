@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [-128, -63],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"offsets": [-175, -213],
+			"indices": [],
+			"fps": 12,
+			"anim": "idle",
+			"loop": true,
+			"name": "ç"
+		},
+		{
+			"offsets": [-118, -235],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Símbolo 2"
+		},
+		{
+			"offsets": [-118, -247],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Símbolo 3"
+		},
+		{
+			"offsets": [-210, -154],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Símbolo 1"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/fatev",
+	"position": [-90, -70],
+	"healthicon": "lordx-p2",
+	"flip_x": false,
+	"healthbar_colors": [86, 90, 103],
+	"camera_position": [-30, 260],
+	"sing_duration": 8,
+	"scale": 1.1,
+	"_editor_isPlayer": false
+}

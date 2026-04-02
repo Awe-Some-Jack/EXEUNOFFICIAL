@@ -1,0 +1,23 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [284, 107],
+			"anim": "what",
+			"fps": 24,
+			"name": "what",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/what",
+	"position": [0, 0],
+	"healthicon": "fleet",
+	"flip_x": false,
+	"healthbar_colors": [254, 209, 79],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

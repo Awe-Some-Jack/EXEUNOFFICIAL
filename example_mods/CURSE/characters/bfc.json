@@ -1,0 +1,167 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "3idle"
+		},
+		{
+			"offsets": [40, 1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "3left"
+		},
+		{
+			"offsets": [-46, -54],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "3down"
+		},
+		{
+			"offsets": [-74, 56],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "3up"
+		},
+		{
+			"offsets": [-59, -7],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "3right"
+		},
+		{
+			"offsets": [25, -1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "mleft"
+		},
+		{
+			"offsets": [-44, -54],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "mdown"
+		},
+		{
+			"offsets": [-71, 48],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "mup"
+		},
+		{
+			"offsets": [-57, 16],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "mright"
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "idle-happy",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [40, 1],
+			"anim": "singLEFT-happy",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-46, -54],
+			"anim": "singDOWN-happy",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-74, 56],
+			"anim": "singUP-happy",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-59, -7],
+			"anim": "singRIGHT-happy",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "idle-sad",
+			"fps": 24,
+			"name": "2idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [40, 1],
+			"anim": "singLEFT-sad",
+			"fps": 24,
+			"name": "2left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-46, -54],
+			"anim": "singDOWN-sad",
+			"fps": 24,
+			"name": "2down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-74, 56],
+			"anim": "singUP-sad",
+			"fps": 24,
+			"name": "2up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-59, -7],
+			"anim": "singRIGHT-sad",
+			"fps": 24,
+			"name": "2right",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/bfc",
+	"position": [0, 0],
+	"healthicon": "bf",
+	"flip_x": true,
+	"healthbar_colors": [58, 205, 241],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 0.8,
+	"_editor_isPlayer": true
+}

@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [160, 48],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [317, 1],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [107, -113],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [145, 155],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [41, -55],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [172, 62],
+			"anim": "laugh",
+			"fps": 24,
+			"name": "risa",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [215, 54],
+			"anim": "s",
+			"fps": 12,
+			"name": "enconder",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [259, 46],
+			"anim": "anim",
+			"fps": 24,
+			"name": "escape",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/exeteiros",
+	"position": [0, 150],
+	"healthicon": "exetior",
+	"flip_x": false,
+	"healthbar_colors": [0, 49, 106],
+	"camera_position": [0, 0],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

@@ -1,0 +1,6 @@
+An event that allows you to tween the camera and move it wherever u want 
+Value 1 = Camera X and Camera Y
+
+Value 2 = The Time and the Ease
+
+Script by Raimbowcore12

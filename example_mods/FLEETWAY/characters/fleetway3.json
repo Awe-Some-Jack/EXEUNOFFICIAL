@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"offsets": [40, 80],
+			"loop": false,
+			"fps": 24,
+			"anim": "shutup",
+			"indices": [],
+			"name": "Fleetvay Shut Up"
+		},
+		{
+			"offsets": [33, 112],
+			"loop": false,
+			"fps": 24,
+			"anim": "laugh",
+			"indices": [],
+			"name": "Fleetway Laugh"
+		},
+		{
+			"offsets": [161, 346],
+			"loop": false,
+			"fps": 24,
+			"anim": "redeyes",
+			"indices": [],
+			"name": "Fleetway Right alt"
+		},
+		{
+			"offsets": [4, -8],
+			"loop": false,
+			"fps": 24,
+			"anim": "as",
+			"indices": [],
+			"name": "as"
+		},
+		{
+			"offsets": [161, 346],
+			"indices": [54, 55, 56, 57],
+			"fps": 24,
+			"anim": "redeyes-loop",
+			"loop": true,
+			"name": "Fleetway Right alt instancia 1"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/fletway3",
+	"position": [0, 0],
+	"healthicon": "fleet",
+	"flip_x": false,
+	"healthbar_colors": [254, 209, 79],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

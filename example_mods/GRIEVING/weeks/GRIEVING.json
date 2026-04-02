@@ -1,0 +1,41 @@
+{
+	"storyName": "GRIEVING",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"Uh-Oh",
+			"demogri",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"Haze",
+			"demogri",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "GRIEVING",
+	"exeTitle": "Demogri & Griatos",
+	"exeCover": "grieving",
+	"exeLabel": "EXE",
+	"exeColor": "0xFFFF0000",
+	"soundTestCode": [0, 0, false]
+}

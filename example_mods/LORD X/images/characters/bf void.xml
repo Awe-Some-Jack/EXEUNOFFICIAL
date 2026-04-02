@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bf void.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 71 instancia 10000" x="100" y="100" width="530" height="423" frameX="0" frameY="0" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10001" x="100" y="100" width="530" height="423" frameX="0" frameY="0" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10002" x="100" y="100" width="530" height="423" frameX="0" frameY="-1" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10003" x="669" y="100" width="530" height="423" frameX="0" frameY="-2" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10004" x="669" y="100" width="530" height="423" frameX="-1" frameY="-3" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10005" x="669" y="100" width="530" height="423" frameX="-1" frameY="-4" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10006" x="1238" y="100" width="530" height="423" frameX="-1" frameY="-6" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10007" x="1238" y="100" width="530" height="423" frameX="-2" frameY="-8" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10008" x="1238" y="100" width="530" height="423" frameX="-2" frameY="-11" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10009" x="1807" y="100" width="530" height="422" frameX="-2" frameY="-13" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10010" x="1807" y="100" width="530" height="422" frameX="-2" frameY="-15" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10011" x="1807" y="100" width="530" height="422" frameX="-3" frameY="-16" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10012" x="100" y="562" width="528" height="422" frameX="-4" frameY="-17" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10013" x="100" y="562" width="528" height="422" frameX="-4" frameY="-18" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10014" x="100" y="562" width="528" height="422" frameX="-4" frameY="-18" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10015" x="667" y="562" width="528" height="421" frameX="-4" frameY="-18" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10016" x="667" y="562" width="528" height="421" frameX="-4" frameY="-17" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10017" x="667" y="562" width="528" height="421" frameX="-4" frameY="-17" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10018" x="1234" y="562" width="529" height="421" frameX="-3" frameY="-16" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10019" x="1802" y="562" width="528" height="421" frameX="-3" frameY="-14" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10020" x="1802" y="562" width="528" height="421" frameX="-3" frameY="-13" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10021" x="100" y="1023" width="528" height="421" frameX="-3" frameY="-11" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10022" x="667" y="1023" width="528" height="421" frameX="-3" frameY="-9" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10023" x="667" y="1023" width="528" height="421" frameX="-2" frameY="-7" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10024" x="1234" y="1023" width="529" height="423" frameX="-1" frameY="-4" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10025" x="1802" y="1023" width="529" height="422" frameX="-1" frameY="-3" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10026" x="100" y="1485" width="529" height="422" frameX="-1" frameY="-2" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10027" x="668" y="1485" width="530" height="423" frameX="0" frameY="-1" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10028" x="1237" y="1485" width="530" height="423" frameX="0" frameY="0" frameWidth="532" frameHeight="439"/>
+	<SubTexture name="Símbolo 71 instancia 10029" x="1806" y="1485" width="530" height="423" frameX="0" frameY="0" frameWidth="532" frameHeight="439"/>
+</TextureAtlas>

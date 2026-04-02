@@ -1,0 +1,63 @@
+{
+	"animations": [
+		{
+			"offsets": [168, 189],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [140, 135],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [126, 192],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"loop": false,
+			"offsets": [65, 170],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "rigth",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [55, 140],
+			"anim": "idle",
+			"fps": 26,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"offsets": [54, 166],
+			"indices": [],
+			"fps": 26,
+			"anim": "risa",
+			"loop": false,
+			"name": "risa"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/hellbemnt 2",
+	"position": [10, 200],
+	"healthicon": "lord-x",
+	"flip_x": false,
+	"healthbar_colors": [60, 60, 88],
+	"camera_position": [-220, -50],
+	"sing_duration": 10,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

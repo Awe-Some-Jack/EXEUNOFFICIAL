@@ -1,0 +1,26 @@
+{
+    "BFx": 900,
+    "BFy": 300,
+
+    "DADx": 300,
+    "DADy": 200,
+
+    "GFx": 0,
+    "GFy": 0,
+
+    "MiddleCamera": false,
+    "MiddleX": 0,
+    "MiddleY": 0,
+
+    "OverrideZoom": false,
+
+    "OGZoom": 0.55,
+    "MiddleZoom": 0.5,
+
+    "OffsetsBF": 25,
+    "OffsetsDAD": 25,
+    "OffsetsGF": 25,
+
+    "Angle": 0
+
+}

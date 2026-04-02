@@ -1,0 +1,39 @@
+{
+	"animations": [
+		{
+			"offsets": [50, 29],
+			"loop": false,
+			"fps": 24,
+			"anim": "anim 1",
+			"indices": [],
+			"name": "Something's wrong instancia 1"
+		},
+		{
+			"offsets": [49, 64],
+			"loop": false,
+			"fps": 24,
+			"anim": "anim 2",
+			"indices": [],
+			"name": "Just admit it instancia 1"
+		},
+		{
+			"offsets": [209, 43],
+			"loop": false,
+			"fps": 24,
+			"anim": "anim 3",
+			"indices": [],
+			"name": "Things are ok instancia 1"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/animaciones",
+	"position": [0, 0],
+	"healthicon": "cursenerv",
+	"flip_x": false,
+	"healthbar_colors": [52, 59, 113],
+	"camera_position": [20, 70],
+	"sing_duration": 6.1,
+	"scale": 0.8,
+	"_editor_isPlayer": false
+}

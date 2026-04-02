@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="eye_plant.png">
+	<!-- Created with Adobe Animate version 22.0.8.217 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="planta god?? instancia 10000" x="0" y="0" width="2019" height="1211" frameX="0" frameY="-2" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10001" x="0" y="0" width="2019" height="1211" frameX="0" frameY="-2" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10002" x="0" y="0" width="2019" height="1211" frameX="0" frameY="-2" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10003" x="0" y="0" width="2019" height="1211" frameX="0" frameY="-2" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10004" x="2019" y="0" width="2024" height="1211" frameX="0" frameY="-2" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10005" x="2019" y="0" width="2024" height="1211" frameX="0" frameY="-2" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10006" x="0" y="1211" width="2030" height="1218" frameX="-2" frameY="0" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10007" x="0" y="1211" width="2030" height="1218" frameX="-2" frameY="0" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10008" x="2030" y="1211" width="2032" height="1202" frameX="-2" frameY="-13" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10009" x="2030" y="1211" width="2032" height="1202" frameX="-2" frameY="-13" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10010" x="0" y="2429" width="2035" height="1193" frameX="-2" frameY="-22" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10011" x="0" y="2429" width="2035" height="1193" frameX="-2" frameY="-22" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10012" x="0" y="2429" width="2035" height="1193" frameX="-2" frameY="-22" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10013" x="2030" y="1211" width="2032" height="1202" frameX="-2" frameY="-13" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10014" x="2030" y="1211" width="2032" height="1202" frameX="-2" frameY="-13" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10015" x="0" y="1211" width="2030" height="1218" frameX="-2" frameY="0" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10016" x="0" y="1211" width="2030" height="1218" frameX="-2" frameY="0" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10017" x="2019" y="0" width="2024" height="1211" frameX="0" frameY="-2" frameWidth="2037" frameHeight="1218"/>
+	<SubTexture name="planta god?? instancia 10018" x="2019" y="0" width="2024" height="1211" frameX="0" frameY="-2" frameWidth="2037" frameHeight="1218"/>
+</TextureAtlas>

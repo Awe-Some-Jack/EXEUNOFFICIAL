@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="ojos.png">
+	<!-- Created with Adobe Animate version 24.0.10.14 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle instancia 10000" x="40" y="40" width="199" height="42" frameX="0" frameY="-19" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10001" x="40" y="40" width="199" height="42" frameX="0" frameY="-19" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10002" x="40" y="40" width="199" height="42" frameX="0" frameY="-19" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10003" x="40" y="40" width="199" height="42" frameX="0" frameY="-19" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10004" x="314" y="40" width="199" height="42" frameX="-2" frameY="-17" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10005" x="314" y="40" width="199" height="42" frameX="-2" frameY="-17" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10006" x="314" y="40" width="199" height="42" frameX="-2" frameY="-17" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10007" x="314" y="40" width="199" height="42" frameX="-2" frameY="-17" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10008" x="588" y="40" width="199" height="43" frameX="-8" frameY="-12" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10009" x="588" y="40" width="199" height="43" frameX="-8" frameY="-12" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10010" x="588" y="40" width="199" height="43" frameX="-8" frameY="-12" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10011" x="588" y="40" width="199" height="43" frameX="-8" frameY="-12" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10012" x="588" y="40" width="199" height="43" frameX="-14" frameY="-10" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10013" x="588" y="40" width="199" height="43" frameX="-14" frameY="-10" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10014" x="588" y="40" width="199" height="43" frameX="-14" frameY="-10" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10015" x="588" y="40" width="199" height="43" frameX="-14" frameY="-10" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10016" x="40" y="158" width="200" height="41" frameX="-29" frameY="-1" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10017" x="40" y="158" width="200" height="41" frameX="-29" frameY="-1" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10018" x="40" y="158" width="200" height="41" frameX="-29" frameY="-1" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10019" x="40" y="158" width="200" height="41" frameX="-29" frameY="-1" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10020" x="315" y="158" width="200" height="36" frameX="-38" frameY="0" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10021" x="315" y="158" width="200" height="36" frameX="-38" frameY="0" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10022" x="315" y="158" width="200" height="36" frameX="-38" frameY="0" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10023" x="315" y="158" width="200" height="36" frameX="-38" frameY="0" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10024" x="590" y="158" width="200" height="32" frameX="-44" frameY="0" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10025" x="590" y="158" width="200" height="32" frameX="-44" frameY="0" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10026" x="590" y="158" width="200" height="32" frameX="-44" frameY="0" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10027" x="590" y="158" width="200" height="32" frameX="-44" frameY="0" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10028" x="40" y="274" width="200" height="32" frameX="-42" frameY="-3" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10029" x="40" y="274" width="200" height="32" frameX="-42" frameY="-3" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10030" x="40" y="274" width="200" height="32" frameX="-42" frameY="-3" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10031" x="40" y="274" width="200" height="32" frameX="-42" frameY="-3" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10032" x="315" y="274" width="200" height="29" frameX="-41" frameY="-8" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10033" x="315" y="274" width="200" height="29" frameX="-41" frameY="-8" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10034" x="315" y="274" width="200" height="29" frameX="-41" frameY="-8" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10035" x="315" y="274" width="200" height="29" frameX="-41" frameY="-8" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10036" x="590" y="274" width="201" height="32" frameX="-32" frameY="-10" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10037" x="590" y="274" width="201" height="32" frameX="-32" frameY="-10" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10038" x="590" y="274" width="201" height="32" frameX="-32" frameY="-10" frameWidth="244" frameHeight="61"/>
+	<SubTexture name="idle instancia 10039" x="590" y="274" width="201" height="32" frameX="-32" frameY="-10" frameWidth="244" frameHeight="61"/>
+</TextureAtlas>

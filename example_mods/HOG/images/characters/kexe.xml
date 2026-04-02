@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="kexe.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 40 instancia 10000" x="36" y="36" width="581" height="575" frameX="0" frameY="-47" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10001" x="36" y="36" width="581" height="575" frameX="0" frameY="-47" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10002" x="637" y="36" width="576" height="517" frameX="-4" frameY="-105" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10003" x="1233" y="36" width="576" height="518" frameX="-4" frameY="-104" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10004" x="1829" y="36" width="576" height="622" frameX="-6" frameY="0" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10005" x="1829" y="36" width="576" height="622" frameX="-6" frameY="0" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10006" x="2425" y="36" width="582" height="584" frameX="-4" frameY="-38" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10007" x="3027" y="36" width="582" height="584" frameX="-4" frameY="-38" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10008" x="2425" y="36" width="582" height="584" frameX="-4" frameY="-38" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10009" x="36" y="678" width="585" height="586" frameX="-2" frameY="-36" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10010" x="641" y="678" width="585" height="586" frameX="-2" frameY="-36" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10011" x="36" y="678" width="585" height="586" frameX="-2" frameY="-36" frameWidth="587" frameHeight="622"/>
+	<SubTexture name="Símbolo 40 instancia 10012" x="2452" y="1889" width="586" height="585" frameX="-1" frameY="-36" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 40 instancia 10013" x="3058" y="1889" width="586" height="585" frameX="-1" frameY="-36" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 40 instancia 10014" x="2452" y="1889" width="586" height="585" frameX="-1" frameY="-36" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 40 instancia 10015" x="3058" y="1889" width="586" height="585" frameX="-1" frameY="-36" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10000" x="1246" y="678" width="581" height="533" frameX="-9" frameY="-52" frameWidth="596" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10001" x="1246" y="678" width="581" height="533" frameX="-9" frameY="-52" frameWidth="596" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10002" x="1847" y="678" width="590" height="516" frameX="0" frameY="-69" frameWidth="596" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10003" x="2457" y="678" width="590" height="517" frameX="0" frameY="-68" frameWidth="596" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10004" x="3067" y="678" width="575" height="565" frameX="-16" frameY="-20" frameWidth="596" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10005" x="3067" y="678" width="575" height="565" frameX="-16" frameY="-20" frameWidth="596" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10006" x="36" y="1889" width="582" height="583" frameX="-13" frameY="-2" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10007" x="638" y="1889" width="582" height="583" frameX="-13" frameY="-2" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10008" x="36" y="1889" width="582" height="583" frameX="-13" frameY="-2" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10009" x="1240" y="1889" width="586" height="585" frameX="-11" frameY="0" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10010" x="1846" y="1889" width="586" height="585" frameX="-11" frameY="0" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10011" x="1240" y="1889" width="586" height="585" frameX="-11" frameY="0" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10012" x="36" y="1284" width="585" height="585" frameX="-11" frameY="0" frameWidth="596" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10013" x="641" y="1284" width="585" height="585" frameX="-11" frameY="0" frameWidth="596" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10014" x="36" y="1284" width="585" height="585" frameX="-11" frameY="0" frameWidth="596" frameHeight="585"/>
+	<SubTexture name="Símbolo 41 instancia 10015" x="641" y="1284" width="585" height="585" frameX="-11" frameY="0" frameWidth="596" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10000" x="1246" y="1284" width="581" height="522" frameX="0" frameY="-63" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10001" x="1246" y="1284" width="581" height="522" frameX="0" frameY="-63" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10002" x="1847" y="1284" width="577" height="516" frameX="-3" frameY="-69" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10003" x="2444" y="1284" width="577" height="517" frameX="-3" frameY="-68" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10004" x="3041" y="1284" width="576" height="565" frameX="-6" frameY="-20" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10005" x="3041" y="1284" width="576" height="565" frameX="-6" frameY="-20" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10006" x="36" y="1889" width="582" height="583" frameX="-3" frameY="-2" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10007" x="638" y="1889" width="582" height="583" frameX="-3" frameY="-2" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10008" x="36" y="1889" width="582" height="583" frameX="-3" frameY="-2" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10009" x="1240" y="1889" width="586" height="585" frameX="-1" frameY="0" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10010" x="1846" y="1889" width="586" height="585" frameX="-1" frameY="0" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10011" x="1240" y="1889" width="586" height="585" frameX="-1" frameY="0" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10012" x="2452" y="1889" width="586" height="585" frameX="-1" frameY="0" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10013" x="3058" y="1889" width="586" height="585" frameX="-1" frameY="0" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10014" x="2452" y="1889" width="586" height="585" frameX="-1" frameY="0" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="Símbolo 42 instancia 10015" x="3058" y="1889" width="586" height="585" frameX="-1" frameY="0" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="gkx instancia 10000" x="36" y="2494" width="581" height="576" frameX="0" frameY="-10" frameWidth="587" frameHeight="586"/>
+	<SubTexture name="gkx instancia 10001" x="637" y="2494" width="581" height="576" frameX="0" frameY="-10" frameWidth="587" frameHeight="586"/>
+	<SubTexture name="gkx instancia 10002" x="1238" y="2494" width="577" height="575" frameX="-4" frameY="-11" frameWidth="587" frameHeight="586"/>
+	<SubTexture name="gkx instancia 10003" x="1835" y="2494" width="577" height="575" frameX="-4" frameY="-11" frameWidth="587" frameHeight="586"/>
+	<SubTexture name="gkx instancia 10004" x="2432" y="2494" width="575" height="577" frameX="-7" frameY="-9" frameWidth="587" frameHeight="586"/>
+	<SubTexture name="gkx instancia 10005" x="3027" y="2494" width="575" height="577" frameX="-7" frameY="-9" frameWidth="587" frameHeight="586"/>
+	<SubTexture name="gkx instancia 10006" x="638" y="1889" width="582" height="583" frameX="-4" frameY="-3" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="gkx instancia 10007" x="36" y="1889" width="582" height="583" frameX="-4" frameY="-3" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="gkx instancia 10008" x="638" y="1889" width="582" height="583" frameX="-4" frameY="-3" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="gkx instancia 10009" x="1240" y="1889" width="586" height="585" frameX="-2" frameY="-1" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="gkx instancia 10010" x="1846" y="1889" width="586" height="585" frameX="-2" frameY="-1" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="gkx instancia 10011" x="1240" y="1889" width="586" height="585" frameX="-2" frameY="-1" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="gkx instancia 10012" x="2452" y="1889" width="586" height="585" frameX="-2" frameY="-1" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="gkx instancia 10013" x="3058" y="1889" width="586" height="585" frameX="-2" frameY="0" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="gkx instancia 10014" x="2452" y="1889" width="586" height="585" frameX="-2" frameY="-1" frameWidth="587" frameHeight="585"/>
+	<SubTexture name="gkx instancia 10015" x="3058" y="1889" width="586" height="585" frameX="-2" frameY="0" frameWidth="587" frameHeight="585"/>
+</TextureAtlas>

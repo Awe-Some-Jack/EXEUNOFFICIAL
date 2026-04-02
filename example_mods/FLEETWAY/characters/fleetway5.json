@@ -1,0 +1,95 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [228, -12],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [13, -92],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-12, 259],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-118, -61],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [228, -12],
+			"anim": "singLEFT-loop",
+			"fps": 24,
+			"name": "left2 instancia 1",
+			"indices": [10, 11, 12, 13]
+		},
+		{
+			"loop": true,
+			"offsets": [13, -92],
+			"anim": "singDOWN-loop",
+			"fps": 24,
+			"name": "down2 instancia 1",
+			"indices": [10, 11, 12, 13]
+		},
+		{
+			"loop": true,
+			"offsets": [-12, 259],
+			"anim": "singUP-loop",
+			"fps": 24,
+			"name": "up2 instancia 1",
+			"indices": [12, 13, 14]
+		},
+		{
+			"loop": true,
+			"offsets": [-118, -61],
+			"anim": "singRIGHT-loop",
+			"fps": 24,
+			"name": "right2 instancia 1",
+			"indices": [11, 12, 13]
+		},
+		{
+			"offsets": [306, 249],
+			"indices": [],
+			"fps": 24,
+			"anim": "eat",
+			"loop": false,
+			"name": "eat"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/fletway4",
+	"position": [0, 0],
+	"healthicon": "fleet",
+	"flip_x": false,
+	"healthbar_colors": [254, 209, 79],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

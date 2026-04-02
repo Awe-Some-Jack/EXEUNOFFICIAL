@@ -1,0 +1,63 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [221, 6],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [74, 7],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [72, 8],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [73, 95],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"offsets": [64, 18],
+			"loop": false,
+			"fps": 24,
+			"anim": "uh oh",
+			"indices": [],
+			"name": "uh oh"
+		},
+		{
+			"offsets": [72, 25],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "alt idle"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/demo2",
+	"position": [140, 210],
+	"healthicon": "demogri",
+	"flip_x": false,
+	"healthbar_colors": [53, 54, 102],
+	"camera_position": [-150, 100],
+	"sing_duration": 8,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

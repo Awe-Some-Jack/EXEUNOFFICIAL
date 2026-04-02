@@ -1,0 +1,63 @@
+{
+	"animations": [
+		{
+			"offsets": [108, -38],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"loop": false,
+			"offsets": [110, -221],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Símbolo 100",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [107, -221],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Símbolo 122",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [108, -220],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Símbolo 101",
+			"indices": []
+		},
+		{
+			"offsets": [110, -219],
+			"loop": true,
+			"fps": 12,
+			"anim": "idle",
+			"indices": [],
+			"name": "Símbolo 42"
+		},
+		{
+			"offsets": [863, -262],
+			"loop": false,
+			"fps": 24,
+			"anim": "hey",
+			"indices": [],
+			"name": "atack"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/lordx po",
+	"position": [-90, -70],
+	"healthicon": "lordx-p2",
+	"flip_x": false,
+	"healthbar_colors": [86, 90, 103],
+	"camera_position": [-30, 260],
+	"sing_duration": 8,
+	"scale": 1.1,
+	"_editor_isPlayer": false
+}

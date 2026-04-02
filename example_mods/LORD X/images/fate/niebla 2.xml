@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="niebla 2.png">
+	<!-- Created with Adobe Animate version 24.0.10.14 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 34 instancia 10000" x="40" y="40" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10001" x="1591" y="40" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10002" x="3142" y="40" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10003" x="4693" y="40" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10004" x="6244" y="40" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10005" x="40" y="872" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10006" x="1591" y="872" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10007" x="3142" y="872" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10008" x="4693" y="872" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10009" x="6244" y="872" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10010" x="40" y="1704" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10011" x="1591" y="1704" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10012" x="3142" y="1704" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10013" x="4693" y="1704" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10014" x="6244" y="1704" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10015" x="40" y="2536" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10016" x="1591" y="2536" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10017" x="3142" y="2536" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10018" x="4693" y="2536" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10019" x="6244" y="2536" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10020" x="40" y="3368" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10021" x="1591" y="3368" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10022" x="3142" y="3368" width="1476" height="757"/>
+	<SubTexture name="Símbolo 34 instancia 10023" x="4693" y="3368" width="1476" height="757"/>
+</TextureAtlas>

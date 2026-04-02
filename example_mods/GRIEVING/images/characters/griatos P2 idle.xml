@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="griatos P2 idle.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle griatos grande instancia 10000" x="36" y="36" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10001" x="648" y="36" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10002" x="1260" y="36" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10003" x="1872" y="36" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10004" x="2484" y="36" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10005" x="3096" y="36" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10006" x="3708" y="36" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10007" x="4320" y="36" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10008" x="4932" y="36" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10009" x="5544" y="36" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10010" x="36" y="637" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10011" x="648" y="637" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10012" x="1260" y="637" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10013" x="1872" y="637" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10014" x="2484" y="637" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10015" x="3096" y="637" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10016" x="3708" y="637" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10017" x="4320" y="637" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10018" x="4932" y="637" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10019" x="5544" y="637" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10020" x="36" y="1238" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10021" x="648" y="1238" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10022" x="1260" y="1238" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10023" x="1872" y="1238" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10024" x="2484" y="1238" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10025" x="3096" y="1238" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10026" x="3708" y="1238" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10027" x="4320" y="1238" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10028" x="4932" y="1238" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10029" x="5544" y="1238" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10030" x="36" y="1839" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10031" x="648" y="1839" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10032" x="1260" y="1839" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10033" x="1872" y="1839" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10034" x="2484" y="1839" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10035" x="3096" y="1839" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10036" x="3708" y="1839" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10037" x="4320" y="1839" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10038" x="4932" y="1839" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10039" x="5544" y="1839" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10040" x="36" y="2440" width="592" height="581"/>
+	<SubTexture name="idle griatos grande instancia 10041" x="648" y="2440" width="592" height="581"/>
+</TextureAtlas>

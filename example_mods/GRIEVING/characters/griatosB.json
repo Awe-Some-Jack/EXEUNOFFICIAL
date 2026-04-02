@@ -1,0 +1,31 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [-23, 4],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [80, 1],
+			"anim": "risa",
+			"fps": 24,
+			"name": "risa",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/2",
+	"position": [-50, -160],
+	"healthicon": "griatos",
+	"flip_x": false,
+	"healthbar_colors": [74, 37, 41],
+	"camera_position": [-400, -90],
+	"sing_duration": 14,
+	"scale": 1.1,
+	"_editor_isPlayer": false
+}

@@ -1,0 +1,1 @@
+Value 1: Variant (0 = red, 1 = white)

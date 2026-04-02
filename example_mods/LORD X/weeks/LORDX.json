@@ -1,0 +1,59 @@
+{
+	"storyName": "Lordx",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"hideStoryMode": true,
+	"songs": [
+		[
+			"cycles",
+			"lord-x",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"hellbent",
+			"lordx-p2",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"fate",
+			"lordx-p3",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"gotta-go",
+			"red",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "lordx",
+	"exeTitle": "LORD X",
+	"exeCover": "lordx",
+	"exeLabel": "EXE",
+	"exeColor": "0xFFFF0000",
+	"soundTestCode": [0, 0, false]
+}

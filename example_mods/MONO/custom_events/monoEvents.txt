@@ -1,0 +1,6 @@
+[
+    monoNotesStart, bfNotesStart, messyModchart, 
+    insaneModchart1, insaneModchart2, stopModchart
+]
+
+Script by Raimbowcore12

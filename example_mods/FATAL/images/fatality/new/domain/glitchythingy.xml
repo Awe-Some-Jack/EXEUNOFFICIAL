@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="glitchythingy.png">
+<SubTexture name="glitchythingy idle0000" x="0" y="356" width="794" height="161" frameX="0" frameY="-153" frameWidth="784" frameHeight="432" />
+<SubTexture name="glitchythingy idle0001" x="0" y="193" width="794" height="163" frameX="0" frameY="-146" frameWidth="784" frameHeight="432" />
+<SubTexture name="glitchythingy idle0002" x="0" y="193" width="794" height="163" frameX="0" frameY="-146" frameWidth="784" frameHeight="432" />
+<SubTexture name="glitchythingy idle0003" x="0" y="0" width="794" height="193" frameX="0" frameY="-119" frameWidth="784" frameHeight="432" />
+<SubTexture name="glitchythingy idle0004" x="0" y="356" width="794" height="161" frameX="0" frameY="-153" frameWidth="784" frameHeight="432" />
+<SubTexture name="glitchythingy idle0005" x="0" y="193" width="794" height="163" frameX="0" frameY="-146" frameWidth="784" frameHeight="432" />
+<SubTexture name="glitchythingy idle0006" x="0" y="0" width="794" height="193" frameX="0" frameY="-119" frameWidth="784" frameHeight="432" />
+<SubTexture name="glitchythingy idle0007" x="0" y="0" width="794" height="193" frameX="0" frameY="-119" frameWidth="784" frameHeight="432" />
+</TextureAtlas>

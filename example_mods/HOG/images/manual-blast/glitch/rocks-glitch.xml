@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="rocks-glitch.png">
+<SubTexture name="rocks-glitch idle0000" x="0" y="0" width="2678" height="594" frameX="0" frameY="0" frameWidth="2678" frameHeight="594" />
+<SubTexture name="rocks-glitch idle0001" x="0" y="594" width="2678" height="594" frameX="0" frameY="0" frameWidth="2678" frameHeight="594" />
+<SubTexture name="rocks-glitch idle0002" x="0" y="1188" width="2678" height="594" frameX="0" frameY="0" frameWidth="2678" frameHeight="594" />
+<SubTexture name="rocks-glitch idle0003" x="0" y="1782" width="2678" height="594" frameX="0" frameY="0" frameWidth="2678" frameHeight="594" />
+<SubTexture name="rocks-glitch idle0004" x="2678" y="0" width="2678" height="594" frameX="0" frameY="0" frameWidth="2678" frameHeight="594" />
+<SubTexture name="rocks-glitch idle0005" x="2678" y="2970" width="2678" height="593" frameX="0" frameY="-1" frameWidth="2678" frameHeight="594" />
+<SubTexture name="rocks-glitch idle0006" x="2678" y="594" width="2678" height="594" frameX="0" frameY="0" frameWidth="2678" frameHeight="594" />
+<SubTexture name="rocks-glitch idle0007" x="2678" y="1188" width="2678" height="594" frameX="0" frameY="0" frameWidth="2678" frameHeight="594" />
+<SubTexture name="rocks-glitch idle0008" x="2678" y="1782" width="2678" height="594" frameX="0" frameY="0" frameWidth="2678" frameHeight="594" />
+<SubTexture name="rocks-glitch idle0009" x="0" y="2376" width="2678" height="594" frameX="0" frameY="0" frameWidth="2678" frameHeight="594" />
+<SubTexture name="rocks-glitch idle0010" x="2678" y="2376" width="2678" height="594" frameX="0" frameY="0" frameWidth="2678" frameHeight="594" />
+<SubTexture name="rocks-glitch idle0011" x="0" y="2970" width="2678" height="594" frameX="0" frameY="0" frameWidth="2678" frameHeight="594" />
+</TextureAtlas>

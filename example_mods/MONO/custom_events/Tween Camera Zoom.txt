@@ -1,0 +1,6 @@
+This events makes the camera zoom tween and stay where it's zooomed
+
+VALUE 1: Zoom, Tween or not (put true, leave it blank if false)
+VALUE 2: The Time and The Ease
+
+Script by Raimbowcore12

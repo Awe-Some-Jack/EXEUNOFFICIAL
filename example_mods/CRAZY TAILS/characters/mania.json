@@ -1,0 +1,87 @@
+{
+	"animations": [
+		{
+			"offsets": [167, -260],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "lefty"
+		},
+		{
+			"offsets": [-3, -323],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [31, -99],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [-87, -240],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"loop": true,
+			"offsets": [73, -222],
+			"anim": "danceLeft",
+			"fps": 18,
+			"name": "l ",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [114, -226],
+			"anim": "danceRight",
+			"fps": 18,
+			"name": "r ",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [50, -140],
+			"anim": "s",
+			"fps": 24,
+			"name": "sonic",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [69, -135],
+			"anim": "d",
+			"fps": 24,
+			"name": "dasik",
+			"indices": []
+		},
+		{
+			"offsets": [117, -104],
+			"loop": true,
+			"fps": 24,
+			"anim": "r",
+			"indices": [],
+			"name": "risa"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/shtails",
+	"position": [30, 20],
+	"healthicon": "crazytails",
+	"flip_x": false,
+	"healthbar_colors": [255, 178, 109],
+	"camera_position": [-170, 120],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

@@ -1,0 +1,3 @@
+[
+    moveStrums[bf, lord x, bffall, bfback], fadeStrums[back], let's begin, part1[moveBF, Xtime] part2, part3, part4
+]

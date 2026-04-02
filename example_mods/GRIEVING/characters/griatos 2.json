@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [655, 169],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [175, 1067],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"offsets": [274, 93],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [-26, 179],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "rigth"
+		},
+		{
+			"loop": true,
+			"offsets": [-40, 25],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/griatos P2",
+	"position": [0, 200],
+	"healthicon": "griatos",
+	"flip_x": false,
+	"healthbar_colors": [53, 54, 102],
+	"camera_position": [-380, -20],
+	"sing_duration": 14,
+	"scale": 2.6,
+	"_editor_isPlayer": false
+}

@@ -1,0 +1,2 @@
+Value 1 : char target,char name
+Value 2 : anim name

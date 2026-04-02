@@ -1,0 +1,7 @@
+Sets the customCameras's zoom
+[
+    v1 = OGZoom, MiddleZoom
+    v2 = Zoom
+]
+
+Script By Raimbowcore12 

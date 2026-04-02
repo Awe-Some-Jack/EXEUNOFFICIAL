@@ -1,0 +1,63 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [195, 83],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-3, 93],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [189, 1],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-16, 330],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"offsets": [-17, 1],
+			"indices": [],
+			"fps": 24,
+			"anim": "risa",
+			"loop": true,
+			"name": "risa"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/GOD",
+	"position": [-210, 50],
+	"healthicon": "god",
+	"flip_x": false,
+	"healthbar_colors": [49, 24, 168],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 2,
+	"_editor_isPlayer": false
+}

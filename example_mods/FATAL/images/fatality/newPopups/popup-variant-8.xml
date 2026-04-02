@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="popup-variant-8.png">
+<SubTexture name="intro0000" x="0" y="0" width="220" height="237" frameX="0" frameY="0" frameWidth="216" frameHeight="233" />
+<SubTexture name="intro0001" x="440" y="0" width="200" height="212" frameX="-6" frameY="-25" frameWidth="216" frameHeight="233" />
+<SubTexture name="intro0002" x="0" y="237" width="175" height="167" frameX="-29" frameY="-26" frameWidth="216" frameHeight="233" />
+<SubTexture name="intro0003" x="175" y="237" width="159" height="159" frameX="-35" frameY="-30" frameWidth="216" frameHeight="233" />
+<SubTexture name="intro0004" x="334" y="237" width="154" height="154" frameX="-38" frameY="-33" frameWidth="216" frameHeight="233" />
+<SubTexture name="end0000" x="0" y="404" width="156" height="125" frameX="-37" frameY="-46" frameWidth="216" frameHeight="233" />
+<SubTexture name="end0001" x="156" y="404" width="214" height="32" frameX="-6" frameY="-99" frameWidth="216" frameHeight="233" />
+<SubTexture name="end0002" x="220" y="0" width="220" height="237" frameX="0" frameY="0" frameWidth="216" frameHeight="233" />
+</TextureAtlas>

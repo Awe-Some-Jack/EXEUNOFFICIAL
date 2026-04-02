@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="fletway2.png" width="6803" height="6378">
+	<SubTexture name="Fleetwag Grrr instancia 10000.png" x="3965" y="2218" width="554" height="705" frameX="-37" frameY="-72" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10001.png" x="747" y="4163" width="701" height="555" rotated="true" frameX="-25" frameY="-74" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10002.png" x="758" y="1329" width="752" height="565" rotated="true" frameX="-19" frameY="-8" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10003.png" x="2281" y="1" width="570" height="747" frameX="-4" frameY="-10" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10004.png" x="3415" y="1502" width="544" height="743" frameX="-25" frameY="-18" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10005.png" x="1712" y="1" width="565" height="752" frameX="-19" frameY="-8" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10006.png" x="2854" y="752" width="570" height="746" frameX="-3" frameY="-9" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10007.png" x="1" y="3616" width="742" height="544" rotated="true" frameX="-25" frameY="-18" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10008.png" x="1514" y="1329" width="752" height="566" rotated="true" frameX="-18" frameY="-7" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10009.png" x="2844" y="2254" width="570" height="746" frameX="-3" frameY="-9" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10010.png" x="747" y="3616" width="742" height="543" rotated="true" frameX="-25" frameY="-17" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10011.png" x="571" y="1" width="566" height="753" frameX="-18" frameY="-6" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10012.png" x="2855" y="1" width="569" height="746" frameX="-3" frameY="-8" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10013.png" x="1493" y="3590" width="742" height="543" rotated="true" frameX="-25" frameY="-17" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10014.png" x="1" y="759" width="753" height="566" rotated="true" frameX="-17" frameY="-5" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10015.png" x="1" y="3043" width="746" height="569" rotated="true" frameX="-3" frameY="-8" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10016.png" x="2239" y="3589" width="742" height="543" rotated="true" frameX="-24" frameY="-16" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10017.png" x="1515" y="758" width="752" height="566" rotated="true" frameX="-17" frameY="-5" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10018.png" x="2254" y="3005" width="746" height="570" rotated="true" frameX="-2" frameY="-7" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10019.png" x="758" y="1898" width="752" height="566" rotated="true" frameX="-16" frameY="-4" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10020.png" x="2281" y="752" width="569" height="747" frameX="-2" frameY="-6" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10021.png" x="2985" y="3579" width="742" height="543" rotated="true" frameX="-24" frameY="-14" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10022.png" x="1" y="1900" width="752" height="566" rotated="true" frameX="-16" frameY="-4" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10023.png" x="2270" y="1503" width="568" height="747" frameX="-2" frameY="-5" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10024.png" x="3428" y="751" width="543" height="743" frameX="-24" frameY="-14" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10025.png" x="758" y="758" width="753" height="567" rotated="true" frameX="-15" frameY="-3" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10026.png" x="1" y="2470" width="747" height="569" rotated="true" frameX="-1" frameY="-5" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10027.png" x="751" y="3043" width="743" height="543" rotated="true" frameX="-24" frameY="-13" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10028.png" x="1141" y="1" width="567" height="753" frameX="-15" frameY="-2" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10029.png" x="752" y="2470" width="747" height="569" rotated="true" frameX="-1" frameY="-4" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10030.png" x="1498" y="3043" width="743" height="542" rotated="true" frameX="-24" frameY="-13" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10031.png" x="1" y="1" width="566" height="754" frameX="-14" frameY="-1" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10032.png" x="1503" y="2470" width="747" height="569" rotated="true" frameX="-1" frameY="-4" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10033.png" x="3418" y="2249" width="543" height="743" frameX="-23" frameY="-12" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10034.png" x="1" y="1329" width="753" height="567" rotated="true" frameX="-14" frameY="-1" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10035.png" x="2270" y="2254" width="570" height="747" frameX="-0" frameY="-3" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10036.png" x="3004" y="3004" width="743" height="543" rotated="true" frameX="-23" frameY="-11" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10037.png" x="1514" y="1899" width="752" height="567" rotated="true" frameX="-13" frameY="-0" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10038.png" x="2842" y="1503" width="569" height="747" frameX="-0" frameY="-2" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10039.png" x="3428" y="1" width="571" height="746" frameX="-0" frameY="-2" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetwag Grrr instancia 10040.png" x="4003" y="1" width="542" height="742" frameX="-23" frameY="-11" frameWidth="594" frameHeight="781"/>
+	<SubTexture name="Fleetway Scream instancia 10000.png" x="1364" y="4824" width="671" height="498" rotated="true" frameX="-0" frameY="-39" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10001.png" x="4390" y="4320" width="668" height="476" rotated="true" frameX="-18" frameY="-47" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10002.png" x="3617" y="4814" width="670" height="496" rotated="true" frameX="-9" frameY="-36" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10003.png" x="5137" y="1343" width="494" height="665" frameX="-3" frameY="-38" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10004.png" x="2039" y="4824" width="671" height="478" rotated="true" frameX="-17" frameY="-30" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10005.png" x="1" y="4827" width="680" height="504" rotated="true" frameX="-5" frameY="-20" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10006.png" x="5153" y="1" width="497" height="668" frameX="-1" frameY="-20" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10007.png" x="5153" y="673" width="474" height="666" frameX="-19" frameY="-27" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10008.png" x="4291" y="4814" width="670" height="496" rotated="true" frameX="-9" frameY="-15" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10009.png" x="5132" y="2012" width="494" height="665" frameX="-3" frameY="-17" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10010.png" x="4965" y="4800" width="667" height="474" rotated="true" frameX="-19" frameY="-13" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10011.png" x="685" y="4827" width="675" height="500" rotated="true" frameX="-7" frameY="-3" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10012.png" x="5132" y="4015" width="491" height="660" frameX="-5" frameY="-7" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10013.png" x="1" y="5335" width="658" height="469" rotated="true" frameX="-23" frameY="-14" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10014.png" x="5132" y="2681" width="491" height="664" frameX="-12" frameY="-0" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10015.png" x="2039" y="5306" width="658" height="491" rotated="true" frameX="-5" frameY="-2" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10016.png" x="5631" y="673" width="447" height="628" frameX="-36" frameY="-28" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10017.png" x="685" y="5331" width="635" height="471" rotated="true" frameX="-24" frameY="-19" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10018.png" x="1324" y="5331" width="631" height="470" rotated="true" frameX="-18" frameY="-21" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Scream instancia 10019.png" x="5631" y="673" width="447" height="628" frameX="-36" frameY="-28" frameWidth="511" frameHeight="719"/>
+	<SubTexture name="Fleetway Stepltup instancia 10000.png" x="5636" y="4583" width="534" height="603" frameX="-37" frameY="-122" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10001.png" x="5636" y="3327" width="526" height="624" frameX="-41" frameY="-91" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10002.png" x="4965" y="5278" width="626" height="516" rotated="true" frameX="-44" frameY="-74" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10003.png" x="5595" y="5278" width="603" height="525" rotated="true" frameX="-39" frameY="-99" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10004.png" x="5635" y="1305" width="535" height="603" frameX="-28" frameY="-94" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10005.png" x="5636" y="3955" width="526" height="624" frameX="-26" frameY="-76" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10006.png" x="4496" y="2927" width="562" height="693" frameX="-0" frameY="-2" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10007.png" x="4542" y="1404" width="537" height="690" frameX="-20" frameY="-10" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10008.png" x="3731" y="3649" width="699" height="557" rotated="true" frameX="-15" frameY="-0" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10009.png" x="4523" y="2218" width="562" height="693" frameX="-0" frameY="-2" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10010.png" x="5627" y="2681" width="535" height="642" frameX="-69" frameY="-56" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10011.png" x="2714" y="5221" width="651" height="565" rotated="true" frameX="-54" frameY="-47" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10012.png" x="5654" y="1" width="564" height="645" frameX="-47" frameY="-55" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10013.png" x="5630" y="2012" width="535" height="642" frameX="-69" frameY="-62" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10014.png" x="4469" y="5798" width="577" height="579" frameX="-104" frameY="-152" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10015.png" x="2701" y="5790" width="588" height="580" rotated="true" frameX="-113" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10016.png" x="1" y="5808" width="590" height="569" rotated="true" frameX="-109" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10017.png" x="6222" y="593" width="579" height="577" rotated="true" frameX="-104" frameY="-152" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10018.png" x="3293" y="5790" width="588" height="580" rotated="true" frameX="-113" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10019.png" x="663" y="5807" width="590" height="570" rotated="true" frameX="-109" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10020.png" x="6202" y="1174" width="579" height="577" rotated="true" frameX="-104" frameY="-152" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10021.png" x="3885" y="5314" width="580" height="588" frameX="-113" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10022.png" x="1257" y="5807" width="590" height="570" rotated="true" frameX="-109" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10023.png" x="6202" y="1755" width="579" height="577" rotated="true" frameX="-104" frameY="-152" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10024.png" x="6222" y="1" width="580" height="588" frameX="-113" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10025.png" x="1851" y="5807" width="590" height="570" rotated="true" frameX="-109" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10026.png" x="6202" y="2336" width="579" height="577" rotated="true" frameX="-104" frameY="-152" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10027.png" x="6222" y="1" width="580" height="588" frameX="-113" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10028.png" x="1851" y="5807" width="590" height="570" rotated="true" frameX="-109" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10029.png" x="6202" y="2336" width="579" height="577" rotated="true" frameX="-104" frameY="-152" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10030.png" x="6222" y="1" width="580" height="588" frameX="-113" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10031.png" x="1851" y="5807" width="590" height="570" rotated="true" frameX="-109" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10032.png" x="6202" y="2336" width="579" height="577" rotated="true" frameX="-104" frameY="-152" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10033.png" x="6222" y="1" width="580" height="588" frameX="-113" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="Fleetway Stepltup instancia 10034.png" x="1851" y="5807" width="590" height="570" rotated="true" frameX="-109" frameY="-143" frameWidth="696" frameHeight="736"/>
+	<SubTexture name="wgay instancia 10000.png" x="5132" y="3349" width="499" height="662" frameX="-188" frameY="-67" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10001.png" x="2942" y="4692" width="671" height="525" rotated="true" frameX="-176" frameY="-57" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10002.png" x="4434" y="3649" width="694" height="667" rotated="true" frameX="-0" frameY="-10" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10003.png" x="1493" y="4137" width="703" height="683" rotated="true" frameX="-0" frameY="-0" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10004.png" x="1" y="4164" width="738" height="659" rotated="true" frameX="-0" frameY="-10" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10005.png" x="3751" y="2996" width="741" height="649" rotated="true" frameX="-0" frameY="-9" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10006.png" x="3975" y="751" width="554" height="718" frameX="-75" frameY="-45" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10007.png" x="3965" y="1498" width="573" height="716" frameX="-66" frameY="-48" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10008.png" x="3688" y="4210" width="698" height="600" rotated="true" frameX="-40" frameY="-79" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10009.png" x="2985" y="4126" width="699" height="562" rotated="true" frameX="-70" frameY="-78" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10010.png" x="4549" y="703" width="584" height="697" frameX="-60" frameY="-80" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10011.png" x="4549" y="1" width="600" height="698" frameX="-40" frameY="-79" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10012.png" x="2239" y="4136" width="699" height="562" rotated="true" frameX="-70" frameY="-78" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10013.png" x="4549" y="703" width="584" height="697" frameX="-60" frameY="-80" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10014.png" x="4549" y="1" width="600" height="698" frameX="-40" frameY="-79" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10015.png" x="2239" y="4136" width="699" height="562" rotated="true" frameX="-70" frameY="-78" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10016.png" x="4549" y="703" width="584" height="697" frameX="-60" frameY="-80" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10017.png" x="4549" y="1" width="600" height="698" frameX="-40" frameY="-79" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10018.png" x="2239" y="4136" width="699" height="562" rotated="true" frameX="-70" frameY="-78" frameWidth="705" frameHeight="781"/>
+	<SubTexture name="wgay instancia 10019.png" x="4549" y="703" width="584" height="697" frameX="-60" frameY="-80" frameWidth="705" frameHeight="781"/>
+</TextureAtlas>

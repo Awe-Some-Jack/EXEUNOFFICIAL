@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="moviesonic.png"><SubTexture name="moviesonic down0000" x="1496" y="2975" width="798" height="529" frameX="-163" frameY="-26" frameWidth="961" frameHeight="558" />
+<SubTexture name="moviesonic down0001" x="0" y="2975" width="748" height="547" frameX="-186" frameY="-10" frameWidth="961" frameHeight="558" />
+<SubTexture name="moviesonic down0002" x="748" y="2975" width="748" height="547" frameX="-186" frameY="-10" frameWidth="961" frameHeight="558" />
+<SubTexture name="moviesonic down0003" x="3043" y="0" width="736" height="553" frameX="-191" frameY="-5" frameWidth="961" frameHeight="558" />
+<SubTexture name="moviesonic down0004" x="2211" y="2289" width="721" height="557" frameX="-198" frameY="-1" frameWidth="961" frameHeight="558" />
+<SubTexture name="moviesonic idle0000" x="1472" y="1555" width="482" height="726" frameX="-14" frameY="-7" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0001" x="1472" y="1555" width="482" height="726" frameX="-14" frameY="-7" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0002" x="1954" y="1555" width="488" height="724" frameX="-7" frameY="-9" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0003" x="1954" y="1555" width="488" height="724" frameX="-7" frameY="-9" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0004" x="2024" y="734" width="488" height="729" frameX="-3" frameY="-5" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0005" x="2024" y="734" width="488" height="729" frameX="-3" frameY="-5" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0006" x="2024" y="0" width="489" height="734" frameX="-2" frameY="0" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0007" x="2024" y="0" width="489" height="734" frameX="-2" frameY="0" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0008" x="0" y="1555" width="490" height="734" frameX="-1" frameY="0" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0009" x="0" y="1555" width="490" height="734" frameX="-1" frameY="0" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0010" x="490" y="1555" width="491" height="734" frameX="0" frameY="0" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0011" x="490" y="1555" width="491" height="734" frameX="0" frameY="0" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0012" x="981" y="1555" width="491" height="734" frameX="0" frameY="0" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic idle0013" x="981" y="1555" width="491" height="734" frameX="0" frameY="0" frameWidth="496" frameHeight="734" />
+<SubTexture name="moviesonic left0000" x="0" y="811" width="474" height="744" frameX="0" frameY="0" frameWidth="474" frameHeight="744" />
+<SubTexture name="moviesonic left0001" x="474" y="811" width="472" height="744" frameX="0" frameY="0" frameWidth="474" frameHeight="744" />
+<SubTexture name="moviesonic left0002" x="474" y="811" width="472" height="744" frameX="0" frameY="0" frameWidth="474" frameHeight="744" />
+<SubTexture name="moviesonic left0003" x="946" y="811" width="468" height="744" frameX="-2" frameY="0" frameWidth="474" frameHeight="744" />
+<SubTexture name="moviesonic left0004" x="1414" y="811" width="467" height="744" frameX="-2" frameY="0" frameWidth="474" frameHeight="744" />
+<SubTexture name="moviesonic right0000" x="535" y="2289" width="554" height="678" frameX="-2" frameY="-33" frameWidth="878" frameHeight="711" />
+<SubTexture name="moviesonic right0001" x="1650" y="2289" width="561" height="676" frameX="0" frameY="-35" frameWidth="878" frameHeight="711" />
+<SubTexture name="moviesonic right0002" x="1089" y="2289" width="561" height="677" frameX="0" frameY="-34" frameWidth="878" frameHeight="711" />
+<SubTexture name="moviesonic right0003" x="0" y="2289" width="535" height="686" frameX="-8" frameY="-25" frameWidth="878" frameHeight="711" />
+<SubTexture name="moviesonic right0004" x="2513" y="0" width="530" height="687" frameX="-10" frameY="-24" frameWidth="878" frameHeight="711" />
+<SubTexture name="moviesonic up0000" x="0" y="0" width="501" height="811" frameX="0" frameY="0" frameWidth="514" frameHeight="811" />
+<SubTexture name="moviesonic up0001" x="501" y="0" width="506" height="811" frameX="-1" frameY="0" frameWidth="514" frameHeight="811" />
+<SubTexture name="moviesonic up0002" x="501" y="0" width="506" height="811" frameX="-1" frameY="0" frameWidth="514" frameHeight="811" />
+<SubTexture name="moviesonic up0003" x="1007" y="0" width="508" height="795" frameX="-5" frameY="-15" frameWidth="514" frameHeight="811" />
+<SubTexture name="moviesonic up0004" x="1515" y="0" width="509" height="794" frameX="-5" frameY="-16" frameWidth="514" frameHeight="811" />
+</TextureAtlas>

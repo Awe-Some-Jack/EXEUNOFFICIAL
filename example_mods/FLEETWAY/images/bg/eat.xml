@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="eat.png">
+	<!-- Created with Adobe Animate version 24.0.10.14 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="eat this instancia 10000" x="40" y="40" width="37" height="54" frameX="-724" frameY="-355" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10001" x="40" y="40" width="37" height="54" frameX="-724" frameY="-355" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10002" x="152" y="40" width="115" height="94" frameX="-678" frameY="-343" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10003" x="152" y="40" width="115" height="94" frameX="-678" frameY="-343" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10004" x="342" y="40" width="281" height="187" frameX="-608" frameY="-291" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10005" x="698" y="40" width="281" height="187" frameX="-608" frameY="-291" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10006" x="1054" y="40" width="518" height="343" frameX="-506" frameY="-227" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10007" x="1647" y="40" width="518" height="343" frameX="-506" frameY="-227" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10008" x="2240" y="40" width="565" height="428" frameX="-451" frameY="-177" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10009" x="2880" y="40" width="621" height="491" frameX="-416" frameY="-84" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10010" x="3576" y="40" width="621" height="491" frameX="-416" frameY="-84" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10011" x="4272" y="40" width="645" height="457" frameX="-417" frameY="-129" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10012" x="4992" y="40" width="833" height="464" frameX="-329" frameY="-139" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10013" x="40" y="606" width="833" height="484" frameX="-329" frameY="-119" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10014" x="948" y="606" width="980" height="505" frameX="-264" frameY="-129" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10015" x="2003" y="606" width="1223" height="761" frameX="-156" frameY="-2" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10016" x="3301" y="606" width="1500" height="761" frameX="0" frameY="-2" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10017" x="4876" y="606" width="1375" height="763" frameX="-35" frameY="0" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10018" x="40" y="1444" width="1375" height="703" frameX="-35" frameY="0" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10019" x="1490" y="1444" width="1033" height="639" frameX="-219" frameY="-35" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10020" x="2598" y="1444" width="1026" height="703" frameX="-225" frameY="-26" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10021" x="3699" y="1444" width="1026" height="655" frameX="-225" frameY="-76" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10022" x="4800" y="1444" width="1026" height="674" frameX="-225" frameY="-76" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10023" x="40" y="2222" width="1026" height="599" frameX="-225" frameY="-76" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10026" x="3343" y="2222" width="1026" height="598" frameX="-225" frameY="-76" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10027" x="1141" y="2222" width="1026" height="598" frameX="-225" frameY="-76" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10028" x="4444" y="2222" width="980" height="534" frameX="-264" frameY="-100" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10029" x="5499" y="2222" width="833" height="454" frameX="-329" frameY="-149" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10030" x="40" y="40" width="37" height="54" frameX="-724" frameY="-355" frameWidth="1500" frameHeight="763"/>
+	<SubTexture name="eat this instancia 10031" x="40" y="2896" width="0" height="0" frameX="-135" frameY="-49" frameWidth="1500" frameHeight="763"/>
+</TextureAtlas>

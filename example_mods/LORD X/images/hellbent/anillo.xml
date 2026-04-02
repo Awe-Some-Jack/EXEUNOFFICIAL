@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="anillo.png">
+	<!-- Created with Adobe Animate version 24.0.10.14 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="ring instancia 10000" x="40" y="40" width="1437" height="1324" frameX="-42" frameY="-87" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10001" x="1552" y="40" width="1542" height="1407" frameX="0" frameY="-25" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10002" x="3169" y="40" width="1538" height="1423" frameX="-5" frameY="-9" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10003" x="40" y="1538" width="1434" height="1364" frameX="-56" frameY="-46" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10004" x="1549" y="1538" width="1536" height="1514" frameX="-6" frameY="0" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10005" x="3160" y="1538" width="1224" height="1242" frameX="-111" frameY="-144" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10006" x="40" y="3127" width="1348" height="1248" frameX="-71" frameY="-98" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10007" x="40" y="40" width="1437" height="1324" frameX="-42" frameY="-87" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10008" x="1552" y="40" width="1542" height="1407" frameX="0" frameY="-25" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10009" x="3169" y="40" width="1538" height="1423" frameX="-5" frameY="-9" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10010" x="40" y="1538" width="1434" height="1364" frameX="-56" frameY="-46" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10011" x="1549" y="1538" width="1536" height="1514" frameX="-6" frameY="0" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10012" x="3160" y="1538" width="1224" height="1242" frameX="-111" frameY="-144" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10013" x="40" y="3127" width="1348" height="1248" frameX="-71" frameY="-98" frameWidth="1543" frameHeight="1514"/>
+	<SubTexture name="ring instancia 10014" x="40" y="40" width="1437" height="1324" frameX="-42" frameY="-87" frameWidth="1543" frameHeight="1514"/>
+</TextureAtlas>

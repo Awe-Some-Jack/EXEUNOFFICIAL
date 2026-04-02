@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="fateP3cortas.png" width="4540" height="4802">
+	<SubTexture name="LX down alt instancia 10000.png" x="3640" y="4150" width="584" height="593" frameX="-57" frameY="-2" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10001.png" x="1435" y="4174" width="539" height="609" rotated="true" frameX="-36" frameY="-57" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10002.png" x="626" y="4197" width="544" height="603" rotated="true" frameX="-36" frameY="-52" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10003.png" x="626" y="4197" width="544" height="603" rotated="true" frameX="-36" frameY="-52" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10004.png" x="626" y="4197" width="544" height="603" rotated="true" frameX="-36" frameY="-52" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10005.png" x="626" y="4197" width="544" height="603" rotated="true" frameX="-36" frameY="-52" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10006.png" x="626" y="4197" width="544" height="603" rotated="true" frameX="-36" frameY="-52" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10007.png" x="626" y="4197" width="544" height="603" rotated="true" frameX="-36" frameY="-52" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10008.png" x="1978" y="4197" width="544" height="603" rotated="true" frameX="-36" frameY="-52" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10009.png" x="1978" y="4197" width="544" height="603" rotated="true" frameX="-36" frameY="-52" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10010.png" x="2526" y="4197" width="536" height="597" rotated="true" frameX="-50" frameY="-63" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10011.png" x="2526" y="4197" width="536" height="597" rotated="true" frameX="-50" frameY="-63" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10012.png" x="3066" y="4197" width="570" height="595" frameX="-77" frameY="-5" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10013.png" x="1464" y="1487" width="728" height="670" frameX="-0" frameY="-1" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX down alt instancia 10014.png" x="1464" y="1487" width="728" height="670" frameX="-0" frameY="-1" frameWidth="728" frameHeight="671"/>
+	<SubTexture name="LX left alt instancia 10000.png" x="3505" y="3500" width="583" height="646" frameX="-3" frameY="-10" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10001.png" x="3963" y="1" width="576" height="651" frameX="-11" frameY="-9" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10002.png" x="3963" y="656" width="576" height="651" frameX="-11" frameY="-9" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10003.png" x="3962" y="1311" width="576" height="651" frameX="-11" frameY="-9" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10004.png" x="3962" y="1311" width="576" height="651" frameX="-11" frameY="-9" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10005.png" x="3962" y="1311" width="576" height="651" frameX="-11" frameY="-9" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10006.png" x="3962" y="1311" width="576" height="651" frameX="-11" frameY="-9" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10007.png" x="3957" y="1966" width="576" height="651" frameX="-11" frameY="-9" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10008.png" x="3957" y="1966" width="576" height="651" frameX="-11" frameY="-9" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10009.png" x="3598" y="2826" width="581" height="646" frameX="-11" frameY="-14" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10010.png" x="3598" y="2826" width="581" height="646" frameX="-11" frameY="-14" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10011.png" x="1" y="4197" width="621" height="604" rotated="true" frameX="-10" frameY="-41" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10012.png" x="1439" y="2161" width="723" height="668" frameX="-0" frameY="-0" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10013.png" x="2618" y="1" width="668" height="722" rotated="true" frameX="-0" frameY="-0" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX left alt instancia 10014.png" x="1441" y="2833" width="715" height="668" frameX="-1" frameY="-0" frameWidth="723" frameHeight="668"/>
+	<SubTexture name="LX right alt instancia 10000.png" x="1" y="1" width="908" height="518" frameX="-82" frameY="-86" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10001.png" x="1" y="523" width="833" height="518" frameX="-71" frameY="-92" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10002.png" x="913" y="1" width="518" height="833" rotated="true" frameX="-69" frameY="-91" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10003.png" x="913" y="1" width="518" height="833" rotated="true" frameX="-69" frameY="-91" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10004.png" x="913" y="1" width="518" height="833" rotated="true" frameX="-69" frameY="-91" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10005.png" x="913" y="1" width="518" height="833" rotated="true" frameX="-69" frameY="-91" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10006.png" x="913" y="1" width="518" height="833" rotated="true" frameX="-69" frameY="-91" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10007.png" x="1" y="1045" width="833" height="518" frameX="-69" frameY="-91" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10008.png" x="1435" y="1" width="520" height="832" rotated="true" frameX="-69" frameY="-88" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10009.png" x="1435" y="1" width="520" height="832" rotated="true" frameX="-69" frameY="-88" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10010.png" x="838" y="838" width="811" height="517" frameX="-0" frameY="-88" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10011.png" x="766" y="2111" width="669" height="725" rotated="true" frameX="-54" frameY="-0" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10012.png" x="766" y="2111" width="669" height="725" rotated="true" frameX="-54" frameY="-0" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10013.png" x="2160" y="2833" width="715" height="669" frameX="-60" frameY="-0" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX right alt instancia 10014.png" x="2160" y="2833" width="715" height="669" frameX="-60" frameY="-0" frameWidth="991" frameHeight="669"/>
+	<SubTexture name="LX up alt instancia 10000.png" x="1" y="1567" width="761" height="615" rotated="true" frameX="-25" frameY="-0" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10001.png" x="838" y="1359" width="622" height="748" frameX="-14" frameY="-11" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10002.png" x="838" y="1359" width="622" height="748" frameX="-14" frameY="-11" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10003.png" x="838" y="1359" width="622" height="748" frameX="-14" frameY="-11" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10004.png" x="838" y="1359" width="622" height="748" frameX="-14" frameY="-11" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10005.png" x="838" y="1359" width="622" height="748" frameX="-14" frameY="-11" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10006.png" x="838" y="1359" width="622" height="748" frameX="-14" frameY="-11" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10007.png" x="838" y="1359" width="622" height="748" frameX="-14" frameY="-11" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10008.png" x="1959" y="752" width="620" height="731" frameX="-15" frameY="-27" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10009.png" x="1959" y="752" width="620" height="731" frameX="-15" frameY="-27" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10010.png" x="1959" y="752" width="620" height="731" frameX="-15" frameY="-27" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10011.png" x="2874" y="3506" width="627" height="687" frameX="-6" frameY="-81" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10012.png" x="2874" y="3506" width="627" height="687" frameX="-6" frameY="-81" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10013.png" x="1959" y="1" width="655" height="747" rotated="true" frameX="-0" frameY="-141" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="LX up alt instancia 10014.png" x="1" y="2186" width="727" height="665" frameX="-11" frameY="-162" frameWidth="747" frameHeight="829"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10000.png" x="3290" y="1" width="669" height="715" rotated="true" frameX="-1" frameY="-0" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10001.png" x="1" y="3525" width="714" height="668" frameX="-2" frameY="-0" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10002.png" x="3290" y="720" width="668" height="715" rotated="true" frameX="-1" frameY="-1" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10003.png" x="3286" y="1439" width="667" height="715" rotated="true" frameX="-1" frameY="-1" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10004.png" x="2196" y="1487" width="716" height="667" frameX="-1" frameY="-1" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10005.png" x="2879" y="2829" width="715" height="667" frameX="-2" frameY="-1" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10006.png" x="2196" y="1487" width="716" height="667" frameX="-1" frameY="-1" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10007.png" x="1" y="2855" width="716" height="666" frameX="-1" frameY="-2" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10008.png" x="721" y="2855" width="716" height="666" frameX="-1" frameY="-2" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10009.png" x="1" y="2855" width="716" height="666" frameX="-1" frameY="-2" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10010.png" x="2618" y="727" width="664" height="718" rotated="true" frameX="-0" frameY="-4" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10011.png" x="2166" y="2161" width="717" height="664" frameX="-1" frameY="-4" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10012.png" x="2618" y="727" width="664" height="718" rotated="true" frameX="-0" frameY="-4" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10013.png" x="1441" y="3505" width="713" height="664" frameX="-4" frameY="-3" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10014.png" x="719" y="3525" width="712" height="664" frameX="-5" frameY="-3" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10015.png" x="1441" y="3505" width="713" height="664" frameX="-4" frameY="-3" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10016.png" x="2887" y="2158" width="713" height="664" frameX="-2" frameY="-6" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10017.png" x="2158" y="3506" width="712" height="664" frameX="-3" frameY="-6" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10018.png" x="2887" y="2158" width="713" height="664" frameX="-2" frameY="-6" frameWidth="718" frameHeight="670"/>
+	<SubTexture name="SÃ­mbolo 59 instancia 10019.png" x="2158" y="3506" width="712" height="664" frameX="-3" frameY="-6" frameWidth="718" frameHeight="670"/>
+</TextureAtlas>

@@ -1,0 +1,23 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [172, 218],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Símbolo 74",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/x/",
+	"position": [-90, -70],
+	"healthicon": "lordx-p3",
+	"flip_x": false,
+	"healthbar_colors": [86, 90, 103],
+	"camera_position": [-30, 260],
+	"sing_duration": 8,
+	"scale": 1.6,
+	"_editor_isPlayer": false
+}

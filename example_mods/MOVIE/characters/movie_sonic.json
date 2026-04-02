@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [260, -160],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "moviesonic down",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "moviesonic idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-9, 7],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "moviesonic left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-10, 10],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "moviesonic right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [14, 75],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "moviesonic up",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/moviesonic",
+	"position": [0, 50],
+	"healthicon": "mom",
+	"flip_x": true,
+	"healthbar_colors": [36, 105, 215],
+	"camera_position": [-140, 60],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

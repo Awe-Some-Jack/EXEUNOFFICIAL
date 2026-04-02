@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bgglitch.png">
+<SubTexture name="bgglitch idle0000" x="0" y="0" width="699" height="409" frameX="0" frameY="0" frameWidth="689" frameHeight="399" />
+<SubTexture name="bgglitch idle0001" x="699" y="0" width="699" height="409" frameX="0" frameY="0" frameWidth="689" frameHeight="399" />
+<SubTexture name="bgglitch idle0002" x="0" y="409" width="699" height="409" frameX="0" frameY="0" frameWidth="689" frameHeight="399" />
+<SubTexture name="bgglitch idle0003" x="699" y="409" width="699" height="409" frameX="0" frameY="0" frameWidth="689" frameHeight="399" />
+</TextureAtlas>

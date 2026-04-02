@@ -1,0 +1,46 @@
+{
+	"storyName": "fatal error",
+	"difficulties": "",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"startUnlocked": true,
+	"hideStoryMode": true,
+	"songs": [
+		[
+			"fatality",
+			"icon-fatal-sonic",
+			[
+				255,
+				35,
+				15
+			]
+		],
+		[
+			"critical error",
+			"icon-true-fatal",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Custom Week",
+	"exeTitle": "FATAL ERROR",
+	"exeCover": "fatal",
+	"exeLabel": "EXE",
+	"exeColor": "0xFFFF230F",
+	"soundTestCode": [0, 0, false]
+}

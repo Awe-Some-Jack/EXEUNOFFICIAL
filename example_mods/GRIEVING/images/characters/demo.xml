@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="demo.png" width="4752" height="5008">
+	<SubTexture name="down instancia 10000.png" x="1" y="4054" width="555" height="458" frameX="-0" frameY="-116" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10001.png" x="1" y="4054" width="555" height="458" frameX="-0" frameY="-116" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10002.png" x="560" y="4054" width="544" height="450" frameX="-8" frameY="-124" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10003.png" x="560" y="4054" width="544" height="450" frameX="-8" frameY="-124" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10004.png" x="4290" y="1" width="461" height="539" rotated="true" frameX="-13" frameY="-113" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10005.png" x="4290" y="1" width="461" height="539" rotated="true" frameX="-13" frameY="-113" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10006.png" x="4289" y="2209" width="462" height="538" rotated="true" frameX="-16" frameY="-112" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10007.png" x="4289" y="2209" width="462" height="538" rotated="true" frameX="-16" frameY="-112" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10008.png" x="4289" y="580" width="462" height="539" rotated="true" frameX="-15" frameY="-112" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10009.png" x="4289" y="580" width="462" height="539" rotated="true" frameX="-15" frameY="-112" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10010.png" x="4289" y="1123" width="462" height="539" rotated="true" frameX="-15" frameY="-112" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10011.png" x="4289" y="1123" width="462" height="539" rotated="true" frameX="-15" frameY="-112" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10012.png" x="4289" y="1666" width="462" height="539" rotated="true" frameX="-15" frameY="-112" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10013.png" x="4289" y="1666" width="462" height="539" rotated="true" frameX="-15" frameY="-112" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10014.png" x="2202" y="4506" width="528" height="469" frameX="-20" frameY="-105" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10015.png" x="2202" y="4506" width="528" height="469" frameX="-20" frameY="-105" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10016.png" x="3294" y="4481" width="450" height="523" frameX="-55" frameY="-52" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10017.png" x="3294" y="4481" width="450" height="523" frameX="-55" frameY="-52" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10018.png" x="3824" y="2923" width="461" height="557" frameX="-24" frameY="-28" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10019.png" x="3776" y="3484" width="462" height="557" frameX="-24" frameY="-28" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10020.png" x="1774" y="3545" width="583" height="462" rotated="true" frameX="-36" frameY="-2" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10021.png" x="2361" y="3545" width="583" height="462" rotated="true" frameX="-36" frameY="-2" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10022.png" x="1786" y="3079" width="585" height="462" rotated="true" frameX="-37" frameY="-0" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="down instancia 10023.png" x="1786" y="3079" width="585" height="462" rotated="true" frameX="-37" frameY="-0" frameWidth="555" frameHeight="586"/>
+	<SubTexture name="dudle instancia 10000.png" x="3824" y="2347" width="460" height="572" frameX="-8" frameY="-18" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10001.png" x="3824" y="2347" width="460" height="572" frameX="-8" frameY="-18" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10002.png" x="3824" y="1" width="462" height="575" frameX="-4" frameY="-15" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10003.png" x="3824" y="1" width="462" height="575" frameX="-4" frameY="-15" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10004.png" x="1806" y="2612" width="587" height="463" rotated="true" frameX="-1" frameY="-3" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10005.png" x="1806" y="2612" width="587" height="463" rotated="true" frameX="-1" frameY="-3" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10006.png" x="2840" y="1225" width="465" height="590" frameX="-0" frameY="-0" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10007.png" x="2840" y="1225" width="465" height="590" frameX="-0" frameY="-0" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10008.png" x="2849" y="2434" width="465" height="590" frameX="-0" frameY="-0" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10009.png" x="2849" y="2434" width="465" height="590" frameX="-0" frameY="-0" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10010.png" x="598" y="3065" width="590" height="465" rotated="true" frameX="-0" frameY="-0" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10011.png" x="598" y="3065" width="590" height="465" rotated="true" frameX="-0" frameY="-0" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10012.png" x="1192" y="3065" width="590" height="465" rotated="true" frameX="-0" frameY="-0" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="dudle instancia 10013.png" x="1192" y="3065" width="590" height="465" rotated="true" frameX="-0" frameY="-0" frameWidth="469" frameHeight="591"/>
+	<SubTexture name="left instancia 10000.png" x="2202" y="4011" width="542" height="491" rotated="true" frameX="-12" frameY="-43" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10001.png" x="2202" y="4011" width="542" height="491" rotated="true" frameX="-12" frameY="-43" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10002.png" x="4242" y="3484" width="506" height="538" frameX="-0" frameY="-46" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10003.png" x="4242" y="3484" width="506" height="538" frameX="-0" frameY="-46" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10004.png" x="2748" y="4011" width="542" height="497" rotated="true" frameX="-22" frameY="-42" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10005.png" x="2748" y="4011" width="542" height="497" rotated="true" frameX="-22" frameY="-42" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10006.png" x="1108" y="4011" width="543" height="497" rotated="true" frameX="-25" frameY="-41" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10007.png" x="1108" y="4011" width="543" height="497" rotated="true" frameX="-25" frameY="-41" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10008.png" x="1655" y="4011" width="543" height="496" rotated="true" frameX="-26" frameY="-41" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10009.png" x="1655" y="4011" width="543" height="496" rotated="true" frameX="-26" frameY="-41" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10010.png" x="1655" y="4011" width="543" height="496" rotated="true" frameX="-26" frameY="-41" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10011.png" x="1655" y="4011" width="543" height="496" rotated="true" frameX="-26" frameY="-41" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10012.png" x="1655" y="4011" width="543" height="496" rotated="true" frameX="-26" frameY="-41" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10013.png" x="1655" y="4011" width="543" height="496" rotated="true" frameX="-26" frameY="-41" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10014.png" x="3294" y="3937" width="477" height="540" frameX="-49" frameY="-43" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10015.png" x="3294" y="3937" width="477" height="540" frameX="-49" frameY="-43" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10016.png" x="4289" y="2751" width="422" height="535" frameX="-110" frameY="-48" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10017.png" x="4289" y="2751" width="422" height="535" frameX="-110" frameY="-48" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10018.png" x="3318" y="2946" width="454" height="584" frameX="-193" frameY="-1" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10019.png" x="1" y="3596" width="584" height="454" rotated="true" frameX="-193" frameY="-1" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10020.png" x="2375" y="3079" width="585" height="460" rotated="true" frameX="-196" frameY="-0" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10021.png" x="2375" y="3079" width="585" height="460" rotated="true" frameX="-196" frameY="-0" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10022.png" x="3359" y="1" width="461" height="585" frameX="-197" frameY="-0" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="left instancia 10023.png" x="3359" y="1" width="461" height="585" frameX="-197" frameY="-0" frameWidth="658" frameHeight="585"/>
+	<SubTexture name="right instancia 10000.png" x="1" y="2145" width="615" height="531" frameX="-58" frameY="-45" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10001.png" x="1" y="2145" width="615" height="531" frameX="-58" frameY="-45" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10002.png" x="2365" y="1" width="524" height="608" rotated="true" frameX="-43" frameY="-52" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10003.png" x="2365" y="613" width="524" height="608" rotated="true" frameX="-43" frameY="-52" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10004.png" x="620" y="2145" width="614" height="524" frameX="-28" frameY="-52" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10005.png" x="620" y="2145" width="614" height="524" frameX="-28" frameY="-52" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10006.png" x="1837" y="624" width="524" height="617" rotated="true" frameX="-26" frameY="-52" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10007.png" x="1819" y="1245" width="524" height="617" rotated="true" frameX="-26" frameY="-52" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10008.png" x="1" y="1618" width="619" height="523" frameX="-25" frameY="-53" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10009.png" x="1" y="1618" width="619" height="523" frameX="-25" frameY="-53" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10010.png" x="1837" y="1" width="524" height="619" rotated="true" frameX="-25" frameY="-52" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10011.png" x="1837" y="1" width="524" height="619" rotated="true" frameX="-25" frameY="-52" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10012.png" x="1837" y="1" width="524" height="619" rotated="true" frameX="-25" frameY="-52" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10013.png" x="1837" y="1" width="524" height="619" rotated="true" frameX="-25" frameY="-52" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10014.png" x="1" y="3065" width="593" height="527" frameX="-9" frameY="-49" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10015.png" x="1" y="3065" width="593" height="527" frameX="-9" frameY="-49" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10016.png" x="1" y="4516" width="534" height="491" rotated="true" frameX="-3" frameY="-43" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10017.png" x="1" y="4516" width="534" height="491" rotated="true" frameX="-3" frameY="-43" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10018.png" x="598" y="3545" width="584" height="455" rotated="true" frameX="-11" frameY="-2" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10019.png" x="598" y="3545" width="584" height="455" rotated="true" frameX="-11" frameY="-2" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10020.png" x="1186" y="3534" width="584" height="460" rotated="true" frameX="-2" frameY="-2" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10021.png" x="1186" y="3534" width="584" height="460" rotated="true" frameX="-2" frameY="-2" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10022.png" x="3359" y="590" width="461" height="585" frameX="-0" frameY="-1" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="right instancia 10023.png" x="3359" y="1179" width="461" height="585" frameX="-0" frameY="-1" frameWidth="673" frameHeight="586"/>
+	<SubTexture name="uh oh instancia 10000.png" x="2463" y="1831" width="426" height="599" frameX="-0" frameY="-13" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10001.png" x="624" y="1618" width="599" height="381" rotated="true" frameX="-36" frameY="-10" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10002.png" x="1" y="2680" width="599" height="381" rotated="true" frameX="-36" frameY="-10" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10003.png" x="1851" y="2238" width="608" height="370" rotated="true" frameX="-36" frameY="-1" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10004.png" x="1851" y="2238" width="608" height="370" rotated="true" frameX="-36" frameY="-1" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10005.png" x="1339" y="1327" width="368" height="609" frameX="-36" frameY="-0" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10006.png" x="1339" y="1327" width="368" height="609" frameX="-36" frameY="-0" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10007.png" x="1711" y="1866" width="609" height="368" rotated="true" frameX="-36" frameY="-0" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10008.png" x="1238" y="2238" width="609" height="368" rotated="true" frameX="-36" frameY="-0" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10009.png" x="1238" y="2238" width="609" height="368" rotated="true" frameX="-36" frameY="-0" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10010.png" x="2463" y="1225" width="373" height="602" frameX="-37" frameY="-7" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10011.png" x="2463" y="1225" width="373" height="602" frameX="-37" frameY="-7" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10012.png" x="2948" y="3543" width="576" height="390" rotated="true" frameX="-39" frameY="-33" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10013.png" x="3752" y="1768" width="392" height="575" frameX="-38" frameY="-34" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10014.png" x="3752" y="1768" width="392" height="575" frameX="-38" frameY="-34" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10015.png" x="3824" y="580" width="391" height="574" frameX="-39" frameY="-34" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10016.png" x="3824" y="580" width="391" height="574" frameX="-39" frameY="-34" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10017.png" x="3824" y="1158" width="391" height="574" frameX="-39" frameY="-34" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10018.png" x="3358" y="1768" width="390" height="585" frameX="-37" frameY="-23" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10019.png" x="3358" y="1768" width="390" height="585" frameX="-37" frameY="-23" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10020.png" x="2463" y="2434" width="382" height="596" frameX="-36" frameY="-12" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10021.png" x="2463" y="2434" width="382" height="596" frameX="-36" frameY="-12" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10022.png" x="604" y="2680" width="597" height="381" rotated="true" frameX="-35" frameY="-12" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10023.png" x="604" y="2680" width="597" height="381" rotated="true" frameX="-35" frameY="-12" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10024.png" x="1205" y="2673" width="597" height="381" rotated="true" frameX="-35" frameY="-12" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="uh oh instancia 10025.png" x="1205" y="2673" width="597" height="381" rotated="true" frameX="-35" frameY="-12" frameWidth="430" frameHeight="613"/>
+	<SubTexture name="up instancia 10000.png" x="452" y="1" width="462" height="680" frameX="-2" frameY="-2" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10001.png" x="452" y="1" width="462" height="680" frameX="-2" frameY="-2" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10002.png" x="1" y="1" width="447" height="682" frameX="-2" frameY="-0" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10003.png" x="1" y="1" width="447" height="682" frameX="-2" frameY="-0" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10004.png" x="1" y="687" width="667" height="461" rotated="true" frameX="-0" frameY="-14" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10005.png" x="1" y="687" width="667" height="461" rotated="true" frameX="-0" frameY="-14" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10006.png" x="918" y="1" width="462" height="665" frameX="-0" frameY="-16" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10007.png" x="918" y="1" width="462" height="665" frameX="-0" frameY="-16" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10008.png" x="672" y="685" width="665" height="462" rotated="true" frameX="-0" frameY="-16" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10009.png" x="672" y="685" width="665" height="462" rotated="true" frameX="-0" frameY="-16" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10010.png" x="1" y="1152" width="665" height="462" rotated="true" frameX="-0" frameY="-16" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10011.png" x="1" y="1152" width="665" height="462" rotated="true" frameX="-0" frameY="-16" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10012.png" x="670" y="1152" width="665" height="462" rotated="true" frameX="-0" frameY="-16" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10013.png" x="670" y="1152" width="665" height="462" rotated="true" frameX="-0" frameY="-16" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10014.png" x="1384" y="1" width="449" height="662" frameX="-8" frameY="-20" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10015.png" x="1384" y="1" width="449" height="662" frameX="-8" frameY="-20" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10016.png" x="1384" y="667" width="431" height="656" frameX="-7" frameY="-30" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10017.png" x="1384" y="667" width="431" height="656" frameX="-7" frameY="-30" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10018.png" x="2893" y="1" width="462" height="594" frameX="-9" frameY="-92" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10019.png" x="2893" y="599" width="462" height="594" frameX="-9" frameY="-92" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10020.png" x="2893" y="1819" width="461" height="587" frameX="-12" frameY="-99" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10021.png" x="2893" y="1819" width="461" height="587" frameX="-12" frameY="-99" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10022.png" x="3358" y="2357" width="462" height="585" frameX="-12" frameY="-101" frameWidth="475" frameHeight="687"/>
+	<SubTexture name="up instancia 10023.png" x="3358" y="2357" width="462" height="585" frameX="-12" frameY="-101" frameWidth="475" frameHeight="687"/>
+</TextureAtlas>

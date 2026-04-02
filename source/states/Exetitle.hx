@@ -59,7 +59,7 @@ class Exetitle extends MusicBeatState
 		{
 			FlxTransitionableState.skipNextTransIn = true;
 			FlxTransitionableState.skipNextTransOut = true;
-			FlxG.switchState(() -> new FlashingState());
+			MusicBeatState.switchState(new FlashingState());
 		}
 		else
 		{
@@ -189,7 +189,7 @@ class Exetitle extends MusicBeatState
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
 					FlxTween.tween(blackScreen, {alpha: 1}, 1);
-					new FlxTimer().start(1.3, function(tmr:FlxTimer){FlxG.switchState(() -> new MainMenuState());});
+					new FlxTimer().start(1.3, function(tmr:FlxTimer){MusicBeatState.switchState(new MainMenuState());});
 					closedState = true;
 				});
 			}

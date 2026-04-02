@@ -102,11 +102,11 @@ class GameplayCamera
 		var curStage:String = PlayState.curStage;
 
 		var jsonPath:String = Paths.json('$songPath/cameraSettings');
-		if (openfl.Assets.exists(jsonPath))
+		if (FileSystem.exists(jsonPath))
 		{
 			try
 			{
-				var parsed:Dynamic = haxe.Json.parse(openfl.Assets.getText(jsonPath));
+				var parsed:Dynamic = haxe.Json.parse(sys.io.File.getContent(jsonPath));
 				if (parsed != null)
 				{
 					if (parsed.BFx          != null) settings.BFx          = parsed.BFx;

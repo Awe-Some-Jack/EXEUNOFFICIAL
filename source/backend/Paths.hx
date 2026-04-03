@@ -2,6 +2,7 @@ package backend;
 
 import flixel.graphics.frames.FlxFrame.FlxFrameAngle;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.frames.FlxFramesCollection;
 import flixel.graphics.FlxGraphic;
 import flixel.math.FlxRect;
 import flixel.system.FlxAssets;
@@ -29,6 +30,13 @@ class Paths
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
 	inline public static var VIDEO_EXT = "mp4";
 
+	public static var tempFramesCache:Map<String, FlxFramesCollection> = [];
+
+	public static function initStateSignals():Void
+	{
+		FlxG.signals.preStateSwitch.add(() -> tempFramesCache.clear());
+	}
+
 	public static function excludeAsset(key:String) {
 		if (!dumpExclusions.contains(key))
 			dumpExclusions.push(key);
@@ -49,7 +57,6 @@ class Paths
 			}
 		}
 
-		// run the garbage collector for good measure lmfao
 		System.gc();
 	}
 
@@ -222,6 +229,27 @@ class Paths
 		return returnSound(songKey, 'songs', modsAllowed, false);
 	}
 
+	static public function instPath(song:String, ?modsAllowed:Bool = true):String
+		return getSoundPath('${formatToSongPath(song)}/Inst', 'songs', modsAllowed);
+
+	static public function voicesPath(song:String, postfix:String = null, ?modsAllowed:Bool = true):String
+	{
+		var songKey:String = '${formatToSongPath(song)}/Voices';
+		if(postfix != null) songKey += '-' + postfix;
+		return getSoundPath(songKey, 'songs', modsAllowed);
+	}
+
+	static public function getSoundPath(key:String, ?path:String, ?modsAllowed:Bool = true):String
+	{
+		var file:String = getPath(Language.getFileTranslation(key) + '.$SOUND_EXT', SOUND, path, modsAllowed);
+		#if sys
+		if (FileSystem.exists(file)) return file;
+		#else
+		if (OpenFlAssets.exists(file, SOUND)) return file;
+		#end
+		return null;
+	}
+
 	inline static public function soundRandom(key:String, min:Int, max:Int, ?modsAllowed:Bool = true)
 		return sound(key + FlxG.random.int(min, max), modsAllowed);
 
@@ -243,11 +271,16 @@ class Paths
 		if (bitmap == null)
 		{
 			var file:String = getPath(key, IMAGE, parentFolder, true);
+			#if (!js && !html5)
+			final useOptimized:Bool = allowGPU && ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null;
+			#else
+			final useOptimized:Bool = false;
+			#end
 			#if MODS_ALLOWED
 			if (FileSystem.exists(file))
-				bitmap = BitmapData.fromFile(file);
+				bitmap = useOptimized ? OptimizedBitmapData.fromFile(file) : BitmapData.fromFile(file);
 			else #end if (OpenFlAssets.exists(file, IMAGE))
-				bitmap = OpenFlAssets.getBitmapData(file);
+				bitmap = useOptimized ? OptimizedBitmapData.fromOpenFlAssets(file) : OpenFlAssets.getBitmapData(file);
 
 			if (bitmap == null)
 			{
@@ -256,7 +289,7 @@ class Paths
 			}
 		}
 
-		if (allowGPU && ClientPrefs.data.cacheOnGPU && bitmap.image != null)
+		if (allowGPU && ClientPrefs.data.cacheOnGPU && bitmap.image != null && FlxG.stage.context3D != null)
 		{
 			bitmap.lock();
 			if (bitmap.__texture == null)
@@ -369,48 +402,50 @@ class Paths
 
 	inline static public function getSparrowAtlas(key:String, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxAtlasFrames
 	{
-		if(key.contains('psychic')) trace(key, parentFolder, allowGPU);
+		final cacheKey:String = 'sparrow:$key:$parentFolder';
+		if (tempFramesCache.exists(cacheKey)) return cast tempFramesCache.get(cacheKey);
+
 		var imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
 		#if MODS_ALLOWED
-		var xmlExists:Bool = false;
-
 		var xml:String = modsXml(key);
-		if(FileSystem.exists(xml)) xmlExists = true;
-
-		return FlxAtlasFrames.fromSparrow(imageLoaded, (xmlExists ? File.getContent(xml) : getPath(Language.getFileTranslation('images/$key') + '.xml', TEXT, parentFolder)));
+		final frames:FlxAtlasFrames = FlxAtlasFrames.fromSparrow(imageLoaded, FileSystem.exists(xml) ? File.getContent(xml) : getPath(Language.getFileTranslation('images/$key') + '.xml', TEXT, parentFolder));
 		#else
-		return FlxAtlasFrames.fromSparrow(imageLoaded, getPath(Language.getFileTranslation('images/$key') + '.xml', TEXT, parentFolder));
+		final frames:FlxAtlasFrames = FlxAtlasFrames.fromSparrow(imageLoaded, getPath(Language.getFileTranslation('images/$key') + '.xml', TEXT, parentFolder));
 		#end
+		tempFramesCache.set(cacheKey, frames);
+		return frames;
 	}
 
 	inline static public function getPackerAtlas(key:String, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxAtlasFrames
 	{
+		final cacheKey:String = 'packer:$key:$parentFolder';
+		if (tempFramesCache.exists(cacheKey)) return cast tempFramesCache.get(cacheKey);
+
 		var imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
 		#if MODS_ALLOWED
-		var txtExists:Bool = false;
-		
 		var txt:String = modsTxt(key);
-		if(FileSystem.exists(txt)) txtExists = true;
-
-		return FlxAtlasFrames.fromSpriteSheetPacker(imageLoaded, (txtExists ? File.getContent(txt) : getPath(Language.getFileTranslation('images/$key') + '.txt', TEXT, parentFolder)));
+		final frames:FlxAtlasFrames = FlxAtlasFrames.fromSpriteSheetPacker(imageLoaded, FileSystem.exists(txt) ? File.getContent(txt) : getPath(Language.getFileTranslation('images/$key') + '.txt', TEXT, parentFolder));
 		#else
-		return FlxAtlasFrames.fromSpriteSheetPacker(imageLoaded, getPath(Language.getFileTranslation('images/$key') + '.txt', TEXT, parentFolder));
+		final frames:FlxAtlasFrames = FlxAtlasFrames.fromSpriteSheetPacker(imageLoaded, getPath(Language.getFileTranslation('images/$key') + '.txt', TEXT, parentFolder));
 		#end
+		tempFramesCache.set(cacheKey, frames);
+		return frames;
 	}
 
 	inline static public function getAsepriteAtlas(key:String, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxAtlasFrames
 	{
+		final cacheKey:String = 'aseprite:$key:$parentFolder';
+		if (tempFramesCache.exists(cacheKey)) return cast tempFramesCache.get(cacheKey);
+
 		var imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
 		#if MODS_ALLOWED
-		var jsonExists:Bool = false;
-
 		var json:String = modsImagesJson(key);
-		if(FileSystem.exists(json)) jsonExists = true;
-
-		return FlxAtlasFrames.fromTexturePackerJson(imageLoaded, (jsonExists ? File.getContent(json) : getPath(Language.getFileTranslation('images/$key') + '.json', TEXT, parentFolder)));
+		final frames:FlxAtlasFrames = FlxAtlasFrames.fromTexturePackerJson(imageLoaded, FileSystem.exists(json) ? File.getContent(json) : getPath(Language.getFileTranslation('images/$key') + '.json', TEXT, parentFolder));
 		#else
-		return FlxAtlasFrames.fromTexturePackerJson(imageLoaded, getPath(Language.getFileTranslation('images/$key') + '.json', TEXT, parentFolder));
+		final frames:FlxAtlasFrames = FlxAtlasFrames.fromTexturePackerJson(imageLoaded, getPath(Language.getFileTranslation('images/$key') + '.json', TEXT, parentFolder));
 		#end
+		tempFramesCache.set(cacheKey, frames);
+		return frames;
 	}
 
 	inline static public function formatToSongPath(path:String) {

@@ -5,14 +5,14 @@ import backend.PsychCamera;
 
 class MusicBeatState extends FlxState
 {
-	public var curSection:Int = 0;
+	private var curSection:Int = 0;
 	private var stepsToDo:Int = 0;
 
-	public var curStep:Int = 0;
-	public var curBeat:Int = 0;
+	private var curStep:Int = 0;
+	private var curBeat:Int = 0;
 
-	public var curDecStep:Float = 0;
-	public var curDecBeat:Float = 0;
+	private var curDecStep:Float = 0;
+	private var curDecBeat:Float = 0;
 	public var controls(get, never):Controls;
 	private function get_controls()
 	{

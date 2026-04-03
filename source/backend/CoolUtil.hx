@@ -114,6 +114,36 @@ class CoolUtil
 		return maxKey;
 	}
 
+	inline public static function fpsLerp(amount:Float, elapsed:Float):Float
+		return amount * elapsed * 60;
+
+	inline public static function lerp(from:Float, to:Float, factor:Float, elapsed:Float):Float
+		return from + (to - from) * (1 - Math.pow(1 - factor, elapsed * 60));
+
+	inline public static function lerpX(spr:flixel.FlxObject, targetX:Float, factor:Float, elapsed:Float):Void
+		spr.x = lerp(spr.x, targetX, factor, elapsed);
+
+	inline public static function lerpY(spr:flixel.FlxObject, targetY:Float, factor:Float, elapsed:Float):Void
+		spr.y = lerp(spr.y, targetY, factor, elapsed);
+
+	inline public static function lerpPos(spr:flixel.FlxObject, targetX:Float, targetY:Float, factor:Float, elapsed:Float):Void
+	{
+		spr.x = lerp(spr.x, targetX, factor, elapsed);
+		spr.y = lerp(spr.y, targetY, factor, elapsed);
+	}
+
+	inline public static function lerpScale(spr:flixel.FlxSprite, target:Float, factor:Float, elapsed:Float):Void
+	{
+		final s = lerp(spr.scale.x, target, factor, elapsed);
+		spr.scale.set(s, s);
+	}
+
+	inline public static function lerpAlpha(spr:flixel.FlxSprite, target:Float, factor:Float, elapsed:Float):Void
+		spr.alpha = lerp(spr.alpha, target, factor, elapsed);
+
+	inline public static function lerpZoom(cam:flixel.FlxCamera, target:Float, factor:Float, elapsed:Float):Void
+		cam.zoom = lerp(cam.zoom, target, factor, elapsed);
+
 	inline public static function numberArray(max:Int, ?min = 0):Array<Int>
 	{
 		var dumbArray:Array<Int> = [];

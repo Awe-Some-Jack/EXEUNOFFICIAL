@@ -16,7 +16,7 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
 import lime.app.Application;
-import states.HaxeSplash;
+import states.TitleState;
 
 #if HSCRIPT_ALLOWED
 import crowplexus.iris.Iris;
@@ -38,6 +38,8 @@ import haxe.CallStack;
 import haxe.io.Path;
 #end
 
+import backend.FunkinCache;
+import backend.MemoryUtil;
 import backend.Highscore;
 
 // NATIVE API STUFF, YOU CAN IGNORE THIS AND SCROLL //
@@ -52,7 +54,7 @@ class Main extends Sprite
 	public static final game = {
 		width: 1280, // WINDOW width
 		height: 720, // WINDOW height
-		initialState: HaxeSplash, // initial game state
+		initialState: TitleState, // initial game state
 		framerate: 60, // default framerate
 		skipSplash: true, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode
@@ -151,6 +153,9 @@ class Main extends Sprite
 		#end
 
 		#if LUA_ALLOWED Lua.set_callbacks_function(cpp.Callable.fromStaticFunction(psychlua.CallbackHandler.call)); #end
+		FunkinCache.init();
+		Paths.initStateSignals();
+
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
 		#if ACHIEVEMENTS_ALLOWED Achievements.load(); #end
@@ -187,6 +192,8 @@ class Main extends Sprite
 		#if DISCORD_ALLOWED
 		DiscordClient.prepare();
 		#end
+
+		FlxG.signals.postStateSwitch.add(MemoryUtil.clearMajor);
 
 		// shader coords fix
 		FlxG.signals.gameResized.add(function (w, h) {

@@ -22,15 +22,14 @@ class MasterEditorMenu extends MusicBeatState
 	private var grpTexts:FlxTypedGroup<Alphabet>;
 	private var directories:Array<String> = [null];
 
-	private var curSelected = 0;
-	private var curDirectory = 0;
+	private var curSelected:Int = 0;
+	private var curDirectory:Int = 0;
 	private var directoryTxt:FlxText;
 
 	override function create()
 	{
 		FlxG.camera.bgColor = FlxColor.BLACK;
 		#if DISCORD_ALLOWED
-		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Editors Main Menu", null);
 		#end
 
@@ -50,7 +49,7 @@ class MasterEditorMenu extends MusicBeatState
 			grpTexts.add(leText);
 			leText.snapToPosition();
 		}
-		
+
 		#if MODS_ALLOWED
 		var textBG:FlxSprite = new FlxSprite(0, FlxG.height - 42).makeGraphic(FlxG.width, 42, 0xFF000000);
 		textBG.alpha = 0.6;
@@ -60,52 +59,38 @@ class MasterEditorMenu extends MusicBeatState
 		directoryTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
 		directoryTxt.scrollFactor.set();
 		add(directoryTxt);
-		
+
 		for (folder in Mods.getModDirectories())
-		{
 			directories.push(folder);
-		}
 
 		var found:Int = directories.indexOf(Mods.currentModDirectory);
-		if(found > -1) curDirectory = found;
+		if (found > -1) curDirectory = found;
 		changeDirectory();
 		#end
-		changeSelection();
 
+		changeSelection();
 		FlxG.mouse.visible = false;
 		super.create();
 	}
 
 	override function update(elapsed:Float)
 	{
-		if (controls.UI_UP_P)
-		{
-			changeSelection(-1);
-		}
-		if (controls.UI_DOWN_P)
-		{
-			changeSelection(1);
-		}
+		if (controls.UI_UP_P) changeSelection(-1);
+		if (controls.UI_DOWN_P) changeSelection(1);
+
 		#if MODS_ALLOWED
-		if(controls.UI_LEFT_P)
-		{
-			changeDirectory(-1);
-		}
-		if(controls.UI_RIGHT_P)
-		{
-			changeDirectory(1);
-		}
+		if (controls.UI_LEFT_P) changeDirectory(-1);
+		if (controls.UI_RIGHT_P) changeDirectory(1);
 		#end
 
 		if (controls.BACK)
-		{
 			MusicBeatState.switchState(new MainMenuState());
-		}
 
 		if (controls.ACCEPT)
 		{
-			switch(options[curSelected]) {
-				case 'Chart Editor'://felt it would be cool maybe
+			switch (options[curSelected])
+			{
+				case 'Chart Editor':
 					LoadingState.loadAndSwitchState(new ChartingState(), false);
 				case 'Character Editor':
 					LoadingState.loadAndSwitchState(new CharacterEditorState(Character.DEFAULT_CHARACTER, false));
@@ -125,13 +110,11 @@ class MasterEditorMenu extends MusicBeatState
 			FlxG.sound.music.volume = 0;
 			FreeplayState.destroyFreeplayVocals();
 		}
-		
+
 		for (num => item in grpTexts.members)
 		{
 			item.targetY = num - curSelected;
-			item.alpha = 0.6;
-			if (item.targetY == 0)
-				item.alpha = 1;
+			item.alpha = (item.targetY == 0) ? 1 : 0.6;
 		}
 		super.update(elapsed);
 	}
@@ -147,15 +130,10 @@ class MasterEditorMenu extends MusicBeatState
 	{
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 
-		curDirectory += change;
+		curDirectory = FlxMath.wrap(curDirectory + change, 0, directories.length - 1);
 
-		if(curDirectory < 0)
-			curDirectory = directories.length - 1;
-		if(curDirectory >= directories.length)
-			curDirectory = 0;
-	
 		WeekData.setDirectoryFromWeek();
-		if(directories[curDirectory] == null || directories[curDirectory].length < 1)
+		if (directories[curDirectory] == null || directories[curDirectory].length < 1)
 			directoryTxt.text = '< No Mod Directory Loaded >';
 		else
 		{

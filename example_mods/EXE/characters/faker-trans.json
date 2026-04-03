@@ -1,36 +1,36 @@
 {
 	"animations": [
 		{
+			"offsets": [568, 223],
 			"loop": true,
-			"offsets": [490, 160],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "TransformationRIGHT",
-			"indices": []
+			"indices": [],
+			"name": "TransformationRIGHT"
 		},
 		{
-			"loop": true,
 			"offsets": [170, 95],
+			"loop": true,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "TransformationLEFT",
-			"indices": []
+			"indices": [],
+			"name": "TransformationLEFT"
 		},
 		{
-			"loop": true,
 			"offsets": [-10, 230],
-			"anim": "singUP",
+			"loop": true,
 			"fps": 24,
-			"name": "TransformationUP",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "TransformationUP"
 		},
 		{
-			"loop": true,
 			"offsets": [-150, 60],
-			"anim": "singDOWN",
+			"loop": true,
 			"fps": 24,
-			"name": "TransformationDOWN",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "TransformationDOWN"
 		}
 	],
 	"vocals_file": "",
@@ -42,6 +42,6 @@
 	"healthbar_colors": [36, 37, 146],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.2,
 	"_editor_isPlayer": false
 }

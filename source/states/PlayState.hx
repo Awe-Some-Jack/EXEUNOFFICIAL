@@ -1634,31 +1634,31 @@ class PlayState extends MusicBeatState
 			resetRPC(startTimer != null && startTimer.finished);
 		}
 
-		if (ClientPrefs.data.shaders)
+		if (ClientPrefs.data.shaders && !startingSong)
+		{
+			var daFilters = camGame.filters;
+			if (daFilters != null)
 			{
-				var daFilters = camGame.filters;
-				if (daFilters != null)
-				{
-					daFilters.pop();
-					camGame.setFilters(daFilters);
-				}
-
-				var daFilters = camHUD.filters;
-				if (daFilters != null)
-				{
-					daFilters.pop();
-					camHUD.setFilters(daFilters);
-				}
-
-				var daFilters = camOther.filters;
-				if (daFilters != null)
-				{
-					daFilters.pop();
-					camOther.setFilters(daFilters);
-				}
+				daFilters.pop();
+				camGame.filters = daFilters;
 			}
 
-			FlxG.stage.window.title = appName + " - | Playing: " + SONG.song + " | Time Playing: " + FlxStringUtil.formatTime(Math.max(0, (Conductor.songPosition - ClientPrefs.data.noteOffset) / 1000), true);
+			var daFilters = camHUD.filters;
+			if (daFilters != null)
+			{
+				daFilters.pop();
+				camHUD.filters = daFilters;
+			}
+
+			var daFilters = camOther.filters;
+			if (daFilters != null)
+			{
+				daFilters.pop();
+				camOther.filters = daFilters;
+			}
+		}
+
+		FlxG.stage.window.title = appName + " - | Playing: " + SONG.song + " | Time Playing: " + FlxStringUtil.formatTime(Math.max(0, (Conductor.songPosition - ClientPrefs.data.noteOffset) / 1000), true);
 	}
 
 	#if DISCORD_ALLOWED

@@ -642,7 +642,7 @@ class PlayState extends MusicBeatState
 
 		if(eventNotes.length < 1) checkEventNote();
 
-		PauseSubState.cameraWidth = FlxG.width
+		PauseSubState.cameraWidth = FlxG.width;
 	}
 
 	function set_songSpeed(value:Float):Float

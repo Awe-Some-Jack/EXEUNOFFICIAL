@@ -6,12 +6,15 @@ function onCreatePost()
     addLuaSprite('darkOverlay', false)
     screenCenter('darkOverlay', 'xy')
 end
-function onStepHit()
-    if curStep == 742 then
-        doTweenAlpha('darkIn', 'darkOverlay', 0.5, 0.5, 'linear')
-        doTweenZoom('zoomIn', 'camGame', 0.85, 1.5, 'quadOut')
-    end
-    if curStep == 770 then
-        doTweenAlpha('darkOut', 'darkOverlay', 0, 0.5, 'linear')
+
+function onEvent(n,v1)
+	if n == 'sarahevent' then
+		if v1 == 'blackbg' then
+            doTweenAlpha('darkIn', 'darkOverlay', 0.5, 0.5, 'linear')
+            doTweenZoom('zoomIn', 'camGame', 0.85, 1.5, 'quadOut')
+		end
+        if v1 == 'blackbgout' then
+            doTweenAlpha('darkOut', 'darkOverlay', 0, 0.5, 'linear')
+		end
     end
 end

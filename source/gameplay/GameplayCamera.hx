@@ -171,8 +171,8 @@ class GameplayCamera
 		if (PlayState.instance.camZooming)
 		{
 			var rate:Float = PlayState.instance.playbackRate;
-			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, Math.exp(-elapsed * (3.125 * 1.5) * PlayState.instance.camZoomingDecay * rate));
-			PlayState.instance.camHUD.zoom = FlxMath.lerp(1, PlayState.instance.camHUD.zoom, Math.exp(-elapsed * (3.125 * 1.5) * PlayState.instance.camZoomingDecay * rate));
+			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, Math.exp(-elapsed * (3.125 * 2) * PlayState.instance.camZoomingDecay * rate));
+			PlayState.instance.camHUD.zoom = FlxMath.lerp(1, PlayState.instance.camHUD.zoom, Math.exp(-elapsed * (3.125 * 2) * PlayState.instance.camZoomingDecay * rate));
 		}
 
 		if (!customCameraEnabled) return;

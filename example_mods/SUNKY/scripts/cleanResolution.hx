@@ -46,7 +46,7 @@ function handlePauseUpdate():Void {
             var selectedItem = subState.selectionButtons[subState.curSelected];
             isRestarting = (selectedItem == RESTART_MENU_ITEM);
 
-            if (isFirstRun) subState.camPause.x = (TARGET_WIDTH / 2); else subState.camPause.x = 0;
+            if (isFirstRun) subState.camPause.x = ((DEFAULT_WIDTH - TARGET_WIDTH) / 2); else subState.camPause.x = 0;
         }
     } catch (e:Dynamic) {
     }

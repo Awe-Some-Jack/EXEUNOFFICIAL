@@ -64,12 +64,19 @@ function onCreate()
 	for _, spr in ipairs(sprites) do addSprite(spr) end
 	setProperty('gf.visible', false)
 
-	--OVERLAY--
+	-- OVERLAY --
 	makeLuaSprite('overlay', 'cycles/BlackVG', 0, 0)
 	setObjectCamera('overlay', 'camHUD')
 	setProperty('overlay.alpha', 0)
 	setBlendMode('overlay', 'add')
 	addLuaSprite('overlay')
+
+	-- EYES --
+	makeLuaSprite('ais', 'characters/ojos cycles', getMidpointX('dad') - 280, getMidpointY('dad') - 530)
+	setProperty('ais.alpha', 0)
+	setBlendMode('ais', 'add')
+	scaleObject('ais', 0.9, 0.9)
+	addLuaSprite('ais', true)
 end
 
 function onCreatePost()
@@ -167,6 +174,9 @@ function onEvent(e, v1, v2)
 			for _, chars in ipairs({"dad", "boyfriend"}) do
 				setProperty(chars..'.alpha', 0)
 			end
+
+			setProperty('ais.alpha', 1)
+			doTweenAlpha('aisAlpha', 'ais', 0, 0.5)
 		end
 	end
 end

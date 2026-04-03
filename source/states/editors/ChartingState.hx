@@ -954,6 +954,11 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		}
 
 		super.update(elapsed);
+
+		if(FlxG.mouse.justPressed){
+			var snd = FlxG.sound.play(Paths.sound('keyClick'));
+			snd.pitch = FlxG.random.float(0.7, 1.3);
+		}
 		
 		if (songFinished)
 		{

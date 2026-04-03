@@ -47,7 +47,8 @@ class Note extends FlxSprite
 		'Hey!',
 		'Hurt Note',
 		'GF Sing',
-		'No Animation'
+		'No Animation',
+		'Sustain Animation'
 	];
 
 	/** General-purpose key–value store; read/write from Lua and HScript. **/
@@ -222,7 +223,6 @@ class Note extends FlxSprite
 
 		if (isSustainNote && prevNote != null)
 		{
-			alpha = multAlpha = 0.6;
 			hitsoundDisabled = true;
 
 			if (ClientPrefs.data.downScroll) flipY = true;

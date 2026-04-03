@@ -1,7 +1,7 @@
 package states;
 
 import openfl.Assets;
-import exe.gameplay.objects.GifSprite;
+import objects.GifSprite;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 

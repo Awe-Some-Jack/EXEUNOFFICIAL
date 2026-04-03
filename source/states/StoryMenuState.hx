@@ -63,7 +63,7 @@ class StoryMenuState extends MusicBeatState
 			persistentUpdate = false;
 			MusicBeatState.switchState(new states.ErrorState("NO WEEKS ADDED FOR STORY MODE\n\nPress ACCEPT to go to the Week Editor Menu.\nPress BACK to return to Main Menu.",
 				function() MusicBeatState.switchState(new states.editors.WeekEditorState()),
-				function() MusicBeatState.switchState(new states.MainMenuState())));
+				function() MusicBeatState.switchState(new states.Exemenu())));
 			return;
 		}
 
@@ -202,7 +202,7 @@ class StoryMenuState extends MusicBeatState
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				movedBack = true;
-				MusicBeatState.switchState(new MainMenuState());
+				MusicBeatState.switchState(new Exemenu());
 			}
 			super.update(elapsed);
 			return;
@@ -279,7 +279,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			movedBack = true;
-			MusicBeatState.switchState(new MainMenuState());
+			MusicBeatState.switchState(new Exemenu());
 		}
 
 		super.update(elapsed);

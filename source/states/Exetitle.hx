@@ -9,7 +9,7 @@ import flixel.input.gamepad.FlxGamepad;
 import openfl.Assets;
 
 import states.StoryMenuState;
-import states.MainMenuState;
+import states.Exemenu;
 
 class Exetitle extends MusicBeatState
 {
@@ -189,7 +189,7 @@ class Exetitle extends MusicBeatState
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
 					FlxTween.tween(blackScreen, {alpha: 1}, 1);
-					new FlxTimer().start(1.3, function(tmr:FlxTimer){MusicBeatState.switchState(new MainMenuState());});
+					new FlxTimer().start(1.3, function(tmr:FlxTimer){MusicBeatState.switchState(new Exemenu());});
 					closedState = true;
 				});
 			}

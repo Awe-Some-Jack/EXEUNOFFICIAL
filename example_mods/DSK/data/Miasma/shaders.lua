@@ -22,7 +22,6 @@ local shaders = {
         contrast = 0,
         saturation = 0,
         brightness = 0,
-        dontDoBlend = false,
     }},
 }
 local dashads = ''
@@ -32,6 +31,7 @@ function onCreatePost()
     for num, shad in ipairs(shaders) do
         makeLuaSprite(shad.name, nil, shad.x)
         setSpriteShader(shad.name, shad.shader)
+        setProperty(shad.name..'.alpha', shad.alpha)
         setProperty(shad.name..'.angle', shad.angle)
         scaleObject(shad.name, shad.scaleX, shad.scaleY)
         for u, v in pairs(shad.uniforms) do

@@ -22,7 +22,6 @@ local shaders = {
         contrast = -10,
         saturation = -50,
         brightness = -15,
-        dontDoBlend = false,
     }},
 }
 local dashads = ''
@@ -32,6 +31,7 @@ function onCreatePost()
     for num, shad in ipairs(shaders) do
         makeLuaSprite(shad.name, nil, shad.x)
         setSpriteShader(shad.name, shad.shader)
+        setProperty(shad.name..'.alpha', shad.alpha)
         setProperty(shad.name..'.angle', shad.angle)
         scaleObject(shad.name, shad.scaleX, shad.scaleY)
         for u, v in pairs(shad.uniforms) do
@@ -98,9 +98,6 @@ end
 
 
 function onUpdatePost()
-    setShaderFloat('color', 'uSpriteAlpha', getProperty('color.alpha'))
-	setShaderFloatArray('color', 'uSpriteColor', {(math.floor(getProperty('color.color') / 65536) % 256) / 255, (math.floor(getProperty('color.color') / 256) % 256) / 255, (getProperty('color.color') % 256) / 255})
-
     if onTween1 then
         setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
         setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))

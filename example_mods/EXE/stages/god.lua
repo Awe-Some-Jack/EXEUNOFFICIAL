@@ -11,6 +11,21 @@ local function makeFire(speed, y, scroll, front, scale)
 	count = count + 1
 end
 
+local function setMaxVelocities()
+	setProperty('mount00.maxVelocity.x', 2000)
+	setProperty('mount0.maxVelocity.x', 3000)
+	setProperty('mount1.maxVelocity.x', 4000)
+	setProperty('mount2.maxVelocity.x', 5000)
+	setProperty('totema.maxVelocity.x', 6000)
+	setProperty('totem2a.maxVelocity.x', 6000)
+	for i = 1,3 do
+		setProperty('floor'..i..'.maxVelocity.x', 6000 + (1500 * (i - 1)))
+		setProperty('trees'..i..'.maxVelocity.x', 6000 + (1500 * (i - 1)))
+	end
+	setProperty('totem.maxVelocity.x', 8000)
+	setProperty('totem2.maxVelocity.x', 8000)
+end
+
 function onCreatePost()
 	makeLuaSprite('godOffsetX')
 	
@@ -19,8 +34,17 @@ function onCreatePost()
 	scaleObject('sky', 2.5, 2.5)
 	setScrollFactor('sky', 0.15, 0.15)
 	addLuaSprite('sky')
+
+	createInstance('mount00', 'flixel.addons.display.FlxBackdrop', {nil, 0x01, -500})
+	loadGraphic('mount00', 'god/mount1')
+	scaleObject('mount00', 2, 2)
+	setProperty('mount00.y', -300)
+	setProperty('mount00.color', getColorFromHex('555555'))
+	setScrollFactor('mount00', 0.2, 0.2)
+	setProperty('mount00.velocity.x', -2000)
+	addInstance('mount00')
 	
-	makeFire(-2000, -1300 + 1000, 0.3, false, 5)
+	makeFire(-2000, -1300 + 1200, 0.3, false, 5)
 
 	createInstance('mount0', 'flixel.addons.display.FlxBackdrop', {nil, 0x01, -500})
 	loadGraphic('mount0', 'god/mount1')
@@ -39,7 +63,7 @@ function onCreatePost()
 	setProperty('mount1.velocity.x', -4000)
 	addInstance('mount1')
 
-	makeFire(-5000, -300 + 1000, 0.8)
+	makeFire(-5000, -300 + 1200, 0.8)
 
 	createInstance('mount2', 'flixel.addons.display.FlxBackdrop', {nil, 0x01, -200})
 	loadGraphic('mount2', 'god/mount2')
@@ -53,7 +77,7 @@ function onCreatePost()
 	scaleObject('grad', 5500, 2)
 	addLuaSprite('grad')
 
-	makeFire(-6000, 0 + 1000, 1)
+	makeFire(-6000, 0 + 1200, 1)
 
 	createInstance('totema', 'flixel.addons.display.FlxBackdrop', {nil, 0x01, 35000})
 	loadGraphic('totema', 'god/totem1')
@@ -108,10 +132,12 @@ function onCreatePost()
 			setProperty('totem2.x', 20000)
 
 		elseif i == 2 then
-			makeFire(-7500, 340 + 1000, 1.2, true)
+			makeFire(-7500, 340 + 1200, 1.2, true)
 			setProperty('floor2.color', getColorFromHex('AAAAAA'))
 		end
 	end
+
+	setMaxVelocities()
 
 	for i = 0,getProperty('unspawnNotes.length')-1 do
 		if not getPropertyFromGroup('unspawnNotes', i, 'mustPress') and not getPropertyFromGroup('unspawnNotes', i, 'isSustainNote') and not getPropertyFromGroup('unspawnNotes', i + 1, 'isSustainNote') then
@@ -125,16 +151,32 @@ function onCreatePost()
 	setObjectOrder('metal', getObjectOrder('boyfriendGroup') - 1)
 end
 
+local inCinematic = false
+local isEndingCine = false
 local sine = 0
 function onUpdatePost(e)
 	sine = sine + e * 2
-	callMethod('dad.setPosition', {getProperty('godOffsetX.x') + lerp(600, 0, getHealth() / 2) + math.cos(sine / 2) * 80, 100 + math.sin(sine) * 150})
-	callMethod('boyfriend.setPosition', {2200 + math.cos(0.5 + sine / 2) * 50, 0 + math.sin(0.5 + sine) * 75})
-	callMethod('metal.setPosition', {2130 + math.cos(0.5 + sine / 2) * 50, 320 + math.sin(0.5 + sine) * 75})
+	if not inCinematic then
+		callMethod('dad.setPosition', {getProperty('godOffsetX.x') + lerp(600, 0, getHealth() / 2) + math.cos(sine / 2) * 80, 100 + math.sin(sine) * 150})
+		callMethod('boyfriend.setPosition', {2200 + math.cos(0.5 + sine / 2) * 50, 0 + math.sin(0.5 + sine) * 75})
+		callMethod('metal.setPosition', {2130 + math.cos(0.5 + sine / 2) * 50, 320 + math.sin(0.5 + sine) * 75})
+	end
 
 	setProperty('camHUD.angle', math.sin(sine))
 	setProperty('camHUD.x', math.cos(sine / 2) * 10)
 	setProperty('camHUD.y', math.sin(sine) * 10)
+
+	if isEndingCine and getProperty('dad.velocity.x') < 0 then
+		inCinematic = false
+		isEndingCine = false
+		getProperty('dad.velocity.x', 0)
+		getProperty('boyfriend.velocity.x', 0)
+		getProperty('metal.velocity.x', 0)
+
+		setProperty('dad.acceleration.x', 0)
+		setProperty('boyfriend.acceleration.x', 0)
+		setProperty('metal.acceleration.x', 0)
+	end
 end
 
 function onBeatHit()
@@ -151,7 +193,7 @@ function onEvent(n,v1)
 	if n == 'godEvents' then
 		if v1 == 'fireappear' then
 			for i = 1,4 do
-				doTweenY('fire'..i, 'fire'..i, getProperty('fire'..i..'.y') - 1000, 4, 'cubeOut')
+				doTweenY('fire'..i, 'fire'..i, getProperty('fire'..i..'.y') - 1200, 4, 'cubeOut')
 			end
 		end
 		if v1 == 'godBye' then
@@ -159,6 +201,63 @@ function onEvent(n,v1)
 		end
 		if v1 == 'godAPPEAR' then
 			doTweenX('fjas', 'godOffsetX', 0, 8, 'cubeOut')
+		end
+		if v1 == 'cinematic' then
+			inCinematic = true
+
+			setProperty('dad.velocity.x', 8000)
+			setProperty('boyfriend.velocity.x', 8000)
+			setProperty('metal.velocity.x', 8000)
+
+			setProperty('dad.x', getProperty('godOffsetX.x') - 5000)
+			setProperty('boyfriend.x', 2200 - 5000)
+			setProperty('metal.x', 2130 - 5000)
+
+			setProperty('mount00.velocity.x', 0)
+			setProperty('mount0.velocity.x', 0)
+			setProperty('mount1.velocity.x', 0)
+			setProperty('mount2.velocity.x', 0)
+			setProperty('totema.velocity.x', 0)
+			setProperty('totem2a.velocity.x', 0)
+			for i = 1,3 do
+				setProperty('floor'..i..'.velocity.x', 0)
+				setProperty('trees'..i..'.velocity.x', 0)
+			end
+			setProperty('totem.velocity.x', 0)
+			setProperty('totem2.velocity.x', 0)
+
+			setProperty('mount00.x', getProperty('mount00.x') + 5000)
+			setProperty('mount0.x', getProperty('mount0.x') + 5000)
+			setProperty('mount1.x', getProperty('mount1.x') + 5000)
+			setProperty('mount2.x', getProperty('mount2.x') + 5000)
+			setProperty('totema.x', getProperty('totema.x') + 5000)
+			setProperty('totem2a.x', getProperty('totem2a.x') + 5000)
+			for i = 1,3 do
+				setProperty('floor'..i..'.x', getProperty('floor'..i..'.x') + 5000)
+				setProperty('trees'..i..'.x', getProperty('trees'..i..'.x') + 5000)
+			end
+			setProperty('totem.x', getProperty('totem.x') + 5000)
+			setProperty('totem2.x', getProperty('totem2.x') + 5000)
+		end
+		if v1 == 'goacceleration' then
+			setProperty('dad.acceleration.x', -8000 / (crochet / 500))
+			setProperty('boyfriend.acceleration.x', -8000 / (crochet / 500))
+			setProperty('metal.acceleration.x', -8000 / (crochet / 500))
+		end
+		if v1 == 'cinematicend' then
+			isEndingCine = true
+			setProperty('mount00.acceleration.x', -2000)
+			setProperty('mount0.acceleration.x', -3000)
+			setProperty('mount1.acceleration.x', -4000)
+			setProperty('mount2.acceleration.x', -5000)
+			setProperty('totema.acceleration.x', -6000)
+			setProperty('totem2a.acceleration.x', -6000)
+			for i = 1,3 do
+				setProperty('floor'..i..'.acceleration.x', -6000 - (1500 * (i - 1)))
+				setProperty('trees'..i..'.acceleration.x', -6000 - (1500 * (i - 1)))
+			end
+			setProperty('totem.acceleration.x', -8000)
+			setProperty('totem2.acceleration.x', -8000)
 		end
 	end
 end

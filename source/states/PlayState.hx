@@ -1473,12 +1473,15 @@ class PlayState extends MusicBeatState
 				switch(event.value1.toLowerCase()) {
 					case 'gf' | 'girlfriend':
 						charType = 2;
+						gf.shader = null;
 					case 'dad' | 'opponent':
 						charType = 1;
+						dad.shader = null;
 					default:
 						var val1:Int = Std.parseInt(event.value1);
 						if(Math.isNaN(val1)) val1 = 0;
 						charType = val1;
+						boyfriend.shader = null;
 				}
 
 				var newCharacter:String = event.value2;

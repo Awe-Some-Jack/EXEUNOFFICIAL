@@ -11,14 +11,13 @@ runHaxeCode([[
 				char = game.gf;
 		}
 
-		//animation.callback is deprecated, better use onFrameChange.add
-		char.animation.onFrameChange.add((name:String, frameNumber:Int, frameIndex:Int) ->
+		char.animation.callback = function(name:String, frameNumber:Int, frameIndex:Int)
 		{
 			if (char.shader != null) {
 				char.shader.setFloatArray('uFrameBounds', [char.frame.uv.x, char.frame.uv.y, char.frame.uv.width, char.frame.uv.height]);
 				char.shader.setFloat('angOffset', char.frame.angle * FlxAngle.TO_RAD);
 			}
-		});
+		}
 	}
 ]])
 
@@ -39,7 +38,6 @@ function onCreatePost()
 			setShaderFloat(char, 'contrast', 0)
 			setShaderFloat(char, 'str', 1)
 			setShaderFloat(char, 'brightness', 0)
-			setShaderBool(char, 'dontDoBlend', true)
 			setShaderFloatArray(char, 'dropColor', {197 / 255, 112 / 255, 11 / 255})
 			runHaxeFunction('setShaderFrameInfo', {char})
 		end
@@ -60,13 +58,6 @@ local istwning = false
 local thing = 0
 function onUpdatePost(e)
 	thing = thing + e * 3
-
-	if shadersEnabled and not lowQuality then
-		for _,char in ipairs({'dad', 'gf', 'boyfriend'}) do
-			setShaderFloat(char, 'uSpriteAlpha', getProperty(char..'.alpha'))
-			setShaderFloatArray(char, 'uSpriteColor', {(math.floor(getProperty(char..'.color') / 65536) % 256) / 255, (math.floor(getProperty(char..'.color') / 256) % 256) / 255, (getProperty(char..'.color') % 256) / 255})
-		end
-	end
 
 	setShaderFloat('bloom', 'brightness', (defaultBright - 1) + getProperty('bloom.x') * 2)
 	setShaderFloat('bloom', 'contrast', defaultBright + (getProperty('bloom.x') * 4))

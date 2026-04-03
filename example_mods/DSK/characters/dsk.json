@@ -2,7 +2,7 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [584, 205],
+			"offsets": [693, 282],
 			"anim": "singLEFT",
 			"fps": 24,
 			"name": "Left",
@@ -10,7 +10,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [498, 51],
+			"offsets": [615, 145],
 			"anim": "singDOWN",
 			"fps": 24,
 			"name": "Down",
@@ -18,7 +18,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [497, 407],
+			"offsets": [615, 462],
 			"anim": "singUP",
 			"fps": 24,
 			"name": "Up",
@@ -26,14 +26,14 @@
 		},
 		{
 			"loop": false,
-			"offsets": [362, 121],
+			"offsets": [495, 204],
 			"anim": "singRIGHT",
 			"fps": 24,
 			"name": "Right",
 			"indices": []
 		},
 		{
-			"offsets": [453, 237],
+			"offsets": [574, 311],
 			"loop": true,
 			"fps": 24,
 			"anim": "idle",
@@ -44,12 +44,12 @@
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/miasma1",
-	"position": [180, 120],
+	"position": [780, 420],
 	"healthicon": "dsk",
 	"flip_x": false,
 	"healthbar_colors": [87, 85, 90],
 	"camera_position": [0, 0],
 	"sing_duration": 8,
-	"scale": 1.45,
+	"scale": 1.3,
 	"_editor_isPlayer": false
 }

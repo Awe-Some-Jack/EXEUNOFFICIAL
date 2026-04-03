@@ -22,8 +22,8 @@ import haxe.Json;
 
 import cutscenes.DialogueBoxPsych;
 
-import states.StoryMenuState;
-import states.FreeplayState;
+import states.StoryModeState;
+import states.EXEFreeplay;
 import states.editors.ChartingState;
 import states.editors.CharacterEditorState;
 
@@ -145,6 +145,7 @@ class PlayState extends MusicBeatState
 
 	public static var SONG:SwagSong = null;
 	public static var isStoryMode:Bool = false;
+	public static var isSoundTest:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
@@ -2523,22 +2524,43 @@ class PlayState extends MusicBeatState
 
 				if (storyPlaylist.length <= 0)
 				{
-					Mods.loadTopMod();
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
-					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+					if (!isSoundTest){
+						Mods.loadTopMod();
+						FlxG.sound.playMusic(Paths.music('freakyMenu'));
+						#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
-					canResync = false;
-					MusicBeatState.switchState(new StoryMenuState());
+						canResync = false;
+						MusicBeatState.switchState(new StoryModeState());
 
-					// if ()
-					if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
-						StoryMenuState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
-						Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
+						// if ()
+						if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
+							StoryModeState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
+							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
 
-						FlxG.save.data.weekCompleted = StoryMenuState.weekCompleted;
-						FlxG.save.flush();
+							FlxG.save.data.weekCompleted = StoryModeState.weekCompleted;
+							FlxG.save.flush();
+						}
+						changedDifficulty = false;
 					}
-					changedDifficulty = false;
+					else
+					{
+						trace('WENT BACK TO FREEPLAY??');
+						Mods.loadTopMod();
+						#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+
+						canResync = false;
+						FlxG.switchState(() -> new EXEFreeplay());
+						FlxG.sound.playMusic(Paths.music('freakyMenu'));
+						if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
+							StoryModeState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
+							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
+
+							FlxG.save.data.weekCompleted = StoryModeState.weekCompleted;
+							FlxG.save.flush();
+						}
+						changedDifficulty = false;
+						isSoundTest = false;
+					}
 				}
 				else
 				{
@@ -2566,7 +2588,7 @@ class PlayState extends MusicBeatState
 				#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
 				canResync = false;
-				MusicBeatState.switchState(new FreeplayState());
+				MusicBeatState.switchState(new EXEFreeplay());
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 				changedDifficulty = false;
 			}

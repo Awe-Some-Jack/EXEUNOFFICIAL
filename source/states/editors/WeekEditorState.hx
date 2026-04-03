@@ -123,7 +123,7 @@ class WeekEditorState extends MusicBeatState implements PsychUIEventHandler.Psyc
 		loadWeekButton.x -= 120;
 		add(loadWeekButton);
 
-		var freeplayButton:PsychUIButton = new PsychUIButton(0, 650, "Freeplay", () -> MusicBeatState.switchState(new WeekEditorFreeplayState(weekFile)));
+		var freeplayButton:PsychUIButton = new PsychUIButton(0, 650, "Freeplay", () -> MusicBeatState.switchState(new WeekEditorEXEFreeplay(weekFile)));
 		freeplayButton.screenCenter(X);
 		add(freeplayButton);
 
@@ -544,7 +544,7 @@ class WeekEditorState extends MusicBeatState implements PsychUIEventHandler.Psyc
 	}
 }
 
-class WeekEditorFreeplayState extends MusicBeatState implements PsychUIEventHandler.PsychUIEvent
+class WeekEditorEXEFreeplay extends MusicBeatState implements PsychUIEventHandler.PsychUIEvent
 {
 	var weekFile:WeekFile = null;
 
@@ -738,7 +738,7 @@ class WeekEditorFreeplayState extends MusicBeatState implements PsychUIEventHand
 			super.update(elapsed);
 			FlxTransitionableState.skipNextTransIn = true;
 			FlxTransitionableState.skipNextTransOut = true;
-			MusicBeatState.switchState(new WeekEditorFreeplayState(WeekEditorState.loadedWeek));
+			MusicBeatState.switchState(new WeekEditorEXEFreeplay(WeekEditorState.loadedWeek));
 			WeekEditorState.loadedWeek = null;
 			return;
 		}

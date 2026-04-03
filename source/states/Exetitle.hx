@@ -8,7 +8,7 @@ import flixel.input.gamepad.FlxGamepad;
 
 import openfl.Assets;
 
-import states.StoryMenuState;
+import states.StoryModeState;
 import states.Exemenu;
 
 class Exetitle extends MusicBeatState
@@ -52,7 +52,7 @@ class Exetitle extends MusicBeatState
 		}
 
 		if (FlxG.save.data.weekCompleted != null)
-			StoryMenuState.weekCompleted = FlxG.save.data.weekCompleted;
+			StoryModeState.weekCompleted = FlxG.save.data.weekCompleted;
 
 		FlxG.mouse.visible = false;
 		if(FlxG.save.data.flashing == null && !FlashingState.leftState)

@@ -15,7 +15,7 @@ import openfl.display.BitmapData;
 
 import shaders.ColorSwap;
 
-import states.StoryMenuState;
+import states.StoryModeState;
 import states.Exemenu;
 
 typedef TitleData =
@@ -91,12 +91,12 @@ class TitleState extends MusicBeatState
 
 		if (FlxG.save.data.weekCompleted != null)
 		{
-			StoryMenuState.weekCompleted = FlxG.save.data.weekCompleted;
+			StoryModeState.weekCompleted = FlxG.save.data.weekCompleted;
 		}
 
 		FlxG.mouse.visible = false;
 		#if FREEPLAY
-		MusicBeatState.switchState(new FreeplayState());
+		MusicBeatState.switchState(new EXEFreeplay());
 		#elseif CHARTING
 		MusicBeatState.switchState(new ChartingState());
 		#else
@@ -430,9 +430,9 @@ class TitleState extends MusicBeatState
 								}
 							});
 							FlxG.sound.music.fadeOut();
-							if(FreeplayState.vocals != null)
+							if(EXEFreeplay.vocals != null)
 							{
-								FreeplayState.vocals.fadeOut();
+								EXEFreeplay.vocals.fadeOut();
 							}
 							closedState = true;
 							transitioning = true;
@@ -636,9 +636,9 @@ class TitleState extends MusicBeatState
 				if(easteregg == 'SHADOW')
 				{
 					FlxG.sound.music.fadeOut();
-					if(FreeplayState.vocals != null)
+					if(EXEFreeplay.vocals != null)
 					{
-						FreeplayState.vocals.fadeOut();
+						EXEFreeplay.vocals.fadeOut();
 					}
 				}
 				#end

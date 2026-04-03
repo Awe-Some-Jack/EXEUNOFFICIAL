@@ -24,8 +24,8 @@ import objects.NoteSplash;
 import objects.Character;
 
 import states.MainMenuState;
-import states.StoryMenuState;
-import states.FreeplayState;
+import states.StoryModeState;
+import states.EXEFreeplay;
 
 import substates.PauseSubStateOLD;
 import substates.GameOverSubstate;
@@ -540,7 +540,7 @@ class FunkinLua
 		});
 		Lua_helper.add_callback(lua, 'exitSong', function(skipTransition:Bool = false) {
 			if (skipTransition) { FlxTransitionableState.skipNextTransIn = true; FlxTransitionableState.skipNextTransOut = true; }
-			MusicBeatState.switchState(PlayState.isStoryMode ? new StoryMenuState() : new FreeplayState());
+			MusicBeatState.switchState(PlayState.isStoryMode ? new StoryModeState() : new EXEFreeplay());
 			#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			PlayState.changedDifficulty = false;

@@ -5,7 +5,7 @@ import backend.WeekData;
 import objects.Character;
 
 import states.Exemenu;
-import states.FreeplayState;
+import states.EXEFreeplay;
 
 class MasterEditorMenu extends MusicBeatState
 {
@@ -108,7 +108,7 @@ class MasterEditorMenu extends MusicBeatState
 					MusicBeatState.switchState(new NoteSplashEditorState());
 			}
 			FlxG.sound.music.volume = 0;
-			FreeplayState.destroyFreeplayVocals();
+			EXEFreeplay.destroyFreeplayVocals();
 		}
 
 		for (num => item in grpTexts.members)

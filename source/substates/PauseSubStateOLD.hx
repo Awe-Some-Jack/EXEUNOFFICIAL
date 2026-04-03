@@ -6,8 +6,8 @@ import backend.Song;
 
 import flixel.util.FlxStringUtil;
 
-import states.StoryMenuState;
-import states.FreeplayState;
+import states.StoryModeState;
+import states.EXEFreeplay;
 import options.OptionsState;
 
 class PauseSubStateOLD extends MusicBeatSubstate
@@ -323,9 +323,9 @@ class PauseSubStateOLD extends MusicBeatSubstate
 					PlayState.instance.canResync = false;
 					Mods.loadTopMod();
 					if(PlayState.isStoryMode)
-						MusicBeatState.switchState(new StoryMenuState());
+						MusicBeatState.switchState(new StoryModeState());
 					else 
-						MusicBeatState.switchState(new FreeplayState());
+						MusicBeatState.switchState(new EXEFreeplay());
 
 					FlxG.sound.playMusic(Paths.music('freakyMenu'));
 					PlayState.changedDifficulty = false;

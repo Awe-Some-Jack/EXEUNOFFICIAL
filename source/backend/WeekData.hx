@@ -18,6 +18,11 @@ typedef WeekFile =
 	var hideStoryMode:Bool;
 	var hideFreeplay:Bool;
 	var difficulties:String;
+	@:optional var exeTitle:String;
+	@:optional var exeCover:String;
+	@:optional var exeLabel:String;
+	@:optional var exeColor:String;
+	@:optional var soundTestCode:Array<Dynamic>; // [pcm, da, enabled]
 }
 
 class WeekData {
@@ -37,6 +42,11 @@ class WeekData {
 	public var hideStoryMode:Bool;
 	public var hideFreeplay:Bool;
 	public var difficulties:String;
+	public var exeTitle:String;
+	public var exeCover:String;
+	public var exeLabel:String;
+	public var exeColor:String;
+	public var soundTestCode:Array<Dynamic>;
 
 	public var fileName:String;
 

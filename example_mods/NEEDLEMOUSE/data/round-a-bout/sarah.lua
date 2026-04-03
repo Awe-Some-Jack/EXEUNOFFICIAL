@@ -1,4 +1,4 @@
-holdTimer = -1.0
+--[[holdTimer = -1.0
 singDuration = 4
 specialAnim = false
 
@@ -103,4 +103,4 @@ function onStepHit()
 	if curStep == 976 then
 		doTweenAlpha('sarahBye', extraOPP, 0, stepCrochet / 1000 * 4, 'quadInOut')
 	end
-end
+end]]

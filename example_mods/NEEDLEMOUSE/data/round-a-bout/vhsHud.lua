@@ -1,14 +1,12 @@
 function onCreatePost()
-    local isDownscroll = downscroll
-
     setProperty('scoreTxt.visible', false)
     setProperty('timeBar.visible', false)
     setProperty('timeBarBG.visible', false)
     setProperty('timeTxt.visible', false)
 
-    local statsY = isDownscroll and 15 or 565
-    local timeY = isDownscroll and 668 or 140
-    local vhsY = isDownscroll and 0 or screenHeight - 100
+    local statsY = downscroll and 15 or 565
+    local timeY = downscroll and 668 or 140
+    local vhsY = downscroll and 0 or screenHeight - 100
 
     makeLuaText('statsTxt', '', 400, 15, statsY)
     setTextSize('statsTxt', 36)
@@ -28,21 +26,15 @@ function onCreatePost()
     setTextFont('vhsTxt', 'vcr.ttf')
     addLuaText('vhsTxt')
 
-    initLuaShader("tvcrt")
-
-	makeLuaSprite("shaderHolder", "", 0, 0)
-	makeGraphic("shaderHolder", 0, 0, "ffffff")
+	makeLuaSprite("shaderHolder")
 	setSpriteShader("shaderHolder", "tvcrt")
 	
 	runHaxeCode([[
-        new FlxTimer().start(0.000001, (_) -> {
-            FlxG.camera.filters = [new ShaderFilter(game.getLuaObject("shaderHolder").shader)];
-            game.camHUD.filters = [new ShaderFilter(game.getLuaObject("shaderHolder").shader)];
-        });
+        FlxG.camera.filters = [new ShaderFilter(game.getLuaObject("shaderHolder").shader)];
+        game.camHUD.filters = [new ShaderFilter(game.getLuaObject("shaderHolder").shader)];
 	]])
 end
 function onUpdate()
-    local isDownscroll = downscroll
     local hp = math.floor(getProperty('health') * 50)
     local rating = ratingName ~= nil and ratingName or '...'
     setTextString(
@@ -71,7 +63,7 @@ function onUpdate()
     local day = os.date("%d")
     local year = 1995
 
-    if isDownscroll then
+    if downscroll then
     setTextString('vhsTxt',month .. ", " .. day .. ", " .. year .. "\n" ..hour .. ":" .. minute .. " " .. ampm)
      else
      setTextString('vhsTxt',hour .. ":" .. minute .. " " .. ampm .. "\n" ..month .. ". " .. day .. " " .. year)

@@ -1,0 +1,95 @@
+{
+	"animations": [
+		{
+			"offsets": [19, -293],
+			"loop": true,
+			"fps": 24,
+			"anim": "danceLeft",
+			"indices": [],
+			"name": "le instancia 1"
+		},
+		{
+			"loop": false,
+			"offsets": [2, -209],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up instancia 1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [97, -277],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left instancia 1",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [17, -292],
+			"anim": "danceRight",
+			"fps": 24,
+			"name": "r instancia 1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [15, -296],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right instancia 1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [23, -335],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down instancia 1",
+			"indices": []
+		},
+		{
+			"offsets": [87, -288],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "left miss"
+		},
+		{
+			"offsets": [30, -360],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "down miss"
+		},
+		{
+			"offsets": [0, -238],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "up miss"
+		},
+		{
+			"offsets": [15, -295],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "right miss"
+		}
+	],
+	"vocals_file": "bf",
+	"no_antialiasing": false,
+	"image": "characters/bf",
+	"position": [330, 20],
+	"healthicon": "crazybf",
+	"flip_x": true,
+	"healthbar_colors": [0, 103, 195],
+	"camera_position": [-170, 120],
+	"sing_duration": 6.1,
+	"scale": 1,
+	"_editor_isPlayer": true
+}

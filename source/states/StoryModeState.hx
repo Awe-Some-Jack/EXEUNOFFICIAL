@@ -130,7 +130,7 @@ class StoryModeState extends MusicBeatState
 		add(finalEscapeCover);
 
 		yourselfCover = new FlxSprite();
-		yourselfCover.loadGraphic(Assets.getBitmapData('assets/exe/freeplayassets/placeholder.png'));
+		yourselfCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/yourself.png'));
 		yourselfCover.setGraphicSize(Std.int(FlxG.width * 0.3));
 		yourselfCover.updateHitbox();
 		yourselfCover.x = 132; yourselfCover.y = 74;
@@ -230,7 +230,7 @@ class StoryModeState extends MusicBeatState
 		add(finalEscapeCover2);
 
 		yourselfCover2 = new FlxSprite();
-		yourselfCover2.loadGraphic(Assets.getBitmapData('assets/exe/freeplayassets/placeholder.png'));
+		yourselfCover2.loadGraphic(Assets.getBitmapData('assets/exe/cover/yourself.png'));
 		yourselfCover2.setGraphicSize(Std.int(FlxG.width * 0.3));
 		yourselfCover2.updateHitbox();
 		yourselfCover2.x = 132 + 624; yourselfCover2.y = 74;

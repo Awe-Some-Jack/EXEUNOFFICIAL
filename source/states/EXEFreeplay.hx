@@ -43,7 +43,7 @@ class EXEFreeplay extends MusicBeatState
 	static inline final BOX_SCALE_SONG:Float     = 0.63;
 	static inline final COVER_SCALE:Float          = 0.35;
 	static inline final COVER_SCALE_SELECTED:Float = 0.39;
-	static inline final COVER_SCALE_SONG:Float     = 0.42;
+	static inline final COVER_SCALE_SONG:Float     = 0.421;
 	static inline final BOX_SPACING_X:Float     = -75;
 	static inline final CHANGE_COOLDOWN:Float   = 0;
 	static inline final ARROW_UPDATE_INTERVAL:Float = 0.5;

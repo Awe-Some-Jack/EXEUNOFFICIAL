@@ -1,10 +1,14 @@
 function onCreatePost()
-    makeLuaSprite('darkOverlay', '', 0, 0)
-    makeGraphic('darkOverlay', 9000, 9000, '000000')
-    setObjectCamera('darkOverlay', 'camGame')
-    setProperty('darkOverlay.alpha', 0) 
-    addLuaSprite('darkOverlay', false)
-    screenCenter('darkOverlay', 'xy')
+    makeLuaSprite('darkOverlay')
+    makeGraphic('darkOverlay', 1280, 720, '000000')
+    setProperty('darkOverlay.alpha', 0.0001)
+    setScrollFactor('darkOverlay', 0, 0)
+    screenCenter('darkOverlay')
+    addLuaSprite('darkOverlay')
+end
+
+function onUpdatePost(e)
+    scaleObject('darkOverlay', 1 / getProperty('camGame.zoom'), 1 / getProperty('camGame.zoom'), false)
 end
 
 function onEvent(n,v1)

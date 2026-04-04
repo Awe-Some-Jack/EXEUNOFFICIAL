@@ -44,7 +44,7 @@ function onUpdate()
         'Misses: ' .. misses .. '\n' ..
         'Rating: ' .. rating
     )
-    local songPos = math.floor(getSongPosition() / 1000)
+    local songPos = math.floor(math.max(getSongPosition() / 1000, 0))
     local min = math.floor(songPos / 60)
     local sec = songPos % 60
     if sec < 10 then sec = '0' .. sec end

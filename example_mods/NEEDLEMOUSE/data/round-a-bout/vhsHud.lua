@@ -28,13 +28,24 @@ function onCreatePost()
 
 	makeLuaSprite("shaderHolder")
 	setSpriteShader("shaderHolder", "tvcrt")
+
+    makeLuaSprite("brightness")
+	setSpriteShader("brightness", "brightness")
+    setShaderFloat('brightness', 'saturation', 1.25)
+    setShaderFloat('brightness', 'brightness', -0.08)
+	setShaderFloat('brightness', 'contrast', 1.2)
+
+    makeLuaSprite("chromatic")
+	setSpriteShader("chromatic", "chromatic")
+    setShaderFloat('chromatic', 'amount', 1.5)
 	
 	runHaxeCode([[
-        FlxG.camera.filters = [new ShaderFilter(game.getLuaObject("shaderHolder").shader)];
-        game.camHUD.filters = [new ShaderFilter(game.getLuaObject("shaderHolder").shader)];
+        FlxG.camera.filters = [new ShaderFilter(game.getLuaObject("shaderHolder").shader), new ShaderFilter(game.getLuaObject("brightness").shader), new ShaderFilter(game.getLuaObject("chromatic").shader)];
+        game.camHUD.filters = [new ShaderFilter(game.getLuaObject("shaderHolder").shader), new ShaderFilter(game.getLuaObject("brightness").shader), new ShaderFilter(game.getLuaObject("chromatic").shader)];
 	]])
 end
-function onUpdate()
+
+function onUpdate(e)
     local hp = math.floor(getProperty('health') * 50)
     local rating = ratingName ~= nil and ratingName or '...'
     setTextString(
@@ -68,4 +79,13 @@ function onUpdate()
      else
      setTextString('vhsTxt',hour .. ":" .. minute .. " " .. ampm .. "\n" ..month .. ". " .. day .. " " .. year)
      end
+    
+    setShaderFloat('brightness', 'saturation', lerp(getShaderFloat('brightness', 'saturation'), (getHealth() < 0.4 and 1.25 or 1), e * 5))
+    setShaderFloat('brightness', 'brightness', lerp(getShaderFloat('brightness', 'brightness'), (getHealth() < 0.4 and -0.08 or 0), e * 5))
+	setShaderFloat('brightness', 'contrast', lerp(getShaderFloat('brightness', 'contrast'), (getHealth() < 0.4 and 1.2 or 1), e * 5))
+    setShaderFloat('chromatic', 'amount', lerp(getShaderFloat('chromatic', 'amount'), (getHealth() < 0.4 and 1.5 or 0), e * 5))
+end
+
+function lerp(a, b, t)
+	return a + t * (b - a)
 end

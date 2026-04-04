@@ -30,19 +30,29 @@ local lowornormal = 'normal'
 function onUpdatePost()
 	if getHealth() < 0.4 and lowornormal == 'normal' then
 		lowornormal = 'low'
-		setSoundVolume('inst-vhs', 1)
-		setSoundVolume('voices-vhs', 1)
-		setSoundVolume(null, 0)
-		setProperty('vocals.volume', 0)
+		--setSoundVolume('inst-vhs', 1)
+		--setSoundVolume('voices-vhs', 1)
+		--setSoundVolume(null, 0)
+		--setProperty('vocals.volume', 0)
+
+		soundFadeIn('inst-vhs', crochet / 1000)
+		soundFadeIn('voices-vhs', crochet / 1000)
+		soundFadeOut(null, crochet / 1000)
+		soundFadeOut('vocals', crochet / 1000)
 
 		setSoundTime('inst-vhs', getSongPosition())
 		setSoundTime('voices-vhs', getSongPosition())
 	elseif getHealth() > 0.4 and lowornormal == 'low' then
 		lowornormal = 'normal'
-		setSoundVolume('inst-vhs', 0)
-		setSoundVolume('voices-vhs', 0)
-		setSoundVolume(null, 1)
-		setProperty('vocals.volume', 1)
+		--setSoundVolume('inst-vhs', 0)
+		--setSoundVolume('voices-vhs', 0)
+		--setSoundVolume(null, 1)
+		--setProperty('vocals.volume', 1)
+
+		soundFadeOut('inst-vhs', crochet / 1000)
+		soundFadeOut('voices-vhs', crochet / 1000)
+		soundFadeIn(null, crochet / 1000)
+		soundFadeIn('vocals', crochet / 1000)
 	end
 
 	if lowornormal == 'low' then

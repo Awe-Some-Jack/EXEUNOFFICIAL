@@ -143,9 +143,10 @@ class FPSCounter extends TextField
 		final ram  = cast(cast(System.totalMemory, UInt), Float);
 		#end
 
+		final sysRamDisplay = fmt(cast(cast(System.totalMemory, UInt), Float));
 		text = 'FPS: $currentFPS'
 			+ '\nHeap:    ${fmt(memoryMegas)}'
-			+ '\nSys RAM: ${ram  >= 0 ? fmt(ram)  : fmt(cast(cast(System.totalMemory, UInt), Float))}'
+			+ '\nSys RAM: $sysRamDisplay'
 			+ '\nVRAM~:   ${vram >= 0 ? fmt(vram) : "N/A"}'
 			+ '\nCPU:     ${cpu  >= 0 ? '${Math.round(cpu)}%' : "N/A"}';
 

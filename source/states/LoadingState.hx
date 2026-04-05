@@ -192,6 +192,7 @@ class LoadingState extends MusicBeatState
 	}
 
 	var transitioning:Bool = false;
+	private var _gcTimer:Float = 0;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -210,6 +211,9 @@ class LoadingState extends MusicBeatState
 				else stateChangeDelay = Math.max(0, stateChangeDelay - elapsed);
 			}
 			intendedPercent = loaded / loadMax;
+
+			_gcTimer += elapsed;
+			if (_gcTimer >= 0.5) { _gcTimer = 0; backend.MemoryUtil.clearMinor(); }
 		}
 
 		if (curPercent != intendedPercent)
@@ -347,9 +351,9 @@ class LoadingState extends MusicBeatState
 		{
 			if (bitmap != null && Paths.cacheBitmap(originalBitmapKeys.get(key), bitmap) != null) {} //trace('finished preloading image $key');
 			else trace('failed to cache image $key');
+			requestedBitmaps.remove(key);
+			originalBitmapKeys.remove(key);
 		}
-		requestedBitmaps.clear();
-		originalBitmapKeys.clear();
 		// trace('we checked if loaded');
 		return (loaded >= loadMax && initialThreadCompleted);
 	}
@@ -815,7 +819,6 @@ class LoadingState extends MusicBeatState
 		#end
 	}
 
-	// thread safe sound loader
 	static function preloadGraphic(key:String):Null<BitmapData>
 	{
 		try {

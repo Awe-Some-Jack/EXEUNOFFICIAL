@@ -135,6 +135,7 @@ function onCreatePost()
     setProperty('hitCounterText.alpha', 0)
     setProperty('hitCounterText.scale.x', 1)
     setProperty('hitCounterText.scale.y', 1)
+    setProperty('hitCounterText.antialiasing', getPropertyFromClass('backend.ClientPrefs', 'data.antialiasing'))
     addLuaText('hitCounterText')
 
     centerTextX()

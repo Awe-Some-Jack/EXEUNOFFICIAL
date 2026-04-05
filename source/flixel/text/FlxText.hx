@@ -233,7 +233,6 @@ class FlxText extends FlxSprite
 		textField.text = Text;
 		fieldWidth = FieldWidth;
 		textField.embedFonts = EmbeddedFont;
-		textField.sharpness = 100;
 		textField.height = (Text.length <= 0) ? 1 : 10;
 
 		// call this just to set the textfield's properties

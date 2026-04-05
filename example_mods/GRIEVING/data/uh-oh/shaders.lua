@@ -94,6 +94,26 @@ function onEvent(eventName, value1, value2)
         doTweenX('chromX', 'chrom', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
         onTween2 = true
     end
+
+    if eventName == "Change Character" then
+        if shadersEnabled and not lowQuality then
+            for _,char in ipairs({'dad', 'boyfriend'}) do
+                setSpriteShader(char, 'DropShadowShader')
+                setShaderFloat(char, 'hue', 0)
+                setShaderFloat(char, 'saturation', 0)
+                setShaderFloat(char, 'contrast', 0)
+                setShaderFloat(char, 'str', 1)
+                setShaderFloat(char, 'brightness', -30)
+                setShaderFloat(char, 'thr', 0.1)
+                setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
+                runHaxeFunction('setShaderFrameInfo', {char})
+            end
+            setShaderFloat('dad', 'ang', math.rad(75))
+            setShaderFloat('boyfriend', 'ang', math.rad(115))
+            setShaderFloat('dad', 'dist', 10)
+            setShaderFloat('boyfriend', 'dist', 20)
+        end
+    end
 end
 
 function onUpdatePost(e)

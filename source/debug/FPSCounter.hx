@@ -37,6 +37,31 @@ class FPSCounter extends TextField
 	private var _statTimer:Float   = 0.0;
 	private static inline final STAT_INTERVAL:Float = 2000; // ms between bg queries
 
+	/**
+	 * Estimate VRAM usage by summing pixel sizes of all cached FlxGraphics.
+	 * Each RGBA texture = width * height * 4 bytes. Fast, no external process, works on any GPU.
+	 * Must be called from the main thread (accesses FlxG.bitmap).
+	 **/
+	@:access(flixel.system.frontEnds.BitmapFrontEnd._cache)
+	static function queryVRAMMainThread():Float
+	{
+		try
+		{
+			var total:Float = 0;
+			for (graphic in FlxG.bitmap._cache)
+			{
+				if (graphic != null && graphic.bitmap != null)
+				{
+					// 4 bytes per pixel (RGBA)
+					total += graphic.bitmap.width * graphic.bitmap.height * 4;
+				}
+			}
+			return total;
+		}
+		catch (_) {}
+		return -1;
+	}
+
 	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
 	{
 		super();
@@ -78,10 +103,21 @@ class FPSCounter extends TextField
 	{
 		#if cpp
 		if (_bgRunning) return;
+
+		// Stage3D must be queried on the main thread
+		final vramFast = queryVRAMMainThread();
+		if (vramFast >= 0)
+		{
+			_mutex.acquire();
+			_vramUsage = vramFast;
+			_mutex.release();
+		}
+
 		_bgRunning = true;
 		Thread.create(function() {
 			final cpu  = queryCPU();
-			final vram = queryVRAM();
+			// Only run the heavy VRAM fallbacks (nvidia-smi / powershell) if Stage3D gave nothing
+			final vram = (vramFast >= 0) ? vramFast : queryVRAM();
 			final ram  = querySystemRAM();
 			_mutex.acquire();
 			_cpuUsage  = cpu;
@@ -110,7 +146,7 @@ class FPSCounter extends TextField
 		text = 'FPS: $currentFPS'
 			+ '\nHeap:    ${fmt(memoryMegas)}'
 			+ '\nSys RAM: ${ram  >= 0 ? fmt(ram)  : fmt(cast(cast(System.totalMemory, UInt), Float))}'
-			+ '\nVRAM:    ${vram >= 0 ? fmt(vram) : "N/A"}'
+			+ '\nVRAM~:   ${vram >= 0 ? fmt(vram) : "N/A"}'
 			+ '\nCPU:     ${cpu  >= 0 ? '${Math.round(cpu)}%' : "N/A"}';
 
 		textColor = 0xFFFFFFFF;
@@ -171,22 +207,31 @@ class FPSCounter extends TextField
 		return -1;
 	}
 
+	// Background-thread VRAM fallbacks (Stage3D not accessible here — use external tools)
 	static function queryVRAM():Float
 	{
 		#if windows
+		// Fallback: query used GPU memory via nvidia-smi (NVIDIA only)
 		try
 		{
-			var proc = new sys.io.Process('wmic', ['path', 'Win32_VideoController',
-				'get', 'AdapterRAM', '/value']);
+			var proc = new sys.io.Process('nvidia-smi',
+				['--query-gpu=memory.used', '--format=csv,noheader,nounits']);
+			var out = proc.stdout.readAll().toString().trim();
+			proc.close();
+			var v = Std.parseFloat(out);
+			if (!Math.isNaN(v) && v > 0) return v * 1024 * 1024;
+		}
+		catch (_) {}
+
+		// Fallback 2: DXGI via PowerShell (returns used VRAM, works on all DX12 GPUs)
+		try
+		{
+			var ps = "(Get-Counter '\\GPU Adapter Memory(*)\\Dedicated Usage' -ErrorAction SilentlyContinue).CounterSamples | Measure-Object -Property CookedValue -Sum | Select-Object -ExpandProperty Sum";
+			var proc = new sys.io.Process('powershell', ['-NoProfile', '-NonInteractive', '-Command', ps]);
 			var out  = proc.stdout.readAll().toString().trim();
 			proc.close();
-			// AdapterRAM is total VRAM — best we can get without D3D queries
-			var r = ~/AdapterRAM=(\d+)/i;
-			if (r.match(out))
-			{
-				var v = Std.parseFloat(r.matched(1));
-				return Math.isNaN(v) ? -1 : v;
-			}
+			var v = Std.parseFloat(out);
+			if (!Math.isNaN(v) && v > 0) return v;
 		}
 		catch (_) {}
 		#elseif linux
@@ -197,7 +242,18 @@ class FPSCounter extends TextField
 			var out  = proc.stdout.readAll().toString().trim();
 			proc.close();
 			var v = Std.parseFloat(out);
-			return Math.isNaN(v) ? -1 : v;
+			if (!Math.isNaN(v) && v > 0) return v;
+		}
+		catch (_) {}
+		// NVIDIA on Linux
+		try
+		{
+			var proc = new sys.io.Process('nvidia-smi',
+				['--query-gpu=memory.used', '--format=csv,noheader,nounits']);
+			var out = proc.stdout.readAll().toString().trim();
+			proc.close();
+			var v = Std.parseFloat(out);
+			if (!Math.isNaN(v) && v > 0) return v * 1024 * 1024;
 		}
 		catch (_) {}
 		#end

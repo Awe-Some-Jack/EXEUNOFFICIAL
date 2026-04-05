@@ -193,7 +193,7 @@ class Main extends Sprite
 		DiscordClient.prepare();
 		#end
 
-		FlxG.signals.postStateSwitch.add(MemoryUtil.clearMajor);
+		// MemoryUtil.clearMajor is called inside FunkinCache.clearSecondLayer (postStateSwitch)
 
 		// shader coords fix
 		FlxG.signals.gameResized.add(function (w, h) {

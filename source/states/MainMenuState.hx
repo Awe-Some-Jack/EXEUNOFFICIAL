@@ -40,6 +40,9 @@ class MainMenuState extends MusicBeatState
 	static var showOutdatedWarning:Bool = true;
 	override function create()
 	{
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
 		super.create();
 
 		#if MODS_ALLOWED

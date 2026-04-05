@@ -672,7 +672,8 @@ class LoadingState extends MusicBeatState
 		_startPool();
 		for (sound in soundsToPrepare) initThread(() -> preloadSound('sounds/$sound'), 'sound $sound');
 		for (music in musicToPrepare) initThread(() -> preloadSound('music/$music'), 'music $music');
-		for (song in songsToPrepare) initThread(() -> preloadSound(song, 'songs', true, false), 'song $song');
+		// Song audio (Inst/Voices) is streamed in PlayState via loadStream — skip full PCM decode to save RAM
+		for (song in songsToPrepare) initThread(() -> { preloadSongPath(song); return true; }, 'song $song');
 
 		// for images, they get to have their own thread
 		for (image in imagesToPrepare) initThread(() -> preloadGraphic(image), 'image $image');
@@ -792,6 +793,26 @@ class LoadingState extends MusicBeatState
 		mutex.release();
 
 		return Paths.currentTrackedSounds.get(file);
+	}
+
+	static function preloadSongPath(key:String):Void
+	{
+		var file:String = Paths.getPath(Language.getFileTranslation(key) + '.${Paths.SOUND_EXT}', SOUND, 'songs', true);
+		#if sys
+		if (FileSystem.exists(file))
+		{
+			mutex.acquire();
+			Paths.localTrackedAssets.push(file);
+			mutex.release();
+		}
+		#else
+		if (OpenFlAssets.exists(file, SOUND))
+		{
+			mutex.acquire();
+			Paths.localTrackedAssets.push(file);
+			mutex.release();
+		}
+		#end
 	}
 
 	// thread safe sound loader

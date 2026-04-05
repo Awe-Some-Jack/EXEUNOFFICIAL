@@ -39,11 +39,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 			BOOL);
 		addOption(option);
 
-		var option:Option = new Option('GPU Caching', //Name
-			"If checked, allows the GPU to be used for caching textures, decreasing RAM usage.\nDon't turn this on if you have a shitty Graphics Card.", //Description
-			'cacheOnGPU',
-			BOOL);
-		addOption(option);
+		// GPU Caching is always ON on desktop — forced in ClientPrefs.loadPrefs(), no option needed
 
 		#if !html5 //Apparently other framerates isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
 		var option:Option = new Option('Framerate',

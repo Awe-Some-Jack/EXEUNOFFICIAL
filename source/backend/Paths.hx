@@ -11,7 +11,6 @@ import openfl.display.BitmapData;
 import openfl.display3D.textures.RectangleTexture;
 import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
-import openfl.system.System;
 import openfl.geom.Rectangle;
 
 import lime.utils.Assets;
@@ -57,7 +56,7 @@ class Paths
 			}
 		}
 
-		System.gc();
+		MemoryUtil.clearMajor();
 	}
 
 	// define the locally tracked assets
@@ -84,7 +83,11 @@ class Paths
 		}
 		// flags everything to be cleared out next unused memory clear
 		localTrackedAssets = [];
-		#if !html5 openfl.Assets.cache.clear("songs"); #end
+		#if !html5
+		openfl.Assets.cache.clear("songs");
+		openfl.Assets.cache.clear("music");
+		openfl.Assets.cache.clear("sounds");
+		#end
 	}
 
 	public static function freeGraphicsFromMemory()

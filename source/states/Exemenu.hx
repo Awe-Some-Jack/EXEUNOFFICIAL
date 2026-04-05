@@ -51,6 +51,9 @@ class Exemenu extends MusicBeatState
 
 	override function create()
 	{
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Menus", null);
 		#end

@@ -46,6 +46,8 @@ class FunkinCache extends AssetCache
 		bitmapData2 = [];
 		font2       = [];
 		sound2      = [];
+
+		MemoryUtil.clearMajor();
 	}
 
 	public override function getBitmapData(id:String):BitmapData

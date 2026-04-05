@@ -249,6 +249,7 @@ class PlayState extends MusicBeatState
 
 	//Achievement shit
 	var keysPressed:Array<Int> = [];
+	private var _keysPressedSet:Map<Int, Bool> = [];
 	var boyfriendIdleTime:Float = 0.0;
 	var boyfriendIdled:Bool = false;
 
@@ -578,6 +579,8 @@ class PlayState extends MusicBeatState
 		#end
 		noteTypes = null;
 		eventsPushed = null;
+		_noteTypesSet = null;
+		_eventsPushedSet = null;
 
 		// SONG SPECIFIC SCRIPTS
 		#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
@@ -1001,20 +1004,16 @@ class PlayState extends MusicBeatState
 			}
 			moveCameraSection();
 
+			final introAlts:Array<String> = switch(stageUI) {
+					case "pixel": ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel'];
+					case "normal": ["ready", "set", "go"];
+					default: ['${uiPrefix}UI/ready${uiPostfix}', '${uiPrefix}UI/set${uiPostfix}', '${uiPrefix}UI/go${uiPostfix}'];
+				};
+			final introAntialias:Bool = ClientPrefs.data.antialiasing && !isPixelStage;
+
 			startTimer = new FlxTimer().start(Conductor.crochet / 1000 / playbackRate, function(tmr:FlxTimer)
 			{
 				characterBopper(tmr.loopsLeft);
-
-				var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
-				var introImagesArray:Array<String> = switch(stageUI) {
-					case "pixel": ['pixelUI/ready-pixel', 'pixelUI/set-pixel', 'pixelUI/date-pixel'];
-					case "normal": ["ready", "set" ,"go"];
-					default: ['${uiPrefix}UI/ready${uiPostfix}', '${uiPrefix}UI/set${uiPostfix}', '${uiPrefix}UI/go${uiPostfix}'];
-				}
-				introAssets.set(stageUI, introImagesArray);
-
-				var introAlts:Array<String> = introAssets.get(stageUI);
-				var antialias:Bool = (ClientPrefs.data.antialiasing && !isPixelStage);
 				var tick:Countdown = THREE;
 
 				switch (swagCounter)
@@ -1023,15 +1022,15 @@ class PlayState extends MusicBeatState
 						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
 						tick = THREE;
 					case 1:
-						countdownReady = createCountdownSprite(introAlts[0], antialias);
+						countdownReady = createCountdownSprite(introAlts[0], introAntialias);
 						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
 						tick = TWO;
 					case 2:
-						countdownSet = createCountdownSprite(introAlts[1], antialias);
+						countdownSet = createCountdownSprite(introAlts[1], introAntialias);
 						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
 						tick = ONE;
 					case 3:
-						countdownGo = createCountdownSprite(introAlts[2], antialias);
+						countdownGo = createCountdownSprite(introAlts[2], introAntialias);
 						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
 						tick = GO;
 					case 4:
@@ -1286,6 +1285,8 @@ class PlayState extends MusicBeatState
 
 	private var noteTypes:Array<String> = [];
 	private var eventsPushed:Array<String> = [];
+	private var _noteTypesSet:Map<String, Bool> = [];
+	private var _eventsPushedSet:Map<String, Bool> = [];
 	private var totalColumns: Int = 4;
 
 	private function generateSong():Void
@@ -1467,8 +1468,11 @@ class PlayState extends MusicBeatState
 						swagNote.x += FlxG.width / 2 + 25;
 					}
 				}
-				if(!noteTypes.contains(swagNote.noteType))
+				if(!_noteTypesSet.exists(swagNote.noteType))
+				{
+					_noteTypesSet.set(swagNote.noteType, true);
 					noteTypes.push(swagNote.noteType);
+				}
 
 				oldNote = swagNote;
 			}
@@ -1485,11 +1489,11 @@ class PlayState extends MusicBeatState
 	// called only once per different event (Used for precaching)
 	function eventPushed(event:EventNote) {
 		eventPushedUnique(event);
-		if(eventsPushed.contains(event.event)) {
+		if(_eventsPushedSet.exists(event.event))
 			return;
-		}
 
 		stagesFunc(function(stage:BaseStage) stage.eventPushed(event));
+		_eventsPushedSet.set(event.event, true);
 		eventsPushed.push(event.event);
 	}
 
@@ -1727,7 +1731,11 @@ class PlayState extends MusicBeatState
 
 	private final _updateArgs:Array<Dynamic> = [0.0];
 	private var _lastTimeText:String = '';
+	private var _lastWindowTitle:String = '';
+	private var _windowTitleTimer:Float = 0;
 	private var _freedCpuImages:Bool = false;
+	private var _cpuFreeFrameDelay:Int = 0; // wait N frames before first CPU image free pass
+	private var _cpuFreeTimer:Float = 0;    // periodic re-scan for script-loaded bitmaps
 
 	private var _holdArray:Array<Bool> = [];
 	private var _pressArray:Array<Bool> = [];
@@ -1742,19 +1750,27 @@ class PlayState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 		#if (!js && !html5)
-		if (!_freedCpuImages && ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null)
+		if (ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null)
 		{
-			_freedCpuImages = true;
-			for (graphic in Paths.currentTrackedAssets)
+			if (!_freedCpuImages)
 			{
-				if (graphic != null && graphic.bitmap != null && graphic.bitmap.image != null)
+				_cpuFreeFrameDelay++;
+				if (_cpuFreeFrameDelay >= 3)
 				{
-					graphic.bitmap.image.data = null;
-					graphic.bitmap.image = null;
-					graphic.bitmap.readable = true;
+					_freedCpuImages = true;
+					_freeCpuImageData();
 				}
 			}
-			MemoryUtil.clearMinor();
+			else
+			{
+				// Periodically scan for script-loaded bitmaps that arrived after the initial pass
+				_cpuFreeTimer += elapsed;
+				if (_cpuFreeTimer >= 5.0)
+				{
+					_cpuFreeTimer = 0;
+					_freeCpuImageData();
+				}
+			}
 		}
 		#end
 
@@ -1958,12 +1974,40 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (!paused) FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " | Time Playing: " + FlxStringUtil.formatTime(Math.max(0, (Conductor.songPosition - ClientPrefs.data.noteOffset) / 1000), true);
+		if (!paused) {
+			_windowTitleTimer += elapsed;
+			if (_windowTitleTimer >= 1.0) {
+				_windowTitleTimer = 0;
+				var newTitle = appName + " | Playing: " + SONG.song + " | Time Playing: " + FlxStringUtil.formatTime(Math.max(0, (Conductor.songPosition - ClientPrefs.data.noteOffset) / 1000), true);
+				if (newTitle != _lastWindowTitle) {
+					FlxG.stage.window.title = _lastWindowTitle = newTitle;
+				}
+			}
+		}
 
 		setOnScripts('botPlay', cpuControlled);
 		_updateArgs[0] = elapsed;
 		callOnScripts('onUpdatePost', _updateArgs);
 	}
+
+	#if (!js && !html5)
+	private function _freeCpuImageData():Void
+	{
+		var freed:Int = 0;
+		for (graphic in Paths.currentTrackedAssets)
+		{
+			if (graphic != null && graphic.bitmap != null
+				&& graphic.bitmap.image != null && graphic.bitmap.__texture != null)
+			{
+				graphic.bitmap.image.data = null;
+				graphic.bitmap.image = null;
+				graphic.bitmap.readable = false;
+				freed++;
+			}
+		}
+		if (freed > 0) MemoryUtil.clearMajor();
+	}
+	#end
 
 	// Health icon updaters
 	public dynamic function updateIconsScale(elapsed:Float)
@@ -2858,7 +2902,7 @@ class PlayState extends MusicBeatState
 
 		// Needed for the  "Just the Two of Us" achievement.
 		//									- Shadow Mario
-		if(!keysPressed.contains(key)) keysPressed.push(key);
+		if(!_keysPressedSet.exists(key)) { _keysPressedSet.set(key, true); keysPressed.push(key); }
 
 		//more accurate hit time for the ratings? part 2 (Now that the calculations are done, go back to the time it was before for not causing a note stutter)
 		Conductor.songPosition = lastTime;
@@ -2939,15 +2983,20 @@ class PlayState extends MusicBeatState
 		final releaseArray = _releaseArray;
 
 		// TO DO: Find a better way to handle controller inputs, this should work for now
-		if(controls.controllerMode && pressArray.contains(true))
-			for (i in 0...pressArray.length)
-				if(pressArray[i] && strumsBlocked[i] != true)
-					keyPressed(i);
+		if(controls.controllerMode)
+		{
+			var anyPressed:Bool = false;
+			for (i in 0...pressArray.length) if (pressArray[i]) { anyPressed = true; break; }
+			if (anyPressed)
+				for (i in 0...pressArray.length)
+					if(pressArray[i] && strumsBlocked[i] != true)
+						keyPressed(i);
+		}
 
 		if (startedCountdown && !inCutscene && !boyfriend.stunned && generatedMusic)
 		{
 			if (notes.length > 0) {
-				for (n in notes) { // I can't do a filter here, that's kinda awesome
+				for (n in notes) {
 					var canHit:Bool = (n != null && !strumsBlocked[n.noteData] && n.canBeHit
 						&& n.mustPress && !n.tooLate && !n.wasGoodHit && !n.blockHit);
 
@@ -2955,15 +3004,15 @@ class PlayState extends MusicBeatState
 						canHit = canHit && n.parent != null && n.parent.wasGoodHit;
 
 					if (canHit && n.isSustainNote) {
-						var released:Bool = !holdArray[n.noteData];
-
-						if (!released)
+						if (holdArray[n.noteData])
 							goodNoteHit(n);
 					}
 				}
 			}
 
-			if (!holdArray.contains(true) || endingSong)
+			var anyHeld:Bool = false;
+			for (v in holdArray) if (v) { anyHeld = true; break; }
+			if (!anyHeld || endingSong)
 				playerDance();
 
 			#if ACHIEVEMENTS_ALLOWED
@@ -2972,10 +3021,17 @@ class PlayState extends MusicBeatState
 		}
 
 		// TO DO: Find a better way to handle controller inputs, this should work for now
-		if((controls.controllerMode || strumsBlocked.contains(true)) && releaseArray.contains(true))
-			for (i in 0...releaseArray.length)
-				if(releaseArray[i] || strumsBlocked[i] == true)
-					keyReleased(i);
+		var anyBlocked:Bool = false;
+		for (v in strumsBlocked) if (v) { anyBlocked = true; break; }
+		if (controls.controllerMode || anyBlocked)
+		{
+			var anyReleased:Bool = false;
+			for (v in releaseArray) if (v) { anyReleased = true; break; }
+			if (anyReleased)
+				for (i in 0...releaseArray.length)
+					if(releaseArray[i] || strumsBlocked[i] == true)
+						keyReleased(i);
+		}
 	}
 
 	function noteMiss(daNote:Note):Void { //You didn't hit the key and let it go offscreen, also used by Hurt Notes

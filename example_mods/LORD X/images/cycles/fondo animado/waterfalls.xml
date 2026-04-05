@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="waterfalls.png">
+<SubTexture name="idle0000" x="0" y="0" width="3644" height="1125" frameX="-199" frameY="-302" frameWidth="4470" frameHeight="1862" />
+<SubTexture name="idle0001" x="3644" y="0" width="3569" height="1115" frameX="-274" frameY="-312" frameWidth="4470" frameHeight="1862" />
+<SubTexture name="idle0002" x="0" y="2240" width="3569" height="1115" frameX="-274" frameY="-312" frameWidth="4470" frameHeight="1862" />
+<SubTexture name="idle0003" x="0" y="1125" width="3569" height="1115" frameX="-274" frameY="-312" frameWidth="4470" frameHeight="1862" />
+</TextureAtlas>

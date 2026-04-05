@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="educador.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="ecuador idle instancia 10000" x="36" y="36" width="156" height="145"/>
+	<SubTexture name="ecuador instancia 10000" x="212" y="36" width="157" height="145" frameX="-57" frameY="-193" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10001" x="389" y="36" width="162" height="140" frameX="-54" frameY="-197" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10002" x="571" y="36" width="157" height="153" frameX="-57" frameY="-180" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10003" x="748" y="36" width="156" height="155" frameX="-60" frameY="-163" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10004" x="924" y="36" width="154" height="155" frameX="-63" frameY="-146" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10005" x="1098" y="36" width="154" height="156" frameX="-64" frameY="-127" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10006" x="36" y="212" width="156" height="154" frameX="-63" frameY="-109" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10007" x="212" y="212" width="157" height="152" frameX="-61" frameY="-92" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10008" x="389" y="212" width="157" height="153" frameX="-59" frameY="-74" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10009" x="566" y="212" width="155" height="155" frameX="-58" frameY="-57" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10010" x="741" y="212" width="153" height="156" frameX="-57" frameY="-42" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10011" x="914" y="212" width="154" height="155" frameX="-56" frameY="-28" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10012" x="1088" y="212" width="156" height="154" frameX="-56" frameY="-14" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10013" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10014" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10015" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10016" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10017" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10018" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10019" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10020" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10021" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10022" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10023" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10024" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10025" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10026" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10027" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10028" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10029" x="36" y="388" width="156" height="152" frameX="-57" frameY="0" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10030" x="212" y="388" width="158" height="151" frameX="-56" frameY="-6" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10031" x="390" y="388" width="161" height="150" frameX="-55" frameY="-13" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10032" x="571" y="388" width="162" height="149" frameX="-55" frameY="-22" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10033" x="753" y="388" width="166" height="145" frameX="-53" frameY="-35" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10034" x="939" y="388" width="170" height="142" frameX="-52" frameY="-51" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10035" x="36" y="560" width="176" height="138" frameX="-49" frameY="-73" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10036" x="232" y="560" width="185" height="132" frameX="-46" frameY="-105" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10037" x="437" y="560" width="199" height="123" frameX="-40" frameY="-157" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10038" x="656" y="560" width="228" height="104" frameX="-29" frameY="-261" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10039" x="904" y="560" width="256" height="85" frameX="-18" frameY="-367" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10040" x="36" y="718" width="271" height="75" frameX="-12" frameY="-422" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10041" x="327" y="718" width="280" height="69" frameX="-9" frameY="-455" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10042" x="627" y="718" width="287" height="64" frameX="-6" frameY="-479" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10043" x="934" y="718" width="292" height="60" frameX="-4" frameY="-497" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10044" x="36" y="813" width="295" height="59" frameX="-3" frameY="-510" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10045" x="351" y="813" width="298" height="56" frameX="-2" frameY="-521" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10046" x="669" y="813" width="300" height="55" frameX="-1" frameY="-529" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10047" x="36" y="892" width="302" height="53" frameX="0" frameY="-536" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10048" x="36" y="892" width="302" height="53" frameX="0" frameY="-536" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10049" x="358" y="892" width="0" height="0" frameX="887" frameY="-160" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10050" x="378" y="892" width="0" height="0" frameX="887" frameY="-160" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10051" x="378" y="892" width="0" height="0" frameX="887" frameY="-160" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10052" x="378" y="892" width="0" height="0" frameX="887" frameY="-160" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10053" x="378" y="892" width="0" height="0" frameX="887" frameY="-160" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10054" x="378" y="892" width="0" height="0" frameX="887" frameY="-160" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10055" x="378" y="892" width="0" height="0" frameX="887" frameY="-160" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10056" x="378" y="892" width="0" height="0" frameX="887" frameY="-160" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10057" x="378" y="892" width="0" height="0" frameX="887" frameY="-160" frameWidth="302" frameHeight="589"/>
+	<SubTexture name="ecuador instancia 10058" x="378" y="892" width="0" height="0" frameX="887" frameY="-160" frameWidth="302" frameHeight="589"/>
+</TextureAtlas>

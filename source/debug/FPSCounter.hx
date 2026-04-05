@@ -173,7 +173,16 @@ class FPSCounter extends TextField
 		#if windows
 		try
 		{
-			// wmic is much faster than Get-Counter (~10ms vs ~1000ms)
+			var ps = "(Get-CimInstance Win32_Processor | Measure-Object -Property LoadPercentage -Average).Average";
+			var proc = new sys.io.Process('powershell', ['-NoProfile', '-NonInteractive', '-Command', ps]);
+			var out  = proc.stdout.readAll().toString().trim();
+			proc.close();
+			var v = Std.parseFloat(out);
+			if (!Math.isNaN(v) && v >= 0) return v;
+		}
+		catch (_) {}
+		try
+		{
 			var proc = new sys.io.Process('wmic', ['cpu', 'get', 'loadpercentage', '/value']);
 			var out  = proc.stdout.readAll().toString().trim();
 			proc.close();
@@ -263,6 +272,18 @@ class FPSCounter extends TextField
 	static function querySystemRAM():Float
 	{
 		#if windows
+		try
+		{
+			var pid = Std.string(Sys.getEnv("PPID") != null ? Sys.getEnv("PPID") : -1);
+			var exeName = haxe.io.Path.withoutDirectory(Sys.programPath());
+			var ps = "(Get-Process -Name '" + haxe.io.Path.withoutExtension(exeName) + "' -ErrorAction SilentlyContinue | Select-Object -First 1).WorkingSet64";
+			var proc = new sys.io.Process('powershell', ['-NoProfile', '-NonInteractive', '-Command', ps]);
+			var out  = proc.stdout.readAll().toString().trim();
+			proc.close();
+			var v = Std.parseFloat(out);
+			if (!Math.isNaN(v) && v > 0) return v;
+		}
+		catch (_) {}
 		try
 		{
 			var proc = new sys.io.Process('wmic', ['process', 'where',

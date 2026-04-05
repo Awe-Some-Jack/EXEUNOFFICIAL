@@ -1933,9 +1933,10 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		undoActions = [];
 
 		for (secNum => section in PlayState.SONG.notes)
-			for (note in section.sectionNotes)
-				if (note != null)
-					notes.push(createNote(note, secNum));
+			if (section.sectionNotes != null)
+				for (note in section.sectionNotes)
+					if (note != null)
+						notes.push(createNote(note, secNum));
 
 		for (eventNum => event in PlayState.SONG.events)
 			if (event != null && (cachedSectionTimes.length < 1 || event[0] < cachedSectionTimes[cachedSectionTimes.length-1])) //dont spawn events over the time limit
@@ -2037,6 +2038,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			row += rowRound;
 			time += beat * (rowRound / 4);
 
+			if (section.sectionNotes == null) section.sectionNotes = [];
 			for (note in section.sectionNotes)
 			{
 				if (secNum > 0 && note[0] < lastTime) note[0] = lastTime;

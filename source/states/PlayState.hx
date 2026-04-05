@@ -1485,15 +1485,6 @@ class PlayState extends MusicBeatState
 		unspawnNotes.sort(sortByTime);
 		generatedMusic = true;
 
-		if (SONG != null && SONG.notes != null)
-			for (sec in SONG.notes)
-				if (sec != null) sec.sectionNotes = null;
-		if (songData != null && songData != SONG && songData.notes != null)
-			for (sec in songData.notes)
-				if (sec != null) sec.sectionNotes = null;
-
-		if (songData != null) songData.events = null;
-		if (SONG != null) SONG.events = null;
 		MemoryUtil.clearMajor();
 	}
 

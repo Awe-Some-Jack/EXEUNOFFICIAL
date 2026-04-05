@@ -245,7 +245,7 @@ class Exetitle extends MusicBeatState
 			{
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				transitioning = true;
-				new FlxTimer().start(1, function(tmr:FlxTimer){MusicBeatState.switchState(new ParallaxState());});
+				new FlxTimer().start(0.8, function(tmr:FlxTimer){MusicBeatState.switchState(new ParallaxState());});
 
 				FlxTween.cancelTweensOf(ring);
 				FlxTween.cancelTweensOf(bandana);
@@ -253,10 +253,10 @@ class Exetitle extends MusicBeatState
 				FlxTween.cancelTweensOf(eyes);
 				FlxTween.cancelTweensOf(parallaxArrow);
 
-				FlxTween.tween(ring, {x: savedRingX - (parallaxArrow.width * 2)}, 0.9, {ease: FlxEase.cubeOut});
-				FlxTween.tween(bandana, {x: savedRingX + (329 * 0.4) - (parallaxArrow.width * 2)}, 0.91, {ease: FlxEase.cubeOut});
-				FlxTween.tween(logotxt, {x: savedRingX + (711 * 0.4) - (parallaxArrow.width * 2)}, 0.92, {ease: FlxEase.cubeOut});
-				FlxTween.tween(eyes, {x: savedRingX + (1074 * 0.4) - (parallaxArrow.width * 2)}, 0.95, {ease: FlxEase.cubeOut});
+				FlxTween.tween(ring, {x: savedRingX - (parallaxArrow.width * 2.5)}, 0.9, {ease: FlxEase.cubeOut});
+				FlxTween.tween(bandana, {x: savedRingX + (329 * 0.4) - (parallaxArrow.width * 2.5)}, 0.91, {ease: FlxEase.cubeOut});
+				FlxTween.tween(logotxt, {x: savedRingX + (711 * 0.4) - (parallaxArrow.width * 2.5)}, 0.92, {ease: FlxEase.cubeOut});
+				FlxTween.tween(eyes, {x: savedRingX + (1074 * 0.4) - (parallaxArrow.width * 2.5)}, 0.95, {ease: FlxEase.cubeOut});
 				FlxTween.tween(parallaxArrow, {x: FlxG.width - (parallaxArrow.width * 2)}, 0.9, {ease: FlxEase.cubeOut});
 			}
 		}

@@ -211,7 +211,7 @@ class PauseSubState extends MusicBeatSubstate
 						MusicBeatState.switchState(new StoryModeState());
 					else
 						MusicBeatState.switchState(new EXEFreeplay());
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/freeplay.ogg'));
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode      = false;
 					FlxG.camera.followLerp      = 0;

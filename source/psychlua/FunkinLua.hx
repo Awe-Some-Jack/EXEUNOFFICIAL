@@ -542,7 +542,7 @@ class FunkinLua
 			if (skipTransition) { FlxTransitionableState.skipNextTransIn = true; FlxTransitionableState.skipNextTransOut = true; }
 			MusicBeatState.switchState(PlayState.isStoryMode ? new StoryModeState() : new EXEFreeplay());
 			#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
-			FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 			PlayState.changedDifficulty = false;
 			PlayState.chartingMode = false;
 			game.transitioning = true;

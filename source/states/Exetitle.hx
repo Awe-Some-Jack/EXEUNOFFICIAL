@@ -82,7 +82,7 @@ class Exetitle extends MusicBeatState
 						Main.fpsVar.visible = ClientPrefs.data.showFPS;
 						FlxG.camera.visible = true;
 						FlxG.camera.flash(FlxColor.RED, 1);
-						FlxG.sound.playMusic(Assets.getSound('assets/exe/music/soundtest.ogg'), 1);
+						FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 						FlxG.sound.play(Paths.sound('showMoment'));
 					});
 				});

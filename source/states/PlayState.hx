@@ -2572,7 +2572,7 @@ class PlayState extends MusicBeatState
 				{
 					if (!isSoundTest){
 						Mods.loadTopMod();
-						FlxG.sound.playMusic(Paths.music('freakyMenu'));
+						FlxG.sound.playMusic(openfl.Assets.getSound('assets/exe/music/menu.ogg'));
 						#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
 						canResync = false;
@@ -2596,7 +2596,7 @@ class PlayState extends MusicBeatState
 
 						canResync = false;
 						FlxG.switchState(() -> new EXEFreeplay());
-						FlxG.sound.playMusic(Paths.music('freakyMenu'));
+						FlxG.sound.playMusic(openfl.Assets.getSound('assets/exe/music/freeplay.ogg'));
 						if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
 							StoryModeState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
@@ -2635,7 +2635,7 @@ class PlayState extends MusicBeatState
 
 				canResync = false;
 				MusicBeatState.switchState(new EXEFreeplay());
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+				FlxG.sound.playMusic(openfl.Assets.getSound('assets/exe/music/freeplay.ogg'));
 				changedDifficulty = false;
 			}
 			transitioning = true;

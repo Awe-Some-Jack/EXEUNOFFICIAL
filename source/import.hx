@@ -64,5 +64,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.transition.FlxTransitionableState;
 
+import openfl.Assets;
+
 using StringTools;
 #end

@@ -217,6 +217,8 @@ class EXEFreeplay extends MusicBeatState
 		}, 0);
 
 		super.create();
+
+		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/freeplay.ogg'));
 		
 		Paths.clearUnusedMemory();
 	}
@@ -1066,8 +1068,8 @@ class EXEFreeplay extends MusicBeatState
 		scoreBG = null; scoreText = null; rankText = null;
 		missingTextBG = null; missingText = null;
 
-		if (FlxG.sound.music != null && !FlxG.sound.music.playing && !stopMusicPlay)
-			FlxG.sound.playMusic(Paths.music('freakyMenu'));
+		if (!stopMusicPlay)
+			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();

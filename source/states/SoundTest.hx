@@ -351,8 +351,7 @@ class SoundTest extends MusicBeatState
 
 		FlxG.stage.window.title = previousWindowTitle;
 
-		if (FlxG.sound.music != null)
-			FlxG.sound.music.stop();
+		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 
 		backdrop = null;
 		titleText = null;

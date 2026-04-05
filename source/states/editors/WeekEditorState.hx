@@ -413,7 +413,7 @@ class WeekEditorState extends MusicBeatState implements PsychUIEventHandler.Psyc
 				if (!unsavedProgress)
 				{
 					MusicBeatState.switchState(new MasterEditorMenu());
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 				}
 				else openSubState(new ExitConfirmationPrompt(() -> unsavedProgress = false));
 			}
@@ -753,7 +753,7 @@ class WeekEditorEXEFreeplay extends MusicBeatState implements PsychUIEventHandle
 				if (!WeekEditorState.unsavedProgress)
 				{
 					MusicBeatState.switchState(new MasterEditorMenu());
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 				}
 				else openSubState(new ExitConfirmationPrompt());
 			}

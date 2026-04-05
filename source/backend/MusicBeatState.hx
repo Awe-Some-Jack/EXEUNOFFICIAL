@@ -2,8 +2,9 @@ package backend;
 
 import flixel.FlxState;
 import backend.PsychCamera;
+import flixel.addons.transition.FlxTransitionableState;
 
-class MusicBeatState extends FlxState
+class MusicBeatState extends FlxTransitionableState
 {
 	public var curSection:Int = 0;
 	private var stepsToDo:Int = 0;
@@ -33,10 +34,6 @@ class MusicBeatState extends FlxState
 
 		super.create();
 
-		if(!skip) {
-			openSubState(new CustomFadeTransition(0.5, true));
-		}
-		FlxTransitionableState.skipNextTransOut = false;
 		timePassedOnState = 0;
 	}
 
@@ -131,36 +128,45 @@ class MusicBeatState extends FlxState
 		curStep = lastChange.stepTime + Math.floor(shit);
 	}
 
+	override public function transitionIn():Void
+    {
+        if (FlxTransitionableState.skipNextTransIn)
+        {
+            FlxTransitionableState.skipNextTransIn = false;
+            finishTransIn();
+            return;
+        }
+
+        final trans = new CustomShapeTransition(0.5, true);
+        CustomShapeTransition.finishCallback = finishTransIn;
+        openSubState(trans);
+    }
+
+    override function startOutro(onOutroComplete:() -> Void)
+    {
+        _exiting = true;
+        _onExit = onOutroComplete;
+
+        if (FlxTransitionableState.skipNextTransOut)
+        {
+            FlxTransitionableState.skipNextTransOut = false;
+            finishTransOut();
+            return;
+        }
+
+        final trans = new CustomShapeTransition(0.5, false);
+        CustomShapeTransition.finishCallback = finishTransOut;
+        openSubState(trans);
+    }
+
+	@:deprecated("MusicBeatState.switchState(nextState) is deprecated, use FlxG.switchState(nextState) instead PLZ")
 	public static function switchState(nextState:FlxState = null) {
-		if(nextState == null) nextState = FlxG.state;
-		if(nextState == FlxG.state)
-		{
-			resetState();
-			return;
-		}
-
-		if(FlxTransitionableState.skipNextTransIn) FlxG.switchState(nextState);
-		else startTransition(nextState);
-		FlxTransitionableState.skipNextTransIn = false;
+		FlxG.switchState(nextState);
 	}
 
+	@:deprecated("MusicBeatState.resetState() is deprecated, use FlxG.resetState() instead PLZ")
 	public static function resetState() {
-		if(FlxTransitionableState.skipNextTransIn) FlxG.resetState();
-		else startTransition();
-		FlxTransitionableState.skipNextTransIn = false;
-	}
-
-	// Custom made Trans in
-	public static function startTransition(nextState:FlxState = null)
-	{
-		if(nextState == null)
-			nextState = FlxG.state;
-
-		FlxG.state.openSubState(new CustomFadeTransition(0.5, false));
-		if(nextState == FlxG.state)
-			CustomFadeTransition.finishCallback = function() FlxG.resetState();
-		else
-			CustomFadeTransition.finishCallback = function() FlxG.switchState(nextState);
+		FlxG.resetState();
 	}
 
 	public static function getState():MusicBeatState {

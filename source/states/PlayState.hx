@@ -1284,6 +1284,7 @@ class PlayState extends MusicBeatState
 		#end
 		setOnScripts('songLength', songLength);
 		callOnScripts('onSongStart');
+		gameplayCam.onSongStart();
 	}
 
 	private var noteTypes:Array<String> = [];

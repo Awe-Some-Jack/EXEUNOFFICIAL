@@ -1,28 +1,28 @@
 {
 	"animations": [
 		{
-			"offsets": [50, 29],
 			"loop": false,
-			"fps": 24,
+			"offsets": [55, 15],
 			"anim": "anim 1",
-			"indices": [],
-			"name": "Something's wrong instancia 1"
+			"fps": 24,
+			"name": "Something's wrong instancia 1",
+			"indices": []
 		},
 		{
-			"offsets": [49, 64],
 			"loop": false,
-			"fps": 24,
+			"offsets": [54, 50],
 			"anim": "anim 2",
-			"indices": [],
-			"name": "Just admit it instancia 1"
+			"fps": 24,
+			"name": "Just admit it instancia 1",
+			"indices": []
 		},
 		{
-			"offsets": [209, 43],
 			"loop": false,
-			"fps": 24,
+			"offsets": [214, 29],
 			"anim": "anim 3",
-			"indices": [],
-			"name": "Things are ok instancia 1"
+			"fps": 24,
+			"name": "Things are ok instancia 1",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

@@ -1,6 +1,7 @@
 package states;
 
 import objects.GifSprite;
+import backend.GifDecoder;
 import flixel.addons.display.FlxBackdrop;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -20,6 +21,7 @@ class Exetitle extends MusicBeatState
 
 	public static var initialized:Bool = false;
 	public static var closedState:Bool = false;
+	public static var cachedTitleGif:GifDecoder = null;
 
 	var titleText:FlxSprite;
 	var blackScreen:FlxSprite;
@@ -95,6 +97,9 @@ class Exetitle extends MusicBeatState
 		}
 
 		var screenBg:GifSprite = new GifSprite(0, 0);
+				if (cachedTitleGif != null)
+			screenBg.loadGifFromDecoder(cachedTitleGif);
+		else
 		screenBg.loadGif('assets/exe/title/statictitlemenu.gif');
 		screenBg.antialiasing = ClientPrefs.data.antialiasing;
 		screenBg.setGraphicSize(FlxG.width, FlxG.height);

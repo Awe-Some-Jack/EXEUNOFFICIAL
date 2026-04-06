@@ -26,8 +26,8 @@ class MusicBeatState extends FlxTransitionableState
 	public static function getVariables()
 		return getState().variables;
 
-	override function create() {
-		var skip:Bool = FlxTransitionableState.skipNextTransOut;
+	override function create() 
+	{
 		#if MODS_ALLOWED Mods.updatedOnState = false; #end
 
 		if(!_psychCameraInitialized) initPsychCamera();
@@ -160,7 +160,7 @@ class MusicBeatState extends FlxTransitionableState
     }
 
 	@:deprecated("MusicBeatState.switchState(nextState) is deprecated, use FlxG.switchState(nextState) instead PLZ")
-	public static function switchState(nextState:FlxState = null) {
+	public static function switchState(nextState:FlxState) {
 		FlxG.switchState(nextState);
 	}
 

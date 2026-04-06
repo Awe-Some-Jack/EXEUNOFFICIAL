@@ -77,6 +77,8 @@ class StoryModeState extends MusicBeatState
 
 		super.create();
 		Paths.clearUnusedMemory();
+
+		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/story.ogg'));
 	}
 
 
@@ -92,6 +94,7 @@ class StoryModeState extends MusicBeatState
 		covers = null;
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
+		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 		super.destroy();
 	}
 

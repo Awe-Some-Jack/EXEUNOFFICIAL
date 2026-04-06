@@ -1,60 +1,60 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [42, 4],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "Idle"
+			"fps": 24,
+			"name": "Idle",
+			"indices": []
 		},
 		{
-			"offsets": [102, 19],
 			"loop": false,
-			"fps": 24,
+			"offsets": [87, 23],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Left"
+			"fps": 24,
+			"name": "Left",
+			"indices": []
 		},
 		{
-			"offsets": [22, -75],
 			"loop": false,
-			"fps": 24,
+			"offsets": [42, 4],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Down"
+			"fps": 24,
+			"name": "Down",
+			"indices": []
 		},
 		{
-			"offsets": [9, 2],
 			"loop": false,
-			"fps": 24,
+			"offsets": [43, 15],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Right"
+			"fps": 24,
+			"name": "Right",
+			"indices": []
 		},
 		{
-			"offsets": [114, 69],
 			"loop": false,
-			"fps": 24,
+			"offsets": [106, 82],
 			"anim": "singUP",
-			"indices": [],
-			"name": "Up"
+			"fps": 24,
+			"name": "Up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [125, 33],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT-alt",
-			"loop": false,
-			"name": "dancel"
+			"fps": 24,
+			"name": "dancel",
+			"indices": []
 		},
 		{
-			"offsets": [74, 30],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT-alt",
 			"loop": false,
-			"name": "dancer"
+			"offsets": [74, 30],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "dancer",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

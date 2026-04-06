@@ -1009,6 +1009,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 			{
 				if (!unsavedProgress)
 				{
+					camEditor.bgColor = 0xFF000000;
 					MusicBeatState.switchState(new states.editors.MasterEditorMenu());
 					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 				}
@@ -1016,6 +1017,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 			}
 			else
 			{
+				camEditor.bgColor = 0xFF000000;
 				FlxG.mouse.visible = false;
 				MusicBeatState.switchState(new PlayState());
 			}
@@ -1028,6 +1030,8 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 	{
 		var lastLoaded = Paths.currentLevel;
 		Paths.currentLevel = assetFolder;
+
+		camEditor.bgColor = 0xFF666666;
 
 		dadPosition.set(100, 100);
 		bfPosition.set(770, 100);

@@ -45,7 +45,7 @@ class PauseSubState extends MusicBeatSubstate
 		add(whiteBG);
 		FlxTween.tween(whiteBG, {y: 0}, 0.1);
 
-		separator = new FlxSprite(cameraWidth).loadGraphic(Paths.image('pause/separator'));
+		separator = new FlxSprite(cameraWidth).loadGraphic(Assets.getBitmapData('assets/exe/pause/separator.png'));
 		separator.scale.set(3, 3);
 		separator.updateHitbox();
 		separator.antialiasing = false;
@@ -57,7 +57,7 @@ class PauseSubState extends MusicBeatSubstate
 		add(pauseBar);
 		FlxTween.tween(pauseBar, {x: 0}, 0.1);
 
-		pauseText = new FlxSprite(196, 589).loadGraphic(Paths.image('pause/pauseText'));
+		pauseText = new FlxSprite(196, 589).loadGraphic(Assets.getBitmapData('assets/exe/pause/pauseText.png'));
 		pauseText.scale.set(3, 3);
 		pauseText.updateHitbox();
 		pauseText.alpha = 0;
@@ -67,9 +67,9 @@ class PauseSubState extends MusicBeatSubstate
 		FlxTween.tween(pauseText, {alpha: 1}, 0.1);
 
 		var daImage:String = miniSonicImage;
-		if (Paths.fileExists('images/pause/mini-sonics/' + daImage + '-1.png', IMAGE)) daImage = daImage + '-1';
-		if (!Paths.fileExists('images/pause/mini-sonics/' + daImage + '.png', IMAGE)) daImage = 'sonic';
-		miniSonic = new FlxSprite().loadGraphic(Paths.image('pause/mini-sonics/' + daImage));
+		if (FileSystem.exists('assets/exe/pause/mini-sonics/' + daImage + '-1.png')) daImage = daImage + '-1';
+		if (!FileSystem.exists('assets/exe/pause/mini-sonics/' + daImage + '.png')) daImage = 'sonic';
+		miniSonic = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/pause/mini-sonics/' + daImage + '.png'));
 		miniSonic.scale.set(3, 3);
 		miniSonic.updateHitbox();
 		miniSonic.antialiasing = false;
@@ -78,7 +78,7 @@ class PauseSubState extends MusicBeatSubstate
 		add(miniSonic);
 		FlxTween.tween(miniSonic, {alpha: 1}, 0.1);
 
-		selBar = new FlxSprite(cameraWidth, 181 - 40).loadGraphic(Paths.image('pause/selected'));
+		selBar = new FlxSprite(cameraWidth, 181 - 40).loadGraphic(Assets.getBitmapData('assets/exe/pause/selected.png'));
 		selBar.scale.set(3, 3);
 		selBar.updateHitbox();
 		selBar.antialiasing = false;
@@ -95,7 +95,7 @@ class PauseSubState extends MusicBeatSubstate
 		for (i in 0...selectionButtons.length)
 		{
 			var menuItem:FlxSprite = new FlxSprite(itemX, itemHeight * (i + 1) + itemSpacing * (i + 1) - 40)
-				.loadGraphic(Paths.image('pause/${selectionButtons[i]}'));
+				.loadGraphic(Assets.getBitmapData('assets/exe/pause/${selectionButtons[i]}.png'));
 			menuItem.scale.set(3, 3);
 			menuItem.updateHitbox();
 			menuItem.antialiasing = false;

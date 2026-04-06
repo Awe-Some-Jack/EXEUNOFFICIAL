@@ -1160,7 +1160,7 @@ class ResetScoreSubState extends MusicBeatSubstate
 
 		if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
 		{
-			FlxG.sound.play(Paths.sound('scrollMenu'), 1);
+			FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
 			onYes = !onYes;
 			updateOptions();
 		}

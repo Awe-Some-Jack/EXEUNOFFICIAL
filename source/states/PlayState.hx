@@ -3438,39 +3438,25 @@ class PlayState extends MusicBeatState
 		switch(Paths.formatToSongPath(SONG.song))
 		{
 			case 'you-cant-run':
-				if (curBeat == 200) PauseSubState.miniSonicImage = 'you-cant-run-2';
+				if (curBeat >= 200) PauseSubState.miniSonicImage = 'you-cant-run-2';
 			case 'triple-trouble':
-				switch(curBeat)
-				{
-					case 260:
-						PauseSubState.miniSonicImage = 'triple-trouble-2';
-					case 324:
-						PauseSubState.miniSonicImage = 'triple-trouble-3';
-					case 580:
-						PauseSubState.miniSonicImage = 'triple-trouble-2';
-					case 707:
-						PauseSubState.miniSonicImage = 'triple-trouble-4';
-					case 1028:
-						PauseSubState.miniSonicImage = 'triple-trouble-2';
-				}
+				if (curBeat >= 200) PauseSubState.miniSonicImage = 'triple-trouble-2';
+				if (curBeat >= 324) PauseSubState.miniSonicImage = 'triple-trouble-3';
+				if (curBeat >= 580) PauseSubState.miniSonicImage = 'triple-trouble-2';
+				if (curBeat >= 707) PauseSubState.miniSonicImage = 'triple-trouble-4';
+				if (curBeat >= 1028) PauseSubState.miniSonicImage = 'triple-trouble-2';
 			case 'hellbent':
-				if (curBeat == 296) PauseSubState.miniSonicImage = 'hellbent-2';
+				if (curBeat >= 296) PauseSubState.miniSonicImage = 'hellbent-2';
 			case 'fate':
-				if (curBeat == 576) PauseSubState.miniSonicImage = 'fate-2';
+				if (curBeat >= 576) PauseSubState.miniSonicImage = 'fate-2';
 			case 'starline':
-				if (curBeat == 272) PauseSubState.miniSonicImage = 'starline-2';
+				if (curBeat >= 272) PauseSubState.miniSonicImage = 'starline-2';
 			case 'deception':
-				if (curBeat == 128) PauseSubState.miniSonicImage = 'deception-2';
+				if (curBeat >= 128) PauseSubState.miniSonicImage = 'deception-2';
 			case 'hijacked-transmission':
-				switch(curBeat)
-				{
-					case 264:
-						PauseSubState.miniSonicImage = 'hijacked-transmission-2';
-					case 328:
-						PauseSubState.miniSonicImage = 'hijacked-transmission-4';
-					case 480:
-						PauseSubState.miniSonicImage = 'hijacked-transmission-3';
-				}
+				if (curBeat >= 264) PauseSubState.miniSonicImage = 'hijacked-transmission-2';
+				if (curBeat >= 328) PauseSubState.miniSonicImage = 'hijacked-transmission-4';
+				if (curBeat >= 480) PauseSubState.miniSonicImage = 'hijacked-transmission-3';
 		}
 
 		setOnScripts('curBeat', curBeat);

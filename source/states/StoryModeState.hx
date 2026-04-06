@@ -80,6 +80,8 @@ class StoryModeState extends MusicBeatState
 
 		createAssets(false);
 
+		CustomShapeTransition.shape = HEAD;
+
 		super.create();
 		Paths.clearUnusedMemory();
 	}
@@ -521,6 +523,8 @@ class StoryModeState extends MusicBeatState
 		@:privateAccess
 		if (PlayState._lastLoadedModDirectory != Mods.currentModDirectory)
 			Paths.freeGraphicsFromMemory();
+
+		if (STORY_SONGS[selectedCover] == 'yourself') CustomShapeTransition.shape = CIRCLE;
 
 		canInteract = false;
 		LoadingState.prepareToSong();

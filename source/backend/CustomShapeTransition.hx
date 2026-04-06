@@ -61,7 +61,7 @@ class CustomShapeTransition extends MusicBeatSubstate
         switch (shape) {
             case X, INFINITE:
                 time = 0.8;
-                maxScale = 20;
+                maxScale = 40;
 
             case SANIC:
                 maxScale = 8;

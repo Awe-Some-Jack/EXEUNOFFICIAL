@@ -137,6 +137,7 @@ class Exemenu extends MusicBeatState
 
 	function startBlink():Void
 	{
+		FlxG.sound.play(Paths.sound('confirmMenu'));
 		isBlinking = true;
 		blinkTimer = 0;
 		blinkCount = 0;

@@ -3,28 +3,34 @@ package states;
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 
+typedef CharData = {
+	var name:String;
+	var info:String;
+	var render:String;
+	var order:Int;
+	var folder:String;
+}
+
 class InfoBioParallaxState extends MusicBeatState
 {
 	var ringdown:FlxSprite;
-	var educator:FlxSprite;
+	var charRender:FlxSprite;
 	var ring:FlxSprite;
 
 	var charBG:FlxSprite;
 	var charName:FlxText;
 	var charInfo:FlxText;
 
-	var name:String = 'Null';
-	var info:String = 'No Info added.';
+	var chars:Array<CharData> = [];
+	var currentIndex:Int = 0;
 
 	override function create()
 	{
 		super.create();
 
-		var json:Dynamic = haxe.Json.parse(sys.io.File.getContent('assets/exe/parallax/info/educator/info-educator.json'));
-		if (json.name != null && json.name.length > 0) name = json.name;
-		if (json.info != null && json.info.length > 0) info = json.info;
+		loadCharData();
 
-		var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0xFFDE3F3F , 0xFF92454C));
+		var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0xFFDE3F3F, 0xFF92454C));
 		grid.velocity.set(40, 40);
 		add(grid);
 
@@ -46,11 +52,9 @@ class InfoBioParallaxState extends MusicBeatState
 		ringdown.updateHitbox();
 		add(ringdown);
 
-		educator = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/info/educator/educator.png'));
-		educator.antialiasing = ClientPrefs.data.antialiasing;
-		educator.scale.set(0.25, 0.25);
-		educator.updateHitbox();
-		add(educator);
+		charRender = new FlxSprite();
+		charRender.antialiasing = ClientPrefs.data.antialiasing;
+		add(charRender);
 
 		ring = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/info/ring.png'));
 		ring.antialiasing = ClientPrefs.data.antialiasing;
@@ -58,12 +62,16 @@ class InfoBioParallaxState extends MusicBeatState
 		ring.updateHitbox();
 		add(ring);
 
-		charName = new FlxText(40, 90, 0, name);
+		charBG = new FlxSprite(0, 0).makeGraphic(1, 1, 0x77000000);
+		add(charBG);
+
+		charName = new FlxText(40, 90, 0, '');
 		charName.setFormat("assets/fonts/Plaza Regular.ttf", 100, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 		charName.borderSize = 2;
 		charName.antialiasing = ClientPrefs.data.antialiasing;
+		add(charName);
 
-		charInfo = new FlxText(40, 200, 580, info);
+		charInfo = new FlxText(40, 200, 580, '');
 		charInfo.setFormat("assets/fonts/Plaza Regular.ttf", 50, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 		charInfo.borderSize = 2;
 		charInfo.antialiasing = ClientPrefs.data.antialiasing;
@@ -71,14 +79,60 @@ class InfoBioParallaxState extends MusicBeatState
 		fmt.leading = 5;
 		charInfo.textField.setTextFormat(fmt);
 		charInfo.textField.defaultTextFormat = fmt;
-
-		charBG = new FlxSprite(charInfo.x - 10, charInfo.y - 10).makeGraphic(Std.int(charInfo.width + 20), Std.int(charInfo.height + 20), 0x77000000);
-
-		add(charBG);
-		add(charName);
 		add(charInfo);
+
+		if (chars.length > 0)
+			loadChar(0);
 	}
-	
+
+	function loadCharData():Void
+	{
+		var basePath:String = 'assets/exe/parallax/info/';
+		var folders:Array<String> = sys.FileSystem.readDirectory(basePath);
+
+		for (folder in folders)
+		{
+			var folderPath:String = basePath + folder;
+			if (!sys.FileSystem.isDirectory(folderPath)) continue;
+
+			var jsonPath:String = folderPath + '/info-' + folder + '.json';
+			if (!sys.FileSystem.exists(jsonPath)) continue;
+
+			var json:Dynamic = haxe.Json.parse(sys.io.File.getContent(jsonPath));
+			chars.push({
+				name:   (json.name   != null) ? json.name   : 'Unknown',
+				info:   (json.info   != null) ? json.info   : 'No info.',
+				render: (json.render != null) ? json.render : folder,
+				order:  (json.order  != null) ? json.order  : 999,
+				folder: folder
+			});
+		}
+
+		chars.sort((a, b) -> a.order - b.order);
+	}
+
+	function loadChar(index:Int):Void
+	{
+		currentIndex = index;
+		var data:CharData = chars[index];
+
+		var renderPath:String = 'assets/exe/parallax/info/' + data.folder + '/' + data.render + '.png';
+		charRender.loadGraphic(Assets.getBitmapData(renderPath));
+		charRender.scale.set(0.25, 0.25);
+		charRender.updateHitbox();
+
+		charName.text = data.name;
+		charInfo.text = data.info;
+
+		var fmt:openfl.text.TextFormat = charInfo.textField.defaultTextFormat;
+		fmt.leading = 5;
+		charInfo.textField.setTextFormat(fmt);
+		charInfo.textField.defaultTextFormat = fmt;
+
+		charBG.setPosition(charInfo.x - 10, charInfo.y - 10);
+		charBG.makeGraphic(Std.int(charInfo.width + 20), Std.int(charInfo.height + 20), 0x77000000);
+	}
+
 	var characterSine:Float = 0;
 	var transitioning:Bool = false;
 	override function update(elapsed:Float)
@@ -93,11 +147,34 @@ class InfoBioParallaxState extends MusicBeatState
 				FlxG.switchState(() -> new ParallaxState());
 				transitioning = true;
 			}
+
+			if (chars.length > 1)
+			{
+				if (Controls.instance.UI_RIGHT_P)
+				{
+					FlxG.sound.play(Paths.sound('scrollMenu'));
+					loadChar((currentIndex + 1) % chars.length);
+				}
+				else if (Controls.instance.UI_LEFT_P)
+				{
+					FlxG.sound.play(Paths.sound('scrollMenu'));
+					loadChar((currentIndex - 1 + chars.length) % chars.length);
+				}
+			}
 		}
 
 		characterSine += elapsed;
-		educator.setPosition((FlxG.width * 0.7) - (educator.width / 2), ((FlxG.height - educator.height) / 2) + (Math.sin(characterSine) * 10) - 40);
-		ringdown.setPosition(educator.x - (1032 * 0.25), (((FlxG.height - educator.height) / 2) - (358 * 0.25)) + (Math.sin(characterSine - 0.2) * 10) - 40);
-		ring.setPosition(educator.x - (1032 * 0.25), (((FlxG.height - educator.height) / 2) - (358 * 0.25)) + (Math.sin(characterSine - 0.2) * 10) - 40);
+		charRender.setPosition(
+			(FlxG.width * 0.7) - (charRender.width / 2),
+			((FlxG.height - charRender.height) / 2) + (Math.sin(characterSine) * 10) - 40
+		);
+		ringdown.setPosition(
+			charRender.x - (1032 * 0.25),
+			(((FlxG.height - charRender.height) / 2) - (358 * 0.25)) + (Math.sin(characterSine - 0.2) * 10) - 40
+		);
+		ring.setPosition(
+			charRender.x - (1032 * 0.25),
+			(((FlxG.height - charRender.height) / 2) - (358 * 0.25)) + (Math.sin(characterSine - 0.2) * 10) - 40
+		);
 	}
 }

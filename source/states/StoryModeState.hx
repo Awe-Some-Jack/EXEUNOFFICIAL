@@ -421,11 +421,15 @@ class StoryModeState extends MusicBeatState
 			{
 				selectedBox = 0;
 				moveRedBox(box1BaseX);
+				var staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
+				if (staticSound != null) staticSound.fadeOut(0.3, 0);
 			}
 			else if (FlxG.keys.justPressed.D && selectedBox == 0)
 			{
 				selectedBox = 1;
 				moveRedBox(box2BaseX);
+				var staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
+				if (staticSound != null) staticSound.fadeOut(0.3, 0);
 			}
 
 			if (Controls.instance.BACK)
@@ -474,6 +478,8 @@ class StoryModeState extends MusicBeatState
 		selectedCover = newIndex;
 		updateCoverVisibility();
 		flashStaticScreen();
+		var staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
+		if (staticSound != null) staticSound.fadeOut(0.3, 0);
 	}
 
 	function updateCoverVisibility():Void

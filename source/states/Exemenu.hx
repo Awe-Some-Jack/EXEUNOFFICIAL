@@ -98,6 +98,7 @@ class EXEMenu extends MusicBeatState
 		}
 
 		refreshSelection();
+		changeSelection(0, false, false);
 	}
 
 	override function update(elapsed:Float)
@@ -127,12 +128,12 @@ class EXEMenu extends MusicBeatState
 		}
 	}
 
-	function changeSelection(dir:Int, up:Bool):Void
+	function changeSelection(dir:Int, up:Bool, sound:Bool = true):Void
 	{
 		isMovingUpward      = up;
 		selectedOptionIndex = (selectedOptionIndex + dir + TOTAL_OPTIONS) % TOTAL_OPTIONS;
 		cooldownTimer       = 0.1;
-		FlxG.sound.play(Paths.sound('scrollMenu'));
+		if (sound) FlxG.sound.play(Paths.sound('scrollMenu'));
 		refreshSelection();
 		resetShadow();
 	}

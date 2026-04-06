@@ -203,7 +203,7 @@ class Exetitle extends MusicBeatState
 				titleText.animation.play('press', true);
 				transitioning = true;
 
-				spikes.acceleration.x = -500;
+				spikes.acceleration.x = -100;
 
 				FlxG.sound.play(Paths.sound('menulaugh'));
 				FlxG.sound.play(Paths.sound('menumomentclick'));

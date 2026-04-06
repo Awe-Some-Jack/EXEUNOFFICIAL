@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="satanos.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 27 instancia 10000" x="36" y="36" width="799" height="569"/>
+	<SubTexture name="Símbolo 27 instancia 10001" x="36" y="36" width="799" height="569"/>
+	<SubTexture name="Símbolo 27 instancia 10002" x="36" y="36" width="799" height="569"/>
+	<SubTexture name="Símbolo 27 instancia 10003" x="855" y="36" width="799" height="569"/>
+	<SubTexture name="Símbolo 27 instancia 10004" x="855" y="36" width="799" height="569"/>
+	<SubTexture name="satanos instancia 10000" x="1674" y="36" width="799" height="609" frameX="0" frameY="0" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10001" x="2493" y="36" width="799" height="609" frameX="0" frameY="-2" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10002" x="36" y="665" width="799" height="609" frameX="0" frameY="0" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10003" x="855" y="665" width="799" height="609" frameX="0" frameY="0" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10004" x="1674" y="665" width="799" height="609" frameX="0" frameY="0" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10005" x="1674" y="665" width="799" height="609" frameX="0" frameY="0" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10006" x="2493" y="665" width="799" height="609" frameX="0" frameY="0" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10007" x="36" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10008" x="854" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10009" x="1672" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10010" x="1672" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10011" x="36" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10012" x="854" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10013" x="1672" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10014" x="1672" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10015" x="36" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10016" x="854" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10017" x="1672" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10018" x="1672" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10019" x="36" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10020" x="854" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10021" x="1672" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10022" x="1672" y="1294" width="798" height="565" frameX="-1" frameY="-44" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10023" x="2490" y="1294" width="798" height="589" frameX="-1" frameY="-20" frameWidth="799" frameHeight="611"/>
+	<SubTexture name="satanos instancia 10024" x="36" y="1903" width="798" height="484" frameX="-1" frameY="-125" frameWidth="799" frameHeight="611"/>
+</TextureAtlas>

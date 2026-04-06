@@ -220,13 +220,7 @@ class EXETitle extends MusicBeatState
 		}
 		if (!transitioning)
 		{
-			var mouseX:Float = FlxG.mouse.x;
-			var mouseY:Float = FlxG.mouse.y;
-			var mouseOverArrow:Bool = (mouseX >= parallaxArrow.x && mouseX <= parallaxArrow.x + parallaxArrow.width
-				&& mouseY >= parallaxArrow.y && mouseY <= parallaxArrow.y + parallaxArrow.height);
-			if (FlxG.mouse.justPressed)
-				trace('CLICK mouse=($mouseX,$mouseY) arrow=(${parallaxArrow.x},${parallaxArrow.y},w=${parallaxArrow.width},h=${parallaxArrow.height}) over=$mouseOverArrow pos=$mousePosition');
-			if (mousePosition == 'left' && (mouseX >= (FlxG.width * 0.75) || mouseOverArrow))
+			if (mousePosition == 'left' && FlxG.mouse.getScreenPosition().x >= (FlxG.width * 0.85))
 			{
 				FlxTween.cancelTweensOf(ring);
 				FlxTween.cancelTweensOf(bandana);
@@ -240,7 +234,7 @@ class EXETitle extends MusicBeatState
 				FlxTween.tween(eyes, {x: savedRingX + (1074 * 0.4) - parallaxArrow.width}, 0.55, {ease: FlxEase.cubeOut});
 				FlxTween.tween(parallaxArrow, {x: FlxG.width - parallaxArrow.width}, 0.5, {ease: FlxEase.cubeOut});
 			}
-			else if (mousePosition == 'right' && mouseX < (FlxG.width * 0.75) && !mouseOverArrow)
+			else if (mousePosition == 'right' && FlxG.mouse.getScreenPosition().x < (FlxG.width * 0.85))
 			{
 				FlxTween.cancelTweensOf(ring);
 				FlxTween.cancelTweensOf(bandana);

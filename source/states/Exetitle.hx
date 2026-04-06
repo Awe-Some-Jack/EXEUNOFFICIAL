@@ -221,7 +221,7 @@ class Exetitle extends MusicBeatState
 
 		if (!transitioning)
 		{
-			if (mousePosition == 'left' && FlxG.mouse.getScreenPosition().x >= (FlxG.width * 0.75))
+			if (mousePosition == 'left' && FlxG.mouse.getScreenPosition().x >= (FlxG.width * 0.85))
 			{
 				FlxTween.cancelTweensOf(ring);
 				FlxTween.cancelTweensOf(bandana);
@@ -237,7 +237,7 @@ class Exetitle extends MusicBeatState
 				FlxTween.tween(eyes, {x: savedRingX + (1074 * 0.4) - parallaxArrow.width}, 0.55, {ease: FlxEase.cubeOut});
 				FlxTween.tween(parallaxArrow, {x: FlxG.width - parallaxArrow.width}, 0.5, {ease: FlxEase.cubeOut});
 			}
-			else if (mousePosition == 'right' && FlxG.mouse.getScreenPosition().x < (FlxG.width * 0.75))
+			else if (mousePosition == 'right' && FlxG.mouse.getScreenPosition().x < (FlxG.width * 0.85))
 			{
 				FlxTween.cancelTweensOf(ring);
 				FlxTween.cancelTweensOf(bandana);

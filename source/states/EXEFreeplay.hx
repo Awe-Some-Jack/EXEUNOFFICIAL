@@ -242,11 +242,15 @@ class EXEFreeplay extends MusicBeatState
 			var weekExeCover:String = (leWeek.exeCover != null && leWeek.exeCover.length > 0) ? leWeek.exeCover : 'placeholder';
 			var weekExeLabel:String = (leWeek.exeLabel != null && leWeek.exeLabel.length > 0) ? leWeek.exeLabel : 'NON EXE';
 			var weekTransition:String = (leWeek.transitionShape != null && leWeek.transitionShape.length > 0) ? leWeek.transitionShape : 'HEAD';
-			var weekExeColor:Int = 0xFF8888FF;
+			var weekExeColor:FlxColor = cast 0xFF8888FF;
 			if (leWeek.exeColor != null && leWeek.exeColor.length > 0)
-				weekExeColor = Std.parseInt(leWeek.exeColor);
+			{
+				var parsed:Null<FlxColor> = FlxColor.fromString(leWeek.exeColor);
+				if (parsed != null)
+					weekExeColor = parsed;
+			}
 			else
-				weekExeColor = (weekExeLabel == 'EXE') ? 0xFFFF0000 : 0xFF8888FF;
+				weekExeColor = cast((weekExeLabel == 'EXE') ? 0xFFFF0000 : 0xFF8888FF);
 
 			for (song in leWeek.songs)
 			{

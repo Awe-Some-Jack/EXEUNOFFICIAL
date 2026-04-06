@@ -565,8 +565,6 @@ class EXEFreeplay extends MusicBeatState
 		var newSel = songSelector + delta;
 		if (newSel < 0 || newSel >= songs.length) return;
 		songSelector = newSel;
-		var staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
-		if (staticSound != null) staticSound.fadeOut(0.3, 0);
 
 		if (songSelector < songScrollOffset)
 			songScrollOffset = songSelector;
@@ -728,8 +726,6 @@ class EXEFreeplay extends MusicBeatState
 		changeCooldown = CHANGE_COOLDOWN;
 
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
-		var staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
-		if (staticSound != null) staticSound.fadeOut(0.3, 0);
 		cancelAllTweens();
 		loadCharText(selectedBox);
 		loadSongList(selectedBox);

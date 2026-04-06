@@ -116,15 +116,17 @@ class ParallaxState extends MusicBeatState
 				FlxTween.cancelTweensOf(barstory);
 				FlxTween.cancelTweensOf(barinfo);
 
-				FlxTween.tween(barstory, {x: -220}, 1.2, {ease: FlxEase.cubeOut});
-				FlxTween.tween(barinfo, {x: -220}, 1.2, {ease: FlxEase.cubeOut});
+				FlxTween.tween(barstory, {x: -240}, 1.2, {ease: FlxEase.cubeOut});
+				FlxTween.tween(barinfo, {x: -240}, 1.2, {ease: FlxEase.cubeOut});
 
 				FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.6, {ease: FlxEase.cubeOut, onComplete: function(twn:FlxTween){
-					FlxTween.tween(FlxG.camera, {zoom: 2}, 0.55, {ease: FlxEase.expoIn});
-					FlxTween.tween(whiteBG, {alpha: 1}, 0.4);
+					FlxTween.tween(FlxG.camera, {zoom: 2}, 0.75, {ease: FlxEase.expoIn});
+					FlxTween.tween(whiteBG, {alpha: 1}, 0.6);
 				}});
 
-				new FlxTimer().start(1, function(tmr:FlxTimer){
+				if (curSelected == 0) FlxG.sound.play(Paths.sound('storyparallax'), 0.6);
+
+				new FlxTimer().start(1.4, function(tmr:FlxTimer){
 					if (curSelected == 0) MusicBeatState.switchState(new StoryParallaxState());
 					else MusicBeatState.switchState(new InfoBioParallaxState());
 				});

@@ -59,11 +59,7 @@ class CustomShapeTransition extends MusicBeatSubstate
         height = Math.ceil(FlxG.height / zoom);
 
         switch (shape) {
-            case X:
-                time = 0.8;
-                maxScale = 20;
-
-            case INFINITE:
+            case X, INFINITE:
                 time = 0.8;
                 maxScale = 20;
 

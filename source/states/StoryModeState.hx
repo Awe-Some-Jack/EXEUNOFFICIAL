@@ -403,18 +403,36 @@ class StoryModeState extends MusicBeatState
 		if (!isSelecting) {
 			if (inCoverSelect)
 			{
-				selectedBox = 0;
-				moveRedBox(box1BaseX);
-				var staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
-				if (staticSound != null) staticSound.fadeOut(0.3, 0);
+				if (Controls.instance.UI_RIGHT_P && selectedCover < covers.length - 1)
+					changeCover(selectedCover + 1);
+				else if (Controls.instance.UI_LEFT_P && selectedCover > 0)
+					changeCover(selectedCover - 1);
+				if (Controls.instance.ACCEPT){
+					isSelecting = true;
+					bfBOX.animation.play('yeah', true);
+					bfBOX.x += 10;
+					FlxG.sound.play(Paths.sound('menuConfirm'));
+					FlxFlicker.flicker(redBOX, 1, 0.07, false, true, function(_) launchSong());
+				}
+				if (Controls.instance.BACK)
+					exitCoverSelect();
 			}
 			else
 			{
-				selectedBox = 1;
-				moveRedBox(box2BaseX);
-				var staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
-				if (staticSound != null) staticSound.fadeOut(0.3, 0);
-			}
+				if (FlxG.keys.justPressed.A && selectedBox == 1)
+				{
+					selectedBox = 0;
+					moveRedBox(box1BaseX);
+					var staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
+					if (staticSound != null) staticSound.fadeOut(0.3, 0);
+				}
+				else if (FlxG.keys.justPressed.D && selectedBox == 0)
+				{
+					selectedBox = 1;
+					moveRedBox(box2BaseX);
+					var staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
+					if (staticSound != null) staticSound.fadeOut(0.3, 0);
+				}
 
 				if (Controls.instance.BACK)
 				{

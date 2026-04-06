@@ -241,7 +241,7 @@ class Exetitle extends MusicBeatState
 				FlxTween.tween(parallaxArrow, {x: FlxG.width}, 0.5, {ease: FlxEase.cubeOut});
 			}
 
-			if(mousePosition == 'right' && (pressedEnter || (FlxG.mouse.justPressed && FlxG.mouse.overlaps(parallaxArrow))))
+			if(mousePosition == 'right' && (pressedEnter || FlxG.mouse.justPressed))
 			{
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				transitioning = true;

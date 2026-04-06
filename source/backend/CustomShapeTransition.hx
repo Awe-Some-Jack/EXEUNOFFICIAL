@@ -16,8 +16,13 @@ import shaders.BlueMaskShader;
 enum ShapeTypes {
     CIRCLE;
     HEAD;
+    KNUX;
+    TAILS;
+    EGG;
     OVAL;
     X;
+    INFINITE;
+    SANIC;
 }
 
 class CustomShapeTransition extends MusicBeatSubstate
@@ -56,7 +61,14 @@ class CustomShapeTransition extends MusicBeatSubstate
         switch (shape) {
             case X:
                 time = 0.8;
-                maxScale = 10;
+                maxScale = 20;
+
+            case INFINITE:
+                time = 0.8;
+                maxScale = 20;
+
+            case SANIC:
+                maxScale = 8;
 
             case OVAL:
                 time = 0.9;
@@ -66,7 +78,7 @@ class CustomShapeTransition extends MusicBeatSubstate
                 maxScale = 6;
         }
 
-        final head = Paths.image('transitions/' + Std.string(shape).toLowerCase()).bitmap;
+        final head = Assets.getBitmapData('assets/exe/transitions/' + Std.string(shape).toLowerCase() + '.png');
         final black = new BitmapData(width, height, true, FlxColor.BLACK);
         final border = new BitmapData(width * 2, height * 2, true, FlxColor.BLACK);
 
@@ -172,6 +184,23 @@ class CustomShapeTransition extends MusicBeatSubstate
         {
             finishCallback();
             finishCallback = null;
+        }
+    }
+
+    public static function getShapeByString(shapeString:String):ShapeTypes
+    {
+        var shit:String = shapeString.trim().toLowerCase();
+        return switch(shit)
+        {
+            case 'x': X;
+            case 'infinite': INFINITE;
+            case 'circle': CIRCLE;
+            case 'oval': OVAL;
+            case 'egg' | 'eggman': EGG;
+            case 'tails': TAILS;
+            case 'knux' | 'knuckles': KNUX;
+            case 'sanic': SANIC;
+            default: HEAD;
         }
     }
     

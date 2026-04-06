@@ -55,5 +55,6 @@
 	"exeCover": "lordx",
 	"exeLabel": "EXE",
 	"exeColor": "0xFFFF0000",
+	"transitionShape": "x",
 	"soundTestCode": [0, 0, false]
 }

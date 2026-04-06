@@ -27,6 +27,7 @@ typedef ExeSongInfo = {
 	var title:String;
 	var exeLabel:String;
 	var exeColor:Int;
+	var transitionShape:String;
 }
 
 typedef ExeSongEntry = {
@@ -217,9 +218,8 @@ class EXEFreeplay extends MusicBeatState
 		}, 0);
 
 		super.create();
-
+		CustomShapeTransition.shape = HEAD;
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/freeplay.ogg'));
-		
 		Paths.clearUnusedMemory();
 	}
 
@@ -241,6 +241,7 @@ class EXEFreeplay extends MusicBeatState
 			var weekExeTitle:String = (leWeek.exeTitle != null && leWeek.exeTitle.length > 0) ? leWeek.exeTitle : null;
 			var weekExeCover:String = (leWeek.exeCover != null && leWeek.exeCover.length > 0) ? leWeek.exeCover : 'placeholder';
 			var weekExeLabel:String = (leWeek.exeLabel != null && leWeek.exeLabel.length > 0) ? leWeek.exeLabel : 'NON EXE';
+			var weekTransition:String = (leWeek.transitionShape != null && leWeek.transitionShape.length > 0) ? leWeek.transitionShape : 'HEAD';
 			var weekExeColor:Int = 0xFF8888FF;
 			if (leWeek.exeColor != null && leWeek.exeColor.length > 0)
 				weekExeColor = Std.parseInt(leWeek.exeColor);
@@ -257,7 +258,8 @@ class EXEFreeplay extends MusicBeatState
 					coverFile: weekExeCover,
 					title:     title,
 					exeLabel:  weekExeLabel,
-					exeColor:  weekExeColor
+					exeColor:  weekExeColor,
+					transitionShape: weekTransition
 				});
 			}
 
@@ -701,6 +703,8 @@ class EXEFreeplay extends MusicBeatState
 		@:privateAccess
 		if (PlayState._lastLoadedModDirectory != Mods.currentModDirectory)
 			Paths.freeGraphicsFromMemory();
+
+		if (songEntries[selectedBox].songs[0].transitionShape != null) CustomShapeTransition.shape = CustomShapeTransition.getShapeByString(songEntries[selectedBox].songs[0].transitionShape);
 
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());

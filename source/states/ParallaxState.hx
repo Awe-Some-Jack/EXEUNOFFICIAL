@@ -1,10 +1,13 @@
 package states;
 
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
 import objects.GifSprite;
 import flixel.addons.display.FlxBackdrop;
 import states.Exetitle;
 import openfl.Assets;
+
+import states.InfoBioParallaxState;
 
 class ParallaxState extends MusicBeatState
 {
@@ -12,8 +15,13 @@ class ParallaxState extends MusicBeatState
 	var barinfo:FlxSprite;
 	var textstory:FlxSprite;
 	var textinfo:FlxSprite;
+	var sonic:FlxSprite;
+	var whiteBG:FlxSprite;
 
-	var curSelected:Int = 0;
+	var spikestop:FlxBackdrop;
+	var spikesbot:FlxBackdrop;
+
+	public static var curSelected:Int = 0;
 
 	override function create()
 	{
@@ -27,26 +35,26 @@ class ParallaxState extends MusicBeatState
 		paraBg.screenCenter();
 		add(paraBg);
 
-		var spikestop:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/blackspikes.png'), X);
+		spikestop = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/spike.png'), X);
 		spikestop.updateHitbox();
 		spikestop.antialiasing = ClientPrefs.data.antialiasing;
 		spikestop.velocity.x = 50;
 		spikestop.flipY = true;
 		add(spikestop);
 
-		var spikesbot:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/blackspikes.png'), X);
+		spikesbot = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/spike.png'), X);
 		spikesbot.updateHitbox();
 		spikesbot.antialiasing = ClientPrefs.data.antialiasing;
 		spikesbot.y = FlxG.height - spikesbot.height;
 		spikesbot.velocity.x = -50;
 		add(spikesbot);
 
-		barstory = new FlxSprite(-80).loadGraphic(Assets.getBitmapData('assets/exe/parallax/tile.png'));
+		barstory = new FlxSprite(((curSelected == 0) ? -80 : -140)).loadGraphic(Assets.getBitmapData('assets/exe/parallax/tile.png'));
 		barstory.antialiasing = ClientPrefs.data.antialiasing;
 		barstory.y = (FlxG.height / 2) - barstory.height - 20;
 		add(barstory);
 
-		barinfo = new FlxSprite(-140).loadGraphic(Assets.getBitmapData('assets/exe/parallax/tile.png'));
+		barinfo = new FlxSprite(((curSelected == 0) ? -140 : -80)).loadGraphic(Assets.getBitmapData('assets/exe/parallax/tile.png'));
 		barinfo.antialiasing = ClientPrefs.data.antialiasing;
 		barinfo.y = (FlxG.height / 2) + 20;
 		add(barinfo);
@@ -58,6 +66,22 @@ class ParallaxState extends MusicBeatState
 		textinfo = new FlxSprite(barinfo.x + 140, barinfo.y + 32).loadGraphic(Assets.getBitmapData('assets/exe/parallax/info-bio.png'));
 		textinfo.antialiasing = ClientPrefs.data.antialiasing;
 		add(textinfo);
+
+		sonic = new FlxSprite();
+		sonic.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/paralax.png', 'assets/exe/parallax/paralax.xml');
+		sonic.animation.addByPrefix('idle', 'Símbolo 27 instancia 1', 24, true);
+		sonic.animation.addByPrefix('selected', 'sata instancia 1', 24, false);
+		sonic.animation.play('idle');
+		sonic.updateHitbox();
+		sonic.x = (FlxG.width * 0.715) - (sonic.width / 2);
+		sonic.screenCenter(Y);
+		sonic.antialiasing = ClientPrefs.data.antialiasing;
+		add(sonic);
+
+		whiteBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
+		whiteBG.alpha = 0;
+		whiteBG.screenCenter();
+		add(whiteBG);
 	}
 
 	var transitioning:Bool = false;
@@ -78,6 +102,33 @@ class ParallaxState extends MusicBeatState
 				changeSelect(-1);
 			else if (controls.UI_DOWN_P)
 				changeSelect(1);
+
+			if (Controls.instance.ACCEPT)
+			{
+				transitioning = true;
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				sonic.animation.play('selected');
+				sonic.offset.set(sonic.offset.x, sonic.offset.y + 19);
+
+				spikesbot.acceleration.x = -1000;
+				spikestop.acceleration.x = 1000;
+
+				FlxTween.cancelTweensOf(barstory);
+				FlxTween.cancelTweensOf(barinfo);
+
+				FlxTween.tween(barstory, {x: -220}, 1.2, {ease: FlxEase.cubeOut});
+				FlxTween.tween(barinfo, {x: -220}, 1.2, {ease: FlxEase.cubeOut});
+
+				FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.6, {ease: FlxEase.cubeOut, onComplete: function(twn:FlxTween){
+					FlxTween.tween(FlxG.camera, {zoom: 2}, 0.55, {ease: FlxEase.expoIn});
+					FlxTween.tween(whiteBG, {alpha: 1}, 0.4);
+				}});
+
+				new FlxTimer().start(1, function(tmr:FlxTimer){
+					if (curSelected == 0) MusicBeatState.switchState(new StoryParallaxState());
+					else MusicBeatState.switchState(new InfoBioParallaxState());
+				});
+			}
 		}
 
 		textstory.x = barstory.x + 140;

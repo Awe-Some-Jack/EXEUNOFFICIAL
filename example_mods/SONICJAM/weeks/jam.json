@@ -35,7 +35,7 @@
 	"startUnlocked": true,
 	"exeTitle": "X-Terion",
 	"exeCover": "sonicjam",
-	"exeLabel": "NON EXE",
-	"exeColor": "0xFF8888FF",
+	"exeLabel": "EXE",
+	"exeColor": "0xFFFF0000",
 	"soundTestCode": [0, 0, false]
 }

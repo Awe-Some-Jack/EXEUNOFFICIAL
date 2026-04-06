@@ -26,7 +26,8 @@
 	"startUnlocked": true,
 	"exeTitle": "CRAZY TAILS",
 	"exeCover": "crazytails",
-	"exeLabel": "EXE",
-	"exeColor": "0xFFFF0000",
+	"exeLabel": "NON EXE",
+	"exeColor": "0xFF8888FF",
+	"transitionShape": "tails",
 	"soundTestCode": [0, 0, false]
 }

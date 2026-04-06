@@ -37,5 +37,6 @@
 	"exeCover": "tailsdoll",
 	"exeLabel": "EXE",
 	"exeColor": "0xFFFF0000",
+	"transitionShape": "oval",
 	"soundTestCode": [0, 0, false]
 }

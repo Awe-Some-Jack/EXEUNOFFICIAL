@@ -25,11 +25,11 @@ class Exemenu extends MusicBeatState
 	static final OPTION_ALPHAS:Array<Float>  = [0.55, 0.80, 1.00, 0.80, 0.55];
 
 	static final TEXT_OFFSETS:Array<{x:Float, y:Float}> = [
-		{x: 220.0, y: 80.0},
-		{x: 215.0, y: 78.0},
-		{x: 210.0, y: 76.0},
-		{x: 215.0, y: 78.0},
-		{x: 220.0, y: 80.0}
+		{x: 280.0, y: 70.0},
+		{x: 215.0, y: 60.0},
+		{x: 80.0, y: 20.0},
+		{x: 215.0, y: 60.0},
+		{x: 280.0, y: 70.0}
 	];
 
 
@@ -86,8 +86,8 @@ class Exemenu extends MusicBeatState
 			add(option);
 			menuOptions.push(option);
 
-			var optionText = new FlxText(0, 0, option.width, OPTION_TEXTS[i]);
-			optionText.setFormat("assets/fonts/sonicfree.otf", 170, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+			var optionText = new FlxText(0, 0, option.width * 2, OPTION_TEXTS[i]);
+			optionText.setFormat("assets/fonts/sonicfree.otf", 280, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 			optionText.borderSize = 2;
 			optionText.antialiasing = ClientPrefs.data.antialiasing;
 			optionText.ID = i;
@@ -137,6 +137,7 @@ class Exemenu extends MusicBeatState
 
 	function startBlink():Void
 	{
+		FlxG.sound.play(Paths.sound('confirmMenu'));
 		isBlinking = true;
 		blinkTimer = 0;
 		blinkCount = 0;
@@ -171,10 +172,10 @@ class Exemenu extends MusicBeatState
 	{
 		switch (selectedOptionIndex)
 		{
-			case 0: isBlinking = false;
+			case 0: FlxG.switchState(() -> new states.SoundTest());
 			case 1: FlxG.switchState(() -> new states.EXEFreeplay());
 			case 2: FlxG.switchState(() -> new states.StoryModeState());
-			case 3: FlxG.switchState(() -> new states.SoundTest());
+			case 3: isBlinking = false;
 			case 4: FlxG.switchState(() -> new options.OptionsState());
 		}
 	}
@@ -251,7 +252,7 @@ class Exemenu extends MusicBeatState
 					option.x = pos.x; option.y = pos.y + yOff;
 					option.scale.set(scale, scale);
 					text.alpha = 0;
-					text.fieldWidth = textW;
+					text.fieldWidth = textW * 2;
 					text.x = pos.x + tx; text.y = textTargetY + yOff;
 					text.scale.set(scale, scale);
 					FlxTween.tween(option, {y: pos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});

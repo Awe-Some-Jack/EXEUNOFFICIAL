@@ -1,7 +1,7 @@
 import openfl.Lib;
 import flixel.FlxG;
 import flixel.system.scaleModes.RatioScaleMode;
-import substates.PauseSubState;
+import states.substates.PauseSubState;
 
 final DEFAULT_WIDTH:Int = 1280;
 final TARGET_WIDTH:Int = 960;
@@ -69,6 +69,8 @@ function applyTargetResolution():Void {
         FlxG.game.x = 0;
         FlxG.width = TARGET_WIDTH;
         FlxG.camera.width = TARGET_WIDTH;
+        game.camHUD.width = TARGET_WIDTH;
+        game.camOther.width = TARGET_WIDTH;
 
         if (window != null) {
             window.resizable = false;

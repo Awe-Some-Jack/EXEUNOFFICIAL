@@ -1,6 +1,5 @@
 local videoSprites = {}
 local playedVideos = {}
-local trailActive = false
 
 local videoSchedule = {
     {step = 912, video = 'Mlg'},
@@ -58,46 +57,6 @@ function makeVideoSprite(tag, videoFile, canSkip, front)
 end
 
 function onStepHit()
-    if curStep == 912 and not trailActive then
-        trailActive = true
-        runHaxeCode([[
-            var dad = game.dad;
-            var bf = game.boyfriend;
-
-            var dadTrail = new flixel.addons.effects.FlxTrail(dad, null, 4, 3, 0.4, 0.069);
-            dadTrail.cameras = [game.camGame];
-            game.insert(game.members.indexOf(dad), dadTrail);
-            game.variables.set('dadTrail', dadTrail);
-
-            var bfTrail = new flixel.addons.effects.FlxTrail(bf, null, 4, 3, 0.4, 0.069);
-            bfTrail.cameras = [game.camGame];
-            game.insert(game.members.indexOf(bf), bfTrail);
-            game.variables.set('bfTrail', bfTrail);
-        ]])
-    end
-
-    if curStep == 1179 and trailActive then
-        trailActive = false
-        runHaxeCode([[
-            var dadTrail = game.variables.get('dadTrail');
-            var bfTrail = game.variables.get('bfTrail');
-
-            if (dadTrail != null) {
-                dadTrail.kill();
-                game.remove(dadTrail);
-                dadTrail.destroy();
-                game.variables.remove('dadTrail');
-            }
-
-            if (bfTrail != null) {
-                bfTrail.kill();
-                game.remove(bfTrail);
-                bfTrail.destroy();
-                game.variables.remove('bfTrail');
-            }
-        ]])
-    end
-
     for _, entry in ipairs(videoSchedule) do
         if curStep == entry.step then
             local uniqueId = entry.id or entry.video

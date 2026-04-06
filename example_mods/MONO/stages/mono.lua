@@ -2,7 +2,7 @@ local monoBG = {
 	{name = 'cielo 7', x = -1150, y = -950, front = false, scroll = 0.3},
 	{name = 'nubes 6', x = -1150, y = -850, backdrop = true, velocity = 100, front = false, scroll = 0.3},
 	{name = 'mar', x = -1150, y = -950, animated = true, animPrefix = 'idle', front = false, scroll = 0.6},
-	{name = 'montañas 4', x = -1150, y = -950, front = false, scroll = 0.6},
+	{name = 'montanas 4', x = -1150, y = -950, front = false, scroll = 0.6},
 	{name = 'suelo 3', x = -1150, y = -950, front = false, scroll = 1},
 	{name = 'torre fea con bocas bien feas 2', x = -1150, y = -950, front = true, scroll = 1.2},
 	{name = 'roca 1', x = -1150, y = -950, front = true, scroll = 1.2}

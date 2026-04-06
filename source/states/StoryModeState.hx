@@ -63,7 +63,7 @@ class StoryModeState extends MusicBeatState
 	var bf2Tween:FlxTween;
 	var staticTween:FlxTween;
 	var isShaking:Bool = false;
-	var isSelecting:Bool = false;
+
 
 	override function create()
 	{
@@ -400,48 +400,45 @@ class StoryModeState extends MusicBeatState
 		if (!canInteract) { super.update(elapsed); return; }
 		if (Controls.instance == null) { super.update(elapsed); return; }
 
-		if (!isSelecting) {
-			if (inCoverSelect)
-			{
-				if (Controls.instance.UI_RIGHT_P && selectedCover < covers.length - 1)
-					changeCover(selectedCover + 1);
-				else if (Controls.instance.UI_LEFT_P && selectedCover > 0)
-					changeCover(selectedCover - 1);
-				if (Controls.instance.ACCEPT){
-					isSelecting = true;
-					bfBOX.animation.play('yeah', true);
-					bfBOX.x += 10;
-					FlxG.sound.play(Paths.sound('menuConfirm'));
-					FlxFlicker.flicker(redBOX, 1, 0.07, false, true, function(_) launchSong());
-				}
-				if (Controls.instance.BACK)
-					exitCoverSelect();
+		if (inCoverSelect)
+		{
+			if (Controls.instance.UI_RIGHT_P && selectedCover < covers.length - 1)
+				changeCover(selectedCover + 1);
+			else if (Controls.instance.UI_LEFT_P && selectedCover > 0)
+				changeCover(selectedCover - 1);
+			if (Controls.instance.ACCEPT){
+				bfBOX.animation.play('yeah', true);
+				bfBOX.x += 10;
+				FlxG.sound.play(Paths.sound('menuConfirm'));
+				FlxFlicker.flicker(redBOX, 1, 0.07, false, true, function(_) launchSong());
 			}
-			else
+			if (Controls.instance.BACK)
+				exitCoverSelect();
+		}
+		else
+		{
+			if (FlxG.keys.justPressed.A && selectedBox == 1)
 			{
-				if (FlxG.keys.justPressed.A && selectedBox == 1)
-				{
-					selectedBox = 0;
-					moveRedBox(box1BaseX);
-				}
-				else if (FlxG.keys.justPressed.D && selectedBox == 0)
-				{
-					selectedBox = 1;
-					moveRedBox(box2BaseX);
-				}
+				selectedBox = 0;
+				moveRedBox(box1BaseX);
+			}
+			else if (FlxG.keys.justPressed.D && selectedBox == 0)
+			{
+				selectedBox = 1;
+				moveRedBox(box2BaseX);
+			}
 
-				if (Controls.instance.BACK)
-				{
-					FlxG.switchState(() -> new EXEMenu());
-					super.update(elapsed);
-					return;
-				}
+			if (Controls.instance.BACK)
+			{
+				FlxG.switchState(() -> new EXEMenu());
+				super.update(elapsed);
+				return;
+			}
 
-				if (Controls.instance.ACCEPT)
-				{
-					if (selectedBox == 0) onBox1Accept();
-					else shakeBox2();
-				}
+			if (Controls.instance.ACCEPT)
+			{
+				if (selectedBox == 0) onBox1Accept();
+				else shakeBox2();
 			}
 		}
 
@@ -461,11 +458,6 @@ class StoryModeState extends MusicBeatState
 
 	function exitCoverSelect():Void
 	{
-		if (selectedCover != 0) {
-			var staticSound = FlxG.sound.play(Paths.sound('static'), 0.15);
-			if (staticSound != null) staticSound.fadeOut(0.3, 0);
-			flashStaticScreen();
-		}
 		inCoverSelect = false;
 		selectedCover = 0;
 		updateCoverVisibility();
@@ -482,8 +474,6 @@ class StoryModeState extends MusicBeatState
 		selectedCover = newIndex;
 		updateCoverVisibility();
 		flashStaticScreen();
-		var staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
-		if (staticSound != null) staticSound.fadeOut(0.3, 0);
 	}
 
 	function updateCoverVisibility():Void

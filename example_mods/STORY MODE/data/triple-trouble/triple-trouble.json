@@ -594,7 +594,14 @@
 			[
 				["tripletroublebgchange", "knux", ""],
 				["Tweening Camera", "-120, 90", "0.6, circOut"],
-				["Tween Camera Zoom", "0.9", "0.6, circOut"]
+				["Tween Camera Zoom", "0.9", "0.6, circOut"],
+				["Set Property", "cameraSpeed", "100000"]
+			]
+		],
+		[
+			133253.424657534,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
@@ -1088,7 +1095,14 @@
 		[
 			290547.94520548,
 			[
-				["tripletroublebgchange", "egg", ""]
+				["tripletroublebgchange", "egg", ""],
+				["Set Property", "cameraSpeed", "1000000"]
+			]
+		],
+		[
+			290650.684931507,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
@@ -1250,28 +1264,56 @@
 			327103.482422842,
 			[
 				["Tween Camera Zoom", "0.75, true", "0.001, linear"],
-				["Tweening Camera", "-20, -20", "0.001, linear"]
+				["Tweening Camera", "-20, -20", "0.001, linear"],
+				["Set Property", "cameraSpeed", "100000"]
+			]
+		],
+		[
+			327193.843868625,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
 			327464.928205975,
 			[
 				["Tween Camera Zoom", "0.8, true", "0.001, linear"],
-				["Tweening Camera", "-40, -40", "0.001, linear"]
+				["Tweening Camera", "-40, -40", "0.001, linear"],
+				["Set Property", "cameraSpeed", "10000"]
+			]
+		],
+		[
+			327555.289651758,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
 			327826.373989107,
 			[
 				["Tween Camera Zoom", "0.85, true", "0.001, linear"],
-				["Tweening Camera", "-60, -60", "0.001, linear"]
+				["Tweening Camera", "-60, -60", "0.001, linear"],
+				["Set Property", "cameraSpeed", "10000"]
+			]
+		],
+		[
+			327916.73543489,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
 			328187.81977224,
 			[
 				["Tween Camera Zoom", "0.9, true", "0.001, linear"],
-				["Tweening Camera", "-80, -80", "0.001, linear"]
+				["Tweening Camera", "-80, -80", "0.001, linear"],
+				["Set Property", "cameraSpeed", "100000"]
+			]
+		],
+		[
+			328278.181218023,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
@@ -1299,28 +1341,56 @@
 			332886.614952963,
 			[
 				["Tweening Camera", "20, 20", "0.001, linear"],
-				["Tween Camera Zoom", "0.75, true", "0.001, linear"]
+				["Tween Camera Zoom", "0.75, true", "0.001, linear"],
+				["Set Property", "cameraSpeed", "100000"]
+			]
+		],
+		[
+			332976.976398746,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
 			333248.060736095,
 			[
 				["Tweening Camera", "40, 40", "0.001, linear"],
-				["Tween Camera Zoom", "0.8, true", "0.001, linear"]
+				["Tween Camera Zoom", "0.8, true", "0.001, linear"],
+				["Set Property", "cameraSpeed", "100000"]
+			]
+		],
+		[
+			333338.422181878,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
 			333609.506519228,
 			[
 				["Tweening Camera", "60, 60", "0.001, linear"],
-				["Tween Camera Zoom", "0.85, true", "0.001, linear"]
+				["Tween Camera Zoom", "0.85, true", "0.001, linear"],
+				["Set Property", "cameraSpeed", "100000"]
+			]
+		],
+		[
+			333699.867965011,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
 			333970.95230236,
 			[
 				["Tweening Camera", "80, 80", "0.001, linear"],
-				["Tween Camera Zoom", "0.9, true", "0.001, linear"]
+				["Tween Camera Zoom", "0.9, true", "0.001, linear"],
+				["Set Property", "cameraSpeed", "100000"]
+			]
+		],
+		[
+			334061.313748143,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[

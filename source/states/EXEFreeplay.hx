@@ -785,7 +785,8 @@ class EXEFreeplay extends MusicBeatState
 		if (rating >= 0.60) return 'B';
 		if (rating >= 0.45) return 'C';
 		if (rating >= 0.20) return 'D';
-		return 'F';
+		if (rating < 0.20) return 'F';
+		return '?';
 	}
 
 	function updateScoreDisplay()

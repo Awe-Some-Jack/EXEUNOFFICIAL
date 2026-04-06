@@ -461,7 +461,7 @@ class EXEFreeplay extends MusicBeatState
 				}
 			});
 			scaleSongBox(true);
-			chooseSong(0);
+			chooseSong(0, false);
 		}
 	}
 
@@ -521,7 +521,7 @@ class EXEFreeplay extends MusicBeatState
 		return songEntries[index].songs.map(s -> s.songName);
 	}
 
-	function updateSelectedCover()
+	function updateSelectedCover(daStatic:Bool = true)
 	{
 		if (selectedBox < 0 || selectedBox >= songEntries.length) return;
 
@@ -551,7 +551,7 @@ class EXEFreeplay extends MusicBeatState
 				ss.x = cover.x;
 				ss.y = cover.y;
 
-				if (choosingSong)
+				if (choosingSong && daStatic)
 				{
 					if (staticTween != null) staticTween.cancel();
 					ss.alpha = 1.0;
@@ -561,7 +561,7 @@ class EXEFreeplay extends MusicBeatState
 		}
 	}
 
-	function chooseSong(delta:Int)
+	function chooseSong(delta:Int, daStatic:Bool = true)
 	{
 		var songs = getSongsForBox(selectedBox);
 		if (songs.length == 0) return;
@@ -569,6 +569,10 @@ class EXEFreeplay extends MusicBeatState
 		var newSel = songSelector + delta;
 		if (newSel < 0 || newSel >= songs.length) return;
 		songSelector = newSel;
+		if (daStatic) {
+			var staticSound = FlxG.sound.play(Paths.sound('static'), 0.15);
+			if (staticSound != null) staticSound.fadeOut(0.3, 0);
+		}
 
 		if (songSelector < songScrollOffset)
 			songScrollOffset = songSelector;
@@ -620,11 +624,15 @@ class EXEFreeplay extends MusicBeatState
 			intendedRating = Highscore.getRating(songs2[songSelector], curDifficulty);
 		}
 
-		updateSelectedCover();
+		updateSelectedCover(daStatic);
 	}
 
 	function exitSongChoose()
 	{
+		if (songSelector != 0) {
+			var staticSound = FlxG.sound.play(Paths.sound('static'), 0.15);
+			if (staticSound != null) staticSound.fadeOut(0.3, 0);
+		}
 		choosingSong = false;
 		for (j in 0...activeSongCount)
 		{
@@ -634,6 +642,7 @@ class EXEFreeplay extends MusicBeatState
 			spr.alpha = 1;
 		}
 
+		var oldSelector:Int = songSelector;
 		songSelector = 0;
 		var entry = songEntries[selectedBox];
 		if (entry != null && entry.songs.length > 0)
@@ -655,9 +664,11 @@ class EXEFreeplay extends MusicBeatState
 					ss.updateHitbox();
 					ss.x = cover.x;
 					ss.y = cover.y;
-					if (staticTween != null) staticTween.cancel();
-					ss.alpha = 1.0;
-					staticTween = FlxTween.tween(ss, {alpha: 0.18}, 0.45, {ease: FlxEase.quadOut});
+					if (oldSelector != 0) {
+						if (staticTween != null) staticTween.cancel();
+						ss.alpha = 1.0;
+						staticTween = FlxTween.tween(ss, {alpha: 0.18}, 0.45, {ease: FlxEase.quadOut});
+					}
 				}
 			}
 		}

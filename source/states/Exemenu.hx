@@ -25,11 +25,11 @@ class Exemenu extends MusicBeatState
 	static final OPTION_ALPHAS:Array<Float>  = [0.55, 0.80, 1.00, 0.80, 0.55];
 
 	static final TEXT_POSITIONS:Array<{x:Float, y:Float}> = [
-		{x:  32.0, y: -136.0},
-		{x: -75.0, y:   94.0},
-		{x: -310.0, y:  251.0},
-		{x: -75.0, y:  389.0},
-		{x:  32.0, y:  507.0}
+		{x:   20,	y: -32},
+		{x:  -50,	y:  94},
+		{x: -140,	y: 251},
+		{x:  -50,	y: 389},
+		{x:   20,	y: 507}
 	];
 
 	static final TEXT_SCALES:Array<Float> = [0.245, 0.3, 0.330, 0.3, 0.245];

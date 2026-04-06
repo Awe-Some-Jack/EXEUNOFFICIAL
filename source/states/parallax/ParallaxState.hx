@@ -68,7 +68,7 @@ class ParallaxState extends MusicBeatState
 		add(textinfo);
 
 		sonic = new FlxSprite();
-		sonic.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/satanos.png', 'assets/exe/parallax/satanos.xml');
+		sonic.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/paralax.png', 'assets/exe/parallax/paralax.xml');
 		sonic.animation.addByPrefix('idle', 'Símbolo 27 instancia 1', 24, true);
 		sonic.animation.addByPrefix('selected', 'satanos instancia 1', 24, false);
 		sonic.animation.play('idle');

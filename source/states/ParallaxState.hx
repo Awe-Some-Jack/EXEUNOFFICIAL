@@ -68,9 +68,9 @@ class ParallaxState extends MusicBeatState
 		add(textinfo);
 
 		sonic = new FlxSprite();
-		sonic.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/paralax.png', 'assets/exe/parallax/paralax.xml');
+		sonic.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/satanos.png', 'assets/exe/parallax/satanos.xml');
 		sonic.animation.addByPrefix('idle', 'Símbolo 27 instancia 1', 24, true);
-		sonic.animation.addByPrefix('selected', 'sata instancia 1', 24, false);
+		sonic.animation.addByPrefix('selected', 'satanos instancia 1', 24, false);
 		sonic.animation.play('idle');
 		sonic.updateHitbox();
 		sonic.x = (FlxG.width * 0.715) - (sonic.width / 2);
@@ -108,7 +108,7 @@ class ParallaxState extends MusicBeatState
 				transitioning = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				sonic.animation.play('selected');
-				sonic.offset.set(sonic.offset.x, sonic.offset.y + 19);
+				sonic.offset.set(sonic.offset.x, sonic.offset.y + 40);
 
 				spikesbot.acceleration.x = -1000;
 				spikestop.acceleration.x = 1000;

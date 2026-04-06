@@ -1,6 +1,7 @@
 package states;
 
 import backend.WeekData;
+import states.EXETitle;
 import backend.Mods;
 
 import flixel.FlxBasic;
@@ -315,8 +316,8 @@ class ModsMenuState extends MusicBeatState
 			if(waitingToRestart)
 			{
 				//MusicBeatState.switchState(new TitleState());
-				TitleState.initialized = false;
-				TitleState.closedState = false;
+				EXETitle.initialized = false;
+				EXETitle.closedState = false;
 				FlxG.sound.music.fadeOut(0.3);
 				if(EXEFreeplay.vocals != null)
 				{
@@ -325,7 +326,7 @@ class ModsMenuState extends MusicBeatState
 				}
 				FlxG.camera.fade(FlxColor.BLACK, 0.5, false, FlxG.resetGame, false);
 			}
-			else MusicBeatState.switchState(new Exemenu());
+			else MusicBeatState.switchState(new EXEMenu());
 
 			persistentUpdate = false;
 			FlxG.autoPause = ClientPrefs.data.autoPause;

@@ -1,4 +1,4 @@
-package states;
+package states.parallax;
 
 import backend.WeekData;
 import backend.Song;

@@ -131,7 +131,7 @@ class EXEFreeplay extends MusicBeatState
 		{
 			FlxTransitionableState.skipNextTransIn = true;
 			persistentUpdate = false;
-			FlxG.switchState(() -> new Exemenu());
+			FlxG.switchState(() -> new EXEMenu());
 			return;
 		}
 
@@ -378,7 +378,7 @@ class EXEFreeplay extends MusicBeatState
 				return;
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			FlxG.switchState(() -> new Exemenu());
+			FlxG.switchState(() -> new EXEMenu());
 			return;
 		}
 

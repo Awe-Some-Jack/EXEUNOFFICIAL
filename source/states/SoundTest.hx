@@ -254,7 +254,7 @@ class SoundTest extends MusicBeatState
 
 		if (Controls.instance.BACK)
 		{
-			FlxG.switchState(() -> new Exemenu());
+			FlxG.switchState(() -> new EXEMenu());
 			return;
 		}
 

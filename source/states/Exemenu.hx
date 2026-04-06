@@ -5,7 +5,7 @@ import objects.GifSprite;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 
-class Exemenu extends MusicBeatState
+class EXEMenu extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '1.0.4';
 
@@ -120,7 +120,7 @@ class Exemenu extends MusicBeatState
 			{
 				canInteract = false;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				FlxG.switchState(() -> new Exetitle());
+				FlxG.switchState(() -> new EXETitle());
 			}
 			else if (controls.ACCEPT)
 				startBlink();

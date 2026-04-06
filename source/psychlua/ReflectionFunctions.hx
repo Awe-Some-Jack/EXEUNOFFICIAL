@@ -3,7 +3,7 @@ package psychlua;
 import Type.ValueType;
 import haxe.Constraints;
 
-import substates.GameOverSubstate;
+import states.substates.GameOverSubstate;
 
 class ReflectionFunctions
 {

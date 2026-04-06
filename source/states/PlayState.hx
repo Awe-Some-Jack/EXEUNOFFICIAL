@@ -27,9 +27,9 @@ import states.EXEFreeplay;
 import states.editors.ChartingState;
 import states.editors.CharacterEditorState;
 
-import substates.PauseSubState;
-import substates.PauseSubStateOLD;
-import substates.GameOverSubstate;
+import states.substates.PauseSubState;
+import states.substates.PauseSubState;
+import states.substates.GameOverSubstate;
 
 #if !flash
 import openfl.filters.ShaderFilter;
@@ -291,7 +291,7 @@ class PlayState extends MusicBeatState
 		// for lua
 		instance = this;
 
-		PauseSubStateOLD.songName = null; //Reset to default
+		PauseSubState.songName = null; //Reset to default
 		playbackRate = ClientPrefs.getGameplaySetting('songspeed');
 
 		keysArray = [
@@ -623,8 +623,8 @@ class PlayState extends MusicBeatState
 		if(!ClientPrefs.data.ghostTapping) for (i in 1...4) Paths.sound('missnote$i');
 		Paths.image('alphabet');
 
-		if (PauseSubStateOLD.songName != null)
-			Paths.music(PauseSubStateOLD.songName);
+		if (PauseSubState.songName != null)
+			Paths.music(PauseSubState.songName);
 		else if(Paths.formatToSongPath(ClientPrefs.data.pauseMusic) != 'none')
 			Paths.music(Paths.formatToSongPath(ClientPrefs.data.pauseMusic));
 
@@ -2097,7 +2097,7 @@ class PlayState extends MusicBeatState
 		if (Paths.formatToSongPath(SONG.song) == 'vanilla-milk') PauseSubState.miniSonicImage = 'vanilla-milk-' + (FlxG.random.bool(10) ? 1 : 2);
 		if (Paths.formatToSongPath(SONG.song) == 'personel') PauseSubState.miniSonicImage = 'personel-' + FlxG.random.int(1, 3);
 
-		if(chartingMode) openSubState(new PauseSubStateOLD());
+		if(chartingMode) openSubState(new PauseSubState());
 		else openSubState(new PauseSubState());
 
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";

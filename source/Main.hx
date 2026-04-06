@@ -16,7 +16,7 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
 import lime.app.Application;
-import states.HaxeSplash;
+import states.EXETitle;
 
 #if HSCRIPT_ALLOWED
 import crowplexus.iris.Iris;
@@ -54,7 +54,7 @@ class Main extends Sprite
 	public static final game = {
 		width: 1280, // WINDOW width
 		height: 720, // WINDOW height
-		initialState: HaxeSplash, // initial game state
+		initialState: EXETitle, // initial game state
 		framerate: 60, // default framerate
 		skipSplash: true, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode

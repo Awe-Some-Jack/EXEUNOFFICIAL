@@ -1,13 +1,13 @@
-package states;
+package states.parallax;
 
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
 import objects.GifSprite;
 import flixel.addons.display.FlxBackdrop;
-import states.Exetitle;
+import states.EXETitle;
 import openfl.Assets;
 
-import states.InfoBioParallaxState;
+import states.parallax.InfoBioParallaxState;
 
 class ParallaxState extends MusicBeatState
 {
@@ -94,7 +94,7 @@ class ParallaxState extends MusicBeatState
 			if (Controls.instance.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				FlxG.switchState(() -> new Exetitle());
+				FlxG.switchState(() -> new EXETitle());
 				transitioning = true;
 			}
 

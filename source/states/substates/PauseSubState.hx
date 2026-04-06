@@ -1,11 +1,11 @@
-package substates;
+package states.substates;
 
 import flixel.effects.FlxFlicker;
 
 import states.StoryModeState;
 import states.EXEFreeplay;
 import options.OptionsState;
-import substates.PauseSubStateOLD;
+import states.substates.PauseSubState;
 
 class PauseSubState extends MusicBeatSubstate
 {
@@ -26,6 +26,20 @@ class PauseSubState extends MusicBeatSubstate
 	public static var cameraWidth:Int = 1280;
 	public static var miniSonicImage:String = 'sonic';
 	public static var miniSonicOffsets:Array<Int> = [0, 0];
+	public static var songName:String = null;
+
+	public static function restartSong(noTrans:Bool = false)
+	{
+		PlayState.instance.paused = true;
+		FlxG.sound.music.volume = 0;
+		PlayState.instance.vocals.volume = 0;
+		if (noTrans)
+		{
+			FlxTransitionableState.skipNextTransIn = true;
+			FlxTransitionableState.skipNextTransOut = true;
+		}
+		FlxG.resetState();
+	}
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
@@ -192,7 +206,7 @@ class PauseSubState extends MusicBeatSubstate
 				case 0:
 					close();
 				case 1:
-					PauseSubStateOLD.restartSong();
+					PauseSubState.restartSong();
 				case 2:
 					PlayState.instance.paused = true; // For lua
 					PlayState.instance.vocals.volume = 0;

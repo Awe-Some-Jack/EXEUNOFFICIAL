@@ -6,7 +6,7 @@ import shaders.RainShader;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.display.FlxTiledSprite;
 
-import substates.GameOverSubstate;
+import states.substates.GameOverSubstate;
 import states.stages.objects.*;
 import objects.Note;
 

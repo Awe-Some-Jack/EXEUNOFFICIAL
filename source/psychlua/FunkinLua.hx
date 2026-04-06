@@ -23,12 +23,12 @@ import objects.Note;
 import objects.NoteSplash;
 import objects.Character;
 
-import states.MainMenuState;
+import states.EXEMenu;
 import states.StoryModeState;
 import states.EXEFreeplay;
 
-import substates.PauseSubStateOLD;
-import substates.GameOverSubstate;
+import states.substates.PauseSubState;
+import states.substates.GameOverSubstate;
 
 import psychlua.LuaUtils;
 import psychlua.LuaUtils.LuaTweenOptions;
@@ -80,7 +80,7 @@ class FunkinLua
 		set('Function_Continue',    LuaUtils.Function_Continue);
 		set('luaDebugMode',         false);
 		set('luaDeprecatedWarnings', true);
-		set('version',              MainMenuState.psychEngineVersion.trim());
+		set('version',              EXEMenu.psychEngineVersion.trim());
 		set('modFolder',            modFolder);
 
 		set('curBpm',      Conductor.bpm);
@@ -535,7 +535,7 @@ class FunkinLua
 		Lua_helper.add_callback(lua, 'restartSong',    function(skipTransition:Bool = false) {
 			game.persistentUpdate = false;
 			FlxG.camera.followLerp = 0;
-			PauseSubStateOLD.restartSong(skipTransition);
+			PauseSubState.restartSong(skipTransition);
 			return true;
 		});
 		Lua_helper.add_callback(lua, 'exitSong', function(skipTransition:Bool = false) {

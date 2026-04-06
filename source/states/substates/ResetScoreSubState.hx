@@ -1,4 +1,4 @@
-package substates;
+package states.substates;
 
 import backend.WeekData;
 import backend.Highscore;

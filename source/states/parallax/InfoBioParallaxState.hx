@@ -1,4 +1,4 @@
-package states;
+package states.parallax;
 
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;

@@ -124,7 +124,7 @@ class ParallaxState extends MusicBeatState
 					FlxTween.tween(whiteBG, {alpha: 1}, 0.6);
 				}});
 
-				if (curSelected == 0) FlxG.sound.play(Paths.sound('storyparallax'), 0.6);
+				if (curSelected == 0) FlxG.sound.play(Paths.sound('storyparalax'));
 
 				new FlxTimer().start(1.4, function(tmr:FlxTimer){
 					if (curSelected == 0) MusicBeatState.switchState(new StoryParallaxState());

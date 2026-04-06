@@ -28,6 +28,7 @@ class Exetitle extends MusicBeatState
 	var bandana:FlxSprite;
 	var logotxt:FlxSprite;
 	var eyes:FlxSprite;
+	var whiteBG:FlxSprite;
 
 	var parallaxArrow:FlxSprite;
 
@@ -39,7 +40,11 @@ class Exetitle extends MusicBeatState
 		super.create();
 		Paths.clearUnusedMemory();
 
-		if(initialized) canStart = true;
+		if(initialized)
+		{
+			canStart = true;
+			FlxG.mouse.visible = true;
+		}
 
 		if(!initialized)
 		{
@@ -57,7 +62,6 @@ class Exetitle extends MusicBeatState
 		if (FlxG.save.data.weekCompleted != null)
 			StoryModeState.weekCompleted = FlxG.save.data.weekCompleted;
 
-		FlxG.mouse.visible = true;
 		if(FlxG.save.data.flashing == null && !FlashingState.leftState)
 		{
 			FlxTransitionableState.skipNextTransIn = true;
@@ -79,6 +83,7 @@ class Exetitle extends MusicBeatState
 					new FlxTimer().start(1.6, function(tmr:FlxTimer)
 					{
 						canStart = true;
+						FlxG.mouse.visible = true;
 						Main.fpsVar.visible = ClientPrefs.data.showFPS;
 						FlxG.camera.visible = true;
 						FlxG.camera.flash(FlxColor.RED, 1);
@@ -130,6 +135,11 @@ class Exetitle extends MusicBeatState
 		eyes.scale.set(0.4, 0.4);
 		eyes.updateHitbox();
 		add(eyes);
+
+		whiteBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
+		whiteBG.alpha = 0;
+		whiteBG.screenCenter();
+		add(whiteBG);
 	}
 
 	var savedRingX:Float = 0;
@@ -200,7 +210,8 @@ class Exetitle extends MusicBeatState
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
 					FlxTween.tween(blackScreen, {alpha: 1}, 1);
-					new FlxTimer().start(1.3, function(tmr:FlxTimer){MusicBeatState.switchState(new Exemenu());});
+					FlxTween.tween(eyes, {alpha: 0}, 1.5, {ease: FlxEase.expoIn});
+					new FlxTimer().start(1.5, function(tmr:FlxTimer){MusicBeatState.switchState(new Exemenu());});
 					closedState = true;
 				});
 			}
@@ -246,6 +257,7 @@ class Exetitle extends MusicBeatState
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				transitioning = true;
 				new FlxTimer().start(0.8, function(tmr:FlxTimer){MusicBeatState.switchState(new ParallaxState());});
+				FlxTween.tween(whiteBG, {alpha: 1}, 0.8);
 
 				FlxTween.cancelTweensOf(ring);
 				FlxTween.cancelTweensOf(bandana);

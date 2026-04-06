@@ -11,10 +11,6 @@ import hxcodec.flixel.FlxVideoSprite;
 
 class HaxeSplash extends MusicBeatState
 {
-	public static var muteKeys:Array<FlxKey> = [];
-	public static var volumeDownKeys:Array<FlxKey> = [];
-	public static var volumeUpKeys:Array<FlxKey> = [];
-
     var video:FlxVideoSprite;
     override function create() 
     {

@@ -24,20 +24,14 @@ class StoryModeState extends MusicBeatState
 	public static var instance:StoryModeState;
 	public static var weekCompleted:Map<String, Bool> = new Map<String, Bool>();
 
-	var clouds:FlxBackdrop;
-	var smmStatic:FlxSprite;
-	var dataSelect:FlxSprite;
-	var overlay:FlxSprite;
 	var randomMIC:FlxSprite;
 
 	var greyBOX:FlxSprite;
 	var bfBOX:FlxSprite;
-	var yellowBOX:FlxSprite;
 	var staticscreen:FlxSprite;
 	var arrow:FlxSprite;
 	var arrow2:FlxSprite;
 	var tooSlowCover:FlxSprite;
-	var tooSlowCoverBlack:FlxSprite;
 	var youCantRunCover:FlxSprite;
 	var tripleTroubleCover:FlxSprite;
 	var finalEscapeCover:FlxSprite;
@@ -57,7 +51,6 @@ class StoryModeState extends MusicBeatState
 	var inCoverSelect:Bool = false;
 	var selectedCover:Int = 0;
 	var covers:Array<FlxSprite>;
-	var covers2:Array<FlxSprite>;
 
 	var box1BaseX:Float = 0;
 	var box2BaseX:Float = 0;
@@ -96,20 +89,20 @@ class StoryModeState extends MusicBeatState
 		if (bf2Tween    != null) bf2Tween.cancel();
 		if (staticTween != null) staticTween.cancel();
 		if (redBoxTween != null) redBoxTween.cancel();
-		covers = null; covers2 = null;
+		covers = null;
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 		super.destroy();
 	}
 
 	function createAssets(yourselfTime:Bool) {
-		clouds = new FlxBackdrop(Assets.getBitmapData("assets/exe/story/nuves de movimiento.png"), FlxAxes.X, 0, 0);
+		var clouds:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData("assets/exe/story/nuves de movimiento.png"), FlxAxes.X, 0, 0);
 		clouds.velocity.x = 180;
 		clouds.setGraphicSize(FlxG.width, FlxG.height * 2);
 		clouds.updateHitbox();
 		add(clouds);
 
-		smmStatic = new FlxSprite(0, 0);
+		var smmStatic:FlxSprite = new FlxSprite(0, 0);
 		smmStatic.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/SMMStatic.png', 'assets/exe/story/SMMStatic.xml');
 		smmStatic.animation.addByPrefix('static', 'static', 24);
 		smmStatic.animation.play('static');
@@ -118,7 +111,7 @@ class StoryModeState extends MusicBeatState
 		smmStatic.alpha = 0.4;
 		add(smmStatic);
 
-		dataSelect = new FlxSprite(340, 560);
+		var dataSelect:FlxSprite = new FlxSprite(340, 560);
 		dataSelect.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/data.png', 'assets/exe/story/data.xml');
 		dataSelect.animation.addByPrefix('idle', 'Símbolo 13', 12);
 		dataSelect.animation.play('idle');
@@ -203,7 +196,7 @@ class StoryModeState extends MusicBeatState
 		bfBOX.antialiasing = ClientPrefs.data.antialiasing;
 		add(bfBOX);
 		
-		yellowBOX = new FlxSprite();
+		var yellowBOX:FlxSprite = new FlxSprite();
 		yellowBOX.loadGraphic(Assets.getBitmapData('assets/exe/story/yellowbox.png'));
 		yellowBOX.setGraphicSize(Std.int(FlxG.width * 0.252));
 		yellowBOX.updateHitbox();
@@ -221,7 +214,7 @@ class StoryModeState extends MusicBeatState
 		greyBOX2.antialiasing = ClientPrefs.data.antialiasing;
 		add(greyBOX2);
 		
-		tooSlowCoverBlack = new FlxSprite();
+		var tooSlowCoverBlack:FlxSprite = new FlxSprite();
 		tooSlowCoverBlack.loadGraphic(Assets.getBitmapData('assets/exe/cover/too-slow.png'));
 		tooSlowCoverBlack.setGraphicSize(Std.int(FlxG.width * 0.24));
 		tooSlowCoverBlack.updateHitbox();

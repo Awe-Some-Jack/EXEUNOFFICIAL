@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sumky (1).png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sunki instancia 10000" x="36" y="36" width="953" height="661" frameX="0" frameY="-9" frameWidth="957" frameHeight="670"/>
+	<SubTexture name="sunki instancia 10001" x="36" y="36" width="953" height="661" frameX="0" frameY="-9" frameWidth="957" frameHeight="670"/>
+	<SubTexture name="sunki instancia 10002" x="1009" y="36" width="953" height="670" frameX="0" frameY="0" frameWidth="957" frameHeight="670"/>
+	<SubTexture name="sunki instancia 10003" x="36" y="726" width="953" height="661" frameX="0" frameY="-9" frameWidth="957" frameHeight="670"/>
+	<SubTexture name="sunki instancia 10004" x="1009" y="726" width="956" height="661" frameX="0" frameY="-9" frameWidth="957" frameHeight="670"/>
+	<SubTexture name="sunki instancia 10005" x="36" y="1407" width="956" height="670" frameX="0" frameY="0" frameWidth="957" frameHeight="670"/>
+	<SubTexture name="sunki instancia 10006" x="1012" y="1407" width="957" height="661" frameX="0" frameY="-9" frameWidth="957" frameHeight="670"/>
+	<SubTexture name="sunki instancia 10007" x="1012" y="1407" width="957" height="661" frameX="0" frameY="-9" frameWidth="957" frameHeight="670"/>
+	<SubTexture name="sunki instancia 10008" x="36" y="2097" width="957" height="670"/>
+	<SubTexture name="sunki instancia 10009" x="1013" y="2097" width="957" height="661" frameX="0" frameY="-9" frameWidth="957" frameHeight="670"/>
+</TextureAtlas>

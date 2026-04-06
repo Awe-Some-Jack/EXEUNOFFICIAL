@@ -406,7 +406,7 @@ class GameplayCamera
 			case 'Set customCamera Zoom':
 				settings.OverrideZoom = false;
 
-			case 'Set Camera Position':
+			case 'Set customCamera Position':
 				var split = v2.split(', ');
 				var x:Float = Std.parseFloat(split[0]);
 				var y:Float = split.length > 1 ? Std.parseFloat(split[1]) : 0;

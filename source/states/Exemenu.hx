@@ -24,13 +24,15 @@ class Exemenu extends MusicBeatState
 	static final OPTION_SCALES:Array<Float>  = [0.25, 0.30, 0.37, 0.30, 0.25];
 	static final OPTION_ALPHAS:Array<Float>  = [0.55, 0.80, 1.00, 0.80, 0.55];
 
-	static final TEXT_OFFSETS:Array<{x:Float, y:Float}> = [
-		{x: 280.0, y: 70.0},
-		{x: 215.0, y: 60.0},
-		{x: 80.0, y: 20.0},
-		{x: 215.0, y: 60.0},
-		{x: 280.0, y: 70.0}
+	static final TEXT_POSITIONS:Array<{x:Float, y:Float}> = [
+		{x:  32.0, y: -136.0},
+		{x: -75.0, y:   94.0},
+		{x: -310.0, y:  251.0},
+		{x: -75.0, y:  389.0},
+		{x:  32.0, y:  507.0}
 	];
+
+	static final TEXT_SCALES:Array<Float> = [0.245, 0.3, 0.330, 0.3, 0.245];
 
 
 	var menuOptions:Array<FlxSprite> = [];
@@ -219,11 +221,11 @@ class Exemenu extends MusicBeatState
 			FlxTween.cancelTweensOf(text);
 			FlxTween.cancelTweensOf(text.scale);
 
-			var scale = OPTION_SCALES[visualPos];
-			var pos   = OPTION_POSITIONS[visualPos];
-			var alpha = OPTION_ALPHAS[visualPos];
-			var tx    = TEXT_OFFSETS[visualPos].x;
-			var ty    = TEXT_OFFSETS[visualPos].y;
+			var scale     = OPTION_SCALES[visualPos];
+			var pos       = OPTION_POSITIONS[visualPos];
+			var alpha     = OPTION_ALPHAS[visualPos];
+			var textScale = TEXT_SCALES[visualPos];
+			var textPos   = TEXT_POSITIONS[visualPos];
 
 			if (visualPos == CENTER_POSITION && shadowSprite != null)
 			{
@@ -238,8 +240,7 @@ class Exemenu extends MusicBeatState
 			            || (prevVisualPos == 0 && visualPos == 4)
 			            || (prevVisualPos == 4 && visualPos == 0);
 
-			var textW       = option.frameWidth * scale * 2.5;
-			var textTargetY = pos.y + (option.frameHeight * scale - text.height * scale) / 2 + ty;
+			text.fieldWidth = 2000;
 
 			if (wrapping)
 			{
@@ -252,30 +253,27 @@ class Exemenu extends MusicBeatState
 					option.x = pos.x; option.y = pos.y + yOff;
 					option.scale.set(scale, scale);
 					text.alpha = 0;
-					text.fieldWidth = textW * 2;
-					text.x = pos.x + tx; text.y = textTargetY + yOff;
-					text.scale.set(scale, scale);
+					text.x = textPos.x; text.y = textPos.y + yOff;
+					text.scale.set(textScale, textScale);
 					FlxTween.tween(option, {y: pos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
-					FlxTween.tween(text,   {y: textTargetY, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
+					FlxTween.tween(text,   {y: textPos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
 				}
 				else
 				{
 					option.x = pos.x; option.y = pos.y;
 					option.scale.set(scale, scale);
-					text.fieldWidth = textW;
-					text.x = pos.x + tx; text.y = textTargetY;
-					text.scale.set(scale, scale);
+					text.x = textPos.x; text.y = textPos.y;
+					text.scale.set(textScale, textScale);
 					FlxTween.tween(option, {y: pos.y + yOff, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
-					FlxTween.tween(text,   {y: textTargetY + yOff, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
+					FlxTween.tween(text,   {y: textPos.y + yOff, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
 				}
 			}
 			else
 			{
-				text.fieldWidth = textW;
-				FlxTween.tween(option,       {x: pos.x, y: pos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
-				FlxTween.tween(option.scale, {x: scale, y: scale},               0.45, {ease: FlxEase.quintOut});
-				FlxTween.tween(text,         {x: pos.x + tx, y: textTargetY, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
-				FlxTween.tween(text.scale,   {x: scale, y: scale},               0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(option,       {x: pos.x, y: pos.y, alpha: alpha},             0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(option.scale, {x: scale, y: scale},                           0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(text,         {x: textPos.x, y: textPos.y, alpha: alpha},     0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(text.scale,   {x: textScale, y: textScale},                   0.45, {ease: FlxEase.quintOut});
 			}
 		}
 

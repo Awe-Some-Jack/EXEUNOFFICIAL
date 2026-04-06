@@ -26,7 +26,7 @@
 	"weekName": "Custom Week",
 	"exeTitle": "FLEETWAY",
 	"exeCover": "fleetway",
-	"exeLabel": "EXE",
-	"exeColor": "0xFFFF0000",
+	"exeLabel": "NON EXE",
+	"exeColor": "0xFF8888FF",
 	"soundTestCode": [0, 0, false]
 }

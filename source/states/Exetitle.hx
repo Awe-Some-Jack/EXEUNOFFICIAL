@@ -23,7 +23,7 @@ class Exetitle extends MusicBeatState
 
 	var titleText:FlxSprite;
 	var blackScreen:FlxSprite;
-
+	var spikes:FlxBackdrop;
 	var ring:FlxSprite;
 	var bandana:FlxSprite;
 	var logotxt:FlxSprite;
@@ -104,7 +104,7 @@ class Exetitle extends MusicBeatState
 
 		makeLogo();
 
-		var spikes:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/title/spikesdown.png'), X);
+		spikes = new FlxBackdrop(Assets.getBitmapData('assets/exe/title/spikesdown.png'), X);
 		spikes.scale.set(0.4, 0.4);
 		spikes.updateHitbox();
 		spikes.y = FlxG.height - spikes.height;
@@ -202,6 +202,8 @@ class Exetitle extends MusicBeatState
 			{
 				titleText.animation.play('press', true);
 				transitioning = true;
+
+				spikes.acceleration.x = -500;
 
 				FlxG.sound.play(Paths.sound('menulaugh'));
 				FlxG.sound.play(Paths.sound('menumomentclick'));

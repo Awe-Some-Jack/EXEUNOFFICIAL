@@ -777,15 +777,15 @@ class EXEFreeplay extends MusicBeatState
 
 	static function getRankLetter(rating:Float):String
 	{
-		if (rating >= 1.0)  return 'P';
+		if (rating >= 1)  return 'P';
 		if (rating >= 0.96) return 'SS';
 		if (rating >= 0.93) return 'S';
 		if (rating >= 0.85) return 'AA';
 		if (rating >= 0.75) return 'A';
-		if (rating >= 0.60) return 'B';
+		if (rating >= 0.6) return 'B';
 		if (rating >= 0.45) return 'C';
-		if (rating >= 0.20) return 'D';
-		if (rating < 0.20) return 'F';
+		if (rating >= 0.2) return 'D';
+		if (rating > 0.0) return 'F';
 		return '?';
 	}
 

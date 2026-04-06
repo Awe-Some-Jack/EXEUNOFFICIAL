@@ -114,57 +114,45 @@ class StoryParallaxState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 			FlxTween.tween(whiteBG, {alpha: 1}, 1);
 			FlxTween.tween(FlxG.camera, {zoom: 2}, 1.15, {ease: FlxEase.expoIn});
-			loadSong();
-			new FlxTimer().start(1, function(tmr:FlxTimer){
-				LoadingState.prepareToSong();
-				LoadingState.loadAndSwitchState(new PlayState());
-				FlxG.sound.music.stop();
-			});
+			if (loadSong())
+			{
+				new FlxTimer().start(1, function(tmr:FlxTimer){
+					LoadingState.prepareToSong();
+					LoadingState.loadAndSwitchState(new PlayState());
+					FlxG.sound.music.stop();
+				});
+			}
 		}
 	}
 
-	function loadSong():Void
+	function loadSong():Bool
 	{
-		var leWeek:WeekData = WeekData.weeksLoaded.get('educator');
-		if (leWeek == null)
-		{
-			trace("Week no encontrada: educator");
-			return;
-		}
-
-		if (leWeek.folder != null && leWeek.folder != "")
-			Mods.currentModDirectory = leWeek.folder;
-
-		WeekData.setDirectoryFromWeek(leWeek);
-
-		var songArray:Array<String> = [];
-		for (song in leWeek.songs)
-			songArray.push(song[0]);
-
 		try
 		{
-			PlayState.storyPlaylist = songArray;
-			PlayState.isStoryMode = true;
-			PlayState.storyDifficulty = 1;
-			PlayState.storyWeek = WeekData.weeksList.indexOf('educator');
+			Mods.currentModDirectory = 'PARALLAX';
 
-			var firstSong:String = songArray[0].toLowerCase();
-
+			var firstSong:String = 'expulsion';
 			Song.loadFromJson(firstSong, firstSong);
 
+			PlayState.storyPlaylist = ['Expulsion'];
+			PlayState.isStoryMode = true;
+			PlayState.storyDifficulty = 1;
+			PlayState.storyWeek = 0;
 			PlayState.campaignScore = 0;
 			PlayState.campaignMisses = 0;
 		}
 		catch (e:Dynamic)
 		{
-			trace("Error cargando week: " + e);
-			return;
+			trace("Error cargando cancion: " + e);
+			return false;
 		}
+		return true;
 	}
 
 	override function destroy()
 	{
-		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+		if (!transitioning)
+			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 		super.destroy();
 	}
 }

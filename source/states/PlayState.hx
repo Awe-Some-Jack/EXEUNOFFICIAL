@@ -331,7 +331,10 @@ class PlayState extends MusicBeatState
 
 		#if DISCORD_ALLOWED
 		if (isStoryMode)
-			detailsText = "Story Mode: " + WeekData.getCurrentWeek().weekName;
+		{
+			var curWeek = WeekData.getCurrentWeek();
+			detailsText = "Story Mode: " + (curWeek != null ? curWeek.weekName : SONG.song);
+		}
 		else
 			detailsText = "Freeplay";
 		#end

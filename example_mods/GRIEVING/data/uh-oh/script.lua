@@ -16,9 +16,9 @@ end
 function onEvent(n, v1)
     if n == 'fade' then
         if v1 == 'bg' then
+            doTweenAlpha('boyfriendAlpha', 'boyfriend', 0, 5) -- 
             doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', 1, 5)
             doTweenAlpha('foredasda', 'fore', 0, 5)
-            doTweenAlpha('boyfriend', 'boyfriend', 0, 5)
         end
         if v1 == 'hud' then
             doTweenAlpha('camHUDAlpha', 'camHUD', 0, 3)

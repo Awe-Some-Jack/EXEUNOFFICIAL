@@ -43,7 +43,7 @@ function onCountdownStarted()
 
 	setProperty('strumLineRing.alpha', 0)
 	if getProperty('skipArrowStartTween') == false then
-		startTween('daringstarting', 'strumLineRing', {alpha = 1}, 1, {startDelay = 0.9, ease = 'circOut'})
+		startTween('daringstarting', 'strumLineRing', {alpha = 1}, 1, {ease = 'circOut'})
 	else
 		setProperty('strumLineRing.alpha', 1)
 	end

@@ -157,23 +157,9 @@
 	<set name="eval" if="linux || mac" />
 
 	<!--Used for Izzy Engine's crash handler-->
-	<section if="CRASH_HANDLER">
-		<haxedef name="HXCPP_CHECK_POINTER" />
-		<haxedef name="HXCPP_STACK_LINE" />
-		<haxedef name="HXCPP_STACK_TRACE" />
-		<haxedef name="HXCPP_CATCH_SEGV" />
-	</section>
-
-	<section if="cpp">
-		<!--Allow working memory greater than 1 Gig-->
-		<haxedef name="HXCPP_GC_BIG_BLOCKS" />
-		<haxedef name="HXCPP_GC_DYNAMIC_SIZE" />
-	</section>
-
-	<haxedef name="openfl_pool_events" />
-	<haxedef name="openfl-enable-handle-error" />
-	<haxedef name="openfl_dpi_aware" unless="web" />
-	<haxedef name='lime_disable_assets_version'/> <!-- fuck dis shit -->
+	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
+	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
+	<haxedef name="HXCPP_STACK_TRACE" if="CRASH_HANDLER" />
 	
 	<!--Disable deprecated warnings-->
 	<haxedef name='no-deprecation-warnings' />

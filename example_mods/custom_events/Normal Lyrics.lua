@@ -38,8 +38,8 @@ function onEvent(n,v1,v2)
 					addLuaText(tag)
 					setObjectOrder(tag, 100)
 					curX = curX + getProperty(tag..'.width') - 2
+					setObjectOrder(tag, getObjectOrder('lyricBG_'..curText[1]:gsub('.', '')) + i)
 				end
-				setObjectOrder('lyricBG_'..curText[1]:gsub('.', ''), getObjectOrder('lyric_'..curText[1]:gsub('.', '')..'1') - 1)
 			end
 
 			for i,word in ipairs(curText) do

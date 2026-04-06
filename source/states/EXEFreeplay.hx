@@ -76,7 +76,7 @@ class EXEFreeplay extends MusicBeatState
 	var staticScreens:FlxTypedGroup<FlxSprite>;
 	var staticTween:FlxTween;
 
-	var selectedBox:Int  = 0;
+	public static var selectedBox:Int  = 0;
 	var changeCooldown:Float = 0;
 	var choosingSong:Bool = false;
 	var songSelector:Int = 0;

@@ -53,7 +53,7 @@ class GameplayCamera
 		BFx:        0, BFy:        0,
 		DADx:       0, DADy:       0,
 		GFx:        0, GFy:        0,
-		MiddleCamera: false,
+		MiddleCamera: true,
 		MiddleX:    0, MiddleY:    0,
 		OverrideZoom: false,
 		OGZoom:     0.7,
@@ -406,7 +406,7 @@ class GameplayCamera
 			case 'Set customCamera Zoom':
 				settings.OverrideZoom = false;
 
-			case 'Set Camera Position':
+			case 'Set customCamera Position':
 				var split = v2.split(', ');
 				var x:Float = Std.parseFloat(split[0]);
 				var y:Float = split.length > 1 ? Std.parseFloat(split[1]) : 0;

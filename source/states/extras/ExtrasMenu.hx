@@ -62,7 +62,6 @@ class ExtrasMenu extends MusicBeatState
     private var box:FlxSprite;
     private var sketch1:FlxSprite;
     private var sketch2:FlxSprite;
-    private var blackScreen:FlxSprite;
 
     override public function create():Void
     {
@@ -75,7 +74,6 @@ class ExtrasMenu extends MusicBeatState
         createDecorations();
         createMenu();
         createDescriptionBar();
-        initializeFadeIn();
         changeSelection(0);
 
         Paths.clearUnusedMemory();
@@ -230,18 +228,6 @@ class ExtrasMenu extends MusicBeatState
         }
     }
 
-    private function initializeFadeIn():Void
-    {
-        blackScreen = new FlxSprite();
-        blackScreen.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-        add(blackScreen);
-
-        new FlxTimer().start(FADE_IN_DELAY, function(tmr:FlxTimer) {
-            FlxTween.tween(blackScreen, {alpha: 0}, FADE_IN_DURATION);
-            canMove = true;
-        });
-    }
-
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
@@ -282,11 +268,7 @@ class ExtrasMenu extends MusicBeatState
     private function exitToMainMenu():Void
     {
         canMove = false;
-        FlxTween.tween(blackScreen, {alpha: 1}, 0.5, {
-            onComplete: function(tween:FlxTween) {
-                FlxG.switchState(new EXEMenu());
-            }
-        });
+        FlxG.switchState(new EXEMenu());
     }
 
     private function changeSelection(change:Int = 0):Void
@@ -492,7 +474,6 @@ class ExtrasMenu extends MusicBeatState
         if (sketch1 != null) FlxTween.cancelTweensOf(sketch1);
         if (sketch2 != null) FlxTween.cancelTweensOf(sketch2);
         if (selectBox != null) { FlxTween.cancelTweensOf(selectBox); FlxTween.cancelTweensOf(selectBox.scale); }
-        if (blackScreen != null) FlxTween.cancelTweensOf(blackScreen);
 
         if (menuItems != null)
         {
@@ -519,7 +500,6 @@ class ExtrasMenu extends MusicBeatState
         box = null;
         sketch1 = null;
         sketch2 = null;
-        blackScreen = null;
 
         super.destroy();
     }

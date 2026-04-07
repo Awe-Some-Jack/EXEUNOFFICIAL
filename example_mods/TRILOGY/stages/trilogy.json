@@ -4,7 +4,7 @@
 	"defaultZoom": 0.5,
 	"hide_girlfriend": false,
 
-	"boyfriend": [2200, 599.4],
-	"opponent": [320.4, 280.8],
-	"girlfriend": [1812.9, 564.2]
+	"boyfriend": [2200, 600],
+	"opponent": [400, 400],
+	"girlfriend": [1810, 560]
 }

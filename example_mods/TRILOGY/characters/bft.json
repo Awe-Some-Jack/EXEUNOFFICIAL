@@ -1,44 +1,76 @@
 {
 	"animations": [
 		{
-			"offsets": [-465, -345],
 			"loop": false,
+			"offsets": [-580, -343],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"offsets": [-465, -345],
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
+			"loop": false,
 			"name": "left"
 		},
 		{
 			"offsets": [-529, -384],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
+			"loop": false,
 			"name": "down"
 		},
 		{
 			"offsets": [-522, -287],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
+			"loop": false,
 			"name": "up"
 		},
 		{
 			"offsets": [-591, -341],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
+			"loop": false,
 			"name": "right"
 		},
 		{
-			"offsets": [-580, -343],
-			"loop": false,
-			"fps": 24,
-			"anim": "idle",
+			"offsets": [-516, -292],
 			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "mleft"
+		},
+		{
+			"offsets": [-539, -309],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "mdown"
+		},
+		{
+			"offsets": [-558, -233],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "mup"
+		},
+		{
+			"offsets": [-590, -275],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "mright"
 		}
 	],
 	"vocals_file": "",

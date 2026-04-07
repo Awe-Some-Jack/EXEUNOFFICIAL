@@ -1,0 +1,47 @@
+{
+	"animations": [
+		{
+			"offsets": [-31, -53],
+			"loop": false,
+			"fps": 24,
+			"anim": "entiendes",
+			"indices": [],
+			"name": "entiendes"
+		},
+		{
+			"offsets": [5, 4],
+			"loop": false,
+			"fps": 24,
+			"anim": "nomore",
+			"indices": [],
+			"name": "nomore"
+		},
+		{
+			"offsets": [60, 35],
+			"loop": false,
+			"fps": 24,
+			"anim": "risa",
+			"indices": [],
+			"name": "risa"
+		},
+		{
+			"offsets": [297, -19],
+			"loop": false,
+			"fps": 24,
+			"anim": "yousoyel",
+			"indices": [],
+			"name": "yousoyel"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/anim",
+	"position": [210, -130],
+	"healthicon": "icon-bratwurst",
+	"flip_x": false,
+	"healthbar_colors": [51, 73, 91],
+	"camera_position": [-210, 110],
+	"sing_duration": 8,
+	"scale": 1.2,
+	"_editor_isPlayer": false
+}

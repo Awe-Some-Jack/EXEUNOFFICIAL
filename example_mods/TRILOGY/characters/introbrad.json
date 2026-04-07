@@ -1,0 +1,31 @@
+{
+	"animations": [
+		{
+			"offsets": [190, 50],
+			"indices": [],
+			"fps": 24,
+			"anim": "intro",
+			"loop": false,
+			"name": "Símbolo 143 instancia 1"
+		},
+		{
+			"offsets": [190, 50],
+			"indices": [0, 1],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "Símbolo 143 instancia 1"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/open",
+	"position": [210, -130],
+	"healthicon": "icon-bratwurst",
+	"flip_x": false,
+	"healthbar_colors": [51, 73, 91],
+	"camera_position": [-210, 110],
+	"sing_duration": 8,
+	"scale": 1.2,
+	"_editor_isPlayer": false
+}

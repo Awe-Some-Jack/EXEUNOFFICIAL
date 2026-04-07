@@ -7,8 +7,8 @@ local TrilogyBG = {
 function onCreatePost()
 	setScrollFactor('gf', 1, 1)
 
-	for i = 0, 3 do
-		setPropertyFromGroup('opponentStrums', i, 'visible', false)
+	for i = 0,3 do
+		setPropertyFromGroup('opponentStrums', i, 'x', -1000)
 	end
 end
 

@@ -3156,6 +3156,7 @@ class PlayState extends MusicBeatState
 
 	function opponentNoteHit(note:Note):Void
 	{
+		
 		final _noteIdx:Int = notes.members.indexOf(note);
 		_noteArgs[0] = _noteIdx;
 		_noteArgs[1] = Math.abs(note.noteData);

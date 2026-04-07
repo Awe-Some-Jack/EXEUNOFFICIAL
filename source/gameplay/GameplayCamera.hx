@@ -168,6 +168,7 @@ class GameplayCamera
 
 	public function update(elapsed:Float)
 	{
+
 		if (PlayState.instance.camZooming)
 		{
 			var rate:Float = PlayState.instance.playbackRate;
@@ -452,9 +453,6 @@ class GameplayCamera
 
 			case 'OverrideZoom':
 				settings.OverrideZoom = false;
-
-			case 'cameraZooming':
-				PlayState.instance.camZooming = (v1 == 'true');
 
 			case 'hellbentEvents':
 				if (v1 == 'changeBG')

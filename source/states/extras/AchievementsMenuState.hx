@@ -1,4 +1,4 @@
-package states;
+package states.extras;
 
 import flixel.FlxObject;
 import flixel.util.FlxSort;
@@ -205,10 +205,18 @@ class AchievementsMenuState extends MusicBeatState
 
 		if (controls.BACK) {
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new EXEMenu());
+			FlxG.switchState(() -> new exe.main.states.EXEMenu());
 			goingBack = true;
 		}
 		super.update(elapsed);
+	}
+
+	override function destroy()
+	{
+		if (barTween != null) { barTween.cancel(); barTween = null; }
+		grpOptions = null; nameText = null; descText = null;
+		progressTxt = null; progressBar = null; camFollow = null;
+		super.destroy();
 	}
 
 	public var barTween:FlxTween = null;

@@ -178,7 +178,7 @@ class EXEMenu extends MusicBeatState
 			case 0: FlxG.switchState(() -> new states.SoundTest());
 			case 1: FlxG.switchState(() -> new states.EXEFreeplay());
 			case 2: FlxG.switchState(() -> new states.StoryModeState());
-			case 3: isBlinking = false;
+			case 3: FlxG.switchState(() -> new states.extras.ExtrasMenu());
 			case 4: FlxG.switchState(() -> new options.OptionsState());
 		}
 	}

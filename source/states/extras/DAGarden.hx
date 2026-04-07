@@ -41,7 +41,6 @@ class DAGarden extends MusicBeatState
 
         initializeSprites();
         setupAnimations();
-        createVisualEffects();
 
         Paths.clearUnusedMemory();
     }
@@ -109,16 +108,6 @@ class DAGarden extends MusicBeatState
         FlxTween.tween(sprite, {alpha: 0.85}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG, startDelay: Math.random() * 2});
     }
 
-    private function createVisualEffects():Void
-    {
-        fadeOverlay = new FlxSprite(0, 0);
-        fadeOverlay.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-        fadeOverlay.alpha = 0;
-        add(fadeOverlay);
-
-        FlxTween.tween(fadeOverlay, {alpha: 0.15}, 4.0, {ease: FlxEase.sineInOut, type: PINGPONG});
-    }
-
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
@@ -129,7 +118,7 @@ class DAGarden extends MusicBeatState
         updateSubtleRotations(elapsed);
 
         if (Controls.instance.BACK)
-            transitionToExtrasMenu();
+            FlxG.switchState(new ExtrasMenu());
     }
 
     private function updateSubtleRotations(elapsed:Float):Void
@@ -140,21 +129,8 @@ class DAGarden extends MusicBeatState
         sprite8.angle = Math.cos(rotationTime * 0.8) * 3.5;
     }
 
-    private function transitionToExtrasMenu():Void
-    {
-        FlxTween.tween(fadeOverlay, {alpha: 1.0}, 0.5, {
-            ease: FlxEase.quadOut,
-            onComplete: function(twn:FlxTween) {
-                FlxTransitionableState.skipNextTransIn = true;
-                FlxG.switchState(new ExtrasMenu());
-            }
-        });
-    }
-
     override public function destroy():Void
     {
-        
-
         if (sprite1 != null)     FlxTween.cancelTweensOf(sprite1);
         if (sprite2 != null)     FlxTween.cancelTweensOf(sprite2);
         if (sprite3 != null)     FlxTween.cancelTweensOf(sprite3);
@@ -165,9 +141,6 @@ class DAGarden extends MusicBeatState
         if (arrow != null)       FlxTween.cancelTweensOf(arrow);
         if (disk != null)        FlxTween.cancelTweensOf(disk);
         if (dagarden != null)    FlxTween.cancelTweensOf(dagarden);
-        if (fadeOverlay != null) FlxTween.cancelTweensOf(fadeOverlay);
-
-        fadeOverlay = null;
         fondo = null;
         sprite1 = null;
         sprite2 = null;

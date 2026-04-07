@@ -66,8 +66,6 @@ class GameplayCamera
 	};
 
 	public var overrideZoomValue:Float = 1.0;
-	public var canStartcamZoomingForce:Bool = false; //This checks for when it can start overriding camZooming once opponent starts singing. Otherwise, camZooming is set to true at the beggining.
-	public var camZoomingForce:Bool = false;
 
 	private var cameraTwn:FlxTween;
 	private var playState:PlayState;
@@ -170,8 +168,6 @@ class GameplayCamera
 
 	public function update(elapsed:Float)
 	{
-
-		if (canStartcamZoomingForce) PlayState.instance.camZooming = camZoomingForce ? true : false;
 
 		if (PlayState.instance.camZooming)
 		{
@@ -457,9 +453,6 @@ class GameplayCamera
 
 			case 'OverrideZoom':
 				settings.OverrideZoom = false;
-
-			case 'Camera Zooming':
-				camZoomingForce = (v1 == 'true');
 
 			case 'hellbentEvents':
 				if (v1 == 'changeBG')

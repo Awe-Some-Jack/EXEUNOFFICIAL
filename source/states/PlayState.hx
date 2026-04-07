@@ -3170,8 +3170,6 @@ class PlayState extends MusicBeatState
 		if (songName != 'tutorial')
 			camZooming = true;
 
-		gameplayCam.canStartcamZoomingForce = true;
-
 		if(note.noteType == 'Hey!' && dad.hasAnimation('hey'))
 		{
 			dad.playAnim('hey', true);

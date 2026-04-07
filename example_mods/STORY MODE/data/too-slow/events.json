@@ -4,7 +4,14 @@
 			0,
 			[
 				["Tweening Camera", "-450, 50", "0.001, smootherStepInOut"],
-				["Tween Camera Zoom", "1.4, true", "0.001, linear"]
+				["Tween Camera Zoom", "1.4, true", "0.001, linear"],
+				["Set Property", "cameraSpeed", "1000000"]
+			]
+		],
+		[
+			13.890680968309,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
@@ -61,7 +68,8 @@
 			27826.0869565217,
 			[
 				["Tweening Camera", "-450, 50", "6, smootherStepInOut"],
-				["Tween Camera Zoom", "0.9, true", "6, smootherStepInOut"]
+				["Tween Camera Zoom", "0.9, true", "6, smootherStepInOut"],
+				["Set Property", "camZoomingMult", "0"]
 			]
 		],
 		[
@@ -220,7 +228,8 @@
 		[
 			83590.9822866344,
 			[
-				["Tween Camera Zoom", "1", ""]
+				["Tween Camera Zoom", "1", ""],
+				["Set Property", "camZoomingMult", "1"]
 			]
 		],
 		[

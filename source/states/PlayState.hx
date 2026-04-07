@@ -3156,6 +3156,7 @@ class PlayState extends MusicBeatState
 
 	function opponentNoteHit(note:Note):Void
 	{
+		
 		final _noteIdx:Int = notes.members.indexOf(note);
 		_noteArgs[0] = _noteIdx;
 		_noteArgs[1] = Math.abs(note.noteData);
@@ -3168,6 +3169,8 @@ class PlayState extends MusicBeatState
 
 		if (songName != 'tutorial')
 			camZooming = true;
+
+		gameplayCam.canStartcamZoomingForce = true;
 
 		if(note.noteType == 'Hey!' && dad.hasAnimation('hey'))
 		{

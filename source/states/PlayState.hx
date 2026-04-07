@@ -421,6 +421,12 @@ class PlayState extends MusicBeatState
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
 		
+		// HARDCODED STAGES (before characters so sprites are behind them)
+		switch(curStage)
+		{
+			case 'fatality': new states.stages.Fatality();
+		}
+
 		if(stageData.objects != null && stageData.objects.length > 0)
 		{
 			var list:Map<String, FlxSprite> = StageData.addObjectsToState(stageData.objects, !stageData.hide_girlfriend ? gfGroup : null, dadGroup, boyfriendGroup, this);

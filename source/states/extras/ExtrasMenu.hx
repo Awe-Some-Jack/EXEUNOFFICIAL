@@ -449,6 +449,7 @@ class ExtrasMenu extends MusicBeatState
                 trace("Character Bios selected");
 
             case "D.A GARDEN":
+                if (FlxG.sound.music != null) FlxG.sound.music.pause();
                 FlxG.switchState(new DAGarden());
 
             case "CUTSCENES":

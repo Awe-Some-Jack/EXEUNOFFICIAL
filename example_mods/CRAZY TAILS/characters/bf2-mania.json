@@ -1,0 +1,87 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [264, 127],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up instancia 1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [174, 11],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left instancia 1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-15, 40],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right instancia 1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [51, -60],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down instancia 1",
+			"indices": []
+		},
+		{
+			"offsets": [34, -85],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "down miss"
+		},
+		{
+			"offsets": [215, 136],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "up miss"
+		},
+		{
+			"offsets": [-32, 53],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "right miss"
+		},
+		{
+			"loop": false,
+			"offsets": [179, -17],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "leftmiss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Símbolo 277",
+			"indices": []
+		}
+	],
+	"vocals_file": "bf",
+	"no_antialiasing": false,
+	"image": "characters/bf2",
+	"position": [330, 20],
+	"healthicon": "crazybf",
+	"flip_x": true,
+	"healthbar_colors": [0, 103, 195],
+	"camera_position": [-170, 120],
+	"sing_duration": 6.1,
+	"scale": 0.7,
+	"_editor_isPlayer": true
+}

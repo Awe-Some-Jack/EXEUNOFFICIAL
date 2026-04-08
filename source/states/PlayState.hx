@@ -1310,17 +1310,11 @@ class PlayState extends MusicBeatState
 		{
 			if (songData.needsVoices)
 			{
-				var playerVocalsPath = Paths.voicesPath(songData.song, (boyfriend.vocalsFile == null || boyfriend.vocalsFile.length < 1) ? 'Player' : boyfriend.vocalsFile);
-				if (playerVocalsPath != null)
-					vocals.loadStream(playerVocalsPath);
-				else
-				{
-					var fallback = Paths.voicesPath(songData.song);
-					if (fallback != null) vocals.loadStream(fallback);
-				}
-
-				var oppVocalsPath = Paths.voicesPath(songData.song, (dad.vocalsFile == null || dad.vocalsFile.length < 1) ? 'Opponent' : dad.vocalsFile);
-				if (oppVocalsPath != null) opponentVocals.loadStream(oppVocalsPath);
+				var playerVocals = Paths.voices(songData.song, (boyfriend.vocalsFile == null || boyfriend.vocalsFile.length < 1) ? 'Player' : boyfriend.vocalsFile);
+				vocals.loadEmbedded(playerVocals != null ? playerVocals : Paths.voices(songData.song));
+				
+				var oppVocals = Paths.voices(songData.song, (dad.vocalsFile == null || dad.vocalsFile.length < 1) ? 'Opponent' : dad.vocalsFile);
+				if(oppVocals != null && oppVocals.length > 0) opponentVocals.loadEmbedded(oppVocals);
 			}
 		}
 		catch (e:Dynamic) {}
@@ -1335,8 +1329,7 @@ class PlayState extends MusicBeatState
 		inst = new FlxSound();
 		try
 		{
-			var instPath = Paths.instPath(songData.song);
-			if (instPath != null) inst.loadStream(instPath);
+			inst.loadEmbedded(Paths.inst(songData.song));
 		}
 		catch (e:Dynamic) {}
 		FlxG.sound.list.add(inst);

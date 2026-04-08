@@ -1,3 +1,10 @@
 [
-    moveStrums[bf, lord x, bffall, bfback], fadeStrums[back], let's begin, part1[moveBF, Xtime] part2, part3, part4
+    moveStrums[bf, lord x, bffall, bfback], fadeStrums[back],
+    part1[
+        startAtlasAnimation, moveBF, eatBF,
+        bite, ilegal],
+    part2[transition, fade, getRed(end)],
+    part3, part4[showHUD, in his world,
+    glitchMode(chrom, chromStop, chromGlitch, chromGlitchStop,
+              pseudo, pseudoStop, binary, binaryStop)],
 ]

@@ -1247,19 +1247,6 @@ class PlayState extends MusicBeatState
 	{
 		startingSong = false;
 
-		@:privateAccess {
-			final instReady = inst._sound != null && inst._sound.length > 0;
-			final vocalsReady = vocals._sound == null || vocals._sound.length > 0;
-			final oppVocalsReady = opponentVocals._sound == null || opponentVocals._sound.length > 0;
-
-			if (!instReady || !vocalsReady || !oppVocalsReady)
-			{
-				startingSong = true;
-				new FlxTimer().start(1 / 60, function(_) startSong());
-				return;
-			}
-		}
-
 		@:privateAccess
 		FlxG.sound.playMusic(inst._sound, 1, false);
 		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end

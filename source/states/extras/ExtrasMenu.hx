@@ -54,7 +54,7 @@ class ExtrasMenu extends MusicBeatState
     private var extrasTextBackdrops:Array<FlxBackdrop> = [];
 
     private var curSelected:Int = 0;
-    private var canMove:Bool = false;
+    private var canMove:Bool = true;
     private var cooldownTimer:Float = 0;
 
     private var selectBox:FlxSprite;

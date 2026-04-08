@@ -4,12 +4,14 @@ local TrilogyBG = {
 	{name = 'terrain', path = 'bg/terrain', x = 0, y = 0, scaleX = 1.3, scaleY = 1.3, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 1, front = false},
 }
 
+local dadX, dadY = 0, 0
 function onCreatePost()
 	setScrollFactor('gf', 1, 1)
 
 	for i = 0,3 do
 		setPropertyFromGroup('opponentStrums', i, 'x', -1000)
 	end
+	dadX, dadY = getProperty('dad.x'), getProperty('dad.y')
 end
 
 function onCreate()
@@ -26,4 +28,13 @@ function onCreate()
 		setProperty(bg.name ..'.alpha', bg.alpha)
 		addLuaSprite(bg.name, bg.front)
 	end
+end
+
+local floatTime = 0
+function onUpdate(e)
+	floatTime = floatTime + e
+	callMethod('dad.setPosition', {
+		dadX + math.cos(floatTime * 0.5) * (10 * 2),
+		dadY + math.sin(floatTime) * 10
+	})
 end

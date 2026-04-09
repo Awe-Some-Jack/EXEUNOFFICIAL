@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"offsets": [698, -19],
 			"loop": false,
-			"fps": 24,
+			"offsets": [698, -16],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left2"
+			"fps": 24,
+			"name": "left2",
+			"indices": []
 		},
 		{
-			"offsets": [381, -181],
 			"loop": false,
-			"fps": 24,
+			"offsets": [381, -149],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Símbolo 212"
+			"fps": 24,
+			"name": "Símbolo 212",
+			"indices": []
 		},
 		{
-			"offsets": [138, 213],
 			"loop": false,
-			"fps": 24,
+			"offsets": [179, 190],
 			"anim": "singUP",
-			"indices": [],
-			"name": "Símbolo 201"
-		},
-		{
-			"offsets": [180, -58],
-			"loop": false,
 			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right2"
+			"name": "Símbolo 201",
+			"indices": []
 		},
 		{
-			"offsets": [138, -7],
+			"loop": false,
+			"offsets": [197, -59],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right2",
+			"indices": []
+		},
+		{
 			"loop": true,
-			"fps": 18,
+			"offsets": [138, -7],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle2"
+			"fps": 18,
+			"name": "idle2",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

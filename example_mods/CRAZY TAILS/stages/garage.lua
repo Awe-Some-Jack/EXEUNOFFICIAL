@@ -1,3 +1,61 @@
+local function setupAnims()
+	--anim1
+	makeFlxAnimateSprite('bestfriend', -220, -250, 'characters/mania2')
+	addAnimationBySymbol('bestfriend', 'bestfriend', 'sonic', 24, false)
+	scaleObject('bestfriend', 2.4, 2.4)
+	addLuaSprite('bestfriend', true)
+	setProperty('bestfriend.alpha', 0.0001)
+
+	makeFlxAnimateSprite('bestfriend2', -220, -250, 'characters/mania1')
+	addAnimationBySymbol('bestfriend2', 'bestfriend', 'sonic2', 24, false)
+	scaleObject('bestfriend2', 2.4, 2.4)
+	addLuaSprite('bestfriend2', true)
+	setProperty('bestfriend2.alpha', 0.0001)
+
+	--anim2
+
+	makeLuaSprite('bg-amy', 'bg/amy', -300, -250)
+	scaleObject('bg-amy', 0.55, 0.55)
+	addLuaSprite('bg-amy')
+	setProperty('bg-amy.alpha', 0.0001)
+
+	makeLuaSprite('bg-never', 'bg/never', -300, -300)
+	scaleObject('bg-never', 0.55, 0.55)
+	addLuaSprite('bg-never')
+	setProperty('bg-never.alpha', 0.0001)
+
+	makeFlxAnimateSprite('final', -220, -550, 'characters/final1')
+	addAnimationBySymbol('final', 'final', 'final', 24, false)
+	scaleObject('final', 2.4, 2.4)
+	addLuaSprite('final', true)
+	setProperty('final.alpha', 0.0001)
+
+	makeFlxAnimateSprite('final2', 1200, 520, 'characters/final2')
+	addAnimationBySymbol('final2', 'final', 'SMoicandmay', 24, false)
+	scaleObject('final2', 1.6, 1.6)
+	addLuaSprite('final2', true)
+	setProperty('final2.alpha', 0.0001)
+
+	makeFlxAnimateSprite('final3', -220, -580, 'characters/final3')
+	addAnimationBySymbol('final3', 'final', 'final3', 24, false)
+	scaleObject('final3', 2.42, 2.42)
+	addLuaSprite('final3', true)
+	setProperty('final3.alpha', 0.0001)
+
+	makeFlxAnimateSprite('final4', -220, -580, 'characters/final4')
+	addAnimationBySymbol('final4', 'final', 'final4', 24, false)
+	scaleObject('final4', 2.4, 2.4)
+	addLuaSprite('final4', true)
+	setProperty('final4.alpha', 0.0001)
+
+	makeFlxAnimateSprite('final5', -220, -580, 'characters/final4')
+	addAnimationBySymbolIndices('final5', 'final', 'final4', {60,61}, 24, true)
+	playAnim('final5', 'final', true)
+	scaleObject('final5', 2.4, 2.4)
+	addLuaSprite('final5', true)
+	setProperty('final5.alpha', 0.0001)
+end
+
 function onCreatePost()
 	makeLuaSprite('bg', 'bg/bg', -440, -310)
 	scaleObject('bg', 0.7, 0.7)
@@ -43,30 +101,25 @@ function onCreatePost()
 	addLuaSprite('papis2')
 	setProperty('papis2.alpha', 0.0001)
 
-	--[[makeLuaSprite('never', 'bg/never', -400, -100)
-	scaleObject('never', 3, 3)
-	addLuaSprite('never')
-	setProperty('never.alpha', 0.0001)]]
-
-	makeFlxAnimateSprite('bestfriend', -220, -250, 'characters/itsme')
-	addAnimationBySymbol('bestfriend', 'bestfriend', 'sonic', 24, false)
-	scaleObject('bestfriend', 2.4, 2.4)
-	addLuaSprite('bestfriend', true)
-	setProperty('bestfriend.alpha', 0.0001)
-
-	makeFlxAnimateSprite('final', -220, -550, 'characters/final2')
-	addAnimationBySymbol('final', 'final', 'final', 24, false)
-	scaleObject('final', 2.4, 2.4)
-	addLuaSprite('final', true)
-	setProperty('final.alpha', 0.0001)
+	setupAnims()
 
 	makeLuaSprite('overlay', 'bg/overlay-cinematico')
-	scaleObject('overlay', 1.3, 1.3)
+	scaleObject('overlay', 1.9, 1.9)
 	setObjectCamera('overlay', 'other')
 	screenCenter('overlay', 'y')
+	setObjectOrder('overlay', getObjectOrder('BlackGraphicOther'))
 	addLuaSprite('overlay')
+	
+	makeLuaSprite('overlayroto', 'bg/rota')
+	scaleObject('overlayroto', 1.75, 1.75)
+	setObjectCamera('overlayroto', 'other')
+	screenCenter('overlayroto')
+	setProperty('overlayroto.alpha', 0.0001)
+	setObjectOrder('overlayroto', getObjectOrder('BlackGraphicOther'))
+	addLuaSprite('overlayroto')
 end
 
+local anim = ''
 function onCountdownTick(c)
 	if c % 2 == 0 then
 		playAnim('papis', 'idle', true)
@@ -93,8 +146,45 @@ function onBeatHit()
 	end
 end
 
+local status = 0
 local starSine = 0
 function onUpdatePost(e)
+	if anim == 'final' then
+		if getProperty('final.anim.curFrame') >= 38 and getProperty('bg-amy.alpha') ~= 1 then
+			setProperty('bg-bf.alpha', 0)
+			setProperty('bg-amy.alpha', 1)
+			setProperty('bg-bf1.visible', false)
+			setProperty('bg-bf2.visible', false)
+			setProperty('bg-bf3.visible', false)
+		end
+	elseif anim == 'final3' then
+		if getProperty('final3.anim.curFrame') >= 60 and status == 0 then
+			status = 1
+			scaleObject('bg-never', 0.5, 0.5)
+			setProperty('bg-never.x', -100)
+			setProperty('bg-never.y', -200)
+		end
+		if getProperty('final3.anim.curFrame') >= 81 and status == 1 then
+			status = 2
+			setProperty('bg-never.angle', 10)
+			scaleObject('bg-never', 0.65, 0.65)
+			setProperty('bg-never.x', -400)
+			setProperty('bg-never.y', -400)
+		end
+		if getProperty('final3.anim.curFrame') >= 100 and status == 2 then
+			status = 3
+			setProperty('bg-never.angle', 0)
+			scaleObject('bg-never', 0.85, 0.85)
+			setProperty('bg-never.x', -700)
+			setProperty('bg-never.y', -450)
+		end
+	elseif anim == 'final4' then
+		if getProperty('final4.anim.curFrame') >= 32 and luaSpriteExists('bg-tails') then
+			removeLuaSprite('bg-tails', true)
+			setProperty('bg-bf.alpha', 1)
+		end
+	end
+
 	if not changedBG then return end
 	starSine = starSine + e * 3
 	setProperty('bg-bf1.alpha', 0.4 + (((math.sin(starSine) / 2) + 0.5) * 0.6))
@@ -180,8 +270,13 @@ function onEvent(n,v1)
 
 			setProperty('bg-tails.x', -200)
 		end
-		if v1 == 'endcine' then
+		if v1 == 'bestfriend2' then
 			removeLuaSprite('bestfriend', true)
+			playAnim('bestfriend2', 'bestfriend', true)
+			setProperty('bestfriend2.alpha', 1)
+		end
+		if v1 == 'endcine' then
+			removeLuaSprite('bestfriend2', true)
 			removeLuaSprite('never', true)
 			setProperty('boyfriend.alpha', 1)
 			setProperty('bg-tails.x', -900)
@@ -194,11 +289,11 @@ function onEvent(n,v1)
 			callMethod('dad.setPosition', {30, 20})
 
 			changedBG = false
-			removeLuaSprite('bg-tails', true)
-			removeLuaSprite('bg-bf', true)
-			removeLuaSprite('bg-bf1', true)
-			removeLuaSprite('bg-bf2', true)
-			removeLuaSprite('bg-bf3', true)
+			setProperty('bg-tails.alpha', 0)
+			setProperty('bg-bf.alpha', 0)
+			setProperty('bg-bf1.visible', false)
+			setProperty('bg-bf2.visible', false)
+			setProperty('bg-bf3.visible', false)
 			removeLuaSprite('papis2', true)
 
 			setProperty('bg.visible', true)
@@ -209,9 +304,93 @@ function onEvent(n,v1)
 			callMethod('camGame.snapToTarget')
 			triggerEvent('Set Character Offset', 'dad', '25')
 		end
+		if v1 == 'fadeout' then
+			doTweenAlpha('BlackGraphicOther', 'BlackGraphicOther', 1, 3)
+		end
 		if v1 == 'finalanim' then
+			cancelTween('BlackGraphicOther')
+			setProperty('BlackGraphicOther.alpha', 0)
+
+			anim = 'final'
+			setProperty('camZoomingMult', 0)
+			setProperty('camHUD.alpha', 0)
 			playAnim('final', 'final', true)
 			setProperty('final.alpha', 1)
+			setProperty('bg-bf.alpha', 1)
+			setProperty('bg-bf1.visible', true)
+			setProperty('bg-bf2.visible', true)
+			setProperty('bg-bf3.visible', true)
+			scaleObject('bg-bf', 1.5, 1.5)
+			setProperty('bg-bf.x', -500)
+			setProperty('bg-bf.y', -1500)
+
+			removeLuaSprite('bg', true)
+			removeLuaSprite('esencia', true)
+
+			setProperty('dad.alpha', 0)
+			setProperty('boyfriend.alpha', 0)
+			removeLuaSprite('papis', true)
+			removeLuaSprite('papis', true)
 		end
+		if v1 == 'finalanim2' then
+			anim = 'final2'
+			removeLuaSprite('final', true)
+			playAnim('final2', 'final', true)
+			setProperty('final2.alpha', 1)
+
+			removeLuaSprite('bg-amy', true)
+			setProperty('bg-bf.alpha', 1)
+			setProperty('bg-bf1.visible', true)
+			setProperty('bg-bf2.visible', true)
+			setProperty('bg-bf3.visible', true)
+			scaleObject('bg-bf', 0.82, 0.82)
+			setProperty('bg-bf.x', -700)
+			setProperty('bg-bf.y', -250)
+		end
+		if v1 == 'finalanim3' then
+			anim = 'final3'
+			removeLuaSprite('final2', true)
+			playAnim('final3', 'final', true)
+			setProperty('final3.alpha', 1)
+
+			setProperty('bg-bf.alpha', 0)
+			setProperty('bg-bf1.visible', false)
+			setProperty('bg-bf2.visible', false)
+			setProperty('bg-bf3.visible', false)
+			setProperty('bg-never.alpha', 1)
+			scaleObject('bg-never', 0.6, 0.6)
+
+			setProperty('bg-never.x', -600) setProperty('final3.x', -520)
+			doTweenX('xd', 'bg-never', -300, 0.6, 'backOut')
+			doTweenX('xd2', 'final3', -220, 0.6, 'backOut')
+		end
+		if v1 == 'finalanim4' then
+			anim = 'final4'
+			removeLuaSprite('final3', true)
+			playAnim('final4', 'final', true)
+			setProperty('final4.alpha', 1)
+
+			removeLuaSprite('bg-never', true)
+			setProperty('bg-tails.alpha', 1)
+			scaleObject('bg-tails', 0.85, 0.85)
+			setProperty('bg-tails.x', -380)
+			setProperty('bg-tails.y', -215)
+		end
+		if v1 == 'shake' then
+			cameraShake('game', 0.02, 0.3)
+			runTimer('pzox', 0.3)
+		end
+		if v1 == 'ending' then
+			removeLuaSprite('final4', true)
+			playAnim('final5', 'final', true)
+			setProperty('final5.alpha', 1)
+			doTweenAlpha('BlackGraphicOther', 'BlackGraphicOther', 1, 4)
+		end
+	end
+end
+
+function onTimerCompleted(t)
+	if t == 'pzox' then
+		setProperty('overlayroto.alpha', 1)
 	end
 end

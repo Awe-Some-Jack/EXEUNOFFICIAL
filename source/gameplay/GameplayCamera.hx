@@ -417,6 +417,14 @@ class GameplayCamera
 					case 'gf':  settings.GFx  = x; settings.GFy  = y;
 				}
 
+			case 'Set Character Offset':
+				var daval:Float = Std.parseFloat(v2);
+				switch (v1.toLowerCase()) {
+					case 'bf':  settings.OffsetsBF  = daval;
+					case 'dad': settings.OffsetsDAD = daval;
+					case 'gf':  settings.OffsetsGF  = daval;
+				}
+
 			case 'cameracenter':
 				settings.MiddleCamera = (v1 == 'true');
 				settings.OverrideZoom = false;

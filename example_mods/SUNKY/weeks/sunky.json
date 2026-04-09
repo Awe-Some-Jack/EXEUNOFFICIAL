@@ -37,5 +37,6 @@
 	"exeCover": "sunky",
 	"exeLabel": "NON EXE",
 	"exeColor": "0xFF8888FF",
+	"transitionShape": "SUNKY",
 	"soundTestCode": [0, 0, false]
 }

@@ -22,6 +22,8 @@ enum ShapeTypes {
     OVAL;
     X;
     INFINITE;
+    FLEET;
+    SUNKY;
     SANIC;
 }
 
@@ -69,6 +71,9 @@ class CustomShapeTransition extends MusicBeatSubstate
             case OVAL:
                 time = 0.9;
                 maxScale = 10;
+
+            case TAILS:
+                maxScale = 7;
 
             case _:
                 maxScale = 6;
@@ -195,6 +200,8 @@ class CustomShapeTransition extends MusicBeatSubstate
             case 'egg' | 'eggman': EGG;
             case 'tails': TAILS;
             case 'knux' | 'knuckles': KNUX;
+            case 'fleet': FLEET;
+            case 'sunky': SUNKY;
             case 'sanic': SANIC;
             default: HEAD;
         }

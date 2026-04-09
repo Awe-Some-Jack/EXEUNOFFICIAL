@@ -14,8 +14,8 @@ function onCreatePost()
 
 	--new bg
 
-	makeLuaSprite('bg-tails', 'bg/maniapov', -700, -160)
-	scaleObject('bg-tails', 0.82, 0.82)
+	makeLuaSprite('bg-tails', 'bg/maniapov', -900, -350)
+	scaleObject('bg-tails', 1, 1)
 	addLuaSprite('bg-tails')
 	setProperty('bg-tails.alpha', 0.0001)
 
@@ -43,10 +43,22 @@ function onCreatePost()
 	addLuaSprite('papis2')
 	setProperty('papis2.alpha', 0.0001)
 
-	makeFlxAnimateSprite('bestfriend', 0, 0, 'characters/itsme')
+	--[[makeLuaSprite('never', 'bg/never', -400, -100)
+	scaleObject('never', 3, 3)
+	addLuaSprite('never')
+	setProperty('never.alpha', 0.0001)]]
+
+	makeFlxAnimateSprite('bestfriend', -220, -250, 'characters/itsme')
 	addAnimationBySymbol('bestfriend', 'bestfriend', 'sonic', 24, false)
+	scaleObject('bestfriend', 2.4, 2.4)
 	addLuaSprite('bestfriend', true)
 	setProperty('bestfriend.alpha', 0.0001)
+
+	makeFlxAnimateSprite('final', -220, -550, 'characters/final2')
+	addAnimationBySymbol('final', 'final', 'final', 24, false)
+	scaleObject('final', 2.4, 2.4)
+	addLuaSprite('final', true)
+	setProperty('final.alpha', 0.0001)
 
 	makeLuaSprite('overlay', 'bg/overlay-cinematico')
 	scaleObject('overlay', 1.3, 1.3)
@@ -61,12 +73,20 @@ function onCountdownTick(c)
 	end
 end
 
+local changedBG = false
 function opponentNoteHitPre(id,nd,nt,isn)
+	if not changedBG or nt == 'No Animation' then return end
 	if nd == 0 then
+		triggerEvent('Set Character Offset', 'dad', '250')
+	elseif nd == 1 then
+		triggerEvent('Set Character Offset', 'dad', '100')
+	elseif nd == 2 then
+		triggerEvent('Set Character Offset', 'dad', '150')
+	elseif nd == 3 then
+		triggerEvent('Set Character Offset', 'dad', '220')
 	end
 end
 
-local changedBG = false
 function onBeatHit()
 	if curBeat % 2 == 0 and not changedBG then
 		playAnim('papis', 'idle', true)
@@ -82,28 +102,40 @@ function onUpdatePost(e)
 	setProperty('bg-bf3.alpha', 0.4 + (((math.sin(starSine + 2) / 2) + 0.5) * 0.6))
 end
 
+local omhs = false
 function onSectionHit()
 	if not changedBG then return end
-	if mustHitSection then
-		setProperty('boyfriend.alpha', 1)
-		setProperty('dad.alpha', 0)
+	if omhs ~= mustHitSection then
+		if mustHitSection then
+			setProperty('boyfriend.alpha', 1)
+			setProperty('dad.alpha', 0)
 
-		setProperty('bg-bf.alpha', 1)
-		setProperty('bg-bf1.visible', true)
-		setProperty('bg-bf2.visible', true)
-		setProperty('bg-bf3.visible', true)
-		setProperty('papis2.alpha', 1)
-		setProperty('bg-tails.alpha', 0)
-	else
-		setProperty('boyfriend.alpha', 0)
-		setProperty('dad.alpha', 1)
+			setProperty('bg-bf.alpha', 1)
+			setProperty('bg-bf1.visible', true)
+			setProperty('bg-bf2.visible', true)
+			setProperty('bg-bf3.visible', true)
+			setProperty('papis2.alpha', 1)
+			setProperty('bg-tails.alpha', 0)
+		else
+			setProperty('boyfriend.alpha', 0)
+			setProperty('dad.alpha', 1)
 
-		setProperty('bg-bf.alpha', 0)
-		setProperty('bg-bf1.visible', false)
-		setProperty('bg-bf2.visible', false)
-		setProperty('bg-bf3.visible', false)
-		setProperty('papis2.alpha', 0)
-		setProperty('bg-tails.alpha', 1)
+			setProperty('bg-bf.alpha', 0)
+			setProperty('bg-bf1.visible', false)
+			setProperty('bg-bf2.visible', false)
+			setProperty('bg-bf3.visible', false)
+			setProperty('papis2.alpha', 0)
+			setProperty('bg-tails.alpha', 1)
+		end
+
+		runTimer('xdxd', 0.0001)
+	end
+	omhs = mustHitSection
+end
+
+function onTimerCompleted(t)
+	if t == 'xdxd' then
+		callMethod('camGame.snapToTarget')
 	end
 end
 
@@ -121,7 +153,7 @@ function onEvent(n,v1)
 			setProperty('bg-tails.alpha', 1)
 
 			callMethod('boyfriend.setPosition', {0, -70})
-			callMethod('dad.setPosition', {500, -200})
+			callMethod('dad.setPosition', {600, -150})
 
 			changedBG = true
 
@@ -131,6 +163,28 @@ function onEvent(n,v1)
 
 			triggerEvent('cameracenter', 'true', '')
 			callMethod('camGame.snapToTarget')
+		end
+		if v1 == 'bestfriend' then
+			setProperty('boyfriend.alpha', 0)
+			setProperty('dad.alpha', 0)
+
+			setProperty('bg-bf.alpha', 0)
+			setProperty('bg-bf1.visible', false)
+			setProperty('bg-bf2.visible', false)
+			setProperty('bg-bf3.visible', false)
+			setProperty('papis2.alpha', 0)
+			setProperty('bg-tails.alpha', 1)
+
+			playAnim('bestfriend', 'bestfriend', true)
+			setProperty('bestfriend.alpha', 1)
+
+			setProperty('bg-tails.x', -200)
+		end
+		if v1 == 'endcine' then
+			removeLuaSprite('bestfriend', true)
+			removeLuaSprite('never', true)
+			setProperty('boyfriend.alpha', 1)
+			setProperty('bg-tails.x', -900)
 		end
 		if v1 == 'originalbg' then
 			setProperty('boyfriend.alpha', 1)
@@ -153,6 +207,11 @@ function onEvent(n,v1)
 
 			triggerEvent('cameracenter', 'true', '')
 			callMethod('camGame.snapToTarget')
+			triggerEvent('Set Character Offset', 'dad', '25')
+		end
+		if v1 == 'finalanim' then
+			playAnim('final', 'final', true)
+			setProperty('final.alpha', 1)
 		end
 	end
 end

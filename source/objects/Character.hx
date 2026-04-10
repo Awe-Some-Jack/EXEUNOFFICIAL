@@ -137,6 +137,15 @@ class Character extends FlxSprite
 			missingCharacter = true;
 			missingText = new FlxText(0, 0, 300, 'ERROR:\n$character.json', 16);
 			missingText.alignment = CENTER;
+			missingText.alpha = 1;
+		}
+		else
+		{
+			path = Paths.getPath(characterPath, TEXT);
+			missingCharacter = false;
+			missingText = new FlxText(0, 0, 300, 'ERROR:\n$character.json', 16);
+			missingText.alignment = CENTER;
+			missingText.alpha = 0;
 		}
 
 		try
@@ -482,11 +491,7 @@ class Character extends FlxSprite
 	{
 		var lastAlpha:Float = alpha;
 		var lastColor:FlxColor = color;
-		if(missingCharacter)
-		{
-			alpha *= 0.6;
-			color = FlxColor.BLACK;
-		}
+		
 
 		if(isAnimateAtlas)
 		{
@@ -494,8 +499,6 @@ class Character extends FlxSprite
 			{
 				copyAtlasValues();
 				atlas.draw();
-				alpha = lastAlpha;
-				color = lastColor;
 				if(missingCharacter && visible)
 				{
 					getMidpoint(_midpoint);
@@ -509,8 +512,6 @@ class Character extends FlxSprite
 		super.draw();
 		if(missingCharacter && visible)
 		{
-			alpha = lastAlpha;
-			color = lastColor;
 			getMidpoint(_midpoint);
 			missingText.x = _midpoint.x - 150;
 			missingText.y = _midpoint.y - 10;

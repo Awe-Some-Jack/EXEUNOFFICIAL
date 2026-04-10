@@ -143,7 +143,7 @@ class InfoBioParallaxState extends MusicBeatState
 			if (Controls.instance.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				FlxG.switchState(() -> new states.extras.ExtrasMenu());
+				FlxG.switchState(() -> new states.parallax.ParallaxState());
 			}
 
 			if (chars.length > 1)

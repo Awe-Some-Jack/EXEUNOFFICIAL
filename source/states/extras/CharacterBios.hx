@@ -238,7 +238,7 @@ class CharacterBios extends MusicBeatState
 			if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				FlxG.switchState(() -> new ParallaxState());
+				FlxG.switchState(() -> new ExtrasMenu());
 			}
 
 			if (FlxG.mouse.overlaps(scrollTxt))

@@ -1,4 +1,4 @@
-package states.extras;
+package states.parallax;
 
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
@@ -133,7 +133,6 @@ class InfoBioParallaxState extends MusicBeatState
 		charBG.makeGraphic(Std.int(charInfo.width + 20), Std.int(charInfo.height + 20), 0x77000000);
 	}
 
-	var characterSine:Float = 0;
 	var transitioning:Bool = false;
 	override function update(elapsed:Float)
 	{
@@ -144,157 +143,18 @@ class InfoBioParallaxState extends MusicBeatState
 			if (Controls.instance.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				FlxG.switchState(() -> new ParallaxState());
+				FlxG.switchState(() -> new states.extras.ExtrasMenu());
 			}
 
-			if (FlxG.mouse.overlaps(scrollTxt))
+			if (chars.length > 1)
 			{
-				scrollTxt.color = FlxColor.YELLOW;
-
-				if (FlxG.mouse.justPressed)
-				{
-					canScrollAutomactially = !canScrollAutomactially;
-					
-					if (!canScrollAutomactially)
-					{
-						if (moveTween != null){
-				moveTween.cancel();
-				moveTween = null;
+				if (controls.UI_LEFT_P)
+					loadChar(FlxMath.wrap(currentIndex - 1, 0, chars.length - 1));
+				if (controls.UI_RIGHT_P)
+					loadChar(FlxMath.wrap(currentIndex + 1, 0, chars.length - 1));
 			}
-			moveCounter = 0;
-					canMove = true;
-					}
-				}
-			}
-			else
-			{
-				scrollTxt.color = FlxColor.WHITE;
-			}
-
-			if (canScrollAutomactially) scrollTxt.text = "auto scroll: on";
-			else scrollTxt.text = "auto scroll: off";
-
-			charName.x = textCenter.x + (textCenter.width - charName.width) / 2;
-			artistName.x = textCenter.x + (textCenter.width - artistName.width) / 2;
-			scrollTxt.x = bioBox.x + (bioBox.width - scrollTxt.width) / 2;
-
-			if (controls.RESET)
-				FlxG.resetState();
-
-			var canScroll:Bool = bioTxt.height > 600;
-
-			if (canScrollAutomactially)
-			{
-
-				moveCounter += elapsed;
-
-			if (canScroll && moveCounter > 5 && canMove)
-			{
-				canMove = false;
-				moveTween = FlxTween.tween(bioTxt, {y: -(bioTxt.height - 600)}, 10);
-			}
-			}
-
-			if (FlxG.mouse.wheel != 0 && FlxG.mouse.overlaps(bioBox) && canScroll)
-			{
-				if (canScrollAutomactially)
-				{
-					if (moveTween != null){
-						moveTween.cancel();
-						moveTween = null;
-					}
-
-					moveCounter = 0;
-					canMove = true;
-				}
-
-				bioTxt.y += FlxG.mouse.wheel * 10;
-
-				if (bioTxt.y > 0) bioTxt.y = 0;
-				if (bioTxt.y < -(bioTxt.height - 600)) bioTxt.y = -(bioTxt.height - 600); 
-			}
-
-			if (chars_list.length > 1)
-			{
-			if (FlxG.mouse.wheel != 0 && !FlxG.mouse.overlaps(bioBox))
-				changeCharBio(-FlxG.mouse.wheel * 1);
-			if (controls.UI_UP_P)
-				changeCharBio(-1);
-			if (controls.UI_DOWN_P)
-				changeCharBio(1);
-			}
-	}
-
-	function moveDebbug(obj:FlxCamera)
-	{
-		if (FlxG.keys.justPressed.I)
-				obj.scroll.y -= 10;
-			if (FlxG.keys.justPressed.K)
-				obj.scroll.y += 10;
-			if (FlxG.keys.justPressed.J)
-				obj.scroll.x -= 10;
-			if (FlxG.keys.justPressed.L)
-				obj.scroll.x += 10;
-
-			if (FlxG.keys.justPressed.ANY)
-				trace('x: ${obj.x} y: ${obj.y}');
-			
-	}
-
-	function scaleDebbug(obj:FlxShape)
-	{
-		if (FlxG.keys.justPressed.F)
-				obj.shapeWidth -= 10;
-			if (FlxG.keys.justPressed.H)
-				obj.shapeWidth += 10;
-			if (FlxG.keys.justPressed.T)
-				obj.shapeHeight -= 10;
-			if (FlxG.keys.justPressed.G)
-				obj.shapeHeight += 10;
-
-			if (FlxG.keys.justPressed.ANY)
-				trace('x: ${obj.shapeWidth} y: ${obj.shapeHeight}');
-			
-	}
-
-	function changeCharBio(ola:Int = 0)
-	{
-		if (canScrollAutomactially)
-		{
-			if (moveTween != null){
-				moveTween.cancel();
-				moveTween = null;
-			}
-		
-			moveCounter = 0;
-			canMove = true;
 		}
-
-		curChar = FlxMath.wrap(curChar + ola, 0, chars_list.length - 1);
-		FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
-
-		character.changeCharacter(chars_list[curChar]);
-		icon.changeIcon(chars_list[curChar]);
-		character.scale.set(0.5, 0.5);
-		character.setPosition(offsets_list[curChar][0], offsets_list[curChar][1]);
-
-
-		bioTxt.text = bios_list[curChar];
-		bioTxt.y = 0;
-
-		icon.setPosition(icon_offset[curChar][0], icon_offset[curChar][1]);
-
-		charName.text = chars_list[curChar];
-		artistName.text = 'by\n${artist_list[curChar]}';
-
-		namesGrp.forEach(function(t:FlxText){
-			if (t.ID == curChar)
-			{
-				t.color = FlxColor.YELLOW;
-				CAM_FOLLOW.setPosition(t.x, t.y);
-			}
-			else
-				t.color = FlxColor.WHITE;
-		});
 	}
+
 }
+

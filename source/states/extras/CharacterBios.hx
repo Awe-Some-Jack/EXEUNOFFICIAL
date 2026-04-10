@@ -19,6 +19,7 @@ var offsets_list:Array<Dynamic> = [];
 var icon_offset:Array<Dynamic> = [];
 var bios_list:Array<String> = [];
 var artist_list:Array<String> = [];
+var healthicon_list:Array<String> = [];
 
 var CAM_FOLLOW:FlxObject;
 
@@ -51,33 +52,43 @@ class CharacterBios extends MusicBeatState
 	{
 		super.create();
 
-		var folderPath = "assets/exe/extras/bios";
-		if (FileSystem.exists(folderPath)) {
-		    for (file in FileSystem.readDirectory(folderPath)) {
-		        if (file.endsWith(".json")) {
-		            var nameOnly = haxe.io.Path.withoutExtension(file);
-					files.push(nameOnly);
-				}
-		    }
-		}
+		var orderList:Array<Int> = [];
 
-		for (fl in files)
-		{
-		    jsons = File.getContent('assets/exe/extras/bios/' + fl + '.json');
-		    data = Json.parse(jsons);
+		var scanDir = function(dir:String) {
+			if (!FileSystem.exists(dir)) return;
+			for (file in FileSystem.readDirectory(dir)) {
+				if (!file.endsWith('.json')) continue;
+				var name = haxe.io.Path.withoutExtension(file);
+				if (chars_list.contains(name)) continue;
+				var d:Dynamic = Json.parse(File.getContent(dir + '/' + file));
+				if (d.bio_info == null || d.bio_appear == false) continue;
 
-			chars_list[data.list_position] = fl;
-			icon_offset[data.list_position] = [
-				data.icon_offset[0],
-				data.icon_offset[1]
-			];
-			bios_list[data.list_position] = data.bio;
-			artist_list[data.list_position] = data.artist;
-			offsets_list[data.list_position] = [
-			    data.char_offset[0],
-			    data.char_offset[1]
-			];
-		}
+				chars_list.push(name);
+				offsets_list.push((d.bio_char_offset != null) ? [d.bio_char_offset[0], d.bio_char_offset[1]] : [300.0, 100.0]);
+				icon_offset.push((d.bio_icon_offset  != null) ? [d.bio_icon_offset[0],  d.bio_icon_offset[1]]  : [786.0, 425.0]);
+				bios_list.push((d.bio_info   != null) ? d.bio_info   : '');
+				artist_list.push((d.bio_artist != null) ? d.bio_artist : '');
+				orderList.push((d.bio_order  != null) ? d.bio_order  : 9999);
+				healthicon_list.push((d.healthicon != null) ? d.healthicon : name);
+			}
+		};
+
+		scanDir('assets/shared/characters');
+		for (mod in Mods.getModDirectories())
+			scanDir('mods/' + mod + '/characters');
+
+		var combined = [for (i in 0...chars_list.length) {
+			name: chars_list[i], offset: offsets_list[i],
+			icon: icon_offset[i], bio: bios_list[i], artist: artist_list[i],
+			order: orderList[i], healthicon: healthicon_list[i]
+		}];
+		combined.sort((a, b) -> a.order - b.order);
+		chars_list       = [for (e in combined) e.name];
+		offsets_list     = [for (e in combined) e.offset];
+		icon_offset      = [for (e in combined) e.icon];
+		bios_list        = [for (e in combined) e.bio];
+		artist_list      = [for (e in combined) e.artist];
+		healthicon_list  = [for (e in combined) e.healthicon];
 
 		CAM_FOLLOW = new FlxObject(0, 0, 1, 1);
 		add(CAM_FOLLOW);
@@ -118,7 +129,7 @@ class CharacterBios extends MusicBeatState
 		circleBig.scrollFactor.set();
         add(circleBig);
 
-		icon = new HealthIcon('faker', true);
+		icon = new HealthIcon(healthicon_list.length > 0 ? healthicon_list[0] : 'face', true);
 		icon.scale.set(0.7, 0.7);
 		icon.setPosition(786, 425);
 		add(icon);
@@ -368,7 +379,7 @@ class CharacterBios extends MusicBeatState
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
 
 		character.changeCharacter(chars_list[curChar]);
-		icon.changeIcon(chars_list[curChar]);
+		icon.changeIcon(healthicon_list[curChar]);
 		character.scale.set(0.5, 0.5);
 		character.setPosition(offsets_list[curChar][0], offsets_list[curChar][1]);
 

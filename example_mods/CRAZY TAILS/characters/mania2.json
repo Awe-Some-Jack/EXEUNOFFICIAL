@@ -1,7 +1,7 @@
 {
 	"animations": [
 		{
-			"offsets": [698, -19],
+			"offsets": [788, -19],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -9,7 +9,7 @@
 			"name": "left2"
 		},
 		{
-			"offsets": [381, -181],
+			"offsets": [461, -189],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
@@ -17,7 +17,7 @@
 			"name": "Símbolo 212"
 		},
 		{
-			"offsets": [138, 213],
+			"offsets": [194, 245],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
@@ -25,7 +25,7 @@
 			"name": "Símbolo 201"
 		},
 		{
-			"offsets": [180, -58],
+			"offsets": [213, -74],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
@@ -50,6 +50,6 @@
 	"healthbar_colors": [255, 178, 109],
 	"camera_position": [-170, 120],
 	"sing_duration": 6.1,
-	"scale": 0.7,
+	"scale": 0.9,
 	"_editor_isPlayer": false
 }

@@ -2,14 +2,27 @@
 <TextureAtlas imagePath="mispapas2.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="sonamy2 instancia 10000" x="36" y="36" width="626" height="664" frameX="0" frameY="-1" frameWidth="626" frameHeight="665"/>
-	<SubTexture name="sonamy2 instancia 10001" x="36" y="36" width="626" height="664" frameX="0" frameY="-1" frameWidth="626" frameHeight="665"/>
-	<SubTexture name="sonamy2 instancia 10002" x="682" y="36" width="626" height="664" frameX="0" frameY="-1" frameWidth="626" frameHeight="665"/>
-	<SubTexture name="sonamy2 instancia 10003" x="682" y="36" width="626" height="664" frameX="0" frameY="-1" frameWidth="626" frameHeight="665"/>
-	<SubTexture name="sonamy2 instancia 10004" x="1328" y="36" width="626" height="664" frameX="0" frameY="-1" frameWidth="626" frameHeight="665"/>
-	<SubTexture name="sonamy2 instancia 10005" x="1328" y="36" width="626" height="664" frameX="0" frameY="-1" frameWidth="626" frameHeight="665"/>
-	<SubTexture name="sonamy2 instancia 10006" x="1974" y="36" width="626" height="665"/>
-	<SubTexture name="sonamy2 instancia 10007" x="1974" y="36" width="626" height="665"/>
-	<SubTexture name="sonamy2 instancia 10008" x="2620" y="36" width="626" height="665"/>
-	<SubTexture name="sonamy2 instancia 10009" x="2620" y="36" width="626" height="665"/>
+	<SubTexture name="sonamy2 instancia 10000" x="36" y="36" width="626" height="665"/>
+	<SubTexture name="sonamy2 instancia 10001" x="36" y="36" width="626" height="665"/>
+	<SubTexture name="sonamy2 instancia 10002" x="36" y="36" width="626" height="665"/>
+	<SubTexture name="sonamy2 instancia 10003" x="682" y="36" width="625" height="664" frameX="-1" frameY="-1" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10004" x="682" y="36" width="625" height="664" frameX="-1" frameY="-1" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10005" x="682" y="36" width="625" height="664" frameX="-1" frameY="-1" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10006" x="1327" y="36" width="625" height="662" frameX="-1" frameY="-3" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10007" x="1327" y="36" width="625" height="662" frameX="-1" frameY="-3" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10008" x="1327" y="36" width="625" height="662" frameX="-1" frameY="-3" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10009" x="36" y="721" width="624" height="659" frameX="-2" frameY="-5" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10010" x="36" y="721" width="624" height="659" frameX="-2" frameY="-5" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10011" x="680" y="721" width="624" height="659" frameX="-2" frameY="-5" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10012" x="1324" y="721" width="624" height="657" frameX="-2" frameY="-7" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10013" x="1324" y="721" width="624" height="657" frameX="-2" frameY="-7" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10014" x="36" y="1400" width="624" height="657" frameX="-2" frameY="-7" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10015" x="680" y="1400" width="624" height="661" frameX="-2" frameY="-4" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10016" x="680" y="1400" width="624" height="661" frameX="-2" frameY="-4" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10017" x="680" y="1400" width="624" height="661" frameX="-2" frameY="-4" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10018" x="1324" y="1400" width="626" height="663" frameX="0" frameY="-2" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10019" x="1324" y="1400" width="626" height="663" frameX="0" frameY="-2" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10020" x="1324" y="1400" width="626" height="663" frameX="0" frameY="-2" frameWidth="626" frameHeight="665"/>
+	<SubTexture name="sonamy2 instancia 10021" x="36" y="36" width="626" height="665"/>
+	<SubTexture name="sonamy2 instancia 10022" x="36" y="36" width="626" height="665"/>
 </TextureAtlas>

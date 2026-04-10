@@ -1,3 +1,29 @@
+local function setupTrigs()
+	makeLuaSprite('bftrig', 'bg/sonictrig', - 700)
+	setObjectCamera('bftrig', 'hud')
+	scaleObject('bftrig', 0.5, 0.5)
+	setProperty('bftrig.y', screenHeight - getProperty('bftrig.height') + 1)
+	addLuaSprite('bftrig')
+
+	createInstance('bftrigchar', 'objects.Character', {-250 - 700, -30, 'bf2-mania-small', true})
+	setObjectCamera('bftrigchar', 'hud')
+	addInstance('bftrigchar')
+
+	makeLuaSprite('tailstrig', 'bg/maniatrig')
+	setObjectCamera('tailstrig', 'hud')
+	scaleObject('tailstrig', 0.5, 0.5)
+	setProperty('tailstrig.x', screenWidth - getProperty('tailstrig.width') + 700)
+	setProperty('tailstrig.y', screenHeight - getProperty('tailstrig.height') + 1)
+	addLuaSprite('tailstrig')
+
+	createInstance('tailstrigchar', 'objects.Character', {750 + 700, -250, 'mania2-small', false})
+	setObjectCamera('tailstrigchar', 'hud')
+	addInstance('tailstrigchar')
+
+	setProperty('bftrig.visible', false) setProperty('bftrigchar.visible', false)
+	setProperty('tailstrig.visible', false) setProperty('tailstrigchar.visible', false)
+end
+
 local function setupAnims()
 	--anim1
 	makeFlxAnimateSprite('bestfriend', -220, -250, 'characters/mania2')
@@ -101,6 +127,7 @@ function onCreatePost()
 	addLuaSprite('papis2')
 	setProperty('papis2.alpha', 0.0001)
 
+	setupTrigs()
 	setupAnims()
 
 	makeLuaSprite('overlay', 'bg/overlay-cinematico')
@@ -137,6 +164,32 @@ function opponentNoteHitPre(id,nd,nt,isn)
 		triggerEvent('Set Character Offset', 'dad', '150')
 	elseif nd == 3 then
 		triggerEvent('Set Character Offset', 'dad', '220')
+	end
+end
+
+local playerHold = 0
+function goodNoteHit()
+	if not changedBG then return end
+	if not mustHitSection then
+		if playerHold <= 0 then
+			cancelTween('bftrig') cancelTween('bftrigchar')
+			doTweenX('bftrig', 'bftrig', 0, crochet / 500, 'cubeOut')
+			doTweenX('bftrigchar', 'bftrigchar', -250, crochet / 500, 'cubeOut')
+		end
+		playerHold = 1
+	end
+end
+
+local oppHold = 0
+function opponentNoteHit()
+	if not changedBG then return end
+	if mustHitSection then
+		if oppHold <= 0 then
+			cancelTween('tailstrig') cancelTween('tailstrigchar')
+			doTweenX('tailstrig', 'tailstrig', screenWidth - getProperty('tailstrig.width'), crochet / 500, 'cubeOut')
+			doTweenX('tailstrigchar', 'tailstrigchar', 750, crochet / 500, 'cubeOut')
+		end
+		oppHold = 1
 	end
 end
 
@@ -190,13 +243,36 @@ function onUpdatePost(e)
 	setProperty('bg-bf1.alpha', 0.4 + (((math.sin(starSine) / 2) + 0.5) * 0.6))
 	setProperty('bg-bf2.alpha', 0.4 + (((math.sin(starSine + 1) / 2) + 0.5) * 0.6))
 	setProperty('bg-bf3.alpha', 0.4 + (((math.sin(starSine + 2) / 2) + 0.5) * 0.6))
+
+	playAnim('bftrigchar', getProperty('boyfriend.animation.curAnim.name'), true)
+	setProperty('bftrigchar.animation.curAnim.curFrame', getProperty('boyfriend.animation.curAnim.curFrame'))
+	playAnim('tailstrigchar', getProperty('dad.animation.curAnim.name'), true)
+	setProperty('tailstrigchar.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
+
+	playerHold = playerHold - e
+	if playerHold < 0 then
+		playerHold = 0
+		doTweenX('bftrig', 'bftrig', - 700, crochet / 500, 'cubeOut')
+		doTweenX('bftrigchar', 'bftrigchar', -250 - 700, crochet / 500, 'cubeOut')
+	end
+
+	oppHold = oppHold - e
+	if oppHold < 0 then
+		oppHold = 0
+		doTweenX('tailstrig', 'tailstrig', screenWidth - getProperty('tailstrig.width') + 700, crochet / 500, 'cubeOut')
+		doTweenX('tailstrigchar', 'tailstrigchar', 750 + 700, crochet / 500, 'cubeOut')
+	end
 end
 
 local omhs = false
 function onSectionHit()
 	if not changedBG then return end
 	if omhs ~= mustHitSection then
+		triggerEvent('bright zoom')
 		if mustHitSection then
+			cancelTween('bftrig') cancelTween('bftrigchar')
+			setProperty('bftrig.x', - 700) setProperty('bftrigchar.x', -250 - 700)
+	
 			setProperty('boyfriend.alpha', 1)
 			setProperty('dad.alpha', 0)
 
@@ -207,6 +283,9 @@ function onSectionHit()
 			setProperty('papis2.alpha', 1)
 			setProperty('bg-tails.alpha', 0)
 		else
+			cancelTween('tailstrig') cancelTween('tailstrigchar')
+			setProperty('tailstrig.x', screenWidth - getProperty('tailstrig.width') + 700) setProperty('tailstrigchar.x', 750 + 700)
+	
 			setProperty('boyfriend.alpha', 0)
 			setProperty('dad.alpha', 1)
 
@@ -280,6 +359,9 @@ function onEvent(n,v1)
 			removeLuaSprite('never', true)
 			setProperty('boyfriend.alpha', 1)
 			setProperty('bg-tails.x', -900)
+
+			setProperty('bftrig.visible', true) setProperty('bftrigchar.visible', true)
+			setProperty('tailstrig.visible', true) setProperty('tailstrigchar.visible', true)
 		end
 		if v1 == 'originalbg' then
 			setProperty('boyfriend.alpha', 1)
@@ -303,6 +385,9 @@ function onEvent(n,v1)
 			triggerEvent('cameracenter', 'true', '')
 			callMethod('camGame.snapToTarget')
 			triggerEvent('Set Character Offset', 'dad', '25')
+
+			removeLuaSprite('bftrig', true) removeLuaSprite('bftrigchar', true)
+			removeLuaSprite('tailstrig', true) removeLuaSprite('tailstrigchar', true)
 		end
 		if v1 == 'fadeout' then
 			doTweenAlpha('BlackGraphicOther', 'BlackGraphicOther', 1, 3)

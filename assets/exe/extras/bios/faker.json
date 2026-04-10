@@ -1,7 +1,12 @@
 {
-    "list_position": 0,
-    "char_offset": [460, 30],
-    "icon_offset": [774, 405],
+    "list_position": 9,
+    "name": "Faker",
+    "icon": "faker",
+    "char_scale": 0.55,
+    "char_offset": [470, 20],
+    "icon_scale": 0.7,
+    "icon_offset": [-30, -30],
     "artist": "revie03",
+    "mod": "EXE",
     "bio": "EXE was an entity that has its origins sprouted from X, before his first appearance in 2011. Unlike the latter, EXE was not an entity that hailed from the void directly, rather he was one of X’s experiments with creating a new form of life, based on his own matter from the void, technically making them related by blood. Despite this, EXE did not agree with the objectives of his predecessor, wishing to overthrow him for the sake of his own goals. EXE had a vision for humanity and all other life. X, however, did not take too kindly to his insubordination. X cast out EXE for rebelling, believing him to be simply getting in the way of his “fun”. EXE ended up banished to another part of the universe."
 }

@@ -1,0 +1,12 @@
+{
+    "list_position": 2,
+    "name": "Xenophanes (Phase 2)",
+    "icon": "XENO-P2",
+    "char_scale": 0.55,
+    "char_offset": [680, -110],
+    "icon_scale": 0.7,
+    "icon_offset": [-24, -25],
+    "artist": "treno",
+    "mod": "STORY MODE",
+    "bio": "ola we"
+}

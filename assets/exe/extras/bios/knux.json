@@ -1,0 +1,12 @@
+{
+    "list_position": 5,
+    "name": "Knuckles (Soul)",
+    "icon": "knux",
+    "char_scale": 1,
+    "char_offset": [600, 170],
+    "icon_scale": 0.7,
+    "icon_offset": [-27, -25],
+    "artist": "treno",
+    "mod": "STORY MODE",
+    "bio": "ola we"
+}

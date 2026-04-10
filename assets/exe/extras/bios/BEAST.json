@@ -1,0 +1,12 @@
+{
+    "list_position": 3,
+    "name": "Xenophanes (Beast)",
+    "icon": "XENO-P3",
+    "char_scale": 0.72,
+    "char_offset": [770, 290],
+    "icon_scale": 0.7,
+    "icon_offset": [-24, -28],
+    "artist": "treno",
+    "mod": "STORY MODE",
+    "bio": "ola we"
+}

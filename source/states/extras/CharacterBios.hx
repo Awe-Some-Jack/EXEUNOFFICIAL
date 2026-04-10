@@ -8,45 +8,51 @@ import objects.*;
 
 import flixel.addons.display.shapes.*;
 
-var data:Dynamic;
-var files:Array<String> = [];
-var jsons:Dynamic;
-
-var curChar:Int = 0;
-
-var chars_list:Array<String> = [];
-var offsets_list:Array<Dynamic> = [];
-var icon_offset:Array<Dynamic> = [];
-var bios_list:Array<String> = [];
-var artist_list:Array<String> = [];
-
-var CAM_FOLLOW:FlxObject;
-
-var namesGrp:FlxTypedGroup<FlxText>;
-
-var character:Character;
-var icon:HealthIcon;
-
-var circle:FlxShapeCircle;
-var circleBig:FlxShapeCircle;
-
-var bioBox:FlxShapeBox;
-
-var textCenter:FlxSprite;
-
-var charName:FlxText;
-var artistName:FlxText;
-var bioTxt:FlxText;
-
-var boxCanva:FlxCamera;
-
-var scrollTxt:FlxText;
-
-var helpCanva:FlxCamera;
-var bgThing:FlxSprite;
-var helpText:FlxText;
 class CharacterBios extends MusicBeatState
 {
+	var data:Dynamic;
+	var files:Array<String> = [];
+	var jsons:Dynamic;
+
+	var curChar:Int = 0;
+
+	var chars_list:Array<String> = [];
+	var chars_names:Array<String> = [];
+	var scale_list:Array<Float> = [];
+	var offsets_list:Array<Dynamic> = [];
+	var icon_names:Array<String> = [];
+	var icon_scale:Array<Float> = [];
+	var icon_offset:Array<Dynamic> = [];
+	var bios_list:Array<String> = [];
+	var artist_list:Array<String> = [];
+	var mods_list:Array<String> = [];
+
+	var CAM_FOLLOW:FlxObject;
+
+	var namesGrp:FlxTypedGroup<FlxText>;
+
+	var character:Character;
+	var icon:HealthIcon;
+
+	var circle:FlxShapeCircle;
+	var circleBig:FlxShapeCircle;
+
+	var bioBox:FlxShapeBox;
+
+	var textCenter:FlxSprite;
+
+	var charName:FlxText;
+	var artistName:FlxText;
+	var bioTxt:FlxText;
+
+	var boxCanva:FlxCamera;
+
+	var scrollTxt:FlxText;
+
+	var helpCanva:FlxCamera;
+	var bgThing:FlxSprite;
+	var helpText:FlxText;
+
 	override function create()
 	{
 		super.create();
@@ -67,16 +73,24 @@ class CharacterBios extends MusicBeatState
 		    data = Json.parse(jsons);
 
 			chars_list[data.list_position] = fl;
-			icon_offset[data.list_position] = [
-				data.icon_offset[0],
-				data.icon_offset[1]
-			];
-			bios_list[data.list_position] = data.bio;
-			artist_list[data.list_position] = data.artist;
+
+			chars_names[data.list_position] = data.name;
+			scale_list[data.list_position] = data.char_scale;
 			offsets_list[data.list_position] = [
 			    data.char_offset[0],
 			    data.char_offset[1]
 			];
+
+			icon_names[data.list_position] = data.icon;
+			icon_scale[data.list_position] = data.icon_scale;
+			icon_offset[data.list_position] = [
+				data.icon_offset[0],
+				data.icon_offset[1]
+			];
+
+			bios_list[data.list_position] = data.bio;
+			artist_list[data.list_position] = data.artist;
+			mods_list[data.list_position] = data.mod;
 		}
 
 		CAM_FOLLOW = new FlxObject(0, 0, 1, 1);
@@ -87,8 +101,8 @@ class CharacterBios extends MusicBeatState
 
 		for (i in 0...chars_list.length)
 		{
-			var chars = new FlxText(20, 0 + (i * 60), chars_list[i], 30);
-			chars.setFormat(Paths.font('NiseSegaSonic.TTF'), 60, FlxColor.WHITE, LEFT);
+			var chars = new FlxText(20, 0 + (i * 30), chars_names[i], 30);
+			chars.setFormat(Paths.font('NiseSegaSonic.TTF'), 30, FlxColor.WHITE, LEFT);
 			chars.ID = i;
 			chars.scrollFactor.x = 0;
 
@@ -97,14 +111,15 @@ class CharacterBios extends MusicBeatState
 
 			namesGrp.add(chars);
 		}
-		var spikestop:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/bios/backdrop.png'), Y);
+		var spikestop:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/extras/bios/backdrop.png'), Y);
 		spikestop.antialiasing = ClientPrefs.data.antialiasing;
 		spikestop.velocity.y = 60;
 		spikestop.screenCenter();
 		spikestop.scrollFactor.set();
 		add(spikestop);
 
-		character = new Character(0, 0, 'faker', true);
+		Mods.currentModDirectory = mods_list[curChar];
+		character = new Character(0, 0, chars_list[curChar], true);
 		character.scrollFactor.set();
 		add(character);
 
@@ -118,9 +133,10 @@ class CharacterBios extends MusicBeatState
 		circleBig.scrollFactor.set();
         add(circleBig);
 
-		icon = new HealthIcon('faker', true);
+		icon = new HealthIcon(icon_names[curChar], true);
 		icon.scale.set(0.7, 0.7);
-		icon.setPosition(786, 425);
+		icon.updateHitbox();
+		icon.setPosition(circleBig.x, circleBig.y);
 		add(icon);
 
 		textCenter = new FlxSprite(690,320);
@@ -128,7 +144,7 @@ class CharacterBios extends MusicBeatState
 		textCenter.scrollFactor.set();
 		add(textCenter);
 
-		charName = new FlxText(0, 30, chars_list[curChar], 40);
+		charName = new FlxText(0, 30, chars_names[curChar], 40);
 		charName.setFormat(Paths.font('NiseSegaSonic.TTF'), 80, FlxColor.WHITE, CENTER);
 		charName.scrollFactor.set();
 		add(charName);
@@ -165,7 +181,7 @@ class CharacterBios extends MusicBeatState
 		var indiTxt = new FlxText(0, FlxG.height - 50, 0, "press [TAB] for help", 24);
 		indiTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 24, FlxColor.WHITE, RIGHT);
 		indiTxt.scrollFactor.set();
-		indiTxt.x = bioBox.x + (bioBox.width - indiTxt.width) / 2;
+		indiTxt.x = Math.floor(bioBox.x + (bioBox.width - indiTxt.width) / 2);
 		add(indiTxt);
 
 		bgThing = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -195,6 +211,7 @@ class CharacterBios extends MusicBeatState
 			"PRESS [TAB] TO CLOSE THIS"
 		].join("\n");
 		helpText.screenCenter();
+		helpText.setPosition(Math.floor(helpText.x), Math.floor(helpText.y));
 		helpText.cameras = [helpCanva];
 		add(helpText);
 
@@ -302,7 +319,9 @@ class CharacterBios extends MusicBeatState
 					canMove = true;
 				}
 
-				bioTxt.y += FlxG.mouse.wheel * 10;
+				var shiftAmount:Int = 10;
+				if (FlxG.keys.pressed.SHIFT) shiftAmount = 30;
+				bioTxt.y += FlxG.mouse.wheel * shiftAmount;
 
 				if (bioTxt.y > 0) bioTxt.y = 0;
 				if (bioTxt.y < -(bioTxt.height - 600)) bioTxt.y = -(bioTxt.height - 600); 
@@ -367,18 +386,20 @@ class CharacterBios extends MusicBeatState
 		curChar = FlxMath.wrap(curChar + ola, 0, chars_list.length - 1);
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
 
+		Mods.currentModDirectory = mods_list[curChar];
+
 		character.changeCharacter(chars_list[curChar]);
-		icon.changeIcon(chars_list[curChar]);
-		character.scale.set(0.5, 0.5);
+		character.scale.set(scale_list[curChar], scale_list[curChar]);
 		character.setPosition(offsets_list[curChar][0], offsets_list[curChar][1]);
 
+		icon.changeIcon(icon_names[curChar]);
+		icon.scale.set(icon_scale[curChar], icon_scale[curChar]);
+		icon.setPosition(circleBig.x + icon_offset[curChar][0], circleBig.y + icon_offset[curChar][1]);
 
 		bioTxt.text = bios_list[curChar];
 		bioTxt.y = 0;
 
-		icon.setPosition(icon_offset[curChar][0], icon_offset[curChar][1]);
-
-		charName.text = chars_list[curChar];
+		charName.text = chars_names[curChar];
 		artistName.text = 'by\n${artist_list[curChar]}';
 
 		namesGrp.forEach(function(t:FlxText){

@@ -1,79 +1,91 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [376, 314],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [254, 316],
-			"loop": false,
 			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [207, 500],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [132, 359],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"loop": true,
-			"offsets": [136, 316],
-			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
+			"name": "left",
 			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [254, 316],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [207, 500],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [132, 359],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"offsets": [136, 316],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
 			"offsets": [248, 374],
-			"indices": [],
-			"fps": 24,
 			"anim": "thanos",
-			"loop": false,
-			"name": "chao"
+			"fps": 24,
+			"name": "chao",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [142, 320],
-			"indices": [],
-			"fps": 24,
 			"anim": "ai",
-			"loop": false,
-			"name": "ojo"
+			"fps": 24,
+			"name": "ojo",
+			"indices": []
 		},
 		{
-			"offsets": [264, 400],
-			"indices": [],
-			"fps": 24,
-			"anim": "laught",
 			"loop": false,
-			"name": "risa"
+			"offsets": [264, 400],
+			"anim": "laught",
+			"fps": 24,
+			"name": "risa",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
+	"bio_icon_offset": [
+		786,
+		425
+	],
 	"no_antialiasing": false,
+	"bio_char_offset": [
+		300,
+		100
+	],
 	"image": "characters/SONIC_X",
 	"position": [50, 420],
+	"bio_appear": true,
+	"bio_artist": "TRENO",
 	"healthicon": "lord-x",
 	"flip_x": false,
 	"healthbar_colors": [60, 60, 88],
+	"bio_info": "KAY IS A BITCH",
 	"camera_position": [-230, -170],
 	"sing_duration": 9.4,
+	"bio_order": 3,
 	"scale": 0.9,
 	"_editor_isPlayer": false
 }

@@ -532,11 +532,21 @@ class DAGarden extends MusicBeatState
     {
         audioFadeSpeed = 0;
 
-        if (instSound != null) { instSound.stop(); instSound.destroy(); instSound = null; }
-        for (v in vocalsSounds) { v.stop(); v.destroy(); }
+        if (instSound != null)
+        {
+            instSound.stop();
+            FlxG.sound.list.remove(instSound, true);
+            instSound.destroy();
+            instSound = null;
+        }
+        for (v in vocalsSounds)
+        {
+            v.stop();
+            FlxG.sound.list.remove(v, true);
+            v.destroy();
+        }
         vocalsSounds = [];
         isPlaying = false;
-
     }
 
     private function fadeOutAndStop():Void

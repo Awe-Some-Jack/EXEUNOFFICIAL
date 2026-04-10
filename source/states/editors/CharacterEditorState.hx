@@ -573,6 +573,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 	var healthColorStepperR:PsychUINumericStepper;
 	var healthColorStepperG:PsychUINumericStepper;
 	var healthColorStepperB:PsychUINumericStepper;
+
 	function addCharacterUI()
 	{
 		var tab_group = UI_characterbox.getTab('Character').menu;
@@ -681,7 +682,6 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 				character.vocalsFile = vocalsInputText.text;
 			else if (sender == imageInputText)
 				character.imageFile = imageInputText.text;
-
 			unsavedProgress = true;
 		}
 		else if (id == PsychUINumericStepper.CHANGE_EVENT)

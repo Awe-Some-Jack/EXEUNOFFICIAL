@@ -179,11 +179,5 @@
 	"camera_position": [60, -30],
 	"sing_duration": 5.99999999999999,
 	"scale": 0.7,
-	"_editor_isPlayer": true,
-	"bio_appear": true,
-	"bio_info": "ola we",
-	"bio_artist": "treno",
-	"bio_order": 1,
-	"bio_char_offset": [480, 130],
-	"bio_icon_offset": [775, 413]
+	"_editor_isPlayer": true
 }

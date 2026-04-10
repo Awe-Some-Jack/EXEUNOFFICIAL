@@ -446,7 +446,7 @@ class ExtrasMenu extends MusicBeatState
                 trace("Gallery selected");
 
             case "CHARACTER BIOS":
-                trace("Character Bios selected");
+                FlxG.switchState(new CharacterBIOS());
 
             case "D.A GARDEN":
                 if (FlxG.sound.music != null) FlxG.sound.music.pause();

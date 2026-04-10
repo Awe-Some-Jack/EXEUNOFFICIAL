@@ -85,6 +85,8 @@ class DAGarden extends MusicBeatState
         Paths.clearStoredMemory();
         super.create();
 
+        FlxG.autoPause = false;
+
         loadSongList();
         initializeSprites();
         setupAnimations();
@@ -118,7 +120,7 @@ class DAGarden extends MusicBeatState
         marcogris = createSprite(0, 0, "marcogris.png", 0.34);
         dagarden  = createSprite(70, 35, "dagarden.png", 0.34);
         box       = createSprite(565, 100, "box.png", 0.34);
-        disk      = createSprite(697, 206, "disk.png", 0.356);
+        disk      = createSprite(720, 248, "disk.png", 0.34);
 
         var barScale:Float = 0.34;
         var barBmp = openfl.utils.Assets.getBitmapData("assets/exe/extras/dagarden/bar.png");
@@ -126,12 +128,10 @@ class DAGarden extends MusicBeatState
         var barFullH:Float = barBmp.height * barScale;
         var barX:Float = 620;
         var barY:Float = 620;
-        var marginX:Float = barFullW * 0.022;
-        var marginY:Float = barFullH * 0.12;
-        barInnerX = barX + marginX;
-        barInnerY = barY + marginY;
-        barInnerW = barFullW - marginX * 2;
-        barInnerH = barFullH - marginY * 2;
+        barInnerX = barX  + (26 / 1642) * barFullW;
+        barInnerY = barY  + (15 /   96) * barFullH;
+        barInnerW = ((1642 - 26 * 2) / 1642) * barFullW;
+        barInnerH = ((96  - 15 * 2) /   96) * barFullH;
 
         barProgress = new FlxSprite(barInnerX, barInnerY);
         barProgress.makeGraphic(Std.int(barInnerW), Std.int(barInnerH), 0xFFCC0000);
@@ -142,14 +142,15 @@ class DAGarden extends MusicBeatState
         bar  = createSprite(barX, barY, "bar.png", barScale);
         play = createSprite(616, 478, "play.png", 0.34);
 
-        timeTxt = new FlxText(barX, barY + barFullH + 4, Std.int(barFullW), '0:00', 18);
-        timeTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 18, FlxColor.WHITE, CENTER);
-        timeTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
+        timeTxt = new FlxText(barX + 10, barY + barFullH + 7, Std.int(barFullW), '0:00', 22);
+        timeTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 22, FlxColor.BLACK, CENTER);
+        timeTxt.antialiasing = true;
         add(timeTxt);
 
-        songNameTxt = new FlxText(697, 170, 400, '', 20);
-        songNameTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 20, FlxColor.WHITE, CENTER);
-        songNameTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
+        songNameTxt = new FlxText(620, 148, 560, '', 44);
+        songNameTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 44, FlxColor.BLACK, CENTER);
+        songNameTxt.letterSpacing = 2;
+        songNameTxt.antialiasing = true;
         add(songNameTxt);
     }
 
@@ -219,12 +220,42 @@ class DAGarden extends MusicBeatState
             }
         }
 
-        var pairs:Array<{song:String, mod:String}> = [];
-        for (i in 0...songList.length)
-            pairs.push({song: songList[i], mod: songMods[i]});
-        pairs.sort((a, b) -> a.song < b.song ? -1 : 1);
-        songList = [for (p in pairs) p.song];
-        songMods = [for (p in pairs) p.mod];
+        var orderPath = 'assets/exe/dagarden_order.json';
+        if (FileSystem.exists(orderPath))
+        {
+            var json:Dynamic = haxe.Json.parse(sys.io.File.getContent(orderPath));
+            var order:Array<String> = cast json.order;
+            var orderedList:Array<String> = [];
+            var orderedMods:Array<String> = [];
+            for (name in order)
+            {
+                var idx = -1;
+                for (i in 0...songList.length)
+                    if (songList[i].toLowerCase() == name.toLowerCase()) { idx = i; break; }
+                if (idx >= 0)
+                {
+                    orderedList.push(songList[idx]);
+                    orderedMods.push(songMods[idx]);
+                }
+            }
+            for (i in 0...songList.length)
+                if (!orderedList.contains(songList[i]))
+                {
+                    orderedList.push(songList[i]);
+                    orderedMods.push(songMods[i]);
+                }
+            songList = orderedList;
+            songMods = orderedMods;
+        }
+        else
+        {
+            var pairs:Array<{song:String, mod:String}> = [];
+            for (i in 0...songList.length)
+                pairs.push({song: songList[i], mod: songMods[i]});
+            pairs.sort((a, b) -> a.song < b.song ? -1 : 1);
+            songList = [for (p in pairs) p.song];
+            songMods = [for (p in pairs) p.mod];
+        }
     }
 
     private function buildSongBoxes():Void
@@ -345,10 +376,21 @@ class DAGarden extends MusicBeatState
 
     private function handleMouseClick():Void
     {
-        if (!FlxG.mouse.justPressed) return;
-
         var mx = FlxG.mouse.x;
         var my = FlxG.mouse.y;
+
+        if ((FlxG.mouse.pressed) && instSound != null &&
+            mx >= barInnerX && mx <= barInnerX + barInnerW &&
+            my >= barInnerY && my <= barInnerY + barInnerH)
+        {
+            var ratio = FlxMath.bound((mx - barInnerX) / barInnerW, 0, 1);
+            var t = ratio * instSound.length;
+            instSound.time = t;
+            for (v in vocalsSounds) v.time = t;
+            return;
+        }
+
+        if (!FlxG.mouse.justPressed) return;
 
         for (i in 0...songBoxes.length)
         {
@@ -380,7 +422,7 @@ class DAGarden extends MusicBeatState
         FlxTween.tween(songLabels[index], {x: BOX_START_X + SELECTED_OFFSET_X + 10}, 0.2, {ease: FlxEase.quadOut});
 
         if (songNameTxt != null)
-            songNameTxt.text = songList[index].toUpperCase();
+            songNameTxt.text = StringTools.replace(songList[index], '-', ' ').toUpperCase();
 
         if (isPlaying) fadeOutAndStop(); else stopAudio();
     }
@@ -534,6 +576,7 @@ class DAGarden extends MusicBeatState
         disk = null; bar = null; barProgress = null;
         timeTxt = null; songNameTxt = null;
 
+        FlxG.autoPause = true;
         Paths.clearStoredMemory();
         Paths.clearUnusedMemory();
         super.destroy();

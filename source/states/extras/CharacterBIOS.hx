@@ -1,4 +1,4 @@
-package states.parallax;
+package states.extras;
 
 import flixel.addons.display.FlxBackdrop;
 import haxe.Json;
@@ -45,7 +45,7 @@ var scrollTxt:FlxText;
 var helpCanva:FlxCamera;
 var bgThing:FlxSprite;
 var helpText:FlxText;
-class InfoBioParallaxState extends MusicBeatState
+class CharacterBIOS extends MusicBeatState
 {
 	override function create()
 	{
@@ -238,7 +238,7 @@ class InfoBioParallaxState extends MusicBeatState
 			if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				FlxG.switchState(() -> new ParallaxState());
+				FlxG.switchState(() -> new ExtrasMenu());
 			}
 
 			if (FlxG.mouse.overlaps(scrollTxt))

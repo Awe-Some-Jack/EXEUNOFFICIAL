@@ -8,61 +8,53 @@ import objects.*;
 
 import flixel.addons.display.shapes.*;
 
+var data:Dynamic;
+var files:Array<String> = [];
+var jsons:Dynamic;
+
+var curChar:Int = 0;
+
+var chars_list:Array<String> = [];
+var offsets_list:Array<Dynamic> = [];
+var icon_offset:Array<Dynamic> = [];
+var bios_list:Array<String> = [];
+var artist_list:Array<String> = [];
+var healthicon_list:Array<String> = [];
+
+var CAM_FOLLOW:FlxObject;
+
+var namesGrp:FlxTypedGroup<FlxText>;
+
+var character:Character;
+var icon:HealthIcon;
+
+var circle:FlxShapeCircle;
+var circleBig:FlxShapeCircle;
+
+var bioBox:FlxShapeBox;
+
+var textCenter:FlxSprite;
+
+var charName:FlxText;
+var artistName:FlxText;
+var bioTxt:FlxText;
+
+var boxCanva:FlxCamera;
+
+var scrollTxt:FlxText;
+
+var helpCanva:FlxCamera;
+var bgThing:FlxSprite;
+var helpText:FlxText;
 class CharacterBios extends MusicBeatState
 {
-	var data:Dynamic;
-	var files:Array<String> = [];
-	var jsons:Dynamic;
-
-	var curChar:Int = 0;
-
-	public var chars_list:Array<String> = [];
-	var offsets_list:Array<Dynamic> = [];
-	var icon_offset:Array<Dynamic> = [];
-	var bios_list:Array<String> = [];
-	var artist_list:Array<String> = [];
-	var healthicon_list:Array<String> = [];
-	var charMods_list:Array<String> = [];
-	var bgColors_list:Array<Int> = [];
-	var scales_list:Array<Float> = [];
-	var flipX_list:Array<Bool> = [];
-
-	var CAM_FOLLOW:FlxObject;
-
-	var namesGrp:FlxTypedGroup<FlxText>;
-
-	public var character:Character;
-	public var icon:HealthIcon;
-	public var bgSprite:FlxSprite;
-	public var bgColorTarget:FlxColor = 0xFFAA0000;
-	var bgColorCurrent:FlxColor = 0xFFAA0000;
-
-	var circle:FlxShapeCircle;
-	var circleBig:FlxShapeCircle;
-
-	var bioBox:FlxShapeBox;
-
-	var textCenter:FlxSprite;
-
-	var charName:FlxText;
-	var artistName:FlxText;
-	var bioTxt:FlxText;
-
-	var boxCanva:FlxCamera;
-
-	var scrollTxt:FlxText;
-
-	var helpCanva:FlxCamera;
-	var bgThing:FlxSprite;
-	var helpText:FlxText;
-
 	override function create()
 	{
 		super.create();
 
 		var orderList:Array<Int> = [];
 
-		var scanDir = function(dir:String, modName:String) {
+		var scanDir = function(dir:String) {
 			if (!FileSystem.exists(dir)) return;
 			for (file in FileSystem.readDirectory(dir)) {
 				if (!file.endsWith('.json')) continue;
@@ -78,34 +70,25 @@ class CharacterBios extends MusicBeatState
 				artist_list.push((d.bio_artist != null) ? d.bio_artist : '');
 				orderList.push((d.bio_order  != null) ? d.bio_order  : 9999);
 				healthicon_list.push((d.healthicon != null) ? d.healthicon : name);
-				charMods_list.push(modName);
-				bgColors_list.push((d.bio_bg_color != null) ? Std.parseInt(d.bio_bg_color) : 0xFFAA0000);
-				scales_list.push((d.bio_scale != null) ? d.bio_scale : 0.5);
-				flipX_list.push((d.bio_flip_x == true));
 			}
 		};
 
-		scanDir('assets/shared/characters', '');
+		scanDir('assets/shared/characters');
 		for (mod in Mods.getModDirectories())
-			scanDir('mods/' + mod + '/characters', mod);
+			scanDir('mods/' + mod + '/characters');
 
 		var combined = [for (i in 0...chars_list.length) {
 			name: chars_list[i], offset: offsets_list[i],
 			icon: icon_offset[i], bio: bios_list[i], artist: artist_list[i],
-			order: orderList[i], healthicon: healthicon_list[i], charMod: charMods_list[i],
-			bgColor: bgColors_list[i], scale: scales_list[i], flipX: flipX_list[i]
+			order: orderList[i], healthicon: healthicon_list[i]
 		}];
 		combined.sort((a, b) -> a.order - b.order);
-		chars_list      = [for (e in combined) e.name];
-		offsets_list    = [for (e in combined) e.offset];
-		icon_offset     = [for (e in combined) e.icon];
-		bios_list       = [for (e in combined) e.bio];
-		artist_list     = [for (e in combined) e.artist];
-		healthicon_list = [for (e in combined) e.healthicon];
-		charMods_list   = [for (e in combined) e.charMod];
-		bgColors_list   = [for (e in combined) e.bgColor];
-		scales_list     = [for (e in combined) e.scale];
-		flipX_list      = [for (e in combined) e.flipX];
+		chars_list       = [for (e in combined) e.name];
+		offsets_list     = [for (e in combined) e.offset];
+		icon_offset      = [for (e in combined) e.icon];
+		bios_list        = [for (e in combined) e.bio];
+		artist_list      = [for (e in combined) e.artist];
+		healthicon_list  = [for (e in combined) e.healthicon];
 
 		CAM_FOLLOW = new FlxObject(0, 0, 1, 1);
 		add(CAM_FOLLOW);
@@ -125,10 +108,6 @@ class CharacterBios extends MusicBeatState
 
 			namesGrp.add(chars);
 		}
-		bgSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFAA0000);
-		bgSprite.scrollFactor.set();
-		add(bgSprite);
-
 		var spikestop:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/bios/backdrop.png'), Y);
 		spikestop.antialiasing = ClientPrefs.data.antialiasing;
 		spikestop.velocity.y = 60;
@@ -136,12 +115,8 @@ class CharacterBios extends MusicBeatState
 		spikestop.scrollFactor.set();
 		add(spikestop);
 
-		if (charMods_list.length > 0 && charMods_list[0] != '') Mods.currentModDirectory = charMods_list[0];
-		character = new Character(0, 0, chars_list.length > 0 ? chars_list[0] : 'bf', true);
+		character = new Character(0, 0, 'faker', true);
 		character.scrollFactor.set();
-		if (scales_list.length > 0) { var s = scales_list[0]; character.scale.set(s, s); character.updateHitbox(); }
-		if (flipX_list.length  > 0) character.flipX = flipX_list[0];
-		if (bgColors_list.length > 0) { bgColorTarget = bgColors_list[0]; bgColorCurrent = bgColorTarget; bgSprite.color = bgColorCurrent; }
 		add(character);
 
 		circle = new FlxShapeCircle(810, 440, 40, {thickness:0,color:FlxColor.TRANSPARENT}, FlxColor.BLACK);
@@ -251,12 +226,6 @@ class CharacterBios extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		var tr = bgColorTarget.red   + (bgColorCurrent.red   - bgColorTarget.red)   * Math.exp(-10 * elapsed);
-		var tg = bgColorTarget.green + (bgColorCurrent.green - bgColorTarget.green) * Math.exp(-10 * elapsed);
-		var tb = bgColorTarget.blue  + (bgColorCurrent.blue  - bgColorTarget.blue)  * Math.exp(-10 * elapsed);
-		bgColorCurrent = FlxColor.fromRGB(Std.int(tr), Std.int(tg), Std.int(tb));
-		bgSprite.color = bgColorCurrent;
-
 		if (character.animation.curAnim != null && character.animation.curAnim.name == 'idle' && character.animation.curAnim.finished)
         {
             character.playAnim('idle', true);
@@ -281,11 +250,6 @@ class CharacterBios extends MusicBeatState
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(() -> new ExtrasMenu());
-			}
-
-			if (FlxG.keys.justPressed.F1)
-			{
-				openSubState(new BiosEditorSubState(this));
 			}
 
 			if (FlxG.mouse.overlaps(scrollTxt))
@@ -398,72 +362,7 @@ class CharacterBios extends MusicBeatState
 			
 	}
 
-	public function reloadCharList()
-	{
-		chars_list = []; offsets_list = []; icon_offset = []; bios_list = [];
-		artist_list = []; healthicon_list = []; charMods_list = [];
-		bgColors_list = []; scales_list = []; flipX_list = [];
-
-		var orderList:Array<Int> = [];
-		var scanDir = function(dir:String, modName:String) {
-			if (!FileSystem.exists(dir)) return;
-			for (file in FileSystem.readDirectory(dir)) {
-				if (!file.endsWith('.json')) continue;
-				var name = haxe.io.Path.withoutExtension(file);
-				if (chars_list.contains(name)) continue;
-				var d:Dynamic = haxe.Json.parse(sys.io.File.getContent(dir + '/' + file));
-				if (d.bio_info == null || d.bio_appear == false) continue;
-				chars_list.push(name);
-				offsets_list.push((d.bio_char_offset != null) ? [d.bio_char_offset[0], d.bio_char_offset[1]] : [300.0, 100.0]);
-				icon_offset.push((d.bio_icon_offset  != null) ? [d.bio_icon_offset[0],  d.bio_icon_offset[1]]  : [786.0, 425.0]);
-				bios_list.push((d.bio_info   != null) ? d.bio_info   : '');
-				artist_list.push((d.bio_artist != null) ? d.bio_artist : '');
-				orderList.push((d.bio_order  != null) ? d.bio_order  : 9999);
-				healthicon_list.push((d.healthicon != null) ? d.healthicon : name);
-				charMods_list.push(modName);
-				bgColors_list.push((d.bio_bg_color != null) ? Std.parseInt(d.bio_bg_color) : 0xFFAA0000);
-				scales_list.push((d.bio_scale != null) ? d.bio_scale : 0.5);
-				flipX_list.push((d.bio_flip_x == true));
-			}
-		};
-		scanDir('assets/shared/characters', '');
-		for (mod in Mods.getModDirectories()) scanDir('mods/' + mod + '/characters', mod);
-
-		var combined = [for (i in 0...chars_list.length) {
-			name: chars_list[i], offset: offsets_list[i], icon: icon_offset[i],
-			bio: bios_list[i], artist: artist_list[i], order: orderList[i],
-			healthicon: healthicon_list[i], charMod: charMods_list[i],
-			bgColor: bgColors_list[i], scale: scales_list[i], flipX: flipX_list[i]
-		}];
-		combined.sort((a, b) -> a.order - b.order);
-		chars_list      = [for (e in combined) e.name];
-		offsets_list    = [for (e in combined) e.offset];
-		icon_offset     = [for (e in combined) e.icon];
-		bios_list       = [for (e in combined) e.bio];
-		artist_list     = [for (e in combined) e.artist];
-		healthicon_list = [for (e in combined) e.healthicon];
-		charMods_list   = [for (e in combined) e.charMod];
-		bgColors_list   = [for (e in combined) e.bgColor];
-		scales_list     = [for (e in combined) e.scale];
-		flipX_list      = [for (e in combined) e.flipX];
-
-		namesGrp.clear();
-		curChar = Std.int(FlxMath.bound(curChar, 0, chars_list.length - 1));
-		for (i in 0...chars_list.length) {
-			var t = new FlxText(20, i * 60, chars_list[i], 30);
-			t.setFormat(Paths.font('NiseSegaSonic.TTF'), 60, FlxColor.WHITE, LEFT);
-			t.ID = i; t.scrollFactor.x = 0;
-			namesGrp.add(t);
-		}
-		if (chars_list.length > 0) changeCharBio(0);
-	}
-
-	public function jumpToChar(index:Int)
-	{
-		changeCharBio(index - curChar);
-	}
-
-	public function changeCharBio(ola:Int = 0)
+	function changeCharBio(ola:Int = 0)
 	{
 		if (canScrollAutomactially)
 		{
@@ -479,15 +378,9 @@ class CharacterBios extends MusicBeatState
 		curChar = FlxMath.wrap(curChar + ola, 0, chars_list.length - 1);
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
 
-		var modDir = charMods_list[curChar];
-		Mods.currentModDirectory = (modDir != null && modDir != '') ? modDir : '';
-		bgColorTarget = bgColors_list[curChar];
 		character.changeCharacter(chars_list[curChar]);
 		icon.changeIcon(healthicon_list[curChar]);
-		var s = scales_list[curChar];
-		character.scale.set(s, s);
-		character.flipX = flipX_list[curChar];
-		character.updateHitbox();
+		character.scale.set(0.5, 0.5);
 		character.setPosition(offsets_list[curChar][0], offsets_list[curChar][1]);
 
 

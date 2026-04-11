@@ -15,7 +15,6 @@ import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import states.extras.ExtrasMenu;
-import objects.HealthIcon;
 import sys.FileSystem;
 import sys.thread.Thread;
 
@@ -43,7 +42,6 @@ class DAGarden extends MusicBeatState
     private var timeTxt:FlxText;
     private var songNameTxt:FlxText;
     private var composerTxt:FlxText;
-    private var opponentIcon:HealthIcon;
 
     private var barInnerX:Float = 0;
     private var barInnerY:Float = 0;
@@ -51,14 +49,6 @@ class DAGarden extends MusicBeatState
     private var barInnerH:Float = 0;
 
     private var rotationTime:Float = 0;
-
-    private var iconBpm:Float     = 120;
-    private var iconBeat:Float    = 0;
-    private var iconBaseSize:Int  = 120;
-    private var bpmChanges:Array<{timeMs:Float, bpm:Float}> = [];
-    private var charChanges:Array<{timeMs:Float, charId:String}> = [];
-    private var lastCharChangeIdx:Int = -1;
-    private var baseOpponentIcon:String = null;
 
     private var songList:Array<String>     = [];
     private var songMods:Array<String>     = [];
@@ -146,9 +136,9 @@ class DAGarden extends MusicBeatState
 
         buildSongBoxes();
 
-        box       = createSprite(565, 100, "box.png", 0.34);
         marcogris = createSprite(0, 0, "marcogris.png", 0.34);
         dagarden  = createSprite(70, 35, "dagarden.png", 0.34);
+        box       = createSprite(565, 100, "box.png", 0.34);
         disk      = createSprite(713, 245, "disk.png", 0.32);
 
         var barScale:Float = 0.34;
@@ -190,12 +180,6 @@ class DAGarden extends MusicBeatState
         composerTxt.wordWrap = false;
         add(composerTxt);
 
-        opponentIcon = new HealthIcon('face', false);
-        opponentIcon.setGraphicSize(80, 80);
-        opponentIcon.updateHitbox();
-        opponentIcon.visible = false;
-        add(opponentIcon);
-
         if (songList.length > 0) selectSong(0);
     }
 
@@ -229,115 +213,6 @@ class DAGarden extends MusicBeatState
         FlxTween.tween(sprite, {x: sprite.x + offsetX}, durationX, {ease: FlxEase.sineInOut, type: PINGPONG});
         FlxTween.tween(sprite, {y: sprite.y + offsetY}, durationY, {ease: FlxEase.sineInOut, type: PINGPONG});
         FlxTween.tween(sprite, {alpha: 0.85}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG, startDelay: Math.random() * 2});
-    }
-
-    private function getOpponentIcon(song:String, mod:String):String
-    {
-        var chartPaths:Array<String> = [];
-        if (mod != '')
-            chartPaths.push(Paths.mods('$mod/data/$song/$song.json'));
-        chartPaths.push(Paths.mods('data/$song/$song.json'));
-
-        var player2:String = null;
-        bpmChanges = [];
-        charChanges = [];
-        lastCharChangeIdx = -1;
-        for (p in chartPaths)
-        {
-            if (!FileSystem.exists(p)) continue;
-            try {
-                var json:Dynamic = haxe.Json.parse(sys.io.File.getContent(p));
-                if (json.player2 != null) player2 = Std.string(json.player2);
-                var baseBpm:Float = json.bpm != null ? json.bpm : 120;
-                iconBpm = baseBpm;
-                bpmChanges.push({timeMs: 0, bpm: baseBpm});
-                var sections:Array<Dynamic> = json.notes != null ? cast json.notes : [];
-                var curBpm:Float = baseBpm;
-                var curTimeMs:Float = 0;
-                for (sec in sections)
-                {
-                    if (sec.changeBPM == true && sec.bpm != null)
-                    {
-                        curBpm = sec.bpm;
-                        bpmChanges.push({timeMs: curTimeMs, bpm: curBpm});
-                    }
-                    var beats:Float = sec.sectionBeats != null ? sec.sectionBeats : 4;
-                    curTimeMs += (beats / curBpm) * 60000;
-                }
-                var stageName:String = json.stage != null ? Std.string(json.stage) : song;
-                var luaCharMap = buildStageLuaCharMap(stageName, mod);
-                var events:Array<Dynamic> = json.events != null ? cast json.events : [];
-                for (ev in events)
-                {
-                    var evTime:Float = ev[0];
-                    var evList:Array<Dynamic> = cast ev[1];
-                    for (e in evList)
-                    {
-                        var evName:String = Std.string(e[0]);
-                        var val1:String   = e[1] != null ? Std.string(e[1]) : '';
-                        var val2:String   = e[2] != null ? Std.string(e[2]) : '';
-                        if (evName == 'Change Character' && val1 == 'dad' && val2 != '')
-                            charChanges.push({timeMs: evTime, charId: val2});
-                        else if (evName != 'Change Character' && luaCharMap.exists(val1))
-                            charChanges.push({timeMs: evTime, charId: luaCharMap.get(val1)});
-                    }
-                }
-                charChanges.sort((a, b) -> a.timeMs < b.timeMs ? -1 : 1);
-                break;
-            } catch(e:Dynamic) {}
-        }
-
-        if (player2 == null) return null;
-        baseOpponentIcon = resolveCharIcon(player2, mod);
-        return baseOpponentIcon;
-    }
-
-    private function buildStageLuaCharMap(song:String, mod:String):Map<String,String>
-    {
-        var map = new Map<String,String>();
-        var stagePaths:Array<String> = [];
-        if (mod != '') stagePaths.push(Paths.mods('$mod/stages/$song.lua'));
-        stagePaths.push(Paths.mods('stages/$song.lua'));
-        for (p in stagePaths)
-        {
-            if (!FileSystem.exists(p)) continue;
-            try {
-                var content = sys.io.File.getContent(p);
-                var lines = content.split('\n');
-                var curPhase:String = null;
-                for (line in lines)
-                {
-                    var phaseMatch = ~/phase\s*==\s*'(\w+)'/.match(line);
-                    if (phaseMatch) curPhase = ~/phase\s*==\s*'(\w+)'/.matched(1);
-                    if (curPhase != null)
-                    {
-                        var evMatch = ~/triggerEvent\s*\(\s*'Change Character'\s*,\s*'dad'\s*,\s*'([^']+)'/.match(line);
-                        if (evMatch && !map.exists(curPhase))
-                            map.set(curPhase, ~/triggerEvent\s*\(\s*'Change Character'\s*,\s*'dad'\s*,\s*'([^']+)'/.matched(1));
-                    }
-                }
-            } catch(e:Dynamic) {}
-            break;
-        }
-        return map;
-    }
-
-    private function resolveCharIcon(charId:String, mod:String):String
-    {
-        var charPaths:Array<String> = [];
-        if (mod != '')
-            charPaths.push(Paths.mods('$mod/characters/$charId.json'));
-        charPaths.push(Paths.mods('characters/$charId.json'));
-        charPaths.push(Paths.getSharedPath('characters/$charId.json'));
-        for (p in charPaths)
-        {
-            if (!FileSystem.exists(p)) continue;
-            try {
-                var json:Dynamic = haxe.Json.parse(sys.io.File.getContent(p));
-                if (json.healthicon != null) return Std.string(json.healthicon);
-            } catch(e:Dynamic) {}
-        }
-        return charId;
     }
 
     private function readCredits(song:String, mod:String):Array<String>
@@ -491,57 +366,6 @@ class DAGarden extends MusicBeatState
         sprite3.angle = Math.cos(rotationTime * 0.7) * 4;
         sprite7.angle = Math.sin(rotationTime * 0.6) * 2;
         sprite8.angle = Math.cos(rotationTime * 0.8) * 3.5;
-
-        if (opponentIcon != null && opponentIcon.visible)
-        {
-            if (isPlaying && instSound != null)
-            {
-                var songTime:Float = instSound.time;
-                var activeBpm:Float = iconBpm;
-                for (ch in bpmChanges)
-                    if (songTime >= ch.timeMs) activeBpm = ch.bpm;
-
-                var secPerBeat = 60.0 / activeBpm;
-                var prevBeat = iconBeat;
-                iconBeat += elapsed;
-                if (Std.int(iconBeat / secPerBeat) > Std.int(prevBeat / secPerBeat))
-                {
-                    var bumpSc = (iconBaseSize / 150.0) * 1.1;
-                    opponentIcon.scale.set(bumpSc, bumpSc);
-                }
-            }
-            if (instSound != null && charChanges.length > 0)
-            {
-                var songTime:Float = instSound.time;
-                var newIdx:Int = -1;
-                for (i in 0...charChanges.length)
-                    if (songTime >= charChanges[i].timeMs) newIdx = i;
-                if (newIdx != lastCharChangeIdx)
-                {
-                    lastCharChangeIdx = newIdx;
-                    var charId = newIdx >= 0 ? charChanges[newIdx].charId : null;
-                    var iconId = charId != null ? resolveCharIcon(charId, songMods[selectedIndex]) : baseOpponentIcon;
-                    if (iconId != null)
-                    {
-                        var prevMod = Mods.currentModDirectory;
-                        Mods.currentModDirectory = songMods[selectedIndex];
-                        opponentIcon.changeIcon(iconId);
-                        opponentIcon.scale.set(iconBaseSize / 150.0, iconBaseSize / 150.0);
-                        opponentIcon.offset.set(0, 0);
-                        Mods.currentModDirectory = prevMod;
-                    }
-                }
-            }
-
-            var baseSc = iconBaseSize / 150.0;
-            var mult:Float = FlxMath.lerp(baseSc, opponentIcon.scale.x, Math.exp(-elapsed * 9));
-            opponentIcon.scale.set(mult, mult);
-            opponentIcon.offset.set(0, 0);
-            var visW = 150 * mult;
-            var visH = 150 * mult;
-            opponentIcon.x = 1205 - visW * 0.5;
-            opponentIcon.y = 82   - visH * 0.5;
-        }
 
         if (!diskDragging)
         {
@@ -763,30 +587,6 @@ class DAGarden extends MusicBeatState
         {
             var credits = index < songCredits.length ? songCredits[index] : [];
             composerTxt.text = credits.length > 0 ? 'BY ' + credits[0].toUpperCase() : '';
-        }
-
-        if (opponentIcon != null)
-        {
-            iconBpm  = 120;
-            iconBeat = 0;
-            lastCharChangeIdx = -2;
-            var prevMod = Mods.currentModDirectory;
-            Mods.currentModDirectory = songMods[index];
-            var iconId = getOpponentIcon(songList[index], songMods[index]);
-            if (iconId != null)
-            {
-                opponentIcon.autoAdjustOffset = false;
-                opponentIcon.changeIcon(iconId);
-                opponentIcon.scale.set(1, 1);
-                opponentIcon.offset.set(0, 0);
-                opponentIcon.flipX = true;
-                opponentIcon.visible = true;
-            }
-            else
-            {
-                opponentIcon.visible = false;
-            }
-            Mods.currentModDirectory = prevMod;
         }
 
         if (isPlaying) fadeOutAndStop(); else stopAudio();
@@ -1028,7 +828,7 @@ class DAGarden extends MusicBeatState
         sprite8 = null; arrow = null; spikes = null;
         marcogris = null; dagarden = null; box = null;
         disk = null; bar = null; barProgress = null;
-        timeTxt = null; songNameTxt = null; composerTxt = null; opponentIcon = null;
+        timeTxt = null; songNameTxt = null; composerTxt = null;
 
         FlxG.autoPause = true;
         Paths.clearStoredMemory();

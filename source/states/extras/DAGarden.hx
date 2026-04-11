@@ -14,6 +14,7 @@ import flixel.math.FlxMath;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.graphics.frames.FlxAtlasFrames;
 import states.extras.ExtrasMenu;
 import sys.FileSystem;
 import sys.thread.Thread;
@@ -98,6 +99,11 @@ class DAGarden extends MusicBeatState
     private var pitchSpeed:Float   = 0;
     private var onPitchDone:Void->Void = null;
 
+    private var jumpscareSprite:FlxSprite = null;
+    private var jumpscareEvents:Array<Float> = [];
+    private var jumpscareTriggered:Array<Bool> = [];
+    private var isScaringYou:Bool = false;
+
 
     override public function create():Void
     {
@@ -180,6 +186,11 @@ class DAGarden extends MusicBeatState
         composerTxt.wordWrap = false;
         add(composerTxt);
 
+        jumpscareSprite = new FlxSprite(-120, -200);
+        jumpscareSprite.antialiasing = ClientPrefs.data.antialiasing;
+        jumpscareSprite.alpha = 0;
+        add(jumpscareSprite);
+
         if (songList.length > 0) selectSong(0);
     }
 
@@ -213,6 +224,64 @@ class DAGarden extends MusicBeatState
         FlxTween.tween(sprite, {x: sprite.x + offsetX}, durationX, {ease: FlxEase.sineInOut, type: PINGPONG});
         FlxTween.tween(sprite, {y: sprite.y + offsetY}, durationY, {ease: FlxEase.sineInOut, type: PINGPONG});
         FlxTween.tween(sprite, {alpha: 0.85}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG, startDelay: Math.random() * 2});
+    }
+
+    private function loadJumpscareEvents(song:String, mod:String):Void
+    {
+        jumpscareEvents = [];
+        jumpscareTriggered = [];
+
+        var paths:Array<String> = [];
+        if (mod != '')
+            paths.push(Paths.mods('$mod/data/$song/events.json'));
+        paths.push(Paths.mods('data/$song/events.json'));
+
+        for (p in paths)
+        {
+            if (!FileSystem.exists(p)) continue;
+            try
+            {
+                var json:Dynamic = haxe.Json.parse(sys.io.File.getContent(p));
+                var events:Array<Dynamic> = cast json.events;
+                if (events == null) break;
+                for (ev in events)
+                {
+                    var timeMs:Float = cast ev[0];
+                    var evList:Array<Dynamic> = cast ev[1];
+                    if (evList == null) continue;
+                    for (e in evList)
+                    {
+                        var evName:String = Std.string(e[0]);
+                        if (evName == 'EXEJumpscare')
+                        {
+                            jumpscareEvents.push(timeMs);
+                            jumpscareTriggered.push(false);
+                        }
+                    }
+                }
+            }
+            catch(e:Dynamic) {}
+            break;
+        }
+
+        if (jumpscareSprite != null)
+        {
+            if (jumpscareEvents.length > 0)
+            {
+                var imgPath = mod != '' ? Paths.mods('$mod/images/characters/jumcare.png') : Paths.mods('images/characters/jumcare.png');
+                var xmlPath = mod != '' ? Paths.mods('$mod/images/characters/jumcare.xml') : Paths.mods('images/characters/jumcare.xml');
+                if (FileSystem.exists(imgPath) && FileSystem.exists(xmlPath))
+                {
+                    var jumImg = openfl.display.BitmapData.fromFile(imgPath);
+                    var jumXml = sys.io.File.getContent(xmlPath);
+                    jumpscareSprite.frames = FlxAtlasFrames.fromSparrow(jumImg, jumXml);
+                    jumpscareSprite.animation.addByPrefix('aidel', 'jum', 24, false);
+                    jumpscareSprite.setPosition(-120, -200);
+                    jumpscareSprite.screenCenter(X);
+                }
+            }
+            jumpscareSprite.alpha = 0;
+        }
     }
 
     private function readCredits(song:String, mod:String):Array<String>
@@ -428,6 +497,30 @@ class DAGarden extends MusicBeatState
         handleMouseClick();
         handlePlaybackInput(elapsed);
 
+        if (isPlaying && instSound != null && jumpscareSprite != null)
+        {
+            var songTime:Float = instSound.time;
+            for (i in 0...jumpscareEvents.length)
+            {
+                if (!jumpscareTriggered[i] && songTime >= jumpscareEvents[i])
+                {
+                    jumpscareTriggered[i] = true;
+                    isScaringYou = true;
+                    jumpscareSprite.alpha = 1;
+                    jumpscareSprite.animation.play('aidel', true);
+                    var prevMod = Mods.currentModDirectory;
+                    Mods.currentModDirectory = songMods[selectedIndex];
+                    FlxG.sound.play(Paths.sound('jumpscareSound'));
+                    Mods.currentModDirectory = prevMod;
+                }
+            }
+            if (isScaringYou && jumpscareSprite.animation.curAnim != null && jumpscareSprite.animation.curAnim.finished)
+            {
+                jumpscareSprite.alpha = 0;
+                isScaringYou = false;
+            }
+        }
+
         if (Controls.instance.BACK)
         {
             stopAudio();
@@ -589,6 +682,10 @@ class DAGarden extends MusicBeatState
             composerTxt.text = credits.length > 0 ? 'BY ' + credits[0].toUpperCase() : '';
         }
 
+        loadJumpscareEvents(songList[index], songMods[index]);
+        isScaringYou = false;
+        if (jumpscareSprite != null) jumpscareSprite.alpha = 0;
+
         if (isPlaying) fadeOutAndStop(); else stopAudio();
     }
 
@@ -719,6 +816,10 @@ class DAGarden extends MusicBeatState
         instSound.play();
         for (v in vocalsSounds) v.play();
 
+        for (i in 0...jumpscareTriggered.length) jumpscareTriggered[i] = false;
+        isScaringYou = false;
+        if (jumpscareSprite != null) jumpscareSprite.alpha = 0;
+
         startPitchUp();
         audioFadeTarget = 1.0;
         audioFadeSpeed  = 8.0;
@@ -790,6 +891,8 @@ class DAGarden extends MusicBeatState
 
     }
 
+
+
     private function fadeOutAndStop():Void
     {
         if (instSound == null) return;
@@ -829,6 +932,7 @@ class DAGarden extends MusicBeatState
         marcogris = null; dagarden = null; box = null;
         disk = null; bar = null; barProgress = null;
         timeTxt = null; songNameTxt = null; composerTxt = null;
+        jumpscareSprite = null;
 
         FlxG.autoPause = true;
         Paths.clearStoredMemory();

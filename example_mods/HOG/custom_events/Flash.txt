@@ -1,2 +1,0 @@
-Value 1: Flash Color and Duration (Separated by a comma)
-Value 2: Camera

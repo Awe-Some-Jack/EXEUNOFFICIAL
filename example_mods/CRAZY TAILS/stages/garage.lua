@@ -356,9 +356,17 @@ function onEvent(n,v1)
 		end
 		if v1 == 'endcine' then
 			removeLuaSprite('bestfriend2', true)
-			removeLuaSprite('never', true)
-			setProperty('boyfriend.alpha', 1)
 			setProperty('bg-tails.x', -900)
+
+			setProperty('boyfriend.alpha', 1)
+			setProperty('dad.alpha', 0)
+
+			setProperty('bg-bf.alpha', 1)
+			setProperty('bg-bf1.visible', true)
+			setProperty('bg-bf2.visible', true)
+			setProperty('bg-bf3.visible', true)
+			setProperty('papis2.alpha', 1)
+			setProperty('bg-tails.alpha', 0)
 
 			setProperty('bftrig.visible', true) setProperty('bftrigchar.visible', true)
 			setProperty('tailstrig.visible', true) setProperty('tailstrigchar.visible', true)

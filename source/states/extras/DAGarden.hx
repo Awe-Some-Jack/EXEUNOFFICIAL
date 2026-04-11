@@ -16,6 +16,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import states.extras.ExtrasMenu;
 import sys.FileSystem;
+import sys.thread.Thread;
 
 class DAGarden extends MusicBeatState
 {
@@ -40,6 +41,7 @@ class DAGarden extends MusicBeatState
 
     private var timeTxt:FlxText;
     private var songNameTxt:FlxText;
+    private var composerTxt:FlxText;
 
     private var barInnerX:Float = 0;
     private var barInnerY:Float = 0;
@@ -50,6 +52,9 @@ class DAGarden extends MusicBeatState
 
     private var songList:Array<String>     = [];
     private var songMods:Array<String>     = [];
+    private var songCredits:Array<Array<String>> = [];
+    private var composerIndex:Int   = 0;
+    private var composerTimer:Float = 0;
     private var songBoxes:Array<FlxSprite> = [];
     private var songLabels:Array<FlxText>  = [];
 
@@ -64,8 +69,11 @@ class DAGarden extends MusicBeatState
     private var selectedIndex:Int  = -1;
 
     private var instSound:FlxSound   = null;
-    private var vocalsSounds:Array<FlxSound> = [];
+    private var vocalsSounds:Array<FlxSound>    = [];
+    private var oppVocalsSounds:Array<FlxSound> = [];
     private var vocalsEnabled:Bool   = true;
+    static inline var VOCALS_VOL:Float = 1.0;
+    static inline var VOCALS_OPP_VOL:Float = 0.6;
     private var isPlaying:Bool       = false;
 
     private var inputCooldown:Float = 0;
@@ -76,8 +84,18 @@ class DAGarden extends MusicBeatState
     static inline var DISK_ACCEL:Float      = 6;
     static inline var DISK_DECEL:Float      = 10;
 
+    private var diskDragging:Bool   = false;
+    private var diskDragLastX:Float = 0;
+    static inline var DISK_DRAG_SEEK:Float = 0.15;
+
     private var audioFadeTarget:Float = 1.0;
     private var audioFadeSpeed:Float  = 0;
+
+    private var isLoading:Bool  = false;
+    private var pitchDown:Bool  = false;
+    private var pitchCurrent:Float = 1.0;
+    private var pitchSpeed:Float   = 0;
+    private var onPitchDone:Void->Void = null;
 
 
     override public function create():Void
@@ -120,7 +138,7 @@ class DAGarden extends MusicBeatState
         marcogris = createSprite(0, 0, "marcogris.png", 0.34);
         dagarden  = createSprite(70, 35, "dagarden.png", 0.34);
         box       = createSprite(565, 100, "box.png", 0.34);
-        disk      = createSprite(720, 248, "disk.png", 0.34);
+        disk      = createSprite(713, 245, "disk.png", 0.32);
 
         var barScale:Float = 0.34;
         var barBmp = openfl.utils.Assets.getBitmapData("assets/exe/extras/dagarden/bar.png");
@@ -147,11 +165,21 @@ class DAGarden extends MusicBeatState
         timeTxt.antialiasing = true;
         add(timeTxt);
 
-        songNameTxt = new FlxText(620, 148, 560, '', 44);
-        songNameTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 44, FlxColor.BLACK, CENTER);
+        songNameTxt = new FlxText(625, 132, 560, '', 60);
+        songNameTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 60, FlxColor.BLACK, CENTER);
         songNameTxt.letterSpacing = 2;
         songNameTxt.antialiasing = true;
+        songNameTxt.wordWrap = false;
         add(songNameTxt);
+
+        composerTxt = new FlxText(625, 196, 560, '', 18);
+        composerTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 18, FlxColor.BLACK, CENTER);
+        composerTxt.letterSpacing = 6;
+        composerTxt.antialiasing = true;
+        composerTxt.wordWrap = false;
+        add(composerTxt);
+
+        if (songList.length > 0) selectSong(0);
     }
 
     private function createSprite(x:Float, y:Float, fileName:String, scale:Float):FlxSprite
@@ -186,10 +214,37 @@ class DAGarden extends MusicBeatState
         FlxTween.tween(sprite, {alpha: 0.85}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG, startDelay: Math.random() * 2});
     }
 
+    private function readCredits(song:String, mod:String):Array<String>
+    {
+        var paths:Array<String> = [];
+        if (mod != '')
+            paths.push(Paths.mods('$mod/data/$song/credits.json'));
+        paths.push(Paths.mods('data/$song/credits.json'));
+        for (p in paths)
+        {
+            if (FileSystem.exists(p))
+            {
+                try {
+                    var json:Dynamic = haxe.Json.parse(sys.io.File.getContent(p));
+                    if (json.composer == null) return [];
+                    if (Std.isOfType(json.composer, Array))
+                    {
+                        var arr:Array<String> = cast json.composer;
+                        return arr.filter(s -> s != null && s != '');
+                    }
+                    var s = Std.string(json.composer);
+                    return s != '' ? [s] : [];
+                } catch(e:Dynamic) {}
+            }
+        }
+        return [];
+    }
+
     private function loadSongList():Void
     {
         songList = [];
         songMods = [];
+        songCredits = [];
 
         for (mod in Mods.parseList().enabled)
         {
@@ -256,6 +311,9 @@ class DAGarden extends MusicBeatState
             songList = [for (p in pairs) p.song];
             songMods = [for (p in pairs) p.mod];
         }
+
+        for (i in 0...songList.length)
+            songCredits.push(readCredits(songList[i], songMods[i]));
     }
 
     private function buildSongBoxes():Void
@@ -286,30 +344,65 @@ class DAGarden extends MusicBeatState
         spikes.velocity.y = 50;
         rotationTime += elapsed;
 
+        var credits = (songCredits != null && selectedIndex >= 0 && selectedIndex < songCredits.length) ? songCredits[selectedIndex] : [];
+        if (credits != null && credits.length > 1 && composerTxt != null)
+        {
+            composerTimer += elapsed;
+            if (composerTimer >= 10)
+            {
+                composerTimer = 0;
+                composerIndex = (composerIndex + 1) % credits.length;
+                var nextText = 'BY ' + credits[composerIndex].toUpperCase();
+                FlxTween.cancelTweensOf(composerTxt);
+                FlxTween.tween(composerTxt, {alpha: 0}, 0.3, {ease: FlxEase.quadOut, onComplete: function(_) {
+                    composerTxt.text = nextText;
+                    FlxTween.tween(composerTxt, {alpha: 1}, 0.4, {ease: FlxEase.quadIn});
+                }});
+            }
+        }
+
         sprite1.angle = Math.sin(rotationTime * 0.5) * 3;
         sprite3.angle = Math.cos(rotationTime * 0.7) * 4;
         sprite7.angle = Math.sin(rotationTime * 0.6) * 2;
         sprite8.angle = Math.cos(rotationTime * 0.8) * 3.5;
 
-        var targetSpeed = isPlaying ? DISK_MAX_SPEED : 0;
-        var rate = isPlaying ? DISK_ACCEL : DISK_DECEL;
-        diskSpeed += (targetSpeed - diskSpeed) * rate * elapsed;
-        disk.angle += elapsed * diskSpeed;
+        if (!diskDragging)
+        {
+            var targetSpeed = isPlaying ? DISK_MAX_SPEED : 0;
+            var rate = isPlaying ? DISK_ACCEL : DISK_DECEL;
+            diskSpeed += (targetSpeed - diskSpeed) * rate * elapsed;
+            disk.angle += elapsed * diskSpeed;
+        }
 
         if (audioFadeSpeed != 0)
         {
             var cur = instSound != null ? instSound.volume : 0;
             var next = cur + (audioFadeTarget - cur) * audioFadeSpeed * elapsed;
             if (instSound != null) instSound.volume = next;
-            for (v in vocalsSounds) v.volume = vocalsEnabled ? next : 0;
+            for (v in vocalsSounds) v.volume = vocalsEnabled ? (oppVocalsSounds.contains(v) ? next * VOCALS_OPP_VOL : next) : 0;
             if (Math.abs(next - audioFadeTarget) < 0.01)
             {
                 if (instSound != null) instSound.volume = audioFadeTarget;
+                for (v in vocalsSounds) v.volume = vocalsEnabled ? (oppVocalsSounds.contains(v) ? audioFadeTarget * VOCALS_OPP_VOL : audioFadeTarget) : 0;
                 if (audioFadeTarget <= 0) stopAudio();
                 audioFadeSpeed = 0;
             }
         }
 
+        if (pitchDown && pitchSpeed != 0)
+        {
+            pitchCurrent += (0.0 - pitchCurrent) * pitchSpeed * elapsed;
+            if (instSound != null) instSound.pitch = pitchCurrent;
+            for (v in vocalsSounds) v.pitch = pitchCurrent;
+            if (pitchCurrent < 0.05)
+            {
+                pitchDown = false;
+                pitchSpeed = 0;
+                if (onPitchDone != null) { onPitchDone(); onPitchDone = null; }
+            }
+        }
+
+        checkPendingLoad();
         updateProgressBar();
 
         if (inputCooldown > 0) inputCooldown -= elapsed;
@@ -379,6 +472,33 @@ class DAGarden extends MusicBeatState
         var mx = FlxG.mouse.x;
         var my = FlxG.mouse.y;
 
+        var diskCX = disk.x + disk.width  * 0.5;
+        var diskCY = disk.y + disk.height * 0.5;
+        var diskR  = disk.width * 0.5;
+        var distToDisk = Math.sqrt((mx - diskCX) * (mx - diskCX) + (my - diskCY) * (my - diskCY));
+
+        if (FlxG.mouse.justPressed && distToDisk <= diskR)
+        {
+            diskDragging = true;
+            diskDragLastX = mx;
+        }
+        if (!FlxG.mouse.pressed) diskDragging = false;
+
+        if (diskDragging && instSound != null && instSound.length > 0)
+        {
+            var dx = mx - diskDragLastX;
+            diskDragLastX = mx;
+            if (dx != 0)
+            {
+                disk.angle += dx * 1.5;
+                var seekMs = dx * DISK_DRAG_SEEK * 1000;
+                var newTime = FlxMath.bound(instSound.time + seekMs, 0, instSound.length - 100);
+                try { instSound.time = newTime; } catch(e:Dynamic) {}
+                for (v in vocalsSounds) { try { v.time = newTime; } catch(e:Dynamic) {} }
+            }
+            return;
+        }
+
         if ((FlxG.mouse.pressed) && instSound != null &&
             mx >= barInnerX && mx <= barInnerX + barInnerW &&
             my >= barInnerY && my <= barInnerY + barInnerH)
@@ -422,7 +542,25 @@ class DAGarden extends MusicBeatState
         FlxTween.tween(songLabels[index], {x: BOX_START_X + SELECTED_OFFSET_X + 10}, 0.2, {ease: FlxEase.quadOut});
 
         if (songNameTxt != null)
+        {
             songNameTxt.text = StringTools.replace(songList[index], '-', ' ').toUpperCase();
+            var maxW:Float = 540;
+            var fontSize:Int = 60;
+            songNameTxt.size = fontSize;
+            while (songNameTxt.textField.textWidth > maxW && fontSize > 10)
+            {
+                fontSize--;
+                songNameTxt.size = fontSize;
+            }
+        }
+
+        composerIndex = 0;
+        composerTimer = 0;
+        if (composerTxt != null)
+        {
+            var credits = index < songCredits.length ? songCredits[index] : [];
+            composerTxt.text = credits.length > 0 ? 'BY ' + credits[0].toUpperCase() : '';
+        }
 
         if (isPlaying) fadeOutAndStop(); else stopAudio();
     }
@@ -442,7 +580,8 @@ class DAGarden extends MusicBeatState
         if (FlxG.keys.justPressed.I)
         {
             vocalsEnabled = !vocalsEnabled;
-            for (v in vocalsSounds) v.volume = vocalsEnabled ? 1 : 0;
+            var instVol = instSound != null ? instSound.volume : 1;
+            for (v in vocalsSounds) v.volume = vocalsEnabled ? (oppVocalsSounds.contains(v) ? instVol * VOCALS_OPP_VOL : instVol) : 0;
         }
 
         if (FlxG.keys.justPressed.S)
@@ -465,64 +604,124 @@ class DAGarden extends MusicBeatState
 
     private function playAudio():Void
     {
-        var song    = songList[selectedIndex];
-        var modName = songMods[selectedIndex];
+        if (isLoading) return;
 
-        if (instSound == null)
-        {
-            var prevMod = Mods.currentModDirectory;
-            Mods.currentModDirectory = modName;
-
-            var instPath = Paths.instPath(song);
-            if (instPath == null || !FileSystem.exists(instPath))
-            {
-                Mods.currentModDirectory = prevMod;
-                return;
-            }
-
-            instSound = FlxG.sound.load(openfl.media.Sound.fromFile(instPath));
-            if (instSound == null) { Mods.currentModDirectory = prevMod; return; }
-            instSound.looped = false;
-
-            var vocPostfixes:Array<String> = [null, 'opponent', 'Opponent', 'player', 'Player'];
-            var loadedPaths:Array<String> = [];
-            for (postfix in vocPostfixes)
-            {
-                var vocPath = Paths.voicesPath(song, postfix);
-                if (vocPath == null || !FileSystem.exists(vocPath)) continue;
-                if (loadedPaths.contains(vocPath)) continue;
-                loadedPaths.push(vocPath);
-                var snd = FlxG.sound.load(openfl.media.Sound.fromFile(vocPath));
-                if (snd == null) continue;
-                snd.looped = false;
-                snd.volume = vocalsEnabled ? 1 : 0;
-                vocalsSounds.push(snd);
-            }
-
-            Mods.currentModDirectory = prevMod;
-
-            instSound.volume = 0;
-            for (v in vocalsSounds) v.volume = 0;
-            instSound.play();
-            for (v in vocalsSounds) v.play();
-        }
-        else
+        if (instSound != null)
         {
             instSound.resume();
             for (v in vocalsSounds) v.resume();
+            resetPitch();
+            audioFadeTarget = 1.0;
+            audioFadeSpeed  = 8.0;
+            isPlaying = true;
+            return;
         }
 
+        var song    = songList[selectedIndex];
+        var modName = songMods[selectedIndex];
+        var prevMod = Mods.currentModDirectory;
+        Mods.currentModDirectory = modName;
+
+        var instPath = Paths.instPath(song);
+        if (instPath == null || !FileSystem.exists(instPath))
+        {
+            Mods.currentModDirectory = prevMod;
+            return;
+        }
+
+        var vocPostfixes:Array<String> = [null, 'opponent', 'Opponent', 'player', 'Player'];
+        var oppPostfixes:Array<String> = ['opponent', 'Opponent'];
+        var loadedPaths:Array<String> = [];
+        var vocPaths:Array<{path:String, isOpp:Bool}> = [];
+        for (postfix in vocPostfixes)
+        {
+            var vocPath = Paths.voicesPath(song, postfix);
+            if (vocPath == null || !FileSystem.exists(vocPath)) continue;
+            if (loadedPaths.contains(vocPath)) continue;
+            loadedPaths.push(vocPath);
+            vocPaths.push({path: vocPath, isOpp: oppPostfixes.contains(postfix)});
+        }
+        Mods.currentModDirectory = prevMod;
+
+        isLoading = true;
+
+        var mainThread = Thread.current();
+        Thread.create(function() {
+            var instRaw = openfl.media.Sound.fromFile(instPath);
+            var vocRaws:Array<{snd:openfl.media.Sound, isOpp:Bool}> = [];
+            for (v in vocPaths)
+            {
+                var raw = openfl.media.Sound.fromFile(v.path);
+                if (raw != null) vocRaws.push({snd: raw, isOpp: v.isOpp});
+            }
+            mainThread.sendMessage({inst: instRaw, vocs: vocRaws});
+        });
+
+        _pendingLoad = true;
+    }
+
+    private var _pendingLoad:Bool = false;
+
+    private function checkPendingLoad():Void
+    {
+        if (!_pendingLoad) return;
+        var msg = Thread.readMessage(false);
+        if (msg == null) return;
+
+        _pendingLoad = false;
+        isLoading = false;
+
+        var data:{inst:openfl.media.Sound, vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}>} = cast msg;
+        if (data.inst == null) return;
+
+        instSound = FlxG.sound.load(data.inst);
+        if (instSound == null) return;
+        instSound.looped = false;
+        instSound.volume = 0;
+
+        for (v in data.vocs)
+        {
+            var snd = FlxG.sound.load(v.snd);
+            if (snd == null) continue;
+            snd.looped = false;
+            snd.volume = 0;
+            vocalsSounds.push(snd);
+            if (v.isOpp) oppVocalsSounds.push(snd);
+        }
+
+        instSound.play();
+        for (v in vocalsSounds) v.play();
+
+        resetPitch();
         audioFadeTarget = 1.0;
         audioFadeSpeed  = 8.0;
-
         isPlaying = true;
+    }
+
+    private function startPitchDown(callback:Void->Void):Void
+    {
+        pitchCurrent = 1.0;
+        if (instSound != null) instSound.pitch = 1.0;
+        for (v in vocalsSounds) v.pitch = 1.0;
+        pitchDown = true;
+        pitchSpeed = 4.5;
+        onPitchDone = callback;
+    }
+
+    private function resetPitch():Void
+    {
+        pitchDown = false;
+        pitchSpeed = 0;
+        pitchCurrent = 1.0;
+        onPitchDone = null;
+        if (instSound != null) instSound.pitch = 1.0;
+        for (v in vocalsSounds) v.pitch = 1.0;
     }
 
     private function pauseAudio():Void
     {
         isPlaying = false;
-
-        new flixel.util.FlxTimer().start(0.25, function(_) {
+        startPitchDown(function() {
             if (instSound != null) instSound.pause();
             for (v in vocalsSounds) v.pause();
         });
@@ -532,9 +731,21 @@ class DAGarden extends MusicBeatState
     {
         audioFadeSpeed = 0;
 
-        if (instSound != null) { instSound.stop(); instSound.destroy(); instSound = null; }
-        for (v in vocalsSounds) { v.stop(); v.destroy(); }
+        if (instSound != null)
+        {
+            instSound.stop();
+            FlxG.sound.list.remove(instSound, true);
+            instSound.destroy();
+            instSound = null;
+        }
+        for (v in vocalsSounds)
+        {
+            v.stop();
+            FlxG.sound.list.remove(v, true);
+            v.destroy();
+        }
         vocalsSounds = [];
+        oppVocalsSounds = [];
         isPlaying = false;
 
     }
@@ -543,8 +754,10 @@ class DAGarden extends MusicBeatState
     {
         if (instSound == null) return;
         isPlaying = false;
-        audioFadeTarget = 0.0;
-        audioFadeSpeed  = 12.0;
+        startPitchDown(function() {
+            audioFadeTarget = 0.0;
+            audioFadeSpeed  = 12.0;
+        });
     }
 
     override public function destroy():Void
@@ -565,8 +778,9 @@ class DAGarden extends MusicBeatState
         for (b in songBoxes) FlxTween.cancelTweensOf(b);
         songBoxes  = null;
         songLabels = null;
-        songList   = null;
-        songMods   = null;
+        songList    = null;
+        songMods    = null;
+        songCredits = null;
 
         fondo = null; gardenbox = null; play = null;
         sprite1 = null; sprite2 = null; sprite3 = null;
@@ -574,7 +788,7 @@ class DAGarden extends MusicBeatState
         sprite8 = null; arrow = null; spikes = null;
         marcogris = null; dagarden = null; box = null;
         disk = null; bar = null; barProgress = null;
-        timeTxt = null; songNameTxt = null;
+        timeTxt = null; songNameTxt = null; composerTxt = null;
 
         FlxG.autoPause = true;
         Paths.clearStoredMemory();

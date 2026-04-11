@@ -19,26 +19,17 @@ function onCreate()
     for _, spr in ipairs(sprites) do
         addSprite(spr)
     end
-    
-    setProperty('gf.visible', false)
 end
 
 function onStartCountdown()
-    if not videoPlayed then
+    if not videoPlayed and not seenCutscene then
         startVideo('cutscene')
         videoPlayed = true
         return Function_Stop
     end
 end
 
-function onCountdownTick(tick)
-    return Function_Stop
-end
-
-function onSongStart()
-    for i = 0,3 do
-        noteTweenX('swapPlayer'..i, i + 4, _G['defaultOpponentStrumX'..i], 0.001, 'linear')
-        noteTweenX('swapOpp'..i, i, _G['defaultPlayerStrumX'..i], 0.001, 'linear')
-    end
-    triggerEvent('Flip Health Bar', '', '')
+function onCountdownStarted()
+    for i = 0,7 do setProperty('strumLineNotes.members['..i..'].x', _G['default'..(i < 4 and 'Player' or 'Opponent')..'StrumX'..(i % 4)]) end
+    triggerEvent('Flip Health Bar')
 end

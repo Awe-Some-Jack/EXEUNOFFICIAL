@@ -2,8 +2,9 @@
 	"directory": "",
 	"stageUI": "",
 	"defaultZoom": 0.67,
+	"hide_girlfriend": true,
 
-	"boyfriend": [854.2,868.5],
-	"opponent": [2009.7,641.1],
+	"boyfriend": [854,868],
+	"opponent": [2010,641],
 	"girlfriend": [910,995]
 }

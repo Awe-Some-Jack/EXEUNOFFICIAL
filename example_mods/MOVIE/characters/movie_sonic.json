@@ -1,53 +1,61 @@
 {
 	"animations": [
 		{
-			"loop": false,
-			"offsets": [260, -160],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "moviesonic down",
-			"indices": []
-		},
-		{
-			"loop": true,
 			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "moviesonic idle",
-			"indices": []
+			"loop": false,
+			"name": "moviesonic idle"
 		},
 		{
-			"loop": false,
-			"offsets": [-9, 7],
+			"offsets": [0, 0],
+			"indices": [10, 11, 12, 13],
+			"fps": 24,
+			"anim": "idle-loop",
+			"loop": true,
+			"name": "moviesonic idle"
+		},
+		{
+			"offsets": [360, 38],
+			"indices": [],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "moviesonic left",
-			"indices": []
+			"loop": false,
+			"name": "moviesonic right"
 		},
 		{
-			"loop": false,
-			"offsets": [-10, 10],
-			"anim": "singRIGHT",
+			"offsets": [180, -160],
+			"indices": [],
 			"fps": 24,
-			"name": "moviesonic right",
-			"indices": []
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "moviesonic down"
 		},
 		{
-			"loop": false,
-			"offsets": [14, 75],
+			"offsets": [0, 75],
+			"indices": [],
+			"fps": 24,
 			"anim": "singUP",
+			"loop": false,
+			"name": "moviesonic up"
+		},
+		{
+			"offsets": [-10, 10],
+			"indices": [],
 			"fps": 24,
-			"name": "moviesonic up",
-			"indices": []
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "moviesonic left"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/moviesonic",
 	"position": [0, 50],
-	"healthicon": "mom",
+	"healthicon": "movie",
 	"flip_x": true,
-	"healthbar_colors": [36, 105, 215],
+	"healthbar_colors": [30, 114, 197],
 	"camera_position": [-140, 60],
 	"sing_duration": 4,
 	"scale": 1,

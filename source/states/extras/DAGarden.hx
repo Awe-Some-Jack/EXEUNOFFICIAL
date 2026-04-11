@@ -93,6 +93,7 @@ class DAGarden extends MusicBeatState
 
     private var isLoading:Bool  = false;
     private var pitchDown:Bool  = false;
+    private var pitchUp:Bool    = false;
     private var pitchCurrent:Float = 1.0;
     private var pitchSpeed:Float   = 0;
     private var onPitchDone:Void->Void = null;
@@ -402,7 +403,23 @@ class DAGarden extends MusicBeatState
             }
         }
 
+        if (pitchUp && pitchSpeed != 0)
+        {
+            pitchCurrent += (1.0 - pitchCurrent) * pitchSpeed * elapsed;
+            if (instSound != null) instSound.pitch = pitchCurrent;
+            for (v in vocalsSounds) v.pitch = pitchCurrent;
+            if (pitchCurrent > 0.97)
+            {
+                pitchCurrent = 1.0;
+                pitchUp = false;
+                pitchSpeed = 0;
+                if (instSound != null) instSound.pitch = 1.0;
+                for (v in vocalsSounds) v.pitch = 1.0;
+            }
+        }
+
         checkPendingLoad();
+        checkSongEnd();
         updateProgressBar();
 
         if (inputCooldown > 0) inputCooldown -= elapsed;
@@ -417,6 +434,13 @@ class DAGarden extends MusicBeatState
             if (FlxG.sound.music != null) FlxG.sound.music.resume();
             FlxG.switchState(new ExtrasMenu());
         }
+    }
+
+    private function checkSongEnd():Void
+    {
+        if (!isPlaying || instSound == null || instSound.length <= 0) return;
+        if (instSound.time >= instSound.length - 100 && !instSound.playing)
+            fadeOutAndStop();
     }
 
     private function updateProgressBar():Void
@@ -480,18 +504,21 @@ class DAGarden extends MusicBeatState
         if (FlxG.mouse.justPressed && distToDisk <= diskR)
         {
             diskDragging = true;
-            diskDragLastX = mx;
+            diskDragLastX = Math.atan2(my - diskCY, mx - diskCX);
         }
         if (!FlxG.mouse.pressed) diskDragging = false;
 
         if (diskDragging && instSound != null && instSound.length > 0)
         {
-            var dx = mx - diskDragLastX;
-            diskDragLastX = mx;
-            if (dx != 0)
+            var angle = Math.atan2(my - diskCY, mx - diskCX);
+            var da = angle - diskDragLastX;
+            if (da > Math.PI)  da -= Math.PI * 2;
+            if (da < -Math.PI) da += Math.PI * 2;
+            diskDragLastX = angle;
+            if (da != 0)
             {
-                disk.angle += dx * 1.5;
-                var seekMs = dx * DISK_DRAG_SEEK * 1000;
+                disk.angle += da * (180 / Math.PI);
+                var seekMs = da * DISK_DRAG_SEEK * 1000;
                 var newTime = FlxMath.bound(instSound.time + seekMs, 0, instSound.length - 100);
                 try { instSound.time = newTime; } catch(e:Dynamic) {}
                 for (v in vocalsSounds) { try { v.time = newTime; } catch(e:Dynamic) {} }
@@ -610,7 +637,7 @@ class DAGarden extends MusicBeatState
         {
             instSound.resume();
             for (v in vocalsSounds) v.resume();
-            resetPitch();
+            startPitchUp();
             audioFadeTarget = 1.0;
             audioFadeSpeed  = 8.0;
             isPlaying = true;
@@ -692,7 +719,7 @@ class DAGarden extends MusicBeatState
         instSound.play();
         for (v in vocalsSounds) v.play();
 
-        resetPitch();
+        startPitchUp();
         audioFadeTarget = 1.0;
         audioFadeSpeed  = 8.0;
         isPlaying = true;
@@ -700,6 +727,7 @@ class DAGarden extends MusicBeatState
 
     private function startPitchDown(callback:Void->Void):Void
     {
+        pitchUp = false;
         pitchCurrent = 1.0;
         if (instSound != null) instSound.pitch = 1.0;
         for (v in vocalsSounds) v.pitch = 1.0;
@@ -708,9 +736,21 @@ class DAGarden extends MusicBeatState
         onPitchDone = callback;
     }
 
+    private function startPitchUp():Void
+    {
+        pitchDown = false;
+        onPitchDone = null;
+        pitchCurrent = 0.2;
+        if (instSound != null) instSound.pitch = pitchCurrent;
+        for (v in vocalsSounds) v.pitch = pitchCurrent;
+        pitchUp = true;
+        pitchSpeed = 5.0;
+    }
+
     private function resetPitch():Void
     {
         pitchDown = false;
+        pitchUp = false;
         pitchSpeed = 0;
         pitchCurrent = 1.0;
         onPitchDone = null;

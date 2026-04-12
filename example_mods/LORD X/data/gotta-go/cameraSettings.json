@@ -12,10 +12,10 @@
     "MiddleX": 272,
     "MiddleY": 272,
 
-    "OverrideZoom": true,
+    "OverrideZoom": false,
 
-    "OGZoom": 0.4,
-    "MiddleZoom": 0.85,
+    "OGZoom": 0.55,
+    "MiddleZoom": 0.55,
 
     "OffsetsBF": 25,
     "OffsetsDAD": 25,

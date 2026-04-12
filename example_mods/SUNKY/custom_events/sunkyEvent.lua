@@ -1,4 +1,4 @@
-local renders = {'cereal', 'Ilustracion23', 'SunkyGiveYouCereal', 'sunkyMunch', 'sunkyPose', 'jajaxd', 'SunkehTake1', 'sunkyrender', 'SUNKYYYYSYSYSYSYSYSY', 'sunkasd', 'sunkehhh'}
+local renders = {'cereal', 'Ilustracion23', 'SunkyGiveYouCereal', 'sunkyMunch', 'sunkyPose', 'jajaxd', 'SunkehTake1', 'sunkyrender', 'SUNKYYYYSYSYSYSYSYSY', 'sunkasd', 'sunkehhh', 'lunky'}
 local oldRender = 0
 local canRendersAppear = false
 

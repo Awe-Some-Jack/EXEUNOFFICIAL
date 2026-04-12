@@ -2,9 +2,9 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [331, 192],
-			"anim": "idle",
-			"fps": 12,
+			"offsets": [-224, 1310],
+			"anim": "go",
+			"fps": 24,
 			"name": "go",
 			"indices": []
 		}
@@ -12,12 +12,12 @@
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/go",
-	"position": [0, 0],
-	"healthicon": "face",
+	"position": [-555, -240],
+	"healthicon": "red",
 	"flip_x": false,
-	"healthbar_colors": [161, 161, 161],
-	"camera_position": [0, 0],
-	"sing_duration": 4,
+	"healthbar_colors": [39, 39, 184],
+	"camera_position": [-330, -40],
+	"sing_duration": 8,
 	"scale": 1.44,
 	"_editor_isPlayer": false
 }

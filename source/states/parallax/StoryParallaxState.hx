@@ -135,7 +135,7 @@ class StoryParallaxState extends MusicBeatState
 			Song.loadFromJson(firstSong, firstSong);
 
 			PlayState.storyPlaylist = ['Expulsion'];
-			PlayState.isStoryMode = true;
+			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = 1;
 			PlayState.storyWeek = 0;
 			PlayState.campaignScore = 0;

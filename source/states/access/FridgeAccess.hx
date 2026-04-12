@@ -181,7 +181,7 @@ class FridgeAccess extends MusicBeatState
 			{
 				vanilla.animation.play('selected', true);
 
-				if(FlxG.mouse.justPressed)
+				if(FlxG.mouse.justPressed || Controls.instance.ACCEPT)
 				{
 					transitioning = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
@@ -206,7 +206,7 @@ class FridgeAccess extends MusicBeatState
 			{
 				chocolate.animation.play('selected', true);
 
-				if(FlxG.mouse.justPressed)
+				if(FlxG.mouse.justPressed || Controls.instance.ACCEPT)
 				{
 					transitioning = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
@@ -243,7 +243,7 @@ class FridgeAccess extends MusicBeatState
 			Song.loadFromJson(firstSong, firstSong);
 
 			PlayState.storyPlaylist = [milk];
-			PlayState.isStoryMode = true;
+			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = 1;
 			PlayState.storyWeek = 0;
 			PlayState.campaignScore = 0;
@@ -255,5 +255,11 @@ class FridgeAccess extends MusicBeatState
 			return false;
 		}
 		return true;
+	}
+
+	override function destroy()
+	{
+		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+		super.destroy();
 	}
 }

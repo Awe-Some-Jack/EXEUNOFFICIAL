@@ -183,6 +183,7 @@ class FridgeAccess extends MusicBeatState
 
 				if(FlxG.mouse.justPressed)
 				{
+					transitioning = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					FlxTween.tween(whiteBG, {alpha: 1}, 1);
 					FlxTween.tween(FlxG.camera, {zoom: 2.5}, 1.15, {ease: FlxEase.expoIn});
@@ -207,6 +208,7 @@ class FridgeAccess extends MusicBeatState
 
 				if(FlxG.mouse.justPressed)
 				{
+					transitioning = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					FlxTween.tween(whiteBG, {alpha: 1}, 1);
 					FlxTween.tween(FlxG.camera, {zoom: 2.5}, 1.15, {ease: FlxEase.expoIn});

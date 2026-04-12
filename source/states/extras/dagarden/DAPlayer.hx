@@ -95,11 +95,17 @@ class DAPlayer extends FlxGroup
 
 	public var onSongEnd:Void->Void = null;
 
+	private var _originalTitle:String = '';
+
 	public function new()
 	{
 		super();
+		_originalTitle = lime.app.Application.current.window.title;
 		_buildUI();
 	}
+
+	public function restoreWindowTitle():Void
+		lime.app.Application.current.window.title = _originalTitle;
 
 	private function _buildUI():Void
 	{
@@ -326,6 +332,7 @@ class DAPlayer extends FlxGroup
 		_updateJumpscare();
 		_handleDiskMouse(elapsed);
 		_handleBarMouse(elapsed);
+		_updateWindowTitle();
 	}
 
 	private function _updateScratchPitch(elapsed:Float):Void
@@ -507,6 +514,27 @@ class DAPlayer extends FlxGroup
 			if (remaining < 0) remaining = 0;
 			timeTxt.text = Std.int(remaining / 60) + ':' + (remaining % 60 < 10 ? '0' : '') + remaining % 60;
 		}
+	}
+
+	private function _updateWindowTitle():Void
+	{
+		if (instSound == null)
+		{
+			lime.app.Application.current.window.title = _originalTitle;
+			return;
+		}
+
+		var song   = StringTools.replace(_loadedSong, '-', ' ').toUpperCase();
+		var state  = isPlaying ? 'PLAY' : 'PAUSE';
+		var mode   = vocalsEnabled ? 'NORMAL' : 'INST';
+
+		var ms     = Std.int(instSound.time);
+		var mins   = Std.int(ms / 60000);
+		var secs   = Std.int((ms % 60000) / 1000);
+		var millis = ms % 1000;
+		var time   = '$mins:${secs < 10 ? "0" : ""}$secs,${millis < 100 ? (millis < 10 ? "00" : "0") : ""}$millis';
+
+		lime.app.Application.current.window.title = '[$state] $song | $mode | $time';
 	}
 
 	private function _updateJumpscare():Void

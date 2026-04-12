@@ -36,6 +36,8 @@ class DAGarden extends MusicBeatState
 		super.create();
 		FlxG.autoPause = false;
 
+		if (FlxG.sound.music != null) FlxG.sound.music.pause();
+
 		_buildBackground();
 
 		songs = new DASongs();

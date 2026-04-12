@@ -13,6 +13,7 @@ class MajinAccess extends MusicBeatState
 	var buttonUS:FlxSprite;
 	var buttonJP:FlxSprite;
 
+	var eggman:FlxSprite;
 	var soundOne:FlxSprite;
 	var soundTwo:FlxSprite;
 
@@ -34,7 +35,7 @@ class MajinAccess extends MusicBeatState
 		box.setPosition(Std.int(box.x), Std.int(box.y));
 		add(box);
 
-		var eggman:FlxSprite = new FlxSprite(0, box.y + 40);
+		eggman = new FlxSprite(0, box.y + 40);
 		eggman.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/majin/eggman.png', 'assets/exe/access/majin/eggman.xml');
 		eggman.animation.addByPrefix('idle', 'idle', 2, true);
 		eggman.animation.play('idle');
@@ -45,14 +46,14 @@ class MajinAccess extends MusicBeatState
 		eggman.x = Std.int(eggman.x);
 		add(eggman);
 
-		var soundOne:FlxSprite = new FlxSprite(0, eggman.y).loadGraphic(Assets.getBitmapData('assets/exe/access/majin/sound1.png'));
+		soundOne = new FlxSprite(0, eggman.y).loadGraphic(Assets.getBitmapData('assets/exe/access/majin/sound1.png'));
 		soundOne.antialiasing = false;
 		soundOne.scale.set(2, 2);
 		soundOne.updateHitbox();
 		soundOne.x = eggman.x - soundOne.width - 20;
 		add(soundOne);
 
-		var soundTwo:FlxSprite = new FlxSprite(0, eggman.y).loadGraphic(Assets.getBitmapData('assets/exe/access/majin/sound2.png'));
+		soundTwo = new FlxSprite(0, eggman.y).loadGraphic(Assets.getBitmapData('assets/exe/access/majin/sound2.png'));
 		soundTwo.antialiasing = false;
 		soundTwo.scale.set(2, 2);
 		soundTwo.updateHitbox();
@@ -99,6 +100,9 @@ class MajinAccess extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		soundOne.y = eggman.y + (eggman.animation.curAnim.curFrame == 0 ? 2 : -2);
+		soundTwo.y = eggman.y + (eggman.animation.curAnim.curFrame == 1 ? 2 : -2);
 
 		if (!transitioning)
 		{

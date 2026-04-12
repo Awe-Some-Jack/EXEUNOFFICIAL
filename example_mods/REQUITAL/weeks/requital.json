@@ -38,5 +38,5 @@
 	"exeLabel": "EXE",
 	"exeColor": "0xFFFF0000",
 	"transitionShape": "tails",
-	"soundTestCode": [0, 0, false]
+	"soundTestCode": [24, 92, true]
 }

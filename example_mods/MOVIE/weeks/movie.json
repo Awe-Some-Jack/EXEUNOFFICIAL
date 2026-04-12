@@ -28,5 +28,5 @@
 	"exeCover": "movie",
 	"exeLabel": "NON EXE",
 	"exeColor": "0xFF8888FF",
-	"soundTestCode": [0, 0, false]
+	"soundTestCode": [20, 19, true]
 }

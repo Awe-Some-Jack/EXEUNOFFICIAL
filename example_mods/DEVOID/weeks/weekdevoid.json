@@ -28,5 +28,5 @@
 	"exeCover": "devoid",
 	"exeLabel": "EXE",
 	"exeColor": "0xFFFF0000",
-	"soundTestCode": [0, 0, false]
+	"soundTestCode": [19, 93, true]
 }

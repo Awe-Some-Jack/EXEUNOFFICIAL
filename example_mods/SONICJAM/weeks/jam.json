@@ -37,5 +37,5 @@
 	"exeCover": "sonicjam",
 	"exeLabel": "EXE",
 	"exeColor": "0xFFFF0000",
-	"soundTestCode": [0, 0, false]
+	"soundTestCode": [6, 20, true]
 }

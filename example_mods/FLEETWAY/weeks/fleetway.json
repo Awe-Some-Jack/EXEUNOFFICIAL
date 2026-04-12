@@ -29,5 +29,5 @@
 	"exeLabel": "NON EXE",
 	"exeColor": "0xFF8888FF",
 	"transitionShape": "FLEET",
-	"soundTestCode": [0, 0, false]
+	"soundTestCode": [8, 21, true]
 }

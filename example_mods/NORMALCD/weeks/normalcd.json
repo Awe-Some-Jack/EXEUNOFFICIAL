@@ -28,5 +28,5 @@
 	"exeCover": "normalcd",
 	"exeLabel": "NON EXE",
 	"exeColor": "0xFF8888FF",
-	"soundTestCode": [0, 0, false]
+	"soundTestCode": [23, 9, true]
 }

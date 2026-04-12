@@ -13,6 +13,16 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import openfl.utils.Assets as AssetPaths;
 import backend.Paths;
+import haxe.Json;
+
+typedef SoundTestData = {
+	var pcm:Int;
+	var da:Int;
+	var type:String;
+	var path:String;
+	var isWeek:Bool;
+	var weekName:String;
+}
 
 class SoundTest extends MusicBeatState 
 {
@@ -24,7 +34,7 @@ class SoundTest extends MusicBeatState
 
 	static final ARROW_ICONS:Array<String> = ["^", "<", "v", ">"];
 
-	var codes:Map<String, Array<Int>> = new Map();
+	var codes:Array<SoundTestData> = [];
 
 	var backdrop:FlxBackdrop;
 	var titleText:FlxText;
@@ -70,11 +80,13 @@ class SoundTest extends MusicBeatState
 
 		WeekData.reloadWeekFiles(true);
 		loadCodesFromWeeks();
+		loadCodesFromJSON();
 	}
 
 	function loadCodesFromWeeks():Void
 	{
-		codes.clear();
+		codes = [];
+
 		for (weekName in WeekData.weeksList)
 		{
 			var week:WeekData = WeekData.weeksLoaded.get(weekName);
@@ -83,9 +95,48 @@ class SoundTest extends MusicBeatState
 			if (code.length < 3) continue;
 			var enabled:Bool = code[2] == true;
 			if (!enabled) continue;
-			var pcm:Int = Std.int(code[0]);
-			var da:Int  = Std.int(code[1]);
-			codes.set(weekName, [pcm, da]);
+
+			codes.push({
+				pcm: Std.int(code[0]),
+				da: Std.int(code[1]),
+				type: "week",
+				path: "",
+				isWeek: true,
+				weekName: weekName
+			});
+		}
+	}
+
+	function loadCodesFromJSON():Void
+	{
+		if (!Assets.exists("assets/exe/soundtest/extraCodes.json"))
+		{
+			trace("JSON no encontrado");
+			return;
+		}
+
+		try
+		{
+			var raw:String = Assets.getText("assets/exe/soundtest/extraCodes.json");
+			var data:Array<Dynamic> = Json.parse(raw);
+
+			for (entry in data)
+			{
+				if (entry.code == null || entry.code.length < 2) continue;
+
+				codes.push({
+					pcm: Std.int(entry.code[0]),
+					da: Std.int(entry.code[1]),
+					type: entry.type,
+					path: entry.path,
+					isWeek: false,
+					weekName: ""
+				});
+			}
+		}
+		catch (e:Dynamic)
+		{
+			trace("Error leyendo JSON de SoundTest: " + e);
 		}
 	}
 
@@ -267,6 +318,8 @@ class SoundTest extends MusicBeatState
 		return (value < 10) ? '0' + value : Std.string(value);
 	}
 
+	var notFoundAny:Bool = true;
+	var soundCooldown:Bool = true;
 	var transitioning:Bool = false;
 	override public function update(elapsed:Float):Void
 	{
@@ -289,15 +342,30 @@ class SoundTest extends MusicBeatState
 
 		if (Controls.instance.ACCEPT)
 		{
-			for (weekName => value in codes)
+			for (code in codes)
 			{
-				if (pcmValue == value[0] && daValue == value[1])
+				if (pcmValue == code.pcm && daValue == code.da)
 				{
+					notFoundAny = false;
 					transitioning = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					FlxTween.tween(whiteBG, {alpha: 1}, 1);
-					new FlxTimer().start(1, function(tmr:FlxTimer){
-						loadSong(weekName, true);
+
+					new FlxTimer().start(1, function(tmr:FlxTimer)
+					{
+						if (code.isWeek) loadSong(code.weekName, true);
+						else
+						{
+							switch(code.type)
+							{
+								case "image":
+									trace("Mostrar imagen");
+
+								case "video":
+									trace("Reproducir video");
+							}
+						}
+
 						FlxG.sound.music.fadeOut(0.3);
 					});
 					break;
@@ -306,6 +374,7 @@ class SoundTest extends MusicBeatState
 
 			if (pcmValue == 12 && daValue == 25)
 			{
+				notFoundAny = false;
 				CustomShapeTransition.shape = CustomShapeTransition.getShapeByString('INFINITE');
 				transitioning = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
@@ -316,6 +385,20 @@ class SoundTest extends MusicBeatState
 				});
 				return;
 			}
+
+			if (notFoundAny)
+			{
+				if (soundCooldown)
+				{
+					soundCooldown = false;
+					FlxG.sound.play(Paths.sound('deniedMOMENT'));
+					new FlxTimer().start(0.8, function(tmr:FlxTimer)
+					{
+						soundCooldown = true;
+					});
+				}
+			}
+			notFoundAny = true;
 		}
 	}
 

@@ -1,68 +1,68 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [376, 314],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [254, 316],
-			"loop": false,
 			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [207, 500],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [132, 359],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"loop": true,
-			"offsets": [136, 316],
-			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
+			"name": "left",
 			"indices": []
 		},
 		{
-			"offsets": [248, 374],
-			"indices": [],
+			"loop": false,
+			"offsets": [254, 316],
+			"anim": "singDOWN",
 			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [207, 500],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [132, 359],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"offsets": [136, 316],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [246, 372],
 			"anim": "thanos",
-			"loop": false,
-			"name": "chao"
+			"fps": 24,
+			"name": "chao",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [142, 320],
-			"indices": [],
-			"fps": 24,
 			"anim": "ai",
-			"loop": false,
-			"name": "ojo"
+			"fps": 24,
+			"name": "ojo",
+			"indices": []
 		},
 		{
-			"offsets": [264, 400],
-			"indices": [],
-			"fps": 24,
-			"anim": "laught",
 			"loop": false,
-			"name": "risa"
+			"offsets": [264, 400],
+			"anim": "laught",
+			"fps": 24,
+			"name": "risa",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

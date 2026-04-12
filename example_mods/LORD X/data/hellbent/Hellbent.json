@@ -158,9 +158,9 @@
 				[30337.0786516854, 4, 1011.23595505618]
 			],
 			"sectionBeats": 4,
+			"changeBPM": true,
 			"mustHitSection": false,
-			"bpm": 178,
-			"changeBPM": true
+			"bpm": 178
 		},
 		{
 			"sectionNotes": [
@@ -367,16 +367,16 @@
 				[51573.0337078652, 1, 989.010989010989]
 			],
 			"sectionBeats": 4,
+			"mustHitSection": false,
 			"bpm": 182,
-			"changeBPM": true,
-			"mustHitSection": false
+			"changeBPM": true
 		},
 		{
 			"sectionNotes": [],
 			"sectionBeats": 4,
+			"changeBPM": true,
 			"mustHitSection": false,
-			"bpm": 186,
-			"changeBPM": true
+			"bpm": 186
 		},
 		{
 			"sectionNotes": [
@@ -390,9 +390,9 @@
 				[55287.3007650864, 5, 0]
 			],
 			"sectionBeats": 4,
+			"mustHitSection": false,
 			"bpm": 190,
-			"changeBPM": true,
-			"mustHitSection": false
+			"changeBPM": true
 		},
 		{
 			"sectionNotes": [
@@ -1556,7 +1556,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"sectionNotes": [
@@ -1592,7 +1592,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"sectionNotes": [
@@ -1627,7 +1627,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"sectionNotes": [
@@ -1669,11 +1669,10 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"sectionNotes": [
-				[140076.774449297, 1, 947.368421052632],
 				[140076.774449297, 6, 947.368421052632],
 				[141024.142870349, 4, 315.789473684211]
 			],
@@ -2706,9 +2705,7 @@
 		[
 			99655.7218177179,
 			[
-				["hellbentEvents", "changeBG", ""],
-				["Set customCamera Position", "bf", "500, 1220"],
-				["Set Property", "camZoomingMult", "0"]
+				["hellbentEvents", "changeBG", ""]
 			]
 		],
 		[
@@ -2722,12 +2719,6 @@
 			108497.827080876,
 			[
 				["hellbentEvents", "noteposs", ""]
-			]
-		],
-		[
-			109760.984975613,
-			[
-				["Set Property", "camZoomingMult", "1"]
 			]
 		],
 		[
@@ -2939,21 +2930,14 @@
 			181760.984975613,
 			[
 				["Tween Camera Zoom", "0.4, true", "4, sineInOut"],
-				["Tweening Camera", "-200, -350", "4, sineInOut"],
-				["Set Property", "camZoomingMult", "0"]
+				["Tweening Camera", "-200, -350", "4, sineInOut"]
 			]
 		],
 		[
 			186971.511291403,
 			[
-				["Tweening Camera", "240, 60", "4, sineInOut"],
+				["Tweening Camera", "140, 180", "4, sineInOut"],
 				["Tween Camera Zoom", "0.9, true", "4, sineInOut"]
-			]
-		],
-		[
-			190603.090238771,
-			[
-				["Set Property", "camZoomingMult", "1"]
 			]
 		],
 		[

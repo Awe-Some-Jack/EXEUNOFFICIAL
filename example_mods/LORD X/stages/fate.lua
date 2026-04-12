@@ -11,13 +11,14 @@ local fateBG2 = {
 }
 
 local glitches = {
-    ['chrom'] =       function()  triggerEvent('chromFlash', '0, 5', '5, linear')       end,       ['chromStop'] =       function()  triggerEvent('chromFlash', '0, 0', '0.3, linear')       end,
-    ['chromGlitch'] = function()  triggerEvent('chromGlitchFlash', '0, 5', '5, linear') end,       ['chromGlitchStop'] = function()  triggerEvent('chromGlitchFlash', '0, 0', '0.3, linear') end,
-    ['pseudo'] =      function()  triggerEvent('pseudoFlash', '0, 5', '2, linear')      end,       ['pseudoStop'] =      function()  triggerEvent('pseudoFlash', '0.00000001, 0.00000001', '0.3, linear')      end,
-    ['binary'] =      function()  triggerEvent('binaryFlash', '0, 1', '2, linear')      end,       ['binaryStop'] =      function()  triggerEvent('binaryFlash', '0.00000001, 0.00000001', '0.3, linear')      end
+    [1] = function()
+        triggerEvent('chromFlash', '0, 5', '3, linear')
+    end,
+    [2] = function()
+
+    end
 }
 
-luaDebugMode = true
 function onCreatePost()
     setProperty('gf.visible', false)
     setScrollFactor('gfGroup', 1, 1)
@@ -51,7 +52,6 @@ function onCreatePost()
     makeAnimatedLuaSprite('bfFALL', 'characters/bf void', 600, 1900)
     addAnimationByPrefix('bfFALL', 'idle', 'Símbolo 71', 24, true)
     scaleObject('bfFALL', 3, 3)
-    setObjectOrder('bfFALL', getObjectOrder('boyfriendGroup'))
     addLuaSprite('bfFALL', false)
 
     makeAnimatedLuaSprite('bfClone', 'characters/bfo', 0, 0)
@@ -92,9 +92,11 @@ function onCreatePost()
 
     makeLuaSprite('healthShit')
 
-    -- HUD Shit
-    for i = 0, 3 do
-        setProperty('opponentStrums.members['..i..'].alpha', 0)
+    -- Notes Shit
+    for i = 0,3 do
+        if getProperty('opponentStrums.members['..i..'].alpha') >= 0.0001 then
+            setProperty('opponentStrums.members['..i..'].alpha', 0)
+        end
     end
 
     for _, stuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do
@@ -143,15 +145,6 @@ function onCreatePost()
     setProperty('redOverlay.flipY', true)
     setProperty('redOverlay.alpha', 0)
     addLuaSprite('redOverlay', false)
-
-    -- ATLAS SPRITE BABY --
-    makeFlxAnimateSprite('quecoñoesesto', -800, -700)
-    loadAnimateAtlas('quecoñoesesto', "fate/fate")
-    addAnimationBySymbol('quecoñoesesto', 'idle', 'fate') --Me he tirao un tremendo peo 🔥🔥🔥
-    setObjectOrder('quecoñoesesto', getObjectOrder('lordXBite') - 1)
-    scaleObject('quecoñoesesto', 1.2, 1.2)
-    setProperty('quecoñoesesto.alpha', 0)
-    addLuaSprite('quecoñoesesto')
 end
 
 local holdMove = 0
@@ -257,10 +250,7 @@ function onEvent(eventName, value1, value2)
             end
         end
         if value1 == 'part1' then
-            if value2 == 'startAtlasAnimation' then
-                setProperty('quecoñoesesto.alpha', 1)
-                playAnim('quecoñoesesto', 'idle', true)
-        elseif value2 == 'moveBF' then
+            if value2 == 'moveBF' then
                 doTweenY('bfFALLTweenY', 'bfFALL', 600, 0.9, 'circOut')
                 doTweenScale('bfFALL', 'bfFALL', 1, 1.2, 'smootherStepOut')
             elseif value2 == 'eatBF' then
@@ -323,7 +313,6 @@ function onEvent(eventName, value1, value2)
                 end
 
                 removeLuaSprite('bfFALL', true)
-                removeLuaSprite('quecoñoesesto', true)
                 removeLuaSprite('lordXBite', true)
                 triggerEvent('Change Character', 'dad', 'lord x podrido')
                 setProperty('gf.visible', true)
@@ -381,8 +370,22 @@ function onEvent(eventName, value1, value2)
                 doTweenAlpha('fogAlpha', 'fog', 1, 2)
                 setSpriteShader('fog', 'wavyDistortion')
                 setShaderFloat('fog', 'amount', 0.5)
-            elseif split[1] == 'glitchMode' then
-                glitches[split[2]]()
+            elseif split[1] == 'startGlitching' then
+                if split[2] == '' then
+                    triggerEvent('Change Character', 'dad', 'lord x p3scream')
+            elseif split[2] == 'static' then
+                    setProperty('dad._lastPlayedAnimation.paused', true)
+            elseif split[2] == 'glitch' then
+                local glitchNumber = tonumber(split[3])
+                    setProperty('dad._lastPlayedAnimation.paused', false)
+                    if glitchNumber then
+                        glitches[glitchNumber]()
+                    end
+                    -- SHADERS QUE USAR:
+                    -- CHROMATICS
+                    -- glitches
+                    -- Contraste bla bl a bla bla bla bla bla alblalbalblaLBALBLABLALBLBALALBLABLABDLABLBLBALABLBALBLBALBALBLA LBALABALABLABLBALBALBALBALBALBALABLABL
+                end
             end
         end
 
@@ -472,14 +475,14 @@ function goodNoteHitPre(id)
 end
 
 function opponentNoteHitPre(id)
-	if getProperty('dad.animation.curAnim.name') == 'hey' or curStep >= 3216 then
+	if getProperty('dad.animation.curAnim.name') == 'hey' then
 		setPropertyFromGroup('notes', id, 'noAnimation', true)
 	end
 end
 
 function onTweenCompleted(tag)
     if tag == 'healthLose' then loseHealthBitch = false end
-    if tag == 'redOverlayAlphaEnd' then removeLuaSprite('redOverlay', true) end
+    if tag == 'fucku' then removeLuaSprite('redOverlay', true) end
 end
 
 function onTimerCompleted(t)

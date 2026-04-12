@@ -14,6 +14,10 @@ function onCreatePost()
 	setShaderFloat('dss', 'saturation', -20)
 	setShaderFloat('dss', 'brightness',-46)
 	setShaderFloat('dss', 'contrast', -25)
+	setShaderBool(char, 'dontDoBlend', false)
+
+	setShaderFloat('dss', 'uSpriteAlpha', getProperty('dss.alpha'))
+	setShaderFloatArray('dss', 'uSpriteColor', {(math.floor(getProperty(char..'dss.color') / 65536) % 256) / 255, (math.floor(getProperty(char..'dss.color') / 256) % 256) / 255, (getProperty(char..'dss.color') % 256) / 255})
 
 	setProperty('BlackGraphicOther.alpha', 1)
 
@@ -89,4 +93,8 @@ function onEvent(n, v1)
 			cancelTween('icon2Xd') doTweenAlpha('icon2Xd', 'iconOpp', 1, crochet / (1000 / 4) / playbackRate)
 		end
 	end
+end
+
+function onUpdatePost(e)
+
 end

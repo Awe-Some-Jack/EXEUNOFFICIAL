@@ -66,16 +66,10 @@
 			]
 		],
 		[
-			38400,
+			38850,
 			[
 				["fateEvents", "part1", ""],
 				["Tween Camera Zoom", "0.7, true", "1, smootherStepInOut"]
-			]
-		],
-		[
-			38550,
-			[
-				["fateEvents", "part1", "startAtlasAnimation"]
 			]
 		],
 		[
@@ -424,7 +418,8 @@
 				["fateEvents", "bfClone", "remove"],
 				["GraphicsAlpha", "game", "1, 0.001"],
 				["Set Property", "camHUD.alpha", "0"],
-				["fateEvents", "fadeStrums", "instFadeBF"]
+				["fateEvents", "fadeStrums", "instFadeBF"],
+				["Set Property", "camGame.alpha", "0"]
 			]
 		],
 		[
@@ -436,7 +431,8 @@
 				["Set Property", "cameraSpeed", "10000"],
 				["fateEvents", "fadeStrums", "setBFNoteAlphaBack, 3"],
 				["Tweening Camera", "420, 180", "0.001, linear"],
-				["Tween Camera Zoom", "1.5, true", "0.001, linear"]
+				["Tween Camera Zoom", "1.5, true", "0.001, linear"],
+				["Set Property", "camGame.alpha", "1"]
 			]
 		],
 		[
@@ -532,12 +528,7 @@
 		[
 			220907.130079223,
 			[
-				["bloomFlash", "0.2, 0", "0.9, circOut"]
-			]
-		],
-		[
-			222107.130079223,
-			[
+				["bloomFlash", "0.2, 0", "0.9, circOut"],
 				["cameracenter", "true", ""]
 			]
 		],
@@ -563,201 +554,6 @@
 			247307.130079223,
 			[
 				["bloomFlash", "0.5, 0", "4, circOut"]
-			]
-		],
-		[
-			249707.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, chrom"]
-			]
-		],
-		[
-			250007.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			250307.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, pseudo"]
-			]
-		],
-		[
-			250907.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			251207.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, pseudo"]
-			]
-		],
-		[
-			251357.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			251582.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, pseudo"]
-			]
-		],
-		[
-			251807.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, pseudoStop"]
-			]
-		],
-		[
-			252707.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, chrom"]
-			]
-		],
-		[
-			253007.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			253382.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			253607.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			253907.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"],
-				["fateEvents", "part4", "glitchMode, pseudo"]
-			]
-		],
-		[
-			254207.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, pseudo"]
-			]
-		],
-		[
-			254582.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, pseudoStop"]
-			]
-		],
-		[
-			255707.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, chrom"]
-			]
-		],
-		[
-			256607.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, chrom"]
-			]
-		],
-		[
-			256907.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, pseudo"]
-			]
-		],
-		[
-			257582.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, pseudoStop"]
-			]
-		],
-		[
-			258707.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, chrom"]
-			]
-		],
-		[
-			259757.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, pseudo"]
-			]
-		],
-		[
-			260207.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, pseudoStop"],
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			260507.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			260657.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			260807.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			260957.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			261107.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			261257.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			261407.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binary"]
-			]
-		],
-		[
-			261482.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, binaryStop"],
-				["fateEvents", "part4", "glitchMode, chrom"]
-			]
-		],
-		[
-			262007.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, chrom"]
-			]
-		],
-		[
-			262607.130079223,
-			[
-				["fateEvents", "part4", "glitchMode, chrom"]
 			]
 		]
 	],

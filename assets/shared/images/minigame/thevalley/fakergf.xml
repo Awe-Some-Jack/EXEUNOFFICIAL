@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="fakergf.png">
+<SubTexture name="fakergf idle0000" x="186" y="58" width="37" height="57" frameX="-16" frameY="-2" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf crouch0000" x="44" y="177" width="37" height="54" frameX="-17" frameY="-5" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf up0000" x="0" y="0" width="38" height="59" frameX="-15" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf jump0000" x="38" y="0" width="40" height="59" frameX="-18" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf wingopen0000" x="78" y="0" width="40" height="59" frameX="-18" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf wingopen0001" x="0" y="59" width="46" height="59" frameX="-13" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf wingopen0002" x="46" y="59" width="50" height="59" frameX="-11" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf wingopen0003" x="118" y="0" width="68" height="59" frameX="-2" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf glide0000" x="118" y="59" width="65" height="59" frameX="-3" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf glide0001" x="0" y="118" width="63" height="59" frameX="-3" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf glide0002" x="63" y="118" width="56" height="59" frameX="-7" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf glide0003" x="119" y="118" width="54" height="59" frameX="-9" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf walk0000" x="186" y="115" width="39" height="57" frameX="-15" frameY="-2" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf walk0001" x="229" y="114" width="42" height="56" frameX="-16" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf walk0002" x="229" y="0" width="42" height="57" frameX="-16" frameY="-1" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf walk0003" x="229" y="57" width="39" height="57" frameX="-15" frameY="-2" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf walk0004" x="0" y="177" width="44" height="56" frameX="-14" frameY="0" frameWidth="60" frameHeight="49" />
+<SubTexture name="fakergf walk0005" x="186" y="0" width="43" height="58" frameX="-14" frameY="-1" frameWidth="60" frameHeight="49" />
+</TextureAtlas>

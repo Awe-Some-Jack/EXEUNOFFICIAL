@@ -28,6 +28,7 @@ class SoundTest extends MusicBeatState
 
 	var backdrop:FlxBackdrop;
 	var titleText:FlxText;
+	var whiteBG:FlxSprite;
 
 	var pcmLabel:FlxText;
 	var daLabel:FlxText;
@@ -58,6 +59,12 @@ class SoundTest extends MusicBeatState
 		createNumbers();
 		startArrowAnimation();
 		updateTextColors();
+
+		whiteBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
+		whiteBG.alpha = 0;
+		whiteBG.scrollFactor.set();
+		whiteBG.screenCenter();
+		add(whiteBG);
 
 		Paths.clearUnusedMemory();
 
@@ -216,14 +223,29 @@ class SoundTest extends MusicBeatState
 			updateOnce = 'left';
 	}
 
-	function handleValueChange():Void
+	var changeHold:Float = 0;
+	function handleValueChange(elapsed:Float):Void
 	{
 		var change:Int = 0;
 
-		if (Controls.instance.UI_DOWN_P || FlxG.mouse.wheel < 0)
+		if (Controls.instance.UI_DOWN_P || FlxG.mouse.wheel < 0){
 			change = (FlxG.keys.pressed.SHIFT ? 3 : 1);
-		else if (Controls.instance.UI_UP_P || FlxG.mouse.wheel > 0)
+			changeHold = 0;
+		}
+		else if (Controls.instance.UI_UP_P || FlxG.mouse.wheel > 0){
 			change = -(FlxG.keys.pressed.SHIFT ? 3 : 1);
+			changeHold = 0;
+		}
+
+		if(Controls.instance.UI_DOWN || Controls.instance.UI_UP)
+		{
+			var checkLastHold:Int = Math.floor((changeHold - 0.3) * 10);
+			changeHold += elapsed;
+			var checkNewHold:Int = Math.floor((changeHold - 0.3) * 10);
+
+			if(changeHold > 0.3 && checkNewHold - checkLastHold > 0)
+				change = (checkNewHold - checkLastHold) * (Controls.instance.UI_UP ? -(FlxG.keys.pressed.SHIFT ? 3 : 1) : (FlxG.keys.pressed.SHIFT ? 3 : 1));
+		}
 
 		if (change != 0)
 		{
@@ -245,21 +267,24 @@ class SoundTest extends MusicBeatState
 		return (value < 10) ? '0' + value : Std.string(value);
 	}
 
+	var transitioning:Bool = false;
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 
-		if (subState != null)
-			return;
+		if (subState != null) return;
+		if (transitioning) return;
 
 		if (Controls.instance.BACK)
 		{
+			FlxG.sound.music.fadeOut(0.3);
+			transitioning = true;
 			FlxG.switchState(() -> new EXEMenu());
 			return;
 		}
 
 		handleSelection();
-		handleValueChange();
+		handleValueChange(elapsed);
 		updateDisplayedValues();
 
 		if (Controls.instance.ACCEPT)
@@ -268,9 +293,28 @@ class SoundTest extends MusicBeatState
 			{
 				if (pcmValue == value[0] && daValue == value[1])
 				{
-					loadSong(weekName, true);
+					transitioning = true;
+					FlxG.sound.play(Paths.sound('confirmMenu'));
+					FlxTween.tween(whiteBG, {alpha: 1}, 1);
+					new FlxTimer().start(1, function(tmr:FlxTimer){
+						loadSong(weekName, true);
+						FlxG.sound.music.fadeOut(0.3);
+					});
 					break;
 				}
+			}
+
+			if (pcmValue == 12 && daValue == 25)
+			{
+				CustomShapeTransition.shape = CustomShapeTransition.getShapeByString('INFINITE');
+				transitioning = true;
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				FlxTween.tween(whiteBG, {alpha: 1}, 1);
+				new FlxTimer().start(1, function(tmr:FlxTimer){
+					FlxG.switchState(() -> new states.access.MajinAccess());
+					FlxG.sound.music.fadeOut(0.3);
+				});
+				return;
 			}
 		}
 	}

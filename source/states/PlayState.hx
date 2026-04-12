@@ -1253,6 +1253,8 @@ class PlayState extends MusicBeatState
 		FlxG.sound.music.onComplete = finishSong.bind();
 		vocals.play();
 		opponentVocals.play();
+		vocals.volume = 1;
+		opponentVocals.volume = 1;
 
 		setSongTime(Math.max(0, startOnTime - 500) + Conductor.offset);
 		startOnTime = 0;
@@ -1325,6 +1327,9 @@ class PlayState extends MusicBeatState
 		#end
 		FlxG.sound.list.add(vocals);
 		FlxG.sound.list.add(opponentVocals);
+
+		vocals.volume = 0;
+		opponentVocals.volume = 0;
 
 		inst = new FlxSound();
 		try

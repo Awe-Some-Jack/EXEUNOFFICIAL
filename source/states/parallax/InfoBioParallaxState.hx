@@ -3,10 +3,16 @@ package states.parallax;
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 
+typedef RenderData = {
+	var asset:String;
+	var offset:{x:Float, y:Float};
+	var front:Bool;
+}
+
 typedef CharData = {
 	var name:String;
 	var info:String;
-	var render:String;
+	var render:Array<RenderData>;
 	var order:Int;
 	var folder:String;
 }
@@ -14,7 +20,7 @@ typedef CharData = {
 class InfoBioParallaxState extends MusicBeatState
 {
 	var ringdown:FlxSprite;
-	var charRender:FlxSprite;
+	var charRenders:Array<FlxSprite> = [];
 	var ring:FlxSprite;
 
 	var charBG:FlxSprite;
@@ -50,16 +56,14 @@ class InfoBioParallaxState extends MusicBeatState
 		ringdown.antialiasing = ClientPrefs.data.antialiasing;
 		ringdown.scale.set(0.25, 0.25);
 		ringdown.updateHitbox();
+		ringdown.x = (FlxG.width - ringdown.width) + 100;
 		add(ringdown);
-
-		charRender = new FlxSprite();
-		charRender.antialiasing = ClientPrefs.data.antialiasing;
-		add(charRender);
 
 		ring = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/info/ring.png'));
 		ring.antialiasing = ClientPrefs.data.antialiasing;
 		ring.scale.set(0.25, 0.25);
 		ring.updateHitbox();
+		ring.x = (FlxG.width - ring.width) + 100;
 		add(ring);
 
 		charBG = new FlxSprite(0, 0).makeGraphic(1, 1, 0x77000000);
@@ -99,10 +103,39 @@ class InfoBioParallaxState extends MusicBeatState
 			if (!sys.FileSystem.exists(jsonPath)) continue;
 
 			var json:Dynamic = haxe.Json.parse(sys.io.File.getContent(jsonPath));
+			var renderArray:Array<RenderData> = [];
+
+			var renderArray:Array<RenderData> = [];
+
+			if (json.render != null)
+			{
+				var rawRender:Array<Dynamic> = cast json.render;
+
+				for (r in rawRender)
+				{
+					renderArray.push({
+						asset: r[0],
+						offset: {
+							x: r[1][0],
+							y: r[1][1]
+						},
+						front: r[2] == true
+					});
+				}
+			}
+			else
+			{
+				renderArray.push({
+					asset: folder,
+					offset: {x: 0, y: 0},
+					front: false
+				});
+			}
+
 			chars.push({
 				name:   (json.name   != null) ? json.name   : 'Unknown',
 				info:   (json.info   != null) ? json.info   : 'No info.',
-				render: (json.render != null) ? json.render : folder,
+				render: renderArray,
 				order:  (json.order  != null) ? json.order  : 999,
 				folder: folder
 			});
@@ -111,15 +144,29 @@ class InfoBioParallaxState extends MusicBeatState
 		chars.sort((a, b) -> a.order - b.order);
 	}
 
+	var renderBasePos:Array<{x:Float, y:Float}> = [];
 	function loadChar(index:Int):Void
 	{
 		currentIndex = index;
 		var data:CharData = chars[index];
 
-		var renderPath:String = 'assets/exe/parallax/info/' + data.folder + '/' + data.render + '.png';
-		charRender.loadGraphic(Assets.getBitmapData(renderPath));
-		charRender.scale.set(0.25, 0.25);
-		charRender.updateHitbox();
+		for (spr in charRenders)
+			remove(spr);
+		charRenders = [];
+		renderBasePos = [];
+
+		for (renders in data.render)
+		{
+			var spr:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/info/' + data.folder + '/' + renders.asset + '.png'));
+			spr.antialiasing = ClientPrefs.data.antialiasing;
+			spr.scale.set(0.25, 0.25);
+			spr.updateHitbox();
+			spr.setPosition(ring.x + renders.offset.x, ((FlxG.height - ring.height) / 2) + renders.offset.y);
+			renderBasePos.push({x: spr.x, y: spr.y});
+			charRenders.push(spr);
+			if (renders.front) insert(members.indexOf(ring) + 1, spr);
+			else insert(members.indexOf(ring), spr);
+		}
 
 		charName.text = data.name;
 		charInfo.text = data.info;
@@ -133,6 +180,7 @@ class InfoBioParallaxState extends MusicBeatState
 		charBG.makeGraphic(Std.int(charInfo.width + 20), Std.int(charInfo.height + 20), 0x77000000);
 	}
 
+	var characterSine:Float = 0;
 	var transitioning:Bool = false;
 	override function update(elapsed:Float)
 	{
@@ -154,6 +202,12 @@ class InfoBioParallaxState extends MusicBeatState
 					loadChar(FlxMath.wrap(currentIndex + 1, 0, chars.length - 1));
 			}
 		}
+
+		characterSine += elapsed;
+
+		for (i in 0...charRenders.length) { charRenders[i].y = renderBasePos[i].y + Math.sin(characterSine) * 10; }
+		ringdown.y = ((FlxG.height - ringdown.height) / 2) + (Math.sin(characterSine - 0.2) * 10);
+		ring.y = ((FlxG.height - ring.height) / 2) + (Math.sin(characterSine - 0.2) * 10);
 	}
 
 }

@@ -181,8 +181,6 @@ class EXETitle extends MusicBeatState
 	{
 		if (videoPlaying)
 		{
-			if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.ESCAPE || FlxG.keys.justPressed.SPACE)
-				onVideoEnd();
 			super.update(elapsed);
 			return;
 		}
@@ -277,6 +275,7 @@ class EXETitle extends MusicBeatState
 		eyes.y = 20 + (517 * 0.4) + (Math.sin(logoSin - 0.15) * 7);
 		eyes.angle = Math.sin(logoSin + (Math.PI / 2.5) + 0.15) * 2;
 
+		if (!canStart) return;
 		var fridgeInputs = [
 			controls.UI_UP_P,
 			controls.UI_DOWN_P,
@@ -301,8 +300,11 @@ class EXETitle extends MusicBeatState
 		if (controls.ACCEPT && fridgeStatus == fridgeInputs.length)
 		{
 			fridgeStatus = 0;
+			CustomShapeTransition.shape = CustomShapeTransition.getShapeByString('SUNKY');
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			FlxG.switchState(() -> new states.access.FridgeAccess());
+			FlxTween.tween(whiteBG, {alpha: 1}, 0.8);
+			FlxG.sound.music.fadeOut(0.5);
+			new FlxTimer().start(0.8, function(_) { MusicBeatState.switchState(new states.access.FridgeAccess()); });
 		}
 	}
 }

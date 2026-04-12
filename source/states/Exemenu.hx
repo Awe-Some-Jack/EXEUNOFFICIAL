@@ -4,6 +4,8 @@ import openfl.Assets;
 import objects.GifSprite;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.input.keyboard.FlxKey;
+import backend.Song;
 
 class EXEMenu extends MusicBeatState
 {
@@ -50,6 +52,9 @@ class EXEMenu extends MusicBeatState
 	var blinkCount:Int          = 0;
 	var shadowTimer:Float       = 0.0;
 	var shadowMoved:Bool        = false;
+
+	var secretCodes:Array<String> = ['personel', '2005'];
+	var curKey:Array<Int>;
 
 	override function create()
 	{
@@ -99,6 +104,8 @@ class EXEMenu extends MusicBeatState
 
 		refreshSelection();
 		changeSelection(0, false, false);
+
+		curKey = [for (_ in secretCodes) 0]; //lol
 	}
 
 	override function update(elapsed:Float)
@@ -125,6 +132,24 @@ class EXEMenu extends MusicBeatState
 			}
 			else if (controls.ACCEPT)
 				startBlink();
+		}
+
+		for (i in 0...secretCodes.length)
+		{
+			var code = secretCodes[i];
+
+			if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
+			{
+				var keyName = charToKeyName(code.substr(curKey[i], 1));
+
+				if (Reflect.getProperty(FlxG.keys.justPressed, keyName))
+					curKey[i]++;
+				else
+					curKey[i] = 0;
+			}
+
+			if (curKey[i] >= code.length)
+				correctCode(i);
 		}
 	}
 
@@ -279,6 +304,67 @@ class EXEMenu extends MusicBeatState
 		}
 
 		previousSelectedIndex = selectedOptionIndex;
+	}
+
+	function charToKeyName(char:String):String
+	{
+		return switch(char)
+		{
+			case "0": "ZERO";
+			case "1": "ONE";
+			case "2": "TWO";
+			case "3": "THREE";
+			case "4": "FOUR";
+			case "5": "FIVE";
+			case "6": "SIX";
+			case "7": "SEVEN";
+			case "8": "EIGHT";
+			case "9": "NINE";
+			default: char.toUpperCase();
+		}
+	}
+
+	function correctCode(codeIndex:Int):Void
+	{
+		var code = secretCodes[codeIndex];
+
+		switch(code) {
+			case "personel":
+				loadSong('personel', 'COLDSTEEL');
+			case "2005":
+				loadSong('b4cksl4sh', 'SL4SH');
+		}
+
+		FlxG.sound.play(Paths.sound('ringSound'));
+		curKey[codeIndex] = 0;
+	}
+
+	function loadSong(song:String, mod:String):Bool
+	{
+		try
+		{
+			Mods.currentModDirectory = mod;
+
+			var firstSong:String = Paths.formatToSongPath(song);
+			Song.loadFromJson(Paths.formatToSongPath(song), Paths.formatToSongPath(song));
+
+			PlayState.storyPlaylist = [song];
+			PlayState.isStoryMode = true;
+			PlayState.storyDifficulty = 1;
+			PlayState.storyWeek = 0;
+			PlayState.campaignScore = 0;
+			PlayState.campaignMisses = 0;
+
+			LoadingState.prepareToSong();
+			LoadingState.loadAndSwitchState(new PlayState());
+			FlxG.sound.music.stop();
+		}
+		catch (e:Dynamic)
+		{
+			trace("Error cargando cancion: " + e);
+			return false;
+		}
+		return true;
 	}
 
 	override function destroy():Void

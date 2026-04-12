@@ -1720,8 +1720,6 @@ class PlayState extends MusicBeatState
 
 	private final _updateArgs:Array<Dynamic> = [0.0];
 	private var _lastTimeText:String = '';
-	private var _lastWindowTitle:String = '';
-	private var _windowTitleTimer:Float = 0;
 	private var _freedCpuImages:Bool = false;
 	private var _cpuFreeFrameDelay:Int = 0; // wait N frames before first CPU image free pass
 	private var _cpuFreeTimer:Float = 0;    // periodic re-scan for script-loaded bitmaps
@@ -1963,16 +1961,8 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (!paused) {
-			_windowTitleTimer += elapsed;
-			if (_windowTitleTimer >= 1.0) {
-				_windowTitleTimer = 0;
-				var newTitle = appName + " | Playing: " + SONG.song + " | Time Playing: " + FlxStringUtil.formatTime(Math.max(0, (Conductor.songPosition - ClientPrefs.data.noteOffset) / 1000), true);
-				if (newTitle != _lastWindowTitle) {
-					FlxG.stage.window.title = _lastWindowTitle = newTitle;
-				}
-			}
-		}
+		if (!paused)
+			FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " | Time Playing: " + FlxStringUtil.formatTime(Math.max(0, (Conductor.songPosition - ClientPrefs.data.noteOffset) / 1000), true);
 
 		setOnScripts('botPlay', cpuControlled);
 		_updateArgs[0] = elapsed;

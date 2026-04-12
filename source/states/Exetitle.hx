@@ -176,6 +176,7 @@ class EXETitle extends MusicBeatState
 	var mousePosition:String = 'left';
 	var transitioning:Bool = false;
 	var logoSin:Float = 0;
+	var fridgeStatus:Int = 0;
 	override function update(elapsed:Float)
 	{
 		if (videoPlaying)
@@ -275,5 +276,33 @@ class EXETitle extends MusicBeatState
 		logotxt.angle = Math.sin(logoSin + (Math.PI / 2)) * 0.15;
 		eyes.y = 20 + (517 * 0.4) + (Math.sin(logoSin - 0.15) * 7);
 		eyes.angle = Math.sin(logoSin + (Math.PI / 2.5) + 0.15) * 2;
+
+		var fridgeInputs = [
+			controls.UI_UP_P,
+			controls.UI_DOWN_P,
+			controls.UI_LEFT_P,
+			controls.UI_RIGHT_P
+		];
+
+		if (fridgeStatus < fridgeInputs.length)
+		{
+			if (fridgeInputs[fridgeStatus])
+			{
+				fridgeStatus++;
+				if (fridgeStatus == fridgeInputs.length)
+				{
+					FlxG.sound.play(Paths.sound('ringSound'));
+					transitioning = true;
+				}
+			}
+			else if (controls.UI_UP_P || controls.UI_DOWN_P || controls.UI_LEFT_P || controls.UI_RIGHT_P) fridgeStatus = 0;
+		}
+
+		if (controls.ACCEPT && fridgeStatus == fridgeInputs.length)
+		{
+			fridgeStatus = 0;
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			FlxG.switchState(() -> new states.access.FridgeAccess());
+		}
 	}
 }

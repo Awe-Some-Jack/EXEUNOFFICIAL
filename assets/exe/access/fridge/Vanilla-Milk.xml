@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Vanilla-Milk.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="vanilla instancia 10000" x="0" y="0" width="261" height="363"/>
+	<SubTexture name="vanilla selected instancia 10000" x="271" y="0" width="277" height="381"/>
+</TextureAtlas>

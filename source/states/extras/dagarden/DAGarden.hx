@@ -29,6 +29,7 @@ class DAGarden extends MusicBeatState
 
 	private var songs:DASongs;
 	private var player:DAPlayer;
+	private var sub:DASub;
 
 	override public function create():Void
 	{
@@ -50,6 +51,9 @@ class DAGarden extends MusicBeatState
 		player.onSongEnd = player.fadeOutAndStop;
 		add(player);
 
+		sub = new DASub();
+		add(sub);
+
 		if (songs.songList.length > 0)
 			_onSongSelected(0);
 
@@ -62,6 +66,8 @@ class DAGarden extends MusicBeatState
 		spikes.velocity.y = 50;
 		rotationTime += elapsed;
 		_updateDecorAngles();
+		if (sub != null && player != null)
+			sub.updateTime(player.currentTime());
 		_handleInput();
 	}
 
@@ -71,7 +77,7 @@ class DAGarden extends MusicBeatState
 		_cancelDecorTweens();
 
 		fondo = null; marcogris = null; dagarden = null;
-		arrow = null; spikes    = null;
+		arrow = null; spikes    = null; sub      = null;
 		sprite1 = null; sprite2 = null; sprite3 = null;
 		sprite4 = null; sprite6 = null; sprite7 = null; sprite8 = null;
 
@@ -165,6 +171,8 @@ class DAGarden extends MusicBeatState
 		songs.selectIndex(index);
 		player.setSongInfo(songs.selectedSong(), songs.selectedCredits());
 		player.loadJumpscareFor(songs.selectedSong(), songs.selectedMod());
+		sub.loadLyrics(songs.selectedSong(), songs.selectedMod());
+		sub.reset();
 
 		if (player.isPlaying) player.fadeOutAndStop();
 		else player.stop();

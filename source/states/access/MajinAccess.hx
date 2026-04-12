@@ -13,11 +13,15 @@ class MajinAccess extends MusicBeatState
 	var buttonUS:FlxSprite;
 	var buttonJP:FlxSprite;
 
+	var soundOne:FlxSprite;
+	var soundTwo:FlxSprite;
+
 	var isJP:Bool = false;
 
 	var shaderOut:ColorOut = new ColorOut();
 	var blackBG:FlxSprite;
 	var transitioning:Bool = false;
+	var toSong:Bool = false;
 	override function create()
 	{
 		super.create();
@@ -26,8 +30,6 @@ class MajinAccess extends MusicBeatState
 		
 		var box:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/majin/cuadro.png'));
 		box.antialiasing = false;
-		box.scale.set(1, 1);
-		box.updateHitbox();
 		box.screenCenter();
 		box.setPosition(Std.int(box.x), Std.int(box.y));
 		add(box);
@@ -42,6 +44,20 @@ class MajinAccess extends MusicBeatState
 		eggman.screenCenter(X);
 		eggman.x = Std.int(eggman.x);
 		add(eggman);
+
+		var soundOne:FlxSprite = new FlxSprite(0, eggman.y).loadGraphic(Assets.getBitmapData('assets/exe/access/majin/sound1.png'));
+		soundOne.antialiasing = false;
+		soundOne.scale.set(2, 2);
+		soundOne.updateHitbox();
+		soundOne.x = eggman.x - soundOne.width - 20;
+		add(soundOne);
+
+		var soundTwo:FlxSprite = new FlxSprite(0, eggman.y).loadGraphic(Assets.getBitmapData('assets/exe/access/majin/sound2.png'));
+		soundTwo.antialiasing = false;
+		soundTwo.scale.set(2, 2);
+		soundTwo.updateHitbox();
+		soundTwo.x = eggman.x + eggman.width + 20;
+		add(soundTwo);
 
 		buttonUS = new FlxSprite(0, box.y + 144);
 		buttonUS.loadGraphic(Assets.getBitmapData('assets/exe/access/majin/buttons.png'));
@@ -90,6 +106,7 @@ class MajinAccess extends MusicBeatState
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(() -> new EXEMenu());
+				FlxG.sound.music.fadeOut(0.3);
 				transitioning = true;
 			}
 
@@ -156,6 +173,8 @@ class MajinAccess extends MusicBeatState
 			PlayState.storyWeek = 0;
 			PlayState.campaignScore = 0;
 			PlayState.campaignMisses = 0;
+
+			toSong = true;
 		}
 		catch (e:Dynamic)
 		{
@@ -163,5 +182,14 @@ class MajinAccess extends MusicBeatState
 			return false;
 		}
 		return true;
+	}
+
+	override function destroy()
+	{
+		if (!toSong){
+			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+			CustomShapeTransition.shape = HEAD;
+		}
+		super.destroy();
 	}
 }

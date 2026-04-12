@@ -383,6 +383,7 @@ class EXEFreeplay extends MusicBeatState
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			FlxG.switchState(() -> new EXEMenu());
+			FlxG.sound.music.fadeOut(0.3);
 			return;
 		}
 

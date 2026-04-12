@@ -268,6 +268,7 @@ class ExtrasMenu extends MusicBeatState
     private function exitToMainMenu():Void
     {
         canMove = false;
+        FlxG.sound.music.fadeOut(0.3);
         FlxG.switchState(new EXEMenu());
     }
 
@@ -501,6 +502,8 @@ class ExtrasMenu extends MusicBeatState
         box = null;
         sketch1 = null;
         sketch2 = null;
+
+        FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 
         super.destroy();
     }

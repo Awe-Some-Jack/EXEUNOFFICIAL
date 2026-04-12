@@ -198,6 +198,7 @@ class EXEMenu extends MusicBeatState
 
 	function executeOption():Void
 	{
+		if (selectedOptionIndex != 4) FlxG.sound.music.fadeOut(0.3);
 		switch (selectedOptionIndex)
 		{
 			case 0: FlxG.switchState(() -> new states.SoundTest());
@@ -349,7 +350,7 @@ class EXEMenu extends MusicBeatState
 			Song.loadFromJson(Paths.formatToSongPath(song), Paths.formatToSongPath(song));
 
 			PlayState.storyPlaylist = [song];
-			PlayState.isStoryMode = true;
+			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = 1;
 			PlayState.storyWeek = 0;
 			PlayState.campaignScore = 0;
@@ -357,7 +358,7 @@ class EXEMenu extends MusicBeatState
 
 			LoadingState.prepareToSong();
 			LoadingState.loadAndSwitchState(new PlayState());
-			FlxG.sound.music.stop();
+			FlxG.sound.music.fadeOut(0.3);
 		}
 		catch (e:Dynamic)
 		{

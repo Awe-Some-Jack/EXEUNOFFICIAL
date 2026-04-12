@@ -181,8 +181,6 @@ class EXETitle extends MusicBeatState
 	{
 		if (videoPlaying)
 		{
-			if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.ESCAPE || FlxG.keys.justPressed.SPACE)
-				onVideoEnd();
 			super.update(elapsed);
 			return;
 		}
@@ -302,6 +300,7 @@ class EXETitle extends MusicBeatState
 		if (controls.ACCEPT && fridgeStatus == fridgeInputs.length)
 		{
 			fridgeStatus = 0;
+			CustomShapeTransition.shape = SUNKY;
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 			FlxTween.tween(whiteBG, {alpha: 1}, 0.8);
 			FlxG.sound.music.fadeOut(0.5);

@@ -28,6 +28,7 @@ class SoundTest extends MusicBeatState
 
 	var backdrop:FlxBackdrop;
 	var titleText:FlxText;
+	var whiteBG:FlxSprite;
 
 	var pcmLabel:FlxText;
 	var daLabel:FlxText;
@@ -58,6 +59,12 @@ class SoundTest extends MusicBeatState
 		createNumbers();
 		startArrowAnimation();
 		updateTextColors();
+
+		whiteBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
+		whiteBG.alpha = 0;
+		whiteBG.scrollFactor.set();
+		whiteBG.screenCenter();
+		add(whiteBG);
 
 		Paths.clearUnusedMemory();
 
@@ -260,15 +267,18 @@ class SoundTest extends MusicBeatState
 		return (value < 10) ? '0' + value : Std.string(value);
 	}
 
+	var transitioning:Bool = false;
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 
-		if (subState != null)
-			return;
+		if (subState != null) return;
+		if (transitioning) return;
 
 		if (Controls.instance.BACK)
 		{
+			FlxG.sound.music.fadeOut(0.3);
+			transitioning = true;
 			FlxG.switchState(() -> new EXEMenu());
 			return;
 		}
@@ -283,14 +293,27 @@ class SoundTest extends MusicBeatState
 			{
 				if (pcmValue == value[0] && daValue == value[1])
 				{
-					loadSong(weekName, true);
+					transitioning = true;
+					FlxG.sound.play(Paths.sound('confirmMenu'));
+					FlxTween.tween(whiteBG, {alpha: 1}, 1);
+					new FlxTimer().start(1, function(tmr:FlxTimer){
+						loadSong(weekName, true);
+						FlxG.sound.music.fadeOut(0.3);
+					});
 					break;
 				}
 			}
 
 			if (pcmValue == 12 && daValue == 25)
 			{
-				FlxG.switchState(() -> new states.access.MajinAccess());
+				CustomShapeTransition.shape = INFINITE;
+				transitioning = true;
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				FlxTween.tween(whiteBG, {alpha: 1}, 1);
+				new FlxTimer().start(1, function(tmr:FlxTimer){
+					FlxG.switchState(() -> new states.access.MajinAccess());
+					FlxG.sound.music.fadeOut(0.3);
+				});
 				return;
 			}
 		}

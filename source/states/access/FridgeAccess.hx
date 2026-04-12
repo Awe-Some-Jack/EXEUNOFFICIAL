@@ -16,9 +16,12 @@ class FridgeAccess extends MusicBeatState
 	var camFollow:FlxObject;
 
 	var transitioning:Bool = true;
+	var toSong:Bool = false;
 	override function create()
 	{
 		super.create();
+
+		CustomShapeTransition.shape = SUNKY;
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/wall.png'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
@@ -169,6 +172,7 @@ class FridgeAccess extends MusicBeatState
 			if (Controls.instance.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
+				FlxG.sound.music.fadeOut(0.3);
 				FlxG.switchState(() -> new EXEMenu());
 				transitioning = true;
 			}
@@ -248,6 +252,8 @@ class FridgeAccess extends MusicBeatState
 			PlayState.storyWeek = 0;
 			PlayState.campaignScore = 0;
 			PlayState.campaignMisses = 0;
+
+			toSong = true;
 		}
 		catch (e:Dynamic)
 		{
@@ -259,7 +265,10 @@ class FridgeAccess extends MusicBeatState
 
 	override function destroy()
 	{
-		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+		if (!toSong) {
+			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+			CustomShapeTransition.shape = HEAD;
+		}
 		super.destroy();
 	}
 }

@@ -437,6 +437,7 @@ class StoryModeState extends MusicBeatState
 				{
 					FlxG.switchState(() -> new EXEMenu());
 					super.update(elapsed);
+					FlxG.sound.music.fadeOut(0.3);
 					return;
 				}
 

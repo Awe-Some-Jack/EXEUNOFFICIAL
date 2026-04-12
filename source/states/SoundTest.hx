@@ -306,7 +306,7 @@ class SoundTest extends MusicBeatState
 
 			if (pcmValue == 12 && daValue == 25)
 			{
-				CustomShapeTransition.shape = INFINITE;
+				CustomShapeTransition.shape = CustomShapeTransition.getShapeByString('INFINITE');
 				transitioning = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				FlxTween.tween(whiteBG, {alpha: 1}, 1);

@@ -300,7 +300,7 @@ class EXETitle extends MusicBeatState
 		if (controls.ACCEPT && fridgeStatus == fridgeInputs.length)
 		{
 			fridgeStatus = 0;
-			CustomShapeTransition.shape = SUNKY;
+			CustomShapeTransition.shape = CustomShapeTransition.getShapeByString('SUNKY');
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 			FlxTween.tween(whiteBG, {alpha: 1}, 0.8);
 			FlxG.sound.music.fadeOut(0.5);

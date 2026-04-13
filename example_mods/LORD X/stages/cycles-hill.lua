@@ -12,24 +12,26 @@ local CAM_UNLOCK_STEP = 101
 local HB_ELEMENTS = {'hbHealth', 'hbHealth2', 'separatorHealth'}
 
 local sprites = {
-	{name = 'sky',       path = 'cycles/sky',          x = -1079, y = -212,  scaleX = 1.3, scaleY = 1.2},
-	{name = 'mountains', path = 'cycles/motains_alph', x = -1250, y = 13,   scaleX = 0.81, scaleY = 0.7},
-	{name = 'clouds',    path = 'cycles/clouds',       x = -1499, y = -500, scaleX = 0.95, scaleY = 0.55, alpha = 0.2},
-	{name = 'hills',     path = 'cycles/motains',      x = -1075, y = 44,   scaleX = 0.76, scaleY = 0.75},
-	{name = 'water',     path = 'cycles/water',        x = -1069, y = 1000, scaleX = 0.8, scaleY = 0.55},
-	{name = 'treesBack', path = 'cycles/treesBack',    x = -1347, y = -297, scaleX = 0.82, scaleY = 0.85},
-	{name = 'eye',       path = 'cycles/eye',          x = -614,  y = 722,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 12'},
-	{name = 'knuxd',     path = 'cycles/knuxd',        x = -339,  y = 243,  animated = true, prefix = 'knuxd'},
-	{name = 'grass',     path = 'cycles/grass',        x = -1027, y = 85,   scaleX = 0.75, scaleY = 0.7},
-	{name = 'treeFront', path = 'cycles/treeFront',    x = 872,   y = 30,   scaleX = 0.67, scaleY = 0.72},
-	{name = 'plants2',   path = 'cycles/plant2',       x = 601,   y = 797,  scaleX = 0.9, scaleY = 0.9},
-	{name = 'plants1',   path = 'cycles/plant1',       x = -412,  y = 871,  scaleX = 0.75, scaleY = 0.75},
+	{name = 'sky',       path = 'cycles/sky',                        x = -1079, y = -212,  scaleX = 1.3, scaleY = 1.2},
+	{name = 'mountains', path = 'cycles/motains_alph',               x = -1250, y = 13,   scaleX = 0.81, scaleY = 0.7},
+	{name = 'clouds',    path = 'cycles/clouds',                     x = -1499, y = -500, scaleX = 0.95, scaleY = 0.55, alpha = 0.2},
+	{name = 'hills',     path = 'cycles/motains',                    x = -1075, y = 44,   scaleX = 0.76, scaleY = 0.75},
+	{name = 'waterfalls',path = 'cycles/fondo animado/waterfalls',   x = -1075, y = 44,   animated = true, prefix = "idle", scaleX = 0.76, scaleY = 0.75, fps = 12},
+	{name = 'water',     path = 'cycles/water',                      x = -1069, y = 1000, scaleX = 0.8, scaleY = 0.55},
+	{name = 'grass',     path = 'cycles/grass',                      x = -1027, y = 85,   scaleX = 0.75, scaleY = 0.7},
+	{name = 'knuxd',     path = 'cycles/knuxd',                      x = -339,  y = 243,  animated = true, prefix = 'knuxd'},
+	{name = 'treesBack', path = 'cycles/fondo animado/plant 1',      x = -1047, y = 0,    animated = true, prefix = "Símbolo 43", scaleX = 0.82, scaleY = 0.85},
+	{name = 'eye',       path = 'cycles/fondo animado/ojo',          x = -614,  y = 722,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 12'},
+	{name = 'flor1',     path = 'cycles/fondo animado/flor',         x = 914,   y = 922,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 39'},
+	{name = 'eye',       path = 'cycles/fondo animado/ojo',          x = -614,  y = 722,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 12'},
+	{name = 'flor2',     path = 'cycles/fondo animado/flor 2',       x = -414,  y = 1022,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 40'},
+	{name = 'treeFront', path = 'cycles/fondo animado/plant t',      x = 1372,  y = 390,  animated = true, prefix = 'Símbolo 50',  scaleX = 0.67, scaleY = 0.72},
 }
 
 local function addSprite(def)
 	if def.animated then
 		makeAnimatedLuaSprite(def.name, def.path, def.x, def.y)
-		addAnimationByPrefix(def.name, 'idle', def.prefix, 24, true)
+		addAnimationByPrefix(def.name, 'idle', def.prefix, def.fps or 24, true)
 	else
 		makeLuaSprite(def.name, def.path, def.x, def.y)
 	end
@@ -70,6 +72,13 @@ function onCreate()
 	setProperty('overlay.alpha', 0)
 	setBlendMode('overlay', 'add')
 	addLuaSprite('overlay')
+
+	-- EYES --
+	makeLuaSprite('ais', 'characters/ojos cycles', getMidpointX('dad') - 280, getMidpointY('dad') - 530)
+	setProperty('ais.alpha', 0)
+	setBlendMode('ais', 'add')
+	scaleObject('ais', 0.9, 0.9)
+	addLuaSprite('ais', true)
 end
 
 function onCreatePost()
@@ -167,6 +176,9 @@ function onEvent(e, v1, v2)
 			for _, chars in ipairs({"dad", "boyfriend"}) do
 				setProperty(chars..'.alpha', 0)
 			end
+
+			setProperty('ais.alpha', 1)
+			doTweenAlpha('aisAlpha', 'ais', 0, 0.5)
 		end
 	end
 end

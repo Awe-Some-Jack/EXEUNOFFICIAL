@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
+			"offsets": [586, 159],
 			"loop": true,
-			"offsets": [599, 160],
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "A I",
-			"indices": []
+			"indices": [],
+			"name": "A I"
 		},
 		{
+			"offsets": [750, 218],
 			"loop": false,
-			"offsets": [763, 201],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "a L",
-			"indices": []
+			"indices": [],
+			"name": "a L"
 		},
 		{
+			"offsets": [581, 160],
 			"loop": false,
-			"offsets": [596, 158],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "a R",
-			"indices": []
+			"indices": [],
+			"name": "a R"
 		},
 		{
+			"offsets": [649, 160],
 			"loop": false,
-			"offsets": [643, 160],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "a D",
-			"indices": []
+			"indices": [],
+			"name": "a D"
 		},
 		{
+			"offsets": [659, 352],
 			"loop": false,
-			"offsets": [673, 318],
-			"anim": "singUP",
 			"fps": 24,
-			"name": "a U",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "a U"
 		}
 	],
 	"vocals_file": "",

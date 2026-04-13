@@ -1,51 +1,51 @@
 {
 	"animations": [
 		{
+			"offsets": [730, 238],
 			"loop": false,
-			"offsets": [670, 9],
+			"fps": 24,
+			"anim": "ha",
+			"indices": [],
+			"name": "talk"
+		},
+		{
+			"loop": false,
+			"offsets": [646, 38],
 			"anim": "idle",
 			"fps": 24,
-			"name": "idlee",
+			"name": "2 idle",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [662, -20],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Símbolo 221",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [652, 64],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "Símbolo 222",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [664, 19],
+			"offsets": [643, 32],
 			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "Símbolo 219",
+			"name": "2 right",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [688, 13],
+			"offsets": [663, -3],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "2 down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [714, 36],
 			"anim": "singLEFT",
 			"fps": 24,
-			"name": "Símbolo 220",
+			"name": "2 left",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [930, 239],
-			"anim": "ha",
+			"offsets": [653, 66],
+			"anim": "singUP",
 			"fps": 24,
-			"name": "talk",
+			"name": "2 up",
 			"indices": []
 		}
 	],

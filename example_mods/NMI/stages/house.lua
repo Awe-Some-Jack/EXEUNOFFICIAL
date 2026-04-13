@@ -1,5 +1,31 @@
 local separation = 50
 
+runHaxeCode([[
+	import flixel.math.FlxAngle;
+	function setShaderFrameInfo(obj:String) {
+		var char:FlxSprite;
+		switch(obj) {
+			case 'boyfriend':
+				char = game.boyfriend;
+			case 'dad':
+				char = game.dad;
+			case 'gf':
+				char = game.gf;
+		}
+
+        char.animation.callback = function(name:String, frameNumber:Int, frameIndex:Int)
+		{
+			if (char.shader != null) {
+				char.shader.setFloatArray('uFrameBounds', [char.frame.uv.x, char.frame.uv.y, char.frame.uv.width, char.frame.uv.height]);
+				char.shader.setFloat('angOffset', char.frame.angle * FlxAngle.TO_RAD);
+			}
+        }
+	}
+]])
+
+
+for i = 1,4 do precacheImage('renders/render'..i) end
+
 setProperty('skipArrowStartTween', true)
 function onCreatePost()
 	--precache video
@@ -7,6 +33,8 @@ function onCreatePost()
 	setProperty('inCutscene', false)
 	setProperty('boyfriend.alpha', 0)
 	addCharacterToList('nmi2', 'dad')
+	addCharacterToList('nmi3', 'dad')
+	addCharacterToList('finaldd', 'boyfriend')
 	setScrollFactor('boyfriend', 0.3, 0.3)
 
 	for _,obj in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(obj..'.alpha') end
@@ -78,10 +106,42 @@ function onCreatePost()
 	scaleObject('floorpov', 1.1, 1.1)
 	setProperty('floorpov.alpha', 0.0001)
 
+	--bg 3
+
+	makeLuaSprite('room', 'bg/room/4', -960, -660)
+	addLuaSprite('room')
+	scaleObject('room', 0.9, 0.9)
+	setProperty('room.alpha', 0.0001)
+
+	makeLuaSprite('roomfg1', 'bg/room/1', -1060, -360)
+	addLuaSprite('roomfg1')
+	scaleObject('roomfg1', 0.9, 0.9)
+	setScrollFactor('roomfg1', 1.2, 1.2)
+	setProperty('roomfg1.alpha', 0.0001)
+
+	makeLuaSprite('roomfg2', 'bg/room/2', -960, -810)
+	addLuaSprite('roomfg2')
+	scaleObject('roomfg2', 0.9, 0.9)
+	setScrollFactor('roomfg2', 1.2, 1.2)
+	setProperty('roomfg2.alpha', 0.0001)
+
+	makeLuaSprite('roomfg3', 'bg/room/3', -960, -810)
+	addLuaSprite('roomfg3')
+	scaleObject('roomfg3', 0.9, 0.9)
+	setScrollFactor('roomfg3', 1.2, 1.2)
+	setProperty('roomfg3.alpha', 0.0001)
+
+	makeLuaSprite('overlay', 'bg/room/5')
+	addLuaSprite('overlay')
+	scaleObject('overlay', 0.34, 0.34)
+	screenCenter('overlay')
+	setObjectCamera('overlay', 'other')
+	setProperty('overlay.alpha', 0.0001)
+
 	makeLuaSprite('whiteBG')
 	makeGraphic('whiteBG', screenWidth, screenHeight, 'FFFFFF')
-	addLuaSprite('whiteBG')
 	setObjectCamera('whiteBG', 'hud')
+	setObjectOrder('whiteBG', getObjectOrder('hbBG') - 1)
 	screenCenter('whiteBG')
 	setProperty('whiteBG.alpha', 0)
 end
@@ -108,11 +168,13 @@ function onTimerCompleted(t)
 		setProperty('fgtv2.color', getColorFromHex('FFFFFF'))
 		setProperty('tvglow.alpha', 0)
 	end
+	if t == 'sexonomorexd' then setProperty('cameraSpeed', 1) end
+	if stringStartsWith(t, 'render') then doTweenAlpha(t, t, 0, crochet / (1000 / 8), 'cubeInOut') end
 end
 
 local canRandomStatic = false
 local currentBG = 1
-function onEvent(n,v1)
+function onEvent(n,v1,v2)
 	if n == 'innocenceEvents' then
 		if v1 == 'hudappear' then
 			for _,obj in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do doTweenAlpha(obj, obj, 1, crochet / 250) end
@@ -148,10 +210,11 @@ function onEvent(n,v1)
 		if v1 == 'changebg' then
 			removeSpriteShader('dad')
 			triggerEvent('Change Character', 'dad', 'nmi2')
+			triggerEvent('cameracenter', 'false')
 			triggerEvent('Set customCamera Angle', 'bf', '-5')
 			triggerEvent('Set Character Offset', 'dad', '60')
 			triggerEvent('Set Character Offset', 'bf', '150')
-			triggerEvent('Set customCamera Zoom', 'MiddleZoom', '1')
+			triggerEvent('Set customCamera Zoom', 'OGZoom', '1')
 			triggerEvent('Change Health Damage', '0.015')
 			callMethod('dad.setPosition', {100, 150})
 			setProperty('boyfriend.alpha', 0.5)
@@ -179,6 +242,75 @@ function onEvent(n,v1)
 			for i = 0,getProperty('notes.length')-1 do setProperty('notes.members['..i..'].texture', 'noteSkins/NOTERED_assets') end
 			for i = 0,getProperty('unspawnNotes.length')-1 do setProperty('unspawnNotes['..i..'].texture', 'noteSkins/NOTERED_assets') end
 		end
+		if v1 == 'flashback' then
+			makeLuaSprite('render'..v2, 'renders/render'..v2)
+			scaleObject('render'..v2, 0.34, 0.34)
+			addLuaSprite('render'..v2)
+			setObjectCamera('render'..v2, 'other')
+			screenCenter('render'..v2)
+			doTweenAlpha('render'..v2, 'render'..v2, 0, crochet / (1000 / 8), 'cubeInOut')
+		end
+		if v1 == 'redfadein' then
+			setProperty('whiteBG.color', getColorFromHex('FF0000'))
+			doTweenAlpha('whiteBG', 'whiteBG', 1, crochet / (1000 / 4), 'cubeIn')
+		end
+		if v1 == 'changebgfinal' then
+			cancelTween('whiteBG')
+			doTweenAlpha('whiteBG', 'whiteBG', 0, crochet / (1000 / 4), 'cubeOut')
+
+			cancelTween('dasdadsdafasdg54r')
+			triggerEvent('Set customCamera Zoom', 'OGZoom', '0.6')
+			setProperty('camGame.zoom', 0.6)
+			setProperty('cameraSpeed', 9999)
+			runTimer('sexonomorexd', 0.1)
+
+			triggerEvent('Change Character', 'dad', 'nmi3')
+			triggerEvent('Change Character', 'bf', 'finaldd')
+			triggerEvent('Set customCamera Position', 'bf', '1300, 250')
+			triggerEvent('Set customCamera Angle', 'bf', '0')
+			triggerEvent('Set Character Offset', 'dad', '25')
+			triggerEvent('Set Character Offset', 'bf', '25')
+
+			removeLuaSprite('sky', true)
+			removeLuaSprite('clouds', true)
+			removeLuaSprite('trees3', true)
+			removeLuaSprite('trees2', true)
+			removeLuaSprite('trees1', true)
+			removeLuaSprite('floorpov', true)
+
+			setProperty('room.alpha', 1)
+			setProperty('roomfg1.alpha', 1)
+			setProperty('roomfg2.alpha', 1)
+			setProperty('roomfg3.alpha', 1)
+			doTweenAlpha('overlay', 'overlay', 1, crochet / 500)
+
+			setProperty('boyfriend.alpha', 1)
+			setScrollFactor('boyfriend', 1, 1)
+			callMethod('dad.setPosition', {-300, -50})
+			callMethod('boyfriend.setPosition', {1410, 80})
+			
+			currentBG = 3
+
+			for i = 0,7 do setProperty('strumLineNotes.members['..i..'].texture', 'noteSkins/NOTE_assets') end
+			for i = 0,getProperty('notes.length')-1 do setProperty('notes.members['..i..'].texture', 'noteSkins/NOTE_assets') end
+			for i = 0,getProperty('unspawnNotes.length')-1 do setProperty('unspawnNotes['..i..'].texture', 'noteSkins/NOTE_assets') end
+
+			if shadersEnabled then
+				for _,char in ipairs({'boyfriend'}) do
+					setSpriteShader(char, 'DropShadowShader')
+					setShaderFloat(char, 'hue', 0)
+					setShaderFloat(char, 'saturation', 0)
+					setShaderFloat(char, 'contrast', 0)
+					setShaderFloat(char, 'str', 1)
+					setShaderFloat(char, 'brightness', -30)
+					setShaderFloat(char, 'thr', 0.1)
+					setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
+					runHaxeFunction('setShaderFrameInfo', {char})
+				end
+				setShaderFloat('boyfriend', 'ang', math.rad(180))
+				setShaderFloat('boyfriend', 'dist', 20)
+			end
+		end
 	end
 end
 
@@ -197,8 +329,8 @@ local oldHitSection = false
 function onSectionHit()
 	if currentBG ~= 2 then return end
 	if mustHitSection ~= oldHitSection then
+		cancelTween('dasdadsdafasdg54r')
 		triggerEvent('Set customCamera Zoom', 'OGZoom', (mustHitSection and '0.75' or '1'))
-		triggerEvent('cameracenter', 'false')
 		doTweenAlpha('dasdadsdafasdg54r', 'boyfriend', mustHitSection and 1 or 0.5, crochet / 250, 'cubeOut')
 	end
 	oldHitSection = mustHitSection

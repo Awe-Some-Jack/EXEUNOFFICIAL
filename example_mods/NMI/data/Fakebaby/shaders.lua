@@ -67,6 +67,10 @@ function onEvent(n,v1,v2)
 			setProperty('bloom2.x', 0)
 			setProperty('bloom3.x', 1)
 		end
+		if v1 == 'changebgfinal' then
+			setShaderFloat('fisheye', 'amount', -0.4)
+			setProperty('bruh.x', 0)
+		end
 	end
 end
 

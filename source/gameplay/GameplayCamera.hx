@@ -404,6 +404,14 @@ class GameplayCamera
 				switch (v1.toLowerCase()) {
 					case 'middlezoom':  settings.MiddleZoom = Std.parseFloat(v2);
 					case 'ogzoom': settings.OGZoom = Std.parseFloat(v2);
+				}
+
+			case 'Set customCamera Angle':
+				var angle:Float = Std.parseFloat(v2);
+				switch (v1.toLowerCase()) {
+					case 'bf':  settings.Angle = angle;
+					case 'dad': settings.DADAngle = angle;
+				}
 
 			case 'Set customCamera Position':
 				var split = v2.split(', ');

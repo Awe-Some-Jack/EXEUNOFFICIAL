@@ -4,7 +4,7 @@
 	"directory": "",
 	"hide_girlfriend": true,
 	
-	"boyfriend": [0,0],
+	"boyfriend": [800,550],
 	"opponent": [0,0],
 	"girlfriend": [0,0]
 }

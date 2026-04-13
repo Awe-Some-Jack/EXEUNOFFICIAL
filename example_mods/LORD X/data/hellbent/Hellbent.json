@@ -2705,7 +2705,9 @@
 		[
 			99655.7218177179,
 			[
-				["hellbentEvents", "changeBG", ""]
+				["hellbentEvents", "changeBG", ""],
+				["Set customCamera Position", "bf", "500, 1220"],
+				["Set Property", "camZoomingMult", "0"]
 			]
 		],
 		[
@@ -2719,6 +2721,12 @@
 			108497.827080876,
 			[
 				["hellbentEvents", "noteposs", ""]
+			]
+		],
+		[
+			109760.984975613,
+			[
+				["Set Property", "camZoomingMult", "1"]
 			]
 		],
 		[
@@ -2930,6 +2938,7 @@
 			181760.984975613,
 			[
 				["Tween Camera Zoom", "0.4, true", "4, sineInOut"],
+				["Set Property", "camZoomingMult", "0"],
 				["Tweening Camera", "-200, -350", "4, sineInOut"]
 			]
 		],
@@ -2938,6 +2947,12 @@
 			[
 				["Tweening Camera", "140, 180", "4, sineInOut"],
 				["Tween Camera Zoom", "0.9, true", "4, sineInOut"]
+			]
+		],
+		[
+			190603.090238771,
+			[
+				["Set Property", "camZoomingMult", "1"]
 			]
 		],
 		[

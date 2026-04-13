@@ -1,51 +1,51 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
 			"loop": true,
-			"fps": 24,
+			"offsets": [0, 0],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [190, -4],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left instancia 1"
+			"fps": 24,
+			"name": "left instancia 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [88, -3],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [33, 213],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [-4, -3],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-4, -3],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
 	"image": "characters/nmi 2",
 	"position": [0, 0],
-	"healthicon": "nmi2",
+	"healthicon": "nmi",
 	"flip_x": false,
 	"healthbar_colors": [254, 254, 254],
 	"camera_position": [0, 0],

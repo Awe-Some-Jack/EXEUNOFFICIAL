@@ -18,13 +18,27 @@ function onCreatePost()
 
 	--bg 1
 
+	makeAnimatedLuaSprite('daSTAT', 'daSTAT', -255, -135)
+	scaleObject('daSTAT', 3, 3)
+	addAnimationByPrefix('daSTAT', 'idle', 'staticFLASH', 24, true)
+	addLuaSprite('daSTAT')
+	setProperty('daSTAT.color', getColorFromHex('FF0000'))
+	setProperty('daSTAT.alpha', 0)
+
 	makeLuaSprite('bgtv', 'bg/tv/3', -1700, -800)
 	addLuaSprite('bgtv', true)
 
-	makeLuaSprite('fgtv1', 'bg/tv/1', -1700, -800)
+	makeLuaSprite('tvglow', 'bg/tv/glow', -1700, -800)
+	addLuaSprite('tvglow', true)
+	setBlendMode('tvglow', 'screen')
+	setProperty('tvglow.alpha', 0)
+
+	makeLuaSprite('fgtv1', 'bg/tv/1', -1300, -1000)
+	setScrollFactor('fgtv1', 0.5, 0.5)
 	addLuaSprite('fgtv1', true)
 
-	makeLuaSprite('fgtv2', 'bg/tv/2', -1700, -800)
+	makeLuaSprite('fgtv2', 'bg/tv/2', -2100, -1000)
+	setScrollFactor('fgtv2', 1.2, 1.2)
 	addLuaSprite('fgtv2', true)
 
 	--bg 2
@@ -59,10 +73,17 @@ function onCreatePost()
 	setScrollFactor('trees1', 0.85, 0.85)
 	setProperty('trees1.alpha', 0.0001)
 
-	makeLuaSprite('floorpov', 'bg/pov/floor', -830, -100)
+	makeLuaSprite('floorpov', 'bg/pov/floor', -830, -110)
 	addLuaSprite('floorpov')
 	scaleObject('floorpov', 1.1, 1.1)
 	setProperty('floorpov.alpha', 0.0001)
+
+	makeLuaSprite('whiteBG')
+	makeGraphic('whiteBG', screenWidth, screenHeight, 'FFFFFF')
+	addLuaSprite('whiteBG')
+	setObjectCamera('whiteBG', 'hud')
+	screenCenter('whiteBG')
+	setProperty('whiteBG.alpha', 0)
 end
 
 function onCountdownTick(c) setProperty('countdownReady.x', -1000) setProperty('countdownSet.x', -1000) setProperty('countdownGo.x', -1000) end
@@ -80,8 +101,16 @@ function onTimerCompleted(t)
 		setProperty('inCutscene', false)
 		setProperty('videoCutscene.videoSprite.volumeAdjust', 0)
 	end
+	if t == 'daSTAT' then
+		setProperty('daSTAT.alpha', 0)
+		setProperty('bgtv.color', getColorFromHex('FFFFFF'))
+		setProperty('fgtv1.color', getColorFromHex('FFFFFF'))
+		setProperty('fgtv2.color', getColorFromHex('FFFFFF'))
+		setProperty('tvglow.alpha', 0)
+	end
 end
 
+local canRandomStatic = false
 local currentBG = 1
 function onEvent(n,v1)
 	if n == 'innocenceEvents' then
@@ -101,16 +130,36 @@ function onEvent(n,v1)
 		end
 
 		if v1 == 'startzoomin' then
-			if getSongPosition() < 62020 then startTween('zoomIn', 'camGame', {zoom = 30}, crochet / (1000 / 8), {ease = 'cubeIn'}) end
+			if getSongPosition() < 62020 then
+				startTween('tween_zoomIn', 'camGame', {zoom = 30}, crochet / (1000 / 35), {ease = 'expoIn'})
+			end
+		end
+		if v1 == 'daprespeedup' then
+			canRandomStatic = true
+		end
+		if v1 == 'speedupzoom' then
+			if getSongPosition() < 62020 then
+				cancelTween('zoomIn')
+				callMethodFromClass('flixel.tweens.FlxTween', 'cancelTweensOf', {instanceArg('camGame')})
+				startTween('tween_zoomIn', 'camGame', {zoom = 30}, crochet / (1000 / 2), {ease = 'expoIn'})
+				doTweenAlpha('whiteBG', 'whiteBG', 1, crochet / (1000 / 1.5), 'expoIn')
+			end
 		end
 		if v1 == 'changebg' then
+			removeSpriteShader('dad')
 			triggerEvent('Change Character', 'dad', 'nmi2')
 			triggerEvent('Set customCamera Angle', 'bf', '-3')
+			triggerEvent('Set Character Offset', 'bf', '150')
 			triggerEvent('Set customCamera Zoom', 'MiddleZoom', '1')
 			triggerEvent('Change Health Damage', '0.015')
 			callMethod('dad.setPosition', {100, 150})
 			setProperty('boyfriend.alpha', 0.5)
 
+			cancelTween('whiteBG')
+			setProperty('whiteBG.alpha', 0)
+
+			removeLuaSprite('daSTAT', true)
+			removeLuaSprite('tvglow', true)
 			removeLuaSprite('bgtv', true)
 			removeLuaSprite('fgtv1', true)
 			removeLuaSprite('fgtv2', true)
@@ -122,21 +171,20 @@ function onEvent(n,v1)
 			setProperty('trees1.alpha', 1)
 			setProperty('floorpov.alpha', 1)
 
+			canRandomStatic = false
 			currentBG = 2
 		end
 	end
 end
 
-function goodNoteHitPre(id,nd,nt,isn)
-	if currentBG ~= 2 or nt == 'No Animation' then return end
-	if nd == 0 then
-		triggerEvent('Set Character Offset', 'bf', '150')
-	elseif nd == 1 then
-		triggerEvent('Set Character Offset', 'bf', '75')
-	elseif nd == 2 then
-		triggerEvent('Set Character Offset', 'bf', '25')
-	elseif nd == 3 then
-		triggerEvent('Set Character Offset', 'bf', '150')
+function onUpdatePost()
+	if canRandomStatic and getProperty('daSTAT.alpha') == 0 and getRandomBool(5) then
+		setProperty('daSTAT.alpha', 1)
+		runTimer('daSTAT', getRandomFloat(0.02, 0.1))
+		setProperty('bgtv.color', getColorFromHex('FF0000'))
+		setProperty('fgtv1.color', getColorFromHex('FF0000'))
+		setProperty('fgtv2.color', getColorFromHex('FF0000'))
+		setProperty('tvglow.alpha', 0.5)
 	end
 end
 

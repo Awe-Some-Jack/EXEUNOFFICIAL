@@ -17,6 +17,9 @@ function onCreatePost()
 	setShaderFloat('fisheye', 'amount', -0.1)
 
 	if shadersEnabled and not lowQuality then
+		setSpriteShader('dad', 'followedglitch')
+		setShaderFloat('dad', 'size', 0.002)
+
 		runHaxeCode("game.camGame.filters = [new ShaderFilter(game.getLuaObject('bruh').shader), new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('cab').shader), new ShaderFilter(game.getLuaObject('fisheye').shader)];")
 	end
 end
@@ -44,11 +47,19 @@ function onEvent(n,v1,v2)
 			doTweenX('bloom2', 'bloom2', 0, crochet / (1000 / 8), 'expoOut')
 			doTweenX('bloom3', 'bloom3', 1, crochet / (1000 / 8), 'expoOut')
 		end
+		if v1 == 'daprespeedup' then
+			if getSongPosition() < 62020 then
+				cancelTween('bloom3')
+				doTweenX('bloom3', 'bloom3', 5, crochet / (1000 / 3), 'expoIn')
+			end
+		end
 		if v1 == 'changebg' then
+			cancelTween('bloom3')
+			setProperty('bloom3.x', 1)
 			setProperty('bruh.x', 0.002)
 		end
 		if v1 == 'lol' then
-			cancelTween('bloom2') cancelTween('bloom3')
+			cancelTween('bloom2')
 			setProperty('bloom2.x', -0.25)
 			setProperty('bloom3.x', 1.5)
 		end

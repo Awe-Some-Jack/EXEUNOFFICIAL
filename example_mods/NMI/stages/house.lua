@@ -3,7 +3,7 @@ local separation = 50
 setProperty('skipArrowStartTween', true)
 function onCreatePost()
 	--precache video
-	startVideo('fake baby intro hd', false, true, false, false)
+	startVideo('fakebaby', false, true, false, false)
 	setProperty('inCutscene', false)
 	setProperty('boyfriend.alpha', 0)
 	addCharacterToList('nmi2', 'dad')
@@ -43,7 +43,7 @@ function onCreatePost()
 
 	--bg 2
 
-	makeLuaSprite('sky', 'bg/pov/sky', -730, -100)
+	makeLuaSprite('sky', 'bg/pov/sky', -730, -300)
 	addLuaSprite('sky')
 	setScrollFactor('sky', 0.65, 0.65)
 	setProperty('sky.alpha', 0.0001)
@@ -55,25 +55,25 @@ function onCreatePost()
 	setScrollFactor('clouds', 0.5, 0.5)
 	setProperty('clouds.alpha', 0.0001)
 
-	makeLuaSprite('trees3', 'bg/pov/bg3', -750, -90)
+	makeLuaSprite('trees3', 'bg/pov/bg3', -750, -50)
 	addLuaSprite('trees3')
 	scaleObject('trees3', 1.1, 1.1)
 	setScrollFactor('trees3', 0.65, 0.65)
 	setProperty('trees3.alpha', 0.0001)
 	
-	makeLuaSprite('trees2', 'bg/pov/bg2', -760, -90)
+	makeLuaSprite('trees2', 'bg/pov/bg2', -760, -760)
 	addLuaSprite('trees2')
 	scaleObject('trees2', 1.1, 1.1)
 	setScrollFactor('trees2', 0.75, 0.75)
 	setProperty('trees2.alpha', 0.0001)
 
-	makeLuaSprite('trees1', 'bg/pov/bg1', -780, -90)
+	makeLuaSprite('trees1', 'bg/pov/bg1', -780, -760)
 	addLuaSprite('trees1')
 	scaleObject('trees1', 1.1, 1.1)
 	setScrollFactor('trees1', 0.85, 0.85)
 	setProperty('trees1.alpha', 0.0001)
 
-	makeLuaSprite('floorpov', 'bg/pov/floor', -830, -110)
+	makeLuaSprite('floorpov', 'bg/pov/floor', -830, -510)
 	addLuaSprite('floorpov')
 	scaleObject('floorpov', 1.1, 1.1)
 	setProperty('floorpov.alpha', 0.0001)
@@ -94,7 +94,7 @@ end
 
 function onTimerCompleted(t)
 	if t == 'startVideo' then
-		startVideo('fake baby intro hd', false, true)
+		startVideo('fakebaby', false, true)
 		runTimer('lol', 0.2)
 		setObjectCamera('videoCutscene', 'hud')
 		setObjectOrder('videoCutscene', 0)
@@ -148,7 +148,8 @@ function onEvent(n,v1)
 		if v1 == 'changebg' then
 			removeSpriteShader('dad')
 			triggerEvent('Change Character', 'dad', 'nmi2')
-			triggerEvent('Set customCamera Angle', 'bf', '-3')
+			triggerEvent('Set customCamera Angle', 'bf', '-5')
+			triggerEvent('Set Character Offset', 'dad', '60')
 			triggerEvent('Set Character Offset', 'bf', '150')
 			triggerEvent('Set customCamera Zoom', 'MiddleZoom', '1')
 			triggerEvent('Change Health Damage', '0.015')
@@ -173,6 +174,10 @@ function onEvent(n,v1)
 
 			canRandomStatic = false
 			currentBG = 2
+
+			for i = 0,7 do setProperty('strumLineNotes.members['..i..'].texture', 'noteSkins/NOTERED_assets') end
+			for i = 0,getProperty('notes.length')-1 do setProperty('notes.members['..i..'].texture', 'noteSkins/NOTERED_assets') end
+			for i = 0,getProperty('unspawnNotes.length')-1 do setProperty('unspawnNotes['..i..'].texture', 'noteSkins/NOTERED_assets') end
 		end
 	end
 end
@@ -192,7 +197,7 @@ local oldHitSection = false
 function onSectionHit()
 	if currentBG ~= 2 then return end
 	if mustHitSection ~= oldHitSection then
-		triggerEvent('Set customCamera Zoom', 'OGZoom', (mustHitSection and '0.75' or '1.1'))
+		triggerEvent('Set customCamera Zoom', 'OGZoom', (mustHitSection and '0.75' or '1'))
 		triggerEvent('cameracenter', 'false')
 		doTweenAlpha('dasdadsdafasdg54r', 'boyfriend', mustHitSection and 1 or 0.5, crochet / 250, 'cubeOut')
 	end

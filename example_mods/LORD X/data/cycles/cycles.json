@@ -274,7 +274,8 @@
 		[
 			105288.461538461,
 			[
-				["contrastFlash", "20, 0", "0.05, circOut"]
+				["contrastFlash", "20, 0", "0.05, circOut"],
+				["Play Animation", "ai", "dad"]
 			]
 		],
 		[
@@ -501,6 +502,13 @@
 				["contrastFlash", "0, 110", "0.7, circIn"]
 			]
 		],
+		[
+			150416.666666666,
+			[
+				["Play Animation", "thanos", "dad"]
+			]
+		],
+
 		[
 			150769.23076923,
 			[

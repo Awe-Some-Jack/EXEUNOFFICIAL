@@ -37,8 +37,6 @@ typedef CameraSettings = {
 class GameplayCamera
 {
 	public var camFollow:FlxObject;
-	public var defaultCamZoom:Float = 1.05;
-	public var cameraSpeed:Float = 1;
 	public var freezeCamera:Bool = false;
 	public var isCameraOnForcedPos:Bool = false;
 
@@ -86,10 +84,7 @@ class GameplayCamera
 
 	public function applyStageData(stageData:StageFile)
 	{
-		defaultCamZoom = stageData.defaultZoom;
-
-		if (stageData.camera_speed != null)
-			cameraSpeed = stageData.camera_speed;
+		PlayState.instance.defaultCamZoom = stageData.defaultZoom;
 
 		boyfriendCameraOffset  = stageData.camera_boyfriend  != null ? stageData.camera_boyfriend  : [0, 0];
 		opponentCameraOffset   = stageData.camera_opponent   != null ? stageData.camera_opponent   : [0, 0];
@@ -162,7 +157,7 @@ class GameplayCamera
 
 		playState.add(camFollow);
 		FlxG.camera.follow(camFollow, LOCKON, 0);
-		FlxG.camera.zoom = defaultCamZoom;
+		FlxG.camera.zoom = PlayState.instance.defaultCamZoom;
 		FlxG.camera.snapToTarget();
 	}
 
@@ -172,7 +167,7 @@ class GameplayCamera
 		if (PlayState.instance.camZooming)
 		{
 			var rate:Float = PlayState.instance.playbackRate;
-			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, Math.exp(-elapsed * (3.125 * 2) * PlayState.instance.camZoomingDecay * rate));
+			FlxG.camera.zoom = FlxMath.lerp(PlayState.instance.defaultCamZoom, FlxG.camera.zoom, Math.exp(-elapsed * (3.125 * 2) * PlayState.instance.camZoomingDecay * rate));
 			PlayState.instance.camHUD.zoom = FlxMath.lerp(1, PlayState.instance.camHUD.zoom, Math.exp(-elapsed * (3.125 * 2) * PlayState.instance.camZoomingDecay * rate));
 		}
 
@@ -245,9 +240,9 @@ class GameplayCamera
 		}
 
 		if (s.OverrideZoom)
-			defaultCamZoom = overrideZoomValue;
+			PlayState.instance.defaultCamZoom = overrideZoomValue;
 		else
-			defaultCamZoom = s.MiddleCamera ? s.MiddleZoom : s.OGZoom;
+			PlayState.instance.defaultCamZoom = s.MiddleCamera ? s.MiddleZoom : s.OGZoom;
 
 		if (PlayState.curStage == 'starved' && bf != null)
 			bf.alpha = FlxMath.lerp(bf.alpha, _targetAlpha, 0.1 * PlayState.instance.playbackRate);
@@ -405,7 +400,18 @@ class GameplayCamera
 				overrideZoomValue = Std.parseFloat(v1);
 
 			case 'Set customCamera Zoom':
-				settings.OverrideZoom = false;
+				var zoom:Float = Std.parseFloat(v2);
+				switch (v1.toLowerCase()) {
+					case 'middlezoom':  settings.MiddleZoom = Std.parseFloat(v2);
+					case 'ogzoom': settings.OGZoom = Std.parseFloat(v2);
+				}
+
+			case 'Set customCamera Angle':
+				var angle:Float = Std.parseFloat(v2);
+				switch (v1.toLowerCase()) {
+					case 'bf':  settings.Angle = angle;
+					case 'dad': settings.DADAngle = angle;
+				}
 
 			case 'Set customCamera Position':
 				var split = v2.split(', ');

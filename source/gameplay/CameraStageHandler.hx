@@ -24,14 +24,14 @@ class CameraStageHandler
 		// ---- tooslow ----
 		_handlers['tooslow'] = {
 			onSongStart: function(cam:GameplayCamera) {
-				cam.cameraSpeed     = 10000;
+				PlayState.instance.cameraSpeed     = 10000;
 				cam.settings.OffsetsBF  = 0;
 				cam.settings.OffsetsDAD = 0;
 				cam.settings.OffsetsGF  = 0;
 				cam.settings.Angle      = 0;
 			},
 			onStepHit: function(cam:GameplayCamera, curStep:Int) {
-				cam.cameraSpeed = (curStep == 1) ? 10000 : 1;
+				PlayState.instance.cameraSpeed = (curStep == 1) ? 10000 : 1;
 				if (curStep == 256) PlayState.instance.camZooming = false;
 				if (curStep == 796)
 				{
@@ -52,7 +52,7 @@ class CameraStageHandler
 		_handlers['you-cant-run'] = {
 			onStepHit: function(cam:GameplayCamera, curStep:Int) {
 				for (s in [0, 80, 528, 800, 1176])
-					cam.cameraSpeed = (curStep == s) ? 1000000 : 1;
+					PlayState.instance.cameraSpeed = (curStep == s) ? 1000000 : 1;
 				if (curStep == 128) cam.settings.MiddleCamera  = false;
 				if (curStep == 144) cam.settings.OverrideZoom  = false;
 				for (s in [432, 896, 1056, 1440])
@@ -86,9 +86,9 @@ class CameraStageHandler
 				cam.settings.OverrideZoom = false;
 			},
 			onStepHit: function(cam:GameplayCamera, curStep:Int) {
-				cam.cameraSpeed = (curStep >= 1168 && curStep < 1264) ? 10 : 1;
+				PlayState.instance.cameraSpeed = (curStep >= 1168 && curStep < 1264) ? 10 : 1;
 				for (s in [1296,2828,2912,2928,2944,3232,3236,3240,3244,3296,3300,3304,3308])
-					if (curStep == s) cam.cameraSpeed = 100000;
+					if (curStep == s) PlayState.instance.cameraSpeed = 100000;
 				if (curStep == 1296) { cam.settings.BFx  = 650;  cam.settings.BFy  = 850; cam.settings.DADx = 650;  cam.settings.DADy = 850; }
 				if (curStep == 1360) { cam.settings.DADx = 1150; cam.settings.DADy = 850; }
 				if (curStep == 448)    cam.settings.BFy  = 950;
@@ -105,7 +105,7 @@ class CameraStageHandler
 		// ---- yourself ----
 		_handlers['yourself'] = {
 			onStepHit: function(cam:GameplayCamera, curStep:Int) {
-				cam.cameraSpeed = (curStep == 768) ? 1000000 : 1;
+				PlayState.instance.cameraSpeed = (curStep == 768) ? 1000000 : 1;
 				if (curStep == 768)  cam.settings.OGZoom = 0.65;
 				if (curStep == 1344) { cam.settings.BFx = PlayState.instance.boyfriend.getMidpoint().x; cam.settings.BFy = 1250; }
 				if (curStep == 1472) { cam.settings.BFx = 2090; cam.settings.BFy = 1190; }
@@ -118,9 +118,9 @@ class CameraStageHandler
 		_handlers['hollow'] = {
 			onStepHit: function(cam:GameplayCamera, curStep:Int) {
 				for (s in [1, 2096, 2104, 2112, 2128])
-					if (curStep == s) cam.cameraSpeed = 1000000;
+					if (curStep == s) PlayState.instance.cameraSpeed = 1000000;
 				if (curStep != 1 && curStep != 2096 && curStep != 2104 && curStep != 2112 && curStep != 2128)
-					cam.cameraSpeed = 1;
+					PlayState.instance.cameraSpeed = 1;
 				for (s in [1056, 2064, 2128])
 					if (curStep == s) { cam.settings.MiddleCamera = true;  cam.settings.OverrideZoom = false; }
 				for (s in [1312, 2096])
@@ -137,7 +137,7 @@ class CameraStageHandler
 				                1624,1632,1640,1648,1656,1664,1680,1688,1696,1704,1712,1720];
 				var isFle = false;
 				for (s in fleSteps) if (curStep == s) { isFle = true; break; }
-				cam.cameraSpeed = isFle ? 10000 : 1;
+				PlayState.instance.cameraSpeed = isFle ? 10000 : 1;
 			},
 		};
 
@@ -146,11 +146,11 @@ class CameraStageHandler
 			onCreatePost: function(cam:GameplayCamera) {
 				PlayState.instance.triggerEvent('Tweening Camera',    '-320, 0',    '0.001, linear', 0);
 				PlayState.instance.triggerEvent('Tween Camera Zoom',  '1.4, true',  '0.001, linear', 0);
-				cam.cameraSpeed = 1000000;
+				PlayState.instance.cameraSpeed = 1000000;
 			},
 			onStepHit: function(cam:GameplayCamera, curStep:Int) {
-				cam.cameraSpeed = (curStep == 600) ? 1000000 : 1;
-				if (curStep == 1312) cam.cameraSpeed = 100;
+				PlayState.instance.cameraSpeed = (curStep == 600) ? 1000000 : 1;
+				if (curStep == 1312) PlayState.instance.cameraSpeed = 100;
 				for (s in [408, 1176, 1704, 1960, 2088])
 					if (curStep == s) { cam.settings.MiddleCamera = true;  cam.settings.OverrideZoom = false; }
 				for (s in [504, 1240, 1800, 2024])

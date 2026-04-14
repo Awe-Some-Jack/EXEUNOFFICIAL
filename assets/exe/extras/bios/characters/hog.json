@@ -1,0 +1,14 @@
+{
+	"display_name": "HOG",
+	"bio": "",
+	"icon": "hog",
+	"icon_offset": [786, 425],
+	"char_scale": 0.6,
+	"list_position": 9999,
+	"mod": "HOG",
+	"bio_appear": true,
+	"char_offset": [585, 320],
+	"char": "hog",
+	"flip_x": false,
+	"artist": ""
+}

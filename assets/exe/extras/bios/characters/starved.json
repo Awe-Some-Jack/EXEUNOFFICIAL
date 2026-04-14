@@ -1,0 +1,14 @@
+{
+	"display_name": "STARVED",
+	"bio": "",
+	"icon": "starved",
+	"icon_offset": [786, 425],
+	"char_scale": 0.6,
+	"list_position": 9999,
+	"mod": "STARVED",
+	"bio_appear": true,
+	"char_offset": [585, 280],
+	"char": "starved",
+	"flip_x": false,
+	"artist": ""
+}

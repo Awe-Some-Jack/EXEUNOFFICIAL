@@ -1,0 +1,14 @@
+{
+	"display_name": "FLEETWAY",
+	"bio": "",
+	"icon": "fleet",
+	"icon_offset": [786, 425],
+	"char_scale": 0.7,
+	"list_position": 9999,
+	"mod": "FLEETWAY",
+	"bio_appear": true,
+	"char_offset": [510, 220],
+	"char": "fleetway",
+	"flip_x": false,
+	"artist": ""
+}

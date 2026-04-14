@@ -1,0 +1,14 @@
+{
+	"display_name": "exetior",
+	"bio": "",
+	"icon": "exetior",
+	"icon_offset": [786, 425],
+	"char_scale": 0.6,
+	"list_position": 9999,
+	"mod": "EXETIOR",
+	"bio_appear": true,
+	"char_offset": [570, 285],
+	"char": "exetior",
+	"flip_x": false,
+	"artist": ""
+}

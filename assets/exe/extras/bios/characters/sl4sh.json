@@ -1,0 +1,14 @@
+{
+	"char_scale": 0.5,
+	"artist": "",
+	"bio_appear": true,
+	"bio": "",
+	"mod": "SL4SH",
+	"icon_offset": [786, 425],
+	"char_offset": [300, 100],
+	"flip_x": false,
+	"char": "sl4sh",
+	"icon": "sl4sh",
+	"display_name": "sl4sh",
+	"list_position": 9999
+}

@@ -42,7 +42,7 @@ import objects.BGSprite;
 
 import states.PlayState;
 import states.LoadingState;
-import states.extras.CharacterBios;
+import states.extras.bios.BIOS;
 import states.extras.dagarden.DAGarden;
 import states.extras.ExtrasMenu;
 

@@ -1,0 +1,14 @@
+{
+	"display_name": "mania",
+	"bio": "",
+	"icon": "crazytails",
+	"icon_offset": [786, 425],
+	"char_scale": 0.7,
+	"list_position": 9999,
+	"mod": "CRAZY TAILS",
+	"bio_appear": true,
+	"char_offset": [475, 225],
+	"char": "mania",
+	"flip_x": false,
+	"artist": ""
+}

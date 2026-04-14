@@ -45,30 +45,61 @@ class PsychUINumericStepper extends PsychUIInputText
 		value = defValue;
 	}
 
+	var _holdTimer:Float  = 0;
+	var _holdRepeat:Float = 0;
+	var _holdDir:Int      = 0; // +1 or -1
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if(FlxG.mouse.justPressed)
+		if (FlxG.mouse.justPressed)
 		{
-			if(buttonPlus != null && buttonPlus.exists && FlxG.mouse.overlaps(buttonPlus, camera))
+			if (buttonPlus != null && buttonPlus.exists && FlxG.mouse.overlaps(buttonPlus, camera))
 			{
 				buttonPlus.animation.play('pressed');
 				value += step;
 				_internalOnChange();
+				_holdDir   = 1;
+				_holdTimer = 0;
+				_holdRepeat = 0;
 			}
-			else if(buttonMinus != null && buttonMinus.exists && FlxG.mouse.overlaps(buttonMinus, camera))
+			else if (buttonMinus != null && buttonMinus.exists && FlxG.mouse.overlaps(buttonMinus, camera))
 			{
 				buttonMinus.animation.play('pressed');
 				value -= step;
 				_internalOnChange();
+				_holdDir   = -1;
+				_holdTimer = 0;
+				_holdRepeat = 0;
 			}
 		}
-		else if(FlxG.mouse.released)
+		else if (FlxG.mouse.pressed && _holdDir != 0)
 		{
-			if(buttonPlus != null && buttonPlus.exists && buttonPlus.animation.curAnim != null && buttonPlus.animation.curAnim.name != 'normal')
+			var btn = (_holdDir > 0) ? buttonPlus : buttonMinus;
+			if (btn != null && btn.exists && FlxG.mouse.overlaps(btn, camera))
+			{
+				_holdTimer += elapsed;
+				var interval:Float = if (_holdTimer < 1.0) 0.15 else if (_holdTimer < 2.0) 0.08 else 0.04;
+				_holdRepeat += elapsed;
+				if (_holdRepeat >= interval && _holdTimer >= 0.5)
+				{
+					_holdRepeat -= interval;
+					value += step * _holdDir;
+					_internalOnChange();
+				}
+			}
+			else
+			{
+				_holdDir = 0;
+			}
+		}
+		else if (FlxG.mouse.released)
+		{
+			_holdDir = 0;
+			if (buttonPlus  != null && buttonPlus.exists  && buttonPlus.animation.curAnim  != null && buttonPlus.animation.curAnim.name  != 'normal')
 				buttonPlus.animation.play('normal');
-			if(buttonMinus != null && buttonMinus.exists && buttonMinus.animation.curAnim != null && buttonMinus.animation.curAnim.name != 'normal')
+			if (buttonMinus != null && buttonMinus.exists && buttonMinus.animation.curAnim != null && buttonMinus.animation.curAnim.name != 'normal')
 				buttonMinus.animation.play('normal');
 		}
 	}

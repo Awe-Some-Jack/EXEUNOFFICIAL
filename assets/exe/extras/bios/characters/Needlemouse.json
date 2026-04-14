@@ -1,0 +1,14 @@
+{
+	"display_name": "NEEDLE",
+	"bio": "",
+	"icon": "needlemouse",
+	"icon_offset": [786, 425],
+	"char_scale": 0.75,
+	"list_position": 9999,
+	"mod": "NEEDLEMOUSE",
+	"bio_appear": true,
+	"char_offset": [550, 240],
+	"char": "Needlemouse",
+	"flip_x": false,
+	"artist": ""
+}

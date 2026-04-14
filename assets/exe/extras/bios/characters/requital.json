@@ -1,0 +1,43 @@
+{
+	"display_name": "REQUITAL",
+	"list_position": 9999,
+	"bio_appear": true,
+	"variants": [
+		{
+			"display_name": "REQUITAL",
+			"char": "requital",
+			"char_scale": 0.5,
+			"char_offset": [585, 345],
+			"icon_offset": [786, 425],
+			"icon": "requital",
+			"flip_x": true,
+			"mod": "REQUITAL",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "REQUITAL1",
+			"char": "requitalpiss",
+			"char_scale": 0.55,
+			"char_offset": [540, 330],
+			"icon_offset": [786, 425],
+			"icon": "requital",
+			"flip_x": true,
+			"mod": "REQUITAL",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "BEAST",
+			"char": "requital-beast",
+			"char_scale": 0.5,
+			"char_offset": [585, 355],
+			"icon_offset": [786, 430],
+			"icon": "requital-beast",
+			"flip_x": true,
+			"mod": "REQUITAL",
+			"artist": "",
+			"bio": ""
+		}
+	]
+}

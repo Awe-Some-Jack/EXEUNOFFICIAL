@@ -120,6 +120,8 @@ class Character extends FlxSprite
 
 	public function changeCharacter(character:String)
 	{
+		if (curCharacter == character && frames != null) return;
+
 		animationsArray = [];
 		animOffsets = [];
 		_offsets.clear();

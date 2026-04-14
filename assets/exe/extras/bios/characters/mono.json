@@ -1,0 +1,14 @@
+{
+	"display_name": "mono",
+	"bio": "",
+	"icon": "mono",
+	"icon_offset": [786, 430],
+	"char_scale": 0.9,
+	"list_position": 9999,
+	"mod": "MONO",
+	"bio_appear": true,
+	"char_offset": [505, 200],
+	"char": "mono",
+	"flip_x": false,
+	"artist": ""
+}

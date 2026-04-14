@@ -1,0 +1,14 @@
+{
+	"display_name": "coldsteel",
+	"bio": "",
+	"icon": "icon-coldsteel",
+	"icon_offset": [786, 425],
+	"char_scale": 0.55,
+	"list_position": 9999,
+	"mod": "COLDSTEEL",
+	"bio_appear": true,
+	"char_offset": [620, 255],
+	"char": "coldsteel",
+	"flip_x": false,
+	"artist": ""
+}

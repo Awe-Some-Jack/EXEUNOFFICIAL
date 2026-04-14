@@ -1,0 +1,43 @@
+{
+	"display_name": "DEMOGRI",
+	"list_position": 9999,
+	"bio_appear": true,
+	"variants": [
+		{
+			"display_name": "DEMOGRI",
+			"char": "demogri",
+			"char_scale": 0.6,
+			"char_offset": [595, 295],
+			"icon_offset": [786, 425],
+			"icon": "demogri",
+			"flip_x": false,
+			"mod": "GRIEVING",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "DEMOGRI1",
+			"char": "demogri2",
+			"char_scale": 0.6,
+			"char_offset": [555, 275],
+			"icon_offset": [786, 425],
+			"icon": "demogri",
+			"flip_x": false,
+			"mod": "GRIEVING",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "demogri3",
+			"char": "demogri3",
+			"char_scale": 0.6,
+			"char_offset": [550, 280],
+			"icon_offset": [786, 425],
+			"icon": "demogri",
+			"flip_x": false,
+			"mod": "GRIEVING",
+			"artist": "",
+			"bio": ""
+		}
+	]
+}

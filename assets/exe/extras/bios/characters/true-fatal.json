@@ -1,0 +1,14 @@
+{
+	"char_scale": 0.5,
+	"artist": "",
+	"bio_appear": true,
+	"bio": "",
+	"mod": "",
+	"icon_offset": [786, 425],
+	"char_offset": [300, 100],
+	"flip_x": false,
+	"char": "true-fatal",
+	"icon": "true-fatal",
+	"display_name": "true-fatal",
+	"list_position": 9999
+}

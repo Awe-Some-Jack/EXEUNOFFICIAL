@@ -1,0 +1,14 @@
+{
+	"char_scale": 0.5,
+	"artist": "",
+	"bio_appear": true,
+	"bio": "",
+	"mod": "STARVED",
+	"icon_offset": [786, 425],
+	"char_offset": [300, 100],
+	"flip_x": false,
+	"char": "furnace",
+	"icon": "furnace",
+	"display_name": "furnace",
+	"list_position": 9999
+}

@@ -1,0 +1,43 @@
+{
+	"display_name": "LORDX",
+	"list_position": 9999,
+	"bio_appear": true,
+	"variants": [
+		{
+			"display_name": "LORDX",
+			"char": "lordx",
+			"char_scale": 0.5,
+			"char_offset": [630, 375],
+			"icon_offset": [791, 425],
+			"icon": "lord-x",
+			"flip_x": false,
+			"mod": "LORD X",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "LORDX",
+			"char": "lord x podrido",
+			"char_scale": 0.55,
+			"char_offset": [555, 325],
+			"icon_offset": [786, 425],
+			"icon": "lordx-p2",
+			"flip_x": false,
+			"mod": "LORD X",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "LORDX",
+			"char": "lord x p3largo",
+			"char_scale": 0.65,
+			"char_offset": [495, 275],
+			"icon_offset": [786, 425],
+			"icon": "lordx-p3",
+			"flip_x": false,
+			"mod": "LORD X",
+			"artist": "",
+			"bio": ""
+		}
+	]
+}

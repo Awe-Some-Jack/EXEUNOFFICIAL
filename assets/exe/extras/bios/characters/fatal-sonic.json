@@ -1,0 +1,14 @@
+{
+	"display_name": "fatal-sonic",
+	"bio": "",
+	"icon": "fatal-sonic",
+	"icon_offset": [786, 425],
+	"char_scale": 1.5,
+	"list_position": 9999,
+	"mod": "",
+	"bio_appear": true,
+	"char_offset": [140, -145],
+	"char": "fatal-sonic",
+	"flip_x": false,
+	"artist": ""
+}

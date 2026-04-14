@@ -1,0 +1,14 @@
+{
+	"display_name": "SONIC?",
+	"bio": "",
+	"icon": "sonic",
+	"icon_offset": [786, 425],
+	"char_scale": 0.9,
+	"list_position": 9999,
+	"mod": "RERUN",
+	"bio_appear": true,
+	"char_offset": [520, 215],
+	"char": "sonic",
+	"flip_x": false,
+	"artist": ""
+}

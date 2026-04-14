@@ -1,0 +1,14 @@
+{
+	"display_name": "SANIC",
+	"bio": "",
+	"icon": "sanic",
+	"icon_offset": [786, 425],
+	"char_scale": 0.55,
+	"list_position": 9999,
+	"mod": "SANIC",
+	"bio_appear": true,
+	"char_offset": [585, 315],
+	"char": "sanic",
+	"flip_x": false,
+	"artist": ""
+}

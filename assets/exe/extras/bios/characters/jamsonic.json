@@ -1,0 +1,31 @@
+{
+	"display_name": "XTERION",
+	"list_position": 9999,
+	"bio_appear": true,
+	"variants": [
+		{
+			"display_name": "XTERION",
+			"char": "jamsonic",
+			"char_scale": 0.75,
+			"char_offset": [485, 155],
+			"icon_offset": [791, 425],
+			"icon": "xterion",
+			"flip_x": false,
+			"mod": "SONICJAM",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "XTERION1",
+			"char": "madjamsonic",
+			"char_scale": 0.75,
+			"char_offset": [470, 160],
+			"icon_offset": [786, 425],
+			"icon": "face",
+			"flip_x": false,
+			"mod": "SONICJAM",
+			"artist": "",
+			"bio": ""
+		}
+	]
+}

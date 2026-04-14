@@ -1,0 +1,139 @@
+{
+	"display_name": "Girlfriend",
+	"list_position": 9999,
+	"bio_appear": true,
+	"variants": [
+		{
+			"display_name": "Girlfriend",
+			"char": "gf",
+			"char_scale": 0.5,
+			"char_offset": [300, 100],
+			"icon_offset": [786, 425],
+			"icon": "gf",
+			"flip_x": false,
+			"mod": "",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "gf parada",
+			"char": "gf parada",
+			"char_scale": 0.5,
+			"char_offset": [300, 100],
+			"icon_offset": [786, 425],
+			"icon": "gf",
+			"flip_x": false,
+			"mod": "STORY MODE",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "gf-exe",
+			"char": "gf-exe",
+			"char_scale": 0.5,
+			"char_offset": [300, 100],
+			"icon_offset": [786, 425],
+			"icon": "gf",
+			"flip_x": false,
+			"mod": "EXE",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "gf-faker",
+			"char": "gf-faker",
+			"char_scale": 0.5,
+			"char_offset": [300, 100],
+			"icon_offset": [786, 425],
+			"icon": "gf",
+			"flip_x": false,
+			"mod": "EXE",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "gf-needlemouse",
+			"char": "gf-needlemouse",
+			"char_scale": 0.5,
+			"char_offset": [300, 100],
+			"icon_offset": [786, 425],
+			"icon": "gf",
+			"flip_x": false,
+			"mod": "NEEDLEMOUSE",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "gf-sunkeh",
+			"char": "gf-sunkeh",
+			"char_scale": 0.5,
+			"char_offset": [300, 100],
+			"icon_offset": [786, 425],
+			"icon": "gf",
+			"flip_x": false,
+			"mod": "SUNKY",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "gfc",
+			"char": "gfc",
+			"char_scale": 0.5,
+			"char_offset": [300, 100],
+			"icon_offset": [786, 425],
+			"icon": "gf",
+			"flip_x": false,
+			"mod": "CURSE",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "gfc2",
+			"char": "gfc2",
+			"char_scale": 0.5,
+			"char_offset": [300, 100],
+			"icon_offset": [786, 425],
+			"icon": "gf",
+			"flip_x": false,
+			"mod": "CURSE",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "gfg",
+			"char": "gfg",
+			"char_scale": 0.5,
+			"char_offset": [300, 100],
+			"icon_offset": [786, 425],
+			"icon": "gf",
+			"flip_x": false,
+			"mod": "HOG",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "gfh",
+			"char": "gfh",
+			"char_scale": 0.5,
+			"char_offset": [300, 100],
+			"icon_offset": [786, 425],
+			"icon": "gf",
+			"flip_x": false,
+			"mod": "HOG",
+			"artist": "",
+			"bio": ""
+		},
+		{
+			"display_name": "gfh2",
+			"char": "gfh2",
+			"char_scale": 0.5,
+			"char_offset": [300, 100],
+			"icon_offset": [786, 425],
+			"icon": "gf",
+			"flip_x": false,
+			"mod": "HOG",
+			"artist": "",
+			"bio": ""
+		}
+	]
+}

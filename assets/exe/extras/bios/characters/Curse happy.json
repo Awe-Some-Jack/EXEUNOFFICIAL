@@ -1,0 +1,14 @@
+{
+	"display_name": "Curse happy",
+	"bio": "",
+	"icon": "cursehappy",
+	"icon_offset": [786, 425],
+	"char_scale": 0.45,
+	"list_position": 9999,
+	"mod": "CURSE",
+	"bio_appear": true,
+	"char_offset": [645, 375],
+	"char": "Curse happy",
+	"flip_x": false,
+	"artist": ""
+}

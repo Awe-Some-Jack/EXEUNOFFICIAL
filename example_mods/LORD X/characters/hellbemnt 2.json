@@ -1,7 +1,7 @@
 {
 	"animations": [
 		{
-			"offsets": [168, 189],
+			"offsets": [204, 185],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -9,7 +9,7 @@
 			"name": "left"
 		},
 		{
-			"offsets": [140, 135],
+			"offsets": [134, 134],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
@@ -17,7 +17,7 @@
 			"name": "down"
 		},
 		{
-			"offsets": [126, 192],
+			"offsets": [99, 194],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
@@ -26,7 +26,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [65, 170],
+			"offsets": [114, 159],
 			"anim": "singRIGHT",
 			"fps": 24,
 			"name": "rigth",
@@ -41,11 +41,11 @@
 			"indices": []
 		},
 		{
-			"offsets": [54, 166],
-			"indices": [],
+			"offsets": [53, 166],
+			"loop": false,
 			"fps": 26,
 			"anim": "risa",
-			"loop": false,
+			"indices": [],
 			"name": "risa"
 		}
 	],

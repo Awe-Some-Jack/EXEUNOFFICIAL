@@ -1,43 +1,61 @@
 {
-	"display_name": "DEMOGRI",
-	"list_position": 9999,
-	"bio_appear": true,
 	"variants": [
 		{
+			"bio": "As an angel, Demogri served to entertain the masses and the rest of the gods. However, due to reasons the angels still can not solve, he fell from the skies and was never seen again. Unbeknownst to them, after he fell, he was swiftly captured by a rogue reaper entity, Griatos, enslaved for eons before finally finding his freedom one faithful night, also saving 2 lost children souls from Griatos' clutches. Their whereabouts were unknown until the events of Sonic: Grieving.",
 			"display_name": "DEMOGRI",
+			"icon": "demogri",
+			"icon_offset": [
+				701,
+				465
+			],
+			"char_scale": 0.6,
+			"mod": "GRIEVING",
+			"char_offset": [
+				585,
+				295
+			],
 			"char": "demogri",
-			"char_scale": 0.6,
-			"char_offset": [595, 295],
-			"icon_offset": [786, 425],
-			"icon": "demogri",
 			"flip_x": false,
-			"mod": "GRIEVING",
-			"artist": "",
-			"bio": ""
+			"artist": "MadzillaK0th"
 		},
 		{
+			"bio": "As an angel, Demogri served to entertain the masses and the rest of the gods. However, due to reasons the angels still can not solve, he fell from the skies and was never seen again. Unbeknownst to them, after he fell, he was swiftly captured by a rogue reaper entity, Griatos, enslaved for eons before finally finding his freedom one faithful night, also saving 2 lost children souls from Griatos' clutches. Their whereabouts were unknown until the events of Sonic: Grieving.",
 			"display_name": "DEMOGRI1",
-			"char": "demogri2",
-			"char_scale": 0.6,
-			"char_offset": [555, 275],
-			"icon_offset": [786, 425],
 			"icon": "demogri",
-			"flip_x": false,
+			"icon_offset": [
+				701,
+				465
+			],
+			"char_scale": 0.6,
 			"mod": "GRIEVING",
-			"artist": "",
-			"bio": ""
+			"char_offset": [
+				555,
+				275
+			],
+			"char": "demogri2",
+			"flip_x": false,
+			"artist": "MadzillaK0th"
 		},
 		{
+			"bio": "As an angel, Demogri served to entertain the masses and the rest of the gods. However, due to reasons the angels still can not solve, he fell from the skies and was never seen again. Unbeknownst to them, after he fell, he was swiftly captured by a rogue reaper entity, Griatos, enslaved for eons before finally finding his freedom one faithful night, also saving 2 lost children souls from Griatos' clutches. Their whereabouts were unknown until the events of Sonic: Grieving.",
 			"display_name": "demogri3",
-			"char": "demogri3",
-			"char_scale": 0.6,
-			"char_offset": [550, 280],
-			"icon_offset": [786, 425],
 			"icon": "demogri",
-			"flip_x": false,
+			"icon_offset": [
+				701,
+				465
+			],
+			"char_scale": 0.6,
 			"mod": "GRIEVING",
-			"artist": "",
-			"bio": ""
+			"char_offset": [
+				550,
+				280
+			],
+			"char": "demogri3",
+			"flip_x": false,
+			"artist": "MadzillaK0th"
 		}
-	]
+	],
+	"bio_appear": true,
+	"list_position": 9999,
+	"display_name": "DEMOGRI"
 }

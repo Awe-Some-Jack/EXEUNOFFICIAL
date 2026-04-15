@@ -1,14 +1,40 @@
 {
+	"bio": "He's a result of an old ruined experiment of a weird liquid called Vitamin X one one day a dad brought his kid to work and the kid placed his sonic collections disk near  this experiment and it goes inside the game corrupting it  and once the kid came back home to play the game he gets trapped in the game giving this game and corrupted liquid a soul and this weird colorless sonic is the only real thing about this game and once someone plays the game DSK gets the chance to kill these people and take thier soul to become insanely strong",
 	"display_name": "DSK",
-	"bio": "",
-	"icon": "dsk",
-	"icon_offset": [786, 425],
 	"char_scale": 0.75,
-	"list_position": 9999,
+	"icon_offset": [
+		786,
+		425
+	],
+	"icon": "dsk",
 	"mod": "DSK",
+	"list_position": 9999,
+	"char_offset": [
+		530,
+		240
+	],
 	"bio_appear": true,
-	"char_offset": [530, 240],
-	"char": "dsk",
+	"variants": [
+		{
+			"char_scale": 0.75,
+			"artist": "CommandoDev",
+			"bio": "He's a result of an old ruined experiment of a weird liquid called Vitamin X one one day a dad brought his kid to work and the kid placed his sonic collections disk near  this experiment and it goes inside the game corrupting it  and once the kid came back home to play the game he gets trapped in the game giving this game and corrupted liquid a soul and this weird colorless sonic is the only real thing about this game and once someone plays the game DSK gets the chance to kill these people and take thier soul to become insanely strong",
+			"mod": "DSK",
+			"icon_offset": [
+				696,
+				465
+			],
+			"char_offset": [
+				530,
+				240
+			],
+			"flip_x": false,
+			"char": "dsk",
+			"icon": "dsk",
+			"display_name": "DSK"
+		}
+	],
 	"flip_x": false,
-	"artist": ""
+	"char": "dsk",
+	"artist": "CommandoDev"
 }

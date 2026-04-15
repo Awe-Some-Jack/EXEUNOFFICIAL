@@ -1,6 +1,7 @@
 package states.extras.bios;
 
 import flixel.*;
+import flixel.graphics.FlxGraphic;
 import flixel.util.FlxSpriteUtil;
 import objects.*;
 import flixel.addons.display.shapes.*;
@@ -19,16 +20,45 @@ class BIOSShowcase
 	var circleBig:FlxShapeCircle;
 	var variantDots:FlxText;
 
-	static inline var TITLE_X:Int  = 443;
+	static inline var TITLE_X:Int  = 460;
 	static inline var TITLE_Y:Int  = 34;
 	static inline var TITLE_W:Int  = 328;
 	static inline var TITLE_H:Int  = 100;
 
+	static inline var ARTIST_X:Int = 471;
+	static inline var ARTIST_Y:Int = 588;
+	static inline var ARTIST_W:Int = 332;
+	static inline var ARTIST_H:Int = 100;
+	static inline var ARTIST_MAX_SIZE:Int = 40;
+	static inline var ARTIST_MIN_SIZE:Int = 14;
+
 	var charBiosSprite:FlxSprite;
 
-	var cbDebug:Bool     = false;
-	var cbTarget:Int     = 0; 
-	var cbLabel:FlxText;
+	var abDebug:Bool   = false;
+	var abTarget:Int   = 0; // 0=move, 1=size
+	var abLabel:FlxText;
+	var abBox:FlxSprite;
+
+	var _ax:Float = ARTIST_X;
+	var _ay:Float = ARTIST_Y;
+	var _aw:Float = ARTIST_W;
+	var _ah:Float = ARTIST_H;
+
+	static inline var ARTIST_CYCLE_TIME:Float = 5.0;
+	static inline var ARTIST_FADE_TIME:Float  = 0.5;
+	var _artists:Array<String> = [];
+	var _artistIdx:Int   = 0;
+	var _artistTimer:Float = 0;
+	var _artistFading:Bool = false;
+	var _artistFadeDir:Int = 1; // 1=fadeout, -1=fadein
+
+	var _danceTimer:Float = 0;
+	var _danced:Bool = false;
+	var _danceLeftTag:String  = null;
+	var _danceRightTag:String = null;
+
+	public var lockedX:Float = 0;
+	public var lockedY:Float = 0;
 
 	public function new(parent:BIOS)
 	{
@@ -38,7 +68,7 @@ class BIOSShowcase
 		if (bc.charMods_list.length > 0 && bc.charMods_list[0] != '')
 			Mods.currentModDirectory = bc.charMods_list[0];
 
-		character = new Character(0, 0, bc.chars_list.length > 0 ? bc.chars_list[0] : 'bf', true);
+		character = new Character(0, 0, bc.chars_list.length > 0 ? bc.chars_list[0] : 'bf', false);
 		character.scrollFactor.set();
 		if (bc.scales_list.length > 0) { var s = bc.scales_list[0]; character.scale.set(s, s); character.updateHitbox(); }
 		if (bc.flipX_list.length  > 0) character.flipX = bc.flipX_list[0];
@@ -72,12 +102,13 @@ class BIOSShowcase
 		bios.add(charName);
 		_fitCharName();
 
-		artistName = new FlxText(525, 585, 0, '', 40);
-		artistName.setFormat(Paths.font('NiseSegaSonic.TTF'), 40, FlxColor.WHITE, CENTER);
+		artistName = new FlxText(ARTIST_X, ARTIST_Y, ARTIST_W, '', ARTIST_MAX_SIZE);
+		artistName.setFormat(Paths.font('NiseSegaSonic.TTF'), ARTIST_MAX_SIZE, FlxColor.WHITE, CENTER);
 		artistName.antialiasing = true;
 		artistName.scrollFactor.set();
 		artistName.text = bc.artist_list.length > 0 ? 'by\n${bc.artist_list[0]}' : '';
 		bios.add(artistName);
+		_fitArtistName();
 
 		variantDots = new FlxText(0, FlxG.height - 60, 0, '', 22);
 		variantDots.setFormat(Paths.font('NiseSegaSonic.TTF'), 22, FlxColor.WHITE, CENTER);
@@ -90,16 +121,29 @@ class BIOSShowcase
 		charBiosSprite.scrollFactor.set();
 		charBiosSprite.antialiasing = true;
 		bios.add(charBiosSprite);
+
+		abBox = new FlxSprite(ARTIST_X, ARTIST_Y);
+		abBox.makeGraphic(ARTIST_W, ARTIST_H, FlxColor.TRANSPARENT, true);
+		FlxSpriteUtil.drawRect(abBox, 0, 0, ARTIST_W, ARTIST_H, FlxColor.TRANSPARENT, {thickness: 2, color: 0xFF00FF00});
+		abBox.scrollFactor.set();
+		abBox.visible = false;
+		bios.add(abBox);
+
+		abLabel = new FlxText(10, 30, 0, '', 18);
+		abLabel.setFormat(Paths.font('smallass.TTF'), 18, FlxColor.LIME, LEFT);
+		abLabel.scrollFactor.set();
+		abLabel.visible = false;
+		bios.add(abLabel);
 	}
 
 	public function onCharChanged(index:Int)
 	{
 		var bc = bios.biosCharacter;
 
-		if (character.curCharacter != bc.chars_list[index])
-			character.changeCharacter(bc.chars_list[index]);
-		if (icon.getCharacter() != bc.healthicon_list[index])
-			icon.changeIcon(bc.healthicon_list[index]);
+		_swapChar(bc.chars_list[index]);
+		_swapIcon(bc.healthicon_list[index]);
+
+		_forceIdleLoop();
 
 		if (!bios.editorOverride)
 		{
@@ -107,18 +151,16 @@ class BIOSShowcase
 			character.scale.set(s, s);
 			character.flipX = bc.flipX_list[index];
 			character.updateHitbox();
-			character.setPosition(
-				bc.offsets_list[index][0] - character.offset.x,
-				bc.offsets_list[index][1] - character.offset.y
-			);
+			lockedX = bc.offsets_list[index][0] - character.offset.x;
+			lockedY = bc.offsets_list[index][1] - character.offset.y;
+			character.setPosition(lockedX, lockedY);
 		}
 
 		icon.setPosition(bc.icon_offset[index][0], bc.icon_offset[index][1]);
 		charName.text = bc.displayNames_list[index];
 		_fitCharName();
-		artistName.text = 'by\n${bc.artist_list[index]}';
+		_setArtist(bc.artist_list[index]);
 
-		_forceIdleLoop();
 		_updateDots();
 	}
 
@@ -126,10 +168,12 @@ class BIOSShowcase
 	{
 		var bc = bios.biosCharacter;
 
-		var charId  = (v.char != null) ? Std.string(v.char) : bc.chars_list[bc.curChar];
-		var iconId  = (v.icon != null) ? Std.string(v.icon) : bc.healthicon_list[bc.curChar];
-		if (character.curCharacter != charId) character.changeCharacter(charId);
-		if (icon.getCharacter() != iconId)    icon.changeIcon(iconId);
+		var charId = (v.char != null) ? Std.string(v.char) : bc.chars_list[bc.curChar];
+		var iconId = (v.icon != null) ? Std.string(v.icon) : bc.healthicon_list[bc.curChar];
+		_swapChar(charId);
+		_swapIcon(iconId);
+
+		_forceIdleLoop();
 
 		if (!bios.editorOverride)
 		{
@@ -139,7 +183,9 @@ class BIOSShowcase
 			character.updateHitbox();
 			var ox:Float = (v.char_offset != null) ? v.char_offset[0] : bc.offsets_list[bc.curChar][0];
 			var oy:Float = (v.char_offset != null) ? v.char_offset[1] : bc.offsets_list[bc.curChar][1];
-			character.setPosition(ox - character.offset.x, oy - character.offset.y);
+			lockedX = ox - character.offset.x;
+			lockedY = oy - character.offset.y;
+			character.setPosition(lockedX, lockedY);
 		}
 
 		var ix:Float = (v.icon_offset != null) ? v.icon_offset[0] : bc.icon_offset[bc.curChar][0];
@@ -150,10 +196,35 @@ class BIOSShowcase
 		var artist   = (v.artist != null) ? Std.string(v.artist) : bc.artist_list[bc.curChar];
 		charName.text = dispName;
 		_fitCharName();
-		artistName.text = 'by\n$artist';
+		_setArtist(artist);
 
-		_forceIdleLoop();
 		_updateDots();
+	}
+
+	function _swapChar(charId:String)
+	{
+		if (character.curCharacter == charId) return;
+		var old = character.graphic;
+		character.changeCharacter(charId);
+		_releaseGraphic(old, character.graphic);
+	}
+
+	function _swapIcon(iconId:String)
+	{
+		if (icon.getCharacter() == iconId) return;
+		var old = icon.graphic;
+		icon.changeIcon(iconId);
+		_releaseGraphic(old, icon.graphic);
+	}
+
+	function _releaseGraphic(oldGfx:FlxGraphic, newGfx:FlxGraphic)
+	{
+		if (oldGfx == null || oldGfx == newGfx) return;
+		if (oldGfx.key != null)
+			Paths.currentTrackedAssets.remove(oldGfx.key);
+		oldGfx.persist        = false;
+		oldGfx.destroyOnNoUse = true;
+		FlxG.bitmap.remove(oldGfx);
 	}
 
 	function _updateDots()
@@ -171,7 +242,6 @@ class BIOSShowcase
 
 	function _fitCharName()
 	{
-		
 		charName.fieldWidth = 0;
 		var size = 68;
 		charName.size = size;
@@ -180,39 +250,167 @@ class BIOSShowcase
 			size--;
 			charName.size = size;
 		}
-		
 		charName.fieldWidth = TITLE_W;
 		charName.y = TITLE_Y + (TITLE_H - charName.height) * 0.5;
+	}
+
+	function _setArtist(raw:String)
+	{
+		var parts:Array<String> = [];
+		for (p in ~/\s*[\/&\+]\s*/.split(raw))
+		{
+			var s = StringTools.trim(p);
+			if (s.length > 0) parts.push(s);
+		}
+		if (parts.length == 0) parts = [''];
+
+		_artists     = parts;
+		_artistIdx   = 0;
+		_artistTimer = 0;
+		_artistFading = false;
+		artistName.alpha = 1;
+
+		artistName.text = parts.length > 1 ? 'by\n${parts[0]}' : (raw != '' ? 'by\n$raw' : '');
+		_fitArtistName();
+	}
+
+	function _fitArtistName()
+	{
+		artistName.fieldWidth = 0;
+		var size = ARTIST_MAX_SIZE;
+		artistName.size = size;
+		while (artistName.width > _aw && size > ARTIST_MIN_SIZE)
+		{
+			size--;
+			artistName.size = size;
+		}
+		// Center inside the box
+		artistName.fieldWidth = Std.int(_aw);
+		artistName.x = _ax;
+		artistName.y = _ay + (_ah - artistName.height) * 0.5;
 	}
 
 	function _forceIdleLoop()
 	{
 		if (character.animation == null) return;
-		for (animName in ['idle', 'danceLeft', 'danceRight'])
+
+		var hasDanceLeft  = character.animation.getByName('danceLeft')  != null;
+		var hasDanceRight = character.animation.getByName('danceRight') != null;
+		var isDance = hasDanceLeft || hasDanceRight;
+
+		_danceTimer = 0;
+		_danced = false;
+
+		if (isDance)
 		{
-			var anim = character.animation.getByName(animName);
-			if (anim != null) anim.looped = true;
+			_danceLeftTag  = hasDanceLeft  ? 'danceLeft'  : 'danceRight';
+			_danceRightTag = hasDanceRight ? 'danceRight' : 'danceLeft';
+			character.playAnim(_danceLeftTag, true);
 		}
+		else
+		{
+			_danceLeftTag  = null;
+			_danceRightTag = null;
+
+			var idleTag:String = null;
+			if (character.animation.getByName('idle') != null)
+				idleTag = 'idle';
+			else
+			{
+				for (anim in character.animationsArray)
+					if (anim.name.toLowerCase().indexOf('idle') >= 0) { idleTag = anim.anim; break; }
+			}
+			if (idleTag == null) idleTag = 'idle';
+
+			var a = character.animation.getByName(idleTag);
+			if (a != null) a.looped = true;
+			character.playAnim(idleTag, true);
+		}
+	}
+
+	function _abUpdateLabel()
+	{
+		var mode = abTarget == 0 ? 'MOVE' : 'SIZE';
+		abLabel.text = '[F3] ARTIST DEBUG  |  TAB = $mode\npos: (${Std.int(_ax)}, ${Std.int(_ay)})  size: (${Std.int(_aw)} x ${Std.int(_ah)})';
+	}
+
+	function _abRebuildBox()
+	{
+		abBox.x = _ax;
+		abBox.y = _ay;
+		abBox.makeGraphic(Std.int(_aw), Std.int(_ah), FlxColor.TRANSPARENT, true);
+		FlxSpriteUtil.drawRect(abBox, 0, 0, _aw, _ah, FlxColor.TRANSPARENT, {thickness: 2, color: 0xFF00FF00});
 	}
 
 	public function update(elapsed:Float)
 	{
+		if (character != null && _danceLeftTag != null)
+		{
+			_danceTimer += elapsed;
+			var curAnim = character.animation.curAnim;
+			var animDur = (curAnim != null && curAnim.frameRate > 0)
+				? curAnim.numFrames / curAnim.frameRate
+				: 0.5;
+			if (_danceTimer >= animDur)
+			{
+				_danceTimer -= animDur;
+				_danced = !_danced;
+				character.playAnim(_danced ? _danceRightTag : _danceLeftTag, true);
+			}
+		}
+
 		variantDots.x = charName.x + (charName.width - variantDots.width) / 2;
 		variantDots.y = charName.y + charName.height + 4;
 
-		if (FlxG.keys.justPressed.F4)
+		if (_artists.length > 1)
 		{
-			cbDebug = !cbDebug;
-			cbLabel.visible = cbDebug;
-			if (cbDebug) _cbUpdateLabel();
+			_artistTimer += elapsed;
+
+			if (!_artistFading)
+			{
+				if (_artistTimer >= ARTIST_CYCLE_TIME)
+				{
+					_artistFading  = true;
+					_artistFadeDir = 1;
+					_artistTimer   = 0;
+				}
+			}
+			else
+			{
+				var fadeDelta = elapsed / ARTIST_FADE_TIME * _artistFadeDir;
+				artistName.alpha -= fadeDelta;
+
+				if (_artistFadeDir == 1 && artistName.alpha <= 0)
+				{
+					artistName.alpha = 0;
+					_artistIdx = (_artistIdx + 1) % _artists.length;
+					artistName.text = 'by\n${_artists[_artistIdx]}';
+					_fitArtistName();
+					_artistFadeDir = -1;
+				}
+				else if (_artistFadeDir == -1 && artistName.alpha >= 1)
+				{
+					artistName.alpha  = 1;
+					_artistFading     = false;
+					_artistTimer      = 0;
+				}
+			}
 		}
 
-		if (!cbDebug) return;
+		if (FlxG.keys.justPressed.F3)
+		{
+			abDebug = !abDebug;
+			abBox.visible   = abDebug;
+			abLabel.visible = abDebug;
+			if (abDebug) _abUpdateLabel();
+		}
+
+		if (!abDebug) return;
 
 		if (FlxG.keys.justPressed.TAB)
 		{
-			cbTarget = (cbTarget == 0) ? 1 : 0;
-			_cbUpdateLabel();
+			abTarget = (abTarget == 0) ? 1 : 0;
+			_abUpdateLabel();
 		}
 
 		var speed:Float = FlxG.keys.pressed.SHIFT ? 5 : 1;
@@ -225,25 +423,21 @@ class BIOSShowcase
 
 		if (dx != 0 || dy != 0)
 		{
-			if (cbTarget == 0)
+			if (abTarget == 0)
 			{
-				charBiosSprite.x += dx;
-				charBiosSprite.y += dy;
+				_ax += dx;
+				_ay += dy;
 			}
 			else
 			{
-				var s = charBiosSprite.scale.x + dx * 0.005;
-				s = Math.max(0.05, s);
-				charBiosSprite.scale.set(s, s);
-				charBiosSprite.updateHitbox();
+				_aw = Math.max(20, _aw + dx);
+				_ah = Math.max(20, _ah + dy);
+				_abRebuildBox();
 			}
-			_cbUpdateLabel();
+			_fitArtistName();
+			abBox.x = _ax;
+			abBox.y = _ay;
+			_abUpdateLabel();
 		}
-	}
-
-	function _cbUpdateLabel()
-	{
-		var mode = cbTarget == 0 ? 'MOVE' : 'SCALE';
-		cbLabel.text = '[F4] CHARBIOS DEBUG  |  TAB = $mode\npos: (${Std.int(charBiosSprite.x)}, ${Std.int(charBiosSprite.y)})\nscale: ${Math.round(charBiosSprite.scale.x * 1000) / 1000}';
 	}
 }

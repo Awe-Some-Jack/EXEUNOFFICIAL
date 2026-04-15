@@ -1,0 +1,43 @@
+{
+	"variants": [
+		{
+			"bio": "The Reapers were a species existing in the plain of judgment, Limbo.  Reapers are created and sent to retrieve the souls of those who have just passed, bringing them into their domain to be judged, heaven or hell being the outcomes depending on the subject. Reapers are not completely perfect beings. With no higher being to regulate everything all at once, they established their own society. Only the strongest of these beings were allowed into the land of the living. One reaper in particular, however, slipped past the regulations. For reasons still not known, it’s mind was filled with such horrid thoughts, gluttony, hate, anger, fear. It was not uncommon for the Reaper to grow agitated on the job. On a particular trip, the Reaper violated the orders of Limbo, being the first in ages to make contact with a human soul, attacking and devouring it. After containment, other beings noticed the Reaper’s face slowly contort, gaining a smile that never seemed to fade. Plans were set to execute the rogue Reaper, however on the date their chance came, the culprit was gone.\n\nFor generations, the Reapers scoured the lands, whether it be on Earth, Heaven, or Hell, the rogue beast was nowhere to be found. Despite this, legends reigning on Earth speak of a deranged bird like humanoid surrounded in smog, tearing tribes apart, involving itself in wars, as well as earning itself a new name. Griatos, a name of a significant figure spoken of by an unknown higher being in an old scripture, foretelling a prophecy of 9 crucial events that will take place before what it only called ‘The Tragedy.’",
+			"display_name": "griatosA",
+			"icon": "griatos",
+			"icon_offset": [
+				696,
+				460
+			],
+			"char_scale": 0.4,
+			"mod": "GRIEVING",
+			"char_offset": [
+				755,
+				470
+			],
+			"char": "griatosA",
+			"flip_x": false,
+			"artist": "MadzillaK0th"
+		},
+		{
+			"bio": "The Reapers were a species existing in the plain of judgment, Limbo.  Reapers are created and sent to retrieve the souls of those who have just passed, bringing them into their domain to be judged, heaven or hell being the outcomes depending on the subject. Reapers are not completely perfect beings. With no higher being to regulate everything all at once, they established their own society. Only the strongest of these beings were allowed into the land of the living. One reaper in particular, however, slipped past the regulations. For reasons still not known, it’s mind was filled with such horrid thoughts, gluttony, hate, anger, fear. It was not uncommon for the Reaper to grow agitated on the job. On a particular trip, the Reaper violated the orders of Limbo, being the first in ages to make contact with a human soul, attacking and devouring it. After containment, other beings noticed the Reaper’s face slowly contort, gaining a smile that never seemed to fade. Plans were set to execute the rogue Reaper, however on the date their chance came, the culprit was gone.\n\nFor generations, the Reapers scoured the lands, whether it be on Earth, Heaven, or Hell, the rogue beast was nowhere to be found. Despite this, legends reigning on Earth speak of a deranged bird like humanoid surrounded in smog, tearing tribes apart, involving itself in wars, as well as earning itself a new name. Griatos, a name of a significant figure spoken of by an unknown higher being in an old scripture, foretelling a prophecy of 9 crucial events that will take place before what it only called ‘The Tragedy.’",
+			"display_name": "griatos 2",
+			"icon": "griatos",
+			"icon_offset": [
+				696,
+				460
+			],
+			"char_scale": 0.7,
+			"mod": "GRIEVING",
+			"char_offset": [
+				490,
+				230
+			],
+			"char": "griatos 2",
+			"flip_x": false,
+			"artist": "MadzillaK0th"
+		}
+	],
+	"bio_appear": true,
+	"list_position": 9999,
+	"display_name": "griatosA"
+}

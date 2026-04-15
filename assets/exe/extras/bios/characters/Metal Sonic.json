@@ -1,0 +1,40 @@
+{
+	"display_name": "metal",
+	"bio": "Metal Sonic is one of the main antagonists in the Sonic the Hedgehog Franchise. Metal is a Sonic robotic copycat made by Dr. Robotnik.\nHowever, this is the NormalCD Continuity version of Metal Sonic. He teams up with Amy to beat NormalCD in the scrapped song Found You. Their \"nicknames\" for this continuity is \"Normal\". (Such as \"Soul\")",
+	"icon": "metal",
+	"icon_offset": [
+		786,
+		425
+	],
+	"char_scale": 0.5,
+	"list_position": 9999,
+	"mod": "NORMALCD",
+	"bio_appear": true,
+	"char_offset": [
+		300,
+		100
+	],
+	"variants": [
+		{
+			"char_scale": 1.05,
+			"artist": "JesterFrog",
+			"bio": "Metal Sonic is one of the main antagonists in the Sonic the Hedgehog Franchise. Metal is a Sonic robotic copycat made by Dr. Robotnik.\nHowever, this is the NormalCD Continuity version of Metal Sonic. He teams up with Amy to beat NormalCD in the scrapped song Found You. Their \"nicknames\" for this continuity is \"Normal\". (Such as \"Soul\")",
+			"mod": "NORMALCD",
+			"icon_offset": [
+				701,
+				465
+			],
+			"char_offset": [
+				455,
+				175
+			],
+			"flip_x": true,
+			"char": "metal",
+			"icon": "metal",
+			"display_name": "metal"
+		}
+	],
+	"char": "metal",
+	"flip_x": false,
+	"artist": "JesterFrog"
+}

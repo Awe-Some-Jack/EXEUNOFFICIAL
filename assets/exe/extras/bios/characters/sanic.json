@@ -1,14 +1,40 @@
 {
+	"bio": "Sanic is depicted as a crudely drawn Sonic with a peach-colored, wide, elliptical muzzle with a single squiggly line mouth and poorly drawn eyes with long pointy quills on his back he has a huge quill. He has skinny limbs with white circular gloves and red shoes without white stripes. He lacks Sonic's ears, conjoined eyes and tan arms.",
 	"display_name": "SANIC",
-	"bio": "",
-	"icon": "sanic",
-	"icon_offset": [786, 425],
 	"char_scale": 0.55,
-	"list_position": 9999,
+	"icon_offset": [
+		786,
+		425
+	],
+	"icon": "sanic",
 	"mod": "SANIC",
+	"list_position": 9999,
+	"char_offset": [
+		585,
+		315
+	],
 	"bio_appear": true,
-	"char_offset": [585, 315],
-	"char": "sanic",
+	"variants": [
+		{
+			"char_scale": 0.55,
+			"artist": "0nyxheart",
+			"bio": "Sanic is depicted as a crudely drawn Sonic with a peach-colored, wide, elliptical muzzle with a single squiggly line mouth and poorly drawn eyes with long pointy quills on his back he has a huge quill. He has skinny limbs with white circular gloves and red shoes without white stripes. He lacks Sonic's ears, conjoined eyes and tan arms.",
+			"mod": "SANIC",
+			"icon_offset": [
+				696,
+				460
+			],
+			"char_offset": [
+				585,
+				315
+			],
+			"flip_x": false,
+			"char": "sanic",
+			"icon": "sanic",
+			"display_name": "SANIC"
+		}
+	],
 	"flip_x": false,
-	"artist": ""
+	"char": "sanic",
+	"artist": "0nyxheart"
 }

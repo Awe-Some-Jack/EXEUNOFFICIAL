@@ -1,14 +1,40 @@
 {
+	"bio": "Sonic is the protagonist of his own franchise, and the main character for Lilith's cartoon. However, Lilith has returned as RE-RUN and she often times disturbs his world, even possessing him. He was going to be an opponent in the first song, afterwards getting possessed by RE-RUN. He would've appeared in the 3.5 update.",
 	"display_name": "SONIC?",
-	"bio": "",
-	"icon": "sonic",
-	"icon_offset": [786, 425],
 	"char_scale": 0.9,
-	"list_position": 9999,
+	"icon_offset": [
+		786,
+		425
+	],
+	"icon": "sonic",
 	"mod": "RERUN",
+	"list_position": 9999,
+	"char_offset": [
+		520,
+		215
+	],
 	"bio_appear": true,
-	"char_offset": [520, 215],
-	"char": "sonic",
+	"variants": [
+		{
+			"char_scale": 0.9,
+			"artist": "ErickAnimations",
+			"bio": "Sonic is the protagonist of his own franchise, and the main character for Lilith's cartoon. However, Lilith has returned as RE-RUN and she often times disturbs his world, even possessing him. He was going to be an opponent in the first song, afterwards getting possessed by RE-RUN. He would've appeared in the 3.5 update.",
+			"mod": "RERUN",
+			"icon_offset": [
+				696,
+				465
+			],
+			"char_offset": [
+				520,
+				215
+			],
+			"flip_x": false,
+			"char": "sonic",
+			"icon": "sonic",
+			"display_name": "SONIC?"
+		}
+	],
 	"flip_x": false,
-	"artist": ""
+	"char": "sonic",
+	"artist": "ErickAnimations"
 }

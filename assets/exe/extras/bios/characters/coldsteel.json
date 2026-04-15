@@ -1,14 +1,40 @@
 {
+	"bio": "coldsteel was born wish a special power, he was stronger than all his classmates in the sonic fighting academy, he served in the sonic military fighting shadow and in the final battel against shadow they were fighting and shadow turned him to the darkness and coldsteel turned against sonic and killed him. he lost a part of his ear in the battle which is why he doesnt not have a part of his ear, pls stop PMing me askin me why thats why, also earings arent gurly ___ you khaoskid663 everyone knos your a ____ pokemon scammer ____",
 	"display_name": "coldsteel",
-	"bio": "",
-	"icon": "icon-coldsteel",
-	"icon_offset": [786, 425],
 	"char_scale": 0.55,
-	"list_position": 9999,
+	"icon_offset": [
+		786,
+		425
+	],
+	"icon": "icon-coldsteel",
 	"mod": "COLDSTEEL",
+	"list_position": 9999,
+	"char_offset": [
+		620,
+		255
+	],
 	"bio_appear": true,
-	"char_offset": [620, 255],
-	"char": "coldsteel",
+	"variants": [
+		{
+			"char_scale": 0.55,
+			"artist": "blood_skull_boi84",
+			"bio": "coldsteel was born wish a special power, he was stronger than all his classmates in the sonic fighting academy, he served in the sonic military fighting shadow and in the final battel against shadow they were fighting and shadow turned him to the darkness and coldsteel turned against sonic and killed him. he lost a part of his ear in the battle which is why he doesnt not have a part of his ear, pls stop PMing me askin me why thats why, also earings arent gurly ___ you khaoskid663 everyone knos your a ____ pokemon scammer ____",
+			"mod": "COLDSTEEL",
+			"icon_offset": [
+				696,
+				460
+			],
+			"char_offset": [
+				620,
+				255
+			],
+			"flip_x": false,
+			"char": "coldsteel",
+			"icon": "icon-coldsteel",
+			"display_name": "coldsteel"
+		}
+	],
 	"flip_x": false,
-	"artist": ""
+	"char": "coldsteel",
+	"artist": "blood_skull_boi84"
 }

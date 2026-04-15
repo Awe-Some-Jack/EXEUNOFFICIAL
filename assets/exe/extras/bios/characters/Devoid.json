@@ -1,0 +1,40 @@
+{
+	"bio": "Devoid is Sonic who caused a future worse than what he thought. Unable to save Little Planet from its oppressor's reign, Eggman now has become one with the planet and with full control over time and space has taken control over the surrounding area, using said power to erase Sonic from the timeline completely.\n\nUnfortunately for Eggman, Sonic isn't one to give up easily, he managed to escape being erased through sheer willpower and speed. It came at a cost, however, as his existence itself been scarred, leaving his body with a permanent reminder of his failure and him alone in a world that has forgotten him.\n\nNow he wanders the wasteland he used to call home, helping anyone he can, and vowing to make Eggman pay for what he's done, by any means necessary.",
+	"display_name": "DEVOID",
+	"char_scale": 0.5,
+	"icon_offset": [
+		781,
+		425
+	],
+	"icon": "devoid",
+	"mod": "DEVOID",
+	"list_position": 9999,
+	"char_offset": [
+		605,
+		330
+	],
+	"bio_appear": true,
+	"variants": [
+		{
+			"char_scale": 0.5,
+			"artist": "Cherribun & Mr. GreenBean",
+			"bio": "Devoid is Sonic who caused a future worse than what he thought. Unable to save Little Planet from its oppressor's reign, Eggman now has become one with the planet and with full control over time and space has taken control over the surrounding area, using said power to erase Sonic from the timeline completely.\n\nUnfortunately for Eggman, Sonic isn't one to give up easily, he managed to escape being erased through sheer willpower and speed. It came at a cost, however, as his existence itself been scarred, leaving his body with a permanent reminder of his failure and him alone in a world that has forgotten him.\n\nNow he wanders the wasteland he used to call home, helping anyone he can, and vowing to make Eggman pay for what he's done, by any means necessary.",
+			"mod": "DEVOID",
+			"icon_offset": [
+				701,
+				460
+			],
+			"char_offset": [
+				605,
+				330
+			],
+			"flip_x": false,
+			"char": "devoid-reanimated",
+			"icon": "devoid",
+			"display_name": "DEVOID"
+		}
+	],
+	"flip_x": false,
+	"char": "devoid-reanimated",
+	"artist": "Cherribun & Mr. GreenBean"
+}

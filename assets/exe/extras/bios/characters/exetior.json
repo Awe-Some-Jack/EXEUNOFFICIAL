@@ -1,14 +1,40 @@
 {
+	"bio": "Exetior is the Chosen One of Chaos. He was originally an Elite Highest, but was transformed into an Arch-Demon due to his demonization awakening his gift from the Great Chaos. Because of his background and how others in his homeworld treated him, he is very prone to losing his composure and having outbursts of anger when agitated. Among Demons and mortals, he is seen by others as very calculating, charismatic and persuasive. His ferocious personality and reputation is well known among Demons across the universe, as well as ones sealed away such as Xato.",
 	"display_name": "exetior",
-	"bio": "",
-	"icon": "exetior",
-	"icon_offset": [786, 425],
 	"char_scale": 0.6,
-	"list_position": 9999,
+	"icon_offset": [
+		786,
+		425
+	],
+	"icon": "exetior",
 	"mod": "EXETIOR",
+	"list_position": 9999,
+	"char_offset": [
+		570,
+		285
+	],
 	"bio_appear": true,
-	"char_offset": [570, 285],
-	"char": "exetior",
+	"variants": [
+		{
+			"char_scale": 0.6,
+			"artist": "JaizKoys",
+			"bio": "Exetior is the Chosen One of Chaos. He was originally an Elite Highest, but was transformed into an Arch-Demon due to his demonization awakening his gift from the Great Chaos. Because of his background and how others in his homeworld treated him, he is very prone to losing his composure and having outbursts of anger when agitated. Among Demons and mortals, he is seen by others as very calculating, charismatic and persuasive. His ferocious personality and reputation is well known among Demons across the universe, as well as ones sealed away such as Xato.",
+			"mod": "EXETIOR",
+			"icon_offset": [
+				701,
+				465
+			],
+			"char_offset": [
+				570,
+				285
+			],
+			"flip_x": false,
+			"char": "exetior",
+			"icon": "exetior",
+			"display_name": "exetior"
+		}
+	],
 	"flip_x": false,
-	"artist": ""
+	"char": "exetior",
+	"artist": "JaizKoys"
 }

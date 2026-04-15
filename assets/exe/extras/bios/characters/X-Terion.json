@@ -1,0 +1,43 @@
+{
+	"variants": [
+		{
+			"bio": "X-Terion takes on the form of a low-poly Sonic, but with moderate differences. He lacks an actual head, it being replaced by a white glowing signature (which is a W shape, with each curve a loop and two dots on both ends) that, while essentially a one-sided texture, will always turn to face the viewer. His body is a bit brighter blue, and his skin is no longer skin colored, but yellow. He sports a large purple business tie, signifying that he used to work at SEGA. His gloves and shoe cuffs are a bit of a marble color. His shoes are extremely darker than the normal Speed Shoe, and the straps are the same color as his tie, purple.",
+			"display_name": "XTERION",
+			"icon": "xterion",
+			"icon_offset": [
+				681,
+				480
+			],
+			"char_scale": 0.75,
+			"mod": "SONICJAM",
+			"char_offset": [
+				485,
+				155
+			],
+			"char": "jamsonic",
+			"flip_x": false,
+			"artist": "goji_boi"
+		},
+		{
+			"bio": "X-Terion takes on the form of a low-poly Sonic, but with moderate differences. He lacks an actual head, it being replaced by a white glowing signature (which is a W shape, with each curve a loop and two dots on both ends) that, while essentially a one-sided texture, will always turn to face the viewer. His body is a bit brighter blue, and his skin is no longer skin colored, but yellow. He sports a large purple business tie, signifying that he used to work at SEGA. His gloves and shoe cuffs are a bit of a marble color. His shoes are extremely darker than the normal Speed Shoe, and the straps are the same color as his tie, purple.",
+			"display_name": "XTERION1",
+			"icon": "face",
+			"icon_offset": [
+				681,
+				480
+			],
+			"char_scale": 0.75,
+			"mod": "SONICJAM",
+			"char_offset": [
+				470,
+				160
+			],
+			"char": "madjamsonic",
+			"flip_x": false,
+			"artist": "goji_boi"
+		}
+	],
+	"bio_appear": true,
+	"list_position": 9999,
+	"display_name": "XTERION"
+}

@@ -15,7 +15,6 @@ class BIOSCharacter
 	public var artist_list:Array<String>       = [];
 	public var healthicon_list:Array<String>   = [];
 	public var charMods_list:Array<String>     = [];
-	public var bgColors_list:Array<Int>        = [];
 	public var scales_list:Array<Float>        = [];
 	public var flipX_list:Array<Bool>          = [];
 	public var bioFilePaths:Array<String>      = [];
@@ -69,7 +68,7 @@ class BIOSCharacter
 	{
 		chars_list = []; displayNames_list = []; offsets_list = []; icon_offset = [];
 		bios_list = []; artist_list = []; healthicon_list = []; charMods_list = [];
-		bgColors_list = []; scales_list = []; flipX_list = []; bioFilePaths = [];
+		scales_list = []; flipX_list = []; bioFilePaths = [];
 		variants_list = [];
 
 		var orderList:Array<Int> = [];
@@ -80,7 +79,9 @@ class BIOSCharacter
 		{
 			if (!file.endsWith('.json')) continue;
 			var path = BIO_DIR + '/' + file;
-			var d:Dynamic = Json.parse(File.getContent(path));
+			var d:Dynamic;
+			try { d = Json.parse(File.getContent(path)); }
+			catch(e:Dynamic) { trace('BIOSCharacter: skipping invalid JSON "$file": $e'); continue; }
 
 			if (d.bio_appear != true) continue;
 
@@ -100,7 +101,6 @@ class BIOSCharacter
 			orderList.push(   (d.list_position != null) ? d.list_position : 9999);
 			healthicon_list.push((base.icon != null) ? Std.string(base.icon) : charId);
 			charMods_list.push(  (base.mod  != null) ? Std.string(base.mod)  : '');
-			bgColors_list.push(  (base.bg_color != null) ? Std.parseInt(base.bg_color) : 0xFFAA0000);
 			scales_list.push(    (base.char_scale != null) ? base.char_scale : 0.5);
 			flipX_list.push(     (base.flip_x == true));
 			bioFilePaths.push(path);
@@ -112,7 +112,7 @@ class BIOSCharacter
 			offset: offsets_list[i], icon: icon_offset[i],
 			bio: bios_list[i], artist: artist_list[i], order: orderList[i],
 			healthicon: healthicon_list[i], charMod: charMods_list[i],
-			bgColor: bgColors_list[i], scale: scales_list[i], flipX: flipX_list[i],
+			scale: scales_list[i], flipX: flipX_list[i],
 			path: bioFilePaths[i], variants: variants_list[i]
 		}];
 		combined.sort((a, b) -> a.order - b.order);
@@ -125,7 +125,6 @@ class BIOSCharacter
 		artist_list       = [for (e in combined) e.artist];
 		healthicon_list   = [for (e in combined) e.healthicon];
 		charMods_list     = [for (e in combined) e.charMod];
-		bgColors_list     = [for (e in combined) e.bgColor];
 		scales_list       = [for (e in combined) e.scale];
 		flipX_list        = [for (e in combined) e.flipX];
 		bioFilePaths      = [for (e in combined) e.path];
@@ -149,7 +148,6 @@ class BIOSCharacter
 			var v:Dynamic = variants[0];
 			var modDir = (v.mod != null) ? Std.string(v.mod) : '';
 			Mods.currentModDirectory = (modDir != '') ? modDir : '';
-			bios.bgColorTarget = (v.bg_color != null) ? Std.parseInt(v.bg_color) : 0xFFAA0000;
 			bios.biosShowcase.onVariantChanged(v);
 			bios.biosInfo.onVariantChanged(v);
 		}
@@ -157,7 +155,6 @@ class BIOSCharacter
 		{
 			var modDir = charMods_list[curChar];
 			Mods.currentModDirectory = (modDir != null && modDir != '') ? modDir : '';
-			bios.bgColorTarget = bgColors_list[curChar];
 			bios.biosShowcase.onCharChanged(curChar);
 			bios.biosInfo.onCharChanged(curChar);
 		}
@@ -176,7 +173,6 @@ class BIOSCharacter
 		var modDir = (v.mod != null) ? Std.string(v.mod) : charMods_list[curChar];
 		Mods.currentModDirectory = (modDir != null && modDir != '') ? modDir : '';
 
-		bios.bgColorTarget = (v.bg_color != null) ? Std.parseInt(v.bg_color) : bgColors_list[curChar];
 		bios.biosShowcase.onVariantChanged(v);
 		bios.biosInfo.onVariantChanged(v);
 	}

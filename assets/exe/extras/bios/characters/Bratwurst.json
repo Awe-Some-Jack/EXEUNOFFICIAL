@@ -1,0 +1,40 @@
+{
+	"bio": "Sonic.exe (Bratwurst) is a reinterpretation of the Sonic.exe concept that focuses on consistency, control, and deliberate behavior rather than chaos or unpredictability. This version presents itself in a form very close to Sonic’s original appearance, maintaining recognizable proportions and movements, but with subtle differences that make it clear something is wrong. His eyes lack normal expression, often appearing empty or unnaturally bright, and his constant smile does not change according to context, giving him a fixed and unnatural look.\r\n\r\nUnlike other EXE variants that rely on visible glitches, exaggerated transformations, or erratic movements, Bratwurst’s Sonic.exe remains visually stable most of the time. This stability is a defining trait, as it suggests that the entity is not struggling to maintain its form, but instead has full control over how it presents itself. His movements are intentional and measured, without unnecessary exaggeration, reinforcing the idea that everything he does is planned.",
+	"display_name": "BRATWURST",
+	"char_scale": 0.75,
+	"icon_offset": [
+		791,
+		425
+	],
+	"icon": "icon-bratwurst",
+	"mod": "TRILOGY",
+	"list_position": 9999,
+	"char_offset": [
+		520,
+		205
+	],
+	"bio_appear": true,
+	"variants": [
+		{
+			"char_scale": 0.75,
+			"artist": "Tornt",
+			"bio": "Sonic.exe (Bratwurst) is a reinterpretation of the Sonic.exe concept that focuses on consistency, control, and deliberate behavior rather than chaos or unpredictability. This version presents itself in a form very close to Sonic’s original appearance, maintaining recognizable proportions and movements, but with subtle differences that make it clear something is wrong. His eyes lack normal expression, often appearing empty or unnaturally bright, and his constant smile does not change according to context, giving him a fixed and unnatural look.\r\n\r\nUnlike other EXE variants that rely on visible glitches, exaggerated transformations, or erratic movements, Bratwurst’s Sonic.exe remains visually stable most of the time. This stability is a defining trait, as it suggests that the entity is not struggling to maintain its form, but instead has full control over how it presents itself. His movements are intentional and measured, without unnecessary exaggeration, reinforcing the idea that everything he does is planned.",
+			"mod": "TRILOGY",
+			"icon_offset": [
+				691,
+				465
+			],
+			"char_offset": [
+				520,
+				205
+			],
+			"flip_x": false,
+			"char": "ESOBRAT",
+			"icon": "icon-bratwurst",
+			"display_name": "BRATWURST"
+		}
+	],
+	"flip_x": false,
+	"char": "ESOBRAT",
+	"artist": "Tornt"
+}

@@ -1,0 +1,43 @@
+{
+	"variants": [
+		{
+			"bio": "Tails Doll is a doll that resembles Tails, enough to be considered an eerie insult to him. Being created as another attempt to catch Sonic. He appears in Sonic R, being unlockable after obtaining 5 Sonic Tokens in Radical City, placing first in the same race, and then beating Tails Doll in the ensuing unlock race. He's also appeared in other games, being shown as a creepy doll, in an attempt to catch Sonic off guard.",
+			"display_name": "TAILS DOLL",
+			"icon": "taildoll",
+			"icon_offset": [
+				686,
+				460
+			],
+			"char_scale": 0.9,
+			"mod": "TAILS DOLL",
+			"char_offset": [
+				510,
+				230
+			],
+			"char": "taildol",
+			"flip_x": false,
+			"artist": "SEGA"
+		},
+		{
+			"bio": "Tails Doll is a doll that resembles Tails, enough to be considered an eerie insult to him. Being created as another attempt to catch Sonic. He appears in Sonic R, being unlockable after obtaining 5 Sonic Tokens in Radical City, placing first in the same race, and then beating Tails Doll in the ensuing unlock race. He's also appeared in other games, being shown as a creepy doll, in an attempt to catch Sonic off guard.",
+			"display_name": "TAILS DOLL",
+			"icon": "soultails",
+			"icon_offset": [
+				691,
+				455
+			],
+			"char_scale": 0.4,
+			"mod": "TAILS DOLL",
+			"char_offset": [
+				720,
+				415
+			],
+			"char": "p2doll",
+			"flip_x": false,
+			"artist": "SEGA"
+		}
+	],
+	"bio_appear": true,
+	"list_position": 9999,
+	"display_name": "TAILS DOLL"
+}

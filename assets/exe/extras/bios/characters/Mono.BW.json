@@ -1,0 +1,40 @@
+{
+	"bio": "Looks like sonic except for his black and white colors and the lack of a nose and a mouth\nStory: 12-year-old boy who had achromatopsia died and possesed sonic in a sonic 2 cartridge, turned everything into monocrhomatic tones, has a chance of taking over other games.\n",
+	"display_name": "mono",
+	"char_scale": 0.9,
+	"icon_offset": [
+		786,
+		430
+	],
+	"icon": "mono",
+	"mod": "MONO",
+	"list_position": 9999,
+	"char_offset": [
+		505,
+		200
+	],
+	"bio_appear": true,
+	"variants": [
+		{
+			"char_scale": 0.9,
+			"artist": "CryBit",
+			"bio": "Looks like sonic except for his black and white colors and the lack of a nose and a mouth\nStory: 12-year-old boy who had achromatopsia died and possesed sonic in a sonic 2 cartridge, turned everything into monocrhomatic tones, has a chance of taking over other games.\n",
+			"mod": "MONO",
+			"icon_offset": [
+				696,
+				470
+			],
+			"char_offset": [
+				505,
+				200
+			],
+			"flip_x": false,
+			"char": "mono",
+			"icon": "mono",
+			"display_name": "mono"
+		}
+	],
+	"flip_x": false,
+	"char": "mono",
+	"artist": "CryBit"
+}

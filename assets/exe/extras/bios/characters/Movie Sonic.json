@@ -1,0 +1,40 @@
+{
+	"bio": "Ugly Sonic is the nickname for the original design of Sonic in the first trailer of the 2020 movie. Fans hated it because he had weird eyes, human teeth, and a creepy look. The backlash was so big that the studio redesigned him to look more like the video game version.\n\nUgly Sonic later returned as a funny cameo in \"Chip 'n Dale: Rescue Rangers\" (2022), where he jokes about his failed design and internet fame.",
+	"display_name": "UGLY SONIC",
+	"char_scale": 0.5,
+	"icon_offset": [
+		786,
+		425
+	],
+	"icon": "movie",
+	"mod": "MOVIE",
+	"list_position": 9999,
+	"char_offset": [
+		620,
+		345
+	],
+	"bio_appear": true,
+	"variants": [
+		{
+			"char_scale": 0.5,
+			"artist": "Paramount Pictures",
+			"bio": "Ugly Sonic is the nickname for the original design of Sonic in the first trailer of the 2020 movie. Fans hated it because he had weird eyes, human teeth, and a creepy look. The backlash was so big that the studio redesigned him to look more like the video game version.\n\nUgly Sonic later returned as a funny cameo in \"Chip 'n Dale: Rescue Rangers\" (2022), where he jokes about his failed design and internet fame.",
+			"mod": "MOVIE",
+			"icon_offset": [
+				696,
+				465
+			],
+			"char_offset": [
+				620,
+				345
+			],
+			"flip_x": false,
+			"char": "movie_sonic",
+			"icon": "movie",
+			"display_name": "UGLY SONIC"
+		}
+	],
+	"flip_x": false,
+	"char": "movie_sonic",
+	"artist": "Paramount Pictures"
+}

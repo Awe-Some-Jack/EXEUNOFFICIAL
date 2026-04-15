@@ -1,0 +1,43 @@
+{
+	"variants": [
+		{
+			"bio": "Luther Artwright is the main protagonist of Needlem0use Series. He was a human who was murdered and transported into a Sonic game where the vengeful spirit of his former friend, Sarah Henderson, resided in order to be together forever. Luther appears as a orange Fox with blue eyes, blue streaks, white gloves with black wrist sections, blue and white shoes with black rings and a blue scarf. He has no mouth and typically has a serious expression.\n\nIn his old appearance he has no scarf or blue streaks, white wrist section, and a soulless smile. He is also cross-eyed.",
+			"display_name": "LUTHER",
+			"icon": "needlemouse",
+			"icon_offset": [
+				691,
+				475
+			],
+			"char_scale": 0.75,
+			"mod": "NEEDLEMOUSE",
+			"char_offset": [
+				485,
+				230
+			],
+			"char": "LUSSER",
+			"flip_x": false,
+			"artist": "ShutUpJoJo"
+		},
+		{
+			"bio": "Luther Artwright is the main protagonist of Needlem0use Series. He was a human who was murdered and transported into a Sonic game where the vengeful spirit of his former friend, Sarah Henderson, resided in order to be together forever. Luther appears as a orange Fox with blue eyes, blue streaks, white gloves with black wrist sections, blue and white shoes with black rings and a blue scarf. He has no mouth and typically has a serious expression.\n\nIn his old appearance he has no scarf or blue streaks, white wrist section, and a soulless smile. He is also cross-eyed.",
+			"display_name": "LUTHER",
+			"icon": "needlemouse",
+			"icon_offset": [
+				691,
+				475
+			],
+			"char_scale": 0.75,
+			"mod": "NEEDLEMOUSE",
+			"char_offset": [
+				525,
+				245
+			],
+			"char": "LUSSER2",
+			"flip_x": false,
+			"artist": "ShutUpJoJo"
+		}
+	],
+	"bio_appear": true,
+	"list_position": 9999,
+	"display_name": "LUTHER"
+}

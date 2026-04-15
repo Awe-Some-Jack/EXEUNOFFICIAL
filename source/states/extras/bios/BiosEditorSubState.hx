@@ -20,7 +20,7 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 	var charData:Dynamic;
 
 	var listBox:PsychUIBox;
-	var editBox:PsychUIBox; 
+	var editBox:PsychUIBox;
 
 	var displayNameInput:PsychUIInputText;
 	var bioAppearCheck:PsychUICheckBox;
@@ -50,6 +50,8 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 	var isLoading:Bool = false;
 
 	static inline var BIO_DIR = 'assets/exe/extras/bios/characters';
+	static inline var BOX_X:Int = 220;
+	static inline var BOX_W:Int = 420;
 
 	public function new(parent:BIOS)
 	{
@@ -67,8 +69,7 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 		buildListBox();
 		buildEditBox();
 
-		if (allNames.length > 0)
-			loadChar(0);
+		if (allNames.length > 0) loadChar(0);
 
 		var hint = new FlxText(0, FlxG.height - 22, FlxG.width,
 			'F1/ESC = close  |  Ctrl+S = save  |  UP/DOWN = select', 12);
@@ -84,43 +85,83 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 
 	function scanBios()
 	{
-		var existingBios = new Map<String, String>();
 		if (FileSystem.exists(BIO_DIR))
 		{
 			for (file in FileSystem.readDirectory(BIO_DIR))
 			{
 				if (!file.endsWith('.json')) continue;
 				var path = BIO_DIR + '/' + file;
-				var d:Dynamic = Json.parse(File.getContent(path));
-				var base:Dynamic = (d.variants != null && (d.variants:Array<Dynamic>).length > 0) ? (d.variants:Array<Dynamic>)[0] : d;
-				var charId = (base.char != null) ? Std.string(base.char) : haxe.io.Path.withoutExtension(file);
-				existingBios.set(charId, path);
+				try
+				{
+					var d:Dynamic = Json.parse(File.getContent(path));
+					var dispName = (d.display_name != null) ? Std.string(d.display_name) : haxe.io.Path.withoutExtension(file);
+					var variants:Array<Dynamic> = (d.variants != null) ? cast(d.variants, Array<Dynamic>) : [];
+					var primaryChar:String;
+					if (variants.length > 0 && variants[0].char != null)
+						primaryChar = Std.string(variants[0].char);
+					else if (d.char != null)
+						primaryChar = Std.string(d.char);
+					else
+						primaryChar = haxe.io.Path.withoutExtension(file);
+					allNames.push(dispName);
+					allChars.push(primaryChar);
+					allPaths.push(path);
+				}
+				catch(e:Dynamic) { trace('scanBios parse error $file: $e'); }
+			}
+		}
+
+		var combined = [for (i in 0...allNames.length) {
+			name: allNames[i], char: allChars[i], path: allPaths[i]
+		}];
+		combined.sort(function(a, b) {
+			try {
+				var da:Dynamic = Json.parse(File.getContent(a.path));
+				var db:Dynamic = Json.parse(File.getContent(b.path));
+				var pa:Int = (da.list_position != null) ? da.list_position : 9999;
+				var pb:Int = (db.list_position != null) ? db.list_position : 9999;
+				return pa - pb;
+			} catch(e:Dynamic) { return 0; }
+		});
+		allNames = [for (e in combined) e.name];
+		allChars = [for (e in combined) e.char];
+		allPaths = [for (e in combined) e.path];
+
+		var coveredChars = new Map<String, Bool>();
+		for (i in 0...allChars.length) coveredChars.set(allChars[i], true);
+		if (FileSystem.exists(BIO_DIR))
+		{
+			for (file in FileSystem.readDirectory(BIO_DIR))
+			{
+				if (!file.endsWith('.json')) continue;
+				var path = BIO_DIR + '/' + file;
+				try
+				{
+					var d:Dynamic = Json.parse(File.getContent(path));
+					var variants:Array<Dynamic> = (d.variants != null) ? cast(d.variants, Array<Dynamic>) : [];
+					for (v in variants)
+						if (v.char != null) coveredChars.set(Std.string(v.char), true);
+				}
+				catch(e:Dynamic) {}
 			}
 		}
 
 		var scanDir = function(dir:String, mod:String) {
 			if (!FileSystem.exists(dir)) return;
-			for (file in FileSystem.readDirectory(dir)) {
+			for (file in FileSystem.readDirectory(dir))
+			{
 				if (!file.endsWith('.json')) continue;
 				var charId = haxe.io.Path.withoutExtension(file);
-				if (allChars.contains(charId)) continue;
+				if (coveredChars.exists(charId)) continue;
 				var charPath = dir + '/' + file;
-				var d:Dynamic = Json.parse(File.getContent(charPath));
-				if (d.animations == null) continue;
-
-				if (existingBios.exists(charId))
+				try
 				{
-					var bd:Dynamic = Json.parse(File.getContent(existingBios.get(charId)));
-					var dispName = (bd.display_name != null) ? Std.string(bd.display_name) : charId;
-					allNames.push(dispName);
-					allChars.push(charId);
-					allPaths.push(existingBios.get(charId));
+					var d:Dynamic = Json.parse(File.getContent(charPath));
+					if (d.animations == null) continue;
 				}
-				else
-				{
-					noBioChars.push(charId);
-					noBioMods.push(mod);
-				}
+				catch(e:Dynamic) { continue; }
+				noBioChars.push(charId);
+				noBioMods.push(mod);
 			}
 		};
 
@@ -146,9 +187,10 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 		var itemH = 20;
 		var visibleH = listBox.height - 30;
 		var selectedY = curSelected * itemH;
-		if (selectedY < listScrollY) listScrollY = selectedY;
-		if (selectedY + itemH > listScrollY + visibleH) listScrollY = selectedY + itemH - visibleH;
-		for (i in 0...allNames.length) {
+		if (selectedY < listScrollY)                          listScrollY = selectedY;
+		if (selectedY + itemH > listScrollY + visibleH)       listScrollY = selectedY + itemH - visibleH;
+		for (i in 0...allNames.length)
+		{
 			var t = new FlxText(8, 10 + i * itemH - Std.int(listScrollY), 180, allNames[i], 14);
 			t.color = (i == curSelected) ? FlxColor.YELLOW : FlxColor.WHITE;
 			t.cameras = [camSub];
@@ -162,7 +204,8 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 		var tab = listBox.getTab('Add New').menu;
 		tab.clear();
 		var itemH = 20;
-		for (i in 0...noBioChars.length) {
+		for (i in 0...noBioChars.length)
+		{
 			var t = new FlxText(8, 10 + i * itemH, 180, noBioChars[i], 14);
 			t.color = (i == noBioSelected) ? FlxColor.YELLOW : FlxColor.WHITE;
 			t.cameras = [camSub];
@@ -178,10 +221,10 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 	function createBioForSelected()
 	{
 		if (noBioChars.length == 0) return;
-		var charId = noBioChars[noBioSelected];
-		var mod    = noBioMods[noBioSelected];
-		var safeFile = new EReg('[\\\\/:*?"<>|]', 'g').replace(charId, '-');
-		var bioPath = BIO_DIR + '/' + safeFile + '.json';
+		var charId  = noBioChars[noBioSelected];
+		var mod     = noBioMods[noBioSelected];
+		var safeName = new EReg('[\\\\/:*?"<>|]', 'g').replace(charId, '-');
+		var bioPath  = BIO_DIR + '/' + safeName + '.json';
 		var defaultBio:Dynamic = {
 			display_name: charId, list_position: 9999, bio_appear: true,
 			variants: [{
@@ -204,21 +247,18 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 
 	function buildEditBox()
 	{
-		var boxX = 220;
-		var boxW = FlxG.width - boxX - 360;
-		editBox = new PsychUIBox(boxX, 10, boxW, 530, ['Entry', 'Variant']);
+		editBox = new PsychUIBox(BOX_X, 10, BOX_W, 530, ['Entry', 'Variant']);
 		editBox.cameras = [camSub];
 		editBox.scrollFactor.set();
 		add(editBox);
-
-		_buildEntryTab(boxW);
-		_buildVariantTab(boxW);
+		_buildEntryTab();
+		_buildVariantTab();
 	}
 
-	function _buildEntryTab(boxW:Int)
+	function _buildEntryTab()
 	{
 		var tab = editBox.getTab('Entry').menu;
-		var w = boxW - 30;
+		var w = BOX_W - 30;
 		var y = 10;
 
 		var lbl1 = new FlxText(10, y, 0, 'List Display Name:'); y += 14;
@@ -232,16 +272,14 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 		var saveBtn = new PsychUIButton(10, y, 'Save Entry  (Ctrl+S)', function() saveEntry());
 		saveBtn.normalStyle.bgColor = 0xFF337733;
 
-		tab.add(lbl1); tab.add(displayNameInput);
-		tab.add(bioAppearCheck);
-		tab.add(lbl2); tab.add(bioOrderStepper);
-		tab.add(saveBtn);
+		for (spr in [lbl1, displayNameInput, bioAppearCheck, lbl2, bioOrderStepper, saveBtn])
+			tab.add(spr);
 	}
 
-	function _buildVariantTab(boxW:Int)
+	function _buildVariantTab()
 	{
 		var tab = editBox.getTab('Variant').menu;
-		var w = boxW - 30;
+		var w = BOX_W - 30;
 		var half = Std.int(w / 2) - 5;
 		var y = 10;
 
@@ -275,18 +313,18 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 		vCharScale = new PsychUINumericStepper(10, y, 0.05, 0.5, 0.05, 10, 2); y += 28;
 
 		var l6 = new FlxText(10, y, 0, 'Char Offset X / Y:'); y += 14;
-		vCharOffX = new PsychUINumericStepper(10,    y, 5, 300, -9000, 9000, 0);
-		vCharOffY = new PsychUINumericStepper(half + 15, y, 5, 100, -9000, 9000, 0); y += 28;
+		vCharOffX = new PsychUINumericStepper(10,         y, 5, 300, -9000, 9000, 0);
+		vCharOffY = new PsychUINumericStepper(half + 15,  y, 5, 100, -9000, 9000, 0); y += 28;
 
 		var l7 = new FlxText(10, y, 0, 'Icon Offset X / Y:'); y += 14;
-		vIconOffX = new PsychUINumericStepper(10,    y, 5, 786, -9000, 9000, 0);
-		vIconOffY = new PsychUINumericStepper(half + 15, y, 5, 425, -9000, 9000, 0); y += 28;
+		vIconOffX = new PsychUINumericStepper(10,         y, 5, 786, -9000, 9000, 0);
+		vIconOffY = new PsychUINumericStepper(half + 15,  y, 5, 425, -9000, 9000, 0); y += 28;
 
 		var l8 = new FlxText(10, y, 0, 'Artist:'); y += 14;
 		vArtistInput = new PsychUIInputText(10, y, w, '', 12); y += 28;
 
 		var l9 = new FlxText(10, y, 0, 'Bio Text:'); y += 14;
-		vBioInput = new PsychUIInputText(10, y, w, '', 12); y += 32;
+		vBioInput = new PsychUIInputText(10, y, w, '', 12); y += 28;
 
 		ghostBtn = new PsychUIButton(10, y, 'Ghost: OFF', function() toggleGhost());
 		ghostBtn.normalStyle.bgColor = 0xFF444444;
@@ -297,7 +335,8 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 		             l1, vDispNameInput, l2, vCharInput, l3, vIconInput,
 		             l4, vModInput, vFlipXCheck, l5, vCharScale,
 		             l6, vCharOffX, vCharOffY, l7, vIconOffX, vIconOffY,
-		             l8, vArtistInput, l9, vBioInput, ghostBtn, saveVBtn])
+		             l8, vArtistInput, l9, vBioInput,
+		             ghostBtn, saveVBtn])
 			tab.add(spr);
 	}
 
@@ -318,15 +357,15 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 		isLoading = true;
 		vIndexLabel.text    = 'Variant ${curVariantIdx + 1} / ${variants.length}';
 		vDispNameInput.text = (v.display_name != null) ? Std.string(v.display_name) : '';
-		vCharInput.text     = (v.char   != null) ? Std.string(v.char)   : '';
-		vIconInput.text     = (v.icon   != null) ? Std.string(v.icon)   : '';
-		vModInput.text      = (v.mod    != null) ? Std.string(v.mod)    : '';
+		vCharInput.text     = (v.char         != null) ? Std.string(v.char)         : '';
+		vIconInput.text     = (v.icon         != null) ? Std.string(v.icon)         : '';
+		vModInput.text      = (v.mod          != null) ? Std.string(v.mod)          : '';
 		vFlipXCheck.checked = (v.flip_x == true);
-		vCharScale.value    = (v.char_scale  != null) ? v.char_scale       : 0.5;
-		vCharOffX.value     = (v.char_offset != null) ? v.char_offset[0]   : 300;
-		vCharOffY.value     = (v.char_offset != null) ? v.char_offset[1]   : 100;
-		vIconOffX.value     = (v.icon_offset != null) ? v.icon_offset[0]   : 786;
-		vIconOffY.value     = (v.icon_offset != null) ? v.icon_offset[1]   : 425;
+		vCharScale.value    = (v.char_scale  != null) ? v.char_scale     : 0.5;
+		vCharOffX.value     = (v.char_offset != null) ? v.char_offset[0] : 300;
+		vCharOffY.value     = (v.char_offset != null) ? v.char_offset[1] : 100;
+		vIconOffX.value     = (v.icon_offset != null) ? v.icon_offset[0] : 786;
+		vIconOffY.value     = (v.icon_offset != null) ? v.icon_offset[1] : 425;
 		vArtistInput.text   = (v.artist != null) ? Std.string(v.artist) : '';
 		vBioInput.text      = (v.bio    != null) ? Std.string(v.bio)    : '';
 		isLoading = false;
@@ -336,28 +375,29 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 
 	function syncVariantPreview()
 	{
-		if (isLoading || charData == null) return;
+		if (charData == null) return;
 		try
 		{
-			var charId = vCharInput.text;
-			if (charId != '' && parentState.biosShowcase.character != null)
+			var ch = parentState.biosShowcase.character;
+			if (ch != null && vCharInput.text != '')
 			{
-				var ch = parentState.biosShowcase.character;
-				if (ch.curCharacter != charId) ch.changeCharacter(charId);
+				if (ch.curCharacter != vCharInput.text)
+					ch.changeCharacter(vCharInput.text);
 				ch.flipX = vFlipXCheck.checked;
 				var s = vCharScale.value;
 				ch.scale.set(s, s);
 				ch.updateHitbox();
 				ch.setPosition(vCharOffX.value - ch.offset.x, vCharOffY.value - ch.offset.y);
 			}
-			if (parentState.biosShowcase.icon != null && vIconInput.text != '')
+			var icon = parentState.biosShowcase.icon;
+			if (icon != null && vIconInput.text != '')
 			{
-				if (parentState.biosShowcase.icon.getCharacter() != vIconInput.text)
-					parentState.biosShowcase.icon.changeIcon(vIconInput.text);
-				parentState.biosShowcase.icon.setPosition(vIconOffX.value, vIconOffY.value);
+				if (icon.getCharacter() != vIconInput.text)
+					icon.changeIcon(vIconInput.text);
+				icon.setPosition(vIconOffX.value, vIconOffY.value);
 			}
 		}
-		catch(e:Dynamic) { trace('syncVariantPreview error: ' + e); }
+		catch(e:Dynamic) { trace('syncVariantPreview error: $e'); }
 	}
 
 	function changeVariantEdit(dir:Int)
@@ -404,8 +444,8 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 		v.char_scale   = vCharScale.value;
 		v.char_offset  = [vCharOffX.value, vCharOffY.value];
 		v.icon_offset  = [vIconOffX.value, vIconOffY.value];
-		v.artist       = vArtistInput.text;
-		v.bio          = vBioInput.text;
+		v.artist = vArtistInput.text;
+		v.bio    = vBioInput.text;
 		_writeJson();
 	}
 
@@ -434,13 +474,27 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 		rebuildList();
 
 		charData = Json.parse(File.getContent(allPaths[index]));
-		var variants:Array<Dynamic> = (charData.variants != null) ? cast(charData.variants, Array<Dynamic>) : [];
-		var base:Dynamic = (variants.length > 0) ? variants[0] : charData;
 
+		if (charData.variants == null)
+		{
+			var flat:Dynamic = charData;
+			charData.variants = [{
+				display_name: (flat.display_name != null) ? flat.display_name : allChars[index],
+				char:         (flat.char         != null) ? flat.char         : allChars[index],
+				icon:         (flat.icon         != null) ? flat.icon         : allChars[index],
+				mod:          (flat.mod          != null) ? flat.mod          : '',
+				flip_x:       (flat.flip_x == true),
+				char_scale:   (flat.char_scale   != null) ? flat.char_scale   : 0.5,
+				char_offset:  (flat.char_offset  != null) ? flat.char_offset  : [300, 100],
+				icon_offset:  (flat.icon_offset  != null) ? flat.icon_offset  : [786, 425],
+				artist:       (flat.artist       != null) ? flat.artist       : '',
+				bio:          (flat.bio          != null) ? flat.bio          : ''
+			}];
+		}
+
+		var variants:Array<Dynamic> = cast(charData.variants, Array<Dynamic>);
+		var base:Dynamic = variants[0];
 		Mods.currentModDirectory = (base.mod != null && base.mod != '') ? Std.string(base.mod) : '';
-
-		if (parentState.biosShowcase.character != null)
-			parentState.biosShowcase.character.changeCharacter(allChars[index]);
 
 		var parentIndex = parentState.biosCharacter.chars_list.indexOf(allChars[index]);
 		if (parentIndex >= 0) parentState.biosCharacter.jumpToChar(parentIndex);
@@ -461,19 +515,17 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandle
 		{
 			ghostActive = true;
 			if (ghostChar != null) { parentState.remove(ghostChar); ghostChar.destroy(); }
-			ghostChar = new Character(
-				parentState.biosShowcase.character.x, parentState.biosShowcase.character.y,
-				allChars[curSelected], true
-			);
+			var ch = parentState.biosShowcase.character;
+			ghostChar = new Character(ch.x, ch.y, vCharInput.text != '' ? vCharInput.text : allChars[curSelected], true);
 			ghostChar.scrollFactor.set();
 			ghostChar.scale.set(vCharScale.value, vCharScale.value);
 			ghostChar.flipX = vFlipXCheck.checked;
 			ghostChar.updateHitbox();
-			ghostChar.alpha = 0.3;
+			ghostChar.alpha  = 0.3;
 			ghostChar.active = false;
 			parentState.add(ghostChar);
-			parentState.remove(parentState.biosShowcase.character);
-			parentState.add(parentState.biosShowcase.character);
+			parentState.remove(ch);
+			parentState.add(ch);
 			ghostBtn.text.text = 'Ghost: ON';
 			ghostBtn.normalStyle.bgColor = 0xFF336633;
 		}

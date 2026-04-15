@@ -1,0 +1,14 @@
+{
+	"char_scale": 0.5,
+	"artist": "JesterFrog",
+	"bio_appear": true,
+	"bio": "He is the main protagonist of \"A Normal Copy of Sonic CD.\"\nNormal is a chaotic and goofy creature who only wants the best for all his friends. Normal is not a traditional EXE, but rather an experiment conducted by Ilex in an attempt to create life from a soul Glass. This technically makes Normal X his biological son.\nHe was sadly banished to the void due to Revived fearing that he was made a monstrosity.",
+	"mod": "NORMALCD",
+	"icon_offset": [786, 425],
+	"char_offset": [300, 100],
+	"flip_x": false,
+	"char": "normal",
+	"icon": "normal",
+	"display_name": "normal",
+	"list_position": 9999
+}

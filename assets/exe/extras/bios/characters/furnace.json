@@ -1,14 +1,40 @@
 {
-	"char_scale": 0.5,
-	"artist": "",
-	"bio_appear": true,
-	"bio": "",
-	"mod": "STARVED",
-	"icon_offset": [786, 425],
-	"char_offset": [300, 100],
-	"flip_x": false,
-	"char": "furnace",
-	"icon": "furnace",
 	"display_name": "furnace",
-	"list_position": 9999
+	"bio": "Furnace (Legacy) is a robotic antagonist created by Dr. Robotnik (Eggman) with a very specific purpose: hunting and cooking Mobians. Unlike typical EXE entities, Furnace is not supernatural, but a machine designed for efficiency, combining high intelligence with lethal functionality.\r\n\r\nHis design is heavily inspired by Metal Sonic, but modified into a larger and more industrial form. The most notable feature is the furnace built into his chest, which he uses to trap victims and burn them alive. This makes him both a hunter and a “processor,” turning his targets into food for his creator.",
+	"icon": "furnace",
+	"icon_offset": [
+		786,
+		425
+	],
+	"char_scale": 0.5,
+	"list_position": 9999,
+	"mod": "STARVED",
+	"bio_appear": true,
+	"char_offset": [
+		300,
+		100
+	],
+	"variants": [
+		{
+			"char_scale": 6.25,
+			"artist": "DumbieDumbie",
+			"bio": "Furnace (Legacy) is a robotic antagonist created by Dr. Robotnik (Eggman) with a very specific purpose: hunting and cooking Mobians. Unlike typical EXE entities, Furnace is not supernatural, but a machine designed for efficiency, combining high intelligence with lethal functionality.\r\n\r\nHis design is heavily inspired by Metal Sonic, but modified into a larger and more industrial form. The most notable feature is the furnace built into his chest, which he uses to trap victims and burn them alive. This makes him both a hunter and a “processor,” turning his targets into food for his creator.",
+			"mod": "STARVED",
+			"icon_offset": [
+				691,
+				470
+			],
+			"char_offset": [
+				-55,
+				-175
+			],
+			"flip_x": false,
+			"char": "furnace",
+			"icon": "furnace",
+			"display_name": "furnace"
+		}
+	],
+	"char": "furnace",
+	"flip_x": false,
+	"artist": "DumbieDumbie"
 }

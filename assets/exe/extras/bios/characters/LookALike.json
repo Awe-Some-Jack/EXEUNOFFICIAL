@@ -1,43 +1,61 @@
 {
-	"display_name": "LOOKALIKE",
-	"list_position": 8,
-	"bio_appear": true,
 	"variants": [
 		{
+			"bio": "Lookalike resembles Boyfriend but appears more ominous and unkept, having a dark shade over his eyes, yellow teeth, and torn and ragged clothes. His prohibition sign is now a circle with an X and most of his colors are faded. He also wears a red shirt under the white t-shirt, which is also torn and ragged.",
 			"display_name": "LOOKALIKE",
+			"icon": "lookalike",
+			"icon_offset": [
+				690,
+				470
+			],
+			"char_scale": 0.55,
+			"mod": "STORY MODE",
+			"char_offset": [
+				615,
+				305
+			],
 			"char": "LookALike",
-			"char_scale": 0.55,
-			"char_offset": [615, 305],
-			"icon_offset": [-30, -25],
-			"icon": "lookalike",
 			"flip_x": false,
-			"mod": "STORY MODE",
-			"artist": "treno",
-			"bio": "ola we"
+			"artist": "Saster & Dorknoob"
 		},
 		{
+			"bio": "Lookalike resembles Boyfriend but appears more ominous and unkept, having a dark shade over his eyes, yellow teeth, and torn and ragged clothes. His prohibition sign is now a circle with an X and most of his colors are faded. He also wears a red shirt under the white t-shirt, which is also torn and ragged.",
 			"display_name": "LOOKALIKE2",
-			"char": "LookALike2",
-			"char_scale": 0.55,
-			"char_offset": [600, 315],
-			"icon_offset": [786, 425],
 			"icon": "lookalike",
-			"flip_x": false,
+			"icon_offset": [
+				691,
+				470
+			],
+			"char_scale": 0.55,
 			"mod": "STORY MODE",
-			"artist": "",
-			"bio": ""
+			"char_offset": [
+				600,
+				315
+			],
+			"char": "LookALike2",
+			"flip_x": false,
+			"artist": "Saster & Dorknoob"
 		},
 		{
+			"bio": "Lookalike resembles Boyfriend but appears more ominous and unkept, having a dark shade over his eyes, yellow teeth, and torn and ragged clothes. His prohibition sign is now a circle with an X and most of his colors are faded. He also wears a red shirt under the white t-shirt, which is also torn and ragged.",
 			"display_name": "LOOKALIKE3",
-			"char": "silly look",
-			"char_scale": 0.8,
-			"char_offset": [510, 270],
-			"icon_offset": [-31, -23],
 			"icon": "minilook",
-			"flip_x": false,
+			"icon_offset": [
+				689,
+				472
+			],
+			"char_scale": 0.8,
 			"mod": "STORY MODE",
-			"artist": "treno",
-			"bio": "ola we"
+			"char_offset": [
+				510,
+				270
+			],
+			"char": "silly look",
+			"flip_x": false,
+			"artist": "Saster & Dorknoob"
 		}
-	]
+	],
+	"bio_appear": true,
+	"list_position": 8,
+	"display_name": "LOOKALIKE"
 }

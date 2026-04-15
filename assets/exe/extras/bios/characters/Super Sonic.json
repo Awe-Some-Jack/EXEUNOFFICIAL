@@ -1,0 +1,40 @@
+{
+	"bio": "Cruel and utterly chaotic, Super Sonic lacks the heroism of his mainline counterpart, instead becoming extremely dangerous when let loose. Often taunting his foes before striking, Super Sonic is sadistic, often saving the heroes from danger just for the pleasure of killing them all himself, and prolonging said killings just to make things more enjoyable for himself.\n\nThe most dangerous aspects of Super Sonic would be boredom and ego, being the main factors as to why he acts so vitriolic. Notably, these traits can be used against him, as once he saved an entire village from a volcano simply because Tails suggested that Super Sonic wouldn't be able to.",
+	"display_name": "FLEETWAY",
+	"char_scale": 0.7,
+	"icon_offset": [
+		786,
+		425
+	],
+	"icon": "fleet",
+	"mod": "FLEETWAY",
+	"list_position": 9999,
+	"char_offset": [
+		510,
+		220
+	],
+	"bio_appear": true,
+	"variants": [
+		{
+			"char_scale": 0.7,
+			"artist": "SEGA & Fleetway Comics",
+			"bio": "Cruel and utterly chaotic, Super Sonic lacks the heroism of his mainline counterpart, instead becoming extremely dangerous when let loose. Often taunting his foes before striking, Super Sonic is sadistic, often saving the heroes from danger just for the pleasure of killing them all himself, and prolonging said killings just to make things more enjoyable for himself.\n\nThe most dangerous aspects of Super Sonic would be boredom and ego, being the main factors as to why he acts so vitriolic. Notably, these traits can be used against him, as once he saved an entire village from a volcano simply because Tails suggested that Super Sonic wouldn't be able to.",
+			"mod": "FLEETWAY",
+			"icon_offset": [
+				701,
+				465
+			],
+			"char_offset": [
+				510,
+				220
+			],
+			"flip_x": false,
+			"char": "fleetway",
+			"icon": "fleet",
+			"display_name": "FLEETWAY"
+		}
+	],
+	"flip_x": false,
+	"char": "fleetway",
+	"artist": "SEGA & Fleetway Comics"
+}

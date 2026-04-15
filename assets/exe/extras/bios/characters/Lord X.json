@@ -1,0 +1,61 @@
+{
+	"variants": [
+		{
+			"bio": "Lord X is your same old friend from 2011- it has been waiting to reunite with you and show off just how much it has grown since your first encounter. In X's mind, there is only one goal- to claim what in its mind, belongs to it. All of humanity. Lord X has a deep fascination with the Sonic the Hedgehog series, molding its vessel and world around the character and franchise. Lord X prefers the earlier years of the series but is not afraid to dwell into the modern state of the property. It is not known why it chose Sonic, or the reason it has a fondness for the character.",
+			"display_name": "LORDX",
+			"icon": "lord-x",
+			"icon_offset": [
+				696,
+				465
+			],
+			"char_scale": 0.5,
+			"mod": "LORD X",
+			"char_offset": [
+				630,
+				375
+			],
+			"char": "lordx",
+			"flip_x": false,
+			"artist": "JoeDoughBoi"
+		},
+		{
+			"bio": "Lord X is your same old friend from 2011- it has been waiting to reunite with you and show off just how much it has grown since your first encounter. In X's mind, there is only one goal- to claim what in its mind, belongs to it. All of humanity. Lord X has a deep fascination with the Sonic the Hedgehog series, molding its vessel and world around the character and franchise. Lord X prefers the earlier years of the series but is not afraid to dwell into the modern state of the property. It is not known why it chose Sonic, or the reason it has a fondness for the character.",
+			"display_name": "LORDX",
+			"icon": "lordx-p2",
+			"icon_offset": [
+				696,
+				465
+			],
+			"char_scale": 0.5,
+			"mod": "LORD X",
+			"char_offset": [
+				580,
+				370
+			],
+			"char": "lord x podrido",
+			"flip_x": false,
+			"artist": "JoeDoughBoi"
+		},
+		{
+			"bio": "Lord X is your same old friend from 2011- it has been waiting to reunite with you and show off just how much it has grown since your first encounter. In X's mind, there is only one goal- to claim what in its mind, belongs to it. All of humanity. Lord X has a deep fascination with the Sonic the Hedgehog series, molding its vessel and world around the character and franchise. Lord X prefers the earlier years of the series but is not afraid to dwell into the modern state of the property. It is not known why it chose Sonic, or the reason it has a fondness for the character.",
+			"display_name": "LORDX",
+			"icon": "lordx-p3",
+			"icon_offset": [
+				691,
+				465
+			],
+			"char_scale": 0.65,
+			"mod": "LORD X",
+			"char_offset": [
+				495,
+				275
+			],
+			"char": "lord x p3largo",
+			"flip_x": false,
+			"artist": "JoeDoughBoi"
+		}
+	],
+	"bio_appear": true,
+	"list_position": 9999,
+	"display_name": "LORDX"
+}

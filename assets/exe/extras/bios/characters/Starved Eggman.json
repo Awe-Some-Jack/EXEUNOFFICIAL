@@ -1,0 +1,61 @@
+{
+	"variants": [
+		{
+			"bio": "",
+			"display_name": "sunky",
+			"icon": "sunky",
+			"icon_offset": [
+				696,
+				465
+			],
+			"char_scale": 0.5,
+			"mod": "SUNKY",
+			"char_offset": [
+				300,
+				100
+			],
+			"char": "sunky",
+			"flip_x": false,
+			"artist": ""
+		},
+		{
+			"bio": "",
+			"display_name": "sunkyclassic",
+			"icon": "sunky",
+			"icon_offset": [
+				786,
+				425
+			],
+			"char_scale": 0.5,
+			"mod": "SUNKY",
+			"char_offset": [
+				300,
+				100
+			],
+			"char": "sunkyclassic",
+			"flip_x": false,
+			"artist": ""
+		},
+		{
+			"bio": "",
+			"display_name": "sunkympeg",
+			"icon": "sunkympeg",
+			"icon_offset": [
+				786,
+				425
+			],
+			"char_scale": 0.5,
+			"mod": "SUNKY",
+			"char_offset": [
+				300,
+				100
+			],
+			"char": "sunkympeg",
+			"flip_x": false,
+			"artist": ""
+		}
+	],
+	"bio_appear": true,
+	"list_position": 9999,
+	"display_name": "sunky"
+}

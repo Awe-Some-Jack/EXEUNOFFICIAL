@@ -77,6 +77,7 @@ class BIOS extends MusicBeatState
 	override function destroy()
 	{
 		biosInfo.destroy();
+		biosShowcase.destroy();
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 		super.destroy();

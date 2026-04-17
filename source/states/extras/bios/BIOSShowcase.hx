@@ -5,6 +5,9 @@ import flixel.graphics.FlxGraphic;
 import flixel.util.FlxSpriteUtil;
 import objects.*;
 import flixel.addons.display.shapes.*;
+import sys.thread.Thread;
+import sys.thread.Mutex;
+import openfl.display.BitmapData;
 
 class BIOSShowcase
 {
@@ -59,6 +62,10 @@ class BIOSShowcase
 
 	public var lockedX:Float = 0;
 	public var lockedY:Float = 0;
+
+	var _preloadMutex:Mutex = new Mutex();
+	var _pendingBitmaps:Map<String, BitmapData> = [];
+	var _preloadCancelToken:{ cancelled:Bool } = { cancelled: false };
 
 	public function new(parent:BIOS)
 	{
@@ -144,6 +151,7 @@ class BIOSShowcase
 		_swapIcon(bc.healthicon_list[index]);
 
 		_forceIdleLoop();
+		_preloadNeighbors(index);
 
 		if (!bios.editorOverride)
 		{
@@ -174,6 +182,7 @@ class BIOSShowcase
 		_swapIcon(iconId);
 
 		_forceIdleLoop();
+		_preloadNeighbors(bc.curChar);
 
 		if (!bios.editorOverride)
 		{
@@ -199,6 +208,131 @@ class BIOSShowcase
 		_setArtist(artist);
 
 		_updateDots();
+	}
+
+	public function destroy()
+	{
+		_preloadCancelToken.cancelled = true;
+		_preloadMutex.acquire();
+		for (key in _pendingBitmaps.keys())
+		{
+			_pendingBitmaps.get(key).dispose();
+			_pendingBitmaps.remove(key);
+		}
+		_preloadMutex.release();
+	}
+
+	function _preloadNeighbors(centerIdx:Int)
+	{
+		_preloadCancelToken.cancelled = true;
+		var token = { cancelled: false };
+		_preloadCancelToken = token;
+
+		var bc     = bios.biosCharacter;
+		var n      = bc.chars_list.length;
+		if (n == 0) return;
+
+		var indices:Array<Int> = [];
+		for (delta in [-1, 1, -2, 2])
+		{
+			var idx = ((centerIdx + delta) % n + n) % n;
+			if (!indices.contains(idx)) indices.push(idx);
+		}
+
+		var charIds:Array<String> = [];
+		var modDirs:Array<String> = [];
+		for (idx in indices)
+		{
+			var variants = bc.variants_list[idx];
+			if (variants != null && variants.length > 0)
+			{
+				for (v in variants)
+				{
+					var cid = (v.char != null) ? Std.string(v.char) : bc.chars_list[idx];
+					var mod = (v.mod  != null) ? Std.string(v.mod)  : bc.charMods_list[idx];
+					if (!charIds.contains(cid)) { charIds.push(cid); modDirs.push(mod); }
+				}
+			}
+			else
+			{
+				var cid = bc.chars_list[idx];
+				var mod = bc.charMods_list[idx];
+				if (!charIds.contains(cid)) { charIds.push(cid); modDirs.push(mod); }
+			}
+		}
+
+		Thread.create(function() {
+			for (i in 0...charIds.length)
+			{
+				if (token.cancelled) return;
+
+				var charId = charIds[i];
+				var mod    = modDirs[i];
+
+				var charPath = 'characters/$charId.json';
+				var fullPath:String;
+				if (mod != null && mod != '')
+					fullPath = 'mods/$mod/$charPath';
+				else
+				{
+					var shared = Paths.getSharedPath(charPath);
+					fullPath = FileSystem.exists(shared) ? shared : shared;
+					#if MODS_ALLOWED
+					var modded = Paths.modFolders(charPath);
+					if (FileSystem.exists(modded)) fullPath = modded;
+					#end
+				}
+
+				if (!FileSystem.exists(fullPath)) continue;
+
+				var json:Dynamic;
+				try { json = haxe.Json.parse(sys.io.File.getContent(fullPath)); }
+				catch(e:Dynamic) { continue; }
+
+				if (json.image == null) continue;
+				var images:Array<String> = Std.string(json.image).split(',');
+
+				for (imgKey in images)
+				{
+					if (token.cancelled) return;
+					imgKey = StringTools.trim(imgKey);
+
+					var cacheKey = 'images/$imgKey.png';
+
+					_preloadMutex.acquire();
+					var skip = _pendingBitmaps.exists(cacheKey);
+					_preloadMutex.release();
+					if (skip) continue;
+
+					var imgFile:String;
+					if (mod != null && mod != '')
+						imgFile = Paths.modFolders('images/$imgKey.png');
+					else
+					{
+						imgFile = Paths.getSharedPath('images/$imgKey.png');
+						#if MODS_ALLOWED
+						var m = Paths.modFolders('images/$imgKey.png');
+						if (FileSystem.exists(m)) imgFile = m;
+						#end
+					}
+
+					if (!FileSystem.exists(imgFile)) continue;
+
+					var bmp:BitmapData;
+					try { bmp = BitmapData.fromFile(imgFile); }
+					catch(e:Dynamic) { continue; }
+
+					if (token.cancelled) { bmp.dispose(); return; }
+
+					_preloadMutex.acquire();
+					if (!_pendingBitmaps.exists(cacheKey))
+						_pendingBitmaps.set(cacheKey, bmp);
+					else
+						bmp.dispose();
+					_preloadMutex.release();
+				}
+			}
+		});
 	}
 
 	function _swapChar(charId:String)
@@ -344,6 +478,29 @@ class BIOSShowcase
 
 	public function update(elapsed:Float)
 	{
+		_preloadMutex.acquire();
+		if (_pendingBitmaps.keys().hasNext())
+		{
+			for (key in _pendingBitmaps.keys())
+			{
+				if (!Paths.currentTrackedAssets.exists(key))
+				{
+					var bmp = _pendingBitmaps.get(key);
+					var graph = FlxGraphic.fromBitmapData(bmp, false, key);
+					graph.persist        = true;
+					graph.destroyOnNoUse = false;
+					Paths.currentTrackedAssets.set(key, graph);
+					Paths.localTrackedAssets.push(key);
+				}
+				else
+				{
+					_pendingBitmaps.get(key).dispose();
+				}
+				_pendingBitmaps.remove(key);
+			}
+		}
+		_preloadMutex.release();
+
 		if (character != null && _danceLeftTag != null)
 		{
 			_danceTimer += elapsed;

@@ -1253,6 +1253,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.music.onComplete = finishSong.bind();
 		vocals.play();
 		opponentVocals.play();
+		FlxG.sound.music.volume = 1;
 		vocals.volume = 1;
 		opponentVocals.volume = 1;
 
@@ -1328,6 +1329,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.list.add(vocals);
 		FlxG.sound.list.add(opponentVocals);
 
+		FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
 		opponentVocals.volume = 0;
 
@@ -3434,6 +3436,9 @@ class PlayState extends MusicBeatState
 				if (curBeat >= 296) PauseSubState.miniSonicImage = 'hellbent-2';
 			case 'fate':
 				if (curBeat >= 576) PauseSubState.miniSonicImage = 'fate-2';
+			case 'endless-jp':
+				if (curBeat >= 228) PauseSubState.miniSonicImage = 'endless-jp-2';
+				if (curBeat >= 292 && curBeat < 356) PauseSubState.miniSonicImage = 'endless-jp-1';
 			case 'starline':
 				if (curBeat >= 272) PauseSubState.miniSonicImage = 'starline-2';
 			case 'deception':
@@ -3442,6 +3447,9 @@ class PlayState extends MusicBeatState
 				if (curBeat >= 264) PauseSubState.miniSonicImage = 'hijacked-transmission-2';
 				if (curBeat >= 328) PauseSubState.miniSonicImage = 'hijacked-transmission-4';
 				if (curBeat >= 480) PauseSubState.miniSonicImage = 'hijacked-transmission-3';
+			case 'fakebaby':
+				if (curBeat >= 144) PauseSubState.miniSonicImage = 'fakebaby-2';
+				if (curBeat >= 528) PauseSubState.miniSonicImage = 'fakebaby-3';
 		}
 
 		setOnScripts('curBeat', curBeat);

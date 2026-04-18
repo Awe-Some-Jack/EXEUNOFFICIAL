@@ -14,16 +14,16 @@ class TVSlopeMap
 	public static inline var T_NARROW_SLOPE:Int = 3;
 	public static inline var T_LAUNCHPAD:Int    = 4;
 
-	static inline var C_SOLID_A:Int    = 0xFF0000;
-	static inline var C_SOLID_B:Int    = 0x010000;
-	static inline var C_SOLID_C:Int    = 0xFF00F5;
-	static inline var C_SOLID_D:Int    = 0xFFFE00;
-	static inline var C_PLAT_A:Int     = 0x00FF03;
-	static inline var C_PLAT_B:Int     = 0x00F101;
-	static inline var C_PLAT_C:Int     = 0x00FFEF;
-	static inline var C_NARROW:Int     = 0xFF8F00;
-	static inline var C_LAUNCH_A:Int   = 0x000FFF;
-	static inline var C_LAUNCH_B:Int   = 0x0001FD;
+	public static inline var C_SOLID_A:Int    = 0xFF0000;
+	public static inline var C_SOLID_B:Int    = 0x010000;
+	public static inline var C_SOLID_C:Int    = 0xFF00F5;
+	public static inline var C_SOLID_D:Int    = 0xFFFE00;
+	public static inline var C_PLAT_A:Int     = 0x00FF03;
+	public static inline var C_PLAT_B:Int     = 0x00F101;
+	public static inline var C_PLAT_C:Int     = 0x00FFEF;
+	public static inline var C_NARROW:Int     = 0xFF8F00;
+	public static inline var C_LAUNCH_A:Int   = 0x000FFF;
+	public static inline var C_LAUNCH_B:Int   = 0x0001FD;
 
 	public function new() {}
 
@@ -62,6 +62,8 @@ class TVSlopeMap
 		return typeAt(x, y) == T_NARROW_SLOPE;
 
 	public static inline var MISS_DIST:Int = 0x7FFF;
+	public static inline var SCAN_UP:Int   = 6;
+	public static inline var WALL_SCAN:Int = 3;
 
 	public function findFloor(px:Int, footY:Int, scanDown:Int, outAngle:Array<Float>):Int
 	{
@@ -82,23 +84,6 @@ class TVSlopeMap
 			y++;
 		}
 		outAngle[0] = 0;
-		return MISS_DIST;
-	}
-
-	public function findCeiling(px:Int, headY:Int, scanUp:Int):Int
-	{
-		if (px < 0 || px >= width) return MISS_DIST;
-		var startY = headY + SCAN_UP;
-		var endY   = headY - scanUp;
-		if (endY < 0) endY = 0;
-
-		var y = startY;
-		while (y >= endY)
-		{
-			if (y < height && isHardSolidAt(px, y))
-				return headY - y;
-			y--;
-		}
 		return MISS_DIST;
 	}
 
@@ -132,6 +117,15 @@ class TVSlopeMap
 		return MISS_DIST;
 	}
 
+	public static inline function s1ToDeg(s1:Float):Float
+		return (s1 / 256.0) * 360.0;
+
+	public static inline function s1ToRad(s1:Float):Float
+		return (s1 / 256.0) * (Math.PI * 2.0);
+
+	public static inline function degToS1(deg:Float):Float
+		return (deg / 360.0) * 256.0;
+
 	function _slopeAngleAt(px:Int, py:Int):Float
 	{
 		var half = 8;
@@ -144,7 +138,7 @@ class TVSlopeMap
 		var dx = (rx - lx);
 		if (dx == 0) return 0;
 		var deg = Math.atan2(ry - ly, dx) * (180.0 / Math.PI);
-		return (deg / 360.0) * 256.0;
+		return degToS1(deg);
 	}
 
 	function _surfaceYAt(x:Int, refY:Int):Int
@@ -162,6 +156,4 @@ class TVSlopeMap
 		return refY;
 	}
 
-	public static inline var SCAN_UP:Int   = 6;
-	public static inline var WALL_SCAN:Int = 3;
 }

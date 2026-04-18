@@ -2,7 +2,6 @@ package minigame.thevalley;
 
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.util.FlxColor;
 import openfl.display.BitmapData;
 
 class TVHitboxMap
@@ -29,7 +28,6 @@ class TVHitboxMap
 			grid[i] = _colorToType(raw[i]);
 
 		var done = new haxe.ds.Vector<Bool>(bw * bh);
-		for (i in 0...done.length) done[i] = false;
 
 		for (row in 0...bh)
 		{
@@ -72,7 +70,9 @@ class TVHitboxMap
 	function _addTile(x:Int, y:Int, w:Int, h:Int, type:Int):Void
 	{
 		var tile = new FlxSprite(x, y);
-		tile.makeGraphic(w, h, FlxColor.TRANSPARENT);
+		tile.setGraphicSize(w, h);
+		tile.updateHitbox();
+		tile.visible   = false;
 		tile.immovable = true;
 		tile.moves     = false;
 
@@ -98,10 +98,10 @@ class TVHitboxMap
 		if (((argb >> 24) & 0xFF) == 0) return 0;
 		return switch (argb & 0x00FFFFFF)
 		{
-			case 0xFF0000 | 0x010000 | 0xFF00F5 | 0xFFFE00: TVSlopeMap.T_SOLID;
-			case 0x00FF03 | 0x00F101 | 0x00FFEF:            TVSlopeMap.T_PLATFORM;
-			case 0xFF8F00:                                   TVSlopeMap.T_NARROW_SLOPE;
-			case 0x000FFF | 0x0001FD:                        TVSlopeMap.T_LAUNCHPAD;
+			case TVSlopeMap.C_SOLID_A | TVSlopeMap.C_SOLID_B | TVSlopeMap.C_SOLID_C | TVSlopeMap.C_SOLID_D: TVSlopeMap.T_SOLID;
+			case TVSlopeMap.C_PLAT_A  | TVSlopeMap.C_PLAT_B  | TVSlopeMap.C_PLAT_C:                        TVSlopeMap.T_PLATFORM;
+			case TVSlopeMap.C_NARROW:                                                                        TVSlopeMap.T_NARROW_SLOPE;
+			case TVSlopeMap.C_LAUNCH_A | TVSlopeMap.C_LAUNCH_B:                                             TVSlopeMap.T_LAUNCHPAD;
 			default: 0;
 		};
 	}

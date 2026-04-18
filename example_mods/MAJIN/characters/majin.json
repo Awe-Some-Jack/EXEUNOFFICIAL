@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"offsets": [-4, 0],
 			"loop": false,
-			"fps": 24,
+			"offsets": [0, 0],
 			"anim": "danceLeft",
-			"indices": [],
-			"name": "1"
+			"fps": 24,
+			"name": "1",
+			"indices": []
 		},
 		{
-			"offsets": [17, 1],
 			"loop": false,
-			"fps": 24,
+			"offsets": [23, 1],
 			"anim": "danceRight",
-			"indices": [],
-			"name": "2"
+			"fps": 24,
+			"name": "2",
+			"indices": []
 		},
 		{
-			"offsets": [267, -120],
 			"loop": false,
-			"fps": 24,
+			"offsets": [291, -2],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
-			"offsets": [53, 105],
 			"loop": false,
-			"fps": 24,
+			"offsets": [59, 114],
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [-79, -148],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-4, -2],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
-			"offsets": [-155, -76],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-3, -1],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/SonicFunAssets",
-	"position": [0, 190],
+	"position": [-180, 40],
 	"healthicon": "majin",
 	"flip_x": false,
 	"healthbar_colors": [0, 15, 255],
 	"camera_position": [-20, -40],
 	"sing_duration": 4,
-	"scale": 1.5,
+	"scale": 0.95,
 	"_editor_isPlayer": false
 }

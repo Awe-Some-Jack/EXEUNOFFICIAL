@@ -40,6 +40,7 @@ class DAPlayer extends FlxGroup
 	private var barInnerY:Float;
 	private var barInnerW:Float;
 	private var barInnerH:Float;
+	private var _barClipRect:flixel.math.FlxRect;
 
 	private var timeTxt:FlxText;
 	private var songNameTxt:FlxText;
@@ -87,7 +88,8 @@ class DAPlayer extends FlxGroup
 	private var _seekTargetMs:Float  = 0.0;
 	private var _seekWasPlaying:Bool = false;
 
-	private var _pendingLoad:Bool = false;
+	private var _pendingLoad:Bool  = false;
+	private var _loadGeneration:Int = 0;
 
 	private var currentCredits:Array<String> = [];
 	private var composerIndex:Int            = 0;
@@ -96,6 +98,7 @@ class DAPlayer extends FlxGroup
 	public var onSongEnd:Void->Void = null;
 
 	private var _originalTitle:String = '';
+	private var _lastTitleSec:Int     = -1;
 
 	public function new()
 	{
@@ -127,7 +130,8 @@ class DAPlayer extends FlxGroup
 		barProgress = new FlxSprite(barInnerX, barInnerY);
 		barProgress.makeGraphic(Math.ceil(barInnerW), Math.ceil(barInnerH), 0xFFCC0000);
 		barProgress.antialiasing = false;
-		barProgress.clipRect = new flixel.math.FlxRect(0, 0, 0, barInnerH);
+		_barClipRect = new flixel.math.FlxRect(0, 0, 0, barInnerH);
+		barProgress.clipRect = _barClipRect;
 		add(barProgress);
 
 		bar  = _makeSprite(BX, BY,   "bar.png",  SCALE);
@@ -211,7 +215,7 @@ class DAPlayer extends FlxGroup
 
 	public function playAudio(song:String, mod:String):Void
 	{
-		if (isLoading) return;
+		if (isLoading && _loadedSong == song && _loadedMod == mod) return;
 
 		if (instSound != null && _loadedSong == song && _loadedMod == mod)
 		{
@@ -243,6 +247,9 @@ class DAPlayer extends FlxGroup
 		_seekPending     = false;
 		_scratchPitch    = 1.0;
 		_isScratchActive = false;
+		++_loadGeneration;
+		_pendingLoad = false;
+		isLoading    = false;
 		_destroyAudio();
 	}
 
@@ -497,7 +504,8 @@ class DAPlayer extends FlxGroup
 		var elapsed  = instSound != null ? instSound.time   : 0.0;
 		var progress = total > 0 ? FlxMath.bound(elapsed / total, 0, 1) : 0.0;
 
-		barProgress.clipRect = new flixel.math.FlxRect(0, 0, barInnerW * progress, barInnerH);
+		_barClipRect.width = barInnerW * progress;
+		barProgress.clipRect = _barClipRect;
 
 		if (barKnob != null)
 		{
@@ -520,21 +528,25 @@ class DAPlayer extends FlxGroup
 	{
 		if (instSound == null)
 		{
-			lime.app.Application.current.window.title = _originalTitle;
+			if (_lastTitleSec != -1)
+			{
+				_lastTitleSec = -1;
+				lime.app.Application.current.window.title = _originalTitle;
+			}
 			return;
 		}
 
-		var song   = StringTools.replace(_loadedSong, '-', ' ').toUpperCase();
-		var state  = isPlaying ? 'PLAY' : 'PAUSE';
-		var mode   = vocalsEnabled ? 'NORMAL' : 'INST';
+		var ms   = Std.int(instSound.time);
+		var secs = Std.int(ms / 1000);
+		if (secs == _lastTitleSec) return;
+		_lastTitleSec = secs;
 
-		var ms     = Std.int(instSound.time);
-		var mins   = Std.int(ms / 60000);
-		var secs   = Std.int((ms % 60000) / 1000);
-		var millis = ms % 1000;
-		var time   = '$mins:${secs < 10 ? "0" : ""}$secs,${millis < 100 ? (millis < 10 ? "00" : "0") : ""}$millis';
-
-		lime.app.Application.current.window.title = '[$state] $song | $mode | $time';
+		var song  = StringTools.replace(_loadedSong, '-', ' ').toUpperCase();
+		var state = isPlaying ? 'PLAY' : 'PAUSE';
+		var mode  = vocalsEnabled ? 'NORMAL' : 'INST';
+		var mins  = Std.int(secs / 60);
+		var s     = secs % 60;
+		lime.app.Application.current.window.title = '[$state] $song | $mode | $mins:${s < 10 ? "0" : ""}$s';
 	}
 
 	private function _updateJumpscare():Void
@@ -686,6 +698,7 @@ class DAPlayer extends FlxGroup
 		Mods.currentModDirectory = prevMod;
 		isLoading    = true;
 		_pendingLoad = true;
+		var gen = ++_loadGeneration;
 
 		var mainThread = sys.thread.Thread.current();
 		sys.thread.Thread.create(function() {
@@ -696,7 +709,7 @@ class DAPlayer extends FlxGroup
 				var s = openfl.media.Sound.fromFile(v.path);
 				if (s != null) vocs.push({snd: s, isOpp: v.isOpp});
 			}
-			mainThread.sendMessage({inst: inst, vocs: vocs});
+			mainThread.sendMessage({inst: inst, vocs: vocs, gen: gen});
 		});
 	}
 
@@ -706,10 +719,18 @@ class DAPlayer extends FlxGroup
 		var msg = sys.thread.Thread.readMessage(false);
 		if (msg == null) return;
 
+		var data:{inst:openfl.media.Sound, vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}>, gen:Int} = cast msg;
+
+		if (data.gen != _loadGeneration)
+		{
+			if (data.inst != null) data.inst.close();
+			for (v in data.vocs) if (v.snd != null) v.snd.close();
+			return;
+		}
+
 		_pendingLoad = false;
 		isLoading    = false;
 
-		var data:{inst:openfl.media.Sound, vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}>} = cast msg;
 		if (data.inst == null) return;
 
 		instSound        = FlxG.sound.load(data.inst);

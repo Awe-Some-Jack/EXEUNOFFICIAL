@@ -23,6 +23,7 @@ class StoryModeState extends MusicBeatState
 {
 	public static var instance:StoryModeState;
 	public static var weekCompleted:Map<String, Bool> = new Map<String, Bool>();
+	public static var yourselfMode:Bool = false;
 
 	var randomMIC:FlxSprite;
 
@@ -71,7 +72,9 @@ class StoryModeState extends MusicBeatState
 		Paths.clearUnusedMemory();
 		instance = this;
 
-		createAssets(false);
+		var yt = yourselfMode;
+		yourselfMode = false;
+		createAssets(yt);
 
 		CustomShapeTransition.shape = HEAD;
 
@@ -531,7 +534,12 @@ class StoryModeState extends MusicBeatState
 		if (PlayState._lastLoadedModDirectory != Mods.currentModDirectory)
 			Paths.freeGraphicsFromMemory();
 
-		if (STORY_SONGS[selectedCover] == 'yourself') CustomShapeTransition.shape = CIRCLE;
+		if (STORY_SONGS[selectedCover] == 'yourself')
+		{
+			canInteract = false;
+			yourselfCutscene();
+			return;
+		}
 
 		canInteract = false;
 		LoadingState.prepareToSong();

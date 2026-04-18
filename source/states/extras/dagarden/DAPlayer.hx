@@ -122,10 +122,10 @@ class DAPlayer extends FlxGroup
 		var barBmp = openfl.utils.Assets.getBitmapData("assets/exe/extras/dagarden/bar.png");
 		var bW = barBmp.width  * SCALE;
 		var bH = barBmp.height * SCALE;
-		barInnerX = BX + (26 / 1642) * bW;
+		barInnerX = BX + (15 / 1642) * bW;
 		barInnerY = BY + (15 /   96) * bH;
-		barInnerW = ((1642 - 52) / 1642) * bW;
-		barInnerH = ((96  - 30) /   96)  * bH;
+		barInnerW = ((1642 - 32) / 1642) * bW;
+		barInnerH = ((96  - 29) /   96)  * bH;
 
 		barProgress = new FlxSprite(barInnerX, barInnerY);
 		barProgress.makeGraphic(Math.ceil(barInnerW), Math.ceil(barInnerH), 0xFFCC0000);

@@ -2667,8 +2667,8 @@ class PlayState extends MusicBeatState
 	}
 
 
-	var minRatingVel:Float = -15;
-	var maxRatingVel:Float = 15;
+	var minRatingVel:Int = -15;
+	var maxRatingVel:Int = 15;
 	private function popUpScore(note:Note = null):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.data.ratingOffset);

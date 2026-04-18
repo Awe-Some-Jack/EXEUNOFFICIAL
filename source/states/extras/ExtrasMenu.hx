@@ -53,12 +53,17 @@ class ExtrasMenu extends MusicBeatState
         'Sebasmi beba <3'
     ];
 
+    private var sebasUnlocked:Bool = false;
+
     private var menuItems:Array<FlxText> = [];
     private var extrasTextBackdrops:Array<FlxBackdrop> = [];
 
     private var curSelected:Int = 0;
     private var canMove:Bool = true;
     private var cooldownTimer:Float = 0;
+
+    private static final SEBAS_CODE:Array<flixel.input.keyboard.FlxKey> = [S, E, B, A, S];
+    private var sebasProgress:Int = 0;
 
     private var selectBox:FlxSprite;
     private var disco:FlxSprite;
@@ -188,6 +193,7 @@ class ExtrasMenu extends MusicBeatState
             menuText.antialiasing = ClientPrefs.data.antialiasing;
             menuText.pixelPerfectRender = false;
             menuText.ID = i;
+            if (i == menuOptions.length - 1) menuText.visible = false;
             add(menuText);
             menuItems.push(menuText);
         }
@@ -270,6 +276,31 @@ class ExtrasMenu extends MusicBeatState
 
         if (Controls.instance.BACK)
             exitToMainMenu();
+
+        if (FlxG.keys.checkStatus(SEBAS_CODE[sebasProgress], JUST_PRESSED))
+        {
+            sebasProgress++;
+            if (sebasProgress >= SEBAS_CODE.length)
+            {
+                sebasProgress = 0;
+                if (!sebasUnlocked)
+                {
+                    sebasUnlocked = true;
+                    menuItems[menuOptions.length - 1].visible = true;
+                    FlxG.sound.play(Paths.sound('confirmMenu'));
+                    changeSelection(0);
+                    new flixel.util.FlxTimer().start(0.1, function(_) changeSelection(menuOptions.length - 1 - curSelected));
+                }
+                else
+                {
+                    changeSelection(menuOptions.length - 1 - curSelected);
+                }
+            }
+        }
+        else if (FlxG.keys.justReleased.ANY)
+        {
+            sebasProgress = 0;
+        }
     }
 
     private function exitToMainMenu():Void
@@ -284,9 +315,10 @@ class ExtrasMenu extends MusicBeatState
     {
         curSelected += change;
 
+        var maxIdx = sebasUnlocked ? menuOptions.length - 1 : menuOptions.length - 2;
         if (curSelected < 0)
-            curSelected = menuOptions.length - 1;
-        if (curSelected >= menuOptions.length)
+            curSelected = maxIdx;
+        if (curSelected > maxIdx)
             curSelected = 0;
 
         if (change != 0)

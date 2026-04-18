@@ -11,6 +11,7 @@ import flixel.tweens.FlxEase;
 import flixel.util.FlxTimer;
 import flixel.addons.display.FlxBackdrop;
 import states.EXEMenu;
+import states.extras.sebas.SebasMiBeba;
 import backend.Paths;
 
 class ExtrasMenu extends MusicBeatState
@@ -38,7 +39,8 @@ class ExtrasMenu extends MusicBeatState
         "D.A GARDEN",
         "CUTSCENES",
         "ACHIEVEMENTS",
-        "CREDITS"
+        "CREDITS",
+        "SEBASMI BEBA"
     ];
 
     private var menuDescriptions:Array<String> = [
@@ -47,7 +49,8 @@ class ExtrasMenu extends MusicBeatState
         'Listen to the great music we have in store, composed by awesome composers. It took them a lot of time to give you something of good quality!',
         'Here you can rewatch the amazing cutscenes! Pretty simple right?',
         'Check out the achievements you can unlock, or the ones you already have!',
-        'Credits to all the people who made this mod possible!'
+        'Credits to all the people who made this mod possible!',
+        'Sebasmi beba <3'
     ];
 
     private var menuItems:Array<FlxText> = [];
@@ -469,6 +472,9 @@ class ExtrasMenu extends MusicBeatState
 
             case "CREDITS":
                 trace("Credits selected");
+
+            case "SEBASMI BEBA":
+                FlxG.switchState(new SebasMiBeba());
         }
 
         canMove = true;

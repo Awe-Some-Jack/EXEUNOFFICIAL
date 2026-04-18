@@ -36,6 +36,5 @@
 	"exeTitle": "HOG",
 	"exeCover": "hog",
 	"exeLabel": "EXE",
-	"exeColor": "0xFFFF0000",
 	"soundTestCode": [17, 1, true]
 }

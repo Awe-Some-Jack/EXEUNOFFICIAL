@@ -41,6 +41,5 @@
 	"exeTitle": "FATAL ERROR",
 	"exeCover": "fatal",
 	"exeLabel": "EXE",
-	"exeColor": "0xFFFF230F",
 	"soundTestCode": [0, 0, false]
 }

@@ -27,7 +27,6 @@
 	"exeTitle": "CRAZY TAILS",
 	"exeCover": "crazytails",
 	"exeLabel": "NON EXE",
-	"exeColor": "0xFF8888FF",
 	"transitionShape": "tails",
 	"soundTestCode": [0, 0, false]
 }

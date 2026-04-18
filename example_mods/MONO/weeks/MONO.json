@@ -27,6 +27,5 @@
 	"exeTitle": "MONO.BW",
 	"exeCover": "mono",
 	"exeLabel": "EXE",
-	"exeColor": "0xFFFF0000",
 	"soundTestCode": [16, 11, true]
 }

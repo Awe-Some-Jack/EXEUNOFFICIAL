@@ -27,7 +27,6 @@
 	"exeTitle": "SANIC",
 	"exeCover": "sanic",
 	"exeLabel": "NON EXE",
-	"exeColor": "0xFF8888FF",
 	"transitionShape": "sanic",
 	"soundTestCode": [4, 20, true]
 }

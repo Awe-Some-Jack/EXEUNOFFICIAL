@@ -27,6 +27,5 @@
 	"exeTitle": "Ugly Movie Sonic",
 	"exeCover": "movie",
 	"exeLabel": "NON EXE",
-	"exeColor": "0xFF8888FF",
 	"soundTestCode": [20, 19, true]
 }

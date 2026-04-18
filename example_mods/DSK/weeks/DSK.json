@@ -27,6 +27,5 @@
 	"exeTitle": "DSK",
 	"exeCover": "dsk",
 	"exeLabel": "EXE",
-	"exeColor": "0xFFFF0000",
 	"soundTestCode": [15, 21, true]
 }

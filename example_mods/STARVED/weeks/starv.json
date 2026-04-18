@@ -36,7 +36,6 @@
 	"exeTitle": "STARVED",
 	"exeCover": "starved",
 	"exeLabel": "EXE",
-	"exeColor": "0xFFFF0000",
 	"transitionShape": "egg",
 	"soundTestCode": [0, 0, false]
 }

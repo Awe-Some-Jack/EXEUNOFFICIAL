@@ -36,6 +36,5 @@
 	"exeTitle": "X-Terion",
 	"exeCover": "sonicjam",
 	"exeLabel": "EXE",
-	"exeColor": "0xFFFF0000",
 	"soundTestCode": [6, 20, true]
 }

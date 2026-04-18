@@ -27,7 +27,6 @@
 	"exeTitle": "CHAOTIX",
 	"exeCover": "chaotix",
 	"exeLabel": "EXE",
-	"exeColor": "0xFFFF0000",
 	"transitionShape": "knux",
 	"soundTestCode": [8, 17, true]
 }

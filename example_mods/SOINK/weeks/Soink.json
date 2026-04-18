@@ -27,6 +27,5 @@
 	"exeTitle": "SOINK",
 	"exeCover": "soink",
 	"exeLabel": "NON EXE",
-	"exeColor": "0xFF8888FF",
 	"soundTestCode": [5, 96, true]
 }

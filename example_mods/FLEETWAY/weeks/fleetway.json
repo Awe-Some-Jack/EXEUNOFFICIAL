@@ -27,7 +27,6 @@
 	"exeTitle": "FLEETWAY",
 	"exeCover": "fleetway",
 	"exeLabel": "NON EXE",
-	"exeColor": "0xFF8888FF",
 	"transitionShape": "FLEET",
 	"soundTestCode": [8, 21, true]
 }

@@ -45,6 +45,5 @@
 	"exeTitle": "EXE",
 	"exeCover": "exe",
 	"exeLabel": "EXE",
-	"exeColor": "0xFFFF0000",
 	"soundTestCode": [31, 13, true]
 }

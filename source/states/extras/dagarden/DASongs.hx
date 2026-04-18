@@ -207,7 +207,7 @@ class DASongs extends FlxGroup
 		{
 			var yBase = BOX_Y + i * BOX_SPACING;
 
-			var cover = _loadCover(songList[i], BOX_X, yBase);
+			var cover = _loadCover(songList[i].toLowerCase(), BOX_X, yBase);
 			songCovers.push(cover);
 
 			var bx = new FlxSprite(BOX_X, yBase);

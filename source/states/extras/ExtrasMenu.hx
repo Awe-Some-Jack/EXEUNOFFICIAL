@@ -63,13 +63,16 @@ class ExtrasMenu extends MusicBeatState
     private var sketch1:FlxSprite;
     private var sketch2:FlxSprite;
 
+    static var extraMenuSong:Bool = false;
+    var stopMusicPlay:Bool = false;
+
     override public function create():Void
     {
         Paths.clearStoredMemory();
         
         super.create();
 
-        initializeMusic();
+        if(!extraMenuSong) initializeMusic();
         createBackground();
         createDecorations();
         createMenu();
@@ -82,6 +85,7 @@ class ExtrasMenu extends MusicBeatState
     private function initializeMusic():Void
     {
         FlxG.sound.playMusic(openfl.utils.Assets.getSound('assets/exe/extras/music/ExtrasMenu.ogg'));
+        extraMenuSong = true;
     }
 
     private function createBackground():Void
@@ -268,6 +272,7 @@ class ExtrasMenu extends MusicBeatState
     private function exitToMainMenu():Void
     {
         canMove = false;
+        extraMenuSong = true;
         FlxG.sound.music.fadeOut(0.3);
         FlxG.switchState(new EXEMenu());
     }
@@ -447,10 +452,13 @@ class ExtrasMenu extends MusicBeatState
                 trace("Gallery selected");
 
             case "CHARACTER BIOS":
+                stopMusicPlay = true;
                 FlxG.switchState(new BIOS());
 
             case "D.A GARDEN":
-                if (FlxG.sound.music != null) FlxG.sound.music.pause();
+                extraMenuSong = false;
+                stopMusicPlay = true;
+                if (FlxG.sound.music != null) FlxG.sound.music.fadeOut(0.3);
                 FlxG.switchState(new DAGarden());
 
             case "CUTSCENES":
@@ -503,7 +511,10 @@ class ExtrasMenu extends MusicBeatState
         sketch1 = null;
         sketch2 = null;
 
-        FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+        if (!stopMusicPlay){
+            extraMenuSong = false;
+			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+        }
 
         super.destroy();
     }

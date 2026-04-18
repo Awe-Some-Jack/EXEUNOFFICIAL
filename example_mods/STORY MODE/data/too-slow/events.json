@@ -69,7 +69,8 @@
 			[
 				["Tweening Camera", "-450, 50", "6, smootherStepInOut"],
 				["Tween Camera Zoom", "0.9, true", "6, smootherStepInOut"],
-				["Set Property", "camZoomingMult", "0"]
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
 			]
 		],
 		[
@@ -229,7 +230,8 @@
 			83590.9822866344,
 			[
 				["Tween Camera Zoom", "1", ""],
-				["Set Property", "camZoomingMult", "1"]
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
 			]
 		],
 		[

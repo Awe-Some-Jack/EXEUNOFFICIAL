@@ -90,7 +90,7 @@ class StoryModeState extends MusicBeatState
 		instance = null;
 		if (arrowTween  != null) arrowTween.cancel();
 		if (arrow2Tween != null) arrow2Tween.cancel();
-		if (bfTween     != null) bfTween.cancel();
+		//if (bfTween     != null) bfTween.cancel();
 		if (bf2Tween    != null) bf2Tween.cancel();
 		if (staticTween != null) staticTween.cancel();
 		if (redBoxTween != null) redBoxTween.cancel();
@@ -308,7 +308,7 @@ class StoryModeState extends MusicBeatState
 		for (s in [greyBOX2, gfBOX, yellowBOX2, staticscreen2])
 			s.color = 0xFF666666;
 		
-		bfTween  = FlxTween.tween(bfBOX,  {y: bfBOX.y  - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
+		//bfTween  = FlxTween.tween(bfBOX,  {y: bfBOX.y  - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
 		bf2Tween = FlxTween.tween(gfBOX, {y: gfBOX.y - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
 		
 		if (yourselfTime){ canInteract = false; new FlxTimer().start(1, function(_) yourselfCutscene());}	
@@ -330,16 +330,16 @@ class StoryModeState extends MusicBeatState
 		bfBOX.animation.play('ouch', true);
 		redBOX.animation.play('break', true);
 		randomMIC.animation.play('idle', false);
-		bfTween.cancel();
+		//bfTween.cancel();
 		bfBOX.y -= 80;
-		bfTween  = FlxTween.tween(bfBOX,  {y: bfBOX.y  - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
+		//bfTween  = FlxTween.tween(bfBOX,  {y: bfBOX.y  - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
 
 		new FlxTimer().start(2.3, (_) -> randomMIC.destroy());
 
 		new FlxTimer().start(5, (_) -> {
 			FlxTween.tween(FlxG.camera.scroll, {y: FlxG.camera.scroll.y + FlxG.height * 2}, 1.2, {ease: FlxEase.smootherStepInOut, onComplete: (_) -> {
 				bfBOX.animation.play('black', true);
-				bfTween.cancel();
+				//bfTween.cancel();
 				bfBOX.x += 220;
 				FlxTween.tween(bfBOX, {y: bfBOX.y + 720 * 2}, 3, {ease: FlxEase.circOut, onComplete: (_) -> {
 					new FlxTimer().start(0.5, (_) -> FlxTween.tween(bfBOX, {y: bfBOX.y + 720}, 3, {ease: FlxEase.circInOut, onComplete: (_) -> forceLoadYourselfSong()}));
@@ -507,6 +507,7 @@ class StoryModeState extends MusicBeatState
 		if (selectedCover < 0 || selectedCover >= STORY_SONGS.length) return;
 
 		var songLower = STORY_SONGS[selectedCover];
+		var curIndex:Int = STORY_SONGS.indexOf(songLower);
 
 		Mods.currentModDirectory = STORY_MOD;
 		WeekData.reloadWeekFiles(false);
@@ -522,6 +523,7 @@ class StoryModeState extends MusicBeatState
 		{
 			Song.loadFromJson(poop, songLower);
 			PlayState.isStoryMode     = true;
+			PlayState.storyPlaylist   = STORY_SONGS.slice(curIndex);
 			PlayState.storyDifficulty = launchDiff;
 		}
 		catch (e:haxe.Exception)

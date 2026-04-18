@@ -238,7 +238,9 @@ class DASongs extends FlxGroup
 		var path = 'assets/exe/extras/dagarden/cover/$song.png';
 		if (sys.FileSystem.exists(path))
 		{
-			cv.loadGraphic(openfl.display.BitmapData.fromFile(path));
+			var bmp = openfl.utils.Assets.getBitmapData(path);
+			if (bmp == null) bmp = openfl.display.BitmapData.fromFile(path);
+			cv.loadGraphic(bmp);
 			cv.scale.set(BOX_SCALE, BOX_SCALE);
 			cv.updateHitbox();
 			songHasCover.push(true);

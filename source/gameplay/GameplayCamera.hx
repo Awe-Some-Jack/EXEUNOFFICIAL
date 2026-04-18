@@ -519,8 +519,8 @@ class GameplayCamera
 						settings.GFx=1400; settings.GFy=1000;
 						new flixel.util.FlxTimer().start(0.05, function(_) PlayState.instance.camGame.snapToTarget());
 					case 'jajaja':
-						settings.OGZoom=0.83; settings.BFx=1300; settings.BFy=1300;
-						settings.DADx=1630; settings.DADy=1200;
+						settings.OGZoom=0.83; settings.BFx=1100; settings.BFy=1250;
+						settings.DADx=1400; settings.DADy=1050;
 						setForcedPos(settings.DADx, settings.DADy);
 						PlayState.instance.camGame.zoom = 1.25;
 						PlayState.instance.camGame.snapToTarget();

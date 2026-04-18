@@ -35,6 +35,6 @@
 	"startUnlocked": true,
 	"exeTitle": "NEEDLEMOUSE",
 	"exeCover": "needlemouse",
-	"exeLabel": "EXE",
+	"exeLabel": "ENTITY",
 	"soundTestCode": [19, 63, true]
 }

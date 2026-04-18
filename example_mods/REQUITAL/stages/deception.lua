@@ -70,8 +70,10 @@ function onEvent(n,v1)
 
 			setProperty('bgrun.alpha', 1)
 
-			callMethod('gf.setPosition', {getProperty('gf.x') - 250, getProperty('gf.y') + 30})
+			callMethod('gf.setPosition', {getProperty('gf.x') - 350, getProperty('gf.y') - 80})
 			callMethod('dad.setPosition', {getProperty('dad.x') - 950, getProperty('dad.y') + 520})
+
+			setProperty('cameraSpeed', 2)
 		end
 	end
 end

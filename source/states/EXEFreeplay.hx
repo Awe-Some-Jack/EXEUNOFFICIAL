@@ -339,8 +339,17 @@ class EXEFreeplay extends MusicBeatState
 				freeBoxes.add(box);
 			}
 
+			var daColor:Int = switch (firstSong.exeLabel)
+			{
+				case 'NON EXE': 0xFF8888FF;
+				case 'OFFICIAL': 0xFFFFDD2F;
+				case 'ENTITY': 0xFFC23EFF;
+				case 'GLITCH': 0xFFFFFFFF;
+				case 'MEME': 0xFF19EAA8;
+				default: 0xFFFF0000;
+			}
 			var exeText = new FlxText(30, 0, 0, firstSong.exeLabel, EXE_LABEL_SIZE);
-			exeText.setFormat(FONT_PATH, EXE_LABEL_SIZE, (firstSong.exeLabel == 'EXE' ? 0xFFFF0000 : 0xFF8888FF), LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			exeText.setFormat(FONT_PATH, EXE_LABEL_SIZE, daColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			exeText.borderSize = 2;
 			exeText.ID         = i;
 			exeText.visible    = (i == selectedBox);

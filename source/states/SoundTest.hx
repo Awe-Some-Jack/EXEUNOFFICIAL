@@ -303,7 +303,7 @@ class SoundTest extends MusicBeatState
 			if (isPCMSelected)
 				pcmValue = (pcmValue + change + 70) % 70;
 			else
-				daValue = (daValue + change + 38) % 38;
+				daValue = (daValue + change + 100) % 100;
 		}
 	}
 

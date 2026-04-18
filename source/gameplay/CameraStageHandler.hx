@@ -191,7 +191,7 @@ class CameraStageHandler
 				if (curBeat >= 128)
 				{
 					if (cam._oldHitSection != mustHit) { cam.settings.OverrideZoom = false; cam._oldHitSection = mustHit; }
-					cam.settings.OGZoom = mustHit ? 0.83 : 1.25;
+					cam.settings.OGZoom = mustHit ? 0.9 : 1.5;
 				}
 			},
 		};

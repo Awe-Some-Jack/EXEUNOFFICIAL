@@ -35,7 +35,7 @@
 	"weekName": "Custom Week",
 	"exeTitle": "STARVED",
 	"exeCover": "starved",
-	"exeLabel": "EXE",
+	"exeLabel": "NON EXE",
 	"transitionShape": "egg",
 	"soundTestCode": [0, 0, false]
 }

@@ -142,8 +142,8 @@ function onUpdatePost(elapsed)
 		local scrollX = getProperty('camGame.scroll.x')
 		local scrollY = getProperty('camGame.scroll.y')
 		local offsetFactor = 1 - zoom
-		setProperty('eyes.x', ((getProperty('dad.x') - 30 - scrollX) * zoom) + (screenWidth * 0.5) * offsetFactor)
-		setProperty('eyes.y', ((getProperty('dad.y') + 25 - scrollY) * zoom) + (screenHeight * 0.5) * offsetFactor)
+		setProperty('eyes.x', ((getProperty('dad.x') - 54 - scrollX) * zoom) + (screenWidth * 0.5) * offsetFactor)
+		setProperty('eyes.y', ((getProperty('dad.y') + 4 - scrollY) * zoom) + (screenHeight * 0.5) * offsetFactor)
 	else
 		floatTime = floatTime + elapsed * FLOAT_SPEED
 		for _, p in ipairs(floatingPairs) do

@@ -113,7 +113,7 @@ function onCreatePost()
 	scaleObject('room', 0.9, 0.9)
 	setProperty('room.alpha', 0.0001)
 
-	makeLuaSprite('roomfg1', 'bg/room/1', -1060, -360)
+	makeLuaSprite('roomfg1', 'bg/room/1', -1210, -360)
 	addLuaSprite('roomfg1')
 	scaleObject('roomfg1', 0.9, 0.9)
 	setScrollFactor('roomfg1', 1.2, 1.2)
@@ -266,7 +266,7 @@ function onEvent(n,v1,v2)
 
 			triggerEvent('Change Character', 'dad', 'nmi3')
 			triggerEvent('Change Character', 'bf', 'finaldd')
-			triggerEvent('Set customCamera Position', 'bf', '1300, 250')
+			triggerEvent('Set customCamera Position', 'bf', '800, 250')
 			triggerEvent('Set customCamera Angle', 'bf', '0')
 			triggerEvent('Set Character Offset', 'dad', '25')
 			triggerEvent('Set Character Offset', 'bf', '25')
@@ -287,7 +287,7 @@ function onEvent(n,v1,v2)
 			setProperty('boyfriend.alpha', 1)
 			setScrollFactor('boyfriend', 1, 1)
 			callMethod('dad.setPosition', {-300, -50})
-			callMethod('boyfriend.setPosition', {1410, 80})
+			callMethod('boyfriend.setPosition', {1000, 80})
 			
 			currentBG = 3
 

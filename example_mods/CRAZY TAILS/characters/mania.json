@@ -1,76 +1,76 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [167, -260],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "lefty"
+			"fps": 24,
+			"name": "lefty",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-3, -323],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [31, -99],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-87, -240],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"offsets": [50, -140],
 			"loop": false,
 			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"loop": true,
-			"offsets": [73, -222],
-			"anim": "danceLeft",
-			"fps": 18,
-			"name": "l ",
-			"indices": []
-		},
-		{
-			"loop": true,
-			"offsets": [114, -226],
-			"anim": "danceRight",
-			"fps": 18,
-			"name": "r ",
-			"indices": []
-		},
-		{
-			"loop": true,
-			"offsets": [50, -140],
 			"anim": "s",
-			"fps": 24,
-			"name": "sonic",
-			"indices": []
-		},
-		{
-			"loop": true,
-			"offsets": [69, -135],
-			"anim": "d",
-			"fps": 24,
-			"name": "dasik",
-			"indices": []
+			"indices": [],
+			"name": "sonic"
 		},
 		{
 			"offsets": [117, -104],
-			"loop": true,
+			"loop": false,
 			"fps": 24,
 			"anim": "r",
 			"indices": [],
 			"name": "risa"
+		},
+		{
+			"loop": false,
+			"offsets": [73, -222],
+			"anim": "danceLeft",
+			"fps": 26,
+			"name": "l ",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [114, -226],
+			"anim": "danceRight",
+			"fps": 26,
+			"name": "r ",
+			"indices": []
+		},
+		{
+			"offsets": [69, -135],
+			"indices": [],
+			"fps": 25,
+			"anim": "d",
+			"loop": false,
+			"name": "dasik"
 		}
 	],
 	"vocals_file": "",

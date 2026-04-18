@@ -155,19 +155,9 @@ function goodNoteHit(id, direction, noteType, isSustainNote)
 
         resetAnimationState()
         setProperty('hitCounterText.alpha', 1)
-
-        setProperty('showComboNum', false)
-        setProperty('showRating', false)
     else
         state.isHoldingNote = true
         state.lastHitTime = getSongPosition() / 1000
-    end
-end
-
-function opponentNoteHit(id, direction, noteType, isSustainNote)
-    if not isSustainNote then
-        setProperty('showComboNum', false)
-        setProperty('showRating', false)
     end
 end
 
@@ -190,7 +180,6 @@ function onUpdatePost(elapsed)
     centerTextX()
 
     setProperty('showComboNum', false)
-    setProperty('showRating', false)
 
     for i = 0, 3 do
         local ratingName = 'rating' .. i

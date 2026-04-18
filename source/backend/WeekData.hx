@@ -21,7 +21,6 @@ typedef WeekFile =
 	@:optional var exeTitle:String;
 	@:optional var exeCover:String;
 	@:optional var exeLabel:String;
-	@:optional var exeColor:String;
 	@:optional var soundTestCode:Array<Dynamic>; // [pcm, da, enabled]
 	@:optional var transitionShape:String;
 }
@@ -46,7 +45,6 @@ class WeekData {
 	public var exeTitle:String;
 	public var exeCover:String;
 	public var exeLabel:String;
-	public var exeColor:String;
 	public var soundTestCode:Array<Dynamic>;
 	public var transitionShape:String;
 

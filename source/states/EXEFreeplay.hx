@@ -26,7 +26,6 @@ typedef ExeSongInfo = {
 	var coverFile:String;
 	var title:String;
 	var exeLabel:String;
-	var exeColor:Int;
 	var transitionShape:String;
 }
 
@@ -242,15 +241,6 @@ class EXEFreeplay extends MusicBeatState
 			var weekExeCover:String = (leWeek.exeCover != null && leWeek.exeCover.length > 0) ? leWeek.exeCover : 'placeholder';
 			var weekExeLabel:String = (leWeek.exeLabel != null && leWeek.exeLabel.length > 0) ? leWeek.exeLabel : 'NON EXE';
 			var weekTransition:String = (leWeek.transitionShape != null && leWeek.transitionShape.length > 0) ? leWeek.transitionShape : 'HEAD';
-			var weekExeColor:FlxColor = cast 0xFF8888FF;
-			if (leWeek.exeColor != null && leWeek.exeColor.length > 0)
-			{
-				var parsed:Null<FlxColor> = FlxColor.fromString(leWeek.exeColor);
-				if (parsed != null)
-					weekExeColor = parsed;
-			}
-			else
-				weekExeColor = cast((weekExeLabel == 'EXE') ? 0xFFFF0000 : 0xFF8888FF);
 
 			for (song in leWeek.songs)
 			{
@@ -262,7 +252,6 @@ class EXEFreeplay extends MusicBeatState
 					coverFile: weekExeCover,
 					title:     title,
 					exeLabel:  weekExeLabel,
-					exeColor:  weekExeColor,
 					transitionShape: weekTransition
 				});
 			}
@@ -351,7 +340,7 @@ class EXEFreeplay extends MusicBeatState
 			}
 
 			var exeText = new FlxText(30, 0, 0, firstSong.exeLabel, EXE_LABEL_SIZE);
-			exeText.setFormat(FONT_PATH, EXE_LABEL_SIZE, firstSong.exeColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			exeText.setFormat(FONT_PATH, EXE_LABEL_SIZE, (firstSong.exeLabel == 'EXE' ? 0xFFFF0000 : 0xFF8888FF), LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			exeText.borderSize = 2;
 			exeText.ID         = i;
 			exeText.visible    = (i == selectedBox);
@@ -491,7 +480,7 @@ class EXEFreeplay extends MusicBeatState
 		{
 			var spr = songTexts.members[i];
 			spr.text    = songs[i].toUpperCase();
-			spr.color   = (i == 0) ? FlxColor.YELLOW : FlxColor.WHITE;
+			spr.color   = FlxColor.WHITE;
 			spr.ID      = i;
 			spr.y       = slot0Y + (i * SONG_SPACING_Y);
 

@@ -1,8 +1,26 @@
 {
 	"variants": [
 		{
+			"bio": "",
+			"display_name": "Chaotix",
+			"icon": "chaotix-pixel",
+			"icon_offset": [
+				681,
+				480
+			],
+			"char_scale": 5.7,
+			"mod": "CHAOTIX",
+			"char_offset": [
+				215,
+				-120
+			],
+			"char": "faker_chaotix",
+			"flip_x": false,
+			"artist": "Niall"
+		},
+		{
 			"bio": "He is the broken remnants of leftover code meant for Tails from the prototype version of Knuckles' Chaotix. Having been abandoned in the game for years, Chaotix desperately searches for the other leftover remnant of Tails in order to become whole once more and fix himself, not realizing that he himself is Tails and the other remnant doesn't exist.",
-			"display_name": "C. BEAST",
+			"display_name": "Chaotix (Beast)",
 			"icon": "chaotix-beast-pixel",
 			"icon_offset": [
 				696,
@@ -15,24 +33,6 @@
 				-145
 			],
 			"char": "beast_chaotix",
-			"flip_x": false,
-			"artist": "Niall"
-		},
-		{
-			"bio": "",
-			"display_name": "Chaotix",
-			"icon": "faker_chaotix",
-			"icon_offset": [
-				681,
-				480
-			],
-			"char_scale": 5.7,
-			"mod": "CHAOTIX",
-			"char_offset": [
-				215,
-				-120
-			],
-			"char": "faker_chaotix",
 			"flip_x": false,
 			"artist": "Niall"
 		}

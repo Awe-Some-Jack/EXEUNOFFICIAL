@@ -2735,9 +2735,11 @@ class PlayState extends MusicBeatState
 			else numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
 			var numScorescale:Float = numScore.scale.x;
 			numScore.visible = !ClientPrefs.data.hideHud;
+			numScore.updateHitbox();
+			var numW:Float = numScore.width;
 			numScore.scale.set(numScorescale * 1.1, numScorescale * 1.1);
 			numScore.updateHitbox();
-			numScore.x = (FlxG.width / 2) - (((numScore.width - 10) * separatedScore.length) / 2) + (daLoop * (numScore.width - 10)); numScore.x -= 5;
+			numScore.x = (FlxG.width / 2) - (((numW - 10) * separatedScore.length) / 2) + (daLoop * (numW - 10)); numScore.x -= 5;
 			numScore.y = (ClientPrefs.data.downScroll ? (FlxG.height - numScore.height - 50) : 50);
 			FlxTween.tween(numScore.scale, {x: numScorescale, y: numScorescale}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
 			numScore.antialiasing = antialias;

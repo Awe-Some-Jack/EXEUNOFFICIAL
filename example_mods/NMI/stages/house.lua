@@ -146,8 +146,6 @@ function onCreatePost()
 	setProperty('whiteBG.alpha', 0)
 end
 
-function onCountdownTick(c) setProperty('countdownReady.x', -1000) setProperty('countdownSet.x', -1000) setProperty('countdownGo.x', -1000) end
-
 function onSongStart()
 	runTimer('startVideo', 0.3)
 end

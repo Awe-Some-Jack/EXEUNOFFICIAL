@@ -389,14 +389,6 @@ function onCountdownTick(counter)
 	if not active or not introCreated then return end
 	if cfg.type == 'card' then return end
 	if cfg.type == 'chaotix' and not cutsceneActive then return end
-
-	if counter == 1 then
-		setProperty('countdownReady.x', -5000)
-	elseif counter == 2 then
-		setProperty('countdownSet.x', -5000)
-	elseif counter == 3 then
-		setProperty('countdownGo.x', -5000)
-	end
 end
 
 function onBeatHit()

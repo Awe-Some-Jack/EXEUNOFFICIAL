@@ -54,6 +54,8 @@ class SoundTest extends MusicBeatState
 	var arrowTimer:FlxTimer;
 	var previousWindowTitle:String;
 
+	static var menuSong:Bool = false;
+
 	override public function create():Void
 	{
 		Paths.clearStoredMemory();
@@ -69,6 +71,8 @@ class SoundTest extends MusicBeatState
 		createNumbers();
 		startArrowAnimation();
 		updateTextColors();
+
+		menuSong = false;
 
 		whiteBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
 		whiteBG.alpha = 0;
@@ -146,7 +150,7 @@ class SoundTest extends MusicBeatState
 
 	function loadMusic():Void
 	{
-		FlxG.sound.playMusic(AssetPaths.getSound('assets/exe/music/soundtest.ogg'));
+		FlxG.sound.playMusic(AssetPaths.getSound('assets/exe/music/pause.ogg'));
 	}
 
 	function createBackground():Void
@@ -334,6 +338,7 @@ class SoundTest extends MusicBeatState
 
 		if (Controls.instance.BACK)
 		{
+			menuSong = true;
 			FlxG.sound.music.fadeOut(0.3);
 			transitioning = true;
 			FlxG.switchState(() -> new EXEMenu());
@@ -395,7 +400,7 @@ class SoundTest extends MusicBeatState
 				if (soundCooldown)
 				{
 					soundCooldown = false;
-					FlxG.sound.play(Paths.sound('deniedMOMENT'));
+					FlxG.sound.play(Paths.sound('deniedMOMENT'), 0.6);
 					new FlxTimer().start(0.8, function(tmr:FlxTimer)
 					{
 						soundCooldown = true;
@@ -482,7 +487,7 @@ class SoundTest extends MusicBeatState
 
 		FlxG.stage.window.title = previousWindowTitle;
 
-		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+		if (menuSong) FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 
 		backdrop = null;
 		titleText = null;

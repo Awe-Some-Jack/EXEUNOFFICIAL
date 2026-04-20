@@ -22,6 +22,8 @@ class ParallaxState extends MusicBeatState
 	var spikesbot:FlxBackdrop;
 
 	public static var curSelected:Int = 0;
+	public static var parallaxSong:Bool = true;
+	var toTitle:Bool = false;
 
 	override function create()
 	{
@@ -87,6 +89,12 @@ class ParallaxState extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Parallax Menus", null);
 		#end
+
+		if (parallaxSong)
+		{
+			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/parallax.ogg'));
+			parallaxSong = false;
+		}
 	}
 
 	var transitioning:Bool = false;
@@ -98,7 +106,9 @@ class ParallaxState extends MusicBeatState
 		{
 			if (Controls.instance.BACK)
 			{
+				toTitle = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
+				FlxG.sound.music.fadeOut(0.3);
 				FlxG.switchState(() -> new EXETitle());
 				transitioning = true;
 			}
@@ -152,5 +162,15 @@ class ParallaxState extends MusicBeatState
 
 		FlxTween.tween(((curSelected == 0) ? barstory : barinfo), {x: -80}, 0.3, {ease: FlxEase.cubeOut});
 		FlxTween.tween(((curSelected == 0) ? barinfo : barstory), {x: -140}, 0.3, {ease: FlxEase.cubeOut});
+	}
+
+	override function destroy()
+	{
+		if (toTitle)
+		{
+			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+			parallaxSong = true;
+		}
+		super.destroy();
 	}
 }

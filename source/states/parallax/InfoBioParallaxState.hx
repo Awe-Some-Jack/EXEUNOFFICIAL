@@ -214,6 +214,5 @@ class InfoBioParallaxState extends MusicBeatState
 		ringdown.y = ((FlxG.height - ringdown.height) / 2) + (Math.sin(characterSine - 0.2) * 10);
 		ring.y = ((FlxG.height - ring.height) / 2) + (Math.sin(characterSine - 0.2) * 10);
 	}
-
 }
 

@@ -20,7 +20,6 @@ class StoryParallaxState extends MusicBeatState
 	override function create()
 	{
 		super.create();
-		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/storyparallax.ogg'));
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/story mode/1.png'));
 		bg.antialiasing = ClientPrefs.data.antialiasing;
@@ -152,12 +151,5 @@ class StoryParallaxState extends MusicBeatState
 			return false;
 		}
 		return true;
-	}
-
-	override function destroy()
-	{
-		if (!transitioning)
-			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
-		super.destroy();
 	}
 }

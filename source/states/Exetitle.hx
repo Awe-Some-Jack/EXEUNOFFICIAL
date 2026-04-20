@@ -251,7 +251,10 @@ class EXETitle extends MusicBeatState
 			{
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				transitioning = true;
-				new FlxTimer().start(0.8, function(_) { MusicBeatState.switchState(new ParallaxState()); });
+				new FlxTimer().start(0.8, function(_) {
+					FlxG.sound.music.fadeOut(0.3);
+					MusicBeatState.switchState(new ParallaxState());
+				});
 				FlxTween.tween(whiteBG, {alpha: 1}, 0.8);
 				FlxTween.cancelTweensOf(ring);
 				FlxTween.cancelTweensOf(bandana);

@@ -160,8 +160,10 @@ class PauseSubState extends MusicBeatSubstate
 		cameras = [camPause];
 
 		pauseMusic = new FlxSound();
-		pauseMusic.loadEmbedded(Assets.getSound('assets/exe/music/pause.ogg'), true, true);
+		if (miniSonicImage == 'vanilla-milk-2') pauseMusic.loadEmbedded(Assets.getSound('assets/exe/music/trololo.ogg'), true, true);
+		else pauseMusic.loadEmbedded(Assets.getSound('assets/exe/music/pause.ogg'), true, true);
 		pauseMusic.volume = 0;
+		if (miniSonicImage == 'vanilla-milk-2') pauseMusic.volume = 0.5;
 		pauseMusic.play(false, 0);
 		FlxG.sound.list.add(pauseMusic);
 	}

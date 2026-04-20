@@ -2018,7 +2018,7 @@ class PlayState extends MusicBeatState
 					note.resetAnim = 0;
 				}
 		}
-		if (Paths.formatToSongPath(SONG.song) == 'vanilla-milk') PauseSubState.miniSonicImage = 'vanilla-milk-' + (FlxG.random.bool(10) ? 1 : 2);
+		if (Paths.formatToSongPath(SONG.song) == 'vanilla-milk') PauseSubState.miniSonicImage = 'vanilla-milk-' + (FlxG.random.bool(1) ? 2 : 1);
 		if (Paths.formatToSongPath(SONG.song) == 'personel') PauseSubState.miniSonicImage = 'personel-' + FlxG.random.int(1, 3);
 
 		if(chartingMode) openSubState(new PauseSubState());

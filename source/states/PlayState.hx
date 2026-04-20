@@ -2851,7 +2851,7 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition = lastTime;
 
 		var spr:StrumNote = playerStrums.members[key];
-		if(strumsBlocked[key] != true && spr != null && spr.animation.curAnim.name != 'confirm')
+		if(strumsBlocked[key] != true && spr != null && spr.animation.curAnim.name != 'confirm' && spr.animation.curAnim.name != 'pressed')
 		{
 			spr.playAnim('pressed');
 			spr.resetAnim = 0;

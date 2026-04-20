@@ -29,6 +29,7 @@ for i = 1,4 do precacheImage('renders/render'..i) end
 setProperty('skipArrowStartTween', true)
 function onCreatePost()
 	--precache video
+	startVideo('fakebabyfinal', false, true, false, false)
 	startVideo('fakebaby', false, true, false, false)
 	setProperty('inCutscene', false)
 	setProperty('boyfriend.alpha', 0)
@@ -308,6 +309,21 @@ function onEvent(n,v1,v2)
 				setShaderFloat('boyfriend', 'ang', math.rad(180))
 				setShaderFloat('boyfriend', 'dist', 20)
 			end
+		end
+		if v1 == 'finale' then
+			for _,obj in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do doTweenAlpha(obj, obj, 0, crochet / 250) end
+			for i = 0,3 do
+				startTween('sexo'..i, 'playerStrums.members['..i..']', {y = _G['defaultPlayerStrumY'..i] + (downscroll and 25 or -25), alpha = 0}, crochet / (1000 / 8), {startDelay = (i / 2), ease = 'cubeOut'})
+			end
+
+			startVideo('fakebabyfinal', false, true)
+			setObjectCamera('videoCutscene', 'hud')
+			setObjectOrder('videoCutscene', 0)
+			setProperty('inCutscene', false)
+			setProperty('videoCutscene.videoSprite.volumeAdjust', 0)
+
+			setProperty('camZoomingMult', 0)
+			setProperty('bloom2.x', -1) setProperty('bloom3.x', 0)
 		end
 	end
 end

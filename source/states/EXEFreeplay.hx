@@ -220,6 +220,11 @@ class EXEFreeplay extends MusicBeatState
 		CustomShapeTransition.shape = HEAD;
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/freeplay.ogg'));
 		Paths.clearUnusedMemory();
+
+		#if DISCORD_ALLOWED
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Freeplay", null);
+		#end
 	}
 
 	function buildSongList()

@@ -81,6 +81,10 @@ class SoundTest extends MusicBeatState
 		WeekData.reloadWeekFiles(true);
 		loadCodesFromWeeks();
 		loadCodesFromJSON();
+
+		#if DISCORD_ALLOWED
+		DiscordClient.changePresence("In the Sound test", null);
+		#end
 	}
 
 	function loadCodesFromWeeks():Void

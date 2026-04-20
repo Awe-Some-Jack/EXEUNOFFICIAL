@@ -58,6 +58,10 @@ class DAGarden extends MusicBeatState
 			_onSongSelected(0);
 
 		Paths.clearUnusedMemory();
+
+		#if DISCORD_ALLOWED
+		DiscordClient.changePresence("In the DA Garden", null);
+		#end
 	}
 
 	override public function update(elapsed:Float):Void

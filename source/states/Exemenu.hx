@@ -64,7 +64,7 @@ class EXEMenu extends MusicBeatState
 		Paths.clearUnusedMemory();
 
 		#if DISCORD_ALLOWED
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In the Menu", null);
 		#end
 
 		super.create();

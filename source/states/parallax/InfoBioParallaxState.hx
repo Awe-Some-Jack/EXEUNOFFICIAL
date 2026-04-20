@@ -87,6 +87,11 @@ class InfoBioParallaxState extends MusicBeatState
 
 		if (chars.length > 0)
 			loadChar(0);
+
+		#if DISCORD_ALLOWED
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Parallax Menus", 'Checking Info Bios');
+		#end
 	}
 
 	function loadCharData():Void

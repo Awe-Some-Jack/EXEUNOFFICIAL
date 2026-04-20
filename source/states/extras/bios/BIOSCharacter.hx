@@ -159,6 +159,11 @@ class BIOSCharacter
 			bios.biosInfo.onCharChanged(curChar);
 		}
 		onCharChanged(curChar);
+
+		#if DISCORD_ALLOWED
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Bios Menu", 'Checking ${displayNames_list[curChar]}');
+		#end
 	}
 
 	public function changeVariant(dir:Int)

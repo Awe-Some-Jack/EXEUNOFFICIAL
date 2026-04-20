@@ -82,6 +82,10 @@ class StoryModeState extends MusicBeatState
 		Paths.clearUnusedMemory();
 
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/story.ogg'));
+
+		#if DISCORD_ALLOWED
+		DiscordClient.changePresence("In the Story Mode", null);
+		#end
 	}
 
 

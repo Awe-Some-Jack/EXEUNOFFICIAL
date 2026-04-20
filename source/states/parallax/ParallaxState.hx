@@ -82,6 +82,11 @@ class ParallaxState extends MusicBeatState
 		whiteBG.alpha = 0;
 		whiteBG.screenCenter();
 		add(whiteBG);
+
+		#if DISCORD_ALLOWED
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Parallax Menus", null);
+		#end
 	}
 
 	var transitioning:Bool = false;

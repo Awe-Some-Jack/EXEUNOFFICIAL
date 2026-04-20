@@ -179,6 +179,11 @@ class FridgeAccess extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.1);
 
+		#if DISCORD_ALLOWED
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Fridge!", "Selecting da Sunky");
+		#end
+
 		//object = doorup;
 	}
 

@@ -225,6 +225,11 @@ class DAPlayer extends FlxGroup
 			audioFadeTarget = 1.0;
 			audioFadeSpeed  = 8.0;
 			isPlaying = true;
+
+			#if DISCORD_ALLOWED
+			DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, FlxMath.bound(instSound.time, 0, instSound.length));
+			#end
+
 			return;
 		}
 
@@ -239,6 +244,10 @@ class DAPlayer extends FlxGroup
 			if (instSound != null) instSound.pause();
 			for (v in vocalsSounds) v.pause();
 		});
+
+		#if DISCORD_ALLOWED
+		DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text} (Paused)', null, true, FlxMath.bound(instSound.time, 0, instSound.length));
+		#end
 	}
 
 	public function stop():Void
@@ -758,6 +767,10 @@ class DAPlayer extends FlxGroup
 		audioFadeTarget = 1.0;
 		audioFadeSpeed  = 8.0;
 		isPlaying = true;
+
+		#if DISCORD_ALLOWED
+		DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, FlxMath.bound(instSound.time, 0, instSound.length));
+		#end
 	}
 
 	private function _checkSongEnd():Void
@@ -790,6 +803,10 @@ class DAPlayer extends FlxGroup
 		isPlaying   = false;
 		_loadedSong = '';
 		_loadedMod  = '';
+
+		#if DISCORD_ALLOWED
+		DiscordClient.changePresence("In the DA Garden", null);
+		#end
 	}
 
 	override public function destroy():Void

@@ -88,6 +88,11 @@ class ExtrasMenu extends MusicBeatState
         changeSelection(0);
 
         Paths.clearUnusedMemory();
+
+        #if DISCORD_ALLOWED
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Extras", null);
+		#end
     }
 
     private function initializeMusic():Void

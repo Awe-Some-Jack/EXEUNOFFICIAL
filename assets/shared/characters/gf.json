@@ -1,36 +1,52 @@
 {
 	"animations": [
 		{
-			"offsets": [0, -9],
 			"loop": false,
-			"fps": 24,
+			"offsets": [0, -9],
 			"anim": "danceRight",
-			"indices": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
-			"name": "dance instancia 1"
+			"fps": 24,
+			"name": "dance instancia 1",
+			"indices": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
 		},
 		{
+			"loop": false,
 			"offsets": [0, -9],
-			"loop": false,
-			"fps": 24,
 			"anim": "danceLeft",
-			"indices": [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-			"name": "dance instancia 1"
+			"fps": 24,
+			"name": "dance instancia 1",
+			"indices": [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 		},
 		{
+			"offsets": [-40, -49],
 			"loop": false,
-			"offsets": [1, -9],
+			"fps": 24,
 			"anim": "cheer",
-			"fps": 24,
-			"name": "yeah",
-			"indices": []
+			"indices": [],
+			"name": "yeah"
 		},
 		{
+			"offsets": [-40, -59],
 			"loop": false,
-			"offsets": [-1, -9],
-			"anim": "sad",
 			"fps": 24,
-			"name": "lose",
-			"indices": []
+			"anim": "sad",
+			"indices": [],
+			"name": "lose"
+		},
+		{
+			"offsets": [-40, -38],
+			"indices": [],
+			"fps": 24,
+			"anim": "cheer alt",
+			"loop": false,
+			"name": "hey 2"
+		},
+		{
+			"offsets": [-42, -41],
+			"indices": [],
+			"fps": 24,
+			"anim": "Freaky",
+			"loop": false,
+			"name": "sex"
 		}
 	],
 	"vocals_file": "",

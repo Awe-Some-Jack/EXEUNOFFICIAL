@@ -42,7 +42,7 @@ class PauseSubState extends MusicBeatSubstate
 	}
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
-
+	var longneck:FlxTypedGroup<FlxSprite>;
 	var _exitTweens:Array<FlxTween> = [];
 
 	override function create()
@@ -92,6 +92,33 @@ class PauseSubState extends MusicBeatSubstate
 		add(miniSonic);
 		FlxTween.tween(miniSonic, {alpha: 1}, 0.1);
 
+		longneck = new FlxTypedGroup<FlxSprite>();
+		add(longneck);
+		if (miniSonicImage == 'longstrider')
+		{
+			longneck.add(miniSonic);
+
+			var neck:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/pause/mini-sonics/longstrider-2.png'));
+			neck.scale.set(3, 3);
+			neck.updateHitbox();
+			neck.antialiasing = false;
+			neck.scrollFactor.set();
+			neck.alpha = 0;
+			FlxTween.tween(neck, {alpha: 1}, 0.1);
+			longneck.add(neck);
+			add(neck);
+
+			var head:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/pause/mini-sonics/longstrider-3.png'));
+			head.scale.set(3, 3);
+			head.updateHitbox();
+			head.antialiasing = false;
+			head.scrollFactor.set();
+			head.alpha = 0;
+			FlxTween.tween(head, {alpha: 1}, 0.1);
+			longneck.add(head);
+			add(head);
+		}
+
 		selBar = new FlxSprite(cameraWidth, 181 - 40).loadGraphic(Assets.getBitmapData('assets/exe/pause/selected.png'));
 		selBar.scale.set(3, 3);
 		selBar.updateHitbox();
@@ -122,6 +149,13 @@ class PauseSubState extends MusicBeatSubstate
 
 		miniSonic.x = menuItems.members[0].x - miniSonic.width + miniSonicOffsets[0];
 		miniSonic.y = (menuItems.members[0].y + menuItems.members[0].height) - miniSonic.height + miniSonicOffsets[1];
+		if (miniSonicImage == 'longstrider')
+		{
+			longneck.members[1].x = longneck.members[0].x;
+			longneck.members[1].y = longneck.members[0].y - longneck.members[1].height;
+			longneck.members[2].x = longneck.members[0].x;
+			longneck.members[2].y = longneck.members[1].y - longneck.members[2].height;
+		}
 
 		cameras = [camPause];
 
@@ -174,6 +208,11 @@ class PauseSubState extends MusicBeatSubstate
 
 		var item:FlxSprite = menuItems.members[curSelected];
 		miniSonic.y = (item.y + item.height) - miniSonic.height + miniSonicOffsets[1];
+		if (miniSonicImage == 'longstrider')
+		{
+			longneck.members[1].scale.y = ((curSelected + 1) * 3) + (curSelected * (48 * 3));
+			longneck.members[1].updateHitbox();
+		}
 
 		selBar.x = cameraWidth;
 		selBar.y = 36 + (129 * (curSelected + 1) + (16 * (curSelected + 1))) - 40;
@@ -196,6 +235,11 @@ class PauseSubState extends MusicBeatSubstate
 		FlxTween.tween(pauseBar,  {x: -cameraWidth},  0.1);
 		FlxTween.tween(pauseText, {alpha: 0},          0.1);
 		FlxTween.tween(miniSonic, {alpha: 0},          0.1);
+		if (miniSonicImage == 'longstrider')
+		{
+			FlxTween.tween(longneck.members[1], {alpha: 0}, 0.1);
+			FlxTween.tween(longneck.members[2], {alpha: 0}, 0.1);
+		}
 		FlxTween.tween(selBar,    {x: cameraWidth},   0.1);
 		for (button in menuItems.members)
 			FlxTween.tween(button, {alpha: 0}, 0.1);

@@ -217,7 +217,7 @@ class EXETitle extends MusicBeatState
 				});
 			}
 		}
-		if (!transitioning)
+		if (!transitioning && canStart)
 		{
 			if (mousePosition == 'left' && FlxG.mouse.getScreenPosition().x >= (FlxG.width * 0.85))
 			{

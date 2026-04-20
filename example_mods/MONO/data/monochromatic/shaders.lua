@@ -23,15 +23,6 @@ function onCreatePost()
 	end
 end
 
-function onCountdownStarted()
-	for i = 0,7 do
-		setSpriteShader('strumLineNotes.members['..i..']', 'BWShader')
-	end
-	for i = 0,getProperty('unspawnNotes.length')-1 do
-		setSpriteShader('unspawnNotes['..i..']', 'BWShader')
-	end
-end
-
 function onUpdatePost(e)
 	setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
 	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4))

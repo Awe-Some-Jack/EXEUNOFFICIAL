@@ -160,7 +160,7 @@ class PauseSubState extends MusicBeatSubstate
 		cameras = [camPause];
 
 		pauseMusic = new FlxSound();
-		pauseMusic.loadEmbedded(Paths.music('breakfast'), true, true);
+		pauseMusic.loadEmbedded(Assets.getSound('assets/exe/music/pause.ogg'), true, true);
 		pauseMusic.volume = 0;
 		pauseMusic.play(false, 0);
 		FlxG.sound.list.add(pauseMusic);

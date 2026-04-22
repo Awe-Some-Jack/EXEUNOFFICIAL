@@ -1,6 +1,3 @@
---text to image by unholywanderer04 (sm64hud)
-
-local var = true
 local okNowItsTime = false
 
 function onCreatePost()
@@ -8,16 +5,16 @@ function onCreatePost()
 	for i = 0, getProperty('unspawnNotes.length')-1 do end
 
 	--hud objects
-	makeHUDSprite('scoreText', 'ui/score', 20, 0, {3.5, 3.5})
-	makeHUDSprite('timeText', 'ui/time', 20, 0, {3.5, 3.5})
-	makeHUDSprite('missesText', 'ui/misses-normal', 20, 0, {3.5, 3.5})
-	makeHUDSprite('missesText-alt', 'ui/misses-alt', 20, 0, {3.5, 3.5})
+	makeHUDSprite('scoreText', 'ui/score', 20, 0, 3.5)
+	makeHUDSprite('timeText', 'ui/time', 20, 0, 3.5)
+	makeHUDSprite('missesText', 'ui/misses-normal', 20, 0, 3.5)
+	makeHUDSprite('missesText-alt', 'ui/misses-alt', 20, 0, 3.5)
 	setProperty('missesText-alt.visible', false)
 
-	makeHUDSprite('futureHealth', 'ui/healthFuture', 20 + (16 * 3.5), 0, {3.5, 3.5})
+	makeHUDSprite('futureHealth', 'ui/healthFuture', 20 + (16 * 3.5), 0, 3.5)
 	setProperty('futureHealth.y', downscroll and (screenHeight - getProperty('futureHealth.height') - 20) or 20)
 
-	makeHUDSprite('futureHealth2', 'ui/healthFuture', 20 + (16 * 3.5), 0, {3.5, 3.5})
+	makeHUDSprite('futureHealth2', 'ui/healthFuture', 20 + (16 * 3.5), 0, 3.5)
 	setProperty('futureHealth2.y', downscroll and (screenHeight - getProperty('futureHealth2.height') - 40 - getProperty('futureHealth2.height')) or (40 + getProperty('futureHealth2.height')))
 
 	createInstance('iconSonic', 'objects.HealthIcon', {getProperty('boyfriend.healthIcon'), false})
@@ -50,10 +47,10 @@ function onCreatePost()
 	onUpdateScore()
 
 	--intro card
-	makeHUDSprite('cardBar', 'ui/card/cardBar', 0, 0, {3, 3})
+	makeHUDSprite('cardBar', 'ui/card/cardBar', 0, 0, 3)
 	screenCenter('cardBar', 'x')
 	setObjectCamera('cardBar', 'other')
-	makeHUDSprite('cardText', 'ui/card/cardText', 0, 0, {3, 3})
+	makeHUDSprite('cardText', 'ui/card/cardText', 0, 0, 3)
 	setObjectCamera('cardText', 'other')
 	setProperty('cardText.y', 72*3)
 
@@ -65,107 +62,63 @@ function onCreatePost()
 	setProperty('timeTxt.visible', false)
 	setProperty('timeBar.visible', false)
 
-	setProperty('showRating', false)
-	setProperty('showComboNum', false)
-
 	setProperty('healthBar.visible', false)
 	setProperty('iconP1.visible', false)
 	setProperty('iconP2.visible', false)
-
-	--save fps visibility and hide fps
-	var = getPropertyFromClass('Main', 'fpsVar.visible')
-	setPropertyFromClass('Main', 'fpsVar.visible', false)
 end
 
-function onDestroy()
-	setPropertyFromClass('Main', 'fpsVar.visible', var)
-end
-
+local oldScore = {0, 0, 0, 0}
 function onUpdateScore()
-	missesThing = tostring(misses)
-	splitMisses = breakItDown(missesThing)
-
-	numCount = (#splitMisses > 1 and #splitMisses or 1)
-	for i = 1,numCount do
-		local numSpawn = 'missesNum'..i
-		makeHUDSprite('misses'..numSpawn, splitMisses[i], 302 - ((i-1)*28), getProperty('missesText.y'), {3.5, 3.5}, true)
-		if splitMisses[i] == '-' then setProperty('misses'..numSpawn..'.animation.curAnim.curFrame', 12) end
+	--score
+	local splittedScore = splitShit(score)
+	for i = 1,math.max(#splittedScore, 1) do
+		local tag = 'scoreNum'..i
+		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedScore[i], 330 - ((i - 1) * 28), getProperty('scoreText.y'), 3.5, true) end
+		if luaSpriteExists(tag) then setProperty(tag..'.animation.curAnim.curFrame', (splittedScore[i] == '-' and 12 or splittedScore[i])) setProperty(tag..'.y', getProperty('scoreText.y')) end
 	end
+	if #splittedScore ~= oldScore[1] then for i = 1,oldScore[1] do if i > #splittedScore and luaSpriteExists('scoreNum'..i) then removeLuaSprite('scoreNum'..i) end end end
 
-	scoreThing = tostring(score)
-	splitScore = breakItDown(scoreThing)
-
-	numCountS = (#splitScore > 1 and #splitScore or 1)
-	for i = 1,numCountS do
-		local numSpawn = 'scoreNum'..i
-		makeHUDSprite('score'..numSpawn, splitScore[i], 330 - ((i-1)*28), getProperty('scoreText.y'), {3.5, 3.5}, true)
-		if splitScore[i] == '-' then setProperty('score'..numSpawn..'.animation.curAnim.curFrame', 12) end
+	--misses
+	local splittedMisses = splitShit(misses)
+	for i = 1,math.max(#splittedMisses, 1) do
+		local tag = 'missesNum'..i
+		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedMisses[i], 302 - ((i - 1) * 28), getProperty('missesText.y'), 3.5, true) end
+		if luaSpriteExists(tag) then setProperty(tag..'.animation.curAnim.curFrame', splittedMisses[i]) setProperty(tag..'.y', getProperty('missesText.y')) end
 	end
+	if #splittedMisses ~= oldScore[2] then for i = 1,oldScore[2] do if i > #splittedMisses and luaSpriteExists('missesNum'..i) then removeLuaSprite('missesNum'..i) end end end
 
-	removeLuaSprite('healthhealthNum4')
-
-	healthThing = tostring(math.range(getHealth() * 50, 0, 100))..'%'
-	splitHealth = breakItDown(healthThing)
-	newHealthSplit = {}
-	for i = #splitHealth, 1, -1 do
-		table.insert(newHealthSplit, splitHealth[i])
+	--health player
+	local splittedHealth = splitShit(tostring(math.floor(bound(getHealth() * 50, 0, 100)))..'%', false)
+	for i = 1,math.max(#splittedHealth, 1) do
+		local tag = 'healthNum'..i
+		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealth[i], 110 + ((i - 1) * 28), getProperty('futureHealth.y') + 18, 3.5, true) end
+		if luaSpriteExists(tag) then setProperty(tag..'.animation.curAnim.curFrame', (splittedHealth[i] == '-' and 12 or (splittedHealth[i] == '%' and 13 or splittedHealth[i]))) setProperty(tag..'.y', getProperty('futureHealth.y') + 18) end
 	end
+	if #splittedHealth ~= oldScore[3] then for i = 1,oldScore[3] do if i > #splittedHealth and luaSpriteExists('healthNum'..i) then removeLuaSprite('healthNum'..i) end end end
 
-	numCountH = (#newHealthSplit > 1 and #newHealthSplit or 1)
-	for i = 1,numCountH do
-		local numSpawn = 'healthNum'..i
-		removeLuaSprite('health'..numSpawn)
-		makeHUDSprite('health'..numSpawn, newHealthSplit[i], 110 + ((i-1)*28), getProperty('futureHealth.y') + 18, {3.5, 3.5}, true)
-		if newHealthSplit[i] == '%' then
-			setProperty('health'..numSpawn..'.animation.curAnim.curFrame', 13)
-		elseif newHealthSplit[i] == '-' then
-			setProperty('health'..numSpawn..'.animation.curAnim.curFrame', 12)
-		end
+	--health opp
+	local splittedHealthOpp = splitShit(tostring(math.floor(bound((2 - getHealth()) * 50, 0, 100) + 0.5))..'%', false)
+	for i = 1,math.max(#splittedHealthOpp, 1) do
+		local tag = 'health2Num'..i
+		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealthOpp[i], 110 + ((i - 1) * 28), getProperty('futureHealth2.y') + 18, 3.5, true) end
+		if luaSpriteExists(tag) then setProperty(tag..'.animation.curAnim.curFrame', (splittedHealthOpp[i] == '-' and 12 or (splittedHealthOpp[i] == '%' and 13 or splittedHealthOpp[i]))) setProperty(tag..'.y', getProperty('futureHealth2.y') + 18) end
 	end
+	if #splittedHealthOpp ~= oldScore[4] then for i = 1,oldScore[4] do if i > #splittedHealthOpp and luaSpriteExists('health2Num'..i) then removeLuaSprite('health2Num'..i) end end end
 
-	healthThing2 = tostring(math.range((2 - getHealth()) * 50, 0, 100))..'%'
-	splitHealth2 = breakItDown(healthThing2)
-	newHealthSplit2 = {}
-	for i = #splitHealth2, 1, -1 do
-		table.insert(newHealthSplit2, splitHealth2[i])
-	end
-
-	numCountH2 = (#newHealthSplit2 > 1 and #newHealthSplit2 or 1)
-	for i = 1,numCountH2 do
-		local numSpawn = 'healthNum'..i
-		removeLuaSprite('health2healthNum3')
-		makeHUDSprite('health2'..numSpawn, newHealthSplit2[i], 110 + ((i-1)*28), getProperty('futureHealth2.y') + 18, {3.5, 3.5}, true)
-		if newHealthSplit2[i] == '%' then
-			setProperty('health2'..numSpawn..'.animation.curAnim.curFrame', 13)
-		elseif newHealthSplit2[i] == '-' then
-			setProperty('health2'..numSpawn..'.animation.curAnim.curFrame', 12)
-		end
-	end
+	oldScore = {#splittedScore, #splittedMisses, #splittedHealth, #splittedHealthOpp}
 
 	setProperty('iconSonic.animation.curAnim.curFrame', (getHealth() < 0.4 and 1 or 0))
 	setProperty('iconFurn.animation.curAnim.curFrame', (getHealth() > 1.6 and 1 or 0))
 end
 
 function onUpdatePost()
-	local lastHeld = {'', '', '', ''} -- for time
-	local hold = {}
-	local guh = formatTime(getSongPosition() - noteOffset)
-	for letter in guh:gmatch(".") do table.insert(hold, letter) end
-
 	if not inGameOver then
-		for i = 1, #hold do
-			if lastHeld[i] ~= hold[i] then -- dont fucking make the same image each frame
-				lastHeld[i] = hold[i]
-				if hold[i] ~= ':' and hold[i] ~= ';' then
-					makeHUDSprite('timeNum'..i, hold[i], 162 + ((i-1) * 28), getProperty('timeText.y'), {3.5, 3.5}, true)
-				elseif hold[i] == ';' then
-					makeHUDSprite('timeSeper2'..i, 'ui/numbers', 162 + ((i-1) * 28), getProperty('timeText.y'), {3.5, 3.5}, true)
-					setProperty('timeSeper2'..i..'.animation.curAnim.curFrame', 11)
-				else
-					makeHUDSprite('timeSeper'..i, 'ui/numbers', 170 + ((i-1) * 28), getProperty('timeText.y'), {3.5, 3.5}, true)
-					setProperty('timeSeper'..i..'.animation.curAnim.curFrame', 10)
-				end
-			end
+		--time
+		local splittedTime = splitShit(formatTime(getSongPosition() - noteOffset), false)
+		for i = 1,math.max(#splittedTime, 1) do
+			local tag = 'timeNum'..i
+			if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedTime[i], (splittedTime[i] == ':' and 170 or 162) + ((i - 1) * 28), getProperty('timeText.y'), 3.5, true) end
+			if luaSpriteExists(tag) then setProperty(tag..'.animation.curAnim.curFrame', (splittedTime[i] == ':' and 10 or (splittedTime[i] == ';' and 11 or splittedTime[i]))) setProperty(tag..'.y', getProperty('timeText.y')) end
 		end
 	end
 end
@@ -175,25 +128,21 @@ function formatTime(ms) -- stolen :imp:
 	return string.format('%01d:%02d;%02d', (s/60)%60, s%60, (math.floor(ms/10))%100)
 end
 
-function math.range(number, min, max)
+function bound(number, min, max)
 	return math.max(min, math.min(max, number))
 end
 
 function makeHUDSprite(tag, path, x, y, scale, num)
-	num = num or false
-
-	makeLuaSprite(tag, (num == true and 'ui/numbers' or path), x, y)
-	if num == true then
+	makeLuaSprite(tag, (num and 'ui/numbers' or path), x, y)
+	if num then
 		loadGraphic(tag, 'ui/numbers', getProperty(tag..'.width') / 14, getProperty(tag..'.height'))
 		addAnimation(tag, 'danums', {0,1,2,3,4,5,6,7,8,9,10,11,12,13}, 0, false)
-		setProperty(tag..'.animation.curAnim.curFrame', path)
+		setProperty(tag..'.animation.curAnim.curFrame', tonumber(path))
 	end
-	scaleObject(tag, scale[1], scale[2])
+	scaleObject(tag, scale, scale)
 	setObjectCamera(tag, 'hud')
 	setProperty(tag..'.antialiasing', false)
-	if not hideHud then
-		addLuaSprite(tag)
-	end
+	if not hideHud then addLuaSprite(tag) end
 end
 
 function onBeatHit()
@@ -209,17 +158,16 @@ function onBeatHit()
 	end
 end
 
-function breakItDown(breakin, flip)
-	local daShit, tempTable = {}, {}
-
-	for thing in breakin:gmatch(".") do table.insert(tempTable, thing) end -- split every "letter"
-	for i = #tempTable, 1, -1 do daShit[#daShit + 1] = tempTable[i] end -- then flip the shit cuz I can't be bothered
-
-	return daShit
-end
-
 function rgbToHex(rgb) -- https://www.codegrepper.com/code-examples/lua/rgb+to+hex+lua
     return string.format('%02x%02x%02x', math.floor(rgb[1]), math.floor(rgb[2]), math.floor(rgb[3]))
+end
+
+function splitShit(s, f)
+	f = f == nil and true or f
+	local splitted,temp = {}, {}
+	for l in tostring(s):gmatch(".") do table.insert(temp, l) end
+	if f then for i = #temp,1,-1 do splitted[#splitted + 1] = temp[i] end else for i = 1,#temp do splitted[#splitted + 1] = temp[i] end end
+	return splitted
 end
 
 function onTimerCompleted(t)

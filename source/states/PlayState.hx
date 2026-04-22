@@ -3077,7 +3077,7 @@ class PlayState extends MusicBeatState
 			var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length-1, direction)))] + 'miss' + postfix;
 			char.playAnim(animToPlay, true);
 
-			if(char != gf && lastCombo > 5 && gf != null && gf.hasAnimation('sad'))
+			if(char != gf && lastCombo > 10 && gf != null && gf.hasAnimation('sad'))
 			{
 				gf.playAnim('sad');
 				gf.specialAnim = true;
@@ -3663,6 +3663,16 @@ class PlayState extends MusicBeatState
 		setOnScripts('misses', songMisses);
 		setOnScripts('hits', songHits);
 		setOnScripts('combo', combo);
+
+		if (gf != null && combo > 0) {
+			var anim:String = null;
+			if (combo % 200 == 0 && gf.hasAnimation('combo200')) anim = 'combo200';
+			else if (combo % 50 == 0 && gf.hasAnimation('combo50')) anim = 'combo50';
+			if (anim != null) {
+				gf.playAnim(anim, true);
+				gf.specialAnim = true;
+			}
+		}
 
 		var ret:Dynamic = callOnScripts('onRecalculateRating', null, true);
 		if(ret != LuaUtils.Function_Stop)

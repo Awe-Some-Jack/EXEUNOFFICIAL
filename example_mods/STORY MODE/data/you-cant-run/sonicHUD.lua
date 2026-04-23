@@ -1,15 +1,15 @@
 function onCreatePost()
 	--hud objects
-	makeHUDSprite('scoreText', 'pixelUI/score', 20, 0, {3.5, 3.5})
-	makeHUDSprite('timeText', 'pixelUI/time', 20, 0, {3.5, 3.5})
-	makeHUDSprite('missesText', 'pixelUI/misses', 20, 0, {3.5, 3.5})
-	makeHUDSprite('missesText-alt', 'pixelUI/misses-alt', 20, 0, {3.5, 3.5})
+	makeHUDSprite('scoreText', 'pixelUI/score', 20, 0, 3.5)
+	makeHUDSprite('timeText', 'pixelUI/time', 20, 0, 3.5)
+	makeHUDSprite('missesText', 'pixelUI/misses', 20, 0, 3.5)
+	makeHUDSprite('missesText-alt', 'pixelUI/misses-alt', 20, 0, 3.5)
 	setProperty('missesText-alt.visible', false)
 
-	makeHUDSprite('futureHealth', 'pixelUI/health', 20 + (16 * 3.5), 0, {3.5, 3.5})
+	makeHUDSprite('futureHealth', 'pixelUI/health', 20 + (16 * 3.5), 0, 3.5)
 	setProperty('futureHealth.y', downscroll and (screenHeight - getProperty('futureHealth.height') - 20) or 20)
 
-	makeHUDSprite('futureHealth2', 'pixelUI/health', 20 + (16 * 3.5), 0, {3.5, 3.5})
+	makeHUDSprite('futureHealth2', 'pixelUI/health', 20 + (16 * 3.5), 0, 3.5)
 	setProperty('futureHealth2.y', downscroll and (screenHeight - getProperty('futureHealth2.height') - 40 - getProperty('futureHealth2.height')) or (40 + getProperty('futureHealth2.height')))
 
 	createInstance('iconBFP', 'objects.HealthIcon', {'bfp', false})
@@ -52,10 +52,10 @@ function onCreatePost()
 	setProperty('futureHealth2.alpha', 0)
 
 	for i = 0,10 do
-		if luaSpriteExists('scorescoreNum'..i) then setProperty('scorescoreNum'..i..'.alpha', 0) end
-		if luaSpriteExists('missesmissesNum'..i) then setProperty('missesmissesNum'..i..'.alpha', 0) end
+		if luaSpriteExists('scoreNum'..i) then setProperty('scoreNum'..i..'.alpha', 0) end
+		if luaSpriteExists('missesNum'..i) then setProperty('missesNum'..i..'.alpha', 0) end
 		if luaSpriteExists('timeNum'..i) then setProperty('timeNum'..i..'.alpha', 0) end
-		if luaSpriteExists('timeSeper'..i) then setProperty('timeSeper'..i..'.alpha', 0) end
+		if luaSpriteExists('healthNum'..i) then setProperty('healthNum'..i..'.alpha', 0) end if luaSpriteExists('health2Num'..i) then setProperty('health2Num'..i..'.alpha', 0) end
 	end
 end
 
@@ -167,7 +167,7 @@ function onUpdatePost()
 		end
 	end
 
-	if curBeat < 132 and curBeat >= 200 then return end
+	if curBeat < 132 or curBeat >= 200 then return end
 	if not inGameOver then
 		--time
 		local splittedTime = splitShit(formatTime(getSongPosition() - noteOffset), false)

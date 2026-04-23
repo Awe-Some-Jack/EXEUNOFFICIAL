@@ -23,7 +23,7 @@ if errorlevel 1 (
 REM Recursively process all .png files
 for /r "%target_dir%" %%i in (*.png) do (
     echo Processing: %%i
-    oxipng -o 6 --strip safe --alpha "%%i"
+    oxipng -o max --strip safe --alpha "%%i"
     if errorlevel 1 (
         echo Warning: Failed to process %%i
     )

@@ -2710,23 +2710,16 @@ class PlayState extends MusicBeatState
 		var xThing:Float = 0;
 
 		var separatedScore:String = Std.string(combo).lpad('0', 3);
-		var _refNum:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiFolder + 'num0' + uiPostfix));
-		if (!PlayState.isPixelStage) _refNum.setGraphicSize(Std.int(_refNum.width * 0.6));
-		else _refNum.setGraphicSize(Std.int(_refNum.width * daPixelZoom));
-		_refNum.updateHitbox();
-		var fixedNumW:Float = _refNum.width;
-		_refNum.destroy();
 		for (i in 0...separatedScore.length)
 		{
 			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiFolder + 'num' + Std.parseInt(separatedScore.charAt(i)) + uiPostfix));
 			if (!PlayState.isPixelStage) numScore.setGraphicSize(Std.int(numScore.width * 0.6));
 			else numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
+			numScore.updateHitbox();
 			var numScorescale:Float = numScore.scale.x;
-			numScore.visible = !ClientPrefs.data.hideHud;
-			numScore.updateHitbox();
 			numScore.scale.set(numScorescale * 1.1, numScorescale * 1.1);
-			numScore.updateHitbox();
-			numScore.x = (FlxG.width / 2) - (((fixedNumW - 10) * separatedScore.length) / 2) + (daLoop * (fixedNumW - 10)); numScore.x -= 5;
+			numScore.visible = !ClientPrefs.data.hideHud;
+			numScore.x = (FlxG.width / 2) - (((numScore.width - 10) * separatedScore.length) / 2) + (daLoop * (numScore.width - 10)); numScore.x -= 5;
 			numScore.y = (ClientPrefs.data.downScroll ? (FlxG.height - numScore.height - 50) : 50);
 			FlxTween.tween(numScore.scale, {x: numScorescale, y: numScorescale}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
 			numScore.antialiasing = antialias;

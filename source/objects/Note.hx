@@ -199,7 +199,7 @@ class Note extends FlxSprite
 		this.inEditor = inEditor;
 		this.moves = false;
 
-		x += (ClientPrefs.data.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X) + 50;
+		x += (ClientPrefs.data.middleScroll ? -278 : 42) + 50;
 		y -= 2000;
 
 		this.strumTime = strumTime + (inEditor ? 0 : ClientPrefs.data.noteOffset);

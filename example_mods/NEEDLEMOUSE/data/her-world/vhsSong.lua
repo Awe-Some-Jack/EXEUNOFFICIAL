@@ -3,7 +3,7 @@ precacheSound('../songs/her-world/Inst-vhs') precacheSound('../songs/her-world/V
 function onSongStart()
 	playSound('../songs/her-world/Inst-vhs', 1, 'inst-vhs')
 	playSound('../songs/her-world/Voices-vhs', 1, 'voices-vhs')
-	playSound('../songs/her-world/Voices-vhs', 1, 'voicesopp-vhs')
+	playSound('../songs/her-world/Voices-opponent-vhs', 1, 'voicesopp-vhs')
 
 	setSoundVolume('inst-vhs', 0)
 	setSoundVolume('voices-vhs', 0)
@@ -50,6 +50,7 @@ function onUpdatePost()
 
 		setSoundTime('inst-vhs', getSongPosition())
 		setSoundTime('voices-vhs', getSongPosition())
+		setSoundTime('voicesopp-vhs', getSongPosition())
 	elseif getHealth() > 0.4 and lowornormal == 'low' then
 		lowornormal = 'normal'
 		--setSoundVolume('inst-vhs', 0)
@@ -72,7 +73,7 @@ function onUpdatePost()
 
 	if getProperty('vocals.pitch') ~= getSoundPitch('voices-vhs') then
 		setSoundPitch('voices-vhs', getProperty('vocals.pitch'))
-		setSoundPitch('voicesopp-vhs', getProperty('opponentVocals.pitch'))
+		setSoundPitch('voicesopp-vhs', getSoundPitch('voices-vhs'))
 		setSoundPitch('inst-vhs', getSoundPitch('voices-vhs'))
 	end
 end
@@ -84,8 +85,8 @@ function noteMiss()
 end
 
 function opponentNoteHit()
-	if lowornormal == 'low' then
-		setSoundVolume('voicesopp-vhs', 1)
+	if lowornormal == 'normal' then
+		setProperty('opponentVocals.volume', 1)
 	end
 end
 

@@ -1,9 +1,6 @@
-local OUTRO_SCALE = 0.666 * 0.83
-local HUD_FADE_BEAT = 36
-
 local shadows = {
 	{name = 'bfShadow',  path = 'bg/shadow',  target = 'boyfriend', offsetX = 10,   offsetY = 255, alpha = 0.7},
-	{name = 'dadShadow', path = 'bg/shadow2', target = 'dad',       offsetX = -70,  offsetY = 230, alpha = 0},
+	{name = 'dadShadow', path = 'bg/shadow2', target = 'dad',       offsetX = 92,  offsetY = 354, alpha = 0},
 }
 
 function onCreatePost()
@@ -35,10 +32,10 @@ function onCreatePost()
 	setProperty('glow.alpha', 0.75)
 	addLuaSprite('glow', true)
 
-	makeAnimatedLuaSprite('outro', 'characters/Normal-Outro', getProperty('dad.x') - 302, getProperty('dad.y') - 106)
+	makeAnimatedLuaSprite('outro', 'characters/Normal-Outro', getProperty('dad.x') - 170, getProperty('dad.y') + 18)
 	addAnimationByPrefix('outro', 'idle', 'Animation', 24, false)
 	setProperty('outro.alpha', 0)
-	scaleObject('outro', OUTRO_SCALE, OUTRO_SCALE)
+	scaleObject('outro', 0.552, 0.552)
 	addLuaSprite('outro', true)
 	setObjectOrder('outro', getObjectOrder('dadGroup') + 1)
 
@@ -48,7 +45,7 @@ end
 local hudRevealed = false
 
 function onBeatHit()
-	if not hudRevealed and curBeat >= HUD_FADE_BEAT then
+	if not hudRevealed and curBeat >= 36 then
 		hudRevealed = true
 		doTweenAlpha('camHudFade', 'camHUD', 1, crochet / 250)
 	end

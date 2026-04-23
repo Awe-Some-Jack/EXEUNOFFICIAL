@@ -12,6 +12,8 @@ function onCreatePost()
 		setPropertyFromGroup('opponentStrums', i, 'x', -1000)
 	end
 	dadX, dadY = getProperty('dad.x'), getProperty('dad.y')
+
+	setProperty('camHUD.alpha', 0)
 end
 
 function onCreate()
@@ -27,6 +29,14 @@ function onCreate()
 		setProperty(bg.name ..'.antialiasing', bg.antialiasing)
 		setProperty(bg.name ..'.alpha', bg.alpha)
 		addLuaSprite(bg.name, bg.front)
+	end
+end
+
+function onEvent(n,v1)
+	if n == 'trilogyEvents' then
+		if v1 == 'xd' then
+			doTweenAlpha('xddasd', 'camHUD', 1, crochet / (1000 / 32), 'cubeInOut')
+		end
 	end
 end
 

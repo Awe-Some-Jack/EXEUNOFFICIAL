@@ -339,7 +339,6 @@ class LoadingState extends MusicBeatState
 		initialThreadCompleted = true;
 		isIntrusive = false;
 
-		FlxTransitionableState.skipNextTransIn = true;
 		if (threadPool != null) threadPool.shutdown(); // kill all workers safely
 		threadPool = null;
 		mutex = null;

@@ -9,10 +9,92 @@
 			]
 		],
 		[
+			4297.75280898876,
+			[
+				["Normal Lyrics", "Boy;friend....", "1"]
+			]
+		],
+		[
+			5056.1797752809,
+			[
+				["Normal Lyrics", "Boy;friend....", "2"]
+			]
+		],
+		[
+			5393.25842696629,
+			[
+				["Tweening Camera", "370,70", "5.39,cubeIn"],
+				["Tween Camera Zoom", "0.7,true", "5.39,cubeIn"]
+			]
+		],
+		[
+			6488.76404494382,
+			[
+				["Normal Lyrics", "", ""]
+			]
+		],
+		[
+			6994.38202247191,
+			[
+				["Normal Lyrics", "Not; so; fast...", "1"]
+			]
+		],
+		[
+			7247.19101123595,
+			[
+				["Normal Lyrics", "Not; so; fast...", "2"]
+			]
+		],
+		[
+			7584.26966292135,
+			[
+				["Normal Lyrics", "Not; so; fast...", "3"]
+			]
+		],
+		[
+			9269.66292134831,
+			[
+				["Normal Lyrics", "I", "1"]
+			]
+		],
+		[
+			10028.0898876404,
+			[
+				["Normal Lyrics", "I; AM", "2"]
+			]
+		],
+		[
+			10786.5168539326,
+			[
+				["Normal Lyrics", "I; AM; GOD!", "3,FF0000"],
+				["bright zoom", "", ""],
+				["Tween Camera Zoom", "0.48,true", "1,cubeOut"],
+				["Tweening Camera", "670,220", "0.0001,linear"],
+				["trilogyEvents", "xd", ""]
+			]
+		],
+		[
+			11629.2134831461,
+			[
+				["Normal Lyrics", "", ""]
+			]
+		],
+		[
+			14831.4606741573,
+			[
+				["Tween Camera Zoom", "0.7,true", "5.39,cubeInOut"],
+				["Tweening Camera", "370,70", "5.39,cubeInOut"]
+			]
+		],
+		[
 			21573.0337078652,
 			[
+				["bright zoom", "", ""],
+				["Set customCamera Position", "dad", "1200, 650"],
+				["Tweening Camera", "0,0", "0.0001,linear"],
 				["Change Character", "dad", "ESOBRAT"],
-				["Play Animation", "singRIGHT", "dad"]
+				["Play Animation", "singRIGHT", "dad"],
+				["Tween Camera Zoom", "0.6", ""]
 			]
 		],
 		[
@@ -823,9 +905,9 @@
 				[75337.0786516854, 2, 0]
 			],
 			"sectionBeats": 4,
-			"bpm": 133.3,
 			"changeBPM": false,
-			"mustHitSection": false
+			"mustHitSection": false,
+			"bpm": 133.3
 		},
 		{
 			"sectionNotes": [
@@ -1079,9 +1161,9 @@
 				[98258.4269662923, 6, 337.078651685393]
 			],
 			"sectionBeats": 4,
-			"bpm": 200,
 			"changeBPM": false,
-			"mustHitSection": false
+			"mustHitSection": false,
+			"bpm": 200
 		},
 		{
 			"sectionNotes": [

@@ -75,6 +75,10 @@ class CustomShapeTransition extends MusicBeatSubstate
             case TAILS:
                 maxScale = 7;
 
+            case KNUX:
+                maxScale = 7;
+                time = 0.6;
+
             case _:
                 maxScale = 6;
         }

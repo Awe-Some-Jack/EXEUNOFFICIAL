@@ -65,6 +65,8 @@ function onUpdatePost()
 			if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedTime[i], (splittedTime[i] == ':' and 170 or 162) + ((i - 1) * 28), getProperty('timeText.y'), 3.5, true) end
 			if luaSpriteExists(tag) then setProperty(tag..'.animation.curAnim.curFrame', (splittedTime[i] == ':' and 10 or splittedTime[i])) setProperty(tag..'.y', getProperty('timeText.y')) end
 		end
+
+		for i = 0,10 do if luaSpriteExists('scoreNum'..i) and getProperty('scoreNum'..i..'.offset.x') ~= -8.75 and getProperty('scoreNum'..i..'.offset.y') ~= -13.75 then callMethod('scoreNum'..i..'.offset.set', {-8.75, -13.75}) end end
 	end
 end
 

@@ -184,6 +184,7 @@ end
 local floatTime = 0
 
 function onUpdatePost(elapsed)
+	if inGameOver then return end
 	if not lowQuality then
 		if getProperty('t.animation.curAnim.finished') and not stringEndsWith(getProperty('t.animation.curAnim.name'), 'loop') then playAnim('t', getProperty('t.animation.curAnim.name')..'-loop', true) end
 
@@ -389,7 +390,7 @@ function opponentNoteHit()
 end
 
 function onTweenCompleted(tag)
-	if tag == 'endZoom' then setProperty('defaultCamZoom', 0.3) end
+	if tag == 'endZoom' then setProperty('camZoomingDecay', 0) end
 end
 
 function onTimerCompleted(tag)

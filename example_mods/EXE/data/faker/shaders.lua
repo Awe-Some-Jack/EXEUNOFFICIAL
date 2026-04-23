@@ -44,9 +44,9 @@ function onCreatePost()
 		setShaderFloat('dad', 'ang', math.rad(80))
 		setShaderFloat('gf', 'ang', math.rad(100))
 		setShaderFloat('boyfriend', 'ang', math.rad(135))
-		setShaderFloat('boyfriend', 'thr', 0.15)
-		setShaderFloat('dad', 'thr', 0.15)
-		setShaderFloat('gf', 'thr', 0.15)
+		setShaderFloat('boyfriend', 'thr', 0.1)
+		setShaderFloat('dad', 'thr', 0.1)
+		setShaderFloat('gf', 'thr', 0.1)
 
 		runHaxeCode("game.camGame.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('cab').shader)];")
 	end

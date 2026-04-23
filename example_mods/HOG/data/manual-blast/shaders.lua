@@ -9,12 +9,12 @@ local iconsGlitch = {
 	['scorched-g2'] = {['idle'] = 'mighty', ['singLEFT'] = 'cyclops', ['singDOWN'] = 'eyx', ['singUP'] = 'griatos', ['singRIGHT'] = 'sallyAlt'}
 }
 
-local savedWidth = 0
-local savedHeight = 0
-
 function onCreatePost()
-	savedWidth = getPropertyFromClass('flixel.FlxG', 'stage.window.width')
-	savedHeight = getPropertyFromClass('flixel.FlxG', 'stage.window.height')
+	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', false)
+	setPropertyFromClass('flixel.FlxG', 'stage.window.resizable', true)
+	setPropertyFromClass('flixel.FlxG', 'stage.window.width', 1280)
+	setPropertyFromClass('flixel.FlxG', 'stage.window.height', 720)
+	setPropertyFromClass('flixel.FlxG', 'fullscreen', false)
 
 	createInstance('iconGlitch', 'objects.HealthIcon', {iconsGlitch['scorched-g']['idle'], false})
 	addToGroup('uiGroup', 'iconGlitch', getObjectOrder('iconOpp', 'uiGroup') + 1)
@@ -61,6 +61,7 @@ local fucker = false
 
 local winShake = 0
 function onUpdatePost(e)
+	if inGameOver then return end
 	callMethod('iconGlitch.setPosition', {getProperty('iconOpp.x'), getProperty('iconOpp.y')})
 	setProperty('iconGlitch.alpha', getProperty('iconOpp.alpha') - 0.4)
 	scaleObject('iconGlitch', getProperty('iconOpp.scale.x'), getProperty('iconOpp.scale.y'))
@@ -192,12 +193,10 @@ function onEvent(n, v1)
 			winIsFull = getPropertyFromClass('flixel.FlxG', 'fullscreen')
 			doTweenX('shake', 'shake', 1, crochet / (1000 / 8), 'cubeIn')
 
-			if getPropertyFromClass('flixel.FlxG', 'fullscreen') then setPropertyFromClass('flixel.FlxG', 'fullscreen', false) end
-			savedWidth = getPropertyFromClass('flixel.FlxG', 'stage.window.width')
-			savedHeight = getPropertyFromClass('flixel.FlxG', 'stage.window.height')
+			setPropertyFromClass('flixel.FlxG', 'fullscreen', false)
 			setPropertyFromClass('flixel.FlxG', 'stage.window.resizable', false)
-			setPropertyFromClass('flixel.FlxG', 'stage.window.width', savedWidth * 1.1)
-			setPropertyFromClass('flixel.FlxG', 'stage.window.height', savedHeight * 1.1)
+			setPropertyFromClass('flixel.FlxG', 'stage.window.width', 1280 * 1.1)
+			setPropertyFromClass('flixel.FlxG', 'stage.window.height', 720 * 1.1)
 
 			moveWindow = true
 			callMethod('winpos.setPosition', {getPropertyFromClass('flixel.FlxG', 'stage.window.x'), getPropertyFromClass('flixel.FlxG', 'stage.window.y')})
@@ -242,8 +241,8 @@ end
 function onDestroy()
 	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', false)
 	setPropertyFromClass('flixel.FlxG', 'stage.window.resizable', true)
-	setPropertyFromClass('flixel.FlxG', 'stage.window.width', savedWidth)
-	setPropertyFromClass('flixel.FlxG', 'stage.window.height', savedHeight)
+	setPropertyFromClass('flixel.FlxG', 'stage.window.width', 1280)
+	setPropertyFromClass('flixel.FlxG', 'stage.window.height', 720)
 	if winIsFull then setPropertyFromClass('flixel.FlxG', 'fullscreen', winIsFull) end
 end
 

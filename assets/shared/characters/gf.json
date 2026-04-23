@@ -36,7 +36,7 @@
 			"offsets": [-40, -38],
 			"indices": [],
 			"fps": 24,
-			"anim": "cheer alt",
+			"anim": "combo50",
 			"loop": false,
 			"name": "hey 2"
 		},
@@ -44,7 +44,7 @@
 			"offsets": [-42, -41],
 			"indices": [],
 			"fps": 24,
-			"anim": "Freaky",
+			"anim": "combo200",
 			"loop": false,
 			"name": "sex"
 		}

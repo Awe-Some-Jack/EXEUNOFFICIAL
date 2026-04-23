@@ -157,6 +157,12 @@ class StrumNote extends FlxSprite
 		x += (FlxG.width / 2) * player;
 	}
 
+	public function centerStrums():Void
+	{
+		//lol
+		x = (FlxG.width / 2) + ((100 + (5 + Note.swagWidth) * (player == 1 ? noteData : (4 - noteData))) * (player == 1 ? 1 : -1));
+	}
+
 	override function update(elapsed:Float):Void
 	{
 		if (resetAnim > 0)

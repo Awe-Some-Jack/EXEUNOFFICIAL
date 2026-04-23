@@ -404,9 +404,6 @@ class EditorPlayState extends MusicBeatSubstate
 
 	private function generateStaticArrows(player:Int):Void
 	{
-		var strumLineX:Float = ClientPrefs.data.middleScroll ? PlayState.STRUM_X_MIDDLESCROLL : PlayState.STRUM_X;
-		var strumLineY:Float = ClientPrefs.data.downScroll ? (FlxG.height - 150) : 50;
-
 		for (i in 0...4)
 		{
 			var targetAlpha:Float = 1;
@@ -416,24 +413,22 @@ class EditorPlayState extends MusicBeatSubstate
 				else if (ClientPrefs.data.middleScroll) targetAlpha = 0.35;
 			}
 
-			var babyArrow:StrumNote = new StrumNote(strumLineX, strumLineY, i, player);
+			var babyArrow:StrumNote = new StrumNote(0, 0, i, player);
 			babyArrow.downScroll = ClientPrefs.data.downScroll;
 			babyArrow.alpha = targetAlpha;
 
-			if (player == 1)
-				playerStrums.add(babyArrow);
-			else
+			if (player == 1) playerStrums.add(babyArrow);
+			else opponentStrums.add(babyArrow);
+
+			babyArrow.y = (ClientPrefs.data.downScroll ? (FlxG.height - babyArrow.height - 50) : 50);
+			babyArrow.centerStrums();
+			if(ClientPrefs.data.middleScroll)
 			{
-				if (ClientPrefs.data.middleScroll)
-				{
-					babyArrow.x += 310;
-					if (i > 1) babyArrow.x += FlxG.width / 2 + 25;
-				}
-				opponentStrums.add(babyArrow);
+				if (player == 1) babyArrow.x = (FlxG.width / 2) + ((5 + babyArrow.width) * (i - 2) + (5 / 2));
+				else babyArrow.x = (FlxG.width / 2) - ((100 + (5 + babyArrow.width) * (i < 2 ? (4 - i) : i)) * (i < 2 ? 1 : -1));
 			}
 
 			strumLineNotes.add(babyArrow);
-			babyArrow.playerPosition();
 		}
 	}
 

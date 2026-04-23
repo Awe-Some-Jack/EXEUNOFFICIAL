@@ -77,8 +77,6 @@ import crowplexus.hscript.Printer;
 @:access(openfl.display.BitmapData)
 class PlayState extends MusicBeatState
 {
-	public static var STRUM_X = 42;
-	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
 		['You Suck!', 0.2], //From 0% to 19%
@@ -491,7 +489,7 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = -Conductor.crochet * 5 + Conductor.offset;
 		var showTime:Bool = (ClientPrefs.data.timeBarType != 'Disabled');
-		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
+		timeTxt = new FlxText(42 + (FlxG.width / 2) - 248, 19, 400, "", 32);
 		timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		timeTxt.scrollFactor.set();
 		timeTxt.alpha = 0;
@@ -1493,8 +1491,6 @@ class PlayState extends MusicBeatState
 	public var skipArrowStartTween:Bool = false; //for lua
 	private function generateStaticArrows(player:Int):Void
 	{
-		var strumLineX:Float = ClientPrefs.data.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X;
-		var strumLineY:Float = ClientPrefs.data.downScroll ? (FlxG.height - 150) : 50;
 		for (i in 0...4)
 		{
 			// FlxG.log.add(i);
@@ -1505,7 +1501,7 @@ class PlayState extends MusicBeatState
 				else if(ClientPrefs.data.middleScroll) targetAlpha = 0.35;
 			}
 
-			var babyArrow:StrumNote = new StrumNote(strumLineX, strumLineY, i, player);
+			var babyArrow:StrumNote = new StrumNote(0, 0, i, player);
 			babyArrow.downScroll = ClientPrefs.data.downScroll;
 			if (!isStoryMode && !skipArrowStartTween)
 			{
@@ -1515,22 +1511,18 @@ class PlayState extends MusicBeatState
 			}
 			else babyArrow.alpha = targetAlpha;
 
-			if (player == 1)
-				playerStrums.add(babyArrow);
-			else
+			if (player == 1) playerStrums.add(babyArrow);
+			else opponentStrums.add(babyArrow);
+
+			babyArrow.y = (ClientPrefs.data.downScroll ? (FlxG.height - babyArrow.height - 50) : 50);
+			babyArrow.centerStrums();
+			if(ClientPrefs.data.middleScroll)
 			{
-				if(ClientPrefs.data.middleScroll)
-				{
-					babyArrow.x += 310;
-					if(i > 1) { //Up and Right
-						babyArrow.x += FlxG.width / 2 + 25;
-					}
-				}
-				opponentStrums.add(babyArrow);
+				if (player == 1) babyArrow.x = (FlxG.width / 2) + ((5 + babyArrow.width) * (i - 2) + (5 / 2));
+				else babyArrow.x = (FlxG.width / 2) - ((100 + (5 + babyArrow.width) * (i < 2 ? (4 - i) : i)) * (i < 2 ? 1 : -1));
 			}
 
 			strumLineNotes.add(babyArrow);
-			babyArrow.playerPosition();
 		}
 	}
 
@@ -2718,23 +2710,16 @@ class PlayState extends MusicBeatState
 		var xThing:Float = 0;
 
 		var separatedScore:String = Std.string(combo).lpad('0', 3);
-		var _refNum:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiFolder + 'num0' + uiPostfix));
-		if (!PlayState.isPixelStage) _refNum.setGraphicSize(Std.int(_refNum.width * 0.6));
-		else _refNum.setGraphicSize(Std.int(_refNum.width * daPixelZoom));
-		_refNum.updateHitbox();
-		var fixedNumW:Float = _refNum.width;
-		_refNum.destroy();
 		for (i in 0...separatedScore.length)
 		{
 			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiFolder + 'num' + Std.parseInt(separatedScore.charAt(i)) + uiPostfix));
 			if (!PlayState.isPixelStage) numScore.setGraphicSize(Std.int(numScore.width * 0.6));
 			else numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
+			numScore.updateHitbox();
 			var numScorescale:Float = numScore.scale.x;
-			numScore.visible = !ClientPrefs.data.hideHud;
-			numScore.updateHitbox();
 			numScore.scale.set(numScorescale * 1.1, numScorescale * 1.1);
-			numScore.updateHitbox();
-			numScore.x = (FlxG.width / 2) - (((fixedNumW - 10) * separatedScore.length) / 2) + (daLoop * (fixedNumW - 10)); numScore.x -= 5;
+			numScore.visible = !ClientPrefs.data.hideHud;
+			numScore.x = (FlxG.width / 2) - (((numScore.width - 10) * separatedScore.length) / 2) + (daLoop * (numScore.width - 10)); numScore.x -= 5;
 			numScore.y = (ClientPrefs.data.downScroll ? (FlxG.height - numScore.height - 50) : 50);
 			FlxTween.tween(numScore.scale, {x: numScorescale, y: numScorescale}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
 			numScore.antialiasing = antialias;
@@ -3077,7 +3062,7 @@ class PlayState extends MusicBeatState
 			var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length-1, direction)))] + 'miss' + postfix;
 			char.playAnim(animToPlay, true);
 
-			if(char != gf && lastCombo > 5 && gf != null && gf.hasAnimation('sad'))
+			if(char != gf && lastCombo > 10 && gf != null && gf.hasAnimation('sad'))
 			{
 				gf.playAnim('sad');
 				gf.specialAnim = true;
@@ -3663,6 +3648,16 @@ class PlayState extends MusicBeatState
 		setOnScripts('misses', songMisses);
 		setOnScripts('hits', songHits);
 		setOnScripts('combo', combo);
+
+		if (gf != null && combo > 0) {
+			var anim:String = null;
+			if (combo % 200 == 0 && gf.hasAnimation('combo200')) anim = 'combo200';
+			else if (combo % 50 == 0 && gf.hasAnimation('combo50')) anim = 'combo50';
+			if (anim != null) {
+				gf.playAnim(anim, true);
+				gf.specialAnim = true;
+			}
+		}
 
 		var ret:Dynamic = callOnScripts('onRecalculateRating', null, true);
 		if(ret != LuaUtils.Function_Stop)

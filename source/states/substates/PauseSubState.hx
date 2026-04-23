@@ -2,6 +2,7 @@ package states.substates;
 
 import flixel.effects.FlxFlicker;
 
+import backend.WeekData;
 import states.StoryModeState;
 import states.EXEFreeplay;
 import options.OptionsState;
@@ -71,7 +72,10 @@ class PauseSubState extends MusicBeatSubstate
 		add(pauseBar);
 		FlxTween.tween(pauseBar, {x: 0}, 0.1);
 
-		pauseText = new FlxSprite(196, 589).loadGraphic(Assets.getBitmapData('assets/exe/pause/pauseText.png'));
+		var image:String = 'pauseText';
+		var curWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[PlayState.storyWeek]);
+		if (curWeek.exeLabel == 'NON EXE' || curWeek.exeLabel == 'MEME' || curWeek.exeLabel == 'OFFICIAL') image = 'pauseText-normal';
+		pauseText = new FlxSprite(196, 589).loadGraphic(Assets.getBitmapData('assets/exe/pause/$image.png'));
 		pauseText.scale.set(3, 3);
 		pauseText.updateHitbox();
 		pauseText.alpha = 0;

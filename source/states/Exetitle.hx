@@ -1,18 +1,17 @@
 package states;
-import objects.GifSprite;
+
 import flixel.addons.display.FlxBackdrop;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.input.gamepad.FlxGamepad;
+
 import openfl.Assets;
+
+import objects.VideoSprite;
 import states.StoryModeState;
 import states.EXEMenu;
 import states.parallax.ParallaxState;
-#if hxvlc
-import hxvlc.flixel.FlxVideoSprite;
-#elseif hxCodec
-import hxcodec.flixel.FlxVideoSprite;
-#end
+
 class EXETitle extends MusicBeatState
 {
 	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
@@ -20,7 +19,8 @@ class EXETitle extends MusicBeatState
 	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
 	public static var initialized:Bool = false;
 	public static var closedState:Bool = false;
-	var video:FlxVideoSprite;
+
+	var video:VideoSprite;
 	var videoPlaying:Bool = false;
 	var titleText:FlxSprite;
 	var blackScreen:FlxSprite;
@@ -31,41 +31,43 @@ class EXETitle extends MusicBeatState
 	var eyes:FlxSprite;
 	var whiteBG:FlxSprite;
 	var parallaxArrow:FlxSprite;
+
 	var canStart:Bool = false;
+
 	override public function create():Void
 	{
 		Paths.clearStoredMemory();
-		super.create();
 		Paths.clearUnusedMemory();
+
 		if (!initialized)
 		{
 			ClientPrefs.loadPrefs();
 			Language.reloadPhrases();
-			if (FlxG.save.data != null && FlxG.save.data.fullscreen)
+
+			if (FlxG.save.data?.fullscreen)
 				FlxG.fullscreen = FlxG.save.data.fullscreen;
+
 			persistentUpdate = true;
 			persistentDraw = true;
 		}
+
 		if (FlxG.save.data.weekCompleted != null)
 			StoryModeState.weekCompleted = FlxG.save.data.weekCompleted;
+
 		if (!initialized)
 		{
 			FlxG.mouse.visible = false;
 			Main.fpsVar.visible = false;
-			video = new FlxVideoSprite();
-			video.bitmap.onEndReached.add(onVideoEnd);
-			video.bitmap.onFormatSetup.add(() -> {
+
+			video = new VideoSprite();
+			video.loadVideo(Paths.video('HaxeFlixelIntro'));
+			video.onFormat(() -> {
 				video.setGraphicSize(FlxG.width, FlxG.height);
 				video.screenCenter();
 				precache();
 			});
-			var videoPath = Paths.video('HaxeFlixelIntro');
-			#if hxvlc
-			video.load(videoPath);
-			video.play();
-			#elseif hxCodec
-			video.play(videoPath);
-			#end
+			video.onEnd(() -> onVideoEnd());
+			video.playDelayed();
 			add(video);
 			videoPlaying = true;
 		}
@@ -75,10 +77,14 @@ class EXETitle extends MusicBeatState
 			FlxG.mouse.visible = true;
 			buildTitle();
 		}
+
+		super.create();
 	}
+
 	function precache():Void
 	{
-		var logoPath:String = 'assets/exe/title/logo/';
+		final logoPath:String = 'assets/exe/title/logo/';
+		
 		Assets.getBitmapData(logoPath + 'ring.png');
 		Assets.getBitmapData(logoPath + 'bandana.png');
 		Assets.getBitmapData(logoPath + 'sonic.png');
@@ -87,21 +93,22 @@ class EXETitle extends MusicBeatState
 		Assets.getBitmapData('assets/exe/parallax/parallaxarrow.png');
 		Assets.getSound('assets/exe/music/menu.ogg');
 	}
+
 	function onVideoEnd():Void
 	{
-		video.bitmap.onEndReached.removeAll();
 		videoPlaying = false;
-		remove(video);
-		video.destroy();
-		video = null;
 		initialized = true;
+
 		buildTitle();
+
 		Main.fpsVar.visible = false;
 		persistentUpdate = true;
+
 		FlxG.camera.visible = false;
-		new FlxTimer().start(0.1, function(_) {
+
+		new FlxTimer().start(0.1, (_) -> {
 			FlxG.sound.play(Paths.sound('exelaugh'));
-			new FlxTimer().start(1.6, function(_) {
+			new FlxTimer().start(1.6, (_) -> {
 				canStart = true;
 				FlxG.mouse.visible = true;
 				Main.fpsVar.visible = ClientPrefs.data.showFPS;
@@ -114,20 +121,22 @@ class EXETitle extends MusicBeatState
 	}
 	function buildTitle():Void
 	{
-		var screenBg:GifSprite = new GifSprite(0, 0);
-		screenBg.loadGif('assets/exe/title/statictitlemenu.gif');
+		final screenBg:FlxGifSprite = new FlxGifSprite().loadGif('assets/exe/title/statictitlemenu.gif');
 		screenBg.antialiasing = ClientPrefs.data.antialiasing;
 		screenBg.setGraphicSize(FlxG.width, FlxG.height);
 		screenBg.updateHitbox();
 		screenBg.screenCenter();
 		add(screenBg);
+
 		makeLogo();
+
 		spikes = new FlxBackdrop(Assets.getBitmapData('assets/exe/title/spikesdown.png'), X);
 		spikes.scale.set(0.4, 0.4);
 		spikes.updateHitbox();
 		spikes.y = FlxG.height - spikes.height;
 		spikes.velocity.x = -50;
 		add(spikes);
+
 		titleText = new FlxSprite();
 		titleText.frames = FlxAtlasFrames.fromSparrow('assets/exe/title/titleEnterNEW.png', 'assets/exe/title/titleEnterNEW.xml');
 		titleText.animation.addByPrefix('idle', 'Press Enter to Begin instance 1', 24, true);
@@ -138,22 +147,27 @@ class EXETitle extends MusicBeatState
 		titleText.screenCenter();
 		titleText.y += 80;
 		add(titleText);
+
 		parallaxArrow = new FlxSprite(FlxG.width).loadGraphic(Assets.getBitmapData('assets/exe/parallax/parallaxarrow.png'));
 		parallaxArrow.antialiasing = ClientPrefs.data.antialiasing;
 		parallaxArrow.screenCenter(Y);
 		add(parallaxArrow);
-		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
-		blackScreen.alpha = 0;
+
+		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		blackScreen.alpha = 0.0000001;
 		add(blackScreen);
+
 		eyes = new FlxSprite(ring.x + (1074 * 0.4)).loadGraphic(Assets.getBitmapData('assets/exe/title/logo/eyes.png'));
 		eyes.scale.set(0.4, 0.4);
 		eyes.updateHitbox();
 		add(eyes);
-		whiteBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
-		whiteBG.alpha = 0;
+
+		whiteBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+		whiteBG.alpha = 0.0000001;
 		whiteBG.screenCenter();
 		add(whiteBG);
 	}
+
 	var savedRingX:Float = 0;
 	function makeLogo():Void
 	{
@@ -163,16 +177,19 @@ class EXETitle extends MusicBeatState
 		ring.updateHitbox();
 		ring.screenCenter(X);
 		add(ring);
+
 		savedRingX = ring.x;
 		bandana = new FlxSprite(ring.x + (329 * 0.4)).loadGraphic(Assets.getBitmapData(path + 'bandana.png'));
 		bandana.scale.set(0.4, 0.4);
 		bandana.updateHitbox();
 		add(bandana);
+
 		logotxt = new FlxSprite(ring.x + (711 * 0.4)).loadGraphic(Assets.getBitmapData(path + 'sonic.png'));
 		logotxt.scale.set(0.4, 0.4);
 		logotxt.updateHitbox();
 		add(logotxt);
 	}
+
 	var mousePosition:String = 'left';
 	var transitioning:Bool = false;
 	var logoSin:Float = 0;
@@ -226,7 +243,9 @@ class EXETitle extends MusicBeatState
 				FlxTween.cancelTweensOf(logotxt);
 				FlxTween.cancelTweensOf(eyes);
 				FlxTween.cancelTweensOf(parallaxArrow);
+
 				mousePosition = 'right';
+
 				FlxTween.tween(ring, {x: savedRingX - parallaxArrow.width}, 0.5, {ease: FlxEase.cubeOut});
 				FlxTween.tween(bandana, {x: savedRingX + (329 * 0.4) - parallaxArrow.width}, 0.51, {ease: FlxEase.cubeOut});
 				FlxTween.tween(logotxt, {x: savedRingX + (711 * 0.4) - parallaxArrow.width}, 0.52, {ease: FlxEase.cubeOut});
@@ -240,7 +259,9 @@ class EXETitle extends MusicBeatState
 				FlxTween.cancelTweensOf(logotxt);
 				FlxTween.cancelTweensOf(eyes);
 				FlxTween.cancelTweensOf(parallaxArrow);
+
 				mousePosition = 'left';
+
 				FlxTween.tween(ring, {x: savedRingX}, 0.5, {ease: FlxEase.cubeOut});
 				FlxTween.tween(bandana, {x: savedRingX + (329 * 0.4)}, 0.51, {ease: FlxEase.cubeOut});
 				FlxTween.tween(logotxt, {x: savedRingX + (711 * 0.4)}, 0.52, {ease: FlxEase.cubeOut});
@@ -251,16 +272,19 @@ class EXETitle extends MusicBeatState
 			{
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				transitioning = true;
+				
 				new FlxTimer().start(0.8, function(_) {
 					FlxG.sound.music.fadeOut(0.3);
 					MusicBeatState.switchState(new ParallaxState());
 				});
 				FlxTween.tween(whiteBG, {alpha: 1}, 0.8);
+
 				FlxTween.cancelTweensOf(ring);
 				FlxTween.cancelTweensOf(bandana);
 				FlxTween.cancelTweensOf(logotxt);
 				FlxTween.cancelTweensOf(eyes);
 				FlxTween.cancelTweensOf(parallaxArrow);
+
 				FlxTween.tween(ring, {x: savedRingX - (parallaxArrow.width * 2.5)}, 0.9, {ease: FlxEase.cubeOut});
 				FlxTween.tween(bandana, {x: savedRingX + (329 * 0.4) - (parallaxArrow.width * 2.5)}, 0.91, {ease: FlxEase.cubeOut});
 				FlxTween.tween(logotxt, {x: savedRingX + (711 * 0.4) - (parallaxArrow.width * 2.5)}, 0.92, {ease: FlxEase.cubeOut});
@@ -269,6 +293,7 @@ class EXETitle extends MusicBeatState
 			}
 		}
 		super.update(elapsed);
+
 		logoSin += elapsed;
 		ring.y = 20 + (Math.sin(logoSin) * 10);
 		bandana.y = 20 + (873 * 0.4) + (Math.sin(logoSin - 0.05) * 10);
@@ -279,6 +304,7 @@ class EXETitle extends MusicBeatState
 		eyes.angle = Math.sin(logoSin + (Math.PI / 2.5) + 0.15) * 2;
 
 		if (!canStart) return;
+
 		var fridgeInputs = [
 			controls.UI_UP_P,
 			controls.UI_DOWN_P,

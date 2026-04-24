@@ -16,7 +16,6 @@ if ! command -v oxipng >/dev/null 2>&1; then
 fi
 
 find "$target_dir" -type f -name "*.png" | while IFS= read -r file; do
-    echo "Processing: $file"
     oxipng -o max --strip safe --alpha "$file"
     if [ $? -ne 0 ]; then
         echo "Warning: Failed to process $file"

@@ -1,7 +1,6 @@
 package states;
 
 import openfl.Assets;
-import objects.GifSprite;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.input.keyboard.FlxKey;
@@ -71,8 +70,7 @@ class EXEMenu extends MusicBeatState
 		persistentUpdate = true;
 		persistentDraw   = true;
 
-		var loopingMenu:GifSprite = new GifSprite();
-		loopingMenu.loadGif('assets/exe/mainmenu/mainmenuexefinal.gif');
+		final loopingMenu:FlxGifSprite = new FlxGifSprite().loadGif('assets/exe/mainmenu/mainmenuexefinal.gif');
 		loopingMenu.antialiasing = ClientPrefs.data.antialiasing;
 		loopingMenu.setGraphicSize(FlxG.width, FlxG.height);
 		loopingMenu.updateHitbox();

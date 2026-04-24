@@ -793,7 +793,7 @@ class FunkinLua
 			if (FileSystem.exists(Paths.video(videoFile)))
 			{
 				if (game.videoCutscene != null) { game.remove(game.videoCutscene); game.videoCutscene.destroy(); }
-				game.startVideo(videoFile, forMidSong, shouldLoop);
+				game.videoCutscene = game.startVideo(videoFile, forMidSong, canSkip, shouldLoop, playOnLoad);
 				return true;
 			}
 			luaTrace('startVideo: Video file not found: $videoFile', false, false, FlxColor.RED);

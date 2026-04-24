@@ -501,7 +501,7 @@ class Paths
 	inline static public function modsJson(key:String)
 		return modFolders('data/' + key + '.json');
 
-	inline static public function modsVideo(key:String)
+	static public function modsVideo(key:String)
 	{
 		for (ext in VIDEO_EXTS)
 		{

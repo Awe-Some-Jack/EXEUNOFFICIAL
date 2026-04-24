@@ -16,18 +16,18 @@ import sys.FileSystem;
 
 class DAPlayer extends FlxGroup
 {
-	public static inline var SEEK_SECONDS:Float    = 5.0;
-	static inline var VOCALS_VOL:Float             = 1.0;
-	static inline var VOCALS_OPP_VOL:Float         = 0.6;
-	static inline var DISK_MAX_SPEED:Float         = 45.0;
-	static inline var DISK_ACCEL:Float             = 6.0;
-	static inline var DISK_DECEL:Float             = 22.0;
-	static inline var DISK_DRAG_SEEK_RATE:Float    = 0.12;
-	static inline var COMPOSER_CYCLE_TIME:Float    = 10.0;
-	static inline var SCRATCH_VEL_MAX:Float        = 0.25;
-	static inline var SCRATCH_PITCH_MIN:Float      = 0.30;
-	static inline var SCRATCH_PITCH_LERP:Float     = 18.0;
-	static inline var SCRATCH_RECOVER_SPEED:Float  = 6.0;
+	public static inline final SEEK_SECONDS:Float    = 5.0;
+	static inline final VOCALS_VOL:Float             = 1.0;
+	static inline final VOCALS_OPP_VOL:Float         = 0.6;
+	static inline final DISK_MAX_SPEED:Float         = 45.0;
+	static inline final DISK_ACCEL:Float             = 6.0;
+	static inline final DISK_DECEL:Float             = 22.0;
+	static inline final DISK_DRAG_SEEK_RATE:Float    = 0.12;
+	static inline final COMPOSER_CYCLE_TIME:Float    = 10.0;
+	static inline final SCRATCH_VEL_MAX:Float        = 0.25;
+	static inline final SCRATCH_PITCH_MIN:Float      = 0.30;
+	static inline final SCRATCH_PITCH_LERP:Float     = 18.0;
+	static inline final SCRATCH_RECOVER_SPEED:Float  = 6.0;
 
 	public var box:FlxSprite;
 	public var disk:FlxSprite;

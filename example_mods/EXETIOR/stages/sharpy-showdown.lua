@@ -16,7 +16,7 @@ local StageConfig = {
         {name = 'thirdCharacter', path = 'SS/2nd/third', x = -1700, y = -320, scaleX = 1, scaleY = 1, animName = 'idle', animPrefix = '3', fps = 24, loop = false, alpha = 0, front = true}
     },
     overlays = {
-        {name = 'blackVG', path = 'SS/overlays/BlackVG', x = 0, y = 0, scaleX = 1, scaleY = 1}
+        {name = 'blackVG', path = 'VG', x = 0, y = 0, scaleX = 1, scaleY = 1}
     }
 }
 
@@ -79,6 +79,7 @@ function onCreatePost()
         setProperty(config.name .. '.alpha', config.alpha or 0)
         addLuaSprite(config.name, config.front or false)
     end
+    setProperty('blackVG.color', getColorFromHex('000000'))
 
     makeLuaSprite('blackStage', nil, -1400, -860)
     makeGraphic('blackStage', screenWidth * 4, screenHeight * 4, '000000')

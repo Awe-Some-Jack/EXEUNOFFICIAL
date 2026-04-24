@@ -71,7 +71,8 @@ function onCreatePost()
 	screenCenter('tentacles_black')
 	addLuaSprite('tentacles_black', true)
 
-	makeLuaSprite('BlackVG', 'black sun/BlackVG')
+	makeLuaSprite('BlackVG', 'VG')
+    setProperty('BlackVG.color', getColorFromHex('000000'))
 	setObjectCamera('BlackVG', 'other')
 	addLuaSprite('BlackVG', true)
 end

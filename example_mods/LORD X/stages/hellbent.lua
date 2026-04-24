@@ -56,7 +56,8 @@ function onCreatePost()
 		addLuaSprite('glow')
 	end
 
-	makeLuaSprite('vignette', 'hellbent/BlackVG')
+	makeLuaSprite('vignette', 'VG')
+	setProperty('vignette.color', getColorFromHex('000000'))
 	setObjectCamera('vignette', 'hud')
 	addLuaSprite('vignette', true)
 

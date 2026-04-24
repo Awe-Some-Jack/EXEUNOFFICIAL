@@ -7,7 +7,7 @@ local floatTimer = 0
 local gfFloatPos = {0, 0}
 
 local vignette = {
-	{name = 'RedVG', path = 'overlay/RedVG', centered = true, scaleX = 1, scaleY = 1, alpha = 0, camera = 'camOther', front = true}
+	{name = 'RedVG', path = 'VG', centered = true, scaleX = 1, scaleY = 1, alpha = 0, camera = 'camOther', front = true}
 }
 
 local GeneralBG = {
@@ -132,6 +132,7 @@ function onCreate()
 	ogGfPosition = {getProperty('gf.x'), getProperty('gf.y')}
 
 	addSpriteGroup(vignette)
+	setProperty('RedVG.color', getColorFromHex('FF0000'))
 	addSpriteGroup(GeneralBG)
 	addSpriteGroup(YCRBG)
 

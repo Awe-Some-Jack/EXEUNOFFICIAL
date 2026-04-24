@@ -67,7 +67,8 @@ function onCreate()
 	setProperty('gf.visible', false)
 
 	--OVERLAY--
-	makeLuaSprite('overlay', 'cycles/BlackVG', 0, 0)
+	makeLuaSprite('overlay', 'VG', 0, 0)
+	setProperty('overlay.color', getColorFromHex('000000'))
 	setObjectCamera('overlay', 'camHUD')
 	setProperty('overlay.alpha', 0)
 	setBlendMode('overlay', 'add')

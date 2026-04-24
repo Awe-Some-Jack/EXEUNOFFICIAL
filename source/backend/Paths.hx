@@ -26,8 +26,11 @@ import backend.Mods;
 @:access(openfl.display.BitmapData)
 class Paths
 {
-	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
-	inline public static var VIDEO_EXT = "mp4";
+	public static final SOUND_EXT = #if web "mp3" #else "ogg" #end;
+	public static final VIDEO_EXTS:Array<String> = ["mp4", "avi", "mkv", "mov", "wmv", "flv", "webm"];
+
+	//for backward compatibility
+    public static final VIDEO_EXT = VIDEO_EXTS[0];
 
 	public static var tempFramesCache:Map<String, FlxFramesCollection> = [];
 
@@ -212,7 +215,12 @@ class Paths
 		var file:String = modsVideo(key);
 		if(FileSystem.exists(file)) return file;
 		#end
-		return 'assets/videos/$key.$VIDEO_EXT';
+
+		var videoPath = 'assets/videos/$key.$VIDEO_EXT';
+		for (exts in VIDEO_EXTS)
+			videoPath = 'assets/videos/$key.$exts';
+
+		return videoPath;
 	}
 
 	inline static public function sound(key:String, ?modsAllowed:Bool = true):Sound
@@ -386,7 +394,6 @@ class Paths
 	
 	static public function getMultiAtlas(keys:Array<String>, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxAtlasFrames
 	{
-		
 		var parentFrames:FlxAtlasFrames = Paths.getAtlas(keys[0].trim());
 		if(keys.length > 1)
 		{
@@ -491,8 +498,13 @@ class Paths
 	inline static public function modsJson(key:String)
 		return modFolders('data/' + key + '.json');
 
-	inline static public function modsVideo(key:String)
-		return modFolders('videos/' + key + '.' + VIDEO_EXT);
+	inline static public function modsVideo(key:String) {
+		var videoPath:String = modFolders('videos/' + key + '.' + VIDEO_EXT);
+		for (exts in VIDEO_EXTS)
+			videoPath = modFolders('videos/' + key + '.' + exts);
+
+		return videoPath;
+	}
 
 	inline static public function modsSounds(path:String, key:String)
 		return modFolders(path + '/' + key + '.' + SOUND_EXT);

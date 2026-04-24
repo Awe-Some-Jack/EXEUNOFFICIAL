@@ -2,7 +2,6 @@ package states.parallax;
 
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
-import objects.GifSprite;
 import flixel.addons.display.FlxBackdrop;
 import states.EXETitle;
 import openfl.Assets;
@@ -29,8 +28,7 @@ class ParallaxState extends MusicBeatState
 	{
 		super.create();
 
-		var paraBg:GifSprite = new GifSprite();
-		paraBg.loadGif('assets/exe/parallax/bg.gif');
+		final paraBg:FlxGifSprite = new FlxGifSprite().loadGif('assets/exe/parallax/bg.gif');
 		paraBg.antialiasing = ClientPrefs.data.antialiasing;
 		paraBg.setGraphicSize(FlxG.width, FlxG.height);
 		paraBg.updateHitbox();

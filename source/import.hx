@@ -21,6 +21,10 @@ import sys.io.*;
 import js.html.*;
 #end
 
+#if flxgif
+import flxgif.*;
+#end
+
 import backend.Paths;
 import backend.MemoryUtil;
 import backend.Controls;

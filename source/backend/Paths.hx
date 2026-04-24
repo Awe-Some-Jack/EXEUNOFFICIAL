@@ -212,15 +212,18 @@ class Paths
 	static public function video(key:String)
 	{
 		#if MODS_ALLOWED
-		var file:String = modsVideo(key);
+		final file:String = modsVideo(key);
 		if(FileSystem.exists(file)) return file;
 		#end
 
-		var videoPath = 'assets/videos/$key.$VIDEO_EXT';
-		for (exts in VIDEO_EXTS)
-			videoPath = 'assets/videos/$key.$exts';
+		for (ext in VIDEO_EXTS)
+		{
+			final path = 'assets/videos/$key.$ext';
+			if (#if sys FileSystem.exists(path) || #end OpenFlAssets.exists(path, BINARY)) return path;
+		}
 
-		return videoPath;
+		trace('VIDEO NOT FOUND: $key');
+		return null;
 	}
 
 	inline static public function sound(key:String, ?modsAllowed:Bool = true):Sound
@@ -498,12 +501,16 @@ class Paths
 	inline static public function modsJson(key:String)
 		return modFolders('data/' + key + '.json');
 
-	inline static public function modsVideo(key:String) {
-		var videoPath:String = modFolders('videos/' + key + '.' + VIDEO_EXT);
-		for (exts in VIDEO_EXTS)
-			videoPath = modFolders('videos/' + key + '.' + exts);
+	inline static public function modsVideo(key:String)
+	{
+		for (ext in VIDEO_EXTS)
+		{
+			final path:String = modFolders('videos/' + key + '.' + ext);
+			if (FileSystem.exists(path))
+				return path;
+		}
 
-		return videoPath;
+		return modFolders('videos/' + key + '.' + VIDEO_EXT);
 	}
 
 	inline static public function modsSounds(path:String, key:String)

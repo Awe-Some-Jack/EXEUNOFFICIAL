@@ -10,19 +10,17 @@ import flixel.util.FlxColor;
 import flixel.addons.nape.FlxNapeSpace;
 
 import minigame.thevalley.TVPlayer;
-import minigame.thevalley.TVSlopeMap;
 import minigame.thevalley.TVHitboxMap;
-
-import nape.phys.Body;
-import nape.phys.BodyType;
-import nape.shape.Polygon;
+import minigame.thevalley.TVNapeWorldBuilder;
 
 class TheValley extends MusicBeatState
 {
 	var player:TVPlayer;
 	var hitboxMap:TVHitboxMap;
-	var slopeMap:TVSlopeMap;
 	var hitboxOverlay:FlxSprite;
+
+	var napeDebug:TVNapeDebugDraw;
+	var showNapeDebug:Bool = false;
 
 	var hudCamera:flixel.FlxCamera;
 
@@ -36,10 +34,6 @@ class TheValley extends MusicBeatState
 	static inline final SPAWN_X:Float = 150;
 	static inline final SPAWN_Y:Float = 800;
 
-	static inline final SENSOR_MISS:Int = TVSlopeMap.MISS_DIST;
-	static inline final FLOOR_SCAN_GND:Int = 20;
-	static inline final FLOOR_SCAN_AIR:Int = TVSlopeMap.SCAN_UP + 1;
-	static inline final SENSOR_DIFF_MAX:Int = 20;
 	static inline final LAUNCH_COOLDOWN:Int = 20;
 
 	var launchCooldown:Int = 0;
@@ -51,7 +45,8 @@ class TheValley extends MusicBeatState
 		super.create();
 
 		FlxNapeSpace.init();
-		FlxNapeSpace.space.gravity.setxy(0, 900);
+		FlxNapeSpace.space?.clear();
+		FlxNapeSpace.space?.gravity.setxy(0, 900);
 
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("The Valley", null);
@@ -63,11 +58,11 @@ class TheValley extends MusicBeatState
 		hudCamera.bgColor = FlxColor.TRANSPARENT;
 		FlxG.cameras.add(hudCamera, false);
 
-		var mapSprite = new FlxSprite(0, 0);
+		final mapSprite = new FlxSprite(0, 0);
 		mapSprite.loadGraphic(backend.Paths.image('minigame/thevalley/map'));
 		add(mapSprite);
 
-		var hitboxBmd = openfl.Assets.getBitmapData('assets/shared/images/minigame/thevalley/hitbox.png');
+		final hitboxBmd = openfl.Assets.getBitmapData('assets/shared/images/minigame/thevalley/hitbox.png');
 
 		hitboxOverlay = new FlxSprite(0, 0);
 		hitboxOverlay.loadGraphic(backend.Paths.image('minigame/thevalley/hitbox', null, false));
@@ -82,10 +77,11 @@ class TheValley extends MusicBeatState
 		add(hitboxMap.platformTiles);
 		add(hitboxMap.launchpads);
 
-		slopeMap = new TVSlopeMap();
-		slopeMap.loadFromBitmap(hitboxBmd);
+		TVNapeWorldBuilder.buildFromBitmap(hitboxBmd);
 
-		_createNapeWorld();
+		napeDebug = new TVNapeDebugDraw(Std.int(mapSprite.width), Std.int(mapSprite.height));
+		napeDebug.visible = false;
+		add(napeDebug);
 
 		player = new TVPlayer(SPAWN_X, SPAWN_Y);
 		add(player);
@@ -94,19 +90,19 @@ class TheValley extends MusicBeatState
 		FlxG.camera.setScrollBoundsRect(0, 0, mapSprite.width, mapSprite.height, true);
 		FlxG.worldBounds.set(0, 0, mapSprite.width, mapSprite.height);
 
-		var exitHint = new FlxText(0, 4, 0, "ESC / BACK — volver al menu", 10);
+		final exitHint = new FlxText(0, 4, 0, "ESC / BACK — volver al menu", 10);
 		exitHint.setFormat(null, 10, FlxColor.WHITE, RIGHT);
 		exitHint.setBorderStyle(flixel.text.FlxText.FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 1);
 		exitHint.x = FlxG.width - exitHint.width - 4;
 		exitHint.scrollFactor.set(0, 0);
-		exitHint.cameras = [hudCamera];
+		exitHint.camera = hudCamera;
 		add(exitHint);
 
 		debugText = new FlxText(0, 18, FlxG.width - 10, "", 10);
 		debugText.setFormat(null, 10, FlxColor.WHITE, RIGHT);
 		debugText.setBorderStyle(flixel.text.FlxText.FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 1);
 		debugText.scrollFactor.set(0, 0);
-		debugText.cameras = [hudCamera];
+		debugText.camera = hudCamera;
 		debugText.visible = false;
 		add(debugText);
 
@@ -114,26 +110,6 @@ class TheValley extends MusicBeatState
 		playerHitboxSprite.makeGraphic(1, 1, FlxColor.TRANSPARENT);
 		playerHitboxSprite.visible = false;
 		add(playerHitboxSprite);
-	}
-
-	function _createNapeWorld():Void
-	{
-		for (tile in hitboxMap.solidTiles.members)
-		{
-			if (tile != null)
-				_addStaticRect(tile.x, tile.y, tile.width, tile.height);
-		}
-	}
-
-	function _addStaticRect(x:Float, y:Float, w:Float, h:Float):Void
-	{
-		if (w <= 0 || h <= 0)
-			return;
-
-		var body = new Body(BodyType.STATIC);
-		body.position.setxy(x + w * 0.5, y + h * 0.5);
-		body.shapes.add(new Polygon(Polygon.box(w, h)));
-		body.space = FlxNapeSpace.space;
 	}
 
 	override public function update(elapsed:Float):Void
@@ -151,18 +127,10 @@ class TheValley extends MusicBeatState
 			launchCooldown--;
 
 		wantLaunch = false;
-		FlxG.overlap(player, hitboxMap.launchpads, _checkLaunchpad);
+		//FlxG.overlap(player, hitboxMap.launchpads, _checkLaunchpad);
 
 		if (wantLaunch)
 			_fireLaunch();
-
-		player.updateSlopeMap(
-			slopeMap,
-			launchCooldown,
-			FLOOR_SCAN_GND,
-			FLOOR_SCAN_AIR,
-			SENSOR_DIFF_MAX
-		);
 
 		var respawned = player.handleInput(elapsed, controls, SPAWN_X, SPAWN_Y);
 		player.updateNapePlayer(elapsed);
@@ -224,6 +192,15 @@ class TheValley extends MusicBeatState
 			hitboxOverlay.visible = showMapHitbox;
 		}
 
+		if (FlxG.keys.justPressed.F3)
+		{
+			showNapeDebug = !showNapeDebug;
+			napeDebug.visible = showNapeDebug;
+
+			if (showNapeDebug)
+				napeDebug.redraw();
+		}
+
 		if (FlxG.mouse.wheel != 0)
 			FlxG.camera.zoom = Math.max(0.5, Math.min(8.0, FlxG.camera.zoom + FlxG.mouse.wheel * 0.1));
 
@@ -260,10 +237,7 @@ class TheValley extends MusicBeatState
 		if (!showDebug)
 			return;
 
-		var vx = Math.round(player.velocity.x);
-		var vy = Math.round(player.velocity.y);
-
-		var modeStr = switch (player.mode)
+		final modeStr = switch (player.mode)
 		{
 			case Ground: "GROUND";
 			case Air: "AIR";
@@ -273,28 +247,21 @@ class TheValley extends MusicBeatState
 			case WingClose: "WINGCLOSE";
 		};
 
-		var curAnim = (player.animation.curAnim != null) ? player.animation.curAnim.name : "none";
-
-		var angleS1 = Std.int(player.groundAngle);
-		var angleDeg = Math.round(TVSlopeMap.s1ToDeg(angleS1));
+		final curAnim = player.animation.curAnim != null ? player.animation.curAnim.name : "none";
 
 		debugText.text = [
 			"── DEBUG (TAB off) ──",
-			"vX: " + vx + "  vY: " + vy,
+			"vX: " + Math.round(player.velocity.x) + "  vY: " + Math.round(player.velocity.y),
 			"inertia: " + Math.round(player.inertia),
 			"mode: " + modeStr + "  anim: " + curAnim,
 			"grounded: " + player.isGrounded + "  coyote: " + player.coyoteTimer,
-			"onSlope: " + player.onSlope + "  slopeDeg: " + Math.round(player.slopeDeg),
-			"angle S1: $" + StringTools.hex(angleS1, 2) + " (" + angleDeg + "°)",
-			"dL: " + (player.sensorDistL == SENSOR_MISS ? "MISS" : "" + player.sensorDistL),
-			"dC: " + (player.sensorDistC == SENSOR_MISS ? "MISS" : "" + player.sensorDistC),
-			"dR: " + (player.sensorDistR == SENSOR_MISS ? "MISS" : "" + player.sensorDistR),
 			"launch cd: " + launchCooldown + "  glide cd: " + player.glideCooldown,
 			"pos: (" + Std.int(player.x) + ", " + Std.int(player.y) + ")",
 			"zoom: " + Math.round(FlxG.camera.zoom * 100) / 100,
 			"──────────────────",
 			"F1: hitbox player  [" + (showPlayerHitbox ? "ON" : "off") + "]",
 			"F2: hitbox map     [" + (showMapHitbox ? "ON" : "off") + "]",
+			"F3: nape hitboxes  [" + (showNapeDebug ? "ON" : "off") + "]",
 			"wheel: zoom in/out",
 			"R: respawn",
 			"ESC/BACK: volver al menu",

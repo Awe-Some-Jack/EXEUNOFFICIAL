@@ -9,14 +9,17 @@ import backend.Controls;
 import nape.geom.Vec2;
 import nape.phys.BodyType;
 import nape.phys.Material;
+import nape.shape.Circle;
+import nape.shape.Polygon;
 
-enum PlayerMode { 
-	Ground; 
-	Air; 
-	Launch; 
-	WingOpen; 
-	Glide; 
-	WingClose; 
+enum PlayerMode
+{
+	Ground;
+	Air;
+	Launch;
+	WingOpen;
+	Glide;
+	WingClose;
 }
 
 class TVPlayer extends FlxNapeSprite
@@ -41,9 +44,6 @@ class TVPlayer extends FlxNapeSprite
 	public static inline final WINGOPEN_FRAMES:Int = 18;
 	public static inline final GLIDE_COOLDOWN:Int = 90;
 
-	public static inline final SLOPE_RESIST:Float = 300;
-	public static inline final SLOPE_VIS_THRESH:Float = 8;
-
 	static inline final HB_W:Int = 18;
 	static inline final HB_H:Int = 38;
 
@@ -60,20 +60,6 @@ class TVPlayer extends FlxNapeSprite
 
 	public var isGrounded:Bool = false;
 	public var touchingFloor:Bool = false;
-	public var onSlope:Bool = false;
-
-	public var slopeDeg:Float = 0;
-	public var rawAngle:Float = 0;
-	public var groundAngle:Float = 0;
-
-	public var sensorDistL:Int = TVSlopeMap.MISS_DIST;
-	public var sensorDistC:Int = TVSlopeMap.MISS_DIST;
-	public var sensorDistR:Int = TVSlopeMap.MISS_DIST;
-
-	var _prevRawAngle:Float = 0;
-	var _displayAngle:Float = 0;
-
-	final _sensorAngle:Array<Float> = [0.0];
 
 	public function new(x:Float, y:Float)
 	{
@@ -96,164 +82,90 @@ class TVPlayer extends FlxNapeSprite
 		offset.x = (60 - HB_W) / 2;
 		offset.y = 9;
 
+		origin.set(HB_W * 0.5, HB_H * 0.5);
+
 		createRectangularBody(HB_W, HB_H, BodyType.DYNAMIC);
+
+		body.shapes.clear();
+
+		var r = HB_W * 0.5;
+		var midH = HB_H - r;
+
+		var mat = new Material(0, 0.0, 0.0, 1, 0);
+
+		var rect = new Polygon(Polygon.box(HB_W, midH));
+		rect.translate(Vec2.weak(0, -r * 0.5));
+		rect.material = mat;
+		body.shapes.add(rect);
+
+		var bottom = new Circle(r, Vec2.weak(0, midH * 0.5 - r * 0.5));
+		bottom.material = mat;
+		body.shapes.add(bottom);
+
+		body.setShapeMaterials(mat);
 
 		body.allowRotation = false;
 		body.velocity.setxy(0, 0);
-		body.position.setxy(x + origin.x, y + origin.y);
-		body.setShapeMaterials(new Material(0, 0.05, 0.05, 1, 0));
+		body.position.setxy(x + width * 0.5, y + height * 0.5);
 
 		setFacingFlip(FlxDirectionFlags.LEFT, true, false);
 		setFacingFlip(FlxDirectionFlags.RIGHT, false, false);
 	}
 
-	inline function vx():Float return body.velocity.x;
-	inline function vy():Float return body.velocity.y;
+	inline function vx():Float
+		return body.velocity.x;
+
+	inline function vy():Float
+		return body.velocity.y;
 
 	inline function setVX(v:Float):Void
 	{
 		var delta = v - body.velocity.x;
-		body.applyImpulse(Vec2.weak(delta * body.mass, 0));
+
+		if (Math.abs(delta) > 0.001)
+			body.applyImpulse(Vec2.weak(delta * body.mass, 0));
+
 		body.velocity.x = v;
 	}
 
 	inline function setVY(v:Float):Void
 	{
 		var delta = v - body.velocity.y;
-		body.applyImpulse(Vec2.weak(0, delta * body.mass));
+
+		if (Math.abs(delta) > 0.001)
+			body.applyImpulse(Vec2.weak(0, delta * body.mass));
+
 		body.velocity.y = v;
 	}
 
 	public function setBodyXY(px:Float, py:Float):Void
 	{
-		body.position.setxy(px + origin.x, py + origin.y);
+		body.position.setxy(x + width * 0.5, y + height * 0.5);
 		body.velocity.setxy(0, 0);
-
 		updatePosition();
 
 		velocity.x = body.velocity.x;
 		velocity.y = body.velocity.y;
 	}
 
-	public function updateSlopeMap(
-		slopeMap:TVSlopeMap,
-		launchCooldown:Int,
-		floorScanGnd:Int,
-		floorScanAir:Int,
-		sensorDiffMax:Int
-	):Void
+	function checkGrounded():Bool
 	{
-		if (launchCooldown > 0)
+		if (body == null)
+			return false;
+
+		for (arb in body.arbiters)
 		{
-			touchingFloor = false;
-			onSlope = false;
-			isGrounded = false;
-			slopeDeg = 0;
-			rawAngle = 0;
-			groundAngle = 0;
-			return;
+			if (!arb.isCollisionArbiter())
+				continue;
+
+			var col = arb.collisionArbiter;
+			var ny = (arb.body1 == body) ? -col.normal.y : col.normal.y;
+
+			if (ny < -0.35)
+				return true;
 		}
 
-		final lx:Int = Std.int(x + width * 0.25);
-		final cx:Int = Std.int(x + width * 0.50);
-		final rx:Int = Std.int(x + width * 0.75);
-		final footY:Int = Std.int(y + height);
-
-		final scanDown:Int = vy() >= 0 ? floorScanGnd : floorScanAir;
-
-		var dL = slopeMap.findFloor(lx, footY, scanDown, _sensorAngle);
-		var dR = slopeMap.findFloor(rx, footY, scanDown, _sensorAngle);
-		var dC = slopeMap.findFloor(cx, footY, scanDown, _sensorAngle);
-
-		if (dL != TVSlopeMap.MISS_DIST && dR != TVSlopeMap.MISS_DIST)
-		{
-			final diff = dL - dR;
-
-			if (diff < -sensorDiffMax)
-				dL = TVSlopeMap.MISS_DIST;
-			else if (diff > sensorDiffMax)
-				dR = TVSlopeMap.MISS_DIST;
-		}
-
-		if (dC != TVSlopeMap.MISS_DIST)
-		{
-			if (dL != TVSlopeMap.MISS_DIST && (dC - dL) > sensorDiffMax)
-				dC = TVSlopeMap.MISS_DIST;
-
-			if (dR != TVSlopeMap.MISS_DIST && (dC - dR) > sensorDiffMax)
-				dC = TVSlopeMap.MISS_DIST;
-		}
-
-		if (dL == TVSlopeMap.MISS_DIST && dC != TVSlopeMap.MISS_DIST) dL = dC;
-		if (dR == TVSlopeMap.MISS_DIST && dC != TVSlopeMap.MISS_DIST) dR = dC;
-		if (dL == TVSlopeMap.MISS_DIST && dR != TVSlopeMap.MISS_DIST) dL = dR;
-		if (dR == TVSlopeMap.MISS_DIST && dL != TVSlopeMap.MISS_DIST) dR = dL;
-
-		sensorDistL = dL;
-		sensorDistC = dC;
-		sensorDistR = dR;
-
-		final floorEps = 10;
-
-		touchingFloor = (dL != TVSlopeMap.MISS_DIST && dL <= floorEps)
-			|| (dC != TVSlopeMap.MISS_DIST && dC <= floorEps)
-			|| (dR != TVSlopeMap.MISS_DIST && dR <= floorEps);
-
-		onSlope = dL != TVSlopeMap.MISS_DIST
-			&& dR != TVSlopeMap.MISS_DIST
-			&& dL != dR
-			&& touchingFloor;
-
-		isGrounded = touchingFloor && vy() >= -20;
-
-		if (isGrounded)
-		{
-			var best:Int = TVSlopeMap.MISS_DIST;
-
-			inline function consider(d:Int):Void
-			{
-				if (d != TVSlopeMap.MISS_DIST && (best == TVSlopeMap.MISS_DIST || d < best))
-					best = d;
-			}
-
-			consider(dL);
-			consider(dC);
-			consider(dR);
-
-			if (best != TVSlopeMap.MISS_DIST && best >= -6 && best <= 12)
-			{
-				body.position.y += best;
-				body.velocity.y = 0;
-				updatePosition();
-
-				velocity.x = body.velocity.x;
-				velocity.y = body.velocity.y;
-			}
-		}
-
-		if (isGrounded && dL != TVSlopeMap.MISS_DIST && dR != TVSlopeMap.MISS_DIST && dL != dR)
-		{
-			final deg = Math.atan2(dR - dL, width * 0.5) * (180 / Math.PI);
-
-			rawAngle = TVSlopeMap.degToS1(deg);
-			slopeDeg = Math.abs(deg);
-			_prevRawAngle = rawAngle;
-			groundAngle = rawAngle;
-		}
-		else if (isGrounded)
-		{
-			rawAngle = _prevRawAngle * 0.5;
-			slopeDeg = Math.abs(TVSlopeMap.s1ToDeg(rawAngle));
-			_prevRawAngle = rawAngle;
-			groundAngle = rawAngle;
-		}
-		else
-		{
-			rawAngle = 0;
-			slopeDeg = 0;
-			_prevRawAngle = 0;
-			groundAngle = 0;
-		}
+		return false;
 	}
 
 	public function handleInput(elapsed:Float, controls:Controls, spawnX:Float, spawnY:Float):Bool
@@ -271,22 +183,17 @@ class TVPlayer extends FlxNapeSprite
 			jumpBufTimer = 0;
 			isGrounded = false;
 			touchingFloor = false;
-			onSlope = false;
-			rawAngle = 0;
-			slopeDeg = 0;
-			groundAngle = 0;
-			_displayAngle = 0;
 			angle = 0;
 
 			return true;
 		}
 
-		final left:Bool = controls.UI_LEFT || FlxG.keys.pressed.A;
-		final right:Bool = controls.UI_RIGHT || FlxG.keys.pressed.D;
+		var left = controls.UI_LEFT || FlxG.keys.pressed.A;
+		var right = controls.UI_RIGHT || FlxG.keys.pressed.D;
 
-		final jumpJust:Bool = controls.ACCEPT || FlxG.keys.justPressed.SPACE;
-		final jumpRel:Bool = FlxG.keys.justReleased.Z || FlxG.keys.justReleased.SPACE;
-		final jumpHeldNow:Bool = FlxG.keys.pressed.Z || FlxG.keys.pressed.SPACE;
+		var jumpJust = FlxG.keys.justPressed.Z || FlxG.keys.justPressed.SPACE;
+		var jumpRel = FlxG.keys.justReleased.Z || FlxG.keys.justReleased.SPACE;
+		var jumpHeldNow = FlxG.keys.pressed.Z || FlxG.keys.pressed.SPACE;
 
 		if (jumpJust)
 			jumpBufTimer = JUMP_BUFFER_FRAMES;
@@ -301,10 +208,7 @@ class TVPlayer extends FlxNapeSprite
 
 		if (jumpBufTimer > 0 && coyoteTimer > 0)
 		{
-			var ar = TVSlopeMap.s1ToRad(groundAngle);
-
 			setVY(JUMP_VY);
-			setVX(vx() - JUMP_VY * Math.sin(ar));
 
 			jumpHeld = true;
 			isGrounded = false;
@@ -329,15 +233,9 @@ class TVPlayer extends FlxNapeSprite
 		return false;
 	}
 
-	function setNapeSensorMode(v:Bool):Void
-	{
-		if (body?.shapes.length > 0)
-			body.shapes.at(0).sensorEnabled = v;
-	}
-
 	public function updateNapePlayer(elapsed:Float):Void
 	{
-		setNapeSensorMode(touchingFloor || onSlope || coyoteTimer > 0);
+		touchingFloor = checkGrounded();
 
 		if (touchingFloor && vy() >= -20)
 		{
@@ -360,12 +258,6 @@ class TVPlayer extends FlxNapeSprite
 
 		if (glideCooldown > 0)
 			glideCooldown--;
-
-		if (isGrounded && onSlope)
-		{
-			final angleRad = TVSlopeMap.s1ToRad(rawAngle);
-			body.velocity.x -= Math.sin(angleRad) * SLOPE_RESIST * elapsed;
-		}
 
 		if (!jumpHeld && vy() < JUMP_CUT)
 			setVY(JUMP_CUT);
@@ -412,15 +304,15 @@ class TVPlayer extends FlxNapeSprite
 		velocity.x = body.velocity.x;
 		velocity.y = body.velocity.y;
 
-		if (Math.abs(body.velocity.x) > 5 && isGrounded)
+		if (Math.abs(vx()) > 5 && isGrounded)
 			mode = Ground;
 	}
 
 	public function updateAnim(elapsed:Float, controls:Controls):Void
 	{
-		final absV = Math.abs(vx());
-		final down = controls.UI_DOWN || FlxG.keys.pressed.S;
-		final up = controls.UI_UP || FlxG.keys.pressed.W;
+		var absV = Math.abs(vx());
+		var down = controls.UI_DOWN || FlxG.keys.pressed.S;
+		var up = controls.UI_UP || FlxG.keys.pressed.W;
 
 		var animName:String;
 
@@ -434,7 +326,8 @@ class TVPlayer extends FlxNapeSprite
 		{
 			animName = "wingclose";
 
-			if (animation.curAnim != null && animation.curAnim.name == "wingclose"
+			if (animation.curAnim != null
+				&& animation.curAnim.name == "wingclose"
 				&& animation.curAnim.finished)
 			{
 				mode = Air;
@@ -460,22 +353,10 @@ class TVPlayer extends FlxNapeSprite
 		if (animName == "walk" && animation.curAnim != null)
 			animation.curAnim.frameRate = 6 + Std.int((absV / WALK_MAX) * 12);
 
-		var targetDeg = 0.0;
+		angle += (0 - angle) * 0.25;
 
-		if (isGrounded && slopeDeg > SLOPE_VIS_THRESH)
-		{
-			targetDeg = TVSlopeMap.s1ToDeg(rawAngle);
-
-			if (targetDeg > 180)
-				targetDeg -= 360;
-		}
-
-		_displayAngle += (targetDeg - _displayAngle) * 0.25;
-
-		if (Math.abs(_displayAngle) < 0.5)
-			_displayAngle = 0;
-
-		angle = _displayAngle;
+		if (Math.abs(angle) < 0.5)
+			angle = 0;
 	}
 
 	public function doLaunch():Void

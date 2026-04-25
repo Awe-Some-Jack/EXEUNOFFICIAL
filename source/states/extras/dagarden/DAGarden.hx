@@ -48,7 +48,6 @@ class DAGarden extends MusicBeatState
 		_buildForeground();
 
 		player = new DAPlayer();
-		player.onSongEnd = player.fadeOutAndStop;
 		add(player);
 
 		sub = new DASub();
@@ -190,6 +189,7 @@ class DAGarden extends MusicBeatState
 			else player.playAudio(songs.selectedSong(), songs.selectedMod());
 		}
 
+		if (FlxG.keys.justPressed.L) player.toggleLoop();
 		if (FlxG.keys.justPressed.I) player.toggleVocals();
 		if (FlxG.keys.justPressed.S) player.fadeOutAndStop();
 		if (FlxG.keys.justPressed.A) player.seek(-DAPlayer.SEEK_SECONDS);

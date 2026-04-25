@@ -71,6 +71,7 @@ class DAPlayer extends FlxGroup
 	public var vocalsEnabled:Bool = true;
 	public var isPlaying:Bool     = false;
 	public var isLoading:Bool     = false;
+	public var loopEnabled:Bool = false;
 
 	private var audioFadeTarget:Float = 1.0;
 	private var audioFadeSpeed:Float  = 0.0;
@@ -94,8 +95,6 @@ class DAPlayer extends FlxGroup
 	private var currentCredits:Array<String> = [];
 	private var composerIndex:Int            = 0;
 	private var composerTimer:Float          = 0.0;
-
-	public var onSongEnd:Void->Void = null;
 
 	private var _originalTitle:String = '';
 	private var _lastTitleSec:Int     = -1;
@@ -288,6 +287,16 @@ class DAPlayer extends FlxGroup
 	{
 		vocalsEnabled = !vocalsEnabled;
 		_applyVocalVolume(instSound != null ? instSound.volume : 1.0);
+	}
+
+	public function toggleLoop():Void
+	{
+		loopEnabled = !loopEnabled;
+
+		if (instSound != null)
+		{
+			instSound.looped = loopEnabled;
+		}
 	}
 
 	public function loadJumpscareFor(song:String, mod:String):Void
@@ -743,7 +752,7 @@ class DAPlayer extends FlxGroup
 		if (data.inst == null) return;
 
 		instSound        = FlxG.sound.load(data.inst);
-		instSound.looped = false;
+		instSound.looped = loopEnabled;
 		instSound.volume = 0;
 
 		for (v in data.vocs)
@@ -751,7 +760,6 @@ class DAPlayer extends FlxGroup
 			var snd = FlxG.sound.load(v.snd);
 			if (snd == null) continue;
 			snd.looped = false;
-			snd.volume = 0;
 			vocalsSounds.push(snd);
 			if (v.isOpp) oppVocalsSounds.push(snd);
 		}
@@ -773,13 +781,39 @@ class DAPlayer extends FlxGroup
 		#end
 	}
 
+	public function onSongEnd():Void
+	{
+		if (instSound == null) return;
+		isPlaying = false;
+
+		instSound.pause();
+		instSound.time = 0;
+		
+		for (v in vocalsSounds)
+		{
+			if (v == null) continue;
+			v.play();
+			v.pause();
+			v.time = 0;
+		}
+	}
+
 	private function _checkSongEnd():Void
 	{
 		if (!isPlaying || instSound == null || instSound.length <= 0) return;
-		if (instSound.time >= instSound.length - 100 && !instSound.playing)
+
+		if (instSound.time >= instSound.length - 100 && instSound.playing)
 		{
-			if (onSongEnd != null) onSongEnd();
-			else fadeOutAndStop();
+			if (loopEnabled)
+			{
+				_doCleanSeek(0);
+				instSound.play();
+				for (v in vocalsSounds) v.play();
+			}
+			else
+			{
+				onSongEnd();
+			}
 		}
 	}
 
@@ -812,7 +846,6 @@ class DAPlayer extends FlxGroup
 	override public function destroy():Void
 	{
 		_destroyAudio();
-		onSongEnd   = null;
 		onPitchDone = null;
 		if (composerTxt != null) FlxTween.cancelTweensOf(composerTxt);
 		super.destroy();

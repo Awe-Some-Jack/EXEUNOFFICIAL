@@ -52,11 +52,10 @@ local specialSplashes = {
 		isRandom = true
 	}
 }
+
+
 local pixelSplashesList = {"prey", "b4cksl4sh", "starline", "fatality"}
 local blacklistenedSongs = {"round-a-bout"}
-
-
-
 
 
 --DONT TOUCH

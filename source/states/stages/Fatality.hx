@@ -18,32 +18,32 @@ class Fatality extends BaseStage
 	// CONSTANTS
 	// -------------------------------------------------------------------------
 
-	static inline var WINDOW_WIDTH         = 960;
-	static inline var WINDOW_HEIGHT        = 720;
-	static inline var WIDESCREEN_OFFSET    = 160; // (26 * 6) + 4
+	static inline final WINDOW_WIDTH         = 960;
+	static inline final WINDOW_HEIGHT        = 720;
+	static inline final WIDESCREEN_OFFSET    = 160; // (26 * 6) + 4
 
-	static inline var STRUM_OPP_Y_OFFSET   = 50;
-	static inline var STRUM_PLAY_Y_OFFSET  = 50;
+	static inline final STRUM_OPP_Y_OFFSET   = 50;
+	static inline final STRUM_PLAY_Y_OFFSET  = 50;
 
-	static inline var HBAR_MAX_SQUARES     = 25;
-	static inline var HBAR_SQUARE_W        = 16;
-	static inline var HBAR_SQUARE_H        = 15;
-	static inline var HBAR_SPACING         = 2;
-	static inline var HBAR_SCALE           = 1.32;
-	static inline var HBAR_WIN_W           = 472;
-	static inline var HBAR_WIN_H           = 70;
-	static inline var HBAR_WIN_X_OFFSET    = 155;
-	static inline var HBAR_WIN_Y_FROM_TOP  = 150;
-	static inline var HBAR_WIN_Y_SLIDE_START = -500;
-	static inline var HBAR_LIFE_X          = 13;
-	static inline var HBAR_LIFE_Y          = 64;
+	static inline final HBAR_MAX_SQUARES     = 25;
+	static inline final HBAR_SQUARE_W        = 16;
+	static inline final HBAR_SQUARE_H        = 15;
+	static inline final HBAR_SPACING         = 2;
+	static inline final HBAR_SCALE           = 1.32;
+	static inline final HBAR_WIN_W           = 472;
+	static inline final HBAR_WIN_H           = 70;
+	static inline final HBAR_WIN_X_OFFSET    = 155;
+	static inline final HBAR_WIN_Y_FROM_TOP  = 150;
+	static inline final HBAR_WIN_Y_SLIDE_START = -500;
+	static inline final HBAR_LIFE_X          = 13;
+	static inline final HBAR_LIFE_Y          = 64;
 
-	static inline var STEP_SLIDE_HEALTHBAR = 255;
-	static inline var STEP_START_SHAKE     = 2230;
-	static inline var STEP_START_INFINITY  = 2240;
-	static inline var STEP_RETURN_NORMAL   = 2432;
-	static inline var STEP_SHAKE_AGAIN     = 2528;
-	static inline var STEP_FINAL_SCREEN    = 2560;
+	static inline final STEP_SLIDE_HEALTHBAR = 255;
+	static inline final STEP_START_SHAKE     = 2230;
+	static inline final STEP_START_INFINITY  = 2240;
+	static inline final STEP_RETURN_NORMAL   = 2432;
+	static inline final STEP_SHAKE_AGAIN     = 2528;
+	static inline final STEP_FINAL_SCREEN    = 2560;
 
 	static var STRUM_OPP_X  = [25, 137, 249, 361];
 	static var STRUM_PLAY_X = [510, 622, 734, 846];

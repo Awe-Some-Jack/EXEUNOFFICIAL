@@ -49,9 +49,9 @@ class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEvent
 	var ghostActive:Bool = false;
 	var isLoading:Bool = false;
 
-	static inline var BIO_DIR = 'assets/exe/extras/bios/characters';
-	static inline var BOX_X:Int = 220;
-	static inline var BOX_W:Int = 420;
+	static inline final BIO_DIR = 'assets/exe/extras/bios/characters';
+	static inline final BOX_X:Int = 220;
+	static inline final BOX_W:Int = 420;
 
 	public function new(parent:BIOS)
 	{

@@ -73,9 +73,8 @@ class PauseSubState extends MusicBeatSubstate
 		FlxTween.tween(pauseBar, {x: 0}, 0.1);
 
 		var image:String = 'pauseText';
-		var weekKey:String = WeekData.weeksList[PlayState.storyWeek];
-		var curWeek:WeekData = weekKey != null ? WeekData.weeksLoaded.get(weekKey) : null;
-		if (curWeek != null && (curWeek.exeLabel == 'NON EXE' || curWeek.exeLabel == 'MEME' || curWeek.exeLabel == 'OFFICIAL')) image = 'pauseText-normal';
+		var curWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[PlayState.storyWeek]);
+		if (curWeek.exeLabel == 'NON EXE' || curWeek.exeLabel == 'MEME' || curWeek.exeLabel == 'OFFICIAL') image = 'pauseText-normal';
 		pauseText = new FlxSprite(196, 589).loadGraphic(Assets.getBitmapData('assets/exe/pause/$image.png'));
 		pauseText.scale.set(3, 3);
 		pauseText.updateHitbox();

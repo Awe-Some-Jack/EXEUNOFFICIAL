@@ -6,7 +6,7 @@ import sys.FileSystem;
 import flixel.addons.ui.*;
 import objects.*;
 
-class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEvent
+class BiosEditorSubState extends MusicBeatSubstate implements PsychUIEventHandler.PsychUIEvent
 {
 	var allNames:Array<String> = [];
 	var allChars:Array<String> = [];

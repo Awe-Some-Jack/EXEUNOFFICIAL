@@ -14,7 +14,7 @@ import cutscenes.DialogueCharacter;
 
 import states.editors.content.Prompt;
 
-class DialogueCharacterEditorState extends MusicBeatState implements PsychUIEvent
+class DialogueCharacterEditorState extends MusicBeatState implements PsychUIEventHandler.PsychUIEvent
 {
 	var box:FlxSprite;
 	var daText:TypedAlphabet = null;

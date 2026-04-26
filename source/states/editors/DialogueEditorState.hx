@@ -12,7 +12,7 @@ import cutscenes.DialogueBoxPsych;
 import cutscenes.DialogueCharacter;
 import states.editors.content.Prompt;
 
-class DialogueEditorState extends MusicBeatState implements PsychUIEvent
+class DialogueEditorState extends MusicBeatState implements PsychUIEventHandler.PsychUIEvent
 {
 	var character:DialogueCharacter;
 	var box:FlxSprite;

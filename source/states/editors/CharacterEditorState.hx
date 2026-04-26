@@ -17,7 +17,7 @@ import objects.Bar;
 import states.editors.content.Prompt;
 import states.editors.content.PsychJsonPrinter;
 
-class CharacterEditorState extends MusicBeatState implements PsychUIEvent
+class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler.PsychUIEvent
 {
 	var character:Character;
 	var ghost:FlxSprite;

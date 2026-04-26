@@ -11,7 +11,7 @@ import objects.MenuCharacter;
 import states.editors.content.Prompt;
 import states.editors.content.PsychJsonPrinter;
 
-class MenuCharacterEditorState extends MusicBeatState implements PsychUIEvent
+class MenuCharacterEditorState extends MusicBeatState implements PsychUIEventHandler.PsychUIEvent
 {
 	var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
 	var characterFile:MenuCharacterFile = null;

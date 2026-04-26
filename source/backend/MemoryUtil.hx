@@ -31,6 +31,9 @@ final class MemoryUtil
 		#if (cpp || java || neko)
 		Gc.run(false);
 		#end
+		#if cpp
+		cpp.NativeGc.run(false);
+		#end
 	}
 
 	public static function clearMajor():Void
@@ -43,6 +46,9 @@ final class MemoryUtil
 		#elseif (java || neko)
 		Gc.run(true);
 		#end
+		#if cpp
+		cpp.NativeGc.compact();
+		#end
 	}
 
 	public static function enable():Void
@@ -50,12 +56,18 @@ final class MemoryUtil
 		#if (cpp || hl)
 		Gc.enable(true);
 		#end
+		#if cpp
+		cpp.NativeGc.enable(true);
+		#end
 	}
 
 	public static function disable():Void
 	{
 		#if (cpp || hl)
 		Gc.enable(false);
+		#end
+		#if cpp
+		cpp.NativeGc.enable(false);
 		#end
 	}
 

@@ -158,12 +158,25 @@
 	<set name="eval" if="linux || mac" />
 
 	<!--Used for Izzy Engine's crash handler-->
-	<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
-	<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
-	<haxedef name="HXCPP_STACK_TRACE" if="CRASH_HANDLER" />
+	<section if="CRASH_HANDLER">
+		<haxedef name="HXCPP_CHECK_POINTER" />
+		<haxedef name="HXCPP_STACK_LINE" />
+		<haxedef name="HXCPP_STACK_TRACE" />
+		<haxedef name="HXCPP_CATCH_SEGV" />
+	</section>
+
+	<section if="cpp">
+		<haxedef name="HXCPP_GC_BIG_BLOCKS" />
+		<haxedef name="HXCPP_GC_DYNAMIC_SIZE" />
+	</section>
 	
 	<!--Disable deprecated warnings-->
 	<haxedef name='no-deprecation-warnings' />
+
+	<haxedef name="openfl_dpi_aware" unless="web" />
+	<haxedef name="openfl-enable-handle-error" />
+	
+	<haxedef name="lime_disable_assets_version"/>
 
 	<!-- Haxe 4.3.0+: Enable pretty syntax errors and stuff. -->
 	<!-- pretty (haxeflixel default), indent, classic (haxe compiler default) -->

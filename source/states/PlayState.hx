@@ -646,7 +646,6 @@ class PlayState extends MusicBeatState
 
 		super.create();
 		Paths.clearUnusedMemory();
-		MemoryUtil.clearMajor();
 
 		cachePopUpScore();
 
@@ -692,7 +691,7 @@ class PlayState extends MusicBeatState
 		Conductor.offset = Reflect.hasField(PlayState.SONG, 'offset') ? (PlayState.SONG.offset / value) : 0;
 		Conductor.safeZoneOffset = (ClientPrefs.data.safeFrames / 60) * 1000 * value;
 		#if VIDEOS_ALLOWED
-		if(videoCutscene != null) videoCutscene.bitmap.rate = value;
+		if(videoCutscene?.video?.bitmap != null) videoCutscene.video.bitmap.rate = value;
 		#end
 		setOnScripts('playbackRate', playbackRate);
 		#else
@@ -840,7 +839,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public var videoCutscene:VideoSprite = null;
-	public function startVideo(name:String, forMidSong:Bool = false, loop:Bool = false)
+	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false)
 	{
 		#if VIDEOS_ALLOWED
 		inCutscene = !forMidSong;
@@ -856,23 +855,17 @@ class PlayState extends MusicBeatState
 		}
 
 		videoCutscene = new VideoSprite(0, 0, true);
-		videoCutscene.antialiasing = ClientPrefs.data.antialiasing;
+		videoCutscene.antialiasing = videoCutscene.video.antialiasing = ClientPrefs.data.antialiasing;
 		videoCutscene.camera = camOther;
+		videoCutscene.canSkip = canSkip;
 		add(videoCutscene);
-		add(videoCutscene.pie);
 
-		videoCutscene.onFormat(() -> {
-			videoCutscene.setGraphicSize(0, FlxG.height);
-			videoCutscene.updateHitbox();
-			videoCutscene.screenCenter(X);
-		});
-
-		videoCutscene.onEnd(() -> {
+		videoCutscene.onSkip = () -> {
 			callOnScripts('onVideoCompleted', [name]);
 			canPause = true;
 
 			if(!forMidSong) startAndEnd();
-		});
+		};
 
 		if(videoCutscene.loadVideo(filePath, loop ? [VideoSprite.ARG_LOOPING] : [])) {
 			videoCutscene.playDelayed();
@@ -1406,8 +1399,6 @@ class PlayState extends MusicBeatState
 
 		unspawnNotes.sort(sortByTime);
 		generatedMusic = true;
-
-		MemoryUtil.clearMajor();
 	}
 
 	// called only once per different event (Used for precaching)
@@ -1901,8 +1892,7 @@ class PlayState extends MusicBeatState
 		var freed:Int = 0;
 		for (graphic in Paths.currentTrackedAssets)
 		{
-			if (graphic != null && graphic.bitmap != null
-				&& graphic.bitmap.image != null && graphic.bitmap.__texture != null)
+			if (graphic.bitmap?.image?.data != null)
 			{
 				graphic.bitmap.image.data = null;
 				graphic.bitmap.image = null;
@@ -1910,7 +1900,7 @@ class PlayState extends MusicBeatState
 				freed++;
 			}
 		}
-		if (freed > 0) MemoryUtil.clearMajor();
+		if (freed > 0) Paths.clearUnusedMemory();
 	}
 	#end
 

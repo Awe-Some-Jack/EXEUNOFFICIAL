@@ -59,7 +59,7 @@ class Paths
 			}
 		}
 
-		MemoryUtil.clearMajor();
+		MemoryUtil.clearMinor();
 	}
 
 	// define the locally tracked assets
@@ -68,6 +68,8 @@ class Paths
 	@:access(flixel.system.frontEnds.BitmapFrontEnd._cache)
 	public static function clearStoredMemory()
 	{
+		MemoryUtil.clearMajor();
+		
 		// clear anything not in the tracked assets list
 		for (key in FlxG.bitmap._cache.keys())
 		{

@@ -63,7 +63,7 @@ class EXETitle extends MusicBeatState
 			video.loadVideo(Paths.video('HaxeFlixelIntro'));
 			video.onFormat(() -> {
 				video.setGraphicSize(FlxG.width, FlxG.height);
-				video.screenCenter();
+				video.video.screenCenter();
 				precache();
 			});
 			video.onEnd(() -> onVideoEnd());

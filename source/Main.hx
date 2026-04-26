@@ -194,6 +194,8 @@ class Main extends Sprite
 		#end
 
 		// MemoryUtil.clearMajor is called inside FunkinCache.clearSecondLayer (postStateSwitch)
+		// but you forgor to enable it bru-
+		MemoryUtil.enable();
 
 		// shader coords fix
 		FlxG.signals.gameResized.add(function (w, h) {

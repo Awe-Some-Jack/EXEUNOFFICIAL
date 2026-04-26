@@ -788,12 +788,12 @@ class FunkinLua
 			return false;
 		});
 
-		Lua_helper.add_callback(lua, 'startVideo', function(videoFile:String, canSkip:Bool = true, forMidSong:Bool = false, shouldLoop:Bool = false, playOnLoad:Bool = true) {
+		Lua_helper.add_callback(lua, 'startVideo', function(videoFile:String, canSkip:Bool = true, forMidSong:Bool = false, shouldLoop:Bool = false, ?playOnLoad:Bool = true) {
 			#if VIDEOS_ALLOWED
 			if (FileSystem.exists(Paths.video(videoFile)))
 			{
 				if (game.videoCutscene != null) { game.remove(game.videoCutscene); game.videoCutscene.destroy(); }
-				game.startVideo(videoFile, forMidSong, shouldLoop);
+				game.startVideo(videoFile, canSkip, forMidSong, shouldLoop);
 				return true;
 			}
 			luaTrace('startVideo: Video file not found: $videoFile', false, false, FlxColor.RED);

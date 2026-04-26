@@ -257,12 +257,12 @@ class VideoSprite extends FlxVideoSprite
         }
     }
     
-    private function onFocusGained():Void
+    override private function onFocusGained():Void
     {
         bitmap?.resume();
     }
-    
-    private function onFocusLost():Void
+
+    override private function onFocusLost():Void
     {
         bitmap?.pause();
     }

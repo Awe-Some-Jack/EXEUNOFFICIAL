@@ -6,6 +6,7 @@ import flixel.util.FlxDirectionFlags;
 
 import backend.Controls;
 
+import nape.callbacks.CbType;
 import nape.geom.Vec2;
 import nape.phys.BodyType;
 import nape.phys.Material;
@@ -49,6 +50,8 @@ class TVPlayer extends FlxNapeSprite
 
 	static inline final COYOTE_FRAMES:Int = 5;
 	static inline final JUMP_BUFFER_FRAMES:Int = 8;
+
+	public static final PLAYER_CB:CbType = new CbType();
 
 	public var mode:PlayerMode = Air;
 	public var inertia:Float = 0;
@@ -107,6 +110,7 @@ class TVPlayer extends FlxNapeSprite
 		body.allowRotation = false;
 		body.velocity.setxy(0, 0);
 		body.position.setxy(x + width * 0.5, y + height * 0.5);
+		body.cbTypes.add(PLAYER_CB);
 
 		setFacingFlip(FlxDirectionFlags.LEFT, true, false);
 		setFacingFlip(FlxDirectionFlags.RIGHT, false, false);
@@ -140,7 +144,7 @@ class TVPlayer extends FlxNapeSprite
 
 	public function setBodyXY(px:Float, py:Float):Void
 	{
-		body.position.setxy(x + width * 0.5, y + height * 0.5);
+		body.position.setxy(px + width * 0.5, py + height * 0.5);
 		body.velocity.setxy(0, 0);
 		updatePosition();
 
@@ -237,20 +241,20 @@ class TVPlayer extends FlxNapeSprite
 	{
 		touchingFloor = checkGrounded();
 
-		if (touchingFloor && vy() >= -20)
+		if (touchingFloor && vy() >= -80)
 		{
-			isGrounded = true;
 			coyoteTimer = COYOTE_FRAMES;
+			isGrounded = true;
 
 			if (mode == Air || mode == WingOpen || mode == Glide || mode == WingClose)
 				mode = Ground;
 		}
 		else
 		{
-			isGrounded = false;
-
 			if (coyoteTimer > 0)
 				coyoteTimer--;
+
+			isGrounded = coyoteTimer > 0 && vy() >= -120;
 		}
 
 		if (jumpBufTimer > 0)
@@ -333,7 +337,7 @@ class TVPlayer extends FlxNapeSprite
 				mode = Air;
 			}
 		}
-		else if (!isGrounded)
+		else if (!isGrounded && coyoteTimer <= 0)
 			animName = "jump";
 		else
 		{

@@ -15,6 +15,8 @@ import openfl.utils.Assets as AssetPaths;
 import backend.Paths;
 import haxe.Json;
 
+import states.substates.SoundTestSubState;
+
 typedef SoundTestData = {
 	var pcm:Int;
 	var da:Int;
@@ -60,6 +62,9 @@ class SoundTest extends MusicBeatState
 	{
 		Paths.clearStoredMemory();
 		super.create();
+
+		persistentUpdate = true;
+		persistentDraw = true;
 
 		previousWindowTitle = FlxG.stage.window.title;
 
@@ -365,14 +370,9 @@ class SoundTest extends MusicBeatState
 						if (code.isWeek) loadSong(code.weekName, true);
 						else
 						{
-							switch(code.type)
-							{
-								case "image":
-									trace("Mostrar imagen");
-
-								case "video":
-									trace("Reproducir video");
-							}
+							persistentUpdate = false;
+							persistentDraw = true;
+							openSubState(new SoundTestSubState((code.type.toLowerCase() == 'video'), code.path));
 						}
 
 						FlxG.sound.music.fadeOut(0.3);
@@ -409,6 +409,16 @@ class SoundTest extends MusicBeatState
 			}
 			notFoundAny = true;
 		}
+	}
+
+	override function closeSubState()
+	{
+		super.closeSubState();
+
+		persistentUpdate = true;
+		transitioning = false;
+
+		FlxTween.tween(whiteBG, {alpha: 0}, 0.2);
 	}
 
 	function loadSong(name:String, isWeek:Bool = false)

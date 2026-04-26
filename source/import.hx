@@ -39,7 +39,24 @@ import backend.Difficulty;
 import backend.Mods;
 import backend.Language;
 
-import backend.ui.*; //Psych-UI
+import backend.ui.PsychUI; //Psych-UI
+import backend.ui.PsychUI.UIStyleData;
+import backend.ui.PsychUI.PsychUIEvent;
+import backend.ui.PsychUI.PsychUIEventHandler;
+import backend.ui.PsychUI.PsychUITab;
+import backend.ui.PsychUI.PsychUIBox;
+import backend.ui.PsychUI.PsychUIButton;
+import backend.ui.PsychUI.PsychUICheckBox;
+import backend.ui.PsychUI.PsychUISlider;
+import backend.ui.PsychUI.PsychUIRadioGroup;
+import backend.ui.PsychUI.PsychUIRadioItem;
+import backend.ui.PsychUI.AccentCode;
+import backend.ui.PsychUI.FilterMode;
+import backend.ui.PsychUI.CaseMode;
+import backend.ui.PsychUI.PsychUIInputText;
+import backend.ui.PsychUI.PsychUIDropDownMenu;
+import backend.ui.PsychUI.PsychUIDropDownItem;
+import backend.ui.PsychUI.PsychUINumericStepper;
 
 import objects.Alphabet;
 import objects.BGSprite;

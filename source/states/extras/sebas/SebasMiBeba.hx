@@ -16,18 +16,18 @@ import flixel.util.FlxTimer;
 
 class SebasMiBeba extends MusicBeatState
 {
-	static inline final BASE_SCALE:Float      = 0.26;
-	static inline final SPACING:Float         = 340.0;
-	static inline final GRAVITY:Float         = 1400.0;
-	static inline final ANTICIPATE_DUR:Float  = 0.08;
-	static inline final LAND_DUR:Float        = 0.18;
-	static inline final DRIFT_AMOUNT:Float    = 14.0;
-	static inline final DRIFT_DUR:Float       = 3.0;
-	static inline final SPIN_INTERVAL:Float   = 10.0;
-	static inline final SPIN_DUR:Float        = 0.55;
-	static inline final SHAKE_INTERVAL:Float  = 6.0;
-	static inline final SHAKE_DUR:Float       = 0.4;
-	static inline final SHAKE_INTENSITY:Float = 6.0;
+	static inline var BASE_SCALE:Float      = 0.26;
+	static inline var SPACING:Float         = 340.0;
+	static inline var GRAVITY:Float         = 1400.0;
+	static inline var ANTICIPATE_DUR:Float  = 0.08;
+	static inline var LAND_DUR:Float        = 0.18;
+	static inline var DRIFT_AMOUNT:Float    = 14.0;
+	static inline var DRIFT_DUR:Float       = 3.0;
+	static inline var SPIN_INTERVAL:Float   = 10.0;
+	static inline var SPIN_DUR:Float        = 0.55;
+	static inline var SHAKE_INTERVAL:Float  = 6.0;
+	static inline var SHAKE_DUR:Float       = 0.4;
+	static inline var SHAKE_INTENSITY:Float = 6.0;
 
 	private var imgs:Array<FlxSprite>     = [];
 	private var baseX:Array<Float>        = [];

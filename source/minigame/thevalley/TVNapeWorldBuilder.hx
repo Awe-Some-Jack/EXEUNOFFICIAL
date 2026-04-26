@@ -3,7 +3,6 @@ package minigame.thevalley;
 import flixel.addons.nape.FlxNapeSpace;
 import openfl.display.BitmapData;
 
-import nape.callbacks.CbType;
 import nape.geom.Vec2;
 import nape.phys.Body;
 import nape.phys.BodyType;
@@ -15,19 +14,11 @@ class TVNapeWorldBuilder
 	static inline final EMPTY:Int = 0;
 	static inline final SOLID:Int = 1;
 	static inline final SURFACE:Int = 2;
-    static inline final WALL:Int = 3;
-    static inline final SURFACE_STEP:Int = 4;
-
-    static inline final MAX_SURFACE_STEP:Int = 32;
-    static inline final MIN_SURFACE_POINTS:Int = 2;
-
-    public static final SURFACE_CB:CbType = new CbType();
 
 	public static function buildFromBitmap(bmd:BitmapData):Void
 	{
-		buildWallRects(bmd);
-        buildSolidRects(bmd);
-        buildSurfaceSegments(bmd);
+		buildSolidRects(bmd);
+		buildSurfaceSegments(bmd);
 	}
 
 	static function buildSolidRects(bmd:BitmapData):Void
@@ -79,52 +70,36 @@ class TVNapeWorldBuilder
                     for (dx in 0...w)
                         done[(y + dy) * bw + x + dx] = true;
 
-                var isYellowSolid:Bool = false;
-                for (dy in 0...h)
+                var cutTop = 0;
+
+                while (cutTop < h)
                 {
+                    var hasSurfaceNear = false;
+
                     for (dx in 0...w)
                     {
-                        if ((bmd.getPixel32(x + dx, y + dy) & 0x00FFFFFF) == TVSlopeMap.C_SOLID_D)
+                        var px = x + dx;
+                        var py = y + cutTop;
+
+                        for (oy in -4...5)
                         {
-                            isYellowSolid = true;
-                            break;
-                        }
-                    }
+                            var sy = py + oy;
 
-                    if (isYellowSolid)
-                        break;
-                }
-
-                var cutTop = 0;
-                if (!isYellowSolid)
-                {
-                    while (cutTop < h)
-                    {
-                        var hasSurfaceNear:Bool = false;
-                        for (dx in 0...w)
-                        {
-                            final px = x + dx;
-                            final py = y + cutTop;
-
-                            for (oy in -4...5)
+                            if (sy >= 0 && sy < bh && pixelType(bmd, px, sy) == SURFACE)
                             {
-                                final sy = py + oy;
-                                if (sy >= 0 && sy < bh && pixelType(bmd, px, sy) == SURFACE)
-                                {
-                                    hasSurfaceNear = true;
-                                    break;
-                                }
-                            }
-
-                            if (hasSurfaceNear)
+                                hasSurfaceNear = true;
                                 break;
+                            }
                         }
 
-                        if (!hasSurfaceNear)
+                        if (hasSurfaceNear)
                             break;
-
-                        cutTop++;
                     }
+
+                    if (!hasSurfaceNear)
+                        break;
+
+                    cutTop++;
                 }
 
                 var boxY = y + cutTop;
@@ -144,108 +119,53 @@ class TVNapeWorldBuilder
         var bh = bmd.height;
 
         var points:Array<Vec2> = [];
-        var prevY:Int = -1;
 
         for (x in 0...bw)
         {
-            var columnPoints:Array<Int> = [];
-
+            var foundY = -1;
             for (y in 0...bh)
             {
-                if (pixelType(bmd, x, y) != SURFACE)
-                    continue;
-
-                if (y > 0 && pixelType(bmd, x, y - 1) == SURFACE)
-                    continue;
-
-                columnPoints.push(y);
-            }
-
-            var chosenY = -1;
-            for (cy in columnPoints)
-            {
-                if (prevY == -1 || Math.abs(cy - prevY) <= MAX_SURFACE_STEP)
+                if (pixelType(bmd, x, y) == SURFACE)
                 {
-                    chosenY = cy;
-                    break;
-                }
-            }
-
-            if (chosenY == -1)
-            {
-                if (points.length >= MIN_SURFACE_POINTS)
-                    flushSurface(points);
-                else
-                    for (p in points) p.dispose();
-
-                points = [];
-                prevY = -1;
-                continue;
-            }
-
-            points.push(Vec2.get(x, chosenY));
-            prevY = chosenY;
-        }
-
-        if (points.length >= MIN_SURFACE_POINTS)
-            flushSurface(points);
-        else
-            for (p in points) p.dispose();
-    }
-
-    static function buildWallRects(bmd:BitmapData):Void
-    {
-        var bw = bmd.width;
-        var bh = bmd.height;
-        var done = new haxe.ds.Vector<Bool>(bw * bh);
-
-        for (y in 0...bh)
-        {
-            var x = 0;
-
-            while (x < bw)
-            {
-                var idx = y * bw + x;
-
-                if (done[idx] || pixelType(bmd, x, y) != WALL)
-                {
-                    x++;
-                    continue;
-                }
-
-                var w = 0;
-                while (x + w < bw && !done[y * bw + x + w] && pixelType(bmd, x + w, y) == WALL)
-                    w++;
-
-                var h = 1;
-                var keep = true;
-
-                while (y + h < bh && keep)
-                {
-                    for (dx in 0...w)
+                    if ((y == 0 || pixelType(bmd, x, y - 1) == EMPTY) && hasSupportBelow(bmd, x, y))
                     {
-                        var ni = (y + h) * bw + x + dx;
-
-                        if (done[ni] || pixelType(bmd, x + dx, y + h) != WALL)
-                        {
-                            keep = false;
-                            break;
-                        }
+                        foundY = y;
+                        break;
                     }
+                }
+            }
 
-                    if (keep)
-                        h++;
+            if (foundY != -1)
+            {
+                if (points.length > 0)
+                {
+                    var last = points[points.length - 1];
+
+                    if (Math.abs(foundY - last.y) > 16)
+                    {
+                        if (points.length > 1)
+                            flushSurface(points);
+                        else
+                            for (p in points) p.dispose();
+
+                        points = [];
+                    }
                 }
 
-                for (dy in 0...h)
-                    for (dx in 0...w)
-                        done[(y + dy) * bw + x + dx] = true;
-
-                addStaticBox(x, y, w, h, new Material(0, 0.0, 0.0, 1, 0));
-
-                x += w;
+                points.push(Vec2.get(x, foundY));
+            }
+            else
+            {
+                if (points.length > 1)
+                {
+                    flushSurface(points);
+                    points = [];
+                }
             }
         }
+
+        if (points.length > 1)
+            flushSurface(points);
     }
 
     static function hasSupportBelow(bmd:BitmapData, x:Int, y:Int):Bool
@@ -271,29 +191,31 @@ class TVNapeWorldBuilder
         if (points.length < 2)
             return;
 
-        var i = 0;
+        var start = points[0];
+        var last = points[1];
 
-        while (i < points.length - 1)
+        var lastDX = sign(points[1].x - points[0].x);
+        var lastDY = sign(points[1].y - points[0].y);
+
+        for (i in 2...points.length)
         {
-            var a = points[i];
-            var endIndex = Std.int(Math.min(i + SURFACE_STEP, points.length - 1));
-            var b = points[endIndex];
+            var p = points[i];
 
-            var dx = b.x - a.x;
-            var dy = b.y - a.y;
+            var dx = sign(p.x - last.x);
+            var dy = sign(p.y - last.y);
 
-            if (Math.abs(dx) >= 1)
+            if (dx != lastDX || dy != lastDY)
             {
-                var slope = Math.abs(dy / dx);
-
-                if (slope <= 4)
-                    addSegmentPoly(a.x, a.y, b.x, b.y, 1.5);
-                else
-                    addStaticBox(Math.min(a.x, b.x) - 2, Math.min(a.y, b.y), 4, Math.abs(dy), new Material(0, 0.0, 0.0, 1, 0));
+                addSegmentPoly(start.x, start.y, last.x, last.y, 2);
+                start = last;
+                lastDX = dx;
+                lastDY = dy;
             }
 
-            i = endIndex;
+            last = p;
         }
+
+        addSegmentPoly(start.x, start.y, last.x, last.y, 2);
 
         for (p in points)
             p.dispose();
@@ -334,7 +256,6 @@ class TVNapeWorldBuilder
 
         var poly = new Polygon(verts);
         poly.material = new Material(0, 0.0, 0.0, 1, 0);
-        poly.cbTypes.add(SURFACE_CB);
 
         body.shapes.add(poly);
         body.space = FlxNapeSpace.space;

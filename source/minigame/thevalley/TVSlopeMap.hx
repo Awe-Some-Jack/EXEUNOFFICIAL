@@ -18,7 +18,7 @@ class TVSlopeMap
 	public static inline final C_SOLID_B:Int    = 0x010000;
 	public static inline final C_SOLID_C:Int    = 0xFF00F5;
 	public static inline final C_SOLID_D:Int    = 0xFFFE00;
-	public static inline final C_PLAT_A:Int     = 0x01FF03;
+	public static inline final C_PLAT_A:Int     = 0x00FF03;
 	public static inline final C_PLAT_B:Int     = 0x00F101;
 	public static inline final C_PLAT_C:Int     = 0x00FFEF;
 	public static inline final C_NARROW:Int     = 0xFF8F00;

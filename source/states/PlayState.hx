@@ -841,6 +841,14 @@ class PlayState extends MusicBeatState
 	public var videoCutscene:VideoSprite = null;
 	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false)
 	{
+		function endVideo()
+		{
+			callOnScripts('onVideoCompleted', [name]);
+			canPause = true;
+
+			if(!forMidSong) startAndEnd();
+		}
+
 		#if VIDEOS_ALLOWED
 		inCutscene = !forMidSong;
 		canPause = forMidSong;
@@ -860,12 +868,10 @@ class PlayState extends MusicBeatState
 		videoCutscene.canSkip = canSkip;
 		add(videoCutscene);
 
-		videoCutscene.onSkip = () -> {
-			callOnScripts('onVideoCompleted', [name]);
-			canPause = true;
-
-			if(!forMidSong) startAndEnd();
-		};
+		if (canSkip)
+			videoCutscene.onSkip = () -> endVideo();
+		else
+			videoCutscene.onEnd(() -> endVideo());
 
 		if(videoCutscene.loadVideo(filePath, loop ? [VideoSprite.ARG_LOOPING] : [])) {
 			videoCutscene.playDelayed();

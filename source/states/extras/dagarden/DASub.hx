@@ -10,29 +10,29 @@ import sys.FileSystem;
 
 class DASub extends FlxGroup
 {
-	static inline final BOX_SCALE:Float      = 0.34;
-	static inline final BOX_X:Float          = 565.0;
-	static inline final BOX_Y:Float          = 100.0;
-	static inline final BOX_CONTENT_X:Float  = 98.0;
-	static inline final BOX_CONTENT_Y:Float  = 1.0;
-	static inline final BOX_CONTENT_W:Float  = 1785.0;
-	static inline final SUB_IMG_W:Float      = 1833.0;
-	static inline final SUB_IMG_H:Float      = 247.0;
-	static inline final SUB_OFFSET_Y:Float   = -10.0;
-	static inline final INNER_PAD:Float      = 6.0;
-	static inline final TEXT_OFFSET_Y:Float  = -5.0;
-	static inline final FONT:String          = 'assets/fonts/vcr.ttf';
-	static inline final FONT_SIZE:Int        = 25;
-	static inline final WORD_SPACING:Float   = 4.0;
-	static inline final LIFT_AMOUNT:Float    = 4.0;
-	static inline final BG_ALPHA:Float       = 0.60;
-	static inline final BG_PAD_X:Float       = 10.0;
-	static inline final BG_PAD_Y:Float       = 4.0;
-	static inline final SLIDE_LEAD_MS:Float  = 1500.0;
-	static inline final SLIDE_IN_TIME:Float  = 0.45;
-	static inline final SLIDE_OUT_TIME:Float = 0.35;
-	static inline final HIDDEN_OFFSET:Float  = -120.0;
-	static inline final LINGER_MS:Float      = 1500.0;
+	static inline var BOX_SCALE:Float      = 0.34;
+	static inline var BOX_X:Float          = 565.0;
+	static inline var BOX_Y:Float          = 100.0;
+	static inline var BOX_CONTENT_X:Float  = 98.0;
+	static inline var BOX_CONTENT_Y:Float  = 1.0;
+	static inline var BOX_CONTENT_W:Float  = 1785.0;
+	static inline var SUB_IMG_W:Float      = 1833.0;
+	static inline var SUB_IMG_H:Float      = 247.0;
+	static inline var SUB_OFFSET_Y:Float   = -10.0;
+	static inline var INNER_PAD:Float      = 6.0;
+	static inline var TEXT_OFFSET_Y:Float  = -5.0;
+	static inline var FONT:String          = 'assets/fonts/vcr.ttf';
+	static inline var FONT_SIZE:Int        = 25;
+	static inline var WORD_SPACING:Float   = 4.0;
+	static inline var LIFT_AMOUNT:Float    = 4.0;
+	static inline var BG_ALPHA:Float       = 0.60;
+	static inline var BG_PAD_X:Float       = 10.0;
+	static inline var BG_PAD_Y:Float       = 4.0;
+	static inline var SLIDE_LEAD_MS:Float  = 1500.0;
+	static inline var SLIDE_IN_TIME:Float  = 0.45;
+	static inline var SLIDE_OUT_TIME:Float = 0.35;
+	static inline var HIDDEN_OFFSET:Float  = -120.0;
+	static inline var LINGER_MS:Float      = 1500.0;
 
 	public var sprite:FlxSprite;
 

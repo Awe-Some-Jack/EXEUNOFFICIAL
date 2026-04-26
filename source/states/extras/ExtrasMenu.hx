@@ -16,22 +16,22 @@ import backend.Paths;
 
 class ExtrasMenu extends MusicBeatState
 {
-    private static inline final MENU_START_Y:Int = 180;
-    private static inline final MENU_SPACING:Int = 58;
-    private static inline final MENU_START_X:Int = 50;
-    private static inline final MENU_FONT_SIZE:Int = 44;
+    private static inline var MENU_START_Y:Int = 180;
+    private static inline var MENU_SPACING:Int = 58;
+    private static inline var MENU_START_X:Int = 50;
+    private static inline var MENU_FONT_SIZE:Int = 44;
 
-    private static inline final DESCRIPTION_Y:Int = 675;
-    private static inline final DESCRIPTION_SCROLL_SPEED:Int = -30;
-    private static inline final DESCRIPTION_FONT_SIZE:Int = 28;
+    private static inline var DESCRIPTION_Y:Int = 675;
+    private static inline var DESCRIPTION_SCROLL_SPEED:Int = -30;
+    private static inline var DESCRIPTION_FONT_SIZE:Int = 28;
 
-    private static inline final FADE_IN_DELAY:Float = 2.0;
-    private static inline final FADE_IN_DURATION:Float = 1.0;
-    private static inline final SELECTION_TWEEN_DURATION:Float = 0.2;
-    private static inline final MENU_SCALE_DURATION:Float = 0.2;
+    private static inline var FADE_IN_DELAY:Float = 2.0;
+    private static inline var FADE_IN_DURATION:Float = 1.0;
+    private static inline var SELECTION_TWEEN_DURATION:Float = 0.2;
+    private static inline var MENU_SCALE_DURATION:Float = 0.2;
 
-    private static inline final DISCO_ROTATION_SPEED:Float = 3.0;
-    private static inline final BOX_ANIMATION_DURATION:Float = 0.5;
+    private static inline var DISCO_ROTATION_SPEED:Float = 3.0;
+    private static inline var BOX_ANIMATION_DURATION:Float = 0.5;
 
     private var menuOptions:Array<String> = [
         "GALLERY",

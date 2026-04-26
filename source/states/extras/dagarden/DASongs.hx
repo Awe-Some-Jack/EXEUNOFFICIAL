@@ -14,12 +14,12 @@ import sys.FileSystem;
 
 class DASongs extends FlxGroup
 {
-	static inline final BOX_X:Float         = 86.0;
-	static inline final BOX_Y:Float         = 116.0;
-	static inline final BOX_SPACING:Float   = 120.0;
-	static inline final BOX_SCALE:Float     = 0.308;
-	static inline final SELECT_OFFSET:Float = 18.0;
-	static inline final SCROLL_LERP:Float   = 0.15;
+	static inline var BOX_X:Float         = 86.0;
+	static inline var BOX_Y:Float         = 116.0;
+	static inline var BOX_SPACING:Float   = 120.0;
+	static inline var BOX_SCALE:Float     = 0.308;
+	static inline var SELECT_OFFSET:Float = 18.0;
+	static inline var SCROLL_LERP:Float   = 0.15;
 
 	public var songList:Array<String>           = [];
 	public var songMods:Array<String>           = [];

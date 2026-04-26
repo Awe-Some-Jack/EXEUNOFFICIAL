@@ -23,17 +23,17 @@ class BIOSShowcase
 	var circleBig:FlxShapeCircle;
 	var variantDots:FlxText;
 
-	static inline final TITLE_X:Int  = 460;
-	static inline final TITLE_Y:Int  = 34;
-	static inline final TITLE_W:Int  = 328;
-	static inline final TITLE_H:Int  = 100;
+	static inline var TITLE_X:Int  = 460;
+	static inline var TITLE_Y:Int  = 34;
+	static inline var TITLE_W:Int  = 328;
+	static inline var TITLE_H:Int  = 100;
 
-	static inline final ARTIST_X:Int = 471;
-	static inline final ARTIST_Y:Int = 588;
-	static inline final ARTIST_W:Int = 332;
-	static inline final ARTIST_H:Int = 100;
-	static inline final ARTIST_MAX_SIZE:Int = 40;
-	static inline final ARTIST_MIN_SIZE:Int = 14;
+	static inline var ARTIST_X:Int = 471;
+	static inline var ARTIST_Y:Int = 588;
+	static inline var ARTIST_W:Int = 332;
+	static inline var ARTIST_H:Int = 100;
+	static inline var ARTIST_MAX_SIZE:Int = 40;
+	static inline var ARTIST_MIN_SIZE:Int = 14;
 
 	var charBiosSprite:FlxSprite;
 
@@ -47,8 +47,8 @@ class BIOSShowcase
 	var _aw:Float = ARTIST_W;
 	var _ah:Float = ARTIST_H;
 
-	static inline final ARTIST_CYCLE_TIME:Float = 5.0;
-	static inline final ARTIST_FADE_TIME:Float  = 0.5;
+	static inline var ARTIST_CYCLE_TIME:Float = 5.0;
+	static inline var ARTIST_FADE_TIME:Float  = 0.5;
 	var _artists:Array<String> = [];
 	var _artistIdx:Int   = 0;
 	var _artistTimer:Float = 0;

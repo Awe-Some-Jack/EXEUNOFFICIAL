@@ -17,8 +17,8 @@ class BIOSInfo
 
 	var scrollTrack:FlxSprite;
 	var scrollThumb:FlxSprite;
-	static inline final SCROLL_W:Int    = 8;
-	static inline final SCROLL_PAD:Int  = 10; 
+	static inline var SCROLL_W:Int    = 8;
+	static inline var SCROLL_PAD:Int  = 10; 
 
 	var moveCounter:Float = 0;
 	var moveTween:FlxTween;
@@ -29,9 +29,9 @@ class BIOSInfo
 	public var boxW:Int   = 407;
 	public var boxH:Int   = 642;
 
-	static inline final PAD_X:Int     = 16;
-	static inline final PAD_TOP:Int   = 13;
-	static inline final PAD_RIGHT:Int = 80;
+	static inline var PAD_X:Int     = 16;
+	static inline var PAD_TOP:Int   = 13;
+	static inline var PAD_RIGHT:Int = 80;
 
 	public function new(parent:BIOS)
 	{

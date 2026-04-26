@@ -31,17 +31,17 @@ class BIOSCharacter
 	var listScrollTrack:FlxSprite;
 	var listScrollThumb:FlxSprite;
 
-	static inline final LIST_ITEM_H:Float   = 44;
-	static inline final LIST_CENTER_Y:Float = 380;
-	static inline final LIST_X:Float        = 52;
-	static inline final LIST_FONT_SIZE:Int  = 34;
+	static inline var LIST_ITEM_H:Float   = 44;
+	static inline var LIST_CENTER_Y:Float = 380;
+	static inline var LIST_X:Float        = 52;
+	static inline var LIST_FONT_SIZE:Int  = 34;
 
-	static inline final LSB_W:Int    = 6;
-	static inline final LSB_X:Float  = 10;
-	static inline final LSB_Y:Float  = 138;
-	static inline final LSB_H:Float  = 484;
+	static inline var LSB_W:Int    = 6;
+	static inline var LSB_X:Float  = 10;
+	static inline var LSB_Y:Float  = 138;
+	static inline var LSB_H:Float  = 484;
 
-	static inline final BIO_DIR = 'assets/exe/extras/bios/characters';
+	static inline var BIO_DIR = 'assets/exe/extras/bios/characters';
 
 	var bios:BIOS;
 

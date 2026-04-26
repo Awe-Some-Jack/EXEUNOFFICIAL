@@ -2696,15 +2696,13 @@ class PlayState extends MusicBeatState
 		for (i in 0...separatedScore.length)
 		{
 			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiFolder + 'num' + Std.parseInt(separatedScore.charAt(i)) + uiPostfix));
-			if (!PlayState.isPixelStage) numScore.setGraphicSize(Std.int(numScore.width * 0.6));
-			else numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
+			if (!PlayState.isPixelStage) numScore.setGraphicSize(Std.int(numScore.width * 0.6 * 1.1));
+			else numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom * 1.1));
 			numScore.updateHitbox();
-			var numScorescale:Float = numScore.scale.x;
-			numScore.scale.set(numScorescale * 1.1, numScorescale * 1.1);
 			numScore.visible = !ClientPrefs.data.hideHud;
 			numScore.x = (FlxG.width / 2) - (((numScore.width - 10) * separatedScore.length) / 2) + (daLoop * (numScore.width - 10)); numScore.x -= 5;
 			numScore.y = (ClientPrefs.data.downScroll ? (FlxG.height - numScore.height - 50) : 50);
-			FlxTween.tween(numScore.scale, {x: numScorescale, y: numScorescale}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
+			FlxTween.tween(numScore.scale, {x: (PlayState.isPixelStage ? daPixelZoom : 0.6), y: (PlayState.isPixelStage ? daPixelZoom : 0.6)}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
 			numScore.antialiasing = antialias;
 
 			//if (combo >= 10 || combo == 0)
@@ -2982,8 +2980,9 @@ class PlayState extends MusicBeatState
 		// GUITAR HERO SUSTAIN CHECK LOL!!!!
 		if (note != null && guitarHeroSustains && note.parent == null) {
 			if(note.tail.length > 0) {
-				note.alpha = 0.35;
+				note.alpha = 0.3;
 				for(childNote in note.tail) {
+					childNote.copyAlpha = false;
 					childNote.alpha = note.alpha;
 					childNote.missed = true;
 					childNote.canBeHit = false;
@@ -3008,7 +3007,10 @@ class PlayState extends MusicBeatState
 
 			var parentNote:Note = note.parent;
 			if (parentNote.wasGoodHit && parentNote.tail.length > 0) {
+				parentNote.missed = true;
 				for (child in parentNote.tail) if (child != note) {
+					child.copyAlpha = false;
+					child.alpha = 0.3;
 					child.missed = true;
 					child.canBeHit = false;
 					child.ignoreNote = true;

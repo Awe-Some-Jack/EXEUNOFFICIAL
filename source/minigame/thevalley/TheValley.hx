@@ -9,6 +9,11 @@ import flixel.util.FlxColor;
 
 import flixel.addons.nape.FlxNapeSpace;
 
+import nape.callbacks.PreCallback;
+import nape.callbacks.PreFlag;
+import nape.callbacks.PreListener;
+import nape.callbacks.InteractionType;
+
 import minigame.thevalley.TVPlayer;
 import minigame.thevalley.TVHitboxMap;
 import minigame.thevalley.TVNapeWorldBuilder;
@@ -85,6 +90,13 @@ class TheValley extends MusicBeatState
 
 		player = new TVPlayer(SPAWN_X, SPAWN_Y);
 		add(player);
+
+		FlxNapeSpace.space.listeners.add(new PreListener(
+			InteractionType.COLLISION,
+			TVPlayer.PLAYER_CB,
+			TVNapeWorldBuilder.SURFACE_CB,
+			_oneWaySurface
+		));
 
 		FlxG.camera.follow(player, FlxCameraFollowStyle.LOCKON, 0.10);
 		FlxG.camera.setScrollBoundsRect(0, 0, mapSprite.width, mapSprite.height, true);
@@ -173,6 +185,29 @@ class TheValley extends MusicBeatState
 		player.touchingFloor = false;
 		player.coyoteTimer = 0;
 		player.jumpBufTimer = 0;
+	}
+
+	function _oneWaySurface(cb:PreCallback):PreFlag
+	{
+		final arb = cb.arbiter.collisionArbiter;
+		final normal = arb.normal;
+
+		final playerBody = player.body;
+		final other = (arb.body1 == playerBody) ? arb.body2 : arb.body1;
+
+		final ny = (arb.body1 == playerBody) ? -normal.y : normal.y;
+
+		final playerBottom = playerBody.position.y + player.height * 0.5;
+		final surfaceY = other.position.y;
+
+		if (playerBottom <= surfaceY + 6
+			&& ny < -0.15
+			&& (playerBody.velocity.y >= -260 || player.isGrounded || player.coyoteTimer > 0))
+		{
+			return PreFlag.ACCEPT;
+		}
+
+		return PreFlag.IGNORE;
 	}
 
 	function _updateDebug():Void

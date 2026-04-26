@@ -8,22 +8,22 @@ class TVSlopeMap
 	public var width:Int  = 0;
 	public var height:Int = 0;
 
-	public static inline var T_EMPTY:Int        = 0;
-	public static inline var T_SOLID:Int        = 1;
-	public static inline var T_PLATFORM:Int     = 2;
-	public static inline var T_NARROW_SLOPE:Int = 3;
-	public static inline var T_LAUNCHPAD:Int    = 4;
+	public static inline final T_EMPTY:Int        = 0;
+	public static inline final T_SOLID:Int        = 1;
+	public static inline final T_PLATFORM:Int     = 2;
+	public static inline final T_NARROW_SLOPE:Int = 3;
+	public static inline final T_LAUNCHPAD:Int    = 4;
 
-	public static inline var C_SOLID_A:Int    = 0xFF0000;
-	public static inline var C_SOLID_B:Int    = 0x010000;
-	public static inline var C_SOLID_C:Int    = 0xFF00F5;
-	public static inline var C_SOLID_D:Int    = 0xFFFE00;
-	public static inline var C_PLAT_A:Int     = 0x00FF03;
-	public static inline var C_PLAT_B:Int     = 0x00F101;
-	public static inline var C_PLAT_C:Int     = 0x00FFEF;
-	public static inline var C_NARROW:Int     = 0xFF8F00;
-	public static inline var C_LAUNCH_A:Int   = 0x000FFF;
-	public static inline var C_LAUNCH_B:Int   = 0x0001FD;
+	public static inline final C_SOLID_A:Int    = 0xFF0000;
+	public static inline final C_SOLID_B:Int    = 0x010000;
+	public static inline final C_SOLID_C:Int    = 0xFF00F5;
+	public static inline final C_SOLID_D:Int    = 0xFFFE00;
+	public static inline final C_PLAT_A:Int     = 0x00FF03;
+	public static inline final C_PLAT_B:Int     = 0x00F101;
+	public static inline final C_PLAT_C:Int     = 0x00FFEF;
+	public static inline final C_NARROW:Int     = 0xFF8F00;
+	public static inline final C_LAUNCH_A:Int   = 0x000FFF;
+	public static inline final C_LAUNCH_B:Int   = 0x0001FD;
 
 	public function new() {}
 
@@ -61,9 +61,9 @@ class TVSlopeMap
 	public inline function isNarrowSlopeAt(x:Int, y:Int):Bool
 		return typeAt(x, y) == T_NARROW_SLOPE;
 
-	public static inline var MISS_DIST:Int = 0x7FFF;
-	public static inline var SCAN_UP:Int   = 6;
-	public static inline var WALL_SCAN:Int = 3;
+	public static inline final MISS_DIST:Int = 0x7FFF;
+	public static inline final SCAN_UP:Int   = 6;
+	public static inline final WALL_SCAN:Int = 3;
 
 	public function findFloor(px:Int, footY:Int, scanDown:Int, outAngle:Array<Float>):Int
 	{

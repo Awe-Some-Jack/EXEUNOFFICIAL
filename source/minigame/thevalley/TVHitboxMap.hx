@@ -69,12 +69,14 @@ class TVHitboxMap
 
 	function _addTile(x:Int, y:Int, w:Int, h:Int, type:Int):Void
 	{
+		if (w <= 0 || h <= 0)
+			return;
+
 		var tile = new FlxSprite(x, y);
-		tile.setGraphicSize(w, h);
-		tile.updateHitbox();
-		tile.visible   = false;
+		tile.makeGraphic(w, h, 0x00000000);
+		tile.visible = false;
 		tile.immovable = true;
-		tile.moves     = false;
+		tile.moves = false;
 
 		if (type == TVSlopeMap.T_SOLID)
 		{

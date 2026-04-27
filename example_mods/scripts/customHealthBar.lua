@@ -23,6 +23,44 @@ local healthProps = {
     }
 }
 
+
+local healthBarsBG = {
+    ["hud_endless-us"] = {
+        songs = {'endless-us'},
+        x = - 190,
+        y = - 75
+    },
+    ["hud_fakebaby"] = {
+        songs = {'fakebaby'},
+        x = - 190,
+        y = - 75
+    },
+    ["hud_lookalike"] = {
+        songs = {'yourself'},
+        x = - 190,
+        y = - 75
+    },
+    ["hud_chaos"] = {
+        songs = {'chaos'},
+        x = - 190,
+        y = - 75
+    },
+    ["hud_too-fest"] = {
+        songs = {'too-fest'},
+        x = - 190,
+        y = - 60
+    },
+    ["hud_lordx"] = {
+        songs = {'cycles', 'hellbent', 'fate', 'gotta-go'},
+        x = - 190,
+        y = - 75
+    },
+    ["hud_faker"] = {
+        songs = {'faker', 'black-sun', 'godspeed'},
+        x = - 190,
+        y = - 80
+    },
+}
 local blacklistenedSongs = {'prey', 'fight-or-flight', 'godspeed', 'forestall-desire', 'deception', 'fatality'}
 
 local flipped = false
@@ -73,7 +111,7 @@ function onCreatePost()
     scaleObject('iconOpp', healthProps.opponentIcon.scale, healthProps.opponentIcon.scale, false)
 
     if not healthProps.healthBar.hideScore then
-        makeLuaText('exeScoreTxt', 'Score: 0 | Misses: 0', screenWidth / 0.75, 0, getProperty('hbBG.y') + (downscroll and 30 or -30))
+        makeLuaText('exeScoreTxt', 'Score: 0 | Misses: 0', screenWidth / 0.75, 0, getProperty('hbBG.y') + (downscroll and 40 or -40))
         setTextSize('exeScoreTxt', 22)
         setTextBorder('exeScoreTxt', 1, '000000')
         screenCenter('exeScoreTxt', 'x')
@@ -99,6 +137,31 @@ function onCreatePost()
         setProperty('hbHealth2.color', getColorFromHex(getHealthColor((flipped and 'boyfriend' or 'dad'))))
         setProperty('iconBF.flipX', not getProperty('iconBF.flipX'))
         setProperty('iconOpp.flipX', not getProperty('iconOpp.flipX'))
+    end
+
+    local healthPos = {getProperty('healthBar.x'), getProperty('healthBar.y')}
+    local found = false
+    for hud, songList in pairs(healthBarsBG) do
+        for _, name in ipairs(songList.songs) do
+            if name == songPath then
+                found = true
+                makeLuaSprite('healthBG', 'hud/'..hud, healthPos[1] + songList.x, healthPos[2] + songList.y)
+                setObjectCamera('healthBG', 'camHUD')
+                setObjectOrder('healthBG', getObjectOrder('separatorHealth') + 1)
+                scaleObject('healthBG', 0.32, 0.3)
+                addLuaSprite('healthBG')
+                break
+            end
+            if found then break end
+        end
+    end
+
+    if not found then
+        makeLuaSprite('healthBG', 'hud/hud_general', healthPos[1] - 190, healthPos[2] - 65)
+        setObjectCamera('healthBG', 'camHUD')
+        setObjectOrder('healthBG', getObjectOrder('separatorHealth') + 1)
+        scaleObject('healthBG', 0.32, 0.3)
+        addLuaSprite('healthBG')
     end
 end
 
@@ -139,6 +202,8 @@ function onUpdatePost(e)
 	setProperty('iconOpp.animation.curAnim.curFrame', (songPath == 'black-sun' and (getHealth() < 0.4 and 1 or 0) or (getHealth() > 1.6 and 1 or 0)))
     local mult = lerp(healthProps.opponentIcon.scale, getProperty('iconOpp.scale.x'), math.exp(-e * 9 * playbackRate)) scaleObject('iconOpp', mult, mult, false)
     local mult = lerp(healthProps.playerIcon.scale, getProperty('iconBF.scale.x'), math.exp(-e * 9 * playbackRate)) scaleObject('iconBF', mult, mult, false)
+
+    getProperty('healthBG.alpha', getProperty('hbBG.alpha'))
 end
 
 function onBeatHit()

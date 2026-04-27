@@ -41,12 +41,6 @@ function onCreatePost()
 	makeGraphic('blackbgxd', 3500, 1500, '000000')
 	addLuaSprite('blackbgxd')
 	setProperty('blackbgxd.alpha', 0)
-
-	makeLuaSprite('healthBGFaker', 'faker/hud_faker', getProperty('healthBar.x') - 190, getProperty('healthBar.y') - 80)
-	setObjectCamera('healthBGFaker', 'camHUD')
-	setObjectOrder('healthBGFaker', getObjectOrder('exeScoreTxt'))
-	scaleObject('healthBGFaker', 0.32, 0.3)
-	addLuaSprite('healthBGFaker', false)
 end
 
 function onUpdatePost(e)

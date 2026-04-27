@@ -11,7 +11,6 @@ import flixel.tweens.FlxEase;
 import flixel.util.FlxTimer;
 import flixel.addons.display.FlxBackdrop;
 import states.EXEMenu;
-import states.extras.sebas.SebasMiBeba;
 import backend.Paths;
 
 class ExtrasMenu extends MusicBeatState
@@ -39,8 +38,7 @@ class ExtrasMenu extends MusicBeatState
         "D.A GARDEN",
         "CUTSCENES",
         "ACHIEVEMENTS",
-        "CREDITS",
-        "SEBASMI BEBA"
+        "CREDITS"
     ];
 
     private var menuDescriptions:Array<String> = [
@@ -49,11 +47,8 @@ class ExtrasMenu extends MusicBeatState
         'Listen to the great music we have in store, composed by awesome composers. It took them a lot of time to give you something of good quality!',
         'Here you can rewatch the amazing cutscenes! Pretty simple right?',
         'Check out the achievements you can unlock, or the ones you already have!',
-        'Credits to all the people who made this mod possible!',
-        'Sebasmi beba <3'
+        'Credits to all the people who made this mod possible!'
     ];
-
-    private var sebasUnlocked:Bool = false;
 
     private var menuItems:Array<FlxText> = [];
     private var extrasTextBackdrops:Array<FlxBackdrop> = [];
@@ -61,9 +56,6 @@ class ExtrasMenu extends MusicBeatState
     private var curSelected:Int = 0;
     private var canMove:Bool = true;
     private var cooldownTimer:Float = 0;
-
-    private static final SEBAS_CODE:Array<flixel.input.keyboard.FlxKey> = [S, E, B, A, S];
-    private var sebasProgress:Int = 0;
 
     private var selectBox:FlxSprite;
     private var disco:FlxSprite;
@@ -198,7 +190,6 @@ class ExtrasMenu extends MusicBeatState
             menuText.antialiasing = ClientPrefs.data.antialiasing;
             menuText.pixelPerfectRender = false;
             menuText.ID = i;
-            if (i == menuOptions.length - 1) menuText.visible = false;
             add(menuText);
             menuItems.push(menuText);
         }
@@ -281,31 +272,6 @@ class ExtrasMenu extends MusicBeatState
 
         if (Controls.instance.BACK)
             exitToMainMenu();
-
-        if (FlxG.keys.checkStatus(SEBAS_CODE[sebasProgress], JUST_PRESSED))
-        {
-            sebasProgress++;
-            if (sebasProgress >= SEBAS_CODE.length)
-            {
-                sebasProgress = 0;
-                if (!sebasUnlocked)
-                {
-                    sebasUnlocked = true;
-                    menuItems[menuOptions.length - 1].visible = true;
-                    FlxG.sound.play(Paths.sound('confirmMenu'));
-                    changeSelection(0);
-                    new flixel.util.FlxTimer().start(0.1, function(_) changeSelection(menuOptions.length - 1 - curSelected));
-                }
-                else
-                {
-                    changeSelection(menuOptions.length - 1 - curSelected);
-                }
-            }
-        }
-        else if (FlxG.keys.justReleased.ANY)
-        {
-            sebasProgress = 0;
-        }
     }
 
     private function exitToMainMenu():Void
@@ -320,7 +286,7 @@ class ExtrasMenu extends MusicBeatState
     {
         curSelected += change;
 
-        var maxIdx = sebasUnlocked ? menuOptions.length - 1 : menuOptions.length - 2;
+        var maxIdx = menuOptions.length - 1;
         if (curSelected < 0)
             curSelected = maxIdx;
         if (curSelected > maxIdx)
@@ -509,9 +475,6 @@ class ExtrasMenu extends MusicBeatState
 
             case "CREDITS":
                 trace("Credits selected");
-
-            case "SEBASMI BEBA":
-                FlxG.switchState(new SebasMiBeba());
         }
 
         canMove = true;

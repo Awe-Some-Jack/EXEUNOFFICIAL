@@ -14,10 +14,10 @@ local function applyColorTheme()
 end
 
 function onCreatePost()
-	makeLuaSprite('bg', 'chocolate/bg/bg', -1200, -800)
+	makeLuaSprite('bg', 'bg/bg', -1200, -800)
 	addLuaSprite('bg')
 
-	makeLuaSprite('floor', 'chocolate/bg/floor', -650, -650)
+	makeLuaSprite('floor', 'bg/floor', -650, -650)
 	scaleObject('floor', 0.9, 0.9)
 	addLuaSprite('floor')
 
@@ -26,14 +26,14 @@ function onCreatePost()
 		{name = 'speakerR', x = 1300, flipX = true},
 	}
 	for _, sp in ipairs(speakerData) do
-		makeAnimatedLuaSprite(sp.name, 'chocolate/bg/speaker', sp.x, -260)
+		makeAnimatedLuaSprite(sp.name, 'bg/speaker', sp.x, -260)
 		addAnimationByPrefix(sp.name, 'idle', 'dance lol', 24, false)
 		scaleObject(sp.name, 0.9, 0.9)
 		if sp.flipX then setProperty(sp.name .. '.flipX', true) end
 		addLuaSprite(sp.name)
 	end
 
-	makeAnimatedLuaSprite('disco', 'chocolate/bg/disco-ball', 650, -800)
+	makeAnimatedLuaSprite('disco', 'bg/disco-ball', 650, -800)
 	addAnimationByPrefix('disco', 'idle', 'dance', 24, true)
 	addOffset('disco', 'idle', 0, 0)
 	addAnimationByPrefix('disco', 'drop', 'drop', 24, false)
@@ -44,12 +44,12 @@ function onCreatePost()
 
 	local iconNames = {'cereal', 'milk'}
 	for i = 1, 2 do
-		makeLuaSprite('secondbg' .. i, 'chocolate/bg/secondbg/bg' .. i)
+		makeLuaSprite('secondbg' .. i, 'chocolate/bg/bg' .. i)
 		addLuaSprite('secondbg' .. i)
 		setScrollFactor('secondbg' .. i, 0, 0)
 		setProperty('secondbg' .. i .. '.alpha', 0)
 
-		makeLuaSprite('icon' .. i, 'chocolate/bg/secondbg/' .. iconNames[i])
+		makeLuaSprite('icon' .. i, 'chocolate/bg/' .. iconNames[i])
 		addLuaSprite('icon' .. i)
 		setScrollFactor('icon' .. i, 0, 0)
 		setProperty('icon' .. i .. '.visible', i == 1)
@@ -57,7 +57,7 @@ function onCreatePost()
 	end
 	setProperty('secondbg2.visible', false)
 
-	makeLuaSprite('floot', 'chocolate/bg/secondbg/floot', -420, -420)
+	makeLuaSprite('floot', 'chocolate/bg/floot', -420, -420)
 	scaleObject('floot', 2, 2)
 	addLuaSprite('floot')
 	setProperty('floot.alpha', 0)

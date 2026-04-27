@@ -14,6 +14,7 @@ import flixel.util.FlxTimer;
 import openfl.utils.Assets as AssetPaths;
 import backend.Paths;
 import haxe.Json;
+import states.extras.sebas.SebasMiBeba;
 
 import states.substates.SoundTestSubState;
 
@@ -370,9 +371,13 @@ class SoundTest extends MusicBeatState
 						if (code.isWeek) loadSong(code.weekName, true);
 						else
 						{
-							persistentUpdate = false;
-							persistentDraw = true;
-							openSubState(new SoundTestSubState((code.type.toLowerCase() == 'video'), code.path));
+							if (code.type == 'sebas')  FlxG.switchState(new SebasMiBeba());
+							else
+							{
+								persistentUpdate = false;
+								persistentDraw = true;
+								openSubState(new SoundTestSubState((code.type.toLowerCase() == 'video'), code.path));
+							}
 						}
 
 						FlxG.sound.music.fadeOut(0.3);

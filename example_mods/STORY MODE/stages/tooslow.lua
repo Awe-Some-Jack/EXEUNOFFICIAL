@@ -54,9 +54,15 @@ function onCreate()
 	end
 
 	setScrollFactor('gfGroup', 1, 1)
-	if lowQuality then
-		setProperty('gfGroup.visible', false)
-	end
+	if lowQuality then setProperty('gfGroup.visible', false) end
+end
+
+function onCreatePost()
+	makeLuaSprite('healthBGTooSlow', 'hud/hud_too-slow', getProperty('healthBar.x') - 190, getProperty('healthBar.y') - 65)
+	setObjectCamera('healthBGTooSlow', 'camHUD')
+	setObjectOrder('healthBGTooSlow', getObjectOrder('exeScoreTxt') + 1)
+	scaleObject('healthBGTooSlow', 0.32, 0.3)
+	addLuaSprite('healthBGTooSlow')
 end
 
 -- STAGE EVENTS --
@@ -119,6 +125,8 @@ function onUpdatePost(elapsed)
 		setShaderFloat('wave', 'amount', getProperty('wave.x'))
 		setShaderFloat('bw', 'grayness', getProperty('bw.x'))
 	end
+
+	setProperty('healthBGTooSlow.alpha', getProperty('hbBG.alpha'))
 end
 
 function onTweenCompleted(tag)

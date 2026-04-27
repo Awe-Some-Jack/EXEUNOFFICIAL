@@ -115,6 +115,14 @@ function onCreate()
     end
 end
 
+function onCreatePost()
+	makeLuaSprite('healthBGYourself', 'hud/hud_lookalike', getProperty('healthBar.x') - 190, getProperty('healthBar.y') - 75)
+	setObjectCamera('healthBGYourself', 'camHUD')
+	setObjectOrder('healthBGYourself', getObjectOrder('separatorHealth') + 1)
+	scaleObject('healthBGYourself', 0.32, 0.3)
+	addLuaSprite('healthBGYourself')
+end
+
 function onUpdatePost()
     playAnim('sillybg1', getProperty('dad.animation.curAnim.name'):gsub('-alt', ''), true)
 	setProperty('sillybg1.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
@@ -127,6 +135,8 @@ function onUpdatePost()
 
     playAnim('sillybg3', getProperty('dad.animation.curAnim.name'):gsub('-alt', '')..'-alt', true)
 	setProperty('sillybg3.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
+
+    setProperty('healthBGYourself.alpha', getProperty('hbBG.alpha'))
 end
 
 function onEvent(eventName, value1, value2)

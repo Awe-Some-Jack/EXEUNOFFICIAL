@@ -1,76 +1,76 @@
 {
 	"animations": [
 		{
-			"offsets": [1, 0],
 			"loop": true,
-			"fps": 24,
+			"offsets": [1, 0],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [209, 5],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-33, -44],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [32, 98],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [-6, 7],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-6, 7],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [10, -168],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "adown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-50, 55],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "aup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-10, -10],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "aright",
+			"indices": []
 		},
 		{
 			"offsets": [-20, 17],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT-alt",
-			"indices": [],
-			"name": "aleft"
-		},
-		{
-			"offsets": [10, -168],
 			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN-alt",
-			"indices": [],
-			"name": "adown"
-		},
-		{
-			"offsets": [-50, 55],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP-alt",
-			"indices": [],
-			"name": "aup"
-		},
-		{
-			"offsets": [-10, -10],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT-alt",
-			"indices": [],
-			"name": "aright"
+			"name": "2up"
 		}
 	],
 	"vocals_file": "",

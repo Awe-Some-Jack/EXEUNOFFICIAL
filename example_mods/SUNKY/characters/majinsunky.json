@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"offsets": [18, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [29, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
+		},
+		{
+			"offsets": [27, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [8, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "idle"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "vanilla/tv/majin-tv",
+	"position": [-140, 260],
+	"healthicon": "sunkympeg",
+	"flip_x": false,
+	"healthbar_colors": [38, 72, 251],
+	"camera_position": [90, 80],
+	"sing_duration": 5,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

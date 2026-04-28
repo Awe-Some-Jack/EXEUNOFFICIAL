@@ -317,7 +317,7 @@ class SebasMiBeba extends MusicBeatState
 		if (Controls.instance.BACK)
 		{
 			if (FlxG.sound.music != null) FlxG.sound.music.stop();
-			FlxG.switchState(new states.extras.ExtrasMenu());
+			FlxG.switchState(new states.SoundTest());
 		}
 	}
 

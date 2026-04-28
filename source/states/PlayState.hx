@@ -337,10 +337,20 @@ class PlayState extends MusicBeatState
 		#end
 
 		switch(Paths.formatToSongPath(SONG.song)){
+			case 'yourself':
+				appName = "Friday Night Funkin': Vs Youself";
+			case 'cycles', 'hellbent', 'fate', 'gotta-go':
+				appName = "Friday Night Funkin': Vs Soulless PC Sonic";
+			case 'sunshine':
+				appName = "Sonic R";
 			case 'chocolate-milk':
 				appName = "Friday Night Funkin': Vs Sunky The";
 			case 'vanilla-milk':
-				appName = "Friday Night Funkin': Vs Sunky.MPEG The";
+				appName = "Friday Night Funkin': Vs Sunky.MPEG";
+			case 'too-fest':
+				appName = "Friday Night Funkin': Vs Sanic";
+			case 'expulsion':
+				appName = "Sonic's Schoolhouse";
 			default:
 				appName = "Friday Night Funkin': Vs Sonic.EXE";
 		}
@@ -2677,32 +2687,25 @@ class PlayState extends MusicBeatState
 		}
 
 		rating.loadGraphic(Paths.image(uiFolder + daRating.image + uiPostfix));
-		if (!PlayState.isPixelStage) rating.setGraphicSize(Std.int(rating.width * 0.6));
-		else rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.85));
-		var ratingscale:Float = rating.scale.x;
 		rating.visible = (!ClientPrefs.data.hideHud && showRating);
+		rating.x = (FlxG.width / 2) - (PlayState.isPixelStage ? 29 : 165);
+		rating.y = (ClientPrefs.data.downScroll ? (FlxG.height - (PlayState.isPixelStage ? 90 : 141) - 60) : 60);
+		if (!PlayState.isPixelStage) rating.setGraphicSize(Std.int(rating.width * 0.6 * 1.1));
+		else rating.setGraphicSize(Std.int(rating.width * 4 * 1.1));
+		FlxTween.tween(rating.scale, {x: (PlayState.isPixelStage ? 4 : 0.6), y: (PlayState.isPixelStage ? 4 : 0.6)}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
 		rating.antialiasing = antialias;
-		rating.scale.set(ratingscale * 1.1, ratingscale * 1.1);
-		rating.updateHitbox();
-		rating.screenCenter(X); rating.x -= 5;
-		rating.y = (ClientPrefs.data.downScroll ? (FlxG.height - rating.height - 120) : 120);
-		FlxTween.tween(rating.scale, {x: ratingscale, y: ratingscale}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
 		comboGroup.add(rating);
-
-		var daLoop:Int = 0;
-		var xThing:Float = 0;
 
 		var separatedScore:String = Std.string(combo).lpad('0', 3);
 		for (i in 0...separatedScore.length)
 		{
 			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiFolder + 'num' + Std.parseInt(separatedScore.charAt(i)) + uiPostfix));
-			if (!PlayState.isPixelStage) numScore.setGraphicSize(Std.int(numScore.width * 0.6 * 1.1));
-			else numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom * 1.1));
-			numScore.updateHitbox();
 			numScore.visible = !ClientPrefs.data.hideHud;
-			numScore.x = (FlxG.width / 2) - (((numScore.width - 10) * separatedScore.length) / 2) + (daLoop * (numScore.width - 10)); numScore.x -= 5;
-			numScore.y = (ClientPrefs.data.downScroll ? (FlxG.height - numScore.height - 50) : 50);
-			FlxTween.tween(numScore.scale, {x: (PlayState.isPixelStage ? daPixelZoom : 0.6), y: (PlayState.isPixelStage ? daPixelZoom : 0.6)}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
+			numScore.x = (FlxG.width / 2) - ((45 * separatedScore.length) / 2) + (i * 45) + (PlayState.isPixelStage ? 10 : -15);
+			numScore.y = (ClientPrefs.data.downScroll ? (FlxG.height - (PlayState.isPixelStage ? 58 : 82) - 25) : 25);
+			if (!PlayState.isPixelStage) numScore.setGraphicSize(Std.int(numScore.width * 0.6 * 1.1));
+			else numScore.setGraphicSize(Std.int(numScore.width * 3.6 * 1.1));
+			FlxTween.tween(numScore.scale, {x: (PlayState.isPixelStage ? 3.6 : 0.6), y: (PlayState.isPixelStage ? 3.6 : 0.6)}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
 			numScore.antialiasing = antialias;
 
 			//if (combo >= 10 || combo == 0)
@@ -2714,11 +2717,8 @@ class PlayState extends MusicBeatState
 				{
 					numScore.destroy();
 				},
-				startDelay: Conductor.crochet * 0.002 / playbackRate
+				startDelay: Conductor.crochet * 0.0015 / playbackRate
 			});
-
-			daLoop++;
-			if(numScore.x > xThing) xThing = numScore.x;
 		}
 		FlxTween.tween(rating, {alpha: 0}, 0.2 / playbackRate, {
 			startDelay: Conductor.crochet * 0.001 / playbackRate,

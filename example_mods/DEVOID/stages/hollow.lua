@@ -1,7 +1,3 @@
---[[Ideas de eventos
- - Al principio, se oscurecerá el juego, poco a poco se ira subiendo, y la camara estará centrada en devoid.
- - Con el beat, se irá quitando la oscuridad poco a poco.
-]]
 local hollowBG = {
     {name = 'cielo', path = 'hollow/cielo_hollow', x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 0.95, scrollY = 0.95, alpha = 1, antialiasing = true, front = false},
     {name = 'luna', path = 'hollow/luna_hollow', x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 0.9, scrollY = 0.9, alpha = 1, antialiasing = true, front = false},

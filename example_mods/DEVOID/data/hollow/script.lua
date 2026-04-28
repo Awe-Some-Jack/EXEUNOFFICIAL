@@ -16,10 +16,10 @@ function onStepHit()
         setProperty('BlackGraphicGame.alpha', 0.6)
     elseif curStep == 24 then
         setProperty('BlackGraphicGame.alpha', 0.4)
-        doTweenAlpha('WhiteGraphicGameAlpha', 'WhiteGraphicGame', 1, 1)
+        doTweenAlpha('WhiteGraphicOtherAlpha', 'WhiteGraphicOther', 1, 1)
     elseif curStep == 32 then
-        cancelTween('WhiteGraphicGameAlpha')
-        doTweenAlpha('WhiteGraphicGameAlpha2', 'WhiteGraphicGame', 0, 1)
+        cancelTween('WhiteGraphicOtherAlpha')
+        doTweenAlpha('WhiteGraphicOtherAlpha2', 'WhiteGraphicOther', 0, 1)
         setProperty('BlackGraphicGame.alpha', 0)
         doTweenAlpha('camHUDAlpha2', 'camHUD', 1, 1)
     end
@@ -29,6 +29,7 @@ function onStepHit()
         doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', 0, 0.4)
     end
     if curStep == 1568 then
+        addHaxeLibrary('FlxTrail', 'flixel.addons.effects')
         runHaxeCode([[
         import flixel.addons.effects.FlxTrail;
 

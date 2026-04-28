@@ -126,6 +126,9 @@ class EXEFreeplay extends MusicBeatState
 
 		buildSongList();
 
+		//Desactiva esto para usar el desbloqueo de Mania! - Uncomment this to use Mania's Unlock!
+		//new FlxTimer().start(0.6, (_) -> maniaNotif());
+
 		if (songEntries.length < 1)
 		{
 			FlxTransitionableState.skipNextTransIn = true;
@@ -269,6 +272,26 @@ class EXEFreeplay extends MusicBeatState
 				songs:  songInfoList
 			});
 		}
+	}
+
+	static public var maniaUnlock:Bool = false;
+
+	function maniaNotif() {
+		var maniaNotifSprite:FlxSprite = new FlxSprite();
+		maniaNotifSprite.loadGraphic(Assets.getBitmapData('assets/exe/freeplayassets/unlock/mania-notif.png'));
+		maniaNotifSprite.scale.set(0.3, 0.3);
+		maniaNotifSprite.setPosition(250, -340);
+		add(maniaNotifSprite);
+
+		FlxG.sound.play(Paths.sound('maniacorreo'));
+
+		FlxTween.tween(maniaNotifSprite, {y: maniaNotifSprite.y + 120}, 1, {ease: FlxEase.circOut, onComplete: (_) -> 
+			new FlxTimer().start(2, (_) -> FlxTween.tween(maniaNotifSprite, {y: maniaNotifSprite.y - 140}, 1, {ease: FlxEase.circIn, onComplete: (_) -> {
+				FlxG.camera.fade(FlxColor.BLACK, 1);
+				FlxG.sound.music.fadeOut(0, 1);
+				new FlxTimer().start(1, (_) ->{ FlxG.switchState(() -> new EXEMenu()); maniaUnlock = true;});
+			}}))
+		});
 	}
 
 	static function loadRawBitmap(path:String):BitmapData

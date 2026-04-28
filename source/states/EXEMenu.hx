@@ -4,7 +4,17 @@ import openfl.Assets;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.input.keyboard.FlxKey;
+
 import backend.Song;
+import backend.Highscore;
+import backend.WeekData;
+import backend.Difficulty;
+
+import flixel.graphics.frames.FlxAtlasFrames;
+
+import states.EXEFreeplay;
+import states.LoadingState;
+import states.PlayState;
 
 class EXEMenu extends MusicBeatState
 {
@@ -47,6 +57,7 @@ class EXEMenu extends MusicBeatState
 	var isMovingUpward:Bool       = false;
 
 	var canInteract:Bool        = true;
+	var canManiaInteract:Bool   = false;
 	var cooldownTimer:Float     = 0.0;
 	var isBlinking:Bool         = false;
 	var blinkTimer:Float        = 0.0;
@@ -56,6 +67,8 @@ class EXEMenu extends MusicBeatState
 
 	var secretCodes:Array<String> = ['personel', '2005'];
 	var curKey:Array<Int>;
+
+	var heylookanemail:FlxSprite;
 
 	override function create()
 	{
@@ -102,10 +115,65 @@ class EXEMenu extends MusicBeatState
 			menuTexts.push(optionText);
 		}
 
+		if (EXEFreeplay.maniaUnlock) {
+			new FlxTimer().start(0.4, (_) -> maniaEmail());
+			heylookanemail = new FlxSprite();
+			heylookanemail.frames = FlxAtlasFrames.fromSparrow('assets/exe/mainmenu/unlock/Mail Box.png', 'assets/exe/mainmenu/unlock/Mail Box.xml');
+			heylookanemail.animation.addByPrefix('email', 'Mail', 24, false);
+			heylookanemail.scale.set(0.5, 0.5);
+			heylookanemail.alpha = 0;
+			heylookanemail.setPosition(-480, -270);
+			add(heylookanemail);
+		}
+
 		refreshSelection();
 		changeSelection(0, false, false);
 
 		curKey = [for (_ in secretCodes) 0]; //lol
+	}
+
+	function maniaEmail() {
+		canInteract = false;
+		
+		heylookanemail.animation.play('email', true);
+		heylookanemail.alpha = 1;
+		new FlxTimer().start(2, (_) -> canManiaInteract = true);
+	}
+
+	static final TAILS_DIR:String = 'CRAZY TAILS';
+
+	function goToMania() {
+		FlxG.camera.fade(FlxColor.BLACK, 1);
+		new FlxTimer().start(1, (_) -> {
+			canManiaInteract = false;
+			var song = 'mania';
+
+			Mods.currentModDirectory = TAILS_DIR;
+			WeekData.reloadWeekFiles(false);
+			PlayState.storyWeek = 1;
+			Difficulty.loadFromWeek();
+
+			var normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
+			var launchDiff = (normalIdx > -1) ? normalIdx : 0;
+
+			var poop = Highscore.formatSong(song, launchDiff);
+
+			try
+			{
+				Song.loadFromJson(song, poop);
+				PlayState.isStoryMode     = false;
+				PlayState.storyDifficulty = 1;
+			}
+			catch (e:haxe.Exception)
+			{
+				trace('Error loading song: ' + e.message);
+				return;
+			}
+			LoadingState.prepareToSong();
+			LoadingState.loadAndSwitchState(new PlayState());
+			#if !SHOW_LOADING_SCREEN FlxG.sound.music.stop(); #end
+			EXEFreeplay.maniaUnlock = false;
+		});
 	}
 
 	override function update(elapsed:Float)
@@ -117,6 +185,12 @@ class EXEMenu extends MusicBeatState
 		if (cooldownTimer > 0) cooldownTimer -= elapsed;
 
 		updateShadow(elapsed);
+
+		if (canManiaInteract)
+		{
+			if (controls.ACCEPT)
+				goToMania();
+		}
 
 		if (canInteract && !isBlinking)
 		{

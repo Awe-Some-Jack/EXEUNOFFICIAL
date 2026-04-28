@@ -2,6 +2,9 @@ local sunkyCrazy = false
 
 function onEvent(n,v1,v2)
 	if n == 'sunkyEvent' then
+		if v1 == 'graphShit' then
+			doTweenAlpha('blackPutaAlpha', 'blackPuta', v2 == 'true' and 0.7 or 0, v2 == 'true' and 2 or 0.2)
+		end
 		if v1 == 'crazy' then
 			sunkyCrazy = true
 			setProperty('dad.angularVelocity', 1800 * playbackRate)

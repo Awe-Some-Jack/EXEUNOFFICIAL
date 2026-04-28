@@ -163,6 +163,8 @@ function onCreatePost()
         scaleObject('healthBG', 0.32, 0.3)
         addLuaSprite('healthBG')
     end
+
+    if songPath == 'chocolate-milk' or songPath == 'vanilla-milk' then setProperty('healthBG.visible', false) end
 end
 
 function onEvent(n)
@@ -203,7 +205,7 @@ function onUpdatePost(e)
     local mult = lerp(healthProps.opponentIcon.scale, getProperty('iconOpp.scale.x'), math.exp(-e * 9 * playbackRate)) scaleObject('iconOpp', mult, mult, false)
     local mult = lerp(healthProps.playerIcon.scale, getProperty('iconBF.scale.x'), math.exp(-e * 9 * playbackRate)) scaleObject('iconBF', mult, mult, false)
 
-    getProperty('healthBG.alpha', getProperty('hbBG.alpha'))
+    setProperty('healthBG.alpha', getProperty('hbBG.alpha'))
 end
 
 function onBeatHit()

@@ -68,6 +68,12 @@ function onCreatePost()
 		addLuaSprite(sp.name)
 	end
 
+	makeLuaSprite('blackPuta', nil, -620, 120)
+	makeGraphic('blackPuta', screenWidth * 2, screenHeight * 2, '000000')
+	setProperty('blackPuta.alpha', 0)
+	setObjectOrder('blackPuta', getObjectOrder('dadGroup'))
+	addLuaSprite('blackPuta')
+
 	makeAnimatedLuaSprite('disco', 'bg/disco-ball', 650, -800)
 	addAnimationByPrefix('disco', 'idle', 'dance', 24, true)
 	playAnim('disco', 'idle', true)

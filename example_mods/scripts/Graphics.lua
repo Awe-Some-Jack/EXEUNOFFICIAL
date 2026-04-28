@@ -5,6 +5,8 @@ local graphics = {
     {name = 'BlackGraphicHUD', color = '000000', scaleX = 4, scaleY = 4, camera = 'camHUD', alpha = 0, front = true},
     {name = 'BlackGraphicOther', color = '000000', scaleX = 4, scaleY = 4, camera = 'camOther', alpha = 0, front = false},
 
+    {name = 'WhiteGraphicOther', color = 'FFFFFF', scaleX = 4, scaleY = 4, camera = 'camOther', alpha = 0, front = false},
+
     {name = 'BlackGraphicBehind', color = '000000', scaleX = 5, scaleY = 5, behind = true, camera = 'camGame', alpha = 0, front = false},
 
     {name = 'RedGraphicGameBlendADD', color = 'FF0000', scaleX = 5, scaleY = 5, camera = 'camGame', blend = 'ADD', alpha = 0, front = false},

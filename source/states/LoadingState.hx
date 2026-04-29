@@ -257,6 +257,8 @@ class LoadingState extends MusicBeatState
 
 	public static function prepareToSong()
 	{
+		backend.GifCache.clearAll();
+
 		if(PlayState.SONG == null)
 		{
 			imagesToPrepare = [];

@@ -28,7 +28,7 @@ class ParallaxState extends MusicBeatState
 	{
 		super.create();
 
-		final paraBg:FlxGifSprite = new FlxGifSprite().loadGif('assets/exe/parallax/bg.gif');
+		final paraBg = GifCache.makeSprite('assets/exe/parallax/bg.gif');
 		paraBg.antialiasing = ClientPrefs.data.antialiasing;
 		paraBg.setGraphicSize(FlxG.width, FlxG.height);
 		paraBg.updateHitbox();

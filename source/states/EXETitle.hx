@@ -121,7 +121,7 @@ class EXETitle extends MusicBeatState
 	}
 	function buildTitle():Void
 	{
-		final screenBg:FlxGifSprite = new FlxGifSprite().loadGif('assets/exe/title/statictitlemenu.gif');
+		final screenBg = GifCache.makeSprite('assets/exe/title/statictitlemenu.gif');
 		screenBg.antialiasing = ClientPrefs.data.antialiasing;
 		screenBg.setGraphicSize(FlxG.width, FlxG.height);
 		screenBg.updateHitbox();

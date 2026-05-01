@@ -3005,9 +3005,269 @@
 			]
 		],
 		[
+			33488.3720930233,
+			[
+				["Tweening Camera", "50, 50", "0.001, linear"],
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			36837.2093023256,
+			[
+				["Tweening Camera", "180, 110", "0.001, linear"],
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			37953.488372093,
+			[
+				["Tweening Camera", "-150, -60", "0.001, linear"],
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			42418.6046511628,
+			[
+				["Tweening Camera", "-170, -70", "0.001, linear"],
+				["Tween Camera Zoom", "1.1", ""]
+			]
+		],
+		[
+			44651.1627906977,
+			[
+				["Tweening Camera", "-210, -90", "0.001, linear"],
+				["Tween Camera Zoom", "1.2", ""]
+			]
+		],
+		[
+			46046.511627907,
+			[
+				["Tween Camera Zoom", "1.1, true", "1.5, cubrIn"]
+			]
+		],
+		[
+			46883.7209302326,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			51348.8372093024,
+			[
+				["Tweening Camera", "50, 50", "0.001, linear"],
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			53581.3953488372,
+			[
+				["Tweening Camera", "180, 120", "2, smootherStepInOut"],
+				["Tween Camera Zoom", "1.2, true", "2, smootherStepInOut"]
+			]
+		],
+		[
+			55813.9534883721,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			63627.9069767442,
+			[
+				["Tweening Camera", "380, 110", "4, smootherStepInOut"],
+				["Tween Camera Zoom", "1.2, true", "4, smootherStepInOut"]
+			]
+		],
+		[
+			72558.1395348837,
+			[
+				["Tweening Camera", "100, 40", "1.2, circIn"],
+				["Tween Camera Zoom", "0.9, true", "1.2, circIn"]
+			]
+		],
+		[
+			73674.4186046512,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			86232.5581395348,
+			[
+				["Tweening Camera", "-200, -40", "2, smootherStepInOut"],
+				["Tween Camera Zoom", "0.95, true", "2, smootherStepInOut"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
+			]
+		],
+		[
+			87906.976744186,
+			[
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
+			]
+		],
+		[
+			92372.0930232557,
+			[
+				["Tweening Camera", "320, 90", "2, smootherStepInOut"],
+				["Tween Camera Zoom", "1.1, true", "2, smootherStepInOut"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
+			]
+		],
+		[
+			94604.6511627906,
+			[
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
+			]
+		],
+		[
+			100465.11627907,
+			[
+				["cameracenter", "false", "1"],
+				["Tweening Camera", "-120, -60", "0.001, linear"],
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			103813.953488372,
+			[
+				["Tweening Camera", "-170, -70", "0.001, linear"],
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			105488.372093023,
+			[
+				["Tween Camera Zoom", "1.1", ""]
+			]
+		],
+		[
+			106325.581395349,
+			[
+				["Tween Camera Zoom", "1.2", ""]
+			]
+		],
+		[
+			107162.790697674,
+			[
+				["Tweening Camera", "140, 80", "0.001, linear"],
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			110511.627906977,
+			[
+				["Tweening Camera", "190, 90", "0.001, linear"],
+				["Tween Camera Zoom", "1.1", ""]
+			]
+		],
+		[
+			112186.046511628,
+			[
+				["Tween Camera Zoom", "1.2", ""]
+			]
+		],
+		[
+			113023.255813953,
+			[
+				["Tween Camera Zoom", "1.3", ""]
+			]
+		],
+		[
+			113860.465116279,
+			[
+				["Tweening Camera", "-210, -60", "0.001, linear"],
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			115534.88372093,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			116372.093023256,
+			[
+				["Tween Camera Zoom", "1.1", ""]
+			]
+		],
+		[
+			117209.302325581,
+			[
+				["Tweening Camera", "210, 60", "0.001, linear"],
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			118883.720930232,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			119720.930232558,
+			[
+				["Tween Camera Zoom", "1.1", ""]
+			]
+		],
+		[
+			120558.139534883,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			123906.976744186,
+			[
+				["cameracenter", "false", ""],
+				["Tweening Camera", "190, 80", "0.001, linear"],
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			124744.186046511,
+			[
+				["Tween Camera Zoom", "1.1", ""]
+			]
+		],
+		[
+			125581.395348837,
+			[
+				["Tween Camera Zoom", "1.2, true", "0.6, sineOut"],
+				["Tweening Camera", "-380, -90", "0.6, sineOut"]
+			]
+		],
+		[
+			126418.604651162,
+			[
+				["Tween Camera Zoom", "5, true", "0.9, circIn"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
+			]
+		],
+		[
 			127255.813953488,
 			[
-				["slashchangeBG", "", ""]
+				["slashchangeBG", "", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Tween Camera Zoom", "0.8, true", "0.8, sineOut"],
+				["Set Property", "cameraSpeed", "100000"],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
+			]
+		],
+		[
+			127325.581395349,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
@@ -3017,9 +3277,27 @@
 			]
 		],
 		[
+			132837.209302325,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			135069.76744186,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
 			136186.046511628,
 			[
 				["slashattack", "", ""]
+			]
+		],
+		[
+			137302.325581395,
+			[
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -3029,9 +3307,45 @@
 			]
 		],
 		[
+			141767.441860465,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			144000,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			146232.558139535,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			148465.11627907,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
 			149581.395348837,
 			[
 				["slashattack", "", ""]
+			]
+		],
+		[
+			150697.674418604,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			152930.232558139,
+			[
+				["Tween Camera Zoom", "0.9", ""]
 			]
 		],
 		[
@@ -3041,15 +3355,58 @@
 			]
 		],
 		[
+			155162.790697674,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			157395.348837209,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
 			158511.627906977,
 			[
 				["slashattack", "", ""]
 			]
 		],
 		[
+			159627.906976744,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
 			160744.186046512,
 			[
 				["slashattack", "", ""]
+			]
+		],
+		[
+			161860.465116279,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			162976.744186046,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			164093.023255814,
+			[
+				["Tween Camera Zoom", "0.8, true", "5, quadInOut"]
+			]
+		],
+		[
+			166325.581395349,
+			[
+				["Set Property", "camGame.alpha", "0"],
+				["Set Property", "camHUD.alpha", "0"]
 			]
 		]
 	],

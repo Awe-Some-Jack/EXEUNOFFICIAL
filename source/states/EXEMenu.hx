@@ -79,7 +79,7 @@ class EXEMenu extends MusicBeatState
 		persistentUpdate = true;
 		persistentDraw   = true;
 
-		var bg = GifCache.makeSprite('assets/exe/mainmenu/mainmenuexefinal.gif');
+		var bg = GifCache.makeSprite('assets/exe/mainmenu/mainmenuexefinal.gif'); //This FUCKASS GIF IS THE LOADING ISSUE. COMMENT IT TO FIND OUT URSELF - Raimbowcore12
 		bg.antialiasing = ClientPrefs.data.antialiasing;
 		bg.setGraphicSize(FlxG.width, FlxG.height);
 		bg.updateHitbox();

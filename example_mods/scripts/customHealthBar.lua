@@ -164,7 +164,7 @@ function onCreatePost()
         addLuaSprite('healthBG')
     end
 
-    if songPath == 'chocolate-milk' or songPath == 'vanilla-milk' then setProperty('healthBG.visible', false) end
+    if songPath == 'chocolate-milk' or songPath == 'vanilla-milk' or songPath == 'b4cksl4sh' then setProperty('healthBG.visible', false) end
 end
 
 function onEvent(n)

@@ -875,6 +875,14 @@ class PlayState extends MusicBeatState
 		videoCutscene = new VideoSprite(0, 0, true);
 		videoCutscene.antialiasing = videoCutscene.video.antialiasing = ClientPrefs.data.antialiasing;
 		videoCutscene.camera = camOther;
+		if (videoCutscene.video.bitmap != null && videoCutscene.video.bitmap.bitmapData != null)
+		{
+			final scale:Float = Math.min(FlxG.width / videoCutscene.video.bitmap.bitmapData.width, FlxG.height / videoCutscene.video.bitmap.bitmapData.height);
+	
+			videoCutscene.setGraphicSize(videoCutscene.video.bitmap.bitmapData.width * scale, videoCutscene.video.bitmap.bitmapData.height * scale);
+			videoCutscene.updateHitbox();
+			videoCutscene.screenCenter();
+		}
 		videoCutscene.canSkip = canSkip;
 		add(videoCutscene);
 

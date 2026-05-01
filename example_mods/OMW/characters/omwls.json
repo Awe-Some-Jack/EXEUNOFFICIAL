@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 12,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [4, -8],
+			"anim": "singLEFT",
+			"fps": 12,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-28, 0],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-24, 0],
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [1344, 60],
+			"anim": "intro",
+			"fps": 12,
+			"name": "intro",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-60, -52],
+			"anim": "outro",
+			"fps": 12,
+			"name": "outro",
+			"indices": []
+		},
+		{
+			"offsets": [-60, -52],
+			"indices": [16, 17],
+			"fps": 12,
+			"anim": "outro-loop",
+			"loop": true,
+			"name": "outro"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "characters/omwlongstrider",
+	"position": [0, 0],
+	"healthicon": "lsomw",
+	"flip_x": false,
+	"healthbar_colors": [0, 0, 0],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 4,
+	"_editor_isPlayer": false
+}

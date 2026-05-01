@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="water.png">
+<SubTexture name="water0000" x="0" y="0" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+<SubTexture name="water0001" x="0" y="176" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+<SubTexture name="water0002" x="0" y="352" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+<SubTexture name="water0003" x="0" y="528" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+<SubTexture name="water0004" x="729" y="0" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+<SubTexture name="water0005" x="729" y="176" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+<SubTexture name="water0006" x="0" y="0" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+<SubTexture name="water0007" x="0" y="176" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+<SubTexture name="water0008" x="0" y="352" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+<SubTexture name="water0009" x="0" y="528" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+<SubTexture name="water0010" x="729" y="0" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+<SubTexture name="water0011" x="729" y="176" width="729" height="176" frameX="0" frameY="-301" frameWidth="721" frameHeight="469" />
+</TextureAtlas>

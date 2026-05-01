@@ -11,7 +11,6 @@ local specialSplashes = {
 		lifeTime = 0.18,
 		isRandom = true
 	},
-
 	{
 		skin = "sunky_splash",
 		songs = {"chocolate-milk", "vanilla-milk"},
@@ -54,7 +53,7 @@ local specialSplashes = {
 }
 
 
-local pixelSplashesList = {"prey", "b4cksl4sh", "starline", "fatality"}
+local pixelSplashesList = {"prey", "b4cksl4sh", "starline", "fatality", "longstrider"}
 local blacklistenedSongs = {"round-a-bout"}
 
 

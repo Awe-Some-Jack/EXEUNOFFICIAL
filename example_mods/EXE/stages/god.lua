@@ -1,6 +1,17 @@
 local count = 1
 
 local exespk = stringSplit(getTextFromFile('data/godspeed/exeSpeak.txt'), '\n')
+local daLines, usedLines = {}, {}
+for i = 1, #exespk do table.insert(daLines, exespk[i]) end
+
+local function getExeSpeak()
+	if #daLines == 0 then for i = 1, #usedLines do table.insert(daLines, usedLines[i]) end usedLines = {} end
+	local index = getRandomInt(1, #daLines)
+	local line = daLines[index]
+	table.remove(daLines, index)
+	table.insert(usedLines, line)
+	return stringTrim(line:gsub('%$', '\n'))
+end
 
 local function makeFire(speed, y, scroll, front, scale)
 	createInstance('fire'..count, 'flixel.addons.display.FlxBackdrop', {nil, 0x01, 0})
@@ -29,7 +40,6 @@ local function setMaxVelocities()
 	setProperty('totem2.maxVelocity.x', 8000)
 end
 
-local oldText = ''
 function onCreatePost()
 	startVideo('good speed', false, true, false, false) setProperty('inCutscene', false)
 	callMethod('videoCutscene.destroy')
@@ -158,15 +168,15 @@ function onCreatePost()
 	addLuaSprite('metal')
 	setObjectOrder('metal', getObjectOrder('boyfriendGroup') - 1)
 
-	makeLuaText('exeSpeak', stringTrim(exespk[getRandomInt(1,#exespk)]:gsub('%$', '\n')), screenWidth)
+	makeLuaText('exeSpeak', 'null', screenWidth)
 	setTextFont('exeSpeak', 'voidspeak.ttf')
 	setTextSize('exeSpeak', 80)
 	setTextColor('exeSpeak', 'FF0000')
 	setObjectCamera('exeSpeak', 'other')
+	setTextBorder('exeSpeak', 0)
 	screenCenter('exeSpeak')
 	addLuaText('exeSpeak')
 	setProperty('exeSpeak.visible', false)
-	oldText = getTextString('exeSpeak')
 end
 
 local inCinematic = false
@@ -207,7 +217,7 @@ function lerp(a, b, t)
 	return a + t * (b - a)
 end
 
-function onEvent(n,v1)
+function onEvent(n,v1, v2)
 	if n == 'godEvents' then
 		if v1 == 'fireappear' then
 			for i = 1,4 do
@@ -288,12 +298,21 @@ function onEvent(n,v1)
 			runTimer('daspeak', crochet / 250)
 			setProperty('cameraSpeed', 9999)
 
-			setProperty('camGame.alpha', 0) setProperty('camHUD.alpha', 0)
+			setProperty('camGame.alpha', 0) if v2 ~= 'true' then setProperty('camHUD.alpha', 0) end
 			setProperty('exeSpeak.visible', true)
 
-			repeat setTextString('exeSpeak', stringTrim(exespk[getRandomInt(1,#exespk)]:gsub('%$', '\n')))
-			until getTextString('exeSpeak') ~= oldText
-			oldText = getTextString('exeSpeak')
+			setTextString('exeSpeak', getExeSpeak())
+			screenCenter('exeSpeak')
+		end
+		if v1 == 'exeSpeakShort' then
+			runTimer('daspeak', crochet / 500)
+			setProperty('cameraSpeed', 9999)
+
+			setProperty('camGame.alpha', 0) if v2 ~= 'true' then setProperty('camHUD.alpha', 0) end
+			setProperty('exeSpeak.visible', true)
+			
+			setTextString('exeSpeak', getExeSpeak())
+			screenCenter('exeSpeak')
 		end
 	end
 end

@@ -46,7 +46,7 @@ function onCreatePost()
     setTextBorder('exeScoreTxt', 1, '000000')
     screenCenter('exeScoreTxt', 'x')
     setProperty('exeScoreTxt.x', math.floor(getProperty('exeScoreTxt.x')))
-    setObjectOrder('exeScoreTxt', getObjectOrder('hbBG') + 1)
+    setObjectOrder('exeScoreTxt', getObjectOrder('iconOpp') + 1)
 
     setProperty('hbHealth.color', getColorFromHex(getHealthColor('boyfriend')))
     setProperty('hbHealth2.color', getColorFromHex(getHealthColor('dad')))
@@ -112,8 +112,8 @@ function onUpdatePost(e)
     local mult = lerp(iconProps.opponentIcon.scale, getProperty('iconOpp.scale.x'), math.exp(-e * 9 * playbackRate)) scaleObject('iconOpp', mult, mult, false)
     local mult = lerp(iconProps.playerIcon.scale, getProperty('iconBF.scale.x'), math.exp(-e * 9 * playbackRate)) scaleObject('iconBF', mult, mult, false)
 
-    setProperty('BlackVG.alpha', 0.9 - getHealth() / 2)
-	setProperty('tentacles_black.alpha', 0.9 - getHealth() / 2)
+    setProperty('BlackVG.alpha', 1.2 - getHealth() / 2)
+	setProperty('tentacles_black.alpha', 1.2 - getHealth() / 2)
 end
 
 function onBeatHit()

@@ -1,0 +1,31 @@
+{
+	"storyName": "Your New Week",
+	"difficulties": "normal",
+	"hideFreeplay": false,
+	"weekBackground": "stage",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"hideStoryMode": false,
+	"songs": [
+		[
+			"Shocker",
+			"normal",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "sonichu",
+	"exeTitle": "SONICHU",
+	"exeCover": "sonichu",
+	"exeLabel": "NON EXE",
+	"soundTestCode": [0, 0, false]
+}

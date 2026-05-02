@@ -1,5 +1,3 @@
-setPropertyFromClass('flixel.addons.transition.FlxTransitionableState', 'skipNextTransOut', true)
-
 function onCreatePost()
 	setProperty('camGame.pixelPerfectRender', true)
 
@@ -82,40 +80,8 @@ function opponentNoteHit(_,nd)
 	setProperty('omwhand.holdTimer', 0)
 end
 
-local isTransition = false
 local grid = 0
 function onUpdatePost(e)
-	if not isTransition then grid = grid + e end
+	grid = grid + e
 	setProperty('clouds.x', math.floor(grid) * 4)
-
-	if getSongPosition() >= songLength - 500 and not isTransition then makeTransition() end
-	if isTransition then
-		setShaderFloat('colorOut', 'upperBound', 0.5 - (getProperty('colorOut.x') / 2))
-		setShaderFloatArray('colorOut', 'tint', {0 + getProperty('colorOut.x'), 0 + getProperty('colorOut.x'), 0.9 + (getProperty('colorOut.x') / 10)})
-	end
-end
-
-function makeTransition()
-	isTransition = true
-
-	setProperty('dad.visible', false)
-	setProperty('omwhand.visible', false)
-	setProperty('boyfriend.visible', false)
-	setProperty('water.animation.paused', true)
-	setProperty('waterfall.animation.paused', true)
-	removeLuaSprite('radio', true)
-
-	makeLuaSprite('colorOut')
-	setSpriteShader('colorOut', 'colorOut')
-	setShaderBool('colorOut','invert', true)
-	setShaderFloat('colorOut', 'lowerBound', 0)
-	setShaderFloatArray('colorOut', 'borderTint', {0, 0, 0})
-
-	setShaderFloat('colorOut', 'upperBound', 0)
-	setShaderFloatArray('colorOut', 'tint', {1, 1, 1})
-	
-	setProperty('colorOut.x', 1)
-	doTweenX('colorOut', 'colorOut', -1, 1)
-
-	runHaxeCode('game.camGame.filters = [new ShaderFilter(game.getLuaObject("colorOut").shader)];')
 end

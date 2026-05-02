@@ -1,4 +1,7 @@
 local count = 1
+
+local exespk = stringSplit(getTextFromFile('data/godspeed/exeSpeak.txt'), '\n')
+
 local function makeFire(speed, y, scroll, front, scale)
 	createInstance('fire'..count, 'flixel.addons.display.FlxBackdrop', {nil, 0x01, 0})
 	loadFrames('fire'..count, 'god/FIRE 2')
@@ -26,13 +29,18 @@ local function setMaxVelocities()
 	setProperty('totem2.maxVelocity.x', 8000)
 end
 
+local oldText = ''
 function onCreatePost()
+	startVideo('good speed', false, true, false, false) setProperty('inCutscene', false)
+	callMethod('videoCutscene.destroy')
+    callMethod('remove', {instanceArg('videoCutscene')})
+
 	makeLuaSprite('godOffsetX')
 	
-	makeAnimatedLuaSprite('sky', 'god/solazo', -1800, -1000)
+	makeAnimatedLuaSprite('sky', 'god/solazo', -2950, -1200)
 	addAnimationByPrefix('sky', 'idle', 'idle', 24, true)
-	scaleObject('sky', 2.5, 2.5)
-	setScrollFactor('sky', 0.15, 0.15)
+	scaleObject('sky', 3.5, 3.5)
+	setScrollFactor('sky', 0.05, 0.05)
 	addLuaSprite('sky')
 
 	createInstance('mount00', 'flixel.addons.display.FlxBackdrop', {nil, 0x01, -500})
@@ -149,6 +157,16 @@ function onCreatePost()
 	addAnimationByPrefix('metal', 'idle', 'Símbolo 100', 24, true)
 	addLuaSprite('metal')
 	setObjectOrder('metal', getObjectOrder('boyfriendGroup') - 1)
+
+	makeLuaText('exeSpeak', stringTrim(exespk[getRandomInt(1,#exespk)]:gsub('%$', '\n')), screenWidth)
+	setTextFont('exeSpeak', 'voidspeak.ttf')
+	setTextSize('exeSpeak', 80)
+	setTextColor('exeSpeak', 'FF0000')
+	setObjectCamera('exeSpeak', 'other')
+	screenCenter('exeSpeak')
+	addLuaText('exeSpeak')
+	setProperty('exeSpeak.visible', false)
+	oldText = getTextString('exeSpeak')
 end
 
 local inCinematic = false
@@ -157,9 +175,9 @@ local sine = 0
 function onUpdatePost(e)
 	sine = sine + e * 2
 	if not inCinematic then
-		callMethod('dad.setPosition', {getProperty('godOffsetX.x') + lerp(600, 0, getHealth() / 2) + math.cos(sine / 2) * 80, 100 + math.sin(sine) * 150})
-		callMethod('boyfriend.setPosition', {2200 + math.cos(0.5 + sine / 2) * 50, 0 + math.sin(0.5 + sine) * 75})
-		callMethod('metal.setPosition', {2130 + math.cos(0.5 + sine / 2) * 50, 320 + math.sin(0.5 + sine) * 75})
+		callMethod('dad.setPosition', {100 + getProperty('godOffsetX.x') + lerp(500, 0, getHealth() / 2) + math.cos(sine / 2) * 80, 150 + math.sin(sine) * 150})
+		callMethod('boyfriend.setPosition', {2200 + math.cos(0.5 + sine / 2) * 50, 20 + math.sin(0.5 + sine) * 75})
+		callMethod('metal.setPosition', {2130 + math.cos(0.5 + sine / 2) * 50, 350 + math.sin(0.5 + sine) * 75})
 	end
 
 	setProperty('camHUD.angle', math.sin(sine))
@@ -259,5 +277,66 @@ function onEvent(n,v1)
 			setProperty('totem.acceleration.x', -8000)
 			setProperty('totem2.acceleration.x', -8000)
 		end
+		if v1 == 'cinematica' then
+			startVideo('good speed', false, true)
+			setObjectCamera('videoCutscene', 'hud')
+			setObjectOrder('videoCutscene', 0)
+			setProperty('inCutscene', false)
+			setProperty('videoCutscene.videoSprite.volumeAdjust', 0)
+		end
+		if v1 == 'exeSpeak' then
+			runTimer('daspeak', crochet / 250)
+			setProperty('cameraSpeed', 9999)
+
+			setProperty('camGame.alpha', 0) setProperty('camHUD.alpha', 0)
+			setProperty('exeSpeak.visible', true)
+
+			repeat setTextString('exeSpeak', stringTrim(exespk[getRandomInt(1,#exespk)]:gsub('%$', '\n')))
+			until getTextString('exeSpeak') ~= oldText
+			oldText = getTextString('exeSpeak')
+		end
 	end
+end
+
+function onTimerCompleted(t)
+	if t == 'daspeak' then
+		setProperty('cameraSpeed', 1)
+		setProperty('camGame.alpha', 1) setProperty('camHUD.alpha', 1)
+		setProperty('exeSpeak.visible', false)
+	end
+end
+
+--video functions, ignore
+
+function onGameOver()
+	if getProperty('videoCutscene') == nil then return end
+    callMethod('videoCutscene.destroy')
+    callMethod('remove', {instanceArg('videoCutscene')})
+end
+
+function onDestroy()
+	if getProperty('videoCutscene') == nil then return end
+    callMethod('remove', {instanceArg('videoCutscene')})
+end
+
+function onPause()
+    if getProperty('videoCutscene') == nil then return end
+    callMethod('videoCutscene.pause')
+    if callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('videoCutscene.videoSprite.pause')}) then
+        callMethodFromClass('flixel.FlxG', 'signals.focusLost.remove', {instanceArg('videoCutscene.videoSprite.pause')})
+    end
+    if callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('videoCutscene.videoSprite.resume')}) then
+        callMethodFromClass('flixel.FlxG', 'signals.focusGained.remove', {instanceArg('videoCutscene.videoSprite.resume')})
+    end
+end
+
+function onResume()
+    if getProperty('videoCutscene') == nil then return end
+    callMethod('videoCutscene.resume')
+    if not callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('videoCutscene.videoSprite.pause')}) then
+        callMethodFromClass('flixel.FlxG', 'signals.focusLost.add', {instanceArg('videoCutscene.videoSprite.pause')})
+    end
+    if not callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('videoCutscene.videoSprite.resume')}) then
+        callMethodFromClass('flixel.FlxG', 'signals.focusGained.add', {instanceArg('videoCutscene.videoSprite.resume')})
+    end
 end

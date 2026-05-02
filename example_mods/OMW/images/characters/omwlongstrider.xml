@@ -92,4 +92,7 @@
 <SubTexture name="outro0015" x="0" y="289" width="66" height="142" frameX="-58" frameY="-46" frameWidth="151" frameHeight="210" />
 <SubTexture name="outro0016" x="66" y="289" width="62" height="142" frameX="-61" frameY="-46" frameWidth="151" frameHeight="210" />
 <SubTexture name="outro0017" x="66" y="289" width="62" height="142" frameX="-61" frameY="-46" frameWidth="151" frameHeight="210" />
+<SubTexture name="outro0018" x="66" y="289" width="62" height="142" frameX="-61" frameY="-46" frameWidth="151" frameHeight="210" />
+<SubTexture name="outro0019" x="66" y="289" width="62" height="142" frameX="-61" frameY="-46" frameWidth="151" frameHeight="210" />
+<SubTexture name="outro0020" x="66" y="289" width="62" height="142" frameX="-61" frameY="-46" frameWidth="151" frameHeight="210" />
 </TextureAtlas>

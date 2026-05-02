@@ -140,7 +140,7 @@
 		[
 			114947.368421052,
 			[
-				["Tween Camera Zoom", "0.75", ""]
+				["godEvents", "exeSpeak", ""]
 			]
 		],
 		[
@@ -313,6 +313,12 @@
 			]
 		],
 		[
+			179684.210526316,
+			[
+				["godEvents", "exeSpeak", ""]
+			]
+		],
+		[
 			180947.368421053,
 			[
 				["bright zoom", "", ""]
@@ -482,15 +488,99 @@
 			]
 		],
 		[
+			249473.684210527,
+			[
+				["godEvents", "cinematica", ""]
+			]
+		],
+		[
 			262105.263157896,
 			[
 				["godEvents", "godAPPEAR", ""]
 			]
 		],
 		[
+			263052.631578948,
+			[
+				["Normal Lyrics", "Why; are; you; try;ing; to", "1"]
+			]
+		],
+		[
+			263368.421052633,
+			[
+				["Normal Lyrics", "Why; are; you; try;ing; to", "2"]
+			]
+		],
+		[
+			263526.315789475,
+			[
+				["Normal Lyrics", "Why; are; you; try;ing; to", "3"]
+			]
+		],
+		[
+			263842.105263159,
+			[
+				["Normal Lyrics", "Why; are; you; try;ing; to", "4"]
+			]
+		],
+		[
+			264000.000000001,
+			[
+				["Normal Lyrics", "Why; are; you; try;ing; to", "5"]
+			]
+		],
+		[
+			264157.894736843,
+			[
+				["Normal Lyrics", "Why; are; you; try;ing; to", "6"]
+			]
+		],
+		[
+			264315.789473685,
+			[
+				["Normal Lyrics", "run; a;way; from; your; GOD?", "1"]
+			]
+		],
+		[
+			264434.210526317,
+			[
+				["Normal Lyrics", "run; a;way; from; your; GOD?", "2"]
+			]
+		],
+		[
+			264631.57894737,
+			[
+				["Normal Lyrics", "run; a;way; from; your; GOD?", "3"]
+			]
+		],
+		[
+			264947.368421054,
+			[
+				["Normal Lyrics", "run; a;way; from; your; GOD?", "4"]
+			]
+		],
+		[
+			265184.210526317,
+			[
+				["Normal Lyrics", "run; a;way; from; your; GOD?", "5"]
+			]
+		],
+		[
+			265578.947368422,
+			[
+				["Normal Lyrics", "run; a;way; from; your; GOD?", "6,FF0000"]
+			]
+		],
+		[
 			265894.736842106,
 			[
 				["godEvents", "fireappear", ""]
+			]
+		],
+		[
+			266842.105263159,
+			[
+				["Normal Lyrics", "", ""]
 			]
 		],
 		[

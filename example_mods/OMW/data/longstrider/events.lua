@@ -18,8 +18,7 @@ function onEvent(n,v1)
 end
 
 function onUpdatePost()
-	if getProperty('dad.animation.curAnim.name') == 'outro' and getProperty('dad.animation.curAnim.finished') and not getProperty('dad.animation.paused') then
-		playAnim('dad', 'outro-loop', true)
-		setProperty('dad.specialAnim', true)
+	if getProperty('dad.animation.curAnim.name') == 'outro' and getProperty('dad.animation.curAnim.finished') then
+		setProperty('camGame.alpha', 0)
 	end
 end

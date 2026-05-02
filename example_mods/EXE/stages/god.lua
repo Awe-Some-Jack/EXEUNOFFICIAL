@@ -293,20 +293,26 @@ function onEvent(n,v1, v2)
 			setProperty('videoCutscene.videoSprite.volumeAdjust', 0)
 		end
 		if v1 == 'exeSpeak' then
+			setProperty('cpuAssist', true)
+			cancelTimer('daspeak') cancelTimer('daassist')
 			runTimer('daspeak', crochet / 250)
+			runTimer('daassist', crochet / 250 + 0.2)
 			setProperty('cameraSpeed', 9999)
 
-			setProperty('camGame.alpha', 0) if v2 ~= 'true' then setProperty('camHUD.alpha', 0) end
+			setProperty('camGame.alpha', 0) setProperty('camHUD.alpha', 0)
 			setProperty('exeSpeak.visible', true)
 
 			setTextString('exeSpeak', getExeSpeak())
 			screenCenter('exeSpeak')
 		end
 		if v1 == 'exeSpeakShort' then
+			setProperty('cpuAssist', true)
+			cancelTimer('daspeak') cancelTimer('daassist')
 			runTimer('daspeak', crochet / 500)
+			runTimer('daassist', crochet / 500 + 0.2)
 			setProperty('cameraSpeed', 9999)
 
-			setProperty('camGame.alpha', 0) if v2 ~= 'true' then setProperty('camHUD.alpha', 0) end
+			setProperty('camGame.alpha', 0) setProperty('camHUD.alpha', 0)
 			setProperty('exeSpeak.visible', true)
 			
 			setTextString('exeSpeak', getExeSpeak())
@@ -321,6 +327,7 @@ function onTimerCompleted(t)
 		setProperty('camGame.alpha', 1) setProperty('camHUD.alpha', 1)
 		setProperty('exeSpeak.visible', false)
 	end
+	if t == 'daassist' then setProperty('cpuAssist', false) end
 end
 
 --video functions, ignore

@@ -4,7 +4,6 @@ import openfl.display.BitmapData;
 import openfl.media.Sound;
 import openfl.text.Font;
 import openfl.utils.AssetCache;
-import backend.GifCache;
 
 class FunkinCache extends AssetCache
 {
@@ -26,10 +25,7 @@ class FunkinCache extends AssetCache
 		openfl.utils.Assets.cache = new FunkinCache();
 
 		FlxG.signals.preStateSwitch.add(() -> instance.moveToSecondLayer());
-		FlxG.signals.postStateSwitch.add(() -> {
-			instance.clearSecondLayer();
-			GifCache.flushRawBytes();
-		});
+		FlxG.signals.postStateSwitch.add(() -> instance.clearSecondLayer());
 	}
 
 	public function moveToSecondLayer():Void

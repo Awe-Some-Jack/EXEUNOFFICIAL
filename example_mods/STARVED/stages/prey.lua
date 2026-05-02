@@ -32,12 +32,6 @@ local function addBackdrop(tag, graphic, opts)
 end
 
 local lightningActive = false
-local isTransition = false
-local stopTransitionLoop = false
-
-function onSongStart()
-	makeTransition()
-end
 
 function onCreatePost()
 	if not lowQuality then
@@ -83,30 +77,24 @@ function onCreatePost()
 	setBlendMode('flashOverlay', 'add')
 end
 
+local stopNextShock = false
 function onSectionHit()
-	if curSection % 16 ~= 0 then return end
-	lightningActive = true
-	setProperty('sky15flash.visible', true)
-	setProperty('sky15flash.alpha', 1)
-	playAnim('sky15flash', 'idle', true)
-	if flashingLights then
-		setProperty('flashOverlay.alpha', 0.3)
-		doTweenAlpha('flashFade', 'flashOverlay', 0, crochet / (1000 / 4) / playbackRate, 'cubeOut')
+	if curSection % 16 == 0 then
+		if not stopNextShock then
+			lightningActive = true
+			setProperty('sky15flash.visible', true)
+			setProperty('sky15flash.alpha', 1)
+			playAnim('sky15flash', 'idle', true)
+			if flashingLights then
+				setProperty('flashOverlay.alpha', 0.3)
+				doTweenAlpha('flashFade', 'flashOverlay', 0, crochet / (1000 / 4) / playbackRate, 'cubeOut')
+			end
+		end
+		stopNextShock = false
 	end
 end
 
 function onUpdatePost(e)
-	if getSongPosition() >= songLength - 500 and not stopTransitionLoop then
-		stopTransitionLoop = true
-		makeTransition(true)
-	end
-
-	if isTransition then
-		local x = getProperty('colorOut.x')
-		setShaderFloat('colorOut', 'upperBound', 0.5 - (x / 2))
-		setShaderFloatArray('colorOut', 'tint', {x, x, 0.9 + (x / 10)})
-	end
-
 	if lightningActive then
 		if getProperty('sky15flash.animation.curAnim.finished') then
 			setProperty('sky15flash.alpha', getProperty('sky15flash.alpha') - (e * playbackRate * 0.75))
@@ -116,49 +104,6 @@ function onUpdatePost(e)
 			setProperty('sky15flash.visible', false)
 		end
 	end
-end
-
-function makeTransition(fadeOut)
-	callMethod('camGame.snapToTarget', {})
-	fadeOut = fadeOut or false
-	isTransition = true
-
-	setProperty('camHUD.visible', false)
-	setProperty('gf.visible', false)
-	setProperty('dad.visible', false)
-	setProperty('boyfriend.visible', false)
-	changeBGVelocity(0)
-
-	makeLuaSprite('colorOut')
-	setSpriteShader('colorOut', 'colorOut')
-	setShaderBool('colorOut', 'invert', true)
-	setShaderFloat('colorOut', 'lowerBound', 0)
-	setShaderFloatArray('colorOut', 'borderTint', {0, 0, 0})
-
-	if fadeOut then
-		setShaderFloat('colorOut', 'upperBound', 0)
-		setShaderFloatArray('colorOut', 'tint', {1, 1, 1})
-		setProperty('colorOut.x', 1)
-		doTweenX('colorOut', 'colorOut', 0, 0.5)
-		return
-	end
-
-	setShaderFloat('colorOut', 'upperBound', 0.5)
-	setShaderFloatArray('colorOut', 'tint', {0, 0, 0.9})
-	setProperty('colorOut.x', 0)
-	doTweenX('colorOut', 'colorOut', 1, 0.5)
-end
-
-function onTweenCompleted(t)
-	if t ~= 'colorOut' then return end
-	isTransition = false
-
-	if getProperty('colorOut.x') <= 0 then return end
-	changeBGVelocity(1)
-	setProperty('camHUD.visible', true)
-	setProperty('gf.visible', true)
-	setProperty('dad.visible', true)
-	setProperty('boyfriend.visible', true)
 end
 
 function changeBGVelocity(value)
@@ -181,8 +126,21 @@ function changeBGVelocity(value)
 	end
 end
 
-function onEvent(n, val1)
+function onEvent(n, v1)
 	if n == 'Change BG Velocity' then
-		changeBGVelocity(tonumber(val1))
+		changeBGVelocity(tonumber(v1))
+	end
+	if n == 'preyEvent' and songPath == 'prey' then
+		if v1 == 'stopnextshock' then stopNextShock = true end
+		if v1 == 'shock' then
+			lightningActive = true
+			setProperty('sky15flash.visible', true)
+			setProperty('sky15flash.alpha', 1)
+			playAnim('sky15flash', 'idle', true)
+			if flashingLights then
+				setProperty('flashOverlay.alpha', 0.3)
+				doTweenAlpha('flashFade', 'flashOverlay', 0, crochet / (1000 / 4) / playbackRate, 'cubeOut')
+			end
+		end
 	end
 end

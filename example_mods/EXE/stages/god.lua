@@ -289,8 +289,6 @@ function onEvent(n,v1, v2)
 		end
 		if v1 == 'cinematica' then
 			startVideo('good speed', false, true)
-			setObjectCamera('videoCutscene', 'hud')
-			setObjectOrder('videoCutscene', 0)
 			setProperty('inCutscene', false)
 			setProperty('videoCutscene.videoSprite.volumeAdjust', 0)
 		end

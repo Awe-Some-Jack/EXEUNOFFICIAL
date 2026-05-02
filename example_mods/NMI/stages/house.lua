@@ -155,8 +155,6 @@ function onTimerCompleted(t)
 	if t == 'startVideo' then
 		startVideo('fakebaby', false, true)
 		runTimer('lol', 0.2)
-		setObjectCamera('videoCutscene', 'hud')
-		setObjectOrder('videoCutscene', 0)
 		setProperty('inCutscene', false)
 		setProperty('videoCutscene.videoSprite.volumeAdjust', 0)
 	end
@@ -317,8 +315,6 @@ function onEvent(n,v1,v2)
 			end
 
 			startVideo('fakebabyfinal', false, true)
-			setObjectCamera('videoCutscene', 'hud')
-			setObjectOrder('videoCutscene', 0)
 			setProperty('inCutscene', false)
 			setProperty('videoCutscene.videoSprite.volumeAdjust', 0)
 

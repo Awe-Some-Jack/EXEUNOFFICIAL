@@ -134,6 +134,9 @@ function onEvent(n, v1)
 		end
 
 		if v1 == 'byehud' then
+			setProperty('sonicfinal.alpha', 0)
+			setProperty('boyfriend.visible', true)
+
 			cancelTween('camHUD')
 			setProperty('camHUD.alpha', 1)
 			doTweenAlpha('camHUD', 'camHUD', 0, getTime(4))
@@ -147,6 +150,17 @@ function onEvent(n, v1)
 			callMethod('gf.setPosition', {14400, 350})
 			setProperty('gf.velocity.x', -5000)
 			triggerEvent('Play Animation', 'attack', 'gf')
+		end
+
+		if v1 == 'sonicAttackFinal' then
+			setProperty('dad.angle', 0)
+			setProperty('sonicfinal.alpha', 1)
+			setProperty('boyfriend.visible', false)
+			playAnim('sonicfinal', 'idle', true)
+			setProperty('dad.alpha', 0)
+			setProperty('starvHit.alpha', 1)
+			playAnim('starvHit', 'idle', true)
+			runTimer('impact2', getTime(1))
 		end
 	end
 end
@@ -184,6 +198,14 @@ function onTimerCompleted(t)
 			cancelTween('noteY'..i)
 			noteTweenY('noteY'..i, i + 4, downscroll and screenHeight or (-getProperty('playerStrums.members['..i..'].height')), getTime(4), 'cubeOut')
 		end
+	end
+	if t == 'impact2' then
+		cameraShake('game', 0.02, 0.1)
+
+		oppFloat = false
+
+		doTweenX('dieStarvX', 'starvHit', -5000, getTime(6), 'cubeIn')
+		doTweenY('dieStarvY', 'starvHit', 1300, getTime(6), 'cubeIn')
 	end
 end
 

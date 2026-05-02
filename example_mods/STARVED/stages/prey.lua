@@ -75,6 +75,8 @@ function onCreatePost()
 	addLuaSprite('flashOverlay')
 	setProperty('flashOverlay.alpha', 0)
 	setBlendMode('flashOverlay', 'add')
+
+	changeBGVelocity(1)
 end
 
 local stopNextShock = false

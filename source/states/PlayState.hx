@@ -198,6 +198,7 @@ class PlayState extends MusicBeatState
 	public var guitarHeroSustains:Bool = false;
 	public var instakillOnMiss:Bool = false;
 	public var cpuControlled:Bool = false;
+	public var cpuAssist:Bool = false;
 	public var practiceMode:Bool = false;
 	public var pressMissDamage:Float = 0.05;
 
@@ -207,6 +208,7 @@ class PlayState extends MusicBeatState
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
 	public var camHUD:FlxCamera;
+	public var camVideo:FlxCamera;
 	public var camGame:FlxCamera;
 	public var gameplayCam:GameplayCamera;
 	public var camOther:FlxCamera;
@@ -312,11 +314,14 @@ class PlayState extends MusicBeatState
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = initPsychCamera();
 		gameplayCam = new GameplayCamera(this);
+		camVideo = new FlxCamera();
 		camHUD = new FlxCamera();
 		camOther = new FlxCamera();
+		camVideo.bgColor.alpha = 0;
 		camHUD.bgColor.alpha = 0;
 		camOther.bgColor.alpha = 0;
 
+		FlxG.cameras.add(camVideo, false);
 		FlxG.cameras.add(camHUD, false);
 		FlxG.cameras.add(camOther, false);
 
@@ -874,7 +879,7 @@ class PlayState extends MusicBeatState
 
 		videoCutscene = new VideoSprite(0, 0, true);
 		videoCutscene.antialiasing = videoCutscene.video.antialiasing = ClientPrefs.data.antialiasing;
-		videoCutscene.camera = camOther;
+		videoCutscene.camera = camVideo;
 		if (videoCutscene.video.bitmap != null && videoCutscene.video.bitmap.bitmapData != null)
 		{
 			final scale:Float = Math.min(FlxG.width / videoCutscene.video.bitmap.bitmapData.width, FlxG.height / videoCutscene.video.bitmap.bitmapData.height);
@@ -1576,6 +1581,13 @@ class PlayState extends MusicBeatState
 					camGame.filters = daFilters;
 				}
 
+				var daFilters = camVideo.filters;
+				if (daFilters != null)
+				{
+					daFilters.pop();
+					camVideo.filters = daFilters;
+				}
+
 				var daFilters = camHUD.filters;
 				if (daFilters != null)
 				{
@@ -1856,7 +1868,7 @@ class PlayState extends MusicBeatState
 
 							if(daNote.mustPress)
 							{
-								if(cpuControlled && !daNote.blockHit && daNote.canBeHit && (daNote.isSustainNote || daNote.strumTime <= Conductor.songPosition))
+								if((cpuControlled || cpuAssist) && !daNote.blockHit && daNote.canBeHit && !daNote.wasGoodHit && (daNote.isSustainNote || daNote.strumTime <= Conductor.songPosition))
 									goodNoteHit(daNote);
 							}
 							else if (daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote)
@@ -1867,7 +1879,7 @@ class PlayState extends MusicBeatState
 							// Kill extremely late notes and cause misses
 							if (Conductor.songPosition - daNote.strumTime > noteKillOffset)
 							{
-								if (daNote.mustPress && !cpuControlled && !daNote.ignoreNote && !endingSong && (daNote.tooLate || !daNote.wasGoodHit))
+								if (daNote.mustPress && !cpuControlled && !cpuAssist && !daNote.ignoreNote && !endingSong && (daNote.tooLate || !daNote.wasGoodHit))
 									noteMiss(daNote);
 
 								daNote.active = daNote.visible = false;
@@ -1980,6 +1992,11 @@ class PlayState extends MusicBeatState
 			if (daFilters == null) daFilters = [];
 			daFilters.push(new ShaderFilter(colorSwap.shader));
 			camGame.filters = daFilters;
+
+			var daFilters = camVideo.filters;
+			if (daFilters == null) daFilters = [];
+			daFilters.push(new ShaderFilter(colorSwap.shader));
+			camVideo.filters = daFilters;
 
 			var daFilters = camHUD.filters;
 			if (daFilters == null) daFilters = [];
@@ -3196,6 +3213,7 @@ class PlayState extends MusicBeatState
 				if(spr != null) spr.playAnim('confirm', true);
 			}
 			else strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
+			if (cpuAssist && !cpuControlled) strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
 			vocals.volume = 1;
 
 			if (!note.isSustainNote)

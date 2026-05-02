@@ -79,7 +79,7 @@ function onCreatePost()
 	setProperty('iconP1.visible', false)
 	setProperty('iconP2.visible', false)
 
-	if not middlescroll then for i = 0,7 do setProperty('strumLineNotes.members['..i..'].x', _G['default'..(i < 4 and 'Player' or 'Opponent')..'StrumX'..(i % 4)]) end end
+	if not middlescroll then for i = 0,3 do setProperty('playerStrums.members['..i..'].x', _G['defaultOpponentStrumX'..i]) setProperty('opponentStrums.members['..i..'].x', -2000) end end
 end
 
 local oldScore = {0, 0}

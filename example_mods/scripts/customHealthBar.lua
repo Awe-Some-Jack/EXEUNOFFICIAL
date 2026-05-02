@@ -116,7 +116,7 @@ function onCreatePost()
         setTextBorder('exeScoreTxt', 1, '000000')
         screenCenter('exeScoreTxt', 'x')
         setProperty('exeScoreTxt.x', math.floor(getProperty('exeScoreTxt.x') + healthProps.healthBar.offsetX))
-        setObjectOrder('exeScoreTxt', getObjectOrder('hbBG') + 1)
+        setObjectOrder('exeScoreTxt', getObjectOrder('iconOpp') + 1)
     end
 
     setProperty('hbHealth.color', getColorFromHex(getHealthColor('boyfriend')))

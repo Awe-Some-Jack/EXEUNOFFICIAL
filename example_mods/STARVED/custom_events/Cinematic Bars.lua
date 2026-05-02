@@ -2,27 +2,27 @@ local barsHeight = 100
 
 function onCreatePost()
 	makeLuaSprite('topbar', nil, -50, 0)
-	makeGraphic('topbar', screenWidth+100, barsHeight+50, '000000')
-	setObjectCamera('topbar', 'other')
-	addLuaSprite('topbar', true)
-	setProperty('topbar.y', -(barsHeight+50))
+	makeGraphic('topbar', screenWidth + 100, barsHeight + 50, '000000')
+	setObjectCamera('topbar', 'hud')
+	setObjectOrder('topbar', getObjectOrder('hbBG') - 1)
+	setProperty('topbar.y', -(barsHeight + 50))
 
 	makeLuaSprite('botbar', nil, -50, 0)
-	makeGraphic('botbar', screenWidth+100, barsHeight+50, '000000')
-	setObjectCamera('botbar', 'other')
-	addLuaSprite('botbar', true)
+	makeGraphic('botbar', screenWidth + 100, barsHeight + 50, '000000')
+	setObjectCamera('botbar', 'hud')
+	setObjectOrder('botbar', getObjectOrder('hbBG') - 1)
 	setProperty('botbar.y', screenHeight)
 end
 
-function onEvent(n, val1, val2)
-	if n == 'Cinematic Bars' then
-		tween = tonumber(val2)
-		if val1 == 'ON' then
-			doTweenY('activateTop', 'topbar', -50, tween, 'expoOut')
-			doTweenY('activateBot', 'botbar', screenHeight-barsHeight, tween, 'expoOut')
+function onEvent(n, v1, v2)
+	if n == 'ScreenBorders' then
+		cancelTween('topBar') cancelTween('bottomBar')
+		if v1 == 'ON' then
+			doTweenY('topBar', 'topbar', -50, (v2 == '' and 1 or tonumber(v2)), 'cubeOut')
+			doTweenY('bottomBar', 'botbar', screenHeight - (barsHeight), (v2 == '' and 1 or tonumber(v2)), 'cubeOut')
 		else
-			doTweenY('desactivateTop', 'topbar', -(barsHeight+50), tween, 'expoIn')
-			doTweenY('desactivateBot', 'botbar', screenHeight, tween, 'expoIn')
+			doTweenY('topBar', 'topbar', -(barsHeight + 50), (v2 == '' and 1 or tonumber(v2)), 'cubeOut')
+			doTweenY('bottomBar', 'botbar', screenHeight, (v2 == '' and 1 or tonumber(v2)), 'cubeOut')
 		end
 	end
 end

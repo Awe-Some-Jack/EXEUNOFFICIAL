@@ -25,8 +25,8 @@ local healthProps = {
 
 
 local healthBarsBG = {
-    ["hud_endless-us"] = {
-        songs = {'endless-us'},
+    ["hud_majin"] = {
+        songs = {'endless-us', 'endless-jp'},
         x = - 190,
         y = - 75
     },

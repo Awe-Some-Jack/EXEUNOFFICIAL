@@ -111,12 +111,6 @@ function onCreatePost()
 			game.insert(idx, clouds);
 		}
 	]])
-
-	makeLuaSprite('healthBGYourself', 'hud/hud_lord_x', getProperty('healthBar.x') - 190, getProperty('healthBar.y') - 75)
-	setObjectCamera('healthBGYourself', 'camHUD')
-	setObjectOrder('healthBGYourself', getObjectOrder('separatorHealth') + 1)
-	scaleObject('healthBGYourself', 0.32, 0.3)
-	addLuaSprite('healthBGYourself')
 end
 
 function onSongStart()

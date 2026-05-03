@@ -42,10 +42,10 @@
 		},
 		{
 			"offsets": [-17, 1],
-			"indices": [],
+			"loop": true,
 			"fps": 24,
 			"anim": "risa",
-			"loop": true,
+			"indices": [],
 			"name": "risa"
 		}
 	],
@@ -57,7 +57,7 @@
 	"flip_x": false,
 	"healthbar_colors": [49, 24, 168],
 	"camera_position": [0, 0],
-	"sing_duration": 4,
+	"sing_duration": 9,
 	"scale": 2,
 	"_editor_isPlayer": false
 }

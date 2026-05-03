@@ -6,14 +6,19 @@ local StageConfig = {
         {name = 'pillars', path = 'SS/pillars', x = -1500, y = -1050, scaleX = 1.2, scaleY = 1.2, scrollX = 1, scrollY = 1},
         {name = 'tv', path = 'SS/tv', x = -150, y = -700, scaleX = 1.2, scaleY = 1.2, scrollX = 1, scrollY = 1},
         {name = 'errorScreen', path = 'SS/error', x = -1100, y = -800, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1},
-        {name = 'crystalWalls', path = 'SS/crystal-walls', x = -1500, y = -1100, scaleX = 1.2, scaleY = 1.25, scrollX = 1, scrollY = 1, front = true}
+        {name = 'crystalWalls', path = 'SS/crystal-walls', x = -1500, y = -1100, scaleX = 1.2, scaleY = 1.25, scrollX = 1, scrollY = 1, front = true},
+        {name = 'crystalWalls', path = 'SS/crystal-walls', x = -1500, y = -1100, scaleX = 1.2, scaleY = 1.25, scrollX = 1, scrollY = 1, front = true},
+        {name = 'spotlight2', path = 'SS/2nd/spotlight-2', x = -1100, y = -2000, scaleX = 0.68, scaleY = 1.2, alpha = 0},
+        {name = 'spotlight', path = 'SS/2nd/spotlight-1',  x = -2300, y = -1900, scaleX = 1.2, scaleY = 1.2, alpha = 0},
+        {name = 'lights', path = 'SS/2nd/lights', x = -1100, y = -1500, scaleX = 0.7, scaleY = 0.8, blend = 'add', alpha = 0},
     },
     animated = {
-        {name = 'exetiorEyes', path = 'SS/exetior-eyes', x = -1500, y = -1500, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'exetior-eyes', fps = 24, loop = false, alpha = 0},
-        {name = 'spotlight2', path = 'SS/2nd/spotlight-2', x = -900, y = -2000, scaleX = 0.6, scaleY = 1.2, alpha = 0},
-        {name = 'lights', path = 'SS/2nd/lights', x = -1100, y = -1500, scaleX = 0.7, scaleY = 0.8, blend = 'add', alpha = 0},
-        {name = 'firstCharacter', path = 'SS/2nd/first', x = 1300, y = 0, scaleX = 1, scaleY = 1, animName = 'idle', animPrefix = '1', fps = 24, loop = false, alpha = 0, front = true},
-        {name = 'thirdCharacter', path = 'SS/2nd/third', x = -1700, y = -320, scaleX = 1, scaleY = 1, animName = 'idle', animPrefix = '3', fps = 24, loop = false, alpha = 0, front = true}
+        {name = 'eggman', path = 'characters/eggman', x = -1000, y = 0, scaleX = 1, scaleY = 1, animName = 'idle', animPrefix = 'eggman', fps = 24, loop = false, alpha = 1},
+        {name = 'knux', path = 'characters/k', x = -1200, y = -750, scaleX = 1, scaleY = 1, animName = 'idle', animPrefix = 'knux', fps = 24, behindPillars = true, loop = false, alpha = 1},
+        {name = 'tails', path = 'characters/tails', x = 1200, y = -750, scaleX = 1, scaleY = 1, animName = 'idle', animPrefix = 'tails', fps = 24, loop = false, alpha = 1},
+        {name = 'exeeye', path = 'characters/exe1', x = -100, y = -150, scaleX = 0.7, scaleY = 0.7, animName = 'idle', animPrefix = 'idle', fps = 24, loop = false, behindLights = true, alpha = 0},
+        {name = 'exelerr', path = 'characters/exeller', x = 1300, y = 190, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'Símbolo 23', fps = 24, loop = false, alpha = 0, front = true},
+        {name = 'sark', path = 'characters/sark', x = -1700, y = 120, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'sark', fps = 24, loop = false, alpha = 0, front = true}
     },
     overlays = {
         {name = 'blackVG', path = 'VG', x = 0, y = 0, scaleX = 1, scaleY = 1}
@@ -21,10 +26,10 @@ local StageConfig = {
 }
 
 local SpriteGroups = {
-    phase1 = {'bg', 'floor', 'arch', 'pillars', 'tv', 'errorScreen', 'crystalWalls'},
-    phase2 = {'exetiorEyes', 'spotlight2', 'lights', 'firstCharacter', 'thirdCharacter'},
-    hideable = {'exetiorEyes', 'spotlight2', 'lights', 'firstCharacter', 'thirdCharacter', 'dad', 'boyfriend'},
-    beatAnimated = {'firstCharacter', 'thirdCharacter', 'bfX'}
+    phase1 = {'bg', 'floor', 'arch', 'pillars', 'tv', 'errorScreen', 'crystalWalls', 'eggman', 'knux', 'tails', 'gfEXE'},
+    phase2 = {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye'},
+    hideable = {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye', 'dad', 'boyfriend', 'gfEXE'},
+    beatAnimated = {'exelerr', 'sark', 'bfX', 'eggman', 'knux', 'tails', 'exeeye'},
 }
 
 local function createSprite(config, isAnimated)
@@ -40,9 +45,9 @@ local function createSprite(config, isAnimated)
     setProperty(config.name .. '.antialiasing', true)
     setProperty(config.name .. '.alpha', config.alpha or 1)
 
-    if config.blend then
-        setBlendMode(config.name, config.blend)
-    end
+    if config.behindPillars ~= nil then setObjectOrder(config.name, getObjectOrder('pillars')) end
+    if config.behindLights  ~= nil then setObjectOrder(config.name, getObjectOrder('lights'))  end
+    if config.blend then setBlendMode(config.name, config.blend) end
 
     addLuaSprite(config.name, config.front or false)
 end
@@ -56,11 +61,12 @@ end
 local function parseEventParams(params)
     local result = {}
     for param in string.gmatch(params, '([^,]+)') do
-        table.insert(result, string.gsub(param, '^%s*(.-)%s*$', '%1'))
+        table.insert(result, tonumber(string.gsub(param, '^%s*(.-)%s*$', '%1')))
     end
     return result
 end
 
+luaDebugMode = true
 function onCreatePost()
     for _, config in ipairs(StageConfig.background) do
         createSprite(config, false)
@@ -93,6 +99,11 @@ function onCreatePost()
     scaleObject('bfX', 0.7, 0.7)
     setProperty('bfX.alpha', 0)
     addLuaSprite('bfX', true)
+
+    makeAnimatedLuaSprite('gfEXE', 'characters/gf', 0, -80)
+    addAnimationByIndices('gfEXE', 'danceLeft', 'gf idle instancia',  {0,1,2,3,4,5,6,7,8,9})
+    addAnimationByIndices('gfEXE', 'danceRight', 'gf idle instancia', {10,11,12,13,14,15,16,17,18,19})
+    addLuaSprite('gfEXE')
 end
 
 local EventHandlers = {
@@ -144,6 +155,8 @@ function onEvent(eventName, value1, value2)
 end
 
 function onBeatHit()
+    playAnim('gfEXE', curBeat %2 == 1 and 'danceRight' or 'danceLeft')
+    --debugPrint(getProperty('gfEXE.animation.curAnim.name'))
     if curBeat % 2 == 0 then
         for _, spriteName in ipairs(SpriteGroups.beatAnimated) do
             if getProperty(spriteName .. '.alpha') > 0 then
@@ -160,7 +173,5 @@ function goodNoteHit()
 end
 
 function opponentNoteHitPre(id)
-    if getProperty('dad.animation.curAnim.name') == 'laugh' then
-        setPropertyFromGroup('notes', id, 'noAnimation', true)
-    end
+    if getProperty('dad.animation.curAnim.name') == 'laugh' then setPropertyFromGroup('notes', id, 'noAnimation', true) end
 end

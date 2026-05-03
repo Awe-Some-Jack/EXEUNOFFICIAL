@@ -1,9 +1,12 @@
 package debug;
 
+import backend.ClientPrefs;
 import flixel.FlxG;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.system.System;
+
+import backend.ClientPrefs.SaveVariables;
 
 #if cpp
 import cpp.vm.Gc;
@@ -150,9 +153,13 @@ class FPSCounter extends TextField
 			+ '\nVRAM~:   ${vram >= 0 ? fmt(vram) : "N/A"}'
 			+ '\nCPU:     ${cpu  >= 0 ? '${Math.round(cpu)}%' : "N/A"}';
 
-		textColor = 0xFFFFFFFF;
-		if (currentFPS < FlxG.drawFramerate * 0.5)
+
+		var color = FlxColor.interpolate(0xFFFD0000, 0xFFFFFFFF, FlxMath.bound(currentFPS, 0, 75) / 75);
+		textColor = color;
+		/*
+		if (currentFPS < FlxG.drawFramerate * 0.5) Fuck this i got something cooler
 			textColor = 0xFFFF0000;
+		*/ 
 	}
 
 	inline function get_memoryMegas():Float

@@ -18,6 +18,8 @@ import openfl.display.StageScaleMode;
 import lime.app.Application;
 import states.EXETitle;
 
+import hxwindowmode.WindowColorMode;
+
 #if HSCRIPT_ALLOWED
 import crowplexus.iris.Iris;
 import psychlua.HScript.HScriptInfos;
@@ -86,6 +88,8 @@ class Main extends Sprite
 		#if VIDEOS_ALLOWED
 		hxvlc.util.Handle.init(#if (hxvlc >= "1.8.0")  ['--no-lua'] #end);
 		#end
+
+		WindowColorMode.setDarkMode(); // Comment this if you wanna disable it! (Doesn't work on Windows 10 btw)
 
 		#if LUA_ALLOWED
 		Mods.pushGlobalMods();

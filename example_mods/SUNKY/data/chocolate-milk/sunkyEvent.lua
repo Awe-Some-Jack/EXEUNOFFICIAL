@@ -3,7 +3,7 @@ local oldRender = 0
 local canRendersAppear = false
 
 function onCreatePost()
-	makeLuaSprite('sunkdance', 'sonido')
+	makeLuaSprite('sunkdance', 'chocolate/sonido')
 	addLuaSprite('sunkdance', true)
 	setObjectCamera('sunkdance', 'other')
 	screenCenter('sunkdance')
@@ -32,7 +32,7 @@ function onCreatePost()
 	setObjectCamera('blackscr', 'other')
 	setProperty('blackscr.alpha', 0)
 
-	makeLuaSprite('sunkage', 'risa')
+	makeLuaSprite('sunkage', 'chocolate/risa')
 	addLuaSprite('sunkage', true)
 	setObjectCamera('sunkage', 'other')
 	screenCenter('sunkage')

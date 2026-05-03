@@ -1,7 +1,7 @@
 local specialSplashes = {
 	{ --the normal splash
 		skin = "noteSplashes",
-		songs = {"chaos", "sunshine", "hollow", "pre-design", "personel", "endless-us", "mania"},
+		songs = {"chaos", "sunshine", "hollow", "pre-design", "personel", "endless-us", "mania", "shocker"},
 		offset = {
 			x = -75,
 			y = -100

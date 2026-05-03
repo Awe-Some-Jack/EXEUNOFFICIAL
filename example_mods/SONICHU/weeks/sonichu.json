@@ -26,6 +26,6 @@
 	"weekName": "sonichu",
 	"exeTitle": "SONICHU",
 	"exeCover": "sonichu",
-	"exeLabel": "NON EXE",
-	"soundTestCode": [0, 0, false]
+	"exeLabel": "MEME",
+	"soundTestCode": [20, 6, true]
 }

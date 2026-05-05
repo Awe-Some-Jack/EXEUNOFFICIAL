@@ -46,7 +46,12 @@ local xeno = {
 }
 
 local tails = {
-	{name = 'bgt', path = 'bg-placeholder', x = -1850, y = -1150, scroll = 1, front = false},
+	{name = 'bg5t', path = 'bg5', x = -650, y = -900, scroll = 0.3, front = false},
+	{name = 'bg4t', path = 'bg4', x = -450, y = -850, scroll = 0.55, front = false},
+	{name = 'bg3t', path = 'bg3', x = -450, y = -850, scroll = 0.6, front = false},
+	{name = 'bg2t', path = 'bg2', x = -450, y = -850, scroll = 0.65, front = false},
+	{name = 'bg1t', path = 'bg1', x = -450, y = -850, scroll = 0.7, front = false},
+	{name = 'floort', path = 'floor', x = -1850, y = -2350, scroll = 1, front = false},
 }
 
 local knux = {
@@ -218,6 +223,14 @@ function onCreate()
 	addStageGroup(knux, PATHS.knux, {defaultScale = 0.8, startAlpha = 0.001})
 	addStageGroup(egg, PATHS.egg, {defaultScale = 0.8, startAlpha = 0.001})
 	addStageGroup(xeno, PATHS.xeno, {defaultScale = 1, createFire = true, startVisible = false, xenoStyle = true})
+
+	makeLuaSprite('overlayt')
+	makeGraphic('overlayt', screenWidth, screenHeight, 'FF7100')
+	setProperty('overlayt.alpha', 0.3)
+	setObjectCamera('overlayt', 'hud')
+	setBlendMode('overlayt', 'add')
+	addLuaSprite('overlayt')
+	setProperty('overlayt.visible', false)
 
 	makeLuaSprite('glow', 'tt/bgn/glow', -700, 500)
 	setScrollFactor('glow', 1.2, 1.2)
@@ -438,9 +451,11 @@ local function onFlashbackToggle()
 			if flashingLights then triggerEvent('Flash', 'FFFFFF,1', 'game') end
 			setGroupAlpha(normal, 0)
 			setGroupAlpha(tails, 1)
+			setProperty('overlayt.visible', true)
 		else
 			setGroupAlpha(normal, 1)
 			destroyGroup(tails, false)
+			setProperty('overlayt.visible', false)
 		end
 
 	elseif curSect == 'knux' then

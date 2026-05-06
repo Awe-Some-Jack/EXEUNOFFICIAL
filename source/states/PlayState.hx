@@ -880,21 +880,27 @@ class PlayState extends MusicBeatState
 		videoCutscene = new VideoSprite(0, 0, true);
 		videoCutscene.antialiasing = videoCutscene.video.antialiasing = ClientPrefs.data.antialiasing;
 		videoCutscene.camera = camVideo;
-		if (videoCutscene.video.bitmap != null && videoCutscene.video.bitmap.bitmapData != null)
-		{
-			final scale:Float = Math.min(FlxG.width / videoCutscene.video.bitmap.bitmapData.width, FlxG.height / videoCutscene.video.bitmap.bitmapData.height);
-	
-			videoCutscene.setGraphicSize(videoCutscene.video.bitmap.bitmapData.width * scale, videoCutscene.video.bitmap.bitmapData.height * scale);
-			videoCutscene.updateHitbox();
-			videoCutscene.screenCenter();
-		}
 		videoCutscene.canSkip = canSkip;
 		add(videoCutscene);
 
 		if (canSkip)
 			videoCutscene.onSkip = () -> endVideo();
-		else
-			videoCutscene.onEnd(() -> endVideo());
+		videoCutscene.onEnd(() -> endVideo());
+
+		videoCutscene.onFormat(() -> {
+			if (videoCutscene.video.bitmap != null && videoCutscene.video.bitmap.bitmapData != null)
+			{
+				final bw:Float = videoCutscene.video.bitmap.bitmapData.width;
+				final bh:Float = videoCutscene.video.bitmap.bitmapData.height;
+				final scale:Float = Math.min(FlxG.width / bw, FlxG.height / bh);
+				videoCutscene.video.setGraphicSize(Std.int(bw * scale), Std.int(bh * scale));
+				videoCutscene.video.updateHitbox();
+				videoCutscene.video.screenCenter();
+				videoCutscene.setPosition(videoCutscene.video.x, videoCutscene.video.y);
+				videoCutscene.video.x = 0;
+				videoCutscene.video.y = 0;
+			}
+		});
 
 		if(videoCutscene.loadVideo(filePath, loop ? [VideoSprite.ARG_LOOPING] : [])) {
 			videoCutscene.playDelayed();

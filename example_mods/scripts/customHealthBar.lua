@@ -60,6 +60,11 @@ local healthBarsBG = {
         x = - 190,
         y = - 80
     },
+    ["hud_hedge"] = {
+        songs = {'hedge', 'manual-blast'},
+        x = - 190,
+        y = - 65
+    },
 }
 local blacklistenedSongs = {'prey', 'fight-or-flight', 'godspeed', 'forestall-desire', 'deception', 'fatality', 'longstrider'}
 
@@ -167,7 +172,7 @@ function onCreatePost()
     if songPath == 'chocolate-milk' or songPath == 'vanilla-milk' or songPath == 'b4cksl4sh' then setProperty('healthBG.visible', false) end
 end
 
-function onEvent(n)
+function onEvent(n, v1)
     if n == 'Change Character' then
         setProperty('hbHealth.color', getColorFromHex(getHealthColor((flipped and 'dad' or 'boyfriend'))))
         setProperty('hbHealth2.color', getColorFromHex(getHealthColor((flipped and 'boyfriend' or 'dad'))))
@@ -181,6 +186,10 @@ function onEvent(n)
         setProperty('hbHealth2.color', getColorFromHex(getHealthColor((flipped and 'boyfriend' or 'dad'))))
         setProperty('iconBF.flipX', not getProperty('iconBF.flipX'))
         setProperty('iconOpp.flipX', not getProperty('iconOpp.flipX'))
+    end
+
+    if n == 'Change HealthBG' then
+        loadGraphic('healthBG', 'hud/'..v1)
     end
 end
 

@@ -8,6 +8,8 @@ import states.EXEFreeplay;
 import options.OptionsState;
 import states.substates.PauseSubState;
 
+import openfl.utils.Assets;
+
 class PauseSubState extends MusicBeatSubstate
 {
 	var camPause:FlxCamera;

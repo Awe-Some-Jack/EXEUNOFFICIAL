@@ -1,76 +1,76 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [1, 0],
+			"loop": true,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [209, 5],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-33, -44],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [32, 98],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-6, 7],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [10, -168],
-			"anim": "singDOWN-alt",
-			"fps": 24,
-			"name": "adown",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-50, 55],
-			"anim": "singUP-alt",
-			"fps": 24,
-			"name": "aup",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-10, -10],
-			"anim": "singRIGHT-alt",
-			"fps": 24,
-			"name": "aright",
-			"indices": []
-		},
-		{
-			"offsets": [-20, 17],
 			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT-alt",
+			"name": "idle"
+		},
+		{
+			"offsets": [209, 5],
 			"loop": false,
-			"name": "2up"
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [-33, -44],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [32, 98],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [-6, 7],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [-8, -137],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"indices": [],
+			"name": "adown"
+		},
+		{
+			"offsets": [-50, 55],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "aup"
+		},
+		{
+			"offsets": [3, -3],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "aright"
+		},
+		{
+			"loop": false,
+			"offsets": [1, 19],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "2up",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

@@ -1920,8 +1920,10 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
+		#if !mac
 		if (!paused)
 			FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " | Time Playing: " + FlxStringUtil.formatTime(Math.max(0, (Conductor.songPosition - ClientPrefs.data.noteOffset) / 1000), true);
+		#end
 
 		setOnScripts('botPlay', cpuControlled);
 		_updateArgs[0] = elapsed;

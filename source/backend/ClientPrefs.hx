@@ -20,7 +20,8 @@ import states.EXETitle;
 	public var splashAlpha:Float = 0.6;
 	public var lowQuality:Bool = false;
 	public var shaders:Bool = true;
-	public var cacheOnGPU:Bool = #if (switch || html5 || js) false #else true #end; 
+	// Do NOT always force gpu caching cause it kills a lot of mid-low end pcs, leave it up to the player
+	public var cacheOnGPU:Bool = false;
 	public var framerate:Int = 60;
 	public var camZooms:Bool = true;
 	public var hideHud:Bool = false;
@@ -179,11 +180,6 @@ class ClientPrefs {
 		
 		if(Main.fpsVar != null)
 			Main.fpsVar.visible = data.showFPS;
-
-		// Always force GPU caching on desktop — frees CPU-side pixel buffers after GPU upload, saving ~1GB RAM
-		#if (!switch && !html5 && !js)
-		data.cacheOnGPU = true;
-		#end
 
 		#if (!html5 && !switch)
 		FlxG.autoPause = ClientPrefs.data.autoPause;

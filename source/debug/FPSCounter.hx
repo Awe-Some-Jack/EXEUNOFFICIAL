@@ -82,29 +82,31 @@ class FPSCounter extends TextField
 
 	private override function __enterFrame(deltaTime:Float):Void
 	{
-		final now:Float = haxe.Timer.stamp() * 1000;
-		times.push(now);
-		while (times[0] < now - 1000) times.shift();
+		if(Main.fpsVar.visible) {
+			final now:Float = haxe.Timer.stamp() * 1000;
+			times.push(now);
+			while (times[0] < now - 1000) times.shift();
 
-		if (deltaTimeout < 50) { deltaTimeout += deltaTime; return; }
+			if (deltaTimeout < 50) { deltaTimeout += deltaTime; return; }
 
-		currentFPS = times.length < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;
+			currentFPS = times.length < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;
 
-		_statTimer += deltaTime;
-		if (_statTimer >= STAT_INTERVAL)
-		{
-			_statTimer = 0;
-			kickBgQuery();
+			_statTimer += deltaTime;
+			if (_statTimer >= STAT_INTERVAL)
+			{
+				_statTimer = 0;
+				kickBgQuery();
+			}
+
+			updateText();
+			deltaTimeout = 0.0;
 		}
-
-		updateText();
-		deltaTimeout = 0.0;
 	}
 
 	/** Spawn a background thread to collect system stats without blocking render. **/
 	static function kickBgQuery():Void
 	{
-		#if cpp
+		#if !mac
 		if (_bgRunning) return;
 
 		// Stage3D must be queried on the main thread
@@ -146,7 +148,7 @@ class FPSCounter extends TextField
 		final ram  = cast(cast(System.totalMemory, UInt), Float);
 		#end
 
-		final sysRamDisplay = fmt(cast(cast(System.totalMemory, UInt), Float));
+		final sysRamDisplay = fmt(cast(cast(Math.abs(System.totalMemory), UInt), Float));
 		text = 'FPS: $currentFPS'
 			+ '\nHeap:    ${fmt(memoryMegas)}'
 			+ '\nSys RAM: $sysRamDisplay'
@@ -209,17 +211,17 @@ class FPSCounter extends TextField
 			return Math.isNaN(v) ? -1 : v;
 		}
 		catch (_) {}
-		#elseif mac
-		try
-		{
-			var proc = new sys.io.Process('sh', ['-c',
-				"ps -A -o %cpu | awk '{s+=$1} END {print s}'"]);
-			var out  = proc.stdout.readAll().toString().trim();
-			proc.close();
-			var v = Std.parseFloat(out);
-			return Math.isNaN(v) ? -1 : v;
-		}
-		catch (_) {}
+		// #elseif mac
+		// try
+		// {
+		// 	var proc = new sys.io.Process('sh', ['-c',
+		// 		"ps -A -o %cpu | awk '{s+=$1} END {print s}'"]);
+		// 	var out  = proc.stdout.readAll().toString().trim();
+		// 	proc.close();
+		// 	var v = Std.parseFloat(out);
+		// 	return Math.isNaN(v) ? -1 : v;
+		// }
+		// catch (_) {}
 		#end
 		return -1;
 	}
@@ -311,16 +313,16 @@ class FPSCounter extends TextField
 			if (r.match(content)) return Std.parseFloat(r.matched(1)) * 1024;
 		}
 		catch (_) {}
-		#elseif mac
-		try
-		{
-			var proc = new sys.io.Process('sh', ['-c',
-				"ps -o rss= -p " + Sys.getEnv("_")]);
-			var out  = proc.stdout.readAll().toString().trim();
-			proc.close();
-			return Std.parseFloat(out) * 1024;
-		}
-		catch (_) {}
+		// #elseif mac
+		// try
+		// {
+		// 	var proc = new sys.io.Process('sh', ['-c',
+		// 		"ps -o rss= -p " + Sys.getEnv("_")]);
+		// 	var out  = proc.stdout.readAll().toString().trim();
+		// 	proc.close();
+		// 	return Std.parseFloat(out) * 1024;
+		// }
+		// catch (_) {}
 		#end
 		return -1;
 	}

@@ -13,10 +13,10 @@ local StageConfig = {
         {name = 'lights', path = 'SS/2nd/lights', x = -1100, y = -1500, scaleX = 0.7, scaleY = 0.8, blend = 'add', alpha = 0},
     },
     animated = {
-        {name = 'eggman', path = 'characters/eggman', x = -1000, y = 0, scaleX = 1, scaleY = 1, animName = 'idle', animPrefix = 'eggman', fps = 24, loop = false, alpha = 1},
+        {name = 'eggman', path = 'characters/eggman', x = -1000, y = -140, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'eggman', fps = 24, loop = false, alpha = 1},
         {name = 'knux', path = 'characters/k', x = -1200, y = -750, scaleX = 1, scaleY = 1, animName = 'idle', animPrefix = 'knux', fps = 24, behindPillars = true, loop = false, alpha = 1},
         {name = 'tails', path = 'characters/tails', x = 1200, y = -750, scaleX = 1, scaleY = 1, animName = 'idle', animPrefix = 'tails', fps = 24, loop = false, alpha = 1},
-        {name = 'exeeye', path = 'characters/exe1', x = -100, y = -150, scaleX = 0.7, scaleY = 0.7, animName = 'idle', animPrefix = 'idle', fps = 24, loop = false, behindLights = true, alpha = 0},
+        {name = 'exeeye', path = 'characters/exe1', x = -100, y = -150, scaleX = 0.8, scaleY = 0.8, animName = 'idle', animPrefix = 'idle', fps = 24, loop = false, behindLights = true, alpha = 0},
         {name = 'exelerr', path = 'characters/exeller', x = 1300, y = 190, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'Símbolo 23', fps = 24, loop = false, alpha = 0, front = true},
         {name = 'sark', path = 'characters/sark', x = -1700, y = 120, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'sark', fps = 24, loop = false, alpha = 0, front = true}
     },

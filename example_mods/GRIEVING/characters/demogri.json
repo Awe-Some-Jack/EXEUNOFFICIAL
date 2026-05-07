@@ -1,52 +1,84 @@
 {
 	"animations": [
 		{
-			"offsets": [221, 6],
 			"loop": false,
-			"fps": 24,
+			"offsets": [272, 19],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [74, 7],
-			"loop": false,
 			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [72, 8],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [73, 95],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"loop": false,
-			"offsets": [64, 18],
-			"anim": "uh oh",
-			"fps": 24,
-			"name": "uh oh",
+			"name": "left",
 			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [121, 18],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [123, 19],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [125, 103],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"offsets": [116, 27],
+			"loop": false,
+			"fps": 24,
+			"anim": "uh oh",
+			"indices": [],
+			"name": "uh oh"
+		},
+		{
+			"loop": false,
 			"offsets": [72, 5],
+			"anim": "idle",
+			"fps": 24,
+			"name": "dudle",
+			"indices": []
+		},
+		{
+			"offsets": [155, 71],
 			"indices": [],
 			"fps": 24,
-			"anim": "idle",
+			"anim": "singLEFT-alt",
 			"loop": false,
-			"name": "dudle"
+			"name": "Símbolo 113"
+		},
+		{
+			"offsets": [46, -96],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"loop": false,
+			"name": "Símbolo 112"
+		},
+		{
+			"offsets": [105, 36],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "Símbolo 114"
+		},
+		{
+			"offsets": [188, 117],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "Símbolo 111"
 		}
 	],
 	"vocals_file": "",

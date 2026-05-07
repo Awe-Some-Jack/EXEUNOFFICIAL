@@ -1,178 +1,178 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [14, 53],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [43, 47],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [42, 16],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [9, 76],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-1, 59],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [111, 154],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFTmiss-alt",
-			"indices": [],
-			"name": "alt missleft"
+			"fps": 24,
+			"name": "alt missleft",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [79, 100],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWNmiss-alt",
-			"indices": [],
-			"name": "alt missdown"
+			"fps": 24,
+			"name": "alt missdown",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [62, 105],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "missdown"
+			"fps": 24,
+			"name": "missdown",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [54, 77],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUPmiss-alt",
-			"indices": [],
-			"name": "altmissup"
+			"fps": 24,
+			"name": "altmissup",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [25, 109],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "missup"
+			"fps": 24,
+			"name": "missup",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [24, 83],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHTmiss-alt",
-			"indices": [],
-			"name": "altmissright"
+			"fps": 24,
+			"name": "altmissright",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [5, 86],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "missright"
+			"fps": 24,
+			"name": "missright",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [45, 75],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFTmiss",
-			"fps": 24,
-			"name": "missleft",
-			"indices": []
+			"indices": [],
+			"name": "missleft"
 		},
 		{
-			"loop": false,
 			"offsets": [64, 29],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN-alt",
-			"fps": 24,
-			"name": "alt down",
-			"indices": []
+			"indices": [],
+			"name": "alt down"
 		},
 		{
-			"loop": false,
 			"offsets": [98, 47],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT-alt",
-			"fps": 24,
-			"name": "alt left",
-			"indices": []
+			"indices": [],
+			"name": "alt left"
 		},
 		{
-			"loop": false,
 			"offsets": [47, 78],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP-alt",
-			"fps": 24,
-			"name": "alt up",
-			"indices": []
+			"indices": [],
+			"name": "alt up"
 		},
 		{
-			"loop": false,
 			"offsets": [17, 59],
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHT-alt",
-			"fps": 24,
-			"name": "alt right",
-			"indices": []
+			"indices": [],
+			"name": "alt right"
 		},
 		{
-			"loop": false,
 			"offsets": [15, 53],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle-alt",
-			"fps": 24,
-			"name": "treno",
-			"indices": []
+			"indices": [],
+			"name": "treno"
 		},
 		{
+			"loop": false,
 			"offsets": [15, 53],
-			"loop": false,
-			"fps": 24,
 			"anim": "yeah",
-			"indices": [],
-			"name": "Bf Hey"
-		},
-		{
-			"offsets": [14, 54],
-			"loop": false,
 			"fps": 24,
-			"anim": "hey",
-			"indices": [],
-			"name": "v"
-		},
-		{
-			"loop": false,
-			"offsets": [16, 54],
-			"anim": "dodge",
-			"fps": 24,
-			"name": "Dodge",
+			"name": "Bf Hey",
 			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [14, 54],
+			"anim": "hey",
+			"fps": 24,
+			"name": "v",
+			"indices": []
+		},
+		{
+			"offsets": [16, 54],
+			"loop": false,
+			"fps": 24,
+			"anim": "dodge",
+			"indices": [],
+			"name": "Dodge"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/BOYFRIEND",
-	"position": [-15, 360],
+	"position": [-85, 320],
 	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],

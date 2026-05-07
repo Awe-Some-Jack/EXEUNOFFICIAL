@@ -1,60 +1,92 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [624, 191],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [594, 322],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [593, 192],
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
-			"loop": false,
 			"offsets": [655, 190],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [610, 197],
-			"anim": "short",
-			"fps": 24,
-			"name": "short",
-			"indices": []
-		},
-		{
 			"loop": false,
-			"offsets": [595, 225],
-			"anim": "bit",
 			"fps": 24,
-			"name": "bitbox",
-			"indices": []
+			"anim": "short",
+			"indices": [],
+			"name": "short"
 		},
 		{
-			"loop": true,
-			"offsets": [593, 197],
-			"anim": "idle",
+			"offsets": [595, 225],
+			"loop": false,
 			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"anim": "bit",
+			"indices": [],
+			"name": "bitbox"
+		},
+		{
+			"offsets": [593, 197],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"offsets": [634, 15],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"loop": false,
+			"name": "2down "
+		},
+		{
+			"offsets": [612, 59],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "2right"
+		},
+		{
+			"offsets": [604, 308],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "2up"
+		},
+		{
+			"offsets": [595, 224],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "2left"
 		}
 	],
 	"vocals_file": "",

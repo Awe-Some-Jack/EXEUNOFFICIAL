@@ -10,7 +10,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [23, 1],
+			"offsets": [21, 0],
 			"anim": "danceRight",
 			"fps": 24,
 			"name": "2",
@@ -18,46 +18,78 @@
 		},
 		{
 			"loop": false,
-			"offsets": [291, -2],
+			"offsets": [275, -1],
 			"anim": "singLEFT",
 			"fps": 24,
-			"name": "left",
+			"name": "left instancia",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [59, 114],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-4, -2],
+			"offsets": [-5, -2],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "down",
+			"name": "down instancia",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [-3, -1],
+			"offsets": [56, 107],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up instancia",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-5, -2],
 			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "right",
+			"name": "right instancia",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [125, -31],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "left alt",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [9, -64],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "down alt",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [45, 31],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "up alt",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-32, 28],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "right alt",
 			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/SonicFunAssets",
-	"position": [-180, 40],
+	"position": [-50, 150],
 	"healthicon": "majin",
 	"flip_x": false,
 	"healthbar_colors": [0, 15, 255],
 	"camera_position": [-20, -40],
-	"sing_duration": 4,
-	"scale": 0.95,
+	"sing_duration": 9,
+	"scale": 1.2,
 	"_editor_isPlayer": false
 }

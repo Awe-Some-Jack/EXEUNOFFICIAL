@@ -69,8 +69,3 @@ function onUpdatePost()
 	if sad and getProperty('boyfriend.animation.curAnim.name') == 'idle' and getProperty('boyfriend.animation.curAnim.curFrame') == 0 then playAnim('boyfriend', 'idle-sad') end
 	if happy and getProperty('boyfriend.animation.curAnim.name') == 'idle' and getProperty('boyfriend.animation.curAnim.curFrame') == 0 then playAnim('boyfriend', 'idle-happy') end
 end
-
-function noteMiss(id, nd)
-	if sad then setProperty('boyfriend.holdTimer', 0) end
-	playAnim('boyfriend', getProperty('singAnimations['..nd..']')..'miss')
-end

@@ -220,7 +220,7 @@ function onStepHit()
 		setProperty('dad.x', getProperty('dad.x') - 210)
 		setProperty('dad.y', getProperty('dad.y') - 395)
 		setProperty('boyfriend.x', getProperty('boyfriend.x') - 780)
-		setProperty('boyfriend.y', getProperty('boyfriend.y') - 360)
+		setProperty('boyfriend.y', getProperty('boyfriend.y') - 420)
 		setProperty('gf.x', getProperty('gf.x') - 105)
 		setProperty('gf.y', getProperty('gf.y') - 280)
 

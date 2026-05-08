@@ -1,92 +1,92 @@
 {
 	"animations": [
 		{
-			"offsets": [624, 191],
 			"loop": false,
-			"fps": 24,
+			"offsets": [619, 189],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
-			"offsets": [594, 322],
 			"loop": false,
-			"fps": 24,
+			"offsets": [587, 327],
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [593, 192],
 			"loop": false,
-			"fps": 24,
+			"offsets": [588, 190],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
-			"offsets": [655, 190],
 			"loop": false,
-			"fps": 24,
+			"offsets": [653, 189],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
-			"offsets": [610, 197],
 			"loop": false,
-			"fps": 24,
+			"offsets": [605, 197],
 			"anim": "short",
-			"indices": [],
-			"name": "short"
+			"fps": 24,
+			"name": "short",
+			"indices": []
 		},
 		{
-			"offsets": [595, 225],
 			"loop": false,
-			"fps": 24,
+			"offsets": [589, 225],
 			"anim": "bit",
-			"indices": [],
-			"name": "bitbox"
+			"fps": 24,
+			"name": "bitbox",
+			"indices": []
 		},
 		{
-			"offsets": [593, 197],
 			"loop": true,
-			"fps": 24,
+			"offsets": [588, 196],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [634, 15],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN-alt",
-			"loop": false,
-			"name": "2down "
+			"fps": 24,
+			"name": "2down ",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [612, 59],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT-alt",
-			"loop": false,
-			"name": "2right"
+			"fps": 24,
+			"name": "2right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [604, 308],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP-alt",
-			"loop": false,
-			"name": "2up"
+			"fps": 24,
+			"name": "2up",
+			"indices": []
 		},
 		{
-			"offsets": [595, 224],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT-alt",
 			"loop": false,
-			"name": "2left"
+			"offsets": [595, 224],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "2left",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
@@ -98,6 +98,6 @@
 	"healthbar_colors": [67, 106, 144],
 	"camera_position": [-650, -330],
 	"sing_duration": 12,
-	"scale": 1.1,
+	"scale": 1.15,
 	"_editor_isPlayer": false
 }

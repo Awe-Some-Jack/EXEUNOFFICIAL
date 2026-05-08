@@ -281,3 +281,38 @@ function onStepHit()
     end
     ]]
 end
+
+--video functions, ignore
+
+function onGameOver()
+	if getProperty('videoCutscene') == nil then return end
+    callMethod('videoCutscene.destroy')
+    callMethod('remove', {instanceArg('videoCutscene')})
+end
+
+function onDestroy()
+	if getProperty('videoCutscene') == nil then return end
+    callMethod('remove', {instanceArg('videoCutscene')})
+end
+
+function onPause()
+    if getProperty('videoCutscene') == nil then return end
+    callMethod('videoCutscene.pause')
+    if callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('videoCutscene.videoSprite.pause')}) then
+        callMethodFromClass('flixel.FlxG', 'signals.focusLost.remove', {instanceArg('videoCutscene.videoSprite.pause')})
+    end
+    if callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('videoCutscene.videoSprite.resume')}) then
+        callMethodFromClass('flixel.FlxG', 'signals.focusGained.remove', {instanceArg('videoCutscene.videoSprite.resume')})
+    end
+end
+
+function onResume()
+    if getProperty('videoCutscene') == nil then return end
+    callMethod('videoCutscene.resume')
+    if not callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('videoCutscene.videoSprite.pause')}) then
+        callMethodFromClass('flixel.FlxG', 'signals.focusLost.add', {instanceArg('videoCutscene.videoSprite.pause')})
+    end
+    if not callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('videoCutscene.videoSprite.resume')}) then
+        callMethodFromClass('flixel.FlxG', 'signals.focusGained.add', {instanceArg('videoCutscene.videoSprite.resume')})
+    end
+end

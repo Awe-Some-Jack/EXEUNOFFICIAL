@@ -1,7 +1,7 @@
 {
 	"animations": [
 		{
-			"offsets": [586, 159],
+			"offsets": [588, 157],
 			"loop": true,
 			"fps": 24,
 			"anim": "idle",
@@ -9,7 +9,7 @@
 			"name": "A I"
 		},
 		{
-			"offsets": [750, 218],
+			"offsets": [758, 217],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -17,7 +17,7 @@
 			"name": "a L"
 		},
 		{
-			"offsets": [581, 160],
+			"offsets": [585, 157],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
@@ -25,7 +25,7 @@
 			"name": "a R"
 		},
 		{
-			"offsets": [649, 160],
+			"offsets": [654, 156],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
@@ -33,7 +33,7 @@
 			"name": "a D"
 		},
 		{
-			"offsets": [659, 352],
+			"offsets": [665, 358],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
@@ -50,6 +50,6 @@
 	"healthbar_colors": [67, 106, 144],
 	"camera_position": [-650, -330],
 	"sing_duration": 12,
-	"scale": 1.1,
+	"scale": 1.15,
 	"_editor_isPlayer": false
 }

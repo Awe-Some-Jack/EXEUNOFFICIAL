@@ -1,111 +1,87 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				723,
-				45
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [723, 45],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [
-				733,
-				31
-			],
-			"loop": false,
+			"offsets": [717, 7],
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"loop": false,
+			"name": "singDown"
 		},
 		{
-			"offsets": [
-				739,
-				100
-			],
-			"loop": false,
+			"offsets": [737, 68],
+			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"loop": false,
+			"name": "singUp"
 		},
 		{
-			"offsets": [
-				729,
-				91
-			],
+			"offsets": [704, 38],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
 			"loop": false,
+			"name": "singLeft"
+		},
+		{
+			"offsets": [773, 50],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "singRight"
+		},
+		{
+			"offsets": [710, 44],
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "missDown"
+		},
+		{
+			"offsets": [1324, 66],
 			"indices": [],
-			"name": "missdown"
-		},
-		{
-			"loop": false,
-			"offsets": [
-				703,
-				41
-			],
-			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				757,
-				47
-			],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				701,
-				118
-			],
 			"anim": "singRIGHTmiss",
-			"fps": 24,
-			"name": "missleft",
-			"indices": []
+			"loop": false,
+			"name": "missLeft"
 		},
 		{
-			"loop": false,
-			"offsets": [
-				749,
-				79
-			],
-			"anim": "singLEFTmiss",
+			"offsets": [1733, 99],
+			"indices": [],
 			"fps": 24,
-			"name": "missright",
-			"indices": []
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "missUp"
+		},
+		{
+			"offsets": [773, 76],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "missRight"
 		}
 	],
+	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/BF LEFT SIDE",
-	"position": [
-		-205,
-		360
-	],
+	"position": [-205, 360],
 	"healthicon": "bf",
 	"flip_x": true,
-	"healthbar_colors": [
-		49,
-		176,
-		209
-	],
-	"camera_position": [
-		290,
-		20
-	],
+	"healthbar_colors": [49, 176, 209],
+	"camera_position": [290, 20],
 	"sing_duration": 5.99999999999999,
-	"scale": 0.7
+	"scale": 0.7,
+	"_editor_isPlayer": true
 }

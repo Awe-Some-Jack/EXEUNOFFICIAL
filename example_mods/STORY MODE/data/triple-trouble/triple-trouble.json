@@ -205,14 +205,18 @@
 		[
 			41506.8493150685,
 			[
-				["Tween Camera Zoom", "0.5, true", "10, sineInOut"]
+				["Tween Camera Zoom", "0.5, true", "10, sineInOut"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
 			]
 		],
 		[
 			54246.5753424658,
 			[
 				["cameracenter", "false", ""],
-				["Tween Camera Zoom", "1", ""]
+				["Tween Camera Zoom", "1", ""],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
 			]
 		],
 		[
@@ -775,7 +779,9 @@
 			173424.657534247,
 			[
 				["Tween Camera Zoom", "0.5, true", "15, sineInOut"],
-				["Tweening Camera", "0, -120", "15, sineInOut"]
+				["Tweening Camera", "0, -120", "15, sineInOut"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
 			]
 		],
 		[
@@ -788,7 +794,9 @@
 		[
 			198904.109589041,
 			[
-				["cameracenter", "false", ""]
+				["cameracenter", "false", ""],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
 			]
 		],
 		[
@@ -2010,9 +2018,25 @@
 		[
 			499151.675193925,
 			[
-				["fadecam", "1", "8"],
-				["Tween Camera Zoom", "0.6, true", "8, smootherStepInOut"],
+				["cameracenter", "true", ""],
 				["FlashCamera", "FF0000, 1", "1.2"]
+			]
+		],
+		[
+			499874.56676019,
+			[
+				["Tween Camera Zoom", "0.45, true", "8, smootherStepInOut"],
+				["fadeHUD", "", ""],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
+			]
+		],
+		[
+			504934.807724045,
+			[
+				["Set Property", "camGame.alpha", "0"],
+				["Set Property", "camHUD.alpha", "0"],
+				["Set Property", "camOther.alpha", "0"]
 			]
 		]
 	],

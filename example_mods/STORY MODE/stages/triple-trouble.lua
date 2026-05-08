@@ -505,6 +505,8 @@ function onEvent(n, v1, v2)
 		onFlashbackToggle()
 	elseif n == 'fadecam' then
 		fadeParticles(tonumber(v2))
+	elseif n == 'fadeHUD' then
+		doTweenAlpha('camHUDAlpha', 'camHUD', 0, 2.8)
 	end
 end
 

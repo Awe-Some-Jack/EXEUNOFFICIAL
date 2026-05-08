@@ -1,52 +1,52 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [730, 238],
-			"loop": false,
-			"fps": 24,
 			"anim": "ha",
-			"indices": [],
-			"name": "talk"
+			"fps": 24,
+			"name": "talk",
+			"indices": []
 		},
 		{
+			"offsets": [642, 28],
 			"loop": false,
-			"offsets": [646, 38],
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "2 idle",
-			"indices": []
+			"indices": [],
+			"name": "2 idle"
 		},
 		{
+			"offsets": [639, 23],
 			"loop": false,
-			"offsets": [643, 32],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "2 right",
-			"indices": []
+			"indices": [],
+			"name": "2 right"
 		},
 		{
+			"offsets": [663, -11],
 			"loop": false,
-			"offsets": [663, -3],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "2 down",
-			"indices": []
+			"indices": [],
+			"name": "2 down"
 		},
 		{
+			"offsets": [713, 28],
 			"loop": false,
-			"offsets": [714, 36],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "2 left",
-			"indices": []
+			"indices": [],
+			"name": "2 left"
 		},
 		{
+			"offsets": [653, 57],
 			"loop": false,
-			"offsets": [653, 66],
-			"anim": "singUP",
 			"fps": 24,
-			"name": "2 up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "2 up"
 		}
 	],
 	"vocals_file": "",
@@ -58,6 +58,6 @@
 	"healthbar_colors": [81, 121, 161],
 	"camera_position": [-610, -10],
 	"sing_duration": 5.99999999999999,
-	"scale": 1.1,
+	"scale": 1.15,
 	"_editor_isPlayer": false
 }

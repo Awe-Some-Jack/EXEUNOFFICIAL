@@ -63,6 +63,38 @@
 			"anim": "aydiosmio",
 			"loop": false,
 			"name": "miedo"
+		},
+		{
+			"offsets": [155, 71],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "Símbolo 113"
+		},
+		{
+			"offsets": [46, -96],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"loop": false,
+			"name": "Símbolo 112"
+		},
+		{
+			"offsets": [105, 36],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "Símbolo 114"
+		},
+		{
+			"offsets": [188, 117],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "Símbolo 111"
 		}
 	],
 	"vocals_file": "",

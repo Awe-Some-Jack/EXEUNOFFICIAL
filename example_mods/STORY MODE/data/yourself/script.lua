@@ -57,6 +57,8 @@ function onEvent(eventName, value1, value2)
             doTweenAlpha('BlackGraphicGameAlpha', 'BlackGraphicGame', 0, 0.7)
             doTweenAlpha('dasdasd', 'camLeft', 1, 0.7)
             doTweenAlpha('sasdsas', 'camRight', 1, 0.7)
+
+			if getProperty('videoCutscene') ~= nil then callMethod('remove', {instanceArg('videoCutscene')}) end
         end
         if value1 == 'fadeHUD' then
             if value2 == 'appear' then

@@ -41,6 +41,14 @@ local function addShitToTV()
 	createInstance('majin', 'objects.Character', {730, 200, 'majinsunky', false})
 	addInstance('majin')
 	setProperty('majin.alpha', 0)
+
+	createInstance('arin', 'hxvlc.flixel.FlxVideoSprite')
+	callMethod('arin.load', {"mods/SUNKY/videos/Arin's Dance - GrumpOut.mp4"})
+	setProperty('arin.alpha', 0)
+	scaleObject('arin', 3, 3)
+	setObjectCamera('arin', 'other')
+	screenCenter('arin')
+	addInstance('arin')
 end
 
 function onCreatePost()
@@ -124,34 +132,67 @@ end
 --video functions, ignore
 
 function onGameOver()
-	if getProperty('ahh') == nil then return end
-    callMethod('ahh.destroy')
-    callMethod('remove', {instanceArg('ahh')})
+	if curBeat < 544 then
+		if getProperty('ahh') == nil then return end
+		callMethod('ahh.destroy')
+		callMethod('remove', {instanceArg('ahh')})
+	else
+		if getProperty('arin') == nil then return end
+		callMethod('arin.destroy')
+		callMethod('remove', {instanceArg('arin')})
+	end
 end
 
 function onDestroy()
-	if getProperty('ahh') == nil then return end
-    callMethod('remove', {instanceArg('ahh')})
+	if curBeat < 544 then
+		if getProperty('ahh') == nil then return end
+		callMethod('remove', {instanceArg('ahh')})
+	else
+		if getProperty('arin') == nil then return end
+		callMethod('remove', {instanceArg('arin')})
+	end
 end
 
 function onPause()
-    if getProperty('ahh') == nil then return end
-    callMethod('ahh.pause')
-    if callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('ahh.videoSprite.pause')}) then
-        callMethodFromClass('flixel.FlxG', 'signals.focusLost.remove', {instanceArg('ahh.videoSprite.pause')})
-    end
-    if callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('ahh.videoSprite.resume')}) then
-        callMethodFromClass('flixel.FlxG', 'signals.focusGained.remove', {instanceArg('ahh.videoSprite.resume')})
-    end
+    if curBeat < 544 then
+		if getProperty('ahh') == nil then return end
+		callMethod('ahh.pause')
+		if callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('ahh.videoSprite.pause')}) then
+			callMethodFromClass('flixel.FlxG', 'signals.focusLost.remove', {instanceArg('ahh.videoSprite.pause')})
+		end
+		if callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('ahh.videoSprite.resume')}) then
+			callMethodFromClass('flixel.FlxG', 'signals.focusGained.remove', {instanceArg('ahh.videoSprite.resume')})
+		end
+	else
+		if getProperty('arin') == nil then return end
+		callMethod('arin.pause')
+		if callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('arin.videoSprite.pause')}) then
+			callMethodFromClass('flixel.FlxG', 'signals.focusLost.remove', {instanceArg('arin.videoSprite.pause')})
+		end
+		if callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('arin.videoSprite.resume')}) then
+			callMethodFromClass('flixel.FlxG', 'signals.focusGained.remove', {instanceArg('arin.videoSprite.resume')})
+		end
+	end
 end
 
 function onResume()
-    if getProperty('ahh') == nil then return end
-    callMethod('ahh.resume')
-    if not callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('ahh.videoSprite.pause')}) then
-        callMethodFromClass('flixel.FlxG', 'signals.focusLost.add', {instanceArg('ahh.videoSprite.pause')})
-    end
-    if not callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('ahh.videoSprite.resume')}) then
-        callMethodFromClass('flixel.FlxG', 'signals.focusGained.add', {instanceArg('ahh.videoSprite.resume')})
-    end
+	if curBeat < 544 then
+		if getProperty('ahh') == nil then return end
+		callMethod('ahh.resume')
+		if not callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('ahh.videoSprite.pause')}) then
+			callMethodFromClass('flixel.FlxG', 'signals.focusLost.add', {instanceArg('ahh.videoSprite.pause')})
+		end
+		if not callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('ahh.videoSprite.resume')}) then
+			callMethodFromClass('flixel.FlxG', 'signals.focusGained.add', {instanceArg('ahh.videoSprite.resume')})
+		end
+	else
+		if getProperty('arin') == nil then return end
+		callMethod('arin.resume')
+		if not callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('arin.videoSprite.pause')}) then
+			callMethodFromClass('flixel.FlxG', 'signals.focusLost.add', {instanceArg('arin.videoSprite.pause')})
+		end
+		if not callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('arin.videoSprite.resume')}) then
+			callMethodFromClass('flixel.FlxG', 'signals.focusGained.add', {instanceArg('arin.videoSprite.resume')})
+		end
+	end
 end

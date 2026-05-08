@@ -26,7 +26,7 @@ local starCount = 0
 local glitchCount = 0
 local tailsBaseY = -1600
 
-function onCreate()
+function onCreatePost()
 	for _, bg in ipairs(ChaotixBG) do
 		if bg.animated then
 			makeAnimatedLuaSprite(bg.name, bg.path, bg.x, bg.y)
@@ -65,14 +65,12 @@ function onCreate()
 		addLuaSprite(bg.name, bg.front)
 	end
 
-	makeLuaSprite('blackOverlay', nil, -3000, -3000)
-	makeGraphic('blackOverlay', 8000, 8000, '000000')
+	makeLuaSprite('blackOverlay', nil, getProperty('dad.x') - 120, -320)
+	makeGraphic('blackOverlay', screenWidth * 1.8, screenHeight * 1.8, '000000')
 	setScrollFactor('blackOverlay', 0, 0)
 	setProperty('blackOverlay.alpha', 0)
 	addLuaSprite('blackOverlay', false)
-end
 
-function onCreatePost()
 	setScrollFactor('gf', 1, 1)
 	setObjectOrder('blackOverlay', getObjectOrder('gfGroup'))
 end
@@ -114,6 +112,7 @@ function onTweenCompleted(tag)
 	local name = tag:gsub('starA', ''):gsub('glitchA', '')
 	if tag:find('starA') or tag:find('glitchA') then
 		removeLuaSprite(name, true)
+		--if not luaSpriteExists(name) then debugPrint(name.. 'is removed!') end
 	end
 end
 
@@ -151,9 +150,7 @@ function onBeatHit()
 	end
 
 	if not glitchedActive then
-		for i = 1,5 do
-			spawnStar()
-		end
+		spawnStar()
 	else
 		for i = 1, 10 do
 			spawnGlitch()

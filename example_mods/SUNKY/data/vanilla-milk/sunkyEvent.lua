@@ -74,6 +74,14 @@ function onEvent(n,v1,v2)
 			startTween('tween_zoomIn2', 'camHUD', {zoom = 30}, crochet / 500, {ease = 'expoIn'})
 			setProperty('camZoomingDecay', 0)
 		end
+		if v1 == 'arin' then
+			callMethod('arin.play')
+			setProperty('arin.alpha', 0)
+			doTweenAlpha('arin', 'arin', 0.35, 3)
+		end
+		if v1 == 'arinbye' then
+			doTweenAlpha('arin', 'arin', 0, 3)
+		end
 	end
 end
 

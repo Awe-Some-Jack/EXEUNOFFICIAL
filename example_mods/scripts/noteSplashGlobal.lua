@@ -43,14 +43,42 @@ local specialSplashes = {
 		skin = "sunky_splash",
 		songs = {"chocolate-milk", "vanilla-milk"},
 		offset = {
-			x = -110,
-			y = -150
+			x = -95,
+			y = -125
 		},
 		framerate = 30,
 		single = false,
 		animations = {'purple', 'blue', 'green', 'red'},
 		indices = {0,1,2,3,4,5,6,7,8,9,10,11},
-		scale = 0.8
+		scale = 0.7,
+
+		holdConfig = {
+			skin = 'sunky_splashHOLD',
+			scale = 0.7,
+			offset = {
+				x = -90,
+				y = -70
+			},
+			multiKeyHold = true,
+			startAnim = {
+				{name = 'sustain cover start purple', fps = 24},
+				{name = 'sustain cover start blue', fps = 24},
+				{name = 'sustain cover start green', fps = 24},
+				{name = 'sustain cover start red', fps = 24}
+			},
+			holdAnim = {
+				{name = 'sustain cover loop purple', fps = 24},
+				{name = 'sustain cover loop blue', fps = 24},
+				{name = 'sustain cover loop green', fps = 24},
+				{name = 'sustain cover loop red', fps = 24}
+			},
+			endAnim = {
+				{name = 'sustain cover end purp', fps = 24},
+				{name = 'sustain cover end blue', fps = 24},
+				{name = 'sustain cover end green', fps = 24},
+				{name = 'sustain cover end red', fps = 24}
+			}
+		}
 	},
 	{
 		skin = "BloodSplash-sanic",

@@ -33,7 +33,7 @@ function onCreate()
 	scaleObject('body1', 1.35, 1.35)
 	addLuaSprite('body1')
 	
-	makeLuaSprite('SonicBody', 'starved/SonicBody', 115, 1100)
+	makeLuaSprite('SonicBody', 'starved/sonic', 115, 1100)
 	scaleObject('SonicBody', 1.15, 1.15)
 	addLuaSprite('SonicBody')
 	

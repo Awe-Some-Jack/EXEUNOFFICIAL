@@ -344,7 +344,8 @@ function onUpdatePost(e)
 				if name == 'end' then setProperty('noteHold'..i..'.visible', false) holdsSplashHold[i + 1] = 0 end
 			end
 
-			callMethod('noteHold'..i..'.setPosition', {getProperty('strumLineNotes.members['..i..'].x') + daHoldConfig.offsetX, getProperty('strumLineNotes.members['..i..'].y') + daHoldConfig.offsetY})
+			local dastrum = ((getProperty('strumLineNotes.length') > 8 and i > 5) and (i + 1) or i)
+			callMethod('noteHold'..i..'.setPosition', {getProperty('strumLineNotes.members['..dastrum..'].x') + daHoldConfig.offsetX, getProperty('strumLineNotes.members['..dastrum..'].y') + daHoldConfig.offsetY})
 		end
 	end
 end

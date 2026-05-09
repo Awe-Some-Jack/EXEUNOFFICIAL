@@ -144,7 +144,7 @@ local specialSplashes = {
 
 
 local pixelSplashesList = {"prey", "b4cksl4sh", "starline", "fatality", "longstrider"}
-local blacklistenedSongs = {"round-a-bout"}
+local blacklistenedSongs = {}
 
 
 --DONT TOUCH
@@ -254,7 +254,8 @@ function goodNoteHit(id,nd,nt,isn)
 		if getProperty('noteHold'..(nd + 4)..'.visible') == false and holdsSplashHold[nd + 5] == 0 then
 			setProperty('noteHold'..(nd + 4)..'.visible', true)
 			playAnim('noteHold'..(nd + 4), 'start', true)
-		else if stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then cancelTimer('noteHold'..(nd + 4)) playAnim('noteHold'..(nd + 4), 'end', true) end end
+		end
+		if stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then cancelTimer('noteHold'..(nd + 4)) playAnim('noteHold'..(nd + 4), 'end', true) holdsSplashHold[nd + 5] = 0 end
 	end
 end
 

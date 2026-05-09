@@ -1,87 +1,78 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "idle",
-			"loop": true,
-			"name": "idle instancia "
+			"fps": 24,
+			"name": "idle instancia ",
+			"indices": []
 		},
 		{
-			"offsets": [243, 30],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [
+				230,
+				10
+			],
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "singRIGHT instancia"
+			"fps": 24,
+			"name": "singRIGHT instancia ",
+			"indices": []
 		},
 		{
-			"offsets": [95, -24],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [
+				80,
+				-20
+			],
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "singDOWN instancia "
+			"fps": 24,
+			"name": "singDOWN instancia ",
+			"indices": []
 		},
 		{
-			"offsets": [45, 98],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [
+				40,
+				20
+			],
 			"anim": "singUP",
-			"loop": false,
-			"name": "singUP instancia"
+			"fps": 24,
+			"name": "singUP instancia",
+			"indices": []
 		},
 		{
-			"offsets": [13, 33],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [
+				0,
+				20
+			],
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "singLEFT instancia "
-		},
-		{
-			"offsets": [193, 25],
-			"indices": [],
 			"fps": 24,
-			"anim": "singLEFTmiss",
-			"loop": false,
-			"name": "br"
-		},
-		{
-			"offsets": [76, -62],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWNmiss",
-			"loop": false,
-			"name": "bd"
-		},
-		{
-			"offsets": [38, 86],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUPmiss",
-			"loop": false,
-			"name": "bu"
-		},
-		{
-			"offsets": [-3, 17],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHTmiss",
-			"loop": false,
-			"name": "bl"
+			"name": "singLEFT instancia ",
+			"indices": []
 		}
 	],
-	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/starved_tails",
-	"position": [0, 0],
-	"healthicon": "tails-starv",
+	"position": [
+		0,
+		70
+	],
+	"healthicon": "tailsstarved",
 	"flip_x": false,
-	"healthbar_colors": [255, 157, 0],
-	"camera_position": [-70, -140],
+	"healthbar_colors": [
+		255,
+		157,
+		0
+	],
+	"camera_position": [
+		-150,
+		-140
+	],
 	"sing_duration": 4,
-	"scale": 1,
-	"_editor_isPlayer": true
+	"scale": 0.9
 }

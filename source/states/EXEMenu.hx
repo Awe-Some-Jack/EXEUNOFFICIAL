@@ -69,6 +69,9 @@ class EXEMenu extends MusicBeatState
 	var curKey:Array<Int>;
 
 	var heylookanemail:FlxSprite;
+	#if VIDEOS_ALLOWED
+	var menuVideo:hxvlc.flixel.FlxVideoSprite;
+	#end
 
 	override function create()
 	{
@@ -83,12 +86,34 @@ class EXEMenu extends MusicBeatState
 		persistentUpdate = true;
 		persistentDraw   = true;
 
-		final loopingMenu:FlxGifSprite = new FlxGifSprite().loadGif('assets/exe/mainmenu/mainmenuexefinal.gif');
-		loopingMenu.antialiasing = ClientPrefs.data.antialiasing;
-		loopingMenu.setGraphicSize(FlxG.width, FlxG.height);
-		loopingMenu.updateHitbox();
-		loopingMenu.screenCenter();
-		add(loopingMenu);
+		#if VIDEOS_ALLOWED
+		menuVideo = new hxvlc.flixel.FlxVideoSprite(0, 0);
+		menuVideo.bitmap.onFormatSetup.add(function():Void {
+			if (menuVideo != null && menuVideo.bitmap != null && menuVideo.bitmap.bitmapData != null) {
+				menuVideo.setGraphicSize(FlxG.width, FlxG.height);
+				menuVideo.updateHitbox();
+				menuVideo.screenCenter();
+			}
+		});
+		add(menuVideo);
+		menuVideo.bitmap.onEndReached.add(function():Void {
+			menuVideo.bitmap.stop();
+			new flixel.util.FlxTimer().start(0.001, (_) -> {
+				menuVideo.load('assets/exe/mainmenu/menu.mp4');
+				new flixel.util.FlxTimer().start(0.001, (_) -> {
+					menuVideo.play();
+					menuVideo.bitmap.rate = 2.0;
+				});
+			});
+		});
+		if (menuVideo.load('assets/exe/mainmenu/menu.mp4'))
+			new flixel.util.FlxTimer().start(0.001, (_) -> {
+				menuVideo.play();
+				menuVideo.bitmap.rate = 2.0;
+				FlxG.signals.focusLost.remove(@:privateAccess menuVideo.onFocusLost);
+				FlxG.signals.focusGained.remove(@:privateAccess menuVideo.onFocusGained);
+			});
+		#end
 
 		shadowSprite = new FlxSprite();
 		shadowSprite.loadGraphic(Assets.getBitmapData("assets/exe/mainmenu/options/shadow.png"));
@@ -451,6 +476,13 @@ class EXEMenu extends MusicBeatState
 			for (t in menuTexts)   { FlxTween.cancelTweensOf(t); FlxTween.cancelTweensOf(t.scale); }
 		if (shadowSprite != null)
 			FlxTween.cancelTweensOf(shadowSprite);
+		#if VIDEOS_ALLOWED
+		if (menuVideo != null)
+		{
+			menuVideo.destroy();
+			menuVideo = null;
+		}
+		#end
 		super.destroy();
 	}
 }

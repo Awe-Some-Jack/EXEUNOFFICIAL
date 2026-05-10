@@ -10,6 +10,12 @@ local floatingPairs = {
 	{char = 'dad',       baseX = -700, baseY = 960,  plat = 'platform',  platX = -950, platY = 1200, phase = 0.5},
 }
 
+local sw2 = screenWidth * 0.5
+local sh2 = screenHeight * 0.5
+local cachedDadX, cachedDadY
+local cachedAnimName, cachedAnimFrame
+local cachedHUDAlpha = 0
+
 local stage1HQ = {
 	{name = 'bg',     path = 'hellbent/GUARDIAN-N',   x = -1000, y = -430, scrollX = 0.7, scrollY = 0.7},
 	{name = 'bgAlt',  path = 'hellbent/GUARDIAN',     x = -1000, y = -430, scrollX = 0.7, scrollY = 0.7, hidden = true},
@@ -135,24 +141,50 @@ end
 function onUpdatePost(elapsed)
 	if not phase2Active then
 		local zoom = getProperty('camGame.zoom')
-		setProperty('eyes.alpha', getProperty('BlackGraphicHUD.alpha'))
-		scaleObject('eyes', zoom * 0.5, zoom * 0.5, false)
-		setProperty('eyes.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
-		setProperty('eyes.visible', getProperty('dad.animation.curAnim.name') == 'idle')
+		local hudAlpha = getProperty('BlackGraphicHUD.alpha')
+		if hudAlpha ~= cachedHUDAlpha then
+			setProperty('eyes.alpha', hudAlpha)
+			cachedHUDAlpha = hudAlpha
+		end
 
-		local scrollX = getProperty('camGame.scroll.x')
-		local scrollY = getProperty('camGame.scroll.y')
-		local offsetFactor = 1 - zoom
-		setProperty('eyes.x', ((getProperty('dad.x') - 54 - scrollX) * zoom) + (screenWidth * 0.5) * offsetFactor)
-		setProperty('eyes.y', ((getProperty('dad.y') + 4 - scrollY) * zoom) + (screenHeight * 0.5) * offsetFactor)
+		scaleObject('eyes', zoom * 0.5, zoom * 0.5, false)
+
+		local animName = getProperty('dad.animation.curAnim.name')
+		local isIdle = animName == 'idle'
+		setProperty('eyes.visible', isIdle)
+
+		if isIdle then
+			local animFrame = getProperty('dad.animation.curAnim.curFrame')
+			if animFrame ~= cachedAnimFrame then
+				setProperty('eyes.animation.curAnim.curFrame', animFrame)
+				cachedAnimFrame = animFrame
+			end
+
+			local dadX = getProperty('dad.x')
+			local dadY = getProperty('dad.y')
+			local scrollX = getProperty('camGame.scroll.x')
+			local scrollY = getProperty('camGame.scroll.y')
+			local offsetFactor = 1 - zoom
+			setProperty('eyes.x', ((dadX - 54 - scrollX) * zoom) + sw2 * offsetFactor)
+			setProperty('eyes.y', ((dadY + 4  - scrollY) * zoom) + sh2 * offsetFactor)
+		end
 	else
 		floatTime = floatTime + elapsed * FLOAT_SPEED
-		for _, p in ipairs(floatingPairs) do
-			local t = floatTime + p.phase
-			setProperty(p.char .. '.y', p.baseY + math.sin(t) * FLOAT_Y)
-			setProperty(p.char .. '.x', p.baseX + math.cos(t) * FLOAT_X)
-			setProperty(p.plat .. '.y', p.platY + math.sin(t) * FLOAT_Y)
-			setProperty(p.plat .. '.x', p.platX + math.cos(t) * FLOAT_X)
-		end
+		local sinT0 = math.sin(floatTime)
+		local cosT0 = math.cos(floatTime)
+		local sinT1 = math.sin(floatTime + 0.5)
+		local cosT1 = math.cos(floatTime + 0.5)
+
+		local p = floatingPairs[1]
+		setProperty(p.char .. '.x', p.baseX + cosT0 * FLOAT_X)
+		setProperty(p.char .. '.y', p.baseY + sinT0 * FLOAT_Y)
+		setProperty(p.plat .. '.x', p.platX + cosT0 * FLOAT_X)
+		setProperty(p.plat .. '.y', p.platY + sinT0 * FLOAT_Y)
+
+		p = floatingPairs[2]
+		setProperty(p.char .. '.x', p.baseX + cosT1 * FLOAT_X)
+		setProperty(p.char .. '.y', p.baseY + sinT1 * FLOAT_Y)
+		setProperty(p.plat .. '.x', p.platX + cosT1 * FLOAT_X)
+		setProperty(p.plat .. '.y', p.platY + sinT1 * FLOAT_Y)
 	end
 end

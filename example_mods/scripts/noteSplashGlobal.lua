@@ -139,11 +139,31 @@ local specialSplashes = {
 				{name = 'sustain cover end red', fps = 24}
 			}
 		}
+	},
+	{
+		skin = 'BloodSplashPixel',
+		songs = {"prey", "b4cksl4sh", "starline", "fatality", "longstrider"},
+		offset = {
+			x = -78,
+			y = -36
+		},
+		scale = 6,
+		antialiasing = false,
+		holdConfig = {
+			skin = 'BloodSplashPixelHOLD',
+			scale = 6,
+			antialiasing = false,
+			offset = {
+				x = -102,
+				y = -42
+			},
+			startAnim = {name = 'sustain cover intro', fps = 1},
+			holdAnim = {name = 'sustain cover loop', fps = 1},
+			endAnim = {name = 'sustain cover end', fps = 1}
+		}
 	}
 }
 
-
-local pixelSplashesList = {"prey", "b4cksl4sh", "starline", "fatality", "longstrider"}
 local blacklistenedSongs = {}
 
 
@@ -152,15 +172,13 @@ local blacklistenedSongs = {}
 local daHoldConfig = {offsetX = 0, offsetY = 0}
 local holdsSplashHold = {0,0,0,0,0,0,0,0}
 local holdsEnabled = true
-local disableSkin = false
 local currentSkin = 'BloodSplash'
-local pixelSplash = false
 
 local holdSplashConf = {
 	skin = 'BloodSplashHOLD',
-	pixel = false,
 	scale = 0.9,
 	multiKeyHold = false,
+	antialiasing = true,
 	offset = {
 		x = -85,
 		y = -62
@@ -172,19 +190,16 @@ local holdSplashConf = {
 
 function onCreatePost()
 	setProperty('grpNoteSplashes.visible', false)
-	for i = 1,#blacklistenedSongs do if songPath == blacklistenedSongs[i] then disableSkin = true return end end
-	for i = 1,#pixelSplashesList do if songPath == pixelSplashesList[i] then pixelSplash = true end end
-
 	local foundSkin = false
 	for _,splashes in ipairs(specialSplashes) do
 		for _,songs in ipairs(splashes.songs) do if songPath == songs then foundSkin = true end end
 		if foundSkin then
 			if splashes.single ~= false then
 				if splashes.startWithSkin ~= false then currentSkin = splashes.skin end
-				doSplash(nil, splashes.skin, nil, true)
+				doSplash(nil, splashes.skin, true)
 			else for i = 0,3 do
 				if splashes.startWithSkin ~= false then currentSkin = splashes.skin end
-				doSplash(i, splashes.skin, nil, true)
+				doSplash(i, splashes.skin, true)
 			end end
 
 			if splashes.holdConfig.disabled then holdsEnabled = false
@@ -192,6 +207,7 @@ function onCreatePost()
 				if splashes.skin ~= nil then holdSplashConf.skin = splashes.skin..'HOLD' end
 				if splashes.holdConfig.skin ~= nil then holdSplashConf.skin = splashes.holdConfig.skin end
 				if splashes.holdConfig.scale ~= nil then holdSplashConf.scale = splashes.holdConfig.scale end
+				if splashes.holdConfig.antialiasing ~= nil then holdSplashConf.antialiasing = splashes.holdConfig.antialiasing end
 				if splashes.holdConfig.offset ~= nil then for z,v in pairs(splashes.holdConfig.offset) do if v ~= nil then holdSplashConf.offset[z] = v end end end
 				for n,d in pairs(splashes.holdConfig) do if type(v) == 'table' then for k,v in pairs(d) do if v ~= nil then holdSplashConf[n][k] = v end end end end
 				if splashes.holdConfig.multiKeyHold then
@@ -226,24 +242,16 @@ function onCreatePost()
 			scaleObject('noteHold'..i, holdSplashConf.scale, holdSplashConf.scale)
 			setObjectCamera('noteHold'..i, 'hud')
 			setProperty('noteHold'..i..'.visible', false)
+			setProperty('noteHold'..i..'.antialiasing', holdSplashConf.antialiasing)
 			addToGroup('noteGroup', 'noteHold'..i)
-
-			if pixelSplash then
-				setSpriteShader('noteHold'..i, 'pixelsplash')
-				setShaderFloat('noteHold'..i, 'pixelsize', 6)
-			end
 		end
 		daHoldConfig = {offsetX = holdSplashConf.offset.x, offsetY = holdSplashConf.offset.y}
 	end
 	
-	if not foundSkin then doSplash(nil, currentSkin, nil, true) end
+	if not foundSkin then doSplash(nil, currentSkin, true) end
 end
 
 function goodNoteHitPre(id,nd,nt,isn)
-	if not isn and getProperty('notes.members['..id..'].noteSplashData.disabled') == false and getProperty('notes.members['..id..'].rating') == 'sick' and not disableSkin then
-		doSplash(nd, currentSkin, pixelSplash)
-	end
-
 	if not holdsEnabled then return end
 	if isn then
 		if not stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then
@@ -258,6 +266,7 @@ function goodNoteHitPre(id,nd,nt,isn)
 		if stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then cancelTimer('noteHold'..(nd + 4)) playAnim('noteHold'..(nd + 4), 'end', true) holdsSplashHold[nd + 5] = 0 end
 	end
 end
+function goodNoteHit(id,nd,nt,isn) if not isn and getProperty('notes.members['..id..'].noteSplashData.disabled') == false and getProperty('notes.members['..id..'].rating') == 'sick' then doSplash(nd, currentSkin) end end
 
 function opponentNoteHitPre(id,nd,nt,isn)
 	if not holdsEnabled then return end
@@ -275,7 +284,7 @@ function opponentNoteHitPre(id,nd,nt,isn)
 	end
 end
 
-function doSplash(data, skin, pixel, precache)
+function doSplash(data, skin, precache)
 	data = data or 0
 	local x, y = getProperty('playerStrums.members['..data..'].x') or 0, getProperty('playerStrums.members['..data..'].y') or 0
 	local tag = 'dasplash_'..math.floor(math.min(getSongPosition(), 0))..data
@@ -286,6 +295,7 @@ function doSplash(data, skin, pixel, precache)
 	local animName = 'Squirt'
 	local framerate = 24
 	local scale = 1
+	local antialiasing = true
 	local lifeTime = 0.5
 
 	local foundSkin = false
@@ -296,6 +306,7 @@ function doSplash(data, skin, pixel, precache)
 			if splashes.framerate ~= nil then framerate = splashes.framerate end
 			if splashes.scale ~= nil then scale = splashes.scale end
 			if splashes.lifeTime ~= nil then lifeTime = splashes.lifeTime end
+			if splashes.antialiasing ~= nil then antialiasing = splashes.antialiasing end
 			if splashes.animations ~= nil then
 				if #splashes.animations > 1 then animName = splashes.animations[data + 1]
 				elseif #splashes.animations == 1 then animName = splashes.animations[1] end
@@ -319,21 +330,14 @@ function doSplash(data, skin, pixel, precache)
 	end
 	playAnim(tag, 'splash', true)
 	setObjectCamera(tag, 'hud')
+	setProperty(tag..'.antialiasing', antialiasing)
 	addToGroup('noteGroup', tag, getObjectOrder('grpNoteSplashes', 'noteGroup'))
-
-	if pixel then
-		setSpriteShader(tag, 'pixelsplash')
-		setShaderFloat(tag, 'pixelsize', 6)
-	end
 
 	runTimer(tag, lifeTime / playbackRate)
 	if precache then setProperty(tag..'.alpha', 0.0001) end
 end
 
 function onUpdatePost(e)
-	if songPath == 'you-cant-run' and curBeat >= 132 and curBeat < 200 and not pixelSplash then pixelSplash = true
-	elseif songPath == 'you-cant-run' and curBeat >= 200 and pixelSplash then pixelSplash = false end
-
 	if not holdsEnabled then return end
 	for i = 0,7 do
 		if getProperty('noteHold'..i..'.visible') then

@@ -541,7 +541,9 @@ class FunkinLua
 		});
 		Lua_helper.add_callback(lua, 'exitSong', function(skipTransition:Bool = false) {
 			if (skipTransition) { FlxTransitionableState.skipNextTransIn = true; FlxTransitionableState.skipNextTransOut = true; }
-			MusicBeatState.switchState(PlayState.isStoryMode ? new StoryModeState() : new EXEFreeplay());
+			if (PlayState.isStoryMode) MusicBeatState.switchState(new StoryModeState());
+			else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; MusicBeatState.switchState(new states.access.FridgeAccess()); }
+			else MusicBeatState.switchState(new EXEFreeplay());
 			#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 			PlayState.changedDifficulty = false;

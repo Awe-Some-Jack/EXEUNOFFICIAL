@@ -2591,7 +2591,8 @@ class PlayState extends MusicBeatState
 
 						if(FlxG.sound.music != null) FlxG.sound.music.stop();
 						canResync = false;
-						FlxG.switchState(() -> new EXEFreeplay());
+						if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
+						else FlxG.switchState(() -> new EXEFreeplay());
 						if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
 							StoryModeState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
@@ -2629,7 +2630,8 @@ class PlayState extends MusicBeatState
 				#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
 				canResync = false;
-				MusicBeatState.switchState(new EXEFreeplay());
+				if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; MusicBeatState.switchState(new states.access.FridgeAccess()); }
+				else MusicBeatState.switchState(new EXEFreeplay());
 				changedDifficulty = false;
 			}
 			transitioning = true;

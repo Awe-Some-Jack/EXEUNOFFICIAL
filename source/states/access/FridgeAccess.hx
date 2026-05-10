@@ -20,6 +20,8 @@ class FridgeAccess extends MusicBeatState
 
 	var transitioning:Bool = true;
 	var toSong:Bool = false;
+
+	public static var fromFridge:Bool = false;
 	override function create()
 	{
 		super.create();
@@ -282,6 +284,7 @@ class FridgeAccess extends MusicBeatState
 			PlayState.campaignMisses = 0;
 
 			toSong = true;
+			FridgeAccess.fromFridge = true;
 		}
 		catch (e:Dynamic)
 		{

@@ -167,6 +167,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	
 				Mods.loadTopMod();
 				if (PlayState.isStoryMode) MusicBeatState.switchState(new StoryModeState());
+				else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; MusicBeatState.switchState(new states.access.FridgeAccess()); }
 				else MusicBeatState.switchState(new EXEFreeplay());
 	
 				PlayState.instance.callOnScripts('onGameOverConfirm', [false]);

@@ -239,7 +239,7 @@ function onCreatePost()
 	if not foundSkin then doSplash(nil, currentSkin, nil, true) end
 end
 
-function goodNoteHit(id,nd,nt,isn)
+function goodNoteHitPre(id,nd,nt,isn)
 	if not isn and getProperty('notes.members['..id..'].noteSplashData.disabled') == false and getProperty('notes.members['..id..'].rating') == 'sick' and not disableSkin then
 		doSplash(nd, currentSkin, pixelSplash)
 	end
@@ -259,7 +259,7 @@ function goodNoteHit(id,nd,nt,isn)
 	end
 end
 
-function opponentNoteHit(id,nd,nt,isn)
+function opponentNoteHitPre(id,nd,nt,isn)
 	if not holdsEnabled then return end
 	if isn then
 		if not stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then

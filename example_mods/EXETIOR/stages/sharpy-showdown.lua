@@ -60,7 +60,7 @@ end
 local function parseEventParams(params)
     local result = {}
     for param in string.gmatch(params, '([^,]+)') do
-        table.insert(result, tonumber(string.gsub(param, '^%s*(.-)%s*$', '%1')))
+        table.insert(result, string.gsub(param, '^%s*(.-)%s*$', '%1'))
     end
     return result
 end
@@ -93,9 +93,10 @@ function onCreatePost()
 
     makeAnimatedLuaSprite('bfX', 'characters/bfx', getProperty('boyfriend.x') + 260, getProperty('boyfriend.y') - 160)
     addAnimationByPrefix('bfX', 'idle', 'idle', 24, false)
-    addAnimationByPrefix('bfX', 'yeah', 'up', 24, true)
+    addAnimationByPrefix('bfX', 'yeah', 'singUp', 24, true)
+    addAnimationByPrefix('bfX', 'yeahMISS', 'missUp', 24, true)
     setObjectOrder('bfX', getObjectOrder('blackStage') + 1)
-    scaleObject('bfX', 0.7, 0.7)
+    scaleObject('bfX', 0.72, 0.72)
     setProperty('bfX.alpha', 0)
     addLuaSprite('bfX', true)
 
@@ -133,11 +134,11 @@ local EventHandlers = {
             doTweenAlpha('dadAlpha', 'dad', 1, 0.5)
         elseif character == 'bfX' then
             doTweenAlpha('bfXAlpha', 'bfX', 1, 1)
-            doTweenX('bfXTween', 'bfX', getProperty('boyfriend.x') + 87, 1.5, 'circOut')
-            doTweenY('bfXYTween', 'bfX', getProperty('boyfriend.y') + 34, 1.5, 'circOut')
+            doTweenX('bfXTween', 'bfX', getProperty('boyfriend.x') + 61, 1.5, 'circOut')
+            doTweenY('bfXYTween', 'bfX', getProperty('boyfriend.y') + 42, 1.5, 'circOut')
         elseif character == 'bf' then
             doTweenAlpha('bfAlpha', 'boyfriend', 1, 1)
-            doTweenAlpha('bfXAlpha', 'bfX', 0, 0.6)
+            doTweenAlpha('bfXAlpha', 'bfX', 0, 1)
         end
     end,
 
@@ -167,6 +168,12 @@ end
 function goodNoteHit()
     if getProperty('bfX.alpha') == 1 then
         playAnim('bfX', 'yeah', true)
+    end
+end
+
+function noteMiss()
+    if getProperty('bfX.alpha') == 1 then
+        playAnim('bfX', 'yeahMISS', true)
     end
 end
 

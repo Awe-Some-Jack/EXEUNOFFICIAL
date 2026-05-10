@@ -13,7 +13,7 @@ local StageConfig = {
         {name = 'lights',       path = 'SS/2nd/lights',       x = -1100, y = -1500, scaleX = 0.7,  scaleY = 0.8,                blend = 'add', alpha = 0},
     },
     animated = {
-        {name = 'eggman',  path = 'characters/eggman',  x = -1000, y = -140, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'eggman',     fps = 24, loop = false,                       alpha = 1},
+        {name = 'eggman',  path = 'characters/eggman',  x = -1000, y = -110, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'eggman',     fps = 24, loop = false,                       alpha = 1},
         {name = 'knux',    path = 'characters/k',       x = -1200, y = -750, scaleX = 1,   scaleY = 1,   animName = 'idle', animPrefix = 'knux',       fps = 24, behindPillars = true, loop = false, alpha = 1},
         {name = 'tails',   path = 'characters/tails',   x = 1200,  y = -750, scaleX = 1,   scaleY = 1,   animName = 'idle', animPrefix = 'tails',      fps = 24, loop = false,                       alpha = 1},
         {name = 'exeeye',  path = 'characters/exe1',    x = -100,  y = -150, scaleX = 0.8, scaleY = 0.8, animName = 'idle', animPrefix = 'idle',       fps = 24, loop = false, behindLights = true,  alpha = 0},
@@ -27,8 +27,8 @@ local StageConfig = {
 
 local SpriteGroups = {
     phase1 = {'bg', 'floor', 'arch', 'pillars', 'tv', 'errorScreen', 'crystalWalls', 'eggman', 'knux', 'tails', 'gfEXE'},
-    phase2 = {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye'},
-    hideable = {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye', 'dad', 'boyfriend', 'gfEXE'},
+    phase2 = {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye', 'ojoexe'},
+    hideable = {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye', 'dad', 'boyfriend', 'gfEXE', 'ojoexe'},
     beatAnimated = {'exelerr', 'sark', 'bfX', 'eggman', 'knux', 'tails', 'exeeye'},
 }
 
@@ -65,7 +65,6 @@ local function parseEventParams(params)
     return result
 end
 
-luaDebugMode = true
 function onCreatePost()
     for _, config in ipairs(StageConfig.background) do
         createSprite(config, false)
@@ -90,6 +89,12 @@ function onCreatePost()
     makeGraphic('blackStage', screenWidth * 4, screenHeight * 4, '000000')
     setProperty('blackStage.alpha', 0)
     addLuaSprite('blackStage', true)
+
+    makeLuaSprite('ojoexe', 'characters/ojo-exe1', getProperty('exeeye.x'), getProperty('exeeye.y'))
+    setObjectOrder('ojoexe', getObjectOrder('exeeye') + 1)
+    scaleObject('ojoexe', 0.25, 0.25)
+    setProperty('ojoexe.alpha', 0)
+    addLuaSprite('ojoexe', true)
 
     makeAnimatedLuaSprite('bfX', 'characters/bfx', getProperty('boyfriend.x') + 260, getProperty('boyfriend.y') - 160)
     addAnimationByPrefix('bfX', 'idle', 'idle', 24, false)
@@ -119,6 +124,7 @@ local EventHandlers = {
     ['part2'] = function()
         setSpriteAlpha(SpriteGroups.phase1, 0)
         setSpriteAlpha(SpriteGroups.phase2, 1)
+        setProperty('boyfriend.x', getProperty('boyfriend.x') + 120)
     end,
 
     ['hide'] = function()
@@ -129,10 +135,20 @@ local EventHandlers = {
         setProperty('blackStage.alpha', 1)
     end,
 
+    ['hideHUD'] = function(back)
+        for _, HUD in ipairs({'exeScoreTxt', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp'}) do doTweenAlpha(HUD..'Alpha', HUD, back == 'true' and 1 or 0, 1.2, 1) end
+        for i = 0, 7  do noteTweenAlpha(i..'Alpha', i, back == 'true' and 1 or 0, 1.2, 1) end
+    end,
+
+    ['noteTween'] = function(note)
+        noteTweenAlpha(note..'Alpha', note, 0.5, 1.2, 1)
+    end,
+
     ['tweenCharacter'] = function(character)
         if character == 'dad' then
             doTweenAlpha('dadAlpha', 'dad', 1, 0.5)
         elseif character == 'bfX' then
+            setProperty('boyfriend.x', getProperty('boyfriend.x') - 120)
             doTweenAlpha('bfXAlpha', 'bfX', 1, 1)
             doTweenX('bfXTween', 'bfX', getProperty('boyfriend.x') + 61, 1.5, 'circOut')
             doTweenY('bfXYTween', 'bfX', getProperty('boyfriend.y') + 42, 1.5, 'circOut')
@@ -152,6 +168,12 @@ function onEvent(eventName, value1, value2)
     if eventName == 'ssStageEvents' and EventHandlers[value1] then
         EventHandlers[value1](value2)
     end
+    if eventName == 'ssStageEvents' then
+        if value1 == "tweenObject" then
+			local split = stringSplit(value2, ', ')
+			doTweenAlpha(split[1]..'OP', split[1], split[2], split[3])
+		end
+    end
 end
 
 function onBeatHit()
@@ -165,18 +187,46 @@ function onBeatHit()
     end
 end
 
+
+
+local holdMove = 0
+function onUpdatePost(elapsed)
+    holdMove = holdMove + elapsed
+    if getProperty('exeeye.alpha') == 1 then
+        callMethod('exeeye.setPosition', {
+            getProperty('exeeye.x') + math.cos(holdMove + 0.1) * 0.4,
+            getProperty('exeeye.y') + math.sin(holdMove + 0.5) * 0.3,
+        })
+        callMethod('ojoexe.setPosition', {
+            getProperty('exeeye.x') + 180, getProperty('exeeye.y') + 170,
+        })
+    end
+end
+
+function onSectionHit()
+    doTweenX('ojotween', 'ojoexe', mustHitSection and getProperty('ojoexe.x') + 50 or getProperty('ojoexe.x') - 100, 0.5)
+end
+
 function goodNoteHit()
     if getProperty('bfX.alpha') == 1 then
         playAnim('bfX', 'yeah', true)
+        setProperty('bfX.y', getProperty('bfX.y') - 50)
+        runTimer('returnBFX', 0.31)
     end
 end
 
 function noteMiss()
     if getProperty('bfX.alpha') == 1 then
         playAnim('bfX', 'yeahMISS', true)
+        setProperty('bfX.y', getProperty('bfX.y') - 50)
+        runTimer('returnBFX', 0.31)
     end
 end
 
 function opponentNoteHitPre(id)
     if getProperty('dad.animation.curAnim.name') == 'laugh' then setPropertyFromGroup('notes', id, 'noAnimation', true) end
+end
+
+function onTimerCompleted(t)
+    if t == 'returnBFX' then setProperty('bfX.y', getProperty('bfX.y') + 50) end
 end

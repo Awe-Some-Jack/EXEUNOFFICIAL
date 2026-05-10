@@ -110,8 +110,7 @@ class EXEMenu extends MusicBeatState
 			new flixel.util.FlxTimer().start(0.001, (_) -> {
 				menuVideo.play();
 				menuVideo.bitmap.rate = 2.0;
-				FlxG.signals.focusLost.remove(@:privateAccess menuVideo.onFocusLost);
-				FlxG.signals.focusGained.remove(@:privateAccess menuVideo.onFocusGained);
+				FlxG.autoPause = false;
 			});
 		#end
 
@@ -482,6 +481,7 @@ class EXEMenu extends MusicBeatState
 			menuVideo.destroy();
 			menuVideo = null;
 		}
+		FlxG.autoPause = true;
 		#end
 		super.destroy();
 	}

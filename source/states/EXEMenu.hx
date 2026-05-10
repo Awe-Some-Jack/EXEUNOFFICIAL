@@ -88,30 +88,15 @@ class EXEMenu extends MusicBeatState
 
 		#if VIDEOS_ALLOWED
 		menuVideo = new hxvlc.flixel.FlxVideoSprite(0, 0);
-		menuVideo.bitmap.onFormatSetup.add(function():Void {
-			if (menuVideo != null && menuVideo.bitmap != null && menuVideo.bitmap.bitmapData != null) {
-				menuVideo.setGraphicSize(FlxG.width, FlxG.height);
-				menuVideo.updateHitbox();
-				menuVideo.screenCenter();
-			}
+		menuVideo.bitmap.onFormatSetup.add(() -> {
+			menuVideo.setGraphicSize(FlxG.width, FlxG.height);
+			menuVideo.updateHitbox();
+			menuVideo.screenCenter();
 		});
+		menuVideo.bitmap.onEndReached.add(() -> playMenuVideo());
 		add(menuVideo);
-		menuVideo.bitmap.onEndReached.add(function():Void {
-			menuVideo.bitmap.stop();
-			new flixel.util.FlxTimer().start(0.001, (_) -> {
-				menuVideo.load('assets/exe/mainmenu/menu.mp4');
-				new flixel.util.FlxTimer().start(0.001, (_) -> {
-					menuVideo.play();
-					menuVideo.bitmap.rate = 2.0;
-				});
-			});
-		});
-		if (menuVideo.load('assets/exe/mainmenu/menu.mp4'))
-			new flixel.util.FlxTimer().start(0.001, (_) -> {
-				menuVideo.play();
-				menuVideo.bitmap.rate = 2.0;
-				FlxG.autoPause = false;
-			});
+		playMenuVideo();
+		FlxG.autoPause = false;
 		#end
 
 		shadowSprite = new FlxSprite();
@@ -155,6 +140,17 @@ class EXEMenu extends MusicBeatState
 
 		curKey = [for (_ in secretCodes) 0]; //lol
 	}
+
+	#if VIDEOS_ALLOWED
+	function playMenuVideo():Void
+	{
+		if (menuVideo.load('assets/exe/mainmenu/menu.mp4'))
+			new FlxTimer().start(0.001, (_) -> {
+				menuVideo.play();
+				menuVideo.bitmap.rate = 2.0;
+			});
+	}
+	#end
 
 	function maniaEmail() {
 		canInteract = false;
@@ -265,6 +261,7 @@ class EXEMenu extends MusicBeatState
 	{
 		FlxG.sound.play(Paths.sound('confirmMenu'));
 		isBlinking = true;
+		canInteract = false;
 		blinkTimer = 0;
 		blinkCount = 0;
 	}
@@ -445,7 +442,6 @@ class EXEMenu extends MusicBeatState
 		{
 			Mods.currentModDirectory = mod;
 
-			var firstSong:String = Paths.formatToSongPath(song);
 			Song.loadFromJson(Paths.formatToSongPath(song), Paths.formatToSongPath(song));
 
 			PlayState.storyPlaylist = [song];

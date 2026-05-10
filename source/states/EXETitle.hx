@@ -122,27 +122,16 @@ class EXETitle extends MusicBeatState
 	function buildTitle():Void
 	{
 		#if VIDEOS_ALLOWED
-		final screenBg:hxvlc.flixel.FlxVideoSprite = new hxvlc.flixel.FlxVideoSprite(0, 0);
-		screenBg.bitmap.onFormatSetup.add(function():Void {
-			if (screenBg != null && screenBg.bitmap != null && screenBg.bitmap.bitmapData != null) {
-				screenBg.setGraphicSize(FlxG.width, FlxG.height);
-				screenBg.updateHitbox();
-				screenBg.screenCenter();
-			}
+		final screenBg = new hxvlc.flixel.FlxVideoSprite(0, 0);
+		screenBg.bitmap.onFormatSetup.add(() -> {
+			screenBg.setGraphicSize(FlxG.width, FlxG.height);
+			screenBg.updateHitbox();
+			screenBg.screenCenter();
 		});
-		screenBg.bitmap.onEndReached.add(function():Void {
-			screenBg.bitmap.stop();
-			new flixel.util.FlxTimer().start(0.001, (_) -> {
-				screenBg.load('assets/exe/title/statictitlemenu.mp4');
-				new flixel.util.FlxTimer().start(0.001, (_) -> screenBg.play());
-			});
-		});
+		screenBg.bitmap.onEndReached.add(() -> playTitleVideo(screenBg));
 		add(screenBg);
-		if (screenBg.load('assets/exe/title/statictitlemenu.mp4'))
-			new flixel.util.FlxTimer().start(0.001, (_) -> {
-				screenBg.play();
-				FlxG.autoPause = false;
-			});
+		playTitleVideo(screenBg);
+		FlxG.autoPause = false;
 		#end
 
 		makeLogo();
@@ -206,6 +195,14 @@ class EXETitle extends MusicBeatState
 		logotxt.updateHitbox();
 		add(logotxt);
 	}
+
+	#if VIDEOS_ALLOWED
+	function playTitleVideo(v:hxvlc.flixel.FlxVideoSprite):Void
+	{
+		if (v.load('assets/exe/title/statictitlemenu.mp4'))
+			new FlxTimer().start(0.001, (_) -> v.play());
+	}
+	#end
 
 	override function destroy():Void
 	{

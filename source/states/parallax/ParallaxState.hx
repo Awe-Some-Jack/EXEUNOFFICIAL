@@ -28,12 +28,22 @@ class ParallaxState extends MusicBeatState
 	{
 		super.create();
 
-		final paraBg:FlxGifSprite = new FlxGifSprite().loadGif('assets/exe/parallax/bg.gif');
-		paraBg.antialiasing = ClientPrefs.data.antialiasing;
-		paraBg.setGraphicSize(FlxG.width, FlxG.height);
-		paraBg.updateHitbox();
-		paraBg.screenCenter();
+		#if VIDEOS_ALLOWED
+		final paraBg = new hxvlc.flixel.FlxVideoSprite(0, 0);
+		paraBg.bitmap.onFormatSetup.add(() -> {
+			paraBg.setGraphicSize(FlxG.width, FlxG.height);
+			paraBg.updateHitbox();
+			paraBg.screenCenter();
+		});
+		paraBg.bitmap.onEndReached.add(() -> {
+			if (paraBg.load('assets/exe/parallax/bg.mp4'))
+				new FlxTimer().start(0.001, (_) -> paraBg.play());
+		});
 		add(paraBg);
+		if (paraBg.load('assets/exe/parallax/bg.mp4'))
+			new FlxTimer().start(0.001, (_) -> paraBg.play());
+		FlxG.autoPause = false;
+		#end
 
 		spikestop = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/spike.png'), X);
 		spikestop.updateHitbox();
@@ -169,6 +179,9 @@ class ParallaxState extends MusicBeatState
 			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 			parallaxSong = true;
 		}
+		#if VIDEOS_ALLOWED
+		FlxG.autoPause = true;
+		#end
 		super.destroy();
 	}
 }

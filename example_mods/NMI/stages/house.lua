@@ -31,6 +31,8 @@ function onCreatePost()
 	--precache video
 	startVideo('fakebabyfinal', false, true, false, false)
 	startVideo('fakebaby', false, true, false, false)
+	if getProperty('videoCutscene') == nil then return end
+    callMethod('remove', {instanceArg('videoCutscene')})
 	setProperty('inCutscene', false)
 	setProperty('boyfriend.alpha', 0)
 	addCharacterToList('nmi2', 'dad')

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="spritesheet.png">
+	<SubTexture name="sustain cover intro0000" x="0" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover intro0001" x="0" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover intro0002" x="50" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover intro0003" x="50" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover intro0004" x="100" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover intro0005" x="100" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover intro0006" x="150" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover intro0007" x="150" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover intro0008" x="0" y="40" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover intro0009" x="0" y="40" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover loop0000" x="50" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover loop0001" x="50" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover loop0002" x="100" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover loop0003" x="100" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover loop0004" x="150" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover loop0005" x="150" y="0" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover loop0006" x="0" y="40" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover loop0007" x="0" y="40" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover end0000" x="50" y="40" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover end0001" x="50" y="40" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover end0002" x="100" y="40" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover end0003" x="100" y="40" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover end0004" x="150" y="40" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover end0005" x="150" y="40" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover end0006" x="0" y="80" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover end0007" x="0" y="80" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover end0008" x="50" y="80" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+	<SubTexture name="sustain cover end0009" x="50" y="80" width="50" height="40" frameX="0" frameY="0" frameWidth="50" frameHeight="40" />
+</TextureAtlas>

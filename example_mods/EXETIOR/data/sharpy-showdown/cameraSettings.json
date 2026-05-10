@@ -8,7 +8,7 @@
     "GFx": 250,
     "GFy": 590,
 
-    "MiddleCamera": true,
+    "MiddleCamera": false,
     "MiddleX": 290,
     "MiddleY": 120,
 

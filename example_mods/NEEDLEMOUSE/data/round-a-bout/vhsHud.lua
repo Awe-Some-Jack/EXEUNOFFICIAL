@@ -14,7 +14,7 @@ function onCreatePost()
     setTextFont('statsTxt', 'vcr.ttf')
     addLuaText('statsTxt')
 
-    makeLuaText('songTimeTxt', '', 200, screenWidth - 215, timeY)
+    makeLuaText('songTimeTxt', '', 200, 10, 10)
     setTextSize('songTimeTxt', 58)
     setTextAlignment('songTimeTxt', 'right')
     setTextFont('songTimeTxt', 'vcr.ttf')

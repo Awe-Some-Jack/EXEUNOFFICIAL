@@ -27,7 +27,7 @@ function onCreatePost()
 	addLuaSprite('tras')
 
 	makeLuaSprite('blackscr')
-	makeGraphic('blackscr', 960, 720, '000000')
+	makeGraphic('blackscr', screenWidth, screenHeight, '000000')
 	addLuaSprite('blackscr', true)
 	setObjectCamera('blackscr', 'other')
 	setProperty('blackscr.alpha', 0)

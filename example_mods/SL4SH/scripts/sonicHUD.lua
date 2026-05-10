@@ -59,7 +59,7 @@ end
 function onUpdatePost()
 	if not inGameOver then
 		--time
-		local splittedTime = splitShit(formatTime(getSongPosition() - noteOffset), false)
+		local splittedTime = splitShit(formatTime(math.max(getSongPosition() - noteOffset, 0)), false)
 		for i = 1,math.max(#splittedTime, 1) do
 			local tag = 'timeNum'..i
 			if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedTime[i], (splittedTime[i] == ':' and 170 or 162) + ((i - 1) * 28), getProperty('timeText.y'), 3.5, true) end

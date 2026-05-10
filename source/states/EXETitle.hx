@@ -121,12 +121,29 @@ class EXETitle extends MusicBeatState
 	}
 	function buildTitle():Void
 	{
-		final screenBg:FlxGifSprite = new FlxGifSprite().loadGif('assets/exe/title/statictitlemenu.gif');
-		screenBg.antialiasing = ClientPrefs.data.antialiasing;
-		screenBg.setGraphicSize(FlxG.width, FlxG.height);
-		screenBg.updateHitbox();
-		screenBg.screenCenter();
+		#if VIDEOS_ALLOWED
+		final screenBg:hxvlc.flixel.FlxVideoSprite = new hxvlc.flixel.FlxVideoSprite(0, 0);
+		screenBg.bitmap.onFormatSetup.add(function():Void {
+			if (screenBg != null && screenBg.bitmap != null && screenBg.bitmap.bitmapData != null) {
+				screenBg.setGraphicSize(FlxG.width, FlxG.height);
+				screenBg.updateHitbox();
+				screenBg.screenCenter();
+			}
+		});
+		screenBg.bitmap.onEndReached.add(function():Void {
+			screenBg.bitmap.stop();
+			new flixel.util.FlxTimer().start(0.001, (_) -> {
+				screenBg.load('assets/exe/title/statictitlemenu.mp4');
+				new flixel.util.FlxTimer().start(0.001, (_) -> screenBg.play());
+			});
+		});
 		add(screenBg);
+		if (screenBg.load('assets/exe/title/statictitlemenu.mp4'))
+			new flixel.util.FlxTimer().start(0.001, (_) -> {
+				screenBg.play();
+				FlxG.autoPause = false;
+			});
+		#end
 
 		makeLogo();
 
@@ -188,6 +205,14 @@ class EXETitle extends MusicBeatState
 		logotxt.scale.set(0.4, 0.4);
 		logotxt.updateHitbox();
 		add(logotxt);
+	}
+
+	override function destroy():Void
+	{
+		#if VIDEOS_ALLOWED
+		FlxG.autoPause = true;
+		#end
+		super.destroy();
 	}
 
 	var mousePosition:String = 'left';

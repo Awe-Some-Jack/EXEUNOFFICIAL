@@ -2,7 +2,7 @@ local firstTime = true
 
 function onCreatePost()
 	if seenCutscene then return end
-	makeAnimatedLuaSprite('bflooking', 'characters/wholsome', getProperty('boyfriend.x') + 66, getProperty('boyfriend.y') + 29)
+	makeAnimatedLuaSprite('bflooking', 'characters/wholsome', getProperty('boyfriend.x') + 52, getProperty('boyfriend.y') + 32)
 	addAnimationByPrefix('bflooking', 'volteando', 'voltea', 24, false)
 	addAnimationByPrefix('bflooking', 'dasdad', 'voltea instancia 10000', 24, false)
 	scaleObject('bflooking', 0.7, 0.7)

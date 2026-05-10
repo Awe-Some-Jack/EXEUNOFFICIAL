@@ -1,85 +1,85 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [723, 45],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"offsets": [717, 7],
+			"offsets": [771, 51],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
 			"indices": [],
+			"name": "singRight"
+		},
+		{
+			"offsets": [719, 6],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "singDown"
 		},
 		{
 			"offsets": [737, 68],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "singUp"
 		},
 		{
-			"offsets": [704, 38],
-			"indices": [],
+			"offsets": [704, 39],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "singLeft"
 		},
 		{
-			"offsets": [773, 50],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT",
+			"offsets": [771, 81],
 			"loop": false,
-			"name": "singRight"
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "missRight"
 		},
 		{
-			"offsets": [710, 44],
-			"indices": [],
+			"offsets": [719, 41],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": false,
+			"indices": [],
 			"name": "missDown"
 		},
 		{
-			"offsets": [1324, 66],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHTmiss",
+			"offsets": [741, 75],
 			"loop": false,
-			"name": "missLeft"
-		},
-		{
-			"offsets": [1733, 99],
-			"indices": [],
 			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": false,
+			"indices": [],
 			"name": "missUp"
 		},
 		{
-			"offsets": [773, 76],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFTmiss",
+			"offsets": [704, 60],
 			"loop": false,
-			"name": "missRight"
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "missLeft"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/BF LEFT SIDE",
-	"position": [-205, 360],
+	"position": [-175, 310],
 	"healthicon": "bf",
 	"flip_x": true,
-	"healthbar_colors": [49, 176, 209],
+	"healthbar_colors": [58, 205, 241],
 	"camera_position": [290, 20],
 	"sing_duration": 5.99999999999999,
 	"scale": 0.7,

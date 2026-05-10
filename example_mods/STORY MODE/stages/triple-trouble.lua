@@ -25,7 +25,7 @@ local normal = {
 	{name = 'fire2',      path = 'fire/FIRE',    x = -800,  y = 400,   scroll = 0.925, front = false, scale = 3, animated = true, animation = {'fuego true instancia 1', 24, true}, active = true},
 	{name = 'floor',      path = 'floor',       x = -600,  y = -200,  scroll = 1,     front = false, fireOffset = -679},
 	{name = 'foreground', path = 'foreground',   x = -600,  y = -200,  scroll = 1.2,   front = true,  fireOffset = -347, lowQualityHide = true},
-	{name = 'fire1',      path = 'fire/FIRE 2',  x = -800,  y = 250,   scroll = 1.2,   front = true,  scale = 6, scaleY = 6, animated = true, animation = {'fire instancia 1', 24, true}, active = true, lowQualityHide = true},
+	{name = 'fire1',      path = 'fire/FIRE 2',  x = -800,  y = 100,   scroll = 1.2,   front = true,  scale = 6, scaleY = 6, animated = true, animation = {'fire instancia 1', 24, true}, active = true, lowQualityHide = true},
 }
 
 local xeno = {
@@ -184,10 +184,10 @@ local function spawnParticle(xMin, xMax, spawnY)
 	makeLuaSprite(id, 'tt/particles/dust' .. getRandomInt(1, 6), getRandomInt(xMin, xMax), spawnY)
 	setScrollFactor(id, pScroll, pScroll)
 	scaleObject(id, pScale, pScale)
-	setProperty(id .. '.acceleration.x', getRandomFloat(-300, 20))
+	setProperty(id .. '.acceleration.x', getRandomFloat(-300, 50))
 	setProperty(id .. '.acceleration.y', getRandomFloat(-400, -100))
 	setProperty(id .. '.antialiasing', not lowQuality)
-	doTweenAngle(id, id, getRandomFloat(40, 360), getRandomFloat(3, 5) / playbackRate)
+	setProperty(id .. '.angularVelocity', getRandomFloat(25, 240))
 	addLuaSprite(id, getRandomBool())
 	setProperty(id .. '.alpha', hideParticles and 0 or 1)
 

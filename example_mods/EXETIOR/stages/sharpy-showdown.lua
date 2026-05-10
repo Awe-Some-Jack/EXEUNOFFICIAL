@@ -1,27 +1,27 @@
 local StageConfig = {
     background = {
-        {name = 'bg', path = 'SS/bg', x = -1500, y = -1500, scaleX = 1.2, scaleY = 1.2, scrollX = 0.8, scrollY = 0.8},
-        {name = 'floor', path = 'SS/floor', x = -1500, y = 500, scaleX = 1.2, scaleY = 1.6, scrollX = 1, scrollY = 1},
-        {name = 'arch', path = 'SS/arch', x = -1000, y = -730, scaleX = 1.2, scaleY = 1.2, scrollX = 1, scrollY = 1},
-        {name = 'pillars', path = 'SS/pillars', x = -1500, y = -1050, scaleX = 1.2, scaleY = 1.2, scrollX = 1, scrollY = 1},
-        {name = 'tv', path = 'SS/tv', x = -150, y = -700, scaleX = 1.2, scaleY = 1.2, scrollX = 1, scrollY = 1},
-        {name = 'errorScreen', path = 'SS/error', x = -1100, y = -800, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1},
-        {name = 'crystalWalls', path = 'SS/crystal-walls', x = -1500, y = -1100, scaleX = 1.2, scaleY = 1.25, scrollX = 1, scrollY = 1, front = true},
-        {name = 'crystalWalls', path = 'SS/crystal-walls', x = -1500, y = -1100, scaleX = 1.2, scaleY = 1.25, scrollX = 1, scrollY = 1, front = true},
-        {name = 'spotlight2', path = 'SS/2nd/spotlight-2', x = -1100, y = -2000, scaleX = 0.68, scaleY = 1.2, alpha = 0},
-        {name = 'spotlight', path = 'SS/2nd/spotlight-1',  x = -2300, y = -1900, scaleX = 1.2, scaleY = 1.2, alpha = 0},
-        {name = 'lights', path = 'SS/2nd/lights', x = -1100, y = -1500, scaleX = 0.7, scaleY = 0.8, blend = 'add', alpha = 0},
+        {name = 'bg',           path = 'SS/bg',               x = -1500, y = -1500, scaleX = 1.2,  scaleY = 1.2,  scrollX = 0.8, scrollY = 0.8},
+        {name = 'floor',        path = 'SS/floor',            x = -1500, y = 500,   scaleX = 1.2,  scaleY = 1.6,  scrollX = 1, scrollY = 1},
+        {name = 'arch',         path = 'SS/arch',             x = -1000, y = -730,  scaleX = 1.2,  scaleY = 1.2,  scrollX = 1, scrollY = 1},
+        {name = 'pillars',      path = 'SS/pillars',          x = -1500, y = -1050, scaleX = 1.2,  scaleY = 1.2,  scrollX = 1, scrollY = 1},
+        {name = 'tv',           path = 'SS/tv',               x = -150,  y = -700,  scaleX = 1.2,  scaleY = 1.2,  scrollX = 1, scrollY = 1},
+        {name = 'errorScreen',  path = 'SS/error',            x = -1100, y = -800,  scaleX = 1,    scaleY = 1,    scrollX = 1, scrollY = 1},
+        {name = 'crystalWalls', path = 'SS/crystal-walls',    x = -1500, y = -1100, scaleX = 1.2,  scaleY = 1.25, scrollX = 1, scrollY = 1, front = true},
+        {name = 'crystalWalls', path = 'SS/crystal-walls',    x = -1500, y = -1100, scaleX = 1.2,  scaleY = 1.25, scrollX = 1, scrollY = 1, front = true},
+        {name = 'spotlight2',   path = 'SS/2nd/spotlight-2',  x = -1100, y = -2000, scaleX = 0.68, scaleY = 1.2,                               alpha = 0},
+        {name = 'spotlight',    path = 'SS/2nd/spotlight-1',  x = -2300, y = -1900, scaleX = 1.2,  scaleY = 1.2,                               alpha = 0},
+        {name = 'lights',       path = 'SS/2nd/lights',       x = -1100, y = -1500, scaleX = 0.7,  scaleY = 0.8,                blend = 'add', alpha = 0},
     },
     animated = {
-        {name = 'eggman', path = 'characters/eggman', x = -1000, y = -140, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'eggman', fps = 24, loop = false, alpha = 1},
-        {name = 'knux', path = 'characters/k', x = -1200, y = -750, scaleX = 1, scaleY = 1, animName = 'idle', animPrefix = 'knux', fps = 24, behindPillars = true, loop = false, alpha = 1},
-        {name = 'tails', path = 'characters/tails', x = 1200, y = -750, scaleX = 1, scaleY = 1, animName = 'idle', animPrefix = 'tails', fps = 24, loop = false, alpha = 1},
-        {name = 'exeeye', path = 'characters/exe1', x = -100, y = -150, scaleX = 0.8, scaleY = 0.8, animName = 'idle', animPrefix = 'idle', fps = 24, loop = false, behindLights = true, alpha = 0},
-        {name = 'exelerr', path = 'characters/exeller', x = 1300, y = 190, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'Símbolo 23', fps = 24, loop = false, alpha = 0, front = true},
-        {name = 'sark', path = 'characters/sark', x = -1700, y = 120, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'sark', fps = 24, loop = false, alpha = 0, front = true}
+        {name = 'eggman',  path = 'characters/eggman',  x = -1000, y = -140, scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'eggman',     fps = 24, loop = false,                       alpha = 1},
+        {name = 'knux',    path = 'characters/k',       x = -1200, y = -750, scaleX = 1,   scaleY = 1,   animName = 'idle', animPrefix = 'knux',       fps = 24, behindPillars = true, loop = false, alpha = 1},
+        {name = 'tails',   path = 'characters/tails',   x = 1200,  y = -750, scaleX = 1,   scaleY = 1,   animName = 'idle', animPrefix = 'tails',      fps = 24, loop = false,                       alpha = 1},
+        {name = 'exeeye',  path = 'characters/exe1',    x = -100,  y = -150, scaleX = 0.8, scaleY = 0.8, animName = 'idle', animPrefix = 'idle',       fps = 24, loop = false, behindLights = true,  alpha = 0},
+        {name = 'exelerr', path = 'characters/exeller', x = 1300,  y = 150,  scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'Símbolo 23', fps = 24, loop = false,                       alpha = 0, front = true},
+        {name = 'sark',    path = 'characters/sark',    x = -1700, y = 90,   scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'sark',       fps = 24, loop = false,                       alpha = 0, front = true}
     },
     overlays = {
-        {name = 'blackVG', path = 'VG', x = 0, y = 0, scaleX = 1, scaleY = 1}
+        {name = 'blackVG', path = 'VG',                 x = 0,     y = 0,    scaleX = 1,   scaleY = 1}
     }
 }
 
@@ -51,7 +51,6 @@ local function createSprite(config, isAnimated)
 
     addLuaSprite(config.name, config.front or false)
 end
-
 local function setSpriteAlpha(spriteList, alpha)
     for _, spriteName in ipairs(spriteList) do
         setProperty(spriteName .. '.alpha', alpha)
@@ -61,7 +60,7 @@ end
 local function parseEventParams(params)
     local result = {}
     for param in string.gmatch(params, '([^,]+)') do
-        table.insert(result, tonumber(string.gsub(param, '^%s*(.-)%s*$', '%1')))
+        table.insert(result, string.gsub(param, '^%s*(.-)%s*$', '%1'))
     end
     return result
 end
@@ -94,15 +93,16 @@ function onCreatePost()
 
     makeAnimatedLuaSprite('bfX', 'characters/bfx', getProperty('boyfriend.x') + 260, getProperty('boyfriend.y') - 160)
     addAnimationByPrefix('bfX', 'idle', 'idle', 24, false)
-    addAnimationByPrefix('bfX', 'yeah', 'up', 24, true)
+    addAnimationByPrefix('bfX', 'yeah', 'singUp', 24, true)
+    addAnimationByPrefix('bfX', 'yeahMISS', 'missUp', 24, true)
     setObjectOrder('bfX', getObjectOrder('blackStage') + 1)
-    scaleObject('bfX', 0.7, 0.7)
+    scaleObject('bfX', 0.72, 0.72)
     setProperty('bfX.alpha', 0)
     addLuaSprite('bfX', true)
 
     makeAnimatedLuaSprite('gfEXE', 'characters/gf', 0, -80)
-    addAnimationByIndices('gfEXE', 'danceLeft', 'gf idle instancia',  {0,1,2,3,4,5,6,7,8,9})
-    addAnimationByIndices('gfEXE', 'danceRight', 'gf idle instancia', {10,11,12,13,14,15,16,17,18,19})
+    addAnimationByPrefix('gfEXE', 'danceLeft', 'dance left')
+    addAnimationByPrefix('gfEXE', 'danceRight', 'dance right')
     addLuaSprite('gfEXE')
 end
 
@@ -134,11 +134,11 @@ local EventHandlers = {
             doTweenAlpha('dadAlpha', 'dad', 1, 0.5)
         elseif character == 'bfX' then
             doTweenAlpha('bfXAlpha', 'bfX', 1, 1)
-            doTweenX('bfXTween', 'bfX', getProperty('boyfriend.x') + 87, 1.5, 'circOut')
-            doTweenY('bfXYTween', 'bfX', getProperty('boyfriend.y') + 34, 1.5, 'circOut')
+            doTweenX('bfXTween', 'bfX', getProperty('boyfriend.x') + 61, 1.5, 'circOut')
+            doTweenY('bfXYTween', 'bfX', getProperty('boyfriend.y') + 42, 1.5, 'circOut')
         elseif character == 'bf' then
             doTweenAlpha('bfAlpha', 'boyfriend', 1, 1)
-            doTweenAlpha('bfXAlpha', 'bfX', 0, 0.6)
+            doTweenAlpha('bfXAlpha', 'bfX', 0, 1)
         end
     end,
 
@@ -156,7 +156,6 @@ end
 
 function onBeatHit()
     playAnim('gfEXE', curBeat %2 == 1 and 'danceRight' or 'danceLeft')
-    --debugPrint(getProperty('gfEXE.animation.curAnim.name'))
     if curBeat % 2 == 0 then
         for _, spriteName in ipairs(SpriteGroups.beatAnimated) do
             if getProperty(spriteName .. '.alpha') > 0 then
@@ -169,6 +168,12 @@ end
 function goodNoteHit()
     if getProperty('bfX.alpha') == 1 then
         playAnim('bfX', 'yeah', true)
+    end
+end
+
+function noteMiss()
+    if getProperty('bfX.alpha') == 1 then
+        playAnim('bfX', 'yeahMISS', true)
     end
 end
 

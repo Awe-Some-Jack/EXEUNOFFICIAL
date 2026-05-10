@@ -9,6 +9,6 @@ function onStartCountdown()
     return Function_Continue
 end
 
-function onEndVideo()
+function onVideoCompleted()
     startCountdown()
 end

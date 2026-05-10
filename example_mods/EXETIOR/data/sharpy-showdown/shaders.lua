@@ -1,7 +1,7 @@
 local shaders = {
     {name = 'chrom', shader = 'chromabber', x = 0,
     uniforms = {
-        amount = 0.3
+        amount = 0.1
     }},
 
     {name = 'bw', shader = 'blackwhite', x = 0,
@@ -19,8 +19,8 @@ local shaders = {
     {name = 'color', shader = 'DropShadowShader', x = 0, angle = 0, scaleX = 1, scaleY = 1,
     uniforms = {
         hue = 1,
-        contrast = -10,
-        saturation = -50,
+        contrast = 10,
+        saturation = 0,
         brightness = -15,
     }},
 }

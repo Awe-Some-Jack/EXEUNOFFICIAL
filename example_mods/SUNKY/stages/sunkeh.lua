@@ -77,10 +77,10 @@ function onUpdatePost()
 	local iconScale = 0.7 * invZoom
 	for i = 1, 2 do
 		scaleObject('secondbg' .. i, invZoom, invZoom)
-		callMethod('secondbg' .. i .. '.setPosition', {(960 - getProperty('secondbg' .. i .. '.width')) / 2, (720 - getProperty('secondbg' .. i .. '.height')) / 2})
+		callMethod('secondbg' .. i .. '.setPosition', {(screenWidth - getProperty('secondbg' .. i .. '.width')) / 2, (screenHeight - getProperty('secondbg' .. i .. '.height')) / 2})
 
 		scaleObject('icon' .. i, iconScale, iconScale)
-		callMethod('icon' .. i .. '.setPosition', {(960 - getProperty('icon' .. i .. '.width')) / 2, (720 - getProperty('icon' .. i .. '.height')) / 2})
+		callMethod('icon' .. i .. '.setPosition', {(screenWidth - getProperty('icon' .. i .. '.width')) / 2, (screenHeight - getProperty('icon' .. i .. '.height')) / 2})
 	end
 end
 

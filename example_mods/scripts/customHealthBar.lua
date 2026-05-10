@@ -28,7 +28,7 @@ local healthBarsBG = {
     ["hud_majin"] = {
         songs = {'endless-us', 'endless-jp'},
         x = - 190,
-        y = - 75
+        y = - 70
     },
     ["hud_fakebaby"] = {
         songs = {'fakebaby'},
@@ -48,7 +48,7 @@ local healthBarsBG = {
     ["hud_too-fest"] = {
         songs = {'too-fest'},
         x = - 190,
-        y = - 60
+        y = - 65
     },
     ["hud_lordx"] = {
         songs = {'cycles', 'hellbent', 'fate', 'gotta-go'},
@@ -63,7 +63,7 @@ local healthBarsBG = {
     ["hud_hedge"] = {
         songs = {'hedge', 'manual-blast'},
         x = - 190,
-        y = - 65
+        y = - 70
     },
 }
 local blacklistenedSongs = {'prey', 'godspeed', 'forestall-desire', 'deception', 'fatality', 'longstrider'}

@@ -58,6 +58,8 @@ class ExeControlsState extends MusicBeatState
 	var currentRow:Int = 0;
 	var categoryRowInColumn:Int = 0;
 	var optionID:Int = -1;
+	var currentStartX:Float = 0;
+	var currentStartY:Float = 0;
 
 	override public function create()
 	{
@@ -163,11 +165,26 @@ class ExeControlsState extends MusicBeatState
 
 		for (i in 0...sectionsList.length)
 		{
-			if (sectionsList[i].label == "ACTIONS")
+			if (sectionsList[i].label == "NOTES")
+			{
+				currentColumn = 0;
+				currentRow = 0;
+				currentStartX = FlxG.width * 0.18;
+				currentStartY = title.y + 80;
+			}
+			else if (sectionsList[i].label == "UI")
 			{
 				currentColumn = 1;
-				categoryRowInColumn = 0;
 				currentRow = 0;
+				currentStartX = FlxG.width * 0.38;
+				currentStartY = title.y + 220;
+			}
+			else if (sectionsList[i].label == "ACTIONS")
+			{
+				currentColumn = 2;
+				currentRow = 0;
+				currentStartX = FlxG.width * 0.62;
+				currentStartY = title.y + 80;
 			}
 
 			if (sectionsList[i].isCategory == true)
@@ -458,10 +475,10 @@ class ExeControlsState extends MusicBeatState
 		currentRow = categoryRowInColumn;
 
 		var section = new FlxText(0, 0, 0, label, 50);
-		section.setFormat(Paths.font("SonicCD.ttf"), 28, FlxColor.YELLOW, LEFT);
+		section.setFormat(Paths.font("SonicCD.ttf"), 16, FlxColor.YELLOW, LEFT);
 		section.ID = optionID;
-		section.x = currentColumn == 0 ? 150 : FlxG.width / 2 + 50;
-		section.y = title.y + 100 + (currentRow * 50);
+		section.x = currentStartX;
+		section.y = currentStartY + (currentRow * 42);
 		sectionsGrp.add(section);
 		sectionPos.push({x: section.x, y: section.y});
 
@@ -470,7 +487,7 @@ class ExeControlsState extends MusicBeatState
 		sectionBG.updateHitbox();
 		sectionBG.ID = optionID;
 		var sep = 14;
-		var sectionWidth = 24 * label.length;
+		var sectionWidth = 18 * label.length;
 		sectionBG.x = section.x + ((sectionWidth - sectionBG.width) / 2) - 20;
 		sectionBG.y = (section.y - (section.size / 2)) + (sep * 2.5);
 		sectionBG.alpha = 0.5;
@@ -499,11 +516,11 @@ class ExeControlsState extends MusicBeatState
 		optionID++;
 
 		var section = new FlxText(0, 0, 0, label, 50);
-		section.setFormat(Paths.font("SonicCD.ttf"), 24, FlxColor.WHITE, LEFT);
+		section.setFormat(Paths.font("SonicCD.ttf"), 15, FlxColor.WHITE, LEFT);
 		section.ID = optionID;
-		var columnX = currentColumn == 0 ? 150 : FlxG.width / 2 + 50;
+		var columnX = currentStartX;
 		section.x = columnX;
-		section.y = title.y + 100 + (currentRow * 50);
+		section.y = currentStartY + (currentRow * 42);
 		sectionsGrp.add(section);
 		sectionPos.push({x: section.x, y: section.y});
 
@@ -512,7 +529,7 @@ class ExeControlsState extends MusicBeatState
 		sectionBG.updateHitbox();
 		sectionBG.ID = optionID;
 		var sep = 14;
-		var sectionWidth = 20 * label.length;
+		var sectionWidth = 15 * label.length;
 		sectionBG.x = section.x + ((sectionWidth - sectionBG.width) / 2);
 		sectionBG.y = (section.y - (section.size / 2)) + (sep * 2.5);
 		sectionBGGrp.add(sectionBG);
@@ -524,9 +541,9 @@ class ExeControlsState extends MusicBeatState
 			: InputFormatter.getGamepadName(gamepadKeys != null && gamepadKeys.length > 0 ? gamepadKeys[0] : NONE);
 
 		var propTxt = new FlxText(0, 0, 0, keyText.toUpperCase(), 50);
-		propTxt.setFormat(Paths.font("SonicCD.ttf"), 24, FlxColor.WHITE, LEFT);
+		propTxt.setFormat(Paths.font("SonicCD.ttf"), 15, FlxColor.WHITE, LEFT);
 		propTxt.ID = optionID;
-		propTxt.x = columnX + 250;
+		propTxt.x = columnX + 380;
 		propTxt.y = section.y;
 		propertieTxtGrp.add(propTxt);
 		propertiesPos.push({x: propTxt.x, y: propTxt.y});

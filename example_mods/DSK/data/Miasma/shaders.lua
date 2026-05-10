@@ -49,6 +49,10 @@ local onTween1 = false
 local onTween2 = false
 local onTween3 = false
 local onTween4 = false
+
+local cachedColorAlpha = -1
+local cachedColorColor = -1
+local floor = math.floor
 function onEvent(eventName, value1, value2)
     local shaderValues = stringSplit(value1, ',')
     local tweenSettings = stringSplit(value2, ',')
@@ -98,8 +102,9 @@ end
 
 function onUpdatePost()
     if onTween1 then
-        setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
-        setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))
+        local shineX = getProperty('shine.x')
+        setShaderFloat('shine', 'brightness', shineX * 2)
+        setShaderFloat('shine', 'contrast', 1 + (shineX * 4))
     end
     if onTween2 then
         setShaderFloat('chrom', 'amount', getProperty('chrom.x'))
@@ -108,13 +113,27 @@ function onUpdatePost()
         setShaderFloat('bw', 'grayness', getProperty('bw.x'))
     end
     if onTween4 then
-        setShaderFloat('color', 'hue', getProperty('color.x'))
+        setShaderFloat('color', 'hue',        getProperty('color.x'))
         setShaderFloat('color', 'brightness', getProperty('color.scale.y'))
         setShaderFloat('color', 'saturation', getProperty('color.angle'))
-        setShaderFloat('color', 'contrast', getProperty('color.scale.x'))
+        setShaderFloat('color', 'contrast',   getProperty('color.scale.x'))
     end
-        setShaderFloat('color', 'uSpriteAlpha', getProperty('color.alpha'))
-	setShaderFloatArray('color', 'uSpriteColor', {(math.floor(getProperty('color.color') / 65536) % 256) / 255, (math.floor(getProperty('color.color') / 256) % 256) / 255, (getProperty('color.color') % 256) / 255})
+
+    local alpha = getProperty('color.alpha')
+    if alpha ~= cachedColorAlpha then
+        setShaderFloat('color', 'uSpriteAlpha', alpha)
+        cachedColorAlpha = alpha
+    end
+
+    local col = getProperty('color.color')
+    if col ~= cachedColorColor then
+        setShaderFloatArray('color', 'uSpriteColor', {
+            (floor(col / 65536) % 256) / 255,
+            (floor(col / 256)   % 256) / 255,
+            (col % 256) / 255
+        })
+        cachedColorColor = col
+    end
 end
 
 function onTweenCompleted(tag)

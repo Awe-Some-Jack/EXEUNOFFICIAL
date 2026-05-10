@@ -277,7 +277,7 @@ end
 
 function doSplash(data, skin, pixel, precache)
 	data = data or 0
-	local x, y = getProperty('playerStrums.members['..data..'].x'), getProperty('playerStrums.members['..data..'].y')
+	local x, y = getProperty('playerStrums.members['..data..'].x') or 0, getProperty('playerStrums.members['..data..'].y') or 0
 	local tag = 'dasplash_'..math.floor(math.min(getSongPosition(), 0))..data
 
 	local indicesAnim = false

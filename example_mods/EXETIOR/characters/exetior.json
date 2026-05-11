@@ -1,68 +1,68 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [160, 48],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [317, 1],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [107, -113],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [145, 155],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [41, -55],
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
-			"loop": false,
 			"offsets": [172, 62],
+			"loop": false,
+			"fps": 24,
 			"anim": "laugh",
-			"fps": 24,
-			"name": "risa",
-			"indices": []
+			"indices": [],
+			"name": "risa"
 		},
 		{
-			"loop": false,
-			"offsets": [215, 54],
-			"anim": "s",
-			"fps": 12,
-			"name": "enconder",
-			"indices": []
-		},
-		{
-			"loop": false,
 			"offsets": [259, 46],
-			"anim": "anim",
+			"loop": false,
 			"fps": 24,
-			"name": "escape",
-			"indices": []
+			"anim": "anim",
+			"indices": [],
+			"name": "escape"
+		},
+		{
+			"offsets": [215, 54],
+			"indices": [],
+			"fps": 24,
+			"anim": "s",
+			"loop": false,
+			"name": "enconder"
 		}
 	],
 	"vocals_file": "",

@@ -1,0 +1,8 @@
+(DIGA BYE BYE EXCLUSIVE)
+
+Value 1: Text Line (Or blank to clear the cur. text)
+Value 2: Word Index + Color (optional)
+
+For example:
+Value 1: Hello World, I'm going to kill you.
+Value 2: 2,FF0000

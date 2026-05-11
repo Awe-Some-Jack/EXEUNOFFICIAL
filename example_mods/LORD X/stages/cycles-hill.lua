@@ -117,12 +117,6 @@ function onSongStart()
 	runTimer('startTransition', 1)
 end
 
-function opponentNoteHit()
-	if getProperty('health') > MIN_HEALTH then
-		setProperty('health', getProperty('health') - HEALTH_DRAIN)
-	end
-end
-
 function onUpdate(elapsed)
 	shaderTime = shaderTime + elapsed
 	setShaderFloat('water', 'iTime', shaderTime)

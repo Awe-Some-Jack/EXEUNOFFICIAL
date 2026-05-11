@@ -1,18 +1,14 @@
 --Script by Raimbowcore12
 
-local byebyeChance = 0
 local byeByeActivated = false
 
 --CurStep doesn't work, so i'll repeat the event here with the byeByeActivated variable (Event script by Dudu)
 local curText = {}
 local curStringText = ''
 
-function onCreatePost() byebyeChance = getRandomInt(0, 100) end
-
 function onEvent(e, v1, v2)
     if e == "triggerByeByeChance" then
-        if byebyeChance == 1 then
-            byeByeActivated = true
+        if byeByeActivated then
             setProperty("opponentVocals.volume", 0)
             playSound("DIGA-BYE-BYE", 1, "yes")
             runTimer("setVocalsBack", 8)
@@ -76,6 +72,21 @@ function onEvent(e, v1, v2)
 	end
 end
 
+local curKey = 1
+local code = 'byebye'
+function onUpdatePost(e)
+    if curBeat < 272 then
+        if keyboardJustPressed(code:sub(curKey, curKey):upper()) then
+            curKey = curKey + 1
+        end
+        if curKey >= 7 then
+            curKey = 0
+            playSound('ringSound')
+            byeByeActivated = true
+        end
+    end
+end
+
 function clearLyrics()
 	removeLuaSprite('lyricBG_'..curText[1]:gsub('.', ''))
 	for i,word in ipairs(curText) do
@@ -98,48 +109,6 @@ end
 function getHealthColor(arg)
 	return string.format("%02x%02x%02x", math.floor(getProperty(arg..'.healthColorArray[0]')), math.floor(getProperty(arg..'.healthColorArray[1]')), math.floor(getProperty(arg..'.healthColorArray[2]')))
 end
-
---[[
-function onStepHit()
-    if byeByeActivated then
-        if curStep == 1104 then
-            triggerEvent("Normal Lyrics", "E; A;GO;RA; EU; VOU; A;TRÁS; DE; VOCÊ;", "1, 453301")
-        elseif curStep == 1116 then
-            triggerEvent("Normal Lyrics", "E; A;GO;RA; EU; VOU; A;TRÁS; DE; VOCÊ;", "2, 453301")
-        elseif curStep == 1118  then
-            triggerEvent("Normal Lyrics", "E; A;GO;RA; EU; VOU; A;TRÁS; DE; VOCÊ;", "3, 453301")
-        elseif curStep == 1120 then
-            triggerEvent("Normal Lyrics", "E; A;GO;RA; EU; VOU; A;TRÁS; DE; VOCÊ;", "4, 453301")
-        elseif curStep == 1123 then
-            triggerEvent("Normal Lyrics", "E; A;GO;RA; EU; VOU; A;TRÁS; DE; VOCÊ;", "5, 453301")
-        elseif curStep == 1124 then
-            triggerEvent("Normal Lyrics", "E; A;GO;RA; EU; VOU; A;TRÁS; DE; VOCÊ;", "6, 453301")
-        elseif curStep == 1125 then
-            triggerEvent("Normal Lyrics", "E; A;GO;RA; EU; VOU; A;TRÁS; DE; VOCÊ;", "7, 453301")
-        elseif curStep == 1128 then
-            triggerEvent("Normal Lyrics", "E; A;GO;RA; EU; VOU; A;TRÁS; DE; VOCÊ;", "8, 453301")
-        elseif curStep == 1132 then
-            triggerEvent("Normal Lyrics", "E; A;GO;RA; EU; VOU; A;TRÁS; DE; VOCÊ;", "9, 453301")
-        elseif curStep == 1134 then
-            triggerEvent("Normal Lyrics", "E; A;GO;RA; EU; VOU; A;TRÁS; DE; VOCÊ;", "10, 453301")
-        elseif curStep == 1136 then
-            triggerEvent("Normal Lyrics", "E; A;GO;RA; EU; VOU; A;TRÁS; DE; VOCÊ;", "11, 453301")
-        elseif curStep == 1145 then
-            triggerEvent("Normal Lyrics", "", "")
-        elseif curStep == 1148 then
-            triggerEvent("Normal Lyrics", "DI;GA BYE;BYE", "1, 453301")
-        elseif curStep == 1150 then
-            triggerEvent("Normal Lyrics", "DI;GA BYE;BYE", "2, 453301")
-        elseif curStep == 1152 then
-            triggerEvent("Normal Lyrics", "DI;GA BYE;BYE", "3, f0000")
-        elseif curStep == 1160 then
-            triggerEvent("Normal Lyrics", "DI;GA BYE;BYE", "4, f0000")
-        elseif curStep >= 1172  then
-            triggerEvent("Normal Lyrics", "", "")
-        end
-    end
-end
-]]
 
 function onTimerCompleted(t)
     if t == "setVocalsBack" then byeByeActivated = false setProperty("opponentVocals.volume", 1) end

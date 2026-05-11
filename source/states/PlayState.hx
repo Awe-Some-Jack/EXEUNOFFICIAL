@@ -960,6 +960,15 @@ class PlayState extends MusicBeatState
 
 	public static var startOnTime:Float = 0;
 
+	public static var savedFromOptions:Bool     = false;
+	public static var savedSongScore:Int        = 0;
+	public static var savedSongMisses:Int       = 0;
+	public static var savedHealth:Float         = 1;
+	public static var savedCombo:Int            = 0;
+	public static var savedSongTime:Float       = 0;
+	public static var savedTotalPlayed:Int      = 0;
+	public static var savedTotalNotesHit:Float  = 0;
+
 	public function startCountdown()
 	{
 		if(startedCountdown) {
@@ -1212,6 +1221,19 @@ class PlayState extends MusicBeatState
 
 		setSongTime(Math.max(0, startOnTime - 500) + Conductor.offset);
 		startOnTime = 0;
+
+		if (savedFromOptions)
+		{
+			savedFromOptions  = false;
+			songScore         = savedSongScore;
+			songMisses        = savedSongMisses;
+			health            = savedHealth;
+			combo             = savedCombo;
+			totalPlayed       = savedTotalPlayed;
+			totalNotesHit     = savedTotalNotesHit;
+			RecalculateRating(false, false);
+			updateScore(false, false);
+		}
 
 		if(paused) {
 			//trace('Oopsie doopsie! Paused sound');

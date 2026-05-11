@@ -264,10 +264,18 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.paused = true; // For lua
 					PlayState.instance.vocals.volume = 0;
 					PlayState.instance.canResync = false;
+					PlayState.savedSongTime      = Conductor.songPosition;
+					PlayState.savedSongScore     = PlayState.instance.songScore;
+					PlayState.savedSongMisses    = PlayState.instance.songMisses;
+					PlayState.savedHealth        = PlayState.instance.health;
+					PlayState.savedCombo         = PlayState.instance.combo;
+					PlayState.savedTotalPlayed   = PlayState.instance.totalPlayed;
+					PlayState.savedTotalNotesHit = PlayState.instance.totalNotesHit;
+					PlayState.savedFromOptions   = true;
+					OptionsState.onPlayState = true;
 					MusicBeatState.switchState(new OptionsState());
 					if (ClientPrefs.data.pauseMusic != 'None')
 						FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.data.pauseMusic)), 1);
-					OptionsState.onPlayState = true;
 				case 3:
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 					PlayState.deathCounter    = 0;

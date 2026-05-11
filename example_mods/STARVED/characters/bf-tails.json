@@ -1,78 +1,55 @@
 {
 	"animations": [
 		{
+			"offsets": [230, 10],
 			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "idle",
 			"fps": 24,
-			"name": "idle instancia ",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				230,
-				10
-			],
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "singRIGHT instancia ",
-			"indices": []
+			"indices": [],
+			"name": "singRIGHT instancia "
 		},
 		{
+			"offsets": [80, -20],
 			"loop": false,
-			"offsets": [
-				80,
-				-20
-			],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "singDOWN instancia ",
-			"indices": []
+			"indices": [],
+			"name": "singDOWN instancia "
 		},
 		{
+			"offsets": [45, 87],
 			"loop": false,
-			"offsets": [
-				40,
-				20
-			],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "singUP instancia",
-			"indices": []
+			"indices": [],
+			"name": "singUP instancia"
 		},
 		{
+			"offsets": [0, 20],
 			"loop": false,
-			"offsets": [
-				0,
-				20
-			],
-			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "singLEFT instancia ",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "singLEFT instancia "
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "idle instancia "
 		}
 	],
+	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/starved_tails",
-	"position": [
-		0,
-		70
-	],
+	"position": [0, 70],
 	"healthicon": "tailsstarved",
 	"flip_x": false,
-	"healthbar_colors": [
-		255,
-		157,
-		0
-	],
-	"camera_position": [
-		-150,
-		-140
-	],
+	"healthbar_colors": [255, 157, 0],
+	"camera_position": [-150, -140],
 	"sing_duration": 4,
-	"scale": 0.9
+	"scale": 0.9,
+	"_editor_isPlayer": true
 }

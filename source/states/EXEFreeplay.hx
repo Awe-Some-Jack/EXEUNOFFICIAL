@@ -118,6 +118,8 @@ class EXEFreeplay extends MusicBeatState
 		if (FlxG.stage != null && FlxG.stage.window != null)
 			previousWindowName = FlxG.stage.window.title;
 
+		Conductor.bpm = 192;
+
 		Paths.clearStoredMemory();
 
 		PlayState.isStoryMode = false;
@@ -383,7 +385,8 @@ class EXEFreeplay extends MusicBeatState
 			exeTexts.add(exeText);
 		}
 	}
-
+	
+	var holdCheck:Float = 0;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -416,10 +419,24 @@ class EXEFreeplay extends MusicBeatState
 		if (changeCooldown <= 0 && !choosingSong)
 		{
 			var newSel = selectedBox;
-			if (Controls.instance.UI_RIGHT_P)
-				newSel = selectedBox + 1;
-			else if (Controls.instance.UI_LEFT_P)
-				newSel = selectedBox - 1;
+
+
+
+			if (Controls.instance.UI_LEFT_P || Controls.instance.UI_RIGHT_P) //One press
+			{
+				newSel = selectedBox + (Controls.instance.UI_RIGHT_P ? 1 : -1);
+				holdCheck = 0;
+			}
+
+			if (Controls.instance.UI_LEFT || Controls.instance.UI_RIGHT) //Hold and beat
+			{
+				var beatTime:Float = Conductor.calculateCrochet(Conductor.bpm) / 1000;
+				var lastHold:Int = Math.floor((holdCheck - 0.5) / beatTime);
+				holdCheck += elapsed;
+				var newHold:Int = Math.floor((holdCheck - 0.5) / beatTime);
+				if (holdCheck > 0.5 && newHold - lastHold > 0)
+				newSel = selectedBox + (newHold - lastHold) * (Controls.instance.UI_RIGHT ? 1 : -1);
+			}else holdCheck = 0;
 
 			newSel = FlxMath.wrap(newSel, 0, songEntries.length - 1);
 
@@ -429,8 +446,8 @@ class EXEFreeplay extends MusicBeatState
 
 		if (choosingSong)
 		{
-			if (Controls.instance.UI_DOWN_P) chooseSong(1);
-			if (Controls.instance.UI_UP_P)   chooseSong(-1);
+			if (Controls.instance.UI_DOWN_P){ chooseSong(1);  holdCheck = 0; }
+			if (Controls.instance.UI_UP_P){   chooseSong(-1); holdCheck = 0; }
 
 			if (Controls.instance.ACCEPT)
 				launchSong();
@@ -450,6 +467,7 @@ class EXEFreeplay extends MusicBeatState
 
 		if (Controls.instance.ACCEPT)
 		{
+			holdCheck = 0;
 			var entry = songEntries[selectedBox];
 			Mods.currentModDirectory = entry.folder;
 			PlayState.storyWeek      = entry.week;

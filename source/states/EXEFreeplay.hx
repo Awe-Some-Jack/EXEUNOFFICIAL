@@ -89,7 +89,7 @@ class EXEFreeplay extends MusicBeatState
 	var activeTweens:Array<FlxTween> = [];
 	var previousWindowName:String = "";
 
-	var arrowIcons:Array<String> = ["^", "<", "v", ">"];
+	static final ARROW_ICONS:Array<String> = ["^", "<", "v", ">"];
 	var currentArrowIndex:Int = 0;
 	var arrowTimer:FlxTimer;
 	var transitionTimer:FlxTimer;
@@ -198,8 +198,7 @@ class EXEFreeplay extends MusicBeatState
 			Difficulty.loadFromWeek();
 		}
 
-		var normalIdx:Int = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-		curDifficulty = (normalIdx > -1) ? normalIdx : Math.round(Math.max(0, Difficulty.defaultList.indexOf(Difficulty.getDefault())));
+		curDifficulty = getNormalDiffIdx();
 		if (Difficulty.list.length == 0) curDifficulty = 0;
 		lastDifficultyName = Difficulty.list.length > 0 ? Difficulty.getString(curDifficulty, false) : '';
 
@@ -215,7 +214,7 @@ class EXEFreeplay extends MusicBeatState
 		updateWindowTitle();
 		arrowTimer = new FlxTimer().start(ARROW_UPDATE_INTERVAL, function(_)
 		{
-			currentArrowIndex = (currentArrowIndex + 1) % arrowIcons.length;
+			currentArrowIndex = (currentArrowIndex + 1) % ARROW_ICONS.length;
 			updateWindowTitle();
 		}, 0);
 
@@ -299,11 +298,10 @@ class EXEFreeplay extends MusicBeatState
 		try
 		{
 			#if sys
-			if (sys.FileSystem.exists(path))
-				return BitmapData.fromFile(path);
+			return BitmapData.fromFile(path);
+			#else
+			return openfl.utils.Assets.getBitmapData(path);
 			#end
-			if (openfl.utils.Assets.exists(path))
-				return openfl.utils.Assets.getBitmapData(path);
 		}
 		catch (e:Dynamic) {}
 		return null;
@@ -394,11 +392,13 @@ class EXEFreeplay extends MusicBeatState
 
 		if (subState != null) return;
 
+		var prevScore  = lerpScore;
+		var prevRating = lerpRating;
 		lerpScore  = Math.floor(FlxMath.lerp(intendedScore, lerpScore, Math.exp(-elapsed * 24)));
 		lerpRating = FlxMath.lerp(intendedRating, lerpRating, Math.exp(-elapsed * 12));
 		if (Math.abs(lerpScore - intendedScore) <= 10) lerpScore = intendedScore;
 		if (Math.abs(lerpRating - intendedRating) <= 0.01) lerpRating = intendedRating;
-		updateScoreDisplay();
+		if (lerpScore != prevScore || lerpRating != prevRating) updateScoreDisplay();
 
 		if (Controls.instance.BACK)
 		{
@@ -455,8 +455,7 @@ class EXEFreeplay extends MusicBeatState
 			PlayState.storyWeek      = entry.week;
 			Difficulty.loadFromWeek();
 
-			var normalIdx3 = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-			curDifficulty = (normalIdx3 > -1) ? normalIdx3 : 0;
+			curDifficulty = getNormalDiffIdx();
 
 			choosingSong    = true;
 			cancelAllTweens();
@@ -607,7 +606,6 @@ class EXEFreeplay extends MusicBeatState
 			songScrollOffset = songSelector - MAX_VISIBLE_SONGS + 1;
 
 		var slot0Y:Float = FlxG.height - 30 - (MAX_VISIBLE_SONGS * SONG_SPACING_Y);
-		var prevOffset = songScrollOffset; // saved before update above
 
 		for (j in 0...activeSongCount)
 		{
@@ -642,13 +640,12 @@ class EXEFreeplay extends MusicBeatState
 			}
 		}
 
-		var songs2 = getSongsForBox(selectedBox);
-		if (songSelector < songs2.length)
+		if (songSelector < songs.length)
 		{
 			var entry = songEntries[selectedBox];
 			Mods.currentModDirectory = entry.folder;
-			intendedScore  = Highscore.getScore(songs2[songSelector], curDifficulty);
-			intendedRating = Highscore.getRating(songs2[songSelector], curDifficulty);
+			intendedScore  = Highscore.getScore(songs[songSelector], curDifficulty);
+			intendedRating = Highscore.getRating(songs[songSelector], curDifficulty);
 		}
 
 		updateSelectedCover(daStatic);
@@ -714,8 +711,7 @@ class EXEFreeplay extends MusicBeatState
 		Mods.currentModDirectory = entry.folder;
 		PlayState.storyWeek      = entry.week;
 		Difficulty.loadFromWeek();
-		var normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-		var launchDiff = (normalIdx > -1) ? normalIdx : 0;
+		var launchDiff = getNormalDiffIdx();
 
 		var poop:String = Highscore.formatSong(songLower, launchDiff);
 
@@ -781,8 +777,7 @@ class EXEFreeplay extends MusicBeatState
 			PlayState.storyWeek      = entry.week;
 			Difficulty.loadFromWeek();
 
-			var normalIdx2 = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-			curDifficulty = (normalIdx2 > -1) ? normalIdx2 : 0;
+			curDifficulty = getNormalDiffIdx();
 			changeDiff(0);
 		}
 	}
@@ -871,13 +866,6 @@ class EXEFreeplay extends MusicBeatState
 						box.updateHitbox();
 						box.x = centerX - box.width / 2;
 						box.y = centerY - box.height / 2;
-					},
-					onComplete: function(_)
-					{
-						box.scale.set(targetBoxScale, targetBoxScale);
-						box.updateHitbox();
-						box.x = centerX - box.width / 2;
-						box.y = centerY - box.height / 2;
 					}
 				});
 				FlxTween.tween(box, {alpha: 1.0}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
@@ -899,20 +887,6 @@ class EXEFreeplay extends MusicBeatState
 					ease: FlxEase.backOut,
 					onUpdate: function(_)
 					{
-						cover.updateHitbox();
-						cover.x = centerX - cover.width / 2;
-						cover.y = centerY - cover.height / 2;
-						if (ss != null)
-						{
-							ss.setGraphicSize(Std.int(cover.width), Std.int(cover.height));
-							ss.updateHitbox();
-							ss.x = cover.x;
-							ss.y = cover.y;
-						}
-					},
-					onComplete: function(_)
-					{
-						cover.scale.set(targetCoverScale, targetCoverScale);
 						cover.updateHitbox();
 						cover.x = centerX - cover.width / 2;
 						cover.y = centerY - cover.height / 2;
@@ -1056,7 +1030,13 @@ class EXEFreeplay extends MusicBeatState
 	function updateWindowTitle()
 	{
 		if (FlxG.stage != null && FlxG.stage.window != null)
-			FlxG.stage.window.title = arrowIcons[currentArrowIndex] + " FREEPLAY " + arrowIcons[currentArrowIndex];
+			FlxG.stage.window.title = ARROW_ICONS[currentArrowIndex] + " FREEPLAY " + ARROW_ICONS[currentArrowIndex];
+	}
+
+	inline function getNormalDiffIdx():Int
+	{
+		var idx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
+		return idx > -1 ? idx : 0;
 	}
 
 	function weekIsLocked(name:String):Bool

@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dano.png">
+<SubTexture name="dano idle0000" x="0" y="0" width="52" height="19" frameX="0" frameY="0" frameWidth="46" frameHeight="13" />
+<SubTexture name="dano selected0000" x="0" y="19" width="52" height="19" frameX="0" frameY="0" frameWidth="46" frameHeight="13" />
+</TextureAtlas>

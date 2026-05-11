@@ -50,6 +50,15 @@ class MusicBeatState extends FlxTransitionableState
 	public static var timePassedOnState:Float = 0;
 	override function update(elapsed:Float)
 	{
+		#if !mobile
+		if (FlxG.keys.justPressed.F8 && Main.fpsVar != null)
+		{
+			Main.fpsVar.visible = !Main.fpsVar.visible;
+			ClientPrefs.data.showFPS = Main.fpsVar.visible;
+			ClientPrefs.saveSettings();
+		}
+		#end
+
 		//everyStep();
 		var oldStep:Int = curStep;
 		timePassedOnState += elapsed;

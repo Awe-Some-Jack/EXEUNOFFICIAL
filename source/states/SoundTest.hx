@@ -7,6 +7,7 @@ import backend.Highscore;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxBackdrop;
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.text.FlxText;
 import flixel.util.FlxAxes;
 import flixel.util.FlxColor;
@@ -29,24 +30,20 @@ typedef SoundTestData = {
 
 class SoundTest extends MusicBeatState 
 {
-	static final COLOR_INACTIVE:FlxColor = FlxColor.fromRGB(174, 179, 251);
-	static final COLOR_INACTIVE_SHADOW:FlxColor = FlxColor.fromRGB(106, 110, 159);
-	static final COLOR_ACTIVE:FlxColor = FlxColor.fromRGB(254, 174, 0);
-	static final COLOR_ACTIVE_SHADOW:FlxColor = FlxColor.fromRGB(253, 36, 3);
-	static final COLOR_TITLE:FlxColor = FlxColor.fromRGB(0, 163, 255);
-
 	static final ARROW_ICONS:Array<String> = ["^", "<", "v", ">"];
 
 	var codes:Array<SoundTestData> = [];
 
 	var backdrop:FlxBackdrop;
-	var titleText:FlxText;
 	var whiteBG:FlxSprite;
 
-	var pcmLabel:FlxText;
-	var daLabel:FlxText;
-	var pcmNumber:FlxText;
-	var daNumber:FlxText;
+	var pcmLabel:FlxSprite;
+	var daLabel:FlxSprite;
+
+	var pcmDigits:Array<FlxSprite> = [];
+	var daDigits:Array<FlxSprite>  = [];
+
+	var _digitFrames:Array<flixel.graphics.frames.FlxFrame> = [];
 
 	var pcmValue:Int = 0;
 	var daValue:Int = 0;
@@ -76,7 +73,7 @@ class SoundTest extends MusicBeatState
 		createLabels();
 		createNumbers();
 		startArrowAnimation();
-		updateTextColors();
+		updateLabelColors();
 
 		menuSong = false;
 
@@ -169,40 +166,75 @@ class SoundTest extends MusicBeatState
 
 	function createTitle():Void
 	{
-		titleText = new FlxText(0, 0, 0, 'SOUND TEST', 25);
-		titleText.setFormat("assets/fonts/SonicCD.ttf", 25, COLOR_TITLE);
-		titleText.setBorderStyle(SHADOW, FlxColor.BLACK, 3, 3);
-		titleText.antialiasing = false;
-		titleText.screenCenter();
-		titleText.y += -180.0;
-		titleText.x += 20.0;
-		add(titleText);
+		var title:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/soundtest/soundtest.png'));
+		title.antialiasing = false;
+		title.scale.set(3.0, 3.0);
+		title.updateHitbox();
+		title.screenCenter(X);
+		title.y = (FlxG.height / 2) - 220.0;
+		add(title);
 	}
 
 	function createLabels():Void
 	{
 		var pcmX:Float = (FlxG.width / 6) + 100.0;
-		var daX:Float = FlxG.width * 0.6;
-		var labelY:Float = (FlxG.height / 2) + -70.0;
+		var daX:Float  = FlxG.width * 0.6;
+		var labelY:Float = (FlxG.height / 2) - 70.0;
 
-		pcmLabel = createStyledText(pcmX, labelY, 'PCM  NO .', COLOR_INACTIVE, COLOR_INACTIVE_SHADOW);
-		daLabel = createStyledText(daX, labelY, 'DA  NO .', COLOR_INACTIVE, COLOR_INACTIVE_SHADOW);
-
+		pcmLabel = new FlxSprite(pcmX, labelY);
+		pcmLabel.frames = FlxAtlasFrames.fromSparrow('assets/exe/soundtest/pcm.png', 'assets/exe/soundtest/pcm.xml');
+		pcmLabel.animation.addByPrefix('idle',     'pcm idle',     24, false);
+		pcmLabel.animation.addByPrefix('selected', 'pcm selected', 24, false);
+		pcmLabel.animation.play('idle');
+		pcmLabel.antialiasing = false;
+		pcmLabel.scale.set(3.0, 3.0);
+		pcmLabel.updateHitbox();
 		add(pcmLabel);
+
+		daLabel = new FlxSprite(daX, labelY);
+		daLabel.frames = FlxAtlasFrames.fromSparrow('assets/exe/soundtest/dano.png', 'assets/exe/soundtest/dano.xml');
+		daLabel.animation.addByPrefix('idle',     'dano idle',     24, false);
+		daLabel.animation.addByPrefix('selected', 'dano selected', 24, false);
+		daLabel.animation.play('idle');
+		daLabel.antialiasing = false;
+		daLabel.scale.set(3.0, 3.0);
+		daLabel.updateHitbox();
 		add(daLabel);
 	}
 
 	function createNumbers():Void
 	{
-		var pcmX:Float = (FlxG.width / 6) + 270.0;
-		var daX:Float = (FlxG.width * 0.6) + 150.0;
-		var numberY:Float = (FlxG.height / 2) + -70.0;
+		final frames = FlxAtlasFrames.fromSparrow(
+			'assets/exe/soundtest/numbers.png',
+			'assets/exe/soundtest/numbers.xml'
+		);
+		for (i in 0...10)
+			_digitFrames.push(frames.getByName('numbers ' + i + '0000'));
 
-		pcmNumber = createStyledText(pcmX, numberY, '00', COLOR_INACTIVE, COLOR_INACTIVE_SHADOW);
-		daNumber = createStyledText(daX, numberY, '00', COLOR_INACTIVE, COLOR_INACTIVE_SHADOW);
+		var pcmX:Float    = (FlxG.width / 6) + 270.0;
+		var daX:Float     = (FlxG.width * 0.6) + 150.0;
+		var numberY:Float = (FlxG.height / 2) - 70.0;
+		final digitScale:Float = 3.0;
+		final digitGap:Float   = 9.0 * digitScale;
 
-		add(pcmNumber);
-		add(daNumber);
+		for (i in 0...2)
+		{
+			var pd = new FlxSprite(pcmX + i * digitGap, numberY);
+			pd.frames = frames;
+			pd.antialiasing = false;
+			pd.scale.set(digitScale, digitScale);
+			pd.updateHitbox();
+			add(pd);
+			pcmDigits.push(pd);
+
+			var dd = new FlxSprite(daX + i * digitGap, numberY);
+			dd.frames = frames;
+			dd.antialiasing = false;
+			dd.scale.set(digitScale, digitScale);
+			dd.updateHitbox();
+			add(dd);
+			daDigits.push(dd);
+		}
 	}
 
 	function startArrowAnimation():Void
@@ -215,33 +247,18 @@ class SoundTest extends MusicBeatState
 		}, 0);
 	}
 
-	function createStyledText(x:Float, y:Float, text:String, color:FlxColor, shadowColor:FlxColor):FlxText
-	{
-		var txt:FlxText = new FlxText(x, y, 0, text, 23);
-		txt.setFormat("assets/fonts/SonicCD.ttf", 23, color);
-		txt.setBorderStyle(SHADOW, FlxColor.BLACK, 3, 3);
-		txt.antialiasing = false;
-		return txt;
-	}
-
-	function updateTextColors():Void
+	function updateLabelColors():Void
 	{
 		if (isPCMSelected)
 		{
-			setTextStyle(pcmLabel, COLOR_ACTIVE, COLOR_ACTIVE_SHADOW);
-			setTextStyle(daLabel, COLOR_INACTIVE, COLOR_INACTIVE_SHADOW);
+			pcmLabel.animation.play('selected');
+			daLabel.animation.play('idle');
 		}
 		else
 		{
-			setTextStyle(pcmLabel, COLOR_INACTIVE, COLOR_INACTIVE_SHADOW);
-			setTextStyle(daLabel, COLOR_ACTIVE, COLOR_ACTIVE_SHADOW);
+			pcmLabel.animation.play('idle');
+			daLabel.animation.play('selected');
 		}
-	}
-
-	inline function setTextStyle(text:FlxText, color:FlxColor, shadowColor:FlxColor):Void
-	{
-		text.setFormat("assets/fonts/SonicCD.ttf", 23, color);
-		text.setBorderStyle(SHADOW, FlxColor.BLACK, 3, 3);
 	}
 
 	function updateWindowTitle():Void
@@ -257,35 +274,22 @@ class SoundTest extends MusicBeatState
 		}
 	}
 
-	var updateOnce:String = 'left';
+	var _mouseWasRight:Bool = false;
 	function handleSelection():Void
 	{
-		var mouseX = FlxG.mouse.getWorldPosition().x;
-		var middleScreen = FlxG.width / 2;
-		
 		if (Controls.instance.UI_RIGHT_P || Controls.instance.UI_LEFT_P)
 		{
 			isPCMSelected = !isPCMSelected;
-			updateTextColors();
+			updateLabelColors();
 		}
-		
-		if (mouseX < middleScreen && updateOnce == 'right')
+
+		final mouseRight:Bool = FlxG.mouse.x > FlxG.width / 2;
+		if (mouseRight != _mouseWasRight)
 		{
-			updateOnce = 'left';
-			isPCMSelected = true;
-			updateTextColors();
+			_mouseWasRight = mouseRight;
+			isPCMSelected  = !mouseRight;
+			updateLabelColors();
 		}
-		else if (mouseX > middleScreen && updateOnce == 'left')
-		{
-			updateOnce = 'right';
-			isPCMSelected = false;
-			updateTextColors();
-		}
-		
-		if (mouseX >= middleScreen && updateOnce == 'left')
-			updateOnce = 'right';
-		else if (mouseX <= middleScreen && updateOnce == 'right')
-			updateOnce = 'left';
 	}
 
 	var changeHold:Float = 0;
@@ -323,13 +327,14 @@ class SoundTest extends MusicBeatState
 
 	function updateDisplayedValues():Void
 	{
-		pcmNumber.text = formatNumber(pcmValue);
-		daNumber.text = formatNumber(daValue);
+		setDigitFrames(pcmDigits, pcmValue);
+		setDigitFrames(daDigits,  daValue);
 	}
 
-	inline function formatNumber(value:Int):String
+	inline function setDigitFrames(digits:Array<FlxSprite>, value:Int):Void
 	{
-		return (value < 10) ? '0' + value : Std.string(value);
+		digits[0].frame = _digitFrames[Std.int(value / 10)];
+		digits[1].frame = _digitFrames[value % 10];
 	}
 
 	var notFoundAny:Bool = true;
@@ -357,6 +362,7 @@ class SoundTest extends MusicBeatState
 
 		if (Controls.instance.ACCEPT)
 		{
+			notFoundAny = true;
 			for (code in codes)
 			{
 				if (pcmValue == code.pcm && daValue == code.da)
@@ -400,19 +406,12 @@ class SoundTest extends MusicBeatState
 				return;
 			}
 
-			if (notFoundAny)
+			if (notFoundAny && soundCooldown)
 			{
-				if (soundCooldown)
-				{
-					soundCooldown = false;
-					FlxG.sound.play(Paths.sound('deniedMOMENT'), 0.6);
-					new FlxTimer().start(0.8, function(tmr:FlxTimer)
-					{
-						soundCooldown = true;
-					});
-				}
+				soundCooldown = false;
+				FlxG.sound.play(Paths.sound('deniedMOMENT'), 0.6);
+				new FlxTimer().start(0.8, function(tmr:FlxTimer) { soundCooldown = true; });
 			}
-			notFoundAny = true;
 		}
 	}
 
@@ -505,11 +504,11 @@ class SoundTest extends MusicBeatState
 		if (menuSong) FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 
 		backdrop = null;
-		titleText = null;
 		pcmLabel = null;
 		daLabel = null;
-		pcmNumber = null;
-		daNumber = null;
+		pcmDigits    = null;
+		daDigits     = null;
+		_digitFrames = null;
 
 		super.destroy();
 	}

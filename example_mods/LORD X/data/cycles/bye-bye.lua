@@ -1,18 +1,22 @@
 --Script by Raimbowcore12
 
-local byebyeChance = getRandomInt(0, 100)
+local byebyeChance = 0
 local byeByeActivated = false
 
 --CurStep doesn't work, so i'll repeat the event here with the byeByeActivated variable (Event script by Dudu)
 local curText = {}
 local curStringText = ''
 
+function onCreatePost() byebyeChance = getRandomInt(0, 100) end
+
 function onEvent(e, v1, v2)
     if e == "triggerByeByeChance" then
-        byeByeActivated = true
-        setProperty("opponentVocals.volume", 0)
-        playSound("DIGA-BYE-BYE", 1, "yes")
-        runTimer("setVocalsBack", 8)
+        if byebyeChance == 1 then
+            byeByeActivated = true
+            setProperty("opponentVocals.volume", 0)
+            playSound("DIGA-BYE-BYE", 1, "yes")
+            runTimer("setVocalsBack", 8)
+        end
     end
     if e == 'Normal Lyrics Bye-Bye' then
         if byeByeActivated then

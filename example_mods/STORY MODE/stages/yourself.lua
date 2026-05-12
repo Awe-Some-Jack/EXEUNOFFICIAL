@@ -24,6 +24,7 @@ local spotlights = {
 }
 
 local yourselfBG2 = {
+    {name = 'oberlai1', path = 'eye/lyer', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, blend = 'normal', antialiasing = true, front = false},
     {name = 'build1', path = 'eye/edificio_fondo', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, front = false},
     {name = 'build2', path = 'eye/edificio_de_adelante', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, front = false},
     {name = 'piso', path = 'eye/bg', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, front = false},
@@ -175,7 +176,7 @@ function onEvent(eventName, value1, value2)
             end
 
             for _, showSelf in ipairs(yourselfBG2) do
-                setProperty(showSelf.name..'.alpha', 1)
+                setProperty(showSelf.name..'.alpha',  showSelf.name == 'oberlai1' and 0.5 or 1)
             end
             setProperty('gf.visible', true)
 

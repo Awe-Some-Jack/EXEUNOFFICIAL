@@ -50,7 +50,7 @@ local healthBarsBG = {
         x = - 190,
         y = - 65
     },
-    ["hud_lordx"] = {
+    ["hud_lord_x"] = {
         songs = {'cycles', 'hellbent', 'fate', 'gotta-go'},
         x = - 190,
         y = - 75
@@ -144,7 +144,7 @@ function onCreatePost()
         setProperty('iconOpp.flipX', not getProperty('iconOpp.flipX'))
     end
 
-    local healthPos = {getProperty('healthBar.x'), getProperty('healthBar.y')}
+    local healthPos = {getProperty('hbBG.x'), getProperty('hbBG.y')}
     local found = false
     for hud, songList in pairs(healthBarsBG) do
         for _, name in ipairs(songList.songs) do
@@ -201,7 +201,15 @@ function onUpdatePost(e)
 
     setGraphicSize('hbHealth2', bound(lerp(getProperty('hbBG.width') - (healthProps.healthBar.gapSize * 2), 1, math.abs((flipped and (-1) or 0) + getHealth() / 2)), 1, getProperty('hbBG.width') - (healthProps.healthBar.gapSize * 2)), getProperty('hbBG.height') - (healthProps.healthBar.gapSize * 2))
     setProperty('separatorHealth.x', getProperty('hbHealth.x') + bound(lerp(getProperty('hbHealth.width') - healthProps.healthBar.separatorWidth, 0, math.abs((flipped and (-1) or 0) + getHealth() / 2)), 0, getProperty('hbHealth.width') - healthProps.healthBar.separatorWidth))
-    
+
+    for _, songList in pairs(healthBarsBG) do
+        for _, name in ipairs(songList.songs) do
+            if name == songPath then
+                callMethod('healthBG.setPosition', {getProperty('hbBG.x') + songList.x, getProperty('hbBG.y') + songList.y})
+            end
+        end
+    end
+
     if not healthProps.healthBar.hideScore then
         setTextString('exeScoreTxt', 'Score: '..callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {score, false})..' | Misses: '..misses)
         if oldScoreTxt ~= getTextString('exeScoreTxt') then scaleObject('exeScoreTxt', healthProps.healthBar.textBopAmount, healthProps.healthBar.textBopAmount, false) end

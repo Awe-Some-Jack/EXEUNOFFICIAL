@@ -187,7 +187,6 @@ class OptionsState extends MusicBeatState
 			{
 				onPlayState = false;
 				backend.StageData.loadDirectory(PlayState.SONG);
-				PlayState.startOnTime = PlayState.savedValues[6][1];
 				LoadingState.loadAndSwitchState(new PlayState());
 				FlxG.sound.music.volume = 0;
 			}

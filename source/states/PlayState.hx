@@ -959,16 +959,6 @@ class PlayState extends MusicBeatState
 	var finishTimer:FlxTimer = null;
 
 	public static var startOnTime:Float = 0;
-	public static var savedFromOptions:Bool     = false;
-	public static var savedValues:Array<Dynamic> = [
-		["score", 0],
-		["misses", 0],
-		["health", 1],
-		["combo", 0],
-		["totalPlayed", 0],
-		["totalNotesHit", 0],
-		["timePosition", 0]
-	];
 
 	public function startCountdown()
 	{
@@ -1220,22 +1210,8 @@ class PlayState extends MusicBeatState
 		vocals.volume = 1;
 		opponentVocals.volume = 1;
 
-		setSongTime(Math.max(0, startOnTime - (savedFromOptions ? 750 : 500)) + Conductor.offset);
+		setSongTime(Math.max(0, startOnTime - 500) + Conductor.offset);
 		startOnTime = 0;
-
-		if (savedFromOptions)
-		{
-			camZooming 		  = true;
-			savedFromOptions  = false;
-			songScore         = savedValues[0][1];
-			songMisses        = savedValues[1][1];
-			health            = savedValues[2][1];
-			combo             = savedValues[3][1];
-			totalPlayed       = savedValues[4][1];
-			totalNotesHit     = savedValues[5][1];
-			RecalculateRating(false, false);
-			updateScore(false, false);
-		}
 
 		if(paused) {
 			//trace('Oopsie doopsie! Paused sound');

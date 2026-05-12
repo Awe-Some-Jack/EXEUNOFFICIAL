@@ -264,14 +264,6 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.paused = true; // For lua
 					PlayState.instance.vocals.volume = 0;
 					PlayState.instance.canResync = false;
-					PlayState.savedValues[0][1] = PlayState.instance.songScore;
-					PlayState.savedValues[1][1] = PlayState.instance.songMisses;
-					PlayState.savedValues[2][1] = PlayState.instance.health;
-					PlayState.savedValues[3][1] = PlayState.instance.combo;
-					PlayState.savedValues[4][1] = PlayState.instance.totalPlayed;
-					PlayState.savedValues[5][1] = PlayState.instance.totalNotesHit;
-					PlayState.savedValues[6][1] = Conductor.songPosition;
-					PlayState.savedFromOptions  = true;
 					OptionsState.onPlayState = true;
 					MusicBeatState.switchState(new OptionsState());
 					if (ClientPrefs.data.pauseMusic != 'None')

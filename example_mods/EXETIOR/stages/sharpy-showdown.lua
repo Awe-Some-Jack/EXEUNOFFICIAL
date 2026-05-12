@@ -13,12 +13,12 @@ local StageConfig = {
         {name = 'lights',       path = 'SS/2nd/lights',       x = -1100, y = -1500, scaleX = 0.7,  scaleY = 0.8,                blend = 'add', alpha = 0},
     },
     animated = {
-        {name = 'eggman',  path = 'characters/eggman',  x = -930, y = -70,   scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'eggman',     fps = 24, loop = false,                       alpha = 1},
-        {name = 'knux',    path = 'characters/k',       x = -1200, y = -750, scaleX = 1,   scaleY = 1,   animName = 'idle', animPrefix = 'knux',       fps = 24, behindPillars = true, loop = false, alpha = 1},
-        {name = 'tails',   path = 'characters/tails',   x = 1200,  y = -750, scaleX = 1,   scaleY = 1,   animName = 'idle', animPrefix = 'tails',      fps = 24, loop = false,                       alpha = 1},
-        {name = 'exeeye',  path = 'characters/exe1',    x = -100,  y = -150, scaleX = 0.8, scaleY = 0.8, animName = 'idle', animPrefix = 'idle',       fps = 24, loop = false, behindLights = true,  alpha = 0},
-        {name = 'exelerr', path = 'characters/exeller', x = 1300,  y = 150,  scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'Símbolo 23', fps = 24, loop = false,                       alpha = 0, scrollX = 0.3, scrollY = 0.3, front = true},
-        {name = 'sark',    path = 'characters/sark',    x = -1600, y = 90,   scaleX = 1.2, scaleY = 1.2, animName = 'idle', animPrefix = 'sark',       fps = 24, loop = false,                       alpha = 0, scrollX = 0.3, scrollY = 0.3, front = true}
+        {name = 'eggman',  path = 'characters/eggman',  x = -930, y =  -170,   scaleX = 1.35, scaleY = 1.35, animName = 'idle', animPrefix = 'eggman',     fps = 24, loop = false,                       alpha = 1},
+        {name = 'knux',    path = 'characters/k',       x = -1200, y = -750,   scaleX = 1,    scaleY = 1,    animName = 'idle', animPrefix = 'knux',       fps = 24, behindPillars = true, loop = false, alpha = 1},
+        {name = 'tails',   path = 'characters/tails',   x = 1200,  y = -750,   scaleX = 1,    scaleY = 1,    animName = 'idle', animPrefix = 'tails',      fps = 24, loop = false,                       alpha = 1},
+        {name = 'exeeye',  path = 'characters/exe1',    x = -100,  y = -150,   scaleX = 0.8,  scaleY = 0.8,  animName = 'idle', animPrefix = 'idle',       fps = 24, loop = false, behindLights = true,  alpha = 0},
+        {name = 'exelerr', path = 'characters/exeller', x = 1300,  y =  150,   scaleX = 1.2,  scaleY = 1.2,  animName = 'idle', animPrefix = 'Símbolo 23', fps = 24, loop = false,                       alpha = 0, scrollX = 0.3, scrollY = 0.3, front = true},
+        {name = 'sark',    path = 'characters/sark',    x = -1600, y =  90,    scaleX = 1.2,  scaleY = 1.2,  animName = 'idle', animPrefix = 'sark',       fps = 24, loop = false,                       alpha = 0, scrollX = 0.3, scrollY = 0.3, front = true}
     },
     overlays = {
         {name = 'blackVG', path = 'VG',                 x = 0,     y = 0,    scaleX = 1,   scaleY = 1}

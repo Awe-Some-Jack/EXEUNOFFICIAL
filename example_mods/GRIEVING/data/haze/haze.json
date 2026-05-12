@@ -1,5 +1,5 @@
 {
-	"player1": "bf",
+	"player1": "bf-red",
 	"events": [
 		[
 			9600,
@@ -44,7 +44,7 @@
 			]
 		]
 	],
-	"player2": "griatos 2",
+	"player2": "griatosA",
 	"notes": [
 		{
 			"lengthInSteps": 16,

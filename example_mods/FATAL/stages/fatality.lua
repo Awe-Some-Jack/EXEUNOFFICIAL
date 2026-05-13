@@ -106,17 +106,15 @@ function onBeatHit()
 	end
 end
 
-function onStepHit()
-	if curStep == 255 then
+function onEvent(name, value1, value2, strumTime)
+	if name == 'FatalityNewBG' then
 		for _,stage in ipairs(launchBG) do
 			removeLuaSprite(stage.name)
 		end
 		for _,stage in ipairs(newBG) do
 			setProperty(stage.name..'.visible', true)
 		end
-	end
-
-	if curStep == 1983 then
+	elseif name == 'FatalityStage' then
 		for _,stage in ipairs(newBG) do
 			setProperty(stage.name..'.visible', false)
 		end
@@ -125,5 +123,14 @@ function onStepHit()
 		triggerEvent('Change Character', 'dad', 'true-fatal')
 		triggerEvent('Change Character', 'bf', 'bf-fatal-small')
 		setProperty('dad.danceEveryNumBeats', 4)
+
+		setProperty('gameplayCam.settings.BFx', 900)
+		setProperty('gameplayCam.settings.BFy', 300)
+		setProperty('gameplayCam.settings.DADx', 900)
+		setProperty('gameplayCam.settings.DADy', 300)
+		setProperty('gameplayCam.settings.MiddleX', 900)
+		setProperty('gameplayCam.settings.MiddleY', 300)
+		setProperty('gameplayCam.settings.OffsetsBF', 0)
+		setProperty('gameplayCam.settings.OffsetsDAD', 0)
 	end
 end

@@ -19,12 +19,12 @@ local hazeBGAssets = {
         { name = 'groundShit', path = 'grieving/haze/2nd/ground',      x = -1600,  y = -1300,  scaleX = 1, scaleY = 1, scrollX = 1,    scrollY = 1,                                                                 alpha = 1, antialiasing = true,     front = false},
     },
     ['phase4'] = {
-        { name = 'sky',                   path = 'grieving/haze/3rd/6',       x = -1000,  y = -1300,                         scrollX = 1,    scrollY = 1,                   alpha = 1, antialiasing = true,     front = false},
-        { name = 'clouds1',               path = 'grieving/haze/3rd/5',       x =  -500,  y = -1000,     instance = true,    scrollX = 1,    scrollY = 1,  velocityX = 50,  alpha = 1, antialiasing = true,     front = false},
-        { name = 'clouds2',               path = 'grieving/haze/3rd/4',       x = -1000,  y = -1000,                         scrollX = 1,    scrollY = 1,                   alpha = 1, antialiasing = true,     front = false},
-        { name = 'clouds-mountains',      path = 'grieving/haze/3rd/3',       x = -1000,  y = -1000,                         scrollX = 1,    scrollY = 1,                   alpha = 1, antialiasing = true,     front = false},
-        { name = 'clouds3',               path = 'grieving/haze/3rd/2',       x = -1000,  y =     0,                         scrollX = 0.95, scrollY = 0.95,                alpha = 1, antialiasing = true,     front = true},
-        { name = 'ground',                path = 'grieving/haze/3rd/1',       x = -1000,  y =     0,                         scrollX = 0.95, scrollY = 0.95,                alpha = 1, antialiasing = true,     front = true},
+        { name = 'sky',                   path = 'grieving/haze/3rd/6',       x = -1000,  y = -1000,                         scrollX =    1,    scrollY =    1,                   alpha = 1, antialiasing = true,     front = false},
+        { name = 'clouds1',               path = 'grieving/haze/3rd/5',       x =  -500,  y = -1000,     instance = true,    scrollX =    1,    scrollY =    1,  velocityX = 20,  alpha = 1, antialiasing = true,     front = false},
+        { name = 'clouds2',               path = 'grieving/haze/3rd/4',       x = -1000,  y = -1000,                         scrollX =    1,    scrollY =    1,                   alpha = 1, antialiasing = true,     front = false},
+        { name = 'clouds-mountains',      path = 'grieving/haze/3rd/3',       x = -1000,  y = -1000,                         scrollX =    1,    scrollY =    1,                   alpha = 1, antialiasing = true,     front = false},
+        { name = 'clouds3',               path = 'grieving/haze/3rd/2',       x = -1000,  y =   200,                         scrollX = 0.95,    scrollY = 0.95,                   alpha = 1, antialiasing = true,     front = true},
+        { name = 'ground',                path = 'grieving/haze/3rd/1',       x = -1000,  y =     0,                         scrollX =    1,    scrollY =    1,                   alpha = 1, antialiasing = true,     front = true},
     }
 }
 
@@ -64,6 +64,7 @@ function onCreate()
     addCharacterToList('griatosC',  'dad')
     addCharacterToList('bf-red',     'bf')
     addCharacterToList('bf',         'bf')
+    addCharacterToList('bf2',        'bf')
 
     for _, phase1 in ipairs(hazeBGAssets['phase1']) do precacheImage(phase1.path) end
     for _, phase2 in ipairs(hazeBGAssets['phase2']) do precacheImage(phase2.path) end
@@ -82,8 +83,19 @@ function onCreatePost()
     for _, phase3 in ipairs(hazeBGAssets['phase3']) do setProperty(phase3.name..'.alpha', 0) end
     for _, phase4 in ipairs(hazeBGAssets['phase4']) do setProperty(phase4.name..'.alpha', 0) end
 
+    --THAT bf anim
+    makeAnimatedLuaSprite('bfTransition', 'characters/atlas', 210, -58)
+    addAnimationByIndices('bfTransition', 'idle', 'atlas instancia 1', {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 24, true)
+    addAnimationByPrefix('bfTransition', 'anim', 'atlas', 24, false)
+    addAnimationByIndices('bfTransition', 'still', 'atlas', {108}, 24, true)
+    setObjectCamera('bfTransition', 'camHUD')
+    scaleObject('bfTransition', 0.6, 0.6)
+    setProperty('bfTransition.alpha', 0)
+    addLuaSprite('bfTransition')
+
     setProperty('dad.visible', false)
     setObjectOrder('clouds3', getObjectOrder('dadGroup') + 1)
+    setObjectOrder('ground', getObjectOrder('boyfriendGroup'))
     for _, hudStuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(hudStuff..'.alpha', 0) end
 end
 
@@ -108,6 +120,7 @@ local stageMode = {
         triggerEvent('Set customCamera Position', 'bf', '600, 130')
         triggerEvent('Change Character', 'bf', 'bf')
         triggerEvent('Change Character', 'dad', 'griatosA')
+        callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') + 120, getProperty('boyfriend.y') + 30})
         setProperty('dad.visible', true)
     end,
     ['3'] = function () --Phase 3
@@ -115,6 +128,10 @@ local stageMode = {
         for _, phase2 in ipairs(spriteGroups.phase2) do    removeLuaSprite(phase2, true) end
         for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.alpha', 1) end
         for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.alpha', 0) end
+        setProperty('dad.y', getProperty('dad.y') - 30)
+
+        triggerEvent('Set customCamera Position', 'middle', '420, -250')
+        triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.35')
     end,
     ['4'] = function () -- Phase 4
         for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.alpha', 0) end
@@ -122,8 +139,20 @@ local stageMode = {
         for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.alpha', 1) end
 
         triggerEvent('Change Character', 'dad', 'griatos 2')
+        triggerEvent('Change Character',  'bf',       'bf2')
+
+        callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 120, getProperty('boyfriend.y') + 730})
+        callMethod('dad.setPosition', {getProperty('dad.x') + 2020, getProperty('dad.y') - 30})
+
+        triggerEvent('Set customCamera Position', 'bf',     '800, 250')
+        triggerEvent('Set customCamera Position', 'dad',  '1000, -250')
+        triggerEvent('Set customCamera Position', 'middle', '870, 120')
+        triggerEvent('Set Character Offset', 'bf',  '5')
+        triggerEvent('Set Character Offset', 'dad', '5')
+        triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.35')
     end
 }
+local changeUnspawnNotesColor = false
 
 local hudMode = {
     ['healthStuff'] = function(hide, time)
@@ -137,10 +166,37 @@ local hudMode = {
                 doTweenAlpha(i..'DADAlpha', 'opponentStrums.members['..i..']', hide == 'true' and 0 or 1, time and time or 1)
             end
         end
+    end,
+    ['zoomIn'] = function ()
+        setProperty('camZoomingMult', 0)
+        setProperty('camZoomingDecay', 0)
+        doTweenZoom('hudZoom', 'camHUD', 1.4, 3, 'sineInOut')
+        doTweenY('hudYTween',  'camHUD', 140, 3, 'sineInOut')
+        for i = 0, 3 do doTweenY(i..'YTween', 'playerStrums.members['..i..']', downscroll and getProperty('playerStrums.members['..i..'].y') - 60 or getProperty('playerStrums.members['..i..'].y') + 60, 3, 'sineInOut') end
+    end,
+    ['changeNotesColor'] = function ()
+        for i = 0, 3 do
+            setProperty('playerStrums.members['..i..'].color', getColorFromHex('FF0000'))
+            doTweenAngle(i..'Angle', 'playerStrums.members['..i..']', 360, 0.6, 'backOut')
+        end
+        changeUnspawnNotesColor = true
+    end,
+    ['returnNotesColor'] = function ()
+        changeUnspawnNotesColor = false
+        for i = 0, 3 do setProperty('playerStrums.members['..i..'].color', getColorFromHex('FFFFFF')) end
+    end,
+    ['zoomBack'] = function ()
+        cancelTween('hudZoom')
+        cancelTween('hudYTween')
+        for i = 0, 3 do doTweenY(i..'YTween', 'playerStrums.members['..i..']', downscroll and getProperty('playerStrums.members['..i..'].y') + 60 or getProperty('playerStrums.members['..i..'].y') - 60, 0.6, 'circInOut') end
+        doTweenZoom('hudZoomBack', 'camHUD', 1, 0.6, 'circInOut')
+        doTweenY('hudYTween',  'camHUD', 0, 0.6, 'circInOut')
     end
 }
 
 local separation = 50
+local notesDance = false
+local canAngleDance = false
 
 local modchart = {
     ['middle'] = function()
@@ -154,8 +210,41 @@ local modchart = {
             doTweenAlpha(i..'DADAlpha', 'opponentStrums.members['..i..']', 1, 1)
             setProperty('playerStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i])
         end
-    end ,
+    end,
+    ['dance'] = function(dance)
+        notesDance = dance == 'true' and true or false
+        canAngleDance = dance == 'true' and true or false
+    end,
+    ['spinNotes'] = function ()
+        for i = 0, 7 do
+            canAngleDance = false
+            doTweenAngle(i..'Angle', 'strumLineNotes.members['..i..']', 360, 0.6, 'backOut')
+        end
+    end,
+    ['reverseNotesPosition'] = function ()
+        for i = 0, 3 do
+            noteTweenX(i..'X' , i , (screenWidth / 1.3)--[[Offset]]+(115 * (i - 2))--[[NotesSeparation]], 2, 'circOut')
+            noteTweenAlpha(i..'AlphaBack', i, 1, 1)
+        end
+        for i = 4, 7 do
+            noteTweenX(i..'X' , i , (screenWidth / 4)--[[Offset]]+(115 * (i - 6))--[[NotesSeparation]], 2, 'circOut')
+        end
+    end
 }
+
+function onSpawnNote(i)
+    if changeUnspawnNotesColor then
+        setPropertyFromGroup('unspawnNotes', i, 'color', getColorFromHex('FF0000'))
+    else
+        setPropertyFromGroup('unspawnNotes', i, 'color', getColorFromHex('FFFFFF'))
+        --[[
+        runHaxeCode([[
+            var col = FlxColor.interpolate(0x00FF0000, 0xFFFFFFFF, 1);
+
+            unspawnNotes.members[]]--..i..[[].color = col;
+        --]])
+    end
+end
 
 luaDebugMode = true
 function onEvent(e, v1, v2)
@@ -168,17 +257,40 @@ function onEvent(e, v1, v2)
             hudMode[split[1]](split[2], split[3], split[4])
         end
         if v1 == 'modchart' then
-            modchart[v2]()
+            local split = stringSplit(v2, ', ')
+            modchart[split[1]](split[2])
         end
         if v1 == 'tweenObject' then
             local split = stringSplit(v2, ',')
             doTweenAlpha(split[1]..'OP', split[1], split[2], split[3])
         end
+        if v1 == 'bfAnims' then
+            playAnim('bfTransition', v2, true)
+        end
     end
 end
 
-local function setSpriteAlpha(spriteList, alpha) -- Lo siento Kazu esto funciona pero se está bugeadito 😭
-    for _, spriteName in ipairs(spriteList) do
-        setProperty(spriteName .. '.alpha', alpha)
+local someHold = 0
+local holdWave = 0
+
+function onUpdatePost(e)
+    someHold = math.min(someHold + e, 1)
+    holdWave = holdWave + e
+    for i = 0, 7 do
+        if notesDance then
+            if canAngleDance then setProperty('strumLineNotes.members['..i..'].angle', math.sin((curDecBeat + 1) * math.pi + 0.5) * someHold * 5) end
+            callMethod('strumLineNotes.members['..i..'].setPosition',{
+                getProperty('strumLineNotes.members['..i..'].x') + math.cos((curDecBeat + 1) * math.pi) * someHold * 3,
+                getProperty('strumLineNotes.members['..i..'].y') - math.cos(curDecBeat * math.pi * 2) * someHold
+            })
+        end
     end
+end
+
+function onTweenCompleted(tag)
+    if tag == 'hudZoomBack' then
+        setProperty('camZoomingMult',  1)
+        setProperty('camZoomingDecay', 1)
+    end
+    if tag == '0Angle' then canAngleDance = true end
 end

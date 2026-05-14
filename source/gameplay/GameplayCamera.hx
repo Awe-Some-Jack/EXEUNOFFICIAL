@@ -418,9 +418,10 @@ class GameplayCamera
 				var x:Float = Std.parseFloat(split[0]);
 				var y:Float = split.length > 1 ? Std.parseFloat(split[1]) : 0;
 				switch (v1.toLowerCase()) {
-					case 'bf':  settings.BFx  = x; settings.BFy  = y;
-					case 'dad': settings.DADx = x; settings.DADy = y;
-					case 'gf':  settings.GFx  = x; settings.GFy  = y;
+					case 'bf':      settings.BFx      = x; settings.BFy      = y;
+					case 'dad':     settings.DADx     = x; settings.DADy     = y;
+					case 'gf':      settings.GFx      = x; settings.GFy      = y;
+					case 'middle':  settings.MiddleX  = x; settings.MiddleY  = y;
 				}
 
 			case 'Set Character Offset':

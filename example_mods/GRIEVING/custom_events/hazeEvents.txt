@@ -1,6 +1,7 @@
 [
     tweenObject(object, alpha, time), 
     stageMode[1 - 4], 
-    hudMode(HealthStuff[hide, time], Notes(strum, hide, time)),
-    modchart(middle, returnMiddle)
+    hudMode(HealthStuff[hide, time], Notes(strum, hide, time), zoomIn, changeNotesColor, zoomBack, returnNotesColor)
+    modchart(middle, returnMiddle, dance, reverseNotesPosition),
+    bfAnims[anim], setUhOhShaders, removeUhOhShaders
 ]

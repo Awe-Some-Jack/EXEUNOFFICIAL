@@ -1,7 +1,7 @@
 -- A scirpt that creates graphics for the mod so you don't create them every song
 
 local graphics = {
-    {name = 'BlackGraphicGame', color = '000000', scaleX = 4, scaleY = 4, camera = 'camGame', alpha = 0, front = true},
+    {name = 'BlackGraphicGame', color = '000000', scaleX = 5, scaleY = 5, camera = 'camGame', alpha = 0, front = true},
     {name = 'BlackGraphicHUD', color = '000000', scaleX = 4, scaleY = 4, camera = 'camHUD', alpha = 0, front = true},
     {name = 'BlackGraphicOther', color = '000000', scaleX = 4, scaleY = 4, camera = 'camOther', alpha = 0, front = false},
 

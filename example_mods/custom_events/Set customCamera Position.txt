@@ -1,6 +1,6 @@
 Changes the Camera's Position according the JSON file.
 [
-    v1: bf, dad, gf
+    v1: bf, dad, gf, middle
     v2: x, y
 ]
 Script by Raimbowcore12

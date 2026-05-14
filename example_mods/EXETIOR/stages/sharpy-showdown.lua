@@ -25,10 +25,32 @@ local StageConfig = {
     }
 }
 
+local reflections = {
+    {name = 'bfReflection', path = 'characters/BOYFRIEND', character = true, link = 'boyfriend', hasAlts = true, anims = {
+        idle =           'idle',
+        singUP =       'singUp',
+        singDOWN =   'singDown',
+        singLEFT =   'singLeft',
+        singRIGHT = 'singRight',
+    }},
+    {name = 'exetiorReflection', path = 'characters/exeteiros', character = true, pairedWith = 'dad', anims = {
+        idle =       'idle',
+        singUP =       'up',
+        singDOWN =   'down',
+        singLEFT =   'left',
+        singRIGHT = 'right',
+        laugh =      'risa',
+    }},
+    {name = 'gfEXEReflection', path = 'characters/gf', link = 'gfEXE', anims = {
+        danceLeft =   'dance left',
+        danceRight = 'dance right',
+    }},
+}
+
 local SpriteGroups = {
-    phase1 = {'bg', 'floor', 'arch', 'pillars', 'tv', 'errorScreen', 'crystalWalls', 'eggman', 'knux', 'tails', 'gfEXE'},
-    phase2 = {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye', 'ojoexe'},
-    hideable = {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye', 'dad', 'boyfriend', 'gfEXE', 'ojoexe'},
+    phase1 =       {'bg', 'floor', 'arch', 'pillars', 'tv', 'errorScreen', 'crystalWalls', 'eggman', 'knux', 'tails', 'gfEXE'},
+    phase2 =       {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye', 'ojoexe'},
+    hideable =     {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye', 'dad', 'boyfriend', 'gfEXE', 'ojoexe'},
     beatAnimated = {'exelerr', 'sark', 'bfX', 'eggman', 'knux', 'tails', 'exeeye'},
 }
 
@@ -51,6 +73,21 @@ local function createSprite(config, isAnimated)
 
     addLuaSprite(config.name, config.front or false)
 end
+
+luaDebugMode = true
+
+local function createReflection(shi)
+    if shi.character then
+        createInstance(shi.name, 'objects.Character', {'bf', getProperty(shi.link..'.x')})
+    end
+    makeAnimatedLuaSprite(shi.name, shi.path)
+    for name, anim in pairs(shi.anims) do addAnimationByPrefix(shi.name, name, anim, 24, false) end
+    setProperty(shi.name..'.scale.y', - 0.8)
+    setProperty(shi.name..'.alpha', 0.4)
+    --setObjectOrder(shi.name, getObjectOrder(shi.pairedWith))
+    addLuaSprite(shi.name)
+end
+
 local function setSpriteAlpha(spriteList, alpha)
     for _, spriteName in ipairs(spriteList) do
         setProperty(spriteName .. '.alpha', alpha)
@@ -83,19 +120,20 @@ function onCreatePost()
         setProperty(config.name .. '.alpha', config.alpha or 0)
         addLuaSprite(config.name, config.front or false)
     end
-    setProperty('blackVG.color', getColorFromHex('000000'))
 
+    setProperty('blackVG.color', getColorFromHex('000000'))
+    
     makeLuaSprite('blackStage', nil, -1400, -860)
     makeGraphic('blackStage', screenWidth * 4, screenHeight * 4, '000000')
     setProperty('blackStage.alpha', 0)
     addLuaSprite('blackStage', true)
-
+    
     makeLuaSprite('ojoexe', 'characters/ojo-exe1', getProperty('exeeye.x') + 280, getProperty('exeeye.y') + 170)
     setObjectOrder('ojoexe', getObjectOrder('exeeye') + 1)
     scaleObject('ojoexe', 0.22, 0.22)
     setProperty('ojoexe.alpha', 0)
     addLuaSprite('ojoexe', true)
-
+    
     makeAnimatedLuaSprite('bfX', 'characters/bfx', getProperty('boyfriend.x') + 260, getProperty('boyfriend.y') - 160)
     addAnimationByPrefix('bfX', 'idle', 'idle', 24, false)
     addAnimationByPrefix('bfX', 'yeah', 'singUp', 24, true)
@@ -104,11 +142,14 @@ function onCreatePost()
     scaleObject('bfX', 0.72, 0.72)
     setProperty('bfX.alpha', 0)
     addLuaSprite('bfX', true)
-
+    
     makeAnimatedLuaSprite('gfEXE', 'characters/gf', 0, -80)
     addAnimationByPrefix('gfEXE', 'danceLeft', 'dance left')
     addAnimationByPrefix('gfEXE', 'danceRight', 'dance right')
     addLuaSprite('gfEXE')
+
+
+    for _, reflection in ipairs(reflections) do createReflection(reflection) end
 end
 
 local EventHandlers = {
@@ -203,6 +244,17 @@ function onUpdatePost(elapsed)
             getProperty('ojoexe.y') + math.sin(holdMove + 0.5) * 0.3
         })
     end
+
+    --Setting it separately bc i dont feel like looping through them
+    playAnim('bfReflection', getProperty('boyfriend.animation.curAnim.name'))
+    setProperty('bfReflection.animation.curAnim.curFrame', getProperty('boyfriend.animation.curAnim.curFrame'))
+    playAnim('exetiorReflection', getProperty('dad.animation.curAnim.name'))
+    setProperty('exetiorReflection.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
+    playAnim('gfEXEReflection', getProperty('gfEXE.animation.curAnim.name'))
+    setProperty('gfEXEReflection.animation.curAnim.curFrame', getProperty('gfEXE.animation.curAnim.curFrame'))
+    callMethod('bfReflection.setPosition', {getProperty('boyfriend.x'), getProperty('boyfriend.y') + 320})
+    callMethod('exetiorReflection.setPosition', {getProperty('dad.x'), getProperty('dad.y') + 320})
+    callMethod('gfEXEReflection.setPosition', {getProperty('gfEXE.x'), getProperty('gfEXE.y') + 320})
 end
 
 function onSectionHit()

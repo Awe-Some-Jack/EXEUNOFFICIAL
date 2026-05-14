@@ -434,7 +434,7 @@ class EXEFreeplay extends MusicBeatState
 				var lastHold:Int = Math.floor((holdCheck - 0.5) / beatTime);
 				holdCheck += elapsed;
 				var newHold:Int = Math.floor((holdCheck - 0.5) / beatTime);
-				if (holdCheck > 0.5 && newHold - lastHold > 0)
+				if (holdCheck > beatTime && newHold - lastHold > 0)
 				newSel = selectedBox + (newHold - lastHold) * (Controls.instance.UI_RIGHT ? 1 : -1);
 			}else holdCheck = 0;
 

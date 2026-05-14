@@ -19,19 +19,19 @@ local hazeBGAssets = {
         { name = 'groundShit', path = 'grieving/haze/2nd/ground',      x = -1600,  y = -1300,  scaleX = 1, scaleY = 1, scrollX = 1,    scrollY = 1,                                                                 alpha = 1, antialiasing = true,     front = false},
     },
     ['phase4'] = {
-        { name = 'sky',                   path = 'grieving/haze/3rd/6',       x = -1000,  y = -1300,                         scrollX = 1,    scrollY = 1,                   alpha = 0, antialiasing = true,     front = false},
-        { name = 'clouds1',               path = 'grieving/haze/3rd/5',       x =  -500,  y = -1000,     instance = true,    scrollX = 1,    scrollY = 1,  velocityX = 50,  alpha = 0, antialiasing = true,     front = false},
-        { name = 'clouds2',               path = 'grieving/haze/3rd/4',       x = -1000,  y = -1000,                         scrollX = 1,    scrollY = 1,                   alpha = 0, antialiasing = true,     front = false},
-        { name = 'clouds-mountains',      path = 'grieving/haze/3rd/3',       x = -1000,  y = -1000,                         scrollX = 1,    scrollY = 1,                   alpha = 0, antialiasing = true,     front = false},
-        { name = 'clouds3',               path = 'grieving/haze/3rd/2',       x = -1000,  y =     0,                         scrollX = 0.95, scrollY = 0.95,                alpha = 0, antialiasing = true,     front = true},
-        { name = 'ground',                path = 'grieving/haze/3rd/1',       x = -1000,  y =     0,                         scrollX = 0.95, scrollY = 0.95,                alpha = 0, antialiasing = true,     front = true},
+        { name = 'sky',                   path = 'grieving/haze/3rd/6',       x = -1000,  y = -1300,                         scrollX = 1,    scrollY = 1,                   alpha = 1, antialiasing = true,     front = false},
+        { name = 'clouds1',               path = 'grieving/haze/3rd/5',       x =  -500,  y = -1000,     instance = true,    scrollX = 1,    scrollY = 1,  velocityX = 50,  alpha = 1, antialiasing = true,     front = false},
+        { name = 'clouds2',               path = 'grieving/haze/3rd/4',       x = -1000,  y = -1000,                         scrollX = 1,    scrollY = 1,                   alpha = 1, antialiasing = true,     front = false},
+        { name = 'clouds-mountains',      path = 'grieving/haze/3rd/3',       x = -1000,  y = -1000,                         scrollX = 1,    scrollY = 1,                   alpha = 1, antialiasing = true,     front = false},
+        { name = 'clouds3',               path = 'grieving/haze/3rd/2',       x = -1000,  y =     0,                         scrollX = 0.95, scrollY = 0.95,                alpha = 1, antialiasing = true,     front = true},
+        { name = 'ground',                path = 'grieving/haze/3rd/1',       x = -1000,  y =     0,                         scrollX = 0.95, scrollY = 0.95,                alpha = 1, antialiasing = true,     front = true},
     }
 }
 
 local spriteGroups = {
     phase1 = {'redSun'},
     phase2 = {'bg', 'trees3', 'trees2', 'trees', 'floor', 'fore'},
-    phase3 = {'overlay', 'sun-clouds', 'cloudFront', 'water', 'waterfall1', 'waterfall2', 'ground', 'dedplants'},
+    phase3 = {'overlay', 'sun-clouds', 'cloudFront', 'water', 'waterfall1', 'waterfall2', 'groundShit', 'dedplants'},
     phase4 = {'sky', 'clouds1', 'clouds2', 'clouds-mountains', 'clouds3', 'ground'}
 }
 
@@ -56,10 +56,19 @@ local function addSprite(yea)
     addLuaSprite(yea.name, yea.front)
 end
 
-local function setSpriteAlpha(spriteList, alpha) -- Lo siento Kazu esto funciona pero se está bugeadito 😭
-    for _, spriteName in ipairs(spriteList) do
-        setProperty(spriteName .. '.alpha', alpha)
-    end
+function onCreate()
+    --Let's try separately
+    addCharacterToList('griatos 2', 'dad')
+    addCharacterToList('griatosA',  'dad')
+    addCharacterToList('griatosB',  'dad')
+    addCharacterToList('griatosC',  'dad')
+    addCharacterToList('bf-red',     'bf')
+    addCharacterToList('bf',         'bf')
+
+    for _, phase1 in ipairs(hazeBGAssets['phase1']) do precacheImage(phase1.path) end
+    for _, phase2 in ipairs(hazeBGAssets['phase2']) do precacheImage(phase2.path) end
+    for _, phase3 in ipairs(hazeBGAssets['phase3']) do precacheImage(phase3.path) end
+    for _, phase4 in ipairs(hazeBGAssets['phase4']) do precacheImage(phase4.path) end
 end
 
 function onCreatePost()
@@ -68,7 +77,6 @@ function onCreatePost()
     for _, spr in ipairs(hazeBGAssets['phase3']) do addSprite(spr) end
     for _, spr in ipairs(hazeBGAssets['phase4']) do addSprite(spr) end
 
-
     for _, phase1 in ipairs(hazeBGAssets['phase1']) do setProperty(phase1.name..'.alpha', 1) end
     for _, phase2 in ipairs(hazeBGAssets['phase2']) do setProperty(phase2.name..'.alpha', 0) end
     for _, phase3 in ipairs(hazeBGAssets['phase3']) do setProperty(phase3.name..'.alpha', 0) end
@@ -76,4 +84,101 @@ function onCreatePost()
 
     setProperty('dad.visible', false)
     setObjectOrder('clouds3', getObjectOrder('dadGroup') + 1)
+    for _, hudStuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(hudStuff..'.alpha', 0) end
+end
+
+local stageMode = {
+    ['1'] = function () --Phase 1 (This one just in case).
+        for _, phase1 in ipairs(spriteGroups.phase1) do setProperty(phase1..'.alpha', 1) end
+        for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.alpha', 0) end
+        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.alpha', 0) end
+        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.alpha', 0) end
+
+        triggerEvent('Change Character', 'bf', 'bf-red')
+
+        for _, hudStuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(hudStuff..'.alpha', 0) end
+    end,
+    ['2'] = function () -- Phase 2
+        for _, phase1 in ipairs(spriteGroups.phase1) do setProperty(phase1..'.alpha', 0) end
+        for _, phase1 in ipairs(spriteGroups.phase1) do    removeLuaSprite(phase1, true) end
+        for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.alpha', 1) end
+        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.alpha', 0) end
+        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.alpha', 0) end
+
+        triggerEvent('Set customCamera Position', 'bf', '600, 130')
+        triggerEvent('Change Character', 'bf', 'bf')
+        triggerEvent('Change Character', 'dad', 'griatosA')
+        setProperty('dad.visible', true)
+    end,
+    ['3'] = function () --Phase 3
+        for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.alpha', 0) end
+        for _, phase2 in ipairs(spriteGroups.phase2) do    removeLuaSprite(phase2, true) end
+        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.alpha', 1) end
+        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.alpha', 0) end
+    end,
+    ['4'] = function () -- Phase 4
+        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.alpha', 0) end
+        for _, phase3 in ipairs(spriteGroups.phase3) do    removeLuaSprite(phase3, true) end
+        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.alpha', 1) end
+
+        triggerEvent('Change Character', 'dad', 'griatos 2')
+    end
+}
+
+local hudMode = {
+    ['healthStuff'] = function(hide, time)
+        for _, hudStuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do doTweenAlpha(hudStuff..'Alpha', hudStuff, hide == 'true' and 0 or 1, time and time or 1) end
+    end,
+    ['Notes'] = function(strum, hide, time)
+        for i = 0, 3 do
+            if strum == 'bf' then
+                doTweenAlpha(i..'BFAlpha',    'playerStrums.members['..i..']', hide == 'true' and 0 or 1, time and time or 1)
+            elseif strum == 'dad' then
+                doTweenAlpha(i..'DADAlpha', 'opponentStrums.members['..i..']', hide == 'true' and 0 or 1, time and time or 1)
+            end
+        end
+    end
+}
+
+local separation = 50
+
+local modchart = {
+    ['middle'] = function()
+        for i = 0,3 do
+            setProperty('opponentStrums.members['..i..'].alpha', 0)
+            setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+        end
+    end,
+    ['returnMiddle'] = function ()
+        for i = 0,3 do
+            doTweenAlpha(i..'DADAlpha', 'opponentStrums.members['..i..']', 1, 1)
+            setProperty('playerStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i])
+        end
+    end ,
+}
+
+luaDebugMode = true
+function onEvent(e, v1, v2)
+    if e == 'hazeEvents' then
+        if v1 == 'stageMode' then
+            stageMode[v2]()
+        end
+        if v1 == 'hudMode' then
+            local split = stringSplit(v2, ', ')
+            hudMode[split[1]](split[2], split[3], split[4])
+        end
+        if v1 == 'modchart' then
+            modchart[v2]()
+        end
+        if v1 == 'tweenObject' then
+            local split = stringSplit(v2, ',')
+            doTweenAlpha(split[1]..'OP', split[1], split[2], split[3])
+        end
+    end
+end
+
+local function setSpriteAlpha(spriteList, alpha) -- Lo siento Kazu esto funciona pero se está bugeadito 😭
+    for _, spriteName in ipairs(spriteList) do
+        setProperty(spriteName .. '.alpha', alpha)
+    end
 end

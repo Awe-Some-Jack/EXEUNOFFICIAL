@@ -1,20 +1,20 @@
 {
 	"animations": [
 		{
+			"offsets": [0, 386],
 			"loop": false,
-			"offsets": [1, 363],
-			"anim": "singUP",
 			"fps": 24,
-			"name": "up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"offsets": [90, 7],
 			"loop": false,
-			"fps": 24,
+			"offsets": [90, 7],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

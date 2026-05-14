@@ -1,20 +1,20 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [-23, 4],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
 		},
 		{
+			"offsets": [21, -118],
 			"loop": false,
-			"offsets": [80, 1],
-			"anim": "risa",
 			"fps": 24,
-			"name": "risa",
-			"indices": []
+			"anim": "risa",
+			"indices": [],
+			"name": "risa"
 		}
 	],
 	"vocals_file": "",

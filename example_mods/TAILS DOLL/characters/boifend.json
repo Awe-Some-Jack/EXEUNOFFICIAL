@@ -1,87 +1,87 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT",
-			"loop": false,
-			"name": "singLEFT0"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWN",
-			"loop": false,
-			"name": "singDOWN0"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP",
-			"loop": false,
-			"name": "singUP0"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "singRIGHT0"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
+			"offsets": [331, 380],
+			"loop": true,
 			"fps": 24,
 			"anim": "singLEFTmiss",
-			"loop": true,
+			"indices": [],
 			"name": "singLEFTmiss"
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": true,
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": true,
+			"indices": [],
 			"name": "singDOWNmiss"
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": true,
 			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": true,
+			"indices": [],
 			"name": "singUPmiss"
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": true,
 			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"loop": true,
+			"indices": [],
 			"name": "singRIGHTmiss"
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
+			"loop": true,
+			"offsets": [366, 487],
 			"anim": "idle",
+			"fps": 24,
+			"name": "sunshine bf idle",
+			"indices": []
+		},
+		{
 			"loop": false,
-			"name": "idle"
+			"offsets": [384, 479],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "sunshine bf left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [366, 487],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "sunshine bf down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [366, 476],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "sunshine bf right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [366, 482],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "sunshine bf up",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
 	"image": "characters/bfputo",
-	"position": [0, 0],
+	"position": [60, 90],
 	"healthicon": "SSBF",
 	"flip_x": true,
 	"healthbar_colors": [127, 255, 255],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 3,
+	"scale": 1,
 	"_editor_isPlayer": true
 }

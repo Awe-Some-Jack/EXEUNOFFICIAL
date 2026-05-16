@@ -2,904 +2,150 @@
 <TextureAtlas imagePath="omwo.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="idle instancia 10000" x="28" y="28" width="605" height="639"/>
-	<SubTexture name="idle instancia 10001" x="28" y="28" width="605" height="639"/>
-	<SubTexture name="idle instancia 10002" x="655" y="28" width="605" height="639"/>
-	<SubTexture name="idle instancia 10003" x="655" y="28" width="605" height="639"/>
-	<SubTexture name="idle instancia 10004" x="1282" y="28" width="605" height="639"/>
-	<SubTexture name="idle instancia 10005" x="1282" y="28" width="605" height="639"/>
-	<SubTexture name="idle instancia 10006" x="1909" y="28" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10007" x="1909" y="28" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10008" x="2536" y="28" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10009" x="2536" y="28" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10010" x="3163" y="28" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10011" x="3163" y="28" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10012" x="3790" y="28" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10013" x="3790" y="28" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10014" x="4417" y="28" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10015" x="4417" y="28" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10016" x="5044" y="28" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10017" x="5044" y="28" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10018" x="5671" y="28" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10019" x="5671" y="28" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10020" x="6298" y="28" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10021" x="6298" y="28" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10022" x="6925" y="28" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10023" x="6925" y="28" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10024" x="28" y="689" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10025" x="28" y="689" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10026" x="655" y="689" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10027" x="655" y="689" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10028" x="1282" y="689" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10029" x="1282" y="689" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10030" x="1909" y="689" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10031" x="1909" y="689" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10032" x="2536" y="689" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10033" x="2536" y="689" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10034" x="3163" y="689" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10035" x="3163" y="689" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10036" x="3790" y="689" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10037" x="3790" y="689" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10038" x="4417" y="689" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10039" x="4417" y="689" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10040" x="5044" y="689" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10041" x="5044" y="689" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10042" x="5671" y="689" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10043" x="5671" y="689" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10044" x="6298" y="689" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10045" x="6298" y="689" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10046" x="6925" y="689" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10047" x="6925" y="689" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10048" x="28" y="1348" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10049" x="28" y="1348" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10050" x="655" y="1348" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10051" x="655" y="1348" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10052" x="1282" y="1348" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10053" x="1282" y="1348" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
-	<SubTexture name="idle instancia 10054" x="1909" y="1348" width="605" height="639"/>
-	<SubTexture name="idle instancia 10055" x="1909" y="1348" width="605" height="639"/>
-	<SubTexture name="idle instancia 10056" x="2536" y="1348" width="605" height="639"/>
-	<SubTexture name="idle instancia 10057" x="2536" y="1348" width="605" height="639"/>
-	<SubTexture name="idle instancia 10058" x="28" y="28" width="605" height="639"/>
-	<SubTexture name="idle instancia 10059" x="28" y="28" width="605" height="639"/>
-	<SubTexture name="omw poses2 instancia 10000" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10001" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10002" x="3790" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10003" x="3790" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10004" x="4417" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10005" x="4417" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10006" x="5044" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10007" x="5044" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10008" x="5671" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10009" x="5671" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10010" x="6298" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10011" x="6298" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10012" x="6925" y="1348" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10013" x="6925" y="1348" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10014" x="28" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10015" x="28" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10016" x="655" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10017" x="655" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10018" x="1282" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10019" x="1282" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10020" x="1909" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10021" x="1909" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10022" x="2536" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10023" x="2536" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10024" x="3163" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10025" x="3163" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10026" x="3791" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10027" x="3791" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10028" x="4419" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10029" x="4419" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10030" x="5046" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10031" x="5046" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10032" x="5673" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10033" x="5673" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10034" x="6301" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10035" x="6301" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10036" x="6928" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10037" x="6928" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10038" x="28" y="2667" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10039" x="28" y="2667" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10040" x="655" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10041" x="655" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10042" x="1282" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10043" x="1282" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10044" x="1909" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10045" x="1909" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10046" x="2536" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10047" x="2536" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10048" x="3163" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10049" x="3163" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10050" x="3790" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10051" x="3790" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10052" x="4417" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10053" x="4417" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10054" x="5044" y="2667" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10055" x="5044" y="2667" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10056" x="5671" y="2667" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10057" x="5671" y="2667" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10058" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10059" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10060" x="6298" y="2667" width="498" height="680" frameX="-5" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10061" x="6298" y="2667" width="498" height="680" frameX="-5" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10062" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10063" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10064" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10065" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10066" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10067" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10068" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10069" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10070" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10071" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10072" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10073" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10074" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10075" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10076" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10077" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10078" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10079" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10080" x="2633" y="3369" width="602" height="639" frameX="-2" frameY="-41" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10081" x="6298" y="2667" width="498" height="680" frameX="-5" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10082" x="6298" y="2667" width="498" height="680" frameX="-5" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10083" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10084" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10085" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10086" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10087" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10088" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10089" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10090" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10091" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10092" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10093" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10094" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10095" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10096" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10097" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10098" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10099" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10100" x="3257" y="3369" width="420" height="608" frameX="0" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10101" x="3257" y="3369" width="420" height="608" frameX="0" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10102" x="3699" y="3369" width="420" height="609" frameX="0" frameY="-74" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10103" x="3699" y="3369" width="420" height="609" frameX="0" frameY="-74" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10104" x="4141" y="3369" width="439" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10105" x="4141" y="3369" width="439" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10106" x="4602" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10107" x="4602" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10108" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10109" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10110" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10111" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10112" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10113" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10114" x="5530" y="3369" width="442" height="613" frameX="-1" frameY="-70" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10115" x="5530" y="3369" width="442" height="613" frameX="-1" frameY="-70" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10116" x="5994" y="3369" width="452" height="613" frameX="-1" frameY="-70" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10117" x="5994" y="3369" width="452" height="613" frameX="-1" frameY="-70" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10118" x="6468" y="3369" width="481" height="611" frameX="-1" frameY="-72" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10119" x="6468" y="3369" width="481" height="611" frameX="-1" frameY="-72" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10120" x="6971" y="3369" width="518" height="620" frameX="-1" frameY="-63" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10121" x="6971" y="3369" width="518" height="620" frameX="-1" frameY="-63" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10122" x="6971" y="3369" width="518" height="620" frameX="-1" frameY="-63" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10123" x="3257" y="3369" width="420" height="608" frameX="0" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10124" x="3257" y="3369" width="420" height="608" frameX="0" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10125" x="3699" y="3369" width="420" height="609" frameX="0" frameY="-74" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10126" x="3699" y="3369" width="420" height="609" frameX="0" frameY="-74" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10127" x="4141" y="3369" width="439" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10128" x="4141" y="3369" width="439" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10129" x="4602" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10130" x="4602" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10131" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10132" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10133" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10134" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10135" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10136" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10137" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10138" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10139" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10140" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10141" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10142" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10143" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10144" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10145" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10146" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10147" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10148" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10149" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10150" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10151" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10152" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10153" x="3218" y="4053" width="596" height="613" frameX="-5" frameY="-66" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10154" x="3218" y="4053" width="596" height="613" frameX="-5" frameY="-66" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10155" x="3836" y="4053" width="564" height="617" frameX="-5" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10156" x="3836" y="4053" width="564" height="617" frameX="-5" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10157" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10158" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10159" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10160" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10161" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10162" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10163" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10164" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10165" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10166" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10167" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10168" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10169" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10170" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10171" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10172" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10173" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10174" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10175" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10176" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10177" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10178" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10179" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10180" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10181" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10182" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10183" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10184" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10185" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10186" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10187" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10188" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10189" x="6911" y="4053" width="473" height="620" frameX="-3" frameY="-59" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10190" x="6911" y="4053" width="473" height="620" frameX="-3" frameY="-59" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10191" x="7406" y="4053" width="474" height="618" frameX="-3" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10192" x="7406" y="4053" width="474" height="618" frameX="-3" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10193" x="28" y="4695" width="479" height="644" frameX="-5" frameY="-32" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10194" x="28" y="4695" width="479" height="644" frameX="-5" frameY="-32" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10195" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10196" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10197" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10198" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10199" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10200" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10201" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10202" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10203" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10204" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10205" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10206" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10207" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10208" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 10209" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20000" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20001" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20002" x="3790" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20003" x="3790" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20004" x="4417" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20005" x="4417" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20006" x="5044" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20007" x="5044" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20008" x="5671" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20009" x="5671" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20010" x="6298" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20011" x="6298" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20012" x="6925" y="1348" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20013" x="6925" y="1348" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20014" x="28" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20015" x="28" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20016" x="655" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20017" x="655" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20018" x="1282" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20019" x="1282" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20020" x="1909" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20021" x="1909" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20022" x="2536" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20023" x="2536" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20024" x="3163" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20025" x="3163" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20026" x="3791" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20027" x="3791" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20028" x="4419" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20029" x="4419" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20030" x="5046" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20031" x="5046" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20032" x="5673" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20033" x="5673" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20034" x="6301" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20035" x="6301" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20036" x="6928" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20037" x="6928" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20038" x="28" y="2667" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20039" x="28" y="2667" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20040" x="655" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20041" x="655" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20042" x="1282" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20043" x="1282" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20044" x="1909" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20045" x="1909" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20046" x="2536" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20047" x="2536" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20048" x="3163" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20049" x="3163" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20050" x="3790" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20051" x="3790" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20052" x="4417" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20053" x="4417" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20054" x="5044" y="2667" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20055" x="5044" y="2667" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20056" x="5671" y="2667" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20057" x="5671" y="2667" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20058" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20059" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20060" x="6298" y="2667" width="498" height="680" frameX="-5" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20061" x="6298" y="2667" width="498" height="680" frameX="-5" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20062" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20063" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20064" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20065" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20066" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20067" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20068" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20069" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20070" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20071" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20072" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20073" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20074" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20075" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20076" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20077" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20078" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20079" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20080" x="2633" y="3369" width="602" height="639" frameX="-2" frameY="-41" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20081" x="6298" y="2667" width="498" height="680" frameX="-5" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20082" x="6298" y="2667" width="498" height="680" frameX="-5" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20083" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20084" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20085" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20086" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20087" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20088" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20089" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20090" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20091" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20092" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20093" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20094" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20095" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20096" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20097" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20098" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20099" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20100" x="3257" y="3369" width="420" height="608" frameX="0" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20101" x="3257" y="3369" width="420" height="608" frameX="0" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20102" x="3699" y="3369" width="420" height="609" frameX="0" frameY="-74" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20103" x="3699" y="3369" width="420" height="609" frameX="0" frameY="-74" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20104" x="4141" y="3369" width="439" height="612" frameX="0" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20105" x="4141" y="3369" width="439" height="612" frameX="0" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20106" x="4602" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20107" x="4602" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20108" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20109" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20110" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20111" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20112" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20113" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20114" x="5530" y="3369" width="442" height="613" frameX="-1" frameY="-70" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20115" x="5530" y="3369" width="442" height="613" frameX="-1" frameY="-70" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20116" x="5994" y="3369" width="452" height="613" frameX="-1" frameY="-70" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20117" x="5994" y="3369" width="452" height="613" frameX="-1" frameY="-70" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20118" x="6468" y="3369" width="481" height="611" frameX="-1" frameY="-72" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20119" x="6468" y="3369" width="481" height="611" frameX="-1" frameY="-72" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20120" x="6971" y="3369" width="518" height="620" frameX="-1" frameY="-63" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20121" x="6971" y="3369" width="518" height="620" frameX="-1" frameY="-63" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20122" x="6971" y="3369" width="518" height="620" frameX="-1" frameY="-63" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20123" x="3257" y="3369" width="420" height="608" frameX="0" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20124" x="3257" y="3369" width="420" height="608" frameX="0" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20125" x="3699" y="3369" width="420" height="609" frameX="0" frameY="-74" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20126" x="3699" y="3369" width="420" height="609" frameX="0" frameY="-74" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20127" x="4141" y="3369" width="439" height="612" frameX="0" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20128" x="4141" y="3369" width="439" height="612" frameX="0" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20129" x="4602" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20130" x="4602" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20131" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20132" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20133" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20134" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20135" x="5066" y="3369" width="442" height="612" frameX="-1" frameY="-71" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20136" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20137" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20138" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20139" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20140" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20141" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20142" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20143" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20144" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20145" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20146" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20147" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20148" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20149" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20150" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20151" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20152" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20153" x="3218" y="4053" width="596" height="613" frameX="-5" frameY="-66" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20154" x="3218" y="4053" width="596" height="613" frameX="-5" frameY="-66" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20155" x="3836" y="4053" width="564" height="617" frameX="-5" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20156" x="3836" y="4053" width="564" height="617" frameX="-5" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20157" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20158" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20159" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20160" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20161" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20162" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20163" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20164" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20165" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20166" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20167" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20168" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20169" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20170" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20171" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20172" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20173" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20174" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20175" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20176" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20177" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20178" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20179" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20180" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20181" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20182" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20183" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20184" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20185" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20186" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20187" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20188" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20189" x="6911" y="4053" width="473" height="620" frameX="-3" frameY="-59" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20190" x="6911" y="4053" width="473" height="620" frameX="-3" frameY="-59" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20191" x="7406" y="4053" width="474" height="618" frameX="-3" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20192" x="7406" y="4053" width="474" height="618" frameX="-3" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20193" x="28" y="4695" width="479" height="644" frameX="-5" frameY="-32" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20194" x="28" y="4695" width="479" height="644" frameX="-5" frameY="-32" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20195" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20196" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20197" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20198" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20199" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20200" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20201" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20202" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20203" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20204" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20205" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20206" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20207" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20208" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 20209" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30000" x="3163" y="1348" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30001" x="3163" y="1348" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30002" x="3790" y="1348" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30003" x="3790" y="1348" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30004" x="4417" y="1348" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30005" x="4417" y="1348" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30006" x="5044" y="1348" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30007" x="5044" y="1348" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30008" x="5671" y="1348" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30009" x="5671" y="1348" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30010" x="6298" y="1348" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30011" x="6298" y="1348" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30012" x="6925" y="1348" width="605" height="637" frameX="-2" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30013" x="6925" y="1348" width="605" height="637" frameX="-2" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30014" x="28" y="2009" width="605" height="636" frameX="-2" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30015" x="28" y="2009" width="605" height="636" frameX="-2" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30016" x="655" y="2009" width="605" height="636" frameX="-2" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30017" x="655" y="2009" width="605" height="636" frameX="-2" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30018" x="1282" y="2009" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30019" x="1282" y="2009" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30020" x="1909" y="2009" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30021" x="1909" y="2009" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30022" x="2536" y="2009" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30023" x="2536" y="2009" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30024" x="3163" y="2009" width="606" height="634" frameX="-2" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30025" x="3163" y="2009" width="606" height="634" frameX="-2" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30026" x="3791" y="2009" width="606" height="634" frameX="-2" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30027" x="3791" y="2009" width="606" height="634" frameX="-2" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30028" x="4419" y="2009" width="605" height="634" frameX="-2" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30029" x="4419" y="2009" width="605" height="634" frameX="-2" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30030" x="5046" y="2009" width="605" height="634" frameX="-2" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30031" x="5046" y="2009" width="605" height="634" frameX="-2" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30032" x="5673" y="2009" width="606" height="634" frameX="-2" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30033" x="5673" y="2009" width="606" height="634" frameX="-2" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30034" x="6301" y="2009" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30035" x="6301" y="2009" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30036" x="6928" y="2009" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30037" x="6928" y="2009" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30038" x="28" y="2667" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30039" x="28" y="2667" width="605" height="635" frameX="-2" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30040" x="655" y="2667" width="605" height="636" frameX="-2" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30041" x="655" y="2667" width="605" height="636" frameX="-2" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30042" x="1282" y="2667" width="605" height="636" frameX="-2" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30043" x="1282" y="2667" width="605" height="636" frameX="-2" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30044" x="1909" y="2667" width="605" height="637" frameX="-2" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30045" x="1909" y="2667" width="605" height="637" frameX="-2" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30046" x="2536" y="2667" width="605" height="637" frameX="-2" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30047" x="2536" y="2667" width="605" height="637" frameX="-2" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30048" x="3163" y="2667" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30049" x="3163" y="2667" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30050" x="3790" y="2667" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30051" x="3790" y="2667" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30052" x="4417" y="2667" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30053" x="4417" y="2667" width="605" height="638" frameX="-2" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30054" x="5044" y="2667" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30055" x="5044" y="2667" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30056" x="5671" y="2667" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30057" x="5671" y="2667" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30058" x="3163" y="1348" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30059" x="3163" y="1348" width="605" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30060" x="6298" y="2667" width="498" height="680" frameX="-6" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30061" x="6298" y="2667" width="498" height="680" frameX="-6" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30062" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30063" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30064" x="7339" y="2667" width="503" height="664" frameX="-4" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30065" x="7339" y="2667" width="503" height="664" frameX="-4" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30066" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30067" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30068" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30069" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30070" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30071" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30072" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30073" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30074" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30075" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30076" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30077" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30078" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30079" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30080" x="2633" y="3369" width="602" height="639" frameX="-3" frameY="-41" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30081" x="6298" y="2667" width="498" height="680" frameX="-6" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30082" x="6298" y="2667" width="498" height="680" frameX="-6" frameY="0" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30083" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30084" x="6818" y="2667" width="499" height="679" frameX="-5" frameY="-1" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30085" x="7339" y="2667" width="503" height="664" frameX="-4" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30086" x="7339" y="2667" width="503" height="664" frameX="-4" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30087" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30088" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30089" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30090" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30091" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30092" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30093" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30094" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30095" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30096" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30097" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30098" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-26" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30099" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30100" x="529" y="4695" width="419" height="608" frameX="0" frameY="-75" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30101" x="529" y="4695" width="419" height="608" frameX="0" frameY="-75" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30102" x="970" y="4695" width="419" height="610" frameX="0" frameY="-73" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30103" x="970" y="4695" width="419" height="610" frameX="0" frameY="-73" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30104" x="1411" y="4695" width="439" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30105" x="1411" y="4695" width="439" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30106" x="1872" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30107" x="1872" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30108" x="2336" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30109" x="2336" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30110" x="2336" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30111" x="2336" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30112" x="2336" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30113" x="2336" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30114" x="2800" y="4695" width="441" height="613" frameX="-1" frameY="-70" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30115" x="2800" y="4695" width="441" height="613" frameX="-1" frameY="-70" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30116" x="3263" y="4695" width="451" height="613" frameX="-1" frameY="-70" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30117" x="3263" y="4695" width="451" height="613" frameX="-1" frameY="-70" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30118" x="3736" y="4695" width="481" height="611" frameX="-1" frameY="-72" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30119" x="3736" y="4695" width="481" height="611" frameX="-1" frameY="-72" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30120" x="4239" y="4695" width="518" height="621" frameX="-1" frameY="-62" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30121" x="4239" y="4695" width="518" height="621" frameX="-1" frameY="-62" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30122" x="4239" y="4695" width="518" height="621" frameX="-1" frameY="-62" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30123" x="529" y="4695" width="419" height="608" frameX="0" frameY="-75" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30124" x="529" y="4695" width="419" height="608" frameX="0" frameY="-75" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30125" x="970" y="4695" width="419" height="610" frameX="0" frameY="-73" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30126" x="970" y="4695" width="419" height="610" frameX="0" frameY="-73" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30127" x="1411" y="4695" width="439" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30128" x="1411" y="4695" width="439" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30129" x="1872" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30130" x="1872" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30131" x="2336" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30132" x="2336" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30133" x="2336" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30134" x="2336" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30135" x="2336" y="4695" width="442" height="612" frameX="-1" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30136" x="7511" y="3369" width="637" height="596" frameX="-6" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30137" x="7511" y="3369" width="637" height="596" frameX="-6" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30138" x="28" y="4053" width="633" height="603" frameX="-6" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30139" x="28" y="4053" width="633" height="603" frameX="-6" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30140" x="683" y="4053" width="615" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30141" x="683" y="4053" width="615" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30142" x="1320" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30143" x="1320" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30144" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30145" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30146" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30147" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30148" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30149" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30150" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30151" x="2588" y="4053" width="608" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30152" x="2588" y="4053" width="608" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30153" x="3218" y="4053" width="596" height="613" frameX="-6" frameY="-66" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30154" x="3218" y="4053" width="596" height="613" frameX="-6" frameY="-66" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30155" x="3836" y="4053" width="564" height="617" frameX="-5" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30156" x="3836" y="4053" width="564" height="617" frameX="-5" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30157" x="7511" y="3369" width="637" height="596" frameX="-6" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30158" x="7511" y="3369" width="637" height="596" frameX="-6" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30159" x="28" y="4053" width="633" height="603" frameX="-6" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30160" x="28" y="4053" width="633" height="603" frameX="-6" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30161" x="683" y="4053" width="615" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30162" x="683" y="4053" width="615" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30163" x="1320" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30164" x="1320" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30165" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30166" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30167" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30168" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30169" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30170" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30171" x="1954" y="4053" width="612" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30172" x="2588" y="4053" width="608" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30173" x="2588" y="4053" width="608" height="611" frameX="-6" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30174" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30175" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30176" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30177" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30178" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30179" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30180" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30181" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30182" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30183" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30184" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30185" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30186" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30187" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30188" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30189" x="6911" y="4053" width="473" height="620" frameX="-3" frameY="-59" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30190" x="6911" y="4053" width="473" height="620" frameX="-3" frameY="-59" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30191" x="7406" y="4053" width="474" height="618" frameX="-3" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30192" x="7406" y="4053" width="474" height="618" frameX="-3" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30193" x="28" y="4695" width="479" height="644" frameX="-5" frameY="-31" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30194" x="28" y="4695" width="479" height="644" frameX="-5" frameY="-31" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30195" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30196" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30197" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30198" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-87" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30199" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30200" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30201" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30202" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30203" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30204" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30205" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30206" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30207" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30208" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 30209" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-67" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40000" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40001" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40002" x="3790" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40003" x="3790" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40004" x="4417" y="1348" width="605" height="639" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40005" x="4417" y="1348" width="605" height="639" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40006" x="5044" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40007" x="5044" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40008" x="5671" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40009" x="5671" y="1348" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40010" x="6298" y="1348" width="605" height="638" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40011" x="6298" y="1348" width="605" height="638" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40012" x="6925" y="1348" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40013" x="6925" y="1348" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40014" x="28" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40015" x="28" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40016" x="655" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40017" x="655" y="2009" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40018" x="1282" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40019" x="1282" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40020" x="1909" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40021" x="1909" y="2009" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40022" x="2536" y="2009" width="605" height="635" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40023" x="2536" y="2009" width="605" height="635" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40024" x="3163" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40025" x="3163" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40026" x="3791" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40027" x="3791" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40028" x="4419" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40029" x="4419" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40030" x="5046" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40031" x="5046" y="2009" width="605" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40032" x="5673" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40033" x="5673" y="2009" width="606" height="634" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40034" x="6301" y="2009" width="605" height="635" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40035" x="6301" y="2009" width="605" height="635" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40036" x="6928" y="2009" width="605" height="635" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40037" x="6928" y="2009" width="605" height="635" frameX="-1" frameY="-47" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40038" x="28" y="2667" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40039" x="28" y="2667" width="605" height="635" frameX="-1" frameY="-46" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40040" x="655" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40041" x="655" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40042" x="1282" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40043" x="1282" y="2667" width="605" height="636" frameX="-1" frameY="-45" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40044" x="1909" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40045" x="1909" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40046" x="2536" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40047" x="2536" y="2667" width="605" height="637" frameX="-1" frameY="-44" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40048" x="3163" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40049" x="3163" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40050" x="3790" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40051" x="3790" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40052" x="4417" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40053" x="4417" y="2667" width="605" height="638" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40054" x="5044" y="2667" width="605" height="639" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40055" x="5044" y="2667" width="605" height="639" frameX="-1" frameY="-43" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40056" x="5671" y="2667" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40057" x="5671" y="2667" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40058" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40059" x="3163" y="1348" width="605" height="639" frameX="-1" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40060" x="4779" y="4695" width="497" height="680" frameX="-5" frameY="0" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40061" x="4779" y="4695" width="497" height="680" frameX="-5" frameY="0" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40062" x="5298" y="4695" width="498" height="678" frameX="-5" frameY="-2" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40063" x="5298" y="4695" width="498" height="678" frameX="-5" frameY="-2" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40064" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40065" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40066" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40067" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40068" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40069" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40070" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40071" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40072" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40073" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40074" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40075" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40076" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-27" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40077" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-27" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40078" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40079" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40080" x="2633" y="3369" width="602" height="639" frameX="-2" frameY="-42" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40081" x="4779" y="4695" width="497" height="680" frameX="-5" frameY="0" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40082" x="4779" y="4695" width="497" height="680" frameX="-5" frameY="0" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40083" x="5298" y="4695" width="498" height="678" frameX="-5" frameY="-2" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40084" x="5298" y="4695" width="498" height="678" frameX="-5" frameY="-2" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40085" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40086" x="7339" y="2667" width="503" height="664" frameX="-3" frameY="-16" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40087" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40088" x="28" y="3369" width="500" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40089" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40090" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40091" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40092" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40093" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40094" x="550" y="3369" width="499" height="662" frameX="-3" frameY="-18" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40095" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40096" x="1071" y="3369" width="499" height="658" frameX="-3" frameY="-22" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40097" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-27" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40098" x="1592" y="3369" width="499" height="654" frameX="-3" frameY="-27" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40099" x="2113" y="3369" width="498" height="641" frameX="-3" frameY="-39" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40100" x="5818" y="4695" width="418" height="607" frameX="0" frameY="-76" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40101" x="5818" y="4695" width="418" height="607" frameX="0" frameY="-76" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40102" x="970" y="4695" width="419" height="610" frameX="0" frameY="-74" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40103" x="970" y="4695" width="419" height="610" frameX="0" frameY="-74" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40104" x="6258" y="4695" width="439" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40105" x="6258" y="4695" width="439" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40106" x="1872" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40107" x="1872" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40108" x="2336" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40109" x="2336" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40110" x="2336" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40111" x="2336" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40112" x="2336" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40113" x="2336" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40114" x="2800" y="4695" width="441" height="613" frameX="0" frameY="-70" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40115" x="2800" y="4695" width="441" height="613" frameX="0" frameY="-70" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40116" x="3263" y="4695" width="451" height="613" frameX="0" frameY="-70" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40117" x="3263" y="4695" width="451" height="613" frameX="0" frameY="-70" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40118" x="3736" y="4695" width="481" height="611" frameX="0" frameY="-72" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40119" x="3736" y="4695" width="481" height="611" frameX="0" frameY="-72" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40120" x="4239" y="4695" width="518" height="621" frameX="0" frameY="-63" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40121" x="4239" y="4695" width="518" height="621" frameX="0" frameY="-63" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40122" x="4239" y="4695" width="518" height="621" frameX="0" frameY="-63" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40123" x="5818" y="4695" width="418" height="607" frameX="0" frameY="-76" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40124" x="5818" y="4695" width="418" height="607" frameX="0" frameY="-76" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40125" x="970" y="4695" width="419" height="610" frameX="0" frameY="-74" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40126" x="970" y="4695" width="419" height="610" frameX="0" frameY="-74" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40127" x="6258" y="4695" width="439" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40128" x="6258" y="4695" width="439" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40129" x="1872" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40130" x="1872" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40131" x="2336" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40132" x="2336" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40133" x="2336" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40134" x="2336" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40135" x="2336" y="4695" width="442" height="612" frameX="0" frameY="-71" frameWidth="641" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40136" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40137" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40138" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40139" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40140" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40141" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40142" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40143" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40144" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40145" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40146" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40147" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40148" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40149" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40150" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40151" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40152" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40153" x="3218" y="4053" width="596" height="613" frameX="-5" frameY="-66" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40154" x="3218" y="4053" width="596" height="613" frameX="-5" frameY="-66" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40155" x="3836" y="4053" width="564" height="617" frameX="-5" frameY="-62" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40156" x="3836" y="4053" width="564" height="617" frameX="-5" frameY="-62" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40157" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40158" x="7511" y="3369" width="637" height="596" frameX="-5" frameY="-83" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40159" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40160" x="28" y="4053" width="633" height="603" frameX="-5" frameY="-76" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40161" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40162" x="683" y="4053" width="615" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40163" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40164" x="1320" y="4053" width="612" height="611" frameX="-5" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40165" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40166" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40167" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40168" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40169" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40170" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40171" x="1954" y="4053" width="612" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40172" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40173" x="2588" y="4053" width="608" height="611" frameX="-5" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40174" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40175" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40176" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40177" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40178" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40179" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40180" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40181" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40182" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40183" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40184" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40185" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40186" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40187" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40188" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40189" x="6911" y="4053" width="473" height="620" frameX="-3" frameY="-59" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40190" x="6911" y="4053" width="473" height="620" frameX="-3" frameY="-59" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40191" x="7406" y="4053" width="474" height="618" frameX="-3" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40192" x="7406" y="4053" width="474" height="618" frameX="-3" frameY="-61" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40193" x="28" y="4695" width="479" height="644" frameX="-5" frameY="-32" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40194" x="28" y="4695" width="479" height="644" frameX="-5" frameY="-32" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40195" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40196" x="4422" y="4053" width="480" height="590" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40197" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40198" x="4924" y="4053" width="479" height="592" frameX="-2" frameY="-88" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40199" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40200" x="5425" y="4053" width="474" height="604" frameX="-3" frameY="-75" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40201" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40202" x="5921" y="4053" width="473" height="610" frameX="-3" frameY="-69" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40203" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40204" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40205" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40206" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40207" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40208" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
-	<SubTexture name="omw poses2 instancia 40209" x="6416" y="4053" width="473" height="612" frameX="-3" frameY="-68" frameWidth="642" frameHeight="683"/>
+	<SubTexture name="fdown instancia 10000" x="28" y="28" width="480" height="590" frameX="0" frameY="-56" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10001" x="28" y="28" width="480" height="590" frameX="0" frameY="-56" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10002" x="530" y="28" width="479" height="592" frameX="0" frameY="-55" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10003" x="530" y="28" width="479" height="592" frameX="0" frameY="-55" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10004" x="1031" y="28" width="474" height="604" frameX="-1" frameY="-43" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10005" x="1031" y="28" width="474" height="604" frameX="-1" frameY="-43" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10006" x="1527" y="28" width="473" height="610" frameX="-1" frameY="-37" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10007" x="1527" y="28" width="473" height="610" frameX="-1" frameY="-37" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10008" x="2022" y="28" width="473" height="612" frameX="-1" frameY="-35" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10009" x="2022" y="28" width="473" height="612" frameX="-1" frameY="-35" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10010" x="2022" y="28" width="473" height="612" frameX="-1" frameY="-35" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10011" x="2022" y="28" width="473" height="612" frameX="-1" frameY="-35" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10012" x="2022" y="28" width="473" height="612" frameX="-1" frameY="-35" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10013" x="2022" y="28" width="473" height="612" frameX="-1" frameY="-35" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10014" x="2022" y="28" width="473" height="612" frameX="-1" frameY="-35" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10015" x="2517" y="28" width="473" height="620" frameX="-1" frameY="-27" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10016" x="2517" y="28" width="473" height="620" frameX="-1" frameY="-27" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10017" x="3012" y="28" width="474" height="618" frameX="-1" frameY="-29" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10018" x="3012" y="28" width="474" height="618" frameX="-1" frameY="-29" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10019" x="3508" y="28" width="479" height="644" frameX="-3" frameY="0" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fdown instancia 10020" x="3508" y="28" width="479" height="644" frameX="-3" frameY="0" frameWidth="482" frameHeight="647"/>
+	<SubTexture name="fleft instancia 10000" x="4009" y="28" width="419" height="608" frameX="0" frameY="-13" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10001" x="4009" y="28" width="419" height="608" frameX="0" frameY="-13" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10002" x="4450" y="28" width="419" height="610" frameX="0" frameY="-11" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10003" x="4450" y="28" width="419" height="610" frameX="0" frameY="-11" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10004" x="4891" y="28" width="439" height="612" frameX="-1" frameY="-9" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10005" x="4891" y="28" width="439" height="612" frameX="-1" frameY="-9" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10006" x="5352" y="28" width="442" height="612" frameX="-1" frameY="-9" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10007" x="5352" y="28" width="442" height="612" frameX="-1" frameY="-9" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10008" x="5816" y="28" width="442" height="612" frameX="-1" frameY="-9" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10009" x="5816" y="28" width="442" height="612" frameX="-1" frameY="-9" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10010" x="5816" y="28" width="442" height="612" frameX="-1" frameY="-9" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10011" x="5816" y="28" width="442" height="612" frameX="-1" frameY="-9" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10012" x="5816" y="28" width="442" height="612" frameX="-1" frameY="-9" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10013" x="5816" y="28" width="442" height="612" frameX="-1" frameY="-9" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10014" x="6280" y="28" width="441" height="613" frameX="-1" frameY="-8" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10015" x="6280" y="28" width="441" height="613" frameX="-1" frameY="-8" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10016" x="6743" y="28" width="451" height="613" frameX="-1" frameY="-8" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10017" x="6743" y="28" width="451" height="613" frameX="-1" frameY="-8" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10018" x="7216" y="28" width="481" height="611" frameX="-1" frameY="-10" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10019" x="7216" y="28" width="481" height="611" frameX="-1" frameY="-10" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10020" x="28" y="694" width="518" height="621" frameX="-1" frameY="0" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10021" x="28" y="694" width="518" height="621" frameX="-1" frameY="0" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fleft instancia 10022" x="28" y="694" width="518" height="621" frameX="-1" frameY="0" frameWidth="519" frameHeight="621"/>
+	<SubTexture name="fright instancia 10000" x="568" y="694" width="637" height="596" frameX="0" frameY="-22" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10001" x="568" y="694" width="637" height="596" frameX="0" frameY="-22" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10002" x="1227" y="694" width="633" height="603" frameX="0" frameY="-15" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10003" x="1227" y="694" width="633" height="603" frameX="0" frameY="-15" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10004" x="1882" y="694" width="615" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10005" x="1882" y="694" width="615" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10006" x="2519" y="694" width="612" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10007" x="2519" y="694" width="612" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10008" x="3153" y="694" width="612" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10009" x="3153" y="694" width="612" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10010" x="3153" y="694" width="612" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10011" x="3153" y="694" width="612" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10012" x="3153" y="694" width="612" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10013" x="3153" y="694" width="612" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10014" x="3153" y="694" width="612" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10015" x="3787" y="694" width="608" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10016" x="3787" y="694" width="608" height="611" frameX="0" frameY="-7" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10017" x="4417" y="694" width="596" height="613" frameX="0" frameY="-5" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10018" x="4417" y="694" width="596" height="613" frameX="0" frameY="-5" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10019" x="5035" y="694" width="564" height="617" frameX="0" frameY="0" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fright instancia 10020" x="5035" y="694" width="564" height="617" frameX="0" frameY="0" frameWidth="637" frameHeight="618"/>
+	<SubTexture name="fup instancia 10000" x="5621" y="694" width="497" height="680" frameX="-3" frameY="0" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10001" x="5621" y="694" width="497" height="680" frameX="-3" frameY="0" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10002" x="6140" y="694" width="498" height="678" frameX="-3" frameY="-2" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10003" x="6140" y="694" width="498" height="678" frameX="-3" frameY="-2" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10004" x="6660" y="694" width="501" height="664" frameX="-1" frameY="-16" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10005" x="6660" y="694" width="501" height="664" frameX="-1" frameY="-16" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10006" x="7183" y="694" width="499" height="662" frameX="-1" frameY="-18" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10007" x="7183" y="694" width="499" height="662" frameX="-1" frameY="-18" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10008" x="28" y="1396" width="498" height="662" frameX="-1" frameY="-18" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10009" x="28" y="1396" width="498" height="662" frameX="-1" frameY="-18" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10010" x="28" y="1396" width="498" height="662" frameX="-1" frameY="-18" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10011" x="28" y="1396" width="498" height="662" frameX="-1" frameY="-18" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10012" x="28" y="1396" width="498" height="662" frameX="-1" frameY="-18" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10013" x="28" y="1396" width="498" height="662" frameX="-1" frameY="-18" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10014" x="548" y="1396" width="498" height="658" frameX="-1" frameY="-22" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10015" x="548" y="1396" width="498" height="658" frameX="-1" frameY="-22" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10016" x="1068" y="1396" width="498" height="653" frameX="-1" frameY="-27" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10017" x="1068" y="1396" width="498" height="653" frameX="-1" frameY="-27" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10018" x="1588" y="1396" width="497" height="641" frameX="-1" frameY="-39" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10019" x="1588" y="1396" width="497" height="641" frameX="-1" frameY="-39" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="fup instancia 10020" x="2107" y="1396" width="601" height="638" frameX="0" frameY="-42" frameWidth="601" frameHeight="680"/>
+	<SubTexture name="idle instancia 10000" x="2730" y="1396" width="605" height="639"/>
+	<SubTexture name="idle instancia 10001" x="2730" y="1396" width="605" height="639"/>
+	<SubTexture name="idle instancia 10002" x="3357" y="1396" width="605" height="639"/>
+	<SubTexture name="idle instancia 10003" x="3357" y="1396" width="605" height="639"/>
+	<SubTexture name="idle instancia 10004" x="3984" y="1396" width="605" height="639"/>
+	<SubTexture name="idle instancia 10005" x="3984" y="1396" width="605" height="639"/>
+	<SubTexture name="idle instancia 10006" x="4611" y="1396" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10007" x="4611" y="1396" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10008" x="5238" y="1396" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10009" x="5238" y="1396" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10010" x="5865" y="1396" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10011" x="5865" y="1396" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10012" x="6492" y="1396" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10013" x="6492" y="1396" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10014" x="7119" y="1396" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10015" x="7119" y="1396" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10016" x="28" y="2080" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10017" x="28" y="2080" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10018" x="655" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10019" x="655" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10020" x="1282" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10021" x="1282" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10022" x="1909" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10023" x="1909" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10024" x="2536" y="2080" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10025" x="2536" y="2080" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10026" x="3163" y="2080" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10027" x="3163" y="2080" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10028" x="3790" y="2080" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10029" x="3790" y="2080" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10030" x="4417" y="2080" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10031" x="4417" y="2080" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10032" x="5044" y="2080" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10033" x="5044" y="2080" width="605" height="634" frameX="0" frameY="-5" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10034" x="5671" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10035" x="5671" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10036" x="6298" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10037" x="6298" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10038" x="6925" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10039" x="6925" y="2080" width="605" height="635" frameX="0" frameY="-4" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10040" x="28" y="2738" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10041" x="28" y="2738" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10042" x="655" y="2738" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10043" x="655" y="2738" width="605" height="636" frameX="0" frameY="-3" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10044" x="1282" y="2738" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10045" x="1282" y="2738" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10046" x="1909" y="2738" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10047" x="1909" y="2738" width="605" height="637" frameX="0" frameY="-2" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10048" x="2536" y="2738" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10049" x="2536" y="2738" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10050" x="3163" y="2738" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10051" x="3163" y="2738" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10052" x="3790" y="2738" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10053" x="3790" y="2738" width="605" height="638" frameX="0" frameY="-1" frameWidth="605" frameHeight="639"/>
+	<SubTexture name="idle instancia 10054" x="4417" y="2738" width="605" height="639"/>
+	<SubTexture name="idle instancia 10055" x="4417" y="2738" width="605" height="639"/>
+	<SubTexture name="idle instancia 10056" x="5044" y="2738" width="605" height="639"/>
+	<SubTexture name="idle instancia 10057" x="5044" y="2738" width="605" height="639"/>
+	<SubTexture name="idle instancia 10058" x="2730" y="1396" width="605" height="639"/>
+	<SubTexture name="idle instancia 10059" x="2730" y="1396" width="605" height="639"/>
 </TextureAtlas>

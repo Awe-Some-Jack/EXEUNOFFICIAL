@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, -29],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "fleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 16],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "fdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-3, 64],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "fup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-5, -27],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "fright",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/omwo",
+	"position": [334, 165],
+	"healthicon": "omw-1",
+	"flip_x": false,
+	"healthbar_colors": [78, 72, 179],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1.5,
+	"_editor_isPlayer": false
+}

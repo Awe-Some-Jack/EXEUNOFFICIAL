@@ -1,92 +1,82 @@
---text to image by unholywanderer04 (sm64hud)
-
-local var = true
-
+local postCreate = false
 function onCreatePost()
-	--hud objects
-	makeHUDSprite('scoreText', 'pixelUI/score', 20, 0, {3.5, 3.5})
-	makeHUDSprite('timeText', 'pixelUI/time', 20, 0, {3.5, 3.5})
-	makeHUDSprite('missesText', 'pixelUI/misses', 20, 0, {3.5, 3.5})
-	makeHUDSprite('missesText-alt', 'pixelUI/misses-alt', 20, 0, {3.5, 3.5})
-	setProperty('missesText-alt.visible', false)
+	postCreate = true
+	for i = 0,3 do setProperty('opponentStrums.members['..i..'].x', -3000) end
 
-	if downscroll then
-		dsvalScore = 20
-		dsvalTime = 20+(getProperty('scoreText.height')+10)
-		dsvalMisses = 20+(getProperty('scoreText.height')*2+20)
-	else
-		dsvalScore = (screenHeight - getProperty('scoreText.height')) - (((getProperty('scoreText.height') * 2) + 20) + 20)
-		dsvalTime = (screenHeight - getProperty('timeText.height')) - ((getProperty('scoreText.height') + 10) + 20)
-		dsvalMisses = (screenHeight - getProperty('missesText.height')) - 20
-	end
+	--sonic hud
 
-	setProperty('scoreText.y', dsvalScore)
-	setProperty('scoreText.x', 32)
-	setProperty('timeText.y', dsvalTime)
-	setProperty('timeText.x', 46)
-	setProperty('missesText.y', dsvalMisses)
+	makeHUDSprite('scoreText', 'score', 20)
+	makeHUDSprite('timeText', 'time', 20)
+	makeHUDSprite('missesText', 'misses', 20) makeHUDSprite('missesText-alt', 'misses-alt', 20) setProperty('missesText-alt.visible', false)
+
+	initialY = 6 * 3
+	setProperty('scoreText.y', downscroll and initialY or (screenHeight - getProperty('scoreText.height') - initialY - ((getProperty('scoreText.height') * 2) + initialY)))
+	setProperty('timeText.y', downscroll and (initialY + (getProperty('timeText.height') + (initialY / 2))) or (screenHeight - getProperty('timeText.height') - initialY - (getProperty('timeText.height') + (initialY / 2))))
+	setProperty('missesText.y', downscroll and (initialY + ((getProperty('missesText.height') * 2) + initialY)) or (screenHeight - getProperty('missesText.height') - initialY))
 	setProperty('missesText-alt.y', getProperty('missesText.y'))
-	onUpdateScore()
 
-	--setting some stuff
-	setProperty('scoreTxt.visible', false)
-	setProperty('timeTxt.visible', false)
-	setProperty('timeBar.visible', false)
-
-	setProperty('showRating', false)
-	setProperty('showComboNum', false)
-
-	--save fps visibility and hide fps
-	var = getPropertyFromClass('Main', 'fpsVar.visible')
-	setPropertyFromClass('Main', 'fpsVar.visible', false)
+	updateHUD()
 end
 
-function onDestroy()
-	setPropertyFromClass('Main', 'fpsVar.visible', var)
-end
+function onUpdateScore() if postCreate then updateHUD() end end
 
-function onUpdateScore()
-	missesThing = tostring(misses)
-	splitMisses = breakItDown(missesThing)
-
-	numCount = (#splitMisses > 1 and #splitMisses or 1)
-	for i = 1,numCount do
-		local numSpawn = 'missesNum'..i
-		makeHUDSprite('misses'..numSpawn, splitMisses[i], 394 + 50 - ((i-1) * 38.5), getProperty('missesText.y'), {3.5, 3.5}, true)
+local oldScore = {0, 0}
+function updateHUD()
+	--score
+	local splittedScore = splitShit(score)
+	for i = 1,math.max(#splittedScore, 1) do
+		local tag = 'scoreNum'..i
+		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedScore[i], 308 - ((i - 1) * 24), getProperty('scoreText.y'), true) end
+		setProperty(tag..'.animation.curAnim.curFrame', (splittedScore[i] == '-' and 11 or splittedScore[i]))
 	end
+	if #splittedScore ~= oldScore[1] then for i = 1,oldScore[1] do if i > #splittedScore and luaSpriteExists('scoreNum'..i) then removeLuaSprite('scoreNum'..i) end end end
+	oldScore[1] = #splittedScore
 
-	scoreThing = tostring(score)
-	splitScore = breakItDown(scoreThing)
-
-	numCountS = (#splitScore > 1 and #splitScore or 1)
-	for i = 1,numCountS do
-		local numSpawn = 'scoreNum'..i
-		makeHUDSprite('score'..numSpawn, splitScore[i], 394 + 50 - ((i-1) * 38.5), getProperty('scoreText.y'), {3.5, 3.5}, true)
-		if splitScore[i] == '-' then setProperty('score'..numSpawn..'.animation.curAnim.curFrame', 11) end
+	--misses
+	local splittedMisses = splitShit(misses)
+	for i = 1,math.max(#splittedMisses, 1) do
+		local tag = 'missesNum'..i
+		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedMisses[i], 308 - ((i - 1) * 24), getProperty('missesText.y'), true) end
+		setProperty(tag..'.animation.curAnim.curFrame', splittedMisses[i])
 	end
+	if #splittedMisses ~= oldScore[2] then for i = 1,oldScore[2] do if i > #splittedMisses and luaSpriteExists('missesNum'..i) then removeLuaSprite('missesNum'..i) end end end
+	oldScore[2] = #splittedMisses
 end
 
+local oldTime = ''
 function onUpdatePost()
-	local lastHeld = {'', '', '', ''} -- for time
-	local hold = {}
-	local guh = formatTime(math.max(0, getSongPosition() - noteOffset))
-	for letter in guh:gmatch(".") do table.insert(hold, letter) end
-
 	if not inGameOver then
-		for i = 1, #hold do
-			if lastHeld[i] ~= hold[i] then -- dont fucking make the same image each frame
-				lastHeld[i] = hold[i]
-				if hold[i] ~= ':' and hold[i] ~= ';' then
-					makeHUDSprite('timeNum'..i, hold[i], 164 + 50 + ((i-1) * 38.5), getProperty('timeText.y'), {3.5, 3.5}, true)
-				elseif hold[i] == ';' then
-					makeHUDSprite('timeSeper2'..i, 'ui/numbers', 164 + 50 + ((i-1) * 38.5), getProperty('timeText.y'), {3.5, 3.5}, true)
-					setProperty('timeSeper2'..i..'.animation.curAnim.curFrame', 10)
-				else
-					makeHUDSprite('timeSeper'..i, 'pixelUI/numbers', 164 + 50 + ((i-1) * 38.5), getProperty('timeText.y'), {3.5, 3.5}, true)
-					setProperty('timeSeper'..i..'.animation.curAnim.curFrame', 12)
-				end
+		--time
+		local daTime = formatTime(bound(getSongPosition() - noteOffset, 0, songLength))
+		if oldTime ~= daTime then
+			local splittedTime = splitShit(daTime, false)
+			for i = 1,math.max(#splittedTime, 1) do
+				local tag = 'timeNum'..i
+				if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedTime[i], 164 + ((i - 1) * 24), getProperty('timeText.y'), true) end
+				setProperty(tag..'.animation.curAnim.curFrame', (splittedTime[i] == ':' and 12 or (splittedTime[i] == ';' and 10 or splittedTime[i])))
 			end
+			oldTime = daTime
 		end
+	end
+end
+
+function makeHUDSprite(tag, path, x, y, num)
+	makeLuaSprite(tag, (num and 'pixelUI/numbers' or ('pixelUI/'..path)), x or 0, y or 0)
+	if num then
+		loadGraphic(tag, 'pixelUI/numbers', 91 / 13, 11)
+		addAnimation(tag, 'danums', {0,1,2,3,4,5,6,7,8,9,10,11,12}, 0, false)
+		setProperty(tag..'.animation.curAnim.curFrame', tonumber(path))
+	end
+	scaleObject(tag, 3, 3)
+	setObjectCamera(tag, 'hud')
+	setProperty(tag..'.antialiasing', false)
+	addLuaSprite(tag)
+end
+
+function onBeatHit()
+	if misses >= 1 then
+		setProperty('missesText.visible', curBeat % 2 == 0)
+		setProperty('missesText-alt.visible', curBeat % 2 == 1)
 	end
 end
 
@@ -95,43 +85,14 @@ function formatTime(ms) -- stolen :imp:
 	return string.format('%01d:%02d;%02d', (s/60)%60, s%60, (math.floor(ms/10))%100)
 end
 
-function math.range(number, min, max)
+function bound(number, min, max)
 	return math.max(min, math.min(max, number))
 end
 
-function makeHUDSprite(tag, path, x, y, scale, num)
-	num = num or false
-
-	makeLuaSprite(tag, (num == true and 'pixelUI/numbers' or path), x, y)
-	if num == true then
-		loadGraphic(tag, 'pixelUI/numbers', getProperty(tag..'.width') / 13, getProperty(tag..'.height'))
-		addAnimation(tag, 'danums', {0,1,2,3,4,5,6,7,8,9,10,11,12}, 0, false)
-		setProperty(tag..'.animation.curAnim.curFrame', path)
-	end
-	scaleObject(tag, scale[1], scale[2])
-	setObjectCamera(tag, 'hud')
-	setProperty(tag..'.antialiasing', false)
-	if not hideHud then
-		addLuaSprite(tag)
-	end
-end
-
-function onBeatHit()
-	if misses >= 1 then
-		setProperty('missesText.visible', not getProperty('missesText.visible'))
-		setProperty('missesText-alt.visible', not getProperty('missesText-alt.visible'))
-	end
-end
-
-function breakItDown(breakin, flip)
-	local daShit, tempTable = {}, {}
-
-	for thing in breakin:gmatch(".") do table.insert(tempTable, thing) end -- split every "letter"
-	for i = #tempTable, 1, -1 do daShit[#daShit + 1] = tempTable[i] end -- then flip the shit cuz I can't be bothered
-
-	return daShit
-end
-
-function rgbToHex(rgb) -- https://www.codegrepper.com/code-examples/lua/rgb+to+hex+lua
-    return string.format('%02x%02x%02x', math.floor(rgb[1]), math.floor(rgb[2]), math.floor(rgb[3]))
+function splitShit(s, f)
+	f = f == nil and true or f
+	local splitted,temp = {}, {}
+	for l in tostring(s):gmatch(".") do table.insert(temp, l) end
+	if f then for i = #temp,1,-1 do splitted[#splitted + 1] = temp[i] end else for i = 1,#temp do splitted[#splitted + 1] = temp[i] end end
+	return splitted
 end

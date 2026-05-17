@@ -227,6 +227,7 @@ class PlayState extends MusicBeatState
 	public static var deathCounter:Int = 0;
 
 	public var defaultCamZoom:Float = 1.05;
+	public var tweenCamZoom:Bool = false;
 
 	// how big to stretch the pixel art assets
 	public static var daPixelZoom:Float = 6;
@@ -437,6 +438,7 @@ class PlayState extends MusicBeatState
 		switch(curStage)
 		{
 			case 'fatality': new states.stages.Fatality();
+			case 'ghill': new states.stages.Hijacked();
 		}
 
 		if(stageData.objects != null && stageData.objects.length > 0)
@@ -843,7 +845,7 @@ class PlayState extends MusicBeatState
 	public function getLuaObject(tag:String):Dynamic
 		return variables.get(tag);
 
-	function startCharacterPos(char:Character, ?gfCheck:Bool = false) {
+	public function startCharacterPos(char:Character, ?gfCheck:Bool = false) {
 		if(gfCheck && char.curCharacter.startsWith('gf')) { //IF DAD IS GIRLFRIEND, HE GOES TO HER POSITION
 			char.setPosition(GF_X, GF_Y);
 			char.scrollFactor.set(0.95, 0.95);
@@ -2262,11 +2264,12 @@ class PlayState extends MusicBeatState
 				gfSpeed = Math.round(flValue1);
 
 			case 'Add Camera Zoom':
-				if(ClientPrefs.data.camZooms && FlxG.camera.zoom < 1.35) {
+				if(ClientPrefs.data.camZooms) {
 					if(flValue1 == null) flValue1 = 0.015;
 					if(flValue2 == null) flValue2 = 0.03;
 
-					FlxG.camera.zoom += flValue1;
+					if(!tweenCamZoom)
+						FlxG.camera.zoom += flValue1;
 					camHUD.zoom += flValue2;
 				}
 
@@ -3113,7 +3116,7 @@ class PlayState extends MusicBeatState
 			dad.specialAnim = true;
 			dad.heyTimer = 0.6;
 		}
-		else if(!note.noAnimation)
+		else if(!note.noAnimation && note.noteType != 'GF2Sing')
 		{
 			var char:Character = dad;
 			var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length-1, note.noteData)))] + note.animSuffix;
@@ -3163,6 +3166,7 @@ class PlayState extends MusicBeatState
 		_gnhArgs[1] = leData;
 		_gnhArgs[2] = leType;
 		_gnhArgs[3] = isSus;
+		stagesFunc(function(stage:BaseStage) stage.goodNoteHitPre(note));
 		var result:Dynamic = callOnLuas('goodNoteHitPre', _gnhArgs);
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) result = callOnHScript('goodNoteHitPre', [note]);
 
@@ -3426,6 +3430,8 @@ class PlayState extends MusicBeatState
 			boyfriend.dance();
 		if (dad != null && beat % dad.danceEveryNumBeats == 0 && !dad.stunned && !dad.getAnimationName().startsWith('sing'))
 			dad.dance();
+		
+		stagesFunc(function(stage:BaseStage) stage.characterBopper(beat));
 	}
 
 	public function playerDance():Void

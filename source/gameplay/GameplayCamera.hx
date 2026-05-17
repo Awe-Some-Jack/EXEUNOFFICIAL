@@ -32,6 +32,7 @@ typedef CameraSettings = {
 	var OffsetsGF:Float;
 	var Angle:Float;
 	var DADAngle:Float;
+	var AutoZoomBump:Bool;
 }
 
 class GameplayCamera
@@ -60,7 +61,8 @@ class GameplayCamera
 		OffsetsDAD: 25,
 		OffsetsGF:  25,
 		Angle:      0,
-		DADAngle:   0
+		DADAngle:   0,
+		AutoZoomBump: true
 	};
 
 	public var overrideZoomValue:Float = 1.0;
@@ -121,6 +123,7 @@ class GameplayCamera
 					if (parsed.OffsetsGF    != null) settings.OffsetsGF    = parsed.OffsetsGF;
 					if (parsed.Angle        != null) settings.Angle        = parsed.Angle;
 					if (parsed.DADAngle     != null) settings.DADAngle     = parsed.DADAngle;
+					if (parsed.AutoZoomBump != null) settings.AutoZoomBump = parsed.AutoZoomBump;
 				}
 			}
 			catch (e:Dynamic) {}
@@ -147,6 +150,7 @@ class GameplayCamera
 		settings.OGZoom = 0.9; settings.MiddleZoom = 0.7;
 		settings.OffsetsBF = 25; settings.OffsetsDAD = 25; settings.OffsetsGF = 25;
 		settings.Angle = 0; settings.DADAngle = 0;
+		settings.AutoZoomBump = true;
 	}
 
 	public function initFollow(startX:Float, startY:Float, ?prevFollow:FlxObject)
@@ -213,16 +217,21 @@ class GameplayCamera
 		else if (!mustHit)
 		{
 			var anim:String   = getAnim(dad);
+			var anim2:String  = "";
+
+			if(playState.songName.toLowerCase() == 'hijacked-transmission' && states.stages.Hijacked.instance != null) anim2 = getAnim(states.stages.Hijacked.instance.gf2);
+
 			var targetX:Float = s.MiddleCamera ? s.MiddleX : s.DADx;
 			var targetY:Float = s.MiddleCamera ? s.MiddleY : s.DADy;
 			var off:Float     = s.OffsetsDAD;
 			var ang:Float     = s.DADAngle;
 
-			if      (anim.startsWith('singLEFT'))  { setPos(targetX - off, targetY); tweenAngle(-ang); }
-			else if (anim.startsWith('singRIGHT')) { setPos(targetX + off, targetY); tweenAngle(ang); }
-			else if (anim.startsWith('singUP'))    { setPos(targetX, targetY - off); tweenAngle(0); }
-			else if (anim.startsWith('singDOWN'))  { setPos(targetX, targetY + off); tweenAngle(0); }
+			if      (anim.startsWith('singLEFT') || anim2.startsWith('singLEFT'))  { setPos(targetX - off, targetY); tweenAngle(-ang); }
+			else if (anim.startsWith('singRIGHT') || anim2.startsWith('singRIGHT')) { setPos(targetX + off, targetY); tweenAngle(ang); }
+			else if (anim.startsWith('singUP') || anim2.startsWith('singUP'))    { setPos(targetX, targetY - off); tweenAngle(0); }
+			else if (anim.startsWith('singDOWN') || anim2.startsWith('singDOWN'))  { setPos(targetX, targetY + off); tweenAngle(0); }
 			else                                    { setPos(targetX, targetY);       tweenAngle(0); }
+
 		}
 		else
 		{
@@ -318,9 +327,10 @@ class GameplayCamera
 
 	public function onSectionZoomBump()
 	{
-		if (PlayState.instance.camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.data.camZooms)
+		if (settings.AutoZoomBump && PlayState.instance.camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.data.camZooms)
 		{
-			FlxG.camera.zoom += 0.015 * PlayState.instance.camZoomingMult;
+			if(!PlayState.instance.tweenCamZoom)
+				FlxG.camera.zoom += 0.015 * PlayState.instance.camZoomingMult;
 			PlayState.instance.camHUD.zoom += 0.03 * PlayState.instance.camZoomingMult;
 		}
 	}

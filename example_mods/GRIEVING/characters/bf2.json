@@ -1,76 +1,84 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [118, 150],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [102, 124],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [175, 148],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [82, 153],
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
-			"loop": false,
 			"offsets": [128, 175],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [102, 144],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "mdown",
-			"indices": []
+			"indices": [],
+			"name": "mdown"
 		},
 		{
-			"loop": false,
 			"offsets": [87, 192],
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"fps": 24,
-			"name": "mright",
-			"indices": []
+			"indices": [],
+			"name": "mright"
 		},
 		{
-			"loop": false,
 			"offsets": [121, 227],
-			"anim": "singUPmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "mup",
-			"indices": []
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "mup"
 		},
 		{
-			"loop": false,
 			"offsets": [150, 175],
-			"anim": "singLEFTmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "mleft",
-			"indices": []
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "mleft"
+		},
+		{
+			"offsets": [124, 149],
+			"indices": [],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "hey"
 		}
 	],
 	"vocals_file": "",

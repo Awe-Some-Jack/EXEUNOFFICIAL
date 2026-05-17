@@ -90,9 +90,11 @@ class BaseStage extends FlxBasic
 
 	// Note Hit/Miss
 	public function goodNoteHit(note:Note) {}
+	public function goodNoteHitPre(note:Note) {}
 	public function opponentNoteHit(note:Note) {}
 	public function noteMiss(note:Note) {}
 	public function noteMissPress(direction:Int) {}
+	public function characterBopper(beat:Int) {}
 
 	// Things to replace FlxGroup stuff and inject sprites directly into the state
 	function add(object:FlxBasic) return FlxG.state.add(object);

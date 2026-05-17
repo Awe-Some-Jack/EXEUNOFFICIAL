@@ -5,6 +5,8 @@
 
 function onEvent(eventName, value1, value2)
     if eventName == "Tween Camera Zoom" then
+        setProperty('tweenCamZoom',true);
+
         local boolDefault = stringSplit(value1, ',')
         local zoom = tonumber(boolDefault[1])
         local tweenZoom = boolDefault[2]
@@ -13,11 +15,14 @@ function onEvent(eventName, value1, value2)
         local ease = valueZoom[2]
 
             if tweenZoom then
+                cancelTween('TweenZoomEvent')
                 doTweenZoom('TweenZoomEvent', 'camGame', zoom, steps, ease)
                 --debugPrint(steps)
                 --debugPrint('Tweening camera zoom')
             else
+                cancelTween('TweenZoomEvent')
                 setProperty('defaultCamZoom', zoom)
+                setProperty('tweenCamZoom',false);
                 --debugPrint('Default camera zoom!')
         end
     end
@@ -26,6 +31,7 @@ end
 function onTweenCompleted(tag)
     if tag == "TweenZoomEvent" then
         setProperty('defaultCamZoom', getProperty('camGame.zoom'))
+        setProperty('tweenCamZoom',false);
         --debugPrint('Zoom finished!')
     end
 end

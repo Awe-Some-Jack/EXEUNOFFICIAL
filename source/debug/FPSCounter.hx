@@ -106,7 +106,7 @@ class FPSCounter extends TextField
 	/** Spawn a background thread to collect system stats without blocking render. **/
 	static function kickBgQuery():Void
 	{
-		#if !mac
+		#if windows
 		if (_bgRunning) return;
 
 		// Stage3D must be queried on the main thread
@@ -200,17 +200,17 @@ class FPSCounter extends TextField
 			if (r.match(out)) return Std.parseFloat(r.matched(1));
 		}
 		catch (_) {}
-		#elseif linux
-		try
-		{
-			var proc = new sys.io.Process('sh', ['-c',
-				"grep 'cpu ' /proc/stat | awk '{u=$2+$4; t=$2+$3+$4+$5; if(NR==1){u1=u;t1=t} else print (u-u1)*100/(t-t1)}'  /proc/stat /proc/stat"]);
-			var out  = proc.stdout.readAll().toString().trim();
-			proc.close();
-			var v = Std.parseFloat(out);
-			return Math.isNaN(v) ? -1 : v;
-		}
-		catch (_) {}
+		// #elseif linux
+		// try
+		// {
+		// 	var proc = new sys.io.Process('sh', ['-c',
+		// 		"grep 'cpu ' /proc/stat | awk '{u=$2+$4; t=$2+$3+$4+$5; if(NR==1){u1=u;t1=t} else print (u-u1)*100/(t-t1)}'  /proc/stat /proc/stat"]);
+		// 	var out  = proc.stdout.readAll().toString().trim();
+		// 	proc.close();
+		// 	var v = Std.parseFloat(out);
+		// 	return Math.isNaN(v) ? -1 : v;
+		// }
+		// catch (_) {}
 		// #elseif mac
 		// try
 		// {
@@ -251,28 +251,6 @@ class FPSCounter extends TextField
 			proc.close();
 			var v = Std.parseFloat(out);
 			if (!Math.isNaN(v) && v > 0) return v;
-		}
-		catch (_) {}
-		#elseif linux
-		try
-		{
-			var proc = new sys.io.Process('sh', ['-c',
-				'cat /sys/class/drm/card0/device/mem_info_vram_used 2>/dev/null']);
-			var out  = proc.stdout.readAll().toString().trim();
-			proc.close();
-			var v = Std.parseFloat(out);
-			if (!Math.isNaN(v) && v > 0) return v;
-		}
-		catch (_) {}
-		// NVIDIA on Linux
-		try
-		{
-			var proc = new sys.io.Process('nvidia-smi',
-				['--query-gpu=memory.used', '--format=csv,noheader,nounits']);
-			var out = proc.stdout.readAll().toString().trim();
-			proc.close();
-			var v = Std.parseFloat(out);
-			if (!Math.isNaN(v) && v > 0) return v * 1024 * 1024;
 		}
 		catch (_) {}
 		#end

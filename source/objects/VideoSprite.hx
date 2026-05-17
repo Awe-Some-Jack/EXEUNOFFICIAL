@@ -73,6 +73,8 @@ class VideoSprite extends FlxSpriteGroup
 				if (video.bitmap != null && FlxG.sound.music != null)
 					video.bitmap.rate = FlxG.sound.music.pitch;
 				#end
+				video.play();
+				video.bitmap?.pause();
 			}
 
 			return success;
@@ -86,15 +88,17 @@ class VideoSprite extends FlxSpriteGroup
 
 	public function playDelayed(delay:Float = 0):Void
 	{
-		if (delay <= 0)
-			video.play();
-		else
-			new FlxTimer().start(delay, _ -> video.play());
-
 		#if FLX_PITCH
 		if (video.bitmap != null)
 			video.bitmap.rate = PlayState.instance != null ? PlayState.instance.playbackRate : 1.0;
 		#end
+		video.bitmap.onFormatSetup.add(function()
+		{
+			if (delay <= 0)
+				video.bitmap?.resume();
+			else
+				new FlxTimer().start(delay, _ -> video.bitmap?.resume());
+		}, true);
 	}
 
     override public function setGraphicSize(width:Float = 0, height:Float = 0):Void

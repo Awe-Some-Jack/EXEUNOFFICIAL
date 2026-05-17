@@ -65,6 +65,8 @@ function onCreatePost()
 			setShaderFloat(char, 'str', 1)
 			setShaderFloat(char, 'brightness', -30)
             setShaderFloat(char, 'thr', 0.1)
+            setShaderFloat(char, 'uSpriteAlpha', 1.0)
+            setShaderFloat(char, 'AA_STAGES', 1.0)
 			setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
 			runHaxeFunction('setShaderFrameInfo', {char})
 		end
@@ -105,6 +107,8 @@ function onEvent(eventName, value1, value2)
                 setShaderFloat(char, 'str', 1)
                 setShaderFloat(char, 'brightness', -30)
                 setShaderFloat(char, 'thr', 0.1)
+                setShaderFloat(char, 'uSpriteAlpha', 1.0)
+                setShaderFloat(char, 'AA_STAGES', 1.0)
                 setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
                 runHaxeFunction('setShaderFrameInfo', {char})
             end
@@ -117,6 +121,10 @@ function onEvent(eventName, value1, value2)
 end
 
 function onUpdatePost(e)
+    if shadersEnabled and not lowQuality then
+        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'uSpriteAlpha', getProperty('dad.alpha')) end
+        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'uSpriteAlpha', getProperty('boyfriend.alpha')) end
+    end
     if onTween1 then
         setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
         setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))

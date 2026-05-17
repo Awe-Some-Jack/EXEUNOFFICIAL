@@ -21,13 +21,6 @@ local shaders = {
         sort = 0,
     }},
 
-    {name = 'color', shader = 'DropShadowShader', x = 0, angle = 0, scaleX = 1, scaleY = 1,
-    uniforms = {
-        hue = 1,
-        contrast = 10,
-        saturation = 0,
-        brightness = 0,
-    }},
 }
 
 runHaxeCode([[
@@ -72,6 +65,8 @@ function onCreatePost()
         if num == 1 then dashads = dashads..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' dashadsHUD = dashadsHUD..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)'
         elseif num > 1 then dashads = dashads..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' dashadsHUD = dashadsHUD..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' end
     end
+
+    makeLuaSprite('color', 0);
     dashads = dashads..']; return;'
     dashadsHUD = dashadsHUD..']; return;'
     if shadersEnabled and not lowQuality then runHaxeCode(dashads) runHaxeCode(dashadsHUD) end
@@ -87,6 +82,8 @@ local lightningPhase = {
                 setShaderFloat(char, 'str', 1)
                 setShaderFloat(char, 'brightness', char == 'dad' and 0 or -30)
                 setShaderFloat(char, 'thr', 0.1)
+                setShaderFloat(char, 'uSpriteAlpha', 1.0)
+                setShaderFloat(char, 'AA_STAGES', 1.0)
                 setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
                 runHaxeFunction('setShaderFrameInfo', {char})
             end
@@ -104,6 +101,8 @@ local lightningPhase = {
             setShaderFloat(char, 'str', 1)
             setShaderFloat(char, 'brightness', char == 'dad' and 0 or -30)
             setShaderFloat(char, 'thr', 0.1)
+            setShaderFloat(char, 'uSpriteAlpha', 1.0)
+            setShaderFloat(char, 'AA_STAGES', 1.0)
             setShaderFloatArray(char, 'dropColor', {255 / 235, 0 / 235, 0 / 255})
             runHaxeFunction('setShaderFrameInfo', {char})
         end
@@ -122,6 +121,8 @@ local lightningPhase = {
             setShaderFloat(char, 'str', 1)
             setShaderFloat(char, 'brightness', -30)
             setShaderFloat(char, 'thr', 0.1)
+            setShaderFloat(char, 'uSpriteAlpha', 1.0)
+            setShaderFloat(char, 'AA_STAGES', 1.0)
             setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
             runHaxeFunction('setShaderFrameInfo', {char})
         end
@@ -203,16 +204,19 @@ function onEvent(eventName, value1, value2)
             for _, char in ipairs({'dad'}) do
                 if dadName == 'griatosA' or dadName == 'griatosB' or dadName == 'griatosC' then
                     setSpriteShader(char, 'DropShadowShader')
-                    setShaderFloat(char, 'hue', 0)
-                    setShaderFloat(char, 'saturation', 0)
-                    setShaderFloat(char, 'contrast', 0)
-                    setShaderFloat(char, 'str', 1)
-                    setShaderFloat(char, 'brightness', char == 'dad' and 0 or -30)
-                    setShaderFloat(char, 'thr', 0.1)
-                    setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
-                    runHaxeFunction('setShaderFrameInfo', {char})
-                    setShaderFloat('dad', 'ang', math.rad(75))
-                    setShaderFloat('dad', 'dist', 10)
+                    
+                    if getProperty(char .. '.shader') ~= nil then
+                        setShaderFloat(char, 'hue', 0)
+                        setShaderFloat(char, 'saturation', 0)
+                        setShaderFloat(char, 'contrast', 0)
+                        setShaderFloat(char, 'str', 1)
+                        setShaderFloat(char, 'brightness', char == 'dad' and 0 or -30)
+                        setShaderFloat(char, 'thr', 0.1)
+                        setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
+                        runHaxeFunction('setShaderFrameInfo', {char})
+                        setShaderFloat('dad', 'ang', math.rad(75))
+                        setShaderFloat('dad', 'dist', 10)
+                    end
                 end
             end
         end
@@ -221,6 +225,10 @@ end
 
 
 function onUpdatePost()
+    if shadersEnabled and not lowQuality then
+        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'uSpriteAlpha', getProperty('dad.alpha')) end
+        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'uSpriteAlpha', getProperty('boyfriend.alpha')) end
+    end
     if onTween1 then
         setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
         setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))
@@ -231,10 +239,22 @@ function onUpdatePost()
     if onTween3 then
         setShaderFloat('bw', 'grayness', getProperty('bw.x'))
     end
-    if onTween4Hue then        setShaderFloat('color', 'hue',          getProperty('color.angle')) end
-    if onTween4Brightness then setShaderFloat('color', 'brightness', getProperty('color.scale.y')) end
-    if onTween4Saturation then setShaderFloat('color', 'saturation',       getProperty('color.x')) end
-    if onTween4Contrast then   setShaderFloat('color', 'contrast',   getProperty('color.scale.x')) end
+    if onTween4Hue then
+        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'hue', getProperty('color.angle')) end
+        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'hue', getProperty('color.angle')) end
+    end
+    if onTween4Brightness then 
+        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'brightness', getProperty('color.scale.y')) end
+        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'brightness', getProperty('color.scale.y')) end
+    end
+    if onTween4Saturation then
+        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'saturation', getProperty('color.x')) end
+        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'saturation', getProperty('color.x')) end
+    end
+    if onTween4Contrast then
+        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'contrast', getProperty('color.scale.x')) end
+        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'contrast', getProperty('color.scale.x')) end
+    end
 
     if onTween5 then
         setShaderFloat('pseudo', 'sort', getProperty('pseudo.x'))

@@ -12,21 +12,56 @@ function onCreatePost()
 	setProperty('healthBG.alpha', 0)
 
 	callMethod('comboGroup.setPosition', {-500, 0})
+
+	makeLuaSprite('gradient', 'universal-collapse/gradient', -600, -1000)
+	scaleObject('gradient', 1, 2000)
+	setBlendMode('gradient', 'add')
+	setProperty('gradient.flipX', true)
+	setProperty('gradient.angle', 90)
+	addLuaSprite('gradient')
+	setObjectOrder('gradient', getObjectOrder('dadGroup') - 1)
+	setProperty('gradient.alpha', 0)
+
+	makeAnimatedLuaSprite('iconOMW', 'icons/omw-final')
+	addAnimationByPrefix('iconOMW', 'normal', 'normal', 24, true)
+	addAnimationByPrefix('iconOMW', 'losing', 'losing', 24, true)
+    setObjectCamera('iconOMW', 'hud')
+	addLuaSprite('iconOMW')
+	setProperty('iconOMW.alpha', 0)
 end
 
+local oldAnim = 'normal'
+function onUpdatePost()
+	setProperty('iconOMW.x', getProperty('iconOpp.x') - 20)
+    setProperty('iconOMW.y', getProperty('iconOpp.y') - 20)
+	setProperty('iconOMW.scale.x', getProperty('iconOpp.scale.x') * 0.8)
+    setProperty('iconOMW.scale.y', getProperty('iconOpp.scale.y') * 0.8)
+
+	if oldAnim == 'normal' and getHealth() > 1.6 then
+		playAnim('iconOMW', 'losing', true)
+		oldAnim = 'losing'
+	end
+	if oldAnim == 'losing' and getHealth() <= 1.6 then
+		playAnim('iconOMW', 'normal', true)
+		oldAnim = 'normal'
+	end
+end
+
+local coolLights = false
 function onEvent(n,v1)
 	if n == 'omwEvents' then
 		if v1 == 'hudAppear' then
-			setProperty('camGame.alpha', 1) doTweenAlpha('camHUD', 'camHUD', 1, crochet / 250)
+			doTweenAlpha('camHUD', 'camHUD', 1, crochet / (1000 / 6))
 		end
 		if v1 == 'removevideoxd' then
 			if getProperty('videoCutscene') == nil then return end
     		callMethod('remove', {instanceArg('videoCutscene')})
 
-			cancelTween('camHUD') setProperty('camHUD.alpha', 1)
-			cameraFlash('hud', 'FFFFFF', 2, true)
+			setProperty('camGame.alpha', 1)
+			cameraFlash('game', 'FFFFFF', 2, true)
 		end
 		if v1 == 'startPro' then
+			cancelTween('camHUD') setProperty('camHUD.alpha', 1)
 			cameraFlash('hud', 'FFFFFF', 2, true)
 
 			setProperty('sky.visible', true)
@@ -54,6 +89,8 @@ function onEvent(n,v1)
 			triggerEvent('Change Health Damage', '0.02', '')
 			setHealth(1)
 
+			setProperty('iconOMW.alpha', 1)
+			setProperty('iconOpp.alpha', 0)
 			setProperty('blackScreen.alpha', 1)
 			doTweenColor('blackScreen', 'blackScreen', '000000', 1 / playbackRate)
 
@@ -79,6 +116,17 @@ function onEvent(n,v1)
 			setProperty('cpuAssist', true)
 			cancelTween('blackScreen') removeLuaSprite('blackScreen', true)
 			cameraFlash('hud', 'FFFFFF', 1, true)
+		end
+		if v1 == 'coollights' then coolLights = true end if v1 == 'stoplights' then coolLights = false end
+	end
+end
+
+function onStepHit()
+	if coolLights then
+		if curStep % 16 == 0 or curStep % 16 == 10 then
+			cancelTween('gradientone')
+			setProperty('gradient.alpha', 1)
+			doTweenAlpha('gradientone', 'gradient', 0, crochet / 1000 / playbackRate)
 		end
 	end
 end

@@ -21,37 +21,30 @@ local planetsPos = {
 
 function onCreatePost()
 	makeLuaSprite('sky', 'universal-collapse/7', -600, -500)
-	scaleObject('sky', 0.5, 0.5)
 	setScrollFactor('sky', 0.2, 0.2)
 	addLuaSprite('sky')
 
 	makeLuaSprite('clouds', 'universal-collapse/6', -600, -500)
-	scaleObject('clouds', 0.5, 0.5)
 	setScrollFactor('clouds', 0.2, 0.2)
 	addLuaSprite('clouds')
 
 	makeLuaSprite('mountains', 'universal-collapse/5', -750, -900)
-	scaleObject('mountains', 0.5, 0.5)
 	setScrollFactor('mountains', 0.5, 0.5)
 	addLuaSprite('mountains')
 
 	makeLuaSprite('waterfall', 'universal-collapse/3', -850, -250)
-	scaleObject('waterfall', 0.5, 0.5)
 	setScrollFactor('waterfall', 0.65, 0.65)
 	addLuaSprite('waterfall')
 
 	makeLuaSprite('fog2', 'universal-collapse/4', -800, 50)
-	scaleObject('fog2', 0.5, 0.5)
 	setScrollFactor('fog2', 0.6, 0.6)
 	addLuaSprite('fog2')
 
 	makeLuaSprite('trees2', 'universal-collapse/2', -950, -200)
-	scaleObject('trees2', 0.5, 0.5)
 	setScrollFactor('trees2', 0.78, 0.78)
 	addLuaSprite('trees2')
 
 	makeLuaSprite('trees', 'universal-collapse/1', -970, -50)
-	scaleObject('trees', 0.5, 0.5)
 	setScrollFactor('trees', 0.85, 0.85)
 	addLuaSprite('trees')
 
@@ -146,7 +139,7 @@ end
 
 function onEvent(n,v1) if n == 'omwEvents' then if v1 == 'startUniverse' then universe = true end end end
 
-local separation = 50
+local separation = 30
 
 function onCountdownStarted()
 	for i = 0,3 do

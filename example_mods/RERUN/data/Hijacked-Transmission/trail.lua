@@ -25,7 +25,7 @@ function opponentNoteHit(id, _, noteType, sustain)
     createGhost(char, behind, noteType, sustain)
 end
 function createGhost(char, behind, noteType, sustain)
-    if noteType == 'Alt Animation' and not sustain then
+    if dadName == 'sonic2' and noteType == 'GF2andDad' and not sustain then
         runHaxeCode([[
             var ghost = new Character(0, 0, ]]..char..[[.curCharacter, ]]..char..[[.isPlayer);
             ghost.updateHitbox();

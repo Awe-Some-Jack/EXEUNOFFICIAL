@@ -83,6 +83,7 @@ function onCreatePost()
 
 	makeLuaSprite('blackScreen')
 	makeGraphic('blackScreen', screenWidth, screenHeight, 'FFFFFF')
+	setProperty('blackScreen.color', getColorFromHex('000000'))
 	setObjectCamera('blackScreen', 'other')
 	addLuaSprite('blackScreen')
 	setProperty('blackScreen.alpha', 0)

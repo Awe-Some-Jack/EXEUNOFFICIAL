@@ -43,14 +43,16 @@ function onEvent(n,v1)
 		if v1 == 'hudAppear' then
 			doTweenAlpha('camHUD', 'camHUD', 1, crochet / (1000 / 6))
 		end
+		if v1 == 'fadeinlol' then doTweenAlpha('asdads', 'blackScreen', 0, crochet / 250) end
 		if v1 == 'removevideoxd' then
 			if getProperty('videoCutscene') == nil then return end
     		callMethod('remove', {instanceArg('videoCutscene')})
 
 			setProperty('camGame.alpha', 1)
-			cameraFlash('game', 'FFFFFF', 2, true)
+			setProperty('blackScreen.alpha', 1)
 		end
 		if v1 == 'startPro' then
+			cancelTween('asdads') setProperty('blackScreen.alpha', 0) setProperty('blackScreen.color', getColorFromHex('000000'))
 			cancelTween('camHUD') setProperty('camHUD.alpha', 1)
 			cameraFlash('hud', 'FFFFFF', 2, true)
 

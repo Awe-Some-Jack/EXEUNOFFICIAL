@@ -13,15 +13,6 @@ function onCreatePost()
 
 	callMethod('comboGroup.setPosition', {-500, 0})
 
-	makeLuaSprite('gradient', 'universal-collapse/gradient', -600, -1000)
-	scaleObject('gradient', 1, 2000)
-	setBlendMode('gradient', 'add')
-	setProperty('gradient.flipX', true)
-	setProperty('gradient.angle', 90)
-	addLuaSprite('gradient')
-	setObjectOrder('gradient', getObjectOrder('dadGroup') - 1)
-	setProperty('gradient.alpha', 0)
-
 	makeAnimatedLuaSprite('iconOMW', 'icons/omw-final')
 	addAnimationByPrefix('iconOMW', 'normal', 'normal', 24, true)
 	addAnimationByPrefix('iconOMW', 'losing', 'losing', 24, true)
@@ -47,7 +38,6 @@ function onUpdatePost()
 	end
 end
 
-local coolLights = false
 function onEvent(n,v1)
 	if n == 'omwEvents' then
 		if v1 == 'hudAppear' then
@@ -71,6 +61,7 @@ function onEvent(n,v1)
 			setProperty('fog2.visible', true)
 			setProperty('trees2.visible', true)
 			setProperty('trees.visible', true)
+			setProperty('gradient.visible', true)
 
 			removeLuaSprite('omwograd', true)
 			triggerEvent('Change Character', 'dad', 'omw')
@@ -84,6 +75,9 @@ function onEvent(n,v1)
 			setProperty('separatorHealth.alpha', 1)
 			setProperty('exeScoreTxt.alpha', 1)
 			setProperty('healthBG.alpha', 1)
+			setProperty('ringCounter.alpha', 1)
+			setProperty('ringTxt.alpha', 1)
+			setProperty('strumLineRing.alpha', 1)
 		end
 		if v1 == 'startUniverse' then
 			triggerEvent('Change Health Damage', '0.02', '')
@@ -101,6 +95,7 @@ function onEvent(n,v1)
 			removeLuaSprite('fog2', true)
 			removeLuaSprite('trees2', true)
 			removeLuaSprite('trees', true)
+			removeLuaSprite('gradient', true)
 
 			setProperty('universe.visible', true)
 			for i = 1,4 do setProperty('planet'..i..'.visible', true) end
@@ -116,17 +111,6 @@ function onEvent(n,v1)
 			setProperty('cpuAssist', true)
 			cancelTween('blackScreen') removeLuaSprite('blackScreen', true)
 			cameraFlash('hud', 'FFFFFF', 1, true)
-		end
-		if v1 == 'coollights' then coolLights = true end if v1 == 'stoplights' then coolLights = false end
-	end
-end
-
-function onStepHit()
-	if coolLights then
-		if curStep % 16 == 0 or curStep % 16 == 10 then
-			cancelTween('gradientone')
-			setProperty('gradient.alpha', 1)
-			doTweenAlpha('gradientone', 'gradient', 0, crochet / 1000 / playbackRate)
 		end
 	end
 end

@@ -10,7 +10,7 @@ local resetAnim = 0
 local hasBeenPressed = false --why is keyboardReleased so evil...
 local swapped = false
 function onCreatePost()
-	makeLuaSprite('ringCounter', 'tt/Counter')
+	makeLuaSprite('ringCounter', 'Counter')
 	setObjectCamera('ringCounter', 'hud')
 	addLuaSprite('ringCounter', true)
 	callMethod('ringCounter.setPosition', {screenWidth - getProperty('ringCounter.width') - 40, (downscroll and 10 or (screenHeight - getProperty('ringCounter.height') - 10))})
@@ -23,6 +23,9 @@ function onCreatePost()
 	setObjectCamera('ringTxt', 'hud')
 	addLuaText('ringTxt')
 	callMethod('ringTxt.setPosition', {getProperty('ringCounter.x') + 76, getProperty('ringCounter.y') - 6})
+
+	setProperty('ringCounter.alpha', 0)
+	setProperty('ringTxt.alpha', 0)
 end
 
 function onCountdownStarted()
@@ -39,11 +42,6 @@ function onCountdownStarted()
 	ringAnim('static')
 
 	setProperty('strumLineRing.alpha', 0)
-	if getProperty('skipArrowStartTween') == false then
-		startTween('daringstarting', 'strumLineRing', {alpha = 1}, 1, {ease = 'circOut'})
-	else
-		setProperty('strumLineRing.alpha', 1)
-	end
 end
 
 function onUpdatePost(e)

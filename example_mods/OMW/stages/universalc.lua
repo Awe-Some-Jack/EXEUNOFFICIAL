@@ -53,6 +53,12 @@ function onCreatePost()
 	scaleObject('omwograd', 1000, 1)
 	addLuaSprite('omwograd')
 
+	makeLuaSprite('gradient', 'universal-collapse/gradient', -600, -1000)
+	scaleObject('gradient', 1, 2000)
+	setBlendMode('gradient', 'add')
+	setProperty('gradient.angle', 90)
+	addLuaSprite('gradient', true)
+
 	--universo
 
 	makeLuaSprite('universe', 'universal-collapse/universe/universo', -650, -300)
@@ -88,6 +94,7 @@ function onCreatePost()
 	setProperty('fog2.visible', false)
 	setProperty('trees2.visible', false)
 	setProperty('trees.visible', false)
+	setProperty('gradient.visible', false)
 
 	startVideo('omwintro', false, true, false, false)
 	if getProperty('videoCutscene') == nil then return end
@@ -145,6 +152,16 @@ function onCountdownStarted()
 	for i = 0,3 do
 		setProperty('opponentStrums.members['..i..'].x', -1000)
 		setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+	end
+end
+
+function onSectionHit()
+	if not getProperty('gameplayCam.settings.MiddleCamera') then
+		if mustHitSection then
+			setProperty('gameplayCam.settings.OGZoom', 1.35)
+		else
+			setProperty('gameplayCam.settings.OGZoom', 0.8)
+		end
 	end
 end
 

@@ -2,7 +2,7 @@
 	"directory": "",
 	"stageUI": "",
 	"hide_girlfriend": true,
-	"defaultZoom": 0.7,
+	"defaultZoom": 0.8,
 
 	"boyfriend": [-120,200],
 	"girlfriend": [0,0],

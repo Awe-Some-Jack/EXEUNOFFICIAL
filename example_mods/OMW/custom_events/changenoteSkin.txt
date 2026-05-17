@@ -1,0 +1,5 @@
+Yo bro check this new changeNoteSkin event!
+v1 is the actual note! No need to put the path over it.
+if you dont put anything it'll change the unspawn notes whenever u want!
+
+Script - Raimbowcore12

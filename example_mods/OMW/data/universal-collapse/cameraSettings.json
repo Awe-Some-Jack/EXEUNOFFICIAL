@@ -1,20 +1,20 @@
 {
     "BFx": 0,
-    "BFy": 0,
+    "BFy": 250,
 
     "DADx": 0,
-    "DADy": 0,
+    "DADy": -50,
 
     "GFx": 0,
     "GFy": 0,
 
-    "MiddleCamera": true,
+    "MiddleCamera": false,
     "MiddleX": 0,
     "MiddleY": 0,
 
     "OverrideZoom": false,
 
-    "OGZoom": 1,
+    "OGZoom": 0.8,
     "MiddleZoom": 0.7,
 
     "OffsetsBF": 25,

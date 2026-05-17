@@ -26,6 +26,31 @@ local shaders = {
         brightness = -15,
     }},
 }
+
+runHaxeCode([[
+	import flixel.math.FlxAngle;
+	function setShaderFrameInfo(obj:String) {
+		var char:FlxSprite;
+		switch(obj) {
+			case 'boyfriend':
+				char = game.boyfriend;
+			case 'dad':
+				char = game.dad;
+			case 'gf':
+				char = game.gf;
+		}
+
+        char.animation.callback = function(name:String, frameNumber:Int, frameIndex:Int)
+		{
+			if (char.shader != null) {
+				char.shader.setFloatArray('uFrameBounds', [char.frame.uv.x, char.frame.uv.y, char.frame.uv.width, char.frame.uv.height]);
+				char.shader.setFloat('angOffset', char.frame.angle * FlxAngle.TO_RAD);
+			}
+        }
+	}
+]])
+
+
 local dashads = ''
 function onCreatePost()
     local dashads = 'game.camGame.filters = ['
@@ -41,6 +66,20 @@ function onCreatePost()
     dashads = dashads..']; return;'
     if shadersEnabled then runHaxeCode(dashads) end
     if shadersEnabled then runHaxeCode("game.camHUD.filters = [new ShaderFilter(game.getLuaObject('color').shader)]; return;") end
+
+    for _,char in ipairs({'boyfriend'}) do
+            setSpriteShader(char, 'DropShadowShader')
+            setShaderFloat(char, 'hue', 0)
+            setShaderFloat(char, 'saturation', 0)
+            setShaderFloat(char, 'contrast', 0)
+            setShaderFloat(char, 'str', 1)
+            setShaderFloat(char, 'brightness', -30)
+            setShaderFloat(char, 'thr', 0.1)
+            setShaderFloatArray(char, 'dropColor', {0 / 0, 0 / 55, 255 / 105})
+            runHaxeFunction('setShaderFrameInfo', {char})
+        end
+        setShaderFloat('boyfriend', 'ang', math.rad(75))
+        setShaderFloat('boyfriend', 'dist', 20)
 end
 
 local onTween1 = false

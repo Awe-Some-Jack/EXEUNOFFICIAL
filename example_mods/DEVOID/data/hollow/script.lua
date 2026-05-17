@@ -8,6 +8,29 @@ function onSongStart()
     doTweenAlpha('BlackGraphicGameAlpha', 'BlackGraphicGame', 0.9, 1)
 end
 
+
+local trailShit = false
+
+local function createTrail(create) trailShit = create and true or false end
+
+function opponentNoteHit()
+    if trailShit then
+        runHaxeCode([[
+            var trail = new Character(0, 0, dad.curCharacter, dad.isPlayer);
+            trail.updateHitbox();
+            trail.setPosition(dad.x, dad.y);
+            trail.alpha = 0.8;
+            trail.playAnim(dad.animation.curAnim.name);
+            game.add(trail);
+
+            FlxTween.tween(trail, {alpha: 0}, 0.5, {ease: FlxEase.circOut, onComplete: (_) -> {
+                remove(trail);
+                trail.destroy();
+            }});
+        ]])
+    end
+end
+
 function onStepHit()
     if curStep == 8 then
         cancelTween('BlackGraphicGameAlpha')
@@ -29,27 +52,9 @@ function onStepHit()
         doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', 0, 0.4)
     end
     if curStep == 1568 then
-        addHaxeLibrary('FlxTrail', 'flixel.addons.effects')
-        runHaxeCode([[
-        import flixel.addons.effects.FlxTrail;
-
-        var dadTrail = new FlxTrail(game.dad, null, 8, 6, 0.8, 0.12);
-        dadTrail.color = 0x00FFFF;
-
-        game.insert(game.members.indexOf(game.dadGroup), dadTrail);
-
-        setVar('dadTrail', dadTrail);
-    ]])
+        createTrail(true)
     end
     if curStep == 1824 then
-        runHaxeCode([[
-            var trail = getVar('dadTrail');
-            if (trail != null) {
-                trail.kill();
-                game.remove(trail, true);
-                trail.destroy();
-                setVar('dadTrail', null);
-            }
-        ]])
+        createTrail()
     end
 end

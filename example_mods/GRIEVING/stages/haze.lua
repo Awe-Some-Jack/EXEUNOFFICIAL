@@ -72,6 +72,7 @@ function onCreate()
     for _, phase4 in ipairs(hazeBGAssets['phase4']) do precacheImage(phase4.path) end
 end
 
+local separation = 50
 function onCreatePost()
     for _, spr in ipairs(hazeBGAssets['phase1']) do addSprite(spr) end
     for _, spr in ipairs(hazeBGAssets['phase2']) do addSprite(spr) end
@@ -96,6 +97,10 @@ function onCreatePost()
     setProperty('dad.visible', false)
     setObjectOrder('clouds3', getObjectOrder('dadGroup') + 1)
     setObjectOrder('ground', getObjectOrder('boyfriendGroup'))
+    for i = 0,3 do
+        setProperty('opponentStrums.members['..i..'].alpha', 0) setProperty('opponentStrums.members['..i..'].x', getProperty('opponentStrums.members['..i..'].x') - 1000)
+        setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+    end
     for _, hudStuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(hudStuff..'.alpha', 0) end
 end
 
@@ -144,8 +149,8 @@ local stageMode = {
         callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 120, getProperty('boyfriend.y') + 730})
         callMethod('dad.setPosition', {getProperty('dad.x') + 2020, getProperty('dad.y') - 30})
 
-        triggerEvent('Set customCamera Position', 'bf',     '800, 250')
-        triggerEvent('Set customCamera Position', 'dad',  '1000, -250')
+        triggerEvent('Set customCamera Position', 'bf',     '800, 650')
+        triggerEvent('Set customCamera Position', 'dad',  '1100,   50')
         triggerEvent('Set customCamera Position', 'middle', '870, 120')
         triggerEvent('Set Character Offset', 'bf',  '5')
         triggerEvent('Set Character Offset', 'dad', '5')
@@ -182,8 +187,10 @@ local hudMode = {
         changeUnspawnNotesColor = true
     end,
     ['returnNotesColor'] = function ()
-        changeUnspawnNotesColor = false
         for i = 0, 3 do setProperty('playerStrums.members['..i..'].color', getColorFromHex('FFFFFF')) end
+    end,
+    ['returnUnspawnNotesColor'] = function ()
+        changeUnspawnNotesColor = false
     end,
     ['zoomBack'] = function ()
         cancelTween('hudZoom')
@@ -194,25 +201,28 @@ local hudMode = {
     end
 }
 
-local separation = 50
+
 local notesDance = false
+local healthDance = false
 local canAngleDance = false
 
 local modchart = {
     ['middle'] = function()
         for i = 0,3 do
-            setProperty('opponentStrums.members['..i..'].alpha', 0)
+            setProperty('opponentStrums.members['..i..'].alpha', 0) setProperty('opponentStrums.members['..i..'].x', getProperty('opponentStrums.members['..i..'].x') - 1000)
             setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
         end
     end,
     ['returnMiddle'] = function ()
         for i = 0,3 do
+            setProperty('opponentStrums.members['..i..'].x', getProperty('opponentStrums.members['..i..'].x') + 1000)
             doTweenAlpha(i..'DADAlpha', 'opponentStrums.members['..i..']', 1, 1)
             setProperty('playerStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i])
         end
     end,
     ['dance'] = function(dance)
         notesDance = dance == 'true' and true or false
+        healthDance = dance == 'true' and true or false
         canAngleDance = dance == 'true' and true or false
     end,
     ['spinNotes'] = function ()
@@ -237,12 +247,6 @@ function onSpawnNote(i)
         setPropertyFromGroup('unspawnNotes', i, 'color', getColorFromHex('FF0000'))
     else
         setPropertyFromGroup('unspawnNotes', i, 'color', getColorFromHex('FFFFFF'))
-        --[[
-        runHaxeCode([[
-            var col = FlxColor.interpolate(0x00FF0000, 0xFFFFFFFF, 1);
-
-            unspawnNotes.members[]]--..i..[[].color = col;
-        --]])
     end
 end
 
@@ -281,7 +285,16 @@ function onUpdatePost(e)
             if canAngleDance then setProperty('strumLineNotes.members['..i..'].angle', math.sin((curDecBeat + 1) * math.pi + 0.5) * someHold * 5) end
             callMethod('strumLineNotes.members['..i..'].setPosition',{
                 getProperty('strumLineNotes.members['..i..'].x') + math.cos((curDecBeat + 1) * math.pi) * someHold * 3,
-                getProperty('strumLineNotes.members['..i..'].y') - math.cos(curDecBeat * math.pi * 2) * someHold
+                downscroll and getProperty('strumLineNotes.members['..i..'].y') + math.cos(curDecBeat * math.pi * 2) * someHold or getProperty('strumLineNotes.members['..i..'].y') - math.cos(curDecBeat * math.pi * 2) * someHold
+            })
+        end
+    end
+
+    if healthDance then
+        for _, move in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'healthBG', 'exeScoreTxt', 'separatorHealth'}) do
+            callMethod(move..'.setPosition',{
+                getProperty(move..'.x') - math.cos((curDecBeat + 1) * math.pi) * someHold * 3,
+                downcsroll and getProperty(move..'.y') + math.cos(curDecBeat * math.pi * 2) * someHold or getProperty(move..'.y') - math.cos(curDecBeat * math.pi * 2) * someHold
             })
         end
     end

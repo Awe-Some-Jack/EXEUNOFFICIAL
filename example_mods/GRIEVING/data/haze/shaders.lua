@@ -55,9 +55,11 @@ runHaxeCode([[
 
 
 local dashads = ''
+local dashadsHUD = ''
 luaDebugMode = true
 function onCreatePost()
     dashads = 'game.camGame.filters = ['
+    dashadsHUD = 'game.camHUD.filters = ['
     for num, shad in ipairs(shaders) do
         makeLuaSprite(shad.name, nil, shad.x)
         setSpriteShader(shad.name, shad.shader)
@@ -67,13 +69,66 @@ function onCreatePost()
         for u, v in pairs(shad.uniforms) do
             setShaderFloat(shad.name, u, v)
         end
-        if num == 1 then dashads = dashads..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)'
-        elseif num > 1 then dashads = dashads..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' end
+        if num == 1 then dashads = dashads..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' dashadsHUD = dashadsHUD..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)'
+        elseif num > 1 then dashads = dashads..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' dashadsHUD = dashadsHUD..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' end
     end
     dashads = dashads..']; return;'
-    if shadersEnabled and not lowQuality then runHaxeCode(dashads) end
-    if shadersEnabled then runHaxeCode("game.camHUD.filters = [new ShaderFilter(game.getLuaObject('color').shader)]; return;") end
+    dashadsHUD = dashadsHUD..']; return;'
+    if shadersEnabled and not lowQuality then runHaxeCode(dashads) runHaxeCode(dashadsHUD) end
 end
+
+local lightningPhase = {
+    [1] = function ()
+        for _,char in ipairs({'dad', 'boyfriend'}) do
+                setSpriteShader(char, 'DropShadowShader')
+                setShaderFloat(char, 'hue', 0)
+                setShaderFloat(char, 'saturation', 0)
+                setShaderFloat(char, 'contrast', 0)
+                setShaderFloat(char, 'str', 1)
+                setShaderFloat(char, 'brightness', char == 'dad' and 0 or -30)
+                setShaderFloat(char, 'thr', 0.1)
+                setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
+                runHaxeFunction('setShaderFrameInfo', {char})
+            end
+            setShaderFloat('dad', 'ang', math.rad(75))
+            setShaderFloat('boyfriend', 'ang', math.rad(115))
+            setShaderFloat('dad', 'dist', 10)
+            setShaderFloat('boyfriend', 'dist', 20)
+    end,
+    [2] = function ()
+        for _,char in ipairs({'dad', 'boyfriend'}) do
+            setSpriteShader(char, 'DropShadowShader')
+            setShaderFloat(char, 'hue', 0)
+            setShaderFloat(char, 'saturation', 0)
+            setShaderFloat(char, 'contrast', 0)
+            setShaderFloat(char, 'str', 1)
+            setShaderFloat(char, 'brightness', char == 'dad' and 0 or -30)
+            setShaderFloat(char, 'thr', 0.1)
+            setShaderFloatArray(char, 'dropColor', {255 / 235, 0 / 235, 0 / 255})
+            runHaxeFunction('setShaderFrameInfo', {char})
+        end
+        setShaderFloat('dad', 'ang', math.rad(75))
+        setShaderFloat('boyfriend', 'ang', math.rad(115))
+        setShaderFloat('dad', 'dist', 10)
+        setShaderFloat('boyfriend', 'dist', 20)
+    end,
+    [3] = function ()
+        removeSpriteShader('dad')
+        for _,char in ipairs({'boyfriend'}) do
+            setSpriteShader(char, 'DropShadowShader')
+            setShaderFloat(char, 'hue', 0)
+            setShaderFloat(char, 'saturation', 0)
+            setShaderFloat(char, 'contrast', 0)
+            setShaderFloat(char, 'str', 1)
+            setShaderFloat(char, 'brightness', -30)
+            setShaderFloat(char, 'thr', 0.1)
+            setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
+            runHaxeFunction('setShaderFrameInfo', {char})
+        end
+        setShaderFloat('boyfriend', 'ang', math.rad(115))
+        setShaderFloat('boyfriend', 'dist', 20)
+    end
+}
 
 local onTween1 = false
 local onTween2 = false
@@ -136,23 +191,9 @@ function onEvent(eventName, value1, value2)
     end
     -- HAZE Events --
     if eventName == 'hazeEvents' then
-        if value1 == 'setUhOhShaders' then
-            for _,char in ipairs({'dad', 'boyfriend'}) do
-                setSpriteShader(char, 'DropShadowShader')
-                setShaderFloat(char, 'hue', 0)
-                setShaderFloat(char, 'saturation', 0)
-                setShaderFloat(char, 'contrast', 0)
-                setShaderFloat(char, 'str', 1)
-                setShaderFloat(char, 'brightness', char == 'dad' and 0 or -30)
-                setShaderFloat(char, 'thr', 0.1)
-                setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
-                runHaxeFunction('setShaderFrameInfo', {char})
-            end
-            setShaderFloat('dad', 'ang', math.rad(75))
-            setShaderFloat('boyfriend', 'ang', math.rad(115))
-            setShaderFloat('dad', 'dist', 10)
-            setShaderFloat('boyfriend', 'dist', 20)
-        elseif value1 == 'removeUhOhShaders' then
+        if value1 == 'setCharShaders' then
+            lightningPhase[tonumber(value2)]()
+        elseif value1 == 'removeCharShaders' then
             for _, char in ipairs({'dad', 'boyfriend'}) do removeSpriteShader(char) end
         end
     end

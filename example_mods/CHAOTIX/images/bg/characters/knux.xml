@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="knux.png">
+<SubTexture name="idle0000" x="0" y="0" width="33" height="46" frameX="-2" frameY="-1" frameWidth="35" frameHeight="43" />
+<SubTexture name="idle0001" x="33" y="0" width="33" height="46" frameX="-2" frameY="-1" frameWidth="35" frameHeight="43" />
+<SubTexture name="idle0002" x="66" y="0" width="33" height="45" frameX="-2" frameY="-2" frameWidth="35" frameHeight="43" />
+<SubTexture name="idle0003" x="33" y="46" width="34" height="44" frameX="-2" frameY="-3" frameWidth="35" frameHeight="43" />
+<SubTexture name="idle0004" x="99" y="0" width="34" height="44" frameX="-2" frameY="-3" frameWidth="35" frameHeight="43" />
+<SubTexture name="idle0005" x="99" y="44" width="34" height="44" frameX="-2" frameY="-3" frameWidth="35" frameHeight="43" />
+<SubTexture name="idle0006" x="0" y="46" width="33" height="45" frameX="-2" frameY="-2" frameWidth="35" frameHeight="43" />
+</TextureAtlas>

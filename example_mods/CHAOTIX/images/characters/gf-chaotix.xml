@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="gf-chaotix.png">
+<SubTexture name="left0000" x="0" y="44" width="41" height="42" frameX="-6" frameY="-2" frameWidth="54" frameHeight="41" />
+<SubTexture name="left0001" x="41" y="0" width="41" height="43" frameX="-6" frameY="-1" frameWidth="54" frameHeight="41" />
+<SubTexture name="left0002" x="0" y="0" width="41" height="44" frameX="-6" frameY="0" frameWidth="54" frameHeight="41" />
+<SubTexture name="right0000" x="41" y="44" width="41" height="42" frameX="-6" frameY="-2" frameWidth="54" frameHeight="41" />
+<SubTexture name="right0001" x="82" y="44" width="41" height="42" frameX="-6" frameY="-2" frameWidth="54" frameHeight="41" />
+<SubTexture name="right0002" x="82" y="0" width="41" height="43" frameX="-6" frameY="-1" frameWidth="54" frameHeight="41" />
+</TextureAtlas>

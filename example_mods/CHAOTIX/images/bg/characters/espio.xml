@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="espio.png">
+<SubTexture name="idle0000" x="0" y="0" width="34" height="46" frameX="-13" frameY="0" frameWidth="57" frameHeight="43" />
+<SubTexture name="idle0001" x="34" y="0" width="34" height="45" frameX="-13" frameY="-1" frameWidth="57" frameHeight="43" />
+<SubTexture name="idle0002" x="0" y="46" width="34" height="44" frameX="-13" frameY="-2" frameWidth="57" frameHeight="43" />
+<SubTexture name="idle0003" x="34" y="46" width="34" height="44" frameX="-13" frameY="-2" frameWidth="57" frameHeight="43" />
+<SubTexture name="idle0004" x="68" y="46" width="34" height="44" frameX="-13" frameY="-2" frameWidth="57" frameHeight="43" />
+<SubTexture name="idle0005" x="102" y="0" width="34" height="44" frameX="-13" frameY="-2" frameWidth="57" frameHeight="43" />
+<SubTexture name="idle0006" x="68" y="0" width="34" height="45" frameX="-13" frameY="-1" frameWidth="57" frameHeight="43" />
+</TextureAtlas>

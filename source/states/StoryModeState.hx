@@ -515,7 +515,7 @@ class StoryModeState extends MusicBeatState
 
 		Mods.currentModDirectory = STORY_MOD;
 		WeekData.reloadWeekFiles(false);
-		PlayState.storyWeek = 1;
+		PlayState.storyWeek = 0;
 		Difficulty.loadFromWeek();
 
 		var normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');

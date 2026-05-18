@@ -115,15 +115,6 @@ function onCreatePost()
     setObjectCamera('iconOpp', 'hud')
     scaleObject('iconOpp', healthProps.opponentIcon.scale, healthProps.opponentIcon.scale, false)
 
-    if not healthProps.healthBar.hideScore then
-        makeLuaText('exeScoreTxt', 'Score: 0 | Misses: 0', screenWidth / 0.75, 0, getProperty('hbBG.y') + (downscroll and 40 or -40))
-        setTextSize('exeScoreTxt', 22)
-        setTextBorder('exeScoreTxt', 1, '000000')
-        screenCenter('exeScoreTxt', 'x')
-        setProperty('exeScoreTxt.x', math.floor(getProperty('exeScoreTxt.x') + healthProps.healthBar.offsetX))
-        setObjectOrder('exeScoreTxt', getObjectOrder('iconOpp') + 1)
-    end
-
     setProperty('hbHealth.color', getColorFromHex(getHealthColor('boyfriend')))
     setProperty('hbHealth2.color', getColorFromHex(getHealthColor('dad')))
 
@@ -170,6 +161,15 @@ function onCreatePost()
     end
 
     if songPath == 'chocolate-milk' or songPath == 'vanilla-milk' or songPath == 'b4cksl4sh' then setProperty('healthBG.visible', false) end
+
+    if not healthProps.healthBar.hideScore then
+        makeLuaText('exeScoreTxt', 'Score: 0 | Misses: 0', screenWidth / 0.75, 0, getProperty('hbBG.y') + (downscroll and 40 or -40))
+        setTextSize('exeScoreTxt', 22)
+        setTextBorder('exeScoreTxt', 1, '000000')
+        screenCenter('exeScoreTxt', 'x')
+        setProperty('exeScoreTxt.x', math.floor(getProperty('exeScoreTxt.x') + healthProps.healthBar.offsetX))
+        setObjectOrder('exeScoreTxt', getObjectOrder('iconOpp') + 1)
+    end
 end
 
 function onEvent(n, v1)

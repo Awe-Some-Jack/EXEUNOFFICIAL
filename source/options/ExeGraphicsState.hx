@@ -235,7 +235,7 @@ class ExeGraphicsState extends MusicBeatState
 			else if (option.isInt == true)
 			{
 				var n = cast(val, Int) + (isRight ? 1 : -1);
-				n = isRight ? Std.int(Math.min(n, 240)) : Std.int(Math.max(n, 60));
+				n = isRight ? Std.int(Math.min(n, 240)) : Std.int(Math.max(n, 30));
 				option.setValue(n);
 				txt.text = Std.string(n);
 			}

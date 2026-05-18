@@ -69,24 +69,27 @@ function onEvent(e, v1, v2)
                 for _, yes in ipairs(flashBackBG) do
 					doTweenAlpha(yes.name..'Alpha', yes.name, 1, 2)
 				end
+
                 for _, yes in ipairs(sprites) do
 					doTweenAlpha(yes.name..'Alpha', yes.name, 0, 2)
 				end
 
-				makeLuaSprite('wave', nil, 0)
-				makeLuaSprite('bw', nil, 0)
-				setSpriteShader('wave', 'wavyDistortion')
-				setSpriteShader('bw', 'blackwhite')
+				if shadersEnabled then
+					makeLuaSprite('wave', nil, 0)
+					makeLuaSprite('bw', nil, 0)
+					setSpriteShader('wave', 'wavyDistortion')
+					setSpriteShader('bw', 'blackwhite')
 
-				setShaderFloat('wave', 'amount', getProperty('wave.x'))
-				setShaderFloat('bw', 'grayness', getProperty('bw.x'))
-				if shadersEnabled then runHaxeCode("game.camGame.filters = [new ShaderFilter(game.getLuaObject('wave').shader), new ShaderFilter(game.getLuaObject('bw').shader)]; return;") end
+					setShaderFloat('wave', 'amount', getProperty('wave.x'))
+					setShaderFloat('bw', 'grayness', getProperty('bw.x'))
+					if shadersEnabled then runHaxeCode("game.camGame.filters = [new ShaderFilter(game.getLuaObject('wave').shader), new ShaderFilter(game.getLuaObject('bw').shader)]; return;") end
 
-				for _, shit in ipairs({'wave', 'bw'}) do
-					doTweenX(shit..'TweenStart', shit, 0.5, 2)
+					for _, shit in ipairs({'wave', 'bw'}) do
+						doTweenX(shit..'TweenStart', shit, 0.5, 2)
+					end
+					startWave = true
+					tweenStart = true
 				end
-				startWave = true
-				tweenStart = true
 			elseif v2 == 'fade' then
 				tweenBack = true
 				for _, shit in ipairs({'wave', 'bw'}) do
@@ -106,27 +109,31 @@ end
 local yes = 0
 function onUpdatePost(elapsed)
 	yes = yes + elapsed / playbackRate
-	if startWave then
-		setShaderFloat('wave', 'iTime', yes)
-	end
-	if tweenBack then
-		setShaderFloat('wave', 'amount', getProperty('wave.x'))
-		setShaderFloat('bw', 'grayness', getProperty('bw.x'))
-	end
-	if tweenStart then
-		setShaderFloat('wave', 'amount', getProperty('wave.x'))
-		setShaderFloat('bw', 'grayness', getProperty('bw.x'))
+	if shadersEnabled then
+		if startWave then
+			setShaderFloat('wave', 'iTime', yes)
+		end
+		if tweenBack then
+			setShaderFloat('wave', 'amount', getProperty('wave.x'))
+			setShaderFloat('bw', 'grayness', getProperty('bw.x'))
+		end
+		if tweenStart then
+			setShaderFloat('wave', 'amount', getProperty('wave.x'))
+			setShaderFloat('bw', 'grayness', getProperty('bw.x'))
+		end
 	end
 end
 
 function onTweenCompleted(tag)
-	if tag == 'waveTween' then
-		startWave = false
-		tweenBack = false
-		runHaxeCode("game.camGame.filters = [];")
-	end
-	if tag == 'waveTweenStart' then
-		tweenStart = false
+	if shadersEnabled then
+		if tag == 'waveTween' then
+			startWave = false
+			tweenBack = false
+			runHaxeCode("game.camGame.filters = [];")
+		end
+		if tag == 'waveTweenStart' then
+			tweenStart = false
+		end
 	end
 end
 

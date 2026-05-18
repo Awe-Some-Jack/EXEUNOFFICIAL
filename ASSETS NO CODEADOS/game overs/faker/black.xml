@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="black.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 12 instancia 10000" x="28" y="28" width="962" height="1018"/>
+	<SubTexture name="xd instancia 10000" x="1012" y="28" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10001" x="2065" y="28" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10002" x="3118" y="28" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10003" x="4171" y="28" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10004" x="28" y="1091" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10005" x="1081" y="1091" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10006" x="2134" y="1091" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10007" x="3187" y="1091" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10008" x="4240" y="1091" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10009" x="28" y="2154" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10010" x="1081" y="2154" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10011" x="2134" y="2154" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10012" x="3187" y="2154" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10013" x="4240" y="2154" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10014" x="28" y="3217" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10015" x="1081" y="3217" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10016" x="2134" y="3217" width="1031" height="1041"/>
+	<SubTexture name="xd instancia 10017" x="3187" y="3217" width="1031" height="1041"/>
+</TextureAtlas>

@@ -545,7 +545,7 @@
 			138375,
 			[
 				["Tween Camera Zoom", "0.85, true", "0.4, sineInOut"],
-				["Tweening Camera", "65, -38", "0.4, sineInOut"]
+				["Tweening Camera", "15, -38", "0.4, sineInOut"]
 			]
 		],
 		[
@@ -559,21 +559,21 @@
 			139800,
 			[
 				["Tween Camera Zoom", "0.8, true", "0.6, sineInOut"],
-				["Tweening Camera", "5, 20", "0.6, sineInOut"]
+				["Tweening Camera", "-15, 20", "0.6, sineInOut"]
 			]
 		],
 		[
 			142425,
 			[
 				["Tween Camera Zoom", "0.85, true", "0.4, circOut"],
-				["Tweening Camera", "-45, 50", "0.4, circOut"]
+				["Tweening Camera", "0, 110", "0.4, circOut"]
 			]
 		],
 		[
 			142950,
 			[
 				["Tween Camera Zoom", "0.88, true", "0.5, smootherStepInOut"],
-				["Tweening Camera", "-85, -40", "0.5, smootherStepInOut"]
+				["Tweening Camera", "45, -110", "0.5, smootherStepInOut"]
 			]
 		],
 		[
@@ -584,17 +584,17 @@
 			]
 		],
 		[
-			144300,
+			144450,
 			[
-				["Tween Camera Zoom", "0.8, true", "1.2, circInOut"],
-				["Tweening Camera", "-70, -50", "1.2, circInOut"]
+				["Tween Camera Zoom", "0.8, true", "1, circInOut"],
+				["Tweening Camera", "-40, -50", "1, circInOut"]
 			]
 		],
 		[
 			146100,
 			[
 				["Tween Camera Zoom", "0.85, true", "0.7, smootherStepInOut"],
-				["Tweening Camera", "30, -80", "0.7, smootherStepInOut"]
+				["Tweening Camera", "30, -130", "0.7, smootherStepInOut"]
 			]
 		],
 		[

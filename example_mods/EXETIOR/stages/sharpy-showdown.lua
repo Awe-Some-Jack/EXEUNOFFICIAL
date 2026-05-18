@@ -26,31 +26,18 @@ local StageConfig = {
 }
 
 local reflections = {
-    {name = 'bfReflection', path = 'characters/BOYFRIEND', character = true, link = 'boyfriend', hasAlts = true, anims = {
-        idle =           'idle',
-        singUP =       'singUp',
-        singDOWN =   'singDown',
-        singLEFT =   'singLeft',
-        singRIGHT = 'singRight',
-    }},
-    {name = 'exetiorReflection', path = 'characters/exeteiros', character = true, pairedWith = 'dad', anims = {
-        idle =       'idle',
-        singUP =       'up',
-        singDOWN =   'down',
-        singLEFT =   'left',
-        singRIGHT = 'right',
-        laugh =      'risa',
-    }},
-    {name = 'gfEXEReflection', path = 'characters/gf', link = 'gfEXE', anims = {
+    {name = 'bfReflection', path = 'characters/BOYFRIEND', character = true, curCharacter = 'boyfriend', pairedWith = 'boyfriendGroup', isPlayer = true},
+    {name = 'exetiorReflection', path = 'characters/exeteiros', character = true, curCharacter = 'dad', isPlayer = false, pairedWith = 'dadGroup'},
+    {name = 'gfEXEReflection', path = 'characters/gf', link = 'gfEXE', pairedWith = 'gfEXE', anims = {
         danceLeft =   'dance left',
         danceRight = 'dance right',
     }},
 }
 
 local SpriteGroups = {
-    phase1 =       {'bg', 'floor', 'arch', 'pillars', 'tv', 'errorScreen', 'crystalWalls', 'eggman', 'knux', 'tails', 'gfEXE'},
+    phase1 =       {'bg', 'floor', 'arch', 'pillars', 'tv', 'errorScreen', 'crystalWalls', 'eggman', 'knux', 'tails', 'gfEXE', 'bfReflection', 'exetiorReflection', 'gfEXEReflection'},
     phase2 =       {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye', 'ojoexe'},
-    hideable =     {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye', 'dad', 'boyfriend', 'gfEXE', 'ojoexe'},
+    hideable =     {'exetiorEyes', 'spotlight', 'spotlight2', 'lights', 'exelerr', 'sark', 'exeeye', 'dad', 'boyfriend', 'gfEXE', 'ojoexe', 'bfReflection', 'exetiorReflection', 'gfEXEReflection'},
     beatAnimated = {'exelerr', 'sark', 'bfX', 'eggman', 'knux', 'tails', 'exeeye'},
 }
 
@@ -78,13 +65,15 @@ luaDebugMode = true
 
 local function createReflection(shi)
     if shi.character then
-        createInstance(shi.name, 'objects.Character', {'bf', getProperty(shi.link..'.x')})
+        createInstance(shi.name, 'objects.Character', {0, 0, getProperty(shi.curCharacter..'.curCharacter'), shi.isPlayer})
+    else
+        makeAnimatedLuaSprite(shi.name, shi.path)
+        for name, anim in pairs(shi.anims) do addAnimationByPrefix(shi.name, name, anim, 24, false) end
     end
-    makeAnimatedLuaSprite(shi.name, shi.path)
-    for name, anim in pairs(shi.anims) do addAnimationByPrefix(shi.name, name, anim, 24, false) end
-    setProperty(shi.name..'.scale.y', - 0.8)
+    setProperty(shi.name..'.flipY', true)
+    setProperty(shi.name..'.scale.y', 0.5)
     setProperty(shi.name..'.alpha', 0.4)
-    --setObjectOrder(shi.name, getObjectOrder(shi.pairedWith))
+    setObjectOrder(shi.name, getObjectOrder(shi.pairedWith))
     addLuaSprite(shi.name)
 end
 
@@ -150,6 +139,10 @@ function onCreatePost()
 
 
     for _, reflection in ipairs(reflections) do createReflection(reflection) end
+
+    callMethod('bfReflection.setPosition', {getProperty('boyfriend.x'), getProperty('boyfriend.y') + 320})
+    callMethod('exetiorReflection.setPosition', {getProperty('dad.x'), getProperty('dad.y') + 320})
+    callMethod('gfEXEReflection.setPosition', {getProperty('gfEXE.x'), getProperty('gfEXE.y') + 420})
 end
 
 local EventHandlers = {
@@ -252,9 +245,6 @@ function onUpdatePost(elapsed)
     setProperty('exetiorReflection.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
     playAnim('gfEXEReflection', getProperty('gfEXE.animation.curAnim.name'))
     setProperty('gfEXEReflection.animation.curAnim.curFrame', getProperty('gfEXE.animation.curAnim.curFrame'))
-    callMethod('bfReflection.setPosition', {getProperty('boyfriend.x'), getProperty('boyfriend.y') + 320})
-    callMethod('exetiorReflection.setPosition', {getProperty('dad.x'), getProperty('dad.y') + 320})
-    callMethod('gfEXEReflection.setPosition', {getProperty('gfEXE.x'), getProperty('gfEXE.y') + 320})
 end
 
 function onSectionHit()

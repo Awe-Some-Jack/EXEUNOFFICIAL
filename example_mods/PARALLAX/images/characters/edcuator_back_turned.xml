@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="edcuator_back_turned.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="edcuator back turned00010000" x="0" y="0" width="161" height="252" frameX="-108" frameY="-32" frameWidth="320" frameHeight="302"/>
+</TextureAtlas>

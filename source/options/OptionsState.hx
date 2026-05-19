@@ -15,7 +15,6 @@ import states.EXEMenu;
 class OptionsState extends MusicBeatState
 {
 	var bg:FlxSprite;
-	var objsGrp:FlxTypedGroup<FlxSprite>;
 	var title:FlxSprite;
 
 	var sectionsList = ["CONTROLS", "VISUALS", "GRAPHICS", "GAMEPLAY", "LANGUAGE"];
@@ -43,20 +42,6 @@ class OptionsState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.data.antialiasing;
 		add(bg);
-
-		objsGrp = new FlxTypedGroup<FlxSprite>();
-		add(objsGrp);
-
-		for (i in 0...7)
-		{
-			var obj = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/objs/' + (i + 1) + '.png'));
-			obj.setGraphicSize(Std.int(obj.width * GLOBAL_SCALE));
-			obj.updateHitbox();
-			obj.ID = i;
-			obj.antialiasing = ClientPrefs.data.antialiasing;
-			objsGrp.add(obj);
-			resetObj(obj);
-		}
 
 		title = new FlxSprite(0, 20).loadGraphic(Assets.getBitmapData('assets/exe/options/optionsTitle.png'));
 		title.setGraphicSize(Std.int(title.width * GLOBAL_SCALE));
@@ -140,12 +125,6 @@ class OptionsState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		objsGrp.forEachExists(function(o)
-		{
-			if (o.y > FlxG.height || o.x > FlxG.width || o.y < -o.height || o.x < -o.width)
-				resetObj(o);
-		});
 
 		sectionsGrp.forEachExists(function(txt)
 		{
@@ -247,16 +226,6 @@ class OptionsState extends MusicBeatState
 		});
 	}
 
-	function resetObj(m:FlxSprite)
-	{
-		m.x = FlxG.random.int(0, FlxG.width);
-		m.y = FlxG.random.int(0, FlxG.height);
-		m.velocity.x = FlxG.random.float(-20, 20);
-		m.velocity.y = FlxG.random.float(-20, 20);
-		m.angularVelocity = FlxG.random.float(-14, 14);
-		m.updateHitbox();
-	}
-
 	override function closeSubState()
 	{
 		super.closeSubState();
@@ -271,7 +240,7 @@ class OptionsState extends MusicBeatState
 	{
 		if (selectionTween != null)      { selectionTween.cancel();      selectionTween = null; }
 		if (selectionCloneTween != null) { selectionCloneTween.cancel(); selectionCloneTween = null; }
-		bg = null; objsGrp = null; title = null;
+		bg = null; title = null;
 		sectionsGrp = null; sectionBGGrp = null;
 		sectionBGClone = null; propBGCloneShader = null; sectionPos = null;
 		super.destroy();

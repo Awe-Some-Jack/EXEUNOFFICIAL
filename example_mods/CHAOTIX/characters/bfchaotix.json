@@ -1,81 +1,81 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [-1, 0],
+			"indices": [],
+			"fps": 9,
 			"anim": "idle",
-			"fps": 24,
-			"name": "chaotix bf idle",
-			"indices": []
-		},
-		{
 			"loop": false,
-			"offsets": [0, 0],
-			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "chaotix bf up miss",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "singRIGHTmiss",
-			"fps": 24,
-			"name": "chaotix bf right miss",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "singLEFTmiss",
-			"fps": 24,
-			"name": "chaotix bf left miss",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "chaotix bf down miss",
-			"indices": []
+			"name": "idle"
 		},
 		{
 			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
 			"indices": [],
-			"name": "chaotix bf up sing"
-		},
-		{
-			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "chaotix bf right sing"
-		},
-		{
-			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
+			"fps": 11,
 			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [0, 0],
 			"indices": [],
-			"name": "chaotix bf left sing"
+			"fps": 11,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 11,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
 		},
 		{
 			"offsets": [6, 0],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
 			"indices": [],
-			"name": "chaotix bf down sing"
+			"fps": 11,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 11,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "bf-chaotix missleft"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 11,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "bf-chaotix right"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 11,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "bf-chaotix missup"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 11,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "bf-chaotix missdown"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
-	"image": "characters/chaotix_bf",
+	"image": "characters/bf-chaotix",
 	"position": [0, 0],
 	"healthicon": "icon-bf-chaotix",
 	"flip_x": true,

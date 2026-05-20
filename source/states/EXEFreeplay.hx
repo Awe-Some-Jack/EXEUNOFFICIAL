@@ -27,6 +27,7 @@ typedef ExeSongInfo = {
 	var title:String;
 	var exeLabel:String;
 	var transitionShape:String;
+	var bgColor:Array<Int>;
 }
 
 typedef ExeSongEntry = {
@@ -68,6 +69,8 @@ class EXEFreeplay extends MusicBeatState
 	var freeBoxes:FlxTypedGroup<FlxSprite>;
 	var covers:FlxTypedGroup<FlxSprite>;
 	var exeTexts:FlxTypedGroup<FlxText>;
+	
+	var intendedColor:Int;
 
 	var charText:FlxText;
 	var songTexts:FlxTypedGroup<FlxText>;
@@ -200,6 +203,9 @@ class EXEFreeplay extends MusicBeatState
 			Difficulty.loadFromWeek();
 		}
 
+		bgSonic.color = FlxColor.fromRGB(songEntries[selectedBox].songs[0].bgColor[0], songEntries[selectedBox].songs[0].bgColor[1], songEntries[selectedBox].songs[0].bgColor[2]);
+		intendedColor = bgSonic.color;
+
 		curDifficulty = getNormalDiffIdx();
 		if (Difficulty.list.length == 0) curDifficulty = 0;
 		lastDifficultyName = Difficulty.list.length > 0 ? Difficulty.getString(curDifficulty, false) : '';
@@ -261,6 +267,7 @@ class EXEFreeplay extends MusicBeatState
 					coverFile: weekExeCover,
 					title:     title,
 					exeLabel:  weekExeLabel,
+					bgColor: leWeek.bgColor,
 					transitionShape: weekTransition
 				});
 			}
@@ -780,6 +787,14 @@ class EXEFreeplay extends MusicBeatState
 
 		selectedBox    = newIndex;
 		changeCooldown = CHANGE_COOLDOWN;
+
+		var newColor:Int = FlxColor.fromRGB(songEntries[selectedBox].songs[0].bgColor[0], songEntries[selectedBox].songs[0].bgColor[1], songEntries[selectedBox].songs[0].bgColor[2]);
+		if(newColor != intendedColor)
+		{
+			intendedColor = newColor;
+			FlxTween.cancelTweensOf(bgSonic);
+			FlxTween.color(bgSonic, 1, bgSonic.color, intendedColor);
+		}
 
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 		cancelAllTweens();

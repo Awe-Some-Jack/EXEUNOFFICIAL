@@ -24,6 +24,7 @@
 	],
 	"hiddenUntilUnlocked": false,
 	"weekName": "Custom Week",
+	"bgColor": [255, 0, 0],
 	"exeTitle": "FLEETWAY",
 	"exeCover": "fleetway",
 	"exeLabel": "OFFICIAL",

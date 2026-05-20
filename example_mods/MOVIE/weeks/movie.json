@@ -25,6 +25,7 @@
 	"weekBefore": "tutorial",
 	"startUnlocked": true,
 	"exeTitle": "Ugly Movie Sonic",
+	"bgColor": [255, 0, 0],
 	"exeCover": "movie",
 	"exeLabel": "OFFICIAL",
 	"soundTestCode": [20, 19, true]

@@ -33,6 +33,7 @@
 	],
 	"weekName": "Custom Week",
 	"hiddenUntilUnlocked": false,
+	"bgColor": [255, 0, 0],
 	"exeTitle": "MAJIN",
 	"exeCover": "majin",
 	"exeLabel": "OFFICIAL",

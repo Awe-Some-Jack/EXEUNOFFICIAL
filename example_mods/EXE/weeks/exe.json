@@ -42,6 +42,7 @@
 	],
 	"weekName": "Custom Week",
 	"hiddenUntilUnlocked": false,
+	"bgColor": [255, 0, 0],
 	"exeTitle": "EXE",
 	"exeCover": "exe",
 	"exeLabel": "EXE",

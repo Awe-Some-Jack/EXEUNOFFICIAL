@@ -23,6 +23,7 @@
 		"gf"
 	],
 	"hiddenUntilUnlocked": false,
+	"bgColor": [120, 120, 120],
 	"weekName": "Mono.bw",
 	"exeTitle": "MONO.BW",
 	"exeCover": "mono",

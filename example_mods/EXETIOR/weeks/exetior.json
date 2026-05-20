@@ -23,6 +23,7 @@
 	"weekName": "Custom Week",
 	"hideStoryMode": true,
 	"weekBefore": "tutorial",
+	"bgColor": [120, 120, 120],
 	"startUnlocked": true,
 	"exeTitle": "EXETIOR",
 	"exeCover": "exetior",

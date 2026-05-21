@@ -29,6 +29,7 @@
 		"gf"
 	],
 	"storyName": "Your New Week",
+	"bgColor": [120, 120, 120],
 	"weekName": "Custom Week",
 	"hideStoryMode": false,
 	"weekBefore": "tutorial",

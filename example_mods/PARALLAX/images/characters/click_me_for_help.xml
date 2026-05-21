@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="click_me_for_help.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="edcuator click me for help dialogue00010000" x="999" y="264" width="177" height="264" frameX="-75" frameY="-39" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00020000" x="999" y="264" width="177" height="264" frameX="-75" frameY="-39" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00030000" x="999" y="0" width="177" height="264" frameX="-75" frameY="-39" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00040000" x="999" y="528" width="175" height="265" frameX="-75" frameY="-38" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00050000" x="0" y="793" width="175" height="266" frameX="-75" frameY="-36" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00060000" x="1176" y="795" width="147" height="262" frameX="-75" frameY="-40" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00070000" x="1176" y="795" width="147" height="262" frameX="-75" frameY="-40" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00080000" x="1176" y="795" width="147" height="262" frameX="-75" frameY="-40" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00090000" x="451" y="1059" width="146" height="265" frameX="-75" frameY="-37" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00100000" x="305" y="1059" width="146" height="265" frameX="-75" frameY="-37" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00110000" x="305" y="1059" width="146" height="265" frameX="-75" frameY="-37" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00120000" x="1343" y="542" width="148" height="269" frameX="-75" frameY="-34" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00130000" x="1343" y="0" width="148" height="271" frameX="-75" frameY="-32" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00140000" x="1343" y="271" width="148" height="271" frameX="-75" frameY="-32" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00150000" x="411" y="0" width="196" height="274" frameX="-75" frameY="-29" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00160000" x="803" y="0" width="196" height="272" frameX="-75" frameY="-31" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00170000" x="607" y="0" width="196" height="272" frameX="-75" frameY="-31" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00180000" x="0" y="265" width="204" height="270" frameX="-75" frameY="-33" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00190000" x="209" y="266" width="200" height="266" frameX="-75" frameY="-36" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00200000" x="209" y="0" width="202" height="266" frameX="-75" frameY="-36" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00210000" x="0" y="0" width="209" height="265" frameX="-75" frameY="-37" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00220000" x="0" y="535" width="205" height="258" frameX="-75" frameY="-43" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00230000" x="205" y="535" width="203" height="257" frameX="-75" frameY="-44" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00240000" x="411" y="274" width="196" height="257" frameX="-75" frameY="-44" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00250000" x="411" y="274" width="196" height="257" frameX="-75" frameY="-44" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00260000" x="408" y="535" width="195" height="257" frameX="-75" frameY="-44" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00270000" x="607" y="272" width="193" height="261" frameX="-75" frameY="-41" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00280000" x="607" y="272" width="193" height="261" frameX="-75" frameY="-41" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00290000" x="607" y="272" width="193" height="261" frameX="-75" frameY="-41" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00300000" x="803" y="272" width="193" height="262" frameX="-75" frameY="-40" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00310000" x="175" y="793" width="176" height="262" frameX="-75" frameY="-40" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00320000" x="1343" y="811" width="148" height="267" frameX="-75" frameY="-37" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00330000" x="0" y="1059" width="151" height="272" frameX="-75" frameY="-32" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00340000" x="0" y="1059" width="151" height="272" frameX="-75" frameY="-32" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00350000" x="1176" y="529" width="157" height="266" frameX="-75" frameY="-36" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00360000" x="151" y="1059" width="154" height="265" frameX="-75" frameY="-37" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00370000" x="1176" y="0" width="167" height="265" frameX="-75" frameY="-37" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00380000" x="1176" y="265" width="161" height="264" frameX="-75" frameY="-39" frameWidth="320" frameHeight="302"/>
+	<SubTexture name="edcuator click me for help dialogue00390000" x="999" y="264" width="177" height="264" frameX="-75" frameY="-39" frameWidth="320" frameHeight="302"/>
+</TextureAtlas>

@@ -23,6 +23,7 @@
 		"gf"
 	],
 	"hiddenUntilUnlocked": false,
+	"bgColor": [255, 0, 0],
 	"weekName": "Custom Week",
 	"exeTitle": "SANIC",
 	"exeCover": "sanic",

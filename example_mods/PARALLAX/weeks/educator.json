@@ -23,6 +23,7 @@
 		"gf"
 	],
 	"hiddenUntilUnlocked": false,
+	"bgColor": [0, 0, 255],
 	"weekName": "educator",
 	"exeTitle": "EDUCATOR",
 	"exeCover": "educator",

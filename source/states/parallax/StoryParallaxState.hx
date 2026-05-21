@@ -107,7 +107,8 @@ class StoryParallaxState extends MusicBeatState
 				cd.animation.play('selected');
 				cd.offset.set(cd.offset.x + 51.5, cd.offset.y + 174);
 
-				FlxG.sound.music.fadeOut(2);
+				if(FlxG.sound.music != null)
+					FlxG.sound.music.fadeOut(2);
 			}
 		}
 
@@ -123,7 +124,8 @@ class StoryParallaxState extends MusicBeatState
 				new FlxTimer().start(1, function(tmr:FlxTimer){
 					LoadingState.prepareToSong();
 					LoadingState.loadAndSwitchState(new PlayState());
-					FlxG.sound.music.stop();
+					if(FlxG.sound.music != null)
+						FlxG.sound.music.stop();
 				});
 			}
 		}

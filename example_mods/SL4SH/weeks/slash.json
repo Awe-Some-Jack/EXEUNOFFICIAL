@@ -23,6 +23,7 @@
 		"gf"
 	],
 	"hiddenUntilUnlocked": false,
+	"bgColor": [120, 120, 120],
 	"weekName": "Custom Week",
 	"exeTitle": "SL4SH",
 	"exeCover": "sl4sh",

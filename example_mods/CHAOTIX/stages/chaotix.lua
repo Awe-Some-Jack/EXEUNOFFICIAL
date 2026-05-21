@@ -1,23 +1,17 @@
-local ChaotixBG = {
-	{name = 'bg', path = 'bg/horizonbg', x = -1800, y = -1200, scaleX = 6, scaleY = 6, scrollX = 0.8, scrollY = 1, antialiasing = false, alpha = 1, front = false},
-	{name = 'floor', path = 'bg/horizonFg', x = -1800, y = -1200, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 1, front = false},
-	{name = 'BG_amy', path = 'bg/characters/BG_amy', danceEveryBeats = 2, x = 700, y = -40, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 1, front = false, animated = true, animName = 'idle', animPrefix = 'amy bobbing', fps = 24, loop = false},
-	{name = 'BG_charmy', path = 'bg/characters/BG_charmy', danceEveryBeats = 1, x = 500, y = -60, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 1, front = false, animated = true, animName = 'idle', animPrefix = 'charmy bobbing', fps = 24, loop = false},
-	{name = 'BG_espio', path = 'bg/characters/BG_espio', danceEveryBeats = 1, x = 1080, y = -18.3, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 1, front = false, animated = true, animName = 'idle', animPrefix = 'espio bobbing', fps = 24, loop = false},
-	{name = 'BG_knuckles', path = 'bg/characters/BG_knuckles', danceEveryBeats = 2, x = -820, y = -35, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 1, front = false, animated = true, animName = 'idle', animPrefix = 'knuckles bobbing', fps = 24, loop = false},
-	{name = 'BG_mighty', path = 'bg/characters/BG_mighty', danceEveryBeats = 2, x = -75, y = -15, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 1, front = false, animated = true, animName = 'idle', animPrefix = 'mighty bobbing', fps = 24, loop = false},
-	{name = 'BG_vector', path = 'bg/characters/BG_vector', danceEveryBeats = 1, x = -1200, y = -70, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 1, front = false, animated = true, animName = 'idle', animPrefix = 'vector bobbing', fps = 24, loop = false}
-}
-
-local GlitchedBG = {
-	{name = 'bgglitch', path = 'bg/bgglitch', x = -1800, y = -1200, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 0, front = false, animated = true, animName = 'idle', animPrefix = 'bgglitch idle', fps = 24, loop = true},
-	{name = 'horizonFuckedUp', path = 'bg/horizonFuckedUp', x = -1800, y = -1200, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
-	{name = 'BG_amy2', path = 'bg/characters/BG_amy', danceEveryBeats = 2, x = 700, y = -40, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 0, front = false, animated = true, animName = 'idle', animPrefix = 'amy fear', fps = 24, loop = true},
-	{name = 'BG_charmy2', path = 'bg/characters/BG_charmy', danceEveryBeats = 1, x = 500, y = -60, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 0, front = false, animated = true, animName = 'idle', animPrefix = 'charmy fear', fps = 24, loop = true},
-	{name = 'BG_espio2', path = 'bg/characters/BG_espio', danceEveryBeats = 1, x = 1080, y = -18.3, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 0, front = false, animated = true, animName = 'idle', animPrefix = 'espio fear', fps = 24, loop = true},
-	{name = 'BG_knuckles2', path = 'bg/characters/BG_knuckles', danceEveryBeats = 2, x = -820, y = -35, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 0, front = false, animated = true, animName = 'idle', animPrefix = 'knuckles fear', fps = 24, loop = true},
-	{name = 'BG_mighty2', path = 'bg/characters/BG_mighty', danceEveryBeats = 2, x = -75, y = -15, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 0, front = false, animated = true, animName = 'idle', animPrefix = 'mighty fear', fps = 24, loop = true},
-	{name = 'BG_vector2', path = 'bg/characters/BG_vector', danceEveryBeats = 1, x = -1200, y = -70, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 0, front = false, animated = true, animName = 'idle', animPrefix = 'vector fear', fps = 24, loop = true}
+local starlineBG = {
+	['BGAssets'] = {
+		{name = 'cieeelo', path = 'bg/horizonsky', x = -1900, y = -1300, scaleX = 6, scaleY = 6, scrollX = 0.8, scrollY = 1, antialiasing = false, alpha = 1, front = false},
+		{name = 'bg1',     path = 'bg/piso',       x = -1600, y = -1000, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 1, front = false},
+		{name = 'bg2',     path = 'bg/piso2',      x = -1600, y = -1000, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
+	},
+	['characters'] = {
+		{name = 'espio',    character = 'espio',      x =   930, y = 130,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'amy',      character = 'amy',        x =   730, y =  85,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'mighty',   character = 'mighty',     x =  -100, y =  65,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'knux',     character = 'knux',       x =  -640, y =  85,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'vector',   character = 'vector',     x =  -880, y =  65,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'charmy',   character = 'charmy',     x =   480, y =  -95, canFloat = true,  beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+	},
 }
 
 local glitchedActive = false
@@ -26,20 +20,25 @@ local starCount = 0
 local glitchCount = 0
 local tailsBaseY = -1600
 
+
+local function createSprite(sexo)
+	makeLuaSprite(sexo.name, sexo.path, sexo.x, sexo.y)
+	scaleObject(sexo.name, sexo.scaleX, sexo.scaleY)
+	setScrollFactor(sexo.name, sexo.scrollX, sexo.scrollY)
+	setProperty(sexo.name..'.antialiasing', sexo.antialiasing)
+	setProperty(sexo.name..'.alpha', sexo.alpha)
+	addLuaSprite(sexo.name, sexo.front)
+end
+
+local function createCharacter(char)
+	createInstance(char.name, 'objects.Character', {char.x, char.y, char.character, 'false'})
+	setProperty(char.name..'.alpha', char.alpha)
+	addInstance(char.name, char.front)
+end
+
 function onCreatePost()
-	for _, bg in ipairs(ChaotixBG) do
-		if bg.animated then
-			makeAnimatedLuaSprite(bg.name, bg.path, bg.x, bg.y)
-			addAnimationByPrefix(bg.name, bg.animName, bg.animPrefix, bg.fps, bg.loop)
-		else
-			makeLuaSprite(bg.name, bg.path, bg.x, bg.y)
-		end
-		scaleObject(bg.name, bg.scaleX, bg.scaleY)
-		setScrollFactor(bg.name, bg.scrollX, bg.scrollY)
-		setProperty(bg.name ..'.antialiasing', bg.antialiasing)
-		setProperty(bg.name ..'.alpha', bg.alpha)
-		addLuaSprite(bg.name, bg.front)
-	end
+	for _, bgs in ipairs(starlineBG['BGAssets'])     do	createSprite(bgs)      end
+	for _, chars in ipairs(starlineBG['characters']) do	createCharacter(chars) end
 
 	createInstance('tails', 'flixel.addons.display.FlxBackdrop', {nil, 0x01})
 	loadGraphic('tails', 'bg/tails')
@@ -50,20 +49,6 @@ function onCreatePost()
 	setProperty('tails.antialiasing', false)
 	setProperty('tails.alpha', 0)
 	addInstance('tails')
-
-	for _, bg in ipairs(GlitchedBG) do
-		if bg.animated then
-			makeAnimatedLuaSprite(bg.name, bg.path, bg.x, bg.y)
-			addAnimationByPrefix(bg.name, bg.animName, bg.animPrefix, bg.fps, bg.loop)
-		else
-			makeLuaSprite(bg.name, bg.path, bg.x, bg.y)
-		end
-		scaleObject(bg.name, bg.scaleX, bg.scaleY)
-		setScrollFactor(bg.name, bg.scrollX, bg.scrollY)
-		setProperty(bg.name ..'.antialiasing', bg.antialiasing)
-		setProperty(bg.name ..'.alpha', bg.alpha)
-		addLuaSprite(bg.name, bg.front)
-	end
 
 	makeLuaSprite('blackOverlay', nil, getProperty('dad.x') - 120, -320)
 	makeGraphic('blackOverlay', screenWidth * 1.8, screenHeight * 1.8, '000000')
@@ -129,13 +114,6 @@ function onBeatHit()
 
 	if curBeat == 271 then
 		glitchedActive = true
-		for _, bg in ipairs(ChaotixBG) do
-			setProperty(bg.name..'.alpha', 0)
-		end
-		setProperty('tails.alpha', 1)
-		for _, bg in ipairs(GlitchedBG) do
-			setProperty(bg.name..'.alpha', 1)
-		end
 		transPlaying = false
 		triggerEvent('Change Character', '1', 'beast_chaotix')
 		setProperty('dad.x', -376.9)
@@ -143,11 +121,12 @@ function onBeatHit()
 		doTweenAlpha('fadeFromBlack', 'blackOverlay', 0, 1.5, 'sineOut')
 	end
 
-	for _, bg in ipairs(ChaotixBG) do
-		if bg.animated and curBeat % bg.danceEveryBeats == 0 then
-			playAnim(bg.name, bg.animName, true)
+	for _, beatGuys in ipairs(starlineBG['characters']) do
+		if curBeat %beatGuys.beatIntervals == 0 then
+			playAnim(beatGuys.name, 'idle', true)
 		end
 	end
+
 
 	if not glitchedActive then
 		spawnStar()
@@ -157,12 +136,21 @@ function onBeatHit()
 		end
 	end
 end
-
-function onUpdatePost()
+local flyHold = 0
+function onUpdatePost(e)
+	flyHold = flyHold + e
 	if glitchedActive then
 		setProperty('tails.y', tailsBaseY + getRandomInt(-8, 8))
 	end
 	if transPlaying then
 		setProperty('dad.specialAnim', true)
+	end
+	for _, beatGuys in ipairs(starlineBG['characters']) do
+		if beatGuys.canFloat then
+			callMethod(beatGuys.name..'.setPosition', {
+				getProperty(beatGuys.name..'.x') + math.cos(flyHold + 0.1) * 0.1,
+				getProperty(beatGuys.name..'.y') + math.sin(flyHold + 0.05) * 0.15
+			})
+		end
 	end
 end

@@ -18,6 +18,7 @@ typedef WeekFile =
 	var hideStoryMode:Bool;
 	var hideFreeplay:Bool;
 	var difficulties:String;
+	@:optional var bgColor:Array<Int>;
 	@:optional var exeTitle:String;
 	@:optional var exeCover:String;
 	@:optional var exeLabel:String;
@@ -42,6 +43,7 @@ class WeekData {
 	public var hideStoryMode:Bool;
 	public var hideFreeplay:Bool;
 	public var difficulties:String;
+	public var bgColor:Array<Int>;
 	public var exeTitle:String;
 	public var exeCover:String;
 	public var exeLabel:String;

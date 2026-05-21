@@ -24,6 +24,7 @@
 	"hideStoryMode": false,
 	"weekBefore": "tutorial",
 	"startUnlocked": true,
+	"bgColor": [255, 0, 0],
 	"exeTitle": "CRAZY TAILS",
 	"exeCover": "crazytails",
 	"exeLabel": "NON EXE",

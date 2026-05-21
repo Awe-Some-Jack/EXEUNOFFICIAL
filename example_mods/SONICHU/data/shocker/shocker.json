@@ -1,6 +1,31 @@
 {
 	"player1": "bf",
-	"events": [],
+	"events": [
+		[
+			45473.6842105263,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			60631.5789473684,
+			[
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			80842.1052631578,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			101052.631578947,
+			[
+				["cameracenter", "false", ""]
+			]
+		]
+	],
 	"gfVersion": "gf",
 	"notes": [
 		{
@@ -372,7 +397,7 @@
 				[33789.4736842105, 7, 0],
 				[33947.3684210526, 5, 0]
 			],
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"sectionBeats": 4,
@@ -386,7 +411,7 @@
 				[35052.6315789474, 5, 0],
 				[35210.5263157895, 4, 0]
 			],
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"sectionBeats": 4,
@@ -401,7 +426,7 @@
 				[36315.7894736842, 1, 0],
 				[36473.6842105263, 2, 0]
 			],
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"sectionBeats": 4,
@@ -415,7 +440,7 @@
 				[37736.8421052632, 3, 0],
 				[37815.7894736842, 1, 0]
 			],
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"sectionBeats": 4,
@@ -429,7 +454,7 @@
 				[38842.1052631579, 3, 0],
 				[39000, 1, 0]
 			],
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"sectionBeats": 4,
@@ -443,7 +468,7 @@
 				[40105.2631578947, 1, 0],
 				[40263.1578947368, 0, 0]
 			],
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"sectionBeats": 4,
@@ -477,7 +502,7 @@
 				[42631.5789473684, 6, 0],
 				[42789.4736842105, 5, 0]
 			],
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"sectionBeats": 4,
@@ -494,7 +519,7 @@
 				[43894.7368421053, 5, 0],
 				[44052.6315789474, 4, 0]
 			],
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"sectionBeats": 4,
@@ -509,7 +534,7 @@
 				[45157.8947368421, 6, 0],
 				[45315.7894736842, 7, 0]
 			],
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"sectionBeats": 4,
@@ -879,7 +904,7 @@
 			],
 			"gfSection": false,
 			"altAnim": false,
-			"mustHitSection": false,
+			"mustHitSection": true,
 			"changeBPM": false,
 			"bpm": 190
 		},
@@ -897,7 +922,7 @@
 			],
 			"gfSection": false,
 			"altAnim": false,
-			"mustHitSection": false,
+			"mustHitSection": true,
 			"changeBPM": false,
 			"bpm": 190
 		},
@@ -915,7 +940,7 @@
 			],
 			"gfSection": false,
 			"altAnim": false,
-			"mustHitSection": false,
+			"mustHitSection": true,
 			"changeBPM": false,
 			"bpm": 190
 		},
@@ -931,7 +956,7 @@
 			],
 			"gfSection": false,
 			"altAnim": false,
-			"mustHitSection": false,
+			"mustHitSection": true,
 			"changeBPM": false,
 			"bpm": 190
 		},
@@ -1021,7 +1046,7 @@
 			],
 			"gfSection": false,
 			"altAnim": false,
-			"mustHitSection": false,
+			"mustHitSection": true,
 			"changeBPM": false,
 			"bpm": 190
 		},
@@ -1039,7 +1064,7 @@
 			],
 			"gfSection": false,
 			"altAnim": false,
-			"mustHitSection": false,
+			"mustHitSection": true,
 			"changeBPM": false,
 			"bpm": 190
 		},
@@ -1057,7 +1082,7 @@
 			],
 			"gfSection": false,
 			"altAnim": false,
-			"mustHitSection": false,
+			"mustHitSection": true,
 			"changeBPM": false,
 			"bpm": 190
 		},
@@ -1073,7 +1098,7 @@
 			],
 			"gfSection": false,
 			"altAnim": false,
-			"mustHitSection": false,
+			"mustHitSection": true,
 			"changeBPM": false,
 			"bpm": 190
 		},
@@ -1502,11 +1527,11 @@
 			"bpm": 190
 		}
 	],
-	"player2": "dad",
+	"player2": "sonichu",
 	"disableNoteRGB": true,
 	"song": "Shocker",
 	"needsVoices": true,
-	"stage": "stage",
+	"stage": "sonuchi",
 	"bpm": 190,
 	"speed": 3,
 	"format": "psych_v1_convert"

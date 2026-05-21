@@ -24,6 +24,7 @@
 	"hideStoryMode": false,
 	"weekBefore": "tutorial",
 	"startUnlocked": true,
+	"bgColor": [255, 0, 0],
 	"exeTitle": "SOINK",
 	"exeCover": "soink",
 	"exeLabel": "NON EXE",

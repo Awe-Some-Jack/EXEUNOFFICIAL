@@ -23,6 +23,7 @@
 		"gf"
 	],
 	"hiddenUntilUnlocked": false,
+	"bgColor": [120, 120, 120],
 	"weekName": "Custom Week",
 	"exeTitle": "NORMAL CD",
 	"exeCover": "normalcd",

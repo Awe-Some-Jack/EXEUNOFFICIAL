@@ -42,7 +42,7 @@ function onCreatePost()
 	setProperty('floor.antialiasing', false)
 	addLuaSprite('floor')
 
-	makeLuaSprite('rock', 'longstrider/bg/rock', 153 * 4, 333 * 4)
+	makeLuaSprite('rock', 'longstrider/bg/rock', 156 * 4, 333 * 4)
 	scaleObject('rock', 4, 4)
 	setProperty('rock.antialiasing', false)
 	addLuaSprite('rock')

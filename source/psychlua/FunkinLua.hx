@@ -336,7 +336,10 @@ class FunkinLua
 		Lua_helper.add_callback(lua, 'loadGraphic', function(variable:String, image:String, gridX:Int = 0, gridY:Int = 0) {
 			var spr = _resolveSprite(variable);
 			if (spr != null && image != null && image.length > 0)
-				spr.loadGraphic(Paths.image(image), gridX != 0 || gridY != 0, gridX, gridY);
+			{
+				final animated:Bool = gridX != 0 || gridY != 0;
+				spr.loadGraphic(Paths.image(image, null, !animated), animated, gridX, gridY);
+			}
 		});
 		Lua_helper.add_callback(lua, 'loadFrames', function(variable:String, image:String, spriteType:String = 'auto') {
 			var spr = _resolveSprite(variable);

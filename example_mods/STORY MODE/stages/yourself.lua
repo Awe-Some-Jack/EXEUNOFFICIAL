@@ -9,7 +9,7 @@ local yourselfBG1 = {
 }
 
 local cristales = {
-    {name = 'cristal1', path = 'eye/espejos/1', x = getProperty('dad.x') - 66, y = getProperty('dad.y') - 230, scaleX = 0.65, scaleY = 0.6, scrollX = 0.95, scrollY = 0.95, behindFakeBF = true, alpha = 1, antialiasing = true, front = false},
+    {name = 'cristal1', path = 'eye/espejos/1', x = getProperty('dad.x') + 80, y = getProperty('dad.y') - 230, scaleX = 0.65, scaleY = 0.6, scrollX = 0.95, scrollY = 0.95, behindFakeBF = true, alpha = 1, antialiasing = true, front = false},
     {name = 'cristal2', path = 'eye/espejos/2', x = 2600, y = 480, scaleX = 0.6, scaleY = 0.6, scrollX = 0.95, scrollY = 0.95, alpha = 1, antialiasing = true, front = false},
     {name = 'cristal3', path = 'eye/espejos/3', x = 2230, y = 480, scaleX = 0.8, scaleY = 0.8, scrollX = 0.98, scrollY = 0.98, alpha = 1, antialiasing = true, front = false},
     {name = 'cristal4', path = 'eye/espejos/4', x = 2000, y = 620, scaleX = 0.6, scaleY = 0.6, scrollX = 0.98, scrollY = 0.98, alpha = 1, antialiasing = true, front = false},
@@ -35,7 +35,7 @@ local sillyBFsInstances = {
     {name = 'sillybg1', x = 1640, y = 600, sprite = 'sillybg', idk = false, alpha = 0},
     {name = 'sillybg2', x = 1270, y = 600, sprite = 'sillybg', idk = false, alpha = 0},
     {name = 'sillybg4', x = 2010, y = 600, sprite = 'sillybg', idk = false, alpha = 0},
-    {name = 'sillybg3', x = 880, y = 540, sprite = 'mirror lookbg', idk = false, alpha = 0},
+    {name = 'sillybg3', x = 1020, y = 630, sprite = 'mirror lookbg', idk = false, alpha = 0},
 }
 
 function onCreate()

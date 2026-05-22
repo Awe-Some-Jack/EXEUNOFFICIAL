@@ -35,9 +35,9 @@ function onEvent(n, v1)
 			setProperty('introsonic.animation.curAnim.curFrame', 8)
 		end
 
-		if v1 == 'addsonic' then
-			doTweenAlpha('bfalpha', 'introsonic', 1, getTime(8))
-		end
+		if v1 == 'secondcamera' then screenCenter('sonicintro') end
+		if v1 == 'thirdcamera' then scaleObject('sonicintro', 3, 3, false) end
+		if v1 == 'fourthcamera' then removeLuaSprite('sonicintro', true) setProperty('introsonic.alpha', 1) end
 
 		if v1 == 'addbg' then
 			if not lowQuality then

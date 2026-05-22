@@ -27,7 +27,18 @@ function onCreatePost()
 	setProperty('starvHit.antialiasing', false)
 	addLuaSprite('starvHit')
 	setProperty('starvHit.alpha', 0)
+
+	makeAnimatedLuaSprite('sonicintro', 'characters/sonicprey')
+	setObjectCamera('sonicintro', 'video')
+	addAnimationByPrefix('sonicintro', 'idle', 'idle', 12, true)
+	scaleObject('sonicintro', 8, 8, true)
+	screenCenter('sonicintro') setProperty('sonicintro.y', screenHeight - getProperty('sonicintro.height'))
+	setProperty('sonicintro.antialiasing', false)
+	addLuaSprite('sonicintro', true)
+	setProperty('sonicintro.alpha', 0)
 end
+
+function onSongStart() doTweenAlpha('sonicintro', 'sonicintro', 1, crochet / 500) end
 
 function onUpdatePost(e)
 	if getProperty('introsonic.animation.curAnim.name') == 'intro' and getProperty('introsonic.animation.curAnim.finished') then

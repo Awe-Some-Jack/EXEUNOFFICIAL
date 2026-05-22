@@ -74,9 +74,9 @@ function onCreatePost()
 
 	--bg 2
 
-	makeLuaSprite('sky', 'bg/pov/sky', -730, -300)
+	makeLuaSprite('sky', 'bg/pov/sky', -530, -300)
 	addLuaSprite('sky')
-	setScrollFactor('sky', 0.65, 0.65)
+	setScrollFactor('sky', 0.3, 0.3)
 	setProperty('sky.alpha', 0.0001)
 
 	createInstance('clouds', 'flixel.addons.display.FlxBackdrop', {nil, 0x01})
@@ -109,8 +109,15 @@ function onCreatePost()
 	scaleObject('floorpov', 1.1, 1.1)
 	setProperty('floorpov.alpha', 0.0001)
 
-	--bg 3
+	makeLuaSprite('whiteBG')
+	makeGraphic('whiteBG', screenWidth, screenHeight, 'FFFFFF')
+	setObjectCamera('whiteBG', 'hud')
+	setObjectOrder('whiteBG', getObjectOrder('hbBG') - 1)
+	screenCenter('whiteBG')
+	setProperty('whiteBG.alpha', 0)
+end
 
+local function makeThirdBG()
 	makeLuaSprite('room', 'bg/room/4', -960, -660)
 	addLuaSprite('room')
 	scaleObject('room', 0.9, 0.9)
@@ -136,17 +143,9 @@ function onCreatePost()
 
 	makeLuaSprite('overlay', 'bg/room/5')
 	addLuaSprite('overlay')
-	scaleObject('overlay', 0.34, 0.34)
 	screenCenter('overlay')
 	setObjectCamera('overlay', 'other')
 	setProperty('overlay.alpha', 0.0001)
-
-	makeLuaSprite('whiteBG')
-	makeGraphic('whiteBG', screenWidth, screenHeight, 'FFFFFF')
-	setObjectCamera('whiteBG', 'hud')
-	setObjectOrder('whiteBG', getObjectOrder('hbBG') - 1)
-	screenCenter('whiteBG')
-	setProperty('whiteBG.alpha', 0)
 end
 
 function onSongStart()
@@ -171,6 +170,7 @@ function onTimerCompleted(t)
 	if stringStartsWith(t, 'render') then doTweenAlpha(t, t, 0, crochet / (1000 / 8), 'cubeInOut') end
 end
 
+local flashNum = 0
 local canRandomStatic = false
 local currentBG = 1
 function onEvent(n,v1,v2)
@@ -240,14 +240,20 @@ function onEvent(n,v1,v2)
 			for i = 0,7 do setProperty('strumLineNotes.members['..i..'].texture', 'noteSkins/NOTERED_assets') end
 			for i = 0,getProperty('notes.length')-1 do setProperty('notes.members['..i..'].texture', 'noteSkins/NOTERED_assets') end
 			for i = 0,getProperty('unspawnNotes.length')-1 do setProperty('unspawnNotes['..i..'].texture', 'noteSkins/NOTERED_assets') end
+
+			makeThirdBG()
+
+			setProperty('cpuAssist', true)
 		end
 		if v1 == 'flashback' then
-			makeLuaSprite('render'..v2, 'renders/render'..v2)
-			scaleObject('render'..v2, 0.34, 0.34)
-			addLuaSprite('render'..v2)
-			setObjectCamera('render'..v2, 'other')
-			screenCenter('render'..v2)
-			doTweenAlpha('render'..v2, 'render'..v2, 0, crochet / (1000 / 8), 'cubeInOut')
+			flashNum = flashNum + 1
+			cancelTween('render')
+			makeLuaSprite('render', 'renders/render'..((flashNum % 4) + 1))
+			scaleObject('render', 0.34, 0.34)
+			addLuaSprite('render')
+			setObjectCamera('render', 'other')
+			screenCenter('render')
+			doTweenAlpha('render', 'render', 0, crochet / (1000 / 2), 'cubeInOut')
 		end
 		if v1 == 'redfadein' then
 			setProperty('whiteBG.color', getColorFromHex('FF0000'))

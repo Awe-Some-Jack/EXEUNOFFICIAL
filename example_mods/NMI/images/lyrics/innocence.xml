@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="innocence.png">
+<SubTexture name="idle0000" x="0" y="727" width="1275" height="335" frameX="0" frameY="-198" frameWidth="1279" frameHeight="719" />
+<SubTexture name="idle0001" x="0" y="1062" width="1277" height="320" frameX="0" frameY="-206" frameWidth="1279" frameHeight="719" />
+<SubTexture name="idle0002" x="1267" y="365" width="1257" height="353" frameX="0" frameY="-190" frameWidth="1279" frameHeight="719" />
+<SubTexture name="idle0003" x="1267" y="0" width="1273" height="363" frameX="0" frameY="-186" frameWidth="1279" frameHeight="719" />
+<SubTexture name="idle0004" x="0" y="365" width="1267" height="362" frameX="-16" frameY="-193" frameWidth="1279" frameHeight="719" />
+<SubTexture name="idle0005" x="0" y="0" width="1267" height="365" frameX="-14" frameY="-207" frameWidth="1279" frameHeight="719" />
+</TextureAtlas>

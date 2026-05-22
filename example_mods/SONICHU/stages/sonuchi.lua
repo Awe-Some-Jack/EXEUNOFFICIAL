@@ -16,4 +16,10 @@ function onCreatePost()
 	makeLuaSprite('fore', 'bg/1', -1550, -800)
 	setScrollFactor('fore', 1.2, 1.2)
 	addLuaSprite('fore')
+
+	makeLuaSprite('overlay', 'bg/5', -1550, -800)
+	setScrollFactor('overlay', 1.2, 1.2)
+	addLuaSprite('overlay', true)
+	setProperty('overlay.alpha', 0.3)
+	setBlendMode('overlay', 'add')
 end

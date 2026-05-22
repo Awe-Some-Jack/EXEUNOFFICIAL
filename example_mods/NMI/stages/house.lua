@@ -25,6 +25,7 @@ runHaxeCode([[
 
 
 for i = 1,4 do precacheImage('renders/render'..i) end
+precacheImage('ycstnmi')
 
 setProperty('skipArrowStartTween', true)
 function onCreatePost()
@@ -111,7 +112,7 @@ function onCreatePost()
 
 	makeLuaSprite('whiteBG')
 	makeGraphic('whiteBG', screenWidth, screenHeight, 'FFFFFF')
-	setObjectCamera('whiteBG', 'hud')
+	setObjectCamera('whiteBG', 'video')
 	setObjectOrder('whiteBG', getObjectOrder('hbBG') - 1)
 	screenCenter('whiteBG')
 	setProperty('whiteBG.alpha', 0)
@@ -253,13 +254,20 @@ function onEvent(n,v1,v2)
 			addLuaSprite('render')
 			setObjectCamera('render', 'other')
 			screenCenter('render')
-			doTweenAlpha('render', 'render', 0, crochet / (1000 / 2), 'cubeInOut')
+			doTweenAlpha('render', 'render', 0, crochet / (1000 / 4), 'cubeInOut')
 		end
 		if v1 == 'redfadein' then
 			setProperty('whiteBG.color', getColorFromHex('FF0000'))
 			doTweenAlpha('whiteBG', 'whiteBG', 1, crochet / (1000 / 4), 'cubeIn')
 		end
+		if v1 == 'lyrics' then
+			makeAnimatedLuaSprite('lyric', 'ycstnmi')
+			addAnimationByPrefix('lyric', 'idle', 'idle', 31, true)
+			setObjectCamera('lyric', 'video')
+			addLuaSprite('lyric')
+		end
 		if v1 == 'changebgfinal' then
+			removeLuaSprite('lyric', true)
 			cancelTween('whiteBG')
 			doTweenAlpha('whiteBG', 'whiteBG', 0, crochet / (1000 / 4), 'cubeOut')
 

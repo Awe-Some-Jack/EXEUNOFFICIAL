@@ -27,6 +27,8 @@ class StoryModeState extends MusicBeatState
 
 	var randomMIC:FlxSprite;
 
+	var toMenu:Bool = false;
+
 	var greyBOX:FlxSprite;
 	var bfBOX:FlxSprite;
 	var staticscreen:FlxSprite;
@@ -101,7 +103,7 @@ class StoryModeState extends MusicBeatState
 		covers = null;
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
-		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+		if (toMenu) FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 		super.destroy();
 	}
 
@@ -442,6 +444,7 @@ class StoryModeState extends MusicBeatState
 
 				if (Controls.instance.BACK)
 				{
+					toMenu = true;
 					FlxG.switchState(() -> new EXEMenu());
 					super.update(elapsed);
 					FlxG.sound.music.fadeOut(0.3);

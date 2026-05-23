@@ -4,6 +4,7 @@ import backend.WeekData;
 import backend.Song;
 import backend.Highscore;
 
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.addons.display.FlxBackdrop;
@@ -20,6 +21,7 @@ import flixel.util.FlxDestroyUtil;
 
 import openfl.display.BitmapData;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.util.FlxGradient;
 
 typedef ExeSongInfo = {
 	var songName:String;
@@ -62,6 +64,7 @@ class EXEFreeplay extends MusicBeatState
 
 	var songEntries:Array<ExeSongEntry> = [];
 
+	var bgChecker:FlxBackdrop;
 	var bgSonic:FlxBackdrop;
 	var verticalLine:FlxSprite;
 	var degradado:FlxSprite;
@@ -69,7 +72,7 @@ class EXEFreeplay extends MusicBeatState
 	var freeBoxes:FlxTypedGroup<FlxSprite>;
 	var covers:FlxTypedGroup<FlxSprite>;
 	var exeTexts:FlxTypedGroup<FlxText>;
-	
+
 	var intendedColor:Int;
 
 	var charText:FlxText;
@@ -77,6 +80,10 @@ class EXEFreeplay extends MusicBeatState
 
 	var staticScreens:FlxTypedGroup<FlxSprite>;
 	var staticTween:FlxTween;
+
+	var cardGroups:Array<FlxTypedGroup<FlxSprite>> = [];
+	var cardGroupsLayer:FlxTypedGroup<FlxTypedGroup<FlxSprite>>;
+	var cardPositions:Array<FlxObject> = [];
 
 	public static var selectedBox:Int  = 0;
 	var changeCooldown:Float = 0;
@@ -152,16 +159,18 @@ class EXEFreeplay extends MusicBeatState
 		charText.borderSize = 3;
 
 		loadBgSonic();
+		loadBgChecker();
 		loadVerticalLine();
 
 		staticScreens = new FlxTypedGroup<FlxSprite>();
-
-		add(covers);
-		add(staticScreens);
-		add(freeBoxes);
+		cardGroups    = [];
+		cardPositions = [];
+		cardGroupsLayer = new FlxTypedGroup<FlxTypedGroup<FlxSprite>>();
+		add(cardGroupsLayer);
 
 		loadDegradado();
 		loadSpikesUp();
+		loadVignette();
 
 		add(exeTexts);
 
@@ -205,6 +214,7 @@ class EXEFreeplay extends MusicBeatState
 
 		bgSonic.color = FlxColor.fromRGB(songEntries[selectedBox].songs[0].bgColor[0], songEntries[selectedBox].songs[0].bgColor[1], songEntries[selectedBox].songs[0].bgColor[2]);
 		intendedColor = bgSonic.color;
+		if (verticalLine != null) verticalLine.color = intendedColor;
 
 		curDifficulty = getNormalDiffIdx();
 		if (Difficulty.list.length == 0) curDifficulty = 0;
@@ -329,8 +339,14 @@ class EXEFreeplay extends MusicBeatState
 
 		for (i in 0...songEntries.length)
 		{
-			var entry    = songEntries[i];
+			var entry     = songEntries[i];
 			var firstSong = entry.songs[0];
+
+			var cardGroup = new FlxTypedGroup<FlxSprite>();
+			cardGroups.push(cardGroup);
+			cardGroupsLayer.add(cardGroup);
+			var proxy = new FlxObject(0, 0);
+			cardPositions.push(proxy);
 
 			var coverPath   = PATH_COVERS + Paths.formatToSongPath(firstSong.songName) + '.png';
 			var coverBitmap = loadRawBitmap(coverPath);
@@ -348,6 +364,7 @@ class EXEFreeplay extends MusicBeatState
 				cover.updateHitbox();
 				cover.ID = i;
 				covers.add(cover);
+				cardGroup.add(cover);
 
 				var ss = new FlxSprite(0, 0);
 				ss.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.png', 'assets/exe/story/screenstatic.xml');
@@ -361,6 +378,7 @@ class EXEFreeplay extends MusicBeatState
 				ss.alpha = 0.18;
 				ss.ID   = i;
 				staticScreens.add(ss);
+				cardGroup.add(ss);
 			}
 
 			if (boxBitmap != null)
@@ -372,6 +390,7 @@ class EXEFreeplay extends MusicBeatState
 				box.updateHitbox();
 				box.ID = i;
 				freeBoxes.add(box);
+				cardGroup.add(box);
 			}
 
 			var daColor:Int = switch (firstSong.exeLabel)
@@ -397,6 +416,13 @@ class EXEFreeplay extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (bgChecker != null && bgSonic != null)
+		{
+			bgChecker.color = bgSonic.color;
+			bgChecker.alpha = 0.10;
+		}
+
 
 		if (changeCooldown > 0) changeCooldown -= elapsed;
 
@@ -496,6 +522,8 @@ class EXEFreeplay extends MusicBeatState
 					box.x     = baseX - box.width / 2;
 					box.y     = centerY - box.height / 2;
 					box.alpha = 0.5;
+					if (cardPositions != null && box.ID < cardPositions.length)
+						cardPositions[box.ID].setPosition(box.x, box.y);
 				}
 			});
 			covers.forEach(function(cover:FlxSprite)
@@ -509,6 +537,7 @@ class EXEFreeplay extends MusicBeatState
 					cover.x     = baseX - cover.width / 2;
 					cover.y     = centerY - cover.height / 2;
 					cover.alpha = 0.5;
+					_applyCardPosition(cover.ID);
 				}
 			});
 			scaleSongBox(true);
@@ -535,7 +564,7 @@ class EXEFreeplay extends MusicBeatState
 			songTexts.add(t);
 		}
 
-		var slot0Y:Float = FlxG.height - 30 - (MAX_VISIBLE_SONGS * SONG_SPACING_Y);
+		var slot0Y:Float = FlxG.height - 18 - (MAX_VISIBLE_SONGS * SONG_SPACING_Y);
 
 		for (i in 0...songs.length)
 		{
@@ -630,7 +659,7 @@ class EXEFreeplay extends MusicBeatState
 		else if (songSelector >= songScrollOffset + MAX_VISIBLE_SONGS)
 			songScrollOffset = songSelector - MAX_VISIBLE_SONGS + 1;
 
-		var slot0Y:Float = FlxG.height - 30 - (MAX_VISIBLE_SONGS * SONG_SPACING_Y);
+		var slot0Y:Float = FlxG.height - 18 - (MAX_VISIBLE_SONGS * SONG_SPACING_Y);
 
 		for (j in 0...activeSongCount)
 		{
@@ -794,6 +823,11 @@ class EXEFreeplay extends MusicBeatState
 			intendedColor = newColor;
 			FlxTween.cancelTweensOf(bgSonic);
 			FlxTween.color(bgSonic, 1, bgSonic.color, intendedColor);
+			if (verticalLine != null)
+			{
+				FlxTween.cancelTweensOf(verticalLine);
+				FlxTween.color(verticalLine, 1, verticalLine.color, intendedColor);
+			}
 		}
 
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
@@ -843,6 +877,7 @@ class EXEFreeplay extends MusicBeatState
 		charText.alpha = 0;
 		charText.y    = 15;
 		FlxTween.tween(charText, {y: 28, alpha: 1}, 0.4, {ease: FlxEase.circOut});
+
 	}
 
 	static function getRankLetter(rating:Float):String
@@ -891,6 +926,7 @@ class EXEFreeplay extends MusicBeatState
 			FlxTween.cancelTweensOf(box); FlxTween.cancelTweensOf(box.scale);
 			if (box.ID == selectedBox)
 			{
+				final idx = box.ID;
 				FlxTween.tween(box.scale, {x: targetBoxScale, y: targetBoxScale}, TWEEN_DURATION,
 				{
 					ease: FlxEase.backOut,
@@ -899,6 +935,8 @@ class EXEFreeplay extends MusicBeatState
 						box.updateHitbox();
 						box.x = centerX - box.width / 2;
 						box.y = centerY - box.height / 2;
+						if (cardPositions != null && idx < cardPositions.length)
+							cardPositions[idx].setPosition(box.x, box.y);
 					}
 				});
 				FlxTween.tween(box, {alpha: 1.0}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
@@ -943,50 +981,51 @@ class EXEFreeplay extends MusicBeatState
 
 	function updateSelection(animate:Bool = true)
 	{
-		var offset:Float = -selectedBox * boxWidth;
+		final offset:Float = -selectedBox * boxWidth;
 
-		freeBoxes.forEach(function(box:FlxSprite)
+		for (i in 0...songEntries.length)
 		{
-			final isSelected  = (box.ID == selectedBox);
-			final targetScale = isSelected ? BOX_SCALE_SELECTED : BOX_SCALE;
-			final targetAlpha = isSelected ? 1.0 : 0.5;
-			final baseX       = centerX + (box.ID * boxWidth) + offset;
-			box.scale.set(targetScale, targetScale);
-			box.updateHitbox();
-			final targetX = baseX - box.width / 2;
-			final targetY = centerY - box.height / 2;
-			if (animate)
-				activeTweens.push(FlxTween.tween(box, {x: targetX, y: targetY, alpha: targetAlpha}, TWEEN_DURATION, {ease: FlxEase.cubeOut}));
-			else { box.x = targetX; box.y = targetY; box.alpha = targetAlpha; }
-		});
+			final isSelected = (i == selectedBox);
+			final proxy      = cardPositions[i];
+			final box        = freeBoxes.members[i];
+			final cover      = covers.members[i];
+			final ss         = staticScreens.members[i];
 
-		covers.forEach(function(cover:FlxSprite)
-		{
-			final isSelected  = (cover.ID == selectedBox);
-			final targetScale = isSelected ? COVER_SCALE_SELECTED : COVER_SCALE;
-			final targetAlpha = isSelected ? 1.0 : 0.5;
-			final baseX       = centerX + (cover.ID * boxWidth) + offset;
-			cover.scale.set(targetScale, targetScale);
-			cover.updateHitbox();
-			final targetX = baseX - cover.width / 2;
-			final targetY = centerY - cover.height / 2;
-			if (animate)
-				activeTweens.push(FlxTween.tween(cover, {x: targetX, y: targetY, alpha: targetAlpha}, TWEEN_DURATION, {ease: FlxEase.cubeOut}));
-			else { cover.x = targetX; cover.y = targetY; cover.alpha = targetAlpha; }
+			final targetAlpha:Float = isSelected ? 1.0 : 0.5;
+			final targetBoxScale    = isSelected ? BOX_SCALE_SELECTED   : BOX_SCALE;
+			final targetCoverScale  = isSelected ? COVER_SCALE_SELECTED : COVER_SCALE;
 
-			var ss = staticScreens.members[cover.ID];
-			if (ss != null)
+			final baseX = centerX + (i * boxWidth) + offset;
+
+			if (box != null)   { box.scale.set(targetBoxScale, targetBoxScale);     box.updateHitbox(); }
+			if (cover != null) { cover.scale.set(targetCoverScale, targetCoverScale); cover.updateHitbox(); }
+
+			final targetX = baseX - (box != null ? box.width : 0) / 2;
+			final targetY = centerY - (box != null ? box.height : 0) / 2;
+
+			if (animate)
 			{
-				ss.setGraphicSize(Std.int(cover.width), Std.int(cover.height));
-				ss.updateHitbox();
-				if (animate)
-					activeTweens.push(FlxTween.tween(ss, {x: targetX, y: targetY}, TWEEN_DURATION, {ease: FlxEase.cubeOut}));
-				else { ss.x = targetX; ss.y = targetY; }
+				FlxTween.cancelTweensOf(proxy);
+				final fi = i;
+				activeTweens.push(FlxTween.tween(proxy, {x: targetX, y: targetY}, TWEEN_DURATION, {
+					ease: FlxEase.cubeOut,
+					onUpdate: function(_) _applyCardPosition(fi)
+				}));
+				if (box   != null) activeTweens.push(FlxTween.tween(box,   {alpha: targetAlpha}, TWEEN_DURATION, {ease: FlxEase.cubeOut}));
+				if (cover != null) activeTweens.push(FlxTween.tween(cover, {alpha: targetAlpha}, TWEEN_DURATION, {ease: FlxEase.cubeOut}));
 			}
-		});
+			else
+			{
+				proxy.setPosition(targetX, targetY);
+				_applyCardPosition(i);
+				if (box   != null) box.alpha   = targetAlpha;
+				if (cover != null) cover.alpha = targetAlpha;
+			}
+		}
 
 		exeTexts.forEach(function(text:FlxText)
 		{
+			FlxTween.cancelTweensOf(text);
 			text.y = FlxG.height - text.height - 30;
 			if (text.ID == selectedBox)
 			{
@@ -1002,6 +1041,40 @@ class EXEFreeplay extends MusicBeatState
 				text.alpha   = 0.0;
 			}
 		});
+	}
+
+	inline function _applyCardPosition(i:Int)
+	{
+		final proxy = cardPositions[i];
+		final box   = freeBoxes.members[i];
+		final cover = covers.members[i];
+		final ss    = staticScreens.members[i];
+		if (box != null)
+		{
+			box.x = proxy.x;
+			box.y = proxy.y;
+		}
+		if (cover != null)
+		{
+			final offsetX = box != null ? (box.width  - cover.width)  / 2 : 0;
+			final offsetY = box != null ? (box.height - cover.height) / 2 : 0;
+			cover.x = proxy.x + offsetX;
+			cover.y = proxy.y + offsetY;
+			if (ss != null) { ss.setGraphicSize(Std.int(cover.width), Std.int(cover.height)); ss.updateHitbox(); ss.x = cover.x; ss.y = cover.y; }
+		}
+	}
+
+	function loadBgChecker()
+	{
+		var tileSize:Int = 40;
+		var bmp = new openfl.display.BitmapData(tileSize * 2, tileSize * 2, false, 0xFF000000);
+		bmp.fillRect(new openfl.geom.Rectangle(0,        0,        tileSize, tileSize), 0xFF888888);
+		bmp.fillRect(new openfl.geom.Rectangle(tileSize, tileSize, tileSize, tileSize), 0xFF888888);
+		bgChecker = new FlxBackdrop(bmp, FlxAxes.XY);
+		bgChecker.antialiasing = false;
+		bgChecker.velocity.y = 60;
+		bgChecker.alpha = 0.10;
+		add(bgChecker);
 	}
 
 	function loadBgSonic()
@@ -1023,14 +1096,35 @@ class EXEFreeplay extends MusicBeatState
 		var px = verticalLine.pixels;
 		px.lock();
 		for (y in 0...lh) {
-			var t  = y / (lh - 1);
-			var r  = Std.int(0x4B * (1 - t) + 0x1A * t);
-			var c:Int = (0xFF << 24) | (r << 16);
+			var t = y / (lh - 1);
+			var v = Std.int(0x4B * (1 - t) + 0x1A * t);
+			var c:Int = (0xFF << 24) | (v << 16) | (v << 8) | v;
 			for (x in 0...lw) px.setPixel32(x, y, c);
 		}
 		px.unlock();
 		verticalLine.dirty = true;
 		add(verticalLine);
+	}
+
+	function loadVignette()
+	{
+		var vigWLeft:Int  = 420;
+		var vigWRight:Int = 420;
+		var vigH:Int      = 200;
+
+		var left:FlxSprite = FlxGradient.createGradientFlxSprite(vigWLeft, FlxG.height, [0x55000000, 0x00000000], 1, 0);
+		left.x = -vigWLeft / 2;
+		left.scrollFactor.set(0, 0);
+		add(left);
+
+		var right:FlxSprite = FlxGradient.createGradientFlxSprite(vigWRight, FlxG.height, [0x00000000, 0x55000000], 1, 0);
+		right.x = FlxG.width - vigWRight / 2;
+		right.scrollFactor.set(0, 0);
+		add(right);
+
+		var top:FlxSprite = FlxGradient.createGradientFlxSprite(FlxG.width, vigH, [0x66000000, 0x00000000], 1, 90);
+		top.scrollFactor.set(0, 0);
+		add(top);
 	}
 
 	function loadDegradado()
@@ -1059,6 +1153,7 @@ class EXEFreeplay extends MusicBeatState
 		spikesUp.velocity.x = -80;
 		add(spikesUp);
 	}
+
 
 	function updateWindowTitle()
 	{
@@ -1089,12 +1184,17 @@ class EXEFreeplay extends MusicBeatState
 
 	function cancelAllTweens()
 	{
-		if (freeBoxes  != null) freeBoxes.forEach(function(b) { FlxTween.cancelTweensOf(b); FlxTween.cancelTweensOf(b.scale); });
-		if (covers     != null) covers.forEach(function(c)    { FlxTween.cancelTweensOf(c); FlxTween.cancelTweensOf(c.scale); });
-		if (exeTexts   != null) exeTexts.forEach(function(t)  FlxTween.cancelTweensOf(t));
-		if (songTexts  != null) songTexts.forEach(function(t) FlxTween.cancelTweensOf(t));
-		if (charText   != null) FlxTween.cancelTweensOf(charText);
-		if (activeTweens != null) activeTweens.resize(0);
+		if (freeBoxes     != null) freeBoxes.forEach(function(b) { FlxTween.cancelTweensOf(b); FlxTween.cancelTweensOf(b.scale); });
+		if (covers        != null) covers.forEach(function(c)    { FlxTween.cancelTweensOf(c); FlxTween.cancelTweensOf(c.scale); });
+		if (exeTexts      != null) exeTexts.forEach(function(t)  {
+			FlxTween.cancelTweensOf(t);
+			if (t.ID == selectedBox) { t.visible = true; t.alpha = 1.0; }
+			else { t.visible = false; t.alpha = 0.0; }
+		});
+		if (songTexts     != null) songTexts.forEach(function(t) FlxTween.cancelTweensOf(t));
+		if (charText      != null) { FlxTween.cancelTweensOf(charText); charText.alpha = 1.0; charText.y = 28; }
+		if (cardPositions != null) for (p in cardPositions) FlxTween.cancelTweensOf(p);
+		if (activeTweens  != null) activeTweens.resize(0);
 	}
 
 	override function closeSubState()
@@ -1120,10 +1220,11 @@ class EXEFreeplay extends MusicBeatState
 		if (transitionTimer != null) { transitionTimer.cancel(); transitionTimer = null; }
 		if (staticTween     != null) { staticTween.cancel();     staticTween = null; }
 		cancelAllTweens();
-		bgSonic = null; spikesUp = null;
+		bgChecker = null; bgSonic = null; spikesUp = null;
 		verticalLine = null; degradado = null;
 		charText = null; freeBoxes = null; covers = null; exeTexts = null; songTexts = null;
 		staticScreens = null;
+		cardGroups = null; cardGroupsLayer = null; cardPositions = null;
 		activeTweens = null;
 		scoreBG = null; scoreText = null; rankText = null;
 		missingTextBG = null; missingText = null;

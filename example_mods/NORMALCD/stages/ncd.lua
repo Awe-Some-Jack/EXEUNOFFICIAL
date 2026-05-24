@@ -20,6 +20,11 @@ function onCreatePost()
 	playAnim('door', 'doorbangin', true)
 	addLuaSprite('door')
 
+	makeAnimatedLuaSprite('pc', 'bg/tv', 1400, 400)
+	addAnimationByPrefix('pc', 'idle', 'Símbolo 12', 24, true)
+	playAnim('pc', 'idle', true)
+	addLuaSprite('pc')
+
 	for _, s in ipairs(shadows) do
 		makeLuaSprite(s.name, s.path)
 		callMethod(s.name .. '.setPosition', {getProperty(s.target .. '.x') + s.offsetX, getProperty(s.target .. '.y') + s.offsetY})

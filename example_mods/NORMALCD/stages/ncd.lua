@@ -4,19 +4,21 @@ local shadows = {
 }
 
 function onCreatePost()
-	makeLuaSprite('bg', 'bg/bg')
+	makeLuaSprite('bg', 'bg/bg', -270, -230)
 	addLuaSprite('bg')
+
+	for i = 1,2 do
+		makeLuaSprite('char'..i, 'bg/char'..i, 610, 320)
+		addLuaSprite('char'..i)
+	end setProperty('char2.x', 780)
+
+	makeLuaSprite('bg2', 'bg/bg2', 535, 215)
+	addLuaSprite('bg2')
 
 	makeAnimatedLuaSprite('door', 'bg/doorbangin', -110, -525)
 	addAnimationByPrefix('door', 'doorbangin', 'doorbangin', 24, false)
 	playAnim('door', 'doorbangin', true)
 	addLuaSprite('door')
-
-	makeAnimatedLuaSprite('pc', 'bg/pc', 1441, 364)
-	addAnimationByPrefix('pc', 'idle', 'pc exe', 24, true)
-	addAnimationByPrefix('pc', 'loopidle', 'loop', 24, true)
-	playAnim('pc', 'loopidle', true)
-	addLuaSprite('pc')
 
 	for _, s in ipairs(shadows) do
 		makeLuaSprite(s.name, s.path)
@@ -27,7 +29,7 @@ function onCreatePost()
 
 	setProperty('dad.alpha', 0)
 
-	makeLuaSprite('glow', 'bg/glow')
+	makeLuaSprite('glow', 'bg/glow', 50)
 	setBlendMode('glow', 'add')
 	setProperty('glow.alpha', 0.75)
 	addLuaSprite('glow', true)
@@ -40,6 +42,14 @@ function onCreatePost()
 	setObjectOrder('outro', getObjectOrder('dadGroup') + 1)
 
 	setProperty('camHUD.alpha', 0)
+end
+
+local thing = 0
+function onUpdatePost(e)
+	thing = thing + e * playbackRate
+	for i = 1,2 do
+		setProperty('char'..i..'.y', 320 + math.sin(thing + i) * 8)
+	end
 end
 
 local hudRevealed = false

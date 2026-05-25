@@ -1,0 +1,725 @@
+{
+	"unofficial": [
+		{
+			"name": "Treno",
+			"icon": "treno",
+			"description": "Lead Director, Artist and Animator",
+			"nation": "venezuela"
+		},
+		{
+			"name": "MeDicenKay",
+			"icon": "kay",
+			"description": "Director, Composer, Charter and Voice Actor for Devoid",
+			"nation": "chile"
+		},
+		{
+			"name": "KivFLP",
+			"icon": "kiv",
+			"description": "Director and Composer",
+			"nation": "espana"
+		},
+		{
+			"name": "Dudu",
+			"icon": "dudu",
+			"description": "Main Coder and Charter",
+			"quote": "treno es gay",
+			"colors": [[64, 64, 64], [192, 192, 192]],
+			"nation": "chile",
+			"twitter": "https://x.com/dudugd20",
+			"youtube": "https://www.youtube.com/@dudugd20"
+		},
+		{
+			"name": "Kazu",
+			"icon": "kazu",
+			"description": "Coder",
+			"nation": "peru"
+		},
+		{
+			"name": "RaimbowCore",
+			"icon": "raimbow",
+			"description": "Coder and Charter",
+			"nation": "espana"
+		},
+		{
+			"name": "AssmanBruh",
+			"icon": "assman",
+			"description": "Coder"
+		},
+		{
+			"name": "CherryLemur",
+			"icon": "cherry",
+			"description": "Coder"
+		},
+		{
+			"name": "Kophy232",
+			"icon": "kophy",
+			"description": "Coder",
+			"nation": "peru"
+		},
+		{
+			"name": "Wolfie",
+			"icon": "wolfie",
+			"description": "Coder and Charter"
+		},
+		{
+			"name": "Jason E",
+			"icon": "jason",
+			"description": "Coder"
+		},
+		{
+			"name": "HyperDream",
+			"icon": "hyperdream",
+			"description": "Artist"
+		},
+		{
+			"name": "Engineer",
+			"icon": "engineer",
+			"description": "Artist"
+		},
+		{
+			"name": "Artisus",
+			"icon": "artisus",
+			"description": "Artist"
+		},
+		{
+			"name": "BarcoBasurero",
+			"icon": "barco",
+			"description": "Artist"
+		},
+		{
+			"name": "NayreFunkin",
+			"icon": "nayre",
+			"description": "Artist"
+		},
+		{
+			"name": "Sebas1554",
+			"icon": "sebas",
+			"description": "Artist and Animator",
+			"nation": "peru"
+		},
+		{
+			"name": "Mariano",
+			"icon": "mariano",
+			"description": "Artist"
+		},
+		{
+			"name": "Kostya Hernandez",
+			"icon": "kostya",
+			"description": "Artist and 3D Artist",
+			"nation": "mexico"
+		},
+		{
+			"name": "Tomasero",
+			"icon": "tomasero",
+			"description": "Artist and Animator",
+			"nation": "argentina"
+		},
+		{
+			"name": "Pekoso",
+			"icon": "pekoso",
+			"description": "Artist",
+			"nation": "chile"
+		},
+		{
+			"name": "Fare.dz",
+			"icon": "fare",
+			"description": "Artist"
+		},
+		{
+			"name": "Suonima",
+			"icon": "suo",
+			"description": "Artist",
+			"quote": "Sinceramente no creí llegar tan lejos, sé que este mod será polemico y para unas personas no les sea de su agrado, pero si en verdad tenemos exito, todo eso me gustaria dedicarselo a mi familia y al unofficial crew que me adoptaron como parte de su grupo y me consideraron su amigo, en verdad fue una aventura grandiosa.",
+			"colors": [[26, 19, 55], [0, 143, 167]],
+			"nation": "mexico",
+			"twitter": "https://www.x.com/SuonimaG_"
+		},
+		{
+			"name": "Kitty0706",
+			"icon": "kitty",
+			"description": "3D Artist"
+		},
+		{
+			"name": "Nebros",
+			"icon": "nebros",
+			"description": "Animator and 3D Artist",
+			"nation": "chile"
+		},
+		{
+			"name": "RoxasWhite_",
+			"icon": "white",
+			"description": "Pixel Artist",
+			"quote": "Everything in the life depends on how much you want to fuck someone, and I really wanted with this mod. All my work in pixel art here was all made with a lot of love and dedication. To my younger self, I leave here my tribute to the entire EXE community, that on my lowest time, gave me a hand to get up. From your Brazilian friend RoxasWhite_",
+			"nation": "brazil",
+			"twitter": "https://x.com/RoxasWhite_",
+			"youtube": "https://youtube.com/@whiteroxas_"
+		},
+		{
+			"name": "Sr. Kleynner",
+			"icon": "kleynner",
+			"description": "Pixel Artist",
+			"nation": "colombia"
+		},
+		{
+			"name": "T4co",
+			"icon": "taco",
+			"description": "Pixel Artist"
+		},
+		{
+			"name": "SlaxPe",
+			"icon": "slax",
+			"description": "Pixel Artist",
+			"nation": "peru"
+		},
+		{
+			"name": "ExeTheFaked",
+			"icon": "exe",
+			"description": "Composer"
+		},
+		{
+			"name": "DaRealT0bi",
+			"icon": "tobi",
+			"description": "Composer",
+			"nation": "chile"
+		},
+		{
+			"name": "LifeyTheRay",
+			"icon": "lifey",
+			"description": "Composer"
+		},
+		{
+			"name": "KraimYT",
+			"icon": "kraim",
+			"description": "Composer",
+			"nation": "chile"
+		},
+		{
+			"name": "LyricalMaxi",
+			"icon": "maxi",
+			"description": "",
+			"nation": "chile"
+		},
+		{
+			"name": "rak",
+			"icon": "rak",
+			"description": "Composer",
+			"nation": "argentina"
+		},
+		{
+			"name": "Rogtary",
+			"icon": "rogtary",
+			"description": "Composer",
+			"nation": "chile"
+		},
+		{
+			"name": "Ryan2511Pro",
+			"icon": "ryan",
+			"description": "Composer",
+			"nation": "peru",
+			"youtube": "https://www.youtube.com/@ryan2511pro"
+		},
+		{
+			"name": "Tomis Turbando",
+			"icon": "tomis",
+			"description": "Composer",
+			"nation": "brazil"
+		},
+		{
+			"name": "Sanko",
+			"icon": "sanko",
+			"description": "Composer"
+		},
+		{
+			"name": "Alex_Hamud",
+			"icon": "alex",
+			"description": "Composer and Voice Actor for Xenophanes"
+		},
+		{
+			"name": "PolloRostizado",
+			"icon": "pollo",
+			"description": "Charter",
+			"nation": "mexico"
+		},
+		{
+			"name": "Redblurr",
+			"icon": "redblurr",
+			"description": "Charter",
+			"nation": "peru"
+		},
+		{
+			"name": "Sr. EspantaViejas",
+			"icon": "espanta",
+			"description": "Charter",
+			"quote": "AHHHH SIII ESTE MOD ES UNA PUTA JOYA, por cierto amo a natsuki, es mi vieja, no se si se dieron cuenta, ah... cierto apoyen el mod, treno, kay y kawai son unos grandes directores. Posdata dudu es gay",
+			"nation": "paraguay",
+			"colors": [[209, 15, 15], [18, 17, 17]],
+			"twitter": "https://x.com/EspantaViejas97"
+		},
+		{
+			"name": "sevulda",
+			"icon": "sevulda",
+			"description": "Charter"
+		},
+		{
+			"name": "LuisukeDestroyer",
+			"icon": "luisuke",
+			"description": "Voice Actor for Brawturst"
+		}
+	],
+
+	"original": [
+		{
+			"name": "RightBurstUltra",
+			"icon": "rightburst",
+			"description": "Mod Creator & Former Director"
+		},
+		{
+			"name": "Saster",
+			"icon": "saster",
+			"description": "Director & Composer"
+		},
+		{
+			"name": "CommandoDev/ComGamingNZ",
+			"icon": "commando",
+			"description": "Director & Artist"
+		},
+		{
+			"name": "HarbingerBeats/averyavary",
+			"icon": "avery",
+			"description": "Former Director & Former Programmer"
+		},
+		{
+			"name": "Raven/revie03",
+			"icon": "raven",
+			"description": "Former Director"
+		},
+		{
+			"name": "Falsecow",
+			"icon": "false",
+			"description": "Co-Director"
+		},
+		{
+			"name": "Razencro",
+			"icon": "razen",
+			"description": "Co-Director, Charter, Artist & Programmer"
+		},
+		{
+			"name": "JoeDoughBoi",
+			"icon": "joedough",
+			"description": "Co-Director & Artist"
+		},
+		{
+			"name": "SimplyCrispy",
+			"icon": "simply",
+			"description": "Co-Director & Composer"
+		},
+		{
+			"name": "MarStarBro",
+			"icon": "marstarbro",
+			"description": "Charter, Composer & Voice Actor"
+		},
+		{
+			"name": "MadzillaKOTH",
+			"icon": "madzilla",
+			"description": "Charter & Voice Actor"
+		},
+		{
+			"name": "Punkett",
+			"icon": "punkett",
+			"description": "Charter & Composer"
+		},
+		{
+			"name": "UpTaunt",
+			"icon": "uptaunt",
+			"description": "Charter & Former Composer"
+		},
+		{
+			"name": "Wilde",
+			"icon": "wilde",
+			"description": "Charter & Artist"
+		},
+		{
+			"name": "niffirg",
+			"icon": "niffirg",
+			"description": "Charter"
+		},
+		{
+			"name": "Sandplanet",
+			"icon": "sandplanet",
+			"description": "Former Charter"
+		},
+		{
+			"name": "Echolocated",
+			"icon": "echo",
+			"description": "Former Charter"
+		},
+		{
+			"name": "Degen Dan",
+			"icon": "degen",
+			"description": "Former Charter & Former Programmer"
+		},
+		{
+			"name": "Dk.",
+			"icon": "dk",
+			"description": "Former Charter"
+		},
+		{
+			"name": "SmileySqueak",
+			"icon": "squeak",
+			"description": "Composer"
+		},
+		{
+			"name": "Jacaris",
+			"icon": "jacaris",
+			"description": "Composer & Voice Actor"
+		},
+		{
+			"name": "LongestSoloEver",
+			"icon": "lse",
+			"description": "Composer"
+		},
+		{
+			"name": "River",
+			"icon": "river",
+			"description": "Composer & Artist"
+		},
+		{
+			"name": "TaeSkull",
+			"icon": "tae",
+			"description": "Composer"
+		},
+		{
+			"name": "Armydillo",
+			"icon": "armydillo",
+			"description": "Composer"
+		},
+		{
+			"name": "Churgney Gurgney/Sturm",
+			"icon": "sturm",
+			"description": "Composer & Voice Actor"
+		},
+		{
+			"name": "Adam McHummus",
+			"icon": "adam",
+			"description": "Composer"
+		},
+		{
+			"name": "Case117",
+			"icon": "case",
+			"description": "Composer"
+		},
+		{
+			"name": "Teein",
+			"icon": "teein",
+			"description": "Composer"
+		},
+		{
+			"name": "BagheadBeatz",
+			"icon": "baghead",
+			"description": "Composer"
+		},
+		{
+			"name": "Samiiwave",
+			"icon": "samii",
+			"description": "Composer"
+		},
+		{
+			"name": "bbpanzu",
+			"icon": "panzu",
+			"description": "Former Composer"
+		},
+		{
+			"name": "Vania",
+			"icon": "vania",
+			"description": "Former Composer"
+		},
+		{
+			"name": "Jamangar",
+			"icon": "jamangar",
+			"description": "Former Composer"
+		},
+		{
+			"name": "JesterFrog",
+			"icon": "jester",
+			"description": "Former Composer"
+		},
+		{
+			"name": "Misfire/FireMarioFan",
+			"icon": "misfire",
+			"description": "Former Composer"
+		},
+		{
+			"name": "Notakin",
+			"icon": "notakin",
+			"description": "Former Composer & Artist"
+		},
+		{
+			"name": "Voidicus",
+			"icon": "voidicus",
+			"description": "Former Composer"
+		},
+		{
+			"name": "Neutroa",
+			"icon": "neutroa",
+			"description": "Former Composer"
+		},
+		{
+			"name": "Benlab",
+			"icon": "benlab",
+			"description": "Former Composer"
+		},
+		{
+			"name": "SwappyBlue",
+			"icon": "swappyblue",
+			"description": "Former Composer"
+		},
+		{
+			"name": "Divide",
+			"icon": "divide",
+			"description": "Artist"
+		},
+		{
+			"name": "shutupjojo",
+			"icon": "shutupjojo",
+			"description": "Artist"
+		},
+		{
+			"name": "Zekuta",
+			"icon": "zekuta",
+			"description": "Artist"
+		},
+		{
+			"name": "Stankfield",
+			"icon": "stankfield",
+			"description": "Artist"
+		},
+		{
+			"name": "Erick Animations",
+			"icon": "erick",
+			"description": "Artist"
+		},
+		{
+			"name": "ScorchVx",
+			"icon": "scorch",
+			"description": "Artist"
+		},
+		{
+			"name": "BombNon",
+			"icon": "bombnon",
+			"description": "Artist"
+		},
+		{
+			"name": "Arthur/ADJ",
+			"icon": "arthur",
+			"description": "Artist"
+		},
+		{
+			"name": "Mocha",
+			"icon": "mocha",
+			"description": "Artist"
+		},
+		{
+			"name": "Cherribun",
+			"icon": "cherri",
+			"description": "Artist"
+		},
+		{
+			"name": "Doorknob",
+			"icon": "doorknob",
+			"description": "Artist"
+		},
+		{
+			"name": "blueberry",
+			"icon": "blueberry",
+			"description": "Artist"
+		},
+		{
+			"name": "PaigeyPaper/GrayAnimates",
+			"icon": "gray",
+			"description": "Artist"
+		},
+		{
+			"name": "Jack Gore",
+			"icon": "jack",
+			"description": "Artist & Voice Actor"
+		},
+		{
+			"name": "CryBit",
+			"icon": "crybit",
+			"description": "Artist & Programmer"
+		},
+		{
+			"name": "AnarackWarriors",
+			"icon": "anarack",
+			"description": "Artist"
+		},
+		{
+			"name": "Madzilla",
+			"icon": "madzilla",
+			"description": "Artist"
+		},
+		{
+			"name": "SrGenesis",
+			"icon": "genesis",
+			"description": "Former Artist"
+		},
+		{
+			"name": "GP",
+			"icon": "gp",
+			"description": "Former Artist"
+		},
+		{
+			"name": "RekkaDraws",
+			"icon": "rekka",
+			"description": "Former Artist"
+		},
+		{
+			"name": "IagoAnims",
+			"icon": "iago",
+			"description": "Former Artist"
+		},
+		{
+			"name": "KGBepis",
+			"icon": "kgbepis",
+			"description": "Voice Actor"
+		},
+		{
+			"name": "Illuztriouz",
+			"icon": "illuztriouz",
+			"description": "Voice Actor"
+		},
+		{
+			"name": "Microsoft SAM",
+			"icon": "microsoftsam",
+			"description": "Voice Actor"
+		},
+		{
+			"name": "StarlySammie",
+			"icon": "starly",
+			"description": "Voice Actor"
+		},
+		{
+			"name": "Tom Kenny",
+			"icon": "tomkenny",
+			"description": "Voice Actor"
+		},
+		{
+			"name": "Jason Griffith",
+			"icon": "jason",
+			"description": "Voice Actor"
+		},
+		{
+			"name": "Isaac Garcia/Kawaiisprite",
+			"icon": "kawaii",
+			"description": "Voice Actor"
+		},
+		{
+			"name": "Nebula",
+			"icon": "nebula",
+			"description": "Programmer"
+		},
+		{
+			"name": "DuskieWhy/Jackie",
+			"icon": "duskie",
+			"description": "Programmer"
+		},
+		{
+			"name": "Ash",
+			"icon": "ash",
+			"description": "Former Programmer"
+		},
+		{
+			"name": "kaydotnet",
+			"icon": "kaydotnet",
+			"description": "Special Thanks (Programming Help)"
+		},
+		{
+			"name": "Tae Yai",
+			"icon": "taeyai",
+			"description": "Special Thanks (Programming Help)"
+		},
+		{
+			"name": "PolybiusProxy",
+			"icon": "proxy",
+			"description": "Special Thanks (MP4 Support)"
+		},
+		{
+			"name": "KadeDeveloper",
+			"icon": "kade",
+			"description": "Special Thanks (Engine)"
+		},
+		{
+			"name": "Shadow Mario",
+			"icon": "shadowmario",
+			"description": "Special Thanks (Engine)"
+		},
+		{
+			"name": "Discord",
+			"icon": "discord",
+			"description": "Special Thanks"
+		}
+	],
+
+	"external": [
+		{
+			"name": "John9Doe",
+			"icon": "jhondoe",
+			"description": "Endless JP Backgrounds"
+		},
+		{
+			"name": "Sonic CD",
+			"icon": "soniccd",
+			"description": "Sonic CD Past & Future HQ Images, Pause SFX Sounds & Commercial TV"
+		},
+		{
+			"name": "Dupanims",
+			"icon": "dupanims",
+			"description": "Needlemouse Phase 2 Finished Sprites"
+		},
+		{
+			"name": "TheWaffl3Modder",
+			"icon": "waffle",
+			"description": "Round-A-Bout Scared BF"
+		},
+		{
+			"name": "Zeurel",
+			"icon": "zeurel",
+			"description": "Secret Histories Tails Animator"
+		},
+		{
+			"name": "ImTrovert",
+			"icon": "trovert",
+			"description": "Re-Run Phase 3 Fan Finished Sprites"
+		},
+		{
+			"name": "DanlyDaMusician",
+			"icon": "danly",
+			"description": "Sharpy Showdown Composer"
+		},
+		{
+			"name": "Zar0k4l",
+			"icon": "zarok",
+			"description": "Mania, Forestall Desire & Final Escape Help"
+		},
+		{
+			"name": "Endah",
+			"icon": "endah",
+			"description": "Found You Background"
+		},
+		{
+			"name": "Kangreko/Lilyko",
+			"icon": "kangreko",
+			"description": "Found You Background Animations"
+		},
+		{
+			"name": "Hop",
+			"icon": "hop",
+			"description": "NormalCD OLD VA & Hedge Creator"
+		},
+		{
+			"name": "Garry's Mod",
+			"icon": "garrysmod",
+			"description": "Sanic Background & Sanic 3D Game Over"
+		}
+		]
+}

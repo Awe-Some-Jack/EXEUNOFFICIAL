@@ -474,7 +474,10 @@ class ExtrasMenu extends MusicBeatState
                 trace("Achievements selected");
 
             case "CREDITS":
-                trace("Credits selected");
+                extraMenuSong = false;
+                stopMusicPlay = true;
+                if (FlxG.sound.music != null) FlxG.sound.music.fadeOut(0.3);
+                FlxG.switchState(new states.extras.credits.CreditsState());
         }
 
         canMove = true;

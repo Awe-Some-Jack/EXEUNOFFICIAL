@@ -5,7 +5,7 @@
 			"icon": "treno",
 			"description": "Lead Director, Artist and Animator",
 			"nation": "venezuela",
-			"quote": "Hola yo soy treno",
+			"quote": "Bueno... por fin aquí está... La V3 de VS Sonic.EXE.\nPor desgracia no fue como todo quisimos, pero creo que es un buen intento. Muchas gracias a todos los amigos y gente que me apoyaron, que me hicieron ser un mejor director para todos ellos y mejorar como artista y animador.\nVeremos si quizás nos animamos a hacer una v2, ¿No? \n\nTreno artes y animaciónes.",
 			"colors": [[218, 37, 169], [109, 18, 84]],
 			"twitter": "https://x.com/TRENO_ART",
 			"youtube": "https://www.youtube.com/@treno7178"
@@ -17,12 +17,14 @@
 			"quote": "Este mod es como la última cosa que haría en realidad de fnf aparte de otros projectos jeje pero bueno fue un viaje excelente y me siento muy agradecido de todo lo que aporte aqui en Unofficial tanto como Director, Compositor Y Etc.\n\nPor Cierto Apoyen el MisfitsKay Pack.\n\n-RatonAguja",
 			"nation": "chile",
 			"colors": [[26, 39, 102], [174, 27, 30]],
-			"youtube": "https://www.youtube.com/@MeDicenKay"
+			"youtube": "https://www.youtube.com/@MeDicenKay",
+			"extra": ["video", "kaydancing"]
 		},
 		{
 			"name": "KivFLP",
 			"icon": "kiv",
 			"description": "Director and Composer",
+			"quote": "Fueron 4 años bastante largos, movidos y llenos de puro arte. Pero también he descubierto lo tóxica y envidiosa que puede ser la gente en esta comunidad. He podido ver los sabotajes que son capaces de hacer para arruinar los proyectos de los demás.\n\nPero hoooly shit, puedo aseguraros que ha merecido la pena cada tarde, cada conversación y todo lo que he aportado a este mundillo de EXE.\n\nAgradecimientos a mis suscriptores, a todos mis colaboradores y a todos los que me han dado buenas experiencias en sus mods, además de a mi gente de la vida real.\n\nNo pudieron pararnos de nuevo.\n#EXEmovement",
 			"nation": "espana",
 			"youtube": "https://www.youtube.com/@Kiv_FLP"
 		},
@@ -30,17 +32,19 @@
 			"name": "Dudu",
 			"icon": "dudu",
 			"description": "Main Coder and Charter",
-			"quote": "treno es gay",
+			"quote": "Estoy muy agradecido de entrar al mod y ser una parte fundamental de este, fue una experiencia tanto maravillosa como nueva.\nMe aceptaron rápidamente en su grupo de amigos y en lo que puedo llamar familia. Todos los que conocí por el mod fueron muy amables conmigo, la cual siempre estaré agradecido.\n\nFue y es un gusto poder ser el lead coder del mod y poder contribuir en gran parte en el desarrollo de este proyecto en el cual le dediqué muchisimo tiempo y amor.\n\nSimplemente espero que la comunidad reciba el mod como un regalo que nunca llegó por parte del mod original, que reconozca el esfuerzo que todo el equipo hizo para que esto fuese realidad y darles contenido de calidad y disfrutable.\n\n- Dudu 2026\n\n\n\n\n\nposdata treno es gay :speaking_head: :fire: :fire:",
 			"colors": [[64, 64, 64], [192, 192, 192]],
 			"nation": "chile",
 			"twitter": "https://x.com/dudugd20",
-			"youtube": "https://www.youtube.com/@dudugd20"
+			"youtube": "https://www.youtube.com/@dudugd20",
+			"extra": ["video", "tungtung"]
 		},
 		{
-			"name": "Kazu",
+			"name": "KrazyKazu",
 			"icon": "kazu",
 			"description": "Coder",
-			"nation": "peru"
+			"nation": "peru",
+			"extra": ["video", "bow"]
 		},
 		{
 			"name": "RaimbowCore",
@@ -61,7 +65,7 @@
 			"name": "CherryLemur",
 			"icon": "cherry",
 			"description": "Coder",
-			"quote": "Si huyes ganas uno si avanzas ganas dos",
+			"quote": "\"Si huyes ganas uno, si avanzas ganas dos.\nCada error enseña algo, cada derrota deja experiencia.\nNo se trata de llegar rápido, sino de seguir adelante incluso cuando todo parece ir en contra.\nMientras exista la voluntad de continuar, siempre habrá una oportunidad de superarte y convertirte en alguien más fuerte.\" - Sonia\n\nSAQUENME DE LATINO AMERICAAAAAAAAA",
 			"colors": [[23, 29, 124], [16, 20, 84]],
 			"nation": "argentina",
 			"youtube": "https://youtube.com/@thesillysoniava"
@@ -85,17 +89,20 @@
 		{
 			"name": "HyperDream",
 			"icon": "hyperdream",
-			"description": "Artist"
+			"description": "Artist",
+			"nation": "mongolia"
 		},
 		{
 			"name": "Engineer",
 			"icon": "engineer",
-			"description": "Artist"
+			"description": "Artist",
+			"youtube": "https://www.youtube.com/@engineer-vc2zw"
 		},
 		{
 			"name": "Artisus",
 			"icon": "artisus",
-			"description": "Artist"
+			"description": "Artist",
+			"youtube": "https://www.youtube.com/@Artless-f2y"
 		},
 		{
 			"name": "BarcoBasurero",
@@ -111,7 +118,11 @@
 			"name": "Sebas1554",
 			"icon": "sebas",
 			"description": "Artist and Animator",
-			"nation": "peru"
+			"quote": "soy puto y nigga",
+			"colors": [[0, 39, 84], [131, 0, 28]],
+			"nation": "peru",
+			"twitter": "https://x.com/LG090297",
+			"extra": ["video", "sebas"]
 		},
 		{
 			"name": "Mariano",
@@ -122,20 +133,24 @@
 			"name": "Kostya Hernandez",
 			"icon": "kostya",
 			"description": "Artist and 3D Artist",
-			"nation": "mexico"
+			"nation": "mexico",
+			"twitter": "https://x.com/HernandezKostya"
 		},
 		{
 			"name": "Tomasero",
 			"icon": "tomasero",
-			"description": "Artist and Animator",
-			"nation": "argentina"
+			"description": "Artist, Animator and Charter",
+			"nation": "argentina",
+			"colors": [[43, 38, 38], [204, 43, 43]],
+			"youtube": "https://www.youtube.com/@eltomasero3367",
+			"twitter": "https://x.com/ztomasero"
 		},
 		{
 			"name": "Pekoso",
 			"icon": "pekoso",
 			"description": "Artist",
 			"colors": [[105, 0, 150], [74, 108, 204]],
-			"quote": "Podre ser flojo, pero no al nivel de fare, termina cycles",
+			"quote": "Podre ser flojo, pero no al nivel de fare, termina cycles\n\nGotta go es la mejor cancion porque la hice yo osi osi fare jodete",
 			"nation": "chile",
 			"twitter": "https://x.com/Pekoso_72"
 		},
@@ -152,10 +167,11 @@
 			"name": "Suonima",
 			"icon": "suo",
 			"description": "Artist",
-			"quote": "Sinceramente no creí llegar tan lejos, sé que este mod será polemico y para unas personas no les sea de su agrado, pero si en verdad tenemos exito, todo eso me gustaria dedicarselo a mi familia y al unofficial crew que me adoptaron como parte de su grupo y me consideraron su amigo, en verdad fue una aventura grandiosa.",
+			"quote": "\"Sinceramente, nunca creí llegar tan lejos.\nSé que este mod será polémico y que quizá no sea del agrado de todos, pero si  logramos tener éxito con el proyecto, me gustaría dedicarlo a mi familia y al Unofficial Crew, quienes me adoptaron como parte de su grupo y me consideraron un amigo.\nDe verdad, esta fue una aventura grandiosa.\"\n\n\"No me arrepiento de nada y me muero de ganas por volverlo a hacer una vez más, genuinamente fue algo increíble.\"\n\nSuo Was Here (2026)",
 			"colors": [[26, 19, 55], [0, 143, 167]],
 			"nation": "mexico",
-			"twitter": "https://www.x.com/SuonimaG_"
+			"twitter": "https://www.x.com/SuonimaG_",
+			"extra": ["video", "kayesgay"]
 		},
 		{
 			"name": "johnwindowsxp",
@@ -165,7 +181,8 @@
 			"twitter": "https://x.com/johnwindowsxp",
 			"youtube": "https://www.youtube.com/@johwindoesxp",
 			"nation": "espana",
-			"colors": [[252, 159, 50], [252, 159, 50]]
+			"colors": [[252, 159, 50], [252, 159, 50]],
+			"extra": ["video", "jhon"]
 		},
 		{
 			"name": "Nebros",
@@ -236,14 +253,19 @@
 		{
 			"name": "LyricalMaxi",
 			"icon": "maxi",
-			"description": "",
-			"nation": "chile"
+			"description": "Composer",
+			"nation": "chile",
+			"youtube": "https://www.youtube.com/@lyricalmaxi"
 		},
 		{
 			"name": "rak",
 			"icon": "rak",
 			"description": "Composer",
-			"nation": "argentina"
+			"quote": "gracias porco.jerme96/thanks dixon.mayas99",
+			"colors": [[120, 0, 31], [40, 0, 0]],
+			"nation": "argentina",
+			"youtube": "https://youtube.com/@rakeishon",
+			"extra": ["image", "rak.jpg"]
 		},
 		{
 			"name": "Rogtary",
@@ -264,7 +286,8 @@
 			"name": "Tomis Turbando",
 			"icon": "tomis",
 			"description": "Composer",
-			"nation": "brazil"
+			"nation": "brazil",
+			"youtube": "https://x.com/Tomis_Turbando"
 		},
 		{
 			"name": "Sanko",
@@ -274,16 +297,22 @@
 		{
 			"name": "Alex_Hamud",
 			"icon": "alex",
-			"description": "Composer and Voice Actor for Xenophanes"
+			"description": "Composer and Voice Actor for Xenophanes and Scorched",
+			"quote": "\"Gallop on, Rocinante! Justice shall prevail!\"\n\n- Don Quixote",
+			"youtube": "https://www.youtube.com/@Alex_Hamud",
+			"nation": "russia",
+			"colors": [[225, 157, 0], [130, 39, 39]],
+			"extra": ["video", "voleyball"]
 		},
 		{
 			"name": "PolloRostizado",
 			"icon": "pollo",
 			"description": "Main Charter",
-			"quote": "Si no quieres comer nada mejor come pene",
+			"quote": "Si no quieres comer nada come pene\n\nHola soy Pollo, nose que poner aqui w  yo chartie como la mitad de las canciones del mod o si bro\n\nRandomonus si estas leyendo esto te mando un saludo mi fan\n\nEstos son mis artistas mas escuchados en spotify: \nKendrick Lamar\nDrake\nKanye West\nTyler, The Creator\nMetro Boomin\nTravis Scott\nBNYX\nDon Toliver\nBaby Keem",
 			"colors": [[152, 147, 147], [0, 0, 0]],
 			"nation": "mexico",
-			"youtube": "https://youtube.com/@ronmcbonbon5660"
+			"youtube": "https://youtube.com/@ronmcbonbon5660",
+			"extra": ["image", "sam.jpg"]
 		},
 		{
 			"name": "Redblurr",
@@ -295,10 +324,11 @@
 			"name": "Sr. EspantaViejas",
 			"icon": "espantaviejas",
 			"description": "Charter",
-			"quote": "AHHHH SIII ESTE MOD ES UNA PUTA JOYA, por cierto amo a natsuki, es mi vieja, no se si se dieron cuenta, ah... cierto apoyen el mod, treno, kay y kawai son unos grandes directores. Posdata dudu es gay",
+			"quote": "AHHHH SIII ESTE MOD ES UNA PUTA JOYA, por cierto amo a natsuki, es mi vieja, no se si se dieron cuenta, ah... cierto apoyen el mod, treno, kay y kawai son unos grandes directores.\n\nYa enserio, ame estar en este equipo, es de los grupo mas divertidos que estuve en mi vida, jamas me la pase tan bien estando en un equipo, especialmente de sonic.exe, me agrado muchisimo interactuar con la gente y expresar lo raro q puedo a llegar a ser sin que me juzguen o algo asi.\nAsi que basicamente amo este equipo y si se sigue adelante yo estare tambien aunque solo sea un simple charter\n\nPosdata dudu es gay",
 			"nation": "paraguay",
 			"colors": [[209, 15, 15], [18, 17, 17]],
-			"twitter": "https://x.com/EspantaViejas97"
+			"twitter": "https://x.com/EspantaViejas97",
+			"extra": ["video", "natsuki-ddlc"]
 		},
 		{
 			"name": "sevulda",

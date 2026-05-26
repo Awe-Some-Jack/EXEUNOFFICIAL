@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"offsets": [-329, 285],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [-319, 285],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [-329, 286],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [-329, 286],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [-329, 285],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "idle"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/bf-hardcore",
+	"position": [390, -110],
+	"healthicon": "bf",
+	"flip_x": false,
+	"healthbar_colors": [8, 8, 253],
+	"camera_position": [-850, -300],
+	"sing_duration": 6.1,
+	"scale": 0.55,
+	"_editor_isPlayer": false
+}

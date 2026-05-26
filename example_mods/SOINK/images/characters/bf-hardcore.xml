@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bf-hardcore.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="idle0000" x="0" y="1434" width="775" height="898" frameX="-223" frameY="-380" frameWidth="1300" frameHeight="1430"/>
+	<SubTexture name="left0000" x="0" y="0" width="1304" height="1434" frameX="2" frameY="2" frameWidth="1300" frameHeight="1430"/>
+	<SubTexture name="right0000" x="1304" y="0" width="965" height="883" frameX="-237" frameY="-388" frameWidth="1300" frameHeight="1430"/>
+	<SubTexture name="up0000" x="2269" y="0" width="880" height="926" frameX="-187" frameY="-344" frameWidth="1300" frameHeight="1430"/>
+</TextureAtlas>

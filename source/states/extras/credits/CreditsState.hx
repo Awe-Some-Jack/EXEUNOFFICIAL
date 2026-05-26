@@ -5,13 +5,15 @@ import haxe.Json;
 import openfl.Assets;
 import states.extras.ExtrasMenu;
 
+import states.extras.credits.CreditPopup;
+
 typedef Credit =
 {
 	var name:String;
 	var icon:String;
 	var description:String;
 	@:optional var quote:String;
-	@:optional var color:Array<Array<Int>>;
+	@:optional var colors:Array<Array<Int>>;
 	@:optional var nation:String;
 	@:optional var youtube:String;
 	@:optional var twitter:String;
@@ -20,15 +22,20 @@ typedef Credit =
 
 class CreditsState extends MusicBeatState
 {
-	var credits:Map<String, Array<Credit>> = [];
+	public static var credits:Map<String, Array<Credit>> = [];
+	public static var userSelected:Array<Dynamic> = ['unofficial', 0];
 
 	var devs:FlxCamera;
-	var devList:FlxText;
 	var og:FlxCamera;
-	var ogList:FlxText;
 	var external:FlxCamera;
-	var externalList:FlxText;
+	
+	var devList:FlxTypedGroup<FlxText>;
+	var ogList:FlxTypedGroup<FlxText>;
+	var externalList:FlxTypedGroup<FlxText>;
+
 	var transition:FlxCamera;
+
+	var inPopup:Bool = false;
 
 	override function create()
 	{
@@ -54,11 +61,15 @@ class CreditsState extends MusicBeatState
 		var devTitle:FlxText = new FlxText(devs.x, spacing * 2, devs.width, "Unofficial Dev Team").setFormat(Paths.font("vcr.ttf"), 32, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
 		devTitle.borderSize = 2;
 		add(devTitle);
-		devList = new FlxText(5, 5, devs.width - 10, "Null").setFormat(Paths.font("vcr.ttf"), 24, 0xFFFFFFFF, LEFT, NONE);
-		devList.borderSize = 2;
-		devList.text = [for(dev in credits.get("unofficial")) dev.name].join("\n");
-		devList.camera = devs;
+		devList = new FlxTypedGroup<FlxText>();
 		add(devList);
+		for(i in 0...credits.get("unofficial").length)
+		{
+			var text = new FlxText(5, 5 + (i * 32),devs.width - 10, credits.get("unofficial")[i].name).setFormat(Paths.font("vcr.ttf"), 24, 0xFFFFFFFF, LEFT, NONE);
+			text.borderSize = 2;
+			text.camera = devs;
+			devList.add(text);
+		}
 
 		og = new FlxCamera();
 		og.bgColor = 0x22000000;
@@ -67,11 +78,15 @@ class CreditsState extends MusicBeatState
 		var ogTitle:FlxText = new FlxText(og.x, spacing * 2, og.width, "Original Team").setFormat(Paths.font("vcr.ttf"), 32, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
 		ogTitle.borderSize = 2;
 		add(ogTitle);
-		ogList = new FlxText(5, 5, og.width - 10, "Null").setFormat(Paths.font("vcr.ttf"), 24, 0xFFFFFFFF, LEFT, NONE);
-		ogList.borderSize = 2;
-		ogList.text = [for(dev in credits.get("original")) dev.name].join("\n");
-		ogList.camera = og;
+		ogList = new FlxTypedGroup<FlxText>();
 		add(ogList);
+		for(i in 0...credits.get("original").length)
+		{
+			var text = new FlxText(5, 5 + (i * 32), og.width - 10, credits.get("original")[i].name).setFormat(Paths.font("vcr.ttf"), 24, 0xFFFFFFFF, LEFT, NONE);
+			text.borderSize = 2;
+			text.camera = og;
+			ogList.add(text);
+		}
 
 		external = new FlxCamera();
 		external.bgColor = 0x22000000;
@@ -80,11 +95,15 @@ class CreditsState extends MusicBeatState
 		var externalTitle:FlxText = new FlxText(external.x, spacing * 2, external.width, "External Credits").setFormat(Paths.font("vcr.ttf"), 32, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
 		externalTitle.borderSize = 2;
 		add(externalTitle);
-		externalList = new FlxText(5, 5, external.width - 10, "Null").setFormat(Paths.font("vcr.ttf"), 24, 0xFFFFFFFF, LEFT, NONE);
-		externalList.borderSize = 2;
-		externalList.text = [for(dev in credits.get("external")) dev.name].join("\n");
-		externalList.camera = external;
+		externalList = new FlxTypedGroup<FlxText>();
 		add(externalList);
+		for(i in 0...credits.get("external").length)
+		{
+			var text = new FlxText(5, 5 + (i * 32), external.width - 10, credits.get("external")[i].name).setFormat(Paths.font("vcr.ttf"), 24, 0xFFFFFFFF, LEFT, NONE);
+			text.borderSize = 2;
+			text.camera = external;
+			externalList.add(text);
+		}
 
 		transition = new FlxCamera();
 		transition.bgColor.alpha = 0;
@@ -96,9 +115,12 @@ class CreditsState extends MusicBeatState
 		#end
 	}
 
+	var canSelect:Bool = false;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (inPopup) return;
 
 		if (Controls.instance.BACK)
 		{
@@ -107,33 +129,106 @@ class CreditsState extends MusicBeatState
 			FlxG.sound.music.fadeOut(0.3);
 		}
 
-		if (FlxG.mouse.overlaps(devList, devs))
-		{
-			devList.y += FlxG.mouse.wheel * 40;
+		defaultValues();
 
-			if (devList.height <= devs.height - 10)
-				devList.y = 5;
-			else
-				devList.y = FlxMath.bound(devList.y, devs.height - devList.height - 5, 5);
+		if (overlapCamera(devs))
+		{
+			if (FlxG.mouse.wheel != 0)
+			{
+				devs.scroll.y -= FlxG.mouse.wheel * 32;
+				devs.scroll.y = FlxMath.bound(devs.scroll.y, 0, Math.max(0, (devList.length * 32) - devs.height + 10));
+			}
+
+			for(i in 0...devList.length)
+			{
+				var text = devList.members[i];
+				if (FlxG.mouse.overlaps(text, devs))
+				{
+					if (text.color != 0xFFFFFF00)
+					{
+						canSelect = true;
+						text.color = 0xFFFFFF00;
+						userSelected = ['unofficial', i];
+					}
+				}
+			}
 		}
 
-		if (FlxG.mouse.overlaps(ogList, og))
+		if (overlapCamera(og))
 		{
-			ogList.y += FlxG.mouse.wheel * 40;
-			if (ogList.height <= og.height - 10)
-				ogList.y = 5;
-			else
-				ogList.y = FlxMath.bound(ogList.y, og.height - ogList.height - 5, 5);
+			if (FlxG.mouse.wheel != 0)
+			{
+				og.scroll.y -= FlxG.mouse.wheel * 32;
+				og.scroll.y = FlxMath.bound(og.scroll.y, 0, Math.max(0, (ogList.length * 32) - og.height + 10));
+			}
+
+			for(i in 0...ogList.length)
+			{
+				var text = ogList.members[i];
+				if (FlxG.mouse.overlaps(text, og))
+				{
+					if (text.color != 0xFFFFFF00)
+					{
+						canSelect = true;
+						text.color = 0xFFFFFF00;
+						userSelected = ['original', i];
+					}
+				}
+			}
 		}
 
-		if (FlxG.mouse.overlaps(externalList, external))
+		if (overlapCamera(external))
 		{
-			externalList.y += FlxG.mouse.wheel * 40;
+			if (FlxG.mouse.wheel != 0)
+			{
+				external.scroll.y -= FlxG.mouse.wheel * 32;
+				external.scroll.y = FlxMath.bound(external.scroll.y, 0, Math.max(0, (externalList.length * 32) - external.height + 10));
+			}
 
-			if (externalList.height <= external.height - 10)
-				externalList.y = 5;
-			else
-				externalList.y = FlxMath.bound(externalList.y, external.height - externalList.height - 5, 5);
+			for(i in 0...externalList.length)
+			{
+				var text = externalList.members[i];
+				if (FlxG.mouse.overlaps(text, external))
+				{
+					if (text.color != 0xFFFFFF00)
+					{
+						canSelect = true;
+						text.color = 0xFFFFFF00;
+						userSelected = ['external', i];
+					}
+				}
+			}
 		}
+
+		if ((Controls.instance.ACCEPT || FlxG.mouse.justPressed) && canSelect)
+		{
+			inPopup = true;
+			openSubState(new CreditPopup());
+		}
+	}
+
+	function defaultValues():Void
+	{
+		canSelect = false;
+		for(text in devList.members)
+			if (text != null)
+				text.color = 0xFFFFFFFF;
+
+		for(text in ogList.members)
+			if (text != null)
+				text.color = 0xFFFFFFFF;
+
+		for(text in externalList.members)
+			if (text != null)
+				text.color = 0xFFFFFFFF;
+	}
+
+	function overlapCamera(cam:FlxCamera):Bool
+		return FlxG.mouse.screenX >= cam.x && FlxG.mouse.screenX <= cam.x + cam.width && FlxG.mouse.screenY >= cam.y && FlxG.mouse.screenY <= cam.y + cam.height;
+
+	override function closeSubState()
+	{
+		super.closeSubState();
+		inPopup = false;
 	}
 }

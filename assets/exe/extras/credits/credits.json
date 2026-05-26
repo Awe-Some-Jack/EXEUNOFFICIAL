@@ -4,19 +4,27 @@
 			"name": "Treno",
 			"icon": "treno",
 			"description": "Lead Director, Artist and Animator",
-			"nation": "venezuela"
+			"nation": "venezuela",
+			"quote": "Hola yo soy treno",
+			"colors": [[218, 37, 169], [109, 18, 84]],
+			"twitter": "https://x.com/TRENO_ART",
+			"youtube": "https://www.youtube.com/@treno7178"
 		},
 		{
 			"name": "MeDicenKay",
 			"icon": "kay",
 			"description": "Director, Composer, Charter and Voice Actor for Devoid",
-			"nation": "chile"
+			"quote": "Este mod es como la última cosa que haría en realidad de fnf aparte de otros projectos jeje pero bueno fue un viaje excelente y me siento muy agradecido de todo lo que aporte aqui en Unofficial tanto como Director, Compositor Y Etc.\n\nPor Cierto Apoyen el MisfitsKay Pack.\n\n-RatonAguja",
+			"nation": "chile",
+			"colors": [[26, 39, 102], [174, 27, 30]],
+			"youtube": "https://www.youtube.com/@MeDicenKay"
 		},
 		{
 			"name": "KivFLP",
 			"icon": "kiv",
 			"description": "Director and Composer",
-			"nation": "espana"
+			"nation": "espana",
+			"youtube": "https://www.youtube.com/@Kiv_FLP"
 		},
 		{
 			"name": "Dudu",
@@ -38,7 +46,11 @@
 			"name": "RaimbowCore",
 			"icon": "raimbow",
 			"description": "Coder and Charter",
-			"nation": "espana"
+			"quote": "Labubu, labu-labu-la-bubu",
+			"colors": [[40, 247, 17], [27, 173, 10]],
+			"nation": "espana",
+			"twitter": "https://x.com/raimbowcore12",
+			"youtube": "https://www.youtube.com/@raimbowcore12"
 		},
 		{
 			"name": "AssmanBruh",
@@ -48,7 +60,11 @@
 		{
 			"name": "CherryLemur",
 			"icon": "cherry",
-			"description": "Coder"
+			"description": "Coder",
+			"quote": "Si huyes ganas uno si avanzas ganas dos",
+			"colors": [[23, 29, 124], [16, 20, 84]],
+			"nation": "argentina",
+			"youtube": "https://youtube.com/@thesillysoniava"
 		},
 		{
 			"name": "Kophy232",
@@ -118,12 +134,19 @@
 			"name": "Pekoso",
 			"icon": "pekoso",
 			"description": "Artist",
-			"nation": "chile"
+			"colors": [[105, 0, 150], [74, 108, 204]],
+			"quote": "Podre ser flojo, pero no al nivel de fare, termina cycles",
+			"nation": "chile",
+			"twitter": "https://x.com/Pekoso_72"
 		},
 		{
 			"name": "Fare.dz",
 			"icon": "fare",
-			"description": "Artist"
+			"quote": "Nadie me conoce pero\nTengo la polla grande",
+			"description": "Artist",
+			"colors": [[0, 0, 0], [19, 25, 99]],
+			"nation": "peru",
+			"twitter": "https://x.com/niggstress21"
 		},
 		{
 			"name": "Suonima",
@@ -135,9 +158,14 @@
 			"twitter": "https://www.x.com/SuonimaG_"
 		},
 		{
-			"name": "Kitty0706",
-			"icon": "kitty",
-			"description": "3D Artist"
+			"name": "johnwindowsxp",
+			"icon": "jhon",
+			"description": "3D Artist",
+			"quote": "I hate remaking tails doll SHOOT HIM. oh and raimbow it's smelly SHOWER",
+			"twitter": "https://x.com/johnwindowsxp",
+			"youtube": "https://www.youtube.com/@johwindoesxp",
+			"nation": "espana",
+			"colors": [[252, 159, 50], [252, 159, 50]]
 		},
 		{
 			"name": "Nebros",
@@ -151,6 +179,7 @@
 			"description": "Pixel Artist",
 			"quote": "Everything in the life depends on how much you want to fuck someone, and I really wanted with this mod. All my work in pixel art here was all made with a lot of love and dedication. To my younger self, I leave here my tribute to the entire EXE community, that on my lowest time, gave me a hand to get up. From your Brazilian friend RoxasWhite_",
 			"nation": "brazil",
+			"colors": [[155, 13, 13], [0, 0, 0]],
 			"twitter": "https://x.com/RoxasWhite_",
 			"youtube": "https://youtube.com/@whiteroxas_"
 		},
@@ -158,7 +187,9 @@
 			"name": "Sr. Kleynner",
 			"icon": "kleynner",
 			"description": "Pixel Artist",
-			"nation": "colombia"
+			"nation": "colombia",
+			"youtube": "https://youtube.com/@srkleynner",
+			"twitter": "https://x.com/SrKleynner"
 		},
 		{
 			"name": "T4co",
@@ -180,7 +211,10 @@
 			"name": "DaRealT0bi",
 			"icon": "tobi",
 			"description": "Composer",
-			"nation": "chile"
+			"quote": "Hola soy Tobi y dejo mi marca",
+			"colors": [[71, 67, 226], [49, 160, 134]],
+			"nation": "chile",
+			"youtube": "https://www.youtube.com/@MxdT0biMain"
 		},
 		{
 			"name": "LifeyTheRay",
@@ -192,6 +226,12 @@
 			"icon": "kraim",
 			"description": "Composer",
 			"nation": "chile"
+		},
+		{
+			"name": "DX Black Fire",
+			"icon": "dxbf",
+			"description": "Composer",
+			"youtube": "https://www.youtube.com/@DXBlackFirelol"
 		},
 		{
 			"name": "LyricalMaxi",
@@ -215,6 +255,8 @@
 			"name": "Ryan2511Pro",
 			"icon": "ryan",
 			"description": "Composer",
+			"quote": "PaRappa mi GOAT",
+			"colors": [[227, 62, 58], [121, 234, 94]],
 			"nation": "peru",
 			"youtube": "https://www.youtube.com/@ryan2511pro"
 		},
@@ -237,8 +279,11 @@
 		{
 			"name": "PolloRostizado",
 			"icon": "pollo",
-			"description": "Charter",
-			"nation": "mexico"
+			"description": "Main Charter",
+			"quote": "Si no quieres comer nada mejor come pene",
+			"colors": [[152, 147, 147], [0, 0, 0]],
+			"nation": "mexico",
+			"youtube": "https://youtube.com/@ronmcbonbon5660"
 		},
 		{
 			"name": "Redblurr",
@@ -248,7 +293,7 @@
 		},
 		{
 			"name": "Sr. EspantaViejas",
-			"icon": "espanta",
+			"icon": "espantaviejas",
 			"description": "Charter",
 			"quote": "AHHHH SIII ESTE MOD ES UNA PUTA JOYA, por cierto amo a natsuki, es mi vieja, no se si se dieron cuenta, ah... cierto apoyen el mod, treno, kay y kawai son unos grandes directores. Posdata dudu es gay",
 			"nation": "paraguay",
@@ -279,17 +324,17 @@
 			"description": "Director & Composer"
 		},
 		{
-			"name": "CommandoDev/ComGamingNZ",
+			"name": "ComGamingNZ",
 			"icon": "commando",
 			"description": "Director & Artist"
 		},
 		{
-			"name": "HarbingerBeats/averyavary",
+			"name": "averyavary",
 			"icon": "avery",
 			"description": "Former Director & Former Programmer"
 		},
 		{
-			"name": "Raven/revie03",
+			"name": "revie03",
 			"icon": "raven",
 			"description": "Former Director"
 		},
@@ -394,7 +439,7 @@
 			"description": "Composer"
 		},
 		{
-			"name": "Churgney Gurgney/Sturm",
+			"name": "Churgney Gurgney",
 			"icon": "sturm",
 			"description": "Composer & Voice Actor"
 		},
@@ -444,7 +489,7 @@
 			"description": "Former Composer"
 		},
 		{
-			"name": "Misfire/FireMarioFan",
+			"name": "Misfire",
 			"icon": "misfire",
 			"description": "Former Composer"
 		},
@@ -509,7 +554,7 @@
 			"description": "Artist"
 		},
 		{
-			"name": "Arthur/ADJ",
+			"name": "ADJ",
 			"icon": "arthur",
 			"description": "Artist"
 		},
@@ -534,7 +579,7 @@
 			"description": "Artist"
 		},
 		{
-			"name": "PaigeyPaper/GrayAnimates",
+			"name": "GrayAnimates",
 			"icon": "gray",
 			"description": "Artist"
 		},
@@ -604,22 +649,12 @@
 			"description": "Voice Actor"
 		},
 		{
-			"name": "Jason Griffith",
-			"icon": "jason",
-			"description": "Voice Actor"
-		},
-		{
-			"name": "Isaac Garcia/Kawaiisprite",
-			"icon": "kawaii",
-			"description": "Voice Actor"
-		},
-		{
 			"name": "Nebula",
 			"icon": "nebula",
 			"description": "Programmer"
 		},
 		{
-			"name": "DuskieWhy/Jackie",
+			"name": "DuskieWhy",
 			"icon": "duskie",
 			"description": "Programmer"
 		},
@@ -642,34 +677,24 @@
 			"name": "PolybiusProxy",
 			"icon": "proxy",
 			"description": "Special Thanks (MP4 Support)"
-		},
-		{
-			"name": "KadeDeveloper",
-			"icon": "kade",
-			"description": "Special Thanks (Engine)"
-		},
-		{
-			"name": "Shadow Mario",
-			"icon": "shadowmario",
-			"description": "Special Thanks (Engine)"
-		},
-		{
-			"name": "Discord",
-			"icon": "discord",
-			"description": "Special Thanks"
 		}
 	],
 
 	"external": [
 		{
+			"name": "Kawaiisprite",
+			"icon": "kawaii",
+			"description": "Voice Actor"
+		},
+		{
+			"name": "Jason Griffith",
+			"icon": "jason",
+			"description": "Voice Actor"
+		},
+		{
 			"name": "John9Doe",
 			"icon": "jhondoe",
 			"description": "Endless JP Backgrounds"
-		},
-		{
-			"name": "Sonic CD",
-			"icon": "soniccd",
-			"description": "Sonic CD Past & Future HQ Images, Pause SFX Sounds & Commercial TV"
 		},
 		{
 			"name": "Dupanims",
@@ -720,6 +745,26 @@
 			"name": "Garry's Mod",
 			"icon": "garrysmod",
 			"description": "Sanic Background & Sanic 3D Game Over"
+		},
+		{
+			"name": "Sonic CD",
+			"icon": "soniccd",
+			"description": "Sonic CD Past & Future HQ Images, Pause SFX Sounds & Commercial TV"
+		},
+		{
+			"name": "KadeDeveloper",
+			"icon": "kade",
+			"description": "Special Thanks (Engine)"
+		},
+		{
+			"name": "Shadow Mario",
+			"icon": "shadowmario",
+			"description": "Special Thanks (Engine)"
+		},
+		{
+			"name": "Discord",
+			"icon": "discord",
+			"description": "Special Thanks"
 		}
-		]
+	]
 }

@@ -17,7 +17,7 @@ typedef Credit =
 	@:optional var nation:String;
 	@:optional var youtube:String;
 	@:optional var twitter:String;
-	@:optional var extra:Array<String>;
+	@:optional var extra:Array<Dynamic>;
 }
 
 class CreditsState extends MusicBeatState

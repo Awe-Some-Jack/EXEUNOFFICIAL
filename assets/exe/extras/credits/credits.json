@@ -5,10 +5,11 @@
 			"icon": "treno",
 			"description": "Lead Director, Artist and Animator",
 			"nation": "venezuela",
-			"quote": "Bueno... por fin aquí está... La V3 de VS Sonic.EXE.\nPor desgracia no fue como todo quisimos, pero creo que es un buen intento. Muchas gracias a todos los amigos y gente que me apoyaron, que me hicieron ser un mejor director para todos ellos y mejorar como artista y animador.\nVeremos si quizás nos animamos a hacer una v2, ¿No? \n\nTreno artes y animaciónes.",
+			"quote": "Bueno... por fin aquí está... La V3 de VS Sonic.EXE.\nPor desgracia no fue como todo quisimos, pero creo que es un buen intento. Muchas gracias a todos los amigos y gente que me apoyaron, que me hicieron ser un mejor director para todos ellos y mejorar como artista y animador.\nVeremos si quizás nos animamos a hacer una v2, ¿No? \n\nTreno artes y animaciones.",
 			"colors": [[218, 37, 169], [109, 18, 84]],
 			"twitter": "https://x.com/TRENO_ART",
-			"youtube": "https://www.youtube.com/@treno7178"
+			"youtube": "https://www.youtube.com/@treno7178",
+			"extra": ["video", "treno"]
 		},
 		{
 			"name": "MeDicenKay",
@@ -37,14 +38,14 @@
 			"nation": "chile",
 			"twitter": "https://x.com/dudugd20",
 			"youtube": "https://www.youtube.com/@dudugd20",
-			"extra": ["video", "tungtung"]
+			"extra": ["video", "tungtung", true]
 		},
 		{
 			"name": "KrazyKazu",
 			"icon": "kazu",
 			"description": "Coder",
 			"nation": "peru",
-			"extra": ["video", "bow"]
+			"extra": ["video", "bow", true]
 		},
 		{
 			"name": "RaimbowCore",
@@ -152,7 +153,8 @@
 			"colors": [[105, 0, 150], [74, 108, 204]],
 			"quote": "Podre ser flojo, pero no al nivel de fare, termina cycles\n\nGotta go es la mejor cancion porque la hice yo osi osi fare jodete",
 			"nation": "chile",
-			"twitter": "https://x.com/Pekoso_72"
+			"twitter": "https://x.com/Pekoso_72",
+			"extra": ["video", "invencible"]
 		},
 		{
 			"name": "Fare.dz",
@@ -206,7 +208,8 @@
 			"description": "Pixel Artist",
 			"nation": "colombia",
 			"youtube": "https://youtube.com/@srkleynner",
-			"twitter": "https://x.com/SrKleynner"
+			"twitter": "https://x.com/SrKleynner",
+			"extra": ["video", "chadchadchad"]
 		},
 		{
 			"name": "T4co",
@@ -328,7 +331,7 @@
 			"nation": "paraguay",
 			"colors": [[209, 15, 15], [18, 17, 17]],
 			"twitter": "https://x.com/EspantaViejas97",
-			"extra": ["video", "natsuki-ddlc"]
+			"extra": ["video", "natsuki-ddlc", true]
 		},
 		{
 			"name": "sevulda",

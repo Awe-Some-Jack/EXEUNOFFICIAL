@@ -83,7 +83,7 @@ class CreditPopup extends MusicBeatSubstate
 		add(separatorLine);
 
 		var userDescription:FlxText = new FlxText(userIcon.x, separatorLine.y + 50, bg.width / 2 - 50, (selectedUser.description != null) ? selectedUser.description : "No Description");
-		userDescription.setFormat(Paths.font("vcr.ttf"), 46, 0xFFFFFFFF, CENTER, NONE);
+		userDescription.setFormat(Paths.font("vcr.ttf"), 38, 0xFFFFFFFF, CENTER, NONE);
 		userDescription.camera = popupCamera;
 		add(userDescription);
 
@@ -131,24 +131,37 @@ class CreditPopup extends MusicBeatSubstate
 		}
 	}
 
+	var pauseButton:FlxSprite;
 	function makeUserExtra():Void
 	{
 		if (selectedUser.extra != null)
 		{
 			if (selectedUser.extra[0] == 'video')
 			{
-				FlxTween.tween(FlxG.sound.music, {volume: 0.3}, 0.6);
+				if (selectedUser.extra[2] != true)
+				{
+					FlxTween.cancelTweensOf(FlxG.sound.music);
+					FlxTween.tween(FlxG.sound.music, {volume: 0.3}, 0.6);
+				}
+
+				pauseButton = new FlxSprite().loadGraphic('assets/exe/extras/credits/play.png');
+				pauseButton.alpha = 0;
+				pauseButton.camera = popupCamera;
+				
 				#if VIDEOS_ALLOWED
 				userVideo = new hxvlc.flixel.FlxVideoSprite(0, 0);
 				userVideo.bitmap.onFormatSetup.add(() -> {
 					setImageSize(userVideo, 200, 200);
 					userVideo.setPosition(bg.x + 40 + ((bg.width / 2 - 50) - userVideo.width) / 2, bg.y + bg.height - userVideo.height - 50);
+					pauseButton.setPosition(userVideo.x + (userVideo.width - pauseButton.width) / 2, userVideo.y + (userVideo.height - pauseButton.height) / 2);
 				});
 				userVideo.bitmap.onEndReached.add(() -> playMenuVideo());
 				userVideo.camera = popupCamera;
 				add(userVideo);
 				playMenuVideo();
 				#end
+
+				add(pauseButton);
 			}
 			else if (selectedUser.extra[0] == 'image')
 			{
@@ -172,6 +185,7 @@ class CreditPopup extends MusicBeatSubstate
 	}
 	#end
 	
+	var videoPaused:Bool = false;
 	var wasPressing:String = '';
 	override function update(elapsed:Float)
 	{
@@ -189,7 +203,7 @@ class CreditPopup extends MusicBeatSubstate
 		if (selectedUser.twitter != null)
 		{
 			if (twitterSocial.color != 0xFF686868 && wasPressing == '') twitterSocial.color = 0xFF686868;
-			if (FlxG.mouse.overlaps(twitterSocial) && twitterSocial.color != 0xFF969696 && wasPressing == '') twitterSocial.color = 0xFF969696;
+			if (FlxG.mouse.overlaps(twitterSocial) && twitterSocial.color != 0xFFADADAD && wasPressing == '') twitterSocial.color = 0xFFADADAD;
 			if (FlxG.mouse.overlaps(twitterSocial) && FlxG.mouse.justPressed)
 			{
 				twitterSocial.color = 0xFFFFFFFF;
@@ -217,10 +231,46 @@ class CreditPopup extends MusicBeatSubstate
 			}
 		}
 
-		if (controls.BACK)
+		if (selectedUser.extra != null && selectedUser.extra[0] == 'video' && userVideo != null)
 		{
-			close();
+			#if VIDEOS_ALLOWED
+			if (FlxG.mouse.overlaps(userVideo) && FlxG.mouse.justPressed)
+			{
+				if(!videoPaused)
+				{
+					videoPaused = true;
+					userVideo.pause();
+					FlxTween.cancelTweensOf(pauseButton); FlxTween.cancelTweensOf(pauseButton.scale);
+					pauseButton.loadGraphic('assets/exe/extras/credits/pause.png');
+					pauseButton.scale.set(1, 1);
+					pauseButton.alpha = 1;
+
+					if (selectedUser.extra[2] != true)
+					{
+						FlxTween.cancelTweensOf(FlxG.sound.music);
+						FlxTween.tween(FlxG.sound.music, {volume: 1}, 0.6);
+					}
+				}
+				else if(videoPaused)
+				{
+					videoPaused = false;
+					userVideo.resume();
+					pauseButton.loadGraphic('assets/exe/extras/credits/play.png');
+					FlxTween.tween(pauseButton.scale, {x: 0, y: 0}, 0.3);
+					FlxTween.tween(pauseButton, {alpha: 0}, 0.3);
+
+					if (selectedUser.extra[2] != true)
+					{
+						FlxTween.cancelTweensOf(FlxG.sound.music);
+						FlxTween.tween(FlxG.sound.music, {volume: 0.3}, 0.6);
+					}
+				}
+			}
+			#end
 		}
+
+		if (controls.BACK) close();
+
 		super.update(elapsed);
 	}
 
@@ -251,4 +301,18 @@ class CreditPopup extends MusicBeatSubstate
 		obj.setGraphicSize(Math.floor(obj.width * scaleFactor * offset), Math.floor(obj.height * scaleFactor * offset));
 		obj.updateHitbox();
 	}
+
+	#if VIDEOS_ALLOWED
+	override public function onFocus():Void
+	{
+		super.onFocus();
+		if(videoPaused && userVideo != null) userVideo.resume();
+	}
+
+	override public function onFocusLost():Void
+	{
+		super.onFocusLost();
+		if(!videoPaused && userVideo != null) userVideo.pause();
+	}
+	#end
 }

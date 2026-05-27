@@ -43,7 +43,7 @@ function onEvent(n,v1)
 		if v1 == 'hudAppear' then
 			doTweenAlpha('camHUD', 'camHUD', 1, crochet / (1000 / 6))
 		end
-		if v1 == 'fadeinlol' then doTweenAlpha('asdads', 'blackScreen', 0, crochet / 250) end
+		if v1 == 'fadeIn' then doTweenAlpha('asdads', 'blackScreen', 0, crochet / 250) end
 		if v1 == 'removevideoxd' then
 			if getProperty('videoCutscene') == nil then return end
     		callMethod('remove', {instanceArg('videoCutscene')})

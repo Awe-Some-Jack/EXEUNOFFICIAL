@@ -13,7 +13,7 @@ void main() {
     float outColor = 0.;
     if(gray > upperBound){
         outColor = 1.;
-    } else if(!(gray < lowerBound) && (upperBound - lowerBound) != 0) {
+    } else if(!(gray < lowerBound) && (upperBound - lowerBound) != 0.) {
         outColor = (gray - lowerBound) / (upperBound - lowerBound);
     }
 

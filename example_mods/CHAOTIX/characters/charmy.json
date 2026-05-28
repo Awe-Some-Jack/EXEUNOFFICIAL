@@ -7,6 +7,14 @@
 			"anim": "idle",
 			"loop": false,
 			"name": "Charmy"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 9,
+			"anim": "scared",
+			"loop": true,
+			"name": "idle-alt"
 		}
 	],
 	"vocals_file": "",

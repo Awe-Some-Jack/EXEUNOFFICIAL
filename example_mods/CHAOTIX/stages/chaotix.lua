@@ -1,24 +1,32 @@
 local starlineBG = {
 	['BGAssets'] = {
 		{name = 'cieeelo', path = 'bg/horizonsky', x = -1900, y = -1300, scaleX = 6, scaleY = 6, scrollX = 0.8, scrollY = 1, antialiasing = false, alpha = 1, front = false},
-		{name = 'bg1',     path = 'bg/piso',       x = -1600, y = -1000, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 1, front = false},
-		{name = 'bg2',     path = 'bg/piso2',      x = -1600, y = -1000, scaleX = 6, scaleY = 6, scrollX = 1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
+		{name = 'bg1',     path = 'bg/piso',       x = -1600, y = -1000, scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 1, front = false},
+		{name = 'bg2',     path = 'bg/piso2',      x = -1600, y = -1000, scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
 	},
 	['characters'] = {
 		{name = 'espio',    character = 'espio',      x =   930, y = 130,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
-		{name = 'amy',      character = 'amy',        x =   730, y =  85,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'amy',      character =    'amy',     x =   730, y =  85,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 		{name = 'mighty',   character = 'mighty',     x =  -100, y =  65,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
-		{name = 'knux',     character = 'knux',       x =  -640, y =  85,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'knux',     character =   'knux',     x =  -640, y =  85,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 		{name = 'vector',   character = 'vector',     x =  -880, y =  65,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
-		{name = 'charmy',   character = 'charmy',     x =   480, y =  -95, canFloat = true,  beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'charmy',   character = 'charmy',     x =   480, y = -95,  canFloat = true,  beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 	},
+	['cutsceneChars'] = {
+		{name = 'wech',  path = 'bg/characters/anim2', x = 0, y = 0, scaleX = 1, scaleY = 1, antialiasing = false, alpha = 0, front = false},
+		{name = 'bf-gf', path =  'bg/characters/anim', x = 0, y = 0, scaleX = 1, scaleY = 1, antialiasing = false, alpha = 0, front = false},
+	}
 }
 
+
+-- [[VARIABLES]]
 local glitchedActive = false
 local transPlaying = false
 local starCount = 0
 local glitchCount = 0
 local tailsBaseY = -1600
+local canFly = true
+local changeIdles = false
 
 
 local function createSprite(sexo)
@@ -36,9 +44,20 @@ local function createCharacter(char)
 	addInstance(char.name, char.front)
 end
 
+local function createCutsceneCharacters(yea)
+	makeAnimatedLuaSprite(yea.name, yea.path, yea.x, yea.y)
+	addAnimationByPrefix(yea.name, 'idle', 'idle', 12, false)
+	scaleObject(yea.name, yea.scaleX, yea.scaleY)
+	setProperty(yea.name..'.antialiasing', yea.antialiasing)
+	setProperty(yea.name..'.alpha', yea.alpha)
+	setObjectCamera(yea.name, 'camOther')
+	addLuaSprite(yea.name, yea.front)
+end
+
 function onCreatePost()
-	for _, bgs in ipairs(starlineBG['BGAssets'])     do	createSprite(bgs)      end
-	for _, chars in ipairs(starlineBG['characters']) do	createCharacter(chars) end
+	for _, bgs   in ipairs(starlineBG['BGAssets'])      do	              createSprite(bgs) end
+	for _, chars in ipairs(starlineBG['characters'])    do	         createCharacter(chars) end
+	for _, chars in ipairs(starlineBG['cutsceneChars']) do	createCutsceneCharacters(chars) end
 
 	createInstance('tails', 'flixel.addons.display.FlxBackdrop', {nil, 0x01})
 	loadGraphic('tails', 'bg/tails')
@@ -108,21 +127,45 @@ function onBeatHit()
 		playAnim('dad', 'trans', true)
 	end
 
-	if curBeat == 231 then
-		doTweenAlpha('fadeToBlack', 'blackOverlay', 1, 2, 'sineIn')
+	if curBeat == 228 then
+		for _, chars in ipairs({'boyfriend', 'dad', 'gf'}) do
+			setProperty(chars..'.alpha', 0)
+		end
+		for _, bgChars in ipairs({starlineBG['characters']}) do
+			setProperty(bgChars.name..'.alpha', 0)
+		end
+			setProperty('wech.alpha', 1)
+			playAnim('wech', 'idle', true)
+	end
+
+	if curBeat == 231 then doTweenAlpha('fadeToBlack', 'blackOverlay', 1, 2, 'sineIn') end
+
+	if curBeat == 234 then
+		setProperty('wech.alpha', 0)
+		setProperty('bf-gf.alpha', 1)
+		playAnim('bf-gf', 'idle', true)
+	end
+
+	if curBeat == 240 then
+		setProperty('bf-gf.alpha', 0)
 	end
 
 	if curBeat == 271 then
 		glitchedActive = true
 		transPlaying = false
+		canFly = false
+		changeIdles = true
 		triggerEvent('Change Character', '1', 'beast_chaotix')
-		setProperty('dad.x', -376.9)
-		setProperty('dad.y', 120.7)
+		callMethod('dad.setPosition', {-376.9, 120.7})
 		doTweenAlpha('fadeFromBlack', 'blackOverlay', 0, 1.5, 'sineOut')
+
+		for _, chars in ipairs(starlineBG['characters']) do setProperty(chars.name..'.idleSuffix', '-alt') playAnim(chars, 'idle-alt', true) end
+		setProperty('bg1.alpha', 0)
+		setProperty('bg2.alpha', 1)
 	end
 
 	for _, beatGuys in ipairs(starlineBG['characters']) do
-		if curBeat %beatGuys.beatIntervals == 0 then
+		if curBeat %beatGuys.beatIntervals == 0 and not changeIdles then
 			playAnim(beatGuys.name, 'idle', true)
 		end
 	end
@@ -131,11 +174,10 @@ function onBeatHit()
 	if not glitchedActive then
 		spawnStar()
 	else
-		for i = 1, 10 do
-			spawnGlitch()
-		end
+		spawnGlitch()
 	end
 end
+
 local flyHold = 0
 function onUpdatePost(e)
 	flyHold = flyHold + e
@@ -146,7 +188,7 @@ function onUpdatePost(e)
 		setProperty('dad.specialAnim', true)
 	end
 	for _, beatGuys in ipairs(starlineBG['characters']) do
-		if beatGuys.canFloat then
+		if beatGuys.canFloat and canFly then
 			callMethod(beatGuys.name..'.setPosition', {
 				getProperty(beatGuys.name..'.x') + math.cos(flyHold + 0.1) * 0.1,
 				getProperty(beatGuys.name..'.y') + math.sin(flyHold + 0.05) * 0.15

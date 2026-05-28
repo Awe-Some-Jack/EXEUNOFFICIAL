@@ -69,7 +69,8 @@
 			"quote": "\"Si huyes ganas uno, si avanzas ganas dos.\nCada error enseña algo, cada derrota deja experiencia.\nNo se trata de llegar rápido, sino de seguir adelante incluso cuando todo parece ir en contra.\nMientras exista la voluntad de continuar, siempre habrá una oportunidad de superarte y convertirte en alguien más fuerte.\" - Sonia\n\nSAQUENME DE LATINO AMERICAAAAAAAAA",
 			"colors": [[23, 29, 124], [16, 20, 84]],
 			"nation": "argentina",
-			"youtube": "https://youtube.com/@thesillysoniava"
+			"youtube": "https://youtube.com/@thesillysoniava",
+			"extra": ["video", "void", true]
 		},
 		{
 			"name": "Kophy232",
@@ -98,7 +99,8 @@
 			"icon": "engineer",
 			"description": "Artist",
 			"youtube": "https://www.youtube.com/@engineer-vc2zw",
-			"nation": "canada"
+			"nation": "usa",
+			"colors": [[211, 59, 21], [216, 148, 21]]
 		},
 		{
 			"name": "Artisus",
@@ -109,6 +111,16 @@
 			"youtube": "https://www.youtube.com/@Artless-f2y",
 			"nation": "usa",
 			"extra": ["video", "artisus"]
+		},
+		{
+			"name": "CM_drawe",
+			"icon": "cm",
+			"description": "Artist",
+			"quote": "Algo que me gustaría agradecer es que, durante el proceso de este proyecto, pude mejorar en muchos ámbitos de mi arte y animación.\n\nFue un desarrollo muy unido, con un ambiente fantástico que se quedará en mi corazón, ya que son experiencias que es muy poco probable que vuelvan a repetirse.\n\nDisfruten esto como un trabajo honesto y como lo que siempre fue todo esto: un homenaje para la comunidad.",
+			"colors": [[236, 0, 31], [0, 0, 0]],
+			"twitter": "https://x.com/CM_drawe",
+			"nation": "espana",
+			"extra": ["image", "laburo.png"]
 		},
 		{
 			"name": "BarcoBasurero",
@@ -256,7 +268,8 @@
 			"name": "DX Black Fire",
 			"icon": "dxbf",
 			"description": "Composer",
-			"youtube": "https://www.youtube.com/@DXBlackFirelol"
+			"youtube": "https://www.youtube.com/@DXBlackFirelol",
+			"nation": "brazil"
 		},
 		{
 			"name": "LyricalMaxi",

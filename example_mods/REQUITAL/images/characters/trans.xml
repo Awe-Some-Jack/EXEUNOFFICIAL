@@ -1,469 +1,355 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
--->
-<TextureAtlas imagePath="trans.png" width="6894" height="7267">
-	<SubTexture name="trans instancia 10000.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10001.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10002.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10003.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10004.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10005.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10006.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10007.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10008.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10009.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10010.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10011.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10012.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10013.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10014.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10015.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10016.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10017.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10018.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10019.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10020.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10021.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10022.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10023.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10024.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10025.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10026.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10027.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10028.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10029.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10030.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10031.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10032.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10033.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10034.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10035.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10036.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10037.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10038.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10039.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10040.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10041.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10042.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10043.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10044.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10045.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10046.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10047.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10048.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10049.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10050.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10051.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10052.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10053.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10054.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10055.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10056.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10057.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10058.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10059.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10060.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10061.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10062.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10063.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10064.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10065.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10066.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10067.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10068.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10069.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10070.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10071.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10072.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10073.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10074.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10075.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10076.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10077.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10078.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10079.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10080.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10081.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10082.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10083.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10084.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10085.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10086.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10087.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10088.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10089.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10090.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10091.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10092.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10093.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10094.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10095.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10096.png" x="1519" y="6393" width="502" height="444" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10097.png" x="5645" y="6355" width="501" height="445" rotated="true" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10098.png" x="2531" y="6442" width="501" height="401" rotated="true" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10099.png" x="5918" y="3376" width="419" height="504" frameX="-66" frameY="-269" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10100.png" x="5939" y="1017" width="504" height="419" rotated="true" frameX="-66" frameY="-269" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10101.png" x="5938" y="1440" width="503" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10102.png" x="5938" y="1863" width="503" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10103.png" x="5938" y="2286" width="503" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10104.png" x="5938" y="2709" width="503" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10105.png" x="4127" y="6413" width="502" height="419" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10106.png" x="1013" y="6419" width="502" height="419" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10107.png" x="2025" y="6402" width="502" height="419" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10108.png" x="5139" y="6392" width="502" height="419" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10109.png" x="6474" y="1" width="419" height="501" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10110.png" x="6474" y="506" width="419" height="501" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10111.png" x="2025" y="6402" width="502" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10112.png" x="5139" y="6392" width="502" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10113.png" x="6474" y="1" width="419" height="501" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10114.png" x="6474" y="506" width="419" height="501" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10115.png" x="2025" y="6402" width="502" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10116.png" x="5139" y="6392" width="502" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10117.png" x="6465" y="1011" width="419" height="501" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10118.png" x="6463" y="1516" width="419" height="501" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10119.png" x="6463" y="2021" width="419" height="500" frameX="-66" frameY="-273" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10120.png" x="6463" y="2525" width="419" height="500" frameX="-66" frameY="-273" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10121.png" x="6463" y="3029" width="419" height="499" frameX="-66" frameY="-274" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10122.png" x="6463" y="3532" width="419" height="499" frameX="-66" frameY="-274" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10123.png" x="6463" y="2021" width="419" height="500" frameX="-66" frameY="-273" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10124.png" x="6463" y="2525" width="419" height="500" frameX="-66" frameY="-273" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10125.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10126.png" x="6463" y="5543" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10127.png" x="6463" y="4035" width="419" height="499" frameX="-66" frameY="-274" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10128.png" x="6463" y="4538" width="419" height="499" frameX="-66" frameY="-274" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10129.png" x="1005" y="6847" width="497" height="419" rotated="true" frameX="-66" frameY="-276" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10130.png" x="1506" y="6847" width="497" height="419" rotated="true" frameX="-66" frameY="-276" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10131.png" x="6463" y="3029" width="419" height="499" frameX="-66" frameY="-274" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10132.png" x="6463" y="3532" width="419" height="499" frameX="-66" frameY="-274" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10133.png" x="6454" y="6045" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10134.png" x="1" y="6847" width="498" height="419" rotated="true" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10135.png" x="6463" y="4035" width="419" height="499" frameX="-66" frameY="-273" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10136.png" x="6463" y="4538" width="419" height="499" frameX="-66" frameY="-273" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10137.png" x="6463" y="4035" width="419" height="499" frameX="-66" frameY="-273" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10138.png" x="6463" y="3029" width="419" height="499" frameX="-66" frameY="-274" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10139.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10140.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10141.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10142.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10143.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10144.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10145.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10146.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10147.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10148.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10149.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10150.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10151.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10152.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10153.png" x="6463" y="5041" width="419" height="498" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10154.png" x="503" y="6847" width="498" height="416" rotated="true" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10155.png" x="503" y="6847" width="498" height="416" rotated="true" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10156.png" x="3621" y="6514" width="498" height="411" rotated="true" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10157.png" x="4633" y="6442" width="498" height="411" rotated="true" frameX="-66" frameY="-275" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10158.png" x="5537" y="5482" width="407" height="515" frameX="-66" frameY="-258" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10159.png" x="5537" y="5482" width="407" height="515" frameX="-66" frameY="-258" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10160.png" x="5526" y="3376" width="388" height="523" frameX="-66" frameY="-250" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10161.png" x="5526" y="3376" width="388" height="523" frameX="-66" frameY="-250" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10162.png" x="5515" y="4430" width="388" height="522" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10163.png" x="5515" y="4430" width="388" height="522" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10164.png" x="5546" y="1792" width="388" height="524" frameX="-66" frameY="-249" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10165.png" x="5546" y="1792" width="388" height="524" frameX="-66" frameY="-249" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10166.png" x="1053" y="5616" width="521" height="388" rotated="true" frameX="-66" frameY="-252" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10167.png" x="1053" y="5616" width="521" height="388" rotated="true" frameX="-66" frameY="-252" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10168.png" x="5512" y="4956" width="388" height="522" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10169.png" x="5526" y="3376" width="388" height="523" frameX="-66" frameY="-250" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10170.png" x="5521" y="3903" width="388" height="523" frameX="-66" frameY="-250" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10171.png" x="5515" y="4430" width="388" height="522" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10172.png" x="1" y="5622" width="522" height="388" rotated="true" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10173.png" x="5546" y="1792" width="388" height="524" frameX="-66" frameY="-249" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10174.png" x="5546" y="2320" width="388" height="524" frameX="-66" frameY="-249" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10175.png" x="1053" y="5616" width="521" height="388" rotated="true" frameX="-66" frameY="-252" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10176.png" x="1578" y="5616" width="521" height="388" rotated="true" frameX="-66" frameY="-252" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10177.png" x="5512" y="4956" width="388" height="522" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10178.png" x="5521" y="3903" width="388" height="523" frameX="-66" frameY="-250" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10179.png" x="5521" y="3903" width="388" height="523" frameX="-66" frameY="-250" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10180.png" x="1" y="5622" width="522" height="388" rotated="true" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10181.png" x="1" y="5622" width="522" height="388" rotated="true" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10182.png" x="5546" y="2320" width="388" height="524" frameX="-66" frameY="-249" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10183.png" x="5546" y="2320" width="388" height="524" frameX="-66" frameY="-249" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10184.png" x="1578" y="5616" width="521" height="388" rotated="true" frameX="-66" frameY="-252" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10185.png" x="1578" y="5616" width="521" height="388" rotated="true" frameX="-66" frameY="-252" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10186.png" x="527" y="5622" width="522" height="388" rotated="true" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10187.png" x="5521" y="3903" width="388" height="523" frameX="-66" frameY="-250" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10188.png" x="5526" y="3376" width="388" height="523" frameX="-66" frameY="-250" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10189.png" x="1" y="5622" width="522" height="388" rotated="true" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10190.png" x="5515" y="4430" width="388" height="522" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10191.png" x="5546" y="2320" width="388" height="524" frameX="-66" frameY="-249" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10192.png" x="5546" y="1792" width="388" height="524" frameX="-66" frameY="-249" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10193.png" x="1578" y="5616" width="521" height="388" rotated="true" frameX="-66" frameY="-252" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10194.png" x="1053" y="5616" width="521" height="388" rotated="true" frameX="-66" frameY="-252" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10195.png" x="527" y="5622" width="522" height="388" rotated="true" frameX="-66" frameY="-251" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10196.png" x="5526" y="3376" width="388" height="523" frameX="-66" frameY="-250" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10197.png" x="5526" y="3376" width="388" height="523" frameX="-66" frameY="-250" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10198.png" x="5547" y="531" width="388" height="525" frameX="-66" frameY="-248" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10199.png" x="5547" y="531" width="388" height="525" frameX="-66" frameY="-248" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10200.png" x="5546" y="2848" width="388" height="524" frameX="-66" frameY="-249" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10201.png" x="5546" y="2848" width="388" height="524" frameX="-66" frameY="-249" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10202.png" x="5547" y="531" width="388" height="525" frameX="-66" frameY="-248" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10203.png" x="5547" y="531" width="388" height="525" frameX="-66" frameY="-248" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10204.png" x="5102" y="4746" width="406" height="527" frameX="-66" frameY="-246" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10205.png" x="5102" y="4746" width="406" height="527" frameX="-66" frameY="-246" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10206.png" x="5102" y="4213" width="409" height="529" frameX="-66" frameY="-244" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10207.png" x="5102" y="4213" width="409" height="529" frameX="-66" frameY="-244" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10208.png" x="5102" y="3678" width="415" height="531" frameX="-66" frameY="-242" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10209.png" x="5102" y="3678" width="415" height="531" frameX="-66" frameY="-242" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10210.png" x="5129" y="2450" width="413" height="532" frameX="-66" frameY="-241" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10211.png" x="5129" y="2450" width="413" height="532" frameX="-66" frameY="-241" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10212.png" x="5102" y="3141" width="420" height="533" frameX="-66" frameY="-240" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10213.png" x="5102" y="3141" width="420" height="533" frameX="-66" frameY="-240" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10214.png" x="5102" y="5482" width="431" height="521" frameX="-66" frameY="-252" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10215.png" x="5102" y="5482" width="431" height="521" frameX="-66" frameY="-252" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10216.png" x="5948" y="531" width="513" height="482" rotated="true" frameX="-66" frameY="-260" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10217.png" x="5948" y="531" width="513" height="482" rotated="true" frameX="-66" frameY="-260" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10218.png" x="5948" y="5473" width="511" height="493" rotated="true" frameX="-66" frameY="-262" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10219.png" x="5948" y="5473" width="511" height="493" rotated="true" frameX="-66" frameY="-262" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10220.png" x="4333" y="5510" width="513" height="494" rotated="true" frameX="-66" frameY="-260" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10221.png" x="4333" y="5510" width="513" height="494" rotated="true" frameX="-66" frameY="-260" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10222.png" x="5913" y="3903" width="494" height="511" frameX="-66" frameY="-262" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10223.png" x="5913" y="3903" width="494" height="511" frameX="-66" frameY="-262" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10224.png" x="5904" y="4956" width="495" height="513" frameX="-66" frameY="-260" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10225.png" x="5904" y="4956" width="495" height="513" frameX="-66" frameY="-260" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10226.png" x="5907" y="4430" width="505" height="512" frameX="-66" frameY="-261" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10227.png" x="5907" y="4430" width="505" height="512" frameX="-66" frameY="-261" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10228.png" x="2103" y="5432" width="513" height="517" rotated="true" frameX="-66" frameY="-260" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10229.png" x="2103" y="5432" width="513" height="517" rotated="true" frameX="-66" frameY="-260" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10230.png" x="5967" y="1" width="503" height="514" frameX="-66" frameY="-259" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10231.png" x="5967" y="1" width="503" height="514" frameX="-66" frameY="-259" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10232.png" x="2620" y="5432" width="515" height="517" rotated="true" frameX="-66" frameY="-258" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10233.png" x="2620" y="5432" width="515" height="517" rotated="true" frameX="-66" frameY="-258" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10234.png" x="5139" y="1263" width="509" height="525" rotated="true" frameX="-66" frameY="-264" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10235.png" x="5139" y="1263" width="509" height="525" rotated="true" frameX="-66" frameY="-264" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10236.png" x="5547" y="1" width="416" height="526" frameX="-66" frameY="-246" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10237.png" x="5547" y="1" width="416" height="526" frameX="-66" frameY="-246" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10238.png" x="5129" y="1889" width="412" height="557" frameX="-66" frameY="-218" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10239.png" x="5129" y="1889" width="412" height="557" frameX="-66" frameY="-218" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10240.png" x="4255" y="4485" width="611" height="406" rotated="true" frameX="-66" frameY="-164" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10241.png" x="4333" y="4895" width="406" height="611" frameX="-66" frameY="-164" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10242.png" x="3869" y="4359" width="382" height="630" frameX="-66" frameY="-145" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10243.png" x="3227" y="4579" width="629" height="382" rotated="true" frameX="-66" frameY="-146" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10244.png" x="4364" y="2574" width="366" height="633" frameX="-66" frameY="-142" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10245.png" x="4354" y="3211" width="366" height="633" frameX="-66" frameY="-142" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10246.png" x="4786" y="1263" width="349" height="622" frameX="-66" frameY="-153" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10247.png" x="1904" y="4674" width="623" height="349" rotated="true" frameX="-66" frameY="-152" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10248.png" x="4743" y="4895" width="355" height="611" frameX="-66" frameY="-164" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10249.png" x="5188" y="1" width="355" height="610" frameX="-66" frameY="-165" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10250.png" x="4759" y="1889" width="364" height="622" frameX="-66" frameY="-153" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10251.png" x="2583" y="4669" width="623" height="364" rotated="true" frameX="-66" frameY="-152" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10252.png" x="1271" y="4674" width="629" height="358" rotated="true" frameX="-66" frameY="-146" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10253.png" x="637" y="4676" width="630" height="358" rotated="true" frameX="-66" frameY="-145" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10254.png" x="3953" y="4993" width="376" height="618" frameX="-66" frameY="-157" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10255.png" x="3210" y="4993" width="376" height="619" frameX="-66" frameY="-156" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10256.png" x="4734" y="3141" width="359" height="621" frameX="-66" frameY="-154" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10257.png" x="3590" y="4993" width="359" height="619" frameX="-66" frameY="-156" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10258.png" x="4724" y="3766" width="366" height="621" frameX="-66" frameY="-154" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10259.png" x="4759" y="2515" width="366" height="622" frameX="-66" frameY="-153" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10260.png" x="1904" y="5027" width="615" height="375" rotated="true" frameX="-66" frameY="-160" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10261.png" x="1271" y="5036" width="615" height="375" rotated="true" frameX="-66" frameY="-160" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10262.png" x="637" y="5038" width="613" height="391" rotated="true" frameX="-66" frameY="-162" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10263.png" x="2523" y="5037" width="612" height="391" rotated="true" frameX="-66" frameY="-163" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10264.png" x="4786" y="1" width="398" height="627" frameX="-66" frameY="-148" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10265.png" x="4786" y="632" width="398" height="627" frameX="-66" frameY="-148" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10266.png" x="4376" y="1936" width="379" height="634" frameX="-66" frameY="-141" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10267.png" x="4376" y="1297" width="379" height="635" frameX="-66" frameY="-140" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10268.png" x="3227" y="4224" width="638" height="351" rotated="true" frameX="-66" frameY="-137" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10269.png" x="3902" y="3718" width="351" height="637" frameX="-66" frameY="-138" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10270.png" x="4416" y="1" width="366" height="636" frameX="-66" frameY="-139" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10271.png" x="4416" y="641" width="366" height="636" frameX="-66" frameY="-139" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10272.png" x="3990" y="1297" width="382" height="643" frameX="-66" frameY="-132" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10273.png" x="3254" y="3820" width="644" height="382" rotated="true" frameX="-66" frameY="-131" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10274.png" x="3608" y="2042" width="377" height="649" frameX="-66" frameY="-126" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10275.png" x="1" y="3923" width="648" height="377" rotated="true" frameX="-66" frameY="-127" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10276.png" x="1305" y="3918" width="646" height="371" rotated="true" frameX="-66" frameY="-129" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10277.png" x="1955" y="3908" width="646" height="371" rotated="true" frameX="-66" frameY="-129" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10278.png" x="3990" y="1944" width="370" height="643" frameX="-66" frameY="-132" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10279.png" x="4042" y="1" width="370" height="644" frameX="-66" frameY="-131" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10280.png" x="3517" y="2695" width="365" height="649" frameX="-66" frameY="-126" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10281.png" x="653" y="3923" width="648" height="365" rotated="true" frameX="-66" frameY="-127" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10282.png" x="1" y="4304" width="642" height="368" rotated="true" frameX="-66" frameY="-134" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10283.png" x="1293" y="4293" width="641" height="373" rotated="true" frameX="-66" frameY="-134" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10284.png" x="3989" y="2591" width="361" height="643" frameX="-66" frameY="-133" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10285.png" x="4042" y="649" width="367" height="644" frameX="-66" frameY="-131" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10286.png" x="3608" y="730" width="372" height="653" frameX="-66" frameY="-123" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10287.png" x="3608" y="1387" width="378" height="651" frameX="-66" frameY="-124" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10288.png" x="1938" y="4293" width="641" height="377" rotated="true" frameX="-66" frameY="-135" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10289.png" x="2583" y="4283" width="640" height="382" rotated="true" frameX="-66" frameY="-135" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10290.png" x="1" y="4676" width="632" height="361" rotated="true" frameX="-66" frameY="-144" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10291.png" x="4257" y="3848" width="366" height="633" frameX="-66" frameY="-142" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10292.png" x="2605" y="3861" width="645" height="359" rotated="true" frameX="-66" frameY="-131" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10293.png" x="647" y="4304" width="642" height="364" rotated="true" frameX="-66" frameY="-133" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10294.png" x="3517" y="3348" width="643" height="366" rotated="true" frameX="-66" frameY="-133" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10295.png" x="3608" y="1" width="430" height="725" frameX="-66" frameY="-49" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10296.png" x="1512" y="3481" width="730" height="423" rotated="true" frameX="-66" frameY="-44" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10297.png" x="1" y="3481" width="754" height="438" rotated="true" frameX="-66" frameY="-20" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10298.png" x="3145" y="1" width="432" height="761" frameX="-66" frameY="-14" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10299.png" x="2259" y="768" width="440" height="762" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10300.png" x="910" y="1" width="433" height="769" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10301.png" x="3065" y="3063" width="448" height="753" frameX="-66" frameY="-21" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10302.png" x="3065" y="2300" width="441" height="759" frameX="-66" frameY="-16" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10303.png" x="759" y="3481" width="749" height="433" rotated="true" frameX="-66" frameY="-25" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10304.png" x="3166" y="766" width="426" height="755" frameX="-66" frameY="-20" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10305.png" x="1648" y="1545" width="436" height="765" frameX="-66" frameY="-9" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10306.png" x="477" y="1" width="429" height="771" frameX="-66" frameY="-4" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10307.png" x="2259" y="1" width="444" height="763" frameX="-66" frameY="-11" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10308.png" x="1" y="779" width="770" height="437" rotated="true" frameX="-66" frameY="-5" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10309.png" x="2088" y="1545" width="445" height="762" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10310.png" x="1" y="1220" width="769" height="438" rotated="true" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10311.png" x="1" y="2569" width="762" height="445" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10312.png" x="775" y="776" width="438" height="769" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10313.png" x="767" y="2569" width="762" height="445" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10314.png" x="1347" y="1" width="438" height="769" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10315.png" x="1533" y="2569" width="762" height="445" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10316.png" x="1217" y="774" width="427" height="769" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10317.png" x="2707" y="1" width="434" height="762" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10318.png" x="1" y="1662" width="769" height="433" rotated="true" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10319.png" x="2299" y="2311" width="762" height="440" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10320.png" x="2537" y="1534" width="459" height="762" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10321.png" x="774" y="1549" width="768" height="466" rotated="true" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10322.png" x="1" y="3018" width="762" height="459" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10323.png" x="1789" y="1" width="466" height="768" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10324.png" x="767" y="3018" width="762" height="459" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10325.png" x="1789" y="773" width="466" height="768" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10326.png" x="767" y="3018" width="762" height="459" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10327.png" x="1789" y="773" width="466" height="768" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10328.png" x="767" y="3018" width="762" height="459" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10329.png" x="1789" y="773" width="466" height="768" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10330.png" x="767" y="3018" width="762" height="459" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10331.png" x="1789" y="773" width="466" height="768" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10332.png" x="767" y="3018" width="762" height="459" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10333.png" x="1789" y="773" width="466" height="768" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10334.png" x="767" y="3018" width="762" height="459" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10335.png" x="1789" y="773" width="466" height="768" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10336.png" x="767" y="3018" width="762" height="459" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10337.png" x="1" y="2099" width="768" height="466" rotated="true" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10338.png" x="1533" y="3018" width="762" height="459" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10339.png" x="773" y="2099" width="768" height="466" rotated="true" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10340.png" x="2299" y="2755" width="762" height="459" rotated="true" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10341.png" x="1" y="2099" width="768" height="466" rotated="true" frameX="-66" frameY="-6" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10342.png" x="2703" y="768" width="459" height="762" frameX="-66" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10343.png" x="1" y="1" width="472" height="774" frameX="-66" frameY="-0" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10344.png" x="3065" y="1534" width="539" height="762" frameX="-26" frameY="-12" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10345.png" x="2299" y="3218" width="752" height="639" rotated="true" frameX="-0" frameY="-23" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10346.png" x="1" y="5041" width="621" height="577" rotated="true" frameX="-31" frameY="-154" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10347.png" x="1" y="5041" width="621" height="577" rotated="true" frameX="-31" frameY="-154" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10348.png" x="1" y="5041" width="621" height="577" rotated="true" frameX="-31" frameY="-154" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10349.png" x="1" y="5041" width="621" height="577" rotated="true" frameX="-31" frameY="-154" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10350.png" x="1" y="5041" width="621" height="577" rotated="true" frameX="-31" frameY="-154" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10351.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10352.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10353.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10354.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10355.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10356.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10357.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10358.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10359.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10360.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10361.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10362.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10363.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10364.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10365.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10366.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10367.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10368.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10369.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10370.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10371.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10372.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10373.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10374.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10375.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10376.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10377.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10378.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10379.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10380.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10381.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10382.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10383.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10384.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10385.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10386.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10387.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10388.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10389.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10390.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10391.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10392.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10393.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10394.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10395.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10396.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10397.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10398.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10399.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10400.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10401.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10402.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10403.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10404.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10405.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10406.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10407.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10408.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10409.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10410.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10411.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10412.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10413.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10414.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10415.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10416.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10417.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10418.png" x="2103" y="5953" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10419.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10420.png" x="1013" y="6014" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10421.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10422.png" x="2609" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10423.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10424.png" x="1519" y="6008" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10425.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10426.png" x="3115" y="6008" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10427.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10428.png" x="3621" y="5616" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10429.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10430.png" x="4127" y="6008" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10431.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10432.png" x="4633" y="6008" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10433.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10434.png" x="5139" y="6007" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10435.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10436.png" x="507" y="6413" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10437.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10438.png" x="3621" y="6065" width="502" height="445" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10439.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10440.png" x="3115" y="6407" width="502" height="401" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10441.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10442.png" x="1" y="6014" width="502" height="430" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10443.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10444.png" x="5948" y="5970" width="502" height="381" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10445.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10446.png" x="507" y="6014" width="502" height="395" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10447.png" x="1519" y="6393" width="502" height="444" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10448.png" x="5645" y="6355" width="501" height="445" rotated="true" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10449.png" x="2531" y="6442" width="501" height="401" rotated="true" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10450.png" x="5918" y="3376" width="419" height="504" frameX="-66" frameY="-269" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10451.png" x="5939" y="1017" width="504" height="419" rotated="true" frameX="-66" frameY="-269" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10452.png" x="5938" y="1440" width="503" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10453.png" x="5938" y="1863" width="503" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10454.png" x="5938" y="2286" width="503" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10455.png" x="5938" y="2709" width="503" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10456.png" x="4127" y="6413" width="502" height="419" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10457.png" x="1013" y="6419" width="502" height="419" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10458.png" x="2025" y="6402" width="502" height="419" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10459.png" x="5139" y="6392" width="502" height="419" rotated="true" frameX="-66" frameY="-271" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10460.png" x="6474" y="1" width="419" height="501" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10461.png" x="6474" y="506" width="419" height="501" frameX="-66" frameY="-272" frameWidth="640" frameHeight="973"/>
-	<SubTexture name="trans instancia 10462.png" x="2025" y="6402" width="502" height="419" rotated="true" frameX="-66" frameY="-270" frameWidth="640" frameHeight="973"/>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="trans.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="trans instancia 10000" x="28" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10001" x="28" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10002" x="483" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10003" x="483" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10004" x="888" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10005" x="888" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10006" x="1306" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10007" x="1306" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10008" x="1775" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10009" x="1775" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10010" x="2200" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10011" x="2200" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10012" x="2655" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10013" x="2655" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10014" x="3060" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10015" x="3060" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10016" x="3478" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10017" x="3478" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10018" x="3947" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10019" x="3947" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10020" x="4372" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10021" x="4372" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10022" x="4827" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10023" x="4827" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10024" x="5232" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10025" x="5232" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10026" x="5650" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10027" x="5650" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10028" x="6119" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10029" x="6119" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10030" x="28" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10031" x="28" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10032" x="483" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10033" x="483" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10034" x="888" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10035" x="888" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10036" x="1306" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10037" x="1306" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10038" x="1775" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10039" x="1775" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10040" x="2200" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10041" x="2200" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10042" x="2655" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10043" x="2655" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10044" x="3060" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10045" x="3060" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10046" x="3478" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10047" x="3478" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10048" x="3947" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10049" x="3947" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10050" x="4372" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10051" x="4372" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10052" x="4827" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10053" x="4827" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10054" x="5232" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10055" x="5232" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10056" x="5650" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10057" x="5650" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10058" x="6119" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10059" x="6119" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10060" x="28" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10061" x="28" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10062" x="483" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10063" x="483" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10064" x="888" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10065" x="888" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10066" x="1306" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10067" x="1306" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10068" x="1775" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10069" x="1775" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10070" x="2200" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10071" x="2200" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10072" x="2655" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10073" x="2655" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10074" x="3060" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10075" x="3060" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10076" x="3478" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10077" x="3478" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10078" x="3947" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10079" x="3947" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10080" x="4372" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10081" x="4372" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10082" x="4827" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10083" x="4827" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10084" x="5232" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10085" x="5232" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10086" x="5650" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10087" x="5650" y="28" width="447" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10088" x="6119" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10089" x="6119" y="28" width="403" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10090" x="28" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10091" x="28" y="28" width="433" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10092" x="483" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10093" x="483" y="28" width="383" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10094" x="888" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10095" x="888" y="28" width="396" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10096" x="6544" y="28" width="445" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10097" x="7011" y="28" width="447" height="502" frameX="-65" frameY="-271" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10098" x="7480" y="28" width="403" height="502" frameX="-65" frameY="-271" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10099" x="28" y="553" width="435" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10100" x="485" y="553" width="435" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10101" x="942" y="553" width="385" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10102" x="1349" y="553" width="385" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10103" x="1756" y="553" width="399" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10104" x="2177" y="553" width="399" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10105" x="2598" y="553" width="449" height="502" frameX="-65" frameY="-271" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10106" x="3069" y="553" width="449" height="502" frameX="-65" frameY="-271" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10107" x="3540" y="553" width="405" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10108" x="3967" y="553" width="405" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10109" x="4394" y="553" width="435" height="502" frameX="-65" frameY="-271" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10110" x="4851" y="553" width="435" height="502" frameX="-65" frameY="-271" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10111" x="5308" y="553" width="385" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10112" x="5715" y="553" width="385" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10113" x="6122" y="553" width="399" height="502" frameX="-65" frameY="-271" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10114" x="6543" y="553" width="399" height="502" frameX="-65" frameY="-271" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10115" x="6964" y="553" width="449" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10116" x="7435" y="553" width="449" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10117" x="28" y="1079" width="405" height="502" frameX="-65" frameY="-271" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10118" x="455" y="1079" width="405" height="502" frameX="-65" frameY="-271" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10119" x="882" y="1079" width="435" height="500" frameX="-65" frameY="-273" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10120" x="1339" y="1079" width="435" height="500" frameX="-65" frameY="-273" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10121" x="1796" y="1079" width="385" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10122" x="2203" y="1079" width="385" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10123" x="2610" y="1079" width="399" height="501" frameX="-65" frameY="-272" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10124" x="3031" y="1079" width="399" height="501" frameX="-65" frameY="-272" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10125" x="3452" y="1079" width="449" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10126" x="3923" y="1079" width="449" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10127" x="4394" y="1079" width="405" height="500" frameX="-65" frameY="-273" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10128" x="4821" y="1079" width="405" height="500" frameX="-65" frameY="-273" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10129" x="5248" y="1079" width="435" height="498" frameX="-65" frameY="-275" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10130" x="5705" y="1079" width="435" height="498" frameX="-65" frameY="-275" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10131" x="1796" y="1079" width="385" height="499" frameX="-65" frameY="-273" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10132" x="2203" y="1079" width="385" height="499" frameX="-65" frameY="-273" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10133" x="6162" y="1079" width="399" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10134" x="6583" y="1079" width="399" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10135" x="7004" y="1079" width="449" height="501" frameX="-65" frameY="-272" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10136" x="7475" y="1079" width="449" height="501" frameX="-65" frameY="-272" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10137" x="4394" y="1079" width="405" height="500" frameX="-65" frameY="-273" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10138" x="28" y="1603" width="405" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10139" x="455" y="1603" width="435" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10140" x="455" y="1603" width="435" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10141" x="912" y="1603" width="385" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10142" x="912" y="1603" width="385" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10143" x="1319" y="1603" width="399" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10144" x="1319" y="1603" width="399" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10145" x="3452" y="1079" width="449" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10146" x="3452" y="1079" width="449" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10147" x="1740" y="1603" width="405" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10148" x="1740" y="1603" width="405" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10149" x="455" y="1603" width="435" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10150" x="455" y="1603" width="435" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10151" x="912" y="1603" width="385" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10152" x="912" y="1603" width="385" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10153" x="1319" y="1603" width="399" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10154" x="2167" y="1603" width="395" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10155" x="2167" y="1603" width="395" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10156" x="2584" y="1603" width="438" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10157" x="3044" y="1603" width="438" height="499" frameX="-65" frameY="-274" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10158" x="3504" y="1603" width="393" height="516" frameX="-65" frameY="-257" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10159" x="3504" y="1603" width="393" height="516" frameX="-65" frameY="-257" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10160" x="3919" y="1603" width="343" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10161" x="3919" y="1603" width="343" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10162" x="4284" y="1603" width="356" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10163" x="4284" y="1603" width="356" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10164" x="4662" y="1603" width="407" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10165" x="4662" y="1603" width="407" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10166" x="5091" y="1603" width="363" height="521" frameX="-65" frameY="-252" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10167" x="5091" y="1603" width="363" height="521" frameX="-65" frameY="-252" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10168" x="5476" y="1603" width="393" height="523" frameX="-65" frameY="-250" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10169" x="5891" y="1603" width="393" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10170" x="6306" y="1603" width="343" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10171" x="6671" y="1603" width="343" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10172" x="7036" y="1603" width="356" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10173" x="7414" y="1603" width="356" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10174" x="28" y="2149" width="407" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10175" x="457" y="2149" width="407" height="521" frameX="-65" frameY="-252" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10176" x="886" y="2149" width="363" height="521" frameX="-65" frameY="-252" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10177" x="1271" y="2149" width="363" height="523" frameX="-65" frameY="-250" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10178" x="1656" y="2149" width="393" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10179" x="1656" y="2149" width="393" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10180" x="2071" y="2149" width="343" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10181" x="2071" y="2149" width="343" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10182" x="2436" y="2149" width="356" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10183" x="2436" y="2149" width="356" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10184" x="2814" y="2149" width="407" height="521" frameX="-65" frameY="-252" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10185" x="2814" y="2149" width="407" height="521" frameX="-65" frameY="-252" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10186" x="3243" y="2149" width="363" height="523" frameX="-65" frameY="-250" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10187" x="3628" y="2149" width="363" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10188" x="5891" y="1603" width="393" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10189" x="4013" y="2149" width="393" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10190" x="6671" y="1603" width="343" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10191" x="4428" y="2149" width="343" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10192" x="7414" y="1603" width="356" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10193" x="4793" y="2149" width="356" height="521" frameX="-65" frameY="-252" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10194" x="457" y="2149" width="407" height="521" frameX="-65" frameY="-252" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10195" x="5171" y="2149" width="407" height="523" frameX="-65" frameY="-250" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10196" x="5600" y="2149" width="363" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10197" x="5600" y="2149" width="363" height="524" frameX="-65" frameY="-249" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10198" x="5985" y="2149" width="393" height="526" frameX="-65" frameY="-247" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10199" x="5985" y="2149" width="393" height="526" frameX="-65" frameY="-247" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10200" x="6400" y="2149" width="343" height="525" frameX="-65" frameY="-248" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10201" x="6400" y="2149" width="343" height="525" frameX="-65" frameY="-248" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10202" x="6765" y="2149" width="356" height="526" frameX="-65" frameY="-247" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10203" x="6765" y="2149" width="356" height="526" frameX="-65" frameY="-247" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10204" x="7143" y="2149" width="371" height="528" frameX="-65" frameY="-245" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10205" x="7143" y="2149" width="371" height="528" frameX="-65" frameY="-245" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10206" x="7536" y="2149" width="384" height="530" frameX="-65" frameY="-243" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10207" x="7536" y="2149" width="384" height="530" frameX="-65" frameY="-243" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10208" x="28" y="2701" width="395" height="532" frameX="-65" frameY="-241" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10209" x="28" y="2701" width="395" height="532" frameX="-65" frameY="-241" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10210" x="445" y="2701" width="393" height="533" frameX="-65" frameY="-240" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10211" x="445" y="2701" width="393" height="533" frameX="-65" frameY="-240" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10212" x="860" y="2701" width="400" height="534" frameX="-65" frameY="-239" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10213" x="860" y="2701" width="400" height="534" frameX="-65" frameY="-239" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10214" x="1282" y="2701" width="433" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10215" x="1282" y="2701" width="433" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10216" x="1737" y="2701" width="483" height="514" frameX="-65" frameY="-259" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10217" x="1737" y="2701" width="483" height="514" frameX="-65" frameY="-259" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10218" x="2242" y="2701" width="494" height="512" frameX="-65" frameY="-261" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10219" x="2242" y="2701" width="494" height="512" frameX="-65" frameY="-261" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10220" x="2758" y="2701" width="495" height="514" frameX="-65" frameY="-259" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10221" x="2758" y="2701" width="495" height="514" frameX="-65" frameY="-259" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10222" x="3275" y="2701" width="495" height="512" frameX="-65" frameY="-261" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10223" x="3275" y="2701" width="495" height="512" frameX="-65" frameY="-261" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10224" x="3792" y="2701" width="497" height="513" frameX="-65" frameY="-260" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10225" x="3792" y="2701" width="497" height="513" frameX="-65" frameY="-260" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10226" x="4311" y="2701" width="506" height="512" frameX="-65" frameY="-261" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10227" x="4311" y="2701" width="506" height="512" frameX="-65" frameY="-261" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10228" x="4839" y="2701" width="518" height="513" frameX="-65" frameY="-260" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10229" x="4839" y="2701" width="518" height="513" frameX="-65" frameY="-260" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10230" x="5379" y="2701" width="505" height="515" frameX="-65" frameY="-258" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10231" x="5379" y="2701" width="505" height="515" frameX="-65" frameY="-258" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10232" x="5906" y="2701" width="497" height="514" frameX="-65" frameY="-259" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10233" x="5906" y="2701" width="497" height="514" frameX="-65" frameY="-259" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10234" x="6425" y="2701" width="477" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10235" x="6425" y="2701" width="477" height="522" frameX="-65" frameY="-251" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10236" x="6924" y="2701" width="434" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10237" x="6924" y="2701" width="434" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10238" x="7380" y="2701" width="431" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10239" x="7380" y="2701" width="431" height="503" frameX="-65" frameY="-270" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10240" x="28" y="3257" width="432" height="505" frameX="-65" frameY="-268" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10241" x="28" y="3257" width="432" height="505" frameX="-65" frameY="-268" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10242" x="482" y="3257" width="429" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10243" x="482" y="3257" width="429" height="504" frameX="-65" frameY="-269" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10244" x="933" y="3257" width="417" height="512" frameX="-65" frameY="-262" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10245" x="933" y="3257" width="417" height="512" frameX="-65" frameY="-262" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10246" x="1372" y="3257" width="417" height="544" frameX="-65" frameY="-230" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10247" x="1372" y="3257" width="417" height="544" frameX="-65" frameY="-230" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10248" x="1811" y="3257" width="386" height="566" frameX="-65" frameY="-212" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10249" x="1811" y="3257" width="386" height="566" frameX="-65" frameY="-212" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10250" x="2219" y="3257" width="383" height="564" frameX="-65" frameY="-214" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10251" x="2219" y="3257" width="383" height="564" frameX="-65" frameY="-214" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10252" x="2624" y="3257" width="385" height="563" frameX="-65" frameY="-215" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10253" x="2624" y="3257" width="385" height="563" frameX="-65" frameY="-215" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10254" x="3031" y="3257" width="384" height="565" frameX="-65" frameY="-213" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10255" x="3031" y="3257" width="384" height="565" frameX="-65" frameY="-213" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10256" x="3437" y="3257" width="384" height="575" frameX="-65" frameY="-203" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10257" x="3437" y="3257" width="384" height="575" frameX="-65" frameY="-203" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10258" x="3843" y="3257" width="383" height="579" frameX="-65" frameY="-199" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10259" x="3843" y="3257" width="383" height="579" frameX="-65" frameY="-199" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10260" x="4248" y="3257" width="358" height="608" frameX="-65" frameY="-161" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10261" x="4248" y="3257" width="358" height="608" frameX="-65" frameY="-161" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10262" x="4628" y="3257" width="355" height="652" frameX="-65" frameY="-117" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10263" x="4628" y="3257" width="355" height="652" frameX="-65" frameY="-117" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10264" x="5005" y="3257" width="358" height="656" frameX="-65" frameY="-113" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10265" x="5005" y="3257" width="358" height="656" frameX="-65" frameY="-113" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10266" x="5385" y="3257" width="355" height="640" frameX="-65" frameY="-129" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10267" x="5385" y="3257" width="355" height="640" frameX="-65" frameY="-129" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10268" x="5762" y="3257" width="354" height="643" frameX="-65" frameY="-126" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10269" x="5762" y="3257" width="354" height="643" frameX="-65" frameY="-126" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10270" x="4628" y="3257" width="355" height="652" frameX="-65" frameY="-117" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10271" x="4628" y="3257" width="355" height="652" frameX="-65" frameY="-117" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10272" x="5005" y="3257" width="358" height="656" frameX="-65" frameY="-113" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10273" x="5005" y="3257" width="358" height="656" frameX="-65" frameY="-113" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10274" x="5385" y="3257" width="355" height="640" frameX="-65" frameY="-129" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10275" x="5385" y="3257" width="355" height="640" frameX="-65" frameY="-129" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10276" x="5762" y="3257" width="354" height="643" frameX="-65" frameY="-126" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10277" x="5762" y="3257" width="354" height="643" frameX="-65" frameY="-126" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10278" x="4628" y="3257" width="355" height="652" frameX="-65" frameY="-117" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10279" x="4628" y="3257" width="355" height="652" frameX="-65" frameY="-117" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10280" x="5005" y="3257" width="358" height="656" frameX="-65" frameY="-113" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10281" x="5005" y="3257" width="358" height="656" frameX="-65" frameY="-113" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10282" x="5385" y="3257" width="355" height="640" frameX="-65" frameY="-129" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10283" x="5385" y="3257" width="355" height="640" frameX="-65" frameY="-129" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10284" x="6138" y="3257" width="358" height="641" frameX="-65" frameY="-128" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10285" x="6138" y="3257" width="358" height="641" frameX="-65" frameY="-128" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10286" x="6518" y="3257" width="364" height="631" frameX="-65" frameY="-138" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10287" x="6518" y="3257" width="364" height="631" frameX="-65" frameY="-138" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10288" x="6904" y="3257" width="368" height="633" frameX="-65" frameY="-136" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10289" x="6904" y="3257" width="368" height="633" frameX="-65" frameY="-136" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10290" x="7294" y="3257" width="353" height="632" frameX="-65" frameY="-143" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10291" x="7294" y="3257" width="353" height="632" frameX="-65" frameY="-143" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10292" x="7669" y="3257" width="368" height="623" frameX="-65" frameY="-152" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10293" x="28" y="3935" width="368" height="623" frameX="-65" frameY="-152" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10294" x="418" y="3935" width="384" height="633" frameX="-65" frameY="-142" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10295" x="824" y="3935" width="384" height="633" frameX="-65" frameY="-142" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10296" x="1230" y="3935" width="378" height="650" frameX="-65" frameY="-125" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10297" x="1230" y="3935" width="378" height="650" frameX="-65" frameY="-125" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10298" x="1630" y="3935" width="373" height="635" frameX="-65" frameY="-140" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10299" x="2025" y="3935" width="373" height="635" frameX="-65" frameY="-140" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10300" x="2420" y="3935" width="372" height="645" frameX="-65" frameY="-130" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10301" x="2420" y="3935" width="372" height="645" frameX="-65" frameY="-130" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10302" x="2814" y="3935" width="366" height="638" frameX="-65" frameY="-137" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10303" x="3202" y="3935" width="366" height="638" frameX="-65" frameY="-137" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10304" x="3590" y="3935" width="369" height="643" frameX="-65" frameY="-133" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10305" x="3981" y="3935" width="374" height="642" frameX="-65" frameY="-133" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10306" x="4377" y="3935" width="363" height="635" frameX="-65" frameY="-141" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10307" x="4762" y="3935" width="368" height="634" frameX="-65" frameY="-141" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10308" x="5152" y="3935" width="374" height="654" frameX="-65" frameY="-122" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10309" x="5548" y="3935" width="379" height="653" frameX="-65" frameY="-122" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10310" x="5949" y="3935" width="378" height="631" frameX="-65" frameY="-145" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10311" x="6349" y="3935" width="384" height="630" frameX="-65" frameY="-145" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10312" x="6755" y="3935" width="363" height="624" frameX="-65" frameY="-152" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10313" x="7140" y="3935" width="368" height="633" frameX="-65" frameY="-142" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10314" x="7530" y="3935" width="356" height="662" frameX="-65" frameY="-114" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10315" x="28" y="4619" width="361" height="661" frameX="-65" frameY="-114" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10316" x="411" y="4619" width="368" height="651" frameX="-65" frameY="-125" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10317" x="801" y="4619" width="431" height="695" frameX="-65" frameY="-79" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10318" x="1254" y="4619" width="425" height="695" frameX="-65" frameY="-79" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10319" x="1701" y="4619" width="440" height="709" frameX="-65" frameY="-65" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10320" x="2163" y="4619" width="433" height="710" frameX="-65" frameY="-65" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10321" x="2618" y="4619" width="441" height="762" frameX="-65" frameY="-12" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10322" x="3081" y="4619" width="434" height="768" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10323" x="3537" y="4619" width="449" height="750" frameX="-65" frameY="-24" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10324" x="4008" y="4619" width="443" height="751" frameX="-65" frameY="-24" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10325" x="4473" y="4619" width="434" height="754" frameX="-65" frameY="-20" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10326" x="4929" y="4619" width="427" height="749" frameX="-65" frameY="-26" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10327" x="5378" y="4619" width="437" height="770" frameX="-65" frameY="-4" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10328" x="5837" y="4619" width="430" height="771" frameX="-65" frameY="-4" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10329" x="6289" y="4619" width="445" height="763" frameX="-65" frameY="-11" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10330" x="6756" y="4619" width="439" height="769" frameX="-65" frameY="-6" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10331" x="7217" y="4619" width="446" height="767" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10332" x="7685" y="4619" width="439" height="768" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10333" x="28" y="5412" width="446" height="762" frameX="-65" frameY="-12" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10334" x="496" y="5412" width="428" height="763" frameX="-65" frameY="-12" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10335" x="946" y="5412" width="435" height="767" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10336" x="1403" y="5412" width="434" height="768" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10337" x="1859" y="5412" width="441" height="767" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10338" x="2322" y="5412" width="460" height="762" frameX="-65" frameY="-12" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10339" x="2804" y="5412" width="468" height="762" frameX="-65" frameY="-12" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10340" x="3294" y="5412" width="460" height="767" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10341" x="3776" y="5412" width="468" height="767" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10342" x="4266" y="5412" width="460" height="767" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10343" x="4748" y="5412" width="468" height="767" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10344" x="5238" y="5412" width="460" height="767" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10345" x="5720" y="5412" width="468" height="767" frameX="-65" frameY="-7" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10346" x="6210" y="5412" width="474" height="774" frameX="-65" frameY="0" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10347" x="6706" y="5412" width="539" height="762" frameX="-26" frameY="-12" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10348" x="7267" y="5412" width="640" height="752" frameX="0" frameY="-23" frameWidth="640" frameHeight="778"/>
+	<SubTexture name="trans instancia 10349" x="28" y="6208" width="578" height="642" frameX="-31" frameY="-133" frameWidth="640" frameHeight="778"/>
 </TextureAtlas>

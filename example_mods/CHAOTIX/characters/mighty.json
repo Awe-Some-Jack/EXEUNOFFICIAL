@@ -7,6 +7,14 @@
 			"anim": "idle",
 			"loop": false,
 			"name": "idle"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 9,
+			"anim": "idle-alt",
+			"loop": true,
+			"name": "scared"
 		}
 	],
 	"vocals_file": "",

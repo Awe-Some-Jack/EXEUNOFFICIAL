@@ -10,8 +10,8 @@
 
 const float PI = 3.1415926;
 
-const float constraint = 0.35f;
-float c = 0.0f;
+const float constraint = 0.35;
+float c = 0.0;
 uniform float amount;
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
@@ -20,16 +20,16 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     vec2 suv;
     
     // distort coef: MOVE MOUSE UP & DOWN
-    c = ((0.50001 * (amount + 1.0)) - 0.5f) * 2.0 * PI * constraint;
+    c = ((0.50001 * (amount + 1.0)) - 0.5) * 2.0 * PI * constraint;
     
-    vec2 ndc = (uv - 0.5f) * 2.0f;
+    vec2 ndc = (uv - 0.5) * 2.0;
     float aspect = fragCoord.x / fragCoord.y;
 
-    if (c >= 0.0f) {
+    if (c >= 0.0) {
         float h = c;
         float hd = tan(h);
 
-        vec2 r = vec2(aspect, 1.0f);
+        vec2 r = vec2(aspect, 1.0);
         vec2 sndc = ndc * r;
 
         float dia = length(r);
@@ -38,15 +38,15 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
         float beta = rd * h;
         vec2 proj = rp * tan(beta) / hd;
-        suv = proj * 0.5f + 0.5f;
+        suv = proj * 0.5 + 0.5;
     } else {
         float dx, dy, rr, r2, theta;
-        rr = sqrt(dot(ndc, ndc) * 0.25f);
-        r2 = rr * (1.0f + c * (rr * rr));
-        theta = atan(ndc.x * 0.5f, ndc.y * 0.5f);
+        rr = sqrt(dot(ndc, ndc) * 0.25);
+        r2 = rr * (1.0 + c * (rr * rr));
+        theta = atan(ndc.x * 0.5, ndc.y * 0.5);
         dx = sin(theta) * r2;
         dy = cos(theta) * r2;
-        suv = vec2(dx, dy) + 0.5f;
+        suv = vec2(dx, dy) + 0.5;
     }
     
     vec4 col = texture(iChannel0, suv);
@@ -55,5 +55,5 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 }
 
 void main() {
-	mainImage(gl_FragColor, openfl_TextureCoordv*openfl_TextureSize);
+    mainImage(gl_FragColor, openfl_TextureCoordv*openfl_TextureSize);
 }

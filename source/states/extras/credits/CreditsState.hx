@@ -17,7 +17,7 @@ typedef Credit =
 	@:optional var nation:String;
 	@:optional var youtube:String;
 	@:optional var twitter:String;
-	@:optional var bluesky:String;
+	@:optional var extra:Array<Dynamic>;
 }
 
 class CreditsState extends MusicBeatState
@@ -43,15 +43,15 @@ class CreditsState extends MusicBeatState
 
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/credits.ogg'));
 
-		var bg = FlxGradient.createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF730E4E, 0xFFA9171E], 1, 90);
-		add(bg);
-
 		var json:Dynamic = Json.parse( Assets.getText("assets/exe/extras/credits/credits.json"));
 		for(cat in Reflect.fields(json))
 		{
 			var daCreds:Array<Credit> = cast Reflect.field(json, cat);
 			credits.set(cat, daCreds);
 		}
+
+		var bg = FlxGradient.createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF730E4E, 0xFFA9171E], 1, 90);
+		add(bg);
 
 		var spacing:Int = 10;
 		devs = new FlxCamera();
@@ -228,6 +228,11 @@ class CreditsState extends MusicBeatState
 
 	override function closeSubState()
 	{
+		if (FlxG.sound.music.volume < 1)
+		{
+			FlxTween.cancelTweensOf(FlxG.sound.music);
+			FlxTween.tween(FlxG.sound.music, {volume: 1}, 0.6);
+		}
 		super.closeSubState();
 		inPopup = false;
 	}

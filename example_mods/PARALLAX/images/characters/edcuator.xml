@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="edcuator.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="edcuator down00000000" x="0" y="787" width="181" height="186" frameX="-42" frameY="-37" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator down00010000" x="585" y="200" width="182" height="186" frameX="-41" frameY="-37" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator down00020000" x="778" y="374" width="182" height="186" frameX="-41" frameY="-37" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator down00030000" x="778" y="188" width="182" height="186" frameX="-41" frameY="-37" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator down00040000" x="597" y="409" width="181" height="186" frameX="-41" frameY="-37" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator down00050000" x="181" y="787" width="181" height="186" frameX="-41" frameY="-37" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator down00060000" x="362" y="787" width="180" height="186" frameX="-42" frameY="-37" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00000000" x="125" y="973" width="125" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00010000" x="250" y="973" width="125" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00020000" x="1139" y="406" width="126" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00030000" x="375" y="973" width="125" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00040000" x="0" y="973" width="125" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00050000" x="1139" y="621" width="125" height="215" frameX="-101" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00060000" x="500" y="973" width="125" height="215" frameX="-101" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00070000" x="875" y="973" width="125" height="214" frameX="-101" frameY="-15" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00080000" x="750" y="973" width="125" height="214" frameX="-101" frameY="-15" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00090000" x="1293" y="644" width="124" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00100000" x="1293" y="430" width="124" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00110000" x="1293" y="215" width="124" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00120000" x="1293" y="0" width="124" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00130000" x="625" y="973" width="125" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator idle00140000" x="125" y="973" width="125" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator left00000000" x="0" y="0" width="196" height="207" frameX="-43" frameY="-18" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator left00010000" x="196" y="0" width="195" height="205" frameX="-43" frameY="-21" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator left00020000" x="391" y="0" width="194" height="204" frameX="-43" frameY="-22" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator left00030000" x="0" y="207" width="193" height="202" frameX="-44" frameY="-23" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator left00040000" x="193" y="207" width="193" height="201" frameX="-44" frameY="-24" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator left00050000" x="585" y="0" width="193" height="200" frameX="-44" frameY="-24" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator left00060000" x="386" y="207" width="193" height="200" frameX="-44" frameY="-24" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator right00000000" x="396" y="409" width="201" height="189" frameX="-74" frameY="-40" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator right00010000" x="204" y="602" width="205" height="184" frameX="-73" frameY="-44" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator right00020000" x="409" y="602" width="205" height="183" frameX="-73" frameY="-45" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator right00030000" x="0" y="602" width="204" height="185" frameX="-73" frameY="-44" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator right00040000" x="778" y="0" width="201" height="188" frameX="-74" frameY="-41" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator right00050000" x="197" y="409" width="199" height="191" frameX="-74" frameY="-38" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator right00060000" x="0" y="409" width="197" height="193" frameX="-75" frameY="-36" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator up00000000" x="979" y="0" width="160" height="202" frameX="-72" frameY="-20" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator up00010000" x="1139" y="203" width="154" height="203" frameX="-74" frameY="-19" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator up00020000" x="1139" y="0" width="154" height="203" frameX="-74" frameY="-19" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator up00030000" x="979" y="606" width="156" height="203" frameX="-73" frameY="-19" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator up00040000" x="979" y="404" width="157" height="202" frameX="-73" frameY="-20" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator up00050000" x="979" y="202" width="159" height="202" frameX="-72" frameY="-20" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator up00060000" x="979" y="0" width="160" height="202" frameX="-72" frameY="-20" frameWidth="320" frameHeight="240"/>
+</TextureAtlas>

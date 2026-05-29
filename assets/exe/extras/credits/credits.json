@@ -81,7 +81,13 @@
 		{
 			"name": "Wolfie",
 			"icon": "wolfie",
-			"description": "Coder and Charter"
+			"description": "Coder and Charter",
+			"quote": "Coming from the mod that shall not be named, this was definitely a fresh breath of air and I'm glad I got to work on songs I liked the most, even if I joined a bit late lmao. Hopefully I'll be able to do more cool stuff like this in the future\n\nTeto Supremacy",
+			"nation": "usa",
+			"colors": [[13, 39, 124], [188, 3, 16]],
+			"youtube": "https://www.youtube.com/@Wolfie_1985",
+			"twitter": "https://x.com/Wolfie64745554",
+			"extra": ["video", "obituary"]
 		},
 		{
 			"name": "Jason E",
@@ -116,7 +122,7 @@
 			"name": "CM_drawe",
 			"icon": "cm",
 			"description": "Artist",
-			"quote": "Algo que me gustaría agradecer es que, durante el proceso de este proyecto, pude mejorar en muchos ámbitos de mi arte y animación.\n\nFue un desarrollo muy unido, con un ambiente fantástico que se quedará en mi corazón, ya que son experiencias que es muy poco probable que vuelvan a repetirse.\n\nDisfruten esto como un trabajo honesto y como lo que siempre fue todo esto: un homenaje para la comunidad.",
+			"quote": "Algo que me gustaría agradecer es que, durante el proceso de este proyecto, pude mejorar en muchos ámbitos de mi arte y animación.\n\nFue un desarrollo muy unido, con un ambiente fantástico que se quedará en mi corazón, ya que son experiencias que es muy poco probable que vuelvan a repetirse.\n\nDisfruten esto como un trabajo honesto y como lo que siempre fue todo esto\n- un homenaje para la comunidad.\n\n\nSomething I'd like to express my gratitude for is that, throughout the development of this project, I was able to grow and improve in many aspects of my art and animation.\n\nIt was a deeply united project, built within an incredible atmosphere that will always remain in my heart.\n\nPlease enjoy this for what it truly is: an honest piece of work, and what it was always meant to be\n- a tribute to the community.",
 			"colors": [[236, 0, 31], [0, 0, 0]],
 			"twitter": "https://x.com/CM_drawe",
 			"nation": "espana",
@@ -176,7 +182,7 @@
 		{
 			"name": "Fare.dz",
 			"icon": "fare",
-			"quote": "Nadie me conoce pero\nTengo la polla grande",
+			"quote": "Gracias al Unnoficial team\nPor aceptarme y tratarme como parte de la familia,\nPerdón por un año de demora con los sprite de brawbrust \nPero se terminó y ahora lo ven en life and death\nLos quiero chicos\nSomos un team muy talentoso\nMas peak que gotta go\n\n//Así y que pekoso72 me coma todo el titanoso ",
 			"description": "Artist",
 			"colors": [[0, 0, 0], [19, 25, 99]],
 			"nation": "peru",
@@ -237,7 +243,12 @@
 			"name": "SlaxPe",
 			"icon": "slax",
 			"description": "Pixel Artist",
-			"nation": "peru"
+			"quote": "brawl stars terminó en la temporada de godzilla",
+			"nation": "peru",
+			"colors": [[205, 20, 91], [97, 9, 183]],
+			"youtube": "https://www.youtube.com/@SlaxBy2010",
+			"twitter": "https://x.com/Slax_Art",
+			"extra": ["video", "amogus"]
 		},
 		{
 			"name": "ExeTheFaked",
@@ -251,7 +262,8 @@
 			"quote": "Hola soy Tobi y dejo mi marca",
 			"colors": [[71, 67, 226], [49, 160, 134]],
 			"nation": "chile",
-			"youtube": "https://www.youtube.com/@MxdT0biMain"
+			"youtube": "https://www.youtube.com/@MxdT0biMain",
+			"extra": ["image", "banaduck.png"]
 		},
 		{
 			"name": "LifeyTheRay",
@@ -269,14 +281,18 @@
 			"icon": "dxbf",
 			"description": "Composer",
 			"youtube": "https://www.youtube.com/@DXBlackFirelol",
+			"colors": [[96, 96, 96], [0, 0, 0]],
 			"nation": "brazil"
 		},
 		{
 			"name": "LyricalMaxi",
 			"icon": "maxi",
 			"description": "Composer",
+			"quote": "El llanto es el esposo de la llanta...",
 			"nation": "chile",
-			"youtube": "https://www.youtube.com/@lyricalmaxi"
+			"colors": [[255, 255, 255], [0, 178, 255]],
+			"youtube": "https://www.youtube.com/@lyricalmaxi",
+			"extra": ["video", "medico"]
 		},
 		{
 			"name": "rak",
@@ -292,7 +308,9 @@
 			"name": "Rogtary",
 			"icon": "rogtary",
 			"description": "Composer",
-			"nation": "chile"
+			"nation": "chile",
+			"colors": [[45, 0, 68], [6, 0, 10]],
+			"youtube": "https://youtube.com/@rogtarymusic"
 		},
 		{
 			"name": "Ryan2511Pro",

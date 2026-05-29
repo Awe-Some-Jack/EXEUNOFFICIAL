@@ -91,8 +91,6 @@ class Main extends Sprite
 			if (e.keyCode == FlxKey.ENTER && e.altKey) e.stopImmediatePropagation();
 		}, false, 100);
 
-		FlxG.mouse.useSystemCursor = true;
-
 		#if LUA_ALLOWED
 		Mods.pushGlobalMods();
 		#end
@@ -166,6 +164,8 @@ class Main extends Sprite
 		ClientPrefs.loadDefaultKeys();
 		#if ACHIEVEMENTS_ALLOWED Achievements.load(); #end
 		addChild(new FlxGame(game.width, game.height, game.initialState, game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
+
+		FlxG.mouse.useSystemCursor = true;
 
 		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);

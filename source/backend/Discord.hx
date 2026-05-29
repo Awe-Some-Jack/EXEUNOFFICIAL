@@ -30,9 +30,7 @@ class DiscordClient
 		if (!isInitialized && ClientPrefs.data.discordRPC)
 			initialize();
 
-		Application.current.window.onClose.add(function() {
-			if(isInitialized) shutdown();
-		});
+		Application.current.onExit.add((_) -> if(isInitialized) shutdown(););
 	}
 
 	public dynamic static function shutdown()

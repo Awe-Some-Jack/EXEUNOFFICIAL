@@ -67,7 +67,8 @@
 			"quote": "haxeflixel my beloved",
 			"colors": [[123, 142, 153], [255, 255, 255]],
 			"twitter": "https://x.com/assmansito_",
-			"youtube": "https://www.youtube.com/@assmanbruh"
+			"youtube": "https://www.youtube.com/@assmanbruh",
+			"extra": ["video", "jujutsu", true]
 		},
 		{
 			"name": "CherryLemur",

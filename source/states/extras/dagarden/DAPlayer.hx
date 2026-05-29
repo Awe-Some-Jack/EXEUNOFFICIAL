@@ -854,7 +854,6 @@ class DAPlayer extends FlxGroup
 			}
 			vocalsSounds = [];
 		}
-		vocalsSounds    = [];
 		oppVocalsSounds = [];
 		isPlaying   = false;
 		_loadedSong = '';

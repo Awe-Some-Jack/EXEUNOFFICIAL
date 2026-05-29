@@ -34,8 +34,10 @@ class PsychUITab extends FlxSprite
 		color = FlxColor.BLACK;
 		alpha = 0.6;
 		@:bypassAccessor this.name = name;
+
 		text = new FlxText(0, 0, 100, name);
 		text.alignment = CENTER;
+		text.antialiasing = false;
 
 		scrollBarBG = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
 		scrollBarBG.alpha = 0.5;

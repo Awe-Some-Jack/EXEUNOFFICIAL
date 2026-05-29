@@ -22,36 +22,31 @@ class StoryParallaxState extends MusicBeatState
 		super.create();
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/story mode/1.png'));
-		bg.antialiasing = ClientPrefs.data.antialiasing;
 		bg.scale.set(0.34, 0.34);
 		bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);
 
 		var tables:FlxSprite = new FlxSprite(0, 80).loadGraphic(Assets.getBitmapData('assets/exe/parallax/story mode/2.png'));
-		tables.antialiasing = ClientPrefs.data.antialiasing;
 		tables.scale.set(0.34, 0.34);
 		tables.updateHitbox();
 		tables.screenCenter(X);
 		add(tables);
 
 		megadrive = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/story mode/consola.png'));
-		megadrive.antialiasing = ClientPrefs.data.antialiasing;
 		megadrive.scale.set(0.9, 0.9);
 		megadrive.updateHitbox();
 		megadrive.screenCenter(X);
 		megadrive.y = FlxG.height - megadrive.height - 20;
 		add(megadrive);
 
-		mdcd = new FlxSprite();
+		mdcd = new FlxSprite(megadrive.x + 752, megadrive.y + 82);
 		mdcd.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/story mode/cd.png', 'assets/exe/parallax/story mode/cd.xml');
 		mdcd.animation.addByPrefix('idle', 'idle instancia 1', 24, true);
 		mdcd.animation.addByPrefix('selected', 'cd instancia 1', 24, false);
 		mdcd.animation.play('idle');
-		mdcd.antialiasing = ClientPrefs.data.antialiasing;
 		mdcd.scale.set(0.9, 0.9);
 		mdcd.updateHitbox();
-		mdcd.setPosition(megadrive.x + 752, megadrive.y + 82);
 		add(mdcd);
 
 		cd = new FlxSprite(914, 126);
@@ -59,13 +54,11 @@ class StoryParallaxState extends MusicBeatState
 		cd.animation.addByPrefix('idle', 'ecuador idle instancia 1', 24, true);
 		cd.animation.addByPrefix('selected', 'ecuador instancia 1', 24, false);
 		cd.animation.play('idle');
-		cd.antialiasing = ClientPrefs.data.antialiasing;
 		cd.scale.set(0.9, 0.9);
 		cd.updateHitbox();
 		add(cd);
 
 		luz = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/story mode/luz.png'));
-		luz.antialiasing = ClientPrefs.data.antialiasing;
 		luz.scale.set(0.34, 0.34);
 		luz.updateHitbox();
 		luz.screenCenter();
@@ -92,14 +85,14 @@ class StoryParallaxState extends MusicBeatState
 
 		if (!transitioning)
 		{
-			if (Controls.instance.BACK)
+			if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(() -> new ParallaxState());
 				transitioning = true;
 			}
 
-			if (Controls.instance.ACCEPT)
+			if (controls.ACCEPT)
 			{
 				transitioning = true;
 				mdcd.animation.play('selected');

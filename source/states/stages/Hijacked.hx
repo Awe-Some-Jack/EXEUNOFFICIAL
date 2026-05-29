@@ -51,7 +51,6 @@ class Hijacked extends BaseStage
 		sky = new FlxSprite(-2340, -1335).loadGraphic(Paths.image('bg/cielo', 'RERUN'));
 		sky.scale.set(1.4, 1.4);
 		sky.scrollFactor.set(0.7, 0.7);
-		sky.antialiasing = true;
 		sky.updateHitbox();
 		add(sky);
 
@@ -60,12 +59,10 @@ class Hijacked extends BaseStage
 		clouds.x = 0;
 		clouds.y = -900;
 		clouds.scrollFactor.set(0.7, 0.7);
-		clouds.antialiasing = true;
 		add(clouds);
 		
 		ground = new FlxSprite(-2540, -935).loadGraphic(Paths.image('bg/piso', 'RERUN'));
 		ground.scale.set(1.12, 1.12);
-		ground.antialiasing = true;
 		ground.updateHitbox();
 		add(ground);
 
@@ -74,14 +71,13 @@ class Hijacked extends BaseStage
 		cascade.animation.addByPrefix('idle', 'Símbolo 9 instancia 1', 12, true);
 		cascade.animation.play('idle');
 		cascade.scale.set(1.12, 1.12);
-		cascade.antialiasing = true;
 		cascade.updateHitbox();
 		add(cascade);
 
         black = new FlxSprite(-4000, -4000).makeGraphic(8000, 8000, 0xFF000000);
-        black.antialiasing = true;
 		black.alpha = 0;
 		add(black);
+
         PS.addBehindDad(black);
 	}
 
@@ -92,7 +88,6 @@ class Hijacked extends BaseStage
 		PS.camHUD.alpha = 0;
 
 		black2 = new FlxSprite(-4000, -4000).makeGraphic(8000, 8000, 0xFF000000);
-        black2.antialiasing = true;
 		black2.alpha = 0;
 		black2.blend = psychlua.LuaUtils.blendModeFromString('alpha');
 		add(black2);

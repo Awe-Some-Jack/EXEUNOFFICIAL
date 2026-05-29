@@ -216,6 +216,7 @@ class PsychUIColorPicker extends PsychUIGroup
 		
 		brightnessLabel = new FlxText(colorWheelSize + 10, wheelY, 0, "Brightness:", 8);
 		brightnessLabel.visible = brightnessLabel.active = false;
+		brightnessLabel.antialiasing = false;
 		add(brightnessLabel);
 		
 		colorWheelBrightnessSlider = new PsychUISlider(colorWheelSize + 10, wheelY + 15, null, 100, 0, 100, 100, FlxColor.WHITE);
@@ -231,6 +232,7 @@ class PsychUIColorPicker extends PsychUIGroup
 		var hexY = wheelY + colorWheelSize + 10;
 		hexLabel = new FlxText(0, hexY, 0, "Hex:", 8);
 		hexLabel.visible = hexLabel.active = false;
+		hexLabel.antialiasing = false;
 		add(hexLabel);
 		
 		hexInput = new PsychUIInputText(35, hexY, 80, "FFFFFF", 8);
@@ -251,6 +253,7 @@ class PsychUIColorPicker extends PsychUIGroup
 		
 		var previewY = hexY + 30;
 		previewLabel = new FlxText(0, previewY, 0, "Preview:", 8);
+		previewlabel.antialiasing = false;
 		add(previewLabel);
 		
 		currentPreview = new FlxSprite(50, previewY).makeGraphic(40, 40, FlxColor.WHITE);

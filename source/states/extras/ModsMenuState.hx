@@ -974,7 +974,7 @@ class MenuButton extends FlxSpriteGroup
 			return;
 		}
 
-		if(!ignoreCheck && !Controls.instance.controllerMode && (FlxG.mouse.justPressed || FlxG.mouse.justMoved) && FlxG.mouse.visible)
+		if(!ignoreCheck && !controls.controllerMode && (FlxG.mouse.justPressed || FlxG.mouse.justMoved) && FlxG.mouse.visible)
 			onFocus = FlxG.mouse.overlaps(this);
 		
 		if(onFocus && onClick != null && FlxG.mouse.justPressed)
@@ -983,7 +983,7 @@ class MenuButton extends FlxSpriteGroup
 		if(_needACheck)
 		{
 			_needACheck = false;
-			if(!Controls.instance.controllerMode)
+			if(!controls.controllerMode)
 				setButtonVisibility(FlxG.mouse.overlaps(this));
 		}
 	}

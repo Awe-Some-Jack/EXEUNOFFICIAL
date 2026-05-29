@@ -28,6 +28,7 @@ class PsychUICheckBox extends PsychUIGroup
 
 		text = new FlxText(box.width + 4, 0, textWid, label);
 		text.y += box.height/2 - text.height/2;
+		text.antialiasing = false;
 		add(text);
 
 		this.onClick = callback;
@@ -39,6 +40,7 @@ class PsychUICheckBox extends PsychUIGroup
 		box.animation.add('false', [0]);
 		box.animation.add('true', [1]);
 		box.animation.play('false');
+		box.antialiasing = false;
 	}
 
 	public var broadcastCheckBoxEvent:Bool = true;

@@ -129,7 +129,6 @@ class EXETitle extends MusicBeatState
 			screenBg.screenCenter();
 		});
 		screenBg.bitmap.onEndReached.add(() -> playTitleVideo(screenBg));
-		screenBg.antialiasing = ClientPrefs.data.antialiasing;
 		add(screenBg);
 		playTitleVideo(screenBg);
 		FlxG.autoPause = false;
@@ -149,14 +148,12 @@ class EXETitle extends MusicBeatState
 		titleText.animation.addByPrefix('idle', 'Press Enter to Begin instance 1', 24, true);
 		titleText.animation.addByPrefix('press', 'ENTER PRESSED instance 1', 24, false);
 		titleText.animation.play('idle');
-		titleText.antialiasing = ClientPrefs.data.antialiasing;
 		titleText.updateHitbox();
 		titleText.screenCenter();
 		titleText.y += 80;
 		add(titleText);
 
 		parallaxArrow = new FlxSprite(FlxG.width).loadGraphic(Assets.getBitmapData('assets/exe/parallax/parallaxarrow.png'));
-		parallaxArrow.antialiasing = ClientPrefs.data.antialiasing;
 		parallaxArrow.screenCenter(Y);
 		add(parallaxArrow);
 

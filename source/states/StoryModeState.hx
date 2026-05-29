@@ -138,7 +138,6 @@ class StoryModeState extends MusicBeatState
 		greyBOX.setGraphicSize(Std.int(FlxG.width * 0.2635));
 		greyBOX.updateHitbox();
 		greyBOX.setPosition(175, 64);
-		greyBOX.antialiasing = ClientPrefs.data.antialiasing;
 		add(greyBOX);
 		
 		
@@ -146,7 +145,6 @@ class StoryModeState extends MusicBeatState
 		tooSlowCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/too-slow.png'));
 		tooSlowCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		tooSlowCover.updateHitbox();
-		tooSlowCover.antialiasing = ClientPrefs.data.antialiasing;
 		tooSlowCover.visible = true;
 		add(tooSlowCover);
 		
@@ -154,7 +152,6 @@ class StoryModeState extends MusicBeatState
 		youCantRunCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/you-cant-run.png'));
 		youCantRunCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		youCantRunCover.updateHitbox();
-		youCantRunCover.antialiasing = ClientPrefs.data.antialiasing;
 		youCantRunCover.visible = false;
 		add(youCantRunCover);
 		
@@ -162,7 +159,6 @@ class StoryModeState extends MusicBeatState
 		tripleTroubleCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/triple-trouble.png'));
 		tripleTroubleCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		tripleTroubleCover.updateHitbox();
-		tripleTroubleCover.antialiasing = ClientPrefs.data.antialiasing;
 		tripleTroubleCover.visible = false;
 		add(tripleTroubleCover);
 		
@@ -170,7 +166,6 @@ class StoryModeState extends MusicBeatState
 		finalEscapeCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/final-escape.png'));
 		finalEscapeCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		finalEscapeCover.updateHitbox();
-		finalEscapeCover.antialiasing = ClientPrefs.data.antialiasing;
 		finalEscapeCover.visible = false;
 		add(finalEscapeCover);
 		
@@ -178,7 +173,6 @@ class StoryModeState extends MusicBeatState
 		yourselfCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/yourself.png'));
 		yourselfCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		yourselfCover.updateHitbox();
-		yourselfCover.antialiasing = ClientPrefs.data.antialiasing;
 		yourselfCover.visible = false;
 		add(yourselfCover);
 		
@@ -415,18 +409,18 @@ class StoryModeState extends MusicBeatState
 		if (!isSelecting) {
 			if (inCoverSelect)
 			{
-				if (Controls.instance.UI_RIGHT_P && selectedCover < covers.length - 1)
+				if (controls.UI_RIGHT_P && selectedCover < covers.length - 1)
 					changeCover(selectedCover + 1);
-				else if (Controls.instance.UI_LEFT_P && selectedCover > 0)
+				else if (controls.UI_LEFT_P && selectedCover > 0)
 					changeCover(selectedCover - 1);
-				if (Controls.instance.ACCEPT){
+				if (controls.ACCEPT){
 					isSelecting = true;
 					bfBOX.animation.play('yeah', true);
 					bfBOX.x += 10;
 					FlxG.sound.play(Paths.sound('menuConfirm'));
 					FlxFlicker.flicker(redBOX, 1, 0.07, false, true, function(_) launchSong());
 				}
-				if (Controls.instance.BACK)
+				if (controls.BACK)
 					exitCoverSelect();
 			}
 			else
@@ -442,7 +436,7 @@ class StoryModeState extends MusicBeatState
 					moveRedBox(box2BaseX);
 				}
 
-				if (Controls.instance.BACK)
+				if (controls.BACK)
 				{
 					toMenu = true;
 					FlxG.switchState(() -> new EXEMenu());
@@ -451,7 +445,7 @@ class StoryModeState extends MusicBeatState
 					return;
 				}
 
-				if (Controls.instance.ACCEPT)
+				if (controls.ACCEPT)
 				{
 					if (selectedBox == 0) onBox1Accept();
 					else shakeBox2();

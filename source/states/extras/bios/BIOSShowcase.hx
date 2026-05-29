@@ -104,14 +104,14 @@ class BIOSShowcase
 
 		charName = new FlxText(TITLE_X, TITLE_Y, TITLE_W, bc.displayNames_list.length > 0 ? bc.displayNames_list[0] : '', 68);
 		charName.setFormat(Paths.font('NiseSegaSonic.TTF'), 68, FlxColor.WHITE, CENTER);
-		charName.antialiasing = true;
+		charName.antialiasing = ClientPrefs.data.antialiasing;
 		charName.scrollFactor.set();
 		bios.add(charName);
 		_fitCharName();
 
 		artistName = new FlxText(ARTIST_X, ARTIST_Y, ARTIST_W, '', ARTIST_MAX_SIZE);
 		artistName.setFormat(Paths.font('NiseSegaSonic.TTF'), ARTIST_MAX_SIZE, FlxColor.WHITE, CENTER);
-		artistName.antialiasing = true;
+		artistName.antialiasing = ClientPrefs.data.antialiasing;
 		artistName.scrollFactor.set();
 		artistName.text = bc.artist_list.length > 0 ? 'by\n${bc.artist_list[0]}' : '';
 		bios.add(artistName);
@@ -126,7 +126,6 @@ class BIOSShowcase
 		charBiosSprite = new FlxSprite(36, 19);
 		charBiosSprite.loadGraphic(openfl.utils.Assets.getBitmapData('assets/exe/extras/bios/characterbios.png'));
 		charBiosSprite.scrollFactor.set();
-		charBiosSprite.antialiasing = true;
 		bios.add(charBiosSprite);
 
 		abBox = new FlxSprite(ARTIST_X, ARTIST_Y);

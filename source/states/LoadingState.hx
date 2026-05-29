@@ -74,7 +74,6 @@ class LoadingState extends MusicBeatState
 		persistentUpdate = true;
 
 		var logo:FlxSprite = new FlxSprite();
-		logo.antialiasing = true;
 		logo.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.png', 'assets/exe/ring.xml');
 		logo.animation.addByPrefix('idle', 'idle', 60, true);
 		logo.animation.play('idle', true);

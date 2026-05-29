@@ -74,7 +74,6 @@ class SebasMiBeba extends MusicBeatState
 		bg.loadGraphic(openfl.display.BitmapData.fromFile('assets/exe/sebasmibeba/1.jpg'));
 		bg.setGraphicSize(FlxG.width, FlxG.height);
 		bg.updateHitbox();
-		bg.antialiasing = true;
 		bg.alpha = 0.18;
 		add(bg);
 
@@ -86,7 +85,6 @@ class SebasMiBeba extends MusicBeatState
 			sp.loadGraphic(openfl.display.BitmapData.fromFile('assets/exe/sebasmibeba/${i + 1}.jpg'));
 			sp.scale.set(BASE_SCALE, BASE_SCALE);
 			sp.updateHitbox();
-			sp.antialiasing = true;
 
 			sp.x = centerX + (i - 1) * SPACING - sp.width * 0.5;
 			sp.y = 80;
@@ -120,7 +118,7 @@ class SebasMiBeba extends MusicBeatState
 		ggezTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 6);
 		ggezTxt.screenCenter();
 		ggezTxt.alpha = 0;
-		ggezTxt.antialiasing = true;
+		ggezTxt.antialiasing = ClientPrefs.data.antialiasing;
 		add(ggezTxt);
 
 		var snd = openfl.media.Sound.fromFile('assets/shared/music/baby.ogg');
@@ -314,7 +312,7 @@ class SebasMiBeba extends MusicBeatState
 			}
 		}
 
-		if (Controls.instance.BACK)
+		if (controls.BACK)
 		{
 			if (FlxG.sound.music != null) FlxG.sound.music.stop();
 			FlxG.switchState(() -> new states.SoundTest());

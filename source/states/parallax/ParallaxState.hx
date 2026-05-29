@@ -112,7 +112,7 @@ class ParallaxState extends MusicBeatState
 
 		if (!transitioning)
 		{
-			if (Controls.instance.BACK)
+			if (controls.BACK)
 			{
 				toTitle = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
@@ -126,7 +126,7 @@ class ParallaxState extends MusicBeatState
 			else if (controls.UI_DOWN_P)
 				changeSelect(1);
 
-			if (Controls.instance.ACCEPT)
+			if (controls.ACCEPT)
 			{
 				transitioning = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));

@@ -156,6 +156,7 @@ class EXEFreeplay extends MusicBeatState
 
 		charText = new FlxText(0, 15, FlxG.width, "", TITLE_SIZE);
 		charText.setFormat(FONT_PATH, TITLE_SIZE, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		charText.antialiasing = false;
 		charText.borderSize = 3;
 
 		loadBgSonic();
@@ -176,11 +177,13 @@ class EXEFreeplay extends MusicBeatState
 
 		rankText  = new FlxText(0, 0, 0, "RANK: -",  44);
 		rankText.setFormat(FONT_PATH, 44, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		rankText.antialiasing = false;
 		rankText.borderSize = 3;
 		rankText.y = FlxG.height - rankText.height - 10;
 
 		scoreText = new FlxText(0, 0, 0, "SCORE: 0", 44);
 		scoreText.setFormat(FONT_PATH, 44, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.antialiasing = false;
 		scoreText.borderSize = 3;
 		scoreText.y = rankText.y - scoreText.height - 4;
 
@@ -194,6 +197,7 @@ class EXEFreeplay extends MusicBeatState
 		missingTextBG.alpha = 0.6;
 		missingTextBG.visible = false;
 		add(missingTextBG);
+
 		missingText = new FlxText(50, 0, FlxG.width - 100, '', 24);
 		missingText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		missingText.scrollFactor.set();
@@ -350,10 +354,9 @@ class EXEFreeplay extends MusicBeatState
 
 			var coverPath   = PATH_COVERS + Paths.formatToSongPath(firstSong.songName) + '.png';
 			var coverBitmap = loadRawBitmap(coverPath);
-			if (coverBitmap == null)
-				coverBitmap = loadRawBitmap(PATH_COVERS + 'placeholder.png');
-			if (coverBitmap == null)
-				coverBitmap = loadRawBitmap('assets/exe/freeplayassets/placeholder.png');
+
+			coverBitmap ??= loadRawBitmap(PATH_COVERS + 'placeholder.png');
+			coverBitmap ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.png');
 
 			if (coverBitmap != null)
 			{
@@ -389,6 +392,7 @@ class EXEFreeplay extends MusicBeatState
 				box.scale.set(BOX_SCALE, BOX_SCALE);
 				box.updateHitbox();
 				box.ID = i;
+
 				freeBoxes.add(box);
 				cardGroup.add(box);
 			}
@@ -402,12 +406,14 @@ class EXEFreeplay extends MusicBeatState
 				case 'MEME': 0xFF19EAA8;
 				default: 0xFFFF0000;
 			}
-			var exeText = new FlxText(30, 0, 0, firstSong.exeLabel, EXE_LABEL_SIZE);
+
+			final exeText = new FlxText(30, 0, 0, firstSong.exeLabel, EXE_LABEL_SIZE);
 			exeText.setFormat(FONT_PATH, EXE_LABEL_SIZE, daColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			exeText.borderSize = 2;
-			exeText.ID         = i;
-			exeText.visible    = (i == selectedBox);
-			exeText.alpha      = exeText.visible ? 1.0 : 0.0;
+			exeText.ID = i;
+			exeText.visible = (i == selectedBox);
+			exeText.alpha = exeText.visible ? 1.0 : 0.0;
+			exeText.antialiasing = false;
 			exeTexts.add(exeText);
 		}
 	}
@@ -423,20 +429,21 @@ class EXEFreeplay extends MusicBeatState
 			bgChecker.alpha = 0.10;
 		}
 
-
 		if (changeCooldown > 0) changeCooldown -= elapsed;
 
 		if (subState != null) return;
 
-		var prevScore  = lerpScore;
-		var prevRating = lerpRating;
+		final prevScore = lerpScore;
+		final prevRating = lerpRating;
+
 		lerpScore  = Math.floor(FlxMath.lerp(intendedScore, lerpScore, Math.exp(-elapsed * 24)));
 		lerpRating = FlxMath.lerp(intendedRating, lerpRating, Math.exp(-elapsed * 12));
+
 		if (Math.abs(lerpScore - intendedScore) <= 10) lerpScore = intendedScore;
 		if (Math.abs(lerpRating - intendedRating) <= 0.01) lerpRating = intendedRating;
 		if (lerpScore != prevScore || lerpRating != prevRating) updateScoreDisplay();
 
-		if (Controls.instance.BACK)
+		if (controls.BACK)
 		{
 			if (choosingSong)
 			{
@@ -453,23 +460,23 @@ class EXEFreeplay extends MusicBeatState
 		{
 			var newSel = selectedBox;
 
-
-
-			if (Controls.instance.UI_LEFT_P || Controls.instance.UI_RIGHT_P) //One press
+			if (controls.UI_LEFT_P || controls.UI_RIGHT_P) //One press
 			{
-				newSel = selectedBox + (Controls.instance.UI_RIGHT_P ? 1 : -1);
+				newSel = selectedBox + (controls.UI_RIGHT_P ? 1 : -1);
 				holdCheck = 0;
 			}
 
-			if (Controls.instance.UI_LEFT || Controls.instance.UI_RIGHT) //Hold and beat
+			if (controls.UI_LEFT || controls.UI_RIGHT) //Hold and beat
 			{
-				var beatTime:Float = Conductor.calculateCrochet(Conductor.bpm) / 1000;
-				var lastHold:Int = Math.floor((holdCheck - 0.5) / beatTime);
+				final beatTime:Float = Conductor.calculateCrochet(Conductor.bpm) / 1000;
+				final lastHold:Int = Math.floor((holdCheck - 0.5) / beatTime);
+
 				holdCheck += elapsed;
-				var newHold:Int = Math.floor((holdCheck - 0.5) / beatTime);
+
+				final newHold:Int = Math.floor((holdCheck - 0.5) / beatTime);
 				if (holdCheck > beatTime && newHold - lastHold > 0)
-				newSel = selectedBox + (newHold - lastHold) * (Controls.instance.UI_RIGHT ? 1 : -1);
-			}else holdCheck = 0;
+				newSel = selectedBox + (newHold - lastHold) * (controls.UI_RIGHT ? 1 : -1);
+			} else holdCheck = 0;
 
 			newSel = FlxMath.wrap(newSel, 0, songEntries.length - 1);
 
@@ -479,13 +486,13 @@ class EXEFreeplay extends MusicBeatState
 
 		if (choosingSong)
 		{
-			if (Controls.instance.UI_DOWN_P){ chooseSong(1);  holdCheck = 0; }
-			if (Controls.instance.UI_UP_P){   chooseSong(-1); holdCheck = 0; }
+			if (controls.UI_DOWN_P) { chooseSong(1);  holdCheck = 0; }
+			if (controls.UI_UP_P) {   chooseSong(-1); holdCheck = 0; }
 
-			if (Controls.instance.ACCEPT)
+			if (controls.ACCEPT)
 				launchSong();
 
-			if (Controls.instance.RESET)
+			if (controls.RESET)
 			{
 				var songs2 = getSongsForBox(selectedBox);
 				if (songSelector < songs2.length)
@@ -498,7 +505,7 @@ class EXEFreeplay extends MusicBeatState
 			return;
 		}
 
-		if (Controls.instance.ACCEPT)
+		if (controls.ACCEPT)
 		{
 			holdCheck = 0;
 			var entry = songEntries[selectedBox];
@@ -560,6 +567,7 @@ class EXEFreeplay extends MusicBeatState
 		{
 			var t = new FlxText(0, 0, FlxG.width, "", SONG_TITLE_SIZE);
 			t.setFormat(FONT_PATH, SONG_TITLE_SIZE, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			t.antialiasing = false;
 			t.borderSize = 2;
 			songTexts.add(t);
 		}

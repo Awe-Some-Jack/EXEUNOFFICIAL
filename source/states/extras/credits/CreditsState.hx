@@ -122,7 +122,7 @@ class CreditsState extends MusicBeatState
 
 		if (inPopup) return;
 
-		if (Controls.instance.BACK)
+		if (controls.BACK)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			FlxG.switchState(() -> new ExtrasMenu());
@@ -200,7 +200,7 @@ class CreditsState extends MusicBeatState
 			}
 		}
 
-		if ((Controls.instance.ACCEPT || FlxG.mouse.justPressed) && canSelect)
+		if ((controls.ACCEPT || FlxG.mouse.justPressed) && canSelect)
 		{
 			inPopup = true;
 			openSubState(new CreditPopup());

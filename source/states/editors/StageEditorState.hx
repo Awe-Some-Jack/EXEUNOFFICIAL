@@ -1997,6 +1997,7 @@ class StageEditorAnimationSubstate extends MusicBeatSubstate
 		super();
 
 		var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(50, 50, 100, 100, true, 0xFFAAAAAA, 0xFF666666));
+		grid.antialiasing = false;
 		add(grid);
 
 		animsTxtGroup = new FlxTypedGroup<FlxText>();

@@ -377,8 +377,10 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		infoBox = new PsychUIBox(infoBoxPosition.x, infoBoxPosition.y, 220, 220, ['Information']);
 		infoBox.scrollFactor.set();
 		infoBox.cameras = [camUI];
+
 		infoText = new FlxText(15, 15, 230, '', 16);
 		infoText.scrollFactor.set();
+		infoText.antialiasing = false;
 		infoBox.getTab('Information').menu.add(infoText);
 		add(infoBox);
 
@@ -473,6 +475,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		onChartLoaded();
 
 		var tipText:FlxText = new FlxText(FlxG.width - 210, FlxG.height - 30, 200, 'Press F1 for Help', 20);
+		tipText.antialiasing = false;
 		tipText.cameras = [camUI];
 		tipText.setFormat(null, 16, FlxColor.WHITE, RIGHT);
 		tipText.borderColor = FlxColor.BLACK;
@@ -2641,7 +2644,9 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		value2InputText.onChange = function(old:String, cur:String) changeEventsValue(cur, 2);
 
 		objY += 40;
+
 		eventDescriptionText = new FlxText(objX, objY, 280, defaultEvents[0][1]);
+		eventDescriptionText.antialiasing = false;
 
 		tab_group.add(new FlxText(eventDropDown.x, eventDropDown.y - 15, 80, 'Event:'));
 		tab_group.add(new FlxText(value1InputText.x, value1InputText.y - 15, 80, 'Value 1:'));

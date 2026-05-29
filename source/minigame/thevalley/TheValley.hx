@@ -94,6 +94,7 @@ class TheValley extends MusicBeatState
 		debugText.scrollFactor.set(0, 0);
 		debugText.cameras = [hudCamera];
 		debugText.visible = false;
+		debugText.antialiasing = false;
 		add(debugText);
 
 		playerHitboxSprite = new FlxSprite();

@@ -140,6 +140,7 @@ class Character extends FlxSprite
 			missingCharacter = true;
 			missingText = new FlxText(0, 0, 300, 'ERROR:\n$character.json', 16);
 			missingText.alignment = CENTER;
+			missingText.antialiasing = false;
 		}
 
 		try

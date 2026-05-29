@@ -106,6 +106,7 @@ class PsychUIInputText extends PsychUIGroup
 		this.textObj.textField.selectable = false;
 		this.textObj.textField.wordWrap = false;
 		this.textObj.textField.multiline = false;
+		this.textObj.antialiasing = false;
 		this.selection.color = FlxColor.BLUE;
 
 		@:bypassAccessor fieldWidth = wid;

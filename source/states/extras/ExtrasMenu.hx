@@ -220,6 +220,7 @@ class ExtrasMenu extends MusicBeatState
         {
             var tempText = new FlxText(0, 0, 0, menuDescriptions[i], DESCRIPTION_FONT_SIZE);
             tempText.setFormat("assets/fonts/smallass.ttf", DESCRIPTION_FONT_SIZE, FlxColor.WHITE, LEFT);
+            tempText.antialiasing = ClientPrefs.data.antialiasing;
             tempText.updateHitbox();
             tempText.drawFrame(true);
 
@@ -254,23 +255,23 @@ class ExtrasMenu extends MusicBeatState
     {
         if (cooldownTimer <= 0)
         {
-            if (Controls.instance.UI_UP_P)
+            if (controls.UI_UP_P)
             {
                 changeSelection(-1);
                 cooldownTimer = 0.2;
             }
 
-            if (Controls.instance.UI_DOWN_P)
+            if (controls.UI_DOWN_P)
             {
                 changeSelection(1);
                 cooldownTimer = 0.2;
             }
         }
 
-        if (Controls.instance.ACCEPT)
+        if (controls.ACCEPT)
             selectOption();
 
-        if (Controls.instance.BACK)
+        if (controls.BACK)
             exitToMainMenu();
     }
 

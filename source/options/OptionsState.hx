@@ -41,7 +41,6 @@ class OptionsState extends MusicBeatState
 		bg.setGraphicSize(FlxG.width, FlxG.height);
 		bg.updateHitbox();
 		bg.screenCenter();
-		bg.antialiasing = ClientPrefs.data.antialiasing;
 		add(bg);
 
 		objsGrp = new FlxTypedGroup<FlxSprite>();
@@ -53,7 +52,6 @@ class OptionsState extends MusicBeatState
 			obj.setGraphicSize(Std.int(obj.width * GLOBAL_SCALE));
 			obj.updateHitbox();
 			obj.ID = i;
-			obj.antialiasing = ClientPrefs.data.antialiasing;
 			objsGrp.add(obj);
 			resetObj(obj);
 		}
@@ -62,7 +60,6 @@ class OptionsState extends MusicBeatState
 		title.setGraphicSize(Std.int(title.width * GLOBAL_SCALE));
 		title.updateHitbox();
 		title.screenCenter(X);
-		title.antialiasing = ClientPrefs.data.antialiasing;
 		add(title);
 
 		sectionBGClone = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));

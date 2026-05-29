@@ -140,27 +140,27 @@ class DAPlayer extends FlxGroup
 		barKnob = new FlxSprite(0, 0);
 		barKnob.makeGraphic(knobR * 2, knobR * 2, 0x00000000);
 		_drawCircle(barKnob, knobR, 0xFFCC0000);
-		barKnob.antialiasing = true;
 		barKnob.alpha = 0;
 		add(barKnob);
 
 		timeTxt = new FlxText(BX + 10, BY + bH + 7, Std.int(bW), '0:00', 22);
 		timeTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 22, FlxColor.BLACK, CENTER);
-		timeTxt.antialiasing = true;
+		timeTxt.antialiasing = ClientPrefs.data.antialiasing;
+
 		add(timeTxt);
 
 		songNameTxt = new FlxText(625, 132, 560, '', 60);
 		songNameTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 60, FlxColor.BLACK, CENTER);
 		songNameTxt.letterSpacing = 2;
-		songNameTxt.antialiasing  = true;
-		songNameTxt.wordWrap      = false;
+		songNameTxt.wordWrap = false;
+		songNameTxt.antialiasing = ClientPrefs.data.antialiasing;
 		add(songNameTxt);
 
 		composerTxt = new FlxText(625, 196, 560, '', 18);
 		composerTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 18, FlxColor.BLACK, CENTER);
 		composerTxt.letterSpacing = 6;
-		composerTxt.antialiasing  = true;
-		composerTxt.wordWrap      = false;
+		composerTxt.wordWrap = false;
+		composerTxt.antialiasing = ClientPrefs.data.antialiasing;
 		add(composerTxt);
 
 		jumpscareSprite = new FlxSprite(-120, -200);

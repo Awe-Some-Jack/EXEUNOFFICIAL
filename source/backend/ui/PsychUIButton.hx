@@ -51,7 +51,9 @@ class PsychUIButton extends PsychUIGroup
 
 		text = new FlxText(0, 0, 1, '');
 		text.alignment = CENTER;
+		text.antialiasing = false;
 		add(text);
+
 		resize(wid, hei);
 		this.label = label;
 		

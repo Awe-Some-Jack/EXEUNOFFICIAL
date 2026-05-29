@@ -37,6 +37,7 @@ class InfoBioParallaxState extends MusicBeatState
 		loadCharData();
 
 		var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0xFFDE3F3F, 0xFF92454C));
+		grid.antialiasing = false;
 		grid.velocity.set(40, 40);
 		add(grid);
 
@@ -193,7 +194,7 @@ class InfoBioParallaxState extends MusicBeatState
 
 		if (!transitioning)
 		{
-			if (Controls.instance.BACK)
+			if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(() -> new states.parallax.ParallaxState());

@@ -114,6 +114,20 @@ class CoolUtil
 		return maxKey;
 	}
 
+	inline public static function showPopUp(message:String, title:String #if sl_windows_api, ?icon:MessageBoxIcon, ?type:MessageBoxType #end, showScrollableMSG:Bool = false):Void
+	{
+		#if android
+		AndroidTools.showAlertDialog(title, message, {name: "OK", func: null}, null);
+		#elseif sl_windows_api
+		if (showScrollableMSG)
+			WindowsAPI.showScrollableMessage(message, title);
+		else
+			WindowsAPI.showMessageBox(message, title, icon, type);
+		#else
+		FlxG.stage.window.alert(message, title);
+		#end
+	}
+
 	inline public static function fpsLerp(amount:Float, elapsed:Float):Float
 		return amount * elapsed * 60;
 

@@ -86,7 +86,7 @@ class FPSCounter extends TextField
 			times.push(now);
 			while (times[0] < now - 1000) times.shift();
 
-			currentFPS = times.length < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;
+			currentFPS = times.length;
 			
 			_statTimer += deltaTime;
 			if (_statTimer >= STAT_INTERVAL)
@@ -177,8 +177,6 @@ class FPSCounter extends TextField
 	static inline function fmt(bytes:Float):String
 		return flixel.util.FlxStringUtil.formatBytes(bytes);
 
-	// ---- background queries (run on worker thread, no UI access) ----
-
 	static function queryCPU():Float
 	{
 		#if windows
@@ -227,7 +225,6 @@ class FPSCounter extends TextField
 		return -1;
 	}
 
-	// Background-thread VRAM fallbacks (Stage3D not accessible here — use external tools)
 	static function queryVRAM():Float
 	{
 		#if windows

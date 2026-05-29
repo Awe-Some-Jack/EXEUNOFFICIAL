@@ -271,19 +271,10 @@ class PlayState extends MusicBeatState
 	public var endCallback:Void->Void = null;
 
 	private static var _lastLoadedModDirectory:String = '';
-	public static var nextReloadAll:Bool = false;
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
 		_lastLoadedModDirectory = Mods.currentModDirectory;
-		Paths.clearStoredMemory();
-		if(nextReloadAll)
-		{
-			Paths.clearUnusedMemory();
-			Language.reloadPhrases();
-		}
-
-		nextReloadAll = false;
 
 		startCallback = startCountdown;
 		endCallback = endSong;
@@ -301,8 +292,7 @@ class PlayState extends MusicBeatState
 			'note_right'
 		];
 
-		if(FlxG.sound.music != null)
-			FlxG.sound.music.stop();
+		FlxG.sound.music?.stop();
 
 		// Gameplay settings
 		healthGain = ClientPrefs.getGameplaySetting('healthgain');
@@ -335,14 +325,15 @@ class PlayState extends MusicBeatState
 		#if DISCORD_ALLOWED
 		if (isStoryMode)
 		{
-			var curWeek = WeekData.getCurrentWeek();
-			detailsText = "Story Mode: " + (curWeek != null ? curWeek.weekName : SONG.song);
+			final curWeek = WeekData.getCurrentWeek();
+			detailsText = "Story Mode: " + (curWeek?.weekName ?? SONG.song);
 		}
 		else
 			detailsText = "Freeplay";
 		#end
 
-		switch(Paths.formatToSongPath(SONG.song)){
+		switch(Paths.formatToSongPath(SONG.song))
+		{
 			case 'yourself':
 				appName = "Friday Night Funkin': Vs Youself";
 			case 'cycles', 'hellbent', 'fate', 'gotta-go':
@@ -376,7 +367,7 @@ class PlayState extends MusicBeatState
 		defaultCamZoom = stageData.defaultZoom;
 
 		stageUI = "normal";
-		if (stageData.stageUI != null && stageData.stageUI.trim().length > 0)
+		if (stageData.stageUI?.trim().length > 0)
 			stageUI = stageData.stageUI;
 		else if (stageData.isPixelStage == true) //Backward compatibility
 			stageUI = "pixel";
@@ -392,16 +383,13 @@ class PlayState extends MusicBeatState
 			cameraSpeed = stageData.camera_speed;
 
 		boyfriendCameraOffset = stageData.camera_boyfriend;
-		if(boyfriendCameraOffset == null) //Fucks sake should have done it since the start :rolling_eyes:
-			boyfriendCameraOffset = [0, 0];
+		boyfriendCameraOffset ??= [0, 0]; //Fucks sake should have done it since the start :rolling_eyes:
 
 		opponentCameraOffset = stageData.camera_opponent;
-		if(opponentCameraOffset == null)
-			opponentCameraOffset = [0, 0];
+		opponentCameraOffset ??= [0, 0];
 
 		girlfriendCameraOffset = stageData.camera_girlfriend;
-		if(girlfriendCameraOffset == null)
-			girlfriendCameraOffset = [0, 0];
+		girlfriendCameraOffset ??= [0, 0];
 
 		gameplayCam.applyStageData(stageData);
 
@@ -662,7 +650,6 @@ class PlayState extends MusicBeatState
 		splash.alpha = 0.000001; //cant make it invisible or it won't allow precaching
 
 		super.create();
-		Paths.clearUnusedMemory();
 
 		cachePopUpScore();
 
@@ -675,7 +662,7 @@ class PlayState extends MusicBeatState
 	{
 		if(generatedMusic)
 		{
-			var ratio:Float = value / songSpeed; //funny word huh
+			final ratio:Float = value / songSpeed; //funny word huh
 			if(ratio != 1)
 			{
 				for (note in notes.members) note.resizeByRatio(ratio);
@@ -692,11 +679,9 @@ class PlayState extends MusicBeatState
 		#if FLX_PITCH
 		if(generatedMusic)
 		{
-			vocals.pitch = value;
-			opponentVocals.pitch = value;
-			FlxG.sound.music.pitch = value;
+			FlxG.sound.list.forEach((sound:FlxSound) -> if (sound != null) sound.pitch = value);
 
-			var ratio:Float = playbackRate / value; //funny word huh
+			final ratio:Float = playbackRate / value; //funny word huh
 			if(ratio != 1)
 			{
 				for (note in notes.members) note.resizeByRatio(ratio);
@@ -2597,7 +2582,7 @@ class PlayState extends MusicBeatState
 						canResync = false;
 						if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
 						else FlxG.switchState(() -> new EXEFreeplay());
-						
+
 						if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
 							StoryModeState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
@@ -3626,14 +3611,18 @@ class PlayState extends MusicBeatState
 	}
 
 	public function setOnScripts(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
-		if(exclusions == null) exclusions = [];
+		exclusions ??= [];
+
 		setOnLuas(variable, arg, exclusions);
 		setOnHScript(variable, arg, exclusions);
 	}
 
 	public function setOnLuas(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
 		#if LUA_ALLOWED
-		if(exclusions == null) exclusions = [];
+		if (luaArray == null) return; 
+
+		exclusions ??= [];
+		
 		for (script in luaArray) {
 			if(exclusions.contains(script.scriptName))
 				continue;
@@ -3645,7 +3634,10 @@ class PlayState extends MusicBeatState
 
 	public function setOnHScript(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
 		#if HSCRIPT_ALLOWED
-		if(exclusions == null) exclusions = [];
+		if (hscriptArray == null) return; 
+
+		exclusions ??= [];
+
 		for (script in hscriptArray) {
 			if(exclusions.contains(script.origin))
 				continue;
@@ -3656,12 +3648,7 @@ class PlayState extends MusicBeatState
 	}
 
 	function strumPlayAnim(isDad:Bool, id:Int, time:Float) {
-		var spr:StrumNote = null;
-		if(isDad) {
-			spr = opponentStrums.members[id];
-		} else {
-			spr = playerStrums.members[id];
-		}
+		final spr:StrumNote = isDad ? opponentStrums.members[id] : playerStrums.members[id];
 
 		if(spr != null) {
 			spr.playAnim('confirm', true);

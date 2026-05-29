@@ -27,7 +27,8 @@
 			"description": "Director and Composer",
 			"quote": "Fueron 4 años bastante largos, movidos y llenos de puro arte. Pero también he descubierto lo tóxica y envidiosa que puede ser la gente en esta comunidad. He podido ver los sabotajes que son capaces de hacer para arruinar los proyectos de los demás.\n\nPero hoooly shit, puedo aseguraros que ha merecido la pena cada tarde, cada conversación y todo lo que he aportado a este mundillo de EXE.\n\nAgradecimientos a mis suscriptores, a todos mis colaboradores y a todos los que me han dado buenas experiencias en sus mods, además de a mi gente de la vida real.\n\nNo pudieron pararnos de nuevo.\n#EXEmovement",
 			"nation": "espana",
-			"youtube": "https://www.youtube.com/@Kiv_FLP"
+			"youtube": "https://www.youtube.com/@Kiv_FLP",
+			"extra": ["image", "karlosmuere.jpg"]
 		},
 		{
 			"name": "Dudu",
@@ -55,7 +56,8 @@
 			"colors": [[40, 247, 17], [27, 173, 10]],
 			"nation": "espana",
 			"twitter": "https://x.com/raimbowcore12",
-			"youtube": "https://www.youtube.com/@raimbowcore12"
+			"youtube": "https://www.youtube.com/@raimbowcore12",
+			"extra": ["video", "elpan", true]
 		},
 		{
 			"name": "AssmanBruh",
@@ -76,8 +78,12 @@
 			"name": "Kophy232",
 			"icon": "kophy",
 			"description": "Coder",
+			"quote": "Hola! :] Fue un gusto ayudar en este exitoso proyecto de Sonic.exe, siempre le tuve fe, fue grandioso ver a tanta gente talentosa trabajar unida para sacar un proyecto tan grande y dificil! que no se compara a ninguna otra restauracion. En mi caso, viniendo del mod que no deberia mencionarse, fueron 3 largos años de espera y sufrimiento, desarrollando cutres restauraciones para que solo sean una perdida de tiempo y esfuerzo invertido para nada, pero estoy muy orgulloso que finalmente lograramos publicar algo de lo que habria sido un gran proyecto hecho con amor y dedicacion.\nMis mas sinceras gracias al dev team por hacer este proyecto una realidad, y nunca rendirse! Vieron que no era tan dificil despues de todo? oh and.. fuck the leakers=!=!)!",
 			"nation": "peru",
-			"colors": [[0, 23, 182], [140, 23, 51]]
+			"colors": [[0, 23, 182], [140, 23, 51]],
+			"youtube": "https://www.youtube.com/@kophy232",
+			"twitter": "https://x.com/kophy232",
+			"extra": ["image", "callate"]
 		},
 		{
 			"name": "Wolfie",
@@ -139,9 +145,10 @@
 			"description": "Artist"
 		},
 		{
-			"name": "NayreFunkin",
+			"name": "NayreFunkin'",
 			"icon": "nayre",
 			"description": "Artist",
+			"quote": "fui la mas femenina, sumisa, neko, otaku, coquette y amorosa del server. Lastima que tenga pito",
 			"nation": "colombia",
 			"colors": [[244, 115, 164], [150, 23, 62]],
 			"youtube": "https://www.youtube.com/@nayrefunkin1350",
@@ -239,6 +246,7 @@
 			"name": "Sr. Kleynner",
 			"icon": "kleynner",
 			"description": "Pixel Artist",
+			"quote": "Hola! soy Kleynner, pixel artista; es la primera vez que estoy en un mod de fnf y la verdad me entretuve mucho trabajando en este, entré gracias a un amigo que me invitó a ver cómo iba el mod y gracias a saber un poco de pixel art pude ayudar a que este proyecto pudiera completarse, del cual me siento muy feliz de ser parte para finalmente ver Vs Sonic.exe terminado, mod que me gustaba mucho y siempre quise ver algún mod que lo terminara, me divertí bastante aquí y me alegro de haber compartido con todo este increíble equipo\n\nlo ironico es que realmente es la primera vez que hago cosas de fnf y Sonic así que aprendí varias cosas aquí también, además que me motivó a seguir con el pixel art después de un tiempo donde había perdido toda motivación, este mod está hecho con amor y cariño, no por fama espero lo disfruten así cómo disfrutamos haciéndolo \n\n\n-POLLO ME ROBÓ LA FRASE\n-Chad\n-Familia Unofficial\n-UMW",
 			"nation": "colombia",
 			"youtube": "https://youtube.com/@srkleynner",
 			"twitter": "https://x.com/SrKleynner",
@@ -279,7 +287,12 @@
 		{
 			"name": "LifeyTheRay",
 			"icon": "lifey",
-			"description": "Composer"
+			"description": "Composer",
+			"nation": "brazil",
+			"colors": [[71, 67, 226], [49, 160, 134]],
+			"youtube": "https://www.youtube.com/@Lifeylmao",
+			"twitter": "https://x.com/Samu3470",
+			"extra": ["image", "brasil.jpg"]
 		},
 		{
 			"name": "KraimYT",
@@ -319,6 +332,7 @@
 			"name": "Rogtary",
 			"icon": "rogtary",
 			"description": "Composer",
+			"quote": "Hermano, trabajar aquí fue una de las mejores experiencias que he tenido en esta comunidad. Nunca había estado en un mod EXE terminado, y que el primero sea este me tiene muy emocionado.\n\nMe encanta ver que con trabajo, tiempo y esfuerzo pudimos crear algo especial entre todos nosotros.\n\nPasé muy buenos momentos y conocí personas increíbles. Muchas gracias por creer en nosotros y por dejarme formar parte de este proyecto.\n\nEspero se pueda dar la oportunidad de una v2 para seguir viviendo esta bonita experiencia.\n\nCon mucho cariño, gracias... Rogy los quiere :D",
 			"nation": "chile",
 			"colors": [[45, 0, 68], [6, 0, 10]],
 			"youtube": "https://youtube.com/@rogtarymusic"
@@ -330,14 +344,19 @@
 			"quote": "PaRappa mi GOAT",
 			"colors": [[227, 62, 58], [121, 234, 94]],
 			"nation": "peru",
-			"youtube": "https://www.youtube.com/@ryan2511pro"
+			"youtube": "https://www.youtube.com/@ryan2511pro",
+			"extra": ["video", "baldi humor"]
 		},
 		{
 			"name": "Tomis Turbando",
 			"icon": "tomis",
 			"description": "Composer",
+			"quote": "Sou um compositor nerd, amo fazer musicas, Sata andagi :D",
 			"nation": "brazil",
-			"youtube": "https://x.com/Tomis_Turbando"
+			"colors": [[230, 247, 255], [37, 39, 51]],
+			"youtube": "https://youtube.com/@tomisturbando",
+			"twitter": "https://x.com/Tomis_Turbando",
+			"extra": ["video", "santa", true]
 		},
 		{
 			"name": "Sanko",

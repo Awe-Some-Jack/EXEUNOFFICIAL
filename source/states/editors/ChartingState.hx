@@ -918,25 +918,25 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 					else loadSection(0);
 					Conductor.songPosition = FlxG.sound.music.time = vocals.time = opponentVocals.time = timeToGoBack;
 				}
-				else if (FlxG.keys.pressed.W != FlxG.keys.pressed.S || FlxG.mouse.wheel != 0)
+				else if (FlxG.keys.pressed.W != FlxG.keys.pressed.S || FlxG.mouse.deltaWheel.y != 0)
 				{
 					if (FlxG.sound.music.playing)
 						setSongPlaying(false);
 
-					if (mouseSnapCheckBox.checked && FlxG.mouse.wheel != 0)
+					if (mouseSnapCheckBox.checked && FlxG.mouse.deltaWheel.y != 0)
 					{
 						var snap:Float = Conductor.stepCrochet / (curQuant/16) / curZoom;
-						var timeAdd:Float = (FlxG.keys.pressed.SHIFT ? 4 : 1) / (holdingAlt ? 4 : 1) * -FlxG.mouse.wheel * snap;
+						var timeAdd:Float = (FlxG.keys.pressed.SHIFT ? 4 : 1) / (holdingAlt ? 4 : 1) * -FlxG.mouse.deltaWheel.y * snap;
 						var time:Float = Math.round((FlxG.sound.music.time + timeAdd) / snap) * snap;
 						if (time > 0) time += 0.000001; //goes at the start of a section more properly
 						FlxG.sound.music.time = time;
 					}
 					else
 					{
-						var speedMult:Float = (FlxG.keys.pressed.SHIFT ? 4 : 1) * (FlxG.mouse.wheel != 0 ? 4 : 1) / (holdingAlt ? 4 : 1);
-						if (FlxG.keys.pressed.W || FlxG.mouse.wheel > 0)
+						var speedMult:Float = (FlxG.keys.pressed.SHIFT ? 4 : 1) * (FlxG.mouse.deltaWheel.y != 0 ? 4 : 1) / (holdingAlt ? 4 : 1);
+						if (FlxG.keys.pressed.W || FlxG.mouse.deltaWheel.y > 0)
 							FlxG.sound.music.time -= Conductor.crochet * speedMult * 1.5 * elapsed / curZoom;
-						else if (FlxG.keys.pressed.S || FlxG.mouse.wheel < 0)
+						else if (FlxG.keys.pressed.S || FlxG.mouse.deltaWheel.y < 0)
 							FlxG.sound.music.time += Conductor.crochet * speedMult * 1.5 * elapsed / curZoom;
 					}
 

@@ -229,8 +229,9 @@ class BIOSCharacter
 	{
 		if (chars_list.length > 1)
 		{
-			if (FlxG.mouse.wheel != 0 && !FlxG.mouse.overlaps(bios.biosInfo.bioBox))
-				changeCharBio(-FlxG.mouse.wheel);
+			if (FlxG.mouse.deltaWheel.y != 0 && !FlxG.mouse.overlaps(bios.biosInfo.bioBox))
+				changeCharBio(Math.round(-FlxG.mouse.deltaWheel.y));
+
 			if (bios.controls.UI_UP_P || FlxG.keys.justPressed.W)   changeCharBio(-1);
 			if (bios.controls.UI_DOWN_P || FlxG.keys.justPressed.S) changeCharBio(1);
 		}

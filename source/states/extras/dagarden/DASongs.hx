@@ -257,7 +257,7 @@ class DASongs extends FlxGroup
 
 	private function _updateScroll(elapsed:Float):Void
 	{
-		var wheel = FlxG.mouse.wheel;
+		var wheel = FlxG.mouse.deltaWheel.y;
 		if (wheel != 0) scrollTarget -= wheel * BOX_SPACING;
 
 		var maxScroll = Math.max(0.0, (songList.length - 1) * BOX_SPACING - (FlxG.height - BOX_Y - BOX_SPACING));

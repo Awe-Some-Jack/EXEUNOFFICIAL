@@ -144,12 +144,12 @@ class BIOSInfo
 	{
 		var textTaller = bioTxt.visible && bioTxt.height > boxH;
 
-		if (FlxG.mouse.wheel != 0 && FlxG.mouse.overlaps(bioBox) && textTaller)
+		if (FlxG.mouse.deltaWheel.y != 0 && FlxG.mouse.overlaps(bioBox) && textTaller)
 		{
 			if (moveTween != null) { moveTween.cancel(); moveTween = null; }
 			moveCounter = 0;
 			canMove     = true;
-			bioTxt.y += FlxG.mouse.wheel * 10;
+			bioTxt.y += FlxG.mouse.deltaWheel.y * 10;
 			if (bioTxt.y > PAD_TOP)                 bioTxt.y = PAD_TOP;
 			if (bioTxt.y < -(bioTxt.height - boxH)) bioTxt.y = -(bioTxt.height - boxH);
 		}

@@ -297,11 +297,11 @@ class SoundTest extends MusicBeatState
 	{
 		var change:Int = 0;
 
-		if (Controls.instance.UI_DOWN_P || FlxG.mouse.wheel < 0){
+		if (Controls.instance.UI_DOWN_P || FlxG.mouse.deltaWheel.y < 0){
 			change = (FlxG.keys.pressed.SHIFT ? 3 : 1);
 			changeHold = 0;
 		}
-		else if (Controls.instance.UI_UP_P || FlxG.mouse.wheel > 0){
+		else if (Controls.instance.UI_UP_P || FlxG.mouse.deltaWheel.y > 0){
 			change = -(FlxG.keys.pressed.SHIFT ? 3 : 1);
 			changeHold = 0;
 		}

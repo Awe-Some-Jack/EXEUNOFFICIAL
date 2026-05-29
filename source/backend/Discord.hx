@@ -16,6 +16,7 @@ class DiscordClient
 	private inline static final _defaultID:String = "1478458307961163786";
 	public static var clientID(default, set):String = _defaultID;
 	private static var presence:DiscordPresence = new DiscordPresence();
+	
 	// hides this field from scripts and reflection in general
 	@:unreflective private static var __thread:Thread;
 
@@ -30,7 +31,7 @@ class DiscordClient
 		if (!isInitialized && ClientPrefs.data.discordRPC)
 			initialize();
 
-		Application.current.onExit.add((_) -> if(isInitialized) shutdown(););
+		Application.current.onExit.add((_) -> if(isInitialized) shutdown());
 	}
 
 	public dynamic static function shutdown()

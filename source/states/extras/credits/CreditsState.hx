@@ -133,9 +133,9 @@ class CreditsState extends MusicBeatState
 
 		if (overlapCamera(devs))
 		{
-			if (FlxG.mouse.wheel != 0)
+			if (FlxG.mouse.deltaWheel.y != 0)
 			{
-				devs.scroll.y -= FlxG.mouse.wheel * 32;
+				devs.scroll.y -= FlxG.mouse.deltaWheel.y * 32;
 				devs.scroll.y = FlxMath.bound(devs.scroll.y, 0, Math.max(0, (devList.length * 32) - devs.height + 10));
 			}
 
@@ -156,9 +156,9 @@ class CreditsState extends MusicBeatState
 
 		if (overlapCamera(og))
 		{
-			if (FlxG.mouse.wheel != 0)
+			if (FlxG.mouse.deltaWheel.y != 0)
 			{
-				og.scroll.y -= FlxG.mouse.wheel * 32;
+				og.scroll.y -= FlxG.mouse.deltaWheel.y * 32;
 				og.scroll.y = FlxMath.bound(og.scroll.y, 0, Math.max(0, (ogList.length * 32) - og.height + 10));
 			}
 
@@ -179,9 +179,9 @@ class CreditsState extends MusicBeatState
 
 		if (overlapCamera(external))
 		{
-			if (FlxG.mouse.wheel != 0)
+			if (FlxG.mouse.deltaWheel.y != 0)
 			{
-				external.scroll.y -= FlxG.mouse.wheel * 32;
+				external.scroll.y -= FlxG.mouse.deltaWheel.y * 32;
 				external.scroll.y = FlxMath.bound(external.scroll.y, 0, Math.max(0, (externalList.length * 32) - external.height + 10));
 			}
 

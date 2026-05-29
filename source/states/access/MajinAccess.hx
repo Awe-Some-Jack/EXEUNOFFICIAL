@@ -162,7 +162,7 @@ class MajinAccess extends MusicBeatState
 				transitioning = true;
 			}
 
-			if (Controls.instance.UI_LEFT_P || Controls.instance.UI_RIGHT_P || FlxG.mouse.wheel != 0)
+			if (Controls.instance.UI_LEFT_P || Controls.instance.UI_RIGHT_P || FlxG.mouse.deltaWheel.y != 0)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
 				isJP = !isJP;

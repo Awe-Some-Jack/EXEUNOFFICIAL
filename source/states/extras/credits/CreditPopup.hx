@@ -191,9 +191,9 @@ class CreditPopup extends MusicBeatSubstate
 	{
 		if (overlapCamera(quoteBG))
 		{
-			if (FlxG.mouse.wheel != 0)
+			if (FlxG.mouse.deltaWheel.y != 0)
 			{
-				quoteBG.scroll.y -= FlxG.mouse.wheel * 22;
+				quoteBG.scroll.y -= FlxG.mouse.deltaWheel.y * 22;
 				quoteBG.scroll.y = FlxMath.bound(quoteBG.scroll.y, 0, Math.max(0, userQuote.height - quoteBG.height + 10));
 
 				scrollBar.y = FlxMath.lerp(0, quoteBG.height - scrollBar.height, quoteBG.scroll.y / Math.max(0, userQuote.height - quoteBG.height + 10));

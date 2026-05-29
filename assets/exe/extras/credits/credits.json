@@ -62,7 +62,12 @@
 		{
 			"name": "AssmanBruh",
 			"icon": "assman",
-			"description": "Coder"
+			"description": "Coder",
+			"nation": "peru",
+			"quote": "haxeflixel my beloved",
+			"colors": [[123, 142, 153], [255, 255, 255]],
+			"twitter": "https://x.com/assmansito_",
+			"youtube": "https://www.youtube.com/@assmanbruh"
 		},
 		{
 			"name": "CherryLemur",
@@ -361,7 +366,11 @@
 		{
 			"name": "Sanko",
 			"icon": "sanko",
-			"description": "Composer"
+			"description": "Composer",
+			"nation": "mexico",
+			"colors": [[199, 4, 2], [16, 0, 0]],
+			"youtube": "https://youtube.com/@sanko89858",
+			"extra": ["image", "chinito.jpg"]
 		},
 		{
 			"name": "Alex_Hamud",

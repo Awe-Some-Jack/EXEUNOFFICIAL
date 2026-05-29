@@ -174,7 +174,12 @@
 		{
 			"name": "Mariano",
 			"icon": "mariano",
-			"description": "Artist"
+			"description": "Artist",
+			"nation": "peru",
+			"colors": [[255, 122, 0], [255, 213, 74]],
+			"quote": "Hola soy Mariano\nAlguien apasionado a la animación en general, para mi fue un gusto hacer muchas cosas en este mod, creo que soy el equilibrio del proyecto...\n\nY quien diga lo contrario solo es un envidioso egoísta!!!!!!!, como sea nos vemos en otra querido público que anda de curioso en ver los créditos del mod.",
+			"youtube": "https://youtube.com/@mar-z6b5k",
+			"extra": ["image", "mariano.jpg"]
 		},
 		{
 			"name": "Kostya Hernandez",

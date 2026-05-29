@@ -91,6 +91,8 @@ class Main extends Sprite
 			if (e.keyCode == FlxKey.ENTER && e.altKey) e.stopImmediatePropagation();
 		}, false, 100);
 
+		FlxG.mouse.useSystemCursor = true;
+
 		#if LUA_ALLOWED
 		Mods.pushGlobalMods();
 		#end

@@ -253,7 +253,7 @@ class PsychUIColorPicker extends PsychUIGroup
 		
 		var previewY = hexY + 30;
 		previewLabel = new FlxText(0, previewY, 0, "Preview:", 8);
-		previewlabel.antialiasing = false;
+		previewLabel.antialiasing = false;
 		add(previewLabel);
 		
 		currentPreview = new FlxSprite(50, previewY).makeGraphic(40, 40, FlxColor.WHITE);

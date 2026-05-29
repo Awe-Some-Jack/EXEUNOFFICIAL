@@ -11,8 +11,8 @@ import flixel.input.keyboard.FlxKey;
 import lime.utils.Assets;
 import lime.media.AudioBuffer;
 
-import flash.media.Sound;
-import flash.geom.Rectangle;
+import openfl.media.Sound;
+import openfl.geom.Rectangle;
 
 import haxe.Json;
 import haxe.Exception;
@@ -1195,10 +1195,10 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			else if (FlxG.mouse.justMoved)
 				updateSelectionBox();
 		}
-		else if (FlxG.mouse.pressedRight && (FlxG.mouse.deltaScreenX != 0 || FlxG.mouse.deltaScreenY != 0))
+		else if (FlxG.mouse.pressedRight && (FlxG.mouse.deltaViewX != 0 || FlxG.mouse.deltaViewY != 0))
 		{
-			selectionBox.setPosition(FlxG.mouse.screenX, FlxG.mouse.screenY);
-			selectionStart.set(FlxG.mouse.screenX, FlxG.mouse.screenY);
+			selectionBox.setPosition(FlxG.mouse.viewX, FlxG.mouse.viewY);
+			selectionStart.set(FlxG.mouse.viewX, FlxG.mouse.viewY);
 			selectionBox.visible = true;
 			updateSelectionBox();
 		}
@@ -1621,8 +1621,8 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 
 	function updateSelectionBox()
 	{
-		var diffX:Float = FlxG.mouse.screenX - selectionStart.x;
-		var diffY:Float = FlxG.mouse.screenY - selectionStart.y;
+		var diffX:Float = FlxG.mouse.viewX - selectionStart.x;
+		var diffY:Float = FlxG.mouse.viewY - selectionStart.y;
 		selectionBox.setPosition(selectionStart.x, selectionStart.y);
 
 		if (diffX < 0) //Fixes negative X scale
@@ -4016,7 +4016,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Exit', function()
 		{
 			PlayState.chartingMode = false;
-			MusicBeatState.switchState(new states.editors.MasterEditorMenu());
+			FlxG.switchState(() -> new states.editors.MasterEditorMenu());
 			FlxG.sound.playMusic(openfl.Assets.getSound('assets/exe/music/menu.ogg'));
 			FlxG.mouse.visible = false;
 		}, btnWid);

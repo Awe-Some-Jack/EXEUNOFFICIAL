@@ -14,7 +14,7 @@ import openfl.utils.Assets as OpenFlAssets;
 import openfl.geom.Rectangle;
 
 import lime.utils.Assets;
-import flash.media.Sound;
+import openfl.media.Sound;
 
 import haxe.Json;
 
@@ -489,7 +489,7 @@ class Paths
 			{
 				trace('SOUND NOT FOUND: $key, PATH: $path');
 				FlxG.log.error('SOUND NOT FOUND: $key, PATH: $path');
-				return FlxAssets.getSound('flixel/sounds/beep');
+				return FlxAssets.getSoundAddExtension('flixel/sounds/beep');
 			}
 		}
 		localTrackedAssets.push(file);

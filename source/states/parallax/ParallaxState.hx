@@ -150,8 +150,8 @@ class ParallaxState extends MusicBeatState
 				if (curSelected == 0) FlxG.sound.play(Paths.sound('storyparalax'));
 
 				new FlxTimer().start(1.4, function(tmr:FlxTimer){
-					if (curSelected == 0) MusicBeatState.switchState(new StoryParallaxState());
-					else MusicBeatState.switchState(new InfoBioParallaxState());
+					if (curSelected == 0) FlxG.switchState(() -> new StoryParallaxState());
+					else FlxG.switchState(() -> new InfoBioParallaxState());
 				});
 			}
 		}

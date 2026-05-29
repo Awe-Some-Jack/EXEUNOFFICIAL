@@ -168,11 +168,6 @@ class MusicBeatState extends FlxTransitionableState
         openSubState(trans);
     }
 
-	@:deprecated("MusicBeatState.switchState(nextState) is deprecated, use FlxG.switchState(nextState) instead PLZ")
-	public static function switchState(nextState:FlxState) {
-		FlxG.switchState(nextState);
-	}
-
 	@:deprecated("MusicBeatState.resetState() is deprecated, use FlxG.resetState() instead PLZ")
 	public static function resetState() {
 		FlxG.resetState();

@@ -200,7 +200,7 @@ class DAGarden extends MusicBeatState
 			player.restoreWindowTitle();
 			player.stop();
 			if (FlxG.sound.music != null) FlxG.sound.music.resume();
-			FlxG.switchState(new ExtrasMenu());
+			FlxG.switchState(() -> new ExtrasMenu());
 		}
 	}
 }

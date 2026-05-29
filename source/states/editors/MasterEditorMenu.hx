@@ -84,7 +84,7 @@ class MasterEditorMenu extends MusicBeatState
 		#end
 
 		if (controls.BACK)
-			MusicBeatState.switchState(new EXEMenu());
+			FlxG.switchState(() -> new EXEMenu());
 
 		if (controls.ACCEPT)
 		{
@@ -97,15 +97,15 @@ class MasterEditorMenu extends MusicBeatState
 				case 'Stage Editor':
 					LoadingState.loadAndSwitchState(new StageEditorState());
 				case 'Week Editor':
-					MusicBeatState.switchState(new WeekEditorState());
+					FlxG.switchState(() -> new WeekEditorState());
 				case 'Menu Character Editor':
-					MusicBeatState.switchState(new MenuCharacterEditorState());
+					FlxG.switchState(() -> new MenuCharacterEditorState());
 				case 'Dialogue Editor':
 					LoadingState.loadAndSwitchState(new DialogueEditorState(), false);
 				case 'Dialogue Portrait Editor':
 					LoadingState.loadAndSwitchState(new DialogueCharacterEditorState(), false);
 				case 'Note Splash Editor':
-					MusicBeatState.switchState(new NoteSplashEditorState());
+					FlxG.switchState(() -> new NoteSplashEditorState());
 			}
 			FlxG.sound.music.volume = 0;
 			EXEFreeplay.destroyFreeplayVocals();

@@ -6,19 +6,22 @@ import android.content.Context;
 
 import debug.FPSCounter;
 
-import flixel.graphics.FlxGraphic;
 import flixel.FlxGame;
 import flixel.FlxState;
+import flixel.graphics.FlxGraphic;
+import flixel.input.keyboard.FlxKey;
+
 import haxe.io.Path;
+
 import openfl.Assets;
 import openfl.Lib;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
-import lime.app.Application;
-import states.EXETitle;
 
-import hxwindowmode.WindowColorMode;
+import lime.app.Application;
+
+import states.EXETitle;
 
 #if HSCRIPT_ALLOWED
 import crowplexus.iris.Iris;
@@ -27,10 +30,6 @@ import psychlua.HScript.HScriptInfos;
 
 #if (linux || mac)
 import lime.graphics.Image;
-#end
-
-#if desktop
-import backend.ALSoftConfig; // Just to make sure DCE doesn't remove this, since it's not directly referenced anywhere else.
 #end
 
 //crash handler stuff
@@ -75,21 +74,18 @@ class Main extends Sprite
 	{
 		super();
 
-		#if (cpp && windows)
-		backend.Native.fixScaling();
-		#end
-
 		// Credits to MAJigsaw77 (he's the og author for this code)
 		#if android
 		Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
 		#elseif ios
 		Sys.setCwd(lime.system.System.applicationStorageDirectory);
 		#end
-		#if VIDEOS_ALLOWED
-		hxvlc.util.Handle.init(#if (hxvlc >= "1.8.0")  ['--no-lua'] #end);
-		#end
 
-		WindowColorMode.setDarkMode(); // Comment this if you wanna disable it! (Doesn't work on Windows 10 btw)
+		FlxG.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (e) ->
+		{
+			if (e.keyCode == FlxKey.F11) FlxG.fullscreen = !FlxG.fullscreen;
+			if (e.keyCode == FlxKey.ENTER && e.altKey) e.stopImmediatePropagation();
+		}, false, 100);
 
 		#if LUA_ALLOWED
 		Mods.pushGlobalMods();
@@ -217,7 +213,7 @@ class Main extends Sprite
 
 	static function resetSpriteCache(sprite:Sprite):Void {
 		@:privateAccess {
-		        sprite.__cacheBitmap = null;
+		    sprite.__cacheBitmap = null;
 			sprite.__cacheBitmapData = null;
 		}
 	}

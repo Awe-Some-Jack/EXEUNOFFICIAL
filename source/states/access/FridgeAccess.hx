@@ -262,8 +262,8 @@ class FridgeAccess extends MusicBeatState
 		}
 
 		camFollow.setPosition(
-			FlxG.width / 2 + (((FlxG.mouse.getScreenPosition().x - (FlxG.width / 2)) / (FlxG.width / 2)) * 5) + daOffset[0],
-			FlxG.height / 2 + (((FlxG.mouse.getScreenPosition().y - (FlxG.height / 2)) / (FlxG.height / 2)) * 5) + daOffset[1]
+			FlxG.width / 2 + (((FlxG.mouse.getViewPosition().x - (FlxG.width / 2)) / (FlxG.width / 2)) * 5) + daOffset[0],
+			FlxG.height / 2 + (((FlxG.mouse.getViewPosition().y - (FlxG.height / 2)) / (FlxG.height / 2)) * 5) + daOffset[1]
 		);
 	}
 

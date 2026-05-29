@@ -47,7 +47,6 @@ class EXEMenu extends MusicBeatState
 
 	static final TEXT_SCALES:Array<Float> = [0.245, 0.3, 0.330, 0.3, 0.245, 0.20];
 
-
 	var menuOptions:Array<FlxSprite> = [];
 	var menuTexts:Array<FlxText>     = [];
 	var shadowSprite:FlxSprite;
@@ -69,6 +68,7 @@ class EXEMenu extends MusicBeatState
 	var curKey:Array<Int>;
 
 	var heylookanemail:FlxSprite;
+
 	#if VIDEOS_ALLOWED
 	var menuVideo:hxvlc.flixel.FlxVideoSprite;
 	#end
@@ -82,9 +82,7 @@ class EXEMenu extends MusicBeatState
 		DiscordClient.changePresence("In the Menu", null);
 		#end
 
-		super.create();
-		persistentUpdate = true;
-		persistentDraw   = true;
+		persistentUpdate = persistentDraw = true;
 
 		#if VIDEOS_ALLOWED
 		menuVideo = new hxvlc.flixel.FlxVideoSprite(0, 0);
@@ -94,10 +92,12 @@ class EXEMenu extends MusicBeatState
 			menuVideo.screenCenter();
 		});
 		menuVideo.bitmap.onEndReached.add(() -> playMenuVideo());
+		menuVideo.antialiasing = ClientPrefs.data.antialiasing;
 		add(menuVideo);
 		playMenuVideo();
-		FlxG.autoPause = false;
 		#end
+
+		FlxG.autoPause = false;
 
 		shadowSprite = new FlxSprite();
 		shadowSprite.loadGraphic(Assets.getBitmapData("assets/exe/mainmenu/options/shadow.png"));
@@ -139,6 +139,8 @@ class EXEMenu extends MusicBeatState
 		changeSelection(0, false, false);
 
 		curKey = [for (_ in secretCodes) 0]; //lol
+
+		super.create();
 	}
 
 	#if VIDEOS_ALLOWED
@@ -164,6 +166,7 @@ class EXEMenu extends MusicBeatState
 
 	function goToMania() {
 		FlxG.camera.fade(FlxColor.BLACK, 1);
+		
 		new FlxTimer().start(1, (_) -> {
 			canManiaInteract = false;
 			var song = 'mania';

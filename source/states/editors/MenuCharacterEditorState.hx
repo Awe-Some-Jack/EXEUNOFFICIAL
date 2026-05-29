@@ -3,7 +3,7 @@ package states.editors;
 import openfl.net.FileReference;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
-import flash.net.FileFilter;
+import openfl.net.FileFilter;
 import haxe.Json;
 
 import objects.MenuCharacter;
@@ -214,7 +214,7 @@ class MenuCharacterEditorState extends MusicBeatState implements PsychUIEventHan
 			{
 				if (!unsavedProgress)
 				{
-					MusicBeatState.switchState(new states.editors.MasterEditorMenu());
+					FlxG.switchState(() -> new states.editors.MasterEditorMenu());
 					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 				}
 				else openSubState(new ExitConfirmationPrompt());

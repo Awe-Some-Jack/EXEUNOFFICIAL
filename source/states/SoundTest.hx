@@ -377,7 +377,7 @@ class SoundTest extends MusicBeatState
 						if (code.isWeek) loadSong(code.weekName, true);
 						else
 						{
-							if (code.type == 'sebas')  FlxG.switchState(new SebasMiBeba());
+							if (code.type == 'sebas')  FlxG.switchState(() -> new SebasMiBeba());
 							else
 							{
 								persistentUpdate = false;

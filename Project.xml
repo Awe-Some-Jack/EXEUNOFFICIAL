@@ -35,7 +35,6 @@
 
 	<define name="VIDEOS_ALLOWED" if="windows || linux || android || mac" unless="32bits"/>
 
-
 	<!-- ____________________________ Window Settings ___________________________ -->
 
 	<!--These window settings apply to all targets-->
@@ -89,11 +88,7 @@
 		<assets path='list.txt' rename='modsList.txt' />
 	</section>
 
-	<!-- OpenAL config -->
-	<section if="desktop">
-		<assets path="alsoft.txt" rename="plugins/alsoft.ini" type="text" if="windows"/>
-		<assets path="alsoft.txt" rename="plugins/alsoft.conf" type="text" unless="windows"/>
-	</section>
+	<assets path="psych-ui" rename="assets/psych-ui" embed="true" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
@@ -118,6 +113,7 @@
 	<haxelib name="hxcpp-debug-server" if="debug"/>
 	<haxedef name="HXC_LIBVLC_LOGGING" if="VIDEOS_ALLOWED debug" />
 	<haxedef name="HXVLC_NO_SHARE_DIRECTORY" if="VIDEOS_ALLOWED" />
+	
 	<define name="x86_BUILD" if="32bits" />
 	
 	<!-- ______________________________ Haxedefines _____________________________ -->

@@ -279,7 +279,7 @@ class ExtrasMenu extends MusicBeatState
         canMove = false;
         extraMenuSong = true;
         FlxG.sound.music.fadeOut(0.3);
-        FlxG.switchState(new EXEMenu());
+        FlxG.switchState(() -> new EXEMenu());
     }
 
     private function changeSelection(change:Int = 0):Void
@@ -459,13 +459,13 @@ class ExtrasMenu extends MusicBeatState
 
             case "CHARACTER BIOS":
                 stopMusicPlay = true;
-                FlxG.switchState(new BIOS());
+                FlxG.switchState(() -> new BIOS());
 
             case "D.A GARDEN":
                 extraMenuSong = false;
                 stopMusicPlay = true;
                 if (FlxG.sound.music != null) FlxG.sound.music.fadeOut(0.3);
-                FlxG.switchState(new DAGarden());
+                FlxG.switchState(() -> new DAGarden());
 
             case "CUTSCENES":
                 trace("Cutscenes selected");
@@ -477,7 +477,7 @@ class ExtrasMenu extends MusicBeatState
                 extraMenuSong = false;
                 stopMusicPlay = true;
                 if (FlxG.sound.music != null) FlxG.sound.music.fadeOut(0.3);
-                FlxG.switchState(new states.extras.credits.CreditsState());
+                FlxG.switchState(() -> new states.extras.credits.CreditsState());
         }
 
         canMove = true;

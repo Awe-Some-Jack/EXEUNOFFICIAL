@@ -246,7 +246,7 @@ class ExeGraphicsState extends MusicBeatState
 		if (controls.BACK)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new options.OptionsState());
+			FlxG.switchState(() -> new options.OptionsState());
 		}
 	}
 

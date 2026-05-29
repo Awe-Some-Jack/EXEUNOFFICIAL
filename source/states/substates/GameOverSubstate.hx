@@ -166,9 +166,9 @@ class GameOverSubstate extends MusicBeatSubstate
 				PlayState.chartingMode = false;
 	
 				Mods.loadTopMod();
-				if (PlayState.isStoryMode) MusicBeatState.switchState(new StoryModeState());
-				else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; MusicBeatState.switchState(new states.access.FridgeAccess()); }
-				else MusicBeatState.switchState(new EXEFreeplay());
+				if (PlayState.isStoryMode) FlxG.switchState(() -> new StoryModeState());
+				else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
+				else FlxG.switchState(() -> new EXEFreeplay());
 	
 				PlayState.instance.callOnScripts('onGameOverConfirm', [false]);
 			}
@@ -231,7 +231,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
 				{
-					MusicBeatState.resetState();
+					FlxG.resetState();
 				});
 			});
 			PlayState.instance.callOnScripts('onGameOverConfirm', [true]);

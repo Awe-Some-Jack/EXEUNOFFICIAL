@@ -1,8 +1,6 @@
 package states.editors;
 
 import flixel.graphics.FlxGraphic;
-
-import flixel.system.debug.interaction.tools.Pointer.GraphicCursorCross;
 import flixel.util.FlxDestroyUtil;
 
 import openfl.net.FileReference;
@@ -16,6 +14,9 @@ import objects.Bar;
 
 import states.editors.content.Prompt;
 import states.editors.content.PsychJsonPrinter;
+
+@:bitmap("psych-ui/images/cursorCross.png")
+class GraphicCursorCross extends openfl.display.BitmapData {}
 
 class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler.PsychUIEvent
 {
@@ -896,10 +897,10 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		}
 		else holdingArrowsTime = 0;
 
-		if (FlxG.mouse.pressedRight && (FlxG.mouse.deltaScreenX != 0 || FlxG.mouse.deltaScreenY != 0))
+		if (FlxG.mouse.pressedRight && (FlxG.mouse.deltaViewX != 0 || FlxG.mouse.deltaViewY != 0))
 		{
-			character.offset.x -= FlxG.mouse.deltaScreenX;
-			character.offset.y -= FlxG.mouse.deltaScreenY;
+			character.offset.x -= FlxG.mouse.deltaViewX;
+			character.offset.y -= FlxG.mouse.deltaViewY;
 			changedOffset = true;
 		}
 
@@ -1010,7 +1011,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 				if (!unsavedProgress)
 				{
 					camEditor.bgColor = 0xFF000000;
-					MusicBeatState.switchState(new states.editors.MasterEditorMenu());
+					FlxG.switchState(() -> new states.editors.MasterEditorMenu());
 					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 				}
 				else openSubState(new ExitConfirmationPrompt());
@@ -1019,7 +1020,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 			{
 				camEditor.bgColor = 0xFF000000;
 				FlxG.mouse.visible = false;
-				MusicBeatState.switchState(new PlayState());
+				FlxG.switchState(() -> new PlayState());
 			}
 			return;
 		}

@@ -12,7 +12,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.system.FlxAssets;
 import flixel.FlxState;
 
-import flash.media.Sound;
+import openfl.media.Sound;
 
 import backend.Song;
 import backend.StageData;
@@ -49,7 +49,7 @@ class LoadingState extends MusicBeatState
 	}
 
 	inline static public function loadAndSwitchState(target:FlxState, stopMusic = false, intrusive:Bool = true)
-		MusicBeatState.switchState(getNextState(target, stopMusic, intrusive));
+		FlxG.switchState(() -> getNextState(target, stopMusic, intrusive));
 	
 	var target:FlxState = null;
 	var stopMusic:Bool = false;
@@ -160,7 +160,7 @@ class LoadingState extends MusicBeatState
 			FlxG.sound.music.stop();
 
 		FlxG.camera.visible = false;
-		MusicBeatState.switchState(target);
+		FlxG.switchState(() -> target);
 		transitioning = true;
 		finishedLoading = true;
 	}
@@ -621,7 +621,7 @@ class LoadingState extends MusicBeatState
 			{
 				trace('SOUND NOT FOUND: $key, PATH: $path');
 				FlxG.log.error('SOUND NOT FOUND: $key, PATH: $path');
-				return FlxAssets.getSound('flixel/sounds/beep');
+				return FlxAssets.getSoundAddExtension('flixel/sounds/beep');
 			}
 		}
 		mutex.acquire();

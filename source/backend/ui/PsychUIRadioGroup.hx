@@ -3,9 +3,9 @@ package backend.ui;
 import flixel.util.FlxDestroyUtil;
 import flixel.FlxObject;
 
-class PsychUIRadioGroup extends FlxSpriteGroup
+class PsychUIRadioGroup extends PsychUIGroup
 {
-	public static final CLICK_EVENT = 'radiogroup_click';
+	@:unreflective public static final CLICK_EVENT = 'radiogroup_click';
 
 	public var labels(default, set):Array<String> = [];
 	public var radios:Array<PsychUIRadioItem> = [];
@@ -31,12 +31,12 @@ class PsychUIRadioGroup extends FlxSpriteGroup
 		
 		_hitbox = new FlxObject();
 
-		arrowUp = new FlxSprite().loadGraphic(Paths.image('psych-ui/arrow_up', 'embed'), true, 24, 18);
+		arrowUp = new FlxSprite().loadGraphic(Paths.image('arrow_up', 'psych-ui').bitmap, true, 24, 18);
 		arrowUp.animation.add('normal', [0]);
 		arrowUp.animation.add('press', [1]);
 		arrowUp.animation.play('normal');
 		arrowUp.visible = false;
-		arrowDown = new FlxSprite().loadGraphic(Paths.image('psych-ui/arrow_down', 'embed'), true, 24, 18);
+		arrowDown = new FlxSprite().loadGraphic(Paths.image('arrow_down', 'psych-ui').bitmap, true, 24, 18);
 		arrowDown.animation.add('normal', [0]);
 		arrowDown.animation.add('press', [1]);
 		arrowDown.animation.play('normal');
@@ -57,10 +57,10 @@ class PsychUIRadioGroup extends FlxSpriteGroup
 		_hitbox.y = y;
 		_hitbox.width = width;
 		_hitbox.height = height;
-		if(maxItems > 0 && maxItems < labels.length && FlxG.mouse.wheel != 0 && FlxG.mouse.overlaps(_hitbox, camera))
+		if(maxItems > 0 && maxItems < labels.length && FlxG.mouse.deltaWheel.y != 0 && FlxG.mouse.overlaps(_hitbox, camera))
 		{
-			curScroll -= FlxG.mouse.wheel;
-			//trace('just scrolled: ' + FlxG.mouse.wheel);
+			curScroll -= Math.round(FlxG.mouse.deltaWheel.y);
+			//trace('just scrolled: ' + FlxG.mouse.deltaWheel.y);
 		}
 
 		var baseY:Float = y + radios.length * space;
@@ -242,7 +242,7 @@ class PsychUIRadioGroup extends FlxSpriteGroup
 		return maxItems;
 	}
 
-	public function updateRadioItems()
+	inline public function updateRadioItems()
 	{
 		if(maxItems > 0)
 		{
@@ -328,7 +328,7 @@ class PsychUIRadioItem extends PsychUICheckBox
 	}
 	override function boxGraphic()
 	{
-		box.loadGraphic(Paths.image('psych-ui/radio', 'embed'), true, 16, 16);
+		box.loadGraphic(Paths.image('radio', 'psych-ui'), true, 16, 16);
 		box.animation.add('false', [0]);
 		box.animation.add('true', [1]);
 		box.animation.play('false');

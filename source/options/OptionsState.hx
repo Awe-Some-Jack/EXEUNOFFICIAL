@@ -190,7 +190,7 @@ class OptionsState extends MusicBeatState
 				LoadingState.loadAndSwitchState(new PlayState());
 				FlxG.sound.music.volume = 0;
 			}
-			else MusicBeatState.switchState(new EXEMenu());
+			else FlxG.switchState(() -> new EXEMenu());
 		}
 	}
 
@@ -234,10 +234,10 @@ class OptionsState extends MusicBeatState
 		{
 			switch (sectionsList[curSelected])
 			{
-				case "CONTROLS":  MusicBeatState.switchState(new options.ExeControlsState());
-				case "VISUALS":   MusicBeatState.switchState(new options.ExeVisualsState());
-				case "GRAPHICS":  MusicBeatState.switchState(new options.ExeGraphicsState());
-				case "GAMEPLAY":  MusicBeatState.switchState(new options.ExeGameplayState());
+				case "CONTROLS":  FlxG.switchState(() -> new options.ExeControlsState());
+				case "VISUALS":   FlxG.switchState(() -> new options.ExeVisualsState());
+				case "GRAPHICS":  FlxG.switchState(() -> new options.ExeGraphicsState());
+				case "GAMEPLAY":  FlxG.switchState(() -> new options.ExeGameplayState());
 				case "LANGUAGE":
 					#if TRANSLATIONS_ALLOWED
 					openSubState(new options.LanguageSubState());

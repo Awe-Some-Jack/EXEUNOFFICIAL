@@ -125,7 +125,7 @@ class CreditsState extends MusicBeatState
 		if (Controls.instance.BACK)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			FlxG.switchState(new ExtrasMenu());
+			FlxG.switchState(() -> new ExtrasMenu());
 			FlxG.sound.music.fadeOut(0.3);
 		}
 
@@ -224,7 +224,7 @@ class CreditsState extends MusicBeatState
 	}
 
 	function overlapCamera(cam:FlxCamera):Bool
-		return FlxG.mouse.screenX >= cam.x && FlxG.mouse.screenX <= cam.x + cam.width && FlxG.mouse.screenY >= cam.y && FlxG.mouse.screenY <= cam.y + cam.height;
+		return FlxG.mouse.viewX >= cam.x && FlxG.mouse.viewX <= cam.x + cam.width && FlxG.mouse.viewY >= cam.y && FlxG.mouse.viewY <= cam.y + cam.height;
 
 	override function closeSubState()
 	{

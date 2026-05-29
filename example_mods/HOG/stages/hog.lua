@@ -84,7 +84,7 @@ end
 
 function onCreate()
 	makeLuaSprite('whitebg')
-	makeGraphic('whitebg', 1280, 720, 'FFFFFF')
+	makeGraphic('whitebg', screenWidth, screenHeight, 'FFFFFF')
 	screenCenter('whitebg')
 	setScrollFactor('whitebg', 0, 0)
 	setProperty('whitebg.alpha', 0.0001)

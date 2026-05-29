@@ -1,6 +1,6 @@
 function onCreatePost()
     makeLuaSprite('darkOverlay')
-    makeGraphic('darkOverlay', 1280, 720, '000000')
+    makeGraphic('darkOverlay', screenWidth, screenHeight, '000000')
     setProperty('darkOverlay.alpha', 0.0001)
     setScrollFactor('darkOverlay', 0, 0)
     screenCenter('darkOverlay')

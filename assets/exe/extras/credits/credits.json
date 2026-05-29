@@ -76,7 +76,8 @@
 			"name": "Kophy232",
 			"icon": "kophy",
 			"description": "Coder",
-			"nation": "peru"
+			"nation": "peru",
+			"colors": [[0, 23, 182], [140, 23, 51]]
 		},
 		{
 			"name": "Wolfie",
@@ -92,7 +93,11 @@
 		{
 			"name": "Jason E",
 			"icon": "jason",
-			"description": "Coder"
+			"description": "Coder",
+			"quote": "*Your ad could be here*",
+			"nation": "uzbek",
+			"colors": [[211, 3, 252], [252, 32, 3]],
+			"extra": ["video", "table"]
 		},
 		{
 			"name": "HyperDream",
@@ -136,7 +141,12 @@
 		{
 			"name": "NayreFunkin",
 			"icon": "nayre",
-			"description": "Artist"
+			"description": "Artist",
+			"nation": "colombia",
+			"colors": [[244, 115, 164], [150, 23, 62]],
+			"youtube": "https://www.youtube.com/@nayrefunkin1350",
+			"twitter": "https://x.com/NayreSFW04",
+			"extra": ["image", "curse.png"]
 		},
 		{
 			"name": "Sebas1554",
@@ -232,6 +242,7 @@
 			"nation": "colombia",
 			"youtube": "https://youtube.com/@srkleynner",
 			"twitter": "https://x.com/SrKleynner",
+			"colors": [[180, 66, 255], [255, 66, 223]],
 			"extra": ["video", "chadchadchad"]
 		},
 		{

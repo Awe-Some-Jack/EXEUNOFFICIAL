@@ -176,6 +176,7 @@ class PlayState extends MusicBeatState
 
 	public var gfSpeed:Int = 1;
 	public var health(default, set):Float = 1;
+	public var displayHealth:Float = 1;
 	public var combo:Int = 0;
 
 	public var healthBar:Bar;
@@ -291,6 +292,8 @@ class PlayState extends MusicBeatState
 			'note_up',
 			'note_right'
 		];
+
+		displayHealth = health;
 
 		FlxG.sound.music?.stop();
 
@@ -532,7 +535,7 @@ class PlayState extends MusicBeatState
 		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
 		moveCameraSection();
 
-		healthBar = new Bar(0, FlxG.height * (!ClientPrefs.data.downScroll ? 0.89 : 0.11), 'healthBar', function() return health, 0, 2);
+		healthBar = new Bar(0, FlxG.height * (!ClientPrefs.data.downScroll ? 0.89 : 0.11), 'displayHealth', function() return health, 0, 2);
 		healthBar.screenCenter(X);
 		healthBar.leftToRight = false;
 		healthBar.scrollFactor.set();
@@ -1558,41 +1561,19 @@ class PlayState extends MusicBeatState
 			{
 				resyncVocals();
 			}
+
 			FlxTimer.globalManager.forEach(function(tmr:FlxTimer) if(!tmr.finished) tmr.active = true);
 			FlxTween.globalManager.forEach(function(twn:FlxTween) if(!twn.finished) twn.active = true);
 
 			paused = false;
 			callOnScripts('onResume');
-			resetRPC(startTimer != null && startTimer.finished);
+			resetRPC(startTimer?.finished);
 
 			if (ClientPrefs.data.shaders)
 			{
-				var daFilters = camGame.filters;
-				if (daFilters != null)
-				{
-					daFilters.pop();
-					camGame.filters = daFilters;
-				}
-
-				var daFilters = camVideo.filters;
-				if (daFilters != null)
-				{
-					daFilters.pop();
-					camVideo.filters = daFilters;
-				}
-
-				var daFilters = camHUD.filters;
-				if (daFilters != null)
-				{
-					daFilters.pop();
-					camHUD.filters = daFilters;
-				}
-
-				var daFilters = camOther.filters;
-				if (daFilters != null)
-				{
-					daFilters.pop();
-					camOther.filters = daFilters;
+				for (cam in [FlxG.camera, camVideo, camHUD, camOther]) {
+					cam.filters?.pop();
+					cam.filters = cam.filters;
 				}
 			}
 
@@ -1644,7 +1625,7 @@ class PlayState extends MusicBeatState
 		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
 		Conductor.songPosition = FlxG.sound.music.time + Conductor.offset;
 
-		var checkVocals = [vocals, opponentVocals];
+		final checkVocals = [vocals, opponentVocals];
 		for (voc in checkVocals)
 		{
 			if (FlxG.sound.music.time < vocals.length)
@@ -1753,6 +1734,10 @@ class PlayState extends MusicBeatState
 
 		if (healthBar.bounds.max != null && health > healthBar.bounds.max)
 			health = healthBar.bounds.max;
+
+		//for health bar smoothing
+		displayHealth = FlxMath.lerp(displayHealth, health, 0.1 * playbackRate);
+		if (health >= 2) displayHealth = 2;
 
 		updateIconsScale(elapsed);
 		updateIconsPosition();
@@ -1950,8 +1935,8 @@ class PlayState extends MusicBeatState
 	public dynamic function updateIconsPosition()
 	{
 		var iconOffset:Int = 26;
-		iconP1.x = healthBar.barCenter + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
-		iconP2.x = healthBar.barCenter - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		iconP1.x = healthBar.barCenter + (150 * (FlxMath.remapToRange(displayHealth, 0, 2, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
+		iconP2.x = healthBar.barCenter - (150 * (FlxMath.remapToRange(displayHealth, 0, 2, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
 	}
 
 	var iconsAnimations:Bool = true;
@@ -1978,30 +1963,16 @@ class PlayState extends MusicBeatState
 	{
 		if (ClientPrefs.data.shaders)
 		{
-			var colorSwap:ColorSwap = new ColorSwap();
+			final colorSwap:ColorSwap = new ColorSwap();
 			colorSwap.hue = -1;
 			colorSwap.brightness = -0.5;
 			colorSwap.saturation = -1;
 
-			var daFilters = camGame.filters;
-			if (daFilters == null) daFilters = [];
-			daFilters.push(new ShaderFilter(colorSwap.shader));
-			camGame.filters = daFilters;
-
-			var daFilters = camVideo.filters;
-			if (daFilters == null) daFilters = [];
-			daFilters.push(new ShaderFilter(colorSwap.shader));
-			camVideo.filters = daFilters;
-
-			var daFilters = camHUD.filters;
-			if (daFilters == null) daFilters = [];
-			daFilters.push(new ShaderFilter(colorSwap.shader));
-			camHUD.filters = daFilters;
-
-			var daFilters = camOther.filters;
-			if (daFilters == null) daFilters = [];
-			daFilters.push(new ShaderFilter(colorSwap.shader));
-			camOther.filters = daFilters;
+			for (cam in [FlxG.camera, camVideo, camHUD, camOther]) {
+				final daFilters = cam.filters ?? [];
+				daFilters.push(new ShaderFilter(colorSwap.shader));
+				cam.filters = daFilters;
+			}
 		}
 
 		FlxG.camera.followLerp = 0;
@@ -2017,7 +1988,7 @@ class PlayState extends MusicBeatState
 		if(!cpuControlled)
 		{
 			for (note in playerStrums)
-				if(note.animation.curAnim != null && note.animation.curAnim.name != 'static')
+				if(note.animation.curAnim?.name != 'static')
 				{
 					note.playAnim('static');
 					note.resetAnim = 0;
@@ -2308,10 +2279,11 @@ class PlayState extends MusicBeatState
 				}
 
 			case 'Screen Shake':
-				var valuesArray:Array<String> = [value1, value2];
-				var targetsArray:Array<FlxCamera> = [camGame, camHUD];
+				final valuesArray:Array<String> = [value1, value2];
+				final targetsArray:Array<FlxCamera> = [FlxG.camera, camHUD];
 				for (i in 0...targetsArray.length) {
-					var split:Array<String> = valuesArray[i].split(',');
+					final split:Array<String> = valuesArray[i].split(',');
+
 					var duration:Float = 0;
 					var intensity:Float = 0;
 					if(split[0] != null) duration = Std.parseFloat(split[0].trim());
@@ -2319,9 +2291,8 @@ class PlayState extends MusicBeatState
 					if(Math.isNaN(duration)) duration = 0;
 					if(Math.isNaN(intensity)) intensity = 0;
 
-					if(duration > 0 && intensity != 0) {
+					if(duration > 0 && intensity != 0)
 						targetsArray[i].shake(intensity, duration);
-					}
 				}
 
 

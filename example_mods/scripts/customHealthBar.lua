@@ -23,6 +23,7 @@ local healthProps = {
     }
 }
 
+local lerpHealth = 1
 
 local healthBarsBG = {
     ["hud_majin"] = {
@@ -194,13 +195,15 @@ function onEvent(n, v1)
 end
 
 function onUpdatePost(e)
+    lerpHealth = lerp(getHealth(), lerpHealth, math.exp(-e * 12 * playbackRate))
+
     setProperty('iconOpp.x', getProperty('hbBG.x') + (flipped and (getProperty('hbBG.width') - 75) or (-75)) + healthProps.opponentIcon.offsetX)
     setProperty('iconOpp.y', getProperty('hbBG.y') + (getProperty('hbBG.height') / 2) - 75 + healthProps.opponentIcon.offsetY)
     setProperty('iconBF.x', getProperty('hbBG.x') + (flipped and (-75) or (getProperty('hbBG.width') - 75)) + healthProps.playerIcon.offsetX)
     setProperty('iconBF.y', getProperty('hbBG.y') + (getProperty('hbBG.height') / 2) - 75 + healthProps.playerIcon.offsetY)
 
-    setGraphicSize('hbHealth2', bound(lerp(getProperty('hbBG.width') - (healthProps.healthBar.gapSize * 2), 1, math.abs((flipped and (-1) or 0) + getHealth() / 2)), 1, getProperty('hbBG.width') - (healthProps.healthBar.gapSize * 2)), getProperty('hbBG.height') - (healthProps.healthBar.gapSize * 2))
-    setProperty('separatorHealth.x', getProperty('hbHealth.x') + bound(lerp(getProperty('hbHealth.width') - healthProps.healthBar.separatorWidth, 0, math.abs((flipped and (-1) or 0) + getHealth() / 2)), 0, getProperty('hbHealth.width') - healthProps.healthBar.separatorWidth))
+    setGraphicSize('hbHealth2', bound(lerp(getProperty('hbBG.width') - (healthProps.healthBar.gapSize * 2), 1, math.abs((flipped and (-1) or 0) + lerpHealth / 2)), 1, getProperty('hbBG.width') - (healthProps.healthBar.gapSize * 2)), getProperty('hbBG.height') - (healthProps.healthBar.gapSize * 2))
+    setProperty('separatorHealth.x', getProperty('hbHealth.x') + bound(lerp(getProperty('hbHealth.width') - healthProps.healthBar.separatorWidth, 0, math.abs((flipped and (-1) or 0) + lerpHealth / 2)), 0, getProperty('hbHealth.width') - healthProps.healthBar.separatorWidth))
 
     for _, songList in pairs(healthBarsBG) do
         for _, name in ipairs(songList.songs) do

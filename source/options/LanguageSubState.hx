@@ -104,8 +104,8 @@ class LanguageSubState extends MusicBeatSubstate
 			changeSelected(-1 * mult);
 		if(controls.UI_DOWN_P)
 			changeSelected(1 * mult);
-		if(FlxG.mouse.wheel != 0)
-			changeSelected(FlxG.mouse.wheel * mult);
+		if(FlxG.mouse.deltaWheel.y != 0)
+			changeSelected(FlxG.mouse.deltaWheel.y * mult);
 
 		if(controls.BACK)
 		{
@@ -113,7 +113,7 @@ class LanguageSubState extends MusicBeatSubstate
 			{
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
-				MusicBeatState.resetState();
+				FlxG.resetState();
 			}
 			else close();
 			FlxG.sound.play(Paths.sound('cancelMenu'));

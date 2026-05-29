@@ -47,7 +47,7 @@ class BIOSInfo
 		var bc = b.biosCharacter;
 		bioTxt = new FlxText(PAD_X, PAD_TOP, boxW - PAD_X - PAD_RIGHT, bc.bios_list.length > 0 ? bc.bios_list[0] : '', 23);
 		bioTxt.setFormat(Paths.font('smallass.TTF'), 23, FlxColor.WHITE, LEFT);
-		bioTxt.antialiasing = true;
+		bioTxt.antialiasing = ClientPrefs.data.antialiasing;
 		bioTxt.scrollFactor.set();
 		bioTxt.visible = true;
 		bioTxt.cameras = [boxCanva];
@@ -81,12 +81,11 @@ class BIOSInfo
 
 		scrollTrack = new FlxSprite(tx, ty).makeGraphic(SCROLL_W, trackH, 0x44FFFFFF);
 		scrollTrack.scrollFactor.set();
-		scrollTrack.antialiasing = true;
+		scrollTrack.antialiasing = ClientPrefs.data.antialiasing;
 		bios.add(scrollTrack);
 
 		scrollThumb = new FlxSprite(tx, ty).makeGraphic(SCROLL_W, 40, FlxColor.WHITE);
 		scrollThumb.scrollFactor.set();
-		scrollThumb.antialiasing = true;
 		bios.add(scrollThumb);
 	}
 
@@ -103,7 +102,6 @@ class BIOSInfo
 		bioBox.makeGraphic(boxW, boxH, FlxColor.TRANSPARENT, true);
 		FlxSpriteUtil.drawRect(bioBox, 0, 0, boxW, boxH, FlxColor.TRANSPARENT,
 			{thickness: 7, color: FlxColor.WHITE});
-		bioBox.antialiasing = true;
 		bioBox.scrollFactor.set();
 		bios.add(bioBox);
 	}
@@ -144,12 +142,12 @@ class BIOSInfo
 	{
 		var textTaller = bioTxt.visible && bioTxt.height > boxH;
 
-		if (FlxG.mouse.wheel != 0 && FlxG.mouse.overlaps(bioBox) && textTaller)
+		if (FlxG.mouse.deltaWheel.y != 0 && FlxG.mouse.overlaps(bioBox) && textTaller)
 		{
 			if (moveTween != null) { moveTween.cancel(); moveTween = null; }
 			moveCounter = 0;
 			canMove     = true;
-			bioTxt.y += FlxG.mouse.wheel * 10;
+			bioTxt.y += FlxG.mouse.deltaWheel.y * 10;
 			if (bioTxt.y > PAD_TOP)                 bioTxt.y = PAD_TOP;
 			if (bioTxt.y < -(bioTxt.height - boxH)) bioTxt.y = -(bioTxt.height - boxH);
 		}

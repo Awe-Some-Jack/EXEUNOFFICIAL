@@ -195,12 +195,12 @@ class DAGarden extends MusicBeatState
 		if (FlxG.keys.justPressed.A) player.seek(-DAPlayer.SEEK_SECONDS);
 		if (FlxG.keys.justPressed.D) player.seek(DAPlayer.SEEK_SECONDS);
 
-		if (Controls.instance.BACK)
+		if (controls.BACK)
 		{
 			player.restoreWindowTitle();
 			player.stop();
 			if (FlxG.sound.music != null) FlxG.sound.music.resume();
-			FlxG.switchState(new ExtrasMenu());
+			FlxG.switchState(() -> new ExtrasMenu());
 		}
 	}
 }

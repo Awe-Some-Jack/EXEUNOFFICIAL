@@ -256,7 +256,7 @@ function goodNoteHitPre(id,nd,nt,isn)
 	if isn then
 		if not stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then
 			cancelTimer('noteHold'..(nd + 4))
-			runTimer('noteHold'..(nd + 4), stepCrochet / 900 / playbackRate)
+			runTimer('noteHold'..(nd + 4), stepCrochet / playbackRate)
 		end
 
 		if getProperty('noteHold'..(nd + 4)..'.visible') == false and holdsSplashHold[nd + 5] == 0 then
@@ -273,7 +273,7 @@ function opponentNoteHitPre(id,nd,nt,isn)
 	if isn then
 		if not stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then
 			cancelTimer('noteHold'..nd)
-			runTimer('noteHold'..nd, stepCrochet / 900 / playbackRate)
+			runTimer('noteHold'..nd, stepCrochet / playbackRate)
 		end
 
 		if getProperty('noteHold'..nd..'.visible') == false and holdsSplashHold[nd + 1] == 0 then

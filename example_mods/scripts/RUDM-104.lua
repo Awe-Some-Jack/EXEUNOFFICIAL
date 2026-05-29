@@ -296,7 +296,7 @@ function onUpdatePost(e)
 	if inDebugMode then
 		local amount = keyboardPressed('CONTROL') and 0.2 or (keyboardPressed('SHIFT') and 5 or 1)
 		lastClick = lastClick + e
-		mouseProps.delta = {x = runHaxeCode("return FlxG.mouse.getScreenPosition(getVar('camDebug'), true).x;") - mouseProps.prevPos.x, y = runHaxeCode("return FlxG.mouse.getScreenPosition(getVar('camDebug'), true).y;") - mouseProps.prevPos.y}
+		mouseProps.delta = {x = runHaxeCode("return FlxG.mouse.getViewPosition(getVar('camDebug'), true).x;") - mouseProps.prevPos.x, y = runHaxeCode("return FlxG.mouse.getViewPosition(getVar('camDebug'), true).y;") - mouseProps.prevPos.y}
 		gameMouse.delta = {
 			x = (getProperty('camGame.scroll.x') - gameMouse.prev.x) * getProperty('camGame.zoom'),
 			y = (getProperty('camGame.scroll.y') - gameMouse.prev.y) * getProperty('camGame.zoom')
@@ -691,7 +691,7 @@ function onUpdatePost(e)
 				debugPrint('[RUDM_Warning]: You can\'t set Characters Properties to Default! (Already Selecting Character.)', 'FF0000')
 			end
 		end
-		mouseProps.prevPos = {x = runHaxeCode("return FlxG.mouse.getScreenPosition(getVar('camDebug'), true).x;"), y = runHaxeCode("return FlxG.mouse.getScreenPosition(getVar('camDebug'), true).y;")}
+		mouseProps.prevPos = {x = runHaxeCode("return FlxG.mouse.getViewPosition(getVar('camDebug'), true).x;"), y = runHaxeCode("return FlxG.mouse.getViewPosition(getVar('camDebug'), true).y;")}
 	end
 end
 

@@ -544,9 +544,9 @@ class FunkinLua
 		});
 		Lua_helper.add_callback(lua, 'exitSong', function(skipTransition:Bool = false) {
 			if (skipTransition) { FlxTransitionableState.skipNextTransIn = true; FlxTransitionableState.skipNextTransOut = true; }
-			if (PlayState.isStoryMode) MusicBeatState.switchState(new StoryModeState());
-			else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; MusicBeatState.switchState(new states.access.FridgeAccess()); }
-			else MusicBeatState.switchState(new EXEFreeplay());
+			if (PlayState.isStoryMode) FlxG.switchState(() -> new StoryModeState());
+			else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
+			else FlxG.switchState(() -> new EXEFreeplay());
 			#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 			PlayState.changedDifficulty = false;
@@ -597,8 +597,8 @@ class FunkinLua
 		Lua_helper.add_callback(lua, 'setRatingFC',      function(value:String) { game.ratingFC = value; game.setOnScripts('ratingFC', value); });
 		Lua_helper.add_callback(lua, 'updateScoreText',  () -> game.updateScoreText());
 
-		Lua_helper.add_callback(lua, 'getMouseX', function(camera:String = 'game') { return FlxG.mouse.getScreenPosition(LuaUtils.cameraFromString(camera)).x; });
-		Lua_helper.add_callback(lua, 'getMouseY', function(camera:String = 'game') { return FlxG.mouse.getScreenPosition(LuaUtils.cameraFromString(camera)).y; });
+		Lua_helper.add_callback(lua, 'getMouseX', function(camera:String = 'game') { return FlxG.mouse.getViewPosition(LuaUtils.cameraFromString(camera)).x; });
+		Lua_helper.add_callback(lua, 'getMouseY', function(camera:String = 'game') { return FlxG.mouse.getViewPosition(LuaUtils.cameraFromString(camera)).y; });
 
 		Lua_helper.add_callback(lua, 'getMidpointX',        function(variable:String) { var o = _resolveObject(variable); return o != null ? o.getMidpoint().x : 0; });
 		Lua_helper.add_callback(lua, 'getMidpointY',        function(variable:String) { var o = _resolveObject(variable); return o != null ? o.getMidpoint().y : 0; });

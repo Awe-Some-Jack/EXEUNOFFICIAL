@@ -187,8 +187,8 @@ local function createSlideIntro()
 
 	makeLuaSprite('black', nil, 0, 0)
 	makeGraphic('black', screenWidth, screenHeight, '000000')
-	makeLuaSprite('circle', 'StartScreens/Circle-' .. song, 1280, 0)
-	makeLuaSprite('text', 'StartScreens/Text-' .. song, -1280, 0)
+	makeLuaSprite('circle', 'StartScreens/Circle-' .. song, screenWidth, 0)
+	makeLuaSprite('text', 'StartScreens/Text-' .. song, -screenWidth, 0)
 
 	addLuaSprite('black', true)
 	addLuaSprite('circle', true)
@@ -212,12 +212,12 @@ local function createMonoIntro()
 
 	makeLuaSprite('black', 'black', 0, 0)
 	makeGraphic('black', screenWidth, screenHeight, '000000')
-	makeLuaSprite('down', 'StartScreens/introdown', 0, 720)
+	makeLuaSprite('down', 'StartScreens/introdown', 0, screenHeight)
 	createInstance('left', 'flixel.addons.display.FlxBackdrop', {nil, 0x10})
 	loadGraphic('left', 'StartScreens/introleft')
-	callMethod('left.setPosition', {-1280, 0})
+	callMethod('left.setPosition', {-screenWidth, 0})
 	setProperty('left.velocity.y', 50)
-	makeLuaSprite('text', 'StartScreens/introtxt', 1280, 0)
+	makeLuaSprite('text', 'StartScreens/introtxt', screenWidth, 0)
 
 	addLuaSprite('black', true)
 	addLuaSprite('down', true)
@@ -249,7 +249,7 @@ local function createBounceIntro()
 	local song = stringSplit(string.lower(songName), ' ')
 
 	makeLuaSprite('black', nil, 0, 0)
-	makeGraphic('black', 1280, 720, '000000')
+	makeGraphic('black', screenWidth, screenHeight, '000000')
 	makeLuaSprite('text', 'intro-' .. song[1])
 	scaleObject('text', 0.6, 1.05, false)
 	setProperty('text.x', (960 - getProperty('text.width')) / 2)
@@ -446,9 +446,9 @@ function onTimerCompleted(tag)
 
 	elseif cfg.type == 'mono' then
 		if tag == 'wait' then
-			doTweenY('downmove', 'down', 720, 0.7, 'linear')
-			doTweenX('leftmove', 'left', -1280, 0.7, 'linear')
-			doTweenX('textmove', 'text', 1280, 0.7, 'linear')
+			doTweenY('downmove', 'down', screenHeight, 0.7, 'linear')
+			doTweenX('leftmove', 'left', -screenWidth, 0.7, 'linear')
+			doTweenX('textmove', 'text', screenWidth, 0.7, 'linear')
 			doTweenAlpha('blackalpha', 'black', 0, 1, 'linear')
 			runTimer('chau', 1, 1)
 		elseif tag == 'chau' then

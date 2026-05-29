@@ -3,8 +3,13 @@ package backend.ui;
 import flixel.FlxObject;
 import flixel.input.keyboard.FlxKey;
 import flixel.util.FlxDestroyUtil;
-import flash.events.KeyboardEvent;
+
 import lime.system.Clipboard;
+
+import openfl.events.KeyboardEvent;
+import openfl.ui.Keyboard;
+import openfl.ui.Mouse;
+import openfl.ui.MouseCursor;
 
 enum abstract AccentCode(Int) from Int from UInt to Int to UInt
 {
@@ -23,6 +28,9 @@ enum abstract FilterMode(Int) from Int from UInt to Int to UInt
 	var ONLY_ALPHANUMERIC:Int = 3;
 	var ONLY_HEXADECIMAL:Int = 4;
 	var CUSTOM_FILTER:Int = 5;
+	var ONLY_ALPHA_CYRILLIC:Int = 6;
+	var ONLY_ALPHANUMERIC_CYRILLIC:Int = 7;
+	var ONLY_CYRILLIC:Int = 8;
 }
 
 enum abstract CaseMode(Int) from Int from UInt to Int to UInt
@@ -32,14 +40,27 @@ enum abstract CaseMode(Int) from Int from UInt to Int to UInt
 	var LOWER_CASE:Int = 2;
 }
 
-class PsychUIInputText extends FlxSpriteGroup
+class PsychUIInputText extends PsychUIGroup
 {
-	public static final CHANGE_EVENT = "inputtext_change";
+	@:unreflective public static final CHANGE_EVENT = "inputtext_change";
 
-	static final KEY_TILDE = 126;
-	static final KEY_ACUTE = 180;
+	@:unreflective static final KEY_TILDE = 126;
+	@:unreflective static final KEY_ACUTE = 180;
 
 	public static var focusOn(default, set):PsychUIInputText = null;
+	
+	private var _isHovered:Bool = false;
+
+	private var _dragging:Bool = false;
+	private var _dragStartIndex:Int = -1;
+	
+	//ZALUPA BLYAT
+	var useSystemCursor:Bool = flixel.FlxG.mouse.useSystemCursor;
+	
+	private var _capsLockEnabled:Bool = false;
+	private var _numLockEnabled:Bool = true;
+
+	public var scrollX:Float = 0;
 
 	public var name:String;
 	public var bg:FlxSprite;
@@ -60,14 +81,21 @@ class PsychUIInputText extends FlxSpriteGroup
 
 	public var selectedFormat:FlxTextFormat = new FlxTextFormat(FlxColor.WHITE);
 
+	// Undo/Redo system
+	private var _undoHistory:Array<String> = [];
+	private var _redoHistory:Array<String> = [];
+	private var _currentState:String = "";
+	private var _ignoreHistory:Bool = false;
+
 	public function new(x:Float = 0, y:Float = 0, wid:Int = 100, ?text:String = '', size:Int = 8)
 	{
 		super(x, y);
 		this.bg = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
 		this.behindText = new FlxSprite(1, 1).makeGraphic(1, 1, FlxColor.WHITE);
 		this.selection = new FlxSprite().makeGraphic(1, 1, FlxColor.WHITE);
-		this.textObj = new FlxText(1, 1, Math.max(1, wid - 2), '', size);
+		this.textObj = new FlxText(1, 1, 0, '', size);
 		this.caret = new FlxSprite().makeGraphic(1, 1, FlxColor.WHITE);
+
 		add(this.bg);
 		add(this.behindText);
 		add(this.selection);
@@ -78,11 +106,16 @@ class PsychUIInputText extends FlxSpriteGroup
 		this.textObj.textField.selectable = false;
 		this.textObj.textField.wordWrap = false;
 		this.textObj.textField.multiline = false;
+		this.textObj.antialiasing = false;
 		this.selection.color = FlxColor.BLUE;
 
 		@:bypassAccessor fieldWidth = wid;
 		setGraphicSize(wid + 2, this.textObj.height + 2);
 		updateHitbox();
+		
+		// Initialize undo/redo system
+		_currentState = text;
+		_undoHistory.push(_currentState);
 		this.text = text;
 
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
@@ -102,11 +135,33 @@ class PsychUIInputText extends FlxSpriteGroup
 		var charCode:Int = e.charCode;
 		var flxKey:FlxKey = cast keyCode;
 
+		// NumLock
+		if (flxKey == NUMLOCK)
+		{
+			_numLockEnabled = !_numLockEnabled;
+			return;
+		}
+
+		if (flxKey == CAPSLOCK)
+		{
+			_capsLockEnabled = !_capsLockEnabled;
+			return;
+		}
+
 		// Fix missing cedilla
 		switch(keyCode)
 		{
 			case 231: //ç and Ç
 				charCode = e.shiftKey ? 0xC7 : 0xE7;
+		}
+
+		if (_capsLockEnabled != e.shiftKey && charCode >= 97 && charCode <= 122) // a-z
+		{
+			charCode -= 32;
+		}
+		else if (_capsLockEnabled && e.shiftKey && charCode >= 65 && charCode <= 90) // A-Z
+		{
+			charCode += 32;
 		}
 
 		// Control key actions
@@ -115,13 +170,16 @@ class PsychUIInputText extends FlxSpriteGroup
 			switch(flxKey)
 			{
 				case A: //select all text
-					selectIndex = Std.int(Math.min(0, text.length - 1));
+					selectIndex = 0;
 					caretIndex = text.length;
+					updateCaret();
 
 				case X, C: //cut/copy selected text to clipboard
-					if(caretIndex >= 0 && selectIndex != 0 && caretIndex != selectIndex)
+					if(selectIndex >= 0 && caretIndex != selectIndex)
 					{
-						Clipboard.text = text.substring(caretIndex, selectIndex);
+						var start = Math.min(caretIndex, selectIndex);
+						var end = Math.max(caretIndex, selectIndex);
+						Clipboard.text = text.substring(Std.int(start), Std.int(end));
 						if(flxKey == X)
 							deleteSelection();
 					}
@@ -135,8 +193,18 @@ class PsychUIInputText extends FlxSpriteGroup
 					var lastText = text;
 					text = text.substring(0, caretIndex) + Clipboard.text + text.substring(caretIndex);
 					caretIndex += Clipboard.text.length;
+					saveToHistory(lastText);
 					if(onChange != null) onChange(lastText, text);
 					if(broadcastInputTextEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);
+
+				case Z: //undo
+					if(e.shiftKey) 
+						redo();
+					else 
+						undo();
+
+				case Y: //redo
+					redo();
 
 				case BACKSPACE:
 					if(selectIndex < 0 || selectIndex == caretIndex)
@@ -157,6 +225,7 @@ class PsychUIInputText extends FlxSpriteGroup
 							caretIndex = 0;
 						}
 						selectIndex = -1;
+						saveToHistory(lastText);
 						if(onChange != null) onChange(lastText, text);
 						if(broadcastInputTextEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);
 					}
@@ -182,6 +251,7 @@ class PsychUIInputText extends FlxSpriteGroup
 							text = text.substr(0, caretIndex) + text.substring(caretIndex + space + spc);
 						}
 						else text = text.substr(0, caretIndex);
+						saveToHistory(lastText);
 						if(onChange != null) onChange(lastText, text);
 						if(broadcastInputTextEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);
 					}
@@ -233,6 +303,11 @@ class PsychUIInputText extends FlxSpriteGroup
 			case KEY_ACUTE:
 				_nextAccent = !e.shiftKey ? ACUTE : GRAVE;
 				if(lastAccent == NONE) return;
+			case Keyboard.NUMPAD_DIVIDE:
+				_typeLetter(47); // /
+				_nextAccent = NONE;
+				updateCaret();
+				return;
 			default:
 				lastAccent = NONE;
 		}
@@ -264,18 +339,22 @@ class PsychUIInputText extends FlxSpriteGroup
 				inInsertMode = !inInsertMode;
 
 			case BACKSPACE: //Delete letter to the left of caret
+				if (selectIndex > -1 && selectIndex != caretIndex)
+				{
+					deleteSelection();
+					_nextAccent = NONE;
+					updateCaret();
+					return;
+				}
+				
 				if(caretIndex <= 0) return;
 
-				if(selectIndex > -1 && selectIndex != caretIndex)
-					deleteSelection();
-				else
-				{
-					var lastText = text;
-					text = text.substring(0, caretIndex-1) + text.substring(caretIndex);
-					caretIndex--;
-					if(onChange != null) onChange(lastText, text);
-					if(broadcastInputTextEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);
-				}
+				var lastText = text;
+				text = text.substring(0, caretIndex-1) + text.substring(caretIndex);
+				caretIndex--;
+				saveToHistory(lastText);
+				if(onChange != null) onChange(lastText, text);
+				if(broadcastInputTextEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);
 				_nextAccent = NONE;
 
 			case DELETE: //Delete letter to the right of caret
@@ -296,6 +375,7 @@ class PsychUIInputText extends FlxSpriteGroup
 
 				if(caretIndex >= text.length) caretIndex = text.length;
 				
+				saveToHistory(lastText);
 				if(onChange != null) onChange(lastText, text);
 				if(broadcastInputTextEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);
 			
@@ -362,17 +442,117 @@ class PsychUIInputText extends FlxSpriteGroup
 			case ENTER:
 				onPressEnter(e);
 
-			default:
-				if(charCode < 1)
-					if((charCode = getAccentCharCode(_nextAccent)) < 1)
-						return;
-
-				if(lastAccent != NONE) _typeLetter(getAccentCharCode(lastAccent));
-				else if(_nextAccent != NONE) _typeLetter(getAccentCharCode(_nextAccent));
-				_typeLetter(charCode);
+			case LBRACKET:
+				if(e.shiftKey) _typeLetter(123); // {
+				else _typeLetter(91); // [
 				_nextAccent = NONE;
+				updateCaret();
+				return;
+				
+			case RBRACKET:
+				if(e.shiftKey) _typeLetter(125); // }
+				else _typeLetter(93); // ]
+				_nextAccent = NONE;
+				updateCaret();
+				return;
+
+			//numpad
+			case NUMPADZERO:
+				if(_numLockEnabled) _typeLetter(48); // 0
+			case NUMPADONE:
+				if(_numLockEnabled) _typeLetter(49); // 1
+			case NUMPADTWO:
+				if(_numLockEnabled) _typeLetter(50); // 2
+			case NUMPADTHREE:
+				if(_numLockEnabled) _typeLetter(51); // 3
+			case NUMPADFOUR:
+				if(_numLockEnabled) _typeLetter(52); // 4
+			case NUMPADFIVE:
+				if(_numLockEnabled) _typeLetter(53); // 5
+			case NUMPADSIX:
+				if(_numLockEnabled) _typeLetter(54); // 6
+			case NUMPADSEVEN:
+				if(_numLockEnabled) _typeLetter(55); // 7
+			case NUMPADEIGHT:
+				if(_numLockEnabled) _typeLetter(56); // 8
+			case NUMPADNINE:
+				if(_numLockEnabled) _typeLetter(57); // 9
+
+			case NUMPADMINUS:
+				_typeLetter(45); // -
+				_nextAccent = NONE;
+				updateCaret();
+				return;
+
+			default:
+				if (charCode > 0)
+				{
+					if (_nextAccent != NONE)
+					{
+						_typeLetter(getAccentCharCode(_nextAccent));
+						_nextAccent = NONE;
+					}
+					_typeLetter(charCode);
+				}
+				else if ((charCode = getAccentCharCode(_nextAccent)) > 0)
+				{
+					_typeLetter(charCode);
+					_nextAccent = NONE;
+				}
 		}
 		updateCaret();
+	}
+
+	// Undo/Redo functionality
+	private function saveToHistory(lastText:String):Void
+	{
+		if (_ignoreHistory) return;
+		
+		_undoHistory.push(lastText);
+		_currentState = text;
+		
+		// Limit history size to prevent memory issues
+		if (_undoHistory.length > 100)
+		{
+			_undoHistory.shift();
+		}
+		
+		// Clear redo history when new changes are made
+		_redoHistory = [];
+	}
+
+	private function undo():Void
+	{
+		if (_undoHistory.length == 0) return;
+		
+		_ignoreHistory = true;
+		var lastState = _undoHistory.pop();
+		_redoHistory.push(text);
+		text = lastState;
+		_currentState = lastState;
+		caretIndex = text.length;
+		selectIndex = -1;
+		_ignoreHistory = false;
+		
+		if(onChange != null) onChange(text, text);
+		if(broadcastInputTextEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);
+	}
+
+	private function redo():Void
+	{
+		if (_redoHistory.length == 0) return;
+		
+		_ignoreHistory = true;
+		var nextState = _redoHistory.pop();
+		_undoHistory.push(text);
+		text = nextState;
+		_currentState = nextState;
+		caretIndex = text.length;
+		selectIndex = -1;
+		_ignoreHistory = false;
+		
+		if(onChange != null) onChange(text, text);
+		if(broadcastInputTextEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);
 	}
 
 	public dynamic function onPressEnter(e:KeyboardEvent)
@@ -385,7 +565,14 @@ class PsychUIInputText extends FlxSpriteGroup
 		{
 			if(focusOn.unfocus != null) focusOn.unfocus();
 			focusOn.resetCaret();
+			
+			if (focusOn.useSystemCursor && focusOn._isHovered)
+				Mouse.cursor = MouseCursor.AUTO;
 		}
+		
+		if (v != null && v.useSystemCursor)
+			Mouse.cursor = MouseCursor.IBEAM;
+			
 		return (focusOn = v);
 	}
 
@@ -393,35 +580,61 @@ class PsychUIInputText extends FlxSpriteGroup
 	{
 		super.update(elapsed);
 
+		var isOver = FlxG.mouse.overlaps(behindText, camera);
+		
+		if (isOver && !_isHovered)
+		{
+			if (useSystemCursor && focusOn != this) 
+				Mouse.cursor = MouseCursor.IBEAM;
+			_isHovered = true;
+		}
+		else if (!isOver && _isHovered)
+		{
+			if (useSystemCursor && focusOn != this) 
+				Mouse.cursor = MouseCursor.AUTO;
+			_isHovered = false;
+		}
+
 		if(FlxG.mouse.justPressed)
 		{
 			if(FlxG.mouse.overlaps(behindText, camera))
 			{
-				if(!FlxG.keys.pressed.SHIFT) selectIndex = -1;
-				else if(selectIndex == -1) selectIndex = caretIndex;
 				focusOn = this;
-				caretIndex = 0;
-				var lastBound:Float = 0;
-				var textObjX:Float = textObj.getScreenPosition(camera).x;
-				var mousePosX:Float = FlxG.mouse.getScreenPosition(camera).x;
-				var txtX:Float = textObjX - textObj.textField.scrollH;
-
-				for (i => bound in _boundaries)
-				{
-					if(mousePosX >= txtX + (bound - lastBound)/2)
-					{
-						caretIndex = i+1;
-						txtX += bound - lastBound;
-						lastBound = bound;
-					}
-					else break;
-				}
+				#if (flixel < "5.9.0")
+				var mousePos = FlxG.mouse.getViewPosition(camera);
+				#else
+				var mousePos = FlxG.mouse.getViewPosition(camera);
+				#end
+				caretIndex = getCaretIndexAtPoint(mousePos.x);
+				_dragStartIndex = caretIndex;
+				selectIndex = -1;
+				_dragging = true;
 				updateCaret();
 			}
 			else if(focusOn == this)
 				focusOn = null;
+		}
 
-			//trace('changed focus to: ' + this);
+		if (_dragging && FlxG.mouse.pressed && focusOn == this)
+		{
+			#if (flixel < "5.9.0")
+			var mousePos = FlxG.mouse.getViewPosition(camera);
+			#else
+			var mousePos = FlxG.mouse.getViewPosition(camera);
+			#end
+			var newCaretIndex = getCaretIndexAtPoint(mousePos.x);
+			if(newCaretIndex != caretIndex)
+			{
+				caretIndex = newCaretIndex;
+				if(selectIndex == -1) selectIndex = _dragStartIndex;
+				updateCaret();
+			}
+		}
+
+		if(FlxG.mouse.justReleased)
+		{
+			_dragging = false;
+			_dragStartIndex = -1;
 		}
 
 		if(focusOn == this)
@@ -439,7 +652,7 @@ class PsychUIInputText extends FlxSpriteGroup
 					}
 					else selection.visible = false;
 				}
-	
+		
 				if(caret != null && caret.exists)
 				{
 					if(!drewSelection && _caretTime < 0.5 && caret.x >= textObj.x)
@@ -460,89 +673,155 @@ class PsychUIInputText extends FlxSpriteGroup
 		}
 	}
 
-	public function resetCaret()
+	function getCaretIndexAtPoint(mouseX:Float):Int
+	{
+		var textObjX:Float = textObj.getScreenPosition(camera).x;
+		var localX:Float = mouseX - textObjX + scrollX;
+		
+		var index:Int = textObj.textField.getCharIndexAtPoint(localX, textObj.textField.textHeight / 2);
+		if (index < 0) {
+			return (localX < 0) ? 0 : text.length;
+		}
+		
+		var charBounds = textObj.textField.getCharBoundaries(index);
+		if (charBounds == null) return index;
+		
+		if (localX < charBounds.left + charBounds.width / 2)
+			return index;
+		else
+			return index + 1;
+	}
+
+	override public function destroy()
+	{
+		if (_isHovered && useSystemCursor)
+			Mouse.cursor = MouseCursor.AUTO;
+		
+		_boundaries = null;
+		if(focusOn == this) focusOn = null;
+		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+		super.destroy();
+	}
+
+	inline public function resetCaret()
 	{
 		selectIndex = -1;
 		caretIndex = 0;
 		updateCaret();
 	}
 
-	public function updateCaret()
+	function updateCaret()
 	{
 		if(textObj == null || !textObj.exists) return;
-
 		var textField = textObj.textField;
-		textField.setSelection(caretIndex, caretIndex);
 		_caretTime = 0;
-		if(caret != null && caret.exists)
+
+		var caretOffset:Float = 0;
+		if(caretIndex > 0 && _boundaries.length > 0)
+		{
+			var boundaryIndex = Std.int(Math.min(_boundaries.length - 1, caretIndex - 1));
+			caretOffset = _boundaries[boundaryIndex];
+		}
+
+		final visibleWidth = behindText.width - 2;
+
+		if (caretOffset - scrollX < 0)
+		{
+			scrollX = caretOffset;
+		}
+		else if (caretOffset - scrollX > visibleWidth)
+		{
+			scrollX = caretOffset - visibleWidth;
+		}
+
+		if (textObj.width <= visibleWidth) 
+		{
+			scrollX = 0;
+		}
+
+		textObj.offset.x = scrollX;
+		if (textObj.clipRect == null) textObj.clipRect = new flixel.math.FlxRect();
+		textObj.clipRect.set(scrollX, 0, visibleWidth, textObj.height);
+		textObj.clipRect = textObj.clipRect;
+
+		if(caret?.exists)
 		{
 			caret.y = textObj.y + 2;
-			caret.x = textObj.x + 1 - textObj.textField.scrollH;
-			if(caretIndex > 0)
-				caret.x += _boundaries[Std.int(Math.max(0, Math.min(_boundaries.length-1, caretIndex-1)))];
+			caret.x = textObj.x + 1 - scrollX + caretOffset;
+
+			var caretVisibleX = Math.max(behindText.x, Math.min(behindText.x + behindText.width - 1, caret.x));
+			caret.x = caretVisibleX;
+
+			caret.visible = (_caretTime < 0.5);
 		}
 		
-		if(selection != null && selection.exists)
+		if(selection?.exists)
 		{
-			selection.y = textObj.y + 2;
-			selection.x = textObj.x + 1 - textObj.textField.scrollH;
-			if(selectIndex > 0)
-				selection.x += _boundaries[Std.int(Math.max(0, Math.min(_boundaries.length-1, selectIndex-1)))];
-
-			selection.scale.y = textField.textHeight;
-			selection.scale.x = caret.x - selection.x;
-			if(selection.scale.x < 0)
+			if(selectIndex != -1 && selectIndex != caretIndex)
 			{
-				selection.scale.x = Math.abs(selection.scale.x);
-				selection.x -= selection.scale.x;
-			}
-
-			if(selection.x < textObj.x)
-			{
-				var diff:Float = textObj.x - selection.x;
-				selection.x += diff;
-				selection.scale.x -= diff;
-			}
-			if(selection.x + selection.scale.x > textObj.x + textObj.width)
-				selection.scale.x += (textObj.x + textObj.width - selection.x - selection.scale.x);
-
-			selection.updateHitbox();
-
-			if(text.length > 0)
-			{
-				textObj.removeFormat(selectedFormat);
-				if(selectIndex != -1 && selectIndex != caretIndex)
+				selection.visible = true;
+				selection.y = textObj.y + 2;
+				
+				var startX = textObj.x + 1 - scrollX;
+				if(selectIndex > 0 && _boundaries.length > 0)
 				{
-					textObj.addFormat(selectedFormat, caretIndex < selectIndex ? caretIndex : selectIndex, caretIndex < selectIndex ? selectIndex : caretIndex);
+					var selectBoundaryIndex = Std.int(Math.min(_boundaries.length - 1, selectIndex - 1));
+					startX += _boundaries[selectBoundaryIndex];
 				}
+				
+				var endX = textObj.x + 1 - scrollX;
+				if(caretIndex > 0 && _boundaries.length > 0)
+				{
+					var caretBoundaryIndex = Std.int(Math.min(_boundaries.length - 1, caretIndex - 1));
+					endX += _boundaries[caretBoundaryIndex];
+				}
+				
+				var selectionLeft = Math.min(startX, endX);
+				var selectionRight = Math.max(startX, endX);
+				
+				selectionLeft = Math.max(behindText.x, selectionLeft);
+				selectionRight = Math.min(behindText.x + behindText.width, selectionRight);
+				
+				if(selectionLeft >= selectionRight)
+				{
+					selection.visible = false;
+				}
+				else
+				{
+					selection.x = selectionLeft;
+					selection.scale.x = selectionRight - selectionLeft;
+					selection.scale.y = textField.textHeight;
+					selection.updateHitbox();
+				}
+				
+				textObj.removeFormat(selectedFormat);
+				var start = Math.min(selectIndex, caretIndex);
+				var end = Math.max(selectIndex, caretIndex);
+				textObj.addFormat(selectedFormat, Std.int(start), Std.int(end));
+			}
+			else
+			{
+				selection.visible = false;
+				textObj.removeFormat(selectedFormat);
 			}
 		}
-		else if(text.length > 0) textObj.removeFormat(selectedFormat);
 	}
 
 	function deleteSelection()
 	{
+		if (selectIndex == -1 || selectIndex == caretIndex) return;
+		
 		var lastText:String = text;
-		if(selectIndex > caretIndex)
-		{
-			text = text.substring(0, caretIndex) + text.substring(selectIndex);
-		}
-		else
-		{
-			text = text.substring(0, selectIndex) + text.substring(caretIndex);
-			caretIndex = selectIndex;
-		}
+		var start:Int = Std.int(Math.min(selectIndex, caretIndex));
+		var end:Int = Std.int(Math.max(selectIndex, caretIndex));
+		
+		text = text.substring(0, start) + text.substring(end);
+		caretIndex = start;
 		selectIndex = -1;
+		
+		saveToHistory(lastText);
 		if(onChange != null) onChange(lastText, text);
 		if(broadcastInputTextEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);
-	}
-
-	override public function destroy()
-	{
-		_boundaries = null;
-		if(focusOn == this) focusOn = null;
-		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-		super.destroy();
 	}
 
 	function set_caretIndex(v:Int)
@@ -579,7 +858,7 @@ class PsychUIInputText extends FlxSpriteGroup
 
 	function set_fieldWidth(v:Int)
 	{
-		textObj.fieldWidth = Math.max(1, v - 2);
+		textObj.fieldWidth = 0;
 		textObj.textField.selectable = false;
 		textObj.textField.wordWrap = false;
 		textObj.textField.multiline = false;
@@ -591,6 +870,7 @@ class PsychUIInputText extends FlxSpriteGroup
 		var lastText = text;
 		v = Std.int(Math.max(0, v));
 		if(v > 0 && text.length > v) text = text.substr(0, v);
+		saveToHistory(lastText);
 		if(onChange != null) onChange(lastText, text);
 		if(broadcastInputTextEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);
 		return (maxLength = v);
@@ -606,34 +886,46 @@ class PsychUIInputText extends FlxSpriteGroup
 	var _boundaries:Array<Float> = [];
 	function set_text(v:String)
 	{
-		for (i in 0..._boundaries.length) _boundaries.pop();
+		if (_boundaries.length > 0) _boundaries.splice(0, _boundaries.length);
 		v = filter(v);
 
-		textObj.text = '';
-		if(v != null && v.length > 0)
+		if (v != null && v.length > 0)
 		{
-			if(v.length > 1)
+			var display:String;
+			if (passwordMask)
 			{
-				for (i in 0...v.length)
-				{
-					var toPrint:String = v.substr(i, 1);
-					if(toPrint == '\n') toPrint = ' ';
-					textObj.textField.appendText(!passwordMask ? toPrint : '*');
-					_boundaries.push(textObj.textField.textWidth);
-				}
+				var buf = new StringBuf();
+				for (_ in 0...v.length) buf.add('*');
+				display = buf.toString();
+			}
+			else if (v.indexOf('\n') >= 0)
+			{
+				display = v.split('\n').join(' ');
 			}
 			else
 			{
-				textObj.text = !passwordMask ? v : '*';
-				_boundaries.push(textObj.textField.textWidth);
+				display = v;
 			}
+
+			textObj.text = display;
+			final tf = textObj.textField;
+			final fullWidth = tf.textWidth;
+			for (i in 0...display.length)
+			{
+				final bounds = tf.getCharBoundaries(i);
+				_boundaries.push(bounds != null ? bounds.right : fullWidth);
+			}
+		}
+		else
+		{
+			textObj.text = '';
 		}
 		text = v;
 		updateCaret();
 		return v;
 	}
 
-	public static function getAccentCharCode(accent:AccentCode)
+	inline public static function getAccentCharCode(accent:AccentCode)
 	{
 		switch(accent)
 		{
@@ -670,6 +962,7 @@ class PsychUIInputText extends FlxSpriteGroup
 				text = text.substring(0, caretIndex) + letter + text.substring(caretIndex+1);
 
 			caretIndex += letter.length;
+			saveToHistory(lastText);
 			if(onChange != null) onChange(lastText, text);
 			if(broadcastInputTextEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);
 		}
@@ -728,8 +1021,14 @@ class PsychUIInputText extends FlxSpriteGroup
 					pattern = ~/[^a-fA-F0-9]*/g;
 				case CUSTOM_FILTER:
 					pattern = customFilterPattern;
+				case ONLY_ALPHA_CYRILLIC:
+					pattern = ~/[^a-zA-Zа-яА-ЯёЁ]*/g;
+				case ONLY_ALPHANUMERIC_CYRILLIC:
+					pattern = ~/[^a-zA-Zа-яА-ЯёЁ0-9]*/g;
+				case ONLY_CYRILLIC:
+					pattern = ~/[^а-яА-ЯёЁ]*/g;
 				default:
-					throw new flash.errors.Error("FlxInputText: Unknown filterMode (" + filterMode + ")");
+					throw new openfl.errors.Error("PsychUIInputText: Unknown filterMode (" + filterMode + ")");
 			}
 			text = pattern.replace(text, "");
 		}

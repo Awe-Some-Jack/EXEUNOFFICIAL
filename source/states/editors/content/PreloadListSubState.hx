@@ -1,14 +1,17 @@
 package states.editors.content;
 
 import haxe.io.Path;
+
 import flixel.util.FlxDestroyUtil;
-import flash.net.FileFilter;
+
+import lime.ui.FileDialogFilter;
 
 import backend.StageData;
 import backend.ui.PsychUIButton;
 import backend.ui.PsychUIRadioGroup;
 import backend.ui.PsychUICheckBox;
 import backend.ui.PsychUIEventHandler;
+
 import states.editors.content.FileDialogHandler;
 
 class PreloadListSubState extends MusicBeatSubstate implements PsychUIEvent
@@ -155,7 +158,7 @@ class PreloadListSubState extends MusicBeatSubstate implements PsychUIEvent
 		{
 			if (!fileDialog.completed) return;
 
-			fileDialog.open(null, 'Load a .PNG/.OGG File...', [#if !mac new FileFilter('Image/Audio', '*.png;*.ogg') #end], function()
+			fileDialog.open(null, 'Load a .PNG/.OGG File...', [#if !mac new FileDialogFilter('Image/Audio', 'png;ogg') #end], function()
 			{
 				var path:Path = new Path(fileDialog.path.replace('\\', '/'));
 				var ext:String = path.ext;

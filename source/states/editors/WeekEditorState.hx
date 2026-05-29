@@ -6,7 +6,7 @@ import openfl.utils.Assets;
 import openfl.net.FileReference;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
-import flash.net.FileFilter;
+import openfl.net.FileFilter;
 import lime.system.Clipboard;
 import haxe.Json;
 
@@ -119,7 +119,7 @@ class WeekEditorState extends MusicBeatState implements PsychUIEventHandler.Psyc
 		loadWeekButton.x -= 120;
 		add(loadWeekButton);
 
-		var freeplayButton:PsychUIButton = new PsychUIButton(0, 650, "Freeplay", () -> MusicBeatState.switchState(new WeekEditorEXEFreeplay(weekFile)));
+		var freeplayButton:PsychUIButton = new PsychUIButton(0, 650, "Freeplay", () -> FlxG.switchState(() -> new WeekEditorEXEFreeplay(weekFile)));
 		freeplayButton.screenCenter(X);
 		add(freeplayButton);
 
@@ -408,7 +408,7 @@ class WeekEditorState extends MusicBeatState implements PsychUIEventHandler.Psyc
 			{
 				if (!unsavedProgress)
 				{
-					MusicBeatState.switchState(new MasterEditorMenu());
+					FlxG.switchState(() -> new MasterEditorMenu());
 					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 				}
 				else openSubState(new ExitConfirmationPrompt(() -> unsavedProgress = false));
@@ -606,7 +606,7 @@ class WeekEditorEXEFreeplay extends MusicBeatState implements PsychUIEventHandle
 		loadWeekButton.x -= 120;
 		add(loadWeekButton);
 
-		var storyModeButton:PsychUIButton = new PsychUIButton(0, 685, "Story Mode", () -> MusicBeatState.switchState(new WeekEditorState(weekFile)));
+		var storyModeButton:PsychUIButton = new PsychUIButton(0, 685, "Story Mode", () -> FlxG.switchState(() -> new WeekEditorState(weekFile)));
 		storyModeButton.screenCenter(X);
 		add(storyModeButton);
 
@@ -734,7 +734,7 @@ class WeekEditorEXEFreeplay extends MusicBeatState implements PsychUIEventHandle
 			super.update(elapsed);
 			FlxTransitionableState.skipNextTransIn = true;
 			FlxTransitionableState.skipNextTransOut = true;
-			MusicBeatState.switchState(new WeekEditorEXEFreeplay(WeekEditorState.loadedWeek));
+			FlxG.switchState(() -> new WeekEditorEXEFreeplay(WeekEditorState.loadedWeek));
 			WeekEditorState.loadedWeek = null;
 			return;
 		}
@@ -748,7 +748,7 @@ class WeekEditorEXEFreeplay extends MusicBeatState implements PsychUIEventHandle
 			{
 				if (!WeekEditorState.unsavedProgress)
 				{
-					MusicBeatState.switchState(new MasterEditorMenu());
+					FlxG.switchState(() -> new MasterEditorMenu());
 					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 				}
 				else openSubState(new ExitConfirmationPrompt());

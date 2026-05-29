@@ -12,8 +12,8 @@ local iconsGlitch = {
 function onCreatePost()
 	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', false)
 	setPropertyFromClass('flixel.FlxG', 'stage.window.resizable', true)
-	setPropertyFromClass('flixel.FlxG', 'stage.window.width', 1280)
-	setPropertyFromClass('flixel.FlxG', 'stage.window.height', 720)
+	setPropertyFromClass('flixel.FlxG', 'stage.window.width', getPropertyFromClass('flixel.FlxG', 'initialWidth'))
+	setPropertyFromClass('flixel.FlxG', 'stage.window.height', getPropertyFromClass('flixel.FlxG', 'initialHeight'))
 	setPropertyFromClass('flixel.FlxG', 'fullscreen', false)
 
 	createInstance('iconGlitch', 'objects.HealthIcon', {iconsGlitch['scorched-g']['idle'], false})
@@ -42,7 +42,7 @@ function onCreatePost()
 
 	makeLuaSprite('glitch2', nil, 0)
 	setSpriteShader('glitch2', 'glitchb')
-	setShaderFloatArray('glitch2', 'iResolution', {1280, 720})
+	setShaderFloatArray('glitch2', 'iResolution', {screenWidth, screenHeight})
 	setShaderFloat('glitch2', 'Amount', 0)
 	if shadersEnabled and not lowQuality then
 		runHaxeCode([[

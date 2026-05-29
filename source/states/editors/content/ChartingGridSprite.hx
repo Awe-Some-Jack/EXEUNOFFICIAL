@@ -18,8 +18,10 @@ class ChartingGridSprite extends FlxSprite
 	public function new(columns:Int, ?color1:FlxColor = 0xFFE6E6E6, ?color2:FlxColor = 0xFFD8D8D8)
 	{
 		super();
+		
 		this.columns = columns;
 		scrollFactor.x = 0;
+		antialiasing = false;
 		active = false;
 
 		scale.set(ChartingState.GRID_SIZE, ChartingState.GRID_SIZE);

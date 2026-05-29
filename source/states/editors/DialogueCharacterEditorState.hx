@@ -3,7 +3,7 @@ package states.editors;
 import openfl.net.FileReference;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
-import flash.net.FileFilter;
+import openfl.net.FileFilter;
 import haxe.Json;
 import lime.system.Clipboard;
 
@@ -592,7 +592,7 @@ class DialogueCharacterEditorState extends MusicBeatState implements PsychUIEven
 			{
 				if (!unsavedProgress)
 				{
-					MusicBeatState.switchState(new states.editors.MasterEditorMenu());
+					FlxG.switchState(() -> new states.editors.MasterEditorMenu());
 					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 					transitioning = true;
 				}

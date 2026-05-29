@@ -122,10 +122,10 @@ class CreditsState extends MusicBeatState
 
 		if (inPopup) return;
 
-		if (Controls.instance.BACK)
+		if (controls.BACK)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			FlxG.switchState(new ExtrasMenu());
+			FlxG.switchState(() -> new ExtrasMenu());
 			FlxG.sound.music.fadeOut(0.3);
 		}
 
@@ -133,9 +133,9 @@ class CreditsState extends MusicBeatState
 
 		if (overlapCamera(devs))
 		{
-			if (FlxG.mouse.wheel != 0)
+			if (FlxG.mouse.deltaWheel.y != 0)
 			{
-				devs.scroll.y -= FlxG.mouse.wheel * 32;
+				devs.scroll.y -= FlxG.mouse.deltaWheel.y * 32;
 				devs.scroll.y = FlxMath.bound(devs.scroll.y, 0, Math.max(0, (devList.length * 32) - devs.height + 10));
 			}
 
@@ -156,9 +156,9 @@ class CreditsState extends MusicBeatState
 
 		if (overlapCamera(og))
 		{
-			if (FlxG.mouse.wheel != 0)
+			if (FlxG.mouse.deltaWheel.y != 0)
 			{
-				og.scroll.y -= FlxG.mouse.wheel * 32;
+				og.scroll.y -= FlxG.mouse.deltaWheel.y * 32;
 				og.scroll.y = FlxMath.bound(og.scroll.y, 0, Math.max(0, (ogList.length * 32) - og.height + 10));
 			}
 
@@ -179,9 +179,9 @@ class CreditsState extends MusicBeatState
 
 		if (overlapCamera(external))
 		{
-			if (FlxG.mouse.wheel != 0)
+			if (FlxG.mouse.deltaWheel.y != 0)
 			{
-				external.scroll.y -= FlxG.mouse.wheel * 32;
+				external.scroll.y -= FlxG.mouse.deltaWheel.y * 32;
 				external.scroll.y = FlxMath.bound(external.scroll.y, 0, Math.max(0, (externalList.length * 32) - external.height + 10));
 			}
 
@@ -200,7 +200,7 @@ class CreditsState extends MusicBeatState
 			}
 		}
 
-		if ((Controls.instance.ACCEPT || FlxG.mouse.justPressed) && canSelect)
+		if ((controls.ACCEPT || FlxG.mouse.justPressed) && canSelect)
 		{
 			inPopup = true;
 			openSubState(new CreditPopup());
@@ -224,7 +224,7 @@ class CreditsState extends MusicBeatState
 	}
 
 	function overlapCamera(cam:FlxCamera):Bool
-		return FlxG.mouse.screenX >= cam.x && FlxG.mouse.screenX <= cam.x + cam.width && FlxG.mouse.screenY >= cam.y && FlxG.mouse.screenY <= cam.y + cam.height;
+		return FlxG.mouse.viewX >= cam.x && FlxG.mouse.viewX <= cam.x + cam.width && FlxG.mouse.viewY >= cam.y && FlxG.mouse.viewY <= cam.y + cam.height;
 
 	override function closeSubState()
 	{

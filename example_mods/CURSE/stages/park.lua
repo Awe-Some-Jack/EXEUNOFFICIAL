@@ -39,7 +39,7 @@ function onCreate()
 
 	makeAnimatedLuaSprite('menuSTATIC', 'Park/menuSTATIC')
 	addAnimationByPrefix('menuSTATIC', 'anim', 'staticBackground', 24, true)
-	setGraphicSize('menuSTATIC', 1280, 720)
+	setGraphicSize('menuSTATIC', screenWidth, screenHeight)
 	setScrollFactor('menuSTATIC', 0, 0)
 	setProperty('menuSTATIC.alpha', 0)
 	--setBlendMode('menuSTATIC', 'add')

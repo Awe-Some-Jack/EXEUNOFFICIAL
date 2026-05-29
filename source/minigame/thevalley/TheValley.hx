@@ -94,6 +94,7 @@ class TheValley extends MusicBeatState
 		debugText.scrollFactor.set(0, 0);
 		debugText.cameras = [hudCamera];
 		debugText.visible = false;
+		debugText.antialiasing = false;
 		add(debugText);
 
 		playerHitboxSprite = new FlxSprite();
@@ -182,8 +183,8 @@ class TheValley extends MusicBeatState
 			showPlayerHitbox = !showPlayerHitbox;
 		if (FlxG.keys.justPressed.F2)
 		{ showMapHitbox = !showMapHitbox; hitboxOverlay.visible = showMapHitbox; }
-		if (FlxG.mouse.wheel != 0)
-			FlxG.camera.zoom = Math.max(0.5, Math.min(8.0, FlxG.camera.zoom + FlxG.mouse.wheel * 0.1));
+		if (FlxG.mouse.deltaWheel.y != 0)
+			FlxG.camera.zoom = Math.max(0.5, Math.min(8.0, FlxG.camera.zoom + FlxG.mouse.deltaWheel.y * 0.1));
 
 		playerHitboxSprite.visible = showPlayerHitbox;
 		if (showPlayerHitbox)

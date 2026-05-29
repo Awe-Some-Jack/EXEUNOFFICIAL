@@ -69,7 +69,7 @@ class ModSettingsSubState extends BaseOptionsMenu
 							newOption.getValue = function() {
 								var data = save.get(newOption.variable);
 								if(data == null) return 'NONE';
-								return !Controls.instance.controllerMode ? data.keyboard : data.gamepad;
+								return !controls.controllerMode ? data.keyboard : data.gamepad;
 							};
 							newOption.setValue = function(value:Dynamic) {
 								var data = save.get(newOption.variable);
@@ -107,7 +107,7 @@ class ModSettingsSubState extends BaseOptionsMenu
 					{
 						myValue = save.get(option.save);
 						if(newOption.type != KEYBIND) newOption.setValue(myValue);
-						else newOption.setValue(!Controls.instance.controllerMode ? myValue.keyboard : myValue.gamepad);
+						else newOption.setValue(!controls.controllerMode ? myValue.keyboard : myValue.gamepad);
 					}
 					else
 					{

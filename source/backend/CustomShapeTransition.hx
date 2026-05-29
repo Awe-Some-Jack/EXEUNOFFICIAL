@@ -95,27 +95,22 @@ class CustomShapeTransition extends MusicBeatSubstate
         trans.shader = shader;
         trans.screenCenter();
         trans.scrollFactor.set();
-        trans.antialiasing = ClientPrefs.data.antialiasing;
         add(trans);
 
         top = new FlxSprite().loadGraphic(border);
         top.scrollFactor.set();
-        top.antialiasing = ClientPrefs.data.antialiasing;
         add(top);
 
         bot = new FlxSprite().loadGraphic(border);
         bot.scrollFactor.set();
-        bot.antialiasing = ClientPrefs.data.antialiasing;
         add(bot);
 
         lef = new FlxSprite().loadGraphic(border);
         lef.scrollFactor.set();
-        lef.antialiasing = ClientPrefs.data.antialiasing;
         add(lef);
 
         rig = new FlxSprite().loadGraphic(border);
         rig.scrollFactor.set();
-        rig.antialiasing = ClientPrefs.data.antialiasing;
         add(rig);
 
         fullBlackScreen = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);

@@ -191,9 +191,9 @@ class CreditPopup extends MusicBeatSubstate
 	{
 		if (overlapCamera(quoteBG))
 		{
-			if (FlxG.mouse.wheel != 0)
+			if (FlxG.mouse.deltaWheel.y != 0)
 			{
-				quoteBG.scroll.y -= FlxG.mouse.wheel * 22;
+				quoteBG.scroll.y -= FlxG.mouse.deltaWheel.y * 22;
 				quoteBG.scroll.y = FlxMath.bound(quoteBG.scroll.y, 0, Math.max(0, userQuote.height - quoteBG.height + 10));
 
 				scrollBar.y = FlxMath.lerp(0, quoteBG.height - scrollBar.height, quoteBG.scroll.y / Math.max(0, userQuote.height - quoteBG.height + 10));
@@ -293,7 +293,7 @@ class CreditPopup extends MusicBeatSubstate
 	}
 
 	function overlapCamera(cam:FlxCamera):Bool
-		return FlxG.mouse.screenX >= cam.x && FlxG.mouse.screenX <= cam.x + cam.width && FlxG.mouse.screenY >= cam.y && FlxG.mouse.screenY <= cam.y + cam.height;
+		return FlxG.mouse.viewX >= cam.x && FlxG.mouse.viewX <= cam.x + cam.width && FlxG.mouse.viewY >= cam.y && FlxG.mouse.viewY <= cam.y + cam.height;
 
 	function setImageSize(obj:FlxSprite, targetWidth:Float, targetHeight:Float, ?offset:Float = 1) {
 		var scaleFactor:Float = Math.max(targetWidth / obj.width, targetHeight / obj.height);

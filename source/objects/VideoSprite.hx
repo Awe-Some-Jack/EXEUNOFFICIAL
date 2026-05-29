@@ -42,7 +42,6 @@ class VideoSprite extends FlxSpriteGroup
 		pie = new FlxPieDial(0, 0, 40, FlxColor.WHITE, 40, true, 24);
 		pie.setPosition(FlxG.width - (pie.width + 80), FlxG.height - (pie.height + 72));
 		pie.replaceColor(FlxColor.BLACK, FlxColor.TRANSPARENT);
-		pie.antialiasing = ClientPrefs.data.antialiasing;
 		pie.amount = 0;
 		pie.alpha = 0;
 		add(pie);

@@ -41,7 +41,6 @@ class OptionsState extends MusicBeatState
 		bg.setGraphicSize(FlxG.width, FlxG.height);
 		bg.updateHitbox();
 		bg.screenCenter();
-		bg.antialiasing = ClientPrefs.data.antialiasing;
 		add(bg);
 
 		objsGrp = new FlxTypedGroup<FlxSprite>();
@@ -53,7 +52,6 @@ class OptionsState extends MusicBeatState
 			obj.setGraphicSize(Std.int(obj.width * GLOBAL_SCALE));
 			obj.updateHitbox();
 			obj.ID = i;
-			obj.antialiasing = ClientPrefs.data.antialiasing;
 			objsGrp.add(obj);
 			resetObj(obj);
 		}
@@ -62,7 +60,6 @@ class OptionsState extends MusicBeatState
 		title.setGraphicSize(Std.int(title.width * GLOBAL_SCALE));
 		title.updateHitbox();
 		title.screenCenter(X);
-		title.antialiasing = ClientPrefs.data.antialiasing;
 		add(title);
 
 		sectionBGClone = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
@@ -190,7 +187,7 @@ class OptionsState extends MusicBeatState
 				LoadingState.loadAndSwitchState(new PlayState());
 				FlxG.sound.music.volume = 0;
 			}
-			else MusicBeatState.switchState(new EXEMenu());
+			else FlxG.switchState(() -> new EXEMenu());
 		}
 	}
 
@@ -234,10 +231,10 @@ class OptionsState extends MusicBeatState
 		{
 			switch (sectionsList[curSelected])
 			{
-				case "CONTROLS":  MusicBeatState.switchState(new options.ExeControlsState());
-				case "VISUALS":   MusicBeatState.switchState(new options.ExeVisualsState());
-				case "GRAPHICS":  MusicBeatState.switchState(new options.ExeGraphicsState());
-				case "GAMEPLAY":  MusicBeatState.switchState(new options.ExeGameplayState());
+				case "CONTROLS":  FlxG.switchState(() -> new options.ExeControlsState());
+				case "VISUALS":   FlxG.switchState(() -> new options.ExeVisualsState());
+				case "GRAPHICS":  FlxG.switchState(() -> new options.ExeGraphicsState());
+				case "GAMEPLAY":  FlxG.switchState(() -> new options.ExeGameplayState());
 				case "LANGUAGE":
 					#if TRANSLATIONS_ALLOWED
 					openSubState(new options.LanguageSubState());

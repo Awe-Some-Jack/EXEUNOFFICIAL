@@ -9,15 +9,13 @@ class PsychCamera extends FlxCamera
 	{
 		// follow the target, if there is one
 		if (target != null)
-		{
 			updateFollowDelta(elapsed);
-		}
 
 		updateScroll();
 		updateFlash(elapsed);
 		updateFade(elapsed);
 
-		flashSprite.filters = filtersEnabled ? filters : null;
+		flashSprite.filters = filtersEnabled ? filters : [];
 
 		updateFlashSpritePosition();
 		updateShake(elapsed);
@@ -30,7 +28,7 @@ class PsychCamera extends FlxCamera
 		if (deadzone == null)
 		{
 			target.getMidpoint(_point);
-			_point.addPoint(targetOffset);
+			_point.add(targetOffset);
 			_scrollTarget.set(_point.x - width * 0.5, _point.y - height * 0.5);
 		}
 		else
@@ -42,23 +40,15 @@ class PsychCamera extends FlxCamera
 			if (style == SCREEN_BY_SCREEN)
 			{
 				if (targetX >= viewRight)
-				{
 					_scrollTarget.x += viewWidth;
-				}
 				else if (targetX + target.width < viewLeft)
-				{
 					_scrollTarget.x -= viewWidth;
-				}
 
 				if (targetY >= viewBottom)
-				{
 					_scrollTarget.y += viewHeight;
-				}
 				else if (targetY + target.height < viewTop)
-				{
 					_scrollTarget.y -= viewHeight;
-				}
-				
+
 				// without this we see weird behavior when switching to SCREEN_BY_SCREEN at arbitrary scroll positions
 				bindScrollPos(_scrollTarget);
 			}
@@ -66,33 +56,26 @@ class PsychCamera extends FlxCamera
 			{
 				edge = targetX - deadzone.x;
 				if (_scrollTarget.x > edge)
-				{
 					_scrollTarget.x = edge;
-				}
+
 				edge = targetX + target.width - deadzone.x - deadzone.width;
 				if (_scrollTarget.x < edge)
-				{
 					_scrollTarget.x = edge;
-				}
 
 				edge = targetY - deadzone.y;
 				if (_scrollTarget.y > edge)
-				{
 					_scrollTarget.y = edge;
-				}
+
 				edge = targetY + target.height - deadzone.y - deadzone.height;
 				if (_scrollTarget.y < edge)
-				{
 					_scrollTarget.y = edge;
-				}
 			}
 
 			if ((target is FlxSprite))
 			{
 				if (_lastTargetPosition == null)
-				{
 					_lastTargetPosition = FlxPoint.get(target.x, target.y); // Creates this point.
-				}
+
 				_scrollTarget.x += (target.x - _lastTargetPosition.x) * followLead.x;
 				_scrollTarget.y += (target.y - _lastTargetPosition.y) * followLead.y;
 
@@ -101,14 +84,38 @@ class PsychCamera extends FlxCamera
 			}
 		}
 
-		var mult:Float = 1 - Math.exp(-elapsed * followLerp / (1/60));
+		final mult:Float = 1 - Math.exp(-elapsed * followLerp / (1/60));
 		scroll.x += (_scrollTarget.x - scroll.x) * mult;
 		scroll.y += (_scrollTarget.y - scroll.y) * mult;
 		//trace('lerp on this frame: $mult');
 	}
 
+	#if (flixel >= "6.0.0")
+	/**
+	 * Updates interpolation tracking with exponential smoothing
+	 * @param elapsed Time elapsed since the last frame (in seconds)
+	 */
+	override function updateLerp(elapsed:Float)
+    {
+        if (followLerp >= 1.0)
+        {
+            scroll.copyFrom(_scrollTarget);
+        }
+        else if (followLerp > 0.0)
+        {
+            final mult:Float = 1 - Math.exp(-elapsed * followLerp * 60);
+            scroll.x += (_scrollTarget.x - scroll.x) * mult;
+            scroll.y += (_scrollTarget.y - scroll.y) * mult;
+        }
+    }
+	#else
 	override function set_followLerp(value:Float)
-	{
 		return followLerp = value;
+	#end
+
+	#if (flixel <= "5.6.2")
+	public function setFilters(newShaders:Array<ShaderFilter>) {
+		this.filters = cast newShaders;
 	}
+	#end
 }

@@ -154,7 +154,7 @@ class MajinAccess extends MusicBeatState
 
 		if (!transitioning)
 		{
-			if (Controls.instance.BACK)
+			if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(() -> new EXEMenu());
@@ -162,7 +162,7 @@ class MajinAccess extends MusicBeatState
 				transitioning = true;
 			}
 
-			if (Controls.instance.UI_LEFT_P || Controls.instance.UI_RIGHT_P || FlxG.mouse.wheel != 0)
+			if (controls.UI_LEFT_P || controls.UI_RIGHT_P || FlxG.mouse.deltaWheel.y != 0)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
 				isJP = !isJP;
@@ -188,7 +188,7 @@ class MajinAccess extends MusicBeatState
 			if (!FlxG.mouse.overlaps(buttonJP) && !FlxG.mouse.overlaps(buttonUS)) mouseWasOver = isJP ? 'jp' : 'us';
 
 			var daButton:FlxSprite = (isJP ? buttonJP : buttonUS);
-			if (Controls.instance.ACCEPT || (FlxG.mouse.overlaps(daButton) && FlxG.mouse.justPressed))
+			if (controls.ACCEPT || (FlxG.mouse.overlaps(daButton) && FlxG.mouse.justPressed))
 			{
 				transitioning = true;
 				FlxG.sound.play(Paths.sound('majinfreeplay'));

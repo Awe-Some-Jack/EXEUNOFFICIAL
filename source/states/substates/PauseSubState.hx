@@ -265,7 +265,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.vocals.volume = 0;
 					PlayState.instance.canResync = false;
 					OptionsState.onPlayState = true;
-					MusicBeatState.switchState(new OptionsState());
+					FlxG.switchState(() -> new OptionsState());
 					if (ClientPrefs.data.pauseMusic != 'None')
 						FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.data.pauseMusic)), 1);
 				case 3:
@@ -275,10 +275,10 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.canResync = false;
 					Mods.loadTopMod();
 					if (PlayState.isStoryMode)
-						MusicBeatState.switchState(new StoryModeState());
-					else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; MusicBeatState.switchState(new states.access.FridgeAccess()); }
+						FlxG.switchState(() -> new StoryModeState());
+					else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
 					else
-						MusicBeatState.switchState(new EXEFreeplay());
+						FlxG.switchState(() -> new EXEFreeplay());
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode      = false;
 					FlxG.camera.followLerp      = 0;

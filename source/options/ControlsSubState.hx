@@ -79,22 +79,28 @@ class ControlsSubState extends MusicBeatSubstate
 		add(bg);
 
 		var grid:FlxBackdrop = new FlxBackdrop(FlxGridOverlay.createGrid(80, 80, 160, 160, true, 0x33FFFFFF, 0x0));
+		grid.antialiasing = false;
 		grid.velocity.set(40, 40);
 		grid.alpha = 0;
-		FlxTween.tween(grid, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
 		add(grid);
+
+		FlxTween.tween(grid, {alpha: 1}, 0.5, {ease: FlxEase.quadOut});
 
 		grpDisplay = new FlxTypedGroup<Alphabet>();
 		add(grpDisplay);
+
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);
+
 		grpBlacks = new FlxTypedGroup<AttachedSprite>();
 		add(grpBlacks);
+
 		selectSpr = new AttachedSprite();
 		selectSpr.makeGraphic(250, 78, FlxColor.WHITE);
 		selectSpr.copyAlpha = false;
 		selectSpr.alpha = 0.75;
 		add(selectSpr);
+
 		grpBinds = new FlxTypedGroup<Alphabet>();
 		add(grpBinds);
 

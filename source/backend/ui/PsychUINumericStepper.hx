@@ -1,8 +1,11 @@
 package backend.ui;
 
+import openfl.ui.Mouse;
+import openfl.ui.MouseCursor;
+
 class PsychUINumericStepper extends PsychUIInputText
 {
-	public static final CHANGE_EVENT = "numericstepper_change";
+	@:unreflective public static final CHANGE_EVENT = "numericstepper_change";
 
 	public var step:Float = 0;
 	public var min(default, set):Float = 0;
@@ -14,27 +17,35 @@ class PsychUINumericStepper extends PsychUIInputText
 
 	public var onValueChange:Void->Void;
 	public var value(default, set):Float;
-	public function new(x:Float = 0, y:Float = 0, step:Float = 1, defValue:Float = 0, min:Float = -999, max:Float = 999, decimals:Int = 0, ?wid:Int = 60, ?isPercent:Bool = false)
+	
+	private var _isPlusHovered:Bool = false;
+	private var _isMinusHovered:Bool = false;
+
+	public function new(x:Float = 0, y:Float = 0, step:Float = 1, defValue:Float = 0, min:Float = null, max:Float = null, decimals:Int = 0, ?wid:Int = 60, ?isPercent:Bool = false)
 	{
 		super(x, y, wid, '');
 		fieldWidth = Std.int(behindText.width + 2);
-		@:bypassAccessor this.decimals = decimals;
-		@:bypassAccessor this.isPercent = isPercent;
-		@:bypassAccessor this.min = min;
-		@:bypassAccessor this.max = max;
+		@:bypassAccessor {
+			this.decimals = decimals;
+			this.isPercent = isPercent;
+			this.min = min ?? Math.NEGATIVE_INFINITY;
+			this.max = max ?? Math.POSITIVE_INFINITY;
+		}
 		this.step = step;
 		_updateFilter();
 
-		buttonPlus = new FlxSprite(fieldWidth).loadGraphic(Paths.image('psych-ui/stepper_plus', 'embed'), true, 16, 16);
+		buttonPlus = new FlxSprite(fieldWidth).loadGraphic(Paths.image('stepper_plus', 'psych-ui').bitmap, true, 16, 16);
 		buttonPlus.animation.add('normal', [0], false);
 		buttonPlus.animation.add('pressed', [1], false);
 		buttonPlus.animation.play('normal');
+		buttonPlus.antialiasing = false;
 		add(buttonPlus);
 		
-		buttonMinus = new FlxSprite(fieldWidth + buttonPlus.width).loadGraphic(Paths.image('psych-ui/stepper_minus', 'embed'), true, 16, 16);
+		buttonMinus = new FlxSprite(fieldWidth + buttonPlus.width).loadGraphic(Paths.image('stepper_minus', 'psych-ui').bitmap, true, 16, 16);
 		buttonMinus.animation.add('normal', [0], false);
 		buttonMinus.animation.add('pressed', [1], false);
 		buttonMinus.animation.play('normal');
+		buttonMinus.antialiasing = false;
 		add(buttonMinus);
 
 		unfocus = function()
@@ -45,63 +56,58 @@ class PsychUINumericStepper extends PsychUIInputText
 		value = defValue;
 	}
 
-	var _holdTimer:Float  = 0;
-	var _holdRepeat:Float = 0;
-	var _holdDir:Int      = 0; // +1 or -1
-
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (FlxG.mouse.justPressed)
+		var isOverPlus = FlxG.mouse.overlaps(buttonPlus, camera);
+		var isOverMinus = FlxG.mouse.overlaps(buttonMinus, camera);
+		var isOverStepper = isOverPlus || isOverMinus;
+		
+		if (isOverStepper && (!_isPlusHovered && !_isMinusHovered))
 		{
-			if (buttonPlus != null && buttonPlus.exists && FlxG.mouse.overlaps(buttonPlus, camera))
+			if (flixel.FlxG.mouse.useSystemCursor) 
+				Mouse.cursor = MouseCursor.BUTTON;
+		}
+		else if (!isOverStepper && (_isPlusHovered || _isMinusHovered))
+		{
+			if (flixel.FlxG.mouse.useSystemCursor) 
+				Mouse.cursor = MouseCursor.AUTO;
+		}
+		
+		_isPlusHovered = isOverPlus;
+		_isMinusHovered = isOverMinus;
+
+		if(FlxG.mouse.justPressed)
+		{
+			if(buttonPlus != null && buttonPlus.exists && isOverPlus)
 			{
 				buttonPlus.animation.play('pressed');
 				value += step;
 				_internalOnChange();
-				_holdDir   = 1;
-				_holdTimer = 0;
-				_holdRepeat = 0;
 			}
-			else if (buttonMinus != null && buttonMinus.exists && FlxG.mouse.overlaps(buttonMinus, camera))
+			else if(buttonMinus != null && buttonMinus.exists && isOverMinus)
 			{
 				buttonMinus.animation.play('pressed');
 				value -= step;
 				_internalOnChange();
-				_holdDir   = -1;
-				_holdTimer = 0;
-				_holdRepeat = 0;
 			}
 		}
-		else if (FlxG.mouse.pressed && _holdDir != 0)
+		else if(FlxG.mouse.released)
 		{
-			var btn = (_holdDir > 0) ? buttonPlus : buttonMinus;
-			if (btn != null && btn.exists && FlxG.mouse.overlaps(btn, camera))
-			{
-				_holdTimer += elapsed;
-				var interval:Float = if (_holdTimer < 1.0) 0.15 else if (_holdTimer < 2.0) 0.08 else 0.04;
-				_holdRepeat += elapsed;
-				if (_holdRepeat >= interval && _holdTimer >= 0.5)
-				{
-					_holdRepeat -= interval;
-					value += step * _holdDir;
-					_internalOnChange();
-				}
-			}
-			else
-			{
-				_holdDir = 0;
-			}
-		}
-		else if (FlxG.mouse.released)
-		{
-			_holdDir = 0;
-			if (buttonPlus  != null && buttonPlus.exists  && buttonPlus.animation.curAnim  != null && buttonPlus.animation.curAnim.name  != 'normal')
+			if(buttonPlus != null && buttonPlus.exists && buttonPlus.animation.curAnim != null && buttonPlus.animation.curAnim.name != 'normal')
 				buttonPlus.animation.play('normal');
-			if (buttonMinus != null && buttonMinus.exists && buttonMinus.animation.curAnim != null && buttonMinus.animation.curAnim.name != 'normal')
+			if(buttonMinus != null && buttonMinus.exists && buttonMinus.animation.curAnim != null && buttonMinus.animation.curAnim.name != 'normal')
 				buttonMinus.animation.play('normal');
 		}
+	}
+
+	override public function destroy()
+	{
+		if ((_isPlusHovered || _isMinusHovered) && flixel.FlxG.mouse.useSystemCursor)
+			Mouse.cursor = MouseCursor.AUTO;
+		
+		super.destroy();
 	}
 
 	function set_value(v:Float)
@@ -150,7 +156,7 @@ class PsychUINumericStepper extends PsychUIInputText
 		return isPercent;
 	}
 
-	function _updateValue()
+	inline function _updateValue()
 	{
 		var txt:String = text.replace('%', '');
 		if(txt.indexOf('-') > 0)
@@ -184,7 +190,7 @@ class PsychUINumericStepper extends PsychUIInputText
 		if(selectIndex > text.length) selectIndex = text.length;
 	}
 	
-	function _updateFilter()
+	inline function _updateFilter()
 	{
 		if(min < 0)
 		{
@@ -223,7 +229,7 @@ class PsychUINumericStepper extends PsychUIInputText
 	}
 
 	public var broadcastStepperEvent:Bool = true;
-	function _internalOnChange()
+	inline function _internalOnChange()
 	{
 		if(onValueChange != null) onValueChange();
 		if(broadcastStepperEvent) PsychUIEventHandler.event(CHANGE_EVENT, this);

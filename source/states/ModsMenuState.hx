@@ -6,7 +6,7 @@ import backend.Mods;
 
 import flixel.FlxBasic;
 import flixel.graphics.FlxGraphic;
-import flash.geom.Rectangle;
+import openfl.geom.Rectangle;
 import haxe.Json;
 
 import flixel.util.FlxSpriteUtil;
@@ -315,7 +315,7 @@ class ModsMenuState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			if(waitingToRestart)
 			{
-				//MusicBeatState.switchState(new TitleState());
+				//FlxG.switchState(() -> new TitleState());
 				EXETitle.initialized = false;
 				EXETitle.closedState = false;
 				FlxG.sound.music.fadeOut(0.3);
@@ -326,7 +326,7 @@ class ModsMenuState extends MusicBeatState
 				}
 				FlxG.camera.fade(FlxColor.BLACK, 0.5, false, FlxG.resetGame, false);
 			}
-			else MusicBeatState.switchState(new EXEMenu());
+			else FlxG.switchState(() -> new EXEMenu());
 
 			persistentUpdate = false;
 			FlxG.autoPause = ClientPrefs.data.autoPause;
@@ -390,8 +390,8 @@ class ModsMenuState extends MusicBeatState
 						changeSelectedMod(shiftMult);
 					else if(controls.UI_UP_P)
 						changeSelectedMod(-shiftMult);
-					else if(FlxG.mouse.wheel != 0)
-						changeSelectedMod(-FlxG.mouse.wheel * shiftMult, true);
+					else if(FlxG.mouse.deltaWheel.y != 0)
+						changeSelectedMod(-FlxG.mouse.deltaWheel.y * shiftMult, true);
 					else if(FlxG.keys.justPressed.HOME || FlxG.keys.justPressed.END ||
 						FlxG.gamepads.anyJustPressed(LEFT_TRIGGER) || FlxG.gamepads.anyJustPressed(RIGHT_TRIGGER))
 					{
@@ -770,7 +770,7 @@ class ModsMenuState extends MusicBeatState
 		FlxTransitionableState.skipNextTransIn = true;
 		FlxTransitionableState.skipNextTransOut = true;
 		var curMod:ModItem = modsGroup.members[curSelectedMod];
-		MusicBeatState.switchState(new ModsMenuState(curMod != null ? curMod.folder : null));
+		FlxG.switchState(() -> new ModsMenuState(curMod != null ? curMod.folder : null));
 	}
 	
 	function saveTxt()
@@ -961,7 +961,7 @@ class MenuButton extends FlxSpriteGroup
 			return;
 		}
 
-		if(!ignoreCheck && !Controls.instance.controllerMode && (FlxG.mouse.justPressed || FlxG.mouse.justMoved) && FlxG.mouse.visible)
+		if(!ignoreCheck && !controls.controllerMode && (FlxG.mouse.justPressed || FlxG.mouse.justMoved) && FlxG.mouse.visible)
 			onFocus = FlxG.mouse.overlaps(this);
 		
 		if(onFocus && onClick != null && FlxG.mouse.justPressed)
@@ -970,7 +970,7 @@ class MenuButton extends FlxSpriteGroup
 		if(_needACheck)
 		{
 			_needACheck = false;
-			if(!Controls.instance.controllerMode)
+			if(!controls.controllerMode)
 				setButtonVisibility(FlxG.mouse.overlaps(this));
 		}
 	}

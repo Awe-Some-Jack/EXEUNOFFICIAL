@@ -207,6 +207,8 @@ class ClientPrefs {
 			for (name => value in savedMap)
 				data.gameplaySettings.set(name, value);
 		}
+
+		flixel.FlxSprite.defaultAntialiasing = data.antialiasing;
 		
 		// flixel automatically saves your volume!
 		if(FlxG.save.data.volume != null)

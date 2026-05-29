@@ -16,6 +16,7 @@ class DiscordClient
 	private inline static final _defaultID:String = "1478458307961163786";
 	public static var clientID(default, set):String = _defaultID;
 	private static var presence:DiscordPresence = new DiscordPresence();
+	
 	// hides this field from scripts and reflection in general
 	@:unreflective private static var __thread:Thread;
 
@@ -30,9 +31,7 @@ class DiscordClient
 		if (!isInitialized && ClientPrefs.data.discordRPC)
 			initialize();
 
-		Application.current.window.onClose.add(function() {
-			if(isInitialized) shutdown();
-		});
+		Application.current.onExit.add((_) -> if(isInitialized) shutdown());
 	}
 
 	public dynamic static function shutdown()
@@ -248,22 +247,24 @@ private final class DiscordPresence
 
 	@:noCompletion inline function get_startTimestamp():Int
 	{
-		return __presence.startTimestamp;
+		return cast(__presence.startTimestamp, Int);
 	}
 
 	@:noCompletion inline function set_startTimestamp(value:Int):Int
 	{
-		return __presence.startTimestamp = value;
+		__presence.startTimestamp = value;
+		return value;
 	}
 
 	@:noCompletion inline function get_endTimestamp():Int
 	{
-		return __presence.endTimestamp;
+		return cast(__presence.endTimestamp, Int);
 	}
 
 	@:noCompletion inline function set_endTimestamp(value:Int):Int
 	{
-		return __presence.endTimestamp = value;
+		__presence.endTimestamp = value;
+		return value;
 	}
 }
 #end

@@ -92,7 +92,6 @@ class ExeControlsState extends MusicBeatState
 		bg.setGraphicSize(Std.int(FlxG.width * 1.2), Std.int(FlxG.height * 1.2));
 		bg.updateHitbox();
 		bg.screenCenter();
-		bg.antialiasing = ClientPrefs.data.antialiasing;
 		bg.scrollFactor.set(0.1, 0.1);
 		add(bg);
 
@@ -105,7 +104,6 @@ class ExeControlsState extends MusicBeatState
 			obj.setGraphicSize(Std.int(obj.width * GLOBAL_SCALE));
 			obj.updateHitbox();
 			obj.ID = i;
-			obj.antialiasing = ClientPrefs.data.antialiasing;
 			objsGrp.add(obj);
 			resetObj(obj);
 		}
@@ -114,7 +112,6 @@ class ExeControlsState extends MusicBeatState
 		title.setGraphicSize(Std.int(title.width * GLOBAL_SCALE));
 		title.updateHitbox();
 		title.screenCenter(X);
-		title.antialiasing = ClientPrefs.data.antialiasing;
 		add(title);
 
 		sectionBGClone = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/optionsBG.png'));
@@ -288,7 +285,7 @@ class ExeControlsState extends MusicBeatState
 		if (controls.BACK)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			MusicBeatState.switchState(new options.OptionsState());
+			FlxG.switchState(() -> new options.OptionsState());
 		}
 	}
 
@@ -305,6 +302,7 @@ class ExeControlsState extends MusicBeatState
 
 		bindingText = new FlxText(0, FlxG.height / 2 - 50, FlxG.width, "Press a key...\nHold ESC to cancel\nHold BACKSPACE to clear", 32);
 		bindingText.setFormat(Paths.font("SonicCD.ttf"), 28, FlxColor.WHITE, CENTER);
+		bindingText.antialiasing = false;
 		add(bindingText);
 
 		ClientPrefs.toggleVolumeKeys(false);

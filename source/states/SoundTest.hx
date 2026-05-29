@@ -277,7 +277,7 @@ class SoundTest extends MusicBeatState
 	var _mouseWasRight:Bool = false;
 	function handleSelection():Void
 	{
-		if (Controls.instance.UI_RIGHT_P || Controls.instance.UI_LEFT_P)
+		if (controls.UI_RIGHT_P || controls.UI_LEFT_P)
 		{
 			isPCMSelected = !isPCMSelected;
 			updateLabelColors();
@@ -297,23 +297,23 @@ class SoundTest extends MusicBeatState
 	{
 		var change:Int = 0;
 
-		if (Controls.instance.UI_DOWN_P || FlxG.mouse.wheel < 0){
+		if (controls.UI_DOWN_P || FlxG.mouse.deltaWheel.y < 0){
 			change = (FlxG.keys.pressed.SHIFT ? 3 : 1);
 			changeHold = 0;
 		}
-		else if (Controls.instance.UI_UP_P || FlxG.mouse.wheel > 0){
+		else if (controls.UI_UP_P || FlxG.mouse.deltaWheel.y > 0){
 			change = -(FlxG.keys.pressed.SHIFT ? 3 : 1);
 			changeHold = 0;
 		}
 
-		if(Controls.instance.UI_DOWN || Controls.instance.UI_UP)
+		if(controls.UI_DOWN || controls.UI_UP)
 		{
 			var checkLastHold:Int = Math.floor((changeHold - 0.3) * 10);
 			changeHold += elapsed;
 			var checkNewHold:Int = Math.floor((changeHold - 0.3) * 10);
 
 			if(changeHold > 0.3 && checkNewHold - checkLastHold > 0)
-				change = (checkNewHold - checkLastHold) * (Controls.instance.UI_UP ? -(FlxG.keys.pressed.SHIFT ? 3 : 1) : (FlxG.keys.pressed.SHIFT ? 3 : 1));
+				change = (checkNewHold - checkLastHold) * (controls.UI_UP ? -(FlxG.keys.pressed.SHIFT ? 3 : 1) : (FlxG.keys.pressed.SHIFT ? 3 : 1));
 		}
 
 		if (change != 0)
@@ -347,7 +347,7 @@ class SoundTest extends MusicBeatState
 		if (subState != null) return;
 		if (transitioning) return;
 
-		if (Controls.instance.BACK)
+		if (controls.BACK)
 		{
 			menuSong = true;
 			FlxG.sound.music.fadeOut(0.3);
@@ -360,7 +360,7 @@ class SoundTest extends MusicBeatState
 		handleValueChange(elapsed);
 		updateDisplayedValues();
 
-		if (Controls.instance.ACCEPT)
+		if (controls.ACCEPT)
 		{
 			notFoundAny = true;
 			for (code in codes)
@@ -377,7 +377,7 @@ class SoundTest extends MusicBeatState
 						if (code.isWeek) loadSong(code.weekName, true);
 						else
 						{
-							if (code.type == 'sebas')  FlxG.switchState(new SebasMiBeba());
+							if (code.type == 'sebas')  FlxG.switchState(() -> new SebasMiBeba());
 							else
 							{
 								persistentUpdate = false;

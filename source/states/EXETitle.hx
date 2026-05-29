@@ -148,14 +148,12 @@ class EXETitle extends MusicBeatState
 		titleText.animation.addByPrefix('idle', 'Press Enter to Begin instance 1', 24, true);
 		titleText.animation.addByPrefix('press', 'ENTER PRESSED instance 1', 24, false);
 		titleText.animation.play('idle');
-		titleText.antialiasing = ClientPrefs.data.antialiasing;
 		titleText.updateHitbox();
 		titleText.screenCenter();
 		titleText.y += 80;
 		add(titleText);
 
 		parallaxArrow = new FlxSprite(FlxG.width).loadGraphic(Assets.getBitmapData('assets/exe/parallax/parallaxarrow.png'));
-		parallaxArrow.antialiasing = ClientPrefs.data.antialiasing;
 		parallaxArrow.screenCenter(Y);
 		add(parallaxArrow);
 
@@ -226,7 +224,6 @@ class EXETitle extends MusicBeatState
 	static inline final PARALLAX_THRESHOLD:Float = 0.85;
 
 	var _mouseScreenX:Float = 0;
-
 	override function update(elapsed:Float)
 	{
 		if (videoPlaying)
@@ -264,7 +261,7 @@ class EXETitle extends MusicBeatState
 				new FlxTimer().start(1, function(_) {
 					FlxTween.tween(blackScreen, {alpha: 1}, 1);
 					FlxTween.tween(eyes, {alpha: 0}, 1.5, {ease: FlxEase.expoIn});
-					new FlxTimer().start(1.5, function(_) { MusicBeatState.switchState(new EXEMenu()); });
+					new FlxTimer().start(1.5, function(_) { FlxG.switchState(() -> new EXEMenu()); });
 					closedState = true;
 				});
 			}
@@ -272,7 +269,7 @@ class EXETitle extends MusicBeatState
 
 		if (!transitioning && canStart)
 		{
-			_mouseScreenX = FlxG.mouse.screenX;
+			_mouseScreenX = FlxG.mouse.viewX;
 			final threshold:Float = FlxG.width * PARALLAX_THRESHOLD;
 			final arrowW:Float = parallaxArrow.width;
 
@@ -306,7 +303,7 @@ class EXETitle extends MusicBeatState
 
 				new FlxTimer().start(0.8, function(_) {
 					FlxG.sound.music.fadeOut(0.3);
-					MusicBeatState.switchState(new ParallaxState());
+					FlxG.switchState(() -> new ParallaxState());
 				});
 				FlxTween.tween(whiteBG, {alpha: 1}, 0.8);
 
@@ -323,15 +320,27 @@ class EXETitle extends MusicBeatState
 		super.update(elapsed);
 
 		logoSin += elapsed;
-		final sinBase:Float   = Math.sin(logoSin);
-		final sinHalf:Float   = Math.sin(logoSin + (Math.PI / 2)) * 0.15;
-		ring.y                = 20 + sinBase * 10;
-		bandana.y             = BANDANA_Y + Math.sin(logoSin - 0.05) * 10;
-		bandana.angle         = sinHalf;
-		logotxt.y             = LOGOTXT_Y + Math.sin(logoSin - 0.1) * 10;
-		logotxt.angle         = sinHalf;
-		eyes.y                = EYES_Y + Math.sin(logoSin - 0.15) * 7;
-		eyes.angle            = Math.sin(logoSin + (Math.PI / 2.5) + 0.15) * 2;
+
+		final sinBase:Float = Math.sin(logoSin);
+		final sinHalf:Float = Math.sin(logoSin + (Math.PI / 2)) * 0.15;
+
+		if (ring != null)
+			ring.y = 20 + sinBase * 10;
+
+		if (bandana != null) {
+			bandana.y = BANDANA_Y + Math.sin(logoSin - 0.05) * 10;
+			bandana.angle = sinHalf;
+		}
+
+		if (logotxt != null) {
+			logotxt.y = LOGOTXT_Y + Math.sin(logoSin - 0.1) * 10;
+			logotxt.angle = sinHalf;
+		}
+
+		if (eyes != null) {
+			eyes.y = EYES_Y + Math.sin(logoSin - 0.15) * 7;
+			eyes.angle = Math.sin(logoSin + (Math.PI / 2.5) + 0.15) * 2;
+		}
 
 		if (!canStart) return;
 
@@ -365,7 +374,7 @@ class EXETitle extends MusicBeatState
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 			FlxTween.tween(whiteBG, {alpha: 1}, 0.8);
 			FlxG.sound.music.fadeOut(0.5);
-			new FlxTimer().start(0.8, function(_) { MusicBeatState.switchState(new states.access.FridgeAccess()); });
+			new FlxTimer().start(0.8, function(_) { FlxG.switchState(() -> new states.access.FridgeAccess()); });
 		}
 	}
 

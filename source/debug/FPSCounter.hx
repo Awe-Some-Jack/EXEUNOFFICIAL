@@ -5,13 +5,14 @@ import flixel.FlxG;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.system.System;
-
-import backend.ClientPrefs.SaveVariables;
+import flixel.util.FlxStringUtil;
+import flixel.util.FlxColor;
+import flixel.math.FlxMath;
 
 #if cpp
 import cpp.vm.Gc;
-import cpp.vm.Thread;
-import cpp.vm.Mutex;
+import sys.thread.Thread;
+import sys.thread.Mutex;
 #end
 
 /**
@@ -22,23 +23,21 @@ class FPSCounter extends TextField
 {
 	public var currentFPS(default, null):Int;
 
-	/** Haxe GC heap usage in bytes. **/
 	public var memoryMegas(get, never):Float;
-
 	@:noCompletion private var times:Array<Float>;
 
-	// ---- cached system stats (written by bg thread, read by main thread) ----
 	#if cpp
-	private static var _mutex:Mutex       = new Mutex();
+	private static var _mutex:Mutex = new Mutex();
 	#end
+	
 	private static var _cpuUsage:Float    = -1;
 	private static var _vramUsage:Float   = -1;
 	private static var _sysRam:Float      = -1;
 	private static var _bgRunning:Bool    = false;
-
+	
 	private var deltaTimeout:Float = 0.0;
 	private var _statTimer:Float   = 0.0;
-	private static inline final STAT_INTERVAL:Float = 2000; // ms between bg queries
+	private static inline final STAT_INTERVAL:Float = 2000;
 
 	/**
 	 * Estimate VRAM usage by summing pixel sizes of all cached FlxGraphics.
@@ -87,15 +86,18 @@ class FPSCounter extends TextField
 			times.push(now);
 			while (times[0] < now - 1000) times.shift();
 
-			if (deltaTimeout < 50) { deltaTimeout += deltaTime; return; }
-
-			currentFPS = times.length < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;
-
+			currentFPS = times.length;
+			
 			_statTimer += deltaTime;
 			if (_statTimer >= STAT_INTERVAL)
 			{
 				_statTimer = 0;
 				kickBgQuery();
+			}
+
+			if (deltaTimeout < 50) { 
+				deltaTimeout += deltaTime; 
+				return; 
 			}
 
 			updateText();
@@ -152,10 +154,9 @@ class FPSCounter extends TextField
 		text = 'FPS: $currentFPS'
 			+ '\nHeap:    ${fmt(memoryMegas)}'
 			+ '\nSys RAM: $sysRamDisplay'
-			+ '\nVRAM~:   ${vram >= 0 ? fmt(vram) : "N/A"}'
+			+ '\nVRAM:   ${vram >= 0 ? fmt(vram) : "N/A"}'
 			+ '\nCPU:     ${cpu  >= 0 ? '${Math.round(cpu)}%' : "N/A"}';
-
-
+			
 		var color = FlxColor.interpolate(0xFFFD0000, 0xFFFFFFFF, FlxMath.bound(currentFPS, 0, 75) / 75);
 		textColor = color;
 		/*
@@ -175,8 +176,6 @@ class FPSCounter extends TextField
 
 	static inline function fmt(bytes:Float):String
 		return flixel.util.FlxStringUtil.formatBytes(bytes);
-
-	// ---- background queries (run on worker thread, no UI access) ----
 
 	static function queryCPU():Float
 	{
@@ -226,7 +225,6 @@ class FPSCounter extends TextField
 		return -1;
 	}
 
-	// Background-thread VRAM fallbacks (Stage3D not accessible here — use external tools)
 	static function queryVRAM():Float
 	{
 		#if windows

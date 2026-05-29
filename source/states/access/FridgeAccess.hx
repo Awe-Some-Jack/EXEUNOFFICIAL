@@ -199,7 +199,7 @@ class FridgeAccess extends MusicBeatState
 
 		if (!transitioning)
 		{
-			if (Controls.instance.BACK)
+			if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.sound.music.fadeOut(0.3);
@@ -215,7 +215,7 @@ class FridgeAccess extends MusicBeatState
 			{
 				vanilla.animation.play('selected', true);
 
-				if(FlxG.mouse.justPressed || Controls.instance.ACCEPT)
+				if(FlxG.mouse.justPressed || controls.ACCEPT)
 				{
 					transitioning = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
@@ -240,7 +240,7 @@ class FridgeAccess extends MusicBeatState
 			{
 				chocolate.animation.play('selected', true);
 
-				if(FlxG.mouse.justPressed || Controls.instance.ACCEPT)
+				if(FlxG.mouse.justPressed || controls.ACCEPT)
 				{
 					transitioning = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
@@ -262,8 +262,8 @@ class FridgeAccess extends MusicBeatState
 		}
 
 		camFollow.setPosition(
-			FlxG.width / 2 + (((FlxG.mouse.getScreenPosition().x - (FlxG.width / 2)) / (FlxG.width / 2)) * 5) + daOffset[0],
-			FlxG.height / 2 + (((FlxG.mouse.getScreenPosition().y - (FlxG.height / 2)) / (FlxG.height / 2)) * 5) + daOffset[1]
+			FlxG.width / 2 + (((FlxG.mouse.getViewPosition().x - (FlxG.width / 2)) / (FlxG.width / 2)) * 5) + daOffset[0],
+			FlxG.height / 2 + (((FlxG.mouse.getViewPosition().y - (FlxG.height / 2)) / (FlxG.height / 2)) * 5) + daOffset[1]
 		);
 	}
 

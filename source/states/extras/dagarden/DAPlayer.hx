@@ -358,6 +358,7 @@ class DAPlayer extends FlxGroup
 		_handleDiskMouse(elapsed);
 		_handleBarMouse(elapsed);
 		_updateWindowTitle();
+		_resyncVocals();
 	}
 
 	private function _updateScratchPitch(elapsed:Float):Void
@@ -817,6 +818,20 @@ class DAPlayer extends FlxGroup
 		}
 	}
 
+	private function _resyncVocals():Void
+	{
+		if (instSound == null || !instSound.playing || _seekPending) return;
+
+		for (v in vocalsSounds)
+		{
+			if (v?.playing)
+			{
+				if (Math.abs(instSound.time - v.time) > 25)
+					v.time = instSound.time;
+			}
+		}
+	}
+
 	private function _destroyAudio():Void
 	{
 		if (instSound != null)
@@ -826,13 +841,19 @@ class DAPlayer extends FlxGroup
 			instSound.destroy();
 			instSound = null;
 		}
-		for (v in vocalsSounds)
+		if (vocalsSounds != null)
 		{
-			v.stop();
-			FlxG.sound.list.remove(v, true);
-			v.destroy();
+			for (v in vocalsSounds)
+			{
+				if (v != null)
+				{
+					v.stop();
+					FlxG.sound.list.remove(v, true);
+					v.destroy();
+				}
+			}
+			vocalsSounds = [];
 		}
-		vocalsSounds    = [];
 		oppVocalsSounds = [];
 		isPlaying   = false;
 		_loadedSong = '';

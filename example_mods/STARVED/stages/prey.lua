@@ -77,8 +77,6 @@ function onCreatePost()
 	setBlendMode('flashOverlay', 'add')
 
 	changeBGVelocity(1)
-
-	setProperty('cpuAssist', true)
 end
 
 local stopNextShock = false

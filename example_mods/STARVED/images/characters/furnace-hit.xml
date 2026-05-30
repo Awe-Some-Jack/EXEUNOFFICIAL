@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="furnace-hit.png">
-<SubTexture name="idle0000" x="0" y="0" width="61" height="70" frameX="-2" frameY="0" frameWidth="59" frameHeight="66" />
-<SubTexture name="idle0001" x="61" y="0" width="57" height="70" frameX="-2" frameY="0" frameWidth="59" frameHeight="66" />
-<SubTexture name="idle0002" x="118" y="0" width="63" height="70" frameX="0" frameY="0" frameWidth="59" frameHeight="66" />
-<SubTexture name="idle0003" x="0" y="70" width="56" height="70" frameX="-3" frameY="0" frameWidth="59" frameHeight="66" />
-</TextureAtlas>

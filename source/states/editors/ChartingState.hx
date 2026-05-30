@@ -1206,7 +1206,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			updateSelectionBox();
 		}
 		
-		if (FlxG.mouse.justPressed && (FlxG.mouse.overlaps(mainBox.bg) || FlxG.mouse.overlaps(infoBox.bg)))
+		if (FlxG.mouse.justPressed && (FlxG.mouse.overlaps(mainBox.bg, camUI) || FlxG.mouse.overlaps(infoBox.bg, camUI) || FlxG.mouse.overlaps(upperBox.bg, camUI)))
 			ignoreClickForThisFrame = true;
 
 		var minX:Float = gridBg.x;

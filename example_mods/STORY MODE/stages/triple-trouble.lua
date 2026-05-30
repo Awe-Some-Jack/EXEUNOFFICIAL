@@ -252,6 +252,7 @@ function onCreate()
 	setProperty('fogOverlay.visible', false)
 	if not lowQuality then
 		setSpriteShader('fogOverlay', 'wavyDistortion')
+		setBlendMode('fogOverlay', 'shader')
 		setShaderFloat('fogOverlay', 'amount', 2)
 	end
 	setProperty('fogOverlay.alpha', 0.4)

@@ -310,7 +310,7 @@ class PlayState extends MusicBeatState
 
 		camGame = initPsychCamera();
 
-		if(songName.toLowerCase() == 'flash') {
+		if(songName == 'flash') {
 			camBack = new FlxCamera();
 			camBack.zoom = 1;
 

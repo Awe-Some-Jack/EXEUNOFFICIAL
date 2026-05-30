@@ -12,7 +12,7 @@ local baseSprites = {
 	{name = 'trees',     path = 'hedge/trees',       x = -520,  y = -300, scale = 1.1, hq = true},
 	{name = 'floor',     path = 'hedge/floor',       x = -1050, y = 610, scale = 1.4},
 	{name = 'rocks',     path = 'hedge/rocks',       x = -1050, y = 560, scale = 1.4, scrollX = 1.2, scrollY = 1.2, front = true, hq = true},
-	{name = 'overlay',   path = 'hedge/overlay',     x = -1250, y = -400, scaleX = 1.3, scaleY = 1, alpha = 0.5, front = true, hq = true},
+	{name = 'overlay',   path = 'hedge/overlay',     x = -1250, y = -400, scaleX = 1.3, scaleY = 1, alpha = 0.5, front = true, hq = true, blend = 'add'},
 }
 
 local evilSprites = {

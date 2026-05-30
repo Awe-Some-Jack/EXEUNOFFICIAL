@@ -7,13 +7,6 @@ function onCreatePost()
 	setObjectOrder('introsonic', getObjectOrder('boyfriendGroup') + 1)
 	setProperty('introsonic.alpha', 0)
 
-	makeAnimatedLuaSprite('furnaceHit', 'characters/furnhit', getProperty('dad.x') - 20, getProperty('dad.y') + 51)
-	addAnimationByPrefix('furnaceHit', 'hit', 'furnhit idle', 18, true)
-	scaleObject('furnaceHit', 6, 6, false)
-	setProperty('furnaceHit.antialiasing', false)
-	addLuaSprite('furnaceHit', true)
-	setProperty('furnaceHit.alpha', 0)
-
 	makeAnimatedLuaSprite('sonicfinal', 'characters/sonicfinale', getProperty('boyfriend.x') + 355, getProperty('boyfriend.y') - 55)
 	addAnimationByPrefix('sonicfinal', 'idle', 'idle', 12, false)
 	scaleObject('sonicfinal', 6, 6, false)

@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="furnhit.png">
-<SubTexture name="furnhit idle0000" x="0" y="0" width="59" height="59" frameX="-29" frameY="-25" frameWidth="130" frameHeight="97" />
-<SubTexture name="furnhit idle0001" x="59" y="0" width="59" height="59" frameX="-29" frameY="-25" frameWidth="130" frameHeight="97" />
-<SubTexture name="furnhit idle0002" x="0" y="59" width="59" height="59" frameX="-29" frameY="-25" frameWidth="130" frameHeight="97" />
-<SubTexture name="furnhit idle0003" x="118" y="0" width="60" height="59" frameX="-29" frameY="-25" frameWidth="130" frameHeight="97" />
-</TextureAtlas>

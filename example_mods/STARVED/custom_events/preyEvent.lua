@@ -101,7 +101,6 @@ function onEvent(n, v1)
 			doTweenY('starvedY', 'dad', 54, getTime(14), 'backOut')
 			runTimer('startFloating', getTime(14))
 			runTimer('backtonormalsize', getTime(8))
-			removeLuaSprite('furnaceHit', true)
 			setProperty('dad.alpha', 1)
 		end
 
@@ -180,8 +179,8 @@ function onTimerCompleted(t)
 	end
 
 	if t == 'impact' then
-		setProperty('dad.alpha', 0)
-		setProperty('furnaceHit.alpha', 1)
+		playAnim('dad', 'hit', true)
+		setProperty('dad.specialAnim', true)
 		cameraShake('game', 0.02, 0.1)
 
 		cancelTimer('startFloating')

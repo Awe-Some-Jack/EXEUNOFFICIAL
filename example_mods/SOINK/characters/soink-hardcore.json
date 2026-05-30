@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
+			"loop": false,
+			"offsets": [33, 1],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [77, 0],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [90, 0],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [50, 15],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
 			"offsets": [0, 0],
 			"indices": [],
 			"fps": 24,
 			"anim": "idle",
 			"loop": true,
 			"name": "idle"
-		},
-		{
-			"offsets": [-1, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT",
-			"loop": false,
-			"name": "left"
-		},
-		{
-			"offsets": [-1, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWN",
-			"loop": false,
-			"name": "down"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right"
-		},
-		{
-			"offsets": [1, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP",
-			"loop": false,
-			"name": "up"
 		}
 	],
 	"vocals_file": "",

@@ -211,6 +211,7 @@ class PlayState extends MusicBeatState
 	public var camHUD:FlxCamera;
 	public var camVideo:FlxCamera;
 	public var camGame:FlxCamera;
+	public var camBack:FlxCamera;
 	public var gameplayCam:GameplayCamera;
 	public var camOther:FlxCamera;
 	public var cameraSpeed:Float = 1;
@@ -305,19 +306,43 @@ class PlayState extends MusicBeatState
 		cpuControlled = ClientPrefs.getGameplaySetting('botplay');
 		guitarHeroSustains = ClientPrefs.data.guitarHeroSustains;
 
-		// var gameCam:FlxCamera = FlxG.camera;
-		camGame = initPsychCamera();
-		gameplayCam = new GameplayCamera(this);
-		camVideo = new FlxCamera();
-		camHUD = new FlxCamera();
-		camOther = new FlxCamera();
-		camVideo.bgColor.alpha = 0;
-		camHUD.bgColor.alpha = 0;
-		camOther.bgColor.alpha = 0;
+		songName = Paths.formatToSongPath(SONG.song);
 
-		FlxG.cameras.add(camVideo, false);
-		FlxG.cameras.add(camHUD, false);
-		FlxG.cameras.add(camOther, false);
+		camGame = initPsychCamera();
+
+		if(songName.toLowerCase() == 'flash') {
+			camBack = new FlxCamera();
+			camBack.zoom = 1;
+
+			gameplayCam = new GameplayCamera(this);
+			camVideo = new FlxCamera();
+			camHUD = new FlxCamera();
+			camOther = new FlxCamera();
+			camVideo.bgColor.alpha = 0;
+			camHUD.bgColor.alpha = 0;
+			camOther.bgColor.alpha = 0;
+
+			FlxG.cameras.remove(camGame, false);
+			FlxG.cameras.add(camBack);        
+			FlxG.cameras.add(camGame);  
+
+			camGame.bgColor = 0x00000000; 
+			FlxG.cameras.add(camVideo, false);
+			FlxG.cameras.add(camHUD, false);
+			FlxG.cameras.add(camOther, false);
+		} else {
+			gameplayCam = new GameplayCamera(this);
+			camVideo = new FlxCamera();
+			camHUD = new FlxCamera();
+			camOther = new FlxCamera();
+			camVideo.bgColor.alpha = 0;
+			camHUD.bgColor.alpha = 0;
+			camOther.bgColor.alpha = 0;
+
+			FlxG.cameras.add(camVideo, false);
+			FlxG.cameras.add(camHUD, false);
+			FlxG.cameras.add(camOther, false);
+		}
 
 		persistentUpdate = true;
 		persistentDraw = true;
@@ -358,7 +383,6 @@ class PlayState extends MusicBeatState
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song;
 
 		GameOverSubstate.resetVariables();
-		songName = Paths.formatToSongPath(SONG.song);
 		if(SONG.stage == null || SONG.stage.length < 1)
 			SONG.stage = StageData.vanillaSongStage(Paths.formatToSongPath(Song.loadedSongName));
 
@@ -3428,7 +3452,7 @@ class PlayState extends MusicBeatState
 		super.sectionHit();
 
 		setOnScripts('curSection', curSection);
-		callOnScripts('onSectionHit');
+		callOnScripts('onSectionHit', [sec]);
 		gameplayCam.onSectionHit();
 	}
 

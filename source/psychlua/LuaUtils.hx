@@ -450,6 +450,7 @@ class LuaUtils
 		switch (cam.toLowerCase())
 		{
 			case 'camgame' | 'game':   return PlayState.instance.camGame;
+			case 'camback' | 'back':   return PlayState.instance.camBack;
 			case 'camvideo'  | 'video':    return PlayState.instance.camVideo;
 			case 'camhud'  | 'hud':    return PlayState.instance.camHUD;
 			case 'camother' | 'other': return PlayState.instance.camOther;

@@ -425,6 +425,14 @@ class LuaUtils
 			case 'screen':     SCREEN;
 			case 'shader':     SHADER;
 			case 'subtract':   SUBTRACT;
+			case 'colordodge': COLORDODGE;
+			case 'colorburn':  COLORBURN;
+			case 'softlight':  SOFTLIGHT;
+			case 'exclusion':  EXCLUSION;
+			case 'hue':        HUE;
+			case 'saturation': SATURATION;
+			case 'color':      COLOR;
+			case 'luminosity': LUMINOSITY;
 			default:           NORMAL;
 		};
 	}

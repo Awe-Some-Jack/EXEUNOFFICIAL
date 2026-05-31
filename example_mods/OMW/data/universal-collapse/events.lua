@@ -23,6 +23,8 @@ end
 
 local oldAnim = 'normal'
 function onUpdatePost()
+	if getProperty('glassbreak') and getProperty('glassbreak.animation.curAnim.name') == 'idle2' and getProperty('glassbreak.animation.curAnim.finished') then removeLuaSprite('glassbreak', true) end
+
 	setProperty('iconOMW.x', getProperty('iconOpp.x') - 20)
     setProperty('iconOMW.y', getProperty('iconOpp.y') - 20)
 	setProperty('iconOMW.scale.x', getProperty('iconOpp.scale.x') * 0.8)
@@ -40,18 +42,30 @@ end
 
 function onEvent(n,v1)
 	if n == 'omwEvents' then
+		if v1 == 'fadeIn' then doTweenAlpha('asdads', 'blackScreen', 0, crochet / 250) end
 		if v1 == 'hudAppear' then
 			doTweenAlpha('camHUD', 'camHUD', 1, crochet / (1000 / 6))
 		end
-		if v1 == 'fadeIn' then doTweenAlpha('asdads', 'blackScreen', 0, crochet / 250) end
 		if v1 == 'removevideoxd' then
 			if getProperty('videoCutscene') == nil then return end
     		callMethod('remove', {instanceArg('videoCutscene')})
 
+			cancelTween('asdads')
 			setProperty('camGame.alpha', 1)
 			setProperty('blackScreen.alpha', 1)
 		end
+		if v1 == 'fadeIn2' then doTweenAlpha('asdads', 'blackScreen', 0, crochet / (1000 / 10), 'expoIn') end
+		if v1 == 'glassbreaking' then
+			playAnim('glassbreak', 'idle', true)
+			setProperty('glassbreak.alpha', 1)
+		end
 		if v1 == 'startPro' then
+			screenCenter('glassbreak')
+			callMethod('glassbreak.setPosition', {getProperty('glassbreak.x') - 150, getProperty('glassbreak.y') - 30})
+			playAnim('glassbreak', 'idle2', true)
+
+			removeSpriteShader('boyfriend')
+
 			cancelTween('asdads') setProperty('blackScreen.alpha', 0) setProperty('blackScreen.color', getColorFromHex('000000'))
 			cancelTween('camHUD') setProperty('camHUD.alpha', 1)
 			cameraFlash('hud', 'FFFFFF', 2, true)
@@ -66,8 +80,8 @@ function onEvent(n,v1)
 			setProperty('gradient.visible', true)
 
 			removeLuaSprite('omwograd', true)
+			removeLuaSprite('omwofloor', true)
 			triggerEvent('Change Character', 'dad', 'omw')
-			removeSpriteShader('boyfriend')
 
 			setProperty('iconBF.alpha', 1)
 			setProperty('iconOpp.alpha', 1)
@@ -102,6 +116,7 @@ function onEvent(n,v1)
 			setProperty('universe.visible', true)
 			for i = 1,4 do setProperty('planet'..i..'.visible', true) end
 			setProperty('piedra.visible', true)
+			setProperty('omwbody.visible', true)
 
 			triggerEvent('Change Character', 'dad', 'omw2')
 

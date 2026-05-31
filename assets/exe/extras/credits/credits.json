@@ -241,7 +241,9 @@
 			"name": "Nebros",
 			"icon": "nebros",
 			"description": "Animator and 3D Artist",
-			"nation": "chile"
+			"nation": "chile",
+			"twitter": "https://x.com/ebrosBM",
+			"colors": [[213, 0, 20], [70, 170, 33]]
 		},
 		{
 			"name": "RoxasWhite_",

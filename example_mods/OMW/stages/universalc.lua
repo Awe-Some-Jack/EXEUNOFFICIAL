@@ -48,10 +48,12 @@ function onCreatePost()
 	setScrollFactor('trees', 0.85, 0.85)
 	addLuaSprite('trees')
 
-	makeLuaSprite('omwograd', 'characters/omwograd', -600, -200)
+	makeLuaSprite('omwograd', 'characters/omwograd', -600, -100)
 	setObjectOrder('omwograd', getObjectOrder('dadGroup') + 1)
 	scaleObject('omwograd', 1000, 1)
-	addLuaSprite('omwograd')
+
+	makeLuaSprite('omwofloor', 'universal-collapse/blackfloor', -770, 370)
+	setObjectOrder('omwofloor', getObjectOrder('dadGroup') + 2)
 
 	makeLuaSprite('gradient', 'universal-collapse/gradient', -600, -1000)
 	scaleObject('gradient', 1, 2000)
@@ -77,16 +79,30 @@ function onCreatePost()
 
 	makeLuaSprite('piedra', 'universal-collapse/universe/piedra', -105, 380)
 	scaleObject('piedra', 0.8, 0.8)
-	setScrollFactor('piedra', 1, 1)
 	setProperty('piedra.visible', false)
 	setObjectOrder('piedra', getObjectOrder('boyfriendGroup'))
+
+	makeAnimatedLuaSprite('omwbody', 'universal-collapse/universe/bgomw', -1300, -850)
+	addAnimationByPrefix('omwbody', 'idle', 'sexo', 24, true)
+	scaleObject('omwbody', 1.5, 1.5)
+	setProperty('omwbody.visible', false)
+	addLuaSprite('omwbody')
 
 	makeLuaSprite('blackScreen')
 	makeGraphic('blackScreen', screenWidth, screenHeight, 'FFFFFF')
 	setProperty('blackScreen.color', getColorFromHex('000000'))
 	setObjectCamera('blackScreen', 'other')
 	addLuaSprite('blackScreen')
-	setProperty('blackScreen.alpha', 0)
+	setProperty('blackScreen.alpha', 1)
+
+	makeAnimatedLuaSprite('glassbreak', 'universal-collapse/glassbreak')
+	addAnimationByPrefix('glassbreak', 'idle', 'vidrio i', 24, false)
+	addAnimationByPrefix('glassbreak', 'idle2', 'vidrio2', 24, false)
+	setProperty('glassbreak.alpha', 0)
+	setObjectCamera('glassbreak', 'other')
+	screenCenter('glassbreak')
+	callMethod('glassbreak.setPosition', {getProperty('glassbreak.x') + 50, getProperty('glassbreak.y') + 70})
+	addLuaSprite('glassbreak')
 
 	setProperty('sky.visible', false)
 	setProperty('clouds.visible', false)
@@ -161,7 +177,7 @@ function onSectionHit()
 		if mustHitSection then
 			setProperty('gameplayCam.settings.OGZoom', 1.35)
 		else
-			setProperty('gameplayCam.settings.OGZoom', 0.8)
+			setProperty('gameplayCam.settings.OGZoom', (universe and 0.6 or 0.8))
 		end
 	end
 end

@@ -1,68 +1,35 @@
-local currentBarPorcent = 0
-local heightBar = 0
+local fear = 0
+
 function onCreatePost()
-    makeLuaSprite('FearBarImage','fearbar',screenWidth - 100,100)
-    scaleObject('FearBarImage',1.2,1.1)
-    setObjectCamera('FearBarImage','hud')
-    addLuaSprite('FearBarImage',true)
+	makeLuaSprite('fearBar', 'fearbar', 1194, 213.5)
+	setObjectCamera('fearBar', 'hud')
+	
+	makeLuaSprite('fear', nil, 1230, 233.5)
+	makeGraphic('fear', 12, 254, 'FF0000')
+	setObjectCamera('fear', 'hud')
 
-    makeLuaSprite('FearBarBg','fearbarBG',getProperty('FearBarImage.x') + 15,getProperty('FearBarImage.y'))
-    setObjectCamera('FearBarBg','hud')
-    scaleObject('FearBarBg',0.82,1.1)
-    addLuaSprite('FearBarBg',false)
-    
-    makeLuaSprite('FearBarBar','',getProperty('FearBarImage.x') + 20,getProperty('FearBarImage.y'))
-    setObjectCamera('FearBarBar','hud')
-    makeGraphic('FearBarBar',getProperty('FearBarBg.width')/2,getProperty('FearBarBg.height'),'FF0000')
+	makeLuaSprite('fearBarBG', 'fearbarBG', 1194, 213.5)
+	setObjectCamera('fearBarBG', 'hud')
 
-    addLuaSprite('FearBarBar',false)
+	addLuaSprite('fearBarBG')
+	addLuaSprite('fear')
+	addLuaSprite('fearBar')
 end
-function onUpdate()
-    if keyPressed('space') then
-        currentBarPorcent = currentBarPorcent - 0.4
-    end
-    if currentBarPorcent == 0 then
-        setGraphicSize('FearBarBar',getProperty('FearBarBg.width')/1.8 * getProperty('FearBarBg.scale.x'),0)
-    else
-        setGraphicSize('FearBarBar',getProperty('FearBarBg.width')/1.8 * getProperty('FearBarBg.scale.x'),getProperty('FearBarBg.height')/1.132* currentBarPorcent)
-    end
-    setProperty('FearBarBar.x',getProperty('FearBarBg.x') + 20)
-    setProperty('FearBarBar.x',getProperty('FearBarBg.x') + 20)
-    setProperty('FearBarBar.y',getProperty('FearBarImage.y') + 305 - getProperty('FearBarBar.height'))
 
-    if currentBarPorcent > 1 then
-        currentBarPorcent  = 1
-    end
-    if currentBarPorcent <= 0 then
-        currentBarPorcent  = 0
-        setGraphicSize('FearBarBar',getProperty('FearBarBg.width')/1.8 * getProperty('FearBarBg.scale.x'),0)
-        setProperty('FearBarBar.visible',false)
-    else
-        setProperty('FearBarBar.visible',true)
-    end
+function onUpdatePost(e)
+	setGraphicSize('fear', 12, lerp(1, 254, bound(fear / 100, 0, 1))) setProperty('fear.y', 213.5 + lerp(274, 20, bound(fear / 100, 0, 1)))
+	if getHealth() < 0.1 then addHealth(-(0.1 + (fearNo / 100) * 0.5) * elapsed) end
 end
-function opponentNoteHit()
 
-    if currentBarPorcent < 1 then
-        currentBarPorcent = currentBarPorcent + 0.0050
-    end
+function opponentNoteHit(id,nd,nt,isn) if isn then return end fear = fear + 0.15 end
+function noteMiss(id,nd,nt,isn) if isn then return end fear = fear + 5 end
+function noteMissPress() fear = fear + 5 end
+function goodNoteHit(id,nd,nt,isn) if isn then return end fear = fear - 0.1 end
+
+function lerp(a, b, t)
+	return a + t * (b - a)
 end
-function goodNoteHit()
-    if currentBarPorcent > 0 then
-        currentBarPorcent = currentBarPorcent - 0.0080
-    end
-end
-function noteMiss(id,dir,type,sustain)
-    if type == '' then
-        if currentBarPorcent < 1 then
-            currentBarPorcent = currentBarPorcent + 0.0043
-        end
-    end
-end
-function onBeatHit()
-    if curStep >= 1184 and curStep < 2143 then
-        if getProperty('health') > 0.08 and currentBarPorcent < 1 or currentBarPorcent == 1 then
-            setProperty('health',getProperty('health') - 0.056)
-        end
-    end
+
+function bound(number, min, max)
+	return math.max(min, math.min(max, number))
 end

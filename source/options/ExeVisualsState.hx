@@ -53,13 +53,11 @@ class ExeVisualsState extends MusicBeatState
 
 		sectionsList = [
 			{label: "HIDE HUD",       getValue: () -> ClientPrefs.data.hideHud,      setValue: (v) -> ClientPrefs.data.hideHud = v},
-			{label: "TIME BAR",       getValue: () -> ClientPrefs.data.timeBarType,  setValue: (v) -> ClientPrefs.data.timeBarType = v, isString: true, options: ['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']},
 			{label: "FLASHING LIGHTS", getValue: () -> ClientPrefs.data.flashing,    setValue: (v) -> ClientPrefs.data.flashing = v},
 			{label: "CAMERA ZOOMS",   getValue: () -> ClientPrefs.data.camZooms,     setValue: (v) -> ClientPrefs.data.camZooms = v},
 			{label: "SCORE TEXT ZOOM", getValue: () -> ClientPrefs.data.scoreZoom,   setValue: (v) -> ClientPrefs.data.scoreZoom = v},
 			{label: "HEALTH BAR ALPHA", getValue: () -> ClientPrefs.data.healthBarAlpha, setValue: (v) -> ClientPrefs.data.healthBarAlpha = v, isFloat: true},
 			{label: "FPS COUNTER",    getValue: () -> ClientPrefs.data.showFPS,      setValue: (v) -> { ClientPrefs.data.showFPS = v; #if !mobile if (Main.fpsVar != null) Main.fpsVar.visible = v; #end }},
-			{label: "PAUSE MUSIC",    getValue: () -> ClientPrefs.data.pauseMusic,   setValue: (v) -> ClientPrefs.data.pauseMusic = v, isString: true, options: ['None', 'Tea Time', 'Breakfast', 'Breakfast (Pico)']},
 			{label: "COMBO STACKING", getValue: () -> ClientPrefs.data.comboStacking, setValue: (v) -> ClientPrefs.data.comboStacking = v}
 		];
 

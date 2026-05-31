@@ -84,13 +84,6 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			'hideHud',
 			BOOL);
 		addOption(option);
-		
-		var option:Option = new Option('Time Bar:',
-			"What should the Time Bar display?",
-			'timeBarType',
-			STRING,
-			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
-		addOption(option);
 
 		var option:Option = new Option('Flashing Lights',
 			"Uncheck this if you're sensitive to flashing lights!",
@@ -129,14 +122,6 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
 		#end
-		
-		var option:Option = new Option('Pause Music:',
-			"What song do you prefer for the Pause Screen?",
-			'pauseMusic',
-			STRING,
-			['None', 'Tea Time', 'Breakfast', 'Breakfast (Pico)']);
-		addOption(option);
-		option.onChange = onChangePauseMusic;
 		
 		#if CHECK_FOR_UPDATES
 		var option:Option = new Option('Check for Updates',
@@ -195,17 +180,6 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 				}
 				notesShown = false;
 		}
-	}
-
-	var changedMusic:Bool = false;
-	function onChangePauseMusic()
-	{
-		if(ClientPrefs.data.pauseMusic == 'None')
-			FlxG.sound.music.volume = 0;
-		else
-			FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.data.pauseMusic)));
-
-		changedMusic = true;
 	}
 
 	function onChangeNoteSkin()

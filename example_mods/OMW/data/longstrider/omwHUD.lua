@@ -3,9 +3,6 @@ local function killMainHUD()
 	callMethod('iconP1.kill')
 	callMethod('iconP2.kill')
 	callMethod('scoreTxt.kill')
-
-	callMethod('timeBar.kill')
-	callMethod('timeTxt.kill')
 end
 
 local postCreate = false

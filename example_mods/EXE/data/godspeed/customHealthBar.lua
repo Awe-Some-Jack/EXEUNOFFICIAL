@@ -19,9 +19,6 @@ function onCreatePost()
     if songPath ~= 'godspeed' then return end
 
     setProperty('scoreTxt.visible', false)
-    setProperty('timeBar.visible', false)
-    setProperty('timeTxt.visible', false)
-    setProperty('timeBarBG.visible', false)
     setProperty('healthBar.visible', false)
 
     makeLuaSprite('hbBG', nil, 0, screenHeight * (downscroll and 0.11 or 0.89))

@@ -104,8 +104,6 @@ function hideDefaultHUD()
     setProperty('iconP1.visible', false)
     setProperty('iconP2.visible', false)
     setProperty('healthBar.visible', false)
-    setProperty('timeTxt.visible', false)
-    setProperty('timeBar.visible', false)
     setProperty('scoreTxt.visible', false)
 end
 

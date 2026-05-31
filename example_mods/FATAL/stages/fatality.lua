@@ -78,9 +78,6 @@ function onCreatePost()
 	end
 
 	setProperty('scoreTxt.visible', false)
-	setProperty('timeTxt.visible', false)
-	setProperty('timeBar.visible', false)
-	setProperty('timeBarBG.visible', false)
 
 	for i = 0,3 do
         setProperty('opponentStrums.members['..i..'].x', 10 + (getProperty('opponentStrums.members['..i..'].width') * i))

@@ -101,11 +101,11 @@ class PauseSubState extends MusicBeatSubstate
 
 		longneck = new FlxTypedGroup<FlxSprite>();
 		add(longneck);
-		if (miniSonicImage == 'longstrider')
+		if (miniSonicImage == 'omw')
 		{
 			longneck.add(miniSonic);
 
-			var neck:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/pause/mini-sonics/longstrider-2.png'));
+			var neck:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/pause/mini-sonics/omw-2.png'));
 			neck.scale.set(3, 3);
 			neck.updateHitbox();
 			neck.antialiasing = false;
@@ -115,7 +115,7 @@ class PauseSubState extends MusicBeatSubstate
 			longneck.add(neck);
 			add(neck);
 
-			var head:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/pause/mini-sonics/longstrider-3.png'));
+			var head:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/pause/mini-sonics/omw-3.png'));
 			head.scale.set(3, 3);
 			head.updateHitbox();
 			head.antialiasing = false;
@@ -156,7 +156,7 @@ class PauseSubState extends MusicBeatSubstate
 
 		miniSonic.x = menuItems.members[0].x - miniSonic.width + miniSonicOffsets[0];
 		miniSonic.y = (menuItems.members[0].y + menuItems.members[0].height) - miniSonic.height + miniSonicOffsets[1];
-		if (miniSonicImage == 'longstrider')
+		if (miniSonicImage == 'omw')
 		{
 			longneck.members[1].x = longneck.members[0].x;
 			longneck.members[1].y = longneck.members[0].y - longneck.members[1].height;
@@ -217,7 +217,7 @@ class PauseSubState extends MusicBeatSubstate
 
 		var item:FlxSprite = menuItems.members[curSelected];
 		miniSonic.y = (item.y + item.height) - miniSonic.height + miniSonicOffsets[1];
-		if (miniSonicImage == 'longstrider')
+		if (miniSonicImage == 'omw')
 		{
 			longneck.members[1].scale.y = ((curSelected + 1) * 3) + (curSelected * (48 * 3));
 			longneck.members[1].updateHitbox();
@@ -244,7 +244,7 @@ class PauseSubState extends MusicBeatSubstate
 		FlxTween.tween(pauseBar,  {x: -cameraWidth},  0.1);
 		FlxTween.tween(pauseText, {alpha: 0},          0.1);
 		FlxTween.tween(miniSonic, {alpha: 0},          0.1);
-		if (miniSonicImage == 'longstrider')
+		if (miniSonicImage == 'omw')
 		{
 			FlxTween.tween(longneck.members[1], {alpha: 0}, 0.1);
 			FlxTween.tween(longneck.members[2], {alpha: 0}, 0.1);
@@ -266,8 +266,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.instance.canResync = false;
 					OptionsState.onPlayState = true;
 					FlxG.switchState(() -> new OptionsState());
-					if (ClientPrefs.data.pauseMusic != 'None')
-						FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.data.pauseMusic)), 1);
+					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/pause.ogg'), 1);
 				case 3:
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 					PlayState.deathCounter    = 0;

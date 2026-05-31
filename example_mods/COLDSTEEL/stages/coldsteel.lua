@@ -19,9 +19,6 @@ function onCreate()
 	scaleObject('grad', 3000, 1.5)
 	screenCenter('grad')
 	addLuaSprite('grad')
-
-	setProperty('timeBar.visible', false)
-	setProperty('timeTxt.visible', false)
 end
 
 function onBeatHit()

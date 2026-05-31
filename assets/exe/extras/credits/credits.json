@@ -244,7 +244,7 @@
 			"nation": "chile",
 			"twitter": "https://x.com/ebrosBM",
 			"colors": [[213, 0, 20], [70, 170, 33]],
-			"extra": ["video", "exe"]
+			"extra": ["video", "exe", true]
 		},
 		{
 			"name": "RoxasWhite_",

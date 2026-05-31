@@ -146,7 +146,7 @@ function onCreate()
 		addAnimationByIndices('t', 'idle3-loop', 'idle3 instancia 1', {11, 12, 13}, 24, true)
 		addAnimationByPrefix('t', 'idle4', 'idle3 instancia 2', 24, false)
 		addAnimationByIndices('t', 'idle4-loop', 'idle3 instancia 2', {11, 12, 13}, 24, true)
-		scaleObject('t', 0.9, 0.9, false)
+		scaleObject('t', 0.8, 0.8, false)
 		addLuaSprite('t')
 
 		makeAnimatedLuaSprite('k', 'characters/k', 1350, 450)

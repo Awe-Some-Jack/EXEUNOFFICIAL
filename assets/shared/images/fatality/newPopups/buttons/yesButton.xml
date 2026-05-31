@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="yesButton.png">
-<SubTexture name="yesButton idle0000" x="0" y="0" width="38" height="18" frameX="0" frameY="0" frameWidth="38" frameHeight="18" />
-<SubTexture name="yesButton idle0001" x="0" y="18" width="38" height="18" frameX="0" frameY="0" frameWidth="38" frameHeight="18" />
-</TextureAtlas>

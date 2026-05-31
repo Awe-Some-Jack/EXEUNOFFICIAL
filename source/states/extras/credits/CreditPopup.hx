@@ -5,6 +5,7 @@ import openfl.display.BitmapData;
 import openfl.display.GradientType;
 import openfl.geom.Matrix;
 import openfl.display.Shape;
+import flixel.graphics.frames.FlxAtlasFrames;
 
 import states.extras.credits.CreditsState;
 import states.extras.credits.CreditsState.Credit;
@@ -16,6 +17,7 @@ class CreditPopup extends MusicBeatSubstate
 	var popupCamera:FlxCamera;
 	var quoteBG:FlxCamera;
 	var bg:FlxSprite;
+	var userIcon:FlxSprite;
 	var userQuote:FlxText;
 	var scrollBar:FlxSprite;
 
@@ -27,6 +29,9 @@ class CreditPopup extends MusicBeatSubstate
 	var twitterSocial:FlxSprite;
 	var youtubeSocial:FlxSprite;
 
+	var explosion:FlxSprite;
+
+	var savedScale:Float = 1;
 	override function create()
 	{
 		super.create();
@@ -60,9 +65,10 @@ class CreditPopup extends MusicBeatSubstate
 
 		var iconPath:String = "assets/exe/extras/credits/missing_icon.png";
 		if (selectedUser.icon != null && FileSystem.exists('assets/exe/extras/credits/${CreditsState.userSelected[0]}/icons/${selectedUser.icon}.png')) iconPath = 'assets/exe/extras/credits/${CreditsState.userSelected[0]}/icons/${selectedUser.icon}.png';
-		var userIcon:FlxSprite = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(iconPath);
+		userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(iconPath);
 		userIcon.camera = popupCamera;
 		setImageSize(userIcon, 100, 100);
+		savedScale = userIcon.scale.x;
 		add(userIcon);
 
 		var userName:FlxText = new FlxText(0, 0, bg.width - 100, (selectedUser.name != null) ? selectedUser.name : "Unknown");
@@ -108,6 +114,17 @@ class CreditPopup extends MusicBeatSubstate
 		scrollBar.camera = quoteBG;
 		scrollBar.scrollFactor.set();
 		add(scrollBar);
+
+		explosion = new FlxSprite(userIcon.x - 50, userIcon.y - 100);
+		explosion.frames = FlxAtlasFrames.fromSparrow('assets/exe/extras/credits/explosion.png', 'assets/exe/extras/credits/explosion.xml');
+		explosion.animation.addByPrefix('idle', 'idle', 16, false);
+		explosion.animation.play('idle');
+		explosion.scale.set(3, 3);
+		explosion.antialiasing = false;
+		explosion.updateHitbox();
+		explosion.alpha = 0;
+		explosion.camera = popupCamera;
+		add(explosion);
 
 		makeUserExtra();
 
@@ -187,6 +204,9 @@ class CreditPopup extends MusicBeatSubstate
 	
 	var videoPaused:Bool = false;
 	var wasPressing:String = '';
+	var clickSpeed:Float = 0;
+	var thing:Float = 0;
+	var canClick:Bool = true;
 	override function update(elapsed:Float)
 	{
 		if (overlapCamera(quoteBG))
@@ -269,9 +289,58 @@ class CreditPopup extends MusicBeatSubstate
 			#end
 		}
 
-		if (controls.BACK) close();
+		if (clickSpeed > 0) clickSpeed -= elapsed * (2 + clickSpeed * 0.5);
+		if (clickSpeed < 0) clickSpeed = 0;
+
+		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(userIcon) && canClick)
+		{
+			FlxTween.cancelTweensOf(userIcon); FlxTween.cancelTweensOf(userIcon.scale);
+			userIcon.flipX = FlxG.random.bool();
+			userIcon.angle = FlxG.random.float(-45, 45);
+			userIcon.scale.set(FlxG.random.float(savedScale * 0.5, savedScale * 1.5), FlxG.random.float(savedScale * 0.5, savedScale * 1.5));
+			FlxTween.tween(userIcon, {angle: 0}, 0.3, {ease: FlxEase.backOut});
+			FlxTween.tween(userIcon.scale, {x: savedScale, y: savedScale}, 0.3, {ease: FlxEase.backOut});
+			FlxG.sound.play(Paths.sound('honksound'));
+			clickSpeed++;
+
+			if (clickSpeed > 10)
+			{
+				clickSpeed = 0;
+				canClick = false;
+				explosion.alpha = 1;
+				explosion.animation.play('idle');
+				userIcon.alpha = 0;
+				FlxG.sound.play(Paths.sound('explosion'));
+			}
+		}
+
+		if (controls.BACK) closeCredits();
+
+		if (controls.UI_LEFT_P)
+		{
+			FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+			closeCredits();
+			var credits = CreditsState.credits.get(CreditsState.userSelected[0]);
+			CreditsState.userSelected = [CreditsState.userSelected[0], FlxMath.wrap(Std.int(CreditsState.userSelected[1]) - 1, 0, credits.length - 1)];
+			new FlxTimer().start(0, function(_){FlxG.state.openSubState(new CreditPopup());});
+		}
+		if (controls.UI_RIGHT_P)
+		{
+			FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+			closeCredits();
+			var credits = CreditsState.credits.get(CreditsState.userSelected[0]);
+			CreditsState.userSelected = [CreditsState.userSelected[0], FlxMath.wrap(Std.int(CreditsState.userSelected[1]) + 1, 0, credits.length - 1)];
+			new FlxTimer().start(0, function(_){FlxG.state.openSubState(new CreditPopup());});
+		}
 
 		super.update(elapsed);
+	}
+
+	function closeCredits():Void
+	{
+		if (pauseButton != null) { FlxTween.cancelTweensOf(pauseButton);FlxTween.cancelTweensOf(pauseButton.scale); }
+		if (userIcon != null) { FlxTween.cancelTweensOf(userIcon); FlxTween.cancelTweensOf(userIcon.scale); }
+		close();
 	}
 
 	override function destroy()

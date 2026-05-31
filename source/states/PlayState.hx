@@ -222,6 +222,7 @@ class PlayState extends MusicBeatState
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
 	public static var seenCutscene:Bool = false;
+	public static var firstPlay:Bool = false;
 	public static var deathCounter:Int = 0;
 
 	public var defaultCamZoom:Float = 1.05;
@@ -952,6 +953,7 @@ class PlayState extends MusicBeatState
 		#if !mac FlxG.stage.window.title = appName + " | Playing: " + SONG.song; #end
 
 		seenCutscene = true;
+		firstPlay = true;
 		inCutscene = false;
 		var ret:Dynamic = callOnScripts('onStartCountdown', null, true);
 		if(ret != LuaUtils.Function_Stop) {
@@ -1988,6 +1990,7 @@ class PlayState extends MusicBeatState
 		FlxG.camera.followLerp = 0;
 		persistentUpdate = false;
 		chartingMode = true;
+		firstPlay = false;
 		paused = true;
 
 		if(FlxG.sound.music != null)
@@ -2060,6 +2063,7 @@ class PlayState extends MusicBeatState
 		canResync = false;
 		FlxG.camera.followLerp = 0;
 		persistentUpdate = false;
+		firstPlay = false;
 		paused = true;
 
 		if(FlxG.sound.music != null)
@@ -2464,6 +2468,7 @@ class PlayState extends MusicBeatState
 
 		deathCounter = 0;
 		seenCutscene = false;
+		firstPlay = false;
 
 		#if ACHIEVEMENTS_ALLOWED
 		var weekNoMiss:String = WeekData.getWeekFileName() + '_nomiss';

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="sonic.exe game over 1.png">
+<TextureAtlas imagePath="gameoversonic.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="BF dies instancia 10000" x="28" y="28" width="721" height="721"/>

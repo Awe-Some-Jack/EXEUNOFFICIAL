@@ -136,7 +136,3 @@ function onTweenCompleted(tag)
 		end
 	end
 end
-
-function onGameOverStart()
-	if shadersEnabled then runHaxeCode("game.camGame.filters = [];") end
-end

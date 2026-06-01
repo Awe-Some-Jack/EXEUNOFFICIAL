@@ -406,13 +406,7 @@ class NoteOffsetState extends MusicBeatState
 
 			persistentUpdate = false;
 			FlxG.switchState(() -> new options.OptionsState());
-			if(OptionsState.onPlayState)
-			{
-				if(ClientPrefs.data.pauseMusic != 'None')
-					FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.data.pauseMusic)));
-				else
-					FlxG.sound.music.volume = 0;
-			}
+			if(OptionsState.onPlayState) FlxG.sound.playMusic(Assets.getSound('assets/exe/music/pause.ogg'));
 			else FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 			FlxG.mouse.visible = false;
 		}

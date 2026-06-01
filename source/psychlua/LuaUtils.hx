@@ -425,6 +425,14 @@ class LuaUtils
 			case 'screen':     SCREEN;
 			case 'shader':     SHADER;
 			case 'subtract':   SUBTRACT;
+			case 'colordodge': COLORDODGE;
+			case 'colorburn':  COLORBURN;
+			case 'softlight':  SOFTLIGHT;
+			case 'exclusion':  EXCLUSION;
+			case 'hue':        HUE;
+			case 'saturation': SATURATION;
+			case 'color':      COLOR;
+			case 'luminosity': LUMINOSITY;
 			default:           NORMAL;
 		};
 	}
@@ -450,6 +458,7 @@ class LuaUtils
 		switch (cam.toLowerCase())
 		{
 			case 'camgame' | 'game':   return PlayState.instance.camGame;
+			case 'camback' | 'back':   return PlayState.instance.camBack;
 			case 'camvideo'  | 'video':    return PlayState.instance.camVideo;
 			case 'camhud'  | 'hud':    return PlayState.instance.camHUD;
 			case 'camother' | 'other': return PlayState.instance.camOther;

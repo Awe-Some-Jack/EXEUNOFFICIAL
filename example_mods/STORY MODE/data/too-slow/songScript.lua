@@ -10,8 +10,6 @@
 
 local ogNotesPosition = {}
 function onCreatePost()
-    setProperty('timeBar.visible', false)
-    setProperty('timeTxt.visible', false)
     setProperty('BlackGraphicGame.alpha', 1)
     for _, hideHud in ipairs({'iconBF', 'iconOpp', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'exeScoreTxt'}) do
         setProperty(hideHud..'.alpha', 0)

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bgomw.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sexo instancia 10000" x="5" y="5" width="1648" height="1171" frameX="0" frameY="0" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10001" x="5" y="5" width="1648" height="1171" frameX="0" frameY="0" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10002" x="5" y="1186" width="1674" height="1097" frameX="-27" frameY="-16" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10003" x="5" y="1186" width="1674" height="1097" frameX="-27" frameY="-16" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10004" x="1689" y="1106" width="1711" height="1061" frameX="-14" frameY="-39" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10005" x="1689" y="1106" width="1711" height="1061" frameX="-14" frameY="-39" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10006" x="1663" y="5" width="1686" height="1091" frameX="-19" frameY="-24" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10007" x="1663" y="5" width="1686" height="1091" frameX="-19" frameY="-24" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10008" x="1689" y="2177" width="1656" height="1069" frameX="-37" frameY="-26" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10009" x="1689" y="2177" width="1656" height="1069" frameX="-37" frameY="-26" frameWidth="1725" frameHeight="1171"/>
+</TextureAtlas>

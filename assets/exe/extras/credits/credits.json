@@ -89,7 +89,7 @@
 			"colors": [[0, 23, 182], [140, 23, 51]],
 			"youtube": "https://www.youtube.com/@kophy232",
 			"twitter": "https://x.com/kophy232",
-			"extra": ["image", "callate"]
+			"extra": ["image", "callate.png"]
 		},
 		{
 			"name": "Wolfie",
@@ -121,9 +121,11 @@
 			"name": "Engineer",
 			"icon": "engineer",
 			"description": "Artist",
+			"quote": "Incase I don’t see you again, Good Morning, Good Evening, and Goodnight",
 			"youtube": "https://www.youtube.com/@engineer-vc2zw",
 			"nation": "usa",
-			"colors": [[211, 59, 21], [216, 148, 21]]
+			"colors": [[211, 59, 21], [216, 148, 21]],
+			"extra": ["video", "message"]
 		},
 		{
 			"name": "Artisus",
@@ -148,7 +150,13 @@
 		{
 			"name": "BarcoBasurero",
 			"icon": "barco",
-			"description": "Artist"
+			"description": "Artist",
+			"quote": "¡Oído cocina! Olvidémonos del streamer y pasemos a la ficción absoluta. Aquí tienes la biografía de un personaje completamente inventado bajo ese nombre.\n\nBarcobasurero (nacido como Baltazar \"Baco\" Suárez el 14 de noviembre de 1982 en el Puerto de San Antonio, Chile) es un célebre artista conceptual, ecologista radical y arquitecto naval empírico. Es mundialmente reconocido por fundar el movimiento artístico «Basurismo Flotante», el cual transforma residuos industriales en embarcaciones habitables autosustentables.\n\nResumen Biográfico\n\n| Datos Clave | Detalles |\n|---|---|\n| Nombre Real | Baltazar Suárez |\n| Apodo | Barcobasurero |\n| Nacionalidad | Chilena |\n| Ocupación | Escultor naval, activista ecológico, filósofo del residuo |\n| Obra Magna | La balsa de los mil plásticos (2018) |\n| Estilo | Eco-Art / Escultura funcional minimalista |\n\nOrígenes y Filosofía\n\nCriado en una zona portuaria de alta densidad industrial, Baltazar pasó su infancia recolectando maderas, redes rotas y contenedores de plástico que el mar arrojaba a la costa. A los 20 años, tras abandonar la carrera de Ingeniería Naval por considerarla \"demasiado rígida y destructiva para el ecosistema\", adoptó el seudónimo Barcobasurero.\nSu filosofía se basa en una premisa radical: \"La humanidad navega sobre su propia basura; es hora de aprender a flotar con dignidad sobre ella\". En lugar de ver el desecho como un final, Barcobasurero lo ve como la materia prima\n\nEl Arca de PET (2012)\n\nSu primera gran creación fue un catamarán de 12 metros de eslora construido enteramente con 45.000 botellas de plástico recicladas, compactadas mediante un sistema de presión hidráulica casero. El barco completó con éxito la travesía desde Valparaíso hasta la Isla de Pascua, demostrando la viabilidad de sus estructuras.\n\nLa balsa de los mil plásticos (2018)\n\nInstalación flotante y laboratorio móvil que actualmente navega por el Giro del Pacífico Norte. La embarcación cuenta con paneles solares hechos de silicio recuperado y un sistema de filtrado de microplásticos que utiliza redes de pesca fantasma modificadas.\n\nCiudades de Desecho (Proyecto en curso)\n\nUn plano arquitectónico utópico para construir plataformas habitables en el océano destinadas a refugiados climáticos, utilizando únicamente la basura compactada que flota en las corrientes marinas.\n\n- Barcobasurero, durante su discurso en la Cumbre del Océano Limpio (2025).",
+			"nation": "paraguay",
+			"colors": [[86, 43, 14], [103, 103, 103]],
+			"twitter": "https://x.com/barcobasurerow",
+			"youtube": "https://youtube.com/@barcobasurerow",
+			"extra": ["image", "barco.png"]
 		},
 		{
 			"name": "NayreFunkin'",
@@ -241,7 +249,11 @@
 			"name": "Nebros",
 			"icon": "nebros",
 			"description": "Animator and 3D Artist",
-			"nation": "chile"
+			"quote": "\"La comunidad EXE actúa como si estuviera construyendo el Cuarto Reich del cringe digital: reglas absurdas, elitismo ridículo, peleas internas eternas y una obsesión enfermiza con imponer cuál Sonic edgy es el 'canon definitivo'. Cada servidor de Discord parece una dictadura estética donde un morro de 14 años con foto de Xenophanes se cree comandante supremo del horror psicológico.\"\n\n-chat gpt escribio esto",
+			"nation": "chile",
+			"twitter": "https://x.com/ebrosBM",
+			"colors": [[213, 0, 20], [70, 170, 33]],
+			"extra": ["video", "exe", true]
 		},
 		{
 			"name": "RoxasWhite_",
@@ -373,6 +385,7 @@
 			"name": "Sanko",
 			"icon": "sanko",
 			"description": "Composer",
+			"quote": "QUE?! QUE TU GODSPEED ES EL NEGRO JOSÉ? Que pena...\nLlegando tarde al mod del momento como siempre.\nMe hubiera gustado haber tenido la oportunidad de trabajar en más canciones aquí (más que nada porque casi no estuve presente en todo el desarrollo) pero me alegra que hayan querido usar mi versión de el Dios que se corre o como le digan.\nFuera de bromas, estuve impresionado de la calidad del trabajo y el talento que hubo en el mod, por cierto DUDU EL GOAT DEL CHARTING\nah si y es coder tambien, eso.",
 			"nation": "mexico",
 			"colors": [[199, 4, 2], [16, 0, 0]],
 			"youtube": "https://youtube.com/@sanko89858",

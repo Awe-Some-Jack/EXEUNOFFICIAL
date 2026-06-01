@@ -1,76 +1,60 @@
 {
 	"animations": [
 		{
-			"offsets": [197, 8],
-			"indices": [],
+			"offsets": [191, 72],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		},
 		{
-			"offsets": [17, -75],
-			"indices": [],
+			"offsets": [28, -120],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
-			"offsets": [-51, -6],
-			"indices": [],
+			"offsets": [-65, -27],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		},
 		{
-			"offsets": [-9, 36],
-			"indices": [],
+			"offsets": [-22, 155],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up"
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "idle",
-			"loop": false,
+			"indices": [],
 			"name": "idle"
 		},
 		{
-			"offsets": [197, 8],
+			"offsets": [-46, -3],
 			"indices": [],
 			"fps": 24,
-			"anim": "singLEFT-alt",
+			"anim": "idle-alt",
 			"loop": false,
-			"name": "xglitch-left"
+			"name": "alt idle"
 		},
 		{
-			"offsets": [17, -75],
+			"offsets": [44, 10],
 			"indices": [],
 			"fps": 24,
-			"anim": "singDOWN-alt",
+			"anim": "laugh",
 			"loop": false,
-			"name": "xglitch-down"
-		},
-		{
-			"offsets": [-51, -6],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT-alt",
-			"loop": false,
-			"name": "xglitch-right"
-		},
-		{
-			"offsets": [-9, 36],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP-alt",
-			"loop": false,
-			"name": "xglitch-up"
+			"name": "risa"
 		}
 	],
 	"vocals_file": "",

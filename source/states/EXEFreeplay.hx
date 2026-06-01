@@ -128,8 +128,6 @@ class EXEFreeplay extends MusicBeatState
 		if (FlxG.stage != null && FlxG.stage.window != null)
 			previousWindowName = FlxG.stage.window.title;
 
-		Conductor.bpm = 192;
-
 		Paths.clearStoredMemory();
 
 		PlayState.isStoryMode = false;
@@ -243,6 +241,7 @@ class EXEFreeplay extends MusicBeatState
 		super.create();
 		CustomShapeTransition.shape = HEAD;
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/freeplay.ogg'));
+		Conductor.bpm = 96;
 		Paths.clearUnusedMemory();
 
 		#if DISCORD_ALLOWED
@@ -421,6 +420,9 @@ class EXEFreeplay extends MusicBeatState
 	var holdCheck:Float = 0;
 	override function update(elapsed:Float)
 	{
+		if (FlxG.sound.music != null)
+			Conductor.songPosition = FlxG.sound.music.time;
+
 		super.update(elapsed);
 
 		if (bgChecker != null && bgSonic != null)
@@ -466,20 +468,10 @@ class EXEFreeplay extends MusicBeatState
 				holdCheck = 0;
 			}
 
-			if (controls.UI_LEFT || controls.UI_RIGHT) //Hold and beat
-			{
-				final beatTime:Float = Conductor.calculateCrochet(Conductor.bpm) / 1000;
-				final lastHold:Int = Math.floor((holdCheck - 0.5) / beatTime);
-
-				holdCheck += elapsed;
-
-				final newHold:Int = Math.floor((holdCheck - 0.5) / beatTime);
-				if (holdCheck > beatTime && newHold - lastHold > 0)
-				newSel = selectedBox + (newHold - lastHold) * (controls.UI_RIGHT ? 1 : -1);
-			} else holdCheck = 0;
+			if (controls.UI_LEFT || controls.UI_RIGHT) holdCheck += elapsed;
+			else holdCheck = 0;
 
 			newSel = FlxMath.wrap(newSel, 0, songEntries.length - 1);
-
 			if (newSel != selectedBox)
 				changeSelection(newSel);
 		}
@@ -1070,6 +1062,12 @@ class EXEFreeplay extends MusicBeatState
 			cover.y = proxy.y + offsetY;
 			if (ss != null) { ss.setGraphicSize(Std.int(cover.width), Std.int(cover.height)); ss.updateHitbox(); ss.x = cover.x; ss.y = cover.y; }
 		}
+	}
+
+	override function stepHit()
+	{
+		super.stepHit();
+		if (curStep % 2 == 0 && holdCheck > ((Conductor.bpm / 60) / 4)) changeSelection(FlxMath.wrap(selectedBox + (controls.UI_RIGHT ? 1 : -1), 0, songEntries.length - 1));
 	}
 
 	function loadBgChecker()

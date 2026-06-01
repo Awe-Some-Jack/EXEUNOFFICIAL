@@ -1,11 +1,13 @@
 {
 	"player1": "bf",
 	"events": [],
-	"player2": "Needlemouse",
+	"player2": "soink",
 	"notes": [
 		{
 			"lengthInSteps": 16,
-			"sectionNotes": [],
+			"sectionNotes": [
+				[0, 6, 0]
+			],
 			"sectionBeats": 4,
 			"altAnim": false,
 			"bpm": 171,
@@ -3071,10 +3073,11 @@
 			"mustHitSection": true
 		}
 	],
-	"gfVersion": "gf",
-	"song": "Flash",
-	"stage": "needle",
+	"gfVersion": "air",
+	"disableNoteRGB": true,
+	"song": "flash",
 	"validScore": true,
+	"stage": "windows7",
 	"needsVoices": true,
 	"bpm": 171,
 	"speed": 3.1,

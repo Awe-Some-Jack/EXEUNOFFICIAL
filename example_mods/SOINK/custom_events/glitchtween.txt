@@ -1,0 +1,2 @@
+value1: amount
+value2: time,ease

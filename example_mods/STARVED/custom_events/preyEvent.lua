@@ -101,7 +101,6 @@ function onEvent(n, v1)
 			doTweenY('starvedY', 'dad', 54, getTime(14), 'backOut')
 			runTimer('startFloating', getTime(14))
 			runTimer('backtonormalsize', getTime(8))
-			removeLuaSprite('furnaceHit', true)
 			setProperty('dad.alpha', 1)
 		end
 
@@ -149,7 +148,7 @@ function onEvent(n, v1)
 			furn = false
 			callMethod('gf.setPosition', {14400, 350})
 			setProperty('gf.velocity.x', -5000)
-			triggerEvent('Play Animation', 'attack', 'gf')
+			setProperty('gf.flipX', true)
 		end
 
 		if v1 == 'sonicAttackFinal' then
@@ -180,8 +179,8 @@ function onTimerCompleted(t)
 	end
 
 	if t == 'impact' then
-		setProperty('dad.alpha', 0)
-		setProperty('furnaceHit.alpha', 1)
+		playAnim('dad', 'hit', true)
+		setProperty('dad.specialAnim', true)
 		cameraShake('game', 0.02, 0.1)
 
 		cancelTimer('startFloating')
@@ -244,7 +243,6 @@ function onUpdatePost(e)
 	end
 
 	if getProperty('boyfriend.animation.curAnim.name') == 'dialogue' and getProperty('boyfriend.animation.curAnim.finished') and boyfriendName == 'sonic-peelout' and playEndOnce then
-		--if flashingLights then cameraFlash('game', 'FF0000', 0.6, true) end
 		setProperty('redbg.alpha', 1) doTweenAlpha('redbgxddfd', 'redbg', 0, 3)
 		setProperty('boyfriend.color', getColorFromHex('000000')) doTweenColor('boyfriendcolor', 'boyfriend', 'FF0000', 2, 'expoOut') doTweenAlpha('bffdsasda', 'boyfriend', 0, 4)
 		setProperty('gf.color', getColorFromHex('000000')) doTweenColor('gfcolor', 'gf', 'FF0000', 2, 'expoOut') doTweenAlpha('gfxadasd', 'gf', 0, 4)
@@ -253,6 +251,7 @@ function onUpdatePost(e)
 		setProperty('camOther.visible', false)
 		cameraShake('game', 0.02, 0.1)
 		setProperty('dad.visible', false)
+		setProperty('gf.animation.paused', true)
 		doTweenX('boyfrienxd', 'boyfriend', getProperty('boyfriend.x') - 300, 3, 'expoOut')
 		doTweenX('gfxdxd', 'gf', getProperty('gf.x') - 50, 3, 'expoOut')
 		playEndOnce = false

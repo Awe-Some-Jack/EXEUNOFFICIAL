@@ -1,8 +1,5 @@
 function onCreatePost()
     setProperty('scoreTxt.visible', false)
-    setProperty('timeBar.visible', false)
-    setProperty('timeBarBG.visible', false)
-    setProperty('timeTxt.visible', false)
 
     local statsY = downscroll and 15 or 565
     local timeY = downscroll and 668 or 140

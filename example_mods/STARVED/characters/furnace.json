@@ -2,52 +2,100 @@
 	"animations": [
 		{
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "idle",
 			"loop": true,
-			"name": "Furnace idle"
+			"fps": 18,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
+			"offsets": [-96, 54],
+			"loop": false,
+			"fps": 18,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "Furnace left"
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
+			"offsets": [-120, -24],
+			"loop": false,
+			"fps": 18,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "Furnace down"
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
+			"offsets": [-96, 54],
+			"loop": false,
+			"fps": 18,
 			"anim": "singUP",
-			"loop": false,
-			"name": "Furnace up"
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
+			"offsets": [-96, 54],
 			"loop": false,
-			"name": "Furnace right"
+			"fps": 18,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [-96, 54],
+			"loop": true,
+			"fps": 18,
+			"anim": "singLEFT-loop",
+			"indices": [3, 4, 5],
+			"name": "left"
+		},
+		{
+			"offsets": [-120, -24],
+			"loop": true,
+			"fps": 18,
+			"anim": "singDOWN-loop",
+			"indices": [3, 4, 5],
+			"name": "down"
+		},
+		{
+			"offsets": [-96, 54],
+			"loop": true,
+			"fps": 18,
+			"anim": "singUP-loop",
+			"indices": [3, 4, 5],
+			"name": "up"
+		},
+		{
+			"offsets": [-96, 54],
+			"loop": true,
+			"fps": 18,
+			"anim": "singRIGHT-loop",
+			"indices": [3, 4, 5],
+			"name": "right"
+		},
+		{
+			"offsets": [30, -90],
+			"indices": [],
+			"fps": 18,
+			"anim": "attack",
+			"loop": false,
+			"name": "attack"
+		},
+		{
+			"offsets": [-36, -24],
+			"indices": [],
+			"fps": 18,
+			"anim": "hit",
+			"loop": true,
+			"name": "hit"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
-	"image": "characters/Furnace_sheet",
+	"image": "characters/newfurnace",
 	"position": [0, 0],
 	"healthicon": "furnace",
 	"flip_x": false,
-	"healthbar_colors": [161, 161, 161],
+	"healthbar_colors": [49, 49, 49],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
 	"scale": 6,

@@ -175,7 +175,6 @@ class FunkinLua
 		set('framerate',        ClientPrefs.data.framerate);
 		set('ghostTapping',     ClientPrefs.data.ghostTapping);
 		set('hideHud',          ClientPrefs.data.hideHud);
-		set('timeBarType',      ClientPrefs.data.timeBarType);
 		set('scoreZoom',        ClientPrefs.data.scoreZoom);
 		set('cameraZoomOnBeat', ClientPrefs.data.camZooms);
 		set('flashingLights',   ClientPrefs.data.flashing);
@@ -445,6 +444,7 @@ class FunkinLua
 		Lua_helper.add_callback(lua, 'doTweenZoom', function(tag:String, camera:String, value:Dynamic, duration:Float, ease:String = 'linear') {
 			switch (camera.toLowerCase()) {
 				case 'camgame' | 'game':   camera = 'camGame';
+				case 'camback' | 'back':   camera = 'camBack';
 				case 'camhud'  | 'hud':    camera = 'camHUD';
 				case 'camvideo'  | 'video':    camera = 'camVideo';
 				case 'camother' | 'other': camera = 'camOther';
@@ -717,10 +717,6 @@ class FunkinLua
 		Lua_helper.add_callback(lua, 'setHealthBarColors', function(left:String, right:String) {
 			game.healthBar.setColors(left  != null && left  != '' ? CoolUtil.colorFromString(left)  : null,
 			                         right != null && right != '' ? CoolUtil.colorFromString(right) : null);
-		});
-		Lua_helper.add_callback(lua, 'setTimeBarColors', function(left:String, right:String) {
-			game.timeBar.setColors(left  != null && left  != '' ? CoolUtil.colorFromString(left)  : null,
-			                        right != null && right != '' ? CoolUtil.colorFromString(right) : null);
 		});
 
 		Lua_helper.add_callback(lua, 'setObjectCamera', function(obj:String, camera:String = 'game') {

@@ -3,9 +3,6 @@ local function killMainHUD()
 	callMethod('iconP1.kill')
 	callMethod('iconP2.kill')
 	callMethod('scoreTxt.kill')
-
-	callMethod('timeBar.kill')
-	callMethod('timeTxt.kill')
 end
 
 local postCreate = false
@@ -135,7 +132,7 @@ function makeHUDSprite(tag, path, x, y, num)
 end
 
 function onBeatHit()
-	if curBeat == 2 then
+	if curBeat == 64 then
 		doTweenY('cardBar', 'cardBar', 0, (crochet / 1000) * playbackRate)
 		doTweenX('cardText', 'cardText', getProperty('cardBar.x') + (8 * 3), (crochet / 1000 * playbackRate) * 1.1)
 		runTimer('endIntroCard', crochet / (1000 / 6) / playbackRate)

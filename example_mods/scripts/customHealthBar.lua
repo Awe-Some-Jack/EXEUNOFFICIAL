@@ -82,9 +82,6 @@ function onCreatePost()
     for i = 1,#blacklistenedSongs do if songPath == blacklistenedSongs[i] then close() return end end
 
     setProperty('scoreTxt.visible', false)
-    setProperty('timeBar.visible', false)
-    setProperty('timeTxt.visible', false)
-    setProperty('timeBarBG.visible', false)
     setProperty('healthBar.visible', false)
 
     makeLuaSprite('hbBG', nil, 0, screenHeight * (downscroll and 0.11 or 0.89) + healthProps.healthBar.offsetY)

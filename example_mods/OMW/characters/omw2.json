@@ -9,7 +9,7 @@
 			"name": "idle"
 		},
 		{
-			"offsets": [145, -80],
+			"offsets": [276, -83],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -17,7 +17,7 @@
 			"name": "left"
 		},
 		{
-			"offsets": [84, -107],
+			"offsets": [210, -110],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
@@ -25,7 +25,7 @@
 			"name": "down"
 		},
 		{
-			"offsets": [75, 73],
+			"offsets": [202, 83],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
@@ -33,7 +33,7 @@
 			"name": "up"
 		},
 		{
-			"offsets": [0, -15],
+			"offsets": [120, -12],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
@@ -44,12 +44,12 @@
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/omw2",
-	"position": [160, -50],
+	"position": [160, -100],
 	"healthicon": "omw-2",
 	"flip_x": false,
 	"healthbar_colors": [24, 11, 244],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 2,
+	"scale": 1.8,
 	"_editor_isPlayer": false
 }

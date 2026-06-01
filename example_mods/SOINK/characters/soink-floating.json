@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"offsets": [-329, 285],
 			"loop": true,
-			"fps": 24,
+			"offsets": [-329, 285],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [-329, 285],
-			"loop": false,
+			"offsets": [-328, 324],
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
+			"loop": false,
+			"name": "abajo"
+		},
+		{
+			"offsets": [-292, 297],
 			"indices": [],
-			"name": "idle"
-		},
-		{
-			"loop": false,
-			"offsets": [-329, 285],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"loop": false,
+			"name": "izquierda"
 		},
 		{
-			"loop": false,
-			"offsets": [-329, 285],
+			"offsets": [-328, 298],
+			"indices": [],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"loop": false,
+			"name": "derecha"
 		},
 		{
-			"loop": false,
-			"offsets": [-329, 285],
-			"anim": "singUP",
+			"offsets": [-320, 323],
+			"indices": [],
 			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"anim": "singUP",
+			"loop": false,
+			"name": "arriba"
 		}
 	],
 	"vocals_file": "",

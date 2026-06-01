@@ -47,6 +47,14 @@ var positionsArray:Array<Float> = [];
 	// "girlfriend": [0, 0],
 	// "opponent": [2020, 2066],
 
+// freecam zoom: .6
+// freecam cams:
+    // "BFx": 3335,
+    // "BFy": 2098,
+
+    // "DADx": 2965,
+    // "DADy": 2098,
+
 function onCreate() {
     wallpaper = new FlxSprite(0, 0, Paths.image('bg/desktop'), 'SOINK');
     wallpaper.antialiasing = true;
@@ -84,43 +92,43 @@ function onCreatePost() {
     positionsArray.push(adobe1.y);
 }
 function onUpdate(elapsed:Float) {
-    if(curStep < 248) {
-        if(tweenX != null) tweenX.cancel();
-        if(tweenY != null) tweenY.cancel();
-        if(tweenBFX != null) tweenBFX.cancel();
-        if(tweenBFY != null) tweenBFY.cancel();
-        if(tweenDADX != null) tweenDADX.cancel();
-        if(tweenDADY != null) tweenDADY.cancel();
+    // if(curStep < 248) {
+    //     if(tweenX != null) tweenX.cancel();
+    //     if(tweenY != null) tweenY.cancel();
+    //     if(tweenBFX != null) tweenBFX.cancel();
+    //     if(tweenBFY != null) tweenBFY.cancel();
+    //     if(tweenDADX != null) tweenDADX.cancel();
+    //     if(tweenDADY != null) tweenDADY.cancel();
         
-        if(mustHitSection)
-            currentAnim = boyfriend.getAnimationName();
-        else
-            currentAnim = dad.getAnimationName();
+    //     if(mustHitSection)
+    //         currentAnim = boyfriend.getAnimationName();
+    //     else
+    //         currentAnim = dad.getAnimationName();
 
-        if(currentAnim.startsWith("singLEFT")) {
-            xOfs = -30;
-            yOfs = 0;
-        } else if(currentAnim.startsWith("singDOWN")) {
-            xOfs = 0;
-            yOfs = 30;
-        } else if(currentAnim.startsWith("singUP")) {
-            xOfs = 0;
-            yOfs = -30;
-        } else if(currentAnim.startsWith("singRIGHT")) {
-            xOfs = 30;
-            yOfs = 0;
-        } else if(currentAnim.startsWith("idle")) {
-            xOfs = 0;
-            yOfs = 0;
-        }
+    //     if(currentAnim.startsWith("singLEFT")) {
+    //         xOfs = -30;
+    //         yOfs = 0;
+    //     } else if(currentAnim.startsWith("singDOWN")) {
+    //         xOfs = 0;
+    //         yOfs = 30;
+    //     } else if(currentAnim.startsWith("singUP")) {
+    //         xOfs = 0;
+    //         yOfs = -30;
+    //     } else if(currentAnim.startsWith("singRIGHT")) {
+    //         xOfs = 30;
+    //         yOfs = 0;
+    //     } else if(currentAnim.startsWith("idle")) {
+    //         xOfs = 0;
+    //         yOfs = 0;
+    //     }
 
-        tweenX = FlxTween.tween(adobe1, {x: positionsArray[4]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
-        tweenY = FlxTween.tween(adobe1, {y: positionsArray[5]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
-        tweenBFX = FlxTween.tween(boyfriend, {x: positionsArray[0]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
-        tweenBFY = FlxTween.tween(boyfriend, {y: positionsArray[1]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
-        tweenDADX = FlxTween.tween(dad, {x: positionsArray[2]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
-        tweenDADY = FlxTween.tween(dad, {y: positionsArray[3]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
-    }
+    //     tweenX = FlxTween.tween(adobe1, {x: positionsArray[4]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
+    //     tweenY = FlxTween.tween(adobe1, {y: positionsArray[5]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
+    //     tweenBFX = FlxTween.tween(boyfriend, {x: positionsArray[0]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
+    //     tweenBFY = FlxTween.tween(boyfriend, {y: positionsArray[1]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
+    //     tweenDADX = FlxTween.tween(dad, {x: positionsArray[2]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
+    //     tweenDADY = FlxTween.tween(dad, {y: positionsArray[3]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
+    // }
 }
 function onStepHit() {
     switch(curStep) {
@@ -145,24 +153,7 @@ function onStepHit() {
             // wallpaper.scale.set(1.2835,1.2835);
             // wallpaper.y = 781;
             adobe2.scale.y = 1.62;
-            // game.cameraSpeed = 12000;
-            // var mid:FlxTween = FlxTween.tween(wallpaper.scale, {x: 1.2835, y: 1.2835}, 0.35, {ease: FlxEase.linear});
-            // FlxTween.tween(wallpaper, {y: 781}, 0.35, {ease: FlxEase.linear});
-            FlxTween.tween(camGame.targetOffset, {y: 45}, 0.35, {ease: FlxEase.linear});
-            tweenCamZoom = true;
-            FlxTween.tween(camGame, {zoom: 0.345}, 0.35, {ease: FlxEase.linear,
-                onComplete: function(twn:FlxTween) {
-                    trace("mid");
-                    tweenCamZoom = false;
-                    gameplayCam.settings.OverrideZoom = true;
-                    gameplayCam.overrideZoomValue = 0.345;
-                    defaultCamZoom = 0.345;
-                    camGame.zoom = 0.345;
-                },
-                onUpdate: function(twn:FlxTween) {
-        
-                }
-            });
+
         case 256: // literally right after fullscreen
             adobe1.alpha = 0;
             adobe2.alpha = 1;

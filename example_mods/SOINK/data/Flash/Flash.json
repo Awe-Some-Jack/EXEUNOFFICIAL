@@ -1,13 +1,27 @@
 {
 	"player1": "bf",
-	"events": [],
+	"events": [
+		[
+			22105.2631578947,
+			[
+				["Tween Camera Zoom", "0.345, true", "0.175, linear"],
+				["Tweening Camera", "0,45", "0.35,linear"],
+				["Set Property", "cameraSpeed", "100000"]
+			]
+		],
+		[
+			22456.1403508772,
+			[
+				["bloomFlash", "1,0", "0.5,smoothStepOut"],
+				["Flash", "FFFFFF,0.5", "camGame"]
+			]
+		]
+	],
 	"player2": "soink",
 	"notes": [
 		{
 			"lengthInSteps": 16,
-			"sectionNotes": [
-				[0, 6, 0]
-			],
+			"sectionNotes": [],
 			"sectionBeats": 4,
 			"altAnim": false,
 			"bpm": 171,
@@ -3073,11 +3087,11 @@
 			"mustHitSection": true
 		}
 	],
-	"gfVersion": "air",
 	"disableNoteRGB": true,
+	"gfVersion": "air",
 	"song": "flash",
-	"validScore": true,
 	"stage": "windows7",
+	"validScore": true,
 	"needsVoices": true,
 	"bpm": 171,
 	"speed": 3.1,

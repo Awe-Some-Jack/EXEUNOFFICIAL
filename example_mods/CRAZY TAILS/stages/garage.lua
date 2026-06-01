@@ -26,13 +26,13 @@ end
 
 local function setupAnims()
 	--anim1
-	makeFlxAnimateSprite('bestfriend', -220, -250, 'characters/mania2')
+	makeFlxAnimateSprite('bestfriend', 400, 200, 'characters/mania2')
 	addAnimationBySymbol('bestfriend', 'bestfriend', 'sonic', 24, false)
 	scaleObject('bestfriend', 2.4, 2.4)
 	addLuaSprite('bestfriend', true)
 	setProperty('bestfriend.alpha', 0.0001)
 
-	makeFlxAnimateSprite('bestfriend2', -220, -250, 'characters/mania1')
+	makeFlxAnimateSprite('bestfriend2', getProperty('bestfriend.x') + 80, getProperty('bestfriend.y') - 25, 'characters/mania1')
 	addAnimationBySymbol('bestfriend2', 'bestfriend', 'sonic2', 24, false)
 	scaleObject('bestfriend2', 2.4, 2.4)
 	addLuaSprite('bestfriend2', true)
@@ -50,31 +50,31 @@ local function setupAnims()
 	addLuaSprite('bg-never')
 	setProperty('bg-never.alpha', 0.0001)
 
-	makeFlxAnimateSprite('final', -220, -550, 'characters/final1')
+	makeFlxAnimateSprite('final', 500, 50, 'characters/final1')
 	addAnimationBySymbol('final', 'final', 'final', 24, false)
 	scaleObject('final', 2.4, 2.4)
 	addLuaSprite('final', true)
 	setProperty('final.alpha', 0.0001)
 
-	makeFlxAnimateSprite('final2', 1200, 520, 'characters/final2')
+	makeFlxAnimateSprite('final2', 400, 200, 'characters/final2')
 	addAnimationBySymbol('final2', 'final', 'SMoicandmay', 24, false)
 	scaleObject('final2', 1.6, 1.6)
 	addLuaSprite('final2', true)
 	setProperty('final2.alpha', 0.0001)
 
-	makeFlxAnimateSprite('final3', -220, -580, 'characters/final3')
+	makeFlxAnimateSprite('final3', 400, 50, 'characters/final3')
 	addAnimationBySymbol('final3', 'final', 'final3', 24, false)
 	scaleObject('final3', 2.42, 2.42)
 	addLuaSprite('final3', true)
 	setProperty('final3.alpha', 0.0001)
 
-	makeFlxAnimateSprite('final4', -220, -580, 'characters/final4')
+	makeFlxAnimateSprite('final4', 475, -95, 'characters/final4')
 	addAnimationBySymbol('final4', 'final', 'final4', 24, false)
 	scaleObject('final4', 2.4, 2.4)
 	addLuaSprite('final4', true)
 	setProperty('final4.alpha', 0.0001)
 
-	makeFlxAnimateSprite('final5', -220, -580, 'characters/final4')
+	makeFlxAnimateSprite('final5', getProperty("final4.x"), getProperty("final4.y"), 'characters/final4')
 	addAnimationBySymbolIndices('final5', 'final', 'final4', {60,61}, 24, true)
 	playAnim('final5', 'final', true)
 	scaleObject('final5', 2.4, 2.4)
@@ -203,7 +203,7 @@ local status = 0
 local starSine = 0
 function onUpdatePost(e)
 	if anim == 'final' then
-		if getProperty('final.anim.curFrame') >= 38 and getProperty('bg-amy.alpha') ~= 1 then
+		if getProperty('final.anim.frameIndex') >= 38 and getProperty('bg-amy.alpha') ~= 1 then
 			setProperty('bg-bf.alpha', 0)
 			setProperty('bg-amy.alpha', 1)
 			setProperty('bg-bf1.visible', false)
@@ -211,20 +211,20 @@ function onUpdatePost(e)
 			setProperty('bg-bf3.visible', false)
 		end
 	elseif anim == 'final3' then
-		if getProperty('final3.anim.curFrame') >= 60 and status == 0 then
+		if getProperty('final3.anim.frameIndex') >= 60 and status == 0 then
 			status = 1
 			scaleObject('bg-never', 0.5, 0.5)
 			setProperty('bg-never.x', -100)
 			setProperty('bg-never.y', -200)
 		end
-		if getProperty('final3.anim.curFrame') >= 81 and status == 1 then
+		if getProperty('final3.anim.frameIndex') >= 81 and status == 1 then
 			status = 2
 			setProperty('bg-never.angle', 10)
 			scaleObject('bg-never', 0.65, 0.65)
 			setProperty('bg-never.x', -400)
 			setProperty('bg-never.y', -400)
 		end
-		if getProperty('final3.anim.curFrame') >= 100 and status == 2 then
+		if getProperty('final3.anim.frameIndex') >= 100 and status == 2 then
 			status = 3
 			setProperty('bg-never.angle', 0)
 			scaleObject('bg-never', 0.85, 0.85)
@@ -232,7 +232,7 @@ function onUpdatePost(e)
 			setProperty('bg-never.y', -450)
 		end
 	elseif anim == 'final4' then
-		if getProperty('final4.anim.curFrame') >= 32 and luaSpriteExists('bg-tails') then
+		if getProperty('final4.anim.frameIndex') >= 32 and luaSpriteExists('bg-tails') then
 			removeLuaSprite('bg-tails', true)
 			setProperty('bg-bf.alpha', 1)
 		end
@@ -453,9 +453,9 @@ function onEvent(n,v1)
 			setProperty('bg-never.alpha', 1)
 			scaleObject('bg-never', 0.6, 0.6)
 
-			setProperty('bg-never.x', -600) setProperty('final3.x', -520)
+			setProperty('bg-never.x', -600) setProperty('final3.x', -450)
 			doTweenX('xd', 'bg-never', -300, 0.6, 'backOut')
-			doTweenX('xd2', 'final3', -220, 0.6, 'backOut')
+			doTweenX('xd2', 'final3', 500, 0.6, 'backOut')
 		end
 		if v1 == 'finalanim4' then
 			anim = 'final4'

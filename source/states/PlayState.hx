@@ -3054,7 +3054,7 @@ class PlayState extends MusicBeatState
 				}
 
 				var charCurFrame = 0;
-				if (char.atlas != null && char.atlas.anim != null) charCurFrame = char.atlas.anim.curFrame; else if (char.animation != null && char.animation.curAnim != null) charCurFrame = char.animation.curAnim.curFrame;
+				if (char.anim != null) charCurFrame = char.anim.frameIndex; else if (char.animation?.curAnim != null) charCurFrame = char.animation.curAnim.curFrame;
 				if (char.getAnimationName().startsWith('sing') && note.isSustainNote && charCurFrame < 2) canPlay = false;
 				if (note.noteType == 'Sustain Animation' && note.isSustainNote) canPlay = false;
 				if(canPlay) char.playAnim(animToPlay, true);
@@ -3123,7 +3123,7 @@ class PlayState extends MusicBeatState
 					}
 	
 					var charCurFrame = 0;
-					if (char.atlas != null && char.atlas.anim != null) charCurFrame = char.atlas.anim.curFrame; else if (char.animation != null && char.animation.curAnim != null) charCurFrame = char.animation.curAnim.curFrame;
+					if (char.anim != null) charCurFrame = char.anim.frameIndex; else if (char.animation?.curAnim != null) charCurFrame = char.animation.curAnim.curFrame;
 					if (char.getAnimationName().startsWith('sing') && note.isSustainNote && charCurFrame < 2) canPlay = false;
 					if (note.noteType == 'Sustain Animation' && note.isSustainNote) canPlay = false;
 					if(canPlay) char.playAnim(animToPlay, true);

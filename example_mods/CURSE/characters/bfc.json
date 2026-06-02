@@ -1,228 +1,228 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "3idle",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [34, 1],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "3left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-36, -50],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "3down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-67, 52],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "3up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-61, -5],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "3right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [23, -1],
-			"anim": "singLEFTmiss",
-			"fps": 24,
-			"name": "mleft instancia 1",
-			"indices": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-		},
-		{
-			"loop": false,
-			"offsets": [-35, -50],
-			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "mdown instancia 1",
-			"indices": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-		},
-		{
-			"loop": false,
-			"offsets": [-64, 46],
-			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "mup instancia 1",
-			"indices": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-		},
-		{
-			"loop": false,
-			"offsets": [-60, 15],
-			"anim": "singRIGHTmiss",
-			"fps": 24,
-			"name": "mright instancia 1",
-			"indices": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "idle-happy",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [34, 1],
-			"anim": "singLEFT-happy",
-			"fps": 24,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-5, 0],
-			"anim": "singDOWN-happy",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-5, 53],
-			"anim": "singUP-happy",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-5, 0],
-			"anim": "singRIGHT-happy",
-			"fps": 24,
-			"name": "right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [23, -1],
-			"anim": "singLEFTmiss-happy",
-			"fps": 24,
-			"name": "mleft instancia 1",
-			"indices": [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-		},
-		{
-			"loop": false,
-			"offsets": [-35, -50],
-			"anim": "singDOWNmiss-happy",
-			"fps": 24,
-			"name": "mdown instancia 1",
-			"indices": [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-		},
-		{
-			"loop": false,
-			"offsets": [-64, 46],
-			"anim": "singUPmiss-happy",
-			"fps": 24,
-			"name": "mup instancia 1",
-			"indices": [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-		},
-		{
-			"loop": false,
-			"offsets": [-60, 15],
-			"anim": "singRIGHTmiss-happy",
-			"fps": 24,
-			"name": "mright instancia 1",
-			"indices": [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "idle-sad",
-			"fps": 24,
-			"name": "2idle",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [34, 1],
-			"anim": "singLEFT-sad",
-			"fps": 24,
-			"name": "2left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-36, -50],
-			"anim": "singDOWN-sad",
-			"fps": 24,
-			"name": "2down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-67, 52],
-			"anim": "singUP-sad",
-			"fps": 24,
-			"name": "2up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-61, -5],
-			"anim": "singRIGHT-sad",
-			"fps": 24,
-			"name": "2right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [23, -1],
-			"anim": "singLEFTmiss-sad",
-			"fps": 24,
-			"name": "mleft instancia 1",
-			"indices": [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-		},
-		{
-			"loop": false,
-			"offsets": [-35, -50],
-			"anim": "singDOWNmiss-sad",
-			"fps": 24,
-			"name": "mdown instancia 1",
-			"indices": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-		},
-		{
-			"loop": false,
-			"offsets": [-64, 46],
-			"anim": "singUPmiss-sad",
-			"fps": 24,
-			"name": "mup instancia 1",
-			"indices": [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-		},
-		{
-			"loop": false,
-			"offsets": [-60, 15],
-			"anim": "singRIGHTmiss-sad",
-			"fps": 24,
-			"name": "mright instancia 1",
-			"indices": [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-		},
-		{
-			"offsets": [0, 0],
 			"indices": [],
-			"fps": 24,
-			"anim": "yeah",
+			"name": "3idle"
+		},
+		{
+			"offsets": [34, 1],
 			"loop": false,
-			"name": "yea"
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "3left"
+		},
+		{
+			"offsets": [-36, -50],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "3down"
+		},
+		{
+			"offsets": [-67, 52],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "3up"
+		},
+		{
+			"offsets": [-61, -5],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "3right"
+		},
+		{
+			"offsets": [23, -1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+			"name": "mleft instancia 1"
+		},
+		{
+			"offsets": [-35, -50],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+			"name": "mdown instancia 1"
+		},
+		{
+			"offsets": [-64, 46],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+			"name": "mup instancia 1"
+		},
+		{
+			"offsets": [-60, 15],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+			"name": "mright instancia 1"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle-happy",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"offsets": [34, 1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-happy",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [-5, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-happy",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [-5, 53],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-happy",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [-5, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-happy",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [23, -1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss-happy",
+			"indices": [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+			"name": "mleft instancia 1"
+		},
+		{
+			"offsets": [-35, -50],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss-happy",
+			"indices": [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+			"name": "mdown instancia 1"
+		},
+		{
+			"offsets": [-64, 46],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss-happy",
+			"indices": [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+			"name": "mup instancia 1"
+		},
+		{
+			"offsets": [-60, 15],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss-happy",
+			"indices": [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+			"name": "mright instancia 1"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle-sad",
+			"indices": [],
+			"name": "2idle"
+		},
+		{
+			"offsets": [34, 1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-sad",
+			"indices": [],
+			"name": "2left"
+		},
+		{
+			"offsets": [-36, -50],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-sad",
+			"indices": [],
+			"name": "2down"
+		},
+		{
+			"offsets": [-67, 52],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-sad",
+			"indices": [],
+			"name": "2up"
+		},
+		{
+			"offsets": [-61, -5],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-sad",
+			"indices": [],
+			"name": "2right"
+		},
+		{
+			"offsets": [23, -1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss-sad",
+			"indices": [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+			"name": "mleft instancia 1"
+		},
+		{
+			"offsets": [-35, -50],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss-sad",
+			"indices": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+			"name": "mdown instancia 1"
+		},
+		{
+			"offsets": [-64, 46],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss-sad",
+			"indices": [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+			"name": "mup instancia 1"
+		},
+		{
+			"offsets": [-60, 15],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss-sad",
+			"indices": [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+			"name": "mright instancia 1"
+		},
+		{
+			"loop": false,
+			"offsets": [-6, -12],
+			"anim": "yeah",
+			"fps": 24,
+			"name": "yea",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

@@ -26,6 +26,7 @@ local function addBackdrop(tag, graphic, opts)
 	setScrollFactor(tag, opts.scrollX or 0.2, opts.scrollY or 0.6)
 	setProperty(tag .. '.y', opts.y or BG_Y)
 	setProperty(tag .. '.color', getColorFromHex('000000'))
+	setProperty(tag .. '.antialiasing', false)
 	if opts.orderAfter then
 		setObjectOrder(tag, getObjectOrder(opts.orderAfter) + 1)
 	end

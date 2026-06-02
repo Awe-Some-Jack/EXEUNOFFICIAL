@@ -315,7 +315,7 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 			specialAnim = false;
 			dance();
 		}
-		else if (_lastPlayedAnimation != null && _lastPlayedAnimation.endsWith('miss') && isAnimationFinished())
+		else if (_lastPlayedAnimation?.endsWith('miss') && isAnimationFinished())
 		{
 			dance();
 			finishAnimation();
@@ -335,7 +335,7 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 				if(isAnimationFinished()) playAnim(getAnimationName(), false, false, animation.curAnim.frames.length - 3);
 		}
 
-		if (_lastPlayedAnimation != null && _lastPlayedAnimation.startsWith('sing')) holdTimer += elapsed;
+		if (_lastPlayedAnimation?.startsWith('sing')) holdTimer += elapsed;
 
 		if (holdTimer >= Conductor.stepCrochet * (0.0011 #if FLX_PITCH / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1) #end) * singDuration)
 		{

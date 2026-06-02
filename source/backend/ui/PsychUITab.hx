@@ -208,11 +208,16 @@ class PsychUITab extends FlxSprite
 				final dragRatio = (handleMaxX > handleMinX) ? (targetHandleX - handleMinX) / (handleMaxX - handleMinX) : 0;
 				scrollX = dragRatio * minScrollX;
 			} else {
-				if (FlxG.mouse.overlaps(parent.bg, camera) && FlxG.mouse.deltaWheel.y != 0) {
-					if (FlxG.keys.pressed.SHIFT)
-						scrollX += FlxG.mouse.deltaWheel.y * 30;
-					else
-						scrollY += FlxG.mouse.deltaWheel.y * 30;
+				if (FlxG.mouse.overlaps(parent.bg, camera)) {
+					if (FlxG.mouse.deltaWheel.y != 0) {
+						if (FlxG.keys.pressed.SHIFT)
+							scrollX += FlxG.mouse.deltaWheel.y * 30;
+						else
+							scrollY += FlxG.mouse.deltaWheel.y * 30;
+					}
+
+					if (FlxG.mouse.deltaWheel.x != 0)
+						scrollX -= FlxG.mouse.deltaWheel.x * 30; 
 				}
 			}
 

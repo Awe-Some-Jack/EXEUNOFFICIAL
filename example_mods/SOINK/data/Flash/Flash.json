@@ -69,6 +69,26 @@
 			[
 				["Set Property", "cameraSpeed", "1"]
 			]
+		],
+		[
+			123508.771929825,
+			[
+				["Change Character", "bf", "bf-hardcore"],
+				["Change Character", "dad", "soink-hardcore"],
+				["Set customCamera Position", "bf", "3635, 2048"],
+				["Set customCamera Position", "dad", "3635, 2048"],
+				["Tweening Camera", "0, 0", "0.00001, linear"],
+				["Tween Camera Zoom", "1, true", "0.00001, linear"],
+				["Set Property", "cameraSpeed", "10000"],
+				["Set Character Offset", "bf", "0, 0"],
+				["Set Character Offset", "dad", "0, 0"]
+			]
+		],
+		[
+			123596.49122807,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
 		]
 	],
 	"player2": "soink",
@@ -1963,9 +1983,9 @@
 			"sectionBeats": 4,
 			"sectionNotes": [
 				[123508.771929825, 1, 0],
-				[123508.771929825, 4, 0],
 				[123508.771929825, 6, 0],
 				[123508.771929825, 7, 0],
+				[123508.771929825, 0, 0],
 				[123552.631578948, 4, 0],
 				[123552.631578948, 7, 0],
 				[123552.631578948, 6, 0],

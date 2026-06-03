@@ -3,7 +3,7 @@
 		{
 			"offsets": [0, 0],
 			"loop": true,
-			"fps": 1,
+			"fps": 24,
 			"anim": "idle",
 			"indices": [],
 			"name": "Símbolo 5"
@@ -11,7 +11,7 @@
 		{
 			"offsets": [33, 28],
 			"loop": false,
-			"fps": 1,
+			"fps": 24,
 			"anim": "singLEFT",
 			"indices": [],
 			"name": "hleft"
@@ -19,7 +19,7 @@
 		{
 			"offsets": [-33, 50],
 			"loop": false,
-			"fps": 1,
+			"fps": 24,
 			"anim": "singUP",
 			"indices": [],
 			"name": "hup"
@@ -27,7 +27,7 @@
 		{
 			"offsets": [-93, 3],
 			"loop": false,
-			"fps": 1,
+			"fps": 24,
 			"anim": "singRIGHT",
 			"indices": [],
 			"name": "hright"
@@ -35,7 +35,7 @@
 		{
 			"offsets": [-17, -16],
 			"indices": [],
-			"fps": 1,
+			"fps": 24,
 			"anim": "singDOWN",
 			"loop": false,
 			"name": "hdowm"

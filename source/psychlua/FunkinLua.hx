@@ -928,7 +928,7 @@ class FunkinLua
 		#if TRANSLATIONS_ALLOWED Language.addLuaCallbacks(lua); #end
 
 		HScript.implement(this);
-		#if flxanimate FlxAnimateFunctions.implement(this); #end
+		#if flixel_animate FlxAnimateFunctions.implement(this); #end
 		ReflectionFunctions.implement(this);
 		TextFunctions.implement(this);
 		ExtraFunctions.implement(this);

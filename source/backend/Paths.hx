@@ -23,6 +23,8 @@ import haxe.Json;
 import backend.Mods;
 #end
 
+import backend.AtlasSpriteSettings;
+
 @:access(openfl.display.BitmapData)
 class Paths
 {
@@ -549,74 +551,43 @@ class Paths
 	}
 	#end
 
-	#if flxanimate
-	public static function loadAnimateAtlas(spr:FlxAnimate, folderOrImg:Dynamic, spriteJson:Dynamic = null, animationJson:Dynamic = null)
-	{
-		var changedAnimJson = false;
-		var changedAtlasJson = false;
-		var changedImage = false;
-		
-		if(spriteJson != null)
-		{
-			changedAtlasJson = true;
-			spriteJson = File.getContent(spriteJson);
-		}
+	#if flixel_animate
+	static public function getAnimateAtlas(key:String, ?library:String = null, ?settings:AtlasSpriteSettings):FlxAnimateFrames
+    {
+        final validatedSettings:AtlasSpriteSettings =
+        {
+            swfMode: settings?.swfMode ?? false,
+            cacheOnLoad: settings?.cacheOnLoad ?? ClientPrefs.data.cacheOnGPU,
+            filterQuality: settings?.filterQuality ?? (!ClientPrefs.data.lowQuality ? MEDIUM : LOW),
+            spritemaps: settings?.spritemaps ?? null,
+            metadataJson: settings?.metadataJson ?? null,
+            cacheKey: settings?.cacheKey ?? null,
+            uniqueInCache: settings?.uniqueInCache ?? false,
+            onSymbolCreate: settings?.onSymbolCreate ?? null,
+            applyStageMatrix: settings?.applyStageMatrix ?? false,
+            useRenderTexture: settings?.useRenderTexture ?? false
+        };
 
-		if(animationJson != null) 
-		{
-			changedAnimJson = true;
-			animationJson = File.getContent(animationJson);
-		}
+        #if flixel_animate
+        var path = getPath('images/$key', TEXT, library, true);
+        #if MODS_ALLOWED
+        if (library != null)
+        {
+            final modPath = modFolders('$library/images/$key');
+            if (FileSystem.exists(modPath))
+                path = modPath;
+        }
+        #end
 
-		// is folder or image path
-		if(Std.isOfType(folderOrImg, String))
-		{
-			var originalPath:String = folderOrImg;
-			for (i in 0...10)
-			{
-				var st:String = '$i';
-				if(i == 0) st = '';
-
-				if(!changedAtlasJson)
-				{
-					spriteJson = getTextFromFile('images/$originalPath/spritemap$st.json');
-					if(spriteJson != null)
-					{
-						//trace('found Sprite Json');
-						changedImage = true;
-						changedAtlasJson = true;
-						folderOrImg = image('$originalPath/spritemap$st');
-						break;
-					}
-				}
-				else if(fileExists('images/$originalPath/spritemap$st.png', IMAGE))
-				{
-					//trace('found Sprite PNG');
-					changedImage = true;
-					folderOrImg = image('$originalPath/spritemap$st');
-					break;
-				}
-			}
-
-			if(!changedImage)
-			{
-				//trace('Changing folderOrImg to FlxGraphic');
-				changedImage = true;
-				folderOrImg = image(originalPath);
-			}
-
-			if(!changedAnimJson)
-			{
-				//trace('found Animation Json');
-				changedAnimJson = true;
-				animationJson = getTextFromFile('images/$originalPath/Animation.json');
-			}
-		}
-
-		//trace(folderOrImg);
-		//trace(spriteJson);
-		//trace(animationJson);
-		spr.loadAtlasEx(folderOrImg, spriteJson, animationJson);
-	}
+        return FlxAnimateFrames.fromAnimate(path, validatedSettings.spritemaps, validatedSettings.metadataJson, validatedSettings.cacheKey,
+            validatedSettings.uniqueInCache, {
+                swfMode: validatedSettings.swfMode,
+                cacheOnLoad: validatedSettings.cacheOnLoad,
+                filterQuality: validatedSettings.filterQuality,
+                onSymbolCreate: validatedSettings.onSymbolCreate
+            }
+        );
+        #end
+    }
 	#end
 }

@@ -20,7 +20,7 @@
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/anim",
-	"position": [50, 30],
+	"position": [10, 430],
 	"healthicon": "sonicexe",
 	"flip_x": false,
 	"healthbar_colors": [0, 85, 142],

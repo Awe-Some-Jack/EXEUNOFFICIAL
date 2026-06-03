@@ -13,7 +13,7 @@
 			"indices": []
 		},
 		{
-			"offsets": [-310, 397],
+			"offsets": [-552, -30],
 			"loop": false,
 			"shadow_offsets": [
 				0,
@@ -25,7 +25,7 @@
 			"name": "Tails Up"
 		},
 		{
-			"offsets": [-249, 200],
+			"offsets": [-484, -139],
 			"loop": false,
 			"shadow_offsets": [
 				0,
@@ -38,7 +38,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-663, -265],
+			"offsets": [-586, -169],
 			"anim": "singDOWN",
 			"fps": 24,
 			"shadow_offsets": [
@@ -50,7 +50,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-563, -13],
+			"offsets": [-569, -177],
 			"anim": "singRIGHT",
 			"fps": 24,
 			"shadow_offsets": [
@@ -64,11 +64,11 @@
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/TalesDead",
-	"position": [-570, 60],
+	"position": [-600, 20],
 	"healthicon": "tails",
 	"flip_x": false,
 	"healthbar_colors": [62, 54, 65],
-	"camera_position": [819, 500],
+	"camera_position": [819, 550],
 	"sing_duration": 8,
 	"scale": 0.9,
 	"_editor_isPlayer": false

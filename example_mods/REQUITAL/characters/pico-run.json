@@ -3,7 +3,7 @@
 		{
 			"offsets": [0, 0],
 			"loop": true,
-			"fps": 1,
+			"fps": 24,
 			"anim": "idle",
 			"indices": [],
 			"name": "xd"
@@ -11,7 +11,7 @@
 		{
 			"offsets": [85, 24],
 			"loop": false,
-			"fps": 1,
+			"fps": 24,
 			"anim": "singLEFT",
 			"indices": [],
 			"name": "hleft"
@@ -19,7 +19,7 @@
 		{
 			"offsets": [6, -23],
 			"loop": false,
-			"fps": 1,
+			"fps": 24,
 			"anim": "singDOWN",
 			"indices": [],
 			"name": "hdown"
@@ -27,7 +27,7 @@
 		{
 			"offsets": [-44, 58],
 			"loop": false,
-			"fps": 1,
+			"fps": 24,
 			"anim": "singUP",
 			"indices": [],
 			"name": "hup"
@@ -35,7 +35,7 @@
 		{
 			"offsets": [-13, 1],
 			"loop": false,
-			"fps": 1,
+			"fps": 24,
 			"anim": "singRIGHT",
 			"indices": [],
 			"name": "hright"

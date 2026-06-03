@@ -54,9 +54,8 @@ import states.extras.bios.BIOS;
 import states.extras.dagarden.DAGarden;
 import states.extras.ExtrasMenu;
 
-#if flxanimate
-import flxanimate.*;
-import flxanimate.PsychFlxAnimate as FlxAnimate;
+#if flixel_animate
+import animate.*;
 #end
 
 //Flixel

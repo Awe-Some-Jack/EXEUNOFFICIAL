@@ -4,7 +4,7 @@
 			"loop": true,
 			"offsets": [0, 0],
 			"anim": "idle",
-			"fps": 1,
+			"fps": 24,
 			"name": "iidle",
 			"indices": []
 		},
@@ -12,7 +12,7 @@
 			"loop": false,
 			"offsets": [40, 80],
 			"anim": "singLEFT",
-			"fps": 1,
+			"fps": 24,
 			"name": "ileft",
 			"indices": []
 		},
@@ -20,7 +20,7 @@
 			"loop": false,
 			"offsets": [30, 90],
 			"anim": "singDOWN",
-			"fps": 1,
+			"fps": 24,
 			"name": "idown",
 			"indices": []
 		},
@@ -28,7 +28,7 @@
 			"loop": false,
 			"offsets": [40, 70],
 			"anim": "singUP",
-			"fps": 1,
+			"fps": 24,
 			"name": "iup",
 			"indices": []
 		},
@@ -36,7 +36,7 @@
 			"loop": false,
 			"offsets": [20, 70],
 			"anim": "singRIGHT",
-			"fps": 1,
+			"fps": 24,
 			"name": "iright",
 			"indices": []
 		},
@@ -44,7 +44,7 @@
 			"loop": false,
 			"offsets": [90, 50],
 			"anim": "idle-left",
-			"fps": 1,
+			"fps": 24,
 			"name": "lidle",
 			"indices": []
 		},
@@ -52,7 +52,7 @@
 			"loop": false,
 			"offsets": [110, 80],
 			"anim": "singLEFT-left",
-			"fps": 1,
+			"fps": 24,
 			"name": "lleft",
 			"indices": []
 		},
@@ -60,7 +60,7 @@
 			"loop": false,
 			"offsets": [100, 70],
 			"anim": "singDOWN-left",
-			"fps": 1,
+			"fps": 24,
 			"name": "ldown",
 			"indices": []
 		},
@@ -68,7 +68,7 @@
 			"loop": false,
 			"offsets": [120, 60],
 			"anim": "singUP-left",
-			"fps": 1,
+			"fps": 24,
 			"name": "lup",
 			"indices": []
 		},
@@ -76,7 +76,7 @@
 			"loop": false,
 			"offsets": [110, 60],
 			"anim": "singRIGHT-left",
-			"fps": 1,
+			"fps": 24,
 			"name": "lright",
 			"indices": []
 		},
@@ -84,7 +84,7 @@
 			"loop": false,
 			"offsets": [40, 70],
 			"anim": "idle-down",
-			"fps": 1,
+			"fps": 24,
 			"name": "didle",
 			"indices": []
 		},
@@ -92,7 +92,7 @@
 			"loop": false,
 			"offsets": [70, 100],
 			"anim": "singLEFT-down",
-			"fps": 1,
+			"fps": 24,
 			"name": "dleft",
 			"indices": []
 		},
@@ -100,7 +100,7 @@
 			"loop": false,
 			"offsets": [50, 100],
 			"anim": "singDOWN-down",
-			"fps": 1,
+			"fps": 24,
 			"name": "ddown",
 			"indices": []
 		},
@@ -108,7 +108,7 @@
 			"loop": false,
 			"offsets": [60, 80],
 			"anim": "singUP-down",
-			"fps": 1,
+			"fps": 24,
 			"name": "dup",
 			"indices": []
 		},
@@ -116,7 +116,7 @@
 			"loop": false,
 			"offsets": [50, 80],
 			"anim": "singRIGHT-down",
-			"fps": 1,
+			"fps": 24,
 			"name": "dright",
 			"indices": []
 		},
@@ -124,7 +124,7 @@
 			"loop": false,
 			"offsets": [20, 70],
 			"anim": "idle-up",
-			"fps": 1,
+			"fps": 24,
 			"name": "uidle",
 			"indices": []
 		},
@@ -132,7 +132,7 @@
 			"loop": false,
 			"offsets": [20, 100],
 			"anim": "singLEFT-up",
-			"fps": 1,
+			"fps": 24,
 			"name": "uleft",
 			"indices": []
 		},
@@ -140,7 +140,7 @@
 			"loop": false,
 			"offsets": [30, 110],
 			"anim": "singDOWN-up",
-			"fps": 1,
+			"fps": 24,
 			"name": "udown",
 			"indices": []
 		},
@@ -148,7 +148,7 @@
 			"loop": false,
 			"offsets": [50, 90],
 			"anim": "singUP-up",
-			"fps": 1,
+			"fps": 24,
 			"name": "uup",
 			"indices": []
 		},
@@ -156,7 +156,7 @@
 			"loop": false,
 			"offsets": [20, 90],
 			"anim": "singRIGHT-up",
-			"fps": 1,
+			"fps": 24,
 			"name": "uright",
 			"indices": []
 		},
@@ -164,7 +164,7 @@
 			"loop": false,
 			"offsets": [0, 80],
 			"anim": "idle-right",
-			"fps": 1,
+			"fps": 24,
 			"name": "ridle",
 			"indices": []
 		},
@@ -172,7 +172,7 @@
 			"loop": false,
 			"offsets": [10, 110],
 			"anim": "singLEFT-right",
-			"fps": 1,
+			"fps": 24,
 			"name": "rleft",
 			"indices": []
 		},
@@ -180,7 +180,7 @@
 			"loop": false,
 			"offsets": [10, 120],
 			"anim": "singDOWN-right",
-			"fps": 1,
+			"fps": 24,
 			"name": "rdown",
 			"indices": []
 		},
@@ -188,7 +188,7 @@
 			"loop": false,
 			"offsets": [0, 100],
 			"anim": "singUP-right",
-			"fps": 1,
+			"fps": 24,
 			"name": "rup",
 			"indices": []
 		},
@@ -196,7 +196,7 @@
 			"loop": false,
 			"offsets": [0, 90],
 			"anim": "singRIGHT-right",
-			"fps": 1,
+			"fps": 24,
 			"name": "rright",
 			"indices": []
 		}

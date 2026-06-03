@@ -1,12 +1,12 @@
 import flixel.FlxSprite;
 import flixel.FlxG;
-import states.PlayState as PS;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxStringUtil;
 import flixel.FlxObject;
-import flixel.util.FlxCollision;
+
 import objects.VideoSprite;
+import states.PlayState as PS;
 
 using StringTools;
 
@@ -20,7 +20,6 @@ var tweenBFX:FlxTween;
 var tweenBFY:FlxTween;
 var tweenDADX:FlxTween;
 var tweenDADY:FlxTween;
-
 var mustHitSection:Bool = false;
 
 var bubbleArray:Array<FlxSprite> = [];
@@ -69,14 +68,12 @@ var ribbons:VideoSprite;
 
 function onCreate() {
     wallpaper = new FlxSprite(0, 0, Paths.image('bg/desktop', 'SOINK'));
-    wallpaper.antialiasing = true;
     wallpaper.scale.set(.44, .44);
     wallpaper.updateHitbox();
     wallpaper.cameras = [camBack];
     add(wallpaper);
 
     adobe1 = new FlxSprite(0, 0, Paths.image('bg/adobe', 'SOINK'));
-    adobe1.antialiasing = true;
     adobe1.scale.set(1.6, 1.6);
     adobe1.updateHitbox();
     adobe1.x = 1771;
@@ -85,7 +82,6 @@ function onCreate() {
     addBehindDad(adobe1);
 
     adobe2 = new FlxSprite(0, 0, Paths.image('bg/adobe2', 'SOINK'));
-    adobe2.antialiasing = true;
     adobe2.scale.set(1.6, 1.6);
     adobe2.updateHitbox();
     adobe2.x = 1771;
@@ -97,7 +93,6 @@ function onCreate() {
     ribbons.loadVideo(Paths.video('ribbons', 'SOINK'), true);
     ribbons.scale.set(1.5, 1.5);
     ribbons.scrollFactor.set(0, 0);
-    ribbons.antialiasing = true;
     ribbons.updateHitbox();
     ribbons.cameras = [camGame];
     ribbons.pause();
@@ -106,20 +101,17 @@ function onCreate() {
 
     trace("Stage created");
 }
+
 function onCreatePost() {
-    positionsArray.push(boyfriend.x);
-    positionsArray.push(boyfriend.y);
-    positionsArray.push(dad.x);
-    positionsArray.push(dad.y);
-    positionsArray.push(adobe1.x);
-    positionsArray.push(adobe1.y);
+    for (objs in [boyfriend.x, boyfriend.y, dad.x, dad.y, adobe1.x, adobe1.y]) {
+        positionsArray.push(objs);
+    }
 
     for (i in 0...32) {
         var hue:Float = FlxG.random.float(0,360);
         hues.push(hue);
         
-        var bubble = new FlxSprite(0, 720, Paths.image('bg/bubble', 'SOINK', false));
-        bubble.antialiasing = true;
+        var bubble = new FlxSprite(0, FlxG.height, Paths.image('bg/bubble', 'SOINK', false));
         bubble.scale.set(0.45, 0.45);
         bubble.updateHitbox();
 
@@ -135,6 +127,7 @@ function onCreatePost() {
         bubbleArray.push(bubble);
     }
 }
+
 function onUpdate(elapsed:Float) {
     for(i in 0...bubbleArray.length) {
         if(bubbleArray[i].active) {
@@ -142,28 +135,20 @@ function onUpdate(elapsed:Float) {
             if(b1.ID < 32 && b1.x > 400) {
                 b1.ID += 32;
             }
-            hues[i]+=elapsed*40;
-            // trace(hues[i]);
+
+            hues[i] += elapsed * 40;
             b1.color = FlxColor.fromHSB(hues[i],1,1);
 
-            if(b1.velocity.x >= 0) {
-                b1.acceleration.x = 100;
-            } else {
-                b1.acceleration.x = -100;
-            }
+            b1.acceleration.x = b1.velocity.x >= 0 ? 100 : -100;
+            b1.acceleration.y = b1.velocity.y >= 0 ? 100 : -100;
 
-            if(b1.velocity.y < 0) {
-                b1.acceleration.y = -100;
-            } else {
-                b1.acceleration.y = 100;
-            }
             if(b1 == null || !b1.exists) continue;
 
             var minX:Float = -100;
             var maxX:Float = 1380 - b1.width;
             var minY:Float = -100;
             var maxY:Float = 820 - b1.height;
-
+            
             if(b1.x < minX) {
                 b1.x = minX;
                 b1.velocity.x = Math.abs(b1.velocity.x);
@@ -185,26 +170,29 @@ function onUpdate(elapsed:Float) {
                 if(b2 == null || !b2.exists) continue;
 
                 if(FlxG.overlap(b1, b2) && b1.ID > 31) {
-                    if(FlxCollision.pixelPerfectCheck(b1, b2)) {
-                        var center1X:Float = b1.x + (b1.width / 2);
-                        var center1Y:Float = b1.y + (b1.height / 2);
-                        
-                        var center2X:Float = b2.x + (b2.width / 2);
-                        var center2Y:Float = b2.y + (b2.height / 2);
-                        
-                        var diffX:Float = center2X - center1X;
-                        var diffY:Float = center2Y - center1Y;
-
+                    var center1X:Float = b1.x + (b1.width / 2);
+                    var center1Y:Float = b1.y + (b1.height / 2);
+                    
+                    var center2X:Float = b2.x + (b2.width / 2);
+                    var center2Y:Float = b2.y + (b2.height / 2);
+                    
+                    var diffX:Float = center2X - center1X;
+                    var diffY:Float = center2Y - center1Y;
+                    
+                    // more fast intersection check for circles and less laggy
+                    var distanceSquared:Float = (diffX * diffX) + (diffY * diffY);
+                    var radiusSum:Float = (b1.width / 2) + (b2.width / 2);
+                    
+                    if(distanceSquared <= radiusSum * radiusSum) {
                         var oldB1X:Float = b1.velocity.x;
                         var oldB1Y:Float = b1.velocity.y;
                         var oldB2X:Float = b2.velocity.x;
                         var oldB2Y:Float = b2.velocity.y;
-                        var transferFactor:Float = 0.4; 
-
+                        var transferFactor:Float = 0.4;
+                        
                         if(Math.abs(diffX) > Math.abs(diffY)) {
                             if(oldB1X * oldB2X > 0) {
                                 var avgX:Float = (oldB1X + oldB2X) / 2;
-                                
                                 b1.velocity.x = oldB1X + (avgX - oldB1X) * (transferFactor * 2);
                                 b2.velocity.x = oldB2X + (avgX - oldB2X) * (transferFactor * 2);
                             } else {
@@ -225,7 +213,6 @@ function onUpdate(elapsed:Float) {
                         } else {
                             if(oldB1Y * oldB2Y > 0) {
                                 var avgY:Float = (oldB1Y + oldB2Y) / 2;
-                                
                                 b1.velocity.y = oldB1Y + (avgY - oldB1Y) * (transferFactor * 2);
                                 b2.velocity.y = oldB2Y + (avgY - oldB2Y) * (transferFactor * 2);
                             } 
@@ -267,11 +254,8 @@ function onUpdate(elapsed:Float) {
         if(tweenDADX != null) tweenDADX.cancel();
         if(tweenDADY != null) tweenDADY.cancel();
         
-        if(mustHitSection)
-            currentAnim = boyfriend.getAnimationName();
-        else
-            currentAnim = dad.getAnimationName();
-
+        currentAnim = mustHitSection ? boyfriend.getAnimationName() : dad.getAnimationName();
+            
         if(currentAnim.startsWith("singLEFT")) {
             xOfs = -30;
             yOfs = 0;
@@ -297,6 +281,7 @@ function onUpdate(elapsed:Float) {
         tweenDADY = FlxTween.tween(dad, {y: positionsArray[3]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
     }
 }
+
 function onStepHit() {
     if(curStep >= 768 && curStep % 5 == 0 && bubbleCount < 32) {
         bubbleArray[bubbleCount].active = true;
@@ -304,6 +289,7 @@ function onStepHit() {
         bubbleArray[bubbleCount].velocity.y = -(100 + FlxG.random.float(0, 500));
         bubbleCount+=1;
     }
+    
     switch(curStep) {
         case 248:
             if(tweenX != null) tweenX.cancel();
@@ -312,7 +298,7 @@ function onStepHit() {
             if(tweenBFY != null) tweenBFY.cancel();
             if(tweenDADX != null) tweenDADX.cancel();
             if(tweenDADY != null) tweenDADY.cancel();
-
+            
             xOfs = 0;
             yOfs = 0;
 
@@ -322,6 +308,7 @@ function onStepHit() {
             tweenBFY = FlxTween.tween(boyfriend, {y: positionsArray[1]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
             tweenDADX = FlxTween.tween(dad, {x: positionsArray[2]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
             tweenDADY = FlxTween.tween(dad, {y: positionsArray[3]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
+            
         case 252: // fullscreen
             // wallpaper.scale.set(1.2835,1.2835);
             // wallpaper.y = 781;
@@ -334,11 +321,14 @@ function onStepHit() {
             dadGroup.y = 2066;
             boyfriendGroup.x = 3529;
             boyfriendGroup.y = 1735;
+            
         case 512:
             ribbons.play();
+            
         case 768: // bubbles
             dad.idleSuffix = '-alt';
             dad.recalculateDanceIdle();
+            
         case 1024:
             for(bubble in bubbleArray) {
                 FlxTween.tween(bubble, {alpha: 0}, 0.6, {ease: FlxEase.smoothStepOut, onComplete: function() {
@@ -356,6 +346,7 @@ function onStepHit() {
             }});
     }
 }
+
 function onSectionHit(section:Dynamic) {
     mustHitSection = section.mustHitSection;
 }

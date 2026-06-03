@@ -3050,12 +3050,11 @@ class PlayState extends MusicBeatState
 					var holdAnim:String = animToPlay + '-hold';
 					if(char.animation.exists(holdAnim)) animToPlay = holdAnim;
 					final _curCharAnim:String = char.getAnimationName();
-				if(_curCharAnim == holdAnim || _curCharAnim == holdAnim + '-loop') canPlay = false;
+					if(_curCharAnim == holdAnim || _curCharAnim == holdAnim + '-loop') canPlay = false;
 				}
 
 				var charCurFrame = 0;
 				if (char.anim != null) charCurFrame = char.anim.frameIndex; else if (char.animation?.curAnim != null) charCurFrame = char.animation.curAnim.curFrame;
-				if (char.getAnimationName().startsWith('sing') && note.isSustainNote && charCurFrame < 2) canPlay = false;
 				if (note.noteType == 'Sustain Animation' && note.isSustainNote) canPlay = false;
 				if(canPlay) char.playAnim(animToPlay, true);
 				char.holdTimer = 0;
@@ -3119,12 +3118,11 @@ class PlayState extends MusicBeatState
 						var holdAnim:String = animToPlay + '-hold';
 						if(char.animation.exists(holdAnim)) animToPlay = holdAnim;
 						final _curCharAnim:String = char.getAnimationName();
-				if(_curCharAnim == holdAnim || _curCharAnim == holdAnim + '-loop') canPlay = false;
+						if(_curCharAnim == holdAnim || _curCharAnim == holdAnim + '-loop') canPlay = false;
 					}
 	
 					var charCurFrame = 0;
 					if (char.anim != null) charCurFrame = char.anim.frameIndex; else if (char.animation?.curAnim != null) charCurFrame = char.animation.curAnim.curFrame;
-					if (char.getAnimationName().startsWith('sing') && note.isSustainNote && charCurFrame < 2) canPlay = false;
 					if (note.noteType == 'Sustain Animation' && note.isSustainNote) canPlay = false;
 					if(canPlay) char.playAnim(animToPlay, true);
 					char.holdTimer = 0;

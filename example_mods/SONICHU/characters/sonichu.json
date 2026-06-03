@@ -6,10 +6,10 @@
 			"fps": 24,
 			"anim": "idle",
 			"indices": [],
-			"name": "Sonichu Idle"
+			"name": "idle"
 		},
 		{
-			"offsets": [121, 2],
+			"offsets": [143, 8],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -17,15 +17,15 @@
 			"name": "left"
 		},
 		{
-			"offsets": [5, -1],
+			"offsets": [15, -2],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
 			"indices": [],
-			"name": "Down"
+			"name": "down"
 		},
 		{
-			"offsets": [53, 109],
+			"offsets": [58, 130],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
@@ -33,7 +33,7 @@
 			"name": "up"
 		},
 		{
-			"offsets": [-6, -1],
+			"offsets": [-12, -3],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
@@ -41,23 +41,71 @@
 			"name": "right"
 		},
 		{
-			"offsets": [18, 1],
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle-alt",
+			"indices": [],
+			"name": "altidle"
+		},
+		{
+			"offsets": [116, 5],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "altleft"
+		},
+		{
+			"offsets": [29, -44],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"indices": [],
+			"name": "altdown"
+		},
+		{
+			"offsets": [100, 114],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "altup"
+		},
+		{
+			"offsets": [2, 27],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "altright"
+		},
+		{
+			"offsets": [45, 44],
+			"loop": false,
+			"fps": 24,
+			"anim": "micanim",
+			"indices": [],
+			"name": "micanim"
+		},
+		{
+			"offsets": [11, 0],
 			"loop": false,
 			"fps": 24,
 			"anim": "gf",
 			"indices": [],
-			"name": "Sonichu Anim"
+			"name": "gfanim"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/sonichu",
 	"position": [0, 0],
-	"healthicon": "face",
+	"healthicon": "sonichu",
 	"flip_x": false,
-	"healthbar_colors": [161, 161, 161],
+	"healthbar_colors": [254, 224, 96],
 	"camera_position": [0, 0],
 	"sing_duration": 10,
-	"scale": 1,
+	"scale": 1.2,
 	"_editor_isPlayer": false
 }

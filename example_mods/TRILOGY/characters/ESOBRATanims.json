@@ -1,36 +1,36 @@
 {
 	"animations": [
 		{
+			"offsets": [-10, -76],
 			"loop": false,
-			"offsets": [-11, -62],
+			"fps": 24,
 			"anim": "entiendes",
-			"fps": 24,
-			"name": "entiendes",
-			"indices": []
+			"indices": [],
+			"name": "entiendes"
 		},
 		{
+			"offsets": [25, -19],
 			"loop": false,
-			"offsets": [24, -16],
+			"fps": 24,
 			"anim": "nomore",
-			"fps": 24,
-			"name": "nomore",
-			"indices": []
+			"indices": [],
+			"name": "nomore"
 		},
 		{
+			"offsets": [81, 13],
 			"loop": false,
-			"offsets": [74, 25],
+			"fps": 24,
 			"anim": "risa",
-			"fps": 24,
-			"name": "risa",
-			"indices": []
+			"indices": [],
+			"name": "risa"
 		},
 		{
+			"offsets": [256, -29],
 			"loop": false,
-			"offsets": [297, -9],
-			"anim": "yousoyel",
 			"fps": 24,
-			"name": "yousoyel",
-			"indices": []
+			"anim": "yousoyel",
+			"indices": [],
+			"name": "yousoyel"
 		}
 	],
 	"vocals_file": "",

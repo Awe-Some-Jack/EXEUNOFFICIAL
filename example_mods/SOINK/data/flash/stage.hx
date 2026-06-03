@@ -179,7 +179,7 @@ function onUpdate(elapsed:Float) {
                     var diffX:Float = center2X - center1X;
                     var diffY:Float = center2Y - center1Y;
                     
-                    // more fast intersection check for circles and less laggy
+                    // faster and less laggy circle intersection detection
                     var distanceSquared:Float = (diffX * diffX) + (diffY * diffY);
                     var radiusSum:Float = (b1.width / 2) + (b2.width / 2);
                     

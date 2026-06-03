@@ -1,17 +1,9 @@
 local seenVideo = false
 
-function onCreatePost()
-    makeLuaSprite('blackscreenlol')
-    makeGraphic('blackscreenlol', 3000, 3000, '000000')
-    screenCenter('blackscreenlol')
-    addLuaSprite('blackscreenlol', true)
-    setProperty('blackscreenlol.visible', false)
-end
-
 function onEndSong()
     if seenVideo == false then
         startVideo('tripletrouble')
-        setProperty('blackscreenlol.visible', true)
+        setProperty('camGame.visible', false)  setProperty('camHUD.visible', false)
         seenVideo = true
         return Function_Stop
     end

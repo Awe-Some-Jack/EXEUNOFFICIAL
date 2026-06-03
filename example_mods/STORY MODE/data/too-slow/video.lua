@@ -1,4 +1,6 @@
 local allowCountdown = false
+local finalCutscene = false
+local seenVideo = false
 
 function onCreatePost()
     if not seenCutscene then
@@ -23,7 +25,8 @@ function onStartCountdown()
 end
 
 function onEndVideo()
-    startCountdown()
+    if finalCutscene then endSong()
+    else startCountdown() end
 end
 
 function onCountdownStarted()
@@ -34,4 +37,16 @@ function onTimerCompleted(t)
     if t == 'adasdas' then
         doTweenAlpha('skipTxt', 'skipTxt', 0, 2)
     end
+end
+
+function onEndSong()
+    if seenVideo == false then
+        finalCutscene = true
+        startVideo('YRC')
+        setProperty('camGame.visible', false)  setProperty('camHUD.visible', false)
+        seenVideo = true
+        return Function_Stop
+    end
+    
+    return Function_Continue
 end

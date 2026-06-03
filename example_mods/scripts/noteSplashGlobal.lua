@@ -284,6 +284,7 @@ function opponentNoteHitPre(id,nd,nt,isn)
 	end
 end
 
+local tryAndChange = false
 function doSplash(data, skin, precache)
 	data = data or 0
 	local x, y = getProperty('playerStrums.members['..data..'].x') or 0, getProperty('playerStrums.members['..data..'].y') or 0
@@ -298,26 +299,49 @@ function doSplash(data, skin, precache)
 	local antialiasing = true
 	local lifeTime = 0.5
 
-	local foundSkin = false
-	for _,splashes in ipairs(specialSplashes) do
-		for _,songs in ipairs(splashes.songs) do if songPath == songs then foundSkin = true end end
-		if foundSkin then
-			if splashes.offset ~= nil then offsets = {x = splashes.offset.x, y = splashes.offset.y} end
-			if splashes.framerate ~= nil then framerate = splashes.framerate end
-			if splashes.scale ~= nil then scale = splashes.scale end
-			if splashes.lifeTime ~= nil then lifeTime = splashes.lifeTime end
-			if splashes.antialiasing ~= nil then antialiasing = splashes.antialiasing end
-			if splashes.animations ~= nil then
-				if #splashes.animations > 1 then animName = splashes.animations[data + 1]
-				elseif #splashes.animations == 1 then animName = splashes.animations[1] end
-			end
-			if splashes.indices ~= nil then
-				indicesAnim = true
-				indicesList = splashes.indices
-			end
-			if splashes.isRandom == true then animName = animName:gsub('{KEY}', getRandomInt(1,2)) end
+	if tryAndChange then
+		for _,splashes in ipairs(specialSplashes) do
+			if currentSkin == splashes.skin then
+				if splashes.offset ~= nil then offsets = {x = splashes.offset.x, y = splashes.offset.y} end
+				if splashes.framerate ~= nil then framerate = splashes.framerate end
+				if splashes.scale ~= nil then scale = splashes.scale end
+				if splashes.lifeTime ~= nil then lifeTime = splashes.lifeTime end
+				if splashes.antialiasing ~= nil then antialiasing = splashes.antialiasing end
+				if splashes.animations ~= nil then
+					if #splashes.animations > 1 then animName = splashes.animations[data + 1]
+					elseif #splashes.animations == 1 then animName = splashes.animations[1] end
+				end
+				if splashes.indices ~= nil then
+					indicesAnim = true
+					indicesList = splashes.indices
+				end
+				if splashes.isRandom == true then animName = animName:gsub('{KEY}', getRandomInt(1,2)) end
 
-			break
+				break
+			end
+		end
+	else
+		local foundSkin = false
+		for _,splashes in ipairs(specialSplashes) do
+			for _,songs in ipairs(splashes.songs) do if songPath == songs then foundSkin = true end end
+			if foundSkin then
+				if splashes.offset ~= nil then offsets = {x = splashes.offset.x, y = splashes.offset.y} end
+				if splashes.framerate ~= nil then framerate = splashes.framerate end
+				if splashes.scale ~= nil then scale = splashes.scale end
+				if splashes.lifeTime ~= nil then lifeTime = splashes.lifeTime end
+				if splashes.antialiasing ~= nil then antialiasing = splashes.antialiasing end
+				if splashes.animations ~= nil then
+					if #splashes.animations > 1 then animName = splashes.animations[data + 1]
+					elseif #splashes.animations == 1 then animName = splashes.animations[1] end
+				end
+				if splashes.indices ~= nil then
+					indicesAnim = true
+					indicesList = splashes.indices
+				end
+				if splashes.isRandom == true then animName = animName:gsub('{KEY}', getRandomInt(1,2)) end
+
+				break
+			end
 		end
 	end
 
@@ -354,6 +378,7 @@ function onUpdatePost(e)
 	end
 end
 
+local pixelxdxd = false
 function onEvent(n,v1,v2)
 	if n == 'changenoteSkin' then
 		if v1 == 'NOTE_assets_ENDLESS' then
@@ -364,6 +389,35 @@ function onEvent(n,v1,v2)
 				addAnimationByPrefix('noteHold'..i, 'hold', holdSplashConf.holdAnim[(i % 4) + 1].name, holdSplashConf.holdAnim[(i % 4) + 1].fps, true)
 				addAnimationByPrefix('noteHold'..i, 'end', holdSplashConf.endAnim[(i % 4) + 1].name, holdSplashConf.endAnim[(i % 4) + 1].fps, false)
 				playAnim('noteHold'..i, 'hold', true)
+			end
+		end
+	end
+	if n == 'Swap Pixel Combo' then
+		pixelxdxd = not pixelxdxd
+		if pixelxdxd then
+			currentSkin = 'BloodSplashPixel'
+			tryAndChange = true
+			for i = 0,7 do
+				loadFrames('noteHold'..i, 'exeSplashes/holds/BloodSplashPixelHOLD')
+				addAnimationByPrefix('noteHold'..i, 'start', 'sustain cover intro', 24, false)
+				addAnimationByPrefix('noteHold'..i, 'hold', 'sustain cover loop', 24, true)
+				addAnimationByPrefix('noteHold'..i, 'end', 'sustain cover end', 24, false)
+				setProperty('noteHold'..i..'.antialiasing', false)
+				scaleObject('noteHold'..i, 6, 6)
+				daHoldConfig = {offsetX = -102, offsetY = -42}
+			end
+		else
+			currentSkin = 'BloodSplash'
+			tryAndChange = false
+			for i = 0,7 do
+				loadFrames('noteHold'..i, 'exeSplashes/holds/BloodSplashHOLD')
+				addAnimationByPrefix('noteHold'..i, 'start', 'sustain cover intro', 24, false)
+				addAnimationByPrefix('noteHold'..i, 'hold', 'sustain cover loop', 24, true)
+				addAnimationByPrefix('noteHold'..i, 'end', 'sustain cover end', 24, false)
+				setProperty('noteHold'..i..'.antialiasing', true)
+				scaleObject('noteHold'..i, 0.9, 0.9)
+				daHoldConfig = {offsetX = -85, offsetY = -62}
+				playAnim('noteHold'..i, 'end', true)
 			end
 		end
 	end

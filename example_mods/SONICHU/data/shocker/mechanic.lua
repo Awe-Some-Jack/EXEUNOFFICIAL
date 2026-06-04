@@ -2,13 +2,6 @@ precacheImage('characters/Lighting')
 
 local lightings = {}
 
-function goodNoteHitPre(id)
-	if getProperty('boyfriend.animation.curAnim.name') == 'shock' then
-		setProperty('notes.members['..id..'].noAnimation', true)
-		setProperty('notes.members['..id..'].noMissAnimation', true)
-	end
-end
-
 function opponentNoteHit(id,nd,nt,isn)
 	if nd == 3 and not isn and nt == 'Alt Animation' then
 		local tag = 'lighting'..(math.floor(getSongPosition()))
@@ -18,7 +11,7 @@ function opponentNoteHit(id,nd,nt,isn)
 		addLuaSprite(tag, true)
 		table.insert(lightings, tag)
 
-		if getHealth() > 0.04 then addHealth(-0.02) end
+		if getHealth() > 0.1 then addHealth(-0.05) end
 		playAnim('boyfriend', 'shock', true)
 		setProperty('boyfriend.specialAnim', true)
 	end

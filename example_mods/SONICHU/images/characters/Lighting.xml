@@ -2,14 +2,11 @@
 <TextureAtlas imagePath="Lighting.png">
 	<!-- Created with Adobe Animate version 22.0.7.214 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 146 instancia 10000" x="0" y="0" width="102" height="158" frameX="-8" frameY="-18" frameWidth="365" frameHeight="232"/>
-	<SubTexture name="Símbolo 146 instancia 10001" x="112" y="0" width="206" height="145" frameX="-17" frameY="-24" frameWidth="365" frameHeight="232"/>
-	<SubTexture name="Símbolo 146 instancia 10002" x="328" y="0" width="340" height="165" frameX="-17" frameY="-25" frameWidth="365" frameHeight="232"/>
-	<SubTexture name="Símbolo 146 instancia 10003" x="678" y="0" width="349" height="193" frameX="-11" frameY="-27" frameWidth="365" frameHeight="232"/>
-	<SubTexture name="Símbolo 146 instancia 10004" x="1037" y="0" width="351" height="180" frameX="-8" frameY="-21" frameWidth="365" frameHeight="232"/>
-	<SubTexture name="Símbolo 146 instancia 10005" x="0" y="203" width="348" height="174" frameX="-10" frameY="-18" frameWidth="365" frameHeight="232"/>
-	<SubTexture name="Símbolo 146 instancia 10006" x="358" y="203" width="358" height="192" frameX="-7" frameY="-11" frameWidth="365" frameHeight="232"/>
-	<SubTexture name="Símbolo 146 instancia 10007" x="726" y="203" width="353" height="208" frameX="-6" frameY="-7" frameWidth="365" frameHeight="232"/>
-	<SubTexture name="Símbolo 146 instancia 10008" x="1089" y="203" width="355" height="220" frameX="-3" frameY="-4" frameWidth="365" frameHeight="232"/>
-	<SubTexture name="Símbolo 146 instancia 10009" x="0" y="433" width="351" height="232" frameX="0" frameY="0" frameWidth="365" frameHeight="232"/>
+	<SubTexture name="Símbolo 146 instancia 10000" x="0" y="0" width="102" height="158" frameX="-8" frameY="-18" frameWidth="360" frameHeight="232"/>
+	<SubTexture name="Símbolo 146 instancia 10001" x="112" y="0" width="206" height="145" frameX="-17" frameY="-24" frameWidth="360" frameHeight="232"/>
+	<SubTexture name="Símbolo 146 instancia 10002" x="328" y="0" width="340" height="165" frameX="-17" frameY="-25" frameWidth="360" frameHeight="232"/>
+	<SubTexture name="Símbolo 146 instancia 10003" x="0" y="175" width="349" height="193" frameX="-11" frameY="-27" frameWidth="360" frameHeight="232"/>
+	<SubTexture name="Símbolo 146 instancia 10004" x="359" y="175" width="353" height="208" frameX="-6" frameY="-7" frameWidth="360" frameHeight="232"/>
+	<SubTexture name="Símbolo 146 instancia 10005" x="0" y="393" width="355" height="220" frameX="-3" frameY="-4" frameWidth="360" frameHeight="232"/>
+	<SubTexture name="Símbolo 146 instancia 10006" x="365" y="393" width="351" height="232" frameX="0" frameY="0" frameWidth="360" frameHeight="232"/>
 </TextureAtlas>

@@ -120,7 +120,8 @@ class Hijacked extends BaseStage
 				}
 
 				var charCurFrame = 0;
-				if (gf2?.anim != null) charCurFrame = gf2.anim.frameIndex; else if (gf2.animation?.curAnim != null) charCurFrame = gf2.animation.curAnim.curFrame;
+				if (gf2.animation != null) charCurFrame = gf2.animation.curAnim.curFrame;
+				if (gf2.getAnimationName().startsWith('sing') && note.isSustainNote && charCurFrame < 2) canPlay = false;
 				if (note.noteType == 'Sustain Animation' && note.isSustainNote) canPlay = false;
 				if(canPlay) gf2.playAnim(animToPlay, true);
 				gf2.holdTimer = 0;

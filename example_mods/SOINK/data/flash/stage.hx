@@ -199,9 +199,9 @@ function onUpdate(elapsed:Float) {
             if(b1 == null || !b1.exists) continue;
 
             var minX:Float = -100;
-            var maxX:Float = 1380 - b1.width;
+            var maxX:Float = FlxG.width + 100 - b1.width;
             var minY:Float = -100;
-            var maxY:Float = 820 - b1.height;
+            var maxY:Float = FlxG.height + 100 - b1.height;
             
             if(b1.x < minX) {
                 b1.x = minX;

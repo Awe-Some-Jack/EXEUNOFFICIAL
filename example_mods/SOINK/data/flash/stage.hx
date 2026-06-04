@@ -66,6 +66,13 @@ var ribbons:VideoSprite;
 
     // ofs 25
 
+// bluescreen zoom: 1
+// bluescreen cams:
+
+// bluescreen positions:
+    // BF: 2995, 1710
+    // dad: 2995, 1820
+
 function onCreate() {
     wallpaper = new FlxSprite(0, 0, Paths.image('bg/desktop', 'SOINK'));
     wallpaper.scale.set(.44, .44);
@@ -78,7 +85,7 @@ function onCreate() {
     adobe1.updateHitbox();
     adobe1.x = 1771;
     adobe1.y = 1067;
-    // adobe1.alpha = 0;
+    adobe1.alpha = 1;
     addBehindDad(adobe1);
 
     adobe2 = new FlxSprite(0, 0, Paths.image('bg/adobe2', 'SOINK'));
@@ -98,6 +105,17 @@ function onCreate() {
     ribbons.pause();
     ribbons.alpha = 0.00001;
     addBehindDad(ribbons);
+
+    bluescreen = new FlxSprite(0, 0, Paths.image('bg/bluescreen', 'SOINK'));
+    bluescreen.updateHitbox();
+    bluescreen.scrollFactor.set(0, 0);
+    bluescreen.scale.set(0.4, 0.4);
+    bluescreen.cameras = [camGame];
+    bluescreen.screenCenter();
+    bluescreen.x += 170;
+    bluescreen.y += 20;
+    bluescreen.alpha = 0.00001;
+    addBehindDad(bluescreen);
 
     trace("Stage created");
 }
@@ -215,8 +233,7 @@ function onUpdate(elapsed:Float) {
                                 var avgY:Float = (oldB1Y + oldB2Y) / 2;
                                 b1.velocity.y = oldB1Y + (avgY - oldB1Y) * (transferFactor * 2);
                                 b2.velocity.y = oldB2Y + (avgY - oldB2Y) * (transferFactor * 2);
-                            } 
-                            else {
+                            } else {
                                 var randomMult:Float = FlxG.random.float(0.1, 0.9);
                                 var remainderMult:Float = 1.0 - randomMult;
                                 
@@ -325,7 +342,7 @@ function onStepHit() {
         case 512:
             ribbons.play();
             
-        case 768: // bubbles
+        case 768:
             dad.idleSuffix = '-alt';
             dad.recalculateDanceIdle();
             
@@ -344,6 +361,13 @@ function onStepHit() {
             FlxTween.tween(ribbons, {alpha: 0}, 0.6, {ease: FlxEase.smoothStepIn, onComplete: function() {
                 ribbons.destroy();
             }});
+
+        case 1408:
+            boyfriend.x = dad.x = 2995;
+            boyfriend.y = 1710;
+            dad.y = 1820;
+            bluescreen.alpha = 1;
+            adobe2.alpha = wallpaper.alpha = 0;
     }
 }
 

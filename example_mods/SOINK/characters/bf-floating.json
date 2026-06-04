@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [-329, 285],
-			"anim": "idle",
+			"loop": true,
 			"fps": 24,
-			"name": "idle",
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [-340, 324],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "arriba",
 			"indices": []
 		},
 		{
-			"offsets": [-340, 324],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP",
 			"loop": false,
-			"name": "arriba"
-		},
-		{
 			"offsets": [-311, 268],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "abajo"
+			"fps": 24,
+			"name": "abajo",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-337, 280],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "derecha"
+			"fps": 24,
+			"name": "derecha",
+			"indices": []
 		},
 		{
-			"offsets": [-312, 288],
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-			"fps": 24,
-			"anim": "singLEFT",
 			"loop": false,
-			"name": "izquierda bf instancia 1"
+			"offsets": [-312, 288],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "izquierda bf instancia 1",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 		}
 	],
 	"vocals_file": "",
@@ -46,10 +46,10 @@
 	"image": "characters/bf-floating",
 	"position": [390, -110],
 	"healthicon": "bf",
-	"flip_x": false,
+	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],
 	"camera_position": [-850, -300],
 	"sing_duration": 6.1,
 	"scale": 1,
-	"_editor_isPlayer": false
+	"_editor_isPlayer": true
 }

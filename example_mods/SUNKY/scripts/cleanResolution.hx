@@ -24,6 +24,11 @@ function onCreate()
 	}
 }
 
+function onCreatePost()
+{
+	comboGroup.y -= 100;
+}
+
 var oldFullscreen:Bool = false;
 function onUpdate(elapsed:Float)
 {

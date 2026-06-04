@@ -41,15 +41,10 @@ function onEvent(n, v1)
 
 		if v1 == 'addbg' then
 			if not lowQuality then
-				for i = 1,13 do
+				for i = 1,15 do
 					setProperty('bg'..i..'.color', getColorFromHex('FFFFFF'))
 				end
-				for i = 1,15 do
-					setProperty('sky'..i..'.color', getColorFromHex('FFFFFF'))
-					if i == 15 then
-						setProperty('sky'..i..'flash.color', getColorFromHex('FFFFFF'))
-					end
-				end
+				setProperty('sky15flash.color', getColorFromHex('FFFFFF'))
 
 				setProperty('floor1.color', getColorFromHex('FFFFFF'))
 				setProperty('floor2.color', getColorFromHex('FFFFFF'))
@@ -120,6 +115,8 @@ function onEvent(n, v1)
 			scaleObject('gf', 6, 6, false)
 			setObjectOrder('gfGroup', getObjectOrder('floor2') + 1)
 			callMethod('gf.changeCharacter', {'furnace'})
+			playAnim('gf', 'fly', true)
+			setProperty('gf.specialAnim', true)
 			setProperty('gf.velocity.x', 300)
 			setProperty('gf.y', 960)
 			furn = true
@@ -234,7 +231,7 @@ function onUpdatePost(e)
 
 	if furn then
 		xd = xd + e * 3 * playbackRate
-		setProperty('gf.y', 960 + math.sin(xd + (math.pi / 2)) * 5)
+		setProperty('gf.y', 850 + math.sin(xd + (math.pi / 2)) * 5)
 
 		if getProperty('gf.x') >= 1800 then
 			furn = false
@@ -257,15 +254,10 @@ function onUpdatePost(e)
 		playEndOnce = false
 
 		if not lowQuality then
-			for i = 1,13 do
+			for i = 1,15 do
 				setProperty('bg'..i..'.visible', false)
 			end
-			for i = 1,15 do
-				setProperty('sky'..i..'.visible', false)
-				if i == 15 then
-					setProperty('sky'..i..'flash.visible', false)
-				end
-			end
+			setProperty('sky15flash.visible', false)
 
 			setProperty('floor1.visible', false)
 			setProperty('floor2.visible', false)

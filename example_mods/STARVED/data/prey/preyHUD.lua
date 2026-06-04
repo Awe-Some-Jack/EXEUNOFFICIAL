@@ -149,6 +149,7 @@ function onEvent(n,v1)
 		if v1 == 'starvedappears' then
 			setHealth(1)
 			updateHUD()
+			callMethod('iconFurn.changeIcon', {getProperty('dad.healthIcon')})
 		end
 	end
 end

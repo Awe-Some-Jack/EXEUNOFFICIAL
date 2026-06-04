@@ -3760,6 +3760,18 @@
 			]
 		],
 		[
+			196193.181818181,
+			[
+				["preyEvent", "stopnextshock", ""]
+			]
+		],
+		[
+			199090.909090909,
+			[
+				["preyEvent", "shock", ""]
+			]
+		],
+		[
 			207272.727272727,
 			[
 				["preyEvent", "furnaceappearing", ""]

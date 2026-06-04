@@ -6,8 +6,7 @@ local BG_Y = -1000
 local FLOOR_Y = -1496
 local PARALLAX_BASE = -1250
 local PARALLAX_STEP = 50
-local BG_COUNT = 13
-local SKY_COUNT = 15
+local BG_COUNT = 15
 
 local function addBackdrop(tag, graphic, opts)
 	opts = opts or {}
@@ -37,14 +36,10 @@ local lightningActive = false
 function onCreatePost()
 	if not lowQuality then
 		for i = 1, BG_COUNT do
-			addBackdrop('bg' .. i, 'prey/bottom/bg' .. i, {y = BG_Y - 5})
+			addBackdrop('bg' .. i, 'prey/bg/bg' .. i)
 		end
 
-		for i = 1, SKY_COUNT do
-			addBackdrop('sky' .. i, 'prey/sky/sky' .. i)
-		end
-
-		addBackdrop('sky15flash', 'prey/sky/sky15-lightning-anim', {animated = true, fps = 12, loop = false})
+		addBackdrop('sky15flash', 'prey/bg/sky15-lightning-anim', {animated = true, fps = 12, loop = false})
 		setProperty('sky15flash.visible', false)
 	else
 		addBackdrop('bg-lq', 'prey/bg-lq', {axis = 0x01, gap = 0, gapY = 0, scaleX = 3, scaleY = 3})
@@ -112,13 +107,9 @@ end
 function changeBGVelocity(value)
 	if not lowQuality then
 		for i = 1, BG_COUNT do
-			local j = BG_COUNT + 1 - i
-			setProperty('bg' .. j .. '.velocity.x', (PARALLAX_BASE + (PARALLAX_STEP * (i - 1))) * value)
+			setProperty('bg' .. i .. '.velocity.x', (PARALLAX_BASE + (PARALLAX_STEP * (i - 1))) * value)
 		end
-		for i = 1, SKY_COUNT do
-			setProperty('sky' .. i .. '.velocity.x', (PARALLAX_BASE + (PARALLAX_STEP * (i - 1))) * value)
-		end
-		setProperty('sky15flash.velocity.x', (PARALLAX_BASE + (PARALLAX_STEP * (SKY_COUNT - 1))) * value)
+		setProperty('sky15flash.velocity.x', (PARALLAX_BASE + (PARALLAX_STEP * (BG_COUNT - 1))) * value)
 
 		setProperty('floor1.velocity.x', -2000 * value)
 		setProperty('floor2.velocity.x', -2000 * value)

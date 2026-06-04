@@ -1,92 +1,100 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [0, 0],
-			"loop": true,
-			"fps": 18,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 18,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [-96, 54],
 			"loop": false,
-			"fps": 18,
+			"offsets": [-96, 54],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 18,
+			"name": "left",
+			"indices": []
 		},
 		{
-			"offsets": [-120, -24],
 			"loop": false,
-			"fps": 18,
+			"offsets": [-120, -24],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 18,
+			"name": "down",
+			"indices": []
 		},
 		{
-			"offsets": [-96, 54],
 			"loop": false,
-			"fps": 18,
+			"offsets": [-96, 54],
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 18,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [-96, 54],
 			"loop": false,
-			"fps": 18,
+			"offsets": [-96, 54],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 18,
+			"name": "right",
+			"indices": []
 		},
 		{
-			"offsets": [-96, 54],
 			"loop": true,
-			"fps": 18,
+			"offsets": [-96, 54],
 			"anim": "singLEFT-loop",
-			"indices": [3, 4, 5],
-			"name": "left"
+			"fps": 18,
+			"name": "left",
+			"indices": [3, 4, 5]
 		},
 		{
+			"loop": true,
 			"offsets": [-120, -24],
-			"loop": true,
-			"fps": 18,
 			"anim": "singDOWN-loop",
-			"indices": [3, 4, 5],
-			"name": "down"
+			"fps": 18,
+			"name": "down",
+			"indices": [3, 4, 5]
 		},
 		{
-			"offsets": [-96, 54],
 			"loop": true,
-			"fps": 18,
+			"offsets": [-96, 54],
 			"anim": "singUP-loop",
-			"indices": [3, 4, 5],
-			"name": "up"
+			"fps": 18,
+			"name": "up",
+			"indices": [3, 4, 5]
 		},
 		{
+			"loop": true,
 			"offsets": [-96, 54],
-			"loop": true,
-			"fps": 18,
 			"anim": "singRIGHT-loop",
-			"indices": [3, 4, 5],
-			"name": "right"
+			"fps": 18,
+			"name": "right",
+			"indices": [3, 4, 5]
 		},
 		{
-			"offsets": [30, -90],
-			"indices": [],
-			"fps": 18,
-			"anim": "attack",
 			"loop": false,
-			"name": "attack"
+			"offsets": [30, -90],
+			"anim": "attack",
+			"fps": 18,
+			"name": "attack",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [-36, -24],
+			"anim": "hit",
+			"fps": 18,
+			"name": "hit",
+			"indices": []
+		},
+		{
+			"offsets": [18, 24],
 			"indices": [],
 			"fps": 18,
-			"anim": "hit",
+			"anim": "fly",
 			"loop": true,
-			"name": "hit"
+			"name": "fly"
 		}
 	],
 	"vocals_file": "",

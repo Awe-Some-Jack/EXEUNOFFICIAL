@@ -1,163 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="Metal.png">
-	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- Created with Adobe Animate version 22.0.4.185 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Metal_DOWN0000" x="10" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0001" x="10" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0002" x="369" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0003" x="369" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0004" x="728" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0005" x="728" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0006" x="1087" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0007" x="1087" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0008" x="1446" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0009" x="1446" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0010" x="1446" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0011" x="1446" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0012" x="1446" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0013" x="1446" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0014" x="1805" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_DOWN0015" x="2164" y="10" width="349" height="340"/>
-	<SubTexture name="Metal_IDLE0000" x="2523" y="10" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0001" x="2523" y="10" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0002" x="2896" y="10" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0003" x="2896" y="10" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0004" x="3269" y="10" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0005" x="3269" y="10" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0006" x="10" y="360" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0007" x="10" y="360" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0008" x="383" y="360" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0009" x="383" y="360" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0010" x="756" y="360" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0011" x="756" y="360" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0012" x="756" y="360" width="363" height="338"/>
-	<SubTexture name="Metal_IDLE0013" x="756" y="360" width="363" height="338"/>
-	<SubTexture name="Metal_LEFT0000" x="1129" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0001" x="1129" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0002" x="1508" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0003" x="1508" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0004" x="1887" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0005" x="1887" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0006" x="2266" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0007" x="2266" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0008" x="2645" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0009" x="2645" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0010" x="2645" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0011" x="2645" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0012" x="2645" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0013" x="2645" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0014" x="3024" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_LEFT0015" x="3403" y="360" width="369" height="335"/>
-	<SubTexture name="Metal_MISS_RIGHT0000" x="10" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0001" x="362" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0002" x="362" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0003" x="714" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0004" x="714" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0005" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0006" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0007" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0008" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0009" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0010" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0011" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0012" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0013" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0014" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0015" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0016" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0017" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0018" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_MISS_RIGHT0019" x="1066" y="708" width="342" height="316"/>
-	<SubTexture name="Metal_Miss_DOWN0000" x="1418" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0001" x="1726" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0002" x="1726" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0003" x="2034" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0004" x="2034" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0005" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0006" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0007" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0008" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0009" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0010" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0011" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0012" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0013" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0014" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0015" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0016" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0017" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0018" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_DOWN0019" x="2342" y="708" width="298" height="345"/>
-	<SubTexture name="Metal_Miss_LEFT0000" x="2650" y="708" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0001" x="3001" y="708" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0002" x="3001" y="708" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0003" x="3352" y="708" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0004" x="3352" y="708" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0005" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0006" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0007" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0008" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0009" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0010" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0011" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0012" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0013" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0014" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0015" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0016" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0017" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0018" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_LEFT0019" x="10" y="1063" width="341" height="323"/>
-	<SubTexture name="Metal_Miss_UP0000" x="361" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0001" x="624" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0002" x="624" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0003" x="887" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0004" x="887" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0005" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0006" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0007" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0008" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0009" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0010" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0011" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0012" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0013" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0014" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0015" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0016" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0017" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0018" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_Miss_UP0019" x="1150" y="1063" width="253" height="372"/>
-	<SubTexture name="Metal_RIGHT0000" x="1413" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0001" x="1413" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0002" x="1870" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0003" x="1870" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0004" x="2327" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0005" x="2327" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0006" x="2784" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0007" x="2784" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0008" x="3241" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0009" x="3241" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0010" x="3241" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0011" x="3241" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0012" x="3241" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0013" x="3241" y="1063" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0014" x="10" y="1445" width="447" height="337"/>
-	<SubTexture name="Metal_RIGHT0015" x="467" y="1445" width="447" height="337"/>
-	<SubTexture name="Metal_UP0000" x="924" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0001" x="924" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0002" x="1274" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0003" x="1274" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0004" x="1624" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0005" x="1624" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0006" x="1974" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0007" x="1974" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0008" x="2324" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0009" x="2324" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0010" x="2324" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0011" x="2324" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0012" x="2324" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0013" x="2324" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0014" x="2674" y="1445" width="340" height="372"/>
-	<SubTexture name="Metal_UP0015" x="3024" y="1445" width="340" height="372"/>
+	<SubTexture name="Metal_DOWN instancia 10000" x="25" y="25" width="576" height="628" frameX="-144" frameY="-66" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10001" x="25" y="25" width="576" height="628" frameX="-144" frameY="-66" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10002" x="616" y="25" width="546" height="614" frameX="-150" frameY="-81" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10003" x="616" y="25" width="546" height="614" frameX="-150" frameY="-81" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10004" x="1177" y="25" width="542" height="606" frameX="-153" frameY="-91" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10005" x="1177" y="25" width="542" height="606" frameX="-153" frameY="-91" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10006" x="1734" y="25" width="549" height="615" frameX="-156" frameY="-83" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10007" x="1734" y="25" width="549" height="615" frameX="-156" frameY="-83" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10008" x="2298" y="25" width="551" height="698" frameX="-158" frameY="0" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10009" x="2298" y="25" width="551" height="698" frameX="-158" frameY="0" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10010" x="2298" y="25" width="551" height="698" frameX="-158" frameY="0" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10011" x="2864" y="25" width="551" height="649" frameX="-158" frameY="-49" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10012" x="2864" y="25" width="551" height="649" frameX="-158" frameY="-49" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10013" x="2864" y="25" width="551" height="649" frameX="-158" frameY="-49" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10014" x="3430" y="25" width="530" height="582" frameX="-153" frameY="-118" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_DOWN instancia 10015" x="3975" y="25" width="648" height="604" frameX="0" frameY="-78" frameWidth="720" frameHeight="700"/>
+	<SubTexture name="Metal_IDLE instancia 10000" x="25" y="738" width="587" height="591" frameX="0" frameY="-24" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10001" x="25" y="738" width="587" height="591" frameX="0" frameY="-24" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10002" x="627" y="738" width="585" height="595" frameX="0" frameY="-21" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10003" x="1227" y="738" width="553" height="595" frameX="-32" frameY="-21" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10004" x="1795" y="738" width="554" height="609" frameX="-42" frameY="-8" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10005" x="1795" y="738" width="554" height="609" frameX="-42" frameY="-8" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10006" x="2364" y="738" width="560" height="616" frameX="-44" frameY="-2" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10007" x="2364" y="738" width="560" height="616" frameX="-44" frameY="-2" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10008" x="2939" y="738" width="564" height="618" frameX="-44" frameY="0" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10009" x="3518" y="738" width="551" height="618" frameX="-57" frameY="0" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10010" x="4084" y="738" width="551" height="618" frameX="-57" frameY="0" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10011" x="25" y="1371" width="551" height="618" frameX="-57" frameY="0" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10012" x="25" y="1371" width="551" height="618" frameX="-57" frameY="0" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_IDLE instancia 10013" x="25" y="1371" width="551" height="618" frameX="-57" frameY="0" frameWidth="608" frameHeight="618"/>
+	<SubTexture name="Metal_LEFT instancia 10000" x="591" y="1371" width="596" height="623" frameX="-23" frameY="-3" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10001" x="591" y="1371" width="596" height="623" frameX="-23" frameY="-3" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10002" x="1202" y="1371" width="576" height="613" frameX="-30" frameY="-13" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10003" x="1202" y="1371" width="576" height="613" frameX="-30" frameY="-13" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10004" x="1793" y="1371" width="571" height="621" frameX="-33" frameY="-5" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10005" x="1793" y="1371" width="571" height="621" frameX="-33" frameY="-5" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10006" x="2379" y="1371" width="583" height="625" frameX="-35" frameY="-1" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10007" x="2379" y="1371" width="583" height="625" frameX="-35" frameY="-1" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10008" x="2977" y="1371" width="587" height="626" frameX="-36" frameY="0" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10009" x="3579" y="1371" width="587" height="626" frameX="-36" frameY="0" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10010" x="3579" y="1371" width="587" height="626" frameX="-36" frameY="0" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10011" x="3579" y="1371" width="587" height="626" frameX="-36" frameY="0" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10012" x="4181" y="1371" width="587" height="626" frameX="-36" frameY="0" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10013" x="4181" y="1371" width="587" height="626" frameX="-36" frameY="0" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10014" x="25" y="2012" width="585" height="616" frameX="-84" frameY="-10" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_LEFT instancia 10015" x="625" y="2012" width="668" height="621" frameX="0" frameY="-5" frameWidth="669" frameHeight="626"/>
+	<SubTexture name="Metal_RIGHT instancia 10000" x="1308" y="2012" width="651" height="644" frameX="-150" frameY="-7" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10001" x="1308" y="2012" width="651" height="644" frameX="-150" frameY="-7" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10002" x="1974" y="2012" width="640" height="651" frameX="-146" frameY="0" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10003" x="1974" y="2012" width="640" height="651" frameX="-146" frameY="0" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10004" x="2629" y="2012" width="632" height="647" frameX="-148" frameY="-4" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10005" x="2629" y="2012" width="632" height="647" frameX="-148" frameY="-4" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10006" x="3276" y="2012" width="633" height="644" frameX="-145" frameY="-8" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10007" x="3276" y="2012" width="633" height="644" frameX="-145" frameY="-8" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10008" x="3924" y="2012" width="632" height="648" frameX="-146" frameY="-4" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10009" x="25" y="2678" width="705" height="648" frameX="-73" frameY="-4" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10010" x="25" y="2678" width="705" height="648" frameX="-73" frameY="-4" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10011" x="25" y="2678" width="705" height="648" frameX="-73" frameY="-4" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10012" x="745" y="2678" width="644" height="648" frameX="-134" frameY="-4" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10013" x="745" y="2678" width="644" height="648" frameX="-134" frameY="-4" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10014" x="1404" y="2678" width="659" height="645" frameX="-77" frameY="-7" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_RIGHT instancia 10015" x="2078" y="2678" width="569" height="618" frameX="0" frameY="-44" frameWidth="801" frameHeight="662"/>
+	<SubTexture name="Metal_UP instancia 10000" x="2662" y="2678" width="485" height="775" frameX="-165" frameY="0" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10001" x="2662" y="2678" width="485" height="775" frameX="-165" frameY="0" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10002" x="3162" y="2678" width="477" height="764" frameX="-184" frameY="-10" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10003" x="3162" y="2678" width="477" height="764" frameX="-184" frameY="-10" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10004" x="3654" y="2678" width="477" height="760" frameX="-177" frameY="-13" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10005" x="3654" y="2678" width="477" height="760" frameX="-177" frameY="-13" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10006" x="4146" y="2678" width="485" height="753" frameX="-160" frameY="-20" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10007" x="4146" y="2678" width="485" height="753" frameX="-160" frameY="-20" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10008" x="25" y="3468" width="491" height="753" frameX="-149" frameY="-20" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10009" x="25" y="3468" width="491" height="753" frameX="-149" frameY="-20" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10010" x="25" y="3468" width="491" height="753" frameX="-149" frameY="-20" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10011" x="531" y="3468" width="491" height="753" frameX="-149" frameY="-20" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10012" x="531" y="3468" width="491" height="753" frameX="-149" frameY="-20" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10013" x="531" y="3468" width="491" height="753" frameX="-149" frameY="-20" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10014" x="1037" y="3468" width="484" height="738" frameX="-177" frameY="-33" frameWidth="662" frameHeight="775"/>
+	<SubTexture name="Metal_UP instancia 10015" x="1536" y="3468" width="662" height="623" frameX="0" frameY="-141" frameWidth="662" frameHeight="775"/>
 </TextureAtlas>

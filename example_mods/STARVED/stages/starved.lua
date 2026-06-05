@@ -7,9 +7,7 @@ local fightSprites = {
     'FlickyBody2',
     'FlickyBody3',
     'FlickyBody4',
-    'FlickyBody5',
     'FlickyBody6',
-    'SonicBody',
     'EggTV',
     'FrontBody1',
     'WarningLight'
@@ -36,6 +34,11 @@ function onCreate()
 	makeLuaSprite('SonicBody', 'starved/sonic', 115, 1100)
 	scaleObject('SonicBody', 1.15, 1.15)
 	addLuaSprite('SonicBody')
+
+	makeLuaSprite('SonicBody2', 'starved/sonic-dark', 115, 1100)
+	scaleObject('SonicBody2', 1.15, 1.15)
+	addLuaSprite('SonicBody2')
+	setProperty('SonicBody2.alpha', 0)
 	
 	makeLuaSprite('FlickyBody1', 'starved/pocky', 1070, 1220)
 	scaleObject('FlickyBody1', 0.5, 0.5)
@@ -107,20 +110,37 @@ function onEvent(name, value1, value2)
         end
     end
     if name == 'secondPhase' then
+		if value1 == 'fadeout' then
+			for i = 1, #fightSprites do doTweenAlpha('fightHide'..i, fightSprites[i], 0, 3, 'linear') end
+			doTweenColor('boyfriendColor','boyfriend','000000',3,'linear')
+			doTweenColor('UIColor','UI','000000',3,'linear')
+			doTweenAlpha('huddissapear', 'camHUD', 0, 3)
+			doTweenColor('sonicColor','SonicBody','000000',3,'linear')
+			doTweenColor('FlickyBody5Color','FlickyBody5','000000',3,'linear')
+		end
         if value1 == 'fight' then
-            for i = 1, #fightSprites do
-                doTweenAlpha('fightHide'..i, fightSprites[i], 0, 0.5, 'linear')
-                doTweenColor('boyfriendColor','boyfriend','FF0000',1,'linear')
-	        	doTweenColor('dadColor','dad','FF0000',1,'linear')
-        		doTweenColor('sonicColor','StarvedSonicDead','FF0000',1,'linear')
-            end
-        elseif value1 == 'normal' then
-            for i = 1, #fightSprites do
-                doTweenAlpha('fightShow'..i, fightSprites[i], 1, 0.5, 'linear')
-                doTweenColor('boyfriendColor','boyfriend','FFFFFF',1,'linear')
-	        	doTweenColor('dadColor','dad','FFFFFF',1,'linear')
-        		doTweenColor('sonicColor','StarvedSonicDead','FFFFFF',1,'linear')
-            end
+			doTweenColor('boyfriendColor','boyfriend','FF0000',1,'linear')
+	        doTweenColor('dadColor','dad','FF0000',1,'linear')
+			doTweenColor('UIColor','UI','FF0000',1,'linear')
+			doTweenAlpha('huddissapear', 'camHUD', 1, 1)
+			doTweenAlpha('sonicColor2','SonicBody2',1,1,'linear')
+			doTweenColor('FlickyBody5Color','FlickyBody5','FF0000',3,'linear')
+        end
+		if value1 == 'starved' then
+			doTweenColor('boyfriendColor','boyfriend','000000',1,'linear')
+			doTweenColor('UIColor','UI','000000',1,'linear')
+			doTweenAlpha('huddissapear', 'camHUD', 0, 1)
+			doTweenAlpha('sonicColor2','SonicBody2',0,1,'linear')
+			doTweenColor('FlickyBody5Color','FlickyBody5','000000',3,'linear')
+		end
+		if value1 == 'fadein' then
+            for i = 1, #fightSprites do doTweenAlpha('fightShow'..i, fightSprites[i], 1, 4, 'linear') end
+			doTweenColor('boyfriendColor','boyfriend','FFFFFF',4,'linear')
+			doTweenColor('dadColor','dad','FFFFFF',4,'linear')
+			doTweenColor('UIColor','UI','FFFFFF',4,'linear')
+			doTweenAlpha('huddissapear', 'camHUD', 1, 4)
+			doTweenColor('sonicColor','SonicBody','FFFFFF',4,'linear')
+			doTweenColor('FlickyBody5Color','FlickyBody5','FFFFFF',3,'linear')
         end
     end
 end

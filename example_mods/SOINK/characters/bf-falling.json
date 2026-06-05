@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"offsets": [-329, 285],
-			"indices": [],
-			"fps": 24,
-			"anim": "idle",
 			"loop": true,
-			"name": "bf idle"
+			"offsets": [-329, 285],
+			"anim": "idle",
+			"fps": 24,
+			"name": "bf idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-314, 290],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-318, 290],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "bf left"
+			"fps": 24,
+			"name": "bf left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-330, 289],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "bf right"
+			"fps": 24,
+			"name": "bf right",
+			"indices": []
 		},
 		{
-			"offsets": [-330, 318],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP",
 			"loop": false,
-			"name": "bf u"
+			"offsets": [-330, 318],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "bf u",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
@@ -46,10 +46,10 @@
 	"image": "characters/bf-falling",
 	"position": [390, -110],
 	"healthicon": "bf",
-	"flip_x": false,
+	"flip_x": true,
 	"healthbar_colors": [8, 8, 253],
 	"camera_position": [-850, -300],
 	"sing_duration": 6.1,
 	"scale": 1,
-	"_editor_isPlayer": false
+	"_editor_isPlayer": true
 }

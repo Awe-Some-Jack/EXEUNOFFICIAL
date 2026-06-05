@@ -1,3 +1,7 @@
+-- luaDebugMode = true;
+function onCreate()
+	initLuaShader("glow")
+end
 function onCreatePost()
 	makeLuaSprite('sexo')
     setSpriteShader('sexo', 'brightness', 0)
@@ -29,6 +33,19 @@ local tweening2 = false
 local tweening3 = false
 local tweening4 = false
 function onEvent(eventName, value1, value2)
+	if eventName == "Change Character" then
+		if value2 == 'bf-falling' or value2 == 'soink-falling' then
+		    setSpriteShader("dad", "glow")
+			setShaderFloat("dad", "glowSize", 15.0)
+			setShaderFloat("dad", "glowIntensity", 1)
+			setShaderFloatArray("dad", 'glowColor', {0.0, 0.7, 0.0})
+
+			setSpriteShader("boyfriend", "glow")
+			setShaderFloat("boyfriend", "glowSize", 15.0)
+			setShaderFloat("boyfriend", "glowIntensity", 1)
+			setShaderFloatArray("boyfriend", 'glowColor', {0.0, 0.7, 0.0})
+		end
+	end
     if eventName == "bloomFlash" and flashingLights then
 		local bloomValues = stringSplit(value1, ',')
     	local tweenSettings = stringSplit(value2, ',')

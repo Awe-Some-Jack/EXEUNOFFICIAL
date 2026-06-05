@@ -1,18 +1,28 @@
-import flixel.FlxSprite;
 import flixel.FlxG;
+import flixel.FlxObject;
+import flixel.FlxSprite;
+import flixel.addons.display.FlxBackdrop;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxStringUtil;
-import flixel.FlxObject;
+
+import flixel.util.FlxTimer;
+import flixel.FlxSprite;
+import openfl.display.BitmapData;
 
 import objects.VideoSprite;
 import states.PlayState as PS;
+import haxe.Timer as Timer;
 
 using StringTools;
 
 var wallpaper:FlxSprite;
+var lockscreen:FlxSprite;
 var adobe1:FlxSprite;
 var adobe2:FlxSprite;
+var ribbons:VideoSprite;
+var matrix:FlxBackdrop;
+var speedLines:FlxBackdrop;
 
 var tweenX:FlxTween;
 var tweenY:FlxTween;
@@ -29,8 +39,6 @@ var xOfs:Int = 0;
 var yOfs:Int = 0;
 var positionsArray:Array<Float> = [];
 var bubbleCount:Int = 0;
-
-var ribbons:VideoSprite;
 
 // start zoom: 0.2755
 // start cams:
@@ -80,12 +88,19 @@ function onCreate() {
     wallpaper.cameras = [camBack];
     add(wallpaper);
 
+    lockscreen = new FlxSprite(-3000, -1500, Paths.image('bg/lockscreen', 'SOINK'));
+    lockscreen.scale.set(1.6, 1.6);
+    lockscreen.updateHitbox();
+    lockscreen.alpha = 0.00001;
+    lockscreen.cameras = [camBack];
+    add(lockscreen);
+
     adobe1 = new FlxSprite(0, 0, Paths.image('bg/adobe', 'SOINK'));
     adobe1.scale.set(1.6, 1.6);
     adobe1.updateHitbox();
     adobe1.x = 1771;
     adobe1.y = 1067;
-    adobe1.alpha = 1;
+    // adobe1.alpha = 0.00001;
     addBehindDad(adobe1);
 
     adobe2 = new FlxSprite(0, 0, Paths.image('bg/adobe2', 'SOINK'));
@@ -93,7 +108,7 @@ function onCreate() {
     adobe2.updateHitbox();
     adobe2.x = 1771;
     adobe2.y = 1063;
-    adobe2.alpha = 0;
+    adobe2.alpha = 0.00001;
     addBehindDad(adobe2);
 
     ribbons = new VideoSprite(-950, -450);
@@ -116,6 +131,18 @@ function onCreate() {
     bluescreen.y += 20;
     bluescreen.alpha = 0.00001;
     addBehindDad(bluescreen);
+
+    matrix = new FlxBackdrop(0x11);
+    matrix.frames = Paths.getSparrowAtlas('bg/matrix', 'SOINK');
+    matrix.animation.addByPrefix('idle', 'idle', 96);
+    matrix.animation.play('idle',true,true);
+    matrix.scale.x = 2;
+    matrix.scale.y = 2;
+    matrix.antialiasing = false;
+    matrix.scrollFactor.set(0.2, 0.2);
+    matrix.alpha = 0.00001;
+    // matrix.velocity.set(0, 550);
+    addBehindDad(matrix);
 
     trace("Stage created");
 }
@@ -140,9 +167,18 @@ function onCreatePost() {
         bubble.elasticity = 1;
         bubble.ID = i;
         bubble.active = false;
-
         add(bubble);
         bubbleArray.push(bubble);
+
+        speedLines = new FlxBackdrop(Paths.image('bg/speedLines'), 0x11);
+        speedLines.scale.x = 1;
+        speedLines.scale.y = 1;
+        // speedLines.antialiasing = false;
+        speedLines.velocity.y = -1475;
+        speedLines.scrollFactor.set(.2, .2);
+        speedLines.cameras = [camGame];
+        speedLines.alpha = 0.00001;
+        add(speedLines);
     }
 }
 
@@ -163,9 +199,9 @@ function onUpdate(elapsed:Float) {
             if(b1 == null || !b1.exists) continue;
 
             var minX:Float = -100;
-            var maxX:Float = 1380 - b1.width;
+            var maxX:Float = FlxG.width + 100 - b1.width;
             var minY:Float = -100;
-            var maxY:Float = 820 - b1.height;
+            var maxY:Float = FlxG.height + 100 - b1.height;
             
             if(b1.x < minX) {
                 b1.x = minX;
@@ -197,7 +233,6 @@ function onUpdate(elapsed:Float) {
                     var diffX:Float = center2X - center1X;
                     var diffY:Float = center2Y - center1Y;
                     
-                    // faster and less laggy circle intersection detection
                     var distanceSquared:Float = (diffX * diffX) + (diffY * diffY);
                     var radiusSum:Float = (b1.width / 2) + (b2.width / 2);
                     
@@ -262,7 +297,7 @@ function onUpdate(elapsed:Float) {
             }
         }
     }
-
+    
     if(curStep < 248) {
         if(tweenX != null) tweenX.cancel();
         if(tweenY != null) tweenY.cancel();
@@ -297,6 +332,13 @@ function onUpdate(elapsed:Float) {
         tweenDADX = FlxTween.tween(dad, {x: positionsArray[2]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
         tweenDADY = FlxTween.tween(dad, {y: positionsArray[3]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
     }
+
+    if(curStep >= 1536 && curStep < 1792) camBack.zoom = camGame.zoom;
+
+    if(curStep >= 1792) {
+        matrix.animation.curAnim.frameRate += elapsed;
+        speedLines.velocity.y -= elapsed;
+    }
 }
 
 function onStepHit() {
@@ -308,6 +350,9 @@ function onStepHit() {
     }
     
     switch(curStep) {
+        case 152:
+            // triggerFreezeEffect(0.2);
+
         case 248:
             if(tweenX != null) tweenX.cancel();
             if(tweenY != null) tweenY.cancel();
@@ -368,9 +413,34 @@ function onStepHit() {
             dad.y = 1820;
             bluescreen.alpha = 1;
             adobe2.alpha = wallpaper.alpha = 0;
+
+        case 1536:
+            lockscreen.alpha = 1;
+            bluescreen.alpha = 0;
+            boyfriend.x = 3512;
+            boyfriend.y = 2134;
+            dad.x = 2687;
+            dad.y = 2275;
+            FlxTween.tween(lockscreen, {y: -100}, 32.48, {ease: FlxEase.linear});
+
+        case 1792:
+            boyfriend.x = 3615;
+            boyfriend.y = 2190;
+            dad.x = 2565;
+            dad.y = 2190;
+            matrix.alpha = 1;
+            speedLines.alpha = 0.5;
+            lockscreen.alpha = 0;
     }
 }
 
 function onSectionHit(section:Dynamic) {
     mustHitSection = section.mustHitSection;
+}
+function triggerFreezeEffect(freezeDuration:Float) {
+    FlxG.timeScale = 0;
+
+    Timer.delay(function() {
+        FlxG.timeScale = 1;
+    }, Std.int(freezeDuration * 1000));
 }

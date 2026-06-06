@@ -4,13 +4,17 @@ import openfl.Assets;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.input.keyboard.FlxKey;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.text.FlxText;
+import flixel.util.FlxTimer;
+import flixel.util.FlxColor;
 
 import backend.Song;
 import backend.Highscore;
 import backend.WeekData;
 import backend.Difficulty;
-
-import flixel.graphics.frames.FlxAtlasFrames;
 
 import states.EXEFreeplay;
 import states.LoadingState;
@@ -19,12 +23,13 @@ import states.PlayState;
 class EXEMenu extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '1.0.4';
+	public static var selectedOptionIndex:Int = 2;
 
-	static inline final TOTAL_OPTIONS:Int   = 6;
+	static inline final TOTAL_OPTIONS:Int = 6;
 	static inline final CENTER_POSITION:Int = 2;
 
 	static final OPTION_TEXTS:Array<String> = ["SOUND TEST", "FREEPLAY", "STORY MODE", "EXTRAS", "OPTIONS", "THE VALLEY"];
-
+	
 	static final OPTION_POSITIONS:Array<{x:Float, y:Float}> = [
 		{x: 175.0, y: -60.0},
 		{x: 110.0, y:  65.0},
@@ -33,38 +38,37 @@ class EXEMenu extends MusicBeatState
 		{x: 175.0, y: 480.0},
 		{x: 175.0, y: 580.0}
 	];
-	static final OPTION_SCALES:Array<Float>  = [0.25, 0.30, 0.37, 0.30, 0.25, 0.20];
-	static final OPTION_ALPHAS:Array<Float>  = [0.55, 0.80, 1.00, 0.80, 0.55, 0.40];
-
+	
+	static final OPTION_SCALES:Array<Float> = [0.25, 0.30, 0.37, 0.30, 0.25, 0.20];
+	static final OPTION_ALPHAS:Array<Float> = [0.55, 0.80, 1.00, 0.80, 0.55, 0.40];
+	
 	static final TEXT_POSITIONS:Array<{x:Float, y:Float}> = [
-		{x:   20,	y: -32},
-		{x:  -50,	y:  94},
-		{x: -140,	y: 251},
-		{x:  -50,	y: 389},
-		{x:   20,	y: 507},
-		{x:   20,	y: 607}
+		{x:   20, y: -32},
+		{x:  -50, y:  94},
+		{x: -140, y: 251},
+		{x:  -50, y: 389},
+		{x:   20, y: 507},
+		{x:   20, y: 607}
 	];
-
+	
 	static final TEXT_SCALES:Array<Float> = [0.245, 0.3, 0.330, 0.3, 0.245, 0.20];
 
 	var menuOptions:Array<FlxSprite> = [];
-	var menuTexts:Array<FlxText>     = [];
+	var menuTexts:Array<FlxText> = [];
 	var shadowSprite:FlxSprite;
 
-	public static var selectedOptionIndex:Int = 2;
 	var previousSelectedIndex:Int = 2;
-	var isMovingUpward:Bool       = false;
+	var isMovingUpward:Bool = false;
+	var canInteract:Bool = true;
+	var canManiaInteract:Bool = false;
+	var cooldownTimer:Float = 0.0;
+	var isBlinking:Bool = false;
+	var blinkTimer:Float = 0.0;
+	var blinkCount:Int = 0;
+	var shadowTimer:Float = 0.0;
+	var shadowMoved:Bool = false;
 
-	var canInteract:Bool        = true;
-	var canManiaInteract:Bool   = false;
-	var cooldownTimer:Float     = 0.0;
-	var isBlinking:Bool         = false;
-	var blinkTimer:Float        = 0.0;
-	var blinkCount:Int          = 0;
-	var shadowTimer:Float       = 0.0;
-	var shadowMoved:Bool        = false;
-
-	var secretCodes:Array<String> = ['personel', '2005'];
+	final secretCodes:Array<String> = ['personel', '2005'];
 	var curKey:Array<Int>;
 
 	var heylookanemail:FlxSprite;
@@ -107,7 +111,7 @@ class EXEMenu extends MusicBeatState
 
 		for (i in 0...TOTAL_OPTIONS)
 		{
-			var option = new FlxSprite();
+			final option = new FlxSprite();
 			option.loadGraphic(Assets.getBitmapData("assets/exe/mainmenu/options/box.png"));
 			option.antialiasing = ClientPrefs.data.antialiasing;
 			option.updateHitbox();
@@ -115,7 +119,7 @@ class EXEMenu extends MusicBeatState
 			add(option);
 			menuOptions.push(option);
 
-			var optionText = new FlxText(0, 0, option.width * 2, OPTION_TEXTS[i]);
+			final optionText = new FlxText(0, 0, option.width * 2, OPTION_TEXTS[i]);
 			optionText.setFormat("assets/fonts/sonicfree.otf", 280, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 			optionText.borderSize = 2;
 			optionText.antialiasing = ClientPrefs.data.antialiasing;
@@ -124,7 +128,8 @@ class EXEMenu extends MusicBeatState
 			menuTexts.push(optionText);
 		}
 
-		if (EXEFreeplay.maniaUnlock) {
+		if (EXEFreeplay.maniaUnlock) 
+		{
 			new FlxTimer().start(0.4, (_) -> maniaEmail());
 			heylookanemail = new FlxSprite();
 			heylookanemail.frames = FlxAtlasFrames.fromSparrow('assets/exe/mainmenu/unlock/Mail Box.png', 'assets/exe/mainmenu/unlock/Mail Box.xml');
@@ -138,7 +143,7 @@ class EXEMenu extends MusicBeatState
 		refreshSelection();
 		changeSelection(0, false, false);
 
-		curKey = [for (_ in secretCodes) 0]; //lol
+		curKey = [for (_ in secretCodes) 0];
 
 		super.create();
 	}
@@ -146,17 +151,19 @@ class EXEMenu extends MusicBeatState
 	#if VIDEOS_ALLOWED
 	function playMenuVideo():Void
 	{
-		if (menuVideo.load('assets/exe/mainmenu/menu.mp4'))
+		if (menuVideo?.load('assets/exe/mainmenu/menu.mp4') ?? false)
+		{
 			new FlxTimer().start(0.001, (_) -> {
-				menuVideo.play();
-				menuVideo.bitmap.rate = 2.0;
+				menuVideo?.play();
+				if (menuVideo?.bitmap != null) menuVideo.bitmap.rate = 2.0;
 			});
+		}
 	}
 	#end
 
-	function maniaEmail() {
+	function maniaEmail():Void 
+	{
 		canInteract = false;
-		
 		heylookanemail.animation.play('email', true);
 		heylookanemail.alpha = 1;
 		new FlxTimer().start(2, (_) -> canManiaInteract = true);
@@ -164,27 +171,25 @@ class EXEMenu extends MusicBeatState
 
 	static final TAILS_DIR:String = 'CRAZY TAILS';
 
-	function goToMania() {
+	function goToMania():Void 
+	{
 		FlxG.camera.fade(FlxColor.BLACK, 1);
-		
 		new FlxTimer().start(1, (_) -> {
 			canManiaInteract = false;
-			var song = 'mania';
+			final song = 'mania';
 
 			Mods.currentModDirectory = TAILS_DIR;
 			WeekData.reloadWeekFiles(false);
 			PlayState.storyWeek = 1;
 			Difficulty.loadFromWeek();
 
-			var normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-			var launchDiff = (normalIdx > -1) ? normalIdx : 0;
-
-			var poop = Highscore.formatSong(song, launchDiff);
+			final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
+			final launchDiff = (normalIdx > -1) ? normalIdx : 0;
 
 			try
 			{
-				Song.loadFromJson(song, poop);
-				PlayState.isStoryMode     = false;
+				Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
+				PlayState.isStoryMode = false;
 				PlayState.storyDifficulty = 1;
 			}
 			catch (e:haxe.Exception)
@@ -192,14 +197,19 @@ class EXEMenu extends MusicBeatState
 				trace('Error loading song: ' + e.message);
 				return;
 			}
+
 			LoadingState.prepareToSong();
 			LoadingState.loadAndSwitchState(new PlayState());
-			#if !SHOW_LOADING_SCREEN FlxG.sound.music.stop(); #end
+			
+			#if !SHOW_LOADING_SCREEN 
+			FlxG.sound.music?.stop(); 
+			#end
+			
 			EXEFreeplay.maniaUnlock = false;
 		});
 	}
 
-	override function update(elapsed:Float)
+	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 
@@ -209,10 +219,9 @@ class EXEMenu extends MusicBeatState
 
 		updateShadow(elapsed);
 
-		if (canManiaInteract)
+		if (canManiaInteract && controls.ACCEPT)
 		{
-			if (controls.ACCEPT)
-				goToMania();
+			goToMania();
 		}
 
 		if (canInteract && !isBlinking)
@@ -233,11 +242,10 @@ class EXEMenu extends MusicBeatState
 
 		for (i in 0...secretCodes.length)
 		{
-			var code = secretCodes[i];
-
+			final code = secretCodes[i];
 			if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
 			{
-				var keyName = charToKeyName(code.substr(curKey[i], 1));
+				final keyName = charToKeyName(code.substr(curKey[i], 1));
 
 				if (Reflect.getProperty(FlxG.keys.justPressed, keyName))
 					curKey[i]++;
@@ -252,10 +260,12 @@ class EXEMenu extends MusicBeatState
 
 	function changeSelection(dir:Int, up:Bool, sound:Bool = true):Void
 	{
-		isMovingUpward      = up;
+		isMovingUpward = up;
 		selectedOptionIndex = (selectedOptionIndex + dir + TOTAL_OPTIONS) % TOTAL_OPTIONS;
-		cooldownTimer       = 0.1;
+		cooldownTimer = 0.1;
+		
 		if (sound) FlxG.sound.play(Paths.sound('scrollMenu'));
+		
 		refreshSelection();
 		resetShadow();
 	}
@@ -272,22 +282,28 @@ class EXEMenu extends MusicBeatState
 	function updateBlink(elapsed:Float):Void
 	{
 		if (!isBlinking) return;
+		
 		blinkTimer += elapsed;
 		if (blinkTimer < 0.05) return;
+		
 		blinkTimer = 0;
 		blinkCount++;
-
-		var opt  = menuOptions[selectedOptionIndex];
-		var txt  = menuTexts[selectedOptionIndex];
-		opt.visible  = !opt.visible;
-		txt.visible  = !txt.visible;
+		
+		final opt = menuOptions[selectedOptionIndex];
+		final txt = menuTexts[selectedOptionIndex];
+		
+		opt.visible = !opt.visible;
+		txt.visible = !txt.visible;
+		
 		if (shadowSprite != null) shadowSprite.visible = !shadowSprite.visible;
 
 		if (blinkCount >= 16)
 		{
-			opt.visible  = true;
-			txt.visible  = true;
+			opt.visible = true;
+			txt.visible = true;
+			
 			if (shadowSprite != null) shadowSprite.visible = true;
+			
 			isBlinking = false;
 			blinkCount = 0;
 			executeOption();
@@ -296,7 +312,8 @@ class EXEMenu extends MusicBeatState
 
 	function executeOption():Void
 	{
-		if (selectedOptionIndex != 4) FlxG.sound.music.fadeOut(0.3);
+		if (selectedOptionIndex != 4) FlxG.sound.music?.fadeOut(0.3);
+		
 		switch (selectedOptionIndex)
 		{
 			case 0: FlxG.switchState(() -> new states.SoundTest());
@@ -322,10 +339,13 @@ class EXEMenu extends MusicBeatState
 	function updateShadow(elapsed:Float):Void
 	{
 		if (shadowMoved || shadowSprite == null) return;
+		
 		shadowTimer += elapsed;
 		if (shadowTimer < 0.15) return;
-		shadowMoved        = true;
+		
+		shadowMoved = true;
 		shadowSprite.alpha = 1.0;
+		
 		FlxTween.tween(shadowSprite, {
 			x: shadowSprite.x + 25,
 			y: shadowSprite.y + 8
@@ -336,23 +356,24 @@ class EXEMenu extends MusicBeatState
 	{
 		for (i in 0...TOTAL_OPTIONS)
 		{
-			var visualPos:Int     = (i - selectedOptionIndex + CENTER_POSITION + TOTAL_OPTIONS) % TOTAL_OPTIONS;
-			var prevVisualPos:Int = (i - previousSelectedIndex + CENTER_POSITION + TOTAL_OPTIONS) % TOTAL_OPTIONS;
+			final visualPos:Int = (i - selectedOptionIndex + CENTER_POSITION + TOTAL_OPTIONS) % TOTAL_OPTIONS;
+			final prevVisualPos:Int = (i - previousSelectedIndex + CENTER_POSITION + TOTAL_OPTIONS) % TOTAL_OPTIONS;
 
-			var option = menuOptions[i];
-			var text   = menuTexts[i];
+			final option = menuOptions[i];
+			final text = menuTexts[i];
 
 			FlxTween.cancelTweensOf(option);
 			FlxTween.cancelTweensOf(option.scale);
 			FlxTween.cancelTweensOf(text);
 			FlxTween.cancelTweensOf(text.scale);
 
-			var scale     = OPTION_SCALES[visualPos];
-			var pos       = OPTION_POSITIONS[visualPos];
-			var alpha     = OPTION_ALPHAS[visualPos];
-			var textScale = TEXT_SCALES[visualPos];
-			var textPos   = TEXT_POSITIONS[visualPos];
-
+			final scale = OPTION_SCALES[visualPos];
+			final pos = OPTION_POSITIONS[visualPos];
+			final alpha = OPTION_ALPHAS[visualPos];
+			
+			final textScale = TEXT_SCALES[visualPos];
+			final textPos = TEXT_POSITIONS[visualPos];
+			
 			if (visualPos == CENTER_POSITION && shadowSprite != null)
 			{
 				shadowSprite.scale.set(scale * 0.9, scale * 0.9);
@@ -361,45 +382,53 @@ class EXEMenu extends MusicBeatState
 				shadowSprite.y = pos.y + 120;
 			}
 
-			var wrapping = (visualPos == 0 && prevVisualPos == 4)
-			            || (visualPos == 4 && prevVisualPos == 0)
-			            || (prevVisualPos == 0 && visualPos == 4)
-			            || (prevVisualPos == 4 && visualPos == 0);
+			final wrapping = (visualPos == 0 && prevVisualPos == 4) ||
+			               (visualPos == 4 && prevVisualPos == 0) ||
+			               (prevVisualPos == 0 && visualPos == 4) ||
+			               (prevVisualPos == 4 && visualPos == 0);
 
 			text.fieldWidth = 2000;
 
 			if (wrapping)
 			{
-				var entering = (visualPos == 0 && isMovingUpward) || (visualPos == 4 && !isMovingUpward);
-				var yOff:Float = (visualPos == 0) ? -80.0 : 80.0;
+				final entering = (visualPos == 0 && isMovingUpward) || (visualPos == 4 && !isMovingUpward);
+				final yOff:Float = (visualPos == 0) ? -80.0 : 80.0;
 
 				if (entering)
 				{
 					option.alpha = 0;
-					option.x = pos.x; option.y = pos.y + yOff;
+					option.x = pos.x; 
+					option.y = pos.y + yOff;
 					option.scale.set(scale, scale);
+					
 					text.alpha = 0;
-					text.x = textPos.x; text.y = textPos.y + yOff;
+					text.x = textPos.x;
+					text.y = textPos.y + yOff;
 					text.scale.set(textScale, textScale);
+					
 					FlxTween.tween(option, {y: pos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
-					FlxTween.tween(text,   {y: textPos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
+					FlxTween.tween(text, {y: textPos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
 				}
 				else
 				{
-					option.x = pos.x; option.y = pos.y;
+					option.x = pos.x; 
+					option.y = pos.y;
 					option.scale.set(scale, scale);
-					text.x = textPos.x; text.y = textPos.y;
+					
+					text.x = textPos.x; 
+					text.y = textPos.y;
 					text.scale.set(textScale, textScale);
+					
 					FlxTween.tween(option, {y: pos.y + yOff, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
-					FlxTween.tween(text,   {y: textPos.y + yOff, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
+					FlxTween.tween(text, {y: textPos.y + yOff, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
 				}
 			}
 			else
 			{
-				FlxTween.tween(option,       {x: pos.x, y: pos.y, alpha: alpha},             0.45, {ease: FlxEase.quintOut});
-				FlxTween.tween(option.scale, {x: scale, y: scale},                           0.45, {ease: FlxEase.quintOut});
-				FlxTween.tween(text,         {x: textPos.x, y: textPos.y, alpha: alpha},     0.45, {ease: FlxEase.quintOut});
-				FlxTween.tween(text.scale,   {x: textScale, y: textScale},                   0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(option, {x: pos.x, y: pos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(option.scale, {x: scale, y: scale}, 0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(text, {x: textPos.x, y: textPos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(text.scale, {x: textScale, y: textScale}, 0.45, {ease: FlxEase.quintOut});
 			}
 		}
 
@@ -426,7 +455,7 @@ class EXEMenu extends MusicBeatState
 
 	function correctCode(codeIndex:Int):Void
 	{
-		var code = secretCodes[codeIndex];
+		final code = secretCodes[codeIndex];
 
 		switch(code) {
 			case "personel":
@@ -456,7 +485,7 @@ class EXEMenu extends MusicBeatState
 
 			LoadingState.prepareToSong();
 			LoadingState.loadAndSwitchState(new PlayState());
-			FlxG.sound.music.fadeOut(0.3);
+			FlxG.sound.music?.fadeOut(0.3);
 		}
 		catch (e:Dynamic)
 		{
@@ -468,20 +497,27 @@ class EXEMenu extends MusicBeatState
 
 	override function destroy():Void
 	{
-		if (menuOptions != null)
-			for (o in menuOptions) { FlxTween.cancelTweensOf(o); FlxTween.cancelTweensOf(o.scale); }
-		if (menuTexts != null)
-			for (t in menuTexts)   { FlxTween.cancelTweensOf(t); FlxTween.cancelTweensOf(t.scale); }
+		for (o in menuOptions ?? []) 
+		{ 
+			FlxTween.cancelTweensOf(o); 
+			FlxTween.cancelTweensOf(o?.scale);
+		}
+		
+		for (t in menuTexts ?? []) 
+		{ 
+			FlxTween.cancelTweensOf(t); 
+			FlxTween.cancelTweensOf(t?.scale); 
+		}
+		
 		if (shadowSprite != null)
 			FlxTween.cancelTweensOf(shadowSprite);
+			
 		#if VIDEOS_ALLOWED
-		if (menuVideo != null)
-		{
-			menuVideo.destroy();
-			menuVideo = null;
-		}
-		FlxG.autoPause = true;
+		menuVideo?.destroy();
+		menuVideo = null;
 		#end
+		
+		FlxG.autoPause = true;
 		super.destroy();
 	}
 }

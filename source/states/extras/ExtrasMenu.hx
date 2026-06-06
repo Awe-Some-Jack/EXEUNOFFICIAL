@@ -1,38 +1,39 @@
 package states.extras;
 
-import backend.MusicBeatState;
-import backend.Controls;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.text.FlxText;
-import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
+import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+
 import flixel.addons.display.FlxBackdrop;
+
 import states.EXEMenu;
-import backend.Paths;
 
 class ExtrasMenu extends MusicBeatState
 {
-    private static inline var MENU_START_Y:Int = 180;
-    private static inline var MENU_SPACING:Int = 58;
-    private static inline var MENU_START_X:Int = 50;
-    private static inline var MENU_FONT_SIZE:Int = 44;
+    static inline final MENU_START_Y:Int = 180;
+    static inline final MENU_SPACING:Int = 58;
+    static inline final MENU_START_X:Int = 50;
+    static inline final MENU_FONT_SIZE:Int = 44;
 
-    private static inline var DESCRIPTION_Y:Int = 675;
-    private static inline var DESCRIPTION_SCROLL_SPEED:Int = -30;
-    private static inline var DESCRIPTION_FONT_SIZE:Int = 28;
+    static inline final DESCRIPTION_Y:Int = 675;
+    static inline final DESCRIPTION_SCROLL_SPEED:Int = -30;
+    static inline final DESCRIPTION_FONT_SIZE:Int = 28;
 
-    private static inline var FADE_IN_DELAY:Float = 2.0;
-    private static inline var FADE_IN_DURATION:Float = 1.0;
-    private static inline var SELECTION_TWEEN_DURATION:Float = 0.2;
-    private static inline var MENU_SCALE_DURATION:Float = 0.2;
+    static inline final FADE_IN_DELAY:Float = 2.0;
+    static inline final FADE_IN_DURATION:Float = 1.0;
+    static inline final SELECTION_TWEEN_DURATION:Float = 0.2;
+    static inline final MENU_SCALE_DURATION:Float = 0.2;
 
-    private static inline var DISCO_ROTATION_SPEED:Float = 3.0;
-    private static inline var BOX_ANIMATION_DURATION:Float = 0.5;
+    static inline final DISCO_ROTATION_SPEED:Float = 3.0;
+    static inline final BOX_ANIMATION_DURATION:Float = 0.5;
 
-    private var menuOptions:Array<String> = [
+    static var extraMenuSong:Bool = false;
+
+    var menuOptions:Array<String> = [
         "GALLERY",
         "CHARACTER BIOS",
         "D.A GARDEN",
@@ -41,7 +42,7 @@ class ExtrasMenu extends MusicBeatState
         "CREDITS"
     ];
 
-    private var menuDescriptions:Array<String> = [
+    var menuDescriptions:Array<String> = [
         'In the gallery you can see photos and screenshots of the development of the mod or jokes, please check it out!',
         'Here you can see the description of each character! A lot of them have a very extensive lore and its pretty interesting!',
         'Listen to the great music we have in store, composed by awesome composers. It took them a lot of time to give you something of good quality!',
@@ -50,23 +51,22 @@ class ExtrasMenu extends MusicBeatState
         'Credits to all the people who made this mod possible!'
     ];
 
-    private var menuItems:Array<FlxText> = [];
-    private var extrasTextBackdrops:Array<FlxBackdrop> = [];
+    var menuItems:Array<FlxText> = [];
+    var extrasTextBackdrops:Array<FlxBackdrop> = [];
 
-    private var curSelected:Int = 0;
-    private var canMove:Bool = true;
-    private var cooldownTimer:Float = 0;
+    var curSelected:Int = 0;
+    var canMove:Bool = true;
+    var cooldownTimer:Float = 0;
 
-    private var selectBox:FlxSprite;
-    private var disco:FlxSprite;
-    private var box:FlxSprite;
-    private var sketch1:FlxSprite;
-    private var sketch2:FlxSprite;
+    var selectBox:FlxSprite;
+    var disco:FlxSprite;
+    var box:FlxSprite;
+    var sketch1:FlxSprite;
+    var sketch2:FlxSprite;
 
-    static var extraMenuSong:Bool = false;
     var stopMusicPlay:Bool = false;
 
-    override public function create():Void
+    override function create():Void
     {
         Paths.clearStoredMemory();
         
@@ -87,37 +87,32 @@ class ExtrasMenu extends MusicBeatState
 		#end
     }
 
-    private function initializeMusic():Void
+    function initializeMusic():Void
     {
         FlxG.sound.playMusic(openfl.utils.Assets.getSound('assets/exe/extras/music/ExtrasMenu.ogg'));
         extraMenuSong = true;
     }
 
-    private function createBackground():Void
+    function createBackground():Void
     {
-        var background = new FlxSprite(0, 0);
-        var graphic = Assets.getBitmapData("assets/exe/extras/fondo.png");
-        if (graphic != null)
-            background.loadGraphic(graphic);
-        else
-            background.loadGraphic("assets/exe/extras/fondo.png");
+        final background:FlxSprite = new FlxSprite(0, 0);
+        background.loadGraphic(Assets.getBitmapData("assets/exe/extras/fondo.png"));
         background.scale.set(0.4, 0.4);
         background.updateHitbox();
         add(background);
     }
 
-    private function createDecorations():Void
+    function createDecorations():Void
     {
         createBox();
         createDiscoWithShadow();
         createExtrasLogo();
     }
 
-    private function createBox():Void
+    function createBox():Void
     {
         sketch1 = new FlxSprite(600, 60);
-        var g1 = Assets.getBitmapData("assets/exe/extras/sketch1.png");
-        if (g1 != null) sketch1.loadGraphic(g1); else sketch1.loadGraphic("assets/exe/extras/sketch1.png");
+        sketch1.loadGraphic(Assets.getBitmapData("assets/exe/extras/sketch1.png"));
         sketch1.scale.set(0.6, 0.6);
         sketch1.updateHitbox();
         sketch1.alpha = 0.3;
@@ -125,8 +120,7 @@ class ExtrasMenu extends MusicBeatState
         startFloatingAnimation(sketch1, 600, 60);
 
         sketch2 = new FlxSprite(900, 60);
-        var g2 = Assets.getBitmapData("assets/exe/extras/sketch2.png");
-        if (g2 != null) sketch2.loadGraphic(g2); else sketch2.loadGraphic("assets/exe/extras/sketch2.png");
+        sketch2.loadGraphic( Assets.getBitmapData("assets/exe/extras/sketch2.png"));
         sketch2.scale.set(0.65, 0.65);
         sketch2.updateHitbox();
         sketch2.alpha = 0.3;
@@ -134,27 +128,25 @@ class ExtrasMenu extends MusicBeatState
         startFloatingAnimation(sketch2, 900, 60);
 
         box = new FlxSprite(750, 120);
-        var g3 = Assets.getBitmapData("assets/exe/extras/box.png");
-        if (g3 != null) box.loadGraphic(g3); else box.loadGraphic("assets/exe/extras/box.png");
+        box.loadGraphic(Assets.getBitmapData("assets/exe/extras/box.png"));
         box.scale.set(0.3, 0.3);
         box.updateHitbox();
         add(box);
     }
 
-    private function createDiscoWithShadow():Void
+    function createDiscoWithShadow():Void
     {
-        var shadowOffsets = [
+        final shadowOffsets = [
             {x: -2, y: -2}, {x: 0, y: -2}, {x: 2, y: -2},
             {x: -2, y: 0}, {x: 2, y: 0},
             {x: -2, y: 2}, {x: 0, y: 2}, {x: 2, y: 2}
         ];
 
-        var discoBmp = Assets.getBitmapData("assets/exe/extras/disco.png");
-
+        final discoBmp = Assets.getBitmapData("assets/exe/extras/disco.png");
         for (offset in shadowOffsets)
         {
-            var discoShadow = new FlxSprite(60 + offset.x, FlxG.height - 180 + offset.y);
-            if (discoBmp != null) discoShadow.loadGraphic(discoBmp); else discoShadow.loadGraphic("assets/exe/extras/disco.png");
+            final discoShadow = new FlxSprite(60 + offset.x, FlxG.height - 180 + offset.y);
+            discoShadow.loadGraphic(discoBmp);
             discoShadow.scale.set(0.3, 0.3);
             discoShadow.updateHitbox();
             discoShadow.color = FlxColor.BLACK;
@@ -163,7 +155,7 @@ class ExtrasMenu extends MusicBeatState
         }
 
         disco = new FlxSprite(60, FlxG.height - 180);
-        if (discoBmp != null) disco.loadGraphic(discoBmp); else disco.loadGraphic("assets/exe/extras/disco.png");
+        disco.loadGraphic(discoBmp);
         disco.scale.set(0.3, 0.3);
         disco.updateHitbox();
         add(disco);
@@ -171,26 +163,27 @@ class ExtrasMenu extends MusicBeatState
         FlxTween.angle(disco, 0, 360, DISCO_ROTATION_SPEED, {type: LOOPING});
     }
 
-    private function createExtrasLogo():Void
+    function createExtrasLogo():Void
     {
-        var extrasLogo = new FlxSprite(90, 30);
+        final extrasLogo = new FlxSprite(90, 30);
         extrasLogo.loadGraphic("assets/exe/extras/extrasss.png");
         extrasLogo.scale.set(0.35, 0.35);
         extrasLogo.updateHitbox();
         add(extrasLogo);
     }
 
-    private function createMenu():Void
+    function createMenu():Void
     {
         for (i in 0...menuOptions.length)
         {
-            var menuText = new FlxText(MENU_START_X, MENU_START_Y + (i * MENU_SPACING), 0, menuOptions[i], MENU_FONT_SIZE);
+            final menuText = new FlxText(MENU_START_X, MENU_START_Y + (i * MENU_SPACING), 0, menuOptions[i], MENU_FONT_SIZE);
             menuText.setFormat("assets/fonts/bigass.otf", MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
             menuText.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
             menuText.antialiasing = ClientPrefs.data.antialiasing;
             menuText.pixelPerfectRender = false;
             menuText.ID = i;
             add(menuText);
+            
             menuItems.push(menuText);
         }
 
@@ -201,10 +194,11 @@ class ExtrasMenu extends MusicBeatState
         add(selectBox);
     }
 
-    private function createDescriptionBar():Void
+    function createDescriptionBar():Void
     {
-        var gradientHeight:Int = 30;
-        var descriptionBar = new FlxSprite(0, 670 - gradientHeight);
+        final gradientHeight:Int = 30;
+
+        final descriptionBar = new FlxSprite(0, 670 - gradientHeight);
         descriptionBar.makeGraphic(FlxG.width, 100 + gradientHeight, FlxColor.TRANSPARENT, true);
 
         for (i in 0...gradientHeight)
@@ -218,22 +212,20 @@ class ExtrasMenu extends MusicBeatState
 
         for (i in 0...menuDescriptions.length)
         {
-            var tempText = new FlxText(0, 0, 0, menuDescriptions[i], DESCRIPTION_FONT_SIZE);
+            final tempText = new FlxText(0, 0, 0, menuDescriptions[i], DESCRIPTION_FONT_SIZE);
             tempText.setFormat("assets/fonts/smallass.ttf", DESCRIPTION_FONT_SIZE, FlxColor.WHITE, LEFT);
             tempText.antialiasing = ClientPrefs.data.antialiasing;
             tempText.updateHitbox();
             tempText.drawFrame(true);
 
-            // Keep a ref to the graphic before destroying the temp FlxText
-            var textGraphic = tempText.graphic;
-            var backdrop = new FlxBackdrop(textGraphic, X, 0, 0);
+            final backdrop = new FlxBackdrop(tempText.graphic, X, 0, 0);
             backdrop.y = DESCRIPTION_Y;
             backdrop.velocity.x = DESCRIPTION_SCROLL_SPEED;
             backdrop.visible = (i == curSelected);
             add(backdrop);
+
             extrasTextBackdrops.push(backdrop);
 
-            // Destroy the temp FlxText (its graphic is now owned by the backdrop)
             tempText.destroy();
         }
     }
@@ -251,7 +243,7 @@ class ExtrasMenu extends MusicBeatState
         handleInput();
     }
 
-    private function handleInput():Void
+    function handleInput():Void
     {
         if (cooldownTimer <= 0)
         {
@@ -275,7 +267,7 @@ class ExtrasMenu extends MusicBeatState
             exitToMainMenu();
     }
 
-    private function exitToMainMenu():Void
+    function exitToMainMenu():Void
     {
         canMove = false;
         extraMenuSong = true;
@@ -283,11 +275,11 @@ class ExtrasMenu extends MusicBeatState
         FlxG.switchState(() -> new EXEMenu());
     }
 
-    private function changeSelection(change:Int = 0):Void
+    function changeSelection(change:Int = 0):Void
     {
         curSelected += change;
 
-        var maxIdx = menuOptions.length - 1;
+        final maxIdx = menuOptions.length - 1;
         if (curSelected < 0)
             curSelected = maxIdx;
         if (curSelected > maxIdx)
@@ -305,7 +297,7 @@ class ExtrasMenu extends MusicBeatState
         updateDescriptionVisibility();
     }
 
-    private function updateMenuItemStyles():Void
+    function updateMenuItemStyles():Void
     {
         for (i in 0...menuItems.length)
         {
@@ -328,7 +320,7 @@ class ExtrasMenu extends MusicBeatState
         }
     }
 
-    private function animateSelectBox():Void
+    function animateSelectBox():Void
     {
         var targetItem = menuItems[curSelected];
 
@@ -344,7 +336,7 @@ class ExtrasMenu extends MusicBeatState
         });
     }
 
-    private function updateDescriptionVisibility():Void
+    function updateDescriptionVisibility():Void
     {
         for (i in 0...extrasTextBackdrops.length)
         {
@@ -370,31 +362,31 @@ class ExtrasMenu extends MusicBeatState
         }
     }
 
-    private function startFloatingAnimation(sprite:FlxSprite, centerX:Float, centerY:Float):Void
+    function startFloatingAnimation(sprite:FlxSprite, centerX:Float, centerY:Float):Void
     {
-        var radius:Float = 20;
-        var duration:Float = FlxG.random.float(1.5, 2.5);
+        final radius:Float = 20;
+        final duration:Float = FlxG.random.float(1.5, 2.5);
 
-        var randomAngle:Float = FlxG.random.float(0, Math.PI * 2);
-        var randomRadius:Float = FlxG.random.float(0, radius);
-        var targetX:Float = centerX + Math.cos(randomAngle) * randomRadius;
-        var targetY:Float = centerY + Math.sin(randomAngle) * randomRadius;
+        final randomAngle:Float = FlxG.random.float(0, Math.PI * 2);
+        final randomRadius:Float = FlxG.random.float(0, radius);
+
+        final targetX:Float = centerX + Math.cos(randomAngle) * randomRadius;
+        final targetY:Float = centerY + Math.sin(randomAngle) * randomRadius;
 
         FlxTween.tween(sprite, {x: targetX, y: targetY}, duration, {
             ease: FlxEase.sineInOut,
-            onComplete: function(tween:FlxTween) {
-                startFloatingAnimation(sprite, centerX, centerY);
-            }
+            onComplete: (tween:FlxTween) -> startFloatingAnimation(sprite, centerX, centerY)
         });
     }
 
-    private function animateBox():Void
+    function animateBox():Void
     {
-        var finalX:Float = 750;
-        var finalY:Float = 120;
-        var finalScale:Float = 0.3;
-        var initialScale:Float = 0.6;
-        var initialX:Float = 200;
+        final finalX:Float = 750;
+        final finalY:Float = 120;
+        final finalScale:Float = 0.3;
+
+        final initialScale:Float = 0.6;
+        final initialX:Float = 200;
 
         FlxTween.cancelTweensOf(box);
         FlxTween.cancelTweensOf(box.scale);
@@ -410,9 +402,10 @@ class ExtrasMenu extends MusicBeatState
 
         FlxTween.tween(box.scale, {x: finalScale, y: finalScale}, BOX_ANIMATION_DURATION, {
             ease: FlxEase.expoOut,
-            onUpdate: function(tween:FlxTween) {
-                var currentX = box.x;
-                var currentY = box.y;
+            onUpdate: (tween:FlxTween) -> {
+                final currentX = box.x;
+                final currentY = box.y;
+
                 box.updateHitbox();
                 box.x = currentX;
                 box.y = currentY;
@@ -420,7 +413,7 @@ class ExtrasMenu extends MusicBeatState
         });
     }
 
-    private function selectOption():Void
+    function selectOption():Void
     {
         canMove = false;
 
@@ -451,7 +444,7 @@ class ExtrasMenu extends MusicBeatState
         });
     }
 
-    private function navigateToOption():Void
+    function navigateToOption():Void
     {
         switch (menuOptions[curSelected])
         {
@@ -477,7 +470,7 @@ class ExtrasMenu extends MusicBeatState
             case "CREDITS":
                 extraMenuSong = false;
                 stopMusicPlay = true;
-                if (FlxG.sound.music != null) FlxG.sound.music.fadeOut(0.3);
+                FlxG.sound.music?.fadeOut(0.3);
                 FlxG.switchState(() -> new states.extras.credits.CreditsState());
         }
 
@@ -486,9 +479,6 @@ class ExtrasMenu extends MusicBeatState
 
     override public function destroy():Void
     {
-        
-
-        // Cancel all active tweens to prevent them running after state is gone
         if (disco != null) FlxTween.cancelTweensOf(disco);
         if (box != null) { FlxTween.cancelTweensOf(box); FlxTween.cancelTweensOf(box.scale); }
         if (sketch1 != null) FlxTween.cancelTweensOf(sketch1);
@@ -521,7 +511,8 @@ class ExtrasMenu extends MusicBeatState
         sketch1 = null;
         sketch2 = null;
 
-        if (!stopMusicPlay){
+        if (!stopMusicPlay)
+        {
             extraMenuSong = false;
 			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
         }

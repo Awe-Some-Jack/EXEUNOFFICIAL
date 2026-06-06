@@ -34,10 +34,11 @@ class DAGarden extends MusicBeatState
 	override public function create():Void
 	{
 		Paths.clearStoredMemory();
-		super.create();
+		Paths.clearUnusedMemory();
+
 		FlxG.autoPause = false;
 
-		if (FlxG.sound.music != null) FlxG.sound.music.pause();
+		FlxG.sound.music?.pause();
 
 		_buildBackground();
 
@@ -55,12 +56,12 @@ class DAGarden extends MusicBeatState
 
 		if (songs.songList.length > 0)
 			_onSongSelected(0);
-
-		Paths.clearUnusedMemory();
-
+		
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the DA Garden", null);
 		#end
+
+		super.create();
 	}
 
 	override public function update(elapsed:Float):Void
@@ -69,20 +70,31 @@ class DAGarden extends MusicBeatState
 		spikes.velocity.y = 50;
 		rotationTime += elapsed;
 		_updateDecorAngles();
+		
 		if (sub != null && player != null)
 			sub.updateTime(player.currentTime());
+			
 		_handleInput();
 	}
 
 	override public function destroy():Void
 	{
-		if (player != null) player.stop();
+		player?.stop();
 		_cancelDecorTweens();
-
-		fondo = null; marcogris = null; dagarden = null;
-		arrow = null; spikes    = null; sub      = null;
-		sprite1 = null; sprite2 = null; sprite3 = null;
-		sprite4 = null; sprite6 = null; sprite7 = null; sprite8 = null;
+		
+		fondo = null; 
+		marcogris = null; 
+		dagarden = null;
+		arrow = null; 
+		spikes = null;
+		sub = null;
+		sprite1 = null; 
+		sprite2 = null; 
+		sprite3 = null;
+		sprite4 = null;
+		sprite6 = null; 
+		sprite7 = null; 
+		sprite8 = null;
 
 		FlxG.autoPause = true;
 		Paths.clearStoredMemory();
@@ -93,11 +105,11 @@ class DAGarden extends MusicBeatState
 	private function _buildBackground():Void
 	{
 		fondo   = _makeSprite(0,    0,   "fondo.png",  0.34);
-		sprite1 = _makeSprite(560, 560,  "1.png",      0.25);
-		sprite2 = _makeSprite(950, 580,  "2.png",      0.15);
+		sprite1 = _makeSprite(560,  560, "1.png",      0.25);
+		sprite2 = _makeSprite(950,  580, "2.png",      0.15);
 		sprite3 = _makeSprite(1100, 50,  "3.png",      0.25);
-		sprite4 = _makeSprite(540, 300,  "4.png",      0.25);
-		sprite6 = _makeSprite(700, 800,  "6.png",      0.25);
+		sprite4 = _makeSprite(540,  300, "4.png",      0.25);
+		sprite6 = _makeSprite(700,  800, "6.png",      0.25);
 		sprite7 = _makeSprite(550,  50,  "7.png",      0.25);
 		sprite8 = _makeSprite(800,  50,  "8.png",      0.25);
 		arrow   = _makeSprite(490,  90,  "arrow.png",  0.34);
@@ -121,7 +133,7 @@ class DAGarden extends MusicBeatState
 
 	private function _makeSprite(x:Float, y:Float, file:String, scale:Float):FlxSprite
 	{
-		var s = new FlxSprite(x, y);
+		final s = new FlxSprite(x, y);
 		s.loadGraphic(openfl.utils.Assets.getBitmapData("assets/exe/extras/dagarden/" + file));
 		s.scale.set(scale, scale);
 		s.updateHitbox();
@@ -176,7 +188,7 @@ class DAGarden extends MusicBeatState
 		player.loadJumpscareFor(songs.selectedSong(), songs.selectedMod());
 		sub.loadLyrics(songs.selectedSong(), songs.selectedMod());
 		sub.reset();
-
+		
 		if (player.isPlaying) player.fadeOutAndStop();
 		else player.stop();
 	}
@@ -199,7 +211,7 @@ class DAGarden extends MusicBeatState
 		{
 			player.restoreWindowTitle();
 			player.stop();
-			if (FlxG.sound.music != null) FlxG.sound.music.resume();
+			FlxG.sound.music?.resume();
 			FlxG.switchState(() -> new ExtrasMenu());
 		}
 	}

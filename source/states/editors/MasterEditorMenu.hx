@@ -108,7 +108,6 @@ class MasterEditorMenu extends MusicBeatState
 					FlxG.switchState(() -> new NoteSplashEditorState());
 			}
 			FlxG.sound.music.volume = 0;
-			EXEFreeplay.destroyFreeplayVocals();
 		}
 
 		for (num => item in grpTexts.members)

@@ -36,15 +36,13 @@ class SoundTest extends MusicBeatState
 
 	var backdrop:FlxBackdrop;
 	var whiteBG:FlxSprite;
-
 	var pcmLabel:FlxSprite;
 	var daLabel:FlxSprite;
 
 	var pcmDigits:Array<FlxSprite> = [];
-	var daDigits:Array<FlxSprite>  = [];
+	var daDigits:Array<FlxSprite> = [];
 
 	var _digitFrames:Array<flixel.graphics.frames.FlxFrame> = [];
-
 	var pcmValue:Int = 0;
 	var daValue:Int = 0;
 
@@ -53,7 +51,6 @@ class SoundTest extends MusicBeatState
 
 	var arrowTimer:FlxTimer;
 	var previousWindowTitle:String;
-
 	static var menuSong:Bool = false;
 
 	override public function create():Void
@@ -64,7 +61,8 @@ class SoundTest extends MusicBeatState
 		persistentUpdate = true;
 		persistentDraw = true;
 
-		previousWindowTitle = FlxG.stage.window.title;
+		if (FlxG.stage?.window != null)
+			previousWindowTitle = FlxG.stage.window.title;
 
 		initPsychCamera();
 		loadMusic();
@@ -97,16 +95,17 @@ class SoundTest extends MusicBeatState
 	function loadCodesFromWeeks():Void
 	{
 		codes = [];
-
 		for (weekName in WeekData.weeksList)
 		{
-			var week:WeekData = WeekData.weeksLoaded.get(weekName);
-			if (week == null || week.soundTestCode == null) continue;
-			var code = week.soundTestCode;
+			final week:WeekData = WeekData.weeksLoaded.get(weekName);
+			if (week?.soundTestCode == null) continue;
+			
+			final code = week.soundTestCode;
 			if (code.length < 3) continue;
-			var enabled:Bool = code[2] == true;
+			
+			final enabled:Bool = code[2] == true;
 			if (!enabled) continue;
-
+			
 			codes.push({
 				pcm: Std.int(code[0]),
 				da: Std.int(code[1]),
@@ -120,7 +119,7 @@ class SoundTest extends MusicBeatState
 
 	function loadCodesFromJSON():Void
 	{
-		if (!Assets.exists("assets/exe/soundtest/extraCodes.json"))
+		if (!AssetPaths.exists("assets/exe/soundtest/extraCodes.json"))
 		{
 			trace("JSON no encontrado");
 			return;
@@ -128,13 +127,12 @@ class SoundTest extends MusicBeatState
 
 		try
 		{
-			var raw:String = Assets.getText("assets/exe/soundtest/extraCodes.json");
-			var data:Array<Dynamic> = Json.parse(raw);
+			final raw:String = AssetPaths.getText("assets/exe/soundtest/extraCodes.json");
+			final data:Array<Dynamic> = Json.parse(raw);
 
 			for (entry in data)
 			{
 				if (entry.code == null || entry.code.length < 2) continue;
-
 				codes.push({
 					pcm: Std.int(entry.code[0]),
 					da: Std.int(entry.code[1]),
@@ -166,7 +164,7 @@ class SoundTest extends MusicBeatState
 
 	function createTitle():Void
 	{
-		var title:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/soundtest/soundtest.png'));
+		final title = new FlxSprite().loadGraphic(AssetPaths.getBitmapData('assets/exe/soundtest/soundtest.png'));
 		title.antialiasing = false;
 		title.scale.set(3.0, 3.0);
 		title.updateHitbox();
@@ -177,13 +175,13 @@ class SoundTest extends MusicBeatState
 
 	function createLabels():Void
 	{
-		var pcmX:Float = (FlxG.width / 6) + 100.0;
-		var daX:Float  = FlxG.width * 0.6;
-		var labelY:Float = (FlxG.height / 2) - 70.0;
+		final pcmX:Float = (FlxG.width / 6) + 100.0;
+		final daX:Float = FlxG.width * 0.6;
+		final labelY:Float = (FlxG.height / 2) - 70.0;
 
 		pcmLabel = new FlxSprite(pcmX, labelY);
 		pcmLabel.frames = FlxAtlasFrames.fromSparrow('assets/exe/soundtest/pcm.png', 'assets/exe/soundtest/pcm.xml');
-		pcmLabel.animation.addByPrefix('idle',     'pcm idle',     24, false);
+		pcmLabel.animation.addByPrefix('idle', 'pcm idle', 24, false);
 		pcmLabel.animation.addByPrefix('selected', 'pcm selected', 24, false);
 		pcmLabel.animation.play('idle');
 		pcmLabel.antialiasing = false;
@@ -193,7 +191,7 @@ class SoundTest extends MusicBeatState
 
 		daLabel = new FlxSprite(daX, labelY);
 		daLabel.frames = FlxAtlasFrames.fromSparrow('assets/exe/soundtest/dano.png', 'assets/exe/soundtest/dano.xml');
-		daLabel.animation.addByPrefix('idle',     'dano idle',     24, false);
+		daLabel.animation.addByPrefix('idle', 'dano idle', 24, false);
 		daLabel.animation.addByPrefix('selected', 'dano selected', 24, false);
 		daLabel.animation.play('idle');
 		daLabel.antialiasing = false;
@@ -208,18 +206,19 @@ class SoundTest extends MusicBeatState
 			'assets/exe/soundtest/numbers.png',
 			'assets/exe/soundtest/numbers.xml'
 		);
+		
 		for (i in 0...10)
 			_digitFrames.push(frames.getByName('numbers ' + i + '0000'));
 
-		var pcmX:Float    = (FlxG.width / 6) + 270.0;
-		var daX:Float     = (FlxG.width * 0.6) + 150.0;
-		var numberY:Float = (FlxG.height / 2) - 70.0;
+		final pcmX:Float = (FlxG.width / 6) + 270.0;
+		final daX:Float = (FlxG.width * 0.6) + 150.0;
+		final numberY:Float = (FlxG.height / 2) - 70.0;
 		final digitScale:Float = 3.0;
-		final digitGap:Float   = 9.0 * digitScale;
-
+		final digitGap:Float = 9.0 * digitScale;
+		
 		for (i in 0...2)
 		{
-			var pd = new FlxSprite(pcmX + i * digitGap, numberY);
+			final pd = new FlxSprite(pcmX + i * digitGap, numberY);
 			pd.frames = frames;
 			pd.antialiasing = false;
 			pd.scale.set(digitScale, digitScale);
@@ -227,7 +226,7 @@ class SoundTest extends MusicBeatState
 			add(pd);
 			pcmDigits.push(pd);
 
-			var dd = new FlxSprite(daX + i * digitGap, numberY);
+			final dd = new FlxSprite(daX + i * digitGap, numberY);
 			dd.frames = frames;
 			dd.antialiasing = false;
 			dd.scale.set(digitScale, digitScale);
@@ -240,8 +239,7 @@ class SoundTest extends MusicBeatState
 	function startArrowAnimation():Void
 	{
 		updateWindowTitle();
-		arrowTimer = new FlxTimer().start(3.0, function(timer:FlxTimer):Void
-		{
+		arrowTimer = new FlxTimer().start(3.0, (_) -> {
 			currentArrowIndex = (currentArrowIndex + 1) % ARROW_ICONS.length;
 			updateWindowTitle();
 		}, 0);
@@ -265,8 +263,9 @@ class SoundTest extends MusicBeatState
 	{
 		try
 		{
-			var arrow:String = ARROW_ICONS[currentArrowIndex];
-			FlxG.stage.window.title = arrow + " SOUND TEST " + arrow;
+			final arrow:String = ARROW_ICONS[currentArrowIndex];
+			if (FlxG.stage?.window != null)
+				FlxG.stage.window.title = arrow + " SOUND TEST " + arrow;
 		}
 		catch (e:Dynamic)
 		{
@@ -275,6 +274,7 @@ class SoundTest extends MusicBeatState
 	}
 
 	var _mouseWasRight:Bool = false;
+	
 	function handleSelection():Void
 	{
 		if (controls.UI_RIGHT_P || controls.UI_LEFT_P)
@@ -287,32 +287,35 @@ class SoundTest extends MusicBeatState
 		if (mouseRight != _mouseWasRight)
 		{
 			_mouseWasRight = mouseRight;
-			isPCMSelected  = !mouseRight;
+			isPCMSelected = !mouseRight;
 			updateLabelColors();
 		}
 	}
 
 	var changeHold:Float = 0;
+	
 	function handleValueChange(elapsed:Float):Void
 	{
 		var change:Int = 0;
 
-		if (controls.UI_DOWN_P || FlxG.mouse.deltaWheel.y < 0){
+		if (controls.UI_DOWN_P || FlxG.mouse.deltaWheel.y < 0)
+		{
 			change = (FlxG.keys.pressed.SHIFT ? 3 : 1);
 			changeHold = 0;
 		}
-		else if (controls.UI_UP_P || FlxG.mouse.deltaWheel.y > 0){
+		else if (controls.UI_UP_P || FlxG.mouse.deltaWheel.y > 0)
+		{
 			change = -(FlxG.keys.pressed.SHIFT ? 3 : 1);
 			changeHold = 0;
 		}
 
-		if(controls.UI_DOWN || controls.UI_UP)
+		if (controls.UI_DOWN || controls.UI_UP)
 		{
-			var checkLastHold:Int = Math.floor((changeHold - 0.3) * 10);
+			final checkLastHold:Int = Math.floor((changeHold - 0.3) * 10);
 			changeHold += elapsed;
-			var checkNewHold:Int = Math.floor((changeHold - 0.3) * 10);
+			final checkNewHold:Int = Math.floor((changeHold - 0.3) * 10);
 
-			if(changeHold > 0.3 && checkNewHold - checkLastHold > 0)
+			if (changeHold > 0.3 && checkNewHold - checkLastHold > 0)
 				change = (checkNewHold - checkLastHold) * (controls.UI_UP ? -(FlxG.keys.pressed.SHIFT ? 3 : 1) : (FlxG.keys.pressed.SHIFT ? 3 : 1));
 		}
 
@@ -328,7 +331,7 @@ class SoundTest extends MusicBeatState
 	function updateDisplayedValues():Void
 	{
 		setDigitFrames(pcmDigits, pcmValue);
-		setDigitFrames(daDigits,  daValue);
+		setDigitFrames(daDigits, daValue);
 	}
 
 	inline function setDigitFrames(digits:Array<FlxSprite>, value:Int):Void
@@ -340,17 +343,18 @@ class SoundTest extends MusicBeatState
 	var notFoundAny:Bool = true;
 	var soundCooldown:Bool = true;
 	var transitioning:Bool = false;
+	
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 
 		if (subState != null) return;
 		if (transitioning) return;
-
+		
 		if (controls.BACK)
 		{
 			menuSong = true;
-			FlxG.sound.music.fadeOut(0.3);
+			FlxG.sound.music?.fadeOut(0.3);
 			transitioning = true;
 			FlxG.switchState(() -> new EXEMenu());
 			return;
@@ -363,6 +367,7 @@ class SoundTest extends MusicBeatState
 		if (controls.ACCEPT)
 		{
 			notFoundAny = true;
+			
 			for (code in codes)
 			{
 				if (pcmValue == code.pcm && daValue == code.da)
@@ -372,12 +377,15 @@ class SoundTest extends MusicBeatState
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					FlxTween.tween(whiteBG, {alpha: 1}, 1);
 
-					new FlxTimer().start(1, function(tmr:FlxTimer)
-					{
-						if (code.isWeek) loadSong(code.weekName, true);
+					new FlxTimer().start(1, (_) -> {
+						if (code.isWeek) 
+						{
+							loadSong(code.weekName, true);
+						}
 						else
 						{
-							if (code.type == 'sebas')  FlxG.switchState(() -> new SebasMiBeba());
+							if (code.type == 'sebas') 
+								FlxG.switchState(() -> new SebasMiBeba());
 							else
 							{
 								persistentUpdate = false;
@@ -386,7 +394,7 @@ class SoundTest extends MusicBeatState
 							}
 						}
 
-						FlxG.sound.music.fadeOut(0.3);
+						FlxG.sound.music?.fadeOut(0.3);
 					});
 					break;
 				}
@@ -397,11 +405,13 @@ class SoundTest extends MusicBeatState
 				notFoundAny = false;
 				CustomShapeTransition.shape = CustomShapeTransition.getShapeByString('INFINITE');
 				transitioning = true;
+				
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				FlxTween.tween(whiteBG, {alpha: 1}, 1);
-				new FlxTimer().start(1, function(tmr:FlxTimer){
+				
+				new FlxTimer().start(1, (_) -> {
 					FlxG.switchState(() -> new states.access.MajinAccess());
-					FlxG.sound.music.fadeOut(0.3);
+					FlxG.sound.music?.fadeOut(0.3);
 				});
 				return;
 			}
@@ -410,28 +420,27 @@ class SoundTest extends MusicBeatState
 			{
 				soundCooldown = false;
 				FlxG.sound.play(Paths.sound('deniedMOMENT'), 0.6);
-				new FlxTimer().start(0.8, function(tmr:FlxTimer) { soundCooldown = true; });
+				new FlxTimer().start(0.8, (_) -> { soundCooldown = true; });
 			}
 		}
 	}
 
-	override function closeSubState()
+	override function closeSubState():Void
 	{
 		super.closeSubState();
 
 		persistentUpdate = true;
 		transitioning = false;
-
 		FlxTween.tween(whiteBG, {alpha: 0}, 0.2);
 	}
 
-	function loadSong(name:String, isWeek:Bool = false)
+	function loadSong(name:String, isWeek:Bool = false):Void
 	{
 		PlayState.isSoundTest = true;
 
 		if (isWeek)
 		{
-			var leWeek:WeekData = WeekData.weeksLoaded.get(name);
+			final leWeek:WeekData = WeekData.weeksLoaded.get(name);
 			if (leWeek == null)
 			{
 				trace("Week no encontrada: " + name);
@@ -440,10 +449,10 @@ class SoundTest extends MusicBeatState
 
 			if (leWeek.folder != null && leWeek.folder != "")
 				Mods.currentModDirectory = leWeek.folder;
-
+				
 			WeekData.setDirectoryFromWeek(leWeek);
 
-			var songArray:Array<String> = [];
+			final songArray:Array<String> = [];
 			for (song in leWeek.songs)
 				songArray.push(song[0]);
 
@@ -454,8 +463,7 @@ class SoundTest extends MusicBeatState
 				PlayState.storyDifficulty = 1;
 				PlayState.storyWeek = WeekData.weeksList.indexOf(name);
 
-				var firstSong:String = songArray[0].toLowerCase();
-
+				final firstSong:String = songArray[0].toLowerCase();
 				Song.loadFromJson(firstSong, firstSong);
 
 				PlayState.campaignScore = 0;
@@ -469,7 +477,7 @@ class SoundTest extends MusicBeatState
 		}
 		else
 		{
-			var songLower = Paths.formatToSongPath(name);
+			final songLower = Paths.formatToSongPath(name);
 
 			try
 			{
@@ -488,26 +496,24 @@ class SoundTest extends MusicBeatState
 
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());
-		FlxG.sound.music.stop();
+		FlxG.sound.music?.stop();
 	}
 
 	override public function destroy():Void
 	{
-		if (arrowTimer != null)
-		{
-			arrowTimer.cancel();
-			arrowTimer = null;
-		}
+		arrowTimer?.cancel();
+		arrowTimer = null;
 
-		FlxG.stage.window.title = previousWindowTitle;
+		if (FlxG.stage?.window != null)
+			FlxG.stage.window.title = previousWindowTitle;
 
-		if (menuSong) FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+		if (menuSong) FlxG.sound.playMusic(AssetPaths.getSound('assets/exe/music/menu.ogg'));
 
 		backdrop = null;
 		pcmLabel = null;
 		daLabel = null;
-		pcmDigits    = null;
-		daDigits     = null;
+		pcmDigits = null;
+		daDigits = null;
 		_digitFrames = null;
 
 		super.destroy();

@@ -1,20 +1,28 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "idle",
-			"loop": false,
-			"name": "Charmy"
+			"anim": "scared",
+			"fps": 9,
+			"name": "idle-alt",
+			"indices": []
 		},
 		{
 			"offsets": [0, 0],
 			"indices": [],
 			"fps": 9,
-			"anim": "scared",
+			"anim": "idle-alt",
 			"loop": true,
-			"name": "idle-alt"
+			"name": "scared"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "idle"
 		}
 	],
 	"vocals_file": "",

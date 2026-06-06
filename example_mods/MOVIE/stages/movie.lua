@@ -21,6 +21,8 @@ function onCreate()
     end
 end
 
+function onSongStart() doTweenAlpha('graphAlpha', 'BlackGraphicHUD', 0, crochet / (1000 / 32)) end
+
 function onStartCountdown()
     if not videoPlayed and not seenCutscene then
         startVideo('cutscene')
@@ -32,4 +34,6 @@ end
 function onCountdownStarted()
     for i = 0,7 do setProperty('strumLineNotes.members['..i..'].x', _G['default'..(i < 4 and 'Player' or 'Opponent')..'StrumX'..(i % 4)]) end
     triggerEvent('Flip Health Bar')
+
+    setProperty('BlackGraphicHUD.alpha', 1)
 end

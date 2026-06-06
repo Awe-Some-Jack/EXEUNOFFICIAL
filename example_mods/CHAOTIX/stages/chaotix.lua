@@ -13,8 +13,8 @@ local starlineBG = {
 		{name = 'charmy',   character = 'charmy',     x =   480, y = -95,  canFloat = true,  beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 	},
 	['cutsceneChars'] = {
-		{name = 'wech',  path = 'bg/characters/anim2', x = 0, y = 0, scaleX = 1, scaleY = 1, antialiasing = false, alpha = 0, front = false},
-		{name = 'bf-gf', path =  'bg/characters/anim', x = 0, y = 0, scaleX = 1, scaleY = 1, antialiasing = false, alpha = 0, front = false},
+		{name = 'wech',  char =   'anim',  x = 500, y = 300, scaleX = 1, scaleY = 1, antialiasing = false, alpha = 0, front = false},
+		{name = 'bf-gf', char =  'anim2',  x = 400, y = 250, scaleX = 1, scaleY = 1, antialiasing = false, alpha = 0, front = false},
 	}
 }
 
@@ -45,11 +45,11 @@ local function createCharacter(char)
 end
 
 local function createCutsceneCharacters(yea)
-	makeAnimatedLuaSprite(yea.name, yea.path, yea.x, yea.y)
-	addAnimationByPrefix(yea.name, 'idle', 'idle', 12, false)
-	scaleObject(yea.name, yea.scaleX, yea.scaleY)
-	setProperty(yea.name..'.antialiasing', yea.antialiasing)
+	createInstance(yea.name, 'objects.Character', {yea.x, yea.y, yea.char, 'false'})
+	scaleObject(yea.name, 3, 3)
 	setProperty(yea.name..'.alpha', yea.alpha)
+	addInstance(yea.name, yea.front)
+	setProperty(yea.name..'.alpha', 0)
 	setObjectCamera(yea.name, 'camOther')
 	addLuaSprite(yea.name, yea.front)
 end
@@ -134,8 +134,8 @@ function onBeatHit()
 		for _, bgChars in ipairs({starlineBG['characters']}) do
 			setProperty(bgChars.name..'.alpha', 0)
 		end
-			setProperty('wech.alpha', 1)
-			playAnim('wech', 'idle', true)
+		setProperty('wech.alpha', 1)
+		playAnim('wech', 'idle', true)
 	end
 
 	if curBeat == 231 then doTweenAlpha('fadeToBlack', 'blackOverlay', 1, 2, 'sineIn') end
@@ -158,8 +158,9 @@ function onBeatHit()
 		triggerEvent('Change Character', '1', 'beast_chaotix')
 		callMethod('dad.setPosition', {-376.9, 120.7})
 		doTweenAlpha('fadeFromBlack', 'blackOverlay', 0, 1.5, 'sineOut')
-
-		for _, chars in ipairs(starlineBG['characters']) do setProperty(chars.name..'.idleSuffix', '-alt') playAnim(chars, 'idle-alt', true) end
+		
+		for _, chars in ipairs(starlineBG['characters']) do setProperty(chars.name..'.idleSuffix', '-alt') playAnim(chars.name, 'idle-alt', true) end
+		callMethod('charmy.setPosition', {getProperty('charmy.x') + 110, getProperty('charmy.y') + 280})
 		setProperty('bg1.alpha', 0)
 		setProperty('bg2.alpha', 1)
 	end

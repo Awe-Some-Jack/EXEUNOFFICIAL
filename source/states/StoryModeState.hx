@@ -29,6 +29,8 @@ class StoryModeState extends MusicBeatState
 
 	var toMenu:Bool = false;
 
+	var scoreRecorded:Bool = false;
+
 	var greyBOX:FlxSprite;
 	var bfBOX:FlxSprite;
 	var staticscreen:FlxSprite;
@@ -47,6 +49,15 @@ class StoryModeState extends MusicBeatState
 	var staticscreen2:FlxSprite;
 
 	var redBOX:FlxSprite;
+
+	//Pillado del freeplay jijijijijijijiijijiijijijijiijijjijiijijijiijijijijjiijijijijijijijij
+	var scoreBG:FlxSprite;
+	var rankText:FlxText;
+	var scoreText:FlxText;
+	var lerpScore:Int = 0;
+	var lerpRating:Float = 0;
+	var intendedScore:Int = 0;
+	var intendedRating:Float = 0;
 
 	var selectedBox:Int = 0;
 	var canInteract:Bool = true;
@@ -130,7 +141,6 @@ class StoryModeState extends MusicBeatState
 		dataSelect.setGraphicSize(FlxG.width * 0.5);
 		dataSelect.updateHitbox();
 		add(dataSelect);
-
 		
 		// ── BOX 1 ──
 		greyBOX = new FlxSprite();
@@ -139,7 +149,6 @@ class StoryModeState extends MusicBeatState
 		greyBOX.updateHitbox();
 		greyBOX.setPosition(175, 64);
 		add(greyBOX);
-		
 		
 		tooSlowCover = new FlxSprite();
 		tooSlowCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/too-slow.png'));
@@ -209,7 +218,6 @@ class StoryModeState extends MusicBeatState
 		yellowBOX.setPosition(178, 64);
 		yellowBOX.antialiasing = ClientPrefs.data.antialiasing;
 		add(yellowBOX);
-		
 		
 		// ── BOX 2 ──
 		greyBOX2 = new FlxSprite();
@@ -309,9 +317,27 @@ class StoryModeState extends MusicBeatState
 			s.color = 0xFF666666;
 		
 		//bfTween  = FlxTween.tween(bfBOX,  {y: bfBOX.y  - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
-		bf2Tween = FlxTween.tween(gfBOX, {y: gfBOX.y - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
+		//bf2Tween = FlxTween.tween(gfBOX, {y: gfBOX.y - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
 		
-		if (yourselfTime){ canInteract = false; new FlxTimer().start(1, function(_) yourselfCutscene());}	
+		if (yourselfTime){ canInteract = false; new FlxTimer().start(1, function(_) yourselfCutscene());}
+
+		rankText  = new FlxText(0, 0, 0, "RANK: -",  44);
+		rankText.setFormat('assets/fonts/sonicfree.otf', 44, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		rankText.antialiasing = false;
+		rankText.borderSize = 3;
+		rankText.y = FlxG.height - rankText.height - 10;
+
+		scoreText = new FlxText(0, 0, 0, "SCORE: 0", 44);
+		scoreText.setFormat('assets/fonts/sonicfree.otf', 44, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.antialiasing = false;
+		scoreText.borderSize = 3;
+		scoreText.y = rankText.y - scoreText.height - 4;
+
+		scoreBG = new FlxSprite(0, scoreText.y - 4).makeGraphic(1, Std.int(FlxG.height - scoreText.y + 4), 0xFF000000);
+		scoreBG.alpha = 0.6;
+		add(scoreBG);
+		add(scoreText);
+		add(rankText);
 	}
 	
 	
@@ -401,6 +427,7 @@ class StoryModeState extends MusicBeatState
 		staticTween = FlxTween.tween(staticscreen, {alpha: 0.3}, 0.5, {ease: FlxEase.quadOut});
 	}
 
+	var moveText:Bool = false;
 	override public function update(elapsed:Float)
 	{
 		if (!canInteract) { super.update(elapsed); return; }
@@ -422,6 +449,23 @@ class StoryModeState extends MusicBeatState
 				}
 				if (controls.BACK)
 					exitCoverSelect();
+
+				final prevScore = lerpScore;
+				final prevRating = lerpRating;
+
+				lerpScore  = Math.floor(FlxMath.lerp(intendedScore, lerpScore, Math.exp(-elapsed * 24)));
+				lerpRating = FlxMath.lerp(intendedRating, lerpRating, Math.exp(-elapsed * 12));
+
+				if (Math.abs(lerpScore - intendedScore) <= 10) lerpScore = intendedScore;
+				if (Math.abs(lerpRating - intendedRating) <= 0.01) lerpRating = intendedRating;
+				if (lerpScore != prevScore || lerpRating != prevRating) updateScoreDisplay();
+
+				moveText = true;
+				for (scoreTexts in [scoreText, rankText]){
+					FlxTween.num(scoreTexts.y + 120, scoreTexts.y - 120, 1, {ease:FlxEase.circOut}, (val:Float) -> scoreTexts.y = val);
+					scoreTexts.alpha = 1;
+					moveText = false;
+				}
 			}
 			else
 			{
@@ -450,10 +494,49 @@ class StoryModeState extends MusicBeatState
 					if (selectedBox == 0) onBox1Accept();
 					else shakeBox2();
 				}
+
+				for (scoreTexts in [scoreText, rankText])
+					scoreTexts.alpha = 0;
 			}
 		}
 
 		super.update(elapsed);
+	}
+
+	function updateScoreDisplay()
+	{
+		if (scoreText == null) return;
+		scoreText.text = 'SCORE: ${lerpScore}';
+		if (rankText != null)
+			rankText.text = 'RANK: ' + getRankLetter(lerpRating);
+		positionHighscore();
+	}
+
+	function positionHighscore()
+	{
+		if (scoreText == null || scoreBG == null || rankText == null) return;
+		scoreText.x = FlxG.width - scoreText.width - 6;
+		rankText.x  = FlxG.width - rankText.width - 6;
+		rankText.y  = FlxG.height - rankText.height - 8;
+		scoreText.y = rankText.y - scoreText.height - 4;
+		var bgWidth = FlxG.width - Math.min(scoreText.x, rankText.x) + 6;
+		scoreBG.scale.x = bgWidth;
+		scoreBG.x       = FlxG.width - bgWidth / 2;
+		scoreBG.y       = scoreText.y - 4;
+	}
+
+	static function getRankLetter(rating:Float):String
+	{
+		if (rating >= 1)  return 'P';
+		if (rating >= 0.96) return 'SS';
+		if (rating >= 0.93) return 'S';
+		if (rating >= 0.85) return 'AA';
+		if (rating >= 0.75) return 'A';
+		if (rating >= 0.6) return 'B';
+		if (rating >= 0.45) return 'C';
+		if (rating >= 0.2) return 'D';
+		if (rating > 0.0) return 'F';
+		return '?';
 	}
 
 	function onBox1Accept():Void

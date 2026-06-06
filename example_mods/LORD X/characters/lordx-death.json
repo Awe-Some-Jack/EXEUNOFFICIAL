@@ -1,0 +1,39 @@
+{
+	"animations": [
+		{
+			"offsets": [52, 615],
+			"loop": false,
+			"fps": 24,
+			"anim": "firstDeath",
+			"indices": [],
+			"name": "deahrt"
+		},
+		{
+			"offsets": [26, 235],
+			"loop": true,
+			"fps": 24,
+			"anim": "deathLoop",
+			"indices": [],
+			"name": "loop"
+		},
+		{
+			"offsets": [25, 209],
+			"loop": false,
+			"fps": 24,
+			"anim": "deathConfirm",
+			"indices": [],
+			"name": "muerte"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "gameovers/LORD X",
+	"position": [50, 420],
+	"healthicon": "lord-x",
+	"flip_x": false,
+	"healthbar_colors": [60, 60, 88],
+	"camera_position": [-230, -170],
+	"sing_duration": 9.4,
+	"scale": 1.4,
+	"_editor_isPlayer": false
+}

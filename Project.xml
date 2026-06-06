@@ -36,7 +36,7 @@
 	<!-- ____________________________ Window Settings ___________________________ -->
 
 	<!--These window settings apply to all targets-->
-	<window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="false" allow-high-dpi="true" />
+	<window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="false" />
 
 	<!--HTML5-specific-->
 	<window if="html5" resizable="true" />
@@ -49,6 +49,10 @@
 
 	<!--Switch-specific-->
 	<window if="switch" orientation="landscape" fullscreen="true" resizable="true" />
+
+
+	<!--The High-DPI breaks app resizing on MacOS-->
+	<window unless="mac" allow-high-dpi="true" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 

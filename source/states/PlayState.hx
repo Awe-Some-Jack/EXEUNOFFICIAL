@@ -3011,6 +3011,17 @@ class PlayState extends MusicBeatState
 				gf.specialAnim = true;
 			}
 		}
+		
+		if(note.noteType == 'BF and GF Sing') {
+			var postfix:String = '';
+			if(note != null) postfix = note.animSuffix;
+
+			var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length-1, direction)))] + 'miss' + postfix;
+			
+			char = gf;
+			if(char != null && (note == null || !note.noMissAnimation) && char.hasMissAnimations) char.playAnim(animToPlay, true);
+		}
+		
 		vocals.volume = 0;
 	}
 
@@ -3138,6 +3149,26 @@ class PlayState extends MusicBeatState
 							char.heyTimer = 0.6;
 						}
 					}
+				}
+				
+				if(note.noteType == 'BF and GF Sing')
+				{
+					var canPlay:Bool = true;
+					char = gf;
+					if(note.isSustainNote)
+					{
+						var holdAnim:String = animToPlay + '-hold';
+						if(char.animation.exists(holdAnim)) animToPlay = holdAnim;
+						final _curCharAnim:String = char.getAnimationName();
+						if(_curCharAnim == holdAnim || _curCharAnim == holdAnim + '-loop') canPlay = false;
+					}
+	
+					var charCurFrame = 0;
+					if (char.animation != null) charCurFrame = char.animation.curAnim.curFrame;
+					if (char.getAnimationName().startsWith('sing') && note.isSustainNote && charCurFrame < 2) canPlay = false;
+					if (note.noteType == 'Sustain Animation' && note.isSustainNote) canPlay = false;
+					if(canPlay) char.playAnim(animToPlay, true);
+					char.holdTimer = 0;
 				}
 			}
 

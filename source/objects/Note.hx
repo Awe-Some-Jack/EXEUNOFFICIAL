@@ -48,7 +48,8 @@ class Note extends FlxSprite
 		'Hurt Note',
 		'GF Sing',
 		'No Animation',
-		'Sustain Animation'
+		'Sustain Animation',
+		'BF and GF Sing'
 	];
 
 	/** General-purpose key–value store; read/write from Lua and HScript. **/

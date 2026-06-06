@@ -39,8 +39,8 @@ function onCreatePost()
 	setObjectOrder('gfGroup', getObjectOrder('boyfriendGroup') + 1)
 
 	addCharacterToList('beast-run', 'dad')
-	addCharacterToList('pico-run', 'gf')
-	addCharacterToList('bf-run', 'bf')
+	addCharacterToList('picod-run', 'gf')
+	addCharacterToList('bfd-run', 'bf')
 
 	setProperty('BlackGraphicOther.alpha', 1)
 end
@@ -58,8 +58,8 @@ function onEvent(n,v1)
 		if v1 == 'jajaja' then
 			setObjectOrder('gfGroup', getObjectOrder('boyfriendGroup') - 1)
 			triggerEvent('Change Character', 'dad', 'beast-run')
-			triggerEvent('Change Character', 'gf', 'pico-run')
-			triggerEvent('Change Character', 'bf', 'bf-run')
+			triggerEvent('Change Character', 'gf', 'picod-run')
+			triggerEvent('Change Character', 'bf', 'bfd-run')
 
 			removeLuaSprite('bg2', true)
 			removeLuaSprite('bg', true)

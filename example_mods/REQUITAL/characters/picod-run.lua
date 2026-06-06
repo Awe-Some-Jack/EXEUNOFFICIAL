@@ -8,31 +8,24 @@ function onCreatePost()
 	setLegAnims()
 	addLuaSprite('picolegs', true)
 	setObjectOrder('picolegs', getObjectOrder('gfGroup'))
-	setProperty('picolegs.visible', gfName == 'pico-run')
+	setProperty('picolegs.visible', gfName == 'picod-run')
 end
 
 function onEvent(n)
 	if n == 'Change Character' then
-		setProperty('picolegs.visible', gfName == 'pico-run')
+		setProperty('picolegs.visible', gfName == 'picod-run')
 		setObjectOrder('picolegs', getObjectOrder('gfGroup'))
 		scaleObject('picolegs', getProperty('gf.scale.x'), getProperty('gf.scale.y'), false)
 	end
 end
 
-function goodNoteHit(id,nd,nt,isn)
-	if nt == 'GF Sing' and gfName == 'pico-run' then
-		setProperty('gf.animation.curAnim.curFrame', getProperty('legsframerate.animation.curAnim.curFrame'))
-	end
-end
-
 function onUpdatePost(e)
-	if gfName == 'pico-run' then
+	if gfName == 'picod-run' then
 		callMethod('picolegs.setPosition', {getProperty('gf.x') - 40, getProperty('gf.y') + 335})
 
 		if getProperty('picolegs.animation.curAnim.name') ~= getProperty('gf.animation.curAnim.name') then playAnim('picolegs', getProperty('gf.animation.curAnim.name'), true) end
 
 		setProperty('picolegs.animation.curAnim.curFrame', getProperty('legsframerate.animation.curAnim.curFrame'))
-		setProperty('gf.animation.curAnim.curFrame', getProperty('legsframerate.animation.curAnim.curFrame'))
 	end
 end
 

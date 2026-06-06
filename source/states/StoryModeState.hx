@@ -83,37 +83,36 @@ class StoryModeState extends MusicBeatState
 	{
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
+
 		instance = this;
 
-		var yt = yourselfMode;
+		final yt = yourselfMode;
 		yourselfMode = false;
 		createAssets(yt);
-
-		CustomShapeTransition.shape = HEAD;
-
-		super.create();
-		Paths.clearUnusedMemory();
 
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/story.ogg'));
 
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Story Mode", null);
 		#end
+
+		super.create();
 	}
 
 
 	override function destroy()
 	{
 		instance = null;
-		if (arrowTween  != null) arrowTween.cancel();
-		if (arrow2Tween != null) arrow2Tween.cancel();
+
+		arrowTween?.cancel();
+		arrow2Tween?.cancel();
 		//if (bfTween     != null) bfTween.cancel();
-		if (bf2Tween    != null) bf2Tween.cancel();
-		if (staticTween != null) staticTween.cancel();
-		if (redBoxTween != null) redBoxTween.cancel();
+		bf2Tween?.cancel();
+		staticTween?.cancel();
+		redBoxTween?.cancel();
+
 		covers = null;
-		Paths.clearStoredMemory();
-		Paths.clearUnusedMemory();
+
 		if (toMenu) FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 		super.destroy();
 	}
@@ -319,7 +318,7 @@ class StoryModeState extends MusicBeatState
 		//bfTween  = FlxTween.tween(bfBOX,  {y: bfBOX.y  - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
 		//bf2Tween = FlxTween.tween(gfBOX, {y: gfBOX.y - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
 		
-		if (yourselfTime){ canInteract = false; new FlxTimer().start(1, function(_) yourselfCutscene());}
+		if (yourselfTime) { canInteract = false; new FlxTimer().start(1, function(_) yourselfCutscene());}
 
 		rankText  = new FlxText(0, 0, 0, "RANK: -",  44);
 		rankText.setFormat('assets/fonts/sonicfree.otf', 44, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -335,6 +334,7 @@ class StoryModeState extends MusicBeatState
 
 		scoreBG = new FlxSprite(0, scoreText.y - 4).makeGraphic(1, Std.int(FlxG.height - scoreText.y + 4), 0xFF000000);
 		scoreBG.alpha = 0.6;
+
 		add(scoreBG);
 		add(scoreText);
 		add(rankText);
@@ -383,7 +383,7 @@ class StoryModeState extends MusicBeatState
 
 		if (box2SpriteBaseXs.length > 0)
 		{
-			var sprites = [greyBOX2, gfBOX, yellowBOX2, staticscreen2, padLock, redBOX];
+			final sprites = [greyBOX2, gfBOX, yellowBOX2, staticscreen2, padLock, redBOX];
 			for (i in 0...sprites.length)
 				if (sprites[i] != null && i < box2SpriteBaseXs.length)
 					sprites[i].x = box2SpriteBaseXs[i];
@@ -398,22 +398,25 @@ class StoryModeState extends MusicBeatState
 		if (isShaking) return;
 		isShaking = true;
 
-		var sprites = [greyBOX2, gfBOX, yellowBOX2, staticscreen2, padLock, redBOX];
-		var origXs = sprites.map(s -> s != null ? s.x : 0.0);
+		final sprites = [greyBOX2, gfBOX, yellowBOX2, staticscreen2, padLock, redBOX];
+		final origXs = sprites.map(s -> s != null ? s.x : 0.0);
 		box2SpriteBaseXs = origXs.copy();
-		var count = 0;
 
+		var count = 0;
 		shakeTimer = new FlxTimer().start(0.04, function(t:FlxTimer) {
 			count++;
-			var off = (count % 2 == 0 ? 8.0 : -8.0);
+
+			final off = (count % 2 == 0 ? 8.0 : -8.0);
 			for (i in 0...sprites.length)
 				if (sprites[i] != null)
 					sprites[i].x = origXs[i] + off;
+
 			if (count >= 6)
 			{
 				for (i in 0...sprites.length)
 					if (sprites[i] != null)
 						sprites[i].x = origXs[i];
+
 				isShaking = false;
 				shakeTimer = null;
 			}
@@ -422,7 +425,7 @@ class StoryModeState extends MusicBeatState
 
 	function flashStaticScreen():Void
 	{
-		if (staticTween != null) staticTween.cancel();
+		staticTween?.cancel();
 		staticscreen.alpha = 1.0;
 		staticTween = FlxTween.tween(staticscreen, {alpha: 0.3}, 0.5, {ease: FlxEase.quadOut});
 	}
@@ -430,8 +433,7 @@ class StoryModeState extends MusicBeatState
 	var moveText:Bool = false;
 	override public function update(elapsed:Float)
 	{
-		if (!canInteract) { super.update(elapsed); return; }
-		if (Controls.instance == null) { super.update(elapsed); return; }
+		if (!canInteract || Controls.instance == null) { super.update(elapsed); return; }
 
 		if (!isSelecting) {
 			if (inCoverSelect)
@@ -440,6 +442,7 @@ class StoryModeState extends MusicBeatState
 					changeCover(selectedCover + 1);
 				else if (controls.UI_LEFT_P && selectedCover > 0)
 					changeCover(selectedCover - 1);
+
 				if (controls.ACCEPT){
 					isSelecting = true;
 					bfBOX.animation.play('yeah', true);
@@ -447,6 +450,7 @@ class StoryModeState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('menuConfirm'));
 					FlxFlicker.flicker(redBOX, 1, 0.07, false, true, function(_) launchSong());
 				}
+
 				if (controls.BACK)
 					exitCoverSelect();
 
@@ -458,6 +462,7 @@ class StoryModeState extends MusicBeatState
 
 				if (Math.abs(lerpScore - intendedScore) <= 10) lerpScore = intendedScore;
 				if (Math.abs(lerpRating - intendedRating) <= 0.01) lerpRating = intendedRating;
+
 				if (lerpScore != prevScore || lerpRating != prevRating) updateScoreDisplay();
 
 				moveText = true;
@@ -506,46 +511,56 @@ class StoryModeState extends MusicBeatState
 	function updateScoreDisplay()
 	{
 		if (scoreText == null) return;
+
 		scoreText.text = 'SCORE: ${lerpScore}';
+
 		if (rankText != null)
 			rankText.text = 'RANK: ' + getRankLetter(lerpRating);
+
 		positionHighscore();
 	}
 
 	function positionHighscore()
 	{
 		if (scoreText == null || scoreBG == null || rankText == null) return;
+
 		scoreText.x = FlxG.width - scoreText.width - 6;
-		rankText.x  = FlxG.width - rankText.width - 6;
-		rankText.y  = FlxG.height - rankText.height - 8;
+		rankText.x = FlxG.width - rankText.width - 6;
+		rankText.y = FlxG.height - rankText.height - 8;
 		scoreText.y = rankText.y - scoreText.height - 4;
-		var bgWidth = FlxG.width - Math.min(scoreText.x, rankText.x) + 6;
+
+		final bgWidth = FlxG.width - Math.min(scoreText.x, rankText.x) + 6;
 		scoreBG.scale.x = bgWidth;
-		scoreBG.x       = FlxG.width - bgWidth / 2;
-		scoreBG.y       = scoreText.y - 4;
+		scoreBG.x = FlxG.width - bgWidth / 2;
+		scoreBG.y = scoreText.y - 4;
 	}
 
 	static function getRankLetter(rating:Float):String
 	{
-		if (rating >= 1)  return 'P';
-		if (rating >= 0.96) return 'SS';
-		if (rating >= 0.93) return 'S';
-		if (rating >= 0.85) return 'AA';
-		if (rating >= 0.75) return 'A';
-		if (rating >= 0.6) return 'B';
-		if (rating >= 0.45) return 'C';
-		if (rating >= 0.2) return 'D';
-		if (rating > 0.0) return 'F';
-		return '?';
+		switch (rating)
+		{
+			case _ if (rating >= 1): return 'P';
+			case _ if (rating >= 0.96): return 'SS';
+			case _ if (rating >= 0.93): return 'S';
+			case _ if (rating >= 0.85): return 'AA';
+			case _ if (rating >= 0.75): return 'A';
+			case _ if (rating >= 0.6): return 'B';
+			case _ if (rating >= 0.45): return 'C';
+			case _ if (rating >= 0.2): return 'D';
+			case _ if (rating > 0.0): return 'F';
+			default: return '?';
+		}
 	}
 
 	function onBox1Accept():Void
 	{
 		inCoverSelect = true;
 		selectedCover = 0;
+
 		updateCoverVisibility();
-		arrow.visible  = true;
-		arrow2.visible = true;
+
+		arrow.visible = arrow2.visible = true;
+
 		arrowTween  = FlxTween.tween(arrow,  {x: arrow.x  - 6}, 1.2, {ease: FlxEase.sineInOut, type: PINGPONG});
 		arrow2Tween = FlxTween.tween(arrow2, {x: arrow2.x + 6}, 1.2, {ease: FlxEase.sineInOut, type: PINGPONG});
 	}
@@ -553,17 +568,21 @@ class StoryModeState extends MusicBeatState
 	function exitCoverSelect():Void
 	{
 		if (selectedCover != 0) {
-			var staticSound = FlxG.sound.play(Paths.sound('static'), 0.15);
-			if (staticSound != null) staticSound.fadeOut(0.3, 0);
+			final staticSound = FlxG.sound.play(Paths.sound('static'), 0.15);
+			staticSound?.fadeOut(0.3, 0);
+			
 			flashStaticScreen();
 		}
 		inCoverSelect = false;
 		selectedCover = 0;
+
 		updateCoverVisibility();
-		arrow.visible  = false;
-		arrow2.visible = false;
+
+		arrow.visible = arrow2.visible = false;
+
 		if (arrowTween != null)  { arrowTween.cancel();  arrowTween = null; }
 		if (arrow2Tween != null) { arrow2Tween.cancel(); arrow2Tween = null; }
+
 		arrow.setPosition(60, 200);
 		arrow2.setPosition(560, 200);
 	}
@@ -571,10 +590,12 @@ class StoryModeState extends MusicBeatState
 	function changeCover(newIndex:Int):Void
 	{
 		selectedCover = newIndex;
+
 		updateCoverVisibility();
 		flashStaticScreen();
-		var staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
-		if (staticSound != null) staticSound.fadeOut(0.3, 0);
+
+		final staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
+		staticSound?.fadeOut(0.3, 0);
 	}
 
 	function updateCoverVisibility():Void
@@ -590,22 +611,20 @@ class StoryModeState extends MusicBeatState
 	{
 		if (selectedCover < 0 || selectedCover >= STORY_SONGS.length) return;
 
-		var songLower = STORY_SONGS[selectedCover];
-		var curIndex:Int = STORY_SONGS.indexOf(songLower);
+		final songLower = STORY_SONGS[selectedCover];
+		final curIndex:Int = STORY_SONGS.indexOf(songLower);
 
 		Mods.currentModDirectory = STORY_MOD;
 		WeekData.reloadWeekFiles(false);
 		PlayState.storyWeek = 0;
 		Difficulty.loadFromWeek();
 
-		var normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-		var launchDiff = (normalIdx > -1) ? normalIdx : 0;
-
-		var poop = Highscore.formatSong(songLower, launchDiff);
+		final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
+		final launchDiff = (normalIdx > -1) ? normalIdx : 0;
 
 		try
 		{
-			Song.loadFromJson(poop, songLower);
+			Song.loadFromJson(Highscore.formatSong(songLower, launchDiff), songLower);
 			PlayState.isStoryMode     = true;
 			PlayState.storyPlaylist   = STORY_SONGS.slice(curIndex);
 			PlayState.storyDifficulty = launchDiff;
@@ -628,27 +647,27 @@ class StoryModeState extends MusicBeatState
 		}
 
 		canInteract = false;
+
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());
+
 		#if !SHOW_LOADING_SCREEN FlxG.sound.music.stop(); #end
 	}
 
 	function forceLoadYourselfSong() {
-		var song = 'yourself';
+		final song:String = 'yourself';
 
 		Mods.currentModDirectory = STORY_MOD;
 		WeekData.reloadWeekFiles(false);
 		PlayState.storyWeek = 1;
 		Difficulty.loadFromWeek();
 
-		var normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-		var launchDiff = (normalIdx > -1) ? normalIdx : 0;
-
-		var poop = Highscore.formatSong(song, launchDiff);
+		final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
+		final launchDiff = (normalIdx > -1) ? normalIdx : 0;
 
 		try
 		{
-			Song.loadFromJson(song, poop);
+			Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
 			PlayState.isStoryMode     = true;
 			PlayState.storyDifficulty = 1;
 		}
@@ -657,8 +676,10 @@ class StoryModeState extends MusicBeatState
 			trace('Error loading song: ' + e.message);
 			return;
 		}
+
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());
+
 		#if !SHOW_LOADING_SCREEN FlxG.sound.music.stop(); #end
 	}
 }

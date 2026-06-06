@@ -43,7 +43,7 @@
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/deception/picorun",
+	"image": "characters/deception/pico",
 	"position": [0, -50],
 	"healthicon": "pico-req",
 	"flip_x": false,

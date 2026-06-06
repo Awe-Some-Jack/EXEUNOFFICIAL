@@ -115,6 +115,8 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 	public var isAnimateAtlas(get, never):Bool;
 	inline function get_isAnimateAtlas() return #if flixel_animate isAnimate #else false #end;
 
+	var _ = animate.internal.elements.FlxSpriteElement; //please work
+
 	public function new(x:Float, y:Float, ?character:String = 'bf', ?isPlayer:Bool = false)
 	{
 		super(x, y);

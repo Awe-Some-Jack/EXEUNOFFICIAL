@@ -6,22 +6,22 @@ import objects.*;
 
 class BIOS extends MusicBeatState
 {
-	
 	public var biosCharacter:BIOSCharacter; 
 	public var biosShowcase:BIOSShowcase;   
-	public var biosInfo:BIOSInfo;           
-
-
+	public var biosInfo:BIOSInfo;
 	public var editorOverride:Bool = false;
 
-	override function create()
+	override function create():Void
 	{
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
 		super.create();
 
-		var fondo = new FlxSprite(0, 0);
+		persistentUpdate = true;
+		persistentDraw = true;
+
+		final fondo = new FlxSprite(0, 0);
 		fondo.loadGraphic(Assets.getBitmapData('assets/exe/extras/fondo.png'));
 		fondo.scale.set(FlxG.width / fondo.width, FlxG.height / fondo.height);
 		fondo.updateHitbox();
@@ -29,7 +29,7 @@ class BIOS extends MusicBeatState
 		fondo.antialiasing = ClientPrefs.data.antialiasing;
 		add(fondo);
 
-		var spikestop:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/extras/bios/backdrop.png'), Y);
+		final spikestop = new FlxBackdrop(Assets.getBitmapData('assets/exe/extras/bios/backdrop.png'), Y);
 		spikestop.antialiasing = ClientPrefs.data.antialiasing;
 		spikestop.velocity.y = 60;
 		spikestop.screenCenter();
@@ -43,17 +43,19 @@ class BIOS extends MusicBeatState
 
 		biosCharacter.bringNamesToFront();
 
-		if (biosCharacter.chars_list.length > 0) biosCharacter.changeCharBio();
+		if (biosCharacter.chars_list.length > 0) 
+			biosCharacter.changeCharBio();
 	}
 
-	override function update(elapsed:Float)
+	override function update(elapsed:Float):Void
 	{
-		
 		super.update(elapsed);
 
 		if (controls.BACK)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
+			
+			biosInfo?.clearCameras();
 			FlxG.switchState(() -> new ExtrasMenu());
 		}
 
@@ -62,22 +64,25 @@ class BIOS extends MusicBeatState
 
 		if (controls.RESET) FlxG.resetState();
 
-		biosShowcase.update(elapsed);
-		biosInfo.update(elapsed);
-		biosCharacter.update(elapsed);
+		biosShowcase?.update(elapsed);
+		biosInfo?.update(elapsed);
+		biosCharacter?.update(elapsed);
 
 		if (!editorOverride && biosCharacter.chars_list.length > 0)
 		{
-			var ch = biosShowcase.character;
-			ch.x = biosShowcase.lockedX;
-			ch.y = biosShowcase.lockedY;
+			final ch = biosShowcase.character;
+			if (ch != null)
+			{
+				ch.x = biosShowcase.lockedX;
+				ch.y = biosShowcase.lockedY;
+			}
 		}
 	}
 
-	override function destroy()
+	override function destroy():Void
 	{
-		biosInfo.destroy();
-		biosShowcase.destroy();
+		biosInfo?.destroy();
+		biosShowcase?.destroy();
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 		super.destroy();

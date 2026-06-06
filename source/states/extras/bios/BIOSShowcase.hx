@@ -1,12 +1,16 @@
 package states.extras.bios;
 
 import flixel.*;
+import flixel.addons.display.shapes.*;
 import flixel.graphics.FlxGraphic;
 import flixel.util.FlxSpriteUtil;
+import flixel.util.FlxTimer;
+
 import objects.*;
-import flixel.addons.display.shapes.*;
+
 import sys.thread.Thread;
 import sys.thread.Mutex;
+
 import openfl.display.BitmapData;
 
 class BIOSShowcase
@@ -23,22 +27,22 @@ class BIOSShowcase
 	var circleBig:FlxShapeCircle;
 	var variantDots:FlxText;
 
-	static inline var TITLE_X:Int  = 460;
-	static inline var TITLE_Y:Int  = 34;
-	static inline var TITLE_W:Int  = 328;
-	static inline var TITLE_H:Int  = 100;
+	static inline final TITLE_X:Int  = 460;
+	static inline final TITLE_Y:Int  = 34;
+	static inline final TITLE_W:Int  = 328;
+	static inline final TITLE_H:Int  = 100;
 
-	static inline var ARTIST_X:Int = 471;
-	static inline var ARTIST_Y:Int = 588;
-	static inline var ARTIST_W:Int = 332;
-	static inline var ARTIST_H:Int = 100;
-	static inline var ARTIST_MAX_SIZE:Int = 40;
-	static inline var ARTIST_MIN_SIZE:Int = 14;
+	static inline final ARTIST_X:Int = 471;
+	static inline final ARTIST_Y:Int = 588;
+	static inline final ARTIST_W:Int = 332;
+	static inline final ARTIST_H:Int = 100;
+	static inline final ARTIST_MAX_SIZE:Int = 40;
+	static inline final ARTIST_MIN_SIZE:Int = 14;
 
 	var charBiosSprite:FlxSprite;
 
 	var abDebug:Bool   = false;
-	var abTarget:Int   = 0; // 0=move, 1=size
+	var abTarget:Int   = 0;
 	var abLabel:FlxText;
 	var abBox:FlxSprite;
 
@@ -47,13 +51,13 @@ class BIOSShowcase
 	var _aw:Float = ARTIST_W;
 	var _ah:Float = ARTIST_H;
 
-	static inline var ARTIST_CYCLE_TIME:Float = 5.0;
-	static inline var ARTIST_FADE_TIME:Float  = 0.5;
+	static inline final ARTIST_CYCLE_TIME:Float = 5.0;
+	static inline final ARTIST_FADE_TIME:Float  = 0.5;
 	var _artists:Array<String> = [];
 	var _artistIdx:Int   = 0;
 	var _artistTimer:Float = 0;
 	var _artistFading:Bool = false;
-	var _artistFadeDir:Int = 1; // 1=fadeout, -1=fadein
+	var _artistFadeDir:Int = 1;
 
 	var _danceTimer:Float = 0;
 	var _danced:Bool = false;
@@ -67,17 +71,22 @@ class BIOSShowcase
 	var _pendingBitmaps:Map<String, BitmapData> = [];
 	var _preloadCancelToken:{ cancelled:Bool } = { cancelled: false };
 
+	var charLoadTimer:FlxTimer;
+
 	public function new(parent:BIOS)
 	{
 		bios = parent;
-		var bc = bios.biosCharacter;
-
+		final bc = bios.biosCharacter;
 		if (bc.charMods_list.length > 0 && bc.charMods_list[0] != '')
 			Mods.currentModDirectory = bc.charMods_list[0];
-
+			
 		character = new Character(0, 0, bc.chars_list.length > 0 ? bc.chars_list[0] : 'bf', false);
 		character.scrollFactor.set();
-		if (bc.scales_list.length > 0) { var s = bc.scales_list[0]; character.scale.set(s, s); character.updateHitbox(); }
+		if (bc.scales_list.length > 0) { 
+			final s = bc.scales_list[0]; 
+			character.scale.set(s, s); 
+			character.updateHitbox(); 
+		}
 		if (bc.flipX_list.length  > 0) character.flipX = bc.flipX_list[0];
 		bios.add(character);
 		_forceIdleLoop();
@@ -86,22 +95,22 @@ class BIOSShowcase
 		circle.alpha = 0.75;
 		circle.scrollFactor.set();
 		bios.add(circle);
-
+		
 		circleBig = new FlxShapeCircle(721, 495, 46, {thickness:4, color:FlxColor.BLACK}, FlxColor.TRANSPARENT);
 		circleBig.alpha = 0.75;
 		circleBig.scrollFactor.set();
 		bios.add(circleBig);
-
+		
 		icon = new HealthIcon(bc.healthicon_list.length > 0 ? bc.healthicon_list[0] : 'face', true);
 		icon.scale.set(0.7, 0.7);
 		icon.setPosition(786, 425);
 		bios.add(icon);
-
+		
 		textCenter = new FlxSprite(690, 320);
 		textCenter.makeGraphic(50, 50, FlxColor.TRANSPARENT);
 		textCenter.scrollFactor.set();
 		bios.add(textCenter);
-
+		
 		charName = new FlxText(TITLE_X, TITLE_Y, TITLE_W, bc.displayNames_list.length > 0 ? bc.displayNames_list[0] : '', 68);
 		charName.setFormat(Paths.font('NiseSegaSonic.TTF'), 68, FlxColor.WHITE, CENTER);
 		charName.antialiasing = ClientPrefs.data.antialiasing;
@@ -116,13 +125,13 @@ class BIOSShowcase
 		artistName.text = bc.artist_list.length > 0 ? 'by\n${bc.artist_list[0]}' : '';
 		bios.add(artistName);
 		_fitArtistName();
-
+		
 		variantDots = new FlxText(0, FlxG.height - 60, 0, '', 22);
 		variantDots.setFormat(Paths.font('NiseSegaSonic.TTF'), 22, FlxColor.WHITE, CENTER);
 		variantDots.scrollFactor.set();
 		variantDots.visible = false;
 		bios.add(variantDots);
-
+		
 		charBiosSprite = new FlxSprite(36, 19);
 		charBiosSprite.loadGraphic(openfl.utils.Assets.getBitmapData('assets/exe/extras/bios/characterbios.png'));
 		charBiosSprite.scrollFactor.set();
@@ -134,7 +143,7 @@ class BIOSShowcase
 		abBox.scrollFactor.set();
 		abBox.visible = false;
 		bios.add(abBox);
-
+		
 		abLabel = new FlxText(10, 30, 0, '', 18);
 		abLabel.setFormat(Paths.font('smallass.TTF'), 18, FlxColor.LIME, LEFT);
 		abLabel.scrollFactor.set();
@@ -142,19 +151,31 @@ class BIOSShowcase
 		bios.add(abLabel);
 	}
 
-	public function onCharChanged(index:Int)
+	public function onCharChanged(index:Int):Void
 	{
-		var bc = bios.biosCharacter;
+		final bc = bios.biosCharacter;
 
-		_swapChar(bc.chars_list[index]);
 		_swapIcon(bc.healthicon_list[index]);
+		icon.setPosition(bc.icon_offset[index][0], bc.icon_offset[index][1]);
+		charName.text = bc.displayNames_list[index];
+		_fitCharName();
+		_setArtist(bc.artist_list[index]);
+		_updateDots();
 
+		charLoadTimer?.cancel();
+		charLoadTimer = new FlxTimer().start(0.05, (_) -> _applyCharGraphic(index));
+	}
+
+	function _applyCharGraphic(index:Int):Void
+	{
+		final bc = bios.biosCharacter;
+		_swapChar(bc.chars_list[index]);
 		_forceIdleLoop();
 		_preloadNeighbors(index);
 
 		if (!bios.editorOverride)
 		{
-			var s = bc.scales_list[index];
+			final s = bc.scales_list[index];
 			character.scale.set(s, s);
 			character.flipX = bc.flipX_list[index];
 			character.updateHitbox();
@@ -162,144 +183,143 @@ class BIOSShowcase
 			lockedY = bc.offsets_list[index][1] - character.offset.y;
 			character.setPosition(lockedX, lockedY);
 		}
-
-		icon.setPosition(bc.icon_offset[index][0], bc.icon_offset[index][1]);
-		charName.text = bc.displayNames_list[index];
-		_fitCharName();
-		_setArtist(bc.artist_list[index]);
-
-		_updateDots();
 	}
 
-	public function onVariantChanged(v:Dynamic)
+	public function onVariantChanged(v:Dynamic):Void
 	{
-		var bc = bios.biosCharacter;
+		final bc = bios.biosCharacter;
+		final charId = (v.char != null) ? Std.string(v.char) : bc.chars_list[bc.curChar];
+		final iconId = (v.icon != null) ? Std.string(v.icon) : bc.healthicon_list[bc.curChar];
 
-		var charId = (v.char != null) ? Std.string(v.char) : bc.chars_list[bc.curChar];
-		var iconId = (v.icon != null) ? Std.string(v.icon) : bc.healthicon_list[bc.curChar];
-		_swapChar(charId);
 		_swapIcon(iconId);
+		final ix:Float = (v.icon_offset != null) ? v.icon_offset[0] : bc.icon_offset[bc.curChar][0];
+		final iy:Float = (v.icon_offset != null) ? v.icon_offset[1] : bc.icon_offset[bc.curChar][1];
+		icon.setPosition(ix, iy);
 
+		final dispName = (v.display_name != null) ? Std.string(v.display_name) : bc.displayNames_list[bc.curChar];
+		final artist   = (v.artist != null) ? Std.string(v.artist) : bc.artist_list[bc.curChar];
+		charName.text = dispName;
+		_fitCharName();
+		_setArtist(artist);
+		_updateDots();
+
+		charLoadTimer?.cancel();
+		charLoadTimer = new FlxTimer().start(0.15, (_) -> _applyVariantGraphic(v, charId));
+	}
+
+	function _applyVariantGraphic(v:Dynamic, charId:String):Void
+	{
+		final bc = bios.biosCharacter;
+		_swapChar(charId);
 		_forceIdleLoop();
 		_preloadNeighbors(bc.curChar);
 
 		if (!bios.editorOverride)
 		{
-			var s:Float = (v.char_scale != null) ? v.char_scale : bc.scales_list[bc.curChar];
+			final s:Float = (v.char_scale != null) ? v.char_scale : bc.scales_list[bc.curChar];
 			character.scale.set(s, s);
 			character.flipX = (v.flip_x == true);
 			character.updateHitbox();
-			var ox:Float = (v.char_offset != null) ? v.char_offset[0] : bc.offsets_list[bc.curChar][0];
-			var oy:Float = (v.char_offset != null) ? v.char_offset[1] : bc.offsets_list[bc.curChar][1];
+			final ox:Float = (v.char_offset != null) ? v.char_offset[0] : bc.offsets_list[bc.curChar][0];
+			final oy:Float = (v.char_offset != null) ? v.char_offset[1] : bc.offsets_list[bc.curChar][1];
 			lockedX = ox - character.offset.x;
 			lockedY = oy - character.offset.y;
 			character.setPosition(lockedX, lockedY);
 		}
-
-		var ix:Float = (v.icon_offset != null) ? v.icon_offset[0] : bc.icon_offset[bc.curChar][0];
-		var iy:Float = (v.icon_offset != null) ? v.icon_offset[1] : bc.icon_offset[bc.curChar][1];
-		icon.setPosition(ix, iy);
-
-		var dispName = (v.display_name != null) ? Std.string(v.display_name) : bc.displayNames_list[bc.curChar];
-		var artist   = (v.artist != null) ? Std.string(v.artist) : bc.artist_list[bc.curChar];
-		charName.text = dispName;
-		_fitCharName();
-		_setArtist(artist);
-
-		_updateDots();
 	}
 
-	public function destroy()
+	public function destroy():Void
 	{
+		charLoadTimer?.cancel();
+		
 		_preloadCancelToken.cancelled = true;
 		_preloadMutex.acquire();
 		for (key in _pendingBitmaps.keys())
 		{
-			_pendingBitmaps.get(key).dispose();
+			_pendingBitmaps.get(key)?.dispose();
 			_pendingBitmaps.remove(key);
 		}
 		_preloadMutex.release();
 	}
 
-	function _preloadNeighbors(centerIdx:Int)
+	function _preloadNeighbors(centerIdx:Int):Void
 	{
 		_preloadCancelToken.cancelled = true;
-		var token = { cancelled: false };
+		final token = { cancelled: false };
 		_preloadCancelToken = token;
-
-		var bc     = bios.biosCharacter;
-		var n      = bc.chars_list.length;
+		
+		final bc = bios.biosCharacter;
+		final n = bc.chars_list.length;
 		if (n == 0) return;
 
-		var indices:Array<Int> = [];
+		final indices:Array<Int> = [];
 		for (delta in [-1, 1, -2, 2])
 		{
-			var idx = ((centerIdx + delta) % n + n) % n;
+			final idx = ((centerIdx + delta) % n + n) % n;
 			if (!indices.contains(idx)) indices.push(idx);
 		}
 
-		var charIds:Array<String> = [];
-		var modDirs:Array<String> = [];
+		final charIds:Array<String> = [];
+		final modDirs:Array<String> = [];
 		for (idx in indices)
 		{
-			var variants = bc.variants_list[idx];
+			final variants = bc.variants_list[idx];
 			if (variants != null && variants.length > 0)
 			{
 				for (v in variants)
 				{
-					var cid = (v.char != null) ? Std.string(v.char) : bc.chars_list[idx];
-					var mod = (v.mod  != null) ? Std.string(v.mod)  : bc.charMods_list[idx];
+					final cid = (v.char != null) ? Std.string(v.char) : bc.chars_list[idx];
+					final mod = (v.mod  != null) ? Std.string(v.mod)  : bc.charMods_list[idx];
 					if (!charIds.contains(cid)) { charIds.push(cid); modDirs.push(mod); }
 				}
 			}
 			else
 			{
-				var cid = bc.chars_list[idx];
-				var mod = bc.charMods_list[idx];
+				final cid = bc.chars_list[idx];
+				final mod = bc.charMods_list[idx];
 				if (!charIds.contains(cid)) { charIds.push(cid); modDirs.push(mod); }
 			}
 		}
 
-		Thread.create(function() {
+		Thread.create(() -> {
 			for (i in 0...charIds.length)
 			{
 				if (token.cancelled) return;
 
-				var charId = charIds[i];
-				var mod    = modDirs[i];
+				final charId = charIds[i];
+				final mod    = modDirs[i];
 
-				var charPath = 'characters/$charId.json';
+				final charPath = 'characters/$charId.json';
 				var fullPath:String;
 				if (mod != null && mod != '')
 					fullPath = 'mods/$mod/$charPath';
 				else
 				{
-					var shared = Paths.getSharedPath(charPath);
-					fullPath = FileSystem.exists(shared) ? shared : shared;
+					final shared = Paths.getSharedPath(charPath);
+					fullPath = sys.FileSystem.exists(shared) ? shared : shared;
 					#if MODS_ALLOWED
-					var modded = Paths.modFolders(charPath);
-					if (FileSystem.exists(modded)) fullPath = modded;
+					final modded = Paths.modFolders(charPath);
+					if (sys.FileSystem.exists(modded)) fullPath = modded;
 					#end
 				}
 
-				if (!FileSystem.exists(fullPath)) continue;
+				if (!sys.FileSystem.exists(fullPath)) continue;
 
 				var json:Dynamic;
 				try { json = haxe.Json.parse(sys.io.File.getContent(fullPath)); }
 				catch(e:Dynamic) { continue; }
 
 				if (json.image == null) continue;
-				var images:Array<String> = Std.string(json.image).split(',');
+				final images:Array<String> = Std.string(json.image).split(',');
 
 				for (imgKey in images)
 				{
 					if (token.cancelled) return;
 					imgKey = StringTools.trim(imgKey);
-
-					var cacheKey = 'images/$imgKey.png';
+					final cacheKey = 'images/$imgKey.png';
 
 					_preloadMutex.acquire();
-					var skip = _pendingBitmaps.exists(cacheKey);
+					final skip = _pendingBitmaps.exists(cacheKey);
 					_preloadMutex.release();
 					if (skip) continue;
 
@@ -310,12 +330,12 @@ class BIOSShowcase
 					{
 						imgFile = Paths.getSharedPath('images/$imgKey.png');
 						#if MODS_ALLOWED
-						var m = Paths.modFolders('images/$imgKey.png');
-						if (FileSystem.exists(m)) imgFile = m;
+						final m = Paths.modFolders('images/$imgKey.png');
+						if (sys.FileSystem.exists(m)) imgFile = m;
 						#end
 					}
 
-					if (!FileSystem.exists(imgFile)) continue;
+					if (!sys.FileSystem.exists(imgFile)) continue;
 
 					var bmp:BitmapData;
 					try { bmp = BitmapData.fromFile(imgFile); }
@@ -334,23 +354,23 @@ class BIOSShowcase
 		});
 	}
 
-	function _swapChar(charId:String)
+	function _swapChar(charId:String):Void
 	{
 		if (character.curCharacter == charId) return;
-		var old = character.graphic;
+		final old = character.graphic;
 		character.changeCharacter(charId);
 		_releaseGraphic(old, character.graphic);
 	}
 
-	function _swapIcon(iconId:String)
+	function _swapIcon(iconId:String):Void
 	{
 		if (icon.getCharacter() == iconId) return;
-		var old = icon.graphic;
+		final old = icon.graphic;
 		icon.changeIcon(iconId);
 		_releaseGraphic(old, icon.graphic);
 	}
 
-	function _releaseGraphic(oldGfx:FlxGraphic, newGfx:FlxGraphic)
+	function _releaseGraphic(oldGfx:FlxGraphic, newGfx:FlxGraphic):Void
 	{
 		if (oldGfx == null || oldGfx == newGfx) return;
 		if (oldGfx.key != null)
@@ -360,20 +380,20 @@ class BIOSShowcase
 		FlxG.bitmap.remove(oldGfx);
 	}
 
-	function _updateDots()
+	function _updateDots():Void
 	{
-		var bc = bios.biosCharacter;
-		var variants = bc.variants_list[bc.curChar];
-		if (variants == null || variants.length == 0) { variantDots.visible = false; return; }
+		final bc = bios.biosCharacter;
+		final variants = bc.variants_list[bc.curChar];
+		if (variants == null || variants.length <= 1) { variantDots.visible = false; return; }
 
 		variantDots.visible = true;
 		var dots = '';
 		for (i in 0...variants.length)
 			dots += (i == bc.curVariant) ? '● ' : '○ ';
-		variantDots.text = dots.rtrim();
+		variantDots.text = StringTools.rtrim(dots);
 	}
 
-	function _fitCharName()
+	function _fitCharName():Void
 	{
 		charName.fieldWidth = 0;
 		var size = 68;
@@ -387,19 +407,19 @@ class BIOSShowcase
 		charName.y = TITLE_Y + (TITLE_H - charName.height) * 0.5;
 	}
 
-	function _setArtist(raw:String)
+	function _setArtist(raw:String):Void
 	{
 		var parts:Array<String> = [];
 		for (p in ~/\s*[\/&\+]\s*/.split(raw))
 		{
-			var s = StringTools.trim(p);
+			final s = StringTools.trim(p);
 			if (s.length > 0) parts.push(s);
 		}
 		if (parts.length == 0) parts = [''];
-
-		_artists     = parts;
-		_artistIdx   = 0;
-		_artistTimer = 0;
+		
+		_artists      = parts;
+		_artistIdx    = 0;
+		_artistTimer  = 0;
 		_artistFading = false;
 		artistName.alpha = 1;
 
@@ -407,7 +427,7 @@ class BIOSShowcase
 		_fitArtistName();
 	}
 
-	function _fitArtistName()
+	function _fitArtistName():Void
 	{
 		artistName.fieldWidth = 0;
 		var size = ARTIST_MAX_SIZE;
@@ -417,20 +437,18 @@ class BIOSShowcase
 			size--;
 			artistName.size = size;
 		}
-		// Center inside the box
 		artistName.fieldWidth = Std.int(_aw);
 		artistName.x = _ax;
 		artistName.y = _ay + (_ah - artistName.height) * 0.5;
 	}
 
-	function _forceIdleLoop()
+	function _forceIdleLoop():Void
 	{
 		if (character.animation == null) return;
-
-		var hasDanceLeft  = character.animation.getByName('danceLeft')  != null;
-		var hasDanceRight = character.animation.getByName('danceRight') != null;
-		var isDance = hasDanceLeft || hasDanceRight;
-
+		final hasDanceLeft  = character.animation.getByName('danceLeft')  != null;
+		final hasDanceRight = character.animation.getByName('danceRight') != null;
+		final isDance = hasDanceLeft || hasDanceRight;
+		
 		_danceTimer = 0;
 		_danced = false;
 
@@ -455,19 +473,19 @@ class BIOSShowcase
 			}
 			if (idleTag == null) idleTag = 'idle';
 
-			var a = character.animation.getByName(idleTag);
+			final a = character.animation.getByName(idleTag);
 			if (a != null) a.looped = true;
 			character.playAnim(idleTag, true);
 		}
 	}
 
-	function _abUpdateLabel()
+	function _abUpdateLabel():Void
 	{
-		var mode = abTarget == 0 ? 'MOVE' : 'SIZE';
+		final mode = abTarget == 0 ? 'MOVE' : 'SIZE';
 		abLabel.text = '[F3] ARTIST DEBUG  |  TAB = $mode\npos: (${Std.int(_ax)}, ${Std.int(_ay)})  size: (${Std.int(_aw)} x ${Std.int(_ah)})';
 	}
 
-	function _abRebuildBox()
+	function _abRebuildBox():Void
 	{
 		abBox.x = _ax;
 		abBox.y = _ay;
@@ -475,7 +493,7 @@ class BIOSShowcase
 		FlxSpriteUtil.drawRect(abBox, 0, 0, _aw, _ah, FlxColor.TRANSPARENT, {thickness: 2, color: 0xFF00FF00});
 	}
 
-	public function update(elapsed:Float)
+	public function update(elapsed:Float):Void
 	{
 		_preloadMutex.acquire();
 		if (_pendingBitmaps.keys().hasNext())
@@ -484,8 +502,8 @@ class BIOSShowcase
 			{
 				if (!Paths.currentTrackedAssets.exists(key))
 				{
-					var bmp = _pendingBitmaps.get(key);
-					var graph = FlxGraphic.fromBitmapData(bmp, false, key);
+					final bmp = _pendingBitmaps.get(key);
+					final graph = FlxGraphic.fromBitmapData(bmp, false, key);
 					graph.persist        = true;
 					graph.destroyOnNoUse = false;
 					Paths.currentTrackedAssets.set(key, graph);
@@ -493,18 +511,18 @@ class BIOSShowcase
 				}
 				else
 				{
-					_pendingBitmaps.get(key).dispose();
+					_pendingBitmaps.get(key)?.dispose();
 				}
 				_pendingBitmaps.remove(key);
 			}
 		}
 		_preloadMutex.release();
-
+		
 		if (character != null && _danceLeftTag != null)
 		{
 			_danceTimer += elapsed;
-			var curAnim = character.animation.curAnim;
-			var animDur = (curAnim != null && curAnim.frameRate > 0)
+			final curAnim = character.animation.curAnim;
+			final animDur = (curAnim != null && curAnim.frameRate > 0)
 				? curAnim.numFrames / curAnim.frameRate
 				: 0.5;
 			if (_danceTimer >= animDur)
@@ -521,7 +539,6 @@ class BIOSShowcase
 		if (_artists.length > 1)
 		{
 			_artistTimer += elapsed;
-
 			if (!_artistFading)
 			{
 				if (_artistTimer >= ARTIST_CYCLE_TIME)
@@ -533,9 +550,9 @@ class BIOSShowcase
 			}
 			else
 			{
-				var fadeDelta = elapsed / ARTIST_FADE_TIME * _artistFadeDir;
+				final fadeDelta = elapsed / ARTIST_FADE_TIME * _artistFadeDir;
 				artistName.alpha -= fadeDelta;
-
+				
 				if (_artistFadeDir == 1 && artistName.alpha <= 0)
 				{
 					artistName.alpha = 0;
@@ -562,21 +579,22 @@ class BIOSShowcase
 		}
 
 		if (!abDebug) return;
-
+		
 		if (FlxG.keys.justPressed.TAB)
 		{
 			abTarget = (abTarget == 0) ? 1 : 0;
 			_abUpdateLabel();
 		}
 
-		var speed:Float = FlxG.keys.pressed.SHIFT ? 5 : 1;
+		final speed:Float = FlxG.keys.pressed.SHIFT ? 5 : 1;
 		var dx:Float = 0;
 		var dy:Float = 0;
+		
 		if (FlxG.keys.pressed.LEFT)  dx -= speed;
 		if (FlxG.keys.pressed.RIGHT) dx += speed;
 		if (FlxG.keys.pressed.UP)    dy -= speed;
 		if (FlxG.keys.pressed.DOWN)  dy += speed;
-
+		
 		if (dx != 0 || dy != 0)
 		{
 			if (abTarget == 0)

@@ -368,7 +368,11 @@ class OptionsState extends MusicBeatState
 				LoadingState.loadAndSwitchState(new PlayState());
 				FlxG.sound.music.volume = 0;
 			}
-			else FlxG.switchState(() -> new EXEMenu());
+			else
+			{
+				FlxG.sound.playMusic(openfl.Assets.getSound('assets/exe/music/menu.ogg'), 1, true);
+				FlxG.switchState(() -> new EXEMenu());
+			}
 		}
 	}
 

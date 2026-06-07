@@ -401,12 +401,8 @@ class ExeGameplayState extends MusicBeatSubstate
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			editingValue = true;
 			nudgeSelectedText(true);
-			var opt = pageOptions[curPage][curSelected];
-			if (opt.isFloat == true)
-			{
-				var g = optionGroups[curSelected];
-				showArrows(g.valueBG.y + (g.valueBG.height - arrowLeft.height) / 2);
-			}
+			var g = optionGroups[curSelected];
+			showArrows(g.valueBG.y + (g.valueBG.height - arrowLeft.height) / 2);
 		}
 
 		if (controls.BACK) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }

@@ -12,13 +12,13 @@ haxelib git lime https://github.com/GreenColdTea/lime-fc.git
 haxelib git openfl https://github.com/GreenColdTea/openfl.git
 haxelib git flixel-addons https://github.com/GreenColdTea/flixel-addons.git funkin-before-rebase
 haxelib install flixel-tools 1.5.1
-haxelib install hscript-iris 1.1.3
 haxelib install tjson 1.4.0
 haxelib install hxdiscord_rpc 1.2.4
 haxelib install hxvlc 2.2.6 --skip-dependencies
 haxelib git flxgif https://github.com/FNF-CC-ENGINE/flxgif.git
+haxelib git hscript-iris https://github.com/GreenColdTea/hscript-iris.git
 haxelib git flixel-animate https://github.com/FNF-CC-ENGINE/flixel-animate.git
-haxelib git linc_luajit https://github.com/superpowers04/linc_luajit 1906c4a96f6bb6df66562b3f24c62f4c5bba14a7
+haxelib git linc_luajit https://github.com/superpowers04/linc_luajit
 haxelib git funkin.vis https://github.com/FunkinCrew/funkVis 22b1ce089dd924f15cdc4632397ef3504d464e90
 haxelib git grig.audio https://github.com/osakared/grig.audio.git
 echo Finished!

@@ -1,0 +1,87 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [734, -52],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Símbolo 174",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [685, -113],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "down mano",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [684, -121],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "up mano",
+			"indices": []
+		},
+		{
+			"offsets": [662, -61],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "left mano"
+		},
+		{
+			"offsets": [802, -76],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "rigth mano"
+		},
+		{
+			"offsets": [824, -101],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "bf_left"
+		},
+		{
+			"offsets": [755, -128],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "bf_down"
+		},
+		{
+			"offsets": [779, -8],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "bf_up"
+		},
+		{
+			"offsets": [733, -89],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "bf_right"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/finalescapebf",
+	"position": [0, 0],
+	"healthicon": "bf",
+	"flip_x": true,
+	"healthbar_colors": [58, 205, 241],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": true
+}

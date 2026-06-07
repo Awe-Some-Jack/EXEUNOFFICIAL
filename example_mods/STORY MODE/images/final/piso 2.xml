@@ -2,9 +2,9 @@
 <TextureAtlas imagePath="piso 2.png">
 	<!-- Created with Adobe Animate version 24.0.10.14 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 148 instancia 10000" x="100" y="100" width="1531" height="320"/>
-	<SubTexture name="Símbolo 148 instancia 10001" x="1731" y="100" width="1531" height="258" frameX="0" frameY="-9" frameWidth="1531" frameHeight="320"/>
-	<SubTexture name="Símbolo 148 instancia 10002" x="100" y="520" width="1531" height="254" frameX="0" frameY="-13" frameWidth="1531" frameHeight="320"/>
-	<SubTexture name="Símbolo 148 instancia 10003" x="1731" y="520" width="1531" height="253" frameX="0" frameY="-14" frameWidth="1531" frameHeight="320"/>
-	<SubTexture name="Símbolo 148 instancia 10004" x="100" y="874" width="1531" height="247" frameX="0" frameY="-20" frameWidth="1531" frameHeight="320"/>
+	<SubTexture name="Símbolo 148 instancia 10000" x="40" y="40" width="2768" height="577"/>
+	<SubTexture name="Símbolo 148 instancia 10001" x="40" y="692" width="2768" height="466" frameX="0" frameY="-17" frameWidth="2768" frameHeight="577"/>
+	<SubTexture name="Símbolo 148 instancia 10002" x="40" y="1233" width="2768" height="460" frameX="0" frameY="-23" frameWidth="2768" frameHeight="577"/>
+	<SubTexture name="Símbolo 148 instancia 10003" x="40" y="1768" width="2768" height="457" frameX="0" frameY="-26" frameWidth="2768" frameHeight="577"/>
+	<SubTexture name="Símbolo 148 instancia 10004" x="40" y="2300" width="2768" height="446" frameX="0" frameY="-37" frameWidth="2768" frameHeight="577"/>
 </TextureAtlas>

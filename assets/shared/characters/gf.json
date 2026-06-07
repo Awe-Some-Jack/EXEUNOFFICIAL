@@ -2,7 +2,7 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [0, -9],
+			"offsets": [0, 0],
 			"anim": "danceRight",
 			"fps": 24,
 			"name": "dance instancia 1",
@@ -10,14 +10,14 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, -9],
+			"offsets": [0, 0],
 			"anim": "danceLeft",
 			"fps": 24,
 			"name": "dance instancia 1",
 			"indices": [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 		},
 		{
-			"offsets": [-40, -49],
+			"offsets": [1, -1],
 			"loop": false,
 			"fps": 24,
 			"anim": "cheer",
@@ -25,7 +25,7 @@
 			"name": "yeah"
 		},
 		{
-			"offsets": [-40, -59],
+			"offsets": [-1, 0],
 			"loop": false,
 			"fps": 24,
 			"anim": "sad",
@@ -33,31 +33,31 @@
 			"name": "lose"
 		},
 		{
-			"offsets": [-40, -38],
-			"indices": [],
-			"fps": 24,
-			"anim": "combo50",
 			"loop": false,
-			"name": "hey 2"
+			"offsets": [0, 0],
+			"anim": "combo200",
+			"fps": 24,
+			"name": "horny",
+			"indices": []
 		},
 		{
-			"offsets": [-42, -41],
-			"indices": [],
-			"fps": 24,
-			"anim": "combo200",
 			"loop": false,
-			"name": "sex"
+			"offsets": [0, 0],
+			"anim": "combo50",
+			"fps": 24,
+			"name": "cheer",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/GF_assets",
-	"position": [-100, -30],
+	"position": [-50, -20],
 	"healthicon": "gf",
 	"flip_x": false,
 	"healthbar_colors": [165, 0, 77],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.1,
 	"_editor_isPlayer": false
 }

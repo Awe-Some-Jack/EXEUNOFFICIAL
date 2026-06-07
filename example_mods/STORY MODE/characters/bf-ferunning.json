@@ -1,0 +1,31 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "RUN",
+			"fps": 24,
+			"name": "fucklolll",
+			"indices": []
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+			"fps": 24,
+			"anim": "RUNLOOP",
+			"loop": true,
+			"name": "fucklolll instancia 1"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/bfrunningfe",
+	"position": [0, 0],
+	"healthicon": "bf",
+	"flip_x": true,
+	"healthbar_colors": [58, 205, 241],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": true
+}

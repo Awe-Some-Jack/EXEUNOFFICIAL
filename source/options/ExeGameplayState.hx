@@ -1,13 +1,14 @@
 package options;
 
-import flixel.FlxObject;
-import flixel.addons.display.FlxRuntimeShader;
-import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.addons.display.FlxBackdrop;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.tweens.FlxTween.FlxTweenType;
+import flixel.util.FlxGradient;
 import openfl.Assets;
+import openfl.display.BitmapData;
 
 typedef ExeGameplayOption = {
 	var label:String;
@@ -17,394 +18,473 @@ typedef ExeGameplayOption = {
 	@:optional var isFloat:Bool;
 }
 
-class ExeGameplayState extends MusicBeatState
+typedef GameplayOptionGroup = {
+	var nameBG:FlxSprite;
+	var valueBG:FlxSprite;
+	var nameText:FlxText;
+	var valueText:FlxText;
+}
+
+class ExeGameplayState extends MusicBeatSubstate
 {
-	var bg:FlxSprite;
-	var objsGrp:FlxTypedGroup<FlxSprite>;
-	var title:FlxSprite;
+	static final TB_X:Float       = -134;
+	static final TB_Y:Float       = 143;
+	static final TB_SCALE_X:Float = 0.85;
+	static final TB_SCALE_Y:Float = 0.475;
 
-	var sectionsList:Array<ExeGameplayOption> = [];
+	static final NB_X:Float       = 105;
+	static final NB_Y:Float       = 270;
+	static final NB_SCALE_X:Float = 0.575;
+	static final NB_SCALE_Y:Float = 0.275;
 
-	var sectionsGrp:FlxTypedGroup<FlxText>;
-	var sectionBGGrp:FlxTypedGroup<FlxSprite>;
-	var propertieTxtGrp:FlxTypedGroup<FlxText>;
-	var propertiesBG:FlxTypedGroup<FlxSprite>;
-	var propertieArrows:FlxTypedGroup<FlxSprite>;
-	var sectionBGClone:FlxSprite;
-	var propertieBGClone:FlxSprite;
-	var selectionTween:FlxTween;
-	var sectionPos:Array<Dynamic> = [];
-	var propertiesPos:Array<Dynamic> = [];
-	var propBGCloneShader:FlxRuntimeShader;
+	static final VB_X:Float       = 683;
+	static final VB_Y:Float       = 270;
+	static final VB_SCALE_X:Float = 0.508;
+	static final VB_SCALE_Y:Float = 0.275;
+
+	static final ROW_GAP:Float    = 80;
+	static final FONT:String      = "SonicCD.ttf";
+	static final FONT_SIZE:Int    = 18;
+	static final PAGE_SIZE:Int    = 4;
+
+	static final ARR_L_X:Float   = 773;
+	static final ARR_R_X:Float   = 1075;
+	static final ARR_SCALE:Float = 0.125;
+
+	var titlebar:FlxSprite;
+	var titlebarTxt:FlxText;
+	var arrowLeft:FlxSprite;
+	var arrowRight:FlxSprite;
+	var arrowTweenL:FlxTween;
+	var arrowTweenR:FlxTween;
+	var optionGroups:Array<GameplayOptionGroup> = [];
+
+	var allOptions:Array<ExeGameplayOption>;
+	var pageOptions:Array<Array<ExeGameplayOption>> = [];
 
 	public static var curSelected:Int = 0;
+	public static var curPage:Int = 0;
+	var editingValue:Bool = false;
+	var backLock:Bool = false;
+	var introAnimating:Bool = true;
+	var holdTimer:Float = 0;
+	var holdRepeat:Float = 0;
 
-	var canAction:Bool = true;
-	var camFollow:FlxObject;
-	var camFollowPos:FlxObject;
+	var leftGroup:Array<FlxSprite>  = [];
+	var rightGroup:Array<FlxSprite> = [];
 
-	final GLOBAL_SCALE:Float = (FlxG.width / 3840);
+	var selectionClone:FlxSprite;
+	var selectionCloneWhite:FlxSprite;
+	var selectionCloneV:FlxSprite;
+	var selectionCloneWhiteV:FlxSprite;
+	var selectionCloneTween:FlxTween;
+	var cloneColorTween:FlxTween;
+	var selectionCloneTweenV:FlxTween;
+	var cloneColorTweenV:FlxTween;
+
 
 	override public function create()
 	{
 		super.create();
 
-		sectionsList = [
-			{label: "DOWNSCROLL",       getValue: () -> ClientPrefs.data.downScroll,        setValue: (v) -> ClientPrefs.data.downScroll = v},
-			{label: "MIDDLESCROLL",     getValue: () -> ClientPrefs.data.middleScroll,       setValue: (v) -> ClientPrefs.data.middleScroll = v},
-			{label: "OPPONENT NOTES",   getValue: () -> ClientPrefs.data.opponentStrums,    setValue: (v) -> ClientPrefs.data.opponentStrums = v},
-			{label: "GHOST TAPPING",    getValue: () -> ClientPrefs.data.ghostTapping,       setValue: (v) -> ClientPrefs.data.ghostTapping = v},
-			{label: "AUTO PAUSE",       getValue: () -> ClientPrefs.data.autoPause,          setValue: (v) -> { ClientPrefs.data.autoPause = v; FlxG.autoPause = v; }},
-			{label: "DISABLE RESET",    getValue: () -> ClientPrefs.data.noReset,            setValue: (v) -> ClientPrefs.data.noReset = v},
-			{label: "GUITAR HERO SUSTAINS", getValue: () -> ClientPrefs.data.guitarHeroSustains, setValue: (v) -> ClientPrefs.data.guitarHeroSustains = v},
-			{label: "HITSOUND VOLUME",  getValue: () -> ClientPrefs.data.hitsoundVolume,    setValue: (v) -> { ClientPrefs.data.hitsoundVolume = v; FlxG.sound.play(Paths.sound('hitsound'), v); }, isFloat: true},
-			{label: "RATING OFFSET",    getValue: () -> ClientPrefs.data.ratingOffset,       setValue: (v) -> ClientPrefs.data.ratingOffset = v, isInt: true},
-			{label: "SICK WINDOW",      getValue: () -> ClientPrefs.data.sickWindow,         setValue: (v) -> ClientPrefs.data.sickWindow = v, isFloat: true},
-			{label: "GOOD WINDOW",      getValue: () -> ClientPrefs.data.goodWindow,         setValue: (v) -> ClientPrefs.data.goodWindow = v, isFloat: true},
-			{label: "BAD WINDOW",       getValue: () -> ClientPrefs.data.badWindow,          setValue: (v) -> ClientPrefs.data.badWindow = v, isFloat: true},
-			{label: "SAFE FRAMES",      getValue: () -> ClientPrefs.data.safeFrames,         setValue: (v) -> ClientPrefs.data.safeFrames = v, isFloat: true}
+		allOptions = [
+			{label: "DOWNSCROLL",  getValue: () -> ClientPrefs.data.downScroll,  setValue: (v) -> ClientPrefs.data.downScroll  = v},
+			{label: "SICK WINDOW", getValue: () -> ClientPrefs.data.sickWindow,  setValue: (v) -> ClientPrefs.data.sickWindow  = v, isFloat: true},
+			{label: "GOOD WINDOW", getValue: () -> ClientPrefs.data.goodWindow,  setValue: (v) -> ClientPrefs.data.goodWindow  = v, isFloat: true},
+			{label: "BAD WINDOW",  getValue: () -> ClientPrefs.data.badWindow,   setValue: (v) -> ClientPrefs.data.badWindow   = v, isFloat: true},
+			{label: "SAFE FRAMES", getValue: () -> ClientPrefs.data.safeFrames,  setValue: (v) -> ClientPrefs.data.safeFrames  = v, isFloat: true},
 		];
+
+		var i = 0;
+		while (i < allOptions.length) { pageOptions.push(allOptions.slice(i, i + PAGE_SIZE)); i += PAGE_SIZE; }
 
 		buildUI();
 	}
 
 	function buildUI()
 	{
-		bg = new FlxSprite(-100, -100).loadGraphic(Assets.getBitmapData('assets/exe/options/bg.png'));
-		bg.setGraphicSize(Std.int(FlxG.width * 1.2), Std.int(FlxG.height * 1.2));
-		bg.updateHitbox();
-		bg.screenCenter();
-		bg.antialiasing = ClientPrefs.data.antialiasing;
-		bg.scrollFactor.set(0.1, 0.1);
+		var rectX:Int = -20;
+		var rectY:Int = 145;
+		var rectW:Int = 1450;
+		var rectH:Int = 500;
+
+		var offLeft:Float  = -(rectW + 200);
+		var offRight:Float = FlxG.width + 200;
+
+		var bg = FlxGradient.createGradientFlxSprite(rectW, rectH, [0xFF920e1e, 0xFF6b0b15], 1, 90);
+		bg.x = offRight; bg.y = rectY; bg.scrollFactor.set(0, 0);
 		add(bg);
+		rightGroup.push(bg);
 
-		objsGrp = new FlxTypedGroup<FlxSprite>();
-		add(objsGrp);
+		var borderH:Int = 5;
+		var borderTop = new FlxSprite().makeGraphic(rectW, borderH, 0xFF5a0912);
+		borderTop.x = offRight; borderTop.y = rectY; borderTop.scrollFactor.set(0, 0);
+		var borderBot = new FlxSprite().makeGraphic(rectW, borderH, 0xFF5a0912);
+		borderBot.x = offRight; borderBot.y = rectY + rectH - borderH; borderBot.scrollFactor.set(0, 0);
 
-		for (i in 0...15)
+		var gridSize:Int = 20;
+		var gridTile = new BitmapData(gridSize, gridSize, true, 0x00000000);
+		for (px in 0...gridSize) { gridTile.setPixel32(px, 0, 0x22000000); gridTile.setPixel32(0, px, 0x22000000); }
+		var tilesX:Int = Math.ceil(rectW / gridSize) + 1;
+		var gridFullBmp = new BitmapData(tilesX * gridSize, rectH, true, 0x00000000);
+		for (tx in 0...tilesX)
+			for (ty in 0...Math.ceil(rectH / gridSize))
+				gridFullBmp.copyPixels(gridTile, gridTile.rect, new openfl.geom.Point(tx * gridSize, ty * gridSize));
+		var grid = new FlxBackdrop(gridFullBmp, X);
+		grid.x = offRight; grid.y = rectY; grid.velocity.x = -40; grid.scrollFactor.set(0, 0);
+		grid.clipRect = new flixel.math.FlxRect(0, 0, rectW, rectH);
+		add(grid);
+		rightGroup.push(grid);
+
+		add(borderTop);
+		add(borderBot);
+		rightGroup.push(borderTop);
+		rightGroup.push(borderBot);
+
+		titlebar = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+		titlebar.scale.set(TB_SCALE_X, TB_SCALE_Y); titlebar.updateHitbox();
+		titlebar.x = offLeft; titlebar.y = TB_Y; titlebar.scrollFactor.set(0, 0);
+		add(titlebar);
+		leftGroup.push(titlebar);
+
+		titlebarTxt = new FlxText(0, 0, Std.int(titlebar.width), "GAMEPLAY", 28);
+		titlebarTxt.setFormat(Paths.font(FONT), 28, FlxColor.WHITE, CENTER);
+		titlebarTxt.x = offLeft;
+		titlebarTxt.y = TB_Y + (titlebar.height - titlebarTxt.height) / 2 - 15;
+		titlebarTxt.scrollFactor.set(0, 0);
+		add(titlebarTxt);
+		leftGroup.push(cast titlebarTxt);
+
+		selectionClone = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGClone.png'));
+		selectionClone.scale.set(NB_SCALE_X, NB_SCALE_Y); selectionClone.updateHitbox();
+		selectionClone.x = offRight; selectionClone.scrollFactor.set(0, 0); add(selectionClone);
+		rightGroup.push(selectionClone);
+
+		selectionCloneWhite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGWhite.png'));
+		selectionCloneWhite.scale.set(NB_SCALE_X, NB_SCALE_Y); selectionCloneWhite.updateHitbox();
+		selectionCloneWhite.alpha = 0; selectionCloneWhite.x = offRight; selectionCloneWhite.scrollFactor.set(0, 0); add(selectionCloneWhite);
+		rightGroup.push(selectionCloneWhite);
+
+		selectionCloneV = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGClone.png'));
+		selectionCloneV.scale.set(VB_SCALE_X, VB_SCALE_Y); selectionCloneV.updateHitbox();
+		selectionCloneV.x = offRight; selectionCloneV.scrollFactor.set(0, 0); add(selectionCloneV);
+		rightGroup.push(selectionCloneV);
+
+		selectionCloneWhiteV = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGWhite.png'));
+		selectionCloneWhiteV.scale.set(VB_SCALE_X, VB_SCALE_Y); selectionCloneWhiteV.updateHitbox();
+		selectionCloneWhiteV.alpha = 0; selectionCloneWhiteV.x = offRight; selectionCloneWhiteV.scrollFactor.set(0, 0); add(selectionCloneWhiteV);
+		rightGroup.push(selectionCloneWhiteV);
+
+		arrowLeft = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/arrow.png'));
+		arrowLeft.scale.set(ARR_SCALE, ARR_SCALE); arrowLeft.updateHitbox();
+		arrowLeft.x = ARR_L_X; arrowLeft.scrollFactor.set(0, 0); arrowLeft.visible = false;
+
+		arrowRight = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/arrow.png'));
+		arrowRight.scale.set(ARR_SCALE, ARR_SCALE); arrowRight.updateHitbox();
+		arrowRight.x = ARR_R_X; arrowRight.flipX = true; arrowRight.scrollFactor.set(0, 0); arrowRight.visible = false;
+
+		loadPage();
+		add(arrowLeft);
+		add(arrowRight);
+		playIntro(rectX);
+	}
+
+	function playIntro(rectX:Int)
+	{
+		var dur:Float = 0.45;
+		var ease = FlxEase.quartOut;
+
+		FlxTween.tween(titlebar,    {x: TB_X},  dur, {ease: ease});
+		FlxTween.tween(titlebarTxt, {x: TB_X + (titlebar.width - titlebarTxt.width) / 2}, dur, {ease: ease});
+
+		for (spr in rightGroup)
+			FlxTween.tween(spr, {x: getTargetX(spr)}, dur, {ease: ease});
+
+		new flixel.util.FlxTimer().start(dur + 0.05, (_) -> {
+			introAnimating = false;
+			changeSelection();
+		});
+	}
+
+	function playOutro()
+	{
+		introAnimating = true;
+		var dur:Float = 0.35;
+		var ease = FlxEase.quartIn;
+		var offLeft:Float  = -(FlxG.width + 200);
+		var offRight:Float = FlxG.width + 200;
+
+		for (spr in leftGroup)
+			FlxTween.tween(spr, {x: offLeft}, dur, {ease: ease});
+		for (spr in rightGroup)
+			FlxTween.tween(spr, {x: offRight}, dur, {ease: ease});
+
+		new flixel.util.FlxTimer().start(dur + 0.05, (_) -> close());
+	}
+
+	function getTargetX(spr:FlxSprite):Float
+	{
+		if (spr == selectionClone || spr == selectionCloneWhite)
 		{
-			var obj = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/objs/' + ((i % 7) + 1) + '.png'));
-			obj.setGraphicSize(Std.int(obj.width * GLOBAL_SCALE));
-			obj.updateHitbox();
-			obj.ID = i;
-			obj.antialiasing = ClientPrefs.data.antialiasing;
-			objsGrp.add(obj);
-			resetObj(obj);
+			var g = optionGroups.length > 0 ? optionGroups[curSelected] : null;
+			return g != null ? g.nameBG.x - 3 : NB_X - 3;
 		}
-
-		title = new FlxSprite(0, 20).loadGraphic(Assets.getBitmapData('assets/exe/options/optionsTitle.png'));
-		title.setGraphicSize(Std.int(title.width * GLOBAL_SCALE));
-		title.updateHitbox();
-		title.screenCenter(X);
-		title.antialiasing = ClientPrefs.data.antialiasing;
-		add(title);
-
-		sectionBGClone = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/optionsBG.png'));
-		sectionBGClone.scale.set(GLOBAL_SCALE, GLOBAL_SCALE);
-		sectionBGClone.updateHitbox();
-		add(sectionBGClone);
-
-		#if !html5
-		if (ClientPrefs.data.shaders)
+		if (spr == selectionCloneV || spr == selectionCloneWhiteV)
 		{
-			try
+			var g = optionGroups.length > 0 ? optionGroups[curSelected] : null;
+			return g != null ? g.valueBG.x - 3 : VB_X - 3;
+		}
+		for (g in optionGroups)
+		{
+			if (spr == g.nameBG || spr == g.nameText) return NB_X + (spr == g.nameText ? 120 : 0);
+			if (spr == g.valueBG) return VB_X;
+			if (spr == g.valueText) return VB_X + (g.valueBG.width - g.valueText.width) / 2;
+		}
+		return -20;
+	}
+
+	function loadPage()
+	{
+		for (g in optionGroups)
+		{
+			rightGroup.remove(g.nameBG);   remove(g.nameBG);   g.nameBG.destroy();
+			rightGroup.remove(g.valueBG);  remove(g.valueBG);  g.valueBG.destroy();
+			rightGroup.remove(g.nameText); remove(g.nameText); g.nameText.destroy();
+			rightGroup.remove(g.valueText);remove(g.valueText);g.valueText.destroy();
+		}
+		optionGroups = [];
+
+		var page = pageOptions[curPage];
+		titlebarTxt.text = 'GAMEPLAY';
+
+		var offRight:Float = FlxG.width + 200;
+
+		for (i in 0...page.length)
+		{
+			var opt = page[i];
+			var rowY = NB_Y + i * ROW_GAP;
+
+			var nameBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+			nameBG.scale.set(NB_SCALE_X, NB_SCALE_Y); nameBG.updateHitbox();
+			nameBG.x = introAnimating ? offRight : NB_X; nameBG.y = rowY; nameBG.scrollFactor.set(0, 0);
+			add(nameBG);
+			rightGroup.push(nameBG);
+
+			var valueBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+			valueBG.scale.set(VB_SCALE_X, VB_SCALE_Y); valueBG.updateHitbox();
+			valueBG.x = introAnimating ? offRight : VB_X; valueBG.y = rowY; valueBG.scrollFactor.set(0, 0);
+			add(valueBG);
+			rightGroup.push(valueBG);
+
+			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, FONT_SIZE);
+			nameTxt.setFormat(Paths.font(FONT), FONT_SIZE, FlxColor.WHITE, LEFT);
+			nameTxt.x = introAnimating ? offRight : NB_X + 120;
+			nameTxt.y = rowY + (nameBG.height - nameTxt.height) / 2;
+			nameTxt.scrollFactor.set(0, 0);
+			add(nameTxt);
+			rightGroup.push(cast nameTxt);
+
+			var val = opt.getValue();
+			var label = opt.label;
+			var valStr = "";
+			if (Std.isOfType(val, Bool))
+				valStr = cast(val, Bool) ? "ON" : "OFF";
+			else if (Std.isOfType(val, Float))
 			{
-				var shaderPath = Paths.shaderFragment('adjustColor');
-				if (Assets.exists(shaderPath))
-				{
-					propBGCloneShader = new FlxRuntimeShader(Assets.getText(shaderPath));
-					propBGCloneShader.setFloat("hue", 0);
-					propBGCloneShader.setFloat("brightness", 100);
-					propBGCloneShader.setFloat("contrast", 100);
-					propBGCloneShader.setFloat("saturation", 100);
-					sectionBGClone.shader = propBGCloneShader;
-				}
+				var suffix = (label.indexOf("WINDOW") != -1 || label == "SAFE FRAMES") ? "MS" : "";
+				valStr = Std.string(Math.round(cast(val, Float) * 10) / 10) + suffix;
 			}
-			catch (e:Dynamic) { trace("Shader error: " + e); }
+			else
+				valStr = Std.string(val);
+			var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), valStr.toUpperCase(), FONT_SIZE);
+			valueTxt.setFormat(Paths.font(FONT), FONT_SIZE, FlxColor.WHITE, CENTER);
+			valueTxt.x = introAnimating ? offRight : VB_X + (valueBG.width - valueTxt.width) / 2;
+			valueTxt.y = rowY + (valueBG.height - valueTxt.height) / 2;
+			valueTxt.scrollFactor.set(0, 0);
+			add(valueTxt);
+			rightGroup.push(cast valueTxt);
+
+			optionGroups.push({nameBG: nameBG, valueBG: valueBG, nameText: nameTxt, valueText: valueTxt});
 		}
-		#end
 
-		propertieBGClone = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
-		propertieBGClone.scale.set(GLOBAL_SCALE, GLOBAL_SCALE);
-		propertieBGClone.updateHitbox();
-		add(propertieBGClone);
-
-		#if !html5
-		if (ClientPrefs.data.shaders && propBGCloneShader != null)
-			propertieBGClone.shader = propBGCloneShader;
-		#end
-
-		sectionBGGrp = new FlxTypedGroup<FlxSprite>();
-		add(sectionBGGrp);
-		sectionsGrp = new FlxTypedGroup<FlxText>();
-		add(sectionsGrp);
-		propertiesBG = new FlxTypedGroup<FlxSprite>();
-		add(propertiesBG);
-		propertieArrows = new FlxTypedGroup<FlxSprite>();
-		add(propertieArrows);
-		propertieTxtGrp = new FlxTypedGroup<FlxText>();
-		add(propertieTxtGrp);
-
-		for (i in 0...sectionsList.length)
-			addOption(sectionsList[i].label, sectionsList[i].getValue());
-
-		camFollow = new FlxObject(0, 0, 1, 1);
-		camFollowPos = new FlxObject(0, 0, 1, 1);
-		add(camFollow);
-		add(camFollowPos);
-
-		changeSelect();
-
-		camFollow.setPosition(FlxG.width / 2, sectionsGrp.members[curSelected].y);
-		camFollowPos.setPosition(camFollow.x, camFollow.y);
-		FlxG.camera.follow(camFollowPos, null, 0.15);
+		if (!introAnimating) changeSelection();
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		var lerpVal:Float = FlxMath.bound(elapsed * 9.6, 0, 1);
-		camFollowPos.setPosition(
-			FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal),
-			FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal)
-		);
+		if (introAnimating) return;
 
-		objsGrp.forEachExists(function(o)
-		{
-			if (o.y > FlxG.height || o.x > FlxG.width || o.y < -o.height || o.x < -o.width)
-				resetObj(o);
-		});
+		if (backLock) { backLock = false; return; }
 
-		sectionsGrp.forEachExists(function(txt)
+		if (editingValue)
 		{
-			if (sectionPos.length > 0)
+			var isLeft  = controls.UI_LEFT_P  || (controls.UI_LEFT  && holdTimer > 0.4 && holdRepeat <= 0);
+			var isRight = controls.UI_RIGHT_P || (controls.UI_RIGHT && holdTimer > 0.4 && holdRepeat <= 0);
+
+			if (controls.UI_LEFT || controls.UI_RIGHT)
+				holdTimer += elapsed;
+			else
+				holdTimer = 0;
+
+			if (holdRepeat > 0) holdRepeat -= elapsed;
+
+			if (isLeft || isRight)
 			{
-				if (txt.ID != curSelected)
-				{
-					txt.x = FlxMath.lerp(txt.x, sectionPos[txt.ID].x, elapsed * 9);
-					txt.y = FlxMath.lerp(txt.y, sectionPos[txt.ID].y, elapsed * 9);
-				}
-				var sep = 14;
-				var bg = sectionBGGrp.members[txt.ID];
-				bg.x = txt.x + ((28 * sectionsList[txt.ID].label.length - bg.width) / 2) - 20;
-				bg.y = (txt.y - (txt.size / 2)) + (sep * 2.5);
-			}
-		});
+				if (controls.UI_LEFT_P || controls.UI_RIGHT_P) holdRepeat = 0;
+				else holdRepeat = 0.07;
 
-		propertieTxtGrp.forEachExists(function(txt)
-		{
-			if (propertiesPos.length > 0)
+				var opt = pageOptions[curPage][curSelected];
+				var val = opt.getValue();
+				var txt = optionGroups[curSelected].valueText;
+				var label = opt.label;
+				if (Std.isOfType(val, Bool))
+				{
+					var b = !cast(val, Bool);
+					opt.setValue(b);
+					txt.text = b ? "ON" : "OFF";
+				}
+				else if (opt.isFloat == true)
+				{
+					var n = cast(val, Float);
+					var step = 0.1; var mn = 0.0; var mx = 1.0;
+					if (label == "SICK WINDOW")      { step = 0.5; mn = 15.0; mx = 45.0; }
+					else if (label == "GOOD WINDOW") { step = 1.0; mn = 15.0; mx = 90.0; }
+					else if (label == "BAD WINDOW")  { step = 1.5; mn = 15.0; mx = 135.0; }
+					else if (label == "SAFE FRAMES") { step = 0.1; mn = 2.0;  mx = 10.0; }
+					n = Math.round((n + (isRight ? step : -step)) * 10) / 10;
+					n = Math.max(mn, Math.min(mx, n));
+					opt.setValue(n);
+					var suffix = (label.indexOf("WINDOW") != -1 || label == "SAFE FRAMES") ? "MS" : "";
+					txt.text = Std.string(n) + suffix;
+				}
+				ClientPrefs.saveSettings();
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+			}
+			if (controls.BACK)
 			{
-				if (txt.ID != curSelected)
-				{
-					txt.x = FlxMath.lerp(txt.x, propertiesPos[txt.ID].x, elapsed * 9);
-					txt.y = FlxMath.lerp(txt.y, propertiesPos[txt.ID].y, elapsed * 9);
-				}
-				var sep = 14;
-				var bg = propertiesBG.members[txt.ID];
-				bg.x = txt.x + ((28 * txt.text.length - bg.width) / 2);
-				bg.y = (txt.y - (txt.size / 2)) + (sep * 2.5);
-				var arrows = propertieArrows.members[txt.ID];
-				arrows.x = bg.x;
-				arrows.y = bg.y;
+				FlxG.sound.play(Paths.sound('cancelMenu'));
+				editingValue = false;
+				holdTimer = 0; holdRepeat = 0;
+				backLock = true;
+				hideArrows();
+				nudgeSelectedText(false);
 			}
-		});
-
-		if (!canAction) return;
+			return;
+		}
 
 		if (controls.UI_UP_P || controls.UI_DOWN_P)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
-			changeSelect(controls.UI_UP_P ? -1 : 1);
+			curSelected = FlxMath.wrap(curSelected + (controls.UI_UP_P ? -1 : 1), 0, optionGroups.length - 1);
+			hideArrows();
+			changeSelection();
 		}
 
-		if (controls.UI_RIGHT_P || controls.UI_LEFT_P)
+		if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
 		{
-			var isRight = controls.UI_RIGHT_P;
-			var option = sectionsList[curSelected];
-			var val = option.getValue();
-			var txt = propertieTxtGrp.members[curSelected];
-			var label = option.label;
-
-			if (Std.isOfType(val, Bool))
-			{
-				var b = !cast(val, Bool);
-				option.setValue(b);
-				txt.text = b ? "ON" : "OFF";
-			}
-			else if (option.isInt == true)
-			{
-				var n = cast(val, Int) + (isRight ? 1 : -1);
-				if (label == "RATING OFFSET")
-					n = Std.int(isRight ? Math.min(n, 30) : Math.max(n, -30));
-				else
-					n = Std.int(isRight ? Math.min(n, 240) : Math.max(n, 60));
-				option.setValue(n);
-				txt.text = Std.string(n) + (label == "RATING OFFSET" ? "MS" : "");
-			}
-			else if (option.isFloat == true)
-			{
-				var n = cast(val, Float);
-				var step = 0.1;
-				var mn = 0.0;
-				var mx = 1.0;
-				if (label == "SICK WINDOW")      { step = 0.5; mn = 15.0; mx = 45.0; }
-				else if (label == "GOOD WINDOW") { step = 1.0; mn = 15.0; mx = 90.0; }
-				else if (label == "BAD WINDOW")  { step = 1.5; mn = 15.0; mx = 135.0; }
-				else if (label == "SAFE FRAMES") { step = 0.1; mn = 2.0;  mx = 10.0; }
-				n = Math.round((n + (isRight ? step : -step)) * 10) / 10;
-				n = Math.max(mn, Math.min(mx, n));
-				option.setValue(n);
-				var hasSuffix = label.indexOf("WINDOW") != -1 || label == "SAFE FRAMES";
-				txt.text = Std.string(n) + (hasSuffix ? "MS" : "");
-			}
-			ClientPrefs.saveSettings();
 			FlxG.sound.play(Paths.sound('scrollMenu'));
+			var isRight = controls.UI_RIGHT_P;
+			if (isRight && curPage < pageOptions.length - 1)
+			{
+				curPage++; curSelected = 0; loadPage();
+			}
+			else if (!isRight && curPage > 0)
+			{
+				curPage--; curSelected = 0; loadPage();
+			}
 		}
 
-		if (controls.BACK)
+		if (controls.ACCEPT)
 		{
-			FlxG.sound.play(Paths.sound('cancelMenu'));
-			FlxG.switchState(() -> new options.OptionsState());
+			FlxG.sound.play(Paths.sound('scrollMenu'));
+			editingValue = true;
+			nudgeSelectedText(true);
+			var opt = pageOptions[curPage][curSelected];
+			if (opt.isFloat == true)
+			{
+				var g = optionGroups[curSelected];
+				showArrows(g.valueBG.y + (g.valueBG.height - arrowLeft.height) / 2);
+			}
 		}
+
+		if (controls.BACK) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
 	}
 
-	var selectionCloneTween:FlxTween;
-	var propTween:FlxTween;
-	var propArrowTween:FlxTween;
-	var propCloneTween:FlxTween;
-
-	function changeSelect(x:Int = 0)
+	function changeSelection()
 	{
-		curSelected = FlxMath.wrap(curSelected + x, 0, sectionsList.length - 1);
-		if (sectionBGGrp.members[curSelected] == null) return;
+		if (optionGroups.length == 0) return;
+		var group = optionGroups[curSelected];
+		var nbg = group.nameBG;
+		var vbg = group.valueBG;
 
-		var curSectionBG = sectionBGGrp.members[curSelected];
-		var curSectionText = sectionsGrp.members[curSelected];
-		var currentPos = sectionPos[curSelected];
-
-		camFollow.setPosition(FlxG.width / 2, curSectionText.y);
-		sectionBGClone.setPosition(curSectionBG.x - 3, curSectionBG.y - 3);
-		curSectionBG.x -= 8; curSectionBG.y -= 8;
-		curSectionText.x -= 8; curSectionText.y -= 8;
-
-		if (selectionTween != null) selectionTween.cancel();
-		selectionTween = FlxTween.tween(curSectionText, {x: currentPos.x - 12, y: currentPos.y - 16}, 0.18, {ease: FlxEase.quadInOut, onComplete: (_) -> selectionTween = null});
-
+		selectionClone.setPosition(nbg.x - 3, nbg.y - 3);
 		if (selectionCloneTween != null) selectionCloneTween.cancel();
-		selectionCloneTween = FlxTween.tween(sectionBGClone, {x: curSectionBG.x + 13, y: curSectionBG.y + 13}, 0.2, {ease: FlxEase.quadInOut, onComplete: (_) -> selectionCloneTween = null});
+		selectionCloneTween = FlxTween.tween(selectionClone, {x: nbg.x + 13, y: nbg.y + 13}, 0.2, {
+			ease: FlxEase.quadInOut,
+			onUpdate: (_) -> selectionCloneWhite.setPosition(selectionClone.x, selectionClone.y),
+			onComplete: (_) -> selectionCloneTween = null
+		});
+		if (cloneColorTween != null) cloneColorTween.cancel();
+		selectionCloneWhite.setPosition(selectionClone.x, selectionClone.y);
+		selectionCloneWhite.alpha = 0;
+		cloneColorTween = FlxTween.tween(selectionCloneWhite, {alpha: 1.0}, 0.2, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 
-		if (propertieTxtGrp.members[curSelected] == null) return;
-		var curPropertieBG = propertiesBG.members[curSelected];
-		var curPropertieTxt = propertieTxtGrp.members[curSelected];
-		var curPropertieArrows = propertieArrows.members[curSelected];
-		var currentPropPos = propertiesPos[curSelected];
+		selectionCloneV.setPosition(vbg.x - 3, vbg.y - 3);
+		if (selectionCloneTweenV != null) selectionCloneTweenV.cancel();
+		selectionCloneTweenV = FlxTween.tween(selectionCloneV, {x: vbg.x + 13, y: vbg.y + 13}, 0.2, {
+			ease: FlxEase.quadInOut,
+			onUpdate: (_) -> selectionCloneWhiteV.setPosition(selectionCloneV.x, selectionCloneV.y),
+			onComplete: (_) -> selectionCloneTweenV = null
+		});
+		if (cloneColorTweenV != null) cloneColorTweenV.cancel();
+		selectionCloneWhiteV.setPosition(selectionCloneV.x, selectionCloneV.y);
+		selectionCloneWhiteV.alpha = 0;
+		cloneColorTweenV = FlxTween.tween(selectionCloneWhiteV, {alpha: 1.0}, 0.2, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 
-		propertieBGClone.setPosition(curPropertieBG.x - 3, curPropertieBG.y - 3);
-		curPropertieBG.x -= 8; curPropertieBG.y -= 8;
-		curPropertieTxt.x -= 8; curPropertieTxt.y -= 8;
-
-		if (propTween != null) propTween.cancel();
-		propTween = FlxTween.tween(curPropertieTxt, {x: currentPropPos.x - 12, y: currentPropPos.y - 16}, 0.18, {ease: FlxEase.quadInOut, onComplete: (_) -> propTween = null});
-
-		if (propArrowTween != null) propArrowTween.cancel();
-		propArrowTween = FlxTween.tween(curPropertieArrows, {x: currentPropPos.x - 12, y: currentPropPos.y - 16}, 0.18, {ease: FlxEase.quadInOut, onComplete: (_) -> propArrowTween = null});
-
-		if (propCloneTween != null) propCloneTween.cancel();
-		propCloneTween = FlxTween.tween(propertieBGClone, {x: curPropertieBG.x + 13, y: curPropertieBG.y + 13}, 0.2, {ease: FlxEase.quadInOut, onComplete: (_) -> propCloneTween = null});
 	}
 
-	var optionID:Int = -1;
-
-	function addOption(label:String, property:Dynamic)
+	function showArrows(rowY:Float)
 	{
-		optionID++;
-		var sep = 14;
-		var y = title.y + 28 + sep;
+		if (arrowTweenL != null) arrowTweenL.cancel();
+		if (arrowTweenR != null) arrowTweenR.cancel();
 
-		var section = new FlxText(0, 0, 0, label, 50);
-		section.setFormat(Paths.font("SonicCD.ttf"), 28, FlxColor.WHITE, CENTER);
-		section.ID = optionID;
-		section.screenCenter(X);
-		section.x -= 230;
-		section.y = y + 90 + (section.size + sep + 70) * optionID;
-		sectionsGrp.add(section);
-		sectionPos.push({x: section.x, y: section.y});
+		arrowLeft.y  = rowY; arrowLeft.x  = ARR_L_X + 12; arrowLeft.visible  = true;
+		arrowRight.y = rowY; arrowRight.x = ARR_R_X - 12; arrowRight.visible = true;
+		arrowLeft.alpha  = 0;
+		arrowRight.alpha = 0;
 
-		var sectionBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/optionsBG.png'));
-		sectionBG.scale.set(GLOBAL_SCALE, GLOBAL_SCALE);
-		sectionBG.updateHitbox();
-		sectionBG.ID = optionID;
-		var sectionWidth = 28 * label.length;
-		sectionBG.x = section.x + ((sectionWidth - sectionBG.width) / 2);
-		sectionBG.y = (section.y - (section.size / 2)) + (sep * 2.5);
-		sectionBGGrp.add(sectionBG);
-
-		var suffix = "";
-		var propertyTag = "?";
-		if (Std.isOfType(property, Bool))
-			propertyTag = cast(property, Bool) ? "ON" : "OFF";
-		else if (Std.isOfType(property, Int))
-		{
-			propertyTag = Std.string(property);
-			if (label == "RATING OFFSET") suffix = "MS";
-		}
-		else if (Std.isOfType(property, Float))
-		{
-			propertyTag = Std.string(Math.round(cast(property, Float) * 10) / 10);
-			if (label.indexOf("WINDOW") != -1 || label == "SAFE FRAMES") suffix = "MS";
-		}
-
-		var propTxt = new FlxText(0, 0, 0, (propertyTag + suffix).toUpperCase(), 50);
-		propTxt.setFormat(Paths.font("SonicCD.ttf"), 28, FlxColor.WHITE, CENTER);
-		propTxt.ID = optionID;
-		propTxt.screenCenter(X);
-		propTxt.x += 380;
-		propTxt.y = y + 90 + (propTxt.size + sep + 70) * optionID;
-		propertieTxtGrp.add(propTxt);
-		propertiesPos.push({x: propTxt.x, y: propTxt.y});
-
-		var propBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
-		propBG.scale.set(GLOBAL_SCALE, GLOBAL_SCALE);
-		propBG.updateHitbox();
-		propBG.ID = optionID;
-		var propSectionWidth = 28 * propTxt.text.length;
-		propBG.x = propTxt.x + ((propSectionWidth - propBG.width) / 2);
-		propBG.y = (propTxt.y - (propTxt.size / 2)) + (sep * 2.5);
-		propertiesBG.add(propBG);
-
-		var propArrow = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/optionArrow.png'));
-		propArrow.scale.set(GLOBAL_SCALE, GLOBAL_SCALE);
-		propArrow.updateHitbox();
-		propArrow.ID = optionID;
-		propArrow.x = propBG.x;
-		propArrow.y = propBG.y;
-		propertieArrows.add(propArrow);
+		FlxTween.tween(arrowLeft,  {x: ARR_L_X, alpha: 1}, 0.18, {ease: FlxEase.backOut, onComplete: (_) -> {
+			arrowTweenL = FlxTween.tween(arrowLeft,  {x: ARR_L_X - 6}, 0.4, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
+		}});
+		FlxTween.tween(arrowRight, {x: ARR_R_X, alpha: 1}, 0.18, {ease: FlxEase.backOut, onComplete: (_) -> {
+			arrowTweenR = FlxTween.tween(arrowRight, {x: ARR_R_X + 6}, 0.4, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
+		}});
 	}
 
-	function resetObj(m:FlxSprite)
+	function hideArrows()
 	{
-		m.x = FlxG.random.int(0, FlxG.width);
-		m.y = FlxG.random.int(0, FlxG.height);
-		m.velocity.x = FlxG.random.float(-20, 20);
-		m.velocity.y = FlxG.random.float(-20, 20);
-		m.angularVelocity = FlxG.random.float(-14, 14);
-		m.updateHitbox();
+		if (arrowTweenL != null) { arrowTweenL.cancel(); arrowTweenL = null; }
+		if (arrowTweenR != null) { arrowTweenR.cancel(); arrowTweenR = null; }
+		arrowLeft.visible  = false;
+		arrowRight.visible = false;
+	}
+
+	function nudgeSelectedText(up:Bool)
+	{
+		if (optionGroups.length == 0) return;
+		var g = optionGroups[curSelected];
+		var baseY = g.nameBG.y + (g.nameBG.height - g.nameText.height) / 2;
+		var targetY = up ? baseY - 5 : baseY;
+		FlxTween.tween(g.nameText,  {y: targetY}, 0.15, {ease: FlxEase.quadOut});
+		FlxTween.tween(g.valueText, {y: targetY}, 0.15, {ease: FlxEase.quadOut});
 	}
 
 	override function destroy()
 	{
-		if (selectionTween != null)      { selectionTween.cancel();      selectionTween = null; }
-		if (selectionCloneTween != null) { selectionCloneTween.cancel(); selectionCloneTween = null; }
-		if (propTween != null)           { propTween.cancel();           propTween = null; }
-		if (propArrowTween != null)      { propArrowTween.cancel();      propArrowTween = null; }
-		if (propCloneTween != null)      { propCloneTween.cancel();      propCloneTween = null; }
-		bg = null; title = null; objsGrp = null;
-		sectionsGrp = null; sectionBGGrp = null;
-		propertieTxtGrp = null; propertiesBG = null; propertieArrows = null;
-		sectionBGClone = null; propertieBGClone = null;
-		propBGCloneShader = null; camFollow = null; camFollowPos = null;
+		titlebar = null; optionGroups = null;
+		leftGroup = null; rightGroup = null;
 		super.destroy();
 	}
 }

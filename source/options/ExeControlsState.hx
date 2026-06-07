@@ -1,7 +1,6 @@
 package options;
 
-import flixel.FlxObject;
-import flixel.addons.display.FlxRuntimeShader;
+import flixel.addons.display.FlxBackdrop;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.input.gamepad.FlxGamepadInputID;
@@ -10,7 +9,10 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.tweens.FlxTween.FlxTweenType;
+import flixel.util.FlxGradient;
 import openfl.Assets;
+import openfl.display.BitmapData;
 
 import backend.InputFormatter;
 
@@ -19,589 +21,486 @@ typedef ExeControlOption = {
 	var saveKey:String;
 	var defaultKeys:Array<FlxKey>;
 	var defaultGamepad:Array<FlxGamepadInputID>;
-	@:optional var isCategory:Bool;
 }
 
-class ExeControlsState extends MusicBeatState
+typedef OptionGroup = {
+	var nameBG:FlxSprite;
+	var valueBG:FlxSprite;
+	var nameText:FlxText;
+	var valueText:FlxText;
+}
+
+class ExeControlsState extends MusicBeatSubstate
 {
-	var bg:FlxSprite;
-	var objsGrp:FlxTypedGroup<FlxSprite>;
-	var title:FlxSprite;
+	static final TB_X:Float       = -134;
+	static final TB_Y:Float       = 143;
+	static final TB_SCALE_X:Float = 0.85;
+	static final TB_SCALE_Y:Float = 0.475;
 
-	var sectionsList:Array<ExeControlOption> = [];
+	static final NB_X:Float       = 105;
+	static final NB_Y:Float       = 270;
+	static final NB_SCALE_X:Float = 0.575;
+	static final NB_SCALE_Y:Float = 0.275;
 
-	var sectionsGrp:FlxTypedGroup<FlxText>;
-	var sectionBGGrp:FlxTypedGroup<FlxSprite>;
-	var propertieTxtGrp:FlxTypedGroup<FlxText>;
-	var propertiesBG:FlxTypedGroup<FlxSprite>;
-	var propertieArrows:FlxTypedGroup<FlxSprite>;
-	var sectionBGClone:FlxSprite;
-	var propertieBGClone:FlxSprite;
-	var selectionTween:FlxTween;
-	var sectionPos:Array<Dynamic> = [];
-	var propertiesPos:Array<Dynamic> = [];
-	var propBGCloneShader:FlxRuntimeShader;
+	static final VB_X:Float       = 683;
+	static final VB_Y:Float       = 270;
+	static final VB_SCALE_X:Float = 0.508;
+	static final VB_SCALE_Y:Float = 0.275;
 
+	static final ROW_GAP:Float    = 80;
+	static final FONT:String      = "SonicCD.ttf";
+	static final FONT_SIZE:Int    = 18;
+
+	var titlebar:FlxSprite;
+	var titlebarTxt:FlxText;
+	var optionGroups:Array<OptionGroup> = [];
+
+	var noteOptions:Array<ExeControlOption> = [
+		{label: "LEFT",  saveKey: "note_left",  defaultKeys: [A, LEFT],  defaultGamepad: [DPAD_LEFT,  LEFT_STICK_DIGITAL_LEFT]},
+		{label: "DOWN",  saveKey: "note_down",  defaultKeys: [S, DOWN],  defaultGamepad: [DPAD_DOWN,  LEFT_STICK_DIGITAL_DOWN]},
+		{label: "UP",    saveKey: "note_up",    defaultKeys: [W, UP],    defaultGamepad: [DPAD_UP,    LEFT_STICK_DIGITAL_UP]},
+		{label: "RIGHT", saveKey: "note_right", defaultKeys: [D, RIGHT], defaultGamepad: [DPAD_RIGHT, LEFT_STICK_DIGITAL_RIGHT]},
+	];
+
+	var uiOptions:Array<ExeControlOption> = [
+		{label: "UP",    saveKey: "ui_up",    defaultKeys: [W, UP],    defaultGamepad: [DPAD_UP,    LEFT_STICK_DIGITAL_UP]},
+		{label: "DOWN",  saveKey: "ui_down",  defaultKeys: [S, DOWN],  defaultGamepad: [DPAD_DOWN,  LEFT_STICK_DIGITAL_DOWN]},
+		{label: "LEFT",  saveKey: "ui_left",  defaultKeys: [A, LEFT],  defaultGamepad: [DPAD_LEFT,  LEFT_STICK_DIGITAL_LEFT]},
+		{label: "RIGHT", saveKey: "ui_right", defaultKeys: [D, RIGHT], defaultGamepad: [DPAD_RIGHT, LEFT_STICK_DIGITAL_RIGHT]},
+	];
+
+	var actionOptions:Array<ExeControlOption> = [
+		{label: "ACCEPT", saveKey: "accept", defaultKeys: [SPACE, ENTER], defaultGamepad: [A, START]},
+		{label: "BACK",   saveKey: "back",   defaultKeys: [ESCAPE],       defaultGamepad: [B]},
+		{label: "PAUSE",  saveKey: "pause",  defaultKeys: [ENTER],        defaultGamepad: [START]},
+		{label: "RESET",  saveKey: "reset",  defaultKeys: [R],            defaultGamepad: [BACK]},
+	];
+
+	var sections:Array<String> = ["NOTES", "UI", "ACTIONS"];
+	public static var curSectionIdx:Int = 0;
 	public static var curSelected:Int = 0;
 	var onKeyboardMode:Bool = true;
+	var editingValue:Bool = false;
+	var backLock:Bool = false;
 
-	var canAction:Bool = true;
-	var binding:Bool = false;
-	var holdingEsc:Float = 0;
+	var selectionClone:FlxSprite;
+	var selectionCloneWhite:FlxSprite;
+	var selectionCloneV:FlxSprite;
+	var selectionCloneWhiteV:FlxSprite;
+	var selectionTween:FlxTween;
+	var selectionCloneTween:FlxTween;
+	var cloneColorTween:FlxTween;
+	var selectionCloneTweenV:FlxTween;
+	var cloneColorTweenV:FlxTween;
 
-	var bindingText:FlxText;
-	var bindingBg:FlxSprite;
+	var introAnimating:Bool = true;
+	var leftGroup:Array<FlxSprite>  = [];
+	var rightGroup:Array<FlxSprite> = [];
 
-	final GLOBAL_SCALE:Float = (FlxG.width / 3840);
-
-	var currentColumn:Int = 0;
-	var currentRow:Int = 0;
-	var categoryRowInColumn:Int = 0;
-	var optionID:Int = -1;
-	var currentStartX:Float = 0;
-	var currentStartY:Float = 0;
 
 	override public function create()
 	{
 		super.create();
-
-		sectionsList = [
-			{label: "NOTES",   saveKey: "", defaultKeys: [], defaultGamepad: [], isCategory: true},
-			{label: "LEFT",    saveKey: "note_left",  defaultKeys: [A, LEFT],    defaultGamepad: [DPAD_LEFT, LEFT_STICK_DIGITAL_LEFT]},
-			{label: "DOWN",    saveKey: "note_down",  defaultKeys: [S, DOWN],    defaultGamepad: [DPAD_DOWN, LEFT_STICK_DIGITAL_DOWN]},
-			{label: "UP",      saveKey: "note_up",    defaultKeys: [W, UP],      defaultGamepad: [DPAD_UP, LEFT_STICK_DIGITAL_UP]},
-			{label: "RIGHT",   saveKey: "note_right", defaultKeys: [D, RIGHT],   defaultGamepad: [DPAD_RIGHT, LEFT_STICK_DIGITAL_RIGHT]},
-			{label: "UI",      saveKey: "", defaultKeys: [], defaultGamepad: [], isCategory: true},
-			{label: "LEFT",    saveKey: "ui_left",    defaultKeys: [A, LEFT],    defaultGamepad: [DPAD_LEFT, LEFT_STICK_DIGITAL_LEFT]},
-			{label: "DOWN",    saveKey: "ui_down",    defaultKeys: [S, DOWN],    defaultGamepad: [DPAD_DOWN, LEFT_STICK_DIGITAL_DOWN]},
-			{label: "UP",      saveKey: "ui_up",      defaultKeys: [W, UP],      defaultGamepad: [DPAD_UP, LEFT_STICK_DIGITAL_UP]},
-			{label: "RIGHT",   saveKey: "ui_right",   defaultKeys: [D, RIGHT],   defaultGamepad: [DPAD_RIGHT, RIGHT_STICK_DIGITAL_RIGHT]},
-			{label: "ACTIONS", saveKey: "", defaultKeys: [], defaultGamepad: [], isCategory: true},
-			{label: "ACCEPT",  saveKey: "accept",     defaultKeys: [SPACE, ENTER],   defaultGamepad: [A, START]},
-			{label: "BACK",    saveKey: "back",       defaultKeys: [BACKSPACE, ESCAPE], defaultGamepad: [B, BACK]},
-			{label: "PAUSE",   saveKey: "pause",      defaultKeys: [ENTER, ESCAPE],  defaultGamepad: [START]},
-			{label: "RESET",   saveKey: "reset",      defaultKeys: [R],              defaultGamepad: [RIGHT_SHOULDER]}
-		];
-
 		buildUI();
 	}
 
 	function buildUI()
 	{
-		bg = new FlxSprite(-100, -100).loadGraphic(Assets.getBitmapData('assets/exe/options/bg.png'));
-		bg.setGraphicSize(Std.int(FlxG.width * 1.2), Std.int(FlxG.height * 1.2));
-		bg.updateHitbox();
-		bg.screenCenter();
-		bg.scrollFactor.set(0.1, 0.1);
-		add(bg);
+		var rectX:Int = -20;
+		var rectY:Int = 145;
+		var rectW:Int = 1450;
+		var rectH:Int = 500;
 
-		objsGrp = new FlxTypedGroup<FlxSprite>();
-		add(objsGrp);
+		var offLeft:Float  = -(rectW + 200);
+		var offRight:Float = FlxG.width + 200;
 
-		for (i in 0...15)
+		var debugRect = FlxGradient.createGradientFlxSprite(rectW, rectH, [0xFF920e1e, 0xFF6b0b15], 1, 90);
+		debugRect.x = offRight;
+		debugRect.y = rectY;
+		debugRect.scrollFactor.set(0, 0);
+		add(debugRect);
+		rightGroup.push(debugRect);
+
+		var borderH:Int = 5;
+		var borderTop = new FlxSprite().makeGraphic(rectW, borderH, 0xFF5a0912);
+		borderTop.x = offRight;
+		borderTop.y = rectY;
+		borderTop.scrollFactor.set(0, 0);
+
+		var borderBot = new FlxSprite().makeGraphic(rectW, borderH, 0xFF5a0912);
+		borderBot.x = offRight;
+		borderBot.y = rectY + rectH - borderH;
+		borderBot.scrollFactor.set(0, 0);
+
+		var gridSize:Int = 20;
+		var gridTile = new BitmapData(gridSize, gridSize, true, 0x00000000);
+		for (px in 0...gridSize)
 		{
-			var obj = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/objs/' + ((i % 7) + 1) + '.png'));
-			obj.setGraphicSize(Std.int(obj.width * GLOBAL_SCALE));
-			obj.updateHitbox();
-			obj.ID = i;
-			objsGrp.add(obj);
-			resetObj(obj);
+			gridTile.setPixel32(px, 0, 0x22000000);
+			gridTile.setPixel32(0, px, 0x22000000);
+		}
+		var tilesX:Int = Math.ceil(rectW / gridSize) + 1;
+		var gridFullBmp = new BitmapData(tilesX * gridSize, rectH, true, 0x00000000);
+		for (tx in 0...tilesX)
+			for (ty in 0...Math.ceil(rectH / gridSize))
+				gridFullBmp.copyPixels(gridTile, gridTile.rect, new openfl.geom.Point(tx * gridSize, ty * gridSize));
+		var grid = new FlxBackdrop(gridFullBmp, X);
+		grid.x = offRight;
+		grid.y = rectY;
+		grid.velocity.x = -40;
+		grid.scrollFactor.set(0, 0);
+		grid.clipRect = new flixel.math.FlxRect(0, 0, rectW, rectH);
+		add(grid);
+		rightGroup.push(grid);
+
+		add(borderTop);
+		add(borderBot);
+		rightGroup.push(borderTop);
+		rightGroup.push(borderBot);
+
+		titlebar = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+		titlebar.scale.set(TB_SCALE_X, TB_SCALE_Y);
+		titlebar.updateHitbox();
+		titlebar.x = offLeft;
+		titlebar.y = TB_Y;
+		titlebar.scrollFactor.set(0, 0);
+		add(titlebar);
+		leftGroup.push(titlebar);
+
+		titlebarTxt = new FlxText(0, 0, Std.int(titlebar.width), "NOTES", 28);
+		titlebarTxt.setFormat(Paths.font(FONT), 28, FlxColor.WHITE, CENTER);
+		titlebarTxt.x = offLeft;
+		titlebarTxt.y = TB_Y + (titlebar.height - titlebarTxt.height) / 2 - 15;
+		titlebarTxt.scrollFactor.set(0, 0);
+		add(titlebarTxt);
+		leftGroup.push(cast titlebarTxt);
+
+		selectionClone = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGClone.png'));
+		selectionClone.scale.set(NB_SCALE_X, NB_SCALE_Y);
+		selectionClone.updateHitbox();
+		selectionClone.x = offRight;
+		selectionClone.scrollFactor.set(0, 0);
+		add(selectionClone);
+		rightGroup.push(selectionClone);
+
+		selectionCloneWhite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGWhite.png'));
+		selectionCloneWhite.scale.set(NB_SCALE_X, NB_SCALE_Y);
+		selectionCloneWhite.updateHitbox();
+		selectionCloneWhite.alpha = 0;
+		selectionCloneWhite.x = offRight;
+		selectionCloneWhite.scrollFactor.set(0, 0);
+		add(selectionCloneWhite);
+		rightGroup.push(selectionCloneWhite);
+
+		selectionCloneV = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGClone.png'));
+		selectionCloneV.scale.set(VB_SCALE_X, VB_SCALE_Y);
+		selectionCloneV.updateHitbox();
+		selectionCloneV.x = offRight;
+		selectionCloneV.scrollFactor.set(0, 0);
+		add(selectionCloneV);
+		rightGroup.push(selectionCloneV);
+
+		selectionCloneWhiteV = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGWhite.png'));
+		selectionCloneWhiteV.scale.set(VB_SCALE_X, VB_SCALE_Y);
+		selectionCloneWhiteV.updateHitbox();
+		selectionCloneWhiteV.alpha = 0;
+		selectionCloneWhiteV.x = offRight;
+		selectionCloneWhiteV.scrollFactor.set(0, 0);
+		add(selectionCloneWhiteV);
+		rightGroup.push(selectionCloneWhiteV);
+
+		for (i in 0...noteOptions.length)
+		{
+			var opt = noteOptions[i];
+			var rowY = NB_Y + i * ROW_GAP;
+
+			var nameBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+			nameBG.scale.set(NB_SCALE_X, NB_SCALE_Y);
+			nameBG.updateHitbox();
+			nameBG.x = offRight;
+			nameBG.y = rowY;
+			nameBG.scrollFactor.set(0, 0);
+			add(nameBG);
+			rightGroup.push(nameBG);
+
+			var valueBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+			valueBG.scale.set(VB_SCALE_X, VB_SCALE_Y);
+			valueBG.updateHitbox();
+			valueBG.x = offRight;
+			valueBG.y = rowY;
+			valueBG.scrollFactor.set(0, 0);
+			add(valueBG);
+			rightGroup.push(valueBG);
+
+			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, FONT_SIZE);
+			nameTxt.setFormat(Paths.font(FONT), FONT_SIZE, FlxColor.WHITE, LEFT);
+			nameTxt.x = offRight;
+			nameTxt.y = rowY + (nameBG.height - nameTxt.height) / 2;
+			nameTxt.scrollFactor.set(0, 0);
+			add(nameTxt);
+			rightGroup.push(cast nameTxt);
+
+			var keys = ClientPrefs.keyBinds.get(opt.saveKey);
+			var keyText = InputFormatter.getKeyName(keys != null && keys.length > 0 ? keys[0] : NONE);
+			var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), keyText.toUpperCase(), FONT_SIZE);
+			valueTxt.setFormat(Paths.font(FONT), FONT_SIZE, FlxColor.WHITE, CENTER);
+			valueTxt.x = offRight;
+			valueTxt.y = rowY + (valueBG.height - valueTxt.height) / 2;
+			valueTxt.scrollFactor.set(0, 0);
+			add(valueTxt);
+			rightGroup.push(cast valueTxt);
+
+			optionGroups.push({nameBG: nameBG, valueBG: valueBG, nameText: nameTxt, valueText: valueTxt});
 		}
 
-		title = new FlxSprite(0, 20).loadGraphic(Assets.getBitmapData('assets/exe/options/optionsTitle.png'));
-		title.setGraphicSize(Std.int(title.width * GLOBAL_SCALE));
-		title.updateHitbox();
-		title.screenCenter(X);
-		add(title);
+		playIntro(rectX);
+	}
 
-		sectionBGClone = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/optionsBG.png'));
-		sectionBGClone.scale.set(GLOBAL_SCALE, GLOBAL_SCALE);
-		sectionBGClone.updateHitbox();
-		add(sectionBGClone);
+	function playIntro(rectX:Int)
+	{
+		var dur:Float = 0.45;
+		var ease = FlxEase.quartOut;
 
-		#if !html5
-		if (ClientPrefs.data.shaders)
+		FlxTween.tween(titlebar,    {x: TB_X}, dur, {ease: ease});
+		FlxTween.tween(titlebarTxt, {x: TB_X + (titlebar.width - titlebarTxt.width) / 2}, dur, {ease: ease});
+
+		for (spr in rightGroup)
+			FlxTween.tween(spr, {x: getIntroTargetX(spr)}, dur, {ease: ease});
+
+		new flixel.util.FlxTimer().start(dur + 0.05, (_) -> {
+			introAnimating = false;
+			changeSelection();
+		});
+	}
+
+	function playOutro()
+	{
+		introAnimating = true;
+		var dur:Float = 0.35;
+		var ease = FlxEase.quartIn;
+		var offLeft:Float  = -(FlxG.width + 200);
+		var offRight:Float = FlxG.width + 200;
+
+		for (spr in leftGroup)
+			FlxTween.tween(spr, {x: offLeft}, dur, {ease: ease});
+		for (spr in rightGroup)
+			FlxTween.tween(spr, {x: offRight}, dur, {ease: ease});
+
+		new flixel.util.FlxTimer().start(dur + 0.05, (_) -> close());
+	}
+
+	function getIntroTargetX(spr:FlxSprite):Float
+	{
+		if (spr == selectionClone || spr == selectionCloneWhite)
 		{
-			try
-			{
-				var shaderPath = Paths.shaderFragment('adjustColor');
-				if (Assets.exists(shaderPath))
-				{
-					propBGCloneShader = new FlxRuntimeShader(Assets.getText(shaderPath));
-					propBGCloneShader.setFloat("hue", 0);
-					propBGCloneShader.setFloat("brightness", 100);
-					propBGCloneShader.setFloat("contrast", 100);
-					propBGCloneShader.setFloat("saturation", 100);
-					sectionBGClone.shader = propBGCloneShader;
-				}
-			}
-			catch (e:Dynamic) { trace("Shader error: " + e); }
+			var g = optionGroups.length > 0 ? optionGroups[curSelected] : null;
+			return g != null ? g.nameBG.x - 3 : NB_X - 3;
 		}
-		#end
-
-		propertieBGClone = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
-		propertieBGClone.scale.set(GLOBAL_SCALE, GLOBAL_SCALE);
-		propertieBGClone.updateHitbox();
-		add(propertieBGClone);
-
-		#if !html5
-		if (ClientPrefs.data.shaders && propBGCloneShader != null)
-			propertieBGClone.shader = propBGCloneShader;
-		#end
-
-		sectionBGGrp = new FlxTypedGroup<FlxSprite>();
-		add(sectionBGGrp);
-		sectionsGrp = new FlxTypedGroup<FlxText>();
-		add(sectionsGrp);
-		propertiesBG = new FlxTypedGroup<FlxSprite>();
-		add(propertiesBG);
-		propertieArrows = new FlxTypedGroup<FlxSprite>();
-		add(propertieArrows);
-		propertieTxtGrp = new FlxTypedGroup<FlxText>();
-		add(propertieTxtGrp);
-
-		for (i in 0...sectionsList.length)
+		if (spr == selectionCloneV || spr == selectionCloneWhiteV)
 		{
-			if (sectionsList[i].label == "NOTES")
-			{
-				currentColumn = 0;
-				currentRow = 0;
-				currentStartX = FlxG.width * 0.18;
-				currentStartY = title.y + 80;
-			}
-			else if (sectionsList[i].label == "UI")
-			{
-				currentColumn = 1;
-				currentRow = 0;
-				currentStartX = FlxG.width * 0.38;
-				currentStartY = title.y + 220;
-			}
-			else if (sectionsList[i].label == "ACTIONS")
-			{
-				currentColumn = 2;
-				currentRow = 0;
-				currentStartX = FlxG.width * 0.62;
-				currentStartY = title.y + 80;
-			}
-
-			if (sectionsList[i].isCategory == true)
-				addCategory(sectionsList[i].label);
-			else
-				addOption(sectionsList[i].label, sectionsList[i].saveKey);
+			var g = optionGroups.length > 0 ? optionGroups[curSelected] : null;
+			return g != null ? g.valueBG.x - 3 : VB_X - 3;
 		}
-
-		for (i in 0...sectionsList.length)
+		for (g in optionGroups)
 		{
-			if (sectionsList[i].isCategory != true)
-			{
-				curSelected = i;
-				break;
-			}
+			if (spr == g.nameBG) return NB_X;
+			if (spr == g.nameText) return NB_X + 120;
+			if (spr == g.valueBG) return VB_X;
+			if (spr == g.valueText) return VB_X + (g.valueBG.width - g.valueText.width) / 2;
 		}
-
-		changeSelect();
+		return -20;
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		objsGrp.forEachExists(function(o)
-		{
-			if (o.y > FlxG.height || o.x > FlxG.width || o.y < -o.height || o.x < -o.width)
-				resetObj(o);
-		});
+		if (introAnimating) return;
 
-		sectionsGrp.forEachExists(function(txt)
+		if (backLock) { backLock = false; return; }
+
+		if (editingValue)
 		{
-			if (sectionPos.length > 0 && txt.ID < sectionPos.length)
+			var pressed:FlxKey = FlxG.keys.firstJustPressed();
+			if (pressed != NONE)
 			{
-				if (txt.ID != curSelected)
+				if (pressed == FlxKey.ESCAPE)
 				{
-					txt.x = FlxMath.lerp(txt.x, sectionPos[txt.ID].x, elapsed * 9);
-					txt.y = FlxMath.lerp(txt.y, sectionPos[txt.ID].y, elapsed * 9);
+					FlxG.sound.play(Paths.sound('cancelMenu'));
 				}
-				if (txt.ID < sectionBGGrp.members.length && sectionBGGrp.members[txt.ID] != null)
+				else
 				{
-					var sep = 14;
-					var bg = sectionBGGrp.members[txt.ID];
-					var sectionWidth = 24 * sectionsList[txt.ID].label.length;
-					bg.x = txt.x + ((sectionWidth - bg.width) / 2) - 20;
-					bg.y = (txt.y - (txt.size / 2)) + (sep * 2.5);
+					var opts = switch (curSectionIdx) { case 1: uiOptions; case 2: actionOptions; default: noteOptions; };
+					var saveKey = opts[curSelected].saveKey;
+					ClientPrefs.keyBinds.set(saveKey, [pressed]);
+					optionGroups[curSelected].valueText.text = InputFormatter.getKeyName(pressed).toUpperCase();
+					ClientPrefs.saveSettings();
+					FlxG.sound.play(Paths.sound('confirmMenu'));
 				}
+				editingValue = false;
+				backLock = true;
+				nudgeSelectedText(false);
 			}
-		});
-
-		propertieTxtGrp.forEachExists(function(txt)
-		{
-			if (propertiesPos.length > 0 && txt.ID < propertiesPos.length)
-			{
-				if (txt.ID != curSelected)
-				{
-					txt.x = FlxMath.lerp(txt.x, propertiesPos[txt.ID].x, elapsed * 9);
-					txt.y = FlxMath.lerp(txt.y, propertiesPos[txt.ID].y, elapsed * 9);
-				}
-				if (txt.ID < propertiesBG.members.length && propertiesBG.members[txt.ID] != null)
-				{
-					var sep = 14;
-					var bg = propertiesBG.members[txt.ID];
-					var propSectionWidth = 20 * txt.text.length;
-					bg.x = txt.x + ((propSectionWidth - bg.width) / 2);
-					bg.y = (txt.y - (txt.size / 2)) + (sep * 2.5);
-					if (txt.ID < propertieArrows.members.length && propertieArrows.members[txt.ID] != null)
-					{
-						var arrows = propertieArrows.members[txt.ID];
-						arrows.x = bg.x;
-						arrows.y = bg.y;
-					}
-				}
-			}
-		});
-
-		if (binding)
-		{
-			bindingUpdate(elapsed);
 			return;
 		}
 
-		if (!canAction) return;
+		if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
+		{
+			FlxG.sound.play(Paths.sound('scrollMenu'));
+			curSectionIdx = FlxMath.wrap(curSectionIdx + (controls.UI_RIGHT_P ? 1 : -1), 0, sections.length - 1);
+			curSelected = 0;
+			loadSection();
+		}
 
 		if (controls.UI_UP_P || controls.UI_DOWN_P)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
-			var change = controls.UI_UP_P ? -1 : 1;
-			do {
-				curSelected = FlxMath.wrap(curSelected + change, 0, sectionsList.length - 1);
-			} while (sectionsList[curSelected].isCategory == true);
-			changeSelect();
+			curSelected = FlxMath.wrap(curSelected + (controls.UI_UP_P ? -1 : 1), 0, optionGroups.length - 1);
+			changeSelection();
 		}
 
 		if (controls.ACCEPT)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
-			startBinding();
+			editingValue = true;
+			nudgeSelectedText(true);
 		}
 
 		if (controls.BACK)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			FlxG.switchState(() -> new options.OptionsState());
+			playOutro();
 		}
 	}
 
-	function startBinding()
+	function getKeyLabel(saveKey:String):String
 	{
-		if (sectionsList[curSelected].isCategory == true) return;
-
-		binding = true;
-		holdingEsc = 0;
-
-		bindingBg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-		bindingBg.alpha = 0.7;
-		add(bindingBg);
-
-		bindingText = new FlxText(0, FlxG.height / 2 - 50, FlxG.width, "Press a key...\nHold ESC to cancel\nHold BACKSPACE to clear", 32);
-		bindingText.setFormat(Paths.font("SonicCD.ttf"), 28, FlxColor.WHITE, CENTER);
-		bindingText.antialiasing = false;
-		add(bindingText);
-
-		ClientPrefs.toggleVolumeKeys(false);
+		var keys = ClientPrefs.keyBinds.get(saveKey);
+		return InputFormatter.getKeyName(keys != null && keys.length > 0 ? keys[0] : NONE).toUpperCase();
 	}
 
-	function bindingUpdate(elapsed:Float)
+	function loadSection()
 	{
-		if (FlxG.keys.pressed.ESCAPE || FlxG.gamepads.anyPressed(B))
+		for (g in optionGroups)
 		{
-			holdingEsc += elapsed;
-			if (holdingEsc > 0.5)
-			{
-				FlxG.sound.play(Paths.sound('cancelMenu'));
-				closeBinding();
-			}
+			rightGroup.remove(g.nameBG);   remove(g.nameBG);   g.nameBG.destroy();
+			rightGroup.remove(g.valueBG);  remove(g.valueBG);  g.valueBG.destroy();
+			rightGroup.remove(g.nameText); remove(g.nameText); g.nameText.destroy();
+			rightGroup.remove(g.valueText);remove(g.valueText);g.valueText.destroy();
 		}
-		else if (FlxG.keys.pressed.BACKSPACE || FlxG.gamepads.anyPressed(BACK))
+		optionGroups = [];
+
+		var opts = switch (curSectionIdx) {
+			case 1: uiOptions;
+			case 2: actionOptions;
+			default: noteOptions;
+		};
+
+		titlebarTxt.text = sections[curSectionIdx];
+
+		for (i in 0...opts.length)
 		{
-			holdingEsc += elapsed;
-			if (holdingEsc > 0.5)
-			{
-				var option = sectionsList[curSelected];
-				if (onKeyboardMode)
-					ClientPrefs.keyBinds.get(option.saveKey)[0] = NONE;
-				else
-					ClientPrefs.gamepadBinds.get(option.saveKey)[0] = NONE;
-				ClientPrefs.clearInvalidKeys(option.saveKey);
-				updatePropertyText(curSelected);
-				FlxG.sound.play(Paths.sound('cancelMenu'));
-				closeBinding();
-			}
+			var opt = opts[i];
+			var rowY = NB_Y + i * ROW_GAP;
+
+			var nameBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+			nameBG.scale.set(NB_SCALE_X, NB_SCALE_Y);
+			nameBG.updateHitbox();
+			nameBG.x = NB_X;
+			nameBG.y = rowY;
+			nameBG.scrollFactor.set(0, 0);
+			add(nameBG);
+			rightGroup.push(nameBG);
+
+			var valueBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+			valueBG.scale.set(VB_SCALE_X, VB_SCALE_Y);
+			valueBG.updateHitbox();
+			valueBG.x = VB_X;
+			valueBG.y = rowY;
+			valueBG.scrollFactor.set(0, 0);
+			add(valueBG);
+			rightGroup.push(valueBG);
+
+			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, FONT_SIZE);
+			nameTxt.setFormat(Paths.font(FONT), FONT_SIZE, FlxColor.WHITE, LEFT);
+			nameTxt.x = nameBG.x + 120;
+			nameTxt.y = nameBG.y + (nameBG.height - nameTxt.height) / 2;
+			nameTxt.scrollFactor.set(0, 0);
+			add(nameTxt);
+			rightGroup.push(cast nameTxt);
+
+			var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), getKeyLabel(opt.saveKey), FONT_SIZE);
+			valueTxt.setFormat(Paths.font(FONT), FONT_SIZE, FlxColor.WHITE, CENTER);
+			valueTxt.x = valueBG.x + (valueBG.width - valueTxt.width) / 2;
+			valueTxt.y = valueBG.y + (valueBG.height - valueTxt.height) / 2;
+			valueTxt.scrollFactor.set(0, 0);
+			add(valueTxt);
+			rightGroup.push(cast valueTxt);
+
+			optionGroups.push({nameBG: nameBG, valueBG: valueBG, nameText: nameTxt, valueText: valueTxt});
 		}
-		else
-		{
-			holdingEsc = 0;
-			var changed = false;
-			var option = sectionsList[curSelected];
-			var curKeys = ClientPrefs.keyBinds.get(option.saveKey);
-			var curButtons = ClientPrefs.gamepadBinds.get(option.saveKey);
 
-			if (onKeyboardMode)
-			{
-				if (FlxG.keys.justPressed.ANY || FlxG.keys.justReleased.ANY)
-				{
-					var keyPressed = FlxG.keys.firstJustPressed();
-					var keyReleased = FlxG.keys.firstJustReleased();
-					if (keyPressed > -1 && keyPressed != FlxKey.ESCAPE && keyPressed != FlxKey.BACKSPACE)
-					{
-						curKeys[0] = keyPressed;
-						changed = true;
-					}
-					else if (keyReleased > -1 && (keyReleased == FlxKey.ESCAPE || keyReleased == FlxKey.BACKSPACE))
-					{
-						curKeys[0] = keyReleased;
-						changed = true;
-					}
-				}
-			}
-			else if (FlxG.gamepads.anyJustPressed(ANY) || FlxG.gamepads.anyJustPressed(LEFT_TRIGGER) || FlxG.gamepads.anyJustPressed(RIGHT_TRIGGER) || FlxG.gamepads.anyJustReleased(ANY))
-			{
-				var keyPressed:Null<FlxGamepadInputID> = NONE;
-				var keyReleased:Null<FlxGamepadInputID> = NONE;
-				if (FlxG.gamepads.anyJustPressed(LEFT_TRIGGER)) keyPressed = LEFT_TRIGGER;
-				else if (FlxG.gamepads.anyJustPressed(RIGHT_TRIGGER)) keyPressed = RIGHT_TRIGGER;
-				else
-				{
-					for (i in 0...FlxG.gamepads.numActiveGamepads)
-					{
-						var gamepad:FlxGamepad = FlxG.gamepads.getByID(i);
-						if (gamepad != null)
-						{
-							keyPressed = gamepad.firstJustPressedID();
-							keyReleased = gamepad.firstJustReleasedID();
-							if (keyPressed == null) keyPressed = NONE;
-							if (keyReleased == null) keyReleased = NONE;
-							if (keyPressed != NONE || keyReleased != NONE) break;
-						}
-					}
-				}
-
-				if (keyPressed != NONE && keyPressed != FlxGamepadInputID.BACK && keyPressed != FlxGamepadInputID.B)
-				{
-					curButtons[0] = keyPressed;
-					changed = true;
-				}
-				else if (keyReleased != NONE && (keyReleased == FlxGamepadInputID.BACK || keyReleased == FlxGamepadInputID.B))
-				{
-					curButtons[0] = keyReleased;
-					changed = true;
-				}
-			}
-
-			if (changed)
-			{
-				ClientPrefs.clearInvalidKeys(option.saveKey);
-				updatePropertyText(curSelected);
-				FlxG.sound.play(Paths.sound('confirmMenu'));
-				closeBinding();
-			}
-		}
+		changeSelection();
 	}
 
-	function closeBinding()
+	function changeSelection()
 	{
-		binding = false;
-		if (bindingBg != null) { remove(bindingBg); bindingBg.destroy(); bindingBg = null; }
-		if (bindingText != null) { remove(bindingText); bindingText.destroy(); bindingText = null; }
-		ClientPrefs.toggleVolumeKeys(true);
-		ClientPrefs.reloadVolumeKeys();
-	}
+		if (optionGroups.length == 0) return;
 
-	var selectionCloneTween:FlxTween;
-	var propTween:FlxTween;
-	var propArrowTween:FlxTween;
-	var propCloneTween:FlxTween;
+		var group = optionGroups[curSelected];
+		var bg = group.nameBG;
+		var vbg = group.valueBG;
 
-	function changeSelect(x:Int = 0)
-	{
-		if (curSelected >= sectionBGGrp.members.length || sectionBGGrp.members[curSelected] == null) return;
-
-		for (i in 0...sectionsList.length)
-		{
-			if (sectionsList[i].isCategory != true)
-				updatePropertyText(i);
-		}
-
-		var curSectionBG = sectionBGGrp.members[curSelected];
-		var curSectionText = sectionsGrp.members[curSelected];
-		var currentPos = sectionPos[curSelected];
-
-		sectionBGClone.setPosition(curSectionBG.x - 3, curSectionBG.y - 3);
-		curSectionBG.x -= 8; curSectionBG.y -= 8;
-		curSectionText.x -= 8; curSectionText.y -= 8;
-
-		if (selectionTween != null) selectionTween.cancel();
-		selectionTween = FlxTween.tween(curSectionText, {x: currentPos.x - 12, y: currentPos.y - 16}, 0.18, {ease: FlxEase.quadInOut, onComplete: (_) -> selectionTween = null});
-
+		selectionClone.setPosition(bg.x - 3, bg.y - 3);
 		if (selectionCloneTween != null) selectionCloneTween.cancel();
-		selectionCloneTween = FlxTween.tween(sectionBGClone, {x: curSectionBG.x + 13, y: curSectionBG.y + 13}, 0.2, {ease: FlxEase.quadInOut, onComplete: (_) -> selectionCloneTween = null});
+		selectionCloneTween = FlxTween.tween(selectionClone, {x: bg.x + 13, y: bg.y + 13}, 0.2, {
+			ease: FlxEase.quadInOut,
+			onUpdate: (_) -> selectionCloneWhite.setPosition(selectionClone.x, selectionClone.y),
+			onComplete: (_) -> selectionCloneTween = null
+		});
 
-		if (sectionsList[curSelected].isCategory == true) return;
-		if (curSelected >= propertieTxtGrp.members.length || propertieTxtGrp.members[curSelected] == null) return;
-		if (curSelected >= propertiesBG.members.length || propertiesBG.members[curSelected] == null) return;
-		if (curSelected >= propertieArrows.members.length || propertieArrows.members[curSelected] == null) return;
+		if (cloneColorTween != null) cloneColorTween.cancel();
+		selectionCloneWhite.setPosition(selectionClone.x, selectionClone.y);
+		selectionCloneWhite.alpha = 0;
+		cloneColorTween = FlxTween.tween(selectionCloneWhite, {alpha: 1.0}, 0.2, {
+			ease: FlxEase.sineInOut,
+			type: FlxTweenType.PINGPONG
+		});
 
-		var curPropertieBG = propertiesBG.members[curSelected];
-		var curPropertieTxt = propertieTxtGrp.members[curSelected];
-		var curPropertieArrows = propertieArrows.members[curSelected];
-		var currentPropPos = propertiesPos[curSelected];
+		selectionCloneV.setPosition(vbg.x - 3, vbg.y - 3);
+		if (selectionCloneTweenV != null) selectionCloneTweenV.cancel();
+		selectionCloneTweenV = FlxTween.tween(selectionCloneV, {x: vbg.x + 13, y: vbg.y + 13}, 0.2, {
+			ease: FlxEase.quadInOut,
+			onUpdate: (_) -> selectionCloneWhiteV.setPosition(selectionCloneV.x, selectionCloneV.y),
+			onComplete: (_) -> selectionCloneTweenV = null
+		});
 
-		propertieBGClone.setPosition(curPropertieBG.x - 3, curPropertieBG.y - 3);
-		curPropertieBG.x -= 8; curPropertieBG.y -= 8;
-		curPropertieTxt.x -= 8; curPropertieTxt.y -= 8;
+		if (cloneColorTweenV != null) cloneColorTweenV.cancel();
+		selectionCloneWhiteV.setPosition(selectionCloneV.x, selectionCloneV.y);
+		selectionCloneWhiteV.alpha = 0;
+		cloneColorTweenV = FlxTween.tween(selectionCloneWhiteV, {alpha: 1.0}, 0.2, {
+			ease: FlxEase.sineInOut,
+			type: FlxTweenType.PINGPONG
+		});
 
-		if (propTween != null) propTween.cancel();
-		propTween = FlxTween.tween(curPropertieTxt, {x: currentPropPos.x - 12, y: currentPropPos.y - 16}, 0.18, {ease: FlxEase.quadInOut, onComplete: (_) -> propTween = null});
-
-		if (propArrowTween != null) propArrowTween.cancel();
-		propArrowTween = FlxTween.tween(curPropertieArrows, {x: currentPropPos.x - 12, y: currentPropPos.y - 16}, 0.18, {ease: FlxEase.quadInOut, onComplete: (_) -> propArrowTween = null});
-
-		if (propCloneTween != null) propCloneTween.cancel();
-		propCloneTween = FlxTween.tween(propertieBGClone, {x: curPropertieBG.x + 13, y: curPropertieBG.y + 13}, 0.2, {ease: FlxEase.quadInOut, onComplete: (_) -> propCloneTween = null});
 	}
 
-	function addCategory(label:String)
+	function nudgeSelectedText(up:Bool)
 	{
-		optionID++;
-		currentRow = categoryRowInColumn;
-
-		var section = new FlxText(0, 0, 0, label, 50);
-		section.setFormat(Paths.font("SonicCD.ttf"), 16, FlxColor.YELLOW, LEFT);
-		section.ID = optionID;
-		section.x = currentStartX;
-		section.y = currentStartY + (currentRow * 42);
-		sectionsGrp.add(section);
-		sectionPos.push({x: section.x, y: section.y});
-
-		var sectionBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/optionsBG.png'));
-		sectionBG.scale.set(GLOBAL_SCALE, GLOBAL_SCALE);
-		sectionBG.updateHitbox();
-		sectionBG.ID = optionID;
-		var sep = 14;
-		var sectionWidth = 18 * label.length;
-		sectionBG.x = section.x + ((sectionWidth - sectionBG.width) / 2) - 20;
-		sectionBG.y = (section.y - (section.size / 2)) + (sep * 2.5);
-		sectionBG.alpha = 0.5;
-		sectionBGGrp.add(sectionBG);
-		currentRow++;
-
-		var emptyTxt = new FlxText(0, 0, 0, "", 50);
-		emptyTxt.ID = optionID;
-		emptyTxt.visible = false;
-		propertieTxtGrp.add(emptyTxt);
-		propertiesPos.push({x: 0, y: 0});
-
-		var emptyBG = new FlxSprite(0, 0);
-		emptyBG.ID = optionID;
-		emptyBG.visible = false;
-		propertiesBG.add(emptyBG);
-
-		var emptyArrow = new FlxSprite(0, 0);
-		emptyArrow.ID = optionID;
-		emptyArrow.visible = false;
-		propertieArrows.add(emptyArrow);
-	}
-
-	function addOption(label:String, saveKey:String)
-	{
-		optionID++;
-
-		var section = new FlxText(0, 0, 0, label, 50);
-		section.setFormat(Paths.font("SonicCD.ttf"), 15, FlxColor.WHITE, LEFT);
-		section.ID = optionID;
-		var columnX = currentStartX;
-		section.x = columnX;
-		section.y = currentStartY + (currentRow * 42);
-		sectionsGrp.add(section);
-		sectionPos.push({x: section.x, y: section.y});
-
-		var sectionBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/optionsBG.png'));
-		sectionBG.scale.set(GLOBAL_SCALE, GLOBAL_SCALE);
-		sectionBG.updateHitbox();
-		sectionBG.ID = optionID;
-		var sep = 14;
-		var sectionWidth = 15 * label.length;
-		sectionBG.x = section.x + ((sectionWidth - sectionBG.width) / 2);
-		sectionBG.y = (section.y - (section.size / 2)) + (sep * 2.5);
-		sectionBGGrp.add(sectionBG);
-
-		var keys:Array<FlxKey> = ClientPrefs.keyBinds.get(saveKey);
-		var gamepadKeys:Array<FlxGamepadInputID> = ClientPrefs.gamepadBinds.get(saveKey);
-		var keyText = onKeyboardMode
-			? InputFormatter.getKeyName(keys != null && keys.length > 0 ? keys[0] : NONE)
-			: InputFormatter.getGamepadName(gamepadKeys != null && gamepadKeys.length > 0 ? gamepadKeys[0] : NONE);
-
-		var propTxt = new FlxText(0, 0, 0, keyText.toUpperCase(), 50);
-		propTxt.setFormat(Paths.font("SonicCD.ttf"), 15, FlxColor.WHITE, LEFT);
-		propTxt.ID = optionID;
-		propTxt.x = columnX + 380;
-		propTxt.y = section.y;
-		propertieTxtGrp.add(propTxt);
-		propertiesPos.push({x: propTxt.x, y: propTxt.y});
-
-		var propBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
-		propBG.scale.set(GLOBAL_SCALE, GLOBAL_SCALE);
-		propBG.updateHitbox();
-		propBG.ID = optionID;
-		var propSectionWidth = 20 * propTxt.text.length;
-		propBG.x = propTxt.x + ((propSectionWidth - propBG.width) / 2);
-		propBG.y = (propTxt.y - (propTxt.size / 2)) + (sep * 2.5);
-		propertiesBG.add(propBG);
-
-		var propArrow = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/optionArrow.png'));
-		propArrow.scale.set(GLOBAL_SCALE, GLOBAL_SCALE);
-		propArrow.updateHitbox();
-		propArrow.ID = optionID;
-		propArrow.x = propBG.x;
-		propArrow.y = propBG.y;
-		propertieArrows.add(propArrow);
-
-		currentRow++;
-	}
-
-	function updatePropertyText(id:Int)
-	{
-		if (sectionsList[id].isCategory == true) return;
-		var option = sectionsList[id];
-		var keys = ClientPrefs.keyBinds.get(option.saveKey);
-		var gamepadKeys = ClientPrefs.gamepadBinds.get(option.saveKey);
-		var keyText = onKeyboardMode
-			? InputFormatter.getKeyName(keys != null && keys.length > 0 ? keys[0] : NONE)
-			: InputFormatter.getGamepadName(gamepadKeys != null && gamepadKeys.length > 0 ? gamepadKeys[0] : NONE);
-		if (id < propertieTxtGrp.members.length && propertieTxtGrp.members[id] != null)
-			propertieTxtGrp.members[id].text = keyText.toUpperCase();
-	}
-
-	function resetObj(m:FlxSprite)
-	{
-		m.x = FlxG.random.int(0, FlxG.width);
-		m.y = FlxG.random.int(0, FlxG.height);
-		m.velocity.x = FlxG.random.float(-20, 20);
-		m.velocity.y = FlxG.random.float(-20, 20);
-		m.angularVelocity = FlxG.random.float(-14, 14);
-		m.updateHitbox();
+		if (optionGroups.length == 0) return;
+		var g = optionGroups[curSelected];
+		var baseY = g.nameBG.y + (g.nameBG.height - g.nameText.height) / 2;
+		var targetY = up ? baseY - 5 : baseY;
+		FlxTween.tween(g.nameText,  {y: targetY}, 0.15, {ease: FlxEase.quadOut});
+		FlxTween.tween(g.valueText, {y: targetY}, 0.15, {ease: FlxEase.quadOut});
 	}
 
 	override function destroy()
 	{
-		if (selectionTween != null)      { selectionTween.cancel();      selectionTween = null; }
-		if (selectionCloneTween != null) { selectionCloneTween.cancel(); selectionCloneTween = null; }
-		if (propTween != null)           { propTween.cancel();           propTween = null; }
-		if (propArrowTween != null)      { propArrowTween.cancel();      propArrowTween = null; }
-		if (propCloneTween != null)      { propCloneTween.cancel();      propCloneTween = null; }
-		closeBinding();
-		bg = null; title = null; objsGrp = null;
-		sectionsGrp = null; sectionBGGrp = null;
-		propertieTxtGrp = null; propertiesBG = null; propertieArrows = null;
-		sectionBGClone = null; propertieBGClone = null;
-		propBGCloneShader = null; sectionPos = null; propertiesPos = null;
+		titlebar = null;
+		optionGroups = null;
+		leftGroup = null;
+		rightGroup = null;
 		super.destroy();
 	}
 }

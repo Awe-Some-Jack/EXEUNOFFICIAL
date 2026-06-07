@@ -53,9 +53,10 @@ class DAGarden extends MusicBeatState
 
 		sub = new DASub();
 		add(sub);
+		player.sub = sub;
 
 		if (songs.songList.length > 0)
-			_onSongSelected(0);
+			new flixel.util.FlxTimer().start(0.05, (_) -> _onSongSelected(0));
 		
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the DA Garden", null);
@@ -185,10 +186,9 @@ class DAGarden extends MusicBeatState
 
 		songs.selectIndex(index);
 		player.setSongInfo(songs.selectedSong(), songs.selectedCredits());
-		player.loadJumpscareFor(songs.selectedSong(), songs.selectedMod());
 		sub.loadLyrics(songs.selectedSong(), songs.selectedMod());
 		sub.reset();
-		
+
 		if (player.isPlaying) player.fadeOutAndStop();
 		else player.stop();
 	}

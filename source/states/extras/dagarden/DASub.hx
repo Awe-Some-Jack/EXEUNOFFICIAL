@@ -6,8 +6,6 @@ import flixel.util.FlxColor;
 import flixel.group.FlxGroup;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
-import sys.FileSystem;
-
 class DASub extends FlxGroup
 {
 	static inline final BOX_SCALE:Float = 0.34;
@@ -96,41 +94,30 @@ class DASub extends FlxGroup
 		_firstEventTime = -1.0;
 		_lastEventTime = -1.0;
 		FlxTween.cancelTweensOf(this);
-		
 		_shouldShow = false;
 		_lastActiveEventMs = -1.0;
 		_slideOffset = HIDDEN_OFFSET;
 		_slideTarget = HIDDEN_OFFSET;
 		_applySlide();
 		_clearWords();
-		
-		final base = mod != '' ? backend.Paths.mods('$mod/data/$song') : backend.Paths.mods('data/$song');
-		final paths = ['$base/events.json', '$base/$song.json'];
-		var evs:Array<Dynamic> = null;
-		
-		for (p in paths)
-		{
-			if (!FileSystem.exists(p)) continue;
-			try
-			{
-				final json:Dynamic = haxe.Json.parse(sys.io.File.getContent(p));
-				final candidate:Array<Dynamic> = cast json.events;
-				if (candidate != null && candidate.length > 0) { evs = candidate; break; }
-			}
-			catch(_:Dynamic) {}
-		}
+	}
+
+	public function applyLyricsEvents(evs:Array<Dynamic>, song:String, mod:String):Void
+	{
+		_events = [];
+		_hasLyrics = false;
+		_firstEventTime = -1.0;
+		_lastEventTime = -1.0;
 
 		if (evs == null) return;
-		
+
 		try
 		{
 			for (ev in evs)
 			{
 				final t:Float = cast ev[0];
 				final evList:Array<Dynamic> = cast ev[1];
-				
 				if (evList == null) continue;
-				
 				for (e in evList)
 				{
 					final evName = Std.string(e[0]);
@@ -140,7 +127,6 @@ class DASub extends FlxGroup
 						final param:String = Std.string(e[2]);
 						var wordIdx:Int = -1;
 						var color = FlxColor.WHITE;
-						
 						if (param != '' && param != 'null')
 						{
 							final parts = param.split(',');
@@ -148,7 +134,6 @@ class DASub extends FlxGroup
 							if (parts.length > 1)
 								color = FlxColor.fromString('#' + StringTools.trim(parts[1]));
 						}
-
 						_events.push({time: t, text: text, wordIndex: wordIdx, color: color, mode: 0});
 					}
 					else if (evName == 'Lyrics')
@@ -156,19 +141,16 @@ class DASub extends FlxGroup
 						final text:String = Std.string(e[1]);
 						final param:String = Std.string(e[2]);
 						var color = FlxColor.WHITE;
-						
 						if (param != '' && param != 'null')
 						{
 							var hex = StringTools.trim(param);
 							if (!hex.startsWith('#')) hex = '#' + hex;
 							color = FlxColor.fromString(hex);
 						}
-
 						_events.push({time: t, text: text, wordIndex: -1, color: color, mode: 1});
 					}
 				}
 			}
-
 			_events.sort((a, b) -> a.time < b.time ? -1 : 1);
 			if (_events.length > 0)
 			{

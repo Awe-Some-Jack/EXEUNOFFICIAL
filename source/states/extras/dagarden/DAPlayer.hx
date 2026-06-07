@@ -10,7 +10,6 @@ import flixel.sound.FlxSound;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup;
 import sys.FileSystem;
 
@@ -19,7 +18,7 @@ class DAPlayer extends FlxGroup
 	public static inline final SEEK_SECONDS:Float = 5.0;
 	
 	static inline final VOCALS_VOL:Float = 1.0;
-	static inline final VOCALS_OPP_VOL:Float = 0.6;
+	static inline final VOCALS_OPP_VOL:Float = 1.0;
 	static inline final DISK_MAX_SPEED:Float = 45.0;
 	static inline final DISK_ACCEL:Float = 6.0;
 	static inline final DISK_DECEL:Float = 22.0;
@@ -47,11 +46,7 @@ class DAPlayer extends FlxGroup
 	private var songNameTxt:FlxText;
 	private var composerTxt:FlxText;
 
-	private var jumpscareSprite:FlxSprite;
-	private var jumpscareEvents:Array<Float> = [];
-	private var jumpscareTriggered:Array<Bool> = [];
-	private var isScaringYou:Bool = false;
-	private var _jumpscareMod:String = '';
+	public var sub:DASub = null;
 	
 	private var diskSpeed:Float = 0.0;
 	private var diskDragging:Bool = false;
@@ -119,7 +114,7 @@ class DAPlayer extends FlxGroup
 		final BY:Float = 620;
 		
 		box = _makeSprite(565, 100, "box.png", SCALE);
-		disk = _makeSprite(713, 245, "disk.png", 0.32);
+		disk = _makeSprite(743, 245, "disk.png", 0.32);
 
 		final barBmp = openfl.utils.Assets.getBitmapData("assets/exe/extras/dagarden/bar.png");
 		final bW = barBmp.width * SCALE;
@@ -167,10 +162,6 @@ class DAPlayer extends FlxGroup
 		composerTxt.antialiasing = ClientPrefs.data.antialiasing;
 		add(composerTxt);
 
-		jumpscareSprite = new FlxSprite(-120, -200);
-		jumpscareSprite.antialiasing = ClientPrefs.data.antialiasing;
-		jumpscareSprite.alpha = 0;
-		add(jumpscareSprite);
 	}
 
 	private function _drawCircle(s:FlxSprite, r:Int, color:FlxColor):Void
@@ -308,46 +299,6 @@ class DAPlayer extends FlxGroup
 		}
 	}
 
-	public function loadJumpscareFor(song:String, mod:String):Void
-	{
-		jumpscareEvents = [];
-		jumpscareTriggered = [];
-		isScaringYou = false;
-		_jumpscareMod = mod;
-		
-		if (jumpscareSprite != null) jumpscareSprite.alpha = 0;
-
-		final p = mod != '' ? Paths.mods('$mod/data/$song/events.json') : Paths.mods('data/$song/events.json');
-		if (!FileSystem.exists(p)) return;
-		
-		try
-		{
-			final json:Dynamic = haxe.Json.parse(sys.io.File.getContent(p));
-			final events:Array<Dynamic> = cast json.events;
-			if (events == null) return;
-			
-			for (ev in events)
-			{
-				final ms:Float = cast ev[0];
-				final evList:Array<Dynamic> = cast ev[1];
-
-				if (evList == null) continue;
-				
-				for (e in evList)
-				{
-					if (Std.string(e[0]) == 'EXEJumpscare')
-					{
-						jumpscareEvents.push(ms);
-						jumpscareTriggered.push(false);
-					}
-				}
-			}
-		}
-		catch(_:Dynamic) {}
-
-		if (jumpscareEvents.length > 0) _loadJumpscareGraphic(mod);
-	}
-
 	public inline function hasAudio():Bool return instSound != null;
 	public inline function currentTime():Float return instSound != null ? instSound.time : -1.0;
 	public inline function totalTime():Float return instSound != null ? instSound.length : 0.0;
@@ -364,7 +315,6 @@ class DAPlayer extends FlxGroup
 		_applyPendingSeek();
 		_checkSongEnd();
 		_updateProgressBar();
-		_updateJumpscare();
 		_handleDiskMouse(elapsed);
 		_handleBarMouse(elapsed);
 		_updateWindowTitle();
@@ -608,48 +558,6 @@ class DAPlayer extends FlxGroup
 		lime.app.Application.current.window.title = '[$state] $song | $mode | $mins:${s < 10 ? "0" : ""}$s';
 	}
 
-	private function _updateJumpscare():Void
-	{
-		if (!isPlaying || instSound == null || jumpscareSprite == null) return;
-		
-		final t = instSound.time;
-		for (i in 0...jumpscareEvents.length)
-		{
-			if (jumpscareTriggered[i] || t < jumpscareEvents[i]) continue;
-			
-			jumpscareTriggered[i] = true;
-			isScaringYou = true;
-			jumpscareSprite.alpha = 1;
-			jumpscareSprite.animation.play('aidel', true);
-			
-			final prevMod = Mods.currentModDirectory;
-			Mods.currentModDirectory = _jumpscareMod;
-			FlxG.sound.play(Paths.sound('jumpscareSound'));
-			Mods.currentModDirectory = prevMod;
-		}
-
-		if (isScaringYou && jumpscareSprite.animation.curAnim != null && jumpscareSprite.animation.curAnim.finished)
-		{
-			jumpscareSprite.alpha = 0;
-			isScaringYou = false;
-		}
-	}
-
-	private function _loadJumpscareGraphic(mod:String):Void
-	{
-		final img = mod != '' ? Paths.mods('$mod/images/characters/jumcare.png') : Paths.mods('images/characters/jumcare.png');
-		final xml = mod != '' ? Paths.mods('$mod/images/characters/jumcare.xml') : Paths.mods('images/characters/jumcare.xml');
-		if (!FileSystem.exists(img) || !FileSystem.exists(xml)) return;
-
-		jumpscareSprite.frames = FlxAtlasFrames.fromSparrow(
-			openfl.display.BitmapData.fromFile(img),
-			sys.io.File.getContent(xml)
-		);
-		jumpscareSprite.animation.addByPrefix('aidel', 'jum', 24, false);
-		jumpscareSprite.setPosition(-120, -200);
-		jumpscareSprite.screenCenter(X);
-	}
-
 	private function _updateAudioFade(elapsed:Float):Void
 	{
 		if (audioFadeSpeed == 0) return;
@@ -750,14 +658,25 @@ class DAPlayer extends FlxGroup
 
 		final seen:Array<String> = [];
 		final vocPaths:Array<{path:String, isOpp:Bool}> = [];
-		
-		for (postfix in [null, 'opponent', 'Opponent', 'player', 'Player'])
+
+		for (postfix in [null, 'opponent', 'player'])
 		{
 			final vp = Paths.voicesPath(song, postfix);
-			if (vp == null || !FileSystem.exists(vp) || seen.contains(vp)) continue;
-			
-			seen.push(vp);
-			vocPaths.push({path: vp, isOpp: postfix == 'opponent' || postfix == 'Opponent'});
+			if (vp == null || !FileSystem.exists(vp)) continue;
+			final vpLower = vp.toLowerCase();
+			if (seen.contains(vpLower)) continue;
+			seen.push(vpLower);
+			vocPaths.push({path: vp, isOpp: postfix == 'opponent'});
+		}
+
+		final lyricsMod  = mod;
+		final lyricsSong = song;
+		final lyricsPaths:Array<String> = [];
+		if (sub != null)
+		{
+			final base = lyricsMod != '' ? Paths.mods('$lyricsMod/data/$lyricsSong') : Paths.mods('data/$lyricsSong');
+			for (p in ['$base/events.json', '$base/$lyricsSong.json'])
+				lyricsPaths.push(p);
 		}
 
 		Mods.currentModDirectory = prevMod;
@@ -769,13 +688,30 @@ class DAPlayer extends FlxGroup
 		sys.thread.Thread.create(() -> {
 			final inst = openfl.media.Sound.fromFile(instPath);
 			final vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}> = [];
-			
 			for (v in vocPaths)
 			{
 				final s = openfl.media.Sound.fromFile(v.path);
 				if (s != null) vocs.push({snd: s, isOpp: v.isOpp});
 			}
-			mainThread.sendMessage({inst: inst, vocs: vocs, gen: gen});
+
+			var lyricsEvs:Array<Dynamic> = null;
+			if (sub != null)
+			{
+				for (p in lyricsPaths)
+				{
+					if (!FileSystem.exists(p)) continue;
+					try
+					{
+						final json:Dynamic = haxe.Json.parse(sys.io.File.getContent(p));
+						final candidate:Array<Dynamic> = cast json.events;
+						if (candidate != null && candidate.length > 0) { lyricsEvs = candidate; break; }
+					}
+					catch(_:Dynamic) {}
+				}
+			}
+
+			mainThread.sendMessage({inst: inst, vocs: vocs, gen: gen,
+				lyricsEvs: lyricsEvs, lyricsMod: lyricsMod, lyricsSong: lyricsSong});
 		});
 	}
 
@@ -785,8 +721,15 @@ class DAPlayer extends FlxGroup
 
 		final msg = sys.thread.Thread.readMessage(false);
 		if (msg == null) return;
-		
-		final data:{inst:openfl.media.Sound, vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}>, gen:Int} = cast msg;
+
+		final data:{
+			inst:openfl.media.Sound,
+			vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}>,
+			gen:Int,
+			lyricsEvs:Array<Dynamic>,
+			lyricsMod:String,
+			lyricsSong:String
+		} = cast msg;
 
 		if (data.gen != _loadGeneration)
 		{
@@ -799,9 +742,11 @@ class DAPlayer extends FlxGroup
 		isLoading = false;
 		if (data.inst == null) return;
 
+		if (sub != null)
+			sub.applyLyricsEvents(data.lyricsEvs, data.lyricsSong, data.lyricsMod);
+
 		instSound = FlxG.sound.load(data.inst);
 		instSound.looped = loopEnabled;
-		
 		instSound.volume = 0.0;
 
 		for (v in data.vocs)
@@ -816,16 +761,11 @@ class DAPlayer extends FlxGroup
 		instSound.play();
 		for (v in vocalsSounds) v.play();
 
-		for (i in 0...jumpscareTriggered.length) jumpscareTriggered[i] = false;
-		isScaringYou = false;
-		if (jumpscareSprite != null) jumpscareSprite.alpha = 0;
-
 		_startPitchUp();
 		audioFadeTarget = 1.0;
 		audioFadeSpeed = 12.0;
-		
 		isPlaying = true;
-		
+
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, FlxMath.bound(instSound.time, 0, instSound.length));
 		#end

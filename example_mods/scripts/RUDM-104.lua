@@ -40,7 +40,6 @@ local debugKeys = {
 
 	saveStampData = 'SPACE', --The key for stamp useful data (SPACE by default)
 	resetCharsPositions = 'F5', --The key which restart all character default properties (F5 by default)
-	toggleFullscreen = 'F11', --The key that toggles Full-screen (F11 by default)
 	hideHUD = 'C', --The key that toggles HUD Visibility (C by default)
 	hideDebug = 'F12', --The key that toggles Debug Camera Visibility (F12 by default)
 	toggleBotplay = 'B', --The key that toggles Botplay (B by default)
@@ -278,12 +277,6 @@ function onUpdatePost(e)
 	practiceSine = practiceSine + 180 * e
 	setProperty('practiceTxt.alpha', 1 - math.sin((math.pi * practiceSine) / 180))
 	setProperty('practiceTxt.visible', getProperty('practiceMode'))
-
-	--Toggle Fullscreen
-	if keyboardJustPressed(debugKeys.toggleFullscreen) then
-		setPropertyFromClass('flixel.FlxG', 'fullscreen', not getPropertyFromClass('flixel.FlxG', 'fullscreen'))
-		if settings.sounds then playSound('scrollMenu', 0.4) end
-	end
 
 	--Take Screenshot
 	if keyboardJustPressed(debugKeys.takeScreenshot) then

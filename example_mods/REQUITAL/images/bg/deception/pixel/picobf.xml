@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="picobf.png">
+<SubTexture name="idle0000" x="58" y="40" width="57" height="39" frameX="0" frameY="-1" frameWidth="54" frameHeight="37" />
+<SubTexture name="idle0001" x="0" y="0" width="58" height="40" frameX="0" frameY="-1" frameWidth="54" frameHeight="37" />
+<SubTexture name="idle0002" x="58" y="0" width="58" height="40" frameX="0" frameY="0" frameWidth="54" frameHeight="37" />
+<SubTexture name="idle0003" x="0" y="40" width="58" height="40" frameX="0" frameY="0" frameWidth="54" frameHeight="37" />
+</TextureAtlas>

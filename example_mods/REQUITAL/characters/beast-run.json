@@ -34,10 +34,10 @@
 		},
 		{
 			"offsets": [-17, -16],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "hdowm"
 		}
 	],

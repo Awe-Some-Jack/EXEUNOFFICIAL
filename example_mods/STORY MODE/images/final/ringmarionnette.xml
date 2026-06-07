@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="ringmarionnette.png">
+<SubTexture name="ring0000" x="652" y="0" width="648" height="653" frameX="-308" frameY="-328" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="ring0001" x="1300" y="0" width="648" height="653" frameX="-308" frameY="-328" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="idle0000" x="0" y="0" width="652" height="657" frameX="-306" frameY="-326" frameWidth="1920" frameHeight="1080" />
+<SubTexture name="ring0002" x="0" y="657" width="648" height="653" frameX="-308" frameY="-328" frameWidth="1920" frameHeight="1080" />
+</TextureAtlas>

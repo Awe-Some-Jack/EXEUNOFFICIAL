@@ -1,0 +1,23 @@
+{
+	"animations": [
+		{
+			"offsets": [209, 303],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "laugh"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/xenolaughfe",
+	"position": [0, 0],
+	"healthicon": "XENO-P4",
+	"flip_x": false,
+	"healthbar_colors": [45, 18, 105],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

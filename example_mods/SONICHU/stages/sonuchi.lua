@@ -22,4 +22,28 @@ function onCreatePost()
 	addLuaSprite('overlay', true)
 	setProperty('overlay.alpha', 0.3)
 	setBlendMode('overlay', 'add')
+
+	setScrollFactor('gf', 1, 1)
+	createInstance('rosechu', 'objects.Character', {180, -150, 'rosechu', false})
+	setObjectOrder('rosechu', getObjectOrder('gfGroup') + 1)
+end
+
+function onEvent(n,v1) if n == 'Play Animation' then if v1 == 'gf' then playAnim('rosechu', 'anim', true) setProperty('rosechu.specialAnim', true) end end end
+
+function onUpdate()
+	callMethod('rosechu.update')
+end
+
+function onCountdownTick(t)
+	rosechuDance(t)
+end
+
+function onBeatHit()
+	rosechuDance(curBeat)
+end
+
+function rosechuDance(beat)
+	if beat % math.floor(getProperty('gfSpeed') * getProperty('rosechu.danceEveryNumBeats')) == 0 and not getProperty('rosechu.stunned') and not stringStartsWith(getProperty('rosechu.animation.curAnim.name'), 'sing') then
+		callMethod('rosechu.dance')
+	end
 end

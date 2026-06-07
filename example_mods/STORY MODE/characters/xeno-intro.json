@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 10],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left intro"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down intro"
+		},
+		{
+			"offsets": [0, 190],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up intro"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "rigth intro"
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle intro",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/xenop1",
+	"position": [0, 0],
+	"healthicon": "XENO-P4back",
+	"flip_x": false,
+	"healthbar_colors": [45, 18, 105],
+	"camera_position": [0, 0],
+	"sing_duration": 6,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

@@ -146,6 +146,9 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 		animOffsets = [];
 		_offsets.clear();
 
+		missingCharacter = false;
+		missingText = null;
+
 		curCharacter = character;
 		var characterPath:String = 'characters/$character.json';
 

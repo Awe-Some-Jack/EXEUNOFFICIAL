@@ -54,7 +54,7 @@ class CustomShapeTransition extends MusicBeatSubstate
 
     override function create()
     {
-        camera = FlxG.cameras.list[FlxG.cameras.list.length - 1];
+        camera = FlxG.cameras.list[0];
 
         final zoom = Math.max(camera.zoom, 0.001);
         width = Math.ceil(FlxG.width / zoom);

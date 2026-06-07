@@ -358,7 +358,15 @@ class BIOSShowcase
 	{
 		if (character.curCharacter == charId) return;
 		final old = character.graphic;
-		character.changeCharacter(charId);
+		try
+		{
+			character.changeCharacter(charId);
+		}
+		catch(e:Dynamic)
+		{
+			trace('BIOSShowcase: failed to load character "$charId": $e');
+			character.curCharacter = '';
+		}
 		_releaseGraphic(old, character.graphic);
 	}
 
@@ -366,7 +374,14 @@ class BIOSShowcase
 	{
 		if (icon.getCharacter() == iconId) return;
 		final old = icon.graphic;
-		icon.changeIcon(iconId);
+		try
+		{
+			icon.changeIcon(iconId);
+		}
+		catch(e:Dynamic)
+		{
+			trace('BIOSShowcase: failed to load icon "$iconId": $e');
+		}
 		_releaseGraphic(old, icon.graphic);
 	}
 

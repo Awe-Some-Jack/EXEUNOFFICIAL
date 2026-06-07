@@ -57,6 +57,10 @@ import crowplexus.hscript.Expr.Error as IrisError;
 import crowplexus.hscript.Printer;
 #end
 
+#if target.threaded
+import sys.thread.Thread;
+#end
+
 /**
  * This is where all the Gameplay stuff happens and is managed
  *
@@ -89,6 +93,11 @@ class PlayState extends MusicBeatState
 		['Sick!', 1], //From 90% to 99%
 		['Perfect!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
 	];
+
+	private var shutdownThread:Bool = false;
+	private var gameFroze:Bool = false;
+	private var requiresSyncing:Bool = false;
+	private var lastCorrectSongPos:Float = -1.0;
 
 	//event variables
 	private var isCameraOnForcedPos:Bool = false;
@@ -1218,6 +1227,7 @@ class PlayState extends MusicBeatState
 		setOnScripts('songLength', songLength);
 		callOnScripts('onSongStart');
 		gameplayCam.onSongStart();
+		runSongSyncThread();
 	}
 
 	private var noteTypes:Array<String> = [];
@@ -1561,6 +1571,7 @@ class PlayState extends MusicBeatState
 
 			paused = false;
 			callOnScripts('onResume');
+			runSongSyncThread();
 			resetRPC(startTimer?.finished);
 
 			if (ClientPrefs.data.shaders)
@@ -1578,7 +1589,11 @@ class PlayState extends MusicBeatState
 	#if DISCORD_ALLOWED
 	override public function onFocus():Void
 	{
+		shutdownThread = false;
+		runSongSyncThread();
+
 		super.onFocus();
+
 		if (!paused && health > 0)
 		{
 			resetRPC(Conductor.songPosition > 0.0);
@@ -1587,7 +1602,10 @@ class PlayState extends MusicBeatState
 
 	override public function onFocusLost():Void
 	{
+		shutdownThread = true;
+
 		super.onFocusLost();
+
 		if (!paused && health > 0 && autoUpdateRPC)
 		{
 			DiscordClient.changePresence(detailsText, SONG.song + " (Paused)", iconP2.getCharacter());
@@ -2401,7 +2419,8 @@ class PlayState extends MusicBeatState
 		callOnScripts('onEvent', [eventName, value1, value2, strumTime]);
 	}
 
-	public function moveCameraSection(?sec:Null<Int>):Void {
+	public function moveCameraSection(?sec:Null<Int>)
+	{
 		gameplayCam.moveCameraSection(sec);
 	}
 	
@@ -2410,7 +2429,7 @@ class PlayState extends MusicBeatState
 		gameplayCam.moveCameraToGirlfriend();
 	}
 
-	var cameraTwn:FlxTween;
+	var cameraTwn:FlxTween = null;
 	public function moveCamera(isDad:Bool)
 	{
 		gameplayCam.moveCamera(isDad);
@@ -2594,11 +2613,8 @@ class PlayState extends MusicBeatState
 	public var showComboNum:Bool = true;
 	public var showRating:Bool = true;
 
-	// Stores Ratings and Combo Sprites in a group
 	public var comboGroup:FlxSpriteGroup;
-	// Stores HUD Objects in a Group
 	public var uiGroup:FlxSpriteGroup;
-	// Stores Note Objects in a Group
 	public var noteGroup:FlxTypedGroup<FlxBasic>;
 
 	private function cachePopUpScore()
@@ -3296,7 +3312,11 @@ class PlayState extends MusicBeatState
 		if (vocals != null) { vocals.stop(); vocals.destroy(); vocals = null; }
 		if (opponentVocals != null) { opponentVocals.stop(); opponentVocals.destroy(); opponentVocals = null; }
 
+		shutdownThread = true;
+		FlxG.signals.preUpdate.remove(checkForResync);
+
 		instance = null;
+
 		super.destroy();
 	}
 
@@ -3789,5 +3809,42 @@ class PlayState extends MusicBeatState
 		FlxG.log.warn('This platform doesn\'t support Runtime Shaders!');
 		#end
 		return false;
+	}
+
+	function checkForResync()
+	{
+		if (paused) return;
+
+		if (requiresSyncing)
+		{
+			requiresSyncing = false;
+			setSongTime(lastCorrectSongPos);
+		}
+
+		gameFroze = false;
+	}
+
+	public function runSongSyncThread()
+	{
+		#if target.threaded
+		Thread.create(() -> {
+			while (!endingSong && !paused && !shutdownThread)
+			{
+				if (requiresSyncing) continue;
+
+				if (gameFroze)
+				{
+					lastCorrectSongPos = Conductor.songPosition;
+					requiresSyncing = true;
+					continue;
+				}
+				gameFroze = true;
+
+				Sys.sleep(0.25);
+			}
+		});
+		#end
+
+		if (!FlxG.signals.preUpdate.has(checkForResync)) FlxG.signals.preUpdate.add(checkForResync);
 	}
 }

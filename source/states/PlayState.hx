@@ -3043,61 +3043,43 @@ class PlayState extends MusicBeatState
 
 	function opponentNoteHit(note:Note):Void
 	{
-		
-		final _noteIdx:Int = notes.members.indexOf(note);
-		_noteArgs[0] = _noteIdx;
+		final idx:Int = notes.members.indexOf(note);
+
+		_noteArgs[0] = idx;
 		_noteArgs[1] = Math.abs(note.noteData);
 		_noteArgs[2] = note.noteType;
 		_noteArgs[3] = note.isSustainNote;
+
 		var result:Dynamic = callOnLuas('opponentNoteHitPre', _noteArgs);
-		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) result = callOnHScript('opponentNoteHitPre', [note]);
+		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll)
+			result = callOnHScript('opponentNoteHitPre', [note]);
 
-		if(result == LuaUtils.Function_Stop) return;
+		if(result == LuaUtils.Function_Stop)
+			return;
 
-		if (songName != 'tutorial')
+		if(songName != 'tutorial')
 			camZooming = true;
 
-		if(note.noteType == 'Hey!' && dad.hasAnimation('hey'))
-		{
-			dad.playAnim('hey', true);
-			dad.specialAnim = true;
-			dad.heyTimer = 0.6;
-		}
-		else if(!note.noAnimation && note.noteType != 'GF2Sing')
-		{
-			var char:Character = dad;
-			var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length-1, note.noteData)))] + note.animSuffix;
-			if(note.gfNote) char = gf;
+		handleOpponentAnimation(note);
 
-			if(char != null)
-			{
-				var canPlay:Bool = true;
-				if(note.isSustainNote)
-				{
-					var holdAnim:String = animToPlay + '-hold';
-					if(char.animation.exists(holdAnim)) animToPlay = holdAnim;
-					final _curCharAnim:String = char.getAnimationName();
-					if(_curCharAnim == holdAnim || _curCharAnim == holdAnim + '-loop') canPlay = false;
-				}
+		if(opponentVocals.length <= 0)
+			vocals.volume = 1;
 
-				var charCurFrame = 0;
-				if (char.animation != null) charCurFrame = char.animation.curAnim.curFrame;
-				if (char.getAnimationName().startsWith('sing') && note.isSustainNote && charCurFrame < 2) canPlay = false;
-				if (note.noteType == 'Sustain Animation' && note.isSustainNote) canPlay = false;
-				if(canPlay) char.playAnim(animToPlay, true);
-				char.holdTimer = 0;
-			}
-		}
+		strumPlayAnim(true,
+			Std.int(Math.abs(note.noteData)),
+			Conductor.stepCrochet * 1.25 / 1000 / playbackRate
+		);
 
-		if(opponentVocals.length <= 0) vocals.volume = 1;
-		strumPlayAnim(true, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
 		note.hitByOpponent = true;
-		
-		stagesFunc(function(stage:BaseStage) stage.opponentNoteHit(note));
-		var result:Dynamic = callOnLuas('opponentNoteHit', _noteArgs);
-		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) callOnHScript('opponentNoteHit', [note]);
 
-		if (!note.isSustainNote) invalidateNote(note);
+		stagesFunc(function(stage:BaseStage) stage.opponentNoteHit(note));
+
+		result = callOnLuas('opponentNoteHit', _noteArgs);
+		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll)
+			callOnHScript('opponentNoteHit', [note]);
+
+		if(!note.isSustainNote)
+			invalidateNote(note);
 	}
 
 	public function goodNoteHit(note:Note):Void
@@ -3105,7 +3087,7 @@ class PlayState extends MusicBeatState
 		if(note.wasGoodHit) return;
 		if(cpuControlled && note.ignoreNote) return;
 
-		var isSus:Bool = note.isSustainNote; //GET OUT OF MY HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD
+		var isSus:Bool = note.isSustainNote;
 		var leData:Int = Math.round(Math.abs(note.noteData));
 		var leType:String = note.noteType;
 
@@ -3113,124 +3095,210 @@ class PlayState extends MusicBeatState
 		_gnhArgs[1] = leData;
 		_gnhArgs[2] = leType;
 		_gnhArgs[3] = isSus;
+
 		stagesFunc(function(stage:BaseStage) stage.goodNoteHitPre(note));
+
 		var result:Dynamic = callOnLuas('goodNoteHitPre', _gnhArgs);
-		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) result = callOnHScript('goodNoteHitPre', [note]);
+		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll)
+			result = callOnHScript('goodNoteHitPre', [note]);
 
 		if(result == LuaUtils.Function_Stop) return;
 
 		note.wasGoodHit = true;
 
-		if (note.hitsoundVolume > 0 && !note.hitsoundDisabled)
+		if(note.hitsoundVolume > 0 && !note.hitsoundDisabled)
 			FlxG.sound.play(Paths.sound(note.hitsound), note.hitsoundVolume);
 
-		if(!note.hitCausesMiss) //Common notes
+		if(!note.hitCausesMiss)
 		{
-			if(!note.noAnimation)
-			{
-				var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length-1, note.noteData)))] + note.animSuffix;
-
-				var char:Character = boyfriend;
-				var animCheck:String = 'hey';
-				if(note.gfNote)
-				{
-					char = gf;
-					animCheck = 'cheer';
-				}
-
-				if(char != null)
-				{
-					var canPlay:Bool = true;
-					if(note.isSustainNote)
-					{
-						var holdAnim:String = animToPlay + '-hold';
-						if(char.animation.exists(holdAnim)) animToPlay = holdAnim;
-						final _curCharAnim:String = char.getAnimationName();
-						if(_curCharAnim == holdAnim || _curCharAnim == holdAnim + '-loop') canPlay = false;
-					}
-	
-					var charCurFrame = 0;
-					if (char.animation != null) charCurFrame = char.animation.curAnim.curFrame;
-					if (char.getAnimationName().startsWith('sing') && note.isSustainNote && charCurFrame < 2) canPlay = false;
-					if (note.noteType == 'Sustain Animation' && note.isSustainNote) canPlay = false;
-					if(canPlay) char.playAnim(animToPlay, true);
-					char.holdTimer = 0;
-
-					if(note.noteType == 'Hey!')
-					{
-						if(char.hasAnimation(animCheck))
-						{
-							char.playAnim(animCheck, true);
-							char.specialAnim = true;
-							char.heyTimer = 0.6;
-						}
-					}
-				}
-				
-				if(note.noteType == 'BF and GF Sing')
-				{
-					var canPlay:Bool = true;
-					char = gf;
-					if(note.isSustainNote)
-					{
-						var holdAnim:String = animToPlay + '-hold';
-						if(char.animation.exists(holdAnim)) animToPlay = holdAnim;
-						final _curCharAnim:String = char.getAnimationName();
-						if(_curCharAnim == holdAnim || _curCharAnim == holdAnim + '-loop') canPlay = false;
-					}
-	
-					var charCurFrame = 0;
-					if (char.animation != null) charCurFrame = char.animation.curAnim.curFrame;
-					if (char.getAnimationName().startsWith('sing') && note.isSustainNote && charCurFrame < 2) canPlay = false;
-					if (note.noteType == 'Sustain Animation' && note.isSustainNote) canPlay = false;
-					if(canPlay) char.playAnim(animToPlay, true);
-					char.holdTimer = 0;
-				}
-			}
-
-			if(!cpuControlled)
-			{
-				var spr = playerStrums.members[note.noteData];
-				if(spr != null) spr.playAnim('confirm', true);
-			}
-			else strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
-			if (cpuAssist && !cpuControlled) strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
-			vocals.volume = 1;
-
-			if (!note.isSustainNote)
-			{
-				combo++;
-				if(combo > 9999) combo = 9999;
-				popUpScore(note);
-			}
-			var gainHealth:Bool = true; // prevent health gain, *if* sustains are treated as a singular note
-			if (guitarHeroSustains && note.isSustainNote) gainHealth = false;
-			if (gainHealth) health += note.hitHealth * healthGain;
-
+			handleCommonNote(note);
 		}
-		else //Notes that count as a miss if you hit them (Hurt notes for example)
+		else
 		{
-			if(!note.noMissAnimation)
-			{
-				switch(note.noteType)
-				{
-					case 'Hurt Note':
-						if(boyfriend.hasAnimation('hurt'))
-						{
-							boyfriend.playAnim('hurt', true);
-							boyfriend.specialAnim = true;
-						}
-				}
-			}
-
-			noteMiss(note);
-			if(!note.noteSplashData.disabled && !note.isSustainNote) spawnNoteSplashOnNote(note);
+			handleHurtNote(note);
 		}
 
 		stagesFunc(function(stage:BaseStage) stage.goodNoteHit(note));
-		var result:Dynamic = callOnLuas('goodNoteHit', _gnhArgs);
-		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) callOnHScript('goodNoteHit', [note]);
-		if(!note.isSustainNote) invalidateNote(note);
+
+		result = callOnLuas('goodNoteHit', _gnhArgs);
+		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll)
+			callOnHScript('goodNoteHit', [note]);
+
+		if(!note.isSustainNote)
+			invalidateNote(note);
+	}
+
+	function handleCommonNote(note:Note):Void
+	{
+		if(note.noAnimation) return;
+
+		var animToPlay:String =
+			singAnimations[Std.int(Math.abs(Math.min(singAnimations.length - 1, note.noteData)))]
+			+ note.animSuffix;
+
+		var char:Character = boyfriend;
+		var animCheck:String = 'hey';
+
+		if(note.gfNote)
+		{
+			char = gf;
+			animCheck = 'cheer';
+		}
+
+		if(char != null)
+			handleCharacterHit(char, note, animToPlay, animCheck);
+
+		if(!cpuControlled)
+		{
+			var spr = playerStrums.members[note.noteData];
+			if(spr != null) spr.playAnim('confirm', true);
+		}
+		else
+		{
+			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
+		}
+
+		if(cpuAssist && !cpuControlled)
+			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
+
+		vocals.volume = 1;
+
+		if(!note.isSustainNote)
+		{
+			combo++;
+			if(combo > 9999) combo = 9999;
+			popUpScore(note);
+		}
+
+		var gainHealth:Bool = true;
+		if(guitarHeroSustains && note.isSustainNote)
+			gainHealth = false;
+
+		if(gainHealth)
+			health += note.hitHealth * healthGain;
+	}
+
+	function handleHurtNote(note:Note):Void
+	{
+		if(!note.noMissAnimation)
+		{
+			switch(note.noteType)
+			{
+				case 'Hurt Note':
+					if(boyfriend.hasAnimation('hurt'))
+					{
+						boyfriend.playAnim('hurt', true);
+						boyfriend.specialAnim = true;
+					}
+			}
+		}
+
+		noteMiss(note);
+
+		if(!note.noteSplashData.disabled && !note.isSustainNote)
+			spawnNoteSplashOnNote(note);
+	}
+
+	function handleCharacterHit(char:Character, note:Note, animToPlay:String, animCheck:String):Void
+	{
+		playCharacterNoteAnim(char, note, animToPlay);
+
+		if(note.noteType == 'Hey!' && char.hasAnimation(animCheck))
+		{
+			char.playAnim(animCheck, true);
+			char.specialAnim = true;
+			char.heyTimer = 0.6;
+		}
+	}
+
+	function playCharacterNoteAnim(char:Character, note:Note, animToPlay:String):Void
+	{
+		if(char == null) return;
+
+		var canPlay:Bool = true;
+
+		if(note.isSustainNote)
+		{
+			var holdAnim = animToPlay + '-hold';
+
+			if(char.animation.exists(holdAnim))
+				animToPlay = holdAnim;
+
+			final cur = char.getAnimationName();
+
+			if(cur == holdAnim || cur == holdAnim + '-loop')
+				canPlay = false;
+		}
+
+		final frame = char.animation?.curAnim?.curFrame ?? 0;
+
+		if(char.getAnimationName().startsWith('sing')
+			&& note.isSustainNote
+			&& frame < 2)
+			canPlay = false;
+
+		if(note.noteType == 'Sustain Animation' && note.isSustainNote)
+			canPlay = false;
+
+		if(canPlay)
+			char.playAnim(animToPlay, true);
+
+		char.holdTimer = 0;
+	}
+
+	function handleOpponentAnimation(note:Note):Void
+	{
+		if(note.noteType == 'Hey!' && dad.hasAnimation('hey'))
+		{
+			dad.playAnim('hey', true);
+			dad.specialAnim = true;
+			dad.heyTimer = 0.6;
+			return;
+		}
+
+		if(note.noAnimation || note.noteType == 'GF2Sing')
+			return;
+
+		var char:Character = dad;
+		if(note.gfNote)
+			char = gf;
+
+		if(char == null)
+			return;
+
+		var animToPlay:String =
+			singAnimations[
+				Std.int(Math.abs(Math.min(singAnimations.length - 1, note.noteData)))
+			] + note.animSuffix;
+
+		var canPlay:Bool = true;
+
+		if(note.isSustainNote)
+		{
+			var holdAnim = animToPlay + '-hold';
+
+			if(char.animation.exists(holdAnim))
+				animToPlay = holdAnim;
+
+			final cur = char.getAnimationName();
+			if(cur == holdAnim || cur == holdAnim + '-loop')
+				canPlay = false;
+		}
+
+		final frame = char.animation?.curAnim?.curFrame ?? 0;
+
+		if(char.getAnimationName().startsWith('sing')
+			&& note.isSustainNote
+			&& frame < 2)
+			canPlay = false;
+
+		if(note.noteType == 'Sustain Animation' && note.isSustainNote)
+			canPlay = false;
+
+		if(canPlay)
+			char.playAnim(animToPlay, true);
+
+		char.holdTimer = 0;
 	}
 
 	public function invalidateNote(note:Note):Void {

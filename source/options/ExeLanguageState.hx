@@ -37,8 +37,8 @@ class ExeLanguageState extends MusicBeatSubstate
 	static final FONT:String    = "SonicCD.ttf";
 	static final FONT_SIZE:Int  = 18;
 
-	static final LANG_KEYS:Array<String>   = ["en-US", "es-ES", "pt-BR", "ja-JP", "zh-CN", "ru-RU"];
-	static final LANG_LABELS:Array<String> = ["ENGLISH", "SPANISH", "PORTUGUESE", "JAPANESE", "CHINESE", "RUSSIAN"];
+	static final LANG_KEYS:Array<String>   = ["en-US", "es-ES", "pt-BR", "uz-UZ", "ja-JP", "zh-CN", "ru-RU", "uk-UA"];
+	static final LANG_LABELS:Array<String> = ["ENGLISH", "SPANISH", "PORTUGUESE", "UZBEK", "JAPANESE", "CHINESE", "RUSSIAN", "UKRAINIAN"];
 
 	var titlebar:FlxSprite;
 	var titlebarTxt:FlxText;

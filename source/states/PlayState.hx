@@ -272,6 +272,8 @@ class PlayState extends MusicBeatState
 
 	// Less laggy controls
 	private var keysArray:Array<String>;
+	private var _osHeldKeys:Map<flixel.input.keyboard.FlxKey, Bool> = new Map();
+
 	public var songName:String;
 
 	// Callbacks for stages
@@ -2719,6 +2721,9 @@ class PlayState extends MusicBeatState
 			@:privateAccess if (!FlxG.keys._keyListMap.exists(eventKey)) return;
 			#end
 
+			if (_osHeldKeys.exists(eventKey) && _osHeldKeys.get(eventKey) == true) return;
+			_osHeldKeys.set(eventKey, true);
+
 			// capture timestamp immediately — before any script calls or lookups add overhead
 			_pressTimestamp = haxe.Timer.stamp();
 			keyPressed(key);
@@ -2813,6 +2818,9 @@ class PlayState extends MusicBeatState
 	{
 		var eventKey:FlxKey = event.keyCode;
 		var key:Int = getKeyFromEvent(keysArray, eventKey);
+
+		_osHeldKeys.set(eventKey, false);
+
 		if(!controls.controllerMode && key > -1) keyReleased(key);
 	}
 

@@ -2,6 +2,7 @@ import openfl.Lib;
 import flixel.FlxG;
 import flixel.system.scaleModes.RatioScaleMode;
 import states.substates.PauseSubState;
+import backend.Controls;
 
 var window:Dynamic;
 var isRestarting:Bool = false;
@@ -24,10 +25,7 @@ function onCreate()
 	}
 }
 
-function onCreatePost()
-{
-	comboGroup.y -= 100;
-}
+function onCreatePost() comboGroup.y -= 100;
 
 var oldFullscreen:Bool = false;
 function onUpdate(elapsed:Float)
@@ -57,11 +55,15 @@ function onDestroy()
 	window.resizable = true;
 }
 
+var canCheck:Bool = true;
 function onPause()
 {
 	luaCallback = () -> { if (FlxG.state != null && FlxG.state.subState != null) {
 		var subState = FlxG.state.subState;
-		isRestarting = (subState.curSelected == 1);
+		if (canCheck) {
+			isRestarting = (subState.curSelected == 1);
+			if (Controls.instance.ACCEPT) canCheck = false;
+		}
 	}};
 	setVar('luaCallback', luaCallback);
 	FlxG.signals.postUpdate.add(luaCallback);

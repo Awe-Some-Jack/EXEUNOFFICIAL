@@ -21,6 +21,7 @@ function onCreatePost()
 	setProperty('iconOMW.alpha', 0)
 end
 
+
 local oldAnim = 'normal'
 function onUpdatePost()
 	if getProperty('glassbreak') and getProperty('glassbreak.animation.curAnim.name') == 'idle2' and getProperty('glassbreak.animation.curAnim.finished') then removeLuaSprite('glassbreak', true) end
@@ -49,22 +50,17 @@ function onEvent(n,v1)
 		if v1 == 'removevideoxd' then
 			if getProperty('videoCutscene') == nil then return end
     		callMethod('remove', {instanceArg('videoCutscene')})
-
 			cancelTween('asdads')
-			setProperty('camGame.alpha', 1)
-			setProperty('blackScreen.alpha', 1)
 		end
-		if v1 == 'fadeIn2' then doTweenAlpha('asdads', 'blackScreen', 0, crochet / (1000 / 10), 'expoIn') end
 		if v1 == 'glassbreaking' then
 			playAnim('glassbreak', 'idle', true)
 			setProperty('glassbreak.alpha', 1)
 		end
 		if v1 == 'startPro' then
+			setProperty('camGame.alpha', 1)
 			screenCenter('glassbreak')
 			callMethod('glassbreak.setPosition', {getProperty('glassbreak.x') - 150, getProperty('glassbreak.y') - 30})
 			playAnim('glassbreak', 'idle2', true)
-
-			removeSpriteShader('boyfriend')
 
 			cancelTween('asdads') setProperty('blackScreen.alpha', 0) setProperty('blackScreen.color', getColorFromHex('000000'))
 			cancelTween('camHUD') setProperty('camHUD.alpha', 1)
@@ -79,10 +75,6 @@ function onEvent(n,v1)
 			setProperty('trees.visible', true)
 			setProperty('gradient.visible', true)
 
-			removeLuaSprite('omwograd', true)
-			removeLuaSprite('omwofloor', true)
-			triggerEvent('Change Character', 'dad', 'omw')
-
 			setProperty('iconBF.alpha', 1)
 			setProperty('iconOpp.alpha', 1)
 			setProperty('hbHealth.alpha', 1)
@@ -96,8 +88,14 @@ function onEvent(n,v1)
 			setProperty('strumLineRing.alpha', 1)
 		end
 		if v1 == 'startUniverse' then
+			local separation = 50
+			for i = 0,3 do
+				setProperty('opponentStrums.members['..i..'].x', -1000)
+				setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+			end
+			callMethod('comboGroup.setPosition', {0, 0})
+
 			triggerEvent('Change Health Damage', '0.02', '')
-			setHealth(1)
 
 			setProperty('iconOMW.alpha', 1)
 			setProperty('iconOpp.alpha', 0)
@@ -118,7 +116,9 @@ function onEvent(n,v1)
 			setProperty('piedra.visible', true)
 			setProperty('omwbody.visible', true)
 
+			setProperty('cameraSpeed', 2)
 			triggerEvent('Change Character', 'dad', 'omw2')
+			setProperty('gameplayCam.settings.BFy', 150)
 
 			setShaderFloat('cab', 'amount', 0.2)
 			setShaderFloat('ca2', 'amount', 0.3)

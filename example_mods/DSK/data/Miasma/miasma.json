@@ -1958,7 +1958,569 @@
 		[
 			0,
 			[
-				["brightnessFlash", "-70, 0", "2, smootherStepIn"]
+				["Set Cam Zoom", "0.65", "1.8"]
+			]
+		],
+		[
+			1655.1724137931,
+			[
+				["Add Camera Zoom", "0.001", "0.06"]
+			]
+		],
+		[
+			3310.34482758621,
+			[
+				["Tween Camera Zoom", "0.85", "1"],
+				["Set customCamera Position", "dad", "-60, 500"]
+			]
+		],
+		[
+			4965.51724137931,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["Set customCamera Position", "dad", "180, 500"]
+			]
+		],
+		[
+			8275.86206896552,
+			[
+				["Add Camera Zoom", "0.001", "0.06"]
+			]
+		],
+		[
+			9931.03448275862,
+			[
+				["Tween Camera Zoom", "0.85", "1"],
+				["Set customCamera Position", "bf", "670, 530"]
+			]
+		],
+		[
+			11586.2068965517,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["Add Camera Zoom", "0.001", "0.06"],
+				["Set customCamera Position", "bf", "600, 500"]
+			]
+		],
+		[
+			12413.7931034483,
+			[
+				["Add Camera Zoom", "0.001", "0.06"]
+			]
+		],
+		[
+			13241.3793103448,
+			[
+				["Add Camera Zoom", "0.001", "0.06"]
+			]
+		],
+		[
+			13655.1724137931,
+			[
+				["Add Camera Zoom", "0.001", "0.06"]
+			]
+		],
+		[
+			14068.9655172414,
+			[
+				["Add Camera Zoom", "0.001", "0.06"]
+			]
+		],
+		[
+			14896.5517241379,
+			[
+				["Add Camera Zoom", "0.001", "0.06"]
+			]
+		],
+		[
+			16551.724137931,
+			[
+				["Tween Camera Zoom", "0.85", "1"],
+				["Set customCamera Position", "dad", "-60, 500"]
+			]
+		],
+		[
+			18206.8965517241,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["Set customCamera Position", "dad", "180, 500"]
+			]
+		],
+		[
+			21517.2413793104,
+			[
+				["Add Camera Zoom", "0.001", "0.06"]
+			]
+		],
+		[
+			23172.4137931035,
+			[
+				["Tween Camera Zoom", "0.85", "1"],
+				["Set customCamera Position", "bf", "670, 530"]
+			]
+		],
+		[
+			24827.5862068966,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["Set customCamera Position", "bf", "600, 500"]
+			]
+		],
+		[
+			27310.3448275862,
+			[
+				["Add Camera Zoom", "0.001", "0.06"]
+			]
+		],
+		[
+			27724.1379310345,
+			[
+				["Add Camera Zoom", "0.001", "0.06"]
+			]
+		],
+		[
+			28137.9310344828,
+			[
+				["Add Camera Zoom", "0.001", "0.06"]
+			]
+		],
+		[
+			29379.3103448276,
+			[
+				["Tween Camera Zoom", "0.55", "0.5"]
+			]
+		],
+		[
+			29793.1034482759,
+			[
+				["Tween Camera Zoom", "0.85", "1.5"],
+				["Set customCamera Position", "dad", "-60, 500"],
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			31448.275862069,
+			[
+				["Tween Camera Zoom", "0.65", "1.5"],
+				["Set customCamera Position", "dad", "180, 500"]
+			]
+		],
+		[
+			34758.6206896552,
+			[
+				["Set customCamera Position", "bf", "460, 480"],
+				["Add Camera Zoom", "0.035", "0.06"]
+			]
+		],
+		[
+			36000,
+			[
+				["Tween Camera Zoom", "0.55", "0.5"],
+				["Set customCamera Position", "bf", "460, 480"]
+			]
+		],
+		[
+			36413.7931034483,
+			[
+				["Tween Camera Zoom", "0.85", "1.5"],
+				["Set customCamera Position", "bf", "670, 500"],
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			38068.9655172414,
+			[
+				["Tween Camera Zoom", "0.65", "1.5"],
+				["Set customCamera Position", "bf", "600, 500"]
+			]
+		],
+		[
+			39724.1379310345,
+			[
+				["Add Camera Zoom", "0.035", "0.065"]
+			]
+		],
+		[
+			40551.724137931,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			40965.5172413793,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			41379.3103448276,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			43034.4827586207,
+			[
+				["Tweening Camera", "450, 0", "2, smoothStepInOut"]
+			]
+		],
+		[
+			45517.2413793103,
+			[
+				["Tweening Camera", "0, 0", "2, smoothStepInOut"]
+			]
+		],
+		[
+			48000,
+			[
+				["Add Camera Zoom", "0.001", "0.065"],
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			50482.7586206897,
+			[
+				["Tweening Camera", "-450, 0", "2, smoothStepInOut"]
+			]
+		],
+		[
+			51310.3448275862,
+			[
+				["Add Camera Zoom", "0.001", "0.065"],
+				["Tween Camera Zoom", "0.75", "1"]
+			]
+		],
+		[
+			52137.9310344828,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			52965.5172413793,
+			[
+				["Tweening Camera", "0, 0", "1.5, smoothStepInOut"],
+				["Add Camera Zoom", "0,001", "0.065"]
+			]
+		],
+		[
+			53379.3103448276,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			53793.1034482759,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			54103.4482758621,
+			[
+				["Tween Camera Zoom", "0.65", "1"]
+			]
+		],
+		[
+			56275.8620689655,
+			[
+				["Tween Camera Zoom", "0.85", "1.5"],
+				["Set customCamera Position", "dad", "-60, 500"]
+			]
+		],
+		[
+			57931.0344827586,
+			[
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			59586.2068965517,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["Set customCamera Position", "dad", "180, 500"]
+			]
+		],
+		[
+			61241.3793103448,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			62896.551724138,
+			[
+				["Tween Camera Zoom", "0.85", "1"],
+				["Set customCamera Position", "bf", "670, 530"]
+			]
+		],
+		[
+			64551.724137931,
+			[
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			66206.8965517242,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["Set customCamera Position", "bf", "600, 500"]
+			]
+		],
+		[
+			67862.0689655172,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			71172.4137931034,
+			[
+				["Tween Camera Zoom", "0.85", "1.5"],
+				["Set customCamera Position", "dad", "-60, 500"],
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			74482.7586206896,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["Set customCamera Position", "dad", "180, 500"]
+			]
+		],
+		[
+			74896.5517241379,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			77793.1034482759,
+			[
+				["Tween Camera Zoom", "0.85", "1"],
+				["Set customCamera Position", "bf", "670, 530"],
+				["Add Camera Zoom", "0.001", "0.065"],
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			78620.6896551724,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			79448.2758620689,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			79862.0689655172,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			80275.8620689655,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			81103.4482758621,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["Set customCamera Position", "bf", "600, 500"],
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			84413.7931034482,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			86068.9655172413,
+			[
+				["Tween Camera Zoom", "0.85", "1.5"],
+				["Set customCamera Position", "dad", "-60, 500"],
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			89379.3103448275,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["Set customCamera Position", "dad", "180, 500"]
+			]
+		],
+		[
+			91034.4827586206,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			92689.6551724138,
+			[
+				["Tween Camera Zoom", "0.85", "1"],
+				["Set customCamera Position", "bf", "670, 530"],
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			96000,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["Set customCamera Position", "bf", "600, 500"],
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			98068.9655172413,
+			[
+				["Add Camera Zoom", "0.001", "0.065"]
+			]
+		],
+		[
+			99310.3448275861,
+			[
+				["Tween Camera Zoom", "0.85", "1.5"],
+				["Set customCamera Position", "dad", "-60, 500"],
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			102620.689655172,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["Set customCamera Position", "dad", "180, 500"]
+			]
+		],
+		[
+			104275.862068965,
+			[
+				["Add Camera Zoom", "0.001", "0.065"],
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			105931.034482759,
+			[
+				["Tween Camera Zoom", "0.85", "1"],
+				["Set customCamera Position", "bf", "670, 530"]
+			]
+		],
+		[
+			109241.379310345,
+			[
+				["Tween Camera Zoom", "0.65", "1"],
+				["TweenSpin2", "", ""],
+				["Set customCamera Position", "bf", "600, 500"]
+			]
+		],
+		[
+			110896.551724138,
+			[
+				["Add Camera Zoom", "0.001", "0.065"],
+				["Bopping HUD2", "0.5", ""]
+			]
+		],
+		[
+			114206.896551724,
+			[
+				["blackbars", "60", ""],
+				["Tween Camera Zoom", "0.5", "1"]
+			]
+		],
+		[
+			115862.068965517,
+			[
+				["blackbars", "0", ""]
+			]
+		],
+		[
+			117517.24137931,
+			[
+				["blackbars", "60", ""],
+				["Tween Camera Zoom", "0.65", "1"]
+			]
+		],
+		[
+			120827.586206896,
+			[
+				["TweenSpin2", "", ""],
+				["Tween Camera Zoom", "0.5", "1"]
+			]
+		],
+		[
+			122482.75862069,
+			[
+				["blackbars", "0", ""],
+				["Tween Camera Zoom", "0.63", "1"]
+			]
+		],
+		[
+			124137.931034483,
+			[
+				["Bopping HUD2", "", ""],
+				["Tween Camera Zoom", "0.65", "1"]
+			]
+		],
+		[
+			130758.620689655,
+			[
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			134068.965517241,
+			[
+				["Tween Camera Zoom", "0.75", "1"]
+			]
+		],
+		[
+			136137.931034483,
+			[
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			136965.517241379,
+			[
+				["Tween Camera Zoom", "0.8", "1"]
+			]
+		],
+		[
+			137379.310344827,
+			[
+				["Tween Camera Zoom", "0.65", "1"]
+			]
+		],
+		[
+			139241.379310345,
+			[
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			139655.172413793,
+			[
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			140068.965517241,
+			[
+				["TweenSpin2", "", ""]
+			]
+		],
+		[
+			140482.75862069,
+			[
+				["TweenSpin2", "", ""]
 			]
 		]
 	],

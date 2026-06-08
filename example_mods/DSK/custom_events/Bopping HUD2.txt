@@ -1,0 +1,5 @@
+Value 1: beginning position
+to unactivate it just leave the value blank
+
+Shader Version
+Event by Kophy232

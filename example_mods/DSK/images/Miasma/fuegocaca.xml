@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fuegocaca.png">
+	<!-- Created with Adobe Animate version 24.0.3.19 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fuegocaca instancia 10000" x="100" y="100" width="2695" height="1294"/>
+	<SubTexture name="fuegocaca instancia 10001" x="100" y="100" width="2695" height="1294"/>
+	<SubTexture name="fuegocaca instancia 10002" x="100" y="100" width="2695" height="1294"/>
+	<SubTexture name="fuegocaca instancia 10003" x="100" y="100" width="2695" height="1294"/>
+	<SubTexture name="fuegocaca instancia 10004" x="100" y="100" width="2695" height="1294"/>
+	<SubTexture name="fuegocaca instancia 10005" x="2895" y="100" width="2695" height="1282" frameX="0" frameY="-12" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10006" x="2895" y="100" width="2695" height="1282" frameX="0" frameY="-12" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10007" x="2895" y="100" width="2695" height="1282" frameX="0" frameY="-12" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10008" x="2895" y="100" width="2695" height="1282" frameX="0" frameY="-12" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10009" x="2895" y="100" width="2695" height="1282" frameX="0" frameY="-12" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10010" x="100" y="1494" width="2695" height="1258" frameX="0" frameY="-36" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10011" x="100" y="1494" width="2695" height="1258" frameX="0" frameY="-36" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10012" x="100" y="1494" width="2695" height="1258" frameX="0" frameY="-36" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10013" x="100" y="1494" width="2695" height="1258" frameX="0" frameY="-36" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10014" x="100" y="1494" width="2695" height="1258" frameX="0" frameY="-36" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10015" x="2895" y="1494" width="2695" height="1243" frameX="0" frameY="-51" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10016" x="2895" y="1494" width="2695" height="1243" frameX="0" frameY="-51" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10017" x="2895" y="1494" width="2695" height="1243" frameX="0" frameY="-51" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10018" x="2895" y="1494" width="2695" height="1243" frameX="0" frameY="-51" frameWidth="2695" frameHeight="1294"/>
+	<SubTexture name="fuegocaca instancia 10019" x="2895" y="1494" width="2695" height="1243" frameX="0" frameY="-51" frameWidth="2695" frameHeight="1294"/>
+</TextureAtlas>

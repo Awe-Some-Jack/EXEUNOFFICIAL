@@ -133,6 +133,14 @@ function onUpdatePost()
     setProperty('healthBGYourself.alpha', getProperty('hbBG.alpha'))
 end
 
+function onSongStart()
+    local separation = 50
+    for i = 0,3 do
+        setProperty('opponentStrums.members['..i..'].x', -1000)
+        setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+    end
+end
+
 function onEvent(eventName, value1, value2)
     if eventName == 'yourselfEvents' then
         if value1 == 'fuckyoublackscreen' then

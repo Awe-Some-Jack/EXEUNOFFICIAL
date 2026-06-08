@@ -8,7 +8,7 @@ local botplayRingIgnore = false --if true and botplay is enabled it will ignore 
 local rings = 0
 local resetAnim = 0
 local hasBeenPressed = false --why is keyboardReleased so evil...
-local swapped = false
+local ringEnabled = true
 function onCreatePost()
 	makeLuaSprite('ringCounter', 'Counter')
 	setObjectCamera('ringCounter', 'hud')
@@ -44,7 +44,14 @@ function onCountdownStarted()
 	setProperty('strumLineRing.alpha', 0)
 end
 
+local penaltyStart = false
+local targetHealth = 0
 function onUpdatePost(e)
+	if penaltyStart then
+		setHealth(lerp(2, 0 + targetHealth, (getSongPosition() - 185142) / (239892 - 185142)))
+	end
+
+	if not ringEnabled then return end
 	for i = 0, getProperty('notes.length')-1 do
 		if getProperty('notes.members['..i..'].noteType') == 'Ring Note' then
 			setProperty('notes.members['..i..'].x', getProperty('strumLineRing.x'))
@@ -100,19 +107,10 @@ function onUpdatePost(e)
 	end
 end
 
-function noteMiss(id,nd,nt,isn)
-	if rings > 0 then
-		addHealth(0.1 * healthLossMult)
-	end
-	if isn then return end
-	rings = math.max(rings - 1, 0)
-	setTextString('ringTxt', tostring(rings))
-end
-
 --Ring Functions
 
 function ringHit(id)
-	playSound('Ringer', 0.5)
+	playSound('Ringer', 0.6)
 	rings = math.min(rings + 1, 99)
 	setTextString('ringTxt', tostring(rings))
 
@@ -140,6 +138,7 @@ function ringAnim(anim, time)
 end
 
 function onPause()
+	if ringEnabled then return end
 	if not getProperty('cpuControlled') then
 		if getProperty('strumLineRing.animation.curAnim') ~= nil and getProperty('strumLineRing.animation.curAnim.name') ~= 'static' then
 			ringAnim('static')
@@ -147,35 +146,31 @@ function onPause()
 	end
 end
 
-function onEvent(n,v1,v2)
-	if n == 'Knux' then
-		swapped = not swapped
-		triggerEvent("Flip Health Bar", '', '')
-		if middlescroll then return end
-		for i = 0,3 do
-			setProperty('playerStrums.members['..i..'].x', _G['default'..(swapped and 'Opponent' or 'Player')..'StrumX'..i] + (56 * round((i > 1 and (i + 1) or i) - 2, -1, 1)))
-			setProperty('strumLineRing.x', _G['default'..(swapped and 'Opponent' or 'Player')..'StrumX1'] + 50)
-			setProperty('opponentStrums.members['..i..'].x', _G['default'..(swapped and 'Player' or 'Opponent')..'StrumX'..i])
+function onEvent(n,v1)
+	if n == 'omwEvents' then
+		if v1 == 'penalty' then
+			setProperty('healthGain', 0)
+			setHealth(2)
+			penaltyStart = true
+			if rings < 10 then targetHealth = 0
+			elseif rings < 15 then targetHealth = 0.5
+			elseif rings < 20 then targetHealth = 1
+			else targetHealth = 2 end
 		end
-		runTimer('danote', 0.15, 10)
+		if v1 == 'startUniverse' then
+			penaltyStart = false
+			setProperty('healthGain', 1)
+			removeLuaSprite('ringCounter', true)
+			removeLuaSprite('strumLineRing', true)
+			removeLuaText('ringTxt', true)
+			removeFromGroup('strumLineNotes', 6, false)
+			ringEnabled = false
+		end
 	end
 end
 
-function onTimerCompleted(t, l, ll)
-	if t == 'danote' then
-		local i = ((l - ll) - 1) % 5
-
-		cancelTween('notemove'..i)
-		noteTweenY('notemove'..i, i + 4, _G['defaultPlayerStrumY'..(i > 1 and (i - 1) or i)] + ((l - ll) < 6 and -30 or 0), 1.1, 'cubeInOut')
-	end
-end
-
-function goodNoteHit(id,nd,nt,isn)
-	if not isn and nt == 'Phantom Note' then
-		rings = math.max(rings - 1, 0)
-		setTextString('ringTxt', tostring(rings))
-	end
-end
+function noteMiss(_,_,_,isn) if penaltyStart then targetHealth = targetHealth - (isn and 0.025 or 0.1) end end
+function noteMissPress() if penaltyStart then  targetHealth = targetHealth - 0.05 end end
 
 function round(number, min, max)
 	return math.max(min, math.min(max, number))

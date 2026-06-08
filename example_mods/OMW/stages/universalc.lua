@@ -48,13 +48,6 @@ function onCreatePost()
 	setScrollFactor('trees', 0.85, 0.85)
 	addLuaSprite('trees')
 
-	makeLuaSprite('omwograd', 'characters/omwograd', -600, -100)
-	setObjectOrder('omwograd', getObjectOrder('dadGroup') + 1)
-	scaleObject('omwograd', 1000, 1)
-
-	makeLuaSprite('omwofloor', 'universal-collapse/blackfloor', -770, 370)
-	setObjectOrder('omwofloor', getObjectOrder('dadGroup') + 2)
-
 	makeLuaSprite('gradient', 'universal-collapse/gradient', -600, -1000)
 	scaleObject('gradient', 1, 2000)
 	setBlendMode('gradient', 'add')
@@ -120,8 +113,6 @@ function onCreatePost()
 
 	setProperty('camGame.alpha', 0)
 	setProperty('camHUD.alpha', 0)
-
-	setSpriteShader('boyfriend', 'blackwhite')
 end
 
 function onSongStart()
@@ -174,8 +165,8 @@ end
 
 function onSectionHit()
 	if not getProperty('gameplayCam.settings.MiddleCamera') then
-		if curSection %2 == 0 then setProperty('gameplayCam.settings.OverrideZoom', false) end
-		setProperty('gameplayCam.settings.OGZoom', mustHitSection and 1.35 or (universe and 0.6 or 0.8))
+		if curSection % 2 == 0 then setProperty('gameplayCam.settings.OverrideZoom', false) end
+		setProperty('gameplayCam.settings.OGZoom', mustHitSection and (universe and 1 or 1.35) or (universe and 0.6 or 0.8))
 	end
 end
 

@@ -7,10 +7,10 @@ function onEvent(n, v1)
             end
         end
         for i = 0,getProperty('unspawnNotes.length')-1 do
-            setPropertyFromGroup('unspawnNotes', i, 'texture', 'noteSkins/'..v1)
+            if getPropertyFromGroup('unspawnNotes', i, 'noteType') ~= 'Ring Note' then setPropertyFromGroup('unspawnNotes', i, 'texture', 'noteSkins/'..v1) end
         end
         for i = 0,getProperty('notes.length')-1 do
-            setPropertyFromGroup('notes', i, 'texture', 'noteSkins/'..v1)
+            if getPropertyFromGroup('notes', i, 'noteType') ~= 'Ring Note' then setPropertyFromGroup('notes', i, 'texture', 'noteSkins/'..v1) end
         end
     end
 end

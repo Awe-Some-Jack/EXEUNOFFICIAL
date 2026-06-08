@@ -10,7 +10,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, -33],
+			"offsets": [0, -34],
 			"anim": "singLEFT",
 			"fps": 24,
 			"name": "fleft",
@@ -18,7 +18,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, 20],
+			"offsets": [0, 19],
 			"anim": "singDOWN",
 			"fps": 24,
 			"name": "fdown",
@@ -26,7 +26,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, 66],
+			"offsets": [0, 65],
 			"anim": "singUP",
 			"fps": 24,
 			"name": "fup",
@@ -34,7 +34,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, -36],
+			"offsets": [0, -37],
 			"anim": "singRIGHT",
 			"fps": 24,
 			"name": "fright",
@@ -42,7 +42,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, -31],
+			"offsets": [0, -32],
 			"anim": "singLEFT-flow",
 			"fps": 24,
 			"name": "left",
@@ -50,7 +50,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, 20],
+			"offsets": [0, 19],
 			"anim": "singDOWN-flow",
 			"fps": 24,
 			"name": "down",
@@ -58,7 +58,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, 66],
+			"offsets": [0, 65],
 			"anim": "singUP-flow",
 			"fps": 24,
 			"name": "up",
@@ -66,7 +66,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, -36],
+			"offsets": [0, -37],
 			"anim": "singRIGHT-flow",
 			"fps": 24,
 			"name": "right",
@@ -74,7 +74,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, 48],
+			"offsets": [0, 47],
 			"anim": "singLEFT-alt",
 			"fps": 24,
 			"name": "aleft",
@@ -82,7 +82,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [106, -244],
+			"offsets": [106, -245],
 			"anim": "singDOWN-alt",
 			"fps": 24,
 			"name": "adown",
@@ -90,7 +90,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-1, 144],
+			"offsets": [-1, 138],
 			"anim": "singUP-alt",
 			"fps": 24,
 			"name": "aup",
@@ -98,10 +98,18 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-1, -24],
+			"offsets": [-1, -25],
 			"anim": "singRIGHT-alt",
 			"fps": 24,
 			"name": "aright",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, -1],
+			"anim": "look",
+			"fps": 24,
+			"name": "xd",
 			"indices": []
 		}
 	],

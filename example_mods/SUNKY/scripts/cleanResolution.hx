@@ -58,6 +58,7 @@ function onDestroy()
 var canCheck:Bool = true;
 function onPause()
 {
+	canCheck = true;
 	luaCallback = () -> { if (FlxG.state != null && FlxG.state.subState != null) {
 		var subState = FlxG.state.subState;
 		if (canCheck) {

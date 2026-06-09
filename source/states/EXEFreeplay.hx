@@ -224,9 +224,6 @@ class EXEFreeplay extends MusicBeatState
 		changeDiff(0);
 		updateScoreDisplay();
 
-		persistentUpdate = true;
-		persistentDraw = true;
-
 		updateWindowTitle();
 		
 		arrowTimer = new FlxTimer().start(ARROW_UPDATE_INTERVAL, (_) -> {
@@ -421,10 +418,11 @@ class EXEFreeplay extends MusicBeatState
 	
 	override function update(elapsed:Float):Void
 	{
+		super.update(elapsed);
+		if (subState != null) return;
+
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
-
-		super.update(elapsed);
 		
 		if (bgChecker != null && bgSonic != null)
 		{
@@ -433,7 +431,6 @@ class EXEFreeplay extends MusicBeatState
 		}
 
 		if (changeCooldown > 0) changeCooldown -= elapsed;
-		if (subState != null) return;
 
 		final prevScore = lerpScore;
 		final prevRating = lerpRating;

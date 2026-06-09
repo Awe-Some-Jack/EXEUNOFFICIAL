@@ -86,8 +86,6 @@ class EXEMenu extends MusicBeatState
 		DiscordClient.changePresence("In the Menu", null);
 		#end
 
-		persistentUpdate = persistentDraw = true;
-
 		#if VIDEOS_ALLOWED
 		menuVideo = new hxvlc.flixel.FlxVideoSprite(0, 0);
 		menuVideo.bitmap.onFormatSetup.add(() -> {
@@ -212,6 +210,7 @@ class EXEMenu extends MusicBeatState
 	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		if (subState != null) return;
 
 		updateBlink(elapsed);
 

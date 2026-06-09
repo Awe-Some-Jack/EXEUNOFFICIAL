@@ -18,9 +18,6 @@ class BIOS extends MusicBeatState
 
 		super.create();
 
-		persistentUpdate = true;
-		persistentDraw = true;
-
 		final fondo = new FlxSprite(0, 0);
 		fondo.loadGraphic(Assets.getBitmapData('assets/exe/extras/fondo.png'));
 		fondo.scale.set(FlxG.width / fondo.width, FlxG.height / fondo.height);
@@ -50,6 +47,7 @@ class BIOS extends MusicBeatState
 	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		if (subState != null) return;
 
 		if (controls.BACK)
 		{

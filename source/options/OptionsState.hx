@@ -57,7 +57,6 @@ class OptionsState extends MusicBeatState
 	override public function create()
 	{
 		super.create();
-		persistentUpdate = true;
 
 		bg = FlxGradient.createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF7a1520, 0xFF4a0910], 1, 90);
 		add(bg);
@@ -324,7 +323,6 @@ class OptionsState extends MusicBeatState
 			debugText.text = 'CIRCLE DEBUG [F2 toggle]\nscale: ${Math.round(debugCircle.scale.x * 100) / 100}\nUP/DOWN = +/-0.1  |  SHIFT = +/-0.01';
 		}
 
-
 		sectionsGrp.forEachExists(function(txt)
 		{
 			if (sectionPos.length > 0)
@@ -376,9 +374,7 @@ class OptionsState extends MusicBeatState
 		}
 	}
 
-	var selectionCloneTween:FlxTween;
-
-
+	var selectionCloneTween:FlxTween = null;
 	function changeSelect(x:Int = 0)
 	{
 		curSelected = FlxMath.wrap(curSelected + x, 0, sectionsList.length - 1);
@@ -394,20 +390,20 @@ class OptionsState extends MusicBeatState
 		curSectionText.x -= 8;
 		curSectionText.y -= 8;
 
-		if (selectionTween != null) selectionTween.cancel();
+		selectionTween?.cancel();
 		selectionTween = FlxTween.tween(curSectionText, {x: currentPos.x - 12, y: currentPos.y - 16}, 0.18, {
 			ease: FlxEase.quadInOut,
 			onComplete: (_) -> selectionTween = null
 		});
 
-		if (selectionCloneTween != null) selectionCloneTween.cancel();
+		selectionCloneTween?.cancel();
 		selectionCloneTween = FlxTween.tween(sectionBGClone, {x: curSectionBG.x + 13, y: curSectionBG.y + 13}, 0.2, {
 			ease: FlxEase.quadInOut,
 			onUpdate: (_) -> sectionBGCloneWhite.setPosition(sectionBGClone.x, sectionBGClone.y),
 			onComplete: (_) -> selectionCloneTween = null
 		});
 
-		if (cloneColorTween != null) cloneColorTween.cancel();
+		cloneColorTween?.cancel();
 		sectionBGCloneWhite.setPosition(sectionBGClone.x, sectionBGClone.y);
 		sectionBGCloneWhite.alpha = 0;
 		cloneColorTween = FlxTween.tween(sectionBGCloneWhite, {alpha: 1.0}, 0.2, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
@@ -416,7 +412,8 @@ class OptionsState extends MusicBeatState
 	function select()
 	{
 		canAction = false;
-		var curSectionText = sectionsGrp.members[curSelected];
+
+		final curSectionText = sectionsGrp.members[curSelected];
 		FlxFlicker.flicker(curSectionText, 1, 0.06, true, false, (_) -> canAction = true);
 
 		new FlxTimer().start(1.5, function(_)

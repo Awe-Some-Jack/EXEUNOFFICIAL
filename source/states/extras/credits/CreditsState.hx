@@ -120,7 +120,7 @@ class CreditsState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (inPopup) return;
+		if (inPopup || subState != null) return;
 
 		if (controls.BACK)
 		{

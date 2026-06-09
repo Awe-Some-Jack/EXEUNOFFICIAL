@@ -73,6 +73,7 @@ class MajinAccess extends MusicBeatState
 		backdrop.updateHitbox();
 		backdrop.screenCenter();
 		backdrop.velocity.y = -80;
+		backdrop.antialiasing = false;
 		add(backdrop);
 		
 		var box:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/majin/cuadro.png'));
@@ -148,6 +149,7 @@ class MajinAccess extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (subState != null) return;
 
 		soundOne.y = eggman.y + (eggman.animation.curAnim.curFrame == 0 ? 3 : -3);
 		soundTwo.y = eggman.y + (eggman.animation.curAnim.curFrame == 1 ? 3 : -3);

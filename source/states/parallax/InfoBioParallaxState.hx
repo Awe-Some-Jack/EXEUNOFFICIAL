@@ -191,6 +191,7 @@ class InfoBioParallaxState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (subState != null) return;
 
 		if (!transitioning)
 		{

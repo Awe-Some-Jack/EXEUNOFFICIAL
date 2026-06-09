@@ -1,66 +1,20 @@
 package options;
 
-import flixel.addons.display.FlxBackdrop;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
-import flixel.tweens.FlxTween.FlxTweenType;
-import flixel.util.FlxGradient;
+import flixel.util.FlxColor;
 import openfl.Assets;
-import openfl.display.BitmapData;
+import backend.Paths;
+import backend.ClientPrefs;
 
-typedef LangOptionGroup = {
-	var nameBG:FlxSprite;
-	var valueBG:FlxSprite;
-	var nameText:FlxText;
-	var valueText:FlxText;
-}
-
-class ExeLanguageState extends MusicBeatSubstate
+class ExeLanguageState extends ExeBaseOptionsState
 {
-	static final TB_X:Float       = -134;
-	static final TB_Y:Float       = 143;
-	static final TB_SCALE_X:Float = 0.85;
-	static final TB_SCALE_Y:Float = 0.475;
-
-	static final NB_X:Float       = 105;
-	static final NB_Y:Float       = 270;
-	static final NB_SCALE_X:Float = 0.575;
-	static final NB_SCALE_Y:Float = 0.275;
-
-	static final VB_X:Float       = 683;
-	static final VB_Y:Float       = 270;
-	static final VB_SCALE_X:Float = 0.508;
-	static final VB_SCALE_Y:Float = 0.275;
-
-	static final FONT:String    = "SonicCD.ttf";
-	static final FONT_SIZE:Int  = 18;
-
 	static final LANG_KEYS:Array<String>   = ["en-US", "es-ES", "pt-BR", "uz-UZ", "ja-JP", "zh-CN", "ru-RU", "uk-UA"];
 	static final LANG_LABELS:Array<String> = ["ENGLISH", "SPANISH", "PORTUGUESE", "UZBEK", "JAPANESE", "CHINESE", "RUSSIAN", "UKRAINIAN"];
 
-	var titlebar:FlxSprite;
-	var titlebarTxt:FlxText;
-	var optionGroups:Array<LangOptionGroup> = [];
-
 	var curLangIdx:Int = 0;
-	var editingValue:Bool = false;
-	var backLock:Bool = false;
-	var introAnimating:Bool = true;
 
-	var leftGroup:Array<FlxSprite>  = [];
-	var rightGroup:Array<FlxSprite> = [];
-
-	var selectionClone:FlxSprite;
-	var selectionCloneWhite:FlxSprite;
-	var selectionCloneV:FlxSprite;
-	var selectionCloneWhiteV:FlxSprite;
-	var selectionCloneTween:FlxTween;
-	var cloneColorTween:FlxTween;
-	var selectionCloneTweenV:FlxTween;
-	var cloneColorTweenV:FlxTween;
-
+	// Debug vars
 	var debugMode:Bool = false;
 	var debugSprites:Array<FlxSprite> = [];
 	var debugSelected:Int = 0;
@@ -72,222 +26,72 @@ class ExeLanguageState extends MusicBeatSubstate
 
 	override public function create()
 	{
-		super.create();
-
+		menuTitle = "LANGUAGE";
 		var saved = LANG_KEYS.indexOf(ClientPrefs.data.language);
 		curLangIdx = saved >= 0 ? saved : 0;
 
-		buildUI();
-	}
+		super.create(); // This builds the base UI and calls loadPage()
 
-	function buildUI()
-	{
-		var rectX:Int = -20;
-		var rectY:Int = 145;
-		var rectW:Int = 1450;
-		var rectH:Int = 500;
-
-		var offLeft:Float  = -(rectW + 200);
-		var offRight:Float = FlxG.width + 200;
-
-		var bg = FlxGradient.createGradientFlxSprite(rectW, rectH, [0xFF920e1e, 0xFF6b0b15], 1, 90);
-		bg.x = offRight; bg.y = rectY; bg.scrollFactor.set(0, 0);
-		add(bg);
-		rightGroup.push(bg);
-
-		var borderH:Int = 5;
-		var borderTop = new FlxSprite().makeGraphic(rectW, borderH, 0xFF5a0912);
-		borderTop.x = offRight; borderTop.y = rectY; borderTop.scrollFactor.set(0, 0);
-		var borderBot = new FlxSprite().makeGraphic(rectW, borderH, 0xFF5a0912);
-		borderBot.x = offRight; borderBot.y = rectY + rectH - borderH; borderBot.scrollFactor.set(0, 0);
-
-		var gridSize:Int = 20;
-		var gridTile = new BitmapData(gridSize, gridSize, true, 0x00000000);
-		for (px in 0...gridSize) { gridTile.setPixel32(px, 0, 0x22000000); gridTile.setPixel32(0, px, 0x22000000); }
-		var tilesX:Int = Math.ceil(rectW / gridSize) + 1;
-		var gridFullBmp = new BitmapData(tilesX * gridSize, rectH, true, 0x00000000);
-		for (tx in 0...tilesX)
-			for (ty in 0...Math.ceil(rectH / gridSize))
-				gridFullBmp.copyPixels(gridTile, gridTile.rect, new openfl.geom.Point(tx * gridSize, ty * gridSize));
-		var grid = new FlxBackdrop(gridFullBmp, X);
-		grid.x = offRight; grid.y = rectY; grid.velocity.x = -40; grid.scrollFactor.set(0, 0);
-		grid.clipRect = new flixel.math.FlxRect(0, 0, rectW, rectH);
-		add(grid);
-		rightGroup.push(grid);
-
-		add(borderTop);
-		add(borderBot);
-		rightGroup.push(borderTop);
-		rightGroup.push(borderBot);
-
-		titlebar = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
-		titlebar.scale.set(TB_SCALE_X, TB_SCALE_Y); titlebar.updateHitbox();
-		titlebar.x = offLeft; titlebar.y = TB_Y; titlebar.scrollFactor.set(0, 0);
-		add(titlebar);
-		leftGroup.push(titlebar);
-
-		titlebarTxt = new FlxText(0, 0, Std.int(titlebar.width), "LANGUAGE", 28);
-		titlebarTxt.setFormat(Paths.font(FONT), 28, FlxColor.WHITE, CENTER);
-		titlebarTxt.x = offLeft;
-		titlebarTxt.y = TB_Y + (titlebar.height - titlebarTxt.height) / 2 - 15;
-		titlebarTxt.scrollFactor.set(0, 0);
-		add(titlebarTxt);
-		leftGroup.push(cast titlebarTxt);
-
-		selectionClone = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGClone.png'));
-		selectionClone.scale.set(NB_SCALE_X, NB_SCALE_Y); selectionClone.updateHitbox();
-		selectionClone.x = offRight; selectionClone.scrollFactor.set(0, 0); add(selectionClone);
-		rightGroup.push(selectionClone);
-
-		selectionCloneWhite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGWhite.png'));
-		selectionCloneWhite.scale.set(NB_SCALE_X, NB_SCALE_Y); selectionCloneWhite.updateHitbox();
-		selectionCloneWhite.alpha = 0; selectionCloneWhite.x = offRight; selectionCloneWhite.scrollFactor.set(0, 0); add(selectionCloneWhite);
-		rightGroup.push(selectionCloneWhite);
-
-		selectionCloneV = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGClone.png'));
-		selectionCloneV.scale.set(VB_SCALE_X, VB_SCALE_Y); selectionCloneV.updateHitbox();
-		selectionCloneV.x = offRight; selectionCloneV.scrollFactor.set(0, 0); add(selectionCloneV);
-		rightGroup.push(selectionCloneV);
-
-		selectionCloneWhiteV = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGWhite.png'));
-		selectionCloneWhiteV.scale.set(VB_SCALE_X, VB_SCALE_Y); selectionCloneWhiteV.updateHitbox();
-		selectionCloneWhiteV.alpha = 0; selectionCloneWhiteV.x = offRight; selectionCloneWhiteV.scrollFactor.set(0, 0); add(selectionCloneWhiteV);
-		rightGroup.push(selectionCloneWhiteV);
-
+		// Overlay features placed *after* super.create so they render above UI
 		debugOverlay = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xAA000000);
 		debugOverlay.scrollFactor.set(0, 0); debugOverlay.visible = false; add(debugOverlay);
 
 		debugInfoText = new FlxText(10, 10, 0, "", 16);
-		debugInfoText.setFormat(Paths.font(FONT), 16, FlxColor.WHITE, LEFT);
+		debugInfoText.setFormat(Paths.font(ExeBaseOptionsState.FONT), 16, FlxColor.WHITE, LEFT);
 		debugInfoText.scrollFactor.set(0, 0); debugInfoText.visible = false; add(debugInfoText);
 
 		debugHintText = new FlxText(10, FlxG.height - 80, 0, "[F1] toggle  [Z] spawn  [Tab] select  [WASD] move X/Y  [Q/E] scale all  [Arrows] scale X/Y  [T] trace  [Del] delete", 13);
-		debugHintText.setFormat(Paths.font(FONT), 13, 0xFFAAAAAA, LEFT);
+		debugHintText.setFormat(Paths.font(ExeBaseOptionsState.FONT), 13, 0xFFAAAAAA, LEFT);
 		debugHintText.scrollFactor.set(0, 0); debugHintText.visible = false; add(debugHintText);
-
-		buildRow();
-		playIntro(rectX);
 	}
 
-	function buildRow()
-	{
-		for (g in optionGroups)
-		{
-			rightGroup.remove(g.nameBG);  remove(g.nameBG); g.nameBG.destroy();
-			rightGroup.remove(g.valueBG); remove(g.valueBG); g.valueBG.destroy();
-			rightGroup.remove(g.nameText); remove(g.nameText); g.nameText.destroy();
-			rightGroup.remove(g.valueText); remove(g.valueText); g.valueText.destroy();
-		}
-		optionGroups = [];
+	override public function getCurrentSelectionIndex():Int { return 0; }
 
+	override public function loadPage()
+	{
+		clearPage();
 		var offRight:Float = FlxG.width + 200;
-		var rowY = NB_Y;
+		var rowY = ExeBaseOptionsState.NB_Y;
 
 		var nameBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
-		nameBG.scale.set(NB_SCALE_X, NB_SCALE_Y); nameBG.updateHitbox();
-		nameBG.x = introAnimating ? offRight : NB_X; nameBG.y = rowY; nameBG.scrollFactor.set(0, 0);
-		insert(members.indexOf(debugOverlay), nameBG);
-		rightGroup.push(nameBG);
+		nameBG.scale.set(ExeBaseOptionsState.NB_SCALE_X, ExeBaseOptionsState.NB_SCALE_Y); nameBG.updateHitbox();
+		nameBG.x = introAnimating ? offRight : ExeBaseOptionsState.NB_X; nameBG.y = rowY; nameBG.scrollFactor.set(0, 0);
+		add(nameBG); rightGroup.push(nameBG);
 
 		var valueBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
-		valueBG.scale.set(VB_SCALE_X, VB_SCALE_Y); valueBG.updateHitbox();
-		valueBG.x = introAnimating ? offRight : VB_X; valueBG.y = rowY; valueBG.scrollFactor.set(0, 0);
-		insert(members.indexOf(debugOverlay), valueBG);
-		rightGroup.push(valueBG);
+		valueBG.scale.set(ExeBaseOptionsState.VB_SCALE_X, ExeBaseOptionsState.VB_SCALE_Y); valueBG.updateHitbox();
+		valueBG.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X; valueBG.y = rowY; valueBG.scrollFactor.set(0, 0);
+		add(valueBG); rightGroup.push(valueBG);
 
-		var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), "LANGUAGE", FONT_SIZE);
-		nameTxt.setFormat(Paths.font(FONT), FONT_SIZE, FlxColor.WHITE, LEFT);
-		nameTxt.x = introAnimating ? offRight : NB_X + 120;
-		nameTxt.y = rowY + (nameBG.height - nameTxt.height) / 2;
-		nameTxt.scrollFactor.set(0, 0);
-		insert(members.indexOf(debugOverlay), nameTxt);
-		rightGroup.push(cast nameTxt);
+		var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), menuTitle, ExeBaseOptionsState.FONT_SIZE);
+		nameTxt.setFormat(Paths.font(ExeBaseOptionsState.FONT), ExeBaseOptionsState.FONT_SIZE, FlxColor.WHITE, LEFT);
+		nameTxt.x = introAnimating ? offRight : ExeBaseOptionsState.NB_X + 120;
+		nameTxt.y = rowY + (nameBG.height - nameTxt.height) / 2; nameTxt.scrollFactor.set(0, 0);
+		add(nameTxt); rightGroup.push(cast nameTxt);
 
-		var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), LANG_LABELS[curLangIdx], FONT_SIZE);
-		valueTxt.setFormat(Paths.font(FONT), FONT_SIZE, FlxColor.WHITE, CENTER);
-		valueTxt.x = introAnimating ? offRight : VB_X + (valueBG.width - valueTxt.width) / 2;
-		valueTxt.y = rowY + (valueBG.height - valueTxt.height) / 2;
-		valueTxt.scrollFactor.set(0, 0);
-		insert(members.indexOf(debugOverlay), valueTxt);
-		rightGroup.push(cast valueTxt);
+		var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), LANG_LABELS[curLangIdx], ExeBaseOptionsState.FONT_SIZE);
+		valueTxt.setFormat(Paths.font(ExeBaseOptionsState.FONT), ExeBaseOptionsState.FONT_SIZE, FlxColor.WHITE, CENTER);
+		valueTxt.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X + (valueBG.width - valueTxt.width) / 2;
+		valueTxt.y = rowY + (valueBG.height - valueTxt.height) / 2; valueTxt.scrollFactor.set(0, 0);
+		add(valueTxt); rightGroup.push(cast valueTxt);
 
 		optionGroups.push({nameBG: nameBG, valueBG: valueBG, nameText: nameTxt, valueText: valueTxt});
 
 		if (!introAnimating) changeSelection();
 	}
 
-	function playIntro(rectX:Int)
-	{
-		var dur:Float = 0.45;
-		var ease = FlxEase.quartOut;
-
-		FlxTween.tween(titlebar,    {x: TB_X}, dur, {ease: ease});
-		FlxTween.tween(titlebarTxt, {x: TB_X + (titlebar.width - titlebarTxt.width) / 2}, dur, {ease: ease});
-
-		for (spr in rightGroup)
-			FlxTween.tween(spr, {x: getTargetX(spr)}, dur, {ease: ease});
-
-		new flixel.util.FlxTimer().start(dur + 0.05, (_) -> {
-			introAnimating = false;
-			changeSelection();
-		});
-	}
-
-	function playOutro()
-	{
-		introAnimating = true;
-		var dur:Float = 0.35;
-		var ease = FlxEase.quartIn;
-		var offLeft:Float  = -(FlxG.width + 200);
-		var offRight:Float = FlxG.width + 200;
-
-		for (spr in leftGroup)
-			FlxTween.tween(spr, {x: offLeft}, dur, {ease: ease});
-		for (spr in rightGroup)
-			FlxTween.tween(spr, {x: offRight}, dur, {ease: ease});
-
-		new flixel.util.FlxTimer().start(dur + 0.05, (_) -> close());
-	}
-
-	function getTargetX(spr:FlxSprite):Float
-	{
-		if (spr == selectionClone || spr == selectionCloneWhite)
-		{
-			var g = optionGroups.length > 0 ? optionGroups[0] : null;
-			return g != null ? g.nameBG.x - 3 : NB_X - 3;
-		}
-		if (spr == selectionCloneV || spr == selectionCloneWhiteV)
-		{
-			var g = optionGroups.length > 0 ? optionGroups[0] : null;
-			return g != null ? g.valueBG.x - 3 : VB_X - 3;
-		}
-		for (g in optionGroups)
-		{
-			if (spr == g.nameBG)    return NB_X;
-			if (spr == g.nameText)  return NB_X + 120;
-			if (spr == g.valueBG)   return VB_X;
-			if (spr == g.valueText) return VB_X + (g.valueBG.width - g.valueText.width) / 2;
-		}
-		return -20;
-	}
-
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
+		
 		if (FlxG.keys.justPressed.F1)
 		{
 			debugMode = !debugMode;
-			debugOverlay.visible = debugMode;
-			debugInfoText.visible = debugMode;
-			debugHintText.visible = debugMode;
+			debugOverlay.visible = debugMode; debugInfoText.visible = debugMode; debugHintText.visible = debugMode;
 			if (debugMode && debugSprites.length == 0) spawnDebugSprite();
 		}
-
 		if (debugMode) { updateDebugMode(elapsed); return; }
-		if (introAnimating) return;
-
-		if (backLock) { backLock = false; return; }
+		if (introAnimating || backLock) { backLock = false; return; }
 
 		if (editingValue)
 		{
@@ -301,67 +105,18 @@ class ExeLanguageState extends MusicBeatSubstate
 				#end
 				var g = optionGroups[0];
 				g.valueText.text = LANG_LABELS[curLangIdx];
-				g.valueText.x = VB_X + (g.valueBG.width - g.valueText.width) / 2;
+				g.valueText.x = ExeBaseOptionsState.VB_X + (g.valueBG.width - g.valueText.width) / 2;
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
 			if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				editingValue = false;
-				backLock = true;
-				nudgeSelectedText(false);
+				editingValue = false; backLock = true; nudgeSelectedText(false);
 			}
 			return;
 		}
-
-		if (controls.ACCEPT)
-		{
-			FlxG.sound.play(Paths.sound('scrollMenu'));
-			editingValue = true;
-			nudgeSelectedText(true);
-		}
-
+		if (controls.ACCEPT) { FlxG.sound.play(Paths.sound('scrollMenu')); editingValue = true; nudgeSelectedText(true); }
 		if (controls.BACK) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
-	}
-
-	function changeSelection()
-	{
-		if (optionGroups.length == 0) return;
-		var group = optionGroups[0];
-
-		selectionClone.setPosition(group.nameBG.x - 3, group.nameBG.y - 3);
-		if (selectionCloneTween != null) selectionCloneTween.cancel();
-		selectionCloneTween = FlxTween.tween(selectionClone, {x: group.nameBG.x + 13, y: group.nameBG.y + 13}, 0.2, {
-			ease: FlxEase.quadInOut,
-			onUpdate: (_) -> selectionCloneWhite.setPosition(selectionClone.x, selectionClone.y),
-			onComplete: (_) -> selectionCloneTween = null
-		});
-		if (cloneColorTween != null) cloneColorTween.cancel();
-		selectionCloneWhite.setPosition(selectionClone.x, selectionClone.y);
-		selectionCloneWhite.alpha = 0;
-		cloneColorTween = FlxTween.tween(selectionCloneWhite, {alpha: 1.0}, 0.2, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
-
-		selectionCloneV.setPosition(group.valueBG.x - 3, group.valueBG.y - 3);
-		if (selectionCloneTweenV != null) selectionCloneTweenV.cancel();
-		selectionCloneTweenV = FlxTween.tween(selectionCloneV, {x: group.valueBG.x + 13, y: group.valueBG.y + 13}, 0.2, {
-			ease: FlxEase.quadInOut,
-			onUpdate: (_) -> selectionCloneWhiteV.setPosition(selectionCloneV.x, selectionCloneV.y),
-			onComplete: (_) -> selectionCloneTweenV = null
-		});
-		if (cloneColorTweenV != null) cloneColorTweenV.cancel();
-		selectionCloneWhiteV.setPosition(selectionCloneV.x, selectionCloneV.y);
-		selectionCloneWhiteV.alpha = 0;
-		cloneColorTweenV = FlxTween.tween(selectionCloneWhiteV, {alpha: 1.0}, 0.2, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
-	}
-
-	function nudgeSelectedText(up:Bool)
-	{
-		if (optionGroups.length == 0) return;
-		var g = optionGroups[0];
-		var baseY = g.nameBG.y + (g.nameBG.height - g.nameText.height) / 2;
-		var targetY = up ? baseY - 5 : baseY;
-		FlxTween.tween(g.nameText,  {y: targetY}, 0.15, {ease: FlxEase.quadOut});
-		FlxTween.tween(g.valueText, {y: targetY}, 0.15, {ease: FlxEase.quadOut});
 	}
 
 	function updateDebugMode(elapsed:Float)
@@ -371,9 +126,7 @@ class ExeLanguageState extends MusicBeatSubstate
 		if (FlxG.keys.justPressed.TAB)
 		{
 			spr.color = FlxColor.WHITE;
-			debugSelected = FlxG.keys.pressed.SHIFT
-				? FlxMath.wrap(debugSelected - 1, 0, debugSprites.length - 1)
-				: FlxMath.wrap(debugSelected + 1, 0, debugSprites.length - 1);
+			debugSelected = FlxG.keys.pressed.SHIFT ? FlxMath.wrap(debugSelected - 1, 0, debugSprites.length - 1) : FlxMath.wrap(debugSelected + 1, 0, debugSprites.length - 1);
 			spr = debugSprites[debugSelected];
 		}
 		for (i in 0...debugSprites.length) debugSprites[i].color = (i == debugSelected) ? 0xFFFFFF00 : FlxColor.WHITE;
@@ -406,7 +159,8 @@ class ExeLanguageState extends MusicBeatSubstate
 	function spawnDebugSprite()
 	{
 		var spr = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
-		spr.scale.set(TB_SCALE_X, TB_SCALE_Y); spr.updateHitbox(); spr.screenCenter(); spr.scrollFactor.set(0, 0);
+		spr.scale.set(ExeBaseOptionsState.TB_SCALE_X, ExeBaseOptionsState.TB_SCALE_Y); spr.updateHitbox();
+		spr.screenCenter(); spr.scrollFactor.set(0, 0);
 		add(spr); debugSprites.push(spr); debugSelected = debugSprites.length - 1;
 	}
 
@@ -418,12 +172,5 @@ class ExeLanguageState extends MusicBeatSubstate
 			var s = debugSprites[i];
 			trace('[$i]  x=${Math.round(s.x)}  y=${Math.round(s.y)}  scaleX=${s.scale.x}  scaleY=${s.scale.y}  w=${Math.round(s.width)}  h=${Math.round(s.height)}');
 		}
-	}
-
-	override function destroy()
-	{
-		titlebar = null; optionGroups = null; debugSprites = null;
-		leftGroup = null; rightGroup = null;
-		super.destroy();
 	}
 }

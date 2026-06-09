@@ -433,7 +433,7 @@ class StoryModeState extends MusicBeatState
 	var moveText:Bool = false;
 	override public function update(elapsed:Float)
 	{
-		if (!canInteract || Controls.instance == null) { super.update(elapsed); return; }
+		if (!canInteract || Controls.instance == null || subState != null) { super.update(elapsed); return; }
 
 		if (!isSelecting) {
 			if (inCoverSelect)

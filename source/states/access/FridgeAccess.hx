@@ -192,6 +192,7 @@ class FridgeAccess extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (subState != null) return;
 
 		//ref.setGraphicSize(Std.int(1280 / FlxG.camera.zoom), Std.int(720 / FlxG.camera.zoom));
 		//ref.updateHitbox();

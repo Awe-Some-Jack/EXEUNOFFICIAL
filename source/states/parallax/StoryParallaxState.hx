@@ -80,6 +80,7 @@ class StoryParallaxState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (subState != null) return;
 
 		luz.alpha = FlxG.random.float(0.85,1);
 

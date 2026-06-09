@@ -30,6 +30,8 @@ class MusicBeatState extends FlxTransitionableState
 	{
 		#if MODS_ALLOWED Mods.updatedOnState = false; #end
 
+		persistentUpdate = persistentDraw = true;
+
 		if(!_psychCameraInitialized) initPsychCamera();
 
 		super.create();

@@ -71,8 +71,6 @@ class LoadingState extends MusicBeatState
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
-		persistentUpdate = true;
-
 		var logo:FlxSprite = new FlxSprite();
 		logo.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.png', 'assets/exe/ring.xml');
 		logo.animation.addByPrefix('idle', 'idle', 60, true);
@@ -114,8 +112,7 @@ class LoadingState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		if (dontUpdate) return;
+		if (dontUpdate || subState != null) return;
 
 		var uploadsThisFrame = 0;
 		while (gpuQueue.length > 0 && uploadsThisFrame < 2) 

@@ -68,6 +68,8 @@ class DAGarden extends MusicBeatState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		if (subState != null) return;
+		
 		spikes.velocity.y = 50;
 		rotationTime += elapsed;
 		_updateDecorAngles();

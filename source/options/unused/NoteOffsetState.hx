@@ -54,7 +54,6 @@ class NoteOffsetState extends MusicBeatState
 
 		FlxG.camera.scroll.set(120, 130);
 
-		persistentUpdate = true;
 		FlxG.sound.pause();
 
 		// Stage
@@ -182,6 +181,9 @@ class NoteOffsetState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
+		super.update(elapsed);
+		if (subState != null) return;
+
 		var addNum:Int = 1;
 		if(FlxG.keys.pressed.SHIFT || FlxG.gamepads.anyPressed(LEFT_SHOULDER))
 		{
@@ -401,8 +403,8 @@ class NoteOffsetState extends MusicBeatState
 
 		if(controls.BACK)
 		{
-			if(zoomTween != null) zoomTween.cancel();
-			if(beatTween != null) beatTween.cancel();
+			zoomTween?.cancel();
+			beatTween?.cancel();
 
 			persistentUpdate = false;
 			FlxG.switchState(() -> new options.OptionsState());
@@ -412,7 +414,6 @@ class NoteOffsetState extends MusicBeatState
 		}
 
 		Conductor.songPosition = FlxG.sound.music.time;
-		super.update(elapsed);
 	}
 
 	var zoomTween:FlxTween;

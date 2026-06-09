@@ -53,9 +53,6 @@ class EXETitle extends MusicBeatState
 
 			if (FlxG.save.data?.fullscreen ?? false)
 				FlxG.fullscreen = FlxG.save.data.fullscreen;
-				
-			persistentUpdate = true;
-			persistentDraw = true;
 		}
 
 		if (FlxG.save.data?.weekCompleted != null)
@@ -109,8 +106,6 @@ class EXETitle extends MusicBeatState
 
 		buildTitle();
 
-		Main.fpsVar.visible = false;
-		persistentUpdate = true;
 		FlxG.camera.visible = false;
 
 		new FlxTimer().start(0.1, (_) -> {
@@ -118,11 +113,12 @@ class EXETitle extends MusicBeatState
 			new FlxTimer().start(1.6, (_) -> {
 				canStart = true;
 				FlxG.mouse.visible = true;
-				Main.fpsVar.visible = ClientPrefs.data.showFPS;
 				FlxG.camera.visible = true;
 				FlxG.camera.flash(FlxColor.RED, 1);
 				FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 				FlxG.sound.play(Paths.sound('showMoment'));
+
+				Main.fpsVar.visible = ClientPrefs.data.showFPS;
 			});
 		});
 	}
@@ -236,7 +232,7 @@ class EXETitle extends MusicBeatState
 	var _mouseScreenX:Float = 0;
 	override function update(elapsed:Float):Void
 	{
-		if (videoPlaying)
+		if (videoPlaying || subState != null)
 		{
 			super.update(elapsed);
 			return;

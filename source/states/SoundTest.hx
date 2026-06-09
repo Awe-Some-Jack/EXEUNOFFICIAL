@@ -58,9 +58,6 @@ class SoundTest extends MusicBeatState
 		Paths.clearStoredMemory();
 		super.create();
 
-		persistentUpdate = true;
-		persistentDraw = true;
-
 		if (FlxG.stage?.window != null)
 			previousWindowTitle = FlxG.stage.window.title;
 
@@ -342,27 +339,22 @@ class SoundTest extends MusicBeatState
 
 	var notFoundAny:Bool = true;
 	var soundCooldown:Bool = true;
-	var transitioning:Bool = false;
 	
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-
 		if (subState != null) return;
-		if (transitioning) return;
-		
-		if (controls.BACK)
-		{
-			menuSong = true;
-			FlxG.sound.music?.fadeOut(0.3);
-			transitioning = true;
-			FlxG.switchState(() -> new EXEMenu());
-			return;
-		}
 
 		handleSelection();
 		handleValueChange(elapsed);
 		updateDisplayedValues();
+
+		if (controls.BACK)
+		{
+			menuSong = true;
+			FlxG.sound.music?.fadeOut(0.3);
+			FlxG.switchState(() -> new EXEMenu());
+		}
 
 		if (controls.ACCEPT)
 		{
@@ -373,28 +365,31 @@ class SoundTest extends MusicBeatState
 				if (pcmValue == code.pcm && daValue == code.da)
 				{
 					notFoundAny = false;
-					transitioning = true;
-					FlxG.sound.play(Paths.sound('confirmMenu'));
-					FlxTween.tween(whiteBG, {alpha: 1}, 1);
 
-					new FlxTimer().start(1, (_) -> {
-						if (code.isWeek) 
-						{
-							loadSong(code.weekName, true);
-						}
-						else
-						{
-							if (code.type == 'sebas') 
-								FlxG.switchState(() -> new SebasMiBeba());
+					FlxG.sound.play(Paths.sound('confirmMenu'));
+					FlxG.sound.music?.fadeOut(0.3);
+
+					FlxTween.tween(whiteBG, {alpha: 1}, 1, {
+						onComplete: (_) -> {
+							if (code.isWeek) 
+							{
+								loadSong(code.weekName, true);
+							}
 							else
 							{
-								persistentUpdate = false;
-								persistentDraw = true;
-								openSubState(new SoundTestSubState((code.type.toLowerCase() == 'video'), code.path));
+								if (code.type == 'sebas') 
+								{
+									FlxTransitionableState.skipNextTransIn = FlxTransitionableState.skipNextTransOut = true;
+									FlxG.switchState(() -> new SebasMiBeba());
+								}
+								else
+								{
+									persistentUpdate = false;
+									persistentDraw = true;
+									openSubState(new SoundTestSubState((code.type.toLowerCase() == 'video'), code.path));
+								}
 							}
 						}
-
-						FlxG.sound.music?.fadeOut(0.3);
 					});
 					break;
 				}
@@ -403,15 +398,17 @@ class SoundTest extends MusicBeatState
 			if (pcmValue == 12 && daValue == 25)
 			{
 				notFoundAny = false;
+
 				CustomShapeTransition.shape = CustomShapeTransition.getShapeByString('INFINITE');
-				transitioning = true;
 				
 				FlxG.sound.play(Paths.sound('confirmMenu'));
-				FlxTween.tween(whiteBG, {alpha: 1}, 1);
+				FlxG.sound.music?.fadeOut(0.3);
 				
-				new FlxTimer().start(1, (_) -> {
-					FlxG.switchState(() -> new states.access.MajinAccess());
-					FlxG.sound.music?.fadeOut(0.3);
+				FlxTween.tween(whiteBG, {alpha: 1}, 1, {
+					onComplete: (_) -> {
+						FlxG.switchState(() -> new states.access.MajinAccess());
+						FlxG.sound.music?.fadeOut(0.3);
+					}
 				});
 				return;
 			}
@@ -425,18 +422,9 @@ class SoundTest extends MusicBeatState
 		}
 	}
 
-	override function closeSubState():Void
-	{
-		super.closeSubState();
-
-		persistentUpdate = true;
-		transitioning = false;
-		FlxTween.tween(whiteBG, {alpha: 0}, 0.2);
-	}
-
 	function loadSong(name:String, isWeek:Bool = false):Void
 	{
-		PlayState.isSoundTest = true;
+		PlayState.isSoundTest = FlxTransitionableState.skipNextTransOut = true;
 
 		if (isWeek)
 		{

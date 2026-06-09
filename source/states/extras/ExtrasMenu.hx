@@ -234,7 +234,7 @@ class ExtrasMenu extends MusicBeatState
     {
         super.update(elapsed);
 
-        if (!canMove)
+        if (!canMove || subState != null)
             return;
 
         if (cooldownTimer > 0)

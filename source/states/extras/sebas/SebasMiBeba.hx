@@ -268,8 +268,10 @@ class SebasMiBeba extends MusicBeatState
 
 	override public function update(elapsed:Float):Void
 	{
-		Conductor.songPosition += elapsed * 1000;
 		super.update(elapsed);
+		if (subState != null) return;
+		
+		Conductor.songPosition += elapsed * 1000;
 
 		spinTimer += elapsed;
 		if (spinTimer >= SPIN_INTERVAL && !spinning && !flying)

@@ -674,6 +674,9 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 	var lastBeatHit:Int = 0;
 	override function update(elapsed:Float)
 	{
+		super.update(elapsed);
+		if (subState != null) return;
+
 		if (!fileDialog.completed)
 		{
 			lastFocus = PsychUIInputText.focusOn;
@@ -767,7 +770,6 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			{
 				if (FlxG.keys.justPressed.F12)
 				{
-					super.update(elapsed);
 					openEditorPlayState();
 					lastFocus = PsychUIInputText.focusOn;
 					return;
@@ -955,8 +957,6 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			if (!songFinished) Conductor.songPosition = FlxMath.bound(FlxG.sound.music.time + Conductor.offset, 0, FlxG.sound.music.length - 1);
 			updateScrollY();
 		}
-
-		super.update(elapsed);
 
 		if(FlxG.mouse.justPressed){
 			var snd = FlxG.sound.play(Paths.sound('keyClick'));

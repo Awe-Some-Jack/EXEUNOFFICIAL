@@ -168,17 +168,16 @@ class Main extends Sprite
 
 		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
+		fpsVar.visible = false;
 		addChild(fpsVar);
-		Lib.current.stage.align = "tl";
-		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
-		if(fpsVar != null) {
-			fpsVar.visible = ClientPrefs.data.showFPS;
-		}
+		
+		FlxG.stage.align = "tl";
+		FlxG.stage.scaleMode = StageScaleMode.NO_SCALE;
 		#end
 
 		#if (linux || mac) // fix the app icon not showing up on the Linux Panel / Mac Dock
 		var icon = Image.fromFile("icon.png");
-		Lib.current.stage.window.setIcon(icon);
+		FlxG.stage.window.setIcon(icon);
 		#end
 
 		#if html5

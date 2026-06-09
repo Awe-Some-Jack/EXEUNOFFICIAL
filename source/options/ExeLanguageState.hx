@@ -111,11 +111,17 @@ class ExeLanguageState extends ExeBaseOptionsState
 			if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				editingValue = false; backLock = true; nudgeSelectedText(false);
+				editingValue = false; backLock = true; 
+				nudgeSelectedText(false); hideArrows();
 			}
 			return;
 		}
-		if (controls.ACCEPT) { FlxG.sound.play(Paths.sound('scrollMenu')); editingValue = true; nudgeSelectedText(true); }
+		if (controls.ACCEPT) { 
+			FlxG.sound.play(Paths.sound('scrollMenu')); 
+			editingValue = true; nudgeSelectedText(true);
+			var g = optionGroups[0];
+			showArrows(g.valueBG.y + (g.valueBG.height - arrowLeft.height) / 2);
+		}
 		if (controls.BACK) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
 	}
 

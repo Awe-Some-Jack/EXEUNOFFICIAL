@@ -107,7 +107,8 @@ class ExeVisualsState extends ExeBaseOptionsState
 			if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
-				editingValue = false; backLock = true; nudgeSelectedText(false);
+				editingValue = false; backLock = true; 
+				hideArrows(); nudgeSelectedText(false);
 			}
 			return;
 		}
@@ -116,7 +117,7 @@ class ExeVisualsState extends ExeBaseOptionsState
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			curSelected = FlxMath.wrap(curSelected + (controls.UI_UP_P ? -1 : 1), 0, optionGroups.length - 1);
-			changeSelection();
+			hideArrows(); changeSelection();
 		}
 		if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
 		{
@@ -125,7 +126,12 @@ class ExeVisualsState extends ExeBaseOptionsState
 			if (isRight && curPage < pageOptions.length - 1) { curPage++; curSelected = 0; loadPage(); }
 			else if (!isRight && curPage > 0) { curPage--; curSelected = 0; loadPage(); }
 		}
-		if (controls.ACCEPT) { FlxG.sound.play(Paths.sound('scrollMenu')); editingValue = true; nudgeSelectedText(true); }
+		if (controls.ACCEPT) { 
+			FlxG.sound.play(Paths.sound('scrollMenu')); 
+			editingValue = true; nudgeSelectedText(true); 
+			var g = optionGroups[curSelected];
+			showArrows(g.valueBG.y + (g.valueBG.height - arrowLeft.height) / 2);
+		}
 		if (controls.BACK) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
 	}
 }

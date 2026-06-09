@@ -113,9 +113,13 @@
 		},
 		{
 			"name": "HyperDream",
-			"icon": "hyperdream",
+			"icon": "hyper",
+			"quote": "- Jisoo hits me like an earthquake -",
 			"description": "Artist",
-			"nation": "mongolia"
+			"nation": "mongolia",
+			"youtube": "https://youtube.com/@hyperisdreaming",
+			"twitter": "https://x.com/hyperisdreaming",
+			"colors": [[30, 21, 19], [130, 119, 113]]
 		},
 		{
 			"name": "Engineer",

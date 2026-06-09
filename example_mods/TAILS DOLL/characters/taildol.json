@@ -10,33 +10,33 @@
 		},
 		{
 			"loop": false,
-			"offsets": [172, -6],
+			"offsets": [119, 105],
 			"anim": "singLEFT",
-			"fps": 24,
+			"fps": 30,
 			"name": "left",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [8, -71],
+			"offsets": [55, 8],
 			"anim": "singDOWN",
-			"fps": 24,
+			"fps": 30,
 			"name": "down",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [116, 276],
+			"offsets": [31, 71],
 			"anim": "singUP",
-			"fps": 24,
+			"fps": 30,
 			"name": "up",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [-119, 7],
+			"offsets": [-1, 70],
 			"anim": "singRIGHT",
-			"fps": 24,
+			"fps": 30,
 			"name": "right",
 			"indices": []
 		}
@@ -44,12 +44,12 @@
 	"vocals_file": "",
 	"no_antialiasing": true,
 	"image": "characters/tails doll",
-	"position": [-80, -130],
+	"position": [0, 0],
 	"healthicon": "taildoll",
 	"flip_x": false,
 	"healthbar_colors": [255, 186, 0],
-	"camera_position": [-60, -130],
-	"sing_duration": 4,
-	"scale": 1.2,
+	"camera_position": [0, 0],
+	"sing_duration": 8,
+	"scale": 1,
 	"_editor_isPlayer": false
 }

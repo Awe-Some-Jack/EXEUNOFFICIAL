@@ -1,82 +1,82 @@
 {
 	"animations": [
 		{
-			"offsets": [331, 380],
+			"offsets": [0, 0],
 			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "sunshine bf idle"
+		},
+		{
+			"offsets": [25, -6],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "sunshine bf left"
+		},
+		{
+			"offsets": [2, -3],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "sunshine bf down"
+		},
+		{
+			"offsets": [0, 1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "sunshine bf up"
+		},
+		{
+			"offsets": [-1, -2],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "sunshine bf right"
+		},
+		{
+			"offsets": [24, -6],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFTmiss",
 			"indices": [],
-			"name": "singLEFTmiss"
+			"name": "sunshine MissLeft"
 		},
 		{
-			"offsets": [0, 0],
-			"loop": true,
+			"offsets": [2, -3],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWNmiss",
 			"indices": [],
-			"name": "singDOWNmiss"
+			"name": "sunshine MissDown"
 		},
 		{
-			"offsets": [0, 0],
-			"loop": true,
+			"offsets": [0, -1],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUPmiss",
 			"indices": [],
-			"name": "singUPmiss"
+			"name": "sunshine MissUp"
 		},
 		{
-			"offsets": [0, 0],
-			"loop": true,
+			"offsets": [1, -2],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHTmiss",
 			"indices": [],
-			"name": "singRIGHTmiss"
-		},
-		{
-			"loop": true,
-			"offsets": [366, 487],
-			"anim": "idle",
-			"fps": 24,
-			"name": "sunshine bf idle",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [384, 479],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "sunshine bf left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [366, 487],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "sunshine bf down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [366, 476],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "sunshine bf right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [366, 482],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "sunshine bf up",
-			"indices": []
+			"name": "sunshine MissRight"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
 	"image": "characters/bfputo",
-	"position": [60, 90],
+	"position": [0, 0],
 	"healthicon": "SSBF",
 	"flip_x": true,
 	"healthbar_colors": [127, 255, 255],

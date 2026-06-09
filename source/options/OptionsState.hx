@@ -4,7 +4,6 @@ import flixel.addons.display.FlxBackdrop;
 import flixel.effects.FlxFlicker;
 import flixel.util.FlxAxes;
 import flixel.util.FlxGradient;
-import openfl.display.BitmapData;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
@@ -12,8 +11,12 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxTween.FlxTweenType;
 import flixel.util.FlxTimer;
+
+import openfl.display.BitmapData;
+import openfl.display.Shape;
 import openfl.Assets;
 
+import shaders.CirclesShader;
 import states.EXEMenu;
 
 class OptionsState extends MusicBeatState
@@ -37,6 +40,8 @@ class OptionsState extends MusicBeatState
 	var orbitDotB2:FlxSprite;
 	var orbitDotScale2:Float = 1.0;
 
+	var circleShader:CirclesShader;
+
 	var sectionsList = ["CONTROLS", "VISUALS", "GAMEPLAY", "GRAPHICS", "LANGUAGE"];
 	var sectionsGrp:FlxTypedGroup<FlxText>;
 	var sectionBGGrp:FlxTypedGroup<FlxSprite>;
@@ -47,10 +52,10 @@ class OptionsState extends MusicBeatState
 	var titleAlphaTween:FlxTween;
 	var sectionPos:Array<Dynamic> = [];
 
+	var canAction:Bool = true;
+
 	public static var curSelected:Int = 0;
 	public static var onPlayState:Bool = false;
-
-	var canAction:Bool = true;
 
 	final GLOBAL_SCALE:Float = (FlxG.width / 3840);
 
@@ -61,122 +66,88 @@ class OptionsState extends MusicBeatState
 		bg = FlxGradient.createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF7a1520, 0xFF4a0910], 1, 90);
 		add(bg);
 
-		var tileSize:Int = 40;
-		var bmpChecker = new BitmapData(tileSize * 2, tileSize * 2, false, 0xFF000000);
-		bmpChecker.fillRect(new openfl.geom.Rectangle(0,        0,        tileSize, tileSize), 0xFF5a0a0a);
+		final tileSize:Int = 40;
+		final bmpChecker = new BitmapData(tileSize * 2, tileSize * 2, false, 0xFF000000);
+		bmpChecker.fillRect(new openfl.geom.Rectangle(0, 0, tileSize, tileSize), 0xFF5a0a0a);
 		bmpChecker.fillRect(new openfl.geom.Rectangle(tileSize, tileSize, tileSize, tileSize), 0xFF5a0a0a);
-		var checker = new FlxBackdrop(bmpChecker, FlxAxes.XY);
+
+		final checker = new FlxBackdrop(bmpChecker, FlxAxes.XY);
 		checker.antialiasing = false;
 		checker.velocity.set(60, 60);
 		checker.alpha = 0.10;
 		add(checker);
 
-		var maxRadius:Int = 650;
-		var bmpCircle = new BitmapData(maxRadius * 2, maxRadius * 2, true, 0x00000000);
-		var shape = new openfl.display.Shape();
-		var circle = new FlxSprite();
-		circle.makeGraphic(maxRadius * 2, maxRadius * 2, 0x00000000);
-		circle.screenCenter();
-		add(circle);
-		debugCircle = circle;
-		circleRadius = 100;
+		var maxRadius:Int = 600;
 
-		function updateCircle()
-		{
-			shape.graphics.clear();
-			shape.graphics.lineStyle(circleThickness, 0x4a0008, 1);
-			shape.graphics.drawCircle(maxRadius, maxRadius, circleRadius);
-			bmpCircle.fillRect(new openfl.geom.Rectangle(0, 0, bmpCircle.width, bmpCircle.height), 0x00000000);
-			bmpCircle.draw(shape);
-			circle.pixels = bmpCircle;
-			circle.screenCenter();
-		}
+		final bgCanvas = new FlxSprite().makeGraphic(1, 1, FlxColor.TRANSPARENT);
+		bgCanvas.scale.set(FlxG.width, FlxG.height);
+		bgCanvas.updateHitbox();
+		bgCanvas.screenCenter();
 
-		updateCircle();
-		FlxTween.tween(this, {circleRadius: 600}, 8.0, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG,
-			onUpdate: function(_) updateCircle()
-		});
+		circleShader = new CirclesShader();
+		circleShader.u_resolution.value = [FlxG.width, FlxG.height];
+		circleShader.u_thickness.value = [circleThickness];
+		bgCanvas.shader = circleShader;
+		add(bgCanvas);
 
-		var dotSize:Int = 160;
-		var dotShape = new openfl.display.Shape();
+		final dotSize:Int = 160;
+		final dotSize2:Int = 160;
+
+		final dotShape = new Shape();
 		dotShape.graphics.beginFill(0x4a0008);
 		dotShape.graphics.drawCircle(dotSize / 2, dotSize / 2, dotSize / 2);
 		dotShape.graphics.endFill();
+		
+		final bmpDotA = new BitmapData(dotSize, dotSize, true, 0x00000000); bmpDotA.draw(dotShape);
+		orbitDotA = new FlxSprite().loadGraphic(bmpDotA); add(orbitDotA);
+		
+		final bmpDotB = new BitmapData(dotSize, dotSize, true, 0x00000000); bmpDotB.draw(dotShape);
+		orbitDotB = new FlxSprite().loadGraphic(bmpDotB); add(orbitDotB);
 
-		var bmpDotA = new BitmapData(dotSize, dotSize, true, 0x00000000);
-		bmpDotA.draw(dotShape);
-		orbitDotA = new FlxSprite();
-		orbitDotA.loadGraphic(bmpDotA);
-		add(orbitDotA);
-
-		var bmpDotB = new BitmapData(dotSize, dotSize, true, 0x00000000);
-		bmpDotB.draw(dotShape);
-		orbitDotB = new FlxSprite();
-		orbitDotB.loadGraphic(bmpDotB);
-		add(orbitDotB);
-
-		FlxTween.tween(this, {orbitDotScale: 0.3}, 14.0, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
-
-		var maxRadius2:Int = 650;
-		var bmpCircle2 = new BitmapData(maxRadius2 * 2, maxRadius2 * 2, true, 0x00000000);
-		var shape2 = new openfl.display.Shape();
-		var circle2 = new FlxSprite();
-		circle2.makeGraphic(maxRadius2 * 2, maxRadius2 * 2, 0x00000000);
-		circle2.screenCenter();
-		add(circle2);
-
-		function updateCircle2()
-		{
-			shape2.graphics.clear();
-			shape2.graphics.beginFill(0x3b060c, 1);
-			shape2.graphics.drawCircle(maxRadius2, maxRadius2, circleRadius2);
-			shape2.graphics.drawCircle(maxRadius2, maxRadius2, circleRadius2 - circleThickness);
-			shape2.graphics.endFill();
-			bmpCircle2.fillRect(new openfl.geom.Rectangle(0, 0, bmpCircle2.width, bmpCircle2.height), 0x00000000);
-			bmpCircle2.draw(shape2);
-			circle2.pixels = bmpCircle2;
-			circle2.screenCenter();
-		}
-
-		updateCircle2();
-
-		var dotSize2:Int = 160;
-		var dotShape2 = new openfl.display.Shape();
+		final dotShape2 = new Shape();
 		dotShape2.graphics.beginFill(0x3b060c, 1);
 		dotShape2.graphics.drawCircle(dotSize2 / 2, dotSize2 / 2, dotSize2 / 2);
 		dotShape2.graphics.endFill();
+		
+		final bmpDotA2 = new BitmapData(dotSize2, dotSize2, true, 0x00000000); bmpDotA2.draw(dotShape2);
+		orbitDotA2 = new FlxSprite().loadGraphic(bmpDotA2); add(orbitDotA2);
+		
+		final bmpDotB2 = new BitmapData(dotSize2, dotSize2, true, 0x00000000); bmpDotB2.draw(dotShape2);
+		orbitDotB2 = new FlxSprite().loadGraphic(bmpDotB2); add(orbitDotB2);
 
-		var bmpDotA2 = new BitmapData(dotSize2, dotSize2, true, 0x00000000);
-		bmpDotA2.draw(dotShape2);
-		orbitDotA2 = new FlxSprite();
-		orbitDotA2.loadGraphic(bmpDotA2);
-		add(orbitDotA2);
+		FlxTween.tween(this, {orbitDotScale: 0.3}, 14.0, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
+		FlxTween.tween(this, {orbitDotScale2: 0.3}, 14.0, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 
-		var bmpDotB2 = new BitmapData(dotSize2, dotSize2, true, 0x00000000);
-		bmpDotB2.draw(dotShape2);
-		orbitDotB2 = new FlxSprite();
-		orbitDotB2.loadGraphic(bmpDotB2);
-		add(orbitDotB2);
+		circleRadius = 100;
+		circleRadius2 = 100;
 
-		new FlxTimer().start(4.0, function(_) {
-			FlxTween.tween(this, {circleRadius2: 600}, 8.0, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG,
-				onUpdate: function(_) updateCircle2()
-			});
-			FlxTween.tween(this, {orbitDotScale2: 0.3}, 14.0, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
+		FlxTween.tween(this, {circleRadius: maxRadius}, 8.0, {
+			ease: FlxEase.sineInOut, 
+			type: FlxTweenType.PINGPONG
 		});
 
-		var vigWLeft:Int  = 420;
-		var vigWRight:Int = 420;
-		var vigH:Int      = 200;
-		var vigLeft:FlxSprite = FlxGradient.createGradientFlxSprite(vigWLeft, FlxG.height, [0x55000000, 0x00000000], 1, 0);
+		new FlxTimer().start(4.0, function(_) {
+			FlxTween.tween(this, {circleRadius2: maxRadius}, 8.0, {
+				ease: FlxEase.sineInOut, 
+				type: FlxTweenType.PINGPONG
+			});
+		});
+
+		final vigWLeft:Int  = 420;
+		final vigWRight:Int = 420;
+		final vigH:Int      = 200;
+
+		final vigLeft:FlxSprite = FlxGradient.createGradientFlxSprite(vigWLeft, FlxG.height, [0x55000000, 0x00000000], 1, 0);
 		vigLeft.x = -vigWLeft / 2;
 		vigLeft.scrollFactor.set(0, 0);
 		add(vigLeft);
-		var vigRight:FlxSprite = FlxGradient.createGradientFlxSprite(vigWRight, FlxG.height, [0x00000000, 0x55000000], 1, 0);
+		
+		final vigRight:FlxSprite = FlxGradient.createGradientFlxSprite(vigWRight, FlxG.height, [0x00000000, 0x55000000], 1, 0);
 		vigRight.x = FlxG.width - vigWRight / 2;
 		vigRight.scrollFactor.set(0, 0);
 		add(vigRight);
-		var vigTop:FlxSprite = FlxGradient.createGradientFlxSprite(FlxG.width, vigH, [0x66000000, 0x00000000], 1, 90);
+
+		final vigTop:FlxSprite = FlxGradient.createGradientFlxSprite(FlxG.width, vigH, [0x66000000, 0x00000000], 1, 90);
 		vigTop.scrollFactor.set(0, 0);
 		add(vigTop);
 
@@ -184,7 +155,6 @@ class OptionsState extends MusicBeatState
 		debugText.scrollFactor.set();
 		debugText.visible = false;
 		add(debugText);
-
 
 		title = new FlxSprite(0, 20).loadGraphic(Assets.getBitmapData('assets/exe/options/optionsTitle.png'));
 		title.setGraphicSize(Std.int(title.width * GLOBAL_SCALE));
@@ -263,6 +233,12 @@ class OptionsState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (circleShader != null)
+		{
+			circleShader.u_radius1.value[0] = circleRadius;
+			circleShader.u_radius2.value[0] = circleRadius2;
+		}
 
 		if (orbitDotA != null && orbitDotB != null)
 		{

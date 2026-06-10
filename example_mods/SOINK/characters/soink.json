@@ -1,69 +1,69 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [191, 72],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [28, -120],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-65, -27],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-22, 155],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-46, -3],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle-alt",
-			"loop": false,
-			"name": "alt idle"
+			"fps": 24,
+			"name": "alt idle",
+			"indices": []
 		},
 		{
-			"offsets": [44, 10],
-			"indices": [],
-			"fps": 24,
-			"anim": "laugh",
 			"loop": false,
-			"name": "risa"
+			"offsets": [44, 10],
+			"anim": "laugh",
+			"fps": 24,
+			"name": "risa",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/soink",
 	"position": [390, -110],
-	"healthicon": "true-fatal",
+	"healthicon": "soink",
 	"flip_x": false,
-	"healthbar_colors": [255, 0, 0],
+	"healthbar_colors": [0, 0, 254],
 	"camera_position": [-850, -300],
 	"sing_duration": 6.1,
 	"scale": 1,

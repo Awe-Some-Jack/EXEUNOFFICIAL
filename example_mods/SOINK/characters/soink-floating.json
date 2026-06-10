@@ -1,53 +1,53 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [-329, 285],
-			"anim": "idle",
+			"loop": true,
 			"fps": 24,
-			"name": "idle",
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [-328, 324],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "abajo",
 			"indices": []
 		},
 		{
-			"offsets": [-328, 324],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWN",
 			"loop": false,
-			"name": "abajo"
-		},
-		{
 			"offsets": [-292, 297],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "izquierda"
+			"fps": 24,
+			"name": "izquierda",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-328, 298],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "derecha"
+			"fps": 24,
+			"name": "derecha",
+			"indices": []
 		},
 		{
-			"offsets": [-320, 323],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP",
 			"loop": false,
-			"name": "arriba"
+			"offsets": [-320, 323],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "arriba",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/soink-floating",
 	"position": [390, -110],
-	"healthicon": "",
+	"healthicon": "soink-lightblue",
 	"flip_x": false,
-	"healthbar_colors": [8, 8, 253],
+	"healthbar_colors": [224, 255, 254],
 	"camera_position": [-850, -300],
 	"sing_duration": 6.1,
 	"scale": 1,

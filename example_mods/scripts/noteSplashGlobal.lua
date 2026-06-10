@@ -101,6 +101,24 @@ local specialSplashes = {
 		startWithSkin = false
 	},
 	{
+		skin = "noteSplashes-flash",
+		songs = {"flash"},
+		single = false,
+		startWithSkin = false
+	},
+	{
+		skin = "noteSplashes-flash2",
+		songs = {"flash"},
+		single = false,
+		startWithSkin = false
+	},
+	{
+		skin = "noteSplashes-flash3",
+		songs = {"flash"},
+		single = false,
+		startWithSkin = false
+	},
+	{
 		skin = "noteSplashes-endless-jp",
 		songs = {"endless-jp"},
 		offset = {
@@ -380,47 +398,73 @@ end
 
 local pixelxdxd = false
 function onEvent(n,v1,v2)
-	if n == 'changenoteSkin' then
-		if v1 == 'NOTE_assets_ENDLESS' then
-			currentSkin = 'noteSplashes-endless-us'
-			for i = 0,7 do
-				loadFrames('noteHold'..i, 'exeSplashes/holds/noteSplashesHOLD-endless-us')
-				addAnimationByPrefix('noteHold'..i, 'start', holdSplashConf.startAnim[(i % 4) + 1].name, holdSplashConf.startAnim[(i % 4) + 1].fps, false)
-				addAnimationByPrefix('noteHold'..i, 'hold', holdSplashConf.holdAnim[(i % 4) + 1].name, holdSplashConf.holdAnim[(i % 4) + 1].fps, true)
-				addAnimationByPrefix('noteHold'..i, 'end', holdSplashConf.endAnim[(i % 4) + 1].name, holdSplashConf.endAnim[(i % 4) + 1].fps, false)
-				playAnim('noteHold'..i, 'hold', true)
-			end
-		end
-	end
-	if n == 'Swap Pixel Combo' then
-		pixelxdxd = not pixelxdxd
-		if pixelxdxd then
-			currentSkin = 'BloodSplashPixel'
-			tryAndChange = true
-			for i = 0,7 do
-				loadFrames('noteHold'..i, 'exeSplashes/holds/BloodSplashPixelHOLD')
-				addAnimationByPrefix('noteHold'..i, 'start', 'sustain cover intro', 24, false)
-				addAnimationByPrefix('noteHold'..i, 'hold', 'sustain cover loop', 24, true)
-				addAnimationByPrefix('noteHold'..i, 'end', 'sustain cover end', 24, false)
-				setProperty('noteHold'..i..'.antialiasing', false)
-				scaleObject('noteHold'..i, 6, 6)
-				daHoldConfig = {offsetX = -102, offsetY = -42}
-			end
-		else
-			currentSkin = 'BloodSplash'
-			tryAndChange = false
-			for i = 0,7 do
-				loadFrames('noteHold'..i, 'exeSplashes/holds/BloodSplashHOLD')
-				addAnimationByPrefix('noteHold'..i, 'start', 'sustain cover intro', 24, false)
-				addAnimationByPrefix('noteHold'..i, 'hold', 'sustain cover loop', 24, true)
-				addAnimationByPrefix('noteHold'..i, 'end', 'sustain cover end', 24, false)
-				setProperty('noteHold'..i..'.antialiasing', true)
-				scaleObject('noteHold'..i, 0.9, 0.9)
-				daHoldConfig = {offsetX = -85, offsetY = -62}
-				playAnim('noteHold'..i, 'end', true)
-			end
-		end
-	end
+    if n == 'changenoteSkin' then
+        local targetPath = nil
+
+        if v1 == 'NOTE_assets_ENDLESS' then
+            currentSkin = 'noteSplashes-endless-us'
+            targetPath = 'exeSplashes/holds/noteSplashesHOLD-endless-us'
+        elseif v1 == 'NOTE_assets_FLASH' then
+            currentSkin = 'noteSplashes-flash'
+            targetPath = 'exeSplashes/holds/noteSplashesHOLD-flash'
+        elseif v1 == 'NOTE_assets_FLASH2' then
+            currentSkin = 'noteSplashes-flash2'
+            targetPath = 'exeSplashes/holds/noteSplashesHOLD-flash2'
+        elseif v1 == 'NOTE_assets_FLASH3' then
+            currentSkin = 'noteSplashes-flash3'
+            targetPath = 'exeSplashes/holds/noteSplashesHOLD-flash3'
+        elseif v1 == 'NOTE_assets' then
+            currentSkin = 'noteSplashes'
+            targetPath = 'exeSplashes/holds/noteSplashes'
+        end
+
+        if targetPath ~= nil then
+            for i = 0,7 do
+				cancelTimer('noteHold'..i)
+
+				setProperty('noteHold'..i..'.visible', false)
+    			holdsSplashHold[i + 1] = 0
+
+                loadFrames('noteHold'..i, targetPath)
+                addAnimationByPrefix('noteHold'..i, 'start', holdSplashConf.startAnim[(i % 4) + 1].name, holdSplashConf.startAnim[(i % 4) + 1].fps, false)
+                addAnimationByPrefix('noteHold'..i, 'hold', holdSplashConf.holdAnim[(i % 4) + 1].name, holdSplashConf.holdAnim[(i % 4) + 1].fps, true)
+                addAnimationByPrefix('noteHold'..i, 'end', holdSplashConf.endAnim[(i % 4) + 1].name, holdSplashConf.endAnim[(i % 4) + 1].fps, false)
+            end
+        end
+    end
+
+    if n == 'Swap Pixel Combo' then
+        pixelxdxd = not pixelxdxd
+        if pixelxdxd then
+            currentSkin = 'BloodSplashPixel'
+            tryAndChange = true
+            for i = 0,7 do
+                loadFrames('noteHold'..i, 'exeSplashes/holds/BloodSplashPixelHOLD')
+                addAnimationByPrefix('noteHold'..i, 'start', 'sustain cover intro', 24, false)
+                addAnimationByPrefix('noteHold'..i, 'hold', 'sustain cover loop', 24, true)
+                addAnimationByPrefix('noteHold'..i, 'end', 'sustain cover end', 24, false)
+                setProperty('noteHold'..i..'.antialiasing', false)
+                scaleObject('noteHold'..i, 6, 6)
+                daHoldConfig = {offsetX = -102, offsetY = -42}
+                if getProperty('noteHold'..i..'.visible') then playAnim('noteHold'..i, 'hold', true) end
+            end
+        else
+            currentSkin = 'BloodSplash'
+            tryAndChange = false
+            for i = 0,7 do
+                loadFrames('noteHold'..i, 'exeSplashes/holds/BloodSplashHOLD')
+                addAnimationByPrefix('noteHold'..i, 'start', 'sustain cover intro', 24, false)
+                addAnimationByPrefix('noteHold'..i, 'hold', 'sustain cover loop', 24, true)
+                addAnimationByPrefix('noteHold'..i, 'end', 'sustain cover end', 24, false)
+                setProperty('noteHold'..i..'.antialiasing', true)
+                scaleObject('noteHold'..i, 0.9, 0.9)
+                daHoldConfig = {offsetX = -85, offsetY = -62}
+                playAnim('noteHold'..i, 'end', true)
+                setProperty('noteHold'..i..'.visible', false)
+                holdsSplashHold[i + 1] = 0
+            end
+        end
+    end
 end
 
 function noteMiss(id,nd,nt,isn)

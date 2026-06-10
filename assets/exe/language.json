@@ -1,0 +1,372 @@
+{
+	"default": {
+		"language": "ENGLISH",
+		"mainmenu.soundtest": "SOUND TEST",
+		"mainmenu.freeplay": "FREEPLAY",
+		"mainmenu.storymode": "STORY MODE",
+		"mainmenu.extras": "EXTRAS",
+		"mainmenu.options": "OPTIONS",
+		"freeplay.labels": ["EXE", "NON-EXE", "OFFICIAL", "MEME", "ENTITY", "GLITCH"],
+		"freeplay.score": "SCORE",
+		"freeplay.rank": "RANK",
+		"freeplay.reset": "RESET SCORE FOR {song}?",
+		"storymode.select": "DATA SELECT",
+		"soundtest.title": "SOUND TEST",
+		"soundtest.labels": ["PCM NO.", "DA NO."],
+		"extras.menu.title": "EXTRAS",
+		"extras.menu.gallery": ["GALLERY", "In the gallery you can view photos and screenshots from the mod's development or jokes. Please check it out!"],
+		"extras.menu.character": ["CHARACTER BIOS", "Here you can read the description of each character. Many of them have extensive lore and are quite interesting!"],
+		"extras.menu.dagarden": ["D.A GARDEN", "Listen to the great music we have in store, composed by awesome composers. It took them a lot of time to create something of high quality for you!"],
+		"extras.menu.cutscenes": ["CUTSCENES", "Here you can rewatch the amazing cutscenes. Pretty simple, right?"],
+		"extras.menu.achievements": ["ACHIEVEMENTS", "Check out the achievements you can unlock or the ones you already have!"],
+		"extras.menu.credits": ["CREDITS", "Credits to all the people who made this mod possible!"],
+		"extras.menu.valley": ["THE VALLEY MINI-GAME", "placeholder"],
+		"extras.dagarden": ["BY", "INST", "PLAY/PAUSE", "REWIND", "FORWARD", "STOP", "LOOP"],
+		"extras.credits.unofficial": "Unofficial Dev Team",
+		"extras.credits.original": "Original Team",
+		"extras.credits.external": "External Credits",
+		"options.title": "GAME OPTIONS",
+		"options.controls": "CONTROLS",
+		"options.controls.labels": ["NOTES", "UI", "ACTIONS", "LEFT", "DOWN", "UP", "RIGHT", "ACCEPT", "BACK", "PAUSE", "RESET"],
+		"options.visuals": "VISUALS",
+		"options.visuals.labels": ["VISUALS", "HIDE HUD", "FLASHING LIGHTS", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS COUNTER"],
+		"options.gameplay": "GAMEPLAY",
+		"options.gameplay.labels": ["GAMEPLAY", "DOWNSCROLL", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES"],
+		"options.graphics": "GRAPHICS",
+		"options.graphics.labels": ["GRAPHICS", "POTATO MODE", "ANTI-ALIASING", "GPU CACHING", "SHADERS", "UNCAPPED FPS", "FRAMERATE"],
+		"options.language": "LANGUAGE",
+		"options.triggers": ["ON", "OFF"]
+	},
+	"es-ES": {
+		"language": "ESPAÑOL",
+		"mainmenu.soundtest": "PRUEBA DE SONIDO",
+		"mainmenu.freeplay": "JUEGO LIBRE",
+		"mainmenu.storymode": "MODO HISTORIA",
+		"mainmenu.extras": "EXTRAS",
+		"mainmenu.options": "OPCIONES",
+		"freeplay.labels": ["EXE", "NO EXE", "OFICIAL", "MEME", "ENTIDAD", "CORRUPTO"],
+		"freeplay.score": "PUNTAJE",
+		"freeplay.rank": "RANGO",
+		"freeplay.reset": "¿REINICIAR EL PUNTAJE DE {song}?",
+		"storymode.select": "SELECTOR DE DATOS",
+		"soundtest.title": "PRUEBA DE SONIDO",
+		"soundtest.labels": ["PCM N.º", "DA N.º"],
+		"extras.menu.title": "EXTRAS",
+		"extras.menu.gallery": ["GALERÍA", "En la galería puedes ver fotos y capturas de pantalla del desarrollo del mod o chistes. ¡Por favor, échales un vistazo!"],
+		"extras.menu.character": ["DESCRIPCIÓN DE PERSONAJES", "Aquí puedes ver la descripción de cada personaje. ¡Muchos de ellos tienen una historia bastante extensa y son muy interesantes!"],
+		"extras.menu.dagarden": ["D.A GARDEN", "Escucha las increíbles canciones que tenemos en la librería, compuestas por asombrosos compositores. ¡Les tomó bastante tiempo regalarles algo de buena calidad!"],
+		"extras.menu.cutscenes": ["CINEMÁTICAS", "Aquí puedes repetir las increíbles cinemáticas que tenemos. ¿Bastante simple, cierto?"],
+		"extras.menu.achievements": ["LOGROS", "Revisa los logros que puedes desbloquear. ¡O los que ya tienes!"],
+		"extras.menu.credits": ["CRÉDITOS", "¡Créditos a todas las personas que hicieron posible este mod!"],
+		"extras.menu.valley": ["MINI-JUEGO THE VALLEY", "placeholder"],
+		"extras.dagarden": ["POR", "INST", "REPRODUCIR/PAUSAR", "ATRASAR", "ADELANTAR", "PARAR", "BUCLE"],
+		"extras.credits.unofficial": "Equipo no oficial",
+		"extras.credits.original": "Equipo original",
+		"extras.credits.external": "Créditos externos",
+		"options.title": "OPCIONES DEL JUEGO",
+		"options.controls": "CONTROLES",
+		"options.controls.labels": ["NOTAS", "IU", "ACCIONES", "IZQUIERDA", "ABAJO", "ARRIBA", "DERECHA", "ACEPTAR", "ATRÁS", "PAUSA", "REINICIAR"],
+		"options.visuals": "VISUALES",
+		"options.visuals.labels": ["OCULTAR INTERFAZ", "LUCES PARPADEANTES", "ZOOM DE CÁMARA", "ZOOM DEL TEXTO DE PUNTAJE", "CONTADOR DE FPS"],
+		"options.gameplay": "JUGABILIDAD",
+		"options.gameplay.labels": ["SCROLL INVERTIDO", "VENTANA SICK", "VENTANA GOOD", "VENTANA BAD", "FRAMES DE SEGURIDAD"],
+		"options.graphics": "GRÁFICOS",
+		"options.graphics.labels": ["MODO PATATA", "ANTIALIASING", "CACHÉ DE GPU", "SHADERS", "FPS SIN LÍMITE", "TASA DE FPS"],
+		"options.language": "IDIOMA",
+		"options.triggers": ["ACTIVADO", "DESACTIVADO"]
+	},
+	"pt-BR": {
+		"language": "",
+		"mainmenu.soundtest": "",
+		"mainmenu.freeplay": "",
+		"mainmenu.storymode": "",
+		"mainmenu.extras": "",
+		"mainmenu.options": "",
+
+		"freeplay.labels": ["", "", "", "", "", ""],
+		"freeplay.score": "",
+		"freeplay.rank": "",
+		"freeplay.reset": "",
+
+		"storymode.select": "",
+
+		"soundtest.title": "",
+		"soundtest.labels": ["", ""],
+
+		"extras.menu.title": "",
+		"extras.menu.gallery": ["", ""],
+		"extras.menu.character": ["", ""],
+		"extras.menu.dagarden": ["", ""],
+		"extras.menu.cutscenes": ["", ""],
+		"extras.menu.achievements": ["", ""],
+		"extras.menu.credits": ["", ""],
+		"extras.menu.valley": ["", ""],
+
+		"extras.dagarden": ["", "", "", "", "", "", ""],
+
+		"extras.credits.unofficial": "",
+		"extras.credits.original": "",
+		"extras.credits.external": "",
+
+		"options.title": "",
+		"options.controls": "",
+		"options.controls.labels": ["", "", "", "", "", "", "", "", "", "", ""],
+
+		"options.visuals": "",
+		"options.visuals.labels": ["", "", "", "", "", ""],
+
+		"options.gameplay": "",
+		"options.gameplay.labels": ["", "", "", "", "", ""],
+
+		"options.graphics": "",
+		"options.graphics.labels": ["", "", "", "", "", "", ""],
+
+		"options.language": "",
+		"options.triggers": ["", ""]
+	},
+	"uz-UZ": {
+		"language": "",
+		"mainmenu.soundtest": "",
+		"mainmenu.freeplay": "",
+		"mainmenu.storymode": "",
+		"mainmenu.extras": "",
+		"mainmenu.options": "",
+
+		"freeplay.labels": ["", "", "", "", "", ""],
+		"freeplay.score": "",
+		"freeplay.rank": "",
+		"freeplay.reset": "",
+
+		"storymode.select": "",
+
+		"soundtest.title": "",
+		"soundtest.labels": ["", ""],
+
+		"extras.menu.title": "",
+		"extras.menu.gallery": ["", ""],
+		"extras.menu.character": ["", ""],
+		"extras.menu.dagarden": ["", ""],
+		"extras.menu.cutscenes": ["", ""],
+		"extras.menu.achievements": ["", ""],
+		"extras.menu.credits": ["", ""],
+		"extras.menu.valley": ["", ""],
+
+		"extras.dagarden": ["", "", "", "", "", "", ""],
+
+		"extras.credits.unofficial": "",
+		"extras.credits.original": "",
+		"extras.credits.external": "",
+
+		"options.title": "",
+		"options.controls": "",
+		"options.controls.labels": ["", "", "", "", "", "", "", "", "", "", ""],
+
+		"options.visuals": "",
+		"options.visuals.labels": ["", "", "", "", "", ""],
+
+		"options.gameplay": "",
+		"options.gameplay.labels": ["", "", "", "", "", ""],
+
+		"options.graphics": "",
+		"options.graphics.labels": ["", "", "", "", "", "", ""],
+
+		"options.language": "",
+		"options.triggers": ["", ""]
+	},
+	"ja-JP": {
+		"language": "",
+		"mainmenu.soundtest": "",
+		"mainmenu.freeplay": "",
+		"mainmenu.storymode": "",
+		"mainmenu.extras": "",
+		"mainmenu.options": "",
+
+		"freeplay.labels": ["", "", "", "", "", ""],
+		"freeplay.score": "",
+		"freeplay.rank": "",
+		"freeplay.reset": "",
+
+		"storymode.select": "",
+
+		"soundtest.title": "",
+		"soundtest.labels": ["", ""],
+
+		"extras.menu.title": "",
+		"extras.menu.gallery": ["", ""],
+		"extras.menu.character": ["", ""],
+		"extras.menu.dagarden": ["", ""],
+		"extras.menu.cutscenes": ["", ""],
+		"extras.menu.achievements": ["", ""],
+		"extras.menu.credits": ["", ""],
+		"extras.menu.valley": ["", ""],
+
+		"extras.dagarden": ["", "", "", "", "", "", ""],
+
+		"extras.credits.unofficial": "",
+		"extras.credits.original": "",
+		"extras.credits.external": "",
+
+		"options.title": "",
+		"options.controls": "",
+		"options.controls.labels": ["", "", "", "", "", "", "", "", "", "", ""],
+
+		"options.visuals": "",
+		"options.visuals.labels": ["", "", "", "", "", ""],
+
+		"options.gameplay": "",
+		"options.gameplay.labels": ["", "", "", "", "", ""],
+
+		"options.graphics": "",
+		"options.graphics.labels": ["", "", "", "", "", "", ""],
+
+		"options.language": "",
+		"options.triggers": ["", ""]
+	},
+	"zh-CN": {
+		"language": "",
+		"mainmenu.soundtest": "",
+		"mainmenu.freeplay": "",
+		"mainmenu.storymode": "",
+		"mainmenu.extras": "",
+		"mainmenu.options": "",
+
+		"freeplay.labels": ["", "", "", "", "", ""],
+		"freeplay.score": "",
+		"freeplay.rank": "",
+		"freeplay.reset": "",
+
+		"storymode.select": "",
+
+		"soundtest.title": "",
+		"soundtest.labels": ["", ""],
+
+		"extras.menu.title": "",
+		"extras.menu.gallery": ["", ""],
+		"extras.menu.character": ["", ""],
+		"extras.menu.dagarden": ["", ""],
+		"extras.menu.cutscenes": ["", ""],
+		"extras.menu.achievements": ["", ""],
+		"extras.menu.credits": ["", ""],
+		"extras.menu.valley": ["", ""],
+
+		"extras.dagarden": ["", "", "", "", "", "", ""],
+
+		"extras.credits.unofficial": "",
+		"extras.credits.original": "",
+		"extras.credits.external": "",
+
+		"options.title": "",
+		"options.controls": "",
+		"options.controls.labels": ["", "", "", "", "", "", "", "", "", "", ""],
+
+		"options.visuals": "",
+		"options.visuals.labels": ["", "", "", "", "", ""],
+
+		"options.gameplay": "",
+		"options.gameplay.labels": ["", "", "", "", "", ""],
+
+		"options.graphics": "",
+		"options.graphics.labels": ["", "", "", "", "", "", ""],
+
+		"options.language": "",
+		"options.triggers": ["", ""]
+	},
+	"ru-RU": {
+		"language": "",
+		"mainmenu.soundtest": "",
+		"mainmenu.freeplay": "",
+		"mainmenu.storymode": "",
+		"mainmenu.extras": "",
+		"mainmenu.options": "",
+
+		"freeplay.labels": ["", "", "", "", "", ""],
+		"freeplay.score": "",
+		"freeplay.rank": "",
+		"freeplay.reset": "",
+
+		"storymode.select": "",
+
+		"soundtest.title": "",
+		"soundtest.labels": ["", ""],
+
+		"extras.menu.title": "",
+		"extras.menu.gallery": ["", ""],
+		"extras.menu.character": ["", ""],
+		"extras.menu.dagarden": ["", ""],
+		"extras.menu.cutscenes": ["", ""],
+		"extras.menu.achievements": ["", ""],
+		"extras.menu.credits": ["", ""],
+		"extras.menu.valley": ["", ""],
+
+		"extras.dagarden": ["", "", "", "", "", "", ""],
+
+		"extras.credits.unofficial": "",
+		"extras.credits.original": "",
+		"extras.credits.external": "",
+
+		"options.title": "",
+		"options.controls": "",
+		"options.controls.labels": ["", "", "", "", "", "", "", "", "", "", ""],
+
+		"options.visuals": "",
+		"options.visuals.labels": ["", "", "", "", "", ""],
+
+		"options.gameplay": "",
+		"options.gameplay.labels": ["", "", "", "", "", ""],
+
+		"options.graphics": "",
+		"options.graphics.labels": ["", "", "", "", "", "", ""],
+
+		"options.language": "",
+		"options.triggers": ["", ""]
+	},
+	"uk-UA": {
+		"language": "",
+		"mainmenu.soundtest": "",
+		"mainmenu.freeplay": "",
+		"mainmenu.storymode": "",
+		"mainmenu.extras": "",
+		"mainmenu.options": "",
+
+		"freeplay.labels": ["", "", "", "", "", ""],
+		"freeplay.score": "",
+		"freeplay.rank": "",
+		"freeplay.reset": "",
+
+		"storymode.select": "",
+
+		"soundtest.title": "",
+		"soundtest.labels": ["", ""],
+
+		"extras.menu.title": "",
+		"extras.menu.gallery": ["", ""],
+		"extras.menu.character": ["", ""],
+		"extras.menu.dagarden": ["", ""],
+		"extras.menu.cutscenes": ["", ""],
+		"extras.menu.achievements": ["", ""],
+		"extras.menu.credits": ["", ""],
+		"extras.menu.valley": ["", ""],
+
+		"extras.dagarden": ["", "", "", "", "", "", ""],
+
+		"extras.credits.unofficial": "",
+		"extras.credits.original": "",
+		"extras.credits.external": "",
+
+		"options.title": "",
+		"options.controls": "",
+		"options.controls.labels": ["", "", "", "", "", "", "", "", "", "", ""],
+
+		"options.visuals": "",
+		"options.visuals.labels": ["", "", "", "", "", ""],
+
+		"options.gameplay": "",
+		"options.gameplay.labels": ["", "", "", "", "", ""],
+
+		"options.graphics": "",
+		"options.graphics.labels": ["", "", "", "", "", "", ""],
+
+		"options.language": "",
+		"options.triggers": ["", ""]
+	}
+}

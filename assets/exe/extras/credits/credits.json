@@ -267,7 +267,8 @@
 			"nation": "brazil",
 			"colors": [[155, 13, 13], [0, 0, 0]],
 			"twitter": "https://x.com/RoxasWhite_",
-			"youtube": "https://youtube.com/@whiteroxas_"
+			"youtube": "https://youtube.com/@whiteroxas_",
+			"extra": ["image", "desists.jpg"]
 		},
 		{
 			"name": "Sr. Kleynner",

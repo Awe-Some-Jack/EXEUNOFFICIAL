@@ -14,6 +14,7 @@ class MajinAccess extends MusicBeatState
 {
 	var buttonUS:FlxSprite;
 	var buttonJP:FlxSprite;
+	var selector:FlxSprite;
 
 	var eggman:FlxSprite;
 	var soundOne:FlxSprite;
@@ -85,8 +86,9 @@ class MajinAccess extends MusicBeatState
 		add(box);
 
 		eggman = new FlxSprite(0, box.y + 60);
-		eggman.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/majin/eggman.png', 'assets/exe/access/majin/eggman.xml');
-		eggman.animation.addByPrefix('idle', 'idle', 2, true);
+		eggman.loadGraphic(Assets.getBitmapData('assets/exe/access/majin/eggman.png'));
+		eggman.loadGraphic(Assets.getBitmapData('assets/exe/access/majin/eggman.png'), true, Math.floor(eggman.width / 2), Math.floor(eggman.height));
+		eggman.animation.add('idle', [0, 1], 2, true);
 		eggman.animation.play('idle');
 		eggman.antialiasing = false;
 		eggman.scale.set(3, 3);
@@ -131,6 +133,12 @@ class MajinAccess extends MusicBeatState
 		buttonJP.x = Std.int((FlxG.width / 2) - buttonJP.width - 90);
 		add(buttonJP);
 
+		selector = new FlxSprite(buttonJP.x - 9, buttonUS.y - 9).loadGraphic(Assets.getBitmapData('assets/exe/access/majin/selector.png'));
+		selector.antialiasing = false;
+		selector.scale.set(3, 3);
+		selector.updateHitbox();
+		add(selector);
+
 		blackBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		blackBG.alpha = 0;
 		blackBG.screenCenter();
@@ -170,6 +178,7 @@ class MajinAccess extends MusicBeatState
 				isJP = !isJP;
 				buttonUS.animation.play(isJP ? 'idle' : 'selected');
 				buttonJP.animation.play(isJP ? 'selected' : 'idle');
+				selector.x = isJP ? (buttonJP.x - 9) : (buttonUS.x - 9);
 			}
 			if (FlxG.mouse.overlaps(buttonUS) && mouseWasOver == 'jp' && isJP)
 			{
@@ -177,6 +186,7 @@ class MajinAccess extends MusicBeatState
 				isJP = false;
 				buttonUS.animation.play(isJP ? 'idle' : 'selected');
 				buttonJP.animation.play(isJP ? 'selected' : 'idle');
+				selector.x = isJP ? (buttonJP.x - 9) : (buttonUS.x - 9);
 				mouseWasOver = 'us';
 			}
 			if (FlxG.mouse.overlaps(buttonJP) && mouseWasOver == 'us' && !isJP)
@@ -185,6 +195,7 @@ class MajinAccess extends MusicBeatState
 				isJP = true;
 				buttonUS.animation.play(isJP ? 'idle' : 'selected');
 				buttonJP.animation.play(isJP ? 'selected' : 'idle');
+				selector.x = isJP ? (buttonJP.x - 9) : (buttonUS.x - 9);
 				mouseWasOver = 'jp';
 			}
 			if (!FlxG.mouse.overlaps(buttonJP) && !FlxG.mouse.overlaps(buttonUS)) mouseWasOver = isJP ? 'jp' : 'us';

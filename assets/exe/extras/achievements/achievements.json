@@ -1,0 +1,264 @@
+[
+	{
+		"name": "Allergic to Rings",
+		"description": "Beat Triple Trouble without collecting any ring",
+		"icon": "rings"
+	},
+	{
+		"name": "Some Trouble Going Forward?",
+		"description": "Check all Triple Trouble deaths",
+		"maxCount": 4,
+		"icon": "tripledeaths"
+	},
+	{
+		"name": "GOD KILLER",
+		"description": "Beat the Main Week",
+		"icon": "xeno"
+	},
+	{
+		"name": "DON'T COME BACK",
+		"description": "Find and beat Lord X",
+		"icon": "lordx"
+	},
+	{
+		"name": "DIGA BYE BYE!",
+		"description": "Find the Cycles easter-egg",
+		"secret": true,
+		"icon": "byebye"
+	},
+	{
+		"name": "FUN WAS INFINITE",
+		"description": "Find and beat Majin and Mazin",
+		"icon": "majin"
+	},
+	{
+		"name": "Did you feel the sunshine?",
+		"description": "Find and beat Tails Doll",
+		"icon": "tailsdoll"
+	},
+	{
+		"name": "Chaos Controlled!",
+		"description": "Find and beat Fleetway",
+		"icon": "fleetway"
+	},
+	{
+		"name": "Back in the cage you go!",
+		"description": "Find and beat EXE",
+		"icon": "exe"
+	},
+	{
+		"name": "S.. SANS?!",
+		"description": "Find the The Valley easter-egg",
+		"secret": true,
+		"icon": "sans"
+	},
+	{
+		"name": "Milk and cereal",
+		"description": "Find Sunky in The Valley",
+		"secret": true,
+		"icon": "sunkyvalley"
+	},
+	{
+		"name": "Would you do it all again?",
+		"description": "Find and beat Sanic",
+		"icon": "sanic"
+	},
+	{
+		"name": "Could you repeat that?",
+		"description": "Find and beat Needlemouse",
+		"icon": "needlemouse"
+	},
+	{
+		"name": "It wasn't Tails...",
+		"description": "Find and beat Chaotix",
+		"icon": "chaotix"
+	},
+	{
+		"name": "He was replaced",
+		"description": "Find and beat Scorched",
+		"icon": "scorched"
+	},
+	{
+		"name": "I Show Speed!",
+		"description": "Beat Manual Blast without pressing any ring",
+		"icon": "norings"
+	},
+	{
+		"name": "Uh Oh!",
+		"description": "Find and beat Demogri & Griatos",
+		"icon": "demogri"
+	},
+	{
+		"name": "Where's the bonus fight?",
+		"description": "Find and beat Bratwurst",
+		"icon": "bratwurst"
+	},
+	{
+		"name": "Do You Know Da Wae?",
+		"description": "Find and beat OMW.EXE",
+		"icon": "omw"
+	},
+	{
+		"name": "Long Neck",
+		"description": "Find the OMW easter-egg",
+		"secret": true,
+		"icon": "neck"
+	},
+	{
+		"name": "The hedgehog of the night.",
+		"description": "Find and beat Devoid",
+		"icon": "devoid"
+	},
+	{
+		"name": "Que void",
+		"description": "Find the Hollow easter-egg",
+		"secret": true,
+		"icon": "void"
+	},
+	{
+		"name": "Like the FNF Mod?!",
+		"description": "Find and beat Re-Run",
+		"icon": "rerun"
+	},
+	{
+		"name": "Adobe please...",
+		"description": "Find and beat Soink.FLA",
+		"icon": "soink"
+	},
+	{
+		"name": "Update to Windows 11 already...",
+		"description": "Beat Flash 3 times",
+		"secret": true,
+		"maxCount": 3,
+		"icon": "flash"
+	},
+	{
+		"name": "Uh... ¿Meow?",
+		"description": "Find and beat Movie Sonic",
+		"icon": "ugly"
+	},
+	{
+		"name": "Left, up, down... right?",
+		"description": "Find and beat Sunky",
+		"icon": "sunky"
+	},
+	{
+		"name": "SUNKYTASTIC!",
+		"description": "Find the Sunky Troll easter-egg",
+		"secret": true,
+		"icon": "troll"
+	},
+	{
+		"name": "A FATAL Experience",
+		"description": "Grant Fatal Error access to your game",
+		"icon": "fatal"
+	},
+	{
+		"name": "Tumba la casa mami",
+		"description": "Find the Fatality easter-egg",
+		"secret": true,
+		"icon": "tumbalacasamami"
+	},
+	{
+		"name": "HAVE SOME ORGANIZATION PLEASE!",
+		"description": "Beat Fatality without closing any pop-up",
+		"icon": "popup"
+	},
+	{
+		"name": "One last meal",
+		"description": "Find and beat Starved Eggman",
+		"icon": "starved"
+	},
+	{
+		"name": "MESSAGE RECEIVED",
+		"description": "Get a Notification from SEGA Enterprise",
+		"icon": "sega"
+	},
+	{
+		"name": "YOU WEREN'T SONIC",
+		"description": "Beat Pyscho Tails",
+		"icon": "crazy"
+	},
+	{
+		"name": "Psssssst, nothing personel kid",
+		"description": "Find and beat Coldsteel",
+		"icon": "coldsteel"
+	},
+	{
+		"name": "BF HAS PASSED",
+		"description": "Find and beat Genesys Eggman",
+		"icon": "genesys"
+	},
+	{
+		"name": "Welcome to my SchoolHouse!",
+		"description": "Find and beat Educator",
+		"icon": "educator"
+	},
+	{
+		"name": "Zap to the extreme!",
+		"description": "Find and beat Sonichu",
+		"icon": "sonichu"
+	},
+	{
+		"name": "What a Volt Tackle you got huh?!",
+		"description": "Die from Sonichu's electro-shocks",
+		"icon": "shocks"
+	},
+	{
+		"name": "TOO MANY SONICS",
+		"description": "Defeat all File Extensions characters",
+		"icon": "fileextensions"
+	},
+	{
+		"name": "The other side of the ring",
+		"description": "Enter the PARALLAX Menu",
+		"icon": "parallax"
+	},
+	{
+		"name": "Mattpro",
+		"description": "Mattpro",
+		"secret": true,
+		"icon": "mattpro"
+	},
+	{
+		"name": "SEBAS MI BEBA",
+		"description": "Do I need to explain what this is?",
+		"secret": true,
+		"icon": "sebas"
+	},
+	{
+		"name": "MUSIC ENJOYER!",
+		"description": "Complete the DA Garden Song Library",
+		"icon": "dagarden"
+	},
+	{
+		"name": "The hell is happening...",
+		"description": "Find all secondary codes",
+		"icon": "secondary"
+	},
+	{
+		"name": "Source Investigator",
+		"description": "Watch the mod credits",
+		"icon": "credits"
+	},
+	{
+		"name": "Super Player!",
+		"description": "Get A or higher rank in 5 songs",
+		"icon": "super"
+	},
+	{
+		"name": "Hyper Player!!",
+		"description": "Get a P rank in any song",
+		"icon": "hyper"
+	},
+	{
+		"name": "Idk if you want the achivement or you are just bad…",
+		"description": "Get every game over",
+		"icon": "die"
+	},
+	{
+		"name": "Wanna touch some grass?",
+		"description": "Beat the entire mod",
+		"icon": "finale"
+	}
+]

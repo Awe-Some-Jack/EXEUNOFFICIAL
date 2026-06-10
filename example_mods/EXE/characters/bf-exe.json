@@ -1,154 +1,154 @@
 {
 	"animations": [
 		{
-			"offsets": [14, 53],
 			"loop": false,
-			"fps": 24,
+			"offsets": [14, -28],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [45, 47],
 			"loop": false,
-			"fps": 24,
+			"offsets": [48, -34],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "singLeft"
+			"fps": 24,
+			"name": "singLeft",
+			"indices": []
 		},
 		{
-			"offsets": [35, 21],
 			"loop": false,
-			"fps": 24,
+			"offsets": [42, -69],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "singDown"
+			"fps": 24,
+			"name": "singDown",
+			"indices": []
 		},
 		{
-			"offsets": [9, 77],
 			"loop": false,
-			"fps": 24,
+			"offsets": [0, -4],
 			"anim": "singUP",
-			"indices": [],
-			"name": "singUp"
+			"fps": 24,
+			"name": "singUp",
+			"indices": []
 		},
 		{
-			"offsets": [0, 59],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-5, -17],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "singRight"
+			"fps": 24,
+			"name": "singRight",
+			"indices": []
 		},
 		{
-			"offsets": [45, 64],
 			"loop": false,
-			"fps": 24,
+			"offsets": [49, -15],
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "missLeft"
+			"fps": 24,
+			"name": "missLeft",
+			"indices": []
 		},
 		{
-			"offsets": [37, 50],
 			"loop": false,
-			"fps": 24,
+			"offsets": [42, -34],
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "missDown"
+			"fps": 24,
+			"name": "missDown",
+			"indices": []
 		},
 		{
-			"offsets": [23, 105],
 			"loop": false,
-			"fps": 24,
+			"offsets": [18, 26],
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "missUp"
+			"fps": 24,
+			"name": "missUp",
+			"indices": []
 		},
 		{
-			"offsets": [3, 80],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-5, 0],
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "missRight"
+			"fps": 24,
+			"name": "missRight",
+			"indices": []
 		},
 		{
-			"offsets": [15, 53],
 			"loop": false,
-			"fps": 24,
+			"offsets": [14, -28],
 			"anim": "idle-alt",
-			"indices": [],
-			"name": "Altidle"
+			"fps": 24,
+			"name": "Altidle",
+			"indices": []
 		},
 		{
-			"offsets": [100, 62],
 			"loop": false,
-			"fps": 24,
+			"offsets": [111, -15],
 			"anim": "singLEFT-alt",
-			"indices": [],
-			"name": "AltsingLeft"
+			"fps": 24,
+			"name": "AltsingLeft",
+			"indices": []
 		},
 		{
-			"offsets": [60, 35],
 			"loop": false,
-			"fps": 24,
+			"offsets": [69, -53],
 			"anim": "singDOWN-alt",
-			"indices": [],
-			"name": "AltsingDown"
+			"fps": 24,
+			"name": "AltsingDown",
+			"indices": []
 		},
 		{
-			"offsets": [47, 77],
 			"loop": false,
-			"fps": 24,
+			"offsets": [45, 1],
 			"anim": "singUP-alt",
-			"indices": [],
-			"name": "AltsingUp"
+			"fps": 24,
+			"name": "AltsingUp",
+			"indices": []
 		},
 		{
-			"offsets": [19, 58],
 			"loop": false,
-			"fps": 24,
+			"offsets": [10, -19],
 			"anim": "singRIGHT-alt",
-			"indices": [],
-			"name": "AltsingRight"
+			"fps": 24,
+			"name": "AltsingRight",
+			"indices": []
 		},
 		{
-			"offsets": [98, 94],
 			"loop": false,
-			"fps": 24,
+			"offsets": [110, 18],
 			"anim": "singLEFTmiss-alt",
-			"indices": [],
-			"name": "missAltsingLeft"
+			"fps": 24,
+			"name": "missAltsingLeft",
+			"indices": []
 		},
 		{
-			"offsets": [62, 55],
 			"loop": false,
-			"fps": 24,
+			"offsets": [69, -30],
 			"anim": "singDOWNmiss-alt",
-			"indices": [],
-			"name": "missAltsingDown"
+			"fps": 24,
+			"name": "missAltsingDown",
+			"indices": []
 		},
 		{
-			"offsets": [52, 78],
 			"loop": false,
-			"fps": 24,
+			"offsets": [52, 1],
 			"anim": "singUPmiss-alt",
-			"indices": [],
-			"name": "missAltsingUp"
+			"fps": 24,
+			"name": "missAltsingUp",
+			"indices": []
 		},
 		{
-			"offsets": [25, 77],
 			"loop": false,
-			"fps": 24,
+			"offsets": [22, -4],
 			"anim": "singRIGHTmiss-alt",
-			"indices": [],
-			"name": "missAltsingRight"
+			"fps": 24,
+			"name": "missAltsingRight",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/bf faker 2",
-	"position": [-85, 240],
+	"position": [-85, 190],
 	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],

@@ -1,305 +1,796 @@
 package debug;
 
-import backend.ClientPrefs;
-import flixel.FlxG;
-import openfl.text.TextField;
-import openfl.text.TextFormat;
-import openfl.system.System;
-import flixel.util.FlxStringUtil;
-import flixel.util.FlxColor;
-import flixel.math.FlxMath;
+import haxe.Timer;
 
-#if cpp
-import cpp.vm.Gc;
-import sys.thread.Thread;
-import sys.thread.Mutex;
+import openfl.Lib;
+import openfl.display.Bitmap;
+import openfl.display.BitmapData;
+import openfl.display.Sprite;
+import openfl.events.Event;
+import openfl.events.KeyboardEvent;
+import openfl.geom.Point;
+import openfl.geom.Rectangle;
+import openfl.system.System;
+import openfl.text.AntiAliasType;
+import openfl.text.GridFitType;
+import openfl.text.TextField;
+import openfl.text.TextFieldAutoSize;
+import openfl.text.TextFormat;
+import openfl.ui.Keyboard;
+
+import backend.MemoryUtil;
+
+#if sys
+import sys.io.File;
 #end
 
-/**
- * FPS/memory overlay showing heap RAM, system RAM, VRAM and CPU usage.
- * System queries run on a background thread so they never stall the render.
-**/
-class FPSCounter extends TextField
+@:allow(Init)
+class FPSCounter extends Sprite
 {
-	public var currentFPS(default, null):Int;
+	public var currentFPS(default, null):Int = 0;
+	public var currentMemory(get, never):Float;
+	public var showDebugInfo:Bool = false;
 
-	public var memoryMegas(get, never):Float;
-	@:noCompletion private var times:Array<Float>;
+	public var strokeSize:Int = 1;
+	public var strokeColor:Int = 0xFF000000;
+	public var fillColor:Int = 0xFFFFFFFF;
+	public var fontSize:Int = 11;
+	public var fontCustom:String = "_sans";
 
-	#if cpp
-	private static var _mutex:Mutex = new Mutex();
+	private var frameCount:Int = 0;
+	private var lastFPSTime:Float = 0;
+	private var lastFrameTime:Float = 0;
+	private var lastUpdateTime:Float = 0;
+	private var lastMemoryUpdate:Float = 0;
+	private var lastGraphUpdate:Float = 0;
+	private var lastStatReset:Float = 0;
+
+	private var updateInterval:Float = 0.1;
+	private var memoryUpdateInterval:Float = 1.0;
+	private var graphUpdateInterval:Float = 0.12;
+
+	private var memoryReadings:Array<Float> = [];
+	private var vramReadings:Array<Float> = [];
+	private var maxMemoryReadings:Int = 10;
+	private var smoothMemory:Float = 0;
+	private var smoothVRAM:Float = 0;
+	private var availableSystemMemory:Float = 0;
+
+	#if (openfl >= "9.4.0")
+	private var peakMemory:Float = 0;
+	private var peakVRAM:Float = 0;
+	#else
+	private var peakMemory:UInt = 0;
+	private var peakVRAM:UInt = 0;
 	#end
-	
-	private static var _cpuUsage:Float    = -1;
-	private static var _vramUsage:Float   = -1;
-	private static var _sysRam:Float      = -1;
-	private static var _bgRunning:Bool    = false;
-	
-	private var deltaTimeout:Float = 0.0;
-	private var _statTimer:Float   = 0.0;
-	private static inline final STAT_INTERVAL:Float = 2000;
 
-	/**
-	 * Estimate VRAM usage by summing pixel sizes of all cached FlxGraphics.
-	 * Each RGBA texture = width * height * 4 bytes. Fast, no external process, works on any GPU.
-	 * Must be called from the main thread (accesses FlxG.bitmap).
-	 **/
-	@:access(flixel.system.frontEnds.BitmapFrontEnd._cache)
-	static function queryVRAMMainThread():Float
-	{
-		try
-		{
-			var total:Float = 0;
-			for (graphic in FlxG.bitmap._cache)
-			{
-				if (graphic != null && graphic.bitmap != null)
-				{
-					// 4 bytes per pixel (RGBA)
-					total += graphic.bitmap.width * graphic.bitmap.height * 4;
-				}
-			}
-			return total;
-		}
-		catch (_) {}
-		return -1;
-	}
+	private var graphWidth:Int = 135;
+	private var graphHeight:Int = 40;
+	private var graphHistory:Array<Float> = [];
+	private var maxGraphPoints:Int = 135;
+	private var frameTimes:Array<Float> = [];
+	private var maxFrameTimeHistory:Int = 20;
 
-	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
+	@:unreflective
+	private final dataTexts = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+
+	private var minFPS:Int = 9999;
+	private var maxFPS:Int = 0;
+	private var avgFPS:Float = 0;
+	private var fpsSamples:Int = 0;
+	private var totalFPS:Float = 0;
+
+	private var logEnabled:Bool = false;
+	private var logFile:String = "fps_log.txt";
+	private var logTimer:Float = 0;
+	private var logInterval:Float = 1.0;
+
+	private var counterVisible:Bool = true;
+	private var keyCooldown:Float = 0;
+	private var keyCooldownTime:Float = 0.2;
+
+	private var graphDirty:Bool = true;
+	private var lowFPSFrames:Int = 0;
+	private var totalFrames:Int = 0;
+	private var performanceScore:Float = 0;
+	private var stabilityIssues:Int = 0;
+
+	private var textFormat:TextFormat;
+	private var shadowFormat:TextFormat;
+	private var textField:TextField;
+	private var shadowField:TextField;
+	private var graphBitmap:Bitmap;
+	private var graphBMD:BitmapData;
+
+	private var lastOutput:String = "";
+	private var lastFPS:Int = -1;
+	private var lastMemBucket:Int = -1;
+	private var lastShowDebugInfo:Bool = false;
+
+	public function new(x:Float = 10, y:Float = 10, ?fillColor:Int = 0xFFFFFFFF)
 	{
 		super();
-		this.x        = x;
-		this.y        = y;
-		currentFPS    = 0;
-		selectable    = false;
-		mouseEnabled  = false;
-		defaultTextFormat = new TextFormat("_sans", 14, color);
-		autoSize  = LEFT;
-		multiline = true;
-		text      = "FPS: ";
-		times     = [];
+
+		this.x = x;
+		this.y = y;
+		this.fillColor = fillColor;
+
+		lastFPSTime = Timer.stamp();
+		lastFrameTime = Timer.stamp();
+		lastUpdateTime = lastFrameTime;
+		lastMemoryUpdate = lastFrameTime;
+		lastGraphUpdate = lastFrameTime;
+		lastStatReset = lastFrameTime;
+
+		for (i in 0...maxMemoryReadings)
+		{
+			memoryReadings.push(0);
+			vramReadings.push(0);
+		}
+
+		textFormat = new TextFormat(fontCustom, fontSize, fillColor);
+		shadowFormat = new TextFormat(fontCustom, fontSize, strokeColor);
+
+		shadowField = createTextField();
+		shadowField.defaultTextFormat = shadowFormat;
+		shadowField.x = strokeSize;
+		shadowField.y = strokeSize;
+		addChild(shadowField);
+
+		textField = createTextField();
+		textField.defaultTextFormat = textFormat;
+		addChild(textField);
+
+		graphBMD = new BitmapData(graphWidth, graphHeight, true, 0x00000000);
+		graphBitmap = new Bitmap(graphBMD);
+		graphBitmap.visible = false;
+		addChild(graphBitmap);
+
+		if (logEnabled)
+			initLogFile();
+
+		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+		addEventListener(Event.ENTER_FRAME, onEnterFrame);
 	}
 
-	private override function __enterFrame(deltaTime:Float):Void
+	private function createTextField():TextField
 	{
-		if(Main.fpsVar.visible) {
-			final now:Float = haxe.Timer.stamp() * 1000;
-			times.push(now);
-			while (times[0] < now - 1000) times.shift();
+		var tf = new TextField();
+		tf.autoSize = TextFieldAutoSize.LEFT;
+		tf.multiline = true;
+		tf.wordWrap = false;
+		tf.selectable = false;
+		tf.mouseEnabled = false;
+		tf.antiAliasType = AntiAliasType.ADVANCED;
+		tf.gridFitType = GridFitType.PIXEL;
+		tf.sharpness = 0;
+		return tf;
+	}
 
-			currentFPS = times.length;
-			
-			_statTimer += deltaTime;
-			if (_statTimer >= STAT_INTERVAL)
+	inline function get_currentMemory():Float
+	{
+		return smoothMemory;
+	}
+
+	private function onKeyPress(event:KeyboardEvent):Void
+	{
+		if (keyCooldown > 0) return;
+
+		switch (event.keyCode)
+		{
+			case Keyboard.F2:
+				resetDebugInfo();
+				keyCooldown = keyCooldownTime;
+			case Keyboard.F3:
+				toggleDebugInfo();
+				keyCooldown = keyCooldownTime;
+		}
+	}
+
+	private function onEnterFrame(event:Event):Void
+	{
+		final now = Timer.stamp();
+		final deltaTime = now - lastFrameTime;
+
+		if (keyCooldown > 0)
+			keyCooldown -= deltaTime;
+
+		frameCount++;
+		if (now - lastFPSTime >= 0.25)
+		{
+			currentFPS = Math.round(frameCount / (now - lastFPSTime));
+			frameCount = 0;
+			lastFPSTime = now;
+		}
+
+		updateFrameTiming(deltaTime);
+
+		if (now - lastMemoryUpdate >= memoryUpdateInterval)
+			updateMemoryStats(now);
+
+		if (now - lastGraphUpdate >= graphUpdateInterval)
+		{
+			updateGraphs();
+			lastGraphUpdate = now;
+		}
+
+		if (now - lastUpdateTime >= updateInterval)
+		{
+			updateStats();
+
+			if (counterVisible)
 			{
-				_statTimer = 0;
-				kickBgQuery();
+				final output = buildOutputString();
+				final memBucket = Std.int(smoothMemory / (16 * 1024 * 1024));
+				final needsVisualRefresh = output != lastOutput
+					|| currentFPS != lastFPS
+					|| memBucket != lastMemBucket
+					|| showDebugInfo != lastShowDebugInfo;
+
+				if (needsVisualRefresh)
+				{
+					updateText(output);
+					lastOutput = output;
+					lastFPS = currentFPS;
+					lastMemBucket = memBucket;
+					lastShowDebugInfo = showDebugInfo;
+				}
 			}
 
-			if (deltaTimeout < 50) { 
-				deltaTimeout += deltaTime; 
-				return; 
-			}
-
-			updateText();
-			deltaTimeout = 0.0;
+			lastUpdateTime = now;
 		}
+
+		if (logEnabled)
+			updateLogging(now);
+
+		lastFrameTime = now;
 	}
 
-	/** Spawn a background thread to collect system stats without blocking render. **/
-	static function kickBgQuery():Void
+	private function calculateFPSStability():Float
 	{
-		#if windows
-		if (_bgRunning) return;
+		if (graphHistory.length < 10) return 1.0;
 
-		// Stage3D must be queried on the main thread
-		final vramFast = queryVRAMMainThread();
-		if (vramFast >= 0)
+		var targetFPS = /*ClientPrefs.data.vsync ? getDisplayRefreshRate() :*/ ClientPrefs.data.framerate;
+		var averageFPS = 0.0;
+		var variance = 0.0;
+
+		for (fps in graphHistory)
+			averageFPS += fps;
+
+		averageFPS /= graphHistory.length;
+
+		for (fps in graphHistory)
+			variance += (fps - averageFPS) * (fps - averageFPS);
+
+		variance /= graphHistory.length;
+
+		var stability = 1.0 - (variance / (targetFPS * targetFPS));
+		return Math.max(0, Math.min(1.0, stability));
+	}
+
+	private function updateMemoryStats(currentTime:Float):Void
+	{
+		var currentMem = MemoryUtil.getAccurateRamUsage();
+		var currentVRAMUsage = MemoryUtil.getVRAMUsage();
+
+		if (currentMem < 0)
 		{
-			_mutex.acquire();
-			_vramUsage = vramFast;
-			_mutex.release();
+			#if (openfl >= "9.4.0")
+			currentMem = System.totalMemoryNumber;
+			#else
+			currentMem = System.totalMemory;
+			#end
 		}
 
-		_bgRunning = true;
-		Thread.create(function() {
-			final cpu  = queryCPU();
-			// Only run the heavy VRAM fallbacks (nvidia-smi / powershell) if Stage3D gave nothing
-			final vram = (vramFast >= 0) ? vramFast : queryVRAM();
-			final ram  = querySystemRAM();
-			_mutex.acquire();
-			_cpuUsage  = cpu;
-			_vramUsage = vram;
-			_sysRam    = ram;
-			_bgRunning = false;
-			_mutex.release();
-		});
-		#end
-	}
+		memoryReadings.push(currentMem);
+		if (memoryReadings.length > maxMemoryReadings)
+			memoryReadings.shift();
 
-	public dynamic function updateText():Void
-	{
-		#if cpp
-		_mutex.acquire();
-		final cpu  = _cpuUsage;
-		final vram = _vramUsage;
-		final ram  = _sysRam;
-		_mutex.release();
-		#else
-		final cpu  = -1.0;
-		final vram = -1.0;
-		final ram  = cast(cast(System.totalMemory, UInt), Float);
-		#end
+		var totalMem:Float = 0;
+		for (reading in memoryReadings)
+			totalMem += reading;
+		smoothMemory = totalMem / memoryReadings.length;
 
-		final sysRamDisplay = fmt(cast(cast(Math.abs(System.totalMemory), UInt), Float));
-		text = 'FPS: $currentFPS'
-			+ '\nHeap:    ${fmt(memoryMegas)}'
-			+ '\nSys RAM: $sysRamDisplay'
-			+ '\nVRAM:   ${vram >= 0 ? fmt(vram) : "N/A"}'
-			+ '\nCPU:     ${cpu  >= 0 ? '${Math.round(cpu)}%' : "N/A"}';
+		vramReadings.push(currentVRAMUsage);
+		if (vramReadings.length > maxMemoryReadings)
+			vramReadings.shift();
+
+		var totalVRAM:Float = 0;
+		for (reading in vramReadings)
+			totalVRAM += reading;
+		smoothVRAM = totalVRAM / vramReadings.length;
+
+		availableSystemMemory = MemoryUtil.getAvailableSystemMemory();
+		lastMemoryUpdate = currentTime;
+
+		if (currentMem > peakMemory)
+			peakMemory = currentMem;
 			
-		var color = FlxColor.interpolate(0xFFFD0000, 0xFFFFFFFF, FlxMath.bound(currentFPS, 0, 75) / 75);
-		textColor = color;
-		/*
-		if (currentFPS < FlxG.drawFramerate * 0.5) Fuck this i got something cooler
-			textColor = 0xFFFF0000;
-		*/ 
+		if (currentVRAMUsage > peakVRAM)
+			peakVRAM = currentVRAMUsage;
 	}
 
-	inline function get_memoryMegas():Float
+	private function updateStats():Void
 	{
-		#if cpp
-		return Gc.memInfo64(Gc.MEM_INFO_USAGE);
-		#else
-		return cast(cast(System.totalMemory, UInt), Float);
-		#end
-	}
+		if (currentFPS < minFPS && currentFPS > 0) minFPS = currentFPS;
+		if (currentFPS > maxFPS) maxFPS = currentFPS;
 
-	static inline function fmt(bytes:Float):String
-		return flixel.util.FlxStringUtil.formatBytes(bytes);
+		fpsSamples++;
+		totalFPS += currentFPS;
+		avgFPS = totalFPS / fpsSamples;
 
-	static function queryCPU():Float
-	{
-		#if windows
-		try
-		{
-			var ps = "(Get-CimInstance Win32_Processor | Measure-Object -Property LoadPercentage -Average).Average";
-			var proc = new sys.io.Process('powershell', ['-NoProfile', '-NonInteractive', '-Command', ps]);
-			var out  = proc.stdout.readAll().toString().trim();
-			proc.close();
-			var v = Std.parseFloat(out);
-			if (!Math.isNaN(v) && v >= 0) return v;
-		}
-		catch (_) {}
-		try
-		{
-			var proc = new sys.io.Process('wmic', ['cpu', 'get', 'loadpercentage', '/value']);
-			var out  = proc.stdout.readAll().toString().trim();
-			proc.close();
-			var r = ~/LoadPercentage=(\d+)/i;
-			if (r.match(out)) return Std.parseFloat(r.matched(1));
-		}
-		catch (_) {}
-		// #elseif linux
-		// try
+		// if (!ClientPrefs.data.uncappedFPS)
 		// {
-		// 	var proc = new sys.io.Process('sh', ['-c',
-		// 		"grep 'cpu ' /proc/stat | awk '{u=$2+$4; t=$2+$3+$4+$5; if(NR==1){u1=u;t1=t} else print (u-u1)*100/(t-t1)}'  /proc/stat /proc/stat"]);
-		// 	var out  = proc.stdout.readAll().toString().trim();
-		// 	proc.close();
-		// 	var v = Std.parseFloat(out);
-		// 	return Math.isNaN(v) ? -1 : v;
+		// 	var targetFPS = ClientPrefs.data.vsync ? getDisplayRefreshRate() : ClientPrefs.data.framerate;
+		// 	if (currentFPS < targetFPS * 0.8)
+		// 		lowFPSFrames++;
 		// }
-		// catch (_) {}
-		// #elseif mac
-		// try
-		// {
-		// 	var proc = new sys.io.Process('sh', ['-c',
-		// 		"ps -A -o %cpu | awk '{s+=$1} END {print s}'"]);
-		// 	var out  = proc.stdout.readAll().toString().trim();
-		// 	proc.close();
-		// 	var v = Std.parseFloat(out);
-		// 	return Math.isNaN(v) ? -1 : v;
-		// }
-		// catch (_) {}
-		#end
-		return -1;
+
+		totalFrames++;
+
+		var fpsScore:Float;
+		if (ClientPrefs.data.uncappedFPS)
+		{
+			fpsScore = Math.min(currentFPS / 120.0 * 60.0, 60.0);
+		}
+		else
+		{
+			var targetFPS = /*ClientPrefs.data.vsync ? getDisplayRefreshRate() :*/ ClientPrefs.data.framerate;
+			fpsScore = (currentFPS / targetFPS) * 60;
+			fpsScore = Math.min(fpsScore, 60);
+		}
+
+		final memoryRatio = Math.min(smoothMemory / 2e9, 1.0);
+		final memoryScore = 40 * (1 - memoryRatio);
+
+		var stabilityFactor = 0;
+
+		if (!ClientPrefs.data.uncappedFPS && stabilityIssues > 10)
+			stabilityFactor = -20;
+		else if (!ClientPrefs.data.uncappedFPS && stabilityIssues > 5)
+			stabilityFactor = -10;
+		else if (!ClientPrefs.data.uncappedFPS && stabilityIssues > 2)
+			stabilityFactor = -5;
+
+		performanceScore = fpsScore + memoryScore + stabilityFactor;
+		performanceScore = Math.max(0, Math.min(100, performanceScore));
+
+		final now = Timer.stamp();
+		if (now - lastStatReset > 30)
+			resetStats();
 	}
 
-	static function queryVRAM():Float
+	private function resetStats():Void
 	{
-		#if windows
-		// Fallback: query used GPU memory via nvidia-smi (NVIDIA only)
-		try
-		{
-			var proc = new sys.io.Process('nvidia-smi',
-				['--query-gpu=memory.used', '--format=csv,noheader,nounits']);
-			var out = proc.stdout.readAll().toString().trim();
-			proc.close();
-			var v = Std.parseFloat(out);
-			if (!Math.isNaN(v) && v > 0) return v * 1024 * 1024;
-		}
-		catch (_) {}
-
-		// Fallback 2: DXGI via PowerShell (returns used VRAM, works on all DX12 GPUs)
-		try
-		{
-			var ps = "(Get-Counter '\\GPU Adapter Memory(*)\\Dedicated Usage' -ErrorAction SilentlyContinue).CounterSamples | Measure-Object -Property CookedValue -Sum | Select-Object -ExpandProperty Sum";
-			var proc = new sys.io.Process('powershell', ['-NoProfile', '-NonInteractive', '-Command', ps]);
-			var out  = proc.stdout.readAll().toString().trim();
-			proc.close();
-			var v = Std.parseFloat(out);
-			if (!Math.isNaN(v) && v > 0) return v;
-		}
-		catch (_) {}
-		#end
-		return -1;
+		minFPS = 9999;
+		maxFPS = 0;
+		avgFPS = 0;
+		fpsSamples = 0;
+		totalFPS = 0;
+		lowFPSFrames = 0;
+		totalFrames = 0;
+		performanceScore = 100;
+		stabilityIssues = 0;
+		lastStatReset = Timer.stamp();
 	}
 
-	static function querySystemRAM():Float
+	private function updateGraphs():Void
 	{
-		#if windows
+		graphHistory.push(currentFPS);
+		if (graphHistory.length > maxGraphPoints)
+			graphHistory.shift();
+
+		graphDirty = true;
+	}
+
+	private function updateFrameTiming(deltaTime:Float):Void
+	{
+		final frameTime = deltaTime * 1000;
+		frameTimes.push(frameTime);
+
+		if (frameTimes.length > maxFrameTimeHistory)
+			frameTimes.shift();
+
+		if (frameTimes.length >= 3)
+		{
+			final lastFrame = frameTimes[frameTimes.length - 1];
+			final prevFrame = frameTimes[frameTimes.length - 2];
+			if (lastFrame > prevFrame * 2.0 && lastFrame > 33.0)
+				stabilityIssues++;
+		}
+	}
+
+	private function updateLogging(currentTime:Float):Void
+	{
+		if (currentTime - logTimer > logInterval)
+		{
+			logData();
+			logTimer = currentTime;
+		}
+	}
+
+	private function buildOutputString():String
+	{
+		var fpsText:String = null;
+
+		if (ClientPrefs.data.uncappedFPS)
+		{
+			fpsText = 'FPS: $currentFPS';
+		}
+		else
+		{
+			var targetFPS = /*ClientPrefs.data.vsync ? getDisplayRefreshRate() :*/ ClientPrefs.data.framerate;
+			fpsText = 'FPS: $currentFPS / $targetFPS';
+		}
+
+		var output = fpsText;
+
+		var memoryText = "RAM: " + getSizeLabel(smoothMemory);
+		if (availableSystemMemory > 0)
+			memoryText += " / " + getSizeLabel(availableSystemMemory);
+
+		output += "\n" + memoryText;
+			
+		if (smoothVRAM > 0) {
+			output += "\nVRAM: " + getSizeLabel(smoothVRAM);
+			output += '\nRAM Peak: ${getSizeLabel(peakMemory)} | VRAM Peak: ${getSizeLabel(peakVRAM)}';
+		} else {
+			output += '\nRAM Peak: ${getSizeLabel(peakMemory)}';
+		}
+
+		var performanceGrade = getPerformanceGrade();
+		output += '\nPerformance: ${Math.round(performanceScore)}% (${performanceGrade})';
+
+		if (showDebugInfo)
+		{
+			output += "\n\n--- DETAILS ---";
+			output += "\nMin/Max/Avg: " + minFPS + "/" + maxFPS + "/" + Math.round(avgFPS);
+			//output += "\nVSync: " + (ClientPrefs.data.vsync ? "ON" : "OFF");
+
+			#if (openfl >= "9.4.0")
+			output += "\nGC RAM: " + flixel.util.FlxStringUtil.formatBytes(System.totalMemoryNumber);
+			#else
+			output += "\nGC RAM: " + flixel.util.FlxStringUtil.formatBytes(System.totalMemory);
+			#end
+
+			if (frameTimes.length > 0)
+			{
+				var frameStats = getFrameTimingStats();
+				output += "\nFrame: " + frameStats.avg + "ms (min: " + frameStats.min + "ms, max: " + frameStats.max + "ms)";
+			}
+
+			if (!ClientPrefs.data.uncappedFPS)
+				output += "\nStability: " + Math.round(calculateFPSStability() * 100) + "%";
+
+			output += "\nProblem frames: " + stabilityIssues;
+		}
+
+		return output;
+	}
+
+	private function getPerformanceGrade():String
+	{
+		if (performanceScore >= 90) return "Excellent";
+		if (performanceScore >= 75) return "Good";
+		if (performanceScore >= 60) return "Normal";
+		if (performanceScore >= 40) return "Poor";
+		return "Very poor";
+	}
+
+	private function getFrameTimingStats():{avg:Float, min:Float, max:Float}
+	{
+		var avg:Float = 0;
+		var min:Float = 1000;
+		var max:Float = 0;
+
+		for (time in frameTimes)
+		{
+			avg += time;
+			if (time < min) min = time;
+			if (time > max) max = time;
+		}
+
+		avg /= frameTimes.length;
+
+		return {
+			avg: Math.round(avg * 100) / 100,
+			min: Math.round(min * 100) / 100,
+			max: Math.round(max * 100) / 100
+		};
+	}
+
+	private static function getDisplayRefreshRate():Int
+	{
+		final window = Lib.application.window;
+		if (window?.display?.currentMode != null)
+			return window.display.currentMode.refreshRate;
+		return 60;
+	}
+
+	private function getSizeLabel(num:Float):String
+	{
+		var size:Float = num;
+		var data = 0;
+
+		while (size > 1024 && data < dataTexts.length - 1)
+		{
+			data++;
+			size /= 1024;
+		}
+
+		size = Math.round(size * 100) / 100;
+		if (data <= 2)
+			size = Math.round(size);
+
+		return size + " " + dataTexts[data];
+	}
+
+	private function updateText(content:String):Void
+	{
+		textFormat.font = fontCustom;
+		textFormat.size = fontSize;
+		textFormat.color = fillColor;
+
+		shadowFormat.font = fontCustom;
+		shadowFormat.size = fontSize;
+		shadowFormat.color = strokeColor;
+
+		textField.defaultTextFormat = textFormat;
+		shadowField.defaultTextFormat = shadowFormat;
+
+		textField.text = content;
+		shadowField.text = content;
+
+		textField.textColor = fillColor;
+		shadowField.textColor = strokeColor;
+
+		shadowField.x = strokeSize;
+		shadowField.y = strokeSize;
+		textField.x = 0;
+		textField.y = 0;
+
+		if (showDebugInfo)
+		{
+			graphBitmap.visible = true;
+
+			if (graphDirty)
+			{
+				graphBMD.fillRect(graphBMD.rect, 0x00000000);
+				drawGraph(graphBMD, 0, 0);
+				graphBitmap.bitmapData = graphBMD;
+				graphDirty = false;
+			}
+
+			var textBottom = Math.ceil(Math.max(textField.height, shadowField.height));
+			graphBitmap.x = 0;
+			graphBitmap.y = textBottom + 5;
+		}
+		else
+		{
+			graphBitmap.visible = false;
+		}
+	}
+
+	private function drawGraph(bmd:BitmapData, x:Int, y:Int):Void
+	{
+		if (graphHistory.length < 2) return;
+
+		final graphX = x;
+		final graphY = y;
+
+		bmd.fillRect(new Rectangle(graphX, graphY, graphWidth, graphHeight), 0x88000000);
+
+		for (i in 0...5)
+		{
+			var lineY = graphY + Std.int(graphHeight * i / 4);
+			bmd.fillRect(new Rectangle(graphX, lineY, graphWidth, 1), 0x33FFFFFF);
+		}
+
+		for (i in 0...6)
+		{
+			var lineX = graphX + Std.int(graphWidth * i / 5);
+			bmd.fillRect(new Rectangle(lineX, graphY, 1, graphHeight), 0x33FFFFFF);
+		}
+
+		var maxValue = Math.max(ClientPrefs.data.framerate, Math.max(currentFPS, getArrayMax(graphHistory)));
+		if (maxValue < 1) maxValue = 1;
+
+		if (!ClientPrefs.data.uncappedFPS)
+		{
+			var targetY = graphY + graphHeight - Std.int((ClientPrefs.data.framerate / maxValue) * graphHeight);
+			bmd.fillRect(new Rectangle(graphX, targetY - 1, graphWidth, 3), 0xAA00FF00);
+		}
+
+		var points:Array<{x:Int, y:Int}> = [];
+		var segmentCount = Std.int(Math.min(graphHistory.length, graphWidth));
+
+		for (i in 0...segmentCount)
+		{
+			var historyIndex = graphHistory.length - segmentCount + i;
+			if (historyIndex < 0) continue;
+
+			var xPos = graphX + Std.int((i / segmentCount) * graphWidth);
+			var yPos = graphY + graphHeight - Std.int((graphHistory[historyIndex] / maxValue) * graphHeight);
+
+			yPos = Std.int(Math.max(graphY + 1, Math.min(graphY + graphHeight - 2, yPos)));
+			xPos = Std.int(Math.max(graphX + 1, Math.min(graphX + graphWidth - 2, xPos)));
+
+			points.push({x: xPos, y: yPos});
+		}
+
+		if (points.length >= 2)
+		{
+			for (i in 1...points.length)
+			{
+				var prev = points[i - 1];
+				var curr = points[i];
+				drawSmoothLine(bmd, prev.x, prev.y, curr.x, curr.y, fillColor, 2);
+			}
+
+			var lastPoint = points[points.length - 1];
+			bmd.fillRect(new Rectangle(lastPoint.x - 2, lastPoint.y - 2, 5, 5), 0xFFFFFF00);
+		}
+
+		bmd.fillRect(new Rectangle(graphX, graphY, graphWidth, 1), 0x99FFFFFF);
+		bmd.fillRect(new Rectangle(graphX, graphY + graphHeight - 1, graphWidth, 1), 0x99FFFFFF);
+		bmd.fillRect(new Rectangle(graphX, graphY, 1, graphHeight), 0x99FFFFFF);
+		bmd.fillRect(new Rectangle(graphX + graphWidth - 1, graphY, 1, graphHeight), 0x99FFFFFF);
+	}
+
+	private function drawSmoothLine(bmd:BitmapData, x1:Int, y1:Int, x2:Int, y2:Int, color:Int, thickness:Int = 1):Void
+	{
+		final dx = Math.abs(x2 - x1);
+		final dy = Math.abs(y2 - y1);
+		final sx = (x1 < x2) ? 1 : -1;
+		final sy = (y1 < y2) ? 1 : -1;
+
+		var err = dx - dy;
+		var x = x1;
+		var y = y1;
+
+		final maxPoints = Math.max(dx, dy);
+
+		var pointsDrawn = 0;
+		while (pointsDrawn < maxPoints && pointsDrawn < 100)
+		{
+			bmd.fillRect(new Rectangle(x - thickness, y - thickness, thickness * 2, thickness * 2), color);
+
+			if (x == x2 && y == y2) break;
+
+			final e2 = 2 * err;
+			if (e2 > -dy)
+			{
+				err -= dy;
+				x += sx;
+			}
+			if (e2 < dx)
+			{
+				err += dx;
+				y += sy;
+			}
+
+			pointsDrawn++;
+		}
+	}
+
+	private function getArrayMax(arr:Array<Float>):Float
+	{
+		var max = arr[0];
+		for (i in 1...arr.length)
+			if (arr[i] > max) max = arr[i];
+		return max;
+	}
+
+	private function initLogFile():Void
+	{
+		#if sys
 		try
 		{
-			var pid = Std.string(Sys.getEnv("PPID") != null ? Sys.getEnv("PPID") : -1);
-			var exeName = haxe.io.Path.withoutDirectory(Sys.programPath());
-			var ps = "(Get-Process -Name '" + haxe.io.Path.withoutExtension(exeName) + "' -ErrorAction SilentlyContinue | Select-Object -First 1).WorkingSet64";
-			var proc = new sys.io.Process('powershell', ['-NoProfile', '-NonInteractive', '-Command', ps]);
-			var out  = proc.stdout.readAll().toString().trim();
-			proc.close();
-			var v = Std.parseFloat(out);
-			if (!Math.isNaN(v) && v > 0) return v;
+			var header = "Timestamp,FPS,Memory,PeakMemory,AvailableMemory,VSync,TargetFPS,PerformanceScore\n";
+			File.saveContent(logFile, header);
 		}
-		catch (_) {}
-		try
+		catch (e:Dynamic)
 		{
-			var proc = new sys.io.Process('wmic', ['process', 'where',
-				'name="' + haxe.io.Path.withoutDirectory(Sys.programPath()) + '"',
-				'get', 'WorkingSetSize', '/value']);
-			var out  = proc.stdout.readAll().toString().trim();
-			proc.close();
-			var r = ~/WorkingSetSize=(\d+)/i;
-			if (r.match(out)) return Std.parseFloat(r.matched(1));
+			trace("Failed to create log file: " + e);
 		}
-		catch (_) {}
-		#elseif linux
-		try
-		{
-			var content = sys.io.File.getContent('/proc/self/status');
-			var r = ~/VmRSS:\s+(\d+)/;
-			if (r.match(content)) return Std.parseFloat(r.matched(1)) * 1024;
-		}
-		catch (_) {}
-		// #elseif mac
-		// try
-		// {
-		// 	var proc = new sys.io.Process('sh', ['-c',
-		// 		"ps -o rss= -p " + Sys.getEnv("_")]);
-		// 	var out  = proc.stdout.readAll().toString().trim();
-		// 	proc.close();
-		// 	return Std.parseFloat(out) * 1024;
-		// }
-		// catch (_) {}
 		#end
-		return -1;
+	}
+
+	private function logData():Void
+	{
+		#if sys
+		try
+		{
+			final timestamp = Date.now().toString();
+			final logLine = timestamp + "," + currentFPS + "," + smoothMemory + "," + peakMemory + "," +
+				availableSystemMemory + /*"," + (ClientPrefs.data.vsync ? "ON" : "OFF") +*/ "," +
+				(/*ClientPrefs.data.vsync ? getDisplayRefreshRate() :*/ ClientPrefs.data.framerate) + "," +
+				performanceScore + "\n";
+
+			File.saveContent(logFile, File.getContent(logFile) + logLine);
+		}
+		catch (e:Dynamic)
+		{
+			trace("Failed to write log: " + e);
+		}
+		#end
+	}
+
+	public inline function positionFPS(X:Float, Y:Float, ?scale:Float = 1):Void
+	{
+		scaleX = scaleY = #if android (scale > 1 ? scale : 1) #else (scale < 1 ? scale : 1) #end;
+		x = FlxG.game.x + X;
+		y = FlxG.game.y + Y;
+	}
+
+	public function toggleDebugInfo():Void
+	{
+		showDebugInfo = !showDebugInfo;
+		graphDirty = true;
+		lastOutput = "";
+	}
+
+	public function resetDebugInfo():Void
+	{
+		resetStats();
+		graphHistory = [];
+		frameTimes = [];
+		memoryReadings = [];
+		vramReadings = [];
+		for (i in 0...maxMemoryReadings)
+		{
+			memoryReadings.push(0);
+			vramReadings.push(0);
+		}
+
+		peakMemory = 0;
+		graphDirty = true;
+		lastOutput = "";
+		lastFPS = -1;
+		lastMemBucket = -1;
+	}
+
+	public function setLogging(enabled:Bool):Void
+	{
+		logEnabled = enabled;
+		if (logEnabled)
+			initLogFile();
+	}
+
+	public function destroy():Void
+	{
+		removeEventListener(Event.ENTER_FRAME, onEnterFrame);
+		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+
+		if (graphBitmap != null)
+		{
+			if (contains(graphBitmap))
+				removeChild(graphBitmap);
+
+			graphBitmap.bitmapData = null;
+			graphBitmap = null;
+		}
+
+		if (graphBMD != null)
+		{
+			graphBMD.dispose();
+			graphBMD = null;
+		}
+
+		if (textField != null)
+		{
+			if (contains(textField))
+				removeChild(textField);
+
+			textField = null;
+		}
+
+		if (shadowField != null)
+		{
+			if (contains(shadowField))
+				removeChild(shadowField);
+			
+			shadowField = null;
+		}
 	}
 }

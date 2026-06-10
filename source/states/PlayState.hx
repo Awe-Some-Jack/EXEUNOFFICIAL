@@ -280,11 +280,15 @@ class PlayState extends MusicBeatState
 	public var startCallback:Void->Void = null;
 	public var endCallback:Void->Void = null;
 
+	public static var _wasFullscreen:Bool = false;
+
 	private static var _lastLoadedModDirectory:String = '';
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
 		_lastLoadedModDirectory = Mods.currentModDirectory;
+
+		_wasFullscreen = FlxG.fullscreen;
 
 		startCallback = startCountdown;
 		endCallback = endSong;

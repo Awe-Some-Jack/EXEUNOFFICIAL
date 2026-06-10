@@ -165,8 +165,21 @@
 		<haxedef name="HXCPP_GC_BIG_BLOCKS" />
 		<haxedef name="HXCPP_GC_DYNAMIC_SIZE" />
 	</section>
+
+	<!--Analyzer Optimization-->
+	<haxedef name="analyzer-optimize" unless="HSCRIPT_ALLOWED || LUA_ALLOWED"/>
+
+	<!-- Disable Dead Code Elimination, because it breaks some stuff for scripting -->
+	<haxeflag name="-dce" value="no" if="HSCRIPT_ALLOWED || LUA_ALLOWED"/>
 	
-	<!--Disable deprecated warnings-->
+	<!--Code Cleanup and Full Compile of Classes-->
+	<haxeflag name="--macro" value="allowPackage('flash')" />
+	<haxeflag name="--macro" value="include('hxvlc')" if="VIDEOS_ALLOWED"/>
+
+	<haxeflag name="--macro" value="include('flixel.effects',true)"/>
+	<haxeflag name="--macro" value="include('flixel.system.scaleModes',true)"/>
+	<haxeflag name="--macro" value="include('away3d.*',true)" if="away3d"/>
+
 	<haxedef name='no-deprecation-warnings' />
 
 	<haxedef name="openfl_dpi_aware" unless="web" />
@@ -177,10 +190,6 @@
 	<!-- Haxe 4.3.0+: Enable pretty syntax errors and stuff. -->
 	<!-- pretty (haxeflixel default), indent, classic (haxe compiler default) -->
 	<haxedef name="message.reporting" value="pretty" />
-
-	<!--Macro fixes-->
-	<haxeflag name="--macro" value="allowPackage('flash')" />
-	<haxeflag name="--macro" value="include('my.pack')" />
 
 	<haxedef name="hscriptPos" if="HSCRIPT_ALLOWED" />
 

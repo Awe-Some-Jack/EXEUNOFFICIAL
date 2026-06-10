@@ -1675,9 +1675,6 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		super.update(elapsed);
-		if (subState != null) return;
-
 		#if (!js && !html5)
 		if (ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null)
 		{
@@ -1720,6 +1717,8 @@ class PlayState extends MusicBeatState
 
 		_updateArgs[0] = elapsed;
 		callOnScripts('onUpdate', _updateArgs);
+
+		super.update(elapsed);
 
 		setOnScripts('curDecStep', curDecStep);
 		setOnScripts('curDecBeat', curDecBeat);

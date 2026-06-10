@@ -280,7 +280,65 @@ class PlayState extends MusicBeatState
 	public var startCallback:Void->Void = null;
 	public var endCallback:Void->Void = null;
 
-	public static var _wasFullscreen:Bool = false;
+	public static var isFixedAspectRatio(default, set):Bool = false;
+
+	static var _originalWidth:Int = FlxG.width;
+	static var _originalHeight:Int = FlxG.height;
+	static var _wasFullscreen:Bool = false;
+
+	static var prevWindowTitle = null;
+
+	static function set_isFixedAspectRatio(value:Bool):Bool
+	{
+		if (isFixedAspectRatio == value) return value;
+		
+		isFixedAspectRatio = value;
+		
+		if (value) {
+			_originalWidth = FlxG.width;
+			_originalHeight = FlxG.height;
+			_wasFullscreen = FlxG.fullscreen;
+			
+			final screen = FlxG.stage.window.display;
+			var screenWidth = screen.bounds.width;
+			var screenHeight = screen.bounds.height;
+			
+			FlxG.fullscreen = false;
+			FlxG.stage.window.resizable = false;
+			
+			FlxG.scaleMode = new flixel.system.scaleModes.StageSizeScaleMode();
+
+			for (cam in FlxG.cameras.list)
+				cam.setSize(960, 720);
+			FlxG.resizeGame(960, 720);
+			FlxG.resizeWindow(960, 720);
+			
+			var winX = Std.int((screenWidth - 960) / 2);
+			var winY = Std.int((screenHeight - 720) / 2);
+			FlxG.stage.window.move(winX, winY);
+		} else {
+			FlxG.stage.window.resizable = true;
+
+			final screen = FlxG.stage.window.display;
+			var screenWidth = screen.bounds.width;
+			var screenHeight = screen.bounds.height;
+			
+			FlxG.scaleMode = new flixel.system.scaleModes.BaseScaleMode();
+
+			for (cam in FlxG.cameras.list)
+				cam.setSize(_originalWidth, _originalHeight);
+			FlxG.resizeGame(_originalWidth, _originalHeight);
+			FlxG.resizeWindow(_originalWidth, _originalHeight);
+			
+			var winX = Std.int((screenWidth - _originalWidth) / 2);
+			var winY = Std.int((screenHeight - _originalHeight) / 2);
+			FlxG.stage.window.move(winX, winY);
+			
+			FlxG.fullscreen = _wasFullscreen;
+		}
+		
+		return value;
+	}
 
 	private static var _lastLoadedModDirectory:String = '';
 	override public function create()
@@ -288,7 +346,7 @@ class PlayState extends MusicBeatState
 		//trace('Playback Rate: ' + playbackRate);
 		_lastLoadedModDirectory = Mods.currentModDirectory;
 
-		_wasFullscreen = FlxG.fullscreen;
+		prevWindowTitle = FlxG.stage.window.title;
 
 		startCallback = startCountdown;
 		endCallback = endSong;
@@ -1679,6 +1737,11 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
+		if (isFixedAspectRatio)
+		{
+			FlxG.fullscreen = false;
+		}
+		
 		#if (!js && !html5)
 		if (ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null)
 		{
@@ -3338,7 +3401,7 @@ class PlayState extends MusicBeatState
 			resetSubState();
 		}
 
-		FlxG.stage.window.title = "Friday Night Funkin': Vs Sonic.EXE";
+		FlxG.stage.window.title = prevWindowTitle;
 
 		#if LUA_ALLOWED
 		for (lua in luaArray)
@@ -3370,7 +3433,7 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (gameplayCam != null) gameplayCam.destroy();
+		gameplayCam?.destroy();
 
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);

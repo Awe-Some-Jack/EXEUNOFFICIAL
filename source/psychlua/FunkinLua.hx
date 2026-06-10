@@ -525,7 +525,7 @@ class FunkinLua
 			var charType = switch (type.toLowerCase()) { case 'dad': 1; case 'gf' | 'girlfriend': 2; default: 0; };
 			game.addCharacterToList(name, charType);
 		});
-		Lua_helper.add_callback(lua, 'precacheImage', (name:String, allowGPU:Bool = true) -> Paths.image(name, allowGPU));
+		Lua_helper.add_callback(lua, 'precacheImage', (name:String, parentFolder:String = null, allowGPU:Bool = true) -> Paths.image(name, parentFolder, allowGPU));
 		Lua_helper.add_callback(lua, 'precacheSound', (name:String) -> Paths.sound(name));
 		Lua_helper.add_callback(lua, 'precacheMusic', (name:String) -> Paths.music(name));
 

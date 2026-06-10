@@ -6,6 +6,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxStringUtil;
 
+import psychlua.LuaUtils as LuaUtils;
 import flixel.util.FlxTimer;
 import flixel.FlxSprite;
 import openfl.display.BitmapData;
@@ -20,7 +21,12 @@ var wallpaper:FlxSprite;
 var lockscreen:FlxSprite;
 var adobe1:FlxSprite;
 var adobe2:FlxSprite;
+var error:FlxSprite;
+var cracker:FlxSprite;
+var black:FlxSprite;
+var cursorLoad:FlxSprite;
 var ribbons:VideoSprite;
+var intro:VideoSprite;
 var matrix:FlxBackdrop;
 var speedLines:FlxBackdrop;
 
@@ -30,7 +36,13 @@ var tweenBFX:FlxTween;
 var tweenBFY:FlxTween;
 var tweenDADX:FlxTween;
 var tweenDADY:FlxTween;
+var tweenHUDX:FlxTween;
+var tweenHUDY:FlxTween;
+
 var mustHitSection:Bool = false;
+final debugMode = false;
+var alreadyPlayed:Bool = false;
+var alreadyPlayed2:Bool = false;
 
 var bubbleArray:Array<FlxSprite> = [];
 var hues:Array<Float> = [];
@@ -38,48 +50,11 @@ var hues:Array<Float> = [];
 var xOfs:Int = 0;
 var yOfs:Int = 0;
 var positionsArray:Array<Float> = [];
+var luaObjects:Array<String> = ['hbBG', 'iconOpp', 'iconBF', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG', 'exeScoreTxt'];
 var bubbleCount:Int = 0;
 
-// start zoom: 0.2755
-// start cams:
-    // "BFx": 3635,
-    // "BFy": 2048,
-
-    // "DADx": 3635,
-    // "DADy": 2048,
-// start positions:
-	// "boyfriend": [3578, 1700],
-	// "girlfriend": [0, 0],
-	// "opponent": [2075, 2030],
-
-// fullscreen zoom: 0.325
-// fullscreen cams:
-    // "BFx": 3635,
-    // "BFy": 2098,
-
-    // "DADx": 3635,
-    // "DADy": 2098,
-// fullscreen positions:
-	// "boyfriend": [3529, 1735],
-	// "girlfriend": [0, 0],
-	// "opponent": [2020, 2066],
-
-// freecam zoom: .6
-// freecam cams:
-    // "BFx": 3335,
-    // "BFy": 2098,
-
-    // "DADx": 2965,
-    // "DADy": 2098,
-
-    // ofs 25
-
-// bluescreen zoom: 1
-// bluescreen cams:
-
-// bluescreen positions:
-    // BF: 2995, 1710
-    // dad: 2995, 1820
+// todo:
+// gameover
 
 function onCreate() {
     wallpaper = new FlxSprite(0, 0, Paths.image('bg/desktop', 'SOINK'));
@@ -100,7 +75,6 @@ function onCreate() {
     adobe1.updateHitbox();
     adobe1.x = 1771;
     adobe1.y = 1067;
-    // adobe1.alpha = 0.00001;
     addBehindDad(adobe1);
 
     adobe2 = new FlxSprite(0, 0, Paths.image('bg/adobe2', 'SOINK'));
@@ -141,18 +115,59 @@ function onCreate() {
     matrix.antialiasing = false;
     matrix.scrollFactor.set(0.2, 0.2);
     matrix.alpha = 0.00001;
-    // matrix.velocity.set(0, 550);
     addBehindDad(matrix);
+
+    intro = new VideoSprite(0, 0);
+    intro.loadVideo(Paths.video('startup', 'SOINK'), true);
+    intro.cameras = [camOther];
+    intro.pause();
+    intro.alpha = 1;
+    add(intro);
+
+    cracker = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+    cracker.alpha = 0.00001;
+    cracker.scale.set(2, 2);
+    cracker.screenCenter();
+    cracker.scrollFactor.set();
+    cracker.blend = LuaUtils.blendModeFromString('add');
+    cracker.cameras = [camVideo];
+    add(cracker);
+
+    black = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+    black.alpha = 1;
+    black.scale.set(2, 2);
+    black.screenCenter();
+    black.scrollFactor.set();
+    black.cameras = [camVideo];
+    add(black);
+
+    error = new FlxSprite(0, 0, Paths.image('bg/fatal-error', 'SOINK'));
+    error.scale.set(0, 0);
+    error.updateHitbox();
+    error.cameras = [camOther];
+    error.screenCenter();
+    error.antialiasing = false;
+    add(error);
+
+    cursorLoad = new FlxSprite(300, 400);
+    cursorLoad.frames = Paths.getSparrowAtlas('bg/load', 'SOINK');
+    cursorLoad.animation.addByPrefix('idle', 'idle', 24);
+    cursorLoad.animation.play('idle',true);
+    cursorLoad.scale.set(0.8, 0.8);
+    cursorLoad.cameras = [camOther];
+    cursorLoad.alpha = 0.00001;
+
+    add(cursorLoad);
 
     trace("Stage created");
 }
 
 function onCreatePost() {
-    for (objs in [boyfriend.x, boyfriend.y, dad.x, dad.y, adobe1.x, adobe1.y]) {
+    for(objs in [boyfriend.x, boyfriend.y, dad.x, dad.y, adobe1.x, adobe1.y, camHUD.x, camHUD.y]) {
         positionsArray.push(objs);
     }
 
-    for (i in 0...32) {
+    for(i in 0...32) {
         var hue:Float = FlxG.random.float(0,360);
         hues.push(hue);
         
@@ -161,7 +176,7 @@ function onCreatePost() {
         bubble.updateHitbox();
 
         bubble.x = -10-bubble.width;
-        bubble.cameras = [camHUD];
+        bubble.cameras = [camOther];
         bubble.velocity.x = 100 + FlxG.random.float(0, 50);
         bubble.velocity.y = -(100 + FlxG.random.float(0, 50));
         bubble.elasticity = 1;
@@ -169,20 +184,39 @@ function onCreatePost() {
         bubble.active = false;
         add(bubble);
         bubbleArray.push(bubble);
-
-        speedLines = new FlxBackdrop(Paths.image('bg/speedLines'), 0x11);
-        speedLines.scale.x = 1;
-        speedLines.scale.y = 1;
-        // speedLines.antialiasing = false;
-        speedLines.velocity.y = -1475;
-        speedLines.scrollFactor.set(.2, .2);
-        speedLines.cameras = [camGame];
-        speedLines.alpha = 0.00001;
-        add(speedLines);
     }
+
+    speedLines = new FlxBackdrop(Paths.image('bg/speedLines'), 0x11);
+    speedLines.scale.x = 1;
+    speedLines.scale.y = 1;
+    speedLines.velocity.y = -1475;
+    speedLines.scrollFactor.set(.2, .2);
+    speedLines.cameras = [camGame];
+    speedLines.alpha = 0.00001;
+    add(speedLines);
+
+    camHUD.alpha = 0.00001;
+}
+
+function onSongStart() {
+    intro.play();
+    alreadyPlayed = true;
+    intro.width = FlxG.width;
+}
+
+function onPause() {
+    intro.pause();
+    ribbons.pause();
+}
+
+function onResume() {
+    if(alreadyPlayed) intro.play();
+    if(alreadyPlayed2) ribbons.play();
 }
 
 function onUpdate(elapsed:Float) {
+    // formatting 🗣️🗣️🗣️
+    if(!debugMode) FlxG.fullscreen = true;
     for(i in 0...bubbleArray.length) {
         if(bubbleArray[i].active) {
             var b1 = bubbleArray[i];
@@ -305,6 +339,8 @@ function onUpdate(elapsed:Float) {
         if(tweenBFY != null) tweenBFY.cancel();
         if(tweenDADX != null) tweenDADX.cancel();
         if(tweenDADY != null) tweenDADY.cancel();
+        if(tweenHUDX != null) tweenHUDX.cancel();
+        if(tweenHUDY != null) tweenHUDY.cancel();
         
         currentAnim = mustHitSection ? boyfriend.getAnimationName() : dad.getAnimationName();
             
@@ -331,6 +367,8 @@ function onUpdate(elapsed:Float) {
         tweenBFY = FlxTween.tween(boyfriend, {y: positionsArray[1]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
         tweenDADX = FlxTween.tween(dad, {x: positionsArray[2]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
         tweenDADY = FlxTween.tween(dad, {y: positionsArray[3]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
+        tweenHUDX = FlxTween.tween(camHUD, {x: positionsArray[6]+xOfs/4}, 0.3, {ease: FlxEase.smoothStepOut});
+        tweenHUDY = FlxTween.tween(camHUD, {y: positionsArray[7]+yOfs/4}, 0.3, {ease: FlxEase.smoothStepOut});
     }
 
     if(curStep >= 1536 && curStep < 1792) camBack.zoom = camGame.zoom;
@@ -338,6 +376,11 @@ function onUpdate(elapsed:Float) {
     if(curStep >= 1792) {
         matrix.animation.curAnim.frameRate += elapsed;
         speedLines.velocity.y -= elapsed;
+    }
+
+    if(curStep > 1792) {
+        if(curStep < 2096) camHUD.y = Math.sin((Conductor.songPosition / 1000) * (Conductor.bpm / 60) * 1.0) * 15;
+	    camHUD.angle = Math.sin((Conductor.songPosition / 1200) * (Conductor.bpm / 60) * -1.0) * 1.2;
     }
 }
 
@@ -348,10 +391,16 @@ function onStepHit() {
         bubbleArray[bubbleCount].velocity.y = -(100 + FlxG.random.float(0, 500));
         bubbleCount+=1;
     }
-    
+
     switch(curStep) {
-        case 152:
-            // triggerFreezeEffect(0.2);
+        case 128:
+            camHUD.alpha = 1;
+            black.alpha = 0;
+            crackerFlash(1.4, 1);
+            if(intro != null) intro.alpha = 0;
+
+        case 192:
+            crackerFlash(2.1, 1);
 
         case 248:
             if(tweenX != null) tweenX.cancel();
@@ -360,23 +409,26 @@ function onStepHit() {
             if(tweenBFY != null) tweenBFY.cancel();
             if(tweenDADX != null) tweenDADX.cancel();
             if(tweenDADY != null) tweenDADY.cancel();
+            if(tweenHUDX != null) tweenHUDX.cancel();
+            if(tweenHUDY != null) tweenHUDY.cancel();
             
             xOfs = 0;
             yOfs = 0;
 
-            tweenX = FlxTween.tween(adobe1, {x: positionsArray[4]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
-            tweenY = FlxTween.tween(adobe1, {y: positionsArray[5]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
-            tweenBFX = FlxTween.tween(boyfriend, {x: positionsArray[0]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
-            tweenBFY = FlxTween.tween(boyfriend, {y: positionsArray[1]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
-            tweenDADX = FlxTween.tween(dad, {x: positionsArray[2]+xOfs}, 0.3, {ease: FlxEase.smoothStepOut});
-            tweenDADY = FlxTween.tween(dad, {y: positionsArray[3]+yOfs}, 0.3, {ease: FlxEase.smoothStepOut});
+            tweenX = FlxTween.tween(adobe1, {x: positionsArray[4]}, 0.3, {ease: FlxEase.smoothStepOut});
+            tweenY = FlxTween.tween(adobe1, {y: positionsArray[5]}, 0.3, {ease: FlxEase.smoothStepOut});
+            tweenBFX = FlxTween.tween(boyfriend, {x: positionsArray[0]}, 0.3, {ease: FlxEase.smoothStepOut});
+            tweenBFY = FlxTween.tween(boyfriend, {y: positionsArray[1]}, 0.3, {ease: FlxEase.smoothStepOut});
+            tweenDADX = FlxTween.tween(dad, {x: positionsArray[2]}, 0.3, {ease: FlxEase.smoothStepOut});
+            tweenDADY = FlxTween.tween(dad, {y: positionsArray[3]}, 0.3, {ease: FlxEase.smoothStepOut});
+            tweenHUDX = FlxTween.tween(camHUD, {x: positionsArray[6]}, 0.3, {ease: FlxEase.smoothStepOut});
+            tweenHUDY = FlxTween.tween(camHUD, {y: positionsArray[7]}, 0.3, {ease: FlxEase.smoothStepOut});
             
-        case 252: // fullscreen
-            // wallpaper.scale.set(1.2835,1.2835);
-            // wallpaper.y = 781;
+        case 252:
             adobe2.scale.y = 1.62;
 
-        case 256: // literally right after fullscreen
+        case 256:
+            crackerFlash(2.1, 1);
             adobe1.alpha = 0;
             adobe2.alpha = 1;
             dadGroup.x = 2020;
@@ -385,12 +437,16 @@ function onStepHit() {
             boyfriendGroup.y = 1735;
             
         case 512:
-            ribbons.play();
+            crackerFlash(1.4, 0.6);
             
         case 768:
             dad.idleSuffix = '-alt';
             dad.recalculateDanceIdle();
             
+        case 796:
+            ribbons.play();
+            alreadyPlayed2 = true;
+
         case 1024:
             for(bubble in bubbleArray) {
                 FlxTween.tween(bubble, {alpha: 0}, 0.6, {ease: FlxEase.smoothStepOut, onComplete: function() {
@@ -407,12 +463,27 @@ function onStepHit() {
                 ribbons.destroy();
             }});
 
+        case 1404:
+            triggerFreezeEffect(0.31);
+            FlxTween.tween(error.scale, {x: 0.8, y: 0.8}, 0.035, {ease: FlxEase.linear});
+            FlxTween.tween(cracker, {alpha: 0.6}, 0.035, {ease: FlxEase.linear});
+            cracker.blend = LuaUtils.blendModeFromString('none');
+
         case 1408:
-            boyfriend.x = dad.x = 2995;
-            boyfriend.y = 1710;
+            cracker.alpha = 1;
+            cracker.color = 0xFF0000ad;
+            FlxTween.tween(cracker, {alpha: 0}, 0.5, {ease: FlxEase.smoothStepOut});
+            remove(error);
+            dad.x = 3035;
+            boyfriend.x = 3735;
+            boyfriend.y = 1860;
             dad.y = 1820;
             bluescreen.alpha = 1;
             adobe2.alpha = wallpaper.alpha = 0;
+
+        case 1520:
+            black.cameras = [camGame];
+            FlxTween.tween(black, {alpha: 1}, 1.39, {ease: FlxEase.smoothStepIn});
 
         case 1536:
             lockscreen.alpha = 1;
@@ -420,10 +491,48 @@ function onStepHit() {
             boyfriend.x = 3512;
             boyfriend.y = 2134;
             dad.x = 2687;
-            dad.y = 2275;
+            dad.y = 2575;
+            comboGroup.x = -500;
+            comboGroup.alpha = 0.7;
+            for(i in 0...4) {
+                opponentStrums.members[i].alpha = 0;
+                playerStrums.members[i].alpha = 0.7;
+                playerStrums.members[i].x = i == 0 ? opponentStrums.members[3].x : playerStrums.members[i-1].x + 117;
+            }
+            for(obj in luaObjects) {
+                game.getLuaObject(obj).alpha = 0;
+            }
+            black.cameras = [camHUD];
             FlxTween.tween(lockscreen, {y: -100}, 32.48, {ease: FlxEase.linear});
+            FlxTween.tween(black, {alpha: 0}, 5.6, {ease: FlxEase.smootherStepOut});
+
+        case 1632:
+            FlxTween.tween(dad, {y: 2275}, 2.8, {ease: FlxEase.smootherStepOut});
+            for(i in 0...4) {
+                FlxTween.tween(opponentStrums.members[i], {alpha: 0.7}, 2.8, {ease: FlxEase.smootherStepInOut});
+                FlxTween.tween(playerStrums.members[i], {x: 740+(117*i), angle: 360}, 2.8, {ease: FlxEase.smootherStepInOut});
+            }
+            for(obj in luaObjects) {
+                FlxTween.tween(game.getLuaObject(obj), {alpha: 1}, 2.8, {ease: FlxEase.smootherStepInOut});
+            }
+            FlxTween.tween(comboGroup, {x: 0}, 2.8, {ease: FlxEase.smootherStepInOut});
+
+        case 1656, 1688, 1720, 1784:
+            cracker.alpha = 0;
+            cracker.color = 0xFFFFFFFF;
+            FlxTween.tween(cracker, {alpha: 0.6}, 0.69, {ease: FlxEase.linear});
+            
+        case 1660, 1722:
+            triggerFreezeEffect(0.3);
+
+        case 1664, 1696, 1728:
+            crackerFlash(1.4, 1);
 
         case 1792:
+            cracker.color = 0xFF0a6816;
+            cracker.alpha = 1;
+            cracker.blend = LuaUtils.blendModeFromString('none');
+            FlxTween.tween(cracker, {alpha: 0}, 1.4, {ease: FlxEase.linear});
             boyfriend.x = 3615;
             boyfriend.y = 2190;
             dad.x = 2565;
@@ -431,16 +540,43 @@ function onStepHit() {
             matrix.alpha = 1;
             speedLines.alpha = 0.5;
             lockscreen.alpha = 0;
+            for(i in 0...4) {
+                FlxTween.tween(opponentStrums.members[i], {alpha: 1}, 0.00001, {ease: FlxEase.linear});
+                FlxTween.tween(playerStrums.members[i], {alpha: 1}, 0.00001, {ease: FlxEase.linear});
+            }
+            comboGroup.alpha = 1;
+
+        case 2096:
+            black.cameras = [camOther];
+            FlxTween.tween(black, {alpha: 1}, 2.8, {ease: FlxEase.smoothStepIn});
+            FlxTween.tween(dad, {y: dad.y - 400}, 2.8, {ease: FlxEase.smootherStepInOut});
+            FlxTween.tween(boyfriend, {y: boyfriend.y - 400}, 2.8, {ease: FlxEase.smootherStepInOut});
+            FlxTween.tween(camHUD, {y: camHUD.y - 900}, 2.8, {ease: FlxEase.smootherStepInOut});
     }
 }
 
 function onSectionHit(section:Dynamic) {
     mustHitSection = section.mustHitSection;
 }
-function triggerFreezeEffect(freezeDuration:Float) {
-    FlxG.timeScale = 0;
 
-    Timer.delay(function() {
-        FlxG.timeScale = 1;
-    }, Std.int(freezeDuration * 1000));
+function triggerFreezeEffect(freezeDuration:Float) {
+    camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = false;
+    cursorLoad.alpha = 1;
+    
+    new FlxTimer().start(freezeDuration-.01, function(_)
+    {
+        camHUD.alive = camHUD.exists = true;
+    });
+
+    new FlxTimer().start(freezeDuration, function(_)
+    {
+        camGame.alive = camGame.exists = true;
+        cursorLoad.alpha = 0.00001;
+    });
+}
+
+function crackerFlash(time:Float, alpha:Float) {
+    cracker.alpha = alpha;
+    cracker.blend = LuaUtils.blendModeFromString('add');
+    FlxTween.tween(cracker, {alpha: 0}, time, {ease: FlxEase.smoothStepOut});
 }

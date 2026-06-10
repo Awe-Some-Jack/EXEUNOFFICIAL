@@ -9,8 +9,8 @@ import backend.ClientPrefs;
 
 class ExeLanguageState extends ExeBaseOptionsState
 {
-	static final LANG_KEYS:Array<String>   = ["en-US", "es-ES", "pt-BR", "uz-UZ", "ja-JP", "zh-CN", "ru-RU", "uk-UA"];
-	static final LANG_LABELS:Array<String> = ["ENGLISH", "SPANISH", "PORTUGUESE", "UZBEK", "JAPANESE", "CHINESE", "RUSSIAN", "UKRAINIAN"];
+	static final LANG_KEYS:Array<String>   = ["en-US", "es-ES", "pt-BR", "fr-FR", "uz-UZ", "ja-JP", "zh-CN", "ru-RU", "uk-UA", "de-DE"];
+	static final LANG_LABELS:Array<String> = ["ENGLISH", "SPANISH", "PORTUGUESE", "FRENCH", "UZBEK", "JAPANESE", "CHINESE", "RUSSIAN", "UKRAINIAN", "GERMAN"];
 
 	var curLangIdx:Int = 0;
 

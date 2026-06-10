@@ -363,11 +363,11 @@ function onUpdatePost(e)
 		'\nBads: '..getProperty('ratingsData[2].hits')..'\nShits: '..getProperty('ratingsData[3].hits')..'\nMisses: '..misses..'\n\nBotplay: '..tostring(botPlay)..'\nPractice Mode: '..tostring(getProperty('practiceMode')))
 
 		dayThing, form = {'st', 'nd', 'rd', 'th'}, (os.date('*t').day % 100 >= 11 and os.date('*t').day % 100 <= 13) and 4 or math.min(4, (os.date('*t').day % 10 == 0 and 4 or os.date('*t').day % 10))
-		if getPropertyFromClass("Main", "fpsVar.memoryMegas") > totalMemory then totalMemory = getPropertyFromClass("Main", "fpsVar.memoryMegas") end
+		if getPropertyFromClass("Main", "fpsVar.currentMemory") > totalMemory then totalMemory = getPropertyFromClass("Main", "fpsVar.currentMemory") end
 		updateBoxText('generalInfo',
 		'Psych Engine v'..version..'\nFriday Night Funkin\' v'..runHaxeCode("import lime.app.Application; return Application.current.meta.get('version');")..'\nBuild Target: '..buildTarget..(currentModDirectory ~= '' and ('\nMod Directory: '..currentModDirectory) or '')..
 		'\n\nDate: '..os.date(settings.americanDate and "%m/%d/%y" or "%d/%m/%y")..'\n'..os.date('%A, %B %d')..dayThing[form]..'\nTime: '..os.date((settings.twentyFourFormat and "%H:%M:%S" or ("%I:%M:%S "..(tonumber(os.date("%H")) < 12 and 'a. m.' or 'p. m.'))))..'\n\nFPS: '..
-		getPropertyFromClass("Main", "fpsVar.currentFPS")..'\nMemory: '..callMethodFromClass('flixel.util.FlxStringUtil', 'formatBytes', {getPropertyFromClass("Main", "fpsVar.memoryMegas")})..'\nMemory Peak: '..callMethodFromClass('flixel.util.FlxStringUtil', 'formatBytes', {totalMemory}))
+		getPropertyFromClass("Main", "fpsVar.currentFPS")..'\nMemory: '..callMethodFromClass('flixel.util.FlxStringUtil', 'formatBytes', {getPropertyFromClass("Main", "fpsVar.currentMemory")})..'\nMemory Peak: '..callMethodFromClass('flixel.util.FlxStringUtil', 'formatBytes', {totalMemory}))
 
 		updateBoxText('prefsInfo',
 		'Language: '..getPropertyFromClass('backend.ClientPrefs', 'data.language')..'\nDownscroll: '..tostring(downscroll)..'\nMiddlescroll: '..tostring(middlescroll)..'\nGhost Tapping: '..tostring(ghostTapping)..'\nGuitar Hero Sustains: '..tostring(guitarHeroSustains)..
@@ -426,7 +426,7 @@ function onUpdatePost(e)
 			callMethodFromClass('flixel.util.FlxStringUtil', 'formatTime', {(math.min(songLength, songLength - getSongPosition())) / 1000, true})..'\n\n- Charting Information -\nCurrent BPM: '..curBpm..'\nSong Speed: '..decimal(getProperty('songSpeed'))..'\n\nCur Section: '..curSection..'\nCur Beat: '..curBeat..' ('..string.format('%.'..(settings.decimals)..'f', decimal(math.max(0, curDecBeat)))..
 			')\nCur Step: '..curStep..' ('..string.format('%.'..(settings.decimals)..'f', decimal(math.max(0, curDecStep)))..')\n\n- Game Information -\nCombo: '..combo..'\nScore: '..callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {score, false})..'\nMisses: '..misses..'\nAccuracy: '..ratingName..' ('..decimal(rating * 100)..'%)'..(ratingFC ~= '' and (' - '..ratingFC) or '')..
 			'\nHealth: '..decimal(getHealth() * 50)..'% ('..(getHealth() < 0.4 and 'Losing' or (getHealth() > 1.6 and 'Winning' or 'Tie'))..')'..weekCampaign[2]..weekCampaign[3]..'\n\nOpponent Hits: '..oppHits..'\nNotes Played: '..totalPlayed..'\nNPS: '..nps..'\n\n- General Information -\nFPS: '..getPropertyFromClass("Main", "fpsVar.currentFPS")..'\nMemory: '..
-			callMethodFromClass('flixel.util.FlxStringUtil', 'formatBytes', {getPropertyFromClass("Main", "fpsVar.memoryMegas")}))
+			callMethodFromClass('flixel.util.FlxStringUtil', 'formatBytes', {getPropertyFromClass("Main", "fpsVar.currentMemory")}))
 		end
 
 		--Playback Rate Modifiers

@@ -1,3 +1,6 @@
+-- Que cojones estoy leyendo
+-- Esta guay pero que cojones
+
 -- Shader by Kophy232, Remember to credit if use! it took me months xd
 
 local shaderName = "TVtime"

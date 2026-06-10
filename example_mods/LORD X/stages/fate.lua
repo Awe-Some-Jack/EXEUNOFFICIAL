@@ -1,69 +1,99 @@
-local fateBG1 = {
-    {name = 'feiker', path = 'fate/fakrt', x = 500, y = 520, animated = false, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, lq = false, front = false},
-    {name = 'nieblia', path = 'fate/niebla', x = 217, y = 620, animated = true, animName = 'idle', animPrefix = 'Símbolo 29', fps = 24, loop = true, scaleX = 2.7, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, lq = false, front = false},
-    {name = 'cuadros', path = 'fate/c', x = 1100, y = 320, animated = false, scaleX = 0.8, scaleY = 0.8, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, lq = false, front = false},
-    {name = 'ground', path = 'fate/sd', x = 210, y = 250, animated = false, scaleX = 0.8, scaleY = 0.8, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, lq = false, front = false},
+-- Todo:
+
+-- Remake the entire code. Make arrays, local functions, state better the events, make a better looking code, etc.
+
+-- Use another shader script from another song so the one i used before doesn't lag or stop working.
+
+-- Recode the "give up" lyrics if anything?
+
+-- Redo camera events. fuck that shit was ASS.
+
+-- Make a more appealing dodge mechanic.
+
+
+local fateAssets = {
+    ['BG1'] = {
+        {name =     'feiker',  path =   'fate/fakrt', x =   500, y = 520, animated = false,                                                                      scaleX = 0.7, scaleY = 0.7, alpha = 0,                                                     lq = false, front = false},
+        {name =    'nieblia',  path =  'fate/niebla', x =   217, y = 620, animated =  true, animName = 'idle', animPrefix = 'Símbolo 29', fps = 24, loop = true, scaleX = 2.7, scaleY = 2.3, alpha = 0,                                                     lq = false, front = false},
+        {name =    'cuadros',  path =       'fate/c', x =  1100, y = 320, animated = false,                                                                      scaleX = 0.8, scaleY = 0.8, alpha = 0,                                                     lq = false, front = false},
+        {name =     'ground',  path =      'fate/sd', x =   210, y = 250, animated = false,                                                                      scaleX = 0.8, scaleY = 0.8, alpha = 0,                                                     lq = false, front = false},
+        {name = 'redOverlay',  path = 'fate/overlay', x = -1500, y = 500, animated = false,                                                                      scaleX =   2, scaleY =   2, alpha = 0, behind = 'nieblia', flipY = true, color = 'FF0000', lq = false, front = false},
+    },
+    ['BG2'] = {
+        {name = 'niebliaFinal', path =   'fate/niebla 2', x = 0, y = 20, animated = true, animName = 'idle', animPrefix =  'Símbolo 34', fps = 24, loop = true, scaleX = 1.75, scaleY = 1, alpha = 0, lq = false, front = false},
+        {name =    'fateFinal', path = 'fate/FATE LORDX', x = 0, y = 20, animated = true, animName = 'idle', animPrefix = 'Símbolo 409', fps = 24, loop = true, scaleX =    1, scaleY = 1, alpha = 0, lq = false, front = false},
+    },
+    ['Misc'] = {
+        {name = 'spaceBar',    path =      'fate/spacebar',  x =  450, y =   400, scaleX = 0.5, scaleY = 0.5,               animated =  true, animName = 'idle',  animPrefix =   'Símbolo 8',               fps = 24, loop = true, camera = 'camHUD', alpha = 0,                                  front = false},
+        {name = 'lordXBite',   path = 'characters/mordida',  x = 1350, y =  1200, scaleX =   0, scaleY =   0,               animated =  true, animName = 'idle',  animPrefix = 'Símbolo 403', index = '0',  fps = 24, loop = true,                    alpha = 1,                                  front = false},
+        {name = 'bfFALL',      path = 'characters/bf void',  x =  600, y =  1900, scaleX =   3, scaleY =   3,               animated =  true, animName = 'idle',  animPrefix =  'Símbolo 71',               fps = 24, loop = true,                    alpha = 1,                                  front = false},
+        {name = 'transition',  path =       'fate/overlay',  x = -550, y =     0, scaleX =   0, scaleY =   0,               animated = false,                                                                                      camera = 'camHUD', alpha = 0, color = '000000',                front = false},
+        {name = 'fog',         path =           'fate/fog',  x =    0, y =     0, scaleX =   1, scaleY =   1,               animated = false,                                                                                      camera = 'camHUD', alpha = 0,                   blend = 'add', front = false},
+        {name = 'transition2', path =       'fate/overlay',  x = -550, y = -1000, scaleX =   0, scaleY =   0, flipY = true, animated = false,                                                                                      camera = 'camHUD', alpha = 0, color = '000000',                front = false},
+    }
 }
 
-local fateBG2 = {
-    {name = 'niebliaFinal', path = 'fate/niebla 2', x = 0, y = 20, animated = true, animName = 'idle', animPrefix = 'Símbolo 34', fps = 24, loop = true, scaleX = 1.75, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, lq = false, front = false},
-    {name = 'fateFinal', path = 'fate/FATE LORDX', x = 0, y = 20, animated = true, animName = 'idle', animPrefix = 'Símbolo 409', fps = 24, loop = true, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, lq = false, front = false},
-}
-
-local glitches = {
-    [1] = function()
-        triggerEvent('chromFlash', '0, 5', '3, linear')
-    end,
-    [2] = function()
-
-    end
-}
-
-function onCreatePost()
+local function setFateConfig()
     setProperty('gf.visible', false)
     setScrollFactor('gfGroup', 1, 1)
     setProperty('boyfriend.visible', false)
 
-    -- Character Lists
+    for i = 0,3 do setProperty('opponentStrums.members['..i..'].x', -1000) end
+
+    for _, stuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(stuff..'.alpha', 0) end
+
+    for i = 0, 7 do setPropertyFromGroup('strumLineNotes', i, 'y', (downscroll and 770 or -250)) end
+
+    makeLuaSprite('healthShit')
+end
+
+local function prepareCharacters()
     addCharacterToList('lord x podrido', 'dad')
     addCharacterToList('lord x p3corto', 'dad')
     addCharacterToList('lord x p3largo', 'dad')
     --addCharacterToList('lord x p3scream', 'dad')
     addCharacterToList('bfo', 'bf')
     addCharacterToList('bf-perspective-right', 'bf')
+end
+
+local function createSprite(spr)
+    if not spr.lq then
+        if spr.animated then
+            makeAnimatedLuaSprite(spr.name, spr.path, spr.x, spr.y)
+            if spr.index then
+                addAnimationByIndices(spr.name, spr.animName, spr.animPrefix, spr.index, spr.fps, spr.loop)
+            else
+                addAnimationByPrefix(spr.name, spr.animName, spr.animPrefix, spr.fps, spr.loop)
+            end
+        else
+            makeLuaSprite(spr.name, spr.path, spr.x, spr.y)
+        end
+        scaleObject(spr.name, spr.scaleX, spr.scaleY)
+        if spr.camera then setObjectCamera(spr.name, spr.camera) end
+        setProperty(spr.name..'.alpha', spr.alpha)
+        addLuaSprite(spr.name, spr.front)
+        if spr.color then setProperty(spr.name..'.color', spr.color) end
+        if spr.behind then setObjectOrder(spr.name, getObjectOrder(spr.behind)) end
+        if spr.blend then setBlendMode(spr.name, spr.blend) end
+    end
+end
 
 
-    --Sprites
-    makeAnimatedLuaSprite('spaceBar', 'fate/spacebar', 450, 400)
-    addAnimationByPrefix('spaceBar', 'idle', 'Símbolo 8', 24, true)
-    playAnim('spaceBar', 'idle', true)
-    setObjectCamera('spaceBar', 'camHUD')
-    setProperty('spaceBar.alpha', 0)
-    scaleObject('spaceBar', 0.5, 0.5)
-    addLuaSprite('spaceBar', false)
+function onCreate() prepareCharacters() end
 
 
-    makeAnimatedLuaSprite('lordXBite', 'characters/mordida', 1350, 1200)
-    addAnimationByIndices('lordXBite', 'idle', 'Símbolo 403', '0', 24, true)
-    playAnim('lordXBite', 'idle', true)
-    scaleObject('lordXBite', 0, 0)
-    addLuaSprite('lordXBite', false)
+function onCreatePost()
 
-    makeAnimatedLuaSprite('bfFALL', 'characters/bf void', 600, 1900)
-    addAnimationByPrefix('bfFALL', 'idle', 'Símbolo 71', 24, true)
-    scaleObject('bfFALL', 3, 3)
-    addLuaSprite('bfFALL', false)
+    setFateConfig()
 
-    makeAnimatedLuaSprite('bfClone', 'characters/bfo', 0, 0)
-    addAnimationByPrefix('bfClone', 'idle', 'idle', 24, true)
-    addAnimationByPrefix('bfClone', 'singUP', 'up', 24, false)
-    addAnimationByPrefix('bfClone', 'singDOWN', 'down', 24, false)
-    addAnimationByPrefix('bfClone', 'singLEFT', 'left', 24, false)
-    addAnimationByPrefix('bfClone', 'singRIGHT', 'right', 24, false)
-    setProperty('bfClone.alpha', 0)
-    addLuaSprite('bfClone', true)
+    for _,    fate1 in ipairs(fateAssets['BG1'])  do    createSprite(fate1) end
+    for _,    fate2 in ipairs(fateAssets['BG2'])  do    createSprite(fate2) end
+    for _, fateMisc in ipairs(fateAssets['Misc']) do createSprite(fateMisc) end
 
+    createIllegalInstruction()
+end
 
+function createIllegalInstruction()
     math.randomseed(os.clock())
     for i = 1, math.random(4, 5) do
         makeLuaSprite('illegal'..i, 'fate/illegalinstruction', math.random(50, 860), math.random(30, 750))
@@ -71,85 +101,12 @@ function onCreatePost()
         setObjectCamera('illegal'..i, 'camHUD')
         addLuaSprite('illegal'..i, false)
     end
-
-    makeLuaSprite('transition', 'fate/overlay', -550, 0)
-    setObjectCamera('transition', 'camHUD')
-    setProperty('transition.color', '000000')
-    addLuaSprite('transition')
-
-    makeLuaSprite('fog', 'fate/fog', 0, 0)
-    setObjectCamera('fog', 'camHUD')
-    screenCenter('fog')
-    setProperty('fog.alpha', 0)
-    setBlendMode('fog', 'ADD')
-    addLuaSprite('fog', true)
-
-    makeLuaSprite('transition2', 'fate/overlay', -550, getProperty('transition.y') - 1000)
-    setObjectCamera('transition2', 'camHUD')
-    setProperty('transition2.color', '000000')
-    setProperty('transition2.flipY', true)
-    addLuaSprite('transition2')
-
-    makeLuaSprite('healthShit')
-
-    -- Notes Shit
-    for i = 0,3 do
-        if getProperty('opponentStrums.members['..i..'].alpha') >= 0.0001 then
-            setProperty('opponentStrums.members['..i..'].alpha', 0)
-        end
-    end
-
-    for _, stuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do
-        setProperty(stuff..'.alpha', 0)
-    end
-
-    for i = 0, 7 do
-        setPropertyFromGroup('strumLineNotes', i, 'y', (downscroll and 770 or -250))
-    end
-
-    for _, puta in ipairs(fateBG1) do
-        if not puta.lq then
-            if puta.animated then
-                makeAnimatedLuaSprite(puta.name, puta.path, puta.x, puta.y)
-                addAnimationByPrefix(puta.name, puta.animName, puta.animPrefix, puta.fps, puta.loop)
-            else
-                makeLuaSprite(puta.name, puta.path, puta.x, puta.y)
-            end
-            scaleObject(puta.name, puta.scaleX, puta.scaleY)
-            setScrollFactor(puta.name, puta.scrollX, puta.scrollY)
-            setProperty(puta.name..'.alpha', puta.alpha)
-            setProperty(puta.name..'.antialiasing', puta.antialiasing)
-            addLuaSprite(puta.name, puta.front)
-        end
-    end
-    for _, puta in ipairs(fateBG2) do
-        if not puta.lq then
-            if puta.animated then
-                makeAnimatedLuaSprite(puta.name, puta.path, puta.x, puta.y)
-                addAnimationByPrefix(puta.name, puta.animName, puta.animPrefix, puta.fps, puta.loop)
-            else
-                makeLuaSprite(puta.name, puta.path, puta.x, puta.y)
-            end
-            scaleObject(puta.name, puta.scaleX, puta.scaleY)
-            setScrollFactor(puta.name, puta.scrollX, puta.scrollY)
-            setProperty(puta.name..'.alpha', puta.alpha)
-            setProperty(puta.name..'.antialiasing', puta.antialiasing)
-            addLuaSprite(puta.name, puta.front)
-        end
-    end
-
-    makeLuaSprite('redOverlay', 'fate/overlay', -1500, 500)
-    scaleObject('redOverlay', 2, 2)
-    setObjectOrder('redOverlay', getObjectOrder('nieblia'))
-    setProperty('redOverlay.color', getColorFromHex('FF0000'))
-    setProperty('redOverlay.flipY', true)
-    setProperty('redOverlay.alpha', 0)
-    addLuaSprite('redOverlay', false)
 end
 
 local holdMove = 0
 local loseHealthBitch = false
-function onUpdatePost(elapsed)
+
+local function onUpdateFate(elapsed)
     holdMove = holdMove + elapsed / (crochet / 750)
     if luaSpriteExists('cuadros') and getProperty('cuadros.alpha') >= 0.1   then
         callMethod('cuadros.setPosition', {
@@ -175,6 +132,10 @@ function onUpdatePost(elapsed)
         setProperty('health', getProperty('healthShit.x'))
     end
 end
+
+local fateEvents = {}
+
+function onUpdatePost(elapsed) onUpdateFate(elapsed) end
 
 local startMechanic = false
 local canDodge = false
@@ -229,11 +190,11 @@ function onEvent(eventName, value1, value2)
         end
         if value1 == 'fadeStrums' then
             local split = stringSplit(value2, ', ')
-            if value2 == '' then 
+            if value2 == '' then
                 for i = 4, 7 do
                     noteTweenAlpha(i..'Tween', i, 0, 0.6 + (i * 0.2))
                 end
-            elseif value2 == 'dad' then 
+            elseif value2 == 'dad' then
                 for i = 0, 3 do
                     noteTweenAlpha(i..'Tween', i, 0, 0.6 + (i * 0.2))
                 end
@@ -302,7 +263,7 @@ function onEvent(eventName, value1, value2)
                 for i = 1, 5 do
                     setProperty('illegal'..i..'.alpha', 0)
                 end
-                for _, shit in ipairs(fateBG1) do
+                for _, shit in ipairs(fateAssets['BG1']) do
                     setProperty(shit.name..'.alpha', 1)
                     if shit.name == 'nieblia' then
                         setProperty(shit.name..'.alpha', 0.2)
@@ -328,7 +289,7 @@ function onEvent(eventName, value1, value2)
             end
         end
         if value1 == 'part3' then
-            for _, bg1 in ipairs(fateBG1) do
+            for _, bg1 in ipairs(fateAssets['BG1']) do
                 removeLuaSprite(bg1.name, true)
             end
 
@@ -341,7 +302,7 @@ function onEvent(eventName, value1, value2)
         if value1 == 'part4' then
             local split = stringSplit(value2, ', ')
             if value2 == '' then
-                for _, hola in ipairs(fateBG2) do
+                for _, hola in ipairs(fateAssets['BG2']) do
                     setProperty(hola.name..'.alpha', 1)
                 end
 
@@ -381,10 +342,6 @@ function onEvent(eventName, value1, value2)
                     if glitchNumber then
                         glitches[glitchNumber]()
                     end
-                    -- SHADERS QUE USAR:
-                    -- CHROMATICS
-                    -- glitches
-                    -- Contraste bla bl a bla bla bla bla bla alblalbalblaLBALBLABLALBLBALALBLABLABDLABLBLBALABLBALBLBALBALBLA LBALABALABLABLBALBALBALBALBALBALABLABL
                 end
             end
         end

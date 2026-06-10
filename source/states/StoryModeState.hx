@@ -447,7 +447,7 @@ class StoryModeState extends MusicBeatState
 					isSelecting = true;
 					bfBOX.animation.play('yeah', true);
 					bfBOX.x += 10;
-					FlxG.sound.play(Paths.sound('menuConfirm'));
+					FlxG.sound.play(STORY_SONGS[selectedCover] == 'yourself' ? Paths.sound('menuConfirmYourself') : Paths.sound('menuConfirm'));
 					FlxFlicker.flicker(redBOX, 1, 0.07, false, true, function(_) launchSong());
 				}
 

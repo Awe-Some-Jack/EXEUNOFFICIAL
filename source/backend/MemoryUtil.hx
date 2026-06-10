@@ -198,7 +198,7 @@ final class NativeMemory {
 		untyped __cpp__('
 			PROCESS_MEMORY_COUNTERS_EX pmc;
 			if (GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc))) {
-				result = (double)pmc.PeakWorkingSetSize; // Заменено на PeakWorkingSetSize для большей точности RAM
+				result = (double)pmc.PeakWorkingSetSize;
 			}
 		');
 		return result;

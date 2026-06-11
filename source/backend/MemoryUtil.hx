@@ -148,6 +148,7 @@ final class MemoryUtil
 ')
 #elseif mac
 @:headerCode('
+#include <unistd.h>
 #include <mach/mach.h>
 #include <sys/sysctl.h>
 ')

@@ -26,7 +26,6 @@ function onUpdatePost(e)
 		if getProperty('picolegs.animation.curAnim.name') ~= getProperty('gf.animation.curAnim.name') then playAnim('picolegs', getProperty('gf.animation.curAnim.name'), true) end
 
 		if getProperty('gf.animation.curAnim.name') == 'idle' then setProperty('gf.animation.curAnim.curFrame', getProperty('legsframerate.animation.curAnim.curFrame')) end
-		if getProperty('bf.animation.curAnim.name') == 'idle' then setProperty('bf.animation.curAnim.curFrame', getProperty('legsframerate.animation.curAnim.curFrame')) end
 		setProperty('picolegs.animation.curAnim.curFrame', getProperty('legsframerate.animation.curAnim.curFrame'))
 	end
 end

@@ -106,7 +106,7 @@ function onCreatePost()
 	setObjectOrder('gfGroup', getObjectOrder('boyfriendGroup') + 1)
 
 	addCharacterToList('requital-beast-dark', 'dad')
-	addCharacterToList('beast-run', 'dad')
+	addCharacterToList('beast-runhead', 'dad')
 	addCharacterToList('picod-run', 'gf')
 	addCharacterToList('bfd-run', 'bf')
 
@@ -135,7 +135,7 @@ function onEvent(n,v1)
 		if v1 == 'jajaja' then
 			running = true
 			setObjectOrder('gfGroup', getObjectOrder('boyfriendGroup') - 1)
-			triggerEvent('Change Character', 'dad', 'beast-run')
+			triggerEvent('Change Character', 'dad', 'beast-runhead')
 			triggerEvent('Change Character', 'gf', 'picod-run')
 			triggerEvent('Change Character', 'bf', 'bfd-run')
 
@@ -182,24 +182,9 @@ function onEvent(n,v1)
 			setProperty('picobf.velocity.x', -2500 * playbackRate) setProperty('reqbeast.velocity.x', -2500 * playbackRate)
 			setProperty('picobf.velocity.y', -380 * playbackRate) setProperty('reqbeast.velocity.y', -380 * playbackRate)
 		end
-		if v1 == 'angry' then
+		if v1 == 'back' then
 			inPixel = false
 			cameraFlash('FFFFFF', 'game', 1, true)
-			triggerEvent('Change Character', 'dad', 'requital-beast-dark')
-			callMethod('dad.setPosition', {522, 150})
-			setProperty('gameplayCam.settings.MiddleY', 530)
-			setProperty('dad.alpha', 1)
-
-			removeLuaSprite('bgp', true) removeLuaSprite('floorp', true) removeLuaSprite('torches', true) removeLuaSprite('decop', true) removeLuaSprite('lavapixel', true)
-			removeLuaSprite('reqbeast', true) removeLuaSprite('picobf', true)
-		end
-		if v1 == 'anim' then
-			startVideo('anim', false, true)
-			setProperty('inCutscene', false)
-		end
-		if v1 == 'back' then
-			cameraFlash('FFFFFF', 'game', 1, true)
-			callMethod('remove', {instanceArg('videoCutscene')})
 			setProperty('gf.alpha', 1) setProperty('picolegs.alpha', 1)
 			setProperty('dad.alpha', 1) setProperty('beastlegs.alpha', 1)
 			triggerEvent('cameracenter', 'false')
@@ -211,14 +196,52 @@ function onEvent(n,v1)
 			current = 'bgrun'
 			setProperty('camGame.zoom', 1.5)
 
-			triggerEvent('Change Character', 'dad', 'beast-run')
-
 			setProperty('bgrun.alpha', 1)
 			setProperty('gameplayCam.settings.BFx', 1150)
 			setProperty('gameplayCam.settings.BFy', 1150)
 
 			setProperty('gameplayCam.settings.DADx', 1600)
 			setProperty('gameplayCam.settings.DADy', 1100)
+
+			removeLuaSprite('bgp', true) removeLuaSprite('floorp', true) removeLuaSprite('torches', true) removeLuaSprite('decop', true) removeLuaSprite('lavapixel', true)
+			removeLuaSprite('reqbeast', true) removeLuaSprite('picobf', true)
+		end
+		if v1 == 'anim' then
+			startVideo('anim', false, true)
+			setProperty('inCutscene', false)
+		end
+		if v1 == 'endcine' then
+			cameraFlash('FFFFFF', 'game', 1, true)
+			callMethod('remove', {instanceArg('videoCutscene')})
+		end
+		if v1 == 'dark' then
+			running = false
+			setProperty('gameplayCam.settings.OffsetsBF', 0)
+			setProperty('gameplayCam.settings.OffsetsDAD', 25)
+			setProperty('gameplayCam.settings.OffsetsGF', 0)
+			cameraFlash('FFFFFF', 'game', 1, true)
+			setProperty('cameraSpeed', 9999)
+			setProperty('bgrun.alpha', 0) setProperty('bgrun2.alpha', 0)
+			triggerEvent('cameracenter', 'true')
+			setProperty('gf.alpha', 0) setProperty('picolegs.alpha', 0)
+			setProperty('beastlegs.alpha', 0)
+			triggerEvent('Change Character', 'dad', 'requital-beast-dark')
+			callMethod('dad.setPosition', {522, 150})
+			setProperty('gameplayCam.settings.MiddleY', 530)
+		end
+		if v1 == 'running' then
+			setProperty('gameplayCam.settings.OffsetsBF', 25)
+			setProperty('gameplayCam.settings.OffsetsDAD', 25)
+			setProperty('gameplayCam.settings.OffsetsGF', 25)
+			cameraFlash('FFFFFF', 'game', 1, true)
+			running = true
+			setProperty('cameraSpeed', 9999)
+			setProperty('bgrun.alpha', 1) setProperty('bgrun2.alpha', 1)
+			triggerEvent('cameracenter', 'false')
+			setProperty('gf.alpha', 1) setProperty('picolegs.alpha', 1)
+			setProperty('dad.alpha', 1) setProperty('beastlegs.alpha', 1)
+			setProperty('camGame.zoom', 1.5)
+			triggerEvent('Change Character', 'dad', 'beast-runhead')
 		end
 	end
 end

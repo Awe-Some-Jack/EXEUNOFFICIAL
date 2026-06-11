@@ -1,36 +1,36 @@
 {
 	"animations": [
 		{
+			"offsets": [30, 30],
 			"loop": false,
-			"offsets": [0, 0],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "bfleft",
-			"indices": []
+			"indices": [],
+			"name": "bfleft"
 		},
 		{
+			"offsets": [0, 20],
 			"loop": false,
-			"offsets": [0, 0],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "bfdown",
-			"indices": []
+			"indices": [],
+			"name": "bfdown"
 		},
 		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "singUP",
+			"offsets": [10, 20],
+			"indices": [],
 			"fps": 24,
-			"name": "bfup",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
 			"anim": "singRIGHT",
+			"loop": false,
+			"name": "bfup"
+		},
+		{
+			"offsets": [35, 60],
+			"indices": [],
 			"fps": 24,
-			"name": "bfright",
-			"indices": []
+			"anim": "singUP",
+			"loop": false,
+			"name": "bfright"
 		},
 		{
 			"offsets": [0, 0],

@@ -436,7 +436,13 @@
 		[
 			110982.658959538,
 			[
-				["BGchange", "angry", ""]
+				["BGchange", "back", ""]
+			]
+		],
+		[
+			111069.36416185,
+			[
+				["Set Property", "cameraSpeed", "2"]
 			]
 		],
 		[
@@ -1168,11 +1174,35 @@
 		[
 			135953.757225434,
 			[
-				["BGchange", "back", ""]
+				["BGchange", "endcine", ""]
 			]
 		],
 		[
 			136040.462427746,
+			[
+				["Set Property", "cameraSpeed", "2"]
+			]
+		],
+		[
+			158150.289017341,
+			[
+				["BGchange", "dark", ""]
+			]
+		],
+		[
+			158236.994219653,
+			[
+				["Set Property", "cameraSpeed", "2"]
+			]
+		],
+		[
+			180346.820809249,
+			[
+				["BGchange", "running", ""]
+			]
+		],
+		[
+			180433.526011561,
 			[
 				["Set Property", "cameraSpeed", "2"]
 			]

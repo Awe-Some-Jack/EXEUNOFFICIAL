@@ -1,49 +1,49 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
 			"loop": true,
-			"fps": 24,
+			"offsets": [0, 0],
 			"anim": "idle",
-			"indices": [],
-			"name": "Símbolo 5"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [33, 28],
-			"loop": false,
+			"offsets": [40, 0],
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "hleft"
+			"loop": true,
+			"name": "left"
 		},
 		{
-			"offsets": [-33, 50],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
+			"offsets": [33, -24],
 			"indices": [],
-			"name": "hup"
-		},
-		{
-			"offsets": [-93, 3],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "hright"
-		},
-		{
-			"offsets": [-17, -16],
-			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
+			"loop": true,
+			"name": "down"
+		},
+		{
+			"offsets": [-7, 26],
 			"indices": [],
-			"name": "hdowm"
+			"fps": 24,
+			"anim": "singUP",
+			"loop": true,
+			"name": "up"
+		},
+		{
+			"offsets": [-1, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": true,
+			"name": "right"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/deception/cabeza",
+	"image": "characters/deception/rpiernas",
 	"position": [0, 0],
 	"healthicon": "requital-beast",
 	"flip_x": false,

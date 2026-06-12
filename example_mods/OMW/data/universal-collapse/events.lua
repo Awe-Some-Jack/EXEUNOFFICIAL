@@ -129,6 +129,18 @@ function onEvent(n,v1)
 			cancelTween('blackScreen') removeLuaSprite('blackScreen', true)
 			cameraFlash('hud', 'FFFFFF', 1, true)
 		end
+		if v1 == 'finalFlash' then
+			setProperty('cpuAssist', true)
+			setProperty('camGame.alpha', 0)
+			setProperty('camHUD.alpha', 0)
+			makeLuaSprite('renderfinale', 'universal-collapse/final')
+			setGraphicSize('renderfinale', screenWidth, screenHeight)
+			screenCenter('renderfinale')
+			setObjectCamera('renderfinale', 'video')
+			doTweenAlpha('renderfinale', 'renderfinale', 0, crochet / 250, 'expoIn')
+			addLuaSprite('renderfinale')
+			cameraFlash('other', 'FFFFFF', 1, true)
+		end
 	end
 end
 

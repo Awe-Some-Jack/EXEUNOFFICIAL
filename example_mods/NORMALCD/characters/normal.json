@@ -1,7 +1,7 @@
 {
 	"animations": [
 		{
-			"offsets": [107, 1],
+			"offsets": [119, 2],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -9,7 +9,7 @@
 			"name": "Normal_LEFT"
 		},
 		{
-			"offsets": [66, -8],
+			"offsets": [49, -11],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
@@ -17,7 +17,7 @@
 			"name": "Normal_DOWN"
 		},
 		{
-			"offsets": [2, 70],
+			"offsets": [2, 49],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
@@ -25,7 +25,7 @@
 			"name": "Normal_UP"
 		},
 		{
-			"offsets": [-13, -1],
+			"offsets": [-15, -1],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
@@ -33,7 +33,7 @@
 			"name": "Normal_RIGHT"
 		},
 		{
-			"offsets": [-1, 237],
+			"offsets": [1, 228],
 			"loop": false,
 			"fps": 24,
 			"anim": "dialogue",
@@ -42,7 +42,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [781, 235],
+			"offsets": [780, 228],
 			"anim": "intro",
 			"fps": 30,
 			"name": "treno copia",
@@ -73,7 +73,7 @@
 	"flip_x": false,
 	"healthbar_colors": [94, 116, 163],
 	"camera_position": [0, 0],
-	"sing_duration": 4,
+	"sing_duration": 6,
 	"scale": 0.55,
 	"_editor_isPlayer": false
 }

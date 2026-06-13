@@ -1,54 +1,6 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
-			"anim": "danceLeft",
-			"indices": [],
-			"name": "dancel"
-		},
-		{
-			"offsets": [-10, 0],
-			"loop": false,
-			"fps": 24,
-			"anim": "danceRight",
-			"indices": [],
-			"name": "dancer"
-		},
-		{
-			"offsets": [85, 6],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "Amy_Nervous_LEFT"
-		},
-		{
-			"offsets": [40, -1],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "Amy_Nervous_DOWN"
-		},
-		{
-			"offsets": [53, 52],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "Amy_Nervous_UP"
-		},
-		{
-			"offsets": [30, -1],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Amy_Nervous_RIGHT"
-		},
-		{
 			"offsets": [61, 10],
 			"loop": false,
 			"fps": 24,
@@ -81,12 +33,68 @@
 			"name": "Amy_MISS_RIGHT"
 		},
 		{
-			"offsets": [-8, 48],
+			"offsets": [21, 31],
 			"loop": false,
 			"fps": 24,
 			"anim": "endinganim",
 			"indices": [],
 			"name": "anim"
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "danceLeft",
+			"fps": 24,
+			"name": "dancel",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-4, 10],
+			"anim": "danceRight",
+			"fps": 24,
+			"name": "dancer",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [95, -4],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [72, -49],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [73, 22],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-9, 16],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [21, 31],
+			"anim": "endinganim-loop",
+			"fps": 24,
+			"name": "anim2 instancia 1",
+			"indices": [268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278]
 		}
 	],
 	"vocals_file": "",
@@ -98,6 +106,6 @@
 	"healthbar_colors": [252, 144, 252],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 0.55,
 	"_editor_isPlayer": false
 }

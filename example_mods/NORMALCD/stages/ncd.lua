@@ -1,6 +1,6 @@
 local shadows = {
-	{name = 'bfShadow',  path = 'bg/shadow',  target = 'boyfriend', offsetX = 10,   offsetY = 255, alpha = 0.7},
-	{name = 'dadShadow', path = 'bg/shadow2', target = 'dad',       offsetX = 92,  offsetY = 354, alpha = 0},
+	{name = 'bfShadow',  path = 'bg/shadow',  target = 'boyfriend', offsetX = 140,   offsetY = 400, alpha = 0.7},
+	{name = 'dadShadow', path = 'bg/shadow2', target = 'dad',       offsetX = 62,  offsetY = 354, alpha = 0},
 }
 
 function onCreatePost()
@@ -39,10 +39,10 @@ function onCreatePost()
 	setProperty('glow.alpha', 0.75)
 	addLuaSprite('glow', true)
 
-	makeAnimatedLuaSprite('outro', 'characters/Normal-Outro', getProperty('dad.x') - 170, getProperty('dad.y') + 18)
+	makeAnimatedLuaSprite('outro', 'characters/Normal-Outro', getProperty('dad.x') - 331, getProperty('dad.y') - 414)
 	addAnimationByPrefix('outro', 'idle', 'Animation', 24, false)
 	setProperty('outro.alpha', 0)
-	scaleObject('outro', 0.552, 0.552)
+	scaleObject('outro', 0.55, 0.55, false)
 	addLuaSprite('outro', true)
 	setObjectOrder('outro', getObjectOrder('dadGroup') + 1)
 

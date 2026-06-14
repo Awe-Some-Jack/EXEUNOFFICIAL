@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="normal cd.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="terapia instancia 10000" x="12" y="12" width="630" height="834" frameX="-330" frameY="-6" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10001" x="664" y="12" width="630" height="834" frameX="-332" frameY="-6" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10002" x="1316" y="12" width="631" height="836" frameX="-320" frameY="-4" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10003" x="1316" y="12" width="631" height="836" frameX="-320" frameY="-4" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10004" x="1969" y="12" width="624" height="841" frameX="-297" frameY="0" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10005" x="2615" y="12" width="648" height="837" frameX="-333" frameY="-3" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10006" x="3285" y="12" width="851" height="848" frameX="-292" frameY="-38" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10007" x="4158" y="12" width="1139" height="848" frameX="-120" frameY="-38" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10008" x="12" y="882" width="652" height="832" frameX="-447" frameY="-47" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10009" x="686" y="882" width="158" height="359" frameX="-771" frameY="-246" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10010" x="866" y="882" width="626" height="824" frameX="-487" frameY="-54" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10011" x="866" y="882" width="626" height="824" frameX="-487" frameY="-54" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10012" x="866" y="882" width="626" height="824" frameX="-487" frameY="-54" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10013" x="866" y="882" width="626" height="824" frameX="-487" frameY="-54" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10014" x="866" y="882" width="626" height="824" frameX="-487" frameY="-54" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10015" x="866" y="882" width="626" height="824" frameX="-487" frameY="-54" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10016" x="866" y="882" width="626" height="824" frameX="-487" frameY="-54" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10017" x="1514" y="882" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10018" x="2835" y="882" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10019" x="12" y="1767" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10020" x="1333" y="1767" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10021" x="2654" y="1767" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10022" x="2654" y="1767" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10023" x="3975" y="1767" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10024" x="3975" y="1767" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10025" x="12" y="2652" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10026" x="12" y="2652" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10027" x="1333" y="2652" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10028" x="1333" y="2652" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10029" x="2654" y="2652" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10030" x="2654" y="2652" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10031" x="3975" y="2652" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10032" x="3975" y="2652" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+	<SubTexture name="terapia instancia 10033" x="3975" y="1767" width="1299" height="863" frameX="0" frameY="-15" frameWidth="1299" frameHeight="886"/>
+</TextureAtlas>

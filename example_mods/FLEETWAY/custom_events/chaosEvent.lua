@@ -119,9 +119,10 @@ function onTimerCompleted(t)
 		if dodging == false and not getProperty('cpuControlled') then
 			cameraShake('game', 0.01, 0.1)
 			addHealth(-10)
+			yourdeadnow = true
 		end
 
-		playSound('laser_moment', 1)
+		if not yourdeadnow then playSound('laser_moment', 1) end
 
 		playAnim('boyfriend', 'dodge', true)
 		setProperty('boyfriend.specialAnim', true)

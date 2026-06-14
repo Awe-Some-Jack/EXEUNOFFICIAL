@@ -1,11 +1,11 @@
 package states.extras.credits;
 
 import flixel.util.FlxGradient;
+import flixel.FlxCamera;
 import haxe.Json;
 import openfl.Assets;
-import states.extras.ExtrasMenu;
-
 import states.extras.credits.CreditPopup;
+import flixel.addons.display.FlxBackdrop;
 
 typedef Credit =
 {
@@ -20,220 +20,295 @@ typedef Credit =
 	@:optional var extra:Array<Dynamic>;
 }
 
-class CreditsState extends MusicBeatState
+private typedef Column =
+{
+	var key:String;
+	var label:String;
+	var cam:FlxCamera;
+	var list:FlxTypedGroup<FlxSprite>;
+	var nameTexts:Array<FlxText>;
+	var cardBgs:Array<FlxSprite>;
+}
+
+class CreditsState extends MusicBeatSubstate
 {
 	public static var credits:Map<String, Array<Credit>> = [];
 	public static var userSelected:Array<Dynamic> = ['unofficial', 0];
 
-	var devs:FlxCamera;
-	var og:FlxCamera;
-	var external:FlxCamera;
-	
-	var devList:FlxTypedGroup<FlxText>;
-	var ogList:FlxTypedGroup<FlxText>;
-	var externalList:FlxTypedGroup<FlxText>;
+	static inline final SPACING:Int     = 10;
+	static inline final ROW_H:Int       = 44;
+	static inline final FONT_SIZE:Int   = 20;
+	static inline final TITLE_SIZE:Int  = 28;
+	static inline final CARD_PAD:Int    = 8;
+	static inline final CARD_RADIUS:Float = 10.0;
+	static inline final ICON_SIZE:Int   = 30;
 
-	var transition:FlxCamera;
+	var columns:Array<Column> = [];
+	var curColumn:Int = 0;
+	var canSelect:Bool = false;
 
-	var inPopup:Bool = false;
+	var _hoveredCol:Int  = -1;
+	var _hoveredRow:Int  = -1;
 
 	override function create()
 	{
 		super.create();
 
+		final extrasMenu = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
+		if (extrasMenu?._orphanPlayer != null) extrasMenu._orphanPlayer.pause();
+		FlxG.sound.music?.pause();
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/credits.ogg'));
 
-		var json:Dynamic = Json.parse( Assets.getText("assets/exe/extras/credits/credits.json"));
-		for(cat in Reflect.fields(json))
+		final json:Dynamic = Json.parse(Assets.getText("assets/exe/extras/credits/credits.json"));
+		for (cat in Reflect.fields(json))
+			credits.set(cat, cast Reflect.field(json, cat));
+
+		add(FlxGradient.createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF1a0a2e, 0xFF3d0d1f], 1, 90));
+
+		final checker = _makeCheckers();
+		add(checker);
+
+		final titleBg = new FlxSprite(0, 0).makeGraphic(FlxG.width, SPACING * 6, 0x44000000);
+		add(titleBg);
+
+		final title = new FlxText(0, 0, FlxG.width, "CREDITS")
+			.setFormat(Paths.font("vcr.ttf"), TITLE_SIZE + 8, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
+		title.borderSize = 3;
+		title.y = (SPACING * 6 - title.height) * 0.5;
+		add(title);
+
+		final defs = [
+			{key: 'unofficial', label: 'Unofficial Dev Team'},
+			{key: 'original',   label: 'Original Team'},
+			{key: 'external',   label: 'External Credits'},
+		];
+
+		final colCount  = defs.length;
+		final colW      = Std.int((FlxG.width - SPACING * (colCount + 1)) / colCount);
+		final titleBarH = SPACING * 6;
+		final topGap    = titleBarH + SPACING * 5;
+		final botGap    = SPACING * 3;
+		final colH      = FlxG.height - topGap - botGap;
+		final camY      = topGap;
+		final camPad    = 6;
+
+		for (i in 0...colCount)
 		{
-			var daCreds:Array<Credit> = cast Reflect.field(json, cat);
-			credits.set(cat, daCreds);
+			final def = defs[i];
+			final camX = SPACING + i * (colW + SPACING);
+
+			final colBg = new FlxSprite(camX, camY);
+			colBg.makeGraphic(colW, colH, 0x00000000, true);
+			colBg.pixels.fillRect(new openfl.geom.Rectangle(0, 0, colW, colH), 0x33000000);
+			final bgShader = new shaders.RoundedBorderShader(16.0, 0.0, 0xFF000000);
+			bgShader.setSize(colW, colH);
+			colBg.shader = bgShader;
+			colBg.alpha  = 0;
+			add(colBg);
+
+			final titleY = camY - SPACING * 3 - 4;
+			final colTitle = new FlxText(camX, titleY, colW, def.label)
+				.setFormat(Paths.font("vcr.ttf"), TITLE_SIZE, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
+			colTitle.borderSize = 2;
+			colTitle.alpha = 0;
+			colTitle.y = titleY - colTitle.height * 0.5;
+			add(colTitle);
+
+			final cam = new FlxCamera();
+			cam.bgColor = 0x00000000;
+			FlxG.cameras.add(cam, false);
+			cam.setSize(colW - camPad * 2, colH - camPad * 2);
+			cam.setPosition(camX + camPad, camY + camPad);
+
+			final list      = new FlxTypedGroup<FlxSprite>();
+			final nameTexts:Array<FlxText>  = [];
+			final cardBgs:Array<FlxSprite>  = [];
+			add(list);
+
+			final entries = credits.get(def.key);
+			if (entries != null)
+			{
+				for (j in 0...entries.length)
+				{
+					final entry = entries[j];
+					final cardY = CARD_PAD + j * ROW_H;
+
+					final camInnerW = colW - camPad * 2;
+					final cardW     = camInnerW - CARD_PAD * 2;
+					final card = new FlxSprite(CARD_PAD, cardY);
+					card.makeGraphic(cardW, ROW_H - 4, 0x00000000, true);
+					card.pixels.fillRect(new openfl.geom.Rectangle(0, 0, cardW, ROW_H - 4), 0x22FFFFFF);
+					final cardShader = new shaders.RoundedBorderShader(CARD_RADIUS, 0.0, 0xFF000000);
+					cardShader.setSize(cardW, ROW_H - 4);
+					card.shader = cardShader;
+					card.camera = cam;
+					list.add(card);
+					cardBgs.push(card);
+
+					final iconPath = 'assets/exe/extras/credits/${def.key}/icons/${entry.icon}.png';
+					final hasIcon  = entry.icon != null && sys.FileSystem.exists(iconPath);
+					var textOffX   = CARD_PAD * 2;
+
+					if (hasIcon)
+					{
+						final icon = new FlxSprite(CARD_PAD * 2, cardY + (ROW_H - 4 - ICON_SIZE) * 0.5);
+						icon.loadGraphic(iconPath);
+						icon.setGraphicSize(ICON_SIZE, ICON_SIZE);
+						icon.updateHitbox();
+						icon.camera = cam;
+						final iconShader = new shaders.RoundedBorderShader(ICON_SIZE * 0.5, 0.0, 0xFF000000);
+						iconShader.setSize(ICON_SIZE, ICON_SIZE);
+						icon.shader = iconShader;
+						list.add(icon);
+						textOffX = CARD_PAD * 2 + ICON_SIZE + CARD_PAD;
+					}
+
+					final textW = cardW - textOffX - CARD_PAD;
+					final text  = new FlxText(textOffX, cardY + (ROW_H - 4 - FONT_SIZE) * 0.5, textW, entry.name)
+						.setFormat(Paths.font("vcr.ttf"), FONT_SIZE, 0xFFFFFFFF, LEFT, NONE);
+					text.camera = cam;
+					list.add(text);
+					nameTexts.push(text);
+				}
+			}
+
+			columns.push({key: def.key, label: def.label, cam: cam, list: list, nameTexts: nameTexts, cardBgs: cardBgs});
+
+			final delay = i * 0.08;
+			final finalY = camY;
+			colBg.y    = camY - 40;
+			colTitle.y = colTitle.y - 40;
+
+			FlxTween.tween(colBg,    {y: finalY, alpha: 1},        0.5, {ease: FlxEase.expoOut, startDelay: delay});
+			FlxTween.tween(colTitle, {y: titleY - colTitle.height * 0.5, alpha: 1}, 0.5, {ease: FlxEase.expoOut, startDelay: delay});
 		}
-
-		var bg = FlxGradient.createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF730E4E, 0xFFA9171E], 1, 90);
-		add(bg);
-
-		var spacing:Int = 10;
-		devs = new FlxCamera();
-		devs.bgColor = 0x22000000;
-		FlxG.cameras.add(devs, false);
-		devs.setSize(Std.int((FlxG.width - (spacing * 4)) / 3), FlxG.height - (spacing * 8)); devs.setPosition(spacing, spacing * 7);
-		var devTitle:FlxText = new FlxText(devs.x, spacing * 2, devs.width, "Unofficial Dev Team").setFormat(Paths.font("vcr.ttf"), 32, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
-		devTitle.borderSize = 2;
-		add(devTitle);
-		devList = new FlxTypedGroup<FlxText>();
-		add(devList);
-		for(i in 0...credits.get("unofficial").length)
-		{
-			var text = new FlxText(5, 5 + (i * 32),devs.width - 10, credits.get("unofficial")[i].name).setFormat(Paths.font("vcr.ttf"), 24, 0xFFFFFFFF, LEFT, NONE);
-			text.borderSize = 2;
-			text.camera = devs;
-			devList.add(text);
-		}
-
-		og = new FlxCamera();
-		og.bgColor = 0x22000000;
-		FlxG.cameras.add(og, false);
-		og.setSize(Std.int((FlxG.width - (spacing * 4)) / 3), FlxG.height - (spacing * 8)); og.setPosition(spacing * 2 + og.width, spacing * 7);
-		var ogTitle:FlxText = new FlxText(og.x, spacing * 2, og.width, "Original Team").setFormat(Paths.font("vcr.ttf"), 32, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
-		ogTitle.borderSize = 2;
-		add(ogTitle);
-		ogList = new FlxTypedGroup<FlxText>();
-		add(ogList);
-		for(i in 0...credits.get("original").length)
-		{
-			var text = new FlxText(5, 5 + (i * 32), og.width - 10, credits.get("original")[i].name).setFormat(Paths.font("vcr.ttf"), 24, 0xFFFFFFFF, LEFT, NONE);
-			text.borderSize = 2;
-			text.camera = og;
-			ogList.add(text);
-		}
-
-		external = new FlxCamera();
-		external.bgColor = 0x22000000;
-		FlxG.cameras.add(external, false);
-		external.setSize(Std.int((FlxG.width - (spacing * 4)) / 3), FlxG.height - (spacing * 8)); external.setPosition(spacing * 3 + external.width * 2, spacing * 7);
-		var externalTitle:FlxText = new FlxText(external.x, spacing * 2, external.width, "External Credits").setFormat(Paths.font("vcr.ttf"), 32, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
-		externalTitle.borderSize = 2;
-		add(externalTitle);
-		externalList = new FlxTypedGroup<FlxText>();
-		add(externalList);
-		for(i in 0...credits.get("external").length)
-		{
-			var text = new FlxText(5, 5 + (i * 32), external.width - 10, credits.get("external")[i].name).setFormat(Paths.font("vcr.ttf"), 24, 0xFFFFFFFF, LEFT, NONE);
-			text.borderSize = 2;
-			text.camera = external;
-			externalList.add(text);
-		}
-
-		transition = new FlxCamera();
-		transition.bgColor.alpha = 0;
-		FlxG.cameras.add(transition, false);
 
 		#if DISCORD_ALLOWED
-		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Credits Menu");
 		#end
+
 	}
 
-	var canSelect:Bool = false;
+	function _makeCheckers():FlxBackdrop
+	{
+		final tileSize = 32;
+		final bmd = new openfl.display.BitmapData(tileSize * 2, tileSize * 2, true, 0x00000000);
+		bmd.fillRect(new openfl.geom.Rectangle(0,         0,         tileSize, tileSize), 0x08FFFFFF);
+		bmd.fillRect(new openfl.geom.Rectangle(tileSize,  tileSize,  tileSize, tileSize), 0x08FFFFFF);
+		final bd = new FlxBackdrop(bmd, XY, 0, 0);
+		bd.velocity.set(15, 10);
+		bd.alpha = 0.5;
+		return bd;
+	}
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (inPopup || subState != null) return;
+		if (subState != null) return;
 
 		if (controls.BACK)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			FlxG.switchState(() -> new ExtrasMenu());
-			FlxG.sound.music.fadeOut(0.3);
+			FlxG.sound.music?.stop();
+			final extrasMenu = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
+			if (extrasMenu?._orphanPlayer != null)
+				extrasMenu._orphanPlayer.playAudio(
+					states.extras.dagarden.DAGarden.currentSong,
+					states.extras.dagarden.DAGarden.currentSongMod);
+			close();
+			return;
 		}
 
-		defaultValues();
+		_resetCards();
+		canSelect   = false;
+		_hoveredCol = -1;
+		_hoveredRow = -1;
 
-		if (overlapCamera(devs))
-		{
-			if (FlxG.mouse.deltaWheel.y != 0)
-			{
-				devs.scroll.y -= FlxG.mouse.deltaWheel.y * 32;
-				devs.scroll.y = FlxMath.bound(devs.scroll.y, 0, Math.max(0, (devList.length * 32) - devs.height + 10));
-			}
-
-			for(i in 0...devList.length)
-			{
-				var text = devList.members[i];
-				if (FlxG.mouse.overlaps(text, devs))
-				{
-					if (text.color != 0xFFFFFF00)
-					{
-						canSelect = true;
-						text.color = 0xFFFFFF00;
-						userSelected = ['unofficial', i];
-					}
-				}
-			}
-		}
-
-		if (overlapCamera(og))
-		{
-			if (FlxG.mouse.deltaWheel.y != 0)
-			{
-				og.scroll.y -= FlxG.mouse.deltaWheel.y * 32;
-				og.scroll.y = FlxMath.bound(og.scroll.y, 0, Math.max(0, (ogList.length * 32) - og.height + 10));
-			}
-
-			for(i in 0...ogList.length)
-			{
-				var text = ogList.members[i];
-				if (FlxG.mouse.overlaps(text, og))
-				{
-					if (text.color != 0xFFFFFF00)
-					{
-						canSelect = true;
-						text.color = 0xFFFFFF00;
-						userSelected = ['original', i];
-					}
-				}
-			}
-		}
-
-		if (overlapCamera(external))
-		{
-			if (FlxG.mouse.deltaWheel.y != 0)
-			{
-				external.scroll.y -= FlxG.mouse.deltaWheel.y * 32;
-				external.scroll.y = FlxMath.bound(external.scroll.y, 0, Math.max(0, (externalList.length * 32) - external.height + 10));
-			}
-
-			for(i in 0...externalList.length)
-			{
-				var text = externalList.members[i];
-				if (FlxG.mouse.overlaps(text, external))
-				{
-					if (text.color != 0xFFFFFF00)
-					{
-						canSelect = true;
-						text.color = 0xFFFFFF00;
-						userSelected = ['external', i];
-					}
-				}
-			}
-		}
+		for (ci in 0...columns.length)
+			_handleColumn(ci);
 
 		if ((controls.ACCEPT || FlxG.mouse.justPressed) && canSelect)
-		{
-			inPopup = true;
 			openSubState(new CreditPopup());
+	}
+
+	function _handleColumn(ci:Int):Void
+	{
+		final col = columns[ci];
+		final cam = col.cam;
+
+		if (!_mouseOverCam(cam)) return;
+
+		if (FlxG.mouse.deltaWheel.y != 0)
+		{
+			final entries = credits.get(col.key);
+			final maxScroll = entries != null ? Math.max(0, entries.length * ROW_H - cam.height + CARD_PAD * 2) : 0;
+			cam.scroll.y -= FlxG.mouse.deltaWheel.y * ROW_H;
+			cam.scroll.y  = FlxMath.bound(cam.scroll.y, 0, maxScroll);
+		}
+
+		for (i in 0...col.cardBgs.length)
+		{
+			final cardBg = col.cardBgs[i];
+			if (cardBg != null && FlxG.mouse.overlaps(cardBg, cam))
+			{
+				canSelect    = true;
+				curColumn    = ci;
+				_hoveredCol  = ci;
+				_hoveredRow  = i;
+				userSelected = [col.key, i];
+				_highlightCard(col, i, true);
+			}
 		}
 	}
 
-	function defaultValues():Void
+	function _highlightCard(col:Column, row:Int, on:Bool):Void
 	{
-		canSelect = false;
-		for(text in devList.members)
-			if (text != null)
-				text.color = 0xFFFFFFFF;
+		if (row < col.nameTexts.length && col.nameTexts[row] != null)
+			col.nameTexts[row].color = on ? 0xFFFFFF44 : 0xFFFFFFFF;
 
-		for(text in ogList.members)
-			if (text != null)
-				text.color = 0xFFFFFFFF;
+		if (row >= col.cardBgs.length) return;
+		final cardBg = col.cardBgs[row];
+		if (cardBg == null) return;
 
-		for(text in externalList.members)
-			if (text != null)
-				text.color = 0xFFFFFFFF;
+		final fill = on ? 0x44FFFFFF : 0x22FFFFFF;
+		cardBg.pixels.fillRect(new openfl.geom.Rectangle(0, 0, cardBg.frameWidth, cardBg.frameHeight), fill);
+		cardBg.dirty = true;
 	}
 
-	function overlapCamera(cam:FlxCamera):Bool
-		return FlxG.mouse.viewX >= cam.x && FlxG.mouse.viewX <= cam.x + cam.width && FlxG.mouse.viewY >= cam.y && FlxG.mouse.viewY <= cam.y + cam.height;
+	function _resetCards():Void
+	{
+		for (col in columns)
+		{
+			for (t in col.nameTexts)
+				if (t != null) t.color = 0xFFFFFFFF;
+			for (card in col.cardBgs)
+			{
+				if (card == null) continue;
+				card.pixels.fillRect(new openfl.geom.Rectangle(0, 0, card.frameWidth, card.frameHeight), 0x22FFFFFF);
+				card.dirty = true;
+			}
+		}
+	}
+
+	function _mouseOverCam(cam:FlxCamera):Bool
+		return FlxG.mouse.viewX >= cam.x && FlxG.mouse.viewX <= cam.x + cam.width
+			&& FlxG.mouse.viewY >= cam.y && FlxG.mouse.viewY <= cam.y + cam.height;
 
 	override function closeSubState()
 	{
-		if (FlxG.sound.music.volume < 1)
+		if (FlxG.sound.music != null && FlxG.sound.music.volume < 1)
 		{
 			FlxTween.cancelTweensOf(FlxG.sound.music);
 			FlxTween.tween(FlxG.sound.music, {volume: 1}, 0.6);
 		}
 		super.closeSubState();
-		inPopup = false;
+	}
+
+	override function destroy()
+	{
+		for (col in columns) FlxG.cameras.remove(col.cam);
+		columns = null;
+		super.destroy();
 	}
 }

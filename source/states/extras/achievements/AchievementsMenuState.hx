@@ -1,11 +1,11 @@
-package states.extras;
+package states.extras.achievements;
 
 import flixel.FlxObject;
 import flixel.util.FlxSort;
 import objects.Bar;
 
 #if ACHIEVEMENTS_ALLOWED
-class AchievementsMenuState extends MusicBeatState
+class AchievementsMenuState extends MusicBeatSubstate
 {
 	public var curSelected:Int = 0;
 
@@ -22,8 +22,6 @@ class AchievementsMenuState extends MusicBeatState
 
 	override function create()
 	{
-		Paths.clearStoredMemory();
-		Paths.clearUnusedMemory();
 
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("Achievements Menu", null);
@@ -205,8 +203,8 @@ class AchievementsMenuState extends MusicBeatState
 
 		if (controls.BACK) {
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			FlxG.switchState(() -> new exe.main.states.EXEMenu());
 			goingBack = true;
+			close();
 		}
 		super.update(elapsed);
 	}
@@ -216,6 +214,8 @@ class AchievementsMenuState extends MusicBeatState
 		if (barTween != null) { barTween.cancel(); barTween = null; }
 		grpOptions = null; nameText = null; descText = null;
 		progressTxt = null; progressBar = null; camFollow = null;
+		FlxG.camera.follow(null);
+		FlxG.camera.scroll.set(0, 0);
 		super.destroy();
 	}
 

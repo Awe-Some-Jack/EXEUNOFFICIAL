@@ -1,55 +1,95 @@
 {
 	"animations": [
 		{
-			"offsets": [39, -188],
-			"indices": [],
+			"offsets": [-453, -328],
+			"loop": true,
 			"fps": 24,
 			"anim": "idle",
-			"loop": true,
-			"name": "Idle "
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+			"name": "Sonic_IDLE"
 		},
 		{
-			"offsets": [77, -98],
-			"indices": [],
+			"offsets": [-432, -286],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "Up"
+			"indices": [],
+			"name": "Sonic_UP"
 		},
 		{
-			"offsets": [22, -311],
-			"indices": [],
+			"offsets": [-414, -407],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "Down"
+			"indices": [],
+			"name": "Sonic_DOWN"
 		},
 		{
-			"offsets": [11, -199],
-			"indices": [],
+			"offsets": [-461, -323],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "Right"
+			"indices": [],
+			"name": "Sonic_RIGHT"
 		},
 		{
-			"offsets": [153, -193],
-			"indices": [],
+			"offsets": [-319, -337],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
+			"indices": [],
+			"name": "Sonic_LEFT"
+		},
+		{
 			"loop": false,
-			"name": "Left"
+			"offsets": [-448, -248],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "Sonic2_UP",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-364, -403],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "Sonic2_DOWN",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-401, -229],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "Sonic2_RIGHT",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-157, -397],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "Sonic2_LEFT",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [-450, -344],
+			"anim": "idle-alt",
+			"fps": 24,
+			"name": "Sonic2_IDLE",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/sonic",
+	"image": "characters/sonic, characters/sonic2",
 	"position": [0, 0],
 	"healthicon": "sonic",
 	"flip_x": false,
 	"healthbar_colors": [0, 76, 250],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.4,
 	"_editor_isPlayer": false
 }

@@ -18,6 +18,7 @@ var gameOverHUD:FlxCamera;
 function onCreate()
 {
 	GameOverSubstate.characterName = 'bfc-dead';
+	GameOverSubstate.deathSoundName = 'empty';
 }
 
 function onGameOverStart()
@@ -30,13 +31,11 @@ function onGameOverStart()
 	inGameOver = true;
 	if (GameOverSubstate.instance.boyfriend != null && deadBoyfriend == null) deadBoyfriend = GameOverSubstate.instance.boyfriend;
 	deadBoyfriend.scrollFactor.set();
-	deadBoyfriend.setPosition(280, 100);
+	deadBoyfriend.setPosition(-50, -50);
 
 	FlxG.camera.follow();
 	FlxG.camera.scroll.set(0, 0);
 	FlxG.camera.zoom = 0.7;
-	
-	for (sound in FlxG.sound.list) if (sound.playing) sound.volume = 0;
 
 	deadMusic = new FlxSound();
 	deadMusic.load(Paths.music('gameOver'), true);

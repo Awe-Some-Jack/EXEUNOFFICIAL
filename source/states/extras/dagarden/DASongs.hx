@@ -224,9 +224,11 @@ class DASongs extends FlxGroup
 
 			add(cover);
 
-			final lbl = new FlxText(BOX_X + 10, yBase + 8, 300, songList[i].toUpperCase(), 14);
-			lbl.setFormat(null, 14, FlxColor.WHITE, LEFT);
-			lbl.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
+			final lbl = new FlxText(BOX_X + 10, yBase + 8, 600, songList[i].toUpperCase(), 28);
+			lbl.setFormat(null, 28, FlxColor.WHITE, LEFT);
+			lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 4);
+			lbl.scale.set(0.5, 0.5);
+			lbl.updateHitbox();
 			lbl.antialiasing = ClientPrefs.data.antialiasing;
 			lbl.visible = !songHasCover[i];
 			add(lbl);

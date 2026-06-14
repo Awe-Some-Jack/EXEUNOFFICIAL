@@ -1,6 +1,6 @@
 package states.extras.dagarden;
 
-import backend.MusicBeatState;
+import backend.MusicBeatSubstate;
 import backend.Controls;
 import backend.Paths;
 import flixel.FlxG;
@@ -8,11 +8,14 @@ import flixel.FlxSprite;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import flixel.addons.display.FlxBackdrop;
-import states.extras.ExtrasMenu;
 
-class DAGarden extends MusicBeatState
+class DAGarden extends MusicBeatSubstate
 {
-	private var fondo:FlxSprite;
+	public static var currentSong:String = '';
+	public static var currentSongMod:String = '';
+	public static var orphanPlayer:DAPlayer = null;
+
+	private var checkers:FlxBackdrop;
 	private var sprite1:FlxSprite;
 	private var sprite2:FlxSprite;
 	private var sprite3:FlxSprite;
@@ -33,9 +36,6 @@ class DAGarden extends MusicBeatState
 
 	override public function create():Void
 	{
-		Paths.clearStoredMemory();
-		Paths.clearUnusedMemory();
-
 		FlxG.autoPause = false;
 
 		FlxG.sound.music?.pause();
@@ -57,7 +57,7 @@ class DAGarden extends MusicBeatState
 
 		if (songs.songList.length > 0)
 			new flixel.util.FlxTimer().start(0.05, (_) -> _onSongSelected(0));
-		
+
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the DA Garden", null);
 		#end
@@ -69,45 +69,70 @@ class DAGarden extends MusicBeatState
 	{
 		super.update(elapsed);
 		if (subState != null) return;
-		
+
 		spikes.velocity.y = 50;
 		rotationTime += elapsed;
 		_updateDecorAngles();
-		
+
 		if (sub != null && player != null)
 			sub.updateTime(player.currentTime());
-			
+
 		_handleInput();
 	}
 
 	override public function destroy():Void
 	{
-		player?.stop();
+		if (player != null && !player.isPlaying) player.stop();
 		_cancelDecorTweens();
-		
-		fondo = null; 
-		marcogris = null; 
+
+		checkers = null;
+		marcogris = null;
 		dagarden = null;
-		arrow = null; 
+		arrow = null;
 		spikes = null;
 		sub = null;
-		sprite1 = null; 
-		sprite2 = null; 
+		sprite1 = null;
+		sprite2 = null;
 		sprite3 = null;
 		sprite4 = null;
-		sprite6 = null; 
-		sprite7 = null; 
+		sprite6 = null;
+		sprite7 = null;
 		sprite8 = null;
 
 		FlxG.autoPause = true;
-		Paths.clearStoredMemory();
-		Paths.clearUnusedMemory();
 		super.destroy();
 	}
 
 	private function _buildBackground():Void
 	{
-		fondo   = _makeSprite(0,    0,   "fondo.png",  0.34);
+		final w:Int = FlxG.width;
+		final h:Int = FlxG.height;
+		final bmd = new openfl.display.BitmapData(w, h, false, 0xFFbd0033);
+		final left = {r: 0xbd, g: 0x00, b: 0x33};
+		final right = {r: 0x57, g: 0x00, b: 0x0b};
+		for (x in 0...w)
+		{
+			final t:Float = x / (w - 1);
+			final r:Int = Math.round(left.r + (right.r - left.r) * t);
+			final g:Int = Math.round(left.g + (right.g - left.g) * t);
+			final b:Int = Math.round(left.b + (right.b - left.b) * t);
+			bmd.fillRect(new openfl.geom.Rectangle(x, 0, 1, h), 0xFF000000 | (r << 16) | (g << 8) | b);
+		}
+		final background = new FlxSprite(0, 0);
+		background.loadGraphic(bmd);
+		add(background);
+
+		final tileSize:Int = 40;
+		final cbmd = new openfl.display.BitmapData(tileSize * 2, tileSize * 2, true, 0x00000000);
+		cbmd.fillRect(new openfl.geom.Rectangle(0,        0,        tileSize, tileSize), 0xFF3d0008);
+		cbmd.fillRect(new openfl.geom.Rectangle(tileSize, 0,        tileSize, tileSize), 0xFF831826);
+		cbmd.fillRect(new openfl.geom.Rectangle(0,        tileSize, tileSize, tileSize), 0xFF831826);
+		cbmd.fillRect(new openfl.geom.Rectangle(tileSize, tileSize, tileSize, tileSize), 0xFF3d0008);
+		checkers = new FlxBackdrop(cbmd, XY, 0, 0);
+		checkers.alpha = 0.10;
+		checkers.velocity.x = -60;
+		add(checkers);
+
 		sprite1 = _makeSprite(560,  560, "1.png",      0.25);
 		sprite2 = _makeSprite(950,  580, "2.png",      0.15);
 		sprite3 = _makeSprite(1100, 50,  "3.png",      0.25);
@@ -190,6 +215,8 @@ class DAGarden extends MusicBeatState
 		player.setSongInfo(songs.selectedSong(), songs.selectedCredits());
 		sub.loadLyrics(songs.selectedSong(), songs.selectedMod());
 		sub.reset();
+		currentSong    = songs.selectedSong();
+		currentSongMod = songs.selectedMod();
 
 		if (player.isPlaying) player.fadeOutAndStop();
 		else player.stop();
@@ -212,9 +239,16 @@ class DAGarden extends MusicBeatState
 		if (controls.BACK)
 		{
 			player.restoreWindowTitle();
-			player.stop();
-			FlxG.sound.music?.resume();
-			FlxG.switchState(() -> new ExtrasMenu());
+			if (player.isPlaying)
+			{
+				remove(player, true);
+				orphanPlayer = player;
+			}
+			else
+			{
+				FlxG.sound.music?.resume();
+			}
+			close();
 		}
 	}
 }

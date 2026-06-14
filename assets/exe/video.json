@@ -1,0 +1,74 @@
+{
+  "videos": [
+    {
+      "name": "too slow",
+      "displayName": "TOO SLOW",
+      "path": "assets/exe/extras/cutscenes/too slow.mp4"
+    },
+    {
+      "name": "you cant run",
+      "displayName": "YOU CANT RUN",
+      "path": "assets/exe/extras/cutscenes/you cant run.mp4"
+    },
+    {
+      "name": "triple trouble",
+      "displayName": "TRIPLE TROUBLE",
+      "path": "assets/exe/extras/cutscenes/triple trouble.mp4"
+    },
+    {
+      "name": "FINAL ESCAPE",
+      "displayName": "FINAL ESCAPE",
+      "path": "assets/exe/extras/cutscenes/FINAL ESCAPE.mp4"
+    },
+    {
+      "name": "WHAT",
+      "displayName": "WHAT",
+      "path": "assets/exe/extras/cutscenes/WHAT.mp4"
+    },
+    {
+      "name": "CUTSCENE",
+      "displayName": "CUTSCENE",
+      "path": "assets/exe/extras/cutscenes/CUTSCENE.mp4"
+    },
+    {
+      "name": "EYE FOR EYE",
+      "displayName": "EYE FOR EYE",
+      "path": "assets/exe/extras/cutscenes/EYE FOR EYE.mp4"
+    },
+    {
+      "name": "GODSPEED",
+      "displayName": "GODSPEED",
+      "path": "assets/exe/extras/cutscenes/GODSPEED.mp4"
+    },
+    {
+      "name": "SOULLESS",
+      "displayName": "SOULLESS",
+      "path": "assets/exe/extras/cutscenes/SOULLESS.mp4"
+    },
+    {
+      "name": "OMW",
+      "displayName": "OMW",
+      "path": "assets/exe/extras/cutscenes/OMW.mp4"
+    },
+    {
+      "name": "DECEPTION",
+      "displayName": "DECEPTION",
+      "path": "assets/exe/extras/cutscenes/DECEPTION.mp4"
+    },
+    {
+      "name": "FAKEBABY",
+      "displayName": "FAKEBABY",
+      "path": "assets/exe/extras/cutscenes/FAKEBABY.mp4"
+    },
+    {
+      "name": "FAKEBABY END",
+      "displayName": "FAKEBABY END",
+      "path": "assets/exe/extras/cutscenes/FAKEBABY END.mp4"
+    },
+    {
+      "name": "PREDESIGN",
+      "displayName": "PREDESIGN",
+      "path": "assets/exe/extras/cutscenes/PREDESIGN.mp4"
+    }
+  ]
+}

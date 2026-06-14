@@ -143,22 +143,28 @@ class DAPlayer extends FlxGroup
 		barKnob.alpha = 0;
 		add(barKnob);
 		
-		timeTxt = new FlxText(BX + 10, BY + bH + 7, Std.int(bW), '0:00', 22);
-		timeTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 22, FlxColor.BLACK, CENTER);
+		timeTxt = new FlxText(BX + 10, BY + bH + 7, Std.int(bW), '0:00', 44);
+		timeTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 44, FlxColor.BLACK, CENTER);
+		timeTxt.scale.set(0.5, 0.5);
+		timeTxt.updateHitbox();
 		timeTxt.antialiasing = ClientPrefs.data.antialiasing;
 		add(timeTxt);
 
-		songNameTxt = new FlxText(625, 132, 560, '', 60);
-		songNameTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 60, FlxColor.BLACK, CENTER);
+		songNameTxt = new FlxText(625, 132, 1120, '', 120);
+		songNameTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 120, FlxColor.BLACK, CENTER);
 		songNameTxt.letterSpacing = 2;
 		songNameTxt.wordWrap = false;
+		songNameTxt.scale.set(0.5, 0.5);
+		songNameTxt.updateHitbox();
 		songNameTxt.antialiasing = ClientPrefs.data.antialiasing;
 		add(songNameTxt);
 
-		composerTxt = new FlxText(625, 196, 560, '', 18);
-		composerTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 18, FlxColor.BLACK, CENTER);
+		composerTxt = new FlxText(625, 196, 1120, '', 36);
+		composerTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 36, FlxColor.BLACK, CENTER);
 		composerTxt.letterSpacing = 6;
 		composerTxt.wordWrap = false;
+		composerTxt.scale.set(0.5, 0.5);
+		composerTxt.updateHitbox();
 		composerTxt.antialiasing = ClientPrefs.data.antialiasing;
 		add(composerTxt);
 
@@ -193,10 +199,10 @@ class DAPlayer extends FlxGroup
 	{
 		final display = StringTools.replace(songName, '-', ' ').toUpperCase();
 		songNameTxt.text = display;
-		var size = 60;
+		var size = 120;
 		songNameTxt.size = size;
-		
-		while (songNameTxt.textField.textWidth > 540 && size > 10)
+
+		while (songNameTxt.textField.textWidth > 1080 && size > 20)
 			songNameTxt.size = --size;
 
 		currentCredits = credits != null ? credits : [];
@@ -250,6 +256,20 @@ class DAPlayer extends FlxGroup
 		#end
 	}
 
+	public function detachSounds():Void
+	{
+		if (instSound != null) FlxG.sound.list.remove(instSound, false);
+		for (v in vocalsSounds) FlxG.sound.list.remove(v, false);
+	}
+
+	public function reattachSounds():Void
+	{
+		if (instSound != null && !FlxG.sound.list.members.contains(instSound))
+			FlxG.sound.list.add(instSound);
+		for (v in vocalsSounds)
+			if (!FlxG.sound.list.members.contains(v)) FlxG.sound.list.add(v);
+	}
+
 	public function stop():Void
 	{
 		audioFadeSpeed = 0;
@@ -270,6 +290,12 @@ class DAPlayer extends FlxGroup
 			audioFadeTarget = 0.0;
 			audioFadeSpeed = 12.0;
 		});
+	}
+
+	public function setVolume(vol:Float):Void
+	{
+		audioFadeTarget = vol;
+		audioFadeSpeed = 8.0;
 	}
 
 	public function seek(deltaSec:Float):Void

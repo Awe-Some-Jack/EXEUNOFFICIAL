@@ -6,115 +6,206 @@ import openfl.display.GradientType;
 import openfl.geom.Matrix;
 import openfl.display.Shape;
 import flixel.graphics.frames.FlxAtlasFrames;
-
 import states.extras.credits.CreditsState;
 import states.extras.credits.CreditsState.Credit;
 
 class CreditPopup extends MusicBeatSubstate
 {
+	static inline final ICON_SIZE:Int    = 100;
+	static inline final EXTRA_SIZE:Int   = 200;
+	static inline final BORDER_SIZE:Int  = 16;
+	static inline final CORNER_R:Int     = 100;
+
 	var selectedUser:Credit;
 
 	var popupCamera:FlxCamera;
-	var quoteBG:FlxCamera;
+	var quoteCam:FlxCamera;
+
 	var bg:FlxSprite;
 	var userIcon:FlxSprite;
 	var userQuote:FlxText;
 	var scrollBar:FlxSprite;
+	var explosion:FlxSprite;
+
+	var twitterBtn:FlxSprite;
+	var youtubeBtn:FlxSprite;
 
 	#if VIDEOS_ALLOWED
 	var userVideo:hxvlc.flixel.FlxVideoSprite;
+	var pauseBtn:FlxSprite;
+	var videoPaused:Bool = false;
 	#end
-	var userImage:FlxSprite;
 
-	var twitterSocial:FlxSprite;
-	var youtubeSocial:FlxSprite;
+	var savedIconScale:Float = 1;
+	var iconClickSpeed:Float  = 0;
+	var canClick:Bool         = true;
+	var pressingBtn:String    = '';
 
-	var explosion:FlxSprite;
-
-	var savedScale:Float = 1;
 	override function create()
 	{
 		super.create();
 
 		popupCamera = new FlxCamera();
-		popupCamera.bgColor = 0x66000000;
+		popupCamera.bgColor = 0x00000000;
 		FlxG.cameras.add(popupCamera, false);
 
 		selectedUser = CreditsState.credits.get(CreditsState.userSelected[0])[CreditsState.userSelected[1]];
 
-		var shape = new Shape();
-		var matrix = new Matrix();
-		matrix.createGradientBox(Std.int(FlxG.width - 100), Std.int(FlxG.height - 100), Math.PI / 2);
-		var firstColor = (selectedUser.colors != null && selectedUser.colors.length > 0) ? selectedUser.colors[0] : [115, 14, 78];
-		var secondColor = (selectedUser.colors != null && selectedUser.colors.length > 1 ) ? selectedUser.colors[1] : [169, 23, 30];
-		shape.graphics.beginGradientFill(GradientType.LINEAR, [
-				FlxColor.fromRGB(firstColor[0], firstColor[1], firstColor[2]),
-				FlxColor.fromRGB(secondColor[0], secondColor[1], secondColor[2])
-			], [1, 1], [0, 255], matrix);
-		shape.graphics.drawRoundRect(0, 0, Std.int(FlxG.width - 100), Std.int(FlxG.height - 100), 100, 100);
+		_buildBackground();
+		_buildHeader();
+		_buildDescription();
+		_buildQuotePanel();
+		_buildExplosion();
+		_buildExtra();
+		_buildSocialButtons();
+		_animateIn();
+	}
+
+	function _buildBackground():Void
+	{
+		final w = Std.int(FlxG.width  - 100);
+		final h = Std.int(FlxG.height - 100);
+
+		final c1 = selectedUser.colors != null && selectedUser.colors.length > 0 ? selectedUser.colors[0] : [115, 14, 78];
+		final c2 = selectedUser.colors != null && selectedUser.colors.length > 1 ? selectedUser.colors[1] : [169, 23, 30];
+
+		final dim = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0x88000000);
+		dim.camera = popupCamera;
+		dim.scrollFactor.set(0, 0);
+		add(dim);
+
+		final shape = new Shape();
+		final matrix = new Matrix();
+		matrix.createGradientBox(w, h, Math.PI / 2);
+		shape.graphics.beginGradientFill(GradientType.LINEAR,
+			[FlxColor.fromRGB(c1[0], c1[1], c1[2]), FlxColor.fromRGB(c2[0], c2[1], c2[2])],
+			[1, 1], [0, 255], matrix);
+		shape.graphics.drawRoundRect(0, 0, w, h, CORNER_R, CORNER_R);
 		shape.graphics.endFill();
-		var borderSize = 16;
-		shape.graphics.lineStyle(borderSize, 0x2A000000, 0.5);
-		shape.graphics.drawRoundRect(borderSize / 2, borderSize / 2, Std.int(FlxG.width - 100) - borderSize, Std.int(FlxG.height - 100) - borderSize, 100 - borderSize, 100 - borderSize);
-		var bmp = new BitmapData(Std.int(FlxG.width - 100), Std.int(FlxG.height - 100), true, 0x00000000);
+
+		final bmp = new BitmapData(w, h, true, 0x00000000);
 		bmp.draw(shape);
 		bg = new FlxSprite().loadGraphic(bmp);
 		bg.screenCenter();
 		bg.camera = popupCamera;
-		add(bg);
 
-		var iconPath:String = "assets/exe/extras/credits/missing_icon.png";
-		if (selectedUser.icon != null && FileSystem.exists('assets/exe/extras/credits/${CreditsState.userSelected[0]}/icons/${selectedUser.icon}.png')) iconPath = 'assets/exe/extras/credits/${CreditsState.userSelected[0]}/icons/${selectedUser.icon}.png';
+		final borderShape = new Shape();
+		borderShape.graphics.lineStyle(BORDER_SIZE * 0.5, 0xFFFFFFFF, 0.12);
+		borderShape.graphics.drawRoundRect(BORDER_SIZE * 0.25, BORDER_SIZE * 0.25,
+			w - BORDER_SIZE * 0.5, h - BORDER_SIZE * 0.5, CORNER_R - BORDER_SIZE * 0.25, CORNER_R - BORDER_SIZE * 0.25);
+		bmp.draw(borderShape);
+
+		add(bg);
+	}
+
+	function _buildHeader():Void
+	{
+		final iconPath = _resolveAsset(
+			'assets/exe/extras/credits/${CreditsState.userSelected[0]}/icons/${selectedUser.icon}.png',
+			selectedUser.icon != null,
+			'assets/exe/extras/credits/missing_icon.png');
+
 		userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(iconPath);
 		userIcon.camera = popupCamera;
-		setImageSize(userIcon, 100, 100);
-		savedScale = userIcon.scale.x;
+		_fitSprite(userIcon, ICON_SIZE, ICON_SIZE);
+		savedIconScale = userIcon.scale.x;
 		add(userIcon);
 
-		var userName:FlxText = new FlxText(0, 0, bg.width - 100, (selectedUser.name != null) ? selectedUser.name : "Unknown");
-		userName.setFormat(Paths.font("vcr.ttf"), 76, 0xFFFFFFFF, LEFT, NONE);
+		final userName = new FlxText(0, 0, bg.width - 100, selectedUser.name ?? "Unknown");
+		userName.setFormat(Paths.font("vcr.ttf"), 76, 0xFFFFFFFF, LEFT, OUTLINE, 0x55000000);
+		userName.borderSize = 3;
 		userName.setPosition(userIcon.x + userIcon.width + 25, userIcon.y + (userIcon.height - userName.height) / 2);
 		userName.camera = popupCamera;
 		add(userName);
 
-		var countryPath:String = "assets/exe/extras/credits/missing_country.png";
-		if (selectedUser.nation != null && FileSystem.exists('assets/exe/extras/credits/countries/${selectedUser.nation}.png')) countryPath = 'assets/exe/extras/credits/countries/${selectedUser.nation}.png';
-		var userCountry:FlxSprite = new FlxSprite().loadGraphic(countryPath);
-		userCountry.setPosition(Std.int(userName.x + userName.textField.textWidth + 15), Std.int(userName.y + (userName.height - userCountry.height) / 2));
-		userCountry.camera = popupCamera;
-		add(userCountry);
+		final flagPath = _resolveAsset(
+			'assets/exe/extras/credits/countries/${selectedUser.nation}.png',
+			selectedUser.nation != null,
+			'assets/exe/extras/credits/missing_country.png');
+		final flag = new FlxSprite().loadGraphic(flagPath);
+		flag.setPosition(Std.int(userName.x + userName.textField.textWidth + 15),
+			Std.int(userName.y + (userName.height - flag.height) / 2));
+		flag.camera = popupCamera;
+		add(flag);
+	}
 
-		var separatorLine:FlxSprite = new FlxSprite(userIcon.x, userIcon.y + userIcon.height + 25).makeGraphic(Std.int(bg.width / 2 - 50), 10, 0xFFFFFFFF);
-		separatorLine.camera = popupCamera;
-		add(separatorLine);
+	function _buildDescription():Void
+	{
+		final sepW  = Std.int(bg.width / 2 - 50);
+		final sepY  = userIcon.y + userIcon.height + 25;
+		final sepX  = userIcon.x;
 
-		var userDescription:FlxText = new FlxText(userIcon.x, separatorLine.y + 50, bg.width / 2 - 50, (selectedUser.description != null) ? selectedUser.description : "No Description");
-		userDescription.setFormat(Paths.font("vcr.ttf"), 38, 0xFFFFFFFF, CENTER, NONE);
-		userDescription.camera = popupCamera;
-		add(userDescription);
+		final sepBmp = new BitmapData(sepW, 3, true, 0x00000000);
+		for (x in 0...sepW)
+		{
+			final t = x / (sepW - 1);
+			final a = Std.int(255 * (1.0 - Math.abs(t * 2 - 1)));
+			sepBmp.setPixel32(x, 0, (a << 24) | 0xFFFFFF);
+			sepBmp.setPixel32(x, 1, (a << 24) | 0xFFFFFF);
+			sepBmp.setPixel32(x, 2, (Std.int(a * 0.4) << 24) | 0xFFFFFF);
+		}
+		final sep = new FlxSprite(sepX, sepY).loadGraphic(sepBmp);
+		sep.camera = popupCamera;
+		add(sep);
 
-		quoteBG = new FlxCamera();
-		quoteBG.bgColor = 0x66000000;
-		quoteBG.setSize(Std.int(bg.width * 0.4), Std.int(bg.height * 0.6)); quoteBG.setPosition(bg.x + bg.width - quoteBG.width - 50, bg.y + bg.height - quoteBG.height - 50);
-		FlxG.cameras.add(quoteBG, false);
+		final desc = new FlxText(sepX, sep.y + 22, sepW, selectedUser.description ?? "No Description");
+		desc.setFormat(Paths.font("vcr.ttf"), 38, 0xFFFFFFFF, CENTER, OUTLINE, 0x66000000);
+		desc.borderSize = 2;
+		desc.camera = popupCamera;
+		add(desc);
+	}
 
-		userQuote = new FlxText(5, 5, quoteBG.width - 15, (selectedUser.quote != null) ? selectedUser.quote : "No Quote");
+	function _buildQuotePanel():Void
+	{
+		final qw = Std.int(bg.width  * 0.4);
+		final qh = Std.int(bg.height * 0.6);
+		final qx = bg.x + bg.width  - qw - 50;
+		final qy = bg.y + bg.height - qh - 50;
+
+		final panelBmp = new BitmapData(qw, qh, true, 0x00000000);
+		panelBmp.fillRect(new openfl.geom.Rectangle(0, 0, qw, qh), 0x77000000);
+		final panelSprite = new FlxSprite(qx, qy).loadGraphic(panelBmp);
+		final panelShader = new shaders.RoundedBorderShader(14.0, 0.0, 0xFF000000);
+		panelShader.setSize(qw, qh);
+		panelSprite.shader  = panelShader;
+		panelSprite.camera  = popupCamera;
+		add(panelSprite);
+
+		final borderBmp = new BitmapData(qw, qh, true, 0x00000000);
+		final bShape = new Shape();
+		bShape.graphics.lineStyle(1.5, 0xFFFFFFFF, 0.15);
+		bShape.graphics.drawRoundRect(1, 1, qw - 2, qh - 2, 14, 14);
+		borderBmp.draw(bShape);
+		final borderSpr = new FlxSprite(qx, qy).loadGraphic(borderBmp);
+		borderSpr.camera = popupCamera;
+		add(borderSpr);
+
+		quoteCam = new FlxCamera();
+		quoteCam.bgColor = 0x00000000;
+		quoteCam.setSize(qw - 10, qh - 10);
+		quoteCam.setPosition(qx + 5, qy + 5);
+		FlxG.cameras.add(quoteCam, false);
+
+		userQuote = new FlxText(5, 5, quoteCam.width - 15, selectedUser.quote ?? "No Quote");
 		userQuote.setFormat(Paths.font("vcr.ttf"), 24, 0xFFFFFFFF, LEFT, NONE);
-		userQuote.camera = quoteBG;
+		userQuote.camera = quoteCam;
 		add(userQuote);
 
-		var scrollBarBG:FlxSprite = new FlxSprite(quoteBG.width - 5).makeGraphic(5, quoteBG.height, 0xFF525252);
-		scrollBarBG.camera = quoteBG;
-		scrollBarBG.scrollFactor.set();
-		add(scrollBarBG);
+		final scrollBG = new FlxSprite(quoteCam.width - 5).makeGraphic(5, quoteCam.height, 0x44FFFFFF);
+		scrollBG.camera = quoteCam;
+		scrollBG.scrollFactor.set();
+		add(scrollBG);
 
-		scrollBar = new FlxSprite(quoteBG.width - 5).makeGraphic(5, Std.int(Math.max(40, (quoteBG.height / userQuote.height) * quoteBG.height)), 0xFFFFFFFF);
-		scrollBar.visible = false;
-		if ((userQuote.height - 10) > quoteBG.height) scrollBar.visible = true;
-		scrollBar.camera = quoteBG;
+		final barH = Std.int(Math.max(40, (quoteCam.height / userQuote.height) * quoteCam.height));
+		scrollBar = new FlxSprite(quoteCam.width - 5).makeGraphic(5, barH, 0xCCFFFFFF);
+		scrollBar.visible = (userQuote.height - 10) > quoteCam.height;
+		scrollBar.camera = quoteCam;
 		scrollBar.scrollFactor.set();
 		add(scrollBar);
+	}
 
+	function _buildExplosion():Void
+	{
 		explosion = new FlxSprite(userIcon.x - 50, userIcon.y - 100);
 		explosion.frames = FlxAtlasFrames.fromSparrow('assets/exe/extras/credits/explosion.png', 'assets/exe/extras/credits/explosion.xml');
 		explosion.animation.addByPrefix('idle', 'idle', 16, false);
@@ -125,263 +216,285 @@ class CreditPopup extends MusicBeatSubstate
 		explosion.alpha = 0;
 		explosion.camera = popupCamera;
 		add(explosion);
-
-		makeUserExtra();
-
-		if (selectedUser.twitter != null)
-		{
-			twitterSocial = new FlxSprite().loadGraphic('assets/exe/extras/credits/twitter.png');
-			twitterSocial.setPosition(quoteBG.x - twitterSocial.width - 15, quoteBG.y + quoteBG.height - twitterSocial.height);
-			twitterSocial.camera = popupCamera;
-			twitterSocial.color = 0xFF686868;
-			add(twitterSocial);
-		}
-
-		if (selectedUser.youtube != null)
-		{
-			youtubeSocial = new FlxSprite().loadGraphic('assets/exe/extras/credits/youtube.png');
-			youtubeSocial.setPosition(quoteBG.x - youtubeSocial.width - 15, quoteBG.y + quoteBG.height - youtubeSocial.height);
-			youtubeSocial.camera = popupCamera;
-			youtubeSocial.color = 0xFF686868;
-			add(youtubeSocial);
-			if (selectedUser.twitter != null) youtubeSocial.y = quoteBG.y + quoteBG.height - (youtubeSocial.height * 2) - 15;
-		}
 	}
 
-	var pauseButton:FlxSprite;
-	function makeUserExtra():Void
+	function _buildExtra():Void
 	{
-		if (selectedUser.extra != null)
+		if (selectedUser.extra == null) return;
+
+		if (selectedUser.extra[0] == 'video')
 		{
-			if (selectedUser.extra[0] == 'video')
+			final affectsMusic:Bool = selectedUser.extra[2] != true;
+			if (affectsMusic)
 			{
-				if (selectedUser.extra[2] != true)
-				{
-					FlxTween.cancelTweensOf(FlxG.sound.music);
-					FlxTween.tween(FlxG.sound.music, {volume: 0.3}, 0.6);
-				}
+				FlxTween.cancelTweensOf(FlxG.sound.music);
+				FlxTween.tween(FlxG.sound.music, {volume: 0.3}, 0.6);
+			}
 
-				pauseButton = new FlxSprite().loadGraphic('assets/exe/extras/credits/play.png');
-				pauseButton.alpha = 0;
-				pauseButton.camera = popupCamera;
-				
-				#if VIDEOS_ALLOWED
-				userVideo = new hxvlc.flixel.FlxVideoSprite(0, 0);
-				userVideo.bitmap.onFormatSetup.add(() -> {
-					setImageSize(userVideo, 200, 200);
-					userVideo.setPosition(bg.x + 40 + ((bg.width / 2 - 50) - userVideo.width) / 2, bg.y + bg.height - userVideo.height - 50);
-					pauseButton.setPosition(userVideo.x + (userVideo.width - pauseButton.width) / 2, userVideo.y + (userVideo.height - pauseButton.height) / 2);
-				});
-				userVideo.bitmap.onEndReached.add(() -> playMenuVideo());
-				userVideo.camera = popupCamera;
-				add(userVideo);
-				playMenuVideo();
-				#end
-
-				add(pauseButton);
-			}
-			else if (selectedUser.extra[0] == 'image')
-			{
-				userImage = new FlxSprite(0, 0).loadGraphic('assets/exe/extras/credits/${CreditsState.userSelected[0]}/extra/${selectedUser.extra[1]}');
-				setImageSize(userImage, 200, 200);
-				userImage.setPosition(bg.x + 40 + ((bg.width / 2 - 50) - userImage.width) / 2, bg.y + bg.height - userImage.height - 50);
-				userImage.camera = popupCamera;
-				add(userImage);
-			}
-		}
-	}
-
-	#if VIDEOS_ALLOWED
-	function playMenuVideo():Void
-	{
-		if (userVideo.load('assets/exe/extras/credits/${CreditsState.userSelected[0]}/extra/${selectedUser.extra[1]}.mp4'))
-			new FlxTimer().start(0.001, (_) -> {
-				userVideo.play();
-				userVideo.bitmap.rate = 1.0;
-			});
-	}
-	#end
-	
-	var videoPaused:Bool = false;
-	var wasPressing:String = '';
-	var clickSpeed:Float = 0;
-	var thing:Float = 0;
-	var canClick:Bool = true;
-	override function update(elapsed:Float)
-	{
-		if (overlapCamera(quoteBG))
-		{
-			if (FlxG.mouse.deltaWheel.y != 0)
-			{
-				quoteBG.scroll.y -= FlxG.mouse.deltaWheel.y * 22;
-				quoteBG.scroll.y = FlxMath.bound(quoteBG.scroll.y, 0, Math.max(0, userQuote.height - quoteBG.height + 10));
-
-				scrollBar.y = FlxMath.lerp(0, quoteBG.height - scrollBar.height, quoteBG.scroll.y / Math.max(0, userQuote.height - quoteBG.height + 10));
-			}
-		}
-
-		if (selectedUser.twitter != null)
-		{
-			if (twitterSocial.color != 0xFF686868 && wasPressing == '') twitterSocial.color = 0xFF686868;
-			if (FlxG.mouse.overlaps(twitterSocial) && twitterSocial.color != 0xFFADADAD && wasPressing == '') twitterSocial.color = 0xFFADADAD;
-			if (FlxG.mouse.overlaps(twitterSocial) && FlxG.mouse.justPressed)
-			{
-				twitterSocial.color = 0xFFFFFFFF;
-				wasPressing = 'twitter';
-			}
-			if (FlxG.mouse.released && wasPressing == 'twitter')
-			{
-				wasPressing = '';
-				CoolUtil.browserLoad(selectedUser.twitter);
-			}
-		}
-		if (selectedUser.youtube != null)
-		{
-			if (youtubeSocial.color != 0xFF686868 && wasPressing == '') youtubeSocial.color = 0xFF686868;
-			if (FlxG.mouse.overlaps(youtubeSocial) && youtubeSocial.color != 0xFF969696 && wasPressing == '') youtubeSocial.color = 0xFF969696;
-			if (FlxG.mouse.overlaps(youtubeSocial) && FlxG.mouse.justPressed)
-			{
-				youtubeSocial.color = 0xFFFFFFFF;
-				wasPressing = 'youtube';
-			}
-			if (FlxG.mouse.released && wasPressing == 'youtube')
-			{
-				wasPressing = '';
-				CoolUtil.browserLoad(selectedUser.youtube);
-			}
-		}
-
-		if (selectedUser.extra != null && selectedUser.extra[0] == 'video' && userVideo != null)
-		{
 			#if VIDEOS_ALLOWED
-			if (FlxG.mouse.overlaps(userVideo) && FlxG.mouse.justPressed)
-			{
-				if(!videoPaused)
-				{
-					videoPaused = true;
-					userVideo.pause();
-					FlxTween.cancelTweensOf(pauseButton); FlxTween.cancelTweensOf(pauseButton.scale);
-					pauseButton.loadGraphic('assets/exe/extras/credits/pause.png');
-					pauseButton.scale.set(1, 1);
-					pauseButton.alpha = 1;
+			pauseBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/play.png');
+			pauseBtn.alpha = 0;
+			pauseBtn.camera = popupCamera;
 
-					if (selectedUser.extra[2] != true)
-					{
-						FlxTween.cancelTweensOf(FlxG.sound.music);
-						FlxTween.tween(FlxG.sound.music, {volume: 1}, 0.6);
-					}
-				}
-				else if(videoPaused)
-				{
-					videoPaused = false;
-					userVideo.resume();
-					pauseButton.loadGraphic('assets/exe/extras/credits/play.png');
-					FlxTween.tween(pauseButton.scale, {x: 0, y: 0}, 0.3);
-					FlxTween.tween(pauseButton, {alpha: 0}, 0.3);
-
-					if (selectedUser.extra[2] != true)
-					{
-						FlxTween.cancelTweensOf(FlxG.sound.music);
-						FlxTween.tween(FlxG.sound.music, {volume: 0.3}, 0.6);
-					}
-				}
-			}
+			userVideo = new hxvlc.flixel.FlxVideoSprite(0, 0);
+			userVideo.bitmap.onFormatSetup.add(() -> {
+				_fitSprite(userVideo, EXTRA_SIZE, EXTRA_SIZE);
+				userVideo.setPosition(
+					bg.x + 40 + ((bg.width / 2 - 50) - userVideo.width) / 2,
+					bg.y + bg.height - userVideo.height - 50);
+				pauseBtn.setPosition(
+					userVideo.x + (userVideo.width  - pauseBtn.width)  / 2,
+					userVideo.y + (userVideo.height - pauseBtn.height) / 2);
+			});
+			userVideo.bitmap.onEndReached.add(_playVideo);
+			userVideo.camera = popupCamera;
+			add(userVideo);
+			add(pauseBtn);
+			_playVideo();
 			#end
 		}
-
-		if (clickSpeed > 0) clickSpeed -= elapsed * (2 + clickSpeed * 0.5);
-		if (clickSpeed < 0) clickSpeed = 0;
-
-		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(userIcon) && canClick)
+		else if (selectedUser.extra[0] == 'image')
 		{
-			FlxTween.cancelTweensOf(userIcon); FlxTween.cancelTweensOf(userIcon.scale);
-			userIcon.flipX = FlxG.random.bool();
-			userIcon.angle = FlxG.random.float(-45, 45);
-			userIcon.scale.set(FlxG.random.float(savedScale * 0.5, savedScale * 1.5), FlxG.random.float(savedScale * 0.5, savedScale * 1.5));
-			FlxTween.tween(userIcon, {angle: 0}, 0.3, {ease: FlxEase.backOut});
-			FlxTween.tween(userIcon.scale, {x: savedScale, y: savedScale}, 0.3, {ease: FlxEase.backOut});
-			FlxG.sound.play(Paths.sound('honksound'));
-			clickSpeed++;
+			final img = new FlxSprite(0, 0).loadGraphic(
+				'assets/exe/extras/credits/${CreditsState.userSelected[0]}/extra/${selectedUser.extra[1]}');
+			_fitSprite(img, EXTRA_SIZE, EXTRA_SIZE);
+			img.setPosition(
+				bg.x + 40 + ((bg.width / 2 - 50) - img.width) / 2,
+				bg.y + bg.height - img.height - 50);
+			final imgShader = new shaders.RoundedBorderShader(10.0, 0.0, 0xFF000000);
+			imgShader.setSize(img.frameWidth, img.frameHeight);
+			img.shader = imgShader;
+			img.camera = popupCamera;
+			add(img);
+		}
+	}
 
-			if (clickSpeed > 10)
-			{
-				clickSpeed = 0;
-				canClick = false;
-				explosion.alpha = 1;
-				explosion.animation.play('idle');
-				userIcon.alpha = 0;
-				FlxG.sound.play(Paths.sound('explosion'));
-			}
+	function _buildSocialButtons():Void
+	{
+		var socialY = quoteCam.y + quoteCam.height + 10;
+
+		if (selectedUser.youtube != null)
+		{
+			youtubeBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/youtube.png');
+			youtubeBtn.setPosition(quoteCam.x - youtubeBtn.width - 15, socialY - youtubeBtn.height);
+			youtubeBtn.camera = popupCamera;
+			youtubeBtn.color  = 0xFF686868;
+			youtubeBtn.scale.set(0.9, 0.9);
+			youtubeBtn.updateHitbox();
+			add(youtubeBtn);
+			socialY -= youtubeBtn.height + 10;
 		}
 
-		if (controls.BACK) closeCredits();
-
-		if (controls.UI_LEFT_P)
+		if (selectedUser.twitter != null)
 		{
-			FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
-			closeCredits();
-			var credits = CreditsState.credits.get(CreditsState.userSelected[0]);
-			CreditsState.userSelected = [CreditsState.userSelected[0], FlxMath.wrap(Std.int(CreditsState.userSelected[1]) - 1, 0, credits.length - 1)];
-			new FlxTimer().start(0, function(_){FlxG.state.openSubState(new CreditPopup());});
+			twitterBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/twitter.png');
+			twitterBtn.setPosition(quoteCam.x - twitterBtn.width - 15, socialY - twitterBtn.height);
+			twitterBtn.camera = popupCamera;
+			twitterBtn.color  = 0xFF686868;
+			twitterBtn.scale.set(0.9, 0.9);
+			twitterBtn.updateHitbox();
+			add(twitterBtn);
 		}
-		if (controls.UI_RIGHT_P)
-		{
-			FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
-			closeCredits();
-			var credits = CreditsState.credits.get(CreditsState.userSelected[0]);
-			CreditsState.userSelected = [CreditsState.userSelected[0], FlxMath.wrap(Std.int(CreditsState.userSelected[1]) + 1, 0, credits.length - 1)];
-			new FlxTimer().start(0, function(_){FlxG.state.openSubState(new CreditPopup());});
-		}
+	}
 
+	function _animateIn():Void
+	{
+		bg.scale.set(0.85, 0.85);
+		bg.alpha = 0;
+		FlxTween.tween(bg,       {alpha: 1},                                    0.25, {ease: FlxEase.quadOut});
+		FlxTween.tween(bg.scale, {x: 1.0, y: 1.0},                             0.3,  {ease: FlxEase.backOut});
+		popupCamera.alpha = 0;
+		FlxTween.tween(popupCamera, {alpha: 1},                                 0.2,  {ease: FlxEase.quadOut});
+	}
+
+	override function update(elapsed:Float)
+	{
+		_updateQuoteScroll();
+		_updateSocialButtons();
+		_updateVideoClick();
+		_updateIconClick(elapsed);
+		_updateNavigation();
 		super.update(elapsed);
 	}
 
-	function closeCredits():Void
+	function _updateQuoteScroll():Void
 	{
-		if (pauseButton != null) { FlxTween.cancelTweensOf(pauseButton);FlxTween.cancelTweensOf(pauseButton.scale); }
+		if (!_mouseOverCam(quoteCam) || FlxG.mouse.deltaWheel.y == 0) return;
+		quoteCam.scroll.y -= FlxG.mouse.deltaWheel.y * 22;
+		quoteCam.scroll.y  = FlxMath.bound(quoteCam.scroll.y, 0, Math.max(0, userQuote.height - quoteCam.height + 10));
+		scrollBar.y = FlxMath.lerp(0, quoteCam.height - scrollBar.height,
+			quoteCam.scroll.y / Math.max(1, userQuote.height - quoteCam.height + 10));
+	}
+
+	function _updateSocialButtons():Void
+	{
+		_handleSocialBtn(twitterBtn, 'twitter', selectedUser.twitter);
+		_handleSocialBtn(youtubeBtn, 'youtube', selectedUser.youtube);
+	}
+
+	function _handleSocialBtn(btn:FlxSprite, id:String, url:String):Void
+	{
+		if (btn == null || url == null) return;
+		final hovering = FlxG.mouse.overlaps(btn);
+
+		if (pressingBtn == '')
+		{
+			if (hovering)
+			{
+				btn.color = 0xFFFFFFFF;
+				FlxTween.cancelTweensOf(btn.scale);
+				if (btn.scale.x < 1.0) FlxTween.tween(btn.scale, {x: 1.0, y: 1.0}, 0.12, {ease: FlxEase.backOut});
+			}
+			else
+			{
+				btn.color = 0xFF686868;
+				FlxTween.cancelTweensOf(btn.scale);
+				if (btn.scale.x > 0.9) FlxTween.tween(btn.scale, {x: 0.9, y: 0.9}, 0.1, {ease: FlxEase.quadOut});
+			}
+		}
+
+		if (hovering && FlxG.mouse.justPressed)  { btn.color = 0xFFCCCCCC; pressingBtn = id; }
+		if (FlxG.mouse.released && pressingBtn == id) { pressingBtn = ''; CoolUtil.browserLoad(url); }
+	}
+
+	function _updateVideoClick():Void
+	{
+		#if VIDEOS_ALLOWED
+		if (userVideo == null || !FlxG.mouse.overlaps(userVideo) || !FlxG.mouse.justPressed) return;
+		final affectsMusic:Bool = selectedUser.extra[2] != true;
+
+		videoPaused = !videoPaused;
+		if (videoPaused)
+		{
+			userVideo.pause();
+			FlxTween.cancelTweensOf(pauseBtn); FlxTween.cancelTweensOf(pauseBtn.scale);
+			pauseBtn.loadGraphic('assets/exe/extras/credits/pause.png');
+			pauseBtn.scale.set(1, 1);
+			pauseBtn.alpha = 1;
+			if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume: 1}, 0.6); }
+		}
+		else
+		{
+			userVideo.resume();
+			pauseBtn.loadGraphic('assets/exe/extras/credits/play.png');
+			FlxTween.tween(pauseBtn.scale, {x: 0, y: 0}, 0.3);
+			FlxTween.tween(pauseBtn, {alpha: 0}, 0.3);
+			if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume: 0.3}, 0.6); }
+		}
+		#end
+	}
+
+	function _updateIconClick(elapsed:Float):Void
+	{
+		if (iconClickSpeed > 0) iconClickSpeed -= elapsed * (2 + iconClickSpeed * 0.5);
+		if (iconClickSpeed < 0) iconClickSpeed = 0;
+
+		if (userIcon == null) return;
+
+		final hovering = FlxG.mouse.overlaps(userIcon);
+		if (canClick && hovering && userIcon.scale.x <= savedIconScale + 0.001)
+		{
+			FlxTween.cancelTweensOf(userIcon.scale);
+			FlxTween.tween(userIcon.scale, {x: savedIconScale * 1.08, y: savedIconScale * 1.08}, 0.12, {ease: FlxEase.quadOut});
+		}
+		else if (canClick && !hovering && userIcon.scale.x > savedIconScale + 0.001 && iconClickSpeed == 0)
+		{
+			FlxTween.cancelTweensOf(userIcon.scale);
+			FlxTween.tween(userIcon.scale, {x: savedIconScale, y: savedIconScale}, 0.15, {ease: FlxEase.quadOut});
+		}
+
+		if (!canClick || !FlxG.mouse.justPressed || !hovering) return;
+
+		FlxTween.cancelTweensOf(userIcon); FlxTween.cancelTweensOf(userIcon.scale);
+		userIcon.flipX = FlxG.random.bool();
+		userIcon.angle = FlxG.random.float(-45, 45);
+		userIcon.scale.set(
+			FlxG.random.float(savedIconScale * 0.5, savedIconScale * 1.5),
+			FlxG.random.float(savedIconScale * 0.5, savedIconScale * 1.5));
+		FlxTween.tween(userIcon,       {angle: 0},                             0.3, {ease: FlxEase.backOut});
+		FlxTween.tween(userIcon.scale, {x: savedIconScale, y: savedIconScale}, 0.3, {ease: FlxEase.backOut});
+		FlxG.sound.play(Paths.sound('honksound'));
+		iconClickSpeed++;
+
+		if (iconClickSpeed > 10)
+		{
+			iconClickSpeed = 0;
+			canClick = false;
+			explosion.alpha = 1;
+			explosion.animation.play('idle');
+			userIcon.alpha = 0;
+			FlxG.sound.play(Paths.sound('explosion'));
+		}
+	}
+
+	function _updateNavigation():Void
+	{
+		if (controls.BACK) { _close(); return; }
+
+		final list = CreditsState.credits.get(CreditsState.userSelected[0]);
+		final len  = list != null ? list.length : 1;
+
+		if (controls.UI_LEFT_P)  _navigateTo(FlxMath.wrap(Std.int(CreditsState.userSelected[1]) - 1, 0, len - 1));
+		if (controls.UI_RIGHT_P) _navigateTo(FlxMath.wrap(Std.int(CreditsState.userSelected[1]) + 1, 0, len - 1));
+	}
+
+	function _navigateTo(index:Int):Void
+	{
+		FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+		CreditsState.userSelected[1] = index;
+		_close();
+		new FlxTimer().start(0, (_) -> FlxG.state.openSubState(new CreditPopup()));
+	}
+
+	function _close():Void
+	{
+		if (pauseBtn != null) { FlxTween.cancelTweensOf(pauseBtn); FlxTween.cancelTweensOf(pauseBtn.scale); }
 		if (userIcon != null) { FlxTween.cancelTweensOf(userIcon); FlxTween.cancelTweensOf(userIcon.scale); }
 		close();
 	}
 
+	#if VIDEOS_ALLOWED
+	function _playVideo():Void
+	{
+		final path = 'assets/exe/extras/credits/${CreditsState.userSelected[0]}/extra/${selectedUser.extra[1]}.mp4';
+		if (userVideo.load(path))
+			new FlxTimer().start(0.001, (_) -> { userVideo.play(); userVideo.bitmap.rate = 1.0; });
+	}
+
+	override function onFocus():Void
+	{
+		super.onFocus();
+		if (videoPaused && userVideo != null) userVideo.resume();
+	}
+
+	override function onFocusLost():Void
+	{
+		super.onFocusLost();
+		if (!videoPaused && userVideo != null) userVideo.pause();
+	}
+	#end
+
+	function _fitSprite(s:FlxSprite, tw:Float, th:Float):Void
+	{
+		final scale = Math.max(tw / s.width, th / s.height);
+		s.setGraphicSize(Math.floor(s.width * scale), Math.floor(s.height * scale));
+		s.updateHitbox();
+	}
+
+	function _resolveAsset(preferred:String, condition:Bool, fallback:String):String
+		return (condition && FileSystem.exists(preferred)) ? preferred : fallback;
+
+	function _mouseOverCam(cam:FlxCamera):Bool
+		return FlxG.mouse.viewX >= cam.x && FlxG.mouse.viewX <= cam.x + cam.width
+			&& FlxG.mouse.viewY >= cam.y && FlxG.mouse.viewY <= cam.y + cam.height;
+
 	override function destroy()
 	{
-		if (selectedUser.extra != null && selectedUser.extra[0] == 'video')
-		{
-			#if VIDEOS_ALLOWED
-			if (userVideo != null)
-			{
-				userVideo.destroy();
-				userVideo = null;
-			}
-			#end
-		}
-
-		FlxG.cameras.remove(quoteBG, true);
+		#if VIDEOS_ALLOWED
+		if (userVideo != null) { userVideo.destroy(); userVideo = null; }
+		#end
+		FlxG.cameras.remove(quoteCam,    true);
 		FlxG.cameras.remove(popupCamera, true);
 		super.destroy();
 	}
-
-	function overlapCamera(cam:FlxCamera):Bool
-		return FlxG.mouse.viewX >= cam.x && FlxG.mouse.viewX <= cam.x + cam.width && FlxG.mouse.viewY >= cam.y && FlxG.mouse.viewY <= cam.y + cam.height;
-
-	function setImageSize(obj:FlxSprite, targetWidth:Float, targetHeight:Float, ?offset:Float = 1) {
-		var scaleFactor:Float = Math.max(targetWidth / obj.width, targetHeight / obj.height);
-		
-		obj.setGraphicSize(Math.floor(obj.width * scaleFactor * offset), Math.floor(obj.height * scaleFactor * offset));
-		obj.updateHitbox();
-	}
-
-	#if VIDEOS_ALLOWED
-	override public function onFocus():Void
-	{
-		super.onFocus();
-		if(videoPaused && userVideo != null) userVideo.resume();
-	}
-
-	override public function onFocusLost():Void
-	{
-		super.onFocusLost();
-		if(!videoPaused && userVideo != null) userVideo.pause();
-	}
-	#end
 }

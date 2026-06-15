@@ -23,13 +23,5 @@ function onEvent(n,v1)
 			setProperty('camHUD.alpha', 0)
 			setProperty('camOther.alpha', 0)
 		end
-
-		if v1 == 'dark' then
-			cancelTween('jsdjd')
-			doTweenAlpha('jsdjd', 'sombra2', 0.7, crochet / (1000 / 2) / playbackRate, 'cubeOut')
-		elseif v1 == 'light' then
-			cancelTween('jsdjd')
-			doTweenAlpha('jsdjd', 'sombra2', 0, crochet / (1000 / 2) / playbackRate, 'cubeOut')
-		end
 	end
 end

@@ -163,17 +163,6 @@
 			"extra": ["image", "barco.png"]
 		},
 		{
-			"name": "NayreFunkin'",
-			"icon": "nayre",
-			"description": "Artist",
-			"quote": "fui la mas femenina, sumisa, neko, otaku, coquette y amorosa del server. Lastima que tenga pito",
-			"nation": "colombia",
-			"colors": [[244, 115, 164], [150, 23, 62]],
-			"youtube": "https://www.youtube.com/@nayrefunkin1350",
-			"twitter": "https://x.com/NayreSFW04",
-			"extra": ["image", "curse.png"]
-		},
-		{
 			"name": "Sebas1554",
 			"icon": "sebas",
 			"description": "Artist and Animator",
@@ -198,7 +187,9 @@
 			"icon": "kostya",
 			"description": "Artist and 3D Artist",
 			"nation": "mexico",
-			"twitter": "https://x.com/HernandezKostya"
+			"colors": [[221, 141, 71], [154, 0, 102]],
+			"twitter": "https://x.com/HernandezKostya",
+			"extra": ["image", "kitty.jpg"]
 		},
 		{
 			"name": "Tomasero",
@@ -430,7 +421,7 @@
 			"nation": "paraguay",
 			"colors": [[209, 15, 15], [18, 17, 17]],
 			"twitter": "https://x.com/EspantaViejas97",
-			"extra": ["video", "natsuki-ddlc", true]
+			"extra": ["video", "natsuki"]
 		},
 		{
 			"name": "sevulda",

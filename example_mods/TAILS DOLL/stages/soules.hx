@@ -11,7 +11,7 @@ function onCreatePost()
 	sombra2 = new FlxSprite(-550).loadGraphic(Paths.image('soullessbg/sombra2'));
 	sombra2.scale.set(1.643, 1.643);
 	sombra2.updateHitbox();
-	sombra2.alpha = 0.8;
+	sombra2.alpha = 1;
 	add(sombra2);
 
 	var sombra:FlxSprite = new FlxSprite(-550).loadGraphic(Paths.image('soullessbg/sombra'));
@@ -22,16 +22,17 @@ function onCreatePost()
 	add(sombra);
 }
 
-function onEvent(n,v1)
+function onEvent(n,v1,v2)
 {
-	if (n == 'soullesEvent')
+	if (n == 'soullesEvents')
 	{
+		var duration:Int = v2 == '' ? 2 : Std.int(v2);
 		switch(v1)
 		{
 			case 'dark':
-				FlxTween.tween(sombra2, {alpha: 0.7}, Conductor.crochet / (1000 / 2) / PlayState.instance.playbackRate, {ease: FlxEase.cubeOut});
+				FlxTween.tween(sombra2, {alpha: 0.8}, Conductor.crochet / (1000 / duration) / PlayState.instance.playbackRate, {ease: FlxEase.cubeOut});
 			case 'light':
-				FlxTween.tween(sombra2, {alpha: 0}, Conductor.crochet / (1000 / 2) / PlayState.instance.playbackRate, {ease: FlxEase.cubeOut});
+				FlxTween.tween(sombra2, {alpha: 0}, Conductor.crochet / (1000 / duration) / PlayState.instance.playbackRate, {ease: FlxEase.cubeOut});
 		}
 	}
 }

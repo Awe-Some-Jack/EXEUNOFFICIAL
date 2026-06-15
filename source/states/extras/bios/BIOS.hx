@@ -83,6 +83,7 @@ class BIOS extends MusicBeatSubstate
 	var namesGrp:FlxTypedGroup<FlxText>;
 	var listScrollTrack:FlxSprite;
 	var listScrollThumb:FlxSprite;
+
 	public var charSprite:FlxSprite;
 	public var icon:HealthIcon;
 	var charName:FlxText;

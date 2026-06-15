@@ -720,8 +720,8 @@ class ExtrasMenu extends MusicBeatState
                 openSubState(new states.extras.gallery.Gallery());
 
             case "CHARACTER BIOS":
-                stopMusicPlay = true;
-                FlxG.switchState(() -> new BIOS());
+                canMove = false;
+                openSubState(new states.extras.bios.BIOS());
 
             case "D.A GARDEN":
                 openSubState(new states.extras.dagarden.DAGarden());

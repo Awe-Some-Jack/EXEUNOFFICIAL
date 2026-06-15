@@ -212,7 +212,7 @@ class Main extends Sprite
 		});
 	}
 
-	private static function resetSpriteCache(sprite:Sprite):Void {
+	public static function resetSpriteCache(sprite:Sprite):Void {
 		@:privateAccess {
 			if (sprite != null) {
 		   		sprite.__cacheBitmapData = null;

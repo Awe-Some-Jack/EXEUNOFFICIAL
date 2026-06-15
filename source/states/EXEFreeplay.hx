@@ -358,9 +358,7 @@ class EXEFreeplay extends MusicBeatState
 
 			if (coverBitmap != null)
 			{
-				final cover = new FlxSprite(0, 0);
-				cover.loadGraphic(coverBitmap);
-				cover.antialiasing = ClientPrefs.data.antialiasing;
+				final cover = new FlxSprite(0, 0).loadGraphic(coverBitmap);
 				cover.scale.set(COVER_SCALE, COVER_SCALE);
 				cover.updateHitbox();
 				cover.ID = i;
@@ -371,7 +369,6 @@ class EXEFreeplay extends MusicBeatState
 				ss.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.png', 'assets/exe/story/screenstatic.xml');
 				ss.animation.addByPrefix('play', 'screenSTATIC', 24);
 				ss.animation.play('play');
-				ss.antialiasing = ClientPrefs.data.antialiasing;
 				ss.setGraphicSize(Std.int(cover.width), Std.int(cover.height));
 				ss.updateHitbox();
 				ss.x = cover.x;
@@ -384,9 +381,7 @@ class EXEFreeplay extends MusicBeatState
 
 			if (boxBitmap != null)
 			{
-				final box = new FlxSprite(0, 0);
-				box.loadGraphic(boxBitmap);
-				box.antialiasing = ClientPrefs.data.antialiasing;
+				final box = new FlxSprite(0, 0).loadGraphic(boxBitmap);
 				box.scale.set(BOX_SCALE, BOX_SCALE);
 				box.updateHitbox();
 				box.ID = i;
@@ -1178,9 +1173,7 @@ class EXEFreeplay extends MusicBeatState
 		final bmp = loadRawBitmap('assets/exe/freeplayassets/degradado.png');
 		if (bmp == null) return;
 		
-		degradado = new FlxSprite(0, FlxG.height);
-		degradado.loadGraphic(bmp);
-		degradado.antialiasing = ClientPrefs.data.antialiasing;
+		degradado = new FlxSprite(0, FlxG.height).loadGraphic(bmp);
 		degradado.scale.set(0.5, 0.5);
 		degradado.updateHitbox();
 		degradado.y = FlxG.height - degradado.height + 30;
@@ -1195,7 +1188,6 @@ class EXEFreeplay extends MusicBeatState
 		if (bmp == null) return;
 		
 		spikesUp = new FlxBackdrop(bmp, FlxAxes.X);
-		spikesUp.antialiasing = ClientPrefs.data.antialiasing;
 		spikesUp.scale.set(0.5, 0.5);
 		spikesUp.updateHitbox();
 		spikesUp.y = -25;

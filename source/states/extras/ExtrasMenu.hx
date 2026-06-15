@@ -209,7 +209,6 @@ class ExtrasMenu extends MusicBeatState
         sumky.updateHitbox();
         sumky.x = 675;
         sumky.y = 122;
-        sumky.antialiasing = ClientPrefs.data.antialiasing;
         add(sumky);
     }
 
@@ -488,6 +487,10 @@ class ExtrasMenu extends MusicBeatState
             states.extras.dagarden.DAGarden.orphanPlayer = null;
         }
         canMove = true;
+        for (cam in FlxG.cameras.list)
+            if (cam?.filters != null)
+                Main.resetSpriteCache(cam.flashSprite);
+        if (FlxG.game != null) Main.resetSpriteCache(FlxG.game);
     }
 
     function exitToMainMenu():Void
@@ -721,8 +724,8 @@ class ExtrasMenu extends MusicBeatState
                 openSubState(new states.extras.gallery.Gallery());
 
             case "CHARACTER BIOS":
-                stopMusicPlay = true;
-                FlxG.switchState(() -> new BIOS());
+                canMove = false;
+                openSubState(new states.extras.bios.BIOS());
 
             case "D.A GARDEN":
                 openSubState(new states.extras.dagarden.DAGarden());

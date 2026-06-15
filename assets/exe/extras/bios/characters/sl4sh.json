@@ -3,30 +3,34 @@
 	"bio": "SL4SH's origins begin with 2 unnamed brothers. One of the brothers passes away and the second brother decides to recreate his deceased brother via AI. Something would go wrong and end up in the brother dying and SL4SH being created. SL4SH then somehow ends up on the PlayStation 2 memory card and then interacts with the Sonic Gems collection disk.",
 	"icon": "sl4sh",
 	"icon_offset": [
-		786,
-		425
+		691,
+		457
 	],
-	"char_scale": 0.5,
+	"icon_scale": 0.74,
+	"char_scale": 3.33645669291337,
+	"char_angle": 0,
 	"list_position": 9999,
 	"mod": "SL4SH",
 	"bio_appear": true,
 	"char_offset": [
-		300,
-		100
+		420,
+		128
 	],
 	"variants": [
 		{
-			"char_scale": 4.05,
+			"char_scale": 3.33645669291337,
+			"char_angle": 0,
 			"artist": "MarStarBro",
 			"bio": "SL4SH's origins begin with 2 unnamed brothers. One of the brothers passes away and the second brother decides to recreate his deceased brother via AI. Something would go wrong and end up in the brother dying and SL4SH being created. SL4SH then somehow ends up on the PlayStation 2 memory card and then interacts with the Sonic Gems collection disk.",
 			"mod": "SL4SH",
 			"icon_offset": [
-				696,
-				455
+				693,
+				466
 			],
+			"icon_scale": 0.48,
 			"char_offset": [
-				205,
-				-90
+				420,
+				128
 			],
 			"flip_x": false,
 			"char": "sl4sh",

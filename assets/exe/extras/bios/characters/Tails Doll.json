@@ -5,14 +5,14 @@
 			"display_name": "TAILS DOLL",
 			"icon": "taildoll",
 			"icon_offset": [
-				686,
-				460
+				691,
+				455
 			],
-			"char_scale": 0.9,
+			"char_scale": 0.41,
 			"mod": "TAILS DOLL",
 			"char_offset": [
-				510,
-				230
+				418,
+				128
 			],
 			"char": "taildol",
 			"flip_x": false,

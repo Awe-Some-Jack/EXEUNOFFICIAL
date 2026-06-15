@@ -10,6 +10,7 @@ import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
 import flixel.math.FlxMath;
 import flixel.addons.display.FlxBackdrop;
+
 import sys.FileSystem;
 import sys.io.File;
 
@@ -88,6 +89,7 @@ class Cutscene extends MusicBeatSubstate
     override public function create():Void
     {
         super.create();
+        
         createBackground();
         createBox();
         createDisco();
@@ -119,6 +121,7 @@ class Cutscene extends MusicBeatSubstate
         descTemp.antialiasing = ClientPrefs.data.antialiasing;
         descTemp.updateHitbox();
         descTemp.drawFrame(true);
+        
         final descBackdrop = new FlxBackdrop(descTemp.graphic, X, 0, 0);
         descBackdrop.scale.set(0.5, 0.5);
         descBackdrop.updateHitbox();
@@ -169,8 +172,7 @@ class Cutscene extends MusicBeatSubstate
             final b:Int = Math.round(left.b + (right.b - left.b) * t);
             bmd.fillRect(new openfl.geom.Rectangle(x, 0, 1, h), 0xFF000000 | (r << 16) | (g << 8) | b);
         }
-        final background = new FlxSprite(0, 0);
-        background.loadGraphic(bmd);
+        final background = new FlxSprite(0, 0).loadGraphic(bmd);
         add(background);
 
         final tileSize:Int = 40;
@@ -187,8 +189,7 @@ class Cutscene extends MusicBeatSubstate
 
     function createBox():Void
     {
-        box = new FlxSprite(BOX_FINAL_X, BOX_FINAL_Y);
-        box.loadGraphic(Assets.getBitmapData("assets/exe/extras/box.png"));
+        box = new FlxSprite(BOX_FINAL_X, BOX_FINAL_Y).loadGraphic(Assets.getBitmapData("assets/exe/extras/box.png"));
         box.scale.set(BOX_FINAL_SCALE, BOX_FINAL_SCALE);
         box.updateHitbox();
         add(box);
@@ -204,8 +205,7 @@ class Cutscene extends MusicBeatSubstate
         final discoBmp = Assets.getBitmapData("assets/exe/extras/disco.png");
         for (offset in shadowOffsets)
         {
-            final s = new FlxSprite(61 + offset.x, 541 + offset.y);
-            s.loadGraphic(discoBmp);
+            final s = new FlxSprite(61 + offset.x, 541 + offset.y).loadGraphic(discoBmp);
             s.scale.set(0.29, 0.29);
             s.updateHitbox();
             s.color = FlxColor.BLACK;
@@ -213,8 +213,7 @@ class Cutscene extends MusicBeatSubstate
             add(s);
             discoShadows.push(s);
         }
-        disco = new FlxSprite(61, 541);
-        disco.loadGraphic(discoBmp);
+        disco = new FlxSprite(61, 541).loadGraphic(discoBmp);
         disco.scale.set(0.29, 0.29);
         disco.updateHitbox();
         add(disco);
@@ -336,8 +335,7 @@ class Cutscene extends MusicBeatSubstate
             }
         }
 
-        selectBox = new FlxSprite(0, 0);
-        selectBox.loadGraphic("assets/exe/extras/select.png");
+        selectBox = new FlxSprite(0, 0).loadGraphic("assets/exe/extras/select.png");
         selectBox.scale.set(0.31, 0.28);
         selectBox.updateHitbox();
         add(selectBox);
@@ -492,16 +490,15 @@ class Cutscene extends MusicBeatSubstate
         final hudY = hudTopY + 8;
         final w    = vidW;
 
-        final bg = new FlxSprite(hudX, hudY);
-        bg.makeGraphic(Std.int(w), Std.int(HUD_H), 0x00000000, true);
+        final bg = new FlxSprite(hudX, hudY).makeGraphic(Std.int(w), Std.int(HUD_H), 0x00000000, true);
         bg.pixels.fillRect(new openfl.geom.Rectangle(0, 0, w, HUD_H), 0xBB000000);
+
         final hudShader = new shaders.RoundedBorderShader(HUD_H * 0.5, 0.0, 0xFF000000);
         hudShader.setSize(Std.int(w), Std.int(HUD_H));
         bg.shader = hudShader;
         _hud.add(bg);
 
-        _hudBtn = new FlxSprite(0, 0);
-        _hudBtn.loadGraphic('assets/exe/extras/credits/pause.png');
+        _hudBtn = new FlxSprite(0, 0).loadGraphic('assets/exe/extras/credits/pause.png');
         final btnScale = BTN_SIZE / Math.max(_hudBtn.width, _hudBtn.height);
         _hudBtn.scale.set(btnScale, btnScale);
         _hudBtn.updateHitbox();
@@ -540,7 +537,8 @@ class Cutscene extends MusicBeatSubstate
         _hud.add(_hudKnob);
 
         _hudTimeTxt = new FlxText(0, 0, 55, "0:00", 14);
-        _hudTimeTxt.setFormat(Paths.font("vcr.ttf"), 14, FlxColor.WHITE, RIGHT);
+        _hudTimeTxt.setFormat("assets/fonts/bigass.otf", 14, FlxColor.WHITE, RIGHT);
+        _hudTimeTxt.antialiasing = ClientPrefs.data.antialiasing;
         _hudTimeTxt.x = hudX + w - BAR_PAD - 55;
         _hudTimeTxt.y = hudY + (HUD_H - _hudTimeTxt.height) * 0.5;
         _hud.add(_hudTimeTxt);

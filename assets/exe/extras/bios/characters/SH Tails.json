@@ -1,22 +1,22 @@
 {
 	"bio": "Secret History Tails was once hired by SEGA to be Sonic's \"best friend\" for money. However, what should be an unbreakable comradery has been completely twisted into an unhealthy obsession, unable to accept the fact that Sonic could be friends with anyone else.\n\nUsing his technical prowess, Tails sabotaged Knuckles' gear after he and Sonic settled their differences. The end result caused Knuckles' entire head to be blown to bits. He would later do the same to Shadow, leaving behind only a leg as a reminder of the hedgehog.\n\nEventually, Amy would decide to use herself as bait, luring in Tails to sabotage her Piko Piko hammer. However, just as he did so, he is confronted by Sonic, who tells him off. Unable to accept the fact that Sonic never saw the two as friends, Tails convinces himself that Sonic isn't the real deal, and runs off into the middle of nowhere. Sonic and Amy were never the same afterwards, traumatized by everything that had happened\n\nThe last thing that is known about him is that he used a machine to travel to another universe, he murdered his alternate variants and impersonated them in order to find the \"real Sonic\".\n\nTails, meanwhile, is still at large, kidnapping and killing whoever even has a hint at resembling the hedgehog in order to fuel his sick, twisted fantasy.",
 	"display_name": "mania",
-	"char_scale": 0.7,
+	"char_scale": 0.74,
 	"icon_offset": [
-		786,
-		425
+		696,
+		460
 	],
 	"icon": "crazytails",
 	"mod": "CRAZY TAILS",
 	"list_position": 9999,
 	"char_offset": [
-		475,
-		225
+		485,
+		170
 	],
 	"bio_appear": true,
 	"variants": [
 		{
-			"char_scale": 0.7,
+			"char_scale": 0.74,
 			"artist": "SEGA & Mashed",
 			"bio": "Secret History Tails was once hired by SEGA to be Sonic's \"best friend\" for money. However, what should be an unbreakable comradery has been completely twisted into an unhealthy obsession, unable to accept the fact that Sonic could be friends with anyone else.\n\nUsing his technical prowess, Tails sabotaged Knuckles' gear after he and Sonic settled their differences. The end result caused Knuckles' entire head to be blown to bits. He would later do the same to Shadow, leaving behind only a leg as a reminder of the hedgehog.\n\nEventually, Amy would decide to use herself as bait, luring in Tails to sabotage her Piko Piko hammer. However, just as he did so, he is confronted by Sonic, who tells him off. Unable to accept the fact that Sonic never saw the two as friends, Tails convinces himself that Sonic isn't the real deal, and runs off into the middle of nowhere. Sonic and Amy were never the same afterwards, traumatized by everything that had happened\n\nThe last thing that is known about him is that he used a machine to travel to another universe, he murdered his alternate variants and impersonated them in order to find the \"real Sonic\".\n\nTails, meanwhile, is still at large, kidnapping and killing whoever even has a hint at resembling the hedgehog in order to fuel his sick, twisted fantasy.",
 			"mod": "CRAZY TAILS",
@@ -25,8 +25,8 @@
 				460
 			],
 			"char_offset": [
-				475,
-				225
+				485,
+				170
 			],
 			"flip_x": false,
 			"char": "mania",

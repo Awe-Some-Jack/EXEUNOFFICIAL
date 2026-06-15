@@ -217,7 +217,6 @@ class DASongs extends FlxGroup
 			bx.loadGraphic(bmp);
 			bx.scale.set(BOX_SCALE, BOX_SCALE);
 			bx.updateHitbox();
-			bx.antialiasing = ClientPrefs.data.antialiasing;
 			bx.visible = !songHasCover[i];
 			add(bx);
 			songBoxes.push(bx);
@@ -256,7 +255,6 @@ class DASongs extends FlxGroup
 			songHasCover.push(false);
 		}
 
-		cv.antialiasing = ClientPrefs.data.antialiasing;
 		return cv;
 	}
 

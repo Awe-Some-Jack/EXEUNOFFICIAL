@@ -51,7 +51,6 @@ class PhillyStreets extends BaseStage
 		{
 			var skyImage = Paths.image('phillyStreets/phillySkybox');
 			scrollingSky = new FlxTiledSprite(skyImage, skyImage.width + 400, skyImage.height, true, false);
-			scrollingSky.antialiasing = ClientPrefs.data.antialiasing;
 			scrollingSky.setPosition(-650, -375);
 			scrollingSky.scrollFactor.set(0.1, 0.1);
 			scrollingSky.scale.set(0.65, 0.65);

@@ -41,13 +41,11 @@ final class MemoryUtil
 		#if cpp
 		Gc.run(true);
 		Gc.compact();
+		cpp.NativeGc.compact();
 		#elseif hl
 		Gc.major();
 		#elseif (java || neko)
 		Gc.run(true);
-		#end
-		#if cpp
-		cpp.NativeGc.compact();
 		#end
 	}
 

@@ -194,7 +194,6 @@ class StoryModeState extends MusicBeatState
 		staticscreen.updateHitbox();
 		staticscreen.setPosition(189, 74);
 		staticscreen.alpha = 0.3;
-		staticscreen.antialiasing = ClientPrefs.data.antialiasing;
 		add(staticscreen);
 		
 		bfBOX = new FlxSprite();
@@ -207,7 +206,6 @@ class StoryModeState extends MusicBeatState
 		bfBOX.setGraphicSize(Std.int(FlxG.width * 0.12));
 		bfBOX.updateHitbox();
 		bfBOX.setPosition(270, 300);
-		bfBOX.antialiasing = ClientPrefs.data.antialiasing;
 		add(bfBOX);
 		
 		var yellowBOX:FlxSprite = new FlxSprite();
@@ -215,7 +213,6 @@ class StoryModeState extends MusicBeatState
 		yellowBOX.setGraphicSize(Std.int(FlxG.width * 0.252));
 		yellowBOX.updateHitbox();
 		yellowBOX.setPosition(178, 64);
-		yellowBOX.antialiasing = ClientPrefs.data.antialiasing;
 		add(yellowBOX);
 		
 		// ── BOX 2 ──
@@ -224,14 +221,12 @@ class StoryModeState extends MusicBeatState
 		greyBOX2.setGraphicSize(Std.int(FlxG.width * 0.2635));
 		greyBOX2.updateHitbox();
 		greyBOX2.setPosition(799, 64);
-		greyBOX2.antialiasing = ClientPrefs.data.antialiasing;
 		add(greyBOX2);
 		
 		var tooSlowCoverBlack:FlxSprite = new FlxSprite();
 		tooSlowCoverBlack.loadGraphic(Assets.getBitmapData('assets/exe/cover/too-slow.png'));
 		tooSlowCoverBlack.setGraphicSize(Std.int(FlxG.width * 0.24));
 		tooSlowCoverBlack.updateHitbox();
-		tooSlowCoverBlack.antialiasing = ClientPrefs.data.antialiasing;
 		tooSlowCoverBlack.color = FlxColor.BLACK;
 		tooSlowCoverBlack.setPosition(802, 74);
 		tooSlowCoverBlack.visible = true;
@@ -245,7 +240,6 @@ class StoryModeState extends MusicBeatState
 		staticscreen2.updateHitbox();
 		staticscreen2.setPosition(813, 74);
 		staticscreen2.alpha = 0.3;
-		staticscreen2.antialiasing = ClientPrefs.data.antialiasing;
 		add(staticscreen2);
 		
 		gfBOX = new FlxSprite();
@@ -254,7 +248,6 @@ class StoryModeState extends MusicBeatState
 		gfBOX.updateHitbox();
 		gfBOX.setPosition(910, 300);
 		gfBOX.color = 0xFF888888;
-		gfBOX.antialiasing = ClientPrefs.data.antialiasing;
 		add(gfBOX);
 		
 		padLock = new FlxSprite();
@@ -265,7 +258,6 @@ class StoryModeState extends MusicBeatState
 		padLock.updateHitbox();
 		padLock.x = greyBOX2.x + greyBOX2.width / 2 - padLock.width / 2;
 		padLock.y = greyBOX2.y + greyBOX2.height / 2 - padLock.height / 2;
-		padLock.antialiasing = ClientPrefs.data.antialiasing;
 		add(padLock);
 		
 		yellowBOX2 = new FlxSprite();
@@ -273,7 +265,6 @@ class StoryModeState extends MusicBeatState
 		yellowBOX2.setGraphicSize(Std.int(FlxG.width * 0.252));
 		yellowBOX2.updateHitbox();
 		yellowBOX2.setPosition(802, 64);
-		yellowBOX2.antialiasing = ClientPrefs.data.antialiasing;
 		add(yellowBOX2);
 		
 		// ── REDBOX ──
@@ -285,7 +276,6 @@ class StoryModeState extends MusicBeatState
 		redBOX.setGraphicSize(Std.int(FlxG.width * 0.3057));
 		redBOX.updateHitbox();
 		redBOX.setPosition(greyBOX.x - 25, greyBOX.y - 17);
-		redBOX.antialiasing = ClientPrefs.data.antialiasing;
 		add(redBOX);
 		
 		arrow = new FlxSprite();
@@ -293,7 +283,6 @@ class StoryModeState extends MusicBeatState
 		arrow.setGraphicSize(Std.int(190 * 0.28));
 		arrow.updateHitbox();
 		arrow.setPosition(60, 200);
-		arrow.antialiasing = ClientPrefs.data.antialiasing;
 		arrow.visible = false;
 		add(arrow);
 		
@@ -303,7 +292,6 @@ class StoryModeState extends MusicBeatState
 		arrow2.updateHitbox();
 		arrow2.setPosition(560, 200);
 		arrow2.flipX = true;
-		arrow2.antialiasing = ClientPrefs.data.antialiasing;
 		arrow2.visible = false;
 		add(arrow2);
 		

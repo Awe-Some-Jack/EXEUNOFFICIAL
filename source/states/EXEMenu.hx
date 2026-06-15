@@ -94,7 +94,6 @@ class EXEMenu extends MusicBeatState
 			menuVideo.screenCenter();
 		});
 		menuVideo.bitmap.onEndReached.add(() -> playMenuVideo());
-		menuVideo.antialiasing = ClientPrefs.data.antialiasing;
 		add(menuVideo);
 		playMenuVideo();
 		#end
@@ -111,7 +110,6 @@ class EXEMenu extends MusicBeatState
 		{
 			final option = new FlxSprite();
 			option.loadGraphic(Assets.getBitmapData("assets/exe/mainmenu/options/box.png"));
-			option.antialiasing = ClientPrefs.data.antialiasing;
 			option.updateHitbox();
 			option.ID = i;
 			add(option);

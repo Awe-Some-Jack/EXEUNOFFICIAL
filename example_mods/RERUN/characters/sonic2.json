@@ -1,55 +1,55 @@
 {
 	"animations": [
 		{
-			"loop": false,
-			"offsets": [-448, -248],
-			"anim": "singUP",
+			"offsets": [51, -171],
+			"indices": [],
 			"fps": 24,
-			"name": "Sonic2_UP",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-364, -403],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Sonic2_DOWN",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-401, -229],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "Sonic2_RIGHT",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-157, -397],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "Sonic2_LEFT",
-			"indices": []
-		},
-		{
-			"loop": true,
-			"offsets": [-450, -344],
 			"anim": "idle",
+			"loop": true,
+			"name": "Idle "
+		},
+		{
+			"offsets": [65, -74],
+			"indices": [],
 			"fps": 24,
-			"name": "Sonic2_IDLE",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			"anim": "singUP",
+			"loop": false,
+			"name": "Up"
+		},
+		{
+			"offsets": [114, -311],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Down"
+		},
+		{
+			"offsets": [40, -291],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Right"
+		},
+		{
+			"offsets": [389, -229],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Left"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/sonic2",
 	"position": [0, 0],
-	"healthicon": "creepshow-sonic",
+	"healthicon": "sonic",
 	"flip_x": false,
 	"healthbar_colors": [0, 76, 250],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1.4,
+	"scale": 1,
 	"_editor_isPlayer": false
 }

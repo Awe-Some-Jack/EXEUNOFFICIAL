@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"offsets": [-260, 66],
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+			"offsets": [365, 384],
+			"indices": [],
 			"fps": 24,
 			"anim": "idle",
 			"loop": true,
-			"name": "IDLE"
+			"name": "Idle 3"
 		},
 		{
-			"offsets": [-181, 346],
+			"offsets": [368, 718],
 			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
 			"loop": false,
-			"name": "UP"
+			"name": "Up 3"
 		},
 		{
-			"offsets": [-131, -278],
+			"offsets": [282, 210],
 			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
 			"loop": false,
-			"name": "DOWN"
+			"name": "down"
 		},
 		{
-			"offsets": [-222, 56],
+			"offsets": [375, 340],
 			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
 			"loop": false,
-			"name": "RIGHT"
+			"name": "right"
 		},
 		{
-			"offsets": [229, 203],
+			"offsets": [705, 315],
 			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
 			"loop": false,
-			"name": "LEFT"
+			"name": "left"
 		}
 	],
 	"vocals_file": "",
@@ -50,6 +50,6 @@
 	"healthbar_colors": [0, 76, 250],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1.4,
+	"scale": 1.2,
 	"_editor_isPlayer": false
 }

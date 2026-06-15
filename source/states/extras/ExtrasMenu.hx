@@ -487,6 +487,10 @@ class ExtrasMenu extends MusicBeatState
             states.extras.dagarden.DAGarden.orphanPlayer = null;
         }
         canMove = true;
+        for (cam in FlxG.cameras.list)
+            if (cam?.filters != null)
+                Main.resetSpriteCache(cam.flashSprite);
+        if (FlxG.game != null) Main.resetSpriteCache(FlxG.game);
     }
 
     function exitToMainMenu():Void

@@ -6,16 +6,17 @@
 		{
 			"display_name": "FATAL ERROR",
 			"bio": "An inhabitant of the Digital Universe, known as a Code Entity (Code with a definite form that has the ability to think for itself and perform actions and tasks that inert code cannot), he is a power-hungry, sentient amalgam of broken code that originated as a Prime Organizer, the lowest class of the Prime Copy species. Unlike the usual offspring of Fatal Prime, Fatal Error was able to make his own conscious decisions and form thoughts of his own. After months of physical and verbal torment from Prime, he was finally cast from Prime's domain and grew to become an immensely powerful insatiably megalomaniac entity with a desire to corrupt all life, become the most powerful entity in existence, and most importantly, get revenge on his creator and show her the mistake she made by letting him flee alive.\n\nAfter his departure from Prime's domain, he stumbled upon a Sonic 3 & Knuckles ROM which he began to harvest code from in order to get closer to his goal of becoming more powerful. It was here that he found his first victims -that being the cast of this game-, which he chose to corrupt and utilize as tools, adding them to his arsenal instead of completely consuming them.",
-			"char_scale": 1.5,
+			"char_scale": 1.08418111753372,
+			"char_angle": 0,
 			"icon_offset": [
-				681,
-				480
+				693,
+				466
 			],
 			"icon": "fatal-sonic",
 			"mod": "",
 			"char_offset": [
-				140,
-				-145
+				353,
+				73
 			],
 			"flip_x": false,
 			"char": "fatal-sonic",

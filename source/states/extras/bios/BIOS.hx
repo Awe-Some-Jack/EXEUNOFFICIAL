@@ -26,6 +26,7 @@ typedef BioEntry =
 	var artist:String;
 	var scale:Float;
 	var flipX:Bool;
+	var charAngle:Float;
 	var charOffset:Array<Float>;
 	var iconOffset:Array<Float>;
 	var listOrder:Int;
@@ -120,8 +121,13 @@ class BIOS extends MusicBeatSubstate
 	var _debugDragOffY:Float = 0;
 	var _debugRotating:Bool = false;
 	var _debugOpacity:Bool = false;
+	var _debugResizeW:Bool = false;
+	var _debugResizeH:Bool = false;
 	var _debugLabel:FlxText;
 	var _debugHistory:Map<String, { charX:Float, charY:Float, charScale:Float, charAngle:Float, charAlpha:Float, iconX:Float, iconY:Float, iconScale:Float }> = [];
+
+	var _debugBox1:FlxSprite;
+	var _debugBox2:FlxSprite;
 
 	static var _ghosts:Array<FlxSprite> = [];
 
@@ -175,6 +181,9 @@ class BIOS extends MusicBeatSubstate
 
 		for (g in _ghosts) add(g);
 
+		_debugBox1 = _makeDebugBox(473, 161, 298, 408);
+		_debugBox2 = _makeDebugBox(692, 466, 74,  72);
+
 		_debugLabel = new FlxText(4, 4, 0, '', 14);
 		_debugLabel.setFormat(null, 14, FlxColor.WHITE, LEFT);
 		_debugLabel.setBorderStyle(OUTLINE, FlxColor.BLACK, 1);
@@ -213,16 +222,17 @@ class BIOS extends MusicBeatSubstate
 			final mod         = _str(base.mod, '');
 			final bio         = _str(base.bio, '');
 			final artist      = _str(base.artist, '');
-			final scale:Float = (base.char_scale != null) ? base.char_scale : 0.5;
-			final flipX:Bool  = (base.flip_x == true);
-			final charOff     = _arr2(base.char_offset, [300.0, 100.0]);
-			final iconOff     = _arr2(base.icon_offset, [786.0, 425.0]);
-			final order:Int   = (d.list_position != null) ? d.list_position : 9999;
+			final scale:Float      = (base.char_scale != null) ? base.char_scale : 0.5;
+			final flipX:Bool       = (base.flip_x == true);
+			final charAngle:Float  = (base.char_angle != null) ? base.char_angle : 0.0;
+			final charOff          = _arr2(base.char_offset, [300.0, 100.0]);
+			final iconOff          = _arr2(base.icon_offset, [786.0, 425.0]);
+			final order:Int        = (d.list_position != null) ? d.list_position : 9999;
 
 			entries.push({
 				displayName: displayName, charId: charId, iconId: iconId,
 				mod: mod, bio: bio, artist: artist, scale: scale,
-				flipX: flipX, charOffset: charOff, iconOffset: iconOff,
+				flipX: flipX, charAngle: charAngle, charOffset: charOff, iconOffset: iconOff,
 				listOrder: order, filePath: path, variants: variants
 			});
 		}
@@ -286,9 +296,7 @@ class BIOS extends MusicBeatSubstate
 
 	function _buildInfoBox():Void
 	{
-		bioCamera = new FlxCamera(INFO_X, INFO_Y, INFO_W, INFO_H);
-		bioCamera.bgColor = 0x00000000;
-		FlxG.cameras.add(bioCamera, false);
+		bioCamera = null;
 
 		bioBox = new FlxSprite(INFO_X, INFO_Y);
 		bioBox.makeGraphic(INFO_W, INFO_H, FlxColor.TRANSPARENT, true);
@@ -296,11 +304,11 @@ class BIOS extends MusicBeatSubstate
 		bioBox.scrollFactor.set();
 		add(bioBox);
 
-		bioTxt = new FlxText(INFO_PAD_X, INFO_PAD_TOP, INFO_W - INFO_PAD_X - INFO_PAD_RIGHT, '', 23);
+		bioTxt = new FlxText(INFO_X + INFO_PAD_X, INFO_Y + INFO_PAD_TOP, INFO_W - INFO_PAD_X - INFO_PAD_RIGHT, '', 23);
 		bioTxt.setFormat(Paths.font('smallass.TTF'), 23, FlxColor.WHITE, LEFT);
 		bioTxt.antialiasing = ClientPrefs.data.antialiasing;
 		bioTxt.scrollFactor.set();
-		bioTxt.cameras = [bioCamera];
+		bioTxt.clipRect = new flixel.math.FlxRect(0, 0, INFO_W - INFO_PAD_X - INFO_PAD_RIGHT, INFO_H);
 		add(bioTxt);
 
 		final trackH = INFO_H - SCROLL_PAD * 2;
@@ -372,25 +380,27 @@ class BIOS extends MusicBeatSubstate
 		var dispName = e.displayName;
 		var artist   = e.artist;
 		var bio      = e.bio;
-		var scale    = e.scale;
-		var flipX    = e.flipX;
-		var charOff  = e.charOffset;
-		var iconOff  = e.iconOffset;
-		var mod      = e.mod;
+		var scale      = e.scale;
+		var flipX      = e.flipX;
+		var charAngle  = e.charAngle;
+		var charOff    = e.charOffset;
+		var iconOff    = e.iconOffset;
+		var mod        = e.mod;
 
 		if (e.variants.length > 0 && variantIdx < e.variants.length)
 		{
 			final v:Dynamic = e.variants[variantIdx];
-			charId   = _str(v.char,         charId);
-			iconId   = _str(v.icon,         iconId);
-			dispName = _str(v.display_name, dispName);
-			artist   = _str(v.artist,       artist);
-			bio      = _str(v.bio,          bio);
-			scale    = (v.char_scale  != null) ? v.char_scale  : scale;
-			flipX    = (v.flip_x == true);
-			charOff  = _arr2(v.char_offset, charOff);
-			iconOff  = _arr2(v.icon_offset, iconOff);
-			mod      = _str(v.mod,          mod);
+			charId    = _str(v.char,         charId);
+			iconId    = _str(v.icon,         iconId);
+			dispName  = _str(v.display_name, dispName);
+			artist    = _str(v.artist,       artist);
+			bio       = _str(v.bio,          bio);
+			scale     = (v.char_scale  != null) ? v.char_scale  : scale;
+			flipX     = (v.flip_x == true);
+			charAngle = (v.char_angle != null) ? v.char_angle : charAngle;
+			charOff   = _arr2(v.char_offset, charOff);
+			iconOff   = _arr2(v.icon_offset, iconOff);
+			mod       = _str(v.mod,          mod);
 		}
 
 		charName.text = dispName;
@@ -399,7 +409,7 @@ class BIOS extends MusicBeatSubstate
 		_updateDots();
 
 		bioTxt.text = bio;
-		bioTxt.y = INFO_PAD_TOP;
+		bioTxt.y = INFO_Y + INFO_PAD_TOP;
 
 		namesGrp.forEach((t:FlxText) -> {
 			t.color = (t.ID == index) ? FlxColor.YELLOW : FlxColor.WHITE;
@@ -410,15 +420,9 @@ class BIOS extends MusicBeatSubstate
 		icon.setPosition(iconOff[0], iconOff[1]);
 
 		charLoadTimer?.cancel();
-		final capturedCharId = charId;
-		final capturedMod    = mod;
-		final capturedScale  = scale;
-		final capturedFlipX  = flipX;
-		final capturedOff    = charOff;
-		charLoadTimer = new FlxTimer().start(0.05, (_) -> {
-			Mods.currentModDirectory = capturedMod;
-			_loadCharFrame(capturedCharId, capturedMod, capturedScale, capturedFlipX, capturedOff);
-		});
+		Mods.currentModDirectory = mod;
+		_loadCharFrame(charId, mod, scale, flipX, charOff);
+		_fitToBoxes(charAngle);
 
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Bios Menu", 'Checking $dispName');
@@ -676,7 +680,7 @@ class BIOS extends MusicBeatSubstate
 		curVariant = 0;
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
 		_applyEntry(curEntry, 0);
-		bioTxt.y = INFO_PAD_TOP;
+		bioTxt.y = INFO_Y + INFO_PAD_TOP;
 	}
 
 	function _changeVariant(dir:Int):Void
@@ -725,6 +729,8 @@ class BIOS extends MusicBeatSubstate
 		{
 			_debugMode = !_debugMode;
 			_debugLabel.visible = _debugMode;
+			_debugBox1.visible  = _debugMode;
+			_debugBox2.visible  = _debugMode;
 			if (!_debugMode) { _debugSaveHistory(); _debugSelected = null; _debugDragging = false; }
 		}
 
@@ -769,9 +775,11 @@ class BIOS extends MusicBeatSubstate
 			_debugDragging = false;
 			_debugRotating = false;
 			_debugOpacity  = false;
+			_debugResizeW  = false;
+			_debugResizeH  = false;
 
 			final pt = new flixel.math.FlxPoint(mx, my);
-			final candidates:Array<FlxSprite> = [charSprite, cast icon];
+			final candidates:Array<FlxSprite> = [charSprite, cast icon, _debugBox1, _debugBox2];
 			for (g in _ghosts) candidates.push(g);
 
 			for (s in candidates)
@@ -789,10 +797,14 @@ class BIOS extends MusicBeatSubstate
 
 		if (FlxG.mouse.justReleased) _debugDragging = false;
 
+		final isBox = _debugSelected == _debugBox1 || _debugSelected == _debugBox2;
+
 		if (_debugSelected != null)
 		{
-			_debugRotating = FlxG.keys.pressed.R;
-			_debugOpacity  = FlxG.keys.pressed.O;
+			_debugRotating = !isBox && FlxG.keys.pressed.R;
+			_debugOpacity  = !isBox && FlxG.keys.pressed.O;
+			_debugResizeW  = isBox  && FlxG.keys.pressed.W;
+			_debugResizeH  = isBox  && FlxG.keys.pressed.H;
 		}
 
 		var didModify = false;
@@ -806,7 +818,7 @@ class BIOS extends MusicBeatSubstate
 				lockedX = charSprite.x;
 				lockedY = charSprite.y;
 			}
-			didModify = true;
+			didModify = !isBox;
 		}
 
 		if (_debugSelected != null && FlxG.mouse.wheel != 0)
@@ -815,14 +827,24 @@ class BIOS extends MusicBeatSubstate
 				_debugSelected.angle += FlxG.mouse.wheel * 2.0;
 			else if (_debugOpacity)
 				_debugSelected.alpha = Math.max(0, Math.min(1, _debugSelected.alpha + FlxG.mouse.wheel * 0.05));
-			else
+			else if (_debugResizeW && isBox)
+			{
+				final newW = Std.int(Math.max(10, _debugSelected.width + FlxG.mouse.wheel * 4));
+				_redrawDebugBox(_debugSelected, newW, Std.int(_debugSelected.height));
+			}
+			else if (_debugResizeH && isBox)
+			{
+				final newH = Std.int(Math.max(10, _debugSelected.height + FlxG.mouse.wheel * 4));
+				_redrawDebugBox(_debugSelected, Std.int(_debugSelected.width), newH);
+			}
+			else if (!isBox)
 			{
 				final delta:Float = FlxG.mouse.wheel * 0.01;
 				_debugSelected.scale.x = Math.max(0.01, _debugSelected.scale.x + delta);
 				_debugSelected.scale.y = Math.max(0.01, _debugSelected.scale.y + delta);
 				_debugSelected.updateHitbox();
 			}
-			didModify = true;
+			didModify = didModify || (!isBox && FlxG.mouse.wheel != 0);
 		}
 
 		if (didModify) _debugSaveHistory();
@@ -836,19 +858,91 @@ class BIOS extends MusicBeatSubstate
 		final isChar  = _debugSelected == charSprite;
 		final isIcon  = _debugSelected == (cast icon : FlxSprite);
 		final isGhost = _ghosts.indexOf(_debugSelected) >= 0;
-		final selName = isChar ? 'charSprite' : isIcon ? 'icon' : isGhost ? 'ghost#${_ghosts.indexOf(_debugSelected)}' : 'none';
-		final modeStr = _debugRotating ? ' [R=rotate]' : (_debugOpacity ? ' [O=opacity]' : ' [scroll=scale]');
+		final boxNum  = _debugSelected == _debugBox1 ? 1 : _debugSelected == _debugBox2 ? 2 : 0;
+		final selName = isChar ? 'charSprite' : isIcon ? 'icon' : isGhost ? 'ghost#${_ghosts.indexOf(_debugSelected)}' : isBox ? 'box$boxNum' : 'none';
+		final modeStr = isBox
+			? (_debugResizeW ? ' [W=ancho]' : _debugResizeH ? ' [H=alto]' : ' [W+scroll=ancho  H+scroll=alto]')
+			: (_debugRotating ? ' [R=rotate]' : (_debugOpacity ? ' [O=opacity]' : ' [scroll=scale]'));
 
 		if (_debugSelected != null)
-			_debugLabel.text = '[F3] DEBUG$modeStr  |  $selName  [G]=ghost  [C]=clear  [T]=print all\nx:${Math.round(_debugSelected.x)}  y:${Math.round(_debugSelected.y)}  scale:${Math.round(_debugSelected.scale.x * 1000) / 1000}  angle:${Math.round(_debugSelected.angle)}  alpha:${Math.round(_debugSelected.alpha * 100)}%';
+			_debugLabel.text = '[F3] DEBUG$modeStr  |  $selName  [G]=ghost  [C]=clear  [T]=print all\nx:${Math.round(_debugSelected.x)}  y:${Math.round(_debugSelected.y)}  w:${Math.round(_debugSelected.width)}  h:${Math.round(_debugSelected.height)}${!isBox ? '  scale:${Math.round(_debugSelected.scale.x * 1000) / 1000}  angle:${Math.round(_debugSelected.angle)}  alpha:${Math.round(_debugSelected.alpha * 100)}%' : ''}';
 		else
-			_debugLabel.text = '[F3] DEBUG  |  click char/icon  |  R+scroll=rotate  |  O+scroll=opacity  |  scroll=scale  |  [G]=ghost  [C]=clear  [T]=print all';
+			_debugLabel.text = '[F3] DEBUG  |  click char/icon/box  |  R+scroll=rotate  |  O+scroll=opacity  |  scroll=scale  |  W+scroll=ancho  H+scroll=alto  |  [G]=ghost  [C]=clear  [T]=print all';
+	}
+
+	function _fitToBoxes(charAngle:Float = 0):Void
+	{
+		if (charSprite != null && charSprite.visible && charSprite.frameWidth > 0 && charSprite.frameHeight > 0)
+		{
+			final bx:Float = _debugBox1.x;
+			final by:Float = _debugBox1.y;
+			final bw:Float = _debugBox1.width;
+			final bh:Float = _debugBox1.height;
+			final rotated:Bool = (charAngle % 180 != 0);
+			final fw:Float = rotated ? charSprite.frameHeight : charSprite.frameWidth;
+			final fh:Float = rotated ? charSprite.frameWidth  : charSprite.frameHeight;
+			final s:Float  = Math.min(bw / fw, bh / fh);
+			charSprite.scale.set(s, s);
+			charSprite.angle = charAngle;
+			charSprite.updateHitbox();
+			charSprite.x = bx + (bw - charSprite.width)  * 0.5;
+			charSprite.y = by + (bh - charSprite.height) * 0.5;
+			lockedX = charSprite.x;
+			lockedY = charSprite.y;
+		}
+
+		if (icon != null)
+		{
+			final bx:Float = _debugBox2.x;
+			final by:Float = _debugBox2.y;
+			final bw:Float = _debugBox2.width;
+			final bh:Float = _debugBox2.height;
+			final fw:Float = icon.frameWidth  > 0 ? icon.frameWidth  : (icon.width  / icon.scale.x);
+			final fh:Float = icon.frameHeight > 0 ? icon.frameHeight : (icon.height / icon.scale.y);
+			final s:Float  = Math.min(bw / fw, bh / fh);
+			icon.scale.set(s, s);
+			icon.updateHitbox();
+			icon.x = bx + (bw - fw * s) * 0.5;
+			icon.y = by + (bh - fh * s) * 0.5;
+		}
+	}
+
+	function _makeDebugBox(x:Float, y:Float, w:Int, h:Int):FlxSprite
+	{
+		final s = new FlxSprite(x, y);
+		s.scrollFactor.set();
+		s.visible = false;
+		_redrawDebugBox(s, w, h);
+		add(s);
+		return s;
+	}
+
+	function _redrawDebugBox(s:FlxSprite, w:Int, h:Int):Void
+	{
+		s.makeGraphic(w, h, 0x00000000, true);
+		final bmd = s.pixels;
+		final col:Int = 0xFFFF0000;
+		final t:Int = 2;
+		bmd.fillRect(new openfl.geom.Rectangle(0,     0,     w,  t), col);
+		bmd.fillRect(new openfl.geom.Rectangle(0,     h - t, w,  t), col);
+		bmd.fillRect(new openfl.geom.Rectangle(0,     0,     t,  h), col);
+		bmd.fillRect(new openfl.geom.Rectangle(w - t, 0,     t,  h), col);
+		s.dirty = true;
 	}
 
 	function _debugKey():String
 	{
 		final e = entries.length > 0 ? entries[curEntry] : null;
-		return e != null ? '${e.displayName} [${e.charId}]' : '?';
+		if (e == null) return '?';
+		var dispName = e.displayName;
+		var charId   = e.charId;
+		if (e.variants.length > 0 && curVariant < e.variants.length)
+		{
+			final v:Dynamic = e.variants[curVariant];
+			if (v.display_name != null) dispName = Std.string(v.display_name);
+			if (v.char        != null) charId   = Std.string(v.char);
+		}
+		return '$dispName [$charId]${curVariant > 0 ? " (v$curVariant)" : ""}';
 	}
 
 	function _debugSaveHistory():Void
@@ -969,18 +1063,19 @@ class BIOS extends MusicBeatSubstate
 			if (FlxG.mouse.deltaWheel.y != 0 && FlxG.mouse.overlaps(bioBox))
 			{
 				bioTxt.y += FlxG.mouse.deltaWheel.y * 10;
-				bioTxt.y  = FlxMath.bound(bioTxt.y, -(bioTxt.height - INFO_H), INFO_PAD_TOP);
+				bioTxt.y  = FlxMath.bound(bioTxt.y, INFO_Y - (bioTxt.height - INFO_H), INFO_Y + INFO_PAD_TOP);
+				bioTxt.clipRect = new flixel.math.FlxRect(0, INFO_Y - bioTxt.y, INFO_W - INFO_PAD_X - INFO_PAD_RIGHT, INFO_H);
 			}
 
 			final trackH    = INFO_H - SCROLL_PAD * 2;
-			final totalText = bioTxt.height - INFO_PAD_TOP;
+			final totalText = bioTxt.height;
 			final ratio     = INFO_H / totalText;
 			final thumbH    = Std.int(Math.max(20, trackH * ratio));
 			if (bioScrollThumb.height != thumbH)
 				bioScrollThumb.makeGraphic(SCROLL_W, thumbH, FlxColor.WHITE);
 
 			final scrollRange = totalText - INFO_H;
-			final scrollPos   = scrollRange > 0 ? FlxMath.bound((INFO_PAD_TOP - bioTxt.y) / scrollRange, 0, 1) : 0.0;
+			final scrollPos   = scrollRange > 0 ? FlxMath.bound((INFO_Y + INFO_PAD_TOP - bioTxt.y) / scrollRange, 0, 1) : 0.0;
 			bioScrollThumb.y  = bioScrollTrack.y + scrollPos * (trackH - thumbH);
 		}
 	}
@@ -1064,11 +1159,6 @@ class BIOS extends MusicBeatSubstate
 	{
 		charLoadTimer?.cancel();
 		_releaseCharBmp();
-
-		if (bioCamera != null) { FlxG.cameras.remove(bioCamera, true); bioCamera = null; }
-
-		Paths.clearStoredMemory();
-		Paths.clearUnusedMemory();
 		super.destroy();
 	}
 }

@@ -1,0 +1,39 @@
+{
+	"animations": [
+		{
+			"offsets": [1551, 908],
+			"loop": false,
+			"fps": 24,
+			"anim": "firstDeath",
+			"indices": [],
+			"name": "muerte"
+		},
+		{
+			"offsets": [608, -176],
+			"loop": true,
+			"fps": 24,
+			"anim": "deathLoop",
+			"indices": [],
+			"name": "loop"
+		},
+		{
+			"offsets": [613, -144],
+			"loop": false,
+			"fps": 24,
+			"anim": "deathConfirm",
+			"indices": [],
+			"name": "confirm"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/mania",
+	"position": [330, 20],
+	"healthicon": "crazybf",
+	"flip_x": true,
+	"healthbar_colors": [0, 103, 195],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 0.6,
+	"_editor_isPlayer": true
+}

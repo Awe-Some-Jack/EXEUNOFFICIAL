@@ -3,30 +3,32 @@
 	"bio": "RedGlove is another being much like X- possibly also made of VOID matter- that just so happened to follow in X's footsteps into his world. This lead it to stumble upon and subsequently possess an old, discarded vessel X had constructed. By its tie to him, possibly being or having ever been part of him, it ended up binding itself to Lord X and vice versa.",
 	"icon": "red",
 	"icon_offset": [
-		786,
-		425
+		696,
+		465
 	],
-	"char_scale": 0.5,
+	"char_scale": 0.48654740608229,
+	"char_angle": 0,
 	"list_position": 9999,
 	"mod": "LORD X",
 	"bio_appear": true,
 	"char_offset": [
-		300,
-		100
+		358,
+		182
 	],
 	"variants": [
 		{
-			"char_scale": 0.45,
+			"char_scale": 0.48654740608229,
+			"char_angle": 0,
 			"artist": "JoeDoughBoi & Sturm",
 			"bio": "RedGlove is another being much like X- possibly also made of VOID matter- that just so happened to follow in X's footsteps into his world. This lead it to stumble upon and subsequently possess an old, discarded vessel X had constructed. By its tie to him, possibly being or having ever been part of him, it ended up binding itself to Lord X and vice versa.",
 			"mod": "LORD X",
 			"icon_offset": [
-				696,
-				465
+				692,
+				466
 			],
 			"char_offset": [
-				670,
-				425
+				358,
+				182
 			],
 			"flip_x": false,
 			"char": "RedGlove",

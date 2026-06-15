@@ -1,60 +1,60 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [77, -50],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 		},
 		{
+			"loop": false,
 			"offsets": [-53, -1],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-			"name": "singUP"
+			"fps": 24,
+			"name": "singUP",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 		},
 		{
+			"loop": false,
 			"offsets": [130, -171],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-			"name": "singDOWN"
+			"fps": 24,
+			"name": "singDOWN",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 		},
 		{
+			"loop": false,
 			"offsets": [287, -80],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-			"name": "singLEFT"
+			"fps": 24,
+			"name": "singLEFT",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 		},
 		{
+			"loop": false,
 			"offsets": [-306, -49],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-			"name": "singRIGHT"
+			"fps": 24,
+			"name": "singRIGHT",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 		},
 		{
+			"offsets": [-200, -230],
 			"loop": true,
-			"offsets": [-200, -230],
-			"anim": "laugh",
 			"fps": 24,
-			"name": "creepystare",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+			"anim": "laugh",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+			"name": "creepystare"
 		},
 		{
-			"offsets": [-200, -230],
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15],
-			"fps": 24,
-			"anim": "smile",
 			"loop": false,
-			"name": "creepysmile"
+			"offsets": [-200, -230],
+			"anim": "smile",
+			"fps": 24,
+			"name": "creepysmile",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15]
 		}
 	],
 	"vocals_file": "",
@@ -65,7 +65,7 @@
 	"flip_x": false,
 	"healthbar_colors": [247, 156, 25],
 	"camera_position": [20, 190],
-	"sing_duration": 4,
+	"sing_duration": 6,
 	"scale": 1.05,
 	"_editor_isPlayer": false
 }

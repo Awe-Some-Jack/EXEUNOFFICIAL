@@ -47,34 +47,28 @@ class ParallaxState extends MusicBeatState
 
 		spikestop = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/spike.png'), X);
 		spikestop.updateHitbox();
-		spikestop.antialiasing = ClientPrefs.data.antialiasing;
 		spikestop.velocity.x = 50;
 		spikestop.flipY = true;
 		add(spikestop);
 
 		spikesbot = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/spike.png'), X);
 		spikesbot.updateHitbox();
-		spikesbot.antialiasing = ClientPrefs.data.antialiasing;
 		spikesbot.y = FlxG.height - spikesbot.height;
 		spikesbot.velocity.x = -50;
 		add(spikesbot);
 
 		barstory = new FlxSprite(((curSelected == 0) ? -80 : -140)).loadGraphic(Assets.getBitmapData('assets/exe/parallax/tile.png'));
-		barstory.antialiasing = ClientPrefs.data.antialiasing;
 		barstory.y = (FlxG.height / 2) - barstory.height - 20;
 		add(barstory);
 
 		barinfo = new FlxSprite(((curSelected == 0) ? -140 : -80)).loadGraphic(Assets.getBitmapData('assets/exe/parallax/tile.png'));
-		barinfo.antialiasing = ClientPrefs.data.antialiasing;
 		barinfo.y = (FlxG.height / 2) + 20;
 		add(barinfo);
 
 		textstory = new FlxSprite(barstory.x + 140, barstory.y + 28).loadGraphic(Assets.getBitmapData('assets/exe/parallax/story.png'));
-		textstory.antialiasing = ClientPrefs.data.antialiasing;
 		add(textstory);
 
 		textinfo = new FlxSprite(barinfo.x + 140, barinfo.y + 32).loadGraphic(Assets.getBitmapData('assets/exe/parallax/info-bio.png'));
-		textinfo.antialiasing = ClientPrefs.data.antialiasing;
 		add(textinfo);
 
 		sonic = new FlxSprite();
@@ -85,7 +79,6 @@ class ParallaxState extends MusicBeatState
 		sonic.updateHitbox();
 		sonic.x = (FlxG.width * 0.715) - (sonic.width / 2);
 		sonic.screenCenter(Y);
-		sonic.antialiasing = ClientPrefs.data.antialiasing;
 		add(sonic);
 
 		whiteBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);

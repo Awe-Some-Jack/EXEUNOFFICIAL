@@ -23,14 +23,15 @@
 			"display_name": "Chaotix (Beast)",
 			"icon": "chaotix-beast-pixel",
 			"icon_offset": [
-				696,
-				460
+				693,
+				466
 			],
-			"char_scale": 4.4,
+			"char_scale": 4.05518072289154,
+			"char_angle": 0,
 			"mod": "CHAOTIX",
 			"char_offset": [
-				-35,
-				-145
+				264,
+				67
 			],
 			"char": "beast_chaotix",
 			"flip_x": false,

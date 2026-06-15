@@ -2927,7 +2927,245 @@
 		}
 	],
 	"gfVersion": "gf",
-	"events": [],
+	"events": [
+		[
+			0,
+			[
+				["Tweening Camera", "0,-1600", "0.00001,linear"],
+				["Set Character Offset", "bf", "0, 0"],
+				["Set Character Offset", "dad", "0, 0"]
+			]
+		],
+		[
+			9846.15384615385,
+			[
+				["Tweening Camera", "0,0", "3.2,smoothStepInOut"]
+			]
+		],
+		[
+			13538.4615384615,
+			[
+				["Set Character Offset", "bf", "25"],
+				["Set Character Offset", "dad", "25"]
+			]
+		],
+		[
+			24153.8461538461,
+			[
+				["Tween Camera Zoom", "0.7,true", "0.0001,linear"]
+			]
+		],
+		[
+			24230.7692307692,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.0001,linear"]
+			]
+		],
+		[
+			24307.6923076923,
+			[
+				["Tween Camera Zoom", "0.7,true", "0.0001,linear"]
+			]
+		],
+		[
+			24461.5384615385,
+			[
+				["Tween Camera Zoom", "0.9,true", "0.0001,linear"]
+			]
+		],
+		[
+			24615.3846153846,
+			[
+				["Tween Camera Zoom", "0.7,true", "1.23,smoothStepOut"]
+			]
+		],
+		[
+			26461.5384615385,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			27384.6153846154,
+			[
+				["Tween Camera Zoom", "0.9,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			28307.6923076923,
+			[
+				["Tween Camera Zoom", "0.7,true", "1.23,smoothStepOut"]
+			]
+		],
+		[
+			30153.8461538461,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			31076.9230769231,
+			[
+				["Tween Camera Zoom", "0.9,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			32000,
+			[
+				["Tween Camera Zoom", "0.7,true", "1.23,smoothStepOut"]
+			]
+		],
+		[
+			33846.1538461538,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			34769.2307692308,
+			[
+				["Tween Camera Zoom", "0.9,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			35692.3076923077,
+			[
+				["Tween Camera Zoom", "0.7,true", "1.23,smoothStepOut"]
+			]
+		],
+		[
+			37538.4615384615,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			38461.5384615384,
+			[
+				["Tween Camera Zoom", "0.9,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			38923.0769230769,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.00001,linear"]
+			]
+		],
+		[
+			39000,
+			[
+				["Tween Camera Zoom", "0.9,true", "0.00001,smoothStepOut"]
+			]
+		],
+		[
+			39076.9230769231,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.00001,linear"]
+			]
+		],
+		[
+			39230.7692307692,
+			[
+				["Tween Camera Zoom", "0.7,true", "0.00001,linear"]
+			]
+		],
+		[
+			39384.6153846154,
+			[
+				["Tween Camera Zoom", "0.6,true", "1.23,smoothStepOut"]
+			]
+		],
+		[
+			41230.7692307692,
+			[
+				["Tween Camera Zoom", "0.7,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			42153.8461538461,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			43076.923076923,
+			[
+				["Tween Camera Zoom", "0.6,true", "1.23, linear"]
+			]
+		],
+		[
+			44923.0769230769,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			45846.1538461538,
+			[
+				["Tween Camera Zoom", "0.9,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			46769.2307692307,
+			[
+				["Tween Camera Zoom", "0.6,true", "1.23,linear"]
+			]
+		],
+		[
+			48615.3846153846,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			49538.4615384615,
+			[
+				["Tween Camera Zoom", "0.9,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			50461.5384615384,
+			[
+				["Tween Camera Zoom", "0.6,true", "1.23,linear"]
+			]
+		],
+		[
+			52307.6923076923,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			53230.7692307692,
+			[
+				["Tween Camera Zoom", "0.9,true", "0.41,smoothStepOut"]
+			]
+		],
+		[
+			53692.3076923077,
+			[
+				["Tween Camera Zoom", "0.7,true", "0.0001,linear"]
+			]
+		],
+		[
+			53769.2307692307,
+			[
+				["Tween Camera Zoom", "0.8,true", "0.0001,linear"]
+			]
+		],
+		[
+			53846.1538461538,
+			[
+				["Tween Camera Zoom", "0.7,true", "0.0001,linear"]
+			]
+		],
+		[
+			54000,
+			[
+				["Tween Camera Zoom", "0.9,true", "0.0001,linear"]
+			]
+		]
+	],
 	"offset": 0,
 	"disableNoteRGB": true,
 	"song": "Hijacked-Transmission",

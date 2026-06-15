@@ -2,32 +2,32 @@
 	"animations": [
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "firstDeath",
-			"loop": false,
+			"indices": [],
 			"name": "muerte"
 		},
 		{
-			"offsets": [-15, 0],
-			"indices": [],
+			"offsets": [-29, 0],
+			"loop": true,
 			"fps": 24,
 			"anim": "deathLoop",
-			"loop": true,
+			"indices": [],
 			"name": "loop"
 		},
 		{
-			"offsets": [65, 181],
-			"indices": [],
+			"offsets": [1553, 1990],
+			"loop": false,
 			"fps": 24,
 			"anim": "deathConfirm",
-			"loop": false,
+			"indices": [],
 			"name": "confirm"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/curse xd",
+	"image": "characters/gameover",
 	"position": [-85, 320],
 	"healthicon": "bf",
 	"flip_x": true,

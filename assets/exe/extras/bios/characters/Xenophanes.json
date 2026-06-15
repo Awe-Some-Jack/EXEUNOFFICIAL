@@ -9,10 +9,11 @@
 				470
 			],
 			"char_scale": 0.75,
+			"char_angle": -90,
 			"mod": "STORY MODE",
 			"char_offset": [
-				540,
-				230
+				569,
+				385
 			],
 			"char": "sonic.exe",
 			"flip_x": false,

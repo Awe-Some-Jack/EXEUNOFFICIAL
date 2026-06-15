@@ -16,6 +16,11 @@ var subtitleBG:FlxSprite;
 var subtitle:FlxText;
 
 var gameOverHUD:FlxCamera;
+function onCreate()
+{
+	GameOverSubstate.deathSoundName = 'empty';
+}
+
 function onGameOverStart()
 {
 	gameOverHUD = new FlxCamera();
@@ -41,8 +46,6 @@ function onGameOverStart()
 	FlxG.camera.follow();
 	FlxG.camera.scroll.set(0, 0);
 	FlxG.camera.zoom = 0.7;
-
-	for (sound in FlxG.sound.list) if (sound.playing) sound.volume = 0;
 
 	deadMusic = new FlxSound();
 	deadMusic.load(Paths.music('gameOver'), true);

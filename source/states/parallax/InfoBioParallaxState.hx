@@ -42,26 +42,22 @@ class InfoBioParallaxState extends MusicBeatState
 		add(grid);
 
 		var spikestop:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/spike.png'), X);
-		spikestop.antialiasing = ClientPrefs.data.antialiasing;
 		spikestop.velocity.x = 60;
 		spikestop.flipY = true;
 		add(spikestop);
 
 		var spikesbot:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/spike.png'), X);
-		spikesbot.antialiasing = ClientPrefs.data.antialiasing;
 		spikesbot.y = FlxG.height - spikesbot.height;
 		spikesbot.velocity.x = -60;
 		add(spikesbot);
 
 		ringdown = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/info/ringdown.png'));
-		ringdown.antialiasing = ClientPrefs.data.antialiasing;
 		ringdown.scale.set(0.25, 0.25);
 		ringdown.updateHitbox();
 		ringdown.x = (FlxG.width - ringdown.width) + 100;
 		add(ringdown);
 
 		ring = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/info/ring.png'));
-		ring.antialiasing = ClientPrefs.data.antialiasing;
 		ring.scale.set(0.25, 0.25);
 		ring.updateHitbox();
 		ring.x = (FlxG.width - ring.width) + 100;
@@ -80,6 +76,7 @@ class InfoBioParallaxState extends MusicBeatState
 		charInfo.setFormat("assets/fonts/Plaza Regular.ttf", 50, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 		charInfo.borderSize = 2;
 		charInfo.antialiasing = ClientPrefs.data.antialiasing;
+
 		var fmt:openfl.text.TextFormat = charInfo.textField.defaultTextFormat;
 		fmt.leading = 5;
 		charInfo.textField.setTextFormat(fmt);
@@ -164,7 +161,6 @@ class InfoBioParallaxState extends MusicBeatState
 		for (renders in data.render)
 		{
 			var spr:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/info/' + data.folder + '/' + renders.asset + '.png'));
-			spr.antialiasing = ClientPrefs.data.antialiasing;
 			spr.scale.set(0.25, 0.25);
 			spr.updateHitbox();
 			spr.setPosition(ring.x + renders.offset.x, ((FlxG.height - ring.height) / 2) + renders.offset.y);

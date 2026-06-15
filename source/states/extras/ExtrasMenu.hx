@@ -209,7 +209,6 @@ class ExtrasMenu extends MusicBeatState
         sumky.updateHitbox();
         sumky.x = 675;
         sumky.y = 122;
-        sumky.antialiasing = ClientPrefs.data.antialiasing;
         add(sumky);
     }
 

@@ -23,11 +23,9 @@ class BIOS extends MusicBeatState
 		fondo.scale.set(FlxG.width / fondo.width, FlxG.height / fondo.height);
 		fondo.updateHitbox();
 		fondo.scrollFactor.set();
-		fondo.antialiasing = ClientPrefs.data.antialiasing;
 		add(fondo);
 
 		final spikestop = new FlxBackdrop(Assets.getBitmapData('assets/exe/extras/bios/backdrop.png'), Y);
-		spikestop.antialiasing = ClientPrefs.data.antialiasing;
 		spikestop.velocity.y = 60;
 		spikestop.screenCenter();
 		spikestop.scrollFactor.set();

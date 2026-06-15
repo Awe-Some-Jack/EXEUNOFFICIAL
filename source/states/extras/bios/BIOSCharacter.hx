@@ -207,7 +207,7 @@ class BIOSCharacter
 		{
 			final t = new FlxText(LIST_X, 0, displayNames_list[i], LIST_FONT_SIZE);
 			t.setFormat(Paths.font('NiseSegaSonic.TTF'), LIST_FONT_SIZE, FlxColor.WHITE, LEFT);
-			t.antialiasing = true;
+			t.antialiasing = ClientPrefs.data.antialiasing;
 			t.ID = i;
 			t.scrollFactor.set(0, 0);
 			namesGrp.add(t);

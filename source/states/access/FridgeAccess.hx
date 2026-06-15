@@ -29,28 +29,24 @@ class FridgeAccess extends MusicBeatState
 		CustomShapeTransition.shape = SUNKY;
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/wall.png'));
-		bg.antialiasing = ClientPrefs.data.antialiasing;
 		bg.scale.set(0.51, 0.51);
 		bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);
 
 		var gang:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/the gang.png'));
-		gang.antialiasing = ClientPrefs.data.antialiasing;
 		gang.scale.set(0.52, 0.52);
 		gang.updateHitbox();
 		gang.setPosition(57, 41);
 		add(gang);
 
 		var frige:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/frige.png'));
-		frige.antialiasing = ClientPrefs.data.antialiasing;
 		frige.scale.set(0.521, 0.521);
 		frige.updateHitbox();
 		frige.setPosition(354, 14);
 		add(frige);
 
 		var paper:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/paper.png'));
-		paper.antialiasing = ClientPrefs.data.antialiasing;
 		paper.scale.set(0.52, 0.52);
 		paper.updateHitbox();
 		paper.setPosition(536, 486);
@@ -61,7 +57,6 @@ class FridgeAccess extends MusicBeatState
 		vanilla.animation.addByPrefix('idle', 'vanilla instancia 1', 24, false);
 		vanilla.animation.addByPrefix('selected', 'vanilla selected instancia 1', 24, false);
 		vanilla.animation.play('idle');
-		vanilla.antialiasing = ClientPrefs.data.antialiasing;
 		vanilla.scale.set(0.52, 0.52);
 		vanilla.updateHitbox();
 		vanilla.setPosition(446, 470);
@@ -72,42 +67,36 @@ class FridgeAccess extends MusicBeatState
 		chocolate.animation.addByPrefix('idle', 'chocolate instancia 1', 24, false);
 		chocolate.animation.addByPrefix('selected', 'chocolate selected instancia 1', 24, false);
 		chocolate.animation.play('idle');
-		chocolate.antialiasing = ClientPrefs.data.antialiasing;
 		chocolate.scale.set(0.52, 0.52);
 		chocolate.updateHitbox();
 		chocolate.setPosition(697, 461);
 		add(chocolate);
 
 		mustard = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/MUSTARD.png'));
-		mustard.antialiasing = ClientPrefs.data.antialiasing;
 		mustard.scale.set(0.52, 0.52);
 		mustard.updateHitbox();
 		mustard.setPosition(643, 546);
 		add(mustard);
 		
 		var sushi:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/sushi.png'));
-		sushi.antialiasing = ClientPrefs.data.antialiasing;
 		sushi.scale.set(0.52, 0.52);
 		sushi.updateHitbox();
 		sushi.setPosition(430, 703);
 		add(sushi);
 
 		var flower:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/flower.png'));
-		flower.antialiasing = ClientPrefs.data.antialiasing;
 		flower.scale.set(0.52, 0.52);
 		flower.updateHitbox();
 		flower.setPosition(529, 698);
 		add(flower);
 
 		amongus = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/amongus.png'));
-		amongus.antialiasing = ClientPrefs.data.antialiasing;
 		amongus.scale.set(0.52, 0.52);
 		amongus.updateHitbox();
 		amongus.setPosition(604, 814);
 		add(amongus);
 
 		var tv:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/tv.png'));
-		tv.antialiasing = ClientPrefs.data.antialiasing;
 		tv.scale.set(0.52, 0.52);
 		tv.updateHitbox();
 		tv.setPosition(625, 685);
@@ -117,14 +106,12 @@ class FridgeAccess extends MusicBeatState
 		doordown.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/door.png', 'assets/exe/access/fridge/door.xml');
 		doordown.animation.addByPrefix('idle', 'door instancia 1', 24, false);
 		doordown.animation.play('idle');
-		doordown.antialiasing = ClientPrefs.data.antialiasing;
 		doordown.scale.set(0.52, 0.52);
 		doordown.updateHitbox();
 		doordown.setPosition(71, 426);
 		add(doordown);
 
 		var doorup:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/door up.png'));
-		doorup.antialiasing = ClientPrefs.data.antialiasing;
 		doorup.scale.set(0.52, 0.52);
 		doorup.updateHitbox();
 		doorup.setPosition(381, 62);
@@ -136,7 +123,6 @@ class FridgeAccess extends MusicBeatState
 		sunkyhand.animation.play('idle');
 		sunkyhand.animation.paused = true;
 		sunkyhand.animation.finishCallback = function(name:String) {sunkyhand.visible = false;};
-		sunkyhand.antialiasing = ClientPrefs.data.antialiasing;
 		sunkyhand.scale.set(0.52, 0.52);
 		sunkyhand.updateHitbox();
 		sunkyhand.setPosition(30, 327);
@@ -155,7 +141,6 @@ class FridgeAccess extends MusicBeatState
 		});
 
 		var shit:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/shit.png'));
-		shit.antialiasing = ClientPrefs.data.antialiasing;
 		shit.scale.set(0.52, 0.52);
 		shit.updateHitbox();
 		shit.setPosition(893, 433);

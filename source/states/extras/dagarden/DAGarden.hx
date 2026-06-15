@@ -146,7 +146,6 @@ class DAGarden extends MusicBeatSubstate
 		spikes.setPosition(70, 87);
 		spikes.scale.set(0.34, 0.34);
 		spikes.updateHitbox();
-		spikes.antialiasing = ClientPrefs.data.antialiasing;
 		add(spikes);
 
 		_setupDecorTweens();
@@ -165,7 +164,6 @@ class DAGarden extends MusicBeatSubstate
 		s.loadGraphic(openfl.utils.Assets.getBitmapData("assets/exe/extras/dagarden/" + file));
 		s.scale.set(scale, scale);
 		s.updateHitbox();
-		s.antialiasing = ClientPrefs.data.antialiasing;
 		add(s);
 		return s;
 	}

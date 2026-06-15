@@ -81,7 +81,6 @@ class BIOSInfo
 		
 		scrollTrack = new FlxSprite(tx, ty).makeGraphic(SCROLL_W, trackH, 0x44FFFFFF);
 		scrollTrack.scrollFactor.set();
-		scrollTrack.antialiasing = ClientPrefs.data.antialiasing;
 		bios.add(scrollTrack);
 
 		scrollThumb = new FlxSprite(tx, ty).makeGraphic(SCROLL_W, 40, FlxColor.WHITE);

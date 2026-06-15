@@ -77,7 +77,6 @@ class DASub extends FlxGroup
 		sprite.loadGraphic(openfl.utils.Assets.getBitmapData("assets/exe/extras/dagarden/subtitlebox.png"));
 		sprite.scale.set(subScale, subScale);
 		sprite.updateHitbox();
-		sprite.antialiasing = ClientPrefs.data.antialiasing;
 		add(sprite);
 
 		_bg = new FlxSprite(0, 0);

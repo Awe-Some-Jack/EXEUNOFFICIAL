@@ -25,33 +25,31 @@ class EXEMenu extends MusicBeatState
 	public static var psychEngineVersion:String = '1.0.4';
 	public static var selectedOptionIndex:Int = 2;
 
-	static inline final TOTAL_OPTIONS:Int = 6;
+	static inline final TOTAL_OPTIONS:Int = 5;
 	static inline final CENTER_POSITION:Int = 2;
 
-	static final OPTION_TEXTS:Array<String> = ["SOUND TEST", "FREEPLAY", "STORY MODE", "EXTRAS", "OPTIONS", "THE VALLEY"];
-	
+	static final OPTION_TEXTS:Array<String> = ["SOUND TEST", "FREEPLAY", "STORY MODE", "EXTRAS", "OPTIONS"];
+
 	static final OPTION_POSITIONS:Array<{x:Float, y:Float}> = [
 		{x: 175.0, y: -60.0},
 		{x: 110.0, y:  65.0},
 		{x:  20.0, y: 220.0},
 		{x: 110.0, y: 360.0},
-		{x: 175.0, y: 480.0},
-		{x: 175.0, y: 580.0}
+		{x: 175.0, y: 480.0}
 	];
-	
-	static final OPTION_SCALES:Array<Float> = [0.25, 0.30, 0.37, 0.30, 0.25, 0.20];
-	static final OPTION_ALPHAS:Array<Float> = [0.55, 0.80, 1.00, 0.80, 0.55, 0.40];
-	
+
+	static final OPTION_SCALES:Array<Float> = [0.25, 0.30, 0.37, 0.30, 0.25];
+	static final OPTION_ALPHAS:Array<Float> = [0.55, 0.80, 1.00, 0.80, 0.55];
+
 	static final TEXT_POSITIONS:Array<{x:Float, y:Float}> = [
 		{x:   20, y: -32},
 		{x:  -50, y:  94},
 		{x: -140, y: 251},
 		{x:  -50, y: 389},
-		{x:   20, y: 507},
-		{x:   20, y: 607}
+		{x:   20, y: 507}
 	];
-	
-	static final TEXT_SCALES:Array<Float> = [0.245, 0.3, 0.330, 0.3, 0.245, 0.20];
+
+	static final TEXT_SCALES:Array<Float> = [0.245, 0.3, 0.330, 0.3, 0.245];
 
 	var menuOptions:Array<FlxSprite> = [];
 	var menuTexts:Array<FlxText> = [];
@@ -318,7 +316,6 @@ class EXEMenu extends MusicBeatState
 			case 2: FlxG.switchState(() -> new states.StoryModeState());
 			case 3: FlxG.switchState(() -> new states.extras.ExtrasMenu());
 			case 4: FlxG.switchState(() -> new options.OptionsState());
-			case 5: FlxG.switchState(() -> new minigame.thevalley.TheValley());
 		}
 	}
 

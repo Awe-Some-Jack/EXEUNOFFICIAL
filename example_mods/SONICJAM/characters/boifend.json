@@ -2,75 +2,75 @@
 	"animations": [
 		{
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT",
-			"loop": false,
-			"name": "singLEFT0"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWN",
-			"loop": false,
-			"name": "singDOWN0"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP",
-			"loop": false,
-			"name": "singUP0"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "singRIGHT0"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFTmiss",
 			"loop": true,
-			"name": "singLEFTmiss"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWNmiss",
-			"loop": true,
-			"name": "singDOWNmiss"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUPmiss",
-			"loop": true,
-			"name": "singUPmiss"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHTmiss",
-			"loop": true,
-			"name": "singRIGHTmiss"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
 			"fps": 24,
 			"anim": "idle",
+			"indices": [],
+			"name": "sunshine bf idle"
+		},
+		{
+			"offsets": [25, -6],
 			"loop": false,
-			"name": "idle"
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "sunshine bf left"
+		},
+		{
+			"offsets": [2, -3],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "sunshine bf down"
+		},
+		{
+			"offsets": [0, 1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "sunshine bf up"
+		},
+		{
+			"offsets": [-1, -2],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "sunshine bf right"
+		},
+		{
+			"offsets": [24, -6],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "sunshine MissLeft"
+		},
+		{
+			"offsets": [2, -3],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "sunshine MissDown"
+		},
+		{
+			"offsets": [0, -1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "sunshine MissUp"
+		},
+		{
+			"offsets": [1, -2],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "sunshine MissRight"
 		}
 	],
 	"vocals_file": "",
@@ -82,6 +82,6 @@
 	"healthbar_colors": [127, 255, 255],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 3,
+	"scale": 1,
 	"_editor_isPlayer": true
 }

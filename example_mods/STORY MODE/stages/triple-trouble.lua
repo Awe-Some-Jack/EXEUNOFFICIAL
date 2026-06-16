@@ -65,7 +65,12 @@ local knux = {
 }
 
 local egg = {
-	{name = 'bge', path = 'bg-placeholder', x = -800, y = -600, scroll = 1, scale = 0.5, front = false},
+	{name = 'skye', path = 'sky', x = -680, y = -900, scroll = 0.3, front = false},
+	{name = 'bg1e', path = 'bg1', x = -580, y = -980, scroll = 0.45, front = false},
+	{name = 'bg2e', path = 'bg2', x = -550, y = -900, scroll = 0.65, front = false},
+	{name = 'bg3e', path = 'bg3', x = -550, y = -800, scroll = 0.8, front = false},
+	{name = 'floore', path = 'floor', x = -500, y = -650, scroll = 1, front = false},
+	{name = 'overlaye', path = 'overlay', x = -500, y = -650, scroll = 1, front = true}
 }
 
 local function getScale(def, isAnimated, defaultScale)

@@ -1,8 +1,8 @@
 -- Todo:
 
--- Remake the entire code. Make arrays, local functions, state better the events, make a better looking code, etc.
+-- Remake the entire code. Make arrays, local functions, state better the events, make a better looking code, etc. ✅
 
--- Use another shader script from another song so the one i used before doesn't lag or stop working.
+-- Use another shader script from another song so the one i used before doesn't lag or stop working. ✅
 
 -- Recode the "give up" lyrics if anything?
 
@@ -10,6 +10,11 @@
 
 -- Make a more appealing dodge mechanic.
 
+-- Ask someone to make a "LET'S BEGIN" text type thing. ✅
+
+-- Hermano me pica el culo vastísimo
+
+runHaxeCode("var trail:Character;")
 
 local fateAssets = {
     ['BG1'] = {
@@ -24,12 +29,18 @@ local fateAssets = {
         {name =    'fateFinal', path = 'fate/FATE LORDX', x = 0, y = 20, animated = true, animName = 'idle', animPrefix = 'Símbolo 409', fps = 24, loop = true, scaleX =    1, scaleY = 1, alpha = 0, lq = false, front = false},
     },
     ['Misc'] = {
-        {name = 'spaceBar',    path =      'fate/spacebar',  x =  450, y =   400, scaleX = 0.5, scaleY = 0.5,               animated =  true, animName = 'idle',  animPrefix =   'Símbolo 8',               fps = 24, loop = true, camera = 'camHUD', alpha = 0,                                  front = false},
-        {name = 'lordXBite',   path = 'characters/mordida',  x = 1350, y =  1200, scaleX =   0, scaleY =   0,               animated =  true, animName = 'idle',  animPrefix = 'Símbolo 403', index = '0',  fps = 24, loop = true,                    alpha = 1,                                  front = false},
-        {name = 'bfFALL',      path = 'characters/bf void',  x =  600, y =  1900, scaleX =   3, scaleY =   3,               animated =  true, animName = 'idle',  animPrefix =  'Símbolo 71',               fps = 24, loop = true,                    alpha = 1,                                  front = false},
-        {name = 'transition',  path =       'fate/overlay',  x = -550, y =     0, scaleX =   0, scaleY =   0,               animated = false,                                                                                      camera = 'camHUD', alpha = 0, color = '000000',                front = false},
-        {name = 'fog',         path =           'fate/fog',  x =    0, y =     0, scaleX =   1, scaleY =   1,               animated = false,                                                                                      camera = 'camHUD', alpha = 0,                   blend = 'add', front = false},
-        {name = 'transition2', path =       'fate/overlay',  x = -550, y = -1000, scaleX =   0, scaleY =   0, flipY = true, animated = false,                                                                                      camera = 'camHUD', alpha = 0, color = '000000',                front = false},
+        {name = 'spaceBar',    path =      'fate/spacebar',  x =  380, y =   360, scaleX = 1, scaleY = 1,               animated =  true, animName = 'idle',  animPrefix =   'Símbolo 8',              fps = 24, loop = true, camera = 'camHUD', alpha = 0,                                  front = false},
+        {name = 'lordXBite',   path = 'characters/mordida',  x = 1350, y =  1200, scaleX = 0, scaleY = 0,               animated =  true, animName = 'idle',  animPrefix = 'Símbolo 403', index = '0', fps = 24, loop = true,                    alpha = 1,                                  front = false},
+        {name = 'bfFALL',      path = 'characters/bf void',  x =  600, y =  1900, scaleX = 3, scaleY = 3,               animated =  true, animName = 'idle',  animPrefix =  'Símbolo 71',              fps = 24, loop = true,                    alpha = 1,                                  front = false},
+        {name = 'transition',  path =       'fate/overlay',  x = -550, y = -1500, scaleX = 1, scaleY = 3,               animated = false,                                                                                     camera = 'camHUD', alpha = 0, color = '000000',                front = false},
+        {name = 'fog',         path =           'fate/fog',  x =    0, y =     0, scaleX = 1, scaleY = 1,               animated = false,                                                                                     camera = 'camHUD', alpha = 0,                   blend = 'add', front = false},
+        {name = 'transition2', path =       'fate/overlay',  x = -550, y = -3560, scaleX = 1, scaleY = 3, flipY = true, animated = false,                                                                                     camera = 'camHUD', alpha = 0, color = '000000',                front = false},
+    },
+    ['Lets-Begin'] = {
+        {name = 'lets-pixel',   path =   'fate/lets-begin/lets_pixel', x = 200, y = -90, scaleX = 0.4, scaleY = 0.4, camera = 'camOther', alpha = 0, front = false},
+        {name = 'lets-normal',  path =  'fate/lets-begin/lets_normal', x = 200, y = -90, scaleX = 0.4, scaleY = 0.4, camera = 'camOther', alpha = 0, front = false},
+        {name = 'begin-pixel',  path =  'fate/lets-begin/begin_pixel', x = 200, y = -90, scaleX = 0.4, scaleY = 0.4, camera = 'camOther', alpha = 0, front = false},
+        {name = 'begin-normal', path = 'fate/lets-begin/begin_normal', x = 200, y = -90, scaleX = 0.4, scaleY = 0.4, camera = 'camOther', alpha = 0, front = false},
     }
 }
 
@@ -38,13 +49,15 @@ local function setFateConfig()
     setScrollFactor('gfGroup', 1, 1)
     setProperty('boyfriend.visible', false)
 
-    for i = 0,3 do setProperty('opponentStrums.members['..i..'].x', -1000) end
+    for i = 0,3 do setProperty('opponentStrums.members['..i..'].x', -500) end
 
     for _, stuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(stuff..'.alpha', 0) end
 
     for i = 0, 7 do setPropertyFromGroup('strumLineNotes', i, 'y', (downscroll and 770 or -250)) end
 
     makeLuaSprite('healthShit')
+
+    setProperty('BlackGraphicGame.alpha', 1)
 end
 
 local function prepareCharacters()
@@ -68,32 +81,27 @@ local function createSprite(spr)
         else
             makeLuaSprite(spr.name, spr.path, spr.x, spr.y)
         end
-        scaleObject(spr.name, spr.scaleX, spr.scaleY)
+        if spr.scaleX or spr.scaleY then scaleObject(spr.name, spr.scaleX, spr.scaleY) end
         if spr.camera then setObjectCamera(spr.name, spr.camera) end
         setProperty(spr.name..'.alpha', spr.alpha)
         addLuaSprite(spr.name, spr.front)
-        if spr.color then setProperty(spr.name..'.color', spr.color) end
+        if spr.center then screenCenter(spr) end
+        if spr.color  then setProperty(spr.name..'.color', getColorFromHex(spr.color)) end
         if spr.behind then setObjectOrder(spr.name, getObjectOrder(spr.behind)) end
-        if spr.blend then setBlendMode(spr.name, spr.blend) end
+        if spr.blend  then setBlendMode(spr.name, spr.blend) end
+        if spr.flipY  then setProperty(spr.name..'.flipY', true) end
     end
 end
 
-
-function onCreate() prepareCharacters() end
-
-
-function onCreatePost()
-
-    setFateConfig()
-
-    for _,    fate1 in ipairs(fateAssets['BG1'])  do    createSprite(fate1) end
-    for _,    fate2 in ipairs(fateAssets['BG2'])  do    createSprite(fate2) end
-    for _, fateMisc in ipairs(fateAssets['Misc']) do createSprite(fateMisc) end
-
-    createIllegalInstruction()
+local function createAtlasSprite(spr)
+    makeFlxAnimateSprite(spr, -400, -400, "fate/fate")
+    addAnimationBySymbol(spr, 'exes!', "fate")
+    setObjectOrder(spr, getObjectOrder('bfFALL') - 1)
+    setProperty(spr..'.alpha', 0)
+    addLuaSprite(spr)
 end
 
-function createIllegalInstruction()
+local function createIllegalInstruction()
     math.randomseed(os.clock())
     for i = 1, math.random(4, 5) do
         makeLuaSprite('illegal'..i, 'fate/illegalinstruction', math.random(50, 860), math.random(30, 750))
@@ -103,372 +111,399 @@ function createIllegalInstruction()
     end
 end
 
+local trailExists = false
+
+local function pumpCloneBF()
+    runHaxeCode([[
+        trail = new Character(0, 0, boyfriend.curCharacter, boyfriend.isPlayer);
+        trail.updateHitbox();
+        trail.setPosition(boyfriend.x, boyfriend.y);
+        trail.scale.set(boyfriend.scale.x, boyfriend.scale.x);
+        trail.alpha = 0.8;
+        trail.playAnim(boyfriend.animation.curAnim.name);
+        game.add(trail);
+
+        FlxTween.tween(trail.scale, {x: boyfriend.scale.x + 0.4, y: boyfriend.scale.y + 0.4}, 1);
+        FlxTween.tween(trail, {alpha: 0}, 1, {ease: FlxEase.circOut, onComplete: (_) -> {
+            remove(trail);
+            trail.destroy();
+        }});
+    ]])
+    trailExists = true cancelTimer('itdoesntexist') runTimer('itdoesntexist', 1)
+end
+
+local function addCountDown(sprite)
+    makeLuaSprite('CountDown'..sprite, sprite, 350, 200)
+    setObjectCamera('CountDown'..sprite, 'camHUD')
+    addLuaSprite('CountDown'..sprite, true)
+    scaleObject('CountDown'..sprite, 0.8, 0.8)
+    doTweenScale('CountDown'..sprite, 'CountDown'..sprite, 0.6, 0.6, 'circOut')
+    startTween(sprite..'Tween', 'CountDown'..sprite, {x = getProperty('CountDown'..sprite..'.x') + getRandomFloat(-20, 20), y = getProperty('CountDown'..sprite..'.y') + 80, alpha = 0, angle = getRandomFloat(-5, 5)}, 0.6, {ease = 'smootherStepOut'})
+end
+
+local separation = 50
+local waveNotes  = false
+local shakeNotes = false
+local shakeIntensity = 2
+local zoomingStage = false
+local fateStrumEvents = {
+    ['bfStrums'] = function(mode)
+        if mode == 'return' then
+            for i = 0, 3 do startTween(i..'BF', 'playerStrums.members['..i..']', {x = _G['defaultPlayerStrumX'..i], y = _G['defaultPlayerStrumY'..i], angle = 0}, 1.3 + (i * math.random(0.1, 0.2)) / playbackRate, {ease = 'backOut'}) end
+        end
+        if mode == 'center' then
+            for i = 0, 3 do setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i) end
+        end
+        if mode == 'tweenCenter' then
+            for i = 0, 3 do doTweenX(i..'BFCenterX', 'playerStrums.members['..i..']', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i, 3 / playbackRate, 'backInOut') end
+            for i = 0, 3 do doTweenAlpha(i..'DADCenterAlpha', 'opponentStrums.members['..i..']', 0, 2 / playbackRate, 'backInOut') end
+        end
+        if mode == 'fall' then
+            for i = 4, 7 do
+                noteTweenY(i..'BFFall',      i, 850, 1.3 + (i * math.random(0.1, 0.2)) / playbackRate, 'backIn')
+                noteTweenAngle(i..'BFAngle', i, math.random(15, -15), 1.3 + (i * math.random(0.1, 0.2)) / playbackRate)
+            end
+        end
+    end,
+    ['dadStrums'] = function(mode)
+        if mode == 'show' then
+            for i = 0, 3 do
+                noteTweenY(i..'DAD', i, (downscroll and 570 or 50), 0.9 + (i * 0.1) / playbackRate, 'smootherStepOut')
+                noteTweenAlpha(i..'Tween', i, 1, 0.4 / playbackRate)
+
+
+                setProperty('transition.alpha', 0)
+                setProperty('transition.y', -2500)
+                setProperty('transition2.y', getProperty('transition.y') - 1000)
+                setProperty('transition.scale.y', 6)
+                setProperty('transition2.scale.y', 6.6)
+            end
+        end
+        if mode == 'return' then
+            for i = 0, 3 do startTween(i..'DAD', 'opponentStrums.members['..i..']', {x = _G['defaultOpponentStrumX'..i], y = _G['defaultOpponentStrumY'..i], angle = 0}, 0.9 + (i * 0.1) / playbackRate, {ease = 'smootherStepOut'}) end
+        end
+    end,
+    ['general'] = function(mode)
+        if mode == 'return' then
+            for i = 4, 7 do cancelTween(i..'BFAngle') cancelTween(i..'BFFall') end
+            for i = 0, 3 do
+                startTween(i..'NoteBFTween',    'playerStrums.members['..i..']', {x =   _G['defaultPlayerStrumX'..i], y =   _G['defaultPlayerStrumY'..i], angle = 360, alpha = 1}, 1 + (i * 0.2) / playbackRate, {ease = 'backOut'})
+                startTween(i..'NoteDADTween', 'opponentStrums.members['..i..']', {x = _G['defaultOpponentStrumX'..i], y = _G['defaultOpponentStrumY'..i], angle = 360, alpha = 1}, 1 + (i * 0.2) / playbackRate, {ease = 'backOut'})
+            end
+        end
+    end,
+    ['generalSmoother'] = function (mode)
+        if mode == 'return' then
+            for i = 4, 7 do cancelTween(i..'BFAngle') cancelTween(i..'BFFall') end
+            for i = 0, 3 do
+                startTween(i..'NoteBFTween',    'playerStrums.members['..i..']', {x =   _G['defaultPlayerStrumX'..i], y =   _G['defaultPlayerStrumY'..i], angle = 360, alpha = 1}, 3 + (i * 0.2) / playbackRate, {ease = 'backInOut'})
+                startTween(i..'NoteDADTween', 'opponentStrums.members['..i..']', {x = _G['defaultOpponentStrumX'..i], y = _G['defaultOpponentStrumY'..i], angle = 360, alpha = 1}, 3 + (i * 0.2) / playbackRate, {ease = 'backInOut'})
+            end
+        end
+    end,
+    ['wave'] =  function(wave)   waveNotes  = wave  == 'true' and true or false end,
+    ['shake'] = function (shake) shakeNotes = shake == 'true' and true or false end,
+    ['fadeBFStrums'] = function(alpha, time)
+        if time then
+            for i = 0, 3 do cancelTween(i..'FADEBF') doTweenAlpha(i..'FADEBF', 'playerStrums.members['..i..']', alpha, time / playbackRate) end
+        else
+            for i = 0, 3 do cancelTween(i..'FADEBF') setProperty('playerStrums.members['..i..'].alpha', alpha) end
+        end
+    end,
+    ['fadeDADStrums'] = function(alpha, time)
+        if time then
+            for i = 0, 3 do doTweenAlpha(i..'FADEDAD', 'opponentStrums.members['..i..']', alpha, time / playbackRate) end
+        else
+            for i = 0, 3 do cancelTween(i..'FADEDAD') setProperty('opponentStrums.members['..i..'].alpha', alpha) end
+        end
+    end,
+    ['fadeStrum'] = function(strum, alpha) cancelTween(tonumber(strum)..'FADEBF') cancelTween(tonumber(strum)..'FADEDAD') setPropertyFromGroup('strumLineNotes', tonumber(strum), 'alpha', alpha) end
+}
+local fateStageEvents = {
+    ['1'] = function ()
+        removeLuaSprite('fateExes') cancelTween('BlackGraphicGameAlpha') setProperty('BlackGraphicGame.alpha', 0)
+        scaleObject('boyfriend', 0.85, 0.85)
+
+        for _, stuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do doTweenAlpha(stuff..'Alpha', stuff, 1, 3 / playbackRate) end
+        for _, shit in ipairs(fateAssets['BG1']) do
+            setProperty(shit.name..'.alpha', shit.name == 'redOverlay' and 0 or 1)
+            if shit.name == 'nieblia' then setProperty(shit.name..'.alpha', 0.2) end
+        end
+        for i = 1, 5 do setProperty('illegal'..i..'.alpha', 0) end
+
+        removeLuaSprite('bfFALL', true)
+        removeLuaSprite('lordXBite', true)
+        triggerEvent('Change Character', 'dad', 'lord x podrido')
+        setProperty('gf.visible', true)
+        setProperty('boyfriend.visible', true)
+        setProperty('dad.alpha', 1)
+
+        triggerEvent('Set customCamera Position', 'bf', '2190, 1350')
+        triggerEvent('Set customCamera Position', 'dad', '1470, 1350')
+    end,
+    ['2'] = function ()
+        for _, bg1 in ipairs(fateAssets['BG1']) do removeLuaSprite(bg1.name, true) end
+
+        removeSpriteShader('boyfriend')
+        triggerEvent('Change Character', 'bf', 'bfo')
+        setProperty('gf.visible', false)
+        setProperty('dad.visible', false)
+        scaleObject('boyfriend', 1.1, 1.1)
+    end,
+    ['3'] = function ()
+        for _, trans in ipairs({'transition', 'transition2'}) do if luaSpriteExists(trans) then removeLuaSprite(trans, true) end end
+        for _, hola in ipairs(fateAssets['BG2']) do setProperty(hola.name..'.alpha', 1) end
+
+        triggerEvent('Change Character', 'dad', 'lord x p3largo')
+        triggerEvent('Change Character', 'bf', 'bf-perspective-right')
+
+        setProperty('dad.alpha', 1)
+
+        callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 500, getProperty('boyfriend.y') - 620 })
+        callMethod('dad.setPosition', {getProperty('dad.x') - 500, getProperty('dad.y') - 840})
+
+        triggerEvent('Set customCamera Position', 'bf', '1620, 850')
+        triggerEvent('Set customCamera Position', 'dad', '870, 450')
+        triggerEvent('Set customCamera Position', 'middle', '1280, 740')
+        triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.55')
+
+        zoomingStage = true
+    end,
+    ['fadeStage'] = function(sprite) doTweenAlpha(sprite..'Alpha', sprite, 0, 2) end
+}
+local fateSongEvents  = {
+    ['tweenGraphAlpha'] = function (alpha, time) doTweenAlpha('BlackGraphicGameAlpha', 'BlackGraphicGame', alpha, time) end,
+    ['lets-begin'] = function(type)
+        if type == 'pixel' then
+            for _, pixel  in ipairs({'lets-pixel', 'begin-pixel'})   do  setProperty(pixel..'.alpha', 1) end
+            for _, normal in ipairs({'lets-normal', 'begin-normal'}) do setProperty(normal..'.alpha', 0) end
+        end
+        if type == 'normal' then
+            for _, normal in ipairs({'lets-normal', 'begin-normal'}) do setProperty(normal..'.alpha', 1) end
+            for _, pixel  in ipairs({'lets-pixel', 'begin-pixel'})   do  setProperty(pixel..'.alpha', 0) end
+        end
+        if type == 'none' then for _, letsend in ipairs({'lets-normal', 'begin-normal', 'lets-pixel', 'begin-pixel'}) do removeLuaSprite(letsend, true) end end
+    end,
+    ['hideDADPart1'] = function ()
+        setProperty('fateExes.alpha', 1)
+        playAnim('fateExes', 'exes!', true)
+        doTweenAlpha('dadAlpha', 'dad', 0, 1)
+
+        for i = 0, 3 do noteTweenAlpha(i..'Tween', i, 0, 0.6 + (i * 0.2) / playbackRate) noteTweenX(i..'Tween', i, -500, 0.6 + (i * 0.2) / playbackRate, 'backInOut') doTweenX(i..'BFX', 'playerStrums.members['..i..']', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i, 2 + (i * 0.3) / playbackRate, 'backInOut') end
+    end,
+    ['showFallingBF'] = function ()
+        doTweenY('bfFALLTweenY', 'bfFALL', 600, 0.9, 'circOut')
+        doTweenScale('bfFALL', 'bfFALL', 1, 1.2, 'smootherStepOut')
+    end,
+    ['eatingBF'] = function ()
+        doTweenScale('lordXBite', 'lordXBite', 1, 1, 'smootherStepOut')
+        doTweenScale('bfFALL', 'bfFALL', 0, 1.3, 'smootherStepOut')
+        startTween('bfFALLTween', 'bfFALL', {x = 550, y = 570}, 1.3, {ease = 'smootherStepOut'})
+    end,
+    ['bite'] = function ()
+        addAnimationByPrefix('lordXBite', 'bite', 'humgry', 24, false)
+        playAnim('lordXBite', 'bite', true)
+    end,
+    ['illegalinstruction'] = function () for i = 1, 5 do setProperty('illegal'..i..'.alpha', 1) end end,
+    ['transition'] = function ()
+        setProperty('transition.alpha', 1) setProperty('transition2.alpha', 1)
+        setProperty('transition.velocity.y', 1100) setProperty('transition2.velocity.y', 1100)
+        runTimer('removeTransition', 5)
+    end,
+    ['redOverlayTime'] = function () cancelTween('redOverlayAlpha') startTween('redOverlayAlpha', 'redOverlay', {alpha = 1}, 1.4, {ease = 'smootherStepOut', type = 'PINGPONG'}) end,
+    ['redOverlayEnd']  = function ()
+        cancelTween('redOverlayAlpha')
+        startTween('redOverlayAlphaEnd', 'redOverlay', {alpha = 0}, 1.4, {ease = 'smootherStepOut', onComplete = 'fucku'})
+    end,
+    ['cloneBF'] = function () pumpCloneBF() end,
+    ['setCountDown'] = function(count)
+        addCountDown(count)
+    end,
+    ['in his world'] = function()
+        triggerEvent('Change Character', 'dad', 'lord x p3corto')
+
+        callMethod('dad.setPosition', {getProperty('dad.x') - 500, getProperty('dad.y') - 840})
+
+        doTweenAlpha('fogAlpha', 'fog', 1, 2)
+        setSpriteShader('fog', 'wavyDistortion')
+        setShaderFloat('fog', 'amount', 0.5)
+    end
+}
+local fateHUDEvents   = {
+    ['hideHUD']    = function(hide) doTweenAlpha('camHUDAlpha', 'camHUD', hide == 'true' and 0 or 1, 1) end,
+    ['hideHealth'] = function(hide) for _, stuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do doTweenAlpha(stuff..'Alpha', stuff, hide == 'true' and 0 or 1, 1.5 / playbackRate) end end,
+    ['setHealthAlpha'] = function(alpha) for _, stuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(stuff..'.alpha', alpha) end end
+}
+
 local holdMove = 0
 local loseHealthBitch = false
-
 local function onUpdateFate(elapsed)
-    holdMove = holdMove + elapsed / (crochet / 750)
+    holdMove = holdMove + elapsed / (crochet / 450)
     if luaSpriteExists('cuadros') and getProperty('cuadros.alpha') >= 0.1   then
-        callMethod('cuadros.setPosition', {
-            getProperty('cuadros.x') + math.cos(holdMove +  0.5) * 0.2,
-            getProperty('cuadros.y') + math.sin(holdMove + 0.2) * 0.5
-        })
+        callMethod('cuadros.setPosition', { getProperty('cuadros.x') + math.cos(holdMove +  0.5) * 0.2, getProperty('cuadros.y') + math.sin(holdMove + 0.2) * 0.5})
         setProperty('cuadros.angle', getProperty('cuadros.angle') + math.cos(holdMove + 0.05) * 0.05)
     end
 
     if luaSpriteExists('bfFALL') then
-        callMethod('bfFALL.setPosition', {
-            getProperty('bfFALL.x') + math.cos(holdMove + 0.2) * 0.9,
-            getProperty('bfFALL.y') + math.sin(holdMove + 0.4) * 0.6
-        })
+        callMethod('bfFALL.setPosition', {getProperty('bfFALL.x') + math.cos(holdMove + 0.2) * 0.9, getProperty('bfFALL.y') + math.sin(holdMove + 0.4) * 0.6})
         setProperty('bfFALL.angle', getProperty('bfFALL.angle') + math.cos(holdMove + 0.05) * 0.05)
     end
 
-    if getProperty('fog.alpha') >= 0.001 then
-        setShaderFloat('fog', 'iTime', holdMove)
+    if luaSpriteExists('fateExes') and getProperty('fateExes.alpha') == 1 and getProperty('fateExes.animation.curAnim.name') == 'exes!' and getProperty('fateExes.animation.curAnim.finished') then removeLuaSprite('fateExes', true) end
+
+    if getProperty('fog.alpha') >= 0.001 then setShaderFloat('fog', 'iTime', holdMove) end
+
+    if loseHealthBitch then setProperty('health', getProperty('healthShit.x')) end
+
+    if trailExists then
+        runHaxeCode([[
+            trail.playAnim(boyfriend.animation.curAnim.name);
+            trail.animation.curAnim.curFrame = boyfriend.animation.curAnim.curFrame;
+        ]])
     end
 
-    if loseHealthBitch then
-        setProperty('health', getProperty('healthShit.x'))
+    if waveNotes then
+        for i = 0, 7 do
+            callMethod('strumLineNotes.members['..i..'].setPosition', {
+                getProperty('strumLineNotes.members['..i..'].x') + math.cos(holdMove + (i * 0.4) + 0.5) * 0.1,
+                getProperty('strumLineNotes.members['..i..'].y') + math.cos(holdMove + (i * 0.3) + 0.5) * 0.1
+            })
+        end
+    end
+    if shakeNotes then
+        for i = 0, 7 do
+            callMethod('strumLineNotes.members['..i..'].setPosition', {
+                _G['default'..(i < 4 and 'Opponent' or 'Player')..'StrumX'..(i % 4)] + math.random(shakeIntensity, -shakeIntensity),
+                _G['default'..(i < 4 and 'Opponent' or 'Player')..'StrumY'..(i % 4)] + math.random(shakeIntensity, -shakeIntensity)
+            })
+        end
     end
 end
 
-local fateEvents = {}
+local DODGE_CONFIG = {
+    START = false,
+    BEATS = 0,
+    CANDODGE = false,
+    HASDODGED = false,
+}
+
+local function popUpSpace()
+    cancelTween('dodgeTextAngle') cancelTween('spaceBarScale')
+    scaleObject('spaceBar', 0.8, 0.8) scaleObject('dodgeText', 1.1, 1.1)
+    setProperty('dodgeText.angle', getRandomFloat(-5, 5)) setProperty('spaceBar.alpha', 1)
+    doTweenScale('spaceBar', 'spaceBar', 0.7, 0.5, 'circOut') doTweenScale('dodgeText', 'dodgeText', 1, 0.5, 'circOut') doTweenAngle('dodgeTextAngle', 'dodgeText', 0, 0.5, 'circOut')
+end
+
+local function dodgeMechanic()
+    DODGE_CONFIG.BEATS = DODGE_CONFIG.BEATS - 1
+
+    if not DODGE_CONFIG.HASDODGED then popUpSpace() end
+
+    playSound('Metronome_Tick', 0.5)
+
+    if luaTextExists('dodgeText') then setTextString('dodgeText', DODGE_CONFIG.BEATS) end
+
+    runTimer('activateCanDodge', 0.001)
+
+    if DODGE_CONFIG.BEATS == 0 then
+        playSound('fatewhip')
+        runTimer('dodgeTextDissapear', 1)
+        playAnim('dad', 'hey', true) setProperty('dad.specialAnim', true)
+
+        setProperty('dodgeText.color', getColorFromHex('FF0000')) doTweenColor('dodgeTextColor', 'dodgeText', 'FFFFFF', 0.5, 'circOut')
+        setTextString('dodgeText', 'NOW')
+        if DODGE_CONFIG.HASDODGED then
+            playAnim('boyfriend', 'dodge', true) setProperty('boyfriend.specialAnim', true)
+        else
+            loseHealthBitch = true
+            setProperty('healthShit.x', getProperty('health')) doTweenX('healthLose', 'healthShit', getProperty('healthShit.x') - 2, 0.6, 'circOut')
+            runTimer('stopLosingShit', 0.6)
+        end
+        DODGE_CONFIG.CANDODGE = false DODGE_CONFIG.START = false
+        setProperty('spaceBar.alpha', 0)
+    end
+end
+
+function onCreate() prepareCharacters() end
+
+function onCreatePost()
+    setFateConfig()
+
+    for _,    fate1 in ipairs(fateAssets['BG1'])         do     createSprite(fate1) end
+    for _,    fate2 in ipairs(fateAssets['BG2'])         do     createSprite(fate2) end
+    for _, fateMisc in ipairs(fateAssets['Misc'])        do  createSprite(fateMisc) end
+    for _, fateBegin in ipairs(fateAssets['Lets-Begin']) do createSprite(fateBegin) end
+
+    createAtlasSprite('fateExes')
+    createIllegalInstruction()
+end
 
 function onUpdatePost(elapsed) onUpdateFate(elapsed) end
 
-local startMechanic = false
-local canDodge = false
-local hasDodged = false
-local beats = 0
 function onEvent(eventName, value1, value2)
     if eventName == 'fateEvents' then
-        if value1 == 'moveStrums' then
-            if value2 == 'bf' then
-                for i = 4, 7 do
-                    noteTweenY(i..'BF', i, (downscroll and 570 or 50), 0.9 + (i * 0.1), 'smootherStepOut')
-                end
-            end
-            if value2 == 'bfCenter' then
-                for i = 4, 7 do
-                    noteTweenX(i..'X' , i , (screenWidth/2)--[[Offset]]+(115*(i-6))--[[NotesSeparation]], 0.8 + (i * 0.3), 'backInOut')
-                end
-            elseif value2 == 'lord x' then
-                for i = 0, 3 do
-                    noteTweenY(i..'DAD', i, (downscroll and 570 or 50), 0.9 + (i * 0.1), 'smootherStepOut')
-                    noteTweenAlpha(i..'Tween', i, 1, 0.4)
-
-
-                    setProperty('transition.alpha', 0)
-                    setProperty('transition.y', -2500)
-                    setProperty('transition2.y', getProperty('transition.y') - 1000)
-                    setProperty('transition.scale.y', 6)
-                    setProperty('transition2.scale.y', 6.6)
-                end
-            elseif value2 == 'bffall' then
-                for i = 4, 7 do
-                    noteTweenY(i..'BF', i, 850, 1.3 + (i * math.random(0.1, 0.2)), 'backIn')
-                    noteTweenAngle(i..'BFAngle', i, math.random(15, -15), 1.3 + (i * math.random(0.1, 0.2)))
-                end
-            elseif value2 == 'bfback' then
-                for i = 0, 3 do
-                    setPropertyFromGroup('playerStrums', i, 'y', (downscroll and 770 or -250))
-                end
-                for i = 4, 7 do
-                    noteTweenY(i..'BF', i, (downscroll and 570 or 50), 1.2 + (i * 0.1), 'backOut')
-                    noteTweenAngle(i..'BFAngle', i, 0, 1.3 + (i * math.random(0.1, 0.2)))
-                end
-            elseif value2 == 'restore' then
-                for i = 4, 7 do
-                    noteTweenX(i..'X' , i , (screenWidth / 1.35)--[[Offset]]+(115*(i-6))--[[NotesSeparation]], 1.2 + (i * 0.2), 'backInOut')
-                    noteTweenAngle(i..'BFAngle', i, 360, 1.2 + (i * 0.2), 'backInOut')
-                end
-                for i = 0, 3 do
-                    noteTweenAlpha(i..'Tween', i, 1, 1)
-                end
-            end
-        end
-        if value1 == 'fadeStrums' then
-            local split = stringSplit(value2, ', ')
-            if value2 == '' then
-                for i = 4, 7 do
-                    noteTweenAlpha(i..'Tween', i, 0, 0.6 + (i * 0.2))
-                end
-            elseif value2 == 'dad' then
-                for i = 0, 3 do
-                    noteTweenAlpha(i..'Tween', i, 0, 0.6 + (i * 0.2))
-                end
-            elseif value2 == 'back' then
-                for i = 4, 7 do
-                    noteTweenAlpha(i..'Tween', i, 1, 0.3)
-                end
-            elseif value2 == 'instFadeBF' then
-                for i = 4, 7 do
-                    noteTweenAlpha(i..'Tween', i, 0, 0.001)
-                end
-            elseif split[1] == 'setBFNoteAlphaBack' then
-                setProperty('playerStrums.members['..split[2]..'].alpha', 1)
-            end
-        end
-        if value1 == 'part1' then
-            if value2 == 'moveBF' then
-                doTweenY('bfFALLTweenY', 'bfFALL', 600, 0.9, 'circOut')
-                doTweenScale('bfFALL', 'bfFALL', 1, 1.2, 'smootherStepOut')
-            elseif value2 == 'eatBF' then
-                doTweenScale('lordXBite', 'lordXBite', 1, 1, 'smootherStepOut')
-                doTweenScale('bfFALL', 'bfFALL', 0, 1.3, 'smootherStepOut')
-                doTweenX('bfFALLTweenX', 'bfFALL', getProperty('bfFALL.x') - 50, 1.3, 'smootherStepOut')
-                doTweenY('bfFALLTweenY', 'bfFALL', getProperty('bfFALL.y') - 20, 1.3, 'smootherStepOut')
-            elseif value2 == 'bite' then
-                addAnimationByPrefix('lordXBite', 'bite', 'humgry', 24, false)
-                playAnim('lordXBite', 'bite', true)
-            elseif value2 == 'ilegal' then
-                for i = 1, 5 do
-                    setProperty('illegal'..i..'.alpha', 1)
-                end
-            else
-                doTweenAlpha('dadAlpha', 'dad', 0, 1)
-
-                for i = 0, 3 do
-                    noteTweenAlpha(i..'Tween', i, 0, 0.6 + (i * 0.2))
-                end
-
-                for i = 4, 7 do
-                    noteTweenX(i..'X' , i , (screenWidth/2)--[[Offset]]+(115*(i-6))--[[NotesSeparation]], 0.3 + (i * 0.3), 'backInOut')
-                end
-            end
-        end
-        if value1 == 'part2' then
-            local split = stringSplit(value2, ', ')
-            if split[1] == 'transition' then
-                setProperty('transition.alpha', 1)
-                doTweenY('transitionYTween', 'transition', 2800, 2.35)
-                doTweenY('transition2YTween', 'transition2', 2000, 8.9)
-            elseif split[1] == 'sad' then
-                for _, stuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do
-                    doTweenAlpha(stuff..'Alpha', stuff, 0, 2)
-                end
-            elseif split[1] == 'fade' then
-                doTweenAlpha(split[2]..'Fade', split[2], 0, 4)
-            elseif split[1] == 'getRed' then
-                if split[2] == '' then
-                    startTween('redOverlayAlpha', 'redOverlay', {alpha = 1}, 1.4, {ease = 'smootherStepOut', type = 'PINGPONG'})
-                elseif split[2] == 'end' then
-                    cancelTween('redOverlayAlpha')
-                    startTween('redOverlayAlphaEnd', 'redOverlay', {alpha = 0}, 1.4, {ease = 'smootherStepOut', onComplete = 'fucku'})
-                end
-            else
-                scaleObject('boyfriend', 0.9, 0.9)
-
-                for i = 1, 5 do
-                    setProperty('illegal'..i..'.alpha', 0)
-                end
-                for _, shit in ipairs(fateAssets['BG1']) do
-                    setProperty(shit.name..'.alpha', 1)
-                    if shit.name == 'nieblia' then
-                        setProperty(shit.name..'.alpha', 0.2)
-                    end
-                end
-                for _, stuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do
-                    doTweenAlpha(stuff..'Alpha', stuff, 1, 3)
-                end
-
-                removeLuaSprite('bfFALL', true)
-                removeLuaSprite('lordXBite', true)
-                triggerEvent('Change Character', 'dad', 'lord x podrido')
-                setProperty('gf.visible', true)
-                setProperty('boyfriend.visible', true)
-                setProperty('dad.alpha', 1)
-
-                for i = 4, 7 do
-                    noteTweenX(i..'X' , i , (screenWidth / 1.35)--[[Offset]]+(115*(i-6))--[[NotesSeparation]], 2 + (i * 0.2), 'backOut')
-                end
-                for i = 0, 3 do
-                    noteTweenAlpha(i..'Tween', i, 1, 3)
-                end
-            end
-        end
-        if value1 == 'part3' then
-            for _, bg1 in ipairs(fateAssets['BG1']) do
-                removeLuaSprite(bg1.name, true)
-            end
-
-            removeSpriteShader('boyfriend')
-            triggerEvent('Change Character', 'bf', 'bfo')
-            setProperty('gf.visible', false)
-            setProperty('dad.visible', false)
-            scaleObject('boyfriend', 1.1, 1.1)
-        end
-        if value1 == 'part4' then
-            local split = stringSplit(value2, ', ')
-            if value2 == '' then
-                for _, hola in ipairs(fateAssets['BG2']) do
-                    setProperty(hola.name..'.alpha', 1)
-                end
-
-                triggerEvent('Change Character', 'dad', 'lord x p3largo')
-                triggerEvent('Change Character', 'bf', 'bf-perspective-right')
-
-                setProperty('dad.alpha', 1)
-
-                callMethod('boyfriend.setPosition',{
-                    getProperty('boyfriend.x') - 500, getProperty('boyfriend.y') - 620
-                })
-                callMethod('dad.setPosition',{
-                    getProperty('dad.x') - 500, getProperty('dad.y') - 840
-                })
-            elseif value2 == 'showHUD' then
-                for _, stuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do
-                    doTweenAlpha(stuff..'Alpha', stuff, 1, 3)
-                end
-            elseif value2 == 'in his world' then
-                triggerEvent('Change Character', 'dad', 'lord x p3corto')
-
-                callMethod('dad.setPosition',{
-                    getProperty('dad.x') - 500, getProperty('dad.y') - 840
-                })
-
-                doTweenAlpha('fogAlpha', 'fog', 1, 2)
-                setSpriteShader('fog', 'wavyDistortion')
-                setShaderFloat('fog', 'amount', 0.5)
-            elseif split[1] == 'startGlitching' then
-                if split[2] == '' then
-                    triggerEvent('Change Character', 'dad', 'lord x p3scream')
-            elseif split[2] == 'static' then
-                    setProperty('dad._lastPlayedAnimation.paused', true)
-            elseif split[2] == 'glitch' then
-                local glitchNumber = tonumber(split[3])
-                    setProperty('dad._lastPlayedAnimation.paused', false)
-                    if glitchNumber then
-                        glitches[glitchNumber]()
-                    end
-                end
-            end
-        end
-
-        if value1 == 'bfClone' then
-            if getProperty('boyfriend.animation.curAnim.name') == 'singUP' then
-                callMethod('bfClone.setPosition',{
-                    getProperty('boyfriend.x') - 650, getProperty('boyfriend.y') - 250
-                })
-            elseif getProperty('boyfriend.animation.curAnim.name') == 'singLEFT' then
-                callMethod('bfClone.setPosition',{
-                    getProperty('boyfriend.x') - 850, getProperty('boyfriend.y') - 250
-                })
-            elseif getProperty('boyfriend.animation.curAnim.name') == 'singDOWN' then
-                callMethod('bfClone.setPosition',{
-                    getProperty('boyfriend.x') - 690, getProperty('boyfriend.y') - 50
-                })
-            end
-            playAnim('bfClone', getProperty('boyfriend.animation.curAnim.name'), true)
-            scaleObject('bfClone', 1, 1)
-            doTweenScale('bfClone', 'bfClone', 1.4, 1)
-            cancelTween('bfCloneAlpha')
-            setProperty('bfClone.alpha', 0.3)
-            doTweenAlpha('bfCloneAlpha', 'bfClone', 0, 1)
-            if value2 == 'remove' then
-                removeLuaSprite('bfClone', true)
-            end
+        local  split = stringSplit(value2, ', ')
+        if     value1 == 'strums'     then fateStrumEvents[split[1]](split[2], split[3])
+        elseif value1 == 'stageMode'  then fateStageEvents[split[1]](split[2])
+        elseif value1 == 'songEvents' then fateSongEvents[split[1]](split[2], split[3])
+        elseif value1 == 'HUD'        then fateHUDEvents[split[1]](split[2])
         end
     end
     if eventName == 'fateDodge' then
-        startMechanic = true
-        beats = value1
+        DODGE_CONFIG.START = true
+        DODGE_CONFIG.BEATS = value1
 
-        makeLuaText('dodgeText', beats, 0, 550, 250)
-        setObjectCamera('dodgeText', 'camHUD')
-        setTextSize('dodgeText', 40)
-        setTextFont('dodgeText', 'sonic-roco.ttf')
-        addLuaSprite('dodgeText')
+        if not luaTextExists('dodgeText') then
+            makeLuaText('dodgeText', DODGE_CONFIG.BEATS, 0, 550, 250)
+            setObjectCamera('dodgeText', 'camHUD')
+            setTextSize('dodgeText', 40)
+            setTextFont('dodgeText', 'sonic-roco.ttf')
+            addLuaSprite('dodgeText')
+        end
     end
 end
 
 function onBeatHit()
-    if startMechanic then
-
-        beats = beats - 1
-
-        if not hasDodged then
-            setProperty('spaceBar.alpha', 1)
-            playAnim('spaceBar', 'idle', true)
-        end
-
-        playSound('Metronome_Tick', 0.5)
-
-        if luaTextExists('dodgeText') then setTextString('dodgeText', beats) end
-
-        runTimer('activateCanDodge', 0.001)
-
-        if beats == 1 then
-            playSound('fatewhip')
-        end
-
-        if beats == 0 then
-            runTimer('dodgeTextDissapear', 1)
-            playAnim('dad', 'hey', true)
-            setProperty('dad.specialAnim', true)
-
-            setTextString('dodgeText', 'NOW')
-            if hasDodged then
-                playAnim('boyfriend', 'dodge', true)
-                setProperty('boyfriend.specialAnim', true)
-            else
-                loseHealthBitch = true
-                setProperty('healthShit.x', getProperty('health'))
-                doTweenX('healthLose', 'healthShit', getProperty('healthShit.x') - 2, 0.6, 'circOut')
-                runTimer('stopLosingShit', 0.6)
-            end
-            canDodge = false
-            startMechanic = false
-            setProperty('spaceBar.alpha', 0)
-        end
-    end
+    if DODGE_CONFIG.START then dodgeMechanic() end
 end
 
 function goodNoteHitPre(id)
-	if getProperty('boyfriend.animation.curAnim.name') == 'dodge' then
-		setPropertyFromGroup('notes', id, 'noAnimation', true)
-	end
+	if getProperty('boyfriend.animation.curAnim.name') == 'dodge' then setPropertyFromGroup('notes', id, 'noAnimation', true) end
 end
 
 function opponentNoteHitPre(id)
-	if getProperty('dad.animation.curAnim.name') == 'hey' then
-		setPropertyFromGroup('notes', id, 'noAnimation', true)
-	end
+	if getProperty('dad.animation.curAnim.name')       ==   'hey' then setPropertyFromGroup('notes', id, 'noAnimation', true) end
 end
 
 function onTweenCompleted(tag)
     if tag == 'healthLose' then loseHealthBitch = false end
-    if tag == 'fucku' then removeLuaSprite('redOverlay', true) end
+    if tag == 'fucku'      then removeLuaSprite('redOverlay', true) end
+    if stringStartsWith('CountDown') then removeLuaSprite(tag, true) end
 end
 
 function onTimerCompleted(t)
-    if t == 'activateCanDodge' then
-        canDodge = true
-    end
-    if t == 'dodgeTextDissapear' then
-        removeLuaText('dodgeText', true)
-        hasDodged = false
-    end
-end
-
-function lerp(a, b, t)
-	return a + t * (b - a)
+    if t == 'activateCanDodge'   then DODGE_CONFIG.CANDODGE = true end
+    if t == 'dodgeTextDissapear' then removeLuaText('dodgeText', true) DODGE_CONFIG.HASDODGED = false end
+    if t == 'itdoesntexist'      then trailExists = false end
+    if t == 'removeTransition'   then for _, trans in ipairs({'transition', 'transition2'}) do removeLuaSprite(trans, true) end end
 end
 
 function onUpdate()
-    if canDodge then
+    if DODGE_CONFIG.CANDODGE then
         if keyboardJustPressed('SPACE') or getProperty('cpuControlled') then
-            hasDodged = true
+            DODGE_CONFIG.HASDODGED = true DODGE_CONFIG.CANDODGE  = false
             setProperty('spaceBar.alpha', 0)
-            canDodge = false
         end
     end
 end
 
---From Dudu
---Tweens the scale of an object
+function onSectionHit()
+    if not getProperty('gameplayCam.settings.MiddleCamera') and zoomingStage then
+		if curSection % 2 == 0 then setProperty('gameplayCam.settings.OverrideZoom', false) end
+		setProperty('gameplayCam.settings.OGZoom', mustHitSection and 0.7 or 0.9)
+	end
+end
+
 function doTweenScale(tag, obj, target, time, ease)
-	doTweenX(tag..'scaleX', obj..'.scale', target, time, ease)
-	doTweenY(tag..'scaleY', obj..'.scale', target, time, ease)
+	doTweenX(tag..'scaleX', obj..'.scale', target, time, ease) doTweenY(tag..'scaleY', obj..'.scale', target, time, ease)
 end

@@ -14,12 +14,12 @@
 
     "OverrideZoom": false,
 
-    "OGZoom": 0.8,
-    "MiddleZoom": 0.8,
+    "OGZoom": 0.7,
+    "MiddleZoom": 0.45,
 
-    "OffsetsBF": 5,
-    "OffsetsDAD": 5,
-    "OffsetsGF": 5,
+    "OffsetsBF": 0,
+    "OffsetsDAD": 0,
+    "OffsetsGF": 0,
 
     "Angle": 0
 

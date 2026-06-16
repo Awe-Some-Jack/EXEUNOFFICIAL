@@ -19,9 +19,7 @@ function onCreatePost()
     end
 end
 
-function onSectionHit()
-    doTweenX('ojosPutaX', 'ojosPuta', (mustHitSection and getProperty('gf.x') + 130 or getProperty('gf.x') + 100), 0.9, 'smootherStepInOut')
-end
+function onSectionHit() doTweenX('ojosPutaX', 'ojosPuta', (mustHitSection and getProperty('gf.x') + 130 or getProperty('gf.x') + 100), 0.9, 'smootherStepInOut') end
 
 local holdMove = 0
 function onUpdatePost(elapsed)
@@ -36,20 +34,14 @@ end
 function onEvent(eventName, value1, value2)
     if eventName == 'fateEvents' then
         local split = stringSplit(value2, ',')
-        if value1 == 'part2' then
-            for _, yes in ipairs({'caraputa', 'ojosPuta', 'ojosPuta2'}) do
-                setProperty(yes..'.visible', true)
-            end
-            if split[2] == ' gf' then
-                for _, yes in ipairs({'caraputa', 'ojosPuta', 'ojosPuta2'}) do
-                    doTweenAlpha(yes..'Fade', yes, 0, 4)
-                end
-            end
+        if value1 == 'stageMode' and split[1] == '1' then
+            for _, yes in ipairs({'caraputa', 'ojosPuta', 'ojosPuta2'}) do setProperty(yes..'.visible', true) end
         end
-        if value1 == 'part3' then
-            for _, yes in ipairs({'caraputa', 'ojosPuta', 'ojosPuta2'}) do
-                removeLuaSprite(yes, true)
-            end
+        if value1 == 'stageMode' and split[1] == 'fadeStage' and split[2] == ' gf' then
+            for _, yes in ipairs({'caraputa', 'ojosPuta', 'ojosPuta2'}) do doTweenAlpha(yes..'Fade', yes, 0, 2) end
+        end
+        if value1 == 'stageMode' and split[1] == '2' then
+            for _, yes in ipairs({'caraputa', 'ojosPuta', 'ojosPuta2'}) do removeLuaSprite(yes, true) end
         end
     end
 end

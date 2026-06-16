@@ -1,3 +1,6 @@
 [
-    moveStrums[bf, lord x, bffall, bfback], fadeStrums[back], let's begin, part1[moveBF, Xtime] part2, part3, part4
+    strums[check LUA],
+    stageMode[check LUA],
+    songEvents[check LUA],
+    HUD[check LUA],
 ]

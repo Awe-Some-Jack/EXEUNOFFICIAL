@@ -49,15 +49,15 @@
 			"extra": ["video", "bow", true]
 		},
 		{
-			"name": "RaimbowCore",
+			"name": "Raimbowcore12",
 			"icon": "raimbow",
 			"description": "Coder and Charter",
-			"quote": "Labubu, labu-labu-la-bubu",
+			"quote": "[ENG]\nI'm Raimbow! Just your average Stickman. I am one of coders and charters that has worked in many of the songs here, I hope you enjoy them, hehe.\nI don't really wanna drag out sentimental stuff, but I'm grateful for EVERYONE in this development team. It's because of them that I have REALLY improved in my coding/charting skills, and thanks to it i can push harder on future proyects. Don't forget to check the devs' works, they're also INCREDIBLE.\nAnyways check this peak GIF/Video right here.\n[ESP]\nSoy Raimbow! Tu Stickman Promedio. Soy uno de los programadores y charters que se ha encargado de unas cuantas canciones del mod. Espero que te hayan gustado, jeje. No es por ser sentimental ni nada, pero estoy MUUUY agradecido con todo el equipo de este mod. De no ser por ellos, no habría mejorado, ni divertido tanto como lo he hecho hasta ahora. En fin, mira este pedazo GIF/Vídeo.",
 			"colors": [[40, 247, 17], [27, 173, 10]],
 			"nation": "espana",
 			"twitter": "https://x.com/raimbowcore12",
 			"youtube": "https://www.youtube.com/@raimbowcore12",
-			"extra": ["video", "elpan", true]
+			"extra": ["video", "el putisimo pan de ayer", true]
 		},
 		{
 			"name": "AssmanBruh",

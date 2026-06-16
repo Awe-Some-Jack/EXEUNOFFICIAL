@@ -10,41 +10,41 @@
 		},
 		{
 			"offsets": [-175, -213],
-			"indices": [],
+			"loop": true,
 			"fps": 12,
 			"anim": "idle",
-			"loop": true,
+			"indices": [],
 			"name": "ç"
 		},
 		{
-			"offsets": [-118, -235],
-			"indices": [],
+			"offsets": [-12, -205],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "Símbolo 2"
 		},
 		{
 			"offsets": [-118, -247],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "Símbolo 3"
 		},
 		{
 			"offsets": [-210, -154],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "Símbolo 1"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/fatev",
-	"position": [-90, -70],
+	"position": [-100, -40],
 	"healthicon": "lordx-p2",
 	"flip_x": false,
 	"healthbar_colors": [86, 90, 103],

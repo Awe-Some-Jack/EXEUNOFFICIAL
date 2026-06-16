@@ -66,6 +66,11 @@ local healthBarsBG = {
         x = - 190,
         y = - 70
     },
+    ["hud_shocker"] = {
+        songs = {'shocker'},
+        x = - 190,
+        y = - 70
+    },
 }
 local blacklistenedSongs = {'prey', 'godspeed', 'forestall-desire', 'deception', 'fatality', 'longstrider'}
 

@@ -1,0 +1,183 @@
+{
+	"animations": [
+		{
+			"offsets": [14, 53],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [45, 47],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "singLeft"
+		},
+		{
+			"offsets": [42, 14],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "singDown"
+		},
+		{
+			"offsets": [9, 77],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "singUp"
+		},
+		{
+			"offsets": [4, 59],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "singRight"
+		},
+		{
+			"offsets": [45, 75],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "missLeft"
+		},
+		{
+			"offsets": [42, 55],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "missDown"
+		},
+		{
+			"offsets": [25, 109],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "missUp"
+		},
+		{
+			"offsets": [5, 87],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "missRight"
+		},
+		{
+			"offsets": [15, 53],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle-alt",
+			"loop": false,
+			"name": "Altidle"
+		},
+		{
+			"offsets": [98, 46],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "AltsingLeft"
+		},
+		{
+			"offsets": [58, 30],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"loop": false,
+			"name": "AltsingDown"
+		},
+		{
+			"offsets": [47, 77],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "AltsingUp"
+		},
+		{
+			"offsets": [21, 58],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "AltsingRight"
+		},
+		{
+			"offsets": [98, 99],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss-alt",
+			"loop": false,
+			"name": "missAltsingLeft"
+		},
+		{
+			"offsets": [59, 61],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss-alt",
+			"loop": false,
+			"name": "missAltsingDown"
+		},
+		{
+			"offsets": [53, 76],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss-alt",
+			"loop": false,
+			"name": "missAltsingUp"
+		},
+		{
+			"offsets": [25, 83],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss-alt",
+			"loop": false,
+			"name": "missAltsingRight"
+		},
+		{
+			"offsets": [21, 55],
+			"indices": [],
+			"fps": 24,
+			"anim": "yeah",
+			"loop": false,
+			"name": "yeah"
+		},
+		{
+			"offsets": [25, 29],
+			"indices": [],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "altHEY"
+		},
+		{
+			"offsets": [76, -1],
+			"indices": [],
+			"fps": 24,
+			"anim": "dodge",
+			"loop": false,
+			"name": "dogge"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/BOYFRIEND",
+	"position": [-85, 320],
+	"healthicon": "bfmono",
+	"flip_x": true,
+	"healthbar_colors": [255, 255, 255],
+	"camera_position": [60, -30],
+	"sing_duration": 5.99999999999999,
+	"scale": 0.7,
+	"_editor_isPlayer": true
+}

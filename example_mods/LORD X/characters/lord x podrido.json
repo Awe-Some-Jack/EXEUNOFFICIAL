@@ -1,52 +1,52 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [108, -38],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"offsets": [108, -227],
 			"loop": false,
-			"offsets": [110, -221],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Símbolo 100",
-			"indices": []
+			"indices": [],
+			"name": "Símbolo 100"
 		},
 		{
+			"offsets": [111, -225],
 			"loop": false,
-			"offsets": [107, -221],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "Símbolo 122",
-			"indices": []
+			"indices": [],
+			"name": "Símbolo 122"
 		},
 		{
+			"offsets": [116, -224],
 			"loop": false,
-			"offsets": [108, -220],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "Símbolo 101",
+			"indices": [],
+			"name": "Símbolo 101"
+		},
+		{
+			"loop": true,
+			"offsets": [110, -219],
+			"anim": "idle",
+			"fps": 12,
+			"name": "Símbolo 42",
 			"indices": []
 		},
 		{
-			"offsets": [110, -219],
-			"loop": true,
-			"fps": 12,
-			"anim": "idle",
-			"indices": [],
-			"name": "Símbolo 42"
-		},
-		{
-			"offsets": [863, -262],
 			"loop": false,
-			"fps": 24,
+			"offsets": [998, -226],
 			"anim": "hey",
-			"indices": [],
-			"name": "atack"
+			"fps": 24,
+			"name": "atack",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

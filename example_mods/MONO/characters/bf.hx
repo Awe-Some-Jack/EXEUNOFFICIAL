@@ -8,5 +8,4 @@ function onCreatePost()
     colorSwap.saturation = -1;
 
     boyfriend.shader = colorSwap.shader;
-    iconP2.shader = colorSwap.shader;
 }

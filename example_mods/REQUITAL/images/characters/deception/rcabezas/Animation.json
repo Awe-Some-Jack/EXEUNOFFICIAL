@@ -1,6 +1,6 @@
 {
 "AN": {
-"N": "Sin título: 1",
+"N": "deseption correr requital",
 "STI": {
 "SI": {
 "SN": "allde",
@@ -929,13 +929,13 @@
 ]
 },
 {
-"N": "up",
+"N": "down",
 "I": 24,
 "DU": 1,
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -972,7 +972,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -1009,7 +1009,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -1046,7 +1046,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 3,
@@ -1083,7 +1083,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 4,
@@ -1120,7 +1120,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 5,
@@ -1157,7 +1157,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 6,
@@ -1194,7 +1194,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 7,
@@ -1231,7 +1231,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 8,
@@ -1268,7 +1268,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 9,
@@ -1305,7 +1305,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 10,
@@ -1342,7 +1342,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 11,
@@ -1379,7 +1379,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -1416,7 +1416,7 @@
 "E": [
 {
 "SI": {
-"SN": "up1",
+"SN": "down1",
 "IN": "",
 "ST": "G",
 "FF": 13,
@@ -3257,7 +3257,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -3294,7 +3294,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -3331,7 +3331,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -3368,7 +3368,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 3,
@@ -3405,7 +3405,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 4,
@@ -3442,7 +3442,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 5,
@@ -3479,7 +3479,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 6,
@@ -3516,7 +3516,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 7,
@@ -3553,7 +3553,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 8,
@@ -3590,7 +3590,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 9,
@@ -3627,7 +3627,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 10,
@@ -3664,7 +3664,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 11,
@@ -3701,7 +3701,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -3738,7 +3738,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "IN": "",
 "ST": "G",
 "FF": 13,
@@ -3775,7 +3775,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -3812,7 +3812,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -3849,7 +3849,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -3886,7 +3886,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 3,
@@ -3923,7 +3923,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 4,
@@ -3960,7 +3960,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 5,
@@ -3997,7 +3997,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 6,
@@ -4034,7 +4034,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 7,
@@ -4071,7 +4071,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 8,
@@ -4108,7 +4108,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 9,
@@ -4145,7 +4145,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 10,
@@ -4182,7 +4182,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 11,
@@ -4219,7 +4219,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -4256,7 +4256,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "IN": "",
 "ST": "G",
 "FF": 13,
@@ -4293,7 +4293,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -4330,7 +4330,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -4367,7 +4367,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -4404,7 +4404,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 3,
@@ -4441,7 +4441,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 4,
@@ -4478,7 +4478,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 5,
@@ -4515,7 +4515,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 6,
@@ -4552,7 +4552,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 7,
@@ -4589,7 +4589,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 8,
@@ -4626,7 +4626,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 9,
@@ -4663,7 +4663,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 10,
@@ -4700,7 +4700,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 11,
@@ -4737,7 +4737,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -4774,7 +4774,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "IN": "",
 "ST": "G",
 "FF": 13,
@@ -4811,7 +4811,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -4848,7 +4848,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -4885,7 +4885,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -4922,7 +4922,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 3,
@@ -4959,7 +4959,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 4,
@@ -4996,7 +4996,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 5,
@@ -5033,7 +5033,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 6,
@@ -5070,7 +5070,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 7,
@@ -5107,7 +5107,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 8,
@@ -5144,7 +5144,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 9,
@@ -5181,7 +5181,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 10,
@@ -5218,7 +5218,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 11,
@@ -5255,7 +5255,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -5292,7 +5292,7 @@
 "E": [
 {
 "SI": {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "IN": "",
 "ST": "G",
 "FF": 13,
@@ -5333,6 +5333,388 @@
 "TL": {
 "L": [
 {
+"LN": "Símbolo_30",
+"FR": [
+{
+"I": 0,
+"DU": 1,
+"E": [
+{
+"SI": {
+"SN": "Símbolo 30",
+"IN": "",
+"ST": "G",
+"FF": 0,
+"LP": "LP",
+"TRP": {
+"x": 513.1,
+"y": 237.05
+},
+"M3D": [
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+-8.8,
+-3.9,
+0.0,
+1.0
+]
+}
+}
+]
+},
+{
+"I": 1,
+"DU": 1,
+"E": [
+{
+"SI": {
+"SN": "Símbolo 30",
+"IN": "",
+"ST": "G",
+"FF": 1,
+"LP": "LP",
+"TRP": {
+"x": 513.1,
+"y": 237.05
+},
+"M3D": [
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+-8.8,
+-3.9,
+0.0,
+1.0
+]
+}
+}
+]
+},
+{
+"I": 2,
+"DU": 1,
+"E": [
+{
+"SI": {
+"SN": "Símbolo 30",
+"IN": "",
+"ST": "G",
+"FF": 2,
+"LP": "LP",
+"TRP": {
+"x": 513.1,
+"y": 237.05
+},
+"M3D": [
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+-13.65,
+-2.85,
+0.0,
+1.0
+]
+}
+}
+]
+},
+{
+"I": 3,
+"DU": 1,
+"E": [
+{
+"SI": {
+"SN": "Símbolo 30",
+"IN": "",
+"ST": "G",
+"FF": 3,
+"LP": "LP",
+"TRP": {
+"x": 513.1,
+"y": 237.05
+},
+"M3D": [
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+-13.65,
+-2.85,
+0.0,
+1.0
+]
+}
+}
+]
+},
+{
+"I": 4,
+"DU": 1,
+"E": [
+{
+"SI": {
+"SN": "Símbolo 30",
+"IN": "",
+"ST": "G",
+"FF": 4,
+"LP": "LP",
+"TRP": {
+"x": 513.1,
+"y": 237.05
+},
+"M3D": [
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+-18.65,
+-10.6,
+0.0,
+1.0
+]
+}
+}
+]
+},
+{
+"I": 5,
+"DU": 1,
+"E": [
+{
+"SI": {
+"SN": "Símbolo 30",
+"IN": "",
+"ST": "G",
+"FF": 5,
+"LP": "LP",
+"TRP": {
+"x": 513.1,
+"y": 237.05
+},
+"M3D": [
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+-1.65,
+-6.65,
+0.0,
+1.0
+]
+}
+}
+]
+},
+{
+"I": 6,
+"DU": 1,
+"E": [
+{
+"SI": {
+"SN": "Símbolo 30",
+"IN": "",
+"ST": "G",
+"FF": 6,
+"LP": "LP",
+"TRP": {
+"x": 513.1,
+"y": 237.05
+},
+"M3D": [
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+-1.65,
+-6.65,
+0.0,
+1.0
+]
+}
+}
+]
+},
+{
+"I": 7,
+"DU": 1,
+"E": [
+{
+"SI": {
+"SN": "Símbolo 30",
+"IN": "",
+"ST": "G",
+"FF": 7,
+"LP": "LP",
+"TRP": {
+"x": 513.1,
+"y": 237.05
+},
+"M3D": [
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+-9.15,
+-7.85,
+0.0,
+1.0
+]
+}
+}
+]
+},
+{
+"I": 8,
+"DU": 1,
+"E": [
+{
+"SI": {
+"SN": "Símbolo 30",
+"IN": "",
+"ST": "G",
+"FF": 8,
+"LP": "LP",
+"TRP": {
+"x": 513.1,
+"y": 237.05
+},
+"M3D": [
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+-9.15,
+-7.85,
+0.0,
+1.0
+]
+}
+}
+]
+},
+{
+"I": 9,
+"DU": 1,
+"E": [
+{
+"SI": {
+"SN": "Símbolo 30",
+"IN": "",
+"ST": "G",
+"FF": 9,
+"LP": "LP",
+"TRP": {
+"x": 513.1,
+"y": 237.05
+},
+"M3D": [
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+0.0,
+0.0,
+0.0,
+1.0,
+0.0,
+-22.95,
+-9.25,
+0.0,
+1.0
+]
+}
+}
+]
+}
+]
+}
+]
+}
+},
+{
+"SN": "Símbolo 30",
+"TL": {
+"L": [
+{
 "LN": "Símbolo_27",
 "FR": [
 {
@@ -5363,8 +5745,8 @@
 0.0,
 1.0,
 0.0,
-323.05,
-165.45,
+324.65,
+166.95,
 0.0,
 1.0
 ]
@@ -5394,8 +5776,8 @@
 0.0,
 1.0,
 0.0,
-363.3,
-25.6,
+364.9,
+27.1,
 0.0,
 1.0
 ]
@@ -5403,7 +5785,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 1",
+"SN": "Carpeta de elementos duplicados/Símbolo 1",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -5425,8 +5807,8 @@
 0.0,
 1.0,
 0.0,
-396.15,
-209.55,
+397.75,
+211.05,
 0.0,
 1.0
 ]
@@ -5456,8 +5838,8 @@
 0.0,
 1.0,
 0.0,
-393.85,
-75.35,
+395.45,
+76.85,
 0.0,
 1.0
 ]
@@ -5487,8 +5869,8 @@
 0.0,
 1.0,
 0.0,
-380.75,
-210.0,
+382.35,
+211.5,
 0.0,
 1.0
 ]
@@ -5518,8 +5900,8 @@
 0.0,
 1.0,
 0.0,
-365.55,
-191.7,
+367.15,
+193.2,
 0.0,
 1.0
 ]
@@ -5549,8 +5931,8 @@
 0.0,
 1.0,
 0.0,
-297.0,
-82.8,
+298.6,
+84.3,
 0.0,
 1.0
 ]
@@ -5580,8 +5962,8 @@
 0.0,
 1.0,
 0.0,
-471.65,
-8.6,
+473.25,
+10.1,
 0.0,
 1.0
 ]
@@ -5611,8 +5993,8 @@
 0.0,
 1.0,
 0.0,
-574.15,
-165.05,
+575.75,
+166.55,
 0.0,
 1.0
 ]
@@ -5640,8 +6022,8 @@
 0.0,
 1.0,
 0.0,
-401.0,
-208.0,
+402.0,
+210.0,
 0.0,
 1.0
 ]
@@ -5671,8 +6053,8 @@
 0.0,
 1.0,
 0.0,
-330.4,
-156.25,
+332.0,
+157.75,
 0.0,
 1.0
 ]
@@ -5702,8 +6084,8 @@
 0.0,
 1.0,
 0.0,
-368.5,
-32.1,
+370.1,
+33.6,
 0.0,
 1.0
 ]
@@ -5733,8 +6115,8 @@
 0.0,
 1.0,
 0.0,
-398.55,
-74.1,
+400.15,
+75.6,
 0.0,
 1.0
 ]
@@ -5764,8 +6146,8 @@
 0.0,
 1.0,
 0.0,
-385.45,
-208.75,
+387.05,
+210.25,
 0.0,
 1.0
 ]
@@ -5795,8 +6177,8 @@
 0.0,
 1.0,
 0.0,
-374.5,
-185.8,
+376.1,
+187.3,
 0.0,
 1.0
 ]
@@ -5826,8 +6208,8 @@
 0.0,
 1.0,
 0.0,
-306.6,
-65.7,
+308.2,
+67.2,
 0.0,
 1.0
 ]
@@ -5857,8 +6239,8 @@
 0.0,
 1.0,
 0.0,
-482.45,
-10.95,
+484.05,
+12.45,
 0.0,
 1.0
 ]
@@ -5888,8 +6270,8 @@
 0.0,
 1.0,
 0.0,
-576.65,
-164.1,
+578.25,
+165.6,
 0.0,
 1.0
 ]
@@ -5917,8 +6299,8 @@
 0.0,
 1.0,
 0.0,
-405.0,
-216.0,
+407.0,
+217.0,
 0.0,
 1.0
 ]
@@ -5948,8 +6330,8 @@
 0.0,
 1.0,
 0.0,
-335.15,
-163.15,
+336.75,
+164.65,
 0.0,
 1.0
 ]
@@ -5979,8 +6361,8 @@
 0.0,
 1.0,
 0.0,
-382.1,
-27.05,
+383.7,
+28.55,
 0.0,
 1.0
 ]
@@ -6010,8 +6392,8 @@
 0.0,
 1.0,
 0.0,
-403.05,
-81.7,
+404.65,
+83.2,
 0.0,
 1.0
 ]
@@ -6041,8 +6423,8 @@
 0.0,
 1.0,
 0.0,
-389.95,
-216.35,
+391.55,
+217.85,
 0.0,
 1.0
 ]
@@ -6072,8 +6454,8 @@
 0.0,
 1.0,
 0.0,
-365.2,
-214.6,
+366.8,
+216.1,
 0.0,
 1.0
 ]
@@ -6103,8 +6485,8 @@
 0.0,
 1.0,
 0.0,
-319.15,
-55.8,
+320.75,
+57.3,
 0.0,
 1.0
 ]
@@ -6134,8 +6516,8 @@
 0.0,
 1.0,
 0.0,
-496.95,
-17.9,
+498.55,
+19.4,
 0.0,
 1.0
 ]
@@ -6165,8 +6547,8 @@
 0.0,
 1.0,
 0.0,
-581.15,
-171.7,
+582.75,
+173.2,
 0.0,
 1.0
 ]
@@ -6194,8 +6576,8 @@
 0.0,
 1.0,
 0.0,
-385.0,
-212.0,
+387.0,
+214.0,
 0.0,
 1.0
 ]
@@ -6225,8 +6607,8 @@
 0.0,
 1.0,
 0.0,
-312.45,
-173.45,
+314.05,
+174.95,
 0.0,
 1.0
 ]
@@ -6256,8 +6638,8 @@
 0.0,
 1.0,
 0.0,
-388.15,
-11.45,
+389.75,
+12.95,
 0.0,
 1.0
 ]
@@ -6287,8 +6669,8 @@
 0.0,
 1.0,
 0.0,
-389.85,
-72.85,
+391.45,
+74.35,
 0.0,
 1.0
 ]
@@ -6318,8 +6700,8 @@
 0.0,
 1.0,
 0.0,
-371.55,
-206.85,
+373.15,
+208.35,
 0.0,
 1.0
 ]
@@ -6349,8 +6731,8 @@
 0.0,
 1.0,
 0.0,
-348.55,
-200.55,
+350.15,
+202.05,
 0.0,
 1.0
 ]
@@ -6380,8 +6762,8 @@
 0.0,
 1.0,
 0.0,
-287.5,
-111.85,
+289.1,
+113.35,
 0.0,
 1.0
 ]
@@ -6411,8 +6793,8 @@
 0.0,
 1.0,
 0.0,
-498.35,
-12.25,
+499.95,
+13.75,
 0.0,
 1.0
 ]
@@ -6442,8 +6824,8 @@
 0.0,
 1.0,
 0.0,
-569.25,
-169.4,
+570.85,
+170.9,
 0.0,
 1.0
 ]
@@ -6471,8 +6853,8 @@
 0.0,
 1.0,
 0.0,
-393.0,
-213.0,
+394.0,
+215.0,
 0.0,
 1.0
 ]
@@ -6502,8 +6884,8 @@
 0.0,
 1.0,
 0.0,
-328.0,
-149.0,
+329.6,
+150.5,
 0.0,
 1.0
 ]
@@ -6533,8 +6915,8 @@
 0.0,
 1.0,
 0.0,
-407.05,
-17.0,
+408.65,
+18.5,
 0.0,
 1.0
 ]
@@ -6564,8 +6946,8 @@
 0.0,
 1.0,
 0.0,
-397.3,
-74.05,
+398.9,
+75.55,
 0.0,
 1.0
 ]
@@ -6595,8 +6977,8 @@
 0.0,
 1.0,
 0.0,
-379.0,
-208.05,
+380.6,
+209.55,
 0.0,
 1.0
 ]
@@ -6626,8 +7008,8 @@
 0.0,
 1.0,
 0.0,
-364.65,
-189.0,
+366.25,
+190.5,
 0.0,
 1.0
 ]
@@ -6657,8 +7039,8 @@
 0.0,
 1.0,
 0.0,
-309.75,
-53.3,
+311.35,
+54.8,
 0.0,
 1.0
 ]
@@ -6688,8 +7070,8 @@
 0.0,
 1.0,
 0.0,
-514.15,
-6.55,
+515.75,
+8.05,
 0.0,
 1.0
 ]
@@ -6719,8 +7101,8 @@
 0.0,
 1.0,
 0.0,
-571.85,
-170.8,
+573.45,
+172.3,
 0.0,
 1.0
 ]
@@ -6748,8 +7130,8 @@
 0.0,
 1.0,
 0.0,
-407.0,
-215.0,
+408.0,
+216.0,
 0.0,
 1.0
 ]
@@ -6779,8 +7161,8 @@
 0.0,
 1.0,
 0.0,
-340.0,
-154.55,
+341.6,
+156.05,
 0.0,
 1.0
 ]
@@ -6810,8 +7192,8 @@
 0.0,
 1.0,
 0.0,
-392.35,
-20.0,
+393.95,
+21.5,
 0.0,
 1.0
 ]
@@ -6841,8 +7223,8 @@
 0.0,
 1.0,
 0.0,
-411.2,
-75.45,
+412.8,
+76.95,
 0.0,
 1.0
 ]
@@ -6872,8 +7254,8 @@
 0.0,
 1.0,
 0.0,
-392.9,
-209.45,
+394.5,
+210.95,
 0.0,
 1.0
 ]
@@ -6903,8 +7285,8 @@
 0.0,
 1.0,
 0.0,
-368.7,
-205.75,
+370.3,
+207.25,
 0.0,
 1.0
 ]
@@ -6934,8 +7316,8 @@
 0.0,
 1.0,
 0.0,
-328.35,
-46.25,
+329.95,
+47.75,
 0.0,
 1.0
 ]
@@ -6965,8 +7347,8 @@
 0.0,
 1.0,
 0.0,
-507.5,
-15.25,
+509.1,
+16.75,
 0.0,
 1.0
 ]
@@ -6996,8 +7378,8 @@
 0.0,
 1.0,
 0.0,
-584.1,
-172.45,
+585.7,
+173.95,
 0.0,
 1.0
 ]
@@ -7038,8 +7420,8 @@
 0.0,
 1.0,
 0.0,
-493.85,
-214.2,
+495.45,
+215.7,
 0.0,
 1.0
 ]
@@ -7075,8 +7457,8 @@
 0.0,
 1.0,
 0.0,
-497.45,
-211.4,
+499.05,
+212.9,
 0.0,
 1.0
 ]
@@ -7112,8 +7494,8 @@
 0.0,
 1.0,
 0.0,
-501.85,
-221.55,
+503.45,
+223.05,
 0.0,
 1.0
 ]
@@ -7149,8 +7531,8 @@
 0.0,
 1.0,
 0.0,
-481.95,
-216.1,
+483.55,
+217.6,
 0.0,
 1.0
 ]
@@ -7186,8 +7568,8 @@
 0.0,
 1.0,
 0.0,
-488.9,
-218.1,
+490.5,
+219.6,
 0.0,
 1.0
 ]
@@ -7223,8 +7605,8 @@
 0.0,
 1.0,
 0.0,
-504.1,
-217.95,
+505.7,
+219.45,
 0.0,
 1.0
 ]
@@ -7257,8 +7639,8 @@
 0.0,
 1.0,
 0.0,
-976.0,
-349.0,
+977.0,
+350.0,
 0.0,
 1.0
 ]
@@ -7288,8 +7670,8 @@
 0.0,
 1.0,
 0.0,
-654.1,
-204.75,
+655.7,
+206.25,
 0.0,
 1.0
 ]
@@ -7325,8 +7707,8 @@
 0.0,
 1.0,
 0.0,
-653.45,
-203.5,
+655.05,
+205.0,
 0.0,
 1.0
 ]
@@ -7362,8 +7744,8 @@
 0.0,
 1.0,
 0.0,
-650.05,
-201.75,
+651.65,
+203.25,
 0.0,
 1.0
 ]
@@ -7399,8 +7781,8 @@
 0.0,
 1.0,
 0.0,
-633.25,
-212.2,
+634.85,
+213.7,
 0.0,
 1.0
 ]
@@ -7436,8 +7818,8 @@
 0.0,
 1.0,
 0.0,
-642.25,
-215.2,
+643.85,
+216.7,
 0.0,
 1.0
 ]
@@ -7473,8 +7855,8 @@
 0.0,
 1.0,
 0.0,
-660.0,
-204.65,
+661.6,
+206.15,
 0.0,
 1.0
 ]
@@ -7515,8 +7897,8 @@
 0.0,
 1.0,
 0.0,
-14.0,
-115.5,
+15.6,
+117.0,
 0.0,
 1.0
 ]
@@ -7552,8 +7934,8 @@
 0.0,
 1.0,
 0.0,
-22.35,
-88.3,
+23.95,
+89.8,
 0.0,
 1.0
 ]
@@ -7589,8 +7971,8 @@
 0.0,
 1.0,
 0.0,
-24.85,
-71.45,
+26.45,
+72.95,
 0.0,
 1.0
 ]
@@ -7626,8 +8008,8 @@
 0.0,
 1.0,
 0.0,
--1.45,
-93.85,
+0.15,
+95.35,
 0.0,
 1.0
 ]
@@ -7663,8 +8045,8 @@
 0.0,
 1.0,
 0.0,
-15.9,
-75.9,
+17.5,
+77.4,
 0.0,
 1.0
 ]
@@ -7700,8 +8082,8 @@
 0.0,
 1.0,
 0.0,
-17.2,
-110.05,
+18.8,
+111.55,
 0.0,
 1.0
 ]
@@ -7797,7 +8179,7 @@
 }
 },
 {
-"SN": "Símbolo 1",
+"SN": "Carpeta de elementos duplicados/Símbolo 1",
 "TL": {
 "L": [
 {
@@ -8241,7 +8623,7 @@
 }
 },
 {
-"SN": "carpeta sin nombre 1/hleftt",
+"SN": "Carpeta de elementos duplicados/hleftt",
 "TL": {
 "L": [
 {
@@ -8253,7 +8635,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -8290,7 +8672,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -8327,7 +8709,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -8364,7 +8746,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 3,
@@ -8401,7 +8783,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 4,
@@ -8438,7 +8820,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 5,
@@ -8475,7 +8857,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 6,
@@ -8512,7 +8894,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 7,
@@ -8549,7 +8931,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 8,
@@ -8586,7 +8968,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 9,
@@ -8623,7 +9005,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 10,
@@ -8660,7 +9042,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 11,
@@ -8697,7 +9079,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -8734,7 +9116,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 13,
@@ -8771,7 +9153,7 @@
 }
 },
 {
-"SN": "Símbolo 6",
+"SN": "Carpeta de elementos duplicados/Símbolo 6 copia 2",
 "TL": {
 "L": [
 {
@@ -8783,7 +9165,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 133",
+"SN": "Carpeta de elementos duplicados/Símbolo 133 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -8814,7 +9196,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 132",
+"SN": "Carpeta de elementos duplicados/Símbolo 132 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -8851,7 +9233,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 133",
+"SN": "Carpeta de elementos duplicados/Símbolo 133 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -8882,7 +9264,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 132",
+"SN": "Carpeta de elementos duplicados/Símbolo 132 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -8919,7 +9301,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 3",
+"SN": "Carpeta de elementos duplicados/Símbolo 3 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -8956,7 +9338,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 133",
+"SN": "Carpeta de elementos duplicados/Símbolo 133 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -8987,7 +9369,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 132",
+"SN": "Carpeta de elementos duplicados/Símbolo 132 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9024,7 +9406,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 3",
+"SN": "Carpeta de elementos duplicados/Símbolo 3 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9066,7 +9448,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9097,7 +9479,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9128,7 +9510,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 2",
+"SN": "Carpeta de elementos duplicados/Símbolo 2 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9159,7 +9541,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9190,7 +9572,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9221,7 +9603,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9252,7 +9634,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9289,7 +9671,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9320,7 +9702,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9351,7 +9733,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9382,7 +9764,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9413,7 +9795,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9444,7 +9826,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9475,7 +9857,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9512,7 +9894,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9543,7 +9925,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9574,7 +9956,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9605,7 +9987,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9636,7 +10018,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9667,7 +10049,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9698,7 +10080,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9735,7 +10117,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9766,7 +10148,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9797,7 +10179,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -9828,7 +10210,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9859,7 +10241,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9890,7 +10272,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9921,7 +10303,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9958,7 +10340,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -9989,7 +10371,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10020,7 +10402,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -10051,7 +10433,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10082,7 +10464,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10113,7 +10495,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10144,7 +10526,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10181,7 +10563,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10212,7 +10594,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10243,7 +10625,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -10274,7 +10656,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10305,7 +10687,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10336,7 +10718,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10367,7 +10749,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10404,7 +10786,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10435,7 +10817,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10466,7 +10848,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -10497,7 +10879,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10528,7 +10910,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10559,7 +10941,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10590,7 +10972,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10627,7 +11009,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10658,7 +11040,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10689,7 +11071,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -10720,7 +11102,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10751,7 +11133,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10782,7 +11164,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10813,7 +11195,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10850,7 +11232,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10881,7 +11263,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10912,7 +11294,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -10943,7 +11325,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -10974,7 +11356,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11005,7 +11387,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11036,7 +11418,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11073,7 +11455,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11104,7 +11486,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11135,7 +11517,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -11166,7 +11548,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11197,7 +11579,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11228,7 +11610,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11259,7 +11641,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11296,7 +11678,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11327,7 +11709,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11358,7 +11740,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -11389,7 +11771,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11420,7 +11802,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11451,7 +11833,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11482,7 +11864,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11519,7 +11901,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11550,7 +11932,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11581,7 +11963,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -11612,7 +11994,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11643,7 +12025,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11674,7 +12056,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11705,7 +12087,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11742,7 +12124,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11773,7 +12155,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11804,7 +12186,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -11835,7 +12217,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11866,7 +12248,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11897,7 +12279,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11928,7 +12310,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -11970,7 +12352,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12001,7 +12383,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12038,7 +12420,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12069,7 +12451,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -12106,7 +12488,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12137,7 +12519,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -12174,7 +12556,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12205,7 +12587,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 3,
@@ -12242,7 +12624,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12273,7 +12655,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 4,
@@ -12310,7 +12692,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12341,7 +12723,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 5,
@@ -12378,7 +12760,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12409,7 +12791,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 6,
@@ -12446,7 +12828,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12477,7 +12859,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 7,
@@ -12514,7 +12896,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12545,7 +12927,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 8,
@@ -12582,7 +12964,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12613,7 +12995,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 9,
@@ -12650,7 +13032,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12681,7 +13063,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 10,
@@ -12718,7 +13100,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12749,7 +13131,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 11,
@@ -12786,7 +13168,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12817,7 +13199,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -12854,7 +13236,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -12885,7 +13267,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 13,
@@ -12922,7 +13304,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 133",
+"SN": "Carpeta de elementos duplicados/Símbolo 133 copia",
 "TL": {
 "L": [
 {
@@ -12963,7 +13345,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 132",
+"SN": "Carpeta de elementos duplicados/Símbolo 132 copia",
 "TL": {
 "L": [
 {
@@ -13004,7 +13386,7 @@
 }
 },
 {
-"SN": "Símbolo 3",
+"SN": "Carpeta de elementos duplicados/Símbolo 3 copia",
 "TL": {
 "L": [
 {
@@ -13045,7 +13427,7 @@
 }
 },
 {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "TL": {
 "L": [
 {
@@ -13086,7 +13468,7 @@
 }
 },
 {
-"SN": "Símbolo 112",
+"SN": "Carpeta de elementos duplicados/Símbolo 112",
 "TL": {
 "L": [
 {
@@ -13127,7 +13509,7 @@
 }
 },
 {
-"SN": "Símbolo 2",
+"SN": "Carpeta de elementos duplicados/Símbolo 2 copia 3",
 "TL": {
 "L": [
 {
@@ -13168,7 +13550,7 @@
 }
 },
 {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "TL": {
 "L": [
 {
@@ -13209,7 +13591,7 @@
 }
 },
 {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "TL": {
 "L": [
 {
@@ -13250,7 +13632,7 @@
 }
 },
 {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "TL": {
 "L": [
 {
@@ -13291,7 +13673,7 @@
 }
 },
 {
-"SN": "Símbolo 119",
+"SN": "Carpeta de elementos duplicados/Símbolo 119",
 "TL": {
 "L": [
 {
@@ -13332,7 +13714,7 @@
 }
 },
 {
-"SN": "Símbolo 113",
+"SN": "Carpeta de elementos duplicados/Símbolo 113",
 "TL": {
 "L": [
 {
@@ -13402,7 +13784,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "TL": {
 "L": [
 {
@@ -13443,7 +13825,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "TL": {
 "L": [
 {
@@ -13600,7 +13982,7 @@
 }
 },
 {
-"SN": "carpeta sin nombre 1/hdowm",
+"SN": "Carpeta de elementos duplicados/hdowm",
 "TL": {
 "L": [
 {
@@ -13612,7 +13994,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -13649,7 +14031,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -13686,7 +14068,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -13723,7 +14105,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -13760,7 +14142,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -13797,7 +14179,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -13834,7 +14216,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -13871,7 +14253,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -13908,7 +14290,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -13945,7 +14327,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -13982,7 +14364,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -14019,7 +14401,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -14056,7 +14438,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -14093,7 +14475,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -14135,7 +14517,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 143",
+"SN": "Carpeta de elementos duplicados/Símbolo 143 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14166,7 +14548,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 142",
+"SN": "Carpeta de elementos duplicados/Símbolo 142 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14203,7 +14585,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 143",
+"SN": "Carpeta de elementos duplicados/Símbolo 143 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14234,7 +14616,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 142",
+"SN": "Carpeta de elementos duplicados/Símbolo 142 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14271,7 +14653,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 103",
+"SN": "Carpeta de elementos duplicados/Símbolo 103 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14308,7 +14690,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 103",
+"SN": "Carpeta de elementos duplicados/Símbolo 103 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14345,7 +14727,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 143",
+"SN": "Carpeta de elementos duplicados/Símbolo 143 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14376,7 +14758,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 142",
+"SN": "Carpeta de elementos duplicados/Símbolo 142 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14413,7 +14795,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 103",
+"SN": "Carpeta de elementos duplicados/Símbolo 103 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14455,7 +14837,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14486,7 +14868,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -14523,7 +14905,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14554,7 +14936,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -14591,7 +14973,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14622,7 +15004,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -14659,7 +15041,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14690,7 +15072,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -14727,7 +15109,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14758,7 +15140,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14795,7 +15177,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14826,7 +15208,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14863,7 +15245,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14894,7 +15276,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14931,7 +15313,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -14962,7 +15344,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 3,
@@ -14999,7 +15381,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -15030,7 +15412,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 3,
@@ -15067,7 +15449,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 2 copia 2",
+"SN": "Carpeta de elementos duplicados/o 2 copia 2 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -15104,7 +15486,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 141",
+"SN": "Carpeta de elementos duplicados/Símbolo 141 copia",
 "TL": {
 "L": [
 {
@@ -15116,7 +15498,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 118",
+"SN": "Carpeta de elementos duplicados/Símbolo 118 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -15147,7 +15529,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -15178,7 +15560,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -15240,7 +15622,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -15277,7 +15659,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 118",
+"SN": "Carpeta de elementos duplicados/Símbolo 118 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -15308,7 +15690,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -15339,7 +15721,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -15401,7 +15783,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -15517,7 +15899,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 118",
+"SN": "Carpeta de elementos duplicados/Símbolo 118 copia",
 "TL": {
 "L": [
 {
@@ -15587,7 +15969,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia",
 "TL": {
 "L": [
 {
@@ -15628,7 +16010,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia",
 "TL": {
 "L": [
 {
@@ -15710,7 +16092,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia",
 "TL": {
 "L": [
 {
@@ -15751,7 +16133,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 143",
+"SN": "Carpeta de elementos duplicados/Símbolo 143 copia",
 "TL": {
 "L": [
 {
@@ -15792,7 +16174,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 142",
+"SN": "Carpeta de elementos duplicados/Símbolo 142 copia",
 "TL": {
 "L": [
 {
@@ -15833,7 +16215,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 103",
+"SN": "Carpeta de elementos duplicados/Símbolo 103 copia",
 "TL": {
 "L": [
 {
@@ -15874,7 +16256,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 131 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia copia",
 "TL": {
 "L": [
 {
@@ -15915,7 +16297,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 130 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia copia",
 "TL": {
 "L": [
 {
@@ -16072,7 +16454,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/Símbolo 2 copia 2",
+"SN": "Carpeta de elementos duplicados/o 2 copia 2 copia",
 "TL": {
 "L": [
 {
@@ -16084,7 +16466,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -16115,7 +16497,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130 copia",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia copia",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -16152,7 +16534,7 @@
 }
 },
 {
-"SN": "carpeta sin nombre 1/hup",
+"SN": "Carpeta de elementos duplicados/hup",
 "TL": {
 "L": [
 {
@@ -16164,7 +16546,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -16201,7 +16583,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -16238,7 +16620,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -16275,7 +16657,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 3,
@@ -16312,7 +16694,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 4,
@@ -16349,7 +16731,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 5,
@@ -16386,7 +16768,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 6,
@@ -16423,7 +16805,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 7,
@@ -16460,7 +16842,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 8,
@@ -16497,7 +16879,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 9,
@@ -16534,7 +16916,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 10,
@@ -16571,7 +16953,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 11,
@@ -16608,7 +16990,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -16645,7 +17027,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "IN": "",
 "ST": "G",
 "FF": 13,
@@ -16682,7 +17064,7 @@
 }
 },
 {
-"SN": "Carpeta de elementos duplicados/up",
+"SN": "Carpeta de elementos duplicados/up copia 2",
 "TL": {
 "L": [
 {
@@ -16694,7 +17076,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 133",
+"SN": "Carpeta de elementos duplicados/Símbolo 133 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -16725,7 +17107,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 132",
+"SN": "Carpeta de elementos duplicados/Símbolo 132 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -16762,7 +17144,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 133",
+"SN": "Carpeta de elementos duplicados/Símbolo 133 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -16793,7 +17175,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 132",
+"SN": "Carpeta de elementos duplicados/Símbolo 132 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -16830,7 +17212,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 133",
+"SN": "Carpeta de elementos duplicados/Símbolo 133 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -16861,7 +17243,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 132",
+"SN": "Carpeta de elementos duplicados/Símbolo 132 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -16898,7 +17280,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 133",
+"SN": "Carpeta de elementos duplicados/Símbolo 133 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -16929,7 +17311,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 132",
+"SN": "Carpeta de elementos duplicados/Símbolo 132 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -16966,7 +17348,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 133",
+"SN": "Carpeta de elementos duplicados/Símbolo 133 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -16997,7 +17379,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 132",
+"SN": "Carpeta de elementos duplicados/Símbolo 132 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17034,7 +17416,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 3",
+"SN": "Carpeta de elementos duplicados/Símbolo 3 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17076,7 +17458,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -17107,7 +17489,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17138,7 +17520,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17169,7 +17551,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17200,7 +17582,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17237,7 +17619,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -17268,7 +17650,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17299,7 +17681,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17330,7 +17712,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17361,7 +17743,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17398,7 +17780,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17429,7 +17811,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17460,7 +17842,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17491,7 +17873,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17522,7 +17904,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17559,7 +17941,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -17590,7 +17972,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17621,7 +18003,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17652,7 +18034,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17683,7 +18065,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17720,7 +18102,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17751,7 +18133,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17782,7 +18164,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17813,7 +18195,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17844,7 +18226,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17881,7 +18263,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -17912,7 +18294,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17943,7 +18325,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -17974,7 +18356,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18005,7 +18387,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18042,7 +18424,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18073,7 +18455,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18104,7 +18486,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18135,7 +18517,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18166,7 +18548,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18203,7 +18585,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -18234,7 +18616,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18265,7 +18647,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18296,7 +18678,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18327,7 +18709,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18364,7 +18746,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18395,7 +18777,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18426,7 +18808,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18457,7 +18839,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18488,7 +18870,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18525,7 +18907,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -18556,7 +18938,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18587,7 +18969,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18618,7 +19000,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18649,7 +19031,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18686,7 +19068,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18717,7 +19099,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18748,7 +19130,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18779,7 +19161,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18810,7 +19192,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18847,7 +19229,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18878,7 +19260,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18909,7 +19291,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18940,7 +19322,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -18971,7 +19353,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19008,7 +19390,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19039,7 +19421,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19070,7 +19452,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19101,7 +19483,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19132,7 +19514,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19169,7 +19551,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19200,7 +19582,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 114",
+"SN": "Carpeta de elementos duplicados/Símbolo 114 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19231,7 +19613,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19262,7 +19644,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19293,7 +19675,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19335,7 +19717,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19372,7 +19754,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19409,7 +19791,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19446,7 +19828,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19483,7 +19865,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19520,7 +19902,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 11",
+"SN": "Carpeta de elementos duplicados/Símbolo 11 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19562,7 +19944,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19593,7 +19975,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19630,7 +20012,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19661,7 +20043,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19698,7 +20080,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19729,7 +20111,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -19766,7 +20148,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19797,7 +20179,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -19834,7 +20216,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19865,7 +20247,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -19902,7 +20284,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -19933,7 +20315,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -19970,7 +20352,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -20001,7 +20383,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -20038,7 +20420,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -20069,7 +20451,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -20106,7 +20488,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -20137,7 +20519,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 7,
@@ -20174,7 +20556,7 @@
 "E": [
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 131",
+"SN": "Carpeta de elementos duplicados/Símbolo 131 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -20205,7 +20587,7 @@
 },
 {
 "SI": {
-"SN": "Carpeta de elementos duplicados/Símbolo 130",
+"SN": "Carpeta de elementos duplicados/Símbolo 130 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 7,
@@ -20242,7 +20624,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 7",
+"SN": "Carpeta de elementos duplicados/Símbolo 7 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -20279,7 +20661,7 @@
 }
 },
 {
-"SN": "Símbolo 120",
+"SN": "Carpeta de elementos duplicados/Símbolo 120",
 "TL": {
 "L": [
 {
@@ -20349,7 +20731,7 @@
 }
 },
 {
-"SN": "Símbolo 122",
+"SN": "Carpeta de elementos duplicados/Símbolo 122 copia 2",
 "TL": {
 "L": [
 {
@@ -20390,7 +20772,7 @@
 }
 },
 {
-"SN": "Símbolo 7",
+"SN": "Carpeta de elementos duplicados/Símbolo 7 copia",
 "TL": {
 "L": [
 {
@@ -20431,7 +20813,7 @@
 }
 },
 {
-"SN": "carpeta sin nombre 1/hright",
+"SN": "Carpeta de elementos duplicados/hright",
 "TL": {
 "L": [
 {
@@ -20443,7 +20825,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -20480,7 +20862,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -20517,7 +20899,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 2,
@@ -20554,7 +20936,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 3,
@@ -20591,7 +20973,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 4,
@@ -20628,7 +21010,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 5,
@@ -20665,7 +21047,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 6,
@@ -20702,7 +21084,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 7,
@@ -20739,7 +21121,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 8,
@@ -20776,7 +21158,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 9,
@@ -20813,7 +21195,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 10,
@@ -20850,7 +21232,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 11,
@@ -20887,7 +21269,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 12,
@@ -20924,7 +21306,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "IN": "",
 "ST": "G",
 "FF": 13,
@@ -20961,7 +21343,7 @@
 }
 },
 {
-"SN": "Símbolo 8",
+"SN": "Carpeta de elementos duplicados/Símbolo 8 copia",
 "TL": {
 "L": [
 {
@@ -20973,7 +21355,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21010,7 +21392,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21047,7 +21429,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21084,7 +21466,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21121,7 +21503,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21158,7 +21540,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21195,7 +21577,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21232,7 +21614,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21269,7 +21651,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21306,7 +21688,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21343,7 +21725,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21380,7 +21762,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21417,7 +21799,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21454,7 +21836,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -21496,7 +21878,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 136",
+"SN": "Carpeta de elementos duplicados/Símbolo 136",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21527,7 +21909,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 135",
+"SN": "Carpeta de elementos duplicados/Símbolo 135",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21564,7 +21946,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 136",
+"SN": "Carpeta de elementos duplicados/Símbolo 136",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21595,7 +21977,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 135",
+"SN": "Carpeta de elementos duplicados/Símbolo 135",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21632,7 +22014,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 136",
+"SN": "Carpeta de elementos duplicados/Símbolo 136",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21663,7 +22045,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 135",
+"SN": "Carpeta de elementos duplicados/Símbolo 135",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21700,7 +22082,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 136",
+"SN": "Carpeta de elementos duplicados/Símbolo 136",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21731,7 +22113,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 135",
+"SN": "Carpeta de elementos duplicados/Símbolo 135",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21768,7 +22150,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 124",
+"SN": "Carpeta de elementos duplicados/Símbolo 124",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21810,7 +22192,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 139",
+"SN": "Carpeta de elementos duplicados/Símbolo 139",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21841,7 +22223,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 138",
+"SN": "Carpeta de elementos duplicados/Símbolo 138",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21878,7 +22260,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 139",
+"SN": "Carpeta de elementos duplicados/Símbolo 139",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21909,7 +22291,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 138",
+"SN": "Carpeta de elementos duplicados/Símbolo 138",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21946,7 +22328,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 139",
+"SN": "Carpeta de elementos duplicados/Símbolo 139",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -21977,7 +22359,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 138",
+"SN": "Carpeta de elementos duplicados/Símbolo 138",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22014,7 +22396,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 139",
+"SN": "Carpeta de elementos duplicados/Símbolo 139",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22045,7 +22427,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 138",
+"SN": "Carpeta de elementos duplicados/Símbolo 138",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22082,7 +22464,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 123",
+"SN": "Carpeta de elementos duplicados/Símbolo 123",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22119,7 +22501,7 @@
 }
 },
 {
-"SN": "Símbolo 137",
+"SN": "Carpeta de elementos duplicados/Símbolo 137",
 "TL": {
 "L": [
 {
@@ -22131,7 +22513,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 116",
+"SN": "Carpeta de elementos duplicados/Símbolo 116",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22162,7 +22544,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 117",
+"SN": "Carpeta de elementos duplicados/Símbolo 117",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22193,7 +22575,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22224,7 +22606,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22255,7 +22637,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22286,7 +22668,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 121",
+"SN": "Carpeta de elementos duplicados/Símbolo 121",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22323,7 +22705,7 @@
 "E": [
 {
 "SI": {
-"SN": "Símbolo 116",
+"SN": "Carpeta de elementos duplicados/Símbolo 116",
 "IN": "",
 "ST": "G",
 "FF": 1,
@@ -22354,7 +22736,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 117",
+"SN": "Carpeta de elementos duplicados/Símbolo 117",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22385,7 +22767,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22416,7 +22798,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 10",
+"SN": "Carpeta de elementos duplicados/Símbolo 10 copia 3",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22447,7 +22829,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 115",
+"SN": "Carpeta de elementos duplicados/Símbolo 115 copia 2",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22478,7 +22860,7 @@
 },
 {
 "SI": {
-"SN": "Símbolo 121",
+"SN": "Carpeta de elementos duplicados/Símbolo 121",
 "IN": "",
 "ST": "G",
 "FF": 0,
@@ -22515,7 +22897,7 @@
 }
 },
 {
-"SN": "Símbolo 116",
+"SN": "Carpeta de elementos duplicados/Símbolo 116",
 "TL": {
 "L": [
 {
@@ -22585,7 +22967,7 @@
 }
 },
 {
-"SN": "Símbolo 117",
+"SN": "Carpeta de elementos duplicados/Símbolo 117",
 "TL": {
 "L": [
 {
@@ -22626,7 +23008,7 @@
 }
 },
 {
-"SN": "Símbolo 121",
+"SN": "Carpeta de elementos duplicados/Símbolo 121",
 "TL": {
 "L": [
 {
@@ -22667,7 +23049,7 @@
 }
 },
 {
-"SN": "Símbolo 136",
+"SN": "Carpeta de elementos duplicados/Símbolo 136",
 "TL": {
 "L": [
 {
@@ -22708,7 +23090,7 @@
 }
 },
 {
-"SN": "Símbolo 135",
+"SN": "Carpeta de elementos duplicados/Símbolo 135",
 "TL": {
 "L": [
 {
@@ -22749,7 +23131,7 @@
 }
 },
 {
-"SN": "Símbolo 124",
+"SN": "Carpeta de elementos duplicados/Símbolo 124",
 "TL": {
 "L": [
 {
@@ -22790,7 +23172,7 @@
 }
 },
 {
-"SN": "Símbolo 139",
+"SN": "Carpeta de elementos duplicados/Símbolo 139",
 "TL": {
 "L": [
 {
@@ -22831,7 +23213,7 @@
 }
 },
 {
-"SN": "Símbolo 138",
+"SN": "Carpeta de elementos duplicados/Símbolo 138",
 "TL": {
 "L": [
 {
@@ -22872,7 +23254,7 @@
 }
 },
 {
-"SN": "Símbolo 123",
+"SN": "Carpeta de elementos duplicados/Símbolo 123",
 "TL": {
 "L": [
 {
@@ -23443,7 +23825,7 @@
 }
 },
 {
-"SN": "up1",
+"SN": "down1",
 "TL": {
 "L": [
 {

@@ -1,36 +1,36 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [128, -41],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "LX up",
-			"indices": []
+			"indices": [],
+			"name": "LX up"
 		},
 		{
-			"loop": false,
 			"offsets": [109, -220],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "LX left",
-			"indices": []
+			"indices": [],
+			"name": "LX left"
 		},
 		{
-			"loop": false,
 			"offsets": [117, -223],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "LX down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "LX down"
 		},
 		{
-			"loop": false,
 			"offsets": [175, -219],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "LX right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "LX right"
 		},
 		{
 			"offsets": [110, -219],
@@ -38,7 +38,7 @@
 			"fps": 24,
 			"anim": "idle",
 			"loop": true,
-			"name": "SÃ­mbolo 59"
+			"name": "idle"
 		}
 	],
 	"vocals_file": "",

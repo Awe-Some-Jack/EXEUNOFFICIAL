@@ -399,6 +399,7 @@ end
 local pixelxdxd = false
 function onEvent(n,v1,v2)
     if n == 'changenoteSkin' then
+		if songPath == 'universal-collapse' then return end
         local targetPath = nil
 
         if v1 == 'NOTE_assets_ENDLESS' then

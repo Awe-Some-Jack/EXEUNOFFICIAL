@@ -5,7 +5,12 @@ function onCreate()
 	makeLuaSprite('bloom')
 	setSpriteShader('bloom', 'brightness')
 	setShaderFloat('bloom', 'saturation', 1)
+
+	makeLuaSprite("pixel", nil, 200)
+	setSpriteShader("pixel", "pixelsplash")
+	setShaderFloat('pixel', 'pixelsize', 0.001)
 end
+function onCreatePost() setProperty('BlackGraphicOther.alpha', 1) end
 
 function onCountdownStarted()
 	for i = 0, 3 do
@@ -15,7 +20,19 @@ function onCountdownStarted()
 	end
 end
 
+function onSongStart()
+	isTweening = true
+	setProperty('camGame.zoom', 0.2) setProperty('camHUD.zoom', 0.8)
+	doTweenAlpha('BlackGraphicOther', 'BlackGraphicOther', 0, crochet / 250, 'expoIn')
+	doTweenX('pixel', 'pixel', 0.0001, crochet / 250, 'expoIn')
+	doTweenZoom('camGame', 'camGame', 0.7, crochet / (1000 / 8), 'expoInOut')
+	doTweenZoom('camHUD', 'camHUD', 1, crochet / (1000 / 8), 'expoInOut')
+end
+
 function onUpdate(e)
+	if isTweening then
+		setShaderFloat('pixel', 'pixelsize', getProperty('pixel.x'))
+	end
 	setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
 	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4))
 end

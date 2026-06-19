@@ -1,0 +1,127 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 12,
+			"anim": "intro",
+			"loop": false,
+			"name": "intro"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 12,
+			"anim": "idle",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 12,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [3, 3],
+			"indices": [],
+			"fps": 12,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 12,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [0, 3],
+			"indices": [],
+			"fps": 12,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 12,
+			"anim": "intro-alt",
+			"loop": false,
+			"name": "freneticintro"
+		},
+		{
+			"offsets": [36, 3],
+			"indices": [],
+			"fps": 12,
+			"anim": "idle-alt",
+			"loop": true,
+			"name": "freneticidle"
+		},
+		{
+			"offsets": [24, 105],
+			"indices": [],
+			"fps": 12,
+			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "freneticleft"
+		},
+		{
+			"offsets": [57, -51],
+			"indices": [],
+			"fps": 12,
+			"anim": "singDOWN-alt",
+			"loop": false,
+			"name": "freneticdown"
+		},
+		{
+			"offsets": [354, 21],
+			"indices": [],
+			"fps": 12,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "freneticup"
+		},
+		{
+			"offsets": [275, 243],
+			"indices": [],
+			"fps": 12,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "freneticright"
+		},
+		{
+			"offsets": [102, 309],
+			"indices": [0, 1, 2],
+			"fps": 12,
+			"anim": "laugh",
+			"loop": false,
+			"name": "laugh"
+		},
+		{
+			"offsets": [24, -42],
+			"indices": [],
+			"fps": 12,
+			"anim": "outro",
+			"loop": false,
+			"name": "outro"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "characters/genesys-eggman",
+	"position": [0, 0],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [161, 161, 161],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 3,
+	"_editor_isPlayer": false
+}

@@ -1,3 +1,4 @@
+var separation:Int = 50;
 function onCreatePost()
 {
 	camHUD.alpha = 0;
@@ -6,7 +7,16 @@ function onCreatePost()
 	PlayState.instance.cameraSpeed = 9999;
 }
 
-function onSongStart() PlayState.instance.cameraSpeed = 1;
+function onSongStart()
+{
+	PlayState.instance.cameraSpeed = 1;
+
+	for (i in 0...4)
+	{
+		opponentStrums.members[i].x = -1000;
+		playerStrums.members[i].x = (FlxG.width / 2) + (separation / 2) - (((playerStrums.members[i].width + (separation * 2)) * 4) / 2) + ((playerStrums.members[i].width + separation * (i > 1 ? (i == 3 ? 2.33 : 3) : 1)) * i);
+	}
+}
 
 function onEvent(n,v1)
 {

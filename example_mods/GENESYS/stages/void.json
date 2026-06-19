@@ -1,7 +1,7 @@
 {
 	"directory": "",
 	"stageUI": "pixel",
-	"defaultZoom": 0.9,
+	"defaultZoom": 0.6,
 	"hide_girlfriend": true,
 
 	"opponent": [-165.5, -100],

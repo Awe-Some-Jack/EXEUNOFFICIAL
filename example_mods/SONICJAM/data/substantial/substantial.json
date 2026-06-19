@@ -1,6 +1,55 @@
 {
 	"player1": "boifend",
-	"events": [],
+	"events": [
+		[
+			10971.4285714286,
+			[
+				["saturation", "0", ""]
+			]
+		],
+		[
+			11657.1428571429,
+			[
+				["saturation", "0.35", ""],
+				["bright zoom", "", ""],
+				["substantialEvent", "fullscreen", ""]
+			]
+		],
+		[
+			12000,
+			[
+				["saturation", "0.75", ""],
+				["bright zoom", "", ""]
+			]
+		],
+		[
+			12342.8571428571,
+			[
+				["saturation", "1", ""],
+				["Flash", "FFFFFF,1", ""],
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			23314.2857142857,
+			[
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			25371.4285714286,
+			[
+				["saturation", "0.5", ""]
+			]
+		],
+		[
+			26057.1428571429,
+			[
+				["saturation", "1", ""],
+				["bright zoom", "", ""]
+			]
+		]
+	],
 	"player2": "jamsonic",
 	"notes": [
 		{
@@ -254,7 +303,7 @@
 			"altAnim": false,
 			"bpm": 175,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,

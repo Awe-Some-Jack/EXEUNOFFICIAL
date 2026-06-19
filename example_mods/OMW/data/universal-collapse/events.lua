@@ -137,9 +137,8 @@ function onEvent(n,v1)
 			setGraphicSize('renderfinale', screenWidth, screenHeight)
 			screenCenter('renderfinale')
 			setObjectCamera('renderfinale', 'video')
-			doTweenAlpha('renderfinale', 'renderfinale', 0, crochet / 250, 'expoIn')
 			addLuaSprite('renderfinale')
-			cameraFlash('other', 'FFFFFF', 1, true)
+			runTimer('XDDD', 0.05)
 		end
 	end
 end
@@ -148,4 +147,5 @@ function onTimerCompleted(t)
 	if t == 'dxas' then
 		setProperty('cpuAssist', false)
 	end
+	if t == 'XDDD' then cameraFlash('other', 'FFFFFF', crochet / 250, true) removeLuaSprite('renderfinale', true) end
 end

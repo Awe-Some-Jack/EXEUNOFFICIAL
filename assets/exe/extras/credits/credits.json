@@ -314,7 +314,11 @@
 		{
 			"name": "ExeTheFaked",
 			"icon": "exe",
-			"description": "Composer"
+			"quote": "I can't beat triple trouble under 100 misses",
+			"youtube": "https://youtube.com/@exethefaker",
+			"nation": "usa",
+			"description": "Composer",
+			"extra": ["image", "chukls.jpg"]
 		},
 		{
 			"name": "DaRealT0bi",

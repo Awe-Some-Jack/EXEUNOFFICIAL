@@ -42,6 +42,13 @@ function onCreatePost()
 	setObjectOrder('healthbaromw', getObjectOrder('separatorHealth'))
     addInstance('iconBF')
     addInstance('iconOpp')
+
+    setProperty('iconBF.alpha', 0)
+	setProperty('iconOpp.alpha', 0)
+	setProperty('hbHealth.alpha', 0)
+	setProperty('hbHealth2.alpha', 0)
+	setProperty('separatorHealth.alpha', 0)
+	setProperty('healthbaromw.alpha', 0)
 end
 
 local lerpHealth = 1

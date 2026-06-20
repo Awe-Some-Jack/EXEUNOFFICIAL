@@ -439,6 +439,8 @@
 			"name": "Redblurr",
 			"icon": "redblurr",
 			"description": "Charter",
+			"quote": "el que madruga en cuatro lo ajuntan",
+			"colors": [[201, 31, 0], [16, 4, 0]],
 			"nation": "peru"
 		},
 		{

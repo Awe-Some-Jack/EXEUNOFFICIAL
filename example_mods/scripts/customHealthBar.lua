@@ -72,7 +72,7 @@ local healthBarsBG = {
         y = - 70
     },
 }
-local blacklistenedSongs = {'prey', 'godspeed', 'forestall-desire', 'deception', 'fatality', 'longstrider'}
+local blacklistenedSongs = {'prey', 'godspeed', 'forestall-desire', 'deception', 'fatality', 'longstrider', 'universal-collapse'}
 
 local flipped = false
 local oldScoreTxt = ''

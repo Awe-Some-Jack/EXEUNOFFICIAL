@@ -166,7 +166,7 @@ end
 function onSectionHit()
 	if not getProperty('gameplayCam.settings.MiddleCamera') then
 		if curSection % 2 == 0 then setProperty('gameplayCam.settings.OverrideZoom', false) end
-		setProperty('gameplayCam.settings.OGZoom', mustHitSection and (universe and 1 or 1.35) or (universe and 0.6 or 0.8))
+		setProperty('gameplayCam.settings.OGZoom', mustHitSection and (universe and 0.8 or 1.35) or (universe and 0.6 or 0.8))
 	end
 end
 

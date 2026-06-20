@@ -14,10 +14,6 @@ function onCreatePost()
 	makeGraphic('daBar', 10, 418, '7474FF')
 	callMethod('daBar.setPosition', {getProperty('daBarUI.x') + 28, getProperty('daBarUI.y') + 46})
 	setObjectCamera('daBar', 'hud')
-
-	addLuaSprite('daBarBG', true)
-	addLuaSprite('daBar', true)
-	addLuaSprite('daBarUI', true)
 end
 
 local savedNotesPos = {}
@@ -51,16 +47,20 @@ function onUpdatePost(e)
 	end
 end
 
-function opponentNoteHit(id,nd,nt,isn) if isn or not activeBar then return end target = target - 0.0015 end
-function noteMiss(id,nd,nt,isn) if isn or not activeBar then return end target = target - 0.01 end
+function opponentNoteHit(id,nd,nt,isn) if isn then return end if not activeBar then return end target = target - 0.0015 end
+function noteMiss(id,nd,nt,isn) if isn then return end if not activeBar then return end target = target - 0.01 end
 function noteMissPress() if activeBar then target = target - 0.005 end end
-function goodNoteHit(id,nd,nt,isn) if isn or not activeBar then return end target = target + 0.0015 end
+function goodNoteHit(id,nd,nt,isn) if isn then return end if not activeBar then return end target = target + 0.0015 end
 
 function onEvent(n,v1)
 	if n == 'omwEvents' then
 		if v1 == 'xddd' then
 			for i = 0,3 do savedNotesPos[i + 1] = {} savedNotesPos[i + 1].x = getProperty('playerStrums.members['..i..'].x') savedNotesPos[i + 1].y = getProperty('playerStrums.members['..i..'].y') end
 			activeBar = true
+
+			addLuaSprite('daBarBG', true)
+			addLuaSprite('daBar', true)
+			addLuaSprite('daBarUI', true)
 		end
 		if v1 == 'finalFlash' then activeBar = false end
 	end

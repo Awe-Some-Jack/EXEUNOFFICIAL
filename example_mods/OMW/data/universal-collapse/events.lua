@@ -17,8 +17,6 @@ function onCreatePost()
 	addAnimationByPrefix('iconOMW', 'normal', 'normal', 24, true)
 	addAnimationByPrefix('iconOMW', 'losing', 'losing', 24, true)
     setObjectCamera('iconOMW', 'hud')
-	addLuaSprite('iconOMW')
-	setProperty('iconOMW.alpha', 0)
 end
 
 
@@ -97,7 +95,7 @@ function onEvent(n,v1)
 
 			triggerEvent('Change Health Damage', '0.02', '')
 
-			setProperty('iconOMW.alpha', 1)
+			addLuaSprite('iconOMW')
 			setProperty('iconOpp.alpha', 0)
 			setProperty('blackScreen.alpha', 1)
 			doTweenColor('blackScreen', 'blackScreen', '000000', 1 / playbackRate)
@@ -118,7 +116,7 @@ function onEvent(n,v1)
 
 			setProperty('cameraSpeed', 2)
 			triggerEvent('Change Character', 'dad', 'omw2')
-			setProperty('gameplayCam.settings.BFy', 150)
+			setProperty('gameplayCam.settings.BFy', 100)
 
 			setShaderFloat('cab', 'amount', 0.2)
 			setShaderFloat('ca2', 'amount', 0.3)

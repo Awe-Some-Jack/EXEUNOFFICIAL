@@ -826,13 +826,8 @@
 
 	"external": [
 		{
-			"name": "Kawaiisprite",
-			"icon": "kawaii",
-			"description": "Voice Actor"
-		},
-		{
-			"name": "Jason Griffith",
-			"icon": "jason",
+			"name": "The Funkin' Crew",
+			"icon": "fnf",
 			"description": "Voice Actor"
 		},
 		{
@@ -841,24 +836,9 @@
 			"description": "Endless JP Backgrounds"
 		},
 		{
-			"name": "Dupanims",
-			"icon": "dupanims",
-			"description": "Needlemouse Phase 2 Finished Sprites"
-		},
-		{
-			"name": "TheWaffl3Modder",
-			"icon": "waffle",
-			"description": "Round-A-Bout Scared BF"
-		},
-		{
 			"name": "Zeurel",
 			"icon": "zeurel",
 			"description": "Secret Histories Tails Animator"
-		},
-		{
-			"name": "ImTrovert",
-			"icon": "trovert",
-			"description": "Re-Run Phase 3 Fan Finished Sprites"
 		},
 		{
 			"name": "DanlyDaMusician",
@@ -869,16 +849,6 @@
 			"name": "Zar0k4l",
 			"icon": "zarok",
 			"description": "Mania, Forestall Desire & Final Escape Help"
-		},
-		{
-			"name": "Endah",
-			"icon": "endah",
-			"description": "Found You Background"
-		},
-		{
-			"name": "Kangreko/Lilyko",
-			"icon": "kangreko",
-			"description": "Found You Background Animations"
 		},
 		{
 			"name": "Hop",

@@ -186,9 +186,12 @@
 		{
 			"name": "VN2",
 			"icon": "vn2",
+			"quote": "La verdad no esperé llegar tan lejos con mi arte, literalmente entrando a pocos dias de que salga Xddd.\nEspero nos volvamos a ver pronto en otros poroyectos! tengo tanto por mostrar jeje.\n\nPSDT: Fare acaba los sprites",
 			"description": "Artist",
 			"twitter": "https://x.com/Art_VN2",
-			"nation": "peru"
+			"nation": "peru",
+			"colors": [[175, 38, 130], [25, 41, 183]],
+			"extra": ["image", "endadenao.png"]
 		},
 		{
 			"name": "Mariano",

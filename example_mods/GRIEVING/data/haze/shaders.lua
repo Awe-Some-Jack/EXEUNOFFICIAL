@@ -21,6 +21,11 @@ local shaders = {
         sort = 0,
     }},
 
+    {name = 'wave', shader = 'wavyDistortion', x = 0,
+    uniforms = {
+        amount = 0,
+        iTime = 0,
+    }}
 }
 
 runHaxeCode([[
@@ -139,6 +144,7 @@ local onTween4Brightness = false
 local onTween4Saturation = false
 local onTween4Contrast = false
 local onTween5 = false
+local onTween6 = false
 function onEvent(eventName, value1, value2)
     local shaderValues = stringSplit(value1, ',')
     local tweenSettings = stringSplit(value2, ',')
@@ -190,6 +196,12 @@ function onEvent(eventName, value1, value2)
         doTweenX('pseudoX', 'pseudo', tonumber(shaderValues[2]), tonumber(tweenSettings[1]) / playbackRate, tweenSettings[2])
         onTween5 = true
     end
+    if eventName == "waveFlash" then
+        cancelTween('waveTween')
+        setProperty('wave.x', tonumber(shaderValues[1]))
+        doTweenX('waveTween', 'wave', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+        onTween6 = true
+    end
     -- HAZE Events --
     if eventName == 'hazeEvents' then
         if value1 == 'setCharShaders' then
@@ -197,6 +209,7 @@ function onEvent(eventName, value1, value2)
         elseif value1 == 'removeCharShaders' then
             for _, char in ipairs({'dad', 'boyfriend'}) do removeSpriteShader(char) end
         end
+        if value1 == 'stageMode' then if value2 == '5' then return else triggerEvent('waveFlash', '10, 0', '1, circOut') end end
     end
 
     if eventName == "Change Character" then
@@ -223,8 +236,9 @@ function onEvent(eventName, value1, value2)
     end
 end
 
-
-function onUpdatePost()
+local holdYes = 0
+function onUpdatePost(yes)
+    holdYes = holdYes + yes
     if shadersEnabled and not lowQuality then
         if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'uSpriteAlpha', getProperty('dad.alpha')) end
         if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'uSpriteAlpha', getProperty('boyfriend.alpha')) end
@@ -259,6 +273,11 @@ function onUpdatePost()
     if onTween5 then
         setShaderFloat('pseudo', 'sort', getProperty('pseudo.x'))
     end
+
+    if onTween6 then
+        setShaderFloat('wave', 'amount', getProperty('wave.x'))
+    end
+    setShaderFloat('wave', 'iTime', holdYes)
 end
 
 function onTweenCompleted(tag)
@@ -272,8 +291,10 @@ function onTweenCompleted(tag)
         onTween3 = false
     end
     if tag == 'hueTween' then onTween4Hue = false elseif tag == 'contrastTween' then onTween4Contrast = false elseif tag == 'brightnessTween' then onTween4Brightness = false elseif tag == 'saturationTween' then onTween4Saturation = false end
-
     if tag == 'pseudoX' then
         onTween5 = false
+    end
+    if tag == 'waveTween' then
+        onTween6 = false
     end
 end

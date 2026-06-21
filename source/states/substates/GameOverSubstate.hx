@@ -201,8 +201,11 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 		else
 		{
-			forcedReset = true;
-			FlxG.resetState();
+			if (controls.ACCEPT)
+			{
+				forcedReset = true;
+				FlxG.resetState();
+			}
 		}
 		PlayState.instance.callOnScripts('onUpdatePost', [elapsed]);
 	}

@@ -130,6 +130,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		super.create();
 	}
 
+	var forcedReset:Bool = false;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -198,6 +199,11 @@ class GameOverSubstate extends MusicBeatSubstate
 				Conductor.songPosition = FlxG.sound.music.time;
 			}
 		}
+		else
+		{
+			forcedReset = true;
+			FlxG.resetState();
+		}
 		PlayState.instance.callOnScripts('onUpdatePost', [elapsed]);
 	}
 
@@ -208,6 +214,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.sound.music.volume = volume;
 	}
 
+	var restartDelay:Float = 2;
 	function endBullshit():Void
 	{
 		if (!isEnding)
@@ -228,9 +235,9 @@ class GameOverSubstate extends MusicBeatSubstate
 			FlxG.sound.play(Paths.music(endSoundName));
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
-				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
+				FlxG.camera.fade(FlxColor.BLACK, restartDelay, false, function()
 				{
-					FlxG.resetState();
+					if (!forcedReset) FlxG.resetState();
 				});
 			});
 			PlayState.instance.callOnScripts('onGameOverConfirm', [true]);

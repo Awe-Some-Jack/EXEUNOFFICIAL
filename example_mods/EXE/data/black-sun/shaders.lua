@@ -56,6 +56,10 @@ function onCreatePost()
 			game.camHUD.filters = [new ShaderFilter(game.getLuaObject('bloom').shader)];
 		]])
 	end
+
+	startVideo('Black Sun Transition', false, true, false, false)
+	if getProperty('videoCutscene') == nil then return end
+    callMethod('remove', {instanceArg('videoCutscene')})
 end
 
 local istwning = false
@@ -76,7 +80,7 @@ function onUpdatePost(e)
 	setShaderFloat('dad', 'ang', math.rad(lerp(80, 40, (getProperty('camGame.scroll.x') + 40) / 900)))
 end
 
-function onEvent(n)
+function onEvent(n, v1)
 	if n == 'bright zoom' and flashingLights then
 		cancelTween('bloom')
 		setProperty('bloom.x', 0.2)
@@ -85,5 +89,10 @@ function onEvent(n)
 	if n == 'transform' then
 		istwning = true
 		doTweenX('cab', 'cab', 4, 13 / playbackRate, 'cubeIn')
+	end
+	if n == 'godEvents' and v1 == 'endanim' then
+		doTweenAlpha('fdhasfh', 'camHUD', 0, 1)
+		startVideo('Black Sun Transition', false, true)
+		setProperty('inCutscene', false)
 	end
 end

@@ -461,7 +461,13 @@
 		{
 			"name": "LuisukeDestroyer",
 			"icon": "luisuke",
-			"description": "Voice Actor for Brawturst"
+			"nation": "venezuela",
+			"quote": "Salchicha alemanaaaa",
+			"description": "Voice Actor for Brawturst",
+			"colors": [[209, 15, 15], [18, 17, 17]],
+			"youtube": "https://www.youtube.com/@LuisukeDestroyer",
+			"twitter": "https://x.com/LuisukeDTR",
+			"extra": ["video", "man-trying-to-kil-himself-joke"]
 		}
 	],
 

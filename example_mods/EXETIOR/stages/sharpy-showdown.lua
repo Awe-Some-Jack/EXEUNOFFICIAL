@@ -111,18 +111,18 @@ function onCreatePost()
     end
 
     setProperty('blackVG.color', getColorFromHex('000000'))
-    
+
     makeLuaSprite('blackStage', nil, -1400, -860)
     makeGraphic('blackStage', screenWidth * 4, screenHeight * 4, '000000')
     setProperty('blackStage.alpha', 0)
     addLuaSprite('blackStage', true)
-    
+
     makeLuaSprite('ojoexe', 'characters/ojo-exe1', getProperty('exeeye.x') + 280, getProperty('exeeye.y') + 170)
     setObjectOrder('ojoexe', getObjectOrder('exeeye') + 1)
     scaleObject('ojoexe', 0.22, 0.22)
     setProperty('ojoexe.alpha', 0)
     addLuaSprite('ojoexe', true)
-    
+
     makeAnimatedLuaSprite('bfX', 'characters/bfx', getProperty('boyfriend.x') + 260, getProperty('boyfriend.y') - 160)
     addAnimationByPrefix('bfX', 'idle', 'idle', 24, false)
     addAnimationByPrefix('bfX', 'yeah', 'singUp', 24, true)
@@ -131,10 +131,10 @@ function onCreatePost()
     scaleObject('bfX', 0.72, 0.72)
     setProperty('bfX.alpha', 0)
     addLuaSprite('bfX', true)
-    
+
     makeAnimatedLuaSprite('gfEXE', 'characters/gf', 0, -80)
-    addAnimationByPrefix('gfEXE', 'danceLeft', 'dance left')
-    addAnimationByPrefix('gfEXE', 'danceRight', 'dance right')
+    addAnimationByPrefix('gfEXE', 'danceLeft', 'dance left instancia 1')
+    addAnimationByPrefix('gfEXE', 'danceRight', 'dance right instancia 1')
     addLuaSprite('gfEXE')
 
 

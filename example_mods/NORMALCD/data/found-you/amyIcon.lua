@@ -7,7 +7,7 @@ end
 function onUpdatePost(e)
 	setProperty('amyIcon.animation.curAnim.curFrame', getProperty('iconBF.animation.curAnim.curFrame'))
 	setProperty('amyIcon.x', getProperty('iconBF.x') + 50)
-	setProperty('amyIcon.y', getProperty('iconBF.y') + 25)
+	setProperty('amyIcon.y', getProperty('iconBF.y') + 5)
 	setProperty('amyIcon.scale.x', getProperty('iconBF.scale.x'))
 	setProperty('amyIcon.scale.y', getProperty('iconBF.scale.y'))
 

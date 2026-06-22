@@ -24,7 +24,7 @@ function onStartCountdown()
 		return Function_Stop
 	end
 
-	return Function_Continue
+	return Function_Continue -- Esto no hace nada btw. Lo puedes borrar y no cambia nada
 end
 
 local istweeening = false

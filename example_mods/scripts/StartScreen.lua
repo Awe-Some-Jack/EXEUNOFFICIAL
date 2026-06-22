@@ -114,6 +114,12 @@ local modConfigs = {
 		phase = 'post',
 		snapDelay = 0.1,
 	},
+	['EXETIOR'] = {
+		useSeenCutscene = true,
+		skipSongs = {},
+		snapDelay = 0.0025,
+		forceSkipCountdown = true,
+	},
 	['DEVOID'] = {
 		type = 'card',
 		skipSongs = {},

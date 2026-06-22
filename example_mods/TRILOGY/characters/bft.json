@@ -2,81 +2,81 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [-580, -343],
+			"offsets": [0, 0],
 			"anim": "idle",
 			"fps": 24,
 			"name": "idle",
 			"indices": []
 		},
 		{
-			"offsets": [-465, -345],
-			"indices": [],
+			"offsets": [103, -1],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		},
 		{
-			"offsets": [-529, -384],
-			"indices": [],
+			"offsets": [69, -54],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
-			"offsets": [-522, -287],
-			"indices": [],
+			"offsets": [63, 59],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up"
 		},
 		{
-			"offsets": [-591, -341],
-			"indices": [],
+			"offsets": [-5, -12],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		},
 		{
-			"offsets": [-516, -292],
-			"indices": [],
+			"offsets": [103, 14],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "mleft"
 		},
 		{
-			"offsets": [-539, -309],
-			"indices": [],
+			"offsets": [69, 17],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": false,
+			"indices": [],
 			"name": "mdown"
 		},
 		{
-			"offsets": [-558, -233],
-			"indices": [],
+			"offsets": [65, 67],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": false,
+			"indices": [],
 			"name": "mup"
 		},
 		{
-			"offsets": [-590, -275],
-			"indices": [],
+			"offsets": [-6, -3],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "mright"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/bf",
-	"position": [-980, -70],
+	"image": "characters/BF-Trilogy",
+	"position": [-390, 310],
 	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],

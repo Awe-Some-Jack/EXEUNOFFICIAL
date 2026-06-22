@@ -40,7 +40,7 @@ function onGameOverStart()
 var toggleOnce:Bool = false;
 var triggerOnce:Bool = false;
 var timer:Float = 10;
-function onUpdatePost(elapsed:Float)
+function onUpdate(elapsed:Float)
 {
 	if (!inGameOver) return;
 
@@ -56,7 +56,7 @@ function onUpdatePost(elapsed:Float)
 	if (timer < 0) {
 		timer = 0;
 		daGameOver.animation.play('loop');
-		GameOverSubstate.instance.isEnding = true;
+		GameOverSubstate.instance.canRestart = false;
 		FlxG.sound.play(Paths.sound('scream'));
 	}
 

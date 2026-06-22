@@ -17,6 +17,8 @@ class StoryParallaxState extends MusicBeatState
 
 	var whiteBG:FlxSprite;
 
+	public static var fromParallax:Bool = false;
+	public static var fromSong:Bool = false;
 	override function create()
 	{
 		super.create();
@@ -73,6 +75,9 @@ class StoryParallaxState extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Parallax Menus", 'Checking Story Menu');
 		#end
+
+		if (fromSong) FlxG.sound.playMusic(Assets.getSound('assets/exe/music/parallax.ogg'));
+		fromSong = false;
 	}
 	
 	var activateOnce:Bool = true;
@@ -140,6 +145,9 @@ class StoryParallaxState extends MusicBeatState
 			PlayState.storyWeek = 0;
 			PlayState.campaignScore = 0;
 			PlayState.campaignMisses = 0;
+
+			fromSong = true;
+			StoryParallaxState.fromParallax = true;
 		}
 		catch (e:Dynamic)
 		{

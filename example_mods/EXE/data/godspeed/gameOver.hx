@@ -56,7 +56,7 @@ function onUpdatePost(elapsed:Float)
 	if (timer < 0) {
 		timer = 0;
 		daGameOver.animation.play('loop');
-		GameOverSubstate.instance.isEnding = true;
+		GameOverSubstate.instance.canRestart = false;
 		FlxG.sound.play(Paths.sound('scream'));
 	}
 

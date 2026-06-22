@@ -232,7 +232,7 @@ class PauseSubState extends MusicBeatSubstate
 
 	override function destroy()
 	{
-		camPause.destroy();
+		FlxG.cameras.remove(camPause, true);
 		pauseMusic.destroy();
 		super.destroy();
 	}
@@ -274,11 +274,12 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.firstPlay       = false;
 					PlayState.instance.canResync = false;
 					Mods.loadTopMod();
-					if (PlayState.isStoryMode)
-						FlxG.switchState(() -> new StoryModeState());
+					if (states.StoryModeState.fromStoryMode) { states.StoryModeState.fromStoryMode = false; FlxG.switchState(() -> new states.StoryModeState()); }
+					else if (states.SoundTest.fromSoundTest) { states.SoundTest.fromSoundTest = false; FlxG.switchState(() -> new states.SoundTest()); }
+					else if (states.parallax.StoryParallaxState.fromParallax) { states.parallax.StoryParallaxState.fromParallax = false; FlxG.switchState(() -> new states.parallax.StoryParallaxState()); }
 					else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
-					else
-						FlxG.switchState(() -> new EXEFreeplay());
+					else if (states.access.MajinAccess.fromMajin) { states.access.MajinAccess.fromMajin = false; FlxG.switchState(() -> new states.access.MajinAccess()); }
+					else FlxG.switchState(() -> new EXEFreeplay());
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode      = false;
 					FlxG.camera.followLerp      = 0;

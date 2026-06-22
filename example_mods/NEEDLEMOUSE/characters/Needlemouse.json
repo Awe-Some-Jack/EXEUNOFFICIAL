@@ -1,78 +1,55 @@
 {
 	"animations": [
 		{
+			"offsets": [208, 60],
 			"loop": false,
-			"offsets": [
-				-190,
-				-289
-			],
-			"anim": "idle",
 			"fps": 24,
-			"name": "Needlemouse_IDLE",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				40,
-				-268
-			],
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "Needlemouse_LEFT",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [33, 1],
 			"loop": false,
-			"offsets": [
-				-187,
-				-258
-			],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "Needlemouse_RIGHT",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
+			"offsets": [10, 148],
 			"loop": false,
-			"offsets": [
-				-178,
-				-69
-			],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "Needlemouse_UP",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"offsets": [194, -1],
 			"loop": false,
-			"offsets": [
-				-70,
-				-268
-			],
-			"anim": "singDOWN",
 			"fps": 24,
-			"name": "Needlemouse_DOWN",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "idle"
 		}
 	],
+	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/Needlemouse",
-	"position": [
-		-150,
-		-60
-	],
+	"position": [-150, 30],
 	"healthicon": "needlemouse",
 	"flip_x": false,
-	"healthbar_colors": [
-		95,
-		7,
-		250
-	],
-	"camera_position": [
-		50,
-		120
-	],
-	"sing_duration": 4,
-	"scale": 1.2
+	"healthbar_colors": [95, 7, 250],
+	"camera_position": [50, 120],
+	"sing_duration": 6,
+	"scale": 0.7,
+	"_editor_isPlayer": false
 }

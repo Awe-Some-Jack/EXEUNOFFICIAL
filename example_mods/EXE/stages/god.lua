@@ -220,11 +220,13 @@ end
 function onEvent(n,v1, v2)
 	if n == 'godEvents' then
 		if v1 == 'fireappear' then
+			doTweenAlpha('xddasd', 'camHUD', 1, 1.3)
 			for i = 1,4 do
 				doTweenY('fire'..i, 'fire'..i, getProperty('fire'..i..'.y') - 1200, 4, 'cubeOut')
 			end
 		end
 		if v1 == 'godBye' then
+			doTweenAlpha('xddasd', 'camHUD', 0, 3)
 			doTweenX('fjas', 'godOffsetX', -3000, 4, 'cubeIn')
 		end
 		if v1 == 'godAPPEAR' then

@@ -1,29 +1,35 @@
-precacheSound('../songs/round-a-bout/Inst-vhs') precacheSound('../songs/round-a-bout/Voices-vhs')
+precacheSound('../songs/round-a-bout/Inst-vhs') precacheSound('../songs/round-a-bout/Voices-vhs') precacheSound('../songs/round-a-bout/Voices-opponent-vhs')
 
 function onSongStart()
 	playSound('../songs/round-a-bout/Inst-vhs', 1, 'inst-vhs')
 	playSound('../songs/round-a-bout/Voices-vhs', 1, 'voices-vhs')
+	playSound('../songs/round-a-bout/Voices-opponent-vhs', 1, 'voicesopp-vhs')
 
 	setSoundVolume('inst-vhs', 0)
 	setSoundVolume('voices-vhs', 0)
+	setSoundVolume('voicesopp-vhs', 0)
 end
 
 function onPause()
 	pauseSound('inst-vhs')
 	pauseSound('voices-vhs')
+	pauseSound('voicesopp-vhs')
 end
 
 function onResume()
 	resumeSound('inst-vhs')
 	resumeSound('voices-vhs')
+	resumeSound('voicesopp-vhs')
 
 	setSoundTime('inst-vhs', getSongPosition())
 	setSoundTime('voices-vhs', getSongPosition())
+	setSoundTime('voicesopp-vhs', getSongPosition())
 end
 
 function onGameOverStart()
 	stopSound('inst-vhs')
 	stopSound('voices-vhs')
+	stopSound('voicesopp-vhs')
 end
 
 local lowornormal = 'normal'
@@ -37,11 +43,14 @@ function onUpdatePost()
 
 		soundFadeIn('inst-vhs', crochet / 1000)
 		soundFadeIn('voices-vhs', crochet / 1000)
+		soundFadeIn('voicesopp-vhs', crochet / 1000)
 		soundFadeOut(null, crochet / 1000)
 		soundFadeOut('vocals', crochet / 1000)
+		soundFadeOut('opponentVocals', crochet / 1000)
 
 		setSoundTime('inst-vhs', getSongPosition())
 		setSoundTime('voices-vhs', getSongPosition())
+		setSoundTime('voicesopp-vhs', getSongPosition())
 	elseif getHealth() > 0.4 and lowornormal == 'low' then
 		lowornormal = 'normal'
 		--setSoundVolume('inst-vhs', 0)
@@ -51,16 +60,20 @@ function onUpdatePost()
 
 		soundFadeOut('inst-vhs', crochet / 1000)
 		soundFadeOut('voices-vhs', crochet / 1000)
+		soundFadeOut('voicesopp-vhs', crochet / 1000)
 		soundFadeIn(null, crochet / 1000)
 		soundFadeIn('vocals', crochet / 1000)
+		soundFadeIn('opponentVocals', crochet / 1000)
 	end
 
 	if lowornormal == 'low' then
 		setProperty('vocals.volume', 0)
+		setProperty('opponentVocals.volume', 0)
 	end
 
 	if getProperty('vocals.pitch') ~= getSoundPitch('voices-vhs') then
 		setSoundPitch('voices-vhs', getProperty('vocals.pitch'))
+		setSoundPitch('voicesopp-vhs', getSoundPitch('voices-vhs'))
 		setSoundPitch('inst-vhs', getSoundPitch('voices-vhs'))
 	end
 end
@@ -72,8 +85,8 @@ function noteMiss()
 end
 
 function opponentNoteHit()
-	if lowornormal == 'low' then
-		setSoundVolume('voices-vhs', 1)
+	if lowornormal == 'normal' then
+		setProperty('opponentVocals.volume', 1)
 	end
 end
 
@@ -87,4 +100,5 @@ end
 function onDestroy()
 	stopSound('inst-vhs')
 	stopSound('voices-vhs')
+	stopSound('voicesopp-vhs')
 end

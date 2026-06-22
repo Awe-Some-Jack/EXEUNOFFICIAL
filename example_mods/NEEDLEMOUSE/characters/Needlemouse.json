@@ -1,36 +1,36 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [208, 60],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [33, 1],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [10, 148],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [194, -1],
 			"loop": false,
-			"fps": 24,
+			"offsets": [194, -1],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
 			"offsets": [0, 0],
@@ -38,12 +38,12 @@
 			"fps": 24,
 			"anim": "idle",
 			"loop": true,
-			"name": "idle"
+			"name": "Símbolo 12"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/Needlemouse",
+	"image": "characters/needlemousee",
 	"position": [-150, 30],
 	"healthicon": "needlemouse",
 	"flip_x": false,

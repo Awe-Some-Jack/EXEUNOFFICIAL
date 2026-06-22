@@ -1,5 +1,5 @@
 function onCreatePost()
-	createInstance('sarah', 'objects.Character', {(getProperty('dad.x') - getProperty('dad.width') / 4) + 110, (getProperty('dad.y') + getProperty('dad.height') / 4) - 380, 'sarah'})
+	createInstance('sarah', 'objects.Character', {getProperty('dad.x'), getProperty('dad.y'), 'sarah'})
 	setObjectOrder('sarah', getObjectOrder('dadGroup') - 1)
 	addInstance('sarah')
 	setProperty('sarah.alpha', 0)
@@ -13,7 +13,7 @@ function onUpdatePost(e)
 
 	if sarahAppear then
 		sarahSine = sarahSine + (e / 2)
-		setProperty('sarah.alpha', (((math.sin(sarahSine) / 2) + 0.5) / 2) + 0.25)
+		setProperty('sarah.alpha', (((math.sin(sarahSine) / 2) + 0.75) / 2) + 0.25)
 	end
 end
 

@@ -30,7 +30,7 @@ function onGameOverStart()
 	});
 	dieVideo.camera = gameOverHUD;
 	dieVideo.bitmap.onEndReached.add(() -> {FlxG.cameras.remove(gameOverHUD, true); FlxG.resetState();});
-	if (dieVideo?.load(Paths.video('gameovers/' + FlxG.random.int(1,7))) ?? false) dieVideo?.play();
+	if (dieVideo?.load(Paths.video('gameovers/' + FlxG.random.int(1,8))) ?? false) dieVideo?.play();
 	GameOverSubstate.instance.add(dieVideo);
 }
 

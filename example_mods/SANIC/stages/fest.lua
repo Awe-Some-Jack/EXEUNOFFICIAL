@@ -26,13 +26,17 @@ local function syncToCharacter(clone, source, copyOffset)
 end
 
 function onCreate()
-	makeLuaSprite('bgBack', 'bglol', -900, -1000)
-	scaleObject('bgBack', 3, 3)
-	addLuaSprite('bgBack')
-
-	makeLuaSprite('bgFront', 'bg', -900, -1000)
-	scaleObject('bgFront', 3, 3)
-	addLuaSprite('bgFront')
+	createInstance('bgFront', 'hxvlc.flixel.FlxVideoSprite', {-900, -800})
+    callMethod('bgFront.load', {callMethodFromClass('backend.Paths', 'video', {'bg'..getRandomInt(1,2)})})
+    addInstance('bgFront')
+    setProperty('bgFront.videoSprite.antialiasing', false)
+    runHaxeCode([[
+        game.getLuaObject('bgFront').bitmap.onFormatSetup.add(() -> {
+			game.getLuaObject('bgFront').scale.set(2, 2);
+            game.getLuaObject('bgFront').updateHitbox();
+        });
+        game.getLuaObject('bgFront').bitmap.onEndReached.add(() -> game.getLuaObject('bgFront').destroy());
+    ]])
 
 	makeLuaSprite('darkOverlay', nil, -700, -700)
 	makeGraphic('darkOverlay', 3500, 2000, '000000')
@@ -79,6 +83,14 @@ function onCreate()
 	addLuaSprite('botBar')
 end
 
+function onGameOverStart()
+	callMethod('bgFront.destroy')
+end
+
+function onSongStart()
+	callMethod('bgFront.play')
+end
+
 function onCreatePost()
 	setTextFont('hitCounterText', 'Comic Sans MS.ttf')
 	setTextFont('exeScoreTxt', 'Comic Sans MS.ttf')
@@ -102,7 +114,6 @@ function onEvent(n)
 	if n == 'mierdaactivador' then
 		setProperty('sanicClone1.visible', not getProperty('sanicClone1.visible'))
 		setProperty('sanicClone2.visible', not getProperty('sanicClone2.visible'))
-		setProperty('bgFront.visible', not getProperty('bgFront.visible'))
 
 	elseif n == 'sentimental' then
 		sentimentalActive = not sentimentalActive
@@ -130,3 +141,6 @@ function onEvent(n)
 		doTweenX('sanicSentMove', 'sanicSentinel', -300, 6, 'cubeOut')
 	end
 end
+
+function onPause() callMethod('bgFront.pause') end
+function onResume() callMethod('bgFront.resume') end

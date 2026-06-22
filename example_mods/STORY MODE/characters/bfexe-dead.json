@@ -1,28 +1,28 @@
 {
 	"animations": [
 		{
-			"offsets": [152, 379],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [282, 494],
 			"anim": "firstDeath",
-			"loop": false,
-			"name": "BF dies"
+			"fps": 24,
+			"name": "BF dies",
+			"indices": []
 		},
 		{
-			"offsets": [152, 379],
-			"indices": [],
-			"fps": 24,
-			"anim": "deathLoop",
 			"loop": true,
-			"name": "d loop"
+			"offsets": [282, 494],
+			"anim": "deathLoop",
+			"fps": 24,
+			"name": "d loop",
+			"indices": []
 		},
 		{
-			"offsets": [151, 379],
-			"indices": [],
-			"fps": 24,
-			"anim": "deathConfirm",
 			"loop": false,
-			"name": "deaht"
+			"offsets": [291, 494],
+			"anim": "deathConfirm",
+			"fps": 24,
+			"name": "deaht",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
@@ -34,6 +34,6 @@
 	"healthbar_colors": [58, 205, 241],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1.65,
+	"scale": 1.2,
 	"_editor_isPlayer": true
 }

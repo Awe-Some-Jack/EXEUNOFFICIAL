@@ -1,24 +1,14 @@
 function onCreatePost()
-    setProperty('scoreTxt.visible', false)
-
-    local statsY = downscroll and 15 or 565
-    local timeY = downscroll and 668 or 140
-    local vhsY = downscroll and 0 or screenHeight - 100
-
-    makeLuaText('statsTxt', '', 400, 15, statsY)
+    makeLuaText('statsTxt', 'Score: 0\nMisses: 0', screenWidth / 2 - 40)
     setTextSize('statsTxt', 36)
+    callMethod('statsTxt.setPosition', {20, downscroll and 20 or (screenHeight - getProperty('statsTxt.height') - 20)})
     setTextAlignment('statsTxt', 'left')
     setTextFont('statsTxt', 'vcr.ttf')
     addLuaText('statsTxt')
 
-    makeLuaText('songTimeTxt', '', 200, screenWidth - 205, timeY)
-    setTextSize('songTimeTxt', 58)
-    setTextAlignment('songTimeTxt', 'right')
-    setTextFont('songTimeTxt', 'vcr.ttf')
-    addLuaText('songTimeTxt')
-
-    makeLuaText('vhsTxt', '', 600, screenWidth - 610, vhsY)
-    setTextSize('vhsTxt', 50)
+    makeLuaText('vhsTxt', 'Score: 0\nMisses: 0', screenWidth / 2 - 40)
+    setTextSize('vhsTxt', 36)
+    callMethod('vhsTxt.setPosition', {screenWidth - getProperty('vhsTxt.width') - 20, downscroll and 20 or (screenHeight - getProperty('vhsTxt.height') - 20)})
     setTextAlignment('vhsTxt', 'right')
     setTextFont('vhsTxt', 'vcr.ttf')
     addLuaText('vhsTxt')
@@ -42,41 +32,18 @@ function onCreatePost()
 	]])
 end
 
-function onUpdate(e)
-    local hp = math.floor(getProperty('health') * 50)
-    local rating = ratingName ~= nil and ratingName or '...'
-    setTextString(
-        'statsTxt',
-        'Health: ' .. hp .. '%\n' ..
-        'Score: ' .. score .. '\n' ..
-        'Misses: ' .. misses .. '\n' ..
-        'Rating: ' .. rating
-    )
-    local songPos = math.floor(math.max(getSongPosition() / 1000, 0))
-    local min = math.floor(songPos / 60)
-    local sec = songPos % 60
-    if sec < 10 then sec = '0' .. sec end
-    setTextString('songTimeTxt', min .. ':' .. sec)
+function onUpdatePost(e)
+    setTextString('statsTxt', 'Score: '..callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {score, false})..'\nMisses: '..misses)
 
     local hour = tonumber(os.date("%H"))
-    local minute = os.date("%M")
-    local ampm = "A.M."
+    local ampm = hour >= 12 and "P.M." or "A.M."
 
-    if hour >= 12 then ampm = "P.M." end
-    if hour > 12 then hour = hour - 12 end
+    hour = hour % 12
     if hour == 0 then hour = 12 end
-    if hour < 10 then hour = "0" .. hour end
 
-    local month = string.upper(os.date("%b"))
-    local day = os.date("%d")
-    local year = 1995
+    setTextString('vhsTxt', downscroll and string.format("%s, %s, 1995\n%02d:%s %s", os.date("%b"):upper(), os.date("%d"),  hour, os.date("%M"), ampm) or string.format("%02d:%s %s\n%s. %s 1995", hour, os.date("%M"), ampm, os.date("%b"):upper(), os.date("%d"))
+    )
 
-    if downscroll then
-    setTextString('vhsTxt',month .. ", " .. day .. ", " .. year .. "\n" ..hour .. ":" .. minute .. " " .. ampm)
-     else
-     setTextString('vhsTxt',hour .. ":" .. minute .. " " .. ampm .. "\n" ..month .. ". " .. day .. " " .. year)
-     end
-    
     setShaderFloat('brightness', 'saturation', lerp(getShaderFloat('brightness', 'saturation'), (getHealth() < 0.4 and 1.25 or 1), e * 5))
     setShaderFloat('brightness', 'brightness', lerp(getShaderFloat('brightness', 'brightness'), (getHealth() < 0.4 and -0.08 or 0), e * 5))
 	setShaderFloat('brightness', 'contrast', lerp(getShaderFloat('brightness', 'contrast'), (getHealth() < 0.4 and 1.2 or 1), e * 5))

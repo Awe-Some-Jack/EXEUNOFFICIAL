@@ -1,5 +1,10 @@
 [
 	{
+		"code": [0,0],
+		"type": "video",
+		"path": "assets/exe/soundtest/videos/vssanic.mp4"
+	},
+	{
 		"code": [24, 4],
 		"type": "video",
 		"path": "assets/exe/soundtest/videos/mattpro.mp4"

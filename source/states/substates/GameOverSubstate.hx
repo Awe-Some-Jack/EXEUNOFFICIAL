@@ -131,11 +131,14 @@ class GameOverSubstate extends MusicBeatSubstate
 	}
 
 	var forcedReset:Bool = false;
+	var canRestart:Bool = true;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
 		PlayState.instance.callOnScripts('onUpdate', [elapsed]);
+
+		if (!canRestart) return;
 
 		var justPlayedLoop:Bool = false;
 		if (!boyfriend.isAnimationNull() && boyfriend.getAnimationName() == 'firstDeath' && boyfriend.isAnimationFinished())

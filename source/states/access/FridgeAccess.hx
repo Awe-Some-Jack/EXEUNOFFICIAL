@@ -130,7 +130,7 @@ class FridgeAccess extends MusicBeatState
 
 		new FlxTimer().start(0.5, function(tmr:FlxTimer){
 			sunkyhand.animation.play('idle');
-			new FlxTimer().start(0.8, function(tmr:FlxTimer){
+			new FlxTimer().start(1, function(tmr:FlxTimer){
 				doordown.animation.play('idle');
 				new FlxTimer().start(1, function(tmr:FlxTimer){
 					FlxTween.tween(FlxG.camera, {zoom: 1.63}, 1, {ease: FlxEase.cubeInOut, onComplete: function (_) {transitioning = false;}});

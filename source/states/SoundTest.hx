@@ -53,6 +53,8 @@ class SoundTest extends MusicBeatState
 	var previousWindowTitle:String;
 	static var menuSong:Bool = false;
 
+	public static var fromSoundTest:Bool = false;
+
 	override public function create():Void
 	{
 		Paths.clearStoredMemory();
@@ -424,8 +426,6 @@ class SoundTest extends MusicBeatState
 
 	function loadSong(name:String, isWeek:Bool = false):Void
 	{
-		PlayState.isSoundTest = FlxTransitionableState.skipNextTransOut = true;
-
 		if (isWeek)
 		{
 			final leWeek:WeekData = WeekData.weeksLoaded.get(name);
@@ -485,6 +485,7 @@ class SoundTest extends MusicBeatState
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());
 		FlxG.sound.music?.stop();
+		SoundTest.fromSoundTest = true;
 	}
 
 	override public function destroy():Void

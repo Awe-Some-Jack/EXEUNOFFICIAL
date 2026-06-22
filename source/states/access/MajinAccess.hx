@@ -26,6 +26,8 @@ class MajinAccess extends MusicBeatState
 	var blackBG:FlxSprite;
 	var transitioning:Bool = false;
 	var toSong:Bool = false;
+
+	public static var fromMajin:Bool = false;
 	override function create()
 	{
 		super.create();
@@ -240,6 +242,7 @@ class MajinAccess extends MusicBeatState
 			PlayState.campaignMisses = 0;
 
 			toSong = true;
+			MajinAccess.fromMajin = true;
 		}
 		catch (e:Dynamic)
 		{

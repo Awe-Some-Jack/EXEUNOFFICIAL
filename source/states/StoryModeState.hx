@@ -79,6 +79,8 @@ class StoryModeState extends MusicBeatState
 	var isShaking:Bool = false;
 	var isSelecting:Bool = false;
 
+	public static var fromStoryMode:Bool = false;
+
 	override function create()
 	{
 		Paths.clearStoredMemory();
@@ -638,6 +640,7 @@ class StoryModeState extends MusicBeatState
 
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());
+		StoryModeState.fromStoryMode = true;
 
 		#if !SHOW_LOADING_SCREEN FlxG.sound.music.stop(); #end
 	}

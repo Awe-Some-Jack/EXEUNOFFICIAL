@@ -151,7 +151,6 @@ class PlayState extends MusicBeatState
 
 	public static var SONG:SwagSong = null;
 	public static var isStoryMode:Bool = false;
-	public static var isSoundTest:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
@@ -2585,46 +2584,28 @@ class PlayState extends MusicBeatState
 
 				if (storyPlaylist.length <= 0)
 				{
-					if (!isSoundTest){
-						Mods.loadTopMod();
-						#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+					trace('WENT BACK TO FREEPLAY??');
+					Mods.loadTopMod();
+					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
-						if(FlxG.sound.music != null) FlxG.sound.music.stop();
-						canResync = false;
-						FlxG.switchState(() -> new StoryModeState());
+					FlxG.sound.music?.stop();
 
-						// if ()
-						if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
-							StoryModeState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
-							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
+					canResync = false;
+					if (states.StoryModeState.fromStoryMode) { states.StoryModeState.fromStoryMode = false; FlxG.switchState(() -> new states.StoryModeState()); }
+					else if (states.SoundTest.fromSoundTest) { states.SoundTest.fromSoundTest = false; FlxG.switchState(() -> new states.SoundTest()); }
+					else if (states.parallax.StoryParallaxState.fromParallax) { states.parallax.StoryParallaxState.fromParallax = false; FlxG.switchState(() -> new states.parallax.StoryParallaxState()); }
+					else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
+					else if (states.access.MajinAccess.fromMajin) { states.access.MajinAccess.fromMajin = false; FlxG.switchState(() -> new states.access.MajinAccess()); }
+					else FlxG.switchState(() -> new EXEFreeplay());
 
-							FlxG.save.data.weekCompleted = StoryModeState.weekCompleted;
-							FlxG.save.flush();
-						}
-						changedDifficulty = false;
+					if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
+						StoryModeState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
+						Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
+
+						FlxG.save.data.weekCompleted = StoryModeState.weekCompleted;
+						FlxG.save.flush();
 					}
-					else
-					{
-						trace('WENT BACK TO FREEPLAY??');
-						Mods.loadTopMod();
-						#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
-
-						FlxG.sound.music?.stop();
-
-						canResync = false;
-						if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
-						else FlxG.switchState(() -> new EXEFreeplay());
-
-						if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
-							StoryModeState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
-							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
-
-							FlxG.save.data.weekCompleted = StoryModeState.weekCompleted;
-							FlxG.save.flush();
-						}
-						changedDifficulty = false;
-						isSoundTest = false;
-					}
+					changedDifficulty = false;
 				}
 				else
 				{
@@ -2652,7 +2633,11 @@ class PlayState extends MusicBeatState
 				#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 
 				canResync = false;
-				if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
+				if (states.StoryModeState.fromStoryMode) { states.StoryModeState.fromStoryMode = false; FlxG.switchState(() -> new states.StoryModeState()); }
+				else if (states.SoundTest.fromSoundTest) { states.SoundTest.fromSoundTest = false; FlxG.switchState(() -> new states.SoundTest()); }
+				else if (states.parallax.StoryParallaxState.fromParallax) { states.parallax.StoryParallaxState.fromParallax = false; FlxG.switchState(() -> new states.parallax.StoryParallaxState()); }
+				else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
+				else if (states.access.MajinAccess.fromMajin) { states.access.MajinAccess.fromMajin = false; FlxG.switchState(() -> new states.access.MajinAccess()); }
 				else FlxG.switchState(() -> new EXEFreeplay());
 				changedDifficulty = false;
 			}
@@ -2674,10 +2659,6 @@ class PlayState extends MusicBeatState
 
 	public var totalPlayed:Int = 0;
 	public var totalNotesHit:Float = 0.0;
-
-	public var showCombo:Bool = false;
-	public var showComboNum:Bool = true;
-	public var showRating:Bool = true;
 
 	public var comboGroup:FlxSpriteGroup;
 	public var uiGroup:FlxSpriteGroup;
@@ -2739,7 +2720,6 @@ class PlayState extends MusicBeatState
 			antialias = !isPixelStage;
 		}
 
-		
 		var rating:FlxSprite = new FlxSprite().loadGraphic(Paths.image(uiFolder + daRating.image + uiPostfix));
 		rating.visible = !ClientPrefs.data.hideHud;
 		if (!PlayState.isPixelStage) rating.setGraphicSize(Std.int(rating.width * 0.6 * 1.1));
@@ -2749,7 +2729,7 @@ class PlayState extends MusicBeatState
 		rating.y = (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
 		FlxTween.tween(rating.scale, {x: (PlayState.isPixelStage ? 4 : 0.6), y: (PlayState.isPixelStage ? 4 : 0.6)}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
 		rating.antialiasing = antialias;
-		if(showRating) comboGroup.add(rating);
+		comboGroup.add(rating);
 		FlxTween.tween(rating, {alpha: 0}, 0.2 / playbackRate, {startDelay: Conductor.crochet * 0.001 / playbackRate, onComplete: function(tween:FlxTween){ rating.destroy(); }});
 
 		var separatedScore:String = Std.string(combo).lpad('0', 2);
@@ -2764,7 +2744,7 @@ class PlayState extends MusicBeatState
 			numScore.y = (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
 			FlxTween.tween(numScore.scale, {x: (PlayState.isPixelStage ? 4 : 0.6), y: (PlayState.isPixelStage ? 4 : 0.6)}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
 			numScore.antialiasing = antialias;
-			if(showComboNum) comboGroup.add(numScore);
+			comboGroup.add(numScore);
 			FlxTween.tween(numScore, {alpha: 0}, 0.2 / playbackRate, {startDelay: Conductor.crochet * 0.001 / playbackRate, onComplete: function(tween:FlxTween){ numScore.destroy(); }});
 		}
 	}

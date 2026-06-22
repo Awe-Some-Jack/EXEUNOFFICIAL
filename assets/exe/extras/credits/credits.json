@@ -456,7 +456,10 @@
 		{
 			"name": "sevulda",
 			"icon": "sevulda",
-			"description": "Charter"
+			"nation": "chile",
+			"description": "Charter",
+			"twitter": "https://x.com/Sevulda230",
+			"colors": [[156, 35, 255], [68, 31, 142]]
 		},
 		{
 			"name": "LuisukeDestroyer",

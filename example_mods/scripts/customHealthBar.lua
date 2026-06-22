@@ -51,6 +51,11 @@ local healthBarsBG = {
         x = - 190,
         y = - 65
     },
+    ["hud_needlemouse"] = {
+        songs = {'round-a-bout', 'her-world'},
+        x = - 190,
+        y = - 65
+    },
     ["hud_lord_x"] = {
         songs = {'cycles', 'hellbent', 'fate', 'gotta-go'},
         x = - 190,

@@ -167,7 +167,7 @@ class SoundTest extends MusicBeatState
 		title.antialiasing = false;
 		title.scale.set(3.0, 3.0);
 		title.updateHitbox();
-		title.screenCenter(X);
+		title.screenCenter(X); title.x = Std.int(title.x);
 		title.y = (FlxG.height / 2) - 220.0;
 		add(title);
 	}
@@ -213,7 +213,7 @@ class SoundTest extends MusicBeatState
 		final daX:Float = (FlxG.width * 0.6) + 150.0;
 		final numberY:Float = (FlxG.height / 2) - 70.0;
 		final digitScale:Float = 3.0;
-		final digitGap:Float = 9.0 * digitScale;
+		final digitGap:Float = 8.0 * digitScale;
 		
 		for (i in 0...2)
 		{
@@ -341,11 +341,12 @@ class SoundTest extends MusicBeatState
 
 	var notFoundAny:Bool = true;
 	var soundCooldown:Bool = true;
-	
+	var transitioning:Bool = false;
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 		if (subState != null) return;
+		if (transitioning) return;
 
 		handleSelection();
 		handleValueChange(elapsed);
@@ -354,6 +355,7 @@ class SoundTest extends MusicBeatState
 		if (controls.BACK)
 		{
 			menuSong = true;
+			transitioning = true;
 			FlxG.sound.music?.fadeOut(0.3);
 			FlxG.switchState(() -> new EXEMenu());
 		}
@@ -367,10 +369,10 @@ class SoundTest extends MusicBeatState
 				if (pcmValue == code.pcm && daValue == code.da)
 				{
 					notFoundAny = false;
-
+					transitioning = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					FlxG.sound.music?.fadeOut(0.3);
-
+					
 					FlxTween.tween(whiteBG, {alpha: 1}, 1, {
 						onComplete: (_) -> {
 							if (code.isWeek) 
@@ -402,7 +404,7 @@ class SoundTest extends MusicBeatState
 				notFoundAny = false;
 
 				CustomShapeTransition.shape = CustomShapeTransition.getShapeByString('INFINITE');
-				
+				transitioning = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				FlxG.sound.music?.fadeOut(0.3);
 				
@@ -486,6 +488,15 @@ class SoundTest extends MusicBeatState
 		LoadingState.loadAndSwitchState(new PlayState());
 		FlxG.sound.music?.stop();
 		SoundTest.fromSoundTest = true;
+	}
+
+	override function closeSubState():Void
+	{
+		super.closeSubState();
+
+		persistentUpdate = true;
+		transitioning = false;
+		FlxTween.tween(whiteBG, {alpha: 0}, 0.2);
 	}
 
 	override public function destroy():Void

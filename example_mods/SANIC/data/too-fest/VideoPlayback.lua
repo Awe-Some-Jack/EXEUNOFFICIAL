@@ -32,28 +32,23 @@ end
 
 function makeVideoSprite(tag, videoFile, canSkip, front)
     if front == nil then front = false end
-    createInstance(tag, 'objects.VideoSprite', {
-        callMethodFromClass('backend.Paths', 'video', {videoFile}),
-        false,
-        canSkip or false
-    })
+    createInstance(tag, 'hxvlc.flixel.FlxVideoSprite', {0, 0})
+    callMethod(tag..'.load', {callMethodFromClass('backend.Paths', 'video', {videoFile})})
     addInstance(tag, front)
-
     setObjectCamera(tag, (front and 'other' or 'hud'))
-
-    setSpriteShader(tag..'.videoSprite', 'GreenScreenShader')
-
-    setProperty(tag..'.videoSprite.blend', 'NORMAL')
-    setProperty(tag..'.videoSprite.antialiasing', true)
-
-    setProperty(tag..'.alpha', 0.0001)
-    setProperty(tag..'.videoSprite.alpha', 1)
-
-    screenCenter(tag)
-
+    setSpriteShader(tag, 'GreenScreenShader')
+    setProperty(tag..'.videoSprite.antialiasing', false)
     callMethod(tag..'.play')
 
     table.insert(videoSprites, tag)
+    runHaxeCode([[
+        game.getLuaObject(']]..tag..[[').bitmap.onFormatSetup.add(() -> {
+            game.getLuaObject(']]..tag..[[').setGraphicSize(FlxG.width, FlxG.height);
+            game.getLuaObject(']]..tag..[[').updateHitbox();
+            game.getLuaObject(']]..tag..[[').screenCenter();
+        });
+        game.getLuaObject(']]..tag..[[').bitmap.onEndReached.add(() -> game.getLuaObject(']]..tag..[[').destroy());
+    ]])
 end
 
 function onStepHit()

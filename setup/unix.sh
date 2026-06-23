@@ -14,7 +14,7 @@ haxelib git flixel-addons https://github.com/GreenColdTea/flixel-addons.git funk
 haxelib install flixel-tools 1.5.1
 haxelib install tjson 1.4.0
 haxelib install hxdiscord_rpc 1.2.4
-haxelib install hxvlc 2.2.6 --skip-dependencies
+haxelib install hxvlc 2.3.0 --skip-dependencies
 haxelib git flxgif https://github.com/FNF-CC-ENGINE/flxgif.git
 haxelib git hscript-iris https://github.com/GreenColdTea/hscript-iris.git
 haxelib git flixel-animate https://github.com/FNF-CC-ENGINE/flixel-animate.git

@@ -80,7 +80,6 @@ import sys.thread.Thread;
 @:access(openfl.display.BitmapData)
 class PlayState extends MusicBeatState
 {
-
 	public static var ratingStuff:Array<Dynamic> = [
 		['You Suck!', 0.2], //From 0% to 19%
 		['Shit', 0.4], //From 20% to 39%
@@ -299,8 +298,8 @@ class PlayState extends MusicBeatState
 			_wasFullscreen = FlxG.fullscreen;
 			
 			final screen = FlxG.stage.window.display;
-			var screenWidth = screen.bounds.width;
-			var screenHeight = screen.bounds.height;
+			final screenWidth = screen.bounds.width;
+			final screenHeight = screen.bounds.height;
 			
 			FlxG.fullscreen = false;
 			FlxG.stage.window.resizable = false;
@@ -312,25 +311,25 @@ class PlayState extends MusicBeatState
 			FlxG.resizeGame(960, 720);
 			FlxG.resizeWindow(960, 720);
 			
-			var winX = Std.int((screenWidth - 960) / 2);
-			var winY = Std.int((screenHeight - 720) / 2);
+			final winX = Std.int((screenWidth - 960) / 2);
+			final winY = Std.int((screenHeight - 720) / 2);
 			FlxG.stage.window.move(winX, winY);
 		} else {
 			FlxG.stage.window.resizable = true;
 
 			final screen = FlxG.stage.window.display;
-			var screenWidth = screen.bounds.width;
-			var screenHeight = screen.bounds.height;
+			final screenWidth = screen.bounds.width;
+			final screenHeight = screen.bounds.height;
 			
-			FlxG.scaleMode = new flixel.system.scaleModes.BaseScaleMode();
+			FlxG.scaleMode = new flixel.system.scaleModes.RatioScaleMode();
 
 			for (cam in FlxG.cameras.list)
 				cam.setSize(_originalWidth, _originalHeight);
 			FlxG.resizeGame(_originalWidth, _originalHeight);
 			FlxG.resizeWindow(_originalWidth, _originalHeight);
 			
-			var winX = Std.int((screenWidth - _originalWidth) / 2);
-			var winY = Std.int((screenHeight - _originalHeight) / 2);
+			final winX = Std.int((screenWidth - _originalWidth) / 2);
+			final winY = Std.int((screenHeight - _originalHeight) / 2);
 			FlxG.stage.window.move(winX, winY);
 			
 			FlxG.fullscreen = _wasFullscreen;

@@ -3,7 +3,7 @@ local faker = {
 	{name = 'sun', path = 'sun', x = -1050, y = -450, scroll = 0.2},
 	{name = 'sunshine', path = 'sunshine', x = -1050, y = -450, scroll = 0.2, lowQualityHide = true},
 	{name = 'moon', path = 'moon', x = -1008, y = -450, scroll = 0.2},
-	{name = 'cloudsloop', path = 'cloudsloop', x = 0, y = -900, scroll = 0.2, backdrop = true, velocityX = -30, alpha = 0.3, lowQualityHide = true},
+	{name = 'clouds', path = 'clouds', x = 0, y = -900, scroll = 0.2, backdrop = true, velocityX = -30, alpha = 0.3, lowQualityHide = true},
 	{name = 'back-spikes', path = 'back-spikes', x = -900, y = -750, scroll = 0.4},
 	{name = 'front-spikes', path = 'front-spikes', x = -800, y = -250, scroll = 0.6, lowQualityHide = true},
 	{name = 'totems', path = 'totems', x = -700, y = -900, scroll = 0.9},

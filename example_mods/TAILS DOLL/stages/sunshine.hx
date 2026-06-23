@@ -11,4 +11,6 @@ function onCreatePost()
 	spotlight.alpha = 0.5;
 	spotlight.blend = BlendMode.SCREEN;
 	add(spotlight);
+
+	PlayState.instance.uiPostfix = '-lq';
 }

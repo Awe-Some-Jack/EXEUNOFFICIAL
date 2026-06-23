@@ -1,13 +1,13 @@
 function onCreatePost()
 	setProperty('camHUD.alpha', 0)
-	setProperty('BlackGraphicOther.alpha', 1)
+	setProperty('BlackGraphicGame.alpha', 1)
 end
 
 function onEvent(n,v1)
 	if n == 'soullesEvents' then
 		if v1 == 'shitcam' then
 			doTweenZoom('dhdaffg9jg', 'camGame', 1.4, crochet / (1000 / 48) / playbackRate, 'cubeInOut')
-			doTweenAlpha('dhjidhj', 'BlackGraphicOther', 0, crochet / (1000 / 28) / playbackRate, 'cubeInOut')
+			doTweenAlpha('dhjidhj', 'BlackGraphicGame', 0, crochet / (1000 / 28) / playbackRate, 'cubeInOut')
 		end
 		if v1 == 'hudappear' then
 			doTweenAlpha('camhudappearlol', 'camHUD', 1, crochet / (1000 / 16) / playbackRate, 'cubeInOut')

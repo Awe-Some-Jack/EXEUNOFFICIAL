@@ -1,3 +1,0 @@
-[
-    herewego, yeahbf, startsecondsection, startthirdsection, backsecondsection, startfourthsection, startfifthsection
-]

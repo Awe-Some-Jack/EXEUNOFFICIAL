@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"offsets": [169, 16],
 			"loop": true,
-			"fps": 24,
+			"offsets": [169, 16],
 			"anim": "idle",
-			"indices": [],
-			"name": "idlei"
+			"fps": 24,
+			"name": "idlei",
+			"indices": []
 		},
 		{
-			"offsets": [190, 49],
 			"loop": false,
-			"fps": 24,
+			"offsets": [190, 49],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left1"
+			"fps": 24,
+			"name": "left1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [162, 33],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "upi",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [121, 24],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right1",
+			"indices": []
 		},
 		{
 			"offsets": [150, 2],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "carpeta sin nombre 1/hdowm"
-		},
-		{
-			"offsets": [162, 33],
 			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "upi"
-		},
-		{
-			"offsets": [121, 24],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right1"
+			"name": "down1"
 		}
 	],
 	"vocals_file": "",

@@ -18,15 +18,17 @@ end
 
 local savedNotesPos = {}
 local target = 1
+local thing = 0
 function onUpdatePost(e)
 	if activeBar then
 		target = target - (e / 100)
 		setGraphicSize('daBar', 10, lerp(1, 418, bound(target, 0, 1))) setProperty('daBar.y', getProperty('daBarUI.y') + 46 + lerp(418, 1, bound(target, 0, 1)))
 
+		thing = thing + e * 2
 		for i = 0,3 do
 			callMethod('playerStrums.members['..i..'].setPosition', {
-				savedNotesPos[i + 1].x + getRandomFloat(-1,1) * (1 - target) * 5,
-				savedNotesPos[i + 1].y + getRandomFloat(-1,1) * (1 - target) * 5
+				savedNotesPos[i + 1].x + (math.sin(thing + i) * (1 - target) * 80) + getRandomFloat(-1,1) * (1 - target) * 5,
+				savedNotesPos[i + 1].y + (math.cos(thing + i) * (1 - target) * 40) + getRandomFloat(-1,1) * (1 - target) * 5
 			})
 			setProperty('playerStrums.members['..i..'].angle', getRandomFloat(-1,1) * (1 - target) * 3)
 			setProperty('playerStrums.members['..i..'].alpha', 1 - getRandomFloat(-0.5,0.5) * (1 - target))
@@ -48,7 +50,7 @@ function onUpdatePost(e)
 end
 
 function opponentNoteHit(id,nd,nt,isn) if isn then return end if not activeBar then return end target = target - 0.0015 end
-function noteMiss(id,nd,nt,isn) if isn then return end if not activeBar then return end target = target - 0.01 end
+function noteMiss(id,nd,nt,isn) if isn then return end if not activeBar then return end target = target - 0.075 end
 function noteMissPress() if activeBar then target = target - 0.005 end end
 function goodNoteHit(id,nd,nt,isn) if isn then return end if not activeBar then return end target = target + 0.0015 end
 

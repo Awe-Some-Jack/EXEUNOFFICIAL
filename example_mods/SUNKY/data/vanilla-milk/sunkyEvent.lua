@@ -68,6 +68,13 @@ function onEvent(n,v1,v2)
 		end
 		if v1 == 'byemajin' then doTweenAlpha('majin', 'majin', 0, 1) end
 		if v1 == 'destroymajin' then removeLuaSprite('majin', true) end
+		if v1 == 'jumpscare' then
+			makeLuaSprite('jump', 'vanilla/sunkage')
+			addLuaSprite('jump')
+			setObjectCamera('jump', 'other')
+			screenCenter('jump')
+			doTweenAlpha('jump', 'jump', 0, crochet / (1000 / 4), 'cubeInOut')
+		end
 		if v1 == 'zoomtotv' then
 			startTween('tween_zoomIn1', 'camGame', {zoom = 30}, crochet / 500, {ease = 'expoIn'})
 			startTween('tween_zoomIn2', 'camHUD', {zoom = 30}, crochet / 500, {ease = 'expoIn'})

@@ -60,6 +60,13 @@ local function addShitToTV()
 	setObjectCamera('arin', 'other')
 	screenCenter('arin')
 	addInstance('arin')
+	runHaxeCode([[
+		game.getLuaObject('arin').bitmap.onFormatSetup.add(() -> {
+			game.getLuaObject('arin').setGraphicSize(FlxG.width, FlxG.height);
+			game.getLuaObject('arin').updateHitbox();
+			game.getLuaObject('arin').screenCenter();
+		});
+	]])
 end
 
 function onCreatePost()

@@ -1,26 +1,23 @@
 {
-    "mustHitSection": true,
+    "BFx": 0,
+    "BFy": 120,
 
-    "BFx": 1000,
-    "BFy": 500,
+    "DADx": 0,
+    "DADy": 0,
 
-    "DADx": 1000,
-    "DADy": 420,
-
-    "GFx": 400,
-    "GFy": 400,
+    "GFx": 0,
+    "GFy": 0,
 
     "MiddleCamera": false,
-    "MiddleX": 700,
-    "MiddleY": 400,
+    "MiddleX": 0,
+    "MiddleY": 0,
 
     "OverrideZoom": true,
 
-    "OGZoom": 0.6,
+    "OGZoom": 0.8,
     "MiddleZoom": 0.58,
 
-    "OffsetsBF": 25,
-    "OffsetsDAD": 25,
-    "OffsetsGF": 25
-
+    "OffsetsBF": 0,
+    "OffsetsDAD": 0,
+    "OffsetsGF": 0
 }

@@ -1,44 +1,52 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 10],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-1, 9],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left intro"
-		},
-		{
-			"offsets": [0, 0],
-			"loop": false,
 			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down intro"
-		},
-		{
-			"offsets": [0, 190],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up intro"
-		},
-		{
-			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "rigth intro"
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "idle",
-			"fps": 24,
-			"name": "idle intro",
+			"name": "left intro",
 			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down intro",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 190],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up intro",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "rigth intro",
+			"indices": []
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle intro"
+		},
+		{
+			"offsets": [-1, 68],
+			"indices": [],
+			"fps": 24,
+			"anim": "dialogue",
+			"loop": false,
+			"name": "Sex"
 		}
 	],
 	"vocals_file": "",

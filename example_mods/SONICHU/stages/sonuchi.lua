@@ -24,7 +24,7 @@ function onCreatePost()
 	setBlendMode('overlay', 'add')
 
 	setScrollFactor('gf', 1, 1)
-	createInstance('rosechu', 'objects.Character', {180, -150, 'rosechu', false})
+	createInstance('rosechu', 'objects.Character', {148, -156, 'rosechu', false})
 	setObjectOrder('rosechu', getObjectOrder('gfGroup') + 1)
 end
 

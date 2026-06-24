@@ -252,13 +252,22 @@ function onTimerCompleted(t)
 	end
 end
 
+local canPress = false
 local thing = 0
+local holdTimer = 0
 function onUpdatePost(e)
 	if inPixel then
 		thing = thing + e * 2
 		setProperty('gameplayCam.settings.MiddleY', getProperty('gameplayCam.settings.MiddleY') - (e * playbackRate * 360))
 		callMethod('camGame.snapToTarget')
 		setProperty('lavapixel.y', 700 + math.sin(thing) * 50)
+
+		if keyboardPressed('SPACE') then holdTimer = holdTimer + e else holdTimer = 0 end
+		if canPress and keyboardPressed('SPACE') and holdTimer < 0.1 then
+			setProperty('camGame.alpha', 1)
+			setProperty('camHUD.alpha', 1)
+			canPress = false
+		end
 	end
 	if not running then return end
     if getProperty(current..'.animation.curAnim.finished') then
@@ -267,6 +276,20 @@ function onUpdatePost(e)
         setProperty('bgrun2.alpha', current == 'bgrun2' and 1 or 0)
         playAnim(current, 'idle', true)
     end
+end
+
+local once = false
+function onBeatHit()
+	if not inPixel then return end
+	if curBeat % 4 == 2 then
+		canPress = true
+		setProperty('camGame.alpha', 0)
+		setProperty('camHUD.alpha', 0)
+		if not once then
+			debugPrint('                                               TIP: Press SPACE to turn ON the lights!')
+			once = true
+		end
+	end
 end
 
 function onSectionHit()

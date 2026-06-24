@@ -1,55 +1,87 @@
 {
 	"animations": [
 		{
+			"offsets": [543, 20],
 			"loop": false,
-			"offsets": [599, 99],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [168, -2],
 			"loop": false,
-			"offsets": [169, 75],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [78, 185],
 			"loop": false,
-			"offsets": [64, 288],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"offsets": [2, -1],
 			"loop": false,
-			"offsets": [-23, 74],
-			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
 		},
 		{
-			"loop": true,
-			"offsets": [-25, 74],
-			"anim": "idle",
+			"offsets": [542, 20],
+			"loop": false,
 			"fps": 24,
-			"name": "Símbolo 18",
-			"indices": []
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "altleft"
+		},
+		{
+			"offsets": [168, -1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"indices": [],
+			"name": "altdown"
+		},
+		{
+			"offsets": [77, 237],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "altup"
+		},
+		{
+			"offsets": [28, -2],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "altright"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/starveddream",
-	"position": [-80, 260],
+	"position": [-30, 240],
 	"healthicon": "starved",
 	"flip_x": false,
 	"healthbar_colors": [255, 36, 0],
 	"camera_position": [-240, -90],
-	"sing_duration": 10,
+	"sing_duration": 12,
 	"scale": 1,
 	"_editor_isPlayer": false
 }

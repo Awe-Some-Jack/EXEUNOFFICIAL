@@ -2,7 +2,7 @@ addCharacterToList('omw', 'dad')
 addCharacterToList('omw2', 'dad')
 
 function onCreatePost()
-	callMethod('comboGroup.setPosition', {-500, 0})
+	callMethod('comboGroup.setPosition', {500, 0})
 
 	makeAnimatedLuaSprite('iconOMW', 'icons/omw-final')
 	addAnimationByPrefix('iconOMW', 'normal', 'normal', 24, true)

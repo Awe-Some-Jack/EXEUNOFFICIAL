@@ -24,8 +24,7 @@ function onEvent(n,v1,v2)
 			callMethod('ahh.destroy')
     		callMethod('remove', {instanceArg('ahh')})
 
-			callMethod('bestday.resumeGif')
-			setProperty('bestday.alpha', 1)
+			callMethod('bestday.play')
 		end
 		if v1 == 'fadeday' then doTweenAlpha('sdasdfas', 'bestday', 0, crochet / 500) end
 		if v1 == 'destroyday' then --NOOO its not longer the best day

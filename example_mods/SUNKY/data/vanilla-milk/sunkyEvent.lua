@@ -1,6 +1,5 @@
 local sunkyCrazy = false
 
-precacheImage('vanilla/sunkage')
 function onEvent(n,v1,v2)
 	if n == 'sunkyEvent' then
 		if v1 == 'graphShit' then

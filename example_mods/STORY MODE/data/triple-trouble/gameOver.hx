@@ -39,6 +39,7 @@ function onGameOverStart()
 	deadMusic = new FlxSound();
 	deadMusic.load(Paths.music('gameOverXeno'), true);
 	FlxG.sound.list.add(deadMusic);
+	deadMusic.looped = true;
 
 	var voiceLine:String = '1';
 	if (PauseSubState.miniSonicImage == 'triple-trouble') voiceLine = 't';

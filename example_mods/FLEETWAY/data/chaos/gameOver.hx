@@ -40,6 +40,7 @@ function onGameOverStart()
 	deadMusic = new FlxSound();
 	deadMusic.load(Paths.music('gameOver'), true);
 	FlxG.sound.list.add(deadMusic);
+	deadMusic.looped = true;
 
 	var voiceLine = FlxG.random.int(1,12);
 	makeSubtitle(voiceLine);

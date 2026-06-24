@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Bf_dancin.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Dance0000" x="10" y="10" width="624" height="551" frameX="-48" frameY="0" frameWidth="672" frameHeight="591"/>
+	<SubTexture name="Dance0001" x="10" y="10" width="624" height="551" frameX="-48" frameY="0" frameWidth="672" frameHeight="591"/>
+	<SubTexture name="Dance0002" x="10" y="10" width="624" height="551" frameX="-48" frameY="0" frameWidth="672" frameHeight="591"/>
+	<SubTexture name="Dance0003" x="664" y="10" width="605" height="521" frameX="0" frameY="-70" frameWidth="672" frameHeight="591"/>
+	<SubTexture name="Dance0004" x="664" y="10" width="605" height="521" frameX="0" frameY="-70" frameWidth="672" frameHeight="591"/>
+	<SubTexture name="Dance0005" x="664" y="10" width="605" height="521" frameX="0" frameY="-70" frameWidth="672" frameHeight="591"/>
+	<SubTexture name="Dance0006" x="10" y="591" width="624" height="551" frameX="-9" frameY="0" frameWidth="672" frameHeight="591"/>
+	<SubTexture name="Dance0007" x="10" y="591" width="624" height="551" frameX="-9" frameY="0" frameWidth="672" frameHeight="591"/>
+	<SubTexture name="Dance0008" x="10" y="591" width="624" height="551" frameX="-9" frameY="0" frameWidth="672" frameHeight="591"/>
+	<SubTexture name="Dance0009" x="664" y="591" width="610" height="516" frameX="-49" frameY="-56" frameWidth="672" frameHeight="591"/>
+	<SubTexture name="Dance0010" x="664" y="591" width="610" height="516" frameX="-49" frameY="-56" frameWidth="672" frameHeight="591"/>
+	<SubTexture name="Dance0011" x="664" y="591" width="610" height="516" frameX="-49" frameY="-56" frameWidth="672" frameHeight="591"/>
+</TextureAtlas>

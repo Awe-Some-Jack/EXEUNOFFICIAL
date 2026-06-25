@@ -2246,6 +2246,12 @@
 			]
 		],
 		[
+			84571.4285714286,
+			[
+				["sunshinEvent", "startdark", ""]
+			]
+		],
+		[
 			86285.7142857143,
 			[
 				["sunshinEvent", "lightsOut", ""],
@@ -2264,6 +2270,12 @@
 			[
 				["sunshinEvent", "lightsOut", ""],
 				["Change Scroll Speed", "1.15", "0.001"]
+			]
+		],
+		[
+			125714.285714286,
+			[
+				["sunshinEvent", "fadeNotes", ""]
 			]
 		],
 		[

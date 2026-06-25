@@ -1,5 +1,6 @@
 local sunkyCrazy = false
 
+precacheImage('vanilla/sunkage')
 function onEvent(n,v1,v2)
 	if n == 'sunkyEvent' then
 		if v1 == 'graphShit' then
@@ -24,8 +25,7 @@ function onEvent(n,v1,v2)
 			callMethod('ahh.destroy')
     		callMethod('remove', {instanceArg('ahh')})
 
-			callMethod('bestday.resumeGif')
-			setProperty('bestday.alpha', 1)
+			callMethod('bestday.play')
 		end
 		if v1 == 'fadeday' then doTweenAlpha('sdasdfas', 'bestday', 0, crochet / 500) end
 		if v1 == 'destroyday' then --NOOO its not longer the best day
@@ -69,6 +69,13 @@ function onEvent(n,v1,v2)
 		end
 		if v1 == 'byemajin' then doTweenAlpha('majin', 'majin', 0, 1) end
 		if v1 == 'destroymajin' then removeLuaSprite('majin', true) end
+		if v1 == 'jumpscare' then
+			makeLuaSprite('jump', 'vanilla/sunkage')
+			addLuaSprite('jump')
+			setObjectCamera('jump', 'other')
+			screenCenter('jump')
+			doTweenAlpha('jump', 'jump', 0, crochet / (1000 / 4), 'cubeInOut')
+		end
 		if v1 == 'zoomtotv' then
 			startTween('tween_zoomIn1', 'camGame', {zoom = 30}, crochet / 500, {ease = 'expoIn'})
 			startTween('tween_zoomIn2', 'camHUD', {zoom = 30}, crochet / 500, {ease = 'expoIn'})

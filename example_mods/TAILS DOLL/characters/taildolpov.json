@@ -2,42 +2,42 @@
 	"animations": [
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": true,
 			"fps": 24,
 			"anim": "idle",
-			"loop": true,
+			"indices": [],
 			"name": "tails doll pov idle"
 		},
 		{
 			"offsets": [-7, 8],
-			"indices": [],
+			"loop": false,
 			"fps": 30,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "tails doll pov left"
 		},
 		{
 			"offsets": [-1, 5],
-			"indices": [],
+			"loop": false,
 			"fps": 30,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "tails doll pov down"
 		},
 		{
 			"offsets": [3, 71],
-			"indices": [],
+			"loop": false,
 			"fps": 30,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "tails doll pov up"
 		},
 		{
 			"offsets": [13, 1],
-			"indices": [],
+			"loop": false,
 			"fps": 30,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "tails doll pov right"
 		}
 	],

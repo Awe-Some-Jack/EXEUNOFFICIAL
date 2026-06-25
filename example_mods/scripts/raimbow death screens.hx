@@ -104,6 +104,7 @@ function onGameOverStart()
             deadMusic = new FlxSound();
             deadMusic.load(GameOverSubstate.loopSoundName, true);
             FlxG.sound.list.add(deadMusic);
+            deadMusic.looped = true;
             
             for (i in voicelineSongs) if (songName == i) addVoiceLines();
             for (i in songShaders)    if (songName == i) addShaders();

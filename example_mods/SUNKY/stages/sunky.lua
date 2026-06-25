@@ -1,4 +1,5 @@
 local colors = {'ff2323', '4dff23', '2332ff', 'ff2483', 'ffbd24', '24ffc1'}
+local videos = {'ahh', 'bestday', 'arin'}
 
 local function applyColorTheme()
 	local c = colors[(curSection % 6) + 1]
@@ -15,13 +16,23 @@ local function addShitToTV()
 	callMethod('ahh.setPosition', {480, 100})
 	addInstance('ahh')
 
-	createInstance('bestday', 'flxgif.FlxGifSprite')
-	callMethod('bestday.loadGif', {'mods/SUNKY/images/vanilla/tv/bestdayever.gif'})
-	callMethod('bestday.pauseGif')
+	createInstance('bestday', 'hxvlc.flixel.FlxVideoSprite')
+	callMethod('bestday.load', {'mods/SUNKY/images/vanilla/tv/bestdayever.mp4'})
 	scaleObject('bestday', 0.8, 0.8)
-	setProperty('bestday.alpha', 0)
-	callMethod('bestday.setPosition', {715, 200})
+	callMethod('bestday.setPosition', {670, 160})
 	addInstance('bestday')
+	runHaxeCode([[
+		game.getLuaObject('bestday').bitmap.onEndReached.add(() ->
+		{
+			final path = 'mods/SUNKY/images/vanilla/tv/bestdayever.mp4';
+			if (game.getLuaObject('bestday').load(path)) {
+				new FlxTimer().start(0.001, (_) -> { 
+					game.getLuaObject('bestday').play(); 
+					game.getLuaObject('bestday').bitmap.rate = 1.0; 
+				});
+			}
+		});
+	]])
 
 	makeLuaSprite('gato', 'vanilla/tv/Hahahaha', 820, 250)
 	setProperty('gato.alpha', 0)
@@ -49,6 +60,13 @@ local function addShitToTV()
 	setObjectCamera('arin', 'other')
 	screenCenter('arin')
 	addInstance('arin')
+	runHaxeCode([[
+		game.getLuaObject('arin').bitmap.onFormatSetup.add(() -> {
+			game.getLuaObject('arin').setGraphicSize(FlxG.width, FlxG.height);
+			game.getLuaObject('arin').updateHitbox();
+			game.getLuaObject('arin').screenCenter();
+		});
+	]])
 end
 
 function onCreatePost()
@@ -132,14 +150,11 @@ end
 --video functions, ignore
 
 function onGameOver()
-	if curBeat < 544 then
-		if getProperty('ahh') == nil then return end
-		callMethod('ahh.destroy')
-		callMethod('remove', {instanceArg('ahh')})
-	else
-		if getProperty('arin') == nil then return end
-		callMethod('arin.destroy')
-		callMethod('remove', {instanceArg('arin')})
+	for _, video in ipairs(videos) do
+		if getProperty(video) ~= nil then
+			callMethod(video .. '.destroy')
+			callMethod('remove', {instanceArg(video)})
+		end
 	end
 end
 
@@ -153,46 +168,26 @@ function onDestroy()
 	end
 end
 
-function onPause()
-    if curBeat < 544 then
-		if getProperty('ahh') == nil then return end
-		callMethod('ahh.pause')
-		if callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('ahh.videoSprite.pause')}) then
-			callMethodFromClass('flixel.FlxG', 'signals.focusLost.remove', {instanceArg('ahh.videoSprite.pause')})
-		end
-		if callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('ahh.videoSprite.resume')}) then
-			callMethodFromClass('flixel.FlxG', 'signals.focusGained.remove', {instanceArg('ahh.videoSprite.resume')})
-		end
-	else
-		if getProperty('arin') == nil then return end
-		callMethod('arin.pause')
-		if callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('arin.videoSprite.pause')}) then
-			callMethodFromClass('flixel.FlxG', 'signals.focusLost.remove', {instanceArg('arin.videoSprite.pause')})
-		end
-		if callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('arin.videoSprite.resume')}) then
-			callMethodFromClass('flixel.FlxG', 'signals.focusGained.remove', {instanceArg('arin.videoSprite.resume')})
+function onDestroy()
+	for _, video in ipairs(videos) do
+		if getProperty(video) ~= nil then
+			callMethod('remove', {instanceArg(video)})
 		end
 	end
 end
 
 function onResume()
-	if curBeat < 544 then
-		if getProperty('ahh') == nil then return end
-		callMethod('ahh.resume')
-		if not callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('ahh.videoSprite.pause')}) then
-			callMethodFromClass('flixel.FlxG', 'signals.focusLost.add', {instanceArg('ahh.videoSprite.pause')})
-		end
-		if not callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('ahh.videoSprite.resume')}) then
-			callMethodFromClass('flixel.FlxG', 'signals.focusGained.add', {instanceArg('ahh.videoSprite.resume')})
-		end
-	else
-		if getProperty('arin') == nil then return end
-		callMethod('arin.resume')
-		if not callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg('arin.videoSprite.pause')}) then
-			callMethodFromClass('flixel.FlxG', 'signals.focusLost.add', {instanceArg('arin.videoSprite.pause')})
-		end
-		if not callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg('arin.videoSprite.resume')}) then
-			callMethodFromClass('flixel.FlxG', 'signals.focusGained.add', {instanceArg('arin.videoSprite.resume')})
+	for _, video in ipairs(videos) do
+		if getProperty(video) ~= nil then
+			callMethod(video .. '.resume')
+
+			if not callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg(video .. '.videoSprite.pause')}) then
+				callMethodFromClass('flixel.FlxG', 'signals.focusLost.add', {instanceArg(video .. '.videoSprite.pause')})
+			end
+
+			if not callMethodFromClass('flixel.FlxG', 'signals.focusGained.has', {instanceArg(video .. '.videoSprite.resume')}) then
+				callMethodFromClass('flixel.FlxG', 'signals.focusGained.add', {instanceArg(video .. '.videoSprite.resume')})
+			end
 		end
 	end
 end

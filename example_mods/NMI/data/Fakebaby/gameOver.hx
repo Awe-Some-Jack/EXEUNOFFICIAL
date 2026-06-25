@@ -30,6 +30,7 @@ function onGameOverStart()
 	deadMusic.load(Paths.music('gameOver'), true);
 	FlxG.sound.list.add(deadMusic);
 	deadMusic.play();
+	deadMusic.looped = true;
 
 	glitchShader = new ErrorHandledRuntimeShader('followedglitch', File.getContent('mods/NMI/shaders/followedglitch.frag'));
 	glitchShader.setFloat('size', 0.01);

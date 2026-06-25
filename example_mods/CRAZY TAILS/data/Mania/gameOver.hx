@@ -26,6 +26,7 @@ function onGameOverStart()
 	deadMusic = new FlxSound();
 	deadMusic.load(Paths.music('gameOver'), true);
 	FlxG.sound.list.add(deadMusic);
+	deadMusic.looped = true;
 	
 	FlxG.sound.play(Paths.sound('explosion'));
 }

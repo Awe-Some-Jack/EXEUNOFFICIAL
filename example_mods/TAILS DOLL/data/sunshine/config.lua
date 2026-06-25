@@ -11,6 +11,7 @@ function onCreatePost()
 		setProperty('playerStrums.members[' .. i .. '].x', (screenWidth - 10 - (strumW * 4)) + (strumW * i))
 	end
 
+	makeLuaSprite("creepy")
 	makeLuaSprite("VHS")
 	setSpriteShader("VHS", "tvcrt")
 
@@ -26,16 +27,20 @@ function onCreatePost()
 	end
 end
 
+local canFloat = true
 local floatTime = 0
 function onUpdate(e)
 	floatTime = floatTime + e
-	callMethod('dad.setPosition', {
-		dadX + math.cos(floatTime * (velocity / 2)) * (intensity * 2),
-		dadY + math.sin(floatTime * velocity) * intensity
-	})
+	if canFloat then
+		callMethod('dad.setPosition', {
+			dadX + math.cos(floatTime * (velocity / 2)) * (intensity * 2),
+			dadY + math.sin(floatTime * velocity) * intensity
+		})
+	end
 
 	setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
-	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4))
+	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4) + (getProperty('creepy.x') * 1.25))
+	setShaderFloat('bloom', 'saturation', 1 + (getProperty('creepy.x') / 2))
 end
 
 function onEvent(n,v1,v2)
@@ -48,5 +53,16 @@ function onEvent(n,v1,v2)
 	end
 	if n == 'saturation' then
 		setShaderFloat('bloom', 'saturation', tonumber(v1))
+	end
+	if n == 'sunshinEvent' then
+		if v1 == 'startdark' then
+			doTweenX('creepy', 'creepy', 1, crochet / (1000 / 3), 'expoIn')
+		end
+		if v1 == 'creepy' then
+			cancelTween('creepy')
+			setProperty('creepy.x', 0)
+			canFloat = false
+		end
+		if v1 == 'back' then canFloat = true end
 	end
 end

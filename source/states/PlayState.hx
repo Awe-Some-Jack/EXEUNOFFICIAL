@@ -551,6 +551,17 @@ class PlayState extends MusicBeatState
 				#end
 			}
 		#end
+
+		#if HSCRIPT_ALLOWED
+		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'data/$songName/'))
+			for (file in FileSystem.readDirectory(folder))
+			{
+				#if HSCRIPT_ALLOWED
+				if(file.toLowerCase().endsWith('cleanresolution.hx'))
+					initHScript(folder + file);
+				#end
+			}
+		#end
 			
 		var camPos:FlxPoint = FlxPoint.get(girlfriendCameraOffset[0], girlfriendCameraOffset[1]);
 		if(gf != null)
@@ -673,7 +684,7 @@ class PlayState extends MusicBeatState
 				#end
 
 				#if HSCRIPT_ALLOWED
-				if(file.toLowerCase().endsWith('.hx'))
+				if(file.toLowerCase().endsWith('.hx') && !file.toLowerCase().endsWith('cleanresolution.hx'))
 					initHScript(folder + file);
 				#end
 			}

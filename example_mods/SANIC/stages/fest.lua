@@ -26,7 +26,7 @@ local function syncToCharacter(clone, source, copyOffset)
 end
 
 function onCreate()
-	createInstance('bgFront', 'hxvlc.flixel.FlxVideoSprite', {-900, -800})
+	createInstance('bgFront', 'hxvlc.flixel.FlxVideoSprite', {nil, -900, -800})
     callMethod('bgFront.load', {callMethodFromClass('backend.Paths', 'video', {'bg'..getRandomInt(1,2)})})
     addInstance('bgFront')
     setProperty('bgFront.videoSprite.antialiasing', false)

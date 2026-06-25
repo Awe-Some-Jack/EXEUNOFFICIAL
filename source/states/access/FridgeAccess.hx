@@ -128,14 +128,16 @@ class FridgeAccess extends MusicBeatState
 		sunkyhand.setPosition(30, 327);
 		add(sunkyhand);
 
-		new FlxTimer().start(0.5, function(tmr:FlxTimer){
-			sunkyhand.animation.play('idle');
-			new FlxTimer().start(1, function(tmr:FlxTimer){
-				doordown.animation.play('idle');
-				new FlxTimer().start(1, function(tmr:FlxTimer){
-					FlxTween.tween(FlxG.camera, {zoom: 1.63}, 1, {ease: FlxEase.cubeInOut, onComplete: function (_) {transitioning = false;}});
-					FlxTween.num(0, 100, 1.75, function(num) {daOffset[0] = num * -0.17;});
-					FlxTween.num(0, 100, 0.5, function(num) {daOffset[1] = num * 2.76;});
+		new FlxTimer().start(0.001, function(tmr:FlxTimer){
+			new FlxTimer().start(0.3, function(tmr:FlxTimer){
+				sunkyhand.animation.play('idle');
+				new FlxTimer().start(0.4, function(tmr:FlxTimer){
+					doordown.animation.play('idle');
+					new FlxTimer().start(1, function(tmr:FlxTimer){
+						FlxTween.tween(FlxG.camera, {zoom: 1.63}, 1, {ease: FlxEase.cubeInOut, onComplete: function (_) {transitioning = false;}});
+						FlxTween.num(0, 100, 1.75, function(num) {daOffset[0] = num * -0.17;});
+						FlxTween.num(0, 100, 0.5, function(num) {daOffset[1] = num * 2.76;});
+					});
 				});
 			});
 		});

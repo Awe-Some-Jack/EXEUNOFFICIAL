@@ -1,0 +1,4 @@
+Basically just cinematic screen borders
+
+value 1: turn on or off (1 on, 0 off)
+value 2: tween duration (on seconds)

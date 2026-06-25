@@ -51,6 +51,11 @@ local healthBarsBG = {
         x = - 190,
         y = - 65
     },
+    ["hud_mono"] = {
+        songs = {'monochromatic'},
+        x = - 190,
+        y = - 70
+    },
     ["hud_needlemouse"] = {
         songs = {'round-a-bout', 'her-world'},
         x = - 190,
@@ -92,7 +97,7 @@ local healthBarsBG = {
         y = - 70
     },
 }
-local blacklistenedSongs = {'prey', 'godspeed', 'forestall-desire', 'deception', 'fatality', 'longstrider', 'universal-collapse', 'fight-or-flight'}
+local blacklistenedSongs = {'prey', 'godspeed', 'forestall-desire', 'deception', 'fatality', 'longstrider', 'universal-collapse', 'fight-or-flight', 'burning'}
 
 local flipped = false
 local oldScoreTxt = ''

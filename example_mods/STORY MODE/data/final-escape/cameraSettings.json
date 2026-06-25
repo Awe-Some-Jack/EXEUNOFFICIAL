@@ -17,7 +17,7 @@
     "OGZoom": 0.8,
     "MiddleZoom": 0.58,
 
-    "OffsetsBF": 0,
-    "OffsetsDAD": 0,
-    "OffsetsGF": 0
+    "OffsetsBF": 25,
+    "OffsetsDAD": 25,
+    "OffsetsGF": 25
 }

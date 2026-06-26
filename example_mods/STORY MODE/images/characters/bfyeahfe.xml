@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="bfyeahfe.png">
-	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="yeah instancia 10000" x="5" y="952" width="1014" height="917" frameX="-23" frameY="-19" frameWidth="1091" frameHeight="937"/>
-	<SubTexture name="yeah instancia 10001" x="5" y="952" width="1014" height="917" frameX="-23" frameY="-19" frameWidth="1091" frameHeight="937"/>
-	<SubTexture name="yeah instancia 10002" x="2127" y="948" width="1054" height="911" frameX="0" frameY="-25" frameWidth="1091" frameHeight="937"/>
-	<SubTexture name="yeah instancia 10003" x="2127" y="948" width="1054" height="911" frameX="0" frameY="-25" frameWidth="1091" frameHeight="937"/>
-	<SubTexture name="yeah instancia 10004" x="1064" y="948" width="1053" height="927" frameX="-32" frameY="-6" frameWidth="1091" frameHeight="937"/>
-	<SubTexture name="yeah instancia 10005" x="1064" y="948" width="1053" height="927" frameX="-32" frameY="-6" frameWidth="1091" frameHeight="937"/>
-	<SubTexture name="yeah instancia 10006" x="1064" y="5" width="1049" height="933" frameX="-41" frameY="-2" frameWidth="1091" frameHeight="937"/>
-	<SubTexture name="yeah instancia 10007" x="2123" y="5" width="1048" height="933" frameX="-42" frameY="-2" frameWidth="1091" frameHeight="937"/>
-	<SubTexture name="yeah instancia 10008" x="5" y="5" width="1049" height="937" frameX="-42" frameY="0" frameWidth="1091" frameHeight="937"/>
+	<SubTexture name="yeah instancia 10000" x="2086" y="1056" width="970" height="979" frameX="-2" frameY="-90" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10001" x="2086" y="1056" width="970" height="979" frameX="-2" frameY="-90" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10002" x="12" y="1060" width="961" height="978" frameX="-12" frameY="-86" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10003" x="12" y="1060" width="961" height="978" frameX="-12" frameY="-86" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10004" x="2086" y="12" width="1009" height="1022" frameX="0" frameY="-11" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10005" x="2086" y="12" width="1009" height="1022" frameX="0" frameY="-11" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10006" x="12" y="12" width="1015" height="1026" frameX="0" frameY="0" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10007" x="12" y="12" width="1015" height="1026" frameX="0" frameY="0" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10008" x="1049" y="12" width="1015" height="1026" frameX="0" frameY="0" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10009" x="1049" y="12" width="1015" height="1026" frameX="0" frameY="0" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10010" x="1049" y="12" width="1015" height="1026" frameX="0" frameY="0" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10011" x="1049" y="12" width="1015" height="1026" frameX="0" frameY="0" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10012" x="1049" y="12" width="1015" height="1026" frameX="0" frameY="0" frameWidth="1015" frameHeight="1069"/>
+	<SubTexture name="yeah instancia 10013" x="1049" y="12" width="1015" height="1026" frameX="0" frameY="0" frameWidth="1015" frameHeight="1069"/>
 </TextureAtlas>

@@ -160,7 +160,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 		if (controls.ACCEPT)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
-			editingValue = true; nudgeSelectedText(true);
+			editingValue = true; backLock = true; nudgeSelectedText(true);
 			var g = optionGroups[curSelected];
 			showArrows(g.valueBG.y + (g.valueBG.height - arrowLeft.height) / 2);
 		}

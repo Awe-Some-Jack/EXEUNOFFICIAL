@@ -190,7 +190,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 	function playIntro(rectX:Int)
 	{
-		final dur:Float = 0.45;
+		final dur:Float = 0.28;
 		final ease = FlxEase.quartOut;
 
 		FlxTween.tween(titlebar,    {x: TB_X},  dur, {ease: ease});
@@ -209,7 +209,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	{
 		introAnimating = true;
 
-		final dur:Float = 0.35;
+		final dur:Float = 0.22;
 		final ease = FlxEase.quartIn;
 		final offLeft:Float  = -(FlxG.width + 200);
 		final offRight:Float = FlxG.width + 200;
@@ -254,7 +254,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		selectionClone.setPosition(group.nameBG.x - 3, group.nameBG.y - 3);
 
 		selectionCloneTween?.cancel();
-		selectionCloneTween = FlxTween.tween(selectionClone, {x: group.nameBG.x + 13, y: group.nameBG.y + 13}, 0.2, {
+		selectionCloneTween = FlxTween.tween(selectionClone, {x: group.nameBG.x + 13, y: group.nameBG.y + 13}, 0.1, {
 			ease: FlxEase.quadInOut,
 			onUpdate: (_) -> selectionCloneWhite.setPosition(selectionClone.x, selectionClone.y),
 			onComplete: (_) -> selectionCloneTween = null
@@ -268,7 +268,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		selectionCloneV.setPosition(group.valueBG.x - 3, group.valueBG.y - 3);
 
 		selectionCloneTweenV?.cancel();
-		selectionCloneTweenV = FlxTween.tween(selectionCloneV, {x: group.valueBG.x + 13, y: group.valueBG.y + 13}, 0.2, {
+		selectionCloneTweenV = FlxTween.tween(selectionCloneV, {x: group.valueBG.x + 13, y: group.valueBG.y + 13}, 0.1, {
 			ease: FlxEase.quadInOut,
 			onUpdate: (_) -> selectionCloneWhiteV.setPosition(selectionCloneV.x, selectionCloneV.y),
 			onComplete: (_) -> selectionCloneTweenV = null

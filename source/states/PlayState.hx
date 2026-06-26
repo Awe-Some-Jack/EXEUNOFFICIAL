@@ -3098,7 +3098,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 		
-		if(note.noteType == 'BF and GF Sing') {
+		if(note != null && note.noteType == 'BF and GF Sing') {
 			var postfix:String = '';
 			if(note != null) postfix = note.animSuffix;
 

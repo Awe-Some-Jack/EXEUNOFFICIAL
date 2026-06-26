@@ -263,7 +263,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		cloneColorTween?.cancel();
 		selectionCloneWhite.setPosition(selectionClone.x, selectionClone.y);
 		selectionCloneWhite.alpha = 0;
-		cloneColorTween = FlxTween.tween(selectionCloneWhite, {alpha: 1.0}, 0.2, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
+		cloneColorTween = FlxTween.tween(selectionCloneWhite, {alpha: 1.0}, 0.08, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 
 		selectionCloneV.setPosition(group.valueBG.x - 3, group.valueBG.y - 3);
 
@@ -277,7 +277,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		cloneColorTweenV?.cancel();
 		selectionCloneWhiteV.setPosition(selectionCloneV.x, selectionCloneV.y);
 		selectionCloneWhiteV.alpha = 0;
-		cloneColorTweenV = FlxTween.tween(selectionCloneWhiteV, {alpha: 1.0}, 0.2, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
+		cloneColorTweenV = FlxTween.tween(selectionCloneWhiteV, {alpha: 1.0}, 0.08, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 	}
 
 	public function showArrows(rowY:Float)

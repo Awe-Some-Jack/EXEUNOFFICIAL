@@ -22,7 +22,8 @@ class ExeGameplayState extends ExeBaseOptionsState
 	{
 		menuTitle = "GAMEPLAY";
 		allOptions = [
-			{label: "DOWNSCROLL",  getValue: () -> ClientPrefs.data.downScroll,  setValue: (v) -> ClientPrefs.data.downScroll  = v},
+			{label: "DOWNSCROLL",    getValue: () -> ClientPrefs.data.downScroll,    setValue: (v) -> ClientPrefs.data.downScroll    = v},
+			{label: "GHOST TAPPING", getValue: () -> ClientPrefs.data.ghostTapping,  setValue: (v) -> ClientPrefs.data.ghostTapping  = v},
 			{label: "SICK WINDOW", getValue: () -> ClientPrefs.data.sickWindow,  setValue: (v) -> ClientPrefs.data.sickWindow  = v, isFloat: true},
 			{label: "GOOD WINDOW", getValue: () -> ClientPrefs.data.goodWindow,  setValue: (v) -> ClientPrefs.data.goodWindow  = v, isFloat: true},
 			{label: "BAD WINDOW",  getValue: () -> ClientPrefs.data.badWindow,   setValue: (v) -> ClientPrefs.data.badWindow   = v, isFloat: true},
@@ -68,7 +69,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 			var label = opt.label;
 			var valStr = "";
 			
-			if (Std.isOfType(val, Bool)) valStr = cast(val, Bool) ? "ON" : "OFF";
+			if (Std.isOfType(val, Bool)) valStr = (label == "GHOST TAPPING") ? (cast(val, Bool) ? "PUSSY" : "OFF") : (cast(val, Bool) ? "ON" : "OFF");
 			else if (Std.isOfType(val, Float))
 			{
 				var suffix = (label.indexOf("WINDOW") != -1 || label == "SAFE FRAMES") ? "MS" : "";
@@ -111,7 +112,8 @@ class ExeGameplayState extends ExeBaseOptionsState
 
 				if (Std.isOfType(val, Bool))
 				{
-					var b = !cast(val, Bool); opt.setValue(b); txt.text = b ? "ON" : "OFF";
+					var b = !cast(val, Bool); opt.setValue(b);
+					txt.text = (label == "GHOST TAPPING") ? (b ? "PUSSY" : "OFF") : (b ? "ON" : "OFF");
 				}
 				else if (opt.isFloat == true)
 				{
@@ -158,7 +160,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 		if (controls.ACCEPT)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
-			editingValue = true; nudgeSelectedText(true);
+			editingValue = true; backLock = true; nudgeSelectedText(true);
 			var g = optionGroups[curSelected];
 			showArrows(g.valueBG.y + (g.valueBG.height - arrowLeft.height) / 2);
 		}

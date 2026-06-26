@@ -1,5 +1,5 @@
 local jumpscareSprite = {
-    {name = 'jumpscare', path = 'characters/jumcare', x = -120, y = -200, animName = 'aidel', animPrefix = 'jum', fps = 24, loop = false, scaleX = 1, scaleY = 1, antialisasing = true, alpha = 0, camera = 'camHUD', front = true}
+    {name = 'jumpscare', path = 'characters/jumcare', x = 0, y = -200, animName = 'aidel', animPrefix = 'jum', fps = 24, loop = false, scaleX = 1, scaleY = 1, antialisasing = true, alpha = 0, camera = 'camHUD', front = true}
 }
 
 local isScaringYou = false
@@ -14,7 +14,6 @@ function onCreate()
         setProperty(jum.name..'.antialiasing', jum.antialisasing)
         setProperty(jum.name..'.alpha', jum.alpha)
         setObjectCamera(jum.name, jum.camera)
-        screenCenter(jum.name, 'x')
         addLuaSprite(jum.name, jum.front)
     end
 end

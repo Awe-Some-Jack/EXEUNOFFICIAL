@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [788, -19],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left2"
+			"fps": 24,
+			"name": "left2",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [461, -189],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Símbolo 212"
+			"fps": 24,
+			"name": "Símbolo 212",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [194, 245],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Símbolo 201"
-		},
-		{
-			"offsets": [213, -74],
-			"loop": false,
 			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right2"
+			"name": "Símbolo 201",
+			"indices": []
 		},
 		{
-			"offsets": [138, -7],
+			"loop": false,
+			"offsets": [213, -74],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right2",
+			"indices": []
+		},
+		{
 			"loop": true,
-			"fps": 18,
+			"offsets": [138, -7],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle2"
+			"fps": 18,
+			"name": "idle2",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
@@ -49,7 +49,7 @@
 	"flip_x": false,
 	"healthbar_colors": [255, 178, 109],
 	"camera_position": [-170, 120],
-	"sing_duration": 6.1,
+	"sing_duration": 10,
 	"scale": 0.9,
 	"_editor_isPlayer": false
 }

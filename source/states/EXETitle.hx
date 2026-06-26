@@ -12,10 +12,16 @@ import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 
 import openfl.Assets;
+import backend.Song;
+import backend.Difficulty;
+import backend.WeekData;
+import backend.Highscore;
 
 import objects.VideoSprite;
 import states.StoryModeState;
 import states.EXEMenu;
+import states.LoadingState;
+import states.StoryModeState;
 import states.parallax.ParallaxState;
 
 class EXETitle extends MusicBeatState
@@ -84,6 +90,7 @@ class EXETitle extends MusicBeatState
 		}
 
 		super.create();
+
 	}
 
 	function precache():Void
@@ -257,6 +264,7 @@ class EXETitle extends MusicBeatState
 			#end
 		}
 
+
 		if (initialized && !transitioning && canStart && mousePosition == 'left')
 		{
 			if (pressedEnter)
@@ -272,7 +280,29 @@ class EXETitle extends MusicBeatState
 				new FlxTimer().start(1, (_) -> {
 					FlxTween.tween(blackScreen, {alpha: 1}, 1);
 					FlxTween.tween(eyes, {alpha: 0}, 1.5, {ease: FlxEase.expoIn});
-					new FlxTimer().start(1.5, (_) -> { FlxG.switchState(() -> new EXEMenu()); });
+
+					new FlxTimer().start(1.5, (_) -> { 
+						if (FlxG.save.data.goToFinalEscape != null){
+							FlxG.save.data.goToFinalEscape = null;
+							FlxG.save.flush();
+
+							Mods.currentModDirectory = "STORY MODE";
+							WeekData.reloadWeekFiles(false);
+							Difficulty.loadFromWeek();
+
+							final song:String = 'final-escape';
+							final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
+							final launchDiff = (normalIdx > -1) ? normalIdx : 0;
+
+							PlayState.SONG = Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
+							PlayState.isStoryMode = true;
+							PlayState.storyWeek = 0;
+							PlayState.storyDifficulty = launchDiff;
+
+							LoadingState.loadAndSwitchState(new PlayState(), true);
+							return;
+						} else FlxG.switchState(() -> new EXEMenu()); 
+					});
 					closedState = true;
 				});
 			}

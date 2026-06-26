@@ -2536,6 +2536,14 @@ class PlayState extends MusicBeatState
 	public var transitioning = false;
 	public function endSong()
 	{
+
+		if (isStoryMode && Paths.formatToSongPath(SONG.song) == 'triple-trouble'){
+			FlxG.save.data.goToFinalEscape = true;
+			FlxG.save.flush();
+			trace("save data is " + FlxG.save.data.goToFinalEscape);
+			Sys.exit(0);
+		} 
+		
 		//Should kill you if you tried to cheat
 		if(!startingSong)
 		{

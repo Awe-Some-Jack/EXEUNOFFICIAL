@@ -5,6 +5,11 @@ function onCreatePost()
 	PlayState.instance.dad.alpha = 0;
 	PlayState.instance.boyfriend.alpha = 0;
 	PlayState.instance.cameraSpeed = 9999;
+
+	PlayState.instance.iconP1.alpha = 0;
+	PlayState.instance.iconP2.alpha = 0;
+	PlayState.instance.healthBar.alpha = 0;
+	PlayState.instance.scoreTxt.alpha = 0;
 }
 
 function onSongStart()

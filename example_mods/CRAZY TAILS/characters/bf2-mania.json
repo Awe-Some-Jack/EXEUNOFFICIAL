@@ -1,76 +1,76 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [299, 145],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up instancia 1"
+			"fps": 24,
+			"name": "up instancia 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [198, 12],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left instancia 1"
+			"fps": 24,
+			"name": "left instancia 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-7, 46],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right instancia 1"
+			"fps": 24,
+			"name": "right instancia 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [59, -68],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down instancia 1"
+			"fps": 24,
+			"name": "down instancia 1",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [41, -96],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "down miss",
-			"indices": []
+			"indices": [],
+			"name": "down miss"
 		},
 		{
-			"loop": false,
 			"offsets": [243, 156],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "up miss",
-			"indices": []
+			"indices": [],
+			"name": "up miss"
 		},
 		{
-			"loop": false,
 			"offsets": [-27, 61],
-			"anim": "singRIGHTmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "right miss",
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "right miss"
+		},
+		{
+			"loop": false,
+			"offsets": [203, -20],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "leftmiss",
 			"indices": []
 		},
 		{
-			"offsets": [203, -20],
 			"loop": false,
-			"fps": 24,
-			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "leftmiss"
-		},
-		{
 			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "Símbolo 277"
+			"fps": 24,
+			"name": "Símbolo 277",
+			"indices": []
 		}
 	],
 	"vocals_file": "bf",
@@ -81,7 +81,7 @@
 	"flip_x": true,
 	"healthbar_colors": [0, 103, 195],
 	"camera_position": [-170, 120],
-	"sing_duration": 6.1,
+	"sing_duration": 10,
 	"scale": 0.8,
 	"_editor_isPlayer": true
 }

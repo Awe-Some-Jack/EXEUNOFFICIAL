@@ -160,7 +160,7 @@ local specialSplashes = {
 	},
 	{
 		skin = 'BloodSplashPixel',
-		songs = {"prey", "b4cksl4sh", "starline", "fatality", "longstrider"},
+		songs = {"prey", "b4cksl4sh", "starline", "fatality", "longstrider", "burning"},
 		offset = {
 			x = -78,
 			y = -36

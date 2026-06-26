@@ -1,4 +1,5 @@
 import psychlua.LuaUtils;
+import flixel.addons.display.FlxBackdrop;
 
 typedef BackgroundSprite =
 {
@@ -9,6 +10,7 @@ typedef BackgroundSprite =
 	@:optional var scroll:Array<Float>;
 	@:optional var front:Bool;
 	@:optional var animation:Array<Dynamic>;
+	@:optional var backdrop:Array<Dynamic>;
 }
 
 var bgIntro:Array<BackgroundSprite> = [
@@ -24,6 +26,19 @@ var bgIntro:Array<BackgroundSprite> = [
 	{path: 'final/intro/floor', position: [-948, 230]}
 ];
 
+var bgSecond:Array<BackgroundSprite> = [
+	{path: 'final/escape/bg3', position: [-950, -480], scroll: [0.35, 0.35], visible: false},
+	{path: 'final/escape/clouds1', position: [0, -480], scroll: [0.35, 0.35], visible: false, backdrop: [0x01, [20, 0]], alpha: 0.35},
+	{path: 'final/escape/clouds2', position: [0, -480], scroll: [0.35, 0.35], visible: false, backdrop: [0x01, [40, 0]], alpha: 0.5},
+	{path: 'final/escape/water', position: [-1200, -500], scroll: [0.7, 0.7], scale: [0.7, 0.7, true], animation: [{name: "idle", fps: 9, looped: true}], visible: false},
+	{path: 'final/escape/bg2', position: [-1100, -600], scroll: [0.5, 0.5], visible: false},
+	{path: 'final/escape/bg1', position: [-1200, -550], scroll: [0.7, 0.7], visible: false},
+	{path: 'final/escape/objects3', position: [-1210, -705], visible: false},
+	{path: 'final/escape/objects2', position: [-1210, -705], visible: false},
+	{path: 'final/escape/objects1', position: [-1210, -705], visible: false, front: true},
+	{path: 'final/escape/floor', position: [-1210, -705], scale: [0.7, 0.7, true], animation: [{name: "idle", looped: true}], visible: false}
+];
+
 final hudSprites:Array<String> = ['iconBF', 'iconOpp', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG', 'exeScoreTxt'];
 
 var introCutscene:hxvlc.flixel.FlxVideoSprite;
@@ -34,7 +49,9 @@ final cam = game.gameplayCam.settings;
 var blackBG:FlxSprite;
 var eyes:FlxSprite;
 var bfYeah:FlxSprite;
+var xenoRing:FlxSprite;
 
+var curBG:String = 'intro';
 function onCreate()
 {
 	//intro
@@ -54,6 +71,16 @@ function onCreate()
 	makeBackground(bgIntro);
 	bgIntro[1].sprite.alpha = 0;
 	bgIntro[1].sprite.animation.finishCallback = function(name:String){ bgIntro[1].sprite.alpha = 0; };
+
+	makeBackground(bgSecond);
+
+	// preload chars
+	preloadCharacter(1, 'xeno-fe2');
+	preloadCharacter(0, 'bf-fe2');
+
+	xenoRing = new FlxSprite(dad.x, dad.y).loadGraphic(Paths.image('characters/FINAL-ESCAPE-HD'));
+	game.insert(game.members.indexOf(bgSecond[bgSecond.length - 1].sprite), xenoRing);
+	xenoRing.visible = false;
 }
 
 var notesPosition:Array<Array<Float>> = [[0,0,0,0], [0,0,0,0]];
@@ -97,18 +124,40 @@ var floatSine:Float = 0;
 function onUpdatePost(elapsed:Float)
 {
 	blackBG.scale.set(1 / camGame.zoom, 1 / camGame.zoom);
-	if (bgIntro != null)
-	{
-		if (eyes != null) eyes.setPosition(dad.x + 400, dad.y + 280);
+	floatSine += elapsed;
 
-		floatSine += elapsed;
-		for (i in 5...8) {
-			bgIntro[i].sprite.setPosition(
-				bgIntro[i].position[0] + Math.sin(floatSine + i) * 3,
-				bgIntro[i].position[1] + Math.cos(floatSine + i) * 10
+	switch(curBG)
+	{
+		case 'intro':
+			if (eyes != null) eyes.setPosition(dad.x + 400, dad.y + 280);
+			for (i in 5...8) {
+				if (bgIntro[i].sprite.visible)
+				{
+					bgIntro[i].sprite.setPosition(
+						bgIntro[i].position[0] + Math.sin(floatSine + i) * 3,
+						bgIntro[i].position[1] + Math.cos(floatSine + i) * 10
+					);
+					bgIntro[i].sprite.angle = Math.cos(floatSine + i) * 2;
+				}
+			}
+		case 'second':
+			for (i in 6...9) {
+				if (bgSecond[i].sprite.visible)
+				{
+					bgSecond[i].sprite.setPosition(
+						bgSecond[i].position[0] + Math.sin(floatSine + i) * 3,
+						bgSecond[i].position[1] + Math.cos(floatSine + i) * 10
+					);
+					bgSecond[i].sprite.angle = Math.cos(floatSine + i) * 2;
+				}
+			}
+
+			dad.setPosition(
+				-442 + Math.sin(floatSine) * 3,
+				-250 + Math.cos(floatSine) * 10
 			);
-			bgIntro[i].sprite.angle = Math.cos(floatSine + i) * 2;
-		}
+
+			if (xenoRing.visible) xenoRing.setPosition(dad.x - 460, dad.y - 100);
 	}
 }
 
@@ -153,31 +202,54 @@ function onEvent(n,v1,v2)
 			case 'secondsection':
 				bfYeah.destroy();
 				camHUD.flash(0xFFFFFFFF, Conductor.crochet / 250, null, true);
-				for (sprite in bgIntro) sprite.sprite.destroy(); bgIntro = null;
+				for (spr in bgIntro) spr.sprite.visible = false;
+				for (spr in bgSecond) spr.sprite.visible = true;
 				for (spr in hudSprites) game.getLuaObject(spr).alpha = 1;
 				for (i in 0...4)
 				{
 					opponentStrums.members[i].x = notesPosition[0][i];
 					playerStrums.members[i].x = notesPosition[1][i];
 				}
+				FlxTween.cancelTweensOf(boyfriend); FlxTween.cancelTweensOf(dad);
+				boyfriend.alpha = 1; dad.alpha = 1;
+				changeCharacter('dad', 'xeno-fe2');
+				changeCharacter('bf', 'bf-fe2');
+				boyfriend.x += 400;
+				boyfriend.y -= 150;
+				xenoRing.visible = true;
+				curBG = 'second';
 		}
 	}
 }
 
+function preloadCharacter(char:Int, target:String) game.addCharacterToList(target, char);
+function changeCharacter(char:String, target:String) game.triggerEvent('Change Character', char, target, Conductor.songPosition);
 function makeBackground(background:Array<BackgroundSprite>)
 {
 	for (spriteDef in background)
 	{
-		var sprite = new FlxSprite((spriteDef.position ?? [0, 0])[0], (spriteDef.position ?? [0, 0])[1]);
-		if (spriteDef.animation != null)
+		var sprite:FlxSprite;
+
+		if (spriteDef.backdrop != null)
 		{
-			sprite.frames = Paths.getSparrowAtlas(spriteDef.path);
-			for (anim in spriteDef.animation) sprite.animation.addByPrefix(anim.name, anim.name, anim.fps ?? 24, anim.looped ?? false);
+			sprite = new FlxBackdrop(Paths.image(spriteDef.path), spriteDef.backdrop[0] ?? 0x11);
+			sprite.velocity.set((spriteDef.backdrop[1] ?? [0, 0])[0], (spriteDef.backdrop[1] ?? [0, 0])[1]);
+			sprite.setPosition((spriteDef.position ?? [0, 0])[0], (spriteDef.position ?? [0, 0])[1]);
 		}
-		else sprite.loadGraphic(Paths.image(spriteDef.path));
+		else
+		{
+			sprite = new FlxSprite((spriteDef.position ?? [0, 0])[0], (spriteDef.position ?? [0, 0])[1]);
+			if (spriteDef.animation != null)
+			{
+				sprite.frames = Paths.getSparrowAtlas(spriteDef.path);
+				for (anim in spriteDef.animation) {sprite.animation.addByPrefix(anim.name, anim.name, anim.fps ?? 24, anim.looped ?? false); sprite.animation.play(anim.name, true);}
+			}
+			else sprite.loadGraphic(Paths.image(spriteDef.path));
+		}
 		sprite.scrollFactor.set((spriteDef.scroll ?? [1, 1])[0], (spriteDef.scroll ?? [1, 1])[1]);
 		sprite.scale.set((spriteDef.scale ?? [1, 1, true])[0], (spriteDef.scale ?? [1, 1, true])[1]); if ((spriteDef.scale ?? [1, 1, true])[2]) sprite.updateHitbox();
 		if (spriteDef.visible != null) sprite.visible = spriteDef.visible;
+		if (spriteDef.alpha != null) sprite.alpha = spriteDef.alpha;
 		if (spriteDef.front) game.add(sprite);
 		else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
 		spriteDef.sprite = sprite;

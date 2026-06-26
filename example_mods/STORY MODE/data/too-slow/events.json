@@ -280,7 +280,9 @@
 			97294.6859903381,
 			[
 				["Tween Camera Zoom", "1.6, true", "0.7, circIn"],
-				["Tweening Camera", "120, 120", "0.7, circIn"]
+				["Tweening Camera", "120, 120", "0.7, circIn"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
 			]
 		],
 		[
@@ -294,7 +296,9 @@
 			[
 				["Tweening Camera", "0, 0", "0.001, linear"],
 				["Tween Camera Zoom", "0.7", ""],
-				["EXEJumscareBIG", "", ""]
+				["EXEJumscareBIG", "", ""],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
 			]
 		],
 		[
@@ -545,7 +549,9 @@
 		[
 			155291.617717039,
 			[
-				["Tween Camera Zoom", "1.3, true", "2, sineInOut"]
+				["Tween Camera Zoom", "1.3, true", "2, sineInOut"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
 			]
 		],
 		[
@@ -576,7 +582,9 @@
 		[
 			158342.465174666,
 			[
-				["Tweening Camera", "-145, 25", "0.8, sineOut"]
+				["Tweening Camera", "-145, 25", "0.8, sineOut"],
+				["Tween Camera Zoom", "1.25, true", "0.8, sineInOut"],
+				["Set Property", "cameraSpeed", "9999"]
 			]
 		],
 		[
@@ -595,7 +603,9 @@
 			160033.143140768,
 			[
 				["Tweening Camera", "-85, 22", "0.9, circOut"],
-				["Tween Camera Zoom", "1.1", ""]
+				["Tween Camera Zoom", "1.1", ""],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
 			]
 		],
 		[
@@ -620,7 +630,9 @@
 			162495.007547548,
 			[
 				["Tween Camera Zoom", "0.8, true", "2, smootherStepInOut"],
-				["Tweening Camera", "-120, 50", "2, smootherStepInOut"]
+				["Tweening Camera", "-120, 50", "2, smootherStepInOut"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
 			]
 		],
 		[
@@ -683,7 +695,9 @@
 				["Tweening Camera", "0, 0", "0.001, linear"],
 				["Change Character", "dad", "sonic.exe"],
 				["Tween Camera Zoom", "0.7", ""],
-				["Change Character", "dad", "sonic.exe"]
+				["Change Character", "dad", "sonic.exe"],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
 			]
 		],
 		[
@@ -921,7 +935,9 @@
 			208804.329581446,
 			[
 				["Tween Camera Zoom", "1.6, true", "6, sineInOut"],
-				["Tweening Camera", "-120, 20", "6, sineInOut"]
+				["Tweening Camera", "-120, 20", "6, sineInOut"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
 			]
 		],
 		[

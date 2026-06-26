@@ -71,6 +71,11 @@ local healthBarsBG = {
         x = - 190,
         y = - 75
     },
+    ["hud_hollow"] = {
+        songs = {'hollow'},
+        x = - 190,
+        y = - 85
+    },
     ["hud_grieving"] = {
         songs = {'uh-oh', 'haze'},
         x = - 190,

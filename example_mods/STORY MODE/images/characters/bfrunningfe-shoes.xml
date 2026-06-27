@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bfrunningfe-shoes.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 102 instancia 10000" x="418" y="391" width="140" height="116" frameX="-31" frameY="-23" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="Símbolo 102 instancia 10001" x="410" y="669" width="140" height="116" frameX="-32" frameY="-22" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="Símbolo 102 instancia 10002" x="750" y="235" width="147" height="105" frameX="-17" frameY="-31" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="Símbolo 102 instancia 10003" x="817" y="5" width="138" height="90" frameX="0" frameY="-37" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="Símbolo 102 instancia 10004" x="568" y="371" width="127" height="127" frameX="-73" frameY="-5" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="Símbolo 102 instancia 10005" x="274" y="697" width="126" height="130" frameX="-77" frameY="0" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="Símbolo 102 instancia 10006" x="307" y="261" width="137" height="120" frameX="-57" frameY="-9" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="Símbolo 102 instancia 10007" x="710" y="510" width="104" height="88" frameX="-62" frameY="-26" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="dz2 instancia 10000" x="274" y="837" width="158" height="103" frameX="-37" frameY="-20" frameWidth="233" frameHeight="123"/>
+	<SubTexture name="dz2 instancia 10001" x="486" y="5" width="158" height="102" frameX="-38" frameY="-19" frameWidth="233" frameHeight="123"/>
+	<SubTexture name="dz2 instancia 10002" x="838" y="465" width="166" height="92" frameX="-21" frameY="-23" frameWidth="233" frameHeight="123"/>
+	<SubTexture name="dz2 instancia 10003" x="5" y="862" width="159" height="82" frameX="0" frameY="-29" frameWidth="233" frameHeight="123"/>
+	<SubTexture name="dz2 instancia 10004" x="475" y="120" width="144" height="112" frameX="-85" frameY="-4" frameWidth="233" frameHeight="123"/>
+	<SubTexture name="dz2 instancia 10005" x="168" y="5" width="144" height="115" frameX="-89" frameY="0" frameWidth="233" frameHeight="123"/>
+	<SubTexture name="dz2 instancia 10006" x="309" y="130" width="156" height="105" frameX="-66" frameY="-8" frameWidth="233" frameHeight="123"/>
+	<SubTexture name="dz2 instancia 10007" x="851" y="665" width="120" height="77" frameX="-71" frameY="-23" frameWidth="233" frameHeight="123"/>
+	<SubTexture name="lz2 instancia 10000" x="563" y="517" width="137" height="118" frameX="-21" frameY="-24" frameWidth="173" frameHeight="142"/>
+	<SubTexture name="lz2 instancia 10001" x="604" y="242" width="136" height="118" frameX="-22" frameY="-23" frameWidth="173" frameHeight="142"/>
+	<SubTexture name="lz2 instancia 10002" x="629" y="117" width="145" height="108" frameX="-7" frameY="-34" frameWidth="173" frameHeight="142"/>
+	<SubTexture name="lz2 instancia 10003" x="707" y="645" width="134" height="89" frameX="0" frameY="-42" frameWidth="173" frameHeight="142"/>
+	<SubTexture name="lz2 instancia 10004" x="705" y="370" width="123" height="130" frameX="-49" frameY="-5" frameWidth="173" frameHeight="142"/>
+	<SubTexture name="lz2 instancia 10005" x="442" y="795" width="122" height="133" frameX="-51" frameY="0" frameWidth="173" frameHeight="142"/>
+	<SubTexture name="lz2 instancia 10006" x="421" y="517" width="132" height="123" frameX="-32" frameY="-9" frameWidth="173" frameHeight="142"/>
+	<SubTexture name="lz2 instancia 10007" x="722" y="841" width="99" height="87" frameX="-39" frameY="-38" frameWidth="173" frameHeight="142"/>
+	<SubTexture name="miss pie1 instancia 10000" x="418" y="391" width="140" height="116" frameX="-31" frameY="-23" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="miss pie1 instancia 10001" x="454" y="245" width="140" height="116" frameX="-32" frameY="-22" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="miss pie1 instancia 10002" x="838" y="350" width="146" height="105" frameX="-17" frameY="-31" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="miss pie1 instancia 10003" x="574" y="778" width="138" height="89" frameX="0" frameY="-38" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="miss pie1 instancia 10004" x="284" y="531" width="127" height="128" frameX="-73" frameY="-5" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="miss pie1 instancia 10005" x="147" y="556" width="127" height="131" frameX="-76" frameY="0" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="miss pie1 instancia 10006" x="270" y="401" width="138" height="120" frameX="-56" frameY="-9" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="miss pie1 instancia 10007" x="722" y="744" width="104" height="87" frameX="-62" frameY="-27" frameWidth="203" frameHeight="139"/>
+	<SubTexture name="rz1 instancia 10000" x="152" y="275" width="145" height="116" frameX="-43" frameY="-23" frameWidth="189" frameHeight="139"/>
+	<SubTexture name="rz1 instancia 10001" x="154" y="135" width="145" height="116" frameX="-44" frameY="-22" frameWidth="189" frameHeight="139"/>
+	<SubTexture name="rz1 instancia 10002" x="322" y="5" width="154" height="105" frameX="-26" frameY="-31" frameWidth="189" frameHeight="139"/>
+	<SubTexture name="rz1 instancia 10003" x="654" y="5" width="153" height="90" frameX="0" frameY="-37" frameWidth="189" frameHeight="139"/>
+	<SubTexture name="rz1 instancia 10004" x="5" y="275" width="137" height="127" frameX="-44" frameY="-5" frameWidth="189" frameHeight="139"/>
+	<SubTexture name="rz1 instancia 10005" x="5" y="135" width="139" height="130" frameX="-46" frameY="0" frameWidth="189" frameHeight="139"/>
+	<SubTexture name="rz1 instancia 10006" x="5" y="5" width="153" height="120" frameX="-19" frameY="-9" frameWidth="189" frameHeight="139"/>
+	<SubTexture name="rz1 instancia 10007" x="851" y="567" width="121" height="88" frameX="-26" frameY="-26" frameWidth="189" frameHeight="139"/>
+	<SubTexture name="uz2 instancia 10000" x="5" y="569" width="132" height="130" frameX="-13" frameY="-19" frameWidth="159" frameHeight="149"/>
+	<SubTexture name="uz2 instancia 10001" x="5" y="709" width="131" height="130" frameX="-14" frameY="-18" frameWidth="159" frameHeight="149"/>
+	<SubTexture name="uz2 instancia 10002" x="560" y="650" width="137" height="118" frameX="0" frameY="-28" frameWidth="159" frameHeight="149"/>
+	<SubTexture name="uz2 instancia 10003" x="784" y="105" width="129" height="101" frameX="-2" frameY="-28" frameWidth="159" frameHeight="149"/>
+	<SubTexture name="uz2 instancia 10004" x="146" y="709" width="118" height="143" frameX="-39" frameY="-6" frameWidth="159" frameHeight="149"/>
+	<SubTexture name="uz2 instancia 10005" x="5" y="412" width="117" height="147" frameX="-42" frameY="0" frameWidth="159" frameHeight="149"/>
+	<SubTexture name="uz2 instancia 10006" x="132" y="412" width="128" height="134" frameX="-28" frameY="-11" frameWidth="159" frameHeight="149"/>
+	<SubTexture name="uz2 instancia 10007" x="907" y="216" width="102" height="95" frameX="-32" frameY="-33" frameWidth="159" frameHeight="149"/>
+</TextureAtlas>

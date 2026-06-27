@@ -1,108 +1,108 @@
 {
 	"animations": [
 		{
-			"offsets": [13, -3],
 			"loop": false,
-			"fps": 24,
+			"offsets": [13, -13],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [-14, -9],
-			"loop": false,
 			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [-10, 57],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [-38, 8],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [13, -3],
-			"loop": true,
-			"fps": 24,
-			"anim": "singLEFT-loop",
-			"indices": [7, 8, 9],
-			"name": "left s2 instancia 1"
-		},
-		{
-			"offsets": [-14, -9],
-			"loop": true,
-			"fps": 24,
-			"anim": "singDOWN-loop",
-			"indices": [7, 8, 9],
-			"name": "down e2 instancia 1"
-		},
-		{
-			"offsets": [-10, 57],
-			"loop": true,
-			"fps": 24,
-			"anim": "singUP-loop",
-			"indices": [7, 8, 9],
-			"name": "up e2 instancia 1"
-		},
-		{
-			"offsets": [-38, 8],
-			"loop": true,
-			"fps": 24,
-			"anim": "singRIGHT-loop",
-			"indices": [7, 8, 9],
-			"name": "right s2 instancia 1"
-		},
-		{
-			"loop": true,
-			"offsets": [0, 0],
-			"anim": "idle",
-			"fps": 24,
-			"name": "cabeza idle",
+			"name": "left",
 			"indices": []
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
+			"loop": false,
+			"offsets": [-14, -19],
+			"anim": "singDOWN",
 			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-10, 47],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-38, -2],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [13, -13],
+			"anim": "singLEFT-loop",
+			"fps": 24,
+			"name": "left s2 instancia 1",
+			"indices": [7, 8, 9]
+		},
+		{
+			"loop": true,
+			"offsets": [-14, -19],
+			"anim": "singDOWN-loop",
+			"fps": 24,
+			"name": "down e2 instancia 1",
+			"indices": [7, 8, 9]
+		},
+		{
+			"loop": true,
+			"offsets": [-10, 47],
+			"anim": "singUP-loop",
+			"fps": 24,
+			"name": "up e2 instancia 1",
+			"indices": [7, 8, 9]
+		},
+		{
+			"loop": true,
+			"offsets": [-38, -2],
+			"anim": "singRIGHT-loop",
+			"fps": 24,
+			"name": "right s2 instancia 1",
+			"indices": [7, 8, 9]
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "cabeza idle"
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
 			"anim": "singLEFTmiss",
-			"loop": false,
-			"name": "miss"
+			"fps": 24,
+			"name": "miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": false,
-			"name": "miss"
+			"fps": 24,
+			"name": "miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": false,
-			"name": "miss"
+			"fps": 24,
+			"name": "miss",
+			"indices": []
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHTmiss",
 			"loop": false,
-			"name": "miss"
+			"offsets": [0, 0],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "miss",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

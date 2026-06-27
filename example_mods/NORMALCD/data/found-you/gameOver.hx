@@ -6,11 +6,14 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.FlxCamera;
 
+var whiteBG:FlxSprite;
 var deadBoyfriend:Character;
 var inGameOver:Bool = false;
 var deadMusic:FlxSound;
 var cdLine:FlxSound;
 var daGameOver:FlxSprite;
+var daGameOverLoop:FlxSprite;
+var daGameOverRetry:FlxSprite;
 
 var subtitleBG:FlxSprite;
 var subtitle:FlxText;
@@ -28,14 +31,34 @@ function onGameOverStart()
 	FlxG.cameras.add(gameOverHUD, false);
 	gameOverHUD.alpha = 0;
 
+	whiteBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
+	whiteBG.scrollFactor.set();
+	whiteBG.screenCenter();
+	whiteBG.visible = false;
+	GameOverSubstate.instance.add(whiteBG);
+
+	daGameOverLoop = new FlxSprite();
+	daGameOverLoop.frames = Paths.getSparrowAtlas('characters/loop');
+	daGameOverLoop.animation.addByPrefix('xd', 'Símbolo 4', 24, true); daGameOverLoop.animation.play('xd');
+	daGameOverLoop.screenCenter();
+	daGameOverLoop.scrollFactor.set();
+	daGameOverLoop.visible = false;
+	GameOverSubstate.instance.add(daGameOverLoop);
+
+	daGameOverRetry = new FlxSprite();
+	daGameOverRetry.frames = Paths.getSparrowAtlas('characters/retry');
+	daGameOverRetry.animation.addByPrefix('c', 'confirm', 24, false);
+	daGameOverRetry.animation.addByPrefix('idle', 'Símbolo 1', 24, true); daGameOverRetry.animation.play('idle');
+	daGameOverRetry.screenCenter(); daGameOverRetry.y -= 350;
+	daGameOverRetry.scrollFactor.set();
+	daGameOverRetry.visible = false;
+	GameOverSubstate.instance.add(daGameOverRetry);
+
 	daGameOver = new FlxSprite();
 	daGameOver.frames = Paths.getSparrowAtlas('characters/normal cd');
-	daGameOver.animation.addByPrefix('intro', 'terapia instancia 1', 12, false);
-	daGameOver.animation.addByIndices('loop', 'terapia instancia 1', [23,24,25,26,27,28,29,30,31,32,33], '', 12, true);
-	daGameOver.animation.play('intro');
-	daGameOver.animation.finishCallback = function(n:String) { if(n == 'intro') daGameOver.animation.play('loop'); };
-	daGameOver.scale.set(1.42, 1.42);
-	daGameOver.updateHitbox();
+	daGameOver.animation.addByPrefix('intro', 'terapia instancia 1', 14, false); daGameOver.animation.play('intro');
+	daGameOver.animation.finishCallback = function(n:String) { if(n == 'intro') {FlxG.camera.flash(0xFFFFFFFF, 1, null, true); daGameOverLoop.visible = true; daGameOverRetry.visible = true; whiteBG.visible = true; daGameOver.visible = false;}};
+	daGameOver.scale.set(1.42, 1.42); daGameOver.updateHitbox();
 	daGameOver.screenCenter(); daGameOver.y += 80;
 	daGameOver.scrollFactor.set();
 	GameOverSubstate.instance.add(daGameOver);
@@ -99,6 +122,7 @@ function onUpdatePost()
 {
 	if (!inGameOver) return;
 
+	whiteBG.scale.set(1 / FlxG.camera.zoom, 1 / FlxG.camera.zoom);
 	if (deadBoyfriend.animation.curAnim.name == 'deathLoop')
 	{
 		if (!toggleOnce) {
@@ -118,8 +142,9 @@ function onGameOverConfirm(retry)
 		FlxG.cameras.remove(gameOverHUD, true);
 		for (sound in FlxG.sound.list) if (sound.playing && sound != deadMusic) sound.volume = 0;
 
-		FlxG.camera.flash(0xFFFF0000, 1, null, true);
+		FlxG.camera.flash(0xFFFFFFFF, 1, null, true);
 		FlxG.sound.play(Paths.music('gameOverEnd'));
+		daGameOverRetry.animation.play('c', true);
 		deadMusic.stop();
 		cdLine.stop();
 		daGameOver.destroy();

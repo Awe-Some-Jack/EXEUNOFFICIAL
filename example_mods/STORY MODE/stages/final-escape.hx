@@ -1,6 +1,7 @@
 import psychlua.LuaUtils;
 import flixel.addons.display.FlxBackdrop;
 import objects.Character;
+import openfl.display.BlendMode;
 
 typedef BackgroundSprite =
 {
@@ -30,23 +31,25 @@ var bgIntro:Array<BackgroundSprite> = [
 ];
 
 var bgSecond:Array<BackgroundSprite> = [
-	{path: 'final/escape/bg3', position: [-950, -480], scroll: [0.35, 0.35], visible: false},
+	{path: 'final/escape/bg3', position: [-950, -480], scroll: [0.35, 0.35], visible: false, backdrop: [0x01, [-750, 0]]},
 	{path: 'final/escape/clouds1', position: [0, -480], scroll: [0.35, 0.35], visible: false, backdrop: [0x01, [20, 0]], alpha: 0.35},
 	{path: 'final/escape/clouds2', position: [0, -480], scroll: [0.35, 0.35], visible: false, backdrop: [0x01, [40, 0]], alpha: 0.5},
 	{path: 'final/escape/water', position: [-1200, -500], scroll: [0.7, 0.7], scale: [0.7, 0.7, true], animation: [{name: "idle", fps: 9, looped: true}], visible: false},
-	{path: 'final/escape/bg2', position: [-1100, -600], scroll: [0.5, 0.5], visible: false},
-	{path: 'final/escape/bg1', position: [-1200, -550], scroll: [0.7, 0.7], visible: false},
+	{path: 'final/escape/bg2', position: [-1100, -600], scroll: [0.5, 0.5], visible: false, backdrop: [0x01, [-1250, 0]]},
+	{path: 'final/escape/bg1', position: [-1200, -550], scroll: [0.7, 0.7], visible: false, backdrop: [0x01, [-2000, 0]]},
 	{path: 'final/escape/objects3', position: [-1210, -745], visible: false},
 	{path: 'final/escape/objects2', position: [-1210, -745], visible: false, front: true},
 	{path: 'final/escape/objects1', position: [-1210, -745], visible: false, front: true},
 	{path: 'final/escape/floor', position: [-1210, -665], scale: [0.7, 0.7, true], animation: [{name: "idle", looped: true}], visible: false},
-	{path: 'final/escape/overlay', position: [-1210, -705], visible: false, front: true}
+	{path: 'final/escape/overlay', position: [-1210, -705], visible: false, front: true},
+	{path: 'final/escape/multiply', position: [-1210, -705], visible: false, front: true},
+	{path: 'final/escape/edge', position: [-1210, -705], visible: false, front: true}
 ];
 
 var bgThird:Array<BackgroundSprite> = [
 	{path: 'final/third/floorp3', position: [-950, -400], scale: [0.5, 0.5, true], animation: [{name: "idle", looped: true}], visible: false},
-	{path: 'final/third/objects1', position: [-1050, -400], visible: false, front: true},
-	{path: 'final/third/objects2', position: [-750, -400], visible: false, front: true}
+	{path: 'final/third/objects1', position: [-600, -150], scale: [0.65, 0.65, true], visible: false, front: true},
+	{path: 'final/third/objects2', position: [-450, -150], scale: [0.65, 0.65, true], visible: false, front: true}
 ];
 
 final hudSprites:Array<String> = ['iconBF', 'iconOpp', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG', 'exeScoreTxt'];
@@ -62,6 +65,8 @@ var bfYeah:FlxSprite;
 var xenoRing:FlxSprite;
 
 //legsList
+var bfLegs2back:Character;
+var bfLegs2:Character;
 var bfLegs3:Character;
 
 var curBG:String = 'intro';
@@ -89,6 +94,7 @@ function onCreate()
 	bgIntro[bgIntro.length - 1].sprite.color = 0xFF000000;
 
 	makeBackground(bgSecond);
+	bgSecond[bgSecond.length - 2].sprite.blend = BlendMode.MULTIPLY;
 	makeBackground(bgThird);
 
 	// preload chars
@@ -100,10 +106,18 @@ function onCreate()
 
 	xenoRing = new FlxSprite(dad.x, dad.y).loadGraphic(Paths.image('characters/FINAL-ESCAPE-HD'));
 	xenoRing.scale.set(1.3, 1.3); xenoRing.updateHitbox();
-	game.insert(game.members.indexOf(bgSecond[bgSecond.length - 2].sprite), xenoRing);
+	game.insert(game.members.indexOf(bgSecond[bgSecond.length - 4].sprite), xenoRing);
 	xenoRing.visible = false;
 
 	//legs making
+	bfLegs2 = new Character(boyfriend.x + 435, boyfriend.y - 55, 'bf-fe2legs', true);
+	bfLegs2.visible = false;
+	insert(game.members.indexOf(boyfriendGroup) + 1, bfLegs2);
+
+	bfLegs2back = new Character(boyfriend.x + 410, boyfriend.y - 55, 'bf-fe2legsback', true);
+	bfLegs2back.visible = false;
+	insert(game.members.indexOf(boyfriendGroup), bfLegs2back);
+
 	bfLegs3 = new Character(boyfriend.x - 8, boyfriend.y + 110, 'bf-fe3legs', true);
 	bfLegs3.visible = false;
 	insert(game.members.indexOf(boyfriendGroup) + 1, bfLegs3);
@@ -180,16 +194,18 @@ function onUpdatePost(elapsed:Float)
 				if (bgSecond[i].sprite.visible)
 				{
 					bgSecond[i].sprite.setPosition(
-						bgSecond[i].position[0] + Math.sin(floatSine + i) * 3,
-						bgSecond[i].position[1] + Math.cos(floatSine + i) * 10
+						bgSecond[i].position[0] + Math.sin(floatSine + (i * 2)) * 3,
+						bgSecond[i].position[1] + Math.cos(floatSine + (i * 2)) * 10
 					);
-					bgSecond[i].sprite.angle = Math.cos(floatSine + i * 0.5) * 2;
+					bgSecond[i].sprite.angle = Math.cos(floatSine + (i * 2)) * 2;
 				}
 			}
 
 			if (bgSecond[9].sprite.visible)
 			{
 				boyfriend.y = 149 + Math.cos(floatSine) * 15;
+				bfLegs2.y = boyfriend.y + 115;
+				bfLegs2back.y = boyfriend.y + 100;
 				bgSecond[9].sprite.y = bgSecond[9].position[1] + Math.cos(floatSine) * 15;
 			}
 
@@ -212,6 +228,9 @@ function onUpdatePost(elapsed:Float)
 				game.remove(dadGroup, true);
 				game.insert(game.members.indexOf(xenoRing) + 1, dadGroup);
 			}
+
+			bfLegs2?.update();
+			bfLegs2back?.update();
 		case 'third':
 			for (i in 1...3) {
 				if (bgThird[i].sprite.visible)
@@ -226,7 +245,7 @@ function onUpdatePost(elapsed:Float)
 
 			dad.setPosition(
 				-750 + Math.sin(floatSine * 0.75) * 10,
-				-320 + Math.cos(floatSine * 0.75) * 50
+				-170 + Math.cos(floatSine * 0.75) * 50
 			);
 
 			bfLegs3?.update();
@@ -295,6 +314,8 @@ function onEvent(n,v1,v2)
 				changeCharacter('bf', 'bf-fe2');
 				boyfriend.x += 400;
 				boyfriend.y -= 100;
+				bfLegs2.visible = true;
+				bfLegs2back.visible = true;
 				xenoRing.visible = true;
 				curBG = 'second';
 				cam.MiddleX = 100;
@@ -308,15 +329,18 @@ function onEvent(n,v1,v2)
 				bgIntro[1].sprite.y += 400;
 				boyfriend.x -= 10;
 				game.remove(bgIntro[1].sprite, true); game.insert(game.members.indexOf(bgIntro[0].sprite) + 1, bgIntro[1].sprite);
-				for (spr in bgSecond) spr.sprite.visible = false;
+				for (spr in bgSecond) spr.sprite.visible = false; bgSecond[bgSecond.length - 2].sprite.visible = true; bgSecond[bgSecond.length - 1].sprite.visible = true;
 				for (spr in bgIntro) spr.sprite.visible = true;
 				bgIntro[5].sprite.visible = false; bgIntro[6].sprite.visible = false; bgIntro[7].sprite.visible = false; bgIntro[9].sprite.visible = false;
 				for (spr in bgThird) spr.sprite.visible = true;
 				xenoRing.visible = false;
 				curBG = 'third';
+				cam.DADy = 150;
 				cam.BFx = 0;
 				cam.BFy = 300;
 				bfLegs3.visible = true;
+				bfLegs2.visible = false;
+				bfLegs2back.visible = false;
 			case 'fadecam':
 				FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / (1000 / 2.5));
 				blackBG.camera = camOther;
@@ -334,6 +358,9 @@ function onEvent(n,v1,v2)
 				curBG = 'second';
 				cam.BFx = 250;
 				cam.BFy = 120;
+				cam.DADy = 0;
+				bfLegs2.visible = true;
+				bfLegs2back.visible = true;
 				bfLegs3.destroy();
 		}
 	}
@@ -354,6 +381,14 @@ function goodNoteHit(note)
 		bfLegs3.playAnim(game.singAnimations[note.noteData], true);
 		bfLegs3.holdTimer = 0;
 	}
+
+	if (curBG == 'second' && bfLegs2 != null && bfLegs2back != null && !note.isSustainNote)
+	{
+		bfLegs2.playAnim(game.singAnimations[note.noteData], true);
+		bfLegs2.holdTimer = 0;
+		bfLegs2back.playAnim(game.singAnimations[note.noteData], true);
+		bfLegs2back.holdTimer = 0;
+	}
 }
 
 function noteMiss(note)
@@ -361,6 +396,10 @@ function noteMiss(note)
 	if (curBG == 'third' && bfLegs3 != null)
 	{
 		bfLegs3.playAnim(game.singAnimations[note.noteData] + 'miss', true);
+	}
+	if (curBG == 'second' && bfLegs2 != null && bfLegs2back != null)
+	{
+		bfLegs2.playAnim(game.singAnimations[note.noteData] + 'miss', true);
 	}
 }
 

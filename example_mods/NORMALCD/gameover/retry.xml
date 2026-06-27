@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="retry.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 1 instancia 10000" x="12" y="12" width="529" height="189" frameX="-41" frameY="-53" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10001" x="563" y="12" width="603" height="271"/>
+	<SubTexture name="Símbolo 1 instancia 10002" x="563" y="12" width="603" height="271"/>
+	<SubTexture name="Símbolo 1 instancia 10003" x="1188" y="12" width="580" height="246" frameX="-11" frameY="-19" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10004" x="1188" y="12" width="580" height="246" frameX="-11" frameY="-19" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10005" x="12" y="305" width="554" height="218" frameX="-29" frameY="-32" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10006" x="12" y="305" width="554" height="218" frameX="-29" frameY="-32" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10007" x="588" y="305" width="552" height="208" frameX="-30" frameY="-40" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10008" x="588" y="305" width="552" height="208" frameX="-30" frameY="-40" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10009" x="588" y="305" width="552" height="208" frameX="-30" frameY="-40" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10010" x="588" y="305" width="552" height="208" frameX="-30" frameY="-40" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10011" x="588" y="305" width="552" height="208" frameX="-30" frameY="-40" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10012" x="588" y="305" width="552" height="208" frameX="-30" frameY="-40" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10013" x="588" y="305" width="552" height="208" frameX="-30" frameY="-40" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10014" x="588" y="305" width="552" height="208" frameX="-30" frameY="-40" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10015" x="588" y="305" width="552" height="208" frameX="-30" frameY="-40" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10016" x="588" y="305" width="552" height="208" frameX="-30" frameY="-40" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="Símbolo 1 instancia 10017" x="588" y="305" width="552" height="208" frameX="-30" frameY="-40" frameWidth="603" frameHeight="271"/>
+	<SubTexture name="confirm instancia 10000" x="1162" y="305" width="530" height="189" frameX="-11" frameY="-151" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10001" x="12" y="545" width="520" height="244" frameX="-18" frameY="-126" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10002" x="554" y="545" width="538" height="230" frameX="-9" frameY="-133" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10003" x="1114" y="545" width="556" height="215" frameX="0" frameY="-140" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10004" x="12" y="811" width="554" height="237" frameX="-1" frameY="-129" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10005" x="588" y="811" width="552" height="250" frameX="-2" frameY="-123" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10006" x="1162" y="811" width="550" height="264" frameX="-3" frameY="-116" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10007" x="12" y="1097" width="548" height="278" frameX="-4" frameY="-109" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10008" x="582" y="1097" width="548" height="291" frameX="-4" frameY="-102" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10009" x="1152" y="1097" width="546" height="305" frameX="-5" frameY="-95" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10010" x="12" y="1424" width="544" height="319" frameX="-6" frameY="-88" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10011" x="578" y="1424" width="542" height="332" frameX="-7" frameY="-82" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10012" x="1142" y="1424" width="540" height="346" frameX="-8" frameY="-75" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10013" x="12" y="1792" width="538" height="360" frameX="-9" frameY="-68" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10014" x="572" y="1792" width="536" height="373" frameX="-10" frameY="-61" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10015" x="1130" y="1792" width="534" height="386" frameX="-11" frameY="-55" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10016" x="12" y="2200" width="533" height="399" frameX="-12" frameY="-49" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10017" x="567" y="2200" width="532" height="415" frameX="-12" frameY="-41" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10018" x="1121" y="2200" width="530" height="429" frameX="-13" frameY="-34" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10019" x="12" y="2651" width="528" height="443" frameX="-14" frameY="-27" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10020" x="562" y="2651" width="526" height="456" frameX="-15" frameY="-20" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10021" x="1110" y="2651" width="524" height="470" frameX="-16" frameY="-13" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10022" x="12" y="3143" width="522" height="483" frameX="-17" frameY="-7" frameWidth="556" frameHeight="497"/>
+	<SubTexture name="confirm instancia 10023" x="556" y="3143" width="520" height="497" frameX="-18" frameY="0" frameWidth="556" frameHeight="497"/>
+</TextureAtlas>

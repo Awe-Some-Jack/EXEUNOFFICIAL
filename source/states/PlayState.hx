@@ -241,6 +241,7 @@ class PlayState extends MusicBeatState
 
 	public var inCutscene:Bool = false;
 	public var skipCountdown:Bool = false;
+	var missNotePlaying:Bool = false;
 	var songLength:Float = 0;
 
 	public var boyfriendCameraOffset:Array<Float> = null;
@@ -708,7 +709,7 @@ class PlayState extends MusicBeatState
 
 		//PRECACHING THINGS THAT GET USED FREQUENTLY TO AVOID LAGSPIKES
 		if(ClientPrefs.data.hitsoundVolume > 0) Paths.sound('hitsound');
-		if(!ClientPrefs.data.ghostTapping) for (i in 1...4) Paths.sound('missnote$i');
+		for (i in 1...4) Paths.sound('missnote$i');
 		Paths.image('alphabet');
 
 		resetRPC();
@@ -3106,13 +3107,19 @@ class PlayState extends MusicBeatState
 		
 		var missNote:FlxSound = FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 		if (ClientPrefs.data.ghostTapping) {
-			var hasSplitVocals:Bool = opponentVocals.length > 0;
 			vocals.volume = 0;
-			if (hasSplitVocals) opponentVocals.volume = 0;
-			if (missNote != null) missNote.onComplete = () -> {
+			opponentVocals.volume = 0;
+			missNotePlaying = true;
+			var restoreVocals = () -> {
+				if (!missNotePlaying) return;
+				missNotePlaying = false;
 				vocals.volume = 1;
-				if (hasSplitVocals) opponentVocals.volume = 1;
+				opponentVocals.volume = 1;
 			};
+			if (missNote != null) {
+				missNote.onComplete = restoreVocals;
+				new FlxTimer().start(0.8, (_) -> restoreVocals());
+			} else restoreVocals();
 		} else {
 			vocals.volume = 0;
 		}
@@ -3139,8 +3146,10 @@ class PlayState extends MusicBeatState
 
 		handleOpponentAnimation(note);
 
-		if(opponentVocals.length <= 0)
-			vocals.volume = 1;
+		if (!missNotePlaying) {
+			if (opponentVocals.length <= 0) vocals.volume = 1;
+			else opponentVocals.volume = 1;
+		}
 
 		strumPlayAnim(true,
 			Std.int(Math.abs(note.noteData)),
@@ -3239,6 +3248,7 @@ class PlayState extends MusicBeatState
 			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
 
 		vocals.volume = 1;
+		if (!missNotePlaying) opponentVocals.volume = 1;
 
 		if(!note.isSustainNote)
 		{

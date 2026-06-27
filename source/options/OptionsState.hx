@@ -390,9 +390,9 @@ class OptionsState extends MusicBeatState
 		canAction = false;
 
 		final curSectionText = sectionsGrp.members[curSelected];
-		FlxFlicker.flicker(curSectionText, 1, 0.06, true, false, (_) -> canAction = true);
+		FlxFlicker.flicker(curSectionText, 1, 0.06, true, false);
 
-		new FlxTimer().start(1.5, function(_)
+		new FlxTimer().start(0.4, function(_)
 		{
 			if (titleAlphaTween != null) titleAlphaTween.cancel();
 			titleAlphaTween = FlxTween.tween(title, {alpha: 0.5}, 0.3, {ease: FlxEase.sineInOut, onComplete: (_) -> titleAlphaTween = null});
@@ -403,10 +403,8 @@ class OptionsState extends MusicBeatState
 				case "VISUALS":   openSubState(new options.ExeVisualsState());
 				case "GRAPHICS":  openSubState(new options.ExeGraphicsState());
 				case "GAMEPLAY":  openSubState(new options.ExeGameplayState());
-				case "LANGUAGE":
-					openSubState(new options.ExeLanguageState());
+				case "LANGUAGE":  openSubState(new options.ExeLanguageState());
 			}
-			canAction = true;
 		});
 	}
 

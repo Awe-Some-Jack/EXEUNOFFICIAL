@@ -5,6 +5,7 @@ import flixel.input.keyboard.FlxKey;
 import flixel.input.gamepad.FlxGamepadInputID;
 
 import states.EXETitle;
+import Main;
 
 // Add a variable here and it will get automatically saved
 @:structInit class SaveVariables {
@@ -77,6 +78,7 @@ import states.EXETitle;
 	public var discordRPC:Bool = true;
 	public var loadingScreen:Bool = true;
 	public var language:String = 'en-US';
+	public var duduMode:Bool = false;
 }
 
 class ClientPrefs {
@@ -206,6 +208,7 @@ class ClientPrefs {
 		}
 
 		flixel.FlxSprite.defaultAntialiasing = data.antialiasing;
+		Main.applyDuduMode();
 		
 		// flixel automatically saves your volume!
 		if(FlxG.save.data.volume != null)

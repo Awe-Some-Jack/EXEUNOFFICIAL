@@ -190,7 +190,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 	function playIntro(rectX:Int)
 	{
-		final dur:Float = 0.28;
+		final dur:Float = 0.45;
 		final ease = FlxEase.quartOut;
 
 		FlxTween.tween(titlebar,    {x: TB_X},  dur, {ease: ease});
@@ -209,7 +209,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	{
 		introAnimating = true;
 
-		final dur:Float = 0.22;
+		final dur:Float = 0.35;
 		final ease = FlxEase.quartIn;
 		final offLeft:Float  = -(FlxG.width + 200);
 		final offRight:Float = FlxG.width + 200;
@@ -254,7 +254,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		selectionClone.setPosition(group.nameBG.x - 3, group.nameBG.y - 3);
 
 		selectionCloneTween?.cancel();
-		selectionCloneTween = FlxTween.tween(selectionClone, {x: group.nameBG.x + 13, y: group.nameBG.y + 13}, 0.1, {
+		selectionCloneTween = FlxTween.tween(selectionClone, {x: group.nameBG.x + 13, y: group.nameBG.y + 13}, 0.2, {
 			ease: FlxEase.quadInOut,
 			onUpdate: (_) -> selectionCloneWhite.setPosition(selectionClone.x, selectionClone.y),
 			onComplete: (_) -> selectionCloneTween = null
@@ -263,12 +263,12 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		cloneColorTween?.cancel();
 		selectionCloneWhite.setPosition(selectionClone.x, selectionClone.y);
 		selectionCloneWhite.alpha = 0;
-		cloneColorTween = FlxTween.tween(selectionCloneWhite, {alpha: 1.0}, 0.08, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
+		cloneColorTween = FlxTween.tween(selectionCloneWhite, {alpha: 1.0}, 0.2, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 
 		selectionCloneV.setPosition(group.valueBG.x - 3, group.valueBG.y - 3);
 
 		selectionCloneTweenV?.cancel();
-		selectionCloneTweenV = FlxTween.tween(selectionCloneV, {x: group.valueBG.x + 13, y: group.valueBG.y + 13}, 0.1, {
+		selectionCloneTweenV = FlxTween.tween(selectionCloneV, {x: group.valueBG.x + 13, y: group.valueBG.y + 13}, 0.2, {
 			ease: FlxEase.quadInOut,
 			onUpdate: (_) -> selectionCloneWhiteV.setPosition(selectionCloneV.x, selectionCloneV.y),
 			onComplete: (_) -> selectionCloneTweenV = null
@@ -277,7 +277,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		cloneColorTweenV?.cancel();
 		selectionCloneWhiteV.setPosition(selectionCloneV.x, selectionCloneV.y);
 		selectionCloneWhiteV.alpha = 0;
-		cloneColorTweenV = FlxTween.tween(selectionCloneWhiteV, {alpha: 1.0}, 0.08, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
+		cloneColorTweenV = FlxTween.tween(selectionCloneWhiteV, {alpha: 1.0}, 0.2, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 	}
 
 	public function showArrows(rowY:Float)

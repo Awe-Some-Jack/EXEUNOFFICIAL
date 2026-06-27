@@ -6,6 +6,7 @@ import flixel.util.FlxColor;
 import openfl.Assets;
 import backend.Paths;
 import backend.ClientPrefs;
+import Main;
 
 class ExeGraphicsState extends ExeBaseOptionsState
 {
@@ -28,7 +29,8 @@ class ExeGraphicsState extends ExeBaseOptionsState
 			{label: "GPU CACHING",  getValue: () -> ClientPrefs.data.cacheOnGPU,    setValue: (v) -> ClientPrefs.data.cacheOnGPU   = v},
 			{label: "SHADERS",      getValue: () -> ClientPrefs.data.shaders,       setValue: (v) -> ClientPrefs.data.shaders      = v},
 			{label: "UNCAPPED FPS", getValue: () -> ClientPrefs.data.uncappedFPS,   setValue: (v) -> ClientPrefs.data.uncappedFPS  = v},
-			{label: "FRAMERATE",    getValue: () -> ClientPrefs.data.framerate,     setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true}
+			{label: "FRAMERATE",    getValue: () -> ClientPrefs.data.framerate,     setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true},
+			{label: "DUDU MODE",    getValue: () -> ClientPrefs.data.duduMode,      setValue: (v) -> { ClientPrefs.data.duduMode = v; Main.applyDuduMode(); }}
 		];
 
 		var i = 0;

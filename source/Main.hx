@@ -15,6 +15,7 @@ import haxe.io.Path;
 
 import openfl.Assets;
 import openfl.Lib;
+import openfl.display.Bitmap;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
@@ -62,6 +63,7 @@ class Main extends Sprite
 	};
 
 	public static var fpsVar:FPSCounter;
+	public static var duduOverlay:Bitmap;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -166,6 +168,13 @@ class Main extends Sprite
 
 		FlxG.mouse.useSystemCursor = true;
 
+		duduOverlay = new Bitmap(Assets.getBitmapData('assets/exe/codearduele.png'));
+		duduOverlay.width  = game.width;
+		duduOverlay.height = game.height;
+		duduOverlay.alpha  = 0.2;
+		duduOverlay.visible = false;
+		addChild(duduOverlay);
+
 		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		fpsVar.visible = false;
@@ -210,6 +219,11 @@ class Main extends Sprite
 			if (FlxG.game != null)
 				resetSpriteCache(FlxG.game);
 		});
+	}
+
+	public static function applyDuduMode():Void
+	{
+		if (duduOverlay != null) duduOverlay.visible = ClientPrefs.data.duduMode;
 	}
 
 	public static function resetSpriteCache(sprite:Sprite):Void {

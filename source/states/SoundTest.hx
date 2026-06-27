@@ -15,8 +15,6 @@ import flixel.util.FlxTimer;
 import openfl.utils.Assets as AssetPaths;
 import backend.Paths;
 import haxe.Json;
-import states.extras.sebas.SebasMiBeba;
-
 import states.substates.SoundTestSubState;
 
 typedef SoundTestData = {
@@ -381,17 +379,9 @@ class SoundTest extends MusicBeatState
 							}
 							else
 							{
-								if (code.type == 'sebas') 
-								{
-									FlxTransitionableState.skipNextTransIn = FlxTransitionableState.skipNextTransOut = true;
-									FlxG.switchState(() -> new SebasMiBeba());
-								}
-								else
-								{
-									persistentUpdate = false;
-									persistentDraw = true;
-									openSubState(new SoundTestSubState((code.type.toLowerCase() == 'video'), code.path));
-								}
+								persistentUpdate = false;
+							persistentDraw = true;
+							openSubState(new SoundTestSubState((code.type.toLowerCase() == 'video'), code.path));
 							}
 						}
 					});

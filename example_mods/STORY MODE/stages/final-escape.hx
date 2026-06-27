@@ -1,5 +1,6 @@
 import psychlua.LuaUtils;
 import flixel.addons.display.FlxBackdrop;
+import objects.Character;
 
 typedef BackgroundSprite =
 {
@@ -9,6 +10,8 @@ typedef BackgroundSprite =
 	@:optional var scale:Array<Dynamic>;
 	@:optional var scroll:Array<Float>;
 	@:optional var front:Bool;
+	@:optional var visible:Bool;
+	@:optional var alpha:Float;
 	@:optional var animation:Array<Dynamic>;
 	@:optional var backdrop:Array<Dynamic>;
 }
@@ -33,10 +36,17 @@ var bgSecond:Array<BackgroundSprite> = [
 	{path: 'final/escape/water', position: [-1200, -500], scroll: [0.7, 0.7], scale: [0.7, 0.7, true], animation: [{name: "idle", fps: 9, looped: true}], visible: false},
 	{path: 'final/escape/bg2', position: [-1100, -600], scroll: [0.5, 0.5], visible: false},
 	{path: 'final/escape/bg1', position: [-1200, -550], scroll: [0.7, 0.7], visible: false},
-	{path: 'final/escape/objects3', position: [-1210, -705], visible: false},
-	{path: 'final/escape/objects2', position: [-1210, -705], visible: false},
-	{path: 'final/escape/objects1', position: [-1210, -705], visible: false, front: true},
-	{path: 'final/escape/floor', position: [-1210, -705], scale: [0.7, 0.7, true], animation: [{name: "idle", looped: true}], visible: false}
+	{path: 'final/escape/objects3', position: [-1210, -745], visible: false},
+	{path: 'final/escape/objects2', position: [-1210, -745], visible: false, front: true},
+	{path: 'final/escape/objects1', position: [-1210, -745], visible: false, front: true},
+	{path: 'final/escape/floor', position: [-1210, -665], scale: [0.7, 0.7, true], animation: [{name: "idle", looped: true}], visible: false},
+	{path: 'final/escape/overlay', position: [-1210, -705], visible: false, front: true}
+];
+
+var bgThird:Array<BackgroundSprite> = [
+	{path: 'final/third/floorp3', position: [-950, -400], scale: [0.5, 0.5, true], animation: [{name: "idle", looped: true}], visible: false},
+	{path: 'final/third/objects1', position: [-1050, -400], visible: false, front: true},
+	{path: 'final/third/objects2', position: [-750, -400], visible: false, front: true}
 ];
 
 final hudSprites:Array<String> = ['iconBF', 'iconOpp', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG', 'exeScoreTxt'];
@@ -50,6 +60,9 @@ var blackBG:FlxSprite;
 var eyes:FlxSprite;
 var bfYeah:FlxSprite;
 var xenoRing:FlxSprite;
+
+//legsList
+var bfLegs3:Character;
 
 var curBG:String = 'intro';
 function onCreate()
@@ -71,16 +84,29 @@ function onCreate()
 	makeBackground(bgIntro);
 	bgIntro[1].sprite.alpha = 0;
 	bgIntro[1].sprite.animation.finishCallback = function(name:String){ bgIntro[1].sprite.alpha = 0; };
+	game.remove(dadGroup, true);
+	game.insert(game.members.indexOf(bgIntro[bgIntro.length - 1].sprite), dadGroup);
+	bgIntro[bgIntro.length - 1].sprite.color = 0xFF000000;
 
 	makeBackground(bgSecond);
+	makeBackground(bgThird);
 
 	// preload chars
 	preloadCharacter(1, 'xeno-fe2');
 	preloadCharacter(0, 'bf-fe2');
 
+	preloadCharacter(1, 'xeno-fe3');
+	preloadCharacter(0, 'bf-fe3');
+
 	xenoRing = new FlxSprite(dad.x, dad.y).loadGraphic(Paths.image('characters/FINAL-ESCAPE-HD'));
-	game.insert(game.members.indexOf(bgSecond[bgSecond.length - 1].sprite), xenoRing);
+	xenoRing.scale.set(1.3, 1.3); xenoRing.updateHitbox();
+	game.insert(game.members.indexOf(bgSecond[bgSecond.length - 2].sprite), xenoRing);
 	xenoRing.visible = false;
+
+	//legs making
+	bfLegs3 = new Character(boyfriend.x - 8, boyfriend.y + 110, 'bf-fe3legs', true);
+	bfLegs3.visible = false;
+	insert(game.members.indexOf(boyfriendGroup) + 1, bfLegs3);
 }
 
 var notesPosition:Array<Array<Float>> = [[0,0,0,0], [0,0,0,0]];
@@ -120,16 +146,19 @@ function onGameOverStart() if (introCutscene != null) introCutscene.destroy();
 function onPause() if (introCutscene != null) introCutscene.pause();
 function onResume() if (introCutscene != null) introCutscene.resume();
 
+var inFront:Bool = true;
 var floatSine:Float = 0;
+var floatIntensity:Float = 1;
+var introYPos:Float = -410;
+var offsetScale:Float = 1;
 function onUpdatePost(elapsed:Float)
 {
-	blackBG.scale.set(1 / camGame.zoom, 1 / camGame.zoom);
-	floatSine += elapsed;
+	blackBG.scale.set((1 / camGame.zoom) * offsetScale, (1 / camGame.zoom) * offsetScale);
+	floatSine += elapsed * floatIntensity;
 
 	switch(curBG)
 	{
 		case 'intro':
-			if (eyes != null) eyes.setPosition(dad.x + 400, dad.y + 280);
 			for (i in 5...8) {
 				if (bgIntro[i].sprite.visible)
 				{
@@ -137,9 +166,15 @@ function onUpdatePost(elapsed:Float)
 						bgIntro[i].position[0] + Math.sin(floatSine + i) * 3,
 						bgIntro[i].position[1] + Math.cos(floatSine + i) * 10
 					);
-					bgIntro[i].sprite.angle = Math.cos(floatSine + i) * 2;
+					bgIntro[i].sprite.angle = Math.cos(floatSine + i * 0.5) * 2;
 				}
 			}
+
+			dad.setPosition(
+				-442 + Math.sin(floatSine * 0.75) * 7,
+				introYPos + Math.cos(floatSine * 0.75) * 25
+			);
+			if (eyes != null) eyes.setPosition(dad.x + 400, dad.y + 440);
 		case 'second':
 			for (i in 6...9) {
 				if (bgSecond[i].sprite.visible)
@@ -148,16 +183,53 @@ function onUpdatePost(elapsed:Float)
 						bgSecond[i].position[0] + Math.sin(floatSine + i) * 3,
 						bgSecond[i].position[1] + Math.cos(floatSine + i) * 10
 					);
-					bgSecond[i].sprite.angle = Math.cos(floatSine + i) * 2;
+					bgSecond[i].sprite.angle = Math.cos(floatSine + i * 0.5) * 2;
+				}
+			}
+
+			if (bgSecond[9].sprite.visible)
+			{
+				boyfriend.y = 149 + Math.cos(floatSine) * 15;
+				bgSecond[9].sprite.y = bgSecond[9].position[1] + Math.cos(floatSine) * 15;
+			}
+
+			dad.setPosition(
+				-442 + Math.sin(floatSine * 0.75) * 10,
+				-280 + Math.cos(floatSine * 0.75) * 50
+			);
+
+			if (xenoRing.visible) xenoRing.setPosition(dad.x - 680, dad.y - 200);
+
+			if (dad.animation.curAnim.name == 'singLEFT' && !inFront)
+			{
+				inFront = true;
+				game.remove(dadGroup, true);
+				game.insert(game.members.indexOf(boyfriendGroup) - 1, dadGroup);
+			}
+			else if (dad.animation.curAnim.name != 'singLEFT' && inFront)
+			{
+				inFront = false;
+				game.remove(dadGroup, true);
+				game.insert(game.members.indexOf(xenoRing) + 1, dadGroup);
+			}
+		case 'third':
+			for (i in 1...3) {
+				if (bgThird[i].sprite.visible)
+				{
+					bgThird[i].sprite.setPosition(
+						bgThird[i].position[0] + Math.sin(floatSine + i) * 3,
+						bgThird[i].position[1] + Math.cos(floatSine + i) * 10
+					);
+					bgThird[i].sprite.angle = Math.cos(floatSine + i * 0.5) * 2;
 				}
 			}
 
 			dad.setPosition(
-				-442 + Math.sin(floatSine) * 3,
-				-250 + Math.cos(floatSine) * 10
+				-750 + Math.sin(floatSine * 0.75) * 10,
+				-320 + Math.cos(floatSine * 0.75) * 50
 			);
 
-			if (xenoRing.visible) xenoRing.setPosition(dad.x - 460, dad.y - 100);
+			bfLegs3?.update();
 	}
 }
 
@@ -167,6 +239,13 @@ function onEvent(n,v1,v2)
 	{
 		switch(v1)
 		{
+			//lightning wow amazing
+			case 'lightning':
+				var lightning:FlxSprite = bgIntro[1].sprite;
+				lightning.animation.play('variant' + FlxG.random.int(1,3), true);
+				lightning.alpha = 1;
+				game.triggerEvent('bloomFlash', '0.15, 0', '0.5', Conductor.songPosition);
+				
 			case 'fuckYouVideo':
 				if (introCutscene != null) introCutscene.destroy();
 				camGame.alpha = 1;
@@ -176,8 +255,9 @@ function onEvent(n,v1,v2)
 				camGame.snapToTarget();
 				FlxTween.tween(camGame, {zoom: 0.8}, Conductor.crochet / (1000 / 20), {ease: FlxEase.expoInOut});
 				FlxTween.tween(camGame.targetOffset, {y: 0}, Conductor.crochet / (1000 / 12), {ease: FlxEase.cubeOut});
-				dad.y -= 600; dad.alpha = 0; eyes.alpha = 0; boyfriend.alpha = 0;
-				FlxTween.tween(dad, {y: dad.y + 600}, Conductor.crochet / (1000 / 20), {ease: FlxEase.cubeOut});
+				dad.alpha = 0; eyes.alpha = 0; boyfriend.alpha = 0;
+				var t = {v: (-410 - 1000)};
+				FlxTween.tween(t, {v: -410}, Conductor.crochet / (1000 / 20), {ease: FlxEase.cubeOut, onUpdate: function(_) {introYPos = t.v;}});
 			case 'fadeEyes':
 				FlxTween.tween(eyes, {alpha: 1}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
 			case 'fadeDad':
@@ -187,12 +267,8 @@ function onEvent(n,v1,v2)
 			case 'intro':
 				FlxTween.tween(blackBG, {alpha: 0}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
 				FlxTween.tween(boyfriend, {alpha: 1}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
+				FlxTween.color(bgIntro[bgIntro.length - 1].sprite, Conductor.crochet / (1000 / 4), 0xFF000000, 0xFFFFFFFF, {ease: FlxEase.cubeInOut});
 				eyes.destroy();
-			case 'lightning':
-				var lightning:FlxSprite = bgIntro[1].sprite;
-				lightning.animation.play('variant' + FlxG.random.int(1,3), true);
-				lightning.alpha = 1;
-				game.triggerEvent('bloomFlash', '0.15, 0', '0.5', Conductor.songPosition);
 			case 'fadeNotes':
 				for (i in 0...4) FlxTween.tween(playerStrums.members[i], {alpha: 1, y: (playerStrums.members[i].y + (prefs.downScroll ? -10 : 10))}, Conductor.crochet / 250, {ease: FlxEase.cubeInOut, startDelay: i / 4});
 			case 'yeahbf':
@@ -200,10 +276,13 @@ function onEvent(n,v1,v2)
 				FlxTween.tween(bfYeah, {x: (FlxG.width - bfYeah.width) / 2}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
 				bfYeah.animation.play('yeah', true);
 			case 'secondsection':
+				floatIntensity = 3;
 				bfYeah.destroy();
 				camHUD.flash(0xFFFFFFFF, Conductor.crochet / 250, null, true);
-				for (spr in bgIntro) spr.sprite.visible = false;
+				for (spr in bgIntro) spr.sprite.visible = false; bgIntro[1].sprite.visible = true;
 				for (spr in bgSecond) spr.sprite.visible = true;
+				game.remove(bgIntro[1].sprite, true); game.insert(game.members.indexOf(bgSecond[4].sprite), bgIntro[1].sprite);
+				bgIntro[1].sprite.y -= 400;
 				for (spr in hudSprites) game.getLuaObject(spr).alpha = 1;
 				for (i in 0...4)
 				{
@@ -215,10 +294,73 @@ function onEvent(n,v1,v2)
 				changeCharacter('dad', 'xeno-fe2');
 				changeCharacter('bf', 'bf-fe2');
 				boyfriend.x += 400;
-				boyfriend.y -= 150;
+				boyfriend.y -= 100;
 				xenoRing.visible = true;
 				curBG = 'second';
+				cam.MiddleX = 100;
+				cam.OGZoom = 0.8;
+				cam.BFx = 350;
+				cam.BFy = 200;
+			case 'thirdsection':
+				camHUD.flash(0xFFFFFFFF, Conductor.crochet / 250, null, true);
+				changeCharacter('dad', 'xeno-fe3');
+				changeCharacter('bf', 'bf-fe3');
+				bgIntro[1].sprite.y += 400;
+				boyfriend.x -= 10;
+				game.remove(bgIntro[1].sprite, true); game.insert(game.members.indexOf(bgIntro[0].sprite) + 1, bgIntro[1].sprite);
+				for (spr in bgSecond) spr.sprite.visible = false;
+				for (spr in bgIntro) spr.sprite.visible = true;
+				bgIntro[5].sprite.visible = false; bgIntro[6].sprite.visible = false; bgIntro[7].sprite.visible = false; bgIntro[9].sprite.visible = false;
+				for (spr in bgThird) spr.sprite.visible = true;
+				xenoRing.visible = false;
+				curBG = 'third';
+				cam.BFx = 0;
+				cam.BFy = 300;
+				bfLegs3.visible = true;
+			case 'fadecam':
+				FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / (1000 / 2.5));
+				blackBG.camera = camOther;
+				offsetScale = 2;
+			case 'backsecondsection':
+				FlxTween.tween(blackBG, {alpha: 0}, Conductor.crochet / 1000);
+				changeCharacter('dad', 'xeno-fe2');
+				changeCharacter('bf', 'bf-fe2');
+				for (spr in bgIntro) spr.sprite.visible = false; bgIntro[1].sprite.visible = true;
+				for (spr in bgSecond) spr.sprite.visible = true;
+				game.remove(bgIntro[1].sprite, true); game.insert(game.members.indexOf(bgSecond[4].sprite), bgIntro[1].sprite);
+				for (spr in bgThird) spr.sprite.destroy();
+				bgIntro[1].sprite.y -= 400;
+				xenoRing.visible = true;
+				curBG = 'second';
+				cam.BFx = 250;
+				cam.BFy = 120;
+				bfLegs3.destroy();
 		}
+	}
+}
+
+function opponentNoteHit(note)
+{
+	if (curBG == 'second' || curBG == 'third')
+	{
+		FlxG.camera.shake(0.005, 0.1);
+	}
+}
+
+function goodNoteHit(note)
+{
+	if (curBG == 'third' && bfLegs3 != null && !note.isSustainNote)
+	{
+		bfLegs3.playAnim(game.singAnimations[note.noteData], true);
+		bfLegs3.holdTimer = 0;
+	}
+}
+
+function noteMiss(note)
+{
+	if (curBG == 'third' && bfLegs3 != null)
+	{
+		bfLegs3.playAnim(game.singAnimations[note.noteData] + 'miss', true);
 	}
 }
 

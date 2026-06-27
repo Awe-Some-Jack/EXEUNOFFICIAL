@@ -1,81 +1,113 @@
 {
 	"animations": [
 		{
+			"offsets": [13, -3],
 			"loop": false,
-			"offsets": [15, -2],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [-14, -9],
 			"loop": false,
-			"offsets": [-12, -8],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [-10, 57],
 			"loop": false,
-			"offsets": [-8, 58],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"offsets": [-38, 8],
 			"loop": false,
-			"offsets": [-36, 10],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
+			"offsets": [13, -3],
 			"loop": true,
-			"offsets": [15, -2],
+			"fps": 24,
 			"anim": "singLEFT-loop",
-			"fps": 24,
-			"name": "left s2 instancia 1",
-			"indices": [7, 8, 9]
+			"indices": [7, 8, 9],
+			"name": "left s2 instancia 1"
 		},
 		{
+			"offsets": [-14, -9],
 			"loop": true,
-			"offsets": [-12, -8],
+			"fps": 24,
 			"anim": "singDOWN-loop",
-			"fps": 24,
-			"name": "down e2 instancia 1",
-			"indices": [7, 8, 9]
+			"indices": [7, 8, 9],
+			"name": "down e2 instancia 1"
 		},
 		{
+			"offsets": [-10, 57],
 			"loop": true,
-			"offsets": [-8, 58],
+			"fps": 24,
 			"anim": "singUP-loop",
+			"indices": [7, 8, 9],
+			"name": "up e2 instancia 1"
+		},
+		{
+			"offsets": [-38, 8],
+			"loop": true,
 			"fps": 24,
-			"name": "up e2 instancia 1",
-			"indices": [7, 8, 9]
+			"anim": "singRIGHT-loop",
+			"indices": [7, 8, 9],
+			"name": "right s2 instancia 1"
 		},
 		{
 			"loop": true,
-			"offsets": [-36, 10],
-			"anim": "singRIGHT-loop",
+			"offsets": [0, 0],
+			"anim": "idle",
 			"fps": 24,
-			"name": "right s2 instancia 1",
-			"indices": [7, 8, 9]
+			"name": "cabeza idle",
+			"indices": []
 		},
 		{
 			"offsets": [0, 0],
 			"indices": [],
 			"fps": 24,
-			"anim": "idle",
-			"loop": true,
-			"name": "cabeza idle"
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "miss"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "miss"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "miss"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "miss"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/bfthirdfe",
+	"image": "characters/bfp3final",
 	"position": [0, 0],
 	"healthicon": "bf",
 	"flip_x": true,

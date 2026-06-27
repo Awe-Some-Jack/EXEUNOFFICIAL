@@ -2,10 +2,10 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [-1, 9],
+			"offsets": [0, 0],
 			"anim": "singLEFT",
 			"fps": 24,
-			"name": "left intro",
+			"name": "left",
 			"indices": []
 		},
 		{
@@ -13,15 +13,15 @@
 			"offsets": [0, 0],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "down intro",
+			"name": "down",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [0, 190],
+			"offsets": [0, 0],
 			"anim": "singUP",
 			"fps": 24,
-			"name": "up intro",
+			"name": "up",
 			"indices": []
 		},
 		{
@@ -29,29 +29,29 @@
 			"offsets": [0, 0],
 			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "rigth intro",
+			"name": "right",
 			"indices": []
 		},
 		{
-			"offsets": [0, 0],
 			"loop": false,
+			"offsets": [0, 0],
+			"anim": "dialogue",
 			"fps": 24,
-			"anim": "idle",
-			"indices": [],
-			"name": "idle intro"
+			"name": "dialogue",
+			"indices": []
 		},
 		{
-			"offsets": [-1, 68],
-			"indices": [],
-			"fps": 24,
-			"anim": "dialogue",
 			"loop": false,
-			"name": "Sex"
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/xenop1",
+	"image": "characters/xenointro",
 	"position": [0, 0],
 	"healthicon": "XENO-P4back",
 	"flip_x": false,

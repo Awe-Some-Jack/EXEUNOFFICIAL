@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"offsets": [100, 360],
 			"loop": true,
-			"fps": 24,
+			"offsets": [80, 380],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [405, 366],
 			"loop": false,
-			"fps": 24,
+			"offsets": [351, 381],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "sleft"
+			"fps": 24,
+			"name": "sleft",
+			"indices": []
 		},
 		{
-			"offsets": [247, 428],
 			"loop": false,
-			"fps": 24,
+			"offsets": [217, 445],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "sdown"
+			"fps": 24,
+			"name": "sdown",
+			"indices": []
 		},
 		{
-			"offsets": [260, 377],
 			"loop": false,
-			"fps": 24,
+			"offsets": [218, 385],
 			"anim": "singUP",
-			"indices": [],
-			"name": "sup"
+			"fps": 24,
+			"name": "sup",
+			"indices": []
 		},
 		{
-			"offsets": [234, 361],
 			"loop": false,
-			"fps": 24,
+			"offsets": [205, 375],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "sright"
+			"fps": 24,
+			"name": "sright",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
@@ -50,6 +50,6 @@
 	"healthbar_colors": [76, 5, 202],
 	"camera_position": [70, 200],
 	"sing_duration": 4,
-	"scale": 0.9,
+	"scale": 0.8,
 	"_editor_isPlayer": false
 }

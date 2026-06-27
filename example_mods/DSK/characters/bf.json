@@ -1,76 +1,76 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [36, -4],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
-		},
-		{
 			"loop": false,
-			"offsets": [22, -25],
-			"anim": "singDOWN",
 			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-25, 42],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-32, -3],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [36, -4],
 			"anim": "singLEFTmiss",
-			"fps": 24,
-			"name": "MissLeft",
-			"indices": []
+			"indices": [],
+			"name": "MissLeft"
 		},
 		{
-			"loop": false,
 			"offsets": [22, -4],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "MissDown",
-			"indices": []
+			"indices": [],
+			"name": "MissDown"
 		},
 		{
-			"loop": false,
 			"offsets": [-19, 43],
-			"anim": "singUPmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "MissUp",
-			"indices": []
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "MissUp"
 		},
 		{
-			"loop": false,
 			"offsets": [-26, 14],
-			"anim": "singRIGHTmiss",
+			"loop": false,
 			"fps": 24,
-			"name": "MissRight",
-			"indices": []
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "MissRight"
+		},
+		{
+			"offsets": [30, -6],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "singLeft"
+		},
+		{
+			"offsets": [27, -38],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "singDown"
+		},
+		{
+			"offsets": [-6, 31],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "singUp"
+		},
+		{
+			"offsets": [-16, 5],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "singRight"
 		}
 	],
 	"vocals_file": "",

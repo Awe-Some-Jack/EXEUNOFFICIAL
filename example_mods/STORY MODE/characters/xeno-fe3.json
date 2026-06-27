@@ -10,7 +10,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-1, 0],
+			"offsets": [1, 0],
 			"anim": "singLEFT",
 			"fps": 24,
 			"name": "left",
@@ -26,30 +26,30 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, 27],
+			"offsets": [1, 34],
 			"anim": "singUP",
 			"fps": 24,
 			"name": "up",
 			"indices": []
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
+			"offsets": [2, 0],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "rigth"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/xenothirdfe",
+	"image": "characters/xenofront",
 	"position": [0, 0],
 	"healthicon": "XENO-P4",
 	"flip_x": false,
 	"healthbar_colors": [45, 18, 105],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.27,
 	"_editor_isPlayer": false
 }

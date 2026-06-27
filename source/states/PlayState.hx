@@ -3106,7 +3106,7 @@ class PlayState extends MusicBeatState
 		}
 		
 		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-		vocals.volume = 0;
+		if (opponentVocals.length > 0) vocals.volume = 0;
 	}
 
 	function opponentNoteHit(note:Note):Void

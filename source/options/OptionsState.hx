@@ -320,10 +320,24 @@ class OptionsState extends MusicBeatState
 
 		if (!canAction || subState != null) return;
 
-		if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
+		final neighbors:Array<Array<Int>> = [
+			[-1,    1,    -1,    2],
+			[ 0,   -1,    -1,    3],
+			[-1,    3,     0,    4],
+			[ 2,   -1,     1,    4],
+			[ 2,    3,     2,   -1],
+		];
+
+		var moved = false;
+		if (controls.UI_LEFT_P)  { final n = neighbors[curSelected][0]; if (n != -1) { curSelected = n; moved = true; } }
+		if (controls.UI_RIGHT_P) { final n = neighbors[curSelected][1]; if (n != -1) { curSelected = n; moved = true; } }
+		if (controls.UI_UP_P)    { final n = neighbors[curSelected][2]; if (n != -1) { curSelected = n; moved = true; } }
+		if (controls.UI_DOWN_P)  { final n = neighbors[curSelected][3]; if (n != -1) { curSelected = n; moved = true; } }
+
+		if (moved)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
-			changeSelect(controls.UI_LEFT_P ? -1 : 1);
+			changeSelect(0);
 		}
 
 		if (controls.ACCEPT)

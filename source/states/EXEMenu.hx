@@ -149,7 +149,7 @@ class EXEMenu extends MusicBeatState
 		{
 			new FlxTimer().start(0.001, (_) -> {
 				menuVideo?.play();
-				if (menuVideo?.bitmap != null) menuVideo.bitmap.rate = 2.0;
+				if (menuVideo?.bitmap != null) menuVideo.bitmap.rate = 1.0;
 			});
 		}
 	}

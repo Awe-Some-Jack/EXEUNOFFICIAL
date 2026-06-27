@@ -3104,10 +3104,18 @@ class PlayState extends MusicBeatState
 			if(char != null && (note == null || !note.noMissAnimation) && char.hasMissAnimations) char.playAnim(animToPlay, true);
 		}
 		
-		vocals.volume = 0;
-		opponentVocals.volume = 0;
 		var missNote:FlxSound = FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-		if (missNote != null) missNote.onComplete = () -> { vocals.volume = 1; opponentVocals.volume = 1; };
+		if (ClientPrefs.data.ghostTapping) {
+			var hasSplitVocals:Bool = opponentVocals.length > 0;
+			vocals.volume = 0;
+			if (hasSplitVocals) opponentVocals.volume = 0;
+			if (missNote != null) missNote.onComplete = () -> {
+				vocals.volume = 1;
+				if (hasSplitVocals) opponentVocals.volume = 1;
+			};
+		} else {
+			vocals.volume = 0;
+		}
 	}
 
 	function opponentNoteHit(note:Note):Void

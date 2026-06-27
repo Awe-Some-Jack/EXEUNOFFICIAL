@@ -3009,7 +3009,6 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.data.ghostTapping) return; //fuck it
 
 		noteMissCommon(direction);
-		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 		stagesFunc(function(stage:BaseStage) stage.noteMissPress(direction));
 		_keyArgs[0] = direction;
 		callOnScripts('noteMissPress', _keyArgs);
@@ -3105,8 +3104,10 @@ class PlayState extends MusicBeatState
 			if(char != null && (note == null || !note.noMissAnimation) && char.hasMissAnimations) char.playAnim(animToPlay, true);
 		}
 		
-		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 		vocals.volume = 0;
+		opponentVocals.volume = 0;
+		var missNote:FlxSound = FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+		if (missNote != null) missNote.onComplete = () -> { vocals.volume = 1; opponentVocals.volume = 1; };
 	}
 
 	function opponentNoteHit(note:Note):Void

@@ -15,11 +15,11 @@ class Language
 		currentKey = key;
 		phrases = [];
 
-		var path = 'assets/exe/options/language/$key.json';
+		final path = 'assets/exe/options/language/$key.json';
 		try {
-			var text = Assets.getText(path);
-			if (text != null && text.length > 0) {
-				var data:Dynamic = Json.parse(text);
+			final text = Assets.getText(path);
+			if (text?.length > 0) {
+				final data:Dynamic = Json.parse(text);
 				for (field in Reflect.fields(data))
 					phrases.set(field, Reflect.field(data, field));
 			}
@@ -28,18 +28,20 @@ class Language
 
 	public static function get(key:String, ?fallback:String):String
 	{
-		var val = phrases.get(key);
-		if (val == null) return fallback != null ? fallback : key;
+		final val = phrases.get(key);
+
+		if (val == null) return fallback ?? key;
 		if (Std.isOfType(val, String)) return cast(val, String);
-		return fallback != null ? fallback : key;
+		return fallback ?? key;
 	}
 
 	public static function getArray(key:String, ?fallback:Array<String>):Array<String>
 	{
-		var val = phrases.get(key);
-		if (val == null) return fallback != null ? fallback : [];
+		final val = phrases.get(key);
+
+		if (val == null) return fallback ?? [];
 		if (Std.isOfType(val, Array)) return cast val;
-		return fallback != null ? fallback : [];
+		return fallback ?? [];
 	}
 
 	public static function getFontForLanguage():String
@@ -64,7 +66,7 @@ class Language
 
 	public static function scaledFontSize(base:Int):Int
 	{
-		return isCJK() ? Std.int(base * 1.6) : base;
+		return  Std.int(base * (isCJK() ? 1.6 : 1.4));
 	}
 
 	public static function cjkSize(base:Int, ?factor:Float = 0.75):Int
@@ -74,11 +76,12 @@ class Language
 
 	public static function getPhrase(key:String, ?fallback:String, ?vars:Array<Dynamic>):String
 	{
-		var val = phrases.get(key);
+		final val = phrases.get(key);
+
 		var result:String = (val != null && Std.isOfType(val, String)) ? cast(val, String) : (fallback != null ? fallback : key);
-		if (vars != null)
-			for (i in 0...vars.length)
-				result = StringTools.replace(result, '{${i + 1}}', Std.string(vars[i]));
+		for (i in 0...vars?.length)
+			result = StringTools.replace(result, '{${i + 1}}', Std.string(vars[i]));
+
 		return result;
 	}
 

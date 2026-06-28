@@ -55,7 +55,7 @@ class EXETitle extends MusicBeatState
 		if (!initialized)
 		{
 			ClientPrefs.loadPrefs();
-			Language.reloadPhrases();
+			Language.reload();
 
 			if (FlxG.save.data?.fullscreen ?? false)
 				FlxG.fullscreen = FlxG.save.data.fullscreen;

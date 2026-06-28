@@ -125,7 +125,7 @@ class LanguageSubState extends MusicBeatSubstate
 			ClientPrefs.data.language = languages[curSelected];
 			//trace(ClientPrefs.data.language);
 			ClientPrefs.saveSettings();
-			Language.reloadPhrases();
+			Language.reload();
 			changedLanguage = true;
 		}
 	}

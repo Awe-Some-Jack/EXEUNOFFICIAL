@@ -24,11 +24,8 @@ class OptionsState extends MusicBeatState
 {
 	var bg:FlxSprite;
 	var title:FlxSprite;
-	var debugCircle:FlxSprite;
-	var debugText:FlxText;
 	var circleRadius:Float = 100;
 	var circleThickness:Int = 22;
-	var circleTargetRadius:Float = 100;
 	var orbitAngle:Float = 0;
 	var orbitDotA:FlxSprite;
 	var orbitDotB:FlxSprite;
@@ -37,13 +34,12 @@ class OptionsState extends MusicBeatState
 	var circleRadius2:Float = 100;
 	var orbitAngle2:Float = 0;
 	var orbitDotA2:FlxSprite;
-	
 	var orbitDotB2:FlxSprite;
 	var orbitDotScale2:Float = 1.0;
 
 	var circleShader:CirclesShader;
-
 	static final SECTION_KEYS = ["CONTROLS", "VISUALS", "GAMEPLAY", "GRAPHICS", "LANGUAGE"];
+
 	var sectionsList:Array<String> = [];
 	var sectionsGrp:FlxTypedGroup<FlxText>;
 	var sectionBGGrp:FlxTypedGroup<FlxSprite>;
@@ -55,7 +51,6 @@ class OptionsState extends MusicBeatState
 	var sectionPos:Array<Dynamic> = [];
 
 	var canAction:Bool = true;
-
 	public static var curSelected:Int = 0;
 	public static var onPlayState:Bool = false;
 
@@ -64,14 +59,6 @@ class OptionsState extends MusicBeatState
 	override public function create()
 	{
 		super.create();
-
-		sectionsList = [
-			Language.get('options.controls', 'CONTROLS'),
-			Language.get('options.visuals',  'VISUALS'),
-			Language.get('options.gameplay', 'GAMEPLAY'),
-			Language.get('options.graphics', 'GRAPHICS'),
-			Language.get('options.language', 'LANGUAGE')
-		];
 
 		bg = FlxGradient.createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF7a1520, 0xFF4a0910], 1, 90);
 		add(bg);
@@ -102,15 +89,12 @@ class OptionsState extends MusicBeatState
 
 		final dotSize:Int = 160;
 		final dotSize2:Int = 160;
-
 		final dotShape = new Shape();
 		dotShape.graphics.beginFill(0x4a0008);
 		dotShape.graphics.drawCircle(dotSize / 2, dotSize / 2, dotSize / 2);
 		dotShape.graphics.endFill();
-		
 		final bmpDotA = new BitmapData(dotSize, dotSize, true, 0x00000000); bmpDotA.draw(dotShape);
 		orbitDotA = new FlxSprite().loadGraphic(bmpDotA); add(orbitDotA);
-		
 		final bmpDotB = new BitmapData(dotSize, dotSize, true, 0x00000000); bmpDotB.draw(dotShape);
 		orbitDotB = new FlxSprite().loadGraphic(bmpDotB); add(orbitDotB);
 
@@ -124,7 +108,6 @@ class OptionsState extends MusicBeatState
 		
 		final bmpDotB2 = new BitmapData(dotSize2, dotSize2, true, 0x00000000); bmpDotB2.draw(dotShape2);
 		orbitDotB2 = new FlxSprite().loadGraphic(bmpDotB2); add(orbitDotB2);
-
 		FlxTween.tween(this, {orbitDotScale: 0.3}, 14.0, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 		FlxTween.tween(this, {orbitDotScale2: 0.3}, 14.0, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 
@@ -135,7 +118,6 @@ class OptionsState extends MusicBeatState
 			ease: FlxEase.sineInOut, 
 			type: FlxTweenType.PINGPONG
 		});
-
 		new FlxTimer().start(4.0, function(_) {
 			FlxTween.tween(this, {circleRadius2: maxRadius}, 8.0, {
 				ease: FlxEase.sineInOut, 
@@ -161,11 +143,6 @@ class OptionsState extends MusicBeatState
 		vigTop.scrollFactor.set(0, 0);
 		add(vigTop);
 
-		debugText = new FlxText(10, 10, 0, "", 16);
-		debugText.scrollFactor.set();
-		debugText.visible = false;
-		add(debugText);
-
 		title = new FlxSprite(0, 20).loadGraphic(Assets.getBitmapData('assets/exe/options/optionsTitle.png'));
 		title.setGraphicSize(Std.int(title.width * GLOBAL_SCALE));
 		title.updateHitbox();
@@ -176,7 +153,6 @@ class OptionsState extends MusicBeatState
 		sectionBGClone.setGraphicSize(Std.int(sectionBGClone.width * GLOBAL_SCALE));
 		sectionBGClone.updateHitbox();
 		add(sectionBGClone);
-
 		sectionBGCloneWhite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGWhite.png'));
 		sectionBGCloneWhite.setGraphicSize(Std.int(sectionBGCloneWhite.width * GLOBAL_SCALE));
 		sectionBGCloneWhite.updateHitbox();
@@ -186,41 +162,26 @@ class OptionsState extends MusicBeatState
 
 		sectionBGGrp = new FlxTypedGroup<FlxSprite>();
 		add(sectionBGGrp);
-
 		sectionsGrp = new FlxTypedGroup<FlxText>();
 		add(sectionsGrp);
 
-		var langFont = ExeBaseOptionsState.getLangFont();
-		var langSize = Language.scaledFontSize(26);
-		var rowSpacing:Float = 180;
-		var colOffset:Float = 220;
-		var baseY:Float = FlxG.height / 2 - rowSpacing;
-		var cx:Float = FlxG.width / 2;
-		final centerXs:Array<Float> = [cx - colOffset, cx + colOffset, cx - colOffset, cx + colOffset, cx];
-		final centerYs:Array<Float> = [baseY, baseY, baseY + rowSpacing, baseY + rowSpacing, baseY + rowSpacing * 2];
-
-		for (i in 0...sectionsList.length)
+		for (i in 0...SECTION_KEYS.length)
 		{
-			var section = new FlxText(0, 0, 0, sectionsList[i], langSize);
-			section.setFormat(Paths.font(langFont), langSize, FlxColor.WHITE, CENTER);
+			final section = new FlxText(0, 0, 0, "", 12);
 			section.ID = i;
-			section.x = centerXs[i] - section.width / 2;
-			section.y = centerYs[i];
-
 			sectionsGrp.add(section);
-			sectionPos.push({x: section.x, y: section.y});
+			sectionPos.push({x: 0, y: 0});
 
-			var sectionBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+			final sectionBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
 			sectionBG.setGraphicSize(Std.int(sectionBG.width * GLOBAL_SCALE));
 			sectionBG.updateHitbox();
 			sectionBG.ID = i;
-			sectionBG.x = section.x + (section.width - sectionBG.width) / 2;
-			sectionBG.y = (section.y - (section.size / 2)) + 35;
 			sectionBGGrp.add(sectionBG);
 		}
 
+		refreshSectionTexts();
 		changeSelect();
-
+		
 		FlxG.sound.playMusic(openfl.Assets.getSound('assets/exe/options/options.ogg'), 1, true);
 
 		#if DISCORD_ALLOWED
@@ -241,13 +202,14 @@ class OptionsState extends MusicBeatState
 		if (orbitDotA != null && orbitDotB != null)
 		{
 			orbitAngle += elapsed * 20;
-			var rad = orbitAngle * Math.PI / 180;
-			var cx = FlxG.width / 2;
-			var cy = FlxG.height / 2;
-			var orbitR = circleRadius;
 
-			var scaleA = orbitDotScale;
-			var scaleB = 1.0 - orbitDotScale + 0.3;
+			final rad = orbitAngle * Math.PI / 180;
+			final cx = FlxG.width / 2;
+			final cy = FlxG.height / 2;
+			final orbitR = circleRadius;
+
+			final scaleA = orbitDotScale;
+			final scaleB = 1.0 - orbitDotScale + 0.3;
 
 			orbitDotA.scale.set(scaleA, scaleA);
 			orbitDotA.updateHitbox();
@@ -263,16 +225,18 @@ class OptionsState extends MusicBeatState
 		if (orbitDotA2 != null && orbitDotB2 != null)
 		{
 			orbitAngle2 += elapsed * 20;
-			var rad2 = orbitAngle2 * Math.PI / 180;
-			var cx = FlxG.width / 2;
-			var cy = FlxG.height / 2;
 
-			var scaleA2 = orbitDotScale2;
-			var scaleB2 = 1.0 - orbitDotScale2 + 0.3;
+			final rad2 = orbitAngle2 * Math.PI / 180;
+			final cx = FlxG.width / 2;
+			final cy = FlxG.height / 2;
+
+			final scaleA2 = orbitDotScale2;
+			final scaleB2 = 1.0 - orbitDotScale2 + 0.3;
 
 			orbitDotA2.scale.set(scaleA2, scaleA2);
 			orbitDotA2.updateHitbox();
-			var orbitR2 = circleRadius2 - circleThickness / 2;
+
+			final orbitR2 = circleRadius2 - circleThickness / 2;
 			orbitDotA2.x = cx + Math.cos(rad2) * orbitR2 - orbitDotA2.width / 2;
 			orbitDotA2.y = cy + Math.sin(rad2) * orbitR2 - orbitDotA2.height / 2;
 
@@ -280,21 +244,6 @@ class OptionsState extends MusicBeatState
 			orbitDotB2.updateHitbox();
 			orbitDotB2.x = cx + Math.cos(rad2 + Math.PI) * orbitR2 - orbitDotB2.width / 2;
 			orbitDotB2.y = cy + Math.sin(rad2 + Math.PI) * orbitR2 - orbitDotB2.height / 2;
-		}
-
-		if (FlxG.keys.justPressed.F2)
-			debugText.visible = !debugText.visible;
-
-		if (debugText.visible && debugCircle != null)
-		{
-			var step:Float = FlxG.keys.pressed.SHIFT ? 0.01 : 0.1;
-			if (FlxG.keys.justPressed.UP)    { debugCircle.scale.x += step; debugCircle.scale.y += step; }
-			if (FlxG.keys.justPressed.DOWN)  { debugCircle.scale.x -= step; debugCircle.scale.y -= step; }
-			debugCircle.scale.x = Math.max(0.01, debugCircle.scale.x);
-			debugCircle.scale.y = Math.max(0.01, debugCircle.scale.y);
-			debugCircle.updateHitbox();
-			debugCircle.screenCenter();
-			debugText.text = 'CIRCLE DEBUG [F2 toggle]\nscale: ${Math.round(debugCircle.scale.x * 100) / 100}\nUP/DOWN = +/-0.1  |  SHIFT = +/-0.01';
 		}
 
 		sectionsGrp.forEachExists(function(txt)
@@ -314,7 +263,7 @@ class OptionsState extends MusicBeatState
 				bg.y = (txt.y - (txt.size / 2)) + (sep * 2.5);
 			}
 		});
-
+		
 		if (!canAction || subState != null) return;
 
 		final neighbors:Array<Array<Int>> = [
@@ -324,7 +273,6 @@ class OptionsState extends MusicBeatState
 			[ 2,   -1,     1,    4],
 			[ 2,    3,     2,   -1],
 		];
-
 		var moved = false;
 		if (controls.UI_LEFT_P)  { final n = neighbors[curSelected][0]; if (n != -1) { curSelected = n; moved = true; } }
 		if (controls.UI_RIGHT_P) { final n = neighbors[curSelected][1]; if (n != -1) { curSelected = n; moved = true; } }
@@ -364,13 +312,13 @@ class OptionsState extends MusicBeatState
 	var selectionCloneTween:FlxTween = null;
 	function changeSelect(x:Int = 0)
 	{
-		curSelected = FlxMath.wrap(curSelected + x, 0, sectionsList.length - 1);
+		curSelected = FlxMath.wrap(curSelected + x, 0, SECTION_KEYS.length - 1);
 		if (sectionBGGrp.members[curSelected] == null) return;
 
-		var curSectionBG = sectionBGGrp.members[curSelected];
-		var curSectionText = sectionsGrp.members[curSelected];
-		var currentPos = sectionPos[curSelected];
-
+		final curSectionBG = sectionBGGrp.members[curSelected];
+		final curSectionText = sectionsGrp.members[curSelected];
+		final currentPos = sectionPos[curSelected];
+		
 		sectionBGClone.setPosition(curSectionBG.x - 3, curSectionBG.y - 3);
 		curSectionBG.x -= 8;
 		curSectionBG.y -= 8;
@@ -389,7 +337,7 @@ class OptionsState extends MusicBeatState
 			onUpdate: (_) -> sectionBGCloneWhite.setPosition(sectionBGClone.x, sectionBGClone.y),
 			onComplete: (_) -> selectionCloneTween = null
 		});
-
+		
 		cloneColorTween?.cancel();
 		sectionBGCloneWhite.setPosition(sectionBGClone.x, sectionBGClone.y);
 		sectionBGCloneWhite.alpha = 0;
@@ -399,7 +347,6 @@ class OptionsState extends MusicBeatState
 	function select()
 	{
 		canAction = false;
-
 		final curSectionText = sectionsGrp.members[curSelected];
 		FlxFlicker.flicker(curSectionText, 1, 0.06, true, false);
 
@@ -419,7 +366,6 @@ class OptionsState extends MusicBeatState
 		});
 	}
 
-
 	function refreshSectionTexts():Void
 	{
 		sectionsList = [
@@ -429,6 +375,7 @@ class OptionsState extends MusicBeatState
 			Language.get('options.graphics', 'GRAPHICS'),
 			Language.get('options.language', 'LANGUAGE')
 		];
+
 		var langFont = ExeBaseOptionsState.getLangFont();
 		var langSize = Language.scaledFontSize(26);
 		var rowSpacing:Float = 180;
@@ -437,13 +384,21 @@ class OptionsState extends MusicBeatState
 		var cx:Float = FlxG.width / 2;
 		final centerXs:Array<Float> = [cx - colOffset, cx + colOffset, cx - colOffset, cx + colOffset, cx];
 		final centerYs:Array<Float> = [baseY, baseY, baseY + rowSpacing, baseY + rowSpacing, baseY + rowSpacing * 2];
-		sectionsGrp.forEachExists(function(txt) {
+
+		sectionsGrp.forEachExists((txt) -> {
 			txt.font = Paths.font(langFont);
 			txt.size = langSize;
 			txt.text = sectionsList[txt.ID];
+			
 			txt.x = centerXs[txt.ID] - txt.width / 2;
 			txt.y = centerYs[txt.ID];
 			sectionPos[txt.ID] = {x: txt.x, y: txt.y};
+
+			var bg = sectionBGGrp.members[txt.ID];
+			if (bg != null) {
+				bg.x = txt.x + (txt.width - bg.width) / 2;
+				bg.y = (txt.y - (txt.size / 2)) + 35;
+			}
 		});
 	}
 
@@ -451,10 +406,29 @@ class OptionsState extends MusicBeatState
 	{
 		super.closeSubState();
 		ClientPrefs.saveSettings();
+		
 		refreshSectionTexts();
+		
+		//neccesary shit
+		final curSectionBG = sectionBGGrp.members[curSelected];
+		final curSectionText = sectionsGrp.members[curSelected];
+		final currentPos = sectionPos[curSelected];
+
+		curSectionBG.x -= 8;
+		curSectionBG.y -= 8;
+		
+		curSectionText.x = currentPos.x - 12;
+		curSectionText.y = currentPos.y - 16;
+
+		sectionBGClone.setPosition(curSectionBG.x + 13, curSectionBG.y + 13);
+		sectionBGCloneWhite.setPosition(sectionBGClone.x, sectionBGClone.y);
+		sectionBGCloneWhite.alpha = 0;
+		
 		canAction = true;
-		if (titleAlphaTween != null) titleAlphaTween.cancel();
+
+		titleAlphaTween?.cancel();
 		titleAlphaTween = FlxTween.tween(title, {alpha: 1.0}, 0.3, {ease: FlxEase.sineInOut, onComplete: (_) -> titleAlphaTween = null});
+
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("Options Menu", null);
 		#end
@@ -466,7 +440,7 @@ class OptionsState extends MusicBeatState
 		if (selectionCloneTween != null) { selectionCloneTween.cancel(); selectionCloneTween = null; }
 		if (cloneColorTween != null)     { cloneColorTween.cancel();     cloneColorTween = null; }
 		if (titleAlphaTween != null)     { titleAlphaTween.cancel();     titleAlphaTween = null; }
-		bg = null; title = null; orbitDotA = null; orbitDotB = null; orbitDotA2 = null; orbitDotB2 = null; debugCircle = null;
+		bg = null; title = null; orbitDotA = null; orbitDotB = null; orbitDotA2 = null; orbitDotB2 = null;
 		sectionsGrp = null; sectionBGGrp = null;
 		sectionBGClone = null; sectionBGCloneWhite = null; sectionPos = null;
 		super.destroy();

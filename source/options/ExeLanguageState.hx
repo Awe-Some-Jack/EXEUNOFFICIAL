@@ -6,80 +6,59 @@ import flixel.util.FlxColor;
 import openfl.Assets;
 import backend.Paths;
 import backend.ClientPrefs;
-import haxe.Json;
+import backend.Language;
 
 class ExeLanguageState extends ExeBaseOptionsState
 {
 	static final LANG_KEYS:Array<String> = ["en-US", "es-ES", "pt-BR", "fr-FR", "uz-UZ", "ja-JP", "zh-CN", "ko-KR", "ru-RU", "uk-UA", "de-DE", "pi-PI"];
-
-	static final LANG_FONTS:Map<String, String> = [
-		"ja-JP" => "japanese.ttf",
-		"zh-CN" => "chinese.ttf",
-		"ko-KR" => "korean.ttf"
-	];
-
 	var curLangIdx:Int = 0;
-	var langData:Dynamic = null;
 
 	override public function create()
 	{
-		menuTitle = "LANGUAGE";
-		var saved = LANG_KEYS.indexOf(ClientPrefs.data.language);
+		menuTitle = Language.get("options.language", "LANGUAGE");
+
+		final saved = LANG_KEYS.indexOf(ClientPrefs.data.language);
 		curLangIdx = saved >= 0 ? saved : 0;
-		loadLangData(LANG_KEYS[curLangIdx]);
+		
 		super.create();
 	}
 
 	override public function getCurrentSelectionIndex():Int { return 0; }
 
-	function loadLangData(key:String):Void
-	{
-		var path = 'assets/exe/options/language/$key.json';
-		try {
-			var text = openfl.Assets.getText(path);
-			langData = (text != null && text.length > 0) ? Json.parse(text) : null;
-		} catch (e:Dynamic) { langData = null; }
-	}
-
 	function getLangLabel():String
 	{
-		if (langData != null && Reflect.hasField(langData, "language"))
-			return Reflect.field(langData, "language");
-		return LANG_KEYS[curLangIdx];
-	}
-
-	function getFontForLang(key:String):String
-	{
-		if (!LANG_FONTS.exists(key)) return ExeBaseOptionsState.FONT;
-		var f = LANG_FONTS.get(key);
-		return openfl.Assets.exists('assets/fonts/$f') ? f : ExeBaseOptionsState.FONT;
+		return Language.get("language", LANG_KEYS[curLangIdx]);
 	}
 
 	override public function loadPage()
 	{
 		clearPage();
-		var offRight:Float = FlxG.width + 200;
-		var rowY = ExeBaseOptionsState.NB_Y;
-		var font = getFontForLang(LANG_KEYS[curLangIdx]);
 
-		var nameBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+		final offRight:Float = FlxG.width + 200;
+		final rowY = ExeBaseOptionsState.NB_Y;
+		
+		final fontPath = Paths.font(Language.getFontForLanguage());
+		final fontSize = Language.scaledFontSize(ExeBaseOptionsState.FONT_SIZE);
+		
+		final nameBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
 		nameBG.scale.set(ExeBaseOptionsState.NB_SCALE_X, ExeBaseOptionsState.NB_SCALE_Y); nameBG.updateHitbox();
 		nameBG.x = introAnimating ? offRight : ExeBaseOptionsState.NB_X; nameBG.y = rowY; nameBG.scrollFactor.set(0, 0);
 		add(nameBG); rightGroup.push(nameBG);
 
-		var valueBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+		final valueBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
 		valueBG.scale.set(ExeBaseOptionsState.VB_SCALE_X, ExeBaseOptionsState.VB_SCALE_Y); valueBG.updateHitbox();
-		valueBG.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X; valueBG.y = rowY; valueBG.scrollFactor.set(0, 0);
+		valueBG.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X; valueBG.y = rowY;
+		valueBG.scrollFactor.set(0, 0);
 		add(valueBG); rightGroup.push(valueBG);
 
-		var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), menuTitle, ExeBaseOptionsState.FONT_SIZE);
-		nameTxt.setFormat(Paths.font(ExeBaseOptionsState.FONT), ExeBaseOptionsState.FONT_SIZE, FlxColor.WHITE, LEFT);
+		final nameTxt = new FlxText(0, 0, Std.int(nameBG.width), menuTitle, fontSize);
+		nameTxt.setFormat(fontPath, fontSize, FlxColor.WHITE, LEFT);
 		nameTxt.x = introAnimating ? offRight : ExeBaseOptionsState.NB_X + 120;
 		nameTxt.y = rowY + (nameBG.height - nameTxt.height) / 2; nameTxt.scrollFactor.set(0, 0);
 		add(nameTxt); rightGroup.push(cast nameTxt);
 
-		var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), getLangLabel(), ExeBaseOptionsState.FONT_SIZE);
-		valueTxt.setFormat(Paths.font(font), ExeBaseOptionsState.FONT_SIZE, FlxColor.WHITE, CENTER);
+		final valueTxt = new FlxText(0, 0, Std.int(valueBG.width), getLangLabel(), fontSize);
+		valueTxt.setFormat(fontPath, fontSize, FlxColor.WHITE, CENTER);
 		valueTxt.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X + (valueBG.width - valueTxt.width) / 2;
 		valueTxt.y = rowY + (valueBG.height - valueTxt.height) / 2; valueTxt.scrollFactor.set(0, 0);
 		add(valueTxt); rightGroup.push(cast valueTxt);
@@ -91,17 +70,22 @@ class ExeLanguageState extends ExeBaseOptionsState
 
 	function applyLanguage():Void
 	{
-		var key = LANG_KEYS[curLangIdx];
+		final key = LANG_KEYS[curLangIdx];
 		ClientPrefs.data.language = key;
 		ClientPrefs.saveSettings();
-		loadLangData(key);
-		backend.Language.reload();
+		
+		Language.reload();
 
-		var g = optionGroups[0];
-		var font = getFontForLang(key);
-		g.valueText.font = Paths.font(font);
+		final g = optionGroups[0];
+		final newFontPath = Paths.font(Language.getFontForLanguage());
+		
+		g.valueText.font = newFontPath;
 		g.valueText.text = getLangLabel();
 		g.valueText.x = ExeBaseOptionsState.VB_X + (g.valueBG.width - g.valueText.width) / 2;
+
+		menuTitle = Language.get("options.language", "LANGUAGE");
+		g.nameText.font = newFontPath;
+		g.nameText.text = menuTitle;
 	}
 
 	override public function update(elapsed:Float)
@@ -125,12 +109,14 @@ class ExeLanguageState extends ExeBaseOptionsState
 			}
 			return;
 		}
+
 		if (controls.ACCEPT) {
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			editingValue = true; nudgeSelectedText(true);
 			var g = optionGroups[0];
 			showArrows(g.valueBG.y + (g.valueBG.height - arrowLeft.height) / 2);
 		}
+
 		if (controls.BACK) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
 	}
 }

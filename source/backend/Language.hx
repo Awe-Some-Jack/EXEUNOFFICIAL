@@ -90,11 +90,6 @@ class Language
 		return key;
 	}
 
-	public static function reloadPhrases():Void
-	{
-		reload();
-	}
-
 	#if LUA_ALLOWED
 	public static function addLuaCallbacks(lua:llua.State) {
 		Lua_helper.add_callback(lua, "getTranslationPhrase", function(key:String, ?fallback:String) {

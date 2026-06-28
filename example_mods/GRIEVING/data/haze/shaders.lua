@@ -96,6 +96,9 @@ local lightningPhase = {
             setShaderFloat('boyfriend', 'ang', math.rad(115))
             setShaderFloat('dad', 'dist', 10)
             setShaderFloat('boyfriend', 'dist', 20)
+            setShaderBool('boyfriend', 'doBlend', true)
+        setShaderBool('boyfriend', 'pixelPerfect', true)
+        setShaderBool('boyfriend', 'useOverlay', true)
     end,
     [2] = function ()
         for _,char in ipairs({'dad', 'boyfriend'}) do
@@ -115,6 +118,9 @@ local lightningPhase = {
         setShaderFloat('boyfriend', 'ang', math.rad(115))
         setShaderFloat('dad', 'dist', 10)
         setShaderFloat('boyfriend', 'dist', 20)
+        setShaderBool('boyfriend', 'doBlend', true)
+        setShaderBool('boyfriend', 'pixelPerfect', true)
+        setShaderBool('boyfriend', 'useOverlay', true)
     end,
     [3] = function ()
         removeSpriteShader('dad')
@@ -133,6 +139,9 @@ local lightningPhase = {
         end
         setShaderFloat('boyfriend', 'ang', math.rad(115))
         setShaderFloat('boyfriend', 'dist', 20)
+        setShaderBool('boyfriend', 'doBlend', true)
+        setShaderBool('boyfriend', 'pixelPerfect', true)
+        setShaderBool('boyfriend', 'useOverlay', true)
     end
 }
 

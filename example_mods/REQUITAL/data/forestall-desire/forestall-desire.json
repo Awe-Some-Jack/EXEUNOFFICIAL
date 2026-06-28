@@ -369,7 +369,7 @@
 			"sectionNotes": [
 				[46153.8461538461, 3, 0],
 				[46269.2307692308, 0, 0],
-				[46384.6153846154, 1, 692.307692307692],
+				[46384.6153846154, 1, 1153.84615384615],
 				[46615.3846153846, 6, 0],
 				[46846.1538461538, 7, 0],
 				[47076.9230769231, 5, 461.538461538462],
@@ -1958,13 +1958,6 @@
 	"gfVersion": "pico-req",
 	"events": [
 		[
-			0,
-			[
-				["Tween Camera Zoom", "1.4, true", "0.001, linear"],
-				["Tweening Camera", "90, -90", "0.001, linear"]
-			]
-		],
-		[
 			230.769230769231,
 			[
 				["Tween Camera Zoom", "1, true", "3.1, sineInOut"]
@@ -2339,13 +2332,15 @@
 			[
 				["BGchange", "starttrans", ""],
 				["Tween Camera Zoom", "1", ""],
-				["Tweening Camera", "-120, 40", "0.001, linear"]
+				["Tweening Camera", "-280, 40", "0.001, linear"],
+				["Set Property", "cameraSpeed", "10000"]
 			]
 		],
 		[
 			181038.461538461,
 			[
-				["Set Property", "camZoomingMult", "0"]
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[

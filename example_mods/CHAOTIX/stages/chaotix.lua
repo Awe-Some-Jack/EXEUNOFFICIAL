@@ -1,8 +1,9 @@
 local starlineBG = {
 	['BGAssets'] = {
-		{name = 'cieeelo', path = 'bg/horizonsky', x = -1900, y = -1300, scaleX = 6, scaleY = 6, scrollX = 0.8, scrollY = 1, antialiasing = false, alpha = 1, front = false},
-		{name = 'bg1',     path = 'bg/piso',       x = -1600, y = -1000, scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 1, front = false},
-		{name = 'bg2',     path = 'bg/piso2',      x = -1600, y = -1000, scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
+		{name = 'cieeelo',     path = 'bg/horizonsky', x = -1900, y = -1300,                                                  scaleX = 6, scaleY = 6, scrollX = 0.8, scrollY = 1, antialiasing = false, alpha = 1, front = false},
+		{name = 'cieloFucked', path =   'bg/bgglitch', x = -1600, y = -1000, animName = 'idle', animPrefix = 'bgglitch idle', scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
+		{name = 'bg1',         path =       'bg/piso', x = -1600, y = -1000,                                                  scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 1, front = false},
+		{name = 'bg2',         path =      'bg/piso2', x = -1600, y = -1000,                                                  scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
 	},
 	['characters'] = {
 		{name = 'espio',    character = 'espio',      x =   930, y = 130,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
@@ -30,7 +31,12 @@ local changeIdles = false
 
 
 local function createSprite(sexo)
-	makeLuaSprite(sexo.name, sexo.path, sexo.x, sexo.y)
+	if sexo.animName then
+		makeAnimatedLuaSprite(sexo.name, sexo.path, sexo.x, sexo.y)
+		addAnimationByPrefix(sexo.name, sexo.animName, sexo.animPrefix, 10, true)
+	else
+		makeLuaSprite(sexo.name, sexo.path, sexo.x, sexo.y)
+	end
 	scaleObject(sexo.name, sexo.scaleX, sexo.scaleY)
 	setScrollFactor(sexo.name, sexo.scrollX, sexo.scrollY)
 	setProperty(sexo.name..'.antialiasing', sexo.antialiasing)
@@ -54,11 +60,7 @@ local function createCutsceneCharacters(yea)
 	addLuaSprite(yea.name, yea.front)
 end
 
-function onCreatePost()
-	for _, bgs   in ipairs(starlineBG['BGAssets'])      do	              createSprite(bgs) end
-	for _, chars in ipairs(starlineBG['characters'])    do	         createCharacter(chars) end
-	for _, chars in ipairs(starlineBG['cutsceneChars']) do	createCutsceneCharacters(chars) end
-
+local function createTails()
 	createInstance('tails', 'flixel.addons.display.FlxBackdrop', {nil, 0x01})
 	loadGraphic('tails', 'bg/tails')
 	setProperty('tails.velocity.x', -400)
@@ -67,7 +69,16 @@ function onCreatePost()
 	setScrollFactor('tails', 1, 1)
 	setProperty('tails.antialiasing', false)
 	setProperty('tails.alpha', 0)
+	setObjectOrder('tails', getObjectOrder('cieloFucked'))
 	addInstance('tails')
+end
+
+function onCreatePost()
+	for _, bgs   in ipairs(starlineBG['BGAssets'])      do	              createSprite(bgs) end
+	for _, chars in ipairs(starlineBG['characters'])    do	         createCharacter(chars) end
+	for _, chars in ipairs(starlineBG['cutsceneChars']) do	createCutsceneCharacters(chars) end
+	createTails()
+
 
 	makeLuaSprite('blackOverlay', nil, getProperty('dad.x') - 120, -320)
 	makeGraphic('blackOverlay', screenWidth * 1.8, screenHeight * 1.8, '000000')
@@ -122,83 +133,72 @@ end
 
 luaDebugMode = true
 
-function onBeatHit()
-	if curBeat == 228 then
-		transPlaying = true
-		setProperty('dad.specialAnim', true)
-		playAnim('dad', 'trans', true)
-	end
-
-	if curBeat == 228 then
-		for _, chars in ipairs({'boyfriend', 'dad', 'gf'}) do
-			setProperty(chars..'.alpha', 0)
+local starlineEvents = {
+	['startAnim'] = function(number)
+		if number == '1' then
+			transPlaying = true
+			setProperty('dad.specialAnim', true)
+			playAnim('dad', 'trans1', true)
+			for _, chars in ipairs({'boyfriend', 'dad', 'gf'}) do setProperty(chars..'.alpha', 0) end
+			for _, bgChars in ipairs(starlineBG['characters']) do setProperty(bgChars.name..'.alpha', 0) end
+			setProperty('wech.alpha', 1)
+			setProperty('bg1.alpha', 0)
+			setProperty('camHUD.alpha', 0)
+			doTweenY('wechY', 'wech', getProperty('wech.y') - 50, 0.5)
+			playAnim('wech', 'idle', true)
+		elseif number == '2' then
+			setProperty('wech.alpha', 0)
+			setProperty('bf-gf.alpha', 1)
+			playAnim('bf-gf', 'idle', true)
+		elseif number == '3' then
+			playAnim('bf-gf', 'idle-alt', true)
 		end
-		for _, bgChars in ipairs(starlineBG['characters']) do
-			setProperty(bgChars.name..'.alpha', 0)
-		end
-		setProperty('wech.alpha', 1)
-		setProperty('bg1.alpha', 0)
-		setProperty('camHUD.alpha', 0)
-		doTweenY('wechY', 'wech', getProperty('wech.y') - 50, 0.5)
-		playAnim('wech', 'idle', true)
-	end
-
-	if curBeat == 231 then doTweenAlpha('fadeToBlack', 'blackOverlay', 1, 2, 'sineIn') end
-
-	if curBeat == 234 then
-		setProperty('wech.alpha', 0)
-		setProperty('bf-gf.alpha', 1)
-		playAnim('bf-gf', 'idle', true)
-	end
-
-	if curBeat == 240 then
-		playAnim('bf-gf', 'idle-alt', true)
-	end
-
-	if curBeat == 242 then
+	end,
+	['fadeStage'] = function() doTweenAlpha('fadeToBlack', 'blackOverlay', 1, 2, 'sineIn') end,
+	['hideAnim'] = function()
 		setProperty('bf-gf.alpha', 0)
 		for _, putas in ipairs({'boyfriend', 'dad', 'gf'}) do setProperty(putas..'.alpha', 1) end
-	end
-
-	if curBeat == 271 then
+		setProperty('dad.specialAnim', true)
+		playAnim('dad', 'trans2', true)
+	end,
+	['chaotixTime'] = function()
 		glitchedActive = true
 		transPlaying = false
 		canFly = false
 		changeIdles = true
 		triggerEvent('Change Character', '1', 'beast_chaotix')
 		callMethod('dad.setPosition', {-376.9, 120.7})
+		cancelTween('fadeToBlack')
 		doTweenAlpha('fadeFromBlack',  'blackOverlay', 0, 1.5, 'sineOut')
 		doTweenAlpha('fadeFromBlackHUD',     'camHUD', 1, 1.5, 'sineOut')
-		
+
 		for _, chars in ipairs(starlineBG['characters']) do setProperty(chars.name..'.idleSuffix', '-alt') setProperty(chars.name..'.alpha', 1) playAnim(chars.name, 'idle-alt', true) end
 		callMethod('charmy.setPosition', {getProperty('charmy.x') + 110, getProperty('charmy.y') + 280})
 		setProperty('bg1.alpha', 0)
+		setProperty('cieeelo.alpha', 0)
 		setProperty('bg2.alpha', 1)
+		setProperty('tails.alpha', 1)
+		setProperty('cieloFucked.alpha', 1)
 	end
+}
 
+function onEvent(n, v1, v2)
+	if n == 'chaotixEvents' then starlineEvents[v1](v2) end
+end
+function onBeatHit()
 	for _, beatGuys in ipairs(starlineBG['characters']) do
-		if curBeat %beatGuys.beatIntervals == 0 and not changeIdles then
-			playAnim(beatGuys.name, 'idle', true)
-		end
+		if curBeat %beatGuys.beatIntervals == 0 and not changeIdles then playAnim(beatGuys.name, 'idle', true) end
 	end
 
-
-	if not glitchedActive then
-		spawnStar()
-	else
-		spawnGlitch()
-	end
+	if not glitchedActive then spawnStar() else spawnGlitch() end
 end
 
 local flyHold = 0
 function onUpdatePost(e)
 	flyHold = flyHold + e
-	if glitchedActive then
-		setProperty('tails.y', tailsBaseY + getRandomInt(-8, 8))
-	end
-	if transPlaying then
-		setProperty('dad.specialAnim', true)
-	end
+	if glitchedActive then setProperty('tails.y', tailsBaseY + getRandomInt(-8, 8))	end
+	if transPlaying then setProperty('dad.specialAnim', true) end
+	if getProperty('dad.animation.curAnim.name') == 'trans2' and getProperty('dad.animation.curAnim.finished') and transPlaying then playAnim('dad', 'trans3', true) end
 	for _, beatGuys in ipairs(starlineBG['characters']) do
 		if beatGuys.canFloat and canFly then
 			callMethod(beatGuys.name..'.setPosition', {

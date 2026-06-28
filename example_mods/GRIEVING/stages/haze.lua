@@ -97,26 +97,28 @@ function onCreatePost()
     for _, phase5 in ipairs(hazeBGAssets['phase5']) do setProperty(phase5.name..'.alpha', 0) end
 
     --THAT bf anim
-    makeAnimatedLuaSprite('bfTransition', 'characters/atlas', 210, -58)
+    makeAnimatedLuaSprite('bfTransition', 'characters/atlas', 210, -38)
     addAnimationByIndices('bfTransition', 'idle', 'atlas instancia 1', {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 24, true)
     addAnimationByPrefix('bfTransition', 'anim', 'atlas', 24, false)
     addAnimationByIndices('bfTransition', 'still', 'atlas', {108}, 24, true)
     setObjectCamera('bfTransition', 'camHUD')
-    scaleObject('bfTransition', 0.6, 0.6)
+    scaleObject('bfTransition', 1, 1)
     setProperty('bfTransition.alpha', 0)
     addLuaSprite('bfTransition')
 
     setProperty('dad.visible', false)
     setObjectOrder('clouds3', getObjectOrder('dadGroup') + 1)
     setObjectOrder('ground', getObjectOrder('boyfriendGroup'))
-    for i = 0,3 do
-        setProperty('opponentStrums.members['..i..'].alpha', 0) setProperty('opponentStrums.members['..i..'].x', getProperty('opponentStrums.members['..i..'].x') - 1000) setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
-    end
+    for i = 0,3 do setProperty('opponentStrums.members['..i..'].alpha', 0) setProperty('opponentStrums.members['..i..'].x', getProperty('opponentStrums.members['..i..'].x') - 1000) setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i) end
+    for i = 0, getProperty('notes.length') - 1 do setPropertyFromGroup('notes', i, 'texture', "noteSkins/redNotes") end
+    for i = 0, getProperty('unspawnNotes.length') - 1 do setPropertyFromGroup('unspawnNotes', i, 'texture', "noteSkins/redNotes") end
+    for i = 0, 7 do setProperty('strumLineNotes.members['..i..'].texture', 'noteSkins/redNotes') end
     for _, hudStuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(hudStuff..'.alpha', 0) end
 end
 
 local stageMode = {
     ['1'] = function () --Phase 1 (This one just in case).
+
         for _, phase1 in ipairs(spriteGroups.phase1) do setProperty(phase1..'.alpha', 1) end
         for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.alpha', 0) end
         for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.alpha', 0) end
@@ -128,6 +130,9 @@ local stageMode = {
         for _, hudStuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(hudStuff..'.alpha', 0) end
     end,
     ['2'] = function () -- Phase 2
+        for i = 0, getProperty('notes.length') - 1 do setPropertyFromGroup('notes', i, 'texture', "noteSkins/NOTE_assets") end
+        for i = 0, getProperty('unspawnNotes.length') - 1 do setPropertyFromGroup('unspawnNotes', i, 'texture', "noteSkins/NOTE_assets") end
+        for i = 0, 7 do setProperty('strumLineNotes.members['..i..'].texture', 'noteSkins/NOTE_assets') end
         cancelTween('BlackGraphicGameOP') setProperty('BlackGraphicGame.alpha', 0)
         for _, phase1 in ipairs(spriteGroups.phase1) do setProperty(phase1..'.alpha', 0) end
         for _, phase1 in ipairs(spriteGroups.phase1) do    removeLuaSprite(phase1, true) end
@@ -174,7 +179,7 @@ local stageMode = {
         callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 120, getProperty('boyfriend.y') + 730})
         callMethod('dad.setPosition', {getProperty('dad.x') + 2020, getProperty('dad.y') - 30})
 
-        triggerEvent('Set customCamera Position', 'bf',     '800, 650')
+        triggerEvent('Set customCamera Position', 'bf',     '800, 550')
         triggerEvent('Set customCamera Position', 'dad',  '1100,   50')
         triggerEvent('Set customCamera Position', 'middle', '870, 120')
         triggerEvent('Set Character Offset', 'bf',  '5')
@@ -201,7 +206,7 @@ local hudMode = {
         setProperty('camZoomingMult', 0)
         setProperty('camZoomingDecay', 0)
         doTweenZoom('hudZoom', 'camHUD', 1.4, 3, 'sineInOut')
-        doTweenY('hudYTween',  'camHUD', 140, 3, 'sineInOut')
+        doTweenY('hudYTween',  'camHUD', downscroll and -140 or 140, 3, 'sineInOut')
         for i = 0, 3 do doTweenY(i..'YTween', 'playerStrums.members['..i..']', downscroll and getProperty('playerStrums.members['..i..'].y') - 60 or getProperty('playerStrums.members['..i..'].y') + 60, 3, 'sineInOut') end
     end,
     ['changeNotesColor'] = function ()

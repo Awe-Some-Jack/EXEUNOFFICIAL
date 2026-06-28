@@ -74,6 +74,9 @@ function onCreatePost()
 		setShaderFloat('boyfriend', 'ang', math.rad(115))
 		setShaderFloat('dad', 'dist', 10)
 		setShaderFloat('boyfriend', 'dist', 20)
+        setShaderBool('boyfriend', 'doBlend', true)
+        setShaderBool('boyfriend', 'pixelPerfect', true)
+        setShaderBool('boyfriend', 'useOverlay', true)
 
         runHaxeCode(dashads)
     end
@@ -116,6 +119,9 @@ function onEvent(eventName, value1, value2)
             setShaderFloat('boyfriend', 'ang', math.rad(115))
             setShaderFloat('dad', 'dist', 10)
             setShaderFloat('boyfriend', 'dist', 20)
+            setShaderBool('boyfriend', 'doBlend', true)
+            setShaderBool('boyfriend', 'pixelPerfect', true)
+            setShaderBool('boyfriend', 'useOverlay', true)
         end
     end
 end

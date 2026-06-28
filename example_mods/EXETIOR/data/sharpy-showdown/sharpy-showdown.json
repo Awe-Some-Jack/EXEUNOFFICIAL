@@ -145,7 +145,7 @@
 			54482.7586206897,
 			[
 				["Tween Camera Zoom", "0.5, true", "0.8, circIn"],
-				["Tweening Camera", "-230, -120", "0.8, circIn"]
+				["Tweening Camera", "-300, -300", "0.8, circIn"]
 			]
 		],
 		[
@@ -156,7 +156,14 @@
 				["cameracenter", "true", ""],
 				["Tweening Camera", "0, -20", "0.001, linear"],
 				["Set Property", "camZoomingMult", "1"],
-				["Set Property", "camZoomingDecay", "1"]
+				["Set Property", "camZoomingDecay", "1"],
+				["Set Property", "cameraSpeed", "3"]
+			]
+		],
+		[
+			55258.6206896552,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
@@ -211,7 +218,7 @@
 			68965.5172413793,
 			[
 				["brightnessFlash", "-40, 0", "0.5, circIn"],
-				["Tween Camera Zoom", "0.5", ""],
+				["Tween Camera Zoom", "0.6", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"]
 			]
 		],
@@ -227,7 +234,7 @@
 			71379.3103448276,
 			[
 				["brightnessFlash", "-40, 0", "0.38, circIn"],
-				["Tween Camera Zoom", "0.4, true", "0.42, circIn"]
+				["Tween Camera Zoom", "0.45, true", "0.42, circIn"]
 			]
 		],
 		[
@@ -873,7 +880,14 @@
 			[
 				["bloomFlash", "0.4, 0", "0.9, circOut"],
 				["cameracenter", "true", ""],
-				["Tweening Camera", "0, 0", "0.001, linear"]
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Set Property", "cameraSpeed", "5"]
+			]
+		],
+		[
+			165948.275862069,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
@@ -937,13 +951,15 @@
 		[
 			186206.896551724,
 			[
-				["Tween Camera Zoom", "0.5", ""]
+				["Tween Camera Zoom", "0.5", ""],
+				["Tweening Camera", "0, 60", "0.001, linear"]
 			]
 		],
 		[
 			187586.206896552,
 			[
-				["Tween Camera Zoom", "0.6", ""]
+				["Tween Camera Zoom", "0.6", ""],
+				["Tweening Camera", "0, 120", "0.001, linear"]
 			]
 		],
 		[
@@ -952,7 +968,8 @@
 				["bloomFlash", "0.4, 0", "2, circOut"],
 				["Tween Camera Zoom", "0.4, true", "5, smootherStepInOut"],
 				["Set Property", "camZoomingMult", "0"],
-				["Set Property", "camZoomingDecay", "0"]
+				["Set Property", "camZoomingDecay", "0"],
+				["Tweening Camera", "0, 0", "5, smootherStepInOut"]
 			]
 		],
 		[

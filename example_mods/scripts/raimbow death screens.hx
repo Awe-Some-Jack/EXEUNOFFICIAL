@@ -168,11 +168,10 @@ function onUpdatePost()
 function createMajinAssets(amount:Int) {
     for (i in 0...amount) {
         majin = new FlxSprite();
-        // loadGraphic is a function — call it with the bitmap data
         majin.loadGraphic(Paths.image("gameovers/evil majin"));
         majin.flipX = FlxG.random.int(1, 2) == 1 ? true : false;
         majin.setPosition(deadChar.x + FlxG.random.float(-100, 100), deadChar.y + FlxG.random.float(-50, 50));
-        add(majin);
+        GameOverSubstate.instance.add(majin);
 
         majin.camera = FlxG.camera;
         majin.scrollFactor.set();
@@ -181,7 +180,7 @@ function createMajinAssets(amount:Int) {
         FlxTween.tween(majin, {alpha: 1}, 1 * (i + 0.2));
     }
 
-    countdownText  = new FlxText(0, 0, 0, Std.string(secondsUntilTragedy),  44);
+    countdownText  = new FlxText(0, 0, 0, secondsUntilTragedy,  44);
     countdownText.font = 'assets/fonts/sonicfree.otf';
     countdownText.color = FlxColor.WHITE;
     countdownText.size = 44;

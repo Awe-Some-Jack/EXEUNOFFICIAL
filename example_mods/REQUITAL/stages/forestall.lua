@@ -30,6 +30,7 @@ local function addAnimated(def, visible)
 end
 
 function onCreatePost()
+	triggerEvent('Tween Camera Zoom', '1.4, true', '0.001') triggerEvent('Tweening Camera', '90, -90', '0.001, linear')
 	addStatic(staticSprites[1])
 
 	if not lowQuality then

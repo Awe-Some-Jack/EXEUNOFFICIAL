@@ -1,58 +1,74 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "chaotix fake idle",
-			"indices": []
+			"indices": [],
+			"name": "chaotix fake idle"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "chaotix fake left",
-			"indices": []
+			"indices": [],
+			"name": "chaotix fake left"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "chaotix fake down",
-			"indices": []
+			"indices": [],
+			"name": "chaotix fake down"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "chaotix fake up",
-			"indices": []
+			"indices": [],
+			"name": "chaotix fake up"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "chaotix fake right",
-			"indices": []
+			"indices": [],
+			"name": "chaotix fake right"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
-			"anim": "trans",
+			"loop": false,
 			"fps": 24,
-			"name": "chaotix beast transformation",
-			"indices": []
+			"anim": "trans1",
+			"indices": [],
+			"name": "1"
+		},
+		{
+			"offsets": [40, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "trans2",
+			"indices": [],
+			"name": "2"
+		},
+		{
+			"offsets": [40, 0],
+			"indices": [198],
+			"fps": 24,
+			"anim": "trans3",
+			"loop": true,
+			"name": "2"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
 	"image": "characters/faker_chaotix",
-	"position": [0, 0],
+	"position": [-30, -140],
 	"healthicon": "icon-chaotix-pixel",
 	"flip_x": false,
 	"healthbar_colors": [214, 25, 82],

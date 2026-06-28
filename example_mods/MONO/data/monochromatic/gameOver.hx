@@ -1,4 +1,5 @@
 import states.substates.GameOverSubstate;
+import shaders.ColorSwap;
 import objects.Character;
 import flixel.sound.FlxSound;
 
@@ -8,10 +9,16 @@ var deadMusic:FlxSound;
 
 function onGameOverStart()
 {
+	var colorSwap:ColorSwap = new ColorSwap();
+    colorSwap.hue = -1;
+    colorSwap.brightness = -0.1;
+    colorSwap.saturation = -1;
+
 	inGameOver = true;
 	if (GameOverSubstate.instance.boyfriend != null && deadBoyfriend == null) deadBoyfriend = GameOverSubstate.instance.boyfriend;
 	deadBoyfriend.scrollFactor.set();
 	deadBoyfriend.setPosition(400, 150);
+    deadBoyfriend.shader = colorSwap.shader;
 
 	FlxTween.cancelTweensOf(FlxG.camera);
 	FlxG.camera.follow();

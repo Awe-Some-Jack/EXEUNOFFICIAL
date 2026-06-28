@@ -1,23 +1,23 @@
 {
     "en-US": {
-        "lyrics.sharpyshowdown.1": "You; know...;",
-        "lyrics.sharpyshowdown.2": "You; can't; get away;",
-        "lyrics.sharpyshowdown.3": "I; know; where; you; are...;",
-        "lyrics.sharpyshowdown.4": "You; can't; hide; too much; lon;ger;",
-        "lyrics.sharpyshowdown.5": "Do you; real;ly; think; you; can; es;cape?;",
-        "lyrics.sharpyshowdown.6": "yeah;"
+        "lyrics.sharpyshowdown.1":  "You; know...;",
+		"lyrics.sharpyshowdown.2":  "You; cant; get; a;way;",
+		"lyrics.sharpyshowdown.3":  "I; know; where; you; are...;",
+		"lyrics.sharpyshowdown.4":  "You; cant; hide; too; much; longer;",
+		"lyrics.sharpyshowdown.5":  "Do; you; really; think; you; can; escape?; ",
+		"lyrics.sharpyshowdown.6":  "yeah;"
     },
     "es-ES": {
-        "lyrics.sharpyshowdown.1": "Ya; sabes...;",
-        "lyrics.sharpyshowdown.2": "No; puedes; escapar;",
-        "lyrics.sharpyshowdown.3": "Sé; dón;de; es;tás...;",
-        "lyrics.sharpyshowdown.4": "No; te; puedes; esconder; mucho; más;",
-        "lyrics.sharpyshowdown.5": "¿Re;al;men;te; crees; que; puedes; escapar?;",
-        "lyrics.sharpyshowdown.6": "sí;"
+        "lyrics.sharpyshowdown.1":  "Ya; sabes ...;",
+		"lyrics.sharpyshowdown.2":  "No; pue;des; es;capar;",
+		"lyrics.sharpyshowdown.3":  "Yo; sé; dón;de es;tás ...;",
+		"lyrics.sharpyshowdown.4":  "No; pue;des; es;con;derte mucho mas;",
+		"lyrics.sharpyshowdown.5":  "Real;men;te; crees; que; puedes; escapar?; ",
+		"lyrics.sharpyshowdown.6":  "si;"
     },
     "pt-BR": {
         "lyrics.sharpyshowdown.1": "Já; sabe...;",
-        "lyrics.sharpyshowdown.2": "Você; não; consegue escapar;",
+        "lyrics.sharpyshowdown.2": "Você; não; con;segue es;capar;",
         "lyrics.sharpyshowdown.3": "Eu; sei; onde; você; está...;",
         "lyrics.sharpyshowdown.4": "Não; vai; conseguir; se; esconder; por muito tempo;",
         "lyrics.sharpyshowdown.5": "Você; re;al;mente; acha; que; consegue; escapar?;",
@@ -87,12 +87,12 @@
         "lyrics.sharpyshowdown.5": "정;말; 도망;칠; 수; 있다고; 생각;해?;",
         "lyrics.sharpyshowdown.6": "응;"
     },
-    "pi-PI": {
-        "lyrics.sharpyshowdown.1": "Ye; know...;",
-        "lyrics.sharpyshowdown.2": "Ye; can't; get away;",
-        "lyrics.sharpyshowdown.3": "I; know; where; ye; are...;",
-        "lyrics.sharpyshowdown.4": "Ye; can't; hide; much; lon;ger;",
-        "lyrics.sharpyshowdown.5": "Do ye; real;ly; think; ye; can; es;cape?;",
-        "lyrics.sharpyshowdown.6": "aye;"
-    }
+	"pi-PI": {
+		"lyrics.sharpyshowdown.1":  "Ye; best know...;",
+		"lyrics.sharpyshowdown.2":  "Ye; can't; flee; landlubber;",
+		"lyrics.sharpyshowdown.3":  "I; know; yer; hidin'; spot...;",
+		"lyrics.sharpyshowdown.4":  "Ye; can't; stay; hid; much; longer matey;",
+		"lyrics.sharpyshowdown.5":  "Do; ye; truly; think; ye; can; outrun me?; ",
+		"lyrics.sharpyshowdown.6":  "yarr;"
+	}
 }

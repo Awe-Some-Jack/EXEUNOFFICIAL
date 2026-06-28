@@ -6,7 +6,7 @@ local prevVal1 = nil
 function onCreatePost()
 	makeLuaText('mytext', '', 860)
 	screenCenter('mytext', 'x')
-	setTextSize('mytext', 40)
+	setTextSize('mytext', 28)
 	setTextFont('mytext', 'sonichud.ttf')
 	setObjectCamera('mytext', 'other')
 	addLuaText('mytext')

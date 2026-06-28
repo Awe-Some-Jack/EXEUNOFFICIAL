@@ -60,7 +60,7 @@ end
 
 luaDebugMode = true
 
---Scrappeado. Aún tengo que aprender a hacerlo bien.
+--Scrappeado. Aún tengo que aprender a hacerlo bien.  -- SIGUE APRENIDENDO ENTONCES PUTAAAAAAAAAA OOOOOOHHHH ME CORROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 local function createReflection(shi)
     if shi.character then
         createInstance(shi.name, 'objects.Character', {0, 0, getProperty(shi.curCharacter..'.curCharacter'), shi.isPlayer})

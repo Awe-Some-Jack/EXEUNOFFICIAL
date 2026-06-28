@@ -1,86 +1,86 @@
 {
-	"en-US": {
-		"lyrics.malediction.1": "Some;thing's; wrong...",
-		"lyrics.malediction.2": "And; you; won't; hide; it; from; me!",
-		"lyrics.malediction.3": "Just; ad;mit; it!",
-		"lyrics.malediction.4": "Things; are;.;.;.; okay?",
-		"lyrics.malediction.5": "Then,; can; we...; try; a;gain?"
-	},
-	"es-ES": {
-		"lyrics.malediction.1": "Al;go es;ta mal...",
-		"lyrics.malediction.2": "Y; no; lo; vas; a; ocultar; de mi!",
-		"lyrics.malediction.3": "Solo; ad;mi;telo!",
-		"lyrics.malediction.4": "Las; cosas; es;tan;...; bien?",
-		"lyrics.malediction.5": "Entonces,; pode;mos...; vol;ver; a intentar?"
-	},
-	"pt-BR": {
-		"lyrics.malediction.1": "Tem; algo; errado!",
-		"lyrics.malediction.2": "E; voce; nao; vai; esconder; isso; de mim!",
-		"lyrics.malediction.3": "Apenas; ad;mi;ta!",
-		"lyrics.malediction.4": "Es;ta; tu;do;...; bem?",
-		"lyrics.malediction.5": "Podemos;...; ten;tar; de; novo?"
-	},
-	"fr-FR": {
-		"lyrics.malediction.1": "Quel;que chose ne; va pas...",
-		"lyrics.malediction.2": "Et; tu; ne; pour;ras; pas; me le cacher!",
-		"lyrics.malediction.3": "Ad;mets;-le;!",
-		"lyrics.malediction.4": "Tout; va;...; bien;?; ",
-		"lyrics.malediction.5": "Alors,; peut-on...; res;say;er; encore?"
-	},
-	"de-DE": {
-		"lyrics.malediction.1": "Et;was stimmt; nicht...",
-		"lyrics.malediction.2": "Und; du; wirst; es; nicht; vor; mir verbergen!",
-		"lyrics.malediction.3": "Gib; es; zu;!",
-		"lyrics.malediction.4": "Al;les; ist;...; okay;?",
-		"lyrics.malediction.5": "Dann,; konn;ten; wir; ...; es versuchen?"
-	},
-	"ru-RU": {
-		"lyrics.malediction.1": "Что;-то не; так...",
-		"lyrics.malediction.2": "И; ты; не; скроешь; это; от; меня!",
-		"lyrics.malediction.3": "Прос;то; признай; это!",
-		"lyrics.malediction.4": "Всё;...; в; по;рядке;?",
-		"lyrics.malediction.5": "Togda,; mo;zhet...; popro;buem; eshyo raz?"
-	},
-	"uk-UA": {
-		"lyrics.malediction.1": "Щось; не; так...",
-		"lyrics.malediction.2": "І; ти; не; сховаєш; це; від; мене!",
-		"lyrics.malediction.3": "Прос;то; визнай; це!",
-		"lyrics.malediction.4": "Все;...; га;разд;?; ",
-		"lyrics.malediction.5": "Todi,; mo;zhe...; spro;buemo; sche raz?"
-	},
-	"uz-UZ": {
-		"lyrics.malediction.1": "Ni;ma dir; noto'g'ri...",
-		"lyrics.malediction.2": "Va; buni; mendan; yashira; ol;may;san!",
-		"lyrics.malediction.3": "Shun;chaki; tan; ol!",
-		"lyrics.malediction.4": "Ham;ma;si;...; joyi;dami?",
-		"lyrics.malediction.5": "Unda,; ya;na; bir; bor; urinib ko'ramiz?"
-	},
-	"ja-JP": {
-		"lyrics.malediction.1": "何;か お;かしい…",
-		"lyrics.malediction.2": "俺;から; 隠すこと; は; できない;ぞ;!",
-		"lyrics.malediction.3": "認め;て; しまえ;!",
-		"lyrics.malediction.4": "大丈夫;…;な;の;か;?",
-		"lyrics.malediction.5": "もう一度;…; やり直せ;る;か;?"
-	},
-	"zh-CN": {
-		"lyrics.malediction.1": "有;些 不;对劲…",
-		"lyrics.malediction.2": "你;无;法向; 我; 隐;瞒;!",
-		"lyrics.malediction.3": "承认;吧;!;",
-		"lyrics.malediction.4": "一切;都;…;好;吗;?",
-		"lyrics.malediction.5": "那么,;我们能;…;再试;一;次吗?"
-	},
-	"ko-KR": {
-		"lyrics.malediction.1": "뭔;가 이;상해…",
-		"lyrics.malediction.2": "나;한테; 숨길; 수; 없;어;!",
-		"lyrics.malediction.3": "그냥; 인정;해;!",
-		"lyrics.malediction.4": "다;…; 괜;찮;아;?",
-		"lyrics.malediction.5": "그럼,; 우리;…; 다시; 해;볼까?"
-	},
-	"pi-PI": {
-		"lyrics.malediction.1": "Some;thin' be; wrong...",
-		"lyrics.malediction.2": "Ye; won't; hide; it; from; me;!",
-		"lyrics.malediction.3": "Just; ad;mit; it!",
-		"lyrics.malediction.4": "Things; be;...; a;ight;?",
-		"lyrics.malediction.5": "Then,; can; we;...; try; again?"
-	}
+    "en-US": {
+        "lyrics.malediction.1": "Some;thing's; wrong...",
+        "lyrics.malediction.2": "And; you; won't; hide; it; from; me!",
+        "lyrics.malediction.3": "Just; ad;mit; it!",
+        "lyrics.malediction.4": "Things; are...; o;kay?",
+        "lyrics.malediction.5": "Then,; can; we...; try; a;gain?"
+    },
+    "es-ES": {
+        "lyrics.malediction.1": "Al;go; es;tá; mal...",
+        "lyrics.malediction.2": "¡Y; no; me; lo; o;cul;ta;rás!",
+        "lyrics.malediction.3": "¡Só;lo; ad;mí;te;lo!",
+        "lyrics.malediction.4": "¿Las; co;sas; es;tán...; bien?",
+        "lyrics.malediction.5": "En;ton;ces,; ¿po;de;mos...; in;ten;tar; de; nue;vo?"
+    },
+    "pt-BR": {
+        "lyrics.malediction.1": "Tem; al;go; er;ra;do...",
+        "lyrics.malediction.2": "E; vo;cê; não; vai; es;con;der; de; mim!",
+        "lyrics.malediction.3": "A;pe;nas; ad;mi;ta!",
+        "lyrics.malediction.4": "Es;tá; tu;do...; bem?",
+        "lyrics.malediction.5": "En;tão,; po;de;mos...; ten;tar; de; no;vo?"
+    },
+    "fr-FR": {
+        "lyrics.malediction.1": "Quel;que; chose; ne; va; pas...",
+        "lyrics.malediction.2": "Et; tu; ne; me; le; ca;che;ras; pas !",
+        "lyrics.malediction.3": "Ad;mets;-le !",
+        "lyrics.malediction.4": "Tout; va...; bien ?",
+        "lyrics.malediction.5": "A;lors,; peut-on...; ré;es;say;er ?"
+    },
+    "de-DE": {
+        "lyrics.malediction.1": "Et;was; stimmt; nicht...",
+        "lyrics.malediction.2": "Und; du; wirst; es; nicht; vor; mir; ver;ber;gen!",
+        "lyrics.malediction.3": "Gib; es; zu!",
+        "lyrics.malediction.4": "Ist; al;les...; o;kay?",
+        "lyrics.malediction.5": "Kön;nen; wir; es; dann...; noch;mal; ver;su;chen?"
+    },
+    "ru-RU": {
+        "lyrics.malediction.1": "Что;-то; не; так...",
+        "lyrics.malediction.2": "И; ты; не; скро;ешь; э;то; от; ме;ня!",
+        "lyrics.malediction.3": "Прос;то; при;знай; э;то!",
+        "lyrics.malediction.4": "Всё...; в по;ряд;ке?",
+        "lyrics.malediction.5": "Тог;да,; мо;жем; ли; мы...; по;про;бо;вать; сно;ва?"
+    },
+    "uk-UA": {
+        "lyrics.malediction.1": "Щось; не; так...",
+        "lyrics.malediction.2": "І; ти; не; схо;ва;єш; це; від; ме;не!",
+        "lyrics.malediction.3": "Прос;то; виз;най; це!",
+        "lyrics.malediction.4": "Усе...; га;разд?",
+        "lyrics.malediction.5": "То;ді,; мо;же...; спро;бу;є;мо; ще; раз?"
+    },
+    "uz-UZ": {
+        "lyrics.malediction.1": "Nim;a;dir; no;to'g';ri...",
+        "lyrics.malediction.2": "Va; bu;ni; men;dan; ya;shi;ra; ol;may;san!",
+        "lyrics.malediction.3": "Shun;cha;ki; tan; ol!",
+        "lyrics.malediction.4": "Ham;ma;si...; joy;i;da;mi?",
+        "lyrics.malediction.5": "Un;da,; ya;na...; u;ri;nib; ko'r;sak; bo'la;di;mi?"
+    },
+    "ja-JP": {
+        "lyrics.malediction.1": "何;か;が; お;か;し;い...",
+        "lyrics.malediction.2": "俺;か;ら;は; 隠;せ;な;い;ぞ!",
+        "lyrics.malediction.3": "認;め;て;し;ま;え!",
+        "lyrics.malediction.4": "大;丈;夫...; な;の;か?",
+        "lyrics.malediction.5": "も;う;一;度...; や;り;直;せ;る;か?"
+    },
+    "zh-CN": {
+        "lyrics.malediction.1": "有;些; 不;对;劲...",
+        "lyrics.malediction.2": "你;无;法;向;我;隐;瞒!",
+        "lyrics.malediction.3": "承;认;吧!",
+        "lyrics.malediction.4": "一;切...;都;好;吗?",
+        "lyrics.malediction.5": "那;么,;我;们;能...;再;试;一;次;吗?"
+    },
+    "ko-KR": {
+        "lyrics.malediction.1": "뭔;가; 이;상;해...",
+        "lyrics.malediction.2": "나;한;테; 숨;길; 수; 없;어!",
+        "lyrics.malediction.3": "그;냥; 인;정;해!",
+        "lyrics.malediction.4": "다...; 괜;찮;아?",
+        "lyrics.malediction.5": "그;럼,; 우;리...; 다;시; 해;볼;까?"
+    },
+    "pi-PI": {
+        "lyrics.malediction.1": "Some;thin' be; wrong...",
+        "lyrics.malediction.2": "Ye; won't; hide; it; from; me!",
+        "lyrics.malediction.3": "Just; ad;mit; it!",
+        "lyrics.malediction.4": "Things; be...; a;ight?",
+        "lyrics.malediction.5": "Then,; can; we...; try; a;gain?"
+    }
 }

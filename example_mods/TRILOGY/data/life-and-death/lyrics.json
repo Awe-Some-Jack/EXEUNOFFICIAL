@@ -1,134 +1,134 @@
 {
-	"en-US": {
-		"lyrics.lifeandeath.1": "Boy;friend....",
-		"lyrics.lifeandeath.2": "Not; so; fast...",
-		"lyrics.lifeandeath.3": "I",
-		"lyrics.lifeandeath.4": "I; AM",
-		"lyrics.lifeandeath.5": "I; AM; GOD!",
-		"lyrics.lifeandeath.6": "You're; too; slow",
-		"lyrics.lifeandeath.7": "I; am; Life; and; Death",
-		"lyrics.lifeandeath.8": "You; just; don't; get; it",
-		"lyrics.lifeandeath.9": "NO; MORE; GAMES!"
-	},
-	"es-ES": {
-		"lyrics.lifeandeath.1": "Boy;friend....",
-		"lyrics.lifeandeath.2": "No; tan; rapido...",
-		"lyrics.lifeandeath.3": "Yo",
-		"lyrics.lifeandeath.4": "Yo; SOY",
-		"lyrics.lifeandeath.5": "Yo; SOY; DIOS!",
-		"lyrics.lifeandeath.6": "E;res; muy lento",
-		"lyrics.lifeandeath.7": "Soy; la; Vi;da; y la Muerte",
-		"lyrics.lifeandeath.8": "Sim;ple;mente; no; lo entiendes",
-		"lyrics.lifeandeath.9": "NO; MAS; JUEGOS!"
-	},
-	"pt-BR": {
-		"lyrics.lifeandeath.1": "Boy;friend....",
-		"lyrics.lifeandeath.2": "Nao; tao; rapido...",
-		"lyrics.lifeandeath.3": "Eu",
-		"lyrics.lifeandeath.4": "Eu; SOU",
-		"lyrics.lifeandeath.5": "Eu; SOU; DEUS!",
-		"lyrics.lifeandeath.6": "Vo;ce; e muito lento",
-		"lyrics.lifeandeath.7": "Eu; sou; a; vi;da e a morte",
-		"lyrics.lifeandeath.8": "Vo;ce; sim;ples;mente nao entende",
-		"lyrics.lifeandeath.9": "SEM; MAIS; JOGUINHOS!"
-	},
-	"fr-FR": {
-		"lyrics.lifeandeath.1": "Boy;friend....",
-		"lyrics.lifeandeath.2": "Pas; si; vite...",
-		"lyrics.lifeandeath.3": "Je",
-		"lyrics.lifeandeath.4": "Je; SUIS",
-		"lyrics.lifeandeath.5": "Je; SUIS; DIEU!",
-		"lyrics.lifeandeath.6": "Tu; es; trop lent",
-		"lyrics.lifeandeath.7": "Je; suis; la; Vie; et la Mort",
-		"lyrics.lifeandeath.8": "Tu; ne; com;prends; tout simplement pas",
-		"lyrics.lifeandeath.9": "PLUS; DE; JEUX!"
-	},
-	"de-DE": {
-		"lyrics.lifeandeath.1": "Boy;friend....",
-		"lyrics.lifeandeath.2": "Nicht; so; schnell...",
-		"lyrics.lifeandeath.3": "Ich",
-		"lyrics.lifeandeath.4": "Ich; BIN",
-		"lyrics.lifeandeath.5": "Ich; BIN; GOTT!",
-		"lyrics.lifeandeath.6": "Du; bist; zu langsam",
-		"lyrics.lifeandeath.7": "Ich; bin; Le;ben; und Tod",
-		"lyrics.lifeandeath.8": "Du; ver;stehst; es; einfach nicht",
-		"lyrics.lifeandeath.9": "KEIN; SPIEL; MEHR!"
-	},
-	"ru-RU": {
-		"lyrics.lifeandeath.1": "Бой;френд....",
-		"lyrics.lifeandeath.2": "Не; так; быстро...",
-		"lyrics.lifeandeath.3": "Я",
-		"lyrics.lifeandeath.4": "Я; БОГ",
-		"lyrics.lifeandeath.5": "Я; ЕСТЬ; БОГ!",
-		"lyrics.lifeandeath.6": "Ты; слиш;ком медленный",
-		"lyrics.lifeandeath.7": "Я; есть; Жизнь; и; Смерть",
-		"lyrics.lifeandeath.8": "Ты; прос;то; не; понимаешь",
-		"lyrics.lifeandeath.9": "ИГ;РЫ; КОНЧИЛИСЬ!"
-	},
-	"uk-UA": {
-		"lyrics.lifeandeath.1": "Бой;френд....",
-		"lyrics.lifeandeath.2": "Не; так; швидко...",
-		"lyrics.lifeandeath.3": "Я",
-		"lyrics.lifeandeath.4": "Я; БОГ",
-		"lyrics.lifeandeath.5": "Я; Є; БОГ!",
-		"lyrics.lifeandeath.6": "Ти; над;то повiльний",
-		"lyrics.lifeandeath.7": "Я; Жит;тя; i; Смерть",
-		"lyrics.lifeandeath.8": "Ти; прос;то; не; розумiєш",
-		"lyrics.lifeandeath.9": "ГРИ; ЗА;КIНЧИЛИСЬ!"
-	},
-	"uz-UZ": {
-		"lyrics.lifeandeath.1": "Boy;friend....",
-		"lyrics.lifeandeath.2": "Sho;shil;ma...",
-		"lyrics.lifeandeath.3": "Men",
-		"lyrics.lifeandeath.4": "Men; XUDO",
-		"lyrics.lifeandeath.5": "Men; XU;DOMAN!",
-		"lyrics.lifeandeath.6": "Sen; ju;da sekinsan",
-		"lyrics.lifeandeath.7": "Men; Hay;ot; va; O'limman",
-		"lyrics.lifeandeath.8": "Sen; shun;cha;ki; tushunmayapsan",
-		"lyrics.lifeandeath.9": "OR;TIQ; O'YINLAR YO'Q!"
-	},
-	"ja-JP": {
-		"lyrics.lifeandeath.1": "ボーイ;フレンド....",
-		"lyrics.lifeandeath.2": "そう; 急ぐ;な...",
-		"lyrics.lifeandeath.3": "俺",
-		"lyrics.lifeandeath.4": "俺; は神",
-		"lyrics.lifeandeath.5": "俺; は神; だ!",
-		"lyrics.lifeandeath.6": "お前; は遅;すぎる",
-		"lyrics.lifeandeath.7": "俺; は生; と死; その;もの",
-		"lyrics.lifeandeath.8": "お前; には; 理解; でき;ない",
-		"lyrics.lifeandeath.9": "もう; 遊び; は終わりだ!"
-	},
-	"zh-CN": {
-		"lyrics.lifeandeath.1": "男;友....",
-		"lyrics.lifeandeath.2": "别;那;么快...",
-		"lyrics.lifeandeath.3": "我",
-		"lyrics.lifeandeath.4": "我;是神",
-		"lyrics.lifeandeath.5": "我;就;是神!",
-		"lyrics.lifeandeath.6": "你;太;慢了",
-		"lyrics.lifeandeath.7": "我;是;生;死;的主宰",
-		"lyrics.lifeandeath.8": "你;就;是;不;明白",
-		"lyrics.lifeandeath.9": "不;再;玩游戏了!"
-	},
-	"ko-KR": {
-		"lyrics.lifeandeath.1": "보;이프렌드....",
-		"lyrics.lifeandeath.2": "그;렇;게빨리는...",
-		"lyrics.lifeandeath.3": "나",
-		"lyrics.lifeandeath.4": "나;는신",
-		"lyrics.lifeandeath.5": "나;는;신이다!",
-		"lyrics.lifeandeath.6": "넌;너;무느려",
-		"lyrics.lifeandeath.7": "나;는;삶;과;죽음이다",
-		"lyrics.lifeandeath.8": "넌;그;냥;이;해를못하는거야",
-		"lyrics.lifeandeath.9": "더;이;상게임은없다!"
-	},
-	"pi-PI": {
-		"lyrics.lifeandeath.1": "Boy;friend....",
-		"lyrics.lifeandeath.2": "Not; so; fast...",
-		"lyrics.lifeandeath.3": "I",
-		"lyrics.lifeandeath.4": "I; AM",
-		"lyrics.lifeandeath.5": "I; AM; GOD!",
-		"lyrics.lifeandeath.6": "Ye're; too; slow",
-		"lyrics.lifeandeath.7": "I; am; Life; and; Death",
-		"lyrics.lifeandeath.8": "Ye; just; don't; get; it",
-		"lyrics.lifeandeath.9": "NO; MORE; GAMES!"
-	}
+    "en-US": {
+        "lyrics.lifeandeath.1": "Boy;friend....",
+        "lyrics.lifeandeath.2": "Not; so; fast...",
+        "lyrics.lifeandeath.3": "I",
+        "lyrics.lifeandeath.4": "I; AM",
+        "lyrics.lifeandeath.5": "I; AM; GOD!",
+        "lyrics.lifeandeath.6": "You're; too; slow",
+        "lyrics.lifeandeath.7": "I; am; Life; and; Death",
+        "lyrics.lifeandeath.8": "You; just; don't; get; it",
+        "lyrics.lifeandeath.9": "NO; MORE; GAMES!"
+    },
+    "es-ES": {
+        "lyrics.lifeandeath.1": "Boy;friend....",
+        "lyrics.lifeandeath.2": "No; tan; rápido...",
+        "lyrics.lifeandeath.3": "Yo",
+        "lyrics.lifeandeath.4": "Yo; SOY",
+        "lyrics.lifeandeath.5": "Yo; SOY; DIOS!",
+        "lyrics.lifeandeath.6": "E;res; muy lento",
+        "lyrics.lifeandeath.7": "Soy; la; Vi;da; y la Muerte",
+        "lyrics.lifeandeath.8": "Sim;ple;mente; no; lo entiendes",
+        "lyrics.lifeandeath.9": "NO; MÁS; JUEGOS!"
+    },
+    "pt-BR": {
+        "lyrics.lifeandeath.1": "Boy;friend....",
+        "lyrics.lifeandeath.2": "Não; tão; rápido...",
+        "lyrics.lifeandeath.3": "Eu",
+        "lyrics.lifeandeath.4": "Eu; SOU",
+        "lyrics.lifeandeath.5": "Eu; SOU; DEUS!",
+        "lyrics.lifeandeath.6": "Vo;cê; é muito lento",
+        "lyrics.lifeandeath.7": "Eu; sou; a; vi;da e a morte",
+        "lyrics.lifeandeath.8": "Vo;cê; sim;ples;mente não entende",
+        "lyrics.lifeandeath.9": "SEM; MAIS; JOGUINHOS!"
+    },
+    "fr-FR": {
+        "lyrics.lifeandeath.1": "Boy;friend....",
+        "lyrics.lifeandeath.2": "Pas; si; vite...",
+        "lyrics.lifeandeath.3": "Je",
+        "lyrics.lifeandeath.4": "Je; SUIS",
+        "lyrics.lifeandeath.5": "Je; SUIS; DIEU!",
+        "lyrics.lifeandeath.6": "Tu; es; trop lent",
+        "lyrics.lifeandeath.7": "Je; suis; la; Vie; et la Mort",
+        "lyrics.lifeandeath.8": "Tu; ne; com;prends; tout simplement pas",
+        "lyrics.lifeandeath.9": "PLUS; DE; JEUX!"
+    },
+    "de-DE": {
+        "lyrics.lifeandeath.1": "Boy;friend....",
+        "lyrics.lifeandeath.2": "Nicht; so; schnell...",
+        "lyrics.lifeandeath.3": "Ich",
+        "lyrics.lifeandeath.4": "Ich; BIN",
+        "lyrics.lifeandeath.5": "Ich; BIN; GOTT!",
+        "lyrics.lifeandeath.6": "Du; bist; zu langsam",
+        "lyrics.lifeandeath.7": "Ich; bin; Le;ben; und Tod",
+        "lyrics.lifeandeath.8": "Du; ver;stehst; es; einfach nicht",
+        "lyrics.lifeandeath.9": "KEIN; SPIEL; MEHR!"
+    },
+    "ru-RU": {
+        "lyrics.lifeandeath.1": "Бой;френд....",
+        "lyrics.lifeandeath.2": "Не; так; быстро...",
+        "lyrics.lifeandeath.3": "Я",
+        "lyrics.lifeandeath.4": "Я; ЕСТЬ",
+        "lyrics.lifeandeath.5": "Я; ЕСТЬ; БОГ!",
+        "lyrics.lifeandeath.6": "Ты; слиш;ком медленный",
+        "lyrics.lifeandeath.7": "Я; есть; Жизнь; и; Смерть",
+        "lyrics.lifeandeath.8": "Ты; прос;то; не; понимаешь",
+        "lyrics.lifeandeath.9": "ИГ;РЫ; КОНЧИЛИСЬ!"
+    },
+    "uk-UA": {
+        "lyrics.lifeandeath.1": "Бой;френд....",
+        "lyrics.lifeandeath.2": "Не; так; швидко...",
+        "lyrics.lifeandeath.3": "Я",
+        "lyrics.lifeandeath.4": "Я; Є",
+        "lyrics.lifeandeath.5": "Я; Є; БОГ!",
+        "lyrics.lifeandeath.6": "Ти; над;то повільний",
+        "lyrics.lifeandeath.7": "Я; Жит;тя; i; Смерть",
+        "lyrics.lifeandeath.8": "Ти; прос;то; не; розумієш",
+        "lyrics.lifeandeath.9": "ІГ;РИ; ЗА;КІНЧИЛИСЬ!"
+    },
+    "uz-UZ": {
+        "lyrics.lifeandeath.1": "Boy;friend....",
+        "lyrics.lifeandeath.2": "Sho;shil;ma...",
+        "lyrics.lifeandeath.3": "Men",
+        "lyrics.lifeandeath.4": "Men; XUDO",
+        "lyrics.lifeandeath.5": "Men; XU;DOMAN!",
+        "lyrics.lifeandeath.6": "Sen; ju;da sekinsan",
+        "lyrics.lifeandeath.7": "Men; Hay;ot; va; O'limman",
+        "lyrics.lifeandeath.8": "Sen; shun;cha;ki; tushunmayapsan",
+        "lyrics.lifeandeath.9": "OR;TIQ; O'YINLAR YO'Q!"
+    },
+    "ja-JP": {
+        "lyrics.lifeandeath.1": "ボーイ;フレンド....",
+        "lyrics.lifeandeath.2": "そう; 急ぐ;な...",
+        "lyrics.lifeandeath.3": "俺",
+        "lyrics.lifeandeath.4": "俺; は神",
+        "lyrics.lifeandeath.5": "俺; は神; だ!",
+        "lyrics.lifeandeath.6": "お前; は遅;すぎる",
+        "lyrics.lifeandeath.7": "俺; は生; と死; その;もの",
+        "lyrics.lifeandeath.8": "お前; には; 理解; でき;ない",
+        "lyrics.lifeandeath.9": "もう; 遊び; は終わりだ!"
+    },
+    "zh-CN": {
+        "lyrics.lifeandeath.1": "男;友....",
+        "lyrics.lifeandeath.2": "别;那;么快...",
+        "lyrics.lifeandeath.3": "我",
+        "lyrics.lifeandeath.4": "我;是神",
+        "lyrics.lifeandeath.5": "我;就;是神!",
+        "lyrics.lifeandeath.6": "你;太;慢了",
+        "lyrics.lifeandeath.7": "我;是;生;死;的主宰",
+        "lyrics.lifeandeath.8": "你;就;是;不;明白",
+        "lyrics.lifeandeath.9": "不;再;玩游戏了!"
+    },
+    "ko-KR": {
+        "lyrics.lifeandeath.1": "보;이프렌드....",
+        "lyrics.lifeandeath.2": "서;두;르지마...",
+        "lyrics.lifeandeath.3": "나",
+        "lyrics.lifeandeath.4": "나;는 신",
+        "lyrics.lifeandeath.5": "나;는; 신이다!",
+        "lyrics.lifeandeath.6": "넌; 너;무 느려",
+        "lyrics.lifeandeath.7": "나;는; 삶;과; 죽음이다",
+        "lyrics.lifeandeath.8": "넌; 그;냥; 이;해를 못하는 거야",
+        "lyrics.lifeandeath.9": "더; 이;상 게임은 없다!"
+    },
+    "pi-PI": {
+        "lyrics.lifeandeath.1": "Boy;friend....",
+        "lyrics.lifeandeath.2": "Not; so; fast...",
+        "lyrics.lifeandeath.3": "I",
+        "lyrics.lifeandeath.4": "I; AM",
+        "lyrics.lifeandeath.5": "I; AM; GOD!",
+        "lyrics.lifeandeath.6": "Ye're; too; slow",
+        "lyrics.lifeandeath.7": "I; am; Life; and; Death",
+        "lyrics.lifeandeath.8": "Ye; just; don't; get; it",
+        "lyrics.lifeandeath.9": "NO; MORE; GAMES!"
+    }
 }

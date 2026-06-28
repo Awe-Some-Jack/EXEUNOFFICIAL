@@ -1,110 +1,110 @@
 {
-	"en-US": {
-		"lyrics.foundyou.1": "Come; out; wher;ever; you; are",
-		"lyrics.foundyou.2": "Just; ki;dding,; I; al;ready; found; you!",
-		"lyrics.foundyou.3": "Knock; Knock!",
-		"lyrics.foundyou.4": "Guess; Who~?",
-		"lyrics.foundyou.5": "Nice; place; you; got; here",
-		"lyrics.foundyou.6": "Too; bad; it'll; be; the; last; place; you'll; e;ver; see!",
-		"lyrics.foundyou.7": "Bring; it; on!"
-	},
-	"es-ES": {
-		"lyrics.foundyou.1": "Sal; don;de; sea; que; estes",
-		"lyrics.foundyou.2": "So;lo; bro;me;a;ba,; ya; los encontre!",
-		"lyrics.foundyou.3": "Toc; Toc!",
-		"lyrics.foundyou.4": "Adi;vina quien~?",
-		"lyrics.foundyou.5": "Que; buen; lu;gar; tienen aqui",
-		"lyrics.foundyou.6": "Que; tris;te; que; es;te; se;ra; el; ul;timo lugar!",
-		"lyrics.foundyou.7": "Ven; a; verme!"
-	},
-	"pt-BR": {
-		"lyrics.foundyou.1": "Sai; on;de; quer; que; estiver",
-		"lyrics.foundyou.2": "Brin;ca;dei;ri;nha,; eu; ja; te encontrei!",
-		"lyrics.foundyou.3": "Toc; Toc!",
-		"lyrics.foundyou.4": "Adivinha; quem~?",
-		"lyrics.foundyou.5": "Que; lu;gar; le;gal que voce tem",
-		"lyrics.foundyou.6": "Pe;na; que; vai; ser; o; ul;ti;mo; que; voce vera!",
-		"lyrics.foundyou.7": "Vem; en;frentar me!"
-	},
-	"fr-FR": {
-		"lyrics.foundyou.1": "Sors; d'ou; que; tu; te; sois",
-		"lyrics.foundyou.2": "Je; plai;sante,; je; t'ai; de;ja; trouve!",
-		"lyrics.foundyou.3": "Toc; Toc!",
-		"lyrics.foundyou.4": "Devinez; qui~?",
-		"lyrics.foundyou.5": "Sym;pa; l'en;droit; que tu as la",
-		"lyrics.foundyou.6": "Dom;mage; que; ce; se;ra; le; der;nier; en;droit que tu verras!",
-		"lyrics.foundyou.7": "Montre; ce; que tu sais faire!"
-	},
-	"de-DE": {
-		"lyrics.foundyou.1": "Komm; raus,; wo; auch; im;mer du bist",
-		"lyrics.foundyou.2": "Nur; Spass,; ich; hab; dich; schon; ge;funden!",
-		"lyrics.foundyou.3": "Klopf; Klopf!",
-		"lyrics.foundyou.4": "Rate mal; wer~?",
-		"lyrics.foundyou.5": "Nettes; Platz;chen; das; du da hast",
-		"lyrics.foundyou.6": "Scha;de; dass; es; der; letz;te; Ort; ist; den; du je siehst!",
-		"lyrics.foundyou.7": "Komm; schon; mal!"
-	},
-	"ru-RU": {
-		"lyrics.foundyou.1": "Вы;хо;ди;те; где; бы вы ни были",
-		"lyrics.foundyou.2": "Шу;чу,; я; вас; уже; на;шел;!",
-		"lyrics.foundyou.3": "Тук; Тук!",
-		"lyrics.foundyou.4": "Угадайте; кто~?",
-		"lyrics.foundyou.5": "Ми;лень;ко; у; вас тут",
-		"lyrics.foundyou.6": "Жаль,; что; это; пос;лед;нее; мес;то; ко;то;рое вы увидите!",
-		"lyrics.foundyou.7": "По;про;буйте!"
-	},
-	"uk-UA": {
-		"lyrics.foundyou.1": "Ви;хо;дьте; де; б; ви не були",
-		"lyrics.foundyou.2": "Жар;тую,; я; вас; вже; знай;шов;!",
-		"lyrics.foundyou.3": "Тук; Тук!",
-		"lyrics.foundyou.4": "Вгадайте; хто~?",
-		"lyrics.foundyou.5": "Миль;не; мiс;це;чко у вас тут",
-		"lyrics.foundyou.6": "Шко;да,; що; це; ос;тан;нє; мiс;це; яке; ви побачите!",
-		"lyrics.foundyou.7": "Спро;буй;те!"
-	},
-	"uz-UZ": {
-		"lyrics.foundyou.1": "Qay;er;da; bo'l;sa;ringiz ham tashqariga",
-		"lyrics.foundyou.2": "Ha;zil;lay;ap;man,; men; sen;larni topdim!",
-		"lyrics.foundyou.3": "Taq; Taq!",
-		"lyrics.foundyou.4": "Kim; ekanligini toping~?",
-		"lyrics.foundyou.5": "Juda; chi;roi;li; joylaring bor ekan",
-		"lyrics.foundyou.6": "Af;sus;ki; bu; sen;lar;ning; ko;ra;di;gan eng so'nggi joyida!",
-		"lyrics.foundyou.7": "Qa;ra;ylik nima bo'lishini!"
-	},
-	"ja-JP": {
-		"lyrics.foundyou.1": "どこ;にい;ても; 出て;こい;",
-		"lyrics.foundyou.2": "冗;談;だ,; もう; 見つ;けた;ぞ;!",
-		"lyrics.foundyou.3": "トン; トン!",
-		"lyrics.foundyou.4": "誰だか; 分かるか~?",
-		"lyrics.foundyou.5": "な;かな;かい;い場;所じゃないか",
-		"lyrics.foundyou.6": "残;念;だが; ここ;がお;前の; 最期;の場;所に;なる;!",
-		"lyrics.foundyou.7": "かか;って;こい!"
-	},
-	"zh-CN": {
-		"lyrics.foundyou.1": "出;来;不;管;你;在哪",
-		"lyrics.foundyou.2": "开;玩;笑;的;我;已;经;找到你!",
-		"lyrics.foundyou.3": "咚;咚!",
-		"lyrics.foundyou.4": "猜猜; 是谁~?",
-		"lyrics.foundyou.5": "你;这;里;还;挺不错的",
-		"lyrics.foundyou.6": "可;惜;这;是;你;最;后;一;次;看;到的地方!",
-		"lyrics.foundyou.7": "来;吧;!"
-	},
-	"ko-KR": {
-		"lyrics.foundyou.1": "나;와;라;어;디;있든지",
-		"lyrics.foundyou.2": "농;담;이;야;이;미;찾;았거든!",
-		"lyrics.foundyou.3": "똑;똑!",
-		"lyrics.foundyou.4": "누군지; 알아맞혀~?",
-		"lyrics.foundyou.5": "꽤;근;사;한;곳이네",
-		"lyrics.foundyou.6": "안;타;깝;게;도;이;게;네;가;마;지막으로보는장소야!",
-		"lyrics.foundyou.7": "덤;벼;봐!"
-	},
-	"pi-PI": {
-		"lyrics.foundyou.1": "Come; out; wher;ever; ye; be",
-		"lyrics.foundyou.2": "Just; kid;ding,; I; al;ready; found; ye!",
-		"lyrics.foundyou.3": "Knock; Knock!",
-		"lyrics.foundyou.4": "Guess; Who~?",
-		"lyrics.foundyou.5": "Nice; place; ye; got; here",
-		"lyrics.foundyou.6": "Too; bad; it'll; be; the; last; place; ye'll; e;ver; see!",
-		"lyrics.foundyou.7": "Bring; it; on!"
-	}
+    "en-US": {
+        "lyrics.foundyou.1": "Come; out; wher;ever; you; are",
+        "lyrics.foundyou.2": "Just; ki;dding,; I; al;ready; found; you!",
+        "lyrics.foundyou.3": "Knock; Knock!",
+        "lyrics.foundyou.4": "Guess; Who~?",
+        "lyrics.foundyou.5": "Nice; place; you; got; here",
+        "lyrics.foundyou.6": "Too; bad; it'll; be; the; last; place; you'll; e;ver; see!",
+        "lyrics.foundyou.7": "Bring; it; on!"
+    },
+    "es-ES": {
+        "lyrics.foundyou.1": "Sal;gan; de; don;de; sea; que; es;tén",
+        "lyrics.foundyou.2": "So;lo; bro;me;a;ba,; ¡ya; los; en;con;tré!",
+        "lyrics.foundyou.3": "¡Toc; Toc!",
+        "lyrics.foundyou.4": "¿A;di;vi;nen; quién~?",
+        "lyrics.foundyou.5": "Qué; buen; lu;gar; tie;nen; a;quí",
+        "lyrics.foundyou.6": "¡Lás;ti;ma; que; se;rá; el; úl;ti;mo; que; ve;rán!",
+        "lyrics.foundyou.7": "¡Ven;gan; por; mí!"
+    },
+    "pt-BR": {
+        "lyrics.foundyou.1": "Sai;am; de; on;de; quer; que; es;te;jam",
+        "lyrics.foundyou.2": "Brin;ca;dei;ri;nha,; já; en;con;trei; vo;cês!",
+        "lyrics.foundyou.3": "Toc; Toc!",
+        "lyrics.foundyou.4": "A;di;vi;nhem; quem~?",
+        "lyrics.foundyou.5": "Que; be;lo; lu;gar; vo;cês; têm; a;qui",
+        "lyrics.foundyou.6": "Pe;na; que; se;rá; o; úl;ti;mo; que; ve;rão!",
+        "lyrics.foundyou.7": "Ven;ham; com; tu;do!"
+    },
+    "fr-FR": {
+        "lyrics.foundyou.1": "Sor;tez,; où; que; vous; so;yez",
+        "lyrics.foundyou.2": "Je; plai;sante,; je; vous; ai; dé;jà; trou;vés!",
+        "lyrics.foundyou.3": "Toc; Toc!",
+        "lyrics.foundyou.4": "De;vi;nez; qui~?",
+        "lyrics.foundyou.5": "Sym;pa; l'en;droit; que; vous; a;vez; là",
+        "lyrics.foundyou.6": "Dom;mage; que; ce; soit; le; der;nier; que; vous; ver;rez!",
+        "lyrics.foundyou.7": "A;me;nez-vous!"
+    },
+    "de-DE": {
+        "lyrics.foundyou.1": "Kommt; raus,; wo; auch; im;mer; ihr; seid",
+        "lyrics.foundyou.2": "Nur; ein; Scherz,; ich; hab; euch; schon; ge;fun;den!",
+        "lyrics.foundyou.3": "Klopf; Klopf!",
+        "lyrics.foundyou.4": "Ra;tet; mal; wer~?",
+        "lyrics.foundyou.5": "Schö;nen; Ort; habt; ihr; hier",
+        "lyrics.foundyou.6": "Scha;de,; dass; es; der; letz;te; ist,; den; ihr; se;hen; wer;det!",
+        "lyrics.foundyou.7": "Kommt; nur; her!"
+    },
+    "ru-RU": {
+        "lyrics.foundyou.1": "Вы;хо;ди;те,; где; бы; вы; ни; пря;та;лись",
+        "lyrics.foundyou.2": "Шу;чу,; я; вас; у;же; на;шел!",
+        "lyrics.foundyou.3": "Тук; Тук!",
+        "lyrics.foundyou.4": "У;га;дай;те; кто~?",
+        "lyrics.foundyou.5": "Ми;лое; ме;стеч;ко; у; вас; тут",
+        "lyrics.foundyou.6": "Жаль,; что; о;но; по;след;нее,; что; вы; у;ви;ди;те!",
+        "lyrics.foundyou.7": "Ну; да;вай;те!"
+    },
+    "uk-UA": {
+        "lyrics.foundyou.1": "Ви;ходь;те,; де; б; ви; не; хо;ва;лись",
+        "lyrics.foundyou.2": "Жар;ту;ю,; я; вас; вже; знай;шов!",
+        "lyrics.foundyou.3": "Тук; Тук!",
+        "lyrics.foundyou.4": "Вга;дай;те; хто~?",
+        "lyrics.foundyou.5": "Ми;ле; міс;теч;ко; у; вас; тут",
+        "lyrics.foundyou.6": "Шко;да,; що; во;но; ос;тан;нє,; що; ви; по;ба;чи;те!",
+        "lyrics.foundyou.7": "Ну; да;вай;те!"
+    },
+    "uz-UZ": {
+        "lyrics.foundyou.1": "Qay;er;da; bo';lsa;la;ring; ham; chi;qing;lar",
+        "lyrics.foundyou.2": "Ha;zil,; men; sen;lar;ni; to;pib; bo'l;dim!",
+        "lyrics.foundyou.3": "Taq; Taq!",
+        "lyrics.foundyou.4": "To;ping;lar;chi; kim~?",
+        "lyrics.foundyou.5": "Yax;shi; joy; to;pib;san;lar",
+        "lyrics.foundyou.6": "Af;sus;ki,; bu; ko';ra;di;gan; oxir;gi; joy;larin;giz; bo'la;di!",
+        "lyrics.foundyou.7": "Qa;ni,; ke;ling;lar!"
+    },
+    "ja-JP": {
+        "lyrics.foundyou.1": "お前ら; どこ;にい;ても; 出て;こい;",
+        "lyrics.foundyou.2": "冗;談;だ、; もう; 見つ;けた;ぞ;!",
+        "lyrics.foundyou.3": "コン; コン!",
+        "lyrics.foundyou.4": "誰だか; 分かるか~?",
+        "lyrics.foundyou.5": "い;い場;所;に隠;れ;たな",
+        "lyrics.foundyou.6": "残;念;だが、; ここ;がお;前らの; 最期;の場;所に;なる;!",
+        "lyrics.foundyou.7": "かか;って;こい!"
+    },
+    "zh-CN": {
+        "lyrics.foundyou.1": "出;来;吧;, ;不;管;你;们;在;哪",
+        "lyrics.foundyou.2": "开;玩;笑;的;, ;我;已;经;找;到;你;们;了;!",
+        "lyrics.foundyou.3": "咚;咚;!",
+        "lyrics.foundyou.4": "猜;猜;是;谁;~?",
+        "lyrics.foundyou.5": "你;们;找;的;这;地;方;还;挺;不;错;的",
+        "lyrics.foundyou.6": "可;惜;这;是;你;们;最;后;一;次;看;到;的;地;方;了;!",
+        "lyrics.foundyou.7": "放;马;过;来;吧;!"
+    },
+    "ko-KR": {
+        "lyrics.foundyou.1": "어;디; 있;든;지; 이;제; 나;와;",
+        "lyrics.foundyou.2": "농;담;이;야,; 이;미; 다; 찾;았;거;든!",
+        "lyrics.foundyou.3": "똑;똑!",
+        "lyrics.foundyou.4": "누;군;지; 맞;혀;볼;래~?",
+        "lyrics.foundyou.5": "꽤; 근;사;한; 곳;에; 있;네",
+        "lyrics.foundyou.6": "안;타;깝;게;도; 여;기;가; 너;희;의; 마;지;막; 장;소;가; 될; 거;야!",
+        "lyrics.foundyou.7": "덤;벼;봐!"
+    },
+    "pi-PI": {
+        "lyrics.foundyou.1": "Come; out; wher;ever; ye; be",
+        "lyrics.foundyou.2": "Just; kid;ding,; I; al;ready; found; ye!",
+        "lyrics.foundyou.3": "Knock; Knock!",
+        "lyrics.foundyou.4": "Guess; Who~?",
+        "lyrics.foundyou.5": "Nice; place; ye; got; here",
+        "lyrics.foundyou.6": "Too; bad; it'll; be; the; last; place; ye'll; e;ver; see!",
+        "lyrics.foundyou.7": "Bring; it; on!"
+    }
 }

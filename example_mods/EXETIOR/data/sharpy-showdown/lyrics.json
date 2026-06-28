@@ -1,98 +1,98 @@
 {
-	"en-US":  {
-				  "lyrics.sharpyshowdown.1":  "You; know...;",
-				  "lyrics.sharpyshowdown.2":  "You; cant; get; away;",
-				  "lyrics.sharpyshowdown.3":  "I; know; where; you; are...;",
-				  "lyrics.sharpyshowdown.4":  "You; cant; hide; too; much; longer;",
-				  "lyrics.sharpyshowdown.5":  "Do; you; really; think; you; can; escape?; ",
-				  "lyrics.sharpyshowdown.6":  "yeah;"
-			  },
-	"es-ES":  {
-				  "lyrics.sharpyshowdown.1":  "Ya ...; Ya ... Ya sabes ...;",
-				  "lyrics.sharpyshowdown.2":  "No; pue;des; escapar;",
-				  "lyrics.sharpyshowdown.3":  "Se ...; Se ...; Se ...; Se ...; Se ... Se don de es tas ...;",
-				  "lyrics.sharpyshowdown.4":  "No; pue;des; es;con;derte mucho mas;",
-				  "lyrics.sharpyshowdown.5":  "Real;men;te; crees; que; puedes; escapar?; ",
-				  "lyrics.sharpyshowdown.6":  "si;"
-			  },
-	"pt-BR":  {
-				  "lyrics.sharpyshowdown.1":  "Ja ...; Ja ... Ja sabe ...;",
-				  "lyrics.sharpyshowdown.2":  "Vo;ce; nao; consegue escapar;",
-				  "lyrics.sharpyshowdown.3":  "Eu; sei; onde; voce; esta...;",
-				  "lyrics.sharpyshowdown.4":  "Vo;ce; nao; vai; se; esconder por muito mais;",
-				  "lyrics.sharpyshowdown.5":  "Vo;ce; real;men;te; acha; que consegue escapar?; ",
-				  "lyrics.sharpyshowdown.6":  "sim;"
-			  },
-	"fr-FR":  {
-				  "lyrics.sharpyshowdown.1":  "Tu ...; Tu ... Tu sais ...;",
-				  "lyrics.sharpyshowdown.2":  "Tu; ne peux; pas; techapper;",
-				  "lyrics.sharpyshowdown.3":  "Je ...; Je ...; Je ...; Je ...; Je ... Je sais ou tu es ...;",
-				  "lyrics.sharpyshowdown.4":  "Tu; ne; peux; pas; te; cacher bien plus longtemps;",
-				  "lyrics.sharpyshowdown.5":  "Tu; crois; vrai;ment; pou;voir; techapper?; ",
-				  "lyrics.sharpyshowdown.6":  "ouais;"
-			  },
-	"de-DE":  {
-				  "lyrics.sharpyshowdown.1":  "Du ...; Du ... Du weisst ...;",
-				  "lyrics.sharpyshowdown.2":  "Du; kannst; nicht; entkommen;",
-				  "lyrics.sharpyshowdown.3":  "Ich ...; Ich ...; Ich ...; Ich ...; Ich ... Ich weiss wo du bist ...;",
-				  "lyrics.sharpyshowdown.4":  "Du; kannst; dich; nicht; viel; langer verstecken;",
-				  "lyrics.sharpyshowdown.5":  "Glaubst; du; wir;klich; du; kannst; entkommen?; ",
-				  "lyrics.sharpyshowdown.6":  "ja;"
-			  },
-	"ru-RU":  {
-				  "lyrics.sharpyshowdown.1":  "Ты ...; Ты ... Ты знаешь ...;",
-				  "lyrics.sharpyshowdown.2":  "Те;бе; не; уйти;",
-				  "lyrics.sharpyshowdown.3":  "Я; знаю; где; ты;...;",
-				  "lyrics.sharpyshowdown.4":  "Ты; не; смо;жешь; прят;аться ещё долго;",
-				  "lyrics.sharpyshowdown.5":  "Не;уже;ли; ты; пра;вда; думаешь что сбежишь?; ",
-				  "lyrics.sharpyshowdown.6":  "да;"
-			  },
-	"uk-UA":  {
-				  "lyrics.sharpyshowdown.1":  "Ти ...; Ти ... Ти знаєш ...;",
-				  "lyrics.sharpyshowdown.2":  "Те;бi; не; втекти;",
-				  "lyrics.sharpyshowdown.3":  "Я; знаю; де; ти;...;",
-				  "lyrics.sharpyshowdown.4":  "Ти; не; змо;жеш; хо;ватися ще довго;",
-				  "lyrics.sharpyshowdown.5":  "Ти; справ;дi; ду;ма;єш; що втечеш?; ",
-				  "lyrics.sharpyshowdown.6":  "так;"
-			  },
-	"uz-UZ":  {
-				  "lyrics.sharpyshowdown.1":  "Bi ...; Bi ... Bi lasan ...;",
-				  "lyrics.sharpyshowdown.2":  "Qo;chib; qutula; olmaysan;",
-				  "lyrics.sharpyshowdown.3":  "Qay;er;da;li;gingni bilaman...;",
-				  "lyrics.sharpyshowdown.4":  "Ko;p; vaqt; ya;shi;rina olmaysan;",
-				  "lyrics.sharpyshowdown.5":  "Haq;iqat;an; ham; qo;chib; qutulaman deb oylaysanmi?; ",
-				  "lyrics.sharpyshowdown.6":  "ha;"
-			  },
-	"ja-JP":  {
-				  "lyrics.sharpyshowdown.1":  "分かる ...; 分かる ... 分かる だろ ...;",
-				  "lyrics.sharpyshowdown.2":  "逃げ;られ;ない;ぞ;",
-				  "lyrics.sharpyshowdown.3":  "お前;の居;場所;は分かっ;ている...;",
-				  "lyrics.sharpyshowdown.4":  "そう;長く;は隠;れて;いら;れないぞ;",
-				  "lyrics.sharpyshowdown.5":  "本当;に逃;げら;れる;と思;って;いるのか?; ",
-				  "lyrics.sharpyshowdown.6":  "ああ;"
-			  },
-	"zh-CN":  {
-				  "lyrics.sharpyshowdown.1":  "你 ...; 你 ... 你 知道 ...;",
-				  "lyrics.sharpyshowdown.2":  "你;逃;不;掉的;",
-				  "lyrics.sharpyshowdown.3":  "我;知;道;你;在哪...;",
-				  "lyrics.sharpyshowdown.4":  "你;藏;不;了;多;久了;",
-				  "lyrics.sharpyshowdown.5":  "你;真;的;以;为;你;能逃脱吗?; ",
-				  "lyrics.sharpyshowdown.6":  "是;"
-			  },
-	"ko-KR":  {
-				  "lyrics.sharpyshowdown.1":  "알 ...; 알 ... 알 잖아 ...;",
-				  "lyrics.sharpyshowdown.2":  "도;망;칠;수없어;",
-				  "lyrics.sharpyshowdown.3":  "네;가;어;디;있는지알아...;",
-				  "lyrics.sharpyshowdown.4":  "오;래;숨;을;순;없어;",
-				  "lyrics.sharpyshowdown.5":  "정;말;도;망;칠;수;있다고생각해?; ",
-				  "lyrics.sharpyshowdown.6":  "응;"
-			  },
-	"pi-PI":  {
-				  "lyrics.sharpyshowdown.1":  "Ye ...; Ye ... Ye know ...;",
-				  "lyrics.sharpyshowdown.2":  "Ye; cant; get; away;",
-				  "lyrics.sharpyshowdown.3":  "I ...; I ...; I ...; I ...; I ... I know where ye are ...;",
-				  "lyrics.sharpyshowdown.4":  "Ye; cant; hide; much; lon;ger;",
-				  "lyrics.sharpyshowdown.5":  "Do; ye; real;ly; think; ye; can escape?; ",
-				  "lyrics.sharpyshowdown.6":  "aye;"
-			  }
+    "en-US": {
+        "lyrics.sharpyshowdown.1": "You; know...;",
+        "lyrics.sharpyshowdown.2": "You; can't; get; a;way;",
+        "lyrics.sharpyshowdown.3": "I; know; where; you; are...;",
+        "lyrics.sharpyshowdown.4": "You; can't; hide; too; much; lon;ger;",
+        "lyrics.sharpyshowdown.5": "Do; you; real;ly; think; you; can; es;cape?;",
+        "lyrics.sharpyshowdown.6": "yeah;"
+    },
+    "es-ES": {
+        "lyrics.sharpyshowdown.1": "Ya...; Ya...; Ya; sa;bes...;",
+        "lyrics.sharpyshowdown.2": "No; pue;des; es;ca;par;",
+        "lyrics.sharpyshowdown.3": "Sé...; Sé...; Sé...; Sé...; Sé...; Sé; dón;de; es;tás...;",
+        "lyrics.sharpyshowdown.4": "No; te; pue;des; es;con;der; mu;cho; más;",
+        "lyrics.sharpyshowdown.5": "¿Re;al;men;te; cre;es; que; pue;des; es;ca;par?;",
+        "lyrics.sharpyshowdown.6": "sí;"
+    },
+    "pt-BR": {
+        "lyrics.sharpyshowdown.1": "Já...; Já...; Já; sa;be...;",
+        "lyrics.sharpyshowdown.2": "Vo;cê; não; con;se;gue; es;ca;par;",
+        "lyrics.sharpyshowdown.3": "Eu; sei; on;de; vo;cê; es;tá...;",
+        "lyrics.sharpyshowdown.4": "Não; vai; con;se;guir; se; es;con;der; por; mui;to; tem;po;",
+        "lyrics.sharpyshowdown.5": "Vo;cê; re;al;men;te; a;cha; que; con;se;gue; es;ca;par?;",
+        "lyrics.sharpyshowdown.6": "sim;"
+    },
+    "fr-FR": {
+        "lyrics.sharpyshowdown.1": "Tu...; Tu...; Tu; sais...;",
+        "lyrics.sharpyshowdown.2": "Tu; ne; peux; pas; t'é;chap;per;",
+        "lyrics.sharpyshowdown.3": "Je...; Je...; Je...; Je...; Je...; Je; sais; où; tu; es...;",
+        "lyrics.sharpyshowdown.4": "Tu; ne; pour;ras; pas; te; ca;cher; é;ter;nel;le;ment;",
+        "lyrics.sharpyshowdown.5": "Tu; crois; vrai;ment; pou;voir; t'é;chap;per?;",
+        "lyrics.sharpyshowdown.6": "ouais;"
+    },
+    "de-DE": {
+        "lyrics.sharpyshowdown.1": "Du...; Du...; Du; weißt...;",
+        "lyrics.sharpyshowdown.2": "Du; kannst; nicht; ent;kom;men;",
+        "lyrics.sharpyshowdown.3": "Ich...; Ich...; Ich...; Ich...; Ich...; Ich; weiß,; wo; du; bist...;",
+        "lyrics.sharpyshowdown.4": "Du; kannst; dich; nicht; viel; län;ger; ver;ste;cken;",
+        "lyrics.sharpyshowdown.5": "Glaubst; du; wirk;lich,; du; kannst; ent;kom;men?;",
+        "lyrics.sharpyshowdown.6": "ja;"
+    },
+    "ru-RU": {
+        "lyrics.sharpyshowdown.1": "Ты...; Ты...; Ты; зна;ешь...;",
+        "lyrics.sharpyshowdown.2": "Те;бе; не; уй;ти;",
+        "lyrics.sharpyshowdown.3": "Я; зна;ю,; где; ты...;",
+        "lyrics.sharpyshowdown.4": "Те;бе; не; у;даст;ся; пря;тать;ся; веч;но;",
+        "lyrics.sharpyshowdown.5": "Не;у;же;ли; ты; прав;да; ду;ма;ешь,; что; сбе;жишь?;",
+        "lyrics.sharpyshowdown.6": "да;"
+    },
+    "uk-UA": {
+        "lyrics.sharpyshowdown.1": "Ти...; Ти...; Ти; зна;єш...;",
+        "lyrics.sharpyshowdown.2": "Те;бі; не; втек;ти;",
+        "lyrics.sharpyshowdown.3": "Я; зна;ю,; де; ти...;",
+        "lyrics.sharpyshowdown.4": "Дов;го; ти; не; хо;ва;ти;меш;ся;",
+        "lyrics.sharpyshowdown.5": "Ти; справ;ді; ду;ма;єш,; що; вте;чеш?;",
+        "lyrics.sharpyshowdown.6": "так;"
+    },
+    "uz-UZ": {
+        "lyrics.sharpyshowdown.1": "Bi...; Bi...; Bi;la;san...;",
+        "lyrics.sharpyshowdown.2": "Qo;chib; qu;tu;la; ol;may;san;",
+        "lyrics.sharpyshowdown.3": "Qay;er;da;li;ging;ni; bi;la;man...;",
+        "lyrics.sharpyshowdown.4": "Ko'p; vaqt; ya;shi;ri;na; ol;may;san;",
+        "lyrics.sharpyshowdown.5": "Haq;i;qat;dan; ham; qo;chib; qu;tu;la;man; deb; o'y;lay;san;mi?;",
+        "lyrics.sharpyshowdown.6": "ha;"
+    },
+    "ja-JP": {
+        "lyrics.sharpyshowdown.1": "分;か;る...; 分;か;る...; 分;か;る;だ;ろ...;",
+        "lyrics.sharpyshowdown.2": "逃;げ;ら;れ;な;い;ぞ;",
+        "lyrics.sharpyshowdown.3": "お;前;の;居;場;所;は;分;か;っ;て;い;る...;",
+        "lyrics.sharpyshowdown.4": "そ;う;長;く;は;隠;れ;て;い;ら;れ;な;い;ぞ;",
+        "lyrics.sharpyshowdown.5": "本;当;に;逃;げ;ら;れ;る;と;思;っ;て;い;る;の;か?;",
+        "lyrics.sharpyshowdown.6": "あ;あ;"
+    },
+    "zh-CN": {
+        "lyrics.sharpyshowdown.1": "你...; 你...; 你;知;道...;",
+        "lyrics.sharpyshowdown.2": "你;逃;不;掉;的;",
+        "lyrics.sharpyshowdown.3": "我;知;道;你;在;哪...;",
+        "lyrics.sharpyshowdown.4": "你;藏;不;了;多;久;了;",
+        "lyrics.sharpyshowdown.5": "你;真;的;以;为;你;能;逃;脱;吗?;",
+        "lyrics.sharpyshowdown.6": "是;"
+    },
+    "ko-KR": {
+        "lyrics.sharpyshowdown.1": "알...; 알...; 알;잖;아...;",
+        "lyrics.sharpyshowdown.2": "도;망;칠; 수; 없;어;",
+        "lyrics.sharpyshowdown.3": "네;가; 어;디; 있;는;지; 알;아...;",
+        "lyrics.sharpyshowdown.4": "오;래; 숨;을; 순; 없;어;",
+        "lyrics.sharpyshowdown.5": "정;말; 도;망;칠; 수; 있;다;고; 생;각;해?;",
+        "lyrics.sharpyshowdown.6": "응;"
+    },
+    "pi-PI": {
+        "lyrics.sharpyshowdown.1": "Ye...; Ye...; Ye; know...;",
+        "lyrics.sharpyshowdown.2": "Ye; can't; get; a;way;",
+        "lyrics.sharpyshowdown.3": "I...; I...; I...; I...; I...; I; know; where; ye; are...;",
+        "lyrics.sharpyshowdown.4": "Ye; can't; hide; much; lon;ger;",
+        "lyrics.sharpyshowdown.5": "Do; ye; real;ly; think; ye; can; es;cape?;",
+        "lyrics.sharpyshowdown.6": "aye;"
+    }
 }

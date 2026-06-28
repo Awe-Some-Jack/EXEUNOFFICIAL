@@ -1,38 +1,38 @@
 {
-	"en-US":  {
-				  "lyrics.manualblast.1":  "I; will; NOT; be; RE;PLACED!"
-			  },
-	"es-ES":  {
-				  "lyrics.manualblast.1":  "No; sere; reem;pla;za;do!"
-			  },
-	"pt-BR":  {
-				  "lyrics.manualblast.1":  "Nao; serei; subs;ti;tu;ido!"
-			  },
-	"fr-FR":  {
-				  "lyrics.manualblast.1":  "Je; ne; se;rai; pas; remplace!"
-			  },
-	"de-DE":  {
-				  "lyrics.manualblast.1":  "Ich; werde; NICHT; er;setzt; werden!"
-			  },
-	"ru-RU":  {
-				  "lyrics.manualblast.1":  "Меня; НЕ; за;ме;нят;!"
-			  },
-	"uk-UA":  {
-				  "lyrics.manualblast.1":  "Мене; НЕ; за;мi;нять;!"
-			  },
-	"uz-UZ":  {
-				  "lyrics.manualblast.1":  "Meni; al;mash;ti;rib; bo'lmaydi!"
-			  },
-	"ja-JP":  {
-				  "lyrics.manualblast.1":  "俺は; 誰にも; 取って; 代わら; れ;ない!"
-			  },
-	"zh-CN":  {
-				  "lyrics.manualblast.1":  "我; 不; 会; 被; 取; 代!"
-			  },
-	"ko-KR":  {
-				  "lyrics.manualblast.1":  "나는; 절대; 대; 체; 되; 지않아!"
-			  },
-	"pi-PI":  {
-				  "lyrics.manualblast.1":  "I; shall; NOT; be; RE;PLACED!"
-			  }
+    "en-US": {
+        "lyrics.manualblast.1": "I; will; NOT; be; RE;PLACED!"
+    },
+    "es-ES": {
+        "lyrics.manualblast.1": "¡No; se;ré; re;em;pla;za;do!"
+    },
+    "pt-BR": {
+        "lyrics.manualblast.1": "Não; se;rei; subs;ti;tu;í;do!"
+    },
+    "fr-FR": {
+        "lyrics.manualblast.1": "Je; ne; se;rai; pas; rem;pla;cé!"
+    },
+    "de-DE": {
+        "lyrics.manualblast.1": "Ich; wer;de; NICHT; er;setzt!"
+    },
+    "ru-RU": {
+        "lyrics.manualblast.1": "Ме;ня; НЕ; за;ме;нят!"
+    },
+    "uk-UA": {
+        "lyrics.manualblast.1": "Ме;не; НЕ; за;мі;нять!"
+    },
+    "uz-UZ": {
+        "lyrics.manualblast.1": "Me;ni; al;mash;ti;rib; bo'l;may;di!"
+    },
+    "ja-JP": {
+        "lyrics.manualblast.1": "俺;は; 決;し;て; 代;わ;ら;れ;な;い!"
+    },
+    "zh-CN": {
+        "lyrics.manualblast.1": "我; 绝; 不; 会; 被; 取; 代!"
+    },
+    "ko-KR": {
+        "lyrics.manualblast.1": "나;는; 절;대; 대;체;되;지; 않;아!"
+    },
+    "pi-PI": {
+        "lyrics.manualblast.1": "I; shall; NOT; be; RE;PLACED!"
+    }
 }

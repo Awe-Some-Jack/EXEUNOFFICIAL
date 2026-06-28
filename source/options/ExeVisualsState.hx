@@ -7,6 +7,7 @@ import openfl.Assets;
 
 import backend.Paths;
 import backend.ClientPrefs;
+import backend.Language;
 
 class ExeVisualsState extends ExeBaseOptionsState
 {
@@ -18,13 +19,14 @@ class ExeVisualsState extends ExeBaseOptionsState
 
 	override public function create()
 	{
-		menuTitle = "VISUALS";
+		menuTitle = Language.get('options.visuals', 'VISUALS');
+		var lbl = Language.getArray('options.visuals.labels', ["HIDE HUD", "FLASHING LIGHTS", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS COUNTER"]);
 		allOptions = [
-			{label: "HIDE HUD",        getValue: () -> ClientPrefs.data.hideHud,   setValue: (v) -> ClientPrefs.data.hideHud   = v},
-			{label: "FLASHING LIGHTS", getValue: () -> ClientPrefs.data.flashing,  setValue: (v) -> ClientPrefs.data.flashing  = v},
-			{label: "CAMERA ZOOMS",    getValue: () -> ClientPrefs.data.camZooms,  setValue: (v) -> ClientPrefs.data.camZooms  = v},
-			{label: "SCORE TEXT ZOOM", getValue: () -> ClientPrefs.data.scoreZoom, setValue: (v) -> ClientPrefs.data.scoreZoom = v},
-			{label: "FPS COUNTER",     getValue: () -> ClientPrefs.data.showFPS,   setValue: (v) -> ClientPrefs.data.showFPS   = v},
+			{label: lbl[0], getValue: () -> ClientPrefs.data.hideHud,   setValue: (v) -> ClientPrefs.data.hideHud   = v},
+			{label: lbl[1], getValue: () -> ClientPrefs.data.flashing,  setValue: (v) -> ClientPrefs.data.flashing  = v},
+			{label: lbl[2], getValue: () -> ClientPrefs.data.camZooms,  setValue: (v) -> ClientPrefs.data.camZooms  = v},
+			{label: lbl[3], getValue: () -> ClientPrefs.data.scoreZoom, setValue: (v) -> ClientPrefs.data.scoreZoom = v},
+			{label: lbl[4], getValue: () -> ClientPrefs.data.showFPS,   setValue: (v) -> ClientPrefs.data.showFPS   = v},
 		];
 		var i = 0;
 		while (i < allOptions.length) { pageOptions.push(allOptions.slice(i, i + ExeBaseOptionsState.PAGE_SIZE)); i += ExeBaseOptionsState.PAGE_SIZE; }
@@ -56,16 +58,18 @@ class ExeVisualsState extends ExeBaseOptionsState
 			valueBG.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X; valueBG.y = rowY; valueBG.scrollFactor.set(0, 0);
 			add(valueBG); rightGroup.push(valueBG);
 
-			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, ExeBaseOptionsState.FONT_SIZE);
-			nameTxt.setFormat(Paths.font(ExeBaseOptionsState.FONT), ExeBaseOptionsState.FONT_SIZE, FlxColor.WHITE, LEFT);
+			var lblSize = Language.scaledFontSize(ExeBaseOptionsState.FONT_SIZE);
+			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, lblSize);
+			nameTxt.setFormat(Paths.font(ExeBaseOptionsState.getLangFont()), lblSize, FlxColor.WHITE, LEFT);
 			nameTxt.x = introAnimating ? offRight : ExeBaseOptionsState.NB_X + 120;
 			nameTxt.y = rowY + (nameBG.height - nameTxt.height) / 2; nameTxt.scrollFactor.set(0, 0);
 			add(nameTxt); rightGroup.push(cast nameTxt);
 
 			var val = opt.getValue();
-			var valStr = Std.isOfType(val, Bool) ? (cast(val, Bool) ? "ON" : "OFF") : Std.string(val);
-			var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), valStr.toUpperCase(), ExeBaseOptionsState.FONT_SIZE);
-			valueTxt.setFormat(Paths.font(ExeBaseOptionsState.FONT), ExeBaseOptionsState.FONT_SIZE, FlxColor.WHITE, CENTER);
+			var on = Language.get('options.on', 'ON'); var off = Language.get('options.off', 'OFF');
+			var valStr = Std.isOfType(val, Bool) ? (cast(val, Bool) ? on : off) : Std.string(val);
+			var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), valStr, lblSize);
+			valueTxt.setFormat(Paths.font(ExeBaseOptionsState.getLangFont()), lblSize, FlxColor.WHITE, CENTER);
 			valueTxt.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X + (valueBG.width - valueTxt.width) / 2;
 			valueTxt.y = rowY + (valueBG.height - valueTxt.height) / 2; valueTxt.scrollFactor.set(0, 0);
 			add(valueTxt); rightGroup.push(cast valueTxt);
@@ -92,7 +96,8 @@ class ExeVisualsState extends ExeBaseOptionsState
 				
 				if (Std.isOfType(val, Bool))
 				{
-					var b = !cast(val, Bool); opt.setValue(b); txt.text = b ? "ON" : "OFF";
+					var b = !cast(val, Bool); opt.setValue(b);
+					txt.text = b ? Language.get('options.on', 'ON') : Language.get('options.off', 'OFF');
 				}
 				else if (opt.isFloat == true)
 				{
@@ -101,7 +106,7 @@ class ExeVisualsState extends ExeBaseOptionsState
 					opt.setValue(n); txt.text = Std.string(n);
 				}
 				ClientPrefs.saveSettings();
-				if (opt.label == "FPS COUNTER" && Main.fpsVar != null) Main.fpsVar.visible = ClientPrefs.data.showFPS;
+				if (opt == allOptions[4] && Main.fpsVar != null) Main.fpsVar.visible = ClientPrefs.data.showFPS;
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
 			if (controls.BACK)

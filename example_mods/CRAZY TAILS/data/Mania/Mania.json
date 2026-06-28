@@ -205,38 +205,38 @@
 		[
 			24827.5862068966,
 			[
-				["Normal Lyrics", "So;nic; and; Tails,; best; friends!", "1"],
+				["Normal Lyrics", "lyrics.mania.1", "1"],
 				["Tween Camera Zoom", "1", ""]
 			]
 		],
 		[
 			24931.0344827586,
 			[
-				["Normal Lyrics", "So;nic; and; Tails,; best; friends!", "2"]
+				["Normal Lyrics", "lyrics.mania.1", "2"]
 			]
 		],
 		[
 			25034.4827586207,
 			[
-				["Normal Lyrics", "So;nic; and; Tails,; best; friends!", "3"]
+				["Normal Lyrics", "lyrics.mania.1", "3"]
 			]
 		],
 		[
 			25241.3793103448,
 			[
-				["Normal Lyrics", "So;nic; and; Tails,; best; friends!", "4"]
+				["Normal Lyrics", "lyrics.mania.1", "4"]
 			]
 		],
 		[
 			25655.1724137931,
 			[
-				["Normal Lyrics", "So;nic; and; Tails,; best; friends!", "5"]
+				["Normal Lyrics", "lyrics.mania.1", "5"]
 			]
 		],
 		[
 			26068.9655172414,
 			[
-				["Normal Lyrics", "So;nic; and; Tails,; best; friends!", "6"]
+				["Normal Lyrics", "lyrics.mania.1", "6"]
 			]
 		],
 		[
@@ -438,7 +438,7 @@
 		[
 			80482.7586206896,
 			[
-				["Normal Lyrics", "That's; it...", "1"]
+				["Normal Lyrics", "lyrics.mania.2", "1"]
 			]
 		],
 		[
@@ -450,7 +450,7 @@
 		[
 			80689.6551724138,
 			[
-				["Normal Lyrics", "That's; it...", "2"]
+				["Normal Lyrics", "lyrics.mania.2", "2"]
 			]
 		],
 		[
@@ -462,7 +462,7 @@
 		[
 			81724.1379310344,
 			[
-				["Normal Lyrics", "I; get; it; now...", "1"]
+				["Normal Lyrics", "lyrics.mania.3", "1"]
 			]
 		],
 		[
@@ -474,13 +474,13 @@
 		[
 			81931.0344827586,
 			[
-				["Normal Lyrics", "I; get; it; now...", "2"]
+				["Normal Lyrics", "lyrics.mania.3", "2"]
 			]
 		],
 		[
 			82137.9310344827,
 			[
-				["Normal Lyrics", "I; get; it; now...", "3"]
+				["Normal Lyrics", "lyrics.mania.3", "3"]
 			]
 		],
 		[
@@ -492,7 +492,7 @@
 		[
 			82344.8275862069,
 			[
-				["Normal Lyrics", "I; get; it; now...", "4"]
+				["Normal Lyrics", "lyrics.mania.3", "4"]
 			]
 		],
 		[
@@ -504,7 +504,7 @@
 		[
 			83482.7586206896,
 			[
-				["Normal Lyrics", "YOU; AREN'T; SO;NIC!", "1,FF0000"]
+				["Normal Lyrics", "lyrics.mania.4", "1,FF0000"]
 			]
 		],
 		[
@@ -522,7 +522,7 @@
 		[
 			84413.7931034482,
 			[
-				["Normal Lyrics", "YOU; AREN'T; SO;NIC!", "2,FF0000"]
+				["Normal Lyrics", "lyrics.mania.4", "2,FF0000"]
 			]
 		],
 		[
@@ -540,7 +540,7 @@
 		[
 			85137.9310344827,
 			[
-				["Normal Lyrics", "YOU; AREN'T; SO;NIC!", "3,FF0000"]
+				["Normal Lyrics", "lyrics.mania.4", "3,FF0000"]
 			]
 		],
 		[
@@ -552,7 +552,7 @@
 		[
 			85448.2758620689,
 			[
-				["Normal Lyrics", "YOU; AREN'T; SO;NIC!", "4,FF0000"]
+				["Normal Lyrics", "lyrics.mania.4", "4,FF0000"]
 			]
 		],
 		[
@@ -774,38 +774,38 @@
 		[
 			121551.724137931,
 			[
-				["Normal Lyrics", "So;nic's; best; friend; is; Tails...", "1"]
+				["Normal Lyrics", "lyrics.mania.5", "1"]
 			]
 		],
 		[
 			121758.620689655,
 			[
-				["Normal Lyrics", "So;nic's; best; friend; is; Tails...", "2"]
+				["Normal Lyrics", "lyrics.mania.5", "2"]
 			]
 		],
 		[
 			122068.965517241,
 			[
-				["Normal Lyrics", "So;nic's; best; friend; is; Tails...", "3"],
+				["Normal Lyrics", "lyrics.mania.5", "3"],
 				["Add Camera Zoom", "", ""]
 			]
 		],
 		[
 			122482.75862069,
 			[
-				["Normal Lyrics", "So;nic's; best; friend; is; Tails...", "4"]
+				["Normal Lyrics", "lyrics.mania.5", "4"]
 			]
 		],
 		[
 			122896.551724138,
 			[
-				["Normal Lyrics", "So;nic's; best; friend; is; Tails...", "5"]
+				["Normal Lyrics", "lyrics.mania.5", "5"]
 			]
 		],
 		[
 			123310.344827586,
 			[
-				["Normal Lyrics", "So;nic's; best; friend; is; Tails...", "6"],
+				["Normal Lyrics", "lyrics.mania.5", "6"],
 				["Add Camera Zoom", "", ""]
 			]
 		],
@@ -818,7 +818,7 @@
 		[
 			124551.724137931,
 			[
-				["Normal Lyrics", "ME!", "1,FF0000"],
+				["Normal Lyrics", "lyrics.mania.6", "1,FF0000"],
 				["Add Camera Zoom", "", ""]
 			]
 		],
@@ -1270,43 +1270,43 @@
 		[
 			163758.620689655,
 			[
-				["Normal Lyrics", "Tails,; please...", "1,FF59AC"]
+				["Normal Lyrics", "lyrics.mania.7", "1,FF59AC"]
 			]
 		],
 		[
 			164482.75862069,
 			[
-				["Normal Lyrics", "Tails,; please...", "2,FF59AC"]
+				["Normal Lyrics", "lyrics.mania.7", "2,FF59AC"]
 			]
 		],
 		[
 			165103.448275862,
 			[
-				["Normal Lyrics", "Just; give; your;self; up", "1,FF59AC"]
+				["Normal Lyrics", "lyrics.mania.8", "1,FF59AC"]
 			]
 		],
 		[
 			165465.517241379,
 			[
-				["Normal Lyrics", "Just; give; your;self; up", "2,FF59AC"]
+				["Normal Lyrics", "lyrics.mania.8", "2,FF59AC"]
 			]
 		],
 		[
 			165620.689655172,
 			[
-				["Normal Lyrics", "Just; give; your;self; up", "3,FF59AC"]
+				["Normal Lyrics", "lyrics.mania.8", "3,FF59AC"]
 			]
 		],
 		[
 			165827.586206896,
 			[
-				["Normal Lyrics", "Just; give; your;self; up", "4,FF59AC"]
+				["Normal Lyrics", "lyrics.mania.8", "4,FF59AC"]
 			]
 		],
 		[
 			166137.931034483,
 			[
-				["Normal Lyrics", "Just; give; your;self; up", "5,FF59AC"]
+				["Normal Lyrics", "lyrics.mania.8", "5,FF59AC"]
 			]
 		],
 		[
@@ -1318,91 +1318,91 @@
 		[
 			166758.620689655,
 			[
-				["Normal Lyrics", "You; need; help!", "1,FF59AC"]
+				["Normal Lyrics", "lyrics.mania.9", "1,FF59AC"]
 			]
 		],
 		[
 			166965.517241379,
 			[
-				["Normal Lyrics", "You; need; help!", "2,FF59AC"]
+				["Normal Lyrics", "lyrics.mania.9", "2,FF59AC"]
 			]
 		],
 		[
 			167275.862068965,
 			[
-				["Normal Lyrics", "You; need; help!", "3,FF59AC"]
+				["Normal Lyrics", "lyrics.mania.9", "3,FF59AC"]
 			]
 		],
 		[
 			168103.448275862,
 			[
-				["Normal Lyrics", "You; have; ne;ver; once", "1,1881E2"]
+				["Normal Lyrics", "lyrics.mania.10", "1,1881E2"]
 			]
 		],
 		[
 			168310.344827586,
 			[
-				["Normal Lyrics", "You; have; ne;ver; once", "2,1881E2"]
+				["Normal Lyrics", "lyrics.mania.10", "2,1881E2"]
 			]
 		],
 		[
 			168517.24137931,
 			[
-				["Normal Lyrics", "You; have; ne;ver; once", "3,1881E2"]
+				["Normal Lyrics", "lyrics.mania.10", "3,1881E2"]
 			]
 		],
 		[
 			168620.689655172,
 			[
-				["Normal Lyrics", "You; have; ne;ver; once", "4,1881E2"]
+				["Normal Lyrics", "lyrics.mania.10", "4,1881E2"]
 			]
 		],
 		[
 			168827.586206896,
 			[
-				["Normal Lyrics", "You; have; ne;ver; once", "5,1881E2"]
+				["Normal Lyrics", "lyrics.mania.10", "5,1881E2"]
 			]
 		],
 		[
 			169396.551724138,
 			[
-				["Normal Lyrics", "e;ver; could; be", "1,1881E2"]
+				["Normal Lyrics", "lyrics.mania.11", "1,1881E2"]
 			]
 		],
 		[
 			169551.724137931,
 			[
-				["Normal Lyrics", "e;ver; could; be", "2,1881E2"]
+				["Normal Lyrics", "lyrics.mania.11", "2,1881E2"]
 			]
 		],
 		[
 			169758.620689655,
 			[
-				["Normal Lyrics", "e;ver; could; be", "3,1881E2"]
+				["Normal Lyrics", "lyrics.mania.11", "3,1881E2"]
 			]
 		],
 		[
 			170068.965517241,
 			[
-				["Normal Lyrics", "e;ver; could; be", "4,1881E2"]
+				["Normal Lyrics", "lyrics.mania.11", "4,1881E2"]
 			]
 		],
 		[
 			170431.034482758,
 			[
-				["Normal Lyrics", "or; e;ver; will; be; my; friend", "1,1881E2"]
+				["Normal Lyrics", "lyrics.mania.12", "1,1881E2"]
 			]
 		],
 		[
 			170637.931034483,
 			[
-				["Normal Lyrics", "or; e;ver; will; be; my; friend", "2,1881E2"]
+				["Normal Lyrics", "lyrics.mania.12", "2,1881E2"]
 			]
 		],
 		[
 			170793.103448276,
 			[
-				["Normal Lyrics", "or; e;ver; will; be; my; friend", "3,1881E2"]
+				["Normal Lyrics", "lyrics.mania.12", "3,1881E2"]
 			]
 		],
 		[
@@ -1414,67 +1414,67 @@
 		[
 			171103.448275862,
 			[
-				["Normal Lyrics", "or; e;ver; will; be; my; friend", "4,1881E2"]
+				["Normal Lyrics", "lyrics.mania.12", "4,1881E2"]
 			]
 		],
 		[
 			171413.793103448,
 			[
-				["Normal Lyrics", "or; e;ver; will; be; my; friend", "5,1881E2"]
+				["Normal Lyrics", "lyrics.mania.12", "5,1881E2"]
 			]
 		],
 		[
 			171620.689655172,
 			[
-				["Normal Lyrics", "or; e;ver; will; be; my; friend", "6,1881E2"]
+				["Normal Lyrics", "lyrics.mania.12", "6,1881E2"]
 			]
 		],
 		[
 			171827.586206896,
 			[
-				["Normal Lyrics", "or; e;ver; will; be; my; friend", "7,1881E2"]
+				["Normal Lyrics", "lyrics.mania.12", "7,1881E2"]
 			]
 		],
 		[
 			172551.724137931,
 			[
-				["Normal Lyrics", "E;VER!", "1,1881E2"]
+				["Normal Lyrics", "lyrics.mania.13", "1,1881E2"]
 			]
 		],
 		[
 			172758.620689655,
 			[
-				["Normal Lyrics", "E;VER!", "2,1881E2"]
+				["Normal Lyrics", "lyrics.mania.13", "2,1881E2"]
 			]
 		],
 		[
 			173379.310344827,
 			[
-				["Normal Lyrics", "You; sick", "1,1881E2"]
+				["Normal Lyrics", "lyrics.mania.14", "1,1881E2"]
 			]
 		],
 		[
 			173689.655172414,
 			[
-				["Normal Lyrics", "You; sick", "2,1881E2"]
+				["Normal Lyrics", "lyrics.mania.14", "2,1881E2"]
 			]
 		],
 		[
 			174413.793103448,
 			[
-				["Normal Lyrics", "You; sick,; twis;ted", "3,1881E2"]
+				["Normal Lyrics", "lyrics.mania.15", "3,1881E2"]
 			]
 		],
 		[
 			174775.862068965,
 			[
-				["Normal Lyrics", "You; sick,; twis;ted", "4,1881E2"]
+				["Normal Lyrics", "lyrics.mania.15", "4,1881E2"]
 			]
 		],
 		[
 			175448.275862069,
 			[
-				["Normal Lyrics", "You; sick,; twis;ted,; FUCK!", "5,FF0000"]
+				["Normal Lyrics", "lyrics.mania.16", "5,FF0000"]
 			]
 		],
 		[

@@ -72,7 +72,7 @@
 			[
 				["notespin", "45", "0.25"],
 				["bright zoom", "", "0"],
-				["Normal Lyrics", "You're; too; slow!", "1"],
+				["Normal Lyrics", "lyrics.toofest.1", "1"],
 				["cameracenter", "true", ""]
 			]
 		],
@@ -80,7 +80,7 @@
 			32333.3333333333,
 			[
 				["notespin", "-45", "0.25"],
-				["Normal Lyrics", "You're; too; slow!", "2"]
+				["Normal Lyrics", "lyrics.toofest.1", "2"]
 			]
 		],
 		[
@@ -88,7 +88,7 @@
 			[
 				["notespin", "45", "0.25"],
 				["bright zoom", "", ""],
-				["Normal Lyrics", "You're; too; slow!", "3"]
+				["Normal Lyrics", "lyrics.toofest.1", "3"]
 			]
 		],
 		[
@@ -192,13 +192,13 @@
 			[
 				["notespin", "45", "0.25"],
 				["bright zoom", "", "0"],
-				["Normal Lyrics", "Come; on!; Step; it; up!", "1"]
+				["Normal Lyrics", "lyrics.toofest.2", "1"]
 			]
 		],
 		[
 			42833.3333333333,
 			[
-				["Normal Lyrics", "Come; on!; Step; it; up!", "2"]
+				["Normal Lyrics", "lyrics.toofest.2", "2"]
 			]
 		],
 		[
@@ -217,13 +217,13 @@
 		[
 			43347.2222222222,
 			[
-				["Normal Lyrics", "Come; on!; Step; it; up!", "3"]
+				["Normal Lyrics", "lyrics.toofest.2", "3"]
 			]
 		],
 		[
 			43583.3333333333,
 			[
-				["Normal Lyrics", "Come; on!; Step; it; up!", "4"]
+				["Normal Lyrics", "lyrics.toofest.2", "4"]
 			]
 		],
 		[
@@ -236,7 +236,7 @@
 		[
 			43680.5555555556,
 			[
-				["Normal Lyrics", "Come; on!; Step; it; up!", "5"]
+				["Normal Lyrics", "lyrics.toofest.2", "5"]
 			]
 		],
 		[
@@ -523,7 +523,7 @@
 		[
 			74680.5555555556,
 			[
-				["Normal Lyrics", "Now; I'll; show; you!", "1"]
+				["Normal Lyrics", "lyrics.toofest.3", "1"]
 			]
 		],
 		[
@@ -535,7 +535,7 @@
 		[
 			75013.8888888889,
 			[
-				["Normal Lyrics", "Now; I'll; show; you!", "2"]
+				["Normal Lyrics", "lyrics.toofest.3", "2"]
 			]
 		],
 		[
@@ -547,7 +547,7 @@
 		[
 			75347.2222222222,
 			[
-				["Normal Lyrics", "Now; I'll; show; you!", "3"]
+				["Normal Lyrics", "lyrics.toofest.3", "3"]
 			]
 		],
 		[
@@ -559,7 +559,7 @@
 		[
 			75680.5555555556,
 			[
-				["Normal Lyrics", "Now; I'll; show; you!", "4"]
+				["Normal Lyrics", "lyrics.toofest.3", "4"]
 			]
 		],
 		[
@@ -598,37 +598,37 @@
 		[
 			99333.3333333333,
 			[
-				["Normal Lyrics", "Too; ea;sy!; Piece; of; cake!", "1"]
+				["Normal Lyrics", "lyrics.toofest.4", "1"]
 			]
 		],
 		[
 			99666.6666666666,
 			[
-				["Normal Lyrics", "Too; ea;sy!; Piece; of; cake!", "2"]
+				["Normal Lyrics", "lyrics.toofest.4", "2"]
 			]
 		],
 		[
 			99999.9999999999,
 			[
-				["Normal Lyrics", "Too; ea;sy!; Piece; of; cake!", "3"]
+				["Normal Lyrics", "lyrics.toofest.4", "3"]
 			]
 		],
 		[
 			100416.666666667,
 			[
-				["Normal Lyrics", "Too; ea;sy!; Piece; of; cake!", "4"]
+				["Normal Lyrics", "lyrics.toofest.4", "4"]
 			]
 		],
 		[
 			100750,
 			[
-				["Normal Lyrics", "Too; ea;sy!; Piece; of; cake!", "5"]
+				["Normal Lyrics", "lyrics.toofest.4", "5"]
 			]
 		],
 		[
 			100916.666666667,
 			[
-				["Normal Lyrics", "Too; ea;sy!; Piece; of; cake!", "6"]
+				["Normal Lyrics", "lyrics.toofest.4", "6"]
 			]
 		],
 		[
@@ -739,55 +739,55 @@
 		[
 			128666.666666666,
 			[
-				["Normal Lyrics", "Hey; we; should; do; this; a;gain; some; time!", "1"]
+				["Normal Lyrics", "lyrics.toofest.5", "1"]
 			]
 		],
 		[
 			129000,
 			[
-				["Normal Lyrics", "Hey; we; should; do; this; a;gain; some; time!", "2"]
+				["Normal Lyrics", "lyrics.toofest.5", "2"]
 			]
 		],
 		[
 			129208.333333333,
 			[
-				["Normal Lyrics", "Hey; we; should; do; this; a;gain; some; time!", "3"]
+				["Normal Lyrics", "lyrics.toofest.5", "3"]
 			]
 		],
 		[
 			129375,
 			[
-				["Normal Lyrics", "Hey; we; should; do; this; a;gain; some; time!", "4"]
+				["Normal Lyrics", "lyrics.toofest.5", "4"]
 			]
 		],
 		[
 			129458.333333333,
 			[
-				["Normal Lyrics", "Hey; we; should; do; this; a;gain; some; time!", "5"]
+				["Normal Lyrics", "lyrics.toofest.5", "5"]
 			]
 		],
 		[
 			129625,
 			[
-				["Normal Lyrics", "Hey; we; should; do; this; a;gain; some; time!", "6"]
+				["Normal Lyrics", "lyrics.toofest.5", "6"]
 			]
 		],
 		[
 			129708.333333333,
 			[
-				["Normal Lyrics", "Hey; we; should; do; this; a;gain; some; time!", "7"]
+				["Normal Lyrics", "lyrics.toofest.5", "7"]
 			]
 		],
 		[
 			130000,
 			[
-				["Normal Lyrics", "Hey; we; should; do; this; a;gain; some; time!", "8"]
+				["Normal Lyrics", "lyrics.toofest.5", "8"]
 			]
 		],
 		[
 			130166.666666666,
 			[
-				["Normal Lyrics", "Hey; we; should; do; this; a;gain; some; time!", "9"]
+				["Normal Lyrics", "lyrics.toofest.5", "9"]
 			]
 		],
 		[

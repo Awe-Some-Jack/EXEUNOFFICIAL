@@ -54,10 +54,14 @@ class CreditsState extends MusicBeatSubstate
         final bd = new FlxBackdrop(cbmd, XY, 0, 0); bd.velocity.set(15, 10); bd.alpha = 0.5; add(bd);
 
         final titleBg = new FlxSprite(0, 0).makeGraphic(FlxG.width, 60, 0x44000000); add(titleBg);
-        final title = new FlxText(0, 0, FlxG.width, "CREDITS").setFormat(Paths.font("vcr.ttf"), 28 + 8, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
+        final title = new FlxText(0, 0, FlxG.width, Language.getArray('extras.menu.credits', ['CREDITS', ''])[0]).setFormat(Paths.font("vcr.ttf"), 28 + 8, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
         title.borderSize = 3; title.y = (60 - title.height) * 0.5; add(title);
 
-        final defs = [{key:'unofficial',label:'Unofficial Dev Team'},{key:'original',label:'Original Team'},{key:'external',label:'External Credits'}];
+        final defs = [
+            {key:'unofficial', label: Language.get('extras.credits.unofficial', 'Unofficial Dev Team')},
+            {key:'original',   label: Language.get('extras.credits.original',   'Original Team')},
+            {key:'external',   label: Language.get('extras.credits.external',   'External Credits')}
+        ];
         final colW  = Std.int((FlxG.width - 10 * (defs.length + 1)) / defs.length);
         final camY  = 60 + 50;
         final colH  = FlxG.height - camY - 30;

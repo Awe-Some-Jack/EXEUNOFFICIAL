@@ -46,6 +46,12 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 	public static final ROW_GAP:Float    = 80;
 	public static final FONT:String      = "SonicCD.ttf";
+
+	public static function getLangFont():String
+	{
+		var f = backend.Language.getFontForLanguage();
+		return openfl.Assets.exists('assets/fonts/$f') ? f : FONT;
+	}
 	public static final FONT_SIZE:Int    = 18;
 	public static final PAGE_SIZE:Int    = 4;
 
@@ -133,8 +139,9 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		add(titlebar);
 		leftGroup.push(titlebar);
 
-		titlebarTxt = new FlxText(0, 0, Std.int(titlebar.width), menuTitle, 28);
-		titlebarTxt.setFormat(Paths.font(FONT), 28, FlxColor.WHITE, CENTER);
+		var titleSize = backend.Language.scaledFontSize(28);
+		titlebarTxt = new FlxText(0, 0, Std.int(titlebar.width), menuTitle, titleSize);
+		titlebarTxt.setFormat(Paths.font(getLangFont()), titleSize, FlxColor.WHITE, CENTER);
 		titlebarTxt.x = offLeft;
 		titlebarTxt.y = TB_Y + (titlebar.height - titlebarTxt.height) / 2 - 15;
 		titlebarTxt.scrollFactor.set(0, 0);

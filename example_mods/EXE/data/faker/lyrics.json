@@ -1,0 +1,62 @@
+{
+	"en-US":  {
+				  "lyrics.faker.1":  "Youre; too...",
+				  "lyrics.faker.2":  "YOURE; TOO...",
+				  "lyrics.faker.3":  "YOURE; TOO; SLOW!"
+			  },
+	"es-ES":  {
+				  "lyrics.faker.1":  "Eres; demasiado...",
+				  "lyrics.faker.2":  "ERES; DEMASIADO...",
+				  "lyrics.faker.3":  "ERES; MUY; LENTO!"
+			  },
+	"pt-BR":  {
+				  "lyrics.faker.1":  "Voce; e...",
+				  "lyrics.faker.2":  "VOCE; E...",
+				  "lyrics.faker.3":  "VOCE; E; MUITO LENTO!"
+			  },
+	"fr-FR":  {
+				  "lyrics.faker.1":  "Tu; es trop...",
+				  "lyrics.faker.2":  "TU; ES TROP...",
+				  "lyrics.faker.3":  "TU; ES; TROP LENT!"
+			  },
+	"de-DE":  {
+				  "lyrics.faker.1":  "Du; bist zu...",
+				  "lyrics.faker.2":  "DU; BIST ZU...",
+				  "lyrics.faker.3":  "DU; BIST; ZU LANGSAM!"
+			  },
+	"ru-RU":  {
+				  "lyrics.faker.1":  "Ты; слишком...",
+				  "lyrics.faker.2":  "ТЫ; СЛИШКОМ...",
+				  "lyrics.faker.3":  "ТЫ; СЛИШКОМ; МЕДЛЕННЫЙ!"
+			  },
+	"uk-UA":  {
+				  "lyrics.faker.1":  "Ти; занадто...",
+				  "lyrics.faker.2":  "ТИ; ЗАНАДТО...",
+				  "lyrics.faker.3":  "ТИ; ЗАНАДТО; ПОВIЛЬНИЙ!"
+			  },
+	"uz-UZ":  {
+				  "lyrics.faker.1":  "Sen; juda...",
+				  "lyrics.faker.2":  "SEN; JUDA...",
+				  "lyrics.faker.3":  "SEN; JUDA; SEKINSAN!"
+			  },
+	"ja-JP":  {
+				  "lyrics.faker.1":  "お前; は…",
+				  "lyrics.faker.2":  "お前; は…",
+				  "lyrics.faker.3":  "お前; は; 遅すぎる!"
+			  },
+	"zh-CN":  {
+				  "lyrics.faker.1":  "你; 太…",
+				  "lyrics.faker.2":  "你; 太…",
+				  "lyrics.faker.3":  "你; 太; 慢了!"
+			  },
+	"ko-KR":  {
+				  "lyrics.faker.1":  "넌; 너무…",
+				  "lyrics.faker.2":  "넌; 너무…",
+				  "lyrics.faker.3":  "넌; 너무; 느려!"
+			  },
+	"pi-PI":  {
+				  "lyrics.faker.1":  "Ye; be too...",
+				  "lyrics.faker.2":  "YE; BE TOO...",
+				  "lyrics.faker.3":  "YE; BE; TOO SLOW!"
+			  }
+}

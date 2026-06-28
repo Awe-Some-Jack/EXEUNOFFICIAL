@@ -97,7 +97,7 @@ class Cutscene extends MusicBeatSubstate
         _buildMenu();
         changeSelection(0);
 
-        titleText = new FlxText(49, 68, 0, "CUTSCENES", 88);
+        titleText = new FlxText(49, 68, 0, Language.getArray('extras.menu.cutscenes', ['CUTSCENES', ''])[0], 88);
         titleText.setFormat("assets/fonts/bigass.otf", 88, 0xFFf48000, LEFT);
         titleText.setBorderStyle(OUTLINE_FAST, 0xFF510500, 8);
         titleText.scale.set(0.66, 0.66);
@@ -116,7 +116,7 @@ class Cutscene extends MusicBeatSubstate
         descBar.pixels.fillRect(new openfl.geom.Rectangle(0, gradientHeight, FlxG.width, 100), FlxColor.fromRGBFloat(0, 0, 0, 0.3));
         add(descBar);
 
-        final descTemp = new FlxText(0, 0, 0, "In here you can rewatch cutscenes used in gameplay! Just that!", 56);
+        final descTemp = new FlxText(0, 0, 0, Language.getArray('extras.menu.cutscenes', ['', 'In here you can rewatch cutscenes used in gameplay! Just that!'])[1], 56);
         descTemp.setFormat("assets/fonts/smallass.ttf", 56, FlxColor.WHITE, LEFT);
         descTemp.antialiasing = ClientPrefs.data.antialiasing;
         descTemp.updateHitbox();
@@ -130,7 +130,7 @@ class Cutscene extends MusicBeatSubstate
         add(descBackdrop);
         descTemp.destroy();
 
-        nowPlaying = new FlxText(169, 558, 0, "NOW PLAYING:", 60);
+        nowPlaying = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
         nowPlaying.setFormat("assets/fonts/bigass.otf", 60, FlxColor.BLACK, LEFT);
         nowPlaying.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
         nowPlaying.scale.set(0.22, 0.22);
@@ -310,7 +310,7 @@ class Cutscene extends MusicBeatSubstate
     {
         if (videoEntries.length == 0)
         {
-            final lbl = new FlxText(MENU_START_X, MENU_START_Y, 0, "NO VIDEOS FOUND", MENU_FONT_SIZE);
+            final lbl = new FlxText(MENU_START_X, MENU_START_Y, 0, Language.get('cutscenes.empty', 'NO VIDEOS FOUND'), MENU_FONT_SIZE);
             lbl.setFormat("assets/fonts/bigass.otf", MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
             lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
             lbl.scale.set(0.5, 0.5);

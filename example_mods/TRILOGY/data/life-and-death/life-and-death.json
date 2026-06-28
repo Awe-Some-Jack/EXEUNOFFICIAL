@@ -11,13 +11,13 @@
 		[
 			4297.75280898876,
 			[
-				["Normal Lyrics", "Boy;friend....", "1"]
+				["Normal Lyrics", "lyrics.lifeandeath.1", "1"]
 			]
 		],
 		[
 			5056.1797752809,
 			[
-				["Normal Lyrics", "Boy;friend....", "2"]
+				["Normal Lyrics", "lyrics.lifeandeath.1", "2"]
 			]
 		],
 		[
@@ -36,37 +36,37 @@
 		[
 			6994.38202247191,
 			[
-				["Normal Lyrics", "Not; so; fast...", "1"]
+				["Normal Lyrics", "lyrics.lifeandeath.2", "1"]
 			]
 		],
 		[
 			7247.19101123595,
 			[
-				["Normal Lyrics", "Not; so; fast...", "2"]
+				["Normal Lyrics", "lyrics.lifeandeath.2", "2"]
 			]
 		],
 		[
 			7584.26966292135,
 			[
-				["Normal Lyrics", "Not; so; fast...", "3"]
+				["Normal Lyrics", "lyrics.lifeandeath.2", "3"]
 			]
 		],
 		[
 			9269.66292134831,
 			[
-				["Normal Lyrics", "I", "1"]
+				["Normal Lyrics", "lyrics.lifeandeath.3", "1"]
 			]
 		],
 		[
 			10028.0898876404,
 			[
-				["Normal Lyrics", "I; AM", "2"]
+				["Normal Lyrics", "lyrics.lifeandeath.4", "2"]
 			]
 		],
 		[
 			10786.5168539326,
 			[
-				["Normal Lyrics", "I; AM; GOD!", "3,FF0000"],
+				["Normal Lyrics", "lyrics.lifeandeath.5", "3,FF0000"],
 				["bright zoom", "", ""],
 				["Tween Camera Zoom", "0.48,true", "1,cubeOut"],
 				["Tweening Camera", "670,220", "0.0001,linear"],
@@ -261,7 +261,7 @@
 		[
 			52584.2696629213,
 			[
-				["Normal Lyrics", "You're; too; slow", "1"],
+				["Normal Lyrics", "lyrics.lifeandeath.6", "1"],
 				["Tween Camera Zoom", "0.8, true", "0.001"],
 				["Set Property", "cameraSpeed", "10000"]
 			]
@@ -275,13 +275,13 @@
 		[
 			52921.3483146067,
 			[
-				["Normal Lyrics", "You're; too; slow", "2"]
+				["Normal Lyrics", "lyrics.lifeandeath.6", "2"]
 			]
 		],
 		[
 			53258.4269662921,
 			[
-				["Normal Lyrics", "You're; too; slow", "3"]
+				["Normal Lyrics", "lyrics.lifeandeath.6", "3"]
 			]
 		],
 		[
@@ -419,13 +419,13 @@
 		[
 			73061.797752809,
 			[
-				["Normal Lyrics", "I; am; Life; and; Death", "1"]
+				["Normal Lyrics", "lyrics.lifeandeath.7", "1"]
 			]
 		],
 		[
 			73398.8764044944,
 			[
-				["Normal Lyrics", "I; am; Life; and; Death", "2"]
+				["Normal Lyrics", "lyrics.lifeandeath.7", "2"]
 			]
 		],
 		[
@@ -438,13 +438,13 @@
 		[
 			73735.9550561798,
 			[
-				["Normal Lyrics", "I; am; Life; and; Death", "3"]
+				["Normal Lyrics", "lyrics.lifeandeath.7", "3"]
 			]
 		],
 		[
 			74494.382022472,
 			[
-				["Normal Lyrics", "I; am; Life; and; Death", "4"]
+				["Normal Lyrics", "lyrics.lifeandeath.7", "4"]
 			]
 		],
 		[
@@ -457,7 +457,7 @@
 		[
 			75000,
 			[
-				["Normal Lyrics", "I; am; Life; and; Death", "5"]
+				["Normal Lyrics", "lyrics.lifeandeath.7", "5"]
 			]
 		],
 		[
@@ -690,32 +690,32 @@
 		[
 			128093.398876405,
 			[
-				["Normal Lyrics", "You; just; don't; get; it", "1"],
+				["Normal Lyrics", "lyrics.lifeandeath.8", "1"],
 				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
 			128342.696629214,
 			[
-				["Normal Lyrics", "You; just; don't; get; it", "2"]
+				["Normal Lyrics", "lyrics.lifeandeath.8", "2"]
 			]
 		],
 		[
 			128595.505617978,
 			[
-				["Normal Lyrics", "You; just; don't; get; it", "2"]
+				["Normal Lyrics", "lyrics.lifeandeath.8", "2"]
 			]
 		],
 		[
 			128764.044943821,
 			[
-				["Normal Lyrics", "You; just; don't; get; it", "3"]
+				["Normal Lyrics", "lyrics.lifeandeath.8", "3"]
 			]
 		],
 		[
 			129016.853932585,
 			[
-				["Normal Lyrics", "You; just; don't; get; it", "4"]
+				["Normal Lyrics", "lyrics.lifeandeath.8", "4"]
 			]
 		],
 		[
@@ -784,7 +784,7 @@
 		[
 			149789.325842697,
 			[
-				["Normal Lyrics", "NO; MORE; GAMES!", "1,FF0000"]
+				["Normal Lyrics", "lyrics.lifeandeath.9", "1,FF0000"]
 			]
 		],
 		[
@@ -796,13 +796,13 @@
 		[
 			150042.134831461,
 			[
-				["Normal Lyrics", "NO; MORE; GAMES!", "2,FF0000"]
+				["Normal Lyrics", "lyrics.lifeandeath.9", "2,FF0000"]
 			]
 		],
 		[
 			150337.078651686,
 			[
-				["Normal Lyrics", "NO; MORE; GAMES!", "3,FF0000"]
+				["Normal Lyrics", "lyrics.lifeandeath.9", "3,FF0000"]
 			]
 		],
 		[

@@ -1,0 +1,50 @@
+{
+	"en-US": {
+		"lyrics.hedge.1": "Watch; this!",
+		"lyrics.hedge.2": "Good; job,; my; turn!"
+	},
+	"es-ES": {
+		"lyrics.hedge.1": "Mira; esto!",
+		"lyrics.hedge.2": "Bien; hecho,; mi; turno!"
+	},
+	"pt-BR": {
+		"lyrics.hedge.1": "Olha; isso!",
+		"lyrics.hedge.2": "Bom; trabalho,; minha; vez!"
+	},
+	"fr-FR": {
+		"lyrics.hedge.1": "Regarde; ca!",
+		"lyrics.hedge.2": "Bien; joue,; mon; tour!"
+	},
+	"de-DE": {
+		"lyrics.hedge.1": "Schau; mal!",
+		"lyrics.hedge.2": "Gut; gemacht,; ich; bin dran!"
+	},
+	"ru-RU": {
+		"lyrics.hedge.1": "Смот;ри!",
+		"lyrics.hedge.2": "Ho;ro;sho, moya; ochered'!"
+	},
+	"uk-UA": {
+		"lyrics.hedge.1": "Ди;вись!",
+		"lyrics.hedge.2": "Мо;лодець,; моя; черга!"
+	},
+	"uz-UZ": {
+		"lyrics.hedge.1": "Buni; qara!",
+		"lyrics.hedge.2": "Yax;shi,; mening; navbatim!"
+	},
+	"ja-JP": {
+		"lyrics.hedge.1": "見て; おけ!",
+		"lyrics.hedge.2": "よく; やった,; 俺の; 番だ!"
+	},
+	"zh-CN": {
+		"lyrics.hedge.1": "看; 好了!",
+		"lyrics.hedge.2": "干; 得好,; 轮; 到我了!"
+	},
+	"ko-KR": {
+		"lyrics.hedge.1": "봐; 봐!",
+		"lyrics.hedge.2": "잘; 했어,; 내; 차례야!"
+	},
+	"pi-PI": {
+		"lyrics.hedge.1": "Watch; this!",
+		"lyrics.hedge.2": "Good; job,; me; turn!"
+	}
+}

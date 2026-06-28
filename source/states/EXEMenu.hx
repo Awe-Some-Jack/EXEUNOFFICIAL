@@ -15,6 +15,7 @@ import backend.Song;
 import backend.Highscore;
 import backend.WeekData;
 import backend.Difficulty;
+import backend.Language;
 
 import states.EXEFreeplay;
 import states.LoadingState;
@@ -29,6 +30,16 @@ class EXEMenu extends MusicBeatState
 	static inline final CENTER_POSITION:Int = 2;
 
 	static final OPTION_TEXTS:Array<String> = ["SOUND TEST", "FREEPLAY", "STORY MODE", "EXTRAS", "OPTIONS"];
+
+	static function getOptionTexts():Array<String> {
+		return [
+			Language.get('mainmenu.soundtest', 'SOUND TEST'),
+			Language.get('mainmenu.freeplay',  'FREEPLAY'),
+			Language.get('mainmenu.storymode', 'STORY MODE'),
+			Language.get('mainmenu.extras',    'EXTRAS'),
+			Language.get('mainmenu.options',   'OPTIONS')
+		];
+	}
 
 	static final OPTION_POSITIONS:Array<{x:Float, y:Float}> = [
 		{x: 175.0, y: -60.0},
@@ -104,6 +115,7 @@ class EXEMenu extends MusicBeatState
 		shadowSprite.alpha = 0;
 		add(shadowSprite);
 
+		final translatedTexts = getOptionTexts();
 		for (i in 0...TOTAL_OPTIONS)
 		{
 			final option = new FlxSprite();
@@ -113,8 +125,10 @@ class EXEMenu extends MusicBeatState
 			add(option);
 			menuOptions.push(option);
 
-			final optionText = new FlxText(0, 0, option.width * 2, OPTION_TEXTS[i]);
-			optionText.setFormat("assets/fonts/sonicfree.otf", 280, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+			final menuFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : "assets/fonts/sonicfree.otf";
+			final menuFontSize = Language.needsCustomFont() ? 180 : 280;
+			final optionText = new FlxText(0, 0, option.width * 2, translatedTexts[i]);
+			optionText.setFormat(menuFont, menuFontSize, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 			optionText.borderSize = 2;
 			optionText.antialiasing = ClientPrefs.data.antialiasing;
 			optionText.ID = i;
@@ -348,6 +362,13 @@ class EXEMenu extends MusicBeatState
 
 	function refreshSelection():Void
 	{
+		final langFont = Language.getFontForLanguage();
+		final cjkYOffset:Float = switch (langFont) {
+			case 'chinese.ttf': 28;
+			case 'japanese.ttf' | 'korean.ttf': 36;
+			case 'Pixellari.ttf': 36;
+			default: 0;
+		};
 		for (i in 0...TOTAL_OPTIONS)
 		{
 			final visualPos:Int = (i - selectedOptionIndex + CENTER_POSITION + TOTAL_OPTIONS) % TOTAL_OPTIONS;
@@ -364,9 +385,10 @@ class EXEMenu extends MusicBeatState
 			final scale = OPTION_SCALES[visualPos];
 			final pos = OPTION_POSITIONS[visualPos];
 			final alpha = OPTION_ALPHAS[visualPos];
-			
+
 			final textScale = TEXT_SCALES[visualPos];
-			final textPos = TEXT_POSITIONS[visualPos];
+			final rawPos = TEXT_POSITIONS[visualPos];
+			final textPos = {x: rawPos.x, y: rawPos.y + cjkYOffset};
 			
 			if (visualPos == CENTER_POSITION && shadowSprite != null)
 			{

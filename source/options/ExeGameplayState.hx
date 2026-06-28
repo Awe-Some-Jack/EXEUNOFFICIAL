@@ -6,6 +6,7 @@ import flixel.util.FlxColor;
 import openfl.Assets;
 import backend.Paths;
 import backend.ClientPrefs;
+import backend.Language;
 
 class ExeGameplayState extends ExeBaseOptionsState
 {
@@ -20,14 +21,15 @@ class ExeGameplayState extends ExeBaseOptionsState
 
 	override public function create()
 	{
-		menuTitle = "GAMEPLAY";
+		menuTitle = Language.get('options.gameplay', 'GAMEPLAY');
+		var lbl = Language.getArray('options.gameplay.labels', ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES"]);
 		allOptions = [
-			{label: "DOWNSCROLL",    getValue: () -> ClientPrefs.data.downScroll,    setValue: (v) -> ClientPrefs.data.downScroll    = v},
-			{label: "GHOST TAPPING", getValue: () -> ClientPrefs.data.ghostTapping,  setValue: (v) -> ClientPrefs.data.ghostTapping  = v},
-			{label: "SICK WINDOW", getValue: () -> ClientPrefs.data.sickWindow,  setValue: (v) -> ClientPrefs.data.sickWindow  = v, isFloat: true},
-			{label: "GOOD WINDOW", getValue: () -> ClientPrefs.data.goodWindow,  setValue: (v) -> ClientPrefs.data.goodWindow  = v, isFloat: true},
-			{label: "BAD WINDOW",  getValue: () -> ClientPrefs.data.badWindow,   setValue: (v) -> ClientPrefs.data.badWindow   = v, isFloat: true},
-			{label: "SAFE FRAMES", getValue: () -> ClientPrefs.data.safeFrames,  setValue: (v) -> ClientPrefs.data.safeFrames  = v, isFloat: true},
+			{label: lbl[0], getValue: () -> ClientPrefs.data.downScroll,   setValue: (v) -> ClientPrefs.data.downScroll   = v},
+			{label: lbl[1], getValue: () -> ClientPrefs.data.ghostTapping, setValue: (v) -> ClientPrefs.data.ghostTapping = v},
+			{label: lbl[2], getValue: () -> ClientPrefs.data.sickWindow,   setValue: (v) -> ClientPrefs.data.sickWindow   = v, isFloat: true},
+			{label: lbl[3], getValue: () -> ClientPrefs.data.goodWindow,   setValue: (v) -> ClientPrefs.data.goodWindow   = v, isFloat: true},
+			{label: lbl[4], getValue: () -> ClientPrefs.data.badWindow,    setValue: (v) -> ClientPrefs.data.badWindow    = v, isFloat: true},
+			{label: lbl[5], getValue: () -> ClientPrefs.data.safeFrames,   setValue: (v) -> ClientPrefs.data.safeFrames   = v, isFloat: true},
 		];
 		var i = 0;
 		while (i < allOptions.length) { pageOptions.push(allOptions.slice(i, i + ExeBaseOptionsState.PAGE_SIZE)); i += ExeBaseOptionsState.PAGE_SIZE; }
@@ -59,26 +61,29 @@ class ExeGameplayState extends ExeBaseOptionsState
 			valueBG.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X; valueBG.y = rowY; valueBG.scrollFactor.set(0, 0);
 			add(valueBG); rightGroup.push(valueBG);
 
-			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, ExeBaseOptionsState.FONT_SIZE);
-			nameTxt.setFormat(Paths.font(ExeBaseOptionsState.FONT), ExeBaseOptionsState.FONT_SIZE, FlxColor.WHITE, LEFT);
+			var lblSize = Language.scaledFontSize(ExeBaseOptionsState.FONT_SIZE);
+			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, lblSize);
+			nameTxt.setFormat(Paths.font(ExeBaseOptionsState.getLangFont()), lblSize, FlxColor.WHITE, LEFT);
 			nameTxt.x = introAnimating ? offRight : ExeBaseOptionsState.NB_X + 120;
 			nameTxt.y = rowY + (nameBG.height - nameTxt.height) / 2; nameTxt.scrollFactor.set(0, 0);
 			add(nameTxt); rightGroup.push(cast nameTxt);
 
 			var val = opt.getValue();
-			var label = opt.label;
+			var optIdx = allOptions.indexOf(opt);
 			var valStr = "";
-			
-			if (Std.isOfType(val, Bool)) valStr = (label == "GHOST TAPPING") ? (cast(val, Bool) ? "PUSSY" : "OFF") : (cast(val, Bool) ? "ON" : "OFF");
+			var on = Language.get('options.on', 'ON'); var off = Language.get('options.off', 'OFF');
+
+			if (Std.isOfType(val, Bool))
+				valStr = (optIdx == 1) ? (cast(val, Bool) ? Language.get('options.ghosttapping.on', 'PUSSY') : Language.get('options.ghosttapping.off', 'OFF')) : (cast(val, Bool) ? on : off);
 			else if (Std.isOfType(val, Float))
 			{
-				var suffix = (label.indexOf("WINDOW") != -1 || label == "SAFE FRAMES") ? "MS" : "";
+				var suffix = (optIdx >= 2 && optIdx <= 5) ? "MS" : "";
 				valStr = Std.string(Math.round(cast(val, Float) * 10) / 10) + suffix;
 			}
 			else valStr = Std.string(val);
 
-			var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), valStr.toUpperCase(), ExeBaseOptionsState.FONT_SIZE);
-			valueTxt.setFormat(Paths.font(ExeBaseOptionsState.FONT), ExeBaseOptionsState.FONT_SIZE, FlxColor.WHITE, CENTER);
+			var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), valStr, lblSize);
+			valueTxt.setFormat(Paths.font(ExeBaseOptionsState.getLangFont()), lblSize, FlxColor.WHITE, CENTER);
 			valueTxt.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X + (valueBG.width - valueTxt.width) / 2;
 			valueTxt.y = rowY + (valueBG.height - valueTxt.height) / 2; valueTxt.scrollFactor.set(0, 0);
 			add(valueTxt); rightGroup.push(cast valueTxt);
@@ -108,28 +113,28 @@ class ExeGameplayState extends ExeBaseOptionsState
 				var opt = pageOptions[curPage][curSelected];
 				var val = opt.getValue();
 				var txt = optionGroups[curSelected].valueText;
-				var label = opt.label;
+				var optIdx = allOptions.indexOf(opt);
 
 				if (Std.isOfType(val, Bool))
 				{
 					var b = !cast(val, Bool); opt.setValue(b);
-					txt.text = (label == "GHOST TAPPING") ? (b ? "PUSSY" : "OFF") : (b ? "ON" : "OFF");
+					txt.text = (optIdx == 1) ? (b ? Language.get('options.ghosttapping.on', 'PUSSY') : Language.get('options.ghosttapping.off', 'OFF')) : (b ? Language.get('options.on', 'ON') : Language.get('options.off', 'OFF'));
 				}
 				else if (opt.isFloat == true)
 				{
 					var n = cast(val, Float);
 					var step = 0.1; var mn = 0.0; var mx = 1.0;
-					
-					if (label == "SICK WINDOW")      { step = 0.5; mn = 15.0; mx = 45.0; }
-					else if (label == "GOOD WINDOW") { step = 1.0; mn = 15.0; mx = 90.0; }
-					else if (label == "BAD WINDOW")  { step = 1.5; mn = 15.0; mx = 135.0; }
-					else if (label == "SAFE FRAMES") { step = 0.1; mn = 2.0;  mx = 10.0; }
-					
+
+					if (optIdx == 2)      { step = 0.5; mn = 15.0; mx = 45.0; }
+					else if (optIdx == 3) { step = 1.0; mn = 15.0; mx = 90.0; }
+					else if (optIdx == 4) { step = 1.5; mn = 15.0; mx = 135.0; }
+					else if (optIdx == 5) { step = 0.1; mn = 2.0;  mx = 10.0; }
+
 					n = Math.round((n + (isRight ? step : -step)) * 10) / 10;
 					n = Math.max(mn, Math.min(mx, n));
 					opt.setValue(n);
-					
-					var suffix = (label.indexOf("WINDOW") != -1 || label == "SAFE FRAMES") ? "MS" : "";
+
+					var suffix = (optIdx >= 2 && optIdx <= 5) ? "MS" : "";
 					txt.text = Std.string(n) + suffix;
 				}
 				ClientPrefs.saveSettings();

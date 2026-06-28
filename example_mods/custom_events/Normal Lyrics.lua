@@ -1,9 +1,35 @@
 local curText = {}
 local curStringText = ''
+local lyricFont = 'vcr.ttf'
+
+function resolveLyric(key)
+	if key:find('%.') then
+		local resolved = getSongLyric(key, key)
+		if resolved ~= key then return resolved end
+	end
+	return key
+end
+
+function onCreatePost()
+	local lang = getLanguage()
+	if lang == 'ja-JP' then
+		lyricFont = 'japanese.ttf'
+	elseif lang == 'zh-CN' then
+		lyricFont = 'chinese.ttf'
+	elseif lang == 'ko-KR' then
+		lyricFont = 'korean.ttf'
+	elseif lang == 'ru-RU' or lang == 'uk-UA' then
+		lyricFont = 'Pixellari.ttf'
+	else
+		lyricFont = 'vcr.ttf'
+	end
+end
 
 function onEvent(n,v1,v2)
 	if n == 'Normal Lyrics' then
 		if v1 ~= '' then
+			local resolved = resolveLyric(v1)
+			v1 = resolved
 			sepVar = stringSplit(v2, ',')
 			if curStringText ~= v1 then
 				if curText[1] ~= nil then clearLyrics() end
@@ -13,7 +39,7 @@ function onEvent(n,v1,v2)
 				local totalHeight = 0
 				for i,word in ipairs(curText) do
 					makeLuaText('__temp', word)
-					setTextFont('__temp', (songPath == 'too-fest' and 'Comic Sans MS.ttf' or 'vcr.ttf'))
+					setTextFont('__temp', (songPath == 'too-fest' and 'Comic Sans MS.ttf' or lyricFont))
 					setTextSize('__temp', 25)
 					totalWidth = totalWidth + getProperty('__temp.width') - 2
 					totalHeight = getProperty('__temp.height') + 8
@@ -32,7 +58,7 @@ function onEvent(n,v1,v2)
 					local tag = 'lyric_'..(word:gsub('.', ''))..i
 					makeLuaText(tag, word, 0, math.floor(curX))
 					setTextSize(tag, 25)
-					setTextFont(tag, (songPath == 'too-fest' and 'Comic Sans MS.ttf' or 'vcr.ttf'))
+					setTextFont(tag, (songPath == 'too-fest' and 'Comic Sans MS.ttf' or lyricFont))
 					setObjectCamera(tag, 'other')
 					setProperty(tag..'.antialiasing', false)
 					addLuaText(tag)
@@ -68,13 +94,11 @@ function clearLyrics()
 	curStringText = ''
 end
 
-function darkColor(hex) --thank to chat gpt ig??? sorry for using AI as a TOOL
+function darkColor(hex)
 	local r = tonumber(hex:sub(1, 2), 16)
 	local g = tonumber(hex:sub(3, 4), 16)
 	local b = tonumber(hex:sub(5, 6), 16)
-
 	local brightness = 0.299 * r + 0.587 * g + 0.114 * b
-
 	return brightness < 128
 end
 

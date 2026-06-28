@@ -9,6 +9,7 @@ import openfl.Assets;
 
 import backend.ClientPrefs;
 import backend.InputFormatter;
+import backend.Language;
 
 typedef ExeControlOption = {
 	var label:String;
@@ -38,13 +39,25 @@ class ExeControlsState extends ExeBaseOptionsState
 		{label: "RESET",  saveKey: "reset",  defaultKeys: [R],            defaultGamepad: [BACK]},
 	];
 
-	var sections:Array<String> = ["NOTES", "UI", "ACTIONS"];
+	var sections:Array<String> = [];
 	public static var curSectionIdx:Int = 0;
 	public static var curSelected:Int = 0;
 	var onKeyboardMode:Bool = true;
 
 	override public function create()
 	{
+		var lbl = Language.getArray('options.controls.labels', ["NOTES", "UI", "ACTIONS", "LEFT", "DOWN", "UP", "RIGHT", "ACCEPT", "BACK", "PAUSE", "RESET"]);
+		sections = [lbl[0], lbl[1], lbl[2]];
+
+		noteOptions[0].label = lbl[3]; noteOptions[1].label = lbl[4];
+		noteOptions[2].label = lbl[5]; noteOptions[3].label = lbl[6];
+
+		uiOptions[0].label = lbl[5]; uiOptions[1].label = lbl[4];
+		uiOptions[2].label = lbl[3]; uiOptions[3].label = lbl[6];
+
+		actionOptions[0].label = lbl[7]; actionOptions[1].label = lbl[8];
+		actionOptions[2].label = lbl[9]; actionOptions[3].label = lbl[10];
+
 		menuTitle = sections[curSectionIdx];
 		super.create();
 	}
@@ -84,8 +97,9 @@ class ExeControlsState extends ExeBaseOptionsState
 			valueBG.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X; valueBG.y = rowY; valueBG.scrollFactor.set(0, 0);
 			add(valueBG); rightGroup.push(valueBG);
 
-			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, ExeBaseOptionsState.FONT_SIZE);
-			nameTxt.setFormat(Paths.font(ExeBaseOptionsState.FONT), ExeBaseOptionsState.FONT_SIZE, FlxColor.WHITE, LEFT);
+			var lblSize = Language.scaledFontSize(ExeBaseOptionsState.FONT_SIZE);
+			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, lblSize);
+			nameTxt.setFormat(Paths.font(ExeBaseOptionsState.getLangFont()), lblSize, FlxColor.WHITE, LEFT);
 			nameTxt.x = introAnimating ? offRight : nameBG.x + 120;
 			nameTxt.y = nameBG.y + (nameBG.height - nameTxt.height) / 2; nameTxt.scrollFactor.set(0, 0);
 			add(nameTxt); rightGroup.push(cast nameTxt);

@@ -18,6 +18,7 @@ import openfl.Assets;
 
 import shaders.CirclesShader;
 import states.EXEMenu;
+import backend.Language;
 
 class OptionsState extends MusicBeatState
 {
@@ -42,7 +43,8 @@ class OptionsState extends MusicBeatState
 
 	var circleShader:CirclesShader;
 
-	var sectionsList = ["CONTROLS", "VISUALS", "GAMEPLAY", "GRAPHICS", "LANGUAGE"];
+	static final SECTION_KEYS = ["CONTROLS", "VISUALS", "GAMEPLAY", "GRAPHICS", "LANGUAGE"];
+	var sectionsList:Array<String> = [];
 	var sectionsGrp:FlxTypedGroup<FlxText>;
 	var sectionBGGrp:FlxTypedGroup<FlxSprite>;
 	var sectionBGClone:FlxSprite;
@@ -62,6 +64,14 @@ class OptionsState extends MusicBeatState
 	override public function create()
 	{
 		super.create();
+
+		sectionsList = [
+			Language.get('options.controls', 'CONTROLS'),
+			Language.get('options.visuals',  'VISUALS'),
+			Language.get('options.gameplay', 'GAMEPLAY'),
+			Language.get('options.graphics', 'GRAPHICS'),
+			Language.get('options.language', 'LANGUAGE')
+		];
 
 		bg = FlxGradient.createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF7a1520, 0xFF4a0910], 1, 90);
 		add(bg);
@@ -180,43 +190,31 @@ class OptionsState extends MusicBeatState
 		sectionsGrp = new FlxTypedGroup<FlxText>();
 		add(sectionsGrp);
 
+		var langFont = ExeBaseOptionsState.getLangFont();
+		var langSize = Language.scaledFontSize(26);
+		var rowSpacing:Float = 180;
+		var colOffset:Float = 220;
+		var baseY:Float = FlxG.height / 2 - rowSpacing;
+		var cx:Float = FlxG.width / 2;
+		final centerXs:Array<Float> = [cx - colOffset, cx + colOffset, cx - colOffset, cx + colOffset, cx];
+		final centerYs:Array<Float> = [baseY, baseY, baseY + rowSpacing, baseY + rowSpacing, baseY + rowSpacing * 2];
+
 		for (i in 0...sectionsList.length)
 		{
-			var section = new FlxText(0, 0, 0, sectionsList[i], 50);
-			section.setFormat(Paths.font("SonicCD.ttf"), 26, FlxColor.WHITE, CENTER);
+			var section = new FlxText(0, 0, 0, sectionsList[i], langSize);
+			section.setFormat(Paths.font(langFont), langSize, FlxColor.WHITE, CENTER);
 			section.ID = i;
-			section.screenCenter(X);
-			var rowSpacing:Float = 180;
-			var colOffset:Float = 220;
-			var baseY:Float = FlxG.height / 2 - rowSpacing;
-
-			switch (section.ID)
-			{
-				case 0:
-					section.x -= colOffset;
-					section.y = baseY;
-				case 1:
-					section.x += colOffset;
-				section.y = baseY;
-				case 2:
-					section.x -= colOffset;
-					section.y = baseY + rowSpacing;
-				case 3:
-					section.x += colOffset;
-					section.y = baseY + rowSpacing;
-				case 4:
-					section.y = baseY + rowSpacing * 2;
-			}
+			section.x = centerXs[i] - section.width / 2;
+			section.y = centerYs[i];
 
 			sectionsGrp.add(section);
 			sectionPos.push({x: section.x, y: section.y});
 
 			var sectionBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
-			var sectionWidth = 28 * sectionsList[i].length;
 			sectionBG.setGraphicSize(Std.int(sectionBG.width * GLOBAL_SCALE));
 			sectionBG.updateHitbox();
 			sectionBG.ID = i;
-			sectionBG.x = section.x + ((sectionWidth - sectionBG.width) / 2);
+			sectionBG.x = section.x + (section.width - sectionBG.width) / 2;
 			sectionBG.y = (section.y - (section.size / 2)) + 35;
 			sectionBGGrp.add(sectionBG);
 		}
@@ -310,10 +308,9 @@ class OptionsState extends MusicBeatState
 					txt.x = lerpX;
 					txt.y = lerpY;
 				}
-				var sectionWidth = 28 * sectionsList[txt.ID].length;
 				var sep = 14;
 				var bg = sectionBGGrp.members[txt.ID];
-				bg.x = txt.x + ((sectionWidth - bg.width) / 2);
+				bg.x = txt.x + (txt.width - bg.width) / 2;
 				bg.y = (txt.y - (txt.size / 2)) + (sep * 2.5);
 			}
 		});
@@ -411,7 +408,7 @@ class OptionsState extends MusicBeatState
 			if (titleAlphaTween != null) titleAlphaTween.cancel();
 			titleAlphaTween = FlxTween.tween(title, {alpha: 0.5}, 0.3, {ease: FlxEase.sineInOut, onComplete: (_) -> titleAlphaTween = null});
 
-			switch (sectionsList[curSelected])
+			switch (SECTION_KEYS[curSelected])
 			{
 				case "CONTROLS":  openSubState(new options.ExeControlsState());
 				case "VISUALS":   openSubState(new options.ExeVisualsState());
@@ -423,10 +420,38 @@ class OptionsState extends MusicBeatState
 	}
 
 
+	function refreshSectionTexts():Void
+	{
+		sectionsList = [
+			Language.get('options.controls', 'CONTROLS'),
+			Language.get('options.visuals',  'VISUALS'),
+			Language.get('options.gameplay', 'GAMEPLAY'),
+			Language.get('options.graphics', 'GRAPHICS'),
+			Language.get('options.language', 'LANGUAGE')
+		];
+		var langFont = ExeBaseOptionsState.getLangFont();
+		var langSize = Language.scaledFontSize(26);
+		var rowSpacing:Float = 180;
+		var colOffset:Float = 220;
+		var baseY:Float = FlxG.height / 2 - rowSpacing;
+		var cx:Float = FlxG.width / 2;
+		final centerXs:Array<Float> = [cx - colOffset, cx + colOffset, cx - colOffset, cx + colOffset, cx];
+		final centerYs:Array<Float> = [baseY, baseY, baseY + rowSpacing, baseY + rowSpacing, baseY + rowSpacing * 2];
+		sectionsGrp.forEachExists(function(txt) {
+			txt.font = Paths.font(langFont);
+			txt.size = langSize;
+			txt.text = sectionsList[txt.ID];
+			txt.x = centerXs[txt.ID] - txt.width / 2;
+			txt.y = centerYs[txt.ID];
+			sectionPos[txt.ID] = {x: txt.x, y: txt.y};
+		});
+	}
+
 	override function closeSubState()
 	{
 		super.closeSubState();
 		ClientPrefs.saveSettings();
+		refreshSectionTexts();
 		canAction = true;
 		if (titleAlphaTween != null) titleAlphaTween.cancel();
 		titleAlphaTween = FlxTween.tween(title, {alpha: 1.0}, 0.3, {ease: FlxEase.sineInOut, onComplete: (_) -> titleAlphaTween = null});

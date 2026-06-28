@@ -1,105 +1,102 @@
 package backend;
 
+import haxe.Json;
+import openfl.Assets;
+
 class Language
 {
-	public static var defaultLangName:String = 'English (US)'; //en-US
-	#if TRANSLATIONS_ALLOWED
-	private static var phrases:Map<String, String> = [];
-	#end
+	static var phrases:Map<String, Dynamic> = [];
+	static var currentKey:String = 'en-US';
 
-	public static function reloadPhrases()
+	public static function reload():Void
 	{
-		#if TRANSLATIONS_ALLOWED
-		var langFile:String = ClientPrefs.data.language;
-		var loadedText:Array<String> = Mods.mergeAllTextsNamed('data/$langFile.lang');
-		//trace(loadedText);
+		var key = ClientPrefs.data.language;
+		if (key == null || key.length == 0) key = 'en-US';
+		currentKey = key;
+		phrases = [];
 
-		phrases.clear();
-		var hasPhrases:Bool = false;
-		for (num => phrase in loadedText)
-		{
-			phrase = phrase.trim();
-			if(num < 1 && !phrase.contains(':'))
-			{
-				//First line ignores formatting and shit if the line doesn't have ":" because its language_name
-				phrases.set('language_name', phrase.trim());
-				continue;
+		var path = 'assets/exe/options/language/$key.json';
+		try {
+			var text = Assets.getText(path);
+			if (text != null && text.length > 0) {
+				var data:Dynamic = Json.parse(text);
+				for (field in Reflect.fields(data))
+					phrases.set(field, Reflect.field(data, field));
 			}
+		} catch (e:Dynamic) {}
+	}
 
-			if(phrase.length < 4 || phrase.startsWith('//')) continue; 
+	public static function get(key:String, ?fallback:String):String
+	{
+		var val = phrases.get(key);
+		if (val == null) return fallback != null ? fallback : key;
+		if (Std.isOfType(val, String)) return cast(val, String);
+		return fallback != null ? fallback : key;
+	}
 
-			var n:Int = phrase.indexOf(':');
-			if(n < 0) continue;
+	public static function getArray(key:String, ?fallback:Array<String>):Array<String>
+	{
+		var val = phrases.get(key);
+		if (val == null) return fallback != null ? fallback : [];
+		if (Std.isOfType(val, Array)) return cast val;
+		return fallback != null ? fallback : [];
+	}
 
-			var key:String = phrase.substr(0, n).trim().toLowerCase();
-
-			var value:String = phrase.substr(n);
-			n = value.indexOf('"');
-			if(n < 0) continue;
-
-			//trace("Mapped to " + key);
-			phrases.set(key, value.substring(n+1, value.lastIndexOf('"')).replace('\\n', '\n'));
-			hasPhrases = true;
+	public static function getFontForLanguage():String
+	{
+		return switch (currentKey) {
+			case 'ja-JP': 'japanese.ttf';
+			case 'ko-KR': 'korean.ttf';
+			case 'zh-CN': 'chinese.ttf';
+			case 'ru-RU' | 'uk-UA': 'Pixellari.ttf';
+			default: 'SonicCD.ttf';
 		}
-
-		if(!hasPhrases) ClientPrefs.data.language = ClientPrefs.defaultData.language;
-		
-		var alphaPath:String = getFileTranslation('images/alphabet');
-		if(alphaPath.startsWith('images/')) alphaPath = alphaPath.substr('images/'.length);
-		var pngPos:Int = alphaPath.indexOf('.png');
-		if(pngPos > -1) alphaPath = alphaPath.substring(0, pngPos);
-		AlphaCharacter.loadAlphabetData(alphaPath);
-		#else
-		AlphaCharacter.loadAlphabetData();
-		#end
 	}
 
-	inline public static function getPhrase(key:String, ?defaultPhrase:String, values:Array<Dynamic> = null):String
+	public static function isCJK():Bool
 	{
-		#if TRANSLATIONS_ALLOWED
-		//trace(formatKey(key));
-		var str:String = phrases.get(formatKey(key));
-		if(str == null) str = defaultPhrase;
-		#else
-		var str:String = defaultPhrase;
-		#end
-
-		if(str == null)
-			str = key;
-		
-		if(values != null)
-			for (num => value in values)
-				str = str.replace('{${num+1}}', value);
-
-		return str;
+		return currentKey == 'ja-JP' || currentKey == 'ko-KR' || currentKey == 'zh-CN';
 	}
 
-	// More optimized for file loading
-	inline public static function getFileTranslation(key:String)
+	public static function needsCustomFont():Bool
 	{
-		#if TRANSLATIONS_ALLOWED
-		var str:String = phrases.get(key.trim().toLowerCase());
-		if(str != null) key = str;
-		#end
+		return getFontForLanguage() != 'SonicCD.ttf';
+	}
+
+	public static function scaledFontSize(base:Int):Int
+	{
+		return isCJK() ? Std.int(base * 1.6) : base;
+	}
+
+	public static function cjkSize(base:Int, ?factor:Float = 0.75):Int
+	{
+		return isCJK() ? Std.int(base * factor) : base;
+	}
+
+	public static function getPhrase(key:String, ?fallback:String, ?vars:Array<Dynamic>):String
+	{
+		var val = phrases.get(key);
+		var result:String = (val != null && Std.isOfType(val, String)) ? cast(val, String) : (fallback != null ? fallback : key);
+		if (vars != null)
+			for (i in 0...vars.length)
+				result = StringTools.replace(result, '{${i + 1}}', Std.string(vars[i]));
+		return result;
+	}
+
+	public static function getFileTranslation(key:String):String
+	{
 		return key;
 	}
-	
-	#if TRANSLATIONS_ALLOWED
-	inline static private function formatKey(key:String)
+
+	public static function reloadPhrases():Void
 	{
-		final hideChars = ~/[~&\\\/;:<>#.,'"%?!]/g;
-		return hideChars.replace(key.replace(' ', '_'), '').toLowerCase().trim();
+		reload();
 	}
-	#end
 
 	#if LUA_ALLOWED
-	public static function addLuaCallbacks(lua:State) {
-		Lua_helper.add_callback(lua, "getTranslationPhrase", function(key:String, ?defaultPhrase:String, ?values:Array<Dynamic> = null) {
-			return getPhrase(key, defaultPhrase, values);
-		});
-
-		Lua_helper.add_callback(lua, "getFileTranslation", function(key:String) {
-			return getFileTranslation(key);
+	public static function addLuaCallbacks(lua:llua.State) {
+		Lua_helper.add_callback(lua, "getTranslationPhrase", function(key:String, ?fallback:String) {
+			return get(key, fallback);
 		});
 	}
 	#end

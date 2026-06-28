@@ -6,6 +6,7 @@ import flixel.util.FlxColor;
 import openfl.Assets;
 import backend.Paths;
 import backend.ClientPrefs;
+import backend.Language;
 import Main;
 
 class ExeGraphicsState extends ExeBaseOptionsState
@@ -21,16 +22,16 @@ class ExeGraphicsState extends ExeBaseOptionsState
 
 	override public function create()
 	{
-		menuTitle = "GRAPHICS";
-
+		menuTitle = Language.get('options.graphics', 'GRAPHICS');
+		var lbl = Language.getArray('options.graphics.labels', ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADERS", "UNCAPPED FPS", "FRAMERATE", "DUDU MODE"]);
 		allOptions = [
-			{label: "POTATO MODE",  getValue: () -> ClientPrefs.data.lowQuality,    setValue: (v) -> ClientPrefs.data.lowQuality   = v},
-			{label: "ANTI ALIASING",getValue: () -> ClientPrefs.data.antialiasing,  setValue: (v) -> ClientPrefs.data.antialiasing = v},
-			{label: "GPU CACHING",  getValue: () -> ClientPrefs.data.cacheOnGPU,    setValue: (v) -> ClientPrefs.data.cacheOnGPU   = v},
-			{label: "SHADERS",      getValue: () -> ClientPrefs.data.shaders,       setValue: (v) -> ClientPrefs.data.shaders      = v},
-			{label: "UNCAPPED FPS", getValue: () -> ClientPrefs.data.uncappedFPS,   setValue: (v) -> ClientPrefs.data.uncappedFPS  = v},
-			{label: "FRAMERATE",    getValue: () -> ClientPrefs.data.framerate,     setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true},
-			{label: "DUDU MODE",    getValue: () -> ClientPrefs.data.duduMode,      setValue: (v) -> { ClientPrefs.data.duduMode = v; Main.applyDuduMode(); }}
+			{label: lbl[0], getValue: () -> ClientPrefs.data.lowQuality,  setValue: (v) -> ClientPrefs.data.lowQuality   = v},
+			{label: lbl[1], getValue: () -> ClientPrefs.data.antialiasing, setValue: (v) -> ClientPrefs.data.antialiasing = v},
+			{label: lbl[2], getValue: () -> ClientPrefs.data.cacheOnGPU,  setValue: (v) -> ClientPrefs.data.cacheOnGPU   = v},
+			{label: lbl[3], getValue: () -> ClientPrefs.data.shaders,     setValue: (v) -> ClientPrefs.data.shaders      = v},
+			{label: lbl[4], getValue: () -> ClientPrefs.data.uncappedFPS, setValue: (v) -> ClientPrefs.data.uncappedFPS  = v},
+			{label: lbl[5], getValue: () -> ClientPrefs.data.framerate,   setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true},
+			{label: lbl[6], getValue: () -> ClientPrefs.data.duduMode,    setValue: (v) -> { ClientPrefs.data.duduMode = v; Main.applyDuduMode(); }}
 		];
 
 		var i = 0;
@@ -63,16 +64,18 @@ class ExeGraphicsState extends ExeBaseOptionsState
 			valueBG.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X; valueBG.y = rowY; valueBG.scrollFactor.set(0, 0);
 			add(valueBG); rightGroup.push(valueBG);
 
-			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, ExeBaseOptionsState.FONT_SIZE);
-			nameTxt.setFormat(Paths.font(ExeBaseOptionsState.FONT), ExeBaseOptionsState.FONT_SIZE, FlxColor.WHITE, LEFT);
+			var lblSize = Language.scaledFontSize(ExeBaseOptionsState.FONT_SIZE);
+			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, lblSize);
+			nameTxt.setFormat(Paths.font(ExeBaseOptionsState.getLangFont()), lblSize, FlxColor.WHITE, LEFT);
 			nameTxt.x = introAnimating ? offRight : ExeBaseOptionsState.NB_X + 120;
 			nameTxt.y = rowY + (nameBG.height - nameTxt.height) / 2; nameTxt.scrollFactor.set(0, 0);
 			add(nameTxt); rightGroup.push(cast nameTxt);
 
 			var val = opt.getValue();
-			var valStr = Std.isOfType(val, Bool) ? (cast(val, Bool) ? "ON" : "OFF") : Std.string(val);
-			var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), valStr.toUpperCase(), ExeBaseOptionsState.FONT_SIZE);
-			valueTxt.setFormat(Paths.font(ExeBaseOptionsState.FONT), ExeBaseOptionsState.FONT_SIZE, FlxColor.WHITE, CENTER);
+			var on = Language.get('options.on', 'ON'); var off = Language.get('options.off', 'OFF');
+			var valStr = Std.isOfType(val, Bool) ? (cast(val, Bool) ? on : off) : Std.string(val);
+			var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), valStr, lblSize);
+			valueTxt.setFormat(Paths.font(ExeBaseOptionsState.getLangFont()), lblSize, FlxColor.WHITE, CENTER);
 			valueTxt.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X + (valueBG.width - valueTxt.width) / 2;
 			valueTxt.y = rowY + (valueBG.height - valueTxt.height) / 2; valueTxt.scrollFactor.set(0, 0);
 			add(valueTxt); rightGroup.push(cast valueTxt);
@@ -105,7 +108,8 @@ class ExeGraphicsState extends ExeBaseOptionsState
 
 				if (Std.isOfType(val, Bool))
 				{
-					var b = !cast(val, Bool); opt.setValue(b); txt.text = b ? "ON" : "OFF";
+					var b = !cast(val, Bool); opt.setValue(b);
+					txt.text = b ? Language.get('options.on', 'ON') : Language.get('options.off', 'OFF');
 				}
 				else if (opt.isInt == true)
 				{
@@ -115,39 +119,36 @@ class ExeGraphicsState extends ExeBaseOptionsState
 				}
 				ClientPrefs.saveSettings();
 
-				switch (opt.label)
+				var optIdx = allOptions.indexOf(opt);
+				if (optIdx == 5) // FRAMERATE
 				{
-					case "FRAMERATE":
-						if (!ClientPrefs.data.uncappedFPS)
-						{
-							if (ClientPrefs.data.framerate > FlxG.drawFramerate) { 
-								FlxG.updateFramerate = ClientPrefs.data.framerate;
-								FlxG.drawFramerate = ClientPrefs.data.framerate; 
-							}
-							else { 
-								FlxG.drawFramerate = ClientPrefs.data.framerate; 
-								FlxG.updateFramerate = ClientPrefs.data.framerate; 
-							}
+					if (!ClientPrefs.data.uncappedFPS)
+					{
+						if (ClientPrefs.data.framerate > FlxG.drawFramerate) {
+							FlxG.updateFramerate = ClientPrefs.data.framerate;
+							FlxG.drawFramerate = ClientPrefs.data.framerate;
+						} else {
+							FlxG.drawFramerate = ClientPrefs.data.framerate;
+							FlxG.updateFramerate = ClientPrefs.data.framerate;
 						}
-					case "ANTI ALIASING": 
-						FlxSprite.defaultAntialiasing = ClientPrefs.data.antialiasing;
-					case "UNCAPPED FPS":
-						if (ClientPrefs.data.uncappedFPS)
-						{
-							FlxG.drawFramerate = 0;
-							FlxG.updateFramerate = 0;
+					}
+				}
+				else if (optIdx == 1) // ANTI ALIASING
+					FlxSprite.defaultAntialiasing = ClientPrefs.data.antialiasing;
+				else if (optIdx == 4) // UNCAPPED FPS
+				{
+					if (ClientPrefs.data.uncappedFPS) {
+						FlxG.drawFramerate = 0;
+						FlxG.updateFramerate = 0;
+					} else {
+						if (ClientPrefs.data.framerate > FlxG.drawFramerate) {
+							FlxG.updateFramerate = ClientPrefs.data.framerate;
+							FlxG.drawFramerate = ClientPrefs.data.framerate;
+						} else {
+							FlxG.drawFramerate = ClientPrefs.data.framerate;
+							FlxG.updateFramerate = ClientPrefs.data.framerate;
 						}
-						else
-						{
-							if (ClientPrefs.data.framerate > FlxG.drawFramerate) {
-								FlxG.updateFramerate = ClientPrefs.data.framerate;
-								FlxG.drawFramerate = ClientPrefs.data.framerate;
-							} else {
-								FlxG.drawFramerate = ClientPrefs.data.framerate;
-								FlxG.updateFramerate = ClientPrefs.data.framerate;
-							}
-						}
-					default:
+					}
 				}
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}

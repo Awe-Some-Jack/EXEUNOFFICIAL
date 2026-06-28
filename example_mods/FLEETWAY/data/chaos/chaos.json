@@ -2227,27 +2227,27 @@
 				["Play Animation", "intro", "dad"],
 				["Set Property", "dad.alpha", "1"],
 				["Tweening Camera", "390, 260", "0.7, sineOut"],
-				["Tween Camera Zoom", "Ha;ha;ha;ha;ha", "1"]
+				["Tween Camera Zoom", "lyrics.chaos.11", "1"]
 			]
 		],
 		[
 			157.894736842105,
 			[
 				["Tweening Camera", "260, -650", "0.6, smootherStepOut"],
-				["Tween Camera Zoom", "Ha;ha;ha;ha;ha", "1"]
+				["Tween Camera Zoom", "lyrics.chaos.11", "1"]
 			]
 		],
 		[
 			631.578947368421,
 			[
-				["Normal Lyrics", "RAHHH!", "1"]
+				["Normal Lyrics", "lyrics.chaos.15", "1"]
 			]
 		],
 		[
 			947.368421052631,
 			[
 				["Tweening Camera", "-120, -100", "0.9, smootherStepOut"],
-				["Tween Camera Zoom", "Ha;ha;ha;ha;ha", "1"]
+				["Tween Camera Zoom", "lyrics.chaos.11", "1"]
 			]
 		],
 		[
@@ -2259,37 +2259,37 @@
 		[
 			1421.05263157895,
 			[
-				["Normal Lyrics", "Ha;ha;ha;ha;ha", "1"]
+				["Normal Lyrics", "lyrics.chaos.11", "1"]
 			]
 		],
 		[
 			1578.94736842105,
 			[
-				["Normal Lyrics", "Ha;ha;ha;ha;ha", "2"]
+				["Normal Lyrics", "lyrics.chaos.11", "2"]
 			]
 		],
 		[
 			1736.84210526316,
 			[
-				["Normal Lyrics", "Ha;ha;ha;ha;ha", "3"]
+				["Normal Lyrics", "lyrics.chaos.11", "3"]
 			]
 		],
 		[
 			1894.73684210526,
 			[
-				["Normal Lyrics", "Ha;ha;ha;ha;ha", "4"]
+				["Normal Lyrics", "lyrics.chaos.11", "4"]
 			]
 		],
 		[
 			2052.63157894737,
 			[
-				["Normal Lyrics", "Ha;ha;ha;ha;ha", "5"]
+				["Normal Lyrics", "lyrics.chaos.11", "5"]
 			]
 		],
 		[
 			2368.42105263158,
 			[
-				["Normal Lyrics", "Let's; see; how; fast; you; can; real;ly; go!", "1"]
+				["Normal Lyrics", "lyrics.chaos.1", "1"]
 			]
 		],
 		[
@@ -2302,13 +2302,13 @@
 		[
 			2763.15789473684,
 			[
-				["Normal Lyrics", "Let's; see; how; fast; you; can; real;ly; go!", "2"]
+				["Normal Lyrics", "lyrics.chaos.1", "2"]
 			]
 		],
 		[
 			2921.05263157895,
 			[
-				["Normal Lyrics", "Let's; see; how; fast; you; can; real;ly; go!", "3"]
+				["Normal Lyrics", "lyrics.chaos.1", "3"]
 			]
 		],
 		[
@@ -2321,37 +2321,37 @@
 		[
 			3315.78947368421,
 			[
-				["Normal Lyrics", "Let's; see; how; fast; you; can; real;ly; go!", "4"]
+				["Normal Lyrics", "lyrics.chaos.1", "4"]
 			]
 		],
 		[
 			3710.52631578947,
 			[
-				["Normal Lyrics", "Let's; see; how; fast; you; can; real;ly; go!", "5"]
+				["Normal Lyrics", "lyrics.chaos.1", "5"]
 			]
 		],
 		[
 			3868.42105263158,
 			[
-				["Normal Lyrics", "Let's; see; how; fast; you; can; real;ly; go!", "6"]
+				["Normal Lyrics", "lyrics.chaos.1", "6"]
 			]
 		],
 		[
 			4184.21052631579,
 			[
-				["Normal Lyrics", "Let's; see; how; fast; you; can; real;ly; go!", "7"]
+				["Normal Lyrics", "lyrics.chaos.1", "7"]
 			]
 		],
 		[
 			4421.05263157895,
 			[
-				["Normal Lyrics", "Let's; see; how; fast; you; can; real;ly; go!", "8"]
+				["Normal Lyrics", "lyrics.chaos.1", "8"]
 			]
 		],
 		[
 			4657.8947368421,
 			[
-				["Normal Lyrics", "Let's; see; how; fast; you; can; real;ly; go!", "9"]
+				["Normal Lyrics", "lyrics.chaos.1", "9"]
 			]
 		],
 		[
@@ -2448,13 +2448,13 @@
 		[
 			20842.1052631579,
 			[
-				["Normal Lyrics", "Eat; this!", "1"]
+				["Normal Lyrics", "lyrics.chaos.2", "1"]
 			]
 		],
 		[
 			21157.8947368421,
 			[
-				["Normal Lyrics", "Eat; this!", "2"]
+				["Normal Lyrics", "lyrics.chaos.2", "2"]
 			]
 		],
 		[
@@ -2503,31 +2503,31 @@
 		[
 			30315.7894736842,
 			[
-				["Normal Lyrics", "C';mon,; step; it; up!", "1"]
+				["Normal Lyrics", "lyrics.chaos.3", "1"]
 			]
 		],
 		[
 			30434.2105263158,
 			[
-				["Normal Lyrics", "C';mon,; step; it; up!", "2"]
+				["Normal Lyrics", "lyrics.chaos.3", "2"]
 			]
 		],
 		[
 			30868.4210526316,
 			[
-				["Normal Lyrics", "C';mon,; step; it; up!", "3"]
+				["Normal Lyrics", "lyrics.chaos.3", "3"]
 			]
 		],
 		[
 			31105.2631578947,
 			[
-				["Normal Lyrics", "C';mon,; step; it; up!", "4"]
+				["Normal Lyrics", "lyrics.chaos.3", "4"]
 			]
 		],
 		[
 			31184.2105263158,
 			[
-				["Normal Lyrics", "C';mon,; step; it; up!", "5"]
+				["Normal Lyrics", "lyrics.chaos.3", "5"]
 			]
 		],
 		[
@@ -2576,7 +2576,7 @@
 		[
 			40342.1052631579,
 			[
-				["Normal Lyrics", "Ra;ha;ha;ha!", "1"]
+				["Normal Lyrics", "lyrics.chaos.12", "1"]
 			]
 		],
 		[
@@ -2589,19 +2589,19 @@
 		[
 			40736.8421052632,
 			[
-				["Normal Lyrics", "Ra;ha;ha;ha!", "2"]
+				["Normal Lyrics", "lyrics.chaos.12", "2"]
 			]
 		],
 		[
 			41052.6315789474,
 			[
-				["Normal Lyrics", "Ra;ha;ha;ha!", "3"]
+				["Normal Lyrics", "lyrics.chaos.12", "3"]
 			]
 		],
 		[
 			41368.4210526316,
 			[
-				["Normal Lyrics", "Ra;ha;ha;ha!", "4"]
+				["Normal Lyrics", "lyrics.chaos.12", "4"]
 			]
 		],
 		[
@@ -2797,19 +2797,19 @@
 		[
 			50536.1842105263,
 			[
-				["Normal Lyrics", "Heh; Too; slow!", "1"]
+				["Normal Lyrics", "lyrics.chaos.4", "1"]
 			]
 		],
 		[
 			51157.8947368421,
 			[
-				["Normal Lyrics", "Heh; Too; slow!", "2"]
+				["Normal Lyrics", "lyrics.chaos.4", "2"]
 			]
 		],
 		[
 			51394.7368421052,
 			[
-				["Normal Lyrics", "Heh; Too; slow!", "3"]
+				["Normal Lyrics", "lyrics.chaos.4", "3"]
 			]
 		],
 		[
@@ -2906,19 +2906,19 @@
 		[
 			61273.0263157894,
 			[
-				["Normal Lyrics", "You're; fi;nished!", "1"]
+				["Normal Lyrics", "lyrics.chaos.5", "1"]
 			]
 		],
 		[
 			61578.947368421,
 			[
-				["Normal Lyrics", "You're; fi;nished!", "2"]
+				["Normal Lyrics", "lyrics.chaos.5", "2"]
 			]
 		],
 		[
 			61736.8421052631,
 			[
-				["Normal Lyrics", "You're; fi;nished!", "3"]
+				["Normal Lyrics", "lyrics.chaos.5", "3"]
 			]
 		],
 		[
@@ -3018,7 +3018,7 @@
 		[
 			81641.447368421,
 			[
-				["Normal Lyrics", "WHAT!?", "1"]
+				["Normal Lyrics", "lyrics.chaos.6", "1"]
 			]
 		],
 		[
@@ -3069,7 +3069,7 @@
 		[
 			85342.1052631578,
 			[
-				["Normal Lyrics", "Let's; uh; Try; that; again", "1"]
+				["Normal Lyrics", "lyrics.chaos.7", "1"]
 			]
 		],
 		[
@@ -3081,25 +3081,25 @@
 		[
 			85736.8421052631,
 			[
-				["Normal Lyrics", "Let's; uh; Try; that; again", "2"]
+				["Normal Lyrics", "lyrics.chaos.7", "2"]
 			]
 		],
 		[
 			86368.4210526315,
 			[
-				["Normal Lyrics", "Let's; uh; Try; that; again", "3"]
+				["Normal Lyrics", "lyrics.chaos.7", "3"]
 			]
 		],
 		[
 			86526.3157894736,
 			[
-				["Normal Lyrics", "Let's; uh; Try; that; again", "4"]
+				["Normal Lyrics", "lyrics.chaos.7", "4"]
 			]
 		],
 		[
 			86605.2631578947,
 			[
-				["Normal Lyrics", "Let's; uh; Try; that; again", "5"]
+				["Normal Lyrics", "lyrics.chaos.7", "5"]
 			]
 		],
 		[
@@ -3138,7 +3138,7 @@
 		[
 			96315.7894736841,
 			[
-				["Normal Lyrics", "Hrrrrgh!", "1"]
+				["Normal Lyrics", "lyrics.chaos.16", "1"]
 			]
 		],
 		[
@@ -3169,19 +3169,19 @@
 		[
 			104536.184210526,
 			[
-				["Normal Lyrics", "GRAHHHH!; Now; I'll; show; you!", "1"]
+				["Normal Lyrics", "lyrics.chaos.8", "1"]
 			]
 		],
 		[
 			106105.263157895,
 			[
-				["Normal Lyrics", "GRAHHHH!; Now; I'll; show; you!", "2"]
+				["Normal Lyrics", "lyrics.chaos.8", "2"]
 			]
 		],
 		[
 			106342.105263158,
 			[
-				["Normal Lyrics", "GRAHHHH!; Now; I'll; show; you!", "3"]
+				["Normal Lyrics", "lyrics.chaos.8", "3"]
 			]
 		],
 		[
@@ -3194,13 +3194,13 @@
 		[
 			106736.842105263,
 			[
-				["Normal Lyrics", "GRAHHHH!; Now; I'll; show; you!", "4"]
+				["Normal Lyrics", "lyrics.chaos.8", "4"]
 			]
 		],
 		[
 			107052.631578947,
 			[
-				["Normal Lyrics", "GRAHHHH!; Now; I'll; show; you!", "5"]
+				["Normal Lyrics", "lyrics.chaos.8", "5"]
 			]
 		],
 		[
@@ -3275,7 +3275,7 @@
 		[
 			126957.236842105,
 			[
-				["Normal Lyrics", "AHHHHH-", "1"]
+				["Normal Lyrics", "lyrics.chaos.13", "1"]
 			]
 		],
 		[
@@ -3476,7 +3476,7 @@
 		[
 			137062.5,
 			[
-				["Normal Lyrics", "Hrrrrgh!", "1"]
+				["Normal Lyrics", "lyrics.chaos.16", "1"]
 			]
 		],
 		[
@@ -3527,19 +3527,19 @@
 		[
 			146605.263157895,
 			[
-				["Normal Lyrics", "Ngh,; shut; up!", "1"]
+				["Normal Lyrics", "lyrics.chaos.9", "1"]
 			]
 		],
 		[
 			147157.894736842,
 			[
-				["Normal Lyrics", "Ngh,; shut; up!", "2"]
+				["Normal Lyrics", "lyrics.chaos.9", "2"]
 			]
 		],
 		[
 			147315.789473684,
 			[
-				["Normal Lyrics", "Ngh,; shut; up!", "3"]
+				["Normal Lyrics", "lyrics.chaos.9", "3"]
 			]
 		],
 		[
@@ -3571,7 +3571,7 @@
 		[
 			155605.263157895,
 			[
-				["Normal Lyrics", "Hrrgh!; Die!", "1"]
+				["Normal Lyrics", "lyrics.chaos.10", "1"]
 			]
 		],
 		[
@@ -3583,7 +3583,7 @@
 		[
 			156631.578947369,
 			[
-				["Normal Lyrics", "Hrrgh!; Die!", "2,FF0000"]
+				["Normal Lyrics", "lyrics.chaos.10", "2,FF0000"]
 			]
 		],
 		[
@@ -3609,7 +3609,7 @@
 		[
 			157894.736842105,
 			[
-				["Normal Lyrics", "AHHHHHHH!", "1"]
+				["Normal Lyrics", "lyrics.chaos.14", "1"]
 			]
 		],
 		[

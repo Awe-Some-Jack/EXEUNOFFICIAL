@@ -966,7 +966,7 @@
 		[
 			113000,
 			[
-				["Normal Lyrics", "You're; too...", "1"]
+				["Normal Lyrics", "lyrics.faker.1", "1"]
 			]
 		],
 		[
@@ -980,7 +980,7 @@
 		[
 			113500,
 			[
-				["Normal Lyrics", "You're; too...", "2"]
+				["Normal Lyrics", "lyrics.faker.1", "2"]
 			]
 		],
 		[
@@ -993,7 +993,7 @@
 		[
 			113928.571428571,
 			[
-				["Normal Lyrics", "You're; too...", "1"]
+				["Normal Lyrics", "lyrics.faker.1", "1"]
 			]
 		],
 		[
@@ -1013,13 +1013,13 @@
 		[
 			114428.571428571,
 			[
-				["Normal Lyrics", "You're; too...", "2"]
+				["Normal Lyrics", "lyrics.faker.1", "2"]
 			]
 		],
 		[
 			114928.571428571,
 			[
-				["Normal Lyrics", "You're; too...", "1"]
+				["Normal Lyrics", "lyrics.faker.1", "1"]
 			]
 		],
 		[
@@ -1031,13 +1031,13 @@
 		[
 			115571.428571429,
 			[
-				["Normal Lyrics", "You're; too...", "2"]
+				["Normal Lyrics", "lyrics.faker.1", "2"]
 			]
 		],
 		[
 			116071.428571429,
 			[
-				["Normal Lyrics", "You're; too...", "1"]
+				["Normal Lyrics", "lyrics.faker.1", "1"]
 			]
 		],
 		[
@@ -1049,13 +1049,13 @@
 		[
 			116428.571428571,
 			[
-				["Normal Lyrics", "You're; too...", "2"]
+				["Normal Lyrics", "lyrics.faker.1", "2"]
 			]
 		],
 		[
 			116857.142857143,
 			[
-				["Normal Lyrics", "You're; too...", "1"]
+				["Normal Lyrics", "lyrics.faker.1", "1"]
 			]
 		],
 		[
@@ -1068,7 +1068,7 @@
 		[
 			117428.571428571,
 			[
-				["Normal Lyrics", "You're; too...", "2"]
+				["Normal Lyrics", "lyrics.faker.1", "2"]
 			]
 		],
 		[
@@ -1105,13 +1105,13 @@
 		[
 			118928.571428571,
 			[
-				["Normal Lyrics", "YOU'RE; TOO; SLOW!", "1"]
+				["Normal Lyrics", "lyrics.faker.3", "1"]
 			]
 		],
 		[
 			119285.714285714,
 			[
-				["Normal Lyrics", "YOU'RE; TOO; SLOW!", "2"]
+				["Normal Lyrics", "lyrics.faker.3", "2"]
 			]
 		],
 		[
@@ -1123,7 +1123,7 @@
 		[
 			119785.714285714,
 			[
-				["Normal Lyrics", "YOU'RE; TOO; SLOW!", "3,FF0000"]
+				["Normal Lyrics", "lyrics.faker.3", "3,FF0000"]
 			]
 		],
 		[

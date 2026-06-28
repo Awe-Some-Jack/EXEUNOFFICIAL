@@ -3,6 +3,7 @@ package states;
 import backend.WeekData;
 import backend.Song;
 import backend.Highscore;
+import backend.Language;
 
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -146,8 +147,10 @@ class EXEFreeplay extends MusicBeatState
 		exeTexts = new FlxTypedGroup<FlxText>();
 		songTexts = new FlxTypedGroup<FlxText>();
 		
-		charText = new FlxText(0, 15, FlxG.width, "", TITLE_SIZE);
-		charText.setFormat(FONT_PATH, TITLE_SIZE, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		var cjkFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : FONT_PATH;
+		var charSize = Language.cjkSize(TITLE_SIZE);
+		charText = new FlxText(0, 15, FlxG.width, "", charSize);
+		charText.setFormat(cjkFont, charSize, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		charText.antialiasing = false;
 		charText.borderSize = 3;
 		
@@ -167,14 +170,16 @@ class EXEFreeplay extends MusicBeatState
 
 		add(exeTexts);
 
-		rankText = new FlxText(0, 0, 0, "RANK: -", 44);
-		rankText.setFormat(FONT_PATH, 44, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		var uiFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : FONT_PATH;
+		var uiSize = Language.cjkSize(44);
+		rankText = new FlxText(0, 0, 0, Language.get('freeplay.rank', 'RANK') + ': -', uiSize);
+		rankText.setFormat(uiFont, uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		rankText.antialiasing = false;
 		rankText.borderSize = 3;
 		rankText.y = FlxG.height - rankText.height - 10;
-		
-		scoreText = new FlxText(0, 0, 0, "SCORE: 0", 44);
-		scoreText.setFormat(FONT_PATH, 44, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+
+		scoreText = new FlxText(0, 0, 0, Language.get('freeplay.score', 'SCORE') + ': 0', uiSize);
+		scoreText.setFormat(uiFont, uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreText.antialiasing = false;
 		scoreText.borderSize = 3;
 		scoreText.y = rankText.y - scoreText.height - 4;
@@ -400,8 +405,10 @@ class EXEFreeplay extends MusicBeatState
 				default: 0xFFFF0000;
 			}
 
-			final exeText = new FlxText(30, 0, 0, firstSong.exeLabel, EXE_LABEL_SIZE);
-			exeText.setFormat(FONT_PATH, EXE_LABEL_SIZE, daColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			var exeFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : FONT_PATH;
+			var exeSize = Language.cjkSize(EXE_LABEL_SIZE);
+			final exeText = new FlxText(30, 0, 0, firstSong.exeLabel, exeSize);
+			exeText.setFormat(exeFont, exeSize, daColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			exeText.borderSize = 2;
 			exeText.ID = i;
 			exeText.visible = (i == selectedBox);
@@ -911,10 +918,10 @@ class EXEFreeplay extends MusicBeatState
 	function updateScoreDisplay():Void
 	{
 		if (scoreText == null) return;
-		scoreText.text = 'SCORE: ${lerpScore}';
+		scoreText.text = Language.get('freeplay.score', 'SCORE') + ': ${lerpScore}';
 		
 		if (rankText != null)
-			rankText.text = 'RANK: ' + getRankLetter(lerpRating);
+			rankText.text = Language.get('freeplay.rank', 'RANK') + ': ' + getRankLetter(lerpRating);
 			
 		positionHighscore();
 	}
@@ -1335,7 +1342,7 @@ class ResetScoreSubState extends MusicBeatSubstate
 
 		final tooLong:Float = (name.length > 18) ? 0.8 : 1;
 		
-		final titleText = new Alphabet(0, 180, Language.getPhrase('reset_score', 'Reset the score of'), true);
+		final titleText = new Alphabet(0, 180, Language.get('freeplay.reset', 'RESET SCORE FOR {1}?').split('{1}')[0].trim(), true);
 		titleText.screenCenter(X);
 		alphabetArray.push(titleText);
 		titleText.alpha = 0;
@@ -1359,12 +1366,12 @@ class ResetScoreSubState extends MusicBeatSubstate
 			add(icon);
 		}
 
-		yesText = new Alphabet(0, nameText.y + 150, Language.getPhrase('Yes'), true);
+		yesText = new Alphabet(0, nameText.y + 150, Language.getPhrase('Yes', 'Yes'), true);
 		yesText.screenCenter(X);
 		yesText.x -= 200;
 		add(yesText);
 		
-		noText = new Alphabet(0, nameText.y + 150, Language.getPhrase('No'), true);
+		noText = new Alphabet(0, nameText.y + 150, Language.getPhrase('No', 'No'), true);
 		noText.screenCenter(X);
 		noText.x += 200;
 		add(noText);

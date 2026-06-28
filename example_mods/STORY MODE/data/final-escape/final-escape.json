@@ -4375,25 +4375,25 @@
 			[
 				["Tween Camera Zoom", "0.9", ""],
 				["Tweening Camera", "0, -90", "0.001, linear"],
-				["Normal Lyrics", "Here; we; go!", "1"]
+				["Normal Lyrics", "lyrics.finalescape.1", "1"]
 			]
 		],
 		[
 			36000,
 			[
-				["Normal Lyrics", "Here; we; go!", "2"]
+				["Normal Lyrics", "lyrics.finalescape.1", "2"]
 			]
 		],
 		[
 			36307.6923076923,
 			[
-				["Normal Lyrics", "Here; we; go!", "3"]
+				["Normal Lyrics", "lyrics.finalescape.1", "3"]
 			]
 		],
 		[
 			36923.0769230769,
 			[
-				["Normal Lyrics", "Yeah!", "1,3ACDF1"],
+				["Normal Lyrics", "lyrics.finalescape.3", "1,3ACDF1"],
 				["finalescapeEvent", "yeahbf", ""]
 			]
 		],
@@ -4987,7 +4987,7 @@
 		[
 			119692.307692308,
 			[
-				["Normal Lyrics", "Yeah!", "1,3ACDF1"]
+				["Normal Lyrics", "lyrics.finalescape.3", "1,3ACDF1"]
 			]
 		],
 		[
@@ -5016,31 +5016,31 @@
 			124000,
 			[
 				["finalescapeEvent", "wontgetaway", ""],
-				["Normal Lyrics", "You; won't; get; a;way!", "1"]
+				["Normal Lyrics", "lyrics.finalescape.2", "1"]
 			]
 		],
 		[
 			124307.692307693,
 			[
-				["Normal Lyrics", "You; won't; get; a;way!", "2"]
+				["Normal Lyrics", "lyrics.finalescape.2", "2"]
 			]
 		],
 		[
 			124615.384615385,
 			[
-				["Normal Lyrics", "You; won't; get; a;way!", "3"]
+				["Normal Lyrics", "lyrics.finalescape.2", "3"]
 			]
 		],
 		[
 			124769.230769231,
 			[
-				["Normal Lyrics", "You; won't; get; a;way!", "4"]
+				["Normal Lyrics", "lyrics.finalescape.2", "4"]
 			]
 		],
 		[
 			124923.076923077,
 			[
-				["Normal Lyrics", "You; won't; get; a;way!", "5"]
+				["Normal Lyrics", "lyrics.finalescape.2", "5"]
 			]
 		],
 		[

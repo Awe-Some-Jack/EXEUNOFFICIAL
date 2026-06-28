@@ -1,3 +1,8 @@
+local sentenceIndex = 0
+local sentenceWords = {}
+local wordIndex = 0
+local prevVal1 = nil
+
 function onCreatePost()
 	makeLuaText('mytext', '', 860)
 	screenCenter('mytext', 'x')
@@ -9,7 +14,30 @@ end
 
 function onEvent(n, val1, val2)
 	if n == 'Lyrics' then
-		setTextString('mytext', val1)
+		local isNewSentence = (prevVal1 == nil) or (val1:sub(1, #prevVal1) ~= prevVal1)
+
+		if isNewSentence then
+			sentenceIndex = sentenceIndex + 1
+			local key = 'lyrics.prey.' .. sentenceIndex
+			local translated = getSongLyric(key, val1)
+			sentenceWords = {}
+			for w in translated:gmatch('%S+') do table.insert(sentenceWords, w) end
+			wordIndex = 0
+		end
+
+		if wordIndex < #sentenceWords then
+			wordIndex = wordIndex + 1
+		end
+
+		local display = ''
+		for i = 1, wordIndex do
+			if i > 1 then display = display .. ' ' end
+			display = display .. sentenceWords[i]
+		end
+
+		prevVal1 = val1
+
+		setTextString('mytext', display)
 		setTextColor('mytext', val2)
 
 		cancelTween('Noo')

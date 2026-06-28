@@ -55,7 +55,7 @@ class Gallery extends MusicBeatSubstate
         _buildMenu();
         changeSelection(0);
 
-        titleText = new FlxText(49, 68, 0, "GALLERY", 88);
+        titleText = new FlxText(49, 68, 0, Language.getArray('extras.menu.gallery', ['GALLERY', ''])[0], 88);
         titleText.setFormat("assets/fonts/bigass.otf", 88, 0xFFf48000, LEFT);
         titleText.setBorderStyle(OUTLINE_FAST, 0xFF510500, 8);
         titleText.scale.set(0.66, 0.66);
@@ -74,7 +74,7 @@ class Gallery extends MusicBeatSubstate
         descBar.pixels.fillRect(new openfl.geom.Rectangle(0, gradientHeight, FlxG.width, 100), FlxColor.fromRGBFloat(0, 0, 0, 0.3));
         add(descBar);
 
-        final descTemp = new FlxText(0, 0, 0, "Browse WIPs, dev stuff, memes and sprites from the team!", 56);
+        final descTemp = new FlxText(0, 0, 0, Language.getArray('extras.menu.gallery', ['', 'Browse WIPs, dev stuff, memes and sprites from the team!'])[1], 56);
         descTemp.setFormat("assets/fonts/smallass.ttf", 56, FlxColor.WHITE, LEFT);
         descTemp.antialiasing = ClientPrefs.data.antialiasing;
         descTemp.updateHitbox();
@@ -87,7 +87,7 @@ class Gallery extends MusicBeatSubstate
         add(descBackdrop);
         descTemp.destroy();
 
-        nowPlaying = new FlxText(169, 558, 0, "NOW PLAYING:", 60);
+        nowPlaying = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
         nowPlaying.setFormat("assets/fonts/bigass.otf", 60, FlxColor.BLACK, LEFT);
         nowPlaying.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
         nowPlaying.scale.set(0.22, 0.22);

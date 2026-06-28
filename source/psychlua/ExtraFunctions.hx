@@ -194,5 +194,48 @@ class ExtraFunctions
 			var c = LuaUtils.cameraFromString(cam);
 			if (c != null) CoolUtil.lerpZoom(c, target, factor, elapsed);
 		});
+
+		Lua_helper.add_callback(lua, 'getLanguage', function():String {
+				var lang = ClientPrefs.data.language;
+				return (lang != null && lang.length > 0) ? lang : 'en-US';
+			});
+
+		Lua_helper.add_callback(lua, 'getSongLyric', function(key:String, ?fallback:String):String {
+			var songName = PlayState.SONG != null ? PlayState.SONG.song.toLowerCase().replace(' ', '-') : '';
+			var modDir = backend.Mods.currentModDirectory;
+			var lang = ClientPrefs.data.language;
+			if (lang == null || lang.length == 0) lang = 'en-US';
+
+			var paths:Array<String> = [];
+			if (modDir != null && modDir.length > 0)
+				paths.push('mods/$modDir/data/$songName/lyrics.json');
+			paths.push('mods/data/$songName/lyrics.json');
+			paths.push('assets/data/$songName/lyrics.json');
+
+			var data:Dynamic = null;
+			for (path in paths) {
+				try {
+					if (sys.FileSystem.exists(path)) {
+						var text = sys.io.File.getContent(path);
+						if (text != null && text.length > 0) {
+							data = haxe.Json.parse(text);
+							break;
+						}
+					}
+				} catch(e:Dynamic) {}
+			}
+
+			if (data == null) return fallback != null ? fallback : key;
+			var langData:Dynamic = Reflect.field(data, lang);
+			if (langData == null) langData = Reflect.field(data, 'en-US');
+			if (langData == null) return fallback != null ? fallback : key;
+			var val:Dynamic = Reflect.field(langData, key);
+			if (val == null) return fallback != null ? fallback : key;
+			return Std.string(val);
+		});
+
+		Lua_helper.add_callback(lua, 'getPhrase', function(key:String, ?fallback:String, ?vars:Array<Dynamic>):String {
+			return backend.Language.getPhrase(key, fallback, vars);
+		});
 	}
 }

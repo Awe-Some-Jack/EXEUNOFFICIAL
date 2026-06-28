@@ -11,6 +11,7 @@ import flixel.util.FlxTimer;
 import flixel.addons.display.FlxBackdrop;
 
 import states.EXEMenu;
+import backend.Language;
 
 class ExtrasMenu extends MusicBeatState
 {
@@ -33,23 +34,10 @@ class ExtrasMenu extends MusicBeatState
 
     static var extraMenuSong:Bool = false;
 
-    var menuOptions:Array<String> = [
-        "GALLERY",
-        "CHARACTER BIOS",
-        "D.A GARDEN",
-        "CUTSCENES",
-        "ACHIEVEMENTS",
-        "CREDITS"
-    ];
+    static final MENU_KEYS:Array<String> = ["GALLERY", "CHARACTER BIOS", "D.A GARDEN", "CUTSCENES", "ACHIEVEMENTS", "CREDITS"];
 
-    var menuDescriptions:Array<String> = [
-        'In the gallery you can see photos and screenshots of the development of the mod or jokes, please check it out!',
-        'Here you can see the description of each character! A lot of them have a very extensive lore and its pretty interesting!',
-        'Listen to the great music we have in store, composed by awesome composers. It took them a lot of time to give you something of good quality!',
-        'Here you can rewatch the amazing cutscenes! Pretty simple right?',
-        'Check out the achievements you can unlock, or the ones you already have!',
-        'Credits to all the people who made this mod possible!'
-    ];
+    var menuOptions:Array<String> = [];
+    var menuDescriptions:Array<String> = [];
 
     var menuItems:Array<FlxText> = [];
     var extrasTextBackdrops:Array<FlxBackdrop> = [];
@@ -85,6 +73,15 @@ class ExtrasMenu extends MusicBeatState
 
         super.create();
 
+        var gal  = Language.getArray('extras.menu.gallery',      ["GALLERY",         "In the gallery you can see photos and screenshots of the development of the mod or jokes, please check it out!"]);
+        var bio  = Language.getArray('extras.menu.character',    ["CHARACTER BIOS",   "Here you can see the description of each character! A lot of them have a very extensive lore and its pretty interesting!"]);
+        var dag  = Language.getArray('extras.menu.dagarden',     ["D.A GARDEN",       "Listen to the great music we have in store, composed by awesome composers. It took them a lot of time to give you something of good quality!"]);
+        var cut  = Language.getArray('extras.menu.cutscenes',    ["CUTSCENES",        "Here you can rewatch the amazing cutscenes! Pretty simple right?"]);
+        var ach  = Language.getArray('extras.menu.achievements', ["ACHIEVEMENTS",      "Check out the achievements you can unlock, or the ones you already have!"]);
+        var cred = Language.getArray('extras.menu.credits',      ["CREDITS",          "Credits to all the people who made this mod possible!"]);
+        menuOptions      = [gal[0],  bio[0],  dag[0],  cut[0],  ach[0],  cred[0]];
+        menuDescriptions = [gal[1],  bio[1],  dag[1],  cut[1],  ach[1],  cred[1]];
+
         if (!extraMenuSong) initializeMusic();
         createBackground();
         createDecorations();
@@ -92,7 +89,7 @@ class ExtrasMenu extends MusicBeatState
         createDescriptionBar();
         changeSelection(0);
 
-        nowPlaying = new FlxText(169, 558, 0, "NOW PLAYING:", 60);
+        nowPlaying = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
         nowPlaying.setFormat("assets/fonts/bigass.otf", 60, FlxColor.BLACK, LEFT);
         nowPlaying.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
         nowPlaying.scale.set(0.22, 0.22);
@@ -252,10 +249,11 @@ class ExtrasMenu extends MusicBeatState
 
     function createMenu():Void
     {
+        final menuFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : "assets/fonts/bigass.otf";
         for (i in 0...menuOptions.length)
         {
             final menuText = new FlxText(MENU_START_X, MENU_START_Y + (i * MENU_SPACING), 0, menuOptions[i], MENU_FONT_SIZE);
-            menuText.setFormat("assets/fonts/bigass.otf", MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
+            menuText.setFormat(menuFont, MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
             menuText.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
             menuText.antialiasing = ClientPrefs.data.antialiasing;
             menuText.pixelPerfectRender = false;
@@ -290,10 +288,11 @@ class ExtrasMenu extends MusicBeatState
         descriptionBar.pixels.fillRect(new openfl.geom.Rectangle(0, gradientHeight, FlxG.width, 100), FlxColor.fromRGBFloat(0, 0, 0, 0.3));
         add(descriptionBar);
 
+        final descFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : "assets/fonts/smallass.ttf";
         for (i in 0...menuDescriptions.length)
         {
             final tempText = new FlxText(0, 0, 0, menuDescriptions[i], DESCRIPTION_FONT_SIZE);
-            tempText.setFormat("assets/fonts/smallass.ttf", DESCRIPTION_FONT_SIZE, FlxColor.WHITE, LEFT);
+            tempText.setFormat(descFont, DESCRIPTION_FONT_SIZE, FlxColor.WHITE, LEFT);
             tempText.antialiasing = ClientPrefs.data.antialiasing;
             tempText.updateHitbox();
             tempText.drawFrame(true);
@@ -717,7 +716,7 @@ class ExtrasMenu extends MusicBeatState
 
     function navigateToOption():Void
     {
-        switch (menuOptions[curSelected])
+        switch (MENU_KEYS[curSelected])
         {
             case "GALLERY":
                 canMove = false;

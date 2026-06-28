@@ -1,0 +1,62 @@
+{
+	"en-US":  {
+				  "lyrics.finalescape.1":  "Here; we; go!",
+				  "lyrics.finalescape.2":  "You; won't; get; a;way!",
+				  "lyrics.finalescape.3":  "Yeah!"
+			  },
+	"es-ES":  {
+				  "lyrics.finalescape.1":  "Aqui; va;mos!",
+				  "lyrics.finalescape.2":  "No; es;ca;pa;ras!",
+				  "lyrics.finalescape.3":  "Yeah!"
+			  },
+	"pt-BR":  {
+				  "lyrics.finalescape.1":  "La; va;mos!",
+				  "lyrics.finalescape.2":  "Nao; vai; es;ca;par!",
+				  "lyrics.finalescape.3":  "Yeah!"
+			  },
+	"fr-FR":  {
+				  "lyrics.finalescape.1":  "C'est; par;ti!",
+				  "lyrics.finalescape.2":  "Tu; ne; t'en; sor;tiras pas!",
+				  "lyrics.finalescape.3":  "Yeah!"
+			  },
+	"de-DE":  {
+				  "lyrics.finalescape.1":  "Los; geht's; los!",
+				  "lyrics.finalescape.2":  "Du; kommst; nicht; weg;!",
+				  "lyrics.finalescape.3":  "Yeah!"
+			  },
+	"ru-RU":  {
+				  "lyrics.finalescape.1":  "По;гна;ли!",
+				  "lyrics.finalescape.2":  "Те;бе; не; уй;ти!",
+				  "lyrics.finalescape.3":  "Yeah!"
+			  },
+	"uk-UA":  {
+				  "lyrics.finalescape.1":  "По;їха;ли!",
+				  "lyrics.finalescape.2":  "То;бi; не; вте;кти!",
+				  "lyrics.finalescape.3":  "Yeah!"
+			  },
+	"uz-UZ":  {
+				  "lyrics.finalescape.1":  "Qani; ket;dik!",
+				  "lyrics.finalescape.2":  "Qo;chib; qut;u;la olmaysan!",
+				  "lyrics.finalescape.3":  "Yeah!"
+			  },
+	"ja-JP":  {
+				  "lyrics.finalescape.1":  "行く; ぞ;!",
+				  "lyrics.finalescape.2":  "逃;が; す; か;!",
+				  "lyrics.finalescape.3":  "Yeah!"
+			  },
+	"zh-CN":  {
+				  "lyrics.finalescape.1":  "走; 起;!",
+				  "lyrics.finalescape.2":  "你; 跑; 不; 掉;!",
+				  "lyrics.finalescape.3":  "Yeah!"
+			  },
+	"ko-KR":  {
+				  "lyrics.finalescape.1":  "자; 간;다!",
+				  "lyrics.finalescape.2":  "도; 망; 못; 쳐;!",
+				  "lyrics.finalescape.3":  "Yeah!"
+			  },
+	"pi-PI":  {
+				  "lyrics.finalescape.1":  "Here; we; sail!",
+				  "lyrics.finalescape.2":  "Ye; won't; get; a;way!",
+				  "lyrics.finalescape.3":  "Yarr!"
+			  }
+}

@@ -24,6 +24,7 @@ local healthProps = {
 }
 
 local lerpHealth = 1
+local scoreFont = 'vcr.ttf'
 
 local healthBarsBG = {
     ["hud_majin"] = {
@@ -107,6 +108,19 @@ local blacklistenedSongs = {'prey', 'godspeed', 'forestall-desire', 'deception',
 local flipped = false
 local oldScoreTxt = ''
 function onCreatePost()
+    local lang = getLanguage()
+    if lang == 'ja-JP' then
+        scoreFont = 'japanese.ttf'
+    elseif lang == 'zh-CN' then
+        scoreFont = 'chinese.ttf'
+    elseif lang == 'ko-KR' then
+        scoreFont = 'korean.ttf'
+    elseif lang == 'ru-RU' or lang == 'uk-UA' then
+        scoreFont = 'Pixellari.ttf'
+    else
+        scoreFont = 'vcr.ttf'
+    end
+
     if checkFileExists('data/'..songPath..'/healthProps.json') then
 		json = callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile('data/'..songPath..'/healthProps.json')})
 		for i,v in pairs(json) do
@@ -198,6 +212,7 @@ function onCreatePost()
     if not healthProps.healthBar.hideScore then
         makeLuaText('exeScoreTxt', 'Score: 0 | Misses: 0', screenWidth / 0.75, 0, getProperty('hbBG.y') + (downscroll and 40 or -40))
         setTextSize('exeScoreTxt', 22)
+        setTextFont('exeScoreTxt', scoreFont)
         setTextBorder('exeScoreTxt', 1, '000000')
         screenCenter('exeScoreTxt', 'x')
         setProperty('exeScoreTxt.x', math.floor(getProperty('exeScoreTxt.x') + healthProps.healthBar.offsetX))
@@ -246,7 +261,7 @@ function onUpdatePost(e)
     end
 
     if not healthProps.healthBar.hideScore then
-        setTextString('exeScoreTxt', 'Score: '..callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {score, false})..' | Misses: '..misses)
+        setTextString('exeScoreTxt', getPhrase('score_text', 'Score: {1} | Misses: {2}', {callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {score, false}), misses}))
         if oldScoreTxt ~= getTextString('exeScoreTxt') then scaleObject('exeScoreTxt', healthProps.healthBar.textBopAmount, healthProps.healthBar.textBopAmount, false) end
         oldScoreTxt = getTextString('exeScoreTxt')
         scaleObject('exeScoreTxt', lerp(getProperty('exeScoreTxt.scale.x'), 1, e * 10), lerp(getProperty('exeScoreTxt.scale.y'), 1, e * 10), false)

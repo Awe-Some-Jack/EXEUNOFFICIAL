@@ -13,7 +13,7 @@
 	"soundtest.title": "OVOZ TESTI",
 	"soundtest.labels": ["PCM RAQAMI", "DA RAQAMI"],
 	"extras.menu.title": "QO'SHIMCHALAR",
-	"extras.menu.nowplaying": "IJROДА:",
+	"extras.menu.nowplaying": "IJRODA:",
 	"extras.menu.gallery": ["GALEREYA", "Galereyada modning ishlab chiqilishi davridagi fotosuratlar va hazil skrinshotlarni ko'rishingiz mumkin. Marhamat, ko'rib chiqing!"],
 	"extras.menu.character": ["QAHRAMONLAR BIOGRAFIYASI", "Bu yerda har bir qahramonning tavsifini o'qishingiz mumkin. Ularning ko'pchiligi chuqur tarixga ega va juda qiziqarli!"],
 	"extras.menu.dagarden": ["D.A BOG'I", "Ajoyib bastakorlar tomonidan yaratilgan musiqalarni tinglang. Siz uchun yuqori sifatli asar yaratishga ular ko'p vaqt sarflashdi!"],
@@ -40,5 +40,5 @@
 	"options.ghosttapping.on": "QO'RQOQ",
 	"options.ghosttapping.off": "O'CHIQ",
 	"cutscenes.empty": "VIDEO TOPILMADI",
-	"score_text": "Ball: {1} | Xatolar: {2}"
+	"score_text": "Hisob: {1} | Xatolar: {2}"
 }

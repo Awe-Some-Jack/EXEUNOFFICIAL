@@ -40,5 +40,5 @@
 	"options.ghosttapping.on": "ТРУС",
 	"options.ghosttapping.off": "ВЫКЛ",
 	"cutscenes.empty": "ВИДЕО НЕ НАЙДЕНЫ",
-	"score_text": "Счёт: {1} | Промахи: {2}"
+	"score_text": "Очки: {1} | Промахи: {2}"
 }

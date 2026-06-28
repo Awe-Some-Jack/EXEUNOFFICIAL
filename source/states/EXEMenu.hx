@@ -366,7 +366,6 @@ class EXEMenu extends MusicBeatState
 		final cjkYOffset:Float = switch (langFont) {
 			case 'chinese.ttf': 28;
 			case 'japanese.ttf' | 'korean.ttf': 36;
-			case 'Pixellari.ttf': 36;
 			default: 0;
 		};
 		for (i in 0...TOTAL_OPTIONS)

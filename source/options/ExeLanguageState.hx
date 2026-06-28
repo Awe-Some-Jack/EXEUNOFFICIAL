@@ -15,9 +15,7 @@ class ExeLanguageState extends ExeBaseOptionsState
 	static final LANG_FONTS:Map<String, String> = [
 		"ja-JP" => "japanese.ttf",
 		"zh-CN" => "chinese.ttf",
-		"ko-KR" => "korean.ttf",
-		"ru-RU" => "Pixellari.ttf",
-		"uk-UA" => "Pixellari.ttf"
+		"ko-KR" => "korean.ttf"
 	];
 
 	var curLangIdx:Int = 0;

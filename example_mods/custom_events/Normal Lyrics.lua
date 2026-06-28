@@ -18,8 +18,6 @@ function onCreatePost()
 		lyricFont = 'chinese.ttf'
 	elseif lang == 'ko-KR' then
 		lyricFont = 'korean.ttf'
-	elseif lang == 'ru-RU' or lang == 'uk-UA' then
-		lyricFont = 'Pixellari.ttf'
 	else
 		lyricFont = 'vcr.ttf'
 	end

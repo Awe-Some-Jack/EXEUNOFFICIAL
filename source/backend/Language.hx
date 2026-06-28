@@ -48,7 +48,6 @@ class Language
 			case 'ja-JP': 'japanese.ttf';
 			case 'ko-KR': 'korean.ttf';
 			case 'zh-CN': 'chinese.ttf';
-			case 'ru-RU' | 'uk-UA': 'Pixellari.ttf';
 			default: 'SonicCD.ttf';
 		}
 	}

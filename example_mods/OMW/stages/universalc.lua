@@ -19,6 +19,7 @@ local planetsPos = {
 	}
 }
 
+addCharacterToList('omwn', 'dad')
 function onCreatePost()
 	makeLuaSprite('sky', 'universal-collapse/7', -600, -500)
 	setScrollFactor('sky', 0.2, 0.2)
@@ -47,6 +48,44 @@ function onCreatePost()
 	makeLuaSprite('trees', 'universal-collapse/1', -970, -50)
 	setScrollFactor('trees', 0.85, 0.85)
 	addLuaSprite('trees')
+
+	--noche
+	makeLuaSprite('skyN', 'universal-collapse/noche/7', -600, -500)
+	setScrollFactor('skyN', 0.2, 0.2)
+	setProperty('skyN.alpha', 0)
+	addLuaSprite('skyN')
+
+	makeLuaSprite('cloudsN', 'universal-collapse/noche/6', -600, -500)
+	setScrollFactor('cloudsN', 0.2, 0.2)
+	setProperty('cloudsN.alpha', 0)
+	addLuaSprite('cloudsN')
+
+	makeLuaSprite('mountainsN', 'universal-collapse/noche/5', -750, -900)
+	setScrollFactor('mountainsN', 0.5, 0.5)
+	setProperty('mountainsN.alpha', 0)
+	addLuaSprite('mountainsN')
+
+	makeLuaSprite('waterfallN', 'universal-collapse/noche/3', -850, -250)
+	setScrollFactor('waterfallN', 0.65, 0.65)
+	setProperty('waterfallN.alpha', 0)
+	addLuaSprite('waterfallN')
+
+	makeLuaSprite('fog2N', 'universal-collapse/noche/4', -800, 50)
+	setScrollFactor('fog2N', 0.6, 0.6)
+	setProperty('fog2N.alpha', 0)
+	addLuaSprite('fog2N')
+
+	makeLuaSprite('trees2N', 'universal-collapse/noche/2', -950, -200)
+	setScrollFactor('trees2N', 0.78, 0.78)
+	setProperty('trees2N.alpha', 0)
+	addLuaSprite('trees2N')
+
+	makeLuaSprite('treesN', 'universal-collapse/noche/1', -970, -50)
+	setScrollFactor('treesN', 0.85, 0.85)
+	setProperty('treesN.alpha', 0)
+	addLuaSprite('treesN')
+
+	--xd
 
 	makeLuaSprite('gradient', 'universal-collapse/gradient', -600, -1000)
 	scaleObject('gradient', 1, 2000)
@@ -142,6 +181,8 @@ function onUpdatePost(e)
 		setProperty('camHUD.x', math.sin(planetSine / 2) * 5)
 		setProperty('camHUD.y', math.cos(planetSine / 2) * 5)
 		setProperty('camHUD.angle', math.cos(planetSine / 2 + (math.pi / 2)) * 2)
+	else
+		callMethod('omwnoche.update')
 	end
 end
 
@@ -152,7 +193,23 @@ function onStepHit()
 	end
 end
 
-function onEvent(n,v1) if n == 'omwEvents' then if v1 == 'startUniverse' then universe = true end end end
+function onEvent(n,v1)
+	if n == 'omwEvents' then
+		if v1 == 'startUniverse' then universe = true end
+		if v1 == 'night' then
+			cameraFlash('game', 'FFFFFF', 1, true)
+			setProperty('skyN.alpha', 1)
+			setProperty('cloudsN.alpha', 1)
+			setProperty('mountainsN.alpha', 1)
+			setProperty('waterfallN.alpha', 1)
+			setProperty('fog2N.alpha', 1)
+			setProperty('trees2N.alpha', 1)
+			setProperty('treesN.alpha', 1)
+			setProperty('gradient.alpha', 0)
+			triggerEvent('Change Character', 'dad', 'omwn')
+		end
+	end
+end
 
 local separation = 30
 

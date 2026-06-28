@@ -482,7 +482,7 @@
 			112758.620689655,
 			[
 				["Play Animation", "anim", "dad"],
-				["Normal Lyrics", "You; know...;", "1, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.1", "1, 021f4f"]
 			]
 		],
 		[
@@ -493,31 +493,31 @@
 				["Tweening Camera", "-250, 80", "0.001, linear"],
 				["Set Property", "camZoomingMult", "1"],
 				["Set Property", "camZoomingDecay", "1"],
-				["Normal Lyrics", "You; know...;", "2, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.1", "2, 021f4f"]
 			]
 		],
 		[
 			114051.724137931,
 			[
-				["Normal Lyrics", "You; can't; get; away;", "1, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.2", "1, 021f4f"]
 			]
 		],
 		[
 			114310.344827586,
 			[
-				["Normal Lyrics", "You; can't; get; away;", "2, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.2", "2, 021f4f"]
 			]
 		],
 		[
 			114956.896551724,
 			[
-				["Normal Lyrics", "You; can't; get; away;", "3, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.2", "3, 021f4f"]
 			]
 		],
 		[
 			115258.620689655,
 			[
-				["Normal Lyrics", "You; can't; get; away;", "4, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.2", "4, 021f4f"]
 			]
 		],
 		[
@@ -644,7 +644,7 @@
 			143448.275862069,
 			[
 				["ssStageEvents", "lyrics2", ""],
-				["Normal Lyrics", "I; know; where; you; are...;", "1, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.3", "1, 021f4f"]
 			]
 		],
 		[
@@ -657,61 +657,61 @@
 		[
 			143965.517241379,
 			[
-				["Normal Lyrics", "I; know; where; you; are...;", "2, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.3", "2, 021f4f"]
 			]
 		],
 		[
 			144568.965517241,
 			[
-				["Normal Lyrics", "I; know; where; you; are...;", "3, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.3", "3, 021f4f"]
 			]
 		],
 		[
 			144913.793103448,
 			[
-				["Normal Lyrics", "I; know; where; you; are...;", "4, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.3", "4, 021f4f"]
 			]
 		],
 		[
 			145086.206896552,
 			[
-				["Normal Lyrics", "I; know; where; you; are...;", "5, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.3", "5, 021f4f"]
 			]
 		],
 		[
 			146206.896551724,
 			[
-				["Normal Lyrics", "You; can't; hide; too; much; longer;", "1, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.4", "1, 021f4f"]
 			]
 		],
 		[
 			146724.137931034,
 			[
-				["Normal Lyrics", "You; can't; hide; too; much; longer;", "2, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.4", "2, 021f4f"]
 			]
 		],
 		[
 			147068.965517241,
 			[
-				["Normal Lyrics", "You; can't; hide; too; much; longer;", "3, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.4", "3, 021f4f"]
 			]
 		],
 		[
 			147844.827586207,
 			[
-				["Normal Lyrics", "You; can't; hide; too; much; longer;", "4, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.4", "4, 021f4f"]
 			]
 		],
 		[
 			148103.448275862,
 			[
-				["Normal Lyrics", "You; can't; hide; too; much; longer;", "5, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.4", "5, 021f4f"]
 			]
 		],
 		[
 			148620.689655172,
 			[
-				["Normal Lyrics", "You; can't; hide; too; much; longer;", "6, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.4", "6, 021f4f"]
 			]
 		],
 		[
@@ -730,7 +730,7 @@
 		[
 			149827.586206896,
 			[
-				["Normal Lyrics", "Do; you; really; think; you; can; escape?; ", "1, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.5", "1, 021f4f"]
 			]
 		],
 		[
@@ -742,37 +742,37 @@
 		[
 			150086.206896552,
 			[
-				["Normal Lyrics", "Do; you; really; think; you; can; escape?; ", "2, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.5", "2, 021f4f"]
 			]
 		],
 		[
 			150344.827586207,
 			[
-				["Normal Lyrics", "Do; you; really; think; you; can; escape?; ", "3, 010e24"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.5", "3, 010e24"]
 			]
 		],
 		[
 			150948.275862069,
 			[
-				["Normal Lyrics", "Do; you; really; think; you; can; escape?; ", "4, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.5", "4, 021f4f"]
 			]
 		],
 		[
 			151637.931034483,
 			[
-				["Normal Lyrics", "Do; you; really; think; you; can; escape?; ", "5, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.5", "5, 021f4f"]
 			]
 		],
 		[
 			151724.137931034,
 			[
-				["Normal Lyrics", "Do; you; really; think; you; can; escape?; ", "6, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.5", "6, 021f4f"]
 			]
 		],
 		[
 			151896.551724138,
 			[
-				["Normal Lyrics", "Do; you; really; think; you; can; escape?; ", "7, 021f4f"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.5", "7, 021f4f"]
 			]
 		],
 		[
@@ -786,7 +786,7 @@
 			[
 				["Tween Camera Zoom", "1.2, true", "0.5, cubeOut"],
 				["Tweening Camera", "550, 320", "0.001, linear"],
-				["Normal Lyrics", "yeah;", "1, 08c1ff"]
+				["Normal Lyrics", "lyrics.sharpyshowdown.6", "1, 08c1ff"]
 			]
 		],
 		[

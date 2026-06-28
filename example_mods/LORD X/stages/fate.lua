@@ -18,11 +18,15 @@ runHaxeCode("var trail:Character;")
 
 local fateAssets = {
     ['BG1'] = {
-        {name =     'feiker',  path =   'fate/fakrt', x =   500, y = 520, animated = false,                                                                      scaleX = 0.7, scaleY = 0.7, alpha = 0,                                                     lq = false, front = false},
-        {name =    'nieblia',  path =  'fate/niebla', x =   217, y = 620, animated =  true, animName = 'idle', animPrefix = 'Símbolo 29', fps = 24, loop = true, scaleX = 2.7, scaleY = 2.3, alpha = 0,                                                     lq = false, front = false},
-        {name =    'cuadros',  path =       'fate/c', x =  1100, y = 320, animated = false,                                                                      scaleX = 0.8, scaleY = 0.8, alpha = 0,                                                     lq = false, front = false},
-        {name =     'ground',  path =      'fate/sd', x =   210, y = 250, animated = false,                                                                      scaleX = 0.8, scaleY = 0.8, alpha = 0,                                                     lq = false, front = false},
-        {name = 'redOverlay',  path = 'fate/overlay', x = -1500, y = 500, animated = false,                                                                      scaleX =   2, scaleY =   2, alpha = 0, behind = 'nieblia', flipY = true, color = 'FF0000', lq = false, front = false},
+        {name =       'nieblia', path =                 'fate/niebla', x =  -400, y = -600, animated =  true, animName = 'idle', animPrefix = 'Símbolo 29', fps = 24, loop = true, scaleX = 2.3, scaleY = 2.3, alpha = 0,                                                     lq = false, front = false},
+        {name =         'cells', path =        'fate/YOUR-FATE/cells', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
+        {name =     'fakerEyes', path =    'fate/YOUR-FATE/faker-eye', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
+        {name =       'cuadros', path =       'fate/YOUR-FATE/covers', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
+        {name = 'cuadrosArriba', path =     'fate/YOUR-FATE/upCovers', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
+        {name =        'ground', path =  'fate/YOUR-FATE/ground-dark', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
+        {name =          'land', path =         'fate/YOUR-FATE/land', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
+        {name =  'overlayStage', path = 'fate/YOUR-FATE/overlayStage', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = true},
+        {name =    'redOverlay', path =                'fate/overlay', x =  -400, y = -600, animated = false,                                                                      scaleX =   1, scaleY =   2, alpha = 0, behind = 'nieblia', flipY = true, color = 'FF0000', lq = false, front = false},
     },
     ['BG2'] = {
         {name = 'niebliaFinal', path =   'fate/niebla 2', x = 0, y = 20, animated = true, animName = 'idle', animPrefix =  'Símbolo 34', fps = 24, loop = true, scaleX = 1.75, scaleY = 1, alpha = 0, lq = false, front = false},
@@ -69,6 +73,7 @@ local function prepareCharacters()
     addCharacterToList('bf-perspective-right', 'bf')
 end
 
+local fakerEyesPos = {}
 local function createSprite(spr)
     if not spr.lq then
         if spr.animated then
@@ -238,11 +243,17 @@ local fateStageEvents = {
         setProperty('boyfriend.visible', true)
         setProperty('dad.alpha', 1)
 
+        for _, chars in ipairs({'dad', 'boyfriend'}) do setProperty(chars..'.y', getProperty(chars..'.y') + 60) end
+
         triggerEvent('Set customCamera Position', 'bf', '2190, 1350')
         triggerEvent('Set customCamera Position', 'dad', '1470, 1350')
+        --triggerEvent('Set customCamera Position', 'middle', '1830, 940')
+        triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.3')
     end,
     ['2'] = function ()
         for _, bg1 in ipairs(fateAssets['BG1']) do removeLuaSprite(bg1.name, true) end
+
+        for _, chars in ipairs({'dad', 'boyfriend'}) do setProperty(chars..'.y', getProperty(chars..'.y') - 60) end
 
         removeSpriteShader('boyfriend')
         triggerEvent('Change Character', 'bf', 'bfo')
@@ -344,6 +355,8 @@ local function onUpdateFate(elapsed)
         setProperty('cuadros.angle', getProperty('cuadros.angle') + math.cos(holdMove + 0.05) * 0.05)
     end
 
+    if luaSpriteExists('fakerEyes') and getProperty('fakerEyes.alpha') >= 0.1 then callMethod('fakerEyes.setPosition', { fakerEyesPos[1] + math.random(-shakeIntensity, shakeIntensity), fakerEyesPos[2] + math.random(-shakeIntensity, shakeIntensity)}) end
+
     if luaSpriteExists('bfFALL') then
         callMethod('bfFALL.setPosition', {getProperty('bfFALL.x') + math.cos(holdMove + 0.2) * 0.9, getProperty('bfFALL.y') + math.sin(holdMove + 0.4) * 0.6})
         setProperty('bfFALL.angle', getProperty('bfFALL.angle') + math.cos(holdMove + 0.05) * 0.05)
@@ -391,7 +404,7 @@ local function popUpSpace()
     cancelTween('dodgeTextAngle') cancelTween('spaceBarScale')
     scaleObject('spaceBar', 0.8, 0.8) scaleObject('dodgeText', 1.1, 1.1)
     setProperty('dodgeText.angle', getRandomFloat(-5, 5)) setProperty('spaceBar.alpha', 1)
-    doTweenScale('spaceBar', 'spaceBar', 0.7, 0.5, 'circOut') doTweenScale('dodgeText', 'dodgeText', 1, 0.5, 'circOut') doTweenAngle('dodgeTextAngle', 'dodgeText', 0, 0.5, 'circOut')
+    doTweenScale('spaceBar', 'spaceBar', 1, 0.5, 'circOut') doTweenScale('dodgeText', 'dodgeText', 1, 0.5, 'circOut') doTweenAngle('dodgeTextAngle', 'dodgeText', 0, 0.5, 'circOut')
 end
 
 local function dodgeMechanic()
@@ -436,6 +449,8 @@ function onCreatePost()
 
     createAtlasSprite('fateExes')
     createIllegalInstruction()
+
+    fakerEyesPos = {getProperty('fakerEyes.x'), getProperty('fakerEyes.y')}
 end
 
 function onUpdatePost(elapsed) onUpdateFate(elapsed) end
@@ -500,7 +515,7 @@ end
 function onSectionHit()
     if not getProperty('gameplayCam.settings.MiddleCamera') and zoomingStage then
 		if curSection % 2 == 0 then setProperty('gameplayCam.settings.OverrideZoom', false) end
-		setProperty('gameplayCam.settings.OGZoom', mustHitSection and 0.7 or 0.9)
+		setProperty('gameplayCam.settings.OGZoom', mustHitSection and 1 or 0.9)
 	end
 end
 

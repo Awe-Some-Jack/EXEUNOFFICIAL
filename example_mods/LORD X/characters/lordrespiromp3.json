@@ -1,0 +1,23 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [214, 469],
+			"anim": "mispulmones",
+			"fps": 24,
+			"name": "ahh",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/lordx",
+	"position": [50, 420],
+	"healthicon": "lord-x",
+	"flip_x": false,
+	"healthbar_colors": [60, 60, 88],
+	"camera_position": [-230, -170],
+	"sing_duration": 9.4,
+	"scale": 0.9,
+	"_editor_isPlayer": false
+}

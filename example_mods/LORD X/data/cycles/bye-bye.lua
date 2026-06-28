@@ -6,12 +6,16 @@ local byeByeActivated = false
 local curText = {}
 local curStringText = ''
 
+addCharacterToList('lordrespiromp3', 'dad')
+
 function onEvent(e, v1, v2)
     if e == "triggerByeByeChance" then
         if byeByeActivated then
             setProperty("opponentVocals.volume", 0)
             playSound("DIGA-BYE-BYE", 1, "yes")
             runTimer("setVocalsBack", 8)
+			triggerEvent('Change Character', 'dad', 'lordrespiromp3')
+			playAnim('dad', 'mispulmones', true)
         end
     end
     if e == 'Normal Lyrics Bye-Bye' then

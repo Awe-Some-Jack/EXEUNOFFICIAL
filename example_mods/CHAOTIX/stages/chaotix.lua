@@ -208,3 +208,7 @@ function onUpdatePost(e)
 		end
 	end
 end
+
+function opponentNoteHitPre(i)
+	if getProperty('dad.animation.curAnim.name') == 'trans1' and not getPropertyFromGroup('notes', i, 'mustPress') then setPropertyFromGroup('notes', i, 'noAnimation', true) end
+end

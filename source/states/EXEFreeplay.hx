@@ -167,18 +167,18 @@ class EXEFreeplay extends MusicBeatState
 
 		add(exeTexts);
 
-		final uiSize = Language.cjkSize(44);
+		final uiSize = Language.cjkSize(32);
 		rankText = new FlxText(0, 0, 0, Language.get('freeplay.rank', 'RANK') + ': -', uiSize);
 		rankText.setFormat(Paths.font(Language.getFontForLanguage()), uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		rankText.antialiasing = false;
 		rankText.borderSize = 3;
-		rankText.y = FlxG.height - rankText.height - 10;
+		rankText.y = FlxG.height - rankText.height - 15;
 
 		scoreText = new FlxText(0, 0, 0, Language.get('freeplay.score', 'SCORE') + ': 0', uiSize);
 		scoreText.setFormat(Paths.font(Language.getFontForLanguage()), uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreText.antialiasing = false;
 		scoreText.borderSize = 3;
-		scoreText.y = rankText.y - scoreText.height - 4;
+		scoreText.y = rankText.y - scoreText.height - 25;
 
 		scoreBG = new FlxSprite(0, scoreText.y - 4).makeGraphic(1, Std.int(FlxG.height - scoreText.y + 4), 0xFF000000);
 		scoreBG.alpha = 0.6;
@@ -937,9 +937,9 @@ class EXEFreeplay extends MusicBeatState
 		if (scoreText == null || scoreBG == null || rankText == null) return;
 
 		scoreText.x = FlxG.width - scoreText.width - 6;
+		scoreText.y = rankText.y - scoreText.height - 15;
 		rankText.x = FlxG.width - rankText.width - 6;
-		rankText.y = FlxG.height - rankText.height - 8;
-		scoreText.y = rankText.y - scoreText.height - 4;
+		rankText.y = FlxG.height - rankText.height - 25;
 		
 		final bgWidth = FlxG.width - Math.min(scoreText.x, rankText.x) + 6;
 		scoreBG.scale.x = bgWidth;
@@ -1285,32 +1285,9 @@ class EXEFreeplay extends MusicBeatState
 		staticTween = null;
 		
 		cancelAllTweens();
-		
-		bgChecker = null;
-		bgSonic = null;
-		spikesUp = null;
-		verticalLine = null; 
-		degradado = null;
-		charText = null; 
-		freeBoxes = null;
-		covers = null;
-		exeTexts = null; 
-		songTexts = null;
-		staticScreens = null;
-		cardGroups = null; 
-		cardGroupsLayer = null;
-		cardPositions = null;
-		scoreBG = null; 
-		scoreText = null; 
-		rankText = null;
-		missingTextBG = null;
-		missingText = null;
 
 		if (!stopMusicPlay)
 			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
-			
-		Paths.clearStoredMemory();
-		Paths.clearUnusedMemory();
 
 		super.destroy();
 	}

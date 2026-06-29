@@ -252,7 +252,7 @@ class ExtrasMenu extends MusicBeatState
 			case 'ja-JP': 'noto-serif/japanese.ttf';
 			case 'ko-KR': 'noto-serif/korean.ttf';
 			case 'zh-CN': 'noto-serif/simplified-chinese.ttf';
-			default: 'bigass.ttf';
+			default: 'bigass.otf';
 		}
         for (i in 0...menuOptions.length)
         {

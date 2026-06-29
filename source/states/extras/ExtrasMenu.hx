@@ -229,8 +229,7 @@ class ExtrasMenu extends MusicBeatState
             add(discoShadow);
         }
 
-        disco = new FlxSprite(61, 541);
-        disco.loadGraphic(discoBmp);
+        disco = new FlxSprite(61, 541).loadGraphic(discoBmp);
         disco.scale.set(0.29, 0.29);
         disco.updateHitbox();
         add(disco);
@@ -288,11 +287,16 @@ class ExtrasMenu extends MusicBeatState
         descriptionBar.pixels.fillRect(new openfl.geom.Rectangle(0, gradientHeight, FlxG.width, 100), FlxColor.fromRGBFloat(0, 0, 0, 0.3));
         add(descriptionBar);
 
-        final descFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : "assets/fonts/smallass.ttf";
+        final descFont = switch (ClientPrefs.data.language) {
+			case 'ja-JP': 'noto-serif/japanese.ttf';
+			case 'ko-KR': 'noto-serif/korean.ttf';
+			case 'zh-CN': 'noto-serif/simplified-chinese.ttf';
+			default: 'smallass.ttf';
+		}
         for (i in 0...menuDescriptions.length)
         {
             final tempText = new FlxText(0, 0, 0, menuDescriptions[i], DESCRIPTION_FONT_SIZE);
-            tempText.setFormat(descFont, DESCRIPTION_FONT_SIZE, FlxColor.WHITE, LEFT);
+            tempText.setFormat(Paths.font(descFont), DESCRIPTION_FONT_SIZE, FlxColor.WHITE, LEFT);
             tempText.antialiasing = ClientPrefs.data.antialiasing;
             tempText.updateHitbox();
             tempText.drawFrame(true);

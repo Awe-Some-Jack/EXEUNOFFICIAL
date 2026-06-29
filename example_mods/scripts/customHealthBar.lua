@@ -115,8 +115,6 @@ function onCreatePost()
         scoreFont = 'chinese.ttf'
     elseif lang == 'ko-KR' then
         scoreFont = 'korean.ttf'
-    elseif lang == 'ru-RU' or lang == 'uk-UA' then
-        scoreFont = 'Pixellari.ttf'
     else
         scoreFont = 'vcr.ttf'
     end

@@ -21,7 +21,6 @@ import objects.VideoSprite;
 import states.StoryModeState;
 import states.EXEMenu;
 import states.LoadingState;
-import states.StoryModeState;
 import states.parallax.ParallaxState;
 
 class EXETitle extends MusicBeatState
@@ -31,7 +30,6 @@ class EXETitle extends MusicBeatState
 	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
 	
 	public static var initialized:Bool = false;
-	public static var closedState:Bool = false;
 	
 	var video:VideoSprite;
 	var videoPlaying:Bool = false;
@@ -55,8 +53,7 @@ class EXETitle extends MusicBeatState
 		if (!initialized)
 		{
 			ClientPrefs.loadPrefs();
-			Language.reloadPhrases();
-
+			Language.reload();
 			if (FlxG.save.data?.fullscreen ?? false)
 				FlxG.fullscreen = FlxG.save.data.fullscreen;
 		}
@@ -68,7 +65,6 @@ class EXETitle extends MusicBeatState
 		{
 			FlxG.mouse.visible = false;
 			Main.fpsVar.visible = false;
-			
 			video = new VideoSprite();
 			video.loadVideo(Paths.video('HaxeFlixelIntro'));
 			video.onFormat(() -> {
@@ -90,7 +86,6 @@ class EXETitle extends MusicBeatState
 		}
 
 		super.create();
-
 	}
 
 	function precache():Void
@@ -114,7 +109,6 @@ class EXETitle extends MusicBeatState
 		buildTitle();
 
 		FlxG.camera.visible = false;
-
 		new FlxTimer().start(0.1, (_) -> {
 			FlxG.sound.play(Paths.sound('exelaugh'));
 			new FlxTimer().start(1.6, (_) -> {
@@ -195,7 +189,6 @@ class EXETitle extends MusicBeatState
 		add(ring);
 
 		savedRingX = ring.x;
-		
 		bandana = new FlxSprite(ring.x + (329 * 0.4)).loadGraphic(Assets.getBitmapData(path + 'bandana.png'));
 		bandana.scale.set(0.4, 0.4);
 		bandana.updateHitbox();
@@ -227,7 +220,7 @@ class EXETitle extends MusicBeatState
 	var transitioning:Bool = false;
 	var logoSin:Float = 0;
 	var fridgeStatus:Int = 0;
-
+	
 	static inline final BANDANA_OFF:Float = 329 * 0.4;
 	static inline final LOGOTXT_OFF:Float = 711 * 0.4;
 	static inline final EYES_OFF:Float = 1074 * 0.4;
@@ -236,7 +229,6 @@ class EXETitle extends MusicBeatState
 	static inline final EYES_Y:Float = 20 + (517 * 0.4);
 	static inline final PARALLAX_THRESHOLD:Float = 0.85;
 
-	var _mouseScreenX:Float = 0;
 	override function update(elapsed:Float):Void
 	{
 		if (videoPlaying || subState != null)
@@ -249,7 +241,6 @@ class EXETitle extends MusicBeatState
 			Conductor.songPosition = FlxG.sound.music.time;
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT;
-		
 		#if mobile
 		for (touch in FlxG.touches.list)
 			if (touch.justPressed) pressedEnter = true;
@@ -263,7 +254,6 @@ class EXETitle extends MusicBeatState
 			if (gamepad.justPressed.B) pressedEnter = true;
 			#end
 		}
-
 
 		if (initialized && !transitioning && canStart && mousePosition == 'left')
 		{
@@ -303,34 +293,29 @@ class EXETitle extends MusicBeatState
 							return;
 						} else FlxG.switchState(() -> new EXEMenu()); 
 					});
-					closedState = true;
 				});
 			}
 		}
 
 		if (!transitioning && canStart)
 		{
-			_mouseScreenX = FlxG.mouse.viewX;
-
 			final threshold:Float = FlxG.width * PARALLAX_THRESHOLD;
 			final arrowW:Float = parallaxArrow.width;
 			
-			if (mousePosition == 'left' && _mouseScreenX >= threshold)
+			if (mousePosition == 'left' && FlxG.mouse.viewX >= threshold)
 			{
 				cancelLogoTweens();
 				mousePosition = 'right';
-				
 				FlxTween.tween(ring,          {x: savedRingX - arrowW},                 0.50, {ease: FlxEase.cubeOut});
 				FlxTween.tween(bandana,       {x: savedRingX + BANDANA_OFF - arrowW},   0.51, {ease: FlxEase.cubeOut});
 				FlxTween.tween(logotxt,       {x: savedRingX + LOGOTXT_OFF - arrowW},   0.52, {ease: FlxEase.cubeOut});
 				FlxTween.tween(eyes,          {x: savedRingX + EYES_OFF - arrowW},      0.55, {ease: FlxEase.cubeOut});
 				FlxTween.tween(parallaxArrow, {x: FlxG.width - arrowW},                 0.50, {ease: FlxEase.cubeOut});
 			}
-			else if (mousePosition == 'right' && _mouseScreenX < threshold)
+			else if (mousePosition == 'right' && FlxG.mouse.viewX < threshold)
 			{
 				cancelLogoTweens();
 				mousePosition = 'left';
-				
 				FlxTween.tween(ring,          {x: savedRingX},                          0.50, {ease: FlxEase.cubeOut});
 				FlxTween.tween(bandana,       {x: savedRingX + BANDANA_OFF},            0.51, {ease: FlxEase.cubeOut});
 				FlxTween.tween(logotxt,       {x: savedRingX + LOGOTXT_OFF},            0.52, {ease: FlxEase.cubeOut});
@@ -347,12 +332,10 @@ class EXETitle extends MusicBeatState
 					FlxG.sound.music?.fadeOut(0.3);
 					FlxG.switchState(() -> new ParallaxState());
 				});
-				
 				FlxTween.tween(whiteBG, {alpha: 1}, 0.8);
 
 				cancelLogoTweens();
 				final arrowW25:Float = arrowW * 2.5;
-				
 				FlxTween.tween(ring,          {x: savedRingX - arrowW25},                 0.90, {ease: FlxEase.cubeOut});
 				FlxTween.tween(bandana,       {x: savedRingX + BANDANA_OFF - arrowW25},   0.91, {ease: FlxEase.cubeOut});
 				FlxTween.tween(logotxt,       {x: savedRingX + LOGOTXT_OFF - arrowW25},   0.92, {ease: FlxEase.cubeOut});
@@ -424,7 +407,6 @@ class EXETitle extends MusicBeatState
 			fridgeStatus = 0;
 			CustomShapeTransition.shape = CustomShapeTransition.getShapeByString('SUNKY');
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			
 			FlxTween.tween(whiteBG, {alpha: 1}, 0.8);
 			FlxG.sound.music?.fadeOut(0.5);
 			

@@ -23,13 +23,9 @@ import states.PlayState;
 
 class EXEMenu extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '1.0.4';
 	public static var selectedOptionIndex:Int = 2;
-
 	static inline final TOTAL_OPTIONS:Int = 5;
 	static inline final CENTER_POSITION:Int = 2;
-
-	static final OPTION_TEXTS:Array<String> = ["SOUND TEST", "FREEPLAY", "STORY MODE", "EXTRAS", "OPTIONS"];
 
 	static function getOptionTexts():Array<String> {
 		return [
@@ -48,10 +44,8 @@ class EXEMenu extends MusicBeatState
 		{x: 110.0, y: 360.0},
 		{x: 175.0, y: 480.0}
 	];
-
 	static final OPTION_SCALES:Array<Float> = [0.25, 0.30, 0.37, 0.30, 0.25];
 	static final OPTION_ALPHAS:Array<Float> = [0.55, 0.80, 1.00, 0.80, 0.55];
-
 	static final TEXT_POSITIONS:Array<{x:Float, y:Float}> = [
 		{x:   20, y: -32},
 		{x:  -50, y:  94},
@@ -59,13 +53,11 @@ class EXEMenu extends MusicBeatState
 		{x:  -50, y: 389},
 		{x:   20, y: 507}
 	];
-
 	static final TEXT_SCALES:Array<Float> = [0.245, 0.3, 0.330, 0.3, 0.245];
 
 	var menuOptions:Array<FlxSprite> = [];
 	var menuTexts:Array<FlxText> = [];
 	var shadowSprite:FlxSprite;
-
 	var previousSelectedIndex:Int = 2;
 	var isMovingUpward:Bool = false;
 	var canInteract:Bool = true;
@@ -90,7 +82,6 @@ class EXEMenu extends MusicBeatState
 	{
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
-
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Menu", null);
 		#end
@@ -227,7 +218,7 @@ class EXEMenu extends MusicBeatState
 		if (cooldownTimer > 0) cooldownTimer -= elapsed;
 
 		updateShadow(elapsed);
-
+		
 		if (canManiaInteract && controls.ACCEPT)
 		{
 			goToMania();
@@ -255,7 +246,6 @@ class EXEMenu extends MusicBeatState
 			if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
 			{
 				final keyName = charToKeyName(code.substr(curKey[i], 1));
-
 				if (Reflect.getProperty(FlxG.keys.justPressed, keyName))
 					curKey[i]++;
 				else
@@ -310,7 +300,6 @@ class EXEMenu extends MusicBeatState
 		{
 			opt.visible = true;
 			txt.visible = true;
-			
 			if (shadowSprite != null) shadowSprite.visible = true;
 			
 			isBlinking = false;
@@ -353,7 +342,6 @@ class EXEMenu extends MusicBeatState
 		
 		shadowMoved = true;
 		shadowSprite.alpha = 1.0;
-		
 		FlxTween.tween(shadowSprite, {
 			x: shadowSprite.x + 25,
 			y: shadowSprite.y + 8
@@ -366,9 +354,9 @@ class EXEMenu extends MusicBeatState
 		final cjkYOffset:Float = switch (langFont) {
 			case 'chinese.ttf': 28;
 			case 'japanese.ttf' | 'korean.ttf': 36;
-			case 'Pixellari.ttf': 36;
 			default: 0;
 		};
+
 		for (i in 0...TOTAL_OPTIONS)
 		{
 			final visualPos:Int = (i - selectedOptionIndex + CENTER_POSITION + TOTAL_OPTIONS) % TOTAL_OPTIONS;
@@ -376,7 +364,6 @@ class EXEMenu extends MusicBeatState
 
 			final option = menuOptions[i];
 			final text = menuTexts[i];
-
 			FlxTween.cancelTweensOf(option);
 			FlxTween.cancelTweensOf(option.scale);
 			FlxTween.cancelTweensOf(text);
@@ -399,9 +386,9 @@ class EXEMenu extends MusicBeatState
 			}
 
 			final wrapping = (visualPos == 0 && prevVisualPos == 4) ||
-			               (visualPos == 4 && prevVisualPos == 0) ||
-			               (prevVisualPos == 0 && visualPos == 4) ||
-			               (prevVisualPos == 4 && visualPos == 0);
+			                 (visualPos == 4 && prevVisualPos == 0) ||
+			                 (prevVisualPos == 0 && visualPos == 4) ||
+			                 (prevVisualPos == 4 && visualPos == 0);
 
 			text.fieldWidth = 2000;
 
@@ -431,7 +418,7 @@ class EXEMenu extends MusicBeatState
 					option.y = pos.y;
 					option.scale.set(scale, scale);
 					
-					text.x = textPos.x; 
+					text.x = textPos.x;
 					text.y = textPos.y;
 					text.scale.set(textScale, textScale);
 					

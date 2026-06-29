@@ -1,31 +1,31 @@
 {
 	"animations": [
 		{
-			"offsets": [0, -9],
-			"indices": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-			"fps": 24,
-			"anim": "danceLeft",
-			"loop": false,
-			"name": "GF_Normal"
-		},
-		{
-			"offsets": [0, -9],
-			"indices": [17, 18, 19, 20, 21, 22, 23, 24, 25, 0, 1, 2, 3],
+			"offsets": [-36, 4],
+			"indices": [],
 			"fps": 24,
 			"anim": "danceRight",
 			"loop": false,
-			"name": "GF_Normal"
+			"name": "right"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "danceLeft",
+			"loop": false,
+			"name": "left"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/GF__Needlemouse",
-	"position": [0, 0],
+	"position": [-50, -20],
 	"healthicon": "gf",
 	"flip_x": false,
 	"healthbar_colors": [165, 0, 77],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.1,
 	"_editor_isPlayer": false
 }

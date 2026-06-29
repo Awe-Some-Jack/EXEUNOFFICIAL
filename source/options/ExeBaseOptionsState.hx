@@ -49,7 +49,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 	public static function getLangFont():String
 	{
-		var f = backend.Language.getFontForLanguage();
+		final f = backend.Language.getFontForLanguage();
 		return openfl.Assets.exists('assets/fonts/$f') ? f : FONT;
 	}
 	public static final FONT_SIZE:Int    = 18;
@@ -139,7 +139,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		add(titlebar);
 		leftGroup.push(titlebar);
 
-		var titleSize = backend.Language.scaledFontSize(28);
+		final titleSize = backend.Language.scaledFontSize(36);
 		titlebarTxt = new FlxText(0, 0, Std.int(titlebar.width), menuTitle, titleSize);
 		titlebarTxt.setFormat(Paths.font(getLangFont()), titleSize, FlxColor.WHITE, CENTER);
 		titlebarTxt.x = offLeft;

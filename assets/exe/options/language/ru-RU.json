@@ -37,7 +37,7 @@
 	"options.language": "ЯЗЫК",
 	"options.on": "ВКЛ",
 	"options.off": "ВЫКЛ",
-	"options.ghosttapping.on": "ТРУС",
+	"options.ghosttapping.on": "СЛАБАК",
 	"options.ghosttapping.off": "ВЫКЛ",
 	"cutscenes.empty": "ВИДЕО НЕ НАЙДЕНЫ",
 	"score_text": "Очки: {1} | Промахи: {2}"

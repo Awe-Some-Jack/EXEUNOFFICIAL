@@ -18,7 +18,6 @@ import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.math.FlxMath;
 import flixel.util.FlxAxes;
 import flixel.util.FlxColor;
-import flixel.util.FlxDestroyUtil;
 import flixel.util.FlxGradient;
 import flixel.util.FlxTimer;
 
@@ -51,10 +50,12 @@ class EXEFreeplay extends MusicBeatState
 	static inline final CHANGE_COOLDOWN:Float = 0;
 	static inline final ARROW_UPDATE_INTERVAL:Float = 0.5;
 	static inline final TWEEN_DURATION:Float = 0.3;
+
 	static inline final PATH_FREEBOX:String = 'assets/exe/freeplayassets/boxes/FreeBox.png';
 	static inline final PATH_COVERS:String = 'assets/exe/freeplayassets/covers/';
 	static inline final FONT_PATH:String = 'assets/fonts/sonicfree.otf';
-	static inline final TITLE_SIZE:Int = 52;
+
+	static inline final TITLE_SIZE:Int = 44;
 	static inline final EXE_LABEL_SIZE:Int = 34;
 	static inline final SONG_TITLE_SIZE:Int = 48;
 	static inline final SONG_SPACING_Y:Float = 65;
@@ -88,17 +89,14 @@ class EXEFreeplay extends MusicBeatState
 	var songSelector:Int = 0;
 	var songScrollOffset:Int = 0;
 	var activeSongCount:Int = 0;
-
 	var boxWidth:Float = 0;
 	var centerX:Float = 0;
 	var centerY:Float = 0;
-	var activeTweens:Array<FlxTween> = [];
 	var previousWindowName:String = "";
 
 	static final ARROW_ICONS:Array<String> = ["^", "<", "v", ">"];
 	var currentArrowIndex:Int = 0;
 	var arrowTimer:FlxTimer;
-	var transitionTimer:FlxTimer;
 
 	var curDifficulty:Int = -1;
 	static var lastDifficultyName:String = '';
@@ -130,7 +128,7 @@ class EXEFreeplay extends MusicBeatState
 		WeekData.reloadWeekFiles(false);
 
 		buildSongList();
-		
+
 		//Desactiva esto para usar el desbloqueo de Mania! - Uncomment this to use Mania's Unlock!
 		// new FlxTimer().start(0.6, (_) -> maniaNotif());
 		
@@ -146,11 +144,10 @@ class EXEFreeplay extends MusicBeatState
 		freeBoxes = new FlxTypedGroup<FlxSprite>();
 		exeTexts = new FlxTypedGroup<FlxText>();
 		songTexts = new FlxTypedGroup<FlxText>();
-		
-		var cjkFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : FONT_PATH;
-		var charSize = Language.cjkSize(TITLE_SIZE);
-		charText = new FlxText(0, 15, FlxG.width, "", charSize);
-		charText.setFormat(cjkFont, charSize, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+
+		final charSize = Language.cjkSize(TITLE_SIZE);
+		charText = new FlxText(0, 5, FlxG.width, "", charSize);
+		charText.setFormat(Paths.font(Language.getFontForLanguage()), charSize, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		charText.antialiasing = false;
 		charText.borderSize = 3;
 		
@@ -170,32 +167,31 @@ class EXEFreeplay extends MusicBeatState
 
 		add(exeTexts);
 
-		var uiFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : FONT_PATH;
-		var uiSize = Language.cjkSize(44);
+		final uiSize = Language.cjkSize(44);
 		rankText = new FlxText(0, 0, 0, Language.get('freeplay.rank', 'RANK') + ': -', uiSize);
-		rankText.setFormat(uiFont, uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		rankText.setFormat(Paths.font(Language.getFontForLanguage()), uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		rankText.antialiasing = false;
 		rankText.borderSize = 3;
 		rankText.y = FlxG.height - rankText.height - 10;
 
 		scoreText = new FlxText(0, 0, 0, Language.get('freeplay.score', 'SCORE') + ': 0', uiSize);
-		scoreText.setFormat(uiFont, uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.setFormat(Paths.font(Language.getFontForLanguage()), uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreText.antialiasing = false;
 		scoreText.borderSize = 3;
 		scoreText.y = rankText.y - scoreText.height - 4;
-		
+
 		scoreBG = new FlxSprite(0, scoreText.y - 4).makeGraphic(1, Std.int(FlxG.height - scoreText.y + 4), 0xFF000000);
 		scoreBG.alpha = 0.6;
 		
 		add(scoreBG);
 		add(scoreText);
 		add(rankText);
-		
+
 		missingTextBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		missingTextBG.alpha = 0.6;
 		missingTextBG.visible = false;
 		add(missingTextBG);
-		
+
 		missingText = new FlxText(50, 0, FlxG.width - 100, '', 24);
 		missingText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		missingText.scrollFactor.set();
@@ -260,13 +256,13 @@ class EXEFreeplay extends MusicBeatState
 
 			final leWeek:WeekData = WeekData.weeksLoaded.get(weekName);
 			WeekData.setDirectoryFromWeek(leWeek);
-			
+
 			final songInfoList:Array<ExeSongInfo> = [];
 			final weekExeTitle:String = (leWeek.exeTitle != null && leWeek.exeTitle.length > 0) ? leWeek.exeTitle : null;
 			final weekExeCover:String = (leWeek.exeCover != null && leWeek.exeCover.length > 0) ? leWeek.exeCover : 'placeholder';
 			final weekExeLabel:String = (leWeek.exeLabel != null && leWeek.exeLabel.length > 0) ? leWeek.exeLabel : 'NON EXE';
 			final weekTransition:String = (leWeek.transitionShape != null && leWeek.transitionShape.length > 0) ? leWeek.transitionShape : 'HEAD';
-			
+
 			for (song in leWeek.songs)
 			{
 				final sName:String = song[0];
@@ -292,7 +288,7 @@ class EXEFreeplay extends MusicBeatState
 		}
 	}
 
-	static public var maniaUnlock:Bool = false;
+	public static var maniaUnlock:Bool = false;
 	
 	function maniaNotif():Void 
 	{
@@ -303,7 +299,6 @@ class EXEFreeplay extends MusicBeatState
 		add(maniaNotifSprite);
 
 		FlxG.sound.play(Paths.sound('maniacorreo'));
-		
 		FlxTween.tween(maniaNotifSprite, {y: maniaNotifSprite.y + 120}, 1, {
 			ease: FlxEase.circOut, 
 			onComplete: (_) -> {
@@ -348,19 +343,19 @@ class EXEFreeplay extends MusicBeatState
 		{
 			final entry = songEntries[i];
 			final firstSong = entry.songs[0];
-			
+
 			final cardGroup = new FlxTypedGroup<FlxSprite>();
 			cardGroups.push(cardGroup);
 			cardGroupsLayer.add(cardGroup);
 			
 			final proxy = new FlxObject(0, 0);
 			cardPositions.push(proxy);
-			
+
 			final coverPath = PATH_COVERS + Paths.formatToSongPath(firstSong.songName) + '.png';
 			var coverBitmap = loadRawBitmap(coverPath);
 			coverBitmap ??= loadRawBitmap(PATH_COVERS + 'placeholder.png');
 			coverBitmap ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.png');
-
+			
 			if (coverBitmap != null)
 			{
 				final cover = new FlxSprite(0, 0).loadGraphic(coverBitmap);
@@ -405,10 +400,22 @@ class EXEFreeplay extends MusicBeatState
 				default: 0xFFFF0000;
 			}
 
-			var exeFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : FONT_PATH;
-			var exeSize = Language.cjkSize(EXE_LABEL_SIZE);
-			final exeText = new FlxText(30, 0, 0, firstSong.exeLabel, exeSize);
-			exeText.setFormat(exeFont, exeSize, daColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			final labelIndex:Int = switch (firstSong.exeLabel)
+			{
+				case 'NON EXE': 1;
+				case 'OFFICIAL': 2;
+				case 'MEME': 3;
+				case 'ENTITY': 4;
+				case 'GLITCH': 5;
+				default: 0;
+			};
+
+			final translatedLabels = Language.getArray('freeplay.labels', []);
+			final actualLabel = (translatedLabels.length > labelIndex) ? translatedLabels[labelIndex] : firstSong.exeLabel;
+
+			final exeSize = Language.cjkSize(EXE_LABEL_SIZE);
+			final exeText = new FlxText(30, 0, 0, actualLabel, exeSize);
+			exeText.setFormat(Paths.font(Language.getFontForLanguage()), exeSize, daColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			exeText.borderSize = 2;
 			exeText.ID = i;
 			exeText.visible = (i == selectedBox);
@@ -425,7 +432,7 @@ class EXEFreeplay extends MusicBeatState
 
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
-		
+
 		if (bgChecker != null && bgSonic != null)
 		{
 			bgChecker.color = bgSonic.color;
@@ -461,7 +468,6 @@ class EXEFreeplay extends MusicBeatState
 		if (changeCooldown <= 0 && !choosingSong)
 		{
 			var newSel = selectedBox;
-
 			if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
 			{
 				newSel = selectedBox + (controls.UI_RIGHT_P ? 1 : -1);
@@ -472,6 +478,7 @@ class EXEFreeplay extends MusicBeatState
 			else holdCheck = 0;
 			
 			newSel = FlxMath.wrap(newSel, 0, songEntries.length - 1);
+
 			if (newSel != selectedBox)
 				changeSelection(newSel);
 		}
@@ -524,7 +531,7 @@ class EXEFreeplay extends MusicBeatState
 						cardPositions[box.ID].setPosition(box.x, box.y);
 				}
 			});
-			
+
 			covers.forEach((cover:FlxSprite) -> {
 				if (cover.ID != selectedBox)
 				{
@@ -538,7 +545,7 @@ class EXEFreeplay extends MusicBeatState
 					_applyCardPosition(cover.ID);
 				}
 			});
-			
+
 			scaleSongBox(true);
 			chooseSong(0, false);
 		}
@@ -665,7 +672,7 @@ class EXEFreeplay extends MusicBeatState
 			songScrollOffset = songSelector;
 		else if (songSelector >= songScrollOffset + MAX_VISIBLE_SONGS)
 			songScrollOffset = songSelector - MAX_VISIBLE_SONGS + 1;
-			
+
 		final slot0Y:Float = FlxG.height - 18 - (MAX_VISIBLE_SONGS * SONG_SPACING_Y);
 
 		for (j in 0...activeSongCount)
@@ -679,13 +686,14 @@ class EXEFreeplay extends MusicBeatState
 			final slot = spr.ID - songScrollOffset;
 			final targetY = slot0Y + (slot * SONG_SPACING_Y);
 			final isSelected = (spr.ID == songSelector);
-			
+
 			spr.color = isSelected ? FlxColor.YELLOW : FlxColor.WHITE;
 
 			if (inWindow)
 			{
 				final wasOut = !spr.visible || spr.alpha < 0.1;
 				spr.visible = true;
+
 				if (wasOut)
 				{
 					spr.y = targetY + (delta > 0 ? 18 : -18);
@@ -722,7 +730,7 @@ class EXEFreeplay extends MusicBeatState
 		}
 		
 		choosingSong = false;
-		
+
 		for (j in 0...activeSongCount)
 		{
 			final spr = songTexts.members[j];
@@ -843,7 +851,6 @@ class EXEFreeplay extends MusicBeatState
 			intendedColor = newColor;
 			FlxTween.cancelTweensOf(bgSonic);
 			FlxTween.color(bgSonic, 1, bgSonic.color, intendedColor);
-			
 			if (verticalLine != null)
 			{
 				FlxTween.cancelTweensOf(verticalLine);
@@ -893,12 +900,12 @@ class EXEFreeplay extends MusicBeatState
 	{
 		final title = (index >= 0 && index < songEntries.length && songEntries[index].songs.length > 0)
 			? songEntries[index].songs[0].title : "???";
-			
+
 		charText.text = title;
 		FlxTween.cancelTweensOf(charText);
 		charText.alpha = 0;
-		charText.y = 15;
-		FlxTween.tween(charText, {y: 28, alpha: 1}, 0.4, {ease: FlxEase.circOut});
+		charText.y = 5;
+		FlxTween.tween(charText, {y: 18, alpha: 1}, 0.4, {ease: FlxEase.circOut});
 	}
 
 	static function getRankLetter(rating:Float):String
@@ -919,7 +926,6 @@ class EXEFreeplay extends MusicBeatState
 	{
 		if (scoreText == null) return;
 		scoreText.text = Language.get('freeplay.score', 'SCORE') + ': ${lerpScore}';
-		
 		if (rankText != null)
 			rankText.text = Language.get('freeplay.rank', 'RANK') + ': ' + getRankLetter(lerpRating);
 			
@@ -929,7 +935,7 @@ class EXEFreeplay extends MusicBeatState
 	function positionHighscore():Void
 	{
 		if (scoreText == null || scoreBG == null || rankText == null) return;
-		
+
 		scoreText.x = FlxG.width - scoreText.width - 6;
 		rankText.x = FlxG.width - rankText.width - 6;
 		rankText.y = FlxG.height - rankText.height - 8;
@@ -970,7 +976,7 @@ class EXEFreeplay extends MusicBeatState
 				FlxTween.tween(box, {alpha: 0.5}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
 			}
 		});
-		
+
 		covers.forEach((cover:FlxSprite) -> {
 			FlxTween.cancelTweensOf(cover); 
 			FlxTween.cancelTweensOf(cover.scale);
@@ -1013,7 +1019,7 @@ class EXEFreeplay extends MusicBeatState
 			final box = freeBoxes.members[i];
 			final cover = covers.members[i];
 			final ss = staticScreens.members[i];
-			
+
 			final targetAlpha:Float = isSelected ? 1.0 : 0.5;
 			final targetBoxScale = isSelected ? BOX_SCALE_SELECTED : BOX_SCALE;
 			final targetCoverScale = isSelected ? COVER_SCALE_SELECTED : COVER_SCALE;
@@ -1025,7 +1031,7 @@ class EXEFreeplay extends MusicBeatState
 			}
 			if (cover != null) { 
 				cover.scale.set(targetCoverScale, targetCoverScale); 
-				cover.updateHitbox(); 
+				cover.updateHitbox();
 			}
 
 			final targetX = baseX - (box != null ? box.width : 0) / 2;
@@ -1035,12 +1041,13 @@ class EXEFreeplay extends MusicBeatState
 			{
 				FlxTween.cancelTweensOf(proxy);
 				final fi = i;
-				activeTweens.push(FlxTween.tween(proxy, {x: targetX, y: targetY}, TWEEN_DURATION, {
+				FlxTween.tween(proxy, {x: targetX, y: targetY}, TWEEN_DURATION, {
 					ease: FlxEase.cubeOut,
 					onUpdate: (_) -> _applyCardPosition(fi)
-				}));
-				if (box != null) activeTweens.push(FlxTween.tween(box, {alpha: targetAlpha}, TWEEN_DURATION, {ease: FlxEase.cubeOut}));
-				if (cover != null) activeTweens.push(FlxTween.tween(cover, {alpha: targetAlpha}, TWEEN_DURATION, {ease: FlxEase.cubeOut}));
+				});
+				
+				if (box != null) FlxTween.tween(box, {alpha: targetAlpha}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
+				if (cover != null) FlxTween.tween(cover, {alpha: targetAlpha}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
 			}
 			else
 			{
@@ -1059,7 +1066,7 @@ class EXEFreeplay extends MusicBeatState
 			{
 				text.visible = true;
 				if (animate)
-					activeTweens.push(FlxTween.tween(text, {alpha: 1.0}, TWEEN_DURATION, {ease: FlxEase.cubeOut}));
+					FlxTween.tween(text, {alpha: 1.0}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
 				else
 					text.alpha = 1.0;
 			}
@@ -1151,6 +1158,7 @@ class EXEFreeplay extends MusicBeatState
 		}
 		px.unlock();
 		verticalLine.dirty = true;
+		
 		add(verticalLine);
 	}
 
@@ -1249,8 +1257,6 @@ class EXEFreeplay extends MusicBeatState
 		
 		if (cardPositions != null) 
 			for (p in cardPositions) FlxTween.cancelTweensOf(p);
-			
-		activeTweens?.resize(0);
 	}
 
 	override function closeSubState():Void
@@ -1272,27 +1278,28 @@ class EXEFreeplay extends MusicBeatState
 		if (FlxG.stage?.window != null)
 			FlxG.stage.window.title = previousWindowName;
 			
-		arrowTimer?.cancel(); arrowTimer = null;
-		transitionTimer?.cancel(); transitionTimer = null;
-		staticTween?.cancel(); staticTween = null;
+		arrowTimer?.cancel();
+		arrowTimer = null;
+		
+		staticTween?.cancel(); 
+		staticTween = null;
 		
 		cancelAllTweens();
 		
 		bgChecker = null;
-		bgSonic = null; 
+		bgSonic = null;
 		spikesUp = null;
 		verticalLine = null; 
 		degradado = null;
 		charText = null; 
 		freeBoxes = null;
-		covers = null; 
+		covers = null;
 		exeTexts = null; 
 		songTexts = null;
 		staticScreens = null;
 		cardGroups = null; 
 		cardGroupsLayer = null;
 		cardPositions = null;
-		activeTweens = null;
 		scoreBG = null; 
 		scoreText = null; 
 		rankText = null;
@@ -1301,7 +1308,7 @@ class EXEFreeplay extends MusicBeatState
 
 		if (!stopMusicPlay)
 			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
-
+			
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
@@ -1333,13 +1340,14 @@ class ResetScoreSubState extends MusicBeatSubstate
 		var name:String = song;
 		if (week > -1)
 			name = backend.WeekData.weeksLoaded.get(backend.WeekData.weeksList[week]).weekName;
+			
 		name += ' (' + Difficulty.getString(difficulty) + ')?';
 		
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;
 		bg.scrollFactor.set();
 		add(bg);
-
+		
 		final tooLong:Float = (name.length > 18) ? 0.8 : 1;
 		
 		final titleText = new Alphabet(0, 180, Language.get('freeplay.reset', 'RESET SCORE FOR {1}?').split('{1}')[0].trim(), true);

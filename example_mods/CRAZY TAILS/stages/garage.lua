@@ -201,67 +201,78 @@ end
 
 local status = 0
 local starSine = 0
+local prevBfAnim = ''
+local prevDadAnim = ''
 function onUpdatePost(e)
-	if anim == 'final' then
-		if getProperty('final.anim.frameIndex') >= 38 and getProperty('bg-amy.alpha') ~= 1 then
-			setProperty('bg-bf.alpha', 0)
-			setProperty('bg-amy.alpha', 1)
-			setProperty('bg-bf1.visible', false)
-			setProperty('bg-bf2.visible', false)
-			setProperty('bg-bf3.visible', false)
-		end
-	elseif anim == 'final3' then
-		if getProperty('final3.anim.frameIndex') >= 60 and status == 0 then
-			status = 1
-			scaleObject('bg-never', 0.5, 0.5)
-			setProperty('bg-never.x', -100)
-			setProperty('bg-never.y', -200)
-		end
-		if getProperty('final3.anim.frameIndex') >= 81 and status == 1 then
-			status = 2
-			setProperty('bg-never.angle', 10)
-			scaleObject('bg-never', 0.65, 0.65)
-			setProperty('bg-never.x', -400)
-			setProperty('bg-never.y', -400)
-		end
-		if getProperty('final3.anim.frameIndex') >= 100 and status == 2 then
-			status = 3
-			setProperty('bg-never.angle', 0)
-			scaleObject('bg-never', 0.85, 0.85)
-			setProperty('bg-never.x', -700)
-			setProperty('bg-never.y', -450)
-		end
-	elseif anim == 'final4' then
-		if getProperty('final4.anim.frameIndex') >= 32 and luaSpriteExists('bg-tails') then
-			removeLuaSprite('bg-tails', true)
-			setProperty('bg-bf.alpha', 1)
-		end
-	end
+    if anim == 'final' then
+        if getProperty('final.anim.frameIndex') >= 38 and getProperty('bg-amy.alpha') ~= 1 then
+            setProperty('bg-bf.alpha', 0)
+            setProperty('bg-amy.alpha', 1)
+            setProperty('bg-bf1.visible', false)
+            setProperty('bg-bf2.visible', false)
+            setProperty('bg-bf3.visible', false)
+        end
+    elseif anim == 'final3' then
+        if getProperty('final3.anim.frameIndex') >= 60 and status == 0 then
+            status = 1
+            scaleObject('bg-never', 0.5, 0.5)
+            setProperty('bg-never.x', -100)
+            setProperty('bg-never.y', -200)
+        end
+        if getProperty('final3.anim.frameIndex') >= 81 and status == 1 then
+            status = 2
+            setProperty('bg-never.angle', 10)
+            scaleObject('bg-never', 0.65, 0.65)
+            setProperty('bg-never.x', -400)
+            setProperty('bg-never.y', -400)
+        end
+        if getProperty('final3.anim.frameIndex') >= 100 and status == 2 then
+            status = 3
+            setProperty('bg-never.angle', 0)
+            scaleObject('bg-never', 0.85, 0.85)
+            setProperty('bg-never.x', -700)
+            setProperty('bg-never.y', -450)
+        end
+    elseif anim == 'final4' then
+        if getProperty('final4.anim.frameIndex') >= 32 and luaSpriteExists('bg-tails') then
+            removeLuaSprite('bg-tails', true)
+            setProperty('bg-bf.alpha', 1)
+        end
+    end
 
-	if not changedBG then return end
-	starSine = starSine + e * 3
-	setProperty('bg-bf1.alpha', 0.4 + (((math.sin(starSine) / 2) + 0.5) * 0.6))
-	setProperty('bg-bf2.alpha', 0.4 + (((math.sin(starSine + 1) / 2) + 0.5) * 0.6))
-	setProperty('bg-bf3.alpha', 0.4 + (((math.sin(starSine + 2) / 2) + 0.5) * 0.6))
+    if not changedBG then return end
+    starSine = starSine + e * 3
+    setProperty('bg-bf1.alpha', 0.4 + (((math.sin(starSine) / 2) + 0.5) * 0.6))
+    setProperty('bg-bf2.alpha', 0.4 + (((math.sin(starSine + 1) / 2) + 0.5) * 0.6))
+    setProperty('bg-bf3.alpha', 0.4 + (((math.sin(starSine + 2) / 2) + 0.5) * 0.6))
 
-	playAnim('bftrigchar', getProperty('boyfriend.animation.curAnim.name'), true)
-	setProperty('bftrigchar.animation.curAnim.curFrame', getProperty('boyfriend.animation.curAnim.curFrame'))
-	playAnim('tailstrigchar', getProperty('dad.animation.curAnim.name'), true)
-	setProperty('tailstrigchar.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
+    local currentBfAnim = getProperty('boyfriend.animation.curAnim.name')
+    if currentBfAnim ~= prevBfAnim then
+        playAnim('bftrigchar', currentBfAnim, true)
+        prevBfAnim = currentBfAnim
+    end
+    setProperty('bftrigchar.animation.curAnim.curFrame', getProperty('boyfriend.animation.curAnim.curFrame'))
 
-	playerHold = playerHold - e
-	if playerHold < 0 then
-		playerHold = 0
-		doTweenX('bftrig', 'bftrig', - 700, crochet / 500, 'cubeOut')
-		doTweenX('bftrigchar', 'bftrigchar', -250 - 700, crochet / 500, 'cubeOut')
-	end
+    local currentDadAnim = getProperty('dad.animation.curAnim.name')
+    if currentDadAnim ~= prevDadAnim then
+        playAnim('tailstrigchar', currentDadAnim, true)
+        prevDadAnim = currentDadAnim
+    end
+    setProperty('tailstrigchar.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
 
-	oppHold = oppHold - e
-	if oppHold < 0 then
-		oppHold = 0
-		doTweenX('tailstrig', 'tailstrig', screenWidth - getProperty('tailstrig.width') + 700, crochet / 500, 'cubeOut')
-		doTweenX('tailstrigchar', 'tailstrigchar', 750 + 700, crochet / 500, 'cubeOut')
-	end
+    playerHold = playerHold - e
+    if playerHold < 0 then
+        playerHold = 0
+        doTweenX('bftrig', 'bftrig', - 700, crochet / 500, 'cubeOut')
+        doTweenX('bftrigchar', 'bftrigchar', -250 - 700, crochet / 500, 'cubeOut')
+    end
+
+    oppHold = oppHold - e
+    if oppHold < 0 then
+        oppHold = 0
+        doTweenX('tailstrig', 'tailstrig', screenWidth - getProperty('tailstrig.width') + 700, crochet / 500, 'cubeOut')
+        doTweenX('tailstrigchar', 'tailstrigchar', 750 + 700, crochet / 500, 'cubeOut')
+    end
 end
 
 local omhs = false

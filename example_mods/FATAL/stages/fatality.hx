@@ -273,13 +273,14 @@ function onEvent(name:String, value1:String, value2:String)
 
         if (dad != null) dad.danceEveryNumBeats = 4;
 
-        game.camSettings.BFx      = 900;
-        game.camSettings.BFy      = 300;
-        game.camSettings.DADx     = 900;
-        game.camSettings.DADy     = 300;
-        game.camSettings.MiddleX  = 900;
-        game.camSettings.MiddleY  = 300;
-        game.camSettings.OffsetsBF  = 0;
-        game.camSettings.OffsetsDAD = 0;
+        final cam = game.gameplayCam.settings;
+        cam.BFx      = 900;
+        cam.BFy      = 300;
+        cam.DADx     = 900;
+        cam.DADy     = 300;
+        cam.MiddleX  = 900;
+        cam.MiddleY  = 300;
+        cam.OffsetsBF  = 0;
+        cam.OffsetsDAD = 0;
     }
 }

@@ -497,14 +497,8 @@ class SoundTest extends MusicBeatState
 		if (FlxG.stage?.window != null)
 			FlxG.stage.window.title = previousWindowTitle;
 
-		if (menuSong) FlxG.sound.playMusic(AssetPaths.getSound('assets/exe/music/menu.ogg'));
-
-		backdrop = null;
-		pcmLabel = null;
-		daLabel = null;
-		pcmDigits = null;
-		daDigits = null;
-		_digitFrames = null;
+		if (menuSong) 
+			FlxG.sound.playMusic(AssetPaths.getSound('assets/exe/music/menu.ogg'));
 
 		super.destroy();
 	}

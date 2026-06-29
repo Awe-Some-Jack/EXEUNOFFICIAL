@@ -102,8 +102,6 @@ class StoryModeState extends MusicBeatState
 		staticTween?.cancel();
 		redBoxTween?.cancel();
 
-		covers = null;
-
 		if (toMenu) FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 		super.destroy();
 	}

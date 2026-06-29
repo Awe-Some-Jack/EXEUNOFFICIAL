@@ -79,6 +79,7 @@ class Gallery extends MusicBeatSubstate
         descTemp.antialiasing = ClientPrefs.data.antialiasing;
         descTemp.updateHitbox();
         descTemp.drawFrame(true);
+        
         final descBackdrop = new FlxBackdrop(descTemp.graphic, X, 0, 0);
         descBackdrop.scale.set(0.5, 0.5);
         descBackdrop.updateHitbox();

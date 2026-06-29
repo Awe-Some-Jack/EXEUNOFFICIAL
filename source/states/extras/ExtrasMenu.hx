@@ -248,11 +248,16 @@ class ExtrasMenu extends MusicBeatState
 
     function createMenu():Void
     {
-        final menuFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : "assets/fonts/bigass.otf";
+        final menuFont = switch (ClientPrefs.data.language) {
+			case 'ja-JP': 'noto-serif/japanese.ttf';
+			case 'ko-KR': 'noto-serif/korean.ttf';
+			case 'zh-CN': 'noto-serif/simplified-chinese.ttf';
+			default: 'bigass.ttf';
+		}
         for (i in 0...menuOptions.length)
         {
             final menuText = new FlxText(MENU_START_X, MENU_START_Y + (i * MENU_SPACING), 0, menuOptions[i], MENU_FONT_SIZE);
-            menuText.setFormat(menuFont, MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
+            menuText.setFormat(Paths.font(menuFont), MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
             menuText.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
             menuText.antialiasing = ClientPrefs.data.antialiasing;
             menuText.pixelPerfectRender = false;

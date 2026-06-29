@@ -500,26 +500,6 @@ class EXEMenu extends MusicBeatState
 
 	override function destroy():Void
 	{
-		for (o in menuOptions ?? []) 
-		{ 
-			FlxTween.cancelTweensOf(o); 
-			FlxTween.cancelTweensOf(o?.scale);
-		}
-		
-		for (t in menuTexts ?? []) 
-		{ 
-			FlxTween.cancelTweensOf(t); 
-			FlxTween.cancelTweensOf(t?.scale); 
-		}
-		
-		if (shadowSprite != null)
-			FlxTween.cancelTweensOf(shadowSprite);
-			
-		#if VIDEOS_ALLOWED
-		menuVideo?.destroy();
-		menuVideo = null;
-		#end
-		
 		FlxG.autoPause = true;
 		super.destroy();
 	}

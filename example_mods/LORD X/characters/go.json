@@ -1,12 +1,12 @@
 {
 	"animations": [
 		{
+			"offsets": [-416, 789],
 			"loop": false,
-			"offsets": [-224, 1310],
-			"anim": "go",
 			"fps": 24,
-			"name": "go",
-			"indices": []
+			"anim": "go",
+			"indices": [],
+			"name": "go"
 		}
 	],
 	"vocals_file": "",

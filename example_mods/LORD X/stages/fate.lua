@@ -29,8 +29,8 @@ local fateAssets = {
         {name =    'redOverlay', path =                'fate/overlay', x =  -400, y = -600, animated = false,                                                                      scaleX =   1, scaleY =   2, alpha = 0, behind = 'nieblia', flipY = true, color = 'FF0000', lq = false, front = false},
     },
     ['BG2'] = {
-        {name = 'niebliaFinal', path =   'fate/niebla 2', x = 0, y = 20, animated = true, animName = 'idle', animPrefix =  'Símbolo 34', fps = 24, loop = true, scaleX = 1.75, scaleY = 1, alpha = 0, lq = false, front = false},
-        {name =    'fateFinal', path = 'fate/FATE LORDX', x = 0, y = 20, animated = true, animName = 'idle', animPrefix = 'Símbolo 409', fps = 24, loop = true, scaleX =    1, scaleY = 1, alpha = 0, lq = false, front = false},
+        {name = 'niebliaFinal', path =    'fate/niebla 2', x =  80, y = 20, animated = true, animName = 'idle', animPrefix =  'Símbolo 34', fps = 24, loop = true, scaleX =  1.8, scaleY =   1, alpha = 0, lq = false, front = false},
+        {name =    'fateFinal', path = 'fate/finalGround', x =  80, y = 20,                                                                                        scaleX =  1.2, scaleY = 1.2, alpha = 0, lq = false, front = false},
     },
     ['Misc'] = {
         {name = 'spaceBar',    path =      'fate/spacebar',  x =  380, y =   360, scaleX = 1, scaleY = 1,               animated =  true, animName = 'idle',  animPrefix =   'Símbolo 8',              fps = 24, loop = true, camera = 'camHUD', alpha = 0,                                  front = false},
@@ -515,7 +515,7 @@ end
 function onSectionHit()
     if not getProperty('gameplayCam.settings.MiddleCamera') and zoomingStage then
 		if curSection % 2 == 0 then setProperty('gameplayCam.settings.OverrideZoom', false) end
-		setProperty('gameplayCam.settings.OGZoom', mustHitSection and 1 or 0.9)
+		setProperty('gameplayCam.settings.OGZoom', mustHitSection and 0.7 or 0.9)
 	end
 end
 

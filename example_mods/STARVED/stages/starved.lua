@@ -13,6 +13,7 @@ local fightSprites = {
     'WarningLight'
 }
 -- The Background Stuff
+-- AYYY AYYY HACEDLE ARRAY AAAY AYY AAAY AYAYYAYAYAYAYYAYAYAYAA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYYYY
 function onCreate()
 	makeLuaSprite('city', 'starved/city', -145, 250)
 	scaleObject('city', 1.35, 1.35)

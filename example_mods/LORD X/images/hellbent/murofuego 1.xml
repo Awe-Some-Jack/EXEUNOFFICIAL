@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="murofuego 1.png">
+	<!-- Created with Adobe Animate version 24.0.10.14 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 31 instancia 10000" x="0" y="0" width="2808" height="1351"/>
+	<SubTexture name="Símbolo 31 instancia 10001" x="0" y="0" width="2808" height="1351"/>
+	<SubTexture name="Símbolo 31 instancia 10002" x="2808" y="0" width="2808" height="1351"/>
+	<SubTexture name="Símbolo 31 instancia 10003" x="2808" y="0" width="2808" height="1351"/>
+	<SubTexture name="Símbolo 31 instancia 10004" x="0" y="1351" width="2808" height="1351"/>
+	<SubTexture name="Símbolo 31 instancia 10005" x="0" y="1351" width="2808" height="1351"/>
+	<SubTexture name="Símbolo 31 instancia 10006" x="2808" y="1351" width="2808" height="1351"/>
+	<SubTexture name="Símbolo 31 instancia 10007" x="2808" y="1351" width="2808" height="1351"/>
+	<SubTexture name="Símbolo 31 instancia 10008" x="0" y="2702" width="2808" height="1351"/>
+	<SubTexture name="Símbolo 31 instancia 10009" x="0" y="2702" width="2808" height="1351"/>
+	<SubTexture name="Símbolo 31 instancia 10010" x="2808" y="2702" width="2808" height="1351"/>
+	<SubTexture name="Símbolo 31 instancia 10011" x="2808" y="2702" width="2808" height="1351"/>
+</TextureAtlas>

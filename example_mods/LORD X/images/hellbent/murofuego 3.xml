@@ -4,20 +4,26 @@
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="Símbolo 21 instancia 10000" x="12" y="12" width="694" height="1583"/>
 	<SubTexture name="Símbolo 21 instancia 10001" x="12" y="12" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10002" x="12" y="12" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10003" x="12" y="12" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10004" x="728" y="12" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10005" x="728" y="12" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10006" x="1444" y="12" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10007" x="1444" y="12" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10008" x="12" y="1617" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10009" x="12" y="1617" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10010" x="728" y="1617" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10011" x="728" y="1617" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10012" x="1444" y="1617" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10013" x="1444" y="1617" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10014" x="12" y="12" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10015" x="12" y="12" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10016" x="728" y="12" width="694" height="1583"/>
-	<SubTexture name="Símbolo 21 instancia 10017" x="728" y="12" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10002" x="728" y="12" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10003" x="728" y="12" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10004" x="1444" y="12" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10005" x="1444" y="12" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10006" x="12" y="1617" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10007" x="12" y="1617" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10008" x="728" y="1617" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10009" x="728" y="1617" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10010" x="1444" y="1617" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10011" x="1444" y="1617" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10012" x="12" y="12" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10013" x="12" y="12" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10014" x="728" y="12" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10015" x="728" y="12" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10016" x="1444" y="12" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10017" x="1444" y="12" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10018" x="12" y="1617" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10019" x="12" y="1617" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10020" x="728" y="1617" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10021" x="728" y="1617" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10022" x="1444" y="1617" width="694" height="1583"/>
+	<SubTexture name="Símbolo 21 instancia 10023" x="1444" y="1617" width="694" height="1583"/>
 </TextureAtlas>

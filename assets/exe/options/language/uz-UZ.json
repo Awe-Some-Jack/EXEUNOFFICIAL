@@ -29,7 +29,7 @@
 	"options.controls": "BOSHQARUV",
 	"options.controls.labels": ["TUGMALAR", "INTERFEYS", "HARAKATLAR", "CHAP", "PAST", "TEPA", "O'NG", "QABUL QILISH", "ORQAGA", "PAUZA", "QAYTARISH"],
 	"options.visuals": "VIZUAL SOZLAMALAR",
-	"options.visuals.labels": ["HUD YASHIRISH", "MILTILLOVCHI CHIROQLAR", "KAMERA YAQINLASHTIRISH", "MATNNI YAQINLASHTIRISH", "FPS KO'RSATISH"],
+	"options.visuals.labels": ["HUD YASHIRISH", "MILTILLOVCHI CHIROQLAR", "KAMERA YAQINLASHTIRISH", "HISOB MATNI ZUMI", "FPS KO'RSATISH"],
 	"options.gameplay": "GEYMPLEY",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "ZO'R (SICK) DARCHASI", "YAXSHI (GOOD) DARCHASI", "YOMON (BAD) DARCHASI", "XAVFSIZ FREYMLAR"],
 	"options.graphics": "GRAFIKA",

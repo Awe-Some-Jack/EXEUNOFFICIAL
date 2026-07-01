@@ -40,5 +40,7 @@
 	"options.ghosttapping.on": "CHICHQOQ",
 	"options.ghosttapping.off": "SIGMA",
 	"cutscenes.empty": "VIDEO TOPILMADI",
-	"score_text": "Hisob: {1} | Xatolar: {2}"
+	"score_text": "Hisob: {1} | Xatolar: {2}",
+	"yes": "HA",
+	"no": "YO'Q"
 }

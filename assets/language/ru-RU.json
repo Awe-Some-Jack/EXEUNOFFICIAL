@@ -40,5 +40,7 @@
 	"options.ghosttapping.on": "СЛАБАК",
 	"options.ghosttapping.off": "ГИГАЧАД",
 	"cutscenes.empty": "ВИДЕО НЕ НАЙДЕНЫ",
-	"score_text": "Очки: {1} | Промахи: {2}"
+	"score_text": "Очки: {1} | Промахи: {2}",
+	"yes": "ДА",
+	"no": "НЕТ"
 }

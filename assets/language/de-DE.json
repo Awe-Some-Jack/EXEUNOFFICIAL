@@ -40,5 +40,7 @@
 	"options.ghosttapping.on": "FEIGLING",
 	"options.ghosttapping.off": "AUS",
 	"cutscenes.empty": "KEINE VIDEOS GEFUNDEN",
-	"score_text": "Punkte: {1} | Fehler: {2}"
+	"score_text": "Punkte: {1} | Fehler: {2}",
+	"yes": "JA",
+	"no": "NEIN"
 }

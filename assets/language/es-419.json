@@ -40,5 +40,7 @@
 	"options.ghosttapping.on": "COBARDE",
 	"options.ghosttapping.off": "DESACTIVADO",
 	"cutscenes.empty": "NO SE ENCONTRARON VIDEOS",
-	"score_text": "Puntos: {1} | Fallos: {2}"
+	"score_text": "Puntos: {1} | Fallos: {2}",
+	"yes": "SÍ",
+	"no": "NO"
 }

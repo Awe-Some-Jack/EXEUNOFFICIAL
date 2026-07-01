@@ -2,18 +2,24 @@ package states.substates;
 
 import backend.WeekData;
 import backend.Highscore;
+import backend.Language;
+import backend.Paths;
+import backend.Difficulty;
 
-import flixel.FlxSubState;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
 import objects.HealthIcon;
 
 class ResetScoreSubState extends MusicBeatSubstate
 {
 	var bg:FlxSprite;
-	var alphabetArray:Array<Alphabet> = [];
+	var textArray:Array<FlxText> = [];
 	var icon:HealthIcon;
 	var onYes:Bool = false;
-	var yesText:Alphabet;
-	var noText:Alphabet;
+	var yesText:FlxText;
+	var noText:FlxText;
 
 	var song:String;
 	var difficulty:Int;
@@ -25,52 +31,53 @@ class ResetScoreSubState extends MusicBeatSubstate
 		this.song = song;
 		this.difficulty = difficulty;
 		this.week = week;
-
 		super();
-
-		var name:String = song;
-		if(week > -1) {
-			name = WeekData.weeksLoaded.get(WeekData.weeksList[week]).weekName;
-		}
-		name += ' (' + Difficulty.getString(difficulty) + ')?';
 
 		bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;
 		bg.scrollFactor.set();
 		add(bg);
 
-		var tooLong:Float = (name.length > 18) ? 0.8 : 1; //Fucking Winter Horrorland
-		var text:Alphabet = new Alphabet(0, 180, Language.getPhrase('reset_score', 'Reset the score of'), true);
-		text.screenCenter(X);
-		alphabetArray.push(text);
-		text.alpha = 0;
-		add(text);
-		var text:Alphabet = new Alphabet(0, text.y + 90, name, true);
-		text.scaleX = tooLong;
-		text.screenCenter(X);
-		if(week == -1) text.x += 60 * tooLong;
-		alphabetArray.push(text);
-		text.alpha = 0;
-		add(text);
+		var tooLong:Float = (song.length > 18) ? 0.8 : 1; 
+		
+		var fontPath = Paths.font(Language.getFontForLanguage());
+		var baseSize = Language.scaledFontSize(32);
+
+		var promptString = Language.getPhrase('freeplay.reset', 'RESET SCORE FOR {1}?', [song]);
+
+		var promptTxt = new FlxText(0, 220, 0, promptString, baseSize);
+		promptTxt.setFormat(fontPath, baseSize, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		promptTxt.borderSize = 2;
+		promptTxt.scale.set(tooLong, tooLong);
+		promptTxt.screenCenter(X);
+		if(week == -1) promptTxt.x += 60 * tooLong;
+		promptTxt.alpha = 0;
+		textArray.push(promptTxt);
+		add(promptTxt);
+
 		if(week == -1) {
 			icon = new HealthIcon(character);
 			icon.setGraphicSize(Std.int(icon.width * tooLong));
 			icon.updateHitbox();
-			icon.setPosition(text.x - icon.width + (10 * tooLong), text.y - 30);
+			icon.setPosition(promptTxt.x - icon.width + (10 * tooLong), promptTxt.y - 30);
 			icon.alpha = 0;
 			add(icon);
 		}
 
-		yesText = new Alphabet(0, text.y + 150, Language.getPhrase('Yes'), true);
+		yesText = new FlxText(0, promptTxt.y + 150, 0, Language.getPhrase('Yes', 'Yes'), baseSize);
+		yesText.setFormat(fontPath, baseSize, FlxColor.RED, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		yesText.borderSize = 2;
 		yesText.screenCenter(X);
 		yesText.x -= 200;
 		add(yesText);
-		noText = new Alphabet(0, text.y + 150, Language.getPhrase('No'), true);
+
+		noText = new FlxText(0, promptTxt.y + 150, 0, Language.getPhrase('No', 'No'), baseSize);
+		noText.setFormat(fontPath, baseSize, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		noText.borderSize = 2;
 		noText.screenCenter(X);
 		noText.x += 200;
 		add(noText);
 		
-		for(letter in yesText.letters) letter.color = FlxColor.RED;
 		updateOptions();
 	}
 
@@ -79,8 +86,7 @@ class ResetScoreSubState extends MusicBeatSubstate
 		bg.alpha += elapsed * 1.5;
 		if(bg.alpha > 0.6) bg.alpha = 0.6;
 
-		for (i in 0...alphabetArray.length) {
-			var spr = alphabetArray[i];
+		for (spr in textArray) {
 			spr.alpha += elapsed * 2.5;
 		}
 		if(week == -1) icon.alpha += elapsed * 2.5;
@@ -108,14 +114,15 @@ class ResetScoreSubState extends MusicBeatSubstate
 	}
 
 	function updateOptions() {
-		var scales:Array<Float> = [0.75, 1];
-		var alphas:Array<Float> = [0.6, 1.25];
+		var scales:Array<Float> = [0.75, 1.0];
+		var alphas:Array<Float> = [0.6, 1.0];
 		var confirmInt:Int = onYes ? 1 : 0;
 
 		yesText.alpha = alphas[confirmInt];
 		yesText.scale.set(scales[confirmInt], scales[confirmInt]);
 		noText.alpha = alphas[1 - confirmInt];
 		noText.scale.set(scales[1 - confirmInt], scales[1 - confirmInt]);
+
 		if(week == -1) icon.animation.curAnim.curFrame = confirmInt;
 	}
 }

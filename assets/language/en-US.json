@@ -40,5 +40,7 @@
 	"options.ghosttapping.on": "PUSSY",
 	"options.ghosttapping.off": "OFF",
 	"cutscenes.empty": "NO VIDEOS FOUND",
-	"score_text": "Score: {1} | Misses: {2}"
+	"score_text": "Score: {1} | Misses: {2}",
+	"yes": "YES",
+	"no": "NO"
 }

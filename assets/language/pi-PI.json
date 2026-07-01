@@ -40,5 +40,7 @@
 	"options.ghosttapping.on": "COWARD",
 	"options.ghosttapping.off": "NAY",
 	"cutscenes.empty": "NO TALES FOUND",
-	"score_text": "Booty: {1} | Misses: {2}"
+	"score_text": "Booty: {1} | Misses: {2}",
+	"yes": "AYE",
+	"no": "NAY"
 }

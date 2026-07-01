@@ -40,5 +40,7 @@
 	"options.ghosttapping.on": "COVARDE",
 	"options.ghosttapping.off": "OFF",
 	"cutscenes.empty": "NENHUM VIDEO ENCONTRADO",
-	"score_text": "Pontos: {1} | Erros: {2}"
+	"score_text": "Pontos: {1} | Erros: {2}",
+	"yes": "SIM",
+	"no": "NÃO"
 }

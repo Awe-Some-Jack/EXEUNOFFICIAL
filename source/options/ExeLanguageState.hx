@@ -86,6 +86,10 @@ class ExeLanguageState extends ExeBaseOptionsState
 		menuTitle = Language.get("options.language", "LANGUAGE");
 		g.nameText.font = newFontPath;
 		g.nameText.text = menuTitle;
+
+		titlebarTxt.font = newFontPath;
+		titlebarTxt.text = menuTitle;
+		titlebarTxt.x = ExeBaseOptionsState.TB_X + (titlebar.width - titlebarTxt.width) / 2;
 	}
 
 	override public function update(elapsed:Float)

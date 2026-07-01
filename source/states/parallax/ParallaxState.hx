@@ -4,7 +4,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
 import flixel.addons.display.FlxBackdrop;
 import states.EXETitle;
-import openfl.Assets;
+
 
 import states.parallax.InfoBioParallaxState;
 

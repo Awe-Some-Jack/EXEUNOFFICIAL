@@ -8,7 +8,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import flixel.util.FlxTimer;
 import flixel.FlxCamera;
-import openfl.Assets;
+
 import openfl.display.BitmapData;
 import openfl.ui.Mouse;
 import openfl.ui.MouseCursor;

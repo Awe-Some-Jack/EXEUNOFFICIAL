@@ -3,10 +3,13 @@ package states.extras.bios;
 import haxe.Json;
 import sys.io.File;
 import sys.FileSystem;
+
 import openfl.display.BitmapData;
 import openfl.geom.Point;
 import openfl.geom.Rectangle;
+
 import objects.HealthIcon;
+
 import flixel.*;
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.shapes.FlxShapeCircle;
@@ -344,7 +347,7 @@ class BIOS extends MusicBeatSubstate
 	function _buildOverlays():Void
 	{
 		final charBiosOverlay = new FlxSprite(36, 19);
-		if (openfl.Assets.exists('assets/exe/extras/bios/characterbios_overlay.png'))
+		if (Assets.exists('assets/exe/extras/bios/characterbios_overlay.png'))
 		{
 			charBiosOverlay.loadGraphic(openfl.utils.Assets.getBitmapData('assets/exe/extras/bios/characterbios_overlay.png'));
 			charBiosOverlay.scrollFactor.set();

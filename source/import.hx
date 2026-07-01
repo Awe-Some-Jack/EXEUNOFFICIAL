@@ -59,6 +59,10 @@ import states.extras.ExtrasMenu;
 import animate.*;
 #end
 
+#if VIDEOS_ALLOWED
+import objects.VideoSprite;
+#end
+
 //Flixel
 import flixel.sound.FlxSound;
 import flixel.FlxG;

@@ -9,7 +9,7 @@ import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
 import flixel.math.FlxMath;
 import flixel.addons.display.FlxBackdrop;
-import openfl.Assets;
+
 
 class Gallery extends MusicBeatSubstate
 {

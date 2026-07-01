@@ -9,7 +9,7 @@ import flixel.tweens.FlxTween.FlxTweenType;
 import flixel.util.FlxGradient;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
-import openfl.Assets;
+
 import openfl.display.BitmapData;
 
 typedef ExeMenuOptionGroup = {
@@ -50,7 +50,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	public static function getLangFont():String
 	{
 		final f = backend.Language.getFontForLanguage();
-		return openfl.Assets.exists('assets/fonts/$f') ? f : FONT;
+		return Assets.exists('assets/fonts/$f') ? f : FONT;
 	}
 	public static final FONT_SIZE:Int    = 18;
 	public static final PAGE_SIZE:Int    = 4;

@@ -1,6 +1,6 @@
 package states;
 
-import openfl.Assets;
+
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.input.keyboard.FlxKey;
@@ -75,27 +75,26 @@ class EXEMenu extends MusicBeatState
 	var heylookanemail:FlxSprite;
 
 	#if VIDEOS_ALLOWED
-	var menuVideo:hxvlc.flixel.FlxVideoSprite;
+	var menuVideo:VideoSprite;
 	#end
 
 	override function create()
 	{
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
+		
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Menu", null);
 		#end
 
 		#if VIDEOS_ALLOWED
-		menuVideo = new hxvlc.flixel.FlxVideoSprite(0, 0);
-		menuVideo.bitmap.onFormatSetup.add(() -> {
+		menuVideo = new VideoSprite();
+		menuVideo.onFormat(() -> {
 			menuVideo.setGraphicSize(FlxG.width, FlxG.height);
-			menuVideo.updateHitbox();
 			menuVideo.screenCenter();
 		});
-		menuVideo.bitmap.onEndReached.add(() -> playMenuVideo());
+		if (menuVideo.loadVideo('assets/exe/mainmenu/menu.mp4', [VideoSprite.ARG_LOOPING])) menuVideo.playDelayed();
 		add(menuVideo);
-		playMenuVideo();
 		#end
 
 		FlxG.autoPause = false;
@@ -146,19 +145,6 @@ class EXEMenu extends MusicBeatState
 
 		super.create();
 	}
-
-	#if VIDEOS_ALLOWED
-	function playMenuVideo():Void
-	{
-		if (menuVideo?.load('assets/exe/mainmenu/menu.mp4') ?? false)
-		{
-			new FlxTimer().start(0.001, (_) -> {
-				menuVideo?.play();
-				if (menuVideo?.bitmap != null) menuVideo.bitmap.rate = 1.0;
-			});
-		}
-	}
-	#end
 
 	function maniaEmail():Void 
 	{

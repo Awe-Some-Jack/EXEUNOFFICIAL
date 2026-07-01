@@ -14,7 +14,6 @@ import flixel.util.FlxTimer;
 
 import openfl.display.BitmapData;
 import openfl.display.Shape;
-import openfl.Assets;
 
 import shaders.CirclesShader;
 import states.EXEMenu;
@@ -182,7 +181,7 @@ class OptionsState extends MusicBeatState
 		refreshSectionTexts();
 		changeSelect();
 		
-		FlxG.sound.playMusic(openfl.Assets.getSound('assets/exe/options/options.ogg'), 1, true);
+		FlxG.sound.playMusic(Assets.getSound('assets/exe/options/options.ogg'), 1, true);
 
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("Options Menu", null);
@@ -303,7 +302,7 @@ class OptionsState extends MusicBeatState
 			}
 			else
 			{
-				FlxG.sound.playMusic(openfl.Assets.getSound('assets/exe/music/menu.ogg'), 1, true);
+				FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'), 1, true);
 				FlxG.switchState(() -> new EXEMenu());
 			}
 		}

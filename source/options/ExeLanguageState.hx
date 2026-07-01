@@ -3,7 +3,7 @@ package options;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import openfl.Assets;
+
 import backend.Paths;
 import backend.ClientPrefs;
 import backend.Language;

@@ -11,13 +11,12 @@ import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 
-import openfl.Assets;
+
 import backend.Song;
 import backend.Difficulty;
 import backend.WeekData;
 import backend.Highscore;
 
-import objects.VideoSprite;
 import states.StoryModeState;
 import states.EXEMenu;
 import states.LoadingState;
@@ -65,12 +64,12 @@ class EXETitle extends MusicBeatState
 		{
 			FlxG.mouse.visible = false;
 			Main.fpsVar.visible = false;
+
 			video = new VideoSprite();
 			video.loadVideo(Paths.video('HaxeFlixelIntro'));
 			video.onFormat(() -> {
 				video.setGraphicSize(FlxG.width, FlxG.height);
 				video.video.screenCenter();
-				precache();
 			});
 			video.onEnd(() -> onVideoEnd());
 			video.playDelayed();
@@ -88,19 +87,6 @@ class EXETitle extends MusicBeatState
 		super.create();
 	}
 
-	function precache():Void
-	{
-		final logoPath:String = 'assets/exe/title/logo/';
-		
-		Assets.getBitmapData(logoPath + 'ring.png');
-		Assets.getBitmapData(logoPath + 'bandana.png');
-		Assets.getBitmapData(logoPath + 'sonic.png');
-		Assets.getBitmapData(logoPath + 'eyes.png');
-		Assets.getBitmapData('assets/exe/title/spikesdown.png');
-		Assets.getBitmapData('assets/exe/parallax/parallaxarrow.png');
-		Assets.getSound('assets/exe/music/menu.ogg');
-	}
-
 	function onVideoEnd():Void
 	{
 		videoPlaying = false;
@@ -115,7 +101,9 @@ class EXETitle extends MusicBeatState
 				canStart = true;
 				FlxG.mouse.visible = true;
 				FlxG.camera.visible = true;
+
 				FlxG.camera.flash(FlxColor.RED, 1);
+
 				FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 				FlxG.sound.play(Paths.sound('showMoment'));
 
@@ -127,15 +115,14 @@ class EXETitle extends MusicBeatState
 	function buildTitle():Void
 	{
 		#if VIDEOS_ALLOWED
-		final screenBg = new hxvlc.flixel.FlxVideoSprite(0, 0);
-		screenBg.bitmap.onFormatSetup.add(() -> {
+		final screenBg = new VideoSprite();
+		screenBg.onFormat(() -> {
 			screenBg.setGraphicSize(FlxG.width, FlxG.height);
-			screenBg.updateHitbox();
 			screenBg.screenCenter();
 		});
-		screenBg.bitmap.onEndReached.add(() -> playTitleVideo(screenBg));
+		if (screenBg.loadVideo('assets/exe/title/statictitlemenu.mp4', [VideoSprite.ARG_LOOPING])) screenBg.playDelayed();
 		add(screenBg);
-		playTitleVideo(screenBg);
+
 		FlxG.autoPause = false;
 		#end
 
@@ -199,14 +186,6 @@ class EXETitle extends MusicBeatState
 		logotxt.updateHitbox();
 		add(logotxt);
 	}
-
-	#if VIDEOS_ALLOWED
-	function playTitleVideo(v:hxvlc.flixel.FlxVideoSprite):Void
-	{
-		if (v?.load('assets/exe/title/statictitlemenu.mp4') ?? false)
-			new FlxTimer().start(0.001, (_) -> v?.play());
-	}
-	#end
 
 	override function destroy():Void
 	{

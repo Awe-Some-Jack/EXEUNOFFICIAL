@@ -37,7 +37,6 @@ import openfl.filters.ShaderFilter;
 import shaders.ErrorHandledShader;
 import shaders.ColorSwap;
 
-import objects.VideoSprite;
 import objects.Note.EventNote;
 import objects.*;
 import states.stages.*;

@@ -1,6 +1,6 @@
 package states.substates;
 
-import openfl.Assets;
+
 import states.SoundTest;
 #if hxvlc
 import hxvlc.flixel.FlxVideoSprite;

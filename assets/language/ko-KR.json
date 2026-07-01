@@ -10,7 +10,6 @@
 	"freeplay.rank": "랭크",
 	"freeplay.reset": "{1}의 점수를 초기화하시겠습니까?",
 	"freeplay.labels": ["EXE", "비 EXE", "공식", "밈", "엔티티", "글리치"],
-	"storymode.select": "세이브 선택",
 	"soundtest.title": "사운드 테스트",
 	"soundtest.labels": ["PCM 번호", "DA 번호"],
 	"extras.menu.title": "그 외",

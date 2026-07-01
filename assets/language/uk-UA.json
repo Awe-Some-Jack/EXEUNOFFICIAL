@@ -10,7 +10,6 @@
 	"freeplay.rank": "РАНГ",
 	"freeplay.reset": "СКИНУТИ РАХУНОК ДЛЯ {1}?",
 	"freeplay.labels": ["EXE", "НЕ-EXE", "ОФІЦІЙНИЙ", "МЕМ", "СУТНІСТЬ", "ГЛІТЧ"],
-	"storymode.select": "ВИБІР ЗБЕРЕЖЕННЯ",
 	"soundtest.title": "ТЕСТ ЗВУКУ",
 	"soundtest.labels": ["PCM НОМ.", "DA НОМ."],
 	"extras.menu.title": "ЕКСТРА",

@@ -10,7 +10,6 @@
 	"freeplay.rank": "ランク",
 	"freeplay.reset": "{1}のスコアをリセットしますか？",
 	"freeplay.labels": ["EXE", "非EXE", "公式", "ミーム", "エンティティ", "グリッチ"],
-	"storymode.select": "セーブデータ選択",
 	"soundtest.title": "サウンドテスト",
 	"soundtest.labels": ["PCM番号", "DA番号"],
 	"extras.menu.title": "エクストラ",

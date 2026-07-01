@@ -10,7 +10,6 @@
 	"freeplay.rank": "RANGO",
 	"freeplay.reset": "¿REINICIAR EL PUNTAJE DE {1}?",
 	"freeplay.labels": ["EXE", "NO EXE", "OFICIAL", "MEME", "ENTIDAD", "CORRUPTO"],
-	"storymode.select": "SELECTOR DE DATOS",
 	"soundtest.title": "SOUND TEST",
 	"soundtest.labels": ["PCM N.", "DA N."],
 	"extras.menu.title": "EXTRAS",

@@ -10,7 +10,6 @@
 	"freeplay.rank": "等级",
 	"freeplay.reset": "要重置 {1} 的分数吗？",
 	"freeplay.labels": ["EXE", "非EXE", "官方", "梗曲", "实体", "故障"],
-	"storymode.select": "选择数据",
 	"soundtest.title": "声音测试",
 	"soundtest.labels": ["PCM 编号", "DA 编号"],
 	"extras.menu.title": "额外内容",

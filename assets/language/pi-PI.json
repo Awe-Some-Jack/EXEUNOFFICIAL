@@ -10,7 +10,6 @@
 	"freeplay.rank": "RANK",
 	"freeplay.reset": "THROW {1} OVERBOARD?",
 	"freeplay.labels": ["EXE", "NON-EXE", "OFFICIAL", "MEME", "ENTITY", "GLITCH"],
-	"storymode.select": "PICK YER SAVE",
 	"soundtest.title": "SHANTY TEST",
 	"soundtest.labels": ["PCM NO.", "DA NO."],
 	"extras.menu.title": "PLUNDER",

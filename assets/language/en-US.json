@@ -10,7 +10,6 @@
 	"freeplay.rank": "RANK",
 	"freeplay.reset": "RESET SCORE FOR {1}?",
 	"freeplay.labels": ["EXE", "NON-EXE", "OFFICIAL", "MEME", "ENTITY", "GLITCH"],
-	"storymode.select": "DATA SELECT",
 	"soundtest.title": "SOUND TEST",
 	"soundtest.labels": ["PCM NO.", "DA NO."],
 	"extras.menu.title": "EXTRAS",

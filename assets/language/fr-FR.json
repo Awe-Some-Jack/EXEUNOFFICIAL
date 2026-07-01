@@ -10,7 +10,6 @@
 	"freeplay.rank": "RANG",
 	"freeplay.reset": "RÉINITIALISER LE SCORE DE {1} ?",
 	"freeplay.labels": ["EXE", "NON-EXE", "OFFICIEL", "MÈME", "ENTITÉ", "GLITCH"],
-	"storymode.select": "CHOIX DE SAUVEGARDE",
 	"soundtest.title": "TEST DE SON",
 	"soundtest.labels": ["NO. PCM", "NO. DA"],
 	"extras.menu.title": "EXTRAS",

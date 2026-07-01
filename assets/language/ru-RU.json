@@ -10,7 +10,6 @@
 	"freeplay.rank": "РАНГ",
 	"freeplay.reset": "СБРОСИТЬ ОЧКИ ДЛЯ {1}?",
 	"freeplay.labels": ["EXE", "НЕ-EXE", "ОФИЦИАЛЬНЫЙ", "МЕМ", "СУЩНОСТЬ", "ГЛИТЧ"],
-	"storymode.select": "ВЫБОР СОХРАНЕНИЯ",
 	"soundtest.title": "ТЕСТ ЗВУКА",
 	"soundtest.labels": ["PCM НОМ.", "DA НОМ."],
 	"extras.menu.title": "ЭКСТРА",

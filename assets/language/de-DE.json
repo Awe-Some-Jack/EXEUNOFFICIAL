@@ -10,7 +10,6 @@
 	"freeplay.rank": "RANG",
 	"freeplay.reset": "PUNKTE FÜR {1} ZURÜCKSETZEN?",
 	"freeplay.labels": ["EXE", "NICHT-EXE", "OFFIZIELL", "MEME", "ENTITÄT", "GLITCH"],
-	"storymode.select": "SPEICHERSTAND WÄHLEN",
 	"soundtest.title": "SOUNDTEST",
 	"soundtest.labels": ["PCM-NR.", "DA-NR."],
 	"extras.menu.title": "EXTRAS",

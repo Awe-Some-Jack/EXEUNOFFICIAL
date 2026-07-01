@@ -229,12 +229,20 @@ class Note extends FlxSprite
 
 			copyAngle = false;
 
-			animation.play(colArray[noteData % colArray.length] + 'holdend');
-			updateHitbox();
-
-			offsetX = (Note.swagWidth / 2) - (width / 2);
-
-			if (PlayState.isPixelStage) offsetX += 30;
+			if (PlayState.isPixelStage)
+			{
+				offsetX += width / 2;
+				animation.play(colArray[noteData % colArray.length] + 'holdend');
+				updateHitbox();
+				offsetX -= width / 2;
+				offsetX += 30;
+			}
+			else
+			{
+				animation.play(colArray[noteData % colArray.length] + 'holdend');
+				updateHitbox();
+				offsetX = (Note.swagWidth / 2) - (width / 2);
+			}
 
 			if (prevNote.isSustainNote)
 			{
@@ -246,13 +254,13 @@ class Note extends FlxSprite
 
 				if (PlayState.isPixelStage)
 				{
-					prevNote.scale.y *= 1.19;
+					prevNote.scale.y *= 1.19; 
 					prevNote.scale.y *= 6 / height;
 				}
 				prevNote.updateHitbox();
 
-				prevNote.offsetX = (Note.swagWidth / 2) - (prevNote.width / 2);
-				if (PlayState.isPixelStage) prevNote.offsetX += 30;
+				if (!PlayState.isPixelStage)
+					prevNote.offsetX = (Note.swagWidth / 2) - (prevNote.width / 2);
 			}
 
 			if (PlayState.isPixelStage)

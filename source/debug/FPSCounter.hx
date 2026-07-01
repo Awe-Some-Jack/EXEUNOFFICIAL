@@ -182,7 +182,30 @@ class FPSCounter extends Sprite
 				resetDebugInfo();
 				keyCooldown = keyCooldownTime;
 			case Keyboard.F3:
-				toggleDebugInfo();
+				if (this.visible)
+				{
+					if (!showDebugInfo)
+					{
+						showDebugInfo = true;
+						ClientPrefs.data.showFPS = true;
+					}
+					else
+					{
+						showDebugInfo = false;
+						this.visible = false;
+						ClientPrefs.data.showFPS = false;
+					}
+				}
+				else
+				{
+					this.visible = true;
+					showDebugInfo = false;
+					ClientPrefs.data.showFPS = true;
+				}
+
+				ClientPrefs.saveSettings();
+				graphDirty = true;
+				lastOutput = "";
 				keyCooldown = keyCooldownTime;
 		}
 	}

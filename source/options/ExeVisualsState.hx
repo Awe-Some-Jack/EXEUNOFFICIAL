@@ -20,13 +20,12 @@ class ExeVisualsState extends ExeBaseOptionsState
 	override public function create()
 	{
 		menuTitle = Language.get('options.visuals', 'VISUALS');
-		var lbl = Language.getArray('options.visuals.labels', ["HIDE HUD", "FLASHING LIGHTS", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS COUNTER"]);
+		var lbl = Language.getArray('options.visuals.labels', ["HIDE HUD", "FLASHING LIGHTS", "CAMERA ZOOMS", "SCORE TEXT ZOOM"]);
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.hideHud,   setValue: (v) -> ClientPrefs.data.hideHud   = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.flashing,  setValue: (v) -> ClientPrefs.data.flashing  = v},
 			{label: lbl[2], getValue: () -> ClientPrefs.data.camZooms,  setValue: (v) -> ClientPrefs.data.camZooms  = v},
-			{label: lbl[3], getValue: () -> ClientPrefs.data.scoreZoom, setValue: (v) -> ClientPrefs.data.scoreZoom = v},
-			{label: lbl[4], getValue: () -> ClientPrefs.data.showFPS,   setValue: (v) -> ClientPrefs.data.showFPS   = v},
+			{label: lbl[3], getValue: () -> ClientPrefs.data.scoreZoom, setValue: (v) -> ClientPrefs.data.scoreZoom = v}
 		];
 		var i = 0;
 		while (i < allOptions.length) { pageOptions.push(allOptions.slice(i, i + ExeBaseOptionsState.PAGE_SIZE)); i += ExeBaseOptionsState.PAGE_SIZE; }
@@ -106,7 +105,6 @@ class ExeVisualsState extends ExeBaseOptionsState
 					opt.setValue(n); txt.text = Std.string(n);
 				}
 				ClientPrefs.saveSettings();
-				if (opt == allOptions[4] && Main.fpsVar != null) Main.fpsVar.visible = ClientPrefs.data.showFPS;
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
 			if (controls.BACK)

@@ -1,5 +1,6 @@
 {
 	"language": "日本語",
+	"language_auto": "システムデフォルト",
 	"mainmenu.soundtest": "サウンドテスト",
 	"mainmenu.freeplay": "フリープレイ",
 	"mainmenu.storymode": "ストーリーモード",

@@ -10,7 +10,7 @@ import backend.Language;
 
 class ExeLanguageState extends ExeBaseOptionsState
 {
-	static final LANG_KEYS:Array<String> = ["en-US", "es-ES", "pt-BR", "fr-FR", "uz-UZ", "ja-JP", "zh-CN", "ko-KR", "ru-RU", "uk-UA", "de-DE", "pi-PI"];
+	static final LANG_KEYS:Array<String> = ["auto", "en-US", "es-419", "pt-BR", "fr-FR", "uz-UZ", "ja-JP", "zh-CN", "ko-KR", "ru-RU", "uk-UA", "de-DE", "pi-PI"];
 	var curLangIdx:Int = 0;
 
 	override public function create()
@@ -27,7 +27,7 @@ class ExeLanguageState extends ExeBaseOptionsState
 
 	function getLangLabel():String
 	{
-		return Language.get("language", LANG_KEYS[curLangIdx]);
+		return LANG_KEYS[curLangIdx] == "auto" ? Language.get("language_auto", "System Default") : Language.get("language", LANG_KEYS[curLangIdx]);
 	}
 
 	override public function loadPage()

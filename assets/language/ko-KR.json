@@ -1,5 +1,6 @@
 {
 	"language": "한국어",
+	"language_auto": "시스템 기본값",
 	"mainmenu.soundtest": "사운드 테스트",
 	"mainmenu.freeplay": "프리플레이",
 	"mainmenu.storymode": "스토리 모드",

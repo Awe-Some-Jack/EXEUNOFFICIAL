@@ -206,7 +206,7 @@ function onUpdatePost(elapsed:Float)
 	floatSine += elapsed * floatIntensity;
 
 	bfLegsFramerate?.update();
-	legsFrame = bfLegsFramerate.animation.curAnim.curFrame ?? 0;
+	legsFrame = bfLegsFramerate.animation?.curAnim?.curFrame ?? 0;
 	switch(curBG)
 	{
 		case 'intro':

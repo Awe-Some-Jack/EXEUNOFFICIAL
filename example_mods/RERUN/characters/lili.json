@@ -2,42 +2,42 @@
 	"animations": [
 		{
 			"offsets": [365, 384],
-			"indices": [],
+			"loop": true,
 			"fps": 24,
 			"anim": "idle",
-			"loop": true,
+			"indices": [],
 			"name": "Idle 3"
 		},
 		{
-			"offsets": [368, 718],
-			"indices": [],
+			"offsets": [384, 619],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "Up 3"
 		},
 		{
-			"offsets": [282, 210],
-			"indices": [],
+			"offsets": [364, 383],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
-			"offsets": [375, 340],
-			"indices": [],
+			"offsets": [379, 390],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		},
 		{
-			"offsets": [705, 315],
-			"indices": [],
+			"offsets": [551, 441],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		}
 	],
@@ -49,7 +49,7 @@
 	"flip_x": false,
 	"healthbar_colors": [0, 76, 250],
 	"camera_position": [0, 0],
-	"sing_duration": 4,
+	"sing_duration": 8,
 	"scale": 1.2,
 	"_editor_isPlayer": false
 }

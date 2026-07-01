@@ -15,6 +15,12 @@ function onCreatePost()
 	setSpriteShader('glitch2', 'glitchChromatic')
 	setShaderFloat('glitch2', 'GLITCH', 0)
 
+	makeLuaSprite('gBlur')
+	setSpriteShader('gBlur', 'gaussianBlur')
+	setShaderFloat('gBlur', 'distort', 0)
+	setShaderFloat('gBlur', 'Directions', 4)
+	setShaderFloat('gBlur', 'Quality', 0)
+
     makeLuaSprite('sexo')
     setSpriteShader('sexo', 'brightness', 0)
     setShaderFloat('sexo', 'saturation', 1)
@@ -25,19 +31,18 @@ function onCreatePost()
     setShaderFloat('sexo2', 'saturation', 1)
     setShaderFloat('sexo2', 'contrast', 1)
 
-	setProperty('ca2.x', 0.15);
-	setProperty('cab.x', 0.1);
-	setProperty('sexo.y', 1);
-	setProperty('sexo2.y', 1);
-
 	if shadersEnabled and not lowQuality then
 		runHaxeCode([[
 			game.camGame.filters = [
-				new ShaderFilter(game.getLuaObject('glitch').shader), new ShaderFilter(game.getLuaObject('sexo').shader), new ShaderFilter(game.getLuaObject('cab').shader), new ShaderFilter(game.getLuaObject('ca2').shader)
+				new ShaderFilter(game.getLuaObject('glitch').shader), new ShaderFilter(game.getLuaObject('sexo').shader), new ShaderFilter(game.getLuaObject('cab').shader), new ShaderFilter(game.getLuaObject('ca2').shader), new ShaderFilter(game.getLuaObject('gBlur').shader)
 			];
 
 			game.camHUD.filters = [
 				new ShaderFilter(game.getLuaObject('glitch2').shader), new ShaderFilter(game.getLuaObject('sexo2').shader), new ShaderFilter(game.getLuaObject('ca2').shader)
+			];
+
+			game.camOther.filters = [
+				new ShaderFilter(game.getLuaObject('gBlur').shader), new ShaderFilter(game.getLuaObject('glitch2').shader), new ShaderFilter(game.getLuaObject('sexo2').shader), new ShaderFilter(game.getLuaObject('ca2').shader)
 			];
 		]])
 	end
@@ -91,11 +96,27 @@ function onEvent(eventName, value1, value2)
 	end
 end
 
+function onStepHit()
+	if curStep == 44 then
+        doTweenX('gBlurX', 'gBlur', 0, 4.1, 'sineInOut')
+	end
+end
+
 local thing = 0;
 function onUpdatePost(e)
+	if startedCountdown and curStep < 3 then
+		setProperty('ca2.x', 0.15);
+		setProperty('cab.x', 0.1);
+		setProperty('sexo.y', 1);
+		setProperty('sexo2.y', 1);
+		setProperty('gBlur.x', 100);
+		setProperty('gBlur.y', 10);
+	end
+
 	thing = thing + e
 	setShaderFloat('glitch', 'iTime', thing)
 	setShaderFloat('glitch2', 'iTime', thing)
+	setShaderFloat('gBlur', 'iTime', thing)
 
 	setShaderFloat('sexo', 'brightness', getProperty('sexo.x') * 2)
 	setShaderFloat('sexo', 'contrast', 1 + (getProperty('sexo.x') * 4))
@@ -105,6 +126,9 @@ function onUpdatePost(e)
 
 	setShaderFloat('glitch', 'GLITCH', getProperty('glitch.x'))
 	setShaderFloat('glitch2', 'GLITCH', getProperty('glitch2.x'))
+
+	setShaderFloat('gBlur', 'distort', getProperty('gBlur.x'))
+	setShaderFloat('gBlur', 'Quality', getProperty('gBlur.y'))
 
 	setShaderFloat('cab', 'amount', getProperty('cab.x'))
 	setShaderFloat('ca2', 'amount', getProperty('ca2.x')+.05)

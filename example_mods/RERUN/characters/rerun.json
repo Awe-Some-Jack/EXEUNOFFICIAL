@@ -1,7 +1,7 @@
 {
 	"animations": [
 		{
-			"offsets": [-63, 495],
+			"offsets": [380, 859],
 			"loop": false,
 			"fps": 32,
 			"anim": "singUP",
@@ -9,7 +9,7 @@
 			"name": "up"
 		},
 		{
-			"offsets": [193, -298],
+			"offsets": [690, 450],
 			"loop": false,
 			"fps": 32,
 			"anim": "singDOWN",
@@ -17,7 +17,7 @@
 			"name": "down"
 		},
 		{
-			"offsets": [-279, -40],
+			"offsets": [100, 450],
 			"loop": false,
 			"fps": 32,
 			"anim": "singRIGHT",
@@ -25,7 +25,7 @@
 			"name": "right"
 		},
 		{
-			"offsets": [203, 62],
+			"offsets": [690, 525],
 			"loop": false,
 			"fps": 32,
 			"anim": "singLEFT",
@@ -33,7 +33,7 @@
 			"name": "left"
 		},
 		{
-			"offsets": [-279, 169],
+			"offsets": [92, 452],
 			"loop": true,
 			"fps": 32,
 			"anim": "idle",
@@ -49,7 +49,7 @@
 	"flip_x": false,
 	"healthbar_colors": [1, 0, 250],
 	"camera_position": [0, 0],
-	"sing_duration": 4,
+	"sing_duration": 8,
 	"scale": 1.3,
 	"_editor_isPlayer": false
 }

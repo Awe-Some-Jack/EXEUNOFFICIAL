@@ -1,24 +1,45 @@
 package backend;
 
 import haxe.Json;
-
+import lime.system.Locale;
 
 class Language
 {
 	static var phrases:Map<String, Dynamic> = [];
 	static var currentKey:String = 'en-US';
 
+	public static function getSystemLanguage():String {
+		var sysLang:String = Locale.systemLocale.language; 
+		if (sysLang != null) sysLang = sysLang.toLowerCase();
+
+		return switch (sysLang) {
+			case 'es': 'es-419';
+			case 'pt': 'pt-BR';
+			case 'fr': 'fr-FR';
+			case 'uz': 'uz-UZ';
+			case 'ja': 'ja-JP';
+			case 'zh': 'zh-CN';
+			case 'ko': 'ko-KR';
+			case 'ru': 'ru-RU';
+			case 'uk': 'uk-UA';
+			case 'de': 'de-DE';
+			default: 'en-US';
+		};
+	}
+
 	public static function reload():Void
 	{
 		var key = ClientPrefs.data.language;
-		if (key == null || key.length == 0) key = 'en-US';
-		currentKey = key;
+		if (key == null || key.length == 0) key = 'auto';
+
+		currentKey = key == 'auto' ? getSystemLanguage() : key;
+		
 		phrases = [];
 
-		final path = 'assets/language/$key.json';
+		final path = 'assets/language/$currentKey.json';
 		try {
 			final text = Assets.getText(path);
-			if (text?.length > 0) {
+			if (text != null && text.length > 0) {
 				final data:Dynamic = Json.parse(text);
 				for (field in Reflect.fields(data))
 					phrases.set(field, Reflect.field(data, field));

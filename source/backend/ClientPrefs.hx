@@ -77,7 +77,7 @@ import Main;
 	public var guitarHeroSustains:Bool = true;
 	public var discordRPC:Bool = true;
 	public var loadingScreen:Bool = true;
-	public var language:String = 'en-US';
+	public var language:String = 'auto';
 	public var duduMode:Bool = false;
 }
 

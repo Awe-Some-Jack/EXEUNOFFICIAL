@@ -1,5 +1,6 @@
 {
 	"language": "DEUTSCH",
+	"language_auto": "SYSTEM-STANDARD",
 	"mainmenu.soundtest": "SOUNDTEST",
 	"mainmenu.freeplay": "FREEPLAY",
 	"mainmenu.storymode": "STORY-MODUS",

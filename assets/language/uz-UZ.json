@@ -1,5 +1,6 @@
 {
 	"language": "O'ZBEK",
+	"language_auto": "TIZIM STANDARTI",
 	"mainmenu.soundtest": "OVOZ TESTI",
 	"mainmenu.freeplay": "ERKIN O'YIN",
 	"mainmenu.storymode": "HIKOYA REJIMI",
@@ -21,7 +22,7 @@
 	"extras.menu.achievements": ["YUTUQLAR", "Ochishingiz mumkin bo'lgan yoki allaqachon qo'lga kiritgan yutuqlaringizni ko'rib chiqing!"],
 	"extras.menu.credits": ["TITRLAR", "Ushbu modni yaratishga hissa qo'shgan barcha insonlarga minnatdorchilik!"],
 	"extras.menu.valley": ["VODIY MINI-O'YINI", "Pleysxolder"],
-	"extras.dagarden": ["MUALLIF", "INST", "O'YNASH/TO'XTATISH", "ORQAGA", "OLDINGI", "TO'XTATISH", "TAKRORLASH"],
+	"extras.dagarden": ["MUALLIF", "INST", "O'YNASH/TO'XTATISH", "ORQAGA", "OLDINGA", "TO'XTATISH", "TAKRORLASH"],
 	"extras.credits.unofficial": "Unofficial jamoasi",
 	"extras.credits.original": "Asl jamoa",
 	"extras.credits.external": "Tashqi yordam",

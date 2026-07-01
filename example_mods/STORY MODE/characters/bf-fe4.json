@@ -1,81 +1,113 @@
 {
 	"animations": [
 		{
+			"offsets": [15, 14],
 			"loop": false,
-			"offsets": [15, -69],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [-6, -18],
 			"loop": false,
-			"offsets": [-17, -99],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [19, 31],
 			"loop": false,
-			"offsets": [15, -49],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"offsets": [0, 5],
 			"loop": false,
-			"offsets": [-4, -80],
-			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": true,
 			"fps": 24,
 			"anim": "idle",
-			"loop": true,
-			"name": "Símbolo 90"
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"offsets": [15, -69],
-			"indices": [7, 8, 9],
+			"offsets": [-2, 6],
+			"loop": true,
 			"fps": 24,
 			"anim": "singLEFT-loop",
-			"loop": true,
-			"name": "left copia 2 instancia 1"
+			"indices": [8, 9],
+			"name": "left instancia 1"
 		},
 		{
-			"offsets": [-17, -99],
-			"indices": [7, 8, 9],
+			"offsets": [-35, -26],
+			"loop": true,
 			"fps": 24,
 			"anim": "singDOWN-loop",
-			"loop": true,
+			"indices": [8, 9],
 			"name": "down copia 2 instancia 1"
 		},
 		{
-			"offsets": [15, -49],
-			"indices": [7, 8, 9],
+			"offsets": [-3, 26],
+			"loop": true,
 			"fps": 24,
 			"anim": "singUP-loop",
-			"loop": true,
-			"name": "up copia 2 instancia 1"
+			"indices": [8, 9],
+			"name": "up instancia 1"
 		},
 		{
-			"offsets": [-4, -80],
-			"indices": [7, 8, 9],
+			"offsets": [-22, -5],
+			"loop": true,
 			"fps": 24,
 			"anim": "singRIGHT-loop",
-			"loop": true,
-			"name": "right copia instancia 1"
+			"indices": [8, 9],
+			"name": "right instancia 1"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "miss"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "miss"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "miss"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "miss"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/bffourthfe",
+	"image": "characters/bf5finalescape",
 	"position": [0, 0],
 	"healthicon": "bf",
 	"flip_x": true,

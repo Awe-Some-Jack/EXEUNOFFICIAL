@@ -1,20 +1,20 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "danceLeft",
 			"loop": false,
-			"name": "sleft"
+			"offsets": [0, 0],
+			"anim": "danceLeft",
+			"fps": 24,
+			"name": "sleft",
+			"indices": []
 		},
 		{
-			"offsets": [-36, 4],
-			"indices": [],
-			"fps": 24,
-			"anim": "danceRight",
 			"loop": false,
-			"name": "sright"
+			"offsets": [-33, 3],
+			"anim": "danceRight",
+			"fps": 24,
+			"name": "sright",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
@@ -26,6 +26,6 @@
 	"healthbar_colors": [165, 0, 77],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1.1,
+	"scale": 1,
 	"_editor_isPlayer": false
 }

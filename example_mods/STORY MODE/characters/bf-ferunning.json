@@ -1,25 +1,49 @@
 {
 	"animations": [
 		{
-			"loop": true,
-			"offsets": [0, 0],
-			"anim": "RUN",
+			"offsets": [412, 401],
+			"indices": [],
 			"fps": 24,
-			"name": "fucklolll",
-			"indices": []
+			"anim": "intro",
+			"loop": false,
+			"name": "intro"
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+			"indices": [],
 			"fps": 24,
-			"anim": "RUNLOOP",
+			"anim": "run",
 			"loop": true,
-			"name": "fucklolll instancia 1"
+			"name": "bf"
+		},
+		{
+			"offsets": [159, -39],
+			"indices": [],
+			"fps": 24,
+			"anim": "slide",
+			"loop": false,
+			"name": "slide"
+		},
+		{
+			"offsets": [29, 248],
+			"indices": [],
+			"fps": 24,
+			"anim": "jump",
+			"loop": false,
+			"name": "jump"
+		},
+		{
+			"offsets": [0, -3],
+			"indices": [],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "hey"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/bfrunningfe",
+	"image": "characters/runningbfmech",
 	"position": [0, 0],
 	"healthicon": "bf",
 	"flip_x": true,

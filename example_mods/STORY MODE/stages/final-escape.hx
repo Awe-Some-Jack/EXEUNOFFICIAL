@@ -2,6 +2,7 @@ import psychlua.LuaUtils;
 import flixel.addons.display.FlxBackdrop;
 import objects.Character;
 import openfl.display.BlendMode;
+import backend.Controls;
 
 typedef BackgroundSprite =
 {
@@ -63,11 +64,14 @@ var blackBG:FlxSprite;
 var eyes:FlxSprite;
 var bfYeah:FlxSprite;
 var xenoRing:FlxSprite;
+var fourthFloor:FlxSprite;
 
 //legsList
+var bfLegsFramerate:Character;
 var bfLegs2back:Character;
 var bfLegs2:Character;
 var bfLegs3:Character;
+var bfLegs4:Character;
 
 var curBG:String = 'intro';
 function onCreate()
@@ -96,13 +100,33 @@ function onCreate()
 	makeBackground(bgSecond);
 	bgSecond[bgSecond.length - 2].sprite.blend = BlendMode.MULTIPLY;
 	makeBackground(bgThird);
+	
+	fourthFloor = new FlxSprite(-1300, -900);
+	fourthFloor.frames = Paths.getSparrowAtlas('final/floor4');
+	fourthFloor.scale.set(0.8, 0.8); fourthFloor.updateHitbox();
+	fourthFloor.animation.addByPrefix('idle', 'floor4 idle', 24, true); fourthFloor.animation.play('idle', true);
+	fourthFloor.visible = false;
+	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), fourthFloor);
+
+	fifthFloor = new FlxSprite(-2500, -1150);
+	fifthFloor.frames = Paths.getSparrowAtlas('final/floor5fe');
+	fifthFloor.scale.set(1.5,1.5); fifthFloor.updateHitbox();
+	fifthFloor.animation.addByPrefix('idle', 'idle', 24, true); fifthFloor.animation.play('idle', true);
+	fifthFloor.visible = false;
+	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), fifthFloor);
 
 	// preload chars
+
 	preloadCharacter(1, 'xeno-fe2');
 	preloadCharacter(0, 'bf-fe2');
 
 	preloadCharacter(1, 'xeno-fe3');
 	preloadCharacter(0, 'bf-fe3');
+
+	preloadCharacter(1, 'xeno-handfe');
+	preloadCharacter(0, 'bf-fe4');
+
+	preloadCharacter(0, 'bf-ferunning');
 
 	xenoRing = new FlxSprite(dad.x, dad.y).loadGraphic(Paths.image('characters/FINAL-ESCAPE-HD'));
 	xenoRing.scale.set(1.3, 1.3); xenoRing.updateHitbox();
@@ -110,17 +134,25 @@ function onCreate()
 	xenoRing.visible = false;
 
 	//legs making
+	bfLegsFramerate = new Character(0, 0, 'bf-fe2legs');
+	bfLegsFramerate.visible = false;
+	game.add(bfLegsFramerate);
+
 	bfLegs2 = new Character(boyfriend.x + 435, boyfriend.y - 55, 'bf-fe2legs', true);
 	bfLegs2.visible = false;
-	insert(game.members.indexOf(boyfriendGroup) + 1, bfLegs2);
+	game.insert(game.members.indexOf(boyfriendGroup) + 1, bfLegs2);
 
 	bfLegs2back = new Character(boyfriend.x + 410, boyfriend.y - 55, 'bf-fe2legsback', true);
 	bfLegs2back.visible = false;
-	insert(game.members.indexOf(boyfriendGroup), bfLegs2back);
+	game.insert(game.members.indexOf(boyfriendGroup), bfLegs2back);
 
 	bfLegs3 = new Character(boyfriend.x - 8, boyfriend.y + 110, 'bf-fe3legs', true);
 	bfLegs3.visible = false;
-	insert(game.members.indexOf(boyfriendGroup) + 1, bfLegs3);
+	game.insert(game.members.indexOf(boyfriendGroup) + 1, bfLegs3);
+
+	bfLegs4 = new Character(boyfriend.x + 330, boyfriend.y - 230, 'bf-fe4back', true);
+	bfLegs4.visible = false;
+	game.insert(game.members.indexOf(boyfriendGroup), bfLegs4);
 }
 
 var notesPosition:Array<Array<Float>> = [[0,0,0,0], [0,0,0,0]];
@@ -165,11 +197,16 @@ var floatSine:Float = 0;
 var floatIntensity:Float = 1;
 var introYPos:Float = -410;
 var offsetScale:Float = 1;
+var legsFrame:Int = 0;
+var bfAction:String = '';
+var bfPressAction:String = '';
 function onUpdatePost(elapsed:Float)
 {
 	blackBG.scale.set((1 / camGame.zoom) * offsetScale, (1 / camGame.zoom) * offsetScale);
 	floatSine += elapsed * floatIntensity;
 
+	bfLegsFramerate?.update();
+	legsFrame = bfLegsFramerate.animation.curAnim.curFrame ?? 0;
 	switch(curBG)
 	{
 		case 'intro':
@@ -231,6 +268,9 @@ function onUpdatePost(elapsed:Float)
 
 			bfLegs2?.update();
 			bfLegs2back?.update();
+			bfLegs2?.animation.curAnim.curFrame = legsFrame;
+			bfLegs2back?.animation.curAnim.curFrame = legsFrame;
+			if (boyfriend?.animation.curAnim.name == 'idle') boyfriend.animation.curAnim.curFrame = legsFrame;
 		case 'third':
 			for (i in 1...3) {
 				if (bgThird[i].sprite.visible)
@@ -249,9 +289,43 @@ function onUpdatePost(elapsed:Float)
 			);
 
 			bfLegs3?.update();
+			bfLegs3?.animation.curAnim.curFrame = legsFrame;
+			if (boyfriend?.animation.curAnim.name == 'idle') boyfriend.animation.curAnim.curFrame = legsFrame;
+		case 'fourth':
+			for (i in 6...9) {
+				if (bgSecond[i].sprite.visible)
+				{
+					bgSecond[i].sprite.setPosition(
+						bgSecond[i].position[0] - 200 + Math.sin(floatSine + (i * 2)) * 3,
+						bgSecond[i].position[1] - 150 + Math.cos(floatSine + (i * 2)) * 10
+					);
+					bgSecond[i].sprite.angle = Math.cos(floatSine + (i * 2)) * 2;
+				}
+			}
+
+			bfLegs4?.update();
+			bfLegs4?.animation.curAnim.curFrame = legsFrame;
+			if (boyfriend?.animation.curAnim.name == 'idle') boyfriend.animation.curAnim.curFrame = legsFrame;
+		case 'fifth':
+			var slide:Bool = Controls.instance.UI_DOWN || Controls.instance.NOTE_DOWN;
+			var jump:Bool = Controls.instance.UI_UP || Controls.instance.NOTE_UP;
+
+			if (slide && bfAction == '' && bfPressAction != 'slide')
+			{
+				bfAction = bfPressAction = 'slide';
+				boyfriend.playAnim('slide', true); boyfriend.specialAnim = true;
+			}
+			if (jump && bfAction == '' && bfPressAction != 'jump')
+			{
+				bfAction = bfPressAction = 'jump';
+				boyfriend.playAnim('jump', true); boyfriend.specialAnim = true;
+			}
+			if (bfPressAction == 'jump' && !jump) bfPressAction = '';
+			if (bfPressAction == 'slide' && !slide) bfPressAction = '';
 	}
 }
 
+var _bruh:Bool = false;
 function onEvent(n,v1,v2)
 {
 	if (n == 'finalescapeEvent')
@@ -346,6 +420,8 @@ function onEvent(n,v1,v2)
 				blackBG.camera = camOther;
 				offsetScale = 2;
 			case 'backsecondsection':
+				FlxTween.cancelTweensOf(blackBG);
+				blackBG.alpha = 1;
 				FlxTween.tween(blackBG, {alpha: 0}, Conductor.crochet / 1000);
 				changeCharacter('dad', 'xeno-fe2');
 				changeCharacter('bf', 'bf-fe2');
@@ -362,7 +438,134 @@ function onEvent(n,v1,v2)
 				bfLegs2.visible = true;
 				bfLegs2back.visible = true;
 				bfLegs3.destroy();
+			case 'cinematicbars':
+				lua('topbar').setGraphicSize(lua('topbar').width, FlxG.height / 2 + 50); lua('topbar').updateHitbox();
+				FlxTween.cancelTweensOf(lua('topbar'));
+				lua('topbar').y += 150 - (FlxG.height / 2 + 50);
+				FlxTween.tween(lua('topbar'), {y: (FlxG.height / 2) - lua('topbar').height}, Conductor.crochet / 500, {ease: FlxEase.cubeIn});
+
+				lua('botbar').setGraphicSize(lua('botbar').width, FlxG.height / 2 + 50); lua('botbar').updateHitbox();
+				FlxTween.cancelTweensOf(lua('botbar'));
+				FlxTween.tween(lua('botbar'), {y: (FlxG.height / 2)}, Conductor.crochet / 500, {ease: FlxEase.cubeIn});
+			case 'fourthsection':
+				_bruh = true;
+				changeCharacter('dad', 'xeno-handfe');
+				changeCharacter('bf', 'bf-fe4');
+				game.remove(dadGroup, true);
+				game.insert(game.members.indexOf(boyfriendGroup) - 1, dadGroup);
+				boyfriend.setPosition(250, 150);
+				dad.setPosition(-1000, -600);
+				fourthFloor.visible = true;
+				bgSecond[9].sprite.visible = false;
+				bfLegs2.visible = false;
+				bfLegs2back.visible = false;
+				bfLegs4.visible = true;
+				xenoRing.visible = false;
+				curBG = 'fourth';
+				cam.DADx = 50;
+				cam.DADy = 50;
+				cam.BFx = 350;
+				cam.BFy = 250;
+				FlxTween.tween(dad, {x: dad.x + 650, y: dad.y + 400}, 20);
+
+				bgSecond[0].sprite.y -= 300;
+				bgSecond[1].sprite.y -= 300;
+				bgSecond[2].sprite.y -= 300;
+				bgSecond[3].sprite.y -= 300;
+				bgSecond[4].sprite.y -= 300;
+				bgSecond[5].sprite.y -= 300;
+			case 'adjustdadcam':
+				cam.DADx = 150;
+				cam.DADy = 150;
+			case 'startingrun':
+				FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / (1000 / 4));
+			case 'startfifthsection':
+				camHUD.flash(0xFFFFFFFF, Conductor.crochet / 250, null, true);
+				FlxTween.cancelTweensOf(blackBG);
+				blackBG.alpha = 0;
+				changeCharacter('bf', 'bf-ferunning');
+				boyfriend.playAnim('intro', true); boyfriend.specialAnim = true;
+				boyfriend.animation.finishCallback = function(name:String){if (name != 'run' && curBG == 'fifth'){boyfriend.playAnim('run', true); boyfriend.specialAnim = true; bfAction = '';}};
+				boyfriend.y += 50;
+				dad.alpha = 0;
+				bfLegs4.destroy();
+				fourthFloor.destroy();
+				fifthFloor.visible = true;
+				bgSecond[0].sprite.y += 400;
+				bgSecond[1].sprite.y += 400;
+				bgSecond[2].sprite.y += 400;
+				bgSecond[3].sprite.y += 400; bgSecond[3].sprite.x += 150;
+				bgSecond[4].sprite.y += 400;
+				bgSecond[5].sprite.y += 400;
+				bgSecond[6].sprite.visible = false;
+				bgSecond[7].sprite.visible = false;
+				bgSecond[8].sprite.visible = false;
+				cam.MiddleX = -100;
+				cam.MiddleY = 450;
+				cam.MiddleZoom = 1;
+				curBG = 'fifth';
+			case 'attack':
+				var obstacle:FlxSprite = new FlxSprite(1500, v2 == 'bot' ? 600 : 300).loadGraphic(Paths.image('final/obstacle'));
+				obstacle.angularVelocity = FlxG.random.float(-25, 25);
+				obstacle.scale.set(1.5, 1.5); obstacle.updateHitbox();
+				obstacle.velocity.x = -2000;
+				game.insert(game.members.indexOf(boyfriendGroup) + 1, obstacle);
+
+				var warning:FlxSprite = new FlxSprite(900, v2 == 'bot' ? 500 : 200).loadGraphic(Paths.image('final/warning'));
+				warning.scrollFactor.set(0.1, 0.1);
+				game.insert(game.members.indexOf(boyfriendGroup) + 2, warning);
+
+				FlxG.sound.play(Paths.sound('warnin'), 0.9);
+				warning.scale.set(1.1, 1.1);
+				warning.angle = 5 * (v2 == 'bot' ? 1 : -1);
+				FlxTween.tween(warning, {alpha: 0, angle: 0}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
+				FlxTween.tween(warning.scale, {x: 1, y: 1}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
+				new FlxTimer().start(Conductor.crochet / 1000, function(tmr)
+				{
+					if (tmr.loopsLeft == 1)
+					{
+						FlxTween.cancelTweensOf(warning); FlxTween.cancelTweensOf(warning.scale);
+						warning.destroy();
+						//reaction time
+						new FlxTimer().start(0.1, function(_)
+						{
+							if (v2 == 'bot' && bfAction != 'jump')
+							{
+								FlxG.camera.shake(0.01, 0.1);
+								camHUD.shake(0.005, 0.1);
+								game.health -= 0.3;
+								obstacle?.destroy();
+								FlxG.sound.play(Paths.sound('hit'));
+							}
+							else if (v2 == 'top' && bfAction != 'slide')
+							{
+								FlxG.camera.shake(0.01, 0.1);
+								camHUD.shake(0.005, 0.1);
+								game.health -= 0.3;
+								obstacle?.destroy();
+								FlxG.sound.play(Paths.sound('hit'));
+							}
+						});
+					}
+					else if (tmr.loopsLeft > 1)
+					{
+						//warnings
+						FlxG.sound.play(Paths.sound('warnin'), 0.9);
+						FlxTween.cancelTweensOf(warning); FlxTween.cancelTweensOf(warning.scale);
+						warning.alpha = 1;
+						warning.scale.set(1.1, 1.1);
+						warning.angle = 5 * (v2 == 'bot' ? -1 : 1);
+						FlxTween.tween(warning, {alpha: 0, angle: 0, y: warning.y + (v2 == 'bot' ? 10 : -10)}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
+						FlxTween.tween(warning.scale, {x: 1, y: 1}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
+					}
+					else obstacle?.destroy();
+				}, 3);
 		}
+	}
+	if (n == 'ScreenBorders' && _bruh)
+	{
+		FlxTween.cancelTweensOf(lua('topbar'));
+		FlxTween.tween(lua('topbar'), {y: -lua('topbar').height}, 1, {ease: FlxEase.cubeOut});
 	}
 }
 
@@ -371,36 +574,42 @@ function opponentNoteHit(note)
 	if (curBG == 'second' || curBG == 'third')
 	{
 		FlxG.camera.shake(0.005, 0.1);
+		camHUD.shake(0.0025, 0.1);
 	}
 }
 
+function lua(obj:String) return game.getLuaObject(obj); 
+
 function goodNoteHit(note)
 {
-	if (curBG == 'third' && bfLegs3 != null && !note.isSustainNote)
+	if (curBG == 'third' && bfLegs3 != null)
 	{
 		bfLegs3.playAnim(game.singAnimations[note.noteData], true);
 		bfLegs3.holdTimer = 0;
 	}
 
-	if (curBG == 'second' && bfLegs2 != null && bfLegs2back != null && !note.isSustainNote)
+	if (curBG == 'second' && bfLegs2 != null && bfLegs2back != null)
 	{
 		bfLegs2.playAnim(game.singAnimations[note.noteData], true);
 		bfLegs2.holdTimer = 0;
+		bfLegs2?.animation.curAnim.curFrame = legsFrame;
 		bfLegs2back.playAnim(game.singAnimations[note.noteData], true);
 		bfLegs2back.holdTimer = 0;
+		bfLegs2back?.animation.curAnim.curFrame = legsFrame;
+	}
+
+	if (curBG == 'fourth' && bfLegs4 != null)
+	{
+		bfLegs4.playAnim(game.singAnimations[note.noteData], true);
+		bfLegs4.holdTimer = 0;
 	}
 }
 
 function noteMiss(note)
 {
-	if (curBG == 'third' && bfLegs3 != null)
-	{
-		bfLegs3.playAnim(game.singAnimations[note.noteData] + 'miss', true);
-	}
-	if (curBG == 'second' && bfLegs2 != null && bfLegs2back != null)
-	{
-		bfLegs2.playAnim(game.singAnimations[note.noteData] + 'miss', true);
-	}
+	if (curBG == 'second' && bfLegs2 != null && bfLegs2back != null) bfLegs2.playAnim(game.singAnimations[note.noteData] + 'miss', true);
+	if (curBG == 'third' && bfLegs3 != null) bfLegs3.playAnim(game.singAnimations[note.noteData] + 'miss', true);
+	if (curBG == 'fourth' && bfLegs4 != null) bfLegs4.playAnim(game.singAnimations[note.noteData] + 'miss', true);
 }
 
 function preloadCharacter(char:Int, target:String) game.addCharacterToList(target, char);

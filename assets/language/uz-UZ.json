@@ -1,5 +1,5 @@
 {
-	"language": "UZBEK",
+	"language": "O'ZBEK",
 	"mainmenu.soundtest": "OVOZ TESTI",
 	"mainmenu.freeplay": "ERKIN O'YIN",
 	"mainmenu.storymode": "HIKOYA REJIMI",
@@ -38,7 +38,7 @@
 	"options.on": "YONIQ",
 	"options.off": "O'CHIQ",
 	"options.ghosttapping.on": "CHICHQOQ",
-	"options.ghosttapping.off": "O'CHIQ",
+	"options.ghosttapping.off": "SIGMA",
 	"cutscenes.empty": "VIDEO TOPILMADI",
 	"score_text": "Hisob: {1} | Xatolar: {2}"
 }

@@ -63,7 +63,6 @@ class Main extends Sprite
 	};
 
 	public static var fpsVar:FPSCounter;
-	public static var duduOverlay:Bitmap;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -169,12 +168,7 @@ class Main extends Sprite
 
 		FlxG.mouse.useSystemCursor = true;
 
-		duduOverlay = new Bitmap(Assets.getBitmapData('assets/exe/codearduele.png'));
-		duduOverlay.width  = game.width;
-		duduOverlay.height = game.height;
-		duduOverlay.alpha  = 0.2;
-		duduOverlay.visible = false;
-		addChild(duduOverlay);
+		pluginsLessGo();
 
 		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
@@ -222,9 +216,9 @@ class Main extends Sprite
 		});
 	}
 
-	public static function applyDuduMode():Void
+	private function pluginsLessGo()
 	{
-		if (duduOverlay != null) duduOverlay.visible = ClientPrefs.data.duduMode;
+		DuduModePlugin.init();
 	}
 
 	public static function resetSpriteCache(sprite:Sprite):Void {

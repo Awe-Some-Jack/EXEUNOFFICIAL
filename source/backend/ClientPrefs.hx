@@ -207,8 +207,8 @@ class ClientPrefs {
 				data.gameplaySettings.set(name, value);
 		}
 
-		flixel.FlxSprite.defaultAntialiasing = data.antialiasing;
-		Main.applyDuduMode();
+		FlxSprite.defaultAntialiasing = data.antialiasing;
+		DuduModePlugin.instance?.applyDuduMode();
 		
 		// flixel automatically saves your volume!
 		if(FlxG.save.data.volume != null)

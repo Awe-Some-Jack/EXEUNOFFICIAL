@@ -31,7 +31,7 @@ class ExeGraphicsState extends ExeBaseOptionsState
 			{label: lbl[3], getValue: () -> ClientPrefs.data.shaders,     setValue: (v) -> ClientPrefs.data.shaders      = v},
 			{label: lbl[4], getValue: () -> ClientPrefs.data.uncappedFPS, setValue: (v) -> ClientPrefs.data.uncappedFPS  = v},
 			{label: lbl[5], getValue: () -> ClientPrefs.data.framerate,   setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true},
-			{label: lbl[6], getValue: () -> ClientPrefs.data.duduMode,    setValue: (v) -> { ClientPrefs.data.duduMode = v; Main.applyDuduMode(); }}
+			{label: lbl[6], getValue: () -> ClientPrefs.data.duduMode,    setValue: (v) -> { ClientPrefs.data.duduMode = v; DuduModePlugin.instance?.applyDuduMode(); }}
 		];
 
 		var i = 0;

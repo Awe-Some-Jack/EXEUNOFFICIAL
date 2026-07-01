@@ -69,6 +69,7 @@
 
 	<!-- Assets -->
 	<assets path="assets/fonts" />
+	<assets path="assets/language" />
 	<assets path="assets/exe"     	    exclude="*.ogg" if="web"/>
 	<assets path="assets/exe"     	    exclude="*.mp3" unless="web"/>
 	<assets path="assets/shared"        exclude="*.ogg" if="web"/>

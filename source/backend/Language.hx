@@ -15,7 +15,7 @@ class Language
 		currentKey = key;
 		phrases = [];
 
-		final path = 'assets/exe/options/language/$key.json';
+		final path = 'assets/language/$key.json';
 		try {
 			final text = Assets.getText(path);
 			if (text?.length > 0) {

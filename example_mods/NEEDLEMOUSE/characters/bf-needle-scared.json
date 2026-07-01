@@ -17,51 +17,43 @@
 			"indices": []
 		},
 		{
-			"offsets": [-46, -277],
-			"indices": [],
+			"offsets": [-49, -278],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": false,
+			"indices": [],
 			"name": "down miss"
 		},
 		{
-			"offsets": [-78, -219],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHTmiss",
+			"offsets": [-64, -223],
 			"loop": false,
-			"name": "right copia"
-		},
-		{
-			"offsets": [-64, -224],
-			"indices": [],
 			"fps": 24,
 			"anim": "singLEFTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "left miss"
 		},
 		{
-			"offsets": [-95, -193],
-			"indices": [],
+			"offsets": [-98, -195],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": false,
+			"indices": [],
 			"name": "up miss"
 		},
 		{
-			"offsets": [-47, -277],
-			"indices": [],
+			"offsets": [-47, -278],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down i"
 		},
 		{
 			"offsets": [-97, -186],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up i"
 		},
 		{
@@ -78,7 +70,15 @@
 			"fps": 24,
 			"anim": "singLEFT",
 			"loop": false,
-			"name": "left copia i"
+			"name": "left c"
+		},
+		{
+			"offsets": [-78, -227],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "right copia instancia 1"
 		}
 	],
 	"vocals_file": "",

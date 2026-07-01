@@ -21,7 +21,7 @@ function onCreatePost()
 	setShaderFloat('gBlur', 'Directions', 4)
 	setShaderFloat('gBlur', 'Quality', 0)
 
-    makeLuaSprite('sexo')
+    makeLuaSprite('sexo') -- Wolfie midd
     setSpriteShader('sexo', 'brightness', 0)
     setShaderFloat('sexo', 'saturation', 1)
     setShaderFloat('sexo', 'contrast', 1)

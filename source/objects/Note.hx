@@ -227,12 +227,12 @@ class Note extends FlxSprite
 
 			if (ClientPrefs.data.downScroll) flipY = true;
 
-			offsetX += width / 2;
 			copyAngle = false;
 
 			animation.play(colArray[noteData % colArray.length] + 'holdend');
 			updateHitbox();
-			offsetX -= width / 2;
+
+			offsetX = (Note.swagWidth / 2) - (width / 2);
 
 			if (PlayState.isPixelStage) offsetX += 30;
 
@@ -250,6 +250,9 @@ class Note extends FlxSprite
 					prevNote.scale.y *= 6 / height;
 				}
 				prevNote.updateHitbox();
+
+				prevNote.offsetX = (Note.swagWidth / 2) - (prevNote.width / 2);
+				if (PlayState.isPixelStage) prevNote.offsetX += 30;
 			}
 
 			if (PlayState.isPixelStage)

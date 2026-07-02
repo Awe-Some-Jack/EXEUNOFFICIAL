@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="piso 1.png">
-	<!-- Created with Adobe Animate version 24.0.10.14 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 83 instancia 10000" x="40" y="40" width="1979" height="802" frameX="-6" frameY="-5" frameWidth="1986" frameHeight="1070"/>
-	<SubTexture name="Símbolo 83 instancia 10001" x="40" y="917" width="1986" height="994" frameX="0" frameY="-3" frameWidth="1986" frameHeight="1070"/>
-	<SubTexture name="Símbolo 83 instancia 10002" x="40" y="1986" width="1965" height="1070" frameX="-14" frameY="0" frameWidth="1986" frameHeight="1070"/>
-	<SubTexture name="Símbolo 83 instancia 10003" x="2080" y="1986" width="1970" height="807" frameX="-12" frameY="0" frameWidth="1986" frameHeight="1070"/>
-</TextureAtlas>

@@ -153,6 +153,8 @@ function onCreate()
 	bfLegs4 = new Character(boyfriend.x + 330, boyfriend.y - 230, 'bf-fe4back', true);
 	bfLegs4.visible = false;
 	game.insert(game.members.indexOf(boyfriendGroup), bfLegs4);
+
+	game.cpuControlled = true;
 }
 
 var notesPosition:Array<Array<Float>> = [[0,0,0,0], [0,0,0,0]];
@@ -178,7 +180,7 @@ function onCreatePost()
 	eyes.scale.set(0.5, 0.5); eyes.updateHitbox();
 	game.add(eyes);
 
-	bfYeah = new FlxSprite(FlxG.width);
+	bfYeah = new FlxSprite();
 	bfYeah.frames = Paths.getSparrowAtlas('characters/bfyeahfe');
 	bfYeah.animation.addByPrefix('yeah', 'yeah', 24, false);
 	bfYeah.screenCenter(0x10);
@@ -206,7 +208,7 @@ function onUpdatePost(elapsed:Float)
 	floatSine += elapsed * floatIntensity;
 
 	bfLegsFramerate?.update();
-	legsFrame = bfLegsFramerate.animation?.curAnim?.curFrame ?? 0;
+	legsFrame = bfLegsFramerate.animation.curAnim.curFrame ?? 0;
 	switch(curBG)
 	{
 		case 'intro':
@@ -365,10 +367,22 @@ function onEvent(n,v1,v2)
 			case 'fadeNotes':
 				for (i in 0...4) FlxTween.tween(playerStrums.members[i], {alpha: 1, y: (playerStrums.members[i].y + (prefs.downScroll ? -10 : 10))}, Conductor.crochet / 250, {ease: FlxEase.cubeInOut, startDelay: i / 4});
 			case 'yeahbf':
+				dad.alpha = 0;
 				bfYeah.visible = true;
-				FlxTween.tween(bfYeah, {x: (FlxG.width - bfYeah.width) / 2}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
 				bfYeah.animation.play('yeah', true);
+				bgIntro[5].sprite.visible = false;
+				bgIntro[6].sprite.visible = false;
+				bgIntro[7].sprite.visible = false;
+				bgIntro[bgIntro.length - 1].sprite.visible = false;
+				FlxG.camera.snapToTarget();
+				FlxG.camera.zoom = 2;
+				game.cameraSpeed = 9999;
+				game.camZoomingDecay = 0;
 			case 'secondsection':
+				FlxTween.cancelTweensOf(camGame);
+				game.cameraSpeed = 1;
+				game.camZoomingDecay = 1;
+				dad.alpha = 1;
 				floatIntensity = 3;
 				bfYeah.destroy();
 				camHUD.flash(0xFFFFFFFF, Conductor.crochet / 250, null, true);
@@ -462,10 +476,10 @@ function onEvent(n,v1,v2)
 				bfLegs4.visible = true;
 				xenoRing.visible = false;
 				curBG = 'fourth';
-				cam.DADx = 50;
-				cam.DADy = 50;
-				cam.BFx = 350;
-				cam.BFy = 250;
+				cam.DADx = 0;
+				cam.DADy = 0;
+				cam.BFx = 250;
+				cam.BFy = 200;
 				FlxTween.tween(dad, {x: dad.x + 650, y: dad.y + 400}, 20);
 
 				bgSecond[0].sprite.y -= 300;
@@ -522,32 +536,36 @@ function onEvent(n,v1,v2)
 				FlxTween.tween(warning.scale, {x: 1, y: 1}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
 				new FlxTimer().start(Conductor.crochet / 1000, function(tmr)
 				{
-					if (tmr.loopsLeft == 1)
+					if (tmr.loopsLeft == 2)
 					{
 						FlxTween.cancelTweensOf(warning); FlxTween.cancelTweensOf(warning.scale);
 						warning.destroy();
 						//reaction time
 						new FlxTimer().start(0.1, function(_)
 						{
-							if (v2 == 'bot' && bfAction != 'jump')
+							if (v2 == 'bot' && bfAction != 'jump' && !game.cpuControlled)
 							{
 								FlxG.camera.shake(0.01, 0.1);
 								camHUD.shake(0.005, 0.1);
 								game.health -= 0.3;
 								obstacle?.destroy();
 								FlxG.sound.play(Paths.sound('hit'));
+								bfAction = 'hit';
+								boyfriend.playAnim('hit', true); boyfriend.specialAnim = true;
 							}
-							else if (v2 == 'top' && bfAction != 'slide')
+							else if (v2 == 'top' && bfAction != 'slide' && !game.cpuControlled)
 							{
 								FlxG.camera.shake(0.01, 0.1);
 								camHUD.shake(0.005, 0.1);
 								game.health -= 0.3;
 								obstacle?.destroy();
 								FlxG.sound.play(Paths.sound('hit'));
+								bfAction = 'hit';
+								boyfriend.playAnim('hit', true); boyfriend.specialAnim = true;
 							}
 						});
 					}
-					else if (tmr.loopsLeft > 1)
+					else if (tmr.loopsLeft > 2)
 					{
 						//warnings
 						FlxG.sound.play(Paths.sound('warnin'), 0.9);
@@ -558,8 +576,58 @@ function onEvent(n,v1,v2)
 						FlxTween.tween(warning, {alpha: 0, angle: 0, y: warning.y + (v2 == 'bot' ? 10 : -10)}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
 						FlxTween.tween(warning.scale, {x: 1, y: 1}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
 					}
-					else obstacle?.destroy();
-				}, 3);
+					else if (tmr.loopsLeft == 0) obstacle?.destroy();
+				}, 4);
+			case 'waterxd':
+				new FlxTimer().start(Conductor.crochet / 500, function(_)
+				{
+					var fadewhite:FlxSprite = new FlxSprite(-1000, 800).loadGraphic(Paths.image('final/transition'));
+					fadewhite.scale.x = 10000; fadewhite.updateHitbox();
+					game.insert(game.members.indexOf(boyfriendGroup) + 50, fadewhite);
+					FlxTween.tween(fadewhite, {y: 600}, 1.5, {ease: FlxEase.expoOut});
+
+					var water:FlxSprite = new FlxSprite(-1000, 1700).makeGraphic(3000, 1600, 0xFFFF0000);
+					game.insert(game.members.indexOf(boyfriendGroup) + 53, water);
+
+					var bfFalling:FlxSprite = new FlxSprite(250, -1000).loadGraphic(Paths.image('characters/bffallingfe'));
+					bfFalling.scale.set(0.6, 0.6); bfFalling.updateHitbox();
+					bfFalling.angle = -120;
+					bfFalling.angularVelocity = 100;
+					bfFalling.velocity.y = 2100;
+					bfFalling.color = 0xFF000000;
+					game.insert(game.members.indexOf(boyfriendGroup) + 56, bfFalling);
+					FlxTween.tween(fifthFloor, {x: fifthFloor.x - 1500}, 1, {ease: FlxEase.cubeInOut});
+
+					FlxTween.tween(camHUD, {y: -770}, 1, {ease: FlxEase.cubeInOut});
+					FlxTween.tween(camGame, {zoom: 0.5}, 3, {ease: FlxEase.cubeOut});
+					FlxTween.tween(camGame.targetOffset, {y: 1500}, 1, {ease: FlxEase.cubeInOut});
+					new FlxTimer().start(Conductor.crochet / 250, function(_)
+					{
+						bfFalling.color = 0xFF00FFFF;
+						bfFalling.velocity.y = 100;
+						bfFalling.acceleration.y = 1000;
+						FlxTween.cancelTweensOf(fifthFloor); fifthFloor?.destroy();
+						boyfriend.alpha = 0;
+						FlxTween.tween(water, {y: water.y - 600}, 1.5, {ease: FlxEase.sineOut});
+						for (spr in bgSecond) spr.sprite.visible = false;
+					});
+					new FlxTimer().start(Conductor.crochet / 100, function(_)
+					{
+						for (i in 0...4)
+						{
+							opponentStrums.members[i].x = -1000;
+							playerStrums.members[i].x = (FlxG.width / 2) + (separation / 2) - (((playerStrums.members[i].width + (separation * 2)) * 4) / 2) + ((playerStrums.members[i].width) + separation * (i > 1 ? (i == 3 ? 2.33 : 3) : 1)) * i;
+						}
+
+						FlxTween.cancelTweensOf(camHUD); FlxTween.cancelTweensOf(camGame);
+						camGame.targetOffset.y = 0; game.cameraSpeed = 9999;
+						camHUD.y = camHUD.alpha = 0;
+						fadewhite?.destroy();
+						bfFalling?.destroy();
+						water.y -= 1500;
+						FlxTween.tween(water, {alpha: 0}, 3, {ease: FlxEase.cubeInOut, onComplete: function(_) { water?.destroy(); }});
+					});
+				});
 		}
 	}
 	if (n == 'ScreenBorders' && _bruh)

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="hellbentnew.png">
+<SubTexture name="10000" x="0" y="0" width="6004" height="4004" frameX="0" frameY="0" frameWidth="6000" frameHeight="4000" />
+<SubTexture name="20000" x="6004" y="4004" width="6004" height="3160" frameX="0" frameY="-844" frameWidth="6000" frameHeight="4000" />
+<SubTexture name="30000" x="0" y="4004" width="6004" height="3738" frameX="0" frameY="-266" frameWidth="6000" frameHeight="4000" />
+<SubTexture name="40000" x="6004" y="0" width="6004" height="4004" frameX="0" frameY="0" frameWidth="6000" frameHeight="4000" />
+</TextureAtlas>

@@ -32,7 +32,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 			{label: lbl[5], getValue: () -> ClientPrefs.data.safeFrames,   setValue: (v) -> ClientPrefs.data.safeFrames   = v, isFloat: true},
 		];
 		var i = 0;
-		while (i < allOptions.length) { pageOptions.push(allOptions.slice(i, i + ExeBaseOptionsState.PAGE_SIZE)); i += ExeBaseOptionsState.PAGE_SIZE; }
+		while (i < allOptions.length) { pageOptions.push(allOptions.slice(i, i + ExeBaseOptionsState.OPTIONS_PAGE_SIZE)); i += ExeBaseOptionsState.OPTIONS_PAGE_SIZE; }
 
 		super.create();
 	}

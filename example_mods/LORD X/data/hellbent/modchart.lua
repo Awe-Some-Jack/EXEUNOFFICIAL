@@ -8,7 +8,7 @@ function onCreatePost()
 		for i = 0,getProperty('unspawnNotes.length') - 1 do
 			if getPropertyFromGroup('unspawnNotes', i, 'mustPress') == false then
 				oldNoteGroup = getObjectOrder('noteGroup')
-				setObjectOrder('noteGroup', getObjectOrder('chair') - 1)
+				setObjectOrder('noteGroup', 3)
 			end
 		end
 	end
@@ -21,7 +21,9 @@ function onCountdownStarted()
 			setProperty('opponentStrums.members['..i..'].y', 900)
 			scaleObject('opponentStrums.members['..i..']', getProperty('opponentStrums.members['..i..'].scale.x') * 2, getProperty('opponentStrums.members['..i..'].scale.y') * 2, true)
 
+			separation = 0
 			setProperty('opponentStrums.members['..i..'].x', -397 + (screenWidth / 2) + (separation / 2) - ((((getProperty('opponentStrums.members['..i..'].width') * 1.5) + (separation * 2)) * 4) / 2) + ((getProperty('opponentStrums.members['..i..'].width') * 1.5) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+			separation = 50
 			setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + (getProperty('playerStrums.members['..i..'].width') + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
 		end
 
@@ -90,7 +92,9 @@ end
 function onSongStart()
 	if not lowQuality then
 		for i = 0,3 do
-			setProperty('opponentStrums.members['..i..'].x', -397 + (screenWidth / 2) + (separation / 2) - ((((getProperty('opponentStrums.members['..i..'].width') * 1.5) + (separation * 2)) * 4) / 2) + ((getProperty('opponentStrums.members['..i..'].width') * 1.5) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+			separation = 0
+			setProperty('opponentStrums.members['..i..'].x', -370 + (screenWidth / 2) + (separation / 2) - ((((getProperty('opponentStrums.members['..i..'].width') * 1.5) + (separation * 2)) * 4) / 2) + ((getProperty('opponentStrums.members['..i..'].width') * 1.5) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+			separation = 50
 			setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + (getProperty('playerStrums.members['..i..'].width') + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
 			setObjectCamera('opponentStrums.members['..i..']')
 			callMethod('opponentStrums.members['..i..'].scrollFactor.set', {1, 1})
@@ -100,7 +104,7 @@ function onSongStart()
 				setObjectCamera('unspawnNotes['..i..']')
 				callMethod('unspawnNotes['..i..'].scrollFactor.set', {1, 1})
 				oldNoteGroup = getObjectOrder('noteGroup')
-				setObjectOrder('noteGroup', getObjectOrder('chair') - 1)
+				setObjectOrder('noteGroup', 3)
 			end
 		end
 	end
@@ -109,6 +113,7 @@ end
 function onEvent(n,v1)
 	if not lowQuality then
 		if n == 'hellbentEvents' then
+			if v1 == 'startwhite' then setObjectOrder('noteGroup', 7) end
 			if v1 == 'changeBG' then
 				backToOg = true
 

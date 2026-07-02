@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="piso cutscenes.png">
-	<!-- Created with Adobe Animate version 24.0.10.14 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 149 instancia 10000" x="100" y="100" width="1347" height="253" frameX="-29" frameY="-2" frameWidth="1376" frameHeight="255"/>
-	<SubTexture name="Símbolo 149 instancia 10001" x="1547" y="100" width="1353" height="252" frameX="-23" frameY="-2" frameWidth="1376" frameHeight="255"/>
-	<SubTexture name="Símbolo 149 instancia 10002" x="100" y="453" width="1376" height="254" frameX="0" frameY="0" frameWidth="1376" frameHeight="255"/>
-	<SubTexture name="Símbolo 149 instancia 10003" x="1576" y="453" width="1351" height="254" frameX="-25" frameY="0" frameWidth="1376" frameHeight="255"/>
-</TextureAtlas>

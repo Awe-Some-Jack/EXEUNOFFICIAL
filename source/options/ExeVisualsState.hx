@@ -28,7 +28,7 @@ class ExeVisualsState extends ExeBaseOptionsState
 			{label: lbl[3], getValue: () -> ClientPrefs.data.scoreZoom, setValue: (v) -> ClientPrefs.data.scoreZoom = v}
 		];
 		var i = 0;
-		while (i < allOptions.length) { pageOptions.push(allOptions.slice(i, i + ExeBaseOptionsState.PAGE_SIZE)); i += ExeBaseOptionsState.PAGE_SIZE; }
+		while (i < allOptions.length) { pageOptions.push(allOptions.slice(i, i + ExeBaseOptionsState.OPTIONS_PAGE_SIZE)); i += ExeBaseOptionsState.OPTIONS_PAGE_SIZE; }
 
 		super.create();
 	}

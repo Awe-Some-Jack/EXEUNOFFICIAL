@@ -53,7 +53,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		return Assets.exists('assets/fonts/$f') ? f : FONT;
 	}
 	public static final FONT_SIZE:Int    = 18;
-	public static final PAGE_SIZE:Int    = 4;
+	public static final OPTIONS_PAGE_SIZE:Int    = 4;
 
 	public static final ARR_L_X:Float   = 773;
 	public static final ARR_R_X:Float   = 1075;

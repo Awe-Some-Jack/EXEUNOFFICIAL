@@ -50,14 +50,30 @@ class Mods
 	inline public static function getModDirectories():Array<String>
 	{
 		var list:Array<String> = [];
-		#if MODS_ALLOWED
+		#if(!mobile && MODS_ALLOWED)
 		var modsFolder:String = Paths.mods();
 		if(FileSystem.exists(modsFolder)) {
 			for (folder in FileSystem.readDirectory(modsFolder))
 			{
 				var path = haxe.io.Path.join([modsFolder, folder]);
-				if (FileSystem.isDirectory(path) && !ignoreModFolders.contains(folder.toLowerCase()) && !list.contains(folder))
+				if(FileSystem.isDirectory(path) && !ignoreModFolders.contains(folder.toLowerCase()) && !list.contains(folder))
 					list.push(folder);
+			}
+		}
+		#else
+		var allPaths = OpenFlAssets.list();
+		var seen:Map<String, Bool> = [];
+
+		for(path in allPaths) {
+			if(path.indexOf("mods/") == 0) {
+				var rest = path.substr("mods/".length);
+				var folder = rest.split("/")[0];
+
+				if(folder != "" && !seen.exists(folder)) {
+					seen.set(folder, true);
+					if(!ignoreModFolders.contains(folder.toLowerCase()) && !list.contains(folder))
+						list.push(folder);
+				}
 			}
 		}
 		#end
@@ -167,7 +183,7 @@ class Mods
 
 				var dat = mod.split("|");
 				list.all.push(dat[0]);
-				if (dat[1] == "1")
+				if(dat[1] == "1")
 					list.enabled.push(dat[0]);
 				else
 					list.disabled.push(dat[0]);
@@ -203,13 +219,21 @@ class Mods
 		// Scan for folders that aren't on modsList.txt yet
 		for (folder in getModDirectories())
 		{
+			#if (MODS_ALLOWED && !mobile)
 			if(folder.trim().length > 0 && FileSystem.exists(Paths.mods(folder)) && FileSystem.isDirectory(Paths.mods(folder)) &&
 			!ignoreModFolders.contains(folder.toLowerCase()) && !added.contains(folder))
 			{
 				added.push(folder);
-				list.push([folder, true]); //i like it false by default. -bb //Well, i like it True! -Shadow Mario (2022)
-				//Shadow Mario (2023): What the fuck was bb thinking
+				list.push([folder, true]);
 			}
+			#else
+			var trimmed = folder.trim();
+			if(trimmed.length > 0 && !ignoreModFolders.contains(trimmed.toLowerCase()) && !added.contains(trimmed))
+			{
+				added.push(trimmed);
+				list.push([trimmed, true]);
+			}
+			#end
 		}
 
 		// Now save file

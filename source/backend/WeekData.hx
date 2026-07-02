@@ -122,26 +122,50 @@ class WeekData {
 			}
 		}
 
-		#if MODS_ALLOWED
+		#if (!mobile && MODS_ALLOWED)
 		for (i in 0...directories.length) {
 			var directory:String = directories[i] + 'weeks/';
 			if(FileSystem.exists(directory)) {
 				var listOfWeeks:Array<String> = CoolUtil.coolTextFile(directory + 'weekList.txt');
-				for (daWeek in listOfWeeks)
-				{
+				for (daWeek in listOfWeeks) {
 					var path:String = directory + daWeek + '.json';
-					if(FileSystem.exists(path))
-					{
+					if(FileSystem.exists(path)) {
 						addWeek(daWeek, path, directories[i], i, originalLength);
 					}
 				}
 
-				for (file in FileSystem.readDirectory(directory))
-				{
+				for (file in FileSystem.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
-					if (!FileSystem.isDirectory(path) && file.endsWith('.json'))
-					{
+					if (!FileSystem.isDirectory(path) && file.endsWith('.json')) {
 						addWeek(file.substr(0, file.length - 5), path, directories[i], i, originalLength);
+					}
+				}
+			}
+		}
+		#else
+		for(i in 0...directories.length) {
+			var directory:String = directories[i] + 'weeks/';
+
+			if(OpenFlAssets.exists(directory + 'weekList.txt')) {
+				var raw:String = OpenFlAssets.getText(directory + 'weekList.txt');
+				var listOfWeeks:Array<String> = raw.split('\n');
+
+				for(daWeek in listOfWeeks) m{
+					daWeek = daWeek.trim();
+					if(daWeek.length == 0) continue;
+
+					var path:String = directory + daWeek + '.json';
+					if(OpenFlAssets.exists(path))
+						addWeek(daWeek, path, directories[i], i, originalLength);
+				}
+			}
+
+			for(assetPath in OpenFlAssets.list()) {
+				if(assetPath.indexOf(directory) == 0 && assetPath.endsWith('.json')) {
+					var fileName = assetPath.substr(directory.length);
+					if(fileName.indexOf('/') == -1) {
+						var weekName = fileName.substr(0, fileName.length - 5);
+						addWeek(weekName, assetPath, directories[i], i, originalLength);
 					}
 				}
 			}
@@ -174,7 +198,7 @@ class WeekData {
 
 	private static function getWeekFile(path:String):WeekFile {
 		var rawJson:String = null;
-		#if MODS_ALLOWED
+		#if (!mobile && MODS_ALLOWED)
 		if(FileSystem.exists(path)) {
 			rawJson = File.getContent(path);
 		}

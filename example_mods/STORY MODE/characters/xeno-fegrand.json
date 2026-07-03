@@ -17,33 +17,33 @@
 			"indices": []
 		},
 		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
-		},
-		{
 			"offsets": [39, -10],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "rigth"
 		},
 		{
 			"offsets": [-83, 16],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "sas",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/finalescapexeno",
+	"image": "characters/xenom",
 	"position": [0, 0],
 	"healthicon": "XENO-P4",
 	"flip_x": false,

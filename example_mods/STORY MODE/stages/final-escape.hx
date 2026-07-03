@@ -65,6 +65,9 @@ var eyes:FlxSprite;
 var bfYeah:FlxSprite;
 var xenoRing:FlxSprite;
 var fourthFloor:FlxSprite;
+var drowningBf:FlxSprite;
+var bfDrowningPlayable:Character;
+var laughxeno:FlxSprite;
 
 //legsList
 var bfLegsFramerate:Character;
@@ -183,10 +186,30 @@ function onCreatePost()
 	bfYeah = new FlxSprite();
 	bfYeah.frames = Paths.getSparrowAtlas('characters/bfyeahfe');
 	bfYeah.animation.addByPrefix('yeah', 'yeah', 24, false);
-	bfYeah.screenCenter(0x10);
+	bfYeah.screenCenter();
 	bfYeah.camera = camVideo;
 	bfYeah.visible = false;
 	game.add(bfYeah);
+
+	drowningBf = new FlxSprite(100, -250);
+	drowningBf.frames = Paths.getSparrowAtlas('characters/bfdrowningfe');
+	drowningBf.animation.addByPrefix('idle', 'bfdrown', 24, true); drowningBf.animation.play('idle', true);
+	drowningBf.alpha = 0;
+	game.add(drowningBf);
+
+	bfDrowningPlayable = new Character(2000, 0, 'bf-water', true);
+	bfDrowningPlayable.visible = false;
+	bfDrowningPlayable.camera = camVideo;
+	bfDrowningPlayable.screenCenter(0x10);
+	bfDrowningPlayable.alpha = 0.7;
+	game.add(bfDrowningPlayable);
+
+	laughxeno = new FlxSprite(70, -350);
+	laughxeno.frames = Paths.getSparrowAtlas('characters/xenorisaoscuridadaguaxdxdpng');
+	laughxeno.animation.addByPrefix('idle', 'laughxddxd', 24, false);
+	game.add(laughxeno);
+	laughxeno.color = 0x00FFFFFF;
+	laughxeno.alpha = 0;
 }
 
 function onSongStart() if (introCutscene?.load(Paths.video('fake intro')) ?? false) introCutscene?.play();
@@ -224,8 +247,8 @@ function onUpdatePost(elapsed:Float)
 			}
 
 			dad.setPosition(
-				-442 + Math.sin(floatSine * 0.75) * 7,
-				introYPos + Math.cos(floatSine * 0.75) * 25
+				-435 + Math.sin(floatSine * 2) * 2,
+				introYPos + Math.cos(floatSine * 2) * 25
 			);
 			if (eyes != null) eyes.setPosition(dad.x + 400, dad.y + 440);
 		case 'second':
@@ -327,6 +350,7 @@ function onUpdatePost(elapsed:Float)
 	}
 }
 
+var _fbc:Bool = 0;
 var _bruh:Bool = false;
 function onEvent(n,v1,v2)
 {
@@ -519,6 +543,7 @@ function onEvent(n,v1,v2)
 				cam.MiddleZoom = 1;
 				curBG = 'fifth';
 			case 'attack':
+				if (Conductor.songPosition >= 133923.077) return;
 				var obstacle:FlxSprite = new FlxSprite(1500, v2 == 'bot' ? 600 : 300).loadGraphic(Paths.image('final/obstacle'));
 				obstacle.angularVelocity = FlxG.random.float(-25, 25);
 				obstacle.scale.set(1.5, 1.5); obstacle.updateHitbox();
@@ -579,28 +604,28 @@ function onEvent(n,v1,v2)
 					else if (tmr.loopsLeft == 0) obstacle?.destroy();
 				}, 4);
 			case 'waterxd':
+				if (Conductor.songPosition >= 133923.077) return;
 				new FlxTimer().start(Conductor.crochet / 500, function(_)
 				{
 					var fadewhite:FlxSprite = new FlxSprite(-1000, 800).loadGraphic(Paths.image('final/transition'));
 					fadewhite.scale.x = 10000; fadewhite.updateHitbox();
 					game.insert(game.members.indexOf(boyfriendGroup) + 50, fadewhite);
-					FlxTween.tween(fadewhite, {y: 600}, 1.5, {ease: FlxEase.expoOut});
 
-					var water:FlxSprite = new FlxSprite(-1000, 1700).makeGraphic(3000, 1600, 0xFFFF0000);
+					var water:FlxSprite = new FlxSprite(-1000, 2200).makeGraphic(3000, 1600, 0xFFFF0000);
 					game.insert(game.members.indexOf(boyfriendGroup) + 53, water);
 
 					var bfFalling:FlxSprite = new FlxSprite(250, -1000).loadGraphic(Paths.image('characters/bffallingfe'));
 					bfFalling.scale.set(0.6, 0.6); bfFalling.updateHitbox();
 					bfFalling.angle = -120;
 					bfFalling.angularVelocity = 100;
-					bfFalling.velocity.y = 2100;
+					bfFalling.velocity.y = 2500;
 					bfFalling.color = 0xFF000000;
 					game.insert(game.members.indexOf(boyfriendGroup) + 56, bfFalling);
-					FlxTween.tween(fifthFloor, {x: fifthFloor.x - 1500}, 1, {ease: FlxEase.cubeInOut});
+					FlxTween.tween(fifthFloor, {x: fifthFloor.x + 200}, 1, {ease: FlxEase.cubeInOut});
 
 					FlxTween.tween(camHUD, {y: -770}, 1, {ease: FlxEase.cubeInOut});
 					FlxTween.tween(camGame, {zoom: 0.5}, 3, {ease: FlxEase.cubeOut});
-					FlxTween.tween(camGame.targetOffset, {y: 1500}, 1, {ease: FlxEase.cubeInOut});
+					FlxTween.tween(camGame.targetOffset, {y: 2000}, 1, {ease: FlxEase.cubeInOut});
 					new FlxTimer().start(Conductor.crochet / 250, function(_)
 					{
 						bfFalling.color = 0xFF00FFFF;
@@ -613,21 +638,64 @@ function onEvent(n,v1,v2)
 					});
 					new FlxTimer().start(Conductor.crochet / 100, function(_)
 					{
-						for (i in 0...4)
-						{
-							opponentStrums.members[i].x = -1000;
-							playerStrums.members[i].x = (FlxG.width / 2) + (separation / 2) - (((playerStrums.members[i].width + (separation * 2)) * 4) / 2) + ((playerStrums.members[i].width) + separation * (i > 1 ? (i == 3 ? 2.33 : 3) : 1)) * i;
-						}
-
 						FlxTween.cancelTweensOf(camHUD); FlxTween.cancelTweensOf(camGame);
 						camGame.targetOffset.y = 0; game.cameraSpeed = 9999;
 						camHUD.y = camHUD.alpha = 0;
 						fadewhite?.destroy();
 						bfFalling?.destroy();
-						water.y -= 1500;
+						water.y -= 2000;
 						FlxTween.tween(water, {alpha: 0}, 3, {ease: FlxEase.cubeInOut, onComplete: function(_) { water?.destroy(); }});
 					});
 				});
+			case 'fadewaterxd':
+				curBG = 'water';
+				game.cameraSpeed = 1;
+				for (spr in hudSprites) game.getLuaObject(spr).alpha = 0;
+				FlxTween.tween(camHUD, {alpha: 1}, 2.2);
+				FlxTween.tween(drowningBf, {alpha: 1}, 3);
+				for (i in 0...4)
+				{
+					opponentStrums.members[i].x = -1000;
+					playerStrums.members[i].x = (FlxG.width / 2) + (separation / 2) - (((playerStrums.members[i].width + (separation * 2)) * 4) / 2) + ((playerStrums.members[i].width) + separation * (i > 1 ? (i == 3 ? 2.33 : 3) : 1)) * i;
+					playerStrums.members[i].alpha = 0;
+					playerStrums.members[i].y += (prefs.downScroll ? 30 : -30);
+					FlxTween.tween(playerStrums.members[i], {alpha: 1, y: (playerStrums.members[i].y + (prefs.downScroll ? -30 : 30))}, Conductor.crochet / 250, {ease: FlxEase.cubeOut, startDelay: i / 4});
+				}
+
+				//just in case
+				for (spr in bgSecond) spr.sprite.visible = false;
+				boyfriend.alpha = 0;
+				FlxTween.cancelTweensOf(fifthFloor); fifthFloor?.destroy();
+				camGame.targetOffset.y = 0;
+				cam.MiddleX = 0; cam.MiddleY = 0;
+			case 'showbflol':
+				bfDrowningPlayable.visible = true;
+				FlxTween.tween(bfDrowningPlayable, {x: 700}, 2, {ease: FlxEase.cubeOut});
+			case 'flackback':
+				_fbc++;
+				var fbs:FlxSprite = new FlxSprite().loadGraphic(Paths.image('final/flashbacks/$_fbc'));
+				fbs.camera = camVideo;
+				fbs.scale.set(0.8, 0.8); fbs.updateHitbox();
+				fbs.screenCenter(0x10);
+				fbs.alpha = 0;
+				game.add(fbs);
+				FlxTween.tween(fbs, {x: 50, alpha: 0.7}, 1, {ease: FlxEase.cubeOut, onComplete: function(_) { FlxTween.tween(fbs, {alpha: 0, y: fbs.y - 50}, 1, {ease: FlxEase.cubeIn}); }});
+			case 'endwatersection':
+				FlxTween.cancelTweensOf(bfDrowningPlayable);
+				FlxTween.tween(bfDrowningPlayable, {x: 2000}, 6, {ease: FlxEase.cubeIn});
+				FlxTween.color(drowningBf, Conductor.crochet / (1000 / 17), 0xFFFFFFFF, 0xFFFF7777, {ease: FlxEase.sineIn});
+				FlxTween.color(bfDrowningPlayable, Conductor.crochet / (1000 / 17), 0xFFFFFFFF, 0xFFFF7777, {ease: FlxEase.sineIn});
+			case 'evillaugh':
+				laughxeno.alpha = 1;
+				laughxeno.animation.play('idle', true);
+				FlxTween.color(laughxeno, Conductor.crochet / 100, 0x00FFFFFF, 0xFFFF7777, {ease: FlxEase.sineIn});
+			case 'grandxenopart':
+				FlxTween.cancelTweensOf(laughxeno); FlxTween.cancelTweensOf(bfDrowningPlayable); FlxTween.cancelTweensOf(drowningBf); bfDrowningPlayable.visible = false;
+				laughxeno?.destroy(); bfDrowningPlayable?.destroy(); drowningBf?.destroy();
+				boyfriend.alpha = 1;
+				dad.alpha = 1;
+
+				changeCharacter('dad', 'xeno-fe2');
 		}
 	}
 	if (n == 'ScreenBorders' && _bruh)
@@ -639,10 +707,15 @@ function onEvent(n,v1,v2)
 
 function opponentNoteHit(note)
 {
-	if (curBG == 'second' || curBG == 'third')
+	if (curBG == 'second' || curBG == 'third' || curBG == 'fourth' || curBG == 'fifth')
 	{
 		FlxG.camera.shake(0.005, 0.1);
 		camHUD.shake(0.0025, 0.1);
+	}
+	else
+	{
+		FlxG.camera.shake(0.0015, 0.1);
+		camHUD.shake(0.001, 0.1);
 	}
 }
 
@@ -670,6 +743,12 @@ function goodNoteHit(note)
 	{
 		bfLegs4.playAnim(game.singAnimations[note.noteData], true);
 		bfLegs4.holdTimer = 0;
+	}
+
+	if (bfDrowningPlayable != null && bfDrowningPlayable.visible)
+	{
+		bfDrowningPlayable.playAnim(game.singAnimations[note.noteData], true);
+		bfDrowningPlayable.holdTimer = 0;
 	}
 }
 

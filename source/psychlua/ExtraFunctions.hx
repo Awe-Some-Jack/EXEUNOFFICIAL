@@ -208,7 +208,7 @@ class ExtraFunctions
 			
 			var lang = ClientPrefs.data.language ?? 'auto';
 			if (lang.length == 0) lang = 'auto';
-			if (lang == 'auto') lang = backend.Language.getSystemLanguage();
+			if (lang == 'auto') lang = backend.Language.getSystemLanguage(); 
 
 			final paths:Array<String> = [];
 			if (modDir != null && modDir.length > 0)
@@ -247,7 +247,7 @@ class ExtraFunctions
 			return val != null ? Std.string(val) : (fallback ?? key);
 		});
 
-		Lua_helper.add_callback(lua, 'getPhrase', function(key:String, ?fallback:String, ?vars:Array<Dynamic>):String {
+		Lua_helper.add_callback(lua, 'getPhrase', (key:String, ?fallback:String, ?vars:Array<Dynamic>) -> {
 			return backend.Language.getPhrase(key, fallback, vars);
 		});
 	}

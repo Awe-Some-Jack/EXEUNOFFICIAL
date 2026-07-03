@@ -26,10 +26,17 @@ function onCreatePost()
     setShaderFloatArray('dad', 'dropColor', {0,0,0})
 end
 
-function onEvent(n,v1)
-    if n == 'yourselfEvents' then
-        if v1 == 'abcdefghi' then
-            removeSpriteShader('dad')
-        end
-    end
-end
+function onEvent(n) if n == 'Change Character' then
+    setSpriteShader('dad', 'DropShadowShader')
+
+    setShaderFloat('dad', 'hue', 5)
+    setShaderFloat('dad', 'saturation', -60)
+    setShaderFloat('dad', 'brightness', -5)
+    setShaderFloat('dad', 'contrast', 5)
+
+    setShaderFloat('dad', 'ang', 0)
+    setShaderFloat('dad', 'dist', 0)
+    setShaderFloat('dad', 'str', 0)
+    setShaderFloat('dad', 'thr', 0)
+    setShaderFloatArray('dad', 'dropColor', {0,0,0})
+end end

@@ -196,17 +196,21 @@ class ExtraFunctions
 		});
 
 		Lua_helper.add_callback(lua, 'getLanguage', function():String {
-				var lang = ClientPrefs.data.language;
-				return (lang != null && lang.length > 0) ? lang : 'en-US';
-			});
+			var lang = ClientPrefs.data.language ?? 'auto';
+			if (lang.length == 0) lang = 'auto';
+
+			return lang == 'auto' ? backend.Language.getSystemLanguage() : lang;
+		});
 
 		Lua_helper.add_callback(lua, 'getSongLyric', function(key:String, ?fallback:String):String {
-			var songName = PlayState.SONG != null ? PlayState.SONG.song.toLowerCase().replace(' ', '-') : '';
-			var modDir = backend.Mods.currentModDirectory;
-			var lang = ClientPrefs.data.language;
-			if (lang == null || lang.length == 0) lang = 'en-US';
+			final songName = PlayState.SONG?.song?.toLowerCase()?.replace(' ', '-') ?? '';
+			final modDir = backend.Mods.currentModDirectory;
+			
+			var lang = ClientPrefs.data.language ?? 'auto';
+			if (lang.length == 0) lang = 'auto';
+			if (lang == 'auto') lang = backend.Language.getSystemLanguage();
 
-			var paths:Array<String> = [];
+			final paths:Array<String> = [];
 			if (modDir != null && modDir.length > 0)
 				paths.push('mods/$modDir/data/$songName/lyrics.json');
 			paths.push('mods/data/$songName/lyrics.json');
@@ -215,23 +219,32 @@ class ExtraFunctions
 			var data:Dynamic = null;
 			for (path in paths) {
 				try {
-					if (sys.FileSystem.exists(path)) {
-						var text = sys.io.File.getContent(path);
-						if (text != null && text.length > 0) {
-							data = haxe.Json.parse(text);
-							break;
-						}
+					var text:String = null;
+
+					#if sys
+					if (sys.FileSystem.exists(path))
+						text = sys.io.File.getContent(path);
+					else
+					#end
+					if (openfl.utils.Assets.exists(path))
+						text = openfl.utils.Assets.getText(path);
+
+					if (text?.length > 0) {
+						data = haxe.Json.parse(text);
+						break;
 					}
-				} catch(e:Dynamic) {}
+				} catch(e:Dynamic) {
+					trace('Error on text reading (Lyrics): ' + e);
+				}
 			}
 
-			if (data == null) return fallback != null ? fallback : key;
-			var langData:Dynamic = Reflect.field(data, lang);
-			if (langData == null) langData = Reflect.field(data, 'en-US');
-			if (langData == null) return fallback != null ? fallback : key;
-			var val:Dynamic = Reflect.field(langData, key);
-			if (val == null) return fallback != null ? fallback : key;
-			return Std.string(val);
+			if (data == null) return fallback ?? key;
+
+			final langData:Dynamic = Reflect.field(data, lang) ?? Reflect.field(data, 'en-US');
+			if (langData == null) return fallback ?? key;
+
+			final val:Dynamic = Reflect.field(langData, key);
+			return val != null ? Std.string(val) : (fallback ?? key);
 		});
 
 		Lua_helper.add_callback(lua, 'getPhrase', function(key:String, ?fallback:String, ?vars:Array<Dynamic>):String {

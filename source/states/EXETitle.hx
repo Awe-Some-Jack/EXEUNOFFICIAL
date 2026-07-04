@@ -66,7 +66,7 @@ class EXETitle extends MusicBeatState
 			Main.fpsVar.visible = false;
 
 			video = new VideoSprite();
-			video.loadVideo(Paths.video('HaxeFlixelIntro'));
+			video.loadVideo(Paths.video('introexe'));
 			video.onFormat(() -> {
 				video.setGraphicSize(FlxG.width, FlxG.height);
 				video.video.screenCenter();

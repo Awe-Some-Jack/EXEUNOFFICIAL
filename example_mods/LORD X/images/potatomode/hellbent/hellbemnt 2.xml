@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hellbemnt 2.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="down copia 4 instancia 10000" x="12" y="12" width="345" height="309" frameX="0" frameY="-39" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10001" x="12" y="12" width="345" height="309" frameX="0" frameY="-39" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10002" x="379" y="12" width="345" height="314" frameX="0" frameY="-33" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10003" x="379" y="12" width="345" height="314" frameX="0" frameY="-33" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10004" x="746" y="12" width="346" height="318" frameX="0" frameY="-29" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10005" x="746" y="12" width="346" height="318" frameX="0" frameY="-29" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10006" x="1114" y="12" width="346" height="319" frameX="0" frameY="-28" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10007" x="1114" y="12" width="346" height="319" frameX="0" frameY="-28" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10008" x="1482" y="12" width="346" height="319" frameX="0" frameY="-28" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10009" x="1482" y="12" width="346" height="319" frameX="0" frameY="-28" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10010" x="1482" y="12" width="346" height="319" frameX="0" frameY="-28" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10011" x="1482" y="12" width="346" height="319" frameX="0" frameY="-28" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10012" x="1850" y="12" width="333" height="324" frameX="-9" frameY="-22" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10013" x="1850" y="12" width="333" height="324" frameX="-9" frameY="-22" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10014" x="2205" y="12" width="285" height="333" frameX="-30" frameY="-15" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10015" x="2205" y="12" width="285" height="333" frameX="-30" frameY="-15" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10016" x="2512" y="12" width="248" height="350" frameX="-40" frameY="-1" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10017" x="2512" y="12" width="248" height="350" frameX="-40" frameY="-1" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10018" x="2782" y="12" width="248" height="351" frameX="-40" frameY="0" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="down copia 4 instancia 10019" x="2782" y="12" width="248" height="351" frameX="-40" frameY="0" frameWidth="346" frameHeight="351"/>
+	<SubTexture name="idle copia 5 instancia 10000" x="12" y="385" width="249" height="349" frameX="0" frameY="-5" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10001" x="12" y="385" width="249" height="349" frameX="0" frameY="-5" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10002" x="12" y="385" width="249" height="349" frameX="0" frameY="-5" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10003" x="12" y="385" width="249" height="349" frameX="0" frameY="-5" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10004" x="283" y="385" width="249" height="349" frameX="-1" frameY="-5" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10005" x="283" y="385" width="249" height="349" frameX="-1" frameY="-5" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10006" x="283" y="385" width="249" height="349" frameX="-1" frameY="-5" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10007" x="283" y="385" width="249" height="349" frameX="-1" frameY="-5" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10008" x="554" y="385" width="249" height="351" frameX="-3" frameY="-3" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10009" x="554" y="385" width="249" height="351" frameX="-3" frameY="-3" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10010" x="554" y="385" width="249" height="351" frameX="-3" frameY="-3" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10011" x="554" y="385" width="249" height="351" frameX="-3" frameY="-3" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10012" x="825" y="385" width="249" height="352" frameX="-6" frameY="-2" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10013" x="825" y="385" width="249" height="352" frameX="-6" frameY="-2" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10014" x="825" y="385" width="249" height="352" frameX="-6" frameY="-2" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10015" x="825" y="385" width="249" height="352" frameX="-6" frameY="-2" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10016" x="1096" y="385" width="249" height="353" frameX="-8" frameY="-1" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10017" x="1096" y="385" width="249" height="353" frameX="-8" frameY="-1" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10018" x="1096" y="385" width="249" height="353" frameX="-8" frameY="-1" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10019" x="1096" y="385" width="249" height="353" frameX="-8" frameY="-1" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10020" x="1367" y="385" width="249" height="354" frameX="-9" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10021" x="1367" y="385" width="249" height="354" frameX="-9" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10022" x="1367" y="385" width="249" height="354" frameX="-9" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10023" x="1367" y="385" width="249" height="354" frameX="-9" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10024" x="1638" y="385" width="248" height="354" frameX="-9" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10025" x="1638" y="385" width="248" height="354" frameX="-9" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10026" x="1638" y="385" width="248" height="354" frameX="-9" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10027" x="1638" y="385" width="248" height="354" frameX="-9" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10028" x="1908" y="385" width="249" height="354" frameX="-7" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10029" x="1908" y="385" width="249" height="354" frameX="-7" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10030" x="1908" y="385" width="249" height="354" frameX="-7" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10031" x="1908" y="385" width="249" height="354" frameX="-7" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10032" x="2179" y="385" width="249" height="354" frameX="-6" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10033" x="2179" y="385" width="249" height="354" frameX="-6" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10034" x="2179" y="385" width="249" height="354" frameX="-6" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10035" x="2179" y="385" width="249" height="354" frameX="-6" frameY="0" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10036" x="2450" y="385" width="249" height="353" frameX="-4" frameY="-1" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10037" x="2450" y="385" width="249" height="353" frameX="-4" frameY="-1" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10038" x="2450" y="385" width="249" height="353" frameX="-4" frameY="-1" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="idle copia 5 instancia 10039" x="2450" y="385" width="249" height="353" frameX="-4" frameY="-1" frameWidth="258" frameHeight="354"/>
+	<SubTexture name="left copia 4 instancia 10000" x="2721" y="385" width="287" height="359" frameX="0" frameY="-8" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10001" x="2721" y="385" width="287" height="359" frameX="0" frameY="-8" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10002" x="12" y="766" width="279" height="361" frameX="-8" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10003" x="12" y="766" width="279" height="361" frameX="-8" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10004" x="313" y="766" width="274" height="361" frameX="-14" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10005" x="313" y="766" width="274" height="361" frameX="-14" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10006" x="609" y="766" width="273" height="360" frameX="-15" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10007" x="609" y="766" width="273" height="360" frameX="-15" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10008" x="904" y="766" width="273" height="360" frameX="-15" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10009" x="904" y="766" width="273" height="360" frameX="-15" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10010" x="904" y="766" width="273" height="360" frameX="-15" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10011" x="904" y="766" width="273" height="360" frameX="-15" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10012" x="1199" y="766" width="263" height="361" frameX="-23" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10013" x="1199" y="766" width="263" height="361" frameX="-23" frameY="-6" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10014" x="1484" y="766" width="238" height="364" frameX="-41" frameY="0" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10015" x="1484" y="766" width="238" height="364" frameX="-41" frameY="0" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10016" x="1744" y="766" width="249" height="351" frameX="-67" frameY="-22" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10017" x="1744" y="766" width="249" height="351" frameX="-67" frameY="-22" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10018" x="2015" y="766" width="248" height="351" frameX="-71" frameY="-22" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="left copia 4 instancia 10019" x="2015" y="766" width="248" height="351" frameX="-71" frameY="-22" frameWidth="319" frameHeight="373"/>
+	<SubTexture name="rigth instancia 10000" x="2285" y="766" width="334" height="355" frameX="-6" frameY="0" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10001" x="2285" y="766" width="334" height="355" frameX="-6" frameY="0" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10002" x="2641" y="766" width="323" height="354" frameX="-7" frameY="-1" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10003" x="2641" y="766" width="323" height="354" frameX="-7" frameY="-1" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10004" x="12" y="1152" width="326" height="354" frameX="-1" frameY="-1" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10005" x="12" y="1152" width="326" height="354" frameX="-1" frameY="-1" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10006" x="360" y="1152" width="326" height="354" frameX="0" frameY="-1" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10007" x="360" y="1152" width="326" height="354" frameX="0" frameY="-1" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10008" x="708" y="1152" width="326" height="354" frameX="0" frameY="-1" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10009" x="708" y="1152" width="326" height="354" frameX="0" frameY="-1" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10010" x="708" y="1152" width="326" height="354" frameX="0" frameY="-1" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10011" x="708" y="1152" width="326" height="354" frameX="0" frameY="-1" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10012" x="1056" y="1152" width="304" height="357" frameX="-16" frameY="-5" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10013" x="1056" y="1152" width="304" height="357" frameX="-16" frameY="-5" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10014" x="1382" y="1152" width="256" height="359" frameX="-49" frameY="-6" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10015" x="1382" y="1152" width="256" height="359" frameX="-49" frameY="-6" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10016" x="1660" y="1152" width="248" height="352" frameX="-31" frameY="-10" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10017" x="1660" y="1152" width="248" height="352" frameX="-31" frameY="-10" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10018" x="1930" y="1152" width="249" height="351" frameX="-29" frameY="-11" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="rigth instancia 10019" x="1930" y="1152" width="249" height="351" frameX="-29" frameY="-11" frameWidth="340" frameHeight="365"/>
+	<SubTexture name="risa copia instancia 10000" x="2201" y="1152" width="248" height="347" frameX="0" frameY="-18" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10001" x="2201" y="1152" width="248" height="347" frameX="0" frameY="-18" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10002" x="2471" y="1152" width="248" height="348" frameX="0" frameY="-17" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10003" x="2471" y="1152" width="248" height="348" frameX="0" frameY="-17" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10004" x="2741" y="1152" width="248" height="349" frameX="0" frameY="-16" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10005" x="2741" y="1152" width="248" height="349" frameX="0" frameY="-16" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10006" x="12" y="1533" width="248" height="360" frameX="0" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10007" x="12" y="1533" width="248" height="360" frameX="0" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10008" x="282" y="1533" width="248" height="364" frameX="0" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10009" x="282" y="1533" width="248" height="364" frameX="0" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10010" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10011" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10012" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10013" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10014" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10015" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10016" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10017" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10018" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10019" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10020" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10021" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10022" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10023" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10024" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10025" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10026" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10027" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10028" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10029" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10030" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10031" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10032" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10033" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10034" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10035" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10036" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10037" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10038" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10039" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10040" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10041" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10042" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10043" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10044" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10045" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10046" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10047" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10048" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10049" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10050" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10051" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10052" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10053" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10054" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10055" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10056" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10057" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10058" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10059" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10060" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10061" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10062" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10063" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10064" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10065" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10066" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10067" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10068" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10069" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10070" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10071" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10072" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10073" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10074" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10075" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10076" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10077" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10078" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10079" x="1623" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10080" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10081" x="552" y="1533" width="248" height="365" frameX="0" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10082" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10083" x="822" y="1533" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10084" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10085" x="1091" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10086" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10087" x="1357" y="1533" width="244" height="359" frameX="-3" frameY="-7" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10088" x="1889" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10089" x="1889" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10090" x="2155" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10091" x="2155" y="1533" width="244" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10092" x="2421" y="1533" width="245" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10093" x="2421" y="1533" width="245" height="360" frameX="-3" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10094" x="2688" y="1533" width="244" height="361" frameX="-2" frameY="-5" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10095" x="2688" y="1533" width="244" height="361" frameX="-2" frameY="-5" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10096" x="12" y="1920" width="245" height="362" frameX="-3" frameY="-4" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10097" x="12" y="1920" width="245" height="362" frameX="-3" frameY="-4" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10098" x="279" y="1920" width="244" height="365" frameX="-2" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10099" x="279" y="1920" width="244" height="365" frameX="-2" frameY="-1" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10100" x="545" y="1920" width="244" height="366" frameX="-4" frameY="0" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10101" x="545" y="1920" width="244" height="366" frameX="-4" frameY="0" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10102" x="811" y="1920" width="244" height="366" frameX="-2" frameY="0" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10103" x="1077" y="1920" width="244" height="366" frameX="-4" frameY="0" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10104" x="1343" y="1920" width="244" height="366" frameX="-3" frameY="0" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10105" x="1343" y="1920" width="244" height="366" frameX="-3" frameY="0" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10106" x="1609" y="1920" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10107" x="1878" y="1920" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10108" x="1878" y="1920" width="247" height="364" frameX="-1" frameY="-2" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10109" x="2147" y="1920" width="247" height="360" frameX="-1" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10110" x="2147" y="1920" width="247" height="360" frameX="-1" frameY="-6" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10111" x="2416" y="1920" width="247" height="349" frameX="-1" frameY="-16" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10112" x="2416" y="1920" width="247" height="349" frameX="-1" frameY="-16" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10113" x="2685" y="1920" width="247" height="348" frameX="-1" frameY="-17" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10114" x="2685" y="1920" width="247" height="348" frameX="-1" frameY="-17" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10115" x="12" y="2308" width="247" height="347" frameX="-1" frameY="-18" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="risa copia instancia 10116" x="12" y="2308" width="247" height="347" frameX="-1" frameY="-18" frameWidth="248" frameHeight="366"/>
+	<SubTexture name="up copia 5 instancia 10000" x="281" y="2308" width="301" height="366" frameX="-5" frameY="0" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10001" x="281" y="2308" width="301" height="366" frameX="-5" frameY="0" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10002" x="604" y="2308" width="302" height="361" frameX="-3" frameY="-5" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10003" x="604" y="2308" width="302" height="361" frameX="-3" frameY="-5" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10004" x="928" y="2308" width="302" height="359" frameX="-2" frameY="-8" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10005" x="928" y="2308" width="302" height="359" frameX="-2" frameY="-8" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10006" x="1252" y="2308" width="301" height="356" frameX="-3" frameY="-11" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10007" x="1252" y="2308" width="301" height="356" frameX="-3" frameY="-11" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10008" x="1575" y="2308" width="302" height="356" frameX="-3" frameY="-11" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10009" x="1575" y="2308" width="302" height="356" frameX="-3" frameY="-11" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10010" x="1575" y="2308" width="302" height="356" frameX="-3" frameY="-11" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10011" x="1899" y="2308" width="299" height="355" frameX="0" frameY="-15" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10012" x="1899" y="2308" width="299" height="355" frameX="0" frameY="-15" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10013" x="2220" y="2308" width="251" height="346" frameX="-20" frameY="-26" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10014" x="2220" y="2308" width="251" height="346" frameX="-20" frameY="-26" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10015" x="2493" y="2308" width="249" height="353" frameX="-23" frameY="-26" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10016" x="2493" y="2308" width="249" height="353" frameX="-23" frameY="-26" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10017" x="2764" y="2308" width="249" height="351" frameX="-23" frameY="-28" frameWidth="306" frameHeight="379"/>
+	<SubTexture name="up copia 5 instancia 10018" x="2764" y="2308" width="249" height="351" frameX="-23" frameY="-28" frameWidth="306" frameHeight="379"/>
+</TextureAtlas>

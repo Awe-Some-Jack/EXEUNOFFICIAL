@@ -12,7 +12,6 @@ import sys.io.File;
 import sys.FileSystem;
 
 import backend.Song;
-import states.stages.objects.TankmenBG;
 
 import flixel.FlxSprite;
 import flixel.text.FlxText;
@@ -126,16 +125,6 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 		animOffsets = new Map<String, Array<Dynamic>>();
 		this.isPlayer = isPlayer;
 		changeCharacter(character);
-
-		switch(curCharacter)
-		{
-			case 'pico-speaker':
-				skipDance = true;
-				loadMappedAnims();
-				playAnim("shoot1");
-			case 'pico-blazin', 'darnell-blazin':
-				skipDance = true;
-		}
 	}
 
 	public function changeCharacter(character:String)
@@ -326,20 +315,6 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 			finishAnimation();
 		}
 
-		switch(curCharacter)
-		{
-			case 'pico-speaker':
-				if(animationNotes.length > 0 && Conductor.songPosition > animationNotes[0][0])
-				{
-					var noteData:Int = 1;
-					if(animationNotes[0][1] > 2) noteData = 3;
-					noteData += FlxG.random.int(0, 1);
-					playAnim('shoot' + noteData, true);
-					animationNotes.shift();
-				}
-				if(isAnimationFinished()) playAnim(getAnimationName(), false, false, animation.curAnim.frames.length - 3);
-		}
-
 		if (_lastPlayedAnimation?.startsWith('sing')) holdTimer += elapsed;
 
 		if (holdTimer >= Conductor.stepCrochet * (0.0011 #if FLX_PITCH / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1) #end) * singDuration)
@@ -436,22 +411,6 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 			else if (AnimName == 'singRIGHT') danced = false;
 			if (AnimName == 'singUP' || AnimName == 'singDOWN') danced = !danced;
 		}
-	}
-
-	function loadMappedAnims():Void
-	{
-		try
-		{
-			var songData:SwagSong = Song.getChart('picospeaker', Paths.formatToSongPath(Song.loadedSongName));
-			if(songData != null)
-				for (section in songData.notes)
-					for (songNotes in section.sectionNotes)
-						animationNotes.push(songNotes);
-
-			TankmenBG.animationNotes = animationNotes;
-			animationNotes.sort(sortAnims);
-		}
-		catch(e:Dynamic) {}
 	}
 
 	function sortAnims(Obj1:Array<Dynamic>, Obj2:Array<Dynamic>):Int

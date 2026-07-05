@@ -78,7 +78,6 @@ import Main;
 	public var discordRPC:Bool = true;
 	public var loadingScreen:Bool = true;
 	public var language:String = 'auto';
-	public var duduMode:Bool = false;
 }
 
 class ClientPrefs {
@@ -208,7 +207,6 @@ class ClientPrefs {
 		}
 
 		FlxSprite.defaultAntialiasing = data.antialiasing;
-		DuduModePlugin.instance?.applyDuduMode();
 		
 		// flixel automatically saves your volume!
 		if(FlxG.save.data.volume != null)

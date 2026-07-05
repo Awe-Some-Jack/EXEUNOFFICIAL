@@ -23,7 +23,7 @@ class ExeGraphicsState extends ExeBaseOptionsState
 	override public function create()
 	{
 		menuTitle = Language.get('options.graphics', 'GRAPHICS');
-		var lbl = Language.getArray('options.graphics.labels', ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADERS", "UNCAPPED FPS", "FRAMERATE", "DUDU MODE"]);
+		var lbl = Language.getArray('options.graphics.labels', ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADERS", "UNCAPPED FPS", "FRAMERATE"]);
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.lowQuality,  setValue: (v) -> ClientPrefs.data.lowQuality   = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.antialiasing, setValue: (v) -> ClientPrefs.data.antialiasing = v},
@@ -31,7 +31,6 @@ class ExeGraphicsState extends ExeBaseOptionsState
 			{label: lbl[3], getValue: () -> ClientPrefs.data.shaders,     setValue: (v) -> ClientPrefs.data.shaders      = v},
 			{label: lbl[4], getValue: () -> ClientPrefs.data.uncappedFPS, setValue: (v) -> ClientPrefs.data.uncappedFPS  = v},
 			{label: lbl[5], getValue: () -> ClientPrefs.data.framerate,   setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true},
-			{label: lbl[6], getValue: () -> ClientPrefs.data.duduMode,    setValue: (v) -> { ClientPrefs.data.duduMode = v; DuduModePlugin.instance?.applyDuduMode(); }}
 		];
 
 		var i = 0;

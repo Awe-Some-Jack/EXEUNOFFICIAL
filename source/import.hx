@@ -44,7 +44,6 @@ import backend.Difficulty;
 import backend.Mods;
 import backend.Language;
 
-import backend.plugins.*;
 import backend.ui.*; //Psych-UI
 
 #if windows

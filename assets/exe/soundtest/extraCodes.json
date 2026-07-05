@@ -35,10 +35,6 @@
 		"path": "assets/exe/soundtest/videos/nebros.mp4"
 	},
 	{
-		"code": [30,31],
-		"type": "sebas"
-	},
-	{
 		"code": [22,74],
 		"type": "video",
 		"path": "assets/exe/soundtest/videos/tripletrouble.mp4"

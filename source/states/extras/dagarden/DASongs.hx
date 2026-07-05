@@ -134,7 +134,7 @@ class DASongs extends FlxGroup
 
 	private function _applyOrder():Void
 	{
-		final orderPath = 'assets/exe/dagarden_order.json';
+		final orderPath = 'assets/exe/extras/dagarden/dagarden_order.json';
 		if (!FileSystem.exists(orderPath)) { _sortAlpha(); return; }
 
 		try

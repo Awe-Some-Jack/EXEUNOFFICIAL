@@ -174,8 +174,6 @@ class Main extends Sprite
 
 		FlxG.mouse.useSystemCursor = true;
 
-		pluginsLessGo();
-
 		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		fpsVar.visible = false;
@@ -220,11 +218,6 @@ class Main extends Sprite
 			if (FlxG.game != null)
 				resetSpriteCache(FlxG.game);
 		});
-	}
-
-	private function pluginsLessGo()
-	{
-		DuduModePlugin.init();
 	}
 
 	public static function resetSpriteCache(sprite:Sprite):Void {

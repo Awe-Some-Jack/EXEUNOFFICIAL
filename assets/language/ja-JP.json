@@ -33,7 +33,7 @@
 	"options.gameplay": "ゲームプレイ",
 	"options.gameplay.labels": ["DOWNSCROLL", "ゴーストタップ", "SICK判定幅", "GOOD判定幅", "BAD判定幅", "セーフフレーム"],
 	"options.graphics": "グラフィック",
-	"options.graphics.labels": ["ポテトモード", "アンチエイリアス", "GPUキャッシュ", "シェーダー", "FPS制限解除", "フレームレート", "DUDUモード"],
+	"options.graphics.labels": ["ポテトモード", "アンチエイリアス", "GPUキャッシュ", "シェーダー", "FPS制限解除", "フレームレート"],
 	"options.language": "言語",
 	"options.on": "オン",
 	"options.off": "オフ",

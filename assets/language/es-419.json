@@ -33,7 +33,7 @@
 	"options.gameplay": "JUGABILIDAD",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "VENTANA SICK", "VENTANA GOOD", "VENTANA BAD", "FRAMES DE SEGURIDAD"],
 	"options.graphics": "GRÁFICOS",
-	"options.graphics.labels": ["MODO PATATA", "ANTIALIASING", "CACHÉ DE GPU", "SHADERS", "FPS SIN LÍMITE", "TASA DE FPS", "MODO DUDU"],
+	"options.graphics.labels": ["MODO PATATA", "ANTIALIASING", "CACHÉ DE GPU", "SHADERS", "FPS SIN LÍMITE", "TASA DE FPS"],
 	"options.language": "IDIOMA",
 	"options.on": "ACTIVADO",
 	"options.off": "DESACTIVADO",

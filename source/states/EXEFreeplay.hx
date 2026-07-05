@@ -51,7 +51,7 @@ class EXEFreeplay extends MusicBeatState
 	static inline final ARROW_UPDATE_INTERVAL:Float = 0.5;
 	static inline final TWEEN_DURATION:Float = 0.3;
 
-	static inline final PATH_FREEBOX:String = 'assets/exe/freeplayassets/boxes/FreeBox.png';
+	static inline final PATH_FREEBOX:String = 'assets/exe/freeplayassets/FreeBox.png';
 	static inline final PATH_COVERS:String = 'assets/exe/freeplayassets/covers/';
 	static inline final FONT_PATH:String = 'assets/fonts/sonicfree.otf';
 
@@ -293,7 +293,7 @@ class EXEFreeplay extends MusicBeatState
 	function maniaNotif():Void 
 	{
 		final maniaNotifSprite = new FlxSprite();
-		maniaNotifSprite.loadGraphic(Assets.getBitmapData('assets/exe/freeplayassets/unlock/mania-notif.png'));
+		maniaNotifSprite.loadGraphic(Assets.getBitmapData('assets/exe/access/mania/mania-notif.png'));
 		maniaNotifSprite.scale.set(0.3, 0.3);
 		maniaNotifSprite.setPosition(250, -340);
 		add(maniaNotifSprite);

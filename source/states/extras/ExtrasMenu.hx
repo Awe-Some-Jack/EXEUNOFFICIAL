@@ -124,7 +124,7 @@ class ExtrasMenu extends MusicBeatState
 
     function initializeMusic():Void
     {
-        FlxG.sound.playMusic(openfl.utils.Assets.getSound('assets/exe/extras/music/ExtrasMenu.ogg'));
+        FlxG.sound.playMusic(openfl.utils.Assets.getSound('assets/exe/music/extras.ogg'));
         extraMenuSong = true;
     }
 

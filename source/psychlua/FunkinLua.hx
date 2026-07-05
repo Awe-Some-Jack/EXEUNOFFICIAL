@@ -16,8 +16,6 @@ import flixel.FlxState;
 import flixel.addons.display.FlxRuntimeShader;
 #end
 
-import cutscenes.DialogueBoxPsych;
-
 import objects.StrumNote;
 import objects.Note;
 import objects.NoteSplash;
@@ -762,38 +760,6 @@ class FunkinLua
 		LuaUtilsHx.addFunction(lua, 'getPixelColor', function(obj:String, x:Int, y:Int) {
 			var spr = _resolveSprite(obj);
 			return spr != null ? spr.pixels.getPixel32(x, y) : FlxColor.BLACK;
-		});
-
-		LuaUtilsHx.addFunction(lua, 'startDialogue', function(dialogueFile:String, music:String = null) {
-			var songPath = Paths.formatToSongPath(Song.loadedSongName);
-			var path:String;
-			#if TRANSLATIONS_ALLOWED
-			path = Paths.getPath('data/$songPath/${dialogueFile}_${ClientPrefs.data.language}.json', TEXT);
-			#if MODS_ALLOWED
-			if (!FileSystem.exists(path))
-			#else
-			if (!Assets.exists(path, TEXT))
-			#end
-			#end
-				path = Paths.getPath('data/$songPath/$dialogueFile.json', TEXT);
-
-			luaTrace('startDialogue: Trying to load dialogue: $path');
-			#if MODS_ALLOWED
-			if (FileSystem.exists(path))
-			#else
-			if (Assets.exists(path, TEXT))
-			#end
-			{
-				var shit:DialogueFile = DialogueBoxPsych.parseDialogue(path);
-				if (shit.dialogue.length > 0) { game.startDialogue(shit, music); luaTrace('startDialogue: Successfully loaded dialogue', false, false, FlxColor.GREEN); return true; }
-				luaTrace('startDialogue: Your dialogue file is badly formatted!', false, false, FlxColor.RED);
-			}
-			else
-			{
-				luaTrace('startDialogue: Dialogue file not found', false, false, FlxColor.RED);
-				if (game.endingSong) game.endSong(); else game.startCountdown();
-			}
-			return false;
 		});
 
 		LuaUtilsHx.addFunction(lua, 'startVideo', function(videoFile:String, canSkip:Bool = true, forMidSong:Bool = false, shouldLoop:Bool = false, ?playOnLoad:Bool = true) {

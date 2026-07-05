@@ -59,7 +59,7 @@ function onUpdatePost(e)
 			and getProperty('notes.members['..i..'].active') then
 				if keyboardJustPressed(ringKeybind) or (getProperty('cpuControlled') and not botplayRingIgnore) then
 					ringAnim('confirm', (getProperty('cpuControlled') == false and 0 or (stepCrochet * 1.25 / 1000 / playbackRate)))
-					ringHit(i);
+					ringHit(i)
 					hasBeenPressed = true
 				end
 			end

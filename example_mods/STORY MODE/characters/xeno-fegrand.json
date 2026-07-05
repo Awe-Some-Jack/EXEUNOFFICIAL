@@ -2,43 +2,43 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [-42, -61],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-9, 96],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "Símbolo 62",
-			"indices": []
-		},
-		{
-			"offsets": [39, -10],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "rigth"
-		},
-		{
-			"offsets": [-83, 16],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"loop": false,
 			"offsets": [0, 0],
 			"anim": "idle",
 			"fps": 24,
 			"name": "sas",
-			"indices": []
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+		},
+		{
+			"loop": false,
+			"offsets": [-1, 0],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "sas",
+			"indices": [24, 25, 26, 27, 28, 29, 30, 31, 32, 33]
+		},
+		{
+			"loop": false,
+			"offsets": [2, -1],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "sas",
+			"indices": [44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+		},
+		{
+			"loop": false,
+			"offsets": [1, -1],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "sas",
+			"indices": [14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+		},
+		{
+			"loop": false,
+			"offsets": [2, 0],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "sas",
+			"indices": [34, 35, 36, 37, 38, 39, 40, 41, 42, 43]
 		}
 	],
 	"vocals_file": "",
@@ -50,6 +50,6 @@
 	"healthbar_colors": [45, 18, 105],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.5,
 	"_editor_isPlayer": false
 }

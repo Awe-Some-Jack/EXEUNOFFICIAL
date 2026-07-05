@@ -4,6 +4,8 @@ import objects.Character;
 import openfl.display.BlendMode;
 import backend.Controls;
 
+using StringTools;
+
 typedef BackgroundSprite =
 {
 	var path:String;
@@ -75,6 +77,10 @@ var bfLegs2back:Character;
 var bfLegs2:Character;
 var bfLegs3:Character;
 var bfLegs4:Character;
+
+//bf on hand section lol
+var bfAtlas:FlxSpriteElement;
+var bf:Character;
 
 var curBG:String = 'intro';
 function onCreate()
@@ -157,6 +163,14 @@ function onCreate()
 	bfLegs4.visible = false;
 	game.insert(game.members.indexOf(boyfriendGroup), bfLegs4);
 
+	//and the bf hand section
+
+	bf = new Character(570, 17, 'bf-fegrand', true);
+	bf.origin.set();
+	bfAtlas = new animate.internal.elements.FlxSpriteElement(bf);
+	bfAtlas.active = false;
+	bf.visible = false;
+
 	game.cpuControlled = true;
 }
 
@@ -230,7 +244,7 @@ function onUpdatePost(elapsed:Float)
 	blackBG.scale.set((1 / camGame.zoom) * offsetScale, (1 / camGame.zoom) * offsetScale);
 	floatSine += elapsed * floatIntensity;
 
-	bfLegsFramerate?.update();
+	bfLegsFramerate?.update(elapsed);
 	legsFrame = bfLegsFramerate.animation.curAnim.curFrame ?? 0;
 	switch(curBG)
 	{
@@ -291,8 +305,8 @@ function onUpdatePost(elapsed:Float)
 				game.insert(game.members.indexOf(xenoRing) + 1, dadGroup);
 			}
 
-			bfLegs2?.update();
-			bfLegs2back?.update();
+			bfLegs2?.update(elapsed);
+			bfLegs2back?.update(elapsed);
 			bfLegs2?.animation.curAnim.curFrame = legsFrame;
 			bfLegs2back?.animation.curAnim.curFrame = legsFrame;
 			if (boyfriend?.animation.curAnim.name == 'idle') boyfriend.animation.curAnim.curFrame = legsFrame;
@@ -313,7 +327,7 @@ function onUpdatePost(elapsed:Float)
 				-170 + Math.cos(floatSine * 0.75) * 50
 			);
 
-			bfLegs3?.update();
+			bfLegs3?.update(elapsed);
 			bfLegs3?.animation.curAnim.curFrame = legsFrame;
 			if (boyfriend?.animation.curAnim.name == 'idle') boyfriend.animation.curAnim.curFrame = legsFrame;
 		case 'fourth':
@@ -328,7 +342,7 @@ function onUpdatePost(elapsed:Float)
 				}
 			}
 
-			bfLegs4?.update();
+			bfLegs4?.update(elapsed);
 			bfLegs4?.animation.curAnim.curFrame = legsFrame;
 			if (boyfriend?.animation.curAnim.name == 'idle') boyfriend.animation.curAnim.curFrame = legsFrame;
 		case 'fifth':
@@ -347,6 +361,8 @@ function onUpdatePost(elapsed:Float)
 			}
 			if (bfPressAction == 'jump' && !jump) bfPressAction = '';
 			if (bfPressAction == 'slide' && !slide) bfPressAction = '';
+		case 'hand':
+			if (bf?.visible) bf?.update(elapsed);
 	}
 }
 
@@ -675,7 +691,7 @@ function onEvent(n,v1,v2)
 				_fbc++;
 				var fbs:FlxSprite = new FlxSprite().loadGraphic(Paths.image('final/flashbacks/$_fbc'));
 				fbs.camera = camVideo;
-				fbs.scale.set(0.8, 0.8); fbs.updateHitbox();
+				fbs.scale.set(0.6, 0.6); fbs.updateHitbox();
 				fbs.screenCenter(0x10);
 				fbs.alpha = 0;
 				game.add(fbs);
@@ -695,7 +711,18 @@ function onEvent(n,v1,v2)
 				boyfriend.alpha = 1;
 				dad.alpha = 1;
 
-				changeCharacter('dad', 'xeno-fe2');
+				curBG = 'hand';
+				changeCharacter('dad', 'xeno-fegrand');
+				dad.danceEveryNumBeats = 9999;
+
+				boyfriend.alpha = 0;
+				bf.visible = true;
+
+				var shit = dad.library.getSymbol("Símbolo 10");
+				shit.timeline.layers[0].forEachFrame((frame) -> {
+					for (i in frame.elements) i.visible = false;  
+					frame.add(bfAtlas);
+				});
 		}
 	}
 	if (n == 'ScreenBorders' && _bruh)
@@ -750,6 +777,13 @@ function goodNoteHit(note)
 		bfDrowningPlayable.playAnim(game.singAnimations[note.noteData], true);
 		bfDrowningPlayable.holdTimer = 0;
 	}
+
+	//xd
+	if (note.noteType == '' && bf.visible)
+	{
+		bf.playAnim(singAnimations[note.noteData]);
+		bf.holdTimer = 0;
+	}
 }
 
 function noteMiss(note)
@@ -790,5 +824,17 @@ function makeBackground(background:Array<BackgroundSprite>)
 		if (spriteDef.front) game.add(sprite);
 		else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
 		spriteDef.sprite = sprite;
+	}
+}
+
+function onBeatHit()
+{
+	if (bf != null && curBeat % 3 == 2 && !bf.stunned && !bf.getAnimationName().startsWith('sing'))
+		bf.dance();
+
+	if (curBG == 'hand')
+	{
+		if (dad != null && curBeat % 3 == 2 && !dad.stunned && !dad.getAnimationName().startsWith('sing'))
+			dad.dance();
 	}
 }

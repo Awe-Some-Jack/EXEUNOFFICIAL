@@ -1,81 +1,49 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [734, -52],
+			"indices": [],
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "Símbolo 174",
-			"indices": []
-		},
-		{
 			"loop": false,
-			"offsets": [685, -113],
-			"anim": "singDOWN-alt",
-			"fps": 24,
-			"name": "down mano",
-			"indices": []
+			"name": "Carpeta de elementos duplicados/bf_idle"
 		},
 		{
-			"loop": false,
-			"offsets": [684, -121],
-			"anim": "singUP-alt",
-			"fps": 24,
-			"name": "up mano",
-			"indices": []
-		},
-		{
-			"offsets": [662, -61],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT-alt",
-			"indices": [],
-			"name": "left mano"
-		},
-		{
-			"offsets": [802, -76],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT-alt",
-			"indices": [],
-			"name": "rigth mano"
-		},
-		{
-			"offsets": [824, -101],
+			"offsets": [793, -136],
 			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
 			"loop": false,
-			"name": "bf_left"
+			"name": "10 Bf And Xeno/BF export/bf_left"
 		},
 		{
-			"offsets": [755, -128],
+			"offsets": [717, -168],
 			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
 			"loop": false,
-			"name": "bf_down"
+			"name": "10 Bf And Xeno/BF export/bf_down"
 		},
 		{
-			"offsets": [779, -8],
+			"offsets": [727, -23],
 			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
 			"loop": false,
-			"name": "bf_up"
+			"name": "10 Bf And Xeno/BF export/bf_up"
 		},
 		{
-			"offsets": [733, -89],
+			"offsets": [704, -112],
 			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
 			"loop": false,
-			"name": "bf_right"
+			"name": "10 Bf And Xeno/BF export/bf_right"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/finalescapebf",
+	"image": "characters/xenobfhand",
 	"position": [0, 0],
 	"healthicon": "bf",
 	"flip_x": true,

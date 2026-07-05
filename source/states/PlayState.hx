@@ -538,6 +538,8 @@ class PlayState extends MusicBeatState
 		#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
 		// "SCRIPTS FOLDER" SCRIPTS
 		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'scripts/'))
+		{
+			#if !mobile
 			for (file in FileSystem.readDirectory(folder))
 			{
 				#if LUA_ALLOWED
@@ -550,17 +552,50 @@ class PlayState extends MusicBeatState
 					initHScript(folder + file);
 				#end
 			}
+			#else
+			for (file in OpenFlAssets.list())
+			{
+				if(file.indexOf(folder) != 0) continue;
+
+				var rest = file.substr(folder.length);
+				if(rest.indexOf('/') != -1) continue;
+
+				#if LUA_ALLOWED
+				if(rest.toLowerCase().endsWith('.lua'))
+					new FunkinLua(file);
+				#end
+
+				#if HSCRIPT_ALLOWED
+				if(rest.toLowerCase().endsWith('.hx'))
+					initHScript(file);
+				#end
+			}
+			#end
+		}
 		#end
 
 		#if HSCRIPT_ALLOWED
 		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'data/$songName/'))
+		{
+			#if !mobile
 			for (file in FileSystem.readDirectory(folder))
 			{
-				#if HSCRIPT_ALLOWED
 				if(file.toLowerCase().endsWith('cleanresolution.hx'))
 					initHScript(folder + file);
-				#end
 			}
+			#else
+			for (file in OpenFlAssets.list())
+			{
+				if(file.indexOf(folder) != 0) continue;
+
+				var rest = file.substr(folder.length);
+				if(rest.indexOf('/') != -1) continue;
+
+				if(rest.toLowerCase().endsWith('cleanresolution.hx'))
+					initHScript(file);
+			}
+			#end
+		}
 		#end
 			
 		var camPos:FlxPoint = FlxPoint.get(girlfriendCameraOffset[0], girlfriendCameraOffset[1]);
@@ -676,6 +711,7 @@ class PlayState extends MusicBeatState
 		// SONG SPECIFIC SCRIPTS
 		#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
 		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'data/$songName/'))
+			#if !mobile
 			for (file in FileSystem.readDirectory(folder))
 			{
 				#if LUA_ALLOWED
@@ -688,6 +724,25 @@ class PlayState extends MusicBeatState
 					initHScript(folder + file);
 				#end
 			}
+			#else
+			for (file in OpenFlAssets.list()) {
+				
+				if(file.indexOf(folder) != 0) continue;
+
+				var rest = file.substr(folder.length);
+				if(rest.indexOf('/') != -1) continue;
+
+				#if LUA_ALLOWED
+				if(rest.toLowerCase().endsWith('.lua'))
+					new FunkinLua(file);
+				#end
+
+				#if HSCRIPT_ALLOWED
+				if(rest.toLowerCase().endsWith('.hx') && !rest.toLowerCase().endsWith('cleanresolution.hx'))
+					initHScript(file);
+				#end
+			}
+			#end
 		#if LUA_ALLOWED
 		if (luaArray.length > 0)
 			trace('[LUA] loaded: [' + luaArray.map(s -> haxe.io.Path.withoutExtension(haxe.io.Path.withoutDirectory(s.scriptName))).join(', ') + ']');
@@ -843,7 +898,7 @@ class PlayState extends MusicBeatState
 		var luaFile:String = 'characters/$name.lua';
 		#if MODS_ALLOWED
 		var replacePath:String = Paths.modFolders(luaFile);
-		if(FileSystem.exists(replacePath))
+		if(#if !mobile FileSystem.exists(replacePath) #else OpenFlAssets.exists(replacePath) #end)
 		{
 			luaFile = replacePath;
 			doPush = true;
@@ -851,7 +906,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			luaFile = Paths.getSharedPath(luaFile);
-			if(FileSystem.exists(luaFile))
+			if(#if !mobile FileSystem.exists(luaFile) #else OpenFlAssets.exists(luaFile) #end)
 				doPush = true;
 		}
 		#else
@@ -879,7 +934,7 @@ class PlayState extends MusicBeatState
 		var scriptFile:String = 'characters/' + name + '.hx';
 		#if MODS_ALLOWED
 		var replacePath:String = Paths.modFolders(scriptFile);
-		if(FileSystem.exists(replacePath))
+		if(#if !mobile FileSystem.exists(replacePath) #else OpenFlAssets.exists(replacePath) #end)
 		{
 			scriptFile = replacePath;
 			doPush = true;
@@ -888,7 +943,7 @@ class PlayState extends MusicBeatState
 		#end
 		{
 			scriptFile = Paths.getSharedPath(scriptFile);
-			if(FileSystem.exists(scriptFile))
+			if(#if !mobile FileSystem.exists(scriptFile) #else OpenFlAssets.exists(scriptFile) #end)
 				doPush = true;
 		}
 
@@ -916,7 +971,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public var videoCutscene:VideoSprite = null;
-	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false)
+	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = true)
 	{
 		function endVideo()
 		{
@@ -969,6 +1024,11 @@ class PlayState extends MusicBeatState
 		} else {
 			FlxG.log.warn('Failed to load video: $name');
 			if(!forMidSong) startAndEnd();
+		}
+
+		if(!playOnLoad) {
+			videoCutscene.play();
+			videoCutscene.stop();
 		}
 		#else
 		FlxG.log.warn('Platform not supported!');
@@ -3599,10 +3659,10 @@ class PlayState extends MusicBeatState
 	{
 		#if MODS_ALLOWED
 		var luaToLoad:String = Paths.modFolders(luaFile);
-		if(!FileSystem.exists(luaToLoad))
+		if(#if !mobile !FileSystem.exists(luaToLoad) #else !OpenFlAssets.exists(luaToLoad) #end)
 			luaToLoad = Paths.getSharedPath(luaFile);
 
-		if(FileSystem.exists(luaToLoad))
+		if(#if !mobile FileSystem.exists(luaToLoad) #else OpenFlAssets.exists(luaToLoad) #end)
 		#elseif sys
 		var luaToLoad:String = Paths.getSharedPath(luaFile);
 		if(OpenFlAssets.exists(luaToLoad))
@@ -3623,13 +3683,13 @@ class PlayState extends MusicBeatState
 	{
 		#if MODS_ALLOWED
 		var scriptToLoad:String = Paths.modFolders(scriptFile);
-		if(!FileSystem.exists(scriptToLoad))
+		if(#if !mobile !FileSystem.exists(scriptToLoad) #else !OpenFlAssets.exists(scriptToLoad) #end)
 			scriptToLoad = Paths.getSharedPath(scriptFile);
 		#else
 		var scriptToLoad:String = Paths.getSharedPath(scriptFile);
 		#end
 
-		if(FileSystem.exists(scriptToLoad))
+		if(#if !mobile FileSystem.exists(scriptToLoad) #else OpenFlAssets.exists(scriptToLoad) #end)
 		{
 			if (Iris.instances.exists(scriptToLoad)) return false;
 
@@ -3933,16 +3993,24 @@ class PlayState extends MusicBeatState
 			var frag:String = folder + name + '.frag';
 			var vert:String = folder + name + '.vert';
 			var found:Bool = false;
-			if(FileSystem.exists(frag))
+			if(#if !mobile FileSystem.exists(frag) #else OpenFlAssets.exists(frag) #end)
 			{
+				#if !mobile
 				frag = File.getContent(frag);
+				#else
+				frag = OpenFlAssets.getText(frag);
+				#end
 				found = true;
 			}
 			else frag = null;
 
-			if(FileSystem.exists(vert))
+			if(#if !mobile FileSystem.exists(vert) #else OpenFlAssets.exists(vert) #end)
 			{
+				#if !mobile
 				vert = File.getContent(vert);
+				#else
+				vert = OpenFlAssets.getText(vert);
+				#end
 				found = true;
 			}
 			else vert = null;

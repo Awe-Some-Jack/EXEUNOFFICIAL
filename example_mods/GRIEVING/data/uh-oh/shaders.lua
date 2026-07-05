@@ -21,8 +21,9 @@ local shaders = {
     ]]
 }
 
+addHaxeLibrary('FlxAngle', 'flixel.math')
+
 runHaxeCode([[
-	import flixel.math.FlxAngle;
 	function setShaderFrameInfo(obj:String) {
 		var char:FlxSprite;
 		switch(obj) {
@@ -43,6 +44,7 @@ runHaxeCode([[
         }
 	}
 ]])
+
 local dashads = ''
 function onCreatePost()
     local dashads = 'game.camGame.filters = ['
@@ -67,6 +69,7 @@ function onCreatePost()
             setShaderFloat(char, 'thr', 0.1)
             setShaderFloat(char, 'uSpriteAlpha', 1.0)
             setShaderFloat(char, 'AA_STAGES', 1.0)
+            setShaderBool(char, 'doBlend', false) --stop fucking touching this the lighting needs to be the same as the bg bruh it doesnt make sense to turn it on
 			setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
 			runHaxeFunction('setShaderFrameInfo', {char})
 		end
@@ -74,7 +77,7 @@ function onCreatePost()
 		setShaderFloat('boyfriend', 'ang', math.rad(115))
 		setShaderFloat('dad', 'dist', 10)
 		setShaderFloat('boyfriend', 'dist', 20)
-        setShaderBool('boyfriend', 'doBlend', true)
+        setShaderBool('boyfriend', 'doBlend', false)
         setShaderBool('boyfriend', 'pixelPerfect', true)
         setShaderBool('boyfriend', 'useOverlay', true)
 
@@ -119,7 +122,7 @@ function onEvent(eventName, value1, value2)
             setShaderFloat('boyfriend', 'ang', math.rad(115))
             setShaderFloat('dad', 'dist', 10)
             setShaderFloat('boyfriend', 'dist', 20)
-            setShaderBool('boyfriend', 'doBlend', true)
+            setShaderBool('boyfriend', 'doBlend', false)
             setShaderBool('boyfriend', 'pixelPerfect', true)
             setShaderBool('boyfriend', 'useOverlay', true)
         end

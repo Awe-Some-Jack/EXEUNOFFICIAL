@@ -146,7 +146,6 @@ function onCreatePost()
 	setProperty('gradient.visible', false)
 
 	startVideo('omwintro', false, true, false, false)
-	if getProperty('videoCutscene') == nil then return end
     callMethod('remove', {instanceArg('videoCutscene')})
 	setProperty('inCutscene', false)
 

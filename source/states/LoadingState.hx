@@ -339,7 +339,7 @@ class LoadingState extends MusicBeatState
 
 				#if MODS_ALLOWED
 				var moddyFile:String = Paths.modsJson('$folder/preload');
-				if (FileSystem.exists(moddyFile)) json = Json.parse(File.getContent(moddyFile));
+				if (#if !mobile FileSystem.exists(moddyFile) #else OpenFlAssets.exists(moddyFile) #end) json = Json.parse(File.getContent(moddyFile));
 				else json = Json.parse(File.getContent(path));
 				#else
 				json = Json.parse(Assets.getText(path));
@@ -565,7 +565,7 @@ class LoadingState extends MusicBeatState
 		try
 		{
 			var path:String = Paths.getPath('characters/$char.json', TEXT);
-			#if MODS_ALLOWED
+			#if (!mobile && MODS_ALLOWED)
 			var character:Dynamic = Json.parse(File.getContent(path));
 			#else
 			var character:Dynamic = Json.parse(Assets.getText(path));
@@ -577,7 +577,7 @@ class LoadingState extends MusicBeatState
 			
 			#if flixel_animate
 			var animToFind:String = Paths.getPath('images/$img/Animation.json', TEXT);
-			if (#if MODS_ALLOWED FileSystem.exists(animToFind) || #end Assets.exists(animToFind))
+			if (#if (!mobile && MODS_ALLOWED) FileSystem.exists(animToFind) || #end OpenFlAssets.exists(animToFind))
 				isAnimateAtlas = true;
 			#end
 
@@ -623,9 +623,9 @@ class LoadingState extends MusicBeatState
 
 		if(!Paths.currentTrackedSounds.exists(file))
 		{
-			if (#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file, SOUND))
+			if (#if (!mobile && sys) FileSystem.exists(file) || #end OpenFlAssets.exists(file, SOUND))
 			{
-				var sound:Sound = #if sys Sound.fromFile(file) #else OpenFlAssets.getSound(file, false) #end;
+				var sound:Sound = #if (sys && !mobile) Sound.fromFile(file) #else OpenFlAssets.getSound(file, false) #end;
 				mutex.acquire();
 				Paths.currentTrackedSounds.set(file, sound);
 
@@ -647,7 +647,7 @@ class LoadingState extends MusicBeatState
 	static function preloadSongPath(key:String):Void
 	{
 		var file:String = Paths.getPath(Language.getFileTranslation(key) + '.${Paths.SOUND_EXT}', SOUND, 'songs', true);
-		#if sys
+		#if (sys && !mobile)
 		if (FileSystem.exists(file))
 		{
 			mutex.acquire();

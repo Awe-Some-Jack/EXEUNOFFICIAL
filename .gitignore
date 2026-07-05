@@ -12,6 +12,9 @@ export/*
 .github/
 *.code-workspace
 vs_Community.exe
+# Android Shit
+tombstones/
+.idea/
 # Local history which shouldn't be shared.
 .history
 .ionide

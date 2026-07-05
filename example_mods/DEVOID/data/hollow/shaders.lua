@@ -27,8 +27,9 @@ local shaders = {
     }},
 }
 
+addHaxeLibrary('FlxAngle', 'flixel.math')
+
 runHaxeCode([[
-	import flixel.math.FlxAngle;
 	function setShaderFrameInfo(obj:String) {
 		var char:FlxSprite;
 		switch(obj) {
@@ -49,7 +50,6 @@ runHaxeCode([[
         }
 	}
 ]])
-
 
 local dashads = ''
 function onCreatePost()

@@ -99,7 +99,8 @@
 	<haxelib name="extension-androidtools" version="git" if="android"/>
 
 	<!--Psych stuff needed-->
-	<haxelib name="linc_luajit" if="LUA_ALLOWED"/>
+	<haxelib name="hxluajit" if="LUA_ALLOWED"/>
+	<haxelib name="hxluajit-wrapper" if="LUA_ALLOWED"/>
 	<haxelib name="hscript-iris" if="HSCRIPT_ALLOWED" />
 	<haxelib name="hxvlc" if="VIDEOS_ALLOWED" />
 	<haxelib name="hxdiscord_rpc" version="1.2.4" if="DISCORD_ALLOWED"/>

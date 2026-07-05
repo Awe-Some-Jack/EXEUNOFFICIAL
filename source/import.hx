@@ -6,9 +6,14 @@ import backend.Discord;
 
 //Psych
 #if LUA_ALLOWED
-import llua.*;
-import llua.Lua;
+import hxluajit.*;
+import hxluajit.Lua;
+import hxluajit.Types.Lua_State;
+import hxluajit.wrapper.LuaUtils as LuaUtilsHx;
+import hxluajit.wrapper.LuaConverter;
 #end
+
+import cpp.RawPointer;
 
 #if ACHIEVEMENTS_ALLOWED
 import backend.Achievements;

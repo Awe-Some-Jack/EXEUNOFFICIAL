@@ -10,9 +10,9 @@ class FlxAnimateFunctions
 {
 	public static function implement(funk:FunkinLua):Void
 	{
-		var lua:State = funk.lua;
+		var lua:Null<RawPointer<Lua_State>> = funk.lua;
 
-		Lua_helper.add_callback(lua, 'makeFlxAnimateSprite', function(tag:String, x:Float = 0, y:Float = 0, loadFolder:String = null) {
+		LuaUtilsHx.addFunction(lua, 'makeFlxAnimateSprite', function(tag:String, x:Float = 0, y:Float = 0, loadFolder:String = null) {
 			tag = tag.replace('.', '');
 			var lastSprite = MusicBeatState.getVariables().get(tag);
 			if (lastSprite != null)
@@ -27,12 +27,12 @@ class FlxAnimateFunctions
 			mySprite.active = true;
 		});
 
-		Lua_helper.add_callback(lua, 'loadAnimateAtlas', function(tag:String, folderOrImg:String, spriteJson:String = null, animationJson:String = null) {
+		LuaUtilsHx.addFunction(lua, 'loadAnimateAtlas', function(tag:String, folderOrImg:String, spriteJson:String = null, animationJson:String = null) {
 			var spr:animate.FlxAnimate = MusicBeatState.getVariables().get(tag);
 			if (spr != null) spr.frames = Paths.getAnimateAtlas(folderOrImg);
 		});
 
-		Lua_helper.add_callback(lua, 'addAnimationBySymbol', function(tag:String, name:String, symbol:String, framerate:Float = 24, loop:Bool = false) {
+		LuaUtilsHx.addFunction(lua, 'addAnimationBySymbol', function(tag:String, name:String, symbol:String, framerate:Float = 24, loop:Bool = false) {
 			var obj:animate.FlxAnimate = cast MusicBeatState.getVariables().get(tag);
 			if (obj == null) return false;
 			
@@ -45,7 +45,7 @@ class FlxAnimateFunctions
 			return true;
 		});
 
-		Lua_helper.add_callback(lua, 'addAnimationBySymbolIndices', function(tag:String, name:String, symbol:String, indices:Any = null, framerate:Float = 24, loop:Bool = false) {
+		LuaUtilsHx.addFunction(lua, 'addAnimationBySymbolIndices', function(tag:String, name:String, symbol:String, indices:Any = null, framerate:Float = 24, loop:Bool = false) {
 			var obj:animate.FlxAnimate = cast MusicBeatState.getVariables().get(tag);
 			if (obj == null) return false;
 

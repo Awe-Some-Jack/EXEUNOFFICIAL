@@ -4,14 +4,14 @@ class DeprecatedFunctions
 {
 	public static function implement(funk:FunkinLua):Void
 	{
-		var lua:State = funk.lua;
+		var lua:Null<RawPointer<Lua_State>> = funk.lua;
 
-		Lua_helper.add_callback(lua, 'addAnimationByIndicesLoop', function(obj:String, name:String, prefix:String, indices:String, framerate:Int = 24) {
+		LuaUtilsHx.addFunction(lua, 'addAnimationByIndicesLoop', function(obj:String, name:String, prefix:String, indices:String, framerate:Int = 24) {
 			FunkinLua.luaTrace('addAnimationByIndicesLoop is deprecated! Use addAnimationByIndices instead', false, true);
 			return LuaUtils.addAnimByIndices(obj, name, prefix, indices, framerate, true);
 		});
 
-		Lua_helper.add_callback(lua, 'objectPlayAnimation', function(obj:String, name:String, forced:Bool = false, startFrame:Int = 0) {
+		LuaUtilsHx.addFunction(lua, 'objectPlayAnimation', function(obj:String, name:String, forced:Bool = false, startFrame:Int = 0) {
 			FunkinLua.luaTrace('objectPlayAnimation is deprecated! Use playAnim instead', false, true);
 			var luaObj = PlayState.instance.getLuaObject(obj);
 			if (luaObj != null)
@@ -28,7 +28,7 @@ class DeprecatedFunctions
 			return false;
 		});
 
-		Lua_helper.add_callback(lua, 'characterPlayAnim', function(character:String, anim:String, forced:Bool = false) {
+		LuaUtilsHx.addFunction(lua, 'characterPlayAnim', function(character:String, anim:String, forced:Bool = false) {
 			FunkinLua.luaTrace('characterPlayAnim is deprecated! Use playAnim instead', false, true);
 			switch (character.toLowerCase())
 			{
@@ -44,13 +44,13 @@ class DeprecatedFunctions
 			}
 		});
 
-		Lua_helper.add_callback(lua, 'luaSpriteMakeGraphic', function(tag:String, width:Int, height:Int, color:String) {
+		LuaUtilsHx.addFunction(lua, 'luaSpriteMakeGraphic', function(tag:String, width:Int, height:Int, color:String) {
 			FunkinLua.luaTrace('luaSpriteMakeGraphic is deprecated! Use makeGraphic instead', false, true);
 			var obj = MusicBeatState.getVariables().get(tag);
 			if (obj != null) obj.makeGraphic(width, height, CoolUtil.colorFromString(color));
 		});
 
-		Lua_helper.add_callback(lua, 'luaSpriteAddAnimationByPrefix', function(tag:String, name:String, prefix:String, framerate:Int = 24, loop:Bool = true) {
+		LuaUtilsHx.addFunction(lua, 'luaSpriteAddAnimationByPrefix', function(tag:String, name:String, prefix:String, framerate:Int = 24, loop:Bool = true) {
 			FunkinLua.luaTrace('luaSpriteAddAnimationByPrefix is deprecated! Use addAnimationByPrefix instead', false, true);
 			var spr:ModchartSprite = MusicBeatState.getVariables().get(tag);
 			if (spr != null)
@@ -60,7 +60,7 @@ class DeprecatedFunctions
 			}
 		});
 
-		Lua_helper.add_callback(lua, 'luaSpriteAddAnimationByIndices', function(tag:String, name:String, prefix:String, indices:String, framerate:Int = 24) {
+		LuaUtilsHx.addFunction(lua, 'luaSpriteAddAnimationByIndices', function(tag:String, name:String, prefix:String, indices:String, framerate:Int = 24) {
 			FunkinLua.luaTrace('luaSpriteAddAnimationByIndices is deprecated! Use addAnimationByIndices instead', false, true);
 			var spr:ModchartSprite = MusicBeatState.getVariables().get(tag);
 			if (spr != null)
@@ -71,13 +71,13 @@ class DeprecatedFunctions
 			}
 		});
 
-		Lua_helper.add_callback(lua, 'luaSpritePlayAnimation', function(tag:String, name:String, forced:Bool = false) {
+		LuaUtilsHx.addFunction(lua, 'luaSpritePlayAnimation', function(tag:String, name:String, forced:Bool = false) {
 			FunkinLua.luaTrace('luaSpritePlayAnimation is deprecated! Use playAnim instead', false, true);
 			var obj = MusicBeatState.getVariables().get(tag);
 			if (obj != null) obj.animation.play(name, forced);
 		});
 
-		Lua_helper.add_callback(lua, 'setLuaSpriteCamera', function(tag:String, camera:String = '') {
+		LuaUtilsHx.addFunction(lua, 'setLuaSpriteCamera', function(tag:String, camera:String = '') {
 			FunkinLua.luaTrace('setLuaSpriteCamera is deprecated! Use setObjectCamera instead', false, true);
 			var obj = MusicBeatState.getVariables().get(tag);
 			if (obj != null)
@@ -89,7 +89,7 @@ class DeprecatedFunctions
 			return false;
 		});
 
-		Lua_helper.add_callback(lua, 'setLuaSpriteScrollFactor', function(tag:String, scrollX:Float, scrollY:Float) {
+		LuaUtilsHx.addFunction(lua, 'setLuaSpriteScrollFactor', function(tag:String, scrollX:Float, scrollY:Float) {
 			FunkinLua.luaTrace('setLuaSpriteScrollFactor is deprecated! Use setScrollFactor instead', false, true);
 			var obj = MusicBeatState.getVariables().get(tag);
 			if (obj != null)
@@ -100,7 +100,7 @@ class DeprecatedFunctions
 			return false;
 		});
 
-		Lua_helper.add_callback(lua, 'scaleLuaSprite', function(tag:String, x:Float, y:Float) {
+		LuaUtilsHx.addFunction(lua, 'scaleLuaSprite', function(tag:String, x:Float, y:Float) {
 			FunkinLua.luaTrace('scaleLuaSprite is deprecated! Use scaleObject instead', false, true);
 			var spr:ModchartSprite = MusicBeatState.getVariables().get(tag);
 			if (spr != null)
@@ -112,7 +112,7 @@ class DeprecatedFunctions
 			return false;
 		});
 
-		Lua_helper.add_callback(lua, 'getPropertyLuaSprite', function(tag:String, variable:String) {
+		LuaUtilsHx.addFunction(lua, 'getPropertyLuaSprite', function(tag:String, variable:String) {
 			FunkinLua.luaTrace('getPropertyLuaSprite is deprecated! Use getProperty instead', false, true);
 			var obj = MusicBeatState.getVariables().get(tag);
 			if (obj != null)
@@ -129,7 +129,7 @@ class DeprecatedFunctions
 			return null;
 		});
 
-		Lua_helper.add_callback(lua, 'setPropertyLuaSprite', function(tag:String, variable:String, value:Dynamic) {
+		LuaUtilsHx.addFunction(lua, 'setPropertyLuaSprite', function(tag:String, variable:String, value:Dynamic) {
 			FunkinLua.luaTrace('setPropertyLuaSprite is deprecated! Use setProperty instead', false, true);
 			var obj = MusicBeatState.getVariables().get(tag);
 			if (obj != null)
@@ -149,17 +149,17 @@ class DeprecatedFunctions
 			return false;
 		});
 
-		Lua_helper.add_callback(lua, 'musicFadeIn', function(duration:Float, fromValue:Float = 0, toValue:Float = 1) {
+		LuaUtilsHx.addFunction(lua, 'musicFadeIn', function(duration:Float, fromValue:Float = 0, toValue:Float = 1) {
 			FlxG.sound.music.fadeIn(duration, fromValue, toValue);
 			FunkinLua.luaTrace('musicFadeIn is deprecated! Use soundFadeIn instead.', false, true);
 		});
 
-		Lua_helper.add_callback(lua, 'musicFadeOut', function(duration:Float, toValue:Float = 0) {
+		LuaUtilsHx.addFunction(lua, 'musicFadeOut', function(duration:Float, toValue:Float = 0) {
 			FlxG.sound.music.fadeOut(duration, toValue);
 			FunkinLua.luaTrace('musicFadeOut is deprecated! Use soundFadeOut instead.', false, true);
 		});
 
-		Lua_helper.add_callback(lua, 'updateHitboxFromGroup', function(group:String, index:Int) {
+		LuaUtilsHx.addFunction(lua, 'updateHitboxFromGroup', function(group:String, index:Int) {
 			FunkinLua.luaTrace('updateHitboxFromGroup is deprecated! Use updateHitbox instead.', false, true);
 			var prop:Dynamic = Reflect.getProperty(LuaUtils.getTargetInstance(), group);
 			if (Std.isOfType(prop, FlxTypedGroup))

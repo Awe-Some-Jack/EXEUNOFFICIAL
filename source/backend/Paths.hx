@@ -173,7 +173,12 @@ class Paths
 			if (parentfolder != null) customFile = '$parentfolder/$file';
 
 			var modded:String = modFolders(customFile);
+			#if (!mobile)
 			if(FileSystem.exists(modded)) return modded;
+			#else
+			trace(OpenFlAssets.exists(modded, type) + " " + modded);
+			if(OpenFlAssets.exists(modded, type)) return modded;
+			#end
 		}
 		#end
 
@@ -334,7 +339,7 @@ class Paths
 	inline static public function getTextFromFile(key:String, ?ignoreMods:Bool = false):String
 	{
 		var path:String = getPath(key, TEXT, !ignoreMods);
-		#if sys
+		#if (!mobile && sys)
 		return (FileSystem.exists(path)) ? File.getContent(path) : null;
 		#else
 		return (OpenFlAssets.exists(path, TEXT)) ? Assets.getText(path) : null;
@@ -353,7 +358,7 @@ class Paths
 
 	public static function fileExists(key:String, type:AssetType, ?ignoreMods:Bool = false, ?parentFolder:String = null)
 	{
-		#if MODS_ALLOWED
+		#if (!mobile && MODS_ALLOWED)
 		if(!ignoreMods)
 		{
 			var modKey:String = key;
@@ -366,6 +371,19 @@ class Paths
 			if (FileSystem.exists(mods(Mods.currentModDirectory + '/' + modKey)) || FileSystem.exists(mods(modKey)))
 				return true;
 		}
+		#else
+		if(!ignoreMods)
+		{
+			var modKey:String = key;
+			if(parentFolder == 'songs') modKey = 'songs/$key';
+
+			for(mod in Mods.getGlobalMods())
+				if (OpenFlAssets.exists(mods('$mod/$modKey')))
+					return true;
+
+			if (OpenFlAssets.exists(mods(Mods.currentModDirectory + '/' + modKey)) || OpenFlAssets.exists(mods(modKey)))
+				return true;
+		}
 		#end
 		return (OpenFlAssets.exists(getPath(key, type, parentFolder, false)));
 	}
@@ -376,7 +394,7 @@ class Paths
 		var imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
 
 		var myXml:Dynamic = getPath('images/$key.xml', TEXT, parentFolder, true);
-		if(OpenFlAssets.exists(myXml) #if MODS_ALLOWED || (FileSystem.exists(myXml) && (useMod = true)) #end )
+		if(OpenFlAssets.exists(myXml) #if (!mobile && MODS_ALLOWED) || (FileSystem.exists(myXml) && (useMod = true)) #else || (OpenFlAssets.exists(myXml) && (useMod = true)) #end )
 		{
 			#if MODS_ALLOWED
 			return FlxAtlasFrames.fromSparrow(imageLoaded, (useMod ? File.getContent(myXml) : myXml));
@@ -387,7 +405,7 @@ class Paths
 		else
 		{
 			var myJson:Dynamic = getPath('images/$key.json', TEXT, parentFolder, true);
-			if(OpenFlAssets.exists(myJson) #if MODS_ALLOWED || (FileSystem.exists(myJson) && (useMod = true)) #end )
+			if(OpenFlAssets.exists(myJson) #if (!mobile && MODS_ALLOWED) || (FileSystem.exists(myJson) && (useMod = true)) #else || (OpenFlAssets.exists(myJson) && (useMod = true)) #end )
 			{
 				#if MODS_ALLOWED
 				return FlxAtlasFrames.fromTexturePackerJson(imageLoaded, (useMod ? File.getContent(myJson) : myJson));
@@ -480,7 +498,7 @@ class Paths
 		//trace('precaching sound: $file');
 		if(!currentTrackedSounds.exists(file))
 		{
-			#if sys
+			#if (!mobile && sys)
 			if(FileSystem.exists(file))
 				currentTrackedSounds.set(file, Sound.fromFile(file));
 			#else
@@ -537,14 +555,14 @@ class Paths
 		if(Mods.currentModDirectory != null && Mods.currentModDirectory.length > 0)
 		{
 			var fileToCheck:String = mods(Mods.currentModDirectory + '/' + key);
-			if(FileSystem.exists(fileToCheck))
+			if(#if(!mobile) FileSystem.exists(fileToCheck) #else OpenFlAssets.exists(fileToCheck) #end)
 				return fileToCheck;
 		}
 
 		for(mod in Mods.getGlobalMods())
 		{
 			var fileToCheck:String = mods(mod + '/' + key);
-			if(FileSystem.exists(fileToCheck))
+			if(#if(!mobile) FileSystem.exists(fileToCheck) #else OpenFlAssets.exists(fileToCheck) #end)
 				return fileToCheck;
 		}
 		return 'mods/' + key;

@@ -154,7 +154,7 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 
 		var path:String = Paths.getPath(characterPath, TEXT);
 
-		#if MODS_ALLOWED
+		#if (!mobile && MODS_ALLOWED)
 		if (!FileSystem.exists(path))
 		#else
 		if (!Assets.exists(path))
@@ -169,7 +169,7 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 
 		try
 		{
-			#if MODS_ALLOWED
+			#if (!mobile && MODS_ALLOWED)
 			loadCharacterFile(Json.parse(File.getContent(path)));
 			#else
 			loadCharacterFile(Json.parse(Assets.getText(path)));
@@ -193,7 +193,7 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 
 		#if flixel_animate
 		var animToFind:String = Paths.getPath('images/' + json.image + '/Animation.json', TEXT);
-		if (#if MODS_ALLOWED FileSystem.exists(animToFind) || #end Assets.exists(animToFind))
+		if (#if (!mobile && MODS_ALLOWED) FileSystem.exists(animToFind) || #end Assets.exists(animToFind))
 			loadedAnimate = true;
 		#end
 

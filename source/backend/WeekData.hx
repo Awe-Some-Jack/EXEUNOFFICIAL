@@ -150,7 +150,7 @@ class WeekData {
 				var raw:String = OpenFlAssets.getText(directory + 'weekList.txt');
 				var listOfWeeks:Array<String> = raw.split('\n');
 
-				for(daWeek in listOfWeeks) m{
+				for(daWeek in listOfWeeks) {
 					daWeek = daWeek.trim();
 					if(daWeek.length == 0) continue;
 

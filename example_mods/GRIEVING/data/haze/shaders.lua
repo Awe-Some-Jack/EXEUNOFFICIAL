@@ -28,8 +28,11 @@ local shaders = {
     }}
 }
 
+luaDebugMode = true
+
+addHaxeLibrary('FlxAngle', 'flixel.math')
+
 runHaxeCode([[
-	import flixel.math.FlxAngle;
 	function setShaderFrameInfo(obj:String) {
 		var char:FlxSprite;
 		switch(obj) {
@@ -50,7 +53,6 @@ runHaxeCode([[
         }
 	}
 ]])
-
 
 local dashads = ''
 local dashadsHUD = ''
@@ -96,7 +98,7 @@ local lightningPhase = {
             setShaderFloat('boyfriend', 'ang', math.rad(115))
             setShaderFloat('dad', 'dist', 10)
             setShaderFloat('boyfriend', 'dist', 20)
-            setShaderBool('boyfriend', 'doBlend', true)
+            setShaderBool('boyfriend', 'doBlend', false) -- same here leave it alone
         setShaderBool('boyfriend', 'pixelPerfect', true)
         setShaderBool('boyfriend', 'useOverlay', true)
     end,
@@ -118,7 +120,7 @@ local lightningPhase = {
         setShaderFloat('boyfriend', 'ang', math.rad(115))
         setShaderFloat('dad', 'dist', 10)
         setShaderFloat('boyfriend', 'dist', 20)
-        setShaderBool('boyfriend', 'doBlend', true)
+        setShaderBool('boyfriend', 'doBlend', false)
         setShaderBool('boyfriend', 'pixelPerfect', true)
         setShaderBool('boyfriend', 'useOverlay', true)
     end,
@@ -139,7 +141,7 @@ local lightningPhase = {
         end
         setShaderFloat('boyfriend', 'ang', math.rad(115))
         setShaderFloat('boyfriend', 'dist', 20)
-        setShaderBool('boyfriend', 'doBlend', true)
+        setShaderBool('boyfriend', 'doBlend', false)
         setShaderBool('boyfriend', 'pixelPerfect', true)
         setShaderBool('boyfriend', 'useOverlay', true)
     end
@@ -306,4 +308,8 @@ function onTweenCompleted(tag)
     if tag == 'waveTween' then
         onTween6 = false
     end
+end
+
+function opponentNoteHit()
+    runHaxeFunction('setShaderFrameInfo', {'dad'})
 end

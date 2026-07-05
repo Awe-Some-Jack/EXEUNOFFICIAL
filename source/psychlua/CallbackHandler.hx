@@ -3,11 +3,11 @@ package psychlua;
 
 class CallbackHandler
 {
-	public static inline function call(l:State, fname:String):Int
+	public static inline function call(l:Null<RawPointer<Lua_State>>, fname:String):Int
 	{
 		try
 		{
-			var cbf:Dynamic = Lua_helper.callbacks.get(fname);
+			var cbf:Dynamic = LuaUtils.functionCallbacks.get(lua)?.get(fname);
 
 			if (cbf == null)
 			{
@@ -42,7 +42,7 @@ class CallbackHandler
 		}
 		catch (e:haxe.Exception)
 		{
-			if (Lua_helper.sendErrorsToLua)
+			if (LuaError.errorHandler != null)
 			{
 				LuaL.error(l, 'CALLBACK ERROR! ${e.details()}');
 				return 0;

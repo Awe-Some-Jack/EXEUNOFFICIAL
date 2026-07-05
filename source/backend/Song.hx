@@ -138,16 +138,22 @@ class Song
 	static var _lastPath:String;
 	public static function getChart(jsonInput:String, ?folder:String):SwagSong
 	{
+		trace(jsonInput + " " + folder);
 		if(folder == null) folder = jsonInput;
 		var rawData:String = null;
 		
 		var formattedFolder:String = Paths.formatToSongPath(folder);
 		var formattedSong:String = Paths.formatToSongPath(jsonInput);
 		_lastPath = Paths.json('$formattedFolder/$formattedSong');
+		trace(_lastPath);
 
-		#if MODS_ALLOWED
+		#if (!mobile && MODS_ALLOWED)
 		if(FileSystem.exists(_lastPath))
 			rawData = File.getContent(_lastPath);
+		else
+		#else
+		if(OpenFlAssets.exists(_lastPath))
+			rawData = Assets.getText(_lastPath);
 		else
 		#end
 			rawData = Assets.getText(_lastPath);

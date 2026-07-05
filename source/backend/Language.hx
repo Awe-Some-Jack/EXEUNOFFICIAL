@@ -112,8 +112,8 @@ class Language
 	}
 
 	#if LUA_ALLOWED
-	public static function addLuaCallbacks(lua:llua.State) {
-		Lua_helper.add_callback(lua, "getTranslationPhrase", function(key:String, ?fallback:String) {
+	public static function addLuaCallbacks(lua:Null<RawPointer<Lua_State>>) {
+		LuaUtilsHx.addFunction(lua, "getTranslationPhrase", function(key:String, ?fallback:String) {
 			return get(key, fallback);
 		});
 	}

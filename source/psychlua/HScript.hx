@@ -108,7 +108,11 @@ class HScript extends Iris
 			var f:String = file.replace('\\', '/');
 			if (f.contains('/') && !f.contains('\n'))
 			{
+				#if !mobile
 				scriptThing = File.getContent(f);
+				#else
+				scriptThing = OpenFlAssets.getText(f);
+				#end
 				scriptName = f;
 			}
 		}
@@ -276,7 +280,7 @@ class HScript extends Iris
 		set('createGlobalCallback', function(name:String, func:Dynamic) {
 			for (script in PlayState.instance.luaArray)
 				if (script != null && script.lua != null && !script.closed)
-					Lua_helper.add_callback(script.lua, name, func);
+					LuaUtilsHx.addFunction(script.lua, name, func);
 			FunkinLua.customFunctions.set(name, func);
 		});
 		set('createCallback', function(name:String, func:Dynamic, funk:FunkinLua = null) {
@@ -362,8 +366,6 @@ class HScript extends Iris
 			catch (e:IrisError) { Iris.error(Printer.errorToString(e, false), pos); }
 
 			FunkinLua.lastCalledScript = funk;
-			if (FunkinLua.getBool('luaDebugMode') && FunkinLua.getBool('luaDeprecatedWarnings'))
-				Iris.warn('addHaxeLibrary is deprecated! Import classes through "import" in HScript!', pos);
 		});
 	}
 	#end

@@ -44,6 +44,8 @@ import backend.FunkinCache;
 import backend.MemoryUtil;
 import backend.Highscore;
 
+import states.EXEFreeplay;
+
 // NATIVE API STUFF, YOU CAN IGNORE THIS AND SCROLL //
 #if (linux && !debug)
 @:cppInclude('./external/gamemode_client.h')
@@ -56,7 +58,11 @@ class Main extends Sprite
 	public static final game = {
 		width: 1280, // WINDOW width
 		height: 720, // WINDOW height
+		#if mobile
+		initialState: EXEFreeplay, // for testing purposes, mobile devices will start in EXETitle when im done
+		#else
 		initialState: EXETitle, // initial game state
+		#end
 		framerate: 60, // default framerate
 		skipSplash: true, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode
@@ -91,6 +97,7 @@ class Main extends Sprite
 			if (e.keyCode == FlxKey.F11) FlxG.fullscreen = !FlxG.fullscreen;
 			if (e.keyCode == FlxKey.ENTER && e.altKey) e.stopImmediatePropagation();
 		}, false, 100);
+
 
 		#if LUA_ALLOWED
 		Mods.pushGlobalMods();
@@ -156,7 +163,7 @@ class Main extends Sprite
 		crowplexus.iris.macro.AbstractMacro.init();
 		#end
 
-		#if LUA_ALLOWED Lua.set_callbacks_function(cpp.Callable.fromStaticFunction(psychlua.CallbackHandler.call)); #end
+		//#if LUA_ALLOWED Lua.set_callbacks_function(cpp.Callable.fromStaticFunction(psychlua.CallbackHandler.call)); #end
 		FunkinCache.init();
 		Paths.initStateSignals();
 

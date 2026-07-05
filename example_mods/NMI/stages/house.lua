@@ -1,29 +1,5 @@
 local separation = 50
 
-runHaxeCode([[
-	import flixel.math.FlxAngle;
-	function setShaderFrameInfo(obj:String) {
-		var char:FlxSprite;
-		switch(obj) {
-			case 'boyfriend':
-				char = game.boyfriend;
-			case 'dad':
-				char = game.dad;
-			case 'gf':
-				char = game.gf;
-		}
-
-        char.animation.callback = function(name:String, frameNumber:Int, frameIndex:Int)
-		{
-			if (char.shader != null) {
-				char.shader.setFloatArray('uFrameBounds', [char.frame.uv.x, char.frame.uv.y, char.frame.uv.width, char.frame.uv.height]);
-				char.shader.setFloat('angOffset', char.frame.angle * FlxAngle.TO_RAD);
-			}
-        }
-	}
-]])
-
-
 for i = 1,4 do precacheImage('renders/render'..i) end
 precacheImage('ycstnmi')
 
@@ -32,8 +8,6 @@ function onCreatePost()
 	--precache video
 	startVideo('fakebabyfinal', false, true, false, false)
 	startVideo('fakebaby', false, true, false, false)
-	if getProperty('videoCutscene') == nil then return end
-    callMethod('remove', {instanceArg('videoCutscene')})
 	setProperty('inCutscene', false)
 	setProperty('boyfriend.alpha', 0)
 	addCharacterToList('nmi2', 'dad')
@@ -318,7 +292,29 @@ function onEvent(n,v1,v2)
 					setShaderFloat(char, 'brightness', -30)
 					setShaderFloat(char, 'thr', 0.1)
 					setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
-					runHaxeFunction('setShaderFrameInfo', {char})
+					addHaxeLibrary('FlxAngle', 'flixel.math')
+					runHaxeCode([[
+						function setShaderFrameInfo(obj:String) {
+							var char:FlxSprite;
+							switch(obj) {
+								case 'boyfriend':
+									char = game.boyfriend;
+								case 'dad':
+									char = game.dad;
+								case 'gf':
+									char = game.gf;
+							}
+
+							char.animation.callback = function(name:String, frameNumber:Int, frameIndex:Int)
+							{
+								if (char.shader != null) {
+									char.shader.setFloatArray('uFrameBounds', [char.frame.uv.x, char.frame.uv.y, char.frame.uv.width, char.frame.uv.height]);
+									char.shader.setFloat('angOffset', char.frame.angle * FlxAngle.TO_RAD);
+								}
+							}
+						}
+						setShaderFrameInfo('boyfriend');
+					]])
 				end
 				setShaderFloat('boyfriend', 'ang', math.rad(180))
 				setShaderFloat('boyfriend', 'dist', 20)

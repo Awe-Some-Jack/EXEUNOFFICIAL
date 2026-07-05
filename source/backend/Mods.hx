@@ -111,14 +111,14 @@ class Mods
 	{
 		var foldersToCheck:Array<String> = [];
 		//Main folder
-		if(FileSystem.exists(path + fileToFind))
+		if(#if !mobile FileSystem.exists(path + fileToFind) #else OpenFlAssets.exists(path + fileToFind) #end)
 			foldersToCheck.push(path + fileToFind);
 
 		// Week folder
 		if(Paths.currentLevel != null && Paths.currentLevel != path)
 		{
 			var pth:String = Paths.getFolderPath(fileToFind, Paths.currentLevel);
-			if(!foldersToCheck.contains(pth) && FileSystem.exists(pth))
+			if(!foldersToCheck.contains(pth) && #if !mobile FileSystem.exists(pth) #else OpenFlAssets.exists(pth) #end)
 				foldersToCheck.push(pth);
 		}
 
@@ -129,18 +129,18 @@ class Mods
 			for(mod in Mods.getGlobalMods())
 			{
 				var folder:String = Paths.mods(mod + '/' + fileToFind);
-				if(FileSystem.exists(folder) && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
+				if(#if !mobile FileSystem.exists(folder) #else OpenFlAssets.exists(folder) #end && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
 			}
 
 			// Then "PsychEngine/mods/" main folder
 			var folder:String = Paths.mods(fileToFind);
-			if(FileSystem.exists(folder) && !foldersToCheck.contains(folder)) foldersToCheck.push(Paths.mods(fileToFind));
+			if(#if !mobile FileSystem.exists(folder) #else OpenFlAssets.exists(folder) #end && !foldersToCheck.contains(folder)) foldersToCheck.push(Paths.mods(fileToFind));
 
 			// And lastly, the loaded mod's folder
 			if(Mods.currentModDirectory != null && Mods.currentModDirectory.length > 0)
 			{
 				var folder:String = Paths.mods(Mods.currentModDirectory + '/' + fileToFind);
-				if(FileSystem.exists(folder) && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
+				if(#if !mobile FileSystem.exists(folder) #else OpenFlAssets.exists(folder) #end && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
 			}
 		}
 		#end
@@ -153,7 +153,7 @@ class Mods
 		if(folder == null) folder = Mods.currentModDirectory;
 
 		var path = Paths.mods(folder + '/pack.json');
-		if(FileSystem.exists(path)) {
+		if(#if !mobile FileSystem.exists(path) #else OpenFlAssets.exists(path) #end) {
 			try {
 				#if sys
 				var rawJson:String = File.getContent(path);

@@ -11,7 +11,6 @@ haxelib install tjson 1.4.0
 haxelib install hxdiscord_rpc 1.2.4
 haxelib install hxvlc 2.3.0 --skip-dependencies
 haxelib install hxWindowColorMode 0.2.1
-haxelib git flxgif https://github.com/FNF-CC-ENGINE/flxgif.git
 haxelib git hscript-iris https://github.com/GreenColdTea/hscript-iris.git
 haxelib git flixel-animate https://github.com/FNF-CC-ENGINE/flixel-animate.git --skip-dependencies
 haxelib git hxluajit https://github.com/MAJigsaw77/hxluajit.git

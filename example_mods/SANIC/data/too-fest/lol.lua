@@ -68,14 +68,14 @@ end
 
 function goodNoteHit(id,nd,nt,isn)
 	if not inmierda then return end
-	if not isn and getProperty('notes.members['..id..'].noteSplashData.disabled') == false then
+	if not isn and getProperty('notes.members['..id..'].noteSplashDisabled') == false then
 		doSplash(nd, false)
 	end
 end
 
 function opponentNoteHit(id,nd,nt,isn)
 	if not inmierda then return end
-	if not isn and getProperty('notes.members['..id..'].noteSplashData.disabled') == false then
+	if not isn and getProperty('notes.members['..id..'].noteSplashDisabled') == false then
 		doSplash(nd, true)
 	end
 end

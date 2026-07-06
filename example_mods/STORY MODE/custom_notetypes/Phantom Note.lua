@@ -5,7 +5,7 @@ function onCreate()
 	for i = 0, getProperty('unspawnNotes.length')-1 do
 		if getPropertyFromGroup('unspawnNotes', i, 'noteType') == 'Phantom Note' then
 			setProperty('unspawnNotes['..i..'].texture', 'noteSkins/dani')
-			setProperty('unspawnNotes['..i..'].noteSplashData.disabled', true)
+			setProperty('unspawnNotes['..i..'].noteSplashDisabled', true)
 			setProperty('unspawnNotes['..i..'].ignoreNote', true)
 			setProperty('unspawnNotes['..i..'].noAnimation', true)
 			setProperty('unspawnNotes['..i..'].hitHealth', 0)

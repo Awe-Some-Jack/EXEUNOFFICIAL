@@ -283,7 +283,7 @@ function goodNoteHitPre(id,nd,nt,isn)
 		if stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then cancelTimer('noteHold'..(nd + 4)) playAnim('noteHold'..(nd + 4), 'end', true) holdsSplashHold[nd + 5] = 0 end
 	end
 end
-function goodNoteHit(id,nd,nt,isn) if not isn and getProperty('notes.members['..id..'].noteSplashData.disabled') == false and getProperty('notes.members['..id..'].rating') == 'sick' then doSplash(nd, currentSkin) end end
+function goodNoteHit(id,nd,nt,isn) if not isn and getProperty('notes.members['..id..'].noteSplashDisabled') == false and getProperty('notes.members['..id..'].rating') == 'sick' then doSplash(nd, currentSkin) end end
 
 function opponentNoteHitPre(id,nd,nt,isn)
 	if not holdsEnabled then return end

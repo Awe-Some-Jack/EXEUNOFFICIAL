@@ -5163,7 +5163,7 @@
 	"stage": "movie",
 	"validScore": true,
 	"bpm": 175,
-	"arrowSkin": "NOTENORMAL_assets",
+	"arrowSkin": "noteSkins/NOTENORMAL_assets",
 	"speed": 3,
 	"format": "psych_v1_convert"
 }

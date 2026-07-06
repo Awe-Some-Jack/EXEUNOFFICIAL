@@ -3766,7 +3766,7 @@
 	"song": "Mania",
 	"stage": "garage",
 	"needsVoices": true,
-	"arrowSkin": "NOTENORMAL_assets",
+	"arrowSkin": "noteSkins/NOTENORMAL_assets",
 	"bpm": 145,
 	"speed": 3,
 	"format": "psych_v1_convert"

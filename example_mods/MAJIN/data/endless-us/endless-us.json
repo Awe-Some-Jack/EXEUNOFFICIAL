@@ -4526,7 +4526,7 @@
 	"needsVoices": true,
 	"stage": "majin",
 	"validScore": true,
-	"arrowSkin": "NOTENORMAL_assets",
+	"arrowSkin": "noteSkins/NOTENORMAL_assets",
 	"bpm": 162,
 	"speed": 3.1,
 	"format": "psych_v1_convert"

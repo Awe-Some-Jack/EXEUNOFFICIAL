@@ -1594,7 +1594,7 @@
 	"stage": "sonuchi",
 	"needsVoices": true,
 	"format": "psych_v1_convert",
-	"arrowSkin": "NOTENORMAL_assets",
+	"arrowSkin": "noteSkins/NOTENORMAL_assets",
 	"speed": 3,
 	"bpm": 190
 }

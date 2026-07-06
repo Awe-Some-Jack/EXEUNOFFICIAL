@@ -3558,7 +3558,7 @@
 	"needsVoices": true,
 	"stage": "coldsteel",
 	"validScore": true,
-	"arrowSkin": "NOTENORMAL_assets",
+	"arrowSkin": "noteSkins/NOTENORMAL_assets",
 	"format": "psych_v1_convert",
 	"lanes": 2,
 	"speed": 3.1,

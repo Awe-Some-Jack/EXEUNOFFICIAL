@@ -148,7 +148,7 @@ class PreloadListSubState extends MusicBeatSubstate implements PsychUIEvent
 						}
 						showOutput('File must be inside images/music/songs subfolder!', true);
 					default:
-						showOutput('File must be inside assets/mods folder!', true);
+						showOutput('File must be inside assets/contents folder!', true);
 				}
 			}
 			else showOutput('File is not inside Psych Engine\'s folder!', true);

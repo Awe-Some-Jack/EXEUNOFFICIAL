@@ -89,35 +89,48 @@ class Mods
 	{
 		var foldersToCheck:Array<String> = [];
 		
-		var checkFile = function(folderPath:String):Bool {
+		final checkFile = (folderPath:String) -> {
+			final fullPath = folderPath + fileToFind;
+			
 			#if sys
-			if (sys.FileSystem.exists(folderPath + fileToFind)) return true;
+			if (sys.FileSystem.exists(fullPath)) return true;
 			#end
-			if (openfl.utils.Assets.exists(folderPath + fileToFind)) return true;
+			
+			if (fullPath.endsWith('/')) {
+				for (file in OpenFlAssets.list())
+					if (file.indexOf(fullPath) == 0) return true;
+			} else {
+				if (OpenFlAssets.exists(fullPath)) return true;
+			}
+			
 			return false;
 		};
 
-		if(checkFile(path)) foldersToCheck.push(path);
+		if(checkFile(path)) foldersToCheck.push(path + fileToFind);
 
 		#if MODS_ALLOWED
 		if(mods)
 		{
 			for(mod in Mods.getGlobalMods())
 			{
-				var folder:String = Paths.mods(mod + '/');
-				if(checkFile(folder) && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
+				final folder:String = Paths.mods(mod + '/');
+				if(checkFile(folder) && !foldersToCheck.contains(folder + fileToFind)) 
+					foldersToCheck.push(folder + fileToFind);
 			}
 
 			if(Mods.currentModDirectory?.length > 0)
 			{
-				var folder:String = Paths.mods(Mods.currentModDirectory + '/');
-				if(checkFile(folder) && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
+				final folder:String = Paths.mods(Mods.currentModDirectory + '/');
+				if(checkFile(folder) && !foldersToCheck.contains(folder + fileToFind)) 
+					foldersToCheck.push(folder + fileToFind);
 			}
 
-			var folder:String = Paths.mods('');
-			if(checkFile(folder) && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
+			final folder:String = Paths.mods('');
+			if(checkFile(folder) && !foldersToCheck.contains(folder + fileToFind)) 
+				foldersToCheck.push(folder + fileToFind);
 		}
 		#end
+		
 		return foldersToCheck;
 	}
 

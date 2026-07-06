@@ -2954,7 +2954,6 @@
 	],
 	"player2": "mono",
 	"offset": 0,
-	"disableNoteRGB": true,
 	"song": "Monochromatic",
 	"needsVoices": true,
 	"stage": "mono",

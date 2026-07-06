@@ -3,9 +3,6 @@ package objects;
 import backend.animation.PsychAnimationController;
 import backend.NoteTypesConfig;
 
-import shaders.RGBPalette;
-import shaders.RGBPalette.RGBShaderReference;
-
 import objects.StrumNote;
 
 import flixel.math.FlxRect;
@@ -17,18 +14,6 @@ typedef EventNote = {
 	event:String,
 	value1:String,
 	value2:String
-}
-
-typedef NoteSplashData = {
-	disabled:Bool,
-	texture:String,
-	useGlobalShader:Bool,
-	useRGBShader:Bool,
-	antialiasing:Bool,
-	r:FlxColor,
-	g:FlxColor,
-	b:FlxColor,
-	a:Float
 }
 
 /**
@@ -91,8 +76,6 @@ class Note extends FlxSprite
 	public var eventVal1:String = '';
 	public var eventVal2:String = '';
 
-	public var rgbShader:RGBShaderReference;
-	public static var globalRgbShaders:Array<RGBPalette> = [];
 	public var inEditor:Bool = false;
 
 	/** Appended to sing-animation names, e.g. `'-alt'` for alt-anim sections. **/
@@ -106,18 +89,6 @@ class Note extends FlxSprite
 	public static var swagWidth:Float = 160 * 0.7;
 	public static var colArray:Array<String> = ['purple', 'blue', 'green', 'red'];
 	public static var defaultNoteSkin(default, never):String = 'noteSkins/NOTE_assets';
-
-	public var noteSplashData:NoteSplashData = {
-		disabled: false,
-		texture: null,
-		antialiasing: !PlayState.isPixelStage,
-		useGlobalShader: false,
-		useRGBShader: PlayState.SONG != null ? !(PlayState.SONG.disableNoteRGB == true) : true,
-		r: -1,
-		g: -1,
-		b: -1,
-		a: ClientPrefs.data.splashAlpha
-	};
 
 	public var offsetX:Float = 0;
 	public var offsetY:Float = 0;
@@ -207,10 +178,6 @@ class Note extends FlxSprite
 
 		if (noteData > -1)
 		{
-			rgbShader = new RGBShaderReference(this, initializeGlobalRGBShader(noteData));
-			if (PlayState.SONG != null && PlayState.SONG.disableNoteRGB)
-				rgbShader.enabled = false;
-
 			texture = '';
 			x += swagWidth * noteData;
 
@@ -278,70 +245,14 @@ class Note extends FlxSprite
 		x += offsetX;
 	}
 
-	public static function initializeGlobalRGBShader(noteData:Int):RGBPalette
-	{
-		if (globalRgbShaders[noteData] == null)
-		{
-			final newRGB:RGBPalette = new RGBPalette();
-			final arr:Array<FlxColor> = PlayState.isPixelStage
-				? ClientPrefs.data.arrowRGBPixel[noteData]
-				: ClientPrefs.data.arrowRGB[noteData];
-
-			if (arr != null && noteData > -1 && noteData <= arr.length)
-			{
-				newRGB.r = arr[0];
-				newRGB.g = arr[1];
-				newRGB.b = arr[2];
-			}
-			else
-			{
-				newRGB.r = 0xFFFF0000;
-				newRGB.g = 0xFF00FF00;
-				newRGB.b = 0xFF0000FF;
-			}
-			globalRgbShaders[noteData] = newRGB;
-		}
-		return globalRgbShaders[noteData];
-	}
-
-	/** Resets this note's RGB shader to the default arrow colour for its lane. **/
-	public function defaultRGB():Void
-	{
-		final arr:Array<FlxColor> = PlayState.isPixelStage
-			? ClientPrefs.data.arrowRGBPixel[noteData]
-			: ClientPrefs.data.arrowRGB[noteData];
-
-		if (arr != null && noteData > -1 && noteData <= arr.length)
-		{
-			rgbShader.r = arr[0];
-			rgbShader.g = arr[1];
-			rgbShader.b = arr[2];
-		}
-		else
-		{
-			rgbShader.r = 0xFFFF0000;
-			rgbShader.g = 0xFF00FF00;
-			rgbShader.b = 0xFF0000FF;
-		}
-	}
-
 	private function set_noteType(value:String):String
 	{
-		noteSplashData.texture = PlayState.SONG?.splashSkin ?? 'noteSplashes/noteSplashes';
-		defaultRGB();
-
 		if (noteData > -1 && noteType != value)
 		{
 			switch (value)
 			{
 				case 'Hurt Note':
 					ignoreNote = mustPress;
-					rgbShader.r = 0xFF101010;
-					rgbShader.g = 0xFFFF0000;
-					rgbShader.b = 0xFF990022;
-					noteSplashData.r = 0xFFFF0000;
-					noteSplashData.g = 0xFF101010;
-					noteSplashData.texture = 'noteSplashes/noteSplashes-electric';
 					lowPriority = true;
 					missHealth = isSustainNote ? 0.25 : 0.1;
 					hitCausesMiss = true;
@@ -382,10 +293,6 @@ class Note extends FlxSprite
 			skin = PlayState.SONG?.arrowSkin ?? null;
 			if (skin == null || skin.length < 1)
 				skin = defaultNoteSkin + postfix;
-		}
-		else
-		{
-			rgbShader.enabled = false;
 		}
 
 		final animName:Null<String> = animation.curAnim?.name;

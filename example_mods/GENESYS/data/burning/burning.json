@@ -3431,7 +3431,6 @@
 	],
 	"player2": "genesys",
 	"offset": 0,
-	"disableNoteRGB": true,
 	"song": "Burning",
 	"needsVoices": true,
 	"stage": "void",

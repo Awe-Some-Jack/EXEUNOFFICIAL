@@ -2589,7 +2589,6 @@
 		}
 	],
 	"player2": "exe",
-	"disableNoteRGB": true,
 	"song": "Black Sun",
 	"needsVoices": true,
 	"stage": "exe",

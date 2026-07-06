@@ -1,7 +1,6 @@
 package states.editors.content;
 
 import objects.Note;
-import shaders.RGBPalette;
 import flixel.util.FlxDestroyUtil;
 
 class MetaNote extends Note
@@ -32,9 +31,6 @@ class MetaNote extends Note
 			loadNoteAnims();
 		else
 			loadPixelNoteAnims();
-
-		if (Note.globalRgbShaders.contains(rgbShader.parent))
-			rgbShader = new RGBShaderReference(this, Note.initializeGlobalRGBShader(noteData));
 
 		animation.play(Note.colArray[this.noteData % Note.colArray.length] + 'Scroll');
 		updateHitbox();

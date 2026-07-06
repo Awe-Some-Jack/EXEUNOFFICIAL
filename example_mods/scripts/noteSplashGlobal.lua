@@ -207,7 +207,6 @@ local holdSplashConf = {
 }
 
 function onCreatePost()
-	setProperty('grpNoteSplashes.visible', false)
 	local foundSkin = false
 	for _,splashes in ipairs(specialSplashes) do
 		for _,songs in ipairs(splashes.songs) do if songPath == songs then foundSkin = true end end
@@ -373,7 +372,7 @@ function doSplash(data, skin, precache)
 	playAnim(tag, 'splash', true)
 	setObjectCamera(tag, 'hud')
 	setProperty(tag..'.antialiasing', antialiasing)
-	addToGroup('noteGroup', tag, getObjectOrder('grpNoteSplashes', 'noteGroup'))
+	addToGroup('noteGroup', tag, getObjectOrder('strumLineNotes', 'noteGroup') + 1)
 
 	runTimer(tag, lifeTime / playbackRate)
 	if precache then setProperty(tag..'.alpha', 0.0001) end

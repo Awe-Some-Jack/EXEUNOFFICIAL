@@ -2,17 +2,12 @@ package objects;
 
 import backend.animation.PsychAnimationController;
 
-import shaders.RGBPalette;
-import shaders.RGBPalette.RGBShaderReference;
-
 class StrumNote extends FlxSprite
 {
-	public var rgbShader:RGBShaderReference;
 	public var resetAnim:Float = 0;
 	public var direction:Float = 90;
 	public var downScroll:Bool = false;
 	public var sustainReduce:Bool = true;
-	public var useRGBShader:Bool = true;
 
 	/** Extra data map for Lua/HScript access. **/
 	public var extraData:Map<String, Dynamic> = new Map();
@@ -40,26 +35,6 @@ class StrumNote extends FlxSprite
 		noteData = leData;
 		this.player = player;
 		this.ID = noteData;
-
-		rgbShader = new RGBShaderReference(this, Note.initializeGlobalRGBShader(leData));
-		rgbShader.enabled = false;
-
-		if (PlayState.SONG != null && PlayState.SONG.disableNoteRGB)
-			useRGBShader = false;
-
-		final arr:Array<FlxColor> = PlayState.isPixelStage
-			? ClientPrefs.data.arrowRGBPixel[leData]
-			: ClientPrefs.data.arrowRGB[leData];
-
-		if (arr != null && leData <= arr.length)
-		{
-			@:bypassAccessor
-			{
-				rgbShader.r = arr[0];
-				rgbShader.g = arr[1];
-				rgbShader.b = arr[2];
-			}
-		}
 
 		var skin:String = (PlayState.SONG != null && PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1)
 			? PlayState.SONG.arrowSkin
@@ -184,6 +159,5 @@ class StrumNote extends FlxSprite
 			centerOffsets();
 			centerOrigin();
 		}
-		rgbShader.enabled = useRGBShader && animation.curAnim != null && animation.curAnim.name != 'static';
 	}
 }

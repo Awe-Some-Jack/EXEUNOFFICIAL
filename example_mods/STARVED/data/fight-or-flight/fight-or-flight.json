@@ -2549,7 +2549,6 @@
 		}
 	],
 	"player2": "starved",
-	"disableNoteRGB": true,
 	"song": "Fight-or-Flight",
 	"stage": "starved",
 	"needsVoices": true,

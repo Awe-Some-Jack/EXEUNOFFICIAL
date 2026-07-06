@@ -1,6 +1,4 @@
 function onCreatePost()
-	setProperty('grpNoteSplashes.visible', false)
-
 	makeLuaSprite('rgbmierda')
 	setSpriteShader('rgbmierda', 'Gay')
 
@@ -91,7 +89,7 @@ function doSplash(data, opponent)
 	playAnim(tag, 'splash', true)
 	playSound('hitmarker', 0.8)
 	setObjectCamera(tag, 'hud')
-	addToGroup('noteGroup', tag, getObjectOrder('grpNoteSplashes', 'noteGroup'))
+	addToGroup('noteGroup', tag, getObjectOrder('strumLineNotes', 'noteGroup') + 1)
 	runTimer(tag, 0.5 * playbackRate)
 	if data == nil then setProperty(tag..'.alpha', 0.0001) end
 end

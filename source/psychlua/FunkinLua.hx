@@ -18,7 +18,6 @@ import flixel.addons.display.FlxRuntimeShader;
 
 import objects.StrumNote;
 import objects.Note;
-import objects.NoteSplash;
 import objects.Character;
 
 import states.EXEMenu;
@@ -187,9 +186,6 @@ class FunkinLua
 
 		set('noteSkin',          ClientPrefs.data.noteSkin);
 		set('noteSkinPostfix',   Note.getNoteSkinPostfix());
-		set('splashSkin',        ClientPrefs.data.splashSkin);
-		set('splashSkinPostfix', NoteSplash.getSplashSkinPostfix());
-		set('splashAlpha',       ClientPrefs.data.splashAlpha);
 
 		set('buildTarget', LuaUtils.getBuildTarget());
 

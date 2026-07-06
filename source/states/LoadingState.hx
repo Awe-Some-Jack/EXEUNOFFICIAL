@@ -24,7 +24,6 @@ import sys.thread.Thread;
 import sys.thread.Mutex;
 
 import objects.Note;
-import objects.NoteSplash;
 
 typedef GPUUploadTask = {
 	var origKey:String;
@@ -326,11 +325,6 @@ class LoadingState extends MusicBeatState
 			var customSkin:String = noteSkin + Note.getNoteSkinPostfix();
 			if(Paths.fileExists('images/$customSkin.png', IMAGE)) noteSkin = customSkin;
 			imagesToPrepare.push(noteSkin);
-
-			var noteSplash:String = NoteSplash.defaultNoteSplash;
-			if(PlayState.SONG.splashSkin?.length > 0) noteSplash = PlayState.SONG.splashSkin;
-			else noteSplash += NoteSplash.getSplashSkinPostfix();
-			imagesToPrepare.push(noteSplash);
 
 			try
 			{

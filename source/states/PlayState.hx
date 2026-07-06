@@ -171,7 +171,6 @@ class PlayState extends MusicBeatState
 	public var strumLineNotes:FlxTypedGroup<StrumNote> = new FlxTypedGroup<StrumNote>();
 	public var opponentStrums:FlxTypedGroup<StrumNote> = new FlxTypedGroup<StrumNote>();
 	public var playerStrums:FlxTypedGroup<StrumNote> = new FlxTypedGroup<StrumNote>();
-	public var grpNoteSplashes:FlxTypedGroup<NoteSplash> = new FlxTypedGroup<NoteSplash>();
 
 	public var camZooming:Bool = false;
 	public var camZoomingMult:Float = 1;
@@ -633,8 +632,6 @@ class PlayState extends MusicBeatState
 
 		generateSong();
 
-		noteGroup.add(grpNoteSplashes);
-
 		gameplayCam.camFollow.setPosition(camPos.x, camPos.y);
 		camPos.put();
 
@@ -772,10 +769,6 @@ class PlayState extends MusicBeatState
 		gameplayCam.loadSongSettings();
 		gameplayCam.onCreatePost();
 		FlxG.camera.snapToTarget();
-		
-		var splash:NoteSplash = new NoteSplash();
-		grpNoteSplashes.add(splash);
-		splash.alpha = 0.000001; //cant make it invisible or it won't allow precaching
 
 		super.create();
 
@@ -2733,9 +2726,6 @@ class PlayState extends MusicBeatState
 		note.rating = daRating.name;
 		score = daRating.score;
 
-		if(daRating.noteSplash && !note.noteSplashData.disabled)
-			spawnNoteSplashOnNote(note);
-
 		if(!cpuControlled) {
 			songScore += score;
 			if(!note.ratingDisabled)
@@ -3296,9 +3286,6 @@ class PlayState extends MusicBeatState
 		}
 
 		noteMiss(note);
-
-		if(!note.noteSplashData.disabled && !note.isSustainNote)
-			spawnNoteSplashOnNote(note);
 	}
 
 	function handleCharacterHit(char:Character, note:Note, animToPlay:String, animCheck:String):Void
@@ -3409,21 +3396,6 @@ class PlayState extends MusicBeatState
 		note.destroy();
 	}
 
-	public function spawnNoteSplashOnNote(note:Note) {
-		if(note != null) {
-			var strum:StrumNote = playerStrums.members[note.noteData];
-			if(strum != null)
-				spawnNoteSplash(strum.x, strum.y, note.noteData, note, strum);
-		}
-	}
-
-	public function spawnNoteSplash(x:Float = 0, y:Float = 0, ?data:Int = 0, ?note:Note, ?strum:StrumNote) {
-		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.babyArrow = strum;
-		splash.spawnSplashNote(x, y, data, note);
-		grpNoteSplashes.add(splash);
-	}
-
 	override function destroy() {
 		if (psychlua.CustomSubstate.instance != null)
 		{
@@ -3473,10 +3445,7 @@ class PlayState extends MusicBeatState
 		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
 		FlxG.animationTimeScale = 1;
 
-		Note.globalRgbShaders = [];
 		backend.NoteTypesConfig.clearNoteTypesData();
-
-		NoteSplash.configs.clear();
 
 		if (inst != null) { inst.stop(); inst.destroy(); inst = null; }
 		if (vocals != null) { vocals.stop(); vocals.destroy(); vocals = null; }

@@ -12,7 +12,6 @@ class MasterEditorMenu extends MusicBeatState
 	var options:Array<String> = [
 		'Chart Editor',
 		'Character Editor',
-		'Note Splash Editor'
 	];
 	private var grpTexts:FlxTypedGroup<Alphabet>;
 	private var directories:Array<String> = [null];
@@ -89,8 +88,6 @@ class MasterEditorMenu extends MusicBeatState
 					LoadingState.loadAndSwitchState(new ChartingState(), false);
 				case 'Character Editor':
 					LoadingState.loadAndSwitchState(new CharacterEditorState(Character.DEFAULT_CHARACTER, false));
-				case 'Note Splash Editor':
-					FlxG.switchState(() -> new NoteSplashEditorState());
 			}
 			FlxG.sound.music.volume = 0;
 		}

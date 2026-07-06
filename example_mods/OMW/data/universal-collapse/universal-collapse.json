@@ -4577,7 +4577,6 @@
 	],
 	"gfVersion": "gf",
 	"offset": 0,
-	"disableNoteRGB": true,
 	"song": "Universal Collapse",
 	"stage": "universalc",
 	"needsVoices": true,

@@ -4,7 +4,6 @@ import backend.Song;
 import backend.Rating;
 
 import objects.Note;
-import objects.NoteSplash;
 import objects.StrumNote;
 
 import flixel.util.FlxSort;
@@ -33,7 +32,6 @@ class EditorPlayState extends MusicBeatSubstate
 	var strumLineNotes:FlxTypedGroup<StrumNote>;
 	var opponentStrums:FlxTypedGroup<StrumNote>;
 	var playerStrums:FlxTypedGroup<StrumNote>;
-	var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
 	var combo:Int = 0;
 	var lastRating:FlxSprite;
@@ -96,12 +94,6 @@ class EditorPlayState extends MusicBeatSubstate
 		add(comboGroup);
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
-		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
-		add(grpNoteSplashes);
-
-		var splash:NoteSplash = new NoteSplash();
-		grpNoteSplashes.add(splash);
-		splash.alpha = 0.000001;
 
 		opponentStrums = new FlxTypedGroup<StrumNote>();
 		playerStrums = new FlxTypedGroup<StrumNote>();
@@ -245,7 +237,6 @@ class EditorPlayState extends MusicBeatSubstate
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 		FlxG.mouse.visible = true;
-		NoteSplash.configs.clear();
 		FlxG.sound.list.remove(inst);
 		flixel.util.FlxDestroyUtil.destroy(inst);
 		super.destroy();
@@ -488,9 +479,6 @@ class EditorPlayState extends MusicBeatSubstate
 		if (!note.ratingDisabled) daRating.hits++;
 		note.rating = daRating.name;
 
-		if (daRating.noteSplash && !note.noteSplashData.disabled)
-			spawnNoteSplashOnNote(note);
-
 		if (!note.ratingDisabled) songHits++;
 
 		var uiFolder:String = "";
@@ -716,8 +704,6 @@ class EditorPlayState extends MusicBeatSubstate
 		if (note.hitCausesMiss)
 		{
 			noteMiss(note);
-			if (!note.noteSplashData.disabled && !note.isSustainNote)
-				spawnNoteSplashOnNote(note);
 			if (!note.isSustainNote) invalidateNote(note);
 			return;
 		}
@@ -790,24 +776,6 @@ class EditorPlayState extends MusicBeatSubstate
 		note.kill();
 		notes.remove(note, true);
 		note.destroy();
-	}
-
-	function spawnNoteSplashOnNote(note:Note)
-	{
-		if (note != null)
-		{
-			var strum:StrumNote = playerStrums.members[note.noteData];
-			if (strum != null)
-				spawnNoteSplash(strum.x, strum.y, note.noteData, note, strum);
-		}
-	}
-
-	function spawnNoteSplash(x:Float, y:Float, data:Int, note:Note = null, strum:StrumNote)
-	{
-		var splash:NoteSplash = new NoteSplash();
-		splash.babyArrow = strum;
-		splash.spawnSplashNote(note);
-		grpNoteSplashes.add(splash);
 	}
 
 	function updateScore()

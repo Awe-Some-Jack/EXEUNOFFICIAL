@@ -27,6 +27,8 @@ class VideoSprite extends FlxSpriteGroup
 
 	public var onSkip:Void->Void = null;
 
+	private var wasPlayingBeforeFocusLost:Bool = false;
+
 	public function new(x:Float = 0, y:Float = 0, autoDestroy:Bool = true)
 	{
 		super(x, y);
@@ -219,11 +221,22 @@ class VideoSprite extends FlxSpriteGroup
 		}
 	}
 
-	private function onFocusGained():Void
-		video.bitmap?.resume();
-
 	private function onFocusLost():Void
-		video.bitmap?.pause();
+	{
+		if (FlxG.autoPause)
+		{
+			wasPlayingBeforeFocusLost = isPlaying();
+			
+			if (wasPlayingBeforeFocusLost)
+				video.bitmap?.pause();
+		}
+	}
+
+	private function onFocusGained():Void
+	{
+		if (FlxG.autoPause && wasPlayingBeforeFocusLost)
+			video.bitmap?.resume();
+	}
 
 	override public function update(elapsed:Float):Void
 	{

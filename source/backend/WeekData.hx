@@ -1,7 +1,6 @@
 package backend;
 
 import lime.utils.Assets;
-import openfl.utils.Assets as OpenFlAssets;
 import haxe.Json;
 
 typedef WeekFile =
@@ -198,15 +197,11 @@ class WeekData {
 
 	private static function getWeekFile(path:String):WeekFile {
 		var rawJson:String = null;
-		#if (!mobile && MODS_ALLOWED)
-		if(FileSystem.exists(path)) {
-			rawJson = File.getContent(path);
-		}
-		#else
-		if(OpenFlAssets.exists(path)) {
-			rawJson = Assets.getText(path);
-		}
+
+		#if sys
+		if(sys.FileSystem.exists(path)) rawJson = sys.io.File.getContent(path);
 		#end
+		if(rawJson == null && OpenFlAssets.exists(path)) rawJson = OpenFlAssets.getText(path);
 
 		if(rawJson != null && rawJson.length > 0) {
 			return cast tjson.TJSON.parse(rawJson);

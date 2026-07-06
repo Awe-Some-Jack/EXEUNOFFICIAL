@@ -7,7 +7,7 @@ class CoolUtil
 {
 	inline public static function quantize(f:Float, snap:Float){
 		// changed so this actually works lol
-		var m:Float = Math.fround(f * snap);
+		final m:Float = Math.fround(f * snap);
 		//trace(snap);
 		return (m / snap);
 	}
@@ -18,24 +18,26 @@ class CoolUtil
 	inline public static function coolTextFile(path:String):Array<String>
 	{
 		var daList:String = null;
-		#if (!mobile && MODS_ALLOWED)
-		if(FileSystem.exists(path)) daList = File.getContent(path);
-		// trace(File.getContent(path));
-		#else
-		if(Assets.exists(path)) daList = Assets.getText(path);
+		
+		#if sys
+		if (sys.FileSystem.exists(path)) daList = sys.io.File.getContent(path);
 		#end
+		
+		if (daList == null && openfl.utils.Assets.exists(path)) daList = openfl.utils.Assets.getText(path);
+		
 		return daList != null ? listFromString(daList) : [];
 	}
 
 	inline public static function colorFromString(color:String):FlxColor
 	{
-		var hideChars = ~/[\t\n\r]/;
+		final hideChars = ~/[\t\n\r]/;
+
 		var color:String = hideChars.split(color).join('').trim();
 		if(color.startsWith('0x')) color = color.substring(color.length - 6);
 
 		var colorNum:Null<FlxColor> = FlxColor.fromString(color);
-		if(colorNum == null) colorNum = FlxColor.fromString('#$color');
-		return colorNum != null ? colorNum : FlxColor.WHITE;
+		colorNum ??= FlxColor.fromString('#$color');
+		return colorNum ?? FlxColor.WHITE;
 	}
 
 	inline public static function listFromString(string:String):Array<String>
@@ -156,12 +158,10 @@ class CoolUtil
 			folder = folder.replace('/', '\\');
 			if(folder.endsWith('/')) folder.substr(0, folder.length - 1);
 
-			#if linux
-			var command:String = '/usr/bin/xdg-open';
-			#else
-			var command:String = 'explorer.exe';
-			#end
+			
+			final command:String = #if linux '/usr/bin/xdg-open' #else 'explorer.exe' #end;
 			Sys.command(command, [folder]);
+
 			trace('$command $folder');
 		#else
 			FlxG.error("Platform is not supported for CoolUtil.openFolder");

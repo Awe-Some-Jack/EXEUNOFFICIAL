@@ -4,7 +4,6 @@ import lime.graphics.Image;
 import lime.graphics.cairo.CairoImageSurface;
 import openfl.display.BitmapData;
 import openfl.geom.Rectangle;
-import openfl.utils.Assets as OpenFlAssets;
 
 @:access(openfl.display.BitmapData)
 class OptimizedBitmapData extends BitmapData

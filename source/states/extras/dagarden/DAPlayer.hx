@@ -197,7 +197,7 @@ class DAPlayer extends FlxGroup
 
 	public function setSongInfo(songName:String, credits:Array<String>):Void
 	{
-		final display = StringTools.replace(songName, '-', ' ').toUpperCase();
+		final display = songName.replace('-', ' ').toUpperCase();
 		songNameTxt.text = display;
 		var size = 120;
 		songNameTxt.size = size;
@@ -575,7 +575,7 @@ class DAPlayer extends FlxGroup
 		
 		_lastTitleSec = secs;
 
-		final song = StringTools.replace(_loadedSong, '-', ' ').toUpperCase();
+		final song = _loadedSong.replace('-', ' ').toUpperCase();
 		final state = isPlaying ? 'PLAY' : 'PAUSE';
 		final mode = vocalsEnabled ? 'NORMAL' : 'INST';
 		final mins = Std.int(secs / 60);

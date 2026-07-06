@@ -139,13 +139,8 @@ class ExtraFunctions
 		});
 		LuaUtilsHx.addFunction(lua, 'getTextFromFile',   (path:String, ignoreModFolders:Bool = false) -> Paths.getTextFromFile(path, ignoreModFolders));
 		LuaUtilsHx.addFunction(lua, 'directoryFileList', function(folder:String) {
-			var list:Array<String> = [];
-			#if sys
-			if (FileSystem.exists(folder))
-				for (f in FileSystem.readDirectory(folder))
-					if (!list.contains(f)) list.push(f);
-			#end
-			return list;
+			var scanFolder = folder.endsWith('/') ? folder : folder + '/';
+			return Paths.readDirectory(scanFolder);
 		});
 
 		LuaUtilsHx.addFunction(lua, 'stringStartsWith', (str:String, start:String) -> str.startsWith(start));
@@ -212,8 +207,8 @@ class ExtraFunctions
 
 			final paths:Array<String> = [];
 			if (modDir != null && modDir.length > 0)
-				paths.push('mods/$modDir/data/$songName/lyrics.json');
-			paths.push('mods/data/$songName/lyrics.json');
+				paths.push('contents/$modDir/data/$songName/lyrics.json');
+			paths.push('contents/data/$songName/lyrics.json');
 			paths.push('assets/data/$songName/lyrics.json');
 
 			var data:Dynamic = null;

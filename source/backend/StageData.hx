@@ -79,13 +79,17 @@ class StageData {
 		try
 		{
 			var path:String = Paths.getPath('stages/' + stage + '.json', TEXT, null, true);
-			#if (!mobile && MODS_ALLOWED)
-			if(FileSystem.exists(path))
-				return cast tjson.TJSON.parse(File.getContent(path));
-			#else
-			if(OpenFlAssets.exists(path))
-				return cast tjson.TJSON.parse(OpenFlAssets.getText(path));
+			var rawJson:String = null;
+
+			#if sys
+			if(sys.FileSystem.exists(path)) rawJson = sys.io.File.getContent(path);
 			#end
+			if(rawJson == null && OpenFlAssets.exists(path)) rawJson = OpenFlAssets.getText(path);
+
+			if (rawJson != null) return cast tjson.TJSON.parse(rawJson);
+		}
+		catch(e:Dynamic) {
+			trace(e);
 		}
 		return dummy();
 	}

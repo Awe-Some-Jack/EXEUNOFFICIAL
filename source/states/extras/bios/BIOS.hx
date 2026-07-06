@@ -205,15 +205,21 @@ class BIOS extends MusicBeatSubstate
 	function loadEntries():Void
 	{
 		entries = [];
-		if (!FileSystem.exists(BIO_DIR)) return;
+		var scanPath = BIO_DIR.endsWith('/') ? BIO_DIR : BIO_DIR + '/';
 
-		for (file in FileSystem.readDirectory(BIO_DIR))
+		for (file in Paths.readDirectory(scanPath))
 		{
-			if (!StringTools.endsWith(file, '.json')) continue;
-			final path = BIO_DIR + '/' + file;
+			if (!file.endsWith('.json')) continue;
+			
+			final path = scanPath + file;
+			var jsonText:String = Paths.getTextFromFile(path, true);
+			
+			if (jsonText == null) continue;
+
 			var d:Dynamic;
-			try { d = Json.parse(File.getContent(path)); }
+			try { d = Json.parse(jsonText); }
 			catch (e:Dynamic) { continue; }
+			
 			if (d.bio_appear != true) continue;
 
 			final variants:Array<Dynamic> = (d.variants != null) ? cast(d.variants, Array<Dynamic>) : [];
@@ -526,7 +532,7 @@ class BIOS extends MusicBeatSubstate
 		#if MODS_ALLOWED
 		if (mod != '')
 		{
-			final p = 'mods/$mod/$pngKey';
+			final p = 'contents/$mod/$pngKey';
 			if (FileSystem.exists(p)) return p;
 		}
 		final mp = Paths.modFolders(pngKey);
@@ -544,7 +550,7 @@ class BIOS extends MusicBeatSubstate
 		#if MODS_ALLOWED
 		if (mod != '')
 		{
-			final p = 'mods/$mod/$xmlKey';
+			final p = 'contents/$mod/$xmlKey';
 			if (FileSystem.exists(p)) xmlPath = p;
 		}
 		if (xmlPath == null)
@@ -567,7 +573,7 @@ class BIOS extends MusicBeatSubstate
 				for (node in root.elements())
 				{
 					final name = node.get('name') ?? node.get('n') ?? '';
-					if (StringTools.startsWith(name, prefix))
+					if (name.startsWith(prefix))
 					{
 						final x = Std.parseInt(node.get('x') ?? '0');
 						final y = Std.parseInt(node.get('y') ?? '0');
@@ -586,7 +592,7 @@ class BIOS extends MusicBeatSubstate
 		#if MODS_ALLOWED
 		if (mod != '')
 		{
-			final p = 'mods/$mod/$txtKey';
+			final p = 'contents/$mod/$txtKey';
 			if (FileSystem.exists(p)) txtPath = p;
 		}
 		if (txtPath == null)
@@ -607,13 +613,13 @@ class BIOS extends MusicBeatSubstate
 			{
 				for (line in File.getContent(txtPath).split('\n'))
 				{
-					final t = StringTools.trim(line);
+					final t = line.trim();
 					if (t.length == 0) continue;
 					final parts = t.split('=');
 					if (parts.length < 2) continue;
-					final frameName = StringTools.trim(parts[0]);
-					if (!StringTools.startsWith(frameName, prefix)) continue;
-					final nums = StringTools.trim(parts[1]).split(' ');
+					final frameName = parts[0].trim();
+					if (!frameName.startsWith(prefix)) continue;
+					final nums = parts[1].trim().split(' ');
 					if (nums.length < 4) continue;
 					final x = Std.parseInt(nums[0]);
 					final y = Std.parseInt(nums[1]);
@@ -638,7 +644,7 @@ class BIOS extends MusicBeatSubstate
 			for (anim in anims)
 			{
 				final animField:String = _str(anim.anim, '');
-				if (animField == priority || StringTools.startsWith(animField, priority))
+				if (animField == priority || animField.startsWith(priority))
 				{
 					final nameField:String = _str(anim.name, '');
 					final offsets:Array<Dynamic> = (anim.offsets != null) ? cast(anim.offsets, Array<Dynamic>) : null;
@@ -652,7 +658,7 @@ class BIOS extends MusicBeatSubstate
 			for (anim in anims)
 			{
 				final nameField:String = _str(anim.name, '');
-				if (nameField == priority || StringTools.startsWith(nameField, priority))
+				if (nameField == priority || nameField.startsWith(priority))
 				{
 					final animField:String = _str(anim.anim, nameField);
 					final offsets:Array<Dynamic> = (anim.offsets != null) ? cast(anim.offsets, Array<Dynamic>) : null;
@@ -1116,7 +1122,7 @@ class BIOS extends MusicBeatSubstate
 		var parts:Array<String> = [];
 		for (p in ~/\s*[\/&\+]\s*/.split(raw))
 		{
-			final s = StringTools.trim(p);
+			final s = p.trim();
 			if (s.length > 0) parts.push(s);
 		}
 		if (parts.length == 0) parts = [''];
@@ -1149,7 +1155,7 @@ class BIOS extends MusicBeatSubstate
 		variantDots.visible = true;
 		var dots = '';
 		for (i in 0...e.variants.length) dots += (i == curVariant) ? '● ' : '○ ';
-		variantDots.text = StringTools.rtrim(dots);
+		variantDots.text = dots.rtrim();
 	}
 
 	inline function _str(v:Dynamic, fallback:String):String

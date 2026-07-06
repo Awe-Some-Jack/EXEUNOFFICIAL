@@ -85,9 +85,7 @@ import flixel.addons.transition.FlxTransitionableState;
 
 import openfl.Assets;
 
-#if mobile
 import openfl.utils.Assets as OpenFlAssets;
-#end
 
 using StringTools;
 #end

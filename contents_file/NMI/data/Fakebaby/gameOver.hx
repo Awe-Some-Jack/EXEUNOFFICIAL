@@ -32,7 +32,7 @@ function onGameOverStart()
 	deadMusic.play();
 	deadMusic.looped = true;
 
-	glitchShader = new ErrorHandledRuntimeShader('followedglitch', File.getContent('mods/NMI/shaders/followedglitch.frag'));
+	glitchShader = new ErrorHandledRuntimeShader('followedglitch', File.getContent('contents/NMI/shaders/followedglitch.frag'));
 	glitchShader.setFloat('size', 0.01);
 
 	var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('gameover/bg'));

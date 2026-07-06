@@ -132,7 +132,7 @@ class Song
 		return PlayState.SONG;
 	}
 
-	static var _lastPath:String;
+	static var _lastPath:String = null;
 	public static function getChart(jsonInput:String, ?folder:String):SwagSong
 	{
 		trace(jsonInput + " " + folder);
@@ -144,16 +144,10 @@ class Song
 		_lastPath = Paths.json('$formattedFolder/$formattedSong');
 		trace(_lastPath);
 
-		#if (!mobile && MODS_ALLOWED)
-		if(FileSystem.exists(_lastPath))
-			rawData = File.getContent(_lastPath);
-		else
-		#else
-		if(OpenFlAssets.exists(_lastPath))
-			rawData = Assets.getText(_lastPath);
-		else
+		#if sys
+		if (sys.FileSystem.exists(_lastPath)) rawData = sys.io.File.getContent(_lastPath);
 		#end
-			rawData = Assets.getText(_lastPath);
+		if (rawData == null && OpenFlAssets.exists(_lastPath)) rawData = OpenFlAssets.getText(_lastPath);
 
 		return rawData != null ? parseJSON(rawData, jsonInput) : null;
 	}

@@ -1127,13 +1127,26 @@ class FunkinLua
 
 		for (folder in foldersToCheck)
 		{
-			if (!FileSystem.exists(folder)) continue;
 			var fragPath = folder + name + '.frag';
 			var vertPath = folder + name + '.vert';
-			var frag:String = FileSystem.exists(fragPath) ? File.getContent(fragPath) : null;
-			var vert:String = FileSystem.exists(vertPath) ? File.getContent(vertPath) : null;
-			if (frag != null || vert != null) { runtimeShaders.set(name, [frag, vert]); return true; }
+			
+			var frag:String = null;
+			var vert:String = null;
+
+			#if sys
+			if (sys.FileSystem.exists(fragPath)) frag = sys.io.File.getContent(fragPath);
+			if (sys.FileSystem.exists(vertPath)) vert = sys.io.File.getContent(vertPath);
+			#end
+
+			if (frag == null && openfl.utils.Assets.exists(fragPath)) frag = openfl.utils.Assets.getText(fragPath);
+			if (vert == null && openfl.utils.Assets.exists(vertPath)) vert = openfl.utils.Assets.getText(vertPath);
+
+			if (frag != null || vert != null) { 
+				runtimeShaders.set(name, [frag, vert]); 
+				return true; 
+			}
 		}
+		
 		luaTrace('Missing shader $name .frag AND .vert files!', false, false, FlxColor.RED);
 		#else
 		luaTrace("This platform doesn't support Runtime Shaders!", false, false, FlxColor.RED);

@@ -11,20 +11,20 @@ end
 
 local function addShitToTV()
 	createInstance('ahh', 'hxvlc.flixel.FlxVideoSprite')
-	callMethod('ahh.load', {'mods/SUNKY/images/vanilla/tv/ahhhh.mp4'})
+	callMethod('ahh.load', {'contents/SUNKY/images/vanilla/tv/ahhhh.mp4'})
 	scaleObject('ahh', 0.5, 0.5)
 	callMethod('ahh.setPosition', {480, 100})
 	addInstance('ahh')
 
 	createInstance('bestday', 'hxvlc.flixel.FlxVideoSprite')
-	callMethod('bestday.load', {'mods/SUNKY/images/vanilla/tv/bestdayever.mp4'})
+	callMethod('bestday.load', {'contents/SUNKY/images/vanilla/tv/bestdayever.mp4'})
 	scaleObject('bestday', 0.8, 0.8)
 	callMethod('bestday.setPosition', {670, 160})
 	addInstance('bestday')
 	runHaxeCode([[
 		game.getLuaObject('bestday').bitmap.onEndReached.add(() ->
 		{
-			final path = 'mods/SUNKY/images/vanilla/tv/bestdayever.mp4';
+			final path = 'contents/SUNKY/images/vanilla/tv/bestdayever.mp4';
 			if (game.getLuaObject('bestday').load(path)) {
 				new FlxTimer().start(0.001, (_) -> { 
 					game.getLuaObject('bestday').play(); 
@@ -54,7 +54,7 @@ local function addShitToTV()
 	setProperty('majin.alpha', 0)
 
 	createInstance('arin', 'hxvlc.flixel.FlxVideoSprite')
-	callMethod('arin.load', {"mods/SUNKY/videos/Arin's Dance - GrumpOut.mp4"})
+	callMethod('arin.load', {"contents/SUNKY/videos/Arin's Dance - GrumpOut.mp4"})
 	setProperty('arin.alpha', 0)
 	scaleObject('arin', 3, 3)
 	setObjectCamera('arin', 'other')

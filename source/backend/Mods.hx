@@ -50,33 +50,11 @@ class Mods
 	inline public static function getModDirectories():Array<String>
 	{
 		var list:Array<String> = [];
-		#if(!mobile && MODS_ALLOWED)
-		var modsFolder:String = Paths.mods();
-		if(FileSystem.exists(modsFolder)) {
-			for (folder in FileSystem.readDirectory(modsFolder))
-			{
-				var path = haxe.io.Path.join([modsFolder, folder]);
-				if(FileSystem.isDirectory(path) && !ignoreModFolders.contains(folder.toLowerCase()) && !list.contains(folder))
-					list.push(folder);
-			}
+		for (folder in Paths.readDirectory(Paths.mods()))
+		{
+			if (!folder.contains('.') && !ignoreModFolders.contains(folder.toLowerCase()) && !list.contains(folder))
+				list.push(folder);
 		}
-		#else
-		var allPaths = OpenFlAssets.list();
-		var seen:Map<String, Bool> = [];
-
-		for(path in allPaths) {
-			if(path.indexOf("mods/") == 0) {
-				var rest = path.substr("mods/".length);
-				var folder = rest.split("/")[0];
-
-				if(folder != "" && !seen.exists(folder)) {
-					seen.set(folder, true);
-					if(!ignoreModFolders.contains(folder.toLowerCase()) && !list.contains(folder))
-						list.push(folder);
-				}
-			}
-		}
-		#end
 		return list;
 	}
 	
@@ -107,41 +85,37 @@ class Mods
 		return mergedList;
 	}
 
-	inline public static function directoriesWithFile(path:String, fileToFind:String, mods:Bool = true)
+	public static function directoriesWithFile(path:String, fileToFind:String, mods:Bool = true):Array<String>
 	{
 		var foldersToCheck:Array<String> = [];
-		//Main folder
-		if(#if !mobile FileSystem.exists(path + fileToFind) #else OpenFlAssets.exists(path + fileToFind) #end)
-			foldersToCheck.push(path + fileToFind);
+		
+		var checkFile = function(folderPath:String):Bool {
+			#if sys
+			if (sys.FileSystem.exists(folderPath + fileToFind)) return true;
+			#end
+			if (openfl.utils.Assets.exists(folderPath + fileToFind)) return true;
+			return false;
+		};
 
-		// Week folder
-		if(Paths.currentLevel != null && Paths.currentLevel != path)
-		{
-			var pth:String = Paths.getFolderPath(fileToFind, Paths.currentLevel);
-			if(!foldersToCheck.contains(pth) && #if !mobile FileSystem.exists(pth) #else OpenFlAssets.exists(pth) #end)
-				foldersToCheck.push(pth);
-		}
+		if(checkFile(path)) foldersToCheck.push(path);
 
 		#if MODS_ALLOWED
 		if(mods)
 		{
-			// Global mods first
 			for(mod in Mods.getGlobalMods())
 			{
-				var folder:String = Paths.mods(mod + '/' + fileToFind);
-				if(#if !mobile FileSystem.exists(folder) #else OpenFlAssets.exists(folder) #end && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
+				var folder:String = Paths.mods(mod + '/');
+				if(checkFile(folder) && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
 			}
 
-			// Then "PsychEngine/mods/" main folder
-			var folder:String = Paths.mods(fileToFind);
-			if(#if !mobile FileSystem.exists(folder) #else OpenFlAssets.exists(folder) #end && !foldersToCheck.contains(folder)) foldersToCheck.push(Paths.mods(fileToFind));
-
-			// And lastly, the loaded mod's folder
-			if(Mods.currentModDirectory != null && Mods.currentModDirectory.length > 0)
+			if(Mods.currentModDirectory?.length > 0)
 			{
-				var folder:String = Paths.mods(Mods.currentModDirectory + '/' + fileToFind);
-				if(#if !mobile FileSystem.exists(folder) #else OpenFlAssets.exists(folder) #end && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
+				var folder:String = Paths.mods(Mods.currentModDirectory + '/');
+				if(checkFile(folder) && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
 			}
+
+			var folder:String = Paths.mods('');
+			if(checkFile(folder) && !foldersToCheck.contains(folder)) foldersToCheck.push(folder);
 		}
 		#end
 		return foldersToCheck;
@@ -153,14 +127,16 @@ class Mods
 		if(folder == null) folder = Mods.currentModDirectory;
 
 		var path = Paths.mods(folder + '/pack.json');
-		if(#if !mobile FileSystem.exists(path) #else OpenFlAssets.exists(path) #end) {
+		var rawJson:String = null;
+
+		#if sys
+		if(sys.FileSystem.exists(path)) rawJson = sys.io.File.getContent(path);
+		#end
+		if(rawJson == null && OpenFlAssets.exists(path)) rawJson = OpenFlAssets.getText(path);
+
+		if(rawJson != null && rawJson.length > 0) {
 			try {
-				#if sys
-				var rawJson:String = File.getContent(path);
-				#else
-				var rawJson:String = Assets.getText(path);
-				#end
-				if(rawJson != null && rawJson.length > 0) return tjson.TJSON.parse(rawJson);
+				return tjson.TJSON.parse(rawJson);
 			} catch(e:Dynamic) {
 				trace(e);
 			}
@@ -176,7 +152,7 @@ class Mods
 
 		#if MODS_ALLOWED
 		try {
-			for (mod in CoolUtil.coolTextFile('modsList.txt'))
+			for (mod in CoolUtil.coolTextFile('contentsList.dat'))
 			{
 				//trace('Mod: $mod');
 				if(mod.trim().length < 1) continue;
@@ -202,7 +178,7 @@ class Mods
 		var list:Array<Array<Dynamic>> = [];
 		var added:Array<String> = [];
 		try {
-			for (mod in CoolUtil.coolTextFile('modsList.txt'))
+			for (mod in CoolUtil.coolTextFile('contentsList.dat'))
 			{
 				var dat:Array<String> = mod.split("|");
 				var folder:String = dat[0];
@@ -216,24 +192,15 @@ class Mods
 			trace(e);
 		}
 		
-		// Scan for folders that aren't on modsList.txt yet
+		// Scan for folders that aren't on contentsList.dat yet
 		for (folder in getModDirectories())
 		{
-			#if (MODS_ALLOWED && !mobile)
-			if(folder.trim().length > 0 && FileSystem.exists(Paths.mods(folder)) && FileSystem.isDirectory(Paths.mods(folder)) &&
-			!ignoreModFolders.contains(folder.toLowerCase()) && !added.contains(folder))
-			{
-				added.push(folder);
-				list.push([folder, true]);
-			}
-			#else
 			var trimmed = folder.trim();
-			if(trimmed.length > 0 && !ignoreModFolders.contains(trimmed.toLowerCase()) && !added.contains(trimmed))
+			if(trimmed.length > 0 && !added.contains(trimmed))
 			{
 				added.push(trimmed);
 				list.push([trimmed, true]);
 			}
-			#end
 		}
 
 		// Now save file
@@ -244,9 +211,9 @@ class Mods
 			fileStr += values[0] + '|' + (values[1] ? '1' : '0');
 		}
 
-		File.saveContent('modsList.txt', fileStr);
+		File.saveContent('contentsList.dat', fileStr);
 		updatedOnState = true;
-		//trace('Saved modsList.txt');
+		//trace('Saved contentsList.dat');
 		#end
 	}
 

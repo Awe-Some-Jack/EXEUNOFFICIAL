@@ -68,7 +68,7 @@ function onUpdatePost(e:Float)
 function onCreatePost()
 {
 	if (ClientPrefs.data.shaders) {
-		var fishEye = new ErrorHandledRuntimeShader('fisheye', File.getContent('mods/SONICJAM/shaders/fisheye.frag'));
+		var fishEye = new ErrorHandledRuntimeShader('fisheye', File.getContent('contents/SONICJAM/shaders/fisheye.frag'));
 		fishEye.setFloat('amount', -0.75);
 		skyCamera.filters = [new ShaderFilter(fishEye), new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(game.getLuaObject('pixel').shader)];
 		camGame.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(game.getLuaObject('pixel').shader)];

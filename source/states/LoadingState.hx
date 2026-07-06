@@ -9,7 +9,6 @@ import flixel.util.typeLimit.NextState;
 
 import openfl.display.BitmapData;
 import openfl.utils.AssetType;
-import openfl.utils.Assets as OpenFlAssets;
 import openfl.media.Sound;
 
 import lime.utils.Assets;

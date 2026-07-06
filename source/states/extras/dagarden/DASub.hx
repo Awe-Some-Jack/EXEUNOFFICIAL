@@ -131,7 +131,7 @@ class DASub extends FlxGroup
 							final parts = param.split(',');
 							wordIdx = Std.parseInt(parts[0]);
 							if (parts.length > 1)
-								color = FlxColor.fromString('#' + StringTools.trim(parts[1]));
+								color = FlxColor.fromString('#' + parts[1].trim());
 						}
 						_events.push({time: t, text: text, wordIndex: wordIdx, color: color, mode: 0});
 					}
@@ -142,7 +142,7 @@ class DASub extends FlxGroup
 						var color = FlxColor.WHITE;
 						if (param != '' && param != 'null')
 						{
-							var hex = StringTools.trim(param);
+							var hex = param.trim();
 							if (!hex.startsWith('#')) hex = '#' + hex;
 							color = FlxColor.fromString(hex);
 						}

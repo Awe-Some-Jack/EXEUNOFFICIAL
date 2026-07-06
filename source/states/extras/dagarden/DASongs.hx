@@ -92,42 +92,24 @@ class DASongs extends FlxGroup
 
 		for (mod in Mods.parseList().enabled)
 		{
-			final dir = Paths.mods('$mod/songs');
-			if (!FileSystem.exists(dir)) continue;
-			
-			try
+			for (song in Paths.readDirectory(Paths.mods('$mod/songs/')))
 			{
-				for (song in FileSystem.readDirectory(dir))
-				{
-					if (seen.exists(song)) continue;
-					if (!FileSystem.isDirectory('$dir/$song')) continue;
-					seen.set(song, true);
-					songList.push(song);
-					songMods.push(mod);
-				}
+				if (seen.exists(song) || song.contains('.')) continue;
+				seen.set(song, true);
+				songList.push(song);
+				songMods.push(mod);
 			}
-			catch(_:Dynamic) {}
 		}
 
-		final globalDir = Paths.mods('songs');
-		if (FileSystem.exists(globalDir))
+		for (song in Paths.readDirectory(Paths.mods('songs/')))
 		{
-			try
-			{
-				for (song in FileSystem.readDirectory(globalDir))
-				{
-					if (seen.exists(song)) continue;
-					if (!FileSystem.isDirectory('$globalDir/$song')) continue;
-					seen.set(song, true);
-					songList.push(song);
-					songMods.push('');
-				}
-			}
-			catch(_:Dynamic) {}
+			if (seen.exists(song) || song.contains('.')) continue;
+			seen.set(song, true);
+			songList.push(song);
+			songMods.push('');
 		}
 
 		_applyOrder();
-		
 		for (i in 0...songList.length)
 			songCredits.push(_readCredits(songList[i], songMods[i]));
 	}

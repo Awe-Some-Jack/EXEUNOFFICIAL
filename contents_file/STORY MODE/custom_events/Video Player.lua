@@ -127,9 +127,9 @@ local function saveDebugLog()
         local success = saveFile(logFilePath, debugLogBuffer)
 
         if success then
-            debugLog("Debug log saved to: mods/" .. logFilePath)
+            debugLog("Debug log saved to: contents/" .. logFilePath)
         else
-            debugLog("ERROR: Failed to save debug log to: mods/" .. logFilePath)
+            debugLog("ERROR: Failed to save debug log to: contents/" .. logFilePath)
             debugLog("This may be a file permissions issue.")
         end
     end

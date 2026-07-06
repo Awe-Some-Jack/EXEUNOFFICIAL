@@ -267,24 +267,24 @@ class Cutscene extends MusicBeatSubstate
     }
 
     function _scanDir(dir:String):Void
-    {
-        if (!FileSystem.exists(dir)) return;
-        try
-        {
-            for (entry in FileSystem.readDirectory(dir))
-            {
-                final full = '$dir/$entry';
-                if (FileSystem.isDirectory(full))
-                    _scanDir(full);
-                else if (entry.toLowerCase().endsWith('.mp4'))
-                {
-                    final noExt = entry.substr(0, entry.length - 4);
-                    videoEntries.push({name: noExt, displayName: _toDisplayName(noExt), path: full});
-                }
-            }
-        }
-        catch (_:Dynamic) {}
-    }
+	{
+		var scanPath = dir.endsWith('/') ? dir : dir + '/';
+		
+		for (entry in Paths.readDirectory(scanPath))
+		{
+			final full = scanPath + entry;
+
+			if (entry.toLowerCase().endsWith('.mp4'))
+			{
+				final noExt = entry.substr(0, entry.length - 4);
+				videoEntries.push({name: noExt, displayName: _toDisplayName(noExt), path: full});
+			}
+			else if (!entry.contains('.'))
+			{
+				_scanDir(full);
+			}
+		}
+	}
 
     function _toDisplayName(name:String):String
     {

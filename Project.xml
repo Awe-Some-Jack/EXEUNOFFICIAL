@@ -84,8 +84,8 @@
 	<define name="CHECK_FOR_UPDATES" if="desktop officialBuild"/>
 
 	<section if="MODS_ALLOWED">
-		<assets path='example_mods' rename='mods' embed='false' />
-		<assets path='list.txt' rename='modsList.txt' />
+		<assets path='contents_file' rename='contents' embed='false' />
+		<assets path='list.txt' rename='contentsList.dat' />
 	</section>
 
 	<assets path="psych-ui" rename="assets/psych-ui" embed="true" />

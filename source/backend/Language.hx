@@ -101,7 +101,7 @@ class Language
 
 		var result:String = (val != null && Std.isOfType(val, String)) ? cast(val, String) : (fallback != null ? fallback : key);
 		for (i in 0...vars?.length)
-			result = StringTools.replace(result, '{${i + 1}}', Std.string(vars[i]));
+			result = result.replace('{${i + 1}}', Std.string(vars[i]));
 
 		return result;
 	}

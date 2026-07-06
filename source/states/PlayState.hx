@@ -16,7 +16,6 @@ import flixel.util.FlxSave;
 import flixel.input.keyboard.FlxKey;
 import flixel.animation.FlxAnimationController;
 import lime.utils.Assets;
-import openfl.utils.Assets as OpenFlAssets;
 import openfl.events.KeyboardEvent;
 import haxe.Json;
 
@@ -536,62 +535,27 @@ class PlayState extends MusicBeatState
 		// "SCRIPTS FOLDER" SCRIPTS
 		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'scripts/'))
 		{
-			#if !mobile
-			for (file in FileSystem.readDirectory(folder))
+			for (file in Paths.readDirectory(folder))
 			{
 				#if LUA_ALLOWED
-				if(file.toLowerCase().endsWith('.lua'))
-					new FunkinLua(folder + file);
+				if(file.toLowerCase().endsWith('.lua')) new FunkinLua(folder + file);
 				#end
 
 				#if HSCRIPT_ALLOWED
-				if(file.toLowerCase().endsWith('.hx'))
-					initHScript(folder + file);
+				if(file.toLowerCase().endsWith('.hx')) initHScript(folder + file);
 				#end
 			}
-			#else
-			for (file in OpenFlAssets.list())
-			{
-				if(file.indexOf(folder) != 0) continue;
-
-				var rest = file.substr(folder.length);
-				if(rest.indexOf('/') != -1) continue;
-
-				#if LUA_ALLOWED
-				if(rest.toLowerCase().endsWith('.lua'))
-					new FunkinLua(file);
-				#end
-
-				#if HSCRIPT_ALLOWED
-				if(rest.toLowerCase().endsWith('.hx'))
-					initHScript(file);
-				#end
-			}
-			#end
 		}
 		#end
 
 		#if HSCRIPT_ALLOWED
 		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'data/$songName/'))
 		{
-			#if !mobile
-			for (file in FileSystem.readDirectory(folder))
+			for (file in Paths.readDirectory(folder))
 			{
 				if(file.toLowerCase().endsWith('cleanresolution.hx'))
 					initHScript(folder + file);
 			}
-			#else
-			for (file in OpenFlAssets.list())
-			{
-				if(file.indexOf(folder) != 0) continue;
-
-				var rest = file.substr(folder.length);
-				if(rest.indexOf('/') != -1) continue;
-
-				if(rest.toLowerCase().endsWith('cleanresolution.hx'))
-					initHScript(file);
-			}
-			#end
 		}
 		#end
 			
@@ -706,12 +670,11 @@ class PlayState extends MusicBeatState
 		// SONG SPECIFIC SCRIPTS
 		#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
 		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'data/$songName/'))
-			#if !mobile
-			for (file in FileSystem.readDirectory(folder))
+		{
+			for (file in Paths.readDirectory(folder))
 			{
 				#if LUA_ALLOWED
-				if(file.toLowerCase().endsWith('.lua'))
-					new FunkinLua(folder + file);
+				if(file.toLowerCase().endsWith('.lua')) new FunkinLua(folder + file);
 				#end
 
 				#if HSCRIPT_ALLOWED
@@ -719,29 +682,7 @@ class PlayState extends MusicBeatState
 					initHScript(folder + file);
 				#end
 			}
-			#else
-			for (file in OpenFlAssets.list()) {
-				
-				if(file.indexOf(folder) != 0) continue;
-
-				var rest = file.substr(folder.length);
-				if(rest.indexOf('/') != -1) continue;
-
-				#if LUA_ALLOWED
-				if(rest.toLowerCase().endsWith('.lua'))
-					new FunkinLua(file);
-				#end
-
-				#if HSCRIPT_ALLOWED
-				if(rest.toLowerCase().endsWith('.hx') && !rest.toLowerCase().endsWith('cleanresolution.hx'))
-					initHScript(file);
-				#end
-			}
-			#end
-		#if LUA_ALLOWED
-		if (luaArray.length > 0)
-			trace('[LUA] loaded: [' + luaArray.map(s -> haxe.io.Path.withoutExtension(haxe.io.Path.withoutDirectory(s.scriptName))).join(', ') + ']');
-		#end
+		}
 		#end
 
 		if(eventNotes.length > 0)
@@ -759,7 +700,6 @@ class PlayState extends MusicBeatState
 		//PRECACHING THINGS THAT GET USED FREQUENTLY TO AVOID LAGSPIKES
 		if(ClientPrefs.data.hitsoundVolume > 0) Paths.sound('hitsound');
 		for (i in 1...4) Paths.sound('missnote$i');
-		Paths.image('alphabet');
 
 		resetRPC();
 
@@ -887,34 +827,26 @@ class PlayState extends MusicBeatState
 		#if LUA_ALLOWED
 		var doPush:Bool = false;
 		var luaFile:String = 'characters/$name.lua';
+		
 		#if MODS_ALLOWED
 		var replacePath:String = Paths.modFolders(luaFile);
-		if(#if !mobile FileSystem.exists(replacePath) #else OpenFlAssets.exists(replacePath) #end)
-		{
+		if(Paths.getTextFromFile(replacePath, true) != null) {
 			luaFile = replacePath;
 			doPush = true;
-		}
-		else
-		{
+		} else {
 			luaFile = Paths.getSharedPath(luaFile);
-			if(#if !mobile FileSystem.exists(luaFile) #else OpenFlAssets.exists(luaFile) #end)
-				doPush = true;
+			if(Paths.getTextFromFile(luaFile, true) != null) doPush = true;
 		}
 		#else
 		luaFile = Paths.getSharedPath(luaFile);
-		if(Assets.exists(luaFile)) doPush = true;
+		if(Paths.getTextFromFile(luaFile, true) != null) doPush = true;
 		#end
 
 		if(doPush)
 		{
 			for (script in luaArray)
-			{
-				if(script.scriptName == luaFile)
-				{
-					doPush = false;
-					break;
-				}
-			}
+				if(script.scriptName == luaFile) { doPush = false; break; }
+
 			if(doPush) new FunkinLua(luaFile);
 		}
 		#end
@@ -923,28 +855,23 @@ class PlayState extends MusicBeatState
 		#if HSCRIPT_ALLOWED
 		var doPush:Bool = false;
 		var scriptFile:String = 'characters/' + name + '.hx';
+		
 		#if MODS_ALLOWED
 		var replacePath:String = Paths.modFolders(scriptFile);
-		if(#if !mobile FileSystem.exists(replacePath) #else OpenFlAssets.exists(replacePath) #end)
-		{
+		if(Paths.getTextFromFile(replacePath, true) != null) {
 			scriptFile = replacePath;
 			doPush = true;
-		}
-		else
-		#end
-		{
+		} else {
 			scriptFile = Paths.getSharedPath(scriptFile);
-			if(#if !mobile FileSystem.exists(scriptFile) #else OpenFlAssets.exists(scriptFile) #end)
-				doPush = true;
+			if(Paths.getTextFromFile(scriptFile, true) != null) doPush = true;
 		}
+		#else
+		scriptFile = Paths.getSharedPath(scriptFile);
+		if(Paths.getTextFromFile(scriptFile, true) != null) doPush = true;
+		#end
 
-		if(doPush)
-		{
-			if(Iris.instances.exists(scriptFile))
-				doPush = false;
-
-			if(doPush) initHScript(scriptFile);
-		}
+		if(doPush && !Iris.instances.exists(scriptFile))
+			initHScript(scriptFile);
 		#end
 	}
 
@@ -3915,43 +3842,20 @@ class PlayState extends MusicBeatState
 
 		for (folder in Mods.directoriesWithFile(Paths.getSharedPath(), 'shaders/'))
 		{
-			var frag:String = folder + name + '.frag';
-			var vert:String = folder + name + '.vert';
-			var found:Bool = false;
-			if(#if !mobile FileSystem.exists(frag) #else OpenFlAssets.exists(frag) #end)
-			{
-				#if !mobile
-				frag = File.getContent(frag);
-				#else
-				frag = OpenFlAssets.getText(frag);
-				#end
-				found = true;
-			}
-			else frag = null;
+			var frag:String = Paths.getTextFromFile(folder + name + '.frag', true);
+			var vert:String = Paths.getTextFromFile(folder + name + '.vert', true);
 
-			if(#if !mobile FileSystem.exists(vert) #else OpenFlAssets.exists(vert) #end)
-			{
-				#if !mobile
-				vert = File.getContent(vert);
-				#else
-				vert = OpenFlAssets.getText(vert);
-				#end
-				found = true;
-			}
-			else vert = null;
-
-			if(found)
+			if (frag != null && vert != null)
 			{
 				runtimeShaders.set(name, [frag, vert]);
-				//trace('Found shader $name!');
 				return true;
 			}
 		}
-			#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
-			addTextToDebug('Missing shader $name .frag AND .vert files!', FlxColor.RED);
-			#else
-			FlxG.log.warn('Missing shader $name .frag AND .vert files!');
-			#end
+		#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+		addTextToDebug('Missing shader $name .frag AND .vert files!', FlxColor.RED);
+		#else
+		FlxG.log.warn('Missing shader $name .frag AND .vert files!');
+		#end
 		#else
 		FlxG.log.warn('This platform doesn\'t support Runtime Shaders!');
 		#end

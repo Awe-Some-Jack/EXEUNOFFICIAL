@@ -95,25 +95,23 @@ class InfoBioParallaxState extends MusicBeatState
 	function loadCharData():Void
 	{
 		var basePath:String = 'assets/exe/parallax/info/';
-		var folders:Array<String> = sys.FileSystem.readDirectory(basePath);
+		var folders:Array<String> = Paths.readDirectory(basePath);
 
 		for (folder in folders)
 		{
-			var folderPath:String = basePath + folder;
-			if (!sys.FileSystem.isDirectory(folderPath)) continue;
+			if (folder.contains('.')) continue; 
 
-			var jsonPath:String = folderPath + '/info-' + folder + '.json';
-			if (!sys.FileSystem.exists(jsonPath)) continue;
+			var jsonPath:String = basePath + folder + '/info-' + folder + '.json';
+			var jsonContent:String = Paths.getTextFromFile(jsonPath, true);
 
-			var json:Dynamic = haxe.Json.parse(sys.io.File.getContent(jsonPath));
-			var renderArray:Array<RenderData> = [];
+			if (jsonContent == null) continue;
 
+			var json:Dynamic = haxe.Json.parse(jsonContent);
 			var renderArray:Array<RenderData> = [];
 
 			if (json.render != null)
 			{
 				var rawRender:Array<Dynamic> = cast json.render;
-
 				for (r in rawRender)
 				{
 					renderArray.push({
@@ -136,10 +134,10 @@ class InfoBioParallaxState extends MusicBeatState
 			}
 
 			chars.push({
-				name:   (json.name   != null) ? json.name   : 'Unknown',
-				info:   (json.info   != null) ? json.info   : 'No info.',
+				name:   json.name ?? 'Unknown',
+				info:   json.info ?? 'No info.',
 				render: renderArray,
-				order:  (json.order  != null) ? json.order  : 999,
+				order:  json.order ?? 999,
 				folder: folder
 			});
 		}
@@ -155,6 +153,7 @@ class InfoBioParallaxState extends MusicBeatState
 
 		for (spr in charRenders)
 			remove(spr);
+
 		charRenders = [];
 		renderBasePos = [];
 
@@ -173,8 +172,9 @@ class InfoBioParallaxState extends MusicBeatState
 		charName.text = data.name;
 		charInfo.text = data.info;
 
-		var fmt:openfl.text.TextFormat = charInfo.textField.defaultTextFormat;
+		final fmt:openfl.text.TextFormat = charInfo.textField.defaultTextFormat;
 		fmt.leading = 5;
+		
 		charInfo.textField.setTextFormat(fmt);
 		charInfo.textField.defaultTextFormat = fmt;
 

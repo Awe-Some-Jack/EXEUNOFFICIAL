@@ -3628,6 +3628,7 @@
 	],
 	"song": "Chaos",
 	"stage": "fleetw",
+	"arrowSkin": "NOTENORMAL_assets",
 	"needsVoices": true,
 	"format": "psych_v1_convert",
 	"speed": 2.8,

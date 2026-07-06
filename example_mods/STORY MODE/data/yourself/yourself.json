@@ -3144,7 +3144,6 @@
 	"song": "Yourself",
 	"needsVoices": true,
 	"stage": "yourself",
-	"arrowSkin": null,
 	"bpm": 220,
 	"speed": 2.4,
 	"format": "psych_v1_convert"

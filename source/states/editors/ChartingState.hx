@@ -653,7 +653,6 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		gameOverRetryInputText.text = PlayState.SONG.gameOverEnd;
 
 		noteTextureInputText.text = PlayState.SONG.arrowSkin;
-		noteSplashesInputText.text = PlayState.SONG.splashSkin;
 	}
 	
 	var noteSelectionSine:Float = 0;
@@ -2413,7 +2412,6 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 	var gameOverLoopInputText:PsychUIInputText;
 	var gameOverRetryInputText:PsychUIInputText;
 	var noteTextureInputText:PsychUIInputText;
-	var noteSplashesInputText:PsychUIInputText;
 	function addDataTab()
 	{
 		var tab_group = mainBox.getTab('Data').menu;
@@ -2483,13 +2481,6 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 				else showOutput('ERROR: "$textureLoad" not found.', true);
 			}
 		};
-
-		noteSplashesInputText = new PsychUIInputText(objX + 140, objY, 120, '');
-		noteSplashesInputText.onChange = function(old:String, cur:String)
-		{
-			PlayState.SONG.splashSkin = cur;
-			if (cur.trim().length < 1) PlayState.SONG.splashSkin = null;
-		}
 	
 		tab_group.add(new FlxText(gameOverCharDropDown.x, gameOverCharDropDown.y - 15, 120, 'Game Over Character:'));
 		tab_group.add(new FlxText(gameOverSndInputText.x, gameOverSndInputText.y - 15, 180, 'Game Over Death Sound (sounds/):'));
@@ -2500,9 +2491,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		tab_group.add(gameOverRetryInputText);
 
 		tab_group.add(new FlxText(noteTextureInputText.x, noteTextureInputText.y - 15, 100, 'Note Texture:'));
-		tab_group.add(new FlxText(noteSplashesInputText.x, noteSplashesInputText.y - 15, 120, 'Note Splashes Texture:'));
 		tab_group.add(noteTextureInputText);
-		tab_group.add(noteSplashesInputText);
 
 		tab_group.add(gameOverCharDropDown); //lowest priority to display properly
 	}

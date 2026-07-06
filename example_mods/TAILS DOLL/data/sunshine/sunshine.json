@@ -3198,7 +3198,7 @@
 	"song": "Sunshine",
 	"stage": "sunshine",
 	"needsVoices": true,
-	"arrowSkin": "noteSkins/NOTENORMAL_assets",
+	"arrowSkin": "noteSkins/NOTENORMALLQ_assets",
 	"format": "psych_v1_convert",
 	"speed": 2.8,
 	"bpm": 105

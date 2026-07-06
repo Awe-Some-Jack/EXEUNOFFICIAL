@@ -3557,11 +3557,12 @@
 		}
 	],
 	"gfVersion": "air",
-	"song": "flash",
+	"song": "Flash",
 	"stage": "windows7",
 	"validScore": true,
 	"needsVoices": true,
 	"bpm": 171,
+	"arrowSkin": "NOTENORMAL_assets",
 	"speed": 3.1,
 	"format": "psych_v1_convert"
 }

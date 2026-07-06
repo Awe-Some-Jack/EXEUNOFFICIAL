@@ -31,7 +31,6 @@ function onCountdownStarted()
 			if getPropertyFromGroup('notes', i, 'mustPress') == false then
 				setProperty('notes.members['..i..'].copyX', false)
 				setProperty('notes.members['..i..'].alpha', 1)
-				--setProperty('notes.members['..i..'].texture', 'noteSkins/NOTELORD_assets')
 				setPropertyFromGroup('notes', i, 'multSpeed', 2)
 				if getPropertyFromGroup('notes', i, 'isSustainNote') then
 					scaleObject('notes.members['..i..']', getProperty('notes.members['..i..'].scale.x') * 2, getProperty('notes.members['..i..'].scale.y'), true)
@@ -49,7 +48,6 @@ function onCountdownStarted()
 
 				setProperty('unspawnNotes['..i..'].copyX', 1)
 				setProperty('unspawnNotes['..i..'].alpha', 1)
-				--setProperty('unspawnNotes['..i..'].texture', 'noteSkins/NOTELORD_assets')
 				setPropertyFromGroup('unspawnNotes', i, 'multSpeed', 2)
 				if getPropertyFromGroup('unspawnNotes', i, 'isSustainNote') then
 					scaleObject('unspawnNotes['..i..']', getProperty('unspawnNotes['..i..'].scale.x') * 2, getProperty('unspawnNotes['..i..'].scale.y'), true)

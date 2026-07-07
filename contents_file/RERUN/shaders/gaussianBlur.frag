@@ -8,7 +8,7 @@ uniform float Quality;
 
 void main()
 {
-    if (distort == 0)
+    if (distort == 0.0)
     {
         gl_FragColor = flixel_texture2D(bitmap, openfl_TextureCoordv);
         return;

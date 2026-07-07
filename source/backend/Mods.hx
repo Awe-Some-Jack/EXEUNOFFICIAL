@@ -1,6 +1,7 @@
 package backend;
 
 import openfl.utils.Assets;
+import haxe.io.Bytes;
 
 import haxe.Json;
 
@@ -224,7 +225,13 @@ class Mods
 			fileStr += values[0] + '|' + (values[1] ? '1' : '0');
 		}
 
+		#if mobile
+		var bytes:Bytes = Assets.getBytes('contentsList.dat');
+		File.saveBytes('contentsList.dat', bytes);
+		#else
 		File.saveContent('contentsList.dat', fileStr);
+		#end
+
 		updatedOnState = true;
 		//trace('Saved contentsList.dat');
 		#end

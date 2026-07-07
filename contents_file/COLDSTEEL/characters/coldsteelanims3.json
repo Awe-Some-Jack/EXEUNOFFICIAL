@@ -1,0 +1,31 @@
+{
+	"animations": [
+		{
+			"offsets": [12, 37],
+			"indices": [],
+			"fps": 24,
+			"anim": "newgrounds",
+			"loop": false,
+			"name": "newgrounds"
+		},
+		{
+			"offsets": [34, 50],
+			"indices": [],
+			"fps": 24,
+			"anim": "toyoumom",
+			"loop": false,
+			"name": "toyoumom"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/coldsteel_anims3",
+	"position": [-160, 20],
+	"healthicon": "icon-coldsteel",
+	"flip_x": false,
+	"healthbar_colors": [160, 77, 164],
+	"camera_position": [-330, 100],
+	"sing_duration": 4,
+	"scale": 0.7,
+	"_editor_isPlayer": false
+}

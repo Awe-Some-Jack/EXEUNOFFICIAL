@@ -66,18 +66,56 @@ function onCreatePost()
     addLuaSprite('blackScreen', true)
     setProperty('blackScreen.alpha', 1)
 
-    addCharacterToList('coldsteel_bfmeme', 'bf')
-    addCharacterToList('coldsteel_meme', 'dad')
+    addCharacterToList('coldsteelanims1', 'dad')
+    addCharacterToList('coldsteelanims2', 'dad')
+    addCharacterToList('coldsteelanims3', 'dad')
+    addCharacterToList('coldsteelanims4', 'dad')
 end
 
 function onStepHit()
-    if curStep >= 32 and luaSpriteExists('blackScreen') then
+    if curStep >= 36 and luaSpriteExists('blackScreen') then
         removeLuaSprite('blackScreen', true)
+    end
+
+    if curStep == 528 then
+        triggerEvent('Change Character', 'dad', 'coldsteelanims1')
+        triggerEvent('Play Animation', 'steel', 'dad')
+    end
+
+    if curStep == 544 then
+        triggerEvent('Change Character', 'dad', 'coldsteel')
+    end
+
+    if curStep == 1024 then
+        triggerEvent('Change Character', 'dad', 'coldsteelanims2')
+        triggerEvent('Play Animation', 'mother', 'dad')
+    end
+
+    if curStep == 1056 then
+        triggerEvent('Change Character', 'dad', 'coldsteel')
     end
 
     if curStep == 1070 or curStep == 1087 or curStep == 1103 or
        curStep == 1135 or curStep == 1153 or curStep == 1167 then
         setRandomNoteAngles()
+    end
+
+    if curStep == 1137 then
+        triggerEvent('Change Character', 'dad', 'coldsteelanims1')
+        triggerEvent('Play Animation', 'devianart', 'dad')
+    end
+
+    if curStep == 1184 then
+        triggerEvent('Change Character', 'dad', 'coldsteel')
+    end
+
+    if curStep == 1293 then
+        triggerEvent('Change Character', 'dad', 'coldsteelanims3')
+        triggerEvent('Play Animation', 'toyoumom', 'dad')
+    end
+
+    if curStep == 1312 then
+        triggerEvent('Change Character', 'dad', 'coldsteel')
     end
 
     if curStep == 1190 then
@@ -91,17 +129,8 @@ function onStepHit()
         resetNoteAngles()
     end
 
-    if curStep == 1056 then
-        triggerEvent('Change Character', 'bf', 'coldsteel_bfmeme')
-        triggerEvent('Change Character', 'dad', 'coldsteel_meme')
-    end
-
-    if curStep == 1264 then
-        triggerEvent('Change Character', 'bf', 'coldsteel_bf')
-    end
 
     if curStep == 1311 then
-        triggerEvent('Change Character', 'bf', 'coldsteel_bfmeme')
         stopAllRotation = false
         isFastSpin = true
         rotationSpeed = 8
@@ -110,6 +139,15 @@ function onStepHit()
     if curStep == 1312 then
         zoomPulse = true
         zoomTime = 0
+    end
+
+    if curStep == 1403 then
+        triggerEvent('Change Character', 'dad', 'coldsteelanims4')
+        triggerEvent('Play Animation', 'whatsthat', 'dad')
+    end
+
+    if curStep == 1696 then
+        triggerEvent('Change Character', 'dad', 'coldsteel')
     end
 
     if curStep == 1407 then
@@ -124,9 +162,9 @@ function onStepHit()
         setProperty('defaultCamZoom', baseZoom)
     end
 
-    if curStep == 1423 then
-        triggerEvent('Change Character', 'bf', 'coldsteel_bf')
-        triggerEvent('Change Character', 'dad', 'coldsteel')
+    if curStep == 1984 then
+        triggerEvent('Change Character', 'dad', 'coldsteelanims3')
+        triggerEvent('Play Animation', 'newgrounds', 'dad')
     end
 end
 

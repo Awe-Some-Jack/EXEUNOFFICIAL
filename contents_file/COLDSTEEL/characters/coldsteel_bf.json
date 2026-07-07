@@ -1,82 +1,114 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
+			"offsets": [117, -41],
 			"loop": false,
-			"offsets": [113, 3],
-			"anim": "singLEFT",
 			"fps": 24,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [133, 3],
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [10, 171],
 			"loop": false,
-			"offsets": [-9, 101],
+			"fps": 24,
 			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [120, -2],
+			"loop": false,
 			"fps": 24,
-			"name": "up",
-			"indices": []
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "missdown"
+		},
+		{
+			"offsets": [-9, 40],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "missup"
+		},
+		{
+			"offsets": [62, -28],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"indices": [],
+			"name": "altdown"
+		},
+		{
+			"offsets": [63, -3],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss-alt",
+			"indices": [],
+			"name": "altmissdown"
+		},
+		{
+			"offsets": [48, 128],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "altup"
+		},
+		{
+			"offsets": [34, 126],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss-alt",
+			"indices": [],
+			"name": "altmissup"
 		},
 		{
 			"loop": false,
-			"offsets": [-7, -3],
-			"anim": "singRIGHT",
+			"offsets": [157, 1],
+			"anim": "singLEFT",
 			"fps": 24,
 			"name": "right",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [108, 2],
+			"offsets": [13, -8],
 			"anim": "singLEFTmiss",
 			"fps": 24,
-			"name": "miss left",
+			"name": "missright",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [133, -15],
-			"anim": "singDOWNmiss",
+			"offsets": [-16, 8],
+			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "miss down",
+			"name": "left",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [-17, 100],
-			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "miss up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [8, -3],
+			"offsets": [-18, 43],
 			"anim": "singRIGHTmiss",
 			"fps": 24,
-			"name": "miss right",
+			"name": "missleft",
 			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/bfcoldsteel",
-	"position": [-30, 310],
+	"image": "characters/bfcoldsteelnew",
+	"position": [-30, 270],
 	"healthicon": "icon-coldsteelbf",
 	"flip_x": true,
 	"healthbar_colors": [98, 238, 238],

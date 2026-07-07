@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="lava.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Dance instancia 10000" x="0" y="0" width="2895" height="392" frameX="-27" frameY="-1" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10001" x="0" y="0" width="2895" height="392" frameX="-27" frameY="-1" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10002" x="0" y="0" width="2895" height="392" frameX="-27" frameY="-1" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10003" x="0" y="402" width="2893" height="391" frameX="-28" frameY="-2" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10004" x="0" y="402" width="2893" height="391" frameX="-28" frameY="-2" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10005" x="0" y="803" width="2907" height="392" frameX="-16" frameY="-1" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10006" x="0" y="803" width="2907" height="392" frameX="-16" frameY="-1" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10007" x="0" y="803" width="2907" height="392" frameX="-16" frameY="-1" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10008" x="0" y="1205" width="2922" height="391" frameX="0" frameY="-1" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10009" x="0" y="1205" width="2922" height="391" frameX="0" frameY="-1" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10010" x="0" y="1606" width="2895" height="392" frameX="-27" frameY="0" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10011" x="0" y="1606" width="2895" height="392" frameX="-27" frameY="0" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10012" x="0" y="1606" width="2895" height="392" frameX="-27" frameY="0" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10013" x="0" y="2008" width="2895" height="392" frameX="-27" frameY="0" frameWidth="2923" frameHeight="393"/>
+	<SubTexture name="Dance instancia 10014" x="0" y="2008" width="2895" height="392" frameX="-27" frameY="0" frameWidth="2923" frameHeight="393"/>
+</TextureAtlas>

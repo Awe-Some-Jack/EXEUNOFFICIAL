@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="schoolhouse_game_over.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="schoolhouse bf game over00010000" x="1944" y="0" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00020000" x="0" y="0" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00030000" x="1296" y="0" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00040000" x="648" y="976" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00050000" x="1296" y="244" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00060000" x="1620" y="732" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00070000" x="0" y="488" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00080000" x="1944" y="488" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00090000" x="324" y="0" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00100000" x="972" y="0" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00110000" x="1944" y="732" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00120000" x="648" y="244" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00130000" x="1944" y="244" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00140000" x="972" y="244" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00150000" x="1620" y="976" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00160000" x="1620" y="0" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00170000" x="648" y="1464" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00180000" x="1296" y="488" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00190000" x="1620" y="1220" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00200000" x="648" y="1220" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00210000" x="1620" y="1464" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00220000" x="972" y="488" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00230000" x="0" y="1220" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00240000" x="1296" y="732" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00250000" x="1620" y="244" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00260000" x="0" y="244" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00270000" x="1296" y="1464" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00280000" x="324" y="732" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00290000" x="972" y="732" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00300000" x="324" y="488" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00310000" x="1944" y="976" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00320000" x="648" y="488" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00330000" x="324" y="244" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00340000" x="648" y="732" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00350000" x="0" y="1464" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00360000" x="0" y="732" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00370000" x="1296" y="1220" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00380000" x="1944" y="1220" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00390000" x="324" y="1464" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00400000" x="1296" y="976" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00410000" x="0" y="976" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00420000" x="972" y="1464" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00430000" x="1620" y="488" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00440000" x="324" y="1220" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00450000" x="972" y="976" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00460000" x="324" y="976" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00470000" x="1944" y="1464" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00480000" x="648" y="0" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00490000" x="972" y="1220" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="schoolhouse bf game over00500000" x="1944" y="0" width="324" height="244" frameX="2" frameY="2" frameWidth="320" frameHeight="240"/>
+</TextureAtlas>

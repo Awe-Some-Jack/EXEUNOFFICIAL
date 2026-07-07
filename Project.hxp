@@ -1,0 +1,628 @@
+package;
+
+import hxp.*;
+import lime.tools.*;
+import sys.FileSystem;
+import sys.io.File;
+import haxe.io.Path;
+
+using StringTools;
+
+class Project extends HXProject
+{
+    static final TITLE:String = "Friday Night Funkin': Vs Sonic.EXE";
+    static final EXECUTABLE:String = "Vs Sonic";
+    static final PACKAGE_NAME:String = "com.xunofficial.vssonicexe";
+    static final VERSION:String = "1.0";
+    static final COMPANY:String = "XUnofficial";
+    static final MAIN_CLASS:String = "Main";
+    static final PRELOADER:String = "flixel.system.FlxPreloader";
+
+    static final MODS_ALLOWED:FeatureFlag = "MODS_ALLOWED";
+    static final HSCRIPT_ALLOWED:FeatureFlag = "HSCRIPT_ALLOWED";
+    static final LUA_ALLOWED:FeatureFlag = "LUA_ALLOWED";
+    static final ACHIEVEMENTS_ALLOWED:FeatureFlag = "ACHIEVEMENTS_ALLOWED";
+    static final DISCORD_ALLOWED:FeatureFlag = "DISCORD_ALLOWED";
+    static final IRIS_DEBUG:FeatureFlag = "IRIS_DEBUG";
+    static final VIDEOS_ALLOWED:FeatureFlag = "VIDEOS_ALLOWED";
+    static final CRASH_HANDLER:FeatureFlag = "CRASH_HANDLER";
+    static final FEATURE_COMPRESSED_TEXTURES:FeatureFlag = "FEATURE_COMPRESSED_TEXTURES";
+
+    static final SWITCH_APP_ID:String = "0x0100f6c013bbc000";
+
+    static var astcExcludes:Array<String> = [];
+
+    public function new()
+    {
+        super();
+
+        configureApp();
+        configureFeatureFlags();
+        configureCompileDefines();
+        configureHaxelibs();
+        configureASTCTextures();
+        configureAssets();
+        configureIcons();
+        configurePlatformSpecific();
+    }
+
+    function configureApp()
+    {
+        this.meta.title = TITLE;
+        this.meta.version = VERSION;
+        this.meta.packageName = PACKAGE_NAME;
+        this.meta.company = COMPANY;
+
+        this.app.main = MAIN_CLASS;
+        this.app.file = EXECUTABLE;
+        this.app.preloader = PRELOADER;
+
+        this.sources.push("source");
+
+        this.window.width = 1280;
+        this.window.height = 720;
+        this.window.fps = 60;
+        this.window.background = 0xFF000000;
+        this.window.hardware = true;
+        this.window.vsync = false;
+        this.window.allowHighDPI = true;
+
+        if (isWeb())
+            this.window.resizable = true;
+
+        if (isDesktop())
+        {
+            this.window.orientation = Orientation.LANDSCAPE;
+            this.window.fullscreen = false;
+            this.window.resizable = true;
+            this.window.vsync = false;
+        }
+
+        if (isMobile())
+        {
+            this.window.orientation = Orientation.LANDSCAPE;
+            this.window.fullscreen = true;
+            this.window.resizable = false;
+        }
+
+        if (isSwitch())
+        {
+            this.window.orientation = Orientation.LANDSCAPE;
+            this.window.fullscreen = true;
+            this.window.resizable = true;
+        }
+    }
+
+    function configureFeatureFlags()
+    {
+        MODS_ALLOWED.apply(this, true);
+        HSCRIPT_ALLOWED.apply(this, true);
+        LUA_ALLOWED.apply(this, true);
+        ACHIEVEMENTS_ALLOWED.apply(this, true);
+        DISCORD_ALLOWED.apply(this, isDesktop());
+        FEATURE_COMPRESSED_TEXTURES.apply(this, isMobile());
+        IRIS_DEBUG.apply(this, true);
+        VIDEOS_ALLOWED.apply(this, true);
+        CRASH_HANDLER.apply(this, true);
+    }
+
+    function configureCompileDefines()
+    {
+        setHaxedef("SWF_VERSION", "11.8");
+        setHaxedef("LINC_LUA_RELATIVE_DYNAMIC_LIB");
+        setHaxedef("MULTITHREADED_LOADING");
+        setHaxedef("SHOW_LOADING_SCREEN");
+
+        if (!isWeb())
+            setHaxedef("openfl_dpi_aware");
+
+        if (DISCORD_ALLOWED.isEnabled(this))
+            setHaxedef("DISCORD_DISABLE_IO_THREAD");
+
+        if (VIDEOS_ALLOWED.isEnabled(this))
+        {
+            setHaxedef("HXVLC_NO_SHARE_DIRECTORY");
+            haxeflags.push("--macro include('hxvlc')");
+
+            if (debug)
+                setHaxedef("HXC_LIBVLC_LOGGING");
+        }
+
+        setHaxedef("FLX_NO_FOCUS_LOST_SCREEN");
+
+        if (!debug) {
+            setHaxedef("FLX_NO_DEBUG");
+            setHaxedef("NAPE_RELEASE_BUILD");
+        }
+
+        if (debug)
+            setHaxedef("HXC_DEBUG_TRACE");
+
+        if (CRASH_HANDLER.isEnabled(this))
+        {
+            setHaxedef("HXCPP_CHECK_POINTER");
+            setHaxedef("HXCPP_STACK_LINE");
+            setHaxedef("HXCPP_STACK_TRACE");
+            setHaxedef("HXCPP_CATCH_SEGV");
+        }
+
+        if(isCPP())
+        {
+            setHaxedef("HXCPP_GC_BIG_BLOCKS");
+            setHaxedef("HXCPP_GC_DYNAMIC_SIZE");
+        }
+
+        if (isLinux())
+            setHaxedef("NO_PRECOMPILED_HEADERS");
+
+        if (defines.exists("32bits"))
+            setHaxedef("x86_BUILD");
+
+        setHaxedef("no-deprecation-warnings");
+        setHaxedef("message.reporting", "pretty");
+        setHaxedef("openfl-enable-handle-error");
+        setHaxedef("lime_disable_assets_version");
+
+        haxeflags.push("--macro allowPackage('flash')");
+        haxeflags.push("--macro include('flixel.effects',true)");
+        haxeflags.push("--macro include('flixel.system.scaleModes',true)");
+
+        if (hasLib("away3d"))
+            haxeflags.push("--macro include('away3d.*',true)");
+
+        if (HSCRIPT_ALLOWED.isEnabled(this))
+            setHaxedef("hscriptPos");
+
+        // Disable DCE for normal scripting support
+        if (HSCRIPT_ALLOWED.isEnabled(this) || LUA_ALLOWED.isEnabled(this))
+        {
+            haxeflags.push("-dce no");
+        }
+        else if (!debug)
+        {
+            setHaxedef("analyzer-optimize");
+        }
+    }
+
+    function configureHaxelibs()
+    {
+        haxelibs.push(new Haxelib("flixel"));
+        haxelibs.push(new Haxelib("flixel-addons"));
+        haxelibs.push(new Haxelib("tjson", "1.4.0"));
+        haxelibs.push(new Haxelib("flixel-animate"));
+        haxelibs.push(new Haxelib("flxgif"));
+
+        if(isWindows())
+            haxelibs.push(new Haxelib("hxWindowColorMode"));
+
+        if(isAndroid())
+            haxelibs.push(new Haxelib("extension-androidtools", "git"));
+
+        if (LUA_ALLOWED.isEnabled(this)) {
+            haxelibs.push(new Haxelib("hxluajit"));
+            haxelibs.push(new Haxelib("hxluajit-wrapper"));
+        }
+
+        if (HSCRIPT_ALLOWED.isEnabled(this))
+            haxelibs.push(new Haxelib("hscript-iris"));
+
+        if (VIDEOS_ALLOWED.isEnabled(this))
+            haxelibs.push(new Haxelib("hxvlc"));
+
+        if (DISCORD_ALLOWED.isEnabled(this))
+            haxelibs.push(new Haxelib("hxdiscord_rpc", "1.2.4"));
+
+        if (debug)
+            haxelibs.push(new Haxelib("hxcpp-debug-server"));
+    }
+
+    function configureAssets()
+    {
+        assets = [];
+
+        function addAssetPath(path:String, rename:String, embed:Bool = false, exclude:Array<String> = null)
+        {
+            if (FileSystem.exists(path))
+                addAssetRecursive(path, rename, embed, ["*"], exclude ?? []);
+        }
+
+        addAssetPath("assets/fonts", "assets/fonts", true);
+
+        final audioExclude = isWeb() ? ["*.ogg"] : ["*.mp3"];
+        if (FileSystem.exists("assets/exe"))
+            addAssetPath("assets/exe", "assets/exe", false, audioExclude);
+
+        addAssetPath("assets/shared", "assets/shared", false, audioExclude);
+        addAssetPath("assets/embed", "assets/embed", true, audioExclude);
+        addAssetPath("assets/songs", "assets/songs", false, audioExclude);
+        addAssetPath("assets/week_assets", "assets", false, audioExclude);
+
+        if (VIDEOS_ALLOWED.isEnabled(this) && FileSystem.exists("assets/videos"))
+            addAssetRecursive("assets/videos", "assets/videos", false, ["*"], []);
+
+        if (MODS_ALLOWED.isEnabled(this))
+        {
+            if (FileSystem.exists("contents_file"))
+                addAssetRecursive("contents_file", "contents", false, ["*"], []);
+
+            if (FileSystem.exists("list.txt"))
+                assets.push(new Asset("list.txt", "contentsList.dat"));
+        }
+
+        if (FileSystem.exists("psych-ui"))
+            addAssetRecursive("psych-ui", "assets/psych-ui", true, ["*"], []);
+
+        if (isDesktop())
+        {
+            var alName = isWindows() ? "plugins/alsoft.ini" : "plugins/alsoft.conf";
+            if (FileSystem.exists("alsoft.txt"))
+                assets.push(new Asset("alsoft.txt", alName));
+        }
+    }
+
+    function configureASTCTextures()
+    {
+        if (!(isDisplay() || isClean()))
+        {
+            readASTCExclusion();
+
+            if (FEATURE_COMPRESSED_TEXTURES.isEnabled(this))
+            {
+                runASTCCompressor();
+            }
+        }
+    }
+
+    public function readASTCExclusion():Void
+    {
+        for (jsonFile in ['./astc-compression-data-assets.json', './astc-compression-data-contents.json']) {
+            if (FileSystem.exists(jsonFile))
+            {
+                @:nullSafety(Off)
+                astcExcludes = haxe.Json.parse(File.getContent(jsonFile)).excludes;
+
+                for (i in 0...astcExcludes.length)
+                    astcExcludes[i] = astcExcludes[i].trim();
+            }
+        }
+    }
+
+    public function isASTCExcluded(file:String):Bool
+    {
+        for (exclusion in astcExcludes)
+        {
+            if (exclusion.endsWith("/"))
+            {
+                var normalizedFilePath = Path.normalize(file);
+                var normalizedExclusion = Path.normalize(exclusion);
+                if (normalizedFilePath.startsWith(normalizedExclusion)) return true;
+            }
+            else if (exclusion.endsWith("/*"))
+            {
+                var normalizedExclusion = Path.normalize(exclusion.substr(0, exclusion.length - 2));
+                var fileDirectory = Path.directory(Path.normalize(file));
+                if (fileDirectory == normalizedExclusion) return true;
+            }
+            else
+            {
+                if (file == exclusion) return true;
+            }
+        }
+        return false;
+    }
+
+    public function runASTCCompressor():Void
+    {
+        Sys.println(' INFO : Compressing ASTC textures...');
+        for (jsonFile in ['./astc-compression-data-assets.json', './astc-compression-data-contents.json']) {
+            Sys.command('haxelib', ['run', 'astc-compressor', 'compress-from-json', '-json', jsonFile]);
+        }
+        Sys.println(' INFO : Done compressing ASTC textures.');
+    }
+
+    function configureIcons()
+    {
+        if (FileSystem.exists("assets/icons/icon16.png"))
+            icons.push(new Icon("assets/icons/icon16.png", 16));
+
+        if (FileSystem.exists("assets/icons/icon32.png"))
+            icons.push(new Icon("assets/icons/icon32.png", 32));
+
+        if (FileSystem.exists("assets/icons/icon64.png"))
+            icons.push(new Icon("assets/icons/icon64.png", 64));
+
+        if (FileSystem.exists("assets/icons/iconOG.png"))
+        {
+            icons.push(new Icon("assets/icons/iconOG.png"));
+
+            if (isLinux() || isMac())
+                assets.push(new Asset("assets/icons/iconOG.png", "icon.png"));
+        }
+    }
+
+    function configurePlatformSpecific()
+    {
+        var buildDir = "export/";
+        if (defines.exists("final"))
+            buildDir += "final";
+        else if (defines.exists("lua"))
+            buildDir += "lua";
+        else
+            buildDir += debug ? "debug" : "release";
+
+        if (defines.exists("32bits"))
+            buildDir = "export/32bit";
+
+        app.path = buildDir;
+
+        if (isSwitch())
+            setHaxedef("APP_ID", SWITCH_APP_ID);
+
+        if (MODS_ALLOWED.isEnabled(this) && isWindows() && FileSystem.exists("contents_file"))
+        {
+            var binDir = haxe.io.Path.normalize(Sys.getCwd() + "/" + buildDir + "/windows/bin/contents");
+            var srcDir = haxe.io.Path.normalize(Sys.getCwd() + "/contents_file");
+            postBuildCallbacks.push(new CLICommand("robocopy", [srcDir, binDir, "/E", "/XO", "/NJH", "/NJS", "/NFL", "/NDL"]));
+        }
+    }
+
+    public function isWeb():Bool
+    {
+        return target == Platform.HTML5;
+    }
+
+    public function isDesktop():Bool
+    {
+        return switch (target)
+        {
+            case Platform.WINDOWS, Platform.MAC, Platform.LINUX: true;
+            default: false;
+        }
+    }
+
+    public function isMobile():Bool
+    {
+        return switch (target)
+        {
+            case Platform.ANDROID, Platform.IOS: true;
+            default: false;
+        }
+    }
+
+    public function isSwitch():Bool
+    {
+        return defines.exists("switch");
+    }
+
+    public function isCPP():Bool
+    {
+        return defines.exists("cpp");
+    }
+
+    public function isDebug():Bool
+    {
+        return debug;
+    }
+
+    public function isRelease():Bool
+    {
+        return !isDebug();
+    }
+
+    public function isWindows():Bool
+    {
+        return target == Platform.WINDOWS;
+    }
+
+    public function isLinux():Bool
+    {
+        return target == Platform.LINUX;
+    }
+
+    public function isMac():Bool
+    {
+        return target == Platform.MAC;
+    }
+
+    public function isAndroid():Bool
+    {
+        return target == Platform.ANDROID;
+    }
+
+    public function isIOS():Bool
+    {
+        return target == Platform.IOS;
+    }
+
+    public function isIOSSimulator():Bool
+    {
+        return target == Platform.IOS && targetFlags.exists("simulator");
+    }
+
+    public function isHashLink():Bool
+    {
+        return targetFlags.exists("hl");
+    }
+
+    public function isNeko():Bool
+    {
+        return targetFlags.exists("neko");
+    }
+
+    public function isJava():Bool
+    {
+        return targetFlags.exists("java");
+    }
+
+    public function isNodeJS():Bool
+    {
+        return targetFlags.exists("nodejs");
+    }
+
+    public function isCSharp():Bool
+    {
+        return targetFlags.exists("cs");
+    }
+
+    public function isDisplay():Bool
+    {
+        return this.command == "display";
+    }
+
+    public function isClean():Bool
+    {
+        return this.command == "clean";
+    }
+
+    public function isBuild():Bool
+    {
+        return this.command == "test" || this.command == "build";
+    }
+
+    public function isArm64():Bool
+    {
+        return architectures.contains(Architecture.ARM64);
+    }
+
+    public function setHaxedef(name:String, ?value:String)
+    {
+        haxedefs.set(name, value ?? "");
+    }
+
+    function addAssetRecursive(path:String, rename:String, embed:Bool = false, include:Array<String>, exclude:Array<String>, ?library:String)
+    {
+        for (file in FileSystem.readDirectory(path)) {
+            var fullPath = Path.join([path, file]);
+            var targetPath = Path.join([rename, file]);
+
+            var isDir:Bool = false;
+            try { isDir = FileSystem.isDirectory(fullPath); } catch (e:Dynamic) { continue; }
+
+            if (isDir) {
+                if (filterFile(file, include, exclude))
+                    addAssetRecursive(fullPath, targetPath, embed, include, exclude, library);
+            } else {
+                if (filterFile(file, include, exclude)) {
+                    if (Path.extension(fullPath) == 'png' && FEATURE_COMPRESSED_TEXTURES.isEnabled(this)) {
+                        final astcPath:String = "astc-textures/" + fullPath.substr(0, fullPath.length - 3) + "astc";
+                        if (!isASTCExcluded(fullPath) && FileSystem.exists(astcPath)) {
+                            fullPath = astcPath;
+                            targetPath = targetPath.substr(0, targetPath.length - 3) + "astc";
+                        }
+                    }
+
+                    var asset = new Asset(fullPath, targetPath);
+                    asset.library = library;
+                    asset.embed = embed;
+                    assets.push(asset);
+                }
+            }
+        }
+    }
+
+    function filterFile(file:String, include:Array<String>, exclude:Array<String>):Bool
+    {
+        for (pattern in exclude)
+            if (matchesPattern(file, pattern)) return false;
+
+        for (pattern in include)
+            if (matchesPattern(file, pattern)) return true;
+
+        return false;
+    }
+
+    function matchesPattern(file:String, pattern:String):Bool
+    {
+        if (pattern == "*") return true;
+        if (pattern == file) return true;
+
+        if (pattern.indexOf("*") != -1)
+        {
+            var regex = new EReg(StringTools.replace(pattern, ".", "\\.").replace("*", ".*"), "");
+            return regex.match(file);
+        }
+
+        return false;
+    }
+
+    function hasLib(name:String):Bool
+    {
+        for (lib in haxelibs)
+            if (lib.name == name)
+                return true;
+
+        return false;
+    }
+}
+
+/**
+ * An object representing a feature flag, which can be enabled or disabled.
+ * Includes features such as automatic generation of compile defines and inversion.
+ *
+ * @author FunkinCrew
+ */
+abstract FeatureFlag(String) from String to String
+{
+    static final INVERSE_PREFIX:String = "NO_";
+
+    public function new(input:String)
+    {
+        this = input;
+    }
+
+    @:from
+    public static function fromString(input:String):FeatureFlag
+    {
+        return new FeatureFlag(input);
+    }
+
+    public function apply(project:Project, enableByDefault:Bool = false):Void
+    {
+        if (isEnabled(project))
+        {
+            getInverse().disable(project, false);
+        }
+        else if (getInverse().isEnabled(project))
+        {
+            disable(project, false);
+        }
+        else
+        {
+            if (enableByDefault)
+                enable(project, true);
+            else
+                disable(project, true);
+        }
+    }
+
+    public function enable(project:Project, andInverse:Bool = true)
+    {
+        project.haxedefs.set(this, "");
+        if (andInverse)
+            getInverse().disable(project, false);
+    }
+
+    public function disable(project:Project, andInverse:Bool = true)
+    {
+        project.haxedefs.remove(this);
+        if (andInverse)
+            getInverse().enable(project, false);
+    }
+
+    public function isEnabled(project:Project):Bool
+    {
+        return project.haxedefs.exists(this) || project.defines.exists(this);
+    }
+
+    public function isDisabled(project:Project):Bool
+    {
+        return getInverse().isEnabled(project);
+    }
+
+    public function getInverse():FeatureFlag
+    {
+        if (this.startsWith(INVERSE_PREFIX))
+            return this.substring(INVERSE_PREFIX.length);
+        return INVERSE_PREFIX + this;
+    }
+}

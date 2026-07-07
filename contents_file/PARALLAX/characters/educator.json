@@ -1,0 +1,111 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "edcuator idle0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, -3],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "edcuator up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, -9],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "edcuator down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-13, 0],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "edcuator right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [30, -5],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "edcuator left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [22, 5],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "edcuator left pose",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-3, 3],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "edcuator up pose",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-6, -6],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "edcuator down pose",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle-alt",
+			"fps": 24,
+			"name": "edcuator idle 0",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "click",
+			"fps": 24,
+			"name": "edcuator click",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "hi",
+			"fps": 24,
+			"name": "edcuator sonic",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [10, -4],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "edcuator right pose",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "characters/edcuator, characters/Edcuator_Hi_me_sonic, characters/edcuator_click_me_for_help, characters/edcuator_light_out",
+	"position": [0, 0],
+	"healthicon": "sonic",
+	"flip_x": false,
+	"healthbar_colors": [0, 76, 250],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

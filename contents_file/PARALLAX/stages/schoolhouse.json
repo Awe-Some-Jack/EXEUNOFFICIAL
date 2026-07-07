@@ -1,0 +1,10 @@
+{
+	"directory": "",
+	"stageUI": "pixel",
+	"defaultZoom": 1.2,
+	"hide_girlfriend": false,
+
+	"boyfriend": [0,0],
+	"opponent": [-150,-80],
+	"girlfriend": [0,0]
+}

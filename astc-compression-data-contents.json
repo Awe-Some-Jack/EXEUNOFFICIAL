@@ -1,0 +1,16 @@
+{
+  "input": "./assets",
+  "output": "./astc-textures/",
+  "quality": "medium",
+  "blocksize": "10x10",
+  "colorprofile": "cl",
+  "custom": [
+    {
+      "asset": "",
+      "blocksize": "4x4"
+    }
+  ],
+  "excludes": [
+    ""
+  ]
+}

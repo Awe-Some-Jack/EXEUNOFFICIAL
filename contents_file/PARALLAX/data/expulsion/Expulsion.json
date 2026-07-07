@@ -1,6 +1,6 @@
 {
 	"player1": "bf",
-	"player2": "dad",
+	"player2": "educator",
 	"notes": [
 		{
 			"sectionNotes": [],
@@ -1932,10 +1932,24 @@
 		}
 	],
 	"gfVersion": "gf",
-	"events": [],
+	"events": [
+		[
+			7714.28571428571,
+			[
+				["Play Animation", "hi", "dad"]
+			]
+		],
+		[
+			39428.5714285714,
+			[
+				["Play Animation", "click", "dad"]
+			]
+		]
+	],
+	"disableNoteRGB": true,
 	"song": "Expulsion",
-	"stage": "stage",
 	"needsVoices": true,
+	"stage": "schoolhouse",
 	"format": "psych_v1_convert",
 	"speed": 2.6,
 	"bpm": 140

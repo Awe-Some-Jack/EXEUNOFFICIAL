@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="edcuator_hi_me_sonic.png">
+<TextureAtlas imagePath="Edcuator_Hi_me_sonic.png">
 	<!-- Created using the Spritesheet and XML generator -->
 	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
 	<SubTexture name="edcuator sonic00010000" x="759" y="2143" width="126" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>

@@ -760,7 +760,7 @@ class FunkinLua
 
 		LuaUtilsHx.addFunction(lua, 'startVideo', function(videoFile:String, canSkip:Bool = true, forMidSong:Bool = false, shouldLoop:Bool = false, ?playOnLoad:Bool = true) {
 			#if VIDEOS_ALLOWED
-			if (FileSystem.exists(Paths.video(videoFile)))
+			if (#if !mobile FileSystem.exists(Paths.video(videoFile)) #else OpenFlAssets.exists(Paths.video(videoFile)) #end)
 			{
 				if (game.videoCutscene != null) { game.remove(game.videoCutscene); game.videoCutscene.destroy(); }
 				game.startVideo(videoFile, canSkip, forMidSong, shouldLoop, playOnLoad);
@@ -913,8 +913,21 @@ class FunkinLua
 
 		try
 		{
+			var result:Dynamic;
+			#if mobile
+			if (!OpenFlAssets.exists(scriptName)) {
+				luaTrace('$scriptName\nScript not found!', true, false, FlxColor.RED);
+				lua = null;
+				return;
+			}
+			var scriptSource:String = OpenFlAssets.getText(scriptName);
+			result = LuaL.dostring(lua, scriptSource);
+			#else
 			var isString = !FileSystem.exists(scriptName);
-			var result:Dynamic = isString ? LuaL.dostring(lua, scriptName) : LuaL.dofile(lua, scriptName);
+			result = isString ? LuaL.dostring(lua, scriptName) : LuaL.dofile(lua, scriptName);
+			if (isString) scriptName = 'unknown';
+			#end
+
 			var resultStr:String = Lua.tostring(lua, result);
 			if (resultStr != null && result != 0)
 			{
@@ -927,7 +940,6 @@ class FunkinLua
 				lua = null;
 				return;
 			}
-			if (isString) scriptName = 'unknown';
 		}
 		catch (e:Dynamic) { trace(e); return; }
 
@@ -1070,12 +1082,12 @@ class FunkinLua
 	{
 		if (!scriptFile.endsWith(ext)) scriptFile += ext;
 		var path = Paths.getPath(scriptFile, TEXT);
-		#if MODS_ALLOWED
+		#if (!mobile && MODS_ALLOWED)
 		if (FileSystem.exists(path))  return path;
 		if (FileSystem.exists(scriptFile)) return scriptFile;
 		#else
-		if (Assets.exists(path, TEXT))       return path;
-		if (Assets.exists(scriptFile, TEXT)) return scriptFile;
+		if (OpenFlAssets.exists(path, TEXT))       return path;
+		if (OpenFlAssets.exists(scriptFile, TEXT)) return scriptFile;
 		#end
 		return null;
 	}

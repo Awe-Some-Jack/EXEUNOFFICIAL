@@ -43,9 +43,9 @@ function onCreate()
 	if not lowQuality then for _, chad in ipairs({'wavyDistortion', 'blackwhite'}) do initLuaShader(chad) end end
 	if not lowQuality then
 		for _, spr in ipairs(sprites) do addSprite(spr) end
+		for _, fl in ipairs(flashBackBG) do	addSprite(fl) end
 	else
 		for _, spr in ipairs(spritesLowQuality) do addSprite(spr) end
-		for _, fl in ipairs(flashBackBG) do	addSprite(fl) end
 	end
 	setScrollFactor('gfGroup', 1, 1)
 end

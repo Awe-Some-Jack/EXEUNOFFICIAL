@@ -1,0 +1,239 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "bf chais/Idle"
+		},
+		{
+			"offsets": [52, 17],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "bf chais/Left"
+		},
+		{
+			"offsets": [33, -18],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "bf chais/Down"
+		},
+		{
+			"offsets": [-13, 41],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "bf chais/Up"
+		},
+		{
+			"offsets": [-14, 25],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "bf chais/Right"
+		},
+		{
+			"offsets": [40, 12],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "Carpeta de elementos duplicados/mLeft"
+		},
+		{
+			"offsets": [45, -10],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "Carpeta de elementos duplicados/mDown"
+		},
+		{
+			"offsets": [-5, 37],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "Carpeta de elementos duplicados/mUp"
+		},
+		{
+			"offsets": [0, 17],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "Carpeta de elementos duplicados/mRight"
+		},
+		{
+			"offsets": [714, 329],
+			"loop": false,
+			"fps": 24,
+			"anim": "dodge",
+			"indices": [],
+			"name": "bf chais/Dodge"
+		},
+		{
+			"offsets": [2, 95],
+			"loop": false,
+			"fps": 24,
+			"anim": "super",
+			"indices": [],
+			"name": "bf chais/Super"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-alt",
+			"indices": [],
+			"name": "2idle"
+		},
+		{
+			"offsets": [300, -10],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "2left"
+		},
+		{
+			"offsets": [80, -60],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"indices": [],
+			"name": "2down"
+		},
+		{
+			"offsets": [70, 240],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "2up"
+		},
+		{
+			"offsets": [10, -20],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "2right"
+		},
+		{
+			"offsets": [300, -10],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFT-alt-loop",
+			"indices": [11, 12, 13],
+			"name": "2left"
+		},
+		{
+			"offsets": [80, -60],
+			"loop": true,
+			"fps": 24,
+			"anim": "singDOWN-alt-loop",
+			"indices": [11, 12, 13],
+			"name": "2down"
+		},
+		{
+			"offsets": [70, 240],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUP-alt-loop",
+			"indices": [11, 12, 13],
+			"name": "2up"
+		},
+		{
+			"offsets": [10, -20],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHT-alt-loop",
+			"indices": [11, 12, 13],
+			"name": "2right"
+		},
+		{
+			"offsets": [216, -11],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss-alt",
+			"indices": [],
+			"name": "mleft"
+		},
+		{
+			"offsets": [80, -60],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss-alt",
+			"indices": [],
+			"name": "mdown"
+		},
+		{
+			"offsets": [63, 158],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss-alt",
+			"indices": [],
+			"name": "mup"
+		},
+		{
+			"loop": false,
+			"offsets": [0, -34],
+			"anim": "singRIGHTmiss-alt",
+			"fps": 24,
+			"name": "mright",
+			"indices": []
+		},
+		{
+			"offsets": [216, -11],
+			"indices": [3, 4, 5],
+			"fps": 24,
+			"anim": "singLEFTmiss-alt-loop",
+			"loop": true,
+			"name": "mleft"
+		},
+		{
+			"offsets": [80, -60],
+			"indices": [6, 7, 8],
+			"fps": 24,
+			"anim": "singDOWNmiss-alt-loop",
+			"loop": true,
+			"name": "mdown"
+		},
+		{
+			"offsets": [63, 158],
+			"indices": [5, 6, 7],
+			"fps": 24,
+			"anim": "singUPmiss-alt-loop",
+			"loop": true,
+			"name": "mup"
+		},
+		{
+			"offsets": [0, -34],
+			"indices": [4, 5, 6, 7],
+			"fps": 24,
+			"anim": "singRIGHTmiss-alt-loop",
+			"loop": true,
+			"name": "mright"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/bf atlas",
+	"position": [0, 0],
+	"healthicon": "bffleet",
+	"flip_x": true,
+	"healthbar_colors": [38, 38, 38],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": true
+}

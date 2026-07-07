@@ -190,10 +190,6 @@ class Project extends HXProject
         haxelibs.push(new Haxelib("flixel-addons"));
         haxelibs.push(new Haxelib("tjson", "1.4.0"));
         haxelibs.push(new Haxelib("flixel-animate"));
-        haxelibs.push(new Haxelib("flxgif"));
-
-        if(isWindows())
-            haxelibs.push(new Haxelib("hxWindowColorMode"));
 
         if(isAndroid())
             haxelibs.push(new Haxelib("extension-androidtools", "git"));

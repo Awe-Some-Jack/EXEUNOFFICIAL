@@ -58,11 +58,7 @@ class Main extends Sprite
 	public static final game = {
 		width: 1280, // WINDOW width
 		height: 720, // WINDOW height
-		#if mobile
-		initialState: EXEFreeplay, // for testing purposes, mobile devices will start in EXETitle when im done
-		#else
-		initialState: EXETitle, // initial game state
-		#end
+		initialState: EXETitle,
 		framerate: 60, // default framerate
 		skipSplash: true, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode
@@ -174,14 +170,12 @@ class Main extends Sprite
 
 		FlxG.mouse.useSystemCursor = true;
 
-		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		fpsVar.visible = false;
 		addChild(fpsVar);
 		
 		FlxG.stage.align = "tl";
 		FlxG.stage.scaleMode = StageScaleMode.NO_SCALE;
-		#end
 
 		#if (linux || mac) // fix the app icon not showing up on the Linux Panel / Mac Dock
 		var icon = Image.fromFile("icon.png");

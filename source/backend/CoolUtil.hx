@@ -19,12 +19,12 @@ class CoolUtil
 	{
 		var daList:String = null;
 		
+		if (daList == null && openfl.utils.Assets.exists(path)) daList = openfl.utils.Assets.getText(path);
+
 		#if sys
 		if (sys.FileSystem.exists(path)) daList = sys.io.File.getContent(path);
 		#end
-		
-		if (daList == null && openfl.utils.Assets.exists(path)) daList = openfl.utils.Assets.getText(path);
-		
+
 		return daList != null ? listFromString(daList) : [];
 	}
 

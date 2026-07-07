@@ -20,7 +20,7 @@ haxelib git grig.audio https://github.com/osakared/grig.audio.git
 haxelib install tink_core 1.26.0
 haxelib git flixel https://github.com/FNF-CC-ENGINE/flixel.git
 haxelib git lime https://github.com/GreenColdTea/lime-fc.git
-haxelib git openfl https://github.com/FunkinCrew/openfl.git
+haxelib git openfl https://github.com/GreenColdTea/openfl.git
 haxelib install hxcpp 4.3.2
 echo Finished!
 pause

@@ -217,11 +217,11 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
                     float angle = float(i) / float(samples) * 6.2831853;
                     vec2 sampleDir = vec2(cos(angle), sin(angle));
                     vec2 sampleUV = inputUV + sampleDir * px * distance;
-                    vec3 sample = texture(iChannel0, sampleUV).rgb;
-                    float lum = dot(sample, vec3(0.299, 0.587, 0.114));
+                    vec3 texSample = texture(iChannel0, sampleUV).rgb;
+                    float lum = dot(texSample, vec3(0.299, 0.587, 0.114));
                     float falloff = 1.0 - 0.0 * (1.0 - lum);
                     falloff = max(falloff, 0.0);
-                    halation += sample * lum * falloff;
+                    halation += texSample * lum * falloff;
                     totalWeight += lum * falloff;
                 }
             } else {
@@ -250,12 +250,12 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
                     float t = float(i) / float(clones - 1);
                     vec2 offsetVec = dir * distance * t * px;
                     vec2 sampleUV = inputUV + offsetVec;
-                    vec3 sample = texture(iChannel0, sampleUV).rgb;
-                    float lum = dot(sample, vec3(0.299, 0.587, 0.114));
+                    vec3 texSample = texture(iChannel0, sampleUV).rgb;
+                    float lum = dot(texSample, vec3(0.299, 0.587, 0.114));
                     if (lum >= 0.4) {
                         float falloff = 1.0 - 0.0 * (1.0 - lum);
                         falloff = max(falloff, 0.0);
-                        halation += sample * lum * falloff;
+                        halation += texSample * lum * falloff;
                         totalWeight += lum * falloff;
                     }
                 }

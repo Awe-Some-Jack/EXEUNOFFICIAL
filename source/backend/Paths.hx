@@ -218,7 +218,7 @@ class Paths
 	{
 		#if MODS_ALLOWED
 		final file:String = modsVideo(key);
-		if(FileSystem.exists(file)) return file;
+		if(FileSystem.exists(file) #if mobile || OpenFlAssets.exists(file) #end) return file;
 		#end
 
 		for (ext in VIDEO_EXTS)
@@ -261,7 +261,7 @@ class Paths
 	static public function getSoundPath(key:String, ?path:String, ?modsAllowed:Bool = true):String
 	{
 		var file:String = getPath(Language.getFileTranslation(key) + '.$SOUND_EXT', SOUND, path, modsAllowed);
-		#if sys
+		#if (sys && !mobile)
 		if (FileSystem.exists(file)) return file;
 		#else
 		if (OpenFlAssets.exists(file, SOUND)) return file;
@@ -358,7 +358,7 @@ class Paths
 		var folderKey:String = Language.getFileTranslation('fonts/$key');
 		#if MODS_ALLOWED
 		var file:String = modFolders(folderKey);
-		if(FileSystem.exists(file)) return file;
+		if(FileSystem.exists(file) #if mobile || OpenFlAssets.exists(file) #end) return file;
 		#end
 		return 'assets/$folderKey';
 	}
@@ -601,7 +601,7 @@ class Paths
 		for (ext in VIDEO_EXTS)
 		{
 			final path:String = modFolders('videos/' + key + '.' + ext);
-			if (FileSystem.exists(path))
+			if (FileSystem.exists(path) #if mobile || OpenFlAssets.exists(path) #end)
 				return path;
 		}
 
@@ -669,7 +669,7 @@ class Paths
         if (library != null)
         {
             final modPath = modFolders('$library/images/$key');
-            if (FileSystem.exists(modPath))
+            if (FileSystem.exists(modPath) #if mobile || OpenFlAssets.exists(modPath) #end)
                 path = modPath;
         }
         #end

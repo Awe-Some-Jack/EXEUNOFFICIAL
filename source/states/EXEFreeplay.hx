@@ -321,7 +321,7 @@ class EXEFreeplay extends MusicBeatState
 	{
 		try
 		{
-			#if sys
+			#if (sys && !mobile)
 			return BitmapData.fromFile(path);
 			#else
 			return openfl.utils.Assets.getBitmapData(path);

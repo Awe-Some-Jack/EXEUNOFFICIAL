@@ -46,10 +46,6 @@ import backend.Language;
 
 import backend.ui.*; //Psych-UI
 
-#if windows
-import hxwindowmode.WindowColorMode;
-#end
-
 import objects.Alphabet;
 import objects.BGSprite;
 

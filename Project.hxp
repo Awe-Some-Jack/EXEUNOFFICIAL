@@ -265,33 +265,31 @@ class Project extends HXProject
             if (FileSystem.exists(jsonFile))
             {
                 @:nullSafety(Off)
-                astcExcludes = haxe.Json.parse(File.getContent(jsonFile)).excludes;
-
-                for (i in 0...astcExcludes.length)
-                    astcExcludes[i] = astcExcludes[i].trim();
+                var parsedExcludes:Array<String> = haxe.Json.parse(File.getContent(jsonFile)).excludes;
+                
+                for (exclusion in parsedExcludes) {
+                    astcExcludes.push(exclusion.trim());
+                }
             }
         }
     }
 
     public function isASTCExcluded(file:String):Bool
     {
+        var normalizedFile = Path.normalize(file).toLowerCase();
+
         for (exclusion in astcExcludes)
         {
-            if (exclusion.endsWith("/"))
-            {
-                var normalizedFilePath = Path.normalize(file);
-                var normalizedExclusion = Path.normalize(exclusion);
-                if (normalizedFilePath.startsWith(normalizedExclusion)) return true;
+            var normalizedExclusion = Path.normalize(exclusion).toLowerCase();
+
+            if (normalizedExclusion.endsWith("/*")) {
+                normalizedExclusion = normalizedExclusion.substr(0, normalizedExclusion.length - 2);
+            } else if (normalizedExclusion.endsWith("*")) {
+                normalizedExclusion = normalizedExclusion.substr(0, normalizedExclusion.length - 1);
             }
-            else if (exclusion.endsWith("/*"))
-            {
-                var normalizedExclusion = Path.normalize(exclusion.substr(0, exclusion.length - 2));
-                var fileDirectory = Path.directory(Path.normalize(file));
-                if (fileDirectory == normalizedExclusion) return true;
-            }
-            else
-            {
-                if (file == exclusion) return true;
+
+            if (normalizedFile.indexOf(normalizedExclusion) != -1) {
+                return true;
             }
         }
         return false;

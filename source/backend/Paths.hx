@@ -170,22 +170,21 @@ class Paths
 			var customFile:String = file;
 			if (parentfolder != null) customFile = '$parentfolder/$file';
 
-			var modded:String = modFolders(customFile);
-			#if sys
-			if(sys.FileSystem.exists(modded)) return modded;
-			#end
-			if(OpenFlAssets.exists(modded, type)) return modded;
+			final modded:String = modFolders(customFile);
+			if(#if sys sys.FileSystem.exists(modded) || #end OpenFlAssets.exists(modded)) return modded;
 		}
 		#end
 
 		if (parentfolder != null)
 			return getFolderPath(file, parentfolder);
+
 		if (currentLevel != null && currentLevel != 'shared')
 		{
-			var levelPath = getFolderPath(file, currentLevel);
-			if (OpenFlAssets.exists(levelPath, type))
+			final levelPath = getFolderPath(file, currentLevel);
+			if (OpenFlAssets.exists(levelPath))
 				return levelPath;
 		}
+		
 		return getSharedPath(file);
 	}
 
@@ -223,7 +222,7 @@ class Paths
 		for (ext in VIDEO_EXTS)
 		{
 			final path = 'assets/videos/$key.$ext';
-			if (#if sys FileSystem.exists(path) || #end OpenFlAssets.exists(path, BINARY)) return path;
+			if (#if sys FileSystem.exists(path) || #end OpenFlAssets.exists(path)) return path;
 		}
 
 		trace('VIDEO NOT FOUND: $key');
@@ -260,7 +259,7 @@ class Paths
 	static public function getSoundPath(key:String, ?path:String, ?modsAllowed:Bool = true):String
 	{
 		final file:String = getPath(Language.getFileTranslation(key) + '.$SOUND_EXT', SOUND, path, modsAllowed);
-		if (#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file, SOUND)) return file;
+		if (#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file)) return file;
 		return null;
 	}
 
@@ -302,7 +301,7 @@ class Paths
 				bitmap = useOptimized ? OptimizedBitmapData.fromFile(file) : BitmapData.fromFile(file);
 				#end
 			}
-			else if (OpenFlAssets.exists(file, IMAGE))
+			else if (OpenFlAssets.exists(file))
 			{
 				bitmap = useOptimized ? OptimizedBitmapData.fromOpenFlAssets(file) : OpenFlAssets.getBitmapData(file);
 			}
@@ -340,19 +339,19 @@ class Paths
 
 	inline static public function getTextFromFile(key:String, ?ignoreMods:Bool = false):String
 	{
-		var path:String = getPath(key, TEXT, !ignoreMods);
+		final path:String = getPath(key, TEXT, !ignoreMods);
 		#if sys
 		if (sys.FileSystem.exists(path)) return sys.io.File.getContent(path);
 		#end
-		if (OpenFlAssets.exists(path, TEXT)) return OpenFlAssets.getText(path);
+		if (OpenFlAssets.exists(path)) return OpenFlAssets.getText(path);
 		return null;
 	}
 
 	inline static public function font(key:String)
 	{
-		var folderKey:String = Language.getFileTranslation('fonts/$key');
+		final folderKey:String = Language.getFileTranslation('fonts/$key');
 		#if MODS_ALLOWED
-		var file:String = modFolders(folderKey);
+		final file:String = modFolders(folderKey);
 		if(#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file)) return file;
 		#end
 		return 'assets/$folderKey';
@@ -385,7 +384,7 @@ class Paths
 		if (sys.FileSystem.exists(defaultPath)) return true;
 		#end
 		
-		return OpenFlAssets.exists(defaultPath, type);
+		return OpenFlAssets.exists(defaultPath);
 	}
 
 	public static function readDirectory(folder:String):Array<String> {
@@ -449,12 +448,12 @@ class Paths
 		var parentFrames:FlxAtlasFrames = Paths.getAtlas(keys[0].trim());
 		if(keys.length > 1)
 		{
-			var original:FlxAtlasFrames = parentFrames;
+			final original:FlxAtlasFrames = parentFrames;
 			parentFrames = new FlxAtlasFrames(parentFrames.parent);
 			parentFrames.addAtlas(original, true);
 			for (i in 1...keys.length)
 			{
-				var extraFrames:FlxAtlasFrames = Paths.getAtlas(keys[i].trim(), parentFolder, allowGPU);
+				final extraFrames:FlxAtlasFrames = Paths.getAtlas(keys[i].trim(), parentFolder, allowGPU);
 				if(extraFrames != null)
 					parentFrames.addAtlas(extraFrames, true);
 			}
@@ -569,7 +568,7 @@ class Paths
 				loaded = true;
 			}
 			#end
-			if(!loaded && OpenFlAssets.exists(file, SOUND)) {
+			if(!loaded && OpenFlAssets.exists(file)) {
 				currentTrackedSounds.set(file, OpenFlAssets.getSound(file));
 				loaded = true;
 			}

@@ -98,12 +98,12 @@ class Paths
 
 	public static function freeGraphicsFromMemory()
 	{
-		var protectedGfx:Array<FlxGraphic> = [];
+		final protectedGfx:Array<FlxGraphic> = [];
 		function checkForGraphics(spr:Dynamic)
 		{
 			try
 			{
-				var grp:Array<Dynamic> = Reflect.getProperty(spr, 'members');
+				final grp:Array<Dynamic> = Reflect.getProperty(spr, 'members');
 				if(grp != null)
 				{
 					//trace('is actually a group');
@@ -118,7 +118,7 @@ class Paths
 			//trace('check...');
 			try
 			{
-				var gfx:FlxGraphic = Reflect.getProperty(spr, 'graphic');
+				final gfx:FlxGraphic = Reflect.getProperty(spr, 'graphic');
 				if(gfx != null)
 				{
 					protectedGfx.push(gfx);
@@ -131,9 +131,8 @@ class Paths
 		for (member in FlxG.state.members)
 			checkForGraphics(member);
 
-		if(FlxG.state.subState != null)
-			for (member in FlxG.state.subState.members)
-				checkForGraphics(member);
+		for (member in FlxG.state.subState?.members)
+			checkForGraphics(member);
 
 		for (key in currentTrackedAssets.keys())
 		{
@@ -154,8 +153,7 @@ class Paths
 	inline static function destroyGraphic(graphic:FlxGraphic)
 	{
 		// free some gpu memory
-		if (graphic != null && graphic.bitmap != null && graphic.bitmap.__texture != null)
-			graphic.bitmap.__texture.dispose();
+		graphic?.bitmap?.__texture?.dispose();
 		FlxG.bitmap.remove(graphic);
 	}
 
@@ -218,7 +216,7 @@ class Paths
 	{
 		#if MODS_ALLOWED
 		final file:String = modsVideo(key);
-		if(FileSystem.exists(file) #if mobile || OpenFlAssets.exists(file) #end) return file;
+		if(#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file)) return file;
 		#end
 
 		for (ext in VIDEO_EXTS)
@@ -260,12 +258,8 @@ class Paths
 
 	static public function getSoundPath(key:String, ?path:String, ?modsAllowed:Bool = true):String
 	{
-		var file:String = getPath(Language.getFileTranslation(key) + '.$SOUND_EXT', SOUND, path, modsAllowed);
-		#if (sys && !mobile)
-		if (FileSystem.exists(file)) return file;
-		#else
-		if (OpenFlAssets.exists(file, SOUND)) return file;
-		#end
+		final file:String = getPath(Language.getFileTranslation(key) + '.$SOUND_EXT', SOUND, path, modsAllowed);
+		if (#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file, SOUND)) return file;
 		return null;
 	}
 
@@ -358,7 +352,7 @@ class Paths
 		var folderKey:String = Language.getFileTranslation('fonts/$key');
 		#if MODS_ALLOWED
 		var file:String = modFolders(folderKey);
-		if(FileSystem.exists(file) #if mobile || OpenFlAssets.exists(file) #end) return file;
+		if(#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file)) return file;
 		#end
 		return 'assets/$folderKey';
 	}
@@ -372,15 +366,12 @@ class Paths
 
 			for(mod in Mods.getGlobalMods())
 			{
-				var modPath:String = mods('$mod/$modKey');
-				#if sys
-				if (sys.FileSystem.exists(modPath)) return true;
-				#end
-				if (OpenFlAssets.exists(modPath)) return true;
+				final modPath:String = mods('$mod/$modKey');
+				if (#if sys sys.FileSystem.exists(modPath) || #end OpenFlAssets.exists(modPath)) return true;
 			}
 
-			var currentModPath:String = mods(Mods.currentModDirectory + '/' + modKey);
-			var baseModPath:String = mods(modKey);
+			final currentModPath:String = mods(Mods.currentModDirectory + '/' + modKey);
+			final baseModPath:String = mods(modKey);
 			
 			#if sys
 			if (sys.FileSystem.exists(currentModPath) || sys.FileSystem.exists(baseModPath)) return true;
@@ -388,7 +379,7 @@ class Paths
 			if (OpenFlAssets.exists(currentModPath) || OpenFlAssets.exists(baseModPath)) return true;
 		}
 		
-		var defaultPath:String = getPath(key, type, parentFolder, false);
+		final defaultPath:String = getPath(key, type, parentFolder, false);
 		#if sys
 		if (sys.FileSystem.exists(defaultPath)) return true;
 		#end
@@ -428,8 +419,8 @@ class Paths
 		var useMod = false;
 		var imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
 
-		var myXml:Dynamic = getPath('images/$key.xml', TEXT, parentFolder, true);
-		if(OpenFlAssets.exists(myXml) #if (!mobile && MODS_ALLOWED) || (FileSystem.exists(myXml) && (useMod = true)) #else || (OpenFlAssets.exists(myXml) && (useMod = true)) #end )
+		final myXml:Dynamic = getPath('images/$key.xml', TEXT, parentFolder, true);
+		if(OpenFlAssets.exists(myXml) #if MODS_ALLOWED || (FileSystem.exists(myXml) && (useMod = true)) || #end (OpenFlAssets.exists(myXml) && (useMod = true)))
 		{
 			#if MODS_ALLOWED
 			return FlxAtlasFrames.fromSparrow(imageLoaded, (useMod ? File.getContent(myXml) : myXml));
@@ -439,8 +430,8 @@ class Paths
 		}
 		else
 		{
-			var myJson:Dynamic = getPath('images/$key.json', TEXT, parentFolder, true);
-			if(OpenFlAssets.exists(myJson) #if (!mobile && MODS_ALLOWED) || (FileSystem.exists(myJson) && (useMod = true)) #else || (OpenFlAssets.exists(myJson) && (useMod = true)) #end )
+			final myJson:Dynamic = getPath('images/$key.json', TEXT, parentFolder, true);
+			if(OpenFlAssets.exists(myJson) #if MODS_ALLOWED || (FileSystem.exists(myJson) && (useMod = true)) || #end (OpenFlAssets.exists(myJson) && (useMod = true)))
 			{
 				#if MODS_ALLOWED
 				return FlxAtlasFrames.fromTexturePackerJson(imageLoaded, (useMod ? File.getContent(myJson) : myJson));
@@ -500,8 +491,10 @@ class Paths
 	inline static public function getPackerAtlas(key:String, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxAtlasFrames
 	{
 		final cacheKey:String = 'packer:$key:$parentFolder';
+
 		if (tempFramesCache.exists(cacheKey)) return cast tempFramesCache.get(cacheKey);
-		var imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
+
+		final imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
 		
 		var txtPath:String = modsTxt(key);
 		var txtContent:String = null;
@@ -527,8 +520,10 @@ class Paths
 	inline static public function getAsepriteAtlas(key:String, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxAtlasFrames
 	{
 		final cacheKey:String = 'aseprite:$key:$parentFolder';
+		
 		if (tempFramesCache.exists(cacheKey)) return cast tempFramesCache.get(cacheKey);
-		var imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
+
+		final imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
 		
 		var jsonPath:String = modsImagesJson(key);
 		var jsonContent:String = null;
@@ -601,7 +596,7 @@ class Paths
 		for (ext in VIDEO_EXTS)
 		{
 			final path:String = modFolders('videos/' + key + '.' + ext);
-			if (FileSystem.exists(path) #if mobile || OpenFlAssets.exists(path) #end)
+			if (#if sys FileSystem.exists(path) || #end OpenFlAssets.exists(path))
 				return path;
 		}
 
@@ -669,7 +664,7 @@ class Paths
         if (library != null)
         {
             final modPath = modFolders('$library/images/$key');
-            if (FileSystem.exists(modPath) #if mobile || OpenFlAssets.exists(modPath) #end)
+            if (#if sys FileSystem.exists(modPath) || #end OpenFlAssets.exists(modPath))
                 path = modPath;
         }
         #end

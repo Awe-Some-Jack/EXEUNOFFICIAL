@@ -1,8 +1,4 @@
 {
-	"camera_boyfriend": [
-		100,
-		0
-	],
 	"_editorMeta": {
 		"boyfriend": "bf",
 		"gf": "gf parada",
@@ -10,16 +6,12 @@
 	},
 	"isPixelStage": false,
 	"boyfriend": [
-		1223,
-		214
+		1068,
+		448
 	],
 	"girlfriend": [
 		452,
 		145
-	],
-	"camera_girlfriend": [
-		250,
-		-100
 	],
 	"objects": [
 		{
@@ -189,12 +181,8 @@
 	"defaultZoom": 0.65,
 	"directory": "",
 	"opponent": [
-		282,
-		177
-	],
-	"camera_opponent": [
-		-250,
-		50
+		354,
+		192
 	],
 	"hide_girlfriend": false
 }

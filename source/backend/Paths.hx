@@ -131,8 +131,9 @@ class Paths
 		for (member in FlxG.state.members)
 			checkForGraphics(member);
 
-		for (member in FlxG.state.subState?.members)
-			checkForGraphics(member);
+		if(FlxG.state.subState != null)
+			for (member in FlxG.state.subState.members)
+				checkForGraphics(member);
 
 		for (key in currentTrackedAssets.keys())
 		{

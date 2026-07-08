@@ -65,7 +65,7 @@ class Project extends HXProject
         this.window.background = 0xFF000000;
         this.window.hardware = true;
         this.window.vsync = false;
-        this.window.allowHighDPI = true;
+        this.window.allowHighDPI = !isMac();
 
         if (isWeb())
             this.window.resizable = true;

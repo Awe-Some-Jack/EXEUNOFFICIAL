@@ -261,14 +261,18 @@ class Project extends HXProject
 
     public function readASTCExclusion():Void
     {
+        astcExcludes = []; 
+        
         for (jsonFile in ['./astc-compression-data-assets.json', './astc-compression-data-contents.json']) {
             if (FileSystem.exists(jsonFile))
             {
                 @:nullSafety(Off)
-                var parsedExcludes:Array<String> = haxe.Json.parse(File.getContent(jsonFile)).excludes;
+                var parsedData = haxe.Json.parse(File.getContent(jsonFile));
                 
-                for (exclusion in parsedExcludes) {
-                    astcExcludes.push(exclusion.trim());
+                if (parsedData != null && parsedData.excludes != null) {
+                    var excludes:Array<String> = parsedData.excludes;
+                    for (i in 0...excludes.length)
+                        astcExcludes.push(excludes[i].trim()); 
                 }
             }
         }
@@ -276,22 +280,28 @@ class Project extends HXProject
 
     public function isASTCExcluded(file:String):Bool
     {
-        var normalizedFile = Path.normalize(file).toLowerCase();
-
         for (exclusion in astcExcludes)
         {
-            var normalizedExclusion = Path.normalize(exclusion).toLowerCase();
+            if (exclusion.endsWith("/"))
+            {
+                var normalizedFilePath = Path.normalize(file);
+                var normalizedExclusion = Path.normalize(exclusion);
 
-            if (normalizedExclusion.endsWith("/*")) {
-                normalizedExclusion = normalizedExclusion.substr(0, normalizedExclusion.length - 2);
-            } else if (normalizedExclusion.endsWith("*")) {
-                normalizedExclusion = normalizedExclusion.substr(0, normalizedExclusion.length - 1);
+                if (normalizedFilePath.startsWith(normalizedExclusion)) return true;
             }
+            else if (exclusion.endsWith("/*"))
+            {
+                var normalizedExclusion = Path.normalize(exclusion.substr(0, exclusion.length - 2));
+                var fileDirectory = Path.directory(Path.normalize(file));
 
-            if (normalizedFile.indexOf(normalizedExclusion) != -1) {
-                return true;
+                if (fileDirectory == normalizedExclusion) return true;
+            }
+            else
+            {
+                if (file == exclusion) return true;
             }
         }
+
         return false;
     }
 

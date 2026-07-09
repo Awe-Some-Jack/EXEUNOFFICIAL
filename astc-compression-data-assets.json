@@ -15,14 +15,14 @@
     }
   ],
   "excludes": [
-    "assets/exe/access/*",
-    "assets/exe/extras/bios/*",
-    "assets/exe/pause/*",
-    "assets/exe/soundtest/*",
+    "assets/exe/access/",
+    "assets/exe/extras/bios/",
+    "assets/exe/pause/",
+    "assets/exe/soundtest/",
     "assets/exe/story/padLock.png",
     "assets/exe/title/logo/eyes.png",
     "assets/exe/title/titleEnterNEW.png",
-    "assets/exe/transitions/*",
-    "assets/shared/images/pixelUI/*"
+    "assets/exe/transitions/",
+    "assets/shared/images/pixelUI/"
   ]
 }

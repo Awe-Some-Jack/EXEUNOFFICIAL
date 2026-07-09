@@ -1,16 +1,16 @@
 {
   "input": "./assets",
   "output": "./astc-textures/",
-  "quality": "medium",
-  "blocksize": "10x10",
-  "colorprofile": "cl",
+  "quality": "thorough",
+  "blocksize": "6x6",
+  "colorprofile": "cs",
   "custom": [
     {
-      "asset": "assets/shared/images/noteSkins/NOTE_assets.png",
+      "asset": "",
       "blocksize": "4x4"
     },
     {
-      "asset": "assets/shared/images/noteSkins/NOTENORMAL_assets.png",
+      "asset": "",
       "blocksize": "4x4"
     }
   ],
@@ -21,8 +21,9 @@
     "assets/exe/soundtest/",
     "assets/exe/story/padLock.png",
     "assets/exe/title/logo/eyes.png",
-    "assets/exe/title/titleEnterNEW.png",
     "assets/exe/transitions/",
-    "assets/shared/images/pixelUI/"
+    "assets/shared/images/pixelUI/",
+    "assets/shared/images/noteSkins/NOTE_assets.png",
+    "assets/shared/images/noteSkins/NOTENORMAL_assets.png"
   ]
 }

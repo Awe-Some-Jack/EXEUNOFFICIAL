@@ -1,12 +1,28 @@
 {
   "input": "./contents_file",
   "output": "./astc-textures/",
-  "quality": "medium",
-  "blocksize": "10x10",
-  "colorprofile": "cl",
+  "quality": "thorough",
+  "blocksize": "6x6",
+  "colorprofile": "cs",
   "custom": [
     {
-      "asset": "",
+      "asset": "contents_file/FLEETWAY/images/bg/4.png",
+      "blocksize": "4x4"
+    },
+    {
+      "asset": "contents_file/FLEETWAY/images/bg/4-alt.png",
+      "blocksize": "4x4"
+    },
+    {
+      "asset": "contents_file/FLEETWAY/images/bg/5.png",
+      "blocksize": "4x4"
+    },
+    {
+      "asset": "contents_file/FLEETWAY/images/bg/6.png",
+      "blocksize": "4x4"
+    },
+    {
+      "asset": "contents_file/FLEETWAY/images/bg/7.png",
       "blocksize": "4x4"
     }
   ],
@@ -18,6 +34,13 @@
     "contents_file/images/VG.png",
     "contents_file/CHAOTIX/images/",
     "contents_file/FATAL/images/",
+    "contents_file/FLEETWAY/images/bg/fuentes.png",
+    "contents_file/FLEETWAY/images/bg/esmeraldas.png",
+    "contents_file/FLEETWAY/images/bg/DUDU2.png",
+    "contents_file/FLEETWAY/images/bg/DUDU.png",
+    "contents_file/FLEETWAY/images/bg/1.png",
+    "contents_file/FLEETWAY/images/bg/2.png",
+    "contents_file/FLEETWAY/images/bg/3.png",
     "contents_file/OMW/images/longstrider/",
     "contents_file/OMW/images/characters/longstriderbf.png",
     "contents_file/OMW/images/characters/omwlongstrider.png",
@@ -48,8 +71,8 @@
     "contents_file/STORY MODE/images/characters/Sonic_EXE_Pixel.png",
     "contents_file/STORY MODE/images/characters/bfp.png",
     "contents_file/STORY MODE/images/characters/gfp.png",
-    "contents_file/STORY MODE/images/ycr/fondocaberna.png",
-    "contents_file/STORY MODE/images/ycr/piso.png",
-    "contents_file/STORY MODE/images/ycr/piso2.png"
+    "contents_file/STORY MODE/images/yrc/fondocaberna.png",
+    "contents_file/STORY MODE/images/yrc/piso.png",
+    "contents_file/STORY MODE/images/yrc/piso2.png"
   ]
 }

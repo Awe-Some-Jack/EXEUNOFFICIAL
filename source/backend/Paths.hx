@@ -357,7 +357,7 @@ class Paths
 		return 'assets/$folderKey';
 	}
 
-	public static function fileExists(key:String, type:AssetType, ?ignoreMods:Bool = false, ?parentFolder:String = null)
+	public static function fileExists(key:String, ?type:AssetType, ?ignoreMods:Bool = false, ?parentFolder:String = null)
 	{
 		if(!ignoreMods)
 		{
@@ -388,8 +388,8 @@ class Paths
 	}
 
 	public static function readDirectory(folder:String):Array<String> {
-		var scannedFiles:Array<String> = [];
-		var scanFolder = folder.endsWith('/') ? folder : folder + '/';
+		final scannedFiles:Array<String> = [];
+		final scanFolder:String = folder.endsWith('/') ? folder : folder + '/';
 		
 		#if sys
 		if (sys.FileSystem.exists(scanFolder) && sys.FileSystem.isDirectory(scanFolder)) {
@@ -400,9 +400,9 @@ class Paths
 		
 		for (file in OpenFlAssets.list()) {
 			if (file.indexOf(scanFolder) == 0) {
-				var rest = file.substr(scanFolder.length);
-				var item = rest;
+				final rest = file.substr(scanFolder.length);
 
+				var item = rest;
 				if (rest.indexOf('/') != -1)
 					item = rest.substr(0, rest.indexOf('/')); 
 
@@ -416,9 +416,9 @@ class Paths
 
 	static public function getAtlas(key:String, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxAtlasFrames
 	{
-		var useMod = false;
-		var imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
+		var useMod:Bool = false;
 
+		final imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
 		final myXml:Dynamic = getPath('images/$key.xml', TEXT, parentFolder, true);
 		if(OpenFlAssets.exists(myXml) #if MODS_ALLOWED || (FileSystem.exists(myXml) && (useMod = true)) || #end (OpenFlAssets.exists(myXml) && (useMod = true)))
 		{
@@ -464,6 +464,7 @@ class Paths
 	inline static public function getSparrowAtlas(key:String, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxAtlasFrames
 	{
 		final cacheKey:String = 'sparrow:$key:$parentFolder';
+
 		if (tempFramesCache.exists(cacheKey)) return cast tempFramesCache.get(cacheKey);
 		var imageLoaded:FlxGraphic = image(key, parentFolder, allowGPU);
 		
@@ -620,7 +621,7 @@ class Paths
 
 	static public function modFolders(key:String)
 	{
-		if(Mods.currentModDirectory != null && Mods.currentModDirectory.length > 0)
+		if(Mods.currentModDirectory?.length > 0)
 		{
 			var fileToCheck:String = mods(Mods.currentModDirectory + '/' + key);
 			#if sys
@@ -643,41 +644,41 @@ class Paths
 
 	#if flixel_animate
 	static public function getAnimateAtlas(key:String, ?library:String = null, ?settings:AtlasSpriteSettings):FlxAnimateFrames
-    {
-        final validatedSettings:AtlasSpriteSettings =
-        {
-            swfMode: settings?.swfMode ?? false,
-            cacheOnLoad: settings?.cacheOnLoad ?? ClientPrefs.data.cacheOnGPU,
-            filterQuality: settings?.filterQuality ?? (!ClientPrefs.data.lowQuality ? MEDIUM : LOW),
-            spritemaps: settings?.spritemaps ?? null,
-            metadataJson: settings?.metadataJson ?? null,
-            cacheKey: settings?.cacheKey ?? null,
-            uniqueInCache: settings?.uniqueInCache ?? false,
-            onSymbolCreate: settings?.onSymbolCreate ?? null,
-            applyStageMatrix: settings?.applyStageMatrix ?? false,
-            useRenderTexture: settings?.useRenderTexture ?? false
-        };
+	{
+		final validatedSettings:AtlasSpriteSettings =
+		{
+			swfMode: settings?.swfMode ?? false,
+			cacheOnLoad: settings?.cacheOnLoad ?? ClientPrefs.data.cacheOnGPU,
+			filterQuality: settings?.filterQuality ?? (!ClientPrefs.data.lowQuality ? MEDIUM : LOW),
+			spritemaps: settings?.spritemaps ?? null,
+			metadataJson: settings?.metadataJson ?? null,
+			cacheKey: settings?.cacheKey ?? null,
+			uniqueInCache: settings?.uniqueInCache ?? false,
+			onSymbolCreate: settings?.onSymbolCreate ?? null,
+			applyStageMatrix: settings?.applyStageMatrix ?? false,
+			useRenderTexture: settings?.useRenderTexture ?? false
+		};
 
-        #if flixel_animate
-        var path = getPath('images/$key', TEXT, library, true);
-        #if MODS_ALLOWED
-        if (library != null)
-        {
-            final modPath = modFolders('$library/images/$key');
-            if (#if sys FileSystem.exists(modPath) || #end OpenFlAssets.exists(modPath))
-                path = modPath;
-        }
-        #end
+		var path = getPath('images/$key', TEXT, library, true);
 
-        return FlxAnimateFrames.fromAnimate(path, validatedSettings.spritemaps, validatedSettings.metadataJson, validatedSettings.cacheKey,
-            validatedSettings.uniqueInCache, {
-                swfMode: validatedSettings.swfMode,
-                cacheOnLoad: validatedSettings.cacheOnLoad,
-                filterQuality: validatedSettings.filterQuality,
-                onSymbolCreate: validatedSettings.onSymbolCreate
-            }
-        );
-        #end
-    }
+		#if MODS_ALLOWED
+		final modPath = library != null ? modFolders('$library/images/$key') : modFolders('images/$key');
+		final isValidFolder:Bool = #if sys (sys.FileSystem.exists(modPath) && sys.FileSystem.isDirectory(modPath)) || #end OpenFlAssets.exists(modPath + '/Animation.json');
+
+		trace('getAnimateAtlas: $key, library: $library, path: $path, modPath: $modPath, isValidFolder: $isValidFolder');
+		
+		if (isValidFolder)
+			path = modPath;
+		#end
+
+		return FlxAnimateFrames.fromAnimate(path, validatedSettings.spritemaps, validatedSettings.metadataJson, validatedSettings.cacheKey,
+			validatedSettings.uniqueInCache, {
+				swfMode: validatedSettings.swfMode,
+				cacheOnLoad: validatedSettings.cacheOnLoad,
+				filterQuality: validatedSettings.filterQuality,
+				onSymbolCreate: validatedSettings.onSymbolCreate
+			}
+		);
+	}
 	#end
 }

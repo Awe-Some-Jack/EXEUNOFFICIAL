@@ -57,6 +57,7 @@ class EXEMenu extends MusicBeatState
 
 	var menuOptions:Array<FlxSprite> = [];
 	var menuTexts:Array<FlxText> = [];
+	var _cjkYOffset:Float = 0;
 	var shadowSprite:FlxSprite;
 	var previousSelectedIndex:Int = 2;
 	var isMovingUpward:Bool = false;
@@ -106,10 +107,11 @@ class EXEMenu extends MusicBeatState
 		add(shadowSprite);
 
 		final translatedTexts = getOptionTexts();
+		final boxBitmap = Assets.getBitmapData("assets/exe/mainmenu/options/box.png");
 		for (i in 0...TOTAL_OPTIONS)
 		{
 			final option = new FlxSprite();
-			option.loadGraphic(Assets.getBitmapData("assets/exe/mainmenu/options/box.png"));
+			option.loadGraphic(boxBitmap);
 			option.updateHitbox();
 			option.ID = i;
 			add(option);
@@ -137,6 +139,12 @@ class EXEMenu extends MusicBeatState
 			heylookanemail.setPosition(-480, -270);
 			add(heylookanemail);
 		}
+
+		_cjkYOffset = switch (Language.getFontForLanguage()) {
+			case 'chinese.ttf': 28;
+			case 'japanese.ttf' | 'korean.ttf': 36;
+			default: 0;
+		};
 
 		refreshSelection();
 		changeSelection(0, false, false);
@@ -336,13 +344,6 @@ class EXEMenu extends MusicBeatState
 
 	function refreshSelection():Void
 	{
-		final langFont = Language.getFontForLanguage();
-		final cjkYOffset:Float = switch (langFont) {
-			case 'chinese.ttf': 28;
-			case 'japanese.ttf' | 'korean.ttf': 36;
-			default: 0;
-		};
-
 		for (i in 0...TOTAL_OPTIONS)
 		{
 			final visualPos:Int = (i - selectedOptionIndex + CENTER_POSITION + TOTAL_OPTIONS) % TOTAL_OPTIONS;
@@ -361,7 +362,7 @@ class EXEMenu extends MusicBeatState
 
 			final textScale = TEXT_SCALES[visualPos];
 			final rawPos = TEXT_POSITIONS[visualPos];
-			final textPos = {x: rawPos.x, y: rawPos.y + cjkYOffset};
+			final textPos = {x: rawPos.x, y: rawPos.y + _cjkYOffset};
 			
 			if (visualPos == CENTER_POSITION && shadowSprite != null)
 			{

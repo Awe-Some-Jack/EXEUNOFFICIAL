@@ -145,9 +145,10 @@ class EXEFreeplay extends MusicBeatState
 		exeTexts = new FlxTypedGroup<FlxText>();
 		songTexts = new FlxTypedGroup<FlxText>();
 
+		final langFont = Paths.font(Language.getFontForLanguage());
 		final charSize = Language.cjkSize(TITLE_SIZE);
 		charText = new FlxText(0, 5, FlxG.width, "", charSize);
-		charText.setFormat(Paths.font(Language.getFontForLanguage()), charSize, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		charText.setFormat(langFont, charSize, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		charText.antialiasing = false;
 		charText.borderSize = 3;
 		
@@ -169,13 +170,13 @@ class EXEFreeplay extends MusicBeatState
 
 		final uiSize = Language.cjkSize(32);
 		rankText = new FlxText(0, 0, 0, Language.get('freeplay.rank', 'RANK') + ': -', uiSize);
-		rankText.setFormat(Paths.font(Language.getFontForLanguage()), uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		rankText.setFormat(langFont, uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		rankText.antialiasing = false;
 		rankText.borderSize = 3;
 		rankText.y = FlxG.height - rankText.height - 15;
 
 		scoreText = new FlxText(0, 0, 0, Language.get('freeplay.score', 'SCORE') + ': 0', uiSize);
-		scoreText.setFormat(Paths.font(Language.getFontForLanguage()), uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.setFormat(langFont, uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreText.antialiasing = false;
 		scoreText.borderSize = 3;
 		scoreText.y = rankText.y - scoreText.height - 25;
@@ -339,6 +340,12 @@ class EXEFreeplay extends MusicBeatState
 		centerX = FlxG.width / 2;
 		centerY = FlxG.height / 2;
 
+		final screenstaticFrames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.png', 'assets/exe/story/screenstatic.xml');
+		final placeholderBitmap = loadRawBitmap(PATH_COVERS + 'placeholder.png') ?? loadRawBitmap('assets/exe/freeplayassets/placeholder.png');
+		final entryLangFont = Paths.font(Language.getFontForLanguage());
+		final entryExeSize = Language.cjkSize(EXE_LABEL_SIZE);
+		final translatedLabels = Language.getArray('freeplay.labels', []);
+
 		for (i in 0...songEntries.length)
 		{
 			final entry = songEntries[i];
@@ -347,15 +354,13 @@ class EXEFreeplay extends MusicBeatState
 			final cardGroup = new FlxTypedGroup<FlxSprite>();
 			cardGroups.push(cardGroup);
 			cardGroupsLayer.add(cardGroup);
-			
+
 			final proxy = new FlxObject(0, 0);
 			cardPositions.push(proxy);
 
 			final coverPath = PATH_COVERS + Paths.formatToSongPath(firstSong.songName) + '.png';
-			var coverBitmap = loadRawBitmap(coverPath);
-			coverBitmap ??= loadRawBitmap(PATH_COVERS + 'placeholder.png');
-			coverBitmap ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.png');
-			
+			final coverBitmap = loadRawBitmap(coverPath) ?? placeholderBitmap;
+
 			if (coverBitmap != null)
 			{
 				final cover = new FlxSprite(0, 0).loadGraphic(coverBitmap);
@@ -366,7 +371,7 @@ class EXEFreeplay extends MusicBeatState
 				cardGroup.add(cover);
 
 				final ss = new FlxSprite(0, 0);
-				ss.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.png', 'assets/exe/story/screenstatic.xml');
+				ss.frames = screenstaticFrames;
 				ss.animation.addByPrefix('play', 'screenSTATIC', 24);
 				ss.animation.play('play');
 				ss.setGraphicSize(Std.int(cover.width), Std.int(cover.height));
@@ -410,12 +415,10 @@ class EXEFreeplay extends MusicBeatState
 				default: 0;
 			};
 
-			final translatedLabels = Language.getArray('freeplay.labels', []);
 			final actualLabel = (translatedLabels.length > labelIndex) ? translatedLabels[labelIndex] : firstSong.exeLabel;
 
-			final exeSize = Language.cjkSize(EXE_LABEL_SIZE);
-			final exeText = new FlxText(30, 0, 0, actualLabel, exeSize);
-			exeText.setFormat(Paths.font(Language.getFontForLanguage()), exeSize, daColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			final exeText = new FlxText(30, 0, 0, actualLabel, entryExeSize);
+			exeText.setFormat(entryLangFont, entryExeSize, daColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			exeText.borderSize = 2;
 			exeText.ID = i;
 			exeText.visible = (i == selectedBox);

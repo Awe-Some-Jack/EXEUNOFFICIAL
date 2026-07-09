@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dataselect.png">
+<SubTexture name="dataselect dataselect0000" x="0" y="946" width="1839" height="465" frameX="-983" frameY="-816" frameWidth="3840" frameHeight="2048" />
+<SubTexture name="dataselect dataselect0001" x="0" y="0" width="1853" height="480" frameX="-979" frameY="-807" frameWidth="3840" frameHeight="2048" />
+<SubTexture name="dataselect dataselect0002" x="0" y="480" width="1842" height="466" frameX="-988" frameY="-809" frameWidth="3840" frameHeight="2048" />
+</TextureAtlas>

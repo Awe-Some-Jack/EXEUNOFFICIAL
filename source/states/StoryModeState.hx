@@ -70,6 +70,7 @@ class StoryModeState extends MusicBeatState
 
 	public static var fromStoryMode:Bool = false;
 
+
 	override function create()
 	{
 		Paths.clearStoredMemory();
@@ -122,24 +123,28 @@ class StoryModeState extends MusicBeatState
 		smmStatic.alpha = 0.4;
 		add(smmStatic);
 
-		var dataSelect:FlxSprite = new FlxSprite(340, 560);
-		dataSelect.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/data.png', 'assets/exe/story/data.xml');
-		dataSelect.animation.addByPrefix('idle', 'Símbolo 13', 12);
+		var dataSelect:FlxSprite = new FlxSprite(104, 312);
+		dataSelect.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/dataselect.png', 'assets/exe/story/dataselect.xml');
+		dataSelect.animation.addByPrefix('idle', 'dataselect dataselect', 6);
 		dataSelect.animation.play('idle');
-		dataSelect.setGraphicSize(FlxG.width * 0.5);
+		dataSelect.setGraphicSize(FlxG.width * 0.885);
 		dataSelect.updateHitbox();
 		add(dataSelect);
 		
 		// ── BOX 1 ──
+		final greyBoxBitmap = Assets.getBitmapData('assets/exe/story/greybox.png');
+
 		greyBOX = new FlxSprite();
-		greyBOX.loadGraphic(Assets.getBitmapData('assets/exe/story/greybox.png'));
+		greyBOX.loadGraphic(greyBoxBitmap);
 		greyBOX.setGraphicSize(Std.int(FlxG.width * 0.2635));
 		greyBOX.updateHitbox();
 		greyBOX.setPosition(175, 64);
 		add(greyBOX);
 		
+		final tooSlowBitmap = Assets.getBitmapData('assets/exe/cover/too-slow.png');
+
 		tooSlowCover = new FlxSprite();
-		tooSlowCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/too-slow.png'));
+		tooSlowCover.loadGraphic(tooSlowBitmap);
 		tooSlowCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		tooSlowCover.updateHitbox();
 		tooSlowCover.visible = true;
@@ -175,8 +180,10 @@ class StoryModeState extends MusicBeatState
 		
 		for (coversPos in [tooSlowCover, youCantRunCover, tripleTroubleCover, finalEscapeCover, yourselfCover]) coversPos.setPosition(192, 74);
 		
+		final screenstaticFrames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.png', 'assets/exe/story/screenstatic.xml');
+
 		staticscreen = new FlxSprite();
-		staticscreen.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.png', 'assets/exe/story/screenstatic.xml');
+		staticscreen.frames = screenstaticFrames;
 		staticscreen.animation.addByPrefix('screenstaticANIM', 'screenSTATIC', 24);
 		staticscreen.animation.play('screenstaticANIM');
 		staticscreen.setGraphicSize(Std.int(FlxG.width * 0.24));
@@ -197,8 +204,10 @@ class StoryModeState extends MusicBeatState
 		bfBOX.setPosition(270, 300);
 		add(bfBOX);
 		
+		final yellowBoxBitmap = Assets.getBitmapData('assets/exe/story/yellowbox.png');
+
 		var yellowBOX:FlxSprite = new FlxSprite();
-		yellowBOX.loadGraphic(Assets.getBitmapData('assets/exe/story/yellowbox.png'));
+		yellowBOX.loadGraphic(yellowBoxBitmap);
 		yellowBOX.setGraphicSize(Std.int(FlxG.width * 0.252));
 		yellowBOX.updateHitbox();
 		yellowBOX.setPosition(178, 64);
@@ -206,14 +215,14 @@ class StoryModeState extends MusicBeatState
 		
 		// ── BOX 2 ──
 		greyBOX2 = new FlxSprite();
-		greyBOX2.loadGraphic(Assets.getBitmapData('assets/exe/story/greybox.png'));
+		greyBOX2.loadGraphic(greyBoxBitmap);
 		greyBOX2.setGraphicSize(Std.int(FlxG.width * 0.2635));
 		greyBOX2.updateHitbox();
 		greyBOX2.setPosition(799, 64);
 		add(greyBOX2);
 		
 		var tooSlowCoverBlack:FlxSprite = new FlxSprite();
-		tooSlowCoverBlack.loadGraphic(Assets.getBitmapData('assets/exe/cover/too-slow.png'));
+		tooSlowCoverBlack.loadGraphic(tooSlowBitmap);
 		tooSlowCoverBlack.setGraphicSize(Std.int(FlxG.width * 0.24));
 		tooSlowCoverBlack.updateHitbox();
 		tooSlowCoverBlack.color = FlxColor.BLACK;
@@ -222,7 +231,7 @@ class StoryModeState extends MusicBeatState
 		add(tooSlowCoverBlack);
 		
 		staticscreen2 = new FlxSprite();
-		staticscreen2.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.png', 'assets/exe/story/screenstatic.xml');
+		staticscreen2.frames = screenstaticFrames;
 		staticscreen2.animation.addByPrefix('screenstaticANIM', 'screenSTATIC', 24);
 		staticscreen2.animation.play('screenstaticANIM');
 		staticscreen2.setGraphicSize(Std.int(FlxG.width * 0.24));
@@ -250,7 +259,7 @@ class StoryModeState extends MusicBeatState
 		add(padLock);
 		
 		yellowBOX2 = new FlxSprite();
-		yellowBOX2.loadGraphic(Assets.getBitmapData('assets/exe/story/yellowbox.png'));
+		yellowBOX2.loadGraphic(yellowBoxBitmap);
 		yellowBOX2.setGraphicSize(Std.int(FlxG.width * 0.252));
 		yellowBOX2.updateHitbox();
 		yellowBOX2.setPosition(802, 64);
@@ -267,8 +276,10 @@ class StoryModeState extends MusicBeatState
 		redBOX.setPosition(greyBOX.x - 25, greyBOX.y - 17);
 		add(redBOX);
 		
+		final arrowBitmap = Assets.getBitmapData('assets/exe/story/arrow.png');
+
 		arrow = new FlxSprite();
-		arrow.loadGraphic(Assets.getBitmapData('assets/exe/story/arrow.png'));
+		arrow.loadGraphic(arrowBitmap);
 		arrow.setGraphicSize(Std.int(190 * 0.28));
 		arrow.updateHitbox();
 		arrow.setPosition(60, 200);
@@ -276,7 +287,7 @@ class StoryModeState extends MusicBeatState
 		add(arrow);
 		
 		arrow2 = new FlxSprite();
-		arrow2.loadGraphic(Assets.getBitmapData('assets/exe/story/arrow.png'));
+		arrow2.loadGraphic(arrowBitmap);
 		arrow2.setGraphicSize(Std.int(190 * 0.285));
 		arrow2.updateHitbox();
 		arrow2.setPosition(560, 200);
@@ -391,7 +402,7 @@ class StoryModeState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		if (!canInteract || Controls.instance == null || subState != null) { super.update(elapsed); return; }
+if (!canInteract || Controls.instance == null || subState != null) { super.update(elapsed); return; }
 
 		if (!isSelecting) {
 			if (inCoverSelect)

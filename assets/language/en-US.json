@@ -39,6 +39,8 @@
 	"options.off": "OFF",
 	"options.ghosttapping.on": "PUSSY",
 	"options.ghosttapping.off": "OFF",
+	"extras.gallery.categories": ["WIPS", "MEMES", "SCRAPPED"],
+	"extras.gallery.empty": "NOTHING HERE",
 	"cutscenes.empty": "NO VIDEOS FOUND",
 	"score_text": "Score: {1} | Misses: {2}",
 	"yes": "YES",

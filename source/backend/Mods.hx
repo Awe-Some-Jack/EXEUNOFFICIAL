@@ -196,6 +196,7 @@ class Mods
 			{
 				var dat:Array<String> = mod.split("|");
 				var folder:String = dat[0];
+				
 				if(folder.trim().length > 0 && FileSystem.exists(Paths.mods(folder)) && FileSystem.isDirectory(Paths.mods(folder)) && !added.contains(folder))
 				{
 					added.push(folder);
@@ -226,8 +227,7 @@ class Mods
 		}
 
 		#if mobile
-		var bytes:Bytes = Assets.getBytes('contentsList.dat');
-		File.saveBytes('contentsList.dat', bytes);
+		File.saveBytes('contentsList.dat', Assets.getBytes('contentsList.dat'));
 		#else
 		File.saveContent('contentsList.dat', fileStr);
 		#end

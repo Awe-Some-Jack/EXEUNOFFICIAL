@@ -92,9 +92,16 @@ class ClientPrefs {
 		'volume_mute'	=> [ZERO],
 		'volume_up'		=> [NUMPADPLUS, PLUS],
 		'volume_down'	=> [NUMPADMINUS, MINUS],
-		
+
 		'debug_1'		=> [SEVEN],
-		'debug_2'		=> [EIGHT]
+		'debug_2'		=> [EIGHT],
+
+		'dagarden_play'    => [P],
+		'dagarden_stop'    => [BACKSPACE],
+		'dagarden_rewind'  => [Q],
+		'dagarden_forward' => [E],
+		'dagarden_loop'    => [L],
+		'dagarden_vocals'  => [I]
 	];
 	public static var gamepadBinds:Map<String, Array<FlxGamepadInputID>> = [
 		'note_up'		=> [DPAD_UP, Y],

@@ -5,6 +5,7 @@ cd ..
 echo Installing dependencies...
 echo This might take a few moments depending on your internet speed.
 haxelib git flixel-addons https://github.com/GreenColdTea/flixel-addons.git funkin-before-rebase --skip-dependencies
+haxelib git extension-androidtools https://github.com/LimeExtensions/extension-androidtools.git --skip-dependencies
 haxelib install flixel-tools 1.5.1
 haxelib install tjson 1.4.0
 haxelib install hxdiscord_rpc 1.2.4

@@ -3507,47 +3507,50 @@ class PlayState extends MusicBeatState
 	}
 
 	#if LUA_ALLOWED
-	public function startLuasNamed(luaFile:String)
+	public function startLuasNamed(luaFile:String):Bool
 	{
+		var luaToLoad = Paths.getSharedPath(luaFile);
+		
 		#if MODS_ALLOWED
-		var luaToLoad:String = Paths.modFolders(luaFile);
-		if(#if !mobile !FileSystem.exists(luaToLoad) #else !OpenFlAssets.exists(luaToLoad) #end)
-			luaToLoad = Paths.getSharedPath(luaFile);
-
-		if(#if !mobile FileSystem.exists(luaToLoad) #else OpenFlAssets.exists(luaToLoad) #end)
-		#elseif sys
-		var luaToLoad:String = Paths.getSharedPath(luaFile);
-		if(OpenFlAssets.exists(luaToLoad))
+		final modPath = Paths.modFolders(luaFile);
+		if (#if sys sys.FileSystem.exists(modPath) || #end OpenFlAssets.exists(modPath))
+		{
+			luaToLoad = modPath;
+		}
 		#end
+
+		if (#if sys sys.FileSystem.exists(luaToLoad) || #end OpenFlAssets.exists(luaToLoad))
 		{
 			for (script in luaArray)
-				if(script.scriptName == luaToLoad) return false;
+				if (script.scriptName == luaToLoad) return false;
 
 			new FunkinLua(luaToLoad);
 			return true;
 		}
+		
 		return false;
 	}
 	#end
 
 	#if HSCRIPT_ALLOWED
-	public function startHScriptsNamed(scriptFile:String)
+	public function startHScriptsNamed(scriptFile:String):Bool
 	{
+		var scriptToLoad = Paths.getSharedPath(scriptFile);
+		
 		#if MODS_ALLOWED
-		var scriptToLoad:String = Paths.modFolders(scriptFile);
-		if(#if !mobile !FileSystem.exists(scriptToLoad) #else !OpenFlAssets.exists(scriptToLoad) #end)
-			scriptToLoad = Paths.getSharedPath(scriptFile);
-		#else
-		var scriptToLoad:String = Paths.getSharedPath(scriptFile);
+		final modPath = Paths.modFolders(scriptFile);
+		if (#if sys sys.FileSystem.exists(modPath) || #end OpenFlAssets.exists(modPath))
+			scriptToLoad = modPath;
 		#end
 
-		if(#if !mobile FileSystem.exists(scriptToLoad) #else OpenFlAssets.exists(scriptToLoad) #end)
+		if (#if sys sys.FileSystem.exists(scriptToLoad) || #end OpenFlAssets.exists(scriptToLoad))
 		{
 			if (Iris.instances.exists(scriptToLoad)) return false;
 
 			initHScript(scriptToLoad);
 			return true;
 		}
+		
 		return false;
 	}
 

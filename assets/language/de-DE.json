@@ -39,6 +39,8 @@
 	"options.off": "AUS",
 	"options.ghosttapping.on": "FEIGLING",
 	"options.ghosttapping.off": "AUS",
+	"extras.gallery.categories": ["WIPS", "MEMES", "VERWORFEN"],
+	"extras.gallery.empty": "NICHTS HIER",
 	"cutscenes.empty": "KEINE VIDEOS GEFUNDEN",
 	"score_text": "Punkte: {1} | Fehler: {2}",
 	"yes": "JA",

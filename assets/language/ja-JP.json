@@ -39,6 +39,8 @@
 	"options.off": "オフ",
 	"options.ghosttapping.on": "ビビリ",
 	"options.ghosttapping.off": "オフ",
+	"extras.gallery.categories": ["WIP", "ミーム", "ボツ"],
+	"extras.gallery.empty": "ここには何もない",
 	"cutscenes.empty": "動画が見つかりません",
 	"score_text": "スコア: {1} | ミス: {2}",
 	"yes": "はい",

@@ -71,8 +71,8 @@ class StageData {
 		else
 			stage = 'stage';
 
-		var stageFile:StageFile = getStageFile(stage);
-		forceNextDirectory = (stageFile != null) ? stageFile.directory : ''; //preventing crashes
+		final stageFile:StageFile = getStageFile(stage);
+		forceNextDirectory = stageFile?.directory ?? ''; //preventing crashes
 	}
 
 	public static function getStageFile(stage:String):StageFile {

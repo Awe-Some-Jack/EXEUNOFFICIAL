@@ -8,8 +8,11 @@ import flixel.util.FlxDestroyUtil;
 import openfl.utils.AssetType;
 import openfl.utils.Assets;
 import haxe.Json;
+
+#if sys
 import sys.io.File;
 import sys.FileSystem;
+#end
 
 import backend.Song;
 
@@ -139,17 +142,11 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 		missingText = null;
 
 		curCharacter = character;
+
 		var characterPath:String = 'characters/$character.json';
-
-		var path:String = Paths.getPath(characterPath, TEXT);
-
-		#if (!mobile && MODS_ALLOWED)
-		if (!FileSystem.exists(path))
-		#else
-		if (!Assets.exists(path))
-		#end
+		if (!Paths.fileExists(characterPath))
 		{
-			path = Paths.getSharedPath('characters/' + DEFAULT_CHARACTER + '.json');
+			characterPath = 'characters/$DEFAULT_CHARACTER.json';
 			missingCharacter = true;
 			missingText = new FlxText(0, 0, 300, 'ERROR:\n$character.json', 16);
 			missingText.alignment = CENTER;
@@ -158,11 +155,7 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 
 		try
 		{
-			#if (!mobile && MODS_ALLOWED)
-			loadCharacterFile(Json.parse(File.getContent(path)));
-			#else
-			loadCharacterFile(Json.parse(Assets.getText(path)));
-			#end
+			loadCharacterFile(Json.parse(Paths.getTextFromFile(characterPath)));
 		}
 		catch(e:Dynamic)
 		{
@@ -181,8 +174,8 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 		var loadedAnimate:Bool = false;
 
 		#if flixel_animate
-		var animToFind:String = Paths.getPath('images/' + json.image + '/Animation.json', TEXT);
-		if (#if (!mobile && MODS_ALLOWED) FileSystem.exists(animToFind) || #end Assets.exists(animToFind))
+		final animToFind:String = Paths.getPath('images/' + json.image + '/Animation.json', TEXT);
+		if (#if sys FileSystem.exists(animToFind) || #end Assets.exists(animToFind))
 			loadedAnimate = true;
 		#end
 

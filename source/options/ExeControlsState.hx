@@ -38,6 +38,16 @@ class ExeControlsState extends ExeBaseOptionsState
 		{label: "PAUSE",  saveKey: "pause",  defaultKeys: [ENTER],        defaultGamepad: [START]},
 		{label: "RESET",  saveKey: "reset",  defaultKeys: [R],            defaultGamepad: [BACK]},
 	];
+	var dagardenOptions:Array<ExeControlOption> = [
+		{label: "PLAY/PAUSE", saveKey: "dagarden_play",    defaultKeys: [P],         defaultGamepad: [A]},
+		{label: "STOP",       saveKey: "dagarden_stop",    defaultKeys: [BACKSPACE],  defaultGamepad: [B]},
+		{label: "REWIND",     saveKey: "dagarden_rewind",  defaultKeys: [Q],          defaultGamepad: [DPAD_LEFT]},
+		{label: "FORWARD",    saveKey: "dagarden_forward", defaultKeys: [E],          defaultGamepad: [DPAD_RIGHT]},
+	];
+	var dagardenOptions2:Array<ExeControlOption> = [
+		{label: "LOOP",       saveKey: "dagarden_loop",    defaultKeys: [L],          defaultGamepad: [DPAD_UP]},
+		{label: "INST",       saveKey: "dagarden_vocals",  defaultKeys: [I],          defaultGamepad: [DPAD_DOWN]},
+	];
 
 	var sections:Array<String> = [];
 	public static var curSectionIdx:Int = 0;
@@ -47,7 +57,8 @@ class ExeControlsState extends ExeBaseOptionsState
 	override public function create()
 	{
 		var lbl = Language.getArray('options.controls.labels', ["NOTES", "UI", "ACTIONS", "LEFT", "DOWN", "UP", "RIGHT", "ACCEPT", "BACK", "PAUSE", "RESET"]);
-		sections = [lbl[0], lbl[1], lbl[2]];
+		var dag = Language.getArray('extras.dagarden', ["BY", "INST", "PLAY/PAUSE", "REWIND", "FORWARD", "STOP", "LOOP"]);
+		sections = [lbl[0], lbl[1], lbl[2], "D.A GARDEN", "D.A GARDEN 2"];
 
 		noteOptions[0].label = lbl[3]; noteOptions[1].label = lbl[4];
 		noteOptions[2].label = lbl[5]; noteOptions[3].label = lbl[6];
@@ -57,6 +68,10 @@ class ExeControlsState extends ExeBaseOptionsState
 
 		actionOptions[0].label = lbl[7]; actionOptions[1].label = lbl[8];
 		actionOptions[2].label = lbl[9]; actionOptions[3].label = lbl[10];
+
+		dagardenOptions[0].label = dag[2]; dagardenOptions[1].label = dag[5];
+		dagardenOptions[2].label = dag[3]; dagardenOptions[3].label = dag[4];
+		dagardenOptions2[0].label = dag[6]; dagardenOptions2[1].label = dag[1];
 
 		menuTitle = sections[curSectionIdx];
 		super.create();
@@ -76,6 +91,8 @@ class ExeControlsState extends ExeBaseOptionsState
 		var opts = switch (curSectionIdx) {
 			case 1: uiOptions;
 			case 2: actionOptions;
+			case 3: dagardenOptions;
+			case 4: dagardenOptions2;
 			default: noteOptions;
 		};
 
@@ -129,7 +146,7 @@ class ExeControlsState extends ExeBaseOptionsState
 				if (pressed == FlxKey.ESCAPE) FlxG.sound.play(Paths.sound('cancelMenu'));
 				else
 				{
-					var opts = switch (curSectionIdx) { case 1: uiOptions; case 2: actionOptions; default: noteOptions; };
+					var opts = switch (curSectionIdx) { case 1: uiOptions; case 2: actionOptions; case 3: dagardenOptions; case 4: dagardenOptions2; default: noteOptions; };
 					var saveKey = opts[curSelected].saveKey;
 					ClientPrefs.keyBinds.set(saveKey, [pressed]);
 					optionGroups[curSelected].valueText.text = InputFormatter.getKeyName(pressed).toUpperCase();

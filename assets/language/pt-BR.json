@@ -39,6 +39,8 @@
 	"options.off": "OFF",
 	"options.ghosttapping.on": "COVARDE",
 	"options.ghosttapping.off": "OFF",
+	"extras.gallery.categories": ["WIPS", "MEMES", "DESCARTADOS"],
+	"extras.gallery.empty": "NADA AQUI",
 	"cutscenes.empty": "NENHUM VIDEO ENCONTRADO",
 	"score_text": "Pontos: {1} | Erros: {2}",
 	"yes": "SIM",

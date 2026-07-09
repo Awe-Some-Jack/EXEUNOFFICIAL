@@ -39,6 +39,8 @@
 	"options.off": "꺼짐",
 	"options.ghosttapping.on": "겁쟁이",
 	"options.ghosttapping.off": "꺼짐",
+	"extras.gallery.categories": ["WIP", "밈", "삭제됨"],
+	"extras.gallery.empty": "아무것도 없어요",
 	"cutscenes.empty": "동영상을 찾을 수 없습니다",
 	"score_text": "점수: {1} | 미스: {2}",
 	"yes": "예",

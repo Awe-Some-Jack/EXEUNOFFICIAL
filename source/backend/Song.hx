@@ -93,12 +93,12 @@ class Song
 			}
 		}
 
-		var sectionsData:Array<SwagSection> = songJson.notes;
+		final sectionsData:Array<SwagSection> = songJson.notes;
 		if(sectionsData == null) return;
 
 		for (section in sectionsData)
 		{
-			var beats:Null<Float> = cast section.sectionBeats;
+			final beats:Null<Float> = cast section.sectionBeats;
 			if (beats == null || Math.isNaN(beats))
 			{
 				section.sectionBeats = 4;
@@ -107,7 +107,7 @@ class Song
 
 			for (note in section.sectionNotes)
 			{
-				var gottaHitNote:Bool = (note[1] < 4) ? section.mustHitSection : !section.mustHitSection;
+				final gottaHitNote:Bool = (note[1] < 4) ? section.mustHitSection : !section.mustHitSection;
 				note[1] = (note[1] % 4) + (gottaHitNote ? 0 : 4);
 
 				if(!Std.isOfType(note[3], String))
@@ -120,7 +120,7 @@ class Song
 	public static var loadedSongName:String;
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		if(folder == null) folder = jsonInput;
+		folder ??= jsonInput;
 		PlayState.SONG = getChart(jsonInput, folder);
 		loadedSongName = folder;
 		chartPath = _lastPath;
@@ -136,12 +136,15 @@ class Song
 	public static function getChart(jsonInput:String, ?folder:String):SwagSong
 	{
 		trace(jsonInput + " " + folder);
-		if(folder == null) folder = jsonInput;
+		
+		folder ??= jsonInput;
+
 		var rawData:String = null;
 		
-		var formattedFolder:String = Paths.formatToSongPath(folder);
-		var formattedSong:String = Paths.formatToSongPath(jsonInput);
+		final formattedFolder:String = Paths.formatToSongPath(folder);
+		final formattedSong:String = Paths.formatToSongPath(jsonInput);
 		_lastPath = Paths.json('$formattedFolder/$formattedSong');
+		
 		trace(_lastPath);
 
 		#if sys
@@ -157,15 +160,15 @@ class Song
 		var songJson:SwagSong = cast Json.parse(rawData);
 		if(Reflect.hasField(songJson, 'song'))
 		{
-			var subSong:SwagSong = Reflect.field(songJson, 'song');
+			final subSong:SwagSong = Reflect.field(songJson, 'song');
 			if(subSong != null && Type.typeof(subSong) == TObject)
 				songJson = subSong;
 		}
 
-		if(convertTo != null && convertTo.length > 0)
+		if(convertTo?.length > 0)
 		{
 			var fmt:String = songJson.format;
-			if(fmt == null) fmt = songJson.format = 'unknown';
+			fmt ??= songJson.format = 'unknown';
 
 			switch(convertTo)
 			{

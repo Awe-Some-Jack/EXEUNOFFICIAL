@@ -197,7 +197,7 @@ class Mods
 				var dat:Array<String> = mod.split("|");
 				var folder:String = dat[0];
 				
-				if(folder.trim().length > 0 && sys.FileSystem.exists(Paths.mods(folder)) && !added.contains(folder))
+				if(folder.trim().length > 0 && FileSystem.exists(Paths.mods(folder)) && FileSystem.isDirectory(Paths.mods(folder)) && !added.contains(folder))
 				{
 					added.push(folder);
 					list.push([folder, (dat[1] == "1")]);
@@ -226,8 +226,10 @@ class Mods
 			fileStr += values[0] + '|' + (values[1] ? '1' : '0');
 		}
 
-		#if sys
-		sys.io.File.saveContent('contentsList.dat', fileStr);
+		#if mobile
+		File.saveBytes('contentsList.dat', Assets.getBytes('contentsList.dat'));
+		#else
+		File.saveContent('contentsList.dat', fileStr);
 		#end
 
 		updatedOnState = true;

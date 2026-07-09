@@ -664,8 +664,6 @@ class Paths
 		#if MODS_ALLOWED
 		final modPath = library != null ? modFolders('$library/images/$key') : modFolders('images/$key');
 		final isValidFolder:Bool = #if sys (sys.FileSystem.exists(modPath) && sys.FileSystem.isDirectory(modPath)) || #end OpenFlAssets.exists(modPath + '/Animation.json');
-
-		trace('getAnimateAtlas: $key, library: $library, path: $path, modPath: $modPath, isValidFolder: $isValidFolder');
 		
 		if (isValidFolder)
 			path = modPath;

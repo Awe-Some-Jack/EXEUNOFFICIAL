@@ -39,6 +39,8 @@
 	"options.off": "NAY",
 	"options.ghosttapping.on": "COWARD",
 	"options.ghosttapping.off": "NAY",
+	"extras.gallery.categories": ["WIPS", "MEMES", "SCRAPPED"],
+	"extras.gallery.empty": "NAUGHT HERE",
 	"cutscenes.empty": "NO TALES FOUND",
 	"score_text": "Booty: {1} | Misses: {2}",
 	"yes": "AYE",

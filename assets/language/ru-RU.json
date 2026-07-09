@@ -39,6 +39,8 @@
 	"options.off": "ВЫКЛ",
 	"options.ghosttapping.on": "СЛАБАК",
 	"options.ghosttapping.off": "ГИГАЧАД",
+	"extras.gallery.categories": ["WIP", "МЕМЫ", "ВЫРЕЗАННОЕ"],
+	"extras.gallery.empty": "ЗДЕСЬ НИЧЕГО НЕТ",
 	"cutscenes.empty": "ВИДЕО НЕ НАЙДЕНЫ",
 	"score_text": "Очки: {1} | Промахи: {2}",
 	"yes": "ДА",

@@ -39,6 +39,8 @@
 	"options.off": "关闭",
 	"options.ghosttapping.on": "胆小鬼",
 	"options.ghosttapping.off": "关闭",
+	"extras.gallery.categories": ["WIP", "梗图", "废案"],
+	"extras.gallery.empty": "这里什么都没有",
 	"cutscenes.empty": "未找到视频",
 	"score_text": "得分: {1} | 失误: {2}",
 	"yes": "是",

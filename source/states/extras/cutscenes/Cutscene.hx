@@ -10,6 +10,7 @@ import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
 import flixel.math.FlxMath;
 import flixel.addons.display.FlxBackdrop;
+import openfl.display.BitmapData;
 
 import sys.FileSystem;
 import sys.io.File;
@@ -56,7 +57,10 @@ class Cutscene extends MusicBeatSubstate
 
     var videoEntries:Array<{name:String, displayName:String, path:String}> = [];
     var menuItems:Array<FlxText> = [];
-    var selectBox:FlxSprite;
+    // select box for the selection shit 
+    var _selLeft:FlxSprite;
+    var _selMid:FlxSprite;
+    var _selRight:FlxSprite;
     var curSelected:Int = 0;
     var canMove:Bool    = true;
 
@@ -335,10 +339,37 @@ class Cutscene extends MusicBeatSubstate
             }
         }
 
-        selectBox = new FlxSprite(0, 0).loadGraphic("assets/exe/extras/select.png");
-        selectBox.scale.set(0.31, 0.28);
-        selectBox.updateHitbox();
-        add(selectBox);
+        final selBmp = Assets.getBitmapData("assets/exe/extras/select.png");
+        final capW = 80;
+        final selH = selBmp.height;
+        final midW = selBmp.width - capW * 2;
+
+        final leftBmp = new BitmapData(capW, selH, true, 0);
+        leftBmp.copyPixels(selBmp, new openfl.geom.Rectangle(0, 0, capW, selH), new openfl.geom.Point(0, 0));
+        _selLeft = new FlxSprite(0, 0);
+        _selLeft.loadGraphic(leftBmp);
+        _selLeft.antialiasing = ClientPrefs.data.antialiasing;
+        _selLeft.origin.set(0, 0);
+
+        final midBmp = new BitmapData(midW, selH, true, 0);
+        midBmp.copyPixels(selBmp, new openfl.geom.Rectangle(capW, 0, midW, selH), new openfl.geom.Point(0, 0));
+        _selMid = new FlxSprite(0, 0);
+        _selMid.loadGraphic(midBmp);
+        _selMid.antialiasing = ClientPrefs.data.antialiasing;
+        _selMid.origin.set(0, 0);
+
+        final rightBmp = new BitmapData(capW, selH, true, 0);
+        rightBmp.copyPixels(selBmp, new openfl.geom.Rectangle(selBmp.width - capW, 0, capW, selH), new openfl.geom.Point(0, 0));
+        _selRight = new FlxSprite(0, 0);
+        _selRight.loadGraphic(rightBmp);
+        _selRight.antialiasing = ClientPrefs.data.antialiasing;
+        _selRight.origin.set(0, 0);
+
+        add(_selLeft);
+        add(_selMid);
+        add(_selRight);
+
+        _snapSelectBox();
     }
 
     function _scrollTargetFor(index:Int):Float
@@ -381,13 +412,43 @@ class Cutscene extends MusicBeatSubstate
         _updateSelectBox();
     }
 
+    function _calcSelectLayout():{targetX:Float, targetY:Float, capPx:Float, midPx:Float, midScaleX:Float, scaleY:Float}
+    {
+        final item      = menuItems[curSelected];
+        final itemW     = item.frameWidth * 0.525 + 46;
+        final scaleY    = 0.28;
+        final capPx     = _selLeft.frameWidth * scaleY;
+        final minMidPx  = _selMid.frameWidth * scaleY;
+        final midPx     = Math.max(minMidPx, itemW - capPx * 2);
+        final midScaleX = midPx / _selMid.frameWidth;
+        final targetY   = MENU_START_Y + (curSelected * MENU_SPACING) - scrollYTarget - 16;
+        return {targetX: MENU_START_X - 18, targetY: targetY, capPx: capPx, midPx: midPx, midScaleX: midScaleX, scaleY: scaleY};
+    }
+
+    function _snapSelectBox():Void
+    {
+        if (_selLeft == null || _selMid == null || _selRight == null) return;
+        final l = _calcSelectLayout();
+        for (s in [_selLeft, _selMid, _selRight]) { FlxTween.cancelTweensOf(s); FlxTween.cancelTweensOf(s.scale); }
+        _selLeft.setPosition(l.targetX, l.targetY);
+        _selLeft.scale.set(l.scaleY, l.scaleY);
+        _selMid.setPosition(l.targetX + l.capPx, l.targetY);
+        _selMid.scale.set(l.midScaleX, l.scaleY);
+        _selRight.setPosition(l.targetX + l.capPx + l.midPx, l.targetY);
+        _selRight.scale.set(l.scaleY, l.scaleY);
+    }
+
     function _updateSelectBox():Void
     {
-        final targetY = MENU_START_Y + (curSelected * MENU_SPACING) - scrollYTarget;
-        FlxTween.cancelTweensOf(selectBox);
-        FlxTween.cancelTweensOf(selectBox.scale);
-        FlxTween.tween(selectBox, {x: MENU_START_X - 10, y: targetY - 10}, SELECTION_TWEEN_DURATION, {ease: FlxEase.smootherStepInOut});
-        FlxTween.tween(selectBox.scale, {x: 0.33, y: 0.30}, MENU_SCALE_DURATION, {ease: FlxEase.smootherStepInOut});
+        if (_selLeft == null || _selMid == null || _selRight == null) return;
+        final l = _calcSelectLayout();
+        for (s in [_selLeft, _selMid, _selRight]) { FlxTween.cancelTweensOf(s); FlxTween.cancelTweensOf(s.scale); }
+        FlxTween.tween(_selLeft,        {x: l.targetX,                     y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selLeft.scale,  {x: l.scaleY,     y: l.scaleY},                  0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selMid,         {x: l.targetX + l.capPx,           y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selMid.scale,   {x: l.midScaleX,  y: l.scaleY},                  0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selRight,       {x: l.targetX + l.capPx + l.midPx, y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selRight.scale, {x: l.scaleY,     y: l.scaleY},                  0.35, {ease: FlxEase.expoOut});
     }
 
     function _applyScroll():Void
@@ -409,8 +470,6 @@ class Cutscene extends MusicBeatSubstate
                 menuItems[i].alpha = 1.0;
         }
 
-        if (selectBox != null)
-            selectBox.y = menuItems[curSelected].y - 10;
     }
 
     function _openVideo(path:String):Void
@@ -847,7 +906,9 @@ class Cutscene extends MusicBeatSubstate
 
         final leftItems:Array<flixel.FlxObject> = [];
         for (item in menuItems) if (item != null) leftItems.push(item);
-        if (selectBox      != null) leftItems.push(selectBox);
+        if (_selLeft  != null) leftItems.push(_selLeft);
+        if (_selMid   != null) leftItems.push(_selMid);
+        if (_selRight != null) leftItems.push(_selRight);
         if (titleText      != null) leftItems.push(titleText);
         if (disco          != null) leftItems.push(disco);
         for (s in discoShadows) if (s != null) leftItems.push(s);
@@ -883,7 +944,9 @@ class Cutscene extends MusicBeatSubstate
 
         final leftItems:Array<flixel.FlxObject> = [];
         for (item in menuItems) if (item != null) leftItems.push(item);
-        if (selectBox      != null) leftItems.push(selectBox);
+        if (_selLeft  != null) leftItems.push(_selLeft);
+        if (_selMid   != null) leftItems.push(_selMid);
+        if (_selRight != null) leftItems.push(_selRight);
         if (titleText      != null) leftItems.push(titleText);
         if (disco          != null) leftItems.push(disco);
         for (s in discoShadows) if (s != null) leftItems.push(s);
@@ -938,13 +1001,15 @@ class Cutscene extends MusicBeatSubstate
         disco          = null;
         nowPlaying     = null;
         nowPlayingSong = null;
-        if (selectBox != null) { FlxTween.cancelTweensOf(selectBox); FlxTween.cancelTweensOf(selectBox.scale); }
+        for (s in [_selLeft, _selMid, _selRight]) if (s != null) { FlxTween.cancelTweensOf(s); FlxTween.cancelTweensOf(s.scale); }
         if (menuItems != null)
             for (item in menuItems)
                 if (item != null) { FlxTween.cancelTweensOf(item); FlxTween.cancelTweensOf(item.scale); }
         box          = null;
         menuItems    = null;
-        selectBox    = null;
+        _selLeft     = null;
+        _selMid      = null;
+        _selRight    = null;
         videoEntries = null;
         _leftOrigX   = null;
         super.destroy();

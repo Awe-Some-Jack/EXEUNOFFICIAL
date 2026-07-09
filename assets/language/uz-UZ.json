@@ -39,6 +39,8 @@
 	"options.off": "O'CHIQ",
 	"options.ghosttapping.on": "CHICHQOQ",
 	"options.ghosttapping.off": "SIGMA",
+	"extras.gallery.categories": ["WIP", "MEMLAR", "CHIQARILGAN"],
+	"extras.gallery.empty": "BU YERDA HECH NARSA YO'Q",
 	"cutscenes.empty": "VIDEO TOPILMADI",
 	"score_text": "Hisob: {1} | Xatolar: {2}",
 	"yes": "HA",

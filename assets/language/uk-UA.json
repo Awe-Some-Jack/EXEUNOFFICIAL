@@ -39,6 +39,8 @@
 	"options.off": "ВИМК",
 	"options.ghosttapping.on": "СЛАБКУН",
 	"options.ghosttapping.off": "ГИГАЧАД",
+	"extras.gallery.categories": ["WIP", "МЕМИ", "ВИРІЗАНЕ"],
+	"extras.gallery.empty": "ТУТ НІЧОГО НЕМАЄ",
 	"cutscenes.empty": "ВІДЕО НЕ ЗНАЙДЕНО",
 	"score_text": "Рахунок: {1} | Промахи: {2}",
 	"yes": "ТАК",

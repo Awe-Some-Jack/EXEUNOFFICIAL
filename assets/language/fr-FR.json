@@ -39,6 +39,8 @@
 	"options.off": "DÉSACTIVÉ",
 	"options.ghosttapping.on": "FROUSSARD",
 	"options.ghosttapping.off": "DÉSACTIVÉ",
+	"extras.gallery.categories": ["WIPS", "MÈMES", "SUPPRIMÉS"],
+	"extras.gallery.empty": "RIEN ICI",
 	"cutscenes.empty": "AUCUNE VIDÉO TROUVÉE",
 	"score_text": "Score: {1} | Ratés: {2}",
 	"yes": "OUI",

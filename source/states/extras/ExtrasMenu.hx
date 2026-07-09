@@ -7,6 +7,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.addons.display.FlxBackdrop;
+import openfl.display.BitmapData;
 import states.EXEMenu;
 
 class ExtrasMenu extends MusicBeatState
@@ -26,8 +27,11 @@ class ExtrasMenu extends MusicBeatState
     var descBackdrops:Array<FlxBackdrop> = [];
     var curSelected:Int  = 0;
     var canMove:Bool     = true;
-
-    var selectBox:FlxSprite;
+    
+    // select box for the selection shit 
+    var _selLeft:FlxSprite;
+    var _selMid:FlxSprite;
+    var _selRight:FlxSprite;
     var disco:FlxSprite;
     var box:FlxSprite;
     var sumky:FlxSprite;
@@ -157,12 +161,14 @@ class ExtrasMenu extends MusicBeatState
         if (_orphanPlayer != null) { _orphanPlayer.stop(); _orphanPlayer = null; }
         if (disco    != null) FlxTween.cancelTweensOf(disco);
         if (box      != null) { FlxTween.cancelTweensOf(box); FlxTween.cancelTweensOf(box.scale); }
-        if (selectBox != null) { FlxTween.cancelTweensOf(selectBox); FlxTween.cancelTweensOf(selectBox.scale); }
+        for (s in [_selLeft, _selMid, _selRight]) if (s != null) { FlxTween.cancelTweensOf(s); FlxTween.cancelTweensOf(s.scale); }
         for (item in menuItems)    if (item != null) FlxTween.cancelTweensOf(item.scale);
         for (bd in descBackdrops)  if (bd   != null) FlxTween.cancelTweensOf(bd);
         menuItems     = null;
         descBackdrops = null;
-        selectBox     = null;
+        _selLeft      = null;
+        _selMid       = null;
+        _selRight     = null;
         disco         = null;
         box           = null;
         if (!stopMusicPlay)
@@ -272,10 +278,37 @@ class ExtrasMenu extends MusicBeatState
             add(t);
             menuItems.push(t);
         }
-        selectBox = new FlxSprite().loadGraphic("assets/exe/extras/select.png");
-        selectBox.scale.set(0.31, 0.28);
-        selectBox.updateHitbox();
-        add(selectBox);
+        final selBmp = Assets.getBitmapData("assets/exe/extras/select.png");
+        final capW = 80;
+        final selH = selBmp.height;
+        final midW = selBmp.width - capW * 2;
+
+        final leftBmp = new BitmapData(capW, selH, true, 0);
+        leftBmp.copyPixels(selBmp, new openfl.geom.Rectangle(0, 0, capW, selH), new openfl.geom.Point(0, 0));
+        _selLeft = new FlxSprite(0, 0);
+        _selLeft.loadGraphic(leftBmp);
+        _selLeft.antialiasing = ClientPrefs.data.antialiasing;
+        _selLeft.origin.set(0, 0);
+
+        final midBmp = new BitmapData(midW, selH, true, 0);
+        midBmp.copyPixels(selBmp, new openfl.geom.Rectangle(capW, 0, midW, selH), new openfl.geom.Point(0, 0));
+        _selMid = new FlxSprite(0, 0);
+        _selMid.loadGraphic(midBmp);
+        _selMid.antialiasing = ClientPrefs.data.antialiasing;
+        _selMid.origin.set(0, 0);
+
+        final rightBmp = new BitmapData(capW, selH, true, 0);
+        rightBmp.copyPixels(selBmp, new openfl.geom.Rectangle(selBmp.width - capW, 0, capW, selH), new openfl.geom.Point(0, 0));
+        _selRight = new FlxSprite(0, 0);
+        _selRight.loadGraphic(rightBmp);
+        _selRight.antialiasing = ClientPrefs.data.antialiasing;
+        _selRight.origin.set(0, 0);
+
+        add(_selLeft);
+        add(_selMid);
+        add(_selRight);
+
+        _snapSelectBox();
     }
 
     function buildDescBar():Void
@@ -307,6 +340,45 @@ class ExtrasMenu extends MusicBeatState
         }
     }
 
+    function _calcSelectLayout():{targetX:Float, targetY:Float, capPx:Float, midPx:Float, midScaleX:Float, scaleY:Float}
+    {
+        final item      = menuItems[curSelected];
+        final itemW     = item.frameWidth * 0.525 + 46;
+        final scaleY    = 0.28;
+        final capPx     = _selLeft.frameWidth * scaleY;
+        final minMidPx  = _selMid.frameWidth * scaleY;
+        final midPx     = Math.max(minMidPx, itemW - capPx * 2);
+        final midScaleX = midPx / _selMid.frameWidth;
+        final targetY   = menuItems[curSelected].y - 16;
+        return {targetX: 50.0 - 18, targetY: targetY, capPx: capPx, midPx: midPx, midScaleX: midScaleX, scaleY: scaleY};
+    }
+
+    function _snapSelectBox():Void
+    {
+        if (_selLeft == null || _selMid == null || _selRight == null) return;
+        final l = _calcSelectLayout();
+        for (s in [_selLeft, _selMid, _selRight]) { FlxTween.cancelTweensOf(s); FlxTween.cancelTweensOf(s.scale); }
+        _selLeft.setPosition(l.targetX, l.targetY);
+        _selLeft.scale.set(l.scaleY, l.scaleY);
+        _selMid.setPosition(l.targetX + l.capPx, l.targetY);
+        _selMid.scale.set(l.midScaleX, l.scaleY);
+        _selRight.setPosition(l.targetX + l.capPx + l.midPx, l.targetY);
+        _selRight.scale.set(l.scaleY, l.scaleY);
+    }
+
+    function _updateSelectBox():Void
+    {
+        if (_selLeft == null || _selMid == null || _selRight == null) return;
+        final l = _calcSelectLayout();
+        for (s in [_selLeft, _selMid, _selRight]) { FlxTween.cancelTweensOf(s); FlxTween.cancelTweensOf(s.scale); }
+        FlxTween.tween(_selLeft,        {x: l.targetX,                     y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selLeft.scale,  {x: l.scaleY,     y: l.scaleY},                  0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selMid,         {x: l.targetX + l.capPx,           y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selMid.scale,   {x: l.midScaleX,  y: l.scaleY},                  0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selRight,       {x: l.targetX + l.capPx + l.midPx, y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selRight.scale, {x: l.scaleY,     y: l.scaleY},                  0.35, {ease: FlxEase.expoOut});
+    }
+
     function changeSelection(change:Int = 0):Void
     {
         curSelected = (curSelected + change + MENU_KEYS.length) % MENU_KEYS.length;
@@ -327,10 +399,7 @@ class ExtrasMenu extends MusicBeatState
             }
         }
 
-        FlxTween.cancelTweensOf(selectBox);
-        FlxTween.cancelTweensOf(selectBox.scale);
-        FlxTween.tween(selectBox, {x: menuItems[curSelected].x - 10, y: menuItems[curSelected].y - 10}, 0.2, {ease: FlxEase.smootherStepInOut});
-        FlxTween.tween(selectBox.scale, {x: 0.33, y: 0.30}, 0.2, {ease: FlxEase.smootherStepInOut});
+        _updateSelectBox();
 
         for (i in 0...descBackdrops.length)
         {
@@ -378,12 +447,8 @@ class ExtrasMenu extends MusicBeatState
         canMove = false;
         FlxG.sound.play(Paths.sound('confirmMenu'));
         FlxTween.cancelTweensOf(menuItems[curSelected].scale);
-        FlxTween.cancelTweensOf(selectBox.scale);
         FlxTween.tween(menuItems[curSelected].scale, {x: 0.575, y: 0.575}, 0.1, {ease: FlxEase.backOut, onComplete: (_) ->
             FlxTween.tween(menuItems[curSelected].scale, {x: 0.525, y: 0.525}, 0.15, {ease: FlxEase.smootherStepInOut, onComplete: (_) -> openOption()})
-        });
-        FlxTween.tween(selectBox.scale, {x: 0.36, y: 0.33}, 0.1, {ease: FlxEase.backOut, onComplete: (_) ->
-            FlxTween.tween(selectBox.scale, {x: 0.33, y: 0.30}, 0.15, {ease: FlxEase.smootherStepInOut})
         });
     }
 

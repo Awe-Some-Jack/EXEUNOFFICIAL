@@ -39,6 +39,8 @@
 	"options.off": "DESACTIVADO",
 	"options.ghosttapping.on": "COBARDE",
 	"options.ghosttapping.off": "DESACTIVADO",
+	"extras.gallery.categories": ["WIPS", "MEMES", "DESCARTADOS"],
+	"extras.gallery.empty": "NADA AQUÍ",
 	"cutscenes.empty": "NO SE ENCONTRARON VIDEOS",
 	"score_text": "Puntos: {1} | Fallos: {2}",
 	"yes": "SÍ",

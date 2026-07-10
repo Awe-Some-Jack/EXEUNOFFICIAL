@@ -422,7 +422,7 @@ class StoryModeState extends MusicBeatState
 				if (controls.ACCEPT)
 				{
 					if (selectedBox == 0) onBox1Accept();
-					else shakeBox2();
+					else { FlxG.sound.play(Paths.sound('denied')); shakeBox2(); }
 				}
 
 				}

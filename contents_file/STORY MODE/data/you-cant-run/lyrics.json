@@ -46,5 +46,17 @@
     "pi-PI": {
         "lyrics.youcantrun.1": "WHY; YE; LI;TTLE?!",
         "lyrics.youcantrun.2": "Just; DIE!"
+    },
+    "it-IT": {
+        "lyrics.youcantrun.1": "MA; CO;SA; FAI!?",
+        "lyrics.youcantrun.2": "MUO;RI; E; BAS;TA!"
+    },
+    "pl-PL": {
+        "lyrics.youcantrun.1": "CO; TY; TAM!?",
+        "lyrics.youcantrun.2": "PO; PRO;STU; GIŃ!"
+    },
+    "tr-TR": {
+        "lyrics.youcantrun.1": "SEN; NE;SIN; YA!?",
+        "lyrics.youcantrun.2": "SAL; DE; OL!"
     }
 }

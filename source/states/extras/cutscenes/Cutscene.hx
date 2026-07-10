@@ -10,10 +10,17 @@ import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
 import flixel.math.FlxMath;
 import flixel.addons.display.FlxBackdrop;
+
 import openfl.display.BitmapData;
 
+#if sys
 import sys.FileSystem;
 import sys.io.File;
+#end
+
+#if VIDEOS_ALLOWED
+import objects.VideoSprite;
+#end
 
 class Cutscene extends MusicBeatSubstate
 {
@@ -70,7 +77,7 @@ class Cutscene extends MusicBeatSubstate
     var _vidBorder:FlxSprite = null;
     var _vidDim:FlxSprite    = null;
     #if VIDEOS_ALLOWED
-    var _vidSprite:hxvlc.flixel.FlxVideoSprite = null;
+    var _vidSprite:VideoSprite = null;
     #end
     var _vidOpen:Bool   = false;
     var _vidPaused:Bool = false;
@@ -102,7 +109,7 @@ class Cutscene extends MusicBeatSubstate
         changeSelection(0);
 
         titleText = new FlxText(49, 68, 0, Language.getArray('extras.menu.cutscenes', ['CUTSCENES', ''])[0], 88);
-        titleText.setFormat("assets/fonts/bigass.otf", 88, 0xFFf48000, LEFT);
+        titleText.setFormat(Paths.font("bigass.otf"), 88, 0xFFf48000, LEFT);
         titleText.setBorderStyle(OUTLINE_FAST, 0xFF510500, 8);
         titleText.scale.set(0.66, 0.66);
         titleText.updateHitbox();
@@ -121,7 +128,7 @@ class Cutscene extends MusicBeatSubstate
         add(descBar);
 
         final descTemp = new FlxText(0, 0, 0, Language.getArray('extras.menu.cutscenes', ['', 'In here you can rewatch cutscenes used in gameplay! Just that!'])[1], 56);
-        descTemp.setFormat("assets/fonts/smallass.ttf", 56, FlxColor.WHITE, LEFT);
+        descTemp.setFormat(Paths.font("smallass.ttf"), 56, FlxColor.WHITE, LEFT);
         descTemp.antialiasing = ClientPrefs.data.antialiasing;
         descTemp.updateHitbox();
         descTemp.drawFrame(true);
@@ -135,7 +142,7 @@ class Cutscene extends MusicBeatSubstate
         descTemp.destroy();
 
         nowPlaying = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
-        nowPlaying.setFormat("assets/fonts/bigass.otf", 60, FlxColor.BLACK, LEFT);
+        nowPlaying.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
         nowPlaying.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
         nowPlaying.scale.set(0.22, 0.22);
         nowPlaying.updateHitbox();
@@ -145,7 +152,7 @@ class Cutscene extends MusicBeatSubstate
         final daName = states.extras.dagarden.DAGarden.currentSong;
         final songName = daName != '' ? daName.toUpperCase() : 'EXTRAS MENU';
         nowPlayingSong = new FlxText(169, 587.72, 0, songName, 60);
-        nowPlayingSong.setFormat("assets/fonts/bigass.otf", 60, FlxColor.BLACK, LEFT);
+        nowPlayingSong.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
         nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
         nowPlayingSong.scale.set(0.22, 0.22);
         nowPlayingSong.updateHitbox();
@@ -193,7 +200,7 @@ class Cutscene extends MusicBeatSubstate
 
     function createBox():Void
     {
-        box = new FlxSprite(BOX_FINAL_X, BOX_FINAL_Y).loadGraphic(Assets.getBitmapData("assets/exe/extras/box.png"));
+        box = new FlxSprite(BOX_FINAL_X, BOX_FINAL_Y).loadGraphic(Paths.getBitmapData("assets/exe/extras/box.png"));
         box.scale.set(BOX_FINAL_SCALE, BOX_FINAL_SCALE);
         box.updateHitbox();
         add(box);
@@ -206,7 +213,7 @@ class Cutscene extends MusicBeatSubstate
             {x: -2, y: 0},                  {x: 2, y: 0},
             {x: -2, y: 2},  {x: 0, y: 2},  {x: 2, y: 2}
         ];
-        final discoBmp = Assets.getBitmapData("assets/exe/extras/disco.png");
+        final discoBmp = Paths.getBitmapData("assets/exe/extras/disco.png");
         for (offset in shadowOffsets)
         {
             final s = new FlxSprite(61 + offset.x, 541 + offset.y).loadGraphic(discoBmp);
@@ -240,6 +247,7 @@ class Cutscene extends MusicBeatSubstate
         FlxTween.tween(box.scale, {x: BOX_FINAL_SCALE, y: BOX_FINAL_SCALE}, BOX_ANIM_DURATION, {
             ease: FlxEase.expoOut,
             onUpdate: (_) -> {
+                if (box == null) return;
                 final cx = box.x; final cy = box.y;
                 box.updateHitbox();
                 box.x = cx; box.y = cy;
@@ -315,7 +323,7 @@ class Cutscene extends MusicBeatSubstate
         if (videoEntries.length == 0)
         {
             final lbl = new FlxText(MENU_START_X, MENU_START_Y, 0, Language.get('cutscenes.empty', 'NO VIDEOS FOUND'), MENU_FONT_SIZE);
-            lbl.setFormat("assets/fonts/bigass.otf", MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
+            lbl.setFormat(Paths.font("bigass.otf"), MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
             lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
             lbl.scale.set(0.5, 0.5);
             lbl.updateHitbox();
@@ -327,7 +335,7 @@ class Cutscene extends MusicBeatSubstate
             for (i in 0...videoEntries.length)
             {
                 final lbl = new FlxText(MENU_START_X, MENU_START_Y + (i * MENU_SPACING), 0, videoEntries[i].displayName.toUpperCase(), MENU_FONT_SIZE);
-                lbl.setFormat("assets/fonts/bigass.otf", MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
+                lbl.setFormat(Paths.font("bigass.otf"), MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
                 lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
                 lbl.antialiasing = ClientPrefs.data.antialiasing;
                 lbl.pixelPerfectRender = false;
@@ -339,7 +347,7 @@ class Cutscene extends MusicBeatSubstate
             }
         }
 
-        final selBmp = Assets.getBitmapData("assets/exe/extras/select.png");
+        final selBmp = Paths.getBitmapData("assets/exe/extras/select.png");
         final capW = 80;
         final selH = selBmp.height;
         final midW = selBmp.width - capW * 2;
@@ -486,29 +494,30 @@ class Cutscene extends MusicBeatSubstate
         _vidBorder.alpha = 0;
         add(_vidBorder);
 
-        _vidSprite = new hxvlc.flixel.FlxVideoSprite(0, 0);
-        _vidSprite.bitmap.onFormatSetup.add(() -> {
+        _vidSprite = new VideoSprite(0, 0, false);
+        _vidSprite.onFormat(() -> {
             final maxW = FlxG.width  * 0.7;
             final maxH = FlxG.height * 0.65;
-            final s    = Math.min(maxW / _vidSprite.width, maxH / _vidSprite.height);
-            final fw   = Math.floor(_vidSprite.width  * s);
-            final fh   = Math.floor(_vidSprite.height * s);
+            final s    = Math.min(maxW / _vidSprite.video.width, maxH / _vidSprite.video.height);
+            final fw   = Math.floor(_vidSprite.video.width  * s);
+            final fh   = Math.floor(_vidSprite.video.height * s);
+ 
             _vidSprite.setGraphicSize(fw, fh);
-            _vidSprite.updateHitbox();
             _vidSprite.screenCenter();
-            _vidSprite.y -= HUD_H * 0.5;
-            final finalY = _vidSprite.y;
 
-            _vidSprite.y = -fh - 50;
+            final finalY = FlxG.height * 0.5 - fh * 0.5 - 25;
+
+            _vidSprite.setPosition(FlxG.width * 0.5 - fw * 0.5, -fh);
 
             final vidShader = new shaders.RoundedBorderShader(16.0, 0.0, 0xFF000000);
             vidShader.setSize(fw, fh);
-            _vidSprite.shader = vidShader;
+            _vidSprite.video.shader = vidShader;
 
             final bw = fw + Std.int(BORDER * 2);
             final bh = fh + Std.int(BORDER * 2);
             _vidBorder.makeGraphic(bw, bh, 0xFF3a6bc9);
             _vidBorder.setPosition(_vidSprite.x - BORDER, _vidSprite.y - BORDER);
+
             final borderShader = new shaders.RoundedBorderShader(16.0 + BORDER, 0.0, 0xFF000000);
             borderShader.setSize(bw, bh);
             _vidBorder.shader = borderShader;
@@ -518,7 +527,8 @@ class Cutscene extends MusicBeatSubstate
 
             _buildHud(fw, finalY + fh);
         });
-        _vidSprite.bitmap.onEndReached.add(() -> { _vidSprite.play(); _vidPaused = false; _hudUpdateBtn(); });
+        
+        _vidSprite.onEnd(() -> { _vidSprite.play(); _vidPaused = false; _hudUpdateBtn(); });
 
         final extrasMenu = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
         if (extrasMenu?._orphanPlayer != null)
@@ -529,12 +539,9 @@ class Cutscene extends MusicBeatSubstate
             FlxTween.tween(FlxG.sound.music, {volume: 0.1}, 0.5, {ease: FlxEase.quadOut});
         }
         add(_vidSprite);
-
-        if (_vidSprite.load(path, [':input-repeat=65535', ':avcodec-hw=any']))
-            new flixel.util.FlxTimer().start(0.001, (_) -> {
-                _vidSprite.play();
-                _vidSprite.bitmap.rate = 1.0;
-            });
+        
+        if (_vidSprite.loadVideo(path, [VideoSprite.ARG_LOOPING]))
+            _vidSprite.playDelayed();
         #end
     }
 
@@ -596,7 +603,7 @@ class Cutscene extends MusicBeatSubstate
         _hud.add(_hudKnob);
 
         _hudTimeTxt = new FlxText(0, 0, 55, "0:00", 14);
-        _hudTimeTxt.setFormat("assets/fonts/bigass.otf", 14, FlxColor.WHITE, RIGHT);
+        _hudTimeTxt.setFormat(Paths.font("bigass.otf"), 14, FlxColor.WHITE, RIGHT);
         _hudTimeTxt.antialiasing = ClientPrefs.data.antialiasing;
         _hudTimeTxt.x = hudX + w - BAR_PAD - 55;
         _hudTimeTxt.y = hudY + (HUD_H - _hudTimeTxt.height) * 0.5;
@@ -660,8 +667,8 @@ class Cutscene extends MusicBeatSubstate
 
         if (_hudBar != null && _hudFill != null && _hudKnob != null)
         {
-            final pct   = FlxMath.bound(_vidSprite.bitmap.position, 0, 1);
-            final dur   = _vidSprite.bitmap.duration;
+            final pct   = FlxMath.bound(_vidSprite.getVideoPercent(), 0, 1);
+            final dur   = _vidSprite.video.bitmap.duration;
             final barW  = _hudBar.width;
             final fillW = Math.max(1, barW * pct);
             _hudFill.scale.x = fillW;
@@ -680,7 +687,7 @@ class Cutscene extends MusicBeatSubstate
                 _seekDragging = true;
 
             if (_seekDragging)
-                _vidSprite.bitmap.position = FlxMath.bound((mx - barX) / barW, 0, 1);
+                _vidSprite.setVideoPercent(FlxMath.bound((mx - barX) / barW, 0, 1));
 
             if (FlxG.mouse.justReleased) _seekDragging = false;
         }
@@ -723,9 +730,7 @@ class Cutscene extends MusicBeatSubstate
 
         if (vidRef != null)
         {
-            vidRef.bitmap.onEndReached.removeAll();
-            vidRef.bitmap.onFormatSetup.removeAll();
-            vidRef.bitmap.stop();
+            vidRef.stop();
 
             final targetY = -vidRef.height - 50;
             FlxTween.tween(vidRef,    {y: targetY}, SLIDE_DURATION, {ease: FlxEase.expoIn});
@@ -977,41 +982,5 @@ class Cutscene extends MusicBeatSubstate
                 });
             }
         });
-    }
-
-    override public function destroy():Void
-    {
-        #if VIDEOS_ALLOWED
-        if (_vidSprite != null)
-        {
-            _vidSprite.bitmap.onEndReached.removeAll();
-            _vidSprite.bitmap.onFormatSetup.removeAll();
-            _vidSprite.bitmap.stop();
-            _vidSprite.destroy();
-            _vidSprite = null;
-        }
-        if (_vidBorder != null) { _vidBorder.destroy(); _vidBorder = null; }
-        if (_vidDim    != null) { _vidDim.destroy();    _vidDim    = null; }
-        #end
-        if (_hud != null) { FlxTween.cancelTweensOf(_hud); _hud.destroy(); _hud = null; }
-        _hudBar = null; _hudFill = null; _hudKnob = null; _hudBtn = null; _hudTimeTxt = null;
-        if (box   != null) { FlxTween.cancelTweensOf(box);  FlxTween.cancelTweensOf(box.scale); }
-        if (disco != null) FlxTween.cancelTweensOf(disco);
-        titleText      = null;
-        disco          = null;
-        nowPlaying     = null;
-        nowPlayingSong = null;
-        for (s in [_selLeft, _selMid, _selRight]) if (s != null) { FlxTween.cancelTweensOf(s); FlxTween.cancelTweensOf(s.scale); }
-        if (menuItems != null)
-            for (item in menuItems)
-                if (item != null) { FlxTween.cancelTweensOf(item); FlxTween.cancelTweensOf(item.scale); }
-        box          = null;
-        menuItems    = null;
-        _selLeft     = null;
-        _selMid      = null;
-        _selRight    = null;
-        videoEntries = null;
-        _leftOrigX   = null;
-        super.destroy();
     }
 }

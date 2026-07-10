@@ -89,6 +89,12 @@
 			]
 		],
 		[
+			66666.6666666667,
+			[
+				["Change Scroll Speed", "0.96", "0.695"]
+			]
+		],
+		[
 			67368.4210526316,
 			[
 				["Tween Camera Zoom", "0.345, true", "2.81, smoothStepInOut"],
@@ -152,7 +158,8 @@
 				["Set Property", "cameraSpeed", "10000"],
 				["Tweening Camera", "0, 0", "0.00001, linear"],
 				["Set customCamera Position", "bf", "3150, 2098"],
-				["bloomFlash", "0.3,0", "1.39,smoothStepOut"]
+				["bloomFlash", "0.3,0", "1.39,smoothStepOut"],
+				["Change Scroll Speed", "1.1", "1.39"]
 			]
 		],
 		[
@@ -289,6 +296,12 @@
 			]
 		],
 		[
+			111929.824561404,
+			[
+				["Change Scroll Speed", "1", "0.3475"]
+			]
+		],
+		[
 			112280.701754386,
 			[
 				["Tween Camera Zoom", "0.6, true", "1.405, smoothStepInOut"]
@@ -340,6 +353,12 @@
 			]
 		],
 		[
+			123157.894736842,
+			[
+				["Change Scroll Speed", "1.1", "0.3"]
+			]
+		],
+		[
 			123508.771929825,
 			[
 				["Change Character", "bf", "bf-hardcore"],
@@ -375,13 +394,26 @@
 				["changenoteSkin", "NOTE_assets_FLASH3", ""],
 				["pixelshadertween", "0,0", "0.0001, linear"],
 				["Tweening Camera", "350, -65", "0.0001, linear"],
-				["Set Property", "cameraSpeed", "10000"]
+				["Set Property", "cameraSpeed", "10000"],
+				["Set Property", "cpuAssist", "true"]
+			]
+		],
+		[
+			134736.842105263,
+			[
+				["Change Scroll Speed", ".85", "0.1"]
 			]
 		],
 		[
 			134824.561403509,
 			[
 				["Set Property", "cameraSpeed", "10000"]
+			]
+		],
+		[
+			137540.204678363,
+			[
+				["Set Property", "cpuAssist", "false"]
 			]
 		],
 		[
@@ -396,6 +428,12 @@
 			[
 				["Tweening Camera", "0, -700", "2.79, smoothStepIn"],
 				["Tween Camera Zoom", "1.4, true", "2.79, smoothStepIn"]
+			]
+		],
+		[
+			154385.964912281,
+			[
+				["Change Scroll Speed", "1", "2.78"]
 			]
 		],
 		[
@@ -437,6 +475,12 @@
 			[
 				["Tweening Camera", "200, 0", "1.4, cubeOut"],
 				["Set customCamera Position", "bf", "3435, 2048"]
+			]
+		],
+		[
+			168421.052631579,
+			[
+				["Change Scroll Speed", "1.1", "14"]
 			]
 		],
 		[
@@ -3558,11 +3602,11 @@
 	],
 	"gfVersion": "air",
 	"song": "Flash",
-	"stage": "windows7",
 	"validScore": true,
+	"stage": "windows7",
+	"arrowSkin": "noteSkins/NOTENORMAL_assets",
 	"needsVoices": true,
 	"bpm": 171,
-	"arrowSkin": "noteSkins/NOTENORMAL_assets",
 	"speed": 3.1,
 	"format": "psych_v1_convert"
 }

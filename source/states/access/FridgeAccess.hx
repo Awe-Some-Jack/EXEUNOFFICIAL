@@ -28,25 +28,25 @@ class FridgeAccess extends MusicBeatState
 
 		CustomShapeTransition.shape = SUNKY;
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/wall.png'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/wall.png'));
 		bg.scale.set(0.51, 0.51);
 		bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);
 
-		var gang:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/the gang.png'));
+		var gang:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/the gang.png'));
 		gang.scale.set(0.52, 0.52);
 		gang.updateHitbox();
 		gang.setPosition(57, 41);
 		add(gang);
 
-		var frige:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/frige.png'));
+		var frige:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/frige.png'));
 		frige.scale.set(0.521, 0.521);
 		frige.updateHitbox();
 		frige.setPosition(354, 14);
 		add(frige);
 
-		var paper:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/paper.png'));
+		var paper:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/paper.png'));
 		paper.scale.set(0.52, 0.52);
 		paper.updateHitbox();
 		paper.setPosition(536, 486);
@@ -72,31 +72,31 @@ class FridgeAccess extends MusicBeatState
 		chocolate.setPosition(697, 461);
 		add(chocolate);
 
-		mustard = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/MUSTARD.png'));
+		mustard = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/MUSTARD.png'));
 		mustard.scale.set(0.52, 0.52);
 		mustard.updateHitbox();
 		mustard.setPosition(643, 546);
 		add(mustard);
 		
-		var sushi:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/sushi.png'));
+		var sushi:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/sushi.png'));
 		sushi.scale.set(0.52, 0.52);
 		sushi.updateHitbox();
 		sushi.setPosition(430, 703);
 		add(sushi);
 
-		var flower:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/flower.png'));
+		var flower:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/flower.png'));
 		flower.scale.set(0.52, 0.52);
 		flower.updateHitbox();
 		flower.setPosition(529, 698);
 		add(flower);
 
-		amongus = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/amongus.png'));
+		amongus = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/amongus.png'));
 		amongus.scale.set(0.52, 0.52);
 		amongus.updateHitbox();
 		amongus.setPosition(604, 814);
 		add(amongus);
 
-		var tv:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/tv.png'));
+		var tv:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/tv.png'));
 		tv.scale.set(0.52, 0.52);
 		tv.updateHitbox();
 		tv.setPosition(625, 685);
@@ -111,7 +111,7 @@ class FridgeAccess extends MusicBeatState
 		doordown.setPosition(71, 426);
 		add(doordown);
 
-		var doorup:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/door up.png'));
+		var doorup:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/door up.png'));
 		doorup.scale.set(0.52, 0.52);
 		doorup.updateHitbox();
 		doorup.setPosition(381, 62);
@@ -142,13 +142,13 @@ class FridgeAccess extends MusicBeatState
 			});
 		});
 
-		var shit:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/shit.png'));
+		var shit:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/shit.png'));
 		shit.scale.set(0.52, 0.52);
 		shit.updateHitbox();
 		shit.setPosition(893, 433);
 		add(shit);
 
-		/*ref = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/fridge/ref inside.png'));
+		/*ref = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/ref inside.png'));
 		ref.setGraphicSize(1280, 720);
 		ref.updateHitbox();
 		ref.alpha = 0.5;

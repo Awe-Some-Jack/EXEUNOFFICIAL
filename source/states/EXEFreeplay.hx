@@ -294,7 +294,7 @@ class EXEFreeplay extends MusicBeatState
 	function maniaNotif():Void 
 	{
 		final maniaNotifSprite = new FlxSprite();
-		maniaNotifSprite.loadGraphic(Assets.getBitmapData('assets/exe/access/mania/mania-notif.png'));
+		maniaNotifSprite.loadGraphic(Paths.getBitmapData('assets/exe/access/mania/mania-notif.png'));
 		maniaNotifSprite.scale.set(0.3, 0.3);
 		maniaNotifSprite.setPosition(250, -340);
 		add(maniaNotifSprite);
@@ -325,7 +325,7 @@ class EXEFreeplay extends MusicBeatState
 			#if (sys && !mobile)
 			return BitmapData.fromFile(path);
 			#else
-			return openfl.utils.Assets.getBitmapData(path);
+			return Paths.getBitmapData(path);
 			#end
 		}
 		catch (e:Dynamic) {}

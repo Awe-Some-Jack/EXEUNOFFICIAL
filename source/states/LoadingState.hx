@@ -570,8 +570,9 @@ class LoadingState extends MusicBeatState
 			
 			#if flixel_animate
 			var animToFind:String = Paths.getPath('images/$img/Animation.json', TEXT);
-			if (#if (!mobile && MODS_ALLOWED) FileSystem.exists(animToFind) || #end OpenFlAssets.exists(animToFind))
+			if (#if sys FileSystem.exists(animToFind) || #end OpenFlAssets.exists(animToFind))
 				isAnimateAtlas = true;
+				trace(isAnimateAtlas);
 			#end
 
 			if(!isAnimateAtlas)
@@ -591,6 +592,7 @@ class LoadingState extends MusicBeatState
 	
 					if(Paths.fileExists('images/$img/spritemap$st.png', IMAGE))
 					{
+						trace("True again");
 						imagesToPrepare.push('$img/spritemap$st');
 					}
 				}

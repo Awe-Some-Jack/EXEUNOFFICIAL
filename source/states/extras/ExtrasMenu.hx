@@ -61,7 +61,7 @@ class ExtrasMenu extends MusicBeatState
         changeSelection(0);
 
         final np = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
-        np.setFormat("assets/fonts/bigass.otf", 60, FlxColor.BLACK, LEFT);
+        np.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
         np.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
         np.scale.set(0.22, 0.22);
         np.updateHitbox();
@@ -70,7 +70,7 @@ class ExtrasMenu extends MusicBeatState
 
         final daName = states.extras.dagarden.DAGarden.currentSong;
         nowPlayingSong = new FlxText(169, 587.72, 0, daName != '' ? daName.toUpperCase() : 'EXTRAS MENU', 60);
-        nowPlayingSong.setFormat("assets/fonts/bigass.otf", 60, FlxColor.BLACK, LEFT);
+        nowPlayingSong.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
         nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
         nowPlayingSong.scale.set(0.22, 0.22);
         nowPlayingSong.updateHitbox();
@@ -158,19 +158,6 @@ class ExtrasMenu extends MusicBeatState
 
     override public function destroy():Void
     {
-        if (_orphanPlayer != null) { _orphanPlayer.stop(); _orphanPlayer = null; }
-        if (disco    != null) FlxTween.cancelTweensOf(disco);
-        if (box      != null) { FlxTween.cancelTweensOf(box); FlxTween.cancelTweensOf(box.scale); }
-        for (s in [_selLeft, _selMid, _selRight]) if (s != null) { FlxTween.cancelTweensOf(s); FlxTween.cancelTweensOf(s.scale); }
-        for (item in menuItems)    if (item != null) FlxTween.cancelTweensOf(item.scale);
-        for (bd in descBackdrops)  if (bd   != null) FlxTween.cancelTweensOf(bd);
-        menuItems     = null;
-        descBackdrops = null;
-        _selLeft      = null;
-        _selMid       = null;
-        _selRight     = null;
-        disco         = null;
-        box           = null;
         if (!stopMusicPlay)
         {
             extraMenuSong = false;
@@ -219,14 +206,14 @@ class ExtrasMenu extends MusicBeatState
 
     function buildBox():Void
     {
-        box = new FlxSprite(750, 120).loadGraphic(Assets.getBitmapData("assets/exe/extras/box.png"));
+        box = new FlxSprite(750, 120).loadGraphic(Paths.getBitmapData("assets/exe/extras/box.png"));
         box.scale.set(0.3, 0.3);
         box.updateHitbox();
         add(box);
 
         sumky = new FlxSprite(675, 122);
         sumky.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow(
-            Assets.getBitmapData('assets/exe/extras/sumky.png'),
+            Paths.getBitmapData('assets/exe/extras/sumky.png'),
             openfl.utils.Assets.getText('assets/exe/extras/sumky.xml')
         );
         sumky.animation.addByPrefix('idle', 'sunki instancia', 12, true);
@@ -238,7 +225,7 @@ class ExtrasMenu extends MusicBeatState
 
     function buildDisco():Void
     {
-        final bmp = Assets.getBitmapData("assets/exe/extras/disco.png");
+        final bmp = Paths.getBitmapData("assets/exe/extras/disco.png");
         for (off in [{x: -2, y: -2}, {x: 0, y: -2}, {x: 2, y: -2}, {x: -2, y: 0}, {x: 2, y: 0}, {x: -2, y: 2}, {x: 0, y: 2}, {x: 2, y: 2}])
         {
             final s = new FlxSprite(61 + off.x, 541 + off.y).loadGraphic(bmp);
@@ -269,7 +256,7 @@ class ExtrasMenu extends MusicBeatState
         {
             final label = Language.getArray(MENU_KEYS[i], ['?', ''])[0];
             final t = new FlxText(50, 180 + i * 58, 0, label, 88);
-            t.setFormat("assets/fonts/bigass.otf", 88, FlxColor.WHITE, LEFT);
+            t.setFormat(Paths.font("bigass.otf"), 88, FlxColor.WHITE, LEFT);
             t.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
             t.antialiasing = ClientPrefs.data.antialiasing;
             t.scale.set(0.5, 0.5);
@@ -278,7 +265,7 @@ class ExtrasMenu extends MusicBeatState
             add(t);
             menuItems.push(t);
         }
-        final selBmp = Assets.getBitmapData("assets/exe/extras/select.png");
+        final selBmp = Paths.getBitmapData("assets/exe/extras/select.png");
         final capW = 80;
         final selH = selBmp.height;
         final midW = selBmp.width - capW * 2;
@@ -325,7 +312,7 @@ class ExtrasMenu extends MusicBeatState
         {
             final desc = Language.getArray(MENU_KEYS[i], ['', ''])[1];
             final tmp  = new FlxText(0, 0, 0, desc, 56);
-            tmp.setFormat("assets/fonts/smallass.ttf", 56, FlxColor.WHITE, LEFT);
+            tmp.setFormat(Paths.font("smallass.ttf"), 56, FlxColor.WHITE, LEFT);
             tmp.antialiasing = ClientPrefs.data.antialiasing;
             tmp.drawFrame(true);
             final bd = new FlxBackdrop(tmp.graphic, X, 0, 0);
@@ -464,5 +451,4 @@ class ExtrasMenu extends MusicBeatState
             case 5: openSubState(new states.extras.credits.CreditsState());
         }
     }
-
 }

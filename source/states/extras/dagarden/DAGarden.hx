@@ -18,7 +18,6 @@ import openfl.geom.Rectangle;
 import sys.FileSystem;
 import sys.io.File;
 
-
 private class DAGSongs extends FlxGroup
 {
     public var songList:Array<String>          = [];
@@ -75,12 +74,11 @@ private class DAGSongs extends FlxGroup
     public inline function selectedMod():String            return selectedIndex >= 0 ? songMods[selectedIndex] : '';
     public inline function selectedCredits():Array<String> return selectedIndex >= 0 && selectedIndex < songCredits.length ? songCredits[selectedIndex] : [];
 
-
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
 
-        final wheel = FlxG.mouse.wheel;
+        final wheel = FlxG.mouse.deltaWheel.y;
         if (wheel != 0) scrollTarget -= wheel * 80.0;
 
         if (onChangeSelection != null)
@@ -118,23 +116,6 @@ private class DAGSongs extends FlxGroup
             }
         }
     }
-
-
-    override public function destroy():Void
-    {
-        for (b in boxes)  FlxTween.cancelTweensOf(b);
-        for (l in labels) FlxTween.cancelTweensOf(l);
-        boxes      = null;
-        covers     = null;
-        labels     = null;
-        hasCover   = null;
-        songList   = null;
-        songMods   = null;
-        songCredits = null;
-        onSelect   = null;
-        super.destroy();
-    }
-
 
     function changeSelection(delta:Int):Void
     {
@@ -254,7 +235,7 @@ private class DAGSongs extends FlxGroup
 
     function buildBoxes():Void
     {
-        final bmp = openfl.utils.Assets.getBitmapData("assets/exe/extras/dagarden/sprites/gardenbox.png");
+        final bmp = Paths.getBitmapData("assets/exe/extras/dagarden/sprites/gardenbox.png");
         for (i in 0...songList.length)
         {
             final y     = 116.0 + i * 120.0;
@@ -287,7 +268,7 @@ private class DAGSongs extends FlxGroup
         final path = 'assets/exe/extras/dagarden/cover/$song.png';
         if (FileSystem.exists(path))
         {
-            var bmp = openfl.utils.Assets.getBitmapData(path);
+            var bmp = Paths.getBitmapData(path);
             if (bmp == null) bmp = BitmapData.fromFile(path);
             cv.loadGraphic(bmp);
             cv.scale.set(0.308, 0.308);
@@ -489,7 +470,6 @@ class DAGPlayer extends FlxGroup
         #end
     }
 
-
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
@@ -508,7 +488,6 @@ class DAGPlayer extends FlxGroup
         resyncVocals();
     }
 
-
     function buildUI():Void
     {
         final SC:Float = 0.34;
@@ -519,7 +498,7 @@ class DAGPlayer extends FlxGroup
 
         disk = spr(732, 245, "sprites/disk.png", 0.34);
 
-        final barBmp  = openfl.utils.Assets.getBitmapData("assets/exe/extras/dagarden/sprites/bar.png");
+        final barBmp  = Paths.getBitmapData("assets/exe/extras/dagarden/sprites/bar.png");
         final bW      = barBmp.width  * SC;
         final bH      = barBmp.height * SC;
         barInnerX = BX + (15 / 1642) * bW;
@@ -549,14 +528,14 @@ class DAGPlayer extends FlxGroup
         add(barKnob);
 
         timeTxt = new FlxText(765, 662, Std.int(bW), '0:00', 44);
-        timeTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 44, FlxColor.BLACK, CENTER);
+        timeTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 44, FlxColor.BLACK, CENTER);
         timeTxt.scale.set(0.5, 0.5);
         timeTxt.updateHitbox();
         timeTxt.antialiasing = ClientPrefs.data.antialiasing;
         add(timeTxt);
 
         songNameTxt = new FlxText(625, 132, 1120, '???????', 120);
-        songNameTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 120, FlxColor.BLACK, CENTER);
+        songNameTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 120, FlxColor.BLACK, CENTER);
         songNameTxt.letterSpacing = 2;
         songNameTxt.wordWrap      = false;
         songNameTxt.scale.set(0.5, 0.5);
@@ -566,7 +545,7 @@ class DAGPlayer extends FlxGroup
 
         final byLabel = Language.getArray('extras.dagarden', ['BY'])[0];
         composerTxt = new FlxText(625, 196, 1120, '$byLabel ?????', 36);
-        composerTxt.setFormat('assets/fonts/NiseSegaSonic.TTF', 36, FlxColor.BLACK, CENTER);
+        composerTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 36, FlxColor.BLACK, CENTER);
         composerTxt.letterSpacing = 6;
         composerTxt.wordWrap      = false;
         composerTxt.scale.set(0.5, 0.5);
@@ -578,7 +557,7 @@ class DAGPlayer extends FlxGroup
     inline function spr(x:Float, y:Float, file:String, sc:Float):FlxSprite
     {
         final s = new FlxSprite(x, y);
-        s.loadGraphic(openfl.utils.Assets.getBitmapData("assets/exe/extras/dagarden/" + file));
+        s.loadGraphic(Paths.getBitmapData("assets/exe/extras/dagarden/" + file));
         s.scale.set(sc, sc);
         s.updateHitbox();
         s.antialiasing = ClientPrefs.data.antialiasing;
@@ -973,7 +952,6 @@ class DAGPlayer extends FlxGroup
     }
 }
 
-
 class DAGarden extends MusicBeatSubstate
 {
     public static var currentSong:String    = '';
@@ -1023,10 +1001,6 @@ class DAGarden extends MusicBeatSubstate
 
     override public function destroy():Void
     {
-        if (player != null && !player.isPlaying) player.stop();
-        for (s in decors) if (s != null) FlxTween.cancelTweensOf(s);
-        if (arrow    != null) FlxTween.cancelTweensOf(arrow);
-        if (dagarden != null) FlxTween.cancelTweensOf(dagarden);
         FlxG.autoPause = true;
         super.destroy();
     }
@@ -1101,7 +1075,7 @@ class DAGarden extends MusicBeatSubstate
     inline function spr(x:Float, y:Float, file:String, sc:Float):FlxSprite
     {
         final s = new FlxSprite(x, y);
-        s.loadGraphic(openfl.utils.Assets.getBitmapData("assets/exe/extras/dagarden/" + file));
+        s.loadGraphic(Paths.getBitmapData("assets/exe/extras/dagarden/" + file));
         s.scale.set(sc, sc);
         s.updateHitbox();
         add(s);

@@ -26,6 +26,8 @@ class EXEMenu extends MusicBeatState
 	public static var selectedOptionIndex:Int = 2;
 	static inline final TOTAL_OPTIONS:Int = 5;
 	static inline final CENTER_POSITION:Int = 2;
+	static inline final HB_NATIVE_W:Float = 1478.0;
+	static inline final HB_NATIVE_H:Float = 231.0;
 
 	static function getOptionTexts():Array<String> {
 		return [
@@ -46,17 +48,10 @@ class EXEMenu extends MusicBeatState
 	];
 	static final OPTION_SCALES:Array<Float> = [0.25, 0.30, 0.37, 0.30, 0.25];
 	static final OPTION_ALPHAS:Array<Float> = [0.55, 0.80, 1.00, 0.80, 0.55];
-	static final TEXT_POSITIONS:Array<{x:Float, y:Float}> = [
-		{x:   20, y: -32},
-		{x:  -50, y:  94},
-		{x: -140, y: 251},
-		{x:  -50, y: 389},
-		{x:   20, y: 507}
-	];
-	static final TEXT_SCALES:Array<Float> = [0.245, 0.3, 0.330, 0.3, 0.245];
 
 	var menuOptions:Array<FlxSprite> = [];
 	var menuTexts:Array<FlxText> = [];
+	var menuHitboxes:Array<FlxSprite> = [];
 	var _cjkYOffset:Float = 0;
 	var shadowSprite:FlxSprite;
 	var previousSelectedIndex:Int = 2;
@@ -83,7 +78,7 @@ class EXEMenu extends MusicBeatState
 	{
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
-		
+
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Menu", null);
 		#end
@@ -98,16 +93,18 @@ class EXEMenu extends MusicBeatState
 		add(menuVideo);
 		#end
 
-		FlxG.autoPause = false;
-
 		shadowSprite = new FlxSprite();
-		shadowSprite.loadGraphic(Assets.getBitmapData("assets/exe/mainmenu/options/shadow.png"));
+		shadowSprite.loadGraphic(Paths.getBitmapData("assets/exe/mainmenu/options/shadow.png"));
 		shadowSprite.updateHitbox();
 		shadowSprite.alpha = 0;
 		add(shadowSprite);
 
 		final translatedTexts = getOptionTexts();
-		final boxBitmap = Assets.getBitmapData("assets/exe/mainmenu/options/box.png");
+		final boxBitmap = Paths.getBitmapData("assets/exe/mainmenu/options/box.png");
+		final menuFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : Paths.font("sonicfree.otf");
+		final maxFontSize:Int = Language.needsCustomFont() ? 180 : 280;
+		final minFontSize:Int = 40;
+
 		for (i in 0...TOTAL_OPTIONS)
 		{
 			final option = new FlxSprite();
@@ -117,18 +114,37 @@ class EXEMenu extends MusicBeatState
 			add(option);
 			menuOptions.push(option);
 
-			final menuFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : "assets/fonts/sonicfree.otf";
-			final menuFontSize = Language.needsCustomFont() ? 180 : 280;
-			final optionText = new FlxText(0, 0, option.width * 2, translatedTexts[i]);
-			optionText.setFormat(menuFont, menuFontSize, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+			var fontSize:Int = maxFontSize;
+			final optionText = new FlxText(0, 0, 0, translatedTexts[i]);
+			optionText.setFormat(menuFont, fontSize, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 			optionText.borderSize = 2;
 			optionText.antialiasing = ClientPrefs.data.antialiasing;
+
+			while (fontSize > minFontSize && optionText.textField.textWidth > HB_NATIVE_W - 80)
+			{
+				fontSize -= 2;
+				optionText.size = fontSize;
+			}
+
+			optionText.fieldWidth = optionText.textField.textWidth + 4;
 			optionText.ID = i;
 			add(optionText);
 			menuTexts.push(optionText);
 		}
 
-		if (EXEFreeplay.maniaUnlock) 
+		final hitboxBitmap = Paths.getBitmapData("assets/exe/mainmenu/options/hitbox.png");
+		for (i in 0...TOTAL_OPTIONS)
+		{
+			final hitbox = new FlxSprite();
+			hitbox.loadGraphic(hitboxBitmap);
+			hitbox.updateHitbox();
+			hitbox.visible = false;
+			hitbox.ID = i;
+			add(hitbox);
+			menuHitboxes.push(hitbox);
+		}
+
+		if (EXEFreeplay.maniaUnlock)
 		{
 			new FlxTimer().start(0.4, (_) -> maniaEmail());
 			heylookanemail = new FlxSprite();
@@ -141,8 +157,8 @@ class EXEMenu extends MusicBeatState
 		}
 
 		_cjkYOffset = switch (Language.getFontForLanguage()) {
-			case 'chinese.ttf': 28;
-			case 'japanese.ttf' | 'korean.ttf': 36;
+			case 'chinese.ttf': -17;
+			case 'japanese.ttf' | 'korean.ttf': -20;
 			default: 0;
 		};
 
@@ -154,7 +170,7 @@ class EXEMenu extends MusicBeatState
 		super.create();
 	}
 
-	function maniaEmail():Void 
+	function maniaEmail():Void
 	{
 		canInteract = false;
 		heylookanemail.animation.play('email', true);
@@ -164,7 +180,7 @@ class EXEMenu extends MusicBeatState
 
 	static final TAILS_DIR:String = 'CRAZY TAILS';
 
-	function goToMania():Void 
+	function goToMania():Void
 	{
 		FlxG.camera.fade(FlxColor.BLACK, 1);
 		new FlxTimer().start(1, (_) -> {
@@ -193,11 +209,11 @@ class EXEMenu extends MusicBeatState
 
 			LoadingState.prepareToSong();
 			LoadingState.loadAndSwitchState(new PlayState());
-			
-			#if !SHOW_LOADING_SCREEN 
-			FlxG.sound.music?.stop(); 
+
+			#if !SHOW_LOADING_SCREEN
+			FlxG.sound.music?.stop();
 			#end
-			
+
 			EXEFreeplay.maniaUnlock = false;
 		});
 	}
@@ -212,7 +228,7 @@ class EXEMenu extends MusicBeatState
 		if (cooldownTimer > 0) cooldownTimer -= elapsed;
 
 		updateShadow(elapsed);
-		
+
 		if (canManiaInteract && controls.ACCEPT)
 		{
 			goToMania();
@@ -256,9 +272,9 @@ class EXEMenu extends MusicBeatState
 		isMovingUpward = up;
 		selectedOptionIndex = (selectedOptionIndex + dir + TOTAL_OPTIONS) % TOTAL_OPTIONS;
 		cooldownTimer = 0.1;
-		
+
 		if (sound) FlxG.sound.play(Paths.sound('scrollMenu'));
-		
+
 		refreshSelection();
 		resetShadow();
 	}
@@ -275,19 +291,19 @@ class EXEMenu extends MusicBeatState
 	function updateBlink(elapsed:Float):Void
 	{
 		if (!isBlinking) return;
-		
+
 		blinkTimer += elapsed;
 		if (blinkTimer < 0.05) return;
-		
+
 		blinkTimer = 0;
 		blinkCount++;
-		
+
 		final opt = menuOptions[selectedOptionIndex];
 		final txt = menuTexts[selectedOptionIndex];
-		
+
 		opt.visible = !opt.visible;
 		txt.visible = !txt.visible;
-		
+
 		if (shadowSprite != null) shadowSprite.visible = !shadowSprite.visible;
 
 		if (blinkCount >= 16)
@@ -295,7 +311,7 @@ class EXEMenu extends MusicBeatState
 			opt.visible = true;
 			txt.visible = true;
 			if (shadowSprite != null) shadowSprite.visible = true;
-			
+
 			isBlinking = false;
 			blinkCount = 0;
 			executeOption();
@@ -305,7 +321,7 @@ class EXEMenu extends MusicBeatState
 	function executeOption():Void
 	{
 		if (selectedOptionIndex != 4) FlxG.sound.music?.fadeOut(0.3);
-		
+
 		switch (selectedOptionIndex)
 		{
 			case 0: FlxG.switchState(() -> new states.SoundTest());
@@ -330,10 +346,10 @@ class EXEMenu extends MusicBeatState
 	function updateShadow(elapsed:Float):Void
 	{
 		if (shadowMoved || shadowSprite == null) return;
-		
+
 		shadowTimer += elapsed;
 		if (shadowTimer < 0.15) return;
-		
+
 		shadowMoved = true;
 		shadowSprite.alpha = 1.0;
 		FlxTween.tween(shadowSprite, {
@@ -351,19 +367,25 @@ class EXEMenu extends MusicBeatState
 
 			final option = menuOptions[i];
 			final text = menuTexts[i];
+			final hitbox = menuHitboxes[i];
 			FlxTween.cancelTweensOf(option);
 			FlxTween.cancelTweensOf(option.scale);
 			FlxTween.cancelTweensOf(text);
 			FlxTween.cancelTweensOf(text.scale);
+			FlxTween.cancelTweensOf(hitbox);
+			FlxTween.cancelTweensOf(hitbox.scale);
 
 			final scale = OPTION_SCALES[visualPos];
 			final pos = OPTION_POSITIONS[visualPos];
 			final alpha = OPTION_ALPHAS[visualPos];
 
-			final textScale = TEXT_SCALES[visualPos];
-			final rawPos = TEXT_POSITIONS[visualPos];
-			final textPos = {x: rawPos.x, y: rawPos.y + _cjkYOffset};
-			
+			final txtNW:Float = text.fieldWidth;
+			final txtNH:Float = text.textField.textHeight;
+			final textPos = {
+				x: pos.x + 97.5 + (HB_NATIVE_W - txtNW) / 2,
+				y: pos.y + 45.5 + (HB_NATIVE_H - txtNH) / 2 + 10 + _cjkYOffset
+			};
+
 			if (visualPos == CENTER_POSITION && shadowSprite != null)
 			{
 				shadowSprite.scale.set(scale * 0.9, scale * 0.9);
@@ -377,8 +399,6 @@ class EXEMenu extends MusicBeatState
 			                 (prevVisualPos == 0 && visualPos == 4) ||
 			                 (prevVisualPos == 4 && visualPos == 0);
 
-			text.fieldWidth = 2000;
-
 			if (wrapping)
 			{
 				final entering = (visualPos == 0 && isMovingUpward) || (visualPos == 4 && !isMovingUpward);
@@ -387,30 +407,41 @@ class EXEMenu extends MusicBeatState
 				if (entering)
 				{
 					option.alpha = 0;
-					option.x = pos.x; 
+					option.x = pos.x;
 					option.y = pos.y + yOff;
 					option.scale.set(scale, scale);
-					
+
 					text.alpha = 0;
 					text.x = textPos.x;
 					text.y = textPos.y + yOff;
-					text.scale.set(textScale, textScale);
-					
+					text.scale.set(scale, scale);
+
+					hitbox.alpha = 0;
+					hitbox.x = pos.x + 97.5;
+					hitbox.y = pos.y + yOff + 45.5;
+					hitbox.scale.set(scale, scale);
+
 					FlxTween.tween(option, {y: pos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
 					FlxTween.tween(text, {y: textPos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
+					FlxTween.tween(hitbox, {y: pos.y + 45.5, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
 				}
 				else
 				{
-					option.x = pos.x; 
+					option.x = pos.x;
 					option.y = pos.y;
 					option.scale.set(scale, scale);
-					
+
 					text.x = textPos.x;
 					text.y = textPos.y;
-					text.scale.set(textScale, textScale);
-					
+					text.scale.set(scale, scale);
+
+					hitbox.x = pos.x + 97.5;
+					hitbox.y = pos.y + 45.5;
+					hitbox.scale.set(scale, scale);
+
 					FlxTween.tween(option, {y: pos.y + yOff, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
 					FlxTween.tween(text, {y: textPos.y + yOff, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
+					FlxTween.tween(hitbox, {y: pos.y + yOff + 45.5, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
 				}
 			}
 			else
@@ -418,7 +449,9 @@ class EXEMenu extends MusicBeatState
 				FlxTween.tween(option, {x: pos.x, y: pos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
 				FlxTween.tween(option.scale, {x: scale, y: scale}, 0.45, {ease: FlxEase.quintOut});
 				FlxTween.tween(text, {x: textPos.x, y: textPos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
-				FlxTween.tween(text.scale, {x: textScale, y: textScale}, 0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(text.scale, {x: scale, y: scale}, 0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(hitbox, {x: pos.x + 97.5, y: pos.y + 45.5, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(hitbox.scale, {x: scale, y: scale}, 0.45, {ease: FlxEase.quintOut});
 			}
 		}
 

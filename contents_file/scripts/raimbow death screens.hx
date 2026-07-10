@@ -118,7 +118,8 @@ function addVoiceLines() {
 function addShaders() {
     switch(songName){
         case "yourself":
-            pixel = game.createRuntimeShader('pixelsplash');
+            var fragSrc:String = Assets.getText(Paths.shaderFragment('pixelsplash'));
+            pixel = new FlxRuntimeShader(fragSrc);
             pixel.setFloat("pixelsize", 0.1);
 
             FlxG.camera.filters = [new ShaderFilter(pixel)];

@@ -50,7 +50,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	public static function getLangFont():String
 	{
 		final f = backend.Language.getFontForLanguage();
-		return Assets.exists('assets/fonts/$f') ? f : FONT;
+		return Assets.exists(Paths.font('$f')) ? f : FONT;
 	}
 	public static final FONT_SIZE:Int    = 18;
 	public static final OPTIONS_PAGE_SIZE:Int    = 4;
@@ -133,7 +133,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		rightGroup.push(borderTop);
 		rightGroup.push(borderBot);
 
-		titlebar = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+		titlebar = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.png'));
 		titlebar.scale.set(TB_SCALE_X, TB_SCALE_Y); titlebar.updateHitbox();
 		titlebar.x = offLeft; titlebar.y = TB_Y; titlebar.scrollFactor.set(0, 0);
 		add(titlebar);
@@ -148,31 +148,31 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		add(titlebarTxt);
 		leftGroup.push(cast titlebarTxt);
 
-		selectionClone = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGClone.png'));
+		selectionClone = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGClone.png'));
 		selectionClone.scale.set(NB_SCALE_X, NB_SCALE_Y); selectionClone.updateHitbox();
 		selectionClone.x = offRight; selectionClone.scrollFactor.set(0, 0); add(selectionClone);
 		rightGroup.push(selectionClone);
 
-		selectionCloneWhite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGWhite.png'));
+		selectionCloneWhite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGWhite.png'));
 		selectionCloneWhite.scale.set(NB_SCALE_X, NB_SCALE_Y); selectionCloneWhite.updateHitbox();
 		selectionCloneWhite.alpha = 0; selectionCloneWhite.x = offRight; selectionCloneWhite.scrollFactor.set(0, 0); add(selectionCloneWhite);
 		rightGroup.push(selectionCloneWhite);
 
-		selectionCloneV = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGClone.png'));
+		selectionCloneV = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGClone.png'));
 		selectionCloneV.scale.set(VB_SCALE_X, VB_SCALE_Y); selectionCloneV.updateHitbox();
 		selectionCloneV.x = offRight; selectionCloneV.scrollFactor.set(0, 0); add(selectionCloneV);
 		rightGroup.push(selectionCloneV);
 
-		selectionCloneWhiteV = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/sectionBGWhite.png'));
+		selectionCloneWhiteV = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGWhite.png'));
 		selectionCloneWhiteV.scale.set(VB_SCALE_X, VB_SCALE_Y); selectionCloneWhiteV.updateHitbox();
 		selectionCloneWhiteV.alpha = 0; selectionCloneWhiteV.x = offRight; selectionCloneWhiteV.scrollFactor.set(0, 0); add(selectionCloneWhiteV);
 		rightGroup.push(selectionCloneWhiteV);
 
-		arrowLeft = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/arrow.png'));
+		arrowLeft = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/arrow.png'));
 		arrowLeft.scale.set(ARR_SCALE, ARR_SCALE); arrowLeft.updateHitbox();
 		arrowLeft.x = ARR_L_X; arrowLeft.scrollFactor.set(0, 0); arrowLeft.visible = false;
 
-		arrowRight = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/arrow.png'));
+		arrowRight = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/arrow.png'));
 		arrowRight.scale.set(ARR_SCALE, ARR_SCALE); arrowRight.updateHitbox();
 		arrowRight.x = ARR_R_X; arrowRight.flipX = true; arrowRight.scrollFactor.set(0, 0); arrowRight.visible = false;
 

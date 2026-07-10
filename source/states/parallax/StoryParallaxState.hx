@@ -23,19 +23,19 @@ class StoryParallaxState extends MusicBeatState
 	{
 		super.create();
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/story mode/1.png'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/1.png'));
 		bg.scale.set(0.34, 0.34);
 		bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);
 
-		var tables:FlxSprite = new FlxSprite(0, 80).loadGraphic(Assets.getBitmapData('assets/exe/parallax/story mode/2.png'));
+		var tables:FlxSprite = new FlxSprite(0, 80).loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/2.png'));
 		tables.scale.set(0.34, 0.34);
 		tables.updateHitbox();
 		tables.screenCenter(X);
 		add(tables);
 
-		megadrive = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/story mode/consola.png'));
+		megadrive = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/consola.png'));
 		megadrive.scale.set(0.9, 0.9);
 		megadrive.updateHitbox();
 		megadrive.screenCenter(X);
@@ -60,7 +60,7 @@ class StoryParallaxState extends MusicBeatState
 		cd.updateHitbox();
 		add(cd);
 
-		luz = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/story mode/luz.png'));
+		luz = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/luz.png'));
 		luz.scale.set(0.34, 0.34);
 		luz.updateHitbox();
 		luz.screenCenter();

@@ -29,46 +29,41 @@ class ParallaxState extends MusicBeatState
 		super.create();
 
 		#if VIDEOS_ALLOWED
-		final paraBg = new hxvlc.flixel.FlxVideoSprite(0, 0);
-		paraBg.bitmap.onFormatSetup.add(() -> {
-			paraBg.setGraphicSize(FlxG.width, FlxG.height);
-			paraBg.updateHitbox();
-			paraBg.screenCenter();
-		});
-		paraBg.bitmap.onEndReached.add(() -> {
-			if (paraBg.load('assets/exe/parallax/bg.mp4'))
-				new FlxTimer().start(0.001, (_) -> paraBg.play());
-		});
-		add(paraBg);
-		if (paraBg.load('assets/exe/parallax/bg.mp4'))
-			new FlxTimer().start(0.001, (_) -> paraBg.play());
-		FlxG.autoPause = false;
+        final paraBg = new objects.VideoSprite(0, 0, false);
+        paraBg.onFormat(() -> {
+            paraBg.setGraphicSize(FlxG.width, FlxG.height);
+            paraBg.screenCenter();
+        });
+        add(paraBg);
+        
+        if (paraBg.loadVideo('assets/exe/parallax/bg.mp4', [VideoSprite.ARG_LOOPING]))
+            paraBg.playDelayed();
 		#end
 
-		spikestop = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/spike.png'), X);
+		spikestop = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.png'), X);
 		spikestop.updateHitbox();
 		spikestop.velocity.x = 50;
 		spikestop.flipY = true;
 		add(spikestop);
 
-		spikesbot = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/spike.png'), X);
+		spikesbot = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.png'), X);
 		spikesbot.updateHitbox();
 		spikesbot.y = FlxG.height - spikesbot.height;
 		spikesbot.velocity.x = -50;
 		add(spikesbot);
 
-		barstory = new FlxSprite(((curSelected == 0) ? -80 : -140)).loadGraphic(Assets.getBitmapData('assets/exe/parallax/tile.png'));
+		barstory = new FlxSprite(((curSelected == 0) ? -80 : -140)).loadGraphic(Paths.getBitmapData('assets/exe/parallax/tile.png'));
 		barstory.y = (FlxG.height / 2) - barstory.height - 20;
 		add(barstory);
 
-		barinfo = new FlxSprite(((curSelected == 0) ? -140 : -80)).loadGraphic(Assets.getBitmapData('assets/exe/parallax/tile.png'));
+		barinfo = new FlxSprite(((curSelected == 0) ? -140 : -80)).loadGraphic(Paths.getBitmapData('assets/exe/parallax/tile.png'));
 		barinfo.y = (FlxG.height / 2) + 20;
 		add(barinfo);
 
-		textstory = new FlxSprite(barstory.x + 140, barstory.y + 28).loadGraphic(Assets.getBitmapData('assets/exe/parallax/story.png'));
+		textstory = new FlxSprite(barstory.x + 140, barstory.y + 28).loadGraphic(Paths.getBitmapData('assets/exe/parallax/story.png'));
 		add(textstory);
 
-		textinfo = new FlxSprite(barinfo.x + 140, barinfo.y + 32).loadGraphic(Assets.getBitmapData('assets/exe/parallax/info-bio.png'));
+		textinfo = new FlxSprite(barinfo.x + 140, barinfo.y + 32).loadGraphic(Paths.getBitmapData('assets/exe/parallax/info-bio.png'));
 		add(textinfo);
 
 		sonic = new FlxSprite();

@@ -221,7 +221,7 @@ class Paths
 
 		for (ext in VIDEO_EXTS)
 		{
-			final path = 'assets/videos/$key.$ext';
+			final path = getFolderPath('$key.$ext', 'videos');
 			if (#if sys FileSystem.exists(path) || #end OpenFlAssets.exists(path)) return path;
 		}
 
@@ -355,6 +355,21 @@ class Paths
 		if(#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file)) return file;
 		#end
 		return 'assets/$folderKey';
+	}
+
+	public static function getBitmapData(key:String, ?useCache:Bool = true) {
+		final suffixes:Array<String> = #if mobile ['.astc', '.png'] #else ['.png'] #end;
+		key = key.substr(0, key.length-4);
+		for(suffix in suffixes) {
+			try {
+				if(#if sys FileSystem.exists(key+suffix) || #end OpenFlAssets.exists(key+suffix)) {
+					return OpenFlAssets.getBitmapData(key+suffix, useCache);
+				}
+			} catch (e:Dynamic) {
+				trace(e);
+			}
+		}
+		return null;
 	}
 
 	public static function fileExists(key:String, ?type:AssetType, ?ignoreMods:Bool = false, ?parentFolder:String = null)
@@ -668,6 +683,8 @@ class Paths
 		if (isValidFolder)
 			path = modPath;
 		#end
+
+		trace(isValidFolder);
 
 		return FlxAnimateFrames.fromAnimate(path, validatedSettings.spritemaps, validatedSettings.metadataJson, validatedSettings.cacheKey,
 			validatedSettings.uniqueInCache, {

@@ -14,6 +14,10 @@ import openfl.ui.Mouse;
 import openfl.ui.MouseCursor;
 import haxe.Json;
 
+#if VIDEOS_ALLOWED
+import objects.VideoSprite;
+#end
+
 typedef Credit = {
     var name:String;
     var icon:String;
@@ -209,7 +213,7 @@ private class CreditPopup extends MusicBeatSubstate
     var youtubeBtn:FlxSprite;
 
     #if VIDEOS_ALLOWED
-    var userVideo:hxvlc.flixel.FlxVideoSprite;
+    var userVideo:VideoSprite;
     var pauseBtn:FlxSprite;
     var videoPaused:Bool = false;
     #end
@@ -334,22 +338,31 @@ private class CreditPopup extends MusicBeatSubstate
     function buildExtra():Void
     {
         if (user.extra == null) return;
+
         final col = CreditsState.userSelected[0];
         if (user.extra[0] == 'video')
         {
             final affectsMusic:Bool = user.extra[2] != true;
             if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume: 0.3}, 0.6); }
+
             #if VIDEOS_ALLOWED
             pauseBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/play.png');
             pauseBtn.alpha = 0; pauseBtn.camera = popCam;
-            userVideo = new hxvlc.flixel.FlxVideoSprite(0, 0);
-            userVideo.bitmap.onFormatSetup.add(() -> {
-                fit(userVideo, 200, 200);
-                userVideo.setPosition(bg.x + 40 + ((bg.width / 2 - 50) - userVideo.width) / 2, bg.y + bg.height - userVideo.height - 50);
-                pauseBtn.setPosition(userVideo.x + (userVideo.width - pauseBtn.width) / 2, userVideo.y + (userVideo.height - pauseBtn.height) / 2);
+
+            userVideo = new VideoSprite(0, 0, false);
+            userVideo.onFormat(() -> {
+                fit(userVideo.video, 200, 200);
+                userVideo.setPosition(bg.x + 40 + ((bg.width / 2 - 50) - userVideo.video.width) / 2, bg.y + bg.height - userVideo.video.height - 50);
+                pauseBtn.setPosition(userVideo.x + (userVideo.video.width - pauseBtn.width) / 2, userVideo.y + (userVideo.video.height - pauseBtn.height) / 2);
             });
-            userVideo.bitmap.onEndReached.add(playVideo); userVideo.camera = popCam;
-            add(userVideo); add(pauseBtn); playVideo();
+            userVideo.camera = popCam;
+            add(userVideo); add(pauseBtn);
+
+            for (ext in Paths.VIDEO_EXTS) 
+            {
+                if (userVideo.loadVideo('assets/exe/extras/credits/${CreditsState.userSelected[0]}/extra/${user.extra[1]}.$ext', [VideoSprite.ARG_LOOPING])) 
+                    userVideo.playDelayed();
+            }
             #end
         }
         else if (user.extra[0] == 'image')
@@ -394,7 +407,7 @@ private class CreditPopup extends MusicBeatSubstate
         var hovering = FlxG.mouse.overlaps(userIcon) && canClick;
         if (twitterBtn != null && FlxG.mouse.overlaps(twitterBtn)) hovering = true;
         if (youtubeBtn != null && FlxG.mouse.overlaps(youtubeBtn)) hovering = true;
-        #if VIDEOS_ALLOWED if (userVideo != null && FlxG.mouse.overlaps(userVideo)) hovering = true; #end
+        #if VIDEOS_ALLOWED if (userVideo != null && FlxG.mouse.overlaps(userVideo.video)) hovering = true; #end
         Mouse.cursor = hovering ? MouseCursor.BUTTON : MouseCursor.ARROW;
     }
 
@@ -428,7 +441,7 @@ private class CreditPopup extends MusicBeatSubstate
     function updateVideoClick():Void
     {
         #if VIDEOS_ALLOWED
-        if (userVideo == null || !FlxG.mouse.overlaps(userVideo) || !FlxG.mouse.justPressed) return;
+        if (userVideo == null || !FlxG.mouse.overlaps(userVideo.video) || !FlxG.mouse.justPressed) return;
         final affectsMusic:Bool = user.extra[2] != true;
         videoPaused = !videoPaused;
         if (videoPaused)
@@ -454,20 +467,27 @@ private class CreditPopup extends MusicBeatSubstate
     {
         if (iconClickSpeed > 0) { iconClickSpeed -= elapsed * (2 + iconClickSpeed * 0.5); if (iconClickSpeed < 0) iconClickSpeed = 0; }
         if (userIcon == null) return;
+
         final over = FlxG.mouse.overlaps(userIcon);
         if (canClick)
         {
             FlxTween.cancelTweensOf(userIcon.scale);
             FlxTween.tween(userIcon.scale, over ? {x:savedIconScale*1.08,y:savedIconScale*1.08} : {x:savedIconScale,y:savedIconScale}, over ? 0.12 : 0.15, {ease: FlxEase.quadOut});
         }
+
         if (!canClick || !FlxG.mouse.justPressed || !over) return;
+
         FlxTween.cancelTweensOf(userIcon); FlxTween.cancelTweensOf(userIcon.scale);
+
         userIcon.flipX = FlxG.random.bool();
         userIcon.angle = FlxG.random.float(-45, 45);
-        userIcon.scale.set(FlxG.random.float(savedIconScale*0.5, savedIconScale*1.5), FlxG.random.float(savedIconScale*0.5, savedIconScale*1.5));
+        userIcon.scale.set(FlxG.random.float(savedIconScale * 0.5, savedIconScale * 1.5), FlxG.random.float(savedIconScale * 0.5, savedIconScale * 1.5));
+
         FlxTween.tween(userIcon, {angle:0}, 0.3, {ease:FlxEase.backOut});
         FlxTween.tween(userIcon.scale, {x:savedIconScale,y:savedIconScale}, 0.3, {ease:FlxEase.backOut});
+
         FlxG.sound.play(Paths.sound('honksound'));
+
         iconClickSpeed++;
         if (iconClickSpeed > 10)
         {
@@ -480,6 +500,7 @@ private class CreditPopup extends MusicBeatSubstate
     function updateNavigation():Void
     {
         if (controls.BACK) { doClose(); return; }
+        
         final len = CreditsState.credits.get(CreditsState.userSelected[0])?.length ?? 1;
         if (controls.UI_LEFT_P)  navTo(FlxMath.wrap(Std.int(CreditsState.userSelected[1]) - 1, 0, len - 1));
         if (controls.UI_RIGHT_P) navTo(FlxMath.wrap(Std.int(CreditsState.userSelected[1]) + 1, 0, len - 1));
@@ -511,16 +532,6 @@ private class CreditPopup extends MusicBeatSubstate
     inline function overCam(cam:FlxCamera):Bool
         return FlxG.mouse.viewX >= cam.x && FlxG.mouse.viewX <= cam.x + cam.width
             && FlxG.mouse.viewY >= cam.y && FlxG.mouse.viewY <= cam.y + cam.height;
-
-    #if VIDEOS_ALLOWED
-    function playVideo():Void
-    {
-        final path = 'assets/exe/extras/credits/${CreditsState.userSelected[0]}/extra/${user.extra[1]}.mp4';
-        if (userVideo.load(path)) new FlxTimer().start(0.001, (_) -> { userVideo.play(); userVideo.bitmap.rate = 1.0; });
-    }
-    override function onFocus():Void    { super.onFocus();    if (videoPaused) userVideo?.resume(); }
-    override function onFocusLost():Void { super.onFocusLost(); if (!videoPaused) userVideo?.pause(); }
-    #end
 
     override function destroy()
     {

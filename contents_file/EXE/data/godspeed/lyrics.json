@@ -46,5 +46,17 @@
 	"pi-PI":  {
 				  "lyrics.godspeed.1":  "Why; be; ye; run;ning; from",
 				  "lyrics.godspeed.2":  "yer; GOD,; ye; land;lub;ber?"
+			  },
+	"it-IT":  {
+				  "lyrics.godspeed.1":  "Per;ché; stai; cer;can;do; di",
+				  "lyrics.godspeed.2":  "scap;pa;re; dal; tuo; DIO?"
+			  },
+	"pl-PL":  {
+				  "lyrics.godspeed.1":  "Dla;cze;go; pró;bu;jesz; u;ciec",
+				  "lyrics.godspeed.2":  "przed; swo;im; BO;GIEM?"
+			  },
+	"tr-TR":  {
+				  "lyrics.godspeed.1":  "Ni;cin; TAN;RI;NIN;DAN; ka;cma;ya",
+				  "lyrics.godspeed.2":  "ca;li;si;yor;sun?"
 			  }
 }

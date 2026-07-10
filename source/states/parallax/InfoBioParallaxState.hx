@@ -67,13 +67,13 @@ class InfoBioParallaxState extends MusicBeatState
 		add(charBG);
 
 		charName = new FlxText(40, 90, 0, '');
-		charName.setFormat("assets/fonts/Plaza Regular.ttf", 100, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+		charName.setFormat(Paths.font("Plaza Regular.ttf"), 100, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 		charName.borderSize = 2;
 		charName.antialiasing = ClientPrefs.data.antialiasing;
 		add(charName);
 
 		charInfo = new FlxText(40, 200, 580, '');
-		charInfo.setFormat("assets/fonts/Plaza Regular.ttf", 50, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+		charInfo.setFormat(Paths.font("Plaza Regular.ttf"), 50, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 		charInfo.borderSize = 2;
 		charInfo.antialiasing = ClientPrefs.data.antialiasing;
 

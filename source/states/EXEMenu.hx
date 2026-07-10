@@ -98,8 +98,6 @@ class EXEMenu extends MusicBeatState
 		add(menuVideo);
 		#end
 
-		FlxG.autoPause = false;
-
 		shadowSprite = new FlxSprite();
 		shadowSprite.loadGraphic(Paths.getBitmapData("assets/exe/mainmenu/options/shadow.png"));
 		shadowSprite.updateHitbox();
@@ -117,7 +115,7 @@ class EXEMenu extends MusicBeatState
 			add(option);
 			menuOptions.push(option);
 
-			final menuFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : "assets/fonts/sonicfree.otf";
+			final menuFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : Paths.font("sonicfree.otf");
 			final menuFontSize = Language.needsCustomFont() ? 180 : 280;
 			final optionText = new FlxText(0, 0, option.width * 2, translatedTexts[i]);
 			optionText.setFormat(menuFont, menuFontSize, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);

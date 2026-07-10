@@ -122,8 +122,6 @@ class EXETitle extends MusicBeatState
 		});
 		if (screenBg.loadVideo('assets/exe/title/statictitlemenu.mp4', [VideoSprite.ARG_LOOPING])) screenBg.playDelayed();
 		add(screenBg);
-
-		FlxG.autoPause = false;
 		#end
 
 		makeLogo();

@@ -2,10 +2,10 @@ package states;
 
 import flixel.FlxSprite;
 import flixel.FlxG;
-import flixel.util.FlxAxes;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.addons.display.FlxBackdrop;
+import flixel.util.FlxAxes;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxTimer;
@@ -18,6 +18,7 @@ import backend.Difficulty;
 import backend.Mods;
 import states.LoadingState;
 import states.PlayState;
+import states.cutscenes.YourselfCutscene;
 
 class StoryModeState extends MusicBeatState
 {
@@ -25,7 +26,7 @@ class StoryModeState extends MusicBeatState
 	public static var weekCompleted:Map<String, Bool> = new Map<String, Bool>();
 	public static var yourselfMode:Bool = false;
 
-	var randomMIC:FlxSprite;
+	var _yourselfCutscene:YourselfCutscene;
 
 	var toMenu:Bool = false;
 
@@ -108,11 +109,16 @@ class StoryModeState extends MusicBeatState
 	}
 
 	function createAssets(yourselfTime:Bool) {
-		var clouds:FlxBackdrop = new FlxBackdrop(Paths.getBitmapData("assets/exe/story/nuves de movimiento.png"), FlxAxes.X, 0, 0);
-		clouds.velocity.x = 180;
-		clouds.setGraphicSize(FlxG.width, FlxG.height * 2);
-		clouds.updateHitbox();
-		add(clouds);
+		final cloudSpeeds:Array<Float> = [120, 85, 58, 38, 24, 12];
+		for (i in 0...6)
+		{
+			final bmp = Paths.getBitmapData('assets/exe/story/clouds/${i + 1}.png');
+			final cloud = new FlxBackdrop(bmp, FlxAxes.X);
+			cloud.setGraphicSize(FlxG.width, FlxG.height);
+			cloud.updateHitbox();
+			cloud.velocity.x = -cloudSpeeds[i];
+			add(cloud);
+		}
 
 		var smmStatic:FlxSprite = new FlxSprite(0, 0);
 		smmStatic.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/SMMStatic.png', 'assets/exe/story/SMMStatic.xml');
@@ -123,12 +129,13 @@ class StoryModeState extends MusicBeatState
 		smmStatic.alpha = 0.4;
 		add(smmStatic);
 
-		var dataSelect:FlxSprite = new FlxSprite(104, 312);
+		var dataSelect:FlxSprite = new FlxSprite(0, 312);
 		dataSelect.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/dataselect.png', 'assets/exe/story/dataselect.xml');
 		dataSelect.animation.addByPrefix('idle', 'dataselect dataselect', 6);
 		dataSelect.animation.play('idle');
 		dataSelect.setGraphicSize(FlxG.width * 0.885);
 		dataSelect.updateHitbox();
+		dataSelect.screenCenter(X);
 		add(dataSelect);
 		
 		// ── BOX 1 ──
@@ -172,7 +179,7 @@ class StoryModeState extends MusicBeatState
 		add(finalEscapeCover);
 		
 		yourselfCover = new FlxSprite();
-		yourselfCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/yourself.png'));
+		yourselfCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/yourselffaker.png'));
 		yourselfCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		yourselfCover.updateHitbox();
 		yourselfCover.visible = false;
@@ -306,46 +313,11 @@ class StoryModeState extends MusicBeatState
 		//bfTween  = FlxTween.tween(bfBOX,  {y: bfBOX.y  - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
 		//bf2Tween = FlxTween.tween(gfBOX, {y: gfBOX.y - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
 		
-		if (yourselfTime) { canInteract = false; new FlxTimer().start(1, function(_) yourselfCutscene());}
+		if (yourselfTime) { canInteract = false; new FlxTimer().start(1, function(_) { _yourselfCutscene = new YourselfCutscene(this, bfBOX, redBOX, yourselfCover); _yourselfCutscene.start(); }); }
 
 	}
 	
 	
-	function yourselfCutscene() {
-		FlxG.sound.music.stop();
-		FlxG.camera.shake(0.01, 0.2);
-		
-		randomMIC = new FlxSprite();
-		randomMIC.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/microfono_lookalike.png', 'assets/exe/story/microfono_lookalike.xml');
-		randomMIC.animation.addByPrefix('idle', 'micro', 24, false);
-		randomMIC.setGraphicSize(Std.int(FlxG.width * 0.18));
-		randomMIC.setPosition(320, 120);
-		randomMIC.updateHitbox();
-		add(randomMIC);
-		
-		bfBOX.animation.play('ouch', true);
-		redBOX.animation.play('break', true);
-		randomMIC.animation.play('idle', false);
-		//bfTween.cancel();
-		bfBOX.y -= 80;
-		//bfTween  = FlxTween.tween(bfBOX,  {y: bfBOX.y  - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
-
-		new FlxTimer().start(2.3, (_) -> randomMIC.destroy());
-
-		new FlxTimer().start(5, (_) -> {
-			FlxTween.tween(FlxG.camera.scroll, {y: FlxG.camera.scroll.y + FlxG.height * 2}, 1.2, {ease: FlxEase.smootherStepInOut, onComplete: (_) -> {
-				bfBOX.animation.play('black', true);
-				//bfTween.cancel();
-				bfBOX.x += 220;
-				FlxTween.tween(bfBOX, {y: bfBOX.y + 720 * 2}, 3, {ease: FlxEase.circOut, onComplete: (_) -> {
-					new FlxTimer().start(0.5, (_) -> FlxTween.tween(bfBOX, {y: bfBOX.y + 720}, 3, {ease: FlxEase.circInOut, onComplete: (_) -> forceLoadYourselfSong()}));
-				}});
-			}});
-		});
-	}
-
-	function destroyMic() randomMIC.destroy();
-
 	function moveRedBox(targetX:Float):Void
 	{
 		if (shakeTimer != null) { shakeTimer.cancel(); shakeTimer = null; }
@@ -402,7 +374,9 @@ class StoryModeState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-if (!canInteract || Controls.instance == null || subState != null) { super.update(elapsed); return; }
+		_yourselfCutscene?.update(elapsed);
+
+		if (!canInteract || Controls.instance == null || subState != null) { super.update(elapsed); return; }
 
 		if (!isSelecting) {
 			if (inCoverSelect)
@@ -547,7 +521,8 @@ if (!canInteract || Controls.instance == null || subState != null) { super.updat
 		if (STORY_SONGS[selectedCover] == 'yourself')
 		{
 			canInteract = false;
-			yourselfCutscene();
+			_yourselfCutscene = new YourselfCutscene(this, bfBOX, redBOX, yourselfCover);
+			_yourselfCutscene.start();
 			return;
 		}
 
@@ -560,32 +535,4 @@ if (!canInteract || Controls.instance == null || subState != null) { super.updat
 		#if !SHOW_LOADING_SCREEN FlxG.sound.music.stop(); #end
 	}
 
-	function forceLoadYourselfSong() {
-		final song:String = 'yourself';
-
-		Mods.currentModDirectory = STORY_MOD;
-		WeekData.reloadWeekFiles(false);
-		PlayState.storyWeek = 1;
-		Difficulty.loadFromWeek();
-
-		final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-		final launchDiff = (normalIdx > -1) ? normalIdx : 0;
-
-		try
-		{
-			Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
-			PlayState.isStoryMode     = true;
-			PlayState.storyDifficulty = 1;
-		}
-		catch (e:haxe.Exception)
-		{
-			trace('Error loading song: ' + e.message);
-			return;
-		}
-
-		LoadingState.prepareToSong();
-		LoadingState.loadAndSwitchState(new PlayState());
-
-		#if !SHOW_LOADING_SCREEN FlxG.sound.music.stop(); #end
-	}
 }

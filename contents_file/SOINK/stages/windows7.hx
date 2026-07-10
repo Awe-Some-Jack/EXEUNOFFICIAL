@@ -214,6 +214,11 @@ function onResume() {
     if(alreadyPlayed2) ribbons.play();
 }
 
+function goodNoteHitPre(note:Note):Void {
+	boyfriend.idleSuffix = note.noteType == 'Alt Animation' ? '-alt' : '';
+	boyfriend.recalculateDanceIdle();
+}
+
 function onUpdate(elapsed:Float) {
     // formatting 🗣️🗣️🗣️
     if(!debugMode) FlxG.fullscreen = true;

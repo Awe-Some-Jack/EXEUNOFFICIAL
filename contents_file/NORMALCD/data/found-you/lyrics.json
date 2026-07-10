@@ -98,6 +98,33 @@
         "lyrics.foundyou.6": "안타;깝게도,; 여기;가; 너;희;의; 마지막; 장소;가 될; 거야!",
         "lyrics.foundyou.7": "덤;벼;봐!"
     },
+    "it-IT": {
+        "lyrics.foundyou.1": "Ve;ni; fuo;ri; do;vun;que; tu; sia",
+        "lyrics.foundyou.2": "Scher;za;vo,; ti; ho; già; tro;va;to!",
+        "lyrics.foundyou.3": "Toc; Toc!",
+        "lyrics.foundyou.4": "In;do;vi;na; chi~?",
+        "lyrics.foundyou.5": "Bel; po;sto; che; hai; qui",
+        "lyrics.foundyou.6": "Pec;ca;to,; sa;rà; l'ul;ti;mo; che; ve;drai!",
+        "lyrics.foundyou.7": "Dai,; ven;te!"
+    },
+    "pl-PL": {
+        "lyrics.foundyou.1": "Wyj;dź; skąd;kol;wiek; je;steś",
+        "lyrics.foundyou.2": "Żar;to;wa;łem,; już; cię; zna;la;złem!",
+        "lyrics.foundyou.3": "Puk; Puk!",
+        "lyrics.foundyou.4": "Zgad;nij; kto~?",
+        "lyrics.foundyou.5": "Nie;złe; miej;sce; masz; tu;taj",
+        "lyrics.foundyou.6": "Szko;da,; to; bę;dzie; ostat;nie; co; zo;ba;czysz!",
+        "lyrics.foundyou.7": "No; to; da;lej!"
+    },
+    "tr-TR": {
+        "lyrics.foundyou.1": "Ne;re;de; ol;ur;san; ol,; ci;kan",
+        "lyrics.foundyou.2": "Sak;la; ba;las; ya;pa;yo;rum,; sa;ni; bul;dum!",
+        "lyrics.foundyou.3": "Tok; Tok!",
+        "lyrics.foundyou.4": "Kim; ol;du;gu;mu; tah;min; et~?",
+        "lyrics.foundyou.5": "Bu;ra;si; guz;el; bir; yer",
+        "lyrics.foundyou.6": "Ne; ya;zik; ki,; bu;ra;si; son; go;re;ce;gin; yer; ola;cak!",
+        "lyrics.foundyou.7": "Gel; bak;a;lim!"
+    },
     "pi-PI": {
         "lyrics.foundyou.1": "Come; out; where;ever; ye; be",
         "lyrics.foundyou.2": "Just; kid;ding,; me; al;ready; found; ye!",

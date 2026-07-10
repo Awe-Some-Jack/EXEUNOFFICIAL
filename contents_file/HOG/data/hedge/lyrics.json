@@ -46,5 +46,17 @@
     "pi-PI": {
         "lyrics.hedge.1": "Watch; this!",
         "lyrics.hedge.2": "Good; job,; me; turn!"
+    },
+    "it-IT": {
+        "lyrics.hedge.1": "Guar;da; que;sto!",
+        "lyrics.hedge.2": "Bra;vo,; toc;ca; a; me!"
+    },
+    "pl-PL": {
+        "lyrics.hedge.1": "Pa;trz; na; to!",
+        "lyrics.hedge.2": "Do;bra; ro;bo;ta,; mo;ja; ko;lej!"
+    },
+    "tr-TR": {
+        "lyrics.hedge.1": "Su;na; bak!",
+        "lyrics.hedge.2": "I;yi; is,; si;ra; ben;de!"
     }
 }

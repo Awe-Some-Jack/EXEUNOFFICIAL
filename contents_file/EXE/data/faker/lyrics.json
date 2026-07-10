@@ -58,5 +58,20 @@
 				  "lyrics.faker.1":  "Ye; be too...",
 				  "lyrics.faker.2":  "YE; BE TOO...",
 				  "lyrics.faker.3":  "YE; BE; TOO SLOW!"
+			  },
+	"it-IT":  {
+				  "lyrics.faker.1":  "Sei; trop;po...",
+				  "lyrics.faker.2":  "SEI; TROPPO...",
+				  "lyrics.faker.3":  "SEI; TROPPO; LENTO!"
+			  },
+	"pl-PL":  {
+				  "lyrics.faker.1":  "Je;steś; za...",
+				  "lyrics.faker.2":  "JE;STEŚ; ZA...",
+				  "lyrics.faker.3":  "JE;STEŚ; ZA; WOLNY!"
+			  },
+	"tr-TR":  {
+				  "lyrics.faker.1":  "Cok; ya;vas;sin...",
+				  "lyrics.faker.2":  "COK; YA;VAS;SIN...",
+				  "lyrics.faker.3":  "COK; COK; YA;VAS;SIN!"
 			  }
 }

@@ -82,5 +82,26 @@
         "lyrics.malediction.3": "Just; ad;mit; it!",
         "lyrics.malediction.4": "Things; be...; a;ight?",
         "lyrics.malediction.5": "Then,; can; we...; try; a;gain?"
+    },
+    "it-IT": {
+        "lyrics.malediction.1": "C'è; qual;co;sa; che non; va...",
+        "lyrics.malediction.2": "Non; rie;sci; a; na;scon;der;lo; da; me!",
+        "lyrics.malediction.3": "Am;met;ti;lo!",
+        "lyrics.malediction.4": "Le; co;se...; van;no; be;ne?",
+        "lyrics.malediction.5": "Al;lo;ra,; pos;sia;mo...; ri;pro;var;ci?"
+    },
+    "pl-PL": {
+        "lyrics.malediction.1": "Coś; jest; nie; tak...",
+        "lyrics.malediction.2": "Nie; u;kry;jesz; te;go; przede; mną!",
+        "lyrics.malediction.3": "Przy;znaj; się!",
+        "lyrics.malediction.4": "Wszy;stko...; w po;rząd;ku?",
+        "lyrics.malediction.5": "To; mo;że...; spró;bu;je;my; jesz;cze; raz?"
+    },
+    "tr-TR": {
+        "lyrics.malediction.1": "Bir;sey;ler; yan;lis;...",
+        "lyrics.malediction.2": "Bu;nu; ben;den; sak;la;ya;maz;sin!",
+        "lyrics.malediction.3": "Ka;bul; et;!",
+        "lyrics.malediction.4": "Her; sey...; yolun;da; mi?",
+        "lyrics.malediction.5": "O; za;man,; ye;ni;den...; de;ne;ye;bi;lir; mi;yiz?"
     }
 }

@@ -58,5 +58,20 @@
         "lyrics.finalescape.1": "Here; we; sail!",
         "lyrics.finalescape.2": "Ye; won't; get; a;way!",
         "lyrics.finalescape.3": "Yarr!"
+    },
+    "it-IT": {
+        "lyrics.finalescape.1": "An;dia;mo!",
+        "lyrics.finalescape.2": "Non; la; sfa;rà; fran;ca!",
+        "lyrics.finalescape.3": "Yeah!"
+    },
+    "pl-PL": {
+        "lyrics.finalescape.1": "Da;lej!",
+        "lyrics.finalescape.2": "Nie; uciek;niesz!",
+        "lyrics.finalescape.3": "Yeah!"
+    },
+    "tr-TR": {
+        "lyrics.finalescape.1": "Ha;ydi; gi;del;im!",
+        "lyrics.finalescape.2": "Ka;ca;maz;sin!",
+        "lyrics.finalescape.3": "Yeah!"
     }
 }

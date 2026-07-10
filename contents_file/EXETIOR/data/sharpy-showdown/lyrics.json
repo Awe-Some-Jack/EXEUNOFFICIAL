@@ -94,5 +94,29 @@
 		"lyrics.sharpyshowdown.4":  "Ye; can't; stay; hid; much; longer matey;",
 		"lyrics.sharpyshowdown.5":  "Do; ye; truly; think; ye; can; outrun me?; ",
 		"lyrics.sharpyshowdown.6":  "yarr;"
+	},
+	"it-IT": {
+		"lyrics.sharpyshowdown.1": "Lo; sai...;",
+		"lyrics.sharpyshowdown.2": "Non; puo;i; scap;pa;re;",
+		"lyrics.sharpyshowdown.3": "So; do;ve; sei...;",
+		"lyrics.sharpyshowdown.4": "Non; puo;i; na;scon;der;ti; an;co;ra; a; lun;go;",
+		"lyrics.sharpyshowdown.5": "Pen;si; dav;ve;ro; di; po;ter; scap;pa;re?;",
+		"lyrics.sharpyshowdown.6": "si;"
+	},
+	"pl-PL": {
+		"lyrics.sharpyshowdown.1": "Wiesz...;",
+		"lyrics.sharpyshowdown.2": "Nie; mo;żesz; u;ciec;",
+		"lyrics.sharpyshowdown.3": "Wiem; gdzie; je;steś...;",
+		"lyrics.sharpyshowdown.4": "Nie; bę;dziesz; się; dłu;go; cho;wał;",
+		"lyrics.sharpyshowdown.5": "Na;praw;dę; my;ślisz,; że; mo;żesz; uciec?;",
+		"lyrics.sharpyshowdown.6": "tak;"
+	},
+	"tr-TR": {
+		"lyrics.sharpyshowdown.1": "Bi;lir;sin...;",
+		"lyrics.sharpyshowdown.2": "Ka;ca;maz;sin;",
+		"lyrics.sharpyshowdown.3": "Ne;re;de; ol;du;gu;nu; bi;li;yo;rum...;",
+		"lyrics.sharpyshowdown.4": "Da;ha; faz;la; sak;la;na;maz;sin;",
+		"lyrics.sharpyshowdown.5": "Ger;cek;ten; ka;ca;bi;le;ce;gi;ni; sa;ni;yor; mu;sun?;",
+		"lyrics.sharpyshowdown.6": "evet;"
 	}
 }

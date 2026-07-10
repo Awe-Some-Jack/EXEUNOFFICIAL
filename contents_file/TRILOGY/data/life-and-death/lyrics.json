@@ -130,5 +130,38 @@
         "lyrics.lifeandeath.7": "I; am; Life; and; Death",
         "lyrics.lifeandeath.8": "Ye; just; don't; get; it",
         "lyrics.lifeandeath.9": "NO; MORE; GAMES!"
+    },
+    "it-IT": {
+        "lyrics.lifeandeath.1": "Boy;friend....",
+        "lyrics.lifeandeath.2": "Non; co;sì; in; fret;ta...",
+        "lyrics.lifeandeath.3": "Io",
+        "lyrics.lifeandeath.4": "Io; SO;NO",
+        "lyrics.lifeandeath.5": "Io; SO;NO; DIO!",
+        "lyrics.lifeandeath.6": "Sei; trop;po; len;to",
+        "lyrics.lifeandeath.7": "Io; so;no; la; Vi;ta; e; la; Mor;te",
+        "lyrics.lifeandeath.8": "Non; ca;pi;sci; sem;pli;ce;men;te",
+        "lyrics.lifeandeath.9": "NES;SUN; AL;TRO; GIOCO!"
+    },
+    "pl-PL": {
+        "lyrics.lifeandeath.1": "Boy;friend....",
+        "lyrics.lifeandeath.2": "Nie; tak; szyb;ko...",
+        "lyrics.lifeandeath.3": "Ja",
+        "lyrics.lifeandeath.4": "Ja; JE;STEM",
+        "lyrics.lifeandeath.5": "Ja; JE;STEM; BO;GIEM!",
+        "lyrics.lifeandeath.6": "Je;steś; za; wol;ny",
+        "lyrics.lifeandeath.7": "Je;stem; Ży;ciem; i; Śmier;cią",
+        "lyrics.lifeandeath.8": "Po; pro;stu; nie; ro;zu;miesz",
+        "lyrics.lifeandeath.9": "KO;NIEC; Z GRA;MI!"
+    },
+    "tr-TR": {
+        "lyrics.lifeandeath.1": "Boy;friend....",
+        "lyrics.lifeandeath.2": "Bu; ka;dar; hiz;li; de;gil...",
+        "lyrics.lifeandeath.3": "Ben",
+        "lyrics.lifeandeath.4": "Ben; TAN;RI;YIM",
+        "lyrics.lifeandeath.5": "Ben; TAN;RI;YIM!",
+        "lyrics.lifeandeath.6": "Cok; ya;vas;sin",
+        "lyrics.lifeandeath.7": "Ben; Ha;yat; ve; Ol;u;mum",
+        "lyrics.lifeandeath.8": "An;la;mi;yor;sun; is;te",
+        "lyrics.lifeandeath.9": "AR;TIK; OYUN; YOK!"
     }
 }

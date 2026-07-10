@@ -34,5 +34,14 @@
 	},
 	"pi-PI": {
 		"lyrics.universalcollapse.1": "to; play; GOD"
+	},
+	"it-IT": {
+		"lyrics.universalcollapse.1": "gio;ca;re; a; fa;re; DIO"
+	},
+	"pl-PL": {
+		"lyrics.universalcollapse.1": "grac; w; BO;GA"
+	},
+	"tr-TR": {
+		"lyrics.universalcollapse.1": "TAN;RI; gi;bi; dav;ran;mak"
 	}
 }

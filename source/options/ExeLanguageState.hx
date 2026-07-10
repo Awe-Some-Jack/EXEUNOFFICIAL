@@ -10,7 +10,7 @@ import backend.Language;
 
 class ExeLanguageState extends ExeBaseOptionsState
 {
-	static final LANG_KEYS:Array<String> = ["auto", "en-US", "es-419", "pt-BR", "fr-FR", "uz-UZ", "ja-JP", "zh-CN", "ko-KR", "ru-RU", "uk-UA", "de-DE", "pi-PI"];
+	static final LANG_KEYS:Array<String> = ["auto", "en-US", "es-419", "pt-BR", "fr-FR", "uz-UZ", "ja-JP", "zh-CN", "ko-KR", "ru-RU", "uk-UA", "de-DE", "it-IT", "pl-PL", "tr-TR", "pi-PI"];
 	var curLangIdx:Int = 0;
 
 	override public function create()

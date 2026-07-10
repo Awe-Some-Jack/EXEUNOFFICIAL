@@ -23,6 +23,9 @@ class Language
 			case 'ru': 'ru-RU';
 			case 'uk': 'uk-UA';
 			case 'de': 'de-DE';
+			case 'it': 'it-IT';
+			case 'pl': 'pl-PL';
+			case 'tr': 'tr-TR';
 			default: 'en-US';
 		};
 	}

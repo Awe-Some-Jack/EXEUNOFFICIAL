@@ -2522,6 +2522,8 @@
 	],
 	"gfVersion": "gf",
 	"song": "Miasma",
+	"gameOverChar": "miasma-dead",
+	"gameOverSound": "bfmacheteado",
 	"validScore": true,
 	"needsVoices": true,
 	"stage": "DSK",

@@ -1,3 +1,7 @@
+-- Code by Kophy232, omg hiiiii :DD
+-- If you use it in your Lua Recreation Remember to credit properly.
+-- Recuerda acreditar si lo usas en tu recreacion Lua.
+
 local fuegoDistancia = 30
 local fuegoVelocidad = 2.4
 local fuegoYBase = -470
@@ -14,7 +18,33 @@ function onCreatePost()
 	setProperty('sky.antialiasing', true);
 	addLuaSprite('sky', false);
 
-	makeLuaSprite('rock2', 'Miasma/rock2', -850, -460);
+	makeLuaSprite('montanasquetelasclavasenelpoto', 'Miasma/montanasquetelasclavasenelpoto', -250, -530);
+	scaleObject('montanasquetelasclavasenelpoto', 1.9, 1.9);
+	setScrollFactor('montanasquetelasclavasenelpoto', 0.4, 0.4);
+	setProperty('montanasquetelasclavasenelpoto.antialiasing', true);
+	addLuaSprite('montanasquetelasclavasenelpoto', false);
+
+	makeLuaSprite('luzblanca', 'Miasma/luzblanca', -300, -780);
+	scaleObject('luzblanca', 1.5, 1.5);
+	setScrollFactor('luzblanca', 0.4, 0.4);
+	setProperty('luzblanca.alpha', 0.7);
+	setProperty('luzblanca.antialiasing', true);
+	addLuaSprite('luzblanca', false);
+
+	makeLuaSprite('montanasnegrascomotuano', 'Miasma/montanasnegrascomotuano', -1010, -800);
+	scaleObject('montanasnegrascomotuano', 1.9, 1.9);
+	setScrollFactor('montanasnegrascomotuano', 0.5, 0.5);
+	setProperty('montanasnegrascomotuano.antialiasing', true);
+	addLuaSprite('montanasnegrascomotuano', false);
+
+	makeLuaSprite('potonegro', 'Miasma/potonegro', -900, -780);
+	scaleObject('potonegro', 2.7, 2.7);
+	setScrollFactor('potonegro', 0.4, 0.4);
+	setProperty('potonegro.antialiasing', true);
+	setProperty('potonegro.alpha', 0.9);
+	addLuaSprite('potonegro', false);
+
+	makeLuaSprite('rock2', 'Miasma/rock2', -850, -500);
 	scaleObject('rock2', 1, 1);
 	setScrollFactor('rock2', 0.6, 0.6);
 	setProperty('rock2.antialiasing', true);
@@ -26,33 +56,33 @@ function onCreatePost()
 	setProperty('rock2b.antialiasing', true);
 	addLuaSprite('rock2b', false);
 
-	makeLuaSprite('rock3', 'Miasma/rock3', -400, -80);
+	makeLuaSprite('rock3', 'Miasma/rock3', -420, -70);
 	scaleObject('rock3', 1, 1);
-	setScrollFactor('rock3', 0.7, 0.7);
+	setScrollFactor('rock3', 0.6, 0.6);
 	setProperty('rock3.antialiasing', true);
 	addLuaSprite('rock3', false);
 
-	makeLuaSprite('rock3b', 'Miasma/rock3', 500, -80);
+	makeLuaSprite('rock3b', 'Miasma/rock3', 580, -70);
 	scaleObject('rock3b', 1, 1);
-	setScrollFactor('rock3b', 0.7, 0.7);
+	setScrollFactor('rock3b', 0.6, 0.6);
 	setProperty('rock3b.flipX', true);
 	setProperty('rock3b.antialiasing', true);
 	addLuaSprite('rock3b', false);
 
-	makeLuaSprite('rock4', 'Miasma/rock4', -950, -130);
-	scaleObject('rock4', 0.7, 0.7);
+	makeLuaSprite('rock4', 'Miasma/rock4', -950, -100);
+	scaleObject('rock4', 0.9, 0.9);
 	setScrollFactor('rock4', 0.8, 0.8);
 	setProperty('rock4.antialiasing', true);
 	addLuaSprite('rock4', false);
 
-	makeLuaSprite('rock4b', 'Miasma/rock4', 1100, -130);
-	scaleObject('rock4b', 0.7, 0.7);
+	makeLuaSprite('rock4b', 'Miasma/rock4', 1100, -100);
+	scaleObject('rock4b', 0.9, 0.9);
 	setScrollFactor('rock4b', 0.8, 0.8);
 	setProperty('rock4b.flipX', true);
 	setProperty('rock4b.antialiasing', true);
 	addLuaSprite('rock4b', false);
 
-	makeLuaSprite('rock1', 'Miasma/rock1', -110, 170);
+	makeLuaSprite('rock1', 'Miasma/rock1', -110, 220);
 	scaleObject('rock1', 1, 1);
 	setScrollFactor('rock1', 0.9, 0.9);
 	setProperty('rock1.antialiasing', true);
@@ -73,16 +103,18 @@ function onCreatePost()
 		'sineInOut'
 	);
 
-	makeLuaSprite('tree1', 'Miasma/tree', -1050, -180);
+	makeLuaSprite('tree1', 'Miasma/tree', -810, -240);
 	scaleObject('tree1', 0.2, 0.2);
 	setScrollFactor('tree1', 1, 1);
 	setProperty('tree1.flipX', true);
+	setProperty('tree1.angle', -7);
 	setProperty('tree1.antialiasing', true);
 	addLuaSprite('tree1', false);
 
-	makeLuaSprite('tree2', 'Miasma/tree', 650, -180);
+	makeLuaSprite('tree2', 'Miasma/tree', 475, -210);
 	scaleObject('tree2', 0.2, 0.2);
 	setScrollFactor('tree2', 1, 1);
+	setProperty('tree2.angle', 3);
 	setProperty('tree2.antialiasing', true);
 	addLuaSprite('tree2', false);
 
@@ -206,7 +238,7 @@ function onStepHit()
 
 		doTweenAlpha('blackIn', 'black', 0, 2, 'linear');
 		doTweenAlpha('FX2', 'FX2', 0.3, 2, 'linear');
-		doTweenAlpha('camHUD', 'camHUD', 1, 2, 'linear');
+		doTweenAlpha('camHUD', 'camHUD', 0, 2, 'linear');
 	end
 	if curStep == 3 then
 		triggerEvent('Set Character Offset', 'bf', '40');

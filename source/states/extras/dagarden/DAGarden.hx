@@ -78,7 +78,7 @@ private class DAGSongs extends FlxGroup
     {
         super.update(elapsed);
 
-        final wheel = FlxG.mouse.wheel;
+        final wheel = FlxG.mouse.deltaWheel.y;
         if (wheel != 0) scrollTarget -= wheel * 80.0;
 
         if (onChangeSelection != null)

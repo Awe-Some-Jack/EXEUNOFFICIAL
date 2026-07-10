@@ -238,7 +238,7 @@ function onStepHit()
 
 		doTweenAlpha('blackIn', 'black', 0, 2, 'linear');
 		doTweenAlpha('FX2', 'FX2', 0.3, 2, 'linear');
-		doTweenAlpha('camHUD', 'camHUD', 0, 2, 'linear');
+		doTweenAlpha('camHUD', 'camHUD', 1, 2, 'linear');
 	end
 	if curStep == 3 then
 		triggerEvent('Set Character Offset', 'bf', '40');

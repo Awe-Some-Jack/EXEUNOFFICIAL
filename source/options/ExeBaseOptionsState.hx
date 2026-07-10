@@ -50,7 +50,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	public static function getLangFont():String
 	{
 		final f = backend.Language.getFontForLanguage();
-		return Assets.exists('assets/fonts/$f') ? f : FONT;
+		return Assets.exists(Paths.font('$f')) ? f : FONT;
 	}
 	public static final FONT_SIZE:Int    = 18;
 	public static final OPTIONS_PAGE_SIZE:Int    = 4;

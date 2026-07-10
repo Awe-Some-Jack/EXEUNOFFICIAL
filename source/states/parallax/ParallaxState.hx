@@ -29,20 +29,15 @@ class ParallaxState extends MusicBeatState
 		super.create();
 
 		#if VIDEOS_ALLOWED
-		final paraBg = new hxvlc.flixel.FlxVideoSprite(0, 0);
-		paraBg.bitmap.onFormatSetup.add(() -> {
-			paraBg.setGraphicSize(FlxG.width, FlxG.height);
-			paraBg.updateHitbox();
-			paraBg.screenCenter();
-		});
-		paraBg.bitmap.onEndReached.add(() -> {
-			if (paraBg.load('assets/exe/parallax/bg.mp4'))
-				new FlxTimer().start(0.001, (_) -> paraBg.play());
-		});
-		add(paraBg);
-		if (paraBg.load('assets/exe/parallax/bg.mp4'))
-			new FlxTimer().start(0.001, (_) -> paraBg.play());
-		FlxG.autoPause = false;
+        final paraBg = new objects.VideoSprite(0, 0, false);
+        paraBg.onFormat(() -> {
+            paraBg.setGraphicSize(FlxG.width, FlxG.height);
+            paraBg.screenCenter();
+        });
+        add(paraBg);
+        
+        if (paraBg.loadVideo('assets/exe/parallax/bg.mp4', [VideoSprite.ARG_LOOPING]))
+            paraBg.playDelayed();
 		#end
 
 		spikestop = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.png'), X);

@@ -221,7 +221,7 @@ class Paths
 
 		for (ext in VIDEO_EXTS)
 		{
-			final path = 'assets/videos/$key.$ext';
+			final path = getFolderPath('$key.$ext', 'videos');
 			if (#if sys FileSystem.exists(path) || #end OpenFlAssets.exists(path)) return path;
 		}
 

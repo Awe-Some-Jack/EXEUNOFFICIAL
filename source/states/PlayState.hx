@@ -823,55 +823,11 @@ class PlayState extends MusicBeatState
 
 	function startCharacterScripts(name:String)
 	{
-		// Lua
 		#if LUA_ALLOWED
-		var doPush:Bool = false;
-		var luaFile:String = 'characters/$name.lua';
-		
-		#if MODS_ALLOWED
-		var replacePath:String = Paths.modFolders(luaFile);
-		if(Paths.getTextFromFile(replacePath, true) != null) {
-			luaFile = replacePath;
-			doPush = true;
-		} else {
-			luaFile = Paths.getSharedPath(luaFile);
-			if(Paths.getTextFromFile(luaFile, true) != null) doPush = true;
-		}
-		#else
-		luaFile = Paths.getSharedPath(luaFile);
-		if(Paths.getTextFromFile(luaFile, true) != null) doPush = true;
+		startLuasNamed('characters/$name.lua');
 		#end
-
-		if(doPush)
-		{
-			for (script in luaArray)
-				if(script.scriptName == luaFile) { doPush = false; break; }
-
-			if(doPush) new FunkinLua(luaFile);
-		}
-		#end
-
-		// HScript
 		#if HSCRIPT_ALLOWED
-		var doPush:Bool = false;
-		var scriptFile:String = 'characters/' + name + '.hx';
-		
-		#if MODS_ALLOWED
-		var replacePath:String = Paths.modFolders(scriptFile);
-		if(Paths.getTextFromFile(replacePath, true) != null) {
-			scriptFile = replacePath;
-			doPush = true;
-		} else {
-			scriptFile = Paths.getSharedPath(scriptFile);
-			if(Paths.getTextFromFile(scriptFile, true) != null) doPush = true;
-		}
-		#else
-		scriptFile = Paths.getSharedPath(scriptFile);
-		if(Paths.getTextFromFile(scriptFile, true) != null) doPush = true;
-		#end
-
-		if(doPush && !Iris.instances.exists(scriptFile))
-			initHScript(scriptFile);
+		startHScriptsNamed('characters/$name.hx');
 		#end
 	}
 

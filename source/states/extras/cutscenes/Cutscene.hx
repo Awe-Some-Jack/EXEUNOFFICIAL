@@ -247,6 +247,7 @@ class Cutscene extends MusicBeatSubstate
         FlxTween.tween(box.scale, {x: BOX_FINAL_SCALE, y: BOX_FINAL_SCALE}, BOX_ANIM_DURATION, {
             ease: FlxEase.expoOut,
             onUpdate: (_) -> {
+                if (box == null) return;
                 final cx = box.x; final cy = box.y;
                 box.updateHitbox();
                 box.x = cx; box.y = cy;

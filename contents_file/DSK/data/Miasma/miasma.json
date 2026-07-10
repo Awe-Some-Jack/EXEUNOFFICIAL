@@ -2524,6 +2524,8 @@
 	"song": "Miasma",
 	"gameOverChar": "miasma-dead",
 	"gameOverSound": "bfmacheteado",
+	"gameOverLoop": "miasma",
+	"gameOverEnd": "miasma-retry",
 	"validScore": true,
 	"needsVoices": true,
 	"stage": "DSK",

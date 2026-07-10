@@ -128,7 +128,7 @@ class EXETitle extends MusicBeatState
 
 		makeLogo();
 
-		spikes = new FlxBackdrop(Assets.getBitmapData('assets/exe/title/spikesdown.png'), X);
+		spikes = new FlxBackdrop(Paths.getBitmapData('assets/exe/title/spikesdown.png'), X);
 		spikes.scale.set(0.4, 0.4);
 		spikes.updateHitbox();
 		spikes.y = FlxG.height - spikes.height;
@@ -145,7 +145,7 @@ class EXETitle extends MusicBeatState
 		titleText.y += 80;
 		add(titleText);
 
-		parallaxArrow = new FlxSprite(FlxG.width).loadGraphic(Assets.getBitmapData('assets/exe/parallax/parallaxarrow.png'));
+		parallaxArrow = new FlxSprite(FlxG.width).loadGraphic(Paths.getBitmapData('assets/exe/parallax/parallaxarrow.png'));
 		parallaxArrow.screenCenter(Y);
 		add(parallaxArrow);
 		
@@ -153,7 +153,7 @@ class EXETitle extends MusicBeatState
 		blackScreen.alpha = 0.0000001;
 		add(blackScreen);
 
-		eyes = new FlxSprite(ring.x + (1074 * 0.4)).loadGraphic(Assets.getBitmapData('assets/exe/title/logo/eyes.png'));
+		eyes = new FlxSprite(ring.x + (1074 * 0.4)).loadGraphic(Paths.getBitmapData('assets/exe/title/logo/eyes.png'));
 		eyes.scale.set(0.4, 0.4);
 		eyes.updateHitbox();
 		add(eyes);
@@ -169,19 +169,19 @@ class EXETitle extends MusicBeatState
 	{
 		final path:String = 'assets/exe/title/logo/';
 		
-		ring = new FlxSprite().loadGraphic(Assets.getBitmapData(path + 'ring.png'));
+		ring = new FlxSprite().loadGraphic(Paths.getBitmapData(path + 'ring.png'));
 		ring.scale.set(0.4, 0.4);
 		ring.updateHitbox();
 		ring.screenCenter(X);
 		add(ring);
 
 		savedRingX = ring.x;
-		bandana = new FlxSprite(ring.x + (329 * 0.4)).loadGraphic(Assets.getBitmapData(path + 'bandana.png'));
+		bandana = new FlxSprite(ring.x + (329 * 0.4)).loadGraphic(Paths.getBitmapData(path + 'bandana.png'));
 		bandana.scale.set(0.4, 0.4);
 		bandana.updateHitbox();
 		add(bandana);
 		
-		logotxt = new FlxSprite(ring.x + (711 * 0.4)).loadGraphic(Assets.getBitmapData(path + 'sonic.png'));
+		logotxt = new FlxSprite(ring.x + (711 * 0.4)).loadGraphic(Paths.getBitmapData(path + 'sonic.png'));
 		logotxt.scale.set(0.4, 0.4);
 		logotxt.updateHitbox();
 		add(logotxt);

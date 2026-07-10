@@ -485,6 +485,9 @@ function onStepHit() {
             black.cameras = [camGame];
             FlxTween.tween(black, {alpha: 1}, 1.39, {ease: FlxEase.smoothStepIn});
 
+        case 1532:
+            FlxTween.tween(camHUD, {alpha: 0}, 0.3475, {ease: FlxEase.linear});
+
         case 1536:
             lockscreen.alpha = 1;
             bluescreen.alpha = 0;
@@ -502,9 +505,10 @@ function onStepHit() {
             for(obj in luaObjects) {
                 game.getLuaObject(obj).alpha = 0;
             }
-            black.cameras = [camHUD];
+            black.cameras = [camGame];
             FlxTween.tween(lockscreen, {y: -100}, 32.48, {ease: FlxEase.linear});
             FlxTween.tween(black, {alpha: 0}, 5.6, {ease: FlxEase.smootherStepOut});
+            FlxTween.tween(camHUD, {alpha: 1}, 2.78, {ease: FlxEase.linear});
 
         case 1632:
             FlxTween.tween(dad, {y: 2275}, 2.8, {ease: FlxEase.smootherStepOut});

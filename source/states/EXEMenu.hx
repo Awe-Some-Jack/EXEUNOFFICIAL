@@ -101,13 +101,13 @@ class EXEMenu extends MusicBeatState
 		FlxG.autoPause = false;
 
 		shadowSprite = new FlxSprite();
-		shadowSprite.loadGraphic(Assets.getBitmapData("assets/exe/mainmenu/options/shadow.png"));
+		shadowSprite.loadGraphic(Paths.getBitmapData("assets/exe/mainmenu/options/shadow.png"));
 		shadowSprite.updateHitbox();
 		shadowSprite.alpha = 0;
 		add(shadowSprite);
 
 		final translatedTexts = getOptionTexts();
-		final boxBitmap = Assets.getBitmapData("assets/exe/mainmenu/options/box.png");
+		final boxBitmap = Paths.getBitmapData("assets/exe/mainmenu/options/box.png");
 		for (i in 0...TOTAL_OPTIONS)
 		{
 			final option = new FlxSprite();

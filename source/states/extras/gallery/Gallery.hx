@@ -158,7 +158,7 @@ class Gallery extends MusicBeatSubstate
     function createBox():Void
     {
         box = new FlxSprite(750.0, 120.0);
-        box.loadGraphic(Assets.getBitmapData("assets/exe/extras/box.png"));
+        box.loadGraphic(Paths.getBitmapData("assets/exe/extras/box.png"));
         box.scale.set(0.3, 0.3);
         box.updateHitbox();
         add(box);
@@ -192,7 +192,7 @@ class Gallery extends MusicBeatSubstate
             {x: -2, y: 0},                  {x: 2, y: 0},
             {x: -2, y: 2},  {x: 0, y: 2},  {x: 2, y: 2}
         ];
-        final discoBmp = Assets.getBitmapData("assets/exe/extras/disco.png");
+        final discoBmp = Paths.getBitmapData("assets/exe/extras/disco.png");
         for (offset in shadowOffsets)
         {
             final s = new FlxSprite(61 + offset.x, 541 + offset.y);
@@ -258,7 +258,7 @@ class Gallery extends MusicBeatSubstate
             }
         }
 
-        final selBmp = Assets.getBitmapData("assets/exe/extras/select.png");
+        final selBmp = Paths.getBitmapData("assets/exe/extras/select.png");
         final capW = 80;
         final selH = selBmp.height;
         final midW = selBmp.width - capW * 2;
@@ -569,7 +569,7 @@ class Gallery extends MusicBeatSubstate
         try
         {
             #if mobile
-            bmp = openfl.utils.Assets.getBitmapData(path, false);
+            bmp = Paths.getBitmapData(path, false);
             #else
             bmp = BitmapData.fromFile(path);
             #end

@@ -170,7 +170,7 @@ class BIOS extends MusicBeatSubstate
 		checkers.scrollFactor.set();
 		add(checkers);
 
-		final spikestop = new FlxBackdrop(openfl.utils.Assets.getBitmapData('assets/exe/extras/bios/backdrop.png'), Y);
+		final spikestop = new FlxBackdrop(Paths.getBitmapData('assets/exe/extras/bios/backdrop.png'), Y);
 		spikestop.velocity.y = 60;
 		spikestop.screenCenter();
 		spikestop.scrollFactor.set();
@@ -298,7 +298,7 @@ class BIOS extends MusicBeatSubstate
 		add(variantDots);
 
 		final charBiosSprite = new FlxSprite(36, 19);
-		charBiosSprite.loadGraphic(openfl.utils.Assets.getBitmapData('assets/exe/extras/bios/characterbios.png'));
+		charBiosSprite.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios.png'));
 		charBiosSprite.scrollFactor.set();
 		add(charBiosSprite);
 	}
@@ -355,7 +355,7 @@ class BIOS extends MusicBeatSubstate
 		final charBiosOverlay = new FlxSprite(36, 19);
 		if (Assets.exists('assets/exe/extras/bios/characterbios_overlay.png'))
 		{
-			charBiosOverlay.loadGraphic(openfl.utils.Assets.getBitmapData('assets/exe/extras/bios/characterbios_overlay.png'));
+			charBiosOverlay.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios_overlay.png'));
 			charBiosOverlay.scrollFactor.set();
 			add(charBiosOverlay);
 		}

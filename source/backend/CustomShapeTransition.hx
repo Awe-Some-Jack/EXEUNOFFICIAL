@@ -83,7 +83,7 @@ class CustomShapeTransition extends MusicBeatSubstate
                 maxScale = 6;
         }
 
-        final head = Assets.getBitmapData('assets/exe/transitions/' + Std.string(shape).toLowerCase() + '.png');
+        final head = Paths.getBitmapData('assets/exe/transitions/' + Std.string(shape).toLowerCase() + '.png');
         final black = new BitmapData(width, height, true, FlxColor.BLACK);
         final border = new BitmapData(width * 2, height * 2, true, FlxColor.BLACK);
 

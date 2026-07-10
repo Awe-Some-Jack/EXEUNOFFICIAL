@@ -41,23 +41,23 @@ class InfoBioParallaxState extends MusicBeatState
 		grid.velocity.set(40, 40);
 		add(grid);
 
-		var spikestop:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/spike.png'), X);
+		var spikestop:FlxBackdrop = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.png'), X);
 		spikestop.velocity.x = 60;
 		spikestop.flipY = true;
 		add(spikestop);
 
-		var spikesbot:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/parallax/spike.png'), X);
+		var spikesbot:FlxBackdrop = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.png'), X);
 		spikesbot.y = FlxG.height - spikesbot.height;
 		spikesbot.velocity.x = -60;
 		add(spikesbot);
 
-		ringdown = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/info/ringdown.png'));
+		ringdown = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/info/ringdown.png'));
 		ringdown.scale.set(0.25, 0.25);
 		ringdown.updateHitbox();
 		ringdown.x = (FlxG.width - ringdown.width) + 100;
 		add(ringdown);
 
-		ring = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/info/ring.png'));
+		ring = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/info/ring.png'));
 		ring.scale.set(0.25, 0.25);
 		ring.updateHitbox();
 		ring.x = (FlxG.width - ring.width) + 100;
@@ -159,7 +159,7 @@ class InfoBioParallaxState extends MusicBeatState
 
 		for (renders in data.render)
 		{
-			var spr:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/parallax/info/' + data.folder + '/' + renders.asset + '.png'));
+			var spr:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/info/' + data.folder + '/' + renders.asset + '.png'));
 			spr.scale.set(0.25, 0.25);
 			spr.updateHitbox();
 			spr.setPosition(ring.x + renders.offset.x, ((FlxG.height - ring.height) / 2) + renders.offset.y);

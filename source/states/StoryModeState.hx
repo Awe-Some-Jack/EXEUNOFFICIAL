@@ -108,7 +108,7 @@ class StoryModeState extends MusicBeatState
 	}
 
 	function createAssets(yourselfTime:Bool) {
-		var clouds:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData("assets/exe/story/nuves de movimiento.png"), FlxAxes.X, 0, 0);
+		var clouds:FlxBackdrop = new FlxBackdrop(Paths.getBitmapData("assets/exe/story/nuves de movimiento.png"), FlxAxes.X, 0, 0);
 		clouds.velocity.x = 180;
 		clouds.setGraphicSize(FlxG.width, FlxG.height * 2);
 		clouds.updateHitbox();
@@ -132,7 +132,7 @@ class StoryModeState extends MusicBeatState
 		add(dataSelect);
 		
 		// ── BOX 1 ──
-		final greyBoxBitmap = Assets.getBitmapData('assets/exe/story/greybox.png');
+		final greyBoxBitmap = Paths.getBitmapData('assets/exe/story/greybox.png');
 
 		greyBOX = new FlxSprite();
 		greyBOX.loadGraphic(greyBoxBitmap);
@@ -141,7 +141,7 @@ class StoryModeState extends MusicBeatState
 		greyBOX.setPosition(175, 64);
 		add(greyBOX);
 		
-		final tooSlowBitmap = Assets.getBitmapData('assets/exe/cover/too-slow.png');
+		final tooSlowBitmap = Paths.getBitmapData('assets/exe/cover/too-slow.png');
 
 		tooSlowCover = new FlxSprite();
 		tooSlowCover.loadGraphic(tooSlowBitmap);
@@ -151,28 +151,28 @@ class StoryModeState extends MusicBeatState
 		add(tooSlowCover);
 		
 		youCantRunCover = new FlxSprite();
-		youCantRunCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/you-cant-run.png'));
+		youCantRunCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/you-cant-run.png'));
 		youCantRunCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		youCantRunCover.updateHitbox();
 		youCantRunCover.visible = false;
 		add(youCantRunCover);
 		
 		tripleTroubleCover = new FlxSprite();
-		tripleTroubleCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/triple-trouble.png'));
+		tripleTroubleCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/triple-trouble.png'));
 		tripleTroubleCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		tripleTroubleCover.updateHitbox();
 		tripleTroubleCover.visible = false;
 		add(tripleTroubleCover);
 		
 		finalEscapeCover = new FlxSprite();
-		finalEscapeCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/final-escape.png'));
+		finalEscapeCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/final-escape.png'));
 		finalEscapeCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		finalEscapeCover.updateHitbox();
 		finalEscapeCover.visible = false;
 		add(finalEscapeCover);
 		
 		yourselfCover = new FlxSprite();
-		yourselfCover.loadGraphic(Assets.getBitmapData('assets/exe/cover/yourself.png'));
+		yourselfCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/yourself.png'));
 		yourselfCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		yourselfCover.updateHitbox();
 		yourselfCover.visible = false;
@@ -204,7 +204,7 @@ class StoryModeState extends MusicBeatState
 		bfBOX.setPosition(270, 300);
 		add(bfBOX);
 		
-		final yellowBoxBitmap = Assets.getBitmapData('assets/exe/story/yellowbox.png');
+		final yellowBoxBitmap = Paths.getBitmapData('assets/exe/story/yellowbox.png');
 
 		var yellowBOX:FlxSprite = new FlxSprite();
 		yellowBOX.loadGraphic(yellowBoxBitmap);
@@ -241,7 +241,7 @@ class StoryModeState extends MusicBeatState
 		add(staticscreen2);
 		
 		gfBOX = new FlxSprite();
-		gfBOX.loadGraphic(Assets.getBitmapData('assets/exe/story/gf.png'));
+		gfBOX.loadGraphic(Paths.getBitmapData('assets/exe/story/gf.png'));
 		gfBOX.setGraphicSize(Std.int(FlxG.width * 0.09));
 		gfBOX.updateHitbox();
 		gfBOX.setPosition(910, 300);
@@ -276,7 +276,7 @@ class StoryModeState extends MusicBeatState
 		redBOX.setPosition(greyBOX.x - 25, greyBOX.y - 17);
 		add(redBOX);
 		
-		final arrowBitmap = Assets.getBitmapData('assets/exe/story/arrow.png');
+		final arrowBitmap = Paths.getBitmapData('assets/exe/story/arrow.png');
 
 		arrow = new FlxSprite();
 		arrow.loadGraphic(arrowBitmap);

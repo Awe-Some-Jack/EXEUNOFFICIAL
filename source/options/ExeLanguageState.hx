@@ -40,12 +40,12 @@ class ExeLanguageState extends ExeBaseOptionsState
 		final fontPath = Paths.font(Language.getFontForLanguage());
 		final fontSize = Language.scaledFontSize(ExeBaseOptionsState.FONT_SIZE);
 		
-		final nameBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+		final nameBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.png'));
 		nameBG.scale.set(ExeBaseOptionsState.NB_SCALE_X, ExeBaseOptionsState.NB_SCALE_Y); nameBG.updateHitbox();
 		nameBG.x = introAnimating ? offRight : ExeBaseOptionsState.NB_X; nameBG.y = rowY; nameBG.scrollFactor.set(0, 0);
 		add(nameBG); rightGroup.push(nameBG);
 
-		final valueBG = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/options/propertyBG.png'));
+		final valueBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.png'));
 		valueBG.scale.set(ExeBaseOptionsState.VB_SCALE_X, ExeBaseOptionsState.VB_SCALE_Y); valueBG.updateHitbox();
 		valueBG.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X; valueBG.y = rowY;
 		valueBG.scrollFactor.set(0, 0);

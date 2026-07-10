@@ -193,7 +193,7 @@ class Cutscene extends MusicBeatSubstate
 
     function createBox():Void
     {
-        box = new FlxSprite(BOX_FINAL_X, BOX_FINAL_Y).loadGraphic(Assets.getBitmapData("assets/exe/extras/box.png"));
+        box = new FlxSprite(BOX_FINAL_X, BOX_FINAL_Y).loadGraphic(Paths.getBitmapData("assets/exe/extras/box.png"));
         box.scale.set(BOX_FINAL_SCALE, BOX_FINAL_SCALE);
         box.updateHitbox();
         add(box);
@@ -206,7 +206,7 @@ class Cutscene extends MusicBeatSubstate
             {x: -2, y: 0},                  {x: 2, y: 0},
             {x: -2, y: 2},  {x: 0, y: 2},  {x: 2, y: 2}
         ];
-        final discoBmp = Assets.getBitmapData("assets/exe/extras/disco.png");
+        final discoBmp = Paths.getBitmapData("assets/exe/extras/disco.png");
         for (offset in shadowOffsets)
         {
             final s = new FlxSprite(61 + offset.x, 541 + offset.y).loadGraphic(discoBmp);
@@ -339,7 +339,7 @@ class Cutscene extends MusicBeatSubstate
             }
         }
 
-        final selBmp = Assets.getBitmapData("assets/exe/extras/select.png");
+        final selBmp = Paths.getBitmapData("assets/exe/extras/select.png");
         final capW = 80;
         final selH = selBmp.height;
         final midW = selBmp.width - capW * 2;

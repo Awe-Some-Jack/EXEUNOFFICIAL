@@ -219,14 +219,14 @@ class ExtrasMenu extends MusicBeatState
 
     function buildBox():Void
     {
-        box = new FlxSprite(750, 120).loadGraphic(Assets.getBitmapData("assets/exe/extras/box.png"));
+        box = new FlxSprite(750, 120).loadGraphic(Paths.getBitmapData("assets/exe/extras/box.png"));
         box.scale.set(0.3, 0.3);
         box.updateHitbox();
         add(box);
 
         sumky = new FlxSprite(675, 122);
         sumky.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow(
-            Assets.getBitmapData('assets/exe/extras/sumky.png'),
+            Paths.getBitmapData('assets/exe/extras/sumky.png'),
             openfl.utils.Assets.getText('assets/exe/extras/sumky.xml')
         );
         sumky.animation.addByPrefix('idle', 'sunki instancia', 12, true);
@@ -238,7 +238,7 @@ class ExtrasMenu extends MusicBeatState
 
     function buildDisco():Void
     {
-        final bmp = Assets.getBitmapData("assets/exe/extras/disco.png");
+        final bmp = Paths.getBitmapData("assets/exe/extras/disco.png");
         for (off in [{x: -2, y: -2}, {x: 0, y: -2}, {x: 2, y: -2}, {x: -2, y: 0}, {x: 2, y: 0}, {x: -2, y: 2}, {x: 0, y: 2}, {x: 2, y: 2}])
         {
             final s = new FlxSprite(61 + off.x, 541 + off.y).loadGraphic(bmp);
@@ -278,7 +278,7 @@ class ExtrasMenu extends MusicBeatState
             add(t);
             menuItems.push(t);
         }
-        final selBmp = Assets.getBitmapData("assets/exe/extras/select.png");
+        final selBmp = Paths.getBitmapData("assets/exe/extras/select.png");
         final capW = 80;
         final selH = selBmp.height;
         final midW = selBmp.width - capW * 2;

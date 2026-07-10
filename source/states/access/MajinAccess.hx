@@ -34,7 +34,7 @@ class MajinAccess extends MusicBeatState
 
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/access/majin/selectsoundtrack.ogg'), 0.8);
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/majin/bg.png'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/majin/bg.png'));
 		bg.scale.set(1500, 1500);
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -44,7 +44,7 @@ class MajinAccess extends MusicBeatState
 
 		for (i in 0...2)
 		{
-			var sonicbg:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/majin/sonicmajin.png'));
+			var sonicbg:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/majin/sonicmajin.png'));
 			sonicbg.scale.set(3, 3);
 			sonicbg.updateHitbox();
 			sonicbg.screenCenter(X);
@@ -55,7 +55,7 @@ class MajinAccess extends MusicBeatState
 			add(sonicbg);
 		}
 
-		var vssonicexe:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/majin/vssonicexe.png'));
+		var vssonicexe:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/majin/vssonicexe.png'));
 		vssonicexe.scale.set(3, 3);
 		vssonicexe.updateHitbox();
 		vssonicexe.antialiasing = false;
@@ -65,13 +65,13 @@ class MajinAccess extends MusicBeatState
 		var regionbar:FlxSprite = new FlxSprite(0, 643).makeGraphic(Std.int((FlxG.width / 2)), 39, 0xFF000000);
 		add(regionbar);
 
-		var regiontext:FlxSprite = new FlxSprite(196, 589).loadGraphic(Assets.getBitmapData('assets/exe/access/majin/regionselect.png'));
+		var regiontext:FlxSprite = new FlxSprite(196, 589).loadGraphic(Paths.getBitmapData('assets/exe/access/majin/regionselect.png'));
 		regiontext.scale.set(3, 3);
 		regiontext.updateHitbox();
 		regiontext.antialiasing = false;
 		add(regiontext);
 
-		var backdrop:FlxBackdrop = new FlxBackdrop(Assets.getBitmapData('assets/exe/access/majin/linemajin.png'), FlxAxes.Y);
+		var backdrop:FlxBackdrop = new FlxBackdrop(Paths.getBitmapData('assets/exe/access/majin/linemajin.png'), FlxAxes.Y);
 		backdrop.scale.set(3, 3);
 		backdrop.updateHitbox();
 		backdrop.screenCenter();
@@ -79,7 +79,7 @@ class MajinAccess extends MusicBeatState
 		backdrop.antialiasing = false;
 		add(backdrop);
 		
-		var box:FlxSprite = new FlxSprite().loadGraphic(Assets.getBitmapData('assets/exe/access/majin/cuadro.png'));
+		var box:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/majin/cuadro.png'));
 		box.antialiasing = false;
 		box.scale.set(1.5, 1.5);
 		box.updateHitbox();
@@ -88,8 +88,8 @@ class MajinAccess extends MusicBeatState
 		add(box);
 
 		eggman = new FlxSprite(0, box.y + 60);
-		eggman.loadGraphic(Assets.getBitmapData('assets/exe/access/majin/eggman.png'));
-		eggman.loadGraphic(Assets.getBitmapData('assets/exe/access/majin/eggman.png'), true, Math.floor(eggman.width / 2), Math.floor(eggman.height));
+		eggman.loadGraphic(Paths.getBitmapData('assets/exe/access/majin/eggman.png'));
+		eggman.loadGraphic(Paths.getBitmapData('assets/exe/access/majin/eggman.png'), true, Math.floor(eggman.width / 2), Math.floor(eggman.height));
 		eggman.animation.add('idle', [0, 1], 2, true);
 		eggman.animation.play('idle');
 		eggman.antialiasing = false;
@@ -99,14 +99,14 @@ class MajinAccess extends MusicBeatState
 		eggman.x = Std.int(eggman.x);
 		add(eggman);
 
-		soundOne = new FlxSprite(0, eggman.y).loadGraphic(Assets.getBitmapData('assets/exe/access/majin/sound1.png'));
+		soundOne = new FlxSprite(0, eggman.y).loadGraphic(Paths.getBitmapData('assets/exe/access/majin/sound1.png'));
 		soundOne.antialiasing = false;
 		soundOne.scale.set(3, 3);
 		soundOne.updateHitbox();
 		soundOne.x = eggman.x + eggman.width + 30;
 		add(soundOne);
 
-		soundTwo = new FlxSprite(0, eggman.y).loadGraphic(Assets.getBitmapData('assets/exe/access/majin/sound2.png'));
+		soundTwo = new FlxSprite(0, eggman.y).loadGraphic(Paths.getBitmapData('assets/exe/access/majin/sound2.png'));
 		soundTwo.antialiasing = false;
 		soundTwo.scale.set(3, 3);
 		soundTwo.updateHitbox();
@@ -114,8 +114,8 @@ class MajinAccess extends MusicBeatState
 		add(soundTwo);
 
 		buttonUS = new FlxSprite(0, box.y + 216);
-		buttonUS.loadGraphic(Assets.getBitmapData('assets/exe/access/majin/buttons.png'));
-		buttonUS.loadGraphic(Assets.getBitmapData('assets/exe/access/majin/buttons.png'), true, Math.floor(buttonUS.width / 2), Math.floor(buttonUS.height / 2));
+		buttonUS.loadGraphic(Paths.getBitmapData('assets/exe/access/majin/buttons.png'));
+		buttonUS.loadGraphic(Paths.getBitmapData('assets/exe/access/majin/buttons.png'), true, Math.floor(buttonUS.width / 2), Math.floor(buttonUS.height / 2));
 		buttonUS.animation.add('idle', [3]); buttonUS.animation.add('selected', [1]);
 		buttonUS.animation.play('idle');
 		buttonUS.antialiasing = false;
@@ -125,8 +125,8 @@ class MajinAccess extends MusicBeatState
 		add(buttonUS);
 
 		buttonJP = new FlxSprite(0, box.y + 216);
-		buttonJP.loadGraphic(Assets.getBitmapData('assets/exe/access/majin/buttons.png'));
-		buttonJP.loadGraphic(Assets.getBitmapData('assets/exe/access/majin/buttons.png'), true, Math.floor(buttonJP.width / 2), Math.floor(buttonJP.height / 2));
+		buttonJP.loadGraphic(Paths.getBitmapData('assets/exe/access/majin/buttons.png'));
+		buttonJP.loadGraphic(Paths.getBitmapData('assets/exe/access/majin/buttons.png'), true, Math.floor(buttonJP.width / 2), Math.floor(buttonJP.height / 2));
 		buttonJP.animation.add('idle', [2]); buttonJP.animation.add('selected', [0]);
 		buttonJP.animation.play('selected');
 		buttonJP.antialiasing = false;
@@ -135,7 +135,7 @@ class MajinAccess extends MusicBeatState
 		buttonJP.x = Std.int((FlxG.width / 2) - buttonJP.width - 90);
 		add(buttonJP);
 
-		selector = new FlxSprite(buttonJP.x - 9, buttonUS.y - 9).loadGraphic(Assets.getBitmapData('assets/exe/access/majin/selector.png'));
+		selector = new FlxSprite(buttonJP.x - 9, buttonUS.y - 9).loadGraphic(Paths.getBitmapData('assets/exe/access/majin/selector.png'));
 		selector.antialiasing = false;
 		selector.scale.set(3, 3);
 		selector.updateHitbox();

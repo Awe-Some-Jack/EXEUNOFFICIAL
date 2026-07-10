@@ -194,6 +194,11 @@ local tweening2 = false
 local tweening3 = false
 local tweening4 = false
 
+function onGameOver()
+    pixelChange = true;
+    enabled = true;
+end
+
 function onEvent(eventName, value1, value2)
     if eventName == "Change Character" then
         if value2 == 'bf-falling' or value2 == 'soink-falling' then

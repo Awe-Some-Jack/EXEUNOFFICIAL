@@ -41,7 +41,7 @@ class LoadingState extends MusicBeatState
 	public static var loadMax:Int = 0;
 
 	static var gpuQueue:Array<GPUUploadTask> = [];
-	
+
 	static var mutex:Mutex;
 	static var threadPool:FixedThreadPool = null;
 
@@ -49,7 +49,6 @@ class LoadingState extends MusicBeatState
 	{
 		this.target = target;
 		this.stopMusic = stopMusic;
-		
 		super();
 	}
 
@@ -160,9 +159,9 @@ class LoadingState extends MusicBeatState
 			newBar.setGraphicSize(Std.int(FlxG.width * 0.8), 40);
 			newBar.updateHitbox();
 			loadedTxt.text = "Done! (" + loaded + "/" + loadMax + ") 100%";
-			pressTxt.visible = true;
 			if (stopMusic && FlxG.sound.music != null)
 				FlxG.sound.music.stop();
+			pressTxt.visible = true;
 		}
 
 		if (doneLoading && !transitioning)
@@ -199,8 +198,6 @@ class LoadingState extends MusicBeatState
 		gpuQueue = [];
 
 		threadPool?.shutdown();
-
-		// kill all workers safely
 		threadPool = null;
 		mutex = null;
 	}
@@ -225,9 +222,7 @@ class LoadingState extends MusicBeatState
 	static var isIntrusive:Bool = false;
 	public static function loadAndSwitchState(target:NextState, stopMusic = false, intrusive:Bool = true)
 	{
-		#if !SHOW_LOADING_SCREEN
 		intrusive = false;
-		#end
 
 		LoadingState.isIntrusive = intrusive;
 		loadNextDirectory();
@@ -272,7 +267,7 @@ class LoadingState extends MusicBeatState
 
 	static var initialThreadCompleted:Bool = true;
 	static var dontPreloadDefaultVoices:Bool = false;
-	
+
 	static function _startPool()
 	{
 		#if MULTITHREADED_LOADING
@@ -281,12 +276,12 @@ class LoadingState extends MusicBeatState
 		threads = getCPUThreadsCount();
 		if (threads <= 0) threads = 4;
 		#end
-		
+
 		var threadCount:Int = Std.int(Math.max(2, threads - 1));
 		#else
 		var threadCount:Int = 1;
 		#end
-		
+
 		threadPool = new FixedThreadPool(threadCount);
 	}
 
@@ -336,48 +331,10 @@ class LoadingState extends MusicBeatState
 		new Future<Bool>(() -> {
 			var noteSkin:String = Note.defaultNoteSkin;
 			if(PlayState.SONG.arrowSkin?.length > 1) noteSkin = PlayState.SONG.arrowSkin;
-	
+
 			var customSkin:String = noteSkin + Note.getNoteSkinPostfix();
 			if(Paths.fileExists('images/$customSkin.png', IMAGE)) noteSkin = customSkin;
 			imagesToPrepare.push(noteSkin);
-
-			try
-			{
-				var path:String = Paths.json('$folder/preload');
-				var json:Dynamic = null;
-
-				#if MODS_ALLOWED
-				var moddyFile:String = Paths.modsJson('$folder/preload');
-				if (#if !mobile FileSystem.exists(moddyFile) #else OpenFlAssets.exists(moddyFile) #end) json = Json.parse(File.getContent(moddyFile));
-				else json = Json.parse(File.getContent(path));
-				#else
-				json = Json.parse(Assets.getText(path));
-				#end
-
-				if(json != null)
-				{
-					var imgs:Array<String> = [];
-					var snds:Array<String> = [];
-					var mscs:Array<String> = [];
-					for (asset in Reflect.fields(json))
-					{
-						var filters:Int = Reflect.field(json, asset);
-						var asset:String = asset.trim();
-
-						if(filters < 0 || StageData.validateVisibility(filters))
-						{
-							if(asset.startsWith('images/'))
-								imgs.push(asset.substr('images/'.length));
-							else if(asset.startsWith('sounds/'))
-								snds.push(asset.substr('sounds/'.length));
-							else if(asset.startsWith('music/'))
-								mscs.push(asset.substr('music/'.length));
-						}
-					}
-					prepare(imgs, snds, mscs);
-				}
-			}
-			catch(e:Dynamic) {}
 			return true;
 
 		}, isIntrusive)
@@ -388,45 +345,18 @@ class LoadingState extends MusicBeatState
 			var stageData:StageFile = StageData.getStageFile(song.stage);
 			if (stageData != null)
 			{
-				var imgs:Array<String> = [];
-				var snds:Array<String> = [];
-				var mscs:Array<String> = [];
-				if(stageData.preload != null)
-				{
-					for (asset in Reflect.fields(stageData.preload))
-					{
-						var filters:Int = Reflect.field(stageData.preload, asset);
-						var asset:String = asset.trim();
-
-						if(filters < 0 || StageData.validateVisibility(filters))
-						{
-							if(asset.startsWith('images/'))
-								imgs.push(asset.substr('images/'.length));
-							else if(asset.startsWith('sounds/'))
-								snds.push(asset.substr('sounds/'.length));
-							else if(asset.startsWith('music/'))
-								mscs.push(asset.substr('music/'.length));
-						}
-					}
-				}
-				
 				if (stageData.objects != null)
 				{
 					for (sprite in stageData.objects)
 					{
-						if(sprite.type == 'sprite' ||
-						sprite.type == 'animatedSprite')
-							if((sprite.filters < 0 || StageData.validateVisibility(sprite.filters)) && !imgs.contains(sprite.image))
-								imgs.push(sprite.image);
+						if(sprite.type == 'sprite' || sprite.type == 'animatedSprite')
+							if((sprite.filters < 0 || StageData.validateVisibility(sprite.filters)) && !imagesToPrepare.contains(sprite.image))
+								imagesToPrepare.push(sprite.image);
 					}
 				}
-				prepare(imgs, snds, mscs);
 			}
 
 			songsToPrepare.push('$folder/Inst');
-
-			soundsToPrepare.push('hitsound');
-			for (i in 1...4) soundsToPrepare.push('missnote$i');
 
 			var player1:String = song.player1;
 			var player2:String = song.player2;
@@ -455,16 +385,14 @@ class LoadingState extends MusicBeatState
 					try { preloadCharacter(player2, prefixVocals); } catch (e:Dynamic) {}
 					completedThread();
 				});
-
 			}
-			if (!stageData.hide_girlfriend && gfVersion != player2 && gfVersion != player1)
+			if (stageData != null && !stageData.hide_girlfriend && gfVersion != player2 && gfVersion != player1)
 			{
 				threadsMax++;
 				threadPool.run(() -> {
 					try { preloadCharacter(gfVersion); } catch (e:Dynamic) {}
 					completedThread();
 				});
-
 			}
 
 			if(threadsCompleted == threadsMax)
@@ -478,7 +406,6 @@ class LoadingState extends MusicBeatState
 		.onError((err:Dynamic) -> {
 			trace('ERROR! while preparing song: $err');
 		});
-
 	}
 
 	public static function clearInvalids()
@@ -563,14 +490,13 @@ class LoadingState extends MusicBeatState
 			catch(e:Dynamic) {
 				trace('ERROR! fail on preloading $traceData: $e');
 			}
-			
+
 			if (!isGraphic) {
 				mutex.acquire();
 				loaded++;
 				mutex.release();
 			}
 		});
-
 	}
 
 	inline private static function preloadCharacter(char:String, ?prefixVocals:String)
@@ -587,7 +513,7 @@ class LoadingState extends MusicBeatState
 			var isAnimateAtlas:Bool = false;
 			var img:String = character.image;
 			img = img.trim();
-			
+
 			#if flixel_animate
 			var animToFind:String = Paths.getPath('images/$img/Animation.json', TEXT);
 			if (#if sys FileSystem.exists(animToFind) || #end OpenFlAssets.exists(animToFind))
@@ -598,9 +524,7 @@ class LoadingState extends MusicBeatState
 			{
 				var split:Array<String> = img.split(',');
 				for (file in split)
-				{
 					imagesToPrepare.push(file.trim());
-				}
 			}
 			#if flixel_animate
 			else
@@ -608,20 +532,15 @@ class LoadingState extends MusicBeatState
 				for (i in 0...10)
 				{
 					var st:String = (i == 0) ? '' : '$i';
-	
 					if(Paths.fileExists('images/$img/spritemap$st.png', IMAGE))
-					{
-						trace("True again");
 						imagesToPrepare.push('$img/spritemap$st');
-					}
 				}
 			}
 			#end
-	
+
 			if (prefixVocals != null && character.vocals_file?.length > 0)
 			{
 				songsToPrepare.push(prefixVocals + "-" + character.vocals_file);
-
 				if(char == PlayState.SONG.player1) dontPreloadDefaultVoices = true;
 			}
 		}
@@ -642,7 +561,6 @@ class LoadingState extends MusicBeatState
 				var sound:Sound = #if (sys && !mobile) Sound.fromFile(file) #else OpenFlAssets.getSound(file, false) #end;
 				mutex.acquire();
 				Paths.currentTrackedSounds.set(file, sound);
-
 				mutex.release();
 			}
 			else if (beepOnNull)
@@ -655,7 +573,6 @@ class LoadingState extends MusicBeatState
 		mutex.release();
 
 		return Paths.currentTrackedSounds.get(file);
-
 	}
 
 	static function preloadSongPath(key:String):Void
@@ -694,7 +611,7 @@ class LoadingState extends MusicBeatState
 			var requestKey:String = 'images/$key';
 			#if TRANSLATIONS_ALLOWED requestKey = Language.getFileTranslation(requestKey);
 			#end
-			
+
 			if (requestKey.endsWith('.png'))
 				requestKey = requestKey.substr(0, requestKey.length - 4);
 
@@ -729,7 +646,7 @@ class LoadingState extends MusicBeatState
 				}
 
 				final graphic:FlxGraphic = Paths.cacheBitmap(requestKey, null, bitmap);
-				
+
 				if (graphic?.bitmap != null)
 				{
 					mutex.acquire();
@@ -751,7 +668,7 @@ class LoadingState extends MusicBeatState
 			mutex.release();
 		}
 	}
-	
+
 	#if cpp
 	@:functionCode('
 		return std::thread::hardware_concurrency();
@@ -760,7 +677,6 @@ class LoadingState extends MusicBeatState
     public static function getCPUThreadsCount():Int
     {
         return -1;
-
     }
     #end
 }

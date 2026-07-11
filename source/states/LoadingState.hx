@@ -221,7 +221,6 @@ class LoadingState extends MusicBeatState
 		#end
 
 		LoadingState.isIntrusive = intrusive;
-		_startPool();
 		loadNextDirectory();
 
 		if (intrusive)
@@ -231,6 +230,8 @@ class LoadingState extends MusicBeatState
 			FlxG.switchState(() -> new LoadingState(target, stopMusic));
 			return;
 		}
+
+		_startPool();
 
 		if (stopMusic)
 			FlxG.sound.music?.stop();
@@ -282,6 +283,10 @@ class LoadingState extends MusicBeatState
 
 	public static function prepareToSong()
 	{
+		#if SHOW_LOADING_SCREEN
+		isIntrusive = true;
+		#end
+
 		if(PlayState.SONG == null)
 		{
 			imagesToPrepare = [];
@@ -530,10 +535,12 @@ class LoadingState extends MusicBeatState
 	{
 		_startPool();
 
-		for (sound in soundsToPrepare) initThread(() -> preloadSound('sounds/$sound'), 'sound $sound', false);
-		for (music in musicToPrepare) initThread(() -> preloadSound('music/$music'), 'music $music', false);
-		for (song in songsToPrepare) initThread(() -> { preloadSongPath(song); return true; }, 'song $song', false);
-		for (image in imagesToPrepare) initThread(() -> { preloadGraphic(image); return true; }, 'image $image', true);
+		final modDir:String = Mods.currentModDirectory ?? '';
+
+		for (sound in soundsToPrepare) initThread(() -> { Mods.currentModDirectory = modDir; preloadSound('sounds/$sound'); }, 'sound $sound', false);
+		for (music in musicToPrepare) initThread(() -> { Mods.currentModDirectory = modDir; preloadSound('music/$music'); }, 'music $music', false);
+		for (song in songsToPrepare) initThread(() -> { Mods.currentModDirectory = modDir; preloadSongPath(song); return true; }, 'song $song', false);
+		for (image in imagesToPrepare) initThread(() -> { Mods.currentModDirectory = modDir; preloadGraphic(image); return true; }, 'image $image', true);
 	}
 
 	static function initThread(func:Void->Dynamic, traceData:String, isGraphic:Bool = false)
@@ -674,7 +681,35 @@ class LoadingState extends MusicBeatState
 
 			if (!Paths.currentTrackedAssets.exists(requestKey))
 			{
-				final graphic:FlxGraphic = Paths.cacheBitmap(requestKey, null, null);
+				final modDir:String = Mods.currentModDirectory ?? '';
+				var bitmap:openfl.display.BitmapData = null;
+
+				#if (sys && !mobile)
+				final appDir:String = lime.system.System.applicationDirectory;
+				if (modDir.length > 0)
+				{
+					final absPath:String = appDir + 'contents/$modDir/$requestKey.png';
+					if (sys.FileSystem.exists(absPath))
+						bitmap = openfl.display.BitmapData.fromFile(absPath);
+				}
+				if (bitmap == null)
+				{
+					final absShared:String = appDir + 'assets/shared/$requestKey.png';
+					if (sys.FileSystem.exists(absShared))
+						bitmap = openfl.display.BitmapData.fromFile(absShared);
+				}
+				#end
+
+				if (bitmap == null)
+				{
+					final modPath:String = modDir.length > 0 ? 'contents/$modDir/$requestKey.png' : null;
+					if (modPath != null && OpenFlAssets.exists(modPath))
+						bitmap = OpenFlAssets.getBitmapData(modPath, false);
+					else if (OpenFlAssets.exists('assets/shared/$requestKey.png'))
+						bitmap = OpenFlAssets.getBitmapData('assets/shared/$requestKey.png', false);
+				}
+
+				final graphic:FlxGraphic = Paths.cacheBitmap(requestKey, null, bitmap);
 				
 				if (graphic?.bitmap != null)
 				{

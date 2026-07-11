@@ -171,7 +171,10 @@ class Paths
 			if (parentfolder != null) customFile = '$parentfolder/$file';
 
 			final modded:String = modFolders(customFile);
-			if(#if sys sys.FileSystem.exists(modded) || #end OpenFlAssets.exists(modded)) return modded;
+			#if sys
+			if (sys.FileSystem.exists(modded) || sys.FileSystem.exists(modded + '.png') || sys.FileSystem.exists(modded + '.ogg') || sys.FileSystem.exists(modded + '.mp3')) return modded;
+			#end
+			if (OpenFlAssets.exists(modded)) return modded;
 		}
 		#end
 

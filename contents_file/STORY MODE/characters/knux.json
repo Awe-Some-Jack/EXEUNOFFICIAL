@@ -1,55 +1,55 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [165, 1],
 			"loop": false,
-			"fps": 24,
+			"offsets": [152, -10],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
-			"offsets": [17, 1],
 			"loop": false,
-			"fps": 24,
+			"offsets": [25, -8],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
-			"offsets": [54, 162],
 			"loop": false,
-			"fps": 24,
+			"offsets": [36, 165],
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [-5, -6],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-14, 14],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "SÃ­mbolo 39"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/KnuxDead",
-	"position": [1000, 350],
+	"image": "characters/knux",
+	"position": [0, 0],
 	"healthicon": "knux",
 	"flip_x": false,
 	"healthbar_colors": [108, 0, 25],
-	"camera_position": [390, 450],
+	"camera_position": [0, 0],
 	"sing_duration": 5.99999999999999,
-	"scale": 1.35,
+	"scale": 1,
 	"_editor_isPlayer": false
 }

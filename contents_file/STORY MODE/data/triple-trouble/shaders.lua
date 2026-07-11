@@ -1,4 +1,4 @@
-local tweening = false
+--[=[local tweening = false
 function onCreate()
 	makeLuaSprite('hws')
 	setSpriteShader('hws', 'HeatwaveShader')
@@ -76,4 +76,4 @@ function onTweenCompleted(t)
 	if t == 'lolfuckxd' then
 		tweening = false
 	end
-end
+end]=]

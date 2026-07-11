@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"offsets": [224, 272],
 			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [272, 338],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [407, 269],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [222, 237],
-			"loop": false,
-			"fps": 24,
+			"offsets": [0, 0],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
-		},
-		{
-			"loop": false,
-			"offsets": [238, 237],
-			"anim": "singDOWN",
 			"fps": 24,
-			"name": "Símbolo 47",
+			"name": "Carpeta de elementos duplicados/idle copia 2",
 			"indices": []
 		},
 		{
-			"offsets": [80, 40],
-			"indices": [],
-			"fps": 24,
-			"anim": "laugh",
 			"loop": false,
-			"name": "risa instancia"
+			"offsets": [201, 28],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [15, -3],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Carpeta de elementos duplicados/down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [46, 124],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-25, 9],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-190, -243],
+			"anim": "laugh",
+			"fps": 24,
+			"name": "risa",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/luis tt",
-	"position": [-130, -170],
+	"image": "characters/xenott",
+	"position": [0, 0],
 	"healthicon": "XENO-P3",
 	"flip_x": false,
 	"healthbar_colors": [36, 0, 116],
 	"camera_position": [-170, -80],
 	"sing_duration": 7.99999999999999,
-	"scale": 1.7,
+	"scale": 2,
 	"_editor_isPlayer": false
 }

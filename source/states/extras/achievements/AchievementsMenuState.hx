@@ -4,7 +4,6 @@ import flixel.FlxObject;
 import flixel.util.FlxSort;
 import objects.Bar;
 
-#if ACHIEVEMENTS_ALLOWED
 class AchievementsMenuState extends MusicBeatSubstate
 {
 	public var curSelected:Int = 0;
@@ -361,4 +360,3 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 	}
 }
-#end

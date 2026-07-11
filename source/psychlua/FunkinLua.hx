@@ -124,8 +124,6 @@ class FunkinLua
 			set('deaths', PlayState.deathCounter);
 
 			set('rating',         game.ratingPercent);
-			set('ratingName',     game.ratingName);
-			set('ratingFC',       game.ratingFC);
 			set('totalPlayed',    game.totalPlayed);
 			set('totalNotesHit',  game.totalNotesHit);
 
@@ -593,9 +591,6 @@ class FunkinLua
 		LuaUtilsHx.addFunction(lua, 'cameraFade',  (camera:String, color:String, duration:Float, forced:Bool, fadeOut:Bool = false) -> LuaUtils.cameraFromString(camera).fade(CoolUtil.colorFromString(color), duration, fadeOut, null, forced));
 
 		LuaUtilsHx.addFunction(lua, 'setRatingPercent', function(value:Float) { game.ratingPercent = value; game.setOnScripts('rating', value); });
-		LuaUtilsHx.addFunction(lua, 'setRatingName',    function(value:String) { game.ratingName = value; game.setOnScripts('ratingName', value); });
-		LuaUtilsHx.addFunction(lua, 'setRatingFC',      function(value:String) { game.ratingFC = value; game.setOnScripts('ratingFC', value); });
-		LuaUtilsHx.addFunction(lua, 'updateScoreText',  () -> game.updateScoreText());
 
 		LuaUtilsHx.addFunction(lua, 'getMouseX', function(camera:String = 'game') { return FlxG.mouse.getViewPosition(LuaUtils.cameraFromString(camera)).x; });
 		LuaUtilsHx.addFunction(lua, 'getMouseY', function(camera:String = 'game') { return FlxG.mouse.getViewPosition(LuaUtils.cameraFromString(camera)).y; });
@@ -896,7 +891,6 @@ class FunkinLua
 		});
 
 		#if DISCORD_ALLOWED    DiscordClient.addLuaCallbacks(lua); #end
-		#if ACHIEVEMENTS_ALLOWED Achievements.addLuaCallbacks(lua); #end
 		#if TRANSLATIONS_ALLOWED Language.addLuaCallbacks(lua); #end
 
 		HScript.implement(this);

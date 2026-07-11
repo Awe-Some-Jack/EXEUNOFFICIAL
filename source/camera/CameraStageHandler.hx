@@ -1,4 +1,4 @@
-package gameplay;
+package camera;
 
 import states.PlayState;
 

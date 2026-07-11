@@ -165,7 +165,7 @@ class Main extends Sprite
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
 		backend.Language.reload();
-		#if ACHIEVEMENTS_ALLOWED Achievements.load(); #end
+		Achievements.load();
 		addChild(new FlxGame(game.width, game.height, game.initialState, game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
 
 		FlxG.mouse.useSystemCursor = true;

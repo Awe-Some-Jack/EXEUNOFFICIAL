@@ -21,7 +21,6 @@ class Project extends HXProject
     static final MODS_ALLOWED:FeatureFlag = "MODS_ALLOWED";
     static final HSCRIPT_ALLOWED:FeatureFlag = "HSCRIPT_ALLOWED";
     static final LUA_ALLOWED:FeatureFlag = "LUA_ALLOWED";
-    static final ACHIEVEMENTS_ALLOWED:FeatureFlag = "ACHIEVEMENTS_ALLOWED";
     static final DISCORD_ALLOWED:FeatureFlag = "DISCORD_ALLOWED";
     static final IRIS_DEBUG:FeatureFlag = "IRIS_DEBUG";
     static final VIDEOS_ALLOWED:FeatureFlag = "VIDEOS_ALLOWED";
@@ -95,7 +94,6 @@ class Project extends HXProject
         MODS_ALLOWED.apply(this, true);
         HSCRIPT_ALLOWED.apply(this, true);
         LUA_ALLOWED.apply(this, true);
-        ACHIEVEMENTS_ALLOWED.apply(this, true);
         DISCORD_ALLOWED.apply(this, isDesktop());
         FEATURE_COMPRESSED_TEXTURES.apply(this, isMobile());
         IRIS_DEBUG.apply(this, true);

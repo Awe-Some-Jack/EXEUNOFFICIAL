@@ -1,6 +1,5 @@
 package objects;
 
-#if ACHIEVEMENTS_ALLOWED
 import openfl.events.Event;
 import openfl.geom.Matrix;
 import openfl.display.BitmapData;
@@ -174,4 +173,3 @@ class AchievementPopup extends openfl.display.Sprite {
 		bitmaps = null;
 	}
 }
-#end

@@ -62,7 +62,7 @@ class LoadingState extends MusicBeatState
 
 	var newBar:FlxSprite;
 	var loadedTxt:FlxText;
-	var blackFadeScreen:FlxSprite;
+	var pressTxt:FlxText;
 
 	override function create()
 	{
@@ -75,20 +75,21 @@ class LoadingState extends MusicBeatState
 		logo.animation.play('idle', true);
 		logo.scale.set(0.35, 0.35);
 		logo.updateHitbox();
-
 		logo.setPosition(FlxG.width - logo.width - 35, FlxG.height - logo.height - 35);
 		add(logo);
 
 		newBar = new FlxSprite(50, FlxG.height - 90).makeGraphic(Std.int(FlxG.width * 0.8), 40, 0xFFFFFFFF);
 		add(newBar);
 
-		loadedTxt = new FlxText(50, newBar.y - 50, 0, 'Loading... (?/?)', 40);
+		loadedTxt = new FlxText(50, newBar.y - 50, 0, 'Loading... (0/0)', 40);
 		loadedTxt.setFormat(Paths.font("visitor1.ttf"), 40);
 		add(loadedTxt);
 
-		blackFadeScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
-		blackFadeScreen.alpha = 0;
-		add(blackFadeScreen);
+		pressTxt = new FlxText(0, 0, FlxG.width, 'PRESS ENTER', 60);
+		pressTxt.setFormat(Paths.font("visitor1.ttf"), 60, FlxColor.WHITE, CENTER);
+		pressTxt.screenCenter(Y);
+		pressTxt.visible = false;
+		add(pressTxt);
 
 		FlxTransitionableState.skipNextTransOut = true;
 		FlxTransitionableState.skipNextTransIn = true;
@@ -97,11 +98,11 @@ class LoadingState extends MusicBeatState
 
 	var dotsCount:Int = 1;
 	var dotsHold:Float = 0;
-
 	var timeTaken:Float = 0;
-	var isDoneLoading:Bool = false;
+	var doneLoading:Bool = false;
 	var transitioning:Bool = false;
 	var waitedOneFrame:Bool = false;
+	var blinkTimer:Float = 0;
 
 	override function update(elapsed:Float)
 	{
@@ -111,71 +112,80 @@ class LoadingState extends MusicBeatState
 		if (!waitedOneFrame) { waitedOneFrame = true; return; }
 
 		var uploadsThisFrame = 0;
-		while (gpuQueue.length > 0 && uploadsThisFrame < 2) 
+		while (gpuQueue.length > 0 && uploadsThisFrame < 2)
 		{
 			mutex?.acquire();
-
 			final task = gpuQueue.shift();
 			mutex?.release();
 
 			if (task?.bitmap != null)
 				Paths.cacheBitmap(task.origKey, task.bitmap);
-			
+
 			mutex?.acquire();
 			loaded++;
 			mutex?.release();
-			
+
 			uploadsThisFrame++;
 		}
 
-		if (!transitioning)
+		if (!doneLoading)
 			intendedPercent = (loadMax > 0) ? (loaded / loadMax) : 0;
 
-		if (curPercent != intendedPercent)
+		if (Math.abs(curPercent - intendedPercent) < 0.001)
+			curPercent = intendedPercent;
+		else
+			curPercent = FlxMath.lerp(intendedPercent, curPercent, Math.exp(-elapsed * 15));
+
+		timeTaken += elapsed;
+
+		dotsHold += elapsed;
+		if (dotsHold >= 0.3)
 		{
-			if (Math.abs(curPercent - intendedPercent) < 0.001) curPercent = intendedPercent;
-			else curPercent = FlxMath.lerp(intendedPercent, curPercent, Math.exp(-elapsed * 15));
+			dotsHold = 0;
+			dotsCount = FlxMath.wrap(dotsCount + 1, 1, 3);
+		}
 
-			timeTaken += elapsed;
-
-			dotsHold += elapsed;
-			if (dotsHold >= 0.3)
-			{
-				dotsHold = 0;
-				dotsCount = FlxMath.wrap(dotsCount + 1, 1, 3);
-			}
-
+		if (!doneLoading)
+		{
 			loadedTxt.text = "Loading" + StringTools.lpad("", ".", dotsCount) + " (" + loaded + "/" + loadMax + ") " + Math.floor(curPercent * 100) + "%";
 			newBar.setGraphicSize(Std.int((FlxG.width * 0.8) * curPercent), 40);
 			newBar.updateHitbox();
 		}
 
-		if (!finishedLoading && initialThreadCompleted && checkLoaded() && !transitioning)
+		if (!doneLoading && initialThreadCompleted && checkLoaded())
 		{
-			loadedTxt.text = "Done! (Took " + (Math.round(timeTaken * 1000) / 1000) + " s)";
-			FlxTween.tween(blackFadeScreen, {alpha: 1}, 1, {
-				onComplete: function(_) {
-					transitioning = true;
-					onLoad();
-					return;
-				}
-			});
-			FlxTween.tween(FlxG.sound.music, {volume: 0}, 1);
+			doneLoading = true;
+			curPercent = 1;
+			intendedPercent = 1;
+			newBar.setGraphicSize(Std.int(FlxG.width * 0.8), 40);
+			newBar.updateHitbox();
+			loadedTxt.text = "Done! (" + loaded + "/" + loadMax + ") 100%";
+			pressTxt.visible = true;
+			if (stopMusic && FlxG.sound.music != null)
+				FlxG.sound.music.stop();
+		}
+
+		if (doneLoading && !transitioning)
+		{
+			blinkTimer += elapsed;
+			if (blinkTimer >= 0.5) { blinkTimer = 0; pressTxt.visible = !pressTxt.visible; }
+
+			if (controls.ACCEPT || FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.ENTER)
+			{
+				transitioning = true;
+				pressTxt.visible = false;
+				FlxG.camera.fade(FlxColor.BLACK, 0.5, false, onLoad);
+			}
 		}
 	}
-	
+
 	var finishedLoading:Bool = false;
 	function onLoad()
 	{
 		_loaded();
-
-		if (stopMusic && FlxG.sound.music != null)
-			FlxG.sound.music.stop();
-
 		FlxG.switchState(target);
 		transitioning = true;
 		finishedLoading = true;
-		
 		backend.MemoryUtil.clearMinor();
 	}
 
@@ -415,6 +425,9 @@ class LoadingState extends MusicBeatState
 
 			songsToPrepare.push('$folder/Inst');
 
+			soundsToPrepare.push('hitsound');
+			for (i in 1...4) soundsToPrepare.push('missnote$i');
+
 			var player1:String = song.player1;
 			var player2:String = song.player2;
 			var gfVersion:String = song.gfVersion;
@@ -430,7 +443,6 @@ class LoadingState extends MusicBeatState
 				{
 					songsToPrepare.push('$prefixVocals-Player');
 					songsToPrepare.push('$prefixVocals-Opponent');
-
 				}
 				else if(Paths.fileExists('$prefixVocals.${Paths.SOUND_EXT}', SOUND, false, 'songs'))
 					songsToPrepare.push(prefixVocals);

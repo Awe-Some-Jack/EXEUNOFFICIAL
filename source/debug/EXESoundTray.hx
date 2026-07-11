@@ -45,9 +45,10 @@ class EXESoundTray extends Sprite
 
 	var timerHold:Float   = 0;
 	var isActive:Bool     = false;
-	var _lastVolume:Float = -1;
-	var _lastMuted:Bool   = false;
-	var _lastScale:Float  = -1;
+	var _lastVolume:Float  = -1;
+	var _lastMuted:Bool    = false;
+	var _lastScale:Float   = -1;
+	var _lastLanguage:String = '';
 
 	var boxTween:FlxTween;
 	var timerTween:FlxTween;
@@ -242,6 +243,19 @@ class EXESoundTray extends Sprite
 	override private function __enterFrame(e:Float):Void
 	{
 		applyScale();
+
+		var lang:String = Language.getPhrase('soundtray.volume', 'VOLUME');
+		if (lang != _lastLanguage)
+		{
+			_lastLanguage = lang;
+			if (volumeText != null)
+			{
+				if (volumeText.bitmapData != null) volumeText.bitmapData.dispose();
+				removeChild(volumeText);
+				volumeText = null;
+			}
+			createVolumeText();
+		}
 
 		var vol:Float  = FlxG.sound.volume;
 		var muted:Bool = FlxG.sound.muted;

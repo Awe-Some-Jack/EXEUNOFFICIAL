@@ -222,8 +222,6 @@ class EXESoundTray extends Sprite
 			FlxG.sound.volume = 0.5;
 		}
 
-		_lastVolume = FlxG.sound.volume;
-		_lastMuted  = FlxG.sound.muted;
 		updateBars();
 	}
 

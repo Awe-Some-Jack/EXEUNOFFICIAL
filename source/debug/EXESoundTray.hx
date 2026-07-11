@@ -51,7 +51,6 @@ class EXESoundTray extends Sprite
 	var _lastLanguage:String = '';
 
 	var boxTween:FlxTween;
-	var timerTween:FlxTween;
 
 	var glowFilter:GlowFilter;
 	var shadowFilter:DropShadowFilter;
@@ -268,14 +267,16 @@ class EXESoundTray extends Sprite
 			show();
 		}
 
-		if (isActive && timerHold <= 0) hide();
+		if (isActive)
+		{
+			timerHold -= e / 1000;
+			if (timerHold <= 0) hide();
+		}
 	}
 
 	function show():Void
 	{
-		if (timerTween != null && timerTween.active) timerTween.cancel();
-		timerHold  = holdDuration;
-		timerTween = FlxTween.num(holdDuration, 0, holdDuration, function(n) timerHold = n);
+		timerHold = holdDuration;
 
 		if (boxTween != null && boxTween.active) boxTween.cancel();
 		visible  = true;
@@ -324,8 +325,7 @@ class EXESoundTray extends Sprite
 
 	public function destroy():Void
 	{
-		if (boxTween   != null && boxTween.active)   boxTween.cancel();
-		if (timerTween != null && timerTween.active) timerTween.cancel();
+		if (boxTween != null && boxTween.active) boxTween.cancel();
 
 		if (bg != null && bg.bitmapData != null) bg.bitmapData.dispose();
 		if (volumeText != null && volumeText.bitmapData != null) volumeText.bitmapData.dispose();
@@ -335,7 +335,7 @@ class EXESoundTray extends Sprite
 		bg = null;
 		volumeText = null;
 		bars = [];
-		boxTween = timerTween = null;
+		boxTween = null;
 		glowFilter   = null;
 		shadowFilter = null;
 	}

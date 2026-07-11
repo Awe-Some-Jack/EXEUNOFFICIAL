@@ -5,6 +5,7 @@ import extension.androidtools.content.Context;
 #end
 
 import debug.FPSCounter;
+import debug.EXESoundTray;
 
 import flixel.FlxGame;
 import flixel.FlxState;
@@ -65,6 +66,7 @@ class Main extends Sprite
 	};
 
 	public static var fpsVar:FPSCounter;
+	public static var soundTray:EXESoundTray;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -173,6 +175,10 @@ class Main extends Sprite
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		fpsVar.visible = false;
 		addChild(fpsVar);
+
+		soundTray = new EXESoundTray();
+		addChild(soundTray);
+		FlxG.sound.soundTrayEnabled = false;
 		
 		FlxG.stage.align = "tl";
 		FlxG.stage.scaleMode = StageScaleMode.NO_SCALE;

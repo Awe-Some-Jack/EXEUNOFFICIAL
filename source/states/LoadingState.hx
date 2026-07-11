@@ -581,7 +581,6 @@ class LoadingState extends MusicBeatState
 			var animToFind:String = Paths.getPath('images/$img/Animation.json', TEXT);
 			if (#if sys FileSystem.exists(animToFind) || #end OpenFlAssets.exists(animToFind))
 				isAnimateAtlas = true;
-				trace(isAnimateAtlas);
 			#end
 
 			if(!isAnimateAtlas)

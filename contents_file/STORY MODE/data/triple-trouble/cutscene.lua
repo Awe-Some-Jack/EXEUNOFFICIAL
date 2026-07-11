@@ -1,4 +1,4 @@
-local firstTime = true
+--[[local firstTime = true
 
 function onCreatePost()
 	if seenCutscene then return end
@@ -70,4 +70,4 @@ function onTweenCompleted(t)
 	if t =='TweenZoomEvent' then
 		istweeening = false
 	end
-end
+end]]

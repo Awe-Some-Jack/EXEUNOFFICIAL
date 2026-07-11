@@ -1,4 +1,4 @@
-function goodNoteHit(membersIndex, noteData, noteType, isSustainNote)
+--[[function goodNoteHit(membersIndex, noteData, noteType, isSustainNote)
 	health = getProperty('health')
 	if isSustainNote then
 		setProperty('health', health + 0.015)
@@ -14,4 +14,4 @@ function onBeatHit()
 	if curBeat % 2 == 0 and getProperty('boyfriend.animation.curAnim.name') == 'idle' then
 		playAnim('boyfriend', 'idle', true)
 	end
-end
+end]]

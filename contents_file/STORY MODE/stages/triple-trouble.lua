@@ -1,4 +1,4 @@
-local curSect = 'tails'
+--[==[local curSect = 'tails'
 local onFlashback = false
 local canMakeParticles = false
 local hideParticles = false
@@ -528,4 +528,4 @@ end
 
 function makeParticle(xMin, xMax, spawnY)
 	spawnParticle(xMin, xMax, spawnY)
-end
+end]==]

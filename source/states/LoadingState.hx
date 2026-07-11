@@ -92,12 +92,6 @@ class LoadingState extends MusicBeatState
 
 		FlxTransitionableState.skipNextTransOut = true;
 		super.create();
-
-		if (checkLoaded())
-		{
-			dontUpdate = true;
-			onLoad();
-		}
 	}
 
 	var dotsCount:Int = 1;
@@ -106,11 +100,14 @@ class LoadingState extends MusicBeatState
 	var timeTaken:Float = 0;
 	var isDoneLoading:Bool = false;
 	var transitioning:Bool = false;
+	var waitedOneFrame:Bool = false;
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 		if (dontUpdate || subState != null) return;
+
+		if (!waitedOneFrame) { waitedOneFrame = true; return; }
 
 		var uploadsThisFrame = 0;
 		while (gpuQueue.length > 0 && uploadsThisFrame < 2) 
@@ -131,7 +128,7 @@ class LoadingState extends MusicBeatState
 		}
 
 		if (!transitioning)
-			intendedPercent = loaded / loadMax;
+			intendedPercent = (loadMax > 0) ? (loaded / loadMax) : 0;
 
 		if (curPercent != intendedPercent)
 		{
@@ -152,7 +149,7 @@ class LoadingState extends MusicBeatState
 			newBar.updateHitbox();
 		}
 
-		if (!finishedLoading && checkLoaded() && !transitioning)
+		if (!finishedLoading && initialThreadCompleted && checkLoaded() && !transitioning)
 		{
 			loadedTxt.text = "Done! (Took " + (Math.round(timeTaken * 1000) / 1000) + " s)";
 			FlxTween.tween(blackFadeScreen, {alpha: 1}, 1, {
@@ -227,9 +224,14 @@ class LoadingState extends MusicBeatState
 		_startPool();
 		loadNextDirectory();
 
-		if(intrusive)
+		if (intrusive)
+		{
+			if (stopMusic)
+				FlxG.sound.music?.stop();
 			FlxG.switchState(() -> new LoadingState(target, stopMusic));
-		
+			return;
+		}
+
 		if (stopMusic)
 			FlxG.sound.music?.stop();
 

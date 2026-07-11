@@ -329,10 +329,13 @@ class StoryModeState extends MusicBeatState
 			for (i in 0...sprites.length)
 				if (sprites[i] != null && i < box2SpriteBaseXs.length)
 					sprites[i].x = box2SpriteBaseXs[i];
+			box2SpriteBaseXs = [];
 		}
 
 		if (redBoxTween != null) redBoxTween.cancel();
-		redBoxTween = FlxTween.tween(redBOX, {x: targetX}, 0.15, {ease: FlxEase.sineOut});
+		final dist = Math.abs(redBOX.x - targetX);
+		final duration = dist / 4000.0;
+		redBoxTween = FlxTween.tween(redBOX, {x: targetX}, duration, {ease: FlxEase.sineOut});
 	}
 
 	function shakeBox2():Void
@@ -399,15 +402,18 @@ class StoryModeState extends MusicBeatState
 			}
 			else
 			{
+				var moved = false;
 				if (FlxG.keys.justPressed.A && selectedBox == 1)
 				{
 					selectedBox = 0;
 					moveRedBox(box1BaseX);
+					moved = true;
 				}
 				else if (FlxG.keys.justPressed.D && selectedBox == 0)
 				{
 					selectedBox = 1;
 					moveRedBox(box2BaseX);
+					moved = true;
 				}
 
 				if (controls.BACK)
@@ -419,7 +425,7 @@ class StoryModeState extends MusicBeatState
 					return;
 				}
 
-				if (controls.ACCEPT)
+				if (!moved && controls.ACCEPT)
 				{
 					if (selectedBox == 0) onBox1Accept();
 					else { FlxG.sound.play(Paths.sound('denied')); shakeBox2(); }
@@ -433,6 +439,9 @@ class StoryModeState extends MusicBeatState
 
 	function onBox1Accept():Void
 	{
+		if (redBoxTween != null) { redBoxTween.cancel(); redBoxTween = null; }
+		redBOX.x = box1BaseX;
+
 		inCoverSelect = true;
 		selectedCover = 0;
 

@@ -1,0 +1,39 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "firstDeath",
+			"fps": 24,
+			"name": "die",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "deathLoop",
+			"fps": 24,
+			"name": "loop",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "deathConfirm",
+			"fps": 24,
+			"name": "fine",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/gvr",
+	"position": [-600, -10],
+	"healthicon": "dsk",
+	"flip_x": true,
+	"healthbar_colors": [87, 85, 90],
+	"camera_position": [-10, -100],
+	"sing_duration": 8,
+	"scale": 3,
+	"_editor_isPlayer": true
+}

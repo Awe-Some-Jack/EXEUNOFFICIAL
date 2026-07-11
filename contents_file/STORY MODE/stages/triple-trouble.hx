@@ -1,5 +1,7 @@
 import psychlua.LuaUtils;
 import openfl.display.BlendMode;
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.utils.Assets;
 
 using StringTools;
 
@@ -42,13 +44,13 @@ var xeno:Array<BackgroundSprite> = [
 	{path: 'tt/bgx/fire/FIRE 2', position: [-1000, -700], scroll: [0.55, 0.55], scale: [6, 10, true], animation: [{name: 'fire instancia 1', looped: true}], visible: false, isFire: true},
 	{path: 'tt/bgx/trees2', position: [-600, -600], scroll: [0.7, 0.7], visible: false, pathF: 'tt/bgx/fire/tres2'},
 	{path: 'tt/bgx/NewTitleMenuBG', position: [-300, -200], scroll: [0.85, 0.85], scale: [6, 6, true], animation: [{name: 'TitleMenuSSBG instance 1', looped: true}], visible: false},
-	{path: 'tt/bgx/fire/FIRE', position: [-600, 2250], scroll: [0.85, 0.85], scale: [3, 3, true], animation: [{name: 'fuego true instancia 1', looped: true}], visible: false, isFire: true},
+	{path: 'tt/bgx/fire/FIRE', position: [-600, -800], scroll: [0.85, 0.85], scale: [3, 3, true], animation: [{name: 'fuego true instancia 1', looped: true}], visible: false, isFire: true},
 	{path: 'tt/bgx/trees1', position: [-600, -200], scroll: [0.9, 0.9], visible: false, pathF: 'tt/bgx/fire/trees1'},
-	{path: 'tt/bgx/fire/FIRE', position: [-800, 2400], scroll: [0.9, 0.9], scale: [3, 3, true], animation: [{name: 'fuego true instancia 1', looped: true}], visible: false, isFire: true},
+	{path: 'tt/bgx/fire/FIRE', position: [-800, -600], scroll: [0.9, 0.9], scale: [3, 3, true], animation: [{name: 'fuego true instancia 1', looped: true}], visible: false, isFire: true},
 	{path: 'tt/bgx/crystals', position: [-400, 600], visible: false, pathF: 'tt/bgx/fire/crystals'},
 	{path: 'tt/bgx/floor', position: [-600, -800], visible: false, pathF: 'tt/bgx/fire/floor'},
 	{path: 'tt/bgx/foreground2', position: [-600, -200], scroll: [1.2, 1.2], front: true, visible: false, pathF: 'tt/bgx/fire/foreground2'},
-	{path: 'tt/bgx/fire/FIRE 2', position: [-800, 2300], scroll: [1.2, 1.2], front: true, scale: [6, 6, true], animation: [{name: 'fire instancia 1', looped: true}], visible: false, isFire: true},
+	{path: 'tt/bgx/fire/FIRE 2', position: [-800, -700], scroll: [1.2, 1.2], front: true, scale: [6, 6, true], animation: [{name: 'fire instancia 1', looped: true}], visible: false, isFire: true},
 	{path: 'tt/bgx/foreground', position: [-1700, 1300], scroll: [1.3, 1.3], front: true, visible: false, pathF: 'tt/bgx/fire/foreground'}
 ];
 
@@ -62,12 +64,12 @@ var tails:Array<BackgroundSprite> = [
 ];
 
 var knux:Array<BackgroundSprite> = [
-	{path: 'tt/knux/bg', position: [-600, -300], scroll: [0.4, 0.4], scale: [0.7, 0.7, true], visible: false},
-	{path: 'tt/knux/platform3', position: [-800, -300], scroll: [0.5, 0.5], scale: [0.7, 0.7, true], visible: false},
-	{path: 'tt/knux/fog2', position: [-500, -300], scroll: [0.5, 0.5], scale: [0.7, 0.7, true], visible: false},
-	{path: 'tt/knux/platform2', position: [-500, -300], scroll: [0.6, 0.6], scale: [0.6, 0.6, true], visible: false},
-	{path: 'tt/knux/platform', position: [-450, -200], scroll: [0.7, 0.7], scale: [0.6, 0.6, true], visible: false},
-	{path: 'tt/knux/fog', position: [-700, -500], scroll: [0.8, 0.8], visible: false},
+	{path: 'tt/knux/bg', position: [-750, -500], scroll: [0.4, 0.4], scale: [1, 1, true], visible: false},
+	{path: 'tt/knux/platform3', position: [-750, -600], scroll: [0.5, 0.5], scale: [1, 1, true], visible: false},
+	{path: 'tt/knux/fog2', position: [-750, -700], scroll: [0.5, 0.5], scale: [1, 1, true], visible: false},
+	{path: 'tt/knux/platform2', position: [-780, -660], scroll: [0.6, 0.6], scale: [1, 1, true], visible: false},
+	{path: 'tt/knux/platform', position: [-750, -550], scroll: [0.7, 0.7], scale: [1, 1, true], visible: false},
+	{path: 'tt/knux/fog', position: [-750, -600], scroll: [0.8, 0.8], visible: false},
 	{path: 'tt/knux/floor', position: [-700, -350], visible: false}
 ];
 
@@ -82,11 +84,21 @@ var egg:Array<BackgroundSprite> = [
 
 final game:PlayState = PlayState.instance;
 final prefs = ClientPrefs.data;
+final lq:Bool = ClientPrefs.data.lowQuality;
 final cam = game.gameplayCam.settings;
 
 var glow:FlxSprite;
 var overlayTails:FlxSprite;
+var vgSpr:FlxSprite;
+var fogOverlay:FlxSprite;
+var fogShader:FlxRuntimeShader;
 var curBG:String = 'tails';
+var isFlashback:Bool = false;
+var canMakeParticles:Bool = false;
+var hideParticles:Bool = false;
+var particleSprites:Array<FlxSprite> = [];
+var shaderTimer:Float = 0;
+var frameCounter:Int = 0;
 
 function onCreate()
 {
@@ -120,14 +132,34 @@ function onCreate()
 	overlayTails.visible = false;
 	game.insert(0, overlayTails);
 
-	//preload chars
+	vgSpr = new FlxSprite();
+	vgSpr.loadGraphic(Paths.image('VG'));
+	vgSpr.screenCenter();
+	vgSpr.color = 0xFFFF0000;
+	vgSpr.camera = camOther;
+	vgSpr.visible = false;
+	game.add(vgSpr);
 
+	fogOverlay = new FlxSprite();
+	fogOverlay.loadGraphic(Paths.image('overlay/fog'));
+	fogOverlay.screenCenter();
+	fogOverlay.camera = camOther;
+	fogOverlay.alpha = 0.4;
+	fogOverlay.visible = false;
+	game.add(fogOverlay);
+
+	if (!lq)
+	{
+		fogShader = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('wavyDistortion')));
+		fogShader.setFloat('amount', 2);
+		fogOverlay.shader = fogShader;
+	}
+
+	//preload chars
 	preloadCharacter(1, 'BEAST');
 	preloadCharacter(0, 'bf-perspective-right');
-
 	preloadCharacter(1, 'BEAST-RIGHT');
 	preloadCharacter(0, 'bf-perspective-left');
-
 	preloadCharacter(1, 'knux');
 	preloadCharacter(1, 'eggman');
 }
@@ -149,48 +181,64 @@ function onEvent(n, v1, v2)
 	{
 		case 'tripletroublebgchange': changeBG(v1);
 		case 'flashbackstt': toggleFlashback();
-		case 'ttfirestart':
-			for (spr in xeno) if (spr.isFire) {
-				var targetY:Float = -2700;
-				if (spr == xeno[6].sprite) targetY = 250;
-				if (spr == xeno[8].sprite) targetY = 400;
-				if (spr == xeno[12].sprite) targetY = 300;
-				spr.sprite.visible = true; FlxTween.tween(spr.sprite, {y: targetY}, Conductor.crochet / 100, {ease: FlxEase.cubeOut});
-			}
-		case 'fadecam':
-		case 'fadeHUD':
+		case 'ttfirestart': onFireStart();
+		case 'fadecam':    fadeParticles(Std.parseFloat(v2));
+		case 'fadeHUD':    FlxTween.tween(camHUD, {alpha: 0}, 2.8);
 	}
 }
 
-var isFlashback:Bool = false;
 function toggleFlashback()
 {
 	isFlashback = !isFlashback;
 	glow.visible = !isFlashback;
+	if (fogOverlay != null) fogOverlay.visible = isFlashback;
 	if (isFlashback) for (spr in normal) spr.sprite?.visible = false;
 	switch(curBG)
 	{
 		case 'tails':
 			if (isFlashback)
 			{
+				if (ClientPrefs.data.flashingLights) triggerEvent('Flash', 'FFFFFF,1', 'game');
 				for (spr in tails) spr.sprite.visible = true;
 				overlayTails.visible = true;
+			}
+			else
+			{
+				for (spr in normal) if (spr.sprite != null) spr.sprite.alpha = 1;
+				for (spr in tails) if (spr.sprite != null) { game.remove(spr.sprite, true); spr.sprite = null; }
+				overlayTails.visible = false;
 			}
 		case 'knux':
 			if (isFlashback)
 			{
+				if (ClientPrefs.data.flashingLights) triggerEvent('Flash', 'FFFFFF,1', 'game');
 				for (spr in knux) spr.sprite.visible = true;
 				for (spr in normal) if (!spr.isFire) spr.sprite.destroy();
+			}
+			else
+			{
+				for (spr in normal) if (spr.sprite != null) spr.sprite.alpha = 1;
+				for (spr in knux) if (spr.sprite != null) { game.remove(spr.sprite, true); spr.sprite = null; }
 			}
 		case 'egg':
 			if (isFlashback)
 			{
+				if (ClientPrefs.data.flashingLights) triggerEvent('Flash', 'FFFFFF,1', 'game');
 				for (spr in egg) spr.sprite.visible = true;
-				for (spr in normal) 
+				for (spr in normal)
 				{
 					spr.sprite?.destroy();
 					spr.spriteF?.destroy();
 				}
+				hideParticles = true;
+				for (p in particleSprites) p.alpha = 0;
+			}
+			else
+			{
+				for (spr in normal) if (spr.sprite != null) { spr.sprite.alpha = 1; if (spr.spriteF != null) spr.spriteF.alpha = 1; }
+				for (spr in egg) if (spr.sprite != null) { game.remove(spr.sprite, true); spr.sprite = null; }
+				hideParticles = false;
+				for (p in particleSprites) p.alpha = 1;
 			}
 	}
 }
@@ -404,10 +452,79 @@ function changeBG(bg:String):Void
 	**/
 }
 
+function onFireStart()
+{
+	for (spr in xeno)
+	{
+		if (spr.isFire && spr.spriteF != null)
+		{
+			spr.spriteF.visible = true;
+			FlxTween.tween(spr.spriteF, {alpha: 1}, Conductor.crochet / (1000 / 8) / playbackRate);
+		}
+	}
+	var fireDur:Float = Conductor.crochet / (1000 / 10) / playbackRate;
+	if (xeno[3].sprite != null) FlxTween.tween(xeno[3].sprite, {y: -2700}, fireDur, {ease: FlxEase.cubeOut});
+	if (!lq && xeno[6].sprite != null) FlxTween.tween(xeno[6].sprite, {y: 250}, fireDur, {ease: FlxEase.cubeOut});
+	if (xeno[8].sprite != null) FlxTween.tween(xeno[8].sprite, {y: 400}, fireDur, {ease: FlxEase.cubeOut});
+	if (!lq && xeno[12].sprite != null) FlxTween.tween(xeno[12].sprite, {y: 300}, fireDur, {ease: FlxEase.cubeOut});
+	canMakeParticles = true;
+}
+
+function spawnParticle()
+{
+	var p:FlxSprite = new FlxSprite(FlxG.random.int(0, 2000), 1500);
+	p.loadGraphic(Paths.image('tt/particles/dust' + FlxG.random.int(1, 6)));
+	var pScale:Float = FlxG.random.float(0.6, 1.3);
+	var pScroll:Float = FlxG.random.float(0.8, 1.2);
+	p.scale.set(pScale, pScale); p.updateHitbox();
+	p.scrollFactor.set(pScroll, pScroll);
+	p.acceleration.x = FlxG.random.float(-300, 50);
+	p.acceleration.y = FlxG.random.float(-400, -100);
+	p.antialiasing = !lq;
+	p.angularVelocity = FlxG.random.float(25, 240);
+	p.alpha = hideParticles ? 0 : 1;
+	if (FlxG.random.bool()) game.add(p);
+	else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), p);
+	particleSprites.push(p);
+}
+
+function fadeParticles(duration:Float)
+{
+	canMakeParticles = false;
+	var dur:Float = Conductor.crochet / (1000 / duration) / playbackRate;
+	for (p in particleSprites)
+		FlxTween.tween(p, {alpha: 0}, dur, {onComplete: (_) -> game.remove(p, true)});
+	particleSprites = [];
+}
+
+function onUpdatePost(elapsed:Float)
+{
+	frameCounter++;
+	if (frameCounter % 30 == 0 && canMakeParticles && !lq)
+		spawnParticle();
+	if (!lq && fogShader != null)
+	{
+		shaderTimer += elapsed * playbackRate;
+		fogShader.setFloat('iTime', shaderTimer);
+	}
+}
+
 function goodNoteHitPre(note) if (curBG == 'knux') note.animSuffix = '-knux';
 
+var vgTween:FlxTween = null;
 function onBeatHit()
 {
+	if (curBeat % 4 == 0)
+	{
+		if (vgTween != null) vgTween.cancel();
+		vgTween = FlxTween.tween(vgSpr, {alpha: 1}, Conductor.crochet / 1000 * 2);
+	}
+	else if (curBeat % 4 == 2)
+	{
+		if (vgTween != null) vgTween.cancel();
+		vgTween = FlxTween.tween(vgSpr, {alpha: 0}, Conductor.crochet / 1000 * 2);
+	}
+
 	if (curBG.startsWith('xeno') && curBeat % 2 == 0)
 	{
 		if (dad.getAnimationName() == 'idle') dad.playAnim('idle', true);
@@ -437,8 +554,8 @@ function makeBackground(background:Array<BackgroundSprite>, ?makeFire:Bool = fal
 		}
 		sprite.scrollFactor.set((spriteDef.scroll ?? [1, 1])[0], (spriteDef.scroll ?? [1, 1])[1]);
 		sprite.scale.set((spriteDef.scale ?? [1, 1, true])[0], (spriteDef.scale ?? [1, 1, true])[1]);
-		
-		//fuck myself why i need to do this, FUCK KAZU!!!!!!!!
+
+		//fuck myself why i need to do this, FUCK KAZU!!!!!!!! Si ok entiendo :C
 		sprite.scale.x *= 1.2; sprite.scale.y *= 1.2;
 		if ((spriteDef.scale ?? [1, 1, true])[2]) sprite.updateHitbox();
 

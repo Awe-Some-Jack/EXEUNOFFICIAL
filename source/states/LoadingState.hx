@@ -91,6 +91,7 @@ class LoadingState extends MusicBeatState
 		add(blackFadeScreen);
 
 		FlxTransitionableState.skipNextTransOut = true;
+		FlxTransitionableState.skipNextTransIn = true;
 		super.create();
 	}
 
@@ -650,22 +651,31 @@ class LoadingState extends MusicBeatState
 	static function preloadSongPath(key:String):Void
 	{
 		var file:String = Paths.getPath(Language.getFileTranslation(key) + '.${Paths.SOUND_EXT}', SOUND, 'songs', true);
-		#if (sys && !mobile)
-		if (FileSystem.exists(file))
-		{
-			mutex.acquire();
-			Paths.localTrackedAssets.push(file);
-			mutex.release();
-		}
-		#else
-		if (OpenFlAssets.exists(file, SOUND))
-		{
-			mutex.acquire();
-			Paths.localTrackedAssets.push(file);
 
+		if (!Paths.currentTrackedSounds.exists(file))
+		{
+			var sound:openfl.media.Sound = null;
+			#if (sys && !mobile)
+			if (FileSystem.exists(file))
+				sound = openfl.media.Sound.fromFile(file);
+			#end
+			if (sound == null && OpenFlAssets.exists(file, SOUND))
+				sound = OpenFlAssets.getSound(file, false);
+
+			if (sound != null)
+			{
+				mutex.acquire();
+				Paths.currentTrackedSounds.set(file, sound);
+				Paths.localTrackedAssets.push(file);
+				mutex.release();
+			}
+		}
+		else
+		{
+			mutex.acquire();
+			Paths.localTrackedAssets.push(file);
 			mutex.release();
 		}
-		#end
 	}
 
 	static function preloadGraphic(key:String):Void

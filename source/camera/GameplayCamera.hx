@@ -1,4 +1,4 @@
-package gameplay;
+package camera;
 
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -10,7 +10,7 @@ import backend.Conductor;
 import backend.StageData;
 import objects.Character;
 import states.PlayState;
-import gameplay.CameraStageHandler;
+import camera.CameraStageHandler;
 import psychlua.FunkinLua;
 
 typedef CameraSettings = {

@@ -1,22 +1,22 @@
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
+import openfl.utils.Assets;
 import flixel.math.FlxMath;
 
-var chrom:ShaderFilter;
-var glitch:ShaderFilter;
+var chrom:FlxRuntimeShader;
+var glitch:FlxRuntimeShader;
 
 var cameraShader:FlxCamera;
 
 
 function onCreate() {
-    chrom = game.createRuntimeShader('ChromaticAbberation');
+    chrom = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('ChromaticAbberation')));
     chrom.setFloat('amount', 0.0);
 
-    glitch = game.createRuntimeShader('glitchChromatic');
-    
+    glitch = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('glitchChromatic')));
     glitch.setFloat("iTime", 0);
     glitch.setFloat('GLITCH', 0.0);
-    
+
     camGame.filters = [new ShaderFilter(glitch), new ShaderFilter(chrom)];
 }
 

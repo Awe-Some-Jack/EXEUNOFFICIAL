@@ -99,6 +99,7 @@ class YourselfCutscene
 
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());
+		StoryModeState.fromStoryMode = true;
 
 		#if !SHOW_LOADING_SCREEN FlxG.sound.music?.stop(); #end
 	}

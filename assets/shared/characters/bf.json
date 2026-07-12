@@ -231,6 +231,126 @@
 			"anim": "dodge",
 			"indices": [],
 			"name": "dodge"
+		},
+		{
+			"offsets": [22, 7],
+			"loop": false,
+			"fps": 24,
+			"anim": "shock",
+			"indices": [],
+			"name": "sonichushock"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle-knux",
+			"indices": [],
+			"name": "knuxidle"
+		},
+		{
+			"offsets": [57, 18],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-knux",
+			"indices": [],
+			"name": "knuxleft"
+		},
+		{
+			"offsets": [-6, -36],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-knux",
+			"indices": [],
+			"name": "knuxdown"
+		},
+		{
+			"offsets": [42, 34],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-knux",
+			"indices": [],
+			"name": "knuxup"
+		},
+		{
+			"offsets": [-16, -16],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-knux",
+			"indices": [],
+			"name": "knuxright"
+		},
+		{
+			"offsets": [57, 21],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFTmiss-knux",
+			"indices": [],
+			"name": "knuxmissleft"
+		},
+		{
+			"offsets": [-6, -17],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWNmiss-knux",
+			"indices": [],
+			"name": "knuxmissdown"
+		},
+		{
+			"offsets": [35, 26],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUPmiss-knux",
+			"indices": [],
+			"name": "knuxmissup"
+		},
+		{
+			"offsets": [-16, 1],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHTmiss-knux",
+			"indices": [],
+			"name": "knuxmissright"
+		},
+		{
+			"offsets": [57, 21],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFTmiss-knux-loop",
+			"indices": [10, 11, 12, 13],
+			"name": "knuxmissleft"
+		},
+		{
+			"offsets": [-6, -17],
+			"loop": true,
+			"fps": 24,
+			"anim": "singDOWNmiss-knux-loop",
+			"indices": [10, 11, 12, 13],
+			"name": "knuxmissdown"
+		},
+		{
+			"offsets": [35, 26],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUPmiss-knux-loop",
+			"indices": [10, 11, 12, 13],
+			"name": "knuxmissup"
+		},
+		{
+			"offsets": [-16, 1],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHTmiss-knux-loop",
+			"indices": [10, 11, 12, 13],
+			"name": "knuxmissright"
+		},
+		{
+			"offsets": [-1, 26],
+			"loop": false,
+			"fps": 24,
+			"anim": "ttintro",
+			"indices": [],
+			"name": "ttintro"
 		}
 	],
 	"vocals_file": "",

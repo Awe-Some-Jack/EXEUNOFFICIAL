@@ -7,7 +7,9 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.addons.display.FlxBackdrop;
+
 import openfl.display.BitmapData;
+
 import states.EXEMenu;
 
 class ExtrasMenu extends MusicBeatState
@@ -38,7 +40,7 @@ class ExtrasMenu extends MusicBeatState
     var nowPlayingSong:FlxText;
     var extrasLogo:FlxSprite;
     var stopMusicPlay:Bool = false;
-
+    
     public var _orphanPlayer:Dynamic = null;
 
     override function create():Void
@@ -85,19 +87,6 @@ class ExtrasMenu extends MusicBeatState
     {
         super.update(elapsed);
 
-        if (_orphanPlayer != null)
-        {
-            _orphanPlayer.update(elapsed);
-            if (!_orphanPlayer.isPlaying && !_orphanPlayer.isLoading)
-            {
-                _orphanPlayer.stop();
-                _orphanPlayer = null;
-                states.extras.dagarden.DAGarden.currentSong    = '';
-                states.extras.dagarden.DAGarden.currentSongMod = '';
-                if (FlxG.sound.music != null && !FlxG.sound.music.playing) FlxG.sound.music.resume();
-            }
-        }
-
         if (nowPlayingSong != null)
         {
             final daName  = states.extras.dagarden.DAGarden.currentSong;
@@ -109,13 +98,15 @@ class ExtrasMenu extends MusicBeatState
 
         if (controls.UI_UP_P)   changeSelection(-1);
         if (controls.UI_DOWN_P) changeSelection(1);
+
         if (controls.ACCEPT)    selectOption();
+
         if (controls.BACK)
         {
             canMove = false;
             extraMenuSong = true;
             FlxG.sound.music?.fadeOut(0.3);
-            if (_orphanPlayer != null) { _orphanPlayer.stop(); _orphanPlayer = null; }
+            
             states.extras.dagarden.DAGarden.currentSong    = '';
             states.extras.dagarden.DAGarden.currentSongMod = '';
             FlxG.switchState(() -> new EXEMenu());
@@ -123,12 +114,7 @@ class ExtrasMenu extends MusicBeatState
 
         if (FlxG.mouse.justPressed && disco != null && disco.overlapsPoint(new flixel.math.FlxPoint(FlxG.mouse.x, FlxG.mouse.y)))
         {
-            if (_orphanPlayer != null)
-            {
-                if (_orphanPlayer.isPlaying) _orphanPlayer.pause();
-                else _orphanPlayer.playAudio(states.extras.dagarden.DAGarden.currentSong, states.extras.dagarden.DAGarden.currentSongMod);
-            }
-            else if (FlxG.sound.music != null)
+            if (FlxG.sound.music != null)
             {
                 if (FlxG.sound.music.playing) FlxG.sound.music.pause();
                 else FlxG.sound.music.resume();
@@ -145,12 +131,7 @@ class ExtrasMenu extends MusicBeatState
     override function closeSubState():Void
     {
         super.closeSubState();
-        final op = states.extras.dagarden.DAGarden.orphanPlayer;
-        if (op != null)
-        {
-            _orphanPlayer = op;
-            states.extras.dagarden.DAGarden.orphanPlayer = null;
-        }
+        
         canMove = true;
         for (cam in FlxG.cameras.list) if (cam?.filters != null) Main.resetSpriteCache(cam.flashSprite);
         if (FlxG.game != null) Main.resetSpriteCache(FlxG.game);
@@ -387,7 +368,6 @@ class ExtrasMenu extends MusicBeatState
         }
 
         _updateSelectBox();
-
         for (i in 0...descBackdrops.length)
         {
             FlxTween.cancelTweensOf(descBackdrops[i]);
@@ -416,7 +396,6 @@ class ExtrasMenu extends MusicBeatState
         box.y     = 120;
         box.alpha = 0;
         if (sumky != null) sumky.alpha = 0;
-
         FlxTween.tween(box, {x: 750}, 0.5, {ease: FlxEase.expoOut});
         FlxTween.tween(box, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
         if (sumky != null) FlxTween.tween(sumky, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});

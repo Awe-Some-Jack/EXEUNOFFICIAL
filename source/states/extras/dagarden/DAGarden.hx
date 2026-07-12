@@ -1,11 +1,5 @@
 package states.extras.dagarden;
 
-import backend.MusicBeatSubstate;
-import backend.Paths;
-import backend.Mods;
-import backend.ClientPrefs;
-import backend.Language;
-
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.tweens.FlxTween;
@@ -16,10 +10,8 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.group.FlxGroup;
-
 import openfl.display.BitmapData;
 import openfl.geom.Rectangle;
-
 import sys.FileSystem;
 import sys.io.File;
 
@@ -148,50 +140,56 @@ class DAGSongs extends FlxGroup
         for (mod in Mods.parseList().enabled)
         {
             final dir = Paths.mods('$mod/songs');
-            if (!FileSystem.exists(dir)) continue;
             try
             {
-                for (song in FileSystem.readDirectory(dir))
-                    if (!seen.exists(song) && FileSystem.isDirectory('$dir/$song'))
-                    {
-                        seen.set(song, true);
-                        songList.push(song);
-                        songMods.push(mod);
-                    }
+                if (FileSystem.exists(dir))
+                {
+                    for (song in FileSystem.readDirectory(dir))
+                        if (!seen.exists(song) && !song.contains('.'))
+                        {
+                            seen.set(song, true);
+                            songList.push(song);
+                            songMods.push(mod);
+                        }
+                }
             }
             catch (_:Dynamic) {}
         }
 
         final globalDir = Paths.mods('songs');
-        if (FileSystem.exists(globalDir))
+        try
         {
-            try
+            if (FileSystem.exists(globalDir))
             {
                 for (song in FileSystem.readDirectory(globalDir))
-                    if (!seen.exists(song) && FileSystem.isDirectory('$globalDir/$song'))
+                    if (!seen.exists(song) && !song.contains('.'))
                     {
                         seen.set(song, true);
                         songList.push(song);
                         songMods.push('');
                     }
             }
-            catch (_:Dynamic) {}
         }
+        catch (_:Dynamic) {}
 
         applyOrder();
-        for (i in 0...songList.length) songCredits.push(readCredits(songList[i], songMods[i]));
+        for (i in 0...songList.length) songCredits.push(readCredits(songList[i]));
     }
 
     function applyOrder():Void
     {
         final orderPath = 'assets/exe/extras/dagarden/dagarden_order.json';
         if (!FileSystem.exists(orderPath)) { sortAlpha(); return; }
+        
         try
         {
-            final order:Array<String> = cast haxe.Json.parse(File.getContent(orderPath)).order;
+            final content = File.getContent(orderPath);
+            final order:Array<String> = cast haxe.Json.parse(content).order;
             if (order == null || order.length == 0) { sortAlpha(); return; }
+            
             final pos = new haxe.ds.StringMap<Int>();
             for (i in 0...order.length) pos.set(order[i].toLowerCase(), i);
+            
             final pairs = [for (i in 0...songList.length) {
                 s: songList[i],
                 m: songMods[i],
@@ -212,29 +210,26 @@ class DAGSongs extends FlxGroup
         songMods = [for (p in pairs) p.m];
     }
 
-    function readCredits(song:String, mod:String):Array<String>
+    function readCredits(song:String):Array<String>
     {
-        final paths = mod != ''
-            ? [Paths.mods('$mod/data/$song/credits.json'), Paths.mods('data/$song/credits.json')]
-            : [Paths.mods('data/$song/credits.json')];
-
-        for (p in paths)
+        final path = Paths.mods('data/$song/credits.json');
+        if (!FileSystem.exists(path)) return [];
+        
+        try
         {
-            if (!FileSystem.exists(p)) continue;
-            try
+            final content = File.getContent(path);
+            final json:Dynamic = haxe.Json.parse(content);
+            if (json == null || json.composer == null) return [];
+            
+            if (Std.isOfType(json.composer, Array))
             {
-                final json:Dynamic = haxe.Json.parse(File.getContent(p));
-                if (json == null || json.composer == null) return [];
-                if (Std.isOfType(json.composer, Array))
-                {
-                    final arr:Array<String> = cast json.composer;
-                    return arr.filter(s -> s != null && s.length > 0);
-                }
-                final s = Std.string(json.composer);
-                return s != null && s.length > 0 ? [s] : [];
+                final arr:Array<String> = cast json.composer;
+                return arr.filter(s -> s != null && s.length > 0);
             }
-            catch (_:Dynamic) {}
+            final s = Std.string(json.composer);
+            return s != null && s.length > 0 ? [s] : [];
         }
+        catch (_:Dynamic) {}
         return [];
     }
 
@@ -269,22 +264,12 @@ class DAGSongs extends FlxGroup
 
     function loadCover(song:String, bx:Float, by:Float):FlxSprite
     {
-        final cv   = new FlxSprite(bx, by);
+        final cv = new FlxSprite(bx, by);
         final path = 'assets/exe/extras/dagarden/cover/$song.png';
-        var bmp:BitmapData = null;
         
         if (FileSystem.exists(path))
         {
-            bmp = Paths.getBitmapData(path);
-            if (bmp == null)
-            {
-                try { bmp = BitmapData.fromFile(path); } catch(_:Dynamic) {}
-            }
-        }
-        
-        if (bmp != null)
-        {
-            cv.loadGraphic(bmp);
+            cv.loadGraphic(Paths.getBitmapData(path));
             cv.scale.set(0.308, 0.308);
             cv.updateHitbox();
             hasCover.push(true);
@@ -301,7 +286,6 @@ class DAGSongs extends FlxGroup
 class DAGPlayer extends FlxGroup
 {
     public static inline final SEEK_SECONDS:Float = 5.0;
-
     public var isPlaying:Bool    = false;
     public var isLoading:Bool    = false;
     public var loopEnabled:Bool  = false;
@@ -318,7 +302,6 @@ class DAGPlayer extends FlxGroup
     var timeTxt:FlxText;
     var songNameTxt:FlxText;
     var composerTxt:FlxText;
-
     var diskSpeed:Float    = 0.0;
     var diskDragging:Bool  = false;
     var diskDragAngle:Float = 0.0;
@@ -333,7 +316,6 @@ class DAGPlayer extends FlxGroup
     
     public var loadedSong:String = '';
     var loadedMod:String  = '';
-
     var fadeTarget:Float  = 1.0;
     var fadeSpeed:Float   = 0.0;
     var pitchingDown:Bool = false;
@@ -359,7 +341,6 @@ class DAGPlayer extends FlxGroup
     var _debugPanel:FlxSprite  = null;
     var origTitle:String  = '';
     var lastTitleSec:Int  = -1;
-
     public function new()
     {
         super();
@@ -383,7 +364,6 @@ class DAGPlayer extends FlxGroup
     public function setSongInfo(song:String, creds:Array<String>):Void
     {
         loadedSong = song;
-
         songNameTxt.text = song.replace('-', ' ').toUpperCase();
         var sz = 120;
         songNameTxt.size = sz;
@@ -460,7 +440,6 @@ class DAGPlayer extends FlxGroup
 
     public inline function hasAudio():Bool      return inst != null;
     public inline function currentTime():Float  return inst != null ? inst.time : -1.0;
-
     public function updateTitle():Void
     {
         #if !mobile
@@ -491,7 +470,6 @@ class DAGPlayer extends FlxGroup
         updateFade(elapsed);
         updatePitch(elapsed);
         updateScratch(elapsed);
-        checkLoad();
         applySeek();
         checkEnd();
         updateBar();
@@ -525,7 +503,6 @@ class DAGPlayer extends FlxGroup
         barClipRect = new flixel.math.FlxRect(0, 0, 0, barInnerH);
         barProgress.clipRect = barClipRect;
         add(barProgress);
-
         spr(BX, BY, "sprites/bar.png", SC);
 
         final kr   = Std.int(barInnerH * 0.9);
@@ -596,7 +573,6 @@ class DAGPlayer extends FlxGroup
         final b  = 4;
         final bw = _panelW + b * 2;
         final bh = _panelH + b * 2;
-
         final bbmd = new BitmapData(bw, bh, false, 0xFF000000);
         _panelBorder.loadGraphic(bbmd);
         _panelBorder.x = _debugPanel.x - b;
@@ -604,7 +580,6 @@ class DAGPlayer extends FlxGroup
         final bsh = new shaders.RoundedBorderShader(18.0, 0.0, 0xFF000000);
         bsh.setSize(bw, bh);
         _panelBorder.shader = bsh;
-
         final bmd    = new BitmapData(_panelW, _panelH, false, 0xFFFFFFFF);
         final gshape = new openfl.display.Shape();
         final mat    = new openfl.geom.Matrix();
@@ -661,7 +636,6 @@ class DAGPlayer extends FlxGroup
         if (was && !diskDragging && elapsed > 0) diskSpeed = (diskDragVel / elapsed) * (180 / Math.PI);
         if (!diskDragging) { diskDragVel = 0.0; return; }
         if (inst == null || inst.length <= 0) return;
-
         var angle = Math.atan2(my - cy, mx - cx);
         var da    = angle - diskDragAngle;
         if (da >  Math.PI) da -= Math.PI * 2;
@@ -689,7 +663,6 @@ class DAGPlayer extends FlxGroup
 
         if (!FlxG.mouse.pressed) { barDragging = false; barDragVel = 0.0; return; }
         if (!barDragging) return;
-
         final ratio = FlxMath.bound((mx - barInnerX) / barInnerW, 0, 1);
         barDragVel   = ratio - barLastRatio;
         barLastRatio = ratio;
@@ -817,71 +790,26 @@ class DAGPlayer extends FlxGroup
         final prevMod = Mods.currentModDirectory;
         Mods.currentModDirectory = mod;
 
-        final instPath = Paths.instPath(song);
-        if (instPath == null #if sys || !FileSystem.exists(instPath) #end)
-        {
-            Mods.currentModDirectory = prevMod;
-            return;
-        }
-
-        final seen:Array<String>                    = [];
-        final vocPaths:Array<{path:String, isOpp:Bool}> = [];
-        for (pf in [null, 'opponent', 'player'])
-        {
-            final vp = Paths.voicesPath(song, pf);
-            if (vp == null #if sys || !FileSystem.exists(vp) #end) continue;
-            final vl = vp.toLowerCase();
-            if (seen.contains(vl)) continue;
-            seen.push(vl);
-            vocPaths.push({path: vp, isOpp: pf == 'opponent'});
-        }
-        Mods.currentModDirectory = prevMod;
-
         isLoading   = true;
         loadPending = true;
         final gen  = ++loadGen;
         final lMod = mod;
         final lSong = song;
 
-        #if sys
-        final mt = sys.thread.Thread.current();
-        sys.thread.Thread.create(() -> {
-            final i = #if mobile openfl.utils.Assets.getSound(instPath, false) #else openfl.media.Sound.fromFile(instPath) #end;
-            final vs:Array<{snd:openfl.media.Sound, isOpp:Bool}> = [];
-            for (v in vocPaths)
-            {
-                final s = #if mobile openfl.utils.Assets.getSound(v.path, false) #else openfl.media.Sound.fromFile(v.path) #end;
-                if (s != null) vs.push({snd: s, isOpp: v.isOpp});
-            }
-            mt.sendMessage({inst: i, vocs: vs, gen: gen, lyricsMod: lMod, lyricsSong: lSong});
-        });
-        #else
-        final i = openfl.utils.Assets.getSound(instPath, false);
+        final i = Paths.inst(song);
         final vs:Array<{snd:openfl.media.Sound, isOpp:Bool}> = [];
-        for (v in vocPaths)
+        for (pf in [null, 'opponent', 'player'])
         {
-            final s = openfl.utils.Assets.getSound(v.path, false);
-            if (s != null) vs.push({snd: s, isOpp: v.isOpp});
+            final s = Paths.voices(song, pf);
+            if (s != null) vs.push({snd: s, isOpp: pf == 'opponent'});
         }
+        Mods.currentModDirectory = prevMod;
         _finishLoad({inst: i, vocs: vs, gen: gen, lyricsMod: lMod, lyricsSong: lSong});
-        #end
-    }
-
-    function checkLoad():Void
-    {
-        #if sys
-        if (!loadPending) return;
-        final msg:Dynamic = sys.thread.Thread.readMessage(false);
-        if (msg == null || !Reflect.hasField(msg, "gen")) return;
-        final data:{inst:openfl.media.Sound, vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}>, gen:Int, lyricsMod:String, lyricsSong:String} = msg;
-        _finishLoad(data);
-        #end
     }
 
     function _finishLoad(data:{inst:openfl.media.Sound, vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}>, gen:Int, lyricsMod:String, lyricsSong:String}):Void
     {
         if (data == null) return;
-        
         if (data.gen != loadGen)
         {
             data.inst?.close();
@@ -895,7 +823,6 @@ class DAGPlayer extends FlxGroup
         inst = FlxG.sound.load(data.inst);
         inst.looped = loopEnabled;
         inst.volume = 0.0;
-
         for (v in data.vocs)
         {
             if (v == null || v.snd == null) continue;
@@ -968,7 +895,6 @@ class DAGarden extends MusicBeatSubstate
 {
     public static var currentSong:String    = '';
     public static var currentSongMod:String = '';
-    public static var orphanPlayer:DAGPlayer = null;
 
     var checkers:FlxBackdrop;
     var decors:Array<FlxSprite> = [];
@@ -992,40 +918,10 @@ class DAGarden extends MusicBeatSubstate
         add(songs);
         buildFG();
 
-        if (orphanPlayer != null)
-        {
-            player = orphanPlayer;
-            orphanPlayer = null;
-            add(player);
-            
-            var currentSongIdx:Int = -1;
-            for (i in 0...songs.songList.length)
-            {
-                if (songs.songList[i] == player.loadedSong)
-                {
-                    currentSongIdx = i;
-                    break;
-                }
-            }
-
-            if (currentSongIdx != -1)
-            {
-                songs.selectIndex(currentSongIdx);
-                @:privateAccess songs.scrollToSelected(); 
-            }
-            else if (songs.songList.length > 0)
-            {
-                onSongSelected(0);
-            }
-        }
-        else
-        {
-            player = new DAGPlayer();
-            add(player);
-            if (songs.songList.length > 0)
-                onSongSelected(0);
-        }
-
+        player = new DAGPlayer();
+        add(player);
+        if (songs.songList.length > 0)
+            onSongSelected(0);
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", null); #end
         super.create();
     }
@@ -1072,13 +968,13 @@ class DAGarden extends MusicBeatSubstate
         checkers.alpha      = 0.10;
         checkers.velocity.x = -60;
         add(checkers);
-
         for (d in [
             {x: 560, y: 560, f: "objects/1.png", s: 0.25},
             {x: 950, y: 580, f: "objects/2.png", s: 0.15},
             {x:1100, y:  50, f: "objects/3.png", s: 0.25},
             {x: 540, y: 300, f: "objects/4.png", s: 0.25},
             {x: 700, y: 800, f: "objects/6.png", s: 0.25},
+  
             {x: 550, y:  50, f: "objects/7.png", s: 0.25},
             {x: 800, y:  50, f: "objects/8.png", s: 0.25}
         ])
@@ -1087,13 +983,12 @@ class DAGarden extends MusicBeatSubstate
         }
 
         arrow  = spr(490, 90, "objects/arrow.png", 0.34);
-        spikes = new FlxBackdrop("assets/exe/extras/dagarden/sprites/spikes.png", Y, 0, 0);
+        spikes = new FlxBackdrop(Paths.getBitmapData("assets/exe/extras/dagarden/sprites/spikes.png"), Y, 0, 0);
         spikes.setPosition(70, 87);
         spikes.scale.set(0.34, 0.34);
         spikes.updateHitbox();
         spikes.velocity.y = 50;
         add(spikes);
-
         final ox = [20.0, -10.0,  25.0, -18.0,  12.0, -16.0, 28.0];
         final oy = [ 8.0,  18.0, -15.0,  22.0, -20.0,  14.0, 10.0];
         final dx = [ 3.2,   1.8,   2.9,   2.4,   3.6,   1.9,  3.3];
@@ -1142,7 +1037,8 @@ class DAGarden extends MusicBeatSubstate
 
     function handleInput():Void
     {
-        if (dagKey('dagarden_play'))    { if (player.isPlaying) player.pause(); else player.playAudio(songs.selectedSong(), songs.selectedMod()); }
+        if (dagKey('dagarden_play'))    { if (player.isPlaying) player.pause();
+        else player.playAudio(songs.selectedSong(), songs.selectedMod()); }
         if (dagKey('dagarden_loop'))    player.toggleLoop();
         if (dagKey('dagarden_vocals'))  player.toggleVocals();
         if (dagKey('dagarden_stop'))    player.fadeOutAndStop();
@@ -1151,8 +1047,8 @@ class DAGarden extends MusicBeatSubstate
         if (controls.BACK)
         {
             player.restoreWindowTitle();
-            if (player.isPlaying) { remove(player, true); orphanPlayer = player; }
-            else FlxG.sound.music?.resume();
+            player.stop(); 
+            FlxG.sound.music?.resume(); 
             close();
         }
     }

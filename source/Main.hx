@@ -5,7 +5,6 @@ import extension.androidtools.content.Context;
 #end
 
 import debug.FPSCounter;
-import debug.EXESoundTray;
 
 import flixel.FlxGame;
 import flixel.FlxState;
@@ -66,7 +65,6 @@ class Main extends Sprite
 	};
 
 	public static var fpsVar:FPSCounter;
-	public static var soundTray:EXESoundTray;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -168,17 +166,18 @@ class Main extends Sprite
 		ClientPrefs.loadDefaultKeys();
 		backend.Language.reload();
 		Achievements.load();
-		addChild(new FlxGame(game.width, game.height, game.initialState, game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
+
+		final push = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen);
+		@:privateAccess
+        push._customSoundTray = debug.EXESoundTray;
+
+		addChild(push);
 
 		FlxG.mouse.useSystemCursor = true;
 
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		fpsVar.visible = false;
 		addChild(fpsVar);
-
-		soundTray = new EXESoundTray();
-		addChild(soundTray);
-		FlxG.sound.soundTrayEnabled = false;
 		
 		FlxG.stage.align = "tl";
 		FlxG.stage.scaleMode = StageScaleMode.NO_SCALE;

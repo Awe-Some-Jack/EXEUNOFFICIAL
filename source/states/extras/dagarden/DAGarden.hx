@@ -3,6 +3,9 @@ package states.extras.dagarden;
 import backend.MusicBeatSubstate;
 import backend.Paths;
 import backend.Mods;
+import backend.ClientPrefs;
+import backend.Language;
+
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.tweens.FlxTween;
@@ -13,12 +16,14 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.group.FlxGroup;
+
 import openfl.display.BitmapData;
 import openfl.geom.Rectangle;
+
 import sys.FileSystem;
 import sys.io.File;
 
-private class DAGSongs extends FlxGroup
+class DAGSongs extends FlxGroup
 {
     public var songList:Array<String>          = [];
     public var songMods:Array<String>          = [];
@@ -219,14 +224,14 @@ private class DAGSongs extends FlxGroup
             try
             {
                 final json:Dynamic = haxe.Json.parse(File.getContent(p));
-                if (json.composer == null) return [];
+                if (json == null || json.composer == null) return [];
                 if (Std.isOfType(json.composer, Array))
                 {
                     final arr:Array<String> = cast json.composer;
                     return arr.filter(s -> s != null && s.length > 0);
                 }
                 final s = Std.string(json.composer);
-                return s.length > 0 ? [s] : [];
+                return s != null && s.length > 0 ? [s] : [];
             }
             catch (_:Dynamic) {}
         }
@@ -266,10 +271,19 @@ private class DAGSongs extends FlxGroup
     {
         final cv   = new FlxSprite(bx, by);
         final path = 'assets/exe/extras/dagarden/cover/$song.png';
+        var bmp:BitmapData = null;
+        
         if (FileSystem.exists(path))
         {
-            var bmp = Paths.getBitmapData(path);
-            if (bmp == null) bmp = BitmapData.fromFile(path);
+            bmp = Paths.getBitmapData(path);
+            if (bmp == null)
+            {
+                try { bmp = BitmapData.fromFile(path); } catch(_:Dynamic) {}
+            }
+        }
+        
+        if (bmp != null)
+        {
             cv.loadGraphic(bmp);
             cv.scale.set(0.308, 0.308);
             cv.updateHitbox();
@@ -316,7 +330,8 @@ class DAGPlayer extends FlxGroup
     var inst:FlxSound         = null;
     var vocals:Array<FlxSound> = [];
     var oppVocals:Array<FlxSound> = [];
-    var loadedSong:String = '';
+    
+    public var loadedSong:String = '';
     var loadedMod:String  = '';
 
     var fadeTarget:Float  = 1.0;
@@ -345,7 +360,6 @@ class DAGPlayer extends FlxGroup
     var origTitle:String  = '';
     var lastTitleSec:Int  = -1;
 
-
     public function new()
     {
         super();
@@ -360,7 +374,6 @@ class DAGPlayer extends FlxGroup
         if (composerTxt != null) FlxTween.cancelTweensOf(composerTxt);
         super.destroy();
     }
-
 
     public function restoreWindowTitle():Void
     {
@@ -397,7 +410,7 @@ class DAGPlayer extends FlxGroup
             fadeTarget = 1.0;
             fadeSpeed  = 12.0;
             isPlaying  = true;
-            #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, FlxMath.bound(inst.time, 0, inst.length)); #end
+            #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, FlxMath.bound(inst.time, 0, Math.max(1, inst.length))); #end
             return;
         }
         stop();
@@ -408,7 +421,7 @@ class DAGPlayer extends FlxGroup
     {
         isPlaying = false;
         pitchDown(() -> { inst?.pause(); for (v in vocals) v.pause(); });
-        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text} (Paused)', null, true, FlxMath.bound(inst?.time ?? 0, 0, inst?.length ?? 0)); #end
+        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text} (Paused)', null, true, FlxMath.bound(inst?.time ?? 0, 0, Math.max(1, inst?.length ?? 1))); #end
     }
 
     public function stop():Void
@@ -507,7 +520,7 @@ class DAGPlayer extends FlxGroup
         barInnerH = ((96 - 29)   / 96)   * bH;
 
         barProgress = new FlxSprite(barInnerX, barInnerY);
-        barProgress.makeGraphic(Math.ceil(barInnerW), Math.ceil(barInnerH), 0xFFCC0000);
+        barProgress.makeGraphic(Std.int(Math.ceil(barInnerW)), Std.int(Math.ceil(barInnerH)), 0xFFCC0000);
         barProgress.antialiasing = false;
         barClipRect = new flixel.math.FlxRect(0, 0, 0, barInnerH);
         barProgress.clipRect = barClipRect;
@@ -606,7 +619,6 @@ class DAGPlayer extends FlxGroup
         _debugPanel.shader = sh;
     }
 
-
     function updateComposer(elapsed:Float):Void
     {
         if (credits.length <= 1) return;
@@ -622,7 +634,6 @@ class DAGPlayer extends FlxGroup
             FlxTween.tween(composerTxt, {alpha: 1.0}, 0.4, {ease: FlxEase.quadIn});
         }});
     }
-
 
     function updateDiskSpin(elapsed:Float):Void
     {
@@ -647,13 +658,13 @@ class DAGPlayer extends FlxGroup
 
         final was = diskDragging;
         if (!FlxG.mouse.pressed) diskDragging = false;
-        if (was && !diskDragging) diskSpeed = (diskDragVel / elapsed) * (180 / Math.PI);
+        if (was && !diskDragging && elapsed > 0) diskSpeed = (diskDragVel / elapsed) * (180 / Math.PI);
         if (!diskDragging) { diskDragVel = 0.0; return; }
         if (inst == null || inst.length <= 0) return;
 
         var angle = Math.atan2(my - cy, mx - cx);
         var da    = angle - diskDragAngle;
-        if (da >  Math.PI) da -= Math.PI * 2; // thanks for gpt for ts. i couldnt figure out how to do this in haxe lmao
+        if (da >  Math.PI) da -= Math.PI * 2;
         if (da < -Math.PI) da += Math.PI * 2;
         diskDragAngle = angle;
         diskDragVel   = da;
@@ -694,8 +705,8 @@ class DAGPlayer extends FlxGroup
         {
             scratchActive = true;
             final v = diskDragging
-                ? FlxMath.bound(Math.abs(diskDragVel) / elapsed / 0.25, 0, 1)
-                : FlxMath.bound(Math.abs(barDragVel)  / elapsed / 0.5,  0, 1);
+                ? FlxMath.bound(Math.abs(diskDragVel) / (elapsed > 0 ? elapsed : 0.001) / 0.25, 0, 1)
+                : FlxMath.bound(Math.abs(barDragVel)  / (elapsed > 0 ? elapsed : 0.001) / 0.5,  0, 1);
             scratchPitch += (FlxMath.lerp(1.0, 0.30, v) - scratchPitch) * 18.0 * elapsed;
         }
         else if (scratchActive)
@@ -715,10 +726,10 @@ class DAGPlayer extends FlxGroup
         barProgress.clipRect = barClipRect;
         barKnob.setPosition(barInnerX + barInnerW * pct - barKnob.width * 0.5, barInnerY + barInnerH * 0.5 - barKnob.height * 0.5);
         barKnob.alpha += ((barDragging ? 1.0 : 0.0) - barKnob.alpha) * 0.25;
-        final rem = Math.max(0, Std.int((total - cur) / 1000));
+        
+        final rem:Int = Std.int(Math.max(0, (total - cur) / 1000));
         timeTxt.text = '${Std.int(rem / 60)}:${rem % 60 < 10 ? "0" : ""}${rem % 60}';
     }
-
 
     function updateFade(elapsed:Float):Void
     {
@@ -799,7 +810,6 @@ class DAGPlayer extends FlxGroup
         pitchSpeed  = 8.0;
     }
 
-
     function loadAsync(song:String, mod:String):Void
     {
         loadedSong = song;
@@ -861,20 +871,21 @@ class DAGPlayer extends FlxGroup
     {
         #if sys
         if (!loadPending) return;
-        final msg = sys.thread.Thread.readMessage(false);
-        if (msg == null) return;
-        final data:{inst:openfl.media.Sound, vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}>, gen:Int, lyricsMod:String, lyricsSong:String} = cast msg;
+        final msg:Dynamic = sys.thread.Thread.readMessage(false);
+        if (msg == null || !Reflect.hasField(msg, "gen")) return;
+        final data:{inst:openfl.media.Sound, vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}>, gen:Int, lyricsMod:String, lyricsSong:String} = msg;
         _finishLoad(data);
         #end
     }
 
     function _finishLoad(data:{inst:openfl.media.Sound, vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}>, gen:Int, lyricsMod:String, lyricsSong:String}):Void
     {
-        // outdated load? huh we dont do that here
+        if (data == null) return;
+        
         if (data.gen != loadGen)
         {
             data.inst?.close();
-            for (v in data.vocs) v.snd?.close();
+            for (v in data.vocs) if (v != null && v.snd != null) v.snd.close();
             return;
         }
         loadPending = false;
@@ -887,6 +898,7 @@ class DAGPlayer extends FlxGroup
 
         for (v in data.vocs)
         {
+            if (v == null || v.snd == null) continue;
             final snd = FlxG.sound.load(v.snd);
             if (snd == null) continue;
             snd.looped = false;
@@ -900,7 +912,7 @@ class DAGPlayer extends FlxGroup
         fadeTarget = 1.0;
         fadeSpeed  = 12.0;
         isPlaying  = true;
-        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, FlxMath.bound(inst.time, 0, inst.length)); #end
+        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, FlxMath.bound(inst.time, 0, Math.max(1, inst.length))); #end
     }
 
     function checkEnd():Void
@@ -967,21 +979,53 @@ class DAGarden extends MusicBeatSubstate
     var songs:DAGSongs;
     var player:DAGPlayer;
 
-
     override public function create():Void
     {
         FlxG.autoPause = false;
         FlxG.sound.music?.pause();
+        FlxG.mouse.visible = true;
+        
         buildBG();
         songs = new DAGSongs();
         songs.onSelect          = onSongSelected;
         songs.onChangeSelection = () -> controls.UI_DOWN_P ? 1 : controls.UI_UP_P ? -1 : 0;
         add(songs);
         buildFG();
-        player = new DAGPlayer();
-        add(player);
-        if (songs.songList.length > 0)
-            onSongSelected(0);
+
+        if (orphanPlayer != null)
+        {
+            player = orphanPlayer;
+            orphanPlayer = null;
+            add(player);
+            
+            var currentSongIdx:Int = -1;
+            for (i in 0...songs.songList.length)
+            {
+                if (songs.songList[i] == player.loadedSong)
+                {
+                    currentSongIdx = i;
+                    break;
+                }
+            }
+
+            if (currentSongIdx != -1)
+            {
+                songs.selectIndex(currentSongIdx);
+                @:privateAccess songs.scrollToSelected(); 
+            }
+            else if (songs.songList.length > 0)
+            {
+                onSongSelected(0);
+            }
+        }
+        else
+        {
+            player = new DAGPlayer();
+            add(player);
+            if (songs.songList.length > 0)
+                onSongSelected(0);
+        }
+
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", null); #end
         super.create();
     }
@@ -990,7 +1034,6 @@ class DAGarden extends MusicBeatSubstate
     {
         super.update(elapsed);
         if (subState != null) return;
-        spikes.velocity.y = 50;
         rotTime += elapsed;
         decors[0].angle = Math.sin(rotTime * 0.5) * 3;
         decors[2].angle = Math.cos(rotTime * 0.7) * 4;
@@ -1004,7 +1047,6 @@ class DAGarden extends MusicBeatSubstate
         FlxG.autoPause = true;
         super.destroy();
     }
-
 
     function buildBG():Void
     {
@@ -1049,6 +1091,7 @@ class DAGarden extends MusicBeatSubstate
         spikes.setPosition(70, 87);
         spikes.scale.set(0.34, 0.34);
         spikes.updateHitbox();
+        spikes.velocity.y = 50;
         add(spikes);
 
         final ox = [20.0, -10.0,  25.0, -18.0,  12.0, -16.0, 28.0];
@@ -1081,7 +1124,6 @@ class DAGarden extends MusicBeatSubstate
         add(s);
         return s;
     }
-
 
     function onSongSelected(index:Int):Void
     {

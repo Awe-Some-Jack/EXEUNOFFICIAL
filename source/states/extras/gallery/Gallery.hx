@@ -966,4 +966,36 @@ class Gallery extends MusicBeatSubstate
             _openViewer();
         }
     }
+
+    override function destroy() 
+    {
+        if (box != null) 
+        { 
+            FlxTween.cancelTweensOf(box); 
+            FlxTween.cancelTweensOf(box.scale); 
+        }
+            
+        if (disco != null)
+            FlxTween.cancelTweensOf(disco);
+
+        for (s in [_selLeft, _selMid, _selRight]) 
+        {
+            if (s != null) 
+            { 
+                FlxTween.cancelTweensOf(s); 
+                FlxTween.cancelTweensOf(s.scale); 
+            }
+        }
+
+        for (item in menuItems) 
+        {
+            if (item != null) 
+            { 
+                FlxTween.cancelTweensOf(item); 
+                FlxTween.cancelTweensOf(item.scale); 
+            }
+        }
+
+        super.destroy();
+    }
 }

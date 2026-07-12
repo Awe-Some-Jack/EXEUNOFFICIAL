@@ -983,4 +983,38 @@ class Cutscene extends MusicBeatSubstate
             }
         });
     }
+
+    override function destroy()
+    {
+        if (menuItems != null)
+            for (item in menuItems)
+                if (item != null) 
+                { 
+                    FlxTween.cancelTweensOf(item); 
+                    FlxTween.cancelTweensOf(item.scale); 
+                }
+        
+        for (s in [_selLeft, _selMid, _selRight]) 
+            if (s != null) 
+            { 
+                FlxTween.cancelTweensOf(s); 
+                FlxTween.cancelTweensOf(s.scale); 
+            }
+        
+        if (box != null) 
+        { 
+            FlxTween.cancelTweensOf(box);  
+            FlxTween.cancelTweensOf(box.scale); 
+        }
+
+        if (disco != null) 
+            FlxTween.cancelTweensOf(disco);
+
+        if (_hud != null) 
+        { 
+            FlxTween.cancelTweensOf(_hud); 
+            _hud.destroy(); 
+            _hud = null; 
+        }
+    }
 }

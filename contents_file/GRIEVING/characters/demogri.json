@@ -1,89 +1,193 @@
 {
 	"animations": [
 		{
+			"offsets": [72, 5],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
 			"loop": false,
+			"name": "dudle"
+		},
+		{
 			"offsets": [272, 19],
+			"indices": [],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"loop": false,
+			"name": "2left"
 		},
 		{
-			"loop": false,
-			"offsets": [121, 18],
+			"offsets": [95, -63],
+			"indices": [],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"loop": false,
+			"name": "2down"
 		},
 		{
-			"loop": false,
-			"offsets": [123, 19],
+			"offsets": [80, -60],
+			"indices": [],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"loop": false,
+			"name": "5right"
 		},
 		{
-			"loop": false,
-			"offsets": [125, 103],
+			"offsets": [85, 25],
+			"indices": [],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"loop": false,
+			"name": "5up"
 		},
 		{
-			"offsets": [116, 27],
-			"loop": false,
+			"offsets": [92, -29],
+			"indices": [],
 			"fps": 24,
 			"anim": "uh oh",
-			"indices": [],
-			"name": "uh oh"
-		},
-		{
 			"loop": false,
-			"offsets": [72, 5],
-			"anim": "idle",
-			"fps": 24,
-			"name": "dudle",
-			"indices": []
+			"name": "2uh oh"
 		},
 		{
-			"offsets": [155, 71],
+			"offsets": [97, -31],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle-alt",
+			"loop": false,
+			"name": "alt idle"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT-2",
+			"loop": false,
+			"name": "2right"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-2",
+			"loop": false,
+			"name": "2up"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT-2",
+			"loop": false,
+			"name": "2left"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN-2",
+			"loop": false,
+			"name": "5down"
+		},
+		{
+			"offsets": [87, -50],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle-alt2",
+			"loop": false,
+			"name": "idle"
+		},
+		{
+			"offsets": [85, -51],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT-3",
+			"loop": false,
+			"name": "3right"
+		},
+		{
+			"offsets": [85, 24],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-3",
+			"loop": false,
+			"name": "3up"
+		},
+		{
+			"offsets": [223, -52],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT-3",
+			"loop": false,
+			"name": "3left"
+		},
+		{
+			"offsets": [87, -48],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN-3",
+			"loop": false,
+			"name": "3down"
+		},
+		{
+			"offsets": [85, -14],
+			"indices": [],
+			"fps": 24,
+			"anim": "mira",
+			"loop": false,
+			"name": "look"
+		},
+		{
+			"offsets": [109, 31],
+			"indices": [],
+			"fps": 24,
+			"anim": "aydiosmio",
+			"loop": false,
+			"name": "miedo"
+		},
+		{
+			"offsets": [284, 139],
+			"indices": [],
+			"fps": 24,
+			"anim": "all",
+			"loop": false,
+			"name": "xd"
+		},
+		{
+			"offsets": [166, 38],
 			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT-alt",
 			"loop": false,
-			"name": "Símbolo 113"
+			"name": "4left"
 		},
 		{
-			"offsets": [46, -96],
+			"offsets": [42, -150],
 			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN-alt",
 			"loop": false,
-			"name": "Símbolo 112"
+			"name": "4down"
 		},
 		{
-			"offsets": [105, 36],
+			"offsets": [72, -15],
 			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT-alt",
 			"loop": false,
-			"name": "Símbolo 114"
+			"name": "4right"
 		},
 		{
-			"offsets": [188, 117],
+			"offsets": [171, 52],
 			"indices": [],
 			"fps": 24,
 			"anim": "singUP-alt",
 			"loop": false,
-			"name": "Símbolo 111"
+			"name": "4up"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/demo",
+	"image": "characters/demogri atlas",
 	"position": [140, 210],
 	"healthicon": "demogri",
 	"flip_x": false,

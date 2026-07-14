@@ -44,7 +44,7 @@
 	"vocals_file": "",
 	"no_antialiasing": true,
 	"image": "characters/Sonic_EXE_Pixel",
-	"position": [250, 30],
+	"position": [180, 20],
 	"healthicon": "XENO-P2P",
 	"flip_x": false,
 	"healthbar_colors": [36, 1, 116],

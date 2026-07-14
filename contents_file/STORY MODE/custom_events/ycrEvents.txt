@@ -1,0 +1,5 @@
+[
+    tweenObjectAlpha[checkLUA],
+    stageMode[checkLUA],
+    vignetteMode[checkLUA]
+]

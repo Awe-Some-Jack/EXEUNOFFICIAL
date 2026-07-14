@@ -1,0 +1,71 @@
+{
+	"animations": [
+		{
+			"offsets": [343, -9],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [85, -8],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/down"
+		},
+		{
+			"offsets": [-6, 469],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/up"
+		},
+		{
+			"offsets": [16, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/right"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "all",
+			"loop": false,
+			"name": "xd"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "laugh",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/gawafa"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/griatos and demogri atlas",
+	"position": [-50, -160],
+	"healthicon": "griatos",
+	"flip_x": false,
+	"healthbar_colors": [74, 37, 41],
+	"camera_position": [-400, -90],
+	"sing_duration": 14,
+	"scale": 1.1,
+	"_editor_isPlayer": false
+}

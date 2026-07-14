@@ -17,12 +17,12 @@ local GeneralBG = {
 }
 
 local YCRBG = {
-	{name = 'floor',      path = 'yrc/floor',      x = -1050, y = -520, scrollX = 1,   scrollY = 1},
+	{name = 'floor',      path = 'yrc/floor',       x = -1050, y = -520, scrollX = 1,   scrollY = 1},
 	{name = 'frontRocks', path = 'yrc/frontRocks',  x = -1050, y = -520, scrollX = 0.8, scrollY = 1, front = true},
 }
 
 local YCRPixelBG = {
-	{name = 'pixelCave',       path = 'yrc/caverna',      x = 520, y = 50,   animated = true, animPrefix = 'caverna_gif', fps = 24, scaleX = 2, scaleY = 2, scrollX = 1,   scrollY = 1},
+	{name = 'pixelCave',       path = 'yrc/caverna',       x = 520, y = 50,   animated = true, animPrefix = 'caverna_gif', fps = 24, scaleX = 2, scaleY = 2, scrollX = 1,   scrollY = 1},
 	{name = 'pixelCaveBG',     path = 'yrc/fondocaberna',  x = 0,   y = -260, scaleX = 2, scaleY = 2, scrollX = 0.9, scrollY = 0.9},
 	{name = 'pixelFloorRight', path = 'yrc/piso2',         x = 790, y = 130,  scaleX = 2, scaleY = 2, scrollX = 1,   scrollY = 1},
 	{name = 'pixelFloor',      path = 'yrc/piso',          x = 0,   y = 130,  animated = true, animPrefix = 'piso_gif', fps = 24, scaleX = 2, scaleY = 2, scrollX = 1, scrollY = 1},
@@ -47,7 +47,6 @@ local function addSprite(def)
 	else
 		makeLuaSprite(def.name, def.path, def.x or 0, def.y or 0)
 	end
-    
 
 	-- scale 
 	scaleObject(def.name, def.scaleX or 1, def.scaleY or 1)
@@ -55,25 +54,17 @@ local function addSprite(def)
 	setProperty(def.name .. '.antialiasing', false)
 	setProperty(def.name .. '.alpha', startAlpha)
 
-	if def.centered then
-		screenCenter(def.name)
-	end
+	if def.centered        then screenCenter(def.name) end
 
-	if def.camera then
-		setObjectCamera(def.name, def.camera)
-	end
+	if def.camera          then setObjectCamera(def.name, def.camera) end
 
-	if def.behindbackRocks then
-		setObjectOrder(def.name, getObjectOrder('backRocks'))
-	end
+	if def.behindbackRocks then setObjectOrder(def.name, getObjectOrder('backRocks')) end
 
 	addLuaSprite(def.name, def.front or false)
 end
 
 local function addSpriteGroup(group)
-	for _, def in ipairs(group) do
-		addSprite(def)
-	end
+	for _, def in ipairs(group) do addSprite(def) end
 end
 
 local function destroyStage(group)
@@ -87,24 +78,18 @@ end
 local function showStage(group)
 	for _, def in ipairs(group) do
 		if not (def.lowQualityHide and lowQuality) then
-			setProperty(def.name .. '.alpha', 1)
+			setProperty(def.name..'.alpha', 1)
 		end
 	end
 end
 
 local function reloadAllNotes()
-	for i = 0, 7 do
-		callMethod('strumLineNotes.members[' .. i .. '].reloadNote', {''})
-	end
+	for i = 0, 7 do callMethod('strumLineNotes.members[' .. i .. '].reloadNote', {''}) end
 	for i = 0, getProperty('unspawnNotes.length') - 1 do
-		if getPropertyFromGroup('unspawnNotes', i, 'noteType') == '' then
-			callMethod('unspawnNotes[' .. i .. '].reloadNote', {''})
-		end
+		if getPropertyFromGroup('unspawnNotes', i, 'noteType') == '' then callMethod('unspawnNotes[' .. i .. '].reloadNote', {''}) end
 	end
 	for i = 0, getProperty('notes.length') - 1 do
-		if getPropertyFromGroup('notes', i, 'noteType') == '' then
-			callMethod('notes.members[' .. i .. '].reloadNote', {''})
-		end
+		if getPropertyFromGroup('notes', i, 'noteType') == '' then callMethod('notes.members[' .. i .. '].reloadNote', {''}) end
 	end
 end
 
@@ -129,6 +114,24 @@ local function setVignette(mode)
 end
 
 function onCreate()
+	--Precaching everything
+	for _, def in ipairs(vignette)     do precacheImage(def.path) end
+	for _, def in ipairs(GeneralBG)    do precacheImage(def.path) end
+	for _, def in ipairs(YCRBG)        do precacheImage(def.path) end
+	for _, def in ipairs(YCRPixelBG)   do precacheImage(def.path) end
+	for _, def in ipairs(YCRCrystalBG) do precacheImage(def.path) end
+
+	addCharacterToList("sonic.exe 2 p", 'dad')
+	addCharacterToList("sonic.exe 2 mad", 'dad')
+	addCharacterToList("bfpixel", 'bf')
+	addCharacterToList("gf pixel yrc", 'gf')
+end
+
+function onCreatePost()
+	setProperty('camHUD.alpha', 0)
+    triggerEvent('Tweening Camera', '-500, 0', '0.001, linear')
+    triggerEvent('Tween Camera Zoom', '1.4, true', '0.001, linear')
+
 	ogGfPosition = {getProperty('gf.x'), getProperty('gf.y')}
 
 	addSpriteGroup(vignette)
@@ -136,22 +139,14 @@ function onCreate()
 	addSpriteGroup(GeneralBG)
 	addSpriteGroup(YCRBG)
 
-	for _, def in ipairs(YCRPixelBG) do
-		def.alpha = 0
-		addSprite(def)
-	end
-	for _, def in ipairs(YCRCrystalBG) do
-		def.alpha = 0
-		addSprite(def)
-	end
+	for _, def in ipairs(YCRPixelBG)   do def.alpha = 0 addSprite(def) end
+	for _, def in ipairs(YCRCrystalBG) do def.alpha = 0 addSprite(def) end
 
 	setScrollFactor('gfGroup', 1, 1)
 end
 
 function opponentNoteHit()
-	if canShake then
-		cameraShake('game', shakeIntensity, 0.05)
-	end
+	if canShake then cameraShake('game', shakeIntensity, 0.05) end
 end
 
 function onBeatHit()
@@ -204,13 +199,9 @@ function onUpdatePost(elapsed)
 end
 
 local savedScale = {1, 1}
-function onStepHit()
-	if curStep == 80 then
-		setVignette('slow')
-
-	elseif curStep == 528 then
-		destroyStage(YCRBG)
-		destroyStage(GeneralBG)
+local stageMode = {
+	["PixelMode"] = function()
+		destroyStage(YCRBG) destroyStage(GeneralBG)
 
 		showStage(YCRPixelBG)
 
@@ -246,8 +237,8 @@ function onStepHit()
 
 		setPropertyFromClass('states.PlayState', 'stageUI', 'pixel')
 		reloadAllNotes()
-
-	elseif curStep == 800 then
+	end,
+	["CrystalMode"] = function()
 		destroyStage(YCRPixelBG)
 
 		showStage(YCRCrystalBG)
@@ -260,9 +251,7 @@ function onStepHit()
 		setProperty('gf.x', ogGfPosition[1])
 		setProperty('gf.y', ogGfPosition[2])
 
-		if not lowQuality then
-			setProperty('glow.alpha', 0.5)
-		end
+		if not lowQuality then setProperty('glow.alpha', 0.5) end
 
 		setPropertyFromClass('states.PlayState', 'stageUI', 'normal')
 		reloadAllNotes()
@@ -278,10 +267,23 @@ function onStepHit()
 				setProperty('notes.members['..i..'].offset.y', getProperty('notes.members['..i..'].offset.y') + 10)
 			end
 		end
+	end
+}
 
+function onEvent(n, v1, v2)
+	if n == 'ycrEvents' then
+		local split = stringSplit(v2, ', ')
+		if v1 == 'tweenObjectAlpha' then cancelTween(split[1]..'OP') doTweenAlpha(split[1]..'OP', split[1], split[2], split[3]) end
+		if v1 == 'stageMode'        then stageMode[split[1]]() end
+		if v1 == 'vignetteMode'     then setVignette(split[1]) end
+	end
+end
+
+function onStepHit()
+	if curStep == 80 then
+		setVignette('slow')
 	elseif curStep == 864 then
 		setVignette('slow')
-
 	elseif curStep == 1472 then
 		setVignette('none')
 	end

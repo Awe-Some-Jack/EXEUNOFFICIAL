@@ -49,36 +49,7 @@ class CameraStageHandler
 		};
 
 		// ---- you-cant-run ----
-		_handlers['you-cant-run'] = {
-			onStepHit: function(cam:GameplayCamera, curStep:Int) {
-				for (s in [0, 80, 528, 800, 1176])
-					PlayState.instance.cameraSpeed = (curStep == s) ? 1000000 : 1;
-				if (curStep == 128) cam.settings.MiddleCamera  = false;
-				if (curStep == 144) cam.settings.OverrideZoom  = false;
-				for (s in [432, 896, 1056, 1440])
-					if (curStep == s) { cam.settings.MiddleCamera = true;  cam.settings.OverrideZoom = false; }
-				for (s in [464, 928, 1120])
-					if (curStep == s) { cam.settings.MiddleCamera = false; cam.settings.OverrideZoom = false; }
-				if (curStep == 528)
-				{
-					cam.settings.DADx = 800;   cam.settings.DADy     = 120;
-					cam.settings.BFx  = 900;   cam.settings.BFy      = 120;
-					cam.settings.MiddleX      = 450;   cam.settings.MiddleY  = 100;
-					cam.settings.OverrideZoom = false;
-					cam.settings.OGZoom       = 2.2;   cam.settings.MiddleZoom = 2.0;
-					cam.settings.OffsetsBF    = 5;     cam.settings.OffsetsDAD = 5;
-				}
-				if (curStep == 800)
-				{
-					cam.settings.BFx  = 1200;  cam.settings.BFy      = 590;
-					cam.settings.DADx = 650;   cam.settings.DADy     = 590;
-					cam.settings.MiddleX      = 930;   cam.settings.MiddleY  = 530;
-					cam.settings.OverrideZoom = false;
-					cam.settings.OGZoom       = 0.7;   cam.settings.MiddleZoom = 0.65;
-					cam.settings.OffsetsBF    = 25;    cam.settings.OffsetsDAD = 25;
-				}
-			},
-		};
+		// HAHA NO CODE I MADE IT ALL AN EVENT HAHAHAAHAHAHAHAHAHHA FUCK YOU HAHAHAHHAHAHHAHAHAHAHAHAHAH (pls help me)
 
 		// ---- triple-trouble ----
 		_handlers['triple-trouble'] = {

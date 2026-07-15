@@ -106,6 +106,12 @@ function onCreatePost()
     setProperty('bfTransition.alpha', 0)
     addLuaSprite('bfTransition')
 
+    --The Missing Poster
+    makeLuaSprite('missingPoster', 'grieving/haze/missing_wip', -800, -1050)
+    setProperty('missingPoster.alpha', 0)
+    setObjectOrder('missingPoster', getObjectOrder('BlackGraphicGame') + 1)
+    addLuaSprite('missingPoster')
+
     setProperty('dad.visible', false)
     setObjectOrder('clouds3', getObjectOrder('dadGroup') + 1)
     setObjectOrder('ground', getObjectOrder('boyfriendGroup'))

@@ -1,92 +1,124 @@
 {
 	"animations": [
 		{
+			"loop": true,
+			"offsets": [586, 196],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
 			"offsets": [619, 188],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"loop": false,
+			"name": "poses normal/down"
 		},
 		{
 			"offsets": [587, 326],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"loop": false,
+			"name": "poses normal/up"
 		},
 		{
 			"offsets": [587, 188],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"loop": false,
+			"name": "poses normal/right"
 		},
 		{
 			"offsets": [651, 188],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"loop": false,
+			"name": "poses normal/left"
 		},
 		{
-			"offsets": [604, 194],
-			"loop": false,
-			"fps": 24,
-			"anim": "short",
+			"offsets": [628, 227],
 			"indices": [],
-			"name": "short"
-		},
-		{
-			"offsets": [589, 225],
-			"loop": false,
 			"fps": 24,
 			"anim": "bit",
-			"indices": [],
-			"name": "bitbox"
-		},
-		{
-			"offsets": [586, 196],
-			"loop": true,
-			"fps": 24,
-			"anim": "idle",
-			"indices": [],
-			"name": "idle"
-		},
-		{
-			"offsets": [614, -1],
 			"loop": false,
+			"name": "Carpeta de elementos duplicados/bitbox"
+		},
+		{
+			"offsets": [585, 123],
+			"indices": [],
+			"fps": 24,
+			"anim": "short",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/short"
+		},
+		{
+			"offsets": [578, -172],
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN-alt",
-			"indices": [],
-			"name": "2down "
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/2 down"
 		},
 		{
-			"offsets": [582, 49],
-			"loop": false,
+			"offsets": [525, -196],
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT-alt",
-			"indices": [],
-			"name": "2right"
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/2 right"
 		},
 		{
-			"offsets": [592, 313],
-			"loop": false,
+			"offsets": [619, -74],
+			"indices": [],
 			"fps": 24,
 			"anim": "singUP-alt",
-			"indices": [],
-			"name": "2up"
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/2 up"
 		},
 		{
-			"offsets": [588, 221],
-			"loop": false,
+			"offsets": [568, -205],
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/2 left"
+		},
+		{
+			"offsets": [662, 349],
 			"indices": [],
-			"name": "2left"
+			"fps": 24,
+			"anim": "what",
+			"loop": false,
+			"name": "a U"
+		},
+		{
+			"offsets": [652, 367],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-alt2",
+			"loop": false,
+			"name": "a U"
+		},
+		{
+			"offsets": [546, 26],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle-alt2",
+			"loop": false,
+			"name": "A I"
+		},
+		{
+			"offsets": [771, 236],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT-alt2",
+			"loop": false,
+			"name": "a L"
 		}
 	],
 	"vocals_file": "",

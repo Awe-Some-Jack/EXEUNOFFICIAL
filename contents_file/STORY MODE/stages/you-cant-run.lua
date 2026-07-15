@@ -11,14 +11,17 @@ local vignette = {
 }
 
 local GeneralBG = {
-	{name = 'backBackRocks', path = 'yrc/backBackRocks', x = -1050, y = -520, scrollX = 1, scrollY = 1, lowQualityHide = true},
-	{name = 'middleRocks',   path = 'yrc/middleRocks',   x = -1050, y = -520, scrollX = 1, scrollY = 1},
-	{name = 'backRocks',     path = 'yrc/backRocks',      x = -1050, y = -520, scrollX = 1, scrollY = 1},
+	{name = 'sky',           path = 'yrc/vc',            x = -650,  y = -520,               scrollX = 1, scrollY = 1, lowQualityHide = true},
+	{name = 'stars',         path = 'yrc/sky',           x = -650,  y = -520,               scrollX = 1, scrollY = 1, lowQualityHide = true},
+	{name = 'backBackRocks', path = 'yrc/backBackRocks', x = -1050, y = -520,               scrollX = 1, scrollY = 1, lowQualityHide = true},
+	{name = 'middleRocks',   path = 'yrc/middleRocks',   x = -1050, y = -520,               scrollX = 1,  scrollY = 1},
+	{name = 'middleRocks2',  path = 'yrc/middleRocks',   x = -1450, y = -520,               scrollX = 1,  scrollY = 1},
 }
 
 local YCRBG = {
+	{name = 'backRocks',  path = 'yrc/backRocks',   x = -1050, y = -520, scrollX = 1,   scrollY = 1},
 	{name = 'floor',      path = 'yrc/floor',       x = -1050, y = -520, scrollX = 1,   scrollY = 1},
-	{name = 'frontRocks', path = 'yrc/frontRocks',  x = -1050, y = -520, scrollX = 0.8, scrollY = 1, front = true},
+	{name = 'frontRocks', path = 'yrc/frontRocks',  x = -1050, y = -800, scrollX = 0.8, scrollY = 1, front = true},
 }
 
 local YCRPixelBG = {
@@ -29,10 +32,10 @@ local YCRPixelBG = {
 }
 
 local YCRCrystalBG = {
-	{name = 'backRocksCrystal',  path = 'yrc/backRocksCrystal',  x = -520,  y = -520, scrollX = 1,   scrollY = 1,   behindbackRocks = true, lowQualityHide = true},
-	{name = 'floorCrystal',      path = 'yrc/floorCrystal',      x = -1050, y = -520, scrollX = 1,   scrollY = 1},
-	{name = 'frontRocksCrystal', path = 'yrc/frontRocksCrystal',  x = -1050, y = -520, scrollX = 1,   scrollY = 1,   front = true},
-	{name = 'glow',              path = 'yrc/glow',               x = -700,  y = 500,  scrollX = 1.2, scrollY = 1.2, scaleX = 2.5, scaleY = 1.5, front = true, lowQualityHide = true},
+	{name = 'backRocksCrystal',  path = 'yrc/backRocksCrystal',   x = -1050, y = -520, scrollX = 1,   scrollY = 1, lowQualityHide = true},
+	{name = 'floorCrystal',      path = 'yrc/floorCrystal',       x = -1050, y = -520, scrollX = 1,   scrollY = 1},
+	{name = 'frontRocksCrystal', path = 'yrc/frontRocksCrystal',  x = -1050, y = -800, scrollX = 1,   scrollY = 1,   front = true},
+	{name = 'glow',              path = 'yrc/glow',               x = -700,  y =  500, scrollX = 1.2, scrollY = 1.2, scaleX = 2.5, scaleY = 1.5, front = true, lowQualityHide = true},
 }
 
 
@@ -59,6 +62,8 @@ local function addSprite(def)
 	if def.camera          then setObjectCamera(def.name, def.camera) end
 
 	if def.behindbackRocks then setObjectOrder(def.name, getObjectOrder('backRocks')) end
+
+	if def.behind then setObjectOrder(def.name, getObjectOrder(def.behind)) end
 
 	addLuaSprite(def.name, def.front or false)
 end
@@ -100,15 +105,12 @@ local function setVignette(mode)
 		doTweenAlpha('VGAlphaLoop', 'RedVG', 1, 0.95)
 
 	elseif mode == '1beat' or mode == '2beat' then
-		cancelTween('VGAlphaLoop')
-		cancelTween('VGAlphaLoop2')
+		cancelTween('VGAlphaLoop') cancelTween('VGAlphaLoop2')
 
-	else 
+	else
 		vignetteMode = 'none'
-		cancelTween('VGAlpha1Beat')
-		cancelTween('VGAlpha2Beat')
-		cancelTween('VGAlphaLoop')
-		cancelTween('VGAlphaLoop2')
+		cancelTween('VGAlpha1Beat') cancelTween('VGAlpha2Beat')
+		cancelTween('VGAlphaLoop')  cancelTween('VGAlphaLoop2')
 		doTweenAlpha('VGAlphaOff', 'RedVG', 0, 0.7)
 	end
 end
@@ -201,7 +203,7 @@ end
 local savedScale = {1, 1}
 local stageMode = {
 	["PixelMode"] = function()
-		destroyStage(YCRBG) destroyStage(GeneralBG)
+		destroyStage(YCRBG)
 
 		showStage(YCRPixelBG)
 
@@ -214,6 +216,18 @@ local stageMode = {
 		setProperty('boyfriend.y', getProperty('boyfriend.y') - 420)
 		setProperty('gf.x', getProperty('gf.x') - 105)
 		setProperty('gf.y', getProperty('gf.y') - 280)
+
+		triggerEvent('Set customCamera Position',     'bf', '900, 120')
+		triggerEvent('Set customCamera Position',    'dad', '800, 120')
+		triggerEvent('Set customCamera Position', 'middle', '850, 110')
+
+		triggerEvent('Set customCamera Zoom',     'OGZoom', '2.2')
+		triggerEvent('Set customCamera Zoom', 'MiddleZoom', '1.8')
+
+		triggerEvent('Set Character Offset',  'bf', '5')
+		triggerEvent('Set Character Offset', 'dad', '5')
+
+		setProperty('gameplayCam.settings.OverrideZoom', false)
 
 		gfFloatPos = {getProperty('gf.x'), getProperty('gf.y')}
 
@@ -251,6 +265,18 @@ local stageMode = {
 		setProperty('gf.x', ogGfPosition[1])
 		setProperty('gf.y', ogGfPosition[2])
 
+		triggerEvent('Set customCamera Position',     'bf', '1200, 590')
+		triggerEvent('Set customCamera Position',    'dad', '650, 590')
+		triggerEvent('Set customCamera Position', 'middle', '930, 530')
+
+		triggerEvent('Set customCamera Zoom',     'OGZoom',  '0.7')
+		triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.65')
+
+		triggerEvent('Set Character Offset',  'bf', '25')
+		triggerEvent('Set Character Offset', 'dad', '25')
+
+		setProperty('gameplayCam.settings.OverrideZoom', false)
+
 		if not lowQuality then setProperty('glow.alpha', 0.5) end
 
 		setPropertyFromClass('states.PlayState', 'stageUI', 'normal')
@@ -276,15 +302,5 @@ function onEvent(n, v1, v2)
 		if v1 == 'tweenObjectAlpha' then cancelTween(split[1]..'OP') doTweenAlpha(split[1]..'OP', split[1], split[2], split[3]) end
 		if v1 == 'stageMode'        then stageMode[split[1]]() end
 		if v1 == 'vignetteMode'     then setVignette(split[1]) end
-	end
-end
-
-function onStepHit()
-	if curStep == 80 then
-		setVignette('slow')
-	elseif curStep == 864 then
-		setVignette('slow')
-	elseif curStep == 1472 then
-		setVignette('none')
 	end
 end

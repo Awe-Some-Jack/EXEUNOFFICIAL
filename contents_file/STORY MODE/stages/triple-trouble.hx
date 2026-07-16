@@ -42,7 +42,7 @@ var xeno:Array<BackgroundSprite> = [
 	{path: 'tt/bgx/trees4', position: [-800, -800], scroll: [0.3, 0.3], visible: false, pathF: 'tt/bgx/fire/trees4'},
 	{path: 'tt/bgx/trees3', position: [-700, -600], scroll: [0.55, 0.55], visible: false, pathF: 'tt/bgx/fire/trees3'},
 	{path: 'tt/bgx/fire/FIRE 2', position: [-1000, -700], scroll: [0.55, 0.55], scale: [6, 10, true], animation: [{name: 'fire instancia 1', looped: true}], visible: false, isFire: true},
-	{path: 'tt/bgx/trees2', position: [-600, -600], scroll: [0.7, 0.7], visible: false, pathF: 'tt/bgx/fire/tres2'},
+	{path: 'tt/bgx/trees2', position: [-600, -600], scroll: [0.7, 0.7], visible: false, pathF: 'tt/bgx/fire/trees2'},
 	{path: 'tt/bgx/NewTitleMenuBG', position: [-300, -200], scroll: [0.85, 0.85], scale: [6, 6, true], animation: [{name: 'TitleMenuSSBG instance 1', looped: true}], visible: false},
 	{path: 'tt/bgx/fire/FIRE', position: [-600, -800], scroll: [0.85, 0.85], scale: [3, 3, true], animation: [{name: 'fuego true instancia 1', looped: true}], visible: false, isFire: true},
 	{path: 'tt/bgx/trees1', position: [-600, -200], scroll: [0.9, 0.9], visible: false, pathF: 'tt/bgx/fire/trees1'},
@@ -84,7 +84,6 @@ var egg:Array<BackgroundSprite> = [
 
 final game:PlayState = PlayState.instance;
 final prefs = ClientPrefs.data;
-final lq:Bool = ClientPrefs.data.lowQuality;
 final cam = game.gameplayCam.settings;
 
 var glow:FlxSprite;
@@ -148,7 +147,7 @@ function onCreate()
 	fogOverlay.visible = false;
 	game.add(fogOverlay);
 
-	if (!lq)
+	if (!ClientPrefs.data.lowQuality)
 	{
 		fogShader = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('wavyDistortion')));
 		fogShader.setFloat('amount', 2);
@@ -157,9 +156,7 @@ function onCreate()
 
 	//preload chars
 	preloadCharacter(1, 'BEAST');
-	preloadCharacter(0, 'bf-perspective-right');
-	preloadCharacter(1, 'BEAST-RIGHT');
-	preloadCharacter(0, 'bf-perspective-left');
+	preloadCharacter(0, 'bf-perspective');
 	preloadCharacter(1, 'knux');
 	preloadCharacter(1, 'eggman');
 }
@@ -181,9 +178,24 @@ function onEvent(n, v1, v2)
 	{
 		case 'tripletroublebgchange': changeBG(v1);
 		case 'flashbackstt': toggleFlashback();
-		case 'ttfirestart': onFireStart();
-		case 'fadecam':    fadeParticles(Std.parseFloat(v2));
-		case 'fadeHUD':    FlxTween.tween(camHUD, {alpha: 0}, 2.8);
+		case 'ttfirestart': 
+			for (spr in xeno) if (spr?.spriteF) {
+				debugPrint(spr.spriteF);
+				spr.spriteF.visible = true;
+				//spr.spriteF.visible = true; FlxTween.tween(spr.spriteF, {alpha: 1}, Conductor.crochet / (1000 / 8) / playbackRate);
+			}
+			var fireDur:Float = Conductor.crochet / (1000 / 10) / playbackRate;
+			if (xeno[3].sprite != null) FlxTween.tween(xeno[3].sprite, {y: -2700}, fireDur, {ease: FlxEase.cubeOut});
+			if (!ClientPrefs.data.lowQuality && xeno[6].sprite != null) FlxTween.tween(xeno[6].sprite, {y: 250}, fireDur, {ease: FlxEase.cubeOut});
+			if (xeno[8].sprite != null) FlxTween.tween(xeno[8].sprite, {y: 400}, fireDur, {ease: FlxEase.cubeOut});
+			if (!ClientPrefs.data.lowQuality && xeno[12].sprite != null) FlxTween.tween(xeno[12].sprite, {y: 300}, fireDur, {ease: FlxEase.cubeOut});
+			canMakeParticles = true;
+		case 'fadecam':
+			canMakeParticles = false;
+			var dur:Float = Conductor.crochet / (1000 / Std.parseFloat(v2)) / playbackRate;
+			for (p in particleSprites) FlxTween.tween(p, {alpha: 0}, dur, {onComplete: (_) -> game.remove(p, true)});
+			particleSprites = [];
+		case 'fadeHUD': FlxTween.tween(camHUD, {alpha: 0}, 2.8);
 	}
 }
 
@@ -198,47 +210,22 @@ function toggleFlashback()
 		case 'tails':
 			if (isFlashback)
 			{
-				if (ClientPrefs.data.flashingLights) triggerEvent('Flash', 'FFFFFF,1', 'game');
 				for (spr in tails) spr.sprite.visible = true;
 				overlayTails.visible = true;
-			}
-			else
-			{
-				for (spr in normal) if (spr.sprite != null) spr.sprite.alpha = 1;
-				for (spr in tails) if (spr.sprite != null) { game.remove(spr.sprite, true); spr.sprite = null; }
-				overlayTails.visible = false;
 			}
 		case 'knux':
 			if (isFlashback)
 			{
-				if (ClientPrefs.data.flashingLights) triggerEvent('Flash', 'FFFFFF,1', 'game');
 				for (spr in knux) spr.sprite.visible = true;
 				for (spr in normal) if (!spr.isFire) spr.sprite.destroy();
-			}
-			else
-			{
-				for (spr in normal) if (spr.sprite != null) spr.sprite.alpha = 1;
-				for (spr in knux) if (spr.sprite != null) { game.remove(spr.sprite, true); spr.sprite = null; }
 			}
 		case 'egg':
 			if (isFlashback)
 			{
-				if (ClientPrefs.data.flashingLights) triggerEvent('Flash', 'FFFFFF,1', 'game');
 				for (spr in egg) spr.sprite.visible = true;
-				for (spr in normal)
-				{
-					spr.sprite?.destroy();
-					spr.spriteF?.destroy();
-				}
+				for (spr in normal) { spr.sprite?.destroy(); spr.spriteF?.destroy(); }
 				hideParticles = true;
 				for (p in particleSprites) p.alpha = 0;
-			}
-			else
-			{
-				for (spr in normal) if (spr.sprite != null) { spr.sprite.alpha = 1; if (spr.spriteF != null) spr.spriteF.alpha = 1; }
-				for (spr in egg) if (spr.sprite != null) { game.remove(spr.sprite, true); spr.sprite = null; }
-				hideParticles = false;
-				for (p in particleSprites) p.alpha = 1;
 			}
 	}
 }
@@ -257,7 +244,7 @@ function changeBG(bg:String):Void
 			overlayTails.destroy();
 
 			changeCharacter('dad', 'BEAST');
-			changeCharacter('bf', 'bf-perspective-right');
+			changeCharacter('bf', 'bf-perspective');
 
 			dad.setPosition(260, 635);
 			boyfriend.setPosition(1450, 910);
@@ -268,11 +255,14 @@ function changeBG(bg:String):Void
 			for (spr in knux) spr.sprite?.destroy();
 			glow.visible = true;
 
-			boyfriend.idleSuffix = '';
-			boyfriend.recalculateDanceIdle();
-
 			changeCharacter('dad', 'BEAST-RIGHT');
-			changeCharacter('bf', 'bf-perspective-left');
+			changeCharacter('bf', 'bf-perspective');
+
+			dad.setPosition(1435, 695);
+			boyfriend.setPosition(160, 950);
+
+			boyfriend.idleSuffix = '-knux';
+			boyfriend.recalculateDanceIdle();
 		case 'xeno3':
 			triggerEvent('flashbackstt', '', '');
 
@@ -281,7 +271,7 @@ function changeBG(bg:String):Void
 			glow.visible = true;
 
 			changeCharacter('dad', 'BEAST');
-			changeCharacter('bf', 'bf-perspective-right');
+			changeCharacter('bf', 'bf-perspective');
 		case 'knux':
 			triggerEvent('Knux', '', '');
 
@@ -300,8 +290,8 @@ function changeBG(bg:String):Void
 			changeCharacter('dad', 'knux');
 			changeCharacter('bf', 'bf');
 
-			dad.setPosition(1085, 785);
-			boyfriend.setPosition(145, 760);
+			dad.setPosition(1248, 937);
+			boyfriend.setPosition(125, 768);
 
 			boyfriend.idleSuffix = '-knux';
 			boyfriend.recalculateDanceIdle();
@@ -310,6 +300,7 @@ function changeBG(bg:String):Void
 
 			for (spr in xeno) spr.sprite?.destroy();
 			for (spr in normal) spr.spriteF.visible = true;
+
 
 			changeCharacter('dad', 'eggman');
 			changeCharacter('bf', 'bf');
@@ -452,24 +443,6 @@ function changeBG(bg:String):Void
 	**/
 }
 
-function onFireStart()
-{
-	for (spr in xeno)
-	{
-		if (spr.isFire && spr.spriteF != null)
-		{
-			spr.spriteF.visible = true;
-			FlxTween.tween(spr.spriteF, {alpha: 1}, Conductor.crochet / (1000 / 8) / playbackRate);
-		}
-	}
-	var fireDur:Float = Conductor.crochet / (1000 / 10) / playbackRate;
-	if (xeno[3].sprite != null) FlxTween.tween(xeno[3].sprite, {y: -2700}, fireDur, {ease: FlxEase.cubeOut});
-	if (!lq && xeno[6].sprite != null) FlxTween.tween(xeno[6].sprite, {y: 250}, fireDur, {ease: FlxEase.cubeOut});
-	if (xeno[8].sprite != null) FlxTween.tween(xeno[8].sprite, {y: 400}, fireDur, {ease: FlxEase.cubeOut});
-	if (!lq && xeno[12].sprite != null) FlxTween.tween(xeno[12].sprite, {y: 300}, fireDur, {ease: FlxEase.cubeOut});
-	canMakeParticles = true;
-}
-
 function spawnParticle()
 {
 	var p:FlxSprite = new FlxSprite(FlxG.random.int(0, 2000), 1500);
@@ -480,7 +453,7 @@ function spawnParticle()
 	p.scrollFactor.set(pScroll, pScroll);
 	p.acceleration.x = FlxG.random.float(-300, 50);
 	p.acceleration.y = FlxG.random.float(-400, -100);
-	p.antialiasing = !lq;
+	p.antialiasing = !ClientPrefs.data.lowQuality;
 	p.angularVelocity = FlxG.random.float(25, 240);
 	p.alpha = hideParticles ? 0 : 1;
 	if (FlxG.random.bool()) game.add(p);
@@ -490,45 +463,41 @@ function spawnParticle()
 
 function fadeParticles(duration:Float)
 {
-	canMakeParticles = false;
-	var dur:Float = Conductor.crochet / (1000 / duration) / playbackRate;
-	for (p in particleSprites)
-		FlxTween.tween(p, {alpha: 0}, dur, {onComplete: (_) -> game.remove(p, true)});
-	particleSprites = [];
+
 }
 
 function onUpdatePost(elapsed:Float)
 {
 	frameCounter++;
-	if (frameCounter % 30 == 0 && canMakeParticles && !lq)
+	if (frameCounter % 30 == 0 && canMakeParticles && !ClientPrefs.data.lowQuality)
 		spawnParticle();
-	if (!lq && fogShader != null)
+	if (!ClientPrefs.data.lowQuality && fogShader != null)
 	{
 		shaderTimer += elapsed * playbackRate;
 		fogShader.setFloat('iTime', shaderTimer);
 	}
 }
 
-function goodNoteHitPre(note) if (curBG == 'knux') note.animSuffix = '-knux';
+function goodNoteHitPre(note) if (curBG == 'knux' || curBG == 'xeno2') note.animSuffix = '-knux';
+function noteMiss(note) if (curBG == 'knux' || curBG == 'xeno2') boyfriend.playAnim(game.singAnimations[note.noteData] + 'miss-knux', true);
 
-var vgTween:FlxTween = null;
 function onBeatHit()
 {
 	if (curBeat % 4 == 0)
 	{
-		if (vgTween != null) vgTween.cancel();
-		vgTween = FlxTween.tween(vgSpr, {alpha: 1}, Conductor.crochet / 1000 * 2);
+		FlxTween.cancelTweensOf();
+		FlxTween.tween(vgSpr, {alpha: 1}, Conductor.crochet / 1000 * 2);
 	}
 	else if (curBeat % 4 == 2)
 	{
-		if (vgTween != null) vgTween.cancel();
+		FlxTween.cancelTweensOf();
 		vgTween = FlxTween.tween(vgSpr, {alpha: 0}, Conductor.crochet / 1000 * 2);
 	}
 
 	if (curBG.startsWith('xeno') && curBeat % 2 == 0)
 	{
 		if (dad.getAnimationName() == 'idle') dad.playAnim('idle', true);
-		if (boyfriend.getAnimationName() == 'idle') boyfriend.playAnim('idle', true);
+		if (boyfriend.getAnimationName() == 'idle' + (curBG == 'xeno2' ? '-knux' : '')) boyfriend.playAnim('idle' + (curBG == 'xeno2' ? '-knux' : ''), true);
 	}
 }
 
@@ -539,6 +508,7 @@ function makeBackground(background:Array<BackgroundSprite>, ?makeFire:Bool = fal
 {
 	for (spriteDef in background)
 	{
+		if (spriteDef.isFire && makeFire) continue;
 		var daoffset:Float = 0;
 		if (makeFire) daoffset = spriteDef.fireOffset ?? 0;
 		var sprite:FlxSprite = new FlxSprite((spriteDef.position ?? [0, 0])[0], (spriteDef.position ?? [0, 0])[1] + daoffset);

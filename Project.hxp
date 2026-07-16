@@ -224,7 +224,7 @@ class Project extends HXProject
             addAssetPath("assets/exe", "assets/exe", false);
 
         addAssetPath("assets/shared", "assets/shared", false);
-        addAssetPath("assets/embed", "assets/embed", true);
+        addAssetPath("assets/embed", "assets", true);
         addAssetPath("assets/songs", "assets/songs", false);
         addAssetPath("assets/week_assets", "assets", false);
 

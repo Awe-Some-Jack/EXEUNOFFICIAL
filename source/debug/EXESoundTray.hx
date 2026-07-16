@@ -63,6 +63,15 @@ class EXESoundTray extends FlxSoundTray
 
 		removeChildren();
 
+        volumeUpSound = "assets/shared/sounds/VolumeSwitch.ogg";
+        volumeDownSound = "assets/shared/sounds/VolumeSwitch.ogg";
+
+		if (!silent)
+        {
+            FlxG.sound.cache('$volumeUpSound');
+            FlxG.sound.cache('$volumeDownSound');
+        }
+
 		glowFilter   = new GlowFilter(colorBarGlow, 0.85, 5, 5, 2, 1, false, false);
 		shadowFilter = new DropShadowFilter(3, 60, 0x000000, 0.75, 5, 5, 1, 1, false, false, false);
 

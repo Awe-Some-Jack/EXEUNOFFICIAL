@@ -23,7 +23,7 @@ function onStartCountdown()
 
         runTimer('tweenCamToBF', 3)
 
-        runTimer('u!', 4.76)
+        runTimer('u!', 4.72)
 
         runTimer('tweenBackToExetior', 6.5)
 

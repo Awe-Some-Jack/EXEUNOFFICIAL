@@ -14,6 +14,12 @@
 			]
 		],
 		[
+			11538.4615384615,
+			[
+				["cyclesEvents", "revealHUD", ""]
+			]
+		],
+		[
 			12307.6923076923,
 			[
 				["bloomFlash", "0.3, 0", "0.9, circOut"]
@@ -242,7 +248,9 @@
 			76923.0769230769,
 			[
 				["Tween Camera Zoom", "1.4, true", "3, sineInOut"],
-				["Tweening Camera", "80, 50", "4, sineInOut"]
+				["Tweening Camera", "80, 50", "4, sineInOut"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
 			]
 		],
 		[
@@ -257,7 +265,9 @@
 			[
 				["bloomFlash", "0.3, 0", "0.9, circOut"],
 				["Tweening Camera", "0, 0", "0.9, circOut"],
-				["cameracenter", "true", ""]
+				["cameracenter", "true", ""],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
 			]
 		],
 		[
@@ -568,14 +578,18 @@
 		[
 			141538.461538461,
 			[
-				["Tween Camera Zoom", "1.1, true", "1.4, sineInOut"]
+				["Tween Camera Zoom", "1.1, true", "1.4, sineInOut"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
 			]
 		],
 		[
 			143076.923076923,
 			[
 				["bloomFlash", "0.3, 0", "0.9, circOut"],
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.7", ""],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
 			]
 		],
 		[
@@ -2249,9 +2263,9 @@
 	],
 	"gfVersion": "gf",
 	"song": "Cycles",
-	"validScore": true,
 	"needsVoices": true,
 	"stage": "cycles-hill",
+	"validScore": true,
 	"bpm": 156,
 	"speed": 3,
 	"format": "psych_v1_convert"

@@ -1,6 +1,4 @@
 
-local HEALTH_DRAIN = 0.016
-local MIN_HEALTH = 0.10
 local CAM_X = 500
 local START_ZOOM = 1.7
 local END_ZOOM = 0.64
@@ -20,12 +18,12 @@ local sprites = {
 	{name = 'water',     path = 'cycles/water',                      x = -1069, y = 1000, scaleX = 0.8, scaleY = 0.55},
 	{name = 'grass',     path = 'cycles/grass',                      x = -1027, y = 85,   scaleX = 0.75, scaleY = 0.7},
 	{name = 'knuxd',     path = 'cycles/knuxd',                      x = -339,  y = 243,  animated = true, prefix = 'knuxd'},
-	{name = 'treesBack', path = 'cycles/fondo animado/plant 1',      x = -1047, y = 0,    animated = true, prefix = "Símbolo 43", scaleX = 0.82, scaleY = 0.85},
+	{name = 'treesBack', path = 'cycles/fondo animado/plant 1',      x = -947,  y = 250,  animated = true, prefix = "Símbolo 43", scaleX = 0.6, scaleY = 0.6},
 	{name = 'eye',       path = 'cycles/fondo animado/ojo',          x = -614,  y = 722,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 12'},
+	{name = 'treeFront', path = 'cycles/fondo animado/plant t',      x = 772,  y = 90,  animated = true, prefix = 'Símbolo 50',  scaleX = 1.2, scaleY = 1.2},
 	{name = 'flor1',     path = 'cycles/fondo animado/flor',         x = 914,   y = 922,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 39'},
 	{name = 'eye',       path = 'cycles/fondo animado/ojo',          x = -614,  y = 722,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 12'},
 	{name = 'flor2',     path = 'cycles/fondo animado/flor 2',       x = -414,  y = 1022,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 40'},
-	{name = 'treeFront', path = 'cycles/fondo animado/plant t',      x = 1372,  y = 390,  animated = true, prefix = 'Símbolo 50',  scaleX = 0.67, scaleY = 0.72},
 }
 
 local function addSprite(def)
@@ -58,7 +56,6 @@ local transitionStartTime = 0
 
 local hbOriginalY = 0
 local hbHidden = false
-local uiRevealed = false
 local strumsY = 50
 local shaderTime = 0
 
@@ -111,11 +108,15 @@ function onCreatePost()
 			game.insert(idx, clouds);
 		}
 	]])
+
+	for i = 0, 3 do
+		for _, strums in ipairs({'playerStrums', 'opponentStrums'}) do
+			setProperty(strums..'.members['..i..'].y', downscroll and 800 or -200)
+		end
+	end
 end
 
-function onSongStart()
-	runTimer('startTransition', 1)
-end
+function onSongStart() runTimer('startTransition', 1) end
 
 function onUpdate(elapsed)
 	shaderTime = shaderTime + elapsed
@@ -153,6 +154,11 @@ end
 
 function onEvent(e, v1, v2)
 	if e == 'cyclesEvents' then
+		if v1 == 'revealHUD' then
+			for i = 0, 7 do noteTweenY(i..'TweenY', i, strumsY, 2 + (i * 0.1), 'quartOut') end
+			doTweenY('hbBGTween', 'hbBG', hbOriginalY, 0.8, 'quartOut') doTweenY('exeScoreTxtTween', 'exeScoreTxt', hbOriginalY + (downscroll and 30 or -30), 0.8, 'quartOut')
+			for _, name in ipairs(HB_ELEMENTS) do doTweenY(name .. 'Tween', name, hbOriginalY + 5, 0.8, 'quartOut') end
+		end
 		if v1 == 'tweenObject' then
 			local split = stringSplit(v2, ', ')
 			doTweenAlpha(split[1]..'Alpha', split[1], split[2], split[3])
@@ -165,12 +171,8 @@ function onEvent(e, v1, v2)
 			end
 		end
 		if v1 == 'hideEverything' then
-			for _, bg in ipairs(sprites) do
-				setProperty(bg.name..'.alpha', 0)
-			end
-			for _, chars in ipairs({"dad", "boyfriend"}) do
-				setProperty(chars..'.alpha', 0)
-			end
+			for _, bg in ipairs(sprites) do setProperty(bg.name..'.alpha', 0) end
+			for _, chars in ipairs({"dad", "boyfriend"}) do setProperty(chars..'.alpha', 0) end
 
 			setProperty('ais.alpha', 1)
 			doTweenAlpha('aisAlpha', 'ais', 0, 0.5)
@@ -179,27 +181,12 @@ function onEvent(e, v1, v2)
 end
 function onStepHit()
 	if cameraLocked and curStep > CAM_UNLOCK_STEP then
-		cameraLocked = false
-		triggerEvent('cyclesIntroEnd', '', '')
-	end
-
-	if not uiRevealed and curStep == UI_REVEAL_STEP then
-		uiRevealed = true
-		for i = 0, 3 do
-			noteTweenY('playerStrum' .. i, i, strumsY, 0.8, 'quartOut')
-			noteTweenY('opponentStrum' .. i, i + 4, strumsY, 0.8, 'quartOut')
-		end
-		doTweenY('hbBGTween', 'hbBG', hbOriginalY, 0.8, 'quartOut')
-		doTweenY('exeScoreTxtTween', 'exeScoreTxt', hbOriginalY + (downscroll and 30 or -30), 0.8, 'quartOut')
-		for _, name in ipairs(HB_ELEMENTS) do
-			doTweenY(name .. 'Tween', name, hbOriginalY + 5, 0.8, 'quartOut')
-		end
+		cameraLocked = false triggerEvent('cyclesIntroEnd', '', '')
 	end
 end
 
 function onTimerCompleted(tag)
 	if tag == 'startTransition' then
-		transitionStarted = true
-		transitionStartTime = getSongPosition() / 1000
+		transitionStarted = true transitionStartTime = getSongPosition() / 1000
 	end
 end

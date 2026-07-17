@@ -60,7 +60,7 @@ end
 
 luaDebugMode = true
 
---Scrappeado. Aún tengo que aprender a hacerlo bien.  -- SIGUE APRENIDENDO ENTONCES PUTAAAAAAAAAA OOOOOOHHHH ME CORROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+--Scrappeado. Aún tengo que aprender a hacerlo bien.  -- SIGUE APRENIDENDO ENTONCES PUTAAAAAAAAAA OOOOOOHHHH ME CORROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO --Y a este pendejo QUE LE PASA
 local function createReflection(shi)
     if shi.character then
         createInstance(shi.name, 'objects.Character', {0, 0, getProperty(shi.curCharacter..'.curCharacter'), shi.isPlayer})
@@ -111,7 +111,7 @@ function onCreatePost()
     setProperty('ojoexe.alpha', 0)
     addLuaSprite('ojoexe', true)
 
-    makeAnimatedLuaSprite('bfX', 'characters/bfx', getProperty('boyfriend.x') + 260, getProperty('boyfriend.y') - 160)
+    makeAnimatedLuaSprite('bfX', 'characters/bfx', getProperty('boyfriend.x') + 280, getProperty('boyfriend.y') - 160)
     addAnimationByPrefix('bfX', 'idle', 'idle', 24, false)
     addAnimationByPrefix('bfX', 'yeah', 'singUp', 24, true)
     addAnimationByPrefix('bfX', 'yeahMISS', 'missUp', 24, true)
@@ -123,6 +123,8 @@ function onCreatePost()
     makeAnimatedLuaSprite('gfEXE', 'characters/gf', 0, -80)
     addAnimationByPrefix('gfEXE', 'danceLeft', 'dance left instancia 1')
     addAnimationByPrefix('gfEXE', 'danceRight', 'dance right instancia 1')
+    addAnimationByIndices('gfEXE', 'stand', 'dance right instancia 1', '0', 24, true)
+    playAnim('gfEXE', 'stand', true)
     addLuaSprite('gfEXE')
 
 --[[
@@ -164,8 +166,8 @@ local EventHandlers = {
         elseif character == 'bfX' then
             setProperty('boyfriend.y', getProperty('boyfriend.y') + 40)
             doTweenAlpha('bfXAlpha', 'bfX', 1, 1)
-            doTweenX('bfXTween', 'bfX', getProperty('boyfriend.x') + 61, 1.5, 'circOut')
-            doTweenY('bfXYTween', 'bfX', getProperty('boyfriend.y') + 42, 1.5, 'circOut')
+            doTweenX('bfXTween', 'bfX', getProperty('boyfriend.x') + 125, 1.5, 'circOut')
+            doTweenY('bfXYTween', 'bfX', getProperty('boyfriend.y') + 125, 1.5, 'circOut')
         elseif character == 'bf' then
             doTweenAlpha('bfAlpha', 'boyfriend', 1, 1)
             doTweenAlpha('bfXAlpha', 'bfX', 0, 1)

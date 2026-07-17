@@ -7,15 +7,15 @@ local starlineBG = {
 	},
 	['characters'] = {
 		{name = 'espio',    character = 'espio',      x =   930, y = 130,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
-		{name = 'amy',      character =    'amy',     x =   730, y =  85,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'amy',      character =    'amy',     x =   730, y =  85,                                       scaleX = 6, scaleY = 6, alpha = 1, front = false},
 		{name = 'mighty',   character = 'mighty',     x =  -100, y =  65,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 		{name = 'knux',     character =   'knux',     x =  -640, y =  85,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 		{name = 'vector',   character = 'vector',     x =  -880, y =  65,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 		{name = 'charmy',   character = 'charmy',     x =   480, y = -95,  canFloat = true,  beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 	},
 	['cutsceneChars'] = {
-		{name = 'wech',  char =   'anim',  x = 500, y = 250, scaleX =  4, scaleY = 4, antialiasing = false, alpha = 0, front = false},
-		{name = 'bf-gf', char =  'anim2',  x = 430, y = 260, scaleX =  3, scaleY = 3, antialiasing = false, alpha = 0, front = false},
+		{name = 'wech',  char =   'anim',  x = 500, y = 300, scaleX =  4.6, scaleY = 4.6, antialiasing = false, alpha = 0, front = false},
+		{name = 'bf-gf', char =  'anim2',  x = 430, y = 180, scaleX =  3.8, scaleY = 3.8, antialiasing = false, alpha = 0, front = false},
 	}
 }
 
@@ -141,17 +141,22 @@ local starlineEvents = {
 			playAnim('dad', 'trans1', true)
 			for _, chars in ipairs({'boyfriend', 'dad', 'gf'}) do setProperty(chars..'.alpha', 0) end
 			for _, bgChars in ipairs(starlineBG['characters']) do setProperty(bgChars.name..'.alpha', 0) end
+
 			setProperty('wech.alpha', 1)
 			setProperty('bg1.alpha', 0)
 			setProperty('camHUD.alpha', 0)
-			doTweenY('wechY', 'wech', getProperty('wech.y') - 50, 0.5)
 			playAnim('wech', 'idle', true)
+
+			doTweenY('wechTween', 'wech', getProperty('wech.y') - 160, 1.2, 'cubeOut')
 		elseif number == '2' then
 			setProperty('wech.alpha', 0)
 			setProperty('bf-gf.alpha', 1)
 			playAnim('bf-gf', 'idle', true)
+
+			doTweenX('bfGfTween', 'bf-gf', getProperty('bf-gf.x') + 70, 1.4, 'sineInOut')
 		elseif number == '3' then
 			playAnim('bf-gf', 'idle-alt', true)
+			doTweenX('bfGfTween', 'bf-gf', getProperty('bf-gf.x') - 70, 0.8, 'quadOut')
 		end
 	end,
 	['fadeStage'] = function() doTweenAlpha('fadeToBlack', 'blackOverlay', 1, 2, 'sineIn') end,
@@ -179,7 +184,8 @@ local starlineEvents = {
 		setProperty('bg2.alpha', 1)
 		setProperty('tails.alpha', 1)
 		setProperty('cieloFucked.alpha', 1)
-	end
+	end,
+	['fadeSong'] = function() doTweenAlpha('fadeSongTween', 'BlackGraphicOther', 1, 4) end
 }
 
 function onEvent(n, v1, v2)
@@ -187,7 +193,9 @@ function onEvent(n, v1, v2)
 end
 function onBeatHit()
 	for _, beatGuys in ipairs(starlineBG['characters']) do
-		if curBeat %beatGuys.beatIntervals == 0 and not changeIdles then playAnim(beatGuys.name, 'idle', true) end
+		if beatGuys.beatIntervals then
+			if curBeat %beatGuys.beatIntervals == 0 and not changeIdles then playAnim(beatGuys.name, 'idle', true) end
+		end
 	end
 
 	if not glitchedActive then spawnStar() else spawnGlitch() end

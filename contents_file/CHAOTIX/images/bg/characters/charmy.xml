@@ -1,26 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="charmy.png">
-<SubTexture name="idle0000" x="74" y="26" width="19" height="25" frameX="0" frameY="-3" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0001" x="74" y="26" width="19" height="25" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0002" x="74" y="26" width="19" height="25" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0003" x="18" y="28" width="19" height="26" frameX="0" frameY="-3" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0004" x="18" y="28" width="19" height="26" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0005" x="18" y="28" width="19" height="26" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0006" x="55" y="0" width="19" height="26" frameX="0" frameY="-3" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0007" x="55" y="0" width="19" height="26" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0008" x="55" y="0" width="19" height="26" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0009" x="36" y="0" width="19" height="27" frameX="0" frameY="-2" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0010" x="36" y="0" width="19" height="27" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0011" x="36" y="0" width="19" height="27" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0012" x="0" y="0" width="18" height="28" frameX="-1" frameY="-1" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0013" x="0" y="0" width="18" height="28" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0014" x="0" y="0" width="18" height="28" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0015" x="18" y="0" width="18" height="28" frameX="-1" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0016" x="18" y="0" width="18" height="28" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0017" x="18" y="0" width="18" height="28" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0018" x="0" y="28" width="18" height="27" frameX="-1" frameY="-1" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0019" x="0" y="28" width="18" height="27" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="idle0020" x="0" y="28" width="18" height="27" frameX="0" frameY="0" frameWidth="15" frameHeight="25" />
-<SubTexture name="scared0000" x="55" y="26" width="19" height="26" frameX="-3" frameY="-2" frameWidth="21" frameHeight="24" />
-<SubTexture name="scared0001" x="74" y="0" width="19" height="26" frameX="-3" frameY="-2" frameWidth="21" frameHeight="24" />
+<SubTexture name="scared0000" x="30" y="24" width="15" height="22" frameX="-3" frameY="-2" frameWidth="21" frameHeight="24" />
+<SubTexture name="scared0001" x="57" y="0" width="15" height="22" frameX="-3" frameY="-2" frameWidth="21" frameHeight="24" />
+<SubTexture name="charmy idle0000" x="57" y="22" width="15" height="21" frameX="-25" frameY="-18" frameWidth="72" frameHeight="47" />
+<SubTexture name="charmy idle0001" x="0" y="24" width="15" height="22" frameX="-25" frameY="-18" frameWidth="72" frameHeight="47" />
+<SubTexture name="charmy idle0002" x="15" y="24" width="15" height="22" frameX="-25" frameY="-18" frameWidth="72" frameHeight="47" />
+<SubTexture name="charmy idle0003" x="28" y="0" width="15" height="23" frameX="-25" frameY="-17" frameWidth="72" frameHeight="47" />
+<SubTexture name="charmy idle0004" x="0" y="0" width="14" height="24" frameX="-26" frameY="-16" frameWidth="72" frameHeight="47" />
+<SubTexture name="charmy idle0005" x="14" y="0" width="14" height="24" frameX="-26" frameY="-15" frameWidth="72" frameHeight="47" />
+<SubTexture name="charmy idle0006" x="43" y="0" width="14" height="23" frameX="-26" frameY="-16" frameWidth="72" frameHeight="47" />
 </TextureAtlas>

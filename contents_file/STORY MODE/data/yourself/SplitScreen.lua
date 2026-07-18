@@ -106,3 +106,7 @@ function getCharacterCameraPos(char)
 
 	return {x = charX, y = charY}
 end
+
+function onGameOverStart()
+	for _, cams in ipairs({'camLeft', 'camRight'}) do callMethod(cams..'.destroy') end
+end

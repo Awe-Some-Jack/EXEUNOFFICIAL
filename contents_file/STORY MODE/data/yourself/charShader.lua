@@ -30,7 +30,7 @@ function onEvent(n) if n == 'Change Character' then
     setSpriteShader('dad', 'DropShadowShader')
 
     setShaderFloat('dad', 'hue', 5)
-    setShaderFloat('dad', 'saturation', -60)
+    setShaderFloat('dad', 'saturation', -50)
     setShaderFloat('dad', 'brightness', -5)
     setShaderFloat('dad', 'contrast', 5)
 

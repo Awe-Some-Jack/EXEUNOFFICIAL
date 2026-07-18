@@ -84,7 +84,7 @@
 	"vocals_file": "",
 	"no_antialiasing": true,
 	"image": "characters/bf2",
-	"position": [130, 170],
+	"position": [130, 240],
 	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [49, 176, 209],

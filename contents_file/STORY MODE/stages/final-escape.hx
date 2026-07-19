@@ -192,8 +192,6 @@ function onCreate()
 	bfAtlas = new animate.internal.elements.FlxSpriteElement(bf);
 	bfAtlas.active = false;
 	bf.visible = false;
-
-	game.cpuControlled = true;
 }
 
 var notesPosition:Array<Array<Array<Float>>> = [[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]]];

@@ -1,6 +1,6 @@
 {
-    "BFx": 950,
-    "BFy": 1100,
+    "BFx": 980,
+    "BFy": 1050,
 
     "DADx": 2650,
     "DADy": 850,
@@ -9,13 +9,13 @@
     "GFy": 590,
 
     "MiddleCamera": false,
-    "MiddleX": 1620,
+    "MiddleX": 1800,
     "MiddleY": 700,
 
     "OverrideZoom": false,
 
     "OGZoom": 0.7,
-    "MiddleZoom": 0.6,
+    "MiddleZoom": 0.45,
 
     "OffsetsBF": 25,
     "OffsetsDAD": 25,

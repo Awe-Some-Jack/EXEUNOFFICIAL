@@ -1,83 +1,83 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": false,
-			"name": "miss"
+			"fps": 24,
+			"name": "miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": false,
-			"name": "miss"
+			"fps": 24,
+			"name": "miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"loop": false,
-			"name": "miss"
+			"fps": 24,
+			"name": "miss",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": true,
-			"name": "Símbolo 103"
+			"fps": 24,
+			"name": "Símbolo 103",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [0, 8],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": true,
-			"name": "lz1"
+			"fps": 24,
+			"name": "lz1",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": true,
-			"name": "dz1"
+			"fps": 24,
+			"name": "dz1",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [-4, 3],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": true,
-			"name": "uz1"
+			"fps": 24,
+			"name": "uz1",
+			"indices": []
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFTmiss",
 			"loop": false,
-			"name": "miss"
+			"offsets": [0, 0],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "miss",
+			"indices": []
 		},
 		{
-			"offsets": [2, 4],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
 			"loop": true,
-			"name": "rz2"
+			"offsets": [2, 4],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "rz2",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/bfrunningfe-backshoes",
 	"position": [0, 0],
-	"healthicon": "bf",
+	"healthicon": "rbf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],
 	"camera_position": [0, 0],

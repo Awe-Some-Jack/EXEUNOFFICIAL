@@ -1096,6 +1096,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.music.volume = 1;
 		vocals.volume = 1;
 		opponentVocals.volume = 1;
+		inst.volume = 1;
 
 		setSongTime(Math.max(0, startOnTime - 500) + Conductor.offset);
 		startOnTime = 0;
@@ -1179,6 +1180,8 @@ class PlayState extends MusicBeatState
 		}
 		catch (e:Dynamic) {}
 		FlxG.sound.list.add(inst);
+
+		inst.volume = 0;
 
 		notes = new FlxTypedGroup<Note>();
 		noteGroup.add(notes);
@@ -2899,16 +2902,14 @@ class PlayState extends MusicBeatState
 			if(char != null && (note == null || !note.noMissAnimation) && char.hasMissAnimations) char.playAnim(animToPlay, true);
 		}
 		
-		var missNote:FlxSound = FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+		var missNote:FlxSound = FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.2, 0.35));
 		if (ClientPrefs.data.ghostTapping) {
 			vocals.volume = 0;
-			opponentVocals.volume = 0;
 			missNotePlaying = true;
 			var restoreVocals = () -> {
 				if (!missNotePlaying) return;
 				missNotePlaying = false;
 				vocals.volume = 1;
-				opponentVocals.volume = 1;
 			};
 			if (missNote != null) {
 				missNote.onComplete = restoreVocals;

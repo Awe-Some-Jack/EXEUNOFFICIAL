@@ -1,0 +1,55 @@
+{
+	"animations": [
+		{
+			"offsets": [35, 20],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [15, -40],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [-30, 100],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [-30, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/finalexenofe",
+	"position": [0, 0],
+	"healthicon": "XENO-P4",
+	"flip_x": false,
+	"healthbar_colors": [45, 18, 105],
+	"camera_position": [0, 0],
+	"sing_duration": 6,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

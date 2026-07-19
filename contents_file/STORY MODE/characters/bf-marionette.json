@@ -1,49 +1,49 @@
 {
 	"animations": [
 		{
+			"offsets": [14, -57],
 			"loop": false,
-			"offsets": [436, 576],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [61, 167],
 			"loop": false,
-			"offsets": [126, 704],
+			"fps": 24,
 			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
 			"fps": 24,
-			"name": "up",
+			"name": "idle",
 			"indices": []
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "idle",
-			"loop": true,
-			"name": "idle"
-		},
-		{
-			"offsets": [321, 554],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [60, -57],
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
-			"offsets": [346, 576],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
 			"loop": false,
-			"name": "LEFT"
+			"offsets": [9, -37],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/bfmarionnettefe",
+	"image": "characters/bfmareado",
 	"position": [0, 0],
 	"healthicon": "bf",
 	"flip_x": true,

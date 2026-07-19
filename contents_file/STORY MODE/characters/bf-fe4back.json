@@ -1,83 +1,83 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFTmiss",
-			"fps": 24,
-			"name": "miss",
-			"indices": []
+			"indices": [],
+			"name": "miss"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "miss",
-			"indices": []
+			"indices": [],
+			"name": "miss"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "miss",
-			"indices": []
+			"indices": [],
+			"name": "miss"
 		},
 		{
+			"offsets": [0, 0],
 			"loop": false,
-			"offsets": [0, 0],
+			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"fps": 24,
-			"name": "miss",
-			"indices": []
+			"indices": [],
+			"name": "miss"
 		},
 		{
-			"loop": true,
 			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "cuerpo",
-			"indices": []
+			"indices": [],
+			"name": "cuerpo"
 		},
 		{
-			"loop": true,
 			"offsets": [44, -2],
+			"loop": true,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "cleft",
-			"indices": []
+			"indices": [],
+			"name": "cleft"
 		},
 		{
-			"loop": true,
 			"offsets": [-4, -29],
+			"loop": true,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "cdown",
-			"indices": []
+			"indices": [],
+			"name": "cdown"
 		},
 		{
-			"loop": true,
 			"offsets": [-3, 13],
-			"anim": "singUP",
+			"loop": true,
 			"fps": 24,
-			"name": "cup",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "cup"
 		},
 		{
-			"loop": true,
 			"offsets": [-10, 2],
-			"anim": "singRIGHT",
+			"loop": true,
 			"fps": 24,
-			"name": "crigh",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "crigh"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/bf5finalescape-legs",
 	"position": [0, 0],
-	"healthicon": "bf",
+	"healthicon": "rbf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],
 	"camera_position": [0, 0],

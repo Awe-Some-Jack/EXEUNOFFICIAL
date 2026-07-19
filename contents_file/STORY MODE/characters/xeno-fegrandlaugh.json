@@ -1,23 +1,31 @@
 {
 	"animations": [
 		{
-			"offsets": [209, 303],
-			"indices": [],
+			"offsets": [0, 0],
+			"loop": false,
 			"fps": 24,
 			"anim": "idle",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+			"name": "sas"
+		},
+		{
+			"offsets": [37, 190],
+			"indices": [],
+			"fps": 24,
+			"anim": "risa",
 			"loop": false,
-			"name": "laugh"
+			"name": "xd"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/xenolaughfe",
+	"image": "characters/risaxeno",
 	"position": [0, 0],
 	"healthicon": "XENO-P4",
 	"flip_x": false,
 	"healthbar_colors": [45, 18, 105],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.5,
 	"_editor_isPlayer": false
 }

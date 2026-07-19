@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [412, 401],
+			"loop": false,
+			"fps": 24,
 			"anim": "intro",
-			"fps": 24,
-			"name": "intro",
-			"indices": []
-		},
-		{
-			"loop": true,
-			"offsets": [0, 0],
-			"anim": "run",
-			"fps": 24,
-			"name": "bf",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [159, -39],
-			"anim": "slide",
-			"fps": 24,
-			"name": "slide",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [29, 248],
-			"anim": "jump",
-			"fps": 24,
-			"name": "jump",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, -3],
-			"anim": "hey",
-			"fps": 24,
-			"name": "hey",
-			"indices": []
-		},
-		{
-			"offsets": [330, 90],
 			"indices": [],
+			"name": "intro"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
 			"fps": 24,
-			"anim": "hit",
+			"anim": "run",
+			"indices": [],
+			"name": "bf"
+		},
+		{
+			"offsets": [159, -39],
 			"loop": false,
-			"name": "Símbolo 18"
+			"fps": 24,
+			"anim": "slide",
+			"indices": [],
+			"name": "slide"
+		},
+		{
+			"offsets": [29, 248],
+			"loop": false,
+			"fps": 24,
+			"anim": "jump",
+			"indices": [],
+			"name": "jump"
+		},
+		{
+			"offsets": [0, -3],
+			"loop": false,
+			"fps": 24,
+			"anim": "hey",
+			"indices": [],
+			"name": "hey"
+		},
+		{
+			"loop": false,
+			"offsets": [330, 90],
+			"anim": "hit",
+			"fps": 24,
+			"name": "Símbolo 18",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/bfrunningfexd",
 	"position": [0, 0],
-	"healthicon": "bf",
+	"healthicon": "rbf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],
 	"camera_position": [0, 0],

@@ -2,114 +2,114 @@
 	"animations": [
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "idle",
-			"loop": false,
+			"indices": [],
 			"name": "Símbolo 213"
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [9, 10, 11],
+			"loop": true,
 			"fps": 24,
 			"anim": "idle-loop",
-			"loop": true,
+			"indices": [9, 10, 11],
 			"name": "Símbolo 213 instancia 1"
 		},
 		{
-			"offsets": [51, 17],
-			"indices": [],
+			"offsets": [23, 4],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left S i"
 		},
 		{
-			"offsets": [-44, -115],
-			"indices": [],
+			"offsets": [-4, -45],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down S i"
 		},
 		{
-			"offsets": [-12, 172],
-			"indices": [],
+			"offsets": [-2, 84],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up S i"
 		},
 		{
-			"offsets": [-28, 40],
-			"indices": [],
+			"offsets": [-11, 24],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right S i"
 		},
 		{
-			"offsets": [65, 4],
-			"indices": [],
+			"offsets": [27, -4],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "left S MISS"
 		},
 		{
-			"offsets": [-35, -113],
-			"indices": [],
+			"offsets": [4, -42],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": false,
+			"indices": [],
 			"name": "down S MISS"
 		},
 		{
-			"offsets": [21, 173],
-			"indices": [],
+			"offsets": [14, 85],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": false,
+			"indices": [],
 			"name": "up S MISS"
 		},
 		{
-			"offsets": [-6, 40],
-			"indices": [],
+			"offsets": [-1, 22],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "right S MISS"
 		},
 		{
-			"offsets": [51, 17],
-			"indices": [7, 8, 9],
+			"offsets": [23, 4],
+			"loop": true,
 			"fps": 24,
 			"anim": "singLEFT-loop",
-			"loop": true,
+			"indices": [7, 8, 9],
 			"name": "left S instancia 1"
 		},
 		{
-			"offsets": [-44, -115],
-			"indices": [7, 8, 9],
+			"offsets": [-4, -45],
+			"loop": true,
 			"fps": 24,
 			"anim": "singDOWN-loop",
-			"loop": true,
+			"indices": [7, 8, 9],
 			"name": "down S instancia 1"
 		},
 		{
-			"offsets": [-12, 172],
-			"indices": [7, 8, 9],
+			"offsets": [-2, 84],
+			"loop": true,
 			"fps": 24,
 			"anim": "singUP-loop",
-			"loop": true,
+			"indices": [7, 8, 9],
 			"name": "up S instancia 1"
 		},
 		{
-			"offsets": [-28, 40],
-			"indices": [7, 8, 9],
+			"offsets": [-11, 24],
+			"loop": true,
 			"fps": 24,
 			"anim": "singRIGHT-loop",
-			"loop": true,
+			"indices": [7, 8, 9],
 			"name": "right S instancia 1"
 		}
 	],
@@ -122,6 +122,6 @@
 	"healthbar_colors": [254, 210, 77],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 0.6,
 	"_editor_isPlayer": true
 }

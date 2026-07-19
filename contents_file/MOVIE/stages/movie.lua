@@ -28,6 +28,8 @@ local sprites = {
 	{name = 'bg1', path = 'bg/1', x = -230, y = -300, scale = 1, front = true},
 }
 
+local hs = {'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG', 'iconBF', 'iconOpp', 'exeScoreTxt'}
+
 local function addSprite(def)
 	makeLuaSprite(def.name, def.path, def.x, def.y)
 	scaleObject(def.name, def.scale or 1, def.scale or 1)
@@ -84,9 +86,12 @@ function onUpdatePost(e)
 	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4))
 	setShaderFloat('wave', 'amount', getProperty('wave.x'))
 	setShaderFloat('wave', 'iTime', h)
+
+	if _sex ~= true then for _, name in ipairs(hs) do setProperty(name .. '.alpha', 0) end end
 end
 
 function onSongStart()
+	for _, name in ipairs(hs) do setProperty(name .. '.alpha', 1) end _sex = true
 	doTweenAlpha('graphAlpha', 'BlackGraphicHUD', 0, crochet / (1000 / 32))
 end
 

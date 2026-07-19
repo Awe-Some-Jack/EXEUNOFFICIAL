@@ -86,17 +86,9 @@ function onEvent(eventName, value1, value2)
                 noteTweenX(i..'X' , i , _G['defaultPlayerStrumX'..(i - 4)], 6 + ((i - 4) * 0.2), 'backOut')
             end
         end
-        if value1 == 'changeIcon' then
-            runHaxeCode("game.getLuaObject('iconOpp').changeIcon('minilook');")
-        end
-        if value1 == 'setCamHUDAlpha' then
-            setProperty('camHUD.alpha', value2)
-        end
-        if value1 == 'tweenCamHUDAlphaDown' then
-            doTweenAlpha('camHUDAlpha', 'camHUD', value2, 0.65)
-        end
-        if value1 == 'fadeGameBro' then
-            doTweenAlpha('BlackGraphicOtherAlpha', 'BlackGraphicOther', 1, 2)
-        end
+        if value1 == 'changeIcon' then runHaxeCode("game.getLuaObject('iconOpp').changeIcon('minilook');") end
+        if value1 == 'setCamHUDAlpha' then setProperty('camHUD.alpha', value2) end -- literalmente hay un evento para esto en el chart editor. en qué coño piensas raimbow 😒
+        if value1 == 'tweenCamHUDAlphaDown' then doTweenAlpha('camHUDAlpha', 'camHUD', value2, 0.65) end
+        if value1 == 'fadeGameBro' then doTweenAlpha('BlackGraphicOtherAlpha', 'BlackGraphicOther', 1, 2) end
     end
 end

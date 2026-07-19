@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="separatorfinale.png">
+<SubTexture name="idle0000" x="0" y="0" width="1317" height="1444" frameX="-806" frameY="0" frameWidth="2558" frameHeight="1440" />
+<SubTexture name="idle0001" x="1317" y="0" width="1295" height="1444" frameX="-813" frameY="0" frameWidth="2558" frameHeight="1440" />
+<SubTexture name="idle0002" x="2612" y="0" width="1270" height="1444" frameX="-821" frameY="0" frameWidth="2558" frameHeight="1440" />
+<SubTexture name="idle0003" x="0" y="1444" width="1346" height="1444" frameX="-791" frameY="0" frameWidth="2558" frameHeight="1440" />
+</TextureAtlas>

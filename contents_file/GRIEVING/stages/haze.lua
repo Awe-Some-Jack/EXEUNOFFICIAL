@@ -1,6 +1,6 @@
 local hazeBGAssets = {
     ['phase1'] = {
-        {name = 'redSun', path = 'grieving/haze/1st/sol rojo', x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, animName = 'idle', animPrefix = 'sun', fps = 12, loop = true, alpha = 1, antialiasing = true, front = false},
+        {name = 'redSun', path = 'grieving/haze/1st/sol rojo', x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, animName = 'idle', animPrefix = 'sun', fps = 12, loop = true, alpha = 1, front = false},
     },
     ['phase2'] = {
         {name = 'bg',     path = 'grieving/uh-oh/new/sky',    x = -1150, y = -1600, scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
@@ -16,31 +16,36 @@ local hazeBGAssets = {
         {name =       'lol', path =        'grieving/haze/2nd/idk', x = -1600, y = -1780, scaleX = 0.7, scaleY = 0.7, scrollX =  0.9, scrollY =  0.9, front = false},
         {name =     'suelo', path =    'grieving/haze/2nd/ground3', x = -1600, y = -1880, scaleX = 0.7, scaleY = 0.7, scrollX =    1, scrollY =    1, front = false},
         {name =     'totem', path =     'grieving/haze/2nd/totems', x = -1600, y = -1880, scaleX = 0.7, scaleY = 0.7, scrollX =    1, scrollY =    1, front = false},
-        {name =     'water', path = 'grieving/haze/2nd/reflection', x = -1600, y = -1880, scaleX = 0.7, scaleY = 0.7, scrollX =    1, scrollY =    1, front = false},
+        --{name =     'water', path = 'grieving/haze/2nd/reflection', x = -1600, y = -1880, scaleX = 0.7, scaleY = 0.7, scrollX =    1, scrollY =    1, front = false},
     },
     ['phase4'] = {
-        { name = 'sun-clouds', path = 'grieving/haze/3rd/sun-clouds',  x = -1500,  y = -1600,  scaleX = 1, scaleY = 1, scrollX =  0.7, scrollY =  0.7,                                                                 alpha = 1, antialiasing = true, front = false},
-        { name = 'cloudFront', path = 'grieving/haze/3rd/cloudFront',  x = -1500,  y = -1600,  scaleX = 1, scaleY = 1, scrollX =  0.7, scrollY =  0.7,                                                                 alpha = 1, antialiasing = true, front = false},
-        { name = 'water2',     path = 'grieving/haze/3rd/water',       x = -1600,  y =  -300,  scaleX = 1, scaleY = 1, scrollX = 0.85, scrollY = 0.85,                                                                 alpha = 1, antialiasing = true, front = false},
-        { name = 'waterfall1', path = 'grieving/haze/3rd/waterfall1',  x = -1600,  y = -1000,  scaleX = 1, scaleY = 1, scrollX =  0.9, scrollY =  0.9, animName = 'idle', animPrefix = 'water', fps = 12, loop = true, alpha = 1, antialiasing = true, front = false},
-        { name = 'waterfall2', path = 'grieving/haze/3rd/waterfall2',  x =   720,  y = -1300,  scaleX = 1, scaleY = 1, scrollX =  0.9, scrollY =  0.9, animName = 'idle', animPrefix = 'water', fps = 12, loop = true, alpha = 1, antialiasing = true, front = false},
-        { name = 'groundShit', path = 'grieving/haze/3rd/ground',      x = -1600,  y = -1300,  scaleX = 1, scaleY = 1, scrollX =    1, scrollY =    1,                                                                 alpha = 1, antialiasing = true, front = false},
+        { name = 'sun-clouds', path = 'grieving/haze/3rd/sun-clouds',  x = -1500,  y = -1600,  scaleX = 1, scaleY = 1, scrollX =  0.7, scrollY =  0.7,                                                                 alpha = 1, front = false},
+        { name = 'cloudFront', path = 'grieving/haze/3rd/cloudFront',  x = -1500,  y = -1600,  scaleX = 1, scaleY = 1, scrollX =  0.7, scrollY =  0.7,                                                                 alpha = 1, front = false},
+        { name = 'water2',     path = 'grieving/haze/3rd/water',       x = -1600,  y =  -300,  scaleX = 1, scaleY = 1, scrollX = 0.85, scrollY = 0.85,                                                                 alpha = 1, front = false},
+        { name = 'waterfall1', path = 'grieving/haze/3rd/waterfall1',  x = -1600,  y = -1000,  scaleX = 1, scaleY = 1, scrollX =  0.9, scrollY =  0.9, animName = 'idle', animPrefix = 'water', fps = 12, loop = true, alpha = 1, front = false},
+        { name = 'waterfall2', path = 'grieving/haze/3rd/waterfall2',  x =   720,  y = -1300,  scaleX = 1, scaleY = 1, scrollX =  0.9, scrollY =  0.9, animName = 'idle', animPrefix = 'water', fps = 12, loop = true, alpha = 1, front = false},
+        { name = 'groundShit', path = 'grieving/haze/3rd/ground',      x = -1600,  y = -1300,  scaleX = 1, scaleY = 1, scrollX =    1, scrollY =    1,                                                                 alpha = 1, front = false},
     },
     ['phase5'] = {
-        { name = 'sky',              path = 'grieving/haze/4th/6', x = -1000, y = -1000,                  scrollX =    1, scrollY =    1,                 alpha = 1, antialiasing = true, front = false},
-        { name = 'clouds1',          path = 'grieving/haze/4th/5', x =  -500, y = -1000, instance = true, scrollX =    1, scrollY =    1, velocityX = 20, alpha = 1, antialiasing = true, front = false},
-        { name = 'clouds2',          path = 'grieving/haze/4th/4', x = -1000, y = -1000,                  scrollX =    1, scrollY =    1,                 alpha = 1, antialiasing = true, front = false},
-        { name = 'clouds-mountains', path = 'grieving/haze/4th/3', x = -1000, y = -1000,                  scrollX =    1, scrollY =    1,                 alpha = 1, antialiasing = true, front = false},
-        { name = 'clouds3',          path = 'grieving/haze/4th/2', x = -1000, y =   200,                  scrollX = 0.95, scrollY = 0.95,                 alpha = 1, antialiasing = true, front = true},
-        { name = 'ground',           path = 'grieving/haze/4th/1', x = -1000, y =     0,                  scrollX =    1, scrollY =    1,                 alpha = 1, antialiasing = true, front = true},
+        { name = 'sky',              path = 'grieving/haze/4th/6', x = -1000, y = -1000,                  scrollX =    1, scrollY =    1,                 alpha = 1, front = false},
+        { name = 'clouds1',          path = 'grieving/haze/4th/5', x =  -500, y = -1000, instance = true, scrollX =    1, scrollY =    1, velocityX = 20, alpha = 1, front = false},
+        { name = 'clouds2',          path = 'grieving/haze/4th/4', x = -1000, y = -1000,                  scrollX =    1, scrollY =    1,                 alpha = 1, front = false},
+        { name = 'clouds-mountains', path = 'grieving/haze/4th/3', x = -1000, y = -1000,                  scrollX =    1, scrollY =    1,                 alpha = 1, front = false},
+        { name = 'clouds3',          path = 'grieving/haze/4th/2', x = -1000, y =   200,                  scrollX = 0.95, scrollY = 0.95,                 alpha = 1, front = true},
+        { name = 'ground',           path = 'grieving/haze/4th/1', x = -1000, y =     0,                  scrollX =    1, scrollY =    1,                 alpha = 1, front = true},
+    },
+    ['atlases'] = {
+        { name = 'k', path = 'characters/k/', x = 100, y = -700, scale = 0.2, animSymbol = 'knux',  alpha = 1, front = false},
+        { name = 'm', path = 'characters/m/', x = 600, y = -400, scale = 1, animSymbol = 'momi',  alpha = 1, front = false},
+        { name = 't', path = 'characters/t/', x = 300, y = -100, scale = 0.2, animSymbol = 'tails', alpha = 1, front = false},
     }
 }
 
 local spriteGroups = {
     phase1 = {'redSun'},
     phase2 = {'bg', 'trees3', 'trees2', 'trees', 'floor', 'fore'},
-    phase3 = {'sky3', 'montains', 'lol', 'suelo', 'totem', 'water'},
-    phase4 = {'overlay', 'sun-clouds', 'cloudFront', 'water2', 'waterfall1', 'waterfall2', 'groundShit', 'dedplants'},
+    phase3 = {'sky3', 'montains', 'lol', 'suelo', 'totem', 'm', 't'},
+    phase4 = {'overlay', 'sun-clouds', 'cloudFront', 'water2', 'waterfall1', 'waterfall2', 'groundShit', 'dedplants', 'k'},
     phase5 = {'sky', 'clouds1', 'clouds2', 'clouds-mountains', 'clouds3', 'ground'}
 }
 
@@ -65,6 +70,14 @@ local function addSprite(yea)
     addLuaSprite(yea.name, yea.front)
 end
 
+local function addAtlas(e)
+    makeFlxAnimateSprite(e.name, e.x, e.y, e.path)
+    addAnimationBySymbol(e.name, 'idle', e.animSymbol, 24, true)
+    scaleObject(e.name, e.scale, e.scale)
+    setProperty(e.name..'.alpha', e.alpha)
+    addLuaSprite(e.name, e.front)
+end
+
 function onCreate()
     --Let's try separately
     addCharacterToList('griatos 2', 'dad')
@@ -80,6 +93,8 @@ function onCreate()
     for _, phase3 in ipairs(hazeBGAssets['phase3']) do precacheImage(phase3.path) end
     for _, phase4 in ipairs(hazeBGAssets['phase4']) do precacheImage(phase4.path) end
     for _, phase5 in ipairs(hazeBGAssets['phase5']) do precacheImage(phase5.path) end
+
+    for _, atlas in ipairs(hazeBGAssets['atlases']) do precacheImage(atlas.path) end
 end
 
 local separation = 50
@@ -90,20 +105,24 @@ function onCreatePost()
     for _, spr in ipairs(hazeBGAssets['phase4']) do addSprite(spr) end
     for _, spr in ipairs(hazeBGAssets['phase5']) do addSprite(spr) end
 
+    for _, spr in ipairs(hazeBGAssets['atlases']) do addAtlas(spr) end
+
     for _, phase1 in ipairs(hazeBGAssets['phase1']) do setProperty(phase1.name..'.alpha', 1) end
     for _, phase2 in ipairs(hazeBGAssets['phase2']) do setProperty(phase2.name..'.alpha', 0) end
     for _, phase3 in ipairs(hazeBGAssets['phase3']) do setProperty(phase3.name..'.alpha', 0) end
     for _, phase4 in ipairs(hazeBGAssets['phase4']) do setProperty(phase4.name..'.alpha', 0) end
     for _, phase5 in ipairs(hazeBGAssets['phase5']) do setProperty(phase5.name..'.alpha', 0) end
-
+    
+    for _, atlas in ipairs(hazeBGAssets['atlases']) do setProperty(atlas.name..'.alpha', 0) end
     --THAT bf anim
-    makeAnimatedLuaSprite('bfTransition', 'characters/atlas', 210, -38)
+    makeAnimatedLuaSprite('bfTransition', 'characters/atlas', 210, -10)
     addAnimationByIndices('bfTransition', 'idle', 'atlas instancia 1', {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 24, true)
     addAnimationByPrefix('bfTransition', 'anim', 'atlas', 24, false)
     addAnimationByIndices('bfTransition', 'still', 'atlas', {108}, 24, true)
     setObjectCamera('bfTransition', 'camHUD')
     scaleObject('bfTransition', 1, 1)
     setProperty('bfTransition.alpha', 0)
+    setBlendMode('bfTransition', 'add')
     addLuaSprite('bfTransition')
 
     --The Missing Poster
@@ -150,7 +169,7 @@ local stageMode = {
         triggerEvent('Set customCamera Position', 'bf', '600, 130')
         triggerEvent('Change Character', 'bf', 'bf')
         triggerEvent('Change Character', 'dad', 'griatosA')
-        callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') + 120, getProperty('boyfriend.y') + 30})
+        callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') + 20, getProperty('boyfriend.y') + 280})
         setProperty('dad.visible', true)
     end,
     ['3'] = function () --Phase 3

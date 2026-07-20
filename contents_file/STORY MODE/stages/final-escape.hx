@@ -1,6 +1,7 @@
 import psychlua.LuaUtils;
 import flixel.addons.display.FlxBackdrop;
 import objects.Character;
+import objects.VideoSprite;
 import openfl.display.BlendMode;
 import backend.Controls;
 
@@ -100,14 +101,13 @@ function onCreate()
 {
 	//intro
 	camGame.alpha = 0;
-	introCutscene = new hxvlc.flixel.FlxVideoSprite();
-	introCutscene.bitmap.onFormatSetup.add(() -> {
+
+	introCutscene = new VideoSprite();
+	introCutscene.onFormat(() -> {
 		introCutscene.setGraphicSize(FlxG.width, FlxG.height);
-		introCutscene.updateHitbox();
 		introCutscene.screenCenter();
 	});
 	introCutscene.camera = camVideo;
-	introCutscene.bitmap.onEndReached.add(() -> introCutscene?.destroy());
 	game.add(introCutscene);
 
 	//da bgs
@@ -276,7 +276,7 @@ function onCreatePost()
 	FlxG.cameras.add(camOther, false);
 }
 
-function onSongStart() if (introCutscene?.load(Paths.video('fake intro')) ?? false) introCutscene?.play();
+function onSongStart() if (introCutscene?.loadVideo(Paths.video('fake intro'))) introCutscene.playDelayed();
 function onGameOverStart()  introCutscene?.destroy();
 function onPause() introCutscene?.pause();
 function onResume() introCutscene?.resume();

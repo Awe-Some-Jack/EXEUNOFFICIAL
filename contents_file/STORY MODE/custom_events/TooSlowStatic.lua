@@ -1,4 +1,6 @@
-function onCreate()
+precacheImage('slow/screenstatic')
+
+function onCreatePost()
     makeAnimatedLuaSprite('staticamierda', "slow/screenstatic", 0, 0)
     addAnimationByPrefix('staticamierda', 'idle', 'screenSTATIC', 24, true)
     setProperty('staticamierda.alpha', 0)

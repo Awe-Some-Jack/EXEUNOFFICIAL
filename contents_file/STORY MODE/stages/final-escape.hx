@@ -5,6 +5,10 @@ import objects.VideoSprite;
 import openfl.display.BlendMode;
 import backend.Controls;
 
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.filters.ShaderFilter;
+import openfl.utils.Assets;
+
 using StringTools;
 
 typedef BackgroundSprite =
@@ -92,6 +96,11 @@ var bfLegs4:Character;
 //bf on hand section lol
 var bfAtlas:FlxSpriteElement;
 var bf:Character;
+
+
+//ChromShader
+var chrom:FlxRuntimeShader;
+
 
 var cameraLeft:FlxCamera;
 var cameraRight:FlxCamera;
@@ -198,6 +207,13 @@ var notesPosition:Array<Array<Array<Float>>> = [[[0,0],[0,0],[0,0],[0,0]],[[0,0]
 final separation:Float = 50;
 function onCreatePost()
 {
+
+	//shader
+	chrom = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('ChromaticAbberation')));
+    chrom.setFloat('amount', 0.3);
+
+	camGame.filters = [new ShaderFilter(game.getLuaObject('sexo').shader), new ShaderFilter(chrom)];
+
 	for (i in 0...4)
 	{
 		notesPosition[0][i][0] = opponentStrums.members[i].x; notesPosition[1][i][0] = playerStrums.members[i].x;

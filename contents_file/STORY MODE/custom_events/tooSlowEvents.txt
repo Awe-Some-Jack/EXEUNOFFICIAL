@@ -1,3 +1,6 @@
 [
-    flashBack[fade]
+    tweenObject[checkLUA], darkBG[checkLUA], revealHUD[checkLUA],
+    redGraphicTween[checkLUA], revealNotes[checkLUA],
+    notesMovement[checkLUA], setModchartSettings[checkLUA],
+    flashBack[fade],
 ]

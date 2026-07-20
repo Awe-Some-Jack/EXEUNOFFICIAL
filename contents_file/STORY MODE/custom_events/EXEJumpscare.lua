@@ -4,9 +4,9 @@ local jumpscareSprite = {
 
 local isScaringYou = false
 
+precacheImage('characters/jumcare')
 
-
-function onCreate()
+function onCreatePost()
     for _, jum in ipairs(jumpscareSprite) do
         makeAnimatedLuaSprite(jum.name, jum.path, jum.x, jum.y)
         addAnimationByPrefix(jum.name, jum.animName, jum.animPrefix, jum.fps, jum.loop)

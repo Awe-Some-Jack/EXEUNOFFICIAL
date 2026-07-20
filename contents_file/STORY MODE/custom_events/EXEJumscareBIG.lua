@@ -2,11 +2,9 @@ local jumpscareBIGSprite = {
     {name = 'jumpscareBIG', path = 'slow/simplejump', x = 0, y = 0, scaleX = 0.8, scaleY = 0.8, antialisasing = true, alpha = 0, camera = 'camOther', front = true}
 }
 
-local isScaringYou = false
+precacheImage('slow/simplejump')
 
-
-
-function onCreate()
+function onCreatePost()
     for _, jum in ipairs(jumpscareBIGSprite) do
         makeLuaSprite(jum.name, jum.path, jum.x, jum.y)
         scaleObject(jum.name, jum.scaleX, jum.scaleY)

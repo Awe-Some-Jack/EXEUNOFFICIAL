@@ -1,73 +1,73 @@
 {
 	"animations": [
 		{
+			"offsets": [334, 322],
 			"loop": false,
-			"offsets": [376, 314],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [231, 316],
 			"loop": false,
-			"offsets": [254, 316],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [203, 461],
 			"loop": false,
-			"offsets": [207, 500],
+			"fps": 24,
 			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [146, 377],
+			"loop": false,
 			"fps": 24,
-			"name": "up",
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"loop": true,
+			"offsets": [136, 316],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
 			"indices": []
 		},
 		{
+			"offsets": [246, 372],
 			"loop": false,
-			"offsets": [132, 359],
-			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "right",
-			"indices": []
+			"anim": "thanos",
+			"indices": [],
+			"name": "chao"
 		},
 		{
 			"offsets": [136, 316],
-			"loop": true,
-			"fps": 24,
-			"anim": "idle",
-			"indices": [],
-			"name": "idle"
-		},
-		{
 			"loop": false,
-			"offsets": [246, 372],
-			"anim": "thanos",
 			"fps": 24,
-			"name": "chao",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [142, 320],
 			"anim": "ai",
-			"fps": 24,
-			"name": "ojo",
-			"indices": []
+			"indices": [],
+			"name": "ojo"
 		},
 		{
-			"loop": false,
 			"offsets": [264, 400],
-			"anim": "laught",
+			"loop": false,
 			"fps": 24,
-			"name": "risa",
-			"indices": []
+			"anim": "laught",
+			"indices": [],
+			"name": "risa"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/SONIC_X",
+	"image": "characters/LordXClycles",
 	"position": [50, 420],
 	"healthicon": "lord-x",
 	"flip_x": false,

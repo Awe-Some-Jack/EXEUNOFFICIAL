@@ -22,31 +22,7 @@ class CameraStageHandler
 		_handlers = new Map();
 
 		// ---- tooslow ----
-		_handlers['tooslow'] = {
-			onSongStart: function(cam:GameplayCamera) {
-				PlayState.instance.cameraSpeed     = 10000;
-				cam.settings.OffsetsBF  = 0;
-				cam.settings.OffsetsDAD = 0;
-				cam.settings.OffsetsGF  = 0;
-				cam.settings.Angle      = 0;
-			},
-			onStepHit: function(cam:GameplayCamera, curStep:Int) {
-				PlayState.instance.cameraSpeed = (curStep == 1) ? 10000 : 1;
-				if (curStep == 256) PlayState.instance.camZooming = false;
-				if (curStep == 796)
-				{
-					cam.settings.MiddleCamera  = false; cam.settings.OverrideZoom = false;
-					cam.settings.OffsetsBF     = 25;    cam.settings.OffsetsDAD   = 25;
-					cam.settings.OffsetsGF     = 25;
-				}
-				for (s in [1184, 1472, 1536, 2112, 2176])
-					if (curStep == s) { cam.settings.MiddleCamera = true;  cam.settings.OverrideZoom = false; }
-				for (s in [796, 1248, 1504, 1568, 2144, 2208])
-					if (curStep == s) { cam.settings.MiddleCamera = false; cam.settings.OverrideZoom = false; }
-				if (curStep == 1952) { cam.settings.BFx = 2070;  cam.settings.BFy  = 1390; cam.settings.DADx = 1050; cam.settings.DADy = 1340; }
-				if (curStep == 2080) { cam.settings.BFx = 1970;  cam.settings.BFy  = 1290; cam.settings.DADx = 1250; cam.settings.DADy = 1290; }
-			},
-		};
+		//HAHA NO CODE I MADE IT ALL AN EVENT HAHAHAAHAHAHAHAHAHHA FUCK YOU HAHAHAHHAHAHHAHAHAHAHAHAHAH (pls help me)
 
 		// ---- you-cant-run ----
 		// HAHA NO CODE I MADE IT ALL AN EVENT HAHAHAAHAHAHAHAHAHHA FUCK YOU HAHAHAHHAHAHHAHAHAHAHAHAHAH (pls help me)

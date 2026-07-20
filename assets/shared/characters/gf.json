@@ -1,36 +1,36 @@
 {
 	"animations": [
 		{
-			"offsets": [-4, 12],
-			"loop": false,
-			"fps": 24,
-			"anim": "cheer",
+			"offsets": [0, 5],
 			"indices": [],
-			"name": "yeah"
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
 		},
 		{
-			"offsets": [-4, -2],
-			"loop": false,
-			"fps": 24,
-			"anim": "sad",
+			"offsets": [-4, 6],
 			"indices": [],
-			"name": "lose"
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
 		},
 		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "combo200",
+			"offsets": [-4, 10],
+			"indices": [],
 			"fps": 24,
-			"name": "horny",
-			"indices": []
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
 		},
 		{
-			"loop": false,
-			"offsets": [0, 19],
-			"anim": "combo50",
+			"offsets": [0, 13],
+			"indices": [],
 			"fps": 24,
-			"name": "cheer",
-			"indices": []
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
 		},
 		{
 			"offsets": [0, 0],
@@ -38,7 +38,7 @@
 			"fps": 24,
 			"anim": "danceLeft",
 			"loop": false,
-			"name": "Carpeta de elementos duplicados/dance"
+			"name": "dance"
 		},
 		{
 			"offsets": [0, 0],
@@ -46,18 +46,58 @@
 			"fps": 24,
 			"anim": "danceRight",
 			"loop": false,
-			"name": "Carpeta de elementos duplicados/dance"
+			"name": "dance"
+		},
+		{
+			"offsets": [0, 6],
+			"indices": [],
+			"fps": 24,
+			"anim": "youdoit",
+			"loop": false,
+			"name": "doit"
+		},
+		{
+			"offsets": [-3, -2],
+			"indices": [],
+			"fps": 24,
+			"anim": "sad",
+			"loop": false,
+			"name": "sob"
+		},
+		{
+			"offsets": [-3, 12],
+			"indices": [],
+			"fps": 24,
+			"anim": "cheer",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [0, 19],
+			"indices": [],
+			"fps": 24,
+			"anim": "combo50",
+			"loop": false,
+			"name": "cheer50"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "combo200",
+			"loop": false,
+			"name": "cheer200"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/gfUnofficial",
-	"position": [0, 0],
+	"image": "characters/unofficialGF",
+	"position": [-50, -20],
 	"healthicon": "gf",
 	"flip_x": false,
 	"healthbar_colors": [165, 0, 77],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 0.7,
+	"scale": 1.1,
 	"_editor_isPlayer": false
 }

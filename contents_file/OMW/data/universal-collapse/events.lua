@@ -13,7 +13,7 @@ end
 
 local oldAnim = 'normal'
 function onUpdatePost()
-	if getProperty('glassbreak') and getProperty('glassbreak.animation.curAnim.name') == 'idle2' and getProperty('glassbreak.animation.curAnim.finished') then removeLuaSprite('glassbreak', true) end
+	if getProperty('glassbreak.animation.curAnim.name') == 'idle2' and getProperty('glassbreak.animation.curAnim.finished') then removeLuaSprite('glassbreak', true) end
 
 	setProperty('iconOMW.x', getProperty('iconOpp.x') - 20)
     setProperty('iconOMW.y', getProperty('iconOpp.y') - 20)
@@ -37,7 +37,6 @@ function onEvent(n,v1)
 			doTweenAlpha('camHUD', 'camHUD', 1, crochet / (1000 / 6))
 		end
 		if v1 == 'removevideoxd' then
-			if getProperty('videoCutscene') == nil then return end
     		callMethod('remove', {instanceArg('videoCutscene')})
 			cancelTween('asdads')
 		end

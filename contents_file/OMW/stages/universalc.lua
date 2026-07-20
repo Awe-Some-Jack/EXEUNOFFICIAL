@@ -1,24 +1,5 @@
 local universe = false
 
-local planetsPos = {
-	{
-		x = 800,
-		y = 300
-	},
-	{
-		x = 1000,
-		y = -300
-	},
-	{
-		x = -450,
-		y = -250
-	},
-	{
-		x = -450,
-		y = 400
-	}
-}
-
 addCharacterToList('omwn', 'dad')
 function onCreatePost()
 	makeLuaSprite('sky', 'universal-collapse/7', -600, -500)
@@ -95,21 +76,13 @@ function onCreatePost()
 
 	--universo
 
-	makeLuaSprite('universe', 'universal-collapse/universe/universo', -650, -300)
+	makeLuaSprite('universe', 'universal-collapse/universe/universe', -650, -350)
 	scaleObject('universe', 0.6, 0.6)
 	setScrollFactor('universe', 0.2, 0.2)
 	addLuaSprite('universe')
 	setProperty('universe.visible', false)
 
-	for i = 1,4 do
-		makeLuaSprite('planet'..i, 'universal-collapse/universe/p'..i, -650, -300)
-		scaleObject('planet'..i, 0.6, 0.6)
-		setScrollFactor('planet'..i, 0.45, 0.45)
-		addLuaSprite('planet'..i)
-		setProperty('planet'..i..'.visible', false)
-	end
-
-	makeLuaSprite('piedra', 'universal-collapse/universe/piedra', -105, 380)
+	makeLuaSprite('piedra', 'universal-collapse/universe/xd', -150, 400)
 	scaleObject('piedra', 0.8, 0.8)
 	setProperty('piedra.visible', false)
 	setObjectOrder('piedra', getObjectOrder('boyfriendGroup'))
@@ -162,20 +135,6 @@ local planetSine = 0
 function onUpdatePost(e)
 	if universe then
 		planetSine = planetSine + e
-		for i = 1,4 do
-			setProperty('planet'..i..'.x', planetsPos[i].x + math.sin(planetSine + i) * 20)
-			setProperty('planet'..i..'.y', planetsPos[i].y + math.cos(planetSine + i) * 20)
-			setProperty('planet'..i..'.angle', math.cos(planetSine + i) * 5)
-		end
-
-		setProperty('piedra.x', -175 + math.sin(planetSine) * 10)
-		setProperty('piedra.y', 350 + math.cos(planetSine) * 10)
-		setProperty('piedra.angle', math.cos(planetSine) * 5)
-
-		setProperty('boyfriend.x', -120 + math.sin(planetSine) * 10)
-		setProperty('boyfriend.y', 200 + math.cos(planetSine) * 10)
-		setProperty('boyfriend.angle', math.cos(planetSine) * 5)
-
 		--setProperty('camHUD.zoom', 0.7)
 		setProperty('camHUD.x', math.sin(planetSine / 2) * 5)
 		setProperty('camHUD.y', math.cos(planetSine / 2) * 5)

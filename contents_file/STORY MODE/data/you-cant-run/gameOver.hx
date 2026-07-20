@@ -34,7 +34,7 @@ function onGameOverStart()
 	if (GameOverSubstate.instance.boyfriend != null && deadBoyfriend == null) deadBoyfriend = GameOverSubstate.instance.boyfriend;
 	deadBoyfriend.scrollFactor.set();
 	if (pixelTime) deadBoyfriend.setPosition(600, 500);
-	else deadBoyfriend.setPosition(400, 350);
+	else deadBoyfriend.setPosition(320, 200);
 
 	FlxG.camera.follow();
 	FlxG.camera.scroll.set(0, 0);
@@ -52,7 +52,7 @@ function onUpdatePost()
 	if (!inGameOver) return;
 	if (GameOverSubstate.instance.boyfriend != null && deadBoyfriend == null) deadBoyfriend = GameOverSubstate.instance.boyfriend;
 
-	if (deadBoyfriend.animation.curAnim.name == 'deathLoop')
+	if (deadBoyfriend.getAnimationName() == 'deathLoop')
 	{
 		if (!toggleOnce) {
 			toggleOnce = true;
@@ -62,7 +62,7 @@ function onUpdatePost()
 		}
 	}
 
-	if (deadBoyfriend.animation.curAnim.name == 'deathConfirm' && deadBoyfriend.animation.curAnim.finished && deadBoyfriend.visible)
+	if (deadBoyfriend.getAnimationName() == 'deathConfirm' && deadBoyfriend.isAnimationFinished() && deadBoyfriend.visible)
 	{
 		FlxG.camera.flash(0xFFFF0000, 1, null, true);
 		deadBoyfriend.visible = false;

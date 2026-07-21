@@ -2,26 +2,26 @@
 	"animations": [
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": false,
 			"fps": 36,
 			"anim": "firstDeath",
-			"loop": false,
+			"indices": [],
 			"name": "dead"
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": true,
 			"fps": 36,
 			"anim": "deathLoop",
-			"loop": true,
+			"indices": [],
 			"name": "loop"
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": false,
 			"fps": 36,
 			"anim": "deathConfirm",
-			"loop": false,
+			"indices": [],
 			"name": "retray"
 		}
 	],

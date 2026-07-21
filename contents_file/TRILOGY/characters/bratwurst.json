@@ -1,0 +1,103 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"offsets": [285, 53],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [79, 7],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
+		},
+		{
+			"offsets": [0, 110],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [-32, -120],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [117, -110],
+			"indices": [],
+			"fps": 24,
+			"anim": "tooslow",
+			"loop": false,
+			"name": "too slow"
+		},
+		{
+			"offsets": [-1, 10],
+			"indices": [],
+			"fps": 24,
+			"anim": "getit",
+			"loop": false,
+			"name": "entiendes"
+		},
+		{
+			"offsets": [60, 77],
+			"indices": [],
+			"fps": 24,
+			"anim": "nomoregames",
+			"loop": false,
+			"name": "nomore"
+		},
+		{
+			"offsets": [113, 103],
+			"indices": [],
+			"fps": 24,
+			"anim": "risa",
+			"loop": false,
+			"name": "risa"
+		},
+		{
+			"offsets": [270, 63],
+			"indices": [],
+			"fps": 24,
+			"anim": "lodijo",
+			"loop": false,
+			"name": "yousoyel"
+		},
+		{
+			"offsets": [260, 150],
+			"indices": [],
+			"fps": 24,
+			"anim": "intro",
+			"loop": false,
+			"name": "intro"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/Bratburst",
+	"position": [287, -10],
+	"healthicon": "icon-bratwurst",
+	"flip_x": false,
+	"healthbar_colors": [51, 73, 91],
+	"camera_position": [-210, 110],
+	"sing_duration": 8,
+	"scale": 1.2,
+	"_editor_isPlayer": false
+}

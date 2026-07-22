@@ -6,23 +6,23 @@
 			"fps": 24,
 			"anim": "firstDeath",
 			"loop": false,
-			"name": "bf dies"
+			"name": "die"
 		},
 		{
-			"offsets": [358, -155],
+			"offsets": [282, -282],
 			"indices": [],
 			"fps": 24,
 			"anim": "deathLoop",
 			"loop": true,
-			"name": "Bf Death Loop"
+			"name": "loop"
 		},
 		{
-			"offsets": [358, -156],
+			"offsets": [282, -196],
 			"indices": [],
 			"fps": 24,
 			"anim": "deathConfirm",
 			"loop": false,
-			"name": "Bf Death Confirm"
+			"name": "retry"
 		}
 	],
 	"vocals_file": "",

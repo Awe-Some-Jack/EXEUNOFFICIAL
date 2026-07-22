@@ -1,0 +1,31 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [-3, -42],
+			"anim": "grito1",
+			"fps": 24,
+			"name": "1grito",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [19, -72],
+			"anim": "grito2",
+			"fps": 24,
+			"name": "2grito",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/grito",
+	"position": [-530, 140],
+	"healthicon": "XENO-P2",
+	"flip_x": false,
+	"healthbar_colors": [36, 1, 116],
+	"camera_position": [0, 0],
+	"sing_duration": 8,
+	"scale": 1.1,
+	"_editor_isPlayer": false
+}

@@ -1,13 +1,13 @@
 {
 	"healthBar": {
-		"width": 601,
-		"height": 25,
-		"gapSize": 5,
+		"width": 475,
+		"height": 43,
+		"gapSize": 1,
 		"separatorWidth": 4,
 		"textBopAmount": 1.1,
 		"hideScore": true,
 		"offsetX": 220,
-		"offsetY": 0
+		"offsetY": -26
 	},
 	"playerIcon": {
 		"scale": 0.9,

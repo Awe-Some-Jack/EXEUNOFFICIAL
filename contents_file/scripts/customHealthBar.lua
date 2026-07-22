@@ -30,7 +30,8 @@ local healthBarsBG = {
     ["hud_majin"] = {
         songs = {'endless-us', 'endless-jp'},
         x = - 190,
-        y = - 70
+        y = - 70,
+        scale = {0.32, 0.3}
     },
     ["hud_fakebaby"] = {
         songs = {'fakebaby'},
@@ -40,67 +41,87 @@ local healthBarsBG = {
     ["hud_lookalike"] = {
         songs = {'yourself'},
         x = - 190,
-        y = - 75
+        y = - 75,
+        scale = {0.32, 0.3}
     },
     ["hud_chaos"] = {
         songs = {'chaos'},
         x = - 190,
-        y = - 75
+        y = - 75,
+        scale = {0.32, 0.3}
     },
     ["hud_too-fest"] = {
         songs = {'too-fest'},
         x = - 190,
-        y = - 65
+        y = - 65,
+        scale = {0.32, 0.3}
     },
     ["hud_mono"] = {
         songs = {'monochromatic'},
         x = - 190,
-        y = - 70
+        y = - 70,
+        scale = {0.32, 0.3}
     },
     ["hud_needlemouse"] = {
         songs = {'round-a-bout', 'her-world'},
         x = - 190,
-        y = - 70
+        y = - 70,
+        scale = {0.32, 0.3}
     },
     ["hud_mania"] = {
         songs = {'mania'},
         x = - 190,
-        y = - 75
+        y = - 75,
+        scale = {0.32, 0.3}
     },
     ["hud_life-and-death"] = {
         songs = {'life-and-death'},
         x = - 190,
-        y = - 75
+        y = - 75,
+        scale = {0.32, 0.3}
     },
     ["hud_hollow"] = {
         songs = {'hollow'},
         x = - 190,
-        y = - 85
+        y = - 85,
+        scale = {0.32, 0.3}
     },
     ["hud_grieving"] = {
         songs = {'uh-oh', 'haze'},
         x = - 190,
-        y = - 65
+        y = - 65,
+        scale = {0.32, 0.3}
     },
     ["hud_lord_x"] = {
         songs = {'cycles', 'hellbent', 'fate', 'gotta-go'},
         x = - 190,
-        y = - 75
+        y = - 75,
+        scale = {0.32, 0.3}
     },
     ["hud_faker"] = {
         songs = {'faker', 'black-sun', 'godspeed'},
         x = - 190,
-        y = - 80
+        y = - 80,
+        scale = {0.32, 0.3}
     },
     ["hud_hedge"] = {
         songs = {'hedge', 'manual-blast'},
         x = - 190,
-        y = - 70
+        y = - 70,
+        scale = {0.32, 0.3}
     },
     ["hud_shocker"] = {
         songs = {'shocker'},
         x = - 190,
-        y = - 70
+        y = - 70,
+        scale = {0.32, 0.3}
+    },
+    ["hud_chaotix_normal"] = {
+        songs = {'starline'},
+        x = - 206,
+        y = - 92,
+        scale = {0.3, 0.3},
+        antialiasing = false
     },
 }
 local blacklistenedSongs = {'prey', 'godspeed', 'forestall-desire', 'deception', 'fatality', 'longstrider', 'universal-collapse', 'fight-or-flight', 'burning', 'expulsion'}
@@ -120,7 +141,7 @@ function onCreatePost()
     end
 
     if checkFileExists('data/'..songPath..'/healthProps.json') then
-		json = callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile('data/'..songPath..'/healthProps.json')})
+		local json = callMethodFromClass('tjson.TJSON', 'parse', {getTextFromFile('data/'..songPath..'/healthProps.json')})
 		for i,v in pairs(json) do
 			if v ~= nil then healthProps[i] = v end
 		end
@@ -189,7 +210,8 @@ function onCreatePost()
                 makeLuaSprite('healthBG', 'hud/'..hud, healthPos[1] + songList.x, healthPos[2] + songList.y)
                 setObjectCamera('healthBG', 'camHUD')
                 setObjectOrder('healthBG', getObjectOrder('separatorHealth') + 1)
-                scaleObject('healthBG', 0.32, 0.3)
+                scaleObject('healthBG', songList.scale[1], songList.scale[2])
+                if songList.antialiasing then setProperty(songList.name..'.antialiasing', songList.antialiasing) end
                 addLuaSprite('healthBG')
                 break
             end

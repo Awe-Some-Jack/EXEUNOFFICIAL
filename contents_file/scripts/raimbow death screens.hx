@@ -9,7 +9,7 @@ import openfl.utils.Assets;
 import backend.Paths;
 
 var exeGameOvers:Bool = false;
-var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us'];
+var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline'];
 var voicelineSongs:Array<String> = ["cycles", "hellbent", "fate"];
 
 var deadChar:Character;
@@ -33,8 +33,10 @@ var countdown:FlxTimer;
 var secondsLeft:Int = 10;
 var countdownText:FlxText;
 
-function onCreate()
-    for (song in songs) if (songName == song) setCustomGameOvers();
+function onCreate(){
+    for (song in songs) 
+        if (songName == song) setCustomGameOvers();
+}
 
 
 
@@ -55,7 +57,7 @@ function setCustomGameOvers() {
             GameOverSubstate.deathSoundName = "deathSounds/yourself-sfx";
             GameOverSubstate.loopSoundName = "deathSongs/yourself";
             GameOverSubstate.endSoundName = "deathSongs/yourself-retry";
-            charPositions = [500, 250];
+            charPositions = [250, -150];
 
             initialDeathZoom = 1.2;
         case "hollow":
@@ -71,6 +73,11 @@ function setCustomGameOvers() {
             GameOverSubstate.loopSoundName = "deathSongs/endless-us";
             charPositions = [400, 150];
             initialDeathZoom = 0.85;
+        case "starline":
+            exeGameOvers = false;
+            GameOverSubstate.characterName = "chaotixbfdeath";
+            charPositions = [550, 350];
+            initialDeathZoom = 0.7;
     }
 }
 

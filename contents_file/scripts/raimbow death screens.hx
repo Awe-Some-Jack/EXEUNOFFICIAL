@@ -32,6 +32,7 @@ var actuallynotfuckd:Bool = false;
 var countdown:FlxTimer;
 var secondsLeft:Int = 10;
 var countdownText:FlxText;
+var majinBF:FlxSprite;
 
 function onCreate(){
     for (song in songs) 
@@ -71,7 +72,7 @@ function setCustomGameOvers() {
             exeGameOvers = false;
             GameOverSubstate.deathSoundName = "deathSounds/endless-us-sfx";
             GameOverSubstate.loopSoundName = "deathSongs/endless-us";
-            charPositions = [400, 150];
+            charPositions = [320, 20];
             initialDeathZoom = 0.85;
         case "starline":
             exeGameOvers = false;
@@ -164,16 +165,25 @@ function onUpdatePost()
         if (!toggleOnce) {
             toggleOnce = true;
             deadMusic.play();
-            startCountdown();
+            startCountdownMajin();
         }
     }
 }
 
-function startCountdown()
+function startCountdownMajin()
 {
     var baseLeft:Float = 100;
     var baseRight:Float = 750;
     var spacing:Float = 50;
+
+    //Majin BF
+    majinBF = new FlxSprite();
+    majinBF.frames = Paths.getSparrowAtlas('gameovers/majin bf');
+    majinBF.animation.addByPrefix('dying', 'a', 24, false);
+    majinBF.setPosition(deadChar.x - 400, deadChar.y - 400);
+    majinBF.scale.set(1.2, 1.2);
+    majinBF.alpha = 0;
+    GameOverSubstate.instance.add(majinBF);
 
     var indices = [5, 4, 3, 2, 1];
     for (i in indices) {
@@ -261,10 +271,25 @@ function youFuckedUp()
     toolateurfucked = true;
 
     deadMusic.stop();
-    FlxTween.cancelTweensOf(FlxG.camera);
     if (countdownText != null) countdownText.destroy();
     if (countdown != null) countdown.cancel();
     for (pair in majinPairs) { GameOverSubstate.instance.remove(pair[0]); GameOverSubstate.instance.remove(pair[1]); }
+
+    deadChar.visible = false;
+    majinBF.alpha = 1;
+    majinBF.animation.play('dying', true);
+    for (sound in FlxG.sound.list) if (sound.playing) sound.volume = 0;
+    FlxTween.cancelTweensOf(FlxG.camera);
+    FlxTween.tween(FlxG.camera, {zoom: FlxG.camera.zoom + 0.6}, 1, {ease: FlxEase.circOut});
+    FlxG.sound.play(Paths.sound('deathSounds/firstLOOK'));
+
+    new FlxTimer().start(2.45, (_) -> {
+        FlxG.sound.play(Paths.sound('deathSounds/secondLOOK'));
+        FlxTween.tween(FlxG.camera, {zoom: FlxG.camera.zoom - 0.2}, 0.5, {ease: FlxEase.circOut});
+
+        //new FlxTimer().start(6, (_) -> GameOverSubstate.instance.Sys.exit(0));
+    });
+
 }
 
 function onGameOverConfirm(retry)

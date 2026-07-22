@@ -10,7 +10,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [122, 0],
+			"offsets": [121, -2],
 			"anim": "singLEFT",
 			"fps": 24,
 			"name": "left",
@@ -18,7 +18,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [277, 1],
+			"offsets": [275, 2],
 			"anim": "singDOWN",
 			"fps": 24,
 			"name": "down",
@@ -26,7 +26,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-12, 101],
+			"offsets": [-7, 96],
 			"anim": "singUP",
 			"fps": 24,
 			"name": "up",
@@ -34,7 +34,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-12, 2],
+			"offsets": [43, 2],
 			"anim": "singRIGHT",
 			"fps": 24,
 			"name": "right",
@@ -42,24 +42,88 @@
 		},
 		{
 			"loop": false,
-			"offsets": [91, -79],
+			"offsets": [121, -79],
 			"anim": "dodged",
 			"fps": 24,
 			"name": "dogged",
 			"indices": []
 		},
 		{
-			"loop": false,
-			"offsets": [275, -79],
-			"anim": "attack",
+			"offsets": [292, -81],
+			"indices": [],
 			"fps": 24,
-			"name": "atack",
-			"indices": []
+			"anim": "attack",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/1atack"
+		},
+		{
+			"offsets": [50, -30],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle-alt",
+			"loop": true,
+			"name": "alt idle"
+		},
+		{
+			"offsets": [351, -14],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "2left"
+		},
+		{
+			"offsets": [203, -30],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/2down"
+		},
+		{
+			"offsets": [42, 124],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/2up"
+		},
+		{
+			"offsets": [36, -30],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/2right"
+		},
+		{
+			"offsets": [121, -78],
+			"indices": [],
+			"fps": 24,
+			"anim": "dodged-alt",
+			"loop": false,
+			"name": "2dogged2 "
+		},
+		{
+			"offsets": [292, -73],
+			"indices": [],
+			"fps": 24,
+			"anim": "attack-alt",
+			"loop": false,
+			"name": "2atack"
+		},
+		{
+			"offsets": [126, 258],
+			"indices": [],
+			"fps": 24,
+			"anim": "trans",
+			"loop": false,
+			"name": "trans"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/requitalp1",
+	"image": "characters/forestal",
 	"position": [0, 0],
 	"healthicon": "requital",
 	"flip_x": false,

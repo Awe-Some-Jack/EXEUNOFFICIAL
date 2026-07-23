@@ -8,8 +8,9 @@ function onCreate()
 {
     if (!PlayState.firstPlay) 
     {
-        PlayState.isFixedAspectRatio = true;
+        PlayState.hasRestarted = false;
     }
+    PlayState.isFixedAspectRatio = true;
 }
 
 function onCreatePost() 

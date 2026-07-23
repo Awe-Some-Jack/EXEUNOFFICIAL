@@ -62,6 +62,7 @@ openfl.globalization.LastOperationStatus
 openfl.net.URLLoaderDataFormat
 openfl.net.URLRequestMethod
 openfl.net.URLVariables
+openfl.system.Capabilities
 openfl.system.TouchscreenType
 openfl.text.AntiAliasType
 openfl.ui.MouseCursor

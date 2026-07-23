@@ -42,7 +42,7 @@ function onGameOverStart()
 		}
 	}
 
-	soink.scale.set(1, 1); 
+	soink.scale.set(1, 1);
 	soink.updateHitbox();
 	soink.screenCenter();
 	soink.scrollFactor.set();
@@ -146,7 +146,7 @@ function onUpdatePost()
 		bluebox.updateHitbox();
 	}
 
-	if(deadBoyfriend.animation.curAnim.curFrame == 34)
+	if(deadBoyfriend.animation.curAnim.curFrame >= 34)
 		deadBoyfriend.active = false;
 }
 

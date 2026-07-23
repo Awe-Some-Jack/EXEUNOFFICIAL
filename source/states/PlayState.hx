@@ -150,6 +150,8 @@ class PlayState extends MusicBeatState
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
 
+	public static var hasRestarted:Bool = false;
+
 	public var spawnTime:Float = 2000;
 
 	public var inst:FlxSound;
@@ -259,6 +261,7 @@ class PlayState extends MusicBeatState
 	// Less laggy controls
 	private var keysArray:Array<String>;
 	private var _osHeldKeys:Map<flixel.input.keyboard.FlxKey, Bool> = new Map();
+	public var canPress:Bool = true;
 
 	public var songName:String;
 
@@ -696,6 +699,18 @@ class PlayState extends MusicBeatState
 		FlxG.camera.snapToTarget();
 
 		super.create();
+
+		#if linux
+		if(isFixedAspectRatio && !hasRestarted) {
+			hasRestarted = true;
+
+			var black:FlxSprite = new FlxSprite(-2000, -2000).makeGraphic(4000, 4000, 0xFF000000);
+			black.cameras = [camOther];
+			add(black);
+
+			PauseSubState.restartSong();
+		}
+		#end
 
 		cachePopUpScore();
 
@@ -1847,7 +1862,7 @@ class PlayState extends MusicBeatState
 		return health;
 	}
 
-	function openPauseMenu()
+	public function openPauseMenu()
 	{
 		if (ClientPrefs.data.shaders)
 		{
@@ -2390,6 +2405,7 @@ class PlayState extends MusicBeatState
 		deathCounter = 0;
 		seenCutscene = false;
 		firstPlay = false;
+		hasRestarted = false;
 
 		var ret:Dynamic = callOnScripts('onEndSong', null, true);
 		if(ret != LuaUtils.Function_Stop && !transitioning)
@@ -2651,7 +2667,8 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (funnyNote != null)
+
+		if (funnyNote != null && canPress)
 			goodNoteHit(funnyNote);
 		else
 		{

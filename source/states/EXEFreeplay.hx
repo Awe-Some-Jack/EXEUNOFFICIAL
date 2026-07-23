@@ -133,14 +133,6 @@ class EXEFreeplay extends MusicBeatState
 
 		//Desactiva esto para usar el desbloqueo de Mania! - Uncomment this to use Mania's Unlock!
 		// new FlxTimer().start(0.6, (_) -> maniaNotif());
-		
-		if (songEntries.length < 1)
-		{
-			FlxTransitionableState.skipNextTransIn = true;
-			persistentUpdate = false;
-			FlxG.switchState(() -> new EXEMenu());
-			return;
-		}
 
 		covers = new FlxTypedGroup<FlxSprite>();
 		freeBoxes = new FlxTypedGroup<FlxSprite>();
@@ -169,47 +161,47 @@ class EXEFreeplay extends MusicBeatState
 		loadVignette();
 
 		add(exeTexts);
+		if (songEntries.length > 0)
+		{
+			final uiSize = Language.cjkSize(32);
+			rankText = new FlxText(0, 0, 0, Language.get('freeplay.rank', 'RANK') + ': -', uiSize);
+			rankText.setFormat(langFont, uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			rankText.antialiasing = false;
+			rankText.borderSize = 3;
+			rankText.y = FlxG.height - rankText.height - 15;
 
-		final uiSize = Language.cjkSize(32);
-		rankText = new FlxText(0, 0, 0, Language.get('freeplay.rank', 'RANK') + ': -', uiSize);
-		rankText.setFormat(langFont, uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		rankText.antialiasing = false;
-		rankText.borderSize = 3;
-		rankText.y = FlxG.height - rankText.height - 15;
+			scoreText = new FlxText(0, 0, 0, Language.get('freeplay.score', 'SCORE') + ': 0', uiSize);
+			scoreText.setFormat(langFont, uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			scoreText.antialiasing = false;
+			scoreText.borderSize = 3;
+			scoreText.y = rankText.y - scoreText.height - 25;
 
-		scoreText = new FlxText(0, 0, 0, Language.get('freeplay.score', 'SCORE') + ': 0', uiSize);
-		scoreText.setFormat(langFont, uiSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		scoreText.antialiasing = false;
-		scoreText.borderSize = 3;
-		scoreText.y = rankText.y - scoreText.height - 25;
+			scoreBG = new FlxSprite(0, scoreText.y - 4).makeGraphic(1, Std.int(FlxG.height - scoreText.y + 4), 0xFF000000);
+			scoreBG.alpha = 0.6;
+			
+			add(scoreBG);
+			add(scoreText);
+			add(rankText);
 
-		scoreBG = new FlxSprite(0, scoreText.y - 4).makeGraphic(1, Std.int(FlxG.height - scoreText.y + 4), 0xFF000000);
-		scoreBG.alpha = 0.6;
-		
-		add(scoreBG);
-		add(scoreText);
-		add(rankText);
+			missingTextBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+			missingTextBG.alpha = 0.6;
+			missingTextBG.visible = false;
+			add(missingTextBG);
 
-		missingTextBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-		missingTextBG.alpha = 0.6;
-		missingTextBG.visible = false;
-		add(missingTextBG);
+			missingText = new FlxText(50, 0, FlxG.width - 100, '', 24);
+			missingText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			missingText.scrollFactor.set();
+			missingText.visible = false;
+			add(missingText);
 
-		missingText = new FlxText(50, 0, FlxG.width - 100, '', 24);
-		missingText.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		missingText.scrollFactor.set();
-		missingText.visible = false;
-		add(missingText);
-
-		add(charText);
-		add(songTexts);
+			add(charText);
+			add(songTexts);
+		}
 
 		createBoxesAndCovers();
 
 		if (songEntries.length == 0)
 		{
-			missingText.visible = true;
-
 			updateWindowTitle();
 			arrowTimer = new FlxTimer().start(ARROW_UPDATE_INTERVAL, (_) -> {
 				currentArrowIndex = (currentArrowIndex + 1) % ARROW_ICONS.length;
@@ -225,6 +217,11 @@ class EXEFreeplay extends MusicBeatState
 			#if DISCORD_ALLOWED
 			DiscordClient.changePresence("In the Freeplay", null);
 			#end
+
+			bgSonic.color = 0xFFFF0000;
+			verticalLine.color = 0xFFFF0000;
+			bgChecker.color = 0xFFFF0000;
+
 			return;
 		}
 
@@ -449,14 +446,17 @@ class EXEFreeplay extends MusicBeatState
 
 			final actualLabel = (translatedLabels.length > labelIndex) ? translatedLabels[labelIndex] : firstSong.exeLabel;
 
-			final exeText = new FlxText(30, 0, 0, actualLabel, entryExeSize);
-			exeText.setFormat(entryLangFont, entryExeSize, daColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			exeText.borderSize = 2;
-			exeText.ID = i;
-			exeText.visible = (i == selectedBox);
-			exeText.alpha = exeText.visible ? 1.0 : 0.0;
-			exeText.antialiasing = false;
-			exeTexts.add(exeText);
+			if (songEntries.length > 0)
+			{
+				final exeText = new FlxText(30, 0, 0, actualLabel, entryExeSize);
+				exeText.setFormat(entryLangFont, entryExeSize, daColor, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				exeText.borderSize = 2;
+				exeText.ID = i;
+				exeText.visible = (i == selectedBox);
+				exeText.alpha = exeText.visible ? 1.0 : 0.0;
+				exeText.antialiasing = false;
+				exeTexts.add(exeText);
+			}
 		}
 	}
 	

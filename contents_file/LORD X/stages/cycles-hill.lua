@@ -1,8 +1,8 @@
 
 local CAM_X = 500
 local START_ZOOM = 1.7
-local END_ZOOM = 0.64
-local END_CAM_Y = 1100
+local END_ZOOM = 0.5
+local END_CAM_Y = 900
 local TRANSITION_TIME = 6
 local UI_REVEAL_STEP = 120
 local CAM_UNLOCK_STEP = 101
@@ -72,7 +72,7 @@ function onCreate()
 	addLuaSprite('overlay')
 
 	-- EYES --
-	makeLuaSprite('ais', 'characters/ojos cycles', getMidpointX('dad') - 280, getMidpointY('dad') - 530)
+	makeLuaSprite('ais', 'characters/ojos cycles', getMidpointX('dad') - 280, getMidpointY('dad') - 270)
 	setProperty('ais.alpha', 0)
 	setBlendMode('ais', 'add')
 	scaleObject('ais', 0.9, 0.9)
@@ -111,7 +111,7 @@ function onCreatePost()
 
 	for i = 0, 3 do
 		for _, strums in ipairs({'playerStrums', 'opponentStrums'}) do
-			setProperty(strums..'.members['..i..'].y', downscroll and 800 or -200)
+			setProperty(strums..'.members['..i..'].y', downscroll and 800 or -200) setProperty(strums..'.members['..i..'].alpha', 0)
 		end
 	end
 end
@@ -134,6 +134,7 @@ function onUpdate(elapsed)
 	end
 end
 
+local triggerCamOnce = true
 function onUpdatePost()
 	if not cameraLocked then return end
 
@@ -155,7 +156,7 @@ end
 function onEvent(e, v1, v2)
 	if e == 'cyclesEvents' then
 		if v1 == 'revealHUD' then
-			for i = 0, 7 do noteTweenY(i..'TweenY', i, strumsY, 2 + (i * 0.1), 'quartOut') end
+			for i = 0, 7 do noteTweenY(i..'TweenY', i, strumsY, 2 + (i * 0.1), 'quartOut') noteTweenAlpha(i..'TweenAlpha', i, 1, 2 + (i * 0.1), 'quartOut') end
 			doTweenY('hbBGTween', 'hbBG', hbOriginalY, 0.8, 'quartOut') doTweenY('exeScoreTxtTween', 'exeScoreTxt', hbOriginalY + (downscroll and 30 or -30), 0.8, 'quartOut')
 			for _, name in ipairs(HB_ELEMENTS) do doTweenY(name .. 'Tween', name, hbOriginalY + 5, 0.8, 'quartOut') end
 		end
@@ -181,7 +182,7 @@ function onEvent(e, v1, v2)
 end
 function onStepHit()
 	if cameraLocked and curStep > CAM_UNLOCK_STEP then
-		cameraLocked = false triggerEvent('cyclesIntroEnd', '', '')
+		cameraLocked = false
 	end
 end
 

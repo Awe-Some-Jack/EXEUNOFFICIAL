@@ -8,9 +8,15 @@ import openfl.filters.ShaderFilter;
 import openfl.utils.Assets;
 import backend.Paths;
 
+import psychlua.ModchartAnimateSprite;
+import psychlua.FlxAnimateFunctions;
+
 var exeGameOvers:Bool = false;
 var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline'];
 var voicelineSongs:Array<String> = ["cycles", "hellbent", "fate"];
+var diffGameOverSongs:Array<String> = ["starline"];
+
+var gameOverChangeStep:Int = null;
 
 var deadChar:Character;
 var deadMusic:FlxSound;
@@ -32,7 +38,8 @@ var actuallynotfuckd:Bool = false;
 var countdown:FlxTimer;
 var secondsLeft:Int = 10;
 var countdownText:FlxText;
-var majinBF:FlxSprite;
+var majinBF:ModchartAnimateSprite;
+var blueVG:FlxSprite;
 
 function onCreate(){
     for (song in songs) 
@@ -72,12 +79,28 @@ function setCustomGameOvers() {
             exeGameOvers = false;
             GameOverSubstate.deathSoundName = "deathSounds/endless-us-sfx";
             GameOverSubstate.loopSoundName = "deathSongs/endless-us";
-            charPositions = [320, 20];
+            charPositions = [320, 80];
             initialDeathZoom = 0.85;
         case "starline":
+            gameOverChangeStep = 1088;
             exeGameOvers = false;
             GameOverSubstate.characterName = "chaotixbfdeath";
-            charPositions = [550, 350];
+            GameOverSubstate.deathSoundName = "deathSounds/glitch-chaotix";
+            charPositions = [590, 350];
+            initialDeathZoom = 0.7;
+    }
+}
+
+function onStepHit() {
+    if (gameOverChangeStep != null && curStep >= gameOverChangeStep) changeGameOvers();
+}
+
+function changeGameOvers() {
+    switch(songName){
+        case "starline":
+            GameOverSubstate.characterName = "chaotixbeastdeath";
+            GameOverSubstate.deathSoundName = "";
+            charPositions = [540, 300];
             initialDeathZoom = 0.7;
     }
 }
@@ -96,6 +119,7 @@ function setCamEvents() {
 var inGameOver:Bool = false;
 function onGameOverStart()
 {
+    FlxTween.cancelTweensOf(FlxG.camera); //Just in case, heh.
     for (song in songs)  {
         if (songName == song) {
             inGameOver = true;
@@ -104,6 +128,8 @@ function onGameOverStart()
             deadChar.setPosition(charPositions[0], charPositions[1]);
 
             setCamEvents();
+
+            setCustomEvents();
 
             deadMusic = new FlxSound();
             deadMusic.load(GameOverSubstate.loopSoundName, true);
@@ -114,6 +140,13 @@ function onGameOverStart()
             for (i in songShaders)    if (songName == i) addShaders();
 
         }
+    }
+}
+
+function setCustomEvents() {
+    switch(songName){
+        case "starline":
+            FlxG.camera.flash(FlxColor.RED, 1);
     }
 }
 
@@ -177,13 +210,21 @@ function startCountdownMajin()
     var spacing:Float = 50;
 
     //Majin BF
-    majinBF = new FlxSprite();
-    majinBF.frames = Paths.getSparrowAtlas('gameovers/majin bf');
-    majinBF.animation.addByPrefix('dying', 'a', 24, false);
-    majinBF.setPosition(deadChar.x - 400, deadChar.y - 400);
-    majinBF.scale.set(1.2, 1.2);
+    majinBF = new ModchartAnimateSprite(0, 0);
+    majinBF.frames = Paths.getAnimateAtlas('gameovers/us/us');
+    majinBF.anim.addBySymbol('dying', 'majinbf', 24, false);
+    majinBF.active = true;
+    majinBF.setPosition(deadChar.x - 520, deadChar.y - 520);
+    majinBF.scale.set(0.7, 0.7);
     majinBF.alpha = 0;
     GameOverSubstate.instance.add(majinBF);
+
+    //Blue VG
+    blueVG = new FlxSprite();
+    blueVG.loadGraphic(Paths.image('hud/blueVg'));
+    blueVG.scrollFactor.set();
+    blueVG.alpha = 0;
+    GameOverSubstate.instance.add(blueVG);
 
     var indices = [5, 4, 3, 2, 1];
     for (i in indices) {
@@ -195,7 +236,7 @@ function startCountdownMajin()
         var bell:Float = 1.0 - Math.abs(i - 3) * 0.2;
         var dynamicSpacing:Float = spacing * (1.0 + bell);
         var leftX:Float = i >= 3 ? baseLeft + ((i - 3) * (i - 3) * 30) : baseLeft - (i * dynamicSpacing);
-        var yOffset:Float = i == 1 ? 15 : 0;
+        var yOffset:Float = i == 1 ? 70 : 65;
         left.setPosition(leftX, deadChar.y + yOffset);
         left.scrollFactor.set(0, 0);
         left.scale.set(scale, scale);
@@ -277,6 +318,8 @@ function youFuckedUp()
 
     deadChar.visible = false;
     majinBF.alpha = 1;
+    blueVG.alpha  = 1;
+    FlxTween.tween(blueVG, {alpha: 0}, 1);
     majinBF.animation.play('dying', true);
     for (sound in FlxG.sound.list) if (sound.playing) sound.volume = 0;
     FlxTween.cancelTweensOf(FlxG.camera);
@@ -287,7 +330,7 @@ function youFuckedUp()
         FlxG.sound.play(Paths.sound('deathSounds/secondLOOK'));
         FlxTween.tween(FlxG.camera, {zoom: FlxG.camera.zoom - 0.2}, 0.5, {ease: FlxEase.circOut});
 
-        //new FlxTimer().start(6, (_) -> GameOverSubstate.instance.Sys.exit(0));
+        new FlxTimer().start(6, (_) -> Sys.exit());
     });
 
 }

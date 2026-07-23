@@ -65,6 +65,7 @@ class EXEMenu extends MusicBeatState
 	var shadowTimer:Float = 0.0;
 	var shadowMoved:Bool = false;
 
+	public static var secretSong:Bool = false;
 	final secretCodes:Array<String> = ['personel', '2005'];
 	var curKey:Array<Int>;
 
@@ -499,6 +500,7 @@ class EXEMenu extends MusicBeatState
 
 			Song.loadFromJson(Paths.formatToSongPath(song), Paths.formatToSongPath(song));
 
+			secretSong = true;
 			PlayState.storyPlaylist = [song];
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = 1;

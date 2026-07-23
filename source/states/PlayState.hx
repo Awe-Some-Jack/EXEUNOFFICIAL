@@ -2423,6 +2423,17 @@ class PlayState extends MusicBeatState
 				return false;
 			}
 
+			if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong)
+			{
+				states.EXEMenu.secretSong = false;
+				var save:FlxSave = new FlxSave();
+				save.bind('savedSongs', CoolUtil.getSavePath());
+				if (save.data.songs == null) save.data.songs = [];
+				save.data.songs.push(Paths.formatToSongPath(SONG.song));
+				save.flush();
+				FlxG.log.add("Song(s) saved!");
+			}
+
 			if (isStoryMode)
 			{
 				campaignScore += songScore;

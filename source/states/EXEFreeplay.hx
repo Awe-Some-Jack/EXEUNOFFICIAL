@@ -16,6 +16,7 @@ import flixel.tweens.FlxEase;
 import flixel.text.FlxText;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.math.FlxMath;
+import flixel.util.FlxSave;
 import flixel.util.FlxAxes;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
@@ -115,6 +116,7 @@ class EXEFreeplay extends MusicBeatState
 	var stopMusicPlay:Bool = false;
 	
 	var holdCheck:Float = 0;
+	public static var inDevMode:Bool = false;
 
 	override function create()
 	{
@@ -248,6 +250,12 @@ class EXEFreeplay extends MusicBeatState
 	function buildSongList():Void
 	{
 		songEntries = [];
+
+		var save:FlxSave = new FlxSave();
+		save.bind('savedSongs', CoolUtil.getSavePath());
+		var unlocked:Array<String> = save.data.songs;
+		if (unlocked == null) unlocked = [];
+
 		for (i in 0...WeekData.weeksList.length)
 		{
 			if (i == 0) continue;
@@ -268,6 +276,8 @@ class EXEFreeplay extends MusicBeatState
 			{
 				final sName:String = song[0];
 				final title:String = weekExeTitle ?? sName.toUpperCase();
+
+				if (unlocked.indexOf(Paths.formatToSongPath(sName)) == -1 && !inDevMode) continue;
 				
 				songInfoList.push({
 					songName: sName,
@@ -432,6 +442,8 @@ class EXEFreeplay extends MusicBeatState
 	{
 		super.update(elapsed);
 		if (subState != null) return;
+
+		if (FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
 
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;

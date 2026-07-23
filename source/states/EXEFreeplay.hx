@@ -206,6 +206,28 @@ class EXEFreeplay extends MusicBeatState
 
 		createBoxesAndCovers();
 
+		if (songEntries.length == 0)
+		{
+			missingText.visible = true;
+
+			updateWindowTitle();
+			arrowTimer = new FlxTimer().start(ARROW_UPDATE_INTERVAL, (_) -> {
+				currentArrowIndex = (currentArrowIndex + 1) % ARROW_ICONS.length;
+				updateWindowTitle();
+			}, 0);
+
+			super.create();
+
+			CustomShapeTransition.shape = HEAD;
+			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/freeplay.ogg'));
+			Paths.clearUnusedMemory();
+
+			#if DISCORD_ALLOWED
+			DiscordClient.changePresence("In the Freeplay", null);
+			#end
+			return;
+		}
+
 		if (songEntries.length > 0)
 		{
 			Mods.currentModDirectory = songEntries[0].folder;
@@ -444,6 +466,19 @@ class EXEFreeplay extends MusicBeatState
 		if (subState != null) return;
 
 		if (FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
+
+		if (songEntries.length < 1)
+		{
+			if (controls.BACK)
+			{
+				FlxG.sound.play(Paths.sound('cancelMenu'));
+				FlxG.switchState(() -> new EXEMenu());
+				FlxG.sound.music?.fadeOut(0.3);
+				return;
+			}
+
+			return;
+		}
 
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;

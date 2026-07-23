@@ -1,28 +1,28 @@
 {
 	"animations": [
 		{
+			"offsets": [0, 0],
 			"loop": true,
-			"offsets": [0, 0],
+			"fps": 8,
 			"anim": "deathLoop",
-			"fps": 8,
-			"name": "bf-chaotixdeath loop",
-			"indices": []
+			"indices": [],
+			"name": "bf-chaotixdeath loop"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 8,
 			"anim": "deathConfirm",
-			"fps": 8,
-			"name": "bf-chaotixdeath bye",
-			"indices": []
+			"indices": [],
+			"name": "bf-chaotixdeath bye"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"indices": [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			"fps": 24,
 			"anim": "firstDeath",
-			"fps": 8,
-			"name": "bf-chaotixdeath ded",
-			"indices": []
+			"loop": false,
+			"name": "bf-chaotixdeath ded"
 		}
 	],
 	"vocals_file": "",

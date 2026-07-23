@@ -1,0 +1,39 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "deathConfirm",
+			"fps": 8,
+			"name": "bf-chaotixdeath bye",
+			"indices": []
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 8,
+			"anim": "firstDeath",
+			"loop": false,
+			"name": "chaotix-beastdeath gore"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [4],
+			"fps": 8,
+			"anim": "deathLoop",
+			"loop": true,
+			"name": "bf-chaotixdeath loop"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "gameovers/chaotix-beastdeath",
+	"position": [520, 0],
+	"healthicon": "dad",
+	"flip_x": true,
+	"healthbar_colors": [175, 102, 206],
+	"camera_position": [0, 0],
+	"sing_duration": 6.1,
+	"scale": 6,
+	"_editor_isPlayer": true
+}

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="knuxd.png">
+	<!-- Created with Adobe Animate version 24.0.10.14 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="knuxd instancia 10000" x="100" y="100" width="1566" height="1037" frameX="-55" frameY="-4" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10001" x="100" y="100" width="1566" height="1037" frameX="-55" frameY="-4" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10002" x="100" y="100" width="1566" height="1037" frameX="-55" frameY="-4" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10003" x="1766" y="100" width="1574" height="1041" frameX="-49" frameY="0" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10004" x="1766" y="100" width="1574" height="1041" frameX="-49" frameY="0" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10005" x="1766" y="100" width="1574" height="1041" frameX="-49" frameY="0" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10006" x="3440" y="100" width="1630" height="1038" frameX="-21" frameY="-3" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10007" x="3440" y="100" width="1630" height="1038" frameX="-21" frameY="-3" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10008" x="5170" y="100" width="1673" height="1039" frameX="0" frameY="-2" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10009" x="100" y="1241" width="1634" height="992" frameX="-24" frameY="-49" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10010" x="100" y="1241" width="1634" height="992" frameX="-24" frameY="-49" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10011" x="1834" y="1241" width="1611" height="975" frameX="-32" frameY="-66" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10012" x="1834" y="1241" width="1611" height="975" frameX="-32" frameY="-66" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10013" x="3545" y="1241" width="1596" height="967" frameX="-37" frameY="-74" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10014" x="3545" y="1241" width="1596" height="967" frameX="-37" frameY="-74" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10015" x="3545" y="1241" width="1596" height="967" frameX="-37" frameY="-74" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10016" x="5241" y="1241" width="1532" height="987" frameX="-72" frameY="-54" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10017" x="5241" y="1241" width="1532" height="987" frameX="-72" frameY="-54" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10018" x="100" y="2333" width="1555" height="1023" frameX="-59" frameY="-18" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10019" x="100" y="2333" width="1555" height="1023" frameX="-59" frameY="-18" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10020" x="1755" y="2333" width="1562" height="1034" frameX="-57" frameY="-7" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10021" x="1755" y="2333" width="1562" height="1034" frameX="-57" frameY="-7" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10022" x="1755" y="2333" width="1562" height="1034" frameX="-57" frameY="-7" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10023" x="3417" y="2333" width="1584" height="1033" frameX="-45" frameY="-8" frameWidth="1673" frameHeight="1041"/>
+	<SubTexture name="knuxd instancia 10024" x="3417" y="2333" width="1584" height="1033" frameX="-45" frameY="-8" frameWidth="1673" frameHeight="1041"/>
+</TextureAtlas>

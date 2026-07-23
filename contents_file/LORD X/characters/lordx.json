@@ -1,7 +1,7 @@
 {
 	"animations": [
 		{
-			"offsets": [334, 322],
+			"offsets": [249, 8],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -9,7 +9,7 @@
 			"name": "left"
 		},
 		{
-			"offsets": [231, 316],
+			"offsets": [120, 0],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
@@ -17,7 +17,7 @@
 			"name": "down"
 		},
 		{
-			"offsets": [203, 461],
+			"offsets": [84, 183],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
@@ -25,7 +25,7 @@
 			"name": "up"
 		},
 		{
-			"offsets": [146, 377],
+			"offsets": [12, 76],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
@@ -34,45 +34,37 @@
 		},
 		{
 			"loop": true,
-			"offsets": [136, 316],
+			"offsets": [0, 0],
 			"anim": "idle",
 			"fps": 24,
 			"name": "idle",
 			"indices": []
 		},
 		{
-			"offsets": [246, 372],
 			"loop": false,
-			"fps": 24,
+			"offsets": [109, 57],
 			"anim": "thanos",
-			"indices": [],
-			"name": "chao"
+			"fps": 24,
+			"name": "chasquido",
+			"indices": []
 		},
 		{
-			"offsets": [136, 316],
 			"loop": false,
-			"fps": 24,
+			"offsets": [91, 160],
 			"anim": "ai",
-			"indices": [],
-			"name": "ojo"
-		},
-		{
-			"offsets": [264, 400],
-			"loop": false,
 			"fps": 24,
-			"anim": "laught",
-			"indices": [],
-			"name": "risa"
+			"name": "byebye",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/LordXClycles",
-	"position": [50, 420],
+	"image": "characters/cyclesX",
+	"position": [0, 0],
 	"healthicon": "lord-x",
 	"flip_x": false,
 	"healthbar_colors": [60, 60, 88],
-	"camera_position": [-230, -170],
+	"camera_position": [0, 0],
 	"sing_duration": 9.4,
 	"scale": 0.9,
 	"_editor_isPlayer": false

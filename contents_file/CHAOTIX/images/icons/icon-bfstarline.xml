@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="icon-bfstarline.png">
+<SubTexture name="icon-bfstarline normal0000" x="52" y="21" width="24" height="20" frameX="-11" frameY="-10" frameWidth="50" frameHeight="45" />
+<SubTexture name="icon-bfstarline normal0001" x="0" y="43" width="25" height="20" frameX="-11" frameY="-11" frameWidth="50" frameHeight="45" />
+<SubTexture name="icon-bfstarline normal0002" x="0" y="22" width="26" height="21" frameX="-11" frameY="-11" frameWidth="50" frameHeight="45" />
+<SubTexture name="icon-bfstarline normal0003" x="26" y="22" width="26" height="21" frameX="-10" frameY="-10" frameWidth="50" frameHeight="45" />
+<SubTexture name="icon-bfstarline normal0004" x="52" y="0" width="25" height="21" frameX="-10" frameY="-10" frameWidth="50" frameHeight="45" />
+<SubTexture name="icon-bfstarline losing0000" x="0" y="0" width="26" height="22" frameX="-12" frameY="-7" frameWidth="50" frameHeight="45" />
+<SubTexture name="icon-bfstarline losing0001" x="26" y="0" width="26" height="22" frameX="-12" frameY="-7" frameWidth="50" frameHeight="45" />
+</TextureAtlas>

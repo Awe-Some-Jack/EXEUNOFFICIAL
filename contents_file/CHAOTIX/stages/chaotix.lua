@@ -1,4 +1,4 @@
-local starlineBG = {
+local starlineAssets = {
 	['BGAssets'] = {
 		{name = 'cieeelo',     path = 'bg/horizonsky', x = -1900, y = -1300,                                                  scaleX = 6, scaleY = 6, scrollX = 0.8, scrollY = 1, antialiasing = false, alpha = 1, front = false},
 		{name = 'cieloFucked', path =   'bg/bgglitch', x = -1600, y = -1000, animName = 'idle', animPrefix = 'bgglitch idle', scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
@@ -16,6 +16,11 @@ local starlineBG = {
 	['cutsceneChars'] = {
 		{name = 'wech',  char =   'anim',  x = 500, y = 300, scaleX =  4.6, scaleY = 4.6, antialiasing = false, alpha = 0, front = false},
 		{name = 'bf-gf', char =  'anim2',  x = 430, y = 180, scaleX =  3.8, scaleY = 3.8, antialiasing = false, alpha = 0, front = false},
+	},
+	['icons'] = {
+		{name = 'bfStarlineIcon',            path = 'icons/icon-bfstarline',    xIcon = 1110, yIcon = 535, prefixThing = 'icon-bfstarline ',   positionFrom = 'iconBF',  alpha = 1},
+		{name = 'chaotixBeastStarlineIcon',  path = 'icons/icon-chaotixbeast',  xIcon =  500, yIcon = 560, prefixThing = 'icon-chaotixbeast ', positionFrom = 'iconOpp', alpha = 0},
+		{name = 'chaotixNormalStarlineIcon', path = 'icons/icon-chaotixnormal', xIcon =  500, yIcon = 560, prefixThing = 'icon-chaotixnormal ', positionFrom = 'iconOpp', alpha = 1}
 	}
 }
 
@@ -60,6 +65,18 @@ local function createCutsceneCharacters(yea)
 	addLuaSprite(yea.name, yea.front)
 end
 
+local function createIcon(icon)
+	makeAnimatedLuaSprite(icon.name, icon.path, icon.xIcon, icon.yIcon) -- Positions kinda doesnt matter here cause the xml is fucked up dude
+	addAnimationByPrefix(icon.name, 'normal', icon.prefixThing..'normal', 8, true)
+	addAnimationByPrefix(icon.name, 'losing', icon.prefixThing..'losing', 8, true)
+	setProperty(icon.name..'.alpha', icon.alpha)
+	setProperty(icon.name..'.antialiasing', false)
+	setObjectCamera(icon.name, 'camHUD')
+	scaleObject(icon.name, 3.2, 3.2)
+	setObjectOrder(icon.name, getObjectOrder('healthBG'))
+	addLuaSprite(icon.name)
+end
+
 local function createTails()
 	createInstance('tails', 'flixel.addons.display.FlxBackdrop', {nil, 0x01})
 	loadGraphic('tails', 'bg/tails')
@@ -74,9 +91,14 @@ local function createTails()
 end
 
 function onCreatePost()
-	for _, bgs   in ipairs(starlineBG['BGAssets'])      do	              createSprite(bgs) end
-	for _, chars in ipairs(starlineBG['characters'])    do	         createCharacter(chars) end
-	for _, chars in ipairs(starlineBG['cutsceneChars']) do	createCutsceneCharacters(chars) end
+	for _, bgs   in ipairs(starlineAssets['BGAssets'])      do	              createSprite(bgs) end
+	for _, chars in ipairs(starlineAssets['characters'])    do	         createCharacter(chars) end
+	for _, chars in ipairs(starlineAssets['cutsceneChars']) do	createCutsceneCharacters(chars) end
+
+	for _, icon in ipairs(starlineAssets['icons']) do createIcon(icon) end
+
+	for _, icons in ipairs({'iconBF', 'iconOpp'}) do setProperty(icons..'.visible', false) end
+
 	createTails()
 
 
@@ -140,7 +162,7 @@ local starlineEvents = {
 			setProperty('dad.specialAnim', true)
 			playAnim('dad', 'trans1', true)
 			for _, chars in ipairs({'boyfriend', 'dad', 'gf'}) do setProperty(chars..'.alpha', 0) end
-			for _, bgChars in ipairs(starlineBG['characters']) do setProperty(bgChars.name..'.alpha', 0) end
+			for _, bgChars in ipairs(starlineAssets['characters']) do setProperty(bgChars.name..'.alpha', 0) end
 
 			setProperty('wech.alpha', 1)
 			setProperty('bg1.alpha', 0)
@@ -177,7 +199,11 @@ local starlineEvents = {
 		doTweenAlpha('fadeFromBlack',  'blackOverlay', 0, 1.5, 'sineOut')
 		doTweenAlpha('fadeFromBlackHUD',     'camHUD', 1, 1.5, 'sineOut')
 
-		for _, chars in ipairs(starlineBG['characters']) do setProperty(chars.name..'.idleSuffix', '-alt') setProperty(chars.name..'.alpha', 1) playAnim(chars.name, 'idle-alt', true) end
+		loadGraphic('healthBG', 'hud/hud_chaotix_beast')
+		setProperty('chaotixNormalStarlineIcon.alpha', 0) setProperty('chaotixBeastStarlineIcon.alpha', 1)
+		--callMethod('chaotixBeastStarlineIcon.setPosition', {400, 520})
+
+		for _, chars in ipairs(starlineAssets['characters']) do setProperty(chars.name..'.idleSuffix', '-alt') setProperty(chars.name..'.alpha', 1) playAnim(chars.name, 'idle-alt', true) end
 		callMethod('charmy.setPosition', {getProperty('charmy.x') + 110, getProperty('charmy.y') + 280})
 		setProperty('bg1.alpha', 0)
 		setProperty('cieeelo.alpha', 0)
@@ -191,8 +217,9 @@ local starlineEvents = {
 function onEvent(n, v1, v2)
 	if n == 'chaotixEvents' then starlineEvents[v1](v2) end
 end
+
 function onBeatHit()
-	for _, beatGuys in ipairs(starlineBG['characters']) do
+	for _, beatGuys in ipairs(starlineAssets['characters']) do
 		if beatGuys.beatIntervals then
 			if curBeat %beatGuys.beatIntervals == 0 and not changeIdles then playAnim(beatGuys.name, 'idle', true) end
 		end
@@ -201,13 +228,43 @@ function onBeatHit()
 	if not glitchedActive then spawnStar() else spawnGlitch() end
 end
 
+local previousAnimOpp = 'normal'
+local previousAnim = 'normal'
+local function setIconsAnims()
+	if previousAnimOpp == 'normal' and getHealth() > 1.6 then
+		playAnim('chaotixBeastStarlineIcon',  'losing', true)
+		playAnim('chaotixNormalStarlineIcon', 'losing', true)
+		callMethod('chaotixBeastStarlineIcon.setPosition', {500, 560})
+		previousAnimOpp = 'losing'
+	end
+
+	if previousAnimOpp == 'losing' and getHealth() <= 1.6 then
+		playAnim('chaotixBeastStarlineIcon',  'normal', true)
+		playAnim('chaotixNormalStarlineIcon', 'normal', true)
+		callMethod('chaotixBeastStarlineIcon.setPosition', {400, 520})
+		previousAnimOpp = 'normal'
+	end
+
+	if previousAnim == 'normal' and getHealth() > 0.4 then
+		playAnim('bfStarlineIcon', 'normal', true)
+		callMethod('bfStarlineIcon.setPosition', {1110, 545})
+		previousAnim = 'losing'
+	end
+
+	if previousAnim == 'losing' and getHealth() <= 0.4 then
+		playAnim('bfStarlineIcon', 'losing', true)
+		callMethod('bfStarlineIcon.setPosition', {1105, 550})
+		previousAnim = 'normal'
+	end
+end
+
 local flyHold = 0
 function onUpdatePost(e)
 	flyHold = flyHold + e
 	if glitchedActive then setProperty('tails.y', tailsBaseY + getRandomInt(-8, 8))	end
 	if transPlaying then setProperty('dad.specialAnim', true) end
 	if getProperty('dad.animation.curAnim.name') == 'trans2' and getProperty('dad.animation.curAnim.finished') and transPlaying then playAnim('dad', 'trans3', true) end
-	for _, beatGuys in ipairs(starlineBG['characters']) do
+	for _, beatGuys in ipairs(starlineAssets['characters']) do
 		if beatGuys.canFloat and canFly then
 			callMethod(beatGuys.name..'.setPosition', {
 				getProperty(beatGuys.name..'.x') + math.cos(flyHold + 0.1) * 0.1,
@@ -215,6 +272,8 @@ function onUpdatePost(e)
 			})
 		end
 	end
+
+	setIconsAnims()
 end
 
 function opponentNoteHitPre(i)

@@ -1,87 +1,31 @@
 {
 	"animations": [
 		{
-			"loop": true,
-			"offsets": [226, -70],
-			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [466, -73],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [247, -71],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [245, 36],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"offsets": [243, -77],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN-alt",
+			"offsets": [-120, 30],
 			"indices": [],
-			"name": "Símbolo 80"
+			"fps": 24,
+			"anim": "grito1",
+			"loop": false,
+			"name": "1grito"
 		},
 		{
-			"loop": false,
-			"offsets": [223, -74],
-			"anim": "singRIGHT",
+			"offsets": [-60, -10],
+			"indices": [],
 			"fps": 24,
-			"name": "right",
-			"indices": []
-		},
-		{
+			"anim": "grito2",
 			"loop": false,
-			"offsets": [621, -155],
-			"anim": "ah",
-			"fps": 24,
-			"name": "sah",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [248, -73],
-			"anim": "laught",
-			"fps": 24,
-			"name": "Símbolo 80",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [249, -75],
-			"anim": "laugh",
-			"fps": 24,
-			"name": "Símbolo 80",
-			"indices": []
+			"name": "2grito"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/xenoycr",
-	"position": [80, 30],
+	"image": "characters/grito",
+	"position": [-620, 230],
 	"healthicon": "XENO-P2",
 	"flip_x": false,
 	"healthbar_colors": [36, 1, 116],
-	"camera_position": [-10, 110],
+	"camera_position": [0, 0],
 	"sing_duration": 8,
-	"scale": 0.9,
+	"scale": 1.2,
 	"_editor_isPlayer": false
 }

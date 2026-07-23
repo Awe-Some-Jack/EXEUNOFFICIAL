@@ -124,7 +124,7 @@ function onCreate()
 	for _, def in ipairs(YCRCrystalBG) do precacheImage(def.path) end
 
 	addCharacterToList("sonic.exe 2 p", 'dad')
-	addCharacterToList("sonic.exe 2-grito", 'dad')
+	addCharacterToList("sonic.exe 2 mad", 'dad')
 	addCharacterToList("bfpixel", 'bf')
 	addCharacterToList("gf pixel yrc", 'gf')
 end

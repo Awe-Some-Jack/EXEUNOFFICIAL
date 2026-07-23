@@ -1,51 +1,51 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
+			"offsets": [207, 0],
 			"loop": false,
-			"offsets": [231, -2],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [-11, -5],
 			"loop": false,
-			"offsets": [-14, -7],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [2, 99],
 			"loop": false,
-			"offsets": [-2, 110],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [-3, -3],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
 		},
 		{
 			"loop": false,
 			"offsets": [-15, -17],
 			"anim": "laugh",
 			"fps": 24,
-			"name": "1risa",
+			"name": "laugh",
 			"indices": []
 		},
 		{
@@ -53,31 +53,31 @@
 			"offsets": [-117, -70],
 			"anim": "idle-alt",
 			"fps": 24,
-			"name": "2idle",
+			"name": "madidle",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [173, 49],
+			"offsets": [141, 35],
 			"anim": "singLEFT-alt",
 			"fps": 24,
-			"name": "f left",
+			"name": "madleft",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [10, -76],
+			"offsets": [-4, -76],
 			"anim": "singDOWN-alt",
 			"fps": 24,
-			"name": "down a",
+			"name": "maddown",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [63, 176],
+			"offsets": [43, 148],
 			"anim": "singUP-alt",
 			"fps": 24,
-			"name": "f up",
+			"name": "madup",
 			"indices": []
 		},
 		{
@@ -85,7 +85,15 @@
 			"offsets": [-118, -77],
 			"anim": "singRIGHT-alt",
 			"fps": 24,
-			"name": "f right",
+			"name": "madright",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-15, -80],
+			"anim": "laugh-alt",
+			"fps": 24,
+			"name": "madlaugh",
 			"indices": []
 		},
 		{
@@ -93,27 +101,19 @@
 			"offsets": [-69, -33],
 			"anim": "die",
 			"fps": 24,
-			"name": "just die",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [13, -105],
-			"anim": "laugh-alt",
-			"fps": 24,
-			"name": "2risa",
+			"name": "justdie",
 			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/xenoycr",
-	"position": [-330, 0],
+	"image": "characters/ycrxeno",
+	"position": [-320, 60],
 	"healthicon": "XENO-P2",
 	"flip_x": false,
 	"healthbar_colors": [36, 1, 116],
 	"camera_position": [0, 0],
 	"sing_duration": 8,
-	"scale": 0.8,
+	"scale": 0.9,
 	"_editor_isPlayer": false
 }

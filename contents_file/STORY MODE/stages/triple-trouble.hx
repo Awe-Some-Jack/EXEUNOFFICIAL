@@ -43,7 +43,7 @@ var xeno:Array<BackgroundSprite> = [
 	{path: 'tt/bgx/trees3', position: [-700, -600], scroll: [0.55, 0.55], visible: false, pathF: 'tt/bgx/fire/trees3'},
 	{path: 'tt/bgx/fire/FIRE 2', position: [-1000, -700], scroll: [0.55, 0.55], scale: [6, 10, true], animation: [{name: 'fire instancia 1', looped: true}], visible: false, isFire: true},
 	{path: 'tt/bgx/trees2', position: [-600, -600], scroll: [0.7, 0.7], visible: false, pathF: 'tt/bgx/fire/trees2'},
-	{path: 'tt/bgx/NewTitleMenuBG', position: [-300, -200], scroll: [0.85, 0.85], scale: [6, 6, true], animation: [{name: 'TitleMenuSSBG instance 1', looped: true}], visible: false},
+	{path: 'tt/bgx/NewTitleMenuBG', position: [-300, -200], scroll: [0.85, 0.85], scale: [6, 6, true], animation: [{name: 'TitleMenuSSBG instance 1', looped: true}], visible: false, oushi: true},
 	{path: 'tt/bgx/fire/FIRE', position: [-600, -800], scroll: [0.85, 0.85], scale: [3, 3, true], animation: [{name: 'fuego true instancia 1', looped: true}], visible: false, isFire: true},
 	{path: 'tt/bgx/trees1', position: [-600, -200], scroll: [0.9, 0.9], visible: false, pathF: 'tt/bgx/fire/trees1'},
 	{path: 'tt/bgx/fire/FIRE', position: [-800, -600], scroll: [0.9, 0.9], scale: [3, 3, true], animation: [{name: 'fuego true instancia 1', looped: true}], visible: false, isFire: true},
@@ -64,13 +64,13 @@ var tails:Array<BackgroundSprite> = [
 ];
 
 var knux:Array<BackgroundSprite> = [
-	{path: 'tt/knux/bg', position: [-750, -500], scroll: [0.4, 0.4], scale: [1, 1, true], visible: false},
-	{path: 'tt/knux/platform3', position: [-750, -600], scroll: [0.5, 0.5], scale: [1, 1, true], visible: false},
-	{path: 'tt/knux/fog2', position: [-750, -700], scroll: [0.5, 0.5], scale: [1, 1, true], visible: false},
-	{path: 'tt/knux/platform2', position: [-780, -660], scroll: [0.6, 0.6], scale: [1, 1, true], visible: false},
-	{path: 'tt/knux/platform', position: [-750, -550], scroll: [0.7, 0.7], scale: [1, 1, true], visible: false},
-	{path: 'tt/knux/fog', position: [-750, -600], scroll: [0.8, 0.8], visible: false},
-	{path: 'tt/knux/floor', position: [-700, -350], visible: false}
+	{path: 'tt/knux/bg', position: [-780, -500], scroll: [0.4, 0.4], scale: [1, 1, true], visible: false},
+	{path: 'tt/knux/platform3', position: [-780, -600], scroll: [0.5, 0.5], scale: [1, 1, true], visible: false},
+	{path: 'tt/knux/fog2', position: [-780, -700], scroll: [0.5, 0.5], scale: [1, 1, true], visible: false},
+	{path: 'tt/knux/platform2', position: [-810, -660], scroll: [0.6, 0.6], scale: [1, 1, true], visible: false},
+	{path: 'tt/knux/platform', position: [-780, -550], scroll: [0.7, 0.7], scale: [1, 1, true], visible: false},
+	{path: 'tt/knux/fog', position: [-780, -600], scroll: [0.8, 0.8], visible: false},
+	{path: 'tt/knux/floor', position: [-730, -350], visible: false}
 ];
 
 var egg:Array<BackgroundSprite> = [
@@ -179,11 +179,10 @@ function onEvent(n, v1, v2)
 		case 'tripletroublebgchange': changeBG(v1);
 		case 'flashbackstt': toggleFlashback();
 		case 'ttfirestart': 
-			for (spr in xeno) if (spr?.spriteF) {
-				debugPrint(spr.spriteF);
+			vgSpr.visible = true;
+			for (spr in xeno) if (spr.spriteF != null) {
 				spr.spriteF.visible = true;
-				//spr.spriteF.visible = true; FlxTween.tween(spr.spriteF, {alpha: 1}, Conductor.crochet / (1000 / 8) / playbackRate);
-			}
+			};
 			var fireDur:Float = Conductor.crochet / (1000 / 10) / playbackRate;
 			if (xeno[3].sprite != null) FlxTween.tween(xeno[3].sprite, {y: -2700}, fireDur, {ease: FlxEase.cubeOut});
 			if (!ClientPrefs.data.lowQuality && xeno[6].sprite != null) FlxTween.tween(xeno[6].sprite, {y: 250}, fireDur, {ease: FlxEase.cubeOut});
@@ -246,12 +245,15 @@ function changeBG(bg:String):Void
 			changeCharacter('dad', 'BEAST');
 			changeCharacter('bf', 'bf-perspective');
 
-			dad.setPosition(260, 635);
-			boyfriend.setPosition(1450, 910);
+			dad.setPosition(350, 680);
+			boyfriend.setPosition(1200, 950);
 		case 'xeno2':
 			triggerEvent('flashbackstt', '', '');
 
-			for (spr in xeno) if (!spr.isFire) { spr.sprite.visible = true; spr.sprite.flipX = true; }
+			for (spr in xeno) {
+				if (!spr.isFire) { spr.sprite.visible = true; spr.sprite.flipX = true; }
+				if (spr.spriteF != null) spr.spriteF.flipX = true;
+			}
 			for (spr in knux) spr.sprite?.destroy();
 			glow.visible = true;
 
@@ -259,7 +261,7 @@ function changeBG(bg:String):Void
 			changeCharacter('bf', 'bf-perspective');
 
 			dad.setPosition(1435, 695);
-			boyfriend.setPosition(160, 950);
+			boyfriend.setPosition(130, 950);
 
 			boyfriend.idleSuffix = '-knux';
 			boyfriend.recalculateDanceIdle();
@@ -290,8 +292,8 @@ function changeBG(bg:String):Void
 			changeCharacter('dad', 'knux');
 			changeCharacter('bf', 'bf');
 
-			dad.setPosition(1248, 937);
-			boyfriend.setPosition(125, 768);
+			dad.setPosition(1248, 900);
+			boyfriend.setPosition(110, 768);
 
 			boyfriend.idleSuffix = '-knux';
 			boyfriend.recalculateDanceIdle();
@@ -299,7 +301,7 @@ function changeBG(bg:String):Void
 			triggerEvent('Knux', '', '');
 
 			for (spr in xeno) spr.sprite?.destroy();
-			for (spr in normal) spr.spriteF.visible = true;
+			for (spr in normal) if (spr.spriteF != null) spr.spriteF.visible = true;
 
 
 			changeCharacter('dad', 'eggman');
@@ -483,17 +485,11 @@ function noteMiss(note) if (curBG == 'knux' || curBG == 'xeno2') boyfriend.playA
 
 function onBeatHit()
 {
-	if (curBeat % 4 == 0)
+	if (curBeat % 2 == 0 && vgSpr.visible)
 	{
-		FlxTween.cancelTweensOf();
-		FlxTween.tween(vgSpr, {alpha: 1}, Conductor.crochet / 1000 * 2);
+		FlxTween.cancelTweensOf(vgSpr);
+		FlxTween.tween(vgSpr, {alpha: (curBeat % 4 == 0 ? 1 : 0)}, Conductor.crochet / 1000 * 2);
 	}
-	else if (curBeat % 4 == 2)
-	{
-		FlxTween.cancelTweensOf();
-		vgTween = FlxTween.tween(vgSpr, {alpha: 0}, Conductor.crochet / 1000 * 2);
-	}
-
 	if (curBG.startsWith('xeno') && curBeat % 2 == 0)
 	{
 		if (dad.getAnimationName() == 'idle') dad.playAnim('idle', true);
@@ -535,6 +531,6 @@ function makeBackground(background:Array<BackgroundSprite>, ?makeFire:Bool = fal
 		if (spriteDef.front) game.add(sprite);
 		if (spriteDef.flipX != null) sprite.flipX = spriteDef.flipX;
 		else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
-		if (makeFire) spriteDef.spriteF = sprite; else spriteDef.sprite = sprite;
+		if (makeFire && !spriteDef.oushi) spriteDef.spriteF = sprite; else spriteDef.sprite = sprite;
 	}
 }

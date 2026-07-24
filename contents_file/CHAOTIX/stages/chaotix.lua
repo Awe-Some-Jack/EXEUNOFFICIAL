@@ -18,9 +18,9 @@ local starlineAssets = {
 		{name = 'bf-gf', char =  'anim2',  x = 430, y = 180, scaleX =  3.8, scaleY = 3.8, antialiasing = false, alpha = 0, front = false},
 	},
 	['icons'] = {
-		{name = 'bfStarlineIcon',            path = 'icons/icon-bfstarline',    xIcon = 1110, yIcon = 535, prefixThing = 'icon-bfstarline ',   positionFrom = 'iconBF',  alpha = 1},
-		{name = 'chaotixBeastStarlineIcon',  path = 'icons/icon-chaotixbeast',  xIcon =  500, yIcon = 560, prefixThing = 'icon-chaotixbeast ', positionFrom = 'iconOpp', alpha = 0},
-		{name = 'chaotixNormalStarlineIcon', path = 'icons/icon-chaotixnormal', xIcon =  500, yIcon = 560, prefixThing = 'icon-chaotixnormal ', positionFrom = 'iconOpp', alpha = 1}
+		{name = 'bfStarlineIcon',            path = 'icons/icon-bfstarline',    xIcon = 1110, yIcon = {25, 535}, prefixThing = 'icon-bfstarline ',   positionFrom = 'iconBF',  alpha = 1},
+		{name = 'chaotixBeastStarlineIcon',  path = 'icons/icon-chaotixbeast',  xIcon =  500, yIcon = {25, 560}, prefixThing = 'icon-chaotixbeast ', positionFrom = 'iconOpp', alpha = 0},
+		{name = 'chaotixNormalStarlineIcon', path = 'icons/icon-chaotixnormal', xIcon =  500, yIcon = {5, 560}, prefixThing = 'icon-chaotixnormal ', positionFrom = 'iconOpp', alpha = 1}
 	}
 }
 
@@ -66,7 +66,7 @@ local function createCutsceneCharacters(yea)
 end
 
 local function createIcon(icon)
-	makeAnimatedLuaSprite(icon.name, icon.path, icon.xIcon, icon.yIcon) -- Positions kinda doesnt matter here cause the xml is fucked up dude
+	makeAnimatedLuaSprite(icon.name, icon.path, icon.xIcon, downscroll and icon.yIcon[1] or icon.yIcon[2]) -- Positions kinda doesnt matter here cause the xml is fucked up dude
 	addAnimationByPrefix(icon.name, 'normal', icon.prefixThing..'normal', 8, true)
 	addAnimationByPrefix(icon.name, 'losing', icon.prefixThing..'losing', 8, true)
 	setProperty(icon.name..'.alpha', icon.alpha)
@@ -234,26 +234,26 @@ local function setIconsAnims()
 	if previousAnimOpp == 'normal' and getHealth() > 1.6 then
 		playAnim('chaotixBeastStarlineIcon',  'losing', true)
 		playAnim('chaotixNormalStarlineIcon', 'losing', true)
-		callMethod('chaotixBeastStarlineIcon.setPosition', {500, 560})
+		callMethod('chaotixBeastStarlineIcon.setPosition', {500, downscroll and -10 or 560})
 		previousAnimOpp = 'losing'
 	end
 
 	if previousAnimOpp == 'losing' and getHealth() <= 1.6 then
 		playAnim('chaotixBeastStarlineIcon',  'normal', true)
 		playAnim('chaotixNormalStarlineIcon', 'normal', true)
-		callMethod('chaotixBeastStarlineIcon.setPosition', {400, 520})
+		callMethod('chaotixBeastStarlineIcon.setPosition', {400, downscroll and -40 or 520})
 		previousAnimOpp = 'normal'
 	end
 
 	if previousAnim == 'normal' and getHealth() > 0.4 then
 		playAnim('bfStarlineIcon', 'normal', true)
-		callMethod('bfStarlineIcon.setPosition', {1110, 545})
+		callMethod('bfStarlineIcon.setPosition', {1110, downscroll and -15 or 545})
 		previousAnim = 'losing'
 	end
 
 	if previousAnim == 'losing' and getHealth() <= 0.4 then
 		playAnim('bfStarlineIcon', 'losing', true)
-		callMethod('bfStarlineIcon.setPosition', {1105, 550})
+		callMethod('bfStarlineIcon.setPosition', {1105, downscroll and -15 or 550})
 		previousAnim = 'normal'
 	end
 end

@@ -32,22 +32,73 @@ class Language
 
 	public static function reload():Void
 	{
-		var key = ClientPrefs.data.language;
+		var key:String = ClientPrefs.data.language;
 		if (key == null || key.length == 0) key = 'auto';
 
-		currentKey = key == 'auto' ? getSystemLanguage() : key;
+		currentKey = (key == 'auto') ? getSystemLanguage() : key;
 		
-		phrases = [];
+		phrases = new Map<String, Dynamic>();
 
-		final path = 'assets/language/$currentKey.json';
+		final files:Array<String> = getLanguageFiles(currentKey);
+		for (file in files)
+			loadLanguageFile(file);
+	}
+
+	public static function getLanguageFiles(lang:String):Array<String>
+	{
+		var files:Array<String> = [];
+
+		final basePath = Paths.getPath('$lang.json', "language", false);
+		if (fileExists(basePath))
+			files.push(basePath);
+
+		#if MODS_ALLOWED
+		for (contents in Mods.parseList().enabled)
+		{
+			final modPath = Paths.mods('$contents/language/$lang.json');
+			if (fileExists(modPath) && !files.contains(modPath))
+				files.push(modPath);
+		}
+
+		if (Mods.currentModDirectory?.length > 0)
+		{
+			final currentModPath = Paths.mods('${Mods.currentModDirectory}/language/$lang.json');
+			if (fileExists(currentModPath) && !files.contains(currentModPath))
+				files.push(currentModPath);
+		}
+		#end
+
+		return files;
+	}
+
+	private static function fileExists(path:String):Bool
+	{
+		#if sys
+		if (FileSystem.exists(path)) return true;
+		#end
+		return Assets.exists(path);
+	}
+
+	private static function loadLanguageFile(file:String):Void
+	{
 		try {
-			final text = Assets.getText(path);
-			if (text != null && text.length > 0) {
+			var text:String = null;
+			#if sys
+			if (FileSystem.exists(file))
+				text = File.getContent(file);
+			#end
+
+			if (text == null && Assets.exists(file))
+				text = Assets.getText(file);
+
+			if (text?.length > 0) {
 				final data:Dynamic = Json.parse(text);
 				for (field in Reflect.fields(data))
 					phrases.set(field, Reflect.field(data, field));
 			}
-		} catch (e:Dynamic) {}
+		} catch (e:Dynamic) {
+			trace('Error loading language file "$file": ' + e);
+		}
 	}
 
 	public static function get(key:String, ?fallback:String):String
@@ -102,7 +153,7 @@ class Language
 	{
 		final val = phrases.get(key);
 
-		var result:String = (val != null && Std.isOfType(val, String)) ? cast(val, String) : (fallback != null ? fallback : key);
+		var result:String = (val != null && Std.isOfType(val, String)) ? cast(val, String) : (fallback ?? key);
 		for (i in 0...vars?.length)
 			result = result.replace('{${i + 1}}', Std.string(vars[i]));
 

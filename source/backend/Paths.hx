@@ -172,7 +172,7 @@ class Paths
 
 			final modded:String = modFolders(customFile);
 			#if sys
-			if (sys.FileSystem.exists(modded) || sys.FileSystem.exists(modded + '.png') || sys.FileSystem.exists(modded + '.ogg') || sys.FileSystem.exists(modded + '.mp3')) return modded;
+			if (sys.FileSystem.exists(modded)) return modded;
 			#end
 			if (OpenFlAssets.exists(modded)) return modded;
 		}

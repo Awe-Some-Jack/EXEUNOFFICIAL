@@ -1,28 +1,28 @@
-package states.stages;
-
-import backend.StageData;
 import flixel.addons.display.FlxBackdrop;
-import flixel.text.FlxText;
-import flixel.util.FlxTimer;
-import lime.app.Application;
-import objects.Character;
-import openfl.display.Sprite;
-import openfl.display.Bitmap;
-import openfl.display.BitmapData;
-import openfl.geom.Rectangle;
-import openfl.ui.Mouse;
-import openfl.ui.MouseCursor;
-import states.PlayState;
-import flixel.util.FlxAxes;
-import backend.MusicBeatState;
-import flixel.tweens.FlxEase;
 import flixel.system.scaleModes.StageSizeScaleMode;
 import flixel.system.scaleModes.RelativeScaleMode;
 import flixel.system.scaleModes.RatioScaleMode;
-import lime.app.Application as Application;
-import flixel.util.FlxStringUtil;
+import flixel.text.FlxText;
 import flixel.text.FlxText.FlxTextAlign;
-import psychlua.LuaUtils as LuaUtils;
+import flixel.tweens.FlxEase;
+import flixel.util.FlxAxes;
+import flixel.util.FlxTimer;
+import flixel.util.FlxStringUtil;
+
+import lime.app.Application;
+
+import openfl.display.Sprite;
+import openfl.display.Bitmap;
+import openfl.display.BitmapData;
+import openfl.display.BlendMode;
+import openfl.geom.Rectangle;
+import openfl.ui.Mouse;
+import openfl.ui.MouseCursor;
+
+import backend.MusicBeatState;
+import backend.StageData;
+import backend.Language;
+import objects.Character;
 
 using StringTools;
 
@@ -36,12 +36,14 @@ var dadHitbox:FlxSprite;
 var blackboard:FlxSprite;
 var triangle:FlxSprite;
 var sixSeven:FlxSprite;
+var sixSevenHitbox:FlxSprite;
 var flash:FlxSprite;
 var numbers:Array<FlxSprite> = [];
 var numbersHitbox:Array<FlxSprite> = [];
 var stoplightHitboxes:Array<FlxSprite> = [];
 var tweensX:Array<FlxTween> = [];
 var tweensY:Array<FlxTween> = [];
+
 var lastX:Float = 0;
 var lastY:Float = 0;
 var thingy:Int = 0;
@@ -51,24 +53,11 @@ var helpActive:Bool = false;
 var flipped:Bool = false;
 var usingBG3:Bool = false;
 var continueTween:Bool = false;
+var isSixSeven:Bool = false;
 
-var list:Array<String> = [
-	'lim X->inf (3X^2+5)/(X^2-1) _',
-	'What is tan(45)*9 _',
-	'Solve for X: (X^6-9)/(X-3) _',
-	'The answer is wrong.',
-	'7(pi+(x^4(1-x)^4)/(1+x^2)) = _',
-	'lim X->inf pi(x)/(x/lnx) = 1 _',
-	'What does tan^-1*cos(3!!) equal? _',
-	'Solve for X: -5*15^(x+8) = -56 _',
-	'Simplify: (8x^3+14x^2+15x+18)/(2x+3) _',
-	'Simplify: 5(2xy^2+3x^2y-xy) _',
-	'What is cos(asin(sin(ln(e^3!)))) _',
-	'Factor: 7x^3+4x^2-6x+9'
-];
+var customFraction:FlxSpriteGroup;
 
 var lastScreenX:Float = 0;
-final separation:Int = 50;
 var healthTxt:FlxText;
 var equation:FlxText;
 var side1:FlxText;
@@ -79,6 +68,20 @@ var ela:Float = 0;
 var answer:Int = 0;
 var counter:Float = 0;
 var correctHovering:Bool = false;
+var numHovering:Bool = false;
+var dadHovering:Bool = false;
+var stoplightHovering:Bool = false;
+
+final separation:Int = 50;
+
+function getSchoolFont():String {
+	return switch (Language.currentKey) {
+		case 'ja-JP': 'schoolhouse-japanese.ttf';
+		case 'ko-KR': 'schoolhouse-korean.ttf';
+		case 'zh-CN': 'schoolhouse-chinese.ttf';
+		default: 'schoolhouse.ttf';
+	};
+}
 
 function onCreate() {
 	bg1 = new FlxSprite(-345, -280).loadGraphic(Paths.image('bg/bg-phase1', 'PARALLAX'));
@@ -152,7 +155,7 @@ function onCreatePost() {
 	camHUD.alpha = 0;
 
 	healthTxt = new FlxText(0, 0, FlxG.width, "", 30);
-	healthTxt.font = Paths.font("schoolhouse.ttf");
+	healthTxt.font = Paths.font(getSchoolFont());
 	healthTxt.cameras = [camVideo];
 	healthTxt.screenCenter();
 	healthTxt.scrollFactor.set();
@@ -163,7 +166,8 @@ function onCreatePost() {
 	add(healthTxt);
 	
 	equation = new FlxText(0, 0, FlxG.width, "", 30);
-	equation.setFormat(Paths.font("schoolhouse.ttf"), 50, FlxColor.WHITE, FlxTextAlign.CENTER, FlxColor.TRANSPARENT, true);
+	var eqSize = Language.cjkSize(50, 0.85);
+	equation.setFormat(Paths.font(getSchoolFont()), eqSize, FlxColor.WHITE, FlxTextAlign.CENTER, FlxColor.TRANSPARENT, true);
 	equation.cameras = [camOther];
 	equation.antialiasing = false;
 	equation.screenCenter();
@@ -172,13 +176,13 @@ function onCreatePost() {
 	equation.text = "Cumming straight from YOUR house";
 
 	side1 = new FlxText(0, 0, FlxG.width, "", 30);
-	side1.setFormat(Paths.font("schoolhouse.ttf"), 40, FlxColor.WHITE, FlxTextAlign.CENTER, FlxColor.TRANSPARENT, true);
+	side1.setFormat(Paths.font(getSchoolFont()), 40, FlxColor.WHITE, FlxTextAlign.CENTER, FlxColor.TRANSPARENT, true);
 
 	side2 = new FlxText(0, 0, FlxG.width, "", 30);
-	side2.setFormat(Paths.font("schoolhouse.ttf"), 40, FlxColor.WHITE, FlxTextAlign.CENTER, FlxColor.TRANSPARENT, true);
+	side2.setFormat(Paths.font(getSchoolFont()), 40, FlxColor.WHITE, FlxTextAlign.CENTER, FlxColor.TRANSPARENT, true);
 
 	side3 = new FlxText(0, 0, FlxG.width, "", 30);
-	side3.setFormat(Paths.font("schoolhouse.ttf"), 40, FlxColor.WHITE, FlxTextAlign.CENTER, FlxColor.TRANSPARENT, true);
+	side3.setFormat(Paths.font(getSchoolFont()), 40, FlxColor.WHITE, FlxTextAlign.CENTER, FlxColor.TRANSPARENT, true);
 
 	side3.cameras = side2.cameras = side1.cameras = [camOther];
 	side3.antialiasing = side2.antialiasing = side1.antialiasing = false;
@@ -202,7 +206,7 @@ function onCreatePost() {
 	add(side3);
 
 	for(i in 0...10) {
-		nun = new FlxSprite(0, 0).loadGraphic(Paths.image('math/' + i, 'PARALLAX'));
+		var nun = new FlxSprite(0, 0).loadGraphic(Paths.image('math/' + i, 'PARALLAX'));
 		nun.scale.set(1.5, 1.5);
 		nun.antialiasing = false;
 		nun.cameras = [camOther];
@@ -212,7 +216,7 @@ function onCreatePost() {
 		nun.alpha = 0;
 		numbers.push(nun);
 
-		nunH = new FlxSprite(0, 0).makeGraphic(91, 118, 0xFFFF00000);
+		var nunH = new FlxSprite(0, 0).makeGraphic(91, 118, 0xFFFF0000);
 		nunH.scale.set(1.5, 1.5);
 		nunH.antialiasing = false;
 		nunH.cameras = [camOther];
@@ -236,7 +240,15 @@ function onCreatePost() {
 	sixSeven.alpha = 0;
 	add(sixSeven);
 
-	dadHitbox = new FlxSprite(0, 0).makeGraphic(91, 208, 0xFFFF00000);
+	sixSevenHitbox = new FlxSprite(0, 0).makeGraphic(165, 118, 0xFFFF0000);
+	sixSevenHitbox.scale.set(1.5, 1.5);
+	sixSevenHitbox.antialiasing = false;
+	sixSevenHitbox.cameras = [camOther];
+	sixSevenHitbox.updateHitbox();
+	sixSevenHitbox.visible = false;
+	add(sixSevenHitbox);
+
+	dadHitbox = new FlxSprite(0, 0).makeGraphic(91, 208, 0xFFFF0000);
 	dadHitbox.scale.set(1, 1);
 	dadHitbox.antialiasing = false;
 	dadHitbox.x = -35;
@@ -256,7 +268,7 @@ function onCreatePost() {
 	add(icon);
 
 	for(i in 0...2) {
-		nun = new FlxSprite(0, 0).makeGraphic(45, 45, 0xFFFF00000);
+		var nun = new FlxSprite(0, 0).makeGraphic(45, 45, 0xFFFF0000);
 		nun.scale.set(1.5, 1.5);
 		nun.antialiasing = false;
 		nun.cameras = [camVideo];
@@ -286,7 +298,7 @@ function onCreatePost() {
 	flash.antialiasing = false;
 	flash.updateHitbox();
 	flash.scrollFactor.set();
-	flash.blend = LuaUtils.blendModeFromString('add');
+	flash.blend = BlendMode.ADD;
 	flash.alpha = 0;
 	add(flash);
 }
@@ -310,17 +322,23 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 	if(!flash && !inQuestion) {
 		inQuestion = true;
 		clicked = false;
+		isSixSeven = false;
+
+		if (customFraction != null) {
+			remove(customFraction);
+			customFraction.destroy();
+			customFraction = null;
+		}
 
 		var int1:Int = 0;
 		var int2:Int = 0;
 
-		equation.size = 50;
+		equation.size = Language.cjkSize(50, 0.85);
 
-		numbersHitbox.resize(10);
 		numbers[6].visible = numbers[7].visible = true;
 		equation.screenCenter();
 
-		thingy = types[FlxG.random.int(0, types.length-1)];
+		thingy = FlxG.random.int(1, 1000) == 777 ? 12 : types[FlxG.random.int(0, types.length-1)];
 	
 		if(thingy == null) {
 			trace("Failed to load question");
@@ -336,39 +354,27 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 					answer = 6;
 
 					numbers[6].visible = numbers[7].visible = false;
-
-					nunH = new FlxSprite(0, 0).makeGraphic(165, 118, 0xFFFF00000);
-					nunH.scale.set(1.5, 1.5);
-					nunH.antialiasing = false;
-					nunH.cameras = [camOther];
-					nunH.updateHitbox();
-					nunH.screenCenter();
-					nunH.x = nun.x+17;
-					nunH.y = nun.y;
-					nunH.visible = false;
-					numbersHitbox.push(nunH);
-
-					add(numbersHitbox[10]);
+					isSixSeven = true;
 				} else {
 					int1 = FlxG.random.int(0, 5);
 					int2 = FlxG.random.int(0, 5);
 					if(int1 + int2 == 10) int1--;
 					answer = int1 + int2;
 				}
-				equation.text = 'What does $int1 + $int2 equal? _';
+				equation.text = Language.getPhrase('math_add', 'What does {1} + {2} equal? _', [int1, int2]);
 
 			case 1: // subtraction
 				int1 = FlxG.random.int(5, 10);
 				int2 = FlxG.random.int(0, 5);
 				answer = int1 - int2;
-				equation.text = 'What does $int1 - $int2 equal? _';
+				equation.text = Language.getPhrase('math_sub', 'What does {1} - {2} equal? _', [int1, int2]);
 
 			case 2: // multiplication
 				int1 = FlxG.random.int(0, 4);
 				int2 = FlxG.random.int(1, 3);
 				if(int1 * int2 >= 10) int2--;
 				answer = int1 * int2;
-				equation.text = 'What does $int1 X $int2 equal? _';
+				equation.text = Language.getPhrase('math_mul', 'What does {1} X {2} equal? _', [int1, int2]);
 
 			case 3: // division
 				int1 = FlxG.random.int(1, 100);
@@ -387,8 +393,12 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 
 				int2 = int2list[FlxG.random.int(0, int2list.length-1)];
 
-				answer = int1 / int2;
-				equation.text = 'What does $int1 / $int2 equal? _';
+				answer = Std.int(int1 / int2);
+				
+				equation.text = Language.getPhrase('math_div_frac', 'What does        equal? _');
+				
+				customFraction = createFraction(475, 315, '$int1', '$int2', 40);
+				insert(members.indexOf(equation) + 1, customFraction);
 
 			case 4: // fill in the blank
 				var int2Arr:Array<Int> = [];
@@ -407,37 +417,29 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 
 				if(!flip) {
 					switch(spot) {
-						case 0:
-							equation.text = '_, ' + int2Arr[1] + ', ' + int2Arr[2] + ', ' + int2Arr[3];
-						case 1:
-							equation.text = int2Arr[0] + ', _, ' + int2Arr[2] + ', ' + int2Arr[3];
-						case 2:
-							equation.text = int2Arr[0] + ', ' + int2Arr[1] + ', _, ' + int2Arr[3];
-						case 3:
-							equation.text = int2Arr[0] + ', ' + int2Arr[1] + ', ' + int2Arr[2] + ', _';
+						case 0: equation.text = '_, ' + int2Arr[1] + ', ' + int2Arr[2] + ', ' + int2Arr[3];
+						case 1: equation.text = int2Arr[0] + ', _, ' + int2Arr[2] + ', ' + int2Arr[3];
+						case 2: equation.text = int2Arr[0] + ', ' + int2Arr[1] + ', _, ' + int2Arr[3];
+						case 3: equation.text = int2Arr[0] + ', ' + int2Arr[1] + ', ' + int2Arr[2] + ', _';
 					}
 				} else {
 					switch(spot) {
-						case 3:
-							equation.text = '_, ' + int2Arr[2] + ', ' + int2Arr[1] + ', ' + int2Arr[0];
-						case 2:
-							equation.text = int2Arr[3] + ', _, ' + int2Arr[1] + ', ' + int2Arr[0];
-						case 1:
-							equation.text = int2Arr[3] + ', ' + int2Arr[2] + ', _, ' + int2Arr[0];
-						case 0:
-							equation.text = int2Arr[3] + ', ' + int2Arr[2] + ', ' + int2Arr[1] + ', _';
+						case 3: equation.text = '_, ' + int2Arr[2] + ', ' + int2Arr[1] + ', ' + int2Arr[0];
+						case 2: equation.text = int2Arr[3] + ', _, ' + int2Arr[1] + ', ' + int2Arr[0];
+						case 1: equation.text = int2Arr[3] + ', ' + int2Arr[2] + ', _, ' + int2Arr[0];
+						case 0: equation.text = int2Arr[3] + ', ' + int2Arr[2] + ', ' + int2Arr[1] + ', _';
 					}
 				}
 
 			case 5: // what comes before
 				int1 = FlxG.random.int(1, 10);
 				answer = int1-1;
-				equation.text = 'What comes before $int1? _';
+				equation.text = Language.getPhrase('math_before', 'What comes before {1}? _', [int1]);
 
 			case 6: // what comes after
 				int1 = FlxG.random.int(0, 8);
 				answer = int1+1;
-				equation.text = 'What comes after $int1? _';
+				equation.text = Language.getPhrase('math_after', 'What comes after {1}? _', [int1]);
 
 			case 7: // find the variable
 				final flip:Bool = FlxG.random.bool(50);
@@ -448,23 +450,18 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 				
 				if(flip) {
 					while((int1*answer)-int2 < 0) int2--;
-
 					final int3 = (int1*answer) - int2;
-					
-					equation.text = 'Solve for X: $int1' + 'X - $int2 = $int3 _';
-					
-					if(int1 == 1)
-						equation.text = 'Solve for X: X - $int2 = $int3 _';
+					equation.text = (int1 == 1) 
+						? Language.getPhrase('math_solve_x_sub_1', 'Solve for X: X - {1} = {2} _', [int2, int3]) 
+						: Language.getPhrase('math_solve_x_sub_2', 'Solve for X: {1}X - {2} = {3} _', [int1, int2, int3]);
 				} else {
 					final int3 = (int1*answer) + int2;
-					
-					equation.text = 'Solve for X: $int1' + 'X + $int2 = $int3 _';
-					
-					if(int1 == 1)
-						equation.text = 'Solve for X: X + $int2 = $int3 _';
+					equation.text = (int1 == 1) 
+						? Language.getPhrase('math_solve_x_add_1', 'Solve for X: X + {1} = {2} _', [int2, int3]) 
+						: Language.getPhrase('math_solve_x_add_2', 'Solve for X: {1}X + {2} = {3} _', [int1, int2, int3]);
 				}
 
-			case 8: // trig (pythagorean therom)
+			case 8: // trig (pythagorean theorem)
 				if(FlxG.random.bool(5)) {
 					int1 = FlxG.random.int(1, 9);
 					int2 = FlxG.random.int(2, 9);
@@ -474,21 +471,19 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 						int2--;
 						answer = Math.round(Math.sqrt((Math.pow(int1, 2) + Math.pow(int2, 2))));
 					}
-					equation.text = 'What does C approximately equal? ~_';
-					equation.size = 40;
+					equation.text = Language.getPhrase('math_c_approx', 'What does C approximately equal? ~_');
+					equation.size = Language.cjkSize(40, 0.85);
 				} else {
 					int1 = 3;
 					int2 = 4;
 					answer = 5;
-					equation.text = 'What does C equal? _';
+					equation.text = Language.getPhrase('math_c_exact', 'What does C equal? _');
 				}
 				side1.text = int1>int2 ? '$int2' : '$int1';
 				side2.text = int1>int2 ? '$int1' : '$int2';
 				side3.text = 'C';
 
 				equation.y -= 90;
-				
-				// equation.text = 'Solve for X: X^2';
 				
 			case 9: // derivative
 				int1 = FlxG.random.int(2, 9);
@@ -498,8 +493,10 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 
 				answer = int1*int2;
 
-				equation.size = 40;
-				equation.text = int1 == 1 ? 'What is the derivative of X^$int2?' + ' _X^$int3' : 'What is the derivative of $int1' + 'X^$int2?' + ' _X^$int3';
+				equation.size = Language.cjkSize(40, 0.85);
+				equation.text = int1 == 1 
+					? Language.getPhrase('math_deriv_1', 'What is the derivative of X^{1}? _X^{2}', [int2, int3]) 
+					: Language.getPhrase('math_deriv_2', 'What is the derivative of {1}X^{2}? _X^{3}', [int1, int2, int3]);
 
 			case 10: // sin, cos
 				var nums:Array<Int> = [0, 30, 90];
@@ -507,44 +504,53 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 				int2 = FlxG.random.int(0, 18);
 				if(int2 % 2 != 0 && int2 != 0) int2++;
 
-				equation.size = 45;
+				equation.size = Language.cjkSize(45, 0.85);
 
-				switch(FlxG.random.int(0, 1)) { // 2
+				switch(FlxG.random.int(0, 1)) {
 					case 0:
-						if(int1 == 90) int2 /= 2;
-
+						if(int1 == 90) int2 = Std.int(int2 / 2);
 						answer = Math.round(Math.sin(int1 * (Math.PI / 180)) * int2);
-						
-						equation.text = 'What does sin($int1) X $int2 equal? _';
+						equation.text = Language.getPhrase('math_sin', 'What does sin({1}) X {2} equal? _', [int1, int2]);
 					case 1:
 						if(int1 == 30) int1 = 60;
-						if(int1 == 0) int2 /= 2;
-
+						if(int1 == 0) int2 = Std.int(int2 / 2);
 						answer = Math.round(Math.cos(int1 * (Math.PI / 180)) * int2);
-						
-						equation.text = 'What does cos($int1) X $int2 equal? _';
+						equation.text = Language.getPhrase('math_cos', 'What does cos({1}) X {2} equal? _', [int1, int2]);
 				}
 
 			case 11: // symbols
-				equation.size = 38;
+				equation.size = Language.cjkSize(38, 0.85);
 				switch(FlxG.random.int(0, 3)) {
 					case 0:
 						answer = 3;
-						equation.text = FlxG.random.bool(66) ? 'What does Pi approximately equal? ~_' : 'What does e approximately equal? ~_';
+						equation.text = FlxG.random.bool(66) 
+							? Language.getPhrase('math_pi', 'What does Pi approximately equal? ~_') 
+							: Language.getPhrase('math_e', 'What does e approximately equal? ~_');
 					case 1:
 						answer = 2;
-						equation.text = 'What does Phi approximately equal? ~_';
+						equation.text = Language.getPhrase('math_phi', 'What does Phi approximately equal? ~_');
 					case 2:
 						answer = 1;
-						equation.text = 'What does -i^2 equal? _';
+						equation.text = Language.getPhrase('math_i', 'What does -i^2 equal? _');
 					case 3:
 						answer = 6;
-						equation.text = 'What does Tau approximately equal? ~_';
-
+						equation.text = Language.getPhrase('math_tau', 'What does Tau approximately equal? ~_');
 				}
 
+			case 12: // Super-rare (0.1% chance)
+				equation.size = Language.cjkSize(28, 0.85);
+				equation.text = Language.getPhrase('math_eval_long', 'Evaluate:               + sum_(n=1)^inf(1/2)^n + d/dx(x^3)|x=1 = _');
+				answer = 5; 
 				
+				if (customFraction != null) {
+					remove(customFraction);
+					customFraction.destroy();
+				}
+				
+				customFraction = createFraction(270, 312.5, "e^x - 1", "x", 28);
+				insert(members.indexOf(equation) + 1, customFraction);
 		}
+		
 		if(answer >= 10) answer = 9;
 
 		FlxTween.tween(blackboard.scale, {x: 2.7}, 0.4, {
@@ -559,7 +565,10 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 					numbers[i].scale.set(1.5, 1.5);
 					FlxTween.tween(numbers[i], {alpha: 1}, 0.4, {ease: FlxEase.smoothStepOut});
 				}
+				
 				FlxTween.tween(equation, {alpha: 1}, 0.4, {ease: FlxEase.smoothStepOut});
+				if (customFraction != null) FlxTween.tween(customFraction, {alpha: 1}, 0.4, {ease: FlxEase.smoothStepOut});
+				
 				if(thingy == 8) FlxTween.tween(triangle, {alpha: 1}, 0.4, {ease: FlxEase.smoothStepOut});
 				game.canPress = false;
 			}
@@ -572,12 +581,29 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 				ease: FlxEase.bounceOut,
 				onComplete: function(_) {
 					equation.color = blackboard.color = 0xFFFFFFFF;
+					equation.text = "";
 				}
 			});
 		} else {
 			FlxTween.shake(equation, 0.025, 3.1);
 			FlxTween.shake(blackboard, 0.025, 3.1);
-			hardEquation = list[FlxG.random.int(0, list.length-1)];
+
+			final hardList = Language.getArray('math_hard_list', [
+				'lim X->inf (3X^2+5)/(X^2-1) _',
+				'What is tan(45)*9 _',
+				'Solve for X: (X^6-9)/(X-3) _',
+				'The answer is wrong.',
+				'7(pi+(x^4(1-x)^4)/(1+x^2)) = _',
+				'lim X->inf pi(x)/(x/lnx) = 1 _',
+				'What does tan^-1*cos(3!!) equal? _',
+				'Solve for X: -5*15^(x+8) = -56 _',
+				'Simplify: (8x^3+14x^2+15x+18)/(2x+3) _',
+				'Simplify: 5(2xy^2+3x^2y-xy) _',
+				'What is cos(asin(sin(ln(e^3!)))) _',
+				'Factor: 7x^3+4x^2-6x+9'
+			]);
+			hardEquation = hardList[FlxG.random.int(0, hardList.length-1)];
+			
 			equation.text = '$hardEquation';
 			equation.color = blackboard.color = 0xFFFF0000;
 			FlxTween.tween(blackboard.scale, {x: 2.7}, 0.4, {
@@ -596,93 +622,56 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 	}
 }
 
-/*
-0, 1
-2, 3
-4, 5, 6
-7
-8
-9
-10
-11
-
-
-*/
-
 function onStepHit() {
 	switch(curStep) {
-		case 256, 576:
-			createProblem([0, 0, 1, 2, 3], false);
-		case 456:
-			createProblem([4, 5, 6], false);
-		case 784:
-			createProblem([8], false);
-		case 1240, 1308, 1446:
-			createProblem([0], true, 0, 'h');
-		case 1536:
-			createProblem([9, 11, 11], false);
-		case 1600:
-			createProblem([7, 10], false);
-
-		case 152:
-			FlxTween.tween(camHUD, {alpha: 1}, 0.86, {ease: FlxEase.smoothStepInOut});
-
-		case 384, 896:
-			switchStage(0.00001, 1, 0, 'linear');
-		
+		case 256, 576: createProblem([0, 0, 1, 2, 3], false);
+		case 456: createProblem([4, 5, 6], false);
+		case 784: createProblem([8], false);
+		case 1240, 1308, 1446: createProblem([0], true, 0, 'h');
+		case 1536: createProblem([9, 11, 11], false);
+		case 1600: createProblem([7, 10], false);
+		case 152: FlxTween.tween(camHUD, {alpha: 1}, 0.86, {ease: FlxEase.smoothStepInOut});
+		case 384, 896: switchStage(0.00001, 1, 0, 'linear');
 		case 1216:
 			usingBG3 = true;
 			switchStage(0.00001, 1, 0, 'linear');
-
-		case 640, 1024, 1152:
-			switchStage(0.86, 0, 1, 'linear');
-
-		case 656, 1552:
-			switchStage(1.72, 0.5, 1, 'cubeOut');
-
+		case 640, 1024, 1152: switchStage(0.86, 0, 1, 'linear');
+		case 656, 1552: switchStage(1.72, 0.5, 1, 'cubeOut');
 		case 1648:
 			usingBG3 = false;
 			switchStage(1.72, 0.5, 1, 'cubeOut');
-
-		case 672, 1567, 1664:
-			switchStage(0.86, 0, 1, 'smootherStepOut');
-
+		case 672, 1567, 1664: switchStage(0.86, 0, 1, 'smootherStepOut');
 		case 1088:
 			createProblem([9], false);
 			switchStage(3.44, 1, 0, 'smoothStepIn');
-
 		case 1696:
 			usingBG3 = true;
 			switchStage(3.44, 1, 0, 'smoothStepIn');
-
-		case 1472:
-			switchStage(1.72, 0, 1, 'smootherStepOut');
-
-		case 1728:
-			switchStage(0.86, 0, 1, 'smootherStepOut');
-
-		case 1736:
-			FlxTween.tween(camHUD, {alpha: 0}, 0.86, {ease: FlxEase.smoothStepOut});
+		case 1472: switchStage(1.72, 0, 1, 'smootherStepOut');
+		case 1728: switchStage(0.86, 0, 1, 'smootherStepOut');
+		case 1736: FlxTween.tween(camHUD, {alpha: 0}, 0.86, {ease: FlxEase.smoothStepOut});
 	}
 }
 
 function switchStage(time:Float = 1, ?amount1:Float = 1, ?amount2:Float = 0, tween:String) {
+	final easeFunction = Reflect.hasField(FlxEase, tween) ? Reflect.field(FlxEase, tween) : FlxEase.linear;
+
 	if(usingBG3 && Math.round(time) == 0) {
 		FlxTween.cancelTweensOf(flash);
 		flash.color = 0xFF990000;
 		flash.alpha = 1;
-		FlxTween.tween(flash, {alpha: 0}, 0.86, {ease: LuaUtils.getTweenEaseByString('linear')});
+		FlxTween.tween(flash, {alpha: 0}, 0.86, {ease: BlendMode.LINEAR});
 	} else if(Math.round(time) == 0) {
 		FlxTween.cancelTweensOf(flash);
 		flash.color = 0xFFFFFFFF;
 		flash.alpha = 1;
-		FlxTween.tween(flash, {alpha: 0}, 0.86, {ease: LuaUtils.getTweenEaseByString('linear')});
+		FlxTween.tween(flash, {alpha: 0}, 0.86, {ease: BlendMode.LINEAR});
 	}
 	FlxTween.cancelTweensOf(gf);
 	FlxTween.cancelTweensOf(dad);
 
-	FlxTween.tween(gf, {alpha: amount1}, time, {ease: LuaUtils.getTweenEaseByString(tween)});
-	FlxTween.tween(dad, {alpha: amount2}, time, {ease: LuaUtils.getTweenEaseByString(tween)});
+	FlxTween.tween(gf, {alpha: amount1}, time, {ease: easeFunction});
+	FlxTween.tween(dad, {alpha: amount2}, time, {ease: easeFunction});
 
 	flipped = !flipped;
 }
@@ -695,7 +684,7 @@ function opponentNoteHit(note:Note):Void {
 		ghost.y = gf.y-17;
 		if(usingBG3) ghost.color = 0xFFFF0000;
 		ghost.alpha = gf.alpha;
-		ghost.blend = LuaUtils.blendModeFromString('screen');
+		ghost.blend = BlendMode.SCREEN;
 		ghost.angle = gf.angle;
 		ghost.visible = gf.visible;
 		ghost.playAnim(gf.animation.curAnim.name);
@@ -775,10 +764,14 @@ function onResume() {
 }
 
 function onUpdate(elapsed:Float) {
-	ela+=elapsed;
-
+	ela += elapsed;
 	if(curStep < 100) game.health = 1;
 
+	updateHUD();
+	handleMouseLogic();
+}
+
+function updateHUD() {
 	if(!usingBG3) {
 		hud2.alpha = bg2.alpha = gf.alpha;
 		gf.color = 0xFFFFFFFF;
@@ -787,7 +780,9 @@ function onUpdate(elapsed:Float) {
 		gf.color = 0xFFffb3b3;
 	}
 
-	healthTxt.text = game.health <= 2 ? "Health: " + (game.health*100)/2 + "%" : healthTxt.text = "Health: 100%";
+	var hpValue = game.health <= 2 ? Std.int((game.health*100)/2) : 100;
+	healthTxt.text = Language.getPhrase('math_health', 'Health: {1}%', [hpValue]);
+	
 	if(game.health >= 0.5) {
 		icon.animation.play('fine', true);
 		healthTxt.color = 0xFFFFFFFF;
@@ -799,18 +794,29 @@ function onUpdate(elapsed:Float) {
 	side1.alpha = side2.alpha = side3.alpha = triangle.alpha;
 	side1.visible = side2.visible = side3.visible = triangle.visible;
 
-	var numHovering:Bool = false;
-	var dadHovering:Bool = false;
-	var stoplightHovering:Bool = false;
-
-	if(numbersHitbox.length == 11) {
+	if(isSixSeven) {
 		sixSeven.x = numbers[6].x - 64;
 		sixSeven.y = numbers[6].y;
 		sixSeven.alpha = numbers[6].alpha;
 		sixSeven.scale.x = sixSeven.scale.y = numbers[6].scale.x;
 
 		if(tweensX[7] != null && tweensY[7] != null) tweensX[7].active = tweensY[7].active = false;
+		
+		sixSevenHitbox.x = sixSeven.x + 26;
+		sixSevenHitbox.y = sixSeven.y;
+		numbersHitbox[7].x = 10000;
 	}
+}
+
+function handleMouseLogic() {
+	if (game.health <= 0) {
+		Mouse.cursor = MouseCursor.ARROW;
+		return;
+	}
+
+	numHovering = false;
+	dadHovering = false;
+	stoplightHovering = false;
 
 	for(i in 0...numbers.length) {
 		numbersHitbox[i].x = numbers[i].x + 26;
@@ -822,20 +828,12 @@ function onUpdate(elapsed:Float) {
 		}
 	}
 
-	if(numbersHitbox.length == 11) {
-		numbersHitbox[7].x = 10000;
-		numbersHitbox[10].x = sixSeven.x + 26;
-		numbersHitbox[10].y = sixSeven.y;
-	}
-
 	if(inQuestion) {
 		if(counter > 1) {
 			helpActive = true;
-			equation.text = numbersHitbox.length == 11 ? StringTools.replace(equation.text, "_", '67') : equation.text = StringTools.replace(equation.text, "_", '$answer');
-			if(equation.alpha == 1)
-				FlxTween.tween(equation, {alpha: 0.5}, 1, {ease: FlxEase.smoothStepOut});
-			else if(equation.alpha == 0.5)
-				FlxTween.tween(equation, {alpha: 1}, 1, {ease: FlxEase.smoothStepOut});
+			equation.text = isSixSeven ? StringTools.replace(equation.text, "_", '67') : StringTools.replace(equation.text, "_", '$answer');
+			if(equation.alpha == 1) FlxTween.tween(equation, {alpha: 0.5}, 1, {ease: FlxEase.smoothStepOut});
+			else if(equation.alpha == 0.5) FlxTween.tween(equation, {alpha: 1}, 1, {ease: FlxEase.smoothStepOut});
 
 			for(i in 0...numbers.length) {
 				if(i != answer) FlxTween.tween(numbers[i], {alpha: 0.5}, 0.5, {ease: FlxEase.smoothStepOut});
@@ -844,22 +842,22 @@ function onUpdate(elapsed:Float) {
 
 		if(!clicked && !numHovering && !helpActive && FlxG.mouse.overlaps(dadHitbox, camGame)) {
 			dadHovering = true;
-			if(blackboard.alpha == 0.8)
-				FlxTween.tween(blackboard, {alpha: 0.5}, 0.3, {ease: FlxEase.linear});
+			if(blackboard.alpha == 0.8) FlxTween.tween(blackboard, {alpha: 0.5}, 0.3, {ease: FlxEase.linear});
 
 			if(FlxG.mouse.justPressed) {
 				helpActive = true;
 				for(i in 0...numbers.length) {
 					if(i != answer) FlxTween.tween(numbers[i], {alpha: 0.5}, 0.5, {ease: FlxEase.smoothStepOut});
 				}
-				equation.text = numbersHitbox.length == 11 ? StringTools.replace(equation.text, "_", '67') : equation.text = StringTools.replace(equation.text, "_", '$answer');
+				equation.text = isSixSeven ? StringTools.replace(equation.text, "_", '67') : StringTools.replace(equation.text, "_", '$answer');
 			}
 		} else {
-			if(blackboard.alpha == 0.5)
-				FlxTween.tween(blackboard, {alpha: 0.8}, 0.3, {ease: FlxEase.linear});
+			if(blackboard.alpha == 0.5) FlxTween.tween(blackboard, {alpha: 0.8}, 0.3, {ease: FlxEase.linear});
 		}
 
-		if((!clicked && FlxG.mouse.overlaps(numbersHitbox[answer], camOther)) || (!clicked && numbersHitbox.length == 11 && numbersHitbox[10] != null && FlxG.mouse.overlaps(numbersHitbox[10], camOther))) {
+		if((!clicked && FlxG.mouse.overlaps(numbersHitbox[answer], camOther)) || 
+		   (!clicked && isSixSeven && FlxG.mouse.overlaps(sixSevenHitbox, camOther))) {
+			
 			correctHovering = true;
 			if(FlxG.mouse.justPressed) {
 				game.canPause = game.canPress = clicked = true;
@@ -874,7 +872,6 @@ function onUpdate(elapsed:Float) {
 
 				for(i in 0...numbers.length) {
 					tweensX[i].active = tweensY[i].active = false;
-
 					lastX = numbers[answer].x;
 					lastY = numbers[answer].y;
 				}
@@ -884,39 +881,26 @@ function onUpdate(elapsed:Float) {
 				FlxTween.tween(numbers[answer].scale, {x: 0.6, y: 0.6}, 1, {ease: FlxEase.linear});
 				FlxTween.tween(numbers[answer], {x: 390, y: -50}, 1, {ease: FlxEase.linear});
 
-				new FlxTimer().start(1.5, function(tmr:FlxTimer) {
+				new FlxTimer().start(1.5, (tmr:FlxTimer) -> {
 					game.health += 0.5;
 
-					if(numbersHitbox.length == 11)
-						FlxG.sound.play(Paths.sound('67'), 1);
-					else
-						FlxG.sound.play(Paths.sound('yay'), 1);
+					FlxG.sound.play(isSixSeven ? Paths.sound('67') : Paths.sound('yay'), 1);
 
 					for(i in 0...numbers.length) {
 						if(i != answer) FlxTween.tween(numbers[i], {alpha: 0}, 1, {ease: FlxEase.linear});
 					}
-					equation.text = numbersHitbox.length == 11 ? StringTools.replace(equation.text, "_", '67') : equation.text = StringTools.replace(equation.text, "_", '$answer');
-					if(numbersHitbox.length == 11) {
-						FlxTween.flicker(sixSeven, 1.4, 0.2, {
-							onComplete: function(_) {
-								numbers[answer].alpha = 0;
-							}
-						});
-					} else {
-						FlxTween.flicker(numbers[answer], 1.4, 0.2, {
-							onComplete: function(_) {
-								numbers[answer].alpha = 0;
-							}
-						});
-					}
+					
+					equation.text = isSixSeven ? StringTools.replace(equation.text, "_", '67') : StringTools.replace(equation.text, "_", '$answer');
+					
+					FlxTween.flicker(isSixSeven ? sixSeven : numbers[answer], 1.4, 0.2, {onComplete: (_) -> numbers[answer].alpha = 0});
 					FlxTween.flicker(equation, 1.4, 0.2, {
-						onComplete: function(_) {
+						onComplete: (_) -> {
 							equation.alpha = 0;
+							if (customFraction != null) customFraction.alpha = 0;
+							
 							FlxTween.tween(blackboard.scale, {x: 0}, 1, {
 								ease: FlxEase.bounceOut,
-								onComplete: function(_) {
-									inQuestion = false;
-								}
+								onComplete: (_) -> inQuestion = false
 							});
 						}
 					});
@@ -924,11 +908,7 @@ function onUpdate(elapsed:Float) {
 					if(triangle.alpha == 1) {
 						if(answer == 5) side3.text = '$answer'; else side3.text = '~$answer';
 						side3.x -= 10;
-						FlxTween.flicker(triangle, 1.4, 0.2, {
-							onComplete: function(_) {
-								triangle.alpha = 0;
-							}
-						});
+						FlxTween.flicker(triangle, 1.4, 0.2, {onComplete: (_) -> triangle.alpha = 0});
 					}
 				});
 			}
@@ -941,14 +921,11 @@ function onUpdate(elapsed:Float) {
 				clicked = true;
 				continueTween = inQuestion = correctHovering = numHovering = false;
 
-				var pressed:Bool = false;
-
 				FlxG.sound.play(Paths.sound('sendit'), 1);
 
 				for(i in 0...numbers.length) {
 					tweensX[i].active = tweensY[i].active = false;
 					if(i == numClicked) {
-						pressed = true;
 						lastX = numbers[i].x;
 						lastY = numbers[i].y;
 
@@ -997,12 +974,13 @@ function onUpdate(elapsed:Float) {
 
 function updateScreenSize(targetW:Int, targetH:Int, ?force:Bool = false):Void {
     if(Application.current.window.display.bounds.width != lastScreenX || force) {
-        var window = Application.current.window;
-        var display = window.display;
-        var screenW:Float = display.bounds.width;
-        var screenH:Float = display.bounds.height;
-        var screenX:Float = display.bounds.x;
-        var screenY:Float = display.bounds.y;
+        final window = Application.current.window;
+        final display = window.display;
+
+        final screenW:Float = display.bounds.width;
+        final screenH:Float = display.bounds.height;
+        final screenX:Float = display.bounds.x;
+        final screenY:Float = display.bounds.y;
 
         lastScreenX = screenW;
 
@@ -1037,4 +1015,47 @@ function updateScreenSize(targetW:Int, targetH:Int, ?force:Bool = false):Void {
 
 function onDestroy() {
 	FlxG.autoPause = true;
+}
+
+function onGameOverStart() {
+	blackboard.visible = false;
+	equation.visible = false;
+	triangle.visible = false;
+	side1.visible = side2.visible = side3.visible = false;
+	
+	if (isSixSeven) sixSeven.visible = false;
+	
+	for(num in numbers) {
+		if (num != null) num.visible = false;
+	}
+}
+
+function createFraction(x:Float, y:Float, topText:String, bottomText:String, size:Int = 32) {
+	final mathGroup = new FlxSpriteGroup(x, y);
+	
+	final topTxt = new FlxText(0, 0, 0, topText, size);
+	topTxt.setFormat(Paths.font(getSchoolFont()), size, 0xFFFFFFFF, "center");
+	topTxt.antialiasing = false;
+	topTxt.cameras = [camOther];
+	
+	final bottomTxt = new FlxText(0, size + 10, 0, bottomText, size);
+	bottomTxt.setFormat(Paths.font(getSchoolFont()), size, 0xFFFFFFFF, "center");
+	bottomTxt.antialiasing = false;
+	bottomTxt.cameras = [camOther];
+	
+	final maxWidth = Math.max(topTxt.width, bottomTxt.width);
+	topTxt.x = (maxWidth - topTxt.width) / 2;
+	bottomTxt.x = (maxWidth - bottomTxt.width) / 2;
+	
+	final line = new FlxSprite(0, size + 4).makeGraphic(Std.int(maxWidth), 4, 0xFFFFFFFF);
+	line.cameras = [camOther];
+	
+	mathGroup.add(topTxt);
+	mathGroup.add(line);
+	mathGroup.add(bottomTxt);
+	
+	mathGroup.alpha = 0;
+	mathGroup.cameras = [camOther];
+	
+	return mathGroup;
 }

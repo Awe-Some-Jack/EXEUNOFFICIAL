@@ -165,6 +165,7 @@ class HScript extends Iris
 		set('FlxG',            flixel.FlxG);
 		set('FlxMath',         flixel.math.FlxMath);
 		set('FlxSprite',       flixel.FlxSprite);
+		set('FlxSpriteGroup',  flixel.group.FlxSpriteGroup);
 		set('FlxText',         flixel.text.FlxText);
 		set('FlxCamera',       flixel.FlxCamera);
 		set('PsychCamera',     backend.PsychCamera);
@@ -178,7 +179,7 @@ class HScript extends Iris
 		set('Paths',           Paths);
 		set('Conductor',       Conductor);
 		set('ClientPrefs',     ClientPrefs);
-		set('Achievements', Achievements);
+		set('Achievements',    Achievements);
 		set('Character',       Character);
 		set('Alphabet',        Alphabet);
 		set('Note',            objects.Note);
@@ -192,6 +193,7 @@ class HScript extends Iris
 		#if flixel_animate
 		set('FlxAnimate', animate.FlxAnimate);
 		#end
+		set('Reflect',  Reflect);
 
 		set('setVar', function(name:String, value:Dynamic) {
 			MusicBeatState.getVariables().set(name, value);

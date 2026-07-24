@@ -17,7 +17,8 @@ var subtitle:FlxText;
 var gameOverHUD:FlxCamera;
 function onCreate()
 {
-	GameOverSubstate.characterName = 'bfexe-dead';
+	GameOverSubstate.characterName = 'bftails-dead';
+	GameOverSubstate.deathSoundName = 'dead';
 }
 
 function onGameOverStart()
@@ -57,6 +58,19 @@ function onGameOverStart()
 		subtitle.destroy();
 	};
 	FlxG.sound.list.add(xenoLine);
+}
+
+function onEvent(n, v1, v2)
+{
+	if (n == 'tripletroublebgchange')
+	{
+		switch(v1)
+		{
+			case 'xeno', 'xeno2', 'xeno3': { GameOverSubstate.characterName = 'bfexe-dead'; GameOverSubstate.deathSoundName = 'fnf_loss_sfx';}
+			case 'knux': { GameOverSubstate.characterName = 'bfknux-dead'; GameOverSubstate.deathSoundName = 'dead';}
+			case 'egg': { GameOverSubstate.characterName = 'bfegg-dead'; GameOverSubstate.deathSoundName = 'dead';}
+		}
+	}
 }
 
 function makeSubtitle(daLine:String):Void

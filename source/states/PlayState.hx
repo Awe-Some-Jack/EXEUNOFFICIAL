@@ -706,7 +706,6 @@ class PlayState extends MusicBeatState
 			FlxG.save.data.goToFinalEscape = null;
 		}
 
-		#if linux
 		if(isFixedAspectRatio && !hasRestarted) {
 			hasRestarted = true;
 
@@ -716,7 +715,6 @@ class PlayState extends MusicBeatState
 
 			PauseSubState.restartSong();
 		}
-		#end
 
 		cachePopUpScore();
 

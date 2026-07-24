@@ -56,6 +56,9 @@ class Project extends HXProject
         this.app.file = EXECUTABLE;
         this.app.preloader = PRELOADER;
 
+        if (isIOS())
+            this.templatePaths.push("templates");
+
         this.sources.push("source");
 
         this.window.width = 1280;
@@ -107,6 +110,9 @@ class Project extends HXProject
         setHaxedef("LINC_LUA_RELATIVE_DYNAMIC_LIB");
         setHaxedef("MULTITHREADED_LOADING");
         setHaxedef("SHOW_LOADING_SCREEN");
+
+        if (isMac())
+            setHaxedef("MACOSX_VER", "26.5");
 
         if (!isWeb())
             setHaxedef("openfl_dpi_aware");
@@ -506,6 +512,8 @@ class Project extends HXProject
                     var asset = new Asset(fullPath, targetPath);
                     asset.library = library;
                     asset.embed = embed;
+                    if (Path.extension(fullPath) == 'astc')
+                        asset.type = AssetType.IMAGE;
                     assets.push(asset);
                 }
             }

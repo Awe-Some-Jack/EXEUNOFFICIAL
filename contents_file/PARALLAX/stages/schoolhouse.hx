@@ -360,10 +360,7 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 
 			case 1: // subtraction
 				int1 = FlxG.random.int(5, 10);
-				int2 = FlxG.random.int(0, 5);
-
-				if (int1 - int2 >= 10)
-					int2 = FlxG.random.int(1, 5);
+				int2 = FlxG.random.int(1, 5);
 
 				answer = int1 - int2;
 				equation.text = Language.getPhrase('math_sub', 'What does {1} - {2} equal? _', [int1, int2]);

@@ -659,7 +659,7 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 
 function onStepHit() {
 	switch(curStep) {
-		case 35, 576: createProblem([0, 0, 1, 2, 3], false);
+		case 256, 576: createProblem([0, 0, 1, 2, 3], false);
 		case 456: createProblem([4, 5, 6], false);
 		case 784: createProblem([8], false);
 		case 1240, 1308, 1446: createProblem([0], true, 0, 'h');

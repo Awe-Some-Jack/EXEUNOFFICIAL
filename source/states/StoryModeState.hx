@@ -27,6 +27,7 @@ class StoryModeState extends MusicBeatState
 	public static var yourselfMode:Bool = false;
 
 	var _yourselfCutscene:YourselfCutscene;
+	
 
 	var toMenu:Bool = false;
 
@@ -48,6 +49,7 @@ class StoryModeState extends MusicBeatState
 	var staticscreen2:FlxSprite;
 
 	var redBOX:FlxSprite;
+	var microphone:FlxSprite;
 
 	var selectedBox:Int = 0;
 	var canInteract:Bool = true;
@@ -72,6 +74,7 @@ class StoryModeState extends MusicBeatState
 	public static var fromStoryMode:Bool = false;
 
 
+	final yt = FlxG.save.data.theYourselfCutscene;
 	override function create()
 	{
 		Paths.clearStoredMemory();
@@ -79,10 +82,8 @@ class StoryModeState extends MusicBeatState
 
 		instance = this;
 
-		final yt = yourselfMode;
-		yourselfMode = false;
 		createAssets(yt);
-
+		
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/story.ogg'));
 
 		#if DISCORD_ALLOWED
@@ -154,7 +155,7 @@ class StoryModeState extends MusicBeatState
 		tooSlowCover.loadGraphic(tooSlowBitmap);
 		tooSlowCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		tooSlowCover.updateHitbox();
-		tooSlowCover.visible = true;
+		tooSlowCover.visible = yt == true ? false : true;
 		add(tooSlowCover);
 		
 		youCantRunCover = new FlxSprite();
@@ -179,11 +180,22 @@ class StoryModeState extends MusicBeatState
 		add(finalEscapeCover);
 		
 		yourselfCover = new FlxSprite();
-		yourselfCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/yourselffaker.png'));
+		yourselfCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/yourself.png'));
 		yourselfCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		yourselfCover.updateHitbox();
-		yourselfCover.visible = false;
+		if (yt == true) yourselfCover.setColorTransform(1, 1, 1, 1, 255, 255, 255, 0);
+		yourselfCover.visible = yt == true ? true : false;
 		add(yourselfCover);
+
+		if (FlxG.save.data.theYourselfCutscene != null){	
+			microphone = new FlxSprite();
+			microphone.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/microfono_lookalike.png', 'assets/exe/story/microfono_lookalike.xml');
+			microphone.animation.addByIndices('idle', 'micro', [0], '', 24, false);
+			microphone.setGraphicSize(Std.int(FlxG.width * 0.183));
+			microphone.setPosition(302, 116);
+			microphone.updateHitbox();
+			add(microphone);
+		}
 		
 		for (coversPos in [tooSlowCover, youCantRunCover, tripleTroubleCover, finalEscapeCover, yourselfCover]) coversPos.setPosition(192, 74);
 		
@@ -312,9 +324,6 @@ class StoryModeState extends MusicBeatState
 		
 		//bfTween  = FlxTween.tween(bfBOX,  {y: bfBOX.y  - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
 		//bf2Tween = FlxTween.tween(gfBOX, {y: gfBOX.y - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
-		
-		if (yourselfTime) { canInteract = false; new FlxTimer().start(1, function(_) { _yourselfCutscene = new YourselfCutscene(this, bfBOX, redBOX, yourselfCover); _yourselfCutscene.start(); }); }
-
 	}
 	
 	
@@ -384,19 +393,32 @@ class StoryModeState extends MusicBeatState
 		if (!isSelecting) {
 			if (inCoverSelect)
 			{
-				if (controls.UI_RIGHT_P && selectedCover < covers.length - 1)
-					changeCover(selectedCover + 1);
-				else if (controls.UI_LEFT_P && selectedCover > 0)
-					changeCover(selectedCover - 1);
+				if (yt == true){
+					if (controls.UI_RIGHT_P || controls.UI_LEFT_P)
+						FlxG.sound.play(Paths.sound('denied'));
 
-				if (controls.ACCEPT){
-					isSelecting = true;
-					bfBOX.animation.play('yeah', true);
-					bfBOX.x += 10;
-					FlxG.sound.play(STORY_SONGS[selectedCover] == 'yourself' ? Paths.sound('menuConfirmYourself') : Paths.sound('menuConfirm'));
-					FlxFlicker.flicker(redBOX, 1, 0.07, false, true, function(_) launchSong());
+					if (controls.ACCEPT){
+						isSelecting = true;
+						FlxG.sound.play(Paths.sound('menuConfirmYourself'));
+						_yourselfCutscene = new YourselfCutscene(this, bfBOX, redBOX, yourselfCover); _yourselfCutscene.start();
+						microphone.destroy();
+					}
+				}else{
+
+					if (controls.UI_RIGHT_P && selectedCover < covers.length - 1)
+						changeCover(selectedCover + 1);
+					else if (controls.UI_LEFT_P && selectedCover > 0)
+						changeCover(selectedCover - 1);
+					
+					if (controls.ACCEPT){
+						isSelecting = true;
+						bfBOX.animation.play('yeah', true);
+						bfBOX.x += 10;
+						FlxG.sound.play(STORY_SONGS[selectedCover] == 'yourself' ? Paths.sound('menuConfirmYourself') : Paths.sound('menuConfirm'));
+						FlxFlicker.flicker(redBOX, 1, 0.07, false, true, function(_) launchSong());
+					}
 				}
-
+					
 				if (controls.BACK)
 					exitCoverSelect();
 			}
@@ -430,8 +452,7 @@ class StoryModeState extends MusicBeatState
 					if (selectedBox == 0) onBox1Accept();
 					else { FlxG.sound.play(Paths.sound('denied')); shakeBox2(); }
 				}
-
-				}
+			}
 		}
 
 		super.update(elapsed);
@@ -443,7 +464,7 @@ class StoryModeState extends MusicBeatState
 		redBOX.x = box1BaseX;
 
 		inCoverSelect = true;
-		selectedCover = 0;
+		selectedCover = yt == true ? 4 : 0;
 
 		updateCoverVisibility();
 
@@ -462,7 +483,7 @@ class StoryModeState extends MusicBeatState
 			flashStaticScreen();
 		}
 		inCoverSelect = false;
-		selectedCover = 0;
+		selectedCover = yt == true ? 4 : 0;
 
 		updateCoverVisibility();
 
@@ -514,7 +535,7 @@ class StoryModeState extends MusicBeatState
 		{
 			Song.loadFromJson(Highscore.formatSong(songLower, launchDiff), songLower);
 			PlayState.isStoryMode     = true;
-			PlayState.storyPlaylist   = STORY_SONGS.slice(curIndex);
+			PlayState.storyPlaylist   = STORY_SONGS.slice(curIndex).filter(song -> song != 'yourself');
 			PlayState.storyDifficulty = launchDiff;
 		}
 		catch (e:haxe.Exception)

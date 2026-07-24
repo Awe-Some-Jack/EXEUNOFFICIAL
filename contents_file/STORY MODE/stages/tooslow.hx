@@ -54,10 +54,10 @@ var sprites:Array<SprDef> = [
 ];
 
 var flashBackBG:Array<SprDef> = [
-	{name: 'static', path: 'slow/flashback/daSTAT',  x: -950, y:  200, animated: true,  animName: 'idle', animPrefix: 'staticFLASH', fps: 24, loop: true,  scaleX: 12,  scaleY: 6,   scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
+	{name: 'static', path: 'slow/flashback/daSTAT',   x: -950, y:  200, animated: true,  animName: 'idle', animPrefix: 'staticFLASH', fps: 24, loop: true,  scaleX: 12,  scaleY: 6,   scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
 	{name: 'mount',  path: 'slow/flashback/idk',      x: -950, y: -300, scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
-	{name: 'plant',  path: 'slow/flashback/plants',   x: -950, y: -100, scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
-	{name: 'floor',  path: 'slow/flashback/ground',   x: -950, y: -100, scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
+	{name: 'plant',  path: 'slow/flashback/plants',   x: -950, y:  850, scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
+	{name: 'floor',  path: 'slow/flashback/ground',   x: -950, y: 1300, scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
 ];
 
 var spritesLQ:Array<SprDef> = [

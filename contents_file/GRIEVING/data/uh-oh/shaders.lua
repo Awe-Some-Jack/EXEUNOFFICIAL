@@ -10,7 +10,7 @@ local shaders = {
         contrast = 1,
         saturation = 1,
     }},
-    
+
     --[[
     {name = 'uhoh', shader = 'uhOh', x = 0,
     uniforms = {

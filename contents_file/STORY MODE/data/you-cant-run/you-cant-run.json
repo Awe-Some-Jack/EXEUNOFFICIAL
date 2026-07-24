@@ -77,13 +77,13 @@
 		{
 			"sectionBeats": 4,
 			"sectionNotes": [
-				[13714.2857142857, 5, 0, "Alt Animation"],
-				[13928.5714285714, 5, 0, "Alt Animation"],
-				[14142.8571428571, 5, 0, "Alt Animation"],
-				[14357.1428571429, 5, 0, "Alt Animation"],
-				[14571.4285714286, 5, 0, "Alt Animation"],
-				[14785.7142857143, 5, 0, "Alt Animation"],
-				[15000, 5, 0, "Alt Animation"]
+				[13714.2857142857, 5, 0, "No Animation"],
+				[13928.5714285714, 5, 0, "No Animation"],
+				[14142.8571428571, 5, 0, "No Animation"],
+				[14357.1428571429, 5, 0, "No Animation"],
+				[14571.4285714286, 5, 0, "No Animation"],
+				[14785.7142857143, 5, 0, "No Animation"],
+				[15000, 5, 0, "No Animation"]
 			],
 			"lengthInSteps": 16,
 			"altAnim": false,
@@ -393,10 +393,10 @@
 				[34821.4285714286, 6, 0],
 				[34928.5714285714, 4, 0],
 				[35035.7142857143, 6, 0],
-				[35142.8571428571, 5, 0, "Alt Animation"],
-				[35357.1428571429, 5, 0, "Alt Animation"],
-				[35571.4285714286, 5, 0, "Alt Animation"],
-				[35785.7142857143, 5, 0, "Alt Animation"]
+				[35142.8571428571, 5, 0, "No Animation"],
+				[35357.1428571429, 5, 0, "No Animation"],
+				[35571.4285714286, 5, 0, "No Animation"],
+				[35785.7142857143, 5, 0, "No Animation"]
 			],
 			"lengthInSteps": 16,
 			"altAnim": false,
@@ -1140,8 +1140,7 @@
 				[83464.2857142857, 2, 0],
 				[83571.4285714286, 3, 0],
 				[83714.2857142857, 0, 0],
-				[83857.1428571429, 3, 0],
-				[83982.1428571429, 7, 482.142857142857]
+				[83857.1428571429, 3, 0]
 			],
 			"lengthInSteps": 16,
 			"altAnim": false,
@@ -1153,7 +1152,8 @@
 			"sectionBeats": 4,
 			"sectionNotes": [
 				[84000, 2, 1714.28571428571],
-				[84250, 4, 214.285714285714],
+				[84000, 7, 428.571428571429],
+				[84214.2857142857, 4, 321.428571428571],
 				[84535.7142857143, 5, 321.428571428571],
 				[85000, 4, 535.714285714286],
 				[85214.2857142857, 6, 321.428571428571],
@@ -2211,13 +2211,45 @@
 			13714.2857142857,
 			[
 				["cameracenter", "false", ""],
-				["Tween Camera Zoom", "1.2, true", "0.9, sineOut"]
+				["Tween Camera Zoom", "1.2, true", "0.9, sineOut"],
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			13928.5714285714,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			14142.8571428571,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			14357.1428571429,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			14571.4285714286,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			14785.7142857143,
+			[
+				["Play Animation", "laugh", "dad"]
 			]
 		],
 		[
 			15000,
 			[
-				["ycrEvents", "tweenObjectAlpha", "camHUD, 1, 0.8"]
+				["ycrEvents", "tweenObjectAlpha", "camHUD, 1, 0.8"],
+				["Play Animation", "laugh", "dad"]
 			]
 		],
 		[
@@ -2253,7 +2285,26 @@
 		[
 			35142.8571428571,
 			[
-				["Tween Camera Zoom", "0.9", ""]
+				["Tween Camera Zoom", "0.9", ""],
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			35357.1428571429,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			35571.4285714286,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			35785.7142857143,
+			[
+				["Play Animation", "laugh", "dad"]
 			]
 		],
 		[
@@ -2306,9 +2357,10 @@
 		[
 			55714.2857142857,
 			[
-				["Play Animation", "ah", "dad"],
+				["Change Character", "dad", "sonic.exe 2-grito"],
 				["Tween Camera Zoom", "0.9, false", ""],
-				["glitchFlash", "0, 1.2", "1.3"]
+				["glitchFlash", "0, 1.2", "1.3"],
+				["Play Animation", "grito1", "dad"]
 			]
 		],
 		[
@@ -2386,20 +2438,17 @@
 			85714.2857142857,
 			[
 				["Change Character", "bf", "bf"],
-				["Change Character", "dad", "sonic.exe 2 mad"],
+				["Change Character", "dad", "sonic.exe 2"],
 				["Change Character", "gf", "gf parada"],
 				["FlashCamera", "FF0000, 1", "1"],
-				["Swap Pixel Combo", "", ""]
-			]
-		],
-		[
-			85714.2857142857,
-			[
+				["Swap Pixel Combo", "", ""],
 				["Normal Lyrics", "", ""],
 				["Set Property", "cameraSpeed", "10000"],
 				["ycrEvents", "stageMode", "CrystalMode"],
 				["glitchFlash", "0, 0", "1"],
-				["chromFlash", "0, 0.4", "0.9"]
+				["chromFlash", "0, 0.4", "0.9"],
+				["Set Property", "dad.idleSuffix", "-alt"],
+				["Set Property", "dad.animSuffix", "-alt"]
 			]
 		],
 		[
@@ -2526,11 +2575,13 @@
 		[
 			126000,
 			[
-				["Play Animation", "ah", "dad"],
+				["Change Character", "dad", "sonic.exe 2-grito"],
 				["Tweening Camera", "-800, 90", "0.001, linear"],
 				["Tween Camera Zoom", "1, true", "0.001, linear"],
 				["Set Property", "cameraSpeed", "10000"],
-				["glitchFlash", "0, 1.2", "1.3"]
+				["glitchFlash", "0, 1.2", "1.3"],
+				["Set Property", "dad.animSuffix", ""],
+				["Play Animation", "grito2", "dad"]
 			]
 		],
 		[
@@ -2546,7 +2597,9 @@
 				["Tweening Camera", "0, 0", "0.001, linear"],
 				["Change Health Damage", "0.015", ""],
 				["ycrEvents", "vignetteMode", "1beat"],
-				["glitchFlash", "1.2, 0", "1"]
+				["glitchFlash", "1.2, 0", "1"],
+				["Change Character", "dad", "sonic.exe 2"],
+				["Set Property", "dad.animSuffix", "-alt"]
 			]
 		],
 		[
@@ -2583,8 +2636,9 @@
 			139714.285714286,
 			[
 				["Tween Camera Zoom", "0.85", ""],
-				["Tweening Camera", "-600, 90", "0.001, linear"],
-				["Set Property", "cameraSpeed", "100000"]
+				["Tweening Camera", "-800, 40", "0.001, linear"],
+				["Set Property", "cameraSpeed", "100000"],
+				["Play Animation", "laugh", "dad"]
 			]
 		],
 		[
@@ -2594,9 +2648,22 @@
 			]
 		],
 		[
+			139928.571428571,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
 			140142.857142857,
 			[
-				["Tween Camera Zoom", "0.95", ""]
+				["Tween Camera Zoom", "0.95", ""],
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			140357.142857143,
+			[
+				["Play Animation", "laugh", "dad"]
 			]
 		],
 		[
@@ -2657,19 +2724,9 @@
 		[
 			153428.571428571,
 			[
-				["Normal Lyrics", "lyrics.youcantrun.2", "1"]
-			]
-		],
-		[
-			153464.285714286,
-			[
-				["Play Animation", "muerete conglo", "dad"]
-			]
-		],
-		[
-			154285.714285714,
-			[
-				["Screen Shake", "1.15, 0.005", "0, 0"]
+				["Normal Lyrics", "lyrics.youcantrun.2", "1"],
+				["Set Property", "dad.animSuffix", ""],
+				["Play Animation", "die", "dad"]
 			]
 		],
 		[
@@ -2678,13 +2735,20 @@
 				["Normal Lyrics", "lyrics.youcantrun.2", "2,FF0000"],
 				["ycrEvents", "tweenObjectAlpha", "camHUD, 0, 1"],
 				["ycrEvents", "vignetteMode", "slow"],
-				["cameracenter", "true", ""]
+				["cameracenter", "true", ""],
+				["Screen Shake", "1.15, 0.005", "0, 0"]
 			]
 		],
 		[
 			154607.142857143,
 			[
 				["Tween Camera Zoom", "0.5, true", "8, sineInOut"]
+			]
+		],
+		[
+			155464.285714286,
+			[
+				["Set Property", "dad.animSuffix", "-alt"]
 			]
 		],
 		[
@@ -2762,9 +2826,9 @@
 		]
 	],
 	"song": "You Can't Run",
-	"needsVoices": true,
 	"validScore": true,
 	"stage": "you-cant-run",
+	"needsVoices": true,
 	"format": "psych_v1_convert",
 	"speed": 3.1,
 	"bpm": 140

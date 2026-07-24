@@ -700,6 +700,12 @@ class PlayState extends MusicBeatState
 
 		super.create();
 
+		//FlxG.saves
+		if (isStoryMode){
+			FlxG.save.data.theYourselfCutscene = null;
+			FlxG.save.data.goToFinalEscape = null;
+		}
+
 		#if linux
 		if(isFixedAspectRatio && !hasRestarted) {
 			hasRestarted = true;
@@ -2376,6 +2382,17 @@ class PlayState extends MusicBeatState
 			FlxG.save.flush();
 			trace("save data is " + FlxG.save.data.goToFinalEscape);
 			Sys.exit(0);
+		} 
+		if (isStoryMode && Paths.formatToSongPath(SONG.song) == 'final-escape'){
+			FlxG.save.data.theYourselfCutscene = true;
+			FlxG.save.flush();
+			trace("Yourself Cutscene: " + FlxG.save.data.theYourselfCutscene);
+			FlxG.switchState(() -> new StoryModeState());
+		} 
+		if (isStoryMode && Paths.formatToSongPath(SONG.song) == 'yourself'){
+			FlxG.save.data.theYourselfCutscene = null;
+			FlxG.save.flush();
+			trace("Yourself Cutscene: " + FlxG.save.data.theYourselfCutscene);
 		} 
 		
 		//Should kill you if you tried to cheat

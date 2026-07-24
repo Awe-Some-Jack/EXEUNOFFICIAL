@@ -1,20 +1,12 @@
 function onCreatePost()
-    for i = 0, 7 do
-        if getPropertyFromClass('backend.ClientPrefs', 'data.downScroll') then
-            setPropertyFromGroup('strumLineNotes', i, 'y', 800)
-        else
-            setPropertyFromGroup('strumLineNotes', i, 'y', -500)
-        end
-    end
+    for i = 0, 7 do setPropertyFromGroup('strumLineNotes', i, 'y', getPropertyFromClass('backend.ClientPrefs', 'data.downScroll') and 800 or -500) end
+
+    local separation = 50
     for i = 0, 3 do
-        noteTweenX(i..'X' , i , (screenWidth/2)--[[Offset]]+(115*(i-2))--[[NotesSeparation]], 0.3, 'backInOut')
+        setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+        setProperty('opponentStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('opponentStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('opponentStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
     end
-    for i = 4, 7 do
-        noteTweenX(i..'X' , i , (screenWidth/2)--[[Offset]]+(115*(i-6))--[[NotesSeparation]], 0.3, 'backInOut')
-    end
-    for _, healthStuff in ipairs({'iconBF', 'iconOpp', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'exeScoreTxt'}) do
-        setProperty(healthStuff..'.alpha', 0)
-    end
+    for _, healthStuff in ipairs({'iconBF', 'iconOpp', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'exeScoreTxt'}) do setProperty(healthStuff..'.alpha', 0) end
 end
 
 function onSongStart()

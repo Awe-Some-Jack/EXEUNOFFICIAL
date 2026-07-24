@@ -38,6 +38,10 @@ local hazeBGAssets = {
         { name = 'k', path = 'characters/k/', x = 100, y = -700, scale = 0.2, animSymbol = 'knux',  alpha = 1, front = false},
         { name = 'm', path = 'characters/m/', x = 600, y = -400, scale = 1, animSymbol = 'momi',  alpha = 1, front = false},
         { name = 't', path = 'characters/t/', x = 300, y = -100, scale = 0.2, animSymbol = 'tails', alpha = 1, front = false},
+    },
+    ['theBoys'] = {
+        {name = 'thomas', path = 'grieving/haze/4th/ff', x = -400, y = -500, flipX = true, scaleX = 0.3, scaleY = 0.3, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+        {name =   'kyle', path = 'grieving/haze/4th/gg', x =    0, y = -200, flipX = true, scaleX = 0.3, scaleY = 0.3, scrollX = 1, scrollY = 1, alpha = 0, front = false},
     }
 }
 
@@ -46,7 +50,7 @@ local spriteGroups = {
     phase2 = {'bg', 'trees3', 'trees2', 'trees', 'floor', 'fore'},
     phase3 = {'sky3', 'montains', 'lol', 'suelo', 'totem', 'm', 't'},
     phase4 = {'overlay', 'sun-clouds', 'cloudFront', 'water2', 'waterfall1', 'waterfall2', 'groundShit', 'dedplants', 'k'},
-    phase5 = {'sky', 'clouds1', 'clouds2', 'clouds-mountains', 'clouds3', 'ground'}
+    phase5 = {'sky', 'clouds1', 'clouds2', 'clouds-mountains', 'clouds3', 'ground', 'thomas', 'kyle'}
 }
 
 local function addSprite(yea)
@@ -63,6 +67,7 @@ local function addSprite(yea)
             makeLuaSprite(yea.name, yea.path, yea.x, yea.y)
         end
     end
+    if yea.flipX then setProperty(yea.name..'.flipX', yea.flipX) end
     if yea.scaleX or yea.scaleY then scaleObject(yea.name, yea.scaleX, yea.scaleY) end
     setScrollFactor(yea.name, yea.scrollX, yea.scrollY)
     if yea.alpha then setProperty(yea.name..'.alpha', yea.alpha) end
@@ -88,11 +93,12 @@ function onCreate()
     addCharacterToList('bf',         'bf')
     addCharacterToList('bf2',        'bf')
 
-    for _, phase1 in ipairs(hazeBGAssets['phase1']) do precacheImage(phase1.path) end
-    for _, phase2 in ipairs(hazeBGAssets['phase2']) do precacheImage(phase2.path) end
-    for _, phase3 in ipairs(hazeBGAssets['phase3']) do precacheImage(phase3.path) end
-    for _, phase4 in ipairs(hazeBGAssets['phase4']) do precacheImage(phase4.path) end
-    for _, phase5 in ipairs(hazeBGAssets['phase5']) do precacheImage(phase5.path) end
+    for _, phase1 in ipairs(hazeBGAssets['phase1'])  do precacheImage(phase1.path) end
+    for _, phase2 in ipairs(hazeBGAssets['phase2'])  do precacheImage(phase2.path) end
+    for _, phase3 in ipairs(hazeBGAssets['phase3'])  do precacheImage(phase3.path) end
+    for _, phase4 in ipairs(hazeBGAssets['phase4'])  do precacheImage(phase4.path) end
+    for _, phase5 in ipairs(hazeBGAssets['phase5'])  do precacheImage(phase5.path) end
+    for _,   bois in ipairs(hazeBGAssets['theBoys']) do   precacheImage(bois.path) end
 
     for _, atlas in ipairs(hazeBGAssets['atlases']) do precacheImage(atlas.path) end
 end
@@ -105,6 +111,8 @@ function onCreatePost()
     for _, spr in ipairs(hazeBGAssets['phase4']) do addSprite(spr) end
     for _, spr in ipairs(hazeBGAssets['phase5']) do addSprite(spr) end
 
+    for _, spr in ipairs(hazeBGAssets['theBoys']) do addSprite(spr) end
+
     for _, spr in ipairs(hazeBGAssets['atlases']) do addAtlas(spr) end
 
     for _, phase1 in ipairs(hazeBGAssets['phase1']) do setProperty(phase1.name..'.alpha', 1) end
@@ -112,7 +120,7 @@ function onCreatePost()
     for _, phase3 in ipairs(hazeBGAssets['phase3']) do setProperty(phase3.name..'.alpha', 0) end
     for _, phase4 in ipairs(hazeBGAssets['phase4']) do setProperty(phase4.name..'.alpha', 0) end
     for _, phase5 in ipairs(hazeBGAssets['phase5']) do setProperty(phase5.name..'.alpha', 0) end
-    
+
     for _, atlas in ipairs(hazeBGAssets['atlases']) do setProperty(atlas.name..'.alpha', 0) end
     --THAT bf anim
     makeAnimatedLuaSprite('bfTransition', 'characters/atlas', 210, -10)
@@ -131,6 +139,8 @@ function onCreatePost()
     setObjectOrder('missingPoster', getObjectOrder('BlackGraphicGame') + 1)
     addLuaSprite('missingPoster')
 
+    --Other Stuff
+
     setProperty('dad.visible', false)
     setObjectOrder('clouds3', getObjectOrder('dadGroup') + 1)
     setObjectOrder('ground', getObjectOrder('boyfriendGroup'))
@@ -139,6 +149,11 @@ function onCreatePost()
     for i = 0, getProperty('unspawnNotes.length') - 1 do setPropertyFromGroup('unspawnNotes', i, 'texture', "noteSkins/redNotes") end
     for i = 0, 7 do setProperty('strumLineNotes.members['..i..'].texture', 'noteSkins/redNotes') end
     for _, hudStuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(hudStuff..'.alpha', 0) end
+
+    setSpriteShader('thomas', 'wavyDistortion')
+    setSpriteShader('kyle', 'wavyDistortion')
+
+    for _, bois in ipairs({'thomas', 'kyle'}) do setShaderFloat(bois, 'amount', 0.8) end
 end
 
 local stageMode = {
@@ -352,6 +367,14 @@ function onUpdatePost(e)
                 downcsroll and getProperty(move..'.y') + math.cos(curDecBeat * math.pi * 2) * someHold or getProperty(move..'.y') - math.cos(curDecBeat * math.pi * 2) * someHold
             })
         end
+    end
+
+    for i, bois in ipairs({'thomas', 'kyle'}) do
+        setShaderFloat(bois, 'iTime', holdWave)
+        callMethod(bois..'.setPosition', {
+            getProperty(bois..'.x') + math.cos(holdWave + (i * math.random(-0.2, 0.2))) * 0.1,
+            getProperty(bois..'.y') + math.sin(holdWave + (i * math.random(-0.4, 0.7))) * 0.4
+        })
     end
 end
 

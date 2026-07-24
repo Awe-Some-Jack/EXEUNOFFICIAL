@@ -273,9 +273,9 @@
 				[43636.3636363636, 3, 2232.55813953488]
 			],
 			"sectionBeats": 4,
-			"changeBPM": true,
 			"mustHitSection": true,
-			"bpm": 215
+			"bpm": 215,
+			"changeBPM": true
 		},
 		{
 			"sectionNotes": [],
@@ -287,9 +287,9 @@
 				[45868.9217758985, 1, 2341.46341463415]
 			],
 			"sectionBeats": 4,
-			"changeBPM": true,
 			"mustHitSection": true,
-			"bpm": 205
+			"bpm": 205,
+			"changeBPM": true
 		},
 		{
 			"sectionNotes": [],
@@ -301,9 +301,9 @@
 				[48210.3851905326, 3, 2461.53846153846]
 			],
 			"sectionBeats": 4,
-			"changeBPM": true,
 			"mustHitSection": true,
-			"bpm": 195
+			"bpm": 195,
+			"changeBPM": true
 		},
 		{
 			"sectionNotes": [],
@@ -315,18 +315,18 @@
 				[50671.9236520711, 0, 1297.2972972973]
 			],
 			"sectionBeats": 4,
-			"changeBPM": true,
 			"mustHitSection": true,
-			"bpm": 185
+			"bpm": 185,
+			"changeBPM": true
 		},
 		{
 			"sectionNotes": [
 				[51969.2209493684, 1, 1371.42857142857]
 			],
 			"sectionBeats": 4,
-			"changeBPM": true,
 			"mustHitSection": true,
-			"bpm": 175
+			"bpm": 175,
+			"changeBPM": true
 		},
 		{
 			"sectionNotes": [
@@ -334,9 +334,9 @@
 				[53340.649520797, 2, 2911.76470588235]
 			],
 			"sectionBeats": 4,
-			"changeBPM": true,
 			"mustHitSection": false,
-			"bpm": 170
+			"bpm": 170,
+			"changeBPM": true
 		},
 		{
 			"sectionNotes": [],
@@ -351,9 +351,9 @@
 		{
 			"sectionNotes": [],
 			"sectionBeats": 4,
-			"changeBPM": true,
 			"mustHitSection": false,
-			"bpm": 169
+			"bpm": 169,
+			"changeBPM": true
 		},
 		{
 			"sectionNotes": [
@@ -368,9 +368,9 @@
 				[60231.3560992864, 7, 0, "Alt Animation"]
 			],
 			"sectionBeats": 4,
-			"changeBPM": true,
 			"mustHitSection": false,
-			"bpm": 170
+			"bpm": 170,
+			"changeBPM": true
 		},
 		{
 			"sectionNotes": [
@@ -1848,7 +1848,7 @@
 		{
 			"sectionNotes": [
 				[180407.826687521, 6, 0],
-				[180584.297275757, 7, 0],
+				[180584.297275757, 6, 0],
 				[180672.532569874, 4, 0],
 				[180760.767863992, 7, 0],
 				[180937.238452227, 5, 0],
@@ -1942,13 +1942,13 @@
 		{
 			"sectionNotes": [
 				[187466.650216933, 3, 264.705882352941, "Alt Animation"],
-				[187819.591393404, 0, 0, "Alt Animation"],
-				[187996.061981639, 3, 0, "Alt Animation"],
+				[187819.591393404, 3, 0, "Alt Animation"],
+				[187996.061981639, 2, 0, "Alt Animation"],
 				[188084.297275757, 1, 0, "Alt Animation"],
 				[188172.532569874, 0, 0, "Alt Animation"],
 				[188349.00315811, 2, 0, "Alt Animation"],
-				[188525.473746345, 0, 0, "Alt Animation"],
-				[188701.94433458, 3, 0, "Alt Animation"]
+				[188525.473746345, 3, 0, "Alt Animation"],
+				[188701.94433458, 0, 0, "Alt Animation"]
 			],
 			"sectionBeats": 4,
 			"gfSection": false,
@@ -1960,14 +1960,14 @@
 		{
 			"sectionNotes": [
 				[188878.414922815, 2, 0, "Alt Animation"],
-				[189054.885511051, 0, 0, "Alt Animation"],
+				[189054.885511051, 3, 0, "Alt Animation"],
 				[189143.120805168, 2, 0, "Alt Animation"],
-				[189231.356099286, 3, 0, "Alt Animation"],
+				[189231.356099286, 0, 0, "Alt Animation"],
 				[189407.826687521, 1, 0, "Alt Animation"],
-				[189584.297275757, 0, 0, "Alt Animation"],
+				[189584.297275757, 3, 0, "Alt Animation"],
 				[189760.767863992, 1, 0, "Alt Animation"],
 				[189937.238452227, 2, 0, "Alt Animation"],
-				[190113.709040463, 1, 0, "Alt Animation"]
+				[190113.709040463, 0, 0, "Alt Animation"]
 			],
 			"sectionBeats": 4,
 			"gfSection": false,
@@ -1982,11 +1982,11 @@
 				[190466.650216933, 2, 0, "Alt Animation"],
 				[190554.885511051, 0, 0, "Alt Animation"],
 				[190643.120805168, 3, 0, "Alt Animation"],
-				[190819.591393404, 0, 0, "Alt Animation"],
-				[190996.061981639, 3, 0, "Alt Animation"],
-				[191172.532569874, 2, 0, "Alt Animation"],
-				[191349.00315811, 1, 0, "Alt Animation"],
-				[191525.473746345, 0, 0, "Alt Animation"]
+				[190819.591393404, 0, 176.470588235294, "Alt Animation"],
+				[190996.061981639, 3, 176.470588235294, "Alt Animation"],
+				[191172.532569874, 2, 176.470588235294, "Alt Animation"],
+				[191349.00315811, 1, 176.470588235294, "Alt Animation"],
+				[191525.473746345, 0, 176.470588235294, "Alt Animation"]
 			],
 			"sectionBeats": 4,
 			"gfSection": false,
@@ -2632,7 +2632,6 @@
 				["yourselfEvents", "removeSprite", "cristal1"],
 				["yourselfEvents", "removeSprite", "luces"],
 				["Set Property", "piso2.alpha", "1"],
-				["yourselfEvents", "moveDad", "570, 130"],
 				["Set Property", "camGame.alpha", "1"]
 			]
 		],
@@ -2882,21 +2881,15 @@
 		[
 			160643.120805168,
 			[
-				["Change Character", "dad", "silly look"],
-				["Tweening Camera", "-410, -180", "0.6, circOut"],
-				["Tween Camera Zoom", "0.8", ""],
-				["yourselfEvents", "moveDad", "570, 130"],
+				["Set Property", "dad.animSuffix", "-mini"],
+				["Tweening Camera", "-310, -120", "0.6, circOut"],
+				["Tween Camera Zoom", "1", ""],
 				["yourselfEvents", "lightsInteraction", "dad"],
 				["yourselfEvents", "fadeHUD", "fuckyou"],
 				["Set Property", "BlackGraphicGame.alpha", "0.5"],
 				["Set Property", "spotlight1.scale.x", "0.2"],
 				["Set Property", "spotlight1.scale.y", "3"],
-				["Set Property", "spotlight1.alpha", "0.6"]
-			]
-		],
-		[
-			160643.120805168,
-			[
+				["Set Property", "spotlight1.alpha", "0.6"],
 				["yourselfEvents", "modchartstart", ""]
 			]
 		],
@@ -3002,7 +2995,8 @@
 		[
 			173040.179628698,
 			[
-				["Play Animation", "ha", "dad"]
+				["Set Property", "dad.animSuffix", ""],
+				["Play Animation", "big", "dad"]
 			]
 		],
 		[
@@ -3027,7 +3021,7 @@
 		[
 			174760.767863992,
 			[
-				["Change Character", "dad", "LookALike2"],
+				["Set Property", "dad.animSuffix", "-phase2"],
 				["Tween Camera Zoom", "0.65", ""],
 				["FlashCamera", "FFFFFF, 1", "1.1, add"],
 				["Tweening Camera", "0, 0", "0.001, linear"],
@@ -3035,7 +3029,17 @@
 				["yourselfEvents", "showOffNewStage", ""],
 				["yourselfEvents", "tweenCamHUDAlphaDown", "1"],
 				["yourselfEvents", "fadeHUD", "appear"],
-				["cameracenter", "true", ""]
+				["cameracenter", "true", ""],
+				["Alt Idle Animation", "bf", "-alt"]
+			]
+		],
+		[
+			196643.120805168,
+			[
+				["Tween Camera Zoom", "1.4, true", "0.75, circIn"],
+				["Tweening Camera", "1050, 490", "0.75, circIn"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
 			]
 		],
 		[
@@ -3043,7 +3047,17 @@
 			[
 				["bloomFlash", "0.5, 0", "1, circOut"],
 				["Tween Camera Zoom", "0.75", ""],
-				["cameracenter", "false", ""]
+				["cameracenter", "false", ""],
+				["Set Property", "cameraSpeed", "100000"],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"]
+			]
+		],
+		[
+			197437.238452227,
+			[
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
@@ -3120,13 +3134,8 @@
 				["Tween Camera Zoom", "0.48, true", "4, smootherStepInOut"],
 				["bloomFlash", "0.5, 0", "4, smootherStepOut"],
 				["yourselfEvents", "tweenCamHUDAlphaDown", ""],
-				["Set Property", "camZooming", "false"]
-			]
-		],
-		[
-			220113.709040462,
-			[
-				["Set Property", "camZoomingMult", "0"]
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
 			]
 		],
 		[

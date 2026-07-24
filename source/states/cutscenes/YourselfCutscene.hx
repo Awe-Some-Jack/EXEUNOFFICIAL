@@ -48,9 +48,6 @@ class YourselfCutscene
 		randomMIC.updateHitbox();
 		state.add(randomMIC);
 
-		if (yourselfCover != null)
-			yourselfCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/yourself.png'));
-
 		FlxG.camera.shake(0.025, 0.4);
 
 		bfBOX.animation.play('ouch', true);

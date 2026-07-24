@@ -132,7 +132,7 @@
 			"offsets": [53, 63],
 			"indices": [],
 			"fps": 24,
-			"anim": "looking",
+			"anim": "o",
 			"loop": false,
 			"name": "looking"
 		},
@@ -140,7 +140,7 @@
 			"offsets": [55, 33],
 			"indices": [],
 			"fps": 24,
-			"anim": "void",
+			"anim": "aydiosmio",
 			"loop": false,
 			"name": "aikemiedoyomevoid"
 		},

@@ -9,7 +9,7 @@
 			"name": "idle"
 		},
 		{
-			"offsets": [207, 0],
+			"offsets": [230, -1],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -17,7 +17,7 @@
 			"name": "left"
 		},
 		{
-			"offsets": [-11, -5],
+			"offsets": [-12, -6],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
@@ -25,7 +25,7 @@
 			"name": "down"
 		},
 		{
-			"offsets": [2, 99],
+			"offsets": [0, 110],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
@@ -41,74 +41,74 @@
 			"name": "right"
 		},
 		{
-			"loop": false,
 			"offsets": [-15, -17],
+			"indices": [],
+			"fps": 24,
 			"anim": "laugh",
-			"fps": 24,
-			"name": "laugh",
-			"indices": []
+			"loop": false,
+			"name": "1risa"
 		},
 		{
-			"loop": true,
 			"offsets": [-117, -70],
+			"indices": [],
+			"fps": 24,
 			"anim": "idle-alt",
-			"fps": 24,
-			"name": "madidle",
-			"indices": []
+			"loop": true,
+			"name": "2idle"
 		},
 		{
-			"loop": false,
-			"offsets": [141, 35],
+			"offsets": [171, 46],
+			"indices": [],
+			"fps": 24,
 			"anim": "singLEFT-alt",
-			"fps": 24,
-			"name": "madleft",
-			"indices": []
+			"loop": false,
+			"name": "f left"
 		},
 		{
-			"loop": false,
-			"offsets": [-4, -76],
+			"offsets": [10, -77],
+			"indices": [],
+			"fps": 24,
 			"anim": "singDOWN-alt",
-			"fps": 24,
-			"name": "maddown",
-			"indices": []
+			"loop": false,
+			"name": "down a"
 		},
 		{
-			"loop": false,
-			"offsets": [43, 148],
+			"offsets": [61, 173],
+			"indices": [],
+			"fps": 24,
 			"anim": "singUP-alt",
-			"fps": 24,
-			"name": "madup",
-			"indices": []
+			"loop": false,
+			"name": "f up"
 		},
 		{
-			"loop": false,
 			"offsets": [-118, -77],
+			"indices": [],
+			"fps": 24,
 			"anim": "singRIGHT-alt",
-			"fps": 24,
-			"name": "madright",
-			"indices": []
+			"loop": false,
+			"name": "f right"
 		},
 		{
-			"loop": false,
-			"offsets": [-15, -80],
-			"anim": "laugh-alt",
-			"fps": 24,
-			"name": "madlaugh",
-			"indices": []
-		},
-		{
-			"loop": false,
 			"offsets": [-69, -33],
-			"anim": "die",
+			"indices": [],
 			"fps": 24,
-			"name": "justdie",
-			"indices": []
+			"anim": "die",
+			"loop": false,
+			"name": "just die"
+		},
+		{
+			"offsets": [-15, -80],
+			"indices": [],
+			"fps": 24,
+			"anim": "laugh-alt",
+			"loop": false,
+			"name": "2risa"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/ycrxeno",
-	"position": [-320, 60],
+	"image": "characters/xenoycr",
+	"position": [-370, 10],
 	"healthicon": "XENO-P2",
 	"flip_x": false,
 	"healthbar_colors": [36, 1, 116],

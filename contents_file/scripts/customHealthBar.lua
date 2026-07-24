@@ -36,7 +36,8 @@ local healthBarsBG = {
     ["hud_fakebaby"] = {
         songs = {'fakebaby'},
         x = - 190,
-        y = - 75
+        y = - 75,
+        scale = {0.32, 0.3}
     },
     ["hud_lookalike"] = {
         songs = {'yourself'},

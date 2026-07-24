@@ -11,6 +11,8 @@ import backend.Paths;
 import psychlua.ModchartAnimateSprite;
 import psychlua.FlxAnimateFunctions;
 
+import lime.app.Application as Application;
+
 var exeGameOvers:Bool = false;
 var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline'];
 var voicelineSongs:Array<String> = ["cycles", "hellbent", "fate"];
@@ -65,7 +67,7 @@ function setCustomGameOvers() {
             GameOverSubstate.deathSoundName = "deathSounds/yourself-sfx";
             GameOverSubstate.loopSoundName = "deathSongs/yourself";
             GameOverSubstate.endSoundName = "deathSongs/yourself-retry";
-            charPositions = [250, -150];
+            charPositions = [250, -140];
 
             initialDeathZoom = 1.2;
         case "hollow":
@@ -111,7 +113,7 @@ function setCamEvents() {
     FlxG.camera.zoom = initialDeathZoom;
     switch(songName){
         case "yourself":
-            new FlxTimer().start(0.3, (_) -> FlxTween.tween(FlxG.camera, {zoom: 0.9, y: FlxG.camera.y - 90}, 2, {ease: FlxEase.sineInOut}));
+            //new FlxTimer().start(0.3, (_) -> FlxTween.tween(FlxG.camera, {zoom: 0.9, y: FlxG.camera.y - 90}, 2, {ease: FlxEase.sineInOut}));
     }
 }
 
@@ -330,7 +332,7 @@ function youFuckedUp()
         FlxG.sound.play(Paths.sound('deathSounds/secondLOOK'));
         FlxTween.tween(FlxG.camera, {zoom: FlxG.camera.zoom - 0.2}, 0.5, {ease: FlxEase.circOut});
 
-        new FlxTimer().start(6, (_) -> Sys.exit());
+        new FlxTimer().start(6, (_) -> Application.current.window.close());
     });
 
 }

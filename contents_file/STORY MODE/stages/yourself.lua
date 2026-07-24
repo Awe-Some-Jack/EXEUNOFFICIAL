@@ -118,27 +118,19 @@ end
 
 
 function onUpdatePost()
-    playAnim('sillybg1', getProperty('dad.animation.curAnim.name'):gsub('-alt', ''), true)
+    playAnim('sillybg1', getProperty('dad.animation.curAnim.name'):gsub('-mini', ''), true)
 	setProperty('sillybg1.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
 
-    playAnim('sillybg2', getProperty('dad.animation.curAnim.name'):gsub('-alt', ''), true)
+    playAnim('sillybg2', getProperty('dad.animation.curAnim.name'):gsub('-mini', ''), true)
 	setProperty('sillybg2.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
 
-    playAnim('sillybg4', getProperty('dad.animation.curAnim.name'):gsub('-alt', ''), true)
+    playAnim('sillybg4', getProperty('dad.animation.curAnim.name'):gsub('-mini', ''), true)
 	setProperty('sillybg4.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
 
-    playAnim('sillybg3', getProperty('dad.animation.curAnim.name'):gsub('-alt', '')..'-alt', true)
+    playAnim('sillybg3', getProperty('dad.animation.curAnim.name'):gsub('-mini', '')..'-alt', true)
 	setProperty('sillybg3.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
 
     setProperty('healthBGYourself.alpha', getProperty('hbBG.alpha'))
-end
-
-function onSongStart()
-    local separation = 50
-    for i = 0,3 do
-        setProperty('opponentStrums.members['..i..'].x', -1000)
-        setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
-    end
 end
 
 function onEvent(eventName, value1, value2)
@@ -157,12 +149,6 @@ function onEvent(eventName, value1, value2)
             end
         elseif value1 == 'removeSprite' then
             removeLuaSprite(value2, true)
-        elseif value1 == 'moveDad' then
-            local split = stringSplit(value2, ',')
-            callMethod('dad.setPosition', {
-                getProperty('dad.x') + split[1],
-                getProperty('dad.y') + split[2]
-            })
         elseif value1 == 'lightsInteraction' then
             setObjectOrder('spotlight1', getObjectOrder('BlackGraphicGame') + 1)
             if value2 == 'dad' then
@@ -187,12 +173,6 @@ function onEvent(eventName, value1, value2)
                 setProperty(showSelf.name..'.alpha',  showSelf.name == 'oberlai1' and 0.5 or 1)
             end
             setProperty('gf.visible', true)
-
-            callMethod('dad.setPosition', {
-                getProperty('dad.x') + 570,
-                getProperty('dad.y') + 130
-            })
-
             setProperty('BlackGraphicGame.alpha', 0)
             removeLuaSprite('spotlight1', true)
     elseif value1 == 'fadeBG' then
@@ -211,84 +191,6 @@ function onEvent(eventName, value1, value2)
             playAnim('potinas', 'close', true)
         end
     end
-end
-
-function onStepHit()
-    --[[
-    if curStep == 50 then removeLuaSprite('blackscreen', true) end
-    if curStep == 784 then
-        doTweenAlpha('lucesAlpha', 'luces', 0, 4)
-    end
-    if curStep == 1080 then
-        removeLuaSprite('piso1', true)
-        removeLuaSprite('cristal1', true)
-        removeLuaSprite('luces', true)
-        setProperty('piso2.alpha', 1)
-    end
-    if curStep == 1080 then
-        setProperty('dad.x', getProperty('dad.x') + 570)
-        setProperty('dad.y', getProperty('dad.y') + 130)
-    end
-    if curStep == 1984 then
-        setProperty('dad.x', getProperty('dad.x') + 570)
-        setProperty('dad.y', getProperty('dad.y') + 130)
-    end
-    if curStep == 1984 then
-        setProperty('BlackGraphicGame.alpha', 0.5)
-        setProperty('spotlight1.alpha', 0.6)
-        scaleObject('spotlight1', 0.2, 3)
-        setObjectOrder('spotlight1', getObjectOrder('BlackGraphicGame') + 1)
-        setProperty('spotlight1.x', getProperty('spotlight1.x') + 400)
-        doTweenX('spotlight1ScaleX', 'spotlight1.scale', 1, 0.6, 'circOut')
-    elseif curStep == 2000 then
-        doTweenX('spotlight1ScaleX', 'spotlight1.scale', 0, 0.6, 'circIn')
-    elseif curStep == 2016 then
-        setProperty('spotlight1.x', getProperty('spotlight1.x') + 1000)
-        doTweenX('spotlight1ScaleX', 'spotlight1.scale', 1, 0.6, 'circOut')
-    elseif curStep == 2032 then
-        doTweenX('spotlight1ScaleX', 'spotlight1.scale', 0, 0.6, 'circIn')
-    elseif curStep == 2048 then
-        setProperty('spotlight1.x', getProperty('spotlight1.x') - 1000)
-        doTweenX('spotlight1ScaleX', 'spotlight1.scale', 1, 0.6, 'circOut')
-    elseif curStep == 2080 then
-        doTweenX('spotlight1X', 'spotlight1', getProperty('spotlight1.x') + 1000, 0.6, 'circOut')
-    elseif curStep == 2112 then
-        doTweenX('spotlight1ScaleX', 'spotlight1.scale', 0, 0.6, 'circIn')
-    elseif curStep == 2124 then
-        setProperty('spotlight1.x', getProperty('spotlight1.x') - 1000)
-        doTweenX('spotlight1ScaleX', 'spotlight1.scale', 1, 0.6, 'circOut')
-    end
-    if curStep == 2144 then
-        for _, hideYour in ipairs(yourselfBG1) do
-            setProperty(hideYour.name..'.alpha', 0)
-        end
-        for _, showSelf in ipairs(yourselfBG2) do
-            setProperty(showSelf.name..'.alpha', 1)
-        end
-        setProperty('gf.visible', true)
-        setProperty('dad.x', getProperty('dad.x') + 570)
-        setProperty('dad.y', getProperty('dad.y') + 130)
-
-        setProperty('BlackGraphicGame.alpha', 0)
-        removeLuaSprite('spotlight1', true)
-    end
-    if curStep == 2448 then
-        for _, hideSelf in ipairs(yourselfBG2) do
-            doTweenAlpha(hideSelf.name..'Alpha', hideSelf.name, 0, 10)
-        end
-        doTweenAlpha('gfAlpha', 'gf', 0, 10)
-        for _, showYour in ipairs(yourselfBG1) do
-            doTweenAlpha(showYour.name..'Alpha', showYour.name, 1, 10)
-            if showYour.name == 'potinas' then
-                doTweenAlpha(showYour.name..'Alpha', showYour.name, 0, 10)
-            end
-        end
-    end
-    if curStep == 2688 then
-        setProperty('potinas.alpha', 1)
-        playAnim('potinas', 'close', true)
-    end
-    ]]
 end
 
 --video functions, ignore

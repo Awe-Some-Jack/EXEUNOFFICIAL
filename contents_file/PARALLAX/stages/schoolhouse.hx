@@ -166,15 +166,13 @@ function onCreatePost() {
 	healthTxt.y += 320;
 	add(healthTxt);
 	
-	equation = new FlxText(0, 0, FlxG.width, "", 30);
-	var eqSize = Language.cjkSize(50, 0.85);
-	equation.setFormat(Paths.font(getSchoolFont()), eqSize, FlxColor.WHITE, FlxTextAlign.CENTER, FlxColor.TRANSPARENT, true);
+	equation = new FlxText(0, 0, FlxG.width, "Cumming straight from YOUR house", 30);
+	equation.setFormat(Paths.font(getSchoolFont()), Language.cjkSize(50, 0.85), FlxColor.WHITE, FlxTextAlign.CENTER, FlxColor.TRANSPARENT, true);
 	equation.cameras = [camOther];
 	equation.antialiasing = false;
 	equation.screenCenter();
 	equation.alpha = 0;
 	add(equation);
-	equation.text = "Cumming straight from YOUR house";
 
 	side1 = new FlxText(0, 0, FlxG.width, "", 30);
 	side1.setFormat(Paths.font(getSchoolFont()), 40, FlxColor.WHITE, FlxTextAlign.CENTER, FlxColor.TRANSPARENT, true);
@@ -363,6 +361,10 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 			case 1: // subtraction
 				int1 = FlxG.random.int(5, 10);
 				int2 = FlxG.random.int(0, 5);
+
+				if (int1 - int2 >= 10)
+					int2 = FlxG.random.int(1, 5);
+
 				answer = int1 - int2;
 				equation.text = Language.getPhrase('math_sub', 'What does {1} - {2} equal? _', [int1, int2]);
 

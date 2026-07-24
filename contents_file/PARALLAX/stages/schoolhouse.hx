@@ -333,7 +333,7 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 		numbers[6].visible = numbers[7].visible = true;
 		equation.screenCenter();
 
-		thingy = 3;
+		thingy = FlxG.random.int(1, 1000) == 777 ? 12 : types[FlxG.random.int(0, types.length-1)];
 	
 		if(thingy == null) {
 			trace("Failed to load question");

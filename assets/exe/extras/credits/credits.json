@@ -103,6 +103,13 @@
 			"extra": ["video", "obituary"]
 		},
 		{
+			"name": "MaysLastPlay",
+			"icon": "mays",
+			"description": "Mobile Coder",
+			"quote": "I am Embodiment of Laziness",
+			"nation": "usa"
+		},
+		{
 			"name": "Jason E",
 			"icon": "jason",
 			"description": "Coder",
@@ -161,17 +168,6 @@
 			"twitter": "https://x.com/barcobasurerow",
 			"youtube": "https://youtube.com/@barcobasurerow",
 			"extra": ["image", "barco.png"]
-		},
-		{
-			"name": "NayreFunkin'",
-			"icon": "nayre",
-			"description": "Artist",
-			"quote": "fui la mas femenina, sumisa, neko, otaku, coquette y amorosa del server. Lastima que tenga pito",
-			"nation": "colombia",
-			"colors": [[244, 115, 164], [150, 23, 62]],
-			"youtube": "https://www.youtube.com/@nayrefunkin1350",
-			"twitter": "https://x.com/NayreSFW04",
-			"extra": ["image", "nayre.png"]
 		},
 		{
 			"name": "Sebas1554",
@@ -298,7 +294,13 @@
 		{
 			"name": "T4co",
 			"icon": "taco",
-			"description": "Pixel Artist"
+			"nation": "peru",
+			"quote": "platano",
+			"description": "Pixel Artist",
+			"youtube": "https://www.youtube.com/@lithium5356",
+			"twitter": "https://x.com/lith90124",
+			"colors": [[255, 163, 26], [194, 55, 55]],
+			"extra": ["video", "pez", true]
 		},
 		{
 			"name": "SlaxPe",
@@ -312,13 +314,14 @@
 			"extra": ["video", "amogus"]
 		},
 		{
-			"name": "ExeTheFaked",
+			"name": "ExeTh3F4k3d",
 			"icon": "exe",
 			"quote": "I can't beat triple trouble under 100 misses",
 			"youtube": "https://youtube.com/@exethefaker",
 			"nation": "usa",
 			"description": "Composer",
-			"extra": ["image", "chukls.jpg"]
+			"extra": ["image", "chukls.jpg"],
+			"colors": [[198, 23, 23], [20, 20, 206]]
 		},
 		{
 			"name": "DaRealT0bi",
@@ -436,14 +439,6 @@
 			"extra": ["image", "sam.jpg"]
 		},
 		{
-			"name": "Redblurr",
-			"icon": "redblurr",
-			"description": "Charter",
-			"quote": "el que madruga en cuatro lo ajuntan",
-			"colors": [[201, 31, 0], [16, 4, 0]],
-			"nation": "peru"
-		},
-		{
 			"name": "Sr. EspantaViejas",
 			"icon": "espantaviejas",
 			"description": "Charter",
@@ -457,9 +452,11 @@
 			"name": "sevulda",
 			"icon": "sevulda",
 			"nation": "chile",
+			"quote": "muchas tardes buenas gracias",
 			"description": "Charter",
 			"twitter": "https://x.com/Sevulda230",
-			"colors": [[156, 35, 255], [68, 31, 142]]
+			"colors": [[156, 35, 255], [68, 31, 142]],
+			"extra": ["video", "skeleton-running-past", true]
 		},
 		{
 			"name": "LuisukeDestroyer",

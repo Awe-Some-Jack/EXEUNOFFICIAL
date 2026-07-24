@@ -440,11 +440,16 @@ class StoryModeState extends MusicBeatState
 
 				if (controls.BACK)
 				{
-					toMenu = true;
-					FlxG.switchState(() -> new EXEMenu());
-					super.update(elapsed);
-					FlxG.sound.music.fadeOut(0.3);
-					return;
+					if (yt == true)
+						FlxG.sound.play(Paths.sound('denied'));
+					else
+					{
+						toMenu = true;
+						FlxG.switchState(() -> new EXEMenu());
+						super.update(elapsed);
+						FlxG.sound.music.fadeOut(0.3);
+						return;
+					}
 				}
 
 				if (!moved && controls.ACCEPT)

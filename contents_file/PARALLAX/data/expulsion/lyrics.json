@@ -1,13 +1,167 @@
 {
-    "en-US": {
-        "lyrics.expulsion.1": "Hi; there!",
-        "lyrics.expulsion.2": "I'm; So;nic; the; he;dgehog!",
-        "lyrics.expulsion.3": "You're; go;ing; to; play; in; my; s;chool;house!",
-        "lyrics.expulsion.4": "I'm; So;nic-",
-        "lyrics.expulsion.5": "Click; on; me; for; help!",
-        "lyrics.expulsion.6": "If; you've; ev;er; got; a; pro;blem,; find; me; and-",
-        "lyrics.expulsion.7": "Right; ov;er; there; is; where; you; pick; a; char;ac;ter!",
-        "lyrics.expulsion.8": "Try; it; if; you; don't; bel;ieve; me.",
-        "lyrics.expulsion.9": "Find; me; and; i'll; help!"
-    }
+  "en-US": {
+    "lyrics.expulsion.1": "Hi; there!",
+    "lyrics.expulsion.2": "I'm; So;nic; the; he;dgehog!",
+    "lyrics.expulsion.3": "You're; go;ing; to; play; in; my; s;chool;house!",
+    "lyrics.expulsion.4": "I'm; So;nic-",
+    "lyrics.expulsion.5": "Click; on; me; for; help!",
+    "lyrics.expulsion.6": "If; you've; ev;er; got; a; pro;blem,; find; me; and-",
+    "lyrics.expulsion.7": "Right; ov;er; there; is; where; you; pick; a; char;ac;ter!",
+    "lyrics.expulsion.8": "Try; it; if; you; don't; bel;ieve; me.",
+    "lyrics.expulsion.9": "Find; me; and; i'll; help!"
+  },
+  "es-419": {
+    "lyrics.expulsion.1": "¡Ho;la!",
+    "lyrics.expulsion.2": "¡Soy; So;nic; el; e;rizo!",
+    "lyrics.expulsion.3": "¡Vas; a; ju;gar; en; mi; es;cu;e;la!",
+    "lyrics.expulsion.4": "Soy; So;nic-",
+    "lyrics.expulsion.5": "¡Ha;zme; clic; para; ayuda!",
+    "lyrics.expulsion.6": "Si; tie;nes; un; pro;ble;ma,; búsc;a; me; y-",
+    "lyrics.expulsion.7": "¡Ah;í; es; don;de e;li;ges a; tu; per;so;na;je!",
+    "lyrics.expulsion.8": "Prue;ba;lo; si; no; me; cre;es.",
+    "lyrics.expulsion.9": "¡Búsc;a;me; y te; ayudo!"
+  },
+  "pt-BR": {
+    "lyrics.expulsion.1": "O;lá!",
+    "lyrics.expulsion.2": "Sou; So;nic; o; ou;riço!",
+    "lyrics.expulsion.3": "Vo;cê; vai; jo;gar; na; mi;nha; es;cola!",
+    "lyrics.expulsion.4": "Sou; So;nic-",
+    "lyrics.expulsion.5": "Cli;que; em; mim; por ajuda!",
+    "lyrics.expulsion.6": "Se; ti;ver; um; pro;ble;ma,; me; a;che; e-",
+    "lyrics.expulsion.7": "A;li; é; on;de; vo;cê; es;co;lhe; o seu; personagem!",
+    "lyrics.expulsion.8": "Ten;te; se; vo;cê; não; a;credita.",
+    "lyrics.expulsion.9": "Me; a;che e; eu; ajudo!"
+  },
+  "fr-FR": {
+    "lyrics.expulsion.1": "Sa;lut !",
+    "lyrics.expulsion.2": "Je; suis; So;nic; l'hé;risson !",
+    "lyrics.expulsion.3": "Tu; vas; jou;er; dans; mon; é;co;le; !",
+    "lyrics.expulsion.4": "Je; suis; Sonic-",
+    "lyrics.expulsion.5": "Cli;que; sur moi; pour de; l'aide !",
+    "lyrics.expulsion.6": "Si; tu; as; un; pro;blè;me,; trou;ve; moi; et-",
+    "lyrics.expulsion.7": "C'est; là; bas; que; tu; choi;sis; ton; per;so;n;nage !",
+    "lyrics.expulsion.8": "Es;saie; si; tu; ne; me; crois; pas.",
+    "lyrics.expulsion.9": "Trouve;-moi; et; je; t'aide; !"
+  },
+  "uz-UZ": {
+    "lyrics.expulsion.1": "Sa;lom!",
+    "lyrics.expulsion.2": "Men; ti;pra;ti;kan; Sonikman!",
+    "lyrics.expulsion.3": "Sen; me;ni; mak;ta;bim;da; o'y;nay;san!",
+    "lyrics.expulsion.4": "Men; So;nik-",
+    "lyrics.expulsion.5": "Yor;dam; uchun; meni; bos!",
+    "lyrics.expulsion.6": "Mu;am;mo; bo';l;sa,; me;ni; to;p; va-",
+    "lyrics.expulsion.7": "Shu; yer;da; qa;h;ra;mon;ni; tan;lay;sa;n!",
+    "lyrics.expulsion.8": "A;gar; i;shon;ma;sang; si;nab ko'r.",
+    "lyrics.expulsion.9": "Meni; top; va; yor;dam beraman!"
+  },
+  "ja-JP": {
+    "lyrics.expulsion.1": "や;あ！",
+    "lyrics.expulsion.2": "ぼく;はハ;リネ;ズミ;のソ;ニック！",
+    "lyrics.expulsion.3": "きみ;は;ぼく;の;がっ;こう;で;あそ;ぶ;よ！",
+    "lyrics.expulsion.4": "ぼく;は;ソニック-",
+    "lyrics.expulsion.5": "ぼく;を;クリック;して;ね！",
+    "lyrics.expulsion.6": "も;し;こまっ;た;ら;ぼ;く;を;さ;が;して-",
+    "lyrics.expulsion.7": "あ;そこ;で;き;み;は;キャラ;クター;を;え;ら;ぶ！",
+    "lyrics.expulsion.8": "し;ん;じ;ら;れ;ない;な;ら。",
+    "lyrics.expulsion.9": "ぼく;を;さがせば;たす;ける！"
+  },
+  "zh-CN": {
+    "lyrics.expulsion.1": "你;好！",
+    "lyrics.expulsion.2": "我;是;刺;猬;索;尼克！",
+    "lyrics.expulsion.3": "你;要;在;我;的;学;校;里;玩;！",
+    "lyrics.expulsion.4": "我;是;索尼克-",
+    "lyrics.expulsion.5": "点;击;我;寻求;帮助！",
+    "lyrics.expulsion.6": "如;果;你;有;问;题;，;找;我;并;-",
+    "lyrics.expulsion.7": "就;在;那;边;选;择;;你;的;角;色;！",
+    "lyrics.expulsion.8": "不;信;的;话;你;就;试;试。",
+    "lyrics.expulsion.9": "找;我;我会;帮;忙！"
+  },
+  "ko-KR": {
+    "lyrics.expulsion.1": "안;녕!",
+    "lyrics.expulsion.2": "나는;고슴;도치;소닉;이;야!",
+    "lyrics.expulsion.3": "넌;내;학;교;에;서;놀;게;될;거야!",
+    "lyrics.expulsion.4": "난;소;닉-",
+    "lyrics.expulsion.5": "날클릭;하면;도와;줄;게!",
+    "lyrics.expulsion.6": "문;제;가;생;기;면;날;찾;아;와;-",
+    "lyrics.expulsion.7": "바;로;저;기;에서;캐;릭;터;를;고;른;다!",
+    "lyrics.expulsion.8": "못;믿;겠;다;면;한번;해;봐.",
+    "lyrics.expulsion.9": "날찾;아와;도와;줄;게!"
+  },
+  "ru-RU": {
+    "lyrics.expulsion.1": "При;вет!",
+    "lyrics.expulsion.2": "Я; ё;жи;к; Со;ник!",
+    "lyrics.expulsion.3": "Ты; бу;дешь; иг;рать; в; мо;ей; шко;ле!",
+    "lyrics.expulsion.4": "Я; Со;ник-",
+    "lyrics.expulsion.5": "Жми; на; мeня; для; помощи!",
+    "lyrics.expulsion.6": "Е;сли; есть; про;бле;ма,; най;ди; ме;ня; и-",
+    "lyrics.expulsion.7": "Вон; там; ты; и; вы;би;ра;ешь; пер;со;на;жа!",
+    "lyrics.expulsion.8": "По;про;буй,; если; мне; не; ве;ришь.",
+    "lyrics.expulsion.9": "Найди; ме;ня; - я; помогу!"
+  },
+  "uk-UA": {
+    "lyrics.expulsion.1": "При;віт!",
+    "lyrics.expulsion.2": "Я; ї;жа;к; Со;нік!",
+    "lyrics.expulsion.3": "Ти; бу;деш; гра;ти; у; мо;їй; шко;лі!",
+    "lyrics.expulsion.4": "Я; Со;нік-",
+    "lyrics.expulsion.5": "Тисни; на; мене; для; допомоги!",
+    "lyrics.expulsion.6": "Як;що; є; проб;ле;ма,; знай;ди; ме;не; і-",
+    "lyrics.expulsion.7": "Ось; там; ти; мо;жеш; об;ра;ти; пер;со;на;жа!",
+    "lyrics.expulsion.8": "Спро;буй,; як;що; мені; не; ві;риш.",
+    "lyrics.expulsion.9": "Знайди; мене; - і; я; допоможу!"
+  },
+  "de-DE": {
+    "lyrics.expulsion.1": "Hal;lo!",
+    "lyrics.expulsion.2": "Ich; bin; So;nic; der; Igel!",
+    "lyrics.expulsion.3": "Du; wirst; in; mei;nem; Schu;le; spie;len; !",
+    "lyrics.expulsion.4": "Ich; bin; Sonic-",
+    "lyrics.expulsion.5": "Klick; auf; mich; für; Hilfe!",
+    "lyrics.expulsion.6": "Wenn; du; ein; Pro;b;lem; ha;st,; such; mich; und-",
+    "lyrics.expulsion.7": "Ge;nau; dort; drü;ben; wäh;lst; du; den; Cha;rak;ter!",
+    "lyrics.expulsion.8": "Pro;bier; es,; wenn; du; mir; nicht; glaubst.",
+    "lyrics.expulsion.9": "Such; mich; und; ich; helfe!"
+  },
+  "it-IT": {
+    "lyrics.expulsion.1": "Ci;ao!",
+    "lyrics.expulsion.2": "So;no; So;nic; il; riccio!",
+    "lyrics.expulsion.3": "Gio;che;rai; nel;la; mi;a; scuo;la; !",
+    "lyrics.expulsion.4": "So;no; Sonic-",
+    "lyrics.expulsion.5": "Pre;mi; su di me; per; aiuto!",
+    "lyrics.expulsion.6": "Se; hai; un; pro;ble;ma,; cer;ca;mi; e;-",
+    "lyrics.expulsion.7": "Pro;prio; lì; è; do;ve; sce;gli; il tuo; per;so;naggio!",
+    "lyrics.expulsion.8": "Pro;va; se; non; mi; cre;di;.",
+    "lyrics.expulsion.9": "Cer;ca; mi e; ti; aiuterò!"
+  },
+  "pl-PL": {
+    "lyrics.expulsion.1": "Cze;ść!",
+    "lyrics.expulsion.2": "Je;stem; je;żem; So;nic!",
+    "lyrics.expulsion.3": "Bę;dziesz; się; ba;wić; w; mo;jej; szko;le!",
+    "lyrics.expulsion.4": "Je;stem; Sonic-",
+    "lyrics.expulsion.5": "Klik;nij; na mnie; po; pomoc!",
+    "lyrics.expulsion.6": "Gdy; masz; ja;kiś; pro;b;le;m,; znajdź; mnie; i-",
+    "lyrics.expulsion.7": "Wła;śnie; ta;m; wy;bie;rasz; swo;ją; po;stać;!",
+    "lyrics.expulsion.8": "Spró;buj,; je;śli; mi; nie; wie;rzysz.",
+    "lyrics.expulsion.9": "Znajdź; mnie; a; po;mogę!"
+  },
+  "tr-TR": {
+    "lyrics.expulsion.1": "Mer;haba!",
+    "lyrics.expulsion.2": "Ben; kir;pi; So;nic;!",
+    "lyrics.expulsion.3": "O;ku;lum;da; o;y;na;ya;cak;sın!",
+    "lyrics.expulsion.4": "Ben; So;nic-",
+    "lyrics.expulsion.5": "Yardım; için; ba;na; tıkla!",
+    "lyrics.expulsion.6": "Bir; so;ru;nun; var;sa,; be;ni; bul; ve;-",
+    "lyrics.expulsion.7": "İş;te; tam; or;a;da; ka;rak;te;ri;ni; seçersin!",
+    "lyrics.expulsion.8": "Bana; i;nan;mı;yor;san; de;ne.",
+    "lyrics.expulsion.9": "Bul; be;ni,; yardım; edeyim!"
+  },
+  "pi-PI": {
+    "lyrics.expulsion.1": "A;hoy!",
+    "lyrics.expulsion.2": "I'm; So;nic; yer; hedgehog; cap'n!",
+    "lyrics.expulsion.3": "Ye'll; be; play;in'; in; me; s;chool;house; now!",
+    "lyrics.expulsion.4": "I'm; So;nic-",
+    "lyrics.expulsion.5": "Click; on; me; fer; help!",
+    "lyrics.expulsion.6": "If; ye; ev;er; get; in; trou;ble,; find; me; an'-",
+    "lyrics.expulsion.7": "Right; ov;er; yon;der; is; where; ye; pick; a; char;acter!",
+    "lyrics.expulsion.8": "Try; it; if; ye; don't; bel;ieve; me.",
+    "lyrics.expulsion.9": "Find; me; an'; I'll; help!"
+  }
 }

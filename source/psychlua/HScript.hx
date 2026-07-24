@@ -194,6 +194,7 @@ class HScript extends Iris
 		set('FlxAnimate', animate.FlxAnimate);
 		#end
 		set('Reflect',  Reflect);
+		set('Sys',      Sys);
 
 		set('setVar', function(name:String, value:Dynamic) {
 			MusicBeatState.getVariables().set(name, value);

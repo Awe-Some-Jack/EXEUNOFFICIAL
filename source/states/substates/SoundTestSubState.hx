@@ -33,7 +33,7 @@ class SoundTestSubState extends MusicBeatSubstate
 			
 			video.onFormat(() -> {
 				setImageSize(video.video, FlxG.width, FlxG.height, 1, false);
-				video.screenCenter(X);
+				video.screenCenter();
 			});
 			add(video);
 

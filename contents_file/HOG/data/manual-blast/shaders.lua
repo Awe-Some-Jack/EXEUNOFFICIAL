@@ -10,6 +10,8 @@ local iconsGlitch = {
 }
 
 function onCreatePost()
+	winIsFull = getPropertyFromClass('flixel.FlxG', 'fullscreen')
+
 	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', false)
 	setPropertyFromClass('flixel.FlxG', 'stage.window.resizable', true)
 	setPropertyFromClass('flixel.FlxG', 'stage.window.width', getPropertyFromClass('flixel.FlxG', 'initialWidth'))
@@ -190,7 +192,6 @@ function onEvent(n, v1)
 		if v1 == 'startingglitch' then
 			doTweenX('glitch', 'glitch', 1, crochet / (1000 / 8), 'cubeIn')
 
-			winIsFull = getPropertyFromClass('flixel.FlxG', 'fullscreen')
 			doTweenX('shake', 'shake', 1, crochet / (1000 / 8), 'cubeIn')
 
 			setPropertyFromClass('flixel.FlxG', 'fullscreen', false)
@@ -241,9 +242,9 @@ end
 function onDestroy()
 	setPropertyFromClass('flixel.FlxG', 'stage.window.borderless', false)
 	setPropertyFromClass('flixel.FlxG', 'stage.window.resizable', true)
-	setPropertyFromClass('flixel.FlxG', 'stage.window.width', 1280)
-	setPropertyFromClass('flixel.FlxG', 'stage.window.height', 720)
-	if winIsFull then setPropertyFromClass('flixel.FlxG', 'fullscreen', winIsFull) end
+	setPropertyFromClass('flixel.FlxG', 'stage.window.width', getPropertyFromClass('flixel.FlxG', 'initialWidth'))
+	setPropertyFromClass('flixel.FlxG', 'stage.window.height', getPropertyFromClass('flixel.FlxG', 'initialHeight'))
+	setPropertyFromClass('flixel.FlxG', 'fullscreen', winIsFull == true)
 end
 
 function onTimerCompleted(t) if t == 'lolero' then scorchedSinging = false end end

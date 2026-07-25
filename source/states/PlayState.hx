@@ -325,8 +325,46 @@ class PlayState extends MusicBeatState
 			
 			FlxG.fullscreen = _wasFullscreen;
 		}
-		
+
 		return value;
+	}
+
+	public static var isLetterboxedAspectRatio(default, set):Bool = false;
+
+	static var _letterboxWasFullscreen:Bool = false;
+
+	static function set_isLetterboxedAspectRatio(value:Bool):Bool
+	{
+		if (isLetterboxedAspectRatio == value) return value;
+
+		isLetterboxedAspectRatio = value;
+
+		if (value) {
+			for (cam in FlxG.cameras.list)
+				cam.setSize(960, 720);
+
+			FlxG.scaleMode = new flixel.system.scaleModes.FixedRatioScaleMode(960, 720);
+
+			_letterboxWasFullscreen = FlxG.fullscreen;
+			if (!FlxG.fullscreen) snapLetterboxWindow();
+		} else {
+			for (cam in FlxG.cameras.list)
+				cam.setSize(FlxG.initialWidth, FlxG.initialHeight);
+
+			FlxG.scaleMode = new flixel.system.scaleModes.RatioScaleMode();
+		}
+
+		return value;
+	}
+
+	static function snapLetterboxWindow():Void
+	{
+		FlxG.resizeWindow(960, 720);
+
+		final screen = FlxG.stage.window.display;
+		final winX = Std.int((screen.bounds.width - 960) / 2);
+		final winY = Std.int((screen.bounds.height - 720) / 2);
+		FlxG.stage.window.move(winX, winY);
 	}
 
 	private static var _lastLoadedModDirectory:String = '';
@@ -1602,7 +1640,14 @@ class PlayState extends MusicBeatState
 		{
 			FlxG.fullscreen = false;
 		}
-		
+
+		if (isLetterboxedAspectRatio)
+		{
+			final fs = FlxG.fullscreen;
+			if (_letterboxWasFullscreen && !fs) snapLetterboxWindow();
+			_letterboxWasFullscreen = fs;
+		}
+
 		#if (!js && !html5)
 		if (ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null)
 		{

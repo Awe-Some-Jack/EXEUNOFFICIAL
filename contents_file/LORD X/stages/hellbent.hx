@@ -104,7 +104,7 @@ function onUpdatePost(elapsed:Float)
 		if (eyes != null && dad?.getAnimationName() == 'idle')
 		{
 			eyes.scale.set(camGame.zoom * 0.5, camGame.zoom * 0.5);
-			eyes.animation.curAnim.curFrame = dad.animation.curAnim.curFrame;
+			eyes.animation.curAnim.curFrame = dad.animation.curAnim.curFrame ?? 0;
 			eyes.setPosition(
 				((dad.x - 54 - camGame.scroll.x) * camGame.zoom) + (FlxG.width / 2) * (1 - camGame.zoom),
 				((dad.y + 4 - camGame.scroll.y) * camGame.zoom) + (FlxG.height / 2) * (1 - camGame.zoom)

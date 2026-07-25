@@ -7,7 +7,7 @@ function onEndSong()
         seenVideo = true
         return Function_Stop
     end
-    
+
     return Function_Continue
 end
 

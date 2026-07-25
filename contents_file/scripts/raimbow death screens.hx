@@ -88,6 +88,7 @@ function setCustomGameOvers() {
             exeGameOvers = false;
             GameOverSubstate.characterName = "chaotixbfdeath";
             GameOverSubstate.deathSoundName = "deathSounds/glitch-chaotix";
+            GameOverSubstate.loopSoundName = "deathSongs/chaotix-beast-sfx";
             charPositions = [590, 350];
             initialDeathZoom = 0.7;
     }
@@ -100,9 +101,10 @@ function onStepHit() {
 function changeGameOvers() {
     switch(songName){
         case "starline":
-            GameOverSubstate.characterName = "chaotixbeastdeath";
-            GameOverSubstate.deathSoundName = "";
-            charPositions = [540, 300];
+            exeGameOvers = true;
+            GameOverSubstate.characterName  = "chaotixbeastdeath";
+            GameOverSubstate.deathSoundName = "deathSounds/gore-chaotix";
+            charPositions = [520, 300];
             initialDeathZoom = 0.7;
     }
 }

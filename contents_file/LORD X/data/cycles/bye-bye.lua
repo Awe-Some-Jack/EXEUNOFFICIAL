@@ -13,7 +13,7 @@ function onEvent(e, v1, v2)
             setProperty("opponentVocals.volume", 0)
             playSound("DIGA-BYE-BYE", 1, "yes")
             runTimer("setVocalsBack", 8)
-			triggerEvent('Play Animation', 'ai', 'dad')
+			triggerEvent('Play Animation', 'mispulmones', 'dad')
         end
     end
     if e == 'Normal Lyrics Bye-Bye' then

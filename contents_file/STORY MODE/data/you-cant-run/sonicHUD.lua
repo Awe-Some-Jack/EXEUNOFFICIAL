@@ -3,7 +3,6 @@ function onCreatePost()
 	postCreate = true
 
 	--sonic hud
-
 	makeHUDSprite('scoreText', 'score', 20)
 	makeHUDSprite('timeText', 'time', 20)
 	makeHUDSprite('missesText', 'misses', 20) makeHUDSprite('missesText-alt', 'misses-alt', 20) setProperty('missesText-alt.visible', false)

@@ -414,7 +414,7 @@ class StoryModeState extends MusicBeatState
 						isSelecting = true;
 						bfBOX.animation.play('yeah', true);
 						bfBOX.x += 10;
-						FlxG.sound.play(STORY_SONGS[selectedCover] == 'yourself' ? Paths.sound('menuConfirmYourself') : Paths.sound('menuConfirm'));
+						FlxG.sound.play(Paths.sound('menuConfirm'));
 						FlxFlicker.flicker(redBOX, 1, 0.07, false, true, function(_) launchSong());
 					}
 				}
@@ -552,14 +552,6 @@ class StoryModeState extends MusicBeatState
 		@:privateAccess
 		if (PlayState._lastLoadedModDirectory != Mods.currentModDirectory)
 			Paths.freeGraphicsFromMemory();
-
-		if (STORY_SONGS[selectedCover] == 'yourself')
-		{
-			canInteract = false;
-			_yourselfCutscene = new YourselfCutscene(this, bfBOX, redBOX, yourselfCover);
-			_yourselfCutscene.start();
-			return;
-		}
 
 		canInteract = false;
 

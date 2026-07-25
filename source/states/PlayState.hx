@@ -344,6 +344,7 @@ class PlayState extends MusicBeatState
 				cam.setSize(960, 720);
 
 			FlxG.scaleMode = new flixel.system.scaleModes.FixedRatioScaleMode(960, 720);
+			FlxG.stage.window.resizable = false;
 
 			_letterboxWasFullscreen = FlxG.fullscreen;
 			if (!FlxG.fullscreen) snapLetterboxWindow();
@@ -352,6 +353,7 @@ class PlayState extends MusicBeatState
 				cam.setSize(FlxG.initialWidth, FlxG.initialHeight);
 
 			FlxG.scaleMode = new flixel.system.scaleModes.RatioScaleMode();
+			FlxG.stage.window.resizable = true;
 		}
 
 		return value;

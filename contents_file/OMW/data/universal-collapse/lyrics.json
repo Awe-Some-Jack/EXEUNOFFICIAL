@@ -1,47 +1,92 @@
 {
-	"en-US": {
-		"lyrics.universalcollapse.1": "to; play; GOD"
-	},
-	"es-ES": {
-		"lyrics.universalcollapse.1": "jugar; a ser; DIOS"
-	},
-	"pt-BR": {
-		"lyrics.universalcollapse.1": "brincar; de; DEUS"
-	},
-	"fr-FR": {
-		"lyrics.universalcollapse.1": "jouer; a; DIEU"
-	},
-	"de-DE": {
-		"lyrics.universalcollapse.1": "GOTT; zu; spielen"
-	},
-	"ru-RU": {
-		"lyrics.universalcollapse.1": "играть; в; БОГА"
-	},
-	"uk-UA": {
-		"lyrics.universalcollapse.1": "грати; в; БОГА"
-	},
-	"uz-UZ": {
-		"lyrics.universalcollapse.1": "XUDO; rolini; o'ynash"
-	},
-	"ja-JP": {
-		"lyrics.universalcollapse.1": "神に; なろう; とした"
-	},
-	"zh-CN": {
-		"lyrics.universalcollapse.1": "扮演; 上; 帝"
-	},
-	"ko-KR": {
-		"lyrics.universalcollapse.1": "신; 행세를; 하다"
-	},
-	"pi-PI": {
-		"lyrics.universalcollapse.1": "to; play; GOD"
-	},
-	"it-IT": {
-		"lyrics.universalcollapse.1": "gio;ca;re; a; fa;re; DIO"
-	},
-	"pl-PL": {
-		"lyrics.universalcollapse.1": "grac; w; BO;GA"
-	},
-	"tr-TR": {
-		"lyrics.universalcollapse.1": "TAN;RI; gi;bi; dav;ran;mak"
-	}
+    "en-US": {
+        "lyrics.universalcollapse.1": "On; my; way",
+        "lyrics.universalcollapse.2": "On; my...",
+        "lyrics.universalcollapse.3": "This; is; what; ha;ppens; when; you; try",
+        "lyrics.universalcollapse.4": "to; play; GOD"
+    },
+    "es-ES": {
+        "lyrics.universalcollapse.1": "En; ca;mino",
+        "lyrics.universalcollapse.2": "En; ca...",
+        "lyrics.universalcollapse.3": "Es; lo; que; pa;sa; cuan;do; intentas",
+        "lyrics.universalcollapse.4": "jugar; a ser; DIOS"
+    },
+    "pt-BR": {
+        "lyrics.universalcollapse.1": "No; ca;minho",
+        "lyrics.universalcollapse.2": "No; ca...",
+        "lyrics.universalcollapse.3": "É; o; que; a;con;te;ce; quan;do tentas",
+        "lyrics.universalcollapse.4": "brincar; de; DEUS"
+    },
+    "fr-FR": {
+        "lyrics.universalcollapse.1": "En; che;min",
+        "lyrics.universalcollapse.2": "En; che...",
+        "lyrics.universalcollapse.3": "C'est; ce; qui; se; passe; quand; tu; essaies",
+        "lyrics.universalcollapse.4": "de; jouer; à DIEU"
+    },
+    "de-DE": {
+        "lyrics.universalcollapse.1": "Auf; dem; Weg",
+        "lyrics.universalcollapse.2": "Auf; dem...",
+        "lyrics.universalcollapse.3": "Das; pas;siert; wenn; du; es; ver;suchst",
+        "lyrics.universalcollapse.4": "GOTT; zu; spielen"
+    },
+    "ru-RU": {
+        "lyrics.universalcollapse.1": "Я; в; пути",
+        "lyrics.universalcollapse.2": "Я; в...",
+        "lyrics.universalcollapse.3": "Вот; что; бы;ва;ет; когда; ты; пытаешься",
+        "lyrics.universalcollapse.4": "играть; в; БОГА"
+    },
+    "uk-UA": {
+        "lyrics.universalcollapse.1": "Я; в; дорозі",
+        "lyrics.universalcollapse.2": "Я; в...",
+        "lyrics.universalcollapse.3": "Ось; що; бу;ва;є; коли; ти; намагаєшся",
+        "lyrics.universalcollapse.4": "грати; в; БОГА"
+    },
+    "uz-UZ": {
+        "lyrics.universalcollapse.1": "O'z; yo'l;imda",
+        "lyrics.universalcollapse.2": "O'z; yo'l...",
+        "lyrics.universalcollapse.3": "Mana; shu; o;qi;bat; bo';ladi; agar",
+        "lyrics.universalcollapse.4": "XUDO; bo'lishga; urinsang"
+    },
+    "ja-JP": {
+        "lyrics.universalcollapse.1": "我;が;道",
+        "lyrics.universalcollapse.2": "我;が...",
+        "lyrics.universalcollapse.3": "こ;れ;が; 代;償;だ; 試み;るなら",
+        "lyrics.universalcollapse.4": "神;を; 気取るなど"
+    },
+    "zh-CN": {
+        "lyrics.universalcollapse.1": "踏;上;旅程",
+        "lyrics.universalcollapse.2": "踏;上...",
+        "lyrics.universalcollapse.3": "这;就;是;妄;想;的;最;终下场",
+        "lyrics.universalcollapse.4": "企;图; 扮演上帝"
+    },
+    "ko-KR": {
+        "lyrics.universalcollapse.1": "나;의; 길",
+        "lyrics.universalcollapse.2": "나;의...",
+        "lyrics.universalcollapse.3": "이게; 바;로; 신; 행;세;를; 한",
+        "lyrics.universalcollapse.4": "당;연;한 대가"
+    },
+    "pi-PI": {
+        "lyrics.universalcollapse.1": "On; my; waka",
+        "lyrics.universalcollapse.2": "On; my...",
+        "lyrics.universalcollapse.3": "Na; we;tin; go; hap;pen; if; yu try",
+        "lyrics.universalcollapse.4": "to; play; GOD"
+    },
+    "it-IT": {
+        "lyrics.universalcollapse.1": "In; cam;mino",
+        "lyrics.universalcollapse.2": "In; cam...",
+        "lyrics.universalcollapse.3": "È; ciò; che; ac;ca;de; quando; provi",
+        "lyrics.universalcollapse.4": "a; fare; il DIO"
+    },
+    "pl-PL": {
+        "lyrics.universalcollapse.1": "Ru;szam; w drogę",
+        "lyrics.universalcollapse.2": "Ru;szam...",
+        "lyrics.universalcollapse.3": "O;to; co; się; dzie;je; gdy; próbujesz",
+        "lyrics.universalcollapse.4": "zgry;wać; BOGA"
+    },
+    "tr-TR": {
+        "lyrics.universalcollapse.1": "Ken;di; yolumda",
+        "lyrics.universalcollapse.2": "Ken;di...",
+        "lyrics.universalcollapse.3": "Tanrıcı;lık; oy;na;ma;ya; kal;karsan", 
+        "lyrics.universalcollapse.4": "İş;te; sonun"
+    }
 }

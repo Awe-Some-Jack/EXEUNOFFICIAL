@@ -10,7 +10,7 @@ function onCreate()
     {
         PlayState.hasRestarted = false;
     }
-    PlayState.isFixedAspectRatio = true;
+    PlayState.isLetterboxedAspectRatio = true;
 }
 
 function onCreatePost() 
@@ -27,8 +27,8 @@ function onDestroy()
     }
 
     if (isRestarting) return;
-    
-    PlayState.isFixedAspectRatio = false;
+
+    PlayState.isLetterboxedAspectRatio = false;
 }
 
 var canCheck:Bool = true;

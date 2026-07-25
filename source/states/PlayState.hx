@@ -1598,7 +1598,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		if (isFixedAspectRatio)
+		if (isFixedAspectRatio && FlxG.fullscreen)
 		{
 			FlxG.fullscreen = false;
 		}

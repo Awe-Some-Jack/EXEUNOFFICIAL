@@ -56,7 +56,8 @@ function setCustomGameOvers() {
         case "cycles", "hellbent", "fate":
             exeGameOvers = true;
             GameOverSubstate.characterName = "lordx-death";
-            charPositions = [400, 450];
+            GameOverSubstate.deathSoundName = "dead";
+            charPositions = [400, -130];
 
             initialDeathZoom = 0.7;
 

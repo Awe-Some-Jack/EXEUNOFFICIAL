@@ -483,6 +483,12 @@ class PlayState extends MusicBeatState
 			SONG.stage = StageData.vanillaSongStage(Paths.formatToSongPath(Song.loadedSongName));
 
 		PauseSubState.miniSonicImage = Paths.formatToSongPath(SONG.song);
+		switch(Paths.formatToSongPath(SONG.song))
+		{
+			case 'final-escape': PauseSubState.miniSonicImage = 'triple-trouble-2';
+			case 'manual-blast': PauseSubState.miniSonicImage = 'hedge';
+			case 'prey': PauseSubState.miniSonicImage = 'sonic';
+		}
 
 		curStage = SONG.stage;
 
@@ -3387,24 +3393,52 @@ class PlayState extends MusicBeatState
 				if (curBeat >= 580) PauseSubState.miniSonicImage = 'triple-trouble-2';
 				if (curBeat >= 707) PauseSubState.miniSonicImage = 'triple-trouble-4';
 				if (curBeat >= 1028) PauseSubState.miniSonicImage = 'triple-trouble-2';
+			case 'yourself':
+				if (curBeat >= 209) PauseSubState.miniSonicImage = 'yourself-2';
+				if (curBeat >= 272) PauseSubState.miniSonicImage = 'yourself-3';
+				if (curBeat >= 495) PauseSubState.miniSonicImage = 'yourself-2';
+				if (curBeat >= 536) PauseSubState.miniSonicImage = 'yourself-3';
 			case 'hellbent':
 				if (curBeat >= 296) PauseSubState.miniSonicImage = 'hellbent-2';
 			case 'fate':
-				if (curBeat >= 576) PauseSubState.miniSonicImage = 'fate-2';
+				if (curBeat >= 224) PauseSubState.miniSonicImage = 'fate-2';
+				if (curBeat >= 579) PauseSubState.miniSonicImage = 'fate-3';
 			case 'endless-jp':
 				if (curBeat >= 228) PauseSubState.miniSonicImage = 'endless-jp-2';
-				if (curBeat >= 292 && curBeat < 356) PauseSubState.miniSonicImage = 'endless-jp-1';
+				if (curBeat >= 292 && curBeat < 356) PauseSubState.miniSonicImage = 'endless-jp';
 			case 'starline':
 				if (curBeat >= 272) PauseSubState.miniSonicImage = 'starline-2';
+			case 'manual-blast':
+				if (curBeat >= 192) PauseSubState.miniSonicImage = 'manual-blast-2';
+			case 'haze':
+				if (curBeat >= 99) PauseSubState.miniSonicImage = 'haze-2';
+				if (curBeat >= 400) PauseSubState.miniSonicImage = 'haze-3';
+			case 'hollow':
+				if (curBeat >= 392) PauseSubState.miniSonicImage = 'hollow-2';
+				if (curBeat >= 460) PauseSubState.miniSonicImage = 'hollow';
+			case 'hijacked-transmission':
+				if (curBeat >= 336) PauseSubState.miniSonicImage = 'hijacked-transmission-2';
+				if (curBeat >= 520) PauseSubState.miniSonicImage = 'hijacked-transmission-3';
+			case 'flash':
+				if (curBeat >= 352) PauseSubState.miniSonicImage = 'flash-2';
+				if (curBeat >= 384) PauseSubState.miniSonicImage = 'flash-3';
+			case 'fatality':
+				if (curBeat >= 288) PauseSubState.miniSonicImage = 'fatality-2';
+				if (curBeat >= 496) PauseSubState.miniSonicImage = 'fatality-3';
+			case 'prey':
+				if (curBeat >= 60) PauseSubState.miniSonicImage = 'prey';
+				if (curBeat >= 388) PauseSubState.miniSonicImage = 'prey-2';
 			case 'deception':
 				if (curBeat >= 128) PauseSubState.miniSonicImage = 'deception-2';
-			case 'hijacked-transmission':
-				if (curBeat >= 264) PauseSubState.miniSonicImage = 'hijacked-transmission-2';
-				if (curBeat >= 328) PauseSubState.miniSonicImage = 'hijacked-transmission-4';
-				if (curBeat >= 480) PauseSubState.miniSonicImage = 'hijacked-transmission-3';
+			case 'malediction':
+				if (curBeat >= 180) PauseSubState.miniSonicImage = 'malediction-2';
+				if (curBeat >= 244) PauseSubState.miniSonicImage = 'malediction-3';
 			case 'fakebaby':
 				if (curBeat >= 144) PauseSubState.miniSonicImage = 'fakebaby-2';
 				if (curBeat >= 528) PauseSubState.miniSonicImage = 'fakebaby-3';
+			case 'expulsion':
+				if (curBeat >= 304) PauseSubState.miniSonicImage = 'expulsion-2';
+				if (curBeat >= 368) PauseSubState.miniSonicImage = 'expulsion-1';
 		}
 
 		setOnScripts('curBeat', curBeat);

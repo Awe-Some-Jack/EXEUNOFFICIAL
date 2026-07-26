@@ -1,5 +1,6 @@
 import psychlua.LuaUtils;
 import openfl.display.BlendMode;
+import objects.VideoSprite;
 
 typedef BackgroundSprite =
 {
@@ -32,17 +33,18 @@ var bgFirst:Array<BackgroundSprite> = [
 ];
 
 var bgHell:Array<BackgroundSprite> = [
-	{path: 'hellbent/hell', position: [-2500, -800], visible: false, scale: [3, 3], animation: [{name: "hell"}]},
-	{path: 'hellbent/anillo', position: [-650, -450], visible: false, scale: [1.25, 1.25], animation: [{name: "ring"}]},
-	{path: 'hellbent/almas', position: [-2150, -1420], visible: false, scale: [6, 6], animation: [{name: "soul", fps: 18}]},
-	{path: 'hellbent/plataformna', position: [440, 1250], visible: false, scale: [0.55, 0.55]},
+	{path: 'hellbent/plataformna', position: [440, 1250], visible: false, scale: [0.45, 0.45]},
 	{path: 'hellbent/plataformna', position: [-950, 1200], visible: false, scale: [0.55, 0.55], flipX: true}
-];
+]; 
+
+var hellBG:VideoSprite;
 
 final hudSprites:Array<String> = ['iconBF', 'iconOpp', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG', 'exeScoreTxt'];
 final game:PlayState = PlayState.instance;
 final prefs = ClientPrefs.data;
 final cam = game.gameplayCam.settings;
+
+var trans:Character;
 
 var eyes:FlxSprite;
 function onCreate()
@@ -50,13 +52,33 @@ function onCreate()
 	boyfriend.alpha = 0;
 	makeBackground(bgDark);
 	makeBackground(bgFirst);
+
+	hellBG = new VideoSprite(-3500, -1600, false);
+	hellBG.onFormat(() -> {
+		hellBG.scale.set(3, 3);
+		hellBG.updateHitbox();
+	});
+	hellBG.alpha = 0.0001;
+	hellBG.onEnd(() -> {hellBG.seekToSeconds(0); hellBG.play();});
+	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), hellBG);
+
 	makeBackground(bgHell);
 
 	eyes = new FlxSprite();
 	eyes.frames = Paths.getSparrowAtlas('characters/ojos');
-	eyes.animation.addByPrefix('idle', 'idle', 0, false);
+	eyes.animation.addByPrefix('idle', 'idle', 0, false); eyes.animation.play('idle', true);
 	eyes.camera = camOther;
 	game.add(eyes);
+	
+	trans = new Character(0, 0, 'hellbenttrans', false);
+	trans.camera = camOther;
+	trans.screenCenter();
+	trans.alpha = 0;
+	game.add(trans);
+
+	preloadCharacter(1, 'hellbenttrans');
+	preloadCharacter(1, 'hellbemnt');
+	preloadCharacter(0, 'bf hellbent');
 }
 
 var _phase2Active:Bool = false;
@@ -76,11 +98,16 @@ function onEvent(n,v1)
 				game.remove(bgDark[2].sprite, true); game.insert(game.members.indexOf(bgFirst[3].sprite) - 1, bgDark[2].sprite);
 				game.remove(bgDark[3].sprite, true); game.insert(game.members.indexOf(bgFirst[3].sprite) - 1, bgDark[3].sprite);
 			case 'changeBG':
+				camGame.alpha = 1; camHUD.alpha = 1;
+				trans.destroy();
+				eyes.destroy();
 				_phase2Active = true;
-				eyes?.destroy();
 				bgDark[2].sprite.destroy(); bgDark[3].sprite.destroy();
 				for (spr in bgFirst) spr.sprite.destroy();
 				for (spr in bgHell) spr.sprite.visible = true;
+
+				if (hellBG?.loadVideo(Paths.video('../images/hellbent/hellbebt-1'), [VideoSprite.ARG_LOOPING])) hellBG.playDelayed();
+				hellBG.alpha = 1;
 
 				boyfriend.alpha = 1;
 				changeCharacter('dad', 'hellbemnt');
@@ -91,6 +118,16 @@ function onEvent(n,v1)
 					removeLuaSprite('glow', true)
 					removeLuaSprite('vignette', true)
 				**/
+			case 'scaryyy':
+				eyes.visible = false;
+				camGame.alpha = 0; camHUD.alpha = 0;
+				trans.alpha = 1;
+				new FlxTimer().start(Conductor.crochet / 500, function(_){trans?.alpha = 0;});
+			case 'fucklol':
+				trans.alpha = 1;
+				trans.idleSuffix = '-alt';
+				trans.recalculateDanceIdle();
+				trans.dance();
 		}
 	}
 }
@@ -106,8 +143,8 @@ function onUpdatePost(elapsed:Float)
 			eyes.scale.set(camGame.zoom * 0.5, camGame.zoom * 0.5);
 			eyes.animation.curAnim.curFrame = dad.animation.curAnim.curFrame ?? 0;
 			eyes.setPosition(
-				((dad.x - 54 - camGame.scroll.x) * camGame.zoom) + (FlxG.width / 2) * (1 - camGame.zoom),
-				((dad.y + 4 - camGame.scroll.y) * camGame.zoom) + (FlxG.height / 2) * (1 - camGame.zoom)
+				((dad.x - 5 - camGame.scroll.x) * camGame.zoom) + (FlxG.width / 2) * (1 - camGame.zoom),
+				((dad.y + 145 - camGame.scroll.y) * camGame.zoom) + (FlxG.height / 2) * (1 - camGame.zoom)
 			);
 		}
 	}
@@ -118,18 +155,18 @@ function onUpdatePost(elapsed:Float)
 			-700 + Math.cos(_floatTime + 0.5) * 25,
 			960 + Math.sin(_floatTime + 0.5) * 50
 		);
-		bgHell[4].sprite.setPosition(
-			-950 + Math.cos(_floatTime + 0.5) * 25,
-			1200 + Math.sin(_floatTime + 0.5) * 50
+		bgHell[1].sprite.setPosition(
+			-1400 + Math.cos(_floatTime + 0.5) * 25,
+			750 + Math.sin(_floatTime + 0.5) * 50
 		);
 
 		boyfriend.setPosition(
 			650 + Math.cos(_floatTime) * 25,
 			1100 + Math.sin(_floatTime) * 50
 		);
-		bgHell[3].sprite.setPosition(
-			440 + Math.cos(_floatTime) * 25,
-			1250 + Math.sin(_floatTime) * 50
+		bgHell[0].sprite.setPosition(
+			-20 + Math.cos(_floatTime) * 25,
+			750 + Math.sin(_floatTime) * 50
 		);
 	}
 }

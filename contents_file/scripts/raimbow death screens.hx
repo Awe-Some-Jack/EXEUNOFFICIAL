@@ -56,7 +56,7 @@ function setCustomGameOvers() {
         case "cycles", "hellbent", "fate":
             exeGameOvers = true;
             GameOverSubstate.characterName = "lordx-death";
-            GameOverSubstate.deathSoundName = "dead";
+            GameOverSubstate.deathSoundName = "crushDeath";
             charPositions = [400, -130];
 
             initialDeathZoom = 0.7;
@@ -314,6 +314,7 @@ function startCountdownMajin()
 
 function youFuckedUp()
 {
+    GameOverSubstate.instance.canRestart = false;
     toolateurfucked = true;
 
     deadMusic.stop();
@@ -342,6 +343,7 @@ function youFuckedUp()
 
 function onGameOverConfirm(retry)
 {
+
 	actuallynotfuckd = true;
 
 	if (retry) {

@@ -53,15 +53,7 @@ local modConfigs = {
 		snapDelay = 0.1,
 		forceSkipCountdown = false,
 	},
-	['Majin-US'] = {
-		type = 'slide',
-		skipSongs = {'soulless'},
-		useSeenCutscene = true,
-		phase = 'post',
-		snapDelay = 0.1,
-		forceSkipCountdown = false,
-	},
-	['Mazin-JP'] = {
+	['MAJIN'] = {
 		type = 'slide',
 		skipSongs = {'soulless'},
 		useSeenCutscene = true,
@@ -153,6 +145,30 @@ local modConfigs = {
 		phase = 'post',
 		snapDelay = 0.1,
 	},
+	['NEEDLEMOUSE'] = {
+		type = 'slide',
+		skipSongs = {},
+		useSeenCutscene = true,
+		phase = 'post',
+		snapDelay = 0.05,
+		forceSkipCountdown = false,
+	},
+	['CRAZY TAILS'] = {
+		type = 'slide',
+		skipSongs = {},
+		useSeenCutscene = true,
+		phase = 'post',
+		snapDelay = 0.05,
+		forceSkipCountdown = false,
+	},
+	['DSK'] = {
+		type = 'slide',
+		skipSongs = {},
+		useSeenCutscene = true,
+		phase = 'post',
+		snapDelay = 0.05,
+		forceSkipCountdown = false,
+	},
 }
 
 local chaotixSprites = {
@@ -189,12 +205,14 @@ end
 local function createSlideIntro()
 	if introCreated then return end
 	introCreated = true
-	local song = string.lower(songName)
+	local song = string.lower(songName):gsub(' ', '-')
+	local circlePath = cfg.circlePath or ('StartScreens/' .. song .. '/circle')
+	local textPath   = cfg.textPath   or ('StartScreens/' .. song .. '/text')
 
 	makeLuaSprite('black', nil, 0, 0)
 	makeGraphic('black', screenWidth, screenHeight, '000000')
-	makeLuaSprite('circle', 'StartScreens/Circle-' .. song, screenWidth, 0)
-	makeLuaSprite('text', 'StartScreens/Text-' .. song, -screenWidth, 0)
+	makeLuaSprite('circle', circlePath, screenWidth, 0)
+	makeLuaSprite('text', textPath, -screenWidth, 0)
 
 	addLuaSprite('black', true)
 	addLuaSprite('circle', true)
@@ -208,8 +226,8 @@ local function createSlideIntro()
 		setProperty('skipCountdown', false)
 	end
 
-	doTweenX('circlemove', 'circle', 0, 0.7, 'linear')
-	doTweenX('textmove', 'text', 0, 0.7, 'linear')
+	doTweenX('circlemove', 'circle', 0, 1, 'expoOut')
+	doTweenX('textmove', 'text', 0, 1, 'expoOut')
 end
 
 local function createMonoIntro()

@@ -78,6 +78,7 @@ function makeHUDSprite(tag, path, x, y, num)
 	scaleObject(tag, 3, 3)
 	setObjectCamera(tag, 'hud')
 	setProperty(tag..'.antialiasing', false)
+	setProperty(tag..'.moves', false)
 	addLuaSprite(tag)
 end
 

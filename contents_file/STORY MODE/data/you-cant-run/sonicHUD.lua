@@ -135,8 +135,8 @@ function onUpdatePost()
 		setProperty('futureHealthBF.alpha', 0)
 		setProperty('futureHealthOpp.alpha', 0)
 		for i = 1,4 do
-			removeLuaSprite('healthhealthNum'..i)
-			removeLuaSprite('health2healthNum'..i)
+			removeLuaSprite('healthNum'..i)
+			removeLuaSprite('health2Num'..i)
 		end
 
 		setProperty('hbBG.alpha', 1)
@@ -182,6 +182,7 @@ function makeHUDSprite(tag, path, x, y, num)
 	scaleObject(tag, 3, 3)
 	setObjectCamera(tag, 'hud')
 	setProperty(tag..'.antialiasing', false)
+	setProperty(tag..'.moves', false)
 	addLuaSprite(tag)
 end
 

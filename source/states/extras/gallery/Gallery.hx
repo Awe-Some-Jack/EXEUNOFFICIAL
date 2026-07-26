@@ -83,9 +83,9 @@ class Gallery extends MusicBeatSubstate
         _buildMenu();
         changeSelection(0);
 
-        titleText = new FlxText(49, 68, 0, Language.getArray('extras.menu.gallery', ['GALLERY', ''])[0], 88);
-        titleText.setFormat(Paths.font("bigass.otf"), 88, 0xFFf48000, LEFT);
-        titleText.setBorderStyle(OUTLINE_FAST, 0xFF510500, 8);
+        titleText = new FlxText(49, 68, 0, Language.getArray('extras.menu.gallery', ['GALLERY', ''])[0], Language.cjkSize(88));
+        titleText.setFormat(Paths.font("bigass.otf"), Language.cjkSize(88), 0xFFf48000, LEFT);
+        titleText.setBorderStyle(OUTLINE_FAST, 0xFF510500, Language.cjkBorder(8));
         titleText.scale.set(0.66, 0.66);
         titleText.updateHitbox();
         titleText.antialiasing = ClientPrefs.data.antialiasing;
@@ -102,8 +102,8 @@ class Gallery extends MusicBeatSubstate
         descBar.pixels.fillRect(new openfl.geom.Rectangle(0, gradientHeight, FlxG.width, 100), FlxColor.fromRGBFloat(0, 0, 0, 0.3));
         add(descBar);
 
-        final descTemp = new FlxText(0, 0, 0, Language.getArray('extras.menu.gallery', ['', 'Browse WIPs, memes and scrapped content from the team!'])[1], 56);
-        descTemp.setFormat(Paths.font("smallass.ttf"), 56, FlxColor.WHITE, LEFT);
+        final descTemp = new FlxText(0, 0, 0, Language.getArray('extras.menu.gallery', ['', 'Browse WIPs, memes and scrapped content from the team!'])[1], Language.cjkSize(56));
+        descTemp.setFormat(Paths.font(Language.fontOrCJK("smallass.ttf")), Language.cjkSize(56), FlxColor.WHITE, LEFT);
         descTemp.antialiasing = ClientPrefs.data.antialiasing;
         descTemp.updateHitbox();
         descTemp.drawFrame(true);
@@ -117,16 +117,16 @@ class Gallery extends MusicBeatSubstate
 
         nowPlaying = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
         nowPlaying.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
-        nowPlaying.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
+        nowPlaying.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlaying.scale.set(0.22, 0.22);
         nowPlaying.updateHitbox();
         nowPlaying.antialiasing = ClientPrefs.data.antialiasing;
         add(nowPlaying);
 
         final daName = states.extras.dagarden.DAGarden.currentSong;
-        nowPlayingSong = new FlxText(169, 587.72, 0, daName != '' ? daName.toUpperCase() : 'EXTRAS MENU', 60);
+        nowPlayingSong = new FlxText(169, nowPlaying.y + nowPlaying.height + 6, 0, daName != '' ? daName.toUpperCase() : 'EXTRAS MENU', 60);
         nowPlayingSong.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
-        nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
+        nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlayingSong.scale.set(0.22, 0.22);
         nowPlayingSong.updateHitbox();
         nowPlayingSong.antialiasing = ClientPrefs.data.antialiasing;
@@ -240,9 +240,9 @@ class Gallery extends MusicBeatSubstate
 
         if (items.length == 0)
         {
-            final lbl = new FlxText(50.0, 180.0, 0, Language.get('extras.gallery.empty', 'NOTHING HERE'), 88);
-            lbl.setFormat(Paths.font("bigass.otf"), 88, FlxColor.WHITE, LEFT);
-            lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
+            final lbl = new FlxText(50.0, 180.0, 0, Language.get('extras.gallery.empty', 'NOTHING HERE'), Language.cjkSize(88));
+            lbl.setFormat(Paths.font("bigass.otf"), Language.cjkSize(88), FlxColor.WHITE, LEFT);
+            lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
             lbl.scale.set(0.5, 0.5);
             lbl.updateHitbox();
             add(lbl);
@@ -252,9 +252,9 @@ class Gallery extends MusicBeatSubstate
         {
             for (i in 0...items.length)
             {
-                final lbl = new FlxText(50.0, 180.0 + (i * 58.0), 0, items[i], 88);
-                lbl.setFormat(Paths.font("bigass.otf"), 88, FlxColor.WHITE, LEFT);
-                lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
+                final lbl = new FlxText(50.0, 180.0 + (i * 58.0), 0, items[i], Language.cjkSize(88));
+                lbl.setFormat(Paths.font("bigass.otf"), Language.cjkSize(88), FlxColor.WHITE, LEFT);
+                lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
                 lbl.antialiasing = ClientPrefs.data.antialiasing;
                 lbl.pixelPerfectRender = false;
                 lbl.scale.set(0.5, 0.5);
@@ -395,12 +395,12 @@ class Gallery extends MusicBeatSubstate
             FlxTween.cancelTweensOf(menuItems[i].scale);
             if (i == curSelected)
             {
-                menuItems[i].setBorderStyle(OUTLINE_FAST, 0xFF3a6bc9, 10);
+                menuItems[i].setBorderStyle(OUTLINE_FAST, 0xFF3a6bc9, Language.cjkBorder(10));
                 FlxTween.tween(menuItems[i].scale, {x: 0.525, y: 0.525}, 0.2, {ease: FlxEase.smootherStepInOut});
             }
             else
             {
-                menuItems[i].setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
+                menuItems[i].setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
                 FlxTween.tween(menuItems[i].scale, {x: 0.5, y: 0.5}, 0.2, {ease: FlxEase.smootherStepInOut});
             }
         }

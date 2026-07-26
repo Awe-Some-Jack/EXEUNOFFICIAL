@@ -198,44 +198,17 @@ class ExtraFunctions
 		});
 
 		LuaUtilsHx.addFunction(lua, 'getSongLyric', function(key:String, ?fallback:String):String {
-			final songName = PlayState.SONG?.song?.toLowerCase()?.replace(' ', '-') ?? '';
+			final songName = PlayState.instance?.songName ?? backend.Paths.formatToSongPath(PlayState.SONG?.song ?? '');
 			final modDir = backend.Mods.currentModDirectory;
-			
+
 			var lang = ClientPrefs.data.language ?? 'auto';
 			if (lang.length == 0) lang = 'auto';
-			if (lang == 'auto') lang = backend.Language.getSystemLanguage(); 
+			if (lang == 'auto') lang = backend.Language.getSystemLanguage();
 
-			final paths:Array<String> = [];
-			if (modDir != null && modDir.length > 0)
-				paths.push('contents/$modDir/data/$songName/lyrics.json');
-			paths.push('contents/data/$songName/lyrics.json');
-			paths.push('assets/data/$songName/lyrics.json');
-
-			var data:Dynamic = null;
-			for (path in paths) {
-				try {
-					var text:String = null;
-
-					#if sys
-					if (sys.FileSystem.exists(path))
-						text = sys.io.File.getContent(path);
-					else
-					#end
-					if (openfl.utils.Assets.exists(path))
-						text = openfl.utils.Assets.getText(path);
-
-					if (text?.length > 0) {
-						data = haxe.Json.parse(text);
-						break;
-					}
-				} catch(e:Dynamic) {
-					trace('Error on text reading (Lyrics): ' + e);
-				}
-			}
-
+			final data:Dynamic = getLyricsData(songName, modDir);
 			if (data == null) return fallback ?? key;
 
-			final langData:Dynamic = Reflect.field(data, lang) ?? Reflect.field(data, 'en-US');
+			final langData:Dynamic = resolveLyricsLangData(data, lang);
 			if (langData == null) return fallback ?? key;
 
 			final val:Dynamic = Reflect.field(langData, key);
@@ -245,5 +218,57 @@ class ExtraFunctions
 		LuaUtilsHx.addFunction(lua, 'getPhrase', (key:String, ?fallback:String, ?vars:Array<Dynamic>) -> {
 			return backend.Language.getPhrase(key, fallback, vars);
 		});
+	}
+
+	static var lyricsCache:Map<String, Dynamic> = [];
+
+	static function getLyricsData(songName:String, modDir:String):Dynamic
+	{
+		final cacheKey = '$modDir|$songName';
+		if (lyricsCache.exists(cacheKey)) return lyricsCache.get(cacheKey);
+
+		final paths:Array<String> = [];
+		if (modDir != null && modDir.length > 0)
+			paths.push('contents/$modDir/data/$songName/lyrics.json');
+		paths.push('contents/data/$songName/lyrics.json');
+		paths.push('assets/data/$songName/lyrics.json');
+
+		var data:Dynamic = null;
+		for (path in paths) {
+			try {
+				var text:String = null;
+
+				#if sys
+				if (sys.FileSystem.exists(path))
+					text = sys.io.File.getContent(path);
+				else
+				#end
+				if (openfl.utils.Assets.exists(path))
+					text = openfl.utils.Assets.getText(path);
+
+				if (text?.length > 0) {
+					data = haxe.Json.parse(text);
+					break;
+				}
+			} catch(e:Dynamic) {
+				trace('Error on text reading (Lyrics): ' + e);
+			}
+		}
+
+		lyricsCache.set(cacheKey, data);
+		return data;
+	}
+
+	static function resolveLyricsLangData(data:Dynamic, lang:String):Dynamic
+	{
+		final exact:Dynamic = Reflect.field(data, lang);
+		if (exact != null) return exact;
+
+		final baseLang = lang.split('-')[0];
+		for (field in Reflect.fields(data)) {
+			if (field.split('-')[0] == baseLang) return Reflect.field(data, field);
+		}
+
+		return Reflect.field(data, 'en-US');
 	}
 }

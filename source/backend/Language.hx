@@ -139,6 +139,11 @@ class Language
 		return getFontForLanguage() != 'SonicCD.ttf';
 	}
 
+	public static function fontOrCJK(defaultFont:String):String
+	{
+		return needsCustomFont() ? getFontForLanguage() : defaultFont;
+	}
+
 	public static function scaledFontSize(base:Int):Int
 	{
 		return  Std.int(base * (isCJK() ? 1.6 : 1.4));
@@ -147,6 +152,11 @@ class Language
 	public static function cjkSize(base:Int, ?factor:Float = 0.75):Int
 	{
 		return isCJK() ? Std.int(base * factor) : base;
+	}
+
+	public static function cjkBorder(base:Int, ?factor:Float = 0.5):Int
+	{
+		return isCJK() ? Math.round(Math.max(1, base * factor)) : base;
 	}
 
 	public static function getPhrase(key:String, ?fallback:String, ?vars:Array<Dynamic>):String

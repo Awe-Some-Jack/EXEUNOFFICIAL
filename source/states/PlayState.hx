@@ -354,6 +354,16 @@ class PlayState extends MusicBeatState
 
 			FlxG.scaleMode = new flixel.system.scaleModes.RatioScaleMode();
 			FlxG.stage.window.resizable = true;
+
+			if (!FlxG.fullscreen) {
+				FlxG.resizeGame(FlxG.initialWidth, FlxG.initialHeight);
+				FlxG.resizeWindow(FlxG.initialWidth, FlxG.initialHeight);
+
+				final screen = FlxG.stage.window.display;
+				final winX = Std.int((screen.bounds.width  - FlxG.initialWidth)  / 2);
+				final winY = Std.int((screen.bounds.height - FlxG.initialHeight) / 2);
+				FlxG.stage.window.move(winX, winY);
+			}
 		}
 
 		return value;

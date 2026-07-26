@@ -105,9 +105,9 @@ class Cutscene extends MusicBeatSubstate
         _buildMenu();
         changeSelection(0);
 
-        titleText = new FlxText(49, 68, 0, Language.getArray('extras.menu.cutscenes', ['CUTSCENES', ''])[0], 88);
-        titleText.setFormat(Paths.font("bigass.otf"), 88, 0xFFf48000, LEFT);
-        titleText.setBorderStyle(OUTLINE_FAST, 0xFF510500, 8);
+        titleText = new FlxText(49, 68, 0, Language.getArray('extras.menu.cutscenes', ['CUTSCENES', ''])[0], Language.cjkSize(88));
+        titleText.setFormat(Paths.font("bigass.otf"), Language.cjkSize(88), 0xFFf48000, LEFT);
+        titleText.setBorderStyle(OUTLINE_FAST, 0xFF510500, Language.cjkBorder(8));
         titleText.scale.set(0.66, 0.66);
         titleText.updateHitbox();
         titleText.antialiasing = ClientPrefs.data.antialiasing;
@@ -124,8 +124,8 @@ class Cutscene extends MusicBeatSubstate
         descBar.pixels.fillRect(new openfl.geom.Rectangle(0, gradientHeight, FlxG.width, 100), FlxColor.fromRGBFloat(0, 0, 0, 0.3));
         add(descBar);
 
-        final descTemp = new FlxText(0, 0, 0, Language.getArray('extras.menu.cutscenes', ['', 'In here you can rewatch cutscenes used in gameplay! Just that!'])[1], 56);
-        descTemp.setFormat(Paths.font("smallass.ttf"), 56, FlxColor.WHITE, LEFT);
+        final descTemp = new FlxText(0, 0, 0, Language.getArray('extras.menu.cutscenes', ['', 'In here you can rewatch cutscenes used in gameplay! Just that!'])[1], Language.cjkSize(56));
+        descTemp.setFormat(Paths.font(Language.fontOrCJK("smallass.ttf")), Language.cjkSize(56), FlxColor.WHITE, LEFT);
         descTemp.antialiasing = ClientPrefs.data.antialiasing;
         descTemp.updateHitbox();
         descTemp.drawFrame(true);
@@ -140,17 +140,19 @@ class Cutscene extends MusicBeatSubstate
 
         nowPlaying = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
         nowPlaying.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
-        nowPlaying.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
+        nowPlaying.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlaying.scale.set(0.22, 0.22);
         nowPlaying.updateHitbox();
         nowPlaying.antialiasing = ClientPrefs.data.antialiasing;
         add(nowPlaying);
 
+        // positioned relative to nowPlaying's real rendered height (not a hardcoded offset) so it
+        // still lines up correctly when the label text is longer/taller in another language
         final daName = states.extras.dagarden.DAGarden.currentSong;
         final songName = daName != '' ? daName.toUpperCase() : 'EXTRAS MENU';
-        nowPlayingSong = new FlxText(169, 587.72, 0, songName, 60);
+        nowPlayingSong = new FlxText(169, nowPlaying.y + nowPlaying.height + 6, 0, songName, 60);
         nowPlayingSong.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
-        nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
+        nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlayingSong.scale.set(0.22, 0.22);
         nowPlayingSong.updateHitbox();
         nowPlayingSong.antialiasing = ClientPrefs.data.antialiasing;
@@ -318,9 +320,9 @@ class Cutscene extends MusicBeatSubstate
     {
         if (videoEntries.length == 0)
         {
-            final lbl = new FlxText(MENU_START_X, MENU_START_Y, 0, Language.get('cutscenes.empty', 'NO VIDEOS FOUND'), MENU_FONT_SIZE);
-            lbl.setFormat(Paths.font("bigass.otf"), MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
-            lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
+            final lbl = new FlxText(MENU_START_X, MENU_START_Y, 0, Language.get('cutscenes.empty', 'NO VIDEOS FOUND'), Language.cjkSize(MENU_FONT_SIZE));
+            lbl.setFormat(Paths.font("bigass.otf"), Language.cjkSize(MENU_FONT_SIZE), FlxColor.WHITE, LEFT);
+            lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
             lbl.scale.set(0.5, 0.5);
             lbl.updateHitbox();
             add(lbl);
@@ -330,9 +332,9 @@ class Cutscene extends MusicBeatSubstate
         {
             for (i in 0...videoEntries.length)
             {
-                final lbl = new FlxText(MENU_START_X, MENU_START_Y + (i * MENU_SPACING), 0, videoEntries[i].displayName.toUpperCase(), MENU_FONT_SIZE);
-                lbl.setFormat(Paths.font("bigass.otf"), MENU_FONT_SIZE, FlxColor.WHITE, LEFT);
-                lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
+                final lbl = new FlxText(MENU_START_X, MENU_START_Y + (i * MENU_SPACING), 0, videoEntries[i].displayName.toUpperCase(), Language.cjkSize(MENU_FONT_SIZE));
+                lbl.setFormat(Paths.font("bigass.otf"), Language.cjkSize(MENU_FONT_SIZE), FlxColor.WHITE, LEFT);
+                lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
                 lbl.antialiasing = ClientPrefs.data.antialiasing;
                 lbl.pixelPerfectRender = false;
                 lbl.scale.set(0.5, 0.5);
@@ -399,12 +401,12 @@ class Cutscene extends MusicBeatSubstate
             FlxTween.cancelTweensOf(menuItems[i].scale);
             if (i == curSelected)
             {
-                menuItems[i].setBorderStyle(OUTLINE_FAST, 0xFF3a6bc9, 10);
+                menuItems[i].setBorderStyle(OUTLINE_FAST, 0xFF3a6bc9, Language.cjkBorder(10));
                 FlxTween.tween(menuItems[i].scale, {x: 0.525, y: 0.525}, MENU_SCALE_DURATION, {ease: FlxEase.smootherStepInOut});
             }
             else
             {
-                menuItems[i].setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
+                menuItems[i].setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
                 FlxTween.tween(menuItems[i].scale, {x: 0.5, y: 0.5}, MENU_SCALE_DURATION, {ease: FlxEase.smootherStepInOut});
             }
         }

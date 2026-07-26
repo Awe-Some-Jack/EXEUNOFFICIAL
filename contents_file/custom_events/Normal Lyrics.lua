@@ -1,6 +1,7 @@
 local curText = {}
 local curStringText = ''
 local lyricFont = 'vcr.ttf'
+local lyricBorder = 2
 
 function resolveLyric(key)
 	if key:find('%.') then
@@ -14,12 +15,16 @@ function onCreatePost()
 	local lang = getLanguage()
 	if lang == 'ja-JP' then
 		lyricFont = 'japanese.ttf'
+		lyricBorder = 1
 	elseif lang == 'zh-CN' then
 		lyricFont = 'chinese.ttf'
+		lyricBorder = 1
 	elseif lang == 'ko-KR' then
 		lyricFont = 'korean.ttf'
+		lyricBorder = 1
 	else
 		lyricFont = 'vcr.ttf'
+		lyricBorder = 2
 	end
 end
 
@@ -69,11 +74,11 @@ function onEvent(n,v1,v2)
 			for i,word in ipairs(curText) do
 				local tag = 'lyric_'..(word:gsub('.', ''))..i
 				setTextColor(tag, 'FFFFFF')
-				setTextBorder(tag, 2, '000000')
+				setTextBorder(tag, lyricBorder, '000000')
 				setProperty(tag..'.y',  math.floor(screenHeight * 0.74))
 				if i == tonumber(sepVar[1]) then
 					setTextColor(tag, (sepVar[2] == nil and getHealthColor('dad') or sepVar[2]))
-					setTextBorder(tag, 2, darkColor(getHealthColor('dad')) and 'FFFFFF' or '000000')
+					setTextBorder(tag, lyricBorder, darkColor(getHealthColor('dad')) and 'FFFFFF' or '000000')
 					setProperty(tag..'.y', math.floor(screenHeight * 0.73))
 				end
 			end

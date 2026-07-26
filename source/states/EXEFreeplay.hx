@@ -297,7 +297,7 @@ class EXEFreeplay extends MusicBeatState
 				final title:String = weekExeTitle ?? sName.toUpperCase();
 
 				if (unlocked.indexOf(Paths.formatToSongPath(sName)) == -1 && !inDevMode) continue;
-				
+
 				songInfoList.push({
 					songName: sName,
 					coverFile: weekExeCover,
@@ -836,6 +836,15 @@ class EXEFreeplay extends MusicBeatState
 		
 		final entry = songEntries[selectedBox];
 		final songLower = Paths.formatToSongPath(songs[songSelector]);
+
+		if (songLower == 'the-valley')
+		{
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			FlxG.sound.music?.fadeOut(0.3);
+			stopMusicPlay = true;
+			FlxG.switchState(() -> new thevalley.TheValley());
+			return;
+		}
 
 		Mods.currentModDirectory = entry.folder;
 		PlayState.storyWeek = entry.week;

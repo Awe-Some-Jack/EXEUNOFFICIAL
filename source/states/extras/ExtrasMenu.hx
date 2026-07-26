@@ -37,6 +37,7 @@ class ExtrasMenu extends MusicBeatState
     var disco:FlxSprite;
     var box:FlxSprite;
     var sumky:FlxSprite;
+    var np:FlxText;
     var nowPlayingSong:FlxText;
     var extrasLogo:FlxSprite;
     var stopMusicPlay:Bool = false;
@@ -62,18 +63,18 @@ class ExtrasMenu extends MusicBeatState
         buildDescBar();
         changeSelection(0);
 
-        final np = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
+        np = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
         np.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
-        np.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
+        np.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         np.scale.set(0.22, 0.22);
         np.updateHitbox();
         np.antialiasing = ClientPrefs.data.antialiasing;
         add(np);
 
         final daName = states.extras.dagarden.DAGarden.currentSong;
-        nowPlayingSong = new FlxText(169, 587.72, 0, daName != '' ? daName.toUpperCase() : 'EXTRAS MENU', 60);
+        nowPlayingSong = new FlxText(169, np.y + np.height + 6, 0, daName != '' ? daName.toUpperCase() : 'EXTRAS MENU', 60);
         nowPlayingSong.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
-        nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, 6);
+        nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlayingSong.scale.set(0.22, 0.22);
         nowPlayingSong.updateHitbox();
         nowPlayingSong.antialiasing = ClientPrefs.data.antialiasing;
@@ -106,9 +107,8 @@ class ExtrasMenu extends MusicBeatState
             canMove = false;
             extraMenuSong = true;
             FlxG.sound.music?.fadeOut(0.3);
-            
-            states.extras.dagarden.DAGarden.currentSong    = '';
-            states.extras.dagarden.DAGarden.currentSongMod = '';
+
+            states.extras.dagarden.DAGarden.stopPersisted();
             FlxG.switchState(() -> new EXEMenu());
         }
 
@@ -125,14 +125,18 @@ class ExtrasMenu extends MusicBeatState
     override function openSubState(subState:flixel.FlxSubState):Void
     {
         canMove = false;
+        if (np != null) np.visible = false;
+        if (nowPlayingSong != null) nowPlayingSong.visible = false;
         super.openSubState(subState);
     }
 
     override function closeSubState():Void
     {
         super.closeSubState();
-        
+
         canMove = true;
+        if (np != null) np.visible = true;
+        if (nowPlayingSong != null) nowPlayingSong.visible = true;
         for (cam in FlxG.cameras.list) if (cam?.filters != null) Main.resetSpriteCache(cam.flashSprite);
         if (FlxG.game != null) Main.resetSpriteCache(FlxG.game);
     }
@@ -236,9 +240,9 @@ class ExtrasMenu extends MusicBeatState
         for (i in 0...MENU_KEYS.length)
         {
             final label = Language.getArray(MENU_KEYS[i], ['?', ''])[0];
-            final t = new FlxText(50, 180 + i * 58, 0, label, 88);
-            t.setFormat(Paths.font("bigass.otf"), 88, FlxColor.WHITE, LEFT);
-            t.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
+            final t = new FlxText(50, 180 + i * 58, 0, label, Language.cjkSize(88));
+            t.setFormat(Paths.font("bigass.otf"), Language.cjkSize(88), FlxColor.WHITE, LEFT);
+            t.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
             t.antialiasing = ClientPrefs.data.antialiasing;
             t.scale.set(0.5, 0.5);
             t.updateHitbox();
@@ -292,8 +296,8 @@ class ExtrasMenu extends MusicBeatState
         for (i in 0...MENU_KEYS.length)
         {
             final desc = Language.getArray(MENU_KEYS[i], ['', ''])[1];
-            final tmp  = new FlxText(0, 0, 0, desc, 56);
-            tmp.setFormat(Paths.font("smallass.ttf"), 56, FlxColor.WHITE, LEFT);
+            final tmp  = new FlxText(0, 0, 0, desc, Language.cjkSize(56));
+            tmp.setFormat(Paths.font(Language.fontOrCJK("smallass.ttf")), Language.cjkSize(56), FlxColor.WHITE, LEFT);
             tmp.antialiasing = ClientPrefs.data.antialiasing;
             tmp.drawFrame(true);
             final bd = new FlxBackdrop(tmp.graphic, X, 0, 0);
@@ -357,12 +361,12 @@ class ExtrasMenu extends MusicBeatState
             FlxTween.cancelTweensOf(menuItems[i].scale);
             if (i == curSelected)
             {
-                menuItems[i].setBorderStyle(OUTLINE_FAST, 0xFF9c3829, 10);
+                menuItems[i].setBorderStyle(OUTLINE_FAST, 0xFF9c3829, Language.cjkBorder(10));
                 FlxTween.tween(menuItems[i].scale, {x: 0.525, y: 0.525}, 0.2, {ease: FlxEase.smootherStepInOut});
             }
             else
             {
-                menuItems[i].setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, 8);
+                menuItems[i].setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
                 FlxTween.tween(menuItems[i].scale, {x: 0.5, y: 0.5}, 0.2, {ease: FlxEase.smootherStepInOut});
             }
         }

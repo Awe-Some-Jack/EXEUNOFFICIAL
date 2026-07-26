@@ -1,0 +1,61 @@
+{
+	"spritesheet": "assets/images/thevalley/characters/exe/exe.png",
+	"xml":         "assets/images/thevalley/characters/exe/exe.xml",
+
+	"hitbox": {
+		"width":      18,
+		"height":     64,
+		"offsetX":    58.0,
+		"offsetY":    33.0,
+		"footRadius": 9.0
+	},
+
+	"movement": {
+		"walkSpeed":  30.0,
+		"alertSpeed": 55.0,
+		"runSpeed":   200.0,
+		"runAccel":   700.0,
+		"maxFall":    700.0
+	},
+
+	"jump": {
+		"vyMin":                -380.0,
+		"vyMax":                -560.0,
+		"chargeFramesMin":      20,
+		"chargeFramesMax":      38,
+		"manualChargeMaxFrames": 60,
+		"manualVyMin":          -300.0,
+		"manualVyMax":          -620.0
+	},
+
+	"detection": {
+		"alertDist": 600.0,
+		"chaseDist": 350.0,
+		"loseDist":  750.0,
+		"killDist":  22.0
+	},
+
+	"ai": {
+		"brakeFrames":    14,
+		"searchDuration": 3.0,
+		"hiddenPassSecs": 2.0,
+		"patrolRadius":   650.0,
+		"patrolMaxSecs":  8.0
+	},
+
+	"sounds": {
+		"chase": "assets/sounds/sfx/mini-games/thevalley/chase.ogg"
+	},
+
+	"animations": [
+		{ "name": "walk",          "prefix": "exe walk",          "fps": 18, "loop": true  },
+		{ "name": "run",           "prefix": "exe run",           "fps": 18, "loop": true  },
+		{ "name": "brake",         "prefix": "exe brake",         "fps": 18, "loop": false },
+		{ "name": "charge",        "prefix": "exe charge",        "fps": 8,  "loop": true  },
+		{ "name": "takeoff",       "prefix": "exe takeoff",       "fps": 1,  "loop": false },
+		{ "name": "airandfalling", "prefix": "exe airandfalling", "fps": 1,  "loop": true  },
+		{ "name": "landing",       "prefix": "exe landing",       "fps": 8,  "loop": false },
+		{ "name": "searching",     "prefix": "exe searching",     "fps": 12, "loop": true  },
+		{ "name": "idle",          "prefix": "exe idle",          "fps": 12, "loop": true  }
+	]
+}

@@ -315,7 +315,7 @@ class DAGPlayer extends FlxGroup
     var oppVocals:Array<FlxSound> = [];
     
     public var loadedSong:String = '';
-    var loadedMod:String  = '';
+    public var loadedMod:String  = '';
     var fadeTarget:Float  = 1.0;
     var fadeSpeed:Float   = 0.0;
     var pitchingDown:Bool = false;
@@ -359,6 +359,32 @@ class DAGPlayer extends FlxGroup
     public function restoreWindowTitle():Void
     {
         #if !mobile lime.app.Application.current.window.title = origTitle; #end
+    }
+
+    public function detach():{inst:FlxSound, vocals:Array<FlxSound>, song:String, mod:String, wasPlaying:Bool}
+    {
+        final result = {inst: inst, vocals: vocals, song: loadedSong, mod: loadedMod, wasPlaying: isPlaying};
+        inst       = null;
+        vocals     = [];
+        oppVocals  = [];
+        isPlaying  = false;
+        loadedSong = '';
+        loadedMod  = '';
+        return result;
+    }
+
+    public function reclaim(snd:FlxSound, vocs:Array<FlxSound>, mod:String, wasPlaying:Bool):Void
+    {
+        inst       = snd;
+        vocals     = vocs != null ? vocs : [];
+        loadedMod  = mod;
+        isPlaying  = wasPlaying;
+        fadeTarget = 1.0;
+        fadeSpeed  = 0;
+        if (inst != null) inst.volume = 1.0;
+        applyVocalVol(1.0);
+        pitchCurrent = 1.0;
+        applyPitch(1.0);
     }
 
     public function setSongInfo(song:String, creds:Array<String>):Void
@@ -896,6 +922,33 @@ class DAGarden extends MusicBeatSubstate
     public static var currentSong:String    = '';
     public static var currentSongMod:String = '';
 
+    static var persistedInst:FlxSound          = null;
+    static var persistedVocals:Array<FlxSound> = [];
+    static var persistedMod:String             = '';
+    static var persistedWasPlaying:Bool        = false;
+
+    public static function stopPersisted():Void
+    {
+        if (persistedInst != null)
+        {
+            persistedInst.stop();
+            FlxG.sound.list.remove(persistedInst, true);
+            persistedInst.destroy();
+        }
+        for (v in persistedVocals) if (v != null)
+        {
+            v.stop();
+            FlxG.sound.list.remove(v, true);
+            v.destroy();
+        }
+        persistedInst       = null;
+        persistedVocals     = [];
+        persistedMod        = '';
+        persistedWasPlaying = false;
+        currentSong    = '';
+        currentSongMod = '';
+    }
+
     var checkers:FlxBackdrop;
     var decors:Array<FlxSprite> = [];
     var arrow:FlxSprite;
@@ -908,9 +961,8 @@ class DAGarden extends MusicBeatSubstate
     override public function create():Void
     {
         FlxG.autoPause = false;
-        FlxG.sound.music?.pause();
         FlxG.mouse.visible = true;
-        
+
         buildBG();
         songs = new DAGSongs();
         songs.onSelect          = onSongSelected;
@@ -920,8 +972,23 @@ class DAGarden extends MusicBeatSubstate
 
         player = new DAGPlayer();
         add(player);
-        if (songs.songList.length > 0)
-            onSongSelected(0);
+
+        if (persistedInst != null)
+        {
+            final idx = songs.songList.indexOf(currentSong);
+            if (idx >= 0) songs.selectIndex(idx);
+            player.setSongInfo(currentSong, songs.selectedCredits());
+            player.reclaim(persistedInst, persistedVocals, persistedMod, persistedWasPlaying);
+            persistedInst   = null;
+            persistedVocals = [];
+        }
+        else
+        {
+            FlxG.sound.music?.pause();
+            if (songs.songList.length > 0)
+                onSongSelected(0);
+        }
+
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", null); #end
         super.create();
     }
@@ -935,6 +1002,9 @@ class DAGarden extends MusicBeatSubstate
         decors[2].angle = Math.cos(rotTime * 0.7) * 4;
         decors[5].angle = Math.sin(rotTime * 0.6) * 2;
         decors[6].angle = Math.cos(rotTime * 0.8) * 3.5;
+        currentSong    = player.isPlaying ? player.loadedSong : '';
+        currentSongMod = player.isPlaying ? player.loadedMod  : '';
+
         handleInput();
     }
 
@@ -1023,8 +1093,6 @@ class DAGarden extends MusicBeatSubstate
     function onSongSelected(index:Int):Void
     {
         player.setSongInfo(songs.selectedSong(), songs.selectedCredits());
-        currentSong    = songs.selectedSong();
-        currentSongMod = songs.selectedMod();
         player.stop();
         player.updateTitle();
     }
@@ -1047,8 +1115,23 @@ class DAGarden extends MusicBeatSubstate
         if (controls.BACK)
         {
             player.restoreWindowTitle();
-            player.stop(); 
-            FlxG.sound.music?.resume(); 
+            if (player.isPlaying)
+            {
+                final d = player.detach();
+                persistedInst       = d.inst;
+                persistedVocals     = d.vocals;
+                persistedMod        = d.mod;
+                persistedWasPlaying = d.wasPlaying;
+                currentSong    = d.song;
+                currentSongMod = d.mod;
+            }
+            else
+            {
+                player.stop();
+                FlxG.sound.music?.resume();
+                currentSong    = '';
+                currentSongMod = '';
+            }
             close();
         }
     }

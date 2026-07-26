@@ -275,7 +275,7 @@ class BIOS extends MusicBeatSubstate
 		add(icon);
 
 		charName = new FlxText(TITLE_X, TITLE_Y, 0, e0 != null ? e0.displayName : '', TITLE_FONT_SIZE);
-		charName.setFormat(Paths.font('NiseSegaSonic.TTF'), TITLE_FONT_SIZE, FlxColor.WHITE, CENTER);
+		charName.setFormat(Paths.font(Language.fontOrCJK('NiseSegaSonic.TTF')), TITLE_FONT_SIZE, FlxColor.WHITE, CENTER);
 		charName.antialiasing = ClientPrefs.data.antialiasing;
 		charName.scale.set(TITLE_FONT_SCALE, TITLE_FONT_SCALE);
 		charName.scrollFactor.set();
@@ -283,7 +283,7 @@ class BIOS extends MusicBeatSubstate
 		_fitCharName();
 
 		artistName = new FlxText(ARTIST_X, ARTIST_Y, 0, '', ARTIST_MAX_SIZE);
-		artistName.setFormat(Paths.font('NiseSegaSonic.TTF'), ARTIST_MAX_SIZE, FlxColor.WHITE, CENTER);
+		artistName.setFormat(Paths.font(Language.fontOrCJK('NiseSegaSonic.TTF')), ARTIST_MAX_SIZE, FlxColor.WHITE, CENTER);
 		artistName.antialiasing = ClientPrefs.data.antialiasing;
 		artistName.scale.set(ARTIST_FONT_SCALE, ARTIST_FONT_SCALE);
 		artistName.scrollFactor.set();
@@ -313,8 +313,8 @@ class BIOS extends MusicBeatSubstate
 		bioBox.scrollFactor.set();
 		add(bioBox);
 
-		bioTxt = new FlxText(INFO_X + INFO_PAD_X, INFO_Y + INFO_PAD_TOP, INFO_W - INFO_PAD_X - INFO_PAD_RIGHT, '', 23);
-		bioTxt.setFormat(Paths.font('smallass.TTF'), 23, FlxColor.WHITE, LEFT);
+		bioTxt = new FlxText(INFO_X + INFO_PAD_X, INFO_Y + INFO_PAD_TOP, INFO_W - INFO_PAD_X - INFO_PAD_RIGHT, '', Language.cjkSize(23));
+		bioTxt.setFormat(Paths.font(Language.fontOrCJK('smallass.TTF')), Language.cjkSize(23), FlxColor.WHITE, LEFT);
 		bioTxt.antialiasing = ClientPrefs.data.antialiasing;
 		bioTxt.scrollFactor.set();
 		bioTxt.clipRect = new flixel.math.FlxRect(0, 0, INFO_W - INFO_PAD_X - INFO_PAD_RIGHT, INFO_H);
@@ -366,8 +366,8 @@ class BIOS extends MusicBeatSubstate
 		namesGrp.clear();
 		for (i in 0...entries.length)
 		{
-			final t = new FlxText(LIST_X, 0, 0, entries[i].displayName, LIST_FONT_SIZE);
-			t.setFormat(Paths.font('NiseSegaSonic.TTF'), LIST_FONT_SIZE, FlxColor.WHITE, LEFT);
+			final t = new FlxText(LIST_X, 0, 0, entries[i].displayName, Language.cjkSize(LIST_FONT_SIZE));
+			t.setFormat(Paths.font(Language.fontOrCJK('NiseSegaSonic.TTF')), Language.cjkSize(LIST_FONT_SIZE), FlxColor.WHITE, LEFT);
 			t.antialiasing = ClientPrefs.data.antialiasing;
 			t.scale.set(LIST_FONT_SCALE, LIST_FONT_SCALE);
 			t.updateHitbox();

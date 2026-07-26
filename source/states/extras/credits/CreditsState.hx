@@ -58,8 +58,8 @@ class CreditsState extends MusicBeatSubstate
         final bd = new FlxBackdrop(cbmd, XY, 0, 0); bd.velocity.set(15, 10); bd.alpha = 0.5; add(bd);
 
         final titleBg = new FlxSprite(0, 0).makeGraphic(FlxG.width, 60, 0x44000000); add(titleBg);
-        final title = new FlxText(0, 0, FlxG.width, Language.getArray('extras.menu.credits', ['CREDITS', ''])[0]).setFormat(Paths.font("vcr.ttf"), 28 + 8, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
-        title.borderSize = 3; title.y = (60 - title.height) * 0.5; add(title);
+        final title = new FlxText(0, 0, FlxG.width, Language.getArray('extras.menu.credits', ['CREDITS', ''])[0]).setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(28 + 8), 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
+        title.borderSize = Language.cjkBorder(3); title.y = (60 - title.height) * 0.5; add(title);
 
         final defs = [
             {key:'unofficial', label: Language.get('extras.credits.unofficial', 'Unofficial Dev Team')},
@@ -81,8 +81,8 @@ class CreditsState extends MusicBeatSubstate
             colBg.alpha = 0; add(colBg);
 
             final titleY = camY - 30 - 4;
-            final colTitle = new FlxText(camX, titleY, colW, def.label).setFormat(Paths.font("vcr.ttf"), 28, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
-            colTitle.borderSize = 2; colTitle.alpha = 0; colTitle.y = titleY - colTitle.height * 0.5; add(colTitle);
+            final colTitle = new FlxText(camX, titleY, colW, def.label).setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(28), 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
+            colTitle.borderSize = Language.cjkBorder(2); colTitle.alpha = 0; colTitle.y = titleY - colTitle.height * 0.5; add(colTitle);
 
             final cam = new FlxCamera(); cam.bgColor = 0x00000000; FlxG.cameras.add(cam, false);
             cam.setSize(colW - camPad*2, colH - camPad*2); cam.setPosition(camX + camPad, camY + camPad);
@@ -110,7 +110,7 @@ class CreditsState extends MusicBeatSubstate
                 }
 
                 final txt = new FlxText(textOffX, cardY + (44-4-20)*0.5, cardW - textOffX - 8, entry.name)
-                    .setFormat(Paths.font("vcr.ttf"), 20, 0xFFFFFFFF, LEFT, NONE);
+                    .setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(20), 0xFFFFFFFF, LEFT, NONE);
                 txt.camera = cam; add(txt); nameTexts.push(txt);
             }
 
@@ -265,8 +265,8 @@ private class CreditPopup extends MusicBeatSubstate
         userIcon.camera = popCam; fit(userIcon, 100, 100); savedIconScale = userIcon.scale.x; add(userIcon);
 
         final nm = new FlxText(0, 0, bg.width - 100, user.name ?? "Unknown");
-        nm.setFormat(Paths.font("vcr.ttf"), 76, 0xFFFFFFFF, LEFT, OUTLINE, 0x55000000);
-        nm.borderSize = 3; nm.setPosition(userIcon.x + userIcon.width + 25, userIcon.y + (userIcon.height - nm.height) / 2);
+        nm.setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(76), 0xFFFFFFFF, LEFT, OUTLINE, 0x55000000);
+        nm.borderSize = Language.cjkBorder(3); nm.setPosition(userIcon.x + userIcon.width + 25, userIcon.y + (userIcon.height - nm.height) / 2);
         nm.camera = popCam; add(nm);
 
         final flagPath = 'assets/exe/extras/credits/countries/${user.nation}.png';
@@ -289,8 +289,8 @@ private class CreditPopup extends MusicBeatSubstate
         }
         final sep = new FlxSprite(sepX, sepY).loadGraphic(sbmp); sep.camera = popCam; add(sep);
         final desc = new FlxText(sepX, sep.y + 22, sepW, user.description ?? "No Description");
-        desc.setFormat(Paths.font("vcr.ttf"), 38, 0xFFFFFFFF, CENTER, OUTLINE, 0x66000000);
-        desc.borderSize = 2; desc.camera = popCam; add(desc);
+        desc.setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(38), 0xFFFFFFFF, CENTER, OUTLINE, 0x66000000);
+        desc.borderSize = Language.cjkBorder(2); desc.camera = popCam; add(desc);
     }
 
     function buildQuotePanel():Void
@@ -313,7 +313,7 @@ private class CreditPopup extends MusicBeatSubstate
         FlxG.cameras.add(quoteCam, false);
 
         userQuote = new FlxText(5, 5, quoteCam.width - 15, user.quote ?? "No Quote");
-        userQuote.setFormat(Paths.font("vcr.ttf"), 24, 0xFFFFFFFF, LEFT, NONE);
+        userQuote.setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(24), 0xFFFFFFFF, LEFT, NONE);
         userQuote.camera = quoteCam; add(userQuote);
 
         final sbg = new FlxSprite(quoteCam.width - 5).makeGraphic(5, quoteCam.height, 0x44FFFFFF);

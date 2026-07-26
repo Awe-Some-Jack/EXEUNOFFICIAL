@@ -78,7 +78,7 @@ function onCreate()
 
 	preloadCharacter(1, 'hellbenttrans');
 	preloadCharacter(1, 'hellbemnt');
-	preloadCharacter(0, 'bf hellbent');
+	preloadCharacter(0, 'bf-hellbent');
 }
 
 var _phase2Active:Bool = false;
@@ -111,13 +111,9 @@ function onEvent(n,v1)
 
 				boyfriend.alpha = 1;
 				changeCharacter('dad', 'hellbemnt');
-				changeCharacter('bf', 'bf hellbent');
+				changeCharacter('bf', 'bf-hellbent');
 				dad.setPosition(-700, 960);
 				boyfriend.setPosition(650, 1100);
-				/**
-					removeLuaSprite('glow', true)
-					removeLuaSprite('vignette', true)
-				**/
 			case 'scaryyy':
 				eyes.visible = false;
 				camGame.alpha = 0; camHUD.alpha = 0;
@@ -162,7 +158,7 @@ function onUpdatePost(elapsed:Float)
 
 		boyfriend.setPosition(
 			650 + Math.cos(_floatTime) * 25,
-			1100 + Math.sin(_floatTime) * 50
+			1030 + Math.sin(_floatTime) * 50
 		);
 		bgHell[0].sprite.setPosition(
 			-20 + Math.cos(_floatTime) * 25,

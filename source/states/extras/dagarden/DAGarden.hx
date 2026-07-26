@@ -173,7 +173,7 @@ class DAGSongs extends FlxGroup
         catch (_:Dynamic) {}
 
         applyOrder();
-        for (i in 0...songList.length) songCredits.push(readCredits(songList[i]));
+        for (i in 0...songList.length) songCredits.push(readCredits(songList[i], songMods[i]));
     }
 
     function applyOrder():Void
@@ -210,9 +210,9 @@ class DAGSongs extends FlxGroup
         songMods = [for (p in pairs) p.m];
     }
 
-    function readCredits(song:String):Array<String>
+    function readCredits(song:String, mod:String):Array<String>
     {
-        final path = Paths.mods('data/$song/credits.json');
+        final path = mod != '' ? Paths.mods('$mod/data/$song/credits.json') : Paths.mods('data/$song/credits.json');
         if (!FileSystem.exists(path)) return [];
         
         try
@@ -986,7 +986,7 @@ class DAGarden extends MusicBeatSubstate
         {
             FlxG.sound.music?.pause();
             if (songs.songList.length > 0)
-                onSongSelected(0);
+                songs.selectSong(0);
         }
 
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", null); #end

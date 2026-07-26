@@ -13,6 +13,7 @@ haxelib install tjson 1.4.0
 haxelib install hxdiscord_rpc 1.2.4
 haxelib install hxvlc 2.3.0 --skip-dependencies
 haxelib install hxp 1.3.1
+haxelib install nape-haxe4
 haxelib git astc-compressor https://github.com/KarimAkra/astc-compressor.git
 haxelib git extension-androidtools https://github.com/LimeExtensions/extension-androidtools.git --skip-dependencies
 haxelib git hscript-iris https://github.com/GreenColdTea/hscript-iris.git

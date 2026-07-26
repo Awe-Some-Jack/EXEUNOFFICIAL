@@ -96,7 +96,6 @@ function addSpr(def:SprDef)
 	spr.updateHitbox();
 
 	if (def.scrollX != null) spr.scrollFactor.set(def.scrollX, def.scrollY != null ? def.scrollY : def.scrollX);
-	if (def.antialiasing != null) spr.antialiasing = def.antialiasing;
 	if (lq) spr.antialiasing = false;
 	spr.alpha = def.alpha != null ? def.alpha : 1;
 

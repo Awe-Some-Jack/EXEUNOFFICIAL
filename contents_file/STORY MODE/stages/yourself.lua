@@ -24,6 +24,7 @@ local yourselfBG1 = {
     --{name = 'bgDownBroken', path =    'eye/new bg yoursefl/down-broken', x = -150, y =   50,                                                                                    scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
     {name = 'potinas',      path =                          'eye/tinas', x =   85, y =    0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
     {name = 'cortinas',     path =                            'eye/cor', x =   85, y = -300,                                                                                    scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
+    {name = 'luces', path = 'eye/xcxc', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
 }
 
 local cristales = {

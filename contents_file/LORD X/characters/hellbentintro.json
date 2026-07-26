@@ -1,62 +1,62 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [150, 45],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [79, -6],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [45, 56],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"offsets": [58, 19],
 			"loop": false,
-			"fps": 24,
+			"offsets": [57, 19],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "rigth"
-		},
-		{
-			"offsets": [0, 0],
-			"loop": false,
-			"fps": 26,
-			"anim": "idle",
-			"indices": [],
-			"name": "idle"
-		},
-		{
-			"loop": false,
-			"offsets": [-1, 25],
-			"anim": "risa",
-			"fps": 26,
-			"name": "risa",
+			"fps": 24,
+			"name": "rigth",
 			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 26,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"offsets": [0, 25],
+			"loop": false,
+			"fps": 26,
+			"anim": "risa",
+			"indices": [],
+			"name": "risa"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/hellbentintro",
-	"position": [10, 200],
+	"position": [0, 0],
 	"healthicon": "lord-x",
 	"flip_x": false,
 	"healthbar_colors": [60, 60, 88],
-	"camera_position": [-220, -50],
+	"camera_position": [0, 0],
 	"sing_duration": 10,
 	"scale": 1,
 	"_editor_isPlayer": false

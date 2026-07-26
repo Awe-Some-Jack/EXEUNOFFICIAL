@@ -1,0 +1,31 @@
+{
+	"animations": [
+		{
+			"offsets": [50, -70],
+			"loop": true,
+			"fps": 12,
+			"anim": "idle",
+			"indices": [],
+			"name": "p1"
+		},
+		{
+			"offsets": [20, 0],
+			"loop": true,
+			"fps": 12,
+			"anim": "idle-alt",
+			"indices": [0, 1, 2, 1],
+			"name": "p2"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/lordxtransition",
+	"position": [0, 0],
+	"healthicon": "lord-x",
+	"flip_x": false,
+	"healthbar_colors": [60, 60, 88],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

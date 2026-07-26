@@ -430,7 +430,7 @@ class ExtrasMenu extends MusicBeatState
             case 1: openSubState(new states.extras.bios.BIOS());
             case 2: openSubState(new states.extras.dagarden.DAGarden());
             case 3: openSubState(new states.extras.cutscenes.Cutscene());
-            case 4: openSubState(new states.extras.achievements.AchievementsMenuState());
+            case 4: openSubState(new states.extras.achievements.AchievementsState());
             case 5: openSubState(new states.extras.credits.CreditsState());
         }
     }

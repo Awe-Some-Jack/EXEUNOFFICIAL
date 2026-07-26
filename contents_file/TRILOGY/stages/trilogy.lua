@@ -14,6 +14,8 @@ function onCreatePost()
 	dadX, dadY = getProperty('dad.x'), getProperty('dad.y')
 
 	setProperty('camHUD.alpha', 0)
+	playAnim('dad', 'intro', true)
+	setProperty('dad.specialAnim', true)
 end
 
 function onCreate()

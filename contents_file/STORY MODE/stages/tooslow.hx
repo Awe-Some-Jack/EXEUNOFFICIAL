@@ -54,10 +54,14 @@ var sprites:Array<SprDef> = [
 ];
 
 var flashBackBG:Array<SprDef> = [
-	{name: 'static', path: 'slow/flashback/daSTAT',   x: -950, y:  200, animated: true,  animName: 'idle', animPrefix: 'staticFLASH', fps: 24, loop: true,  scaleX: 12,  scaleY: 6,   scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
-	{name: 'mount',  path: 'slow/flashback/idk',      x: -950, y: -300, scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
-	{name: 'plant',  path: 'slow/flashback/plants',   x: -950, y:  850, scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
-	{name: 'floor',  path: 'slow/flashback/ground',   x: -950, y: 1300, scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
+	{name: 'static',        path: 'slow/flashback/daSTAT',        x: -950, y:  200, animated: true,  animName: 'idle', animPrefix: 'staticFLASH', fps: 24, loop: true,  scaleX: 12,  scaleY: 6,   scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
+	{name: 'mount',         path: 'slow/flashback/idk',           x: -950, y: -300, scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
+	{name: 'plant',         path: 'slow/flashback/plants',        x: -950, y:  850, scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
+	{name: 'floor',         path: 'slow/flashback/ground',        x: -950, y: 1300, scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
+	{name: 'gfDead',        path: 'slow/flashback/GF_ded',        x: 1550, y: 1400, scaleX: 0.2, scaleY: 0.2, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
+	{name: 'darnellDead',   path: 'slow/flashback/darnell_ded',   x: 2450, y: 1200, scaleX: 0.3, scaleY: 0.3, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
+	{name: 'skidPumpDead',  path: 'slow/flashback/skid_Pump_ded', x: 1250, y: 1600, scaleX: 0.8, scaleY: 0.8, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
+	{name: 'neneDead',      path: 'slow/flashback/nene_ded',      x:  550, y: 1300, scaleX: 0.2, scaleY: 0.2, scrollX: 1, scrollY: 1, antialiasing: true, alpha: 0},
 ];
 
 var spritesLQ:Array<SprDef> = [
@@ -154,6 +158,8 @@ function onEvent(e, v1, v2)
 	{
 		for (yes in flashBackBG) FlxTween.tween(getSpr(yes.name), {alpha: 1}, 2);
 		for (yes in sprites)     FlxTween.tween(getSpr(yes.name), {alpha: 0}, 2);
+		
+		FlxTween.tween(gfGroup, {alpha: 0}, 2);
 
 		if (prefs.shaders)
 		{
@@ -180,8 +186,10 @@ function onEvent(e, v1, v2)
 			tweenBack = true;
 			FlxTween.num(waveVal, 0, 4, {}, function(v) { waveVal = v; });
 			FlxTween.num(bwVal,   0, 4, {}, function(v) { bwVal = v; });
-			for (yes in flashBackBG) FlxTween.tween(getSpr(yes.name), {alpha: 0}, 4);
+			for (yes in flashBackBG) FlxTween.tween(getSpr(yes.name), {alpha: 0}, 4, {onComplete: (_) -> getSpr(yes.name).destroy});
 			for (yes in sprites)     FlxTween.tween(getSpr(yes.name), {alpha: 1}, 4);
+
+			FlxTween.tween(gfGroup, {alpha: 1}, 4);
 		}
 	}
 }

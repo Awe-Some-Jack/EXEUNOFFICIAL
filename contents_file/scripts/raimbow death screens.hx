@@ -116,7 +116,7 @@ function setCamEvents() {
     FlxG.camera.zoom = initialDeathZoom;
     switch(songName){
         case "yourself":
-            //new FlxTimer().start(0.3, (_) -> FlxTween.tween(FlxG.camera, {zoom: 0.9, y: FlxG.camera.y - 90}, 2, {ease: FlxEase.sineInOut}));
+            new FlxTimer().start(0.3, (_) -> FlxTween.tween(FlxG.camera, {zoom: 0.9, y: FlxG.camera.y - 90}, 2, {ease: FlxEase.sineInOut}));
     }
 }
 

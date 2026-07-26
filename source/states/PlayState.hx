@@ -756,12 +756,6 @@ class PlayState extends MusicBeatState
 
 		super.create();
 
-		//FlxG.saves
-		if (isStoryMode){
-			FlxG.save.data.theYourselfCutscene = null;
-			FlxG.save.data.goToFinalEscape = null;
-		}
-
 		if(isFixedAspectRatio && !hasRestarted) {
 			hasRestarted = true;
 
@@ -2528,7 +2522,7 @@ class PlayState extends MusicBeatState
 					FlxG.sound.music?.stop();
 
 					canResync = false;
-					if (states.StoryModeState.fromStoryMode) { states.StoryModeState.fromStoryMode = false; FlxG.switchState(() -> new states.StoryModeState()); }
+					if (states.StoryModeState.fromStoryMode == true) { states.StoryModeState.fromStoryMode = false; FlxG.switchState(() -> new states.StoryModeState()); }
 					else if (states.SoundTest.fromSoundTest) { states.SoundTest.fromSoundTest = false; FlxG.switchState(() -> new states.SoundTest()); }
 					else if (states.parallax.StoryParallaxState.fromParallax) { states.parallax.StoryParallaxState.fromParallax = false; FlxG.switchState(() -> new states.parallax.StoryParallaxState()); }
 					else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }

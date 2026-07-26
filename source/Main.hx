@@ -102,6 +102,11 @@ class Main extends Sprite
 		FlxG.save.bind('funkin', CoolUtil.getSavePath());
 		Highscore.load();
 
+		//FlxG.saves
+		FlxG.save.data.theYourselfCutscene = null;
+		FlxG.save.data.goToFinalEscape = null;
+		
+
 		#if HSCRIPT_ALLOWED
 		Iris.warn = function(x, ?pos:haxe.PosInfos) {
 			Iris.logLevel(WARN, x, pos);

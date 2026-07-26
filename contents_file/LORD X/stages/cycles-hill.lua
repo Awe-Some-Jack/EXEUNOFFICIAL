@@ -108,15 +108,16 @@ function onCreatePost()
 			game.insert(idx, clouds);
 		}
 	]])
+end
 
-	for i = 0, 3 do
+function onSongStart()
+	runTimer('startTransition', 1)
+		for i = 0, 3 do
 		for _, strums in ipairs({'playerStrums', 'opponentStrums'}) do
 			setProperty(strums..'.members['..i..'].y', downscroll and 800 or -200) setProperty(strums..'.members['..i..'].alpha', 0)
 		end
 	end
 end
-
-function onSongStart() runTimer('startTransition', 1) end
 
 function onUpdate(elapsed)
 	shaderTime = shaderTime + elapsed

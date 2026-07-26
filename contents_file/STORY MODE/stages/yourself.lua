@@ -1,34 +1,52 @@
+local yourselfBG1Old = { -- This bg is scrapped. Damn
+    {name = 'fondo', path = 'eye/bg_fondo', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'piso1', path = 'eye/piso-1', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, aboveFakeBF = true, alpha = 1, front = false},
+    {name = 'piso2', path = 'eye/piso-1 2', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'pico', path = 'eye/pico-del-frente', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
+    {name = 'luces', path = 'eye/xcxc', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
+    {name = 'potinas', path = 'eye/tinas', x = 85, y = 0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
+    {name = 'cortinas', path = 'eye/cor', x = 85, y = -300, scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
+}
+
 local yourselfBG1 = {
-    {name = 'fondo', path = 'eye/bg_fondo', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, antialiasing = true, front = false},
-    {name = 'piso1', path = 'eye/piso-1', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, aboveFakeBF = true, alpha = 1, antialiasing = true, front = false},
-    {name = 'piso2', path = 'eye/piso-1 2', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, front = false},
-    {name = 'pico', path = 'eye/pico-del-frente', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, antialiasing = true, front = true},
-    {name = 'luces', path = 'eye/xcxc', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, antialiasing = true, front = true},
-    {name = 'potinas', path = 'eye/tinas', x = 85, y = 0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, front = true},
-    {name = 'cortinas', path = 'eye/cor', x = 85, y = -300, scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, front = true},
+    {name = 'bgBack',       path =           'eye/new bg yoursefl/back', x = -150, y = -250,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'layer2',       path =        'eye/new bg yoursefl/layers2', x =  300, y =  400,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'blue2',        path =    'eye/new bg yoursefl/blue-thing2', x = -150, y =  100,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'layer1',       path =        'eye/new bg yoursefl/layers1', x = -150, y =  300,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'blue',         path =     'eye/new bg yoursefl/blue-thing', x = -150, y =  100,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'bgUp',         path =             'eye/new bg yoursefl/up', x =  350, y =   50,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'mirrorStuff',  path =   'eye/new bg yoursefl/mirror-stuff', x =  150, y =  350,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'mirrorStuff2', path =  'eye/new bg yoursefl/mirror-stuff2', x = -150, y =  400,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    --{name = 'mirrorStuff3', path =      'eye/new bg yoursefl/mirror-up', x = -150, y =  300,                                                                                    scaleX = 0.9, scaleY = 0.9, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    --{name = 'mirrorDown',   path =    'eye/new bg yoursefl/mirror-down', x = -150, y =  300,                                                                                    scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    --{name = 'mirrorShit',   path =    'eye/new bg yoursefl/mirror-shit', x =  450, y =    0,                                                                                    scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'bgDown',       path =           'eye/new bg yoursefl/down', x = -150, y =   50,                                                                                    scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    --{name = 'bgDownBroken', path =    'eye/new bg yoursefl/down-broken', x = -150, y =   50,                                                                                    scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'potinas',      path =                          'eye/tinas', x =   85, y =    0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
+    {name = 'cortinas',     path =                            'eye/cor', x =   85, y = -300,                                                                                    scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
 }
 
 local cristales = {
-    {name = 'cristal1', path = 'eye/espejos/1', x = getProperty('dad.x') + 80, y = getProperty('dad.y') - 230, scaleX = 0.65, scaleY = 0.6, scrollX = 0.95, scrollY = 0.95, behindFakeBF = true, alpha = 1, antialiasing = true, front = false},
-    {name = 'cristal2', path = 'eye/espejos/2', x = 2600, y = 480, scaleX = 0.6, scaleY = 0.6, scrollX = 0.95, scrollY = 0.95, alpha = 1, antialiasing = true, front = false},
-    {name = 'cristal3', path = 'eye/espejos/3', x = 2230, y = 480, scaleX = 0.8, scaleY = 0.8, scrollX = 0.98, scrollY = 0.98, alpha = 1, antialiasing = true, front = false},
-    {name = 'cristal4', path = 'eye/espejos/4', x = 2000, y = 620, scaleX = 0.6, scaleY = 0.6, scrollX = 0.98, scrollY = 0.98, alpha = 1, antialiasing = true, front = false},
-    {name = 'cristal5', path = 'eye/espejos/5', x = 1650, y = 600, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, antialiasing = true, front = false},
-    {name = 'cristal6', path = 'eye/espejos/5', x = 1300, y = 600, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, antialiasing = true, front = false},
-    {name = 'cristal7', path = 'eye/espejos/6', x = 1150, y = 620, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, antialiasing = true, front = false},
-    {name = 'cristal8', path = 'eye/espejos/7', x = 800, y = 680, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, antialiasing = true, front = false},
+    {name = 'cristal1', path = 'eye/espejos/1', x = getProperty('dad.x') + 80, y = getProperty('dad.y') - 230, scaleX = 0.65, scaleY = 0.6, scrollX = 0.95, scrollY = 0.95, behindFakeBF = true, alpha = 1, front = false},
+    {name = 'cristal2', path = 'eye/espejos/2', x = 2600, y = 480, scaleX = 0.6, scaleY = 0.6, scrollX = 0.95, scrollY = 0.95, alpha = 1, front = false},
+    {name = 'cristal3', path = 'eye/espejos/3', x = 2230, y = 480, scaleX = 0.8, scaleY = 0.8, scrollX = 0.98, scrollY = 0.98, alpha = 1, front = false},
+    {name = 'cristal4', path = 'eye/espejos/4', x = 2000, y = 620, scaleX = 0.6, scaleY = 0.6, scrollX = 0.98, scrollY = 0.98, alpha = 1, front = false},
+    {name = 'cristal5', path = 'eye/espejos/5', x = 1650, y = 600, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'cristal6', path = 'eye/espejos/5', x = 1300, y = 600, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'cristal7', path = 'eye/espejos/6', x = 1150, y = 620, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'cristal8', path = 'eye/espejos/7', x = 800, y = 680, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, front = false},
 }
 
 local spotlights = {
-    {name = 'spotlight1', path = 'eye/spotlight', x = getProperty('dad.x') + 450, y = 220, scaleX = 1, scaleY = 3, scrollX = 1, scrollY = 1, alpha = 0, blend = 'add', antialiasing = true, front = true},
+    {name = 'spotlight1', path = 'eye/spotlight', x = getProperty('dad.x') + 450, y = 220, scaleX = 1, scaleY = 3, scrollX = 1, scrollY = 1, alpha = 0, blend = 'add', front = true},
 }
 
 local yourselfBG2 = {
-    {name = 'oberlai1', path = 'eye/lyer', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, blend = 'normal', antialiasing = true, front = false},
-    {name = 'build1', path = 'eye/edificio_fondo', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, front = false},
-    {name = 'build2', path = 'eye/edificio_de_adelante', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, front = false},
-    {name = 'piso', path = 'eye/bg', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, antialiasing = true, front = false},
-    {name = 'oberlai', path = 'eye/lyer', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, blend = 'multiply', antialiasing = true, front = true},
+    {name = 'oberlai1', path = 'eye/lyer', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, blend = 'normal', front = false},
+    {name = 'build1', path = 'eye/edificio_fondo', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'build2', path = 'eye/edificio_de_adelante', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'piso', path = 'eye/bg', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'oberlai', path = 'eye/lyer', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, blend = 'multiply', front = true},
 }
 
 local sillyBFsInstances = {
@@ -52,30 +70,31 @@ function onCreate()
         scaleObject(you.name, you.scaleX, you.scaleY)
         setScrollFactor(you.name, you.scrollX, you.scrollY)
         setProperty(you.name..'.alpha', you.alpha)
-        setProperty(you.name..'.antialiasing', you.antialiasing)
         addLuaSprite(you.name, you.front)
         if you.aboveFakeBF then
             setObjectOrder(you.name, getObjectOrder('boyfriendGroup') - 1)
         end
     end
 
+    --[[
     makeLuaSprite('graphFix', nil, 500, 1720)
     makeGraphic('graphFix', screenHeight * 2, screenHeight * 2, '171616')
     setProperty('graphFix.scale.x', 4)
     addLuaSprite('graphFix', false)
+    ]]
 
     for _, spot in ipairs(spotlights) do
         makeLuaSprite(spot.name, spot.path, spot.x, spot.y)
         scaleObject(spot.name, spot.scaleX, spot.scaleY)
         setScrollFactor(spot.name, spot.scrollX, spot.scrollY)
         setProperty(spot.name..'.alpha', spot.alpha)
-        setProperty(spot.name..'.antialiasing', spot.antialiasing)
         if spot.blend then
             setBlendMode(spot.name, spot.blend)
         end
         addLuaSprite(spot.name, spot.front)
     end
 
+    --[[
     for _, yes in ipairs(cristales) do
         makeLuaSprite(yes.name, yes.path, yes.x, yes.y)
         scaleObject(yes.name, yes.scaleX, yes.scaleY)
@@ -89,13 +108,13 @@ function onCreate()
         end
         addLuaSprite(yes.name, yes.front)
     end
+    ]]
 
     for _, rself in ipairs(yourselfBG2) do
         makeLuaSprite(rself.name, rself.path, rself.x, rself.y)
         scaleObject(rself.name, rself.scaleX, rself.scaleY)
         setScrollFactor(rself.name, rself.scrollX, rself.scrollY)
         setProperty(rself.name..'.alpha', rself.alpha)
-        setProperty(rself.name..'.antialiasing', rself.antialiasing)
         addLuaSprite(rself.name, rself.front)
         if rself.blend then
             setBlendMode(rself.name, rself.blend)
@@ -112,7 +131,7 @@ function onCreate()
         createInstance(inst.name, 'objects.Character', {inst.x, inst.y, inst.sprite, inst.idk})
         addInstance(inst.name)
         setProperty(inst.name..'.alpha', inst.alpha)
-        setObjectOrder(inst.name, getObjectOrder('piso2'))
+        --setObjectOrder(inst.name, getObjectOrder('piso2'))
     end
 end
 

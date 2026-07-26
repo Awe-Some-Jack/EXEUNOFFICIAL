@@ -1,4 +1,6 @@
 local postCreate = false
+local isShown = false
+
 function onCreatePost()
 	postCreate = true
 
@@ -26,7 +28,7 @@ function onCreatePost()
 	setObjectCamera('iconOppP', 'hud')
 	setProperty('iconOppP.antialiasing', false)
 	scaleObject('iconOppP', 0.5, 0.5)
-	callMethod('iconOppP.setPosition', {-iconOffset + initialY, -iconOffset + (downscroll and (-(initialY / 2) + (screenHeight - 75) - (75 + (initialY / 2))) or initialY)})
+	callMethod('iconOppP.setPosition', {-iconOffset + initialY, -iconOffset + (downscroll and (-(initialY / 2) + (screenHeight - 75) - (75 + (initialY / 2))) or (initialY + 75))})
 	addInstance('iconOppP')
 	makeHUDSprite('futureHealthOpp', 'health', getProperty('iconOppP.x') + iconOffset + 72, getProperty('iconOppP.y') + iconOffset + 18)
 
@@ -39,13 +41,15 @@ function onCreatePost()
 	setProperty('iconOppP.alpha', 0)
 	setProperty('futureHealthBF.alpha', 0)
 	setProperty('futureHealthOpp.alpha', 0)
+
+	updateHUD()
 end
 
 function onUpdateScore() if postCreate then updateHUD() end end
 
 local oldScore = {0, 0, 0, 0}
 function updateHUD()
-	if curBeat < 132 or curBeat >= 200 then return end
+	local a = isShown and 1 or 0
 
 	--score
 	local splittedScore = splitShit(score)
@@ -53,6 +57,7 @@ function updateHUD()
 		local tag = 'scoreNum'..i
 		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedScore[i], 308 - ((i - 1) * 24), getProperty('scoreText.y'), true) end
 		setProperty(tag..'.animation.curAnim.curFrame', (splittedScore[i] == '-' and 11 or splittedScore[i]))
+		setProperty(tag..'.alpha', a)
 	end
 	if #splittedScore ~= oldScore[1] then for i = 1,oldScore[1] do if i > #splittedScore and luaSpriteExists('scoreNum'..i) then removeLuaSprite('scoreNum'..i) end end end
 	oldScore[1] = #splittedScore
@@ -63,6 +68,7 @@ function updateHUD()
 		local tag = 'missesNum'..i
 		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedMisses[i], 308 - ((i - 1) * 24), getProperty('missesText.y'), true) end
 		setProperty(tag..'.animation.curAnim.curFrame', splittedMisses[i])
+		setProperty(tag..'.alpha', a)
 	end
 	if #splittedMisses ~= oldScore[2] then for i = 1,oldScore[2] do if i > #splittedMisses and luaSpriteExists('missesNum'..i) then removeLuaSprite('missesNum'..i) end end end
 	oldScore[2] = #splittedMisses
@@ -73,6 +79,7 @@ function updateHUD()
 		local tag = 'healthNum'..i
 		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealth[i], 117 + ((i - 1) * 24), getProperty('futureHealthBF.y') + 15, true) end
 		setProperty(tag..'.animation.curAnim.curFrame', (splittedHealth[i] == '-' and 11 or (splittedHealth[i] == '%' and 12 or splittedHealth[i])))
+		setProperty(tag..'.alpha', a)
 	end
 	if #splittedHealth ~= oldScore[3] then for i = 1,oldScore[3] do if i > #splittedHealth and luaSpriteExists('healthNum'..i) then removeLuaSprite('healthNum'..i) end end end
 	oldScore[3] = #splittedHealth
@@ -83,6 +90,7 @@ function updateHUD()
 		local tag = 'health2Num'..i
 		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealthOpp[i], 117 + ((i - 1) * 24), getProperty('futureHealthOpp.y') + 15, true) end
 		setProperty(tag..'.animation.curAnim.curFrame', (splittedHealthOpp[i] == '-' and 11 or (splittedHealthOpp[i] == '%' and 12 or splittedHealthOpp[i])))
+		setProperty(tag..'.alpha', a)
 	end
 	if #splittedHealthOpp ~= oldScore[4] then for i = 1,oldScore[4] do if i > #splittedHealthOpp and luaSpriteExists('health2Num'..i) then removeLuaSprite('health2Num'..i) end end end
 	oldScore[4] = #splittedHealthOpp
@@ -93,8 +101,10 @@ end
 
 local oldTime = ''
 function onUpdatePost()
-	if curBeat >= 132 and curBeat < 200 and getProperty('scoreText.alpha') == 0 then
-		updateHUD()
+	local shouldShow = curBeat >= 132 and curBeat < 200
+
+	if shouldShow and not isShown then
+		isShown = true
 		setProperty('scoreText.alpha', 1)
 		setProperty('timeText.alpha', 1)
 		setProperty('missesText.alpha', 1)
@@ -113,17 +123,11 @@ function onUpdatePost()
 		setProperty('iconBF.alpha', 0)
 		setProperty('iconOpp.alpha', 0)
 
-		for i = 0,10 do
-			if i < 4 then setProperty('strumLineNotes.members['..i..'].x', -1000) end
+		for i = 0,3 do setProperty('strumLineNotes.members['..i..'].x', -1000) end
 
-			if luaSpriteExists('scoreNum'..i) then setProperty('scoreNum'..i..'.alpha', 1) end
-			if luaSpriteExists('missesNum'..i) then setProperty('missesNum'..i..'.alpha', 1) end
-			if luaSpriteExists('timeNum'..i) then setProperty('timeNum'..i..'.alpha', 1) end
-			if luaSpriteExists('healthNum'..i) then setProperty('healthNum'..i..'.alpha', 1) end if luaSpriteExists('health2Num'..i) then setProperty('health2Num'..i..'.alpha', 1) end
-		end
-	end
-
-	if curBeat >= 200 and getProperty('scoreText.alpha') == 1 then
+		updateHUD()
+	elseif not shouldShow and isShown then
+		isShown = false
 		setProperty('scoreText.alpha', 0)
 		setProperty('timeText.alpha', 0)
 		setProperty('missesText.alpha', 0)
@@ -146,17 +150,11 @@ function onUpdatePost()
 		setProperty('iconBF.alpha', 1)
 		setProperty('iconOpp.alpha', 1)
 
-		for i = 0,10 do
-			if i < 4 then setProperty('strumLineNotes.members['..i..'].x', _G['defaultOpponentStrumX'..i]) end
+		for i = 0,3 do setProperty('strumLineNotes.members['..i..'].x', _G['defaultOpponentStrumX'..i]) end
 
-			if luaSpriteExists('scoreNum'..i) then setProperty('scoreNum'..i..'.alpha', 0) end
-			if luaSpriteExists('missesNum'..i) then setProperty('missesNum'..i..'.alpha', 0) end
-			if luaSpriteExists('timeNum'..i) then setProperty('timeNum'..i..'.alpha', 0) end
-			if luaSpriteExists('healthNum'..i) then setProperty('healthNum'..i..'.alpha', 0) end if luaSpriteExists('health2Num'..i) then setProperty('health2Num'..i..'.alpha', 0) end
-		end
+		updateHUD()
 	end
 
-	if curBeat < 132 or curBeat >= 200 then return end
 	if not inGameOver then
 		--time
 		local daTime = formatTime(bound(getSongPosition() - noteOffset, 0, songLength))
@@ -165,7 +163,8 @@ function onUpdatePost()
 			for i = 1,math.max(#splittedTime, 1) do
 				local tag = 'timeNum'..i
 				if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedTime[i], 164 + ((i - 1) * 24), getProperty('timeText.y'), true) end
-				setProperty(tag..'.animation.curAnim.curFrame', (splittedTime[i] == ':' and 10 or splittedTime[i]))
+				setProperty(tag..'.animation.curAnim.curFrame', (splittedTime[i] == ':' and 10 or (splittedTime[i] == ';' and 11 or splittedTime[i])))
+				setProperty(tag..'.alpha', isShown and 1 or 0)
 			end
 			oldTime = daTime
 		end

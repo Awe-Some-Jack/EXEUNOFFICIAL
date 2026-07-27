@@ -2459,26 +2459,32 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 
 			if (changed)
 			{
-				var textureLoad:String = 'images/${noteTextureInputText.text}.png';
-				if (Paths.fileExists(textureLoad, IMAGE) || noteTextureInputText.text.trim() == '')
+				var textureLoad:String = null;
+
+				for (exts in Paths.IMAGE_EXTS)
 				{
-					for (note in notes)
+					textureLoad = 'images/${noteTextureInputText.text}.$exts';
+					if (Paths.fileExists(textureLoad, IMAGE) || noteTextureInputText.text.trim() == '')
 					{
-						if (note == null) continue;
-						note.reloadNote(note.texture);
-		
-						if (note.width > note.height)
-							note.setGraphicSize(GRID_SIZE);
-						else
-							note.setGraphicSize(0, GRID_SIZE);
-		
-						note.updateHitbox();
+						for (note in notes)
+						{
+							if (note == null) continue;
+							note.reloadNote(note.texture);
+			
+							if (note.width > note.height)
+								note.setGraphicSize(GRID_SIZE);
+							else
+								note.setGraphicSize(0, GRID_SIZE);
+			
+							note.updateHitbox();
+						}
+						if (noteTextureInputText.text.trim().length > 0) showOutput('Reloaded notes to: "$textureLoad"');
+						else showOutput('Reloaded notes to default texture');
+						
+						break;
 					}
-					if (noteTextureInputText.text.trim().length > 0) showOutput('Reloaded notes to: "$textureLoad"');
-					else showOutput('Reloaded notes to default texture');
-					
+					else showOutput('ERROR: "$textureLoad" not found.', true);
 				}
-				else showOutput('ERROR: "$textureLoad" not found.', true);
 			}
 		};
 	

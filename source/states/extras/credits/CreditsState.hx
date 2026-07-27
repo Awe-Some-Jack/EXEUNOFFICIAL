@@ -96,12 +96,27 @@ class CreditsState extends MusicBeatSubstate
 
                 final card = new FlxSprite(8, cardY).makeGraphic(cardW, 44-4, 0x00000000, true);
                 card.pixels.fillRect(card.pixels.rect, 0x22FFFFFF);
+
                 final csh2 = new shaders.RoundedBorderShader(10.0, 0.0, 0xFF000000); csh2.setSize(cardW, 44-4); card.shader = csh2;
                 card.camera = cam; add(card); cardBgs.push(card);
 
-                final iconPath = 'assets/exe/extras/credits/${def.key}/icons/${entry.icon}.png';
+                var iconPath:String = null;
+                if (entry.icon != null)
+                {
+                    final basePath = 'assets/exe/extras/credits/${def.key}/icons/${entry.icon}';
+                    for (ext in Paths.IMAGE_EXTS)
+                    {
+                        final testPath = '$basePath.$ext';
+                        if (Paths.fileExists(testPath))
+                        {
+                            iconPath = testPath;
+                            break;
+                        }
+                    }
+                }
+
                 var textOffX = 8 * 2;
-                if (entry.icon != null && sys.FileSystem.exists(iconPath))
+                if (iconPath != null)
                 {
                     final ic = new FlxSprite(8*2, cardY + (44-4-30)*0.5).loadGraphic(iconPath);
                     ic.setGraphicSize(30, 30); ic.updateHitbox();
@@ -112,7 +127,7 @@ class CreditsState extends MusicBeatSubstate
                 final txt = new FlxText(textOffX, cardY + (44-4-20)*0.5, cardW - textOffX - 8, entry.name)
                     .setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(20), 0xFFFFFFFF, LEFT, NONE);
                 txt.camera = cam; add(txt); nameTexts.push(txt);
-            }
+}
 
             columns.push({key: def.key, cam: cam, nameTexts: nameTexts, cardBgs: cardBgs});
 
@@ -257,23 +272,41 @@ private class CreditPopup extends MusicBeatSubstate
     }
 
     function buildHeader():Void
-    {
-        final col = CreditsState.userSelected[0];
-        final iconPath = 'assets/exe/extras/credits/$col/icons/${user.icon}.png';
-        userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(
-            user.icon != null && sys.FileSystem.exists(iconPath) ? iconPath : 'assets/exe/extras/credits/missing_icon.png');
-        userIcon.camera = popCam; fit(userIcon, 100, 100); savedIconScale = userIcon.scale.x; add(userIcon);
+	{
+		function resolveImagePath(basePath:String, param:Dynamic, fallback:String):String
+		{
+			if (param != null)
+			{
+				for (ext in Paths.IMAGE_EXTS)
+				{
+					final path = basePath + '.' + ext;
+					if (Paths.fileExists(path)) return path;
+				}
+			}
+			return fallback;
+		}
 
-        final nm = new FlxText(0, 0, bg.width - 100, user.name ?? "Unknown");
-        nm.setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(76), 0xFFFFFFFF, LEFT, OUTLINE, 0x55000000);
-        nm.borderSize = Language.cjkBorder(3); nm.setPosition(userIcon.x + userIcon.width + 25, userIcon.y + (userIcon.height - nm.height) / 2);
-        nm.camera = popCam; add(nm);
+		final col = CreditsState.userSelected[0];
+		
+		final iconBase = 'assets/exe/extras/credits/$col/icons/${user.icon}';
+		final iconPath = resolveImagePath(iconBase, user.icon, 'assets/exe/extras/credits/missing_icon.webp');
+		
+		userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(iconPath);
+		userIcon.camera = popCam; fit(userIcon, 100, 100); savedIconScale = userIcon.scale.x; add(userIcon);
 
-        final flagPath = 'assets/exe/extras/credits/countries/${user.nation}.png';
-        final flag = new FlxSprite().loadGraphic(user.nation != null && sys.FileSystem.exists(flagPath) ? flagPath : 'assets/exe/extras/credits/missing_country.png');
-        flag.setPosition(Std.int(nm.x + nm.textField.textWidth + 15), Std.int(nm.y + (nm.height - flag.height) / 2));
-        flag.camera = popCam; add(flag);
-    }
+		final nm = new FlxText(0, 0, bg.width - 100, user.name ?? "Unknown");
+		nm.setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(76), 0xFFFFFFFF, LEFT, OUTLINE, 0x55000000);
+		nm.borderSize = Language.cjkBorder(3); nm.setPosition(userIcon.x + userIcon.width + 25, userIcon.y + (userIcon.height - nm.height) / 2);
+		nm.camera = popCam; add(nm);
+
+		// 2. Ищем флаг
+		final flagBase = 'assets/exe/extras/credits/countries/${user.nation}';
+		final flagPath = resolveImagePath(flagBase, user.nation, 'assets/exe/extras/credits/missing_country.webp');
+		
+		final flag = new FlxSprite().loadGraphic(flagPath);
+		flag.setPosition(Std.int(nm.x + nm.textField.textWidth + 15), Std.int(nm.y + (nm.height - flag.height) / 2));
+		flag.camera = popCam; add(flag);
+	}
 
     function buildDescription():Void
     {
@@ -328,7 +361,7 @@ private class CreditPopup extends MusicBeatSubstate
     function buildExplosion():Void
     {
         explosion = new FlxSprite(userIcon.x - 50, userIcon.y - 100);
-        explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow('assets/exe/extras/credits/explosion.png', 'assets/exe/extras/credits/explosion.xml');
+        explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow('assets/exe/extras/credits/explosion.webp', 'assets/exe/extras/credits/explosion.xml');
         explosion.animation.addByPrefix('idle', 'idle', 16, false);
         explosion.animation.play('idle');
         explosion.scale.set(3, 3); explosion.antialiasing = false; explosion.updateHitbox();
@@ -346,7 +379,7 @@ private class CreditPopup extends MusicBeatSubstate
             if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume: 0.3}, 0.6); }
 
             #if VIDEOS_ALLOWED
-            pauseBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/play.png');
+            pauseBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/play.webp');
             pauseBtn.alpha = 0; pauseBtn.camera = popCam;
 
             userVideo = new VideoSprite(0, 0, false);
@@ -380,7 +413,7 @@ private class CreditPopup extends MusicBeatSubstate
         var sy = quoteCam.y + quoteCam.height + 10;
         if (user.youtube != null)
         {
-            youtubeBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/youtube.png');
+            youtubeBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/youtube.webp');
             youtubeBtn.setPosition(quoteCam.x - youtubeBtn.width - 15, sy - youtubeBtn.height);
             youtubeBtn.camera = popCam; youtubeBtn.color = 0xFF686868;
             youtubeBtn.scale.set(0.9, 0.9); youtubeBtn.updateHitbox(); add(youtubeBtn);
@@ -388,7 +421,7 @@ private class CreditPopup extends MusicBeatSubstate
         }
         if (user.twitter != null)
         {
-            twitterBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/twitter.png');
+            twitterBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/twitter.webp');
             twitterBtn.setPosition(quoteCam.x - twitterBtn.width - 15, sy - twitterBtn.height);
             twitterBtn.camera = popCam; twitterBtn.color = 0xFF686868;
             twitterBtn.scale.set(0.9, 0.9); twitterBtn.updateHitbox(); add(twitterBtn);
@@ -448,14 +481,14 @@ private class CreditPopup extends MusicBeatSubstate
         {
             userVideo.pause();
             FlxTween.cancelTweensOf(pauseBtn); FlxTween.cancelTweensOf(pauseBtn.scale);
-            pauseBtn.loadGraphic('assets/exe/extras/credits/pause.png');
+            pauseBtn.loadGraphic('assets/exe/extras/credits/pause.webp');
             pauseBtn.scale.set(1,1); pauseBtn.alpha = 1;
             if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume:1}, 0.6); }
         }
         else
         {
             userVideo.resume();
-            pauseBtn.loadGraphic('assets/exe/extras/credits/play.png');
+            pauseBtn.loadGraphic('assets/exe/extras/credits/play.webp');
             FlxTween.tween(pauseBtn.scale, {x:0,y:0}, 0.3);
             FlxTween.tween(pauseBtn, {alpha:0}, 0.3);
             if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume:0.3}, 0.6); }

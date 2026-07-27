@@ -41,7 +41,15 @@ class StrumNote extends FlxSprite
 			: Note.defaultNoteSkin;
 
 		final customSkin:String = skin + Note.getNoteSkinPostfix();
-		if (Paths.fileExists('images/$customSkin.png', IMAGE)) skin = customSkin;
+
+		for (ext in Paths.IMAGE_EXTS) 
+		{
+			if (Paths.fileExists('images/$customSkin.$ext', IMAGE)) 
+			{
+				skin = customSkin;
+				break;
+			}
+		}
 
 		texture = skin;
 		scrollFactor.set();

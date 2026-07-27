@@ -198,7 +198,7 @@ class Cutscene extends MusicBeatSubstate
 
     function createBox():Void
     {
-        box = new FlxSprite(BOX_FINAL_X, BOX_FINAL_Y).loadGraphic(Paths.getBitmapData("assets/exe/extras/box.png"));
+        box = new FlxSprite(BOX_FINAL_X, BOX_FINAL_Y).loadGraphic(Paths.getBitmapData("assets/exe/extras/box.webp"));
         box.scale.set(BOX_FINAL_SCALE, BOX_FINAL_SCALE);
         box.updateHitbox();
         add(box);
@@ -211,7 +211,7 @@ class Cutscene extends MusicBeatSubstate
             {x: -2, y: 0},                  {x: 2, y: 0},
             {x: -2, y: 2},  {x: 0, y: 2},  {x: 2, y: 2}
         ];
-        final discoBmp = Paths.getBitmapData("assets/exe/extras/disco.png");
+        final discoBmp = Paths.getBitmapData("assets/exe/extras/disco.webp");
         for (offset in shadowOffsets)
         {
             final s = new FlxSprite(61 + offset.x, 541 + offset.y).loadGraphic(discoBmp);
@@ -345,7 +345,7 @@ class Cutscene extends MusicBeatSubstate
             }
         }
 
-        final selBmp = Paths.getBitmapData("assets/exe/extras/select.png");
+        final selBmp = Paths.getBitmapData("assets/exe/extras/select.webp");
         final capW = 80;
         final selH = selBmp.height;
         final midW = selBmp.width - capW * 2;
@@ -551,7 +551,7 @@ class Cutscene extends MusicBeatSubstate
         bg.shader = hudShader;
         _hud.add(bg);
 
-        _hudBtn = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/pause.png'));
+        _hudBtn = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/pause.webp'));
         final btnScale = BTN_SIZE / Math.max(_hudBtn.width, _hudBtn.height);
         _hudBtn.scale.set(btnScale, btnScale);
         _hudBtn.updateHitbox();
@@ -603,8 +603,8 @@ class Cutscene extends MusicBeatSubstate
     {
         if (_hudBtn == null) return;
         _hudBtn.loadGraphic(Paths.getBitmapData(_vidPaused
-            ? 'assets/exe/extras/credits/play.png'
-            : 'assets/exe/extras/credits/pause.png'));
+            ? 'assets/exe/extras/credits/play.webp'
+            : 'assets/exe/extras/credits/pause.webp'));
         final btnScale = BTN_SIZE / Math.max(_hudBtn.frameWidth, _hudBtn.frameHeight);
         _hudBtn.scale.set(btnScale, btnScale);
         _hudBtn.updateHitbox();

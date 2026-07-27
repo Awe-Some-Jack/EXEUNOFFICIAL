@@ -1,5 +1,8 @@
 package objects;
 
+import flixel.FlxSprite;
+import flixel.graphics.FlxGraphic;
+
 class HealthIcon extends FlxSprite
 {
 	public var sprTracker:FlxSprite;
@@ -23,15 +26,25 @@ class HealthIcon extends FlxSprite
 	}
 
 	private var iconOffsets:Array<Float> = [0, 0];
+
 	public function changeIcon(char:String, ?allowGPU:Bool = true) {
 		if(this.char != char) {
 			var name:String = 'icons/' + char;
-			if(!Paths.fileExists('images/' + name + '.png', IMAGE)) name = 'icons/icon-' + char; //Older versions of psych engine's support
-			if(!Paths.fileExists('images/' + name + '.png', IMAGE)) name = 'icons/icon-face'; //Prevents crash from missing icon
-			
-			var graphic = Paths.image(name, allowGPU);
+			var graphic:FlxGraphic = Paths.image(name, null, allowGPU);
+
+			if (graphic == null) {
+				name = 'icons/icon-$char';
+				graphic = Paths.image(name, null, allowGPU);
+			}
+
+			if (graphic == null) {
+				name = 'icons/icon-face';
+				graphic = Paths.image(name, null, allowGPU);
+			}
+
 			var iSize:Float = Math.round(graphic.width / graphic.height);
 			loadGraphic(graphic, true, Math.floor(graphic.width / iSize), Math.floor(graphic.height));
+			
 			iconOffsets[0] = (width - 150) / iSize;
 			iconOffsets[1] = (height - 150) / iSize;
 			updateHitbox();

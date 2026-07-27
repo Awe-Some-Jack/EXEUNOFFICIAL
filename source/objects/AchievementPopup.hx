@@ -30,12 +30,16 @@ class AchievementPopup extends openfl.display.Sprite {
 		if(achievement != null) Mods.currentModDirectory = achievement.mod != null ? achievement.mod : '';
 		#end
 
-		if(Paths.fileExists('images/$image-pixel.png', IMAGE))
+		for (exts in Paths.IMAGE_EXTS)
 		{
-			graphic = Paths.image('$image-pixel', false);
-			hasAntialias = false;
+			if(Paths.fileExists('images/$image-pixel.$exts', IMAGE))
+			{
+				graphic = Paths.image('$image-pixel', false);
+				hasAntialias = false;
+				break;
+			}
+			else graphic = Paths.image(image, false);
 		}
-		else graphic = Paths.image(image, false);
 
 		#if MODS_ALLOWED
 		Mods.currentModDirectory = lastMod;

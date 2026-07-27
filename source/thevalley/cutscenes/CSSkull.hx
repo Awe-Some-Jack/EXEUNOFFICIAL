@@ -46,7 +46,7 @@ class CSSkull
 		_state.add(_dimmer);
 
 		_hand = new FlxSprite(0, 0);
-		_hand.loadGraphic("assets/shared/images/minigame/thevalley/bg/cutscene/CSkull/gfhand.png");
+		_hand.loadGraphic(Paths.image("minigame/thevalley/bg/cutscene/CSkull/gfhand"));
 		_hand.scale.set(2.0, 2.0);
 		_hand.updateHitbox();
 		_hand.scrollFactor.set(0, 0);
@@ -55,7 +55,7 @@ class CSSkull
 		_state.add(_hand);
 
 		_ball = new FlxSprite(0, 0);
-		_ball.loadGraphic("assets/shared/images/minigame/thevalley/bg/cutscene/CSkull/gfball.png");
+		_ball.loadGraphic(Paths.image("minigame/thevalley/bg/cutscene/CSkull/gfball"));
 		_ball.scale.set(3.2, 3.2);
 		_ball.updateHitbox();
 		_ball.scrollFactor.set(0, 0);

@@ -52,7 +52,7 @@ class EXEFreeplay extends MusicBeatState
 	static inline final ARROW_UPDATE_INTERVAL:Float = 0.5;
 	static inline final TWEEN_DURATION:Float = 0.3;
 
-	static inline final PATH_FREEBOX:String = 'assets/exe/freeplayassets/FreeBox.png';
+	static inline final PATH_FREEBOX:String = 'assets/exe/freeplayassets/FreeBox.webp';
 	static inline final PATH_COVERS:String = 'assets/exe/freeplayassets/covers/';
 	static inline final FONT_PATH:String = 'assets/fonts/sonicfree.otf';
 
@@ -323,7 +323,7 @@ class EXEFreeplay extends MusicBeatState
 	function maniaNotif():Void 
 	{
 		final maniaNotifSprite = new FlxSprite();
-		maniaNotifSprite.loadGraphic(Paths.getBitmapData('assets/exe/access/mania/mania-notif.png'));
+		maniaNotifSprite.loadGraphic(Paths.getBitmapData('assets/exe/access/mania/mania-notif.webp'));
 		maniaNotifSprite.scale.set(0.3, 0.3);
 		maniaNotifSprite.setPosition(250, -340);
 		add(maniaNotifSprite);
@@ -369,8 +369,8 @@ class EXEFreeplay extends MusicBeatState
 		centerX = FlxG.width / 2;
 		centerY = FlxG.height / 2;
 
-		final screenstaticFrames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.png', 'assets/exe/story/screenstatic.xml');
-		final placeholderBitmap = loadRawBitmap(PATH_COVERS + 'placeholder.png') ?? loadRawBitmap('assets/exe/freeplayassets/placeholder.png');
+		final screenstaticFrames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.webp', 'assets/exe/story/screenstatic.xml');
+		final placeholderBitmap = loadRawBitmap(PATH_COVERS + 'placeholder.webp') ?? loadRawBitmap('assets/exe/freeplayassets/placeholder.webp');
 		final entryLangFont = Paths.font(Language.getFontForLanguage());
 		final entryExeSize = Language.cjkSize(EXE_LABEL_SIZE);
 		final translatedLabels = Language.getArray('freeplay.labels', []);
@@ -387,7 +387,7 @@ class EXEFreeplay extends MusicBeatState
 			final proxy = new FlxObject(0, 0);
 			cardPositions.push(proxy);
 
-			final coverPath = PATH_COVERS + Paths.formatToSongPath(firstSong.songName) + '.png';
+			final coverPath = PATH_COVERS + Paths.formatToSongPath(firstSong.songName) + '.webp';
 			final coverBitmap = loadRawBitmap(coverPath) ?? placeholderBitmap;
 
 			if (coverBitmap != null)
@@ -670,10 +670,10 @@ class EXEFreeplay extends MusicBeatState
 		if (songSelector < 0 || songSelector >= entry.songs.length) return;
 
 		final songName = entry.songs[songSelector].songName;
-		final coverPath = PATH_COVERS + Paths.formatToSongPath(songName) + '.png';
+		final coverPath = PATH_COVERS + Paths.formatToSongPath(songName) + '.webp';
 
 		var bmp = loadRawBitmap(coverPath);
-		bmp ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.png');
+		bmp ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.webp');
 		
 		final cover = covers.members[selectedBox];
 		final ss = staticScreens.members[selectedBox];
@@ -796,8 +796,8 @@ class EXEFreeplay extends MusicBeatState
 		if (entry != null && entry.songs.length > 0)
 		{
 			final firstSong = entry.songs[0].songName;
-			var bmp = loadRawBitmap(PATH_COVERS + Paths.formatToSongPath(firstSong) + '.png');
-			bmp ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.png');
+			var bmp = loadRawBitmap(PATH_COVERS + Paths.formatToSongPath(firstSong) + '.webp');
+			bmp ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.webp');
 			
 			final cover = covers.members[selectedBox];
 			final ss = staticScreens.members[selectedBox];
@@ -1190,7 +1190,7 @@ class EXEFreeplay extends MusicBeatState
 
 	function loadBgSonic():Void
 	{
-		final bmp = loadRawBitmap('assets/exe/freeplayassets/bgsonic.png');
+		final bmp = loadRawBitmap('assets/exe/freeplayassets/bgsonic.webp');
 		if (bmp == null) return;
 		
 		bgSonic = new FlxBackdrop(bmp, FlxAxes.X);
@@ -1244,7 +1244,7 @@ class EXEFreeplay extends MusicBeatState
 
 	function loadDegradado():Void
 	{
-		final bmp = loadRawBitmap('assets/exe/freeplayassets/degradado.png');
+		final bmp = loadRawBitmap('assets/exe/freeplayassets/degradado.webp');
 		if (bmp == null) return;
 		
 		degradado = new FlxSprite(0, FlxG.height).loadGraphic(bmp);
@@ -1258,7 +1258,7 @@ class EXEFreeplay extends MusicBeatState
 
 	function loadSpikesUp():Void
 	{
-		final bmp = loadRawBitmap('assets/exe/freeplayassets/spikesup.png');
+		final bmp = loadRawBitmap('assets/exe/freeplayassets/spikesup.webp');
 		if (bmp == null) return;
 		
 		spikesUp = new FlxBackdrop(bmp, FlxAxes.X);

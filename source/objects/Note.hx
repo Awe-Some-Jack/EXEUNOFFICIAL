@@ -304,10 +304,14 @@ class Note extends FlxSprite
 		final customSkin:String = skin + skinPostfix;
 		final path:String = PlayState.isPixelStage ? 'pixelUI/' : '';
 
-		if (customSkin == _lastValidChecked || Paths.fileExists('images/$path$customSkin.png', IMAGE))
+		for (exts in Paths.IMAGE_EXTS)
 		{
-			skin = customSkin;
-			_lastValidChecked = customSkin;
+			if (customSkin == _lastValidChecked || Paths.fileExists('images/$path$customSkin.$exts', IMAGE))
+			{
+				skin = customSkin;
+				_lastValidChecked = customSkin;
+				break;
+			}
 		}
 
 		if (PlayState.isPixelStage)

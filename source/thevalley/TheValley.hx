@@ -305,7 +305,7 @@ _vigLeft = FlxGradient.createGradientFlxSprite(420, 896, [0xAA000000, 0x00000000
 	public function spawnTree(wx:Float, wy:Float):FlxSprite
 	{
 		var t = new FlxSprite(wx, wy);
-		t.loadGraphic("assets/shared/images/minigame/thevalley/map/1/tree.png");
+		t.loadGraphic(Paths.image("minigame/thevalley/map/1/tree"));
 		t.scrollFactor.set(1, 1);
 		trees.push(t);
 		treeGroup.add(t);

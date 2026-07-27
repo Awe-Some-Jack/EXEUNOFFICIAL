@@ -29,6 +29,11 @@ class Paths
 {
 	public static final SOUND_EXT = #if web "mp3" #else "ogg" #end;
 	public static final VIDEO_EXTS:Array<String> = ["mp4", "avi", "mkv", "mov", "wmv", "flv", "webm"];
+	public static final IMAGE_EXTS:Array<String> = [
+		"png", "jpg", "jpeg", "bmp", "tga", "webp", "avif", "tif", "tiff", 
+		"jxl", "pcx", "xcf", "xpm", "qoi", "lbm", "iff", "pnm", "ppm", "pgm", "pbm",
+		#if mobile ".astc" #end
+	];
 
 	//for backward compatibility
     public static final VIDEO_EXT = VIDEO_EXTS[0];
@@ -272,14 +277,25 @@ class Paths
 	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
 	static public function image(key:String, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxGraphic
 	{
-		key = Language.getFileTranslation('images/$key') + '.png';
-		var bitmap:BitmapData = null;
-		if (currentTrackedAssets.exists(key))
+		var translatedKey:String = Language.getFileTranslation('images/$key');
+		var finalKey:String = translatedKey + '.webp';
+
+		for (ext in IMAGE_EXTS)
 		{
-			localTrackedAssets.push(key);
-			return currentTrackedAssets.get(key);
+			if (fileExists(translatedKey + '.' + ext, IMAGE, false, parentFolder))
+			{
+				finalKey = translatedKey + '.' + ext;
+				break;
+			}
 		}
-		return cacheBitmap(key, parentFolder, bitmap, allowGPU);
+
+		var bitmap:BitmapData = null;
+		if (currentTrackedAssets.exists(finalKey))
+		{
+			localTrackedAssets.push(finalKey);
+			return currentTrackedAssets.get(finalKey);
+		}
+		return cacheBitmap(finalKey, parentFolder, bitmap, allowGPU);
 	}
 
 	public static function cacheBitmap(key:String, ?parentFolder:String = null, ?bitmap:BitmapData, ?allowGPU:Bool = true):FlxGraphic
@@ -331,7 +347,7 @@ class Paths
 			bitmap.readable = true;
 		}
 
-		var graph:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, key);
+		final graph:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, key);
 		graph.persist = true;
 		graph.destroyOnNoUse = false;
 
@@ -361,17 +377,35 @@ class Paths
 	}
 
 	public static function getBitmapData(key:String, ?useCache:Bool = true) {
-		final suffixes:Array<String> = #if mobile ['.astc', '.png'] #else ['.png'] #end;
-		key = key.substr(0, key.length-4);
-		for(suffix in suffixes) {
-			try {
-				if(#if sys FileSystem.exists(key+suffix) || #end OpenFlAssets.exists(key+suffix)) {
-					return OpenFlAssets.getBitmapData(key+suffix, useCache);
+		var lastDot:Int = key.lastIndexOf('.');
+		var baseKey:String = lastDot != -1 ? key.substr(0, lastDot) : key;
+
+		for (ext in IMAGE_EXTS) 
+		{
+			var testPath:String = '$baseKey.$ext';
+
+			#if sys
+			if (sys.FileSystem.exists(testPath)) 
+			{
+				try {
+					return BitmapData.fromFile(testPath);
+				} catch (e:Dynamic) {
+					trace('Error loading bitmap from sys: $testPath ($e)');
 				}
-			} catch (e:Dynamic) {
-				trace(e);
+			}
+			#end
+
+			if (OpenFlAssets.exists(testPath)) 
+			{
+				try {
+					return OpenFlAssets.getBitmapData(testPath, useCache);
+				} catch (e:Dynamic) {
+					trace('Error loading bitmap from OpenFL Assets: $testPath ($e)');
+				}
 			}
 		}
+
+		trace('BitmapData not found for key: $key');
 		return null;
 	}
 
@@ -625,8 +659,16 @@ class Paths
 	inline static public function modsSounds(path:String, key:String)
 		return modFolders(path + '/' + key + '.' + SOUND_EXT);
 
-	inline static public function modsImages(key:String)
-		return modFolders('images/' + key + '.png');
+	static public function modsImages(key:String)
+	{
+		for (ext in IMAGE_EXTS)
+		{
+			final fileToCheck:String = modFolders('images/' + key + '.' + ext);
+			if (#if sys sys.FileSystem.exists(fileToCheck) || #end OpenFlAssets.exists(fileToCheck)) return fileToCheck;
+		}
+		
+		return modFolders('images/' + key + '.webp');
+	}
 
 	inline static public function modsXml(key:String)
 		return modFolders('images/' + key + '.xml');

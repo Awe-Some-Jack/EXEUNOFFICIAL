@@ -70,7 +70,7 @@ class LoadingState extends MusicBeatState
 		Paths.clearUnusedMemory();
 
 		var logo:FlxSprite = new FlxSprite();
-		logo.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.png', 'assets/exe/ring.xml');
+		logo.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.webp', 'assets/exe/ring.xml');
 		logo.animation.addByPrefix('idle', 'idle', 60, true);
 		logo.animation.play('idle', true);
 		logo.scale.set(0.35, 0.35);
@@ -321,8 +321,12 @@ class LoadingState extends MusicBeatState
 			var noteSkin:String = Note.defaultNoteSkin;
 			if(PlayState.SONG.arrowSkin?.length > 1) noteSkin = PlayState.SONG.arrowSkin;
 	
-			var customSkin:String = noteSkin + Note.getNoteSkinPostfix();
-			if(Paths.fileExists('images/$customSkin.png', IMAGE)) noteSkin = customSkin;
+			final customSkin:String = noteSkin + Note.getNoteSkinPostfix();
+			for (exts in Paths.IMAGE_EXTS) {
+				if(Paths.fileExists('images/$customSkin.$exts', IMAGE)) noteSkin = customSkin;
+				break;
+			}
+
 			imagesToPrepare.push(noteSkin);
 
 			try
@@ -465,7 +469,7 @@ class LoadingState extends MusicBeatState
 
 	public static function clearInvalids()
 	{
-		clearInvalidFrom(imagesToPrepare, 'images', '.png', IMAGE);
+		clearInvalidFrom(imagesToPrepare, 'images', '.webp', IMAGE);
 		clearInvalidFrom(soundsToPrepare, 'sounds', '.${Paths.SOUND_EXT}', SOUND);
 		clearInvalidFrom(musicToPrepare, 'music',' .${Paths.SOUND_EXT}', SOUND);
 		clearInvalidFrom(songsToPrepare, 'songs', '.${Paths.SOUND_EXT}', SOUND, 'songs');
@@ -574,30 +578,6 @@ class LoadingState extends MusicBeatState
 				isAnimateAtlas = true;
 				trace(isAnimateAtlas);
 			#end
-
-			if(!isAnimateAtlas)
-			{
-				var split:Array<String> = img.split(',');
-				for (file in split)
-				{
-					imagesToPrepare.push(file.trim());
-				}
-			}
-			#if flixel_animate
-			else
-			{
-				for (i in 0...10)
-				{
-					var st:String = (i == 0) ? '' : '$i';
-	
-					if(Paths.fileExists('images/$img/spritemap$st.png', IMAGE))
-					{
-						trace("True again");
-						imagesToPrepare.push('$img/spritemap$st');
-					}
-				}
-			}
-			#end
 	
 			if (prefixVocals != null && character.vocals_file?.length > 0)
 			{
@@ -667,7 +647,7 @@ class LoadingState extends MusicBeatState
 			#if TRANSLATIONS_ALLOWED requestKey = Language.getFileTranslation(requestKey);
 			#end
 			
-			if (requestKey.endsWith('.png'))
+			if (requestKey.endsWith('.webp'))
 				requestKey = requestKey.substr(0, requestKey.length - 4);
 
 			if (!Paths.currentTrackedAssets.exists(requestKey))

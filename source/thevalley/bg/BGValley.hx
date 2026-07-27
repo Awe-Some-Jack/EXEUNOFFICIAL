@@ -17,12 +17,12 @@ class BGValley
 
 	// mountains n fog scrollin at diff speeds so it looks 3D-ish you alredy kno
 	static final LAYERS = [
-		{ path: "assets/shared/images/minigame/thevalley/bg/mountain/1-mountain.png", scrollX: 0.005, scrollY: 0.0005, offsetX: 260.0, offsetY: -70.0 },
-		{ path: "assets/shared/images/minigame/thevalley/bg/mountain/2-mountain.png", scrollX: 0.1,  scrollY: 0.02, offsetX: 0.0,   offsetY: -80.0 },
-		{ path: "assets/shared/images/minigame/thevalley/bg/mountain/3-fog.png",      scrollX: 0.15, scrollY: 0.03, offsetX: 0.0,   offsetY: -70.0 },
-		{ path: "assets/shared/images/minigame/thevalley/bg/mountain/4-fog.png",      scrollX: 0.2,  scrollY: 0.04, offsetX: 0.0,   offsetY: -100.0 },
-		{ path: "assets/shared/images/minigame/thevalley/bg/mountain/5-mountain.png", scrollX: 0.3,  scrollY: 0.06, offsetX: 0.0,   offsetY: -110.0 },
-		{ path: "assets/shared/images/minigame/thevalley/bg/mountain/6-fog.png",      scrollX: 0.45, scrollY: 0.09, offsetX: 0.0,   offsetY: -100.0 },
+		{ path: Paths.image("minigame/thevalley/bg/mountain/1-mountain"), scrollX: 0.005, scrollY: 0.0005, offsetX: 260.0, offsetY: -70.0 },
+		{ path: Paths.image("minigame/thevalley/bg/mountain/2-mountain"), scrollX: 0.1,  scrollY: 0.02, offsetX: 0.0,   offsetY: -80.0 },
+		{ path: Paths.image("minigame/thevalley/bg/mountain/3-fog"),      scrollX: 0.15, scrollY: 0.03, offsetX: 0.0,   offsetY: -70.0 },
+		{ path: Paths.image("minigame/thevalley/bg/mountain/4-fog"),      scrollX: 0.2,  scrollY: 0.04, offsetX: 0.0,   offsetY: -100.0 },
+		{ path: Paths.image("minigame/thevalley/bg/mountain/5-mountain"), scrollX: 0.3,  scrollY: 0.06, offsetX: 0.0,   offsetY: -110.0 },
+		{ path: Paths.image("minigame/thevalley/bg/mountain/6-fog"),      scrollX: 0.45, scrollY: 0.09, offsetX: 0.0,   offsetY: -100.0 },
 	];
 
 	public var eclipse:FlxSprite;
@@ -46,14 +46,13 @@ class BGValley
 	public function addSprites():Void
 	{
 		eclipse = new FlxSprite(ECLIPSE_X, ECLIPSE_Y);
-		eclipse.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow(
-			"assets/shared/images/minigame/thevalley/bg/mountain/eclipse.png",
-			"assets/shared/images/minigame/thevalley/bg/mountain/eclipse.xml"
-		);
+		eclipse.frames = Paths.getSparrowAtlas("minigame/thevalley/bg/mountain/eclipse");
+
 		var eclipseFrames:Array<Int> = [];
 		for (fi in 0...eclipse.frames.frames.length)
 			if (eclipse.frames.frames[fi].name.indexOf("eclipse idle") == 0)
 				eclipseFrames.push(fi);
+
 		eclipse.animation.add("idle", eclipseFrames, 3, true);
 		eclipse.animation.play("idle");
 		eclipse.scrollFactor.set(0.0, 0.0);
@@ -62,7 +61,7 @@ class BGValley
 		_state.add(eclipse);
 
 		var extraSun = new FlxSprite(EXTRASUN_X, EXTRASUN_Y);
-		extraSun.loadGraphic("assets/shared/images/minigame/thevalley/bg/mountain/extra-sun.png");
+		extraSun.loadGraphic(Paths.image("minigame/thevalley/bg/mountain/extra-sun"));
 		extraSun.scrollFactor.set(0.0, 0.0);
 		extraSun.scale.set(1.1, 1.1);
 		extraSun.updateHitbox();
@@ -89,7 +88,7 @@ class BGValley
 		}
 
 		var graywalls = new FlxSprite(0, 0);
-		graywalls.loadGraphic("assets/shared/images/minigame/thevalley/bg/graywalls.png");
+		graywalls.loadGraphic(Paths.image("minigame/thevalley/bg/graywalls"));
 		graywalls.scrollFactor.set(1.0, 1.0);
 		_state.add(graywalls);
 
@@ -103,7 +102,7 @@ class BGValley
 		for (p in sorted)
 		{
 			var spr = new FlxSprite(p.x, p.y);
-			spr.loadGraphic('assets/shared/images/minigame/thevalley/map/${p.part}/map.png');
+			spr.loadGraphic(Paths.image('minigame/thevalley/map/${p.part}/map'));
 			spr.scrollFactor.set(1.0, 1.0);
 			_state.add(spr);
 			mapSprites.push(spr);

@@ -39,10 +39,7 @@ class TVCutscene
 		_csSkull.addSprites();
 		_csSkull.onDone = null;
 		eButton = new FlxSprite(0, 0);
-		eButton.frames = FlxAtlasFrames.fromSparrow(
-			"assets/shared/images/minigame/thevalley/characters/fakergf/button.png",
-			"assets/shared/images/minigame/thevalley/characters/fakergf/button.xml"
-		);
+		eButton.frames = Paths.getSparrowAtlas('minigame/thevalley/characters/fakergf/button');
 		eButton.animation.addByPrefix("idle", "button press", 8, true);
 		eButton.animation.play("idle");
 		eButton.scale.set(1.2, 1.2);

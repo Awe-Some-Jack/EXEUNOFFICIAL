@@ -76,7 +76,7 @@ class CrumblingTile extends FlxSprite
 	public function new(tx:Float, ty:Float)
 	{
 		super(tx, ty);
-		loadGraphic("assets/shared/images/minigame/thevalley/bg/tiles/tile/tile.png");
+		loadGraphic(Paths.image("minigame/thevalley/bg/tiles/tile/tile"));
 		setGraphicSize(TILE_W, TILE_H);
 		updateHitbox();
 		scrollFactor.set(1, 1);
@@ -211,13 +211,13 @@ class GrabbedTile
 		y = wy;
 
 		_ropes = new FlxSprite(wx, wy);
-		_ropes.loadGraphic("assets/shared/images/minigame/thevalley/bg/tiles/grabbedtile/grabbedtile.png");
+		_ropes.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/grabbedtile/grabbedtile"));
 		_ropes.scrollFactor.set(1, 1);
 		_ropes.moves = false;
 		_ropeH = _ropes.height;
 
 		_tile = new FlxSprite(wx + 130.0, wy - _ropes.height + 8.0);
-		_tile.loadGraphic("assets/shared/images/minigame/thevalley/bg/tiles/grabbedtile/tile.png");
+		_tile.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/grabbedtile/tile"));
 		_tile.scrollFactor.set(1, 1);
 		_tile.moves = false;
 		_tileH = _tile.height;
@@ -232,7 +232,8 @@ class GrabbedTile
 
 	function _parseFloor():Void
 	{
-		var hb = openfl.Assets.getBitmapData("assets/shared/images/minigame/thevalley/bg/tiles/grabbedtile/hitbox.png");
+		var graphic = Paths.image("minigame/thevalley/bg/tiles/grabbedtile/hitbox");
+		var hb = graphic != null ? graphic.bitmap : null;
 		if (hb == null) { _floorX = 0; _floorW = _tileW; return; }
 
 		var bw   = hb.width;
@@ -329,7 +330,7 @@ class SpineTile
 		y = wy;
 
 		_spr = new FlxSprite(wx, wy);
-		_spr.loadGraphic("assets/shared/images/minigame/thevalley/bg/tiles/spines/spines.png");
+		_spr.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/spines/spines"));
 		_spr.scrollFactor.set(1, 1);
 		_spr.moves = false;
 		_sprW = _spr.width;
@@ -341,7 +342,8 @@ class SpineTile
 
 	function _parseHitbox():Void
 	{
-		var hb = openfl.Assets.getBitmapData("assets/shared/images/minigame/thevalley/bg/tiles/spines/hitbox.png");
+		var graphic = Paths.image("minigame/thevalley/bg/tiles/spines/hitbox");
+		var hb = graphic != null ? graphic.bitmap : null;
 		if (hb == null) { _hitX = 0; _hitW = _sprW; _hitH = _sprH; return; }
 
 		var bw   = hb.width;
@@ -429,14 +431,14 @@ class SonicBridge
 		y = wy;
 
 		var estSample = new FlxSprite(0, 0);
-		estSample.loadGraphic("assets/shared/images/minigame/thevalley/bg/tiles/bridge/estribo.png");
+		estSample.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/bridge/estribo"));
 		_estribW = estSample.width;
 		estSample.destroy();
 
 		_spawnEstribo(wx, wy, state, false);
 
 		var sample = new FlxSprite(0, 0);
-		sample.loadGraphic("assets/shared/images/minigame/thevalley/bg/tiles/bridge/bridge.png");
+		sample.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/bridge/bridge"));
 		_plankW = sample.width;
 		_plankH = sample.height;
 		sample.destroy();
@@ -448,7 +450,7 @@ class SonicBridge
 			var px = wx + _estribW + i * _plankW;
 			var py = wy + 7.0;
 			var spr = new FlxSprite(px, py);
-			spr.loadGraphic("assets/shared/images/minigame/thevalley/bg/tiles/bridge/bridge.png");
+			spr.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/bridge/bridge"));
 			spr.scrollFactor.set(1, 1);
 			spr.moves = false;
 			state.add(spr);
@@ -472,13 +474,14 @@ class SonicBridge
 	function _spawnEstribo(ex:Float, ey:Float, state:FlxState, flipX:Bool):Void
 	{
 		var spr = new FlxSprite(ex, ey);
-		spr.loadGraphic("assets/shared/images/minigame/thevalley/bg/tiles/bridge/estribo.png");
+		spr.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/bridge/estribo"));
 		spr.flipX = flipX;
 		spr.scrollFactor.set(1, 1);
 		spr.moves = false;
 		state.add(spr);
 
-		var hb = openfl.Assets.getBitmapData("assets/shared/images/minigame/thevalley/bg/tiles/bridge/estribohitbox.png");
+		var graphic = Paths.image("minigame/thevalley/bg/tiles/bridge/estribohitbox");
+		var hb = graphic != null ? graphic.bitmap : null;
 		if (hb != null)
 		{
 			var bw  = hb.width;
@@ -516,7 +519,8 @@ class SonicBridge
 
 	function _parseFloor():Void
 	{
-		var hb = openfl.Assets.getBitmapData("assets/shared/images/minigame/thevalley/bg/tiles/bridge/bridgehitbox.png");
+		var graphic = Paths.image("minigame/thevalley/bg/tiles/bridge/bridgehitbox");
+		var hb = graphic != null ? graphic.bitmap : null;
 		if (hb == null) { _floorX = 0; _floorW = _plankW; return; }
 		var bw  = hb.width;
 		var pxs = hb.getVector(hb.rect);
@@ -614,10 +618,8 @@ class Launchpad extends FlxSprite
 	public function new(tx:Float, ty:Float)
 	{
 		super(tx, ty);
-		frames = FlxAtlasFrames.fromSparrow(
-			"assets/shared/images/minigame/thevalley/objects/interactable/launchpad.png",
-			"assets/shared/images/minigame/thevalley/objects/interactable/launchpad.xml"
-		);
+		frames = Paths.getSparrowAtlas("minigame/thevalley/objects/interactable/launchpad");
+		
 		animation.addByPrefix("idle",    "launchpad idle",    12, true);
 		animation.addByPrefix("goingup", "launchpad goingup", 24, false);
 		animation.addByPrefix("up",      "launchpad up",      12, true);
@@ -654,7 +656,7 @@ class Launchpad extends FlxSprite
 		if (player.body == null || player.body.velocity.y < 0) return false;
 
 		player.doLaunch(LAUNCH_VY);
-		FlxG.sound.play("assets/shared/sounds/minigame/thevalley/launchpad.ogg", 0.3);
+		FlxG.sound.play(Paths.sound("minigame/thevalley/launchpad"), 0.3);
 
 		_lState    = LpGoingUp;
 		_holdTimer = 0;
@@ -745,10 +747,8 @@ class SkullPrompt
 		_cutscene = cutscene;
 
 		_skull = new FlxSprite(wx, wy);
-		_skull.frames = FlxAtlasFrames.fromSparrow(
-			"assets/shared/images/minigame/thevalley/bg/tiles/skulls/skulls.png",
-			"assets/shared/images/minigame/thevalley/bg/tiles/skulls/skulls.xml"
-		);
+		_skull.frames = Paths.getSparrowAtlas("minigame/thevalley/bg/tiles/skulls/skulls");
+		
 		_skull.animation.addByIndices("idle",       "skulls destroying", [0], "", 1, true);
 		_skull.animation.addByPrefix("destroying", "skulls destroying", 8, false);
 		_skull.animation.addByPrefix("destroy",    "skulls destroy",    1, false);
@@ -757,7 +757,7 @@ class SkullPrompt
 		group.add(_skull);
 
 		_hitzone = new FlxSprite(wx, wy);
-		_hitzone.loadGraphic("assets/shared/images/minigame/thevalley/bg/tiles/skulls/hitbox.png");
+		_hitzone.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/skulls/hitbox"));
 		_hitzone.scrollFactor.set(1, 1);
 		_hitzone.visible = false;
 		group.add(_hitzone);
@@ -819,7 +819,7 @@ class SkullPrompt
 					_player.body.velocity.setxy(0, 0);
 					_player.lockedAnim    = "searching";
 					_player.animation.play("searching", true);
-					_searchSound = FlxG.sound.play("assets/shared/sounds/minigame/thevalley/skullsearch.ogg", 0.3);
+					_searchSound = FlxG.sound.play(Paths.sound("minigame/thevalley/skullsearch"), 0.3);
 				}
 
 			case SkSearching:
@@ -893,13 +893,13 @@ class HoldingTile
 		y = wy;
 
 		_ropes = new FlxSprite(wx, wy);
-		_ropes.loadGraphic("assets/shared/images/minigame/thevalley/bg/tiles/holdingtile/cuerdas.png");
+		_ropes.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/holdingtile/cuerdas"));
 		_ropes.scrollFactor.set(1, 1);
 		_ropes.moves = false;
 		_ropeH = _ropes.height;
 
 		_tile = new FlxSprite(wx + 8.0, wy - _ropes.height + 8.0);
-		_tile.loadGraphic("assets/shared/images/minigame/thevalley/bg/tiles/holdingtile/tile.png");
+		_tile.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/holdingtile/tile"));
 		_tile.scrollFactor.set(1, 1);
 		_tile.moves = false;
 		_tileH = _tile.height;
@@ -994,18 +994,15 @@ class Totem
 		switch (type)
 		{
 			case Fake:
-				_sprite.frames = FlxAtlasFrames.fromSparrow(
-					"assets/shared/images/minigame/thevalley/objects/interactable/faketotem.png",
-					"assets/shared/images/minigame/thevalley/objects/interactable/faketotem.xml"
-				);
+				_sprite.frames = Paths.getSparrowAtlas("minigame/thevalley/objects/interactable/faketotem");
 				_addAnim("idle",  "faketotem idle",  1,  true);
 				_addAnim("press", "faketotem press", 12, false);
 				_addAnim("fake",  "faketotem fake",  1,  true);
 				_sprite.animation.play("idle");
 			case Short:
-				_sprite.loadGraphic("assets/shared/images/minigame/thevalley/objects/interactable/totemshort.png");
+				_sprite.loadGraphic(Paths.image("minigame/thevalley/objects/interactable/totemshort"));
 			case Tall:
-				_sprite.loadGraphic("assets/shared/images/minigame/thevalley/objects/interactable/totemtall.png");
+				_sprite.loadGraphic(Paths.image("minigame/thevalley/objects/interactable/totemtall"));
 		}
 		_sprite.scrollFactor.set(1, 1);
 		group.add(_sprite);

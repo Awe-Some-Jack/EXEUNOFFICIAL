@@ -165,7 +165,7 @@ class Gallery extends MusicBeatSubstate
     function createBox():Void
     {
         box = new FlxSprite(750.0, 120.0);
-        box.loadGraphic(Paths.getBitmapData("assets/exe/extras/box.png"));
+        box.loadGraphic(Paths.getBitmapData("assets/exe/extras/box.webp"));
         box.scale.set(0.3, 0.3);
         box.updateHitbox();
         add(box);
@@ -199,7 +199,7 @@ class Gallery extends MusicBeatSubstate
             {x: -2, y: 0},                  {x: 2, y: 0},
             {x: -2, y: 2},  {x: 0, y: 2},  {x: 2, y: 2}
         ];
-        final discoBmp = Paths.getBitmapData("assets/exe/extras/disco.png");
+        final discoBmp = Paths.getBitmapData("assets/exe/extras/disco.webp");
         for (offset in shadowOffsets)
         {
             final s = new FlxSprite(61 + offset.x, 541 + offset.y);
@@ -265,7 +265,7 @@ class Gallery extends MusicBeatSubstate
             }
         }
 
-        final selBmp = Paths.getBitmapData("assets/exe/extras/select.png");
+        final selBmp = Paths.getBitmapData("assets/exe/extras/select.webp");
         final capW = 80;
         final selH = selBmp.height;
         final midW = selBmp.width - capW * 2;
@@ -359,13 +359,22 @@ class Gallery extends MusicBeatSubstate
 
     inline function _isImage(name:String):Bool
     {
-        final l = name.toLowerCase();
-        return l.endsWith('.png') || l.endsWith('.jpg') || l.endsWith('.jpeg') || l.endsWith('.mp4');
+        final l:String = name.toLowerCase();
+        
+        for (ext in Paths.IMAGE_EXTS)
+            if (l.endsWith('.' + ext)) return true;
+
+        return false;
     }
 
     inline function _isVideo(path:String):Bool
     {
-        return path.toLowerCase().endsWith('.mp4');
+        final l:String = path.toLowerCase();
+        
+        for (ext in Paths.VIDEO_EXTS)
+            if (l.endsWith('.' + ext)) return true;
+
+        return false;
     }
 
     function _scrollTargetFor(index:Int):Float

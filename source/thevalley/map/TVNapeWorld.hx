@@ -41,8 +41,8 @@ class TVNapeWorld
 	{
 		for (i in 1...count + 1)
 		{
-			var hbPath = basePath + i + "/hitbox.png";
-			var bmd    = Assets.getBitmapData(hbPath);
+			var hbPath = basePath + i + "/hitbox.webp";
+			var bmd    = Paths.getBitmapData(hbPath);
 			if (bmd == null)
 			{
 				trace('TVNapeWorld: hitbox not found: $hbPath');

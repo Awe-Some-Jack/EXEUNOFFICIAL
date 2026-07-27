@@ -4,7 +4,6 @@ import flixel.FlxG;
 import flixel.FlxCamera;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
-import flixel.graphics.frames.FlxAtlasFrames;
 
 typedef HudItem = {
 	var id:String;
@@ -35,10 +34,8 @@ class NumberDisplay
 		_maxDigits = maxDigits;
 		scale      = sc;
 
-		var frames = FlxAtlasFrames.fromSparrow(
-			"assets/shared/images/minigame/thevalley/objects/hud/numbers.png",
-			"assets/shared/images/minigame/thevalley/objects/hud/numbers.xml"
-		);
+		var frames = Paths.getSparrowAtlas("minigame/thevalley/objects/hud/numbers");
+        
 		for (_ in 0..._maxDigits)
 		{
 			var spr = new FlxSprite(0, 0);
@@ -141,7 +138,7 @@ class HUD
 		for (d in SPR_DEFAULTS)
 		{
 			var spr = new FlxSprite(d.x, d.y);
-			spr.loadGraphic('assets/shared/images/minigame/thevalley/objects/hud/${d.id}.png');
+			spr.loadGraphic(Paths.image('minigame/thevalley/objects/hud/${d.id}'));
 			spr.scale.set(d.sc, d.sc);
 			spr.updateHitbox();
 			spr.scrollFactor.set(0, 0);
@@ -179,7 +176,7 @@ class HUD
 		}
 
 		_shardsHud = new FlxSprite(852.0, 18.0);
-		_shardsHud.loadGraphic("assets/shared/images/minigame/thevalley/objects/hud/shards/shardstypeshi.png");
+		_shardsHud.loadGraphic(Paths.image("minigame/thevalley/objects/hud/shards/shardstypeshi"));
 		_shardsHud.scale.set(3.52, 3.52);
 		_shardsHud.updateHitbox();
 		_shardsHud.scrollFactor.set(0, 0);
@@ -191,7 +188,7 @@ class HUD
 		for (i in 0...6)
 		{
 			var sh = new FlxSprite(shardXs[i], 18.0);
-			sh.loadGraphic("assets/shared/images/minigame/thevalley/objects/hud/shards/shard.png");
+			sh.loadGraphic(Paths.image("minigame/thevalley/objects/hud/shards/shard"));
 			sh.scale.set(3.52, 3.52);
 			sh.updateHitbox();
 			sh.scrollFactor.set(0, 0);
@@ -202,7 +199,7 @@ class HUD
 		}
 
 		_timeSep = new FlxSprite(297.0, 144.0);
-		_timeSep.loadGraphic("assets/shared/images/minigame/thevalley/objects/hud/signo.png");
+		_timeSep.loadGraphic(Paths.image("minigame/thevalley/objects/hud/signo"));
 		_timeSep.scale.set(3.5, 3.5);
 		_timeSep.updateHitbox();
 		_timeSep.scrollFactor.set(0, 0);

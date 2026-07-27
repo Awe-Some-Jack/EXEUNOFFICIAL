@@ -41,23 +41,23 @@ class InfoBioParallaxState extends MusicBeatState
 		grid.velocity.set(40, 40);
 		add(grid);
 
-		var spikestop:FlxBackdrop = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.png'), X);
+		var spikestop:FlxBackdrop = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.webp'), X);
 		spikestop.velocity.x = 60;
 		spikestop.flipY = true;
 		add(spikestop);
 
-		var spikesbot:FlxBackdrop = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.png'), X);
+		var spikesbot:FlxBackdrop = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.webp'), X);
 		spikesbot.y = FlxG.height - spikesbot.height;
 		spikesbot.velocity.x = -60;
 		add(spikesbot);
 
-		ringdown = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/info/ringdown.png'));
+		ringdown = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/info/ringdown.webp'));
 		ringdown.scale.set(0.25, 0.25);
 		ringdown.updateHitbox();
 		ringdown.x = (FlxG.width - ringdown.width) + 100;
 		add(ringdown);
 
-		ring = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/info/ring.png'));
+		ring = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/info/ring.webp'));
 		ring.scale.set(0.25, 0.25);
 		ring.updateHitbox();
 		ring.x = (FlxG.width - ring.width) + 100;
@@ -159,14 +159,27 @@ class InfoBioParallaxState extends MusicBeatState
 
 		for (renders in data.render)
 		{
-			var spr:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/info/' + data.folder + '/' + renders.asset + '.png'));
-			spr.scale.set(0.25, 0.25);
-			spr.updateHitbox();
-			spr.setPosition(ring.x + renders.offset.x, ((FlxG.height - ring.height) / 2) + renders.offset.y);
-			renderBasePos.push({x: spr.x, y: spr.y});
-			charRenders.push(spr);
-			if (renders.front) insert(members.indexOf(ring) + 1, spr);
-			else insert(members.indexOf(ring), spr);
+			final basePath = 'assets/exe/parallax/info/' + data.folder + '/' + renders.asset;
+			final bitmap = Paths.getBitmapData(basePath);
+
+			if (bitmap != null)
+			{
+				final spr:FlxSprite = new FlxSprite();
+				spr.loadGraphic(bitmap);
+				spr.scale.set(0.25, 0.25);
+				spr.updateHitbox();
+				spr.setPosition(ring.x + renders.offset.x, ((FlxG.height - ring.height) / 2) + renders.offset.y);
+
+				renderBasePos.push({x: spr.x, y: spr.y});
+				charRenders.push(spr);
+
+				final targetIndex = members.indexOf(ring);
+				insert(renders.front ? targetIndex + 1 : targetIndex, spr);
+			}
+			else
+			{
+				trace('Render asset not found: $basePath');
+			}
 		}
 
 		charName.text = data.name;

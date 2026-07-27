@@ -95,13 +95,13 @@ class EXEMenu extends MusicBeatState
 		#end
 
 		shadowSprite = new FlxSprite();
-		shadowSprite.loadGraphic(Paths.getBitmapData("assets/exe/mainmenu/options/shadow.png"));
+		shadowSprite.loadGraphic(Paths.getBitmapData("assets/exe/mainmenu/options/shadow.webp"));
 		shadowSprite.updateHitbox();
 		shadowSprite.alpha = 0;
 		add(shadowSprite);
 
 		final translatedTexts = getOptionTexts();
-		final boxBitmap = Paths.getBitmapData("assets/exe/mainmenu/options/box.png");
+		final boxBitmap = Paths.getBitmapData("assets/exe/mainmenu/options/box.webp");
 		final menuFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : Paths.font("sonicfree.otf");
 		final maxFontSize:Int = Language.needsCustomFont() ? 180 : 280;
 		final minFontSize:Int = 40;
@@ -133,7 +133,7 @@ class EXEMenu extends MusicBeatState
 			menuTexts.push(optionText);
 		}
 
-		final hitboxBitmap = Paths.getBitmapData("assets/exe/mainmenu/options/hitbox.png");
+		final hitboxBitmap = Paths.getBitmapData("assets/exe/mainmenu/options/hitbox.webp");
 		for (i in 0...TOTAL_OPTIONS)
 		{
 			final hitbox = new FlxSprite();
@@ -149,7 +149,7 @@ class EXEMenu extends MusicBeatState
 		{
 			new FlxTimer().start(0.4, (_) -> maniaEmail());
 			heylookanemail = new FlxSprite();
-			heylookanemail.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/mania/Mail Box.png', 'assets/exe/access/mania/Mail Box.xml');
+			heylookanemail.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/mania/Mail Box.webp', 'assets/exe/access/mania/Mail Box.xml');
 			heylookanemail.animation.addByPrefix('email', 'Mail', 24, false);
 			heylookanemail.scale.set(0.5, 0.5);
 			heylookanemail.alpha = 0;

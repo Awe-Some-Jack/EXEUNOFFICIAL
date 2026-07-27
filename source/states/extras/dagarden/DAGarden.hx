@@ -235,7 +235,7 @@ class DAGSongs extends FlxGroup
 
     function buildBoxes():Void
     {
-        final bmp = Paths.getBitmapData("assets/exe/extras/dagarden/sprites/gardenbox.png");
+        final bmp = Paths.getBitmapData("assets/exe/extras/dagarden/sprites/gardenbox.webp");
         for (i in 0...songList.length)
         {
             final y     = 116.0 + i * 120.0;
@@ -265,11 +265,13 @@ class DAGSongs extends FlxGroup
     function loadCover(song:String, bx:Float, by:Float):FlxSprite
     {
         final cv = new FlxSprite(bx, by);
-        final path = 'assets/exe/extras/dagarden/cover/$song.png';
+        final basePath = 'assets/exe/extras/dagarden/cover/$song';
         
-        if (FileSystem.exists(path))
+        final bitmap = Paths.getBitmapData(basePath);
+
+        if (bitmap != null)
         {
-            cv.loadGraphic(Paths.getBitmapData(path));
+            cv.loadGraphic(bitmap);
             cv.scale.set(0.308, 0.308);
             cv.updateHitbox();
             hasCover.push(true);
@@ -513,9 +515,9 @@ class DAGPlayer extends FlxGroup
 
         _buildPanel();
 
-        disk = spr(732, 245, "sprites/disk.png", 0.34);
+        disk = spr(732, 245, "sprites/disk.webp", 0.34);
 
-        final barBmp  = Paths.getBitmapData("assets/exe/extras/dagarden/sprites/bar.png");
+        final barBmp  = Paths.getBitmapData("assets/exe/extras/dagarden/sprites/bar.webp");
         final bW      = barBmp.width  * SC;
         final bH      = barBmp.height * SC;
         barInnerX = BX + (15 / 1642) * bW;
@@ -529,7 +531,7 @@ class DAGPlayer extends FlxGroup
         barClipRect = new flixel.math.FlxRect(0, 0, 0, barInnerH);
         barProgress.clipRect = barClipRect;
         add(barProgress);
-        spr(BX, BY, "sprites/bar.png", SC);
+        spr(BX, BY, "sprites/bar.webp", SC);
 
         final kr   = Std.int(barInnerH * 0.9);
         barKnob    = new FlxSprite(0, 0).makeGraphic(kr * 2, kr * 2, 0x00000000);
@@ -1039,21 +1041,21 @@ class DAGarden extends MusicBeatSubstate
         checkers.velocity.x = -60;
         add(checkers);
         for (d in [
-            {x: 560, y: 560, f: "objects/1.png", s: 0.25},
-            {x: 950, y: 580, f: "objects/2.png", s: 0.15},
-            {x:1100, y:  50, f: "objects/3.png", s: 0.25},
-            {x: 540, y: 300, f: "objects/4.png", s: 0.25},
-            {x: 700, y: 800, f: "objects/6.png", s: 0.25},
+            {x: 560, y: 560, f: "objects/1.webp", s: 0.25},
+            {x: 950, y: 580, f: "objects/2.webp", s: 0.15},
+            {x:1100, y:  50, f: "objects/3.webp", s: 0.25},
+            {x: 540, y: 300, f: "objects/4.webp", s: 0.25},
+            {x: 700, y: 800, f: "objects/6.webp", s: 0.25},
   
-            {x: 550, y:  50, f: "objects/7.png", s: 0.25},
-            {x: 800, y:  50, f: "objects/8.png", s: 0.25}
+            {x: 550, y:  50, f: "objects/7.webp", s: 0.25},
+            {x: 800, y:  50, f: "objects/8.webp", s: 0.25}
         ])
         {
             decors.push(spr(d.x, d.y, d.f, d.s));
         }
 
-        arrow  = spr(490, 90, "objects/arrow.png", 0.34);
-        spikes = new FlxBackdrop(Paths.getBitmapData("assets/exe/extras/dagarden/sprites/spikes.png"), Y, 0, 0);
+        arrow  = spr(490, 90, "objects/arrow.webp", 0.34);
+        spikes = new FlxBackdrop(Paths.getBitmapData("assets/exe/extras/dagarden/sprites/spikes.webp"), Y, 0, 0);
         spikes.setPosition(70, 87);
         spikes.scale.set(0.34, 0.34);
         spikes.updateHitbox();
@@ -1075,8 +1077,8 @@ class DAGarden extends MusicBeatSubstate
 
     function buildFG():Void
     {
-        spr(0, 0, "sprites/marcogris.png", 0.34);
-        dagarden = spr(70, 35, "sprites/dagarden.png", 0.34);
+        spr(0, 0, "sprites/marcogris.webp", 0.34);
+        dagarden = spr(70, 35, "sprites/dagarden.webp", 0.34);
         FlxTween.tween(dagarden, {y: dagarden.y + 5}, 3.0, {ease: FlxEase.sineInOut, type: PINGPONG});
     }
 

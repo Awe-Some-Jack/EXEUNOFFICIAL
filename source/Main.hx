@@ -188,7 +188,7 @@ class Main extends Sprite
 		FlxG.stage.scaleMode = StageScaleMode.NO_SCALE;
 
 		#if (linux || mac) // fix the app icon not showing up on the Linux Panel / Mac Dock
-		var icon = Image.fromFile("icon.png");
+		var icon = Image.fromFile("icon.webp");
 		FlxG.stage.window.setIcon(icon);
 		#end
 

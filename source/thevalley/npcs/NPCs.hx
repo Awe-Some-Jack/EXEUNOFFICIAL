@@ -224,7 +224,7 @@ class KnucklesNPC extends FlxSprite
 	public function new(wx:Float, wy:Float)
 	{
 		super(wx, wy);
-		frames = Paths.getSparrowAtlas("minigame/thevalley/characters/dead/knuckles")
+		frames = Paths.getSparrowAtlas("minigame/thevalley/characters/dead/knuckles");
 		animation.addByPrefix("dead", "knuckles dead", 8, true);
 		animation.play("dead");
 		scrollFactor.set(1, 1);

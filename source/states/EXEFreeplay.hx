@@ -245,6 +245,8 @@ class EXEFreeplay extends MusicBeatState
 		loadCharText(selectedBox);
 		loadSongList(selectedBox);
 		changeDiff(0);
+		lerpScore = intendedScore;
+		lerpRating = intendedRating;
 		updateScoreDisplay();
 
 		updateWindowTitle();

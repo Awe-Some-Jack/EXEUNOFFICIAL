@@ -47,8 +47,11 @@ class EXEAchievements
     }
     public static function unlock(name:String):Void
     {
-        if(get(name) != null)
-            get(name).unlocked = true; 
+        var a = get(name);
+        if(a == null) return;
+        if(a.unlocked ?? false) return;
+        a.unlocked = true;
+        states.extras.achievements.AchievementPopup.show(name);
     }
     public static function unlockAll():Void
     {
@@ -129,15 +132,15 @@ class EXEAchievements
             // Chaotix
             case 'starline':
                 unlock('chaotix');
-            // Scorched (Trilogy)
+            // Bratwurst (Trilogy)
             case 'life-and-death':
-                unlock('scorched');
+                unlock('bratwurst');
             // Demogri & Griatos (Grieving)
             case 'uh-oh' | 'haze':
                 unlock('demogri');
-            // Bratwurst (HOG)
+            // Scorched (HOG)
             case 'hedge' | 'manual-blast':
-                unlock('bratwurst');
+                unlock('scorched');
             // OMW.EXE
             case 'longstrider' | 'universal-collapse':
                 unlock('omw');

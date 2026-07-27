@@ -77,7 +77,9 @@ class PauseSubState extends MusicBeatSubstate
 		var image:String = 'pauseText';
 		var weekKey:String = WeekData.weeksList[PlayState.storyWeek];
 		var curWeek:WeekData = weekKey != null ? WeekData.weeksLoaded.get(weekKey) : null;
-		if (curWeek != null && (curWeek.exeLabel == 'NON EXE' || curWeek.exeLabel == 'MEME' || curWeek.exeLabel == 'OFFICIAL')) image = 'pauseText-normal';
+		if (curWeek != null && (curWeek.exeLabel == 'NON EXE' || curWeek.exeLabel == 'MEME' || curWeek.exeLabel == 'OFFICIAL')) 
+			image = 'pauseText-normal';
+		
 		pauseText = new FlxSprite(196, 589).loadGraphic(Paths.getBitmapData('assets/exe/pause/$image.webp'));
 		pauseText.scale.set(3, 3);
 		pauseText.updateHitbox();
@@ -87,12 +89,24 @@ class PauseSubState extends MusicBeatSubstate
 		add(pauseText);
 		FlxTween.tween(pauseText, {alpha: 1}, 0.1);
 
-		var daImage:String = miniSonicImage;
-		if (Paths.fileExists('pause/mini-sonics/' + daImage + '-1', IMAGE, 'exe')) 
-			daImage = daImage + '-1';
+		var daImage:String = 'sonic';
+		for (exts in Paths.IMAGE_EXTS)
+		{
+		    if (Paths.fileExists('pause/mini-sonics/$miniSonicImage-1.$exts', IMAGE, 'exe')) 
+			{
+			    daImage = daImage + '-1';
+				break;
+			}
+		}
 
-		if (!Paths.fileExists('pause/mini-sonics/' + daImage, IMAGE, 'exe')) 
-			daImage = 'sonic';
+		for (exts in Paths.IMAGE_EXTS)
+		{
+		    if (Paths.fileExists('pause/mini-sonics/$miniSonicImage.$exts', IMAGE, 'exe')) 
+			{
+			    daImage = miniSonicImage;
+				break;
+			}
+		}
 
 		final basePath = 'assets/exe/pause/mini-sonics/' + daImage;
 		final bitmap = Paths.getBitmapData(basePath);

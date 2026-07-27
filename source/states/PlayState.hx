@@ -6,6 +6,7 @@ import backend.StageData;
 import backend.WeekData;
 import backend.Song;
 import backend.Rating;
+import backend.EXEAchievements;
 
 import flixel.FlxBasic;
 import flixel.FlxObject;
@@ -2073,6 +2074,7 @@ class PlayState extends MusicBeatState
 			var ret:Dynamic = callOnScripts('onGameOver', null, true);
 			if(ret != LuaUtils.Function_Stop)
 			{
+				EXEAchievements.achieveGameOver(SONG.song);
 				FlxG.animationTimeScale = 1;
 				boyfriend.stunned = true;
 				deathCounter++;
@@ -2486,6 +2488,8 @@ class PlayState extends MusicBeatState
 			var percent:Float = ratingPercent;
 			if(Math.isNaN(percent)) percent = 0;
 			Highscore.saveScore(Song.loadedSongName, songScore, storyDifficulty, percent);
+			if(!practiceMode && !cpuControlled)
+				EXEAchievements.checkSongCompletion(Paths.formatToSongPath(SONG.song), songMisses, percent);
 			#end
 			playbackRate = 1;
 

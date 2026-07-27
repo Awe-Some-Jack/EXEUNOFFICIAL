@@ -1,6 +1,6 @@
 package states;
 
-
+import backend.EXEAchievements;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.input.keyboard.FlxKey;
@@ -177,6 +177,9 @@ class EXEMenu extends MusicBeatState
 		heylookanemail.animation.play('email', true);
 		heylookanemail.alpha = 1;
 		new FlxTimer().start(2, (_) -> canManiaInteract = true);
+
+		EXEAchievements.unlock('sega');
+		EXEAchievements.save();
 	}
 
 	static final TAILS_DIR:String = 'CRAZY TAILS';

@@ -42,6 +42,20 @@ function onGameOverStart()
 	FlxG.sound.list.add(deadMusic);
 	deadMusic.looped = true;
 
+	if(!backend.EXEAchievements.isUnlocked('tripledeaths')) {
+		var _a = backend.EXEAchievements.get('tripledeaths');
+		if(_a != null) {
+			var _seen:Array<String> = cast(_a.extra ?? []);
+			var _key:String = PauseSubState.miniSonicImage ?? 'triple-trouble';
+			if(!_seen.contains(_key)) {
+				_seen.push(_key);
+				_a.extra = _seen;
+				if(_seen.length >= 4) _a.unlocked = true;
+				backend.EXEAchievements.save();
+			}
+		}
+	}
+
 	var voiceLine:String = '1';
 	if (PauseSubState.miniSonicImage == 'triple-trouble') voiceLine = 't';
 	if (PauseSubState.miniSonicImage == 'triple-trouble-2') voiceLine = FlxG.random.int(1,3);

@@ -1,0 +1,135 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "bf/idle"
+		},
+		{
+			"offsets": [71, 11],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "bf/left"
+		},
+		{
+			"offsets": [33, -17],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "bf/down"
+		},
+		{
+			"offsets": [-6, 36],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "bf/up"
+		},
+		{
+			"offsets": [-25, 24],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "bf/right"
+		},
+		{
+			"offsets": [71, 4],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "bf/misses/bf/missleft"
+		},
+		{
+			"offsets": [33, -26],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "bf/misses/bf/missdown"
+		},
+		{
+			"offsets": [-4, 35],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "bf/misses/bf/missup"
+		},
+		{
+			"offsets": [-25, 14],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "bf/misses/bf/missright"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [11, 12],
+			"fps": 24,
+			"anim": "idle-loop",
+			"loop": true,
+			"name": "bf/idle"
+		},
+		{
+			"offsets": [43, 19],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "bf/bit left"
+		},
+		{
+			"offsets": [-11, -7],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"loop": false,
+			"name": "bf/bit down"
+		},
+		{
+			"offsets": [6, 54],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "bf/bit up"
+		},
+		{
+			"offsets": [-35, 12],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "bf/box right"
+		},
+		{
+			"offsets": [7, 5],
+			"indices": [],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "bf/Bf Hey"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/bfhellbent",
+	"position": [0, 0],
+	"healthicon": "bf",
+	"flip_x": true,
+	"healthbar_colors": [58, 205, 241],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 0.8,
+	"_editor_isPlayer": true
+}

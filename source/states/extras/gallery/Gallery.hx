@@ -357,9 +357,9 @@ class Gallery extends MusicBeatSubstate
         #end
     }
 
-    inline function _isImage(name:String):Bool
+    function _isImage(name:String):Bool
     {
-        var l:String = name.toLowerCase();
+        final l:String = name.toLowerCase();
         
         for (ext in Paths.IMAGE_EXTS)
             if (l.endsWith('.' + ext)) return true;
@@ -367,9 +367,9 @@ class Gallery extends MusicBeatSubstate
         return false;
     }
 
-    inline function _isVideo(path:String):Bool
+    function _isVideo(path:String):Bool
     {
-        var l:String = path.toLowerCase();
+        final l:String = path.toLowerCase();
         
         for (ext in Paths.VIDEO_EXTS)
             if (l.endsWith('.' + ext)) return true;

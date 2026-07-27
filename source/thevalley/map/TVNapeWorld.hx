@@ -19,7 +19,7 @@ import flixel.addons.nape.FlxNapeSpace;
 // so this whole class reads the collsion straight outta a png. 
 class TVNapeWorld
 {
-	public static inline var GRAVITY:Float = 1800.0;
+	public static inline var GRAVITY:Float = 1000.0;
 
 	public static var CB_PLATFORM:CbType = new CbType();
 	public static var CB_DYNAMIC:CbType  = new CbType();
@@ -107,9 +107,9 @@ class TVNapeWorld
 		var bounds   = new AABB(0, 0, bw, bh);
 		var cellsize = Vec2.get(2.0, 2.0);
 
-		_makeBody(solidPx,    bw, bh, bounds, cellsize, new Material(0.3,  0.0, 0.0, 1.0, 0.0), null,        offX, offY);
-		_makeBody(platformPx, bw, bh, bounds, cellsize, new Material(0.05, 0.0, 0.0, 1.0, 0.0), CB_PLATFORM, offX, offY);
-		_makeBody(slopePx,    bw, bh, bounds, cellsize, new Material(0.05, 0.0, 0.0, 1.0, 0.0), null,        offX, offY);
+		_makeBody(solidPx,    bw, bh, bounds, cellsize, new Material(0.0, 0.0, 0.0, 1.0, 0.0), null,        offX, offY);
+		_makeBody(platformPx, bw, bh, bounds, cellsize, new Material(0.0, 0.0, 0.0, 1.0, 0.0), CB_PLATFORM, offX, offY);
+		_makeBody(slopePx,    bw, bh, bounds, cellsize, new Material(0.0, 0.0, 0.0, 1.0, 0.0), null,        offX, offY);
 
 		cellsize.dispose();
 	}
@@ -179,6 +179,8 @@ class TVNapeWorld
 
 		for (gp in polys)
 		{
+			gp.simplify(3.0); 
+
 			var decomp = gp.convexDecomposition();
 			for (cp in decomp)
 			{

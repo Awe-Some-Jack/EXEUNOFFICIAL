@@ -3,8 +3,8 @@
   "x": 7466,
   "y": -481,
   "layers": [
-    { "inFront": true, "x": 0, "y": 0, "file": "black.png", "blackFade": true },
-    { "inFront": true, "x": 0, "y": 0, "file": "walls.png" }
+    { "inFront": true, "x": 0, "y": 0, "file": "black", "blackFade": true },
+    { "inFront": true, "x": 0, "y": 0, "file": "walls" }
   ],
   "width": 1920,
   "height": 1080

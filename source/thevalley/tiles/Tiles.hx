@@ -232,7 +232,7 @@ class GrabbedTile
 
 	function _parseFloor():Void
 	{
-		var graphic = Paths.image("minigame/thevalley/bg/tiles/grabbedtile/hitbox");
+		var graphic = Paths.image("minigame/thevalley/bg/tiles/grabbedtile/hitbox", false);
 		var hb = graphic != null ? graphic.bitmap : null;
 		if (hb == null) { _floorX = 0; _floorW = _tileW; return; }
 
@@ -342,7 +342,7 @@ class SpineTile
 
 	function _parseHitbox():Void
 	{
-		var graphic = Paths.image("minigame/thevalley/bg/tiles/spines/hitbox");
+		var graphic = Paths.image("minigame/thevalley/bg/tiles/spines/hitbox", false);
 		var hb = graphic != null ? graphic.bitmap : null;
 		if (hb == null) { _hitX = 0; _hitW = _sprW; _hitH = _sprH; return; }
 
@@ -480,7 +480,7 @@ class SonicBridge
 		spr.moves = false;
 		state.add(spr);
 
-		var graphic = Paths.image("minigame/thevalley/bg/tiles/bridge/estribohitbox");
+		var graphic = Paths.image("minigame/thevalley/bg/tiles/bridge/estribohitbox", false);
 		var hb = graphic != null ? graphic.bitmap : null;
 		if (hb != null)
 		{
@@ -519,7 +519,7 @@ class SonicBridge
 
 	function _parseFloor():Void
 	{
-		var graphic = Paths.image("minigame/thevalley/bg/tiles/bridge/bridgehitbox");
+		var graphic = Paths.image("minigame/thevalley/bg/tiles/bridge/bridgehitbox", false);
 		var hb = graphic != null ? graphic.bitmap : null;
 		if (hb == null) { _floorX = 0; _floorW = _plankW; return; }
 		var bw  = hb.width;

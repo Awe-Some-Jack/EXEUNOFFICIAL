@@ -108,7 +108,7 @@ class Player extends FlxSprite
 		offset.x = h.offsetX;
 		offset.y = h.offsetY;
 
-		var rad  = (h.footRadius != null) ? h.footRadius : h.width * 0.5;
+		var rad  = h.footRadius ?? h.width * 0.5;
 		var boxH = h.height - rad;
 		var cx   = spawnX + h.width  * 0.5;
 		var cy   = spawnY + h.height * 0.5;
@@ -119,7 +119,7 @@ class Player extends FlxSprite
 		var footCircle = new Circle(rad, Vec2.weak(0, h.height * 0.5 - rad));
 		body.shapes.add(footCircle);
 
-		var torsoVerts = Polygon.box(h.width, boxH);
+		var torsoVerts = Polygon.box(h.width - 2.0, boxH);
 		var torso      = new Polygon(torsoVerts);
 		for (v in torso.localVerts) v.y -= rad * 0.5;
 		body.shapes.add(torso);
@@ -164,10 +164,12 @@ class Player extends FlxSprite
 			_glideTimer -= elapsed;
 			if (_glideTimer <= 0) { _glideTimer = 0; mode = WingClose; _glideCooldownSec = 1.0; }
 		}
-		if (isGrounded) { _glideTimer = 0; _glideCooldownSec = 0; }
 
 		if (isGrounded)
 		{
+			_glideTimer = 0; 
+			_glideCooldownSec = 0;
+
 			// coyote shi
 			coyoteTimer = cfg.tuning.coyoteFrames;
 			if (!_wasGrounded)
@@ -223,8 +225,12 @@ class Player extends FlxSprite
 				var nx = res.normal.x;
 				var ny = res.normal.y;
 				var ang = Math.atan2(nx, -ny) * (180.0 / Math.PI);
-				if (Math.abs(ang) > Math.abs(groundAngle)) groundAngle = ang;
-				if (Math.abs(ang) > 5.0) onSlope = true;
+				
+				if (Math.abs(ang) <= 60.0) 
+				{
+					if (Math.abs(ang) > Math.abs(groundAngle)) groundAngle = ang;
+					if (Math.abs(ang) > 5.0) onSlope = true;
+				}
 				res.dispose();
 			}
 		}
@@ -237,6 +243,7 @@ class Player extends FlxSprite
 	function _projectOnSlope():Void
 	{
 		if (!isGrounded || Math.abs(groundAngle) < 3.0) return;
+
 		var rad = groundAngle * (Math.PI / 180.0);
 		var tx  = Math.cos(rad);
 		var ty  = Math.sin(rad);
@@ -249,6 +256,8 @@ class Player extends FlxSprite
 	function _applyModeGravity(elapsed:Float):Void
 	{
 		var p = cfg.physics;
+		var defaultGravity = TVNapeWorld.GRAVITY; 
+		
 		switch (mode)
 		{
 			case WingOpen:
@@ -263,8 +272,20 @@ class Player extends FlxSprite
 			case Launch:
 				if (body.velocity.y >= 0) mode = Air;
 			default:
-				if (!isGrounded && !jumpHeld && body.velocity.y < p.jumpCut)
-					body.velocity.y = p.jumpCut;
+				if (!isGrounded)
+				{
+					if (body.velocity.y < 0 && !jumpHeld)
+						body.velocity.y += defaultGravity * 1.5 * elapsed; 
+
+					if (Math.abs(body.velocity.y) < 120.0)
+						body.velocity.y -= defaultGravity * 0.4 * elapsed;
+
+					if (body.velocity.y > 0)
+						body.velocity.y += defaultGravity * 0.6 * elapsed;
+
+					if (body.velocity.y > p.maxFall) 
+						body.velocity.y = p.maxFall;
+				}
 		}
 	}
 
@@ -290,22 +311,19 @@ class Player extends FlxSprite
 			return true;
 		}
 
-		var left        = FlxG.keys.pressed.LEFT  || FlxG.keys.pressed.A;
-		var right       = FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D;
-		var shift       = FlxG.keys.pressed.SHIFT;
-		var jumpJust    = FlxG.keys.justPressed.SPACE;
-		var jumpRel     = FlxG.keys.justReleased.Z || FlxG.keys.justReleased.SPACE;
-		var jumpHeldNow = FlxG.keys.pressed.Z     || FlxG.keys.pressed.SPACE;
+		final left        = FlxG.keys.pressed.LEFT  || FlxG.keys.pressed.A;
+		final right       = FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D;
+		final shift       = FlxG.keys.pressed.SHIFT;
+		final jumpJust    = FlxG.keys.justPressed.SPACE;
+		final jumpRel     = FlxG.keys.justReleased.Z || FlxG.keys.justReleased.SPACE;
+		final jumpHeldNow = FlxG.keys.pressed.Z     || FlxG.keys.pressed.SPACE;
 
 		if (jumpRel)  jumpHeld = false;
 		if (jumpJust) jumpBufTimer = t.jumpBufferFrames; // jump buffer: u mashed space 2 frames b4 landin, we got u, calm down
 
-		var gnd = coyoteTimer > 0;
-
+		final gnd = coyoteTimer > 0;
 		if (gnd && (mode == Glide || mode == WingOpen || mode == WingClose))
-		{
 			mode = Ground; wingOpenTimer = glideCooldown = 0; _glideTimer = 0; _glideCooldownSec = 0;
-		}
 
 		if (stamina <= 0) _staminaDepleted = true;
 		if (_staminaDepleted && stamina >= p.staminaMax) _staminaDepleted = false;
@@ -452,7 +470,13 @@ class Player extends FlxSprite
 
 	public function doLaunch(vy:Float = 0):Void
 	{
+		body.position.y -= 5; 
+		
+		body.velocity.y = 0; 
 		body.velocity.y = (vy != 0) ? vy : cfg.physics.launchVy;
+		
+		isGrounded      = false;
+		touchingFloor   = false;
 		jumpHeld        = false;
 		mode            = Launch;
 		_launchCooldown = 20;

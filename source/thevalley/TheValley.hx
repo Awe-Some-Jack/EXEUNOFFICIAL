@@ -122,7 +122,7 @@ var tileMap:TileMap;
 		hud.setVisible(false);
 		hud.timerRunning = false;
 
-_vigLeft = FlxGradient.createGradientFlxSprite(420, 896, [0xAA000000, 0x00000000], 1, 0);
+		_vigLeft = FlxGradient.createGradientFlxSprite(420, 896, [0xAA000000, 0x00000000], 1, 0);
 		_vigLeft.scrollFactor.set(0, 0); _vigLeft.cameras = [uiCam]; add(_vigLeft);
 
 		_vigRight = FlxGradient.createGradientFlxSprite(420, 896, [0x00000000, 0xAA000000], 1, 0);

@@ -94,7 +94,7 @@ class AchievementPopup extends Sprite
         graphics.drawRect(iconX, iconY, ICON_SIZE, ICON_SIZE);
         graphics.endFill();
 
-        var iconPath = 'assets/exe/extras/achievements/icons/$id.png';
+        var iconPath = 'assets/exe/extras/achievements/icons/$id.webp';
         if (openfl.Assets.exists(iconPath))
         {
             var bmd:BitmapData = openfl.Assets.getBitmapData(iconPath);

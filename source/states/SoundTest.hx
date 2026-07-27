@@ -432,26 +432,22 @@ class SoundTest extends MusicBeatState
 				
 			WeekData.setDirectoryFromWeek(leWeek);
 
-			final songArray:Array<String> = [];
-			for (song in leWeek.songs)
-				songArray.push(song[0]);
-
 			try
 			{
-				PlayState.storyPlaylist = songArray;
-				PlayState.isStoryMode = true;
+				final firstSong:String = Paths.formatToSongPath(leWeek.songs[0][0]);
+				PlayState.storyPlaylist = [firstSong];
+				PlayState.isStoryMode = false;
 				PlayState.storyDifficulty = 1;
 				PlayState.storyWeek = WeekData.weeksList.indexOf(name);
-
-				final firstSong:String = songArray[0].toLowerCase();
-				Song.loadFromJson(firstSong, firstSong);
-
 				PlayState.campaignScore = 0;
 				PlayState.campaignMisses = 0;
+
+				Song.loadFromJson(firstSong, firstSong);
 			}
 			catch (e:Dynamic)
 			{
 				trace("Error cargando week: " + e);
+				transitioning = false;
 				return;
 			}
 		}
@@ -470,6 +466,7 @@ class SoundTest extends MusicBeatState
 			catch (e:Dynamic)
 			{
 				trace("Error cargando canción: " + e);
+				transitioning = false;
 				return;
 			}
 		}

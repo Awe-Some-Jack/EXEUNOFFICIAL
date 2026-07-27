@@ -189,3 +189,12 @@ end
 function lerp(a, b, t)
 	return a + t * (b - a)
 end
+
+function onEndSong()
+	if not getProperty('cpuControlled') and not getProperty('practiceMode') and rings == 0 then
+		runHaxeCode([[
+			backend.EXEAchievements.unlock('rings');
+			backend.EXEAchievements.save();
+		]])
+	end
+end

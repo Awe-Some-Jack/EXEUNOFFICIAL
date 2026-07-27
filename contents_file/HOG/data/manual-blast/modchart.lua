@@ -1,5 +1,22 @@
 local modchart = 0
 local thing = 0
+local pressedRing = false
+
+function goodNoteHit(id, nd, nt, isn)
+	if (nt == 'Red Ring' or nt == 'Yellow Ring') and not isn then
+		pressedRing = true
+	end
+end
+
+function onEndSong()
+	if not pressedRing and not getProperty('cpuControlled') and not getProperty('practiceMode') then
+		runHaxeCode([[
+			backend.EXEAchievements.unlock('norings');
+			backend.EXEAchievements.save();
+		]])
+	end
+end
+
 function onEvent(n,v1)
 	if n == 'sexxxxxx' then
 		if v1 == 'jajajamodchart1' then

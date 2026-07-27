@@ -23,6 +23,9 @@ class StoryParallaxState extends MusicBeatState
 	{
 		super.create();
 
+		backend.EXEAchievements.unlock('parallax');
+		backend.EXEAchievements.save();
+
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/1.png'));
 		bg.scale.set(0.34, 0.34);
 		bg.updateHitbox();

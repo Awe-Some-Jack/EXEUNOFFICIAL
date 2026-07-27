@@ -970,6 +970,15 @@ class DAGarden extends MusicBeatSubstate
         add(songs);
         buildFG();
 
+        if(!backend.EXEAchievements.isUnlocked('dagarden') && songs.songList.length > 0) {
+            var _save = new flixel.util.FlxSave();
+            _save.bind('savedSongs', backend.CoolUtil.getSavePath());
+            var _saved:Array<String> = cast(_save.data.songs ?? []);
+            var _allFound = true;
+            for(s in songs.songList) if(!_saved.contains(s)) { _allFound = false; break; }
+            if(_allFound) { backend.EXEAchievements.unlock('dagarden'); backend.EXEAchievements.save(); }
+        }
+
         player = new DAGPlayer();
         add(player);
 

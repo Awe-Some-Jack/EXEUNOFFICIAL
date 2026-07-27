@@ -88,6 +88,7 @@ local popups = {}
 local daPopup = 0
 local destroyPopups = {}
 local waitTimers = {}
+local playerClosedPopup = false
 
 function onCreatePost()
 	makeLuaSprite('cursor', 'fatality/newPopups/fatal_mouse_cursor')
@@ -329,6 +330,7 @@ function onUpdatePost(e)
 					waitTimers[popup] = nil
 					activePopup = nil
 					canRemove = false
+					playerClosedPopup = true
 
 					break
 				end
@@ -355,6 +357,7 @@ function onUpdatePost(e)
 			waitTimers[activePopup] = nil
 			canRemove = false
 			activePopup = nil
+			playerClosedPopup = true
 		end
 	end
 end
@@ -365,4 +368,13 @@ end
 
 function round(number, min, max)
 	return math.max(min, math.min(max, number))
+end
+
+function onEndSong()
+	if not playerClosedPopup and not getProperty('cpuControlled') and not getProperty('practiceMode') then
+		runHaxeCode([[
+			backend.EXEAchievements.unlock('popup');
+			backend.EXEAchievements.save();
+		]])
+	end
 end

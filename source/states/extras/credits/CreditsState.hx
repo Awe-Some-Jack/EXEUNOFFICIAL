@@ -49,6 +49,9 @@ class CreditsState extends MusicBeatSubstate
         FlxG.sound.music?.pause();
         FlxG.sound.playMusic(Assets.getSound('assets/exe/music/credits.ogg'));
 
+        backend.EXEAchievements.unlock('credits');
+        backend.EXEAchievements.save();
+
         final json:Dynamic = Json.parse(Assets.getText("assets/exe/extras/credits/credits.json"));
         for (cat in Reflect.fields(json)) credits.set(cat, cast Reflect.field(json, cat));
 

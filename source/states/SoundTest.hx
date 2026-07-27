@@ -408,6 +408,13 @@ class SoundTest extends MusicBeatState
 				return;
 			}
 
+			if (pcmValue == 19 && daValue == 91)
+			{}
+			//19-91 - Starved arg 1
+			//09-23 - Starved arg 2
+			//11-21 - Starved arg 3
+			//02-23 - Starved Eggman
+
 			if (notFoundAny && soundCooldown)
 			{
 				soundCooldown = false;

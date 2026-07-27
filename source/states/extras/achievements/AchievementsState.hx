@@ -1,7 +1,6 @@
 package states.extras.achievements;
 
 import flixel.addons.display.FlxBackdrop;
-import flixel.util.FlxGradient;
 import haxe.Json;
 import states.extras.achievements.AchievementItem;
 import flixel.group.FlxSpriteGroup;
@@ -37,8 +36,38 @@ class AchievementsState extends MusicBeatSubstate
     {
         super.create();
 
-        bg = FlxGradient.createGradientFlxSprite(FlxG.width, FlxG.height, [0xFF3d0008, 0xFFbd0033], 1, 0);
+        final _w = FlxG.width;
+        final _h = FlxG.height;
+        final _bmd = new openfl.display.BitmapData(_w, _h, false, 0xFFbd0033);
+        for (_x in 0..._w) {
+            final t = 1.0 - _x / (_w - 1);
+            final r = Math.round(0xbd + (0x57 - 0xbd) * t);
+            final b = Math.round(0x33 + (0x0b - 0x33) * t);
+            _bmd.fillRect(new openfl.geom.Rectangle(_x, 0, 1, _h), 0xFF000000 | (r << 16) | b);
+        }
+        bg = new FlxSprite().loadGraphic(_bmd);
         add(bg);
+
+        final _ts = 40;
+        final _cbmd = new openfl.display.BitmapData(_ts * 2, _ts * 2, true, 0x00000000);
+        _cbmd.fillRect(new openfl.geom.Rectangle(0,   0,   _ts, _ts), 0xFF3d0008);
+        _cbmd.fillRect(new openfl.geom.Rectangle(_ts, 0,   _ts, _ts), 0xFF831826);
+        _cbmd.fillRect(new openfl.geom.Rectangle(0,   _ts, _ts, _ts), 0xFF831826);
+        _cbmd.fillRect(new openfl.geom.Rectangle(_ts, _ts, _ts, _ts), 0xFF3d0008);
+        final _ch = new FlxBackdrop(_cbmd, XY, 0, 0);
+        _ch.alpha = 0.10;
+        _ch.velocity.x = -60;
+        add(_ch);
+
+        final _fadeBmd = new openfl.display.BitmapData(_w, _h, true, 0x00000000);
+        for (_x in 0..._w) {
+            final t = 1.0 - _x / (_w - 1);
+            final r = Math.round(0xbd + (0x57 - 0xbd) * t);
+            final b = Math.round(0x33 + (0x0b - 0x33) * t);
+            final a = Math.round(t * 255);
+            _fadeBmd.fillRect(new openfl.geom.Rectangle(_x, 0, 1, _h), (a << 24) | (r << 16) | b);
+        }
+        add(new FlxSprite().loadGraphic(_fadeBmd));
 
         add(achievementGroup);
 
@@ -50,27 +79,37 @@ class AchievementsState extends MusicBeatSubstate
 		spikes.velocity.x = -50;
 		add(spikes);
 
-        black = new FlxSprite().makeGraphic(FlxG.width, Std.int(spikes.x + spikes.height), 0xFF000000);
+        black = new FlxSprite().makeGraphic(FlxG.width, Std.int(spikes.y + spikes.height / 2), 0xFF000000);
         add(black);
 
-        achievementsTitle = new FlxText(30, 30, 0, Language.get('mainmenu.achievements', 'ACHIEVEMENTS'), 50);
+        achievementsTitle = new FlxText(30, 30, 0, Language.get('mainmenu.achievements', 'ACHIEVEMENTS'), 100);
         achievementsTitle.font = Paths.font('NiseSegaSonic.ttf');
+        achievementsTitle.scale.set(0.5, 0.5);
+        achievementsTitle.updateHitbox();
+        achievementsTitle.antialiasing = true;
         add(achievementsTitle);
 
-        sideBar = new FlxSprite(FlxG.width - 45, 210).makeGraphic(20, 450, 0x66000000);
+        sideBar = new FlxSprite(FlxG.width - 30, 210).makeGraphic(12, 450, 0x55000000);
         add(sideBar);
 
-        sideBarScroll = new FlxSprite(sideBar.x, sideBar.y).makeGraphic(20, 75, 0xFFFFFFFF);
+        sideBarScroll = new FlxSprite(sideBar.x, sideBar.y).makeGraphic(12, 75, 0xCCFFFFFF);
         add(sideBarScroll);
 
         loadAchievements();
         
-        var percent:Float = FlxMath.roundDecimal((unlockedAmount / achievementAmount) * 100, 1);
-        achievementProgress = new FlxText(5, 5, 0, 'Unlocked: $unlockedAmount / $achievementAmount  -  $percent%', 14);
+        achievementProgress = new FlxText(0, 0, 0, 'Unlocked: $unlockedAmount / $achievementAmount', 52);
+        achievementProgress.font = Paths.font('NiseSegaSonic.ttf');
+        achievementProgress.scale.set(0.5, 0.5);
+        achievementProgress.updateHitbox();
+        achievementProgress.antialiasing = true;
+        achievementProgress.alpha = 0.7;
+        achievementProgress.x = FlxG.width - achievementProgress.width - 35;
+        achievementProgress.y = FlxG.height - achievementProgress.height - 10;
+        achievementProgress.scrollFactor.set();
         add(achievementProgress);
 
         achievementGroup.x = -FlxG.width;
-        FlxTween.tween(achievementGroup, {x: 100}, 2, {ease: FlxEase.expoOut});
+        FlxTween.tween(achievementGroup, {x: 30}, 1.2, {ease: FlxEase.expoOut});
     }
 
     var isScrolling:Bool = false;
@@ -86,7 +125,7 @@ class AchievementsState extends MusicBeatSubstate
         if(FlxG.keys.justPressed.G) EXEAchievements.unlockAll();
         if(FlxG.keys.justPressed.H) EXEAchievements.lockAll();
 
-        achievementGroup.y = FlxMath.lerp(achievementGroup.y, 210 - achievementGroup.height * scrollValue, LERP_SPEED * elapsed);
+        achievementGroup.y = FlxMath.lerp(achievementGroup.y, 160 - achievementGroup.height * scrollValue, LERP_SPEED * elapsed);
         
         if (FlxG.mouse.justPressed) isScrolling = FlxG.mouse.overlaps(sideBarScroll);
         else if (!FlxG.mouse.pressed) isScrolling = false;
@@ -108,10 +147,10 @@ class AchievementsState extends MusicBeatSubstate
         for(i => achieve in achievementsData) 
         {
             var item = new AchievementItem(achieve);
-            item.y = i * 175;
+            item.y = i * (AchievementItem.ITEM_HEIGHT + 10);
             achievementGroup.add(item);
 
-            var separator = new FlxSprite(30, item.y + AchievementItem.ICON_SIZE + 10).makeGraphic(700, 10, 0x88FFFFFF);
+            var separator = new FlxSprite(0, item.y + AchievementItem.ITEM_HEIGHT + 4).makeGraphic(AchievementItem.ITEM_WIDTH, 2, 0x33FFFFFF);
             achievementGroup.add(separator);
 
             if(EXEAchievements.isUnlocked(achieve.id)) unlockedAmount++;

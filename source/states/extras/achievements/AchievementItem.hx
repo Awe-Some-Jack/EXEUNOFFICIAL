@@ -19,9 +19,11 @@ class AchievementItem extends FlxSpriteGroup
     public var title:FlxText;
     public var description:FlxText;
 
-    public static final ICON_SIZE:Int = 125;
+    public static final ICON_SIZE:Int = 115;
+    public static final ITEM_HEIGHT:Int = 145;
+    public static final ITEM_WIDTH:Int = 900;
 
-    public function new(data:EXEAchievement) 
+    public function new(data:EXEAchievement)
     {
         super();
 
@@ -29,30 +31,47 @@ class AchievementItem extends FlxSpriteGroup
         achievementId = data.id;
         unlocked = EXEAchievements.isUnlocked(achievementId);
 
+        final iconBg = new FlxSprite(15, 15).makeGraphic(ICON_SIZE, ICON_SIZE, 0x55000000);
+        add(iconBg);
+
         final iconName:String = !unlocked && data.secret ? 'locked' : achievementId;
-        icon = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/extras/achievements/icons/${iconName}.png'));
+        icon = new FlxSprite(15, 15).loadGraphic(Paths.getBitmapData('assets/exe/extras/achievements/icons/${iconName}.png'));
         icon.setGraphicSize(ICON_SIZE, ICON_SIZE);
+        icon.updateHitbox();
         add(icon);
 
-        title = new FlxText(150, 0, 900, data.name, 40);
+        final textW:Int = (ITEM_WIDTH - 155 - 15) * 2;
+        title = new FlxText(155, 0, textW, data.name, 80);
         title.font = Paths.font('NiseSegaSonic.ttf');
-        add(title);
+        title.scale.set(0.5, 0.5);
+        title.updateHitbox();
+        title.antialiasing = true;
 
-        description = new FlxText(150, title.height + 7, 800, data.description, 30);
+        description = new FlxText(155, 0, textW, data.description, 56);
         description.font = Paths.font('NiseSegaSonic.ttf');
+        description.scale.set(0.5, 0.5);
+        description.updateHitbox();
+        description.antialiasing = true;
+
+        final totalTextH = title.height + 6 + description.height;
+        final textY = (ITEM_HEIGHT - totalTextH) / 2;
+        title.y = textY;
+        description.y = textY + title.height + 6;
+
+        add(title);
         add(description);
 
         if(!unlocked)
         {
-			final colorSwap:ColorSwap = new ColorSwap();
-			colorSwap.hue = -1;
-			colorSwap.brightness = -0.5;
-			colorSwap.saturation = -1;
+            final colorSwap:ColorSwap = new ColorSwap();
+            colorSwap.hue = -1;
+            colorSwap.brightness = -0.5;
+            colorSwap.saturation = -1;
 
             icon.shader = colorSwap.shader;
-            title.color = description.color = 0xFF555555;
+            title.color = description.color = 0xFF666666;
 
-            if(data.secret) 
+            if(data.secret)
             {
                 title.text = questionify(data.name);
                 description.text = 'Unlock this achievement to see its description.';

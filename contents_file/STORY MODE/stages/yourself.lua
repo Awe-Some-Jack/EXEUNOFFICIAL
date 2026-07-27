@@ -1,33 +1,21 @@
-local yourselfBG1Old = { -- This bg is scrapped. Damn
-    {name = 'fondo', path = 'eye/bg_fondo', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'piso1', path = 'eye/piso-1', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, aboveFakeBF = true, alpha = 1, front = false},
-    {name = 'piso2', path = 'eye/piso-1 2', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 0, front = false},
-    {name = 'pico', path = 'eye/pico-del-frente', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
-    {name = 'luces', path = 'eye/xcxc', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
-    {name = 'potinas', path = 'eye/tinas', x = 85, y = 0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
-    {name = 'cortinas', path = 'eye/cor', x = 85, y = -300, scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
-}
-
-local yourselfBG1 = {
-    {name = 'bgBack',       path =            'eye/new bg yoursefl/back', x = -150, y = -250,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'layer2',       path =         'eye/new bg yoursefl/layers2', x =  300, y =  400,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'layer1',       path =         'eye/new bg yoursefl/layers1', x = -150, y =  300,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'blue',         path =      'eye/new bg yoursefl/blue-thing', x = -150, y =  100,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    --{name = 'black',         path =    'eye/new bg yoursefl/black-thing', x = -150, y =  400,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'blue2',        path =     'eye/new bg yoursefl/blue-thing2', x = -150, y =  100,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'bgUp',         path =              'eye/new bg yoursefl/up', x =  350, y =   50,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'mirrorStuff',  path =    'eye/new bg yoursefl/mirror-stuff', x =  150, y =  350,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'mirrorStuff2', path =   'eye/new bg yoursefl/mirror-stuff2', x = -150, y =  400,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'blue3',        path = 'eye/new bg yoursefl/blue-thingAGAIN', x = -150, y =  170,                                                                                    scaleX =   1, scaleY =   1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    --{name = 'mirrorStuff3', path =      'eye/new bg yoursefl/mirror-up', x = -150, y =  300,                                                                                    scaleX = 0.9, scaleY = 0.9, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    --{name = 'mirrorDown',   path =    'eye/new bg yoursefl/mirror-down', x = -150, y =  300,                                                                                    scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    --{name = 'mirrorShit',   path =    'eye/new bg yoursefl/mirror-shit', x =  450, y =    0,                                                                                    scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'sharp',        path =           'eye/new bg yoursefl/sharp', x =  500, y =  450,                                                                                    scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'bgDown',       path =            'eye/new bg yoursefl/down', x = -150, y =   50,                                                                                    scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    --{name = 'bgDownBroken', path =    'eye/new bg yoursefl/down-broken', x = -150, y =   50,                                                                                    scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'potinas',      path =                           'eye/tinas', x =   85, y =    0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
-    {name = 'cortinas',     path =                             'eye/cor', x =   85, y = -300,                                                                                    scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
-    {name = 'luces',        path =                            'eye/xcxc', x = 85, y = 200, scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
+local yourselfNormal = {
+    {name = 'back0', path = 'eye/yourself/back/0-bg',          x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'back1', path = 'eye/yourself/back/1-black',       x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'back2', path = 'eye/yourself/back/2-azul',        x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'back3', path = 'eye/yourself/back/3-azuldenuevo', x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'back4', path = 'eye/yourself/back/4-reflection',  x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'back5', path = 'eye/yourself/back/5-glass',       x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'back6', path = 'eye/yourself/back/6-structure',   x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm1', path = 'eye/yourself/normal/1-black',     x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm2', path = 'eye/yourself/normal/2-azul',      x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm3', path = 'eye/yourself/normal/3-reflection',x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm4', path = 'eye/yourself/normal/4-glass',     x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm5', path = 'eye/yourself/normal/5-shading',   x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm6', path = 'eye/yourself/normal/6-glass',     x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm7', path = 'eye/yourself/normal/7-structure', x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'potinas',  path = 'eye/tinas', x =  85, y =    0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
+    {name = 'cortinas', path = 'eye/cor',   x =  85, y = -300,                                                                                    scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
+    {name = 'luces',    path = 'eye/xcxc',  x =  85, y =  200,                                                                                    scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
 }
 
 local cristales = {
@@ -64,7 +52,7 @@ function onCreate()
     startVideo("EYE_TO_EYE intro", false, true, false, false)
     callMethod("remove", {instanceArg("videoCutscene")})
 
-    for _, you in ipairs(yourselfBG1) do
+    for _, you in ipairs(yourselfNormal) do
         if you.animated then
             makeAnimatedLuaSprite(you.name, you.path, you.x, you.y)
             addAnimationByPrefix(you.name, you.animName, you.animPrefix, you.fps, you.loop)
@@ -188,7 +176,7 @@ function onEvent(eventName, value1, value2)
                 doTweenX('spotlight1X', 'spotlight1', getProperty('spotlight1.x') + 1000, 0.6, 'circOut')
             end
         elseif value1 == 'showOffNewStage' then
-            for _, hideYour in ipairs(yourselfBG1) do
+            for _, hideYour in ipairs(yourselfNormal) do
                 setProperty(hideYour.name..'.alpha', 0)
             end
 
@@ -203,7 +191,7 @@ function onEvent(eventName, value1, value2)
                 doTweenAlpha(hideSelf.name..'Alpha', hideSelf.name, 0, 10)
             end
             doTweenAlpha('gfAlpha', 'gf', 0, 10)
-            for _, showYour in ipairs(yourselfBG1) do
+            for _, showYour in ipairs(yourselfNormal) do
                 doTweenAlpha(showYour.name..'Alpha', showYour.name, 1, 10)
                 if showYour.name == 'potinas' then
                     doTweenAlpha(showYour.name..'Alpha', showYour.name, 0, 10)

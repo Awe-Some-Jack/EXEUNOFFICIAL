@@ -221,12 +221,6 @@
 		"id": "mattpro"
 	},
 	{
-		"name": "SEBAS MI BEBA",
-		"description": "Do I need to explain what this is?",
-		"secret": true,
-		"id": "sebas"
-	},
-	{
 		"name": "MUSIC ENJOYER!",
 		"description": "Complete the DA Garden Song Library",
 		"id": "dagarden"
@@ -252,7 +246,7 @@
 		"id": "hyper"
 	},
 	{
-		"name": "Idk if you want the achivement or you are just bad…",
+		"name": "You are just bad…",
 		"description": "Get every game over",
 		"id": "die"
 	},

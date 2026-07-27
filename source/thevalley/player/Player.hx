@@ -18,7 +18,6 @@ enum PlayerMode { Ground; Air; Launch; WingOpen; Glide; WingClose; }
 
 typedef PlayerConfig = {
 	sprite:String,
-	xml:String,
 	hitbox:{ width:Int, height:Int, offsetX:Float, offsetY:Float, frameWidth:Float, ?footRadius:Float },
 	physics:{
 		walkAccel:Float, walkDecel:Float, walkBrake:Float, walkMax:Float,
@@ -82,7 +81,7 @@ class Player extends FlxSprite
 		stamina = cfg.physics.staminaMax;
 
 		var h = cfg.hitbox;
-		frames = FlxAtlasFrames.fromSparrow(cfg.sprite, cfg.xml);
+		frames = Paths.getSparrowAtlas(cfg.sprite);
 
 		for (anim in cfg.animations)
 		{

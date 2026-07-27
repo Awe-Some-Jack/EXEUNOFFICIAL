@@ -1,6 +1,5 @@
 {
-  "sprite": "assets/shared/images/minigame/thevalley/characters/fakergf/fakergf.png",
-  "xml":    "assets/shared/images/minigame/thevalley/characters/fakergf/fakergf.xml",
+  "sprite": "minigame/thevalley/characters/fakergf/fakergf",
 
   "hitbox": {
     "width":      18,

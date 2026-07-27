@@ -210,8 +210,8 @@ local stageMode = {
 		setVignette('none')
 		shakeIntensity = 0.001
 
-		setProperty('dad.x', getProperty('dad.x') - 210)
-		setProperty('dad.y', getProperty('dad.y') - 395)
+		setProperty('dad.x', getProperty('dad.x') - 210 - 133)
+		setProperty('dad.y', getProperty('dad.y') - 395 - 57)
 		setProperty('boyfriend.x', getProperty('boyfriend.x') - 780)
 		setProperty('boyfriend.y', getProperty('boyfriend.y') - 420)
 		setProperty('gf.x', getProperty('gf.x') - 105)

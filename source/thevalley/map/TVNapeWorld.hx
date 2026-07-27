@@ -62,8 +62,8 @@ class TVNapeWorld
 			function(cb:PreCallback):Null<PreFlag>
 			{
 				var dynBody:Body = cast(cb.int1, Body);
-				if (dynBody.velocity.y < 0)
-					return PreFlag.IGNORE_ONCE;
+				if (dynBody.velocity.y < -15.0)
+					return PreFlag.IGNORE;
 				return PreFlag.ACCEPT;
 			},
 			0,
@@ -189,6 +189,8 @@ class TVNapeWorld
 			}
 			gp.dispose();
 		}
+
+		mat.elasticity = 0.0;
 
 		body.setShapeMaterials(mat);
 		body.space = FlxNapeSpace.space;

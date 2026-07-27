@@ -209,7 +209,9 @@ class Player extends FlxSprite
 
 		var rayDir = Vec2.get(0, 1);
 
-		var offsets:Array<Float> = [ -halfW * 0.7, 0.0, halfW * 0.7 ]; // left ray, mid ray, right ray. 
+		var offsets:Array<Float> = [ -halfW * 0.7, 0.0, halfW * 0.7 ];
+		var shortestDist:Float = DIST + 1.0;
+
 		for (ox in offsets)
 		{
 			var orig = Vec2.get(body.position.x + ox, footY - 2);
@@ -222,14 +224,19 @@ class Player extends FlxSprite
 			{
 				isGrounded    = true;
 				touchingFloor = true;
-				var nx = res.normal.x;
-				var ny = res.normal.y;
-				var ang = Math.atan2(nx, -ny) * (180.0 / Math.PI);
 				
-				if (Math.abs(ang) <= 60.0) 
+				if (res.distance < shortestDist)
 				{
-					if (Math.abs(ang) > Math.abs(groundAngle)) groundAngle = ang;
-					if (Math.abs(ang) > 5.0) onSlope = true;
+					shortestDist = res.distance;
+					var nx = res.normal.x;
+					var ny = res.normal.y;
+					var ang = Math.atan2(nx, -ny) * (180.0 / Math.PI);
+					
+					if (Math.abs(ang) <= 85.0) 
+					{
+						groundAngle = ang;
+						onSlope = (Math.abs(ang) > 5.0);
+					}
 				}
 				res.dispose();
 			}

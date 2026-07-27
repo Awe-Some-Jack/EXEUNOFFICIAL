@@ -112,7 +112,6 @@ var tileMap:TileMap;
 
 		player = new Player(80.0, 155.0, "assets/shared/images/minigame/thevalley/characters/fakergf/fakergf.json");
 		player.cinematic = true;
-		add(player);
 
 		bgCam.follow(player, FlxCameraFollowStyle.LOCKON);
 		bgCam.followLerp = 0.08;
@@ -165,6 +164,8 @@ var tileMap:TileMap;
 		tileMap.insertHoldingSprites(this);
 
 		_loadObjects();
+
+		add(player);
 	}
 
 	override public function update(elapsed:Float):Void

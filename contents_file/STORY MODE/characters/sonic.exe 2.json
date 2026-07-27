@@ -2,59 +2,59 @@
 	"animations": [
 		{
 			"offsets": [0, 0],
-			"loop": true,
+			"indices": [],
 			"fps": 24,
 			"anim": "idle",
-			"indices": [],
+			"loop": true,
 			"name": "idle"
 		},
 		{
 			"offsets": [230, -1],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
+			"loop": false,
 			"name": "left"
 		},
 		{
 			"offsets": [-12, -6],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
+			"loop": false,
 			"name": "down"
 		},
 		{
 			"offsets": [0, 110],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
+			"loop": false,
 			"name": "up"
 		},
 		{
 			"offsets": [-3, -3],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
+			"loop": false,
 			"name": "right"
 		},
 		{
-			"offsets": [-15, -17],
+			"offsets": [-14, -17],
 			"indices": [],
 			"fps": 24,
 			"anim": "laugh",
 			"loop": false,
-			"name": "1risa"
+			"name": "laugh"
 		},
 		{
-			"offsets": [-117, -70],
+			"offsets": [-116, -70],
 			"indices": [],
 			"fps": 24,
 			"anim": "idle-alt",
 			"loop": true,
-			"name": "2idle"
+			"name": "madidle"
 		},
 		{
 			"offsets": [171, 46],
@@ -62,7 +62,7 @@
 			"fps": 24,
 			"anim": "singLEFT-alt",
 			"loop": false,
-			"name": "f left"
+			"name": "madleft"
 		},
 		{
 			"offsets": [10, -77],
@@ -70,7 +70,7 @@
 			"fps": 24,
 			"anim": "singDOWN-alt",
 			"loop": false,
-			"name": "down a"
+			"name": "maddown"
 		},
 		{
 			"offsets": [61, 173],
@@ -78,7 +78,7 @@
 			"fps": 24,
 			"anim": "singUP-alt",
 			"loop": false,
-			"name": "f up"
+			"name": "madup"
 		},
 		{
 			"offsets": [-118, -77],
@@ -86,28 +86,28 @@
 			"fps": 24,
 			"anim": "singRIGHT-alt",
 			"loop": false,
-			"name": "f right"
+			"name": "madright"
 		},
 		{
-			"offsets": [-69, -33],
-			"indices": [],
-			"fps": 24,
-			"anim": "die",
-			"loop": false,
-			"name": "just die"
-		},
-		{
-			"offsets": [-15, -80],
+			"offsets": [-14, -80],
 			"indices": [],
 			"fps": 24,
 			"anim": "laugh-alt",
 			"loop": false,
-			"name": "2risa"
+			"name": "madlaugh"
+		},
+		{
+			"offsets": [-68, -34],
+			"indices": [],
+			"fps": 24,
+			"anim": "die",
+			"loop": false,
+			"name": "justdie"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/xenoycr",
+	"image": "characters/atlasxeno",
 	"position": [-370, 10],
 	"healthicon": "XENO-P2",
 	"flip_x": false,

@@ -364,6 +364,7 @@ class SoundTest extends MusicBeatState
 			
 			for (code in codes)
 			{
+				trace(pcmValue + ' + ' + daValue + ' | ' + code.pcm + ' + ' + code.da);
 				if (pcmValue == code.pcm && daValue == code.da)
 				{
 					notFoundAny = false;

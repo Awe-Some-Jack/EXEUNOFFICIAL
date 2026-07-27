@@ -74,7 +74,8 @@ class BGValley
 			bd.x = layer.offsetX;
 			bd.y = 350 + layer.offsetY;
 			bd.scale.set(1.1, 1.1);
-			if (layer.path.indexOf("fog") >= 0)
+			
+			if (layer.path.key.indexOf("fog") >= 0)
 			{
 				var fw = new WiggleEffect();
 				fw.effectType    = WiggleEffectType.WAVY;

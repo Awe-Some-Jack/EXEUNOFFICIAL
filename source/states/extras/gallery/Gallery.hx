@@ -359,7 +359,7 @@ class Gallery extends MusicBeatSubstate
 
     inline function _isImage(name:String):Bool
     {
-        final l:String = name.toLowerCase();
+        var l:String = name.toLowerCase();
         
         for (ext in Paths.IMAGE_EXTS)
             if (l.endsWith('.' + ext)) return true;
@@ -369,7 +369,7 @@ class Gallery extends MusicBeatSubstate
 
     inline function _isVideo(path:String):Bool
     {
-        final l:String = path.toLowerCase();
+        var l:String = path.toLowerCase();
         
         for (ext in Paths.VIDEO_EXTS)
             if (l.endsWith('.' + ext)) return true;

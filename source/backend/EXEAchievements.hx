@@ -102,11 +102,8 @@ class EXEAchievements
         if(ratingPercent >= 0.8) incrementCount('super', 5);
 
         switch(songId) {
-            // Main Week — final song also unlocks "beat the entire mod"
-            case 'yourself':
-                unlock('xeno');
-                unlock('finale');
-            case 'too-slow' | 'you-cant-run' | 'triple-trouble' | 'final-escape':
+            // Main Week
+            case 'yourself' | 'too-slow' | 'you-cant-run' | 'triple-trouble' | 'final-escape':
                 unlock('xeno');
             // Lord X
             case 'cycles' | 'hellbent' | 'fate' | 'gotta-go':
@@ -187,7 +184,24 @@ class EXEAchievements
                 checkFileExtensions(songId);
             default:
         }
+        checkFinale();
         save();
+    }
+
+    static final FINALE_REQUIRED:Array<String> = [
+        'xeno', 'lordx', 'majin', 'tailsdoll', 'fleetway', 'exe', 'sanic',
+        'needlemouse', 'chaotix', 'scorched', 'demogri', 'bratwurst', 'omw',
+        'devoid', 'rerun', 'soink', 'ugly', 'sunky', 'fatal', 'starved',
+        'crazy', 'coldsteel', 'genesys', 'educator', 'sonichu', 'fileextensions',
+        'parallax'
+    ];
+
+    public static function checkFinale():Void
+    {
+        if(isUnlocked('finale')) return;
+        for(id in FINALE_REQUIRED)
+            if(!isUnlocked(id)) return;
+        unlock('finale');
     }
 
     static var FILE_EXTENSIONS_SONGS:Array<String> = [

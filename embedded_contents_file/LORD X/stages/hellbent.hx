@@ -148,8 +148,8 @@ function onUpdatePost(elapsed:Float)
 	{
 		_floatTime += elapsed * 1.5;
 		dad.setPosition(
-			-700 + Math.cos(_floatTime + 0.5) * 25,
-			960 + Math.sin(_floatTime + 0.5) * 50
+			-750 + Math.cos(_floatTime + 0.5) * 25,
+			850 + Math.sin(_floatTime + 0.5) * 50
 		);
 		bgHell[1].sprite.setPosition(
 			-1400 + Math.cos(_floatTime + 0.5) * 25,

@@ -1,62 +1,62 @@
 {
 	"animations": [
 		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 26,
+			"anim": "idle",
 			"loop": false,
-			"offsets": [250, 142],
+			"name": "idle"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [11, 12, 13],
+			"fps": 26,
+			"anim": "idle-loop",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [189, 15],
+			"indices": [],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"loop": false,
+			"name": "left"
 		},
 		{
-			"loop": false,
-			"offsets": [56, 140],
+			"offsets": [-2, -2],
+			"indices": [],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"loop": false,
+			"name": "down"
 		},
 		{
-			"loop": false,
-			"offsets": [197, 335],
+			"offsets": [132, 175],
+			"indices": [],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"loop": false,
+			"name": "up"
 		},
 		{
-			"offsets": [64, 140],
-			"loop": false,
+			"offsets": [12, -3],
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "rigth"
-		},
-		{
 			"loop": false,
-			"offsets": [55, 140],
-			"anim": "idle",
-			"fps": 26,
-			"name": "idle",
-			"indices": []
-		},
-		{
-			"loop": true,
-			"offsets": [55, 140],
-			"anim": "idle-loop",
-			"fps": 26,
-			"name": "idle e2 instancia 1",
-			"indices": [12, 13, 14]
+			"name": "right"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/hellbemnt",
-	"position": [10, 200],
+	"image": "characters/hellbentfloat",
+	"position": [0, 0],
 	"healthicon": "lord-x",
 	"flip_x": false,
 	"healthbar_colors": [60, 60, 88],
-	"camera_position": [-220, -50],
+	"camera_position": [0, 0],
 	"sing_duration": 10,
 	"scale": 1,
 	"_editor_isPlayer": false

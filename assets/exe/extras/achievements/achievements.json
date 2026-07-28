@@ -58,6 +58,12 @@
 		"id": "sunkyvalley"
 	},
 	{
+		"name": "Magos y Magas!",
+		"description": "Find Pepe el Mago in The Valley.",
+		"secret": true,
+		"id": "pepe"
+	},
+	{
 		"name": "Would you do it all again?",
 		"description": "Find and beat Sanic",
 		"id": "sanic"
@@ -219,12 +225,6 @@
 		"description": "Mattpro",
 		"secret": true,
 		"id": "mattpro"
-	},
-	{
-		"name": "Pepe el mago",
-		"description": "placeholder",
-		"secret": true,
-		"id": "pepe"
 	},
 	{
 		"name": "MUSIC ENJOYER!",

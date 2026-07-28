@@ -461,8 +461,8 @@ class SoundTest extends MusicBeatState
 			try
 			{
 				final firstSong:String = Paths.formatToSongPath(leWeek.songs[0][0]);
-				PlayState.storyPlaylist = [firstSong];
-				PlayState.isStoryMode = false;
+				PlayState.storyPlaylist = [for (song in leWeek.songs) Paths.formatToSongPath(song[0])];
+				PlayState.isStoryMode = true;
 				PlayState.storyDifficulty = 1;
 				PlayState.storyWeek = WeekData.weeksList.indexOf(name);
 				PlayState.campaignScore = 0;

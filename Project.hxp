@@ -324,21 +324,21 @@ class Project extends HXProject
 
     function configureIcons()
     {
-        if (FileSystem.exists("assets/icons/icon16.png"))
-            icons.push(new Icon("assets/icons/icon16.png", 16));
+        if (FileSystem.exists("assets/icons/icon16.webp"))
+            icons.push(new Icon("assets/icons/icon16.webp", 16));
 
-        if (FileSystem.exists("assets/icons/icon32.png"))
-            icons.push(new Icon("assets/icons/icon32.png", 32));
+        if (FileSystem.exists("assets/icons/icon32.webp"))
+            icons.push(new Icon("assets/icons/icon32.webp", 32));
 
-        if (FileSystem.exists("assets/icons/icon64.png"))
-            icons.push(new Icon("assets/icons/icon64.png", 64));
+        if (FileSystem.exists("assets/icons/icon64.webp"))
+            icons.push(new Icon("assets/icons/icon64.webp", 64));
 
-        if (FileSystem.exists("assets/icons/iconOG.png"))
+        if (FileSystem.exists("assets/icons/iconOG.webp"))
         {
-            icons.push(new Icon("assets/icons/iconOG.png"));
+            icons.push(new Icon("assets/icons/iconOG.webp"));
 
             if (isLinux() || isMac())
-                assets.push(new Asset("assets/icons/iconOG.png", "icon.png"));
+                assets.push(new Asset("assets/icons/iconOG.webp", "icon.webp"));
         }
     }
 

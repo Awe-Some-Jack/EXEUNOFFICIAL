@@ -66,7 +66,10 @@ class ProtectedSongsChartMacro
                     final songKey = file.substr(0, file.length - 5);
                     final fullKey = folder + "/" + songKey;
                     
-                    mapAssignments.push(macro map.set($v{fullKey}, {json: $v{content}, hash: $v{hash}}));
+                    final resName = "chart_res_" + fullKey;
+                    Context.addResource(resName, haxe.io.Bytes.ofString(content));
+                    
+                    mapAssignments.push(macro map.set($v{fullKey}, {resName: $v{resName}, hash: $v{hash}}));
                 }
             }
         }

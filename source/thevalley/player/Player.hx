@@ -217,7 +217,8 @@ class Player extends FlxSprite
 			var orig = Vec2.get(body.position.x + ox, footY - 2);
 			var ray  = new Ray(orig, rayDir);
 			ray.maxDistance = DIST;
-			var res = FlxNapeSpace.space.rayCast(ray, false);
+			
+			var res = body.space.rayCast(ray, false);
 			orig.dispose();
 
 			if (res != null)

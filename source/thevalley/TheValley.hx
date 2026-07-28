@@ -27,15 +27,19 @@ class TheValley extends MusicBeatState
 
 	var bgCam:FlxCamera;
 	public var uiCam:FlxCamera;
+
 	var bg:BGValley;
 	var _vigLeft:FlxSprite;
 	var _vigRight:FlxSprite;
 	var napeWorld:TVNapeWorld;
-	public var player:Player;
+	
 	var hud:HUD;
-var tileMap:TileMap;
-	public var cutscene:TVCutscene;
+	var tileMap:TileMap;
+
 	var _gameplayStarted:Bool = false;
+
+	public var cutscene:TVCutscene;
+	public var player:Player;
 
 	public var launchpads:Array<Launchpad>     = [];
 	public var skullPrompts:Array<SkullPrompt> = [];
@@ -80,31 +84,53 @@ var tileMap:TileMap;
 		}
 
 		var mapW:Float = 0;
+		var mapMinX:Float = Math.POSITIVE_INFINITY;
 		var mapMinY:Float = 0;
 		var mapMaxY:Float = 0;
+		
 		for (p in _mapParts)
 		{
 			if (p.x + p.width  > mapW)    mapW    = p.x + p.width;
-			if (p.y            < mapMinY)  mapMinY = p.y;
-			if (p.y + p.height > mapMaxY)  mapMaxY = p.y + p.height;
+			if (p.x            < mapMinX) mapMinX = p.x;
+			if (p.y            < mapMinY) mapMinY = p.y;
+			if (p.y + p.height > mapMaxY) mapMaxY = p.y + p.height;
 		}
+
+		if (mapMinX == Math.POSITIVE_INFINITY) mapMinX = 0;
 
 		napeWorld = new TVNapeWorld();
 		napeWorld.init();
 		napeWorld.partOffsets = [for (p in _mapParts) { x: p.x, y: p.y }];
 		napeWorld.loadParts("assets/shared/images/minigame/thevalley/map/", MAP_PARTS);
 
+		var wallMat = new nape.phys.Material(0.0, 0.0, 0.0, 1.0, 0.0);
+
+		var leftWall = new nape.phys.Body(nape.phys.BodyType.STATIC, nape.geom.Vec2.weak(mapMinX - 500, -5000));
+		leftWall.shapes.add(new nape.shape.Polygon(nape.shape.Polygon.rect(0, 0, 500, 20000)));
+		leftWall.setShapeMaterials(wallMat);
+		leftWall.space = flixel.addons.nape.FlxNapeSpace.space;
+
+		var rightWall = new nape.phys.Body(nape.phys.BodyType.STATIC, nape.geom.Vec2.weak(mapW, -5000));
+		rightWall.shapes.add(new nape.shape.Polygon(nape.shape.Polygon.rect(0, 0, 500, 20000)));
+		rightWall.setShapeMaterials(wallMat);
+		rightWall.space = flixel.addons.nape.FlxNapeSpace.space;
+
+		var floorWall = new nape.phys.Body(nape.phys.BodyType.STATIC, nape.geom.Vec2.weak(-5000, mapMaxY + 200));
+		floorWall.shapes.add(new nape.shape.Polygon(nape.shape.Polygon.rect(0, 0, 30000, 500)));
+		floorWall.setShapeMaterials(wallMat);
+		floorWall.space = flixel.addons.nape.FlxNapeSpace.space;
+
 		bg = new BGValley(this, _mapParts);
 		bg.addSprites();
 
 		treeGroup = new FlxTypedGroup<FlxSprite>();
 		add(treeGroup);
+		
 		var map1Spr = bg.mapSprites.length > 0 ? bg.mapSprites[0] : null;
 		if (map1Spr != null)
 		{
 			members.remove(treeGroup);
-			var map1Idx = members.indexOf(map1Spr);
-			members.insert(map1Idx, treeGroup);
+			members.insert(members.indexOf(map1Spr), treeGroup);
 		}
 
 		objectGroup = new FlxTypedGroup<FlxSprite>();
@@ -166,6 +192,9 @@ var tileMap:TileMap;
 		_loadObjects();
 
 		add(player);
+
+		flixel.addons.nape.FlxNapeSpace.drawDebug = true;
+		FlxG.debugger.drawDebug = true;
 	}
 
 	override public function update(elapsed:Float):Void

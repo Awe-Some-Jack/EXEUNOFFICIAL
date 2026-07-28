@@ -12,6 +12,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxAxes;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import flixel.util.FlxSave;
 import openfl.utils.Assets as AssetPaths;
 import backend.Paths;
 import haxe.Json;
@@ -31,6 +32,7 @@ class SoundTest extends MusicBeatState
 	static final ARROW_ICONS:Array<String> = ["^", "<", "v", ">"];
 
 	var codes:Array<SoundTestData> = [];
+	public static var savedCode:Array<Int> = [];
 
 	var backdrop:FlxBackdrop;
 	var whiteBG:FlxSprite;
@@ -364,7 +366,6 @@ class SoundTest extends MusicBeatState
 			
 			for (code in codes)
 			{
-				trace(pcmValue + ' + ' + daValue + ' | ' + code.pcm + ' + ' + code.da);
 				if (pcmValue == code.pcm && daValue == code.da)
 				{
 					notFoundAny = false;
@@ -380,9 +381,16 @@ class SoundTest extends MusicBeatState
 							}
 							else
 							{
+								savedCode = [pcmValue, daValue];
+
+								var a = backend.EXEAchievements.get('secondary');
+								var savedCodes:Array<Array<Int>> = cast(a.extra ?? []);
+								if(!savedCodes.contains(savedCode)) savedCodes.push(savedCode);
+								a.extra = savedCodes;
+
 								persistentUpdate = false;
-							persistentDraw = true;
-							openSubState(new SoundTestSubState((code.type.toLowerCase() == 'video'), code.path));
+								persistentDraw = true;
+								openSubState(new SoundTestSubState((code.type.toLowerCase() == 'video'), code.path));
 							}
 						}
 					});
@@ -492,6 +500,16 @@ class SoundTest extends MusicBeatState
 		persistentUpdate = true;
 		transitioning = false;
 		FlxTween.tween(whiteBG, {alpha: 0}, 0.2);
+
+		if (savedCode == [24, 4])
+		{
+			backend.EXEAchievements.unlock('mattpro');
+			backend.EXEAchievements.checkFinale();
+			backend.EXEAchievements.save();
+		}
+
+		backend.EXEAchievements.checkSecondaryCodes();
+		savedCode = [];
 	}
 
 	override public function destroy():Void

@@ -131,8 +131,8 @@ class AchievementsState extends MusicBeatSubstate
         else if (!FlxG.mouse.pressed) isScrolling = false;
 
         var keyDelta:Float = 0;
-        if (FlxG.keys.pressed.S || controls.UI_DOWN) keyDelta = WHEEL_SENSITIVITY;
-        if (FlxG.keys.pressed.W || controls.UI_UP)   keyDelta = -WHEEL_SENSITIVITY;
+        if (FlxG.keys.pressed.S || controls.UI_DOWN) keyDelta = WHEEL_SENSITIVITY / 5;
+        if (FlxG.keys.pressed.W || controls.UI_UP)   keyDelta = -WHEEL_SENSITIVITY / 5;
 
         if(isScrolling)
             sideBarScroll.y = FlxMath.bound(sideBarScroll.y + FlxG.mouse.deltaY, sideBar.y, sideBar.y + sideBar.height - sideBarScroll.height);

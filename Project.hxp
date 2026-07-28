@@ -56,8 +56,7 @@ class Project extends HXProject
         this.app.file = EXECUTABLE;
         this.app.preloader = PRELOADER;
 
-        if (isIOS())
-            this.templatePaths.push("templates");
+        this.templatePaths.push("templates");
 
         this.sources.push("source");
 

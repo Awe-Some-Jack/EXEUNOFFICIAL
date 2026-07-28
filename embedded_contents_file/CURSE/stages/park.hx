@@ -27,8 +27,6 @@ var speedTween:FlxTween = null;
 
 function onCreate()
 {
-    game.initLuaShader('wavyDistortion');
-
     sky = new FlxSprite(-700, -370).loadGraphic(Paths.image('Park/sky'));
     sky.scale.set(0.8, 0.8);
     sky.updateHitbox();

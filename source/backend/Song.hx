@@ -155,7 +155,6 @@ class Song
 		#end
 		if (rawData == null && OpenFlAssets.exists(_lastPath)) rawData = OpenFlAssets.getText(_lastPath);
 
-		#if final
 		final rawProtected = ProtectedSongsChart.getSongRaw(formattedFolder, formattedSong);
 		if (rawProtected != null)
 		{
@@ -165,7 +164,6 @@ class Song
 				rawData = rawProtected;
 			}
 		}
-		#end
 
 		return rawData != null ? parseJSON(rawData, jsonInput) : null;
 	}

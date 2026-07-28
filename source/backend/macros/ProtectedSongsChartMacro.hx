@@ -22,7 +22,7 @@ class ProtectedSongsChartMacro
             doc: null,
             meta: [],
             access: [APublic, AStatic],
-            kind: FVar(macro : haxe.ds.StringMap<{json:String, hash:String}>, mapExpr),
+            kind: FVar(macro : haxe.ds.StringMap<{resName:String, hash:String}>, mapExpr),
             pos: Context.currentPos()
         };
         fields.push(field);
@@ -39,11 +39,9 @@ class ProtectedSongsChartMacro
         {
             for (mod in FileSystem.readDirectory("contents_file")) 
             {
-                var modDataPath = "contents_file/" + mod + "/data/";
+                final modDataPath = "contents_file/" + mod + "/data/";
                 if (FileSystem.exists(modDataPath) && FileSystem.isDirectory(modDataPath)) 
-                {
                     directoriesToScan.push(modDataPath);
-                }
             }
         }
         
@@ -76,7 +74,7 @@ class ProtectedSongsChartMacro
         #end
         
         return macro {
-            var map = new haxe.ds.StringMap<{json:String, hash:String}>();
+            var map = new haxe.ds.StringMap<{resName:String, hash:String}>();
             $b{mapAssignments};
             map;
         };

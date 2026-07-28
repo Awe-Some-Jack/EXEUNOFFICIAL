@@ -11,6 +11,8 @@ import states.EXEMenu;
 class AchievementsState extends MusicBeatSubstate 
 {
     var bg:FlxSprite;
+    var bg2:FlxSprite;
+    var bg3:FlxSprite;
     var spikes:FlxBackdrop;
     var black:FlxSprite;
     var achievementsTitle:FlxText;
@@ -54,10 +56,10 @@ class AchievementsState extends MusicBeatSubstate
         _cbmd.fillRect(new openfl.geom.Rectangle(_ts, 0,   _ts, _ts), 0xFF831826);
         _cbmd.fillRect(new openfl.geom.Rectangle(0,   _ts, _ts, _ts), 0xFF831826);
         _cbmd.fillRect(new openfl.geom.Rectangle(_ts, _ts, _ts, _ts), 0xFF3d0008);
-        final _ch = new FlxBackdrop(_cbmd, XY, 0, 0);
-        _ch.alpha = 0.10;
-        _ch.velocity.x = -60;
-        add(_ch);
+        bg3 = new FlxBackdrop(_cbmd, XY, 0, 0);
+        bg3.alpha = 0.10;
+        bg3.velocity.x = -60;
+        add(bg3);
 
         final _fadeBmd = new openfl.display.BitmapData(_w, _h, true, 0x00000000);
         for (_x in 0..._w) {
@@ -67,9 +69,8 @@ class AchievementsState extends MusicBeatSubstate
             final a = Math.round(t * 255);
             _fadeBmd.fillRect(new openfl.geom.Rectangle(_x, 0, 1, _h), (a << 24) | (r << 16) | b);
         }
-        add(new FlxSprite().loadGraphic(_fadeBmd));
-
-        add(achievementGroup);
+        bg2 = new FlxSprite().loadGraphic(_fadeBmd);
+        add(bg2);
 
         spikes = new FlxBackdrop(null, X);
         spikes.makeGraphic(100, 100, 0xFF000000);
@@ -77,23 +78,22 @@ class AchievementsState extends MusicBeatSubstate
         spikes.angle = 45;
 		spikes.y = spikes.height / 2;
 		spikes.velocity.x = -50;
-		add(spikes);
+        FlxTween.tween(spikes, {y: -400}, 0.8, {ease: FlxEase.expoOut, type: 16});
 
         black = new FlxSprite().makeGraphic(FlxG.width, Std.int(spikes.y + spikes.height / 2), 0xFF000000);
-        add(black);
+        FlxTween.tween(black, {y: -400}, 0.8, {ease: FlxEase.expoOut, type: 16});
 
         achievementsTitle = new FlxText(30, 30, 0, Language.get('mainmenu.achievements', 'ACHIEVEMENTS'), 100);
         achievementsTitle.font = Paths.font('NiseSegaSonic.ttf');
         achievementsTitle.scale.set(0.5, 0.5);
         achievementsTitle.updateHitbox();
         achievementsTitle.antialiasing = true;
-        add(achievementsTitle);
+        FlxTween.tween(achievementsTitle, {y: -400}, 0.8, {ease: FlxEase.expoOut, type: 16});
 
         sideBar = new FlxSprite(FlxG.width - 30, 210).makeGraphic(12, 450, 0x55000000);
-        add(sideBar);
-
+        FlxTween.tween(sideBar, {alpha: 0}, 0.8, {ease: FlxEase.expoOut, type: 16});
         sideBarScroll = new FlxSprite(sideBar.x, sideBar.y).makeGraphic(12, 75, 0xCCFFFFFF);
-        add(sideBarScroll);
+        FlxTween.tween(sideBarScroll, {alpha: 0}, 0.8, {ease: FlxEase.expoOut, type: 16});
 
         loadAchievements();
         
@@ -106,7 +106,15 @@ class AchievementsState extends MusicBeatSubstate
         achievementProgress.x = FlxG.width - achievementProgress.width - 35;
         achievementProgress.y = FlxG.height - achievementProgress.height - 10;
         achievementProgress.scrollFactor.set();
+        FlxTween.tween(achievementProgress, {alpha: 0}, 0.8, {ease: FlxEase.expoOut, type: 16});
         add(achievementProgress);
+
+        add(achievementGroup);
+        add(spikes);
+        add(black);
+        add(achievementsTitle);
+        add(sideBar);
+        add(sideBarScroll);
 
         achievementGroup.x = -FlxG.width;
         FlxTween.tween(achievementGroup, {x: 30}, 1.2, {ease: FlxEase.expoOut});
@@ -117,11 +125,8 @@ class AchievementsState extends MusicBeatSubstate
     {
         super.update(elapsed);
 
-        if(controls.BACK) 
-        {
-            FlxG.sound.play(Paths.sound('cancelMenu'));
-            close();
-        }
+        if(controls.BACK) back();
+        
         if(FlxG.keys.justPressed.G) EXEAchievements.unlockAll();
         if(FlxG.keys.justPressed.H) EXEAchievements.lockAll();
 
@@ -159,5 +164,23 @@ class AchievementsState extends MusicBeatSubstate
 
             if(EXEAchievements.isUnlocked(achieve.id)) unlockedAmount++;
         }
+    }
+
+    function back():Void
+    {
+        FlxG.sound.play(Paths.sound('cancelMenu'));
+
+        FlxTween.tween(spikes, {y: -400}, 0.8, {ease: FlxEase.cubeIn});
+        FlxTween.tween(black, {y: -400}, 0.8, {ease: FlxEase.cubeIn});
+        FlxTween.tween(achievementsTitle, {y: -400}, 0.8, {ease: FlxEase.cubeIn});
+        FlxTween.tween(sideBar, {alpha: 0}, 0.8, {ease: FlxEase.cubeIn});
+        FlxTween.tween(sideBarScroll, {alpha: 0}, 0.8, {ease: FlxEase.cubeIn});
+        FlxTween.tween(achievementProgress, {alpha: 0}, 0.8, {ease: FlxEase.cubeIn});
+        FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.cubeInOut});
+        FlxTween.tween(bg2, {alpha: 0}, 0.8, {ease: FlxEase.cubeInOut});
+        FlxTween.tween(bg3, {alpha: 0}, 0.8, {ease: FlxEase.cubeInOut});
+        FlxTween.tween(achievementGroup, {x: -FlxG.width}, 0.8, {ease: FlxEase.cubeIn});
+
+        FlxTimer.wait(0.8, close);
     }
 }

@@ -423,9 +423,30 @@ class SoundTest extends MusicBeatState
 
 			if (!save.data.songs.contains('prey')) //starved arg
 			{
-				if (pcmValue == 19 && daValue == 91) openSubState(new SoundTestSubState(false, "assets/exe/soundtest/videos/starvArg.webp"));
-				if (pcmValue == 9 && daValue == 23) CoolUtil.browserLoad('https://youtu.be/ectquv64pZ0');
-				if (pcmValue == 11 && daValue == 21) CoolUtil.browserLoad('https://youtu.be/a3Ov6YNJdu0');
+				if (pcmValue == 19 && daValue == 91) {
+					notFoundAny = false;
+					transitioning = true;
+					FlxG.sound.play(Paths.sound('confirmMenu'));
+					FlxG.sound.music?.fadeOut(0.3);
+					
+					FlxTween.tween(whiteBG, {alpha: 1}, 1, {
+						onComplete: (_) -> {
+							{
+								persistentUpdate = false;
+								persistentDraw = true;
+								openSubState(new SoundTestSubState(false, "assets/exe/soundtest/videos/starvArg.webp"));
+							}
+						}
+					});
+				}
+				if (pcmValue == 9 && daValue == 23) {
+					notFoundAny = false;
+					CoolUtil.browserLoad('https://youtu.be/ectquv64pZ0');
+				}
+				if (pcmValue == 11 && daValue == 21) {
+					notFoundAny = false;
+					CoolUtil.browserLoad('https://youtu.be/a3Ov6YNJdu0');
+				}
 			}
 
 			//19-91 - Starved arg 1

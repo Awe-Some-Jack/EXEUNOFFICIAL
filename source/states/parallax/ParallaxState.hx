@@ -28,6 +28,10 @@ class ParallaxState extends MusicBeatState
 	{
 		super.create();
 
+		backend.EXEAchievements.unlock('parallax');
+		backend.EXEAchievements.checkFinale();
+		backend.EXEAchievements.save();
+
 		#if VIDEOS_ALLOWED
         final paraBg = new objects.VideoSprite(0, 0, false);
         paraBg.onFormat(() -> {
@@ -115,7 +119,15 @@ class ParallaxState extends MusicBeatState
 			else if (controls.UI_DOWN_P)
 				changeSelect(1);
 
-			if (controls.ACCEPT)
+			if (FlxG.mouse.justMoved)
+			{
+				if (FlxG.mouse.overlaps(barstory) && curSelected != 0)
+					changeSelect(-1);
+				else if (FlxG.mouse.overlaps(barinfo) && curSelected != 1)
+					changeSelect(1);
+			}
+
+			if ((FlxG.mouse.justPressed && !transitioning) || controls.ACCEPT)
 			{
 				transitioning = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));

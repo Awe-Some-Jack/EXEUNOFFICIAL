@@ -77,7 +77,9 @@ class PauseSubState extends MusicBeatSubstate
 		var image:String = 'pauseText';
 		var weekKey:String = WeekData.weeksList[PlayState.storyWeek];
 		var curWeek:WeekData = weekKey != null ? WeekData.weeksLoaded.get(weekKey) : null;
-		if (curWeek != null && (curWeek.exeLabel == 'NON EXE' || curWeek.exeLabel == 'MEME' || curWeek.exeLabel == 'OFFICIAL')) image = 'pauseText-normal';
+		if (curWeek != null && (curWeek.exeLabel == 'NON EXE' || curWeek.exeLabel == 'MEME' || curWeek.exeLabel == 'OFFICIAL')) 
+			image = 'pauseText-normal';
+		
 		pauseText = new FlxSprite(196, 589).loadGraphic(Paths.getBitmapData('assets/exe/pause/$image.webp'));
 		pauseText.scale.set(3, 3);
 		pauseText.updateHitbox();
@@ -87,12 +89,24 @@ class PauseSubState extends MusicBeatSubstate
 		add(pauseText);
 		FlxTween.tween(pauseText, {alpha: 1}, 0.1);
 
-		var daImage:String = miniSonicImage;
-		if (Paths.fileExists('pause/mini-sonics/' + daImage + '-1', IMAGE, 'exe')) 
-			daImage = daImage + '-1';
+		var daImage:String = 'sonic';
+		for (exts in Paths.IMAGE_EXTS)
+		{
+		    if (Paths.fileExists('pause/mini-sonics/$miniSonicImage-1.$exts', IMAGE, 'exe')) 
+			{
+			    daImage = daImage + '-1';
+				break;
+			}
+		}
 
-		if (!Paths.fileExists('pause/mini-sonics/' + daImage, IMAGE, 'exe')) 
-			daImage = 'sonic';
+		for (exts in Paths.IMAGE_EXTS)
+		{
+		    if (Paths.fileExists('pause/mini-sonics/$miniSonicImage.$exts', IMAGE, 'exe')) 
+			{
+			    daImage = miniSonicImage;
+				break;
+			}
+		}
 
 		final basePath = 'assets/exe/pause/mini-sonics/' + daImage;
 		final bitmap = Paths.getBitmapData(basePath);
@@ -186,12 +200,26 @@ class PauseSubState extends MusicBeatSubstate
 		cameras = [camPause];
 
 		pauseMusic = new FlxSound();
-		if (miniSonicImage == 'vanilla-milk-2') pauseMusic.loadEmbedded(Assets.getSound('assets/exe/music/trololo.ogg'), true, true);
+		if (miniSonicImage == 'vanilla-milk-2')
+		{
+			pauseMusic.loadEmbedded(Assets.getSound('assets/exe/music/trololo.ogg'), true, true);
+
+			backend.EXEAchievements.unlock('troll');
+			backend.EXEAchievements.checkFinale();
+			backend.EXEAchievements.save();
+		}
 		else pauseMusic.loadEmbedded(Assets.getSound('assets/exe/music/pause.ogg'), true, true);
 		pauseMusic.volume = 0;
 		if (miniSonicImage == 'vanilla-milk-2') pauseMusic.volume = 0.5;
 		pauseMusic.play(false, 0);
 		FlxG.sound.list.add(pauseMusic);
+
+		if (miniSonicImage == 'hollow-3')
+		{
+			backend.EXEAchievements.unlock('void');
+			backend.EXEAchievements.checkFinale();
+			backend.EXEAchievements.save();
+		}
 	}
 
 	static inline final MUSIC_FADE_RATE:Float = 0.01;
@@ -240,6 +268,10 @@ class PauseSubState extends MusicBeatSubstate
 		{
 			longneck.members[1].scale.y = ((curSelected + 1) * 3) + (curSelected * (48 * 3));
 			longneck.members[1].updateHitbox();
+
+			backend.EXEAchievements.unlock('neck');
+			backend.EXEAchievements.checkFinale();
+			backend.EXEAchievements.save();
 		}
 
 		selBar.x = cameraWidth;

@@ -1,18 +1,13 @@
 local yourselfNormal = {
-    {name = 'back0', path = 'eye/yourself/back/0-bg',          x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'back1', path = 'eye/yourself/back/1-black',       x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'back2', path = 'eye/yourself/back/2-azul',        x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'back3', path = 'eye/yourself/back/3-azuldenuevo', x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'back4', path = 'eye/yourself/back/4-reflection',  x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'back5', path = 'eye/yourself/back/5-glass',       x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'back6', path = 'eye/yourself/back/6-structure',   x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm1', path = 'eye/yourself/normal/1-black',     x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm2', path = 'eye/yourself/normal/2-azul',      x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm3', path = 'eye/yourself/normal/3-reflection',x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm4', path = 'eye/yourself/normal/4-glass',     x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm5', path = 'eye/yourself/normal/5-shading',   x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm6', path = 'eye/yourself/normal/6-glass',     x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm7', path = 'eye/yourself/normal/7-structure', x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'back0', path = 'eye/yourself/back/0-bg',   x = 0, y = -100, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'back1', path = 'eye/yourself/back/1-azul', x = 80, y = -160, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm1', path = 'eye/yourself/normal/1-black',     x = -200, y = 220, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm2', path = 'eye/yourself/normal/2-azul',      x = -200, y = 200, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm3', path = 'eye/yourself/normal/3-reflection',x =  120, y = 320, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm4', path = 'eye/yourself/normal/4-glass',     x =  450, y = 440, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm5', path = 'eye/yourself/normal/5-shading',   x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm6', path = 'eye/yourself/normal/6-glass',     x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm7', path = 'eye/yourself/normal/7-structure', x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
     {name = 'potinas',  path = 'eye/tinas', x =  85, y =    0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
     {name = 'cortinas', path = 'eye/cor',   x =  85, y = -300,                                                                                    scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
     {name = 'luces',    path = 'eye/xcxc',  x =  85, y =  200,                                                                                    scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
@@ -51,6 +46,7 @@ local sillyBFsInstances = {
 function onCreate()
     startVideo("EYE_TO_EYE intro", false, true, false, false)
     callMethod("remove", {instanceArg("videoCutscene")})
+
 
     for _, you in ipairs(yourselfNormal) do
         if you.animated then
@@ -123,10 +119,8 @@ function onCreate()
         createInstance(inst.name, 'objects.Character', {inst.x, inst.y, inst.sprite, inst.idk})
         addInstance(inst.name)
         setProperty(inst.name..'.alpha', inst.alpha)
-        --setObjectOrder(inst.name, getObjectOrder('piso2'))
     end
 end
-
 
 function onUpdatePost()
     playAnim('sillybg1', getProperty('dad.animation.curAnim.name'):gsub('-mini', ''), true)
@@ -152,11 +146,12 @@ function onEvent(eventName, value1, value2)
             local split = stringSplit(value2, ',')
             doTweenAlpha('lucesAlpha', 'luces', split[1], split[2])
         elseif value1 == 'tweenInstancesAlpha' then
-            if curBeat < 272 then cameraShake('game', 0.01, 0.1) cameraShake('hud', 0.005, 0.1) 
+            if curBeat < 272 then cameraShake('game', 0.01, 0.1) cameraShake('hud', 0.005, 0.1)
             else
                 for _, instances in ipairs({'sillybg1', 'sillybg2', 'sillybg3', 'sillybg4'}) do
                     doTweenAlpha(instances..'Alpha', instances, value2, 2)
                 end
+                setObjectOrder('sillybg3', getObjectOrder('norm4') - 1)
             end
         elseif value1 == 'removeSprite' then
             removeLuaSprite(value2, true)

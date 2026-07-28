@@ -1,5 +1,6 @@
 package states.substates;
 
+import openfl.utils.Assets as AssetPaths;
 import states.SoundTest;
 #if VIDEOS_ALLOWED
 import objects.VideoSprite;
@@ -43,7 +44,7 @@ class SoundTestSubState extends MusicBeatSubstate
 		else
 		{
 			image = new FlxSprite();
-			image.loadGraphic(Assets.getBitmapData(daPath));
+			image.loadGraphic(AssetPaths.getBitmapData(daPath));
 			setImageSize(image, FlxG.width, FlxG.height);
 			image.screenCenter();
 			add(image);

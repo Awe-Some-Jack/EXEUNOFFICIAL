@@ -142,6 +142,7 @@ class AchievementPopup extends Sprite
         t.destroy();
     }
 
+    var activateOnce:Bool = true;
     function _update(e:Event):Void
     {
         if (_timePassed < 0) { _timePassed = Lib.getTimer(); return; }
@@ -158,6 +159,8 @@ class AchievementPopup extends Sprite
                 _slideProgress = Math.min(1, _slideProgress + elapsed / SLIDE_DURATION);
                 x = (_startX + (_targetX - _startX) * FlxEase.expoOut(_slideProgress)) * _lastScale;
                 if (_slideProgress >= 1) _state = 1;
+                
+                if (activateOnce) { FlxG.sound.play(Paths.sound('achievement')); activateOnce = false;}
 
             case 1:
                 _stayTimer += elapsed;

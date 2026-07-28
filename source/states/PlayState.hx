@@ -1924,6 +1924,7 @@ class PlayState extends MusicBeatState
 		return health;
 	}
 
+	var _daPauseTarget:Int = 1;
 	public function openPauseMenu()
 	{
 		if (ClientPrefs.data.shaders)
@@ -1960,6 +1961,7 @@ class PlayState extends MusicBeatState
 				}
 		}
 		if (Paths.formatToSongPath(SONG.song) == 'vanilla-milk') PauseSubState.miniSonicImage = 'vanilla-milk-' + (FlxG.random.bool(1) ? 2 : 1);
+		if (Paths.formatToSongPath(SONG.song) == 'hollow') PauseSubState.miniSonicImage = 'hollow-' + (FlxG.random.bool(10) ? 3 : _daPauseTarget);
 		if (Paths.formatToSongPath(SONG.song) == 'personel') PauseSubState.miniSonicImage = 'personel-' + FlxG.random.int(1, 3);
 		if (Paths.formatToSongPath(SONG.song) == 'longstrider' || Paths.formatToSongPath(SONG.song) == 'universal-collapse') PauseSubState.miniSonicImage = 'omw';
 
@@ -2505,9 +2507,12 @@ class PlayState extends MusicBeatState
 				var save:FlxSave = new FlxSave();
 				save.bind('savedSongs', CoolUtil.getSavePath());
 				if (save.data.songs == null) save.data.songs = [];
-				save.data.songs.push(Paths.formatToSongPath(SONG.song));
-				save.flush();
-				FlxG.log.add("Song(s) saved!");
+				if (!save.data.songs.contains(Paths.formatToSongPath(SONG.song)))
+				{
+					save.data.songs.push(Paths.formatToSongPath(SONG.song));
+					save.flush();
+					FlxG.log.add("Song(s) saved!");
+				}
 			}
 
 			if (isStoryMode)
@@ -3405,7 +3410,7 @@ class PlayState extends MusicBeatState
 				if (curBeat >= 209) PauseSubState.miniSonicImage = 'yourself-2';
 				if (curBeat >= 272) PauseSubState.miniSonicImage = 'yourself-3';
 				if (curBeat >= 495) PauseSubState.miniSonicImage = 'yourself-2';
-				if (curBeat >= 536) PauseSubState.miniSonicImage = 'yourself-3';
+				if (curBeat >= 536) PauseSubState.miniSonicImage = 'yourself-4';
 			case 'hellbent':
 				if (curBeat >= 296) PauseSubState.miniSonicImage = 'hellbent-2';
 			case 'fate':
@@ -3414,6 +3419,8 @@ class PlayState extends MusicBeatState
 			case 'endless-jp':
 				if (curBeat >= 228) PauseSubState.miniSonicImage = 'endless-jp-2';
 				if (curBeat >= 292 && curBeat < 356) PauseSubState.miniSonicImage = 'endless-jp';
+			case 'too-fest':
+				if (curBeat >= 296) PauseSubState.miniSonicImage = 'too-fest-2';
 			case 'starline':
 				if (curBeat >= 272) PauseSubState.miniSonicImage = 'starline-2';
 			case 'manual-blast':
@@ -3422,8 +3429,8 @@ class PlayState extends MusicBeatState
 				if (curBeat >= 99) PauseSubState.miniSonicImage = 'haze-2';
 				if (curBeat >= 400) PauseSubState.miniSonicImage = 'haze-3';
 			case 'hollow':
-				if (curBeat >= 392) PauseSubState.miniSonicImage = 'hollow-2';
-				if (curBeat >= 460) PauseSubState.miniSonicImage = 'hollow';
+				if (curBeat >= 392) _daPauseTarget = 2;
+				if (curBeat >= 460) _daPauseTarget = 1;
 			case 'hijacked-transmission':
 				if (curBeat >= 336) PauseSubState.miniSonicImage = 'hijacked-transmission-2';
 				if (curBeat >= 520) PauseSubState.miniSonicImage = 'hijacked-transmission-3';

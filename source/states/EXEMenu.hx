@@ -168,6 +168,8 @@ class EXEMenu extends MusicBeatState
 
 		curKey = [for (_ in secretCodes) 0];
 
+		FlxG.mouse.visible = true;
+
 		super.create();
 	}
 
@@ -251,6 +253,14 @@ class EXEMenu extends MusicBeatState
 				FlxG.switchState(() -> new EXETitle());
 			}
 			else if (controls.ACCEPT)
+				startBlink();
+
+			final wheel = FlxG.mouse.wheel;
+			if (wheel != 0 && cooldownTimer <= 0)
+				changeSelection(wheel > 0 ? -1 : 1, wheel > 0);
+
+			final centerHitbox = menuHitboxes[selectedOptionIndex];
+			if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(centerHitbox))
 				startBlink();
 		}
 
@@ -525,6 +535,7 @@ class EXEMenu extends MusicBeatState
 
 	override function destroy():Void
 	{
+		FlxG.mouse.visible = false;
 		FlxG.autoPause = true;
 		super.destroy();
 	}

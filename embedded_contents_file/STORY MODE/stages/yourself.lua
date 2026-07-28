@@ -1,27 +1,18 @@
 local yourselfNormal = {
-    {name = 'back0', path = 'eye/yourself/back/0-bg',   x = 0, y = -100, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'back1', path = 'eye/yourself/back/1-azul', x = 80, y = -160, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm1', path = 'eye/yourself/normal/1-black',     x = -200, y = 220, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm2', path = 'eye/yourself/normal/2-azul',      x = -200, y = 200, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm3', path = 'eye/yourself/normal/3-reflection',x =  120, y = 320, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm4', path = 'eye/yourself/normal/4-glass',     x =  450, y = 440, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm5', path = 'eye/yourself/normal/5-shading',   x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm6', path = 'eye/yourself/normal/6-glass',     x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm7', path = 'eye/yourself/normal/7-structure', x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'back0',   path = 'eye/yourself/back/0-bg',   x = 0, y = -100, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'back1',   path = 'eye/yourself/back/1-azul', x = 80, y = -160, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm1',   path = 'eye/yourself/normal/1-black',     x = -200, y = 220, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm2',   path = 'eye/yourself/normal/2-azul',      x = -200, y = 200, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm3',   path = 'eye/yourself/normal/3-reflection',x =  120, y = 320, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm4',   path = 'eye/yourself/normal/4-glass',     x =  450, y = 440, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm5',   path = 'eye/yourself/normal/5-shading',   x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm6',   path = 'eye/yourself/normal/6-glass',     x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm7',   path = 'eye/yourself/normal/7-structure', x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'broken1', path = 'eye/yourself/broken/1-structureBroken', x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'broken2', path = 'eye/yourself/broken/1-glassBroken', x = -200, y =  360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
     {name = 'potinas',  path = 'eye/tinas', x =  85, y =    0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
     {name = 'cortinas', path = 'eye/cor',   x =  85, y = -300,                                                                                    scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
     {name = 'luces',    path = 'eye/xcxc',  x =  85, y =  200,                                                                                    scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
-}
-
-local cristales = {
-    {name = 'cristal1', path = 'eye/espejos/1', x = getProperty('dad.x') + 80, y = getProperty('dad.y') - 230, scaleX = 0.65, scaleY = 0.6, scrollX = 0.95, scrollY = 0.95, behindFakeBF = true, alpha = 1, front = false},
-    {name = 'cristal2', path = 'eye/espejos/2', x = 2600, y = 480, scaleX = 0.6, scaleY = 0.6, scrollX = 0.95, scrollY = 0.95, alpha = 1, front = false},
-    {name = 'cristal3', path = 'eye/espejos/3', x = 2230, y = 480, scaleX = 0.8, scaleY = 0.8, scrollX = 0.98, scrollY = 0.98, alpha = 1, front = false},
-    {name = 'cristal4', path = 'eye/espejos/4', x = 2000, y = 620, scaleX = 0.6, scaleY = 0.6, scrollX = 0.98, scrollY = 0.98, alpha = 1, front = false},
-    {name = 'cristal5', path = 'eye/espejos/5', x = 1650, y = 600, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'cristal6', path = 'eye/espejos/5', x = 1300, y = 600, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'cristal7', path = 'eye/espejos/6', x = 1150, y = 620, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'cristal8', path = 'eye/espejos/7', x = 800, y = 680, scaleX = 0.75, scaleY = 0.75, scrollX = 1, scrollY = 1, alpha = 1, front = false},
 }
 
 local spotlights = {
@@ -122,6 +113,8 @@ function onCreate()
     end
 end
 
+function onSongStart() setObjectOrder('dadGroup', getObjectOrder('norm3')) end
+
 function onUpdatePost()
     playAnim('sillybg1', getProperty('dad.animation.curAnim.name'):gsub('-mini', ''), true)
 	setProperty('sillybg1.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
@@ -136,9 +129,18 @@ function onUpdatePost()
 	setProperty('sillybg3.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
 
     setProperty('healthBGYourself.alpha', getProperty('hbBG.alpha'))
+
+    if curBeat < 191 then
+		playAnim('dad', getProperty('boyfriend.animation.curAnim.name'), true)
+		setProperty('dad.animation.curAnim.curFrame', getProperty('boyfriend.animation.curAnim.curFrame'))
+		setProperty('dad.holdTimer', 0)
+	end
 end
 
 function onEvent(eventName, value1, value2)
+    if eventName == 'Change Character' then
+        if value1 == 'dad' then setObjectOrder('dadGroup', getObjectOrder('boyfriendGroup')) end
+    end
     if eventName == 'yourselfEvents' then
         if value1 == 'fuckyoublackscreen' then
             removeLuaSprite('blackscreen', true)

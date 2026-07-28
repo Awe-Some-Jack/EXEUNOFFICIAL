@@ -61,7 +61,7 @@ var flashBackBG:Array<SprDef> = [
 	{name: 'gfDead',        path: 'slow/flashback/GF_ded',           x:  2300, y: 1600, scaleX: 0.3, scaleY: 0.3, scrollX: 1, scrollY: 1, alpha: 0},
 	{name: 'skidPumpDead',  path: 'slow/flashback/skid_Pump_ded',    x:   500, y: 1400, scaleX: 0.7, scaleY: 0.7, scrollX: 1, scrollY: 1, alpha: 0},
 	{name: 'picoDead',      path: 'slow/flashback/pico_ded',         x:   470, y: 1050, scaleX: 0.6, scaleY: 0.6, scrollX: 1, scrollY: 1, alpha: 0},
-	{name: 'ojos_pico',     path: 'slow/ojos_tails',                 x:   390, y: 1150, scale:  1.5,  animated: true, prefix: 'Símbolo 10 instancia', fps: 24, alpha: 1, front: true},
+	{name: 'ojos_pico',     path: 'slow/ojos_tails',                 x:   390, y: 1150, scale:  1.5,  animated: true, prefix: 'Símbolo 10 instancia', fps: 24, alpha: 0, front: true},
 	{name: 'darnellDead',   path: 'slow/flashback/darnell_ded',      x:  2450, y: 1150, scaleX: 0.3, scaleY: 0.3, scrollX: 1, scrollY: 1, alpha: 0},
 	{name: 'neneDead',      path: 'slow/flashback/nene_ded',         x:  1250, y: 1500, scaleX: 0.6, scaleY: 0.6, scrollX: 1, scrollY: 1, alpha: 0},
 ];

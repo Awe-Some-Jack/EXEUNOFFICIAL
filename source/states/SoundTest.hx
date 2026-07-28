@@ -55,6 +55,8 @@ class SoundTest extends MusicBeatState
 
 	public static var fromSoundTest:Bool = false;
 
+	var save:FlxSave;
+
 	override public function create():Void
 	{
 		Paths.clearStoredMemory();
@@ -89,6 +91,9 @@ class SoundTest extends MusicBeatState
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Sound test", null);
 		#end
+
+		save = new FlxSave();
+		save.bind('savedSongs', CoolUtil.getSavePath());
 	}
 
 	function loadCodesFromWeeks():Void
@@ -416,12 +421,12 @@ class SoundTest extends MusicBeatState
 				return;
 			}
 
-			if (pcmValue == 19 && daValue == 91)
-			{}
-			//19-91 - Starved arg 1
-			//09-23 - Starved arg 2
-			//11-21 - Starved arg 3
-			//02-23 - Starved Eggman
+			if (save.data.songs.contains('prey')) //starved arg
+			{
+				if (pcmValue == 19 && daValue == 91) openSubState(new SoundTestSubState(false, "assets/exe/soundtest/videos/starvArg.webp"));
+				if (pcmValue == 9 && daValue == 23) CoolUtil.browserLoad('https://youtu.be/ectquv64pZ0');
+				if (pcmValue == 11 && daValue == 21) CoolUtil.browserLoad('https://youtu.be/a3Ov6YNJdu0');
+			}
 
 			if (notFoundAny && soundCooldown)
 			{

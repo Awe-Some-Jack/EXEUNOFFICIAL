@@ -1,38 +1,6 @@
 {
 	"animations": [
 		{
-			"loop": false,
-			"offsets": [249, 8],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [120, 0],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [84, 183],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [12, 76],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
-		},
-		{
 			"offsets": [0, 0],
 			"loop": true,
 			"fps": 24,
@@ -41,7 +9,39 @@
 			"name": "idle"
 		},
 		{
-			"offsets": [109, 57],
+			"offsets": [227, 7],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [109, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [77, 167],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [11, 69],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [99, 53],
 			"loop": false,
 			"fps": 24,
 			"anim": "thanos",
@@ -49,31 +49,31 @@
 			"name": "chasquido"
 		},
 		{
-			"offsets": [91, 160],
-			"indices": [],
-			"fps": 24,
-			"anim": "mispulmones",
+			"offsets": [0, 0],
 			"loop": false,
-			"name": "byebye"
-		},
-		{
-			"offsets": [-3, 0],
-			"indices": [],
 			"fps": 24,
 			"anim": "ai",
-			"loop": false,
+			"indices": [],
 			"name": "look"
+		},
+		{
+			"offsets": [83, 146],
+			"loop": false,
+			"fps": 24,
+			"anim": "mispulmones",
+			"indices": [],
+			"name": "respiroo"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/cyclesX",
+	"image": "characters/cycleslordx",
 	"position": [0, 0],
 	"healthicon": "lord-x",
 	"flip_x": false,
 	"healthbar_colors": [60, 60, 88],
 	"camera_position": [0, 0],
 	"sing_duration": 9.4,
-	"scale": 0.9,
+	"scale": 0.82,
 	"_editor_isPlayer": false
 }

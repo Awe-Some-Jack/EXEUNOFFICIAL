@@ -57,7 +57,7 @@ function setCustomGameOvers() {
             exeGameOvers = true;
             GameOverSubstate.characterName = "lordx-death";
             GameOverSubstate.deathSoundName = "crushDeath";
-            charPositions = [400, -130];
+            charPositions = [500, 350];
 
             initialDeathZoom = 0.7;
 

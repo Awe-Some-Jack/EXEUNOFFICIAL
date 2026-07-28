@@ -421,12 +421,17 @@ class SoundTest extends MusicBeatState
 				return;
 			}
 
-			if (save.data.songs.contains('prey')) //starved arg
+			if (!save.data.songs.contains('prey')) //starved arg
 			{
 				if (pcmValue == 19 && daValue == 91) openSubState(new SoundTestSubState(false, "assets/exe/soundtest/videos/starvArg.webp"));
 				if (pcmValue == 9 && daValue == 23) CoolUtil.browserLoad('https://youtu.be/ectquv64pZ0');
 				if (pcmValue == 11 && daValue == 21) CoolUtil.browserLoad('https://youtu.be/a3Ov6YNJdu0');
 			}
+
+			//19-91 - Starved arg 1
+			//09-23 - Starved arg 2
+			//11-21 - Starved arg 3
+			//02-23 - Starved Eggman
 
 			if (notFoundAny && soundCooldown)
 			{

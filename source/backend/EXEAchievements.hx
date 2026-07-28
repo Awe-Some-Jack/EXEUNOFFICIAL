@@ -81,7 +81,11 @@ class EXEAchievements
             for(song in week.songs)
                 allSongs.push(Paths.formatToSongPath(song[0]));
 
-        if(deathList.length >= allSongs.length) a.unlocked = true;
+        if(deathList.length >= allSongs.length)
+        {
+            unlock(a.id);
+            checkFinale();
+        }
         save();
     }
 
@@ -95,7 +99,12 @@ class EXEAchievements
         if(a == null) return;
         var count:Int = cast(a.extra ?? 0);
         a.extra = count + 1;
-        if(count + 1 >= max) a.unlocked = true;
+        if(count + 1 >= max)
+        {
+            unlock(a.id);
+            checkFinale();
+            save();
+        }
     }
 
     public static function checkSongCompletion(songId:String, misses:Int, ratingPercent:Float):Void
@@ -177,7 +186,6 @@ class EXEAchievements
             // Educator (Parallax)
             case 'expulsion':
                 unlock('educator');
-                checkFileExtensions(songId);
             // Sonichu
             case 'shocker':
                 unlock('sonichu');
@@ -191,25 +199,23 @@ class EXEAchievements
         save();
     }
 
-    static final FINALE_REQUIRED:Array<String> = [
-        'xeno', 'lordx', 'majin', 'tailsdoll', 'fleetway', 'exe', 'sanic',
-        'needlemouse', 'chaotix', 'scorched', 'demogri', 'bratwurst', 'omw',
-        'devoid', 'rerun', 'soink', 'ugly', 'sunky', 'fatal', 'starved',
-        'crazy', 'coldsteel', 'genesys', 'educator', 'sonichu', 'fileextensions',
-        'parallax'
-    ];
-
     public static function checkFinale():Void
     {
         if(isUnlocked('finale')) return;
-        for(id in FINALE_REQUIRED)
-            if(!isUnlocked(id)) return;
-        unlock('finale');
+        var itsFinale:Bool = true;
+        for (a in achievements)
+        {
+            if (!itsFinale) break;
+            if (a == get('finale')) continue;
+            if (!isUnlocked(a.name)) itsFinale = false;
+        }
+        if (itsFinale) unlock('finale');
+        save();
     }
 
     static var FILE_EXTENSIONS_SONGS:Array<String> = [
         'b4cksl4sh', 'monochromatic', 'found-you', 'forestall-desire', 'deception',
-        'sharpy-showdown', 'substantial', 'digitalized', 'fakebaby', 'miasma', 'expulsion'
+        'sharpy-showdown', 'substantial', 'digitalized', 'fakebaby', 'miasma'
     ];
 
     static function checkFileExtensions(songId:String):Void
@@ -220,6 +226,29 @@ class EXEAchievements
         var beaten:Array<String> = cast(a.extra ?? []);
         if(!beaten.contains(songId)) beaten.push(songId);
         a.extra = beaten;
-        if(beaten.length >= FILE_EXTENSIONS_SONGS.length) a.unlocked = true;
+        if(beaten.length >= FILE_EXTENSIONS_SONGS.length)
+        {
+            unlock(a.id);
+            checkFinale();
+            save();
+        }
+    }
+
+    static var SECONDARY_CODES:Array<Array<Int>> = [
+        [0, 0], [24, 4], [4, 10], [50, 3], [1, 72], [26, 16], [0, 67], [22, 74], [14, 2]
+    ];
+
+    public static function checkSecondaryCodes():Void
+    {
+        if(isUnlocked('secondary')) return;
+        var a = get('secondary');
+        if(a == null) return;
+        var codes = cast(a.extra ?? []);
+        if (codes.length >= SECONDARY_CODES.length) 
+        {
+            unlock(a.id);
+            checkFinale();
+            save();
+        }
     }
 }

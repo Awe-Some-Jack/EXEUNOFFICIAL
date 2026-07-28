@@ -7,7 +7,6 @@
 	{
 		"name": "Some Trouble Going Forward?",
 		"description": "Check all Triple Trouble deaths",
-		"maxCount": 4,
 		"id": "tripledeaths"
 	},
 	{
@@ -129,7 +128,6 @@
 		"name": "Update to Windows 11 already...",
 		"description": "Beat Flash 3 times",
 		"secret": true,
-		"maxCount": 3,
 		"id": "flash"
 	},
 	{
@@ -197,12 +195,14 @@
 	{
 		"name": "Zap to the extreme!",
 		"description": "Find and beat Sonichu",
-		"id": "sonichu"
+		"id": "sonichu",
+		"secret": true
 	},
 	{
 		"name": "What a Volt Tackle you got huh?!",
 		"description": "Die from Sonichu's electro-shocks",
-		"id": "shocks"
+		"id": "shocks",
+		"secret": true
 	},
 	{
 		"name": "TOO MANY SONICS",
@@ -219,6 +219,12 @@
 		"description": "Mattpro",
 		"secret": true,
 		"id": "mattpro"
+	},
+	{
+		"name": "Pepe el mago",
+		"description": "placeholder",
+		"secret": true,
+		"id": "pepe"
 	},
 	{
 		"name": "MUSIC ENJOYER!",

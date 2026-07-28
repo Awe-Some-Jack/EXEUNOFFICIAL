@@ -12,6 +12,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxAxes;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import flixel.util.FlxSave;
 import openfl.utils.Assets as AssetPaths;
 import backend.Paths;
 import haxe.Json;
@@ -31,6 +32,7 @@ class SoundTest extends MusicBeatState
 	static final ARROW_ICONS:Array<String> = ["^", "<", "v", ">"];
 
 	var codes:Array<SoundTestData> = [];
+	public static var savedCode:Array<Int> = [];
 
 	var backdrop:FlxBackdrop;
 	var whiteBG:FlxSprite;
@@ -52,6 +54,8 @@ class SoundTest extends MusicBeatState
 	static var menuSong:Bool = false;
 
 	public static var fromSoundTest:Bool = false;
+
+	var save:FlxSave;
 
 	override public function create():Void
 	{
@@ -87,6 +91,9 @@ class SoundTest extends MusicBeatState
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Sound test", null);
 		#end
+
+		save = new FlxSave();
+		save.bind('savedSongs', CoolUtil.getSavePath());
 	}
 
 	function loadCodesFromWeeks():Void
@@ -364,7 +371,6 @@ class SoundTest extends MusicBeatState
 			
 			for (code in codes)
 			{
-				trace(pcmValue + ' + ' + daValue + ' | ' + code.pcm + ' + ' + code.da);
 				if (pcmValue == code.pcm && daValue == code.da)
 				{
 					notFoundAny = false;
@@ -380,9 +386,16 @@ class SoundTest extends MusicBeatState
 							}
 							else
 							{
+								savedCode = [pcmValue, daValue];
+
+								var a = backend.EXEAchievements.get('secondary');
+								var savedCodes:Array<Array<Int>> = cast(a.extra ?? []);
+								if(!savedCodes.contains(savedCode)) savedCodes.push(savedCode);
+								a.extra = savedCodes;
+
 								persistentUpdate = false;
-							persistentDraw = true;
-							openSubState(new SoundTestSubState((code.type.toLowerCase() == 'video'), code.path));
+								persistentDraw = true;
+								openSubState(new SoundTestSubState((code.type.toLowerCase() == 'video'), code.path));
 							}
 						}
 					});
@@ -408,8 +421,13 @@ class SoundTest extends MusicBeatState
 				return;
 			}
 
-			if (pcmValue == 19 && daValue == 91)
-			{}
+			if (!save.data.songs.contains('prey')) //starved arg
+			{
+				if (pcmValue == 19 && daValue == 91) openSubState(new SoundTestSubState(false, "assets/exe/soundtest/videos/starvArg.webp"));
+				if (pcmValue == 9 && daValue == 23) CoolUtil.browserLoad('https://youtu.be/ectquv64pZ0');
+				if (pcmValue == 11 && daValue == 21) CoolUtil.browserLoad('https://youtu.be/a3Ov6YNJdu0');
+			}
+
 			//19-91 - Starved arg 1
 			//09-23 - Starved arg 2
 			//11-21 - Starved arg 3
@@ -492,6 +510,16 @@ class SoundTest extends MusicBeatState
 		persistentUpdate = true;
 		transitioning = false;
 		FlxTween.tween(whiteBG, {alpha: 0}, 0.2);
+
+		if (savedCode == [24, 4])
+		{
+			backend.EXEAchievements.unlock('mattpro');
+			backend.EXEAchievements.checkFinale();
+			backend.EXEAchievements.save();
+		}
+
+		backend.EXEAchievements.checkSecondaryCodes();
+		savedCode = [];
 	}
 
 	override public function destroy():Void

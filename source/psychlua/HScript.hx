@@ -108,11 +108,17 @@ class HScript extends Iris
 			var f:String = file.replace('\\', '/');
 			if (f.contains('/') && !f.contains('\n'))
 			{
-				#if !mobile
-				scriptThing = File.getContent(f);
-				#else
-				scriptThing = OpenFlAssets.getText(f);
+				scriptThing = null;
+				
+				#if sys
+				if (sys.FileSystem.exists(f))
+					scriptThing = sys.io.File.getContent(f);
 				#end
+				
+				if (scriptThing == null && openfl.utils.Assets.exists(f))
+					scriptThing = openfl.utils.Assets.getText(f);
+				
+				scriptThing ??= file; 
 				scriptName = f;
 			}
 		}

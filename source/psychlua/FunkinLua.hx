@@ -907,20 +907,21 @@ class FunkinLua
 
 		try
 		{
-			var result:Dynamic;
-			#if mobile
-			if (!OpenFlAssets.exists(scriptName)) {
-				luaTrace('$scriptName\nScript not found!', true, false, FlxColor.RED);
-				lua = null;
-				return;
-			}
-			var scriptSource:String = OpenFlAssets.getText(scriptName);
-			result = LuaL.dostring(lua, scriptSource);
-			#else
-			var isString = !FileSystem.exists(scriptName);
-			result = isString ? LuaL.dostring(lua, scriptName) : LuaL.dofile(lua, scriptName);
-			if (isString) scriptName = 'unknown';
+			var result:Dynamic = null;
+			var isString:Bool = false;
+
+			#if sys
+			if (sys.FileSystem.exists(scriptName))
+				result = LuaL.dofile(lua, scriptName);
+			else 
 			#end
+			if (OpenFlAssets.exists(scriptName))
+				result = LuaL.dostring(lua, OpenFlAssets.getText(scriptName));
+			else {
+				result = LuaL.dostring(lua, scriptName);
+				scriptName = 'unknown';
+				isString = true;
+			}
 
 			var resultStr:String = Lua.tostring(lua, result);
 			if (resultStr != null && result != 0)

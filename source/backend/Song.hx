@@ -2,8 +2,11 @@ package backend;
 
 import haxe.Json;
 import lime.utils.Assets;
+import openfl.utils.Assets as OpenFlAssets;
 
 import objects.Note;
+
+using StringTools;
 
 typedef SwagSong =
 {
@@ -151,6 +154,18 @@ class Song
 		if (sys.FileSystem.exists(_lastPath)) rawData = sys.io.File.getContent(_lastPath);
 		#end
 		if (rawData == null && OpenFlAssets.exists(_lastPath)) rawData = OpenFlAssets.getText(_lastPath);
+
+		#if final
+		final rawProtected = ProtectedSongsChart.getSongRaw(formattedFolder, formattedSong);
+		if (rawProtected != null)
+		{
+			if (ProtectedSongsChart.isTampered(formattedFolder, formattedSong, _lastPath))
+			{
+				trace('Chart $formattedFolder/$formattedSong has been modified! Using protected version.');
+				rawData = rawProtected;
+			}
+		}
+		#end
 
 		return rawData != null ? parseJSON(rawData, jsonInput) : null;
 	}

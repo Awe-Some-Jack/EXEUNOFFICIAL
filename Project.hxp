@@ -243,6 +243,9 @@ class Project extends HXProject
             if (FileSystem.exists("contents_file"))
                 addAssetRecursive("contents_file", "contents", false, ["*"], []);
 
+            if (FileSystem.exists("embedded_contents_file"))
+                addAssetRecursive("embedded_contents_file", "contents", defines.exists("final"), ["*"], []);
+
             if (FileSystem.exists("list.txt"))
                 assets.push(new Asset("list.txt", "contentsList.dat"));
         }

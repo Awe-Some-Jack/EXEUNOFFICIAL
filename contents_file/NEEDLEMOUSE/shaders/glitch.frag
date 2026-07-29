@@ -26,7 +26,7 @@ void main()
 	vec2 uv = openfl_TextureCoordv;
     
     //copy orig
-    vec3 outCol = texture2D(bitmap, uv).rgb;
+    vec4 outCol = texture2D(bitmap, uv);
     
     if(outCol.a > 0.0) {
         //randomly offset slices horizontally
@@ -38,7 +38,7 @@ void main()
             vec2 uvOff = uv;
             uvOff.x += hOffset;
             if (insideRange(uv.y, sliceY, fract(sliceY+sliceH)) == 1.0 ){
-                outCol = texture2D(bitmap, uvOff).rgb;
+                outCol = texture2D(bitmap, uvOff);
             }
         }
         

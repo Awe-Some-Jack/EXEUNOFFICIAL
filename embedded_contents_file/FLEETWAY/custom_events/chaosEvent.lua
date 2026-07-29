@@ -50,6 +50,8 @@ function onEvent(n,v1)
 		end
 		
 		if v1 == 'bftransform' then
+			callMethod('iconBF.changeIcon', {'icon-bfsuperfleet'})
+			setProperty('hbHealth.color', getColorFromHex('FED14F'))
 			doTweenX('bfX', 'boyfriendGroup', 2910, 1, 'cubeOut')
 			doTweenY('bfY', 'boyfriendGroup', 1100, 1, 'cubeOut')
 			playSound('SUPERBF', 0.8)
@@ -124,7 +126,7 @@ function onTimerCompleted(t)
 
 		if not yourdeadnow then playSound('laser_moment', 1) end
 
-		playAnim('boyfriend', 'dodge', true)
+		playAnim('boyfriend', 'dodge'..(curBeat > 252 and '-alt' or ''), true)
 		setProperty('boyfriend.specialAnim', true)
 
 		time = 0
@@ -142,7 +144,7 @@ function opponentNoteHitPre(id)
 end
 
 function goodNoteHitPre(id)
-	if getProperty('boyfriend.animation.curAnim.name') == 'dodge' then
+	if getProperty('boyfriend.animation.curAnim.name'):match('dodge') then
 		setPropertyFromGroup('notes', id, 'noAnimation', true)
 	end
 end

@@ -6,7 +6,7 @@ local staticSprites = {
 local animatedSprites = {
 	{name = 'anto',  path = 'bg/anto',   x = 1420, y = -130, prefix = 'Símbolo 9',  fps = 24, scale = 1.5},
 	{name = 'anto2', path = 'bg/anto',   x = -110, y = 110,  prefix = 'Símbolo 9',  fps = 24, scale = 1.35},
-	{name = 'lava',  path = 'bg/lava',   x = 0,    y = 0,    prefix = 'Símbolo 17', fps = 24, scale = 2.5},
+	{name = 'lava',  path = 'bg/lava',   x = -250,   y = 0,    prefix = 'Símbolo 17', fps = 24, scale = 2.5, angle = -12},
 }
 
 local altAnimatedSprites = {
@@ -14,10 +14,15 @@ local altAnimatedSprites = {
 	{name = 'anto2os', path = 'bg/anto oscuridad', x = 1850, y = 760, prefix = 'Símbolo 1', fps = 24, scale = 0.5},
 }
 
+local staticOffsetY = {bgf = -350, bgg = -350}
+
 local function addStatic(def)
 	makeLuaSprite(def.name, def.path)
 	addLuaSprite(def.name)
 	scaleObject(def.name, def.scale, def.scale)
+	if staticOffsetY[def.name] then
+		setProperty(def.name .. '.y', staticOffsetY[def.name])
+	end
 end
 
 local function addAnimated(def, visible)
@@ -26,6 +31,7 @@ local function addAnimated(def, visible)
 	scaleObject(def.name, def.scale, def.scale)
 	if visible == false then setProperty(def.name .. '.visible', false) end
 	if def.flipX then setProperty(def.name .. '.flipX', true) end
+	if def.angle then setProperty(def.name .. '.angle', def.angle) end
 	addLuaSprite(def.name)
 end
 

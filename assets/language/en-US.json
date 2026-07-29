@@ -45,5 +45,6 @@
 	"cutscenes.empty": "NO VIDEOS FOUND",
 	"score_text": "Score: {1} | Misses: {2}",
 	"yes": "YES",
-	"no": "NO"
+	"no": "NO",
+	"sunky_is_playing": "SUNKY IS PLAYING"
 }

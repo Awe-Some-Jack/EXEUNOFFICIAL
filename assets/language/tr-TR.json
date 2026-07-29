@@ -45,5 +45,6 @@
 	"cutscenes.empty": "VİDEO BULUNAMADI",
 	"score_text": "Puan: {1} | Hata: {2}",
 	"yes": "EVET",
-	"no": "HAYIR"
+	"no": "HAYIR",
+	"sunky_is_playing": "SUNKY OYNUYOR"
 }

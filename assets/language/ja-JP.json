@@ -45,5 +45,6 @@
 	"cutscenes.empty": "動画が見つかりません",
 	"score_text": "スコア: {1} | ミス: {2}",
 	"yes": "はい",
-	"no": "いいえ"
+	"no": "いいえ",
+	"sunky_is_playing": "SUNKYがプレイ中"
 }

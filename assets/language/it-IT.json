@@ -45,5 +45,6 @@
 	"cutscenes.empty": "NESSUN VIDEO TROVATO",
 	"score_text": "Punteggio: {1} | Errori: {2}",
 	"yes": "SÌ",
-	"no": "NO"
+	"no": "NO",
+	"sunky_is_playing": "SUNKY STA GIOCANDO"
 }

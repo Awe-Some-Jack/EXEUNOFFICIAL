@@ -45,5 +45,6 @@
 	"cutscenes.empty": "NIE ZNALEZIONO FILMÓW",
 	"score_text": "Wynik: {1} | Błędy: {2}",
 	"yes": "TAK",
-	"no": "NIE"
+	"no": "NIE",
+	"sunky_is_playing": "SUNKY GRA"
 }

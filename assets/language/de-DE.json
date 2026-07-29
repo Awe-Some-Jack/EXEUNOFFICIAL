@@ -45,5 +45,6 @@
 	"cutscenes.empty": "KEINE VIDEOS GEFUNDEN",
 	"score_text": "Punkte: {1} | Fehler: {2}",
 	"yes": "JA",
-	"no": "NEIN"
+	"no": "NEIN",
+	"sunky_is_playing": "SUNKY SPIELT"
 }

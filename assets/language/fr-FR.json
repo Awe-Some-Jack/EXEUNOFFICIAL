@@ -45,5 +45,6 @@
 	"cutscenes.empty": "AUCUNE VIDÉO TROUVÉE",
 	"score_text": "Score: {1} | Ratés: {2}",
 	"yes": "OUI",
-	"no": "NON"
+	"no": "NON",
+	"sunky_is_playing": "SUNKY JOUE"
 }

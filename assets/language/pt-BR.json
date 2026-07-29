@@ -45,5 +45,6 @@
 	"cutscenes.empty": "NENHUM VIDEO ENCONTRADO",
 	"score_text": "Pontos: {1} | Erros: {2}",
 	"yes": "SIM",
-	"no": "NÃO"
+	"no": "NÃO",
+	"sunky_is_playing": "SUNKY ESTÁ JOGANDO"
 }

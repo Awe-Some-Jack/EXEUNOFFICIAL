@@ -1757,7 +1757,7 @@ class PlayState extends MusicBeatState
 				FlxTween.cancelTweensOf(sunkyBotSprite);
 				FlxTween.tween(sunkyBotSprite, {x: camOther.width - sunkyBotSprite.width - 10}, 0.7, {ease: FlxEase.elasticOut});
 			}
-			if (botplayTxt != null) botplayTxt.text = "SUNKY IS PLAYING";
+			if (botplayTxt != null) botplayTxt.text = Language.getPhrase("sunky_is_playing", "SUNKY IS PLAYING").toUpperCase();
 		} else if (sunkyBotSprite != null && sunkyBotShown) {
 			sunkyBotShown = false;
 			FlxTween.cancelTweensOf(sunkyBotSprite);

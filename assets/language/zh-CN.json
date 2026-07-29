@@ -45,5 +45,6 @@
 	"cutscenes.empty": "未找到视频",
 	"score_text": "得分: {1} | 失误: {2}",
 	"yes": "是",
-	"no": "否"
+	"no": "否",
+	"sunky_is_playing": "SUNKY正在游玩"
 }

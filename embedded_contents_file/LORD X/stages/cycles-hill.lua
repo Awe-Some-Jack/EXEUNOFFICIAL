@@ -24,6 +24,7 @@ local sprites = {
 	{name = 'flor1',     path = 'cycles/fondo animado/flor',         x = 914,   y = 922,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 39'},
 	{name = 'eye',       path = 'cycles/fondo animado/ojo',          x = -614,  y = 722,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 12'},
 	{name = 'flor2',     path = 'cycles/fondo animado/flor 2',       x = -414,  y = 1022,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 40'},
+	{name = 'plant',     path = 'cycles/fondo animado/plant',       x = 1100,  y = 800,  scaleX = 0.8, scaleY = 0.8}
 }
 
 local function addSprite(def)
@@ -61,6 +62,7 @@ local shaderTime = 0
 
 function onCreate()
 	for _, spr in ipairs(sprites) do addSprite(spr) end
+	setProperty('plant.flipX', true)
 	setProperty('gf.visible', false)
 
 	--OVERLAY--

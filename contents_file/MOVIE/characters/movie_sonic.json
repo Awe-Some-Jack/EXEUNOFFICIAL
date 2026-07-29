@@ -1,52 +1,60 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": false,
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [104, -30],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [170, -160],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [0, 75],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "up"
-		},
-		{
-			"offsets": [-17, -2],
-			"indices": [],
 			"fps": 24,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "left"
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [250, 100],
+			"loop": false,
+			"offsets": [-17, -2],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [30, 14],
+			"anim": "meow",
+			"fps": 24,
+			"name": "meaw",
+			"indices": []
+		},
+		{
+			"offsets": [270, 70],
 			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT-alt",
 			"loop": false,
-			"name": "alt left"
+			"name": "leftalt"
 		},
 		{
 			"offsets": [260, -230],
@@ -54,36 +62,28 @@
 			"fps": 24,
 			"anim": "singDOWN-alt",
 			"loop": false,
-			"name": "altdown"
+			"name": "downalt"
 		},
 		{
-			"offsets": [-60, 80],
+			"offsets": [-20, 40],
 			"indices": [],
 			"fps": 24,
 			"anim": "singUP-alt",
 			"loop": false,
-			"name": "altup"
+			"name": "upalt"
 		},
 		{
-			"offsets": [10, -210],
+			"offsets": [40, -80],
 			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT-alt",
 			"loop": false,
-			"name": "altright"
-		},
-		{
-			"offsets": [30, 14],
-			"indices": [],
-			"fps": 24,
-			"anim": "meow",
-			"loop": false,
-			"name": "meaw"
+			"name": "rightalt"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/sonic feo",
+	"image": "characters/uglysonic",
 	"position": [0, 50],
 	"healthicon": "movie",
 	"flip_x": true,

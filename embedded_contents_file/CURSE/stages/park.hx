@@ -151,7 +151,7 @@ function onUpdatePost(elapsed:Float)
     for (i in 0...bgSprites.length) 
     {
         final spr = bgSprites[i];
-        if (spr != null) spr?.shader?.setFloat('iTime', wavyness + (i + 1));
+        spr?.shader?.setFloat('iTime', wavyness + (i + 1));
     }
 
     if (tails?.animation?.curAnim?.finished == true && tails?.visible == true) 

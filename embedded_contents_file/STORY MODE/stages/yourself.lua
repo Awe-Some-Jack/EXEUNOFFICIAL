@@ -16,11 +16,13 @@ local yourselfNormal = {
 }
 
 local yourselfBuddies = {
-    {name = 'buddie1', path =     'eye/yourself/buddies/1-og',  x = 1650, y =  850, scaleX =  0.2, scaleY =  0.2, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'buddie2', path =   'eye/yourself/buddies/3-damn',  x = 2040, y =  880, scaleX = 0.25, scaleY = 0.25, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'buddie3', path =   'eye/yourself/buddies/4-small', x = 1780, y =  960, scaleX = 0.28, scaleY = 0.28, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'buddie4', path =    'eye/yourself/buddies/5-horn', x = 1210, y =  990, scaleX =  0.3, scaleY =  0.3, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'buddie7', path = 'eye/yourself/buddies/2-jacket',  x = 1640, y = 1050, scaleX = 0.35, scaleY = 0.35, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'buddie1', path =      'eye/yourself/buddies/1-og', x = 1650, y =  850, scaleX =  0.2, scaleY =  0.2, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'buddie2', path =    'eye/yourself/buddies/3-damn', x = 2040, y =  880, scaleX = 0.25, scaleY = 0.25, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'buddie3', path =      'eye/yourself/buddies/6-uh', x = 1470, y =  940, scaleX = 0.26, scaleY = 0.26, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'buddie4', path =   'eye/yourself/buddies/4-small', x = 1780, y =  960, scaleX = 0.28, scaleY = 0.28, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'buddie5', path =    'eye/yourself/buddies/5-horn', x = 1210, y =  990, scaleX =  0.3, scaleY =  0.3, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'buddie6', path =   'eye/yourself/buddies/7-white', x = 2090, y = 1000, scaleX = 0.35, scaleY = 0.35, scrollX = 1, scrollY = 1, alpha = 0, front = false, flipX = true},
+    {name = 'buddie7', path =  'eye/yourself/buddies/2-jacket', x = 1640, y = 1050, scaleX = 0.35, scaleY = 0.35, scrollX = 1, scrollY = 1, alpha = 0, front = false},
 }
 
 local spotlights = {
@@ -36,9 +38,9 @@ local yourselfBG2 = {
 }
 
 local sillyBFsInstances = {
-    {name = 'sillybg1', x = 1640, y = 600, sprite = 'sillybg', idk = false, alpha = 0},
-    {name = 'sillybg2', x = 1270, y = 600, sprite = 'sillybg', idk = false, alpha = 0},
-    {name = 'sillybg4', x = 2010, y = 600, sprite = 'sillybg', idk = false, alpha = 0},
+    {name = 'sillybg1', x = 1640, y = 600, sprite =       'sillybg', idk = false, alpha = 0},
+    {name = 'sillybg2', x = 1290, y = 640, sprite =       'sillybg', idk = false, alpha = 0},
+    {name = 'sillybg4', x = 2010, y = 600, sprite =       'sillybg', idk = false, alpha = 0},
     {name = 'sillybg3', x = 1020, y = 630, sprite = 'mirror lookbg', idk = false, alpha = 0},
 }
 
@@ -53,6 +55,7 @@ local function createSprite(you)
     if you.scrollX or you.scrollY then setScrollFactor(you.name, you.scrollX, you.scrollY) end
     setProperty(you.name..'.alpha', you.alpha)
     addLuaSprite(you.name, you.front)
+    if you.flipX then setProperty(you.name..'.flipX', you.flipX) end
     if you.aboveFakeBF then setObjectOrder(you.name, getObjectOrder('boyfriendGroup') - 1) end
     if you.blend then setBlendMode(you.name, you.blend) end
 end
@@ -81,12 +84,14 @@ function onCreate()
 
     for _, inst in ipairs(sillyBFsInstances) do
         createInstance(inst.name, 'objects.Character', {inst.x, inst.y, inst.sprite, inst.idk})
-        addInstance(inst.name)
         setProperty(inst.name..'.alpha', inst.alpha)
+        setObjectOrder(inst.name, getObjectOrder('norm3'))
+        addInstance(inst.name)
     end
 
     --Buddies shaders
     for _, you in ipairs(yourselfBuddies) do
+        setProperty(you.name..'.visible', false)
         setSpriteShader(you.name, 'DropShadowShader')
         setShaderFloat(you.name, 'hue', 5) setShaderFloat(you.name, 'saturation', -60) setShaderFloat(you.name, 'brightness', -5) setShaderFloat(you.name, 'contrast', 5)
     end
@@ -126,13 +131,14 @@ function onEvent(eventName, value1, value2)
         elseif value1 == 'fadeLights' then
             local split = stringSplit(value2, ',')
             doTweenAlpha('lucesAlpha', 'luces', split[1], split[2])
+        elseif value1 == 'showBuddies' then
+            for _, you in ipairs(yourselfBuddies) do setProperty(you.name..'.visible', true)  end
         elseif value1 == 'tweenInstancesAlpha' then
             if curBeat < 272 then cameraShake('game', 0.01, 0.1) cameraShake('hud', 0.005, 0.1)
             else
                 for _, instances in ipairs({'sillybg1', 'sillybg2', 'sillybg3', 'sillybg4'}) do
                     doTweenAlpha(instances..'Alpha', instances, value2, 2)
                 end
-                setObjectOrder('sillybg3', getObjectOrder('norm4') - 1)
             end
         elseif value1 == 'removeSprite' then
             removeLuaSprite(value2, true)

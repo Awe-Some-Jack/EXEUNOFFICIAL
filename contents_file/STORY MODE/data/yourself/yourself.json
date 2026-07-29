@@ -161,7 +161,8 @@
 				["yourselfEvents", "removeSprite", "luces"],
 				["Set Property", "broken1.alpha", "1"],
 				["Set Property", "camGame.alpha", "1"],
-				["Set Property", "broken2.alpha", "1"]
+				["Set Property", "broken2.alpha", "1"],
+				["yourselfEvents", "showBuddies", ""]
 			]
 		],
 		[

@@ -1,19 +1,25 @@
 import openfl.display.BlendMode;
+import objects.VideoSprite;
 
+var introCutscene:VideoSprite;
 var floor:FlxSprite;
 var spotlight:FlxSprite;
 var redOverlay:FlxSprite;
 
 final hudSprites:Array<String> = ['iconBF', 'iconOpp', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG', 'exeScoreTxt'];
-var tdlook:FlxSprite;
 function onCreatePost()
 {
+	introCutscene = new VideoSprite();
+	introCutscene.onFormat(() -> {
+		introCutscene.scale.set(0.71, 0.71);
+		introCutscene.screenCenter();
+	});
+	introCutscene.visible = false;
+	introCutscene.camera = camVideo;
+	game.add(introCutscene);
+
 	floor = new FlxSprite(-400, -150).loadGraphic(Paths.image('bg/new_floor'));
 	addBehindDad(floor);
-
-	tdlook = new FlxSprite().loadGraphic(Paths.image('characters/tdscary'));
-	add(tdlook);
-	tdlook.visible = false;
 
 	spotlight = new FlxSprite(-400, -450).loadGraphic(Paths.image('bg/spotlight'));
 	spotlight.scale.y = 1.3;
@@ -37,7 +43,6 @@ function onCreatePost()
 function onUpdatePost()
 {
 	if (redOverlay != null) redOverlay.scale.set(1 / camGame.zoom, 1 / camGame.zoom);
-	tdlook?.setPosition(dad.x, dad.y - 30);
 }
 
 var notesPosition:Array<Array<Float>> = [[0,0,0,0], [0,0,0,0]];
@@ -50,15 +55,12 @@ function onEvent(n,v1)
 		switch(v1)
 		{
 			case 'startdark':
-				tdlook.visible = true;
-				dad.alpha = 0;
 				FlxTween.tween(redOverlay, {alpha: 1}, Conductor.crochet / (1000 / 3), {ease: FlxEase.expoIn});
 			case 'lightsOut':
 				redOverlay?.destroy();
 				redOverlay = null;
 				floor.alpha = 0;
 				spotlight.alpha = 0;
-				tdlook?.destroy();
 				dad.alpha = 0;
 				boyfriend.alpha = 0;
 				for (spr in hudSprites) game.getLuaObject(spr).alpha = 0;
@@ -110,6 +112,10 @@ function onEvent(n,v1)
 				camGame.zoom = 0.55;
 				camGame.snapToTarget();
 				PlayState.instance.gameplayCam.settings.MiddleZoom = 0.55;
+			case 'videoend':
+				introCutscene.visible = true;
+				if (introCutscene?.loadVideo(Paths.video('dollending'))) introCutscene.playDelayed();
+				FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.cubeInOut});
 		}
 	}
 }
@@ -124,3 +130,7 @@ function opponentNoteHit(note)
 		FlxTween.tween(playerStrums.members[i], {alpha: 0}, Conductor.stepCrochet / 500);
 	}
 }
+
+function onGameOverStart()  introCutscene?.destroy();
+function onPause() introCutscene?.pause();
+function onResume() introCutscene?.resume();

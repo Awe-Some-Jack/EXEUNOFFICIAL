@@ -14,7 +14,7 @@ import psychlua.FlxAnimateFunctions;
 import lime.app.Application as Application;
 
 var exeGameOvers:Bool = false;
-var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline'];
+var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline', 'uh-oh'];
 var voicelineSongs:Array<String> = ["cycles", "hellbent", "fate"];
 var diffGameOverSongs:Array<String> = ["starline"];
 
@@ -92,6 +92,11 @@ function setCustomGameOvers() {
             GameOverSubstate.loopSoundName = "deathSongs/chaotix-beast-sfx";
             charPositions = [590, 350];
             initialDeathZoom = 0.7;
+        case "uh-oh":
+            GameOverSubstate.loopSoundName = "deathSongs/uh-oh-sfx";
+            GameOverSubstate.endSoundName  = "deathSongs/retry";
+            charPositions = [310, 100];
+            initialDeathZoom = 0.9;
     }
 }
 

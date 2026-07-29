@@ -99,11 +99,15 @@ class GameJoltManager
 		FlxG.save.data.gjUsername = '';
 		FlxG.save.data.gjToken    = '';
 		FlxG.save.flush();
-		@:privateAccess FlxGameJolt._initialized = false;
-		@:privateAccess FlxGameJolt._gameID      = 0;
-		@:privateAccess FlxGameJolt._privateKey  = '';
-		@:privateAccess FlxGameJolt._userName    = null;
-		@:privateAccess FlxGameJolt._userToken   = null;
+
+		@:privateAccess 
+		{ 
+			FlxGameJolt._initialized = false;
+			FlxGameJolt._gameID      = 0;
+			FlxGameJolt._privateKey  = '';
+			FlxGameJolt._userName    = null;
+			FlxGameJolt._userToken   = null;
+		}
 	}
 
 	public static function unlockTrophy(internalId:String):Void

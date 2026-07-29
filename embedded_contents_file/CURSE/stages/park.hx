@@ -1,12 +1,16 @@
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.utils.Assets;
+
 import objects.VideoSprite;
 
 final dancerValues:Array<Int> = [32, 28, 24, 20, 16, 12, 8];
 
 var randomDancer:Int = 32;
 var beats:Int = 0;
+var wavyShader:FlxRuntimeShader;
 var wavyness:Float = 0.0;
 
 var sad:Bool = false;
@@ -84,6 +88,8 @@ function onCreate()
     menuSTATIC.y -= 50;
     menuSTATIC.alpha = 0.00001;
     addBehindGF(menuSTATIC);
+
+    wavyShader = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment("wavyDistortion")));
 }
 
 function onCreatePost()
@@ -113,7 +119,7 @@ function onEvent(name:String, value1:String, value2:String)
                 {
                     if (spr != null) 
                     {
-                        spr.shader = game.createRuntimeShader('wavyDistortion');
+                        spr.shader = wavyShader;
                         spr.shader.setFloat('amount', 0.1);
                     }
                 }
@@ -132,6 +138,8 @@ function onEvent(name:String, value1:String, value2:String)
                     if (spr != null) spr.shader = null;
                 }
                 FlxG.camera.flash(0xFF5D4493, 1, null, true);
+            case 'fadeHUD':
+                FlxTween.tween(camHUD, {alpha: 0}, 2);
         }
     }
 }
@@ -143,7 +151,7 @@ function onUpdatePost(elapsed:Float)
     for (i in 0...bgSprites.length) 
     {
         final spr = bgSprites[i];
-        spr?.shader?.setFloat('iTime', wavyness + (i + 1));
+        if (spr != null) spr?.shader?.setFloat('iTime', wavyness + (i + 1));
     }
 
     if (tails?.animation?.curAnim?.finished == true && tails?.visible == true) 

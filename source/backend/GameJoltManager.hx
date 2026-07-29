@@ -1,13 +1,22 @@
 package backend;
 
+import flixel.FlxG;
 import flixel.addons.api.FlxGameJolt;
-
-@:file("assets/exe/gamejolt.key") private class GJKey extends haxe.io.Bytes {}
+using StringTools;
 
 class GameJoltManager
 {
 	static inline final GAME_ID:Int  = 1055030;
 	static inline final TABLE_ID:Int = 1068403;
+
+	private static function getPrivateKey():String
+	{
+		#if GAMEJOLT_KEY
+		return haxe.macro.Compiler.getDefine("GAMEJOLT_KEY").trim();
+		#else
+		return "";
+		#end
+	}
 
 	static final TROPHY_MAP:Map<String, Int> = [
 		'finale'         => 303858,
@@ -78,8 +87,14 @@ class GameJoltManager
 		_username = username.trim();
 		_token    = token.trim();
 
-		final key:GJKey = new GJKey();
-		final keyStr:String = key.toString().trim();
+		final keyStr:String = getPrivateKey();
+
+		if (keyStr == '')
+		{
+			FlxG.log.warn("GameJolt Key is empty! API calls are disabled.");
+			callback(false);
+			return;
+		}
 
 		FlxGameJolt.init(GAME_ID, keyStr, true, _username, _token, function(result:Bool) {
 			if (result)

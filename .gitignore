@@ -16,6 +16,8 @@ vs_Community.exe
 tombstones/
 .idea/
 astc-textures/
+# Apple shit
+templates/
 # Local history which shouldn't be shared.
 .history
 .ionide

@@ -1,18 +1,26 @@
 local yourselfNormal = {
-    {name = 'back0',   path = 'eye/yourself/back/0-bg',   x = 0, y = -100, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'back1',   path = 'eye/yourself/back/1-azul', x = 80, y = -160, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm1',   path = 'eye/yourself/normal/1-black',     x = -200, y = 220, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm2',   path = 'eye/yourself/normal/2-azul',      x = -200, y = 200, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm3',   path = 'eye/yourself/normal/3-reflection',x =  120, y = 320, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm4',   path = 'eye/yourself/normal/4-glass',     x =  450, y = 440, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm5',   path = 'eye/yourself/normal/5-shading',   x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm6',   path = 'eye/yourself/normal/6-glass',     x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm7',   path = 'eye/yourself/normal/7-structure', x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'broken1', path = 'eye/yourself/broken/1-structureBroken', x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
-    {name = 'broken2', path = 'eye/yourself/broken/1-glassBroken', x = -200, y =  360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'back0',    path = 'eye/yourself/back/0-bg',   x = 0, y = -100, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'back1',    path = 'eye/yourself/back/1-azul', x = 80, y = -160, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm1',    path = 'eye/yourself/normal/1-black',     x = -200, y = 220, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm2',    path = 'eye/yourself/normal/2-azul',      x = -200, y = 200, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm3',    path = 'eye/yourself/normal/3-reflection',x =  120, y = 320, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm4',    path = 'eye/yourself/normal/4-glass',     x =  450, y = 440, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm5',    path = 'eye/yourself/normal/5-shading',   x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm6',    path = 'eye/yourself/normal/6-glass',     x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm7',    path = 'eye/yourself/normal/7-structure', x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'broken1',  path = 'eye/yourself/broken/1-structureBroken', x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'broken2',  path = 'eye/yourself/broken/1-glassBroken', x = -200, y =  360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
     {name = 'potinas',  path = 'eye/tinas', x =  85, y =    0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
     {name = 'cortinas', path = 'eye/cor',   x =  85, y = -300,                                                                                    scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
     {name = 'luces',    path = 'eye/xcxc',  x =  85, y =  200,                                                                                    scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
+}
+
+local yourselfBuddies = {
+    {name = 'buddie1', path =     'eye/yourself/buddies/1-og',  x = 1650, y =  850, scaleX =  0.2, scaleY =  0.2, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'buddie2', path =   'eye/yourself/buddies/3-damn',  x = 2040, y =  880, scaleX = 0.25, scaleY = 0.25, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'buddie3', path =   'eye/yourself/buddies/4-small', x = 1780, y =  960, scaleX = 0.28, scaleY = 0.28, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'buddie4', path =    'eye/yourself/buddies/5-horn', x = 1210, y =  990, scaleX =  0.3, scaleY =  0.3, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'buddie7', path = 'eye/yourself/buddies/2-jacket',  x = 1640, y = 1050, scaleX = 0.35, scaleY = 0.35, scrollX = 1, scrollY = 1, alpha = 1, front = false},
 }
 
 local spotlights = {
@@ -21,10 +29,10 @@ local spotlights = {
 
 local yourselfBG2 = {
     {name = 'oberlai1', path = 'eye/lyer', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, blend = 'normal', front = false},
-    {name = 'build1', path = 'eye/edificio_fondo', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, front = false},
-    {name = 'build2', path = 'eye/edificio_de_adelante', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, front = false},
-    {name = 'piso', path = 'eye/bg', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, front = false},
-    {name = 'oberlai', path = 'eye/lyer', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, blend = 'multiply', front = true},
+    {name =   'build1', path = 'eye/edificio_fondo', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name =   'build2', path = 'eye/edificio_de_adelante', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name =     'piso', path = 'eye/bg', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name =  'oberlai', path = 'eye/lyer', x = 395, y = 160, scaleX = 0.7, scaleY = 0.7, scrollX = 1, scrollY = 1, alpha = 0, blend = 'multiply', front = true},
 }
 
 local sillyBFsInstances = {
@@ -34,26 +42,29 @@ local sillyBFsInstances = {
     {name = 'sillybg3', x = 1020, y = 630, sprite = 'mirror lookbg', idk = false, alpha = 0},
 }
 
+local function createSprite(you)
+    if you.animated then
+        makeAnimatedLuaSprite(you.name, you.path, you.x, you.y)
+        addAnimationByPrefix(you.name, you.animName, you.animPrefix, you.fps, you.loop)
+    else
+        makeLuaSprite(you.name, you.path, you.x, you.y)
+    end
+    if you.scaleX or you.scaleY   then scaleObject(you.name, you.scaleX, you.scaleY) end
+    if you.scrollX or you.scrollY then setScrollFactor(you.name, you.scrollX, you.scrollY) end
+    setProperty(you.name..'.alpha', you.alpha)
+    addLuaSprite(you.name, you.front)
+    if you.aboveFakeBF then setObjectOrder(you.name, getObjectOrder('boyfriendGroup') - 1) end
+    if you.blend then setBlendMode(you.name, you.blend) end
+end
+
 function onCreate()
     startVideo("EYE_TO_EYE intro", false, true, false, false)
     callMethod("remove", {instanceArg("videoCutscene")})
 
-
-    for _, you in ipairs(yourselfNormal) do
-        if you.animated then
-            makeAnimatedLuaSprite(you.name, you.path, you.x, you.y)
-            addAnimationByPrefix(you.name, you.animName, you.animPrefix, you.fps, you.loop)
-        else
-            makeLuaSprite(you.name, you.path, you.x, you.y)
-        end
-        scaleObject(you.name, you.scaleX, you.scaleY)
-        setScrollFactor(you.name, you.scrollX, you.scrollY)
-        setProperty(you.name..'.alpha', you.alpha)
-        addLuaSprite(you.name, you.front)
-        if you.aboveFakeBF then
-            setObjectOrder(you.name, getObjectOrder('boyfriendGroup') - 1)
-        end
-    end
+    for _, you   in ipairs(yourselfNormal)  do createSprite(you)   end
+    for _, you   in ipairs(yourselfBuddies) do createSprite(you)   end
+    for _, spot  in ipairs(spotlights)      do createSprite(spot)  end
+    for _, rself in ipairs(yourselfBG2)     do createSprite(rself) end
 
     --[[
     makeLuaSprite('graphFix', nil, 500, 1720)
@@ -62,45 +73,7 @@ function onCreate()
     addLuaSprite('graphFix', false)
     ]]
 
-    for _, spot in ipairs(spotlights) do
-        makeLuaSprite(spot.name, spot.path, spot.x, spot.y)
-        scaleObject(spot.name, spot.scaleX, spot.scaleY)
-        setScrollFactor(spot.name, spot.scrollX, spot.scrollY)
-        setProperty(spot.name..'.alpha', spot.alpha)
-        if spot.blend then
-            setBlendMode(spot.name, spot.blend)
-        end
-        addLuaSprite(spot.name, spot.front)
-    end
-
-    --[[
-    for _, yes in ipairs(cristales) do
-        makeLuaSprite(yes.name, yes.path, yes.x, yes.y)
-        scaleObject(yes.name, yes.scaleX, yes.scaleY)
-        setScrollFactor(yes.name, yes.scrollX, yes.scrollY)
-        setProperty(yes.name..'.alpha', yes.alpha)
-        setProperty(yes.name..'.antialiasing', yes.antialiasing)
-        if yes.behindFakeBF then
-            setObjectOrder(yes.name, getObjectOrder('dadGroup'))
-        else
-            setObjectOrder(yes.name, getObjectOrder('piso2'))
-        end
-        addLuaSprite(yes.name, yes.front)
-    end
-    ]]
-
-    for _, rself in ipairs(yourselfBG2) do
-        makeLuaSprite(rself.name, rself.path, rself.x, rself.y)
-        scaleObject(rself.name, rself.scaleX, rself.scaleY)
-        setScrollFactor(rself.name, rself.scrollX, rself.scrollY)
-        setProperty(rself.name..'.alpha', rself.alpha)
-        addLuaSprite(rself.name, rself.front)
-        if rself.blend then
-            setBlendMode(rself.name, rself.blend)
-        end
-    end
     setProperty('gf.visible', false)
-    setScrollFactor('gfGroup', 1, 1)
 
     makeLuaSprite('blackscreen')
     makeGraphic('blackscreen', 3000, 2000, '000000')
@@ -110,6 +83,12 @@ function onCreate()
         createInstance(inst.name, 'objects.Character', {inst.x, inst.y, inst.sprite, inst.idk})
         addInstance(inst.name)
         setProperty(inst.name..'.alpha', inst.alpha)
+    end
+
+    --Buddies shaders
+    for _, you in ipairs(yourselfBuddies) do
+        setSpriteShader(you.name, 'DropShadowShader')
+        setShaderFloat(you.name, 'hue', 5) setShaderFloat(you.name, 'saturation', -60) setShaderFloat(you.name, 'brightness', -5) setShaderFloat(you.name, 'contrast', 5)
     end
 end
 

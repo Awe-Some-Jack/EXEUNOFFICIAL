@@ -784,7 +784,7 @@ class PlayState extends MusicBeatState
 
 	function initSunkyBotSprite():Void {
 		if (!cpuControlled) return;
-		var spriteScale:Float = 0.8;
+		var spriteScale:Float = 0.6;
 		sunkyBotSprite = new FlxSprite();
 
 		final bmpPath = 'assets/exe/botplay/sunkyplaying.png';

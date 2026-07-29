@@ -84,7 +84,7 @@ class AchievementsState extends MusicBeatSubstate
         FlxTween.tween(black, {y: -400}, 0.8, {ease: FlxEase.expoOut, type: 16});
 
         achievementsTitle = new FlxText(30, 30, 0, Language.get('mainmenu.achievements', 'ACHIEVEMENTS'), 100);
-        achievementsTitle.font = Paths.font('NiseSegaSonic.ttf');
+        achievementsTitle.font = Paths.font('NiseSega.ttf');
         achievementsTitle.scale.set(0.5, 0.5);
         achievementsTitle.updateHitbox();
         achievementsTitle.antialiasing = true;
@@ -98,7 +98,7 @@ class AchievementsState extends MusicBeatSubstate
         loadAchievements();
         
         achievementProgress = new FlxText(0, 0, 0, 'Unlocked: $unlockedAmount / $achievementAmount', 52);
-        achievementProgress.font = Paths.font('NiseSegaSonic.ttf');
+        achievementProgress.font = Paths.font('NiseSega.ttf');
         achievementProgress.scale.set(0.5, 0.5);
         achievementProgress.updateHitbox();
         achievementProgress.antialiasing = true;
@@ -142,24 +142,24 @@ class AchievementsState extends MusicBeatSubstate
         if(isScrolling)
             sideBarScroll.y = FlxMath.bound(sideBarScroll.y + FlxG.mouse.deltaY, sideBar.y, sideBar.y + sideBar.height - sideBarScroll.height);
         else
-            sideBarScroll.y = FlxMath.bound(sideBarScroll.y - (FlxG.mouse.wheel * WHEEL_SENSITIVITY) + keyDelta, sideBar.y, sideBar.y + sideBar.height - sideBarScroll.height);
+            sideBarScroll.y = FlxMath.bound(sideBarScroll.y - (FlxG.mouse.deltaWheel.y * WHEEL_SENSITIVITY) + keyDelta, sideBar.y, sideBar.y + sideBar.height - sideBarScroll.height);
 
         scrollValue = FlxMath.remapToRange(sideBarScroll.y, sideBar.y, sideBar.y + sideBar.height - sideBarScroll.height, 0, 0.95);
     }
 
     public function loadAchievements():Void
     {
-        var rawJson = File.getContent(ACHIEVEMENTS_PATH + 'achievements.json').trim();
+        final rawJson = OpenFlAssets.getText(ACHIEVEMENTS_PATH + 'achievements.json').trim();
         achievementsData = cast tjson.TJSON.parse(rawJson);
 
         achievementAmount = achievementsData.length;
         for(i => achieve in achievementsData) 
         {
-            var item = new AchievementItem(achieve);
+            final item = new AchievementItem(achieve);
             item.y = i * (AchievementItem.ITEM_HEIGHT + 10);
             achievementGroup.add(item);
 
-            var separator = new FlxSprite(0, item.y + AchievementItem.ITEM_HEIGHT + 4).makeGraphic(AchievementItem.ITEM_WIDTH, 2, 0x33FFFFFF);
+            final separator = new FlxSprite(0, item.y + AchievementItem.ITEM_HEIGHT + 4).makeGraphic(AchievementItem.ITEM_WIDTH, 2, 0x33FFFFFF);
             achievementGroup.add(separator);
 
             if(EXEAchievements.isUnlocked(achieve.id)) unlockedAmount++;

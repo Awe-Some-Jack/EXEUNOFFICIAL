@@ -44,8 +44,12 @@ class CreditsState extends MusicBeatSubstate
     override function create()
     {
         super.create();
+
+        FlxG.mouse.visible = true;
+
         final extrasMenu = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
         extrasMenu?._orphanPlayer?.pause();
+
         FlxG.sound.music?.pause();
         FlxG.sound.playMusic(Assets.getSound('assets/exe/music/credits.ogg'));
 
@@ -107,13 +111,13 @@ class CreditsState extends MusicBeatSubstate
                 var iconPath:String = null;
                 if (entry.icon != null)
                 {
-                    final basePath = 'assets/exe/extras/credits/${def.key}/icons/${entry.icon}';
+                    final basePath = 'extras/credits/${def.key}/icons/${entry.icon}';
                     for (ext in Paths.IMAGE_EXTS)
                     {
                         final testPath = '$basePath.$ext';
-                        if (Paths.fileExists(testPath))
+                        if (Paths.fileExists(testPath, true, "exe"))
                         {
-                            iconPath = testPath;
+                            iconPath = Paths.getPath(testPath, "exe", false);
                             break;
                         }
                     }
@@ -210,8 +214,11 @@ class CreditsState extends MusicBeatSubstate
 
     override function destroy()
     {
-        for (col in columns) FlxG.cameras.remove(col.cam);
-        Mouse.cursor = MouseCursor.ARROW;
+        FlxG.mouse.visible = false;
+
+        for (col in columns) 
+            FlxG.cameras.remove(col.cam);
+        
         columns = null;
         super.destroy();
     }
@@ -284,7 +291,7 @@ private class CreditPopup extends MusicBeatSubstate
 				for (ext in Paths.IMAGE_EXTS)
 				{
 					final path = basePath + '.' + ext;
-					if (Paths.fileExists(path)) return path;
+					if (Paths.fileExists(path, true, "exe")) return Paths.getPath(path, "exe", false);
 				}
 			}
 			return fallback;
@@ -292,7 +299,7 @@ private class CreditPopup extends MusicBeatSubstate
 
 		final col = CreditsState.userSelected[0];
 		
-		final iconBase = 'assets/exe/extras/credits/$col/icons/${user.icon}';
+		final iconBase = 'extras/credits/$col/icons/${user.icon}';
 		final iconPath = resolveImagePath(iconBase, user.icon, 'assets/exe/extras/credits/missing_icon.webp');
 		
 		userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(iconPath);
@@ -303,8 +310,7 @@ private class CreditPopup extends MusicBeatSubstate
 		nm.borderSize = Language.cjkBorder(3); nm.setPosition(userIcon.x + userIcon.width + 25, userIcon.y + (userIcon.height - nm.height) / 2);
 		nm.camera = popCam; add(nm);
 
-		// 2. Ищем флаг
-		final flagBase = 'assets/exe/extras/credits/countries/${user.nation}';
+		final flagBase = 'extras/credits/countries/${user.nation}';
 		final flagPath = resolveImagePath(flagBase, user.nation, 'assets/exe/extras/credits/missing_country.webp');
 		
 		final flag = new FlxSprite().loadGraphic(flagPath);

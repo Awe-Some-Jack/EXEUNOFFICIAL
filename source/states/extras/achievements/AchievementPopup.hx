@@ -125,7 +125,7 @@ class AchievementPopup extends Sprite
         var renderW    = Std.int(maxW  / TEXT_SCALE);
 
         var t = new FlxText(0, 0, renderW, str, renderSize);
-        t.font = Paths.font('NiseSegaSonic.ttf');
+        t.font = Paths.font('NiseSega.ttf');
         t.color = color;
         t.setBorderStyle(FlxTextBorderStyle.OUTLINE, outlineColor, 2);
         t.antialiasing = true;

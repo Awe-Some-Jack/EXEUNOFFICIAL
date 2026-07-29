@@ -830,30 +830,30 @@ class BIOS extends MusicBeatSubstate
 			didModify = !isBox;
 		}
 
-		if (_debugSelected != null && FlxG.mouse.wheel != 0)
+		if (_debugSelected != null && FlxG.mouse.deltaWheel.y != 0)
 		{
 			if (_debugRotating)
-				_debugSelected.angle += FlxG.mouse.wheel * 2.0;
+				_debugSelected.angle += FlxG.mouse.deltaWheel.y * 2.0;
 			else if (_debugOpacity)
-				_debugSelected.alpha = Math.max(0, Math.min(1, _debugSelected.alpha + FlxG.mouse.wheel * 0.05));
+				_debugSelected.alpha = Math.max(0, Math.min(1, _debugSelected.alpha + FlxG.mouse.deltaWheel.y * 0.05));
 			else if (_debugResizeW && isBox)
 			{
-				final newW = Std.int(Math.max(10, _debugSelected.width + FlxG.mouse.wheel * 4));
+				final newW = Std.int(Math.max(10, _debugSelected.width + FlxG.mouse.deltaWheel.y * 4));
 				_redrawDebugBox(_debugSelected, newW, Std.int(_debugSelected.height));
 			}
 			else if (_debugResizeH && isBox)
 			{
-				final newH = Std.int(Math.max(10, _debugSelected.height + FlxG.mouse.wheel * 4));
+				final newH = Std.int(Math.max(10, _debugSelected.height + FlxG.mouse.deltaWheel.y * 4));
 				_redrawDebugBox(_debugSelected, Std.int(_debugSelected.width), newH);
 			}
 			else if (!isBox)
 			{
-				final delta:Float = FlxG.mouse.wheel * 0.01;
+				final delta:Float = FlxG.mouse.deltaWheel.y * 0.01;
 				_debugSelected.scale.x = Math.max(0.01, _debugSelected.scale.x + delta);
 				_debugSelected.scale.y = Math.max(0.01, _debugSelected.scale.y + delta);
 				_debugSelected.updateHitbox();
 			}
-			didModify = didModify || (!isBox && FlxG.mouse.wheel != 0);
+			didModify = didModify || (!isBox && FlxG.mouse.deltaWheel.y != 0);
 		}
 
 		if (didModify) _debugSaveHistory();

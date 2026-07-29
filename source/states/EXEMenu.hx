@@ -255,7 +255,7 @@ class EXEMenu extends MusicBeatState
 			else if (controls.ACCEPT)
 				startBlink();
 
-			final wheel = FlxG.mouse.wheel;
+			final wheel = FlxG.mouse.deltaWheel.y;
 			if (wheel != 0 && cooldownTimer <= 0)
 				changeSelection(wheel > 0 ? -1 : 1, wheel > 0);
 

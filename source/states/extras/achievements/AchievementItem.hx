@@ -42,13 +42,13 @@ class AchievementItem extends FlxSpriteGroup
 
         final textW:Int = (ITEM_WIDTH - 155 - 15) * 2;
         title = new FlxText(155, 0, textW, data.name, 80);
-        title.font = Paths.font('NiseSegaSonic.ttf');
+        title.font = Paths.font('NiseSega.ttf');
         title.scale.set(0.5, 0.5);
         title.updateHitbox();
         title.antialiasing = true;
 
         description = new FlxText(155, 0, textW, data.description, 56);
-        description.font = Paths.font('NiseSegaSonic.ttf');
+        description.font = Paths.font('NiseSega.ttf');
         description.scale.set(0.5, 0.5);
         description.updateHitbox();
         description.antialiasing = true;

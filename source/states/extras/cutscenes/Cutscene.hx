@@ -783,15 +783,15 @@ class Cutscene extends MusicBeatSubstate
             _debugSelected.y = my - _debugDragOffY;
         }
 
-        if (_debugSelected != null && FlxG.mouse.wheel != 0)
+        if (_debugSelected != null && FlxG.mouse.deltaWheel.y != 0)
         {
             if (_debugRotating)
-                _debugSelected.angle += FlxG.mouse.wheel * 2.0;
+                _debugSelected.angle += FlxG.mouse.deltaWheel.y * 2.0;
             else if (_debugOpacity)
-                _debugSelected.alpha = Math.max(0, Math.min(1, _debugSelected.alpha + FlxG.mouse.wheel * 0.05));
+                _debugSelected.alpha = Math.max(0, Math.min(1, _debugSelected.alpha + FlxG.mouse.deltaWheel.y * 0.05));
             else
             {
-                final delta:Float = FlxG.mouse.wheel * 0.01;
+                final delta:Float = FlxG.mouse.deltaWheel.y * 0.01;
                 _debugSelected.scale.x = Math.max(0.01, _debugSelected.scale.x + delta);
                 _debugSelected.scale.y = Math.max(0.01, _debugSelected.scale.y + delta);
                 _debugSelected.updateHitbox();

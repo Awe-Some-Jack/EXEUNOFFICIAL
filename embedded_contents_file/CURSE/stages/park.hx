@@ -31,54 +31,115 @@ var speedTween:FlxTween = null;
 
 function onCreate()
 {
-    sky = new FlxSprite(-700, -370).loadGraphic(Paths.image('Park/sky'));
-    sky.scale.set(0.8, 0.8);
-    sky.updateHitbox();
-    sky.scrollFactor.set(0.5, 0.5);
+    sky = new FlxSprite(-700, -800).loadGraphic(Paths.image('Park/cielo'));
+    sky.scale.set(1.4, 1.4);
+    sky.scrollFactor.set(1, 1);
+    sky.antialiasing = true;
+    sky.visible = true;
     addBehindGF(sky);
-    bgSprites.push(sky);
 
-    city = new FlxSprite(-800, -370).loadGraphic(Paths.image('Park/city'));
-    city.scale.set(0.8, 0.8);
-    city.updateHitbox();
-    city.scrollFactor.set(0.7, 0.7);
-    addBehindGF(city);
-    bgSprites.push(city);
+    var nube1:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('Park/nube1'));
+    nube1.scrollFactor.set(0.2, 0.2);
+    nube1.antialiasing = true;
+    nube1.visible = false;
+    addBehindGF(nube1);
 
-    floor = new FlxSprite(-900, -370).loadGraphic(Paths.image('Park/floor'));
-    floor.scale.set(0.8, 0.8);
-    floor.updateHitbox();
-    addBehindGF(floor);
-    bgSprites.push(floor);
+    var nube2:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('Park/nube2'));
+    nube2.scrollFactor.set(0.25, 0.25);
+    nube2.antialiasing = true;
+    nube2.visible = false;
+    addBehindGF(nube2);
 
-    trees2 = new FlxSprite(-900, -370).loadGraphic(Paths.image('Park/trees2'));
-    trees2.scale.set(0.8, 0.8);
-    trees2.updateHitbox();
-    addBehindGF(trees2);
-    bgSprites.push(trees2);
+    var nube3:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('Park/nube3'));
+    nube3.scrollFactor.set(0.3, 0.3);
+    nube3.antialiasing = true;
+    nube3.visible = false;
+    addBehindGF(nube3);
 
-    trees1 = new FlxSprite(-900, -370).loadGraphic(Paths.image('Park/trees1'));
-    trees1.scale.set(0.8, 0.8);
-    trees1.updateHitbox();
-    addBehindGF(trees1);
-    bgSprites.push(trees1);
-    
-    tails = new FlxSprite(-1796, 100);
-    tails.frames = Paths.getSparrowAtlas('Park/tails');
-    tails.animation.addByPrefix('anim', 'tails instancia 1', 24, false);
-    tails.scale.set(0.37, 0.37);
-    tails.updateHitbox();
-    tails.visible = false;
-    addBehindGF(tails);
+    var edificios:FlxSprite = new FlxSprite(-700, -300).loadGraphic(Paths.image('Park/Edificios'));
+    edificios.scrollFactor.set(1, 1);
+    edificios.scale.set(1.4, 1.4);
+    edificios.antialiasing = true;
+    edificios.visible = true;
+    addBehindGF(edificios);
 
-    fuente = new FlxSprite(-50, 50);
-    fuente.frames = Paths.getSparrowAtlas('Park/fuente');
-    fuente.animation.addByIndices('idle', 'anim instancia 1', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16], "", 24, true);
-    fuente.animation.addByPrefix('anim', 'anim instancia 1', 24, false);
+    var postes:FlxSprite = new FlxSprite(-700, -200).loadGraphic(Paths.image('Park/postes'));
+    postes.scrollFactor.set(1, 1);
+    postes.scale.set(2.5, 2.5);
+    postes.antialiasing = true;
+    postes.visible = false;
+    addBehindGF(postes);
+
+    var fondodetrasarboles:FlxSprite = new FlxSprite(-700, 125).loadGraphic(Paths.image('Park/fondodetrasarboles'));
+    fondodetrasarboles.scrollFactor.set(1, 1);
+    fondodetrasarboles.scale.set(1.6, 1.6);
+    fondodetrasarboles.antialiasing = true;
+    fondodetrasarboles.visible = true;
+    addBehindGF(fondodetrasarboles);
+
+    var suelo:FlxSprite = new FlxSprite(-700, 200).loadGraphic(Paths.image('Park/Suelo'));
+    suelo.scale.set(1.4, 1.4);
+    suelo.scrollFactor.set(1, 1);
+    suelo.antialiasing = true;
+    addBehindGF(suelo);
+
+    var arbolesfondo:FlxSprite = new FlxSprite(-330, -30).loadGraphic(Paths.image('Park/ArbolesFondo'));
+    arbolesfondo.scrollFactor.set(1, 1);
+    arbolesfondo.scale.set(1.4, 1.4);
+    arbolesfondo.antialiasing = true;
+    arbolesfondo.visible = true;
+    addBehindGF(arbolesfondo);
+
+    var arbolesatras:FlxSprite = new FlxSprite(-360, -100).loadGraphic(Paths.image('Park/ArbolesAtras'));
+    arbolesatras.scrollFactor.set(1, 1);
+    arbolesatras.scale.set(1.4, 1.4);
+    arbolesatras.antialiasing = true;
+    arbolesatras.visible = true;
+    addBehindGF(arbolesatras);
+
+    var arbustoatras:FlxSprite = new FlxSprite(-700, -150).loadGraphic(Paths.image('Park/Arbustos atras'));
+    arbustoatras.scrollFactor.set(1, 1);
+    arbustoatras.scale.set(1.4, 1.4);
+    arbustoatras.antialiasing = true;
+    arbustoatras.visible = true;
+    addBehindGF(arbustoatras);
+
+    var arboles:FlxSprite = new FlxSprite(-700, -260).loadGraphic(Paths.image('Park/Arboles'));
+    arboles.scrollFactor.set(1, 1);
+    arboles.scale.set(1.4, 1.4);
+    arboles.antialiasing = true;
+    arboles.visible = true;
+    addBehindGF(arboles);
+
+    var arbusto:FlxSprite = new FlxSprite(-700, 183).loadGraphic(Paths.image('Park/arbusto'));
+    arbusto.scrollFactor.set(1, 1);
+    arbusto.scale.set(1.4, 1.4);
+    arbusto.antialiasing = true;
+    arbusto.visible = true;
+    addBehindGF(arbusto);
+
+    fuente = new FlxSprite(-50, -90);
+    fuente.frames = Paths.getSparrowAtlas('Park/fountain');
+    fuente.animation.addByPrefix('idle', 'fountain', 12, true);
     fuente.animation.play('idle', true);
-    fuente.scale.set(0.37, 0.37);
-    fuente.updateHitbox();
+    fuente.scale.set(1.4, 1.4);
+    fuente.antialiasing = true;
+    fuente.visible = true;
     addBehindGF(fuente);
+
+    var arbustoderecha:FlxSprite = new FlxSprite(832, 655).loadGraphic(Paths.image('Park/arbustoederecha'));
+    arbustoderecha.scrollFactor.set(1.0, 1.0);
+    arbustoderecha.scale.set(1.4, 1.4);
+    arbustoderecha.antialiasing = true;
+    arbustoderecha.visible = true;
+    game.add(arbustoderecha);
+
+    var arbustoizquierda:FlxSprite = new FlxSprite(-955, 655).loadGraphic(Paths.image('Park/arbustoizquierda'));
+    arbustoizquierda.scrollFactor.set(1.0, 1.0);
+    arbustoizquierda.scale.set(1.4, 1.4);
+    arbustoizquierda.antialiasing = true;
+    arbustoizquierda.visible = true;
+    game.add(arbustoizquierda);
 
     menuSTATIC = new VideoSprite();
     if (menuSTATIC.loadVideo(Paths.video('STATIC'), [VideoSprite.ARG_LOOPING, VideoSprite.ARG_MUTED])) menuSTATIC.playDelayed();
@@ -94,8 +155,10 @@ function onCreate()
 
 function onCreatePost()
 {
-    if (FlxG.random.bool(50)) 
+    if (FlxG.random.bool(50))
         game.triggerEvent('Change Character', 'gf', 'gfc2');
+
+    gfGroup.scrollFactor.set(1, 1);
 }
 
 function onEvent(name:String, value1:String, value2:String)

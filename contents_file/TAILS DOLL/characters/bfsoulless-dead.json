@@ -1,39 +1,39 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "firstDeath",
-			"loop": false,
-			"name": "death"
+			"fps": 24,
+			"name": "1",
+			"indices": []
 		},
 		{
-			"offsets": [-75, -73],
-			"indices": [],
-			"fps": 24,
-			"anim": "deathLoop",
 			"loop": true,
-			"name": "loop"
+			"offsets": [0, 0],
+			"anim": "deathLoop",
+			"fps": 24,
+			"name": "2",
+			"indices": []
 		},
 		{
-			"offsets": [-130, -1186],
-			"indices": [],
-			"fps": 24,
-			"anim": "deathConfirm",
 			"loop": false,
-			"name": "ojos"
+			"offsets": [0, 0],
+			"anim": "deathConfirm",
+			"fps": 24,
+			"name": "1",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/game over",
-	"position": [-85, 320],
+	"image": "characters/tdgameover",
+	"position": [0, 0],
 	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.4,
 	"_editor_isPlayer": true
 }

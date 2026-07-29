@@ -62,6 +62,7 @@ local onTween4Saturation = false
 local onTween4Contrast = false
 local onTween5 = false
 local glitchTime = false
+
 function onEvent(eventName, value1, value2)
     local shaderValues = stringSplit(value1, ',')
     local tweenSettings = stringSplit(value2, ',')

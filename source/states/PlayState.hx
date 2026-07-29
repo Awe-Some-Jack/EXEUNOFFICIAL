@@ -687,7 +687,7 @@ class PlayState extends MusicBeatState
 		uiGroup.add(iconP2);
 
 		botplayTxt = new FlxText(400, healthBar.y + 45, FlxG.width - 800, Language.getPhrase("Botplay").toUpperCase(), 20);
-		botplayTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		botplayTxt.setFormat(Paths.font(Language.fontOrCJK('vcr.ttf')), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
 		botplayTxt.visible = cpuControlled;

@@ -420,7 +420,7 @@ class Gallery extends MusicBeatSubstate
         {
             for (entry in Paths.readDirectory(folderPath))
             {
-                if (_isImage(entry))
+                if (_isImage(entry) #if VIDEOS_ALLOWED || _isVideo(entry) #end)
                     _images.push(folderPath + '/' + entry);
             }
             _images.sort((a, b) -> a < b ? -1 : 1);
@@ -563,10 +563,7 @@ class Gallery extends MusicBeatSubstate
 
     function _lowerMusic():Void
     {
-        final extrasMenu = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
-        if (extrasMenu != null && extrasMenu._orphanPlayer != null)
-            extrasMenu._orphanPlayer.setVolume(0.1);
-        else if (FlxG.sound.music != null)
+        if (FlxG.sound.music != null)
         {
             FlxTween.cancelTweensOf(FlxG.sound.music);
             FlxTween.tween(FlxG.sound.music, {volume: 0.1}, 0.5, {ease: FlxEase.quadOut});
@@ -575,10 +572,7 @@ class Gallery extends MusicBeatSubstate
 
     function _restoreMusic():Void
     {
-        final extrasMenu = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
-        if (extrasMenu != null && extrasMenu._orphanPlayer != null)
-            extrasMenu._orphanPlayer.setVolume(1.0);
-        else if (FlxG.sound.music != null)
+        if (FlxG.sound.music != null)
         {
             FlxTween.cancelTweensOf(FlxG.sound.music);
             FlxTween.tween(FlxG.sound.music, {volume: 1.0}, 0.5, {ease: FlxEase.quadOut});

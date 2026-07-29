@@ -101,6 +101,7 @@ class Main extends Sprite
 
 		FlxG.save.bind('funkin', CoolUtil.getSavePath());
 		Highscore.load();
+		backend.GameJoltManager.autoLogin((_) -> {});
 
 		//FlxG.saves
 		FlxG.save.data.theYourselfCutscene = null;

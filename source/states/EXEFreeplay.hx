@@ -54,7 +54,7 @@ class EXEFreeplay extends MusicBeatState
 
 	static inline final PATH_FREEBOX:String = 'assets/exe/freeplayassets/FreeBox.webp';
 	static inline final PATH_COVERS:String = 'assets/exe/freeplayassets/covers/';
-	static inline final FONT_PATH:String = 'assets/fonts/sonicfree.otf';
+	static inline final FONT_PATH:String = 'assets/fonts/SonicFont.ttf';
 
 	static inline final TITLE_SIZE:Int = 44;
 	static inline final EXE_LABEL_SIZE:Int = 34;

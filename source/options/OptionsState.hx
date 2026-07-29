@@ -37,7 +37,7 @@ class OptionsState extends MusicBeatState
 	var orbitDotScale2:Float = 1.0;
 
 	var circleShader:CirclesShader;
-	static final SECTION_KEYS = ["CONTROLS", "VISUALS", "GAMEPLAY", "GRAPHICS", "LANGUAGE"];
+	static final SECTION_KEYS = ["CONTROLS", "VISUALS", "GAMEPLAY", "GRAPHICS", "LANGUAGE", "GAMEJOLT"];
 
 	var sectionsList:Array<String> = [];
 	var sectionsGrp:FlxTypedGroup<FlxText>;
@@ -266,11 +266,12 @@ class OptionsState extends MusicBeatState
 		if (!canAction || subState != null) return;
 
 		final neighbors:Array<Array<Int>> = [
-			[-1,    1,    -1,    2],
+			[-1,    1,    -1,    2], 
 			[ 0,   -1,    -1,    3],
-			[-1,    3,     0,    4],
-			[ 2,   -1,     1,    4],
-			[ 2,    3,     2,   -1],
+			[-1,    3,     0,    4],  
+			[ 2,   -1,     1,    5], 
+			[-1,    5,     2,   -1],  
+			[ 4,   -1,     3,   -1], 
 		];
 		var moved = false;
 		if (controls.UI_LEFT_P)  { final n = neighbors[curSelected][0]; if (n != -1) { curSelected = n; moved = true; } }
@@ -361,6 +362,7 @@ class OptionsState extends MusicBeatState
 				case "GRAPHICS":  openSubState(new options.ExeGraphicsState());
 				case "GAMEPLAY":  openSubState(new options.ExeGameplayState());
 				case "LANGUAGE":  openSubState(new options.ExeLanguageState());
+				case "GAMEJOLT":  openSubState(new options.ExeGameJoltState());
 			}
 		});
 	}
@@ -368,11 +370,12 @@ class OptionsState extends MusicBeatState
 	function refreshSectionTexts():Void
 	{
 		sectionsList = [
-			Language.get('options.controls', 'CONTROLS'),
-			Language.get('options.visuals',  'VISUALS'),
-			Language.get('options.gameplay', 'GAMEPLAY'),
-			Language.get('options.graphics', 'GRAPHICS'),
-			Language.get('options.language', 'LANGUAGE')
+			Language.get('options.controls',  'CONTROLS'),
+			Language.get('options.visuals',   'VISUALS'),
+			Language.get('options.gameplay',  'GAMEPLAY'),
+			Language.get('options.graphics',  'GRAPHICS'),
+			Language.get('options.language',  'LANGUAGE'),
+			Language.get('options.gamejolt',  'GAMEJOLT')
 		];
 
 		var langFont = ExeBaseOptionsState.getLangFont();
@@ -381,8 +384,8 @@ class OptionsState extends MusicBeatState
 		var colOffset:Float = 220;
 		var baseY:Float = FlxG.height / 2 - rowSpacing;
 		var cx:Float = FlxG.width / 2;
-		final centerXs:Array<Float> = [cx - colOffset, cx + colOffset, cx - colOffset, cx + colOffset, cx];
-		final centerYs:Array<Float> = [baseY, baseY, baseY + rowSpacing, baseY + rowSpacing, baseY + rowSpacing * 2];
+		final centerXs:Array<Float> = [cx - colOffset, cx + colOffset, cx - colOffset, cx + colOffset, cx - colOffset, cx + colOffset];
+		final centerYs:Array<Float> = [baseY, baseY, baseY + rowSpacing, baseY + rowSpacing, baseY + rowSpacing * 2, baseY + rowSpacing * 2];
 
 		sectionsGrp.forEachExists((txt) -> {
 			txt.font = Paths.font(langFont);

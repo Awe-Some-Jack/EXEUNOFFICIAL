@@ -52,6 +52,7 @@ class EXEAchievements
         if(a.unlocked ?? false) return;
         a.unlocked = true;
         states.extras.achievements.AchievementPopup.show(name);
+        GameJoltManager.unlockTrophy(name);
     }
     public static function unlockAll():Void
     {

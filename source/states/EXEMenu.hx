@@ -102,7 +102,7 @@ class EXEMenu extends MusicBeatState
 
 		final translatedTexts = getOptionTexts();
 		final boxBitmap = Paths.getBitmapData("assets/exe/mainmenu/options/box.webp");
-		final menuFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : Paths.font("sonicfree.otf");
+		final menuFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : Paths.font("SonicFont.ttf");
 		final maxFontSize:Int = Language.needsCustomFont() ? 180 : 280;
 		final minFontSize:Int = 40;
 

@@ -9,7 +9,7 @@
 			]
 		],
 		[
-			10971.4285714286,
+			10885.7142857143,
 			[
 				["cameracenter", "false", ""],
 				["bright zoom", "", ""]
@@ -30,7 +30,7 @@
 		[
 			13714.2857142857,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -60,7 +60,7 @@
 		[
 			16457.1428571429,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -84,7 +84,7 @@
 		[
 			19200,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -116,7 +116,7 @@
 		[
 			21942.8571428571,
 			[
-				["Tween Camera Zoom", "0.7", ""],
+				["Tween Camera Zoom", "0.85", ""],
 				["Set Property", "camZoomingMult", "1"],
 				["Set Property", "camZoomingDecay", "1"]
 			]
@@ -137,7 +137,7 @@
 		[
 			24685.7142857143,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -167,7 +167,7 @@
 		[
 			27428.5714285714,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -248,7 +248,7 @@
 		[
 			32914.2857142857,
 			[
-				["Tween Camera Zoom", "0.7", ""],
+				["Tween Camera Zoom", "0.8", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"],
 				["Set Property", "camZoomingMult", "1"],
 				["Set Property", "camZoomingDecay", "1"]
@@ -287,7 +287,7 @@
 		[
 			38400,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -365,7 +365,7 @@
 		[
 			43885.7142857143,
 			[
-				["Tween Camera Zoom", "0.8", ""],
+				["Tween Camera Zoom", "0.85", ""],
 				["Set Property", "cameraSpeed", "1000"]
 			]
 		],
@@ -391,7 +391,7 @@
 		[
 			46628.5714285714,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -427,7 +427,7 @@
 		[
 			49971.4285714286,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -481,7 +481,7 @@
 		[
 			54857.1428571429,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -500,31 +500,31 @@
 		[
 			60342.8571428572,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
 			61714.2857142857,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
 			63085.7142857143,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
 			65142.8571428571,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
 			65828.5714285714,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -584,7 +584,7 @@
 		[
 			71314.2857142857,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -844,7 +844,7 @@
 			[
 				["cameracenter", "false", ""],
 				["Set Property", "cameraSpeed", "10000"],
-				["Set customCamera Position", "dad", "2650, 850"],
+				["Set customCamera Position", "dad", "2200, 950"],
 				["Tween Camera Zoom", "1, true", "0.001"]
 			]
 		],
@@ -857,8 +857,7 @@
 		[
 			88114.2857142856,
 			[
-				["Set customCamera Position", "dad", "2650, 850"],
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -900,7 +899,7 @@
 		[
 			90514.2857142856,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -942,7 +941,7 @@
 		[
 			92399.9999999999,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -960,7 +959,7 @@
 		[
 			93257.1428571428,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -1008,7 +1007,7 @@
 		[
 			95999.9999999999,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -1070,7 +1069,7 @@
 		[
 			98742.857142857,
 			[
-				["Tween Camera Zoom", "0.7", ""],
+				["Tween Camera Zoom", "0.8", ""],
 				["Set Property", "camZoomingMult", "1"],
 				["Set Property", "camZoomingDecay", "1"],
 				["Add Camera Zoom", "0.05", "0.05"]
@@ -1200,7 +1199,7 @@
 			101485.714285714,
 			[
 				["Add Camera Zoom", "0.05", "0.05"],
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -1340,7 +1339,7 @@
 			104228.571428571,
 			[
 				["Add Camera Zoom", "0.05", "0.05"],
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -1395,7 +1394,7 @@
 			105600,
 			[
 				["Add Camera Zoom", "0.05", "0.05"],
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -1462,7 +1461,7 @@
 			106971.428571428,
 			[
 				["Add Camera Zoom", "0.05", "0.05"],
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -2054,7 +2053,7 @@
 		[
 			120685.714285714,
 			[
-				["Tween Camera Zoom", "0.8", ""],
+				["Tween Camera Zoom", "0.85", ""],
 				["Set Property", "camZoomingMult", "1"],
 				["Set Property", "camZoomingDecay", "1"],
 				["Set Property", "cameraSpeed", "10000"]
@@ -2149,7 +2148,7 @@
 		[
 			124800,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -2185,7 +2184,7 @@
 		[
 			126171.428571428,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -2266,7 +2265,7 @@
 		[
 			128914.285714285,
 			[
-				["Tween Camera Zoom", "0.7", ""],
+				["Tween Camera Zoom", "0.8", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"]
 			]
 		],
@@ -2297,7 +2296,7 @@
 		[
 			130285.714285714,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -2345,7 +2344,7 @@
 		[
 			131657.142857143,
 			[
-				["Tween Camera Zoom", "0.7", ""],
+				["Tween Camera Zoom", "0.8", ""],
 				["Set Property", "cameraSpeed", "10000"]
 			]
 		],
@@ -2376,7 +2375,7 @@
 		[
 			133028.571428571,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -2442,7 +2441,7 @@
 		[
 			135428.571428571,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -2454,7 +2453,7 @@
 		[
 			135771.428571428,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -2496,7 +2495,7 @@
 		[
 			137142.857142857,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -2640,7 +2639,7 @@
 		[
 			142628.571428571,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -2730,7 +2729,7 @@
 		[
 			146914.285714286,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -2766,7 +2765,7 @@
 		[
 			148114.285714286,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -2820,7 +2819,7 @@
 		[
 			150857.142857143,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -2886,8 +2885,7 @@
 		[
 			153600,
 			[
-				["Tween Camera Zoom", "0.8", ""],
-				["Tweening Camera", "-80, 50", "0.001, linear"]
+				["Tween Camera Zoom", "0.7", ""]
 			]
 		],
 		[
@@ -2995,8 +2993,7 @@
 		[
 			159085.714285714,
 			[
-				["Tween Camera Zoom", "0.7", ""],
-				["Tweening Camera", "90, 50", "0.001, linear"]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -3050,7 +3047,7 @@
 		[
 			161828.571428571,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -3134,7 +3131,7 @@
 		[
 			164571.428571428,
 			[
-				["Tween Camera Zoom", "0.7", ""],
+				["Tween Camera Zoom", "0.8", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"]
 			]
 		],
@@ -3197,7 +3194,7 @@
 		[
 			167314.285714286,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -3263,7 +3260,7 @@
 		[
 			170571.428571429,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -3311,7 +3308,7 @@
 		[
 			172800,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -3383,7 +3380,7 @@
 		[
 			175542.857142857,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -3497,7 +3494,7 @@
 		[
 			181371.428571429,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -3551,7 +3548,7 @@
 		[
 			183771.428571429,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -4068,7 +4065,7 @@
 		[
 			211200,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -4152,7 +4149,7 @@
 		[
 			216685.714285715,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -4188,7 +4185,7 @@
 		[
 			219428.571428572,
 			[
-				["Tween Camera Zoom", "0.7", ""],
+				["Tween Camera Zoom", "0.8", ""],
 				["Set Property", "cameraSpeed", "100000"]
 			]
 		],
@@ -4213,7 +4210,7 @@
 		[
 			222171.428571429,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -4237,7 +4234,7 @@
 		[
 			224914.285714286,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -4255,7 +4252,7 @@
 		[
 			225942.857142857,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -4279,7 +4276,7 @@
 		[
 			226971.428571429,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -4292,6 +4289,12 @@
 			227657.142857143,
 			[
 				["Dadbattle Spotlight", "yaaa", ""]
+			]
+		],
+		[
+			227657.142857143,
+			[
+				["Play Animation", "meow", "dad"]
 			]
 		],
 		[
@@ -4333,7 +4336,7 @@
 		[
 			229542.857142857,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -4662,7 +4665,7 @@
 		[
 			255085.714285715,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -4704,7 +4707,7 @@
 		[
 			257828.571428572,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -4746,7 +4749,7 @@
 		[
 			261942.857142858,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -4770,7 +4773,7 @@
 		[
 			263314.285714286,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
@@ -4842,7 +4845,7 @@
 		[
 			268800.000000001,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.85", ""]
 			]
 		],
 		[
@@ -8052,7 +8055,7 @@
 			"altAnim": false,
 			"bpm": 175,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,
@@ -8807,10 +8810,10 @@
 	],
 	"gfVersion": "gf",
 	"song": "Pre-Design",
-	"stage": "movie",
 	"needsVoices": true,
-	"arrowSkin": "noteSkins/NOTENORMAL_assets",
+	"stage": "movie",
 	"validScore": true,
+	"arrowSkin": "noteSkins/NOTENORMAL_assets",
 	"bpm": 175,
 	"speed": 3,
 	"format": "psych_v1_convert"

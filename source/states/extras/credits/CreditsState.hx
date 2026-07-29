@@ -47,9 +47,6 @@ class CreditsState extends MusicBeatSubstate
 
         FlxG.mouse.visible = true;
 
-        final extrasMenu = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
-        extrasMenu?._orphanPlayer?.pause();
-
         FlxG.sound.music?.pause();
         FlxG.sound.playMusic(Assets.getSound('assets/exe/music/credits.ogg'));
 
@@ -157,8 +154,6 @@ class CreditsState extends MusicBeatSubstate
         {
             FlxG.sound.play(Paths.sound('cancelMenu'));
             FlxG.sound.music?.stop();
-            final em = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
-            em?._orphanPlayer?.playAudio(states.extras.dagarden.DAGarden.currentSong, states.extras.dagarden.DAGarden.currentSongMod);
             close(); return;
         }
 
@@ -215,6 +210,7 @@ class CreditsState extends MusicBeatSubstate
     override function destroy()
     {
         FlxG.mouse.visible = false;
+        FlxG.sound.music?.resume();
 
         for (col in columns) 
             FlxG.cameras.remove(col.cam);

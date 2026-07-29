@@ -41,8 +41,6 @@ class ExtrasMenu extends MusicBeatState
     var nowPlayingSong:FlxText;
     var extrasLogo:FlxSprite;
     var stopMusicPlay:Bool = false;
-    
-    public var _orphanPlayer:Dynamic = null;
 
     override function create():Void
     {

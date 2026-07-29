@@ -409,10 +409,49 @@ function onCountdownStarted()
 	end
 end
 
+local sunshineCountdownSprite = nil
+
 function onCountdownTick(counter)
 	if not active or not introCreated then return end
 	if cfg.type == 'card' then return end
 	if cfg.type == 'chaotix' and not cutsceneActive then return end
+
+	if currentModDirectory == 'TAILS DOLL' and songPath == 'sunshine' then
+		if sunshineCountdownSprite ~= nil then
+			removeLuaSprite(sunshineCountdownSprite, true)
+			sunshineCountdownSprite = nil
+		end
+
+		local imgName = nil
+		local sndName = nil
+
+		if counter == 1 then
+			imgName = 'countdown/READY'
+			sndName = 'ready'
+		elseif counter == 2 then
+			imgName = 'countdown/SET'
+			sndName = 'set'
+		elseif counter == 3 then
+			imgName = 'countdown/GO'
+			sndName = 'go'
+		end
+
+		if sndName ~= nil then
+			playSound(sndName)
+		end
+
+		if imgName ~= nil then
+			sunshineCountdownSprite = 'sunshineCD_' .. counter
+			makeLuaSprite(sunshineCountdownSprite, imgName)
+			setObjectCamera(sunshineCountdownSprite, 'other')
+			scaleObject(sunshineCountdownSprite, 0.6, 0.6)
+			screenCenter(sunshineCountdownSprite, 'xy')
+			addLuaSprite(sunshineCountdownSprite, true)
+			doTweenX('sunshineCD_scaleX' .. counter, sunshineCountdownSprite .. '.scale', 1, crochet / 1000, 'elasticOut')
+			doTweenY('sunshineCD_scaleY' .. counter, sunshineCountdownSprite .. '.scale', 1, crochet / 1000, 'elasticOut')
+			doTweenAlpha('sunshineCD_fade' .. counter, sunshineCountdownSprite, 0, crochet / 1000, 'cubeIn')
+		end
+	end
 end
 
 function onBeatHit()

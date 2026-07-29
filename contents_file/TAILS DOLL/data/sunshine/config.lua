@@ -22,6 +22,7 @@ function onCreatePost()
 	if shadersEnabled then
 		runHaxeCode([[
 			FlxG.camera.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader)];
+			game.camVideo.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader)];
 			game.camHUD.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader)];
 		]])
 	end
@@ -29,6 +30,7 @@ end
 
 local canFloat = true
 local floatTime = 0
+local _sat = 1
 function onUpdate(e)
 	floatTime = floatTime + e
 	if canFloat then
@@ -40,7 +42,7 @@ function onUpdate(e)
 
 	setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
 	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4) + (getProperty('creepy.x') * 1.25))
-	setShaderFloat('bloom', 'saturation', 1 + (getProperty('creepy.x') / 2))
+	setShaderFloat('bloom', 'saturation', _sat + (getProperty('creepy.x') / 2))
 end
 
 function onEvent(n,v1,v2)
@@ -52,7 +54,7 @@ function onEvent(n,v1,v2)
 		doTweenX('bloom', 'bloom', 0, crochet / (1000 / divide), 'cubeOut')
 	end
 	if n == 'saturation' then
-		setShaderFloat('bloom', 'saturation', tonumber(v1))
+		_sat = tonumber(v1)
 	end
 	if n == 'sunshinEvent' then
 		if v1 == 'startdark' then

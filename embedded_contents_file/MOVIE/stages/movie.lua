@@ -45,6 +45,8 @@ function onCreate()
 		addSprite(spr)
 	end
 
+	setProperty('boyfriend.idleSuffix', '-knux')
+	callMethod('boyfriend.recalculateDanceIdle')
 	if shadersEnabled and not lowQuality then
 		makeLuaSprite('bloom')
 		setSpriteShader('bloom', 'brightness')
@@ -57,6 +59,7 @@ function onCreate()
 		setSpriteShader('wave', 'wavyDistortion')
 
 		for _,char in ipairs({'dad', 'boyfriend'}) do
+			setProperty(char..'.useRenderTexture', true)
 			setSpriteShader(char, 'DropShadowShader')
 			setShaderFloat(char, 'hue', 0)
 			setShaderFloat(char, 'saturation', 0)
@@ -70,7 +73,7 @@ function onCreate()
 		setShaderFloat('dad', 'ang', math.rad(135))
 		setShaderFloat('boyfriend', 'ang', math.rad(90))
 		setShaderFloat('boyfriend', 'thr', 0.1)
-		setShaderFloat('dad', 'thr', 0.3)
+		setShaderFloat('dad', 'thr', 0.1)
 
 		runHaxeCode([[
 			FlxG.camera.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('ac').shader), new ShaderFilter(game.getLuaObject('wave').shader)];
@@ -97,7 +100,7 @@ end
 
 function onStartCountdown()
 	if not videoPlayed and not seenCutscene then
-		startVideo('cutscene')
+		startVideo('SONIC FEO')
 		videoPlayed = true
 		return Function_Stop
 	end
@@ -147,3 +150,6 @@ function onEvent(n,v1,v2)
 		doTweenAlpha('BlackGraphicOther', 'BlackGraphicOther', 1, crochet / (1000 / 12))
 	end
 end
+
+function goodNoteHitPre(id) setProperty('notes.members['..id..'].animSuffix', '-knux') end
+function noteMiss(id,nt) playAnim('boyfriend', getProperty('singAnimations['..nt..']') .. 'miss-knux', true) end

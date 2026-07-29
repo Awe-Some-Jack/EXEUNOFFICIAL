@@ -86,6 +86,16 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		['Set Property', "Value 1: Variable name\nValue 2: New value"],
 		['Play Sound', "Value 1: Sound file name\nValue 2: Volume (Default: 1), ranges from 0 to 1"],
 	];
+
+	static final blacklistedNotes:Array<String> = [
+		'Curse Notes',
+		'Glitch Note',
+		'Red Ring',
+		'Ring Note',
+		'BFdodge',
+		'PICOdodge',
+		'Phantom Note'
+	];
 	
 	public static var keysArray:Array<FlxKey> = [ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT]; //Used for Vortex Editor
 	public static var SHOW_EVENT_COLUMN = true;
@@ -1455,14 +1465,14 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 				{
 					if (canPlayHitSound)
 					{
-						if (hitSoundPlayer && note.mustPress)
+						if (hitSoundPlayer && note.mustPress && !blacklistedNotes.contains(note.noteType))
 						{
-							FlxG.sound.play(Paths.sound('hitsound'), hitsoundPlayerStepper.value);
+							FlxG.sound.play(Paths.sound('noteHitPlayer'), hitsoundPlayerStepper.value);
 							hitSoundPlayer = false;
 						}
-						else if (hitSoundOpp && !note.mustPress)
+						else if (hitSoundOpp && !note.mustPress && !blacklistedNotes.contains(note.noteType))
 						{
-							FlxG.sound.play(Paths.sound('hitsound'), hitsoundOpponentStepper.value);
+							FlxG.sound.play(Paths.sound('noteHitOpp'), hitsoundOpponentStepper.value);
 							hitSoundOpp = false;
 						}
 					}

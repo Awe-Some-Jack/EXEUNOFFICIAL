@@ -70,7 +70,7 @@ function onCreatePost()
 	setProperty('blackbg.alpha', 0)
 	addLuaSprite('blackbg')
 
-	addCharacterToList('requitalpiss', 'dad')
+	addCharacterToList('requital', 'dad')
 	addCharacterToList('requitalos', 'dad')
 	addCharacterToList('bf-reqos', 'bf')
 	addCharacterToList('pico-reqos', 'gf')

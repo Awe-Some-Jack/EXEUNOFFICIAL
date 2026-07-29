@@ -146,7 +146,7 @@ class Note extends FlxSprite
 		return hitsoundForce ? hitsoundVolume : 0.0;
 	}
 
-	public var hitsound:String = 'hitsound';
+	public var hitsound:String = 'noteHitPlayer';
 
 	// -- Internal --
 	var _lastNoteOffX:Float = 0;
@@ -276,7 +276,7 @@ class Note extends FlxSprite
 				NoteTypesConfig.applyNoteTypeData(this, value);
 
 			// Pre-cache the hitsound so it is ready on first use.
-			if (hitsound != 'hitsound' && hitsoundVolume > 0)
+			if (hitsound != 'noteHitPlayer' && hitsoundVolume > 0)
 				Paths.sound(hitsound);
 
 			noteType = value;

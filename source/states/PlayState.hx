@@ -750,7 +750,7 @@ class PlayState extends MusicBeatState
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 
 		//PRECACHING THINGS THAT GET USED FREQUENTLY TO AVOID LAGSPIKES
-		if(ClientPrefs.data.hitsoundVolume > 0) Paths.sound('hitsound');
+		if(ClientPrefs.data.hitsoundVolume > 0) Paths.sound('noteHitPlayer');
 		for (i in 1...4) Paths.sound('missnote$i');
 
 		resetRPC();

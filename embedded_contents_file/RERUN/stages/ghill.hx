@@ -159,7 +159,12 @@ function onStepHit() {
 		case 1980:
 			FlxTween.tween(black, {alpha: 1}, 0.3075, {ease: FlxEase.smootherStepIn});
 			FlxTween.tween(camHUD, {alpha: 0}, 0.3075, {ease: FlxEase.smootherStepIn});
-			FlxTween.tween(Hijacked.instance.gf2, {alpha: 0}, 0.3075, {ease: FlxEase.smootherStepIn});
+			FlxTween.tween(Hijacked.instance.gf2, {alpha: 0}, 0.3075, {
+				ease: FlxEase.smootherStepIn,
+				onComplete: function(_) {
+					Hijacked.instance.gf2.visible = false;
+				}
+			});
 		case 1984:
 			dad.animSuffix = '';
 		case 2016:
@@ -171,6 +176,7 @@ function onStepHit() {
 					note.alpha = 0;
 				}
 			}
+			for (i in 0...4) opponentStrums.members[i].x = -1000;
 		case 2036:
 			FlxTween.tween(black, {alpha: 0}, 0.3075, {ease: FlxEase.smootherStepIn});
 			comboGroup.x = -500;

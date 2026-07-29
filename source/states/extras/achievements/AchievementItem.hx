@@ -41,17 +41,17 @@ class AchievementItem extends FlxSpriteGroup
         add(icon);
 
         final textW:Int = (ITEM_WIDTH - 155 - 15) * 2;
-        title = new FlxText(155, 0, textW, data.name, 80);
+        title = new FlxText(155, 0, textW, Language.getPhrase('achievement_' + data.id, data.name), 80);
+        title.antialiasing = ClientPrefs.data.antialiasing;
         title.font = Paths.font('NiseSega.ttf');
         title.scale.set(0.5, 0.5);
         title.updateHitbox();
-        title.antialiasing = true;
 
-        description = new FlxText(155, 0, textW, data.description, 56);
+        description = new FlxText(155, 0, textW, Language.getPhrase('achievement_description_' + data.id, data.description), 56);
+        description.antialiasing = ClientPrefs.data.antialiasing;
         description.font = Paths.font('NiseSega.ttf');
         description.scale.set(0.5, 0.5);
         description.updateHitbox();
-        description.antialiasing = true;
 
         final totalTextH = title.height + 6 + description.height;
         final textY = (ITEM_HEIGHT - totalTextH) / 2;
@@ -73,8 +73,8 @@ class AchievementItem extends FlxSpriteGroup
 
             if(data.secret)
             {
-                title.text = questionify(data.name);
-                description.text = 'Unlock this achievement to see its description.';
+                title.text = questionify(Language.getPhrase('achievement_' + data.id, data.name));
+                description.text = Language.get('achievement_secret_desc', 'Unlock this achievement to see its description.');
             }
         }
     }

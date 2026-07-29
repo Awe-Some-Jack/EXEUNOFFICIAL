@@ -87,7 +87,7 @@ class AchievementsState extends MusicBeatSubstate
         achievementsTitle.font = Paths.font('NiseSega.ttf');
         achievementsTitle.scale.set(0.5, 0.5);
         achievementsTitle.updateHitbox();
-        achievementsTitle.antialiasing = true;
+        achievementsTitle.antialiasing = ClientPrefs.data.antialiasing;
         FlxTween.tween(achievementsTitle, {y: -400}, 0.8, {ease: FlxEase.expoOut, type: 16});
 
         sideBar = new FlxSprite(FlxG.width - 30, 210).makeGraphic(12, 450, 0x55000000);
@@ -101,7 +101,7 @@ class AchievementsState extends MusicBeatSubstate
         achievementProgress.font = Paths.font('NiseSega.ttf');
         achievementProgress.scale.set(0.5, 0.5);
         achievementProgress.updateHitbox();
-        achievementProgress.antialiasing = true;
+        achievementProgress.antialiasing = ClientPrefs.data.antialiasing;
         achievementProgress.alpha = 0.7;
         achievementProgress.x = FlxG.width - achievementProgress.width - 35;
         achievementProgress.y = FlxG.height - achievementProgress.height - 10;

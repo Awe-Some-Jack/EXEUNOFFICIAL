@@ -111,10 +111,10 @@ class AchievementPopup extends Sprite
         var textX:Int = MARGIN + 4 + ICON_SIZE + 10;
         var textW:Int = POP_W - ICON_SIZE - MARGIN * 2 - 20;
 
-        _drawText('ACHIEVEMENT UNLOCKED', 18, 0xBD0033, 0xFFFFFF,
+        _drawText(Language.get('popup_achievement_unlocked', 'ACHIEVEMENT UNLOCKED'), 18, 0xBD0033, 0xFFFFFF,
                   textX, (POP_H >> 1) - 22, textW);
 
-        _drawText(achieveName.toUpperCase(), 24, 0xFFFFFF, 0x000000,
+        _drawText(Language.getPhrase('achievement_' + id, achieveName).toUpperCase(), 24, 0xFFFFFF, 0x000000,
                   textX, (POP_H >> 1) + 2, textW);
     }
 
@@ -128,7 +128,7 @@ class AchievementPopup extends Sprite
         t.font = Paths.font('NiseSega.ttf');
         t.color = color;
         t.setBorderStyle(FlxTextBorderStyle.OUTLINE, outlineColor, 2);
-        t.antialiasing = true;
+        t.antialiasing = ClientPrefs.data.antialiasing;
         t.updateHitbox();
         t.drawFrame(true);
 

@@ -62,7 +62,7 @@ class AchievementPopup extends openfl.display.Sprite {
 		if(achievement != null)
 		{
 			if(achievement.name != null) name = Language.getPhrase('achievement_$achieve', achievement.name);
-			if(achievement.description != null)  desc = Language.getPhrase('description_$achieve', achievement.description);
+			if(achievement.description != null)  desc = Language.getPhrase('achievement_description_$achieve', achievement.description);
 		}
 
 		var textX = sizeX + imgX + 15;

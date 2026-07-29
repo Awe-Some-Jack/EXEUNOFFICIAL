@@ -46,8 +46,6 @@ class CreditsState extends MusicBeatSubstate
         super.create();
 
         FlxG.mouse.visible = true;
-
-        FlxG.sound.music?.pause();
         FlxG.sound.playMusic(Assets.getSound('assets/exe/music/credits.ogg'));
 
         backend.EXEAchievements.unlock('credits');
@@ -210,7 +208,8 @@ class CreditsState extends MusicBeatSubstate
     override function destroy()
     {
         FlxG.mouse.visible = false;
-        FlxG.sound.music?.resume();
+        
+        FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/ExtrasMenu.ogg'));
 
         for (col in columns) 
             FlxG.cameras.remove(col.cam);

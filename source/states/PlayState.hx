@@ -11,6 +11,9 @@ import backend.EXEAchievements;
 import flixel.FlxBasic;
 import flixel.FlxObject;
 import flixel.FlxSubState;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 import flixel.util.FlxSort;
 import flixel.util.FlxStringUtil;
 import flixel.util.FlxSave;
@@ -207,6 +210,10 @@ class PlayState extends MusicBeatState
 
 	public var botplaySine:Float = 0;
 	public var botplayTxt:FlxText;
+	public var sunkyBotSprite:FlxSprite;
+	var sunkyBotTimer:Float = 0;
+	var sunkyBotAnimPlaying:Bool = false;
+	var sunkyBotShown:Bool = false;
 
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
@@ -756,6 +763,7 @@ class PlayState extends MusicBeatState
 		FlxG.camera.snapToTarget();
 
 		super.create();
+		initSunkyBotSprite();
 
 		if(isFixedAspectRatio && !hasRestarted) {
 			hasRestarted = true;
@@ -772,6 +780,43 @@ class PlayState extends MusicBeatState
 		if(eventNotes.length < 1) checkEventNote();
 
 		PauseSubState.cameraWidth = FlxG.width;
+	}
+
+	function initSunkyBotSprite():Void {
+		if (!cpuControlled) return;
+		var spriteScale:Float = 0.8;
+		sunkyBotSprite = new FlxSprite();
+
+		final bmpPath = 'assets/exe/botplay/sunkyplaying.png';
+		final xmlPath = 'assets/exe/botplay/sunkyplaying.xml';
+
+		final sunkyBmp:openfl.display.BitmapData = Paths.getBitmapData(bmpPath);
+		final sunkyXml:String = sys.io.File.getContent(xmlPath);
+		sunkyBotSprite.frames = FlxAtlasFrames.fromSparrow(sunkyBmp, sunkyXml);
+
+		sunkyBotSprite.animation.addByPrefix('idle',  'idle instancia',  24, true);
+		sunkyBotSprite.animation.addByPrefix('left',  'left instancia',  24, false);
+		sunkyBotSprite.animation.addByPrefix('down',  'down instancia',  24, false);
+		sunkyBotSprite.animation.addByPrefix('up',    'up instancia',    24, false);
+		sunkyBotSprite.animation.addByPrefix('right', 'right instancia', 24, false);
+		sunkyBotSprite.animation.addByPrefix('space', 'space instancia', 24, false);
+		sunkyBotSprite.animation.play('idle');
+
+		sunkyBotSprite.setGraphicSize(Std.int(sunkyBotSprite.width * spriteScale));
+		sunkyBotSprite.updateHitbox();
+		sunkyBotSprite.scrollFactor.set();
+		sunkyBotSprite.antialiasing = ClientPrefs.data.antialiasing;
+		sunkyBotSprite.visible = true;
+		sunkyBotSprite.alpha = 1;
+		sunkyBotSprite.cameras = [camOther];
+		var targetX:Float = camOther.width  - sunkyBotSprite.width  - 10;
+		var targetY:Float = camOther.height - sunkyBotSprite.height - 10;
+		sunkyBotSprite.x = camOther.width + 50;
+		sunkyBotSprite.y = targetY;
+		add(sunkyBotSprite);
+		FlxTween.cancelTweensOf(sunkyBotSprite);
+		FlxTween.tween(sunkyBotSprite, {x: targetX}, 0.7, {ease: FlxEase.elasticOut, startDelay: 0.3});
+		sunkyBotShown = true;
 	}
 
 	function set_songSpeed(value:Float):Float
@@ -1700,6 +1745,33 @@ class PlayState extends MusicBeatState
 		if(botplayTxt != null && botplayTxt.visible) {
 			botplaySine += 180 * elapsed;
 			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
+		}
+
+		if (cpuControlled) {
+			if (sunkyBotSprite == null)
+				initSunkyBotSprite();
+			else if (!sunkyBotShown)
+			{
+				sunkyBotShown = true;
+				sunkyBotSprite.visible = true;
+				FlxTween.cancelTweensOf(sunkyBotSprite);
+				FlxTween.tween(sunkyBotSprite, {x: camOther.width - sunkyBotSprite.width - 10}, 0.7, {ease: FlxEase.elasticOut});
+			}
+			if (botplayTxt != null) botplayTxt.text = "SUNKY IS PLAYING";
+		} else if (sunkyBotSprite != null && sunkyBotShown) {
+			sunkyBotShown = false;
+			FlxTween.cancelTweensOf(sunkyBotSprite);
+			final spr = sunkyBotSprite;
+			FlxTween.tween(spr, {x: camOther.width + 50}, 0.4, {ease: FlxEase.quadIn, onComplete: (_) -> { if (!sunkyBotShown) spr.visible = false; }});
+			if (botplayTxt != null) botplayTxt.text = Language.getPhrase("Botplay").toUpperCase();
+		}
+
+		if(sunkyBotSprite != null && sunkyBotAnimPlaying) {
+			sunkyBotTimer -= elapsed;
+			if(sunkyBotTimer <= 0) {
+				sunkyBotAnimPlaying = false;
+				sunkyBotSprite.animation.play('idle');
+			}
 		}
 
 		if (controls.PAUSE && startedCountdown && canPause)
@@ -3146,6 +3218,20 @@ class PlayState extends MusicBeatState
 		else
 		{
 			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
+
+			if(sunkyBotSprite != null) {
+				var sunkyAnim:String = switch(Std.int(Math.abs(note.noteData))) {
+					case 0: 'left';
+					case 1: 'down';
+					case 2: 'up';
+					case 3: 'right';
+					default: 'space';
+				};
+				if (sunkyBotSprite.animation.curAnim == null || sunkyBotSprite.animation.curAnim.name != sunkyAnim)
+					sunkyBotSprite.animation.play(sunkyAnim, true);
+				sunkyBotAnimPlaying = true;
+				sunkyBotTimer = Conductor.stepCrochet * 1.5 / 1000 / playbackRate;
+			}
 		}
 
 		if(cpuAssist && !cpuControlled)

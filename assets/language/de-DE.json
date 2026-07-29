@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "STORY-MODUS",
 	"mainmenu.extras": "EXTRAS",
 	"mainmenu.options": "EINSTELLUNGEN",
+	"mainmenu.achievements": "ERFOLGE",
 	"freeplay.score": "PUNKTE",
 	"freeplay.rank": "RANG",
 	"freeplay.reset": "PUNKTE FÜR {1} ZURÜCKSETZEN?",
@@ -48,8 +49,9 @@
 	"no": "NEIN",
 	"sunky_is_playing": "SUNKY SPIELT",
 
+	"achievements_unlocked": "Freigeschaltet:",
 	"popup_achievement_unlocked": "ERFOLG FREIGESCHALTET",
-	"achievement_secret_desc": "Schalte diesen Erfolg frei, um seine Beschreibung zu sehen.",
+	"achievement_secret_desc": "Schalte diesen Erfolg frei, um die Beschreibung zu sehen.",
 	"achievement_xeno": "GÖTTERTÖTER", "achievement_description_xeno": "Schließe die Hauptwoche ab",
 	"achievement_lordx": "KOMM NICHT ZURÜCK", "achievement_description_lordx": "Finde und besiege Lord X",
 	"achievement_majin": "DER SPASS WAR UNENDLICH", "achievement_description_majin": "Finde und besiege Majin und Mazin",

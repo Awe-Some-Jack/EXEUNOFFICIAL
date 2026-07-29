@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "故事模式",
 	"mainmenu.extras": "额外内容",
 	"mainmenu.options": "设置",
+	"mainmenu.achievements": "成就",
 	"freeplay.score": "分数",
 	"freeplay.rank": "等级",
 	"freeplay.reset": "要重置 {1} 的分数吗？",
@@ -48,6 +49,7 @@
 	"no": "否",
 	"sunky_is_playing": "SUNKY 正在游玩",
 
+	"achievements_unlocked": "已解锁:",
 	"popup_achievement_unlocked": "成就已解锁",
 	"achievement_secret_desc": "解锁此成就以查看其描述。",
 	"achievement_xeno": "弑神者", "achievement_description_xeno": "完成主线周",

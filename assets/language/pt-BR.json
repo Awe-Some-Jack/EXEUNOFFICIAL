@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "MODO HISTÓRIA",
 	"mainmenu.extras": "EXTRAS",
 	"mainmenu.options": "OPÇÕES",
+	"mainmenu.achievements": "CONQUISTAS",
 	"freeplay.score": "PONTUAÇÃO",
 	"freeplay.rank": "RANKING",
 	"freeplay.reset": "REINICIAR PONTUAÇÃO DE {1}?",
@@ -48,6 +49,7 @@
 	"no": "NÃO",
 	"sunky_is_playing": "SUNKY ESTÁ JOGANDO",
 
+	"achievements_unlocked": "Desbloqueadas:",
 	"popup_achievement_unlocked": "CONQUISTA DESBLOQUEADA",
 	"achievement_secret_desc": "Desbloqueie esta conquista para ver sua descrição.",
 	"achievement_xeno": "MATADOR DE DEUSES", "achievement_description_xeno": "Zere a Semana Principal",

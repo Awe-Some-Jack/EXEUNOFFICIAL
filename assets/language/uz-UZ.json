@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "HIKOYA REJIMI",
 	"mainmenu.extras": "QO'SHIMCHALAR",
 	"mainmenu.options": "SOZLAMALAR",
+	"mainmenu.achievements": "YUTUQLAR",
 	"freeplay.score": "HISOB",
 	"freeplay.rank": "DARAJA",
 	"freeplay.reset": "{1} bo'yicha hisobni o'chirish?",
@@ -48,6 +49,7 @@
 	"no": "YO'Q",
 	"sunky_is_playing": "SUNKY O'YNAYAPTI",
 
+	"achievements_unlocked": "Ochilgan:",
 	"popup_achievement_unlocked": "YUTUQ OCHILDI",
 	"achievement_secret_desc": "Ta'rifini ko'rish uchun ushbu yutuqni oching.",
 	"achievement_xeno": "XUDOLAR QOTILI", "achievement_description_xeno": "Asosiy haftani yakunlang",

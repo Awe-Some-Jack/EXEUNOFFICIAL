@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "TRYB FABULARNY",
 	"mainmenu.extras": "DODATKI",
 	"mainmenu.options": "OPCJE",
+	"mainmenu.achievements": "OSIĄGNIĘCIA",
 	"freeplay.score": "WYNIK",
 	"freeplay.rank": "RANGA",
 	"freeplay.reset": "ZRESETOWAĆ WYNIK DLA {1}?",
@@ -48,6 +49,7 @@
 	"no": "NIE",
 	"sunky_is_playing": "SUNKY GRA",
 
+	"achievements_unlocked": "Odblokowano:",
 	"popup_achievement_unlocked": "ODBLOKOWANO OSIĄGNIĘCIE",
 	"achievement_secret_desc": "Odblokuj to osiągnięcie, aby zobaczyć jego opis.",
 	"achievement_xeno": "ZABÓJCA BOGÓW", "achievement_description_xeno": "Przejdź Główny Tydzień",

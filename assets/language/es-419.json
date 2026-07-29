@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "MODO HISTORIA",
 	"mainmenu.extras": "EXTRAS",
 	"mainmenu.options": "OPCIONES",
+	"mainmenu.achievements": "LOGROS",
 	"freeplay.score": "PUNTAJE",
 	"freeplay.rank": "RANGO",
 	"freeplay.reset": "¿REINICIAR EL PUNTAJE DE {1}?",
@@ -49,6 +50,7 @@
 	"sunky_is_playing": "SUNKY ESTÁ JUGANDO",
 
 	"popup_achievement_unlocked": "LOGRO DESBLOQUEADO",
+	"achievements_unlocked": "Desbloqueados:",
 	"achievement_secret_desc": "Desbloquea este logro para ver su descripción.",
 	"achievement_xeno": "ASESINO DE DIOSES", "achievement_description_xeno": "Supera la Semana Principal",
 	"achievement_lordx": "NO VUELVAS", "achievement_description_lordx": "Encuentra y vence a Lord X",

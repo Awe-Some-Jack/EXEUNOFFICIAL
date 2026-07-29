@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "MODALITÀ STORIA",
 	"mainmenu.extras": "EXTRA",
 	"mainmenu.options": "OPZIONI",
+	"mainmenu.achievements": "OBIETTIVI",
 	"freeplay.score": "PUNTEGGIO",
 	"freeplay.rank": "GRADO",
 	"freeplay.reset": "AZZERARE IL PUNTEGGIO DI {1}?",
@@ -48,6 +49,7 @@
 	"no": "NO",
 	"sunky_is_playing": "SUNKY STA GIOCANDO",
 
+	"achievements_unlocked": "Sbloccati:",
 	"popup_achievement_unlocked": "OBIETTIVO SBLOCCATO",
 	"achievement_secret_desc": "Sblocca questo obiettivo per vederne la descrizione.",
 	"achievement_xeno": "ASSASSINO DI DEI", "achievement_description_xeno": "Supera la Settimana Principale",

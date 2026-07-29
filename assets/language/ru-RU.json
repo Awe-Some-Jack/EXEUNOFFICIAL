@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "СЮЖЕТ. РЕЖИМ",
 	"mainmenu.extras": "ЭКСТРА",
 	"mainmenu.options": "НАСТРОЙКИ",
+	"mainmenu.achievements": "ДОСТИЖЕНИЯ",
 	"freeplay.score": "ОЧКИ",
 	"freeplay.rank": "РАНГ",
 	"freeplay.reset": "СБРОСИТЬ ОЧКИ ДЛЯ {1}?",
@@ -48,8 +49,9 @@
 	"no": "НЕТ",
 	"sunky_is_playing": "САНКИ ИГРАЕТ",
 
+	"achievements_unlocked": "Открыто:",
 	"popup_achievement_unlocked": "ДОСТИЖЕНИЕ ПОЛУЧЕНО",
-	"achievement_secret_desc": "Разблокируйте это достижение, чтобы увидеть описание.",
+	"achievement_secret_desc": "Разблокируй это достижение, чтобы увидеть описание.",
 	"achievement_xeno": "УБИЙЦА БОГОВ", "achievement_description_xeno": "Пройди Главную неделю",
 	"achievement_lordx": "НЕ ВОЗВРАЩАЙСЯ", "achievement_description_lordx": "Найди и победи Лорда Икс",
 	"achievement_majin": "ВЕСЕЛЬЕ БЕСКОНЕЧНО", "achievement_description_majin": "Найди и победи Маджина и Мазина",

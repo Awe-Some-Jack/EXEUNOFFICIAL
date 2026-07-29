@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "STORY MODE",
 	"mainmenu.extras": "EXTRAS",
 	"mainmenu.options": "OPTIONS",
+	"mainmenu.achievements": "ACHIEVEMENTS",
 	"freeplay.score": "SCORE",
 	"freeplay.rank": "RANK",
 	"freeplay.reset": "RESET SCORE FOR {1}?",
@@ -48,6 +49,7 @@
 	"no": "NO",
 	"sunky_is_playing": "SUNKY IS PLAYING",
 
+	"achievements_unlocked": "Unlocked:",
 	"popup_achievement_unlocked": "ACHIEVEMENT UNLOCKED",
 	"achievement_secret_desc": "Unlock this achievement to see its description.",
 	"achievement_xeno": "GOD KILLER", "achievement_description_xeno": "Beat the Main Week",

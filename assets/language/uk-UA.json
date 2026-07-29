@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "СЮЖЕТ. РЕЖИМ",
 	"mainmenu.extras": "ЕКСТРА",
 	"mainmenu.options": "НАЛАШТУВАННЯ",
+	"mainmenu.achievements": "ДОСЯГНЕННЯ",
 	"freeplay.score": "РАХУНОК",
 	"freeplay.rank": "РАНГ",
 	"freeplay.reset": "СКИНУТИ РАХУНОК ДЛЯ {1}?",
@@ -48,8 +49,9 @@
 	"no": "НІ",
 	"sunky_is_playing": "САНКИ ГРАЄ",
 
+	"achievements_unlocked": "Відкрито:",
 	"popup_achievement_unlocked": "ДОСЯГНЕННЯ ОТРИМАНО",
-	"achievement_secret_desc": "Розблокуйте це досягнення, щоб побачити опис.",
+	"achievement_secret_desc": "Розблокуй це досягнення, щоб побачити опис.",
 	"achievement_xeno": "ВБИВЦЯ БОГІВ", "achievement_description_xeno": "Пройди Головний тиждень",
 	"achievement_lordx": "НЕ ПОВЕРТАЙСЯ", "achievement_description_lordx": "Знайди і переможи Лорда Ікс",
 	"achievement_majin": "ВЕСЕЛОЩІ НЕСКІНЧЕННІ", "achievement_description_majin": "Знайди і переможи Маджина та Мазина",

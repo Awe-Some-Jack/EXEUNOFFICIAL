@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "MODE HISTOIRE",
 	"mainmenu.extras": "EXTRAS",
 	"mainmenu.options": "PARAMÈTRES",
+	"mainmenu.achievements": "SUCCÈS",
 	"freeplay.score": "SCORE",
 	"freeplay.rank": "RANG",
 	"freeplay.reset": "RÉINITIALISER LE SCORE DE {1} ?",
@@ -48,6 +49,7 @@
 	"no": "NON",
 	"sunky_is_playing": "SUNKY JOUE",
 
+	"achievements_unlocked": "Débloqués :",
 	"popup_achievement_unlocked": "SUCCÈS DÉVERROUILLÉ",
 	"achievement_secret_desc": "Débloquez ce succès pour voir sa description.",
 	"achievement_xeno": "TUEUR DE DIEUX", "achievement_description_xeno": "Terminez la Semaine Principale",

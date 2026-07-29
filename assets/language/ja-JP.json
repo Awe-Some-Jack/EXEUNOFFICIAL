@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "ストーリーモード",
 	"mainmenu.extras": "エクストラ",
 	"mainmenu.options": "オプション",
+	"mainmenu.achievements": "実績",
 	"freeplay.score": "スコア",
 	"freeplay.rank": "ランク",
 	"freeplay.reset": "{1}のスコアをリセットしますか？",
@@ -48,8 +49,9 @@
 	"no": "いいえ",
 	"sunky_is_playing": "SUNKYがプレイ中",
 
+	"achievements_unlocked": "解除済み:",
 	"popup_achievement_unlocked": "実績解除",
-	"achievement_secret_desc": "この実績を解除すると説明が見れます。",
+	"achievement_secret_desc": "この実績を解除して説明を確認しよう。",
 	"achievement_xeno": "神殺し", "achievement_description_xeno": "メインウィークをクリアする",
 	"achievement_lordx": "戻ってくるな", "achievement_description_lordx": "Lord Xを見つけて倒す",
 	"achievement_majin": "楽しみは無限大だった", "achievement_description_majin": "MajinとMazinを見つけて倒す",

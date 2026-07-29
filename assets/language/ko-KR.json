@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "스토리 모드",
 	"mainmenu.extras": "그 외",
 	"mainmenu.options": "설정",
+	"mainmenu.achievements": "업적",
 	"freeplay.score": "점수",
 	"freeplay.rank": "랭크",
 	"freeplay.reset": "{1}의 점수를 초기화하시겠습니까?",
@@ -48,6 +49,7 @@
 	"no": "아니요",
 	"sunky_is_playing": "SUNKY가 플레이 중",
 
+	"achievements_unlocked": "잠금 해제됨:",
 	"popup_achievement_unlocked": "업적 달성",
 	"achievement_secret_desc": "이 업적을 잠금 해제하여 설명을 확인하세요.",
 	"achievement_xeno": "신을 죽인 자", "achievement_description_xeno": "메인 주간을 클리어하세요",

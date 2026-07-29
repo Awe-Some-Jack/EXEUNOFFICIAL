@@ -7,6 +7,7 @@
 	"mainmenu.storymode": "HİKAYE MODU",
 	"mainmenu.extras": "EKSTRALAR",
 	"mainmenu.options": "AYARLAR",
+	"mainmenu.achievements": "BAŞARILAR",
 	"freeplay.score": "PUAN",
 	"freeplay.rank": "DERECE",
 	"freeplay.reset": "{1} İÇİN PUANI SIFIRLA?",
@@ -48,8 +49,9 @@
 	"no": "HAYIR",
 	"sunky_is_playing": "SUNKY OYNUYOR",
 
+	"achievements_unlocked": "Açılan:",
 	"popup_achievement_unlocked": "BAŞARI KİLİDİ AÇILDI",
-	"achievement_secret_desc": "Açıklamasını görmek için bu başarının kilidini açın.",
+	"achievement_secret_desc": "Açıklamasını görmek için bu başarının kilidini aç.",
 	"achievement_xeno": "TANRI KATİLİ", "achievement_description_xeno": "Ana Haftayı tamamla",
 	"achievement_lordx": "GERİ DÖNME", "achievement_description_lordx": "Lord X'i bul ve yen",
 	"achievement_majin": "EĞLENCE SONSUZDU", "achievement_description_majin": "Majin ve Mazin'i bul ve yen",

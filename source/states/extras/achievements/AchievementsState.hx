@@ -97,7 +97,7 @@ class AchievementsState extends MusicBeatSubstate
 
         loadAchievements();
         
-        achievementProgress = new FlxText(0, 0, 0, 'Unlocked: $unlockedAmount / $achievementAmount', 52);
+        achievementProgress = new FlxText(0, 0, 0, '${Language.get('achievements_unlocked', 'Unlocked:')} $unlockedAmount / $achievementAmount', 52);
         achievementProgress.font = Paths.font('NiseSega.ttf');
         achievementProgress.scale.set(0.5, 0.5);
         achievementProgress.updateHitbox();

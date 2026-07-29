@@ -6,7 +6,7 @@
 			"fps": 24,
 			"anim": "idle",
 			"loop": false,
-			"name": "Símbolo 11"
+			"name": "idle"
 		},
 		{
 			"offsets": [-5, 0],
@@ -14,7 +14,7 @@
 			"fps": 24,
 			"anim": "singLEFT",
 			"loop": false,
-			"name": "Símbolo 66"
+			"name": "left"
 		},
 		{
 			"offsets": [-5, 0],
@@ -22,7 +22,7 @@
 			"fps": 24,
 			"anim": "singDOWN",
 			"loop": false,
-			"name": "Símbolo 68"
+			"name": "down"
 		},
 		{
 			"offsets": [-3, 36],
@@ -30,7 +30,7 @@
 			"fps": 24,
 			"anim": "singUP",
 			"loop": false,
-			"name": "Símbolo 67"
+			"name": "up"
 		},
 		{
 			"offsets": [-5, 0],
@@ -38,13 +38,13 @@
 			"fps": 24,
 			"anim": "singRIGHT",
 			"loop": false,
-			"name": "Símbolo 69"
+			"name": "right"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/luther",
-	"position": [0, 0],
+	"position": [0, 300],
 	"healthicon": "luther",
 	"flip_x": false,
 	"healthbar_colors": [161, 161, 161],

@@ -6,44 +6,44 @@
 			"fps": 24,
 			"anim": "idle",
 			"indices": [],
-			"name": "Needlemouse_IDLE"
+			"name": "idle"
 		},
 		{
-			"offsets": [271, -68],
+			"offsets": [345, 0],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
 			"indices": [],
-			"name": "Needlemouse_LEFT"
+			"name": "left"
 		},
 		{
-			"offsets": [41, -52],
+			"offsets": [120, 161],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
 			"indices": [],
-			"name": "Needlemouse_RIGHT"
+			"name": "right"
 		},
 		{
-			"offsets": [67, 100],
+			"offsets": [0, 207],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
 			"indices": [],
-			"name": "Needlemouse_UP"
+			"name": "up"
 		},
 		{
-			"offsets": [140, -96],
+			"offsets": [202, -8],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
 			"indices": [],
-			"name": "Needlemouse_DOWN"
+			"name": "down"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/needlemouse-2",
+	"image": "characters/nedlemouseherwolrd",
 	"position": [40, 200],
 	"healthicon": "needlemouse",
 	"flip_x": false,

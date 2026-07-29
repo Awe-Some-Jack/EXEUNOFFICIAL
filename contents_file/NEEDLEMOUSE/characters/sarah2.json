@@ -9,7 +9,7 @@
 			"name": "idle"
 		},
 		{
-			"offsets": [121, -28],
+			"offsets": [186, -11],
 			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
@@ -17,15 +17,15 @@
 			"name": "left"
 		},
 		{
-			"offsets": [160, -136],
+			"offsets": [179, -22],
 			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
 			"loop": false,
-			"name": "down"
+			"name": "s down"
 		},
 		{
-			"offsets": [-33, 48],
+			"offsets": [37, 53],
 			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
@@ -33,7 +33,7 @@
 			"name": "up"
 		},
 		{
-			"offsets": [1, -162],
+			"offsets": [-5, -21],
 			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
@@ -43,13 +43,13 @@
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/sarah-p2",
+	"image": "characters/sarahherwolrd",
 	"position": [40, 200],
 	"healthicon": "needlemouse",
 	"flip_x": false,
 	"healthbar_colors": [95, 7, 250],
 	"camera_position": [50, 120],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 1.5,
 	"_editor_isPlayer": false
 }

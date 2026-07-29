@@ -18,12 +18,23 @@ float insideRange(float v, float bottom, float top) {
 uniform float AMT = 0.2; //0 - 1 glitch amount
 uniform float SPEED = 0.6; //0 - 1 speed
 uniform float iTime;
+
+// Wave parameters
+uniform float wVel;
+uniform float wIntensity;
    
 void main()
 {
     
     float time = floor(iTime * SPEED * 60.0);    
 	vec2 uv = openfl_TextureCoordv;
+    
+    // Added a wavey shader too :)
+    // Time varying pixel color
+    float jacked_time = 5.5*iTime;
+    vec2 scale = vec2(0.5*wVel);
+   	
+    uv += 0.01*sin(scale*jacked_time + length( uv )*(10.0*wIntensity));
     
     //copy orig
     vec4 outCol = texture2D(bitmap, uv);
@@ -57,6 +68,6 @@ void main()
             outCol.b = texture2D(bitmap, uv + colOffset).b;  
         }
     }
-       
-	gl_FragColor = vec4(outCol.rgb,outCol.a);
+    
+	gl_FragColor = vec4(outCol);
 }

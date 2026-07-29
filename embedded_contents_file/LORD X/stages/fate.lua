@@ -68,7 +68,7 @@ local function prepareCharacters()
     addCharacterToList('lord x podrido', 'dad')
     addCharacterToList('lord x p3corto', 'dad')
     addCharacterToList('lord x p3largo', 'dad')
-    --addCharacterToList('lord x p3scream', 'dad')
+    addCharacterToList('lord x p3scream', 'dad')
     addCharacterToList('bfo', 'bf')
     addCharacterToList('bf-perspective-right', 'bf')
 end
@@ -338,6 +338,12 @@ local fateSongEvents  = {
         doTweenAlpha('fogAlpha', 'fog', 1, 2)
         setSpriteShader('fog', 'wavyDistortion')
         setShaderFloat('fog', 'amount', 0.5)
+    end,
+    ['killing myself'] = function()
+        triggerEvent('Change Character', 'dad', 'lord x p3scream')
+        triggerEvent('Play Animation', 'jarona', 'dad')
+
+        callMethod('dad.setPosition', {getProperty('dad.x') - 500, getProperty('dad.y') - 840})
     end
 }
 local fateHUDEvents   = {
@@ -517,6 +523,15 @@ function onSectionHit()
 		if curSection % 2 == 0 then setProperty('gameplayCam.settings.OverrideZoom', false) end
 		setProperty('gameplayCam.settings.OGZoom', mustHitSection and 0.7 or 0.9)
 	end
+end
+
+function onStepHit()
+    if curStep == 3216 then
+        for _, shit in ipairs(fateAssets['BG2']) do
+            if shit.name == 'niebliaFinal' then doTweenAlpha('cloudA', 'niebliaFinal', 0, 3.6, 'smootherStepOut') end
+        end
+        doTweenAlpha('hudA', 'camHUD', 0, 3.6, 'smootherStepOut');
+    end
 end
 
 function doTweenScale(tag, obj, target, time, ease)

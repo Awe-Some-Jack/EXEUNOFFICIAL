@@ -4,14 +4,12 @@ local staticSprites = {
 }
 
 local animatedSprites = {
-	{name = 'anto',  path = 'bg/anto',   x = 1420, y = -130, prefix = 'Símbolo 9',  fps = 24, scale = 1.5},
-	{name = 'anto2', path = 'bg/anto',   x = -110, y = 110,  prefix = 'Símbolo 9',  fps = 24, scale = 1.35},
+	{name = 'anto',  path = 'bg/anto',   x = 1280, y = -410, prefix = 'Símbolo 9',  fps = 24, scale = 2, angle = -1.5},
 	{name = 'lava',  path = 'bg/lava',   x = -250,   y = 0,    prefix = 'Símbolo 17', fps = 24, scale = 2.5, angle = -12},
 }
 
 local altAnimatedSprites = {
-	{name = 'antoos',  path = 'bg/anto oscuridad', x = 800,  y = 760, prefix = 'Símbolo 1', fps = 24, scale = 0.5, flipX = true},
-	{name = 'anto2os', path = 'bg/anto oscuridad', x = 1850, y = 760, prefix = 'Símbolo 1', fps = 24, scale = 0.5},
+	{name = 'antoos',  path = 'bg/antorcha', x = 801,  y = 312, prefix = 'Símbolo 3', fps = 24,scale = 2, angle = -1, flipX = false},
 }
 
 local staticOffsetY = {bgf = -350, bgg = -350}
@@ -47,7 +45,6 @@ function onCreatePost()
 
 	if not lowQuality then
 		addAnimated(animatedSprites[2])
-		addAnimated(animatedSprites[3])
 	end
 
 	makeLuaSprite('bgf2', 'bg/bg-2')

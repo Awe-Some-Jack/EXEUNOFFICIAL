@@ -19,12 +19,12 @@
     "assets/exe/extras/bios/",
     "assets/exe/pause/",
     "assets/exe/soundtest/",
-    "assets/exe/story/padLock.png",
-    "assets/exe/title/logo/eyes.png",
-    "assets/exe/title/titleEnterNEW.png",
+    "assets/exe/story/padLock.webp",
+    "assets/exe/title/logo/eyes.webp",
+    "assets/exe/title/titleEnterNEW.webp",
     "assets/exe/transitions/",
     "assets/shared/images/pixelUI/",
-    "assets/shared/images/noteSkins/NOTE_assets.png",
-    "assets/shared/images/noteSkins/NOTENORMAL_assets.png"
+    "assets/shared/images/noteSkins/NOTE_assets.webp",
+    "assets/shared/images/noteSkins/NOTENORMAL_assets.webp"
   ]
 }

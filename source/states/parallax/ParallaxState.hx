@@ -16,6 +16,7 @@ class ParallaxState extends MusicBeatState
 	var textinfo:FlxSprite;
 	var sonic:FlxSprite;
 	var whiteBG:FlxSprite;
+	var ringParallax:FlxSprite;
 
 	var spikestop:FlxBackdrop;
 	var spikesbot:FlxBackdrop;
@@ -70,6 +71,12 @@ class ParallaxState extends MusicBeatState
 		textinfo = new FlxSprite(barinfo.x + 140, barinfo.y + 32).loadGraphic(Paths.getBitmapData('assets/exe/parallax/info-bio.webp'));
 		add(textinfo);
 
+		ringParallax = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/ringparallax.webp'));
+		ringParallax.scale.set(0.1, 0.1);
+		ringParallax.updateHitbox();
+		ringParallax.setPosition(636, 154);
+		add(ringParallax);
+
 		sonic = new FlxSprite();
 		sonic.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/paralax.webp', 'assets/exe/parallax/paralax.xml');
 		sonic.animation.addByPrefix('idle', 'Símbolo 27 instancia 1', 24, true);
@@ -121,18 +128,39 @@ class ParallaxState extends MusicBeatState
 
 			if (FlxG.mouse.justMoved)
 			{
-				if (FlxG.mouse.overlaps(barstory) && curSelected != 0)
-					changeSelect(-1);
-				else if (FlxG.mouse.overlaps(barinfo) && curSelected != 1)
-					changeSelect(1);
+				var hoverStory = FlxG.mouse.overlaps(barstory);
+				var hoverInfo = FlxG.mouse.overlaps(barinfo);
+				FlxTween.cancelTweensOf(barstory);
+				FlxTween.cancelTweensOf(barinfo);
+				if (hoverStory)
+				{
+					if (curSelected != 0) FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+					curSelected = 0;
+					FlxTween.tween(barstory, {x: -80}, 0.3, {ease: FlxEase.cubeOut});
+					FlxTween.tween(barinfo, {x: -140}, 0.3, {ease: FlxEase.cubeOut});
+				}
+				else if (hoverInfo)
+				{
+					if (curSelected != 1) FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
+					curSelected = 1;
+					FlxTween.tween(barstory, {x: -140}, 0.3, {ease: FlxEase.cubeOut});
+					FlxTween.tween(barinfo, {x: -80}, 0.3, {ease: FlxEase.cubeOut});
+				}
+				else
+				{
+					FlxTween.tween(barstory, {x: -140}, 0.3, {ease: FlxEase.cubeOut});
+					FlxTween.tween(barinfo, {x: -140}, 0.3, {ease: FlxEase.cubeOut});
+				}
 			}
 
 			if ((FlxG.mouse.justPressed && !transitioning) || controls.ACCEPT)
 			{
 				transitioning = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
+				var sonicY:Float = sonic.y;
 				sonic.animation.play('selected');
-				sonic.offset.set(sonic.offset.x, sonic.offset.y + 40);
+				sonic.updateHitbox();
+				sonic.y = sonicY;
 
 				spikesbot.acceleration.x = -1000;
 				spikestop.acceleration.x = 1000;
@@ -159,6 +187,7 @@ class ParallaxState extends MusicBeatState
 
 		textstory.x = barstory.x + 140;
 		textinfo.x = barinfo.x + 140;
+
 	}
 
 	function changeSelect(change:Int = 0):Void

@@ -89,5 +89,18 @@
 	"achievement_hyper": "终极玩家！！", "achievement_description_hyper": "在任意歌曲中获得 P 评价",
 	"achievement_die": "你太菜了...", "achievement_description_die": "体验每一种 Game Over",
 	"achievement_credits": "来源调查员", "achievement_description_credits": "观看模组制作名单",
-	"achievement_finale": "想去摸摸草吗？", "achievement_description_finale": "完成整个模组"
+	"achievement_finale": "想去摸摸草吗？", "achievement_description_finale": "完成整个模组",
+
+	"achievement_byebye": "DIGA BYE BYE!", "achievement_description_byebye": "找到 Cycles 彩蛋",
+	"achievement_sans": "杉.. 杉斯？！", "achievement_description_sans": "找到 The Valley 彩蛋",
+	"achievement_sunkyvalley": "牛奶和麦片", "achievement_description_sunkyvalley": "在 The Valley 找到 Sunky",
+	"achievement_pepe": "Magos y Magas!", "achievement_description_pepe": "在 The Valley 找到 Pepe el Mago。",
+	"achievement_neck": "长脖子", "achievement_description_neck": "找到 OMW 彩蛋",
+	"achievement_void": "Que void", "achievement_description_void": "找到 Hollow 彩蛋",
+	"achievement_flash": "赶紧升级到 Windows 11 吧...", "achievement_description_flash": "击败 Flash 3次",
+	"achievement_troll": "SUNKY太棒了！", "achievement_description_troll": "找到 Sunky Troll 彩蛋",
+	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "找到 Fatality 彩蛋",
+	"achievement_sonichu": "极限电击！", "achievement_description_sonichu": "找到并击败 Sonichu",
+	"achievement_shocks": "这伏特攻击可真猛啊？！", "achievement_description_shocks": "死于 Sonichu 的电击",
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
 }

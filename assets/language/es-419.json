@@ -89,5 +89,18 @@
 	"achievement_hyper": "¡Híper Jugador!!", "achievement_description_hyper": "Consigue rango P en cualquier canción",
 	"achievement_die": "Simplemente eres malo...", "achievement_description_die": "Consigue cada Game Over",
 	"achievement_credits": "Investigador de Códigos", "achievement_description_credits": "Mira los créditos del mod",
-	"achievement_finale": "¿Quieres tocar un poco de pasto?", "achievement_description_finale": "Supera todo el mod"
+	"achievement_finale": "¿Quieres tocar un poco de pasto?", "achievement_description_finale": "Supera todo el mod",
+
+	"achievement_byebye": "¡DIGA BYE BYE!", "achievement_description_byebye": "Encuentra el easter-egg de Cycles",
+	"achievement_sans": "¡¿S.. SANS?!", "achievement_description_sans": "Encuentra el easter-egg de The Valley",
+	"achievement_sunkyvalley": "Leche con cereal", "achievement_description_sunkyvalley": "Encuentra a Sunky en The Valley",
+	"achievement_pepe": "¡Magos y Magas!", "achievement_description_pepe": "Encuentra a Pepe el Mago en The Valley.",
+	"achievement_neck": "Cuello Largo", "achievement_description_neck": "Encuentra el easter-egg de OMW",
+	"achievement_void": "Que void", "achievement_description_void": "Encuentra el easter-egg de Hollow",
+	"achievement_flash": "Actualiza a Windows 11 ya...", "achievement_description_flash": "Vence a Flash 3 veces",
+	"achievement_troll": "¡SUNKYTÁSTICO!", "achievement_description_troll": "Encuentra el easter-egg de Sunky Troll",
+	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Encuentra el easter-egg de Fatality",
+	"achievement_sonichu": "¡Zap al extremo!", "achievement_description_sonichu": "Encuentra y vence a Sonichu",
+	"achievement_shocks": "¡¿Qué clase de Placaje Eléctrico es ese?!", "achievement_description_shocks": "Muere por las descargas de Sonichu",
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
 }

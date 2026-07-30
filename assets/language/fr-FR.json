@@ -89,5 +89,18 @@
 	"achievement_hyper": "Hyper Joueur !!", "achievement_description_hyper": "Obtenez le rang P dans n'importe quelle chanson",
 	"achievement_die": "Tu es juste nul...", "achievement_description_die": "Obtenez chaque Game Over",
 	"achievement_credits": "Enquêteur Source", "achievement_description_credits": "Regardez les crédits du mod",
-	"achievement_finale": "Envie de toucher de l'herbe ?", "achievement_description_finale": "Terminez tout le mod"
+	"achievement_finale": "Envie de toucher de l'herbe ?", "achievement_description_finale": "Terminez tout le mod",
+
+	"achievement_byebye": "DIGA BYE BYE !", "achievement_description_byebye": "Trouvez l'easter-egg de Cycles",
+	"achievement_sans": "S.. SANS ?!", "achievement_description_sans": "Trouvez l'easter-egg de The Valley",
+	"achievement_sunkyvalley": "Lait et céréales", "achievement_description_sunkyvalley": "Trouvez Sunky dans The Valley",
+	"achievement_pepe": "Magos y Magas !", "achievement_description_pepe": "Trouvez Pepe el Mago dans The Valley.",
+	"achievement_neck": "Long Cou", "achievement_description_neck": "Trouvez l'easter-egg de OMW",
+	"achievement_void": "Que void", "achievement_description_void": "Trouvez l'easter-egg de Hollow",
+	"achievement_flash": "Mets à jour vers Windows 11 sérieux...", "achievement_description_flash": "Battez Flash 3 fois",
+	"achievement_troll": "SUNKYTASTIQUE !", "achievement_description_troll": "Trouvez l'easter-egg de Sunky Troll",
+	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Trouvez l'easter-egg de Fatality",
+	"achievement_sonichu": "Zap à l'extrême !", "achievement_description_sonichu": "Trouvez et battez Sonichu",
+	"achievement_shocks": "C'est quoi cet Électacle ?!", "achievement_description_shocks": "Mourez des chocs électriques de Sonichu",
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
 }

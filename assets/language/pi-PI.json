@@ -89,5 +89,18 @@
 	"achievement_hyper": "Hyper Scallywag!!", "achievement_description_hyper": "Earn a P rank in any shanty",
 	"achievement_die": "Ye just be terrible...", "achievement_description_die": "Walk th' plank on every game over",
 	"achievement_credits": "Map Inspector", "achievement_description_credits": "Watch th' mod's parchment roll",
-	"achievement_finale": "Wanna touch some dry land?", "achievement_description_finale": "Plunder th' entire mod"
+	"achievement_finale": "Wanna touch some dry land?", "achievement_description_finale": "Plunder th' entire mod",
+
+	"achievement_byebye": "DIGA BYE BYE!", "achievement_description_byebye": "Unearth th' Cycles easter-egg",
+	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "Unearth th' The Valley easter-egg",
+	"achievement_sunkyvalley": "Rum and hardtack", "achievement_description_sunkyvalley": "Find Sunky in The Valley",
+	"achievement_pepe": "Magos y Magas!", "achievement_description_pepe": "Find Pepe el Mago in The Valley.",
+	"achievement_neck": "Long Neck", "achievement_description_neck": "Unearth th' OMW easter-egg",
+	"achievement_void": "Que void", "achievement_description_void": "Unearth th' Hollow easter-egg",
+	"achievement_flash": "Update yer cursed Windows 11...", "achievement_description_flash": "Sink Flash 3 times",
+	"achievement_troll": "SUNKYTASTIC!", "achievement_description_troll": "Unearth th' Sunky Troll easter-egg",
+	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Unearth th' Fatality easter-egg",
+	"achievement_sonichu": "Zap to th' extreme, arrr!", "achievement_description_sonichu": "Find an' sink Sonichu",
+	"achievement_shocks": "What a Volt Tackle ye got huh?!", "achievement_description_shocks": "Die from Sonichu's electro-shocks",
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
 }

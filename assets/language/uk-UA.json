@@ -89,5 +89,18 @@
 	"achievement_hyper": "Гіпер Гравець!!", "achievement_description_hyper": "Отримай ранг P в будь-якій пісні",
 	"achievement_die": "Ти просто погано граєш...", "achievement_description_die": "Збери кожен екран Game Over",
 	"achievement_credits": "Дослідник Джерел", "achievement_description_credits": "Подивись титри мода",
-	"achievement_finale": "Хочеш торкнутися трави?", "achievement_description_finale": "Пройди весь мод"
+	"achievement_finale": "Хочеш торкнутися трави?", "achievement_description_finale": "Пройди весь мод",
+
+	"achievement_byebye": "DIGA BYE BYE!", "achievement_description_byebye": "Знайди пасхалку Cycles",
+	"achievement_sans": "С.. САНС?!", "achievement_description_sans": "Знайди пасхалку The Valley",
+	"achievement_sunkyvalley": "Молоко та пластівці", "achievement_description_sunkyvalley": "Знайди Санкі в The Valley",
+	"achievement_pepe": "Magos y Magas!", "achievement_description_pepe": "Знайди Пепе Мага (Pepe el Mago) в The Valley",
+	"achievement_neck": "Довга шия", "achievement_description_neck": "Знайди пасхалку OMW",
+	"achievement_void": "Que void", "achievement_description_void": "Знайди пасхалку Hollow",
+	"achievement_flash": "Оновися вже до Windows 11...", "achievement_description_flash": "Переможи Флеша 3 рази",
+	"achievement_troll": "САНКІФАНТАСТИКА!", "achievement_description_troll": "Знайди пасхалку Sunky Troll",
+	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Знайди пасхалку Fatality",
+	"achievement_sonichu": "Розряд на максимум!", "achievement_description_sonichu": "Знайди і переможи Сонічу",
+	"achievement_shocks": "Нічого собі розряд, так?!", "achievement_description_shocks": "Помри від ударів струмом Сонічу",
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
 }

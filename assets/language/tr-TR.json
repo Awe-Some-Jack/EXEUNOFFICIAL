@@ -89,5 +89,18 @@
 	"achievement_hyper": "Hiper Oyuncu!!", "achievement_description_hyper": "Herhangi bir şarkıda P derecesi al",
 	"achievement_die": "Sadece kötüsün...", "achievement_description_die": "Tüm Game Over ekranlarını topla",
 	"achievement_credits": "Kaynak Araştırmacısı", "achievement_description_credits": "Modun yapımcılarını izle",
-	"achievement_finale": "Çimene dokunmak ister misin?", "achievement_description_finale": "Tüm modu tamamla"
+	"achievement_finale": "Çimene dokunmak ister misin?", "achievement_description_finale": "Tüm modu tamamla",
+
+	"achievement_byebye": "DIGA BYE BYE!", "achievement_description_byebye": "Cycles sürpriz yumurtasını bul",
+	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "The Valley sürpriz yumurtasını bul",
+	"achievement_sunkyvalley": "Süt ve mısır gevreği", "achievement_description_sunkyvalley": "The Valley'de Sunky'yi bul",
+	"achievement_pepe": "Magos y Magas!", "achievement_description_pepe": "The Valley'de Pepe el Mago'yu bul.",
+	"achievement_neck": "Uzun Boyun", "achievement_description_neck": "OMW sürpriz yumurtasını bul",
+	"achievement_void": "Que void", "achievement_description_void": "Hollow sürpriz yumurtasını bul",
+	"achievement_flash": "Windows 11'e güncelle artık...", "achievement_description_flash": "Flash'ı 3 kez yen",
+	"achievement_troll": "SUNKYTASTİK!", "achievement_description_troll": "Sunky Troll sürpriz yumurtasını bul",
+	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Fatality sürpriz yumurtasını bul",
+	"achievement_sonichu": "Ekstrem şok!", "achievement_description_sonichu": "Sonichu'yu bul ve yen",
+	"achievement_shocks": "Ne Volt Tackle'dı ama?!", "achievement_description_shocks": "Sonichu'nun elektroşoklarından öl",
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
 }

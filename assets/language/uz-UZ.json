@@ -89,5 +89,18 @@
 	"achievement_hyper": "Giper O'yinchi!!", "achievement_description_hyper": "Istalgan qo'shiqda P baho oling",
 	"achievement_die": "Siz shunchaki yomonsiz...", "achievement_description_die": "Har bir Game Over ekranini yig'ing",
 	"achievement_credits": "Manba tergovchisi", "achievement_description_credits": "Modning mualliflar qismini tomosha qiling",
-	"achievement_finale": "Maysani ushlab ko'rmoqchimisiz?", "achievement_description_finale": "Butun modni yakunlang"
+	"achievement_finale": "Maysani ushlab ko'rmoqchimisiz?", "achievement_description_finale": "Butun modni yakunlang",
+
+	"achievement_byebye": "DIGA BYE BYE!", "achievement_description_byebye": "Cycles'da pasxalkasini top",
+	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "The Valley'da pasxalkasini top",
+	"achievement_sunkyvalley": "Sut va yormalar", "achievement_description_sunkyvalley": "The Valley'da Sunky'ni top",
+	"achievement_pepe": "Magos y Magas!", "achievement_description_pepe": "The Valley'da Pepe el Mago'ni top",
+	"achievement_neck": "Uzun bo'yin", "achievement_description_neck": "OMW pasxalkasini top",
+	"achievement_void": "Que void", "achievement_description_void": "Hollow'da pasxalkasini top",
+	"achievement_flash": "Windows 11 ga yangilab ol endi...", "achievement_description_flash": "Flash'ni 3 marta mag'lub et",
+	"achievement_troll": "SUNKYTASTIK!", "achievement_description_troll": "Sunky Troll pasxalkasini top",
+	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Fatality'da pasxalkasini top",
+	"achievement_sonichu": "Maksimal razryad!", "achievement_description_sonichu": "Sonichu'ni top va mag'lub et",
+	"achievement_shocks": "Qanday Volt-Zarba bo'ldi-a?!", "achievement_description_shocks": "Sonichu'ning elektr tokidan o'l",
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
 }

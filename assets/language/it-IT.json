@@ -89,5 +89,18 @@
 	"achievement_hyper": "Iper Giocatore!!", "achievement_description_hyper": "Ottieni Rank P in qualsiasi canzone",
 	"achievement_die": "Fai semplicemente pena...", "achievement_description_die": "Ottieni ogni singolo Game Over",
 	"achievement_credits": "Investigatore di Fonti", "achievement_description_credits": "Guarda i crediti della mod",
-	"achievement_finale": "Vuoi toccare un po' d'erba?", "achievement_description_finale": "Finisci l'intera mod"
+	"achievement_finale": "Vuoi toccare un po' d'erba?", "achievement_description_finale": "Finisci l'intera mod",
+
+	"achievement_byebye": "DIGA BYE BYE!", "achievement_description_byebye": "Trova l'easter-egg di Cycles",
+	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "Trova l'easter-egg di The Valley",
+	"achievement_sunkyvalley": "Latte e cereali", "achievement_description_sunkyvalley": "Trova Sunky in The Valley",
+	"achievement_pepe": "Magos y Magas!", "achievement_description_pepe": "Trova Pepe el Mago in The Valley.",
+	"achievement_neck": "Collo Lungo", "achievement_description_neck": "Trova l'easter-egg di OMW",
+	"achievement_void": "Que void", "achievement_description_void": "Trova l'easter-egg di Hollow",
+	"achievement_flash": "Aggiorna a Windows 11, su...", "achievement_description_flash": "Sconfiggi Flash 3 volte",
+	"achievement_troll": "SUNKYTASTICO!", "achievement_description_troll": "Trova l'easter-egg di Sunky Troll",
+	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Trova l'easter-egg di Fatality",
+	"achievement_sonichu": "Zap all'estremo!", "achievement_description_sonichu": "Trova e sconfiggi Sonichu",
+	"achievement_shocks": "Che Locomovolt, eh?!", "achievement_description_shocks": "Muori per le scosse elettriche di Sonichu",
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
 }

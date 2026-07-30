@@ -89,5 +89,18 @@
 	"achievement_hyper": "Hyper Gracz!!", "achievement_description_hyper": "Zdobądź rangę P w dowolnej piosence",
 	"achievement_die": "Po prostu słabo grasz...", "achievement_description_die": "Zdobądź każdy ekran Game Over",
 	"achievement_credits": "Inspektor Źródeł", "achievement_description_credits": "Obejrzyj napisy końcowe moda",
-	"achievement_finale": "Chcesz dotknąć trawy?", "achievement_description_finale": "Przejdź całego moda"
+	"achievement_finale": "Chcesz dotknąć trawy?", "achievement_description_finale": "Przejdź całego moda",
+
+	"achievement_byebye": "DIGA BYE BYE!", "achievement_description_byebye": "Znajdź easter egga Cycles",
+	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "Znajdź easter egga The Valley",
+	"achievement_sunkyvalley": "Mleko i płatki", "achievement_description_sunkyvalley": "Znajdź Sunky'ego w The Valley",
+	"achievement_pepe": "Magos y Magas!", "achievement_description_pepe": "Znajdź Pepe el Mago w The Valley.",
+	"achievement_neck": "Długa Szyja", "achievement_description_neck": "Znajdź easter egga OMW",
+	"achievement_void": "Que void", "achievement_description_void": "Znajdź easter egga Hollow",
+	"achievement_flash": "Zaktualizuj w końcu do Windowsa 11...", "achievement_description_flash": "Pokonaj Flasha 3 razy",
+	"achievement_troll": "SUNKYTASTYCZNIE!", "achievement_description_troll": "Znajdź easter egga Sunky Troll",
+	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Znajdź easter egga Fatality",
+	"achievement_sonichu": "Ekstremalne porażenie!", "achievement_description_sonichu": "Znajdź i pokonaj Sonichu",
+	"achievement_shocks": "Niezły Volt Tackle, co?!", "achievement_description_shocks": "Zgiń od porażenia prądem Sonichu",
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
 }

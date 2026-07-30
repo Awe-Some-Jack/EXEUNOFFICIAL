@@ -89,5 +89,18 @@
 	"achievement_hyper": "하이퍼 플레이어!!", "achievement_description_hyper": "아무 곡에서나 P 랭크를 달성하세요",
 	"achievement_die": "넌 그냥 못하는 거야...", "achievement_description_die": "모든 게임 오버를 당해보세요",
 	"achievement_credits": "소스 조사관", "achievement_description_credits": "모드 크레딧을 시청하세요",
-	"achievement_finale": "밖에 나가서 풀 좀 만지지 그래?", "achievement_description_finale": "모드 전체를 클리어하세요"
+	"achievement_finale": "밖에 나가서 풀 좀 만지지 그래?", "achievement_description_finale": "모드 전체를 클리어하세요",
+
+	"achievement_byebye": "DIGA BYE BYE!", "achievement_description_byebye": "Cycles 이스터에그를 찾으세요",
+	"achievement_sans": "샌.. 샌즈?!", "achievement_description_sans": "The Valley 이스터에그를 찾으세요",
+	"achievement_sunkyvalley": "우유와 시리얼", "achievement_description_sunkyvalley": "The Valley에서 Sunky를 찾으세요",
+	"achievement_pepe": "Magos y Magas!", "achievement_description_pepe": "The Valley에서 Pepe el Mago를 찾으세요.",
+	"achievement_neck": "긴 목", "achievement_description_neck": "OMW 이스터에그를 찾으세요",
+	"achievement_void": "Que void", "achievement_description_void": "Hollow 이스터에그를 찾으세요",
+	"achievement_flash": "Windows 11로 좀 업데이트해라...", "achievement_description_flash": "Flash를 3번 쓰러뜨리세요",
+	"achievement_troll": "선키타스틱!", "achievement_description_troll": "Sunky Troll 이스터에그를 찾으세요",
+	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Fatality 이스터에그를 찾으세요",
+	"achievement_sonichu": "극한의 짜릿함!", "achievement_description_sonichu": "Sonichu를 찾고 쓰러뜨리세요",
+	"achievement_shocks": "엄청난 볼트태클이네, 안 그래?!", "achievement_description_shocks": "Sonichu의 전기 충격으로 죽으세요",
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
 }

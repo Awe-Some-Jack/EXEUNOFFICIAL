@@ -89,5 +89,18 @@
 	"achievement_hyper": "ハイパープレイヤー！！", "achievement_description_hyper": "任意の曲でPランクを獲得する",
 	"achievement_die": "お前が下手なだけ…", "achievement_description_die": "すべてのゲームオーバーを経験する",
 	"achievement_credits": "ソース調査員", "achievement_description_credits": "MODのクレジットを見る",
-	"achievement_finale": "草に触れてみる？", "achievement_description_finale": "MOD全体をクリアする"
+	"achievement_finale": "草に触れてみる？", "achievement_description_finale": "MOD全体をクリアする",
+
+	"achievement_byebye": "DIGA BYE BYE!", "achievement_description_byebye": "Cyclesのイースターエッグを見つける",
+	"achievement_sans": "サ.. サンズ？！", "achievement_description_sans": "The Valleyのイースターエッグを見つける",
+	"achievement_sunkyvalley": "ミルクとシリアル", "achievement_description_sunkyvalley": "The ValleyでSunkyを見つける",
+	"achievement_pepe": "Magos y Magas!", "achievement_description_pepe": "The ValleyでPepe el Magoを見つける",
+	"achievement_neck": "首長", "achievement_description_neck": "OMWのイースターエッグを見つける",
+	"achievement_void": "Que void", "achievement_description_void": "Hollowのイースターエッグを見つける",
+	"achievement_flash": "さっさとWindows 11にアプデしろよ...", "achievement_description_flash": "Flashを3回倒す",
+	"achievement_troll": "サンキタスティック！", "achievement_description_troll": "Sunky Trollのイースターエッグを見つける",
+	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Fatalityのイースターエッグを見つける",
+	"achievement_sonichu": "極限までザップ！", "achievement_description_sonichu": "Sonichuを見つけて倒す",
+	"achievement_shocks": "すごいボルテッカーだな？！", "achievement_description_shocks": "Sonichuの電撃で死ぬ",
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
 }

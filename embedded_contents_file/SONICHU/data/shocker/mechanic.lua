@@ -23,6 +23,7 @@ function onGameOver()
 	if zappedRecently and not getProperty('cpuControlled') and not getProperty('practiceMode') then
 		runHaxeCode([[
 			backend.EXEAchievements.unlock('shocks');
+			backend.EXEAchievements.checkFinale();
 			backend.EXEAchievements.save();
 		]])
 	end

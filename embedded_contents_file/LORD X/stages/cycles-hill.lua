@@ -11,7 +11,7 @@ local HB_ELEMENTS = {'hbHealth', 'hbHealth2', 'separatorHealth'}
 
 local sprites = {
 	{name = 'sky',       path = 'cycles/sky',                        x = -1079, y = -212,  scaleX = 1.3, scaleY = 1.2},
-	{name = 'mountains', path = 'cycles/motains_alph',               x = -1250, y = 13,   scaleX = 0.81, scaleY = 0.7},
+	{name = 'mountains', path = 'cycles/motains_alpha',               x = -1250, y = -200,   scaleX = 3, scaleY = 3},
 	{name = 'clouds',    path = 'cycles/clouds',                     x = -1499, y = -500, scaleX = 0.95, scaleY = 0.55, alpha = 0.2},
 	{name = 'hills',     path = 'cycles/motains',                    x = -1075, y = 44,   scaleX = 0.76, scaleY = 0.75},
 	{name = 'waterfalls',path = 'cycles/fondo animado/waterfalls',   x = -1075, y = 44,   animated = true, prefix = "idle", scaleX = 0.76, scaleY = 0.75, fps = 12},

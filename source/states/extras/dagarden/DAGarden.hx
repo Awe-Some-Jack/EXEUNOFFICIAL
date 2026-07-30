@@ -978,7 +978,7 @@ class DAGarden extends MusicBeatSubstate
             var _saved:Array<String> = cast(_save.data.songs ?? []);
             var _allFound = true;
             for(s in songs.songList) if(!_saved.contains(s)) { _allFound = false; break; }
-            if(_allFound) { backend.EXEAchievements.unlock('dagarden'); backend.EXEAchievements.save(); }
+            if(_allFound) { backend.EXEAchievements.unlock('dagarden'); backend.EXEAchievements.checkFinale(); backend.EXEAchievements.save(); }
         }
 
         player = new DAGPlayer();

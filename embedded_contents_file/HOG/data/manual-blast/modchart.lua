@@ -12,6 +12,7 @@ function onEndSong()
 	if not pressedRing and not getProperty('cpuControlled') and not getProperty('practiceMode') then
 		runHaxeCode([[
 			backend.EXEAchievements.unlock('norings');
+			backend.EXEAchievements.checkFinale();
 			backend.EXEAchievements.save();
 		]])
 	end

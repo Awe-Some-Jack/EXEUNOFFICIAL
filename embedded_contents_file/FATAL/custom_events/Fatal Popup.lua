@@ -374,6 +374,7 @@ function onEndSong()
 	if not playerClosedPopup and not getProperty('cpuControlled') and not getProperty('practiceMode') then
 		runHaxeCode([[
 			backend.EXEAchievements.unlock('popup');
+			backend.EXEAchievements.checkFinale();
 			backend.EXEAchievements.save();
 		]])
 	end

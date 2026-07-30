@@ -14,6 +14,12 @@ function onEvent(e, v1, v2)
             playSound("DIGA-BYE-BYE", 1, "yes")
             runTimer("setVocalsBack", 8)
 			triggerEvent('Play Animation', 'mispulmones', 'dad')
+
+			runHaxeCode([[
+				backend.EXEAchievements.unlock('byebye');
+				backend.EXEAchievements.checkFinale();
+				backend.EXEAchievements.save();
+			]])
         end
     end
     if e == 'Normal Lyrics Bye-Bye' then

@@ -74,6 +74,7 @@ class StoryModeState extends MusicBeatState
 	var scoreBG:FlxSprite;
 	var scoreText:FlxText;
 	var rankText:FlxText;
+	var scoreVisible:Bool = false;
 
 	public static var fromStoryMode:Bool = false;
 
@@ -376,13 +377,30 @@ class StoryModeState extends MusicBeatState
 		scoreText.text = 'SCORE: $score';
 		rankText.text = 'RANK: ' + getRankLetter(rating);
 
-		rankText.x = 16;
-		rankText.y = FlxG.height - rankText.height - 70;
-		scoreText.x = 16;
-		scoreText.y = rankText.y + rankText.height + 4;
+		final targetRankY = FlxG.height - rankText.height - 70;
+		final targetScoreY = targetRankY + rankText.height + 4;
 
-		scoreText.visible = rankText.visible = true;
-		scoreBG.visible = false;
+		if (!scoreVisible)
+		{
+			scoreVisible = true;
+			rankText.x = -rankText.width - 10;
+			rankText.y = targetRankY;
+			scoreText.x = -scoreText.width - 10;
+			scoreText.y = targetScoreY;
+			scoreText.visible = rankText.visible = true;
+			scoreBG.visible = false;
+			FlxTween.cancelTweensOf(rankText);
+			FlxTween.cancelTweensOf(scoreText);
+			FlxTween.tween(rankText, {x: 16}, 0.35, {ease: FlxEase.cubeOut});
+			FlxTween.tween(scoreText, {x: 16}, 0.35, {ease: FlxEase.cubeOut});
+		}
+		else
+		{
+			rankText.x = 16;
+			rankText.y = targetRankY;
+			scoreText.x = 16;
+			scoreText.y = targetScoreY;
+		}
 	}
 
 	function moveRedBox(targetX:Float):Void
@@ -553,7 +571,12 @@ class StoryModeState extends MusicBeatState
 		updateCoverVisibility();
 
 		arrow.visible = arrow2.visible = false;
-		scoreText.visible = rankText.visible = false;
+		scoreVisible = false;
+		FlxTween.cancelTweensOf(rankText);
+		FlxTween.cancelTweensOf(scoreText);
+		final hideX = -Math.max(scoreText.width, rankText.width) - 20;
+		FlxTween.tween(rankText, {x: hideX}, 0.3, {ease: FlxEase.cubeIn, onComplete: _ -> rankText.visible = false});
+		FlxTween.tween(scoreText, {x: hideX}, 0.3, {ease: FlxEase.cubeIn, onComplete: _ -> scoreText.visible = false});
 
 		if (arrowTween != null)  { arrowTween.cancel();  arrowTween = null; }
 		if (arrow2Tween != null) { arrow2Tween.cancel(); arrow2Tween = null; }

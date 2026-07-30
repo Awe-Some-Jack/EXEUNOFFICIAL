@@ -165,6 +165,7 @@ function onEvent(n,v1)
 			setProperty('treesN.alpha', 1)
 			setProperty('gradient.alpha', 0)
 			triggerEvent('Change Character', 'dad', 'omwn')
+			triggerEvent('Change Character', 'boyfriend', 'bfun')
 		end
 	end
 end

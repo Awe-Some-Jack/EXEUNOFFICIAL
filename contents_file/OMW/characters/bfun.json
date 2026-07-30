@@ -1,0 +1,87 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [49, -4],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [34, -2],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [2, 40],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [12, 9],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [43, -5],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "mleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [35, 6],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "mdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [2, 45],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "mup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [19, 13],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "mright",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/bfu nocturno",
+	"position": [0, 0],
+	"healthicon": "bfback",
+	"flip_x": true,
+	"healthbar_colors": [58, 205, 241],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 0.5,
+	"_editor_isPlayer": true
+}

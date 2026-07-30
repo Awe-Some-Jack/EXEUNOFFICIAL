@@ -71,6 +71,10 @@ class StoryModeState extends MusicBeatState
 	var isShaking:Bool = false;
 	var isSelecting:Bool = false;
 
+	var scoreBG:FlxSprite;
+	var scoreText:FlxText;
+	var rankText:FlxText;
+
 	public static var fromStoryMode:Bool = false;
 
 
@@ -318,15 +322,69 @@ class StoryModeState extends MusicBeatState
 		
 		box1BaseX = greyBOX.x - 30;
 		box2BaseX = greyBOX2.x - 30;
-		
+
 		for (s in [greyBOX2, gfBOX, yellowBOX2, staticscreen2])
 			s.color = 0xFF666666;
-		
-		//bfTween  = FlxTween.tween(bfBOX,  {y: bfBOX.y  - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
-		//bf2Tween = FlxTween.tween(gfBOX, {y: gfBOX.y - 5}, 1.5, {ease: FlxEase.sineInOut, type: PINGPONG});
+
+		rankText = new FlxText(0, 0, 0, 'RANK: ?');
+		rankText.setFormat(Paths.font("Plaza Regular.ttf"), 40, 0xFFA87E7E, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		rankText.borderSize = 2;
+		rankText.antialiasing = ClientPrefs.data.antialiasing;
+		rankText.visible = false;
+		add(rankText);
+
+		scoreText = new FlxText(0, 0, 0, 'SCORE: 0');
+		scoreText.setFormat(Paths.font("Plaza Regular.ttf"), 40, 0xFFA87E7E, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText.borderSize = 2;
+		scoreText.antialiasing = ClientPrefs.data.antialiasing;
+		scoreText.visible = false;
+		add(scoreText);
+
+		scoreBG = new FlxSprite().makeGraphic(1, 1, 0xFF000000);
+		scoreBG.alpha = 0.6;
+		scoreBG.visible = false;
+		add(scoreBG);
 	}
 	
 	
+	function getRankLetter(rating:Float):String
+	{
+		if (rating >= 1)    return 'P';
+		if (rating >= 0.96) return 'SS';
+		if (rating >= 0.93) return 'S';
+		if (rating >= 0.85) return 'AA';
+		if (rating >= 0.75) return 'A';
+		if (rating >= 0.6)  return 'B';
+		if (rating >= 0.45) return 'C';
+		if (rating >= 0.2)  return 'D';
+		if (rating > 0.0)   return 'F';
+		return '?';
+	}
+
+	function updateScoreDisplay():Void
+	{
+		Mods.currentModDirectory = STORY_MOD;
+		WeekData.reloadWeekFiles(false);
+		Difficulty.loadFromWeek();
+		final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
+		final diff = (normalIdx > -1) ? normalIdx : 0;
+
+		final song = STORY_SONGS[selectedCover];
+		final score = Highscore.getScore(song, diff);
+		final rating = Highscore.getRating(song, diff);
+
+		scoreText.text = 'SCORE: $score';
+		rankText.text = 'RANK: ' + getRankLetter(rating);
+
+		rankText.x = 16;
+		rankText.y = FlxG.height - rankText.height - 70;
+		scoreText.x = 16;
+		scoreText.y = rankText.y + rankText.height + 4;
+
+		scoreText.visible = rankText.visible = true;
+		scoreBG.visible = false;
+	}
+
 	function moveRedBox(targetX:Float):Void
 	{
 		if (shakeTimer != null) { shakeTimer.cancel(); shakeTimer = null; }
@@ -477,6 +535,8 @@ class StoryModeState extends MusicBeatState
 
 		arrowTween  = FlxTween.tween(arrow,  {x: arrow.x  - 6}, 1.2, {ease: FlxEase.sineInOut, type: PINGPONG});
 		arrow2Tween = FlxTween.tween(arrow2, {x: arrow2.x + 6}, 1.2, {ease: FlxEase.sineInOut, type: PINGPONG});
+
+		updateScoreDisplay();
 	}
 
 	function exitCoverSelect():Void
@@ -493,6 +553,7 @@ class StoryModeState extends MusicBeatState
 		updateCoverVisibility();
 
 		arrow.visible = arrow2.visible = false;
+		scoreText.visible = rankText.visible = false;
 
 		if (arrowTween != null)  { arrowTween.cancel();  arrowTween = null; }
 		if (arrow2Tween != null) { arrow2Tween.cancel(); arrow2Tween = null; }
@@ -507,6 +568,7 @@ class StoryModeState extends MusicBeatState
 
 		updateCoverVisibility();
 		flashStaticScreen();
+		updateScoreDisplay();
 
 		final staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
 		staticSound?.fadeOut(0.3, 0);

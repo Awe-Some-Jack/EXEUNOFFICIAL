@@ -110,12 +110,13 @@
 			"nation": "usa"
 		},
 		{
-			"name": "Jason E",
+			"name": "Snorby",
 			"icon": "jason",
 			"description": "Coder",
 			"quote": "*Your ad could be here*",
 			"nation": "uzbek",
 			"colors": [[211, 3, 252], [252, 32, 3]],
+			"twitter": "https://x.com/JustX_LOL",
 			"extra": ["video", "table"]
 		},
 		{

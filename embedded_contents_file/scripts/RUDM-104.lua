@@ -181,7 +181,6 @@ function onCreatePost()
 	addLuaSprite('watermark')
 	addLuaText('watermarkTxt')
 
-	setTextString('botplayTxt', settings.botplayText)
 	makeLuaText('practiceTxt', settings.practiceText, screenWidth - 800, 400, getProperty('healthBar.y') + (downscroll and (70 + 32) or (-90 - 32)))
 	setTextAlignment('practiceTxt', 'Center')
 	setTextSize('practiceTxt', 32)

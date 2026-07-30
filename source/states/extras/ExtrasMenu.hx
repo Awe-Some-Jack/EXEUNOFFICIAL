@@ -14,8 +14,6 @@ import states.EXEMenu;
 
 class ExtrasMenu extends MusicBeatState
 {
-    static var extraMenuSong:Bool = false;
-
     static final MENU_KEYS = [
         "extras.menu.gallery",
         "extras.menu.character",
@@ -40,20 +38,13 @@ class ExtrasMenu extends MusicBeatState
     var np:FlxText;
     var nowPlayingSong:FlxText;
     var extrasLogo:FlxSprite;
-    var stopMusicPlay:Bool = false;
-    
-    public var _orphanPlayer:Dynamic = null;
 
     override function create():Void
     {
         Paths.clearStoredMemory();
-        super.create();
+        Paths.clearUnusedMemory();
 
-        if (!extraMenuSong)
-        {
-            FlxG.sound.playMusic(openfl.utils.Assets.getSound('assets/exe/extras/music/ExtrasMenu.ogg'));
-            extraMenuSong = true;
-        }
+        FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/ExtrasMenu.ogg'));
 
         buildBG();
         buildBox();
@@ -80,8 +71,9 @@ class ExtrasMenu extends MusicBeatState
         nowPlayingSong.antialiasing = ClientPrefs.data.antialiasing;
         add(nowPlayingSong);
 
-        Paths.clearUnusedMemory();
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the Extras", null); #end
+
+        super.create();
     }
 
     override public function update(elapsed:Float):Void
@@ -105,7 +97,6 @@ class ExtrasMenu extends MusicBeatState
         if (controls.BACK)
         {
             canMove = false;
-            extraMenuSong = true;
             FlxG.sound.music?.fadeOut(0.3);
 
             states.extras.dagarden.DAGarden.stopPersisted();
@@ -143,11 +134,7 @@ class ExtrasMenu extends MusicBeatState
 
     override public function destroy():Void
     {
-        if (!stopMusicPlay)
-        {
-            extraMenuSong = false;
-            FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
-        }
+        FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
         super.destroy();
     }
 

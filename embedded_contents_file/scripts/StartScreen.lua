@@ -447,9 +447,8 @@ function onCountdownTick(counter)
 			scaleObject(sunshineCountdownSprite, 0.6, 0.6)
 			screenCenter(sunshineCountdownSprite, 'xy')
 			addLuaSprite(sunshineCountdownSprite, true)
-			doTweenX('sunshineCD_scaleX' .. counter, sunshineCountdownSprite .. '.scale', 1, crochet / 1000, 'elasticOut')
-			doTweenY('sunshineCD_scaleY' .. counter, sunshineCountdownSprite .. '.scale', 1, crochet / 1000, 'elasticOut')
-			doTweenAlpha('sunshineCD_fade' .. counter, sunshineCountdownSprite, 0, crochet / 1000, 'cubeIn')
+			doTweenX('sunshineCD_scaleX' .. counter, sunshineCountdownSprite .. '.scale', 1, crochet / 1000)
+			doTweenY('sunshineCD_scaleY' .. counter, sunshineCountdownSprite .. '.scale', 1, crochet / 1000)
 		end
 	end
 end

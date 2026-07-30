@@ -521,15 +521,14 @@ class Cutscene extends MusicBeatSubstate
         });
         _vidSprite.onEnd(() -> { _vidSprite.play(); _vidPaused = false; _hudUpdateBtn(); });
 
-        final extrasMenu = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
-        if (extrasMenu?._orphanPlayer != null)
-            extrasMenu._orphanPlayer.setVolume(0.1);
-        else if (FlxG.sound.music != null)
+        if (FlxG.sound.music != null)
         {
             FlxTween.cancelTweensOf(FlxG.sound.music);
             FlxTween.tween(FlxG.sound.music, {volume: 0.1}, 0.5, {ease: FlxEase.quadOut});
         }
+
         add(_vidSprite);
+        
         if (_vidSprite.loadVideo(path, [VideoSprite.ARG_LOOPING]))
             _vidSprite.playDelayed();
         #end
@@ -691,10 +690,7 @@ class Cutscene extends MusicBeatSubstate
         if (_hud != null) { FlxTween.cancelTweensOf(_hud); remove(_hud, true); _hud.destroy(); _hud = null; }
         _hudBar = null; _hudFill = null; _hudKnob = null; _hudBtn = null; _hudTimeTxt = null;
 
-        final extrasMenuClose = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
-        if (extrasMenuClose?._orphanPlayer != null)
-            extrasMenuClose._orphanPlayer.setVolume(1.0);
-        else if (FlxG.sound.music != null)
+        if (FlxG.sound.music != null)
         {
             FlxTween.cancelTweensOf(FlxG.sound.music);
             FlxTween.tween(FlxG.sound.music, {volume: 1.0}, 0.5, {ease: FlxEase.quadOut});
@@ -783,15 +779,15 @@ class Cutscene extends MusicBeatSubstate
             _debugSelected.y = my - _debugDragOffY;
         }
 
-        if (_debugSelected != null && FlxG.mouse.wheel != 0)
+        if (_debugSelected != null && FlxG.mouse.deltaWheel.y != 0)
         {
             if (_debugRotating)
-                _debugSelected.angle += FlxG.mouse.wheel * 2.0;
+                _debugSelected.angle += FlxG.mouse.deltaWheel.y * 2.0;
             else if (_debugOpacity)
-                _debugSelected.alpha = Math.max(0, Math.min(1, _debugSelected.alpha + FlxG.mouse.wheel * 0.05));
+                _debugSelected.alpha = Math.max(0, Math.min(1, _debugSelected.alpha + FlxG.mouse.deltaWheel.y * 0.05));
             else
             {
-                final delta:Float = FlxG.mouse.wheel * 0.01;
+                final delta:Float = FlxG.mouse.deltaWheel.y * 0.01;
                 _debugSelected.scale.x = Math.max(0.01, _debugSelected.scale.x + delta);
                 _debugSelected.scale.y = Math.max(0.01, _debugSelected.scale.y + delta);
                 _debugSelected.updateHitbox();
@@ -849,17 +845,9 @@ class Cutscene extends MusicBeatSubstate
         if (controls.UI_DOWN_P) changeSelection(1);
         if (controls.ACCEPT && videoEntries.length > 0)
             _selectCurrent();
-        if (FlxG.mouse.justPressed && disco != null
-            && disco.overlapsPoint(new flixel.math.FlxPoint(FlxG.mouse.x, FlxG.mouse.y)))
+        if (FlxG.mouse.justPressed && disco?.overlapsPoint(new flixel.math.FlxPoint(FlxG.mouse.x, FlxG.mouse.y)))
         {
-            final extrasMenu = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
-            if (extrasMenu != null && extrasMenu._orphanPlayer != null)
-            {
-                final op = extrasMenu._orphanPlayer;
-                if (op.isPlaying) op.pause();
-                else op.playAudio(states.extras.dagarden.DAGarden.currentSong, states.extras.dagarden.DAGarden.currentSongMod);
-            }
-            else if (FlxG.sound.music != null)
+            if (FlxG.sound.music != null)
             {
                 if (FlxG.sound.music.playing) FlxG.sound.music.pause();
                 else FlxG.sound.music.resume();

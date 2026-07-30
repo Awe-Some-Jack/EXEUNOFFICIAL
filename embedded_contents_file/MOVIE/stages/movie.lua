@@ -23,9 +23,9 @@ runHaxeCode([[
 ]])
 
 local sprites = {
-	{name = 'bg3', path = 'bg/3', x = -230, y = -300, scale = 1},
-	{name = 'bg2', path = 'bg/2', x = -180, y = -150, scale = 1, front = true, scroll = 1.2},
-	{name = 'bg1', path = 'bg/1', x = -230, y = -300, scale = 1, front = true},
+	{name = 'bg3', path = 'bg/3', x = 0, y = 0, scale = 0.8},
+	{name = 'bg2', path = 'bg/2', x = 100, y = 150, scale = 0.8, front = true, scroll = 1.2},
+	{name = 'bg1', path = 'bg/1', x = 0, y = 0, scale = 0.8, front = true},
 }
 
 local hs = {'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG', 'iconBF', 'iconOpp', 'exeScoreTxt'}
@@ -45,6 +45,8 @@ function onCreate()
 		addSprite(spr)
 	end
 
+	setProperty('boyfriend.idleSuffix', '-knux')
+	callMethod('boyfriend.recalculateDanceIdle')
 	if shadersEnabled and not lowQuality then
 		makeLuaSprite('bloom')
 		setSpriteShader('bloom', 'brightness')
@@ -57,6 +59,7 @@ function onCreate()
 		setSpriteShader('wave', 'wavyDistortion')
 
 		for _,char in ipairs({'dad', 'boyfriend'}) do
+			setProperty(char..'.useRenderTexture', true)
 			setSpriteShader(char, 'DropShadowShader')
 			setShaderFloat(char, 'hue', 0)
 			setShaderFloat(char, 'saturation', 0)
@@ -70,7 +73,7 @@ function onCreate()
 		setShaderFloat('dad', 'ang', math.rad(135))
 		setShaderFloat('boyfriend', 'ang', math.rad(90))
 		setShaderFloat('boyfriend', 'thr', 0.1)
-		setShaderFloat('dad', 'thr', 0.3)
+		setShaderFloat('dad', 'thr', 0.1)
 
 		runHaxeCode([[
 			FlxG.camera.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('ac').shader), new ShaderFilter(game.getLuaObject('wave').shader)];
@@ -97,7 +100,7 @@ end
 
 function onStartCountdown()
 	if not videoPlayed and not seenCutscene then
-		startVideo('cutscene')
+		startVideo('SONIC FEO')
 		videoPlayed = true
 		return Function_Stop
 	end
@@ -123,12 +126,14 @@ function onEvent(n,v1,v2)
 		setShaderFloat('bloom', 'saturation', tonumber(v1))
 	end
 	if n == 'Dadbattle Spotlight' and v1 == 'xd' then
+		setProperty('wave.x', 0.5)
 		setShaderFloat('ac', 'hue', -50)
 		setShaderFloat('ac', 'saturation', 0)
 		setShaderFloat('ac', 'brightness',-10)
 		setShaderFloat('ac', 'contrast', -5)
 	end
 	if n == 'Dadbattle Spotlight' and v1 == 'aaa' then
+		setProperty('wave.x', 0)
 		setShaderFloat('ac', 'hue', 0)
 		setShaderFloat('ac', 'saturation', 0)
 		setShaderFloat('ac', 'brightness', -20)
@@ -147,3 +152,6 @@ function onEvent(n,v1,v2)
 		doTweenAlpha('BlackGraphicOther', 'BlackGraphicOther', 1, crochet / (1000 / 12))
 	end
 end
+
+function goodNoteHitPre(id) setProperty('notes.members['..id..'].animSuffix', '-knux') end
+function noteMiss(id,nt) playAnim('boyfriend', getProperty('singAnimations['..nt..']') .. 'miss-knux', true) end

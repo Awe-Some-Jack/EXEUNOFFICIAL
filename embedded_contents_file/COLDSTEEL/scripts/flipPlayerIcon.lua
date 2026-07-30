@@ -60,12 +60,6 @@ function goodNoteHit(membersIndex, noteData, noteType, isSustainNote)
 end
 
 function onCreatePost()
-    makeLuaSprite('blackScreen', '', -900, -700)
-    makeGraphic('blackScreen', screenWidth * 4, screenHeight * 4, '000000')
-    setObjectCamera('blackScreen', 'game')
-    addLuaSprite('blackScreen', true)
-    setProperty('blackScreen.alpha', 1)
-
     addCharacterToList('coldsteelanims1', 'dad')
     addCharacterToList('coldsteelanims2', 'dad')
     addCharacterToList('coldsteelanims3', 'dad')
@@ -73,10 +67,6 @@ function onCreatePost()
 end
 
 function onStepHit()
-    if curStep >= 36 and luaSpriteExists('blackScreen') then
-        removeLuaSprite('blackScreen', true)
-    end
-
     if curStep == 528 then
         triggerEvent('Change Character', 'dad', 'coldsteelanims1')
         triggerEvent('Play Animation', 'steel', 'dad')
@@ -132,6 +122,7 @@ function onStepHit()
 
     if curStep == 1311 then
         stopAllRotation = false
+        setProperty('dad.angle', 0)
         isFastSpin = true
         rotationSpeed = 8
     end
@@ -142,15 +133,18 @@ function onStepHit()
     end
 
     if curStep == 1403 then
+        setProperty('dad.angle', 0)
         triggerEvent('Change Character', 'dad', 'coldsteelanims4')
         triggerEvent('Play Animation', 'whatsthat', 'dad')
     end
 
     if curStep == 1696 then
         triggerEvent('Change Character', 'dad', 'coldsteel')
+        setProperty('dad.angle', 0)
     end
 
     if curStep == 1407 then
+        setProperty('dad.angle', 0)
         stopAllRotation = true
         isFastSpin = false
         isSpinning = false
@@ -158,13 +152,13 @@ function onStepHit()
         zoomPulse = false
         resetNoteAngles()
         setProperty('boyfriend.angle', 0)
-        setProperty('dad.angle', 0)
         setProperty('defaultCamZoom', baseZoom)
     end
 
     if curStep == 1984 then
         triggerEvent('Change Character', 'dad', 'coldsteelanims3')
         triggerEvent('Play Animation', 'newgrounds', 'dad')
+        setProperty('dad.angle', 0)
     end
 end
 

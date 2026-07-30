@@ -302,59 +302,130 @@ class Gallery extends MusicBeatSubstate
     }
 
     function _scanSubfolders(categoryPath:String):Void
-    {
-        _subfolders = [];
-        #if sys
-        if (!FileSystem.exists(categoryPath)) return;
-        try
         {
-            for (entry in FileSystem.readDirectory(categoryPath))
-            {
-                final full = categoryPath + '/' + entry;
-                if (FileSystem.isDirectory(full))
-                    _subfolders.push({name: entry, path: full});
-            }
-        }
-        catch (_:Dynamic) {}
-        _subfolders.sort((a, b) -> a.name < b.name ? -1 : 1);
-        #end
-    }
+            _subfolders = [];
 
-    function _scanSubSubfolders(subfolderPath:String):Void
-    {
-        _subSubfolders = [];
-        #if sys
-        if (!FileSystem.exists(subfolderPath)) return;
-        try
-        {
-            for (entry in FileSystem.readDirectory(subfolderPath))
+            final addedFolders = new Map<String, Bool>();
+            #if sys
+            if (FileSystem.exists(categoryPath))
             {
-                final full = subfolderPath + '/' + entry;
-                if (FileSystem.isDirectory(full))
-                    _subSubfolders.push({name: entry, path: full});
+                try
+                {
+                    for (entry in FileSystem.readDirectory(categoryPath))
+                    {
+                        final full = categoryPath + '/' + entry;
+                        if (FileSystem.isDirectory(full))
+                        {
+                            if (!addedFolders.exists(entry))
+                            {
+                                addedFolders.set(entry, true);
+                                _subfolders.push({name: entry, path: full});
+                            }
+                        }
+                    }
+                }
+                catch (_:Dynamic) {}
             }
+            #end
+            
+            try
+            {
+                final allAssets = OpenFlAssets.list();
+                final searchPath = categoryPath.endsWith("/") ? categoryPath : categoryPath + "/";
+                
+                for (asset in allAssets)
+                {
+                    if (asset.startsWith(searchPath))
+                    {
+                        final remainder = asset.substring(searchPath.length);
+                        final parts = remainder.split("/");
+                        
+                        if (parts.length > 1)
+                        {
+                            final folderName = parts[0];
+                            if (!addedFolders.exists(folderName))
+                            {
+                                addedFolders.set(folderName, true);
+                                _subfolders.push({name: folderName, path: searchPath + folderName});
+                            }
+                        }
+                    }
+                }
+            }
+            catch (_:Dynamic) {}
+            
+            _subfolders.sort((a, b) -> a.name < b.name ? -1 : 1);
         }
-        catch (_:Dynamic) {}
-        _subSubfolders.sort((a, b) -> a.name < b.name ? -1 : 1);
-        #end
-    }
+
+        function _scanSubSubfolders(subfolderPath:String):Void
+        {
+            _subSubfolders = [];
+
+            final addedFolders = new Map<String, Bool>();
+            #if sys
+            if (FileSystem.exists(subfolderPath))
+            {
+                try
+                {
+                    for (entry in FileSystem.readDirectory(subfolderPath))
+                    {
+                        final full = subfolderPath + '/' + entry;
+                        if (FileSystem.isDirectory(full))
+                        {
+                            if (!addedFolders.exists(entry))
+                            {
+                                addedFolders.set(entry, true);
+                                _subSubfolders.push({name: entry, path: full});
+                            }
+                        }
+                    }
+                }
+                catch (_:Dynamic) {}
+            }
+            #end
+            
+            try
+            {
+                final allAssets = OpenFlAssets.list();
+                final searchPath = subfolderPath.endsWith("/") ? subfolderPath : subfolderPath + "/";
+                
+                for (asset in allAssets)
+                {
+                    if (asset.startsWith(searchPath))
+                    {
+                        final remainder = asset.substring(searchPath.length);
+                        final parts = remainder.split("/");
+                        
+                        if (parts.length > 1)
+                        {
+                            final folderName = parts[0];
+                            if (!addedFolders.exists(folderName))
+                            {
+                                addedFolders.set(folderName, true);
+                                _subSubfolders.push({name: folderName, path: searchPath + folderName});
+                            }
+                        }
+                    }
+                }
+            }
+            catch (_:Dynamic) {}
+            
+            _subSubfolders.sort((a, b) -> a.name < b.name ? -1 : 1);
+        }
 
     function _scanImages(folderPath:String):Void
     {
         _images = [];
-        #if sys
-        if (!FileSystem.exists(folderPath)) return;
         try
         {
-            for (entry in FileSystem.readDirectory(folderPath))
+            for (entry in Paths.readDirectory(folderPath))
             {
-                if (_isImage(entry))
+                if (_isImage(entry) #if VIDEOS_ALLOWED || _isVideo(entry) #end)
                     _images.push(folderPath + '/' + entry);
             }
+            _images.sort((a, b) -> a < b ? -1 : 1);
         }
         catch (_:Dynamic) {}
-        _images.sort((a, b) -> a < b ? -1 : 1);
-        #end
     }
 
     function _isImage(name:String):Bool
@@ -492,10 +563,7 @@ class Gallery extends MusicBeatSubstate
 
     function _lowerMusic():Void
     {
-        final extrasMenu = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
-        if (extrasMenu != null && extrasMenu._orphanPlayer != null)
-            extrasMenu._orphanPlayer.setVolume(0.1);
-        else if (FlxG.sound.music != null)
+        if (FlxG.sound.music != null)
         {
             FlxTween.cancelTweensOf(FlxG.sound.music);
             FlxTween.tween(FlxG.sound.music, {volume: 0.1}, 0.5, {ease: FlxEase.quadOut});
@@ -504,10 +572,7 @@ class Gallery extends MusicBeatSubstate
 
     function _restoreMusic():Void
     {
-        final extrasMenu = Std.downcast(FlxG.state, states.extras.ExtrasMenu);
-        if (extrasMenu != null && extrasMenu._orphanPlayer != null)
-            extrasMenu._orphanPlayer.setVolume(1.0);
-        else if (FlxG.sound.music != null)
+        if (FlxG.sound.music != null)
         {
             FlxTween.cancelTweensOf(FlxG.sound.music);
             FlxTween.tween(FlxG.sound.music, {volume: 1.0}, 0.5, {ease: FlxEase.quadOut});
@@ -584,16 +649,11 @@ class Gallery extends MusicBeatSubstate
         var bmp:BitmapData = null;
         try
         {
-            #if mobile
             bmp = Paths.getBitmapData(path, false);
-            #else
-            bmp = BitmapData.fromFile(path);
-            #end
         }
         catch (_:Dynamic) {}
 
-        if (bmp == null)
-            bmp = new BitmapData(4, 4, false, 0xFF888888);
+        bmp ??= new BitmapData(4, 4, false, 0xFF888888);
 
         final maxW = FlxG.width  * 0.72;
         final maxH = FlxG.height * 0.68;
@@ -616,7 +676,7 @@ class Gallery extends MusicBeatSubstate
         _imgSprite.loadGraphic(bmp);
         _imgSprite.setGraphicSize(fw, fh);
         _imgSprite.updateHitbox();
-        _imgSprite.antialiasing = ClientPrefs.data.antialiasing;
+
         final ish = new shaders.RoundedBorderShader(16.0, 0.0, 0xFF000000);
         ish.setSize(fw, fh);
         _imgSprite.shader = ish;

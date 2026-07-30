@@ -695,7 +695,7 @@ class PlayState extends MusicBeatState
 		iconP2.alpha = ClientPrefs.data.healthBarAlpha;
 		uiGroup.add(iconP2);
 
-		botplayTxt = new FlxText(400, healthBar.y + 45, FlxG.width - 800, Language.getPhrase("Botplay").toUpperCase(), 20);
+		botplayTxt = new FlxText(400, healthBar.y + 45, FlxG.width - 800, Language.getPhrase("sunky_is_playing", "SUNKY IS PLAYING").toUpperCase(), 20);
 		botplayTxt.setFormat(Paths.font(Language.fontOrCJK('vcr.ttf')), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
@@ -1768,13 +1768,11 @@ class PlayState extends MusicBeatState
 				FlxTween.cancelTweensOf(sunkyBotSprite);
 				FlxTween.tween(sunkyBotSprite, {x: camOther.width - sunkyBotSprite.width - 10}, 0.7, {ease: FlxEase.elasticOut});
 			}
-			if (botplayTxt != null) botplayTxt.text = Language.getPhrase("sunky_is_playing", "SUNKY IS PLAYING").toUpperCase();
 		} else if (sunkyBotSprite != null && sunkyBotShown) {
 			sunkyBotShown = false;
 			FlxTween.cancelTweensOf(sunkyBotSprite);
 			final spr = sunkyBotSprite;
 			FlxTween.tween(spr, {x: camOther.width + 50}, 0.4, {ease: FlxEase.quadIn, onComplete: (_) -> { if (!sunkyBotShown) spr.visible = false; }});
-			if (botplayTxt != null) botplayTxt.text = Language.getPhrase("Botplay").toUpperCase();
 		}
 
 		if(sunkyBotSprite != null && sunkyBotAnimPlaying) {

@@ -249,6 +249,7 @@ function onUpdatePost(e)
     local currentBfAnim = getProperty('boyfriend.animation.curAnim.name')
     if currentBfAnim ~= prevBfAnim then
         playAnim('bftrigchar', currentBfAnim, true)
+		setProperty('bftrigchar.holdTimer', 0)
         prevBfAnim = currentBfAnim
     end
     setProperty('bftrigchar.animation.curAnim.curFrame', getProperty('boyfriend.animation.curAnim.curFrame'))
@@ -256,6 +257,7 @@ function onUpdatePost(e)
     local currentDadAnim = getProperty('dad.animation.curAnim.name')
     if currentDadAnim ~= prevDadAnim then
         playAnim('tailstrigchar', currentDadAnim, true)
+		setProperty('tailstrigchar.holdTimer', 0)
         prevDadAnim = currentDadAnim
     end
     setProperty('tailstrigchar.animation.curAnim.curFrame', getProperty('dad.animation.curAnim.curFrame'))
@@ -343,6 +345,12 @@ function onEvent(n,v1)
 
 			triggerEvent('cameracenter', 'true', '')
 			callMethod('camGame.snapToTarget')
+
+			for i = 0,7 do
+				setProperty('strumLineNotes.members['..i..'].y', _G['default'..(i < 4 and 'Player' or 'Opponent')..'StrumY'..(i % 4)])
+				setProperty('strumLineNotes.members['..i..'].x', _G['default'..(i < 4 and 'Player' or 'Opponent')..'StrumX'..(i % 4)])
+				setProperty('strumLineNotes.members['..i..'].angle', 0)
+			end
 		end
 		if v1 == 'bestfriend' then
 			setProperty('boyfriend.alpha', 0)

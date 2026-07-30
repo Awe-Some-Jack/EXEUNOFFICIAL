@@ -2,85 +2,85 @@
 	"animations": [
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": false,
 			"fps": 26,
 			"anim": "danceLeft",
-			"loop": false,
-			"name": "carpeta sin nombre 2/r"
+			"indices": [],
+			"name": "danceleft"
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
+			"offsets": [-34, 0],
+			"loop": false,
 			"fps": 26,
 			"anim": "danceRight",
-			"loop": false,
-			"name": "carpeta sin nombre 2/l"
+			"indices": [],
+			"name": "danceright"
 		},
 		{
-			"offsets": [167, -260],
-			"indices": [],
+			"offsets": [27, -20],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		},
 		{
-			"offsets": [-3, -323],
-			"indices": [],
+			"offsets": [-157, -103],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
-			"offsets": [31, -99],
-			"indices": [],
+			"offsets": [-105, 113],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up"
 		},
 		{
-			"offsets": [-87, -240],
-			"indices": [],
+			"offsets": [-187, 10],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		},
 		{
-			"offsets": [50, -140],
-			"indices": [],
+			"offsets": [-56, 95],
+			"loop": false,
 			"fps": 24,
 			"anim": "s",
-			"loop": false,
-			"name": "sonic"
+			"indices": [],
+			"name": "bestfriends"
 		},
 		{
-			"offsets": [117, -104],
-			"indices": [],
+			"offsets": [7, 115],
+			"loop": false,
 			"fps": 24,
 			"anim": "r",
-			"loop": false,
-			"name": "risa"
+			"indices": [],
+			"name": "laugh"
 		},
 		{
-			"offsets": [69, -135],
-			"indices": [],
+			"offsets": [-20, 85],
+			"loop": false,
 			"fps": 25,
 			"anim": "d",
-			"loop": false,
-			"name": "carpeta sin nombre 1/dasik"
+			"indices": [],
+			"name": "aintsonic"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/crazy tails 1",
-	"position": [30, 20],
+	"image": "characters/maniacrazy",
+	"position": [-100, 200],
 	"healthicon": "crazytails",
 	"flip_x": false,
 	"healthbar_colors": [255, 178, 109],
-	"camera_position": [-170, 120],
+	"camera_position": [0, 0],
 	"sing_duration": 6.1,
 	"scale": 1,
 	"_editor_isPlayer": false

@@ -1,82 +1,82 @@
 {
 	"animations": [
 		{
+			"offsets": [200, 0],
 			"loop": false,
-			"offsets": [0, 0],
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
+			"offsets": [302, 6],
 			"loop": false,
-			"offsets": [102, 6],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [231, -33],
 			"loop": false,
-			"offsets": [31, -33],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [354, 73],
 			"loop": false,
-			"offsets": [154, 73],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"offsets": [201, 23],
 			"loop": false,
-			"offsets": [1, 23],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
+			"offsets": [308, 0],
 			"loop": false,
-			"offsets": [108, 0],
+			"fps": 24,
 			"anim": "singLEFTmiss",
-			"fps": 24,
-			"name": "leftmiss",
-			"indices": []
+			"indices": [],
+			"name": "leftmiss"
 		},
 		{
+			"offsets": [224, -48],
 			"loop": false,
-			"offsets": [24, -48],
+			"fps": 24,
 			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "down miss",
-			"indices": []
+			"indices": [],
+			"name": "down miss"
 		},
 		{
+			"offsets": [324, 78],
 			"loop": false,
-			"offsets": [124, 78],
+			"fps": 24,
 			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "up miss",
-			"indices": []
+			"indices": [],
+			"name": "up miss"
 		},
 		{
+			"offsets": [177, 42],
 			"loop": false,
-			"offsets": [-13, 42],
-			"anim": "singRIGHTmiss",
 			"fps": 24,
-			"name": "right miss",
-			"indices": []
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "right miss"
 		}
 	],
 	"vocals_file": "bf",
 	"no_antialiasing": false,
 	"image": "characters/dumpbf p2",
-	"position": [330, 20],
+	"position": [0, 0],
 	"healthicon": "crazybf",
 	"flip_x": true,
 	"healthbar_colors": [0, 103, 195],

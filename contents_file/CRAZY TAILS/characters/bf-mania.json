@@ -2,94 +2,94 @@
 	"animations": [
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "danceLeft",
-			"loop": false,
+			"indices": [],
 			"name": "l"
 		},
 		{
-			"offsets": [-9, 1],
-			"indices": [],
+			"offsets": [-6, 0],
+			"loop": false,
 			"fps": 24,
 			"anim": "danceRight",
-			"loop": false,
+			"indices": [],
 			"name": "Carpeta de elementos duplicados/r"
 		},
 		{
-			"offsets": [132, 27],
-			"indices": [],
+			"offsets": [79, 15],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "Carpeta de elementos duplicados/left"
 		},
 		{
-			"offsets": [16, -65],
-			"indices": [],
+			"offsets": [12, -41],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "Carpeta de elementos duplicados/down"
 		},
 		{
-			"offsets": [-8, 134],
-			"indices": [],
+			"offsets": [-5, 76],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "Carpeta de elementos duplicados/up"
 		},
 		{
-			"offsets": [3, -6],
-			"indices": [],
+			"offsets": [1, -6],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "Carpeta de elementos duplicados/right"
 		},
 		{
-			"offsets": [114, 17],
-			"indices": [],
+			"offsets": [68, 9],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "left miss"
 		},
 		{
-			"offsets": [15, -102],
-			"indices": [],
+			"offsets": [14, -67],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": false,
+			"indices": [],
 			"name": "down miss"
 		},
 		{
-			"offsets": [-10, 86],
-			"indices": [],
+			"offsets": [-6, 48],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": false,
+			"indices": [],
 			"name": "up miss"
 		},
 		{
-			"offsets": [-9, -3],
-			"indices": [],
+			"offsets": [-6, -4],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "right miss"
 		}
 	],
 	"vocals_file": "bf",
 	"no_antialiasing": false,
 	"image": "characters/dumpbf p1",
-	"position": [330, 20],
+	"position": [250, 150],
 	"healthicon": "crazybf",
 	"flip_x": true,
 	"healthbar_colors": [0, 103, 195],
-	"camera_position": [-170, 120],
+	"camera_position": [0, 0],
 	"sing_duration": 6.1,
-	"scale": 1,
+	"scale": 0.6,
 	"_editor_isPlayer": true
 }

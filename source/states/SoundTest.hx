@@ -445,7 +445,7 @@ class SoundTest extends MusicBeatState
 				}
 				if (pcmValue == 11 && daValue == 21) {
 					notFoundAny = false;
-					CoolUtil.browserLoad('https://youtu.be/a3Ov6YNJdu0');
+					CoolUtil.browserLoad('https://youtu.be/o1Oum6QOEnk?si=J2AnC6JyMiVLK5Sy ');
 				}
 			}
 

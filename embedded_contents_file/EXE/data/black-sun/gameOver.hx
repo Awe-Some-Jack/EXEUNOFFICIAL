@@ -68,5 +68,5 @@ function onGameOverConfirm(retry)
 	if (retry) {
 		for (sound in FlxG.sound.list) if (sound.playing) sound.volume = 0;
 	}
-	daGameOver.destroy();
+	daGameOver.visible = false;
 }

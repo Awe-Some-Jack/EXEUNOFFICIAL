@@ -1,81 +1,81 @@
 {
 	"animations": [
 		{
-			"loop": false,
-			"offsets": [299, 145],
-			"anim": "singUP",
+			"offsets": [0, 0],
+			"indices": [],
 			"fps": 24,
-			"name": "up instancia 1",
-			"indices": []
+			"anim": "idle",
+			"loop": false,
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [198, 12],
+			"indices": [],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left instancia 1",
-			"indices": []
+			"loop": false,
+			"name": "left"
 		},
 		{
-			"loop": false,
-			"offsets": [-7, 46],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right instancia 1",
-			"indices": []
-		},
-		{
-			"loop": false,
 			"offsets": [59, -68],
-			"anim": "singDOWN",
+			"indices": [],
 			"fps": 24,
-			"name": "down instancia 1",
-			"indices": []
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
 		},
 		{
-			"offsets": [41, -96],
+			"offsets": [299, 145],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
 			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [-7, 46],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [210, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "leftmiss"
+		},
+		{
+			"offsets": [44, -98],
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"indices": [],
+			"loop": false,
 			"name": "down miss"
 		},
 		{
-			"offsets": [243, 156],
-			"loop": false,
+			"offsets": [240, 156],
+			"indices": [],
 			"fps": 24,
 			"anim": "singUPmiss",
-			"indices": [],
+			"loop": false,
 			"name": "up miss"
 		},
 		{
-			"offsets": [-27, 61],
-			"loop": false,
+			"offsets": [-35, 84],
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"indices": [],
+			"loop": false,
 			"name": "right miss"
-		},
-		{
-			"loop": false,
-			"offsets": [203, -20],
-			"anim": "singLEFTmiss",
-			"fps": 24,
-			"name": "leftmiss",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "idle",
-			"fps": 24,
-			"name": "Símbolo 277",
-			"indices": []
 		}
 	],
 	"vocals_file": "bf",
 	"no_antialiasing": false,
-	"image": "characters/bf2",
+	"image": "characters/dumpbf p2",
 	"position": [330, 20],
 	"healthicon": "crazybf",
 	"flip_x": true,

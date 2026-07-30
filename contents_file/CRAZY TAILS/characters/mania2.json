@@ -1,49 +1,49 @@
 {
 	"animations": [
 		{
-			"loop": false,
-			"offsets": [788, -19],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left2",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [461, -189],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Símbolo 212",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [194, 245],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "Símbolo 201",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [213, -74],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right2",
-			"indices": []
-		},
-		{
-			"loop": true,
 			"offsets": [138, -7],
-			"anim": "idle",
+			"indices": [],
 			"fps": 18,
-			"name": "idle2",
-			"indices": []
+			"anim": "idle",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [1108, -19],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [531, -159],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
+		},
+		{
+			"offsets": [264, 245],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [228, -30],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/shtails2",
+	"image": "characters/crazy tails 2",
 	"position": [350, -330],
 	"healthicon": "crazytails",
 	"flip_x": false,

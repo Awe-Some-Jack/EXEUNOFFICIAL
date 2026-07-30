@@ -1,68 +1,68 @@
 {
 	"animations": [
 		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 26,
+			"anim": "danceLeft",
 			"loop": false,
+			"name": "carpeta sin nombre 2/r"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 26,
+			"anim": "danceRight",
+			"loop": false,
+			"name": "carpeta sin nombre 2/l"
+		},
+		{
 			"offsets": [167, -260],
+			"indices": [],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "lefty",
-			"indices": []
+			"loop": false,
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [-3, -323],
+			"indices": [],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"loop": false,
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [31, -99],
-			"anim": "singUP",
+			"indices": [],
 			"fps": 24,
-			"name": "up",
-			"indices": []
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [-87, -240],
-			"anim": "singRIGHT",
+			"indices": [],
 			"fps": 24,
-			"name": "right",
-			"indices": []
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
 		},
 		{
 			"offsets": [50, -140],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "s",
-			"indices": [],
+			"loop": false,
 			"name": "sonic"
 		},
 		{
 			"offsets": [117, -104],
-			"loop": false,
+			"indices": [],
 			"fps": 24,
 			"anim": "r",
-			"indices": [],
+			"loop": false,
 			"name": "risa"
-		},
-		{
-			"loop": false,
-			"offsets": [73, -222],
-			"anim": "danceLeft",
-			"fps": 26,
-			"name": "l ",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [114, -226],
-			"anim": "danceRight",
-			"fps": 26,
-			"name": "r ",
-			"indices": []
 		},
 		{
 			"offsets": [69, -135],
@@ -70,12 +70,12 @@
 			"fps": 25,
 			"anim": "d",
 			"loop": false,
-			"name": "dasik"
+			"name": "carpeta sin nombre 1/dasik"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/shtails",
+	"image": "characters/crazy tails 1",
 	"position": [30, 20],
 	"healthicon": "crazytails",
 	"flip_x": false,

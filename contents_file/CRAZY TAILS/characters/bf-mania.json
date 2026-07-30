@@ -1,55 +1,55 @@
 {
 	"animations": [
 		{
-			"offsets": [19, -293],
-			"loop": true,
+			"offsets": [0, 0],
+			"indices": [],
 			"fps": 24,
 			"anim": "danceLeft",
+			"loop": false,
+			"name": "l"
+		},
+		{
+			"offsets": [-9, 1],
 			"indices": [],
-			"name": "le instancia 1"
-		},
-		{
-			"loop": false,
-			"offsets": [2, -209],
-			"anim": "singUP",
 			"fps": 24,
-			"name": "up instancia 1",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [97, -277],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left instancia 1",
-			"indices": []
-		},
-		{
-			"loop": true,
-			"offsets": [17, -292],
 			"anim": "danceRight",
-			"fps": 24,
-			"name": "r instancia 1",
-			"indices": []
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/r"
 		},
 		{
-			"loop": false,
-			"offsets": [15, -296],
-			"anim": "singRIGHT",
+			"offsets": [132, 27],
+			"indices": [],
 			"fps": 24,
-			"name": "right instancia 1",
-			"indices": []
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/left"
 		},
 		{
-			"loop": false,
-			"offsets": [23, -335],
+			"offsets": [16, -65],
+			"indices": [],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down instancia 1",
-			"indices": []
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/down"
 		},
 		{
-			"offsets": [87, -288],
+			"offsets": [-8, 134],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/up"
+		},
+		{
+			"offsets": [3, -6],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/right"
+		},
+		{
+			"offsets": [114, 17],
 			"indices": [],
 			"fps": 24,
 			"anim": "singLEFTmiss",
@@ -57,7 +57,7 @@
 			"name": "left miss"
 		},
 		{
-			"offsets": [30, -360],
+			"offsets": [15, -102],
 			"indices": [],
 			"fps": 24,
 			"anim": "singDOWNmiss",
@@ -65,7 +65,7 @@
 			"name": "down miss"
 		},
 		{
-			"offsets": [0, -238],
+			"offsets": [-10, 86],
 			"indices": [],
 			"fps": 24,
 			"anim": "singUPmiss",
@@ -73,7 +73,7 @@
 			"name": "up miss"
 		},
 		{
-			"offsets": [15, -295],
+			"offsets": [-9, -3],
 			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHTmiss",
@@ -83,7 +83,7 @@
 	],
 	"vocals_file": "bf",
 	"no_antialiasing": false,
-	"image": "characters/bf",
+	"image": "characters/dumpbf p1",
 	"position": [330, 20],
 	"healthicon": "crazybf",
 	"flip_x": true,

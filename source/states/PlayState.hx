@@ -341,6 +341,10 @@ class PlayState extends MusicBeatState
 
 	static var _letterboxWasFullscreen:Bool = false;
 	static var _letterboxWasMaximized:Bool = false;
+	static var _letterboxOrigWinWidth:Int = 0;
+	static var _letterboxOrigWinHeight:Int = 0;
+	static var _letterboxOrigWinX:Int = 0;
+	static var _letterboxOrigWinY:Int = 0;
 
 	static function set_isLetterboxedAspectRatio(value:Bool):Bool
 	{
@@ -358,7 +362,14 @@ class PlayState extends MusicBeatState
 			_letterboxWasFullscreen = FlxG.fullscreen;
 			_letterboxWasMaximized  = FlxG.stage.window.maximized;
 			if (!FlxG.fullscreen) {
-				if (_letterboxWasMaximized) FlxG.stage.window.maximized = false;
+				if (_letterboxWasMaximized) {
+					FlxG.stage.window.maximized = false;
+				} else {
+					_letterboxOrigWinWidth  = FlxG.stage.window.width;
+					_letterboxOrigWinHeight = FlxG.stage.window.height;
+					_letterboxOrigWinX      = FlxG.stage.window.x;
+					_letterboxOrigWinY      = FlxG.stage.window.y;
+				}
 				snapLetterboxWindow();
 			}
 		} else {
@@ -371,6 +382,10 @@ class PlayState extends MusicBeatState
 			if (!FlxG.fullscreen) {
 				if (_letterboxWasMaximized) {
 					FlxG.stage.window.maximized = true;
+				} else if (_letterboxOrigWinWidth > 0 && _letterboxOrigWinHeight > 0) {
+					FlxG.resizeGame(_letterboxOrigWinWidth, _letterboxOrigWinHeight);
+					FlxG.resizeWindow(_letterboxOrigWinWidth, _letterboxOrigWinHeight);
+					FlxG.stage.window.move(_letterboxOrigWinX, _letterboxOrigWinY);
 				} else {
 					FlxG.resizeGame(FlxG.initialWidth, FlxG.initialHeight);
 					FlxG.resizeWindow(FlxG.initialWidth, FlxG.initialHeight);

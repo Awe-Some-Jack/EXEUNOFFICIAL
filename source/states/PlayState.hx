@@ -340,6 +340,7 @@ class PlayState extends MusicBeatState
 	public static var isLetterboxedAspectRatio(default, set):Bool = false;
 
 	static var _letterboxWasFullscreen:Bool = false;
+	static var _letterboxWasMaximized:Bool = false;
 
 	static function set_isLetterboxedAspectRatio(value:Bool):Bool
 	{
@@ -355,7 +356,11 @@ class PlayState extends MusicBeatState
 			FlxG.stage.window.resizable = false;
 
 			_letterboxWasFullscreen = FlxG.fullscreen;
-			if (!FlxG.fullscreen) snapLetterboxWindow();
+			_letterboxWasMaximized  = FlxG.stage.window.maximized;
+			if (!FlxG.fullscreen) {
+				if (_letterboxWasMaximized) FlxG.stage.window.maximized = false;
+				snapLetterboxWindow();
+			}
 		} else {
 			for (cam in FlxG.cameras.list)
 				cam.setSize(FlxG.initialWidth, FlxG.initialHeight);
@@ -364,13 +369,17 @@ class PlayState extends MusicBeatState
 			FlxG.stage.window.resizable = true;
 
 			if (!FlxG.fullscreen) {
-				FlxG.resizeGame(FlxG.initialWidth, FlxG.initialHeight);
-				FlxG.resizeWindow(FlxG.initialWidth, FlxG.initialHeight);
+				if (_letterboxWasMaximized) {
+					FlxG.stage.window.maximized = true;
+				} else {
+					FlxG.resizeGame(FlxG.initialWidth, FlxG.initialHeight);
+					FlxG.resizeWindow(FlxG.initialWidth, FlxG.initialHeight);
 
-				final screen = FlxG.stage.window.display;
-				final winX = Std.int((screen.bounds.width  - FlxG.initialWidth)  / 2);
-				final winY = Std.int((screen.bounds.height - FlxG.initialHeight) / 2);
-				FlxG.stage.window.move(winX, winY);
+					final screen = FlxG.stage.window.display;
+					final winX = Std.int((screen.bounds.width  - FlxG.initialWidth)  / 2);
+					final winY = Std.int((screen.bounds.height - FlxG.initialHeight) / 2);
+					FlxG.stage.window.move(winX, winY);
+				}
 			}
 		}
 
@@ -809,9 +818,9 @@ class PlayState extends MusicBeatState
 		sunkyBotSprite.visible = true;
 		sunkyBotSprite.alpha = 1;
 		sunkyBotSprite.cameras = [camOther];
-		var targetX:Float = camOther.width  - sunkyBotSprite.width  - 10;
-		var targetY:Float = camOther.height - sunkyBotSprite.height - 10;
-		sunkyBotSprite.x = camOther.width + 50;
+		var targetX:Float = FlxG.width  - sunkyBotSprite.width  - 10;
+		var targetY:Float = FlxG.height - sunkyBotSprite.height - 10;
+		sunkyBotSprite.x = FlxG.width + 50;
 		sunkyBotSprite.y = targetY;
 		add(sunkyBotSprite);
 		FlxTween.cancelTweensOf(sunkyBotSprite);

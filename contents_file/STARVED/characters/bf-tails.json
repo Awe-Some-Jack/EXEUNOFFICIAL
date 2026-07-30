@@ -1,44 +1,76 @@
 {
 	"animations": [
 		{
-			"offsets": [230, 10],
-			"loop": false,
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle instancia "
+		},
+		{
+			"offsets": [30, 10],
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "singRIGHT instancia "
-		},
-		{
-			"offsets": [80, -20],
 			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "singDOWN instancia "
-		},
-		{
-			"offsets": [45, 87],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "singUP instancia"
-		},
-		{
-			"offsets": [0, 20],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
 			"name": "singLEFT instancia "
 		},
 		{
-			"offsets": [0, 0],
+			"offsets": [-30, -10],
 			"indices": [],
 			"fps": 24,
-			"anim": "idle",
-			"loop": true,
-			"name": "idle instancia "
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "singDOWN instancia "
+		},
+		{
+			"offsets": [-45, 87],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "singUP instancia"
+		},
+		{
+			"offsets": [-20, 10],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "singRIGHT instancia "
+		},
+		{
+			"offsets": [5, 2],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "bl"
+		},
+		{
+			"offsets": [-50, -30],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "bd"
+		},
+		{
+			"offsets": [-104, 86],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "bu"
+		},
+		{
+			"offsets": [-70, 10],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "br"
 		}
 	],
 	"vocals_file": "",
@@ -46,7 +78,7 @@
 	"image": "characters/starved_tails",
 	"position": [0, 70],
 	"healthicon": "tailsstarved",
-	"flip_x": false,
+	"flip_x": true,
 	"healthbar_colors": [255, 157, 0],
 	"camera_position": [-150, -140],
 	"sing_duration": 4,

@@ -183,8 +183,8 @@ class CameraStageHandler
 		// ---- starved ----
 		_handlers['starved'] = {
 			onSectionHit: function(cam:GameplayCamera, mustHit:Bool, curBeat:Int) {
-				if (mustHit) { cam.settings.OGZoom = 0.83; cam._targetAlpha = 1.0; }
-				else         { cam.settings.OGZoom = 1.0;  cam._targetAlpha = 0.5; }
+				if (mustHit) { cam._targetAlpha = 1.0; }
+				else         { cam._targetAlpha = 0.5; }
 			},
 		};
 	}

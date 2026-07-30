@@ -9,7 +9,7 @@ function onCreatePost()
 end
 
 function onUpdate()
-    zoomshit = (getProperty('camGame.zoom') / 0.75)
+    zoomshit = (getProperty('camGame.zoom') / 0.25)
     setProperty('boyfriend.scale.x', zoomshit)
     setProperty('boyfriend.scale.y', zoomshit)
 end

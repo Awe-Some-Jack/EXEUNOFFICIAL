@@ -2529,6 +2529,7 @@ class PlayState extends MusicBeatState
 
 
 	public var transitioning = false;
+	static var storySongsDone:Int = 0;
 	public function endSong()
 	{
 
@@ -2617,6 +2618,10 @@ class PlayState extends MusicBeatState
 				campaignMisses += songMisses;
 
 				storyPlaylist.remove(storyPlaylist[0]);
+
+				storySongsDone ++;
+				StoryModeState.lastPlayedCover = storySongsDone;
+
 
 				if (storyPlaylist.length <= 0)
 				{

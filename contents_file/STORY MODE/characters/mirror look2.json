@@ -1,138 +1,138 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [-303, -89],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [-312, -76],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [-305, -118],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [-293, -64],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [-261, -92],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "right",
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"loop": false,
+			"offsets": [-291, -64],
+			"anim": "idle-alt",
+			"fps": 24,
+			"name": "2 idle",
 			"indices": []
 		},
 		{
-			"offsets": [-291, -64],
 			"loop": false,
-			"fps": 24,
-			"anim": "idle-alt",
-			"indices": [],
-			"name": "2 idle"
-		},
-		{
 			"offsets": [-292, -65],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT-alt",
-			"indices": [],
-			"name": "2 right"
+			"fps": 24,
+			"name": "2 right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-245, -77],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT-alt",
-			"indices": [],
-			"name": "2 left"
+			"fps": 24,
+			"name": "2 left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-275, -78],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN-alt",
-			"indices": [],
-			"name": "2 down"
+			"fps": 24,
+			"name": "2 down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-283, -45],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP-alt",
-			"indices": [],
-			"name": "2 up"
+			"fps": 24,
+			"name": "2 up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-248, -31],
-			"loop": false,
-			"fps": 24,
 			"anim": "romper",
-			"indices": [],
-			"name": "romper"
+			"fps": 24,
+			"name": "romper",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-288, -61],
-			"loop": false,
-			"fps": 24,
 			"anim": "trans",
-			"indices": [],
-			"name": "trans"
+			"fps": 24,
+			"name": "trans",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-307, -82],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "missDown"
+			"fps": 24,
+			"name": "missDown",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-314, -66],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "missLeft"
+			"fps": 24,
+			"name": "missLeft",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-258, -67],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "missRight"
+			"fps": 24,
+			"name": "missRight",
+			"indices": []
 		},
 		{
-			"offsets": [-282, -47],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-282, -47],
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "missUp"
+			"fps": 24,
+			"name": "missUp",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/lookAlike mirror",
-	"position": [-285, 300],
+	"position": [-345, 300],
 	"healthicon": "minilook",
 	"flip_x": false,
 	"healthbar_colors": [81, 121, 161],

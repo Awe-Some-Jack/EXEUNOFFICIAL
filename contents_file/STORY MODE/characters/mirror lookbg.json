@@ -34,10 +34,10 @@
 		},
 		{
 			"offsets": [-59, -22],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP-alt",
-			"loop": false,
+			"indices": [],
 			"name": "2 up"
 		}
 	],
@@ -50,6 +50,6 @@
 	"healthbar_colors": [49, 176, 209],
 	"camera_position": [60, -30],
 	"sing_duration": 5.99999999999999,
-	"scale": 0.5,
+	"scale": 0.6,
 	"_editor_isPlayer": false
 }

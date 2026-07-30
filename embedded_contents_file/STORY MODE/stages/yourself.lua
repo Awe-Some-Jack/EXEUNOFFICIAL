@@ -2,14 +2,17 @@ local yourselfNormal = {
     {name = 'back0',    path = 'eye/yourself/back/0-bg',   x = 0, y = -100, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
     {name = 'back1',    path = 'eye/yourself/back/1-azul', x = 80, y = -160, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
     {name = 'norm1',    path = 'eye/yourself/normal/1-black',     x = -200, y = 220, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'broken4',  path = 'eye/yourself/broken/4-azulBroken', x = -200, y = 200, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
     {name = 'norm2',    path = 'eye/yourself/normal/2-azul',      x = -200, y = 200, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm3',    path = 'eye/yourself/normal/3-reflection',x =  120, y = 320, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm3',    path = 'eye/yourself/normal/3-reflection', x =  120, y = 320, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
     {name = 'norm4',    path = 'eye/yourself/normal/4-glass',     x =  450, y = 440, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
     {name = 'norm5',    path = 'eye/yourself/normal/5-shading',   x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'broken5',  path = 'eye/yourself/broken/5-shadingBroken',   x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
     {name = 'norm6',    path = 'eye/yourself/normal/6-glass',     x = -200, y = 360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'norm7',    path = 'eye/yourself/normal/7-structure', x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'broken1',  path = 'eye/yourself/broken/1-structureBroken', x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
-    {name = 'broken2',  path = 'eye/yourself/broken/1-glassBroken', x = -200, y =  360, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'broken1',  path = 'eye/yourself/broken/1-glassBroken', x = -200, y = -250, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'broken2',  path = 'eye/yourself/broken/2-sharpBroken', x = 480, y =  440, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
+    {name = 'broken3',  path = 'eye/yourself/broken/3-reflectionBroken', x =  120, y = 320, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
+    {name = 'norm7',    path = 'eye/yourself/normal/7-structure',   x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
     {name = 'potinas',  path = 'eye/tinas', x =  85, y =    0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
     {name = 'cortinas', path = 'eye/cor',   x =  85, y = -300,                                                                                    scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
     {name = 'luces',    path = 'eye/xcxc',  x =  85, y =  200,                                                                                    scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
@@ -39,9 +42,9 @@ local yourselfBG2 = {
 
 local sillyBFsInstances = {
     {name = 'sillybg1', x = 1640, y = 600, sprite =       'sillybg', idk = false, alpha = 0},
-    {name = 'sillybg2', x = 1290, y = 640, sprite =       'sillybg', idk = false, alpha = 0},
-    {name = 'sillybg4', x = 2010, y = 600, sprite =       'sillybg', idk = false, alpha = 0},
-    {name = 'sillybg3', x = 1020, y = 630, sprite = 'mirror lookbg', idk = false, alpha = 0},
+    {name = 'sillybg2', x = 1470, y = 610, sprite =       'sillybg', idk = false, alpha = 0},
+    {name = 'sillybg4', x = 1810, y = 600, sprite =       'sillybg', idk = false, alpha = 0},
+    {name = 'sillybg3', x = 1040, y = 720, sprite = 'mirror lookbg', idk = false, alpha = 0},
 }
 
 local function createSprite(you)
@@ -69,12 +72,10 @@ function onCreate()
     for _, spot  in ipairs(spotlights)      do createSprite(spot)  end
     for _, rself in ipairs(yourselfBG2)     do createSprite(rself) end
 
-    --[[
     makeLuaSprite('graphFix', nil, 500, 1720)
-    makeGraphic('graphFix', screenHeight * 2, screenHeight * 2, '171616')
+    makeGraphic('graphFix', screenHeight * 2, screenHeight * 2, '242423')
     setProperty('graphFix.scale.x', 4)
     addLuaSprite('graphFix', false)
-    ]]
 
     setProperty('gf.visible', false)
 
@@ -85,7 +86,7 @@ function onCreate()
     for _, inst in ipairs(sillyBFsInstances) do
         createInstance(inst.name, 'objects.Character', {inst.x, inst.y, inst.sprite, inst.idk})
         setProperty(inst.name..'.alpha', inst.alpha)
-        setObjectOrder(inst.name, getObjectOrder('norm3'))
+        setObjectOrder(inst.name, getObjectOrder('norm6'))
         addInstance(inst.name)
     end
 

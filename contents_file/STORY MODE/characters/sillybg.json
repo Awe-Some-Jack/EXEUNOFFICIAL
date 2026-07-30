@@ -10,7 +10,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [21, 2],
+			"offsets": [17, 2],
 			"anim": "singLEFT",
 			"fps": 24,
 			"name": "izquierda",
@@ -18,7 +18,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [2, -11],
+			"offsets": [1, -9],
 			"anim": "singDOWN",
 			"fps": 24,
 			"name": "abajo",
@@ -26,18 +26,18 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-1, -7],
+			"offsets": [-1, -5],
 			"anim": "singRIGHT",
 			"fps": 24,
 			"name": "derecha instancia 1",
 			"indices": []
 		},
 		{
-			"offsets": [-5, 31],
-			"indices": [],
+			"offsets": [-5, 26],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "Símbolo 438"
 		}
 	],
@@ -50,6 +50,6 @@
 	"healthbar_colors": [81, 121, 161],
 	"camera_position": [-610, -10],
 	"sing_duration": 5.99999999999999,
-	"scale": 0.5,
+	"scale": 0.4,
 	"_editor_isPlayer": false
 }

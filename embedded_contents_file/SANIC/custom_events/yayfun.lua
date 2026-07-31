@@ -2,9 +2,9 @@ local bruhhh = false
 
 function onUpdatePost(e)
 	if bruhhh then
-		setProperty('camHUD.y', -math.abs(math.sin(curDecBeat * math.pi) * e * 60) * 20)
-		setProperty('camHUD.x', math.cos(curDecBeat * math.pi + (math.pi / 4)) * e * 60 * 20)
-		setProperty('camHUD.angle', math.cos(curDecBeat * math.pi + (math.pi / 4)) * e * 60)
+		setProperty('camHUD.y', -math.abs(math.sin(curDecBeat * math.pi)) * 5)
+		setProperty('camHUD.x', math.cos(curDecBeat * math.pi + (math.pi / 4)) * 10)
+		setProperty('camHUD.angle', math.cos(curDecBeat * math.pi + (math.pi / 4)) / 2)
 	end
 end
 

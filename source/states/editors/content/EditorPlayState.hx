@@ -172,12 +172,18 @@ class EditorPlayState extends MusicBeatSubstate
 			if (songSpeed < 1) time /= songSpeed;
 			if (unspawnNotes[0].multSpeed < 1) time /= unspawnNotes[0].multSpeed;
 
-			while (unspawnNotes.length > 0 && unspawnNotes[0].strumTime - Conductor.songPosition < time)
+			var spawnCount:Int = 0;
+			while (spawnCount < unspawnNotes.length && unspawnNotes[spawnCount].strumTime - Conductor.songPosition < time)
+				spawnCount++;
+
+			if (spawnCount > 0)
 			{
-				var dunceNote:Note = unspawnNotes[0];
-				notes.insert(0, dunceNote);
-				dunceNote.spawned = true;
-				unspawnNotes.splice(unspawnNotes.indexOf(dunceNote), 1);
+				var notesToSpawn:Array<Note> = unspawnNotes.splice(0, spawnCount);
+				for (dunceNote in notesToSpawn)
+				{
+					notes.insert(0, dunceNote);
+					dunceNote.spawned = true;
+				}
 			}
 		}
 

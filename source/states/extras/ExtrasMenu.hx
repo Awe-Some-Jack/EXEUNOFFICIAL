@@ -15,8 +15,6 @@ import states.EXEMenu;
 class ExtrasMenu extends MusicBeatState
 {
     static final MENU_KEYS = [
-        "extras.menu.gallery",
-        "extras.menu.character",
         "extras.menu.dagarden",
         "extras.menu.cutscenes",
         "extras.menu.achievements",
@@ -413,12 +411,10 @@ class ExtrasMenu extends MusicBeatState
     {
         switch (curSelected)
         {
-            case 0: openSubState(new states.extras.gallery.Gallery());
-            case 1: openSubState(new states.extras.bios.BIOS());
-            case 2: openSubState(new states.extras.dagarden.DAGarden());
-            case 3: openSubState(new states.extras.cutscenes.Cutscene());
-            case 4: openSubState(new states.extras.achievements.AchievementsState());
-            case 5: openSubState(new states.extras.credits.CreditsState());
+            case 0: openSubState(new states.extras.dagarden.DAGarden());
+            case 1: openSubState(new states.extras.cutscenes.Cutscene());
+            case 2: openSubState(new states.extras.achievements.AchievementsState());
+            case 3: openSubState(new states.extras.credits.CreditsState());
         }
     }
 }

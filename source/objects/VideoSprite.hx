@@ -2,10 +2,11 @@ package objects;
 
 #if VIDEOS_ALLOWED
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import flixel.addons.display.FlxPieDial;
 
 import hxvlc.flixel.FlxVideoSprite;
 
@@ -23,7 +24,12 @@ class VideoSprite extends FlxSpriteGroup
 	public var canSkip:Bool = false;
 	public var skipHold:Float = 0;
 	public var skipNeed:Float = 1;
-	public var pie:FlxPieDial;
+	public var pie:FlxSprite;
+	public var pieTrack:FlxSprite;
+
+	private static final SKIP_RING_SCALE:Float = 0.35;
+	private static final SKIP_RING_MARGIN_X:Float = 24;
+	private static final SKIP_RING_MARGIN_Y:Float = 70;
 
 	public var onSkip:Void->Void = null;
 
@@ -41,10 +47,25 @@ class VideoSprite extends FlxSpriteGroup
 		if (autoDestroy)
 			video.bitmap.onEndReached.add(onVideoComplete, true, -10);
 
-		pie = new FlxPieDial(0, 0, 40, FlxColor.WHITE, 40, true, 24);
-		pie.setPosition(FlxG.width - (pie.width + 80), FlxG.height - (pie.height + 72));
-		pie.replaceColor(FlxColor.BLACK, FlxColor.TRANSPARENT);
-		pie.amount = 0;
+		pieTrack = new FlxSprite(0, 0);
+		pieTrack.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.webp', 'assets/exe/ring.xml');
+		pieTrack.animation.addByPrefix('idle', 'idle', 60, true);
+		pieTrack.animation.play('idle', true);
+		pieTrack.scale.set(SKIP_RING_SCALE, SKIP_RING_SCALE);
+		pieTrack.updateHitbox();
+		pieTrack.setPosition(SKIP_RING_MARGIN_X, FlxG.height - pieTrack.height - SKIP_RING_MARGIN_Y);
+		pieTrack.color = FlxColor.BLACK;
+		pieTrack.alpha = 0;
+		add(pieTrack);
+
+		pie = new FlxSprite(0, 0);
+		pie.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.webp', 'assets/exe/ring.xml');
+		pie.animation.addByPrefix('idle', 'idle', 60, true);
+		pie.animation.play('idle', true);
+		pie.scale.set(SKIP_RING_SCALE, SKIP_RING_SCALE);
+		pie.updateHitbox();
+		pie.setPosition(SKIP_RING_MARGIN_X, FlxG.height - pie.height - SKIP_RING_MARGIN_Y);
+		pie.scale.set(0, 0);
 		pie.alpha = 0;
 		add(pie);
 
@@ -244,11 +265,15 @@ class VideoSprite extends FlxSpriteGroup
 
 		if (canSkip)
 		{
+			pieTrack.visible = true;
+			pieTrack.alpha = 0.35;
+
 			if (FlxG.keys.pressed.SPACE)
 			{
 				skipHold += elapsed;
-				pie.amount = skipHold / skipNeed;
-				pie.alpha = FlxMath.remapToRange(pie.amount, 0.025, 1, 0, 1);
+				var progress:Float = skipHold / skipNeed;
+				pie.scale.set(SKIP_RING_SCALE * progress, SKIP_RING_SCALE * progress);
+				pie.alpha = FlxMath.remapToRange(progress, 0.025, 1, 0, 1);
 
 				if (skipHold >= skipNeed)
 				{
@@ -262,12 +287,13 @@ class VideoSprite extends FlxSpriteGroup
 			else
 			{
 				skipHold = 0;
-				pie.amount = 0;
+				pie.scale.set(0, 0);
 			}
 		}
 		else
 		{
 			pie.visible = false;
+			pieTrack.visible = false;
 		}
 	}
 

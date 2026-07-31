@@ -4,9 +4,9 @@ local seenVideo = false
 
 function onCreatePost()
     if not seenCutscene then
-        makeLuaText('skipTxt', 'Hold "SPACE" to skip cutscene!', 0, 0, screenHeight * 0.8)
+        makeLuaText('skipTxt', 'Hold "SPACE" to skip cutscene!', 0, 24, 655)
         setTextSize('skipTxt', 30)
-        screenCenter('skipTxt', 'x')
+        setTextFont('skipTxt', 'sonic4.ttf')
         setProperty('skipTxt.alpha', 0)
         doTweenAlpha('skipTxt', 'skipTxt', 1, 2)
         setObjectCamera('skipTxt', 'other')

@@ -31,6 +31,8 @@ import states.editors.CharacterEditorState;
 import states.substates.PauseSubState;
 import states.substates.GameOverSubstate;
 
+import lime.app.Application as Application;
+
 #if !flash
 import openfl.filters.ShaderFilter;
 #end
@@ -2538,27 +2540,8 @@ class PlayState extends MusicBeatState
 
 
 	public var transitioning = false;
-	static var storySongsDone:Int = 0;
 	public function endSong()
 	{
-
-		if (isStoryMode && Paths.formatToSongPath(SONG.song) == 'triple-trouble'){
-			FlxG.save.data.goToFinalEscape = true;
-			FlxG.save.flush();
-			trace("save data is " + FlxG.save.data.goToFinalEscape);
-			Sys.exit(0);
-		} 
-		if (isStoryMode && Paths.formatToSongPath(SONG.song) == 'final-escape'){
-			FlxG.save.data.theYourselfCutscene = true;
-			FlxG.save.flush();
-			trace("Yourself Cutscene: " + FlxG.save.data.theYourselfCutscene);
-			FlxG.switchState(() -> new StoryModeState());
-		} 
-		if (isStoryMode && Paths.formatToSongPath(SONG.song) == 'yourself'){
-			FlxG.save.data.theYourselfCutscene = null;
-			FlxG.save.flush();
-			trace("Yourself Cutscene: " + FlxG.save.data.theYourselfCutscene);
-		} 
 		
 		//Should kill you if you tried to cheat
 		if(!startingSong)
@@ -2628,8 +2611,28 @@ class PlayState extends MusicBeatState
 
 				storyPlaylist.remove(storyPlaylist[0]);
 
-				storySongsDone ++;
-				StoryModeState.lastPlayedCover = storySongsDone;
+				if (FlxG.save.data.lastCoverPlay == null)
+					FlxG.save.data.lastCoverPlay = 0;
+
+				FlxG.save.data.lastCoverPlay++;
+
+				switch(Paths.formatToSongPath(SONG.song)){
+					case "triple-trouble":
+						FlxG.save.data.goToFinalEscape = true;
+						FlxG.save.flush();
+						trace("save data is " + FlxG.save.data.goToFinalEscape);
+						Application.current.window.close();
+					case "final-escape":
+						FlxG.save.data.theYourselfCutscene = true;
+						FlxG.save.flush();
+						trace("Yourself Cutscene: " + FlxG.save.data.theYourselfCutscene);
+						FlxG.switchState(() -> new StoryModeState());
+					case "yourself":
+						FlxG.save.data.theYourselfCutscene = null;
+						FlxG.save.data.storyModeDone = true;
+						FlxG.save.flush();
+						trace("Yourself Cutscene: " + FlxG.save.data.theYourselfCutscene);
+				}
 
 
 				if (storyPlaylist.length <= 0)
@@ -2637,6 +2640,9 @@ class PlayState extends MusicBeatState
 					trace('WENT BACK TO FREEPLAY??');
 					Mods.loadTopMod();
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+
+					FlxG.save.data.lastCoverPlay = 4;
+					FlxG.save.data.storyModeDone = true;
 
 					FlxG.sound.music?.stop();
 

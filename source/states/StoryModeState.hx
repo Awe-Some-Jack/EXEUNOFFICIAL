@@ -25,10 +25,7 @@ class StoryModeState extends MusicBeatState
 	public static var instance:StoryModeState;
 	public static var weekCompleted:Map<String, Bool> = new Map<String, Bool>();
 	public static var yourselfMode:Bool = false;
-	
-
-	static var allSongsDone:Bool;
-	public static var lastPlayedCover:Int; 
+ 
 
 	var _yourselfCutscene:YourselfCutscene;
 
@@ -91,7 +88,7 @@ class StoryModeState extends MusicBeatState
 		instance = this;
 
 		createAssets(yt);
-		unlockCoverIndex(lastPlayedCover);
+		unlockCoverIndex(FlxG.save.data.lastCoverPlay);
 		
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/story.ogg'));
 
@@ -103,12 +100,12 @@ class StoryModeState extends MusicBeatState
 	}
 
 	static function getUnlockedCovers(){
-		return lastPlayedCover;
+		return FlxG.save.data.lastCoverPlay;
 	}
 
 	public function unlockCoverIndex(cover:Int){
-		if (!allSongsDone)   lastPlayedCover = cover;
-		if (lastPlayedCover >= 5) allSongsDone = true;
+		if (!FlxG.save.data.storyModeDone)   FlxG.save.data.lastCoverPlay = cover;
+		if (FlxG.save.data.lastCoverPlay >= 5) FlxG.save.data.storyModeDone = true;
 	}
 
 

@@ -249,7 +249,7 @@ class EXETitle extends MusicBeatState
 					FlxTween.tween(eyes, {alpha: 0}, 1.5, {ease: FlxEase.expoIn});
 
 					new FlxTimer().start(1.5, (_) -> { 
-						if (FlxG.save.data.goToFinalEscape != null){
+						if (FlxG.save.data.goToFinalEscape == true){
 							FlxG.save.data.goToFinalEscape = null;
 							FlxG.save.flush();
 

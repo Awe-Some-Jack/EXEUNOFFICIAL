@@ -34,6 +34,7 @@ var bgLuther:Array<BackgroundSprite> = [
 	{path: 'herworld/knux', position: [3350, 1050], scroll: [1.2, 1.2], front: true},
 	{path: 'herworld/luz', position: [900, 200]},
 ];
+
 var activeSprites:Array<FlxSprite> = [];
 var glitch:FlxRuntimeShader;
 var colorShader:ColorSwap;
@@ -56,8 +57,8 @@ function onCreatePost()
 	game.camHUD.filters.push(new ShaderFilter(camGlitch));
 
     colorSwap = new ColorSwap();
-    colorSwap.hue = -0.05;
-    colorSwap.brightness = -0.78;
+    colorSwap.hue = -0.04;
+    colorSwap.brightness = -0.8;
     colorSwap.saturation = -0.3;
 
 	black = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
@@ -77,9 +78,29 @@ function onUpdate(e)
 }
 
 function onEvent(n, v1, v2) {
-	if (n == 'sarahevent') {
-		switch(v1){
-			case 'luthertrans':
+	if(n == 'Change Character') {
+		switch(v2) {
+			case 'bf-needle': boyfriend.shader = colorSwap.shader;
+			case 'gf-needlemouse': gf.shader = colorSwap.shader;
+			case 'atem': 
+				dad.alpha = 1; 
+				dad.setPosition(2600, 150);
+				triggerEvent('Set customCamera Position', 'dad', '2800, 50');
+			case 'lutherfinal':
+				gf.setPosition(2700, 800);
+				triggerEvent('Set customCamera Position', 'gf', '3000, 800');
+			case 'bf-needlefinal':
+				boyfriend.setPosition(1900, 800);
+				triggerEvent('Set customCamera Position', 'bf', '2600, 800');
+				boyfriend.flipX = false;
+		}
+	}
+}
+
+function onStepHit() {
+	if (PlayState.SONG.song == 'Her World') {
+		switch(curStep) {
+			case 798:	// luther transition
 				FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> 
 				{
 					makeBackground(bgLuther); 
@@ -96,14 +117,23 @@ function onEvent(n, v1, v2) {
 					camGlitch.setFloat('SPEED', v);
 				});
 
-			case 'solotrans':
+			case 1269:
+				FlxTween.num(0, 0.1, 4.2, {onComplete: () -> {
+					camGlitch.setFloat('AMT', 0); 
+					camGlitch.setFloat('SPEED', 0);
+				}}, v -> {
+					camGlitch.setFloat('AMT', v); 
+					camGlitch.setFloat('SPEED', v / 2);
+				});
+
+			case 2976:	//solo transition
 				FlxTween.tween(black, {alpha: 1}, 2, {onComplete: _ -> makeBackground([]) });
 				FlxTween.num(0, 1, 2, {onComplete: _ -> {
 					camGlitch.setFloat('AMT', 0.0); 
 					camGlitch.setFloat('SPEED', 0.0);
 					boyfriend.shader = null;
 					gf.alpha = 0.0001;
-					for(strum in opponentStrums.members) strum.alpha = 0;
+					for(strum in opponentStrums.members) strum.x -= 600;
 					for(strum in playerStrums.members) strum.x -= 320;
 				}}, v -> {
 					camGlitch.setFloat('AMT', v); 
@@ -111,29 +141,22 @@ function onEvent(n, v1, v2) {
 				});
 				FlxTween.tween(black, {alpha: 0}, 5, {startDelay: 5});
 
-			case 'atemsings':
+			case 3328:	// atem sings
+				for(i => strum in opponentStrums.members) FlxTween.tween(strum, {x: strum.x + 600}, 1.25 - 0.1 * i, {ease: FlxEase.cubeInOut});
+				for(i => strum in playerStrums.members) FlxTween.tween(strum, {x: strum.x + 320}, 1.25, {ease: FlxEase.cubeInOut});
+
+			case 3344:	// change bf and luther to final sprites
 				gf.alpha = 1;
 				dad.alpha = 1;
 				triggerEvent('Change Character', 'BF', 'bf-needlefinal');
 				triggerEvent('Change Character', 'GF', 'lutherfinal');
-		}
-	}
 
-	if(n == 'Change Character') {
-		switch(v2) {
-			case 'bf-needle': boyfriend.shader = colorSwap.shader;
-			case 'gf-needlemouse': gf.shader = colorSwap.shader;
-			case 'atem': 
-				dad.alpha = 1; 
-				dad.setPosition(2600, 100);
-				triggerEvent('Set customCamera Position', 'dad', '2800, 50');
-			case 'lutherfinal':
-				gf.setPosition(2700, 800);
-				triggerEvent('Set customCamera Position', 'gf', '2900, 800');
-			case 'bf-needlefinal':
-				boyfriend.setPosition(1900, 800);
-				triggerEvent('Set customCamera Position', 'bf', '2600, 800');
-				boyfriend.flipX = false;
+			case 4768:
+				FlxTween.tween(black, {alpha: 1}, 3);
+				FlxTween.num(0, 1, 3, null, v -> {
+					camGlitch.setFloat('AMT', v); 
+					camGlitch.setFloat('SPEED', v);
+				});
 		}
 	}
 }
@@ -142,8 +165,8 @@ function makeBackground(background:Array<BackgroundSprite>)
 {
 	for (sprite in activeSprites) 
 	{
-		sprite.destroy();
 		game.remove(sprite);
+		sprite.destroy();
 	}
 
 	for (spriteDef in background)

@@ -1,5 +1,5 @@
 function onCreatePost()
-	createInstance('sarah', 'objects.Character', {getProperty('dad.x'), getProperty('dad.y'), 'sarah2'})
+	createInstance('sarah', 'objects.Character', {getProperty('dad.x'), getProperty('dad.y') - 300, 'sarah2'})
 	setObjectOrder('sarah', getObjectOrder('dadGroup') - 1)
 	addInstance('sarah')
 	setProperty('sarah.alpha', 0)
@@ -22,7 +22,7 @@ function onEvent(n,v1)
 		if v1 == 'sarahappears' then
 			doTweenAlpha('sarah', 'sarah', 0.5, crochet / 250, 'cubeOut')
 		end
-		if v1 == 'luthertrans' then
+		if v1 == 'sarahout' then
 			doTweenAlpha('sarahout', 'sarah', 0, crochet / 250, 'cubeOut')
 			sarahAppear = false
 		end

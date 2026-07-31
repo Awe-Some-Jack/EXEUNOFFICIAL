@@ -31,6 +31,8 @@ import states.editors.CharacterEditorState;
 import states.substates.PauseSubState;
 import states.substates.GameOverSubstate;
 
+import lime.app.Application as Application;
+
 #if !flash
 import openfl.filters.ShaderFilter;
 #end
@@ -1866,19 +1868,26 @@ class PlayState extends MusicBeatState
 			if(songSpeed < 1) time /= songSpeed;
 			if(unspawnNotes[0].multSpeed < 1) time /= unspawnNotes[0].multSpeed;
 
-			while (unspawnNotes.length > 0 && unspawnNotes[0].strumTime - Conductor.songPosition < time)
-			{
-				var dunceNote:Note = unspawnNotes.shift();
-				notes.insert(0, dunceNote);
-				dunceNote.spawned = true;
+			var spawnCount:Int = 0;
+			while (spawnCount < unspawnNotes.length && unspawnNotes[spawnCount].strumTime - Conductor.songPosition < time)
+				spawnCount++;
 
-				_spawnArgs[0] = 0; // always inserted at index 0
-				_spawnArgs[1] = dunceNote.noteData;
-				_spawnArgs[2] = dunceNote.noteType;
-				_spawnArgs[3] = dunceNote.isSustainNote;
-				_spawnArgs[4] = dunceNote.strumTime;
-				callOnLuas('onSpawnNote', _spawnArgs);
-				callOnHScript('onSpawnNote', [dunceNote]);
+			if (spawnCount > 0)
+			{
+				var notesToSpawn:Array<Note> = unspawnNotes.splice(0, spawnCount);
+				for (dunceNote in notesToSpawn)
+				{
+					notes.insert(0, dunceNote);
+					dunceNote.spawned = true;
+
+					_spawnArgs[0] = 0; // always inserted at index 0
+					_spawnArgs[1] = dunceNote.noteData;
+					_spawnArgs[2] = dunceNote.noteType;
+					_spawnArgs[3] = dunceNote.isSustainNote;
+					_spawnArgs[4] = dunceNote.strumTime;
+					callOnLuas('onSpawnNote', _spawnArgs);
+					callOnHScript('onSpawnNote', [dunceNote]);
+				}
 			}
 		}
 
@@ -2228,22 +2237,24 @@ class PlayState extends MusicBeatState
 	}
 
 	public function checkEventNote() {
-		while(eventNotes.length > 0) {
-			var leStrumTime:Float = eventNotes[0].strumTime;
-			if(Conductor.songPosition < leStrumTime) {
-				return;
-			}
+		var dueCount:Int = 0;
+		while (dueCount < eventNotes.length && Conductor.songPosition >= eventNotes[dueCount].strumTime)
+			dueCount++;
 
+		if (dueCount == 0) return;
+
+		var dueEvents:Array<EventNote> = eventNotes.splice(0, dueCount);
+		for (event in dueEvents)
+		{
 			var value1:String = '';
-			if(eventNotes[0].value1 != null)
-				value1 = eventNotes[0].value1;
+			if(event.value1 != null)
+				value1 = event.value1;
 
 			var value2:String = '';
-			if(eventNotes[0].value2 != null)
-				value2 = eventNotes[0].value2;
+			if(event.value2 != null)
+				value2 = event.value2;
 
-			triggerEvent(eventNotes[0].event, value1, value2, leStrumTime);
-			eventNotes.shift();
+			triggerEvent(event.event, value1, value2, event.strumTime);
 		}
 	}
 
@@ -2529,27 +2540,8 @@ class PlayState extends MusicBeatState
 
 
 	public var transitioning = false;
-	static var storySongsDone:Int = 0;
 	public function endSong()
 	{
-
-		if (isStoryMode && Paths.formatToSongPath(SONG.song) == 'triple-trouble'){
-			FlxG.save.data.goToFinalEscape = true;
-			FlxG.save.flush();
-			trace("save data is " + FlxG.save.data.goToFinalEscape);
-			Sys.exit(0);
-		} 
-		if (isStoryMode && Paths.formatToSongPath(SONG.song) == 'final-escape'){
-			FlxG.save.data.theYourselfCutscene = true;
-			FlxG.save.flush();
-			trace("Yourself Cutscene: " + FlxG.save.data.theYourselfCutscene);
-			FlxG.switchState(() -> new StoryModeState());
-		} 
-		if (isStoryMode && Paths.formatToSongPath(SONG.song) == 'yourself'){
-			FlxG.save.data.theYourselfCutscene = null;
-			FlxG.save.flush();
-			trace("Yourself Cutscene: " + FlxG.save.data.theYourselfCutscene);
-		} 
 		
 		//Should kill you if you tried to cheat
 		if(!startingSong)
@@ -2619,8 +2611,28 @@ class PlayState extends MusicBeatState
 
 				storyPlaylist.remove(storyPlaylist[0]);
 
-				storySongsDone ++;
-				StoryModeState.lastPlayedCover = storySongsDone;
+				if (FlxG.save.data.lastCoverPlay == null)
+					FlxG.save.data.lastCoverPlay = 0;
+
+				FlxG.save.data.lastCoverPlay++;
+
+				switch(Paths.formatToSongPath(SONG.song)){
+					case "triple-trouble":
+						FlxG.save.data.goToFinalEscape = true;
+						FlxG.save.flush();
+						trace("save data is " + FlxG.save.data.goToFinalEscape);
+						Application.current.window.close();
+					case "final-escape":
+						FlxG.save.data.theYourselfCutscene = true;
+						FlxG.save.flush();
+						trace("Yourself Cutscene: " + FlxG.save.data.theYourselfCutscene);
+						FlxG.switchState(() -> new StoryModeState());
+					case "yourself":
+						FlxG.save.data.theYourselfCutscene = null;
+						FlxG.save.data.storyModeDone = true;
+						FlxG.save.flush();
+						trace("Yourself Cutscene: " + FlxG.save.data.theYourselfCutscene);
+				}
 
 
 				if (storyPlaylist.length <= 0)
@@ -2628,6 +2640,9 @@ class PlayState extends MusicBeatState
 					trace('WENT BACK TO FREEPLAY??');
 					Mods.loadTopMod();
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+
+					FlxG.save.data.lastCoverPlay = 4;
+					FlxG.save.data.storyModeDone = true;
 
 					FlxG.sound.music?.stop();
 

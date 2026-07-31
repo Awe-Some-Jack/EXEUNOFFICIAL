@@ -55,6 +55,8 @@ class FunkinLua
 	public var callbacks:Map<String, Dynamic> = new Map();
 	public static var customFunctions:Map<String, Dynamic> = new Map();
 
+	var missingFunctions:Map<String, Bool> = new Map();
+
 	public function new(scriptName:String)
 	{
 		lua = LuaL.newstate();
@@ -948,6 +950,7 @@ class FunkinLua
 	public function call(func:String, args:Array<Dynamic>):Dynamic
 	{
 		if (closed) return LuaUtils.Function_Continue;
+		if (missingFunctions.exists(func)) return LuaUtils.Function_Continue;
 
 		try
 		{
@@ -960,6 +963,8 @@ class FunkinLua
 			{
 				if (type > Lua.TNIL)
 					luaTrace('ERROR ($func): attempt to call a ${LuaUtils.typeToString(type)} value', false, false, FlxColor.RED);
+				else
+					missingFunctions.set(func, true);
 				Lua.pop(lua, 1);
 				return LuaUtils.Function_Continue;
 			}

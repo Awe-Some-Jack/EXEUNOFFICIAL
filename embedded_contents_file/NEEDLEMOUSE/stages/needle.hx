@@ -20,7 +20,8 @@ var bgNeedle:Array<BackgroundSprite> = [
 	{path: 'roundabout/sky', position: [-750, -900], scroll: [0.3, 0.3], shader: true},
 	{path: 'roundabout/bg3', position: [-500, -700], scroll: [0.5, 0.5], shader: true},
 	{path: 'roundabout/bg2', position: [-600, -550], scroll: [0.65, 0.65], shader: true},
-	{path: 'roundabout/lava', position: [0, 880], scale: [1.2, 1.2], scroll: [0.8, 0.8], animation: [{name: 'Dance', looped: true}], shader: true},
+	{path: 'roundabout/lava', position: [0, 750], scale: [1.2, 1.2], scroll: [0.65, 0.65], animation: [{name: 'Dance', looped: true}], shader: true},
+	{path: 'roundabout/lava', position: [0, 1050], scale: [1.2, 1.2], scroll: [0.8, 0.8], animation: [{name: 'Dance', looped: true}], shader: true},
 	{path: 'roundabout/bg1', position: [-350, -150], scroll: [0.8, 0.8], shader: true},
 	{path: 'roundabout/floor', position: [-200, 1080], shader: false},
 	{path: 'roundabout/foreground', position: [100, 450], scroll: [1.2, 1.2], front: true, shader: true}
@@ -34,7 +35,6 @@ var bgLuther:Array<BackgroundSprite> = [
 	{path: 'herworld/knux', position: [3350, 1050], scroll: [1.2, 1.2], front: true},
 	{path: 'herworld/luz', position: [900, 200]},
 ];
-
 var activeSprites:Array<FlxSprite> = [];
 var glitch:FlxRuntimeShader;
 var colorShader:ColorSwap;
@@ -57,8 +57,8 @@ function onCreatePost()
 	game.camHUD.filters.push(new ShaderFilter(camGlitch));
 
     colorSwap = new ColorSwap();
-    colorSwap.hue = -0.04;
-    colorSwap.brightness = -0.8;
+    colorSwap.hue = -0.05;
+    colorSwap.brightness = -0.78;
     colorSwap.saturation = -0.3;
 
 	black = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
@@ -78,29 +78,9 @@ function onUpdate(e)
 }
 
 function onEvent(n, v1, v2) {
-	if(n == 'Change Character') {
-		switch(v2) {
-			case 'bf-needle': boyfriend.shader = colorSwap.shader;
-			case 'gf-needlemouse': gf.shader = colorSwap.shader;
-			case 'atem': 
-				dad.alpha = 1; 
-				dad.setPosition(2600, 150);
-				triggerEvent('Set customCamera Position', 'dad', '2800, 50');
-			case 'lutherfinal':
-				gf.setPosition(2700, 800);
-				triggerEvent('Set customCamera Position', 'gf', '3000, 800');
-			case 'bf-needlefinal':
-				boyfriend.setPosition(1900, 800);
-				triggerEvent('Set customCamera Position', 'bf', '2600, 800');
-				boyfriend.flipX = false;
-		}
-	}
-}
-
-function onStepHit() {
-	if (PlayState.SONG.song == 'Her World') {
-		switch(curStep) {
-			case 798:	// luther transition
+	if (n == 'sarahevent') {
+		switch(v1){
+			case 'luthertrans':
 				FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> 
 				{
 					makeBackground(bgLuther); 
@@ -117,23 +97,14 @@ function onStepHit() {
 					camGlitch.setFloat('SPEED', v);
 				});
 
-			case 1269:
-				FlxTween.num(0, 0.1, 4.2, {onComplete: () -> {
-					camGlitch.setFloat('AMT', 0); 
-					camGlitch.setFloat('SPEED', 0);
-				}}, v -> {
-					camGlitch.setFloat('AMT', v); 
-					camGlitch.setFloat('SPEED', v / 2);
-				});
-
-			case 2976:	//solo transition
+			case 'solotrans':
 				FlxTween.tween(black, {alpha: 1}, 2, {onComplete: _ -> makeBackground([]) });
 				FlxTween.num(0, 1, 2, {onComplete: _ -> {
 					camGlitch.setFloat('AMT', 0.0); 
 					camGlitch.setFloat('SPEED', 0.0);
 					boyfriend.shader = null;
 					gf.alpha = 0.0001;
-					for(strum in opponentStrums.members) strum.x -= 600;
+					for(strum in opponentStrums.members) strum.alpha = 0;
 					for(strum in playerStrums.members) strum.x -= 320;
 				}}, v -> {
 					camGlitch.setFloat('AMT', v); 
@@ -141,22 +112,29 @@ function onStepHit() {
 				});
 				FlxTween.tween(black, {alpha: 0}, 5, {startDelay: 5});
 
-			case 3328:	// atem sings
-				for(i => strum in opponentStrums.members) FlxTween.tween(strum, {x: strum.x + 600}, 1.25 - 0.1 * i, {ease: FlxEase.cubeInOut});
-				for(i => strum in playerStrums.members) FlxTween.tween(strum, {x: strum.x + 320}, 1.25, {ease: FlxEase.cubeInOut});
-
-			case 3344:	// change bf and luther to final sprites
+			case 'atemsings':
 				gf.alpha = 1;
 				dad.alpha = 1;
 				triggerEvent('Change Character', 'BF', 'bf-needlefinal');
 				triggerEvent('Change Character', 'GF', 'lutherfinal');
+		}
+	}
 
-			case 4768:
-				FlxTween.tween(black, {alpha: 1}, 3);
-				FlxTween.num(0, 1, 3, null, v -> {
-					camGlitch.setFloat('AMT', v); 
-					camGlitch.setFloat('SPEED', v);
-				});
+	if(n == 'Change Character') {
+		switch(v2) {
+			case 'bf-needle': boyfriend.shader = colorSwap.shader;
+			case 'gf-needlemouse': gf.shader = colorSwap.shader;
+			case 'atem': 
+				dad.alpha = 1; 
+				dad.setPosition(2600, 100);
+				triggerEvent('Set customCamera Position', 'dad', '2800, 50');
+			case 'lutherfinal':
+				gf.setPosition(2700, 800);
+				triggerEvent('Set customCamera Position', 'gf', '2900, 800');
+			case 'bf-needlefinal':
+				boyfriend.setPosition(1900, 800);
+				triggerEvent('Set customCamera Position', 'bf', '2600, 800');
+				boyfriend.flipX = false;
 		}
 	}
 }
@@ -165,8 +143,8 @@ function makeBackground(background:Array<BackgroundSprite>)
 {
 	for (sprite in activeSprites) 
 	{
-		game.remove(sprite);
 		sprite.destroy();
+		game.remove(sprite);
 	}
 
 	for (spriteDef in background)

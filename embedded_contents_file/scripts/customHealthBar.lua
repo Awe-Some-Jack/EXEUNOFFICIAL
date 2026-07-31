@@ -125,7 +125,7 @@ local healthBarsBG = {
         antialiasing = false
     },
 }
-local blacklistenedSongs = {'prey', 'godspeed', 'forestall-desire', 'deception', 'fatality', 'longstrider', 'universal-collapse', 'fight-or-flight', 'burning', 'expulsion'}
+local blacklistenedSongs = {'prey', 'forestall-desire', 'deception', 'fatality', 'longstrider', 'universal-collapse', 'fight-or-flight', 'burning', 'expulsion'}
 
 local flipped = false
 local oldScoreTxt = ''

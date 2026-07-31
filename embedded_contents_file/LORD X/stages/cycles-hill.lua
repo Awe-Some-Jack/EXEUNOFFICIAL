@@ -82,12 +82,13 @@ function onCreate()
 end
 
 function onCreatePost()
-	setProperty('camFollow.x', CAM_X)
-	setProperty('camFollow.y', currentCamY)
-	setProperty('cameraFollowPos.x', CAM_X)
-	setProperty('cameraFollowPos.y', currentCamY)
-	setProperty('defaultCamZoom', currentZoom)
-	setProperty('camGame.zoom', currentZoom)
+	setProperty('camFollow.x',          CAM_X) setProperty('cameraFollowPos.x',        CAM_X)
+	setProperty('camFollow.y',    currentCamY) setProperty('cameraFollowPos.y',  currentCamY)
+	setProperty('defaultCamZoom', currentZoom) setProperty('camGame.zoom',       currentZoom)
+
+	for i = 0, 3 do for _, strums in ipairs({'playerStrums', 'opponentStrums'}) do
+		setProperty(strums..'.members['..i..'].y', downscroll and 800 or -200) setProperty(strums..'.members['..i..'].alpha', 0)
+	end end
 
 	strumsY = downscroll and 570 or 50
 
@@ -114,8 +115,7 @@ end
 
 function onSongStart()
 	runTimer('startTransition', 1)
-		for i = 0, 3 do
-		for _, strums in ipairs({'playerStrums', 'opponentStrums'}) do
+		for i = 0, 3 do for _, strums in ipairs({'playerStrums', 'opponentStrums'}) do
 			setProperty(strums..'.members['..i..'].y', downscroll and 800 or -200) setProperty(strums..'.members['..i..'].alpha', 0)
 		end
 	end

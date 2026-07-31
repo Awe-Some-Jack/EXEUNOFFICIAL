@@ -5858,12 +5858,25 @@
 			[
 				["sarahevent", "solotrans", ""]
 			]
+		],
+		[
+			302297.959183674,
+			[
+				["Change Character", "Dad", "atem"],
+				["Change Character", "GF", "lutherfinal"]
+			]
+		],
+		[
+			335885.714285714,
+			[
+				["sarahevent", "atemsings", ""]
+			]
 		]
 	],
 	"song": "Her World",
-	"validScore": true,
 	"needsVoices": true,
 	"stage": "needle",
+	"validScore": true,
 	"format": "psych_v1_convert",
 	"bpm": 147,
 	"speed": 3

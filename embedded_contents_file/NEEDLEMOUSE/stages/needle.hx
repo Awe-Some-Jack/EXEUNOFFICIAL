@@ -56,9 +56,9 @@ function onCreatePost()
 	game.camHUD.filters.push(new ShaderFilter(camGlitch));
 
     colorSwap = new ColorSwap();
-    colorSwap.hue = 0;
-    colorSwap.brightness = -0.75;
-    colorSwap.saturation = -0.25;
+    colorSwap.hue = -0.05;
+    colorSwap.brightness = -0.78;
+    colorSwap.saturation = -0.3;
 
 	black = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 	black.alpha = 0;
@@ -103,18 +103,38 @@ function onEvent(n, v1, v2) {
 					camGlitch.setFloat('SPEED', 0.0);
 					boyfriend.shader = null;
 					gf.alpha = 0.0001;
-					dad.alpha = 0.0001;
+					for(strum in opponentStrums.members) strum.alpha = 0;
+					for(strum in playerStrums.members) strum.x -= 320;
 				}}, v -> {
 					camGlitch.setFloat('AMT', v); 
 					camGlitch.setFloat('SPEED', v);
 				});
-				FlxTween.tween(black, {alpha: 0}, 5, {startDelay: 3.5});
+				FlxTween.tween(black, {alpha: 0}, 5, {startDelay: 5});
+
+			case 'atemsings':
+				gf.alpha = 1;
+				dad.alpha = 1;
+				triggerEvent('Change Character', 'BF', 'bf-needlefinal');
+				triggerEvent('Change Character', 'GF', 'lutherfinal');
 		}
 	}
 
 	if(n == 'Change Character') {
-		if(v2 == 'bf-needle') boyfriend.shader = colorSwap.shader;
-		if(v2 == 'gf-needlemouse') gf.shader = colorSwap.shader;
+		switch(v2) {
+			case 'bf-needle': boyfriend.shader = colorSwap.shader;
+			case 'gf-needlemouse': gf.shader = colorSwap.shader;
+			case 'atem': 
+				dad.alpha = 1; 
+				dad.setPosition(2600, 100);
+				triggerEvent('Set customCamera Position', 'dad', '2800, 50');
+			case 'lutherfinal':
+				gf.setPosition(2700, 800);
+				triggerEvent('Set customCamera Position', 'gf', '2900, 800');
+			case 'bf-needlefinal':
+				boyfriend.setPosition(1900, 800);
+				triggerEvent('Set customCamera Position', 'bf', '2600, 800');
+				boyfriend.flipX = false;
+		}
 	}
 }
 

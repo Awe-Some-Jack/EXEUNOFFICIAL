@@ -22,7 +22,7 @@
 			"fps": 24,
 			"anim": "singDOWN",
 			"loop": false,
-			"name": "s down"
+			"name": "down"
 		},
 		{
 			"offsets": [37, 53],

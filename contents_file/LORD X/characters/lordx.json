@@ -74,6 +74,6 @@
 	"healthbar_colors": [60, 60, 88],
 	"camera_position": [0, 0],
 	"sing_duration": 9.4,
-	"scale": 0.82,
+	"scale": 0.9,
 	"_editor_isPlayer": false
 }

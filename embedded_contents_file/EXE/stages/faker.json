@@ -1,9 +1,9 @@
 {
 	"directory": "",
 	"stageUI": "",
-	"defaultZoom": 0.75,
+	"defaultZoom": 0.6,
 
 	"boyfriend": [1350,0],
-	"opponent": [200,0],
+	"opponent": [350,0],
 	"girlfriend": [500,-50]
 }

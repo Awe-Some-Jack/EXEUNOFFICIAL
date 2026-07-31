@@ -60,9 +60,9 @@ local thing = 0
 function onUpdatePost(e)
 	thing = thing + e * 3
 
-	setShaderFloat('bloom', 'brightness', (defaultBright - 1) + getProperty('bloom.x') * 2)
-	setShaderFloat('bloom', 'contrast', defaultBright + (getProperty('bloom.x') * 4))
-	setShaderFloat('bloom', 'saturation', defaultBright)
+	setShaderFloat('bloom', 'brightness', 0.05 + (defaultBright - 1) + getProperty('bloom.x') * 2)
+	setShaderFloat('bloom', 'contrast', 0.15 + defaultBright + (getProperty('bloom.x') * 4))
+	setShaderFloat('bloom', 'saturation', -0.1 + defaultBright)
 
 	if istwning then
 		setShaderFloat('cab', 'amount', getProperty('cab.x'))
@@ -85,7 +85,7 @@ function onEvent(n)
 	end
 	if n == 'transform' then
 		istwning = true
-		doTweenX('cab', 'cab', 4, 13 / playbackRate, 'cubeIn')
+		doTweenX('cab', 'cab', 8, 13 / playbackRate, 'cubeIn')
 	end
 	if n == 'removeshader' then
 		removeSpriteShader('dad')

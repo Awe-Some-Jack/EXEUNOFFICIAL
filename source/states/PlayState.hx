@@ -520,7 +520,9 @@ class PlayState extends MusicBeatState
 				appName = "Friday Night Funkin': Vs Sonic.EXE";
 		}
 
-		FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Loading)";
+		#if !mac
+		if (Paths.formatToSongPath(SONG.song) != 'burning') FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Loading)";
+		#end
 
 		GameOverSubstate.resetVariables();
 		if(SONG.stage == null || SONG.stage.length < 1)
@@ -529,7 +531,7 @@ class PlayState extends MusicBeatState
 		PauseSubState.miniSonicImage = Paths.formatToSongPath(SONG.song);
 		switch(Paths.formatToSongPath(SONG.song))
 		{
-			case 'final-escape': PauseSubState.miniSonicImage = 'triple-trouble-2';
+			case 'final-escape': PauseSubState.miniSonicImage = 'triple-trouble-7';
 			case 'manual-blast': PauseSubState.miniSonicImage = 'hedge';
 			case 'prey': PauseSubState.miniSonicImage = 'sonic';
 		}
@@ -1056,7 +1058,10 @@ class PlayState extends MusicBeatState
 			return false;
 		}
 
-		#if !mac FlxG.stage.window.title = appName + " | Playing: " + SONG.song; #end
+		#if !mac
+		FlxG.stage.window.title = appName + " | Playing: " + SONG.song;
+		if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
+		#end
 
 		seenCutscene = true;
 		firstPlay = true;
@@ -1587,7 +1592,10 @@ class PlayState extends MusicBeatState
 			if (videoCutscene != null && videoCutscene.isPlaying()) videoCutscene.pause();
 			#end
 
-			#if !mac FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)"; #end
+			#if !mac
+			FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
+			if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
+			#end
 		}
 
 		super.openSubState(SubState);
@@ -1626,7 +1634,10 @@ class PlayState extends MusicBeatState
 				}
 			}
 
-			#if !mac FlxG.stage.window.title = appName + " | Playing: " + SONG.song; #end
+			#if !mac
+			FlxG.stage.window.title = appName + " | Playing: " + SONG.song;
+			if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
+			#end
 		}
 	}
 
@@ -2073,7 +2084,10 @@ class PlayState extends MusicBeatState
 		if(chartingMode) openSubState(new PauseSubState());
 		else openSubState(new PauseSubState());
 
+		#if !mac
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
+		if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
+		#end
 
 		#if DISCORD_ALLOWED
 		if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song + " (Paused)", iconP2.getCharacter());
@@ -2228,7 +2242,11 @@ class PlayState extends MusicBeatState
 				// Game Over doesn't get his its variable because it's only used here
 				if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song + " | Game Over.", iconP2.getCharacter());
 				#end
+				#if !mac
 				FlxG.stage.window.title = appName + " | Was Playing: " + SONG.song;
+				var dausername:String = DiscordClient.username ?? 'boyfriend';
+				if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = 'Lets try that again, shall we ${dausername}?';
+				#end
 				isDead = true;
 				return true;
 			}
@@ -3432,7 +3450,7 @@ class PlayState extends MusicBeatState
 			resetSubState();
 		}
 
-		FlxG.stage.window.title = prevWindowTitle;
+		#if !mac FlxG.stage.window.title = prevWindowTitle; #end
 
 		#if LUA_ALLOWED
 		for (lua in luaArray)
@@ -3531,11 +3549,11 @@ class PlayState extends MusicBeatState
 			case 'you-cant-run':
 				if (curBeat >= 200) PauseSubState.miniSonicImage = 'you-cant-run-2';
 			case 'triple-trouble':
-				if (curBeat >= 200) PauseSubState.miniSonicImage = 'triple-trouble-2';
+				if (curBeat >= 200) PauseSubState.miniSonicImage = 'triple-trouble-7';
 				if (curBeat >= 324) PauseSubState.miniSonicImage = 'triple-trouble-3';
-				if (curBeat >= 580) PauseSubState.miniSonicImage = 'triple-trouble-2';
-				if (curBeat >= 707) PauseSubState.miniSonicImage = 'triple-trouble-4';
-				if (curBeat >= 1028) PauseSubState.miniSonicImage = 'triple-trouble-2';
+				if (curBeat >= 580) PauseSubState.miniSonicImage = 'triple-trouble-7';
+				if (curBeat >= 707) PauseSubState.miniSonicImage = 'triple-trouble-5';
+				if (curBeat >= 1028) PauseSubState.miniSonicImage = 'triple-trouble-7';
 			case 'yourself':
 				if (curBeat >= 209) PauseSubState.miniSonicImage = 'yourself-2';
 				if (curBeat >= 272) PauseSubState.miniSonicImage = 'yourself-3';

@@ -595,6 +595,7 @@
 				[50400, 5, 0, "Alt Animation"],
 				[50550, 7, 0, "Alt Animation"],
 				[50700, 5, 750, "Alt Animation"],
+				[51450, 4, 0, "Genesys Ghost"],
 				[51450, 6, 0, "Alt Animation"]
 			],
 			"gfSection": false,
@@ -607,12 +608,20 @@
 			"sectionBeats": 4,
 			"sectionNotes": [
 				[51600, 5, 0, "Alt Animation"],
+				[51600, 7, 0, "Genesys Ghost"],
 				[51750, 7, 0, "Alt Animation"],
+				[51750, 6, 0, "Genesys Ghost"],
 				[51900, 5, 0, "Alt Animation"],
+				[51900, 4, 0, "Genesys Ghost"],
 				[52050, 6, 0, "Alt Animation"],
+				[52050, 5, 0, "Genesys Ghost"],
 				[52200, 4, 0, "Alt Animation"],
+				[52200, 7, 0, "Genesys Ghost"],
 				[52350, 5, 0, "Alt Animation"],
+				[52350, 6, 0, "Genesys Ghost"],
 				[52500, 6, 0, "Alt Animation"],
+				[52500, 4, 0, "Genesys Ghost"],
+				[52650, 6, 0],
 				[52650, 5, 0, "Alt Animation"]
 			],
 			"gfSection": false,
@@ -2712,6 +2721,12 @@
 	],
 	"events": [
 		[
+			2400,
+			[
+				["genesysEvents", "save", ""]
+			]
+		],
+		[
 			9600,
 			[
 				["Play Animation", "intro", "dad"],
@@ -2952,9 +2967,27 @@
 			]
 		],
 		[
+			76800,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
 			79200,
 			[
 				["Tween Camera Zoom", "0.6", ""]
+			]
+		],
+		[
+			79200,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			80400,
+			[
+				["genesysEvents", "g", ""]
 			]
 		],
 		[
@@ -3008,9 +3041,39 @@
 			]
 		],
 		[
+			87600,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			87900,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			88200,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			88500,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
 			88800,
 			[
 				["Tween Camera Zoom", "0.6", ""]
+			]
+		],
+		[
+			88800,
+			[
+				["genesysEvents", "g", ""]
 			]
 		],
 		[
@@ -3093,6 +3156,12 @@
 			]
 		],
 		[
+			96000,
+			[
+				["genesysEvents", "b", ""]
+			]
+		],
+		[
 			100800,
 			[
 				["Tween Camera Zoom", "0.7", ""]
@@ -3136,6 +3205,24 @@
 			]
 		],
 		[
+			114000,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			114300,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			114450,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
 			114600,
 			[
 				["Tween Camera Zoom", "0.9", ""],
@@ -3143,10 +3230,28 @@
 			]
 		],
 		[
+			114600,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			114900,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
 			115200,
 			[
 				["Tween Camera Zoom", "0.6", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			115200,
+			[
+				["genesysEvents", "b", ""]
 			]
 		],
 		[
@@ -3216,6 +3321,18 @@
 			]
 		],
 		[
+			124800,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			126000,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
 			127200,
 			[
 				["Tween Camera Zoom", "0.8", ""]
@@ -3240,9 +3357,27 @@
 			]
 		],
 		[
+			135600,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
 			137100,
 			[
 				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			137100,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			137850,
+			[
+				["genesysEvents", "g", ""]
 			]
 		],
 		[
@@ -3263,6 +3398,12 @@
 				["Play Animation", "laugh-slow", "dad"],
 				["Tween Camera Zoom", "0.8", ""],
 				["Tweening Camera", "90, -180", "0.001, linear"]
+			]
+		],
+		[
+			142800,
+			[
+				["genesysEvents", "g", ""]
 			]
 		],
 		[
@@ -3289,6 +3430,36 @@
 			[
 				["Tweening Camera", "0, 0", "0.001, linear"],
 				["Tween Camera Zoom", "0.6", ""]
+			]
+		],
+		[
+			144600,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			145500,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			146100,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			147600,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			148350,
+			[
+				["genesysEvents", "g", ""]
 			]
 		],
 		[
@@ -3324,9 +3495,27 @@
 			]
 		],
 		[
+			153600,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			154800,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
 			156000,
 			[
 				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			156000,
+			[
+				["genesysEvents", "g", ""]
 			]
 		],
 		[
@@ -3336,10 +3525,34 @@
 			]
 		],
 		[
+			158400,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			162000,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			162600,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
 			163200,
 			[
 				["Alt Idle Animation", "dad", ""],
 				["Tween Camera Zoom", "0.6", ""]
+			]
+		],
+		[
+			163200,
+			[
+				["genesysEvents", "b", ""]
 			]
 		],
 		[
@@ -3377,6 +3590,127 @@
 			[
 				["Tween Camera Zoom", "0.9", ""],
 				["Tweening Camera", "140, 0", "0.001, linear"]
+			]
+		],
+		[
+			182400,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			182475,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			182550,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			182625,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			182700,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			182775,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			182850,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			182925,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			183000,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			183075,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			183150,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			183150,
+			[
+				["Set Property", "camHUD.alpha", "0.75"]
+			]
+		],
+		[
+			183225,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			183300,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			183300,
+			[
+				["Set Property", "camHUD.alpha", "0.5"]
+			]
+		],
+		[
+			183375,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			183450,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			183450,
+			[
+				["Set Property", "camHUD.alpha", "0.25"]
+			]
+		],
+		[
+			183525,
+			[
+				["genesysEvents", "g", ""]
+			]
+		],
+		[
+			183600,
+			[
+				["Set Property", "camHUD.alpha", "0"],
+				["genesysEvents", "b", ""]
 			]
 		],
 		[

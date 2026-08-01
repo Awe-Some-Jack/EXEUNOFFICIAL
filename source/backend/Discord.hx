@@ -20,6 +20,10 @@ class DiscordClient
 	// hides this field from scripts and reflection in general
 	@:unreflective private static var __thread:Thread;
 
+	public static var username:String = "";
+	public static var discriminator:String = "";
+	public static var userID:String = "";
+
 	public static function check()
 	{
 		if(ClientPrefs.data.discordRPC) initialize();
@@ -42,14 +46,15 @@ class DiscordClient
 	
 	private static function onReady(request:cpp.RawConstPointer<DiscordUser>):Void
 	{
-		final user = cast (request[0].username, String);
-		final discriminator = cast (request[0].discriminator, String);
+		username = cast(request[0].username, String);
+		discriminator = cast(request[0].discriminator, String);
+		userID = cast(request[0].userId, String);
 
 		var message = '(Discord) Connected to User ';
 		if (discriminator != '0') //Old discriminators
-			message += '($user#$discriminator)';
+			message += '($username#$discriminator) (ID: $userID)';
 		else //New Discord IDs/Discriminator system
-			message += '($user)';
+			message += '($username) (ID: $userID)';
 
 		trace(message);
 		changePresence();

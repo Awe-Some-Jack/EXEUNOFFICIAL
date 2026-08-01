@@ -9,7 +9,6 @@ function onCreatePost()
 	PlayState.instance.iconP1.alpha = 0;
 	PlayState.instance.iconP2.alpha = 0;
 	PlayState.instance.healthBar.alpha = 0;
-	PlayState.instance.scoreTxt.alpha = 0;
 }
 
 function onSongStart()

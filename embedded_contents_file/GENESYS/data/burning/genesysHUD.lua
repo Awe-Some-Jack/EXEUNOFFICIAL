@@ -8,7 +8,7 @@ function onCreatePost()
 
 	initialY = 6 * 3
 	local iconOffset = 75 * 0.5
-	createInstance('iconSonic', 'objects.HealthIcon', {getProperty('boyfriend.healthIcon'), false})
+	createInstance('iconSonic', 'objects.HealthIcon', {'bfburning', false})
 	setObjectCamera('iconSonic', 'hud')
 	setProperty('iconSonic.antialiasing', false)
 	scaleObject('iconSonic', 0.5, 0.5)
@@ -16,7 +16,7 @@ function onCreatePost()
 	addInstance('iconSonic')
 	makeHUDSprite('futureHealthSonic', 'healthFuture', getProperty('iconSonic.x') + iconOffset + 72, getProperty('iconSonic.y') + iconOffset + 18)
 
-	createInstance('iconFurn', 'objects.HealthIcon', {getProperty('dad.healthIcon'), false})
+	createInstance('iconFurn', 'objects.HealthIcon', {'burning', false})
 	setObjectCamera('iconFurn', 'hud')
 	setProperty('iconFurn.antialiasing', false)
 	scaleObject('iconFurn', 0.5, 0.5)
@@ -102,6 +102,7 @@ function makeHUDSprite(tag, path, x, y, num)
 	scaleObject(tag, 3, 3)
 	setObjectCamera(tag, 'hud')
 	setProperty(tag..'.antialiasing', false)
+	setProperty(tag..'.moves', false)
 	addLuaSprite(tag)
 end
 

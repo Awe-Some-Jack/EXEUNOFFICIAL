@@ -179,6 +179,11 @@ class Main extends Sprite
 
 		addChild(push);
 
+		#if final
+		final cheatCheckTimer = new haxe.Timer(1000);
+        cheatCheckTimer.run = () -> backend.AntiCheat.checkDebugger();
+		#end
+
 		FlxG.mouse.useSystemCursor = true;
 
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);

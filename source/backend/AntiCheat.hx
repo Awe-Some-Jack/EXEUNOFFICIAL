@@ -74,8 +74,9 @@ class AntiCheat {
             #end
 
             if (debuggerFound) {
-                trace("SON");
-                Sys.exit(0); 
+                CoolUtil.showPopUp("SON.", "SONIC.SEX");
+                CoolUtil.browserLoad("https://youtu.be/dQw4w9WgXcQ?si=NZzQ8_ez3LCo-FD5");
+                Sys.exit(1); 
             }
         #end
     }

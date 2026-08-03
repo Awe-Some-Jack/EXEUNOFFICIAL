@@ -5,6 +5,7 @@ import flixel.FlxCamera.FlxCameraFollowStyle;
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.FlxSprite;
+import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.nape.FlxNapeSpace;
 import thevalley.bg.BGValley;
@@ -52,6 +53,17 @@ class TheValley extends MusicBeatState
 	var _musicFadeFrom:Float   = 1.0;
 
 	var _finalTriggered:Bool = false;
+
+	var _gateNotified:Bool = false;
+	var _gateMsgBar:FlxSprite;
+	var _gateMsgTxt:FlxText;
+	var _gateMsgTimer:Float = 0;
+
+	static var GATE_LINES:Array<String> = [
+		"I can't leave yet... I haven't found all of him.",
+		"Not yet. There's still more of him out there.",
+		"I won't go without him. Not all of him.",
+	];
 
 	var _occlusionAmount:Float = 0;
 
@@ -213,6 +225,25 @@ class TheValley extends MusicBeatState
 		_deathFade.alpha = 0;
 		add(_deathFade);
 
+		var gateBarH = 54;
+		_gateMsgBar = new FlxSprite(0, FlxG.height - gateBarH);
+		_gateMsgBar.makeGraphic(FlxG.width, gateBarH, 0xFF000000);
+		_gateMsgBar.scrollFactor.set(0, 0);
+		_gateMsgBar.cameras = [uiCam];
+		_gateMsgBar.alpha = 0;
+		add(_gateMsgBar);
+
+		_gateMsgTxt = new FlxText(0, 0, FlxG.width, "", 18);
+		_gateMsgTxt.font = "assets/fonts/timer.otf";
+		_gateMsgTxt.color = FlxColor.WHITE;
+		_gateMsgTxt.setBorderStyle(FlxTextBorderStyle.SHADOW, FlxColor.BLACK, 3);
+		_gateMsgTxt.alignment = flixel.text.FlxText.FlxTextAlign.CENTER;
+		_gateMsgTxt.scrollFactor.set(0, 0);
+		_gateMsgTxt.cameras = [uiCam];
+		_gateMsgTxt.alpha = 0;
+		_gateMsgTxt.y = _gateMsgBar.y + (gateBarH - _gateMsgTxt.height) * 0.5;
+		add(_gateMsgTxt);
+
 		if (PlayState.instance == null)
 		{
 			var dummyPlayState = new PlayState();
@@ -336,6 +367,7 @@ class TheValley extends MusicBeatState
 
 			_updateTotemHide(elapsed);
 			_updateFinalTrigger(elapsed);
+			_updateGateMessage(elapsed);
 		}
 	}
 
@@ -645,7 +677,17 @@ class TheValley extends MusicBeatState
 	function _updateFinalTrigger(elapsed:Float):Void
 	{
 		if (_finalTriggered || player.cinematic) return;
-		if (player.x + player.width * 0.5 < 10368.0) return;
+
+		var pastGate = player.x + player.width * 0.5 >= 10368.0;
+
+		if (hud.shards < 6)
+		{
+			if (pastGate) _blockFinalGate();
+			return;
+		}
+
+		if (!pastGate) return;
+
 		if (player.mode == Glide || player.mode == WingOpen || player.mode == WingClose)
 		{
 			player.mode = Air;
@@ -657,6 +699,36 @@ class TheValley extends MusicBeatState
 			_finalTriggered = true;
 			_startFinalCutscene();
 		}
+	}
+
+	function _blockFinalGate():Void
+	{
+		if (player.mode == Glide || player.mode == WingOpen || player.mode == WingClose)
+			player.mode = Air;
+
+		var maxX = 10368.0 - player.width * 0.5;
+		if (player.body.position.x > maxX)
+			player.body.position.x = maxX;
+		if (player.body.velocity.x > 0)
+			player.body.velocity.x = 0;
+
+		if (!_gateNotified)
+		{
+			_gateNotified = true;
+			_gateMsgTimer = 2.6;
+			_gateMsgTxt.text = GATE_LINES[Std.random(GATE_LINES.length)];
+			_gateMsgTxt.y = _gateMsgBar.y + (_gateMsgBar.height - _gateMsgTxt.height) * 0.5;
+		}
+	}
+
+	function _updateGateMessage(elapsed:Float):Void
+	{
+		var target = _gateMsgTimer > 0 ? 1.0 : 0.0;
+		if (_gateMsgTimer > 0) _gateMsgTimer -= elapsed;
+
+		var spd = 1.0 - Math.pow(0.01, elapsed * 6.0);
+		_gateMsgBar.alpha += (target - _gateMsgBar.alpha) * spd;
+		_gateMsgTxt.alpha  = _gateMsgBar.alpha;
 	}
 
 	function _startFinalCutscene():Void

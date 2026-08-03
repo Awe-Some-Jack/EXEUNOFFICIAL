@@ -121,17 +121,17 @@ class TheValley extends MusicBeatState
 		var leftWall = new nape.phys.Body(nape.phys.BodyType.STATIC, nape.geom.Vec2.weak(mapMinX - 500, -5000));
 		leftWall.shapes.add(new nape.shape.Polygon(nape.shape.Polygon.rect(0, 0, 500, 20000)));
 		leftWall.setShapeMaterials(wallMat);
-		leftWall.space = flixel.addons.nape.FlxNapeSpace.space;
+		leftWall.space = FlxNapeSpace.space;
 
 		var rightWall = new nape.phys.Body(nape.phys.BodyType.STATIC, nape.geom.Vec2.weak(mapW, -5000));
 		rightWall.shapes.add(new nape.shape.Polygon(nape.shape.Polygon.rect(0, 0, 500, 20000)));
 		rightWall.setShapeMaterials(wallMat);
-		rightWall.space = flixel.addons.nape.FlxNapeSpace.space;
+		rightWall.space = FlxNapeSpace.space;
 
 		var floorWall = new nape.phys.Body(nape.phys.BodyType.STATIC, nape.geom.Vec2.weak(-5000, mapMaxY + 200));
 		floorWall.shapes.add(new nape.shape.Polygon(nape.shape.Polygon.rect(0, 0, 30000, 500)));
 		floorWall.setShapeMaterials(wallMat);
-		floorWall.space = flixel.addons.nape.FlxNapeSpace.space;
+		floorWall.space = FlxNapeSpace.space;
 
 		bg = new BGValley(this, _mapParts);
 		bg.addSprites();
@@ -214,7 +214,7 @@ class TheValley extends MusicBeatState
 			PlayState.instance = dummyPlayState;
 		}
 
-		flixel.addons.nape.FlxNapeSpace.drawDebug = true;
+		FlxNapeSpace.drawDebug = true;
 		FlxG.debugger.drawDebug = true;
 	}
 
@@ -224,7 +224,7 @@ class TheValley extends MusicBeatState
 
 		if (bgCam.target != null) bgCam.followLerp = 0.08;
 
-		var nape = FlxG.plugins.get(flixel.addons.nape.FlxNapeSpace);
+		var nape = FlxG.plugins.get(FlxNapeSpace);
 		if (nape != null) nape.active = true;
 
 		if (FlxG.sound.music != null) FlxG.sound.music.play();
@@ -273,7 +273,9 @@ class TheValley extends MusicBeatState
 
 		if (_gameplayStarted)
 		{
-			player.handleInput(elapsed, 146.0, 134.0);
+			if (_spineDeathPhase == 0)
+				player.handleInput(elapsed, 146.0, 134.0);
+
 			hud.setStamina(player.stamina / player.cfg.physics.staminaMax);
 			_updateLookDown(elapsed);
 
@@ -562,6 +564,8 @@ class TheValley extends MusicBeatState
 		}
 		else
 		{
+			player.body.type = nape.phys.BodyType.DYNAMIC;
+			
 			player.body.position.setxy(146.0 + player.width * 0.5, 134.0 + player.height * 0.5);
 			player.body.velocity.setxy(0, 0);
 		}
@@ -569,9 +573,15 @@ class TheValley extends MusicBeatState
 
 	function _startSpineDeathSequence():Void
 	{
+		if (_spineDeathPhase != 0) return;
+
 		_spineDeathPhase = 1;
 		_spineDeathTimer = 0;
 		_musicFadeFrom   = (FlxG.sound.music != null) ? FlxG.sound.music.volume : 1.0;
+
+		player.body.type = nape.phys.BodyType.KINEMATIC;
+		player.body.velocity.setxy(0, 0);
+		player.body.position.y += 18;
 	}
 
 	function _updateSpineDeath(elapsed:Float):Void

@@ -514,10 +514,12 @@ class Project extends HXProject
             } else {
                 if (filterFile(file, include, exclude)) {
                     if ((Path.extension(fullPath) == 'png' || Path.extension(fullPath) == 'webp') && FEATURE_COMPRESSED_TEXTURES.isEnabled(this)) {
-                        final astcPath:String = "astc-textures/" + fullPath.substr(0, fullPath.length - 3) + "astc";
+                        final relativePathWithAstc = Path.withExtension(fullPath, "astc");
+                        final astcPath:String = Path.join(["astc-textures", relativePathWithAstc]);
+                        
                         if (!isASTCExcluded(fullPath) && FileSystem.exists(astcPath)) {
                             fullPath = astcPath;
-                            targetPath = targetPath.substr(0, targetPath.length - 3) + "astc";
+                            targetPath = Path.withExtension(targetPath, "astc");
                         }
                     }
 

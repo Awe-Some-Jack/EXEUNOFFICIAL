@@ -2,6 +2,7 @@
 -- I want to make two camera zoom types: One that only defaults camera, and other that tweens the zoom to the default's camera zoom.
 -- I should make variables for the stringSplit and the value1 and 2, then i should use startTween onEvent
 -- Script by Raimbowcore12
+-- Fixes by Wolfie_1985 holy fuck this was driving me insane i had to fix it
 
 function onEvent(eventName, value1, value2)
     if eventName == "Tween Camera Zoom" then
@@ -25,6 +26,12 @@ function onEvent(eventName, value1, value2)
                 setProperty('tweenCamZoom',false);
                 --debugPrint('Default camera zoom!')
         end
+    end
+end
+
+function onUpdate()
+    if getProperty('tweenCamZoom') == true then
+        setProperty('defaultCamZoom', getProperty('camGame.zoom'))
     end
 end
 

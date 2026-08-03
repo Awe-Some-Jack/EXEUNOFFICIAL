@@ -25,7 +25,7 @@ local fateAssets = {
         {name = 'cuadrosArriba', path =     'fate/YOUR-FATE/upCovers', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
         {name =        'ground', path =  'fate/YOUR-FATE/ground-dark', x =  -400, y =  950, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
         {name =          'land', path =         'fate/YOUR-FATE/land', x =  1350, y = 1250, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
-        {name =  'overlayStage', path = 'fate/YOUR-FATE/overlayStage', x =  -400, y =  950, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = true},
+        {name =  'overlayStage', path = 'fate/YOUR-FATE/overlayStage', x =  -400, y = 1100, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = true},
         {name =    'redOverlay', path =                'fate/overlay', x =  -400, y = -600, animated = false,                                                                      scaleX =   1, scaleY =   2, alpha = 0, behind = 'nieblia', flipY = true, color = 'FF0000', lq = false, front = false},
     },
     ['BG2'] = {
@@ -70,6 +70,7 @@ local function prepareCharacters()
     addCharacterToList('lord x p3largo', 'dad')
     addCharacterToList('lord x p3scream', 'dad')
     addCharacterToList('bfo', 'bf')
+    addCharacterToList('bf085', 'bf')
     addCharacterToList('bf-perspective-right', 'bf')
 end
 
@@ -239,6 +240,7 @@ local fateStageEvents = {
         removeLuaSprite('bfFALL', true)
         removeLuaSprite('lordXBite', true)
         triggerEvent('Change Character', 'dad', 'lord x podrido')
+        triggerEvent('Change Character', 'bf', 'bf085')
         setProperty('gf.visible', true)
         setProperty('boyfriend.visible', true)
         setProperty('dad.alpha', 1)
@@ -531,6 +533,9 @@ function onStepHit()
             if shit.name == 'niebliaFinal' then doTweenAlpha('cloudA', 'niebliaFinal', 0, 3.6, 'smootherStepOut') end
         end
         doTweenAlpha('hudA', 'camHUD', 0, 3.6, 'smootherStepOut');
+    end
+    if curStep == 3488 then
+        doTweenAlpha('blackfuck', 'BlackGraphicGame', 1, 4.8, 'smootherStepOut')
     end
 end
 

@@ -26,6 +26,30 @@ local dashads = ''
 local dashadsHUD = ''
 luaDebugMode = true
 function onCreatePost()
+    addHaxeLibrary('FlxAngle', 'flixel.math')
+
+    runHaxeCode([[
+        function setShaderFrameInfo(obj:String) {
+            var char:FlxSprite;
+            switch(obj) {
+                case 'boyfriend':
+                    char = game.boyfriend;
+                case 'dad':
+                    char = game.dad;
+                case 'gf':
+                    char = game.gf;
+            }
+
+            char.animation.callback = function(name:String, frameNumber:Int, frameIndex:Int)
+            {
+                if (char.shader != null) {
+                    char.shader.setFloatArray('uFrameBounds', [char.frame.uv.x, char.frame.uv.y, char.frame.uv.width, char.frame.uv.height]);
+                    char.shader.setFloat('angOffset', char.frame.angle * FlxAngle.TO_RAD);
+                }
+            }
+        }
+    ]])
+
     dashads = 'game.camGame.filters = ['
     dashadsHUD = 'game.camHUD.filters = ['
     for num, shad in ipairs(shaders) do
@@ -45,12 +69,18 @@ function onCreatePost()
     dashadsHUD = dashadsHUD..']; return;'
     if shadersEnabled and not lowQuality then runHaxeCode(dashads) runHaxeCode(dashadsHUD) end
 
-    setSpriteShader('boyfriend', 'DropShadowShader')
-
-    setShaderFloat('boyfriend', 'hue', 10)
-    setShaderFloat('boyfriend', 'saturation', -70)
-    setShaderFloat('boyfriend', 'brightness', 0)
-    setShaderFloat('boyfriend', 'contrast', 0)
+    for _,char in ipairs({'boyfriend'}) do
+        setSpriteShader(char, 'DropShadowShader')
+        setShaderFloat(char, 'hue', 0)
+        setShaderFloat(char, 'saturation', 0)
+        setShaderFloat(char, 'contrast', 0)
+        setShaderFloat(char, 'str', 1)
+        setShaderFloat(char, 'brightness', 0)
+        setShaderFloat(char, 'thr', 0.1)
+        setShaderFloat(char, 'uSpriteAlpha', getProperty(char..'.alpha'))
+        setShaderFloat(char, 'AA_STAGES', 4.0)
+        runHaxeFunction('setShaderFrameInfo', {char})
+    end
 end
 
 local onTween1 = false
@@ -62,6 +92,23 @@ local onTween4Saturation = false
 local onTween4Contrast = false
 local onTween5 = false
 local glitchTime = false
+
+function onStepHit()
+    if curStep == 893 then
+        for _,char in ipairs({'boyfriend'}) do
+            setSpriteShader(char, 'DropShadowShader')
+            setShaderFloat(char, 'hue', 10)
+            setShaderFloat(char, 'saturation', -70)
+            setShaderFloat(char, 'contrast', 0)
+            setShaderFloat(char, 'str', 1)
+            setShaderFloat(char, 'brightness', 0)
+            setShaderFloat(char, 'thr', 0.1)
+            setShaderFloat(char, 'uSpriteAlpha', getProperty(char..'.alpha'))
+            setShaderFloat(char, 'AA_STAGES', 4.0)
+            runHaxeFunction('setShaderFrameInfo', {char})
+        end
+    end
+end
 
 function onEvent(eventName, value1, value2)
     local shaderValues = stringSplit(value1, ',')

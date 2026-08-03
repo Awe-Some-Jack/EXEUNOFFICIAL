@@ -2,6 +2,12 @@ local separation = 50
 local pauseEverything = false
 local savedThings = {}
 
+function onCreate()
+	initLuaShader('individualGlitches')
+	initLuaShader('brightness')
+	initLuaShader('pseudo')
+end
+
 function onCreatePost()
 	makeLuaSprite('bloom')
 	setSpriteShader('bloom', 'brightness')
@@ -9,9 +15,19 @@ function onCreatePost()
 	setShaderFloat('bloom', 'brightness', 0.5)
 	setShaderFloat('bloom', 'contrast', 2)
 
+	makeLuaSprite('sexo')
+	setSpriteShader('sexo', 'brightness')
+	setShaderFloat('sexo', 'saturation', 1)
+    setShaderFloat('sexo', 'contrast', 1)
+
 	makeLuaSprite('glih')
 	setSpriteShader('glih', 'pseudo')
 	setShaderFloat('glih', 'sort', 0.5)
+
+	makeLuaSprite('glitch')
+    setSpriteShader('glitch', 'individualGlitches')
+    setShaderFloat('glitch', 'binaryIntensity', 4)
+	setProperty('glitch.x', 4);
 
 	makeLuaSprite('illegal', 'gottago/illegalinstruction')
 	setObjectCamera('illegal', 'other')
@@ -23,6 +39,13 @@ function onCreatePost()
 	addLuaSprite('illegalbox', true)
 	addLuaSprite('illegal', true)
 	setProperty('illegal.visible', false) setProperty('illegalbox.visible', false)
+
+	if shadersEnabled then
+		runHaxeCode([[
+			game.camGame.filters = [new ShaderFilter(game.getLuaObject('sexo').shader)];
+			game.camHUD.filters = [new ShaderFilter(game.getLuaObject('sexo').shader)];
+		]])
+	end
 end
 
 function onCountdownStarted()
@@ -38,7 +61,7 @@ function goodNoteHit(id,nd,nt,isn)
 	pressednote = true
 end
 
-function onEvent(n,v1)
+function onEvent(n,v1,v2)
 	if n == 'gottaEvents' then
 		if v1 == 'pauseshit' then
 			pauseEverything = true
@@ -50,10 +73,12 @@ function onEvent(n,v1)
 			setProperty('illegal.visible', true) setProperty('illegalbox.visible', true)
 			if shadersEnabled then
 				runHaxeCode([[
-					game.camGame.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('glih').shader)];
-					game.camHUD.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('glih').shader)];
+					game.camGame.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('sexo').shader), new ShaderFilter(game.getLuaObject('glih').shader), new ShaderFilter(game.getLuaObject('glitch').shader)];
+					game.camHUD.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('sexo').shader), new ShaderFilter(game.getLuaObject('glih').shader), new ShaderFilter(game.getLuaObject('glitch').shader)];
 				]])
 			end
+			
+			runTimer('pause', 0.1);
 		end
 		if v1 == 'blackshit' then
 			setProperty('camGame.visible', false)
@@ -75,15 +100,34 @@ function onEvent(n,v1)
 
 			if shadersEnabled then
 				runHaxeCode([[
-					game.camGame.filters = [];
-					game.camHUD.filters = [];
+					game.camGame.filters = [new ShaderFilter(game.getLuaObject('sexo').shader)];
+					game.camHUD.filters = [new ShaderFilter(game.getLuaObject('sexo').shader)];
 				]])
 			end
+
+			setProperty('camHUD.exists', true);
+			setProperty('camHUD.alive', true);
+			setProperty('camGame.exists', true);
+			setProperty('camGame.alive', true);
 		end
 	end
+	if n == "bloomFlash" and flashingLights then
+        local bloomValues = stringSplit(v1, ',')
+        local tweenSettings = stringSplit(v2, ',')
+        cancelTween('sexoX')
+        setProperty('sexo.x', tonumber(bloomValues[1]))
+        doTweenX('sexoX', 'sexo', tonumber(bloomValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+    end
+end
+
+function onUpdate(e)
+	setShaderFloat('glitch', "binaryIntensity", getProperty('glitch.x'))
 end
 
 function onUpdatePost(e)
+    setShaderFloat('sexo', 'brightness', getProperty('sexo.x') * 2)
+    setShaderFloat('sexo', 'contrast', 1 + (getProperty('sexo.x') * 4))
+
 	if pauseEverything then
 		scaleObject('iconBF', savedThings[1], savedThings[1], false)
 		scaleObject('iconOpp', savedThings[2], savedThings[2], false)
@@ -101,4 +145,13 @@ end
 
 function getHealthColor(arg)
 	return string.format("%02x%02x%02x", math.floor(getProperty(arg..'.healthColorArray[0]')), math.floor(getProperty(arg..'.healthColorArray[1]')), math.floor(getProperty(arg..'.healthColorArray[2]')))
+end
+
+function onTimerCompleted(tag, loops, loopsLeft)
+	if tag == 'pause' then
+		setProperty('camHUD.exists', false);
+		setProperty('camHUD.alive', false);
+		setProperty('camGame.exists', false);
+		setProperty('camGame.alive', false);
+	end
 end

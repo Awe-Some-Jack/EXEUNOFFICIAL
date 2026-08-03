@@ -722,8 +722,9 @@ class Paths
 		var path = getPath('images/$key', TEXT, library, true);
 
 		#if MODS_ALLOWED
-		final modPath = library != null ? modFolders('$library/images/$key') : modFolders('images/$key');
-		final isValidFolder:Bool = #if sys (sys.FileSystem.exists(modPath) && sys.FileSystem.isDirectory(modPath)) || #end OpenFlAssets.exists(modPath + '/Animation.json');
+		final animJsonPath = library != null ? modFolders('$library/images/$key/Animation.json') : modFolders('images/$key/Animation.json');
+		final modPath = animJsonPath.substring(0, animJsonPath.lastIndexOf('/'));
+		final isValidFolder:Bool = #if sys (sys.FileSystem.exists(modPath) && sys.FileSystem.isDirectory(modPath)) || #end OpenFlAssets.exists(animJsonPath);
 		
 		if (isValidFolder)
 			path = modPath;

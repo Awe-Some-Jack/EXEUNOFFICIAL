@@ -25,7 +25,6 @@ class StoryModeState extends MusicBeatState
 	public static var instance:StoryModeState;
 	public static var weekCompleted:Map<String, Bool> = new Map<String, Bool>();
 	public static var yourselfMode:Bool = false;
- 
 
 	var _yourselfCutscene:YourselfCutscene;
 
@@ -337,15 +336,15 @@ class StoryModeState extends MusicBeatState
 		for (s in [greyBOX2, gfBOX, yellowBOX2, staticscreen2])
 			s.color = 0xFF666666;
 
-		rankText = new FlxText(0, 0, 0, 'RANK: ?');
-		rankText.setFormat(Paths.font("Plaza Regular.ttf"), 40, 0xFFA87E7E, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		rankText = new FlxText(0, 0, 0, Language.get("freeplay.rank", 'RANK') + ": ?");
+		rankText.setFormat(Paths.font("NiseSegaSonic.ttf"), 20, 0xFFA87E7E, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		rankText.borderSize = 2;
 		rankText.antialiasing = ClientPrefs.data.antialiasing;
 		rankText.visible = false;
 		add(rankText);
 
-		scoreText = new FlxText(0, 0, 0, 'SCORE: 0');
-		scoreText.setFormat(Paths.font("Plaza Regular.ttf"), 40, 0xFFA87E7E, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreText = new FlxText(0, 0, 0, Language.get("freeplay.score", 'SCORE') + ": 0");
+		scoreText.setFormat(Paths.font("NiseSegaSonic.ttf"), 20, 0xFFA87E7E, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreText.borderSize = 2;
 		scoreText.antialiasing = ClientPrefs.data.antialiasing;
 		scoreText.visible = false;
@@ -384,8 +383,8 @@ class StoryModeState extends MusicBeatState
 		final score = Highscore.getScore(song, diff);
 		final rating = Highscore.getRating(song, diff);
 
-		scoreText.text = 'SCORE: $score';
-		rankText.text = 'RANK: ' + getRankLetter(rating);
+		scoreText.text = Language.get("freeplay.score", 'SCORE') + ': $score';
+		rankText.text = Language.get("freeplay.rank", 'RANK') + ": " + getRankLetter(rating);
 
 		final targetRankY = FlxG.height - rankText.height - 70;
 		final targetScoreY = targetRankY + rankText.height + 4;

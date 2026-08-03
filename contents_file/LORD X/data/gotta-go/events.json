@@ -672,12 +672,6 @@
 			]
 		],
 		[
-			172200,
-			[
-				["Change Character", "dad", "RedGlove"]
-			]
-		],
-		[
 			174600,
 			[
 				["Tween Camera Zoom", "0.6, true", "0.8, circIn"]
@@ -687,6 +681,12 @@
 			175200,
 			[
 				["Tween Camera Zoom", "0.55", ""]
+			]
+		],
+		[
+			175500,
+			[
+				["Change Character", "dad", "RedGlove"]
 			]
 		],
 		[

@@ -40,7 +40,7 @@ function onGameOverStart()
 	daGameOverLoop = new FlxSprite();
 	daGameOverLoop.frames = Paths.getSparrowAtlas('characters/loop');
 	daGameOverLoop.animation.addByPrefix('xd', 'Símbolo 4', 24, true); daGameOverLoop.animation.play('xd');
-	daGameOverLoop.screenCenter();
+	daGameOverLoop.screenCenter(); daGameOverLoop.y += 200;
 	daGameOverLoop.scrollFactor.set();
 	daGameOverLoop.visible = false;
 	GameOverSubstate.instance.add(daGameOverLoop);
@@ -49,7 +49,7 @@ function onGameOverStart()
 	daGameOverRetry.frames = Paths.getSparrowAtlas('characters/retry');
 	daGameOverRetry.animation.addByPrefix('c', 'confirm', 24, false);
 	daGameOverRetry.animation.addByPrefix('idle', 'Símbolo 1', 24, true); daGameOverRetry.animation.play('idle');
-	daGameOverRetry.screenCenter(); daGameOverRetry.y -= 350;
+	daGameOverRetry.screenCenter(); daGameOverRetry.y -= 350; daGameOverRetry.y += 200;
 	daGameOverRetry.scrollFactor.set();
 	daGameOverRetry.visible = false;
 	GameOverSubstate.instance.add(daGameOverRetry);

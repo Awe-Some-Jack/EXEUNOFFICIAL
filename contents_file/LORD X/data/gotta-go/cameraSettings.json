@@ -21,6 +21,7 @@
     "OffsetsDAD": 25,
     "OffsetsGF": 25,
 
-    "Angle": 0
+    "Angle": 0,
 
+    "AutoZoomBump": false
 }

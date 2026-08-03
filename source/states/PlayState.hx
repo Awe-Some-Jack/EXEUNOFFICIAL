@@ -2242,7 +2242,7 @@ class PlayState extends MusicBeatState
 				// Game Over doesn't get his its variable because it's only used here
 				if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song + " | Game Over.", iconP2.getCharacter());
 				#end
-				#if !mac
+				#if (!mac && DISCORD_ALLOWED)
 				FlxG.stage.window.title = appName + " | Was Playing: " + SONG.song;
 				var dausername:String = DiscordClient.username ?? 'boyfriend';
 				if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = 'Lets try that again, shall we ${dausername}?';

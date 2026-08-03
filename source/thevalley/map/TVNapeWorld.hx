@@ -1,4 +1,4 @@
-package thevalley.map;
+﻿package thevalley.map;
 
 import openfl.display.BitmapData;
 import openfl.Assets;
@@ -19,7 +19,7 @@ import flixel.addons.nape.FlxNapeSpace;
 // so this whole class reads the collsion straight outta a png. 
 class TVNapeWorld
 {
-	public static inline var GRAVITY:Float = 1000.0;
+	public static inline var GRAVITY:Float = 1800.0;
 
 	public static var CB_PLATFORM:CbType = new CbType();
 	public static var CB_DYNAMIC:CbType  = new CbType();

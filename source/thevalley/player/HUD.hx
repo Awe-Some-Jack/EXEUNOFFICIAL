@@ -1,4 +1,4 @@
-package thevalley.player;
+﻿package thevalley.player;
 
 import flixel.FlxG;
 import flixel.FlxCamera;
@@ -23,7 +23,8 @@ class NumberDisplay
 	var _digits:Array<FlxSprite> = [];
 	var _group:FlxGroup;
 	var _cam:FlxCamera;
-	var _alpha:Float    = 1.0;
+
+	var _alpha:Float    = 0.0;
 	var _lastStr:String = "";
 	var _maxDigits:Int;
 
@@ -35,7 +36,7 @@ class NumberDisplay
 		scale      = sc;
 
 		var frames = Paths.getSparrowAtlas("minigame/thevalley/objects/hud/numbers");
-        
+
 		for (_ in 0..._maxDigits)
 		{
 			var spr = new FlxSprite(0, 0);
@@ -89,11 +90,15 @@ class NumberDisplay
 
 class HUD
 {
+
 	static final SPR_DEFAULTS:Array<{ id:String, x:Float, y:Float, sc:Float }> = [
-		{ id: "life",  x: 38,  y: 735, sc: 3.71 },
-		{ id: "score", x: 37,  y: 37,  sc: 3.52 },
-		{ id: "time",  x: 39,  y: 130, sc: 3.52 },
+		{ id: "life",  x: 38, y: 576, sc: 3.21 },
+		{ id: "score", x: 32, y: 29,  sc: 3.0  },
+		{ id: "time",  x: 34, y: 112, sc: 3.0  },
 	];
+
+	static inline var STAMINA_SCALE:Float = 2.66;
+	static inline var SHARD_SCALE:Float   = 2.8864;
 
 	var _cam:FlxCamera;
 	var _group:FlxGroup;
@@ -103,6 +108,7 @@ class HUD
 	var _timeDisp:NumberDisplay;
 	var _scoreDisp:NumberDisplay;
 	var _lifeDisp:NumberDisplay;
+	var _shardsDisp:NumberDisplay;
 	var _timeSep:FlxSprite;
 	var _shardsHud:FlxSprite;
 	var _shards:Array<FlxSprite> = [];
@@ -113,9 +119,10 @@ class HUD
 	var _targetAlpha:Float = 0.0;
 	var _alpha:Float       = 0.0;
 
-	var _lastTime:Int  = -1;
-	var _lastScore:Int = -1;
-	var _lastLives:Int = -1;
+	var _lastTime:Int   = -1;
+	var _lastScore:Int  = -1;
+	var _lastLives:Int  = -1;
+	var _lastShards:Int = -1;
 
 	public var lives:Int         = 3;
 	public var score:Int         = 0;
@@ -128,6 +135,10 @@ class HUD
 
 	var _shardPop:Array<Float>  = [0, 0, 0, 0, 0, 0];
 	var _shardPopSc:Float       = 2.2;
+
+	static inline var SHARD_NOTIFY_DUR:Float = 3.0;
+	var _shardNotifyTimer:Float = 0;
+	var _shardAlpha:Float       = 0;
 
 	public function new(state:flixel.FlxState, cam:FlxCamera)
 	{
@@ -152,44 +163,44 @@ class HUD
 
 		_timeDisp  = new NumberDisplay(_group, cam, 4, 3.5);
 		_scoreDisp = new NumberDisplay(_group, cam, 6, 3.5);
-		_lifeDisp  = new NumberDisplay(_group, cam, 2, 3.5);
+		_lifeDisp  = new NumberDisplay(_group, cam, 2, 2.87);
 
-		var timeDigitX  = [253.0, 269.0, 315.0, 350.0];
-		var timeDigitY  = 144.0;
+		var timeDigitX  = [203.0, 219.0, 265.0, 300.0];
+		var timeDigitY  = 122.0;
 		for (i in 0...4) {
 			_timeDisp.digitSprites[i].x = timeDigitX[i];
 			_timeDisp.digitSprites[i].y = timeDigitY;
 		}
 
-		var scoreDigitX = [179.0, 197.0, 215.0, 233.0, 251.0, 269.0];
-		var scoreDigitY = 50.0;
+		var scoreDigitX = [212.0, 230.0, 248.0, 266.0, 284.0, 302.0];
+		var scoreDigitY = 38.0;
 		for (i in 0...6) {
 			_scoreDisp.digitSprites[i].x = scoreDigitX[i];
 			_scoreDisp.digitSprites[i].y = scoreDigitY;
 		}
 
-		var lifeDigitX = [195.0, 213.0];
-		var lifeDigitY = 795.0;
+		var lifeDigitX = [155.0, 173.0];
+		var lifeDigitY = 629.0;
 		for (i in 0...2) {
 			_lifeDisp.digitSprites[i].x = lifeDigitX[i];
 			_lifeDisp.digitSprites[i].y = lifeDigitY;
 		}
 
-		_shardsHud = new FlxSprite(852.0, 18.0);
+		_shardsHud = new FlxSprite(587.0, 18.0);
 		_shardsHud.loadGraphic(Paths.image("minigame/thevalley/objects/hud/shards/shardstypeshi"));
-		_shardsHud.scale.set(3.52, 3.52);
+		_shardsHud.scale.set(3.12, 3.12);
 		_shardsHud.updateHitbox();
 		_shardsHud.scrollFactor.set(0, 0);
 		_shardsHud.cameras = [cam];
 		_shardsHud.alpha = 0;
 		_group.add(_shardsHud);
 
-		var shardXs = [905.0, 935.0, 968.0, 1000.0, 1032.0, 1062.0];
+		var shardXs = [618.0, 648.0, 681.0, 713.0, 745.0, 775.0];
 		for (i in 0...6)
 		{
-			var sh = new FlxSprite(shardXs[i], 18.0);
+			var sh = new FlxSprite(shardXs[i], 16.0);
 			sh.loadGraphic(Paths.image("minigame/thevalley/objects/hud/shards/shard"));
-			sh.scale.set(3.52, 3.52);
+			sh.scale.set(SHARD_SCALE, SHARD_SCALE);
 			sh.updateHitbox();
 			sh.scrollFactor.set(0, 0);
 			sh.cameras = [cam];
@@ -198,7 +209,11 @@ class HUD
 			_shards.push(sh);
 		}
 
-		_timeSep = new FlxSprite(297.0, 144.0);
+		_shardsDisp = new NumberDisplay(_group, cam, 1, 3.15);
+		_shardsDisp.digitSprites[0].x = 820.0;
+		_shardsDisp.digitSprites[0].y = 30.0;
+
+		_timeSep = new FlxSprite(248.0, 123.0);
 		_timeSep.loadGraphic(Paths.image("minigame/thevalley/objects/hud/signo"));
 		_timeSep.scale.set(3.5, 3.5);
 		_timeSep.updateHitbox();
@@ -208,20 +223,22 @@ class HUD
 		_timeSep.visible = false;
 		_group.add(_timeSep);
 
-		var staminaW = 120;
-		var staminaH = 5;
-		var staminaX = 38.0;
-		var staminaY = 820.0;
+		var staminaX = 54.0;
+		var staminaY = 560.0;
 
 		_staminaBg = new FlxSprite(staminaX, staminaY);
-		_staminaBg.makeGraphic(staminaW, staminaH, 0xFF1A0505);
+		_staminaBg.makeGraphic(51, 4, 0xFF1A0505);
+		_staminaBg.scale.set(STAMINA_SCALE, STAMINA_SCALE);
+		_staminaBg.updateHitbox();
 		_staminaBg.scrollFactor.set(0, 0);
 		_staminaBg.cameras = [cam];
 		_staminaBg.alpha = 0;
 		_group.add(_staminaBg);
 
 		_staminaFill = new FlxSprite(staminaX, staminaY);
-		_staminaFill.makeGraphic(staminaW, staminaH, 0xFF8B0000);
+		_staminaFill.loadGraphic(Paths.image("minigame/thevalley/objects/hud/staminabar"));
+		_staminaFill.scale.set(STAMINA_SCALE, STAMINA_SCALE);
+		_staminaFill.updateHitbox();
 		_staminaFill.scrollFactor.set(0, 0);
 		_staminaFill.cameras = [cam];
 		_staminaFill.alpha = 0;
@@ -234,8 +251,11 @@ class HUD
 	public function addShard():Void
 	{
 		if (shards >= 6) return;
-		_shardPop[shards] = 0.35; // little "pop" timer so the shard icon does a lil scale-bounce when u get it, feels way more satisfyin than just poppin in flat
+		_shardPop[shards] = 0.35;
 		shards++;
+		_shardNotifyTimer = SHARD_NOTIFY_DUR;
+
+		FlxG.sound.play(Paths.sound("minigame/thevalley/crystal"), 0.5);
 		if (shards >= 6 && onShardsComplete != null)
 			onShardsComplete();
 	}
@@ -243,9 +263,11 @@ class HUD
 	public function setStamina(ratio:Float):Void
 	{
 		_staminaRatio = Math.max(0, Math.min(1, ratio));
-		_staminaFill.scale.x = _staminaRatio;
+		_staminaFill.scale.x = STAMINA_SCALE * _staminaRatio;
+		_staminaFill.scale.y = STAMINA_SCALE;
 		_staminaFill.updateHitbox();
 		_staminaFill.x = _staminaBg.x;
+		_staminaFill.y = _staminaBg.y;
 	}
 
 	public function update(elapsed:Float):Void
@@ -268,10 +290,10 @@ class HUD
 			_applyAlpha(_alpha);
 		}
 
-		_refreshDisplays();
+		_refreshDisplays(elapsed);
 	}
 
-	function _refreshDisplays():Void
+	function _refreshDisplays(elapsed:Float):Void
 	{
 		var totalSec = Std.int(timeElapsed);
 		if (totalSec != _lastTime)
@@ -292,7 +314,28 @@ class HUD
 			_lastLives = lives;
 			_lifeDisp.setValue('${lives}');
 		}
-		var a = _alpha;
+		if (shards != _lastShards)
+		{
+			_lastShards = shards;
+			_shardsDisp.setValue('${shards}');
+		}
+
+		if (_shardNotifyTimer > 0)
+		{
+			_shardNotifyTimer -= elapsed;
+			if (_shardNotifyTimer < 0) _shardNotifyTimer = 0;
+		}
+		var shardTarget = (_shardNotifyTimer > 0) ? _alpha : 0.0;
+		if (_shardAlpha != shardTarget)
+		{
+			var spd = 1.0 - Math.pow(1.0 / 4.0, elapsed);
+			_shardAlpha += (shardTarget - _shardAlpha) * spd;
+			if (Math.abs(_shardAlpha - shardTarget) < 0.01) _shardAlpha = shardTarget;
+		}
+		_shardsHud.alpha  = _shardAlpha;
+		_shardsDisp.alpha = _shardAlpha;
+
+		var a = _shardAlpha;
 		for (i in 0..._shards.length)
 		{
 			var sh = _shards[i];
@@ -300,14 +343,14 @@ class HUD
 			{
 				_shardPop[i] -= FlxG.elapsed;
 				var t = Math.max(0, _shardPop[i] / 0.35);
-				var sc = 3.52 * (1.0 + (_shardPopSc - 1.0) * t * t);
+				var sc = SHARD_SCALE * (1.0 + (_shardPopSc - 1.0) * t * t);
 				sh.scale.set(sc, sc);
 				sh.updateHitbox();
 				sh.alpha = a;
 			}
 			else
 			{
-				sh.scale.set(3.52, 3.52);
+				sh.scale.set(SHARD_SCALE, SHARD_SCALE);
 				sh.alpha = i < shards ? a : a * 0.2;
 			}
 		}
@@ -320,7 +363,6 @@ class HUD
 		_scoreDisp.alpha   = a;
 		_lifeDisp.alpha    = a;
 		_timeSep.alpha     = a;
-		_shardsHud.alpha   = a;
 		_staminaBg.alpha   = a;
 		_staminaFill.alpha = a * _staminaRatio > 0 ? a : 0;
 	}

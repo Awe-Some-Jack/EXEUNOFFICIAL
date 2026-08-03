@@ -1,4 +1,4 @@
-package thevalley.bg;
+﻿package thevalley.bg;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -11,14 +11,14 @@ import shaders.WiggleEffect.WiggleEffectType;
 
 class BGValley
 {
-    public static final EXTRASUN_X:Float = 240.0;
-    public static final EXTRASUN_Y:Float = 265.0;
-    public static final ECLIPSE_X:Float  = 240.0;
-    public static final ECLIPSE_Y:Float  = 265.0;
+    public static final EXTRASUN_X:Float = 80.0;
+    public static final EXTRASUN_Y:Float = 230.0;
+    public static final ECLIPSE_X:Float  = 80.0;
+    public static final ECLIPSE_Y:Float  = 230.0;
 
     // mountains n fog scrollin at diff speeds so it looks 3D-ish you alredy kno
     static final LAYERS = [
-        { path: "minigame/thevalley/bg/mountain/1-mountain", scrollX: 0.005, scrollY: 0.0005, offsetX: 260.0, offsetY: -70.0 },
+        { path: "minigame/thevalley/bg/mountain/1-mountain", scrollX: 0.05, scrollY: 0.01, offsetX: 260.0, offsetY: -70.0 },
         { path: "minigame/thevalley/bg/mountain/2-mountain", scrollX: 0.1,  scrollY: 0.02, offsetX: 0.0,   offsetY: -80.0 },
         { path: "minigame/thevalley/bg/mountain/3-fog",      scrollX: 0.15, scrollY: 0.03, offsetX: 0.0,   offsetY: -70.0 },
         { path: "minigame/thevalley/bg/mountain/4-fog",      scrollX: 0.2,  scrollY: 0.04, offsetX: 0.0,   offsetY: -100.0 },
@@ -75,7 +75,7 @@ class BGValley
             bd.x = layer.offsetX;
             bd.y = 350 + layer.offsetY;
             bd.scale.set(1.1, 1.1);
-            
+
             if (layer.path.indexOf("fog") >= 0)
             {
                 var fw = new WiggleEffect();
@@ -137,7 +137,7 @@ class BGValley
             {
                 var p = _parts[entry.partIdx];
                 var graphic = Paths.image('minigame/thevalley/map/${p.part}/${entry.l.file}', false);
-                
+
                 _blackFadeSprites.push({ spr: spr, bmd: graphic.bitmap });
             }
         }
@@ -153,7 +153,7 @@ class BGValley
         if (Reflect.hasField(l, "xml"))
         {
             ls.frames = Paths.getSparrowAtlas('minigame/thevalley/map/${p.part}/${l.file}', false);
-            
+
             if (Reflect.hasField(l, "animations"))
             {
                 var anims:Array<Dynamic> = l.animations;
@@ -188,7 +188,7 @@ class BGValley
             for (entry in _blackFadeSprites)
             {
                 var hit = false;
-                
+
                 if (entry.bmd != null && entry.bmd.readable)
                 {
                     for (fx in sampleXs)
@@ -200,18 +200,58 @@ class BGValley
                             var wy = Std.int(player.y + player.height * fy);
                             var lx = wx - Std.int(entry.spr.x);
                             var ly = wy - Std.int(entry.spr.y);
-                            
+
                             if (lx < 0 || ly < 0 || lx >= entry.bmd.width || ly >= entry.bmd.height) continue;
-                            
+
                             var alpha = (entry.bmd.getPixel32(lx, ly) >> 24) & 0xFF;
                             if (alpha > 30) { hit = true; break; }
                         }
                     }
                 }
-                
+
                 var target = hit ? 0.20 : 1.0;
-                entry.spr.alpha += (target - entry.spr.alpha) * (1.0 - Math.pow(0.01, elapsed * 6.0));
+                entry.spr.alpha += (target - entry.spr.alpha) * (1.0 - Math.pow(0.01, elapsed * 2.0));
             }
         }
+    }
+
+    static inline var OCCLUSION_GRID:Int = 12;
+
+    public function getOcclusionAmount(player:Player, ?extraSprites:Array<FlxSprite>):Float
+    {
+        var samples = [for (i in 0...OCCLUSION_GRID) (i + 0.5) / OCCLUSION_GRID];
+        var hits  = 0;
+        var total = samples.length * samples.length;
+
+        for (fx in samples)
+        {
+            for (fy in samples)
+            {
+                var wx = Std.int(player.x + player.width  * fx);
+                var wy = Std.int(player.y + player.height * fy);
+                var hit = _isOpaqueAt(frontSprites, wx, wy) || _isOpaqueAt(mapSprites, wx, wy);
+                if (!hit && extraSprites != null) hit = _isOpaqueAt(extraSprites, wx, wy);
+                if (hit) hits++;
+            }
+        }
+        return hits / total;
+    }
+
+    function _isOpaqueAt(sprites:Array<FlxSprite>, wx:Int, wy:Int):Bool
+    {
+        for (spr in sprites)
+        {
+            if (!spr.visible || spr.alpha <= 0) continue;
+            var px = spr.pixels;
+            if (px == null || !px.readable) continue;
+
+            var lx = wx - Std.int(spr.x);
+            var ly = wy - Std.int(spr.y);
+            if (lx < 0 || ly < 0 || lx >= px.width || ly >= px.height) continue;
+
+            var alpha = (px.getPixel32(lx, ly) >> 24) & 0xFF;
+            if (alpha > 30) return true;
+        }
+        return false;
     }
 }

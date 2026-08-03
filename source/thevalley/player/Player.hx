@@ -1,4 +1,4 @@
-package thevalley.player;
+﻿package thevalley.player;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -22,7 +22,7 @@ typedef PlayerConfig = {
 	physics:{
 		walkAccel:Float, walkDecel:Float, walkBrake:Float, walkMax:Float,
 		runMax:Float, runAccel:Float,
-		staminaMax:Int, staminaDrain:Int, staminaRegen:Int,
+		staminaMax:Int, staminaDrain:Float, staminaRegen:Int,
 		airAccel:Float,  airMax:Float,
 		jumpVy:Float,    jumpCut:Float,
 		maxFall:Float,
@@ -46,27 +46,26 @@ class Player extends FlxSprite
 	public var inertia:Float      = 0.0;
 	public var groundAngle:Float  = 0.0;
 	public var jumpHeld:Bool      = false;
-	public var wingOpenTimer:Int  = 0;
-	public var glideCooldown:Int  = 0;
+	public var wingOpenTimer:Float = 0;
+	public var glideCooldown:Float = 0;
 	public var isGrounded:Bool    = false;
 	public var touchingFloor:Bool = false;
 	public var onSlope:Bool       = false;
-	public var coyoteTimer:Int    = 0;
-	public var jumpBufTimer:Int   = 0;
+	public var coyoteTimer:Float  = 0;
+	public var jumpBufTimer:Float = 0;
 	public var slopeDeg:Float     = 0.0;
 	public var rawAngle:Float     = 0.0;
 	public var isRunning:Bool     = false;
 	public var isHidden:Bool      = false;
 	public var isHiding:Bool      = false;
 	public var lockedAnim:String  = null;
-	public var stamina:Int        = 180;
+	public var stamina:Float      = 180;
 
 	public var sensorDistL:Int    = 0x7FFF;
 	public var sensorDistC:Int    = 0x7FFF;
 	public var sensorDistR:Int    = 0x7FFF;
 
-	var _wasGrounded:Bool       = false;
-	var _launchCooldown:Int     = 0;
+	var _launchCooldown:Float   = 0;
 	var _glideTimer:Float       = 0.0;
 	var _glideCooldownSec:Float = 0.0;
 	var _staminaDepleted:Bool   = false;
@@ -112,7 +111,7 @@ class Player extends FlxSprite
 		var boxH = h.height - rad;
 		var cx   = spawnX + h.width  * 0.5;
 		var cy   = spawnY + h.height * 0.5;
-
+		
 		body = new Body(BodyType.DYNAMIC, Vec2.weak(cx, cy));
 
 		// shii i honestly thanks gpt for this idea, i didnt know
@@ -155,8 +154,8 @@ class Player extends FlxSprite
 
 		if (body.velocity.y > 900.0) body.velocity.y = 900.0;
 
-		if (_launchCooldown > 0) _launchCooldown--;
-		if (glideCooldown  > 0) glideCooldown--;
+		if (_launchCooldown > 0) _launchCooldown -= elapsed;
+		if (glideCooldown  > 0) glideCooldown -= elapsed;
 		if (_jumpCooldown  > 0) _jumpCooldown -= elapsed;
 		if (_glideCooldownSec > 0) _glideCooldownSec -= elapsed;
 		if (mode == Glide && !cinematic)
@@ -167,18 +166,14 @@ class Player extends FlxSprite
 
 		if (isGrounded)
 		{
-			_glideTimer = 0; 
+			_glideTimer = 0;
 			_glideCooldownSec = 0;
 
-			// coyote shi
-			coyoteTimer = cfg.tuning.coyoteFrames;
-			if (!_wasGrounded)
-				FlxG.sound.play("assets/shared/sounds/minigame/thevalley/jumplanding.ogg", 0.3); // THUD (guy fell from waaay up and it shows)
+			coyoteTimer = cfg.tuning.coyoteFrames / 60.0;
 
 			if (cinematic) body.velocity.x = 0;
 		}
-		else if (coyoteTimer > 0) coyoteTimer--;
-		_wasGrounded = isGrounded;
+		else if (coyoteTimer > 0) coyoteTimer -= elapsed;
 
 		var h = cfg.hitbox;
 		x = body.position.x - h.width  * 0.5;
@@ -188,7 +183,7 @@ class Player extends FlxSprite
 		velocity.y = body.velocity.y;
 
 		super.update(elapsed);
-	}
+	}    
 
 	// shoots 3 little invisible lasers down outta the feet like kaboom type shi
 	function _detectGround(elapsed:Float):Void
@@ -217,7 +212,7 @@ class Player extends FlxSprite
 			var orig = Vec2.get(body.position.x + ox, footY - 2);
 			var ray  = new Ray(orig, rayDir);
 			ray.maxDistance = DIST;
-			
+
 			var res = body.space.rayCast(ray, false);
 			orig.dispose();
 
@@ -225,14 +220,14 @@ class Player extends FlxSprite
 			{
 				isGrounded    = true;
 				touchingFloor = true;
-				
+
 				if (res.distance < shortestDist)
 				{
 					shortestDist = res.distance;
 					var nx = res.normal.x;
 					var ny = res.normal.y;
 					var ang = Math.atan2(nx, -ny) * (180.0 / Math.PI);
-					
+
 					if (Math.abs(ang) <= 85.0) 
 					{
 						groundAngle = ang;
@@ -244,7 +239,8 @@ class Player extends FlxSprite
 		}
 		rayDir.dispose();
 
-		if (isGrounded) mode = Ground;
+		var inAerialMove = mode == WingOpen || mode == Glide || mode == WingClose || mode == Launch;
+		if (isGrounded) { if (!inAerialMove) mode = Ground; }
 		else { touchingFloor = false; if (mode == Ground) mode = Air; }
 	}
 
@@ -260,18 +256,15 @@ class Player extends FlxSprite
 		body.velocity.y = dot * ty;
 	}
 
-	// ese culo gravitando sobre mi velga
 	function _applyModeGravity(elapsed:Float):Void
 	{
 		var p = cfg.physics;
-		var defaultGravity = TVNapeWorld.GRAVITY; 
-		
 		switch (mode)
 		{
 			case WingOpen:
 				body.velocity.y -= TVNapeWorld.GRAVITY * 0.6 * elapsed;
 				if (body.velocity.y > p.glideMaxFall) body.velocity.y = p.glideMaxFall;
-				if (wingOpenTimer > 0) { wingOpenTimer--; if (wingOpenTimer == 0) mode = Glide; }
+				if (wingOpenTimer > 0) { wingOpenTimer -= elapsed; if (wingOpenTimer <= 0) { wingOpenTimer = 0; mode = Glide; } }
 			case Glide:
 				body.velocity.y += (p.glideGravity - TVNapeWorld.GRAVITY) * elapsed;
 				if (body.velocity.y > p.glideMaxFall) body.velocity.y = p.glideMaxFall;
@@ -280,20 +273,8 @@ class Player extends FlxSprite
 			case Launch:
 				if (body.velocity.y >= 0) mode = Air;
 			default:
-				if (!isGrounded)
-				{
-					if (body.velocity.y < 0 && !jumpHeld)
-						body.velocity.y += defaultGravity * 1.5 * elapsed; 
-
-					if (Math.abs(body.velocity.y) < 120.0)
-						body.velocity.y -= defaultGravity * 0.4 * elapsed;
-
-					if (body.velocity.y > 0)
-						body.velocity.y += defaultGravity * 0.6 * elapsed;
-
-					if (body.velocity.y > p.maxFall) 
-						body.velocity.y = p.maxFall;
-				}
+				if (!isGrounded && !jumpHeld && body.velocity.y < p.jumpCut)
+					body.velocity.y = p.jumpCut;
 		}
 	}
 
@@ -302,7 +283,8 @@ class Player extends FlxSprite
 		var p = cfg.physics;
 		var t = cfg.tuning;
 		if (cinematic) return false;
-		if (isHidden) return false;
+
+		if (isHidden || isHiding) return false;
 
 		if (FlxG.keys.justPressed.R)
 		{
@@ -327,27 +309,33 @@ class Player extends FlxSprite
 		final jumpHeldNow = FlxG.keys.pressed.Z     || FlxG.keys.pressed.SPACE;
 
 		if (jumpRel)  jumpHeld = false;
-		if (jumpJust) jumpBufTimer = t.jumpBufferFrames; // jump buffer: u mashed space 2 frames b4 landin, we got u, calm down
+		if (jumpJust) jumpBufTimer = t.jumpBufferFrames / 60.0;
 
 		final gnd = coyoteTimer > 0;
 		if (gnd && (mode == Glide || mode == WingOpen || mode == WingClose))
-			mode = Ground; wingOpenTimer = glideCooldown = 0; _glideTimer = 0; _glideCooldownSec = 0;
+		{
+
+			mode = Ground;
+			wingOpenTimer = glideCooldown = 0;
+			_glideTimer = 0;
+			_glideCooldownSec = 0;
+		}
 
 		if (stamina <= 0) _staminaDepleted = true;
 		if (_staminaDepleted && stamina >= p.staminaMax) _staminaDepleted = false;
-
+        
 		//gf cardio simulator. she out here doin more exercise than me fr fatass chair 
 		var wantsRun = gnd && shift && (left || right) && stamina > 0 && !_staminaDepleted;
 		if (wantsRun)
 		{
 			isRunning = true;
-			stamina -= p.staminaDrain;
+			stamina -= p.staminaDrain * elapsed * 60.0;
 			if (stamina < 0) stamina = 0;
 		}
 		else
 		{
 			isRunning = false;
-			stamina += p.staminaRegen;
+			stamina += p.staminaRegen * elapsed * 60.0;
 			if (stamina > p.staminaMax) stamina = p.staminaMax;
 		}
 
@@ -392,29 +380,28 @@ class Player extends FlxSprite
 			jumpHeld    = true;
 			isGrounded  = false;
 			coyoteTimer = jumpBufTimer = 0;
-			_jumpCooldown = 0.5;
+			_jumpCooldown = 0.6;
 			mode = Air;
 			stamina -= 20;
 			if (stamina < 0) stamina = 0;
-			FlxG.sound.play("assets/shared/sounds/minigame/thevalley/jump.ogg", 0.3);
 		}
 
-		if (jumpJust && !gnd && mode == Air && body.velocity.y > -50 && glideCooldown == 0 && _glideCooldownSec <= 0)
+		if (jumpJust && !gnd && mode == Air && body.velocity.y > -50 && glideCooldown <= 0 && _glideCooldownSec <= 0 && lockedAnim != "fallingtodeath")
 		{
 			body.velocity.y = p.wingOpenImpulse;
-			wingOpenTimer   = p.wingOpenFrames;
-			glideCooldown   = p.glideCooldown;
+			wingOpenTimer   = p.wingOpenFrames / 60.0;
+			glideCooldown   = p.glideCooldown / 60.0;
 			_glideTimer     = 1.5;
 			mode            = WingOpen;
 		}
 		else if (!jumpHeldNow && mode == Glide)
 			mode = WingClose;
 
-		if (jumpBufTimer > 0) jumpBufTimer--;
+		if (jumpBufTimer > 0) jumpBufTimer -= elapsed;
 
 		return false;
 	}
-
+    
 	public function updateAnim(elapsed:Float):Void
 	{
 		var p = cfg.physics;
@@ -479,14 +466,14 @@ class Player extends FlxSprite
 	public function doLaunch(vy:Float = 0):Void
 	{
 		body.position.y -= 5; 
-		
+
 		body.velocity.y = 0; 
 		body.velocity.y = (vy != 0) ? vy : cfg.physics.launchVy;
-		
+
 		isGrounded      = false;
 		touchingFloor   = false;
 		jumpHeld        = false;
 		mode            = Launch;
-		_launchCooldown = 20;
+		_launchCooldown = 20.0 / 60.0;
 	}
 }

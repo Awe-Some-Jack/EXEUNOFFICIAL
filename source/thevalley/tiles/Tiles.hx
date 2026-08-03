@@ -1,6 +1,7 @@
-package thevalley.tiles;
+﻿package thevalley.tiles;
 
 import flixel.FlxG;
+import flixel.FlxCamera;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -69,6 +70,7 @@ class CrumblingTile extends FlxSprite
 	var _standTimer:Float = 0;
 	var _shakeTimer:Float = 0;
 	var _sinkTimer:Float  = 0;
+	var _offTimer:Float   = 0;
 	var _originX:Float;
 	var _originY:Float;
 	var _playerOn:Bool = false;
@@ -110,7 +112,13 @@ class CrumblingTile extends FlxSprite
 		switch (tileState)
 		{
 			case Idle:
+
 				if (_playerOn)
+					_offTimer = 0;
+				else
+					_offTimer += elapsed;
+
+				if (_playerOn || _offTimer < 0.15)
 				{
 					_standTimer += elapsed;
 					var pressY = 14.0 * (_standTimer / 5.0); // tile sinks a lil the longer u chill on it
@@ -322,8 +330,6 @@ class SpineTile
 	var _hitW:Float;
 	var _hitH:Float;
 
-	public var body:Body;
-
 	public function new(wx:Float, wy:Float)
 	{
 		x = wx;
@@ -337,7 +343,6 @@ class SpineTile
 		_sprH = _spr.height;
 
 		_parseHitbox();
-		_buildBody(wx, wy);
 	}
 
 	function _parseHitbox():Void
@@ -375,30 +380,31 @@ class SpineTile
 		_hitH = (maxY > 0)  ? maxY - minY + 1 : _sprH;
 	}
 
-	function _buildBody(wx:Float, wy:Float):Void
-	{
-		var cx = wx + _hitX + _hitW * 0.5;
-		var cy = wy + _hitH * 0.5;
-		body = new Body(BodyType.STATIC, Vec2.weak(cx, cy));
-		body.shapes.add(new Polygon(Polygon.box(_hitW, _hitH)));
-		body.allowRotation = false;
-		body.setShapeMaterials(new Material(0.1, 0.0, 0.0, 1.0, 0.0));
-		body.cbTypes.add(TVNapeWorld.CB_PLATFORM);
-		body.space = FlxNapeSpace.space;
-	}
+	static inline var KILL_SINK_OFFSET:Float = 24.0;
 
 	public function checkKill(player:Player):Bool
 	{
 		return player.x + player.width  > x + _hitX
 		    && player.x                 < x + _hitX + _hitW
-		    && player.y + player.height > y
+		    && player.y + player.height > y + KILL_SINK_OFFSET
 		    && player.y                 < y + _hitH;
+	}
+
+	static inline var WARNING_HEIGHT:Float = 20.0;
+
+	public function checkFallingWarning(player:Player):Bool
+	{
+		if (player.body == null || player.body.velocity.y <= 0) return false;
+		var footY = player.y + player.height;
+		if (footY > y + KILL_SINK_OFFSET) return false;
+		return player.x + player.width > x
+		    && player.x               < x + _sprW
+		    && (y - footY) <= WARNING_HEIGHT;
 	}
 
 	public function destroy():Void
 	{
-		if (body != null) { body.space = null; body = null; }
-		if (_spr  != null) _spr.destroy();
+		if (_spr != null) _spr.destroy();
 	}
 }
 
@@ -422,9 +428,6 @@ class SonicBridge
 	var _plankH:Float;
 	var _estribW:Float;
 
-	var _floorX:Float = 0;
-	var _floorW:Float = 0;
-
 	public function new(wx:Float, wy:Float, state:FlxState)
 	{
 		x = wx;
@@ -443,8 +446,6 @@ class SonicBridge
 		_plankH = sample.height;
 		sample.destroy();
 
-		_parseFloor();
-
 		for (i in 0...14)
 		{
 			var px = wx + _estribW + i * _plankW;
@@ -457,10 +458,10 @@ class SonicBridge
 			_planks.push(spr);
 			_baseY.push(py);
 
-			var bx = px + _floorX + _floorW * 0.5;
-			var by = py + _floorX;
+			var bx = px + _plankW * 0.5;
+			var by = py;
 			var body = new Body(BodyType.KINEMATIC, Vec2.weak(bx, by + 4.0 * 0.5));
-			body.shapes.add(new Polygon(Polygon.box(_floorW, 4.0)));
+			body.shapes.add(new Polygon(Polygon.box(_plankW, 4.0)));
 			body.allowRotation = false;
 			body.setShapeMaterials(new Material(0.05, 0.0, 0.0, 1.0, 0.0));
 			body.cbTypes.add(TVNapeWorld.CB_PLATFORM);
@@ -515,32 +516,6 @@ class SonicBridge
 				body.space = FlxNapeSpace.space;
 			}
 		}
-	}
-
-	function _parseFloor():Void
-	{
-		var graphic = Paths.image("minigame/thevalley/bg/tiles/bridge/bridgehitbox", false);
-		var hb = graphic != null ? graphic.bitmap : null;
-		if (hb == null) { _floorX = 0; _floorW = _plankW; return; }
-		var bw  = hb.width;
-		var pxs = hb.getVector(hb.rect);
-		var minX = bw; var maxX = 0;
-		for (i in 0...pxs.length)
-		{
-			var argb = pxs[i];
-			var a = (argb >> 24) & 0xFF; if (a < 30) continue;
-			var g = (argb >>  8) & 0xFF;
-			var r = (argb >> 16) & 0xFF;
-			var b =  argb        & 0xFF;
-			if (r < 40 && g > 180 && b < 40)
-			{
-				var px = i % bw;
-				if (px < minX) minX = px;
-				if (px > maxX) maxX = px;
-			}
-		}
-		_floorX = (minX < bw) ? minX : 0;
-		_floorW = (maxX > 0)  ? maxX - minX + 1 : _plankW;
 	}
 
 	public function bridgeUpdate(elapsed:Float, player:Player):Void
@@ -619,7 +594,7 @@ class Launchpad extends FlxSprite
 	{
 		super(tx, ty);
 		frames = Paths.getSparrowAtlas("minigame/thevalley/objects/interactable/launchpad");
-		
+
 		animation.addByPrefix("idle",    "launchpad idle",    12, true);
 		animation.addByPrefix("goingup", "launchpad goingup", 24, false);
 		animation.addByPrefix("up",      "launchpad up",      12, true);
@@ -720,6 +695,7 @@ class Launchpad extends FlxSprite
 class SkullPrompt
 {
 	public static inline var INTERACT_DIST:Float = 120.0;
+	static inline var SEARCH_ZOOM_BUMP:Float = 0.35;
 
 	public var skullX(get, never):Float;
 	public var skullY(get, never):Float;
@@ -730,25 +706,28 @@ class SkullPrompt
 	var _eButton:FlxSprite;
 	var _player:Player;
 	var _cutscene:TVCutscene;
+	var _cam:FlxCamera;
 	var _state:SkullState        = SkIdle;
 	var _searchTimer:Float       = 0;
 	var _resultTimer:Float       = 0;
 	var _win:Bool                = false;
 	var _done:Bool               = false;
 	var _searchSound:flixel.sound.FlxSound = null;
+	var _zoomFrom:Float          = 0;
 
 	inline function get_skullX() return _skull.x;
 	inline function get_skullY() return _skull.y;
 
-	public function new(wx:Float, wy:Float, player:Player, cutscene:TVCutscene, group:FlxTypedGroup<FlxSprite>)
+	public function new(wx:Float, wy:Float, player:Player, cutscene:TVCutscene, group:FlxTypedGroup<FlxSprite>, cam:FlxCamera)
 	{
 		_player   = player;
 		_eButton  = cutscene.eButton;
 		_cutscene = cutscene;
+		_cam      = cam;
 
 		_skull = new FlxSprite(wx, wy);
 		_skull.frames = Paths.getSparrowAtlas("minigame/thevalley/bg/tiles/skulls/skulls");
-		
+
 		_skull.animation.addByIndices("idle",       "skulls destroying", [0], "", 1, true);
 		_skull.animation.addByPrefix("destroying", "skulls destroying", 8, false);
 		_skull.animation.addByPrefix("destroy",    "skulls destroy",    1, false);
@@ -783,7 +762,8 @@ class SkullPrompt
 		var cy = _hitzone.y + _hitzone.height * 0.5;
 		var dx = _player.x + _player.width  * 0.5 - cx;
 		var dy = _player.y + _player.height * 0.5 - cy;
-		if (Math.abs(dy) > 60.0) return 9999.0;
+
+		if (Math.abs(dy) > 30.0) return 9999.0;
 		return Math.sqrt(dx * dx + dy * dy);
 	}
 
@@ -812,6 +792,7 @@ class SkullPrompt
 					_eButton.alpha = 0;
 					_state         = SkSearching;
 					_searchTimer   = 0;
+					_zoomFrom      = _cam.zoom;
 					_player.cinematic     = true;
 					_player.mode          = thevalley.player.Player.PlayerMode.Ground;
 					_player.wingOpenTimer = 0;
@@ -825,19 +806,28 @@ class SkullPrompt
 			case SkSearching:
 				_eButton.alpha = 0;
 				_searchTimer += elapsed;
+
+				var zt = Math.min(_searchTimer / 1.5, 1.0);
+				zt = 1.0 - (1.0 - zt) * (1.0 - zt);
+				_cam.zoom = _zoomFrom + SEARCH_ZOOM_BUMP * zt;
 				if (_searchTimer >= 1.5)
 				{
 					if (_searchSound != null) { _searchSound.stop(); _searchSound = null; }
 					_win         = !_cutscene.skullUsedOnce ? true : Math.random() < 0.15;
 					_state       = SkResult;
 					_resultTimer = 0;
-					_player.lockedAnim = _win ? "searchingwin" : null;
+
+					_player.lockedAnim = _win ? "searchingwin" : "searchinglose";
 					_player.animation.play(_win ? "searchingwin" : "searchinglose", true);
 				}
 
 			case SkResult:
 				_eButton.alpha = 0;
 				_resultTimer += elapsed;
+
+				var zt2 = Math.min(_resultTimer / 0.9, 1.0);
+				zt2 = 1.0 - (1.0 - zt2) * (1.0 - zt2);
+				_cam.zoom = (_zoomFrom + SEARCH_ZOOM_BUMP) + (_zoomFrom - (_zoomFrom + SEARCH_ZOOM_BUMP)) * zt2;
 				if (!_win)
 				{
 					var anim2 = _player.animation.curAnim;
@@ -958,9 +948,11 @@ class HoldingTile
 	}
 }
 
-// press E to hide your ass from the booty reaper. yes i like booty
 class Totem
 {
+	static inline var HIDE_ZOOM_BUMP:Float = 0.4;
+	static inline var HIDE_ZOOM_RATE:Float = 2.0;
+
 	public var totemX(get, never):Float;
 	public var totemY(get, never):Float;
 	public var totemType(get, never):TotemType;
@@ -978,17 +970,23 @@ class Totem
 	var _flxState:flixel.FlxState;
 	var _savedFacing:FlxDirectionFlags;
 
+	var _cam:FlxCamera;
+	var _zoomFrom:Float = 0;
+
+	var _hasHidden:Bool = false;
+
 	inline function get_totemX()    return _sprite.x;
 	inline function get_totemY()    return _sprite.y;
 	inline function get_totemType() return _type;
 
-	public function new(wx:Float, wy:Float, type:TotemType, player:Player, cutscene:TVCutscene, group:FlxTypedGroup<FlxSprite>, ?state:flixel.FlxState)
+	public function new(wx:Float, wy:Float, type:TotemType, player:Player, cutscene:TVCutscene, group:FlxTypedGroup<FlxSprite>, ?state:flixel.FlxState, ?cam:FlxCamera)
 	{
 		_player   = player;
 		_eButton  = cutscene.eButton;
 		_type     = type;
 		_group    = group;
 		_flxState = state;
+		_cam      = cam;
 
 		_sprite = new FlxSprite(wx, wy);
 		switch (type)
@@ -1040,7 +1038,8 @@ class Totem
 		var cy = _hitzone.y + _hitzone.height * 0.5;
 		var dx = _player.x + _player.width  * 0.5 - cx;
 		var dy = _player.y + _player.height * 0.5 - cy;
-		if (Math.abs(dy) > 80.0) return 9999.0;
+
+		if (Math.abs(dy) > 40.0) return 9999.0;
 		return Math.sqrt(dx * dx + dy * dy);
 	}
 
@@ -1072,6 +1071,8 @@ class Totem
 						_player.isHiding = true;
 						_player.animation.play("hide1", true);
 						if (_type == Fake) _sprite.animation.play("press", true);
+						_hasHidden = true;
+						if (_cam != null) _zoomFrom = _cam.zoom;
 					}
 					else
 					{
@@ -1136,6 +1137,11 @@ class Totem
 					_state  = ToIdle;
 					_player.isHidden = false;
 					_player.body.gravMass = 1.0;
+
+					_player.body.velocity.setxy(0, 0);
+					_player.jumpHeld     = false;
+					_player.coyoteTimer  = 0;
+					_player.jumpBufTimer = 0;
 					_player.animation.play("idle");
 					if (_flxState != null)
 					{
@@ -1145,5 +1151,16 @@ class Totem
 					if (_type == Fake) _sprite.animation.play("idle");
 				}
 		}
+
+		_updateHideZoom(elapsed);
+	}
+
+	function _updateHideZoom(elapsed:Float):Void
+	{
+		if (_cam == null || !_hasHidden) return;
+		var hiding = _state == ToHiding || _state == ToHidden;
+		var target = hiding ? (_zoomFrom + HIDE_ZOOM_BUMP) : _zoomFrom;
+		if (!hiding && Math.abs(_cam.zoom - target) < 0.01) return;
+		_cam.zoom += (target - _cam.zoom) * (1.0 - Math.pow(0.01, elapsed * HIDE_ZOOM_RATE));
 	}
 }

@@ -1,4 +1,4 @@
-package thevalley.cutscenes;
+﻿package thevalley.cutscenes;
 
 import flixel.FlxG;
 import flixel.FlxCamera;
@@ -10,6 +10,13 @@ import flixel.util.FlxColor;
 // skull searching shi
 class CSSkull
 {
+	static var LINE_VARIANTS:Array<Array<String>> = [
+		["I have to wake up BF but how?",         "I guess i'll have to find the other parts..."],
+		["How am I supposed to wake him up like this?", "There's gotta be more pieces out there somewhere."],
+		["Ugh, how do I even wake him up now?",   "Guess I'm not done looking yet."],
+		["I need to snap him out of it... but how?", "There must be more pieces scattered around here."]
+	];
+
 	public var playing:Bool    = false;
 	public var onDone:Void->Void;
 
@@ -23,6 +30,7 @@ class CSSkull
 	var _fadeOutStart:Float = -1.0;
 	var _lastVoiceTime:Float = 0;
 	var _voice:flixel.sound.FlxSound;
+	var _lineVariant:Int = 0;
 
 	var _dimmer:FlxSprite;
 	var _ball:FlxSprite;
@@ -39,7 +47,7 @@ class CSSkull
 	public function addSprites():Void
 	{
 		_dimmer = new FlxSprite(0, 0);
-		_dimmer.makeGraphic(1280, 896, 0xFF000000);
+		_dimmer.makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		_dimmer.alpha = 0;
 		_dimmer.scrollFactor.set(0, 0);
 		_dimmer.cameras = [_uiCam];
@@ -47,7 +55,7 @@ class CSSkull
 
 		_hand = new FlxSprite(0, 0);
 		_hand.loadGraphic(Paths.image("minigame/thevalley/bg/cutscene/CSkull/gfhand"));
-		_hand.scale.set(2.0, 2.0);
+		_hand.scale.set(1.7, 1.7);
 		_hand.updateHitbox();
 		_hand.scrollFactor.set(0, 0);
 		_hand.cameras = [_uiCam];
@@ -56,7 +64,7 @@ class CSSkull
 
 		_ball = new FlxSprite(0, 0);
 		_ball.loadGraphic(Paths.image("minigame/thevalley/bg/cutscene/CSkull/gfball"));
-		_ball.scale.set(3.2, 3.2);
+		_ball.scale.set(2.7, 2.7);
 		_ball.updateHitbox();
 		_ball.scrollFactor.set(0, 0);
 		_ball.cameras = [_uiCam];
@@ -64,14 +72,14 @@ class CSSkull
 		_state.add(_ball);
 
 		var barH = 54;
-		_subBar = new FlxSprite(0, 896);
-		_subBar.makeGraphic(1280, barH, 0xFF000000);
+		_subBar = new FlxSprite(0, FlxG.height);
+		_subBar.makeGraphic(FlxG.width, barH, 0xFF000000);
 		_subBar.scrollFactor.set(0, 0);
 		_subBar.cameras = [_uiCam];
 		_subBar.alpha = 0.82;
 		_state.add(_subBar);
 
-		_subTxt = new FlxText(0, 0, 1280, "", 18);
+		_subTxt = new FlxText(0, 0, FlxG.width, "", 18);
 		_subTxt.font = "assets/fonts/timer.otf";
 		_subTxt.color = FlxColor.WHITE;
 		_subTxt.setBorderStyle(FlxTextBorderStyle.SHADOW, FlxColor.BLACK, 3);
@@ -92,12 +100,13 @@ class CSSkull
 		_fadeOutStart  = -1.0;
 		_voice         = null;
 		_lastVoiceTime = 0;
-		_subBar.y      = 896;
+		_lineVariant   = Std.random(LINE_VARIANTS.length);
+		_subBar.y      = FlxG.height;
 		_subTxt.visible = false;
 		_ball.x  = -_ball.width;
-		_ball.y  = 896 - _ball.height;
-		_hand.x  = (1280 - _hand.width) * 0.5 + 110;
-		_hand.y  = 896;
+		_ball.y  = FlxG.height - _ball.height;
+		_hand.x  = (FlxG.width - _hand.width) * 0.5 + 110;
+		_hand.y  = FlxG.height;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.fadeOut(1.0, 0.3);
 	}
@@ -108,14 +117,14 @@ class CSSkull
 		_timer += elapsed;
 
 		var slideT = Math.min(_timer / 1.2, 1.0);
-		slideT = 1.0 - (1.0 - slideT) * (1.0 - slideT); // ease out so it slams in fast then chills at the end, ithink its way less stiff than linear
+		slideT = 1.0 - (1.0 - slideT) * (1.0 - slideT);
 
 		_ball.x = _lerp(-_ball.width, 0.0, slideT);
-		_ball.y = 896 - _ball.height;
+		_ball.y = FlxG.height - _ball.height;
 
-		var handTargetY = 896 - _hand.height;
-		_hand.x = (1280 - _hand.width) * 0.5 + 110;
-		_hand.y = _lerp(896.0, handTargetY, slideT);
+		var handTargetY = FlxG.height - _hand.height;
+		_hand.x = (FlxG.width - _hand.width) * 0.5 + 110;
+		_hand.y = _lerp(FlxG.height, handTargetY, slideT);
 
 		var fadeInAlpha = Math.min(_timer / 1.2, 1.0);
 		if (!_fadeOut)
@@ -131,12 +140,12 @@ class CSSkull
 			_subTxt.visible = true;
 		}
 
-		var barTargetY:Float = 896 - _subBar.height;
+		var barTargetY:Float = FlxG.height - _subBar.height;
 		if (_timer >= 1.2 && !_fadeOut)
 		{
 			var barT = Math.min((_timer - 1.2) / 0.25, 1.0);
 			barT = 1.0 - (1.0 - barT) * (1.0 - barT);
-			_subBar.y = _lerp(896.0, barTargetY, barT);
+			_subBar.y = _lerp(FlxG.height, barTargetY, barT);
 		}
 
 		if (_voice != null && !_voiceDone && !_fadeOut)
@@ -144,15 +153,15 @@ class CSSkull
 			if (_voice.playing)
 				_lastVoiceTime = _voice.time / 1000.0;
 			_subTxt.text = _lastVoiceTime < 5.088
-				? "I have to wake up BF but how?"
-				: "I guess i'll have to find the other parts...";
+				? LINE_VARIANTS[_lineVariant][0]
+				: LINE_VARIANTS[_lineVariant][1];
 			_subTxt.y = _subBar.y + (_subBar.height - _subTxt.height) * 0.5;
 		}
 
 		if (_fadeOut)
 		{
 			var fadeT2 = (_fadeOutStart >= 0) ? Math.min((_timer - _fadeOutStart) / 0.8, 1.0) : 0.0;
-			_subBar.y = _lerp(barTargetY, 896.0, fadeT2);
+			_subBar.y = _lerp(barTargetY, FlxG.height, fadeT2);
 			_subTxt.y = _subBar.y + (_subBar.height - _subTxt.height) * 0.5;
 			if (fadeT2 >= 1.0) _subTxt.visible = false;
 		}
@@ -176,7 +185,7 @@ class CSSkull
 			var eased = 0.5 - Math.cos(fadeT * Math.PI) * 0.5;
 
 			_ball.x = _lerp(0, -_ball.width - 20, eased);
-			_hand.y = _lerp(896 - _hand.height, 896 + _hand.height + 20, eased);
+			_hand.y = _lerp(FlxG.height - _hand.height, FlxG.height + _hand.height + 20, eased);
 			_dimmer.alpha = 0.20 + (0.55 - 0.20) * fadeT;
 
 			if (fadeT >= 1.0)

@@ -1,4 +1,4 @@
-package thevalley.tiles;
+﻿package thevalley.tiles;
 
 import flixel.FlxBasic;
 import flixel.FlxSprite;
@@ -25,17 +25,23 @@ class TileMap
 	public var amys:Array<AmyNPC>                = [];
 	public var knuckles:Array<KnucklesNPC>       = [];
 
+	public var onPlayerKilled:Void->Void;
+
+	var _dying:Bool = false;
+
 	public function new() {}
 
 	public function loadFromJson(state:FlxState):Void
 	{
-		var raw = openfl.Assets.getText("assets/shared/data/minigame/thevalley/tiles.json");
+		var path = "assets/shared/data/minigame/thevalley/tiles.json";
+		if (!openfl.Assets.exists(path)) return;
+		var raw = openfl.Assets.getText(path);
 		if (raw == null || raw == "") return;
 		var parsed:Dynamic = haxe.Json.parse(raw);
 		var crumbleData:Array<{ x:Float, y:Float }>;
 		var grabbedData:Array<{ x:Float, y:Float }>;
 		var bridgeData:Array<{ x:Float, y:Float }>;
-		// object with named lists. kept this check so old saves dont just explode
+
 		if (Std.isOfType(parsed, Array))
 		{
 			crumbleData = parsed;
@@ -89,21 +95,21 @@ class TileMap
 		}
 	}
 
-	public function insertHoldingSprites(state:FlxState):Void
+	public function insertHoldingSprites(state:FlxState, anchors:Array<FlxSprite>):Void
 	{
 		var refIdx = -1;
-		for (sp in spines)
+		for (a in anchors)
 		{
-			var i = state.members.indexOf(sp.sprite);
-			if (i > refIdx) refIdx = i;
+			var i = state.members.indexOf(a);
+			if (i >= 0 && (refIdx < 0 || i < refIdx)) refIdx = i;
 		}
 		if (refIdx < 0) return;
 		for (ht in holdingTiles)
 		{
 			state.members.remove(ht.ropeSprite);
 			state.members.remove(ht.tileSprite);
-			state.members.insert(refIdx + 1, ht.ropeSprite);
-			state.members.insert(refIdx + 1, ht.tileSprite);
+			state.members.insert(refIdx, ht.ropeSprite);
+			state.members.insert(refIdx, ht.tileSprite);
 		}
 	}
 
@@ -176,6 +182,63 @@ class TileMap
 
 		for (br in bridges)
 			br.bridgeUpdate(elapsed, player);
+
+		_updateSpines(elapsed, player);
+	}
+
+	function _updateSpines(elapsed:Float, player:Player):Void
+	{
+		if (_dying)
+		{
+
+			player.body.velocity.setxy(0, 0);
+			player.body.angularVel = 0;
+			player.body.gravMass = 0;
+			return;
+		}
+
+		if (player.cinematic) return;
+
+		for (sp in spines)
+		{
+			if (sp.checkKill(player))
+			{
+				_dying = true;
+				player.cinematic  = true;
+				player.body.velocity.setxy(0, 0);
+				player.body.angularVel = 0;
+				player.body.gravMass = 0;
+				player.lockedAnim = "death1";
+				player.animation.play("death1", true);
+				FlxG.sound.play(Paths.sound("minigame/thevalley/deathspikes"), 0.7);
+				if (onPlayerKilled != null) onPlayerKilled();
+				return;
+			}
+		}
+
+		var warning = false;
+		for (sp in spines)
+			if (sp.checkFallingWarning(player)) { warning = true; break; }
+
+		if (warning)
+		{
+			if (player.lockedAnim != "fallingtodeath")
+			{
+
+				player.mode = thevalley.player.Player.PlayerMode.Air;
+			}
+			player.lockedAnim = "fallingtodeath";
+		}
+		else if (player.lockedAnim == "fallingtodeath")
+			player.lockedAnim = null;
+	}
+
+	public function clearDying(player:Player):Void
+	{
+		_dying = false;
+		player.cinematic     = false;
+		player.lockedAnim    = null;
+		player.body.gravMass = 1.0;
 	}
 
 	function _spawn(wx:Float, wy:Float, state:FlxState):CrumblingTile
@@ -219,8 +282,8 @@ class TileMap
 	{
 		var tv = Std.downcast(state, thevalley.TheValley);
 		var g = (tv != null)
-			? new GaryNPC(wx, wy, tv.player, tv.cutscene, tv.uiCam, state)
-			: new GaryNPC(wx, wy, null, null, null, state);
+			? new GaryNPC(wx, wy, tv.player, tv.cutscene, tv.uiCam, state, tv.bgCam)
+			: new GaryNPC(wx, wy, null, null, null, state, null);
 		garys.push(g);
 		if (tv != null) tv.objectGroup.add(g) else state.add(g);
 		return g;

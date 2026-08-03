@@ -1,4 +1,4 @@
-package thevalley;
+﻿package thevalley;
 
 import flixel.FlxCamera;
 import flixel.FlxCamera.FlxCameraFollowStyle;
@@ -6,7 +6,6 @@ import flixel.FlxG;
 import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.util.FlxGradient;
 import flixel.addons.nape.FlxNapeSpace;
 import thevalley.bg.BGValley;
 import thevalley.map.TVNapeWorld;
@@ -25,18 +24,33 @@ class TheValley extends MusicBeatState
 
 	var _mapParts:Array<{ part:Int, x:Float, y:Float, width:Float, height:Float }> = [];
 
-	var bgCam:FlxCamera;
+	public var bgCam:FlxCamera;
 	public var uiCam:FlxCamera;
 
-	var bg:BGValley;
-	var _vigLeft:FlxSprite;
-	var _vigRight:FlxSprite;
+	public var bg:BGValley;
+	var _vignette:FlxSprite;
+	var _vigTimer:Float = 0;
 	var napeWorld:TVNapeWorld;
-	
+
 	var hud:HUD;
-	var tileMap:TileMap;
+	public var tileMap:TileMap;
 
 	var _gameplayStarted:Bool = false;
+
+	var _ambientSound:flixel.sound.FlxSound;
+	var _ambientCloseness:Float = 0;
+
+	var _lookDownTimer:Float = 0;
+
+	var _deathFade:FlxSprite;
+	var _spineDeathPhase:Int   = 0;
+	var _spineDeathTimer:Float = 0;
+	var _musicFadeFrom:Float   = 1.0;
+
+	var _occlusionAmount:Float = 0;
+
+	var _isRestarting:Bool          = false;
+	var _pauseWatcher:Void->Void    = null;
 
 	public var cutscene:TVCutscene;
 	public var player:Player;
@@ -48,13 +62,10 @@ class TheValley extends MusicBeatState
 	public var objectGroup:FlxTypedGroup<FlxSprite>;
 	public var treeGroup:FlxTypedGroup<FlxSprite>;
 	public var trees:Array<FlxSprite> = [];
-
-	static inline var NATIVE_W:Int = 1280;
-	static inline var NATIVE_H:Int = 896;
+	public var tileCheckers:Array<FlxSprite> = [];
 
 	static var _prevAntialiasing:Bool = false;
-	static var _letterboxed:Bool      = false;
-	static var _wasFullscreen:Bool    = false;
+	var _prevWindowTitle:String;
 
 	override public function create():Void
 	{
@@ -63,18 +74,20 @@ class TheValley extends MusicBeatState
 
 		super.create();
 
-		bgCam = new FlxCamera(0, 0, 1280, 896);
+		_prevWindowTitle = FlxG.stage.window.title;
+		FlxG.stage.window.title = "Friday Night Funkin': In The Valley";
+
+		PlayState.isLetterboxedAspectRatio = true;
+
+		bgCam = new FlxCamera();
 		bgCam.bgColor = 0xFF000000;
 		bgCam.zoom = 2.8;
 		FlxG.cameras.reset(bgCam);
 
-		uiCam = new FlxCamera(0, 0, 1280, 896);
+		uiCam = new FlxCamera();
 		uiCam.bgColor = 0x00000000;
 		FlxG.cameras.add(uiCam, false);
 
-		_enableLetterbox();
-
-		// map is chopped into 11 pieces (1.json thru 11.json) instead of one big map.
 		for (i in 1...MAP_PARTS + 1)
 		{
 			var path = 'assets/shared/data/minigame/thevalley/map/$i.json';
@@ -87,7 +100,7 @@ class TheValley extends MusicBeatState
 		var mapMinX:Float = Math.POSITIVE_INFINITY;
 		var mapMinY:Float = 0;
 		var mapMaxY:Float = 0;
-		
+
 		for (p in _mapParts)
 		{
 			if (p.x + p.width  > mapW)    mapW    = p.x + p.width;
@@ -125,7 +138,7 @@ class TheValley extends MusicBeatState
 
 		treeGroup = new FlxTypedGroup<FlxSprite>();
 		add(treeGroup);
-		
+
 		var map1Spr = bg.mapSprites.length > 0 ? bg.mapSprites[0] : null;
 		if (map1Spr != null)
 		{
@@ -136,28 +149,17 @@ class TheValley extends MusicBeatState
 		objectGroup = new FlxTypedGroup<FlxSprite>();
 		add(objectGroup);
 
-		player = new Player(80.0, 155.0, "assets/shared/images/minigame/thevalley/characters/fakergf/fakergf.json");
+		player = new Player(146.0, 134.0, "assets/shared/images/minigame/thevalley/characters/fakergf/fakergf.json");
 		player.cinematic = true;
+		add(player);
 
-		bgCam.follow(player, FlxCameraFollowStyle.LOCKON);
-		bgCam.followLerp = 0.08;
 		bgCam.setScrollBounds(0, 11749, null, null);
 
+		_vignette = _buildVignette();
+		add(_vignette);
+
 		hud = new HUD(this, uiCam);
-		hud.setVisible(false);
 		hud.timerRunning = false;
-
-		_vigLeft = FlxGradient.createGradientFlxSprite(420, 896, [0xAA000000, 0x00000000], 1, 0);
-		_vigLeft.scrollFactor.set(0, 0); _vigLeft.cameras = [uiCam]; add(_vigLeft);
-
-		_vigRight = FlxGradient.createGradientFlxSprite(420, 896, [0x00000000, 0xAA000000], 1, 0);
-		_vigRight.x = 1280 - 420; _vigRight.scrollFactor.set(0, 0); _vigRight.cameras = [uiCam]; add(_vigRight);
-
-		var vigTop = FlxGradient.createGradientFlxSprite(1280, 200, [0x66000000, 0x00000000], 1, 90);
-		vigTop.scrollFactor.set(0, 0); vigTop.cameras = [uiCam]; add(vigTop);
-
-		var vigBottom = FlxGradient.createGradientFlxSprite(1280, 200, [0x00000000, 0xAA000000], 1, 90);
-		vigBottom.x = 0; vigBottom.y = 896 - 200; vigBottom.scrollFactor.set(0, 0); vigBottom.cameras = [uiCam]; add(vigBottom);
 
 		cutscene = new TVCutscene(this, player, bgCam, uiCam, hud);
 		cutscene.addSprites(this, uiCam);
@@ -166,9 +168,9 @@ class TheValley extends MusicBeatState
 		{
 			_gameplayStarted  = true;
 			player.cinematic  = false;
-			hud.setVisible(true);
 			hud.timerRunning  = true;
 		};
+
 		cutscene.onSkullWin = function()
 		{
 			hud.addShard();
@@ -177,21 +179,40 @@ class TheValley extends MusicBeatState
 		{
 			hud.addShard();
 		};
-		cutscene.skipAll();
+		cutscene.playIntro();
+
+		_ambientSound = FlxG.sound.load(Paths.music("minigame/thevalley/ambient"), 0, true, null, false, true);
 
 		bg.addFrontLayers();
 
 		tileMap = new TileMap();
+		tileMap.onPlayerKilled = _startSpineDeathSequence;
 		tileMap.loadFromJson(this);
 
 		var map7Spr = bg.mapSpriteByPart.get(7);
 		if (map7Spr != null)
 			tileMap.insertSpineSprites(this, map7Spr);
-		tileMap.insertHoldingSprites(this);
 
 		_loadObjects();
 
-		add(player);
+		var holdingAnchors = tileCheckers.length > 0
+			? tileCheckers
+			: [for (sp in tileMap.spines) sp.sprite];
+		tileMap.insertHoldingSprites(this, holdingAnchors);
+
+		_deathFade = new FlxSprite(0, 0);
+		_deathFade.makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
+		_deathFade.scrollFactor.set(0, 0);
+		_deathFade.cameras = [uiCam];
+		_deathFade.alpha = 0;
+		add(_deathFade);
+
+		if (PlayState.instance == null)
+		{
+			var dummyPlayState = new PlayState();
+			dummyPlayState.vocals = new FlxSound();
+			PlayState.instance = dummyPlayState;
+		}
 
 		flixel.addons.nape.FlxNapeSpace.drawDebug = true;
 		FlxG.debugger.drawDebug = true;
@@ -201,26 +222,63 @@ class TheValley extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (_letterboxed)
+		if (bgCam.target != null) bgCam.followLerp = 0.08;
+
+		var nape = FlxG.plugins.get(flixel.addons.nape.FlxNapeSpace);
+		if (nape != null) nape.active = true;
+
+		if (FlxG.sound.music != null) FlxG.sound.music.play();
+
+		if (controls.PAUSE)
 		{
-			final fs = FlxG.fullscreen;
-			if (_wasFullscreen && !fs) _snapWindow();
-			_wasFullscreen = fs;
+			persistentUpdate = false;
+			persistentDraw   = true;
+			bgCam.followLerp = 0;
+			if (nape != null) nape.active = false;
+			if (FlxG.sound.music != null) FlxG.sound.music.pause();
+
+			options.OptionsState.standaloneReturnState = () -> new thevalley.TheValley();
+
+			states.substates.PauseSubState.cameraWidth = FlxG.width;
+			openSubState(new states.substates.PauseSubState());
+
+			var canCheckRestart = true;
+			_pauseWatcher = () -> {
+				var pauseSub = Std.downcast(subState, states.substates.PauseSubState);
+				if (pauseSub == null) { _removePauseWatcher(); return; }
+				if (canCheckRestart)
+				{
+					@:privateAccess _isRestarting = (pauseSub.curSelected == 1);
+					if (controls.ACCEPT) canCheckRestart = false;
+				}
+			};
+			FlxG.signals.postUpdate.add(_pauseWatcher);
+			return;
 		}
 
 		bg.update(elapsed, player);
+		_updateVignette(elapsed);
+
+		_updatePlayerOcclusion(elapsed);
+
+		hud.setVisible(!player.cinematic && !player.isHiding && !player.isHidden);
 		hud.update(elapsed);
 		tileMap.update(elapsed, player);
 
+		_updateSpineDeath(elapsed);
+
 		cutscene.update(elapsed);
 		for (sk in skullPrompts) sk.update(elapsed);
-		for (g in tileMap.garys) g.npcUpdate(elapsed);
 		player.updateAnim(elapsed);
 
 		if (_gameplayStarted)
 		{
-			player.handleInput(elapsed, 80.0, 155.0);
+			player.handleInput(elapsed, 146.0, 134.0);
 			hud.setStamina(player.stamina / player.cfg.physics.staminaMax);
+			_updateLookDown(elapsed);
+
+			for (g in tileMap.garys) g.npcUpdate(elapsed);
+			_updateAmbience(elapsed);
 
 			for (lp in launchpads)
 			{
@@ -264,62 +322,124 @@ class TheValley extends MusicBeatState
 				if (nearestTotem != null)
 					nearestTotem.updateActive(elapsed, nearTotemDist);
 			}
+
+			_updateTotemHide(elapsed);
 		}
+	}
+
+	function _removePauseWatcher():Void
+	{
+		if (_pauseWatcher != null)
+		{
+			FlxG.signals.postUpdate.remove(_pauseWatcher);
+			_pauseWatcher = null;
+		}
+	}
+
+	function _updateLookDown(elapsed:Float):Void
+	{
+		var holding = FlxG.keys.pressed.S && !player.cinematic;
+		_lookDownTimer = holding ? _lookDownTimer + elapsed : 0;
+
+		var active = _lookDownTimer >= 3.0;
+		bgCam.targetOffset.y = active ? 80.0 : 0;
+	}
+
+	function _updatePlayerOcclusion(elapsed:Float):Void
+	{
+
+		var target = bg.getOcclusionAmount(player, trees);
+		_occlusionAmount += (target - _occlusionAmount) * (1.0 - Math.pow(0.01, elapsed * 6.0));
+		player.color = FlxColor.interpolate(FlxColor.WHITE, 0xFF63636E, _occlusionAmount);
+	}
+
+	function _updateAmbience(elapsed:Float):Void
+	{
+		var closeness = 0.0;
+		var forceFull = false;
+		for (g in tileMap.garys)
+		{
+			var d = g.getDist();
+			var c = 1.0 - Math.min(Math.max((d - 60.0) / (220.0 - 60.0), 0.0), 1.0);
+			if (c > closeness) closeness = c;
+			if (g.isTalking) forceFull = true;
+		}
+		for (tm in totems)
+		{
+			var dt = tm.getDist();
+			var ct = 1.0 - Math.min(Math.max((dt - 70.0) / (220.0 - 70.0), 0.0), 1.0);
+			if (ct > closeness) closeness = ct;
+			if (tm.isBusy()) forceFull = true;
+		}
+		if (forceFull) closeness = 1.0;
+
+		_ambientCloseness += (closeness - _ambientCloseness) * (1.0 - Math.pow(0.01, elapsed * 2.0));
+
+		if (_spineDeathPhase == 0 && FlxG.sound.music != null) FlxG.sound.music.volume = 1.0 - _ambientCloseness;
+		if (_ambientSound != null) _ambientSound.volume = _ambientCloseness * 0.5;
+	}
+
+	static inline var TOTEM_ZOOM_RATE:Float = 1.0;
+
+	function _updateTotemHide(elapsed:Float):Void
+	{
+		var hiding = player.isHiding || player.isHidden;
+		if (!hiding && Math.abs(bgCam.zoom - 2.8) < 0.01) return;
+
+		var targetZoom = hiding ? 4.80 : 2.8;
+		bgCam.zoom += (targetZoom - bgCam.zoom) * (1.0 - Math.pow(0.01, elapsed * TOTEM_ZOOM_RATE));
+	}
+
+	function _buildVignette():FlxSprite
+	{
+		var w  = FlxG.width;
+		var h  = FlxG.height;
+		var bmd = new openfl.display.BitmapData(w, h, true, 0x00000000);
+		var cx = w * 0.5;
+		var cy = h * 0.5;
+
+		for (y in 0...h)
+		{
+			var dy = (y - cy) / cy;
+			for (x in 0...w)
+			{
+				var dx = (x - cx) / cx;
+				var dist = Math.sqrt(dx * dx + dy * dy);
+
+				var a = (dist - 0.35) / (1.15 - 0.35);
+				if (a < 0) a = 0;
+				if (a > 1) a = 1;
+				a *= a;
+
+				var alpha = Std.int(a * 235);
+				bmd.setPixel32(x, y, (alpha << 24) | 0x000000);
+			}
+		}
+
+		var spr = new FlxSprite(0, 0);
+		spr.loadGraphic(bmd, false, 0, 0, true);
+		spr.origin.set(0, 0);
+
+		spr.scrollFactor.set(0, 0);
+		spr.cameras = [uiCam];
+		return spr;
+	}
+
+	function _updateVignette(elapsed:Float):Void
+	{
+		_vigTimer += elapsed;
+		var wave = 0.5 + 0.5 * Math.sin(_vigTimer * 0.5 * Math.PI * 2);
+		_vignette.alpha = 1.0 - 0.12 * wave;
 	}
 
 	override public function destroy():Void
 	{
+		_removePauseWatcher();
 		FlxSprite.defaultAntialiasing = _prevAntialiasing;
-		_disableLetterbox();
+		FlxG.stage.window.title = _prevWindowTitle;
+		if (!_isRestarting)
+			PlayState.isLetterboxedAspectRatio = false;
 		super.destroy();
-	}
-
-	static function _enableLetterbox():Void
-	{
-		if (_letterboxed) return;
-		_letterboxed = true;
-
-		for (cam in FlxG.cameras.list)
-			cam.setSize(NATIVE_W, NATIVE_H);
-
-		FlxG.scaleMode = new flixel.system.scaleModes.FixedRatioScaleMode(NATIVE_W, NATIVE_H);
-		FlxG.stage.window.resizable = false;
-
-		_wasFullscreen = FlxG.fullscreen;
-		if (!FlxG.fullscreen) _snapWindow();
-	}
-
-	static function _disableLetterbox():Void
-	{
-		if (!_letterboxed) return;
-		_letterboxed = false;
-
-		for (cam in FlxG.cameras.list)
-			cam.setSize(FlxG.initialWidth, FlxG.initialHeight);
-
-		FlxG.scaleMode = new flixel.system.scaleModes.RatioScaleMode();
-		FlxG.stage.window.resizable = true;
-
-		if (!FlxG.fullscreen)
-		{
-			FlxG.resizeGame(FlxG.initialWidth, FlxG.initialHeight);
-			FlxG.resizeWindow(FlxG.initialWidth, FlxG.initialHeight);
-
-			final screen = FlxG.stage.window.display;
-			final winX = Std.int((screen.bounds.width  - FlxG.initialWidth)  / 2);
-			final winY = Std.int((screen.bounds.height - FlxG.initialHeight) / 2);
-			FlxG.stage.window.move(winX, winY);
-		}
-	}
-
-	static function _snapWindow():Void
-	{
-		FlxG.resizeWindow(NATIVE_W, NATIVE_H);
-
-		final screen = FlxG.stage.window.display;
-		final winX = Std.int((screen.bounds.width  - NATIVE_W) / 2);
-		final winY = Std.int((screen.bounds.height - NATIVE_H) / 2);
-		FlxG.stage.window.move(winX, winY);
 	}
 
 	public function reorderSpine(sp:thevalley.tiles.SpineTile):Void
@@ -342,17 +462,40 @@ class TheValley extends MusicBeatState
 		return t;
 	}
 
+	public function spawnTileChecker(wx:Float, wy:Float):FlxSprite
+	{
+		var tc = new FlxSprite(wx, wy);
+		tc.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/tilecheckers/tilecheckers"));
+		tc.scrollFactor.set(1, 1);
+		tileCheckers.push(tc);
+
+		var map7Spr = bg.mapSpriteByPart.get(7);
+		if (map7Spr != null)
+		{
+			add(tc);
+			var idx = members.indexOf(map7Spr);
+			members.remove(tc);
+			members.insert(idx + 1, tc);
+		}
+		else
+		{
+			objectGroup.add(tc);
+		}
+		return tc;
+	}
+
 	public function spawnLaunchpad(wx:Float, wy:Float):Launchpad
 	{
 		var lp = new Launchpad(wx, wy);
 		launchpads.push(lp);
-		add(lp);
+
+		objectGroup.add(lp);
 		return lp;
 	}
 
 	public function spawnSkull(wx:Float, wy:Float):SkullPrompt
 	{
-		var sk = new SkullPrompt(wx, wy, player, cutscene, objectGroup);
+		var sk = new SkullPrompt(wx, wy, player, cutscene, objectGroup, bgCam);
 		sk.skullId = skullPrompts.length;
 		skullPrompts.push(sk);
 		return sk;
@@ -360,7 +503,7 @@ class TheValley extends MusicBeatState
 
 	public function spawnTotem(wx:Float, wy:Float, type:TotemType):Totem
 	{
-		var tm = new Totem(wx, wy, type, player, cutscene, objectGroup, this);
+		var tm = new Totem(wx, wy, type, player, cutscene, objectGroup, this, bgCam);
 		totems.push(tm);
 		return tm;
 	}
@@ -379,21 +522,26 @@ class TheValley extends MusicBeatState
 			}
 		}];
 		var trs = [for (t in trees) { x: t.x, y: t.y }];
-		var json = haxe.Json.stringify({ launchpads: lps, skulls: sks, totems: tms, trees: trs }, null, "  ");
+		var tcs = [for (tc in tileCheckers) { x: tc.x, y: tc.y }];
+		var json = haxe.Json.stringify({ launchpads: lps, skulls: sks, totems: tms, trees: trs, tileCheckers: tcs }, null, "  ");
 		sys.io.File.saveContent("assets/shared/data/minigame/thevalley/objects.json", json);
 		#end
 	}
 
 	function _loadObjects():Void
 	{
-		var raw = openfl.Assets.getText("assets/shared/data/minigame/thevalley/objects.json");
+		var path = "assets/shared/data/minigame/thevalley/objects.json";
+		if (!openfl.Assets.exists(path)) return;
+		var raw = openfl.Assets.getText(path);
 		if (raw == null || raw == "") return;
 		var data:{ launchpads:Array<{x:Float,y:Float}>, skulls:Array<{x:Float,y:Float}>,
-		           totems:Array<{x:Float,y:Float,type:String}>, trees:Array<{x:Float,y:Float}> } = haxe.Json.parse(raw);
-		if (data.launchpads != null) for (d in data.launchpads) spawnLaunchpad(d.x, d.y);
-		if (data.skulls     != null) for (d in data.skulls)     spawnSkull(d.x, d.y);
-		if (data.trees      != null) for (d in data.trees)      spawnTree(d.x, d.y);
-		if (data.totems     != null)
+		           totems:Array<{x:Float,y:Float,type:String}>, trees:Array<{x:Float,y:Float}>,
+		           tileCheckers:Array<{x:Float,y:Float}> } = haxe.Json.parse(raw);
+		if (data.launchpads   != null) for (d in data.launchpads)   spawnLaunchpad(d.x, d.y);
+		if (data.skulls       != null) for (d in data.skulls)       spawnSkull(d.x, d.y);
+		if (data.trees        != null) for (d in data.trees)        spawnTree(d.x, d.y);
+		if (data.tileCheckers != null) for (d in data.tileCheckers) spawnTileChecker(d.x, d.y);
+		if (data.totems       != null)
 			for (d in data.totems)
 			{
 				var t = switch (d.type) {
@@ -414,8 +562,56 @@ class TheValley extends MusicBeatState
 		}
 		else
 		{
-			player.body.position.setxy(80.0 + player.width * 0.5, 155.0 + player.height * 0.5);
+			player.body.position.setxy(146.0 + player.width * 0.5, 134.0 + player.height * 0.5);
 			player.body.velocity.setxy(0, 0);
+		}
+	}
+
+	function _startSpineDeathSequence():Void
+	{
+		_spineDeathPhase = 1;
+		_spineDeathTimer = 0;
+		_musicFadeFrom   = (FlxG.sound.music != null) ? FlxG.sound.music.volume : 1.0;
+	}
+
+	function _updateSpineDeath(elapsed:Float):Void
+	{
+		if (_spineDeathPhase == 0) return;
+		_spineDeathTimer += elapsed;
+
+		switch (_spineDeathPhase)
+		{
+			case 1:
+
+				if (FlxG.sound.music != null)
+					FlxG.sound.music.volume = _musicFadeFrom * (1.0 - Math.min(_spineDeathTimer / 0.9, 1.0));
+				if (_spineDeathTimer >= 0.9)
+				{
+					if (FlxG.sound.music != null) FlxG.sound.music.volume = 0;
+					_spineDeathPhase = 2;
+					_spineDeathTimer = 0;
+				}
+			case 2:
+				_deathFade.alpha = Math.min(_spineDeathTimer / 0.4, 1.0);
+				if (_spineDeathTimer >= 0.4)
+				{
+					_deathFade.alpha = 1.0;
+
+					_onPlayerKilled();
+					tileMap.clearDying(player);
+					_spineDeathPhase = 3;
+					_spineDeathTimer = 0;
+				}
+			case 3:
+				_deathFade.alpha = 1.0 - Math.min(_spineDeathTimer / 0.4, 1.0);
+				if (FlxG.sound.music != null)
+					FlxG.sound.music.volume = Math.min(_spineDeathTimer / 0.4, 1.0);
+				if (_spineDeathTimer >= 0.4)
+				{
+					_deathFade.alpha  = 0;
+					if (FlxG.sound.music != null) FlxG.sound.music.volume = 1.0;
+					_spineDeathPhase = 0;
+				}
 		}
 	}
 }

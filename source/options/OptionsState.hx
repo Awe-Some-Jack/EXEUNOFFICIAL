@@ -53,6 +53,8 @@ class OptionsState extends MusicBeatState
 	public static var curSelected:Int = 0;
 	public static var onPlayState:Bool = false;
 
+	public static var standaloneReturnState:Void->flixel.FlxState = null;
+
 	final GLOBAL_SCALE:Float = (FlxG.width / 3840);
 
 	override public function create()
@@ -297,9 +299,18 @@ class OptionsState extends MusicBeatState
 			if (onPlayState)
 			{
 				onPlayState = false;
-				backend.StageData.loadDirectory(PlayState.SONG);
-				LoadingState.loadAndSwitchState(new PlayState());
-				FlxG.sound.music.volume = 0;
+				if (PlayState.SONG != null)
+				{
+					backend.StageData.loadDirectory(PlayState.SONG);
+					LoadingState.loadAndSwitchState(new PlayState());
+					FlxG.sound.music.volume = 0;
+				}
+				else
+				{
+					var returnState = standaloneReturnState;
+					standaloneReturnState = null;
+					FlxG.switchState(returnState != null ? returnState : () -> new states.EXEFreeplay());
+				}
 			}
 			else
 			{

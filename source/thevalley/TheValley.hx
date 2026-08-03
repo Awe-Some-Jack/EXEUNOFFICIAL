@@ -10,6 +10,7 @@ import flixel.addons.nape.FlxNapeSpace;
 import thevalley.bg.BGValley;
 import thevalley.map.TVNapeWorld;
 import thevalley.player.Player;
+import thevalley.player.Player.PlayerMode;
 import thevalley.player.HUD;
 import thevalley.tiles.TileMap;
 import thevalley.tiles.Tiles.Launchpad;
@@ -17,6 +18,9 @@ import thevalley.tiles.Tiles.SkullPrompt;
 import thevalley.tiles.Tiles.Totem;
 import thevalley.tiles.Tiles.TotemType;
 import thevalley.tiles.Tiles.SpineTile;
+import backend.Song;
+import backend.WeekData;
+import backend.Highscore;
 
 class TheValley extends MusicBeatState
 {
@@ -46,6 +50,8 @@ class TheValley extends MusicBeatState
 	var _spineDeathPhase:Int   = 0;
 	var _spineDeathTimer:Float = 0;
 	var _musicFadeFrom:Float   = 1.0;
+
+	var _finalTriggered:Bool = false;
 
 	var _occlusionAmount:Float = 0;
 
@@ -222,6 +228,9 @@ class TheValley extends MusicBeatState
 	{
 		super.update(elapsed);
 
+		if (FlxG.keys.justPressed.P)
+			trace('player pos: x=${Math.round(player.x)}, y=${Math.round(player.y)}');
+
 		if (bgCam.target != null) bgCam.followLerp = 0.08;
 
 		var nape = FlxG.plugins.get(FlxNapeSpace);
@@ -326,6 +335,7 @@ class TheValley extends MusicBeatState
 			}
 
 			_updateTotemHide(elapsed);
+			_updateFinalTrigger(elapsed);
 		}
 	}
 
@@ -377,8 +387,10 @@ class TheValley extends MusicBeatState
 
 		_ambientCloseness += (closeness - _ambientCloseness) * (1.0 - Math.pow(0.01, elapsed * 2.0));
 
-		if (_spineDeathPhase == 0 && FlxG.sound.music != null) FlxG.sound.music.volume = 1.0 - _ambientCloseness;
-		if (_ambientSound != null) _ambientSound.volume = _ambientCloseness * 0.5;
+		if (_spineDeathPhase == 0 && !_finalTriggered && FlxG.sound.music != null)
+			FlxG.sound.music.volume = 1.0 - _ambientCloseness;
+		if (!_finalTriggered && _ambientSound != null)
+			_ambientSound.volume = _ambientCloseness * 0.5;
 	}
 
 	static inline var TOTEM_ZOOM_RATE:Float = 1.0;
@@ -565,9 +577,14 @@ class TheValley extends MusicBeatState
 		else
 		{
 			player.body.type = nape.phys.BodyType.DYNAMIC;
-			
+
 			player.body.position.setxy(146.0 + player.width * 0.5, 134.0 + player.height * 0.5);
 			player.body.velocity.setxy(0, 0);
+			player.jumpHeld     = false;
+			player.jumpBufTimer = 0;
+			player.coyoteTimer  = player.cfg.tuning.coyoteFrames / 60.0;
+			player.isGrounded   = true;
+			player.mode         = Ground;
 		}
 	}
 
@@ -623,5 +640,97 @@ class TheValley extends MusicBeatState
 					_spineDeathPhase = 0;
 				}
 		}
+	}
+
+	function _updateFinalTrigger(elapsed:Float):Void
+	{
+		if (_finalTriggered || player.cinematic) return;
+		if (player.x + player.width * 0.5 < 10368.0) return;
+		if (player.mode == Glide || player.mode == WingOpen || player.mode == WingClose)
+		{
+			player.mode = Air;
+			return;
+		}
+
+		if (player.isGrounded)
+		{
+			_finalTriggered = true;
+			_startFinalCutscene();
+		}
+	}
+
+	function _startFinalCutscene():Void
+	{
+		player.cinematic = true;
+		player.body.velocity.setxy(0, 0);
+
+		if (FlxG.sound.music != null) FlxG.sound.music.fadeOut(1.0, 0.0);
+		if (_ambientSound != null) _ambientSound.fadeIn(1.0, _ambientSound.volume, 0.5);
+
+		FlxTween.tween(_deathFade, { alpha: 1.0 }, 1.0, { ease: FlxEase.quadInOut, onComplete: (_) -> _playFinalVideo() });
+	}
+
+	function _playFinalVideo():Void
+	{
+		#if VIDEOS_ALLOWED
+		var vid = new VideoSprite(0, 0, true);
+		vid.antialiasing = vid.video.antialiasing = ClientPrefs.data.antialiasing;
+		vid.camera = uiCam;
+		add(vid);
+
+		vid.onFormat(() -> {
+			if (vid.video.bitmap != null && vid.video.bitmap.bitmapData != null)
+			{
+				var bw:Float = vid.video.bitmap.bitmapData.width;
+				var bh:Float = vid.video.bitmap.bitmapData.height;
+				var cw:Float = uiCam.width;
+				var ch:Float = uiCam.height;
+				var scale:Float = Math.max(cw / bw, ch / bh);
+				vid.video.setGraphicSize(Std.int(bw * scale), Std.int(bh * scale));
+				vid.video.updateHitbox();
+				vid.video.x = (cw - vid.video.width)  * 0.5;
+				vid.video.y = (ch - vid.video.height) * 0.5;
+			}
+		});
+
+		vid.onEnd(() -> _finishFinalCutscene());
+
+		if (vid.loadVideo("assets/shared/images/minigame/thevalley/bg/cutscene/final.mp4"))
+			vid.playDelayed();
+		else
+			_finishFinalCutscene(); 
+		#else
+		_finishFinalCutscene();
+		#end
+	}
+
+	function _finishFinalCutscene():Void
+	{
+		Mods.currentModDirectory = "EXE";
+		WeekData.reloadWeekFiles(false);
+		PlayState.storyWeek = 1;
+		Difficulty.loadFromWeek();
+
+		var normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
+		var launchDiff = (normalIdx > -1) ? normalIdx : 0;
+
+		try
+		{
+			Song.loadFromJson('godspeed', Highscore.formatSong('godspeed', launchDiff));
+			PlayState.isStoryMode     = false;
+			PlayState.storyDifficulty = launchDiff;
+		}
+		catch (e:haxe.Exception)
+		{
+			trace('Error loading godspeed: ' + e.message);
+			return;
+		}
+
+		LoadingState.prepareToSong();
+		LoadingState.loadAndSwitchState(new PlayState());
+
+		#if !SHOW_LOADING_SCREEN
+		FlxG.sound.music?.stop();
+		#end
 	}
 }

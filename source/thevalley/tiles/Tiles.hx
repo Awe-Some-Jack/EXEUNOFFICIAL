@@ -1140,8 +1140,10 @@ class Totem
 
 					_player.body.velocity.setxy(0, 0);
 					_player.jumpHeld     = false;
-					_player.coyoteTimer  = 0;
 					_player.jumpBufTimer = 0;
+					_player.coyoteTimer = _player.cfg.tuning.coyoteFrames / 60.0;
+					_player.isGrounded  = true;
+					_player.mode        = thevalley.player.Player.PlayerMode.Ground;
 					_player.animation.play("idle");
 					if (_flxState != null)
 					{

@@ -1,6 +1,0 @@
-function onSectionHit()
-	if getProperty('dad.animation.curAnim.name') == 'idle' and dadName == 'hellbentintro' then
-		setProperty('dad.animation.curAnim.frameRate', math.floor(26 * (curBpm / bpm)))
-		playAnim('dad', 'idle', true)
-	end
-end

@@ -455,7 +455,7 @@ class TheValley extends MusicBeatState
 	public function spawnTree(wx:Float, wy:Float):FlxSprite
 	{
 		var t = new FlxSprite(wx, wy);
-		t.loadGraphic(Paths.image("minigame/thevalley/map/1/tree"));
+		t.loadGraphic(Paths.image("minigame/thevalley/map/1/tree", false));
 		t.scrollFactor.set(1, 1);
 		trees.push(t);
 		treeGroup.add(t);

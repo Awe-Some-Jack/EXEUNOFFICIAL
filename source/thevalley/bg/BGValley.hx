@@ -89,11 +89,6 @@ class BGValley
             _state.add(bd);
         }
 
-        var graywalls = new FlxSprite(0, 0);
-        graywalls.loadGraphic(Paths.image("minigame/thevalley/bg/graywalls"));
-        graywalls.scrollFactor.set(1.0, 1.0);
-        _state.add(graywalls);
-
         var sorted = _parts.copy();
         sorted.sort(function(a, b) {
             var za:Int = Reflect.hasField(a, "zOrder") ? Std.int(Reflect.field(a, "zOrder")) : 0;
@@ -104,7 +99,7 @@ class BGValley
         for (p in sorted)
         {
             var spr = new FlxSprite(p.x, p.y);
-            spr.loadGraphic(Paths.image('minigame/thevalley/map/${p.part}/map'));
+            spr.loadGraphic(Paths.image('minigame/thevalley/map/${p.part}/map', false));
             spr.scrollFactor.set(1.0, 1.0);
             _state.add(spr);
             mapSprites.push(spr);
@@ -241,7 +236,7 @@ class BGValley
     {
         for (spr in sprites)
         {
-            if (!spr.visible || spr.alpha <= 0) continue;
+            if (spr == null || !spr.visible || spr.alpha <= 0) continue;
             var px = spr.pixels;
             if (px == null || !px.readable) continue;
 
@@ -249,8 +244,12 @@ class BGValley
             var ly = wy - Std.int(spr.y);
             if (lx < 0 || ly < 0 || lx >= px.width || ly >= px.height) continue;
 
-            var alpha = (px.getPixel32(lx, ly) >> 24) & 0xFF;
-            if (alpha > 30) return true;
+            try
+            {
+                var alpha = (px.getPixel32(lx, ly) >> 24) & 0xFF;
+                if (alpha > 30) return true;
+            }
+            catch (e:Dynamic) {}
         }
         return false;
     }

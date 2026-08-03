@@ -1,73 +1,81 @@
 {
 	"animations": [
 		{
-			"offsets": [119, 2],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "Normal_LEFT"
-		},
-		{
-			"offsets": [49, -11],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "Normal_DOWN"
-		},
-		{
-			"offsets": [2, 49],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "Normal_UP"
-		},
-		{
-			"offsets": [-15, -1],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Normal_RIGHT"
-		},
-		{
-			"offsets": [1, 228],
-			"loop": false,
-			"fps": 24,
-			"anim": "dialogue",
-			"indices": [],
-			"name": "dialogue"
-		},
-		{
-			"loop": false,
-			"offsets": [780, 228],
-			"anim": "intro",
-			"fps": 30,
-			"name": "treno copia",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "danceRight",
-			"fps": 24,
-			"name": "Normal_IDLE instancia 1",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-		},
-		{
 			"loop": false,
 			"offsets": [0, 0],
 			"anim": "danceLeft",
 			"fps": 24,
-			"name": "Normal_IDLE instancia 1",
+			"name": "dance",
 			"indices": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "danceRight",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+			"name": "dance"
+		},
+		{
+			"offsets": [121, -21],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [53, -62],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [0, 50],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [-58, -16],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [2, 28],
+			"loop": false,
+			"fps": 24,
+			"anim": "dialogue",
+			"indices": [],
+			"name": "bringiton"
+		},
+		{
+			"offsets": [772, 231],
+			"loop": false,
+			"fps": 30,
+			"anim": "intro",
+			"indices": [],
+			"name": "cdintro"
+		},
+		{
+			"offsets": [10, 2],
+			"indices": [],
+			"fps": 24,
+			"anim": "outro",
+			"loop": false,
+			"name": "outro"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/Normal",
+	"image": "characters/normalcd",
 	"position": [0, 0],
 	"healthicon": "normal",
 	"flip_x": false,

@@ -1,81 +1,97 @@
 {
 	"animations": [
 		{
-			"offsets": [19, -13],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "Metal_Miss_LEFT"
-		},
-		{
-			"offsets": [-95, 5],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "Metal_Miss_DOWN"
-		},
-		{
-			"offsets": [-91, 34],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUPmiss",
-			"indices": [],
-			"name": "Metal_Miss_UP"
-		},
-		{
-			"offsets": [-131, -11],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "Metal_MISS_RIGHT"
-		},
-		{
 			"loop": false,
 			"offsets": [0, 0],
 			"anim": "idle",
 			"fps": 24,
-			"name": "Metal_IDLE",
-			"indices": []
+			"name": "idle",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+		},
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle-loop",
+			"fps": 24,
+			"name": "idle",
+			"indices": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
 		},
 		{
 			"loop": false,
-			"offsets": [18, 5],
+			"offsets": [27, 4],
 			"anim": "singLEFT",
 			"fps": 24,
-			"name": "Metal_LEFT",
+			"name": "left",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [34, 36],
+			"offsets": [-29, 43],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "Metal_DOWN",
+			"name": "down",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [48, 80],
+			"offsets": [5, 88],
 			"anim": "singUP",
 			"fps": 24,
-			"name": "Metal_UP",
+			"name": "up",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [-26, 24],
+			"offsets": [-41, 35],
 			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "Metal_RIGHT",
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [39, 3],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "mleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-49, 43],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "mdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-26, 73],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "mup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-47, 21],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "mright",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [529, 339],
+			"anim": "outro",
+			"fps": 24,
+			"name": "outro",
 			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/Metal",
+	"image": "characters/metalcd",
 	"position": [0, 0],
 	"healthicon": "metal",
 	"flip_x": true,

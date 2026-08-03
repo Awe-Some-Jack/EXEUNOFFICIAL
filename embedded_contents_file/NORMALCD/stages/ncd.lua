@@ -1,6 +1,6 @@
 local shadows = {
-	{name = 'bfShadow',  path = 'bg/shadow',  target = 'boyfriend', offsetX = 140,   offsetY = 400, alpha = 0.7},
-	{name = 'dadShadow', path = 'bg/shadow2', target = 'dad',       offsetX = 62,  offsetY = 354, alpha = 0},
+	{name = 'bfShadow',  path = 'bg/shadow',  target = 'boyfriend', offsetX = 410,   offsetY = 550, alpha = 0.7},
+	{name = 'dadShadow', path = 'bg/shadow2', target = 'dad',       offsetX = 460,  offsetY = 468, alpha = 0},
 }
 
 function onCreatePost()
@@ -39,13 +39,6 @@ function onCreatePost()
 	setProperty('glow.alpha', 0.75)
 	addLuaSprite('glow', true)
 
-	makeAnimatedLuaSprite('outro', 'characters/Normal-Outro', getProperty('dad.x') - 331, getProperty('dad.y') - 414)
-	addAnimationByPrefix('outro', 'idle', 'Animation', 24, false)
-	setProperty('outro.alpha', 0)
-	scaleObject('outro', 0.55, 0.55, false)
-	addLuaSprite('outro', true)
-	setObjectOrder('outro', getObjectOrder('dadGroup') + 1)
-
 	setProperty('camHUD.alpha', 0)
 end
 
@@ -55,6 +48,8 @@ function onUpdatePost(e)
 	for i = 1,2 do
 		setProperty('char'..i..'.y', 320 + math.sin(thing + i) * 8)
 	end
+
+	for _,t in ipairs({'dad', 'boyfriend'}) do if getProperty(t..'.animation.curAnim.name') == 'outro' and getProperty(t..'.animation.curAnim.finished') then setProperty(t..'.visible', false) end end
 end
 
 local hudRevealed = false
@@ -72,10 +67,8 @@ function onEvent(n, v1)
 			playAnim('door', 'doorbangin', true)
 			setProperty('door.animation.curAnim.curFrame', 5)
 		elseif v1 == 'end' then
-			playAnim('outro', 'idle', true)
-			setProperty('outro.alpha', 1)
-			setProperty('dad.alpha', 0)
-			setProperty('boyfriend.alpha', 0)
+			playAnim('boyfriend', 'outro', true) setProperty('boyfriend.specialAnim', true)
+			playAnim('dad', 'outro', true) setProperty('dad.specialAnim', true)
 		end
 
 	elseif n == 'Play Animation' then

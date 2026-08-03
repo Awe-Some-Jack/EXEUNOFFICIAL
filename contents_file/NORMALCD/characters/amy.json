@@ -1,105 +1,105 @@
 {
 	"animations": [
 		{
-			"offsets": [61, 10],
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "danceLeft",
 			"loop": false,
+			"name": "danceleft"
+		},
+		{
+			"offsets": [-6, 8],
+			"indices": [],
+			"fps": 24,
+			"anim": "danceRight",
+			"loop": false,
+			"name": "danceright"
+		},
+		{
+			"offsets": [95, 16],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [68, -26],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
+		},
+		{
+			"offsets": [85, 26],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [-8, 22],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [92, 16],
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "Amy_MISS_LEFT"
+			"loop": false,
+			"name": "mleft"
 		},
 		{
-			"offsets": [34, -8],
-			"loop": false,
+			"offsets": [81, -26],
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "Amy_MISS_DOWN"
+			"loop": false,
+			"name": "mdown"
 		},
 		{
-			"offsets": [54, 41],
-			"loop": false,
+			"offsets": [74, 40],
+			"indices": [],
 			"fps": 24,
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "Amy_MISS_UP"
+			"loop": false,
+			"name": "mup"
 		},
 		{
-			"offsets": [27, -4],
-			"loop": false,
+			"offsets": [1, 14],
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "Amy_MISS_RIGHT"
+			"loop": false,
+			"name": "mright"
 		},
 		{
-			"offsets": [21, 31],
-			"loop": false,
+			"offsets": [41, 42],
+			"indices": [],
 			"fps": 24,
 			"anim": "endinganim",
-			"indices": [],
-			"name": "anim"
-		},
-		{
 			"loop": false,
-			"offsets": [0, 0],
-			"anim": "danceLeft",
-			"fps": 24,
-			"name": "dancel",
-			"indices": []
+			"name": "outro"
 		},
 		{
-			"loop": false,
-			"offsets": [-4, 10],
-			"anim": "danceRight",
+			"offsets": [41, 42],
+			"indices": [268, 269, 270, 271, 272, 273, 274, 275, 776],
 			"fps": 24,
-			"name": "dancer",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [95, -4],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [72, -49],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [73, 22],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-9, 16],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
-		},
-		{
-			"loop": true,
-			"offsets": [21, 31],
 			"anim": "endinganim-loop",
-			"fps": 24,
-			"name": "anim2 instancia 1",
-			"indices": [268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278]
+			"loop": true,
+			"name": "outro"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/amy",
+	"image": "characters/amycd",
 	"position": [0, 0],
 	"healthicon": "amy",
 	"flip_x": false,

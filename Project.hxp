@@ -279,7 +279,7 @@ class Project extends HXProject
     {
         astcExcludes = []; 
         
-        for (jsonFile in ['./astc-compression-data-assets.json', './astc-compression-data-contents.json']) {
+        for (jsonFile in ['./astc-compression-data-assets.json', './astc-compression-data-contents.json', './astc-compression-data-embed.json']) {
             if (FileSystem.exists(jsonFile))
             {
                 @:nullSafety(Off)
@@ -324,7 +324,7 @@ class Project extends HXProject
     public function runASTCCompressor():Void
     {
         Sys.println(' INFO : Compressing ASTC textures...');
-        for (jsonFile in ['./astc-compression-data-assets.json', './astc-compression-data-contents.json']) {
+        for (jsonFile in ['./astc-compression-data-assets.json', './astc-compression-data-contents.json', './astc-compression-data-embed.json']) {
             Sys.command('haxelib', ['run', 'astc-compressor', 'compress-from-json', '-json', jsonFile]);
         }
         Sys.println(' INFO : Done compressing ASTC textures.');

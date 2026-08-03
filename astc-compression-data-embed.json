@@ -1,0 +1,11 @@
+{
+  "input": "./embedded_contents_file",
+  "output": "./astc-textures/",
+  "quality": "thorough",
+  "blocksize": "6x6",
+  "colorprofile": "cs",
+  "custom": [],
+  "excludes": [
+    "embedded_contents_file/SONICHU/images/bg/5.webp"
+  ]
+}

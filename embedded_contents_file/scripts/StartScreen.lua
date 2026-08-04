@@ -226,8 +226,8 @@ local function createSlideIntro()
 		setProperty('skipCountdown', false)
 	end
 
-	doTweenX('circlemove', 'circle', 0, 1, 'expoOut')
-	doTweenX('textmove', 'text', 0, 1, 'expoOut')
+	doTweenX('circlemove', 'circle', 0, 1, 'quintOut')
+	doTweenX('textmove', 'text', 0, 1, 'quintOut')
 end
 
 local function createMonoIntro()

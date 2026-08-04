@@ -1,75 +1,75 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [120, -13],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [224, 27],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [120, 87],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [58, -4],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [-20, 10],
+			"loop": false,
+			"fps": 24,
 			"anim": "good",
-			"fps": 24,
-			"name": "good",
-			"indices": []
+			"indices": [],
+			"name": "good"
 		},
 		{
-			"loop": false,
 			"offsets": [66, 503],
-			"anim": "f",
+			"loop": false,
 			"fps": 24,
-			"name": "f",
+			"anim": "f",
+			"indices": [],
+			"name": "f"
+		},
+		{
+			"loop": false,
+			"offsets": [592, 304],
+			"anim": "getfuckedlol",
+			"fps": 24,
+			"name": "lmao",
 			"indices": []
 		},
 		{
-			"offsets": [592, 304],
 			"loop": false,
-			"fps": 24,
-			"anim": "getfuckedlol",
-			"indices": [],
-			"name": "lmao"
-		},
-		{
 			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [277, 813],
-			"loop": false,
-			"fps": 24,
-			"anim": "trans",
+			"offsets": [214, 804],
 			"indices": [],
+			"fps": 12,
+			"anim": "trans",
+			"loop": false,
 			"name": "Carpeta de elementos duplicados/trans"
 		}
 	],

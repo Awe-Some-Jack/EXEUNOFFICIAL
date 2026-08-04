@@ -2,22 +2,22 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [0, 0],
+			"offsets": [-162, -853],
 			"anim": "trans",
 			"fps": 12,
-			"name": "trans",
+			"name": "firt",
 			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/trans",
+	"image": "characters/atlas/cut",
 	"position": [-117, -573],
 	"healthicon": "hog",
 	"flip_x": false,
 	"healthbar_colors": [28, 45, 166],
 	"camera_position": [-220, 220],
 	"sing_duration": 8,
-	"scale": 1.44,
+	"scale": 1.5,
 	"_editor_isPlayer": false
 }

@@ -2,23 +2,7 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [51, -3],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left i",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [4, -3],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right i",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [56, -4],
+			"offsets": [118, 92],
 			"anim": "singLEFTmiss",
 			"fps": 24,
 			"name": "left miss",
@@ -26,7 +10,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-1, -40],
+			"offsets": [77, 80],
 			"anim": "singDOWNmiss",
 			"fps": 24,
 			"name": "down miss",
@@ -34,7 +18,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-46, 31],
+			"offsets": [30, 185],
 			"anim": "singUPmiss",
 			"fps": 24,
 			"name": "up miss",
@@ -42,7 +26,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-43, -4],
+			"offsets": [24, 76],
 			"anim": "singRIGHTmiss",
 			"fps": 24,
 			"name": "right miss",
@@ -50,55 +34,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-18, 12],
-			"anim": "idle-alt",
-			"fps": 24,
-			"name": "aidle",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [32, 16],
-			"anim": "singLEFT-alt",
-			"fps": 24,
-			"name": "aleft",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-15, -64],
-			"anim": "singDOWN-alt",
-			"fps": 24,
-			"name": "adown",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-16, 70],
-			"anim": "singUP-alt",
-			"fps": 24,
-			"name": "aup",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-39, 25],
-			"anim": "singRIGHT-alt",
-			"fps": 24,
-			"name": "aright",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 16],
-			"anim": "singLEFTmiss-alt",
-			"fps": 24,
-			"name": "missl",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-9, -63],
+			"offsets": [86, 69],
 			"anim": "singDOWNmiss-alt",
 			"fps": 24,
 			"name": "missd",
@@ -106,102 +42,166 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-33, 62],
-			"anim": "singUPmiss-alt",
-			"fps": 24,
-			"name": "missu",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-38, 22],
+			"offsets": [44, 128],
 			"anim": "singRIGHTmiss-alt",
 			"fps": 24,
 			"name": "missr",
 			"indices": []
 		},
 		{
-			"offsets": [-19, 72],
-			"loop": false,
-			"fps": 24,
-			"anim": "idle-g",
-			"indices": [],
-			"name": "gidle"
-		},
-		{
-			"offsets": [99, 42],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT-g",
-			"indices": [],
-			"name": "gleft"
-		},
-		{
-			"offsets": [-15, -60],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN-g",
-			"indices": [],
-			"name": "gdown"
-		},
-		{
-			"offsets": [-16, 183],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP-g",
-			"indices": [],
-			"name": "gup"
-		},
-		{
-			"offsets": [-39, 102],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT-g",
-			"indices": [],
-			"name": "gright"
-		},
-		{
-			"offsets": [35, -6],
-			"loop": false,
-			"fps": 24,
-			"anim": "ay",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
-			"name": "ay instancia 1"
-		},
-		{
-			"loop": false,
-			"offsets": [1, -2],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Símbolo 6 copia 3",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [4, 37],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "Símbolo 2 copia 3",
-			"indices": []
-		},
-		{
-			"offsets": [0, 0],
+			"offsets": [62, 81],
 			"indices": [],
 			"fps": 24,
 			"anim": "idle",
 			"loop": false,
-			"name": "idle i"
+			"name": "idle"
+		},
+		{
+			"offsets": [124, 97],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [23, 81],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [76, 80],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
+		},
+		{
+			"offsets": [30, 197],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [141, 106],
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+			"fps": 24,
+			"anim": "ay",
+			"loop": false,
+			"name": "ay"
+		},
+		{
+			"offsets": [78, 143],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle-alt",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/aidle"
+		},
+		{
+			"offsets": [78, 177],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle-g",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/gidle"
+		},
+		{
+			"offsets": [116, 147],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/aleft"
+		},
+		{
+			"offsets": [87, 69],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/adown"
+		},
+		{
+			"offsets": [43, 135],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/aright"
+		},
+		{
+			"offsets": [61, 152],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/aup"
+		},
+		{
+			"offsets": [69, 136],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss-alt",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/missl"
+		},
+		{
+			"offsets": [43, 221],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT-g",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/gright"
+		},
+		{
+			"offsets": [43, 133],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss-alt",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/missu"
+		},
+		{
+			"offsets": [61, 292],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-g",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/gup"
+		},
+		{
+			"offsets": [86, 58],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN-g",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/gdown"
+		},
+		{
+			"offsets": [174, 149],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT-g",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/gleft"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/HogBF",
+	"image": "characters/atlas/bf hog",
 	"position": [18, 288],
 	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],
 	"camera_position": [-630, 370],
 	"sing_duration": 4,
-	"scale": 1,
+	"scale": 0.77,
 	"_editor_isPlayer": true
 }

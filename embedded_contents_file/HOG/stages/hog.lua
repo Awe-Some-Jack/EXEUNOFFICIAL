@@ -116,41 +116,41 @@ function onCreate()
 		glitchNames = collectNames(glitchSprites)
 
 		if not lowQuality then
-
-			makeAnimatedLuaSprite('cameos1', 'characters/cameos-1', -650, 150)
-			addAnimationByPrefix('cameos1', 'idle', 'idle', 24, false)
+			makeFlxAnimateSprite('cameos1', -640, 155, 'characters/atlas/exes')
+			addAnimationBySymbol('cameos1', 'idle', 'Símbolo 38', 24, false)
 			scaleObject('cameos1', 0.9, 0.9)
 			setProperty('cameos1.visible', false)
 			addLuaSprite('cameos1')
 
-			makeAnimatedLuaSprite('cameos2', 'characters/cameos-2', -850, 100)
-			addAnimationByPrefix('cameos2', 'idle', 'idle', 24, false)
-			scaleObject('cameos2', 0.8, 0.8)
+			makeFlxAnimateSprite('cameos2', -825, 115, 'characters/atlas/exes')
+			addAnimationBySymbol('cameos2', 'idle', 'Símbolo 39', 24, false)
 			setProperty('cameos2.visible', false)
 			addLuaSprite('cameos2')
 		end
 
+		addCharacterToList('hog', 'dad')
+		addCharacterToList('hogtrans', 'dad')
 		addCharacterToList('scorched-g', 'dad')
 		addCharacterToList('scorched-g2', 'dad')
 	end
 
 	if not lowQuality then
-		makeAnimatedLuaSprite('t', 'characters/t')
-		addAnimationByPrefix('t', 'idle', 'Símbolo 128 instancia 1', 24, false)
-		addAnimationByIndices('t', 'idle-loop', 'Símbolo 128 instancia 1', {11, 12, 13}, 24, true)
-		addAnimationByPrefix('t', 'idle1', 'idle1 instancia 1', 24, false)
-		addAnimationByIndices('t', 'idle1-loop', 'idle1 instancia 1', {11, 12, 13}, 24, true)
-		addAnimationByPrefix('t', 'idle2', 'idle2 instancia 1', 24, false)
-		addAnimationByIndices('t', 'idle2-loop', 'idle2 instancia 1', {11, 12, 13}, 24, true)
-		addAnimationByPrefix('t', 'idle3', 'idle3 instancia 1', 24, false)
-		addAnimationByIndices('t', 'idle3-loop', 'idle3 instancia 1', {11, 12, 13}, 24, true)
-		addAnimationByPrefix('t', 'idle4', 'idle3 instancia 2', 24, false)
-		addAnimationByIndices('t', 'idle4-loop', 'idle3 instancia 2', {11, 12, 13}, 24, true)
-		scaleObject('t', 0.8, 0.8, false)
+		makeFlxAnimateSprite('t', -600, -100, 'characters/atlas/tails atlas')
+		addAnimationBySymbol('t', 'idle', 'idleog', 24, false)
+		addAnimationBySymbolIndices('t', 'idle-loop', 'idleog', {11, 12, 13}, 24, true)
+		addAnimationBySymbol('t', 'idle1', 'idle1 instancia 1', 24, false)
+		addAnimationBySymbolIndices('t', 'idle1-loop', 'idle1', {11, 12, 13}, 24, true)
+		addAnimationBySymbol('t', 'idle2', 'idle2', 24, false)
+		addAnimationBySymbolIndices('t', 'idle2-loop', 'idle2', {11, 12, 13}, 24, true)
+		addAnimationBySymbol('t', 'idle3', 'idle3', 24, false)
+		addAnimationBySymbolIndices('t', 'idle3-loop', 'idle3', {11, 12, 13}, 24, true)
+		addAnimationBySymbol('t', 'idle4', 'Carpeta de elementos duplicados/idle3', 24, false)
+		addAnimationBySymbolIndices('t', 'idle4-loop', 'Carpeta de elementos duplicados/idle3', {11, 12, 13}, 24, true)
+		scaleObject('t', 0.325, 0.325, false)
 		addLuaSprite('t')
 
-		makeAnimatedLuaSprite('k', 'characters/k', 1350, 450)
-		addAnimationByPrefix('k', 'idle', 'j instancia 1', 24, false)
+		makeFlxAnimateSprite('k', 1348, 425, 'characters/atlas/knux atlas') --1, 9
+		addAnimationBySymbol('k', 'idle', 'j', 24, false)
 		scaleObject('k', 0.9, 0.9, false)
 		addLuaSprite('k', true)
 		setObjectOrder('k', getObjectOrder('boyfriendGroup') + 1)
@@ -172,9 +172,6 @@ function onCreate()
 	makeGraphic('blackBgFront', 2750, 1850, '000000')
 	setProperty('blackBgFront.alpha', 0.0001)
 	addLuaSprite('blackBgFront', true)
-
-	precacheImage('characters/texe')
-	precacheImage('characters/kexe')
 end
 
 function onCreatePost()
@@ -184,12 +181,21 @@ end
 local floatTime = 0
 
 function onUpdatePost(elapsed)
+	if dadName == 'hogtrans' and getProperty('dad.animation.curAnim.finished') then
+		triggerEvent('Change Character', 'dad', 'hog')
+		triggerEvent('Play Animation', 'trans', 'dad')
+	end
+
 	if inGameOver then return end
 	if not lowQuality then
 		if getProperty('t.animation.curAnim.finished') and not stringEndsWith(getProperty('t.animation.curAnim.name'), 'loop') then playAnim('t', getProperty('t.animation.curAnim.name')..'-loop', true) end
 
 		floatTime = floatTime + elapsed * 2 * playbackRate
-		callMethod('t.setPosition', {200 + math.cos(floatTime / 2) * 5, math.sin(floatTime) * 10})
+		if curBeat < 208 then
+			callMethod('t.setPosition', {-12 + math.cos(floatTime / 2) * 5, -150 + math.sin(floatTime) * 10})
+		else
+			callMethod('t.setPosition', {200 + math.cos(floatTime / 2) * 5, math.sin(floatTime) * 10})
+		end
 	end
 
 	if canGlitch then
@@ -210,6 +216,11 @@ end
 function onBeatHit()
 	if curBeat % 2 ~= 0 then return end
 
+	if curBeat >= 207 then
+		setProperty('boyfriend.idleSuffix', '-alt');
+		callMethod('boyfriend.recalculateDanceIdle');
+	end	
+
 	if canGlitch and getRandomBool(30) and stringStartsWith(getProperty('boyfriend.animation.curAnim.name'), 'idle') then
 		playAnim('boyfriend', 'idle-g', true)
 	end
@@ -219,6 +230,7 @@ function onBeatHit()
 			playAnim('cameos2', 'idle', true)
 			playAnim('cameos1', 'idle', true)
 		end
+
 
 		playAnim('t', 'idle', true)
 		playAnim('k', 'idle', true)
@@ -316,23 +328,22 @@ function onEvent(n, v1, v2)
 			if not lowQuality then setProperty('monitor.alpha', 1) end
 
 			if not lowQuality then
-				loadFrames('k', 'characters/kexe')
-				addAnimationByPrefix('k', 'idle', 'gkx instancia 1', 24, false)
-				addAnimationByPrefix('k', 'idle-1', 'Símbolo 40', 24, false)
-				addAnimationByPrefix('k', 'idle-2', 'Símbolo 41', 24, false)
-				addAnimationByPrefix('k', 'idle-3', 'Símbolo 42', 24, false)
+				addAnimationBySymbol('k', 'idle', 'gkx', 24, false)
+				addAnimationBySymbol('k', 'idle-1', 'gkx g1', 24, false)
+				addAnimationBySymbol('k', 'idle-2', 'gkx g2', 24, false)
+				addAnimationBySymbol('k', 'idle-3', 'gkx g3', 24, false)
 
 				callMethod('k.setPosition', {1600, 210})
 				setObjectOrder('k', getObjectOrder('gfGroup') + 1)
 			end
 		elseif v1 == 'tailsexe' then
 			if not lowQuality then
-				loadFrames('t', 'characters/texe')
-				addAnimationByPrefix('t', 'idle', 'idle', 24, false)
-				addAnimationByIndices('t', 'idle-loop', 'idle instancia 1', {10, 11, 12, 13}, 24, true)
-				addAnimationByPrefix('t', 'idle-1', 'g1', 24, false)
-				addAnimationByPrefix('t', 'idle-2', 'g2', 24, false)
-				addAnimationByPrefix('t', 'idle-3', 'g3', 24, false)
+				scaleObject('t', 0.8, 0.8)
+				addAnimationBySymbol('t', 'idle', 'idle', 24, false)
+				addAnimationBySymbolIndices('t', 'idle-loop', 'idle', {10, 11, 12, 13}, 24, true)
+				addAnimationBySymbol('t', 'idle-1', 'g1', 24, false)
+				addAnimationBySymbol('t', 'idle-2', 'g2', 24, false)
+				addAnimationBySymbol('t', 'idle-3', 'g3', 24, false)
 			end
 		elseif v1 == 'glitchbg' then
 			canGlitch = true

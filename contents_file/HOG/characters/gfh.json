@@ -1,7 +1,7 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
+			"offsets": [28, 22],
 			"loop": false,
 			"fps": 24,
 			"anim": "danceLeft",
@@ -9,25 +9,25 @@
 			"name": "xd"
 		},
 		{
-			"offsets": [-13, -3],
-			"loop": false,
-			"fps": 24,
-			"anim": "danceRight",
-			"indices": [],
-			"name": "dance 2"
-		},
-		{
-			"offsets": [1, 14],
+			"offsets": [-24, -186],
 			"loop": false,
 			"fps": 24,
 			"anim": "a",
 			"indices": [],
 			"name": "a"
+		},
+		{
+			"offsets": [9, 24],
+			"indices": [],
+			"fps": 24,
+			"anim": "danceRight",
+			"loop": false,
+			"name": "Carpeta de elementos duplicados/dance 2"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/gfh",
+	"image": "characters/atlas/gf hog",
 	"position": [603, -155],
 	"healthicon": "gf",
 	"flip_x": false,

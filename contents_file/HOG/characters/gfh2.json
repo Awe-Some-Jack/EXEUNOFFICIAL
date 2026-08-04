@@ -1,20 +1,20 @@
 {
 	"animations": [
 		{
+			"offsets": [-28, -110],
 			"loop": false,
-			"offsets": [-28, -109],
-			"anim": "danceRight",
 			"fps": 24,
-			"name": "1",
-			"indices": []
+			"anim": "danceRight",
+			"indices": [],
+			"name": "1"
 		},
 		{
-			"loop": false,
 			"offsets": [-28, -110],
-			"anim": "danceLeft",
+			"loop": false,
 			"fps": 24,
-			"name": "2",
-			"indices": []
+			"anim": "danceLeft",
+			"indices": [],
+			"name": "2"
 		}
 	],
 	"vocals_file": "",

@@ -1,180 +1,252 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [0, 0],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "idle",
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [207, 8],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
 			"indices": []
 		},
 		{
-			"offsets": [207, 8],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT",
 			"loop": false,
-			"name": "left"
-		},
-		{
 			"offsets": [54, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [47, 103],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [45, 6],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [30, 29],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle2",
-			"loop": false,
-			"name": "idle2"
+			"fps": 24,
+			"name": "idle2",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [207, 46],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT2",
-			"loop": false,
-			"name": "left2"
+			"fps": 24,
+			"name": "left2",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [30, 29],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN2",
-			"loop": false,
-			"name": "down2"
+			"fps": 24,
+			"name": "down2",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [35, 97],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP2",
-			"loop": false,
-			"name": "up2"
+			"fps": 24,
+			"name": "up2",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [30, 29],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT2",
-			"loop": false,
-			"name": "right2"
+			"fps": 24,
+			"name": "right2",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [53, 17],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle3",
-			"loop": false,
-			"name": "idle3"
+			"fps": 24,
+			"name": "idle3",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [207, 18],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT3",
-			"loop": false,
-			"name": "left3"
+			"fps": 24,
+			"name": "left3",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [54, 23],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN3",
-			"loop": false,
-			"name": "down3"
+			"fps": 24,
+			"name": "down3",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [52, 103],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP3",
-			"loop": false,
-			"name": "up3"
+			"fps": 24,
+			"name": "up3",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [52, 17],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT3",
-			"loop": false,
-			"name": "right3"
+			"fps": 24,
+			"name": "right3",
+			"indices": []
 		},
 		{
-			"offsets": [12, 21],
-			"indices": [],
-			"fps": 24,
-			"anim": "uhoh",
 			"loop": false,
+			"offsets": [53, 63],
+			"anim": "o",
+			"fps": 24,
+			"name": "looking",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [55, 33],
+			"anim": "aydiosmio",
+			"fps": 24,
+			"name": "aikemiedoyomevoid",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [110, 110],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "altleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-40, -80],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "altdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [150, 129],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "altup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [36, 60],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "altright",
+			"indices": []
+		},
+		{
+			"offsets": [4, 21],
+			"loop": false,
+			"fps": 24,
+			"anim": "uh oh",
+			"indices": [],
 			"name": "uhoh"
 		},
 		{
-			"offsets": [53, 63],
+			"loop": false,
+			"offsets": [90, 85],
+			"anim": "singLEFT-alt2",
+			"fps": 24,
+			"name": "altleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-30, -90],
+			"anim": "singDOWN-alt2",
+			"fps": 24,
+			"name": "altdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [140, 130],
+			"anim": "singUP-alt2",
+			"fps": 24,
+			"name": "altup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [10, 50],
+			"anim": "singRIGHT-alt2",
+			"fps": 24,
+			"name": "altright",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [84, 92],
+			"anim": "singLEFT-alt3",
+			"fps": 24,
+			"name": "altleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, -84],
+			"anim": "singDOWN-alt3",
+			"fps": 24,
+			"name": "altdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [160, 130],
+			"anim": "singUP-alt3",
+			"fps": 24,
+			"name": "altup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [40, 60],
+			"anim": "singRIGHT-alt3",
+			"fps": 24,
+			"name": "altright",
+			"indices": []
+		},
+		{
+			"offsets": [53, 62],
 			"indices": [],
 			"fps": 24,
-			"anim": "o",
+			"anim": "o3",
 			"loop": false,
 			"name": "looking"
-		},
-		{
-			"offsets": [55, 33],
-			"indices": [],
-			"fps": 24,
-			"anim": "aydiosmio",
-			"loop": false,
-			"name": "aikemiedoyomevoid"
-		},
-		{
-			"offsets": [110, 110],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT-alt",
-			"loop": false,
-			"name": "altleft"
-		},
-		{
-			"offsets": [-40, -80],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWN-alt",
-			"loop": false,
-			"name": "altdown"
-		},
-		{
-			"offsets": [150, 129],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP-alt",
-			"loop": false,
-			"name": "altup"
-		},
-		{
-			"offsets": [36, 60],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT-alt",
-			"loop": false,
-			"name": "altright"
 		}
 	],
 	"vocals_file": "",

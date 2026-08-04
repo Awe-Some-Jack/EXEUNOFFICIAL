@@ -3,19 +3,19 @@ local hazeBGAssets = {
         {name = 'redSun', path = 'grieving/haze/1st/sol rojo', x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, animName = 'idle', animPrefix = 'sun', fps = 12, loop = true, alpha = 1, front = false},
     },
     ['phase2'] = {
-        {name = 'bg',     path = 'grieving/uh-oh/new/sky',    x = -1150, y = -1600, scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
-        {name = 'trees3', path = 'grieving/uh-oh/new/trees3', x = -1200, y = -1600, scrollX = 0.5, scrollY = 0.5, front = false, lowQualityHide = true},
-        {name = 'trees2', path = 'grieving/uh-oh/new/trees2', x = -1350, y = -1600, scrollX = 0.7, scrollY = 0.7, front = false, lowQualityHide = true},
-        {name = 'trees',  path = 'grieving/uh-oh/new/trees',  x = -1400, y = -1600, scrollX = 0.9, scrollY = 0.9, front = false, lowQualityHide = true},
-        {name = 'floor',  path = 'grieving/uh-oh/new/floor',  x = -1400, y = -1700, scrollX = 1,   scrollY = 1,   front = false},
-        {name = 'fore',   path = 'grieving/uh-oh/new/fore',   x = -1500, y = -1800, scrollX = 1.1, scrollY = 1.1, front = false, lowQualityHide = true}
+        {name =     'bg', path = 'grieving/uh-oh/new/sky',    x = -1150, y = -1600, scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
+        {name = 'trees3', path = 'grieving/uh-oh/new/trees3', x = -1500, y =  -600, scrollX = 0.5, scrollY = 0.5, front = false, lowQualityHide = true},
+        {name = 'trees2', path = 'grieving/uh-oh/new/trees2', x = -1350, y = -1400, scrollX = 0.7, scrollY = 0.7, front = false, lowQualityHide = true},
+        {name =  'trees', path = 'grieving/uh-oh/new/trees',  x = -1400, y = -1400, scrollX = 0.9, scrollY = 0.9, front = false, lowQualityHide = true},
+        {name =  'floor', path = 'grieving/uh-oh/new/floor',  x = -1300, y =   -50, scrollX =   1, scrollY =   1, front = false},
+        {name =   'fore', path =  'grieving/uh-oh/new/fore',  x = -1500, y = -1800, scrollX = 1.1, scrollY = 1.1, front = false, lowQualityHide = true}
     },
     ['phase3'] = {
         {name =      'sky3', path =       'grieving/uh-oh/new/sky', x = -1680, y = -2080, scaleX = 1.1, scaleY = 1.1, scrollX =  0.8, scrollY =  0.8, front = false},
         {name =  'montains', path =  'grieving/haze/2nd/mountains', x = -1600, y = -1780, scaleX = 0.7, scaleY = 0.7, scrollX = 0.85, scrollY = 0.85, front = false},
-        {name =       'lol', path =        'grieving/haze/2nd/idk', x = -1600, y = -1780, scaleX = 0.7, scaleY = 0.7, scrollX =  0.9, scrollY =  0.9, front = false},
-        {name =     'suelo', path =    'grieving/haze/2nd/ground3', x = -1600, y = -1880, scaleX = 0.7, scaleY = 0.7, scrollX =    1, scrollY =    1, front = false},
-        {name =     'totem', path =     'grieving/haze/2nd/totems', x = -1600, y = -1880, scaleX = 0.7, scaleY = 0.7, scrollX =    1, scrollY =    1, front = false},
+        {name =       'lol', path =        'grieving/haze/2nd/idk', x = -1600, y =  -180, scaleX = 0.7, scaleY = 0.7, scrollX =  0.9, scrollY =  0.9, front = false},
+        {name =     'suelo', path =    'grieving/haze/2nd/ground3', x = -1600, y =   180, scaleX = 0.7, scaleY = 0.7, scrollX =    1, scrollY =    1, front = false},
+        {name =     'totem', path =     'grieving/haze/2nd/totems', x = -1300, y = -1650, scaleX = 0.7, scaleY = 0.7, scrollX =    1, scrollY =    1, front = false},
         --{name =     'water', path = 'grieving/haze/2nd/reflection', x = -1600, y = -1880, scaleX = 0.7, scaleY = 0.7, scrollX =    1, scrollY =    1, front = false},
     },
     ['phase4'] = {
@@ -375,13 +375,13 @@ function onUpdatePost(e)
             getProperty(bois..'.x') + math.cos(holdWave + (i * math.random(-0.2, 0.2))) * 0.1,
             getProperty(bois..'.y') + math.sin(holdWave + (i * math.random(-0.4, 0.7))) * 0.4
         })
+        setProperty(bois..'.alpha', getProperty(bois..'.alpha') + math.sin(someHold) * 0.5)
     end
 end
 
 function onTweenCompleted(tag)
     if tag == 'hudZoomBack' then
-        setProperty('camZoomingMult',  1)
-        setProperty('camZoomingDecay', 1)
+        setProperty('camZoomingMult',  1) setProperty('camZoomingDecay', 1)
     end
     if tag == '0Angle' then canAngleDance = true end
 end

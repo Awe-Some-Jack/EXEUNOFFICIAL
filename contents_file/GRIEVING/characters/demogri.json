@@ -242,10 +242,10 @@
 		},
 		{
 			"offsets": [53, 62],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "o3",
-			"loop": false,
+			"indices": [],
 			"name": "looking"
 		}
 	],
@@ -257,7 +257,7 @@
 	"flip_x": false,
 	"healthbar_colors": [53, 54, 102],
 	"camera_position": [0, 0],
-	"sing_duration": 4,
+	"sing_duration": 10,
 	"scale": 1,
 	"_editor_isPlayer": false
 }

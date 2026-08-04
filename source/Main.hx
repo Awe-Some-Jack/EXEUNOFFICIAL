@@ -81,12 +81,14 @@ class Main extends Sprite
 		backend.CrashHandler.init();
 		#end
 
-		// Credits to MAJigsaw77 (he's the og author for this code)
+		#if mobile
 		#if android
-		Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
-		#elseif ios
-		Sys.setCwd(lime.system.System.applicationStorageDirectory);
+		MobileUtil.getPermissions();
+		MobileUtil.initDirectory();
 		#end
+		Sys.setCwd(MobileUtil.getAssetDirectory());
+		MobileUtil.copyAssets(); //copies assets folder only
+    #end
 
 		FlxG.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (e) ->
 		{

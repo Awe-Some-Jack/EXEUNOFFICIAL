@@ -1,3 +1,5 @@
+local inGameOver = false;
+
 function onCreatePost()
 	makeLuaSprite('cab')
 	setSpriteShader('cab', 'chromabber')
@@ -104,7 +106,7 @@ end
 
 local thing = 0;
 function onUpdatePost(e)
-	if startedCountdown and curStep < 3 then
+	if startedCountdown and curStep < 3 and not inGameOver then
 		setProperty('ca2.x', 0.15);
 		setProperty('cab.x', 0.1);
 		setProperty('sexo.y', 1);
@@ -118,22 +120,24 @@ function onUpdatePost(e)
 	setShaderFloat('glitch2', 'iTime', thing)
 	setShaderFloat('gBlur', 'iTime', thing)
 
-	setShaderFloat('sexo', 'brightness', getProperty('sexo.x') * 2)
-	setShaderFloat('sexo', 'contrast', 1 + (getProperty('sexo.x') * 4))
+	if not inGameOver then
+		setShaderFloat('sexo', 'brightness', getProperty('sexo.x') * 2)
+		setShaderFloat('sexo', 'contrast', 1 + (getProperty('sexo.x') * 4))
 
-	setShaderFloat('sexo2', 'brightness', getProperty('sexo2.x') * 2)
-	setShaderFloat('sexo2', 'contrast', 1 + (getProperty('sexo2.x') * 4))
+		setShaderFloat('sexo2', 'brightness', getProperty('sexo2.x') * 2)
+		setShaderFloat('sexo2', 'contrast', 1 + (getProperty('sexo2.x') * 4))
 
-	setShaderFloat('glitch', 'GLITCH', getProperty('glitch.x'))
-	setShaderFloat('glitch2', 'GLITCH', getProperty('glitch2.x'))
+		setShaderFloat('glitch', 'GLITCH', getProperty('glitch.x'))
+		setShaderFloat('glitch2', 'GLITCH', getProperty('glitch2.x'))
 
-	setShaderFloat('gBlur', 'distort', getProperty('gBlur.x'))
-	setShaderFloat('gBlur', 'Quality', getProperty('gBlur.y'))
+		setShaderFloat('gBlur', 'distort', getProperty('gBlur.x'))
+		setShaderFloat('gBlur', 'Quality', getProperty('gBlur.y'))
 
-	setShaderFloat('cab', 'amount', getProperty('cab.x'))
-	setShaderFloat('ca2', 'amount', getProperty('ca2.x')+.05)
-	setShaderFloat('sexo', 'saturation', getProperty('sexo.y'))
-	setShaderFloat('sexo2', 'saturation', getProperty('sexo2.y'))
+		setShaderFloat('cab', 'amount', getProperty('cab.x'))
+		setShaderFloat('ca2', 'amount', getProperty('ca2.x')+.05)
+		setShaderFloat('sexo', 'saturation', getProperty('sexo.y'))
+		setShaderFloat('sexo2', 'saturation', getProperty('sexo2.y'))
+	end
 end
 
 function onTweenCompleted(t)
@@ -149,4 +153,20 @@ function onTweenCompleted(t)
 	if t == 'sexoY' then
 		tweening4 = false;
 	end
+end
+
+function onGameOverStart()
+	inGameOver = true;
+
+	setShaderFloat('glitch', 'GLITCH', 0.1)
+	setShaderFloat('cab', 'amount', 0.9)
+	setProperty('cab.x', 0.9)
+	
+    setShaderFloat('sexo', 'saturation', 0.4)
+    setShaderFloat('sexo', 'contrast', 1.5)
+
+	cancelTween('sexoX')
+	cancelTween('sexoY')
+	cancelTween('lolfuckxd')
+	cancelTween('chromtweenshit')
 end

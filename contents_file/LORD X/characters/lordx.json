@@ -1,68 +1,68 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
 			"loop": true,
-			"fps": 24,
-			"anim": "idle",
-			"indices": [],
-			"name": "idle"
-		},
-		{
-			"offsets": [227, 7],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [109, 0],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [77, 167],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [11, 69],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [99, 53],
-			"loop": false,
-			"fps": 24,
-			"anim": "thanos",
-			"indices": [],
-			"name": "chasquido"
-		},
-		{
 			"offsets": [0, 0],
-			"loop": false,
+			"anim": "idle",
 			"fps": 24,
-			"anim": "ai",
-			"indices": [],
-			"name": "look"
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [83, 146],
 			"loop": false,
+			"offsets": [252, 9],
+			"anim": "singLEFT",
 			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [122, 0],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [86, 184],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [15, 76],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [109, 59],
+			"anim": "thanos",
+			"fps": 24,
+			"name": "chasquido",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [2, 0],
+			"anim": "ai",
+			"fps": 24,
+			"name": "look",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [94, 160],
 			"anim": "mispulmones",
-			"indices": [],
-			"name": "respiroo"
+			"fps": 24,
+			"name": "respiroo",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

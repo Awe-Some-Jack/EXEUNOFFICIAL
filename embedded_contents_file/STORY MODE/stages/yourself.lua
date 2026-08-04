@@ -146,12 +146,12 @@ function onEvent(eventName, value1, value2)
             if value2 == 'dad' then
                 doTweenX('spotlight1ScaleX', 'spotlight1.scale', 1, 0.6, 'circOut')
             elseif value2 == 'dadAgain' then
-                setProperty('spotlight1.x', getProperty('spotlight1.x') - 500)
+                setProperty('spotlight1.x', getProperty('spotlight1.x') - 1000)
                 doTweenX('spotlight1ScaleX', 'spotlight1.scale', 1, 0.6, 'circOut')
             elseif value2 == 'fade' then
                 doTweenX('spotlight1ScaleX', 'spotlight1.scale', 0, 0.6, 'circIn')
             elseif value2 == 'bf' then
-                setProperty('spotlight1.x', getProperty('spotlight1.x') + 500)
+                setProperty('spotlight1.x', getProperty('spotlight1.x') + 1000)
                 doTweenX('spotlight1ScaleX', 'spotlight1.scale', 1, 0.6, 'circOut')
             elseif value2 == 'tweenToBF' then
                 doTweenX('spotlight1X', 'spotlight1', getProperty('spotlight1.x') + 1000, 0.6, 'circOut')

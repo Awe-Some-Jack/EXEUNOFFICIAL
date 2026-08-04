@@ -639,7 +639,7 @@ class Paths
 
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '')
-		return 'contents/' + key;
+		return #if mobile Sys.getCwd() + #end 'contents/' + key;
 
 	inline static public function modsJson(key:String)
 		return modFolders('data/' + key + '.json');
@@ -698,7 +698,7 @@ class Paths
 			#end
 			if(OpenFlAssets.exists(fileToCheck)) return fileToCheck;
 		}
-		return 'contents/' + key;
+		return #if mobile Sys.getCwd() + #end 'contents/' + key;
 	}
 	#end
 

@@ -745,7 +745,8 @@
 		[
 			218525.473746345,
 			[
-				["cameracenter", "true", ""]
+				["cameracenter", "true", ""],
+				["Tweening Camera", "0, -110", "0.001, linear"]
 			]
 		],
 		[
@@ -755,7 +756,8 @@
 				["bloomFlash", "0.5, 0", "4, smootherStepOut"],
 				["yourselfEvents", "tweenCamHUDAlphaDown", ""],
 				["Set Property", "camZoomingMult", "0"],
-				["Set Property", "camZoomingDecay", "0"]
+				["Set Property", "camZoomingDecay", "0"],
+				["Tweening Camera", "0, -130", "4, smootherStepInOut"]
 			]
 		],
 		[

@@ -13,8 +13,8 @@ local yourselfNormal = {
     {name = 'broken2',  path = 'eye/yourself/broken/2-sharpBroken',      x =  480, y =  445, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 0, front = false},
     {name = 'broken3',  path = 'eye/yourself/broken/3-reflectionBroken', x =  120, y = 320, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
     {name = 'norm7',    path = 'eye/yourself/normal/7-structure',        x = -200, y =  40, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, alpha = 1, front = false},
-    {name = 'potinas',  path = 'eye/tinas',                              x =   85, y =    0, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
-    {name = 'cortinas', path = 'eye/cor',                                x =   85, y = -300,                                                                                    scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
+    {name = 'potinas',  path = 'eye/tinas',                              x =   85, y = -100, animated = true, animName = 'close', animPrefix = 'tinas', fps = 24, loop = false, scaleX = 2, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
+    {name = 'cortinas', path = 'eye/cor',                                x =   85, y = -400,                                                                                    scaleX = 2.5, scaleY = 2.3, scrollX = 1, scrollY = 1, alpha = 0, front = true},
     {name = 'luces',    path = 'eye/xcxc',                               x =   45, y =  200,                                                                                    scaleX = 0.85, scaleY = 0.85, scrollX = 1, scrollY = 1, alpha = 1, front = true},
 }
 
@@ -71,11 +71,6 @@ function onCreate()
     for _, you   in ipairs(yourselfBuddies) do createSprite(you)   end
     for _, spot  in ipairs(spotlights)      do createSprite(spot)  end
     for _, rself in ipairs(yourselfBG2)     do createSprite(rself) end
-
-    makeLuaSprite('graphFix', nil, 500, 1720)
-    makeGraphic('graphFix', screenHeight * 2, screenHeight * 2, '242423')
-    setProperty('graphFix.scale.x', 4)
-    addLuaSprite('graphFix', false)
 
     setProperty('gf.visible', false)
 
@@ -151,12 +146,12 @@ function onEvent(eventName, value1, value2)
             if value2 == 'dad' then
                 doTweenX('spotlight1ScaleX', 'spotlight1.scale', 1, 0.6, 'circOut')
             elseif value2 == 'dadAgain' then
-                setProperty('spotlight1.x', getProperty('spotlight1.x') - 1000)
+                setProperty('spotlight1.x', getProperty('spotlight1.x') - 500)
                 doTweenX('spotlight1ScaleX', 'spotlight1.scale', 1, 0.6, 'circOut')
             elseif value2 == 'fade' then
                 doTweenX('spotlight1ScaleX', 'spotlight1.scale', 0, 0.6, 'circIn')
             elseif value2 == 'bf' then
-                setProperty('spotlight1.x', getProperty('spotlight1.x') + 1000)
+                setProperty('spotlight1.x', getProperty('spotlight1.x') + 500)
                 doTweenX('spotlight1ScaleX', 'spotlight1.scale', 1, 0.6, 'circOut')
             elseif value2 == 'tweenToBF' then
                 doTweenX('spotlight1X', 'spotlight1', getProperty('spotlight1.x') + 1000, 0.6, 'circOut')

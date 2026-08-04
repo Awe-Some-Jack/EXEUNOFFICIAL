@@ -2632,7 +2632,7 @@ class PlayState extends MusicBeatState
 				if (FlxG.save.data.lastCoverPlay == null)
 					FlxG.save.data.lastCoverPlay = 0;
 
-				FlxG.save.data.lastCoverPlay++;
+				if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay++;
 
 				switch(Paths.formatToSongPath(SONG.song)){
 					case "triple-trouble":
@@ -2650,6 +2650,7 @@ class PlayState extends MusicBeatState
 						FlxG.save.data.storyModeDone = true;
 						FlxG.save.flush();
 						trace("Yourself Cutscene: " + FlxG.save.data.theYourselfCutscene);
+						FlxG.save.data.lastCoverPlay = 4;
 				}
 
 

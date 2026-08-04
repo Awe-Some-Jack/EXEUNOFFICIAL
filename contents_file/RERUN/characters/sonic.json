@@ -1,70 +1,6 @@
 {
 	"animations": [
 		{
-			"loop": true,
-			"offsets": [39, -188],
-			"anim": "idle",
-			"fps": 24,
-			"name": "Idle i",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [72, -91],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "Up i",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [40, -188],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Down i",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [39, -187],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "Right i",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [153, -188],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "Left i",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [50, -170],
-			"anim": "danceLeft-alt",
-			"fps": 24,
-			"name": "Idle 2 instancia 1",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-		},
-		{
-			"loop": false,
-			"offsets": [50, -170],
-			"anim": "danceRight-alt",
-			"fps": 24,
-			"name": "Idle 2 instancia 1",
-			"indices": [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
-		},
-		{
-			"loop": false,
-			"offsets": [78, -57],
-			"anim": "singUP-alt",
-			"fps": 24,
-			"name": "Up 2",
-			"indices": []
-		},
-		{
 			"loop": false,
 			"offsets": [91, -175],
 			"anim": "singDOWN-alt",
@@ -74,7 +10,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [46, -175],
+			"offsets": [47, -168],
 			"anim": "singRIGHT-alt",
 			"fps": 24,
 			"name": "Right 2",
@@ -82,7 +18,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [393, -174],
+			"offsets": [433, -168],
 			"anim": "singLEFT-alt",
 			"fps": 24,
 			"name": "Left 2",
@@ -90,32 +26,96 @@
 		},
 		{
 			"loop": true,
-			"offsets": [326, 321],
+			"offsets": [284, 524],
 			"anim": "trans",
 			"fps": 24,
 			"name": "trans",
 			"indices": []
 		},
 		{
-			"offsets": [50, -170],
-			"loop": false,
+			"offsets": [40, -180],
+			"indices": [],
 			"fps": 24,
-			"anim": "danceLeft",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-			"name": "Idle 2 instancia 1"
+			"anim": "idle",
+			"loop": true,
+			"name": "Idle"
 		},
 		{
-			"offsets": [50, -170],
+			"offsets": [152, -70],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
 			"loop": false,
+			"name": "Up"
+		},
+		{
+			"offsets": [40, -180],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Down"
+		},
+		{
+			"offsets": [40, -155],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Right"
+		},
+		{
+			"offsets": [168, -179],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Left"
+		},
+		{
+			"offsets": [56, -164],
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"fps": 24,
+			"anim": "danceLeft-alt",
+			"loop": false,
+			"name": "Idle2"
+		},
+		{
+			"offsets": [56, -164],
+			"indices": [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+			"fps": 24,
+			"anim": "danceRight-alt",
+			"loop": false,
+			"name": "Idle2"
+		},
+		{
+			"offsets": [88, -59],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP-alt",
+			"loop": false,
+			"name": "Up 2"
+		},
+		{
+			"offsets": [56, -164],
+			"indices": [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
 			"fps": 24,
 			"anim": "danceRight",
-			"indices": [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
-			"name": "Idle 2 instancia 1"
+			"loop": false,
+			"name": "Idle2"
+		},
+		{
+			"offsets": [56, -164],
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"fps": 24,
+			"anim": "danceLeft",
+			"loop": false,
+			"name": "Idle2"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/sonic, characters/sonic2, characters/transrerun",
+	"image": "characters/RERUN",
 	"position": [0, 0],
 	"healthicon": "sonic",
 	"flip_x": false,

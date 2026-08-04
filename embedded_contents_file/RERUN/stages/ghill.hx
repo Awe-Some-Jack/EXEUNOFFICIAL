@@ -203,6 +203,7 @@ function onStepHit() {
 		case 2794:
 			FlxTween.tween(gfGroup, {alpha: 0}, 2.46, {ease: FlxEase.smootherStepInOut});
 		case 2816:
+			camHUD.visible = camHUD.alive = camHUD.exists = false;
 			FlxTween.tween(boyfriendGroup, {alpha: 0}, 2.46, {ease: FlxEase.smootherStepInOut});
 			FlxTween.tween(dadGroup, {alpha: 0}, 2.46, {ease: FlxEase.smootherStepInOut});
 			FlxTween.tween(logo, {alpha: 0}, 2.46, {ease: FlxEase.smootherStepInOut});

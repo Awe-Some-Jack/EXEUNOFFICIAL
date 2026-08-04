@@ -1,49 +1,49 @@
 {
 	"animations": [
 		{
-			"offsets": [380, 859],
-			"loop": false,
+			"offsets": [287, 919],
+			"indices": [],
 			"fps": 32,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"loop": false,
+			"name": "3up"
 		},
 		{
-			"offsets": [690, 450],
-			"loop": false,
+			"offsets": [487, 380],
+			"indices": [],
 			"fps": 32,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"loop": false,
+			"name": "3down"
 		},
 		{
-			"offsets": [100, 450],
-			"loop": false,
+			"offsets": [212, 428],
+			"indices": [],
 			"fps": 32,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [690, 525],
 			"loop": false,
-			"fps": 32,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"name": "3right"
 		},
 		{
-			"offsets": [92, 452],
-			"loop": true,
+			"offsets": [-91, 380],
+			"indices": [],
 			"fps": 32,
 			"anim": "idle",
-			"indices": [],
-			"name": "Idle 4"
+			"loop": true,
+			"name": "idle3"
+		},
+		{
+			"offsets": [659, 442],
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+			"fps": 32,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "3left"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/rerun3",
+	"image": "characters/RERUN",
 	"position": [0, 0],
 	"healthicon": "rerun-sonic",
 	"flip_x": false,

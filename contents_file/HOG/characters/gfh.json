@@ -1,28 +1,28 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [28, 22],
-			"loop": false,
-			"fps": 24,
 			"anim": "danceLeft",
-			"indices": [],
-			"name": "xd"
+			"fps": 24,
+			"name": "xd",
+			"indices": []
 		},
 		{
-			"offsets": [-24, -186],
 			"loop": false,
-			"fps": 24,
+			"offsets": [65, 67],
 			"anim": "a",
-			"indices": [],
-			"name": "a"
+			"fps": 24,
+			"name": "a",
+			"indices": []
 		},
 		{
-			"offsets": [9, 24],
-			"indices": [],
-			"fps": 24,
-			"anim": "danceRight",
 			"loop": false,
-			"name": "Carpeta de elementos duplicados/dance 2"
+			"offsets": [9, 25],
+			"anim": "danceRight",
+			"fps": 24,
+			"name": "Carpeta de elementos duplicados/dance 2",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

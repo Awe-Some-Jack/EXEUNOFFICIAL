@@ -177,13 +177,13 @@ function onCreatePost()
 	addLuaSprite('FX2', false);
 	setObjectCamera('FX2', 'camOther');
 
-	makeLuaSprite('cc', 'StartScreens/Circle-miasma', 1400, 250);
+	makeLuaSprite('cc', 'StartScreens/miasma/circle', 1400, 250);
 	scaleObject('cc', 0.8, 0.8);
 	setProperty('cc.antialiasing', true);
 	addLuaSprite('cc', false);
 	setObjectCamera('cc', 'camOther');
 
-	makeLuaSprite('txtm', 'StartScreens/Text-miasma', 1400, 250);
+	makeLuaSprite('txtm', 'StartScreens/miasma/text', 1400, 250);
 	scaleObject('txtm',  0.8, 0.8);
 	setProperty('txtm.antialiasing', true);
 	addLuaSprite('txtm', false);

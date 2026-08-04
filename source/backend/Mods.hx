@@ -226,11 +226,11 @@ class Mods
 			fileStr += values[0] + '|' + (values[1] ? '1' : '0');
 		}
 
-		#if mobile
+		/*#if mobile
 		File.saveBytes('contentsList.dat', Assets.getBytes('contentsList.dat'));
-		#else
-		File.saveContent('contentsList.dat', fileStr);
-		#end
+		#else*/
+		File.saveContent(#if mobile Sys.getCwd() + #end 'contentsList.dat', fileStr);
+		//#end
 
 		updatedOnState = true;
 		//trace('Saved contentsList.dat');

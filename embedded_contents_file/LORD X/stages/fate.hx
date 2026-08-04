@@ -3,11 +3,13 @@ import flixel.FlxSprite;
 
 var stat:FlxSprite;
 var bgGraphic:FlxSprite;
+var blackGraphic:FlxSprite;
+var whiteGraphic:FlxSprite;
 var eas:FlxSprite;
+var bluescreen:FlxSprite;
 
 function onCreate() {
     bgGraphic = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.RED);
-    bgGraphic.alpha = 0.00001;
     bgGraphic.scale.set(2, 2);
     bgGraphic.screenCenter();
     bgGraphic.scrollFactor.set();
@@ -28,8 +30,27 @@ function onCreate() {
     stat.antialiasing = false;
     add(stat);
 
-    eas.cameras = stat.cameras = [camOther];
-    eas.alpha = stat.alpha = 0.00001;
+    whiteGraphic = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+    whiteGraphic.scale.set(2, 2);
+    whiteGraphic.screenCenter();
+    whiteGraphic.scrollFactor.set();
+    add(whiteGraphic);
+
+    bluescreen = new FlxSprite(0, 0, Paths.image('fate/bluescreen', 'LORD X'));
+    bluescreen.updateHitbox();
+    bluescreen.scrollFactor.set();
+    bluescreen.setGraphicSize(FlxG.width, FlxG.height);
+    bluescreen.screenCenter();
+    add(bluescreen);
+
+    blackGraphic = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+    blackGraphic.scale.set(2, 2);
+    blackGraphic.screenCenter();
+    blackGraphic.scrollFactor.set();
+    add(blackGraphic);
+
+    whiteGraphic.cameras = blackGraphic.cameras = bluescreen.cameras = eas.cameras = stat.cameras = [camOther];
+    blackGraphic.alpha = bgGraphic.alpha = whiteGraphic.alpha = bluescreen.alpha = eas.alpha = stat.alpha = 0.00001;
 }
 // all squished together for you
 function onUpdate() {
@@ -43,11 +64,16 @@ function onUpdate() {
             case 117, 185: bgGraphic.alpha = 0;
             case 161: bgGraphic.alpha = 1;
             case 230: eas.alpha = 1;
-            case 256:  eas.alpha = 0;
+            case 256: eas.alpha = 0;
             case 449:
-                bgGraphic.color = 0xFF000000;
-                bgGraphic.cameras = [camOther];
-                FlxTween.tween(bgGraphic, {alpha: 1}, 3, {ease: FlxEase.smootherStepInOut});
+                FlxTween.tween(blackGraphic, {alpha: 1}, 3, {ease: FlxEase.smootherStepInOut});
         }
+    }
+}
+
+function onStepHit() {
+    switch(curStep) {
+        case 3428: FlxTween.tween(whiteGraphic, {alpha: 0.4}, 0.4, {ease: FlxEase.linear});
+        case 3462: bluescreen.alpha = 1;
     }
 }

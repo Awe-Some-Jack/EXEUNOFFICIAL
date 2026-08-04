@@ -3,6 +3,8 @@ import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
 import openfl.utils.Assets;
 import shaders.ColorSwap;
+import objects.VideoSprite;
+
 typedef BackgroundSprite =
 {
 	var path:String;
@@ -39,6 +41,7 @@ var activeSprites:Array<FlxSprite> = [];
 var glitch:FlxRuntimeShader;
 var colorShader:ColorSwap;
 var camGlitch:FlxRuntimeShader;
+var fireBG:FlxVideoSprite;
 
 function onCreatePost()
 {
@@ -56,6 +59,18 @@ function onCreatePost()
 	game.camGame.filters.push(new ShaderFilter(camGlitch));
 	game.camHUD.filters.push(new ShaderFilter(camGlitch));
 
+	fireBG = new VideoSprite(-500, -600, false);
+	fireBG.onFormat(() -> { 
+		fireBG.scale.set(1.5, 1.5);
+		fireBG.updateHitbox();
+	});
+	fireBG.scrollFactor.set(0.6, 1);
+	fireBG.alpha = 0.0001;
+	fireBG?.loadVideo(Paths.video('../images/herworld/fire'));
+	fireBG.pause();
+	fireBG.onEnd(() -> {game.remove(fireBG); fireBG.destroy();});
+	game.insert(0, fireBG);
+
     colorSwap = new ColorSwap();
     colorSwap.hue = -0.04;
     colorSwap.brightness = -0.8;
@@ -65,6 +80,19 @@ function onCreatePost()
 	black.alpha = 0;
 	black.camera = game.camHUD;
 	game.add(black);
+
+	end = new FlxSprite();
+	end.loadGraphic(Paths.image('herworld/end'));
+	end.scale.set(1.5, 1.5);
+	end.alpha = 0.001;
+	end.screenCenter();
+	end.camera = game.camHUD;
+	game.insert(0, end);
+
+	white = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
+	white.alpha = 0;
+	white.camera = game.camHUD;
+	game.insert(0, white);
 
 	makeBackground(bgNeedle);
 }
@@ -82,14 +110,16 @@ function onEvent(n, v1, v2) {
 		switch(v2) {
 			case 'bf-needle': boyfriend.shader = colorSwap.shader;
 			case 'gf-needlemouse': gf.shader = colorSwap.shader;
+			case 'luther':
+				dad.setPosition(975, 850);
 			case 'atem': 
-				dad.setPosition(2600, 700);
+				dad.setPosition(2600, 850);
 				triggerEvent('Set customCamera Position', 'dad', '2700, 650');
 			case 'lutherfinal':
 				gf.setPosition(2600, 800);
 				triggerEvent('Set customCamera Position', 'gf', '2900, 800');
 			case 'bf-needlefinal':
-				boyfriend.setPosition(1900, 800);
+				boyfriend.setPosition(1900, 840);
 				triggerEvent('Set customCamera Position', 'bf', '2500, 800');
 				boyfriend.flipX = false;
 		}
@@ -97,79 +127,92 @@ function onEvent(n, v1, v2) {
 }
 
 function onStepHit() {
-	if (PlayState.SONG.song == 'Her World') {
-		switch(curStep) {
-			case 798:	// luther transition
-				FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> 
-				{
-					makeBackground(bgLuther); 
-					boyfriend.shader = colorSwap.shader;
-					gf.shader = colorSwap.shader;
-				}});
-				FlxTween.num(0, 1, 1.5, null, v -> {
-					camGlitch.setFloat('AMT', v); 
-					camGlitch.setFloat('SPEED', v);
-				});
-				FlxTween.tween(black, {alpha: 0}, 1.5, {startDelay: 2});
-				FlxTween.num(1, 0, 1.5, {startDelay: 2}, v -> {
-					camGlitch.setFloat('AMT', v); 
-					camGlitch.setFloat('SPEED', v);
-				});
+	if (!PlayState.SONG.song == 'Her World') return;
+	switch(curStep) {
+		case 798:	// luther transition
+			FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> 
+			{
+				makeBackground(bgLuther); 
+				boyfriend.shader = colorSwap.shader;
+				gf.shader = colorSwap.shader;
+			}});
+			FlxTween.num(0, 1, 1.5, null, v -> {
+				camGlitch.setFloat('AMT', v); 
+				camGlitch.setFloat('SPEED', v);
+			});
+			FlxTween.tween(black, {alpha: 0}, 1.5, {startDelay: 2});
+			FlxTween.num(1, 0, 1.5, {startDelay: 2}, v -> {
+				camGlitch.setFloat('AMT', v); 
+				camGlitch.setFloat('SPEED', v);
+			});
 
-			case 1269:
-				FlxTween.num(0, 0.1, 4.2, {onComplete: () -> {
-					camGlitch.setFloat('AMT', 0); 
-					camGlitch.setFloat('SPEED', 0);
-				}}, v -> {
-					camGlitch.setFloat('AMT', v); 
-					camGlitch.setFloat('SPEED', v / 2);
-				});
+		case 1269:
+			FlxTween.num(0, 0.1, 4.2, {onComplete: () -> {
+				camGlitch.setFloat('AMT', 0); 
+				camGlitch.setFloat('SPEED', 0);
+			}}, v -> {
+				camGlitch.setFloat('AMT', v); 
+				camGlitch.setFloat('SPEED', v / 2);
+			});
 
-			case 2976:	//solo transition
-				FlxTween.tween(black, {alpha: 1}, 2, {onComplete: _ -> makeBackground([]) });
-				FlxTween.num(0, 1, 2, {onComplete: _ -> {
-					camGlitch.setFloat('AMT', 0.0); 
-					camGlitch.setFloat('SPEED', 0.0);
-					boyfriend.shader = null;
-					gf.alpha = 0.0001;
-					dad.alpha = 0.0001;
-					for(strum in opponentStrums.members) strum.x -= 600;
-					for(strum in playerStrums.members) strum.x -= 320;
-				}}, v -> {
-					camGlitch.setFloat('AMT', v); 
-					camGlitch.setFloat('SPEED', v);
-				});
-				FlxTween.tween(black, {alpha: 0}, 5, {startDelay: 5});
+		case 2976:	//solo transition
+			triggerEvent('Set customCamera Position', 'bf', '2500, 1000');
+			FlxTween.tween(black, {alpha: 1}, 2, {onComplete: _ -> makeBackground([]) });
+			FlxTween.num(0, 1, 2, {onComplete: _ -> {
+				camGlitch.setFloat('AMT', 0.0); 
+				camGlitch.setFloat('SPEED', 0.0);
+				boyfriend.shader = null;
+				gf.alpha = 0.001;
+				dad.alpha = 0.001;
+				for(strum in opponentStrums.members) strum.x -= 600;
+				for(strum in playerStrums.members) strum.x -= 320;
+			}}, v -> {
+				camGlitch.setFloat('AMT', v); 
+				camGlitch.setFloat('SPEED', v);
+			});
+			FlxTween.tween(black, {alpha: 0}, 5, {startDelay: 5});
 
-			case 3292:
-				FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> 
-				{
-					boyfriend.alpha = 0;
-					dad.alpha = 1;
-				}});
-				FlxTween.tween(black, {alpha: 0}, 1, {startDelay: 2.5});
+		case 3292:
+			FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> 
+			{
+				boyfriend.alpha = 0.001;
+				dad.alpha = 1;
+			}});
+			FlxTween.tween(black, {alpha: 0}, 1, {startDelay: 2.5});
 
 
-			case 3328:	// atem sings
-				for(i => strum in opponentStrums.members) FlxTween.tween(strum, {x: strum.x + 600}, 1.25 - 0.1 * i, {ease: FlxEase.cubeInOut});
-				for(i => strum in playerStrums.members) FlxTween.tween(strum, {x: strum.x + 320}, 1.25, {ease: FlxEase.cubeInOut});
+		case 3328:	// atem sings
+			for(i => strum in opponentStrums.members) FlxTween.tween(strum, {x: strum.x + 600}, 1.25 - 0.1 * i, {ease: FlxEase.cubeInOut});
+			for(i => strum in playerStrums.members) FlxTween.tween(strum, {x: strum.x + 320}, 1.25, {ease: FlxEase.cubeInOut});
 
-			case 3344:	// change bf and luther to final sprites
-				//gf.alpha = 1;
-				triggerEvent('Change Character', 'BF', 'bf-needlefinal');
-				triggerEvent('Change Character', 'GF', 'lutherfinal');
-				game.remove(dadGroup);
-				game.addBehindGF(dadGroup);
-				FlxTween.tween(boyfriend, {alpha: 1}, 1);
-				FlxTween.tween(gf, {alpha: 1}, 1);
+		case 3344:	// change bf and luther to final sprites
+			//gf.alpha = 1;
+			triggerEvent('Change Character', 'BF', 'bf-needlefinal');
+			triggerEvent('Change Character', 'GF', 'lutherfinal');
+			game.remove(dadGroup);
+			game.addBehindGF(dadGroup);
+			FlxTween.tween(boyfriend, {alpha: 1}, 1);
+			FlxTween.tween(gf, {alpha: 1}, 1);
 
-			case 4768:
-				FlxTween.tween(black, {alpha: 1}, 3);
-				FlxTween.num(0, 1, 3, null, v -> {
-					camGlitch.setFloat('AMT', v); 
-					camGlitch.setFloat('SPEED', v);
-				});
-		}
+		case 3968:
+			fireBG.play();
+			FlxTween.tween(fireBG, {alpha: 0.7}, 14);
+		
+		case 4224: 
+			FlxTween.tween(white, {alpha: 1}, 1.5);
+		case 4260:
+			FlxTween.tween(end, {alpha: 1}, 2);
+		case 4280:
+			FlxTween.tween(end, {"scale.x": 0.5, "scale.y": 0.5}, 40);
+		case 4750:
+			FlxTween.tween(end, {alpha: 0}, 4);
+
+		case 4768:
+			FlxTween.tween(black, {alpha: 1}, 3);
+			FlxTween.num(0, 1, 3, null, v -> {
+				camGlitch.setFloat('AMT', v); 
+				camGlitch.setFloat('SPEED', v);
+			});
 	}
 }
 

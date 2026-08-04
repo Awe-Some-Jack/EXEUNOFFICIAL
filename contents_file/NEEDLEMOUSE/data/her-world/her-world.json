@@ -5850,14 +5850,14 @@
 		[
 			123297.959183674,
 			[
-				["Tween Camera Zoom", "0.4, true", "2.5, cubeOut"]
+				["Tween Camera Zoom", "0.5, true", "2.5, cubeOut"]
 			]
 		],
 		[
 			128597.959183674,
 			[
 				["Tween Camera Zoom", "0.8, true", "4, cubeInOut"],
-				["Tweening Camera", "-700, 0", "4, cubeInOut"]
+				["Tweening Camera", "-500, 0", "4, cubeInOut"]
 			]
 		],
 		[
@@ -5884,7 +5884,7 @@
 		[
 			220897.959183674,
 			[
-				["Tweening Camera", "-600, 0", "0.5, cubeOut"],
+				["Tweening Camera", "-550, 0", "0.5, cubeOut"],
 				["Tween Camera Zoom", "0.85, true", "0.5, cubeOut"]
 			]
 		],

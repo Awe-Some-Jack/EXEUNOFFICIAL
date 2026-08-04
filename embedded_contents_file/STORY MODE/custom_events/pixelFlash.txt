@@ -1,0 +1,4 @@
+A PIXEL FLASH tween that works as a FLASH
+v1 = from, to
+v2 = time, tween
+Script by Raimbowcore12

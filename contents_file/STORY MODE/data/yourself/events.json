@@ -1,0 +1,781 @@
+{
+	"events": [
+		[
+			0,
+			[
+				["Video Player", "EYE_TO_EYE intro, camHUD, 0", "false, true, false, true"]
+			]
+		],
+		[
+			3409.09090909091,
+			[
+				["yourselfEvents", "fuckyoublackscreen", ""]
+			]
+		],
+		[
+			13090.9090909091,
+			[
+				["yourselfEvents", "startMiddleScroll", ""]
+			]
+		],
+		[
+			18000,
+			[
+				["yourselfEvents", "revealYourself", ""]
+			]
+		],
+		[
+			34909.0909090909,
+			[
+				["bloomFlash", "1, 0", "1.1, circOut"]
+			]
+		],
+		[
+			48210.3851905326,
+			[
+				["Yourself SplitScreen", "desactivatefirst", ""]
+			]
+		],
+		[
+			50671.9236520711,
+			[
+				["pixelFlash", "0.1, 10", "4"]
+			]
+		],
+		[
+			53340.649520797,
+			[
+				["Yourself SplitScreen", "yourselfmirror", ""],
+				["Play Animation", "trans", "dad"],
+				["yourselfEvents", "separateNotes", ""],
+				["Set customCamera Zoom", "OGZoom", "0.65"],
+				["Set Property", "cameraSpeed", "10000"]
+			]
+		],
+		[
+			53428.8848149146,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			54399.4730502087,
+			[
+				["Tween Camera Zoom", "1.6, true", "5, smootherStepInOut"]
+			]
+		],
+		[
+			54487.7083443264,
+			[
+				["pixelFlash", "10, 0.1", "4"]
+			]
+		],
+		[
+			54752.4142266793,
+			[
+				["yourselfEvents", "fadeNotes", ""],
+				["yourselfEvents", "fadeLights", ""],
+				["yourselfEvents", "fadeHUD", "appear"]
+			]
+		],
+		[
+			57753.4584313434,
+			[
+				["yourselfEvents", "abcdefghi", ""]
+			]
+		],
+		[
+			58552.2749993908,
+			[
+				["Change Scroll Speed", "1.2", "0.65"]
+			]
+		],
+		[
+			58996.0619816393,
+			[
+				["Tween Camera Zoom", "1", ""],
+				["Alt Idle Animation", "dad", "-alt"],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Yourself SplitScreen", "lolxd", ""],
+				["yourselfEvents", "changeIcon", ""],
+				["yourselfEvents", "removeShader", ""],
+				["Set Property", "camVideo.alpha", "0"]
+			]
+		],
+		[
+			70290.1796286981,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			71591.6502169334,
+			[
+				["Play Animation", "romper", "dad "]
+			]
+		],
+		[
+			71701.9443345804,
+			[
+				["Yourself SplitScreen", "yourselfagain", ""]
+			]
+		],
+		[
+			73113.7090404628,
+			[
+				["yourselfEvents", "tweenInstancesAlpha", "0.4"]
+			]
+		],
+		[
+			75937.2384522275,
+			[
+				["yourselfEvents", "tweenInstancesAlpha", "0.2"]
+			]
+		],
+		[
+			78760.7678639922,
+			[
+				["Yourself SplitScreen", "fuckingyeah", ""]
+			]
+		],
+		[
+			78849.0031581098,
+			[
+				["yourselfEvents", "tweenInstancesAlpha", "0.05"]
+			]
+		],
+		[
+			80084.2972757568,
+			[
+				["Set Property", "camVideo.alpha", "1"],
+				["Yourself SplitScreen", "byecamera", ""],
+				["Video Player", "EYE FOR EYE, camVideo, 0", "false, true, false, true"]
+			]
+		],
+		[
+			80349.0031581098,
+			[
+				["yourselfEvents", "tweenInstancesAlpha", "0"]
+			]
+		],
+		[
+			80878.4149228157,
+			[
+				["Change Character", "dad", "LookALike"],
+				["Set Property", "camGame.alpha", "0"],
+				["yourselfEvents", "yourselfTime", ""]
+			]
+		],
+		[
+			81584.2972757569,
+			[
+				["FlashCamera", "FFFFFF, 1", "1, add"],
+				["Tween Camera Zoom", "0.65", ""],
+				["Set Property", "camGame.alpha", "1"],
+				["yourselfEvents", "showBuddies", "buddie2"],
+				["yourselfEvents", "brokenStage", ""],
+				["Set Property", "camVideo.alpha", "0"]
+			]
+		],
+		[
+			87231.3560992863,
+			[
+				["Tween Camera Zoom", "1.1", ""]
+			]
+		],
+		[
+			90054.885511051,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			91466.6502169333,
+			[
+				["Tween Camera Zoom", "1.2", ""]
+			]
+		],
+		[
+			92878.4149228157,
+			[
+				["Tween Camera Zoom", "1, true", "0.001"],
+				["Tweening Camera", "-40, -90", "0.001, linear"],
+				["Set Property", "cameraSpeed", "100000"],
+				["bwFlash", "0.7, 0.7", "0.1"],
+				["yourselfEvents", "showBuddies", "buddie3"]
+			]
+		],
+		[
+			92966.6502169333,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			93231.3560992863,
+			[
+				["Tween Camera Zoom", "0.65", ""],
+				["bloomFlash", "0.3, 0", "1, circOut"],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["bwFlash", "0, 0", "0.1"]
+			]
+		],
+		[
+			95701.9443345804,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			97113.7090404627,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			98525.4737463451,
+			[
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			101349.00315811,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			104172.532569874,
+			[
+				["Tween Camera Zoom", "0.7", ""],
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			106996.061981639,
+			[
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			109819.591393404,
+			[
+				["Tween Camera Zoom", "0.75", ""]
+			]
+		],
+		[
+			111231.356099286,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			112643.120805169,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			114054.885511051,
+			[
+				["Tween Camera Zoom", "1.1", ""]
+			]
+		],
+		[
+			114760.767863992,
+			[
+				["Tween Camera Zoom", "1.6, true", "0.65, circIn"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"],
+				["bwFlash", "0, 0.6", "0.7"]
+			]
+		],
+		[
+			115466.650216933,
+			[
+				["Tween Camera Zoom", "0.7", ""],
+				["bloomFlash", "0.5, 0", "1, circOut"],
+				["Set Property", "cameraSpeed", "1000000"],
+				["yourselfEvents", "showBuddies", "buddie4"],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"],
+				["bwFlash", "0, 0", "0.1"]
+			]
+		],
+		[
+			115554.885511051,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			118290.179628698,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			119701.94433458,
+			[
+				["Tween Camera Zoom", "0.65", ""]
+			]
+		],
+		[
+			121113.709040463,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			123937.238452227,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			125349.00315811,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			126760.767863992,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			132407.826687521,
+			[
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			133819.591393404,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			135231.356099286,
+			[
+				["Tween Camera Zoom", "0.65", ""]
+			]
+		],
+		[
+			136643.120805169,
+			[
+				["yourselfEvents", "modchart1", ""],
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			137349.00315811,
+			[
+				["Tween Camera Zoom", "2, true", "0.7, circIn"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
+			]
+		],
+		[
+			138054.885511051,
+			[
+				["bloomFlash", "0.3, 0", "1, circOut"],
+				["cameracenter", "false", ""],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"],
+				["yourselfEvents", "showBuddies", "buddie5"]
+			]
+		],
+		[
+			140878.414922816,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			142996.061981639,
+			[
+				["Tween Camera Zoom", "0.85", ""]
+			]
+		],
+		[
+			143701.94433458,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			146525.473746345,
+			[
+				["Tween Camera Zoom", "0.8", ""],
+				["Tweening Camera", "-760, -140", "0.9, smootherStepInOut"],
+				["Play Animation", "bit", "dad"]
+			]
+		],
+		[
+			147937.238452227,
+			[
+				["yourselfEvents", "modchart1dot5", ""]
+			]
+		],
+		[
+			148554.885511051,
+			[
+				["bwFlash", "0, 0.3", "0.3"]
+			]
+		],
+		[
+			148643.120805168,
+			[
+				["Tween Camera Zoom", "1, true", "0.55, smootherStepOut"]
+			]
+		],
+		[
+			149349.00315811,
+			[
+				["Tween Camera Zoom", "0.65", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			149437.238452227,
+			[
+				["bwFlash", "0, 0", "0.5"]
+			]
+		],
+		[
+			154996.061981639,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			158084.297275757,
+			[
+				["Tween Camera Zoom", "0.8", ""],
+				["Tweening Camera", "-870, -120", "0.9, circInOut"]
+			]
+		],
+		[
+			159231.356099286,
+			[
+				["yourselfEvents", "modchart2", ""]
+			]
+		],
+		[
+			159496.061981639,
+			[
+				["Play Animation", "short", "dad"]
+			]
+		],
+		[
+			159672.532569874,
+			[
+				["Tweening Camera", "-740, 10", "0.9, circInOut"]
+			]
+		],
+		[
+			159760.767863992,
+			[
+				["yourselfEvents", "tweenInstancesAlpha", "0.6"]
+			]
+		],
+		[
+			159937.238452227,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			160643.120805168,
+			[
+				["Set Property", "dad.animSuffix", "-mini"],
+				["Tweening Camera", "-310, -120", "0.001, linear"],
+				["Tween Camera Zoom", "1", ""],
+				["yourselfEvents", "lightsInteraction", "dad"],
+				["yourselfEvents", "fadeHUD", "fuckyou"],
+				["Set Property", "BlackGraphicGame.alpha", "0.5"],
+				["Set Property", "spotlight1.scale.x", "0.2"],
+				["Set Property", "spotlight1.scale.y", "3"],
+				["Set Property", "spotlight1.alpha", "0.6"],
+				["yourselfEvents", "modchartstart", ""],
+				["Cinematics (With HUD)", "1", "80"]
+			]
+		],
+		[
+			162054.885511051,
+			[
+				["yourselfEvents", "lightsInteraction", "fade"]
+			]
+		],
+		[
+			162407.826687521,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001, linear"],
+				["bloomFlash", "0.1, 0", "0.3, circOut"],
+				["Set Property", "camHUD.alpha", "0.85"]
+			]
+		],
+		[
+			162760.767863992,
+			[
+				["Tween Camera Zoom", "1, true", "0.001, linear"],
+				["bloomFlash", "0.1, 0", "0.3, circOut"],
+				["Set Property", "camHUD.alpha", "0.55"]
+			]
+		],
+		[
+			163113.709040463,
+			[
+				["Tween Camera Zoom", "1.1, true", "0.001, linear"],
+				["bloomFlash", "0.1, 0", "0.3, circOut"],
+				["Set Property", "camHUD.alpha", "0.25"]
+			]
+		],
+		[
+			163466.650216933,
+			[
+				["Tween Camera Zoom", "0.8", ""],
+				["yourselfEvents", "lightsInteraction", "bf"],
+				["yourselfEvents", "tweenCamHUDAlphaDown", "1"],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			164878.414922816,
+			[
+				["yourselfEvents", "lightsInteraction", "fade"]
+			]
+		],
+		[
+			165231.356099286,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001, linear"],
+				["bloomFlash", "0.1, 0", "0.3, circOut"],
+				["Set Property", "camHUD.alpha", "0.85"]
+			]
+		],
+		[
+			165584.297275757,
+			[
+				["Tween Camera Zoom", "1, true", "0.001, linear"],
+				["bloomFlash", "0.1, 0", "0.3, circOut"],
+				["Set Property", "camHUD.alpha", "0.55"]
+			]
+		],
+		[
+			165937.238452227,
+			[
+				["Tween Camera Zoom", "1, true", "0.001, linear"],
+				["bloomFlash", "0.1, 0", "0.3, circOut"],
+				["Set Property", "camHUD.alpha", "0.25"]
+			]
+		],
+		[
+			166290.179628698,
+			[
+				["Tween Camera Zoom", "0.65", ""],
+				["yourselfEvents", "lightsInteraction", "dadAgain"],
+				["yourselfEvents", "tweenCamHUDAlphaDown", "1"]
+			]
+		],
+		[
+			169113.709040463,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["yourselfEvents", "lightsInteraction", "tweenToBF"]
+			]
+		],
+		[
+			171937.238452227,
+			[
+				["Tween Camera Zoom", "1, true", "1.2, sineInOut"],
+				["Tweening Camera", "-840, -50", "1, smootherStepInOut"],
+				["yourselfEvents", "lightsInteraction", "fade"],
+				["yourselfEvents", "tweenCamHUDAlphaDown", "0"]
+			]
+		],
+		[
+			172996.061981639,
+			[
+				["yourselfEvents", "lightsInteraction", "dadAgain"]
+			]
+		],
+		[
+			173040.179628698,
+			[
+				["Set Property", "dad.animSuffix", ""],
+				["Play Animation", "big", "dad"]
+			]
+		],
+		[
+			173172.532569874,
+			[
+				["Cinematics (With HUD)", "2.5", "0"]
+			]
+		],
+		[
+			173349.00315811,
+			[
+				["yourselfEvents", "endmodchart", ""]
+			]
+		],
+		[
+			173437.238452227,
+			[
+				["yourselfEvents", "tweenInstancesAlpha", "0"]
+			]
+		],
+		[
+			173878.414922815,
+			[
+				["Tweening Camera", "-820, -160", "0.6, smootherStepOut"],
+				["Tween Camera Zoom", "0.78", ""]
+			]
+		],
+		[
+			174760.767863992,
+			[
+				["Set Property", "dad.animSuffix", "-phase2"],
+				["Tween Camera Zoom", "0.65", ""],
+				["FlashCamera", "FFFFFF, 1", "1.1, add"],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["bloomFlash", "0.5, 0", "0.9, circOut"],
+				["yourselfEvents", "showOffNewStage", ""],
+				["yourselfEvents", "tweenCamHUDAlphaDown", "1"],
+				["yourselfEvents", "fadeHUD", "appear"],
+				["cameracenter", "true", ""],
+				["Set Property", "boyfriend.animSuffix", "-alt"],
+				["yourselfEvents", "showBuddies", "buddie6"],
+				["yourselfEvents", "showBuddies", "buddie7"]
+			]
+		],
+		[
+			196643.120805168,
+			[
+				["Tween Camera Zoom", "1.4, true", "0.75, circIn"],
+				["Tweening Camera", "1050, 490", "0.75, circIn"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"],
+				["bwFlash", "0, 1", "0.5"]
+			]
+		],
+		[
+			197349.00315811,
+			[
+				["bloomFlash", "0.5, 0", "0.8"],
+				["Tween Camera Zoom", "0.75", ""],
+				["cameracenter", "false", ""],
+				["Set Property", "cameraSpeed", "100000"],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"],
+				["bwFlash", "0, 0", "0.2"]
+			]
+		],
+		[
+			197437.238452227,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			200172.532569874,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			201584.297275757,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["yourselfEvents", "fadeBG", ""]
+			]
+		],
+		[
+			202113.709040462,
+			[
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			202996.061981639,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			205819.591393404,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			207231.356099286,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			208643.120805168,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			214290.179628698,
+			[
+				["cameracenter", "false", ""],
+				["yourselfEvents", "changeMiddlePos", ""]
+			]
+		],
+		[
+			215701.94433458,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			217113.709040462,
+			[
+				["Tween Camera Zoom", "0.65", ""]
+			]
+		],
+		[
+			218525.473746345,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			219937.238452227,
+			[
+				["Tween Camera Zoom", "0.48, true", "4, smootherStepInOut"],
+				["bloomFlash", "0.5, 0", "4, smootherStepOut"],
+				["yourselfEvents", "tweenCamHUDAlphaDown", ""],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
+			]
+		],
+		[
+			222760.767863992,
+			[
+				["yourselfEvents", "cortinasBro", ""]
+			]
+		],
+		[
+			224525.473746345,
+			[
+				["yourselfEvents", "fadeGameBro", ""]
+			]
+		],
+		[
+			226996.061981639,
+			[
+				["Set Property", "camVideo.alpha", "1"]
+			]
+		]
+	],
+	"format": "psych_v1"
+}

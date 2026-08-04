@@ -40,7 +40,8 @@ local followX = true
 function onUpdate()
 	if camLeftEnabled then
 		camZoomOffset = getProperty('zoomoffset.x')
-		setProperty('camLeft.zoom', getProperty('camGame.zoom') + camZoomOffset)
+		setProperty('camLeft.zoom',  getProperty('camGame.zoom') + camZoomOffset)
+		setProperty('camRight.zoom', getProperty('camGame.zoom'))
 
 		--callMethod('camFollowYour.setPosition', {getCharacterCameraPos('dad').x + offsetX, getCharacterCameraPos('dad').y + offsetY})
 		if followX then
@@ -66,21 +67,22 @@ function onEvent(n,v1,v2)
 		end
 		if v1 == 'yourselfmirror' then
 			startTween('LMAO', 'camLeft', {width = screenWidth}, crochet / (1000 / 8), {ease = 'cubeOut'})
+			startTween('LMAOFollow', 'camFollowYour', {x = getProperty('camFollowYour.x') + 50, y = getProperty('camFollowYour.x') - 50}, crochet / (1000 / 8), {ease = 'cubeOut'})
 			doTweenX('fuckyuh', 'zoomoffset', 0, crochet / (1000 / 10) / playbackRate, 'smoothStepInOut')
 			doTweenX('camRightlol', 'camRight', screenWidth, crochet / (1000 / 8) / playbackRate, 'cubeOut')
 			setProperty('camGame.zoom', getProperty('camGame.zoom') + 0.3)
 			doTweenZoom('camgame', 'camGame', getProperty('camGame.zoom') - 0.3, crochet / (1000 / 4) / playbackRate, 'cubeOut')
-			offsetY = 200
+			offsetX = -100
+			offsetY = 150
 			followX = false
 		end
 		if v1 == 'lolxd' then
 			setProperty('camLeft.visible', false)
 			setProperty('camRight.visible', false)
-			setProperty('camLeft.x', -(screenWidth / 2))
-			sexoo = false
 		end
 		if v1 == 'yourselfagain' then
 			offsetX = -50
+			setProperty('camLeft.x', -(screenWidth / 2))
 			setProperty('camLeft.visible', true)
 			setProperty('camLeft.width', screenWidth / 2)
 			doTweenX('camLeftlol', 'camLeft', 0, crochet / (1000 / 4) / playbackRate, 'cubeOut')

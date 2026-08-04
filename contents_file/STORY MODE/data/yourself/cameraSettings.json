@@ -12,12 +12,12 @@
 
     "MiddleCamera": false,
     "MiddleX": 1730,
-    "MiddleY": 1100,
+    "MiddleY": 1000,
 
     "OverrideZoom": false,
 
     "OGZoom": 1,
-    "MiddleZoom": 0.6,
+    "MiddleZoom": 0.5,
 
     "OffsetsBF": 0,
     "OffsetsDAD": 0,

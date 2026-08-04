@@ -160,15 +160,7 @@ local modConfigs = {
 		phase = 'post',
 		snapDelay = 0.05,
 		forceSkipCountdown = false,
-	},
-	['DSK'] = {
-		type = 'slide',
-		skipSongs = {},
-		useSeenCutscene = true,
-		phase = 'post',
-		snapDelay = 0.05,
-		forceSkipCountdown = false,
-	},
+	}
 }
 
 local chaotixSprites = {

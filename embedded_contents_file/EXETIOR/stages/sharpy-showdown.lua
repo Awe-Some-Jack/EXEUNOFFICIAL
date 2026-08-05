@@ -7,9 +7,9 @@ local StageConfig = {
         {name = 'tv',           path =               'SS/tv',  x = -150,  y = -700,  scaleX = 1.2,  scaleY = 1.2,  scrollX = 1, scrollY = 1},
         {name = 'crystalWalls', path =    'SS/crystal-walls',  x = -1500, y = -1100, scaleX = 1.2,  scaleY = 1.25, scrollX = 1, scrollY = 1, front = true},
         {name = 'crystalWalls', path =    'SS/crystal-walls',  x = -1500, y = -1100, scaleX = 1.2,  scaleY = 1.25, scrollX = 1, scrollY = 1, front = true},
-        {name = 'spotlight2',   path =  'SS/2nd/spotlight-2',  x = -1100, y = -2000, scaleX = 0.68, scaleY = 1.2,                               alpha = 0},
-        {name = 'spotlight',    path =  'SS/2nd/spotlight-1',  x = -2300, y = -1900, scaleX = 1.2,  scaleY = 1.2,                               alpha = 0},
-        {name = 'lights',       path =       'SS/2nd/lights',  x = -1100, y = -1500, scaleX = 0.7,  scaleY = 0.8,                blend = 'add', alpha = 0},
+        --{name = 'spotlight2',   path =  'SS/2nd/spotlight-2',  x = -1100, y = -2000, scaleX = 0.68, scaleY = 1.2,                               alpha = 0},
+        {name = 'lights',       path =       'SS/2nd/lights',  x = -1100, y = -1100, scaleX = 0.7,  scaleY = 0.8,                blend = 'add', alpha = 0},
+        {name = 'spotlight',    path =  'SS/2nd/spotlight-1',  x = -1300, y = 500, scaleX = 1.2,  scaleY = 1.2,                               alpha = 0},
     },
     animated = {
         {name = 'eggman',       path = 'characters/eggman',    x = -930, y =  -170,   scaleX = 1.35, scaleY = 1.35, animName = 'idle', animPrefix =                 'eggman', fps = 24, loop = false,                       alpha = 1},
@@ -20,9 +20,7 @@ local StageConfig = {
         {name = 'sark',         path = 'characters/sark',      x = -1600, y =   90,   scaleX = 1.2,  scaleY = 1.2,  animName = 'idle', animPrefix =                   'sark', fps = 24, loop = false,                       alpha = 0, scrollX = 0.3, scrollY = 0.3, front = true},
         {name = 'errorScreen',  path = 'SS/simulation-error',  x = -280,  y = -730,   scaleX = 0.9,  scaleY = 0.9,  animName = 'idle', animPrefix = 'simulation-error error', fps = 24, loop =  true,                       alpha = 1, scrollX =   1, scrollY =   1, front = true}
     },
-    overlays = {
-        {name = 'blackVG', path = 'VG', x = 0, y = 0, scaleX = 1, scaleY = 1}
-    }
+    overlays = { {name = 'blackVG', path = 'VG', x = 0, y = 0, scaleX = 1, scaleY = 1} }
 }
 
 local reflections = {
@@ -120,12 +118,15 @@ function onCreatePost()
     setProperty('bfX.alpha', 0)
     addLuaSprite('bfX', true)
 
-    makeAnimatedLuaSprite('gfEXE', 'characters/gf', 0, -80)
-    addAnimationByPrefix('gfEXE', 'danceLeft', 'dance left instancia 1')
-    addAnimationByPrefix('gfEXE', 'danceRight', 'dance right instancia 1')
-    addAnimationByIndices('gfEXE', 'stand', 'dance right instancia 1', '0', 24, true)
-    playAnim('gfEXE', 'stand', true)
+    makeAnimatedLuaSprite('gfEXE', 'characters/gf', 0, 0)
+    addAnimationByPrefix('gfEXE', 'stand', 'dance', 24, true)
+    addAnimationByIndices('gfEXE', 'danceLeft',  'dance instancia 1', '0,1,2,3,4,5,6,7,8,9,10', 24, false)
+    addAnimationByIndices('gfEXE', 'danceRight', 'dance instancia 1', '11,12,13,14,15,16,17,18,19,20', 24, false)
+    playAnim('gfEXE', 'stand')
     addLuaSprite('gfEXE')
+
+    addAnimationByPrefix('eggman', 'idleCutscene', 'eggman', 24, true)
+    playAnim('eggman', 'idleCutscene')
 
 --[[
     for _, reflection in ipairs(reflections) do createReflection(reflection) end
@@ -193,7 +194,7 @@ function onEvent(eventName, value1, value2)
 end
 
 function onBeatHit()
-    playAnim('gfEXE', curBeat %2 == 1 and 'danceRight' or 'danceLeft')
+    playAnim('gfEXE', curBeat %2 == 1 and 'danceRight' or 'danceLeft', true)
     if curBeat % 2 == 0 then
         for _, spriteName in ipairs(SpriteGroups.beatAnimated) do
             if getProperty(spriteName .. '.alpha') > 0 then

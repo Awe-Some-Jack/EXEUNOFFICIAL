@@ -118,6 +118,8 @@ class EXEFreeplay extends MusicBeatState
 	var holdCheck:Float = 0;
 	public static var inDevMode:Bool = false;
 
+	public static var maniaUnlock:Bool = false;
+
 	override function create()
 	{
 		if (FlxG.stage?.window != null)
@@ -132,7 +134,7 @@ class EXEFreeplay extends MusicBeatState
 		buildSongList();
 
 		//Desactiva esto para usar el desbloqueo de Mania! - Uncomment this to use Mania's Unlock!
-		// new FlxTimer().start(0.6, (_) -> maniaNotif());
+		if (maniaUnlock) new FlxTimer().start(0.6, (_) -> maniaNotif());
 
 		covers = new FlxTypedGroup<FlxSprite>();
 		freeBoxes = new FlxTypedGroup<FlxSprite>();
@@ -319,8 +321,6 @@ class EXEFreeplay extends MusicBeatState
 			});
 		}
 	}
-
-	public static var maniaUnlock:Bool = false;
 	
 	function maniaNotif():Void 
 	{
@@ -341,7 +341,6 @@ class EXEFreeplay extends MusicBeatState
 						FlxG.sound.music?.fadeOut(0, 1);
 						new FlxTimer().start(1, (_) -> { 
 							FlxG.switchState(() -> new EXEMenu()); 
-							maniaUnlock = true;
 						});
 					}
 				}));
@@ -471,7 +470,7 @@ class EXEFreeplay extends MusicBeatState
 
 		if (songEntries.length < 1)
 		{
-			if (controls.BACK)
+			if (controls.BACK && !maniaUnlock)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(() -> new EXEMenu());
@@ -504,7 +503,7 @@ class EXEFreeplay extends MusicBeatState
 		
 		if (lerpScore != prevScore || lerpRating != prevRating) updateScoreDisplay();
 
-		if (controls.BACK)
+		if (controls.BACK && !maniaUnlock)
 		{
 			if (choosingSong)
 			{
@@ -517,7 +516,7 @@ class EXEFreeplay extends MusicBeatState
 			return;
 		}
 
-		if (changeCooldown <= 0 && !choosingSong)
+		if (changeCooldown <= 0 && !choosingSong && !maniaUnlock)
 		{
 			var newSel = selectedBox;
 			if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
@@ -535,7 +534,7 @@ class EXEFreeplay extends MusicBeatState
 				changeSelection(newSel);
 		}
 
-		if (choosingSong)
+		if (choosingSong && !maniaUnlock)
 		{
 			if (controls.UI_DOWN_P) { chooseSong(1); holdCheck = 0; }
 			if (controls.UI_UP_P) { chooseSong(-1); holdCheck = 0; }
@@ -556,7 +555,7 @@ class EXEFreeplay extends MusicBeatState
 			return;
 		}
 
-		if (controls.ACCEPT)
+		if (controls.ACCEPT && !maniaUnlock)
 		{
 			holdCheck = 0;
 			final entry = songEntries[selectedBox];

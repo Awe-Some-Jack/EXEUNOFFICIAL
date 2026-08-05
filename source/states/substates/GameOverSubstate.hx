@@ -221,23 +221,8 @@ class GameOverSubstate extends MusicBeatSubstate
 	var isEnding:Bool = false;
 	function coolStartDeath(?volume:Float = 1):Void
 	{
-		if(loopSoundName == "miasma")
-		{
-			// Para miasma bruh
-			new FlxTimer().start(1, function(tmr:FlxTimer)
-			{
-				if(!isEnding)
-				{
-					FlxG.sound.music.play(true);
-					FlxG.sound.music.volume = volume;
-				}
-			});
-		}
-		else
-		{
-			FlxG.sound.music.play(true);
-			FlxG.sound.music.volume = volume;
-		}
+		FlxG.sound.music.play(true);
+		FlxG.sound.music.volume = volume;
 	}
 
 	var restartDelay:Float = 2;

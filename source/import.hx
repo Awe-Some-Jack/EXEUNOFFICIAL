@@ -82,14 +82,18 @@ import openfl.Assets;
 import openfl.utils.Assets as OpenFlAssets;
 
 #if android
-import androidtools.content.Context as AndroidContext;
-import androidtools.widget.Toast as AndroidToast;
-import androidtools.os.Environment as AndroidEnvironment;
-import androidtools.Permissions as AndroidPermissions;
-import androidtools.Settings as AndroidSettings;
-import androidtools.Tools as AndroidTools;
-import androidtools.os.Build.VERSION as AndroidVersion;
-import androidtools.os.Build.VERSION_CODES as AndroidVersionCode;
+import extension.androidtools.content.Context as AndroidContext;
+import extension.androidtools.widget.Toast as AndroidToast;
+import extension.androidtools.os.Environment as AndroidEnvironment;
+import extension.androidtools.Permissions as AndroidPermissions;
+import extension.androidtools.Settings as AndroidSettings;
+import extension.androidtools.Tools as AndroidTools;
+import extension.androidtools.os.Build.VERSION as AndroidVersion;
+import extension.androidtools.os.Build.VERSION_CODES as AndroidVersionCode;
+#end
+
+#if mobile
+import mobile.backend.MobileUtil;
 #end
 
 using StringTools;

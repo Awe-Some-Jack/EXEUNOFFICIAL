@@ -374,6 +374,12 @@ class Project extends HXProject
             var srcDir = haxe.io.Path.normalize(Sys.getCwd() + "/contents_file");
             postBuildCallbacks.push(new CLICommand("robocopy", [srcDir, binDir, "/E", "/XO", "/NJH", "/NJS", "/NFL", "/NDL"]));
         }
+
+        if (isAndroid())
+        {
+            config.push("android.permission", "android.permission.MANAGE_EXTERNAL_STORAGE");
+            config.set("android.target-sdk-version", "33");
+        }
     }
 
     public function isWeb():Bool

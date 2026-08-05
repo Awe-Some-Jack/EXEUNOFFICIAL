@@ -115,12 +115,12 @@ class MobileUtil
 
 		try
 		{
-			if (!FileSystem.exists(MobileUtil.getDirectory() + "mods/"))
-				FileSystem.createDirectory(MobileUtil.getDirectory() + "mods/");
+			if (!FileSystem.exists(MobileUtil.getDirectory() + "contents/"))
+				FileSystem.createDirectory(MobileUtil.getDirectory() + "contents/");
 		}
 		catch (e:Dynamic)
 		{
-			Application.current.window.alert("Looks like you doesn't have directory named\n" + MobileUtil.getDirectory() + "mods/" + 
+			Application.current.window.alert("Looks like you doesn't have directory named\n" + MobileUtil.getDirectory() + "contents/" + 
 			"\nBut maybe this couldn't be right, android loves to give errors like this\nPress OK & let's see what happens\nCurrent Error You Got:\n" + e, "Warning!");
 			//lime.system.System.exit(1);
 		}

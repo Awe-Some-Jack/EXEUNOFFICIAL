@@ -1,74 +1,74 @@
 {
 	"animations": [
 		{
+			"offsets": [-2, 89],
 			"loop": true,
-			"offsets": [0, 0],
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
+			"offsets": [247, 96],
 			"loop": false,
-			"offsets": [252, 9],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [118, 89],
 			"loop": false,
-			"offsets": [122, 0],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [82, 272],
 			"loop": false,
-			"offsets": [86, 184],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"offsets": [11, 165],
 			"loop": false,
-			"offsets": [15, 76],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
+			"offsets": [107, 146],
 			"loop": false,
-			"offsets": [109, 59],
+			"fps": 24,
 			"anim": "thanos",
-			"fps": 24,
-			"name": "chasquido",
-			"indices": []
+			"indices": [],
+			"name": "chasquido"
 		},
 		{
+			"offsets": [-2, 89],
 			"loop": false,
-			"offsets": [2, 0],
+			"fps": 24,
 			"anim": "ai",
-			"fps": 24,
-			"name": "look",
-			"indices": []
+			"indices": [],
+			"name": "look"
 		},
 		{
+			"offsets": [89, 249],
 			"loop": false,
-			"offsets": [94, 160],
-			"anim": "mispulmones",
 			"fps": 24,
-			"name": "respiroo",
-			"indices": []
+			"anim": "mispulmones",
+			"indices": [],
+			"name": "respiroo"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/cycleslordx",
-	"position": [0, 0],
+	"position": [-10, 90],
 	"healthicon": "lord-x",
 	"flip_x": false,
 	"healthbar_colors": [60, 60, 88],

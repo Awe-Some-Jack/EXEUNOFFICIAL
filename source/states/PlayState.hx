@@ -2622,6 +2622,11 @@ class PlayState extends MusicBeatState
 				}
 			}
 
+			switch(Paths.formatToSongPath(SONG.song)){
+				case "fight-or-flight":
+					EXEFreeplay.maniaUnlock = true;
+			}
+
 			if (isStoryMode)
 			{
 				campaignScore += songScore;

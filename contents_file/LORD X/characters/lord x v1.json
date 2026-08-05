@@ -1,15 +1,7 @@
 {
 	"animations": [
 		{
-			"offsets": [-175, -213],
-			"loop": true,
-			"fps": 12,
-			"anim": "idle",
-			"indices": [],
-			"name": "ç"
-		},
-		{
-			"offsets": [-113, 15],
+			"offsets": [-46, 61],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
@@ -17,7 +9,7 @@
 			"name": "Carpeta de elementos duplicados/up"
 		},
 		{
-			"offsets": [74, -165],
+			"offsets": [73, -52],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -25,7 +17,7 @@
 			"name": "left"
 		},
 		{
-			"offsets": [-20, -213],
+			"offsets": [15, -78],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
@@ -33,23 +25,31 @@
 			"name": "Carpeta de elementos duplicados/down"
 		},
 		{
-			"offsets": [-300, -264],
+			"offsets": [-82, -31],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
 			"indices": [],
 			"name": "right"
+		},
+		{
+			"loop": true,
+			"offsets": [-87, -83],
+			"anim": "idle",
+			"fps": 12,
+			"name": "idle",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/LordXFATEP1",
-	"position": [-180, -100],
+	"position": [-240, -100],
 	"healthicon": "lordx-p2",
 	"flip_x": false,
 	"healthbar_colors": [86, 90, 103],
 	"camera_position": [-30, 260],
 	"sing_duration": 8,
-	"scale": 0.8,
+	"scale": 0.63,
 	"_editor_isPlayer": false
 }

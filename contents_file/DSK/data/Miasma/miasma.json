@@ -2522,7 +2522,6 @@
 	],
 	"gfVersion": "gf",
 	"song": "Miasma",
-	"gameOverChar": "miasma-dead",
 	"gameOverSound": "bfmacheteado",
 	"gameOverLoop": "miasma",
 	"gameOverEnd": "miasma-retry",

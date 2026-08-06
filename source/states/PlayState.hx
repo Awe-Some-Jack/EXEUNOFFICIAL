@@ -8,6 +8,7 @@ import backend.Song;
 import backend.Rating;
 import backend.EXEAchievements;
 
+import flixel.effects.particles.FlxEmitter;
 import flixel.FlxBasic;
 import flixel.FlxObject;
 import flixel.FlxSubState;

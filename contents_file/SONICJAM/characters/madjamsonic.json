@@ -1,55 +1,55 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle alt",
-			"indices": []
+			"indices": [],
+			"name": "second xterion idle"
 		},
 		{
+			"offsets": [0, 0],
 			"loop": false,
-			"offsets": [156, -1],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left alt",
-			"indices": []
+			"indices": [],
+			"name": "second xterion left"
 		},
 		{
+			"offsets": [0, 0],
 			"loop": false,
-			"offsets": [28, 8],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down alt",
-			"indices": []
+			"indices": [],
+			"name": "second xterion down"
 		},
 		{
+			"offsets": [0, 0],
 			"loop": false,
-			"offsets": [25, 49],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up alt",
-			"indices": []
+			"indices": [],
+			"name": "second xterion up"
 		},
 		{
+			"offsets": [0, 0],
 			"loop": false,
-			"offsets": [67, -21],
-			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "right alt",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "second xterion right"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/xterionmad",
-	"position": [0, 0],
+	"image": "characters/xterion evil",
+	"position": [-90, -120],
 	"healthicon": "evilterion",
 	"flip_x": false,
 	"healthbar_colors": [0, 0, 23],
 	"camera_position": [0, 0],
-	"sing_duration": 4,
+	"sing_duration": 8,
 	"scale": 1,
 	"_editor_isPlayer": false
 }

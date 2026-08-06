@@ -86,7 +86,7 @@ class MobileUtil
 		 **/
 		switch(curStorageType) {
 			case 'EXTERNAL':
-				daPath = "/sdcard/.Unofficial";
+				daPath = "/sdcard/.Vs Sonic";
 			/* obb doesnt work and I dont wanna fix it -ArkoseLabs
 			case 'EXTERNAL_OBB':
 				daPath = "/sdcard/Android/obb/com.xunofficial.vssonicexe";

@@ -229,7 +229,7 @@ class Mods
 		/*#if mobile
 		File.saveBytes('contentsList.dat', Assets.getBytes('contentsList.dat'));
 		#else*/
-		File.saveContent(#if mobile Sys.getCwd() + #end 'contentsList.dat', fileStr);
+		File.saveContent(#if mobile MobileUtil.getDirectory() + #end 'contentsList.dat', fileStr);
 		//#end
 
 		updatedOnState = true;

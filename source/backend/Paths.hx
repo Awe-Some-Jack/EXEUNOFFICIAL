@@ -32,7 +32,7 @@ class Paths
 	public static final IMAGE_EXTS:Array<String> = [
 		"png", "jpg", "jpeg", "bmp", "tga", "webp", "avif", "tif", "tiff", 
 		"jxl", "pcx", "xcf", "xpm", "qoi", "lbm", "iff", "pnm", "ppm", "pgm", "pbm",
-		#if mobile ".astc" #end
+		#if mobile "astc" #end
 	];
 
 	//for backward compatibility
@@ -308,13 +308,41 @@ class Paths
 			#else
 			final useOptimized:Bool = false;
 			#end
-			
+
 			var fileExistsSys:Bool = false;
 			#if sys
 			if (sys.FileSystem.exists(file)) fileExistsSys = true;
 			#end
 
-			if (fileExistsSys)
+			final isASTC:Bool = haxe.io.Path.extension(file) == "astc";
+
+			if (isASTC)
+			{
+				#if sys
+				if (fileExistsSys && FlxG.stage.context3D != null && FlxG.stage.context3D.isASTCSupported())
+				{
+					try
+					{
+						var astcBytes = openfl.utils.ByteArray.fromBytes(sys.io.File.getBytes(file));
+						bitmap = BitmapData.fromTexture(FlxG.stage.context3D.createASTCTexture(astcBytes), false);
+					}
+					catch (e:Dynamic)
+					{
+						trace('Error loading ASTC from sys: $file ($e)');
+					}
+				}
+				else if (OpenFlAssets.exists(file))
+				{
+					bitmap = OpenFlAssets.getBitmapData(file);
+				}
+				#else
+				if (OpenFlAssets.exists(file))
+				{
+					bitmap = OpenFlAssets.getBitmapData(file);
+				}
+				#end
+			}
+			else if (fileExistsSys)
 			{
 				#if sys
 				bitmap = useOptimized ? OptimizedBitmapData.fromFile(file) : BitmapData.fromFile(file);
@@ -383,6 +411,33 @@ class Paths
 		for (ext in IMAGE_EXTS) 
 		{
 			var testPath:String = '$baseKey.$ext';
+			final isASTC:Bool = ext == "astc";
+
+			if (isASTC)
+			{
+				#if sys
+				if (sys.FileSystem.exists(testPath) && FlxG.stage.context3D != null && FlxG.stage.context3D.isASTCSupported())
+				{
+					try {
+						var astcBytes = openfl.utils.ByteArray.fromBytes(sys.io.File.getBytes(testPath));
+						return BitmapData.fromTexture(FlxG.stage.context3D.createASTCTexture(astcBytes), false);
+					} catch (e:Dynamic) {
+						trace('Error loading ASTC from sys: $testPath ($e)');
+					}
+				}
+				#end
+
+				if (OpenFlAssets.exists(testPath))
+				{
+					try {
+						return OpenFlAssets.getBitmapData(testPath, useCache);
+					} catch (e:Dynamic) {
+						trace('Error loading ASTC from OpenFL Assets: $testPath ($e)');
+					}
+				}
+
+				continue;
+			}
 
 			#if sys
 			if (sys.FileSystem.exists(testPath)) 
@@ -639,7 +694,7 @@ class Paths
 
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '')
-		return #if mobile Sys.getCwd() + #end 'contents/' + key;
+		return #if mobile MobileUtil.getDirectory() + #end 'contents/' + key;
 
 	inline static public function modsJson(key:String)
 		return modFolders('data/' + key + '.json');
@@ -698,7 +753,7 @@ class Paths
 			#end
 			if(OpenFlAssets.exists(fileToCheck)) return fileToCheck;
 		}
-		return #if mobile Sys.getCwd() + #end 'contents/' + key;
+		return #if mobile MobileUtil.getDirectory() + #end 'contents/' + key;
 	}
 	#end
 

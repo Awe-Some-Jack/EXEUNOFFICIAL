@@ -319,7 +319,7 @@ class Paths
 			if (isASTC)
 			{
 				#if sys
-				if (fileExistsSys && FlxG.stage.context3D != null && FlxG.stage.context3D.isASTCSupported())
+				if (fileExistsSys && FlxG.stage.context3D?.isASTCSupported())
 				{
 					try
 					{
@@ -331,16 +331,10 @@ class Paths
 						trace('Error loading ASTC from sys: $file ($e)');
 					}
 				}
-				else if (OpenFlAssets.exists(file))
+				else #end if (OpenFlAssets.exists(file))
 				{
 					bitmap = OpenFlAssets.getBitmapData(file);
 				}
-				#else
-				if (OpenFlAssets.exists(file))
-				{
-					bitmap = OpenFlAssets.getBitmapData(file);
-				}
-				#end
 			}
 			else if (fileExistsSys)
 			{

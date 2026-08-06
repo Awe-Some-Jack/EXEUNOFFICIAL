@@ -3,27 +3,38 @@ local shadows = {
 	{name = 'dadShadow', path = 'bg/shadow2', target = 'dad',       offsetX = 460,  offsetY = 468, alpha = 0},
 }
 
+local foundYouAssets = {
+	['BG'] = {
+		{name =   'bg', path =         'bg/bg', x = -270, y = -230},
+		{name =  'bg2', path =        'bg/bg2', x =  535, y =  320},
+		{name = 'door', path = 'bg/doorbangin', x = -110, y = -525, animName = 'doorbangin', animPrefix = 'doorbangin', fps = 24, loop = false},
+		{name =   'pc', path =         'bg/tv', x = 1400, y =  400, animName =       'idle', animPrefix = 'Símbolo 12', fps = 24, loop = true},
+		{name = 'glow', path =       'bg/glow', x =   50, y =    0, blend = 'add', alpha = 0.75, front = true},
+	},
+	['Chars'] = {
+		{name = 'char1', path = 'bg/char1', x = 610, y = 320, behind = 'bg2'},
+		{name = 'char2', path = 'bg/char2', x = 780, y = 320, behind = 'bg2'}
+	}
+}
+
+local function createSprite(e)
+	if e.animName then
+		makeAnimatedLuaSprite(e.name, e.path, e.x, e.y)
+		addAnimationByPrefix(e.name, e.animName, e.animPrefix, e.fps, e.loop)
+		playAnim(e.name, e.animName, true)
+	else
+		makeLuaSprite(e.name, e.path, e.x, e.y)
+	end
+	if e.behind then setObjectOrder(e.name, getObjectOrder(e.behind)) end
+	if e.blend  then setBlendMode(e.name, e.blend) end
+	if e.alpha  then setProperty(e.name..'.alpha', e.alpha) end
+	addLuaSprite(e.name, e.front and true or false)
+end
+
 function onCreatePost()
-	makeLuaSprite('bg', 'bg/bg', -270, -230)
-	addLuaSprite('bg')
 
-	for i = 1,2 do
-		makeLuaSprite('char'..i, 'bg/char'..i, 610, 320)
-		addLuaSprite('char'..i)
-	end setProperty('char2.x', 780)
-
-	makeLuaSprite('bg2', 'bg/bg2', 535, 215)
-	addLuaSprite('bg2')
-
-	makeAnimatedLuaSprite('door', 'bg/doorbangin', -110, -525)
-	addAnimationByPrefix('door', 'doorbangin', 'doorbangin', 24, false)
-	playAnim('door', 'doorbangin', true)
-	addLuaSprite('door')
-
-	makeAnimatedLuaSprite('pc', 'bg/tv', 1400, 400)
-	addAnimationByPrefix('pc', 'idle', 'Símbolo 12', 24, true)
-	playAnim('pc', 'idle', true)
-	addLuaSprite('pc')
+	for _, bg    in ipairs(foundYouAssets['BG'])    do createSprite(bg) end
+	for _, chars in ipairs(foundYouAssets['Chars']) do createSprite(chars) end
 
 	for _, s in ipairs(shadows) do
 		makeLuaSprite(s.name, s.path)
@@ -33,12 +44,6 @@ function onCreatePost()
 	end
 
 	setProperty('dad.alpha', 0)
-
-	makeLuaSprite('glow', 'bg/glow', 50)
-	setBlendMode('glow', 'add')
-	setProperty('glow.alpha', 0.75)
-	addLuaSprite('glow', true)
-
 	setProperty('camHUD.alpha', 0)
 end
 
@@ -61,7 +66,19 @@ function onBeatHit()
 	end
 end
 
-function onEvent(n, v1)
+local foundYouEvents = {
+	['fadeBG'] = function(alpha, time)
+		cancelTween('BlackGraphicBehindAlpha') cancelTween('glowAlpha')
+		doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', alpha, time)
+		doTweenAlpha('glowAlpha', 'glow', alpha ~= '0' and alpha - 0.4 or 0.75, time)
+	end
+}
+
+function onEvent(n, v1, v2)
+	if n == 'foundYouEvents' then
+		local split = stringSplit(v2, ',')
+		foundYouEvents[v1](split[1], split[2])
+	end
 	if n == 'animation' then
 		if v1 == 'intro' then
 			playAnim('door', 'doorbangin', true)

@@ -101,6 +101,8 @@ class PlayState extends MusicBeatState
 	private var requiresSyncing:Bool = false;
 	private var lastCorrectSongPos:Float = -1.0;
 
+	var _:FlxEmitter;
+
 	//event variables
 	private var isCameraOnForcedPos:Bool = false;
 

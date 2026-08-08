@@ -85,22 +85,19 @@ end
 
 function onCreate()
     --Let's try separately
-    addCharacterToList('griatos 2', 'dad')
-    addCharacterToList('griatosA',  'dad')
-    addCharacterToList('griatosB',  'dad')
-    addCharacterToList('griatosC',  'dad')
-    addCharacterToList('bf-red',     'bf')
-    addCharacterToList('bf',         'bf')
-    addCharacterToList('bf2',        'bf')
+    if not lowQuality then
+        addCharacterToList('griatos', 'dad') addCharacterToList('griatos 2', 'dad')
+        addCharacterToList('bf-red', 'bf')   addCharacterToList('bf', 'bf') addCharacterToList('bf2', 'bf')
 
-    for _, phase1 in ipairs(hazeBGAssets['phase1'])  do precacheImage(phase1.path) end
-    for _, phase2 in ipairs(hazeBGAssets['phase2'])  do precacheImage(phase2.path) end
-    for _, phase3 in ipairs(hazeBGAssets['phase3'])  do precacheImage(phase3.path) end
-    for _, phase4 in ipairs(hazeBGAssets['phase4'])  do precacheImage(phase4.path) end
-    for _, phase5 in ipairs(hazeBGAssets['phase5'])  do precacheImage(phase5.path) end
-    for _,   bois in ipairs(hazeBGAssets['theBoys']) do   precacheImage(bois.path) end
+        for _, phase1 in ipairs(hazeBGAssets['phase1'])  do precacheImage(phase1.path) end
+        for _, phase2 in ipairs(hazeBGAssets['phase2'])  do precacheImage(phase2.path) end
+        for _, phase3 in ipairs(hazeBGAssets['phase3'])  do precacheImage(phase3.path) end
+        for _, phase4 in ipairs(hazeBGAssets['phase4'])  do precacheImage(phase4.path) end
+        for _, phase5 in ipairs(hazeBGAssets['phase5'])  do precacheImage(phase5.path) end
+        for _,   bois in ipairs(hazeBGAssets['theBoys']) do   precacheImage(bois.path) end
 
-    for _, atlas in ipairs(hazeBGAssets['atlases']) do precacheImage(atlas.path) end
+        for _, atlas in ipairs(hazeBGAssets['atlases']) do precacheImage(atlas.path) end
+    end
 end
 
 local separation = 50
@@ -183,7 +180,7 @@ local stageMode = {
 
         triggerEvent('Set customCamera Position', 'bf', '600, 130')
         triggerEvent('Change Character', 'bf', 'bf')
-        triggerEvent('Change Character', 'dad', 'griatosA')
+        triggerEvent('Change Character', 'dad', 'griatos')
         callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') + 20, getProperty('boyfriend.y') + 280})
         setProperty('dad.visible', true)
     end,
@@ -218,6 +215,8 @@ local stageMode = {
 
         callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 120, getProperty('boyfriend.y') + 730})
         callMethod('dad.setPosition', {getProperty('dad.x') + 2020, getProperty('dad.y') - 30})
+
+        for _, bois in ipairs({'thomas', 'kyle'}) do startTween(bois..'AlphaGhost', bois, {alpha = 0.7}, 0.4, {type = 'PINGPONG'}) end
 
         triggerEvent('Set customCamera Position', 'bf',     '800, 550')
         triggerEvent('Set customCamera Position', 'dad',  '1100,   50')
@@ -375,7 +374,6 @@ function onUpdatePost(e)
             getProperty(bois..'.x') + math.cos(holdWave + (i * math.random(-0.2, 0.2))) * 0.1,
             getProperty(bois..'.y') + math.sin(holdWave + (i * math.random(-0.4, 0.7))) * 0.4
         })
-        setProperty(bois..'.alpha', getProperty(bois..'.alpha') + math.sin(someHold) * 0.5)
     end
 end
 

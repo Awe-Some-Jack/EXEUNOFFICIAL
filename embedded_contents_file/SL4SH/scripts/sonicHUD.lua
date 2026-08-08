@@ -98,7 +98,7 @@ function bound(number, min, max)
 	return math.max(min, math.min(max, number))
 end
 
-function splitShit(s, f)
+function splitShit(s, f) --How tf does this even work - Raimbowcore12
 	f = f == nil and true or f
 	local splitted,temp = {}, {}
 	for l in tostring(s):gmatch(".") do table.insert(temp, l) end

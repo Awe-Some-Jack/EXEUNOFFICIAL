@@ -1,32 +1,21 @@
--- Todo:
-
--- Remake the entire code. Make arrays, local functions, state better the events, make a better looking code, etc. ✅
-
--- Use another shader script from another song so the one i used before doesn't lag or stop working. ✅
-
--- Recode the "give up" lyrics if anything?
-
--- Redo camera events. fuck that shit was ASS.
-
--- Make a more appealing dodge mechanic.
-
--- Ask someone to make a "LET'S BEGIN" text type thing. ✅
-
--- Hermano me pica el culo vastísimo
-
-runHaxeCode("var trail:Character;")
+runHaxeCode("var trail:Character;") --Sets up the BF Clone, heh
 
 local fateAssets = {
     ['BG1'] = {
-        {name =       'nieblia', path =                 'fate/niebla', x =  -400, y = -600, animated =  true, animName = 'idle', animPrefix = 'Símbolo 29', fps = 24, loop = true, scaleX = 2.3, scaleY = 2.3, alpha = 0,                                                     lq = false, front = false},
-        {name =         'cells', path =        'fate/YOUR-FATE/cells', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
-        {name =     'fakerEyes', path =    'fate/YOUR-FATE/faker-eye', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
-        {name =       'cuadros', path =       'fate/YOUR-FATE/covers', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
-        {name = 'cuadrosArriba', path =     'fate/YOUR-FATE/upCovers', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
-        {name =        'ground', path =  'fate/YOUR-FATE/ground-dark', x =  -400, y =  950, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
-        {name =          'land', path =         'fate/YOUR-FATE/land', x =  1350, y = 1250, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
-        {name =  'overlayStage', path = 'fate/YOUR-FATE/overlayStage', x =  -400, y = 1100, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = true},
-        {name =    'redOverlay', path =                'fate/overlay', x =  -400, y = -600, animated = false,                                                                      scaleX =   1, scaleY =   2, alpha = 0, behind = 'nieblia', flipY = true, color = 'FF0000', lq = false, front = false},
+        {name =       'nieblia', path =                 'fate/niebla', x =  -400, y = -600, animated =  true, animName = 'idle', animPrefix = 'Símbolo 29', fps = 24, loop = true, scaleX =  2.3, scaleY =  2.3, alpha = 0,                                                     lq = false, front = false},
+        {name =         'cells', path =        'fate/YOUR-FATE/cells', x =  -400, y = -600, animated = false,                                                                      scaleX =    1, scaleY =    1, alpha = 0,                                                     lq = false, front = false},
+        --{name =       'cuadros', path =       'fate/YOUR-FATE/covers', x =  -400, y = -600, animated = false,                                                                      scaleX = 1, scaleY = 1, alpha = 0,                                                     lq = false, front = false},
+        {name =       'cuadro1', path =       'fate/YOUR-FATE/cover1', x =  1500, y =  700, animated = false,                                                                      scaleX =  0.2, scaleY =  0.2, alpha = 0,                                                     lq = false, front = false},
+        {name =       'cuadro2', path =       'fate/YOUR-FATE/cover2', x =  1590, y =  300, animated = false,                                                                      scaleX = 0.15, scaleY = 0.15, alpha = 0,                                                     lq = false, front = false},
+        {name =       'cuadro3', path =       'fate/YOUR-FATE/cover3', x =  1100, y =  350, animated = false,                                                                      scaleX = 0.15, scaleY = 0.15, alpha = 0,                                                     lq = false, front = false},
+        {name =       'cuadro4', path =       'fate/YOUR-FATE/cover4', x =  2100, y =  420, animated = false,                                                                      scaleX = 0.15, scaleY = 0.15, alpha = 0,                                                     lq = false, front = false},
+        {name =       'cuadro5', path =       'fate/YOUR-FATE/cover5', x =  1050, y =  800, animated = false,                                                                      scaleX = 0.15, scaleY = 0.15, alpha = 0,                                                     lq = false, front = false},
+        {name =       'cuadro6', path =       'fate/YOUR-FATE/cover6', x =  2150, y =  860, animated = false,                                                                      scaleX = 0.15, scaleY = 0.15, alpha = 0,                                                     lq = false, front = false},
+        {name = 'cuadrosArriba', path =     'fate/YOUR-FATE/upCovers', x =  -400, y = -600, animated = false,                                                                      scaleX =    1, scaleY =    1, alpha = 0,                                                     lq = false, front = false},
+        {name =        'ground', path =  'fate/YOUR-FATE/ground-dark', x =  -400, y =  950, animated = false,                                                                      scaleX =    1, scaleY =    1, alpha = 0,                                                     lq = false, front = false},
+        {name =          'land', path =         'fate/YOUR-FATE/land', x =  1350, y = 1250, animated = false,                                                                      scaleX =    1, scaleY =    1, alpha = 0,                                                     lq = false, front = false},
+        {name =  'overlayStage', path = 'fate/YOUR-FATE/overlayStage', x =  -400, y = 1100, animated = false,                                                                      scaleX =    1, scaleY =    1, alpha = 0,                                                     lq = false, front =  true},
+        {name =    'redOverlay', path =                'fate/overlay', x =  -400, y = -600, animated = false,                                                                      scaleX =    1, scaleY =    2, alpha = 0, behind = 'nieblia', flipY = true, color = 'FF0000', lq = false, front = false},
     },
     ['BG2'] = {
         {name = 'niebliaFinal', path =    'fate/niebla 2', x =  80, y = 20, animated = true, animName = 'idle', animPrefix =  'Símbolo 34', fps = 24, loop = true, scaleX =  1.8, scaleY =   1, alpha = 0, lq = false, front = false},
@@ -65,16 +54,10 @@ local function setFateConfig()
 end
 
 local function prepareCharacters()
-    addCharacterToList('lord x podrido', 'dad')
-    addCharacterToList('lord x p3corto', 'dad')
-    addCharacterToList('lord x p3largo', 'dad')
-    addCharacterToList('lord x p3scream', 'dad')
-    addCharacterToList('bfo', 'bf')
-    addCharacterToList('bf085', 'bf')
-    addCharacterToList('bf-perspective-right', 'bf')
+    addCharacterToList('lord x podrido', 'dad') addCharacterToList('lord x p3corto', 'dad') addCharacterToList('lord x p3largo', 'dad') addCharacterToList('lord x p3scream', 'dad')
+    addCharacterToList('bfo', 'bf') addCharacterToList('bf085', 'bf') addCharacterToList('bf-perspective-right', 'bf')
 end
 
-local fakerEyesPos = {}
 local function createSprite(spr)
     if not spr.lq then
         if spr.animated then
@@ -246,6 +229,9 @@ local fateStageEvents = {
         setProperty('dad.alpha', 1)
 
         for _, chars in ipairs({'dad', 'boyfriend'}) do setProperty(chars..'.y', getProperty(chars..'.y') + 60) end
+        callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 210, getProperty('boyfriend.y') + 65 })
+
+
 
         triggerEvent('Set customCamera Position', 'bf', '2190, 1350')
         triggerEvent('Set customCamera Position', 'dad', '1470, 1350')
@@ -358,12 +344,16 @@ local holdMove = 0
 local loseHealthBitch = false
 local function onUpdateFate(elapsed)
     holdMove = holdMove + elapsed / (crochet / 450)
-    if luaSpriteExists('cuadros') and getProperty('cuadros.alpha') >= 0.1   then
+    for i = 1, 6 do
+        if luaSpriteExists('cuadro'..i) and getProperty('cuadro'..i..'.alpha') >= 0.1 then
+            callMethod('cuadro'..i..'.setPosition', { getProperty('cuadro'..i..'.x') + math.cos(holdMove +  0.5) * 0.2, getProperty('cuadro'..i..'.y') + math.sin(holdMove + 0.2 + (i * 0.1)) * 0.5})
+            setProperty('cuadro'..i..'.angle', getProperty('cuadro'..i..'.angle') + math.cos(holdMove + 0.05) * 0.05)
+        end
+    end
+    if luaSpriteExists('cuadros') and getProperty('cuadros.alpha') >= 0.1 then
         callMethod('cuadros.setPosition', { getProperty('cuadros.x') + math.cos(holdMove +  0.5) * 0.2, getProperty('cuadros.y') + math.sin(holdMove + 0.2) * 0.5})
         setProperty('cuadros.angle', getProperty('cuadros.angle') + math.cos(holdMove + 0.05) * 0.05)
     end
-
-    if luaSpriteExists('fakerEyes') and getProperty('fakerEyes.alpha') >= 0.1 then callMethod('fakerEyes.setPosition', { fakerEyesPos[1] + math.random(-shakeIntensity, shakeIntensity), fakerEyesPos[2] + math.random(-shakeIntensity, shakeIntensity)}) end
 
     if luaSpriteExists('bfFALL') then
         callMethod('bfFALL.setPosition', {getProperty('bfFALL.x') + math.cos(holdMove + 0.2) * 0.9, getProperty('bfFALL.y') + math.sin(holdMove + 0.4) * 0.6})
@@ -457,8 +447,6 @@ function onCreatePost()
 
     createAtlasSprite('fateExes')
     createIllegalInstruction()
-
-    fakerEyesPos = {getProperty('fakerEyes.x'), getProperty('fakerEyes.y')}
 end
 
 function onUpdatePost(elapsed) onUpdateFate(elapsed) end

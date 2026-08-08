@@ -54,7 +54,7 @@ function onCreate() {
 }
 // all squished together for you
 function onUpdate() {
-    if(curStep >= 68 && dad.animation.curAnim.name == 'jarona') {
+    if(curStep >= 68 && dad.animation.curAnim.name == 'jarona') { //JARONA JAJAJAJAJAJA
         switch(dad.animation.curAnim.curFrame) {
             case 25: stat.alpha = 1;
             case 43: stat.alpha = 0;

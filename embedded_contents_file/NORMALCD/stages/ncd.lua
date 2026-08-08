@@ -44,7 +44,12 @@ function onCreatePost()
 	end
 
 	setProperty('dad.alpha', 0)
-	setProperty('camHUD.alpha', 0)
+
+	for i = 0, 3 do
+		callMethod('opponentStrums.members['..i..'].setPosition', {-120, downscroll and 670 or -50})
+		callMethod(  'playerStrums.members['..i..'].setPosition', {1420, downscroll and 670 or -50})
+	end
+	for _, hudStuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(hudStuff..'.alpha', 0) end
 end
 
 local thing = 0
@@ -66,18 +71,53 @@ function onBeatHit()
 	end
 end
 
+local vignetteMode = ''
+
 local foundYouEvents = {
 	['fadeBG'] = function(alpha, time)
 		cancelTween('BlackGraphicBehindAlpha') cancelTween('glowAlpha')
 		doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', alpha, time)
 		doTweenAlpha('glowAlpha', 'glow', alpha ~= '0' and alpha - 0.4 or 0.75, time)
-	end
+	end,
+	['showNotes'] = function(who)
+		if who == 'cd' then
+			for i = 0, 3 do startTween('cdStrum'..i..'Tween',   'opponentStrums.members['..i..']', {x = _G['defaultOpponentStrumX'..i], y = _G['defaultOpponentStrumY'..i]}, 1, {ease = 'circOut'}) end
+		elseif who == 'us' then
+			for i = 0, 3 do startTween('playerStrum'..i..'Tween', 'playerStrums.members['..i..']', {x = _G['defaultPlayerStrumX'..i],   y = _G['defaultPlayerStrumY'..i]},   1, {ease = 'circOut'}) end
+		end
+	end,
+	['fadeHUD'] = function(alpha, time)
+		cancelTween('HUDAlpha')
+		doTweenAlpha('HUDAlpha', 'camHUD', alpha, time)
+	end,
+	['fadeHealth'] = function(alpha, time)
+		for _, health in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do
+			cancelTween('Health'..health..'Alpha')
+			doTweenAlpha('Health'..health..'Alpha', health, alpha, time)
+		end
+	end,
+	['activateVignette'] = function(use, mode, color)
+		if use == 'true' then
+			if not luaSpriteExists('vg') then
+				makeLuaSprite('vg', 'VG')
+				screenCenter('vg')
+				setObjectCamera('vg', 'other')
+				addLuaSprite('vg')
+			end
+			vignetteMode = mode
+			debugPrint(vignetteMode)
+			if color ~= nil then setProperty('vg.color', getColorFromHex(color)) end
+		else
+			vignetteMode = ''
+			doTweenAlpha('vgVanish', 'vg', 0, 0.5)
+		end
+	end,
 }
 
 function onEvent(n, v1, v2)
 	if n == 'foundYouEvents' then
-		local split = stringSplit(v2, ',')
-		foundYouEvents[v1](split[1], split[2])
+		local split = stringSplit(v2, ', ')
+		foundYouEvents[v1](split[1], split[2], split[3])
 	end
 	if n == 'animation' then
 		if v1 == 'intro' then
@@ -90,5 +130,18 @@ function onEvent(n, v1, v2)
 
 	elseif n == 'Play Animation' then
 		doTweenAlpha('dadShadowFade', 'dadShadow', 0.7, 4)
+	end
+end
+
+function onBeatHit()
+	if vignetteMode == 'beatHighBump' then
+		cancelTween('vgAlphaHighBump') setProperty('vg.alpha', 0.8)
+		doTweenAlpha('vgAlphaHighBump', 'vg', 0, 0.4)
+	elseif vignetteMode == 'beatLowBump' then
+		cancelTween('vgAlphaLowBump') setProperty('vg.alpha', 0.4)
+		doTweenAlpha('vgAlphaLowBump', 'vg', 0, 0.4)
+	elseif vignetteMode == 'absorbBump' then
+		cancelTween('vgAlphaAbsorbBump') setProperty('vg.alpha', 0)
+		doTweenAlpha('vgAlphaAbsorbBump', 'vg', 0.5, 0.4)
 	end
 end

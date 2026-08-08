@@ -1,3 +1,7 @@
 [
-    fadeBG[checkLUA]
+    fadeBG[checkLUA],
+    fadeHUD[checkLUA],
+    fadeHealth[checkLUA],
+    showNotes[checkLUA],
+    activateVignette[checkLUA]
 ]

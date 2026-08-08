@@ -1,0 +1,7 @@
+An event that tweens the Wave Distortion Shader. 
+Works as a flash, but can be used as a tween too.
+[
+    v1: start value, end value
+    v2: time(seconds), tween ease
+]
+Script by Raimbowcore12

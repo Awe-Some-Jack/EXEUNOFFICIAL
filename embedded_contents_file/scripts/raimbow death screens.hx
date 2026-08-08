@@ -14,7 +14,7 @@ import psychlua.FlxAnimateFunctions;
 import lime.app.Application as Application;
 
 var exeGameOvers:Bool = false;
-var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline', 'uh-oh'];
+var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline', 'uh-oh', 'sharpy-showdown'];
 var voicelineSongs:Array<String> = ["cycles", "hellbent", "fate"];
 var diffGameOverSongs:Array<String> = ["starline"];
 
@@ -97,6 +97,11 @@ function setCustomGameOvers() {
             GameOverSubstate.endSoundName  = "deathSongs/retry";
             charPositions = [310, 100];
             initialDeathZoom = 0.9;
+        case "sharpy-showdown":
+            GameOverSubstate.loopSoundName = "deathSongs/exetior";
+            GameOverSubstate.endSoundName  = "deathSongs/exetior-retry";
+            charPositions = [400, 50];
+            initialDeathZoom = 1.2;
     }
 }
 

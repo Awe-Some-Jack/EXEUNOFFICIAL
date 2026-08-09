@@ -1146,8 +1146,6 @@ class FunkinLua
 		{
 			var fragPath = folder + name + '.frag';
 			var vertPath = folder + name + '.vert';
-		
-			trace(fragPath);
 
 			var frag:String = null;
 			var vert:String = null;

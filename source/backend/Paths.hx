@@ -386,15 +386,9 @@ class Paths
 
 	inline static public function getContent(path:String):String
 	{
-		if (OpenFlAssets.exists(path)) {
-			trace("OpenFL: " + path);
-			return OpenFlAssets.getText(path);
-		}
+		if (OpenFlAssets.exists(path)) return OpenFlAssets.getText(path);
 		#if sys
-		if (sys.FileSystem.exists(path)) {
-			trace("Sys: " + path);
-			return sys.io.File.getContent(path);
-		}
+		if (sys.FileSystem.exists(path)) return sys.io.File.getContent(path);
 		#end
 		return null;
 	}

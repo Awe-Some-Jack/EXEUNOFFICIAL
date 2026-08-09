@@ -912,9 +912,6 @@ class FunkinLua
 			var result:Dynamic = null;
 			var isString:Bool = false;
 
-			trace(OpenFlAssets.exists(scriptName) + " " + scriptName);
-			trace(sys.FileSystem.exists(scriptName) + " " + scriptName);
-
 			if (OpenFlAssets.exists(scriptName))
 				result = LuaL.dostring(lua, OpenFlAssets.getText(scriptName));
 			else
@@ -932,7 +929,6 @@ class FunkinLua
 			var resultStr:String = Lua.tostring(lua, result);
 			if (resultStr != null && result != 0)
 			{
-				trace(resultStr);
 				#if windows
 				lime.app.Application.current.window.alert(resultStr, 'Error on lua script!');
 				#else

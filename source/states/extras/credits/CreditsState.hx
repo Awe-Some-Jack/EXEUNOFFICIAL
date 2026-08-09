@@ -384,7 +384,7 @@ private class CreditPopup extends MusicBeatSubstate
             if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume: 0.3}, 0.6); }
 
             #if VIDEOS_ALLOWED
-            pauseBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/play.webp');
+            pauseBtn = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/play.webp'));
             pauseBtn.alpha = 0; pauseBtn.camera = popCam;
 
             userVideo = new VideoSprite(0, 0, false);
@@ -405,7 +405,7 @@ private class CreditPopup extends MusicBeatSubstate
         }
         else if (user.extra[0] == 'image')
         {
-            final img = new FlxSprite(0, 0).loadGraphic('assets/exe/extras/credits/$col/extra/${user.extra[1]}');
+            final img = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/$col/extra/${user.extra[1]}'));
             fit(img, 200, 200);
             img.setPosition(bg.x + 40 + ((bg.width / 2 - 50) - img.width) / 2, bg.y + bg.height - img.height - 50);
             final ish = new shaders.RoundedBorderShader(10.0, 0.0, 0xFF000000); ish.setSize(img.frameWidth, img.frameHeight); img.shader = ish;
@@ -418,7 +418,7 @@ private class CreditPopup extends MusicBeatSubstate
         var sy = quoteCam.y + quoteCam.height + 10;
         if (user.youtube != null)
         {
-            youtubeBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/youtube.webp');
+            youtubeBtn = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/youtube.webp'));
             youtubeBtn.setPosition(quoteCam.x - youtubeBtn.width - 15, sy - youtubeBtn.height);
             youtubeBtn.camera = popCam; youtubeBtn.color = 0xFF686868;
             youtubeBtn.scale.set(0.9, 0.9); youtubeBtn.updateHitbox(); add(youtubeBtn);
@@ -426,7 +426,7 @@ private class CreditPopup extends MusicBeatSubstate
         }
         if (user.twitter != null)
         {
-            twitterBtn = new FlxSprite().loadGraphic('assets/exe/extras/credits/twitter.webp');
+            twitterBtn = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/twitter.webp'));
             twitterBtn.setPosition(quoteCam.x - twitterBtn.width - 15, sy - twitterBtn.height);
             twitterBtn.camera = popCam; twitterBtn.color = 0xFF686868;
             twitterBtn.scale.set(0.9, 0.9); twitterBtn.updateHitbox(); add(twitterBtn);
@@ -486,14 +486,14 @@ private class CreditPopup extends MusicBeatSubstate
         {
             userVideo.pause();
             FlxTween.cancelTweensOf(pauseBtn); FlxTween.cancelTweensOf(pauseBtn.scale);
-            pauseBtn.loadGraphic('assets/exe/extras/credits/pause.webp');
+            pauseBtn.loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/pause.webp'));
             pauseBtn.scale.set(1,1); pauseBtn.alpha = 1;
             if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume:1}, 0.6); }
         }
         else
         {
             userVideo.resume();
-            pauseBtn.loadGraphic('assets/exe/extras/credits/play.webp');
+            pauseBtn.loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/play.webp'));
             FlxTween.tween(pauseBtn.scale, {x:0,y:0}, 0.3);
             FlxTween.tween(pauseBtn, {alpha:0}, 0.3);
             if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume:0.3}, 0.6); }

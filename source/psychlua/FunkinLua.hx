@@ -757,7 +757,7 @@ class FunkinLua
 
 		LuaUtilsHx.addFunction(lua, 'startVideo', function(videoFile:String, canSkip:Bool = true, forMidSong:Bool = false, shouldLoop:Bool = false, ?playOnLoad:Bool = true) {
 			#if VIDEOS_ALLOWED
-			if (#if !mobile FileSystem.exists(Paths.video(videoFile)) #else OpenFlAssets.exists(Paths.video(videoFile)) #end)
+			if (#if sys FileSystem.exists(Paths.video(videoFile)) || #end OpenFlAssets.exists(Paths.video(videoFile)))
 			{
 				if (game.videoCutscene != null) { game.remove(game.videoCutscene); game.videoCutscene.destroy(); }
 				game.startVideo(videoFile, canSkip, forMidSong, shouldLoop, playOnLoad);
@@ -912,13 +912,17 @@ class FunkinLua
 			var result:Dynamic = null;
 			var isString:Bool = false;
 
+			trace(OpenFlAssets.exists(scriptName) + " " + scriptName);
+			trace(sys.FileSystem.exists(scriptName) + " " + scriptName);
+
+			if (OpenFlAssets.exists(scriptName))
+				result = LuaL.dostring(lua, OpenFlAssets.getText(scriptName));
+			else
+
 			#if sys
 			if (sys.FileSystem.exists(scriptName))
 				result = LuaL.dofile(lua, scriptName);
-			else 
 			#end
-			if (OpenFlAssets.exists(scriptName))
-				result = LuaL.dostring(lua, OpenFlAssets.getText(scriptName));
 			else {
 				result = LuaL.dostring(lua, scriptName);
 				scriptName = 'unknown';
@@ -1082,13 +1086,14 @@ class FunkinLua
 	{
 		if (!scriptFile.endsWith(ext)) scriptFile += ext;
 		var path = Paths.getPath(scriptFile, TEXT);
-		#if (!mobile && MODS_ALLOWED)
+		#if sys
+		trace((FileSystem.exists(path) || OpenFlAssets.exists(path)) ? 'Found script at: $path' : 'Script not found at: $path');
+
 		if (FileSystem.exists(path))  return path;
 		if (FileSystem.exists(scriptFile)) return scriptFile;
-		#else
-		if (OpenFlAssets.exists(path, TEXT))       return path;
-		if (OpenFlAssets.exists(scriptFile, TEXT)) return scriptFile;
 		#end
+		if (OpenFlAssets.exists(path))       return path;
+		if (OpenFlAssets.exists(scriptFile)) return scriptFile;
 		return null;
 	}
 
@@ -1141,17 +1146,14 @@ class FunkinLua
 		{
 			var fragPath = folder + name + '.frag';
 			var vertPath = folder + name + '.vert';
-			
+		
+			trace(fragPath);
+
 			var frag:String = null;
 			var vert:String = null;
 
-			#if sys
-			if (sys.FileSystem.exists(fragPath)) frag = sys.io.File.getContent(fragPath);
-			if (sys.FileSystem.exists(vertPath)) vert = sys.io.File.getContent(vertPath);
-			#end
-
-			if (frag == null && openfl.utils.Assets.exists(fragPath)) frag = openfl.utils.Assets.getText(fragPath);
-			if (vert == null && openfl.utils.Assets.exists(vertPath)) vert = openfl.utils.Assets.getText(vertPath);
+			frag = Paths.getContent(fragPath);
+			vert = Paths.getContent(vertPath);
 
 			if (frag != null || vert != null) { 
 				runtimeShaders.set(name, [frag, vert]); 

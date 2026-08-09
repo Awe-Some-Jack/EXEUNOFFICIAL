@@ -822,7 +822,7 @@ class PlayState extends MusicBeatState
 		final xmlPath = 'assets/exe/botplay/sunkyplaying.xml';
 
 		final sunkyBmp:openfl.display.BitmapData = Paths.getBitmapData(bmpPath);
-		final sunkyXml:String = sys.io.File.getContent(xmlPath);
+		final sunkyXml:String = Paths.getContent(xmlPath);
 		sunkyBotSprite.frames = FlxAtlasFrames.fromSparrow(sunkyBmp, sunkyXml);
 
 		sunkyBotSprite.animation.addByPrefix('idle',  'idle instancia',  24, true);

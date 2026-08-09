@@ -127,11 +127,7 @@ class WeekData {
 
             var listPath:String = directory + 'weekList.txt';
             var rawList:String = null;
-            
-            #if sys
-            if (FileSystem.exists(listPath)) rawList = File.getContent(listPath);
-            #end
-            if (rawList == null && OpenFlAssets.exists(listPath)) rawList = OpenFlAssets.getText(listPath);
+            rawList = Paths.getContent(listPath);
 
             if (rawList != null) {
                 var listOfWeeks:Array<String> = rawList.split('\n');
@@ -180,11 +176,7 @@ class WeekData {
 
     private static function getWeekFile(path:String):WeekFile {
         var rawJson:String = null;
-        
-        #if sys
-        if(FileSystem.exists(path)) rawJson = File.getContent(path);
-        #end
-        if(rawJson == null && OpenFlAssets.exists(path)) rawJson = OpenFlAssets.getText(path);
+        rawJson = Paths.getContent(path);
 
         if(rawJson != null && rawJson.length > 0) {
             return cast tjson.TJSON.parse(rawJson);

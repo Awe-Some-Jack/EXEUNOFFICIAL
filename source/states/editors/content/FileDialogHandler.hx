@@ -75,7 +75,7 @@ class FileDialogHandler extends FlxBasic
 				try 
 				{
 					this.path = files[0];
-					this.data = File.getContent(this.path);
+					this.data = Paths.getContent(this.path);
 					this.completed = true;
 					trace('Loaded file from: $path');
 					if (this.onComplete != null) this.onComplete();

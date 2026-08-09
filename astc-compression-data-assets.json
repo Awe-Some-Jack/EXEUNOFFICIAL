@@ -15,8 +15,10 @@
     }
   ],
   "excludes": [
+    "assets/embed/exe/extras/achievements/icons/",
     "assets/exe/access/",
     "assets/exe/extras/bios/",
+    "assets/exe/extras/select.webp",
     "assets/exe/pause/",
     "assets/exe/soundtest/",
     "assets/exe/story/padLock.webp",

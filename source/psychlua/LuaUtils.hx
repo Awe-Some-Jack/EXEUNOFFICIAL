@@ -121,7 +121,7 @@ class LuaUtils
 				if (settings == null) settings = new Map<String, Dynamic>();
 				try
 				{
-					var parsedJson:Dynamic = tjson.TJSON.parse(File.getContent(path));
+					var parsedJson:Dynamic = tjson.TJSON.parse(Paths.getContent(path));
 					for (i in 0...parsedJson.length)
 					{
 						var sub:Dynamic = parsedJson[i];

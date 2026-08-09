@@ -3418,11 +3418,11 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 						var path:String = 'backups/$autosaveName';
 						state.close();
 
-						if (FileSystem.exists(path))
+						if (#if sys FileSystem.exists(path) || #end OpenFlAssets.exists(path))
 						{
 							try
 							{
-								var loadedChart:SwagSong = Song.parseJSON(File.getContent(path), autosaveName, null);
+								var loadedChart:SwagSong = Song.parseJSON(Paths.getContent(path), autosaveName, null);
 								if (loadedChart == null || !Reflect.hasField(loadedChart, '__original_path'))
 								{
 									showOutput('Error: File loaded is not a valid Psych Engine autosave.', true);

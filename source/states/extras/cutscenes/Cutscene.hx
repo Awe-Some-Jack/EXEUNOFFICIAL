@@ -262,7 +262,7 @@ class Cutscene extends MusicBeatSubstate
         {
             try
             {
-                final json:Dynamic = haxe.Json.parse(File.getContent(jsonPath));
+                final json:Dynamic = haxe.Json.parse(Paths.getContent(jsonPath));
                 final arr:Array<Dynamic> = cast json.videos;
                 if (arr != null)
                 {

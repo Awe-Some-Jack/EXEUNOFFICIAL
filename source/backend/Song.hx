@@ -150,10 +150,7 @@ class Song
 		
 		trace(_lastPath);
 
-		#if sys
-		if (sys.FileSystem.exists(_lastPath)) rawData = sys.io.File.getContent(_lastPath);
-		#end
-		if (rawData == null && OpenFlAssets.exists(_lastPath)) rawData = OpenFlAssets.getText(_lastPath);
+		rawData = Paths.getContent(_lastPath);
 
 		final rawProtected = ProtectedSongsChart.getSongRaw(formattedFolder, formattedSong);
 		if (rawProtected != null)

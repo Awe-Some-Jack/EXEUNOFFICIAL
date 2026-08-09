@@ -381,10 +381,21 @@ class Paths
 	inline static public function getTextFromFile(key:String, ?ignoreMods:Bool = false):String
 	{
 		final path:String = getPath(key, TEXT, !ignoreMods);
+		return getContent(path);
+	}
+
+	inline static public function getContent(path:String):String
+	{
+		if (OpenFlAssets.exists(path)) {
+			trace("OpenFL: " + path);
+			return OpenFlAssets.getText(path);
+		}
 		#if sys
-		if (sys.FileSystem.exists(path)) return sys.io.File.getContent(path);
+		if (sys.FileSystem.exists(path)) {
+			trace("Sys: " + path);
+			return sys.io.File.getContent(path);
+		}
 		#end
-		if (OpenFlAssets.exists(path)) return OpenFlAssets.getText(path);
 		return null;
 	}
 
@@ -500,12 +511,16 @@ class Paths
 		#end
 		
 		for (file in OpenFlAssets.list()) {
-			if (file.indexOf(scanFolder) == 0) {
-				final rest = file.substr(scanFolder.length);
+			var cleanFile = file;
+			final colonIndex = cleanFile.indexOf(":");
+			if (colonIndex != -1) cleanFile = cleanFile.substring(colonIndex + 1);
+
+			if (cleanFile.indexOf(scanFolder) == 0) {
+				final rest = cleanFile.substr(scanFolder.length);
 
 				var item = rest;
 				if (rest.indexOf('/') != -1)
-					item = rest.substr(0, rest.indexOf('/')); 
+					item = rest.substr(0, rest.indexOf('/'));
 
 				if (item.length > 0 && !scannedFiles.contains(item))
 					scannedFiles.push(item);
@@ -524,7 +539,7 @@ class Paths
 		if(OpenFlAssets.exists(myXml) #if MODS_ALLOWED || (FileSystem.exists(myXml) && (useMod = true)) || #end (OpenFlAssets.exists(myXml) && (useMod = true)))
 		{
 			#if MODS_ALLOWED
-			return FlxAtlasFrames.fromSparrow(imageLoaded, (useMod ? File.getContent(myXml) : myXml));
+			return FlxAtlasFrames.fromSparrow(imageLoaded, (useMod ? getContent(myXml) : myXml));
 			#else
 			return FlxAtlasFrames.fromSparrow(imageLoaded, myXml);
 			#end
@@ -535,7 +550,7 @@ class Paths
 			if(OpenFlAssets.exists(myJson) #if MODS_ALLOWED || (FileSystem.exists(myJson) && (useMod = true)) || #end (OpenFlAssets.exists(myJson) && (useMod = true)))
 			{
 				#if MODS_ALLOWED
-				return FlxAtlasFrames.fromTexturePackerJson(imageLoaded, (useMod ? File.getContent(myJson) : myJson));
+				return FlxAtlasFrames.fromTexturePackerJson(imageLoaded, (useMod ? getContent(myJson) : myJson));
 				#else
 				return FlxAtlasFrames.fromTexturePackerJson(imageLoaded, myJson);
 				#end
@@ -571,14 +586,7 @@ class Paths
 		
 		var xmlPath:String = modsXml(key);
 		var xmlContent:String = null;
-		
-		#if sys
-		if (sys.FileSystem.exists(xmlPath))
-			xmlContent = sys.io.File.getContent(xmlPath);
-		#end
-		
-		if (xmlContent == null && OpenFlAssets.exists(xmlPath))
-			xmlContent = OpenFlAssets.getText(xmlPath);
+		xmlContent = getContent(xmlPath);
 			
 		if (xmlContent == null)
 			xmlPath = getPath(Language.getFileTranslation('images/$key') + '.xml', TEXT, parentFolder);
@@ -600,14 +608,7 @@ class Paths
 		
 		var txtPath:String = modsTxt(key);
 		var txtContent:String = null;
-		
-		#if sys
-		if (sys.FileSystem.exists(txtPath))
-			txtContent = sys.io.File.getContent(txtPath);
-		#end
-		
-		if (txtContent == null && OpenFlAssets.exists(txtPath))
-			txtContent = OpenFlAssets.getText(txtPath);
+		txtContent = getContent(txtPath);
 			
 		if (txtContent == null)
 			txtPath = getPath(Language.getFileTranslation('images/$key') + '.txt', TEXT, parentFolder);
@@ -629,14 +630,7 @@ class Paths
 		
 		var jsonPath:String = modsImagesJson(key);
 		var jsonContent:String = null;
-		
-		#if sys
-		if (sys.FileSystem.exists(jsonPath))
-			jsonContent = sys.io.File.getContent(jsonPath);
-		#end
-		
-		if (jsonContent == null && OpenFlAssets.exists(jsonPath))
-			jsonContent = OpenFlAssets.getText(jsonPath);
+		jsonContent = getContent(jsonPath);
 			
 		if (jsonContent == null)
 			jsonPath = getPath(Language.getFileTranslation('images/$key') + '.json', TEXT, parentFolder);
@@ -687,69 +681,82 @@ class Paths
 	}
 
 	#if MODS_ALLOWED
-	inline static public function mods(key:String = '')
-		return #if mobile MobileUtil.getDirectory() + #end 'contents/' + key;
+    inline static public function mods(key:String = '', ?embed:Bool = false):String {
+		if(embed) return 'contents/' + key;
+        return #if (mobile && sys) MobileUtil.getDirectory() + #end 'contents/' + key;
+    }
 
-	inline static public function modsJson(key:String)
-		return modFolders('data/' + key + '.json');
+    inline static public function modsJson(key:String):String
+        return modFolders('data/' + key + '.json');
 
-	static public function modsVideo(key:String)
-	{
-		for (ext in VIDEO_EXTS)
-		{
-			final path:String = modFolders('videos/' + key + '.' + ext);
-			if (#if sys FileSystem.exists(path) || #end OpenFlAssets.exists(path))
-				return path;
-		}
+    static public function modsVideo(key:String):String
+    {
+        for (ext in VIDEO_EXTS)
+        {
+            final path:String = modFolders('videos/' + key + '.' + ext);
+            if (#if sys FileSystem.exists(path) || #end OpenFlAssets.exists(path))
+                return path;
+        }
 
-		return modFolders('videos/' + key + '.' + VIDEO_EXT);
-	}
+        return modFolders('videos/' + key + '.' + VIDEO_EXT);
+    }
 
-	inline static public function modsSounds(path:String, key:String)
-		return modFolders(path + '/' + key + '.' + SOUND_EXT);
+    inline static public function modsSounds(path:String, key:String):String
+        return modFolders(path + '/' + key + '.' + SOUND_EXT);
 
-	static public function modsImages(key:String)
-	{
-		for (ext in IMAGE_EXTS)
-		{
-			final fileToCheck:String = modFolders('images/' + key + '.' + ext);
-			if (#if sys sys.FileSystem.exists(fileToCheck) || #end OpenFlAssets.exists(fileToCheck)) return fileToCheck;
-		}
-		
-		return modFolders('images/' + key + '.webp');
-	}
+    static public function modsImages(key:String):String
+    {
+        for (ext in IMAGE_EXTS)
+        {
+            final fileToCheck:String = modFolders('images/' + key + '.' + ext);
+            if (#if sys sys.FileSystem.exists(fileToCheck) || #end OpenFlAssets.exists(fileToCheck)) return fileToCheck;
+        }
+        
+        return modFolders('images/' + key + '.webp');
+    }
 
-	inline static public function modsXml(key:String)
-		return modFolders('images/' + key + '.xml');
+    inline static public function modsXml(key:String):String
+        return modFolders('images/' + key + '.xml');
 
-	inline static public function modsTxt(key:String)
-		return modFolders('images/' + key + '.txt');
+    inline static public function modsTxt(key:String):String
+        return modFolders('images/' + key + '.txt');
 
-	inline static public function modsImagesJson(key:String)
-		return modFolders('images/' + key + '.json');
+    inline static public function modsImagesJson(key:String):String
+        return modFolders('images/' + key + '.json');
 
-	static public function modFolders(key:String)
-	{
-		if(Mods.currentModDirectory?.length > 0)
-		{
-			var fileToCheck:String = mods(Mods.currentModDirectory + '/' + key);
-			#if sys
-			if(sys.FileSystem.exists(fileToCheck)) return fileToCheck;
-			#end
-			if(OpenFlAssets.exists(fileToCheck)) return fileToCheck;
-		}
+    static public function modFolders(key:String):String
+    {
+        if(Mods.currentModDirectory?.length > 0)
+        {
+            var fileToCheck:String = mods(Mods.currentModDirectory + '/' + key);
+            #if sys
+            if(sys.FileSystem.exists(fileToCheck)) return fileToCheck;
+            #end
+            var assetKey:String = 'contents/' + Mods.currentModDirectory + '/' + key;
+            if(OpenFlAssets.exists(assetKey)) return assetKey;
+        }
 
-		for(mod in Mods.getGlobalMods())
-		{
-			var fileToCheck:String = mods(mod + '/' + key);
-			#if sys
-			if(sys.FileSystem.exists(fileToCheck)) return fileToCheck;
-			#end
-			if(OpenFlAssets.exists(fileToCheck)) return fileToCheck;
-		}
-		return #if mobile MobileUtil.getDirectory() + #end 'contents/' + key;
-	}
-	#end
+        for(mod in Mods.getGlobalMods())
+        {
+            var fileToCheck:String = mods(mod + '/' + key);
+            #if sys
+            if(sys.FileSystem.exists(fileToCheck)) return fileToCheck;
+            #end
+            var assetKey:String = 'contents/' + mod + '/' + key;
+            if(OpenFlAssets.exists(assetKey)) return assetKey;
+        }
+
+        var defaultFile:String = mods(key);
+        #if sys
+        if(sys.FileSystem.exists(defaultFile)) return defaultFile;
+        #end
+        
+        var defaultAssetKey:String = 'contents/' + key;
+        if(OpenFlAssets.exists(defaultAssetKey)) return defaultAssetKey;
+
+        return defaultFile;
+    }
+    #end
 
 	#if flixel_animate
 	static public function getAnimateAtlas(key:String, ?library:String = null, ?settings:AtlasSpriteSettings):FlxAnimateFrames

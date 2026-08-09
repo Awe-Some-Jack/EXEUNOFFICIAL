@@ -83,13 +83,7 @@ class Language
 	{
 		try {
 			var text:String = null;
-			#if sys
-			if (FileSystem.exists(file))
-				text = File.getContent(file);
-			#end
-
-			if (text == null && Assets.exists(file))
-				text = Assets.getText(file);
+			text = Paths.getContent(file);
 
 			if (text?.length > 0) {
 				final data:Dynamic = Json.parse(text);

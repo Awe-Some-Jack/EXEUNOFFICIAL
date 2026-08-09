@@ -22,7 +22,7 @@ class ProtectedSongsChart
         #if sys
         if (!sys.FileSystem.exists(loadedPath)) return false;
         
-        final content = sys.io.File.getContent(loadedPath);
+        final content = Paths.getContent(loadedPath);
         final currentHash = haxe.crypto.Sha256.encode(content);
         
         final key = songFolder + "/" + jsonInput;

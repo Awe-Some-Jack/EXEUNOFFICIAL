@@ -103,7 +103,8 @@ class GameplayCamera
 		{
 			try
 			{
-				var parsed:Dynamic = #if !mobile haxe.Json.parse(sys.io.File.getContent(jsonPath)); #else haxe.Json.parse(OpenFlAssets.getText(jsonPath)); #end
+				var parsed:Dynamic = haxe.Json.parse(Paths.getContent(jsonPath));
+				
 				if (parsed != null)
 				{
 					if (parsed.BFx          != null) settings.BFx          = parsed.BFx;

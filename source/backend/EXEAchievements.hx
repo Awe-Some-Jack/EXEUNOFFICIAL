@@ -27,7 +27,7 @@ class EXEAchievements
     {
         FlxG.save.data.EXEAchievements = new Map<String, EXEAchievement>();
 
-        var rawJson = File.getContent('assets/exe/extras/achievements/achievements.json').trim();
+        var rawJson = Paths.getContent('assets/exe/extras/achievements/achievements.json').trim();
         var parsed:Array<EXEAchievement> = cast tjson.TJSON.parse(rawJson);
 
         for(achieve in parsed)

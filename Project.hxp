@@ -249,10 +249,19 @@ class Project extends HXProject
         if (MODS_ALLOWED.isEnabled(this))
         {
             if (FileSystem.exists("contents_file"))
-                addAssetRecursive("contents_file", "contents", false, ["*"], []);
+            {
+                var contentsExclude:Array<String> = isAndroid()
+                    ? ["Animation.json", "spritemap1.json"]
+                    : [];
+
+                addAssetRecursive("contents_file", "contents", false, ["*"], contentsExclude);
+            }
+
+            if (isAndroid() && FileSystem.exists("android_embed"))
+                addAssetRecursive("android_embed", "contents", true, ["*"], []);
 
             if (FileSystem.exists("embedded_contents_file"))
-                addAssetRecursive("embedded_contents_file", "contents", defines.exists("final"), ["*"], []);
+                addAssetRecursive("embedded_contents_file", "contents", defines.exists("final") || isAndroid(), ["*"], []);
 
             if (FileSystem.exists("list.txt"))
                 assets.push(new Asset("list.txt", "contentsList.dat"));

@@ -214,7 +214,7 @@ class ExtrasMenu extends MusicBeatState
 
     function buildLogo():Void
     {
-        extrasLogo = new FlxSprite(49, 54).loadGraphic("assets/exe/extras/extrasss.webp");
+        extrasLogo = new FlxSprite(49, 54).loadGraphic(Paths.getBitmapData("assets/exe/extras/extrasss.webp"));
         extrasLogo.scale.set(0.32, 0.32);
         extrasLogo.updateHitbox();
         add(extrasLogo);

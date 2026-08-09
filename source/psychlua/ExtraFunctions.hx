@@ -237,14 +237,7 @@ class ExtraFunctions
 		for (path in paths) {
 			try {
 				var text:String = null;
-
-				#if sys
-				if (sys.FileSystem.exists(path))
-					text = sys.io.File.getContent(path);
-				else
-				#end
-				if (openfl.utils.Assets.exists(path))
-					text = openfl.utils.Assets.getText(path);
+				text = Paths.getContent(path);
 
 				if (text?.length > 0) {
 					data = haxe.Json.parse(text);

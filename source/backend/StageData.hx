@@ -80,11 +80,7 @@ class StageData {
 		{
 			var path:String = Paths.getPath('stages/' + stage + '.json', TEXT, null, true);
 			var rawJson:String = null;
-
-			#if sys
-			if(sys.FileSystem.exists(path)) rawJson = sys.io.File.getContent(path);
-			#end
-			if(rawJson == null && OpenFlAssets.exists(path)) rawJson = OpenFlAssets.getText(path);
+			rawJson = Paths.getContent(path);
 
 			if (rawJson != null) return cast tjson.TJSON.parse(rawJson);
 		}

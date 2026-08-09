@@ -99,9 +99,15 @@ class Mods
 			
 			if (fullPath.endsWith('/')) {
 				for (file in OpenFlAssets.list())
-					if (file.indexOf(fullPath) == 0) return true;
+					if (file.indexOf(fullPath) == 0) {
+						trace(file);
+						return true;
+					}
 			} else {
-				if (OpenFlAssets.exists(fullPath)) return true;
+				if (OpenFlAssets.exists(fullPath)) {
+					trace(fullPath);
+					return true;
+				}
 			}
 			
 			return false;
@@ -114,19 +120,19 @@ class Mods
 		{
 			for(mod in Mods.getGlobalMods())
 			{
-				final folder:String = Paths.mods(mod + '/');
+				final folder:String = Paths.mods(mod + '/', true);
 				if(checkFile(folder) && !foldersToCheck.contains(folder + fileToFind)) 
 					foldersToCheck.push(folder + fileToFind);
 			}
 
 			if(Mods.currentModDirectory?.length > 0)
 			{
-				final folder:String = Paths.mods(Mods.currentModDirectory + '/');
+				final folder:String = Paths.mods(Mods.currentModDirectory + '/', true);
 				if(checkFile(folder) && !foldersToCheck.contains(folder + fileToFind)) 
 					foldersToCheck.push(folder + fileToFind);
 			}
 
-			final folder:String = Paths.mods('');
+			final folder:String = Paths.mods('', true);
 			if(checkFile(folder) && !foldersToCheck.contains(folder + fileToFind)) 
 				foldersToCheck.push(folder + fileToFind);
 		}
@@ -143,10 +149,7 @@ class Mods
 		var path = Paths.mods(folder + '/pack.json');
 		var rawJson:String = null;
 
-		#if sys
-		if(sys.FileSystem.exists(path)) rawJson = sys.io.File.getContent(path);
-		#end
-		if(rawJson == null && OpenFlAssets.exists(path)) rawJson = OpenFlAssets.getText(path);
+		rawJson = Paths.getContent(path);
 
 		if(rawJson != null && rawJson.length > 0) {
 			try {

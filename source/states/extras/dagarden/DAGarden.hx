@@ -179,11 +179,10 @@ class DAGSongs extends FlxGroup
     function applyOrder():Void
     {
         final orderPath = 'assets/exe/extras/dagarden/dagarden_order.json';
-        if (!FileSystem.exists(orderPath)) { sortAlpha(); return; }
         
         try
         {
-            final content = File.getContent(orderPath);
+            final content = Paths.getContent(orderPath);
             final order:Array<String> = cast haxe.Json.parse(content).order;
             if (order == null || order.length == 0) { sortAlpha(); return; }
             
@@ -213,11 +212,10 @@ class DAGSongs extends FlxGroup
     function readCredits(song:String, mod:String):Array<String>
     {
         final path = mod != '' ? Paths.mods('$mod/data/$song/credits.json') : Paths.mods('data/$song/credits.json');
-        if (!FileSystem.exists(path)) return [];
-        
+
         try
         {
-            final content = File.getContent(path);
+            final content = Paths.getContent(path);
             final json:Dynamic = haxe.Json.parse(content);
             if (json == null || json.composer == null) return [];
             

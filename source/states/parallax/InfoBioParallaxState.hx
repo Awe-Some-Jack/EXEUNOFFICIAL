@@ -162,7 +162,7 @@ class InfoBioParallaxState extends MusicBeatState
 			continue;
 			#end
 			if (!sys.FileSystem.exists(jsonPath)) continue;
-			var jsonContent:String = sys.io.File.getContent(jsonPath);
+			var jsonContent:String = Paths.getContent(jsonPath);
 
 			var json:Dynamic = haxe.Json.parse(jsonContent);
 			var renderArray:Array<RenderData> = [];

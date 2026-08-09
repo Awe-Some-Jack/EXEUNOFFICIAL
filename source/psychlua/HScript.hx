@@ -110,13 +110,7 @@ class HScript extends Iris
 			{
 				scriptThing = null;
 				
-				#if sys
-				if (sys.FileSystem.exists(f))
-					scriptThing = sys.io.File.getContent(f);
-				#end
-				
-				if (scriptThing == null && openfl.utils.Assets.exists(f))
-					scriptThing = openfl.utils.Assets.getText(f);
+				scriptThing = Paths.getContent(f);
 				
 				scriptThing ??= file; 
 				scriptName = f;

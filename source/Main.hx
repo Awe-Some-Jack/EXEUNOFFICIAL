@@ -88,7 +88,7 @@ class Main extends Sprite
 		#end
 		Sys.setCwd(MobileUtil.getAssetDirectory());
 		MobileUtil.copyAssets(); //copies assets folder only
-    #end
+    	#end
 
 		FlxG.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (e) ->
 		{
@@ -235,10 +235,8 @@ class Main extends Sprite
 	public static function resetSpriteCache(sprite:Sprite):Void {
 		@:privateAccess {
 			if (sprite != null) {
-		   		sprite.__cacheBitmapData = null;
-				sprite.__cacheBitmapData2 = null;
-				sprite.__cacheBitmapData3 = null;
-				sprite.__cacheBitmapColorTransform = null;
+		   		sprite.__cacheBitmap = null;
+				sprite.__cacheBitmapData = null;
 			}
 		}
     }

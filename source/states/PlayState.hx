@@ -101,7 +101,7 @@ class PlayState extends MusicBeatState
 	private var requiresSyncing:Bool = false;
 	private var lastCorrectSongPos:Float = -1.0;
 
-	var _:FlxEmitter;
+	var _xdd:FlxEmitter;
 
 	//event variables
 	private var isCameraOnForcedPos:Bool = false;
@@ -421,6 +421,8 @@ class PlayState extends MusicBeatState
 	{
 		//trace('Playback Rate: ' + playbackRate);
 		_lastLoadedModDirectory = Mods.currentModDirectory;
+
+		_xdd = new FlxEmitter();
 
 		prevWindowTitle = FlxG.stage.window.title;
 

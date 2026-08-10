@@ -2735,16 +2735,52 @@
 	"player2": "madjamsonic",
 	"events": [
 		[
+			5142.85714285714,
+			[
+				["substantialEvent", "xterionintro", ""]
+			]
+		],
+		[
+			9600,
+			[
+				["substantialEvent", "fadein", ""]
+			]
+		],
+		[
 			10971.4285714286,
 			[
 				["substantialEvent", "finishVideo", ""]
 			]
+		],
+		[
+			53485.7142857143,
+			[
+				["substantialEvent", "trans", ""]
+			]
+		],
+		[
+			54857.1428571429,
+			[
+				["substantialEvent", "switchbg", ""]
+			]
+		],
+		[
+			97371.4285714284,
+			[
+				["substantialEvent", "trans", ""]
+			]
+		],
+		[
+			98742.857142857,
+			[
+				["substantialEvent", "switchbg", ""]
+			]
 		]
 	],
 	"song": "Digitalized",
-	"stage": "digitalized",
 	"validScore": true,
 	"needsVoices": true,
+	"stage": "digitalized",
 	"format": "psych_v1_convert",
 	"speed": 3.2,
 	"bpm": 175

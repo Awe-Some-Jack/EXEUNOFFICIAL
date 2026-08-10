@@ -44,7 +44,7 @@
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/nedlemouseherwolrd",
-	"position": [40, 200],
+	"position": [-95, 200],
 	"healthicon": "needlemouse",
 	"flip_x": false,
 	"healthbar_colors": [95, 7, 250],

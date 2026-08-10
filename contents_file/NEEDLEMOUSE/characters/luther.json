@@ -44,7 +44,7 @@
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/luther",
-	"position": [0, 300],
+	"position": [0, 270],
 	"healthicon": "luther",
 	"flip_x": false,
 	"healthbar_colors": [161, 161, 161],

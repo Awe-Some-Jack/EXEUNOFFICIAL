@@ -24,7 +24,7 @@
 			"sectionNotes": [],
 			"lengthInSteps": 16,
 			"altAnim": false,
-			"mustHitSection": true,
+			"mustHitSection": false,
 			"changeBPM": false,
 			"bpm": 147
 		},
@@ -33,7 +33,7 @@
 			"sectionNotes": [],
 			"lengthInSteps": 16,
 			"altAnim": false,
-			"mustHitSection": true,
+			"mustHitSection": false,
 			"changeBPM": false,
 			"bpm": 147
 		},
@@ -60,7 +60,7 @@
 			"sectionNotes": [],
 			"lengthInSteps": 16,
 			"altAnim": false,
-			"mustHitSection": true,
+			"mustHitSection": false,
 			"changeBPM": false,
 			"bpm": 147
 		},
@@ -356,7 +356,7 @@
 			],
 			"lengthInSteps": 16,
 			"altAnim": false,
-			"mustHitSection": true,
+			"mustHitSection": false,
 			"changeBPM": false,
 			"bpm": 147
 		},
@@ -382,7 +382,7 @@
 			],
 			"lengthInSteps": 16,
 			"altAnim": false,
-			"mustHitSection": true,
+			"mustHitSection": false,
 			"changeBPM": false,
 			"bpm": 147
 		},
@@ -411,7 +411,7 @@
 			],
 			"lengthInSteps": 16,
 			"altAnim": false,
-			"mustHitSection": true,
+			"mustHitSection": false,
 			"changeBPM": false,
 			"bpm": 147
 		},
@@ -489,7 +489,7 @@
 			],
 			"lengthInSteps": 16,
 			"altAnim": false,
-			"mustHitSection": true,
+			"mustHitSection": false,
 			"changeBPM": false,
 			"bpm": 147
 		},
@@ -537,7 +537,7 @@
 			],
 			"lengthInSteps": 16,
 			"altAnim": false,
-			"mustHitSection": false,
+			"mustHitSection": true,
 			"changeBPM": false,
 			"bpm": 147
 		},
@@ -572,7 +572,7 @@
 			],
 			"lengthInSteps": 16,
 			"altAnim": false,
-			"mustHitSection": false,
+			"mustHitSection": true,
 			"changeBPM": false,
 			"bpm": 147
 		},
@@ -606,7 +606,7 @@
 			],
 			"lengthInSteps": 16,
 			"altAnim": false,
-			"mustHitSection": false,
+			"mustHitSection": true,
 			"changeBPM": false,
 			"bpm": 147
 		},
@@ -672,7 +672,7 @@
 			],
 			"lengthInSteps": 16,
 			"altAnim": false,
-			"mustHitSection": true,
+			"mustHitSection": false,
 			"changeBPM": false,
 			"bpm": 147
 		},
@@ -5818,9 +5818,111 @@
 	"gfVersion": "gf-needlemouse-scared",
 	"events": [
 		[
+			102.040816326531,
+			[
+				["Tweening Camera", "0, 0", "10, cubeInOut"],
+				["Tween Camera Zoom", "0.5, true", "10, cubeInOut"]
+			]
+		],
+		[
+			12857.1428571429,
+			[
+				["Tweening Camera", "-350, 0", "0.5, cubeOut"],
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			16326.5306122449,
+			[
+				["Tween Camera Zoom", "0.8, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			19591.8367346939,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.5, cubeOut"],
+				["Tweening Camera", "0, 0", "0.5, cubeOut"]
+			]
+		],
+		[
+			22857.1428571429,
+			[
+				["Tween Camera Zoom", "0.7 , true", "0.5, cubeOut"]
+			]
+		],
+		[
+			26122.4489795918,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			27755.1020408163,
+			[
+				["Tweening Camera", "0, 0", "0.5, cubeOut"]
+			]
+		],
+		[
+			27755.1020408163,
+			[
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			34285.7142857143,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			40816.3265306122,
+			[
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			42448.9795918367,
+			[
+				["Tween Camera Zoom", "0.8 , true", "0.75, quartOut"],
+				["Tweening Camera", "-200, 0", "0.5, cubeOut"]
+			]
+		],
+		[
+			44081.6326530612,
+			[
+				["Tween Camera Zoom", "0.65 , true", "0.5, quartOut"],
+				["Tweening Camera", "0, 0", "0.75, quartOut"]
+			]
+		],
+		[
+			45714.2857142857,
+			[
+				["Tween Camera Zoom", "0.8 , true", "0.75, quartOut"]
+			]
+		],
+		[
+			47346.9387755102,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			50612.2448979592,
+			[
+				["cameracenter", "false", ""]
+			]
+		],
+		[
 			55102.0408163265,
 			[
 				["sarahevent", "sarahappears", ""]
+			]
+		],
+		[
+			69081.6326530612,
+			[
+				["Tweening Camera", "-500, -300", "15, quadInOut"],
+				["Tween Camera Zoom", "0.4, true", "15, quadInOut"]
 			]
 		],
 		[
@@ -5833,6 +5935,19 @@
 			83163.2653061225,
 			[
 				["Change Character", "Dad", "luther"]
+			]
+		],
+		[
+			83265.3061224491,
+			[
+				["Tween Camera Zoom", "0.65, true", "0.01, linear"],
+				["Tweening Camera", "0, 0", "0.01, linear"]
+			]
+		],
+		[
+			97697.9591836735,
+			[
+				["Flash", "0xFFFFFFFF, 1", "camHUD"]
 			]
 		],
 		[
@@ -5857,7 +5972,7 @@
 			128597.959183674,
 			[
 				["Tween Camera Zoom", "0.8, true", "4, cubeInOut"],
-				["Tweening Camera", "-500, 0", "4, cubeInOut"]
+				["Tweening Camera", "-350, 0", "4, cubeInOut"]
 			]
 		],
 		[
@@ -5868,23 +5983,53 @@
 			]
 		],
 		[
+			136097.959183674,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			139297.959183674,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			142497.959183674,
+			[
+				["Tween Camera Zoom", "0.75, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			145697.959183674,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			152097.959183674,
+			[
+				["Tween Camera Zoom", "0.5, true", "0.5, cubeOut"]
+			]
+		],
+		[
 			219297.959183674,
 			[
-				["Tweening Camera", "-200, 0", "0.5, cubeOut"],
+				["Tweening Camera", "-100, 0", "0.5, cubeOut"],
 				["Tween Camera Zoom", "0.65, true", "0.5, cubeOut"]
 			]
 		],
 		[
 			220097.959183674,
 			[
-				["Tweening Camera", "-400, 0", "0.5, cubeOut"],
+				["Tweening Camera", "-225, 0", "0.5, cubeOut"],
 				["Tween Camera Zoom", "0.75, true", "0.5, cubeOut"]
 			]
 		],
 		[
 			220897.959183674,
 			[
-				["Tweening Camera", "-550, 0", "0.5, cubeOut"],
+				["Tweening Camera", "-350, 0", "0.5, cubeOut"],
 				["Tween Camera Zoom", "0.85, true", "0.5, cubeOut"]
 			]
 		],
@@ -5901,12 +6046,6 @@
 			[
 				["Change Character", "Dad", "atem"],
 				["Tween Camera Zoom", "0.8, false", "1, cubeInOut"]
-			]
-		],
-		[
-			335219.047619048,
-			[
-				["Tween Camera Zoom", "0.55, true", "1, cubeInOut"]
 			]
 		],
 		[

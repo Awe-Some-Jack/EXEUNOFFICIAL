@@ -434,7 +434,7 @@ class SoundTest extends MusicBeatState
 							{
 								persistentUpdate = false;
 								persistentDraw = true;
-								openSubState(new SoundTestSubState(false, "assets/exe/soundtest/videos/starvArg.webp"));
+								openSubState(new SoundTestSubState(true, "assets/exe/soundtest/videos/starvedarg1final.mp4"));
 							}
 						}
 					});

@@ -1,71 +1,71 @@
 {
 	"animations": [
 		{
+			"offsets": [-190, 20],
 			"loop": false,
-			"offsets": [77, -50],
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+			"indices": [],
+			"name": "idle"
 		},
 		{
+			"offsets": [-96, 64],
 			"loop": false,
-			"offsets": [-53, -1],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "singUP",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"offsets": [-31, 88],
 			"loop": false,
-			"offsets": [130, -171],
-			"anim": "singDOWN",
 			"fps": 24,
-			"name": "singDOWN",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-		},
-		{
-			"loop": false,
-			"offsets": [287, -80],
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "singLEFT",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [-71, 33],
 			"loop": false,
-			"offsets": [-306, -49],
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [-197, 21],
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "singRIGHT",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+			"indices": [],
+			"name": "right"
 		},
 		{
-			"offsets": [-200, -230],
 			"loop": true,
-			"fps": 24,
+			"offsets": [-498, 20],
 			"anim": "laugh",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-			"name": "creepystare"
+			"fps": 24,
+			"name": "saf",
+			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [-200, -230],
+			"offsets": [-252, 20],
 			"anim": "smile",
 			"fps": 24,
-			"name": "creepysmile",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15, 12, 13, 14, 15]
+			"name": "smile",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/tailsdoll_p2",
-	"position": [0, 0],
+	"image": "characters/taildoll",
+	"position": [30, 40],
 	"healthicon": "soultails",
 	"flip_x": false,
 	"healthbar_colors": [247, 156, 25],
 	"camera_position": [20, 190],
 	"sing_duration": 6,
-	"scale": 1.05,
+	"scale": 1.75,
 	"_editor_isPlayer": false
 }

@@ -74,10 +74,15 @@ end
 local vignetteMode = ''
 
 local foundYouEvents = {
-	['fadeBG'] = function(alpha, time)
+	['fadeBG'] = function(alpha, time, setLayerGF)
 		cancelTween('BlackGraphicBehindAlpha') cancelTween('glowAlpha')
 		doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', alpha, time)
 		doTweenAlpha('glowAlpha', 'glow', alpha ~= '0' and alpha - 0.4 or 0.75, time)
+		if setLayerGF then
+			setObjectOrder('BlackGraphicBehind', getObjectOrder('gfGroup'))
+		else
+			setObjectOrder('BlackGraphicBehind', getObjectOrder('dadGroup') - 1)
+		end
 	end,
 	['showNotes'] = function(who)
 		if who == 'cd' then
@@ -89,6 +94,10 @@ local foundYouEvents = {
 	['fadeHUD'] = function(alpha, time)
 		cancelTween('HUDAlpha')
 		doTweenAlpha('HUDAlpha', 'camHUD', alpha, time)
+	end,
+	['fadeGame'] = function()
+		doTweenAlpha('BlackGraphicGameAlpha', 'BlackGraphicGame', 1, 5)
+		doTweenAlpha('glowAlpha', 'glow', 0, 5)
 	end,
 	['fadeHealth'] = function(alpha, time)
 		for _, health in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do
@@ -140,8 +149,5 @@ function onBeatHit()
 	elseif vignetteMode == 'beatLowBump' then
 		cancelTween('vgAlphaLowBump') setProperty('vg.alpha', 0.4)
 		doTweenAlpha('vgAlphaLowBump', 'vg', 0, 0.4)
-	elseif vignetteMode == 'absorbBump' then
-		cancelTween('vgAlphaAbsorbBump') setProperty('vg.alpha', 0)
-		doTweenAlpha('vgAlphaAbsorbBump', 'vg', 0.5, 0.4)
 	end
 end

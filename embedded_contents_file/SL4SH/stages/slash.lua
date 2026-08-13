@@ -41,17 +41,28 @@ function onCreatePost()
 	end
 
 	addCharacterToList('sl4shfront', 'dad')
+
+	setProperty('hbHealth.alpha', 0)
+	setProperty('hbHealth2.alpha', 0)
+
+	makeLuaSprite('leftBar',  'pixelUI/hud/bar1', 0, 0)
+	makeLuaSprite('rightBar', 'pixelUI/hud/bar2', 0, 0)
+	setObjectCamera('leftBar', 'camHUD') setObjectCamera('rightBar', 'camHUD')
+	setObjectOrder('leftBar', getObjectOrder('separatorHealth')) setObjectOrder('rightBar', getObjectOrder('separatorHealth'))
+	callMethod('leftBar.setPosition',  {getProperty('hbHealth.x')  - 5, getProperty('hbHealth.y') - 4.5})
+	callMethod('rightBar.setPosition', {getProperty('hbHealth2.x') - 5, getProperty('hbHealth2.y') - 4.5})
+	addLuaSprite('leftBar') addLuaSprite('rightBar')
+	setObjectOrder('healthBG', getObjectOrder('leftBar'))
 end
 
 function onEvent(n)
 	if n ~= 'slashchangeBG' then return end
 
-	setProperty('boyfriend.alpha', 0)
+	setProperty('boyfriend.visible', false)
 	setProperty('dad.y', getProperty('dad.y') - 150)
 	triggerEvent('Change Character', 'dad', 'sl4shfront')
 
-	removeLuaSprite('wall', true)
-	removeLuaSprite('lines', true)
+	removeLuaSprite('wall', true) removeLuaSprite('lines', true)
 	for _, spr in ipairs(stage1) do
 		removeLuaSprite(spr.name, true)
 	end
@@ -59,4 +70,15 @@ function onEvent(n)
 	for _, spr in ipairs(stage2) do
 		setProperty(spr.name .. '.visible', true)
 	end
+end
+
+
+function onUpdatePost()
+	scaleObject('rightBar', clamp(getHealth(), 0, 2) * 3.685, 4)
+	scaleObject('leftBar',  clamp(2 - getHealth(), 0, 2) * 3.685, 4)
+	setProperty('rightBar.x', getProperty('leftBar.x') + getProperty('leftBar.width'))
+end
+
+function clamp(val, lower, upper)
+    return math.min(math.max(val, lower), upper)
 end

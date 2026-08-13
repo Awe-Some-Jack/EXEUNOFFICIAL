@@ -96,6 +96,8 @@ class PlayState extends MusicBeatState
 		['Perfect!!', 1] //The value on this one isn't used actually, since Perfect is always "1"
 	];
 
+	public var noteQueues:Array<Array<Note>> = [[], [], [], []];
+
 	private var shutdownThread:Bool = false;
 	private var gameFroze:Bool = false;
 	private var requiresSyncing:Bool = false;
@@ -1905,6 +1907,9 @@ class PlayState extends MusicBeatState
 					notes.insert(0, dunceNote);
 					dunceNote.spawned = true;
 
+					if (dunceNote.noteData >= 0 && dunceNote.noteData < 4)
+						noteQueues[dunceNote.noteData].push(dunceNote);
+
 					if (hasScripts) {
 						_spawnArgs[0] = 0; 
 						_spawnArgs[1] = dunceNote.noteData;
@@ -2689,7 +2694,8 @@ class PlayState extends MusicBeatState
 			FlxG.save.data.lastCoverPlay ??= 0;
 			if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay++;
 
-			switch(formattedSong){
+			switch(formattedSong)
+			{
 				case "triple-trouble":
 					FlxG.save.data.goToFinalEscape = true;
 					FlxG.save.flush();
@@ -2782,7 +2788,7 @@ class PlayState extends MusicBeatState
 
 	private function popUpScore(note:Note = null):Void
 	{
-		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.data.ratingOffset);
+		final noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.data.ratingOffset);
 		vocals.volume = 1;
 		
 		for (spr in comboGroup.members)
@@ -2796,8 +2802,7 @@ class PlayState extends MusicBeatState
 
 		var score:Int = 350;
 
-		var daRating:Rating = Conductor.judgeNote(ratingsData, noteDiff / playbackRate);
-
+		final daRating:Rating = Conductor.judgeNote(ratingsData, noteDiff / playbackRate);
 		totalNotesHit += daRating.ratingMod;
 		note.ratingMod = daRating.ratingMod;
 		if(!note.ratingDisabled) daRating.hits++;
@@ -2822,9 +2827,10 @@ class PlayState extends MusicBeatState
 			antialias = !isPixelStage;
 		}
 
-		var rating:FlxSprite = comboGroup.recycle(FlxSprite);
+		final rating:FlxSprite = comboGroup.recycle(FlxSprite);
 		rating.loadGraphic(Paths.image(uiFolder + daRating.image + uiPostfix));
 		rating.visible = !ClientPrefs.data.hideHud;
+		rating.cameras = [camHUD];
 		rating.alpha = 1;
 		
 		if (!PlayState.isPixelStage) rating.setGraphicSize(Std.int(rating.width * 0.6 * 1.1));
@@ -2833,7 +2839,7 @@ class PlayState extends MusicBeatState
 		rating.screenCenter(X);
 		rating.y = (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
 		
-		var targetScale:Float = PlayState.isPixelStage ? 4 : 0.6;
+		final targetScale:Float = PlayState.isPixelStage ? 4 : 0.6;
 		rating.scale.set(targetScale, targetScale);
 		
 		FlxTween.tween(rating.scale, {x: targetScale, y: targetScale}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
@@ -2841,17 +2847,16 @@ class PlayState extends MusicBeatState
 		
 		FlxTween.tween(rating, {alpha: 0}, 0.2 / playbackRate, {
 			startDelay: Conductor.crochet * 0.001 / playbackRate, 
-			onComplete: function(tween:FlxTween){ 
-				rating.kill();
-			}
+			onComplete: (_) -> rating.kill()
 		});
 
-		var separatedScore:String = Std.string(combo).lpad('0', 2);
+		final separatedScore:String = Std.string(combo).lpad('0', 2);
 		for (i in 0...separatedScore.length)
 		{
-			var numScore:FlxSprite = comboGroup.recycle(FlxSprite);
+			final numScore:FlxSprite = comboGroup.recycle(FlxSprite);
 			numScore.loadGraphic(Paths.image(uiFolder + 'num' + Std.parseInt(separatedScore.charAt(i)) + uiPostfix));
 			numScore.visible = !ClientPrefs.data.hideHud;
+			numScore.cameras = [camHUD];
 			numScore.alpha = 1;
 			
 			if (!PlayState.isPixelStage) numScore.setGraphicSize(Std.int(numScore.width * 0.6 * 1.1));
@@ -2868,16 +2873,15 @@ class PlayState extends MusicBeatState
 			
 			FlxTween.tween(numScore, {alpha: 0}, 0.2 / playbackRate, {
 				startDelay: Conductor.crochet * 0.001 / playbackRate, 
-				onComplete: function(tween:FlxTween){ 
-					numScore.kill();
-				}
+				onComplete: (_) -> numScore.kill()
 			});
 		}
 	}
 
 	public var strumsBlocked:Array<Bool> = [];
 
-	// timestamp captured at the OS event moment — used to compensate for script/frame overhead in hit timing
+	// timestamp captured at the OS event moment 
+	// used to compensate for script/frame overhead in hit timing
 	private var _pressTimestamp:Float = 0;
 
 	private function onKeyPress(event:KeyboardEvent):Void
@@ -2894,7 +2898,7 @@ class PlayState extends MusicBeatState
 			if (_osHeldKeys.exists(eventKey) && _osHeldKeys.get(eventKey) == true) return;
 			_osHeldKeys.set(eventKey, true);
 
-			// capture timestamp immediately — before any script calls or lookups add overhead
+			// capture timestamp immediately before any script calls or lookups add overhead
 			_pressTimestamp = haxe.Timer.stamp();
 			keyPressed(key);
 		}
@@ -2904,7 +2908,7 @@ class PlayState extends MusicBeatState
 	{
 		if(cpuControlled || paused || inCutscene || key < 0 || key >= playerStrums.length || !generatedMusic || endingSong || boyfriend.stunned) return;
 
-		var lastTime:Float = Conductor.songPosition;
+		final lastTime:Float = Conductor.songPosition;
 		if(Conductor.songPosition >= 0)
 		{
 			final now:Float = haxe.Timer.stamp();
@@ -2913,19 +2917,23 @@ class PlayState extends MusicBeatState
 		}
 
 		_keyArgs[0] = key;
-		var ret:Dynamic = callOnScripts('onKeyPressPre', _keyArgs);
+
+		final ret:Dynamic = callOnScripts('onKeyPressPre', _keyArgs);
 		if(ret == LuaUtils.Function_Stop) { Conductor.songPosition = lastTime; return; }
 
 		var funnyNote:Note = null;
-		var members = notes.members;
-		var len = members.length;
 		
+		final queue = noteQueues[key];
+		final len = queue.length;
+
 		for (i in 0...len)
 		{
-			var n:Note = members[i];
-			if (n == null || n.isSustainNote || n.noteData != key) continue;
+			final n:Note = queue[i];
+			if (n == null || n.isSustainNote) continue;
 			
-			if (!n.canBeHit || !n.mustPress || n.tooLate || n.wasGoodHit || n.blockHit || strumsBlocked[n.noteData]) continue;
+			if (n.strumTime > Conductor.songPosition + 500) break;
+			
+			if (!n.canBeHit || !n.mustPress || n.tooLate || n.wasGoodHit || n.blockHit || strumsBlocked[key]) continue;
 
 			if (funnyNote == null)
 			{
@@ -2933,16 +2941,18 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				var pickNew:Bool = n.lowPriority != funnyNote.lowPriority ? funnyNote.lowPriority : n.strumTime < funnyNote.strumTime;
+				final pickNew:Bool = n.lowPriority != funnyNote.lowPriority ? funnyNote.lowPriority : n.strumTime < funnyNote.strumTime;
 				if (pickNew)
 				{
-					if (n.noteData == funnyNote.noteData && Math.abs(n.strumTime - funnyNote.strumTime) < 1.0)
+					if (Math.abs(n.strumTime - funnyNote.strumTime) < 1.0)
 						invalidateNote(funnyNote);
 					funnyNote = n;
 				}
-				else if (n.noteData == funnyNote.noteData && Math.abs(n.strumTime - funnyNote.strumTime) < 1.0)
+				else if (Math.abs(n.strumTime - funnyNote.strumTime) < 1.0)
 					invalidateNote(n);
 			}
+			
+			if (funnyNote != null && !funnyNote.lowPriority) break;
 		}
 
 		if (funnyNote != null && canPress)
@@ -2957,8 +2967,8 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = lastTime;
 
-		var spr:StrumNote = playerStrums.members[key];
-		if(strumsBlocked[key] != true && spr != null && spr.animation.curAnim.name != 'confirm' && spr.animation.curAnim.name != 'pressed')
+		final spr:StrumNote = playerStrums.members[key];
+		if(strumsBlocked[key] != true && spr?.animation.curAnim.name != 'confirm' && spr?.animation.curAnim.name != 'pressed')
 		{
 			spr.playAnim('pressed');
 			spr.resetAnim = 0;
@@ -2978,8 +2988,8 @@ class PlayState extends MusicBeatState
 
 	private function onKeyRelease(event:KeyboardEvent):Void
 	{
-		var eventKey:FlxKey = event.keyCode;
-		var key:Int = getKeyFromEvent(keysArray, eventKey);
+		final eventKey:FlxKey = event.keyCode;
+		final key:Int = getKeyFromEvent(keysArray, eventKey);
 
 		_osHeldKeys.set(eventKey, false);
 
@@ -2991,10 +3001,11 @@ class PlayState extends MusicBeatState
 		if(cpuControlled || !startedCountdown || paused || key < 0 || key >= playerStrums.length) return;
 
 		_keyArgs[0] = key;
-		var ret:Dynamic = callOnScripts('onKeyReleasePre', _keyArgs);
+
+		final ret:Dynamic = callOnScripts('onKeyReleasePre', _keyArgs);
 		if(ret == LuaUtils.Function_Stop) return;
 
-		var spr:StrumNote = playerStrums.members[key];
+		final spr:StrumNote = playerStrums.members[key];
 		if(spr != null)
 		{
 			spr.playAnim('static');
@@ -3488,6 +3499,9 @@ class PlayState extends MusicBeatState
 	}
 
 	public function invalidateNote(note:Note):Void {
+		if (note.noteData >= 0 && note.noteData < 4)
+			noteQueues[note.noteData].remove(note);
+
 		note.kill();
 		notes.remove(note, true);
 		note.destroy();

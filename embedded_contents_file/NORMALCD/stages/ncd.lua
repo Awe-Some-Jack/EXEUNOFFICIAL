@@ -6,27 +6,32 @@ local shadows = {
 local foundYouAssets = {
 	['BG'] = {
 		{name =   'bg', path =         'bg/bg', x = -270, y = -230},
-		{name =  'bg2', path =        'bg/bg2', x =  535, y =  320},
+		{name =  'bg2', path =        'bg/bg2', x =  535, y =  230},
 		{name = 'door', path = 'bg/doorbangin', x = -110, y = -525, animName = 'doorbangin', animPrefix = 'doorbangin', fps = 24, loop = false},
-		{name =   'pc', path =         'bg/tv', x = 1400, y =  400, animName =       'idle', animPrefix = 'Símbolo 12', fps = 24, loop = true},
+		{name =   'pc', path = 'characters/tv', x = 1350, y =  350, animName =       'idle', animSymbol = 'Símbolo 12', fps = 24, loop = true, atlas = true, scale = 1.6},
 		{name = 'glow', path =       'bg/glow', x =   50, y =    0, blend = 'add', alpha = 0.75, front = true},
 	},
 	['Chars'] = {
-		{name = 'char1', path = 'bg/char1', x = 610, y = 320, behind = 'bg2'},
-		{name = 'char2', path = 'bg/char2', x = 780, y = 320, behind = 'bg2'}
+		{name = 'char1', path = 'bg/char1', x = 610, y = 380, behind = 'bg2'},
+		{name = 'char2', path = 'bg/char2', x = 780, y = 380, behind = 'bg2'}
 	}
 }
 
 local function createSprite(e)
-	if e.animName then
+	if e.animPrefix then
 		makeAnimatedLuaSprite(e.name, e.path, e.x, e.y)
 		addAnimationByPrefix(e.name, e.animName, e.animPrefix, e.fps, e.loop)
+		playAnim(e.name, e.animName, true)
+	elseif e.atlas then
+		makeFlxAnimateSprite(e.name, e.x, e.y, e.path)
+		addAnimationBySymbol(e.name, e.animName, e.animSymbol, e.fps, e.loop)
 		playAnim(e.name, e.animName, true)
 	else
 		makeLuaSprite(e.name, e.path, e.x, e.y)
 	end
 	if e.behind then setObjectOrder(e.name, getObjectOrder(e.behind)) end
 	if e.blend  then setBlendMode(e.name, e.blend) end
+	if e.scale  then scaleObject(e.name, e.scale, e.scale) end
 	if e.alpha  then setProperty(e.name..'.alpha', e.alpha) end
 	addLuaSprite(e.name, e.front and true or false)
 end
@@ -114,7 +119,7 @@ local foundYouEvents = {
 				addLuaSprite('vg')
 			end
 			vignetteMode = mode
-			debugPrint(vignetteMode)
+			--debugPrint(vignetteMode)
 			if color ~= nil then setProperty('vg.color', getColorFromHex(color)) end
 		else
 			vignetteMode = ''

@@ -33,7 +33,7 @@
 	"options.visuals": "VISUALS",
 	"options.visuals.labels": ["HIDE HUD", "FLASHING LIGHTS", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS COUNTER"],
 	"options.gameplay": "GAMEPLAY",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"],
 	"options.graphics": "GRAPHICS",
 	"options.graphics.labels": ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADERS", "UNCAPPED FPS", "FRAMERATE"],
 	"options.language": "LANGUAGE",

@@ -287,7 +287,17 @@ class OptionsState extends MusicBeatState
 			changeSelect(0);
 		}
 
-		if (controls.ACCEPT)
+		#if mobile
+		for(i in 0...SECTION_KEYS.length) {
+			if(curSelected != i && FlxG.mouse.overlaps(sectionBGGrp.members[i])) {
+				curSelected = i;
+				changeSelect(0);
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+			}
+		}
+		#end
+
+		if (controls.ACCEPT #if mobile || (shortPress && FlxG.mouse.overlaps(sectionBGGrp.members[curSelected])) #end)
 		{
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 			select();

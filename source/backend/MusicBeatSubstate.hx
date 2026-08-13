@@ -18,6 +18,18 @@ class MusicBeatSubstate extends FlxSubState
 	private var curStep:Int = 0;
 	private var curBeat:Int = 0;
 
+	public var mouseX:Float = 0;
+	public var deltaMouseX:Float = 0;
+	public var mouseY:Float = 0;
+	public var deltaMouseY:Float = 0;
+	public var touchLength:Float = 0;
+	public var shortPress:Bool = false;
+	public var pressHolding:Bool = false;
+	public var swipeUP:Bool = false;
+	public var swipeDOWN:Bool = false;
+	public var swipeLEFT:Bool = false;
+	public var swipeRIGHT:Bool = false;
+
 	private var curDecStep:Float = 0;
 	private var curDecBeat:Float = 0;
 	private var controls(get, never):Controls;
@@ -47,6 +59,25 @@ class MusicBeatSubstate extends FlxSubState
 					rollbackSection();
 			}
 		}
+
+		mouseX = FlxG.mouse.x;
+		mouseY = FlxG.mouse.y;
+
+		deltaMouseX = FlxG.mouse.deltaScreenX;
+		deltaMouseY = FlxG.mouse.deltaScreenY;
+
+		if(FlxG.touches.list.length == 0) touchLength = 0;
+
+		for(touch in FlxG.touches.list) {
+			touchLength = FlxG.game.ticks - touch.justPressedTimeInTicks;
+			shortPress = (touch.justReleased && touchLength <= 150);
+			pressHolding = (touch.pressed && touchLength > 10);
+		}
+
+		swipeUP = deltaMouseY <= -5 && pressHolding && Math.abs(deltaMouseY) > Math.abs(deltaMouseX);
+		swipeDOWN = deltaMouseY >= 5 && pressHolding && Math.abs(deltaMouseY) > Math.abs(deltaMouseX);
+		swipeLEFT = deltaMouseX <= -5 && pressHolding && Math.abs(deltaMouseY) < Math.abs(deltaMouseX);
+		swipeRIGHT = deltaMouseX >= 5 && pressHolding && Math.abs(deltaMouseY) < Math.abs(deltaMouseX);
 
 		super.update(elapsed);
 	}

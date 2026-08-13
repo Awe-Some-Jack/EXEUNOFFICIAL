@@ -252,15 +252,23 @@ class EXEMenu extends MusicBeatState
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(() -> new EXETitle());
 			}
+			#if !mobile
 			else if (controls.ACCEPT)
 				startBlink();
-
 			final wheel = FlxG.mouse.deltaWheel.y;
 			if (wheel != 0 && cooldownTimer <= 0)
 				changeSelection(wheel > 0 ? -1 : 1, wheel > 0);
+			#else
+			if(pressHolding && deltaMouseY != 0 && cooldownTimer <= 0)
+				if(deltaMouseY > 5)
+					changeSelection(-1, false);
+				else if(deltaMouseY < -5)
+					changeSelection(1, true);
+			#end
 
 			final centerHitbox = menuHitboxes[selectedOptionIndex];
-			if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(centerHitbox))
+			centerHitbox.updateHitbox();
+			if (#if mobile !pressHolding && #end FlxG.mouse.justPressed && FlxG.mouse.overlaps(centerHitbox))
 				startBlink();
 		}
 
@@ -285,7 +293,7 @@ class EXEMenu extends MusicBeatState
 	{
 		isMovingUpward = up;
 		selectedOptionIndex = (selectedOptionIndex + dir + TOTAL_OPTIONS) % TOTAL_OPTIONS;
-		cooldownTimer = 0.1;
+		cooldownTimer = #if !mobile 0.1 #else 0.15 #end;
 
 		if (sound) FlxG.sound.play(Paths.sound('scrollMenu'));
 
@@ -431,13 +439,13 @@ class EXEMenu extends MusicBeatState
 					text.scale.set(scale, scale);
 
 					hitbox.alpha = 0;
-					hitbox.x = pos.x + 97.5;
-					hitbox.y = pos.y + yOff + 45.5;
+					hitbox.x = pos.x + 557.5;
+					hitbox.y = pos.y + yOff + 119.5;
 					hitbox.scale.set(scale, scale);
 
 					FlxTween.tween(option, {y: pos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
 					FlxTween.tween(text, {y: textPos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
-					FlxTween.tween(hitbox, {y: pos.y + 45.5, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
+					FlxTween.tween(hitbox, {y: pos.y + 119.5, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
 				}
 				else
 				{
@@ -449,13 +457,13 @@ class EXEMenu extends MusicBeatState
 					text.y = textPos.y;
 					text.scale.set(scale, scale);
 
-					hitbox.x = pos.x + 97.5;
-					hitbox.y = pos.y + 45.5;
+					hitbox.x = pos.x + 557.5;
+					hitbox.y = pos.y + 119.5;
 					hitbox.scale.set(scale, scale);
 
 					FlxTween.tween(option, {y: pos.y + yOff, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
 					FlxTween.tween(text, {y: textPos.y + yOff, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
-					FlxTween.tween(hitbox, {y: pos.y + yOff + 45.5, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
+					FlxTween.tween(hitbox, {y: pos.y + yOff + 119.5, alpha: 0}, 0.45, {ease: FlxEase.quintOut});
 				}
 			}
 			else
@@ -464,7 +472,7 @@ class EXEMenu extends MusicBeatState
 				FlxTween.tween(option.scale, {x: scale, y: scale}, 0.45, {ease: FlxEase.quintOut});
 				FlxTween.tween(text, {x: textPos.x, y: textPos.y, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
 				FlxTween.tween(text.scale, {x: scale, y: scale}, 0.45, {ease: FlxEase.quintOut});
-				FlxTween.tween(hitbox, {x: pos.x + 97.5, y: pos.y + 45.5, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
+				FlxTween.tween(hitbox, {x: pos.x + 557.5, y: pos.y + 119.5, alpha: alpha}, 0.45, {ease: FlxEase.quintOut});
 				FlxTween.tween(hitbox.scale, {x: scale, y: scale}, 0.45, {ease: FlxEase.quintOut});
 			}
 		}

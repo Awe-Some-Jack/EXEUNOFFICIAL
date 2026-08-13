@@ -241,17 +241,17 @@ class Paths
 		return returnSound('sounds/$key', modsAllowed);
 
 	inline static public function music(key:String, ?modsAllowed:Bool = true):Sound
-		return returnSound('music/$key', modsAllowed);
+		return returnVorbisSound('music/$key', modsAllowed);
 
 	inline static public function inst(song:String, ?modsAllowed:Bool = true):Sound
-		return returnSound('${formatToSongPath(song)}/Inst', 'songs', modsAllowed);
+		return returnVorbisSound('${formatToSongPath(song)}/Inst', 'songs', modsAllowed);
 
 	inline static public function voices(song:String, postfix:String = null, ?modsAllowed:Bool = true):Sound
 	{
 		var songKey:String = '${formatToSongPath(song)}/Voices';
 		if(postfix != null) songKey += '-' + postfix;
 		//trace('songKey test: $songKey');
-		return returnSound(songKey, 'songs', modsAllowed, false);
+		return returnVorbisSound(songKey, 'songs', modsAllowed, false);
 	}
 
 	static public function instPath(song:String, ?modsAllowed:Bool = true):String
@@ -672,6 +672,59 @@ class Paths
 		}
 		localTrackedAssets.push(file);
 		return currentTrackedSounds.get(file);
+	}
+
+	/**
+	 * Streams a `.ogg` file straight off disk instead of decoding it fully into memory,
+	 * giving much faster load times for large song audio (inst/voices).
+	 *
+	 * Falls back to `returnSound` if streaming is disabled, unsupported on this target,
+	 * or the file can't be opened as vorbis (e.g. it's actually a `.wav`).
+	 */
+	public static function returnVorbisSound(key:String, ?path:String, ?modsAllowed:Bool = true, ?beepOnNull:Bool = true):Sound
+	{
+		#if lime_vorbis
+		if (ClientPrefs.data.streamedAudio)
+		{
+			var file:String = getPath(Language.getFileTranslation(key) + '.$SOUND_EXT', SOUND, path, modsAllowed);
+
+			if (file.toLowerCase().endsWith('.ogg'))
+			{
+				var vorbisFile = null;
+
+				#if sys
+				if (sys.FileSystem.exists(file))
+				{
+					vorbisFile = lime.media.vorbis.VorbisFile.fromFile(file);
+				}
+				#end
+
+				// Not a loose file on disk (e.g. a "final"/Android build with embedded assets) -
+				// stream straight from the embedded bytes instead of falling back to a full decode.
+				if (vorbisFile == null && OpenFlAssets.exists(file))
+				{
+					var bytes = OpenFlAssets.getBytes(file);
+
+					if (bytes != null)
+					{
+						vorbisFile = lime.media.vorbis.VorbisFile.fromBytes(bytes);
+					}
+				}
+
+				if (vorbisFile != null)
+				{
+					var buffer = lime.media.AudioBuffer.fromVorbisFile(vorbisFile);
+
+					if (buffer != null)
+					{
+						return Sound.fromAudioBuffer(buffer);
+					}
+				}
+			}
+		}
+		#end
+
+		return returnSound(key, path, modsAllowed, beepOnNull);
 	}
 
 	#if MODS_ALLOWED

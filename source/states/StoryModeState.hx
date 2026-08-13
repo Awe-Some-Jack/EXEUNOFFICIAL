@@ -478,24 +478,24 @@ class StoryModeState extends MusicBeatState
 		if (!isSelecting) {
 			if (inCoverSelect)
 			{
-				if (yt == true){
-					if (controls.UI_RIGHT_P || controls.UI_LEFT_P)
+				if (yt == true) {
+					if ((FlxG.mouse.overlaps(arrow) && FlxG.mouse.justPressed) || (FlxG.mouse.overlaps(arrow2) && FlxG.mouse.justPressed) || controls.UI_RIGHT_P || controls.UI_LEFT_P)
 						FlxG.sound.play(Paths.sound('denied'));
 
-					if (controls.ACCEPT){
+					if (controls.ACCEPT #if mobile || shortPress && !FlxG.mouse.overlaps(arrow) && !FlxG.mouse.overlaps(arrow2) #end) {
 						isSelecting = true;
 						FlxG.sound.play(Paths.sound('menuConfirmYourself'));
 						_yourselfCutscene = new YourselfCutscene(this, bfBOX, redBOX, yourselfCover); _yourselfCutscene.start();
 						microphone.destroy();
 					}
-				}else{
+				} else {
 
-					if (controls.UI_RIGHT_P && selectedCover < getUnlockedCovers())
+					if (((FlxG.mouse.overlaps(arrow2) && FlxG.mouse.justPressed) || controls.UI_RIGHT_P) && selectedCover < getUnlockedCovers())
 						changeCover(selectedCover + 1);
-					else if (controls.UI_LEFT_P && selectedCover > 0)
+					else if (((FlxG.mouse.overlaps(arrow) && FlxG.mouse.justPressed) || controls.UI_LEFT_P) && selectedCover > 0)
 						changeCover(selectedCover - 1);
 					
-					if (controls.ACCEPT){
+					if (controls.ACCEPT #if mobile || shortPress && !FlxG.mouse.overlaps(arrow) && !FlxG.mouse.overlaps(arrow2) #end) {
 						isSelecting = true;
 						bfBOX.animation.play('yeah', true);
 						bfBOX.x += 10;
@@ -537,7 +537,7 @@ class StoryModeState extends MusicBeatState
 					}
 				}
 
-				if (!moved && controls.ACCEPT)
+				if (!moved && (controls.ACCEPT #if mobile || shortPress #end))
 				{
 					if (selectedBox == 0) onBox1Accept();
 					else { FlxG.sound.play(Paths.sound('denied')); shakeBox2(); }

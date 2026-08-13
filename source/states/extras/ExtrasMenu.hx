@@ -25,7 +25,8 @@ class ExtrasMenu extends MusicBeatState
     var descBackdrops:Array<FlxBackdrop> = [];
     var curSelected:Int  = 0;
     var canMove:Bool     = true;
-    
+    #if mobile var cooldownTimer:Float = 0.15; #end
+
     // select box for the selection shit 
     var _selLeft:FlxSprite;
     var _selMid:FlxSprite;
@@ -90,7 +91,17 @@ class ExtrasMenu extends MusicBeatState
         if (controls.UI_UP_P)   changeSelection(-1);
         if (controls.UI_DOWN_P) changeSelection(1);
 
-        if (controls.ACCEPT)    selectOption();
+        #if mobile
+        if(pressHolding && deltaMouseY != 0 && cooldownTimer <= 0)
+            if(deltaMouseY > 5)
+                changeSelection(1);
+            else if(deltaMouseY < -5)
+                changeSelection(-1);
+        #end
+        
+        #if mobile if (cooldownTimer > 0) cooldownTimer -= elapsed; #end
+
+        if (controls.ACCEPT #if mobile || (shortPress && FlxG.mouse.overlaps(menuItems[curSelected])) #end)    selectOption();
 
         if (controls.BACK)
         {
@@ -339,6 +350,7 @@ class ExtrasMenu extends MusicBeatState
     function changeSelection(change:Int = 0):Void
     {
         curSelected = (curSelected + change + MENU_KEYS.length) % MENU_KEYS.length;
+        #if mobile cooldownTimer = 0.15; #end
         if (change != 0) { FlxG.sound.play(Paths.sound('scrollMenu')); animateBox(); }
 
         for (i in 0...menuItems.length)

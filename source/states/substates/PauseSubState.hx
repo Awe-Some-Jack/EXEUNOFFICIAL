@@ -241,10 +241,26 @@ class PauseSubState extends MusicBeatSubstate
 			return;
 		}
 
+		#if mobile
+		if(curSelected != 0 && FlxG.mouse.overlaps(menuItems.members[0], camPause)) {
+			curSelected = 0;
+			changeSelection(0);
+		} else if(curSelected != 1 && FlxG.mouse.overlaps(menuItems.members[1], camPause)) {
+			curSelected = 1;
+			changeSelection(0);
+		} else if(curSelected != 2 && FlxG.mouse.overlaps(menuItems.members[2], camPause)) {
+			curSelected = 2;
+			changeSelection(0);
+		} else if(curSelected != 3 && FlxG.mouse.overlaps(menuItems.members[3], camPause)) {
+			curSelected = 3;
+			changeSelection(0);
+		}
+		#else
 		if (controls.UI_UP_P)   changeSelection(-1);
 		if (controls.UI_DOWN_P) changeSelection(1);
+		#end
 
-		if (controls.ACCEPT)
+		if (controls.ACCEPT #if mobile || (shortPress && FlxG.mouse.overlaps(menuItems.members[curSelected], camPause)) #end)
 		{
 			FlxG.sound.play(Paths.sound('confirmCD'), 0.7);
 			isSelecting = true;

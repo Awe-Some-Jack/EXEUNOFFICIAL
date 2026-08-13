@@ -33,7 +33,7 @@
 	"options.visuals": "AFFICHAGE",
 	"options.visuals.labels": ["MASQUER L'HUD", "LUMIÈRES CLIGNOTANTES", "ZOOM DE LA CAMÉRA", "ZOOM DU TEXTE DE SCORE", "COMPTEUR FPS"],
 	"options.gameplay": "GAMEPLAY",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "FENÊTRE SICK", "FENÊTRE GOOD", "FENÊTRE BAD", "FRAMES DE SÉCURITÉ"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "FENÊTRE SICK", "FENÊTRE GOOD", "FENÊTRE BAD", "FRAMES DE SÉCURITÉ", "AUDIO EN STREAMING"],
 	"options.graphics": "GRAPHISMES",
 	"options.graphics.labels": ["MODE PATATE", "ANTICRÉNELAGE", "CACHE GPU", "SHADERS", "FPS ILLIMITÉ", "FRÉQUENCE D'IMAGES"],
 	"options.language": "LANGUE",

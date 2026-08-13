@@ -33,7 +33,7 @@
 	"options.visuals": "OPTIK",
 	"options.visuals.labels": ["HUD AUSBLENDEN", "BLINKENDE LICHTER", "KAMERA-ZOOM", "SCORE-ZOOM", "FPS-ANZEIGE"],
 	"options.gameplay": "GAMEPLAY",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK-FENSTER", "GOOD-FENSTER", "BAD-FENSTER", "SICHERE FRAMES"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK-FENSTER", "GOOD-FENSTER", "BAD-FENSTER", "SICHERE FRAMES", "AUDIO-STREAMING"],
 	"options.graphics": "GRAFIK",
 	"options.graphics.labels": ["KARTOFFELMODUS", "KANTENGLÄTTUNG", "GPU-CACHING", "SHADER", "FPS ENTSPERREN", "FRAMERATE"],
 	"options.language": "SPRACHE",

@@ -15,7 +15,7 @@ import openfl.geom.Rectangle;
 import sys.FileSystem;
 import sys.io.File;
 
-class DAGSongs extends FlxGroup
+class DAGSongs extends MusicBeatSubstate
 {
     public var songList:Array<String>          = [];
     public var songMods:Array<String>          = [];
@@ -75,8 +75,8 @@ class DAGSongs extends FlxGroup
     {
         super.update(elapsed);
 
-        final wheel = FlxG.mouse.deltaWheel.y;
-        if (wheel != 0) scrollTarget -= wheel * 80.0;
+        final wheel = #if !mobile FlxG.mouse.deltaWheel.y #else deltaMouseY #end;
+        if (wheel != 0 #if mobile && pressHolding #end) scrollTarget -= wheel #if !mobile * 80.0 #end;
 
         if (onChangeSelection != null)
         {
@@ -142,16 +142,13 @@ class DAGSongs extends FlxGroup
             final dir = Paths.mods('$mod/songs');
             try
             {
-                if (FileSystem.exists(dir))
-                {
-                    for (song in FileSystem.readDirectory(dir))
-                        if (!seen.exists(song) && !song.contains('.'))
-                        {
-                            seen.set(song, true);
-                            songList.push(song);
-                            songMods.push(mod);
-                        }
-                }
+                for (song in Paths.readDirectory(dir))
+                    if (!seen.exists(song) && !song.contains('.'))
+                    {
+                        seen.set(song, true);
+                        songList.push(song);
+                        songMods.push(mod);
+                    }
             }
             catch (_:Dynamic) {}
         }
@@ -159,16 +156,13 @@ class DAGSongs extends FlxGroup
         final globalDir = Paths.mods('songs');
         try
         {
-            if (FileSystem.exists(globalDir))
-            {
-                for (song in FileSystem.readDirectory(globalDir))
-                    if (!seen.exists(song) && !song.contains('.'))
-                    {
-                        seen.set(song, true);
-                        songList.push(song);
-                        songMods.push('');
-                    }
-            }
+            for (song in Paths.readDirectory(globalDir))
+                if (!seen.exists(song) && !song.contains('.'))
+                {
+                    seen.set(song, true);
+                    songList.push(song);
+                    songMods.push('');
+                }
         }
         catch (_:Dynamic) {}
 
@@ -313,6 +307,10 @@ class DAGPlayer extends FlxGroup
     var inst:FlxSound         = null;
     var vocals:Array<FlxSound> = [];
     var oppVocals:Array<FlxSound> = [];
+    // Kept so destroyAudio() can explicitly .close() the streamed Sounds - FlxSound.destroy()
+    // only drops its reference, which would leave the vorbis file open until GC.
+    var instSound:openfl.media.Sound = null;
+    var vocalSounds:Array<openfl.media.Sound> = [];
     
     public var loadedSong:String = '';
     public var loadedMod:String  = '';
@@ -361,22 +359,26 @@ class DAGPlayer extends FlxGroup
         #if !mobile lime.app.Application.current.window.title = origTitle; #end
     }
 
-    public function detach():{inst:FlxSound, vocals:Array<FlxSound>, song:String, mod:String, wasPlaying:Bool}
+    public function detach():{inst:FlxSound, vocals:Array<FlxSound>, instSound:openfl.media.Sound, vocalSounds:Array<openfl.media.Sound>, song:String, mod:String, wasPlaying:Bool}
     {
-        final result = {inst: inst, vocals: vocals, song: loadedSong, mod: loadedMod, wasPlaying: isPlaying};
-        inst       = null;
-        vocals     = [];
-        oppVocals  = [];
+        final result = {inst: inst, vocals: vocals, instSound: instSound, vocalSounds: vocalSounds, song: loadedSong, mod: loadedMod, wasPlaying: isPlaying};
+        inst        = null;
+        vocals      = [];
+        oppVocals   = [];
+        instSound   = null;
+        vocalSounds = [];
         isPlaying  = false;
         loadedSong = '';
         loadedMod  = '';
         return result;
     }
 
-    public function reclaim(snd:FlxSound, vocs:Array<FlxSound>, mod:String, wasPlaying:Bool):Void
+    public function reclaim(snd:FlxSound, vocs:Array<FlxSound>, sndSound:openfl.media.Sound, vocSounds:Array<openfl.media.Sound>, mod:String, wasPlaying:Bool):Void
     {
-        inst       = snd;
-        vocals     = vocs != null ? vocs : [];
+        inst        = snd;
+        vocals      = vocs != null ? vocs : [];
+        instSound   = sndSound;
+        vocalSounds = vocSounds != null ? vocSounds : [];
         loadedMod  = mod;
         isPlaying  = wasPlaying;
         fadeTarget = 1.0;
@@ -849,6 +851,7 @@ class DAGPlayer extends FlxGroup
         inst = FlxG.sound.load(data.inst);
         inst.looped = loopEnabled;
         inst.volume = 0.0;
+        instSound = data.inst;
         for (v in data.vocs)
         {
             if (v == null || v.snd == null) continue;
@@ -856,6 +859,7 @@ class DAGPlayer extends FlxGroup
             if (snd == null) continue;
             snd.looped = false;
             vocals.push(snd);
+            vocalSounds.push(v.snd);
             if (v.isOpp) oppVocals.push(snd);
         }
 
@@ -886,11 +890,26 @@ class DAGPlayer extends FlxGroup
         }
     }
 
+	// Streamed (vorbis) tracks only advance in ~270ms chunks between refills, and FlxSound's
+	// time setter fully rebuilds the audio source - a tight threshold here causes constant
+	// rebuild churn (audible stuttering), so this needs to be looser than that chunk size.
+	static inline final threshold:Float = 300.0;
+
     function resyncVocals():Void
     {
-        if (inst == null || !inst.playing || seekPending) return;
-        for (v in vocals)
-            if ((v?.playing ?? false) && Math.abs(inst.time - v.time) > 25) v.time = inst.time;
+        if(inst == null || !isPlaying) return;
+
+        for(voc in vocals) {
+            if(voc == null) continue;
+
+            final drift = Math.abs(voc.time - inst.time);
+            if(drift > threshold) {
+                voc.time = inst.time;
+                if(!voc.playing) voc.resume();
+            } else if(!voc.playing) {
+                voc.resume();
+            }
+        }
     }
 
     function destroyAudio():Void
@@ -908,6 +927,10 @@ class DAGPlayer extends FlxGroup
             FlxG.sound.list.remove(v, true);
             v.destroy();
         }
+        instSound?.close();
+        instSound = null;
+        for (s in vocalSounds) s?.close();
+        vocalSounds = [];
         vocals     = [];
         oppVocals  = [];
         isPlaying  = false;
@@ -924,6 +947,8 @@ class DAGarden extends MusicBeatSubstate
 
     static var persistedInst:FlxSound          = null;
     static var persistedVocals:Array<FlxSound> = [];
+    static var persistedInstSound:openfl.media.Sound          = null;
+    static var persistedVocalSounds:Array<openfl.media.Sound> = [];
     static var persistedMod:String             = '';
     static var persistedWasPlaying:Bool        = false;
 
@@ -941,8 +966,12 @@ class DAGarden extends MusicBeatSubstate
             FlxG.sound.list.remove(v, true);
             v.destroy();
         }
-        persistedInst       = null;
-        persistedVocals     = [];
+        persistedInstSound?.close();
+        for (s in persistedVocalSounds) s?.close();
+        persistedInst        = null;
+        persistedVocals      = [];
+        persistedInstSound   = null;
+        persistedVocalSounds = [];
         persistedMod        = '';
         persistedWasPlaying = false;
         currentSong    = '';
@@ -987,9 +1016,11 @@ class DAGarden extends MusicBeatSubstate
             final idx = songs.songList.indexOf(currentSong);
             if (idx >= 0) songs.selectIndex(idx);
             player.setSongInfo(currentSong, songs.selectedCredits());
-            player.reclaim(persistedInst, persistedVocals, persistedMod, persistedWasPlaying);
-            persistedInst   = null;
-            persistedVocals = [];
+            player.reclaim(persistedInst, persistedVocals, persistedInstSound, persistedVocalSounds, persistedMod, persistedWasPlaying);
+            persistedInst        = null;
+            persistedVocals      = [];
+            persistedInstSound   = null;
+            persistedVocalSounds = [];
         }
         else
         {
@@ -1127,8 +1158,10 @@ class DAGarden extends MusicBeatSubstate
             if (player.isPlaying)
             {
                 final d = player.detach();
-                persistedInst       = d.inst;
-                persistedVocals     = d.vocals;
+                persistedInst        = d.inst;
+                persistedVocals      = d.vocals;
+                persistedInstSound   = d.instSound;
+                persistedVocalSounds = d.vocalSounds;
                 persistedMod        = d.mod;
                 persistedWasPlaying = d.wasPlaying;
                 currentSong    = d.song;

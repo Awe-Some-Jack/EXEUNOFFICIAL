@@ -33,7 +33,7 @@
 	"options.visuals": "ВИЗУАЛ",
 	"options.visuals.labels": ["СКРЫТЬ HUD", "ВСПЫШКИ", "ПРИБЛИЖЕНИЕ КАМЕРЫ", "ЗУМ СЧЁТЧИКА ОЧКОВ", "СЧЁТЧИК FPS"],
 	"options.gameplay": "ГЕЙМПЛЕЙ",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "ОКНО SICK", "ОКНО GOOD", "ОКНО BAD", "БЕЗОПАСНЫЕ КАДРЫ"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "ОКНО SICK", "ОКНО GOOD", "ОКНО BAD", "БЕЗОПАСНЫЕ КАДРЫ", "ПОТОКОВОЕ АУДИО"],
 	"options.graphics": "ГРАФИКА",
 	"options.graphics.labels": ["РЕЖИМ КАРТОШКИ", "СГЛАЖИВАНИЕ", "КЭШИРОВАНИЕ GPU", "ШЕЙДЕРЫ", "РАЗБЛОК. FPS", "ЧАСТОТА КАДРОВ"],
 	"options.language": "ЯЗЫК",

@@ -217,12 +217,12 @@ class EXETitle extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
+		#if !mobile
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT;
-		#if mobile
-		for (touch in FlxG.touches.list)
-			if (touch.justPressed) pressedEnter = true;
+		#else
+		var pressedEnter:Bool = shortPress;
 		#end
-		
+
 		final gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 		if (gamepad != null)
 		{
@@ -351,22 +351,23 @@ class EXETitle extends MusicBeatState
 
 		if (!canStart) return;
 
-		final anyDir:Bool = controls.UI_UP_P || controls.UI_DOWN_P || controls.UI_LEFT_P || controls.UI_RIGHT_P;
+		final anyDir:Bool = controls.UI_UP_P || controls.UI_DOWN_P || controls.UI_LEFT_P || controls.UI_RIGHT_P #if mobile || swipeUP || swipeDOWN || swipeLEFT || swipeRIGHT #end;
 		
 		if (fridgeStatus < 4)
 		{
 			final hit:Bool = switch (fridgeStatus)
 			{
-				case 0: controls.UI_UP_P;
-				case 1: controls.UI_DOWN_P;
-				case 2: controls.UI_LEFT_P;
-				case 3: controls.UI_RIGHT_P;
+				case 0: controls.UI_UP_P #if mobile || swipeUP #end;
+				case 1: controls.UI_DOWN_P #if mobile || swipeDOWN #end;
+				case 2: controls.UI_LEFT_P #if mobile || swipeLEFT #end;
+				case 3: controls.UI_RIGHT_P #if mobile || swipeRIGHT #end;
 				default: false;
 			};
 			
 			if (hit)
 			{
 				fridgeStatus++;
+				trace(hit + " " + fridgeStatus);
 				if (fridgeStatus == 4)
 				{
 					FlxG.sound.play(Paths.sound('ringSound'));
@@ -375,11 +376,11 @@ class EXETitle extends MusicBeatState
 			}
 			else if (anyDir) 
 			{
-				fridgeStatus = 0;
+				#if !mobile fridgeStatus = 0; #end
 			}
 		}
 
-		if (controls.ACCEPT && fridgeStatus == 4)
+		if ((controls.ACCEPT #if mobile || shortPress #end) && fridgeStatus == 4)
 		{
 			fridgeStatus = 0;
 			CustomShapeTransition.shape = CustomShapeTransition.getShapeByString('SUNKY');

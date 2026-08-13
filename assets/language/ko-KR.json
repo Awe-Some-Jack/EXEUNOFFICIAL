@@ -33,7 +33,7 @@
 	"options.visuals": "비주얼",
 	"options.visuals.labels": ["HUD 숨기기", "깜박임 효과", "카메라 줌", "점수 텍스트 줌", "FPS 표시"],
 	"options.gameplay": "게임플레이",
-	"options.gameplay.labels": ["DOWNSCROLL", "고스트 탭", "SICK 판정 구간", "GOOD 판정 구간", "BAD 판정 구간", "세이프 프레임"],
+	"options.gameplay.labels": ["DOWNSCROLL", "고스트 탭", "SICK 판정 구간", "GOOD 판정 구간", "BAD 판정 구간", "세이프 프레임", "스트리밍 오디오"],
 	"options.graphics": "그래픽",
 	"options.graphics.labels": ["포테이토 모드", "안티앨리어싱", "GPU 캐싱", "셰이더", "FPS 제한 해제", "프레임 레이트"],
 	"options.language": "언어",

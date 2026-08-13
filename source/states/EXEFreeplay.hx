@@ -61,6 +61,8 @@ class EXEFreeplay extends MusicBeatState
 	static inline final SONG_TITLE_SIZE:Int = 48;
 	static inline final SONG_SPACING_Y:Float = 65;
 	static inline final MAX_VISIBLE_SONGS:Int = 2;
+
+	#if mobile var COOLDOWN_TIMER:Float = 0.15; #end
 	
 	var songEntries:Array<ExeSongEntry> = [];
 
@@ -456,6 +458,7 @@ class EXEFreeplay extends MusicBeatState
 				exeText.visible = (i == selectedBox);
 				exeText.alpha = exeText.visible ? 1.0 : 0.0;
 				exeText.antialiasing = false;
+				exeText.updateHitbox();
 				exeTexts.add(exeText);
 			}
 		}
@@ -467,6 +470,8 @@ class EXEFreeplay extends MusicBeatState
 		if (subState != null) return;
 
 		if (FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
+
+		#if mobile if (COOLDOWN_TIMER > 0) COOLDOWN_TIMER -= elapsed; #end
 
 		if (songEntries.length < 1)
 		{
@@ -525,6 +530,18 @@ class EXEFreeplay extends MusicBeatState
 				holdCheck = 0;
 			}
 
+			#if mobile
+			if(pressHolding && deltaMouseX != 0 && COOLDOWN_TIMER <= 0) {
+				if(deltaMouseX > 5) {
+					newSel = selectedBox - 1;
+					holdCheck = 0;
+				} else if(deltaMouseX < -5) {
+					newSel = selectedBox + 1;
+					holdCheck = 0;
+				}
+			}
+			#end
+
 			if (controls.UI_LEFT || controls.UI_RIGHT) holdCheck += elapsed;
 			else holdCheck = 0;
 			
@@ -539,7 +556,19 @@ class EXEFreeplay extends MusicBeatState
 			if (controls.UI_DOWN_P) { chooseSong(1); holdCheck = 0; }
 			if (controls.UI_UP_P) { chooseSong(-1); holdCheck = 0; }
 
-			if (controls.ACCEPT)
+			#if mobile
+			if(pressHolding && deltaMouseY != 0 && COOLDOWN_TIMER <= 0) {
+				if(deltaMouseY > 5) {
+					chooseSong(-1);
+					holdCheck = 0;
+				} else if(deltaMouseY < -5) {
+					chooseSong(1);
+					holdCheck = 0;
+				}
+			}
+			#end
+
+			if (controls.ACCEPT #if mobile || (shortPress && FlxG.mouse.overlaps(songTexts.members[songSelector])) #end)
 				launchSong();
 
 			if (controls.RESET)
@@ -555,7 +584,7 @@ class EXEFreeplay extends MusicBeatState
 			return;
 		}
 
-		if (controls.ACCEPT && !maniaUnlock)
+		if ((controls.ACCEPT #if mobile || shortPress #end) && !maniaUnlock)
 		{
 			holdCheck = 0;
 			final entry = songEntries[selectedBox];
@@ -705,6 +734,8 @@ class EXEFreeplay extends MusicBeatState
 
 	function chooseSong(delta:Int, daStatic:Bool = true):Void
 	{
+		#if mobile COOLDOWN_TIMER = 0.15; #end
+
 		final songs = getSongsForBox(selectedBox);
 		if (songs.length == 0) return;
 
@@ -897,6 +928,7 @@ class EXEFreeplay extends MusicBeatState
 
 	function changeSelection(newIndex:Int):Void
 	{
+		#if mobile COOLDOWN_TIMER = 0.15; #end
 		songSelector = 0;
 		updateSelectedCover();
 
@@ -1171,7 +1203,7 @@ class EXEFreeplay extends MusicBeatState
 	override function stepHit():Void
 	{
 		super.stepHit();
-		if (curStep % 2 == 0 && holdCheck > ((Conductor.bpm / 60) / 4)) 
+		if (curStep % 1 == 0 && holdCheck > ((Conductor.bpm / 60) / 4)) 
 			changeSelection(FlxMath.wrap(selectedBox + (controls.UI_RIGHT ? 1 : -1), 0, songEntries.length - 1));
 	}
 

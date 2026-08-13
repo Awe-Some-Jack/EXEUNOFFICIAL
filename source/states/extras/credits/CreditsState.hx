@@ -162,11 +162,11 @@ class CreditsState extends MusicBeatSubstate
             final col = columns[ci]; final cam = col.cam;
             if (!overCam(cam)) continue;
 
-            if (FlxG.mouse.deltaWheel.y != 0)
+            if (FlxG.mouse.deltaWheel.y != 0 #if mobile || deltaMouseY != 0 #end)
             {
                 final entries = credits.get(col.key);
                 final maxScroll = entries != null ? Math.max(0, entries.length * 44 - cam.height + 8 * 2) : 0;
-                cam.scroll.y = FlxMath.bound(cam.scroll.y - FlxG.mouse.deltaWheel.y * 44, 0, maxScroll);
+                cam.scroll.y = FlxMath.bound(cam.scroll.y - #if !mobile FlxG.mouse.deltaWheel.y * 44 #else deltaMouseY #end, 0, maxScroll);
             }
 
             for (i in 0...col.cardBgs.length)
@@ -183,7 +183,7 @@ class CreditsState extends MusicBeatSubstate
             hoveredCol = newCol; hoveredRow = newRow;
         }
 
-        if ((controls.ACCEPT || FlxG.mouse.justPressed) && canSelect) openSubState(new CreditPopup());
+        if ((controls.ACCEPT || #if !mobile FlxG.mouse.justPressed #else shortPress #end) && canSelect) openSubState(new CreditPopup());
         Mouse.cursor = canSelect ? MouseCursor.BUTTON : MouseCursor.ARROW;
     }
 
@@ -451,8 +451,8 @@ private class CreditPopup extends MusicBeatSubstate
 
     function updateQuoteScroll():Void
     {
-        if (!overCam(quoteCam) || FlxG.mouse.deltaWheel.y == 0) return;
-        quoteCam.scroll.y = FlxMath.bound(quoteCam.scroll.y - FlxG.mouse.deltaWheel.y * 22, 0, Math.max(0, userQuote.height - quoteCam.height + 10));
+        if (!overCam(quoteCam) || FlxG.mouse.deltaWheel.y == 0 #if mobile || deltaMouseY == 0 #end) return;
+        quoteCam.scroll.y = FlxMath.bound(quoteCam.scroll.y - #if !mobile FlxG.mouse.deltaWheel.y * 22 #else deltaMouseY #end, 0, Math.max(0, userQuote.height - quoteCam.height + 10));
         scrollBar.y = FlxMath.lerp(0, quoteCam.height - scrollBar.height, quoteCam.scroll.y / Math.max(1, userQuote.height - quoteCam.height + 10));
     }
 

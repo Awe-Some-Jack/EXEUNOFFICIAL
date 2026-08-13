@@ -22,7 +22,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 	override public function create()
 	{
 		menuTitle = Language.get('options.gameplay', 'GAMEPLAY');
-		var lbl = Language.getArray('options.gameplay.labels', ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES"]);
+		var lbl = Language.getArray('options.gameplay.labels', ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"]);
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.downScroll,   setValue: (v) -> ClientPrefs.data.downScroll   = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.ghostTapping, setValue: (v) -> ClientPrefs.data.ghostTapping = v},
@@ -30,6 +30,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 			{label: lbl[3], getValue: () -> ClientPrefs.data.goodWindow,   setValue: (v) -> ClientPrefs.data.goodWindow   = v, isFloat: true},
 			{label: lbl[4], getValue: () -> ClientPrefs.data.badWindow,    setValue: (v) -> ClientPrefs.data.badWindow    = v, isFloat: true},
 			{label: lbl[5], getValue: () -> ClientPrefs.data.safeFrames,   setValue: (v) -> ClientPrefs.data.safeFrames   = v, isFloat: true},
+			{label: lbl[6], getValue: () -> ClientPrefs.data.streamedAudio,   setValue: (v) -> ClientPrefs.data.streamedAudio   = v, isFloat: true},
 		];
 		var i = 0;
 		while (i < allOptions.length) { pageOptions.push(allOptions.slice(i, i + ExeBaseOptionsState.OPTIONS_PAGE_SIZE)); i += ExeBaseOptionsState.OPTIONS_PAGE_SIZE; }

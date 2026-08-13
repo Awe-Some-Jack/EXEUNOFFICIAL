@@ -33,7 +33,7 @@
 	"options.visuals": "WYGLĄD",
 	"options.visuals.labels": ["UKRYJ HUD", "MIGAJĄCE ŚWIATŁA", "ZOOM KAMERY", "ZOOM TEKSTU WYNIKU", "LICZNIK FPS"],
 	"options.gameplay": "ROZGRYWKA",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "OKNO SICK", "OKNO GOOD", "OKNO BAD", "BEZPIECZNE RAMKI"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "OKNO SICK", "OKNO GOOD", "OKNO BAD", "BEZPIECZNE RAMKI", "STRUMIENIOWANIE AUDIO"],
 	"options.graphics": "GRAFIKA",
 	"options.graphics.labels": ["TRYB ZIEMNIAKA", "ANTYALIASING", "CACHE GPU", "SHADERY", "FPS BEZ LIMITU", "LICZBA FPS"],
 	"options.language": "JĘZYK",

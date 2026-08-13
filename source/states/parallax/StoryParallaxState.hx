@@ -98,7 +98,7 @@ class StoryParallaxState extends MusicBeatState
 				transitioning = true;
 			}
 
-			if (controls.ACCEPT)
+			if (controls.ACCEPT #if mobile || shortPress #end)
 			{
 				transitioning = true;
 				mdcd.animation.play('selected');

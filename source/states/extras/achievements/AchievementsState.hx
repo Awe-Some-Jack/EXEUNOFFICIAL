@@ -26,7 +26,7 @@ class AchievementsState extends MusicBeatSubstate
     var achievementAmount:Int = 0;
 
     static inline final ACHIEVEMENTS_PATH:String = 'assets/exe/extras/achievements/';
-    static inline final WHEEL_SENSITIVITY:Float = 4;
+    static inline final WHEEL_SENSITIVITY:Float = #if !mobile 4 #else 0.05 #end;
     static inline final LERP_SPEED:Float = 10;
 
     public function new()
@@ -139,10 +139,10 @@ class AchievementsState extends MusicBeatSubstate
         if (FlxG.keys.pressed.S || controls.UI_DOWN) keyDelta = WHEEL_SENSITIVITY / 5;
         if (FlxG.keys.pressed.W || controls.UI_UP)   keyDelta = -WHEEL_SENSITIVITY / 5;
 
-        if(isScrolling)
+        if(isScrolling #if mobile && pressHolding #end)
             sideBarScroll.y = FlxMath.bound(sideBarScroll.y + FlxG.mouse.deltaY, sideBar.y, sideBar.y + sideBar.height - sideBarScroll.height);
-        else
-            sideBarScroll.y = FlxMath.bound(sideBarScroll.y - (FlxG.mouse.deltaWheel.y * WHEEL_SENSITIVITY) + keyDelta, sideBar.y, sideBar.y + sideBar.height - sideBarScroll.height);
+        else #if mobile if(pressHolding) #end
+            sideBarScroll.y = FlxMath.bound(sideBarScroll.y - (#if !mobile FlxG.mouse.deltaWheel.y #else deltaMouseY #end * WHEEL_SENSITIVITY ) + keyDelta, sideBar.y, sideBar.y + sideBar.height - sideBarScroll.height);
 
         scrollValue = FlxMath.remapToRange(sideBarScroll.y, sideBar.y, sideBar.y + sideBar.height - sideBarScroll.height, 0, 0.95);
     }

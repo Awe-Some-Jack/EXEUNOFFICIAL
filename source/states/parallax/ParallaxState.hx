@@ -153,7 +153,11 @@ class ParallaxState extends MusicBeatState
 				}
 			}
 
+			#if !mobile
 			if ((FlxG.mouse.justPressed && !transitioning) || controls.ACCEPT)
+			#else
+			if (shortPress && !transitioning)
+			#end
 			{
 				transitioning = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));

@@ -33,7 +33,7 @@
 	"options.visuals": "VISUALS",
 	"options.visuals.labels": ["NASCONDI HUD", "LUCI LAMPEGGIANTI", "ZOOM TELECAMERA", "ZOOM TESTO PUNTEGGIO", "CONTATORE FPS"],
 	"options.gameplay": "GAMEPLAY",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "FINESTRA SICK", "FINESTRA GOOD", "FINESTRA BAD", "FRAME DI SICUREZZA"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "FINESTRA SICK", "FINESTRA GOOD", "FINESTRA BAD", "FRAME DI SICUREZZA", "AUDIO IN STREAMING"],
 	"options.graphics": "GRAFICA",
 	"options.graphics.labels": ["MODALITÀ PATATA", "ANTI ALIASING", "CACHE GPU", "SHADER", "FPS ILLIMITATI", "FREQUENZA FPS"],
 	"options.language": "LINGUA",

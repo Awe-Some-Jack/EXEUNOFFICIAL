@@ -85,7 +85,7 @@ function onCreate() {
     adobe2.alpha = 0.00001;
     addBehindDad(adobe2);
 
-    ribbons = new VideoSprite(-950, -450);
+    ribbons = new VideoSprite(-350, -450);
     ribbons.loadVideo(Paths.video('ribbons', 'SOINK'), true);
     ribbons.scale.set(1.5, 1.5);
     ribbons.scrollFactor.set(0, 0);
@@ -156,10 +156,7 @@ function onCreate() {
     cursorLoad.scale.set(0.8, 0.8);
     cursorLoad.cameras = [camOther];
     cursorLoad.alpha = 0.00001;
-
     add(cursorLoad);
-
-    trace("Stage created");
 }
 
 function onCreatePost() {
@@ -222,6 +219,7 @@ function goodNoteHitPre(note:Note):Void {
 function onUpdate(elapsed:Float) {
     // formatting 🗣️🗣️🗣️
     if(!debugMode) FlxG.fullscreen = true;
+
     for(i in 0...bubbleArray.length) {
         if(bubbleArray[i].active) {
             var b1 = bubbleArray[i];

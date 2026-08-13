@@ -33,7 +33,7 @@
 	"options.visuals": "ビジュアル",
 	"options.visuals.labels": ["HUD非表示", "フラッシュ演出", "カメラズーム", "スコアテキストズーム", "FPSカウンター"],
 	"options.gameplay": "ゲームプレイ",
-	"options.gameplay.labels": ["DOWNSCROLL", "ゴーストタップ", "SICK判定幅", "GOOD判定幅", "BAD判定幅", "セーフフレーム"],
+	"options.gameplay.labels": ["DOWNSCROLL", "ゴーストタップ", "SICK判定幅", "GOOD判定幅", "BAD判定幅", "セーフフレーム", "ストリーミング再生"],
 	"options.graphics": "グラフィック",
 	"options.graphics.labels": ["ポテトモード", "アンチエイリアス", "GPUキャッシュ", "シェーダー", "FPS制限解除", "フレームレート"],
 	"options.language": "言語",

@@ -33,7 +33,7 @@
 	"options.visuals": "VISUAIS",
 	"options.visuals.labels": ["OCULTAR HUD", "LUZES PISCANTES", "ZOOM DA CAMERA", "ZOOM DO TEXTO DE PONTUACAO", "CONTADOR DE FPS"],
 	"options.gameplay": "JOGABILIDADE",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "JANELA INCRIVEL", "JANELA BOA", "JANELA RUIM", "FRAMES SEGUROS"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "JANELA INCRIVEL", "JANELA BOA", "JANELA RUIM", "FRAMES SEGUROS", "ÁUDIO EM STREAMING"],
 	"options.graphics": "GRAFICOS",
 	"options.graphics.labels": ["MODO BATATA", "ANTI-ALIASING", "CACHE DE GPU", "SHADERS", "FPS ILIMITADO", "TAXA DE QUADROS"],
 	"options.language": "IDIOMA",

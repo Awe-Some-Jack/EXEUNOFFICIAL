@@ -33,7 +33,7 @@
 	"options.visuals": "GÖRSELLER",
 	"options.visuals.labels": ["HUD GİZLE", "YANIP SÖNEN IŞIKLAR", "KAMERA ZOOM", "PUAN METNİ ZOOM", "FPS SAYACI"],
 	"options.gameplay": "OYNANIŞI",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK PENCERESİ", "GOOD PENCERESİ", "BAD PENCERESİ", "GÜVENLİ KARELER"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK PENCERESİ", "GOOD PENCERESİ", "BAD PENCERESİ", "GÜVENLİ KARELER", "SES AKIŞI"],
 	"options.graphics": "GRAFİKLER",
 	"options.graphics.labels": ["PATATES MODU", "ANTI ALIASING", "GPU ÖNBELLEK", "SHADER", "SINIRSIZ FPS", "KARE HIZI"],
 	"options.language": "DIL",

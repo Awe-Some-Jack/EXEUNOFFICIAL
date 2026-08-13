@@ -43,6 +43,8 @@ class Cutscene extends MusicBeatSubstate
     static inline final KNOB_R:Float                = 7.0;
     static inline final HUD_FADE_TIME:Float         = 0.22;
     static inline final HUD_IDLE_TIME:Float         = 2.5;
+    
+    #if mobile var COOLDOWN_TIMER:Float = 0.15; #end
 
     var checkers:FlxBackdrop;
     var box:FlxSprite;
@@ -386,6 +388,7 @@ class Cutscene extends MusicBeatSubstate
     function changeSelection(change:Int = 0):Void
     {
         curSelected += change;
+        #if mobile COOLDOWN_TIMER = 0.15; #end
         final maxIdx = menuItems.length - 1;
         if (curSelected < 0) curSelected = maxIdx;
         if (curSelected > maxIdx) curSelected = 0;
@@ -808,6 +811,9 @@ class Cutscene extends MusicBeatSubstate
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+
+        #if mobile if (COOLDOWN_TIMER > 0) COOLDOWN_TIMER -= elapsed; #end
+       
         if (nowPlayingSong != null)
         {
             final daName = states.extras.dagarden.DAGarden.currentSong;
@@ -843,7 +849,16 @@ class Cutscene extends MusicBeatSubstate
 
         if (controls.UI_UP_P)   changeSelection(-1);
         if (controls.UI_DOWN_P) changeSelection(1);
-        if (controls.ACCEPT && videoEntries.length > 0)
+
+        #if mobile
+        if(pressHolding && deltaMouseY != 0 && COOLDOWN_TIMER <= 0)
+            if(deltaMouseY > 5)
+                changeSelection(1);
+            else if(deltaMouseY < -1)
+                changeSelection(-1);
+        #end
+
+        if ((controls.ACCEPT #if mobile || (shortPress && FlxG.mouse.overlaps(menuItems[curSelected])) #end) && videoEntries.length > 0)
             _selectCurrent();
         if (FlxG.mouse.justPressed && disco?.overlapsPoint(new flixel.math.FlxPoint(FlxG.mouse.x, FlxG.mouse.y)))
         {

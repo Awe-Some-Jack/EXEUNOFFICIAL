@@ -1,0 +1,127 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [72, -91],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Up i",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [40, -188],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Down i",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [39, -187],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Right i",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [153, -188],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Left i",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [50, -170],
+			"anim": "danceLeft-alt",
+			"fps": 24,
+			"name": "Idle 2 instancia 1",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+		},
+		{
+			"loop": false,
+			"offsets": [50, -170],
+			"anim": "danceRight-alt",
+			"fps": 24,
+			"name": "Idle 2 instancia 1",
+			"indices": [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+		},
+		{
+			"loop": false,
+			"offsets": [78, -57],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "Up 2",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [91, -175],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "Down 2",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [46, -175],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "Right 2",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [393, -174],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "Left 2",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [326, 321],
+			"anim": "trans",
+			"fps": 24,
+			"name": "trans",
+			"indices": []
+		},
+		{
+			"offsets": [50, -170],
+			"loop": false,
+			"fps": 24,
+			"anim": "danceLeft",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			"name": "Idle 2 instancia 1"
+		},
+		{
+			"offsets": [50, -170],
+			"loop": false,
+			"fps": 24,
+			"anim": "danceRight",
+			"indices": [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+			"name": "Idle 2 instancia 1"
+		},
+		{
+			"loop": true,
+			"offsets": [39, -188],
+			"anim": "idle",
+			"fps": 24,
+			"name": "xd",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/RERUN",
+	"position": [0, 0],
+	"healthicon": "sonic",
+	"flip_x": false,
+	"healthbar_colors": [0, 76, 250],
+	"camera_position": [0, 0],
+	"sing_duration": 8,
+	"scale": 1,
+	"_editor_isPlayer": false
+}

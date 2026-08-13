@@ -2925,8 +2925,6 @@ class PlayState extends MusicBeatState
 			var n:Note = members[i];
 			if (n == null || n.isSustainNote || n.noteData != key) continue;
 			
-			if (n.strumTime > Conductor.songPosition + 200) break;
-			
 			if (!n.canBeHit || !n.mustPress || n.tooLate || n.wasGoodHit || n.blockHit || strumsBlocked[n.noteData]) continue;
 
 			if (funnyNote == null)

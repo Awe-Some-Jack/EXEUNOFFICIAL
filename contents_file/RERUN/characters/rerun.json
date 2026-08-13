@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"offsets": [287, 919],
-			"indices": [],
-			"fps": 32,
+			"loop": false,
+			"offsets": [532, 1136],
 			"anim": "singUP",
-			"loop": false,
-			"name": "3up"
+			"fps": 32,
+			"name": "3up",
+			"indices": []
 		},
 		{
-			"offsets": [487, 380],
-			"indices": [],
-			"fps": 32,
+			"loop": false,
+			"offsets": [561, 421],
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "3down"
+			"fps": 32,
+			"name": "3down",
+			"indices": []
 		},
 		{
-			"offsets": [212, 428],
-			"indices": [],
-			"fps": 32,
+			"loop": false,
+			"offsets": [115, 449],
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "3right"
+			"fps": 32,
+			"name": "3right",
+			"indices": []
 		},
 		{
-			"offsets": [-91, 380],
-			"indices": [],
-			"fps": 32,
-			"anim": "idle",
 			"loop": true,
-			"name": "idle3"
+			"offsets": [-91, 380],
+			"anim": "idle",
+			"fps": 32,
+			"name": "idle3",
+			"indices": []
 		},
 		{
-			"offsets": [659, 442],
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-			"fps": 32,
-			"anim": "singLEFT",
 			"loop": false,
-			"name": "3left"
+			"offsets": [1321, 565],
+			"anim": "singLEFT",
+			"fps": 32,
+			"name": "3left",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 		}
 	],
 	"vocals_file": "",

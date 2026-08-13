@@ -1866,6 +1866,11 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		if (!endingSong && !startingSong && generatedMusic && songLength > 0 && FlxG.sound.music != null && FlxG.sound.music.playing && FlxG.sound.music.time >= songLength - 100)
+		{
+			finishSong();
+		}
+
 		if (startingSong)
 		{
 			if (startedCountdown && Conductor.songPosition >= Conductor.offset)

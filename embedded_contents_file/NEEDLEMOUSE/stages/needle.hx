@@ -2,9 +2,10 @@ import psychlua.LuaUtils;
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
 import openfl.utils.Assets;
-import shaders.ColorSwap;
 import objects.VideoSprite;
 import flixel.math.FlxAngle;
+
+using StringTools;
 
 typedef BackgroundSprite =
 {
@@ -33,7 +34,6 @@ var bgLuther:Array<BackgroundSprite> = [
 	{path: 'herworld/bg', position: [-750, -900], scroll: [0.3, 0.3]},
 	{path: 'herworld/2', position: [300, 180], scroll: [0.45, 0.45]},
 	{path: 'herworld/1', position: [0, 300], scroll: [0.5, 0.5]},
-	{path: 'herworld/luz', position: [900, 200]},
 	{path: 'herworld/egg', position: [0, 800], scale: [1.25, 1.1], scroll: [0.8, 0.8], front: true},
 	{path: 'herworld/knux', position: [3350, 1050], scroll: [1.25, 1.1], front: true},
 ];
@@ -45,6 +45,7 @@ var bfDropShadow:FlxRuntimeShader;
 var gfDropShadow:FlxRuntimeShader;
 var camGlitch:FlxRuntimeShader;
 var fireBG:FlxVideoSprite;
+var blackCircle:FlxSprite;
 var isAtem:Bool = false;
 var camZoomingBeat:Bool = false;
 
@@ -66,6 +67,13 @@ function onCreatePost()
 	game.camGame.filters.push(new ShaderFilter(camGlitch));
 	game.camHUD.filters.push(new ShaderFilter(camGlitch));
 
+	bright = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('brightness')));
+	bright.setFloat('brightness', 0);
+	bright.setFloat('contrast', 1);
+	bright.setFloat('saturation', 1);
+	game.camGame.filters.push(new ShaderFilter(bright));
+	game.camHUD.filters.push(new ShaderFilter(bright));
+
 	fireBG = new VideoSprite(-350, -450, false);
 	fireBG.onFormat(() -> { 
 		fireBG.scale.set(2.25, 2.25);
@@ -78,18 +86,12 @@ function onCreatePost()
 	fireBG.onEnd(() -> {game.remove(fireBG); fireBG.destroy();});
 	game.insert(0, fireBG);
 
-    colorSwap = new ColorSwap();
-    colorSwap.hue = -0.04;
-    colorSwap.brightness = -0.8;
-    colorSwap.saturation = -0.3;
-
 	black = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 	black.alpha = 0;
 	black.camera = game.camHUD;
 	game.add(black);
 
-	end = new FlxSprite();
-	end.loadGraphic(Paths.image('herworld/end'));
+	end = new FlxSprite().loadGraphic(Paths.image('herworld/end'));
 	end.scale.set(1.5, 1.5);
 	end.alpha = 0.001;
 	end.screenCenter();
@@ -106,19 +108,24 @@ function onCreatePost()
 	triggerEvent("Tweening Camera", "0, -2000", "0.001, cubeIn");
 }
 
+var brightValue:Float = 0;
 var time:Float = 0;
 function onUpdate(e) 
 {
 	time += e;
 	glitch.setFloat('iTime', time);
 	camGlitch.setFloat('iTime', time);
+
+	bright.setFloat('brightness', brightValue * 2);
+	bright.setFloat('contrast', 1 + brightValue * 4);
 }
 
+
 function onEvent(n, v1, v2) {
+	var shaderValues = v1.split(',');
+    var tweenSettings = v2.split(',');
 	if(n == 'Change Character') {
 		switch(v2) {
-			case 'bf-needle': boyfriend.shader = colorSwap.shader;
-			case 'gf-needlemouse': gf.shader = colorSwap.shader;
 			case 'luther':
 				dad.setPosition(975, 850);
 			case 'atem': 
@@ -126,13 +133,17 @@ function onEvent(n, v1, v2) {
 				triggerEvent('Set customCamera Position', 'dad', '2700, 650');
 				isAtem = true;
 			case 'lutherfinal':
-				gf.setPosition(2600, 800);
+				gf.setPosition(2600, 830);
 				triggerEvent('Set customCamera Position', 'gf', '2900, 800');
 			case 'bf-needlefinal':
-				boyfriend.setPosition(1900, 840);
+				boyfriend.setPosition(1900, 870);
 				triggerEvent('Set customCamera Position', 'bf', '2500, 800');
 				boyfriend.flipX = false;
 		}
+	}
+	else if(n == 'bloomFlash') {
+		var ease = Reflect.field(FlxEase, tweenSettings[1]);
+		FlxTween.num(Std.parseFloat(shaderValues[0]), Std.parseFloat(shaderValues[1]), Std.parseFloat(tweenSettings[0]), {ease: ease}, v -> brightValue = v);
 	}
 }
 
@@ -140,9 +151,9 @@ function onSectionHit(section:Dynamic) {
 	if(!isAtem) return;
 
     if(!mustHitSection) 
-		triggerEvent("Tween Camera Zoom", "0.9, true", "0.75, cubeOut");
+		triggerEvent("Tween Camera Zoom", "0.75, true", "0.75, cubeOut");
 	else 
-		triggerEvent("Tween Camera Zoom", "0.65, true", "0.75, cubeOut");
+		triggerEvent("Tween Camera Zoom", "0.6, true", "0.75, cubeOut");
 }
 
 function onStepHit() {
@@ -150,12 +161,7 @@ function onStepHit() {
 
 	switch(curStep) {
 		case 798:	// luther transition
-			FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> 
-			{
-				makeBackground(bgLuther); 
-				boyfriend.shader = colorSwap.shader;
-				gf.shader = colorSwap.shader;
-			}});
+			FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> makeBackground(bgLuther)});
 			FlxTween.num(0, 1, 1.5, null, v -> {
 				camGlitch.setFloat('AMT', v); 
 				camGlitch.setFloat('SPEED', v);
@@ -175,14 +181,20 @@ function onStepHit() {
 				camGlitch.setFloat('SPEED', v / 2);
 			});
 
+			FlxTween.num(1, 0.3, 4.2, {onComplete: () -> {
+				FlxTween.num(0.3, 1, 0.5, null, v -> bright.setFloat('saturation', v));
+			}}, v -> {
+				bright.setFloat('saturation', v);
+			});
+			//3
 		case 2976:	//solo transition
 			triggerEvent('Set customCamera Position', 'bf', '2500, 1000');
 			FlxTween.tween(black, {alpha: 1}, 2, {onComplete: _ -> makeBackground([]) });
 			FlxTween.num(0, 1, 2, {onComplete: _ -> {
 				camGlitch.setFloat('AMT', 0.0); 
 				camGlitch.setFloat('SPEED', 0.0);
+				comboGroup.x = -400;
 				camZooming = false;
-				boyfriend.shader = null;
 				gf.alpha = 0.001;
 				dad.alpha = 0.001;
 				for(strum in opponentStrums.members) strum.x -= 600;
@@ -205,20 +217,21 @@ function onStepHit() {
 				triggerEvent('Change Character', 'GF', 'lutherfinal');
 				game.remove(dadGroup);
 				game.addBehindGF(dadGroup);
+
+				blackCircle = new FlxSprite(0, 0, Paths.image('herworld/black'));
+				blackCircle.x = dad.x - blackCircle.width / 2;
+				blackCircle.y = dad.y - blackCircle.height / 4;
+				blackCircle.scale.set(2.8, 4);
+				game.addBehindDad(blackCircle);
 			}});
 			FlxTween.tween(black, {alpha: 0}, 1, {startDelay: 2.5});
-
-
-		case 3328:	// atem sings
-			for(i => strum in opponentStrums.members) FlxTween.tween(strum, {x: strum.x + 600}, 1.25 - 0.1 * i, {ease: FlxEase.cubeInOut});
-			for(i => strum in playerStrums.members) FlxTween.tween(strum, {x: strum.x + 320}, 1.25, {ease: FlxEase.cubeInOut});
 
 		case 3968:
 			game.camZoomingMult = 2.5;
 			game.camZoomingDecay = 1.5;
 			camZoomingBeat = true;
 			fireBG.play();
-			FlxTween.tween(fireBG, {alpha: 0.7}, 14);
+			fireBG.alpha = 0.7;
 		
 		case 4224: 
 			camZoomingBeat = false;

@@ -3,12 +3,13 @@ local hazeBGAssets = {
         {name = 'redSun', path = 'grieving/haze/1st/sol rojo', x = 0, y = 0, scaleX = 1, scaleY = 1, scrollX = 1, scrollY = 1, animName = 'idle', animPrefix = 'sun', fps = 12, loop = true, alpha = 1, front = false},
     },
     ['phase2'] = {
-        {name =     'bg', path = 'grieving/uh-oh/new/sky',    x = -1150, y = -1600, scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
-        {name = 'trees3', path = 'grieving/uh-oh/new/trees3', x = -1500, y =  -600, scrollX = 0.5, scrollY = 0.5, front = false, lowQualityHide = true},
-        {name = 'trees2', path = 'grieving/uh-oh/new/trees2', x = -1350, y = -1400, scrollX = 0.7, scrollY = 0.7, front = false, lowQualityHide = true},
-        {name =  'trees', path = 'grieving/uh-oh/new/trees',  x = -1400, y = -1400, scrollX = 0.9, scrollY = 0.9, front = false, lowQualityHide = true},
-        {name =  'floor', path = 'grieving/uh-oh/new/floor',  x = -1300, y =   -50, scrollX =   1, scrollY =   1, front = false},
-        {name =   'fore', path =  'grieving/uh-oh/new/fore',  x = -1500, y = -1800, scrollX = 1.1, scrollY = 1.1, front = false, lowQualityHide = true}
+        {name =     'bg', path =       'grieving/uh-oh/new/sky', x = -1150, y = -1600,                                                                            scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
+        {name =    'ola', path = 'grieving/uh-oh/new/sebasolas', x =   190, y =  -151, animName = 'idle', animPrefix = 'olas instancia 1', fps = 24, loop = true, scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
+        {name = 'trees3', path =    'grieving/uh-oh/new/trees3', x = -1500, y =  -600,                                                                            scrollX = 0.5, scrollY = 0.5, front = false, lowQualityHide = true},
+        {name = 'trees2', path =    'grieving/uh-oh/new/trees2', x = -1350, y = -1400,                                                                            scrollX = 0.7, scrollY = 0.7, front = false, lowQualityHide = true},
+        {name =  'trees', path =     'grieving/uh-oh/new/trees', x = -1400, y = -1400,                                                                            scrollX = 0.9, scrollY = 0.9, front = false, lowQualityHide = true},
+        {name =  'floor', path =     'grieving/uh-oh/new/floor', x = -1300, y =   -50,                                                                            scrollX =   1, scrollY =   1, front = false},
+        {name =   'fore', path =      'grieving/uh-oh/new/fore', x = -1500, y = -1800,                                                                            scrollX = 1.1, scrollY = 1.1, front = false, lowQualityHide = true}
     },
     ['phase3'] = {
         {name =      'sky3', path =       'grieving/uh-oh/new/sky', x = -1680, y = -2080, scaleX = 1.1, scaleY = 1.1, scrollX =  0.8, scrollY =  0.8, front = false},
@@ -35,9 +36,9 @@ local hazeBGAssets = {
         { name = 'ground',           path = 'grieving/haze/4th/1', x = -1000, y =     0,                  scrollX =    1, scrollY =    1,                 alpha = 1, front = true},
     },
     ['atlases'] = {
-        { name = 'k', path = 'characters/k/', x = 100, y = -700, scale = 0.2, animSymbol = 'knux',  alpha = 1, front = false},
-        { name = 'm', path = 'characters/m/', x = 600, y = -400, scale = 1, animSymbol = 'momi',  alpha = 1, front = false},
-        { name = 't', path = 'characters/t/', x = 300, y = -100, scale = 0.2, animSymbol = 'tails', alpha = 1, front = false},
+        { name = 'k', path = 'characters/k', x = 100, y = -700, scale = 0.2, animSymbol = 'knux',  alpha = 1, front = false},
+        { name = 'm', path = 'characters/m', x = 600, y = -400, scale = 1, animSymbol = 'momi',  alpha = 1, front = false},
+        { name = 't', path = 'characters/t', x = 300, y = -100, scale = 0.2, animSymbol = 'tails', alpha = 1, front = false},
     },
     ['theBoys'] = {
         {name = 'thomas', path = 'grieving/haze/4th/ff', x = -400, y = -500, flipX = true, scaleX = 0.3, scaleY = 0.3, scrollX = 1, scrollY = 1, alpha = 0, front = false},
@@ -47,7 +48,7 @@ local hazeBGAssets = {
 
 local spriteGroups = {
     phase1 = {'redSun'},
-    phase2 = {'bg', 'trees3', 'trees2', 'trees', 'floor', 'fore'},
+    phase2 = {'bg', 'ola', 'trees3', 'trees2', 'trees', 'floor', 'fore'},
     phase3 = {'sky3', 'montains', 'lol', 'suelo', 'totem', 'm', 't'},
     phase4 = {'overlay', 'sun-clouds', 'cloudFront', 'water2', 'waterfall1', 'waterfall2', 'groundShit', 'dedplants', 'k'},
     phase5 = {'sky', 'clouds1', 'clouds2', 'clouds-mountains', 'clouds3', 'ground', 'thomas', 'kyle'}

@@ -1,10 +1,11 @@
 local uhOhBG = {
-    {name = 'bg', path = 'grieving/uh-oh/new/sky',        x = -1150, y = -1600, scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
-    {name = 'trees3', path = 'grieving/uh-oh/new/trees3', x = -1500, y = -600, scrollX = 0.5, scrollY = 0.5, front = false, lowQualityHide = true},
-    {name = 'trees2', path = 'grieving/uh-oh/new/trees2', x = -1350, y = -1400, scrollX = 0.7, scrollY = 0.7, front = false, lowQualityHide = true},
-    {name = 'trees', path = 'grieving/uh-oh/new/trees',   x = -1400, y = -1400, scrollX = 0.9, scrollY = 0.9, front = false, lowQualityHide = true},
-    {name = 'floor', path = 'grieving/uh-oh/new/floor',   x = -1300, y = -50, scrollX = 1, scrollY = 1, front = false},
-    {name = 'fore', path = 'grieving/uh-oh/new/fore',     x = -1500, y = -1800, scrollX = 1.1, scrollY = 1.1, front = false, lowQualityHide = true}
+    {name =     'bg', path =       'grieving/uh-oh/new/sky',        x = -1150, y = -1600,                                                                            scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
+    {name =    'ola', path = 'grieving/uh-oh/new/sebasolas',        x =   190, y =  -151, animName = 'idle', animPrefix = 'olas instancia 1', fps = 24, loop = true, scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
+    {name = 'trees3', path =    'grieving/uh-oh/new/trees3',        x = -1500, y =  -600,                                                                            scrollX = 0.5, scrollY = 0.5, front = false, lowQualityHide = true},
+    {name = 'trees2', path =    'grieving/uh-oh/new/trees2',        x = -1350, y = -1400,                                                                            scrollX = 0.7, scrollY = 0.7, front = false, lowQualityHide = true},
+    {name =  'trees', path =     'grieving/uh-oh/new/trees',        x = -1400, y = -1400,                                                                            scrollX = 0.9, scrollY = 0.9, front = false, lowQualityHide = true},
+    {name =  'floor', path =     'grieving/uh-oh/new/floor',        x = -1300, y =   -50,                                                                            scrollX = 1, scrollY = 1, front = false},
+    {name =   'fore', path =      'grieving/uh-oh/new/fore',        x = -1500, y = -1800,                                                                            scrollX = 1.1, scrollY = 1.1, front = false, lowQualityHide = true}
 }
 
 local graphics = {
@@ -16,17 +17,17 @@ local graphics = {
 function onCreatePost()
     for _, pepe in ipairs(uhOhBG) do
         if not (lowQuality and pepe.lowQualityHide) then
-            makeLuaSprite(pepe.name, pepe.path, pepe.x, pepe.y)
+            if pepe.animName then
+                makeAnimatedLuaSprite(pepe.name, pepe.path, pepe.x, pepe.y)
+                addAnimationByPrefix(pepe.name, pepe.animName, pepe.animPrefix, pepe.fps, pepe.loop)
+            else
+                makeLuaSprite(pepe.name, pepe.path, pepe.x, pepe.y)
+            end
             setScrollFactor(pepe.name, pepe.scrollX, pepe.scrollY)
             addLuaSprite(pepe.name, pepe.front)
             setProperty(pepe.name..'.antialiasing', not lowQuality)
         end
     end
-
-    makeLuaSprite('overlay', 'grieving/uh-oh/Overlay', 0, 0)
-    setObjectCamera('overlay', 'camOther')
-    setProperty('overlay.alpha', 0)
-    addLuaSprite('overlay', false)
 
     for _, urmom in ipairs(graphics) do
         makeLuaSprite(urmom.name)

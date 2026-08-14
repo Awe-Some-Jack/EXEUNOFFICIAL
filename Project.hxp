@@ -264,7 +264,11 @@ class Project extends HXProject
                 addAssetRecursive("embedded_contents_file", "contents", defines.exists("final") || isAndroid(), ["*"], []);
 
             if (FileSystem.exists("list.txt"))
-                assets.push(new Asset("list.txt", "contentsList.dat"));
+            {
+                var listAsset = new Asset("list.txt", "list.txt");
+                listAsset.embed = true;
+                assets.push(listAsset);
+            }
         }
 
         if (FileSystem.exists("psych-ui"))

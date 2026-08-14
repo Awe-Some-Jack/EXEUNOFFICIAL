@@ -46,10 +46,18 @@ function onEvent(n,v1,v2)
 					for (i in frame.elements) i.visible = false;
 					frame.add(beastAtlas);
 				});
-			case 'pixel': beastLegs.visible = false;
-			case 'back': beastLegs.visible = true;
-			case 'dark': beastLegs.visible = false;
-			case 'running': beastLegs.visible = true;
+			case 'pixel':
+				beastLegs.visible = false;
+				bf.visible = false;
+			case 'back':
+				beastLegs.visible = true;
+				bf.visible = true;
+			case 'dark':
+				beastLegs.visible = false;
+				bf.visible = false;
+			case 'running':
+				beastLegs.visible = true;
+				bf.visible = true;
 		}
 	}
 }

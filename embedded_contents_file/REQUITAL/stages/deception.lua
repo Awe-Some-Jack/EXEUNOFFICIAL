@@ -1,19 +1,11 @@
 function onCreatePost()
-	makeLuaSprite('bg2', 'bg/deception/bg-f 2')
+	makeLuaSprite('bg2', 'bg/deception/bg-f 2', 0, -350)
 	scaleObject('bg2', 2.5, 2.5)
 	addLuaSprite('bg2')
 
-	makeLuaSprite('bg', 'bg/deception/bg-g 2')
+	makeLuaSprite('bg', 'bg/deception/bg-g 2', 0, -350)
 	scaleObject('bg', 2.5, 2.5)
 	addLuaSprite('bg')
-
-	makeLuaSprite('anto', 'bg/deception/anto,nt', 100, 375)
-	scaleObject('anto', 1.5, 1.5)
-	addLuaSprite('anto')
-
-	makeLuaSprite('anto2', 'bg/deception/anto,nt 2', 1700, 210)
-	scaleObject('anto2', 1.35, 1.35)
-	addLuaSprite('anto2')
 
 	makeLuaSprite('overly', 'bg/deception/deseption')
 	scaleObject('overly', 2.5, 2.5)
@@ -112,6 +104,15 @@ function onCreatePost()
 
 	setProperty('BlackGraphicOther.alpha', 1)
 
+	makeAnimatedLuaSprite('spacebar', 'spacebar', 0, screenHeight * (downscroll and 0.6 or 0.2))
+	addAnimationByPrefix('spacebar', 'xd', 'Símbolo 8', 48, false)
+	playAnim('spacebar', 'xd', true)
+	scaleObject('spacebar', 0.6, 0.6)
+	setObjectCamera('spacebar', 'other')
+	screenCenter('spacebar', 'x')
+	setObjectOrder('spacebar', getObjectOrder('BlackGraphicOther') + 1)
+	setProperty('spacebar.alpha', 0)
+
 	startVideo('anim', false, true, false, false)
 	if getProperty('videoCutscene') == nil then return end
 	callMethod('remove', {instanceArg('videoCutscene')})
@@ -141,8 +142,6 @@ function onEvent(n,v1)
 
 			removeLuaSprite('bg2', true)
 			removeLuaSprite('bg', true)
-			removeLuaSprite('anto', true)
-			removeLuaSprite('anto2', true)
 			removeLuaSprite('overly', true)
 			removeLuaSprite('lava', true)
 
@@ -179,6 +178,10 @@ function onEvent(n,v1)
 
 			setProperty('picobf.velocity.x', -2500 * playbackRate) setProperty('reqbeast.velocity.x', -2500 * playbackRate)
 			setProperty('picobf.velocity.y', -380 * playbackRate) setProperty('reqbeast.velocity.y', -380 * playbackRate)
+
+			doTweenX('camHUDx', 'camHUD', 0, crochet / 500, 'cubeOut')
+			doTweenY('camHUDy', 'camHUD', 0, crochet / 500, 'cubeOut')
+			doTweenAngle('camHUDa', 'camHUD', 0, crochet / 500, 'cubeOut')
 		end
 		if v1 == 'back' then
 			inPixel = false
@@ -192,6 +195,7 @@ function onEvent(n,v1)
 			repeatbg = false
 			current = 'bgrun'
 			setProperty('camGame.zoom', 1.5)
+			setProperty('BlackGraphicOther.alpha', 0)
 
 			setProperty('bgrun.alpha', 1)
 			setProperty('gameplayCam.settings.BFx', 1150)
@@ -226,6 +230,10 @@ function onEvent(n,v1)
 			callMethod('dad.setPosition', {565, 200})
 			setProperty('dad.alpha', 1)
 			setProperty('gameplayCam.settings.MiddleY', 530)
+
+			doTweenX('camHUDx', 'camHUD', 0, crochet / 500, 'cubeOut')
+			doTweenY('camHUDy', 'camHUD', 0, crochet / 500, 'cubeOut')
+			doTweenAngle('camHUDa', 'camHUD', 0, crochet / 500, 'cubeOut')
 		end
 		if v1 == 'running' then
 			setProperty('gameplayCam.settings.OffsetsBF', 25)
@@ -241,6 +249,34 @@ function onEvent(n,v1)
 			setProperty('camGame.zoom', 1.5)
 			triggerEvent('Change Character', 'dad', 'beast-runhead')
 		end
+		if v1 == 'fadefinal' then
+			doTweenAlpha('BlackGraphicHUDBehind', 'BlackGraphicHUDBehind', 1, crochet / 500, 'expoIn')
+		end
+		if v1 == 'finale' then
+			setProperty('camGame.visible', false)
+			setProperty('BlackGraphicHUDBehind.alpha', 0)
+			setProperty('cpuAssist', true)
+			makeLuaSprite('finale', 'finale')
+			setObjectCamera('finale', 'video')
+			setGraphicSize('finale', screenWidth, screenHeight)
+			updateHitbox('finale')
+			screenCenter('finale')
+			addLuaSprite('finale')
+			setProperty('finale.alpha')
+			scaleObject('finale', getProperty('finale.scale.x') * 2.5, getProperty('finale.scale.y') * 2.5, false)
+			setProperty('finale.x', getProperty('finale.x') + 700)
+			setProperty('finale.y', getProperty('finale.y') + 450)
+			setProperty('finale.angle', 25)
+			doTweenX('fianas', 'finale', getProperty('finale.x') - 700, crochet / (1000 / 8), 'expoIn')
+			doTweenY('fian3241as', 'finale', getProperty('finale.y') - 450, crochet / (1000 / 8), 'expoIn')
+			doTweenAngle('fian2313241as', 'finale', 0, crochet / (1000 / 8), 'expoIn')
+			startTween('finaasle', 'finale.scale', {x = (getProperty('finale.scale.x') / 2.5), y = (getProperty('finale.scale.y') / 2.5)}, crochet / (1000 / 8), {ease = 'expoIn'})
+			doTweenAlpha('finale', 'finale', 1, crochet / 1000, 'cubeOut')
+			doTweenAlpha('camHUD', 'camHUD', 0, crochet / 250, 'cubeOut')
+		end
+		if v1 == 'termino' then
+			setProperty('camGame.visible', false) setProperty('camVideo.visible', false) setProperty('camHUD.visible', false)
+		end
 	end
 end
 
@@ -252,24 +288,36 @@ function onTimerCompleted(t)
 	end
 end
 
+local _graphicLerp = 0
 local canPress = false
 local thing = 0
 local holdTimer = 0
 function onUpdatePost(e)
+	thing = thing + e * 2
 	if inPixel then
-		thing = thing + e * 2
 		setProperty('gameplayCam.settings.MiddleY', getProperty('gameplayCam.settings.MiddleY') - (e * playbackRate * 360))
 		callMethod('camGame.snapToTarget')
 		setProperty('lavapixel.y', 700 + math.sin(thing) * 50)
 
 		if keyboardPressed('SPACE') then holdTimer = holdTimer + e else holdTimer = 0 end
 		if canPress and keyboardPressed('SPACE') and holdTimer < 0.1 then
-			setProperty('camGame.alpha', 1)
-			setProperty('camHUD.alpha', 1)
+			_graphicLerp = 0
 			canPress = false
+
+			if getProperty('spacebar.alpha') > 0 then
+				cancelTween('spacebar')
+				doTweenAlpha('spacebarx', 'spacebar', 0, crochet / 250, 'cubeOut')
+			end
 		end
+
+		if _graphicLerp < 1 then _graphicLerp = _graphicLerp + 0.001 end
+
+		setProperty('BlackGraphicOther.alpha', lerp(getProperty('BlackGraphicOther.alpha'), _graphicLerp, e * 35))
 	end
 	if not running then return end
+	setProperty('camHUD.angle', math.sin(thing) * 0.75)
+	setProperty('camHUD.x', math.cos(thing) * 10)
+	setProperty('camHUD.y', math.sin(thing) * 2)
     if getProperty(current..'.animation.curAnim.finished') then
         if repeatbg then current = 'bgrun' repeatbg = false else if getRandomBool(20) then current = 'bgrun2' repeatbg = true else current = 'bgrun' end end
         setProperty('bgrun.alpha', current == 'bgrun' and 1 or 0)
@@ -278,15 +326,21 @@ function onUpdatePost(e)
     end
 end
 
+function lerp(a, b, t)
+	return a + t * (b - a)
+end
+
 local once = false
 function onBeatHit()
 	if not inPixel then return end
+
+	playAnim('spacebar', 'xd', true)
+
 	if curBeat % 4 == 2 then
 		canPress = true
-		setProperty('camGame.alpha', 0)
-		setProperty('camHUD.alpha', 0)
+		_graphicLerp = 1
 		if not once then
-			debugPrint('                                               TIP: Press SPACE to turn ON the lights!')
+			doTweenAlpha('spacebar', 'spacebar', 1, crochet / 1000, 'cubeOut')
 			once = true
 		end
 	end

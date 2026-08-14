@@ -12,6 +12,9 @@ function onCreate()
 	setSpriteShader('bloom', 'brightness')
 	setShaderFloat('bloom', 'saturation', 1)
 
+	makeLuaSprite('speedLines')
+	setSpriteShader('speedLines', 'speedLines')
+
 	if shadersEnabled and not lowQuality then runHaxeCode([[game.camGame.filters = [
 			new ShaderFilter(game.getLuaObject('hws').shader),
 			new ShaderFilter(game.getLuaObject('bloom').shader),
@@ -24,6 +27,7 @@ local thing = 0
 function onUpdatePost(e)
 	thing = thing + e
 	setShaderFloat('hws', 'iTime', thing)
+	setShaderFloat('speedLines', 'iTime', thing)
 
 	setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2.6)
 	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 5))
@@ -34,7 +38,7 @@ function lerp(a, b, t)
 	return a + t * (b - a)
 end
 
-function onEvent(n)
+function onEvent(n, v1)
 	if n == 'bright zoom' and flashingLights then
 		cancelTween('bloom')
 		setProperty('bloom.x', 0.2)
@@ -45,6 +49,25 @@ function onEvent(n)
 		setProperty('cab.x', 0.2)
 		doTweenX('cab', 'cab', 0, crochet / 250 / playbackRate, 'cubeOut')
 		setProperty('camHUD.zoom', 1)
+	end
+	if n == 'BGchange' then
+		if v1 == 'back' or v1 == 'running' then
+			if shadersEnabled and not lowQuality then runHaxeCode([[game.camGame.filters = [
+					new ShaderFilter(game.getLuaObject('hws').shader),
+					new ShaderFilter(game.getLuaObject('bloom').shader),
+					new ShaderFilter(game.getLuaObject('cab').shader),
+					new ShaderFilter(game.getLuaObject('speedLines').shader)
+				];]])
+			end
+		end
+		if v1 == 'endcine' or v1 == 'xdddd' then
+			if shadersEnabled and not lowQuality then runHaxeCode([[game.camGame.filters = [
+					new ShaderFilter(game.getLuaObject('hws').shader),
+					new ShaderFilter(game.getLuaObject('bloom').shader),
+					new ShaderFilter(game.getLuaObject('cab').shader)
+				];]])
+			end
+		end
 	end
 end
 

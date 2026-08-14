@@ -1,113 +1,113 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
 			"loop": false,
-			"fps": 24,
+			"offsets": [0, 0],
 			"anim": "idle",
-			"indices": [],
-			"name": "BF Idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [41, -40],
-			"loop": false,
+			"offsets": [51, -22],
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "BF Left"
+			"loop": false,
+			"name": "left"
 		},
 		{
-			"offsets": [14, -70],
-			"loop": false,
+			"offsets": [40, -68],
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "BF Down"
+			"loop": false,
+			"name": "down"
 		},
 		{
-			"offsets": [-11, 50],
-			"loop": false,
+			"offsets": [0, 50],
+			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "BF Up"
+			"loop": false,
+			"name": "up"
 		},
 		{
-			"offsets": [-54, -4],
-			"loop": false,
+			"offsets": [-56, -2],
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "BF Right"
+			"loop": false,
+			"name": "right"
 		},
 		{
-			"offsets": [42, -40],
-			"loop": false,
+			"offsets": [46, -35],
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "BF mLeft"
+			"loop": false,
+			"name": "mleft"
 		},
 		{
-			"offsets": [14, -68],
-			"loop": false,
+			"offsets": [29, -68],
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "BF mDown"
+			"loop": false,
+			"name": "mdown"
 		},
 		{
-			"offsets": [1, 35],
-			"loop": false,
+			"offsets": [-4, 30],
+			"indices": [],
 			"fps": 24,
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "BF mUp"
+			"loop": false,
+			"name": "mup"
 		},
 		{
-			"offsets": [-55, 14],
-			"loop": false,
+			"offsets": [-56, 5],
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "BF mRight"
+			"loop": false,
+			"name": "mright"
 		},
 		{
-			"loop": false,
 			"offsets": [95, -31],
+			"indices": [],
+			"fps": 24,
 			"anim": "dodge",
-			"fps": 24,
-			"name": "BF Dodge",
-			"indices": []
+			"loop": false,
+			"name": "dodge"
 		},
 		{
-			"loop": false,
-			"offsets": [-2, -7],
-			"anim": "cabron",
+			"offsets": [58, -44],
+			"indices": [],
 			"fps": 24,
-			"name": "cabron",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [51, -33],
 			"anim": "hit",
-			"fps": 24,
-			"name": "BF ay",
-			"indices": []
+			"loop": false,
+			"name": "hit"
 		},
 		{
-			"loop": false,
-			"offsets": [36, -59],
-			"anim": "hey",
+			"offsets": [15, 8],
+			"indices": [],
 			"fps": 24,
-			"name": "BF Pose",
-			"indices": []
+			"anim": "cabron",
+			"loop": false,
+			"name": "lol"
+		},
+		{
+			"offsets": [67, 3],
+			"indices": [],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "yeah"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/BF_Requital",
+	"image": "characters/bfreq",
 	"position": [0, 0],
 	"healthicon": "bf-req",
 	"flip_x": true,

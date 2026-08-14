@@ -1,129 +1,129 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "Pico Idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [73, -65],
 			"loop": false,
-			"fps": 24,
+			"offsets": [67, -56],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Pico Left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
-			"offsets": [-9, -61],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-12, -61],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Pico Down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
-			"offsets": [-13, 100],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-2, 119],
 			"anim": "singUP",
-			"indices": [],
-			"name": "Pico Up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [-26, 10],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-34, 8],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Pico Right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
-			"offsets": [63, -64],
 			"loop": false,
-			"fps": 24,
+			"offsets": [49, -63],
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "Pico mLeft"
+			"fps": 24,
+			"name": "mleft",
+			"indices": []
 		},
 		{
-			"offsets": [-27, -56],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-24, -56],
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "Pico mDown"
+			"fps": 24,
+			"name": "mdown",
+			"indices": []
 		},
 		{
-			"offsets": [5, 57],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-8, 56],
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "Pico mUp"
+			"fps": 24,
+			"name": "mup",
+			"indices": []
 		},
 		{
-			"offsets": [-39, 8],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-43, 2],
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "Pico mRight"
+			"fps": 24,
+			"name": "mright",
+			"indices": []
 		},
 		{
-			"offsets": [139, -64],
 			"loop": false,
-			"fps": 24,
+			"offsets": [162, -59],
 			"anim": "dodge",
-			"indices": [],
-			"name": "Pico Dodge"
-		},
-		{
-			"offsets": [38, 8],
-			"loop": false,
 			"fps": 24,
-			"anim": "cabron",
-			"indices": [],
-			"name": "ay"
-		},
-		{
-			"offsets": [43, -49],
-			"loop": false,
-			"fps": 24,
-			"anim": "reload",
-			"indices": [],
-			"name": "picoReload"
-		},
-		{
-			"offsets": [53, 116],
-			"loop": false,
-			"fps": 24,
-			"anim": "shoot1",
-			"indices": [],
-			"name": "picoShoot1"
-		},
-		{
-			"offsets": [102, 201],
-			"loop": false,
-			"fps": 24,
-			"anim": "shoot2",
-			"indices": [],
-			"name": "picoShoot2"
+			"name": "dodge",
+			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [67, -50],
+			"offsets": [33, -51],
 			"anim": "hit",
 			"fps": 24,
-			"name": "Pico ay",
+			"name": "hit",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [22, -37],
+			"anim": "reload",
+			"fps": 24,
+			"name": "load",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [116, 102],
+			"anim": "shoot1",
+			"fps": 24,
+			"name": "shoot1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [105, 197],
+			"anim": "shoot2",
+			"fps": 24,
+			"name": "shoot2",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [55, 15],
+			"anim": "cabron",
+			"fps": 24,
+			"name": "lol",
 			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/pico requital",
+	"image": "characters/picoreq",
 	"position": [0, 0],
 	"healthicon": "pico-req",
 	"flip_x": true,

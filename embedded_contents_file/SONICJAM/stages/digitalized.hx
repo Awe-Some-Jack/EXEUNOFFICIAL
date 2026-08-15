@@ -1,8 +1,11 @@
 import flixel.addons.display.FlxBackdrop;
+import psychlua.LuaUtils;
 import psychlua.FunkinLua;
 import openfl.display.BlendMode;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import objects.VideoSprite;
+
+using StringTools;
 
 var skyCamera:FlxCamera;
 var stargazers:Array<FlxSprite>;
@@ -12,6 +15,9 @@ var xterionintro:FlxSprite;
 var graphic:FlxSprite;
 
 var canGenerateStars:Bool = true;
+
+//mirror shader lol
+var mirror = new ErrorHandledRuntimeShader('MirrorRepeatEffect', File.getContent('contents/SONICJAM/shaders/MirrorRepeatEffect.frag'));
 
 //normal
 var sky:FlxBackdrop;
@@ -159,6 +165,7 @@ function onBeatHit()
 	if (dad.getAnimationName() == 'idle') dad.animation.curAnim.curFrame = FlxMath.wrap(dad.animation.curAnim.curFrame + 4, 0, dad.animation.curAnim.numFrames - 1);
 }
 
+var mirrorTween:FlxTween;
 var grave:Bool = false;
 function onEvent(n,v1,v2)
 {
@@ -210,6 +217,67 @@ function onEvent(n,v1,v2)
 				xd.visible = grave;
 				trees.visible = grave;
 				bg.visible = grave;
+
+			case 'mirror':
+				//this might be a bit confusing but ill break it down for you:
+				//value 2 are the settings basically of the mirror effect, as you will see something like this: 03>[4,5]>c3>expoIn
+				//so the first value its the mode of the tween, like which values do you wanna modify
+				//modes: [zoom: 0, x: 1, y: 2, angle: 3]
+				//the second value are the target value the modes will go, so if you used 0 (zoom) and target its [2] the zoom will go to 2, and if the mode its 03, the target should be like [2,25] if that makes sense.
+				//third value its the duration or time, time can be either a regular in seconds ruler (like 0.5 for half second and 1 for a second) or in crochet (for beat based time) so if you see for example c3 it will mean "crochet / (1000 / 3)" and that means the tween will last 3 beats.
+				//and the fourth value its basically just the ease of the tween
+
+				if (mirrorTween != null) mirrorTween.cancel();
+				final settings:Array<String> = v2.split('>');
+
+				trace(settings);
+
+				//mode setup
+				var mode:String = '0';
+				if (settings[0] != null && settings[0] != '') mode = settings[0];
+
+				//target values setup
+				var targets:Array<String> = ['1'];
+				if (settings[1] != null && settings[1] != '') targets = settings[1].replace('[', '').replace(']', '').split(',');
+
+				//duration setup
+				var duration:Float = 1;
+				if (settings[2] != null && settings[2] != '')
+				{
+					if (settings[2].startsWith('c')) duration = Conductor.crochet / (1000 / Std.parseFloat(settings[2].substr(1)));
+					else duration = Std.parseFloat(settings[2]);
+				}
+
+				//ease setup
+				var mirrorEase:String = 'linear';
+				if (settings[3] != null && settings[3] != '') mirrorEase = settings[3];
+
+				//da start values so it doesnt start from scratch making an ugly ass effect lol
+				final startValue:Array<Float> = [
+					mirror.getFloat('zoom'),
+					mirror.getFloat('x'),
+					mirror.getFloat('y'),
+					mirror.getFloat('angle')
+				];
+
+				//the actual tween here
+				mirrorTween = FlxTween.num(0, 1, duration, {
+					ease: LuaUtils.getTweenEaseByString(mirrorEase),
+					onComplete: (_) -> {mirrorTween = null;}
+				}, (v:Float) -> {
+					for (i in 0...mode.length)
+					{
+						if (i >= targets.length) break;
+						final target:Float = Std.parseFloat(targets[i]);
+						switch (mode.charAt(i))
+						{
+							case '0': mirror.setFloat('zoom', FlxMath.lerp(startValue[0], target, v));
+							case '1': mirror.setFloat('x', FlxMath.lerp(startValue[1], target, v));
+							case '2': mirror.setFloat('y', FlxMath.lerp(startValue[2], target, v));
+							case '3': mirror.setFloat('angle', FlxMath.lerp(startValue[3], target, v));
+						}
+					}
+				});
 		}
 	}
 }
@@ -255,8 +323,14 @@ function onCreatePost()
 	if (ClientPrefs.data.shaders) {
 		var fishEye = new ErrorHandledRuntimeShader('fisheye', File.getContent('contents/SONICJAM/shaders/fisheye.frag'));
 		fishEye.setFloat('amount', -0.75);
-		skyCamera.filters = [new ShaderFilter(fishEye), new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(game.getLuaObject('pixel').shader)];
-		camGame.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(game.getLuaObject('pixel').shader)];
+
+		mirror.setFloat('zoom', 1);
+		mirror.setFloat('x', 0);
+		mirror.setFloat('y', 0);
+		mirror.setFloat('angle', 0);
+
+		skyCamera.filters = [new ShaderFilter(fishEye), new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(game.getLuaObject('pixel').shader), new ShaderFilter(mirror)];
+		camGame.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(game.getLuaObject('pixel').shader), new ShaderFilter(mirror)];
 		camHUD.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(game.getLuaObject('pixel').shader)];
 	}
 }

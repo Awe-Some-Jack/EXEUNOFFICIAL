@@ -1,7 +1,7 @@
 set -euo pipefail
 
 SRC_DIR="${1:-contents_file}"
-DEST_DIR="${2:-android_embed}"
+DEST_DIR="${2:-mobile_embed}"
 
 if [ ! -d "$SRC_DIR" ]; then
     echo "Error: source directory '$SRC_DIR' does not exist." >&2

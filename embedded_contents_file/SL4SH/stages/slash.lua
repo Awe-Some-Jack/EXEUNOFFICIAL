@@ -44,13 +44,15 @@ function onCreatePost()
 
 	setProperty('hbHealth.alpha', 0)
 	setProperty('hbHealth2.alpha', 0)
-
+	
 	makeLuaSprite('leftBar',  'pixelUI/hud/bar1', 0, 0)
 	makeLuaSprite('rightBar', 'pixelUI/hud/bar2', 0, 0)
 	setObjectCamera('leftBar', 'camHUD') setObjectCamera('rightBar', 'camHUD')
 	setObjectOrder('leftBar', getObjectOrder('separatorHealth')) setObjectOrder('rightBar', getObjectOrder('separatorHealth'))
 	callMethod('leftBar.setPosition',  {getProperty('hbHealth.x')  - 5, getProperty('hbHealth.y') - 4.5})
 	callMethod('rightBar.setPosition', {getProperty('hbHealth2.x') - 5, getProperty('hbHealth2.y') - 4.5})
+	setProperty('leftBar.antialiasing', false)
+	setProperty('rightBar.antialiasing', false)
 	addLuaSprite('leftBar') addLuaSprite('rightBar')
 	setObjectOrder('healthBG', getObjectOrder('leftBar'))
 end
@@ -76,7 +78,7 @@ end
 function onUpdatePost()
 	scaleObject('rightBar', clamp(getHealth(), 0, 2) * 3.685, 4)
 	scaleObject('leftBar',  clamp(2 - getHealth(), 0, 2) * 3.685, 4)
-	setProperty('rightBar.x', getProperty('leftBar.x') + getProperty('leftBar.width'))
+	setProperty('rightBar.x', getProperty('leftBar.x') + getProperty('leftBar.width') - 10pp)
 end
 
 function clamp(val, lower, upper)

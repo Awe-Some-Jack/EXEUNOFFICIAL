@@ -195,6 +195,7 @@ function onGameOverConfirm(retry)
 		FlxG.camera.flash(0xFFFF0000, 1, null, true);
 		FlxG.sound.play(Paths.music('gameOverEnd'));
 		deadMusic.stop();
+		timer = -999;
 		if (countdownTimer != null) countdownTimer.cancel();
 		for (pixelAssets in [star1, star2, countdownText]) pixelAssets.destroy();
 		reqLine.stop();

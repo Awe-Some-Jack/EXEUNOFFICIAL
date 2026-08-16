@@ -27,8 +27,8 @@ var faker:Array<BackgroundSprite> = [
 	{path: 'faker/newBG/mountaints2', position: [-100, -200], scale: [1.8, 1.8], scroll: [0.8, 0.8]},
 	{path: 'faker/newBG/water', position: [-100, 400], scale: [1.8, 1.8], scroll: [0.8, 0.8]},
 	{path: 'faker/newBG/totems', position: [150, -450], scale: [1.8, 1.8], scroll: [0.9, 0.9]},
-	{path: 'faker/newBG/floor', position: [-60, 310], scale: [1.8, 1.8]},
-	{path: 'faker/newBG/foreground', position: [100, 310], scale: [1.6, 1.6], scroll: [1.3, 1.3]},
+	{path: 'faker/newBG/floor', position: [350, 450], scale: [1.8, 1.8]},
+	{path: 'faker/newBG/foreground', position: [100, 350], scale: [1.6, 1.6], scroll: [1.3, 1.3]},
 	{path: 'faker/newBG/glow', position: [0, -200], scale: [2.8, 1.3], front: true, alpha: 0.4}
 ];
 

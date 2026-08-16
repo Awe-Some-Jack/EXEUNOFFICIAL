@@ -32,6 +32,7 @@ function onCreatePost()
 	setShaderFloat('cab', 'amount', 0.06)
 
 	if shadersEnabled and not lowQuality then
+		setProperty('dad.useRenderTexture', true)
 		for _,char in ipairs({'dad', 'gf', 'boyfriend'}) do
 			setSpriteShader(char, 'DropShadowShader')
 			setShaderFloat(char, 'hue', 0)
@@ -39,15 +40,14 @@ function onCreatePost()
 			setShaderFloat(char, 'contrast', 0)
 			setShaderFloat(char, 'str', 1)
 			setShaderFloat(char, 'brightness', 0)
+			setShaderFloat(char, 'thr', 0.05)
 			setShaderFloatArray(char, 'dropColor', {197 / 255, 112 / 255, 11 / 255})
 			runHaxeFunction('setShaderFrameInfo', {char})
 		end
 		setShaderFloat('dad', 'ang', math.rad(80))
 		setShaderFloat('gf', 'ang', math.rad(100))
 		setShaderFloat('boyfriend', 'ang', math.rad(135))
-		setShaderFloat('boyfriend', 'thr', 0.1)
-		setShaderFloat('dad', 'thr', 0.1)
-		setShaderFloat('gf', 'thr', 0.1)
+		
 
 		runHaxeCode("game.camGame.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('cab').shader)];")
 	end

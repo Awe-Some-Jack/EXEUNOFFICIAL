@@ -9,7 +9,7 @@
 			"name": "idle"
 		},
 		{
-			"offsets": [118, 22],
+			"offsets": [187, 30],
 			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
@@ -17,7 +17,7 @@
 			"name": "left"
 		},
 		{
-			"offsets": [100, 1],
+			"offsets": [126, 3],
 			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
@@ -25,7 +25,7 @@
 			"name": "down"
 		},
 		{
-			"offsets": [55, 73],
+			"offsets": [68, 120],
 			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
@@ -33,7 +33,7 @@
 			"name": "up"
 		},
 		{
-			"offsets": [-13, -31],
+			"offsets": [17, 3],
 			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
@@ -43,7 +43,7 @@
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/luther2",
+	"image": "characters/lutherherwolrd",
 	"position": [150, 300],
 	"healthicon": "luther",
 	"flip_x": false,

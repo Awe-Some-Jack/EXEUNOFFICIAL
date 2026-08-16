@@ -28,6 +28,7 @@ import backend.AtlasSpriteSettings;
 class Paths
 {
 	public static final SOUND_EXT = #if web "mp3" #else "ogg" #end;
+	public static final SOUND_EXTS:Array<String> = ["ogg", "mp3", "wav", "flac", "opus"];
 	public static final VIDEO_EXTS:Array<String> = ["mp4", "avi", "mkv", "mov", "wmv", "flv", "webm"];
 	public static final IMAGE_EXTS:Array<String> = [
 		"png", "jpg", "jpeg", "bmp", "tga", "webp", "avif", "tif", "tiff", 
@@ -643,10 +644,78 @@ class Paths
 		return hideChars.replace(invalidChars.replace(path, '-'), '').trim().toLowerCase();
 	}
 
+	static public function resolveSoundFile(key:String, ?path:String, ?modsAllowed:Bool = true):String
+	{
+		final translatedKey:String = Language.getFileTranslation(key);
+
+		var file:String = getPath('$translatedKey.$SOUND_EXT', SOUND, path, modsAllowed);
+		if (#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file)) return file;
+
+		for (ext in SOUND_EXTS)
+		{
+			if (ext == SOUND_EXT) continue;
+
+			file = getPath('$translatedKey.$ext', SOUND, path, modsAllowed);
+			if (#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file)) return file;
+		}
+
+		return getPath('$translatedKey.$SOUND_EXT', SOUND, path, modsAllowed);
+	}
+
+	static final SOUND_CODEC_MAP:Map<String, lime.media.AudioCodec> = [
+		"ogg" => OGG,
+		"opus" => OPUS,
+		"flac" => FLAC,
+		"mp3" => MP3,
+		"wav" => WAV
+	];
+
+	static function decodeAudioBuffer(decoder:lime.media.AudioDecoder):Null<Sound>
+	{
+		if (decoder == null) return null;
+
+		final buffer = new lime.media.AudioBuffer();
+		buffer.sampleRate = decoder.sampleRate;
+		buffer.channels = decoder.channels;
+		buffer.dataFormat = S16;
+		buffer.data = lime.utils.UInt8Array.fromBytes(decoder.decode(haxe.Int64.toInt(decoder.total()), buffer.dataFormat));
+		return Sound.fromAudioBuffer(buffer);
+	}
+
+	static function loadSoundFromFile(file:String):Sound
+	{
+		final codec = SOUND_CODEC_MAP.get(haxe.io.Path.extension(file).toLowerCase());
+
+		if (codec != null)
+		{
+			final decoded = decodeAudioBuffer(lime.media.AudioDecoder.fromFile(file, codec));
+			if (decoded != null) return decoded;
+		}
+
+		return Sound.fromFile(file);
+	}
+
+	static function loadSoundFromAssets(file:String):Sound
+	{
+		final codec = SOUND_CODEC_MAP.get(haxe.io.Path.extension(file).toLowerCase());
+
+		if (codec != null)
+		{
+			final bytes = OpenFlAssets.getBytes(file);
+			if (bytes != null)
+			{
+				final decoded = decodeAudioBuffer(lime.media.AudioDecoder.fromBytes(bytes, codec));
+				if (decoded != null) return decoded;
+			}
+		}
+
+		return OpenFlAssets.getSound(file);
+	}
+
 	public static var currentTrackedSounds:Map<String, Sound> = [];
 	public static function returnSound(key:String, ?path:String, ?modsAllowed:Bool = true, ?beepOnNull:Bool = true)
 	{
-		var file:String = getPath(Language.getFileTranslation(key) + '.$SOUND_EXT', SOUND, path, modsAllowed);
+		var file:String = resolveSoundFile(key, path, modsAllowed);
 
 		//trace('precaching sound: $file');
 		if(!currentTrackedSounds.exists(file))
@@ -654,15 +723,27 @@ class Paths
 			var loaded:Bool = false;
 			#if sys
 			if(sys.FileSystem.exists(file)) {
-				currentTrackedSounds.set(file, Sound.fromFile(file));
-				loaded = true;
+				final decoded:Sound = loadSoundFromFile(file);
+				if (decoded != null) {
+					currentTrackedSounds.set(file, decoded);
+					loaded = true;
+				} else {
+					trace('SOUND FAILED TO DECODE: $file');
+					FlxG.log.error('SOUND FAILED TO DECODE: $file');
+				}
 			}
 			#end
 			if(!loaded && OpenFlAssets.exists(file)) {
-				currentTrackedSounds.set(file, OpenFlAssets.getSound(file));
-				loaded = true;
+				final decoded:Sound = loadSoundFromAssets(file);
+				if (decoded != null) {
+					currentTrackedSounds.set(file, decoded);
+					loaded = true;
+				} else {
+					trace('SOUND FAILED TO DECODE FROM ASSETS: $file');
+					FlxG.log.error('SOUND FAILED TO DECODE FROM ASSETS: $file');
+				}
 			}
-			
+
 			if(!loaded && beepOnNull)
 			{
 				trace('SOUND NOT FOUND: $key, PATH: $path');
@@ -686,7 +767,7 @@ class Paths
 		#if lime_vorbis
 		if (ClientPrefs.data.streamedAudio)
 		{
-			var file:String = getPath(Language.getFileTranslation(key) + '.$SOUND_EXT', SOUND, path, modsAllowed);
+			var file:String = resolveSoundFile(key, path, modsAllowed);
 
 			if (file.toLowerCase().endsWith('.ogg'))
 			{

@@ -78,7 +78,7 @@ end
 function onUpdatePost()
 	scaleObject('rightBar', clamp(getHealth(), 0, 2) * 3.685, 4)
 	scaleObject('leftBar',  clamp(2 - getHealth(), 0, 2) * 3.685, 4)
-	setProperty('rightBar.x', getProperty('leftBar.x') + getProperty('leftBar.width') - 10pp)
+	setProperty('rightBar.x', getProperty('leftBar.x') + getProperty('leftBar.width') - 10)
 end
 
 function clamp(val, lower, upper)

@@ -3250,10 +3250,8 @@ class PlayState extends MusicBeatState
 
 		handleOpponentAnimation(note);
 
-		if (!missNotePlaying) {
-			if (opponentVocals.length <= 0) vocals.volume = 1;
-			else opponentVocals.volume = 1;
-		}
+		if (opponentVocals.length <= 0) vocals.volume = 1;
+		else opponentVocals.volume = 1;
 
 		strumPlayAnim(true,
 			Std.int(Math.abs(note.noteData)),
@@ -3366,7 +3364,7 @@ class PlayState extends MusicBeatState
 			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
 
 		vocals.volume = 1;
-		if (!missNotePlaying) opponentVocals.volume = 1;
+		opponentVocals.volume = 1;
 
 		if(!note.isSustainNote)
 		{

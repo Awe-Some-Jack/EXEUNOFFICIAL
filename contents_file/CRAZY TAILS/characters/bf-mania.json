@@ -1,84 +1,84 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "danceLeft",
-			"indices": [],
-			"name": "l"
+			"fps": 24,
+			"name": "l",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-6, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "danceRight",
-			"indices": [],
-			"name": "Carpeta de elementos duplicados/r"
+			"fps": 24,
+			"name": "Carpeta de elementos duplicados/r",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [79, 15],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Carpeta de elementos duplicados/left"
+			"fps": 24,
+			"name": "Carpeta de elementos duplicados/left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [12, -41],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Carpeta de elementos duplicados/down"
+			"fps": 24,
+			"name": "Carpeta de elementos duplicados/down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-5, 76],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Carpeta de elementos duplicados/up"
+			"fps": 24,
+			"name": "Carpeta de elementos duplicados/up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [1, -6],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Carpeta de elementos duplicados/right"
+			"fps": 24,
+			"name": "Carpeta de elementos duplicados/right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [68, 9],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "left miss"
+			"fps": 24,
+			"name": "left miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [14, -67],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "down miss"
+			"fps": 24,
+			"name": "down miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-6, 48],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "up miss"
+			"fps": 24,
+			"name": "up miss",
+			"indices": []
 		},
 		{
-			"offsets": [-6, -4],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-6, -4],
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "right miss"
+			"fps": 24,
+			"name": "right miss",
+			"indices": []
 		}
 	],
 	"vocals_file": "bf",
@@ -87,7 +87,7 @@
 	"position": [250, 150],
 	"healthicon": "crazybf",
 	"flip_x": true,
-	"healthbar_colors": [0, 103, 195],
+	"healthbar_colors": [51, 134, 207],
 	"camera_position": [0, 0],
 	"sing_duration": 6.1,
 	"scale": 0.6,

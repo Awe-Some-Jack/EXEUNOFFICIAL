@@ -1,75 +1,75 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"loop": false,
-			"fps": 26,
 			"anim": "danceLeft",
-			"indices": [],
-			"name": "danceleft"
-		},
-		{
-			"offsets": [-34, 0],
-			"loop": false,
 			"fps": 26,
+			"name": "danceleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-34, 0],
 			"anim": "danceRight",
-			"indices": [],
-			"name": "danceright"
+			"fps": 26,
+			"name": "danceright",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [27, -20],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-157, -103],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-105, 113],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-187, 10],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-56, 95],
-			"loop": false,
-			"fps": 24,
 			"anim": "s",
-			"indices": [],
-			"name": "bestfriends"
+			"fps": 24,
+			"name": "bestfriends",
+			"indices": []
 		},
 		{
-			"offsets": [7, 115],
 			"loop": false,
-			"fps": 24,
+			"offsets": [7, 115],
 			"anim": "r",
-			"indices": [],
-			"name": "laugh"
+			"fps": 24,
+			"name": "laugh",
+			"indices": []
 		},
 		{
 			"offsets": [-20, 85],
-			"loop": false,
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 137, 137, 137, 137, 137, 137, 137, 137, 137, 137, 137, 137, 137, 137, 137],
 			"fps": 25,
 			"anim": "d",
-			"indices": [],
+			"loop": false,
 			"name": "aintsonic"
 		}
 	],

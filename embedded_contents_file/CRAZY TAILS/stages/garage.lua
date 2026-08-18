@@ -40,6 +40,8 @@ local function setupAnims()
 
 	--anim2
 
+	if lowQuality then return end
+
 	makeLuaSprite('bg-amy', 'bg/amy', -300, -250)
 	scaleObject('bg-amy', 0.55, 0.55)
 	addLuaSprite('bg-amy')
@@ -137,6 +139,11 @@ function onCreatePost()
 	setObjectOrder('overlay', getObjectOrder('BlackGraphicOther'))
 	addLuaSprite('overlay')
 	
+	if lowQuality then
+		startVideo('Who is he', false, true, false, false)
+		setProperty('inCutscene', false)
+		return
+	end
 	makeLuaSprite('overlayroto', 'bg/rota')
 	scaleObject('overlayroto', 1.75, 1.75)
 	setObjectCamera('overlayroto', 'other')
@@ -204,41 +211,43 @@ local starSine = 0
 local prevBfAnim = ''
 local prevDadAnim = ''
 function onUpdatePost(e)
-    if anim == 'final' then
-        if getProperty('final.anim.frameIndex') >= 38 and getProperty('bg-amy.alpha') ~= 1 then
-            setProperty('bg-bf.alpha', 0)
-            setProperty('bg-amy.alpha', 1)
-            setProperty('bg-bf1.visible', false)
-            setProperty('bg-bf2.visible', false)
-            setProperty('bg-bf3.visible', false)
-        end
-    elseif anim == 'final3' then
-        if getProperty('final3.anim.frameIndex') >= 60 and status == 0 then
-            status = 1
-            scaleObject('bg-never', 0.5, 0.5)
-            setProperty('bg-never.x', -100)
-            setProperty('bg-never.y', -200)
-        end
-        if getProperty('final3.anim.frameIndex') >= 81 and status == 1 then
-            status = 2
-            setProperty('bg-never.angle', 10)
-            scaleObject('bg-never', 0.65, 0.65)
-            setProperty('bg-never.x', -400)
-            setProperty('bg-never.y', -400)
-        end
-        if getProperty('final3.anim.frameIndex') >= 100 and status == 2 then
-            status = 3
-            setProperty('bg-never.angle', 0)
-            scaleObject('bg-never', 0.85, 0.85)
-            setProperty('bg-never.x', -700)
-            setProperty('bg-never.y', -450)
-        end
-    elseif anim == 'final4' then
-        if getProperty('final4.anim.frameIndex') >= 32 and luaSpriteExists('bg-tails') then
-            removeLuaSprite('bg-tails', true)
-            setProperty('bg-bf.alpha', 1)
-        end
-    end
+	if not lowQuality then
+		if anim == 'final' then
+			if getProperty('final.anim.frameIndex') >= 38 and getProperty('bg-amy.alpha') ~= 1 then
+				setProperty('bg-bf.alpha', 0)
+				setProperty('bg-amy.alpha', 1)
+				setProperty('bg-bf1.visible', false)
+				setProperty('bg-bf2.visible', false)
+				setProperty('bg-bf3.visible', false)
+			end
+		elseif anim == 'final3' then
+			if getProperty('final3.anim.frameIndex') >= 60 and status == 0 then
+				status = 1
+				scaleObject('bg-never', 0.5, 0.5)
+				setProperty('bg-never.x', -100)
+				setProperty('bg-never.y', -200)
+			end
+			if getProperty('final3.anim.frameIndex') >= 81 and status == 1 then
+				status = 2
+				setProperty('bg-never.angle', 10)
+				scaleObject('bg-never', 0.65, 0.65)
+				setProperty('bg-never.x', -400)
+				setProperty('bg-never.y', -400)
+			end
+			if getProperty('final3.anim.frameIndex') >= 100 and status == 2 then
+				status = 3
+				setProperty('bg-never.angle', 0)
+				scaleObject('bg-never', 0.85, 0.85)
+				setProperty('bg-never.x', -700)
+				setProperty('bg-never.y', -450)
+			end
+		elseif anim == 'final4' then
+			if getProperty('final4.anim.frameIndex') >= 32 and luaSpriteExists('bg-tails') then
+				removeLuaSprite('bg-tails', true)
+				setProperty('bg-bf.alpha', 1)
+			end
+		end
+	end
 
     if not changedBG then return end
     starSine = starSine + e * 3
@@ -426,12 +435,6 @@ function onEvent(n,v1)
 			anim = 'final'
 			setProperty('camZoomingMult', 0)
 			setProperty('camHUD.alpha', 0)
-			playAnim('final', 'final', true)
-			setProperty('final.alpha', 1)
-			setProperty('bg-bf.alpha', 1)
-			scaleObject('bg-bf', 1.5, 1.5)
-			setProperty('bg-bf.x', -500)
-			setProperty('bg-bf.y', -1500)
 
 			removeLuaSprite('bg', true)
 			removeLuaSprite('esencia', true)
@@ -440,8 +443,23 @@ function onEvent(n,v1)
 			setProperty('boyfriend.alpha', 0)
 			removeLuaSprite('papis', true)
 			removeLuaSprite('papis', true)
+
+			if lowQuality then
+				startVideo('Who is he', false, true)
+				setProperty('inCutscene', false)
+			end
+
+			if not lowQuality then
+				playAnim('final', 'final', true)
+				setProperty('final.alpha', 1)
+				setProperty('bg-bf.alpha', 1)
+				scaleObject('bg-bf', 1.5, 1.5)
+				setProperty('bg-bf.x', -500)
+				setProperty('bg-bf.y', -1500)
+			end
 		end
 		if v1 == 'finalanim2' then
+			if lowQuality then return end
 			anim = 'final2'
 			removeLuaSprite('final', true)
 			playAnim('final2', 'final', true)
@@ -457,6 +475,7 @@ function onEvent(n,v1)
 			setProperty('bg-bf.y', -250)
 		end
 		if v1 == 'finalanim3' then
+			if lowQuality then return end
 			anim = 'final3'
 			removeLuaSprite('final2', true)
 			playAnim('final3', 'final', true)
@@ -474,6 +493,7 @@ function onEvent(n,v1)
 			doTweenX('xd2', 'final3', 500, 0.6, 'backOut')
 		end
 		if v1 == 'finalanim4' then
+			if lowQuality then return end
 			anim = 'final4'
 			removeLuaSprite('final3', true)
 			playAnim('final4', 'final', true)
@@ -486,10 +506,12 @@ function onEvent(n,v1)
 			setProperty('bg-tails.y', -215)
 		end
 		if v1 == 'shake' then
+			if lowQuality then return end
 			cameraShake('game', 0.02, 0.3)
 			runTimer('pzox', 0.3)
 		end
 		if v1 == 'ending' then
+			if lowQuality then return end
 			removeLuaSprite('final4', true)
 			playAnim('final5', 'final', true)
 			setProperty('final5.alpha', 1)

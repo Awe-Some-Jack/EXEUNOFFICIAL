@@ -10,9 +10,11 @@ import openfl.display.BitmapData;
 import openfl.display.Shape;
 import openfl.filters.GlowFilter;
 import openfl.filters.DropShadowFilter;
+import openfl.filters.BitmapFilter;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.text.TextFormatAlign;
+import openfl.text.TextFieldAutoSize;
 
 class EXESoundTray extends FlxSoundTray
 {
@@ -42,20 +44,24 @@ class EXESoundTray extends FlxSoundTray
 
 	var bg:Bitmap;
 	var volumeText:Bitmap;
-	var bars:Array<Bitmap> = [];
+	var bars:Array<Bitmap>;
+	var barStates:Array<Bool>;
 
-	var timerHold:Float    = 0;
-	var isActive:Bool      = false;
-	var _lastVolume:Float  = -1;
-	var _lastMuted:Bool    = false;
+	var timerHold:Float      = 0;
+	var isActive:Bool        = false;
+	var _lastVolume:Float    = -1;
+	var _lastMuted:Bool      = false;
 	var _lastLanguage:String = '';
+	var _lastActiveBars:Int  = -1;
 
 	var litBarBmd:BitmapData;
 	var unlitBarBmd:BitmapData;
-	var barStates:Array<Bool> = [];
 
 	var glowFilter:GlowFilter;
 	var shadowFilter:DropShadowFilter;
+	
+	final filterActive:Array<BitmapFilter> = [];
+	final filterInactive:Array<BitmapFilter> = [];
 
 	public function new()
 	{
@@ -63,17 +69,22 @@ class EXESoundTray extends FlxSoundTray
 
 		removeChildren();
 
-        volumeUpSound = "assets/shared/sounds/VolumeSwitch.ogg";
-        volumeDownSound = "assets/shared/sounds/VolumeSwitch.ogg";
+		volumeUpSound = "assets/shared/sounds/VolumeSwitch.ogg";
+		volumeDownSound = "assets/shared/sounds/VolumeSwitch.ogg";
 
 		if (!silent)
-        {
-            FlxG.sound.cache('$volumeUpSound');
-            FlxG.sound.cache('$volumeDownSound');
-        }
+		{
+			FlxG.sound.cache('$volumeUpSound');
+			FlxG.sound.cache('$volumeDownSound');
+		}
 
 		glowFilter   = new GlowFilter(colorBarGlow, 0.85, 5, 5, 2, 1, false, false);
 		shadowFilter = new DropShadowFilter(3, 60, 0x000000, 0.75, 5, 5, 1, 1, false, false, false);
+		
+		filterActive.push(glowFilter);
+
+		bars = [];
+		barStates = [];
 
 		createBackground();
 		createVolumeText();
@@ -113,7 +124,7 @@ class EXESoundTray extends FlxSoundTray
 
 		final tf:TextField   = new TextField();
 		final fmt:TextFormat = new TextFormat();
-		fmt.font  = fontAsset?.fontName ?? fontName;
+		fmt.font  = fontAsset != null ? fontAsset.fontName : fontName;
 		fmt.size  = 26;
 		fmt.color = 0xFFFFFFFF;
 		fmt.align = TextFormatAlign.LEFT;
@@ -121,7 +132,7 @@ class EXESoundTray extends FlxSoundTray
 		tf.defaultTextFormat = fmt;
 		tf.embedFonts        = true;
 		tf.selectable        = false;
-		tf.autoSize          = openfl.text.TextFieldAutoSize.LEFT;
+		tf.autoSize          = TextFieldAutoSize.LEFT;
 		tf.text              = label;
 
 		final textW:Int       = Std.int(tf.textWidth + 4);
@@ -133,19 +144,25 @@ class EXESoundTray extends FlxSoundTray
 		volumeText.x = PADDING_X;
 		volumeText.y = PADDING_Y;
 		addChild(volumeText);
+		
+		src.dispose();
 	}
 
 	function applyGradient(source:BitmapData, colorTop:UInt, colorBottom:UInt):BitmapData
 	{
 		final result:BitmapData = new BitmapData(source.width, source.height, true, colorTransparent);
 		final r1 = (colorTop    >> 16) & 0xFF;
-		final g1 = (colorTop    >> 8) & 0xFF; var b1 = colorTop    & 0xFF;
-		final r2 = (colorBottom >> 16) & 0xFF; var g2 = (colorBottom >> 8) & 0xFF;
+		final g1 = (colorTop    >> 8) & 0xFF; 
+		final b1 = colorTop    & 0xFF;
+		final r2 = (colorBottom >> 16) & 0xFF; 
+		final g2 = (colorBottom >> 8) & 0xFF;
 		final b2 = colorBottom & 0xFF;
+		
+		final hFloat:Float = source.height;
 
 		for (py in 0...source.height)
 		{
-			final t:Float = py / source.height;
+			final t:Float = py / hFloat;
 			final r = Std.int(r1 + (r2 - r1) * t);
 			final g = Std.int(g1 + (g2 - g1) * t);
 			final b = Std.int(b1 + (b2 - b1) * t);
@@ -176,7 +193,7 @@ class EXESoundTray extends FlxSoundTray
 			addChild(bar);
 		}
 		
-		updateBars(FlxG.sound.volume);
+		updateBars(FlxG.sound.volume, true);
 	}
 
 	function makeBarBitmap(on:Bool):BitmapData
@@ -209,10 +226,14 @@ class EXESoundTray extends FlxSoundTray
 		return bmd;
 	}
 
-	function updateBars(vol:Float):Void
+	function updateBars(vol:Float, force:Bool = false):Void
 	{
-		var activeBars:Int = FlxG.sound.muted ? 0 : Math.round(FlxG.sound.logToLinear(FlxG.sound.volume) * 10);
+		var activeBars:Int = FlxG.sound.muted ? 0 : Math.round(FlxG.sound.logToLinear(vol) * 10);
 		activeBars = Std.int(Math.max(0, Math.min(NUM_BARS, activeBars)));
+
+		if (!force && activeBars == _lastActiveBars) return;
+
+		_lastActiveBars = activeBars;
 
 		for (i in 0...NUM_BARS)
 		{
@@ -221,7 +242,7 @@ class EXESoundTray extends FlxSoundTray
 			{
 				barStates[i] = on;
 				bars[i].bitmapData = on ? litBarBmd : unlitBarBmd;
-				bars[i].filters = on ? [glowFilter] : [];
+				bars[i].filters = on ? filterActive : filterInactive;
 			}
 		}
 	}
@@ -243,7 +264,7 @@ class EXESoundTray extends FlxSoundTray
 
 		_lastVolume = FlxG.sound.volume;
 		_lastMuted  = FlxG.sound.muted;
-		updateBars(FlxG.sound.muted ? 0.0 : FlxG.sound.volume);
+		updateBars(FlxG.sound.volume, true);
 	}
 
 	function applyScale():Void
@@ -271,15 +292,15 @@ class EXESoundTray extends FlxSoundTray
 			_lastLanguage = lang;
 			if (volumeText != null)
 			{
-				volumeText.bitmapData?.dispose();
+				if (volumeText.bitmapData != null) volumeText.bitmapData.dispose();
 				removeChild(volumeText);
-				volumeText = null;
 			}
 			createVolumeText();
 		}
 
 		_lastVolume = FlxG.sound.volume;
 		_lastMuted = FlxG.sound.muted;
+		updateBars(FlxG.sound.volume);
 
 		timerHold = holdDuration;
 		visible = true;
@@ -296,7 +317,12 @@ class EXESoundTray extends FlxSoundTray
 	{
 		applyScale();
 		
-		updateBars(FlxG.sound.muted ? 0.0 : FlxG.sound.volume);
+		if (_lastVolume != FlxG.sound.volume || _lastMuted != FlxG.sound.muted)
+		{
+			_lastVolume = FlxG.sound.volume;
+			_lastMuted = FlxG.sound.muted;
+			updateBars(FlxG.sound.volume);
+		}
 
 		if (isActive)
 		{
@@ -338,12 +364,18 @@ class EXESoundTray extends FlxSoundTray
 		volumeText?.bitmapData?.dispose();
 		litBarBmd?.dispose();
 		unlitBarBmd?.dispose();
-		for (bar in bars) bar?.bitmapData?.dispose();
+		
+		if (bars != null)
+		{
+			for (bar in bars) 
+				bar?.bitmapData?.dispose();
+		}
 
 		bg = null;
 		volumeText = null;
-		bars = [];
-		glowFilter   = null;
+		bars = null;
+		barStates = null;
+		glowFilter = null;
 		shadowFilter = null;
 	}
 }

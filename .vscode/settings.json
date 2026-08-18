@@ -1,0 +1,10 @@
+{
+    "discord.enabled": true,
+    "files.associations": {
+        "*.hxp": "haxe",
+        "*.hscript": "haxe",
+        "*.haxe": "haxe",
+        "*.hxs": "haxe",
+        "*.hxc": "haxe"
+    }
+}

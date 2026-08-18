@@ -66,11 +66,51 @@
 		},
 		{
 			"offsets": [-9, 29],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT-alt",
-			"loop": false,
+			"indices": [],
 			"name": "aleft"
+		},
+		{
+			"loop": false,
+			"offsets": [21, 1],
+			"anim": "intro",
+			"fps": 24,
+			"name": "intro",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [202, 201],
+			"anim": "singLEFT-final",
+			"fps": 24,
+			"name": "TransformationLEFT",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [-30, 319],
+			"anim": "singDOWN-final",
+			"fps": 24,
+			"name": "TransformationDOWN",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [150, 420],
+			"anim": "singUP-final",
+			"fps": 24,
+			"name": "TransformationUP",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [570, 481],
+			"anim": "singRIGHT-final",
+			"fps": 24,
+			"name": "TransformationRIGHT",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

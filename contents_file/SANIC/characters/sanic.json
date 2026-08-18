@@ -9,47 +9,63 @@
 			"name": "idle"
 		},
 		{
-			"offsets": [160, 80],
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-loop",
+			"indices": [12, 13, 14, 15],
+			"name": "idle"
+		},
+		{
+			"offsets": [206, 63],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
 			"indices": [],
-			"name": "singLEFT"
+			"name": "left"
 		},
 		{
-			"offsets": [-20, -230],
+			"offsets": [206, 63],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFT-loop",
+			"indices": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+			"name": "left"
+		},
+		{
+			"offsets": [0, -175],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
 			"indices": [],
-			"name": "singDOWN"
+			"name": "down"
 		},
 		{
-			"offsets": [-137, -5],
+			"offsets": [-77, 187],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
 			"indices": [],
-			"name": "singUP"
+			"name": "up"
 		},
 		{
-			"offsets": [-160, 20],
+			"offsets": [-80, -24],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
 			"indices": [],
-			"name": "singRIGHT"
+			"name": "right"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/sanicexe",
+	"image": "characters/Sanic",
 	"position": [0, 0],
 	"healthicon": "sanic",
 	"flip_x": false,
 	"healthbar_colors": [63, 71, 204],
 	"camera_position": [0, 0],
-	"sing_duration": 4,
-	"scale": 1.2,
+	"sing_duration": 8,
+	"scale": 1.4,
 	"_editor_isPlayer": false
 }

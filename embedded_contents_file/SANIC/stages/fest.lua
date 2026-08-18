@@ -1,12 +1,12 @@
-local SANIC_ANIMS = {'idle', 'singLEFT', 'singDOWN', 'singUP', 'singRIGHT'}
+local SANIC_ANIMS = {'idle', 'left', 'down', 'up', 'right'}
 
 local sentimentalActive = false
 
 local function createBackdropClone(name, velocity, scale)
 	createInstance(name, 'flixel.addons.display.FlxBackdrop', {nil, 0x01, -200})
-	loadFrames(name, 'characters/sanicexe')
-	for _, anim in ipairs(SANIC_ANIMS) do
-		addAnimationByPrefix(name, anim, anim, 24, false)
+	loadFrames(name, 'characters/Sanic')
+	for i, anim in ipairs(SANIC_ANIMS) do
+		addAnimationByPrefix(name, (i > 1 and getProperty('singAnimations['..(i - 2)..']') or 'idle'), anim, 24, false)
 	end
 	addInstance(name)
 	if scale then scaleObject(name, scale, scale, false) end

@@ -204,6 +204,9 @@ class Project extends HXProject
         if(isAndroid())
             haxelibs.push(new Haxelib("extension-androidtools", "git"));
 
+        if(isCPP() && isWindows())
+            haxelibs.push(new Haxelib("sl-windows-api"));
+
         if (LUA_ALLOWED.isEnabled(this)) {
             haxelibs.push(new Haxelib("hxluajit"));
             haxelibs.push(new Haxelib("hxluajit-wrapper"));

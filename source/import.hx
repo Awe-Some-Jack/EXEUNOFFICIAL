@@ -96,5 +96,11 @@ import extension.androidtools.os.Build.VERSION_CODES as AndroidVersionCode;
 import mobile.backend.MobileUtil;
 #end
 
+// Windows API
+#if sl_windows_api
+import winapi.*;
+import winapi.gdi.*;
+#end
+
 using StringTools;
 #end

@@ -81,6 +81,11 @@ class Main extends Sprite
 		backend.CrashHandler.init();
 		#end
 
+		#if sl_windows_api
+		WindowsAPI.disableWindowsReport();
+		WindowsAPI.disableWindowsGhosting();
+		#end
+
 		#if mobile
 		#if android
 		MobileUtil.getPermissions();

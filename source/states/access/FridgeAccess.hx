@@ -149,7 +149,7 @@ class FridgeAccess extends MusicBeatState
 		add(shit);
 
 		/*ref = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/ref inside.webp'));
-		ref.setGraphicSize(1280, 720);
+		ref.setGraphicSize(FlxG.width, FlxG.height);
 		ref.updateHitbox();
 		ref.alpha = 0.5;
 		ref.scrollFactor.set();

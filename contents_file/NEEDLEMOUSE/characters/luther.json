@@ -2,49 +2,49 @@
 	"animations": [
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "idle",
-			"loop": false,
+			"indices": [],
 			"name": "idle copia"
 		},
 		{
 			"offsets": [19, 0],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left copia"
 		},
 		{
 			"offsets": [-6, 1],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down copia"
 		},
 		{
 			"offsets": [-5, 46],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up copia"
 		},
 		{
 			"offsets": [-5, 2],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right copia"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/lutherherwolrd",
-	"position": [150, 300],
+	"position": [150, 310],
 	"healthicon": "luther",
 	"flip_x": false,
 	"healthbar_colors": [161, 161, 161],

@@ -852,6 +852,10 @@ class SkullPrompt
 					_player.animation.play("idle");
 				}
 		}
+        
+		// searching skull then you make noise. wip because still need to add more things to the skull 
+		// like the cutscene DO NOT TOUCH
+		if (_state == SkSearching || _state == SkResult) _player.isMakingNoise = true;
 	}
 }
 
@@ -1153,6 +1157,10 @@ class Totem
 					if (_type == Fake) _sprite.animation.play("idle");
 				}
 		}
+        
+		// if player makes noise then monster detects it
+		// like i mean if you hide in a totem without no reason
+		if (_state == ToHiding || _state == ToRevealing) _player.isMakingNoise = true;
 
 		_updateHideZoom(elapsed);
 	}

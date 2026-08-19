@@ -17,6 +17,9 @@ class TVCutscene
 	public var onSkullWin:Void->Void;
 	public var skullUsedOnce:Bool = false;
 
+	public var skullCSPlaying(get, never):Bool;
+	function get_skullCSPlaying() return _csSkull != null && _csSkull.playing;
+
 	var _csSkull:CSSkull;
 	var _intro:IntroCutscene;
 

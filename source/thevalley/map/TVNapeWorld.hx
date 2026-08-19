@@ -9,6 +9,7 @@ import nape.shape.Polygon;
 import nape.geom.MarchingSquares;
 import nape.geom.AABB;
 import nape.geom.Vec2;
+import nape.geom.Ray;
 import nape.callbacks.CbType;
 import nape.callbacks.PreListener;
 import nape.callbacks.PreCallback;
@@ -62,9 +63,22 @@ class TVNapeWorld
 			function(cb:PreCallback):Null<PreFlag>
 			{
 				var dynBody:Body = cast(cb.int1, Body);
+
 				if (dynBody.velocity.y < -15.0)
 					return PreFlag.IGNORE;
-				return PreFlag.ACCEPT;
+
+				var footY = dynBody.bounds.y + dynBody.bounds.height;
+				var orig = Vec2.get(dynBody.position.x, footY - 2.0);
+				var down = Vec2.get(0, 1);
+				var ray  = new Ray(orig, down);
+				ray.maxDistance = (10.0);
+				var res = FlxNapeSpace.space.rayCast(ray, false);
+				orig.dispose();
+				down.dispose();
+				var standingOnPlatform = res != null && res.shape.body.cbTypes.has(CB_PLATFORM);
+				if (res != null) res.dispose();
+
+				return standingOnPlatform ? PreFlag.ACCEPT : PreFlag.IGNORE;
 			},
 			0,
 			false

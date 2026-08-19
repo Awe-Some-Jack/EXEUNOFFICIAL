@@ -116,6 +116,11 @@ class HUD
 	var _staminaFill:FlxSprite;
 	var _staminaRatio:Float = 1.0;
 
+	var _radarCenter:FlxSprite;
+	var _radarDot:FlxSprite;
+	var _radarAlpha:Float = 0;
+	var _radarTarget:Float = 0;
+
 	var _targetAlpha:Float = 0.0;
 	var _alpha:Float       = 0.0;
 
@@ -132,6 +137,7 @@ class HUD
 
 	public var onDeath:Void->Void = null;
 	public var onShardsComplete:Void->Void = null;
+	public var forceShardsVisible:Bool = false;
 
 	var _shardPop:Array<Float>  = [0, 0, 0, 0, 0, 0];
 	var _shardPopSc:Float       = 2.2;
@@ -243,6 +249,20 @@ class HUD
 		_staminaFill.cameras = [cam];
 		_staminaFill.alpha = 0;
 		_group.add(_staminaFill);
+
+		_radarCenter = new FlxSprite(900.0 - 3, 660.0 - 3);
+		_radarCenter.makeGraphic(6, 6, 0xFF555555);
+		_radarCenter.scrollFactor.set(0, 0);
+		_radarCenter.cameras = [cam];
+		_radarCenter.alpha = 0;
+		_group.add(_radarCenter);
+
+		_radarDot = new FlxSprite(900.0 - 5, 660.0 - 5);
+		_radarDot.makeGraphic(10, 10, 0xFFFF3030);
+		_radarDot.scrollFactor.set(0, 0);
+		_radarDot.cameras = [cam];
+		_radarDot.alpha = 0;
+		_group.add(_radarDot);
 	}
 
 	public function setVisible(show:Bool):Void
@@ -268,6 +288,18 @@ class HUD
 		_staminaFill.updateHitbox();
 		_staminaFill.x = _staminaBg.x;
 		_staminaFill.y = _staminaBg.y;
+	}
+
+	public function setMonsterDirection(dx:Float, dy:Float, active:Bool):Void
+	{
+		_radarTarget = active ? 1.0 : 0.0;
+		if (!active) return;
+
+		var angle = Math.atan2(dy, dx);
+		var cx = 900.0;
+		var cy = 660.0;
+		_radarDot.x = cx + Math.cos(angle) * 22.0 - 5;
+		_radarDot.y = cy + Math.sin(angle) * 22.0 - 5;
 	}
 
 	public function update(elapsed:Float):Void
@@ -325,7 +357,7 @@ class HUD
 			_shardNotifyTimer -= elapsed;
 			if (_shardNotifyTimer < 0) _shardNotifyTimer = 0;
 		}
-		var shardTarget = (_shardNotifyTimer > 0) ? _alpha : 0.0;
+		var shardTarget = (_shardNotifyTimer > 0 || forceShardsVisible) ? 1.0 : 0.0;
 		if (_shardAlpha != shardTarget)
 		{
 			var spd = 1.0 - Math.pow(1.0 / 4.0, elapsed);
@@ -334,6 +366,15 @@ class HUD
 		}
 		_shardsHud.alpha  = _shardAlpha;
 		_shardsDisp.alpha = _shardAlpha;
+
+		if (_radarAlpha != _radarTarget)
+		{
+			var rspd = 1.0 - Math.pow(1.0 / 4.0, elapsed);
+			_radarAlpha += (_radarTarget - _radarAlpha) * rspd;
+			if (Math.abs(_radarAlpha - _radarTarget) < 0.01) _radarAlpha = _radarTarget;
+		}
+		_radarCenter.alpha = _radarAlpha * 0.6;
+		_radarDot.alpha    = _radarAlpha;
 
 		var a = _shardAlpha;
 		for (i in 0..._shards.length)

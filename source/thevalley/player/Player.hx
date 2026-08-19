@@ -58,6 +58,7 @@ class Player extends FlxSprite
 	public var isRunning:Bool     = false;
 	public var isHidden:Bool      = false;
 	public var isHiding:Bool      = false;
+	public var isMakingNoise:Bool = false;
 	public var lockedAnim:String  = null;
 	public var stamina:Float      = 180;
 
@@ -137,7 +138,7 @@ class Player extends FlxSprite
 	{
 		if (body == null) { super.update(elapsed); return; }
 
-		if (isHidden)
+		if (isHidden || isHiding)
 		{
 			body.velocity.setxy(0, 0);
 			body.angularVel = 0;

@@ -93,7 +93,7 @@ function onStepHit() {
         case 1440: 
             ignoreLuther = true;
             ignoreBf = true;
-        case 3001: 
+        case 3020: 
             luzbf.visible = luzther.visible = false;
             boyfriend.shader = dad.shader = gf.shader = null;
     }

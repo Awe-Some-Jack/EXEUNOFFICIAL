@@ -144,7 +144,8 @@
 		[
 			103997.959183674,
 			[
-				["Change Character", "BF", "bf-needle"]
+				["Change Character", "BF", "bf-needle"],
+				["Change Character", "GF", "gf-needlemouse"]
 			]
 		],
 		[
@@ -154,21 +155,52 @@
 			]
 		],
 		[
-			104097.959183674,
+			110497.959183674,
 			[
-				["Change Character", "GF", "gf-needlemouse"]
+				["bloomFlash", "0.5, 0", "0.5, cubeOut"],
+				["Tween Camera Zoom", "0.7, true", "0.5, cubeOut"]
 			]
 		],
 		[
-			110497.959183674,
+			112097.959183674,
 			[
-				["bloomFlash", "0.5, 0", "0.5, cubeOut"]
+				["Tween Camera Zoom", "0.75, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			113697.959183674,
+			[
+				["Tween Camera Zoom", "0.85, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			115297.959183674,
+			[
+				["Tween Camera Zoom", "0.65, true", "0.5, cubeOut"]
 			]
 		],
 		[
 			116897.959183674,
 			[
 				["bloomFlash", "0.5, 0", "0.5, cubeOut"]
+			]
+		],
+		[
+			118497.959183674,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			120097.959183674,
+			[
+				["Tween Camera Zoom", "0.75, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			121697.959183674,
+			[
+				["Tween Camera Zoom", "0.8, true", "0.75, cubeOut"]
 			]
 		],
 		[
@@ -196,7 +228,7 @@
 		[
 			136097.959183674,
 			[
-				["Tween Camera Zoom", "0.7, true", "0.5, cubeOut"]
+				["Tween Camera Zoom", "0.75, true", "0.5, cubeOut"]
 			]
 		],
 		[
@@ -220,10 +252,40 @@
 			]
 		],
 		[
+			147297.959183674,
+			[
+				["Tween Camera Zoom", "0.65, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			148897.959183674,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			150497.959183674,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.75, cubeOut"]
+			]
+		],
+		[
 			152097.959183674,
 			[
 				["Tween Camera Zoom", "0.5, true", "0.5, cubeOut"],
 				["bloomFlash", "0.25, 0", "0.5, cubeOut"]
+			]
+		],
+		[
+			153697.959183674,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			156897.959183674,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.5, cubeOut"]
 			]
 		],
 		[
@@ -245,6 +307,12 @@
 			]
 		],
 		[
+			166897.959183674,
+			[
+				["Tween Camera Zoom", "0.75, true", "0.75, cubeOut"]
+			]
+		],
+		[
 			167497.959183674,
 			[
 				["bloomFlash", "0.25, 0", "0.5, cubeOut"]
@@ -253,13 +321,21 @@
 		[
 			168097.959183674,
 			[
-				["bloomFlash", "0.25, 0", "0.5, cubeOut"]
+				["bloomFlash", "0.25, 0", "0.5, cubeOut"],
+				["Tween Camera Zoom", "0.6, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			170497.959183674,
+			[
+				["Tween Camera Zoom", "0.75, true", "0.75, cubeOut"]
 			]
 		],
 		[
 			171297.959183674,
 			[
-				["bloomFlash", "0.25, 0", "0.5, cubeOut"]
+				["bloomFlash", "0.25, 0", "0.5, cubeOut"],
+				["Tween Camera Zoom", "0.6, true", "0.5, cubeOut"]
 			]
 		],
 		[
@@ -275,6 +351,12 @@
 			]
 		],
 		[
+			179797.959183674,
+			[
+				["Tween Camera Zoom", "0.8, true", "0.5, cubeOut"]
+			]
+		],
+		[
 			180297.959183674,
 			[
 				["bloomFlash", "0.25, 0", "0.5, cubeOut"]
@@ -283,13 +365,21 @@
 		[
 			180897.959183674,
 			[
-				["bloomFlash", "0.25, 0", "0.5, cubeOut"]
+				["bloomFlash", "0.25, 0", "0.5, cubeOut"],
+				["Tween Camera Zoom", "0.6, true", "0.5, cubeOut"]
+			]
+		],
+		[
+			182497.959183674,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.5, cubeOut"]
 			]
 		],
 		[
 			184097.959183674,
 			[
-				["bloomFlash", "0.25, 0", "0.5, cubeOut"]
+				["bloomFlash", "0.25, 0", "0.5, cubeOut"],
+				["Tween Camera Zoom", "0.6, true", "0.5, cubeOut"]
 			]
 		],
 		[
@@ -317,6 +407,12 @@
 			]
 		],
 		[
+			196997.959183674,
+			[
+				["Tween Camera Zoom", "0.8, true", "2, cubeOut"]
+			]
+		],
+		[
 			203297.959183674,
 			[
 				["bloomFlash", "0.25, 0", "0.5, cubeOut"]
@@ -329,7 +425,7 @@
 			]
 		],
 		[
-			216097.959183674,
+			212897.959183674,
 			[
 				["cameracenter", "false", ""]
 			]
@@ -337,15 +433,15 @@
 		[
 			219297.959183674,
 			[
-				["Tweening Camera", "-100, 0", "0.5, cubeOut"],
-				["Tween Camera Zoom", "0.65, true", "0.5, cubeOut"]
+				["Tweening Camera", "-120, 0", "0.5, cubeOut"],
+				["Tween Camera Zoom", "0.72, true", "0.5, cubeOut"]
 			]
 		],
 		[
 			220097.959183674,
 			[
 				["Tweening Camera", "-225, 0", "0.5, cubeOut"],
-				["Tween Camera Zoom", "0.75, true", "0.5, cubeOut"]
+				["Tween Camera Zoom", "0.77, true", "0.5, cubeOut"]
 			]
 		],
 		[
@@ -378,13 +474,21 @@
 		[
 			228897.959183674,
 			[
-				["bloomFlash", "0.25, 0", "0.3, cubeOut"]
+				["bloomFlash", "0.25, 0", "0.3, cubeOut"],
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			232097.959183674,
+			[
+				["Tween Camera Zoom", "0.8, true", "0.75, cubeOut"]
 			]
 		],
 		[
 			235297.959183674,
 			[
-				["bloomFlash", "0.25, 0", "0.3, cubeOut"]
+				["bloomFlash", "0.25, 0", "0.3, cubeOut"],
+				["Tween Camera Zoom", "0.6, true", "0.3, cubeOut"]
 			]
 		],
 		[
@@ -396,7 +500,13 @@
 		[
 			248097.959183674,
 			[
-				["cameracenter", "false", ""]
+				["Tween Camera Zoom", "0.75, true", "1, quartOut"]
+			]
+		],
+		[
+			254497.959183674,
+			[
+				["Tween Camera Zoom", "0.7, true", "1, quartOut"]
 			]
 		],
 		[
@@ -421,6 +531,12 @@
 			286497.959183674,
 			[
 				["Tween Camera Zoom", "0.55, true", "10, cubeOut"]
+			]
+		],
+		[
+			299239.455782314,
+			[
+				["Change Character", "GF", "gf-needlemouse"]
 			]
 		],
 		[
@@ -1716,7 +1832,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,
@@ -2100,7 +2216,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,
@@ -2202,7 +2318,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"lengthInSteps": 16,
@@ -2243,7 +2359,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,
@@ -2290,7 +2406,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"lengthInSteps": 16,
@@ -2330,7 +2446,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,
@@ -2371,7 +2487,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"lengthInSteps": 16,
@@ -2392,7 +2508,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,
@@ -2412,7 +2528,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"lengthInSteps": 16,
@@ -2434,7 +2550,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,
@@ -2465,7 +2581,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"lengthInSteps": 16,
@@ -2512,7 +2628,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,
@@ -2555,7 +2671,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"lengthInSteps": 16,
@@ -2653,7 +2769,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,
@@ -2712,7 +2828,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,
@@ -2768,7 +2884,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"lengthInSteps": 16,
@@ -3306,7 +3422,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"lengthInSteps": 16,
@@ -3618,7 +3734,7 @@
 			"altAnim": false,
 			"bpm": 150,
 			"changeBPM": false,
-			"mustHitSection": false
+			"mustHitSection": true
 		},
 		{
 			"lengthInSteps": 16,
@@ -6278,9 +6394,9 @@
 		}
 	],
 	"song": "Her World",
-	"validScore": true,
 	"needsVoices": true,
-	"stage": "needle",
+	"stage": "herworld",
+	"validScore": true,
 	"speed": 3,
 	"bpm": 147,
 	"format": "psych_v1_convert"

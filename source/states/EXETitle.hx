@@ -49,6 +49,8 @@ class EXETitle extends MusicBeatState
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
+		trace(FlxG.save.data.goToFinalEscape);
+
 		if (!initialized)
 		{
 			ClientPrefs.loadPrefs();

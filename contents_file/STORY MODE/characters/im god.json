@@ -1,20 +1,20 @@
 {
 	"animations": [
 		{
-			"offsets": [157, 368],
 			"loop": true,
-			"fps": 24,
+			"offsets": [163, 334],
 			"anim": "idle",
-			"indices": [],
-			"name": "Símbolo 9"
-		},
-		{
-			"loop": true,
-			"offsets": [156, 368],
-			"anim": "god",
 			"fps": 24,
 			"name": "Símbolo 9",
 			"indices": []
+		},
+		{
+			"offsets": [156, 368],
+			"loop": true,
+			"fps": 24,
+			"anim": "god",
+			"indices": [],
+			"name": "Símbolo 9"
 		}
 	],
 	"vocals_file": "",

@@ -7,10 +7,59 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.addons.display.FlxBackdrop;
+import flixel.group.FlxGroup.FlxTypedGroup;
 
 import openfl.display.BitmapData;
 
 import states.EXEMenu;
+
+class CardSprite extends FlxSprite
+{
+    public var finalX:Float = 0;
+    public var finalY:Float = 0;
+    public var targetAlpha:Float = 0.5;
+    public var introDone:Bool = false;
+
+    public function new(x:Float = 0, y:Float = 0)
+    {
+        super(x, y);
+    }
+}
+
+class OrbitSprite extends FlxSprite
+{
+    public var centerX:Float = 0;
+    public var centerY:Float = 0;
+    public var radius:Float = 40.0;
+    public var speed:Float = 2.5;
+    public var angleOffset:Float = 0.0;
+
+    private var timer:Float = 0.0;
+
+    public function new(x:Float = 0, y:Float = 0, ?imagePath:String)
+    {
+        super(x, y);
+
+        if (imagePath != null)
+            loadGraphic(Paths.getBitmapData(imagePath));
+    }
+
+    public function setCenterFromCurrentPos():Void
+    {
+        centerX = x;
+        centerY = y;
+    }
+
+    override public function update(elapsed:Float):Void
+    {
+        super.update(elapsed);
+
+        timer += speed * elapsed;
+
+        x = centerX + Math.cos(timer + angleOffset) * radius;
+        y = centerY + Math.sin(timer + angleOffset) * radius;
+    }
+}
 
 class ExtrasMenu extends MusicBeatState
 {
@@ -38,20 +87,29 @@ class ExtrasMenu extends MusicBeatState
     var nowPlayingSong:FlxText;
     var extrasLogo:FlxSprite;
 
+    var luis:OrbitSprite;
+    var lordX:OrbitSprite;
+
+    var baseScale:Float = 1.;
+    var ssGrp:FlxTypedGroup<CardSprite>;
+    
+    var globalTime:Float = 0.0;
+
     override function create():Void
     {
         Paths.clearStoredMemory();
         Paths.clearUnusedMemory();
 
-        FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/ExtrasMenu.ogg'));
-
         buildBG();
+        buildVideos();
         buildBox();
         buildDisco();
         buildLogo();
         buildMenu();
         buildDescBar();
         changeSelection(0);
+
+        FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/ExtrasMenu.ogg'));
 
         np = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
         np.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
@@ -78,6 +136,14 @@ class ExtrasMenu extends MusicBeatState
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+        
+        globalTime += elapsed;
+
+        if (ssGrp != null)
+        {
+            for (i in 0...ssGrp.members.length)
+                objBehavior(i, elapsed);
+        }
 
         if (nowPlayingSong != null)
         {
@@ -122,6 +188,80 @@ class ExtrasMenu extends MusicBeatState
         }
     }
 
+    function buildVideos():Void
+    {
+        ssGrp = new FlxTypedGroup<CardSprite>();
+        add(ssGrp);
+
+        final baseImages:Array<Int> = [1, 2, 3, 4, 5];
+        FlxG.random.shuffle(baseImages);
+
+        final extraImage:Int = FlxG.random.getObject(baseImages);
+        final imageList:Array<Int> = baseImages.copy();
+        imageList.push(extraImage);
+
+        FlxG.random.shuffle(imageList);
+
+        for (i in 0...6)
+        {
+            final spr = new CardSprite();
+            
+            final imgName:String = Std.string(imageList[i]);
+            spr.loadGraphic(Paths.getPath('extras/ss/$imgName.webp', 'exe'));
+            spr.scale.set(0.375, 0.375);
+            spr.updateHitbox();
+
+            final rightEdge = FlxG.width - spr.width;
+            switch (i) {
+                case 0:
+                    spr.finalX = rightEdge - 200;
+                    spr.finalY = 20;
+                case 1:
+                    spr.finalX = rightEdge - 20;
+                    spr.finalY = 120;
+                case 2:
+                    spr.finalX = rightEdge - 250;
+                    spr.finalY = 220;
+                case 3:
+                    spr.finalX = rightEdge - 60;
+                    spr.finalY = 320;
+                case 4:
+                    spr.finalX = rightEdge - 180;
+                    spr.finalY = 420;
+                case 5:
+                    spr.finalX = rightEdge;
+                    spr.finalY = 510;
+            }
+
+            baseScale = spr.scale.x;
+
+            spr.blend = ALPHA;
+            spr.ID = i;
+
+            spr.x = spr.finalX;
+            spr.y = spr.finalY;
+            spr.alpha = spr.targetAlpha;
+            spr.introDone = true;
+            
+            ssGrp.add(spr);
+        }
+    }
+
+    public function objBehavior(idx:Int = 0, elapsed:Float = 0)
+    {
+        final spr = ssGrp.members[idx];
+        if (spr == null || !spr.introDone) return;
+
+        final linearDrift = Math.sin(globalTime * 0.8 + idx * 0.5) * 50;
+        spr.x = spr.finalX + linearDrift;
+        spr.y = spr.finalY + linearDrift * 0.5;
+
+        final rotDirection = (idx % 2 == 0) ? 1 : -1;
+        spr.angle += rotDirection * (8 + idx * 2.0) * elapsed;
+
+        spr.alpha = spr.targetAlpha + Math.sin(globalTime * 1.5 + idx) * 0.1;
+    }
+
     override function openSubState(subState:flixel.FlxSubState):Void
     {
         canMove = false;
@@ -137,8 +277,6 @@ class ExtrasMenu extends MusicBeatState
         canMove = true;
         if (np != null) np.visible = true;
         if (nowPlayingSong != null) nowPlayingSong.visible = true;
-        for (cam in FlxG.cameras.list) if (cam?.filters != null) Main.resetSpriteCache(cam.flashSprite);
-        if (FlxG.game != null) Main.resetSpriteCache(FlxG.game);
     }
 
     override public function destroy():Void
@@ -187,12 +325,36 @@ class ExtrasMenu extends MusicBeatState
 
     function buildBox():Void
     {
+        luis = new OrbitSprite(0, 0, "assets/exe/extras/luis.webp");
+        luis.scale.set(0.07, 0.07);
+        luis.updateHitbox();
+        luis.screenCenter();
+        luis.x += 475;
+        luis.y -= 50;
+        luis.angle += 15;
+        luis.radius = 20;
+        luis.speed = 0.75;
+        luis.setCenterFromCurrentPos();
+        add(luis);
+
+        lordX = new OrbitSprite(0, 0, "assets/exe/extras/lordx.webp");
+        lordX.scale.set(0.07, 0.07);
+        lordX.updateHitbox();
+        lordX.screenCenter();
+        lordX.x += 200;
+        lordX.y -= 50;
+        lordX.radius = 20;
+        lordX.speed = 0.75;
+        lordX.angleOffset = Math.PI;
+        lordX.setCenterFromCurrentPos();
+        add(lordX);
+        
         box = new FlxSprite(750, 120).loadGraphic(Paths.getBitmapData("assets/exe/extras/box.webp"));
         box.scale.set(0.3, 0.3);
         box.updateHitbox();
         add(box);
 
-        sumky = new FlxSprite(675, 122);
+        sumky = new FlxSprite(box.x - 75, box.y + 2);
         sumky.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow(
             Paths.getBitmapData('assets/exe/extras/sumky.webp'),
             openfl.utils.Assets.getText('assets/exe/extras/sumky.xml')
@@ -390,16 +552,26 @@ class ExtrasMenu extends MusicBeatState
         FlxTween.cancelTweensOf(box);
         FlxTween.cancelTweensOf(box.scale);
         if (sumky != null) FlxTween.cancelTweensOf(sumky);
+        if (luis != null) FlxTween.cancelTweensOf(luis);
+        if (lordX != null) FlxTween.cancelTweensOf(lordX);
 
         box.scale.set(0.6, 0.6);
         box.updateHitbox();
         box.x     = 200;
         box.y     = 120;
         box.alpha = 0;
+
         if (sumky != null) sumky.alpha = 0;
+        if (luis != null) luis.alpha = 0;
+        if (lordX != null) lordX.alpha = 0;
+
         FlxTween.tween(box, {x: 750}, 0.5, {ease: FlxEase.expoOut});
         FlxTween.tween(box, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
+
         if (sumky != null) FlxTween.tween(sumky, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
+        if (luis != null) FlxTween.tween(luis, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
+        if (lordX != null) FlxTween.tween(lordX, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
+
         FlxTween.tween(box.scale, {x: 0.3, y: 0.3}, 0.5, {ease: FlxEase.expoOut, onUpdate: (_) -> {
             final cx = box.x;
             final cy = box.y;

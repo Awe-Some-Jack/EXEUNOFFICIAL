@@ -77,6 +77,8 @@ class Main extends Sprite
 	{
 		super();
 
+		trace("sonic.exe: hola");
+
 		#if CRASH_HANDLER
 		backend.CrashHandler.init();
 		#end

@@ -46,7 +46,7 @@ function onCreate()
 		}
 	}
 
-	commercial = new VideoSprite(430, 150, false);
+	commercial = new VideoSprite(650, 150, false);
 	commercial.onFormat(() -> {
 		commercial.scale.set(0.5, 0.7);
 		commercial.updateHitbox();

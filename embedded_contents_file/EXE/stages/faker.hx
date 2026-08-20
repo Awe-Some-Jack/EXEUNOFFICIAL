@@ -48,6 +48,7 @@ function onCreate()
 	overlay.screenCenter();
 	overlay.scrollFactor.set();
 	game.add(overlay);
+	setVar('glowfaker', faker[faker.length - 1].sprite);
 
 	blackbgxd = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 	blackbgxd.screenCenter();

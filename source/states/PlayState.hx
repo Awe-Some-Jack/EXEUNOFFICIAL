@@ -2564,8 +2564,12 @@ class PlayState extends MusicBeatState
 		gameplayCam.tweenCamIn();
 	}
 
+	var finishingSong:Bool = false;
 	public function finishSong(?ignoreNoteOffset:Bool = false):Void
 	{
+		if (finishingSong) return;
+		finishingSong = true;
+
 		FlxG.sound.music.volume = 0;
 
 		vocals.volume = 0;
@@ -2616,9 +2620,9 @@ class PlayState extends MusicBeatState
 		hasRestarted = false;
 
 		final ret:Dynamic = callOnScripts('onEndSong', null, true);
-		if(ret == LuaUtils.Function_Stop || transitioning) 
+		if(ret == LuaUtils.Function_Stop || transitioning)
 			return true;
-			
+
 		transitioning = true;
 
 		#if !switch

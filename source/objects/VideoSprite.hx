@@ -27,6 +27,8 @@ class VideoSprite extends FlxSpriteGroup
 	public var pie:FlxSprite;
 	public var pieTrack:FlxSprite;
 
+	var skipKeyReleasedOnce:Bool = false;
+
 	private static final SKIP_RING_SCALE:Float = 0.35;
 	private static final SKIP_RING_MARGIN_X:Float = 24;
 	private static final SKIP_RING_MARGIN_Y:Float = 70;
@@ -268,7 +270,7 @@ class VideoSprite extends FlxSpriteGroup
 			pieTrack.visible = true;
 			pieTrack.alpha = 0.35;
 
-			if (FlxG.keys.pressed.SPACE)
+			if (FlxG.keys.pressed.SPACE && skipKeyReleasedOnce)
 			{
 				skipHold += elapsed;
 				var progress:Float = skipHold / skipNeed;
@@ -286,6 +288,9 @@ class VideoSprite extends FlxSpriteGroup
 			}
 			else
 			{
+				if (!FlxG.keys.pressed.SPACE)
+					skipKeyReleasedOnce = true;
+
 				skipHold = 0;
 				pie.scale.set(0, 0);
 			}

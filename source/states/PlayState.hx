@@ -3118,14 +3118,13 @@ class PlayState extends MusicBeatState
 	{
 		if(ClientPrefs.data.ghostTapping) return; //fuck it
 
-		noteMissCommon(direction, null, false);
-
+		noteMissCommon(direction);
 		stagesFunc(function(stage:BaseStage) stage.noteMissPress(direction));
 		_keyArgs[0] = direction;
 		callOnScripts('noteMissPress', _keyArgs);
 	}
 
-	function noteMissCommon(direction:Int, note:Note = null, countAsMiss:Bool = true)
+	function noteMissCommon(direction:Int, note:Note = null)
 	{
 		// score and data
 		var subtract:Float = pressMissDamage;
@@ -3170,7 +3169,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if(countAsMiss && instakillOnMiss)
+		if(instakillOnMiss)
 		{
 			vocals.volume = 0;
 			opponentVocals.volume = 0;
@@ -3178,16 +3177,13 @@ class PlayState extends MusicBeatState
 		}
 
 		var lastCombo:Int = combo;
-		if(countAsMiss) combo = 0;
+		combo = 0;
 
 		health -= subtract * healthLoss;
-		if(countAsMiss)
-		{
-			songScore -= 10;
-			if(!endingSong) songMisses++;
-			totalPlayed++;
-			RecalculateRating(true);
-		}
+		songScore -= 10;
+		if(!endingSong) songMisses++;
+		totalPlayed++;
+		RecalculateRating(true);
 
 		// play character anims
 		var char:Character = boyfriend;

@@ -225,6 +225,39 @@ class EXEMenu extends MusicBeatState
 		});
 	}
 
+	// holding scroll feature
+	var _holdRepeatTimer:Float = 0.0;
+	var holdDelay:Float = 0.35;     
+	var repeatInterval:Float = 0.08; 
+
+	function updateScrollInput(elapsed:Float){
+			var upJustPressed = controls.UI_UP_P;
+			var downJustPressed = controls.UI_DOWN_P;
+			var upPressed = controls.UI_UP;
+			var downPressed = controls.UI_DOWN;
+
+			if ((upJustPressed || downJustPressed) && cooldownTimer <= 0)
+			{
+				_holdRepeatTimer = 0.0;
+				if (upJustPressed) changeSelection(-1, true);
+				if (downJustPressed) changeSelection(1, false);
+			}
+			else if (upPressed || downPressed)
+			{
+				_holdRepeatTimer += elapsed;
+				if (_holdRepeatTimer >= holdDelay)
+				{
+					_holdRepeatTimer -= repeatInterval;
+					if (upPressed) changeSelection(-1, true);
+					if (downPressed) changeSelection(1, false);
+				}
+			}
+			else
+			{
+				_holdRepeatTimer = 0.0;
+			}
+	}
+
 	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
@@ -243,11 +276,9 @@ class EXEMenu extends MusicBeatState
 
 		if (canInteract && !isBlinking)
 		{
-			if (controls.UI_UP_P && cooldownTimer <= 0)
-				changeSelection(-1, true);
-			else if (controls.UI_DOWN_P && cooldownTimer <= 0)
-				changeSelection(1, false);
-			else if (controls.BACK)
+			updateScrollInput(elapsed);
+			
+			if (controls.BACK)
 			{
 				canInteract = false;
 				FlxG.sound.play(Paths.sound('cancelMenu'));

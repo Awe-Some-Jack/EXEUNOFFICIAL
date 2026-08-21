@@ -6,6 +6,13 @@ function onCreatePost()
 	lastSentSquares = -1
 	if not isFatalitySong then return end
 
+	setPropertyFromClass('openfl.Lib', 'application.window.borderless', true)
+
+	setProperty('healthBar.visible', false)
+	setProperty('healthBarBG.visible', false)
+	setProperty('iconP1.visible', false)
+	setProperty('iconP2.visible', false)
+
 	runHaxeCode([[
 		var processClass = Type.resolveClass('sys.io.Process');
 		if (processClass != null) {
@@ -20,6 +27,13 @@ function onCreatePost()
 end
 
 local function closeHealthBar()
+	setPropertyFromClass('openfl.Lib', 'application.window.borderless', false)
+
+	setProperty('healthBar.visible', true)
+	setProperty('healthBarBG.visible', true)
+	setProperty('iconP1.visible', true)
+	setProperty('iconP2.visible', true)
+
 	runHaxeCode([[
 		var proc = getVar('healthBarProcess');
 		if (proc != null) {
@@ -60,7 +74,7 @@ function onUpdatePost(elapsed)
 	if healthPercent < 0 then healthPercent = 0 end
 	if healthPercent > 100 then healthPercent = 100 end
 
-	local squares = math.floor((healthPercent / 100) * 25 + 0.5)
+	local squares = math.floor((healthPercent / 100) * 22 + 0.5)
 	if squares == lastSentSquares then return end
 	lastSentSquares = squares
 
@@ -77,7 +91,6 @@ function onGameOver()
 	return Function_Continue
 end
 
-function onExitSong()
+function onDestroy()
 	if isFatalitySong then closeHealthBar() end
-	return Function_Continue
 end

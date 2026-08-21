@@ -228,7 +228,7 @@ class EXESoundTray extends FlxSoundTray
 
 	function updateBars(vol:Float, force:Bool = false):Void
 	{
-		var activeBars:Int = FlxG.sound.muted ? 0 : Math.round(FlxG.sound.logToLinear(vol) * 10);
+		var activeBars:Int = FlxG.sound.muted ? 0 : Math.round(vol * 10);
 		activeBars = Std.int(Math.max(0, Math.min(NUM_BARS, activeBars)));
 
 		if (!force && activeBars == _lastActiveBars) return;

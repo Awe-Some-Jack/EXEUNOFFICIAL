@@ -10,6 +10,7 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
+import flixel.math.FlxMath;
 
 import backend.Song;
 import backend.Highscore;

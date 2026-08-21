@@ -516,8 +516,9 @@ class SoundFrontEnd
 	public function changeVolume(Amount:Float):Void
 	{
 		muted = false;
-		volume = Math.max(0, Math.min(1, volume + Amount));
-		// volume = linearToLog(logToLinear(volume) + Amount);
+		//descarted!
+		// volume = Math.max(0, Math.min(1, volume + Amount));
+		volume = linearToLog(logToLinear(volume) + Amount);
 		showSoundTray(Amount > 0);
 	}
 

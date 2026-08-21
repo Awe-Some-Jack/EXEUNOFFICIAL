@@ -63,17 +63,21 @@ class EXESoundTray extends FlxSoundTray
 	final filterActive:Array<BitmapFilter> = [];
 	final filterInactive:Array<BitmapFilter> = [];
 
+	var volumeMaxSound:String = "";
+
 	public function new()
 	{
 		super();
 
 		removeChildren();
 
+		volumeMaxSound = "assets/shared/sounds/VolumeSwitchMax.ogg";
 		volumeUpSound = "assets/shared/sounds/VolumeSwitch.ogg";
 		volumeDownSound = "assets/shared/sounds/VolumeSwitch.ogg";
 
 		if (!silent)
 		{
+			FlxG.sound.cache('$volumeMaxSound');
 			FlxG.sound.cache('$volumeUpSound');
 			FlxG.sound.cache('$volumeDownSound');
 		}
@@ -228,7 +232,7 @@ class EXESoundTray extends FlxSoundTray
 
 	function updateBars(vol:Float, force:Bool = false):Void
 	{
-		var activeBars:Int = FlxG.sound.muted ? 0 : Math.round(vol * 10);
+		var activeBars:Int = FlxG.sound.muted ? 0 : Math.round(FlxG.sound.logToLinear(vol) * 10);
 		activeBars = Std.int(Math.max(0, Math.min(NUM_BARS, activeBars)));
 
 		if (!force && activeBars == _lastActiveBars) return;
@@ -282,9 +286,15 @@ class EXESoundTray extends FlxSoundTray
 		if (!visible) x = trayXHidden;
 	}
 
+	private var volumeMax:Float = 1.0;
 	override public function showAnim(volume:Float, ?sound:FlxSoundAsset, duration:Float = 1.0, label:String = "VOLUME"):Void 
 	{
-		if (sound != null) FlxG.sound.play(sound.resolveSound(true, true));
+		if (sound != null) {
+			if (FlxG.sound.volume >= volumeMax)
+			FlxG.sound.play(volumeMaxSound);
+			else
+			FlxG.sound.play(sound.resolveSound(true, true));
+		}
 
 		final lang:String = Language.getPhrase('soundtray.volume', 'VOLUME');
 		if (lang != _lastLanguage)

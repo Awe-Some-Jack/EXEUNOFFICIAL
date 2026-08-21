@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bar.png">
+<SubTexture name="bar bar0000" x="0" y="0" width="462" height="50" frameX="0" frameY="0" frameWidth="462" frameHeight="50" />
+<SubTexture name="bar bar0001" x="0" y="50" width="462" height="50" frameX="0" frameY="0" frameWidth="462" frameHeight="50" />
+<SubTexture name="bar bar0002" x="0" y="100" width="462" height="50" frameX="0" frameY="0" frameWidth="462" frameHeight="50" />
+<SubTexture name="bar bar0003" x="0" y="150" width="462" height="50" frameX="0" frameY="0" frameWidth="462" frameHeight="50" />
+<SubTexture name="bar bar0004" x="0" y="200" width="462" height="50" frameX="0" frameY="0" frameWidth="462" frameHeight="50" />
+<SubTexture name="bar bar0005" x="0" y="200" width="462" height="50" frameX="0" frameY="0" frameWidth="462" frameHeight="50" />
+</TextureAtlas>

@@ -1,6 +1,10 @@
 local isFatalitySong = false
 local corruptionTriggered = false
+local warningActive = false
 local lastSentCorruptionSquares = -1
+local squareCount = 22
+local popupsPerSquare = 2
+local maxPopups = squareCount * popupsPerSquare
 
 local function closeAllPopups()
 	runHaxeCode([[
@@ -34,9 +38,14 @@ local function closeCorruptionBar()
 	]]);
 end
 
+local function sendCorruptionCommand(cmd)
+	runHaxeCode('var proc = getVar("corruptionBarProcess"); if (proc != null) { try { proc.stdin.writeString("' .. cmd .. '\\n"); proc.stdin.flush(); } catch (e:Dynamic) {} }')
+end
+
 function onCreatePost()
 	isFatalitySong = (songName == 'Fatality' or songName:lower() == 'fatality')
 	corruptionTriggered = false
+	warningActive = false
 	lastSentCorruptionSquares = -1
 	if not isFatalitySong then return end
 
@@ -71,18 +80,24 @@ function onStepHit()
 end
 
 function onEndSong()
+	warningActive = false
+	cancelTimer('fatalCorruptionWarning')
 	closeAllPopups()
 	closeCorruptionBar()
 	return Function_Continue
 end
 
 function onGameOver()
+	warningActive = false
+	cancelTimer('fatalCorruptionWarning')
 	closeAllPopups()
 	closeCorruptionBar()
 	return Function_Continue
 end
 
 function onDestroy()
+	warningActive = false
+	cancelTimer('fatalCorruptionWarning')
 	closeAllPopups()
 	closeCorruptionBar()
 end
@@ -95,7 +110,7 @@ function onEvent(n, v1)
 				processes = [];
 			}
 
-			if (processes.length >= 16) {
+			if (processes.length >= ]] .. maxPopups .. [[) {
 				var oldest = processes.shift();
 				try {
 					if (oldest.exitCode(false) == null) {
@@ -175,7 +190,15 @@ local function shutEverythingDown()
 end
 
 function onTimerCompleted(tag)
-	if tag == 'fatalCorruptionFlood' then
+	if tag == 'fatalCorruptionWarning' then
+		if warningActive then
+			warningActive = false
+			corruptionTriggered = true
+			sendCorruptionCommand('calm')
+			shakeEverything()
+			runTimer('fatalCorruptionFlood', 0.6)
+		end
+	elseif tag == 'fatalCorruptionFlood' then
 		floodWithPopups()
 		runTimer('fatalCorruptionShutdown', 1.5)
 	elseif tag == 'fatalCorruptionShutdown' then
@@ -203,18 +226,21 @@ function onUpdatePost(elapsed)
 	local aliveCount = getVar('aliveFatalPopups')
 	if aliveCount == nil then aliveCount = 0 end
 
-	local corruptionPercent = (aliveCount / 16) * 100
-	if corruptionPercent > 100 then corruptionPercent = 100 end
-
-	local squares = math.floor((corruptionPercent / 100) * 22 + 0.5)
+	local squares = math.min(math.floor(aliveCount / popupsPerSquare), squareCount)
 	if squares ~= lastSentCorruptionSquares then
 		lastSentCorruptionSquares = squares
-		runHaxeCode('var proc = getVar("corruptionBarProcess"); if (proc != null) { try { proc.stdin.writeString("corruption:' .. corruptionPercent .. '\\n"); proc.stdin.flush(); } catch (e:Dynamic) {} }')
+		runHaxeCode('var proc = getVar("corruptionBarProcess"); if (proc != null) { try { proc.stdin.writeString("corruption:' .. aliveCount .. '\\n"); proc.stdin.flush(); } catch (e:Dynamic) {} }')
 	end
 
-	if aliveCount >= 16 then
-		corruptionTriggered = true
-		shakeEverything()
-		runTimer('fatalCorruptionFlood', 0.6)
+	if aliveCount >= maxPopups then
+		if not warningActive then
+			warningActive = true
+			sendCorruptionCommand('danger')
+			runTimer('fatalCorruptionWarning', 3)
+		end
+	elseif warningActive then
+		warningActive = false
+		cancelTimer('fatalCorruptionWarning')
+		sendCorruptionCommand('calm')
 	end
 end

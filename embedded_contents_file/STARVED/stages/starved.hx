@@ -22,7 +22,7 @@ var starv:Array<BackgroundSprite> = [
 	{path: 'starved/new bg/floor', position: [-910, -370], scale: [1.5, 1.5]},
 	{path: 'starved/sonic', position: [150, 1500], scale: [1.5, 1.5], ID: 'sonic'},
 	{path: 'starved/sonic-dark', position: [150, 1500], scale: [1.5, 1.5], alpha: 0, ID: 'sonicdark'},
-	{path: 'starved/shoe', position: [1050, 1200], scale: [0.85, 0.85], ID: 'shoe'},
+	{path: 'starved/shoe', position: [1050, 1200], scale: [0.85, 0.85]},
 	{path: 'starved/picky', position: [-330, 1900], scale: [1.5, 1.5]},
 	{path: 'starved/mrcrabs', position: [1000, 1200], scale: [1.7, 1.7]},
 	{path: 'starved/pocky', position: [1250, 1400], scale: [0.7, 0.7]},
@@ -62,32 +62,20 @@ function onEvent(n,v1)
 		{
 			case 'fadeout':
 				_inTrans = true;
-				for (spr in starv)
-				{
-					if (spr.ID == null) FlxTween.tween(spr.sprite, {alpha: 0}, 3);
-					if (spr.ID == 'sonic' || spr.ID == 'shoe') FlxTween.color(spr.sprite, 3, 0xFFFFFFFF, 0xFF000000);
-				}
+				for (spr in starv) if (spr.ID == null) FlxTween.tween(spr.sprite, {alpha: 0}, 3);
 				FlxTween.color(boyfriend, 3, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.color(vg, 3, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.tween(camHUD, {alpha: 0}, 3);
 			case 'fight':
 				_inTrans = false;
-				for (spr in starv)
-				{
-					if (spr.ID == 'sonicdark') FlxTween.tween(spr.sprite, {alpha: 1}, 1);
-					if (spr.ID == 'shoe') FlxTween.color(spr.sprite, 1, 0xFF000000, 0xFFFF0000);
-				}
+				for (spr in starv) if (spr.ID == 'sonicdark') FlxTween.tween(spr.sprite, {alpha: 1}, 1);
 				FlxTween.color(boyfriend, 1, 0xFF000000, 0xFFFF0000);
 				FlxTween.color(vg, 1, 0xFF000000, 0xFFFF0000);
 				FlxTween.color(dad, 1, 0xFFFFFFFF, 0xFFFF0000);
 				FlxTween.tween(camHUD, {alpha: 1}, 1);
 			case 'starved':
 				_inTrans = true;
-				for (spr in starv)
-				{
-					if (spr.ID == 'sonicdark') FlxTween.tween(spr.sprite, {alpha: 0}, 1);
-					if (spr.ID == 'shoe') FlxTween.color(spr.sprite, 1, 0xFFFF0000, 0xFF000000);
-				}
+				for (spr in starv) if (spr.ID == 'sonicdark') FlxTween.tween(spr.sprite, {alpha: 0}, 1);
 				FlxTween.color(boyfriend, 1, 0xFFFF0000, 0xFF000000);
 				FlxTween.tween(camHUD, {alpha: 0}, 1);
 				FlxTween.color(vg, 3, 0xFFFF0000, 0xFF000000);
@@ -96,7 +84,7 @@ function onEvent(n,v1)
 				for (spr in starv)
 				{
 					if (spr.ID == null) FlxTween.tween(spr.sprite, {alpha: 1}, 4);
-					if (spr.ID == 'sonic' || spr.ID == 'shoe') FlxTween.color(spr.sprite, 4, 0xFF000000, 0xFFFFFFFF);
+					if (spr.ID == 'sonic') FlxTween.color(spr.sprite, 4, 0xFF000000, 0xFFFFFFFF);
 				}
 				FlxTween.tween(camHUD, {alpha: 1}, 4);
 				FlxTween.color(boyfriend, 1, 0xFF000000, 0xFFFFFFFF);

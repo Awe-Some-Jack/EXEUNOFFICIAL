@@ -155,3 +155,4 @@ end
 
 function goodNoteHitPre(id) setProperty('notes.members['..id..'].animSuffix', '-knux') end
 function noteMiss(id,nt) playAnim('boyfriend', getProperty('singAnimations['..nt..']') .. 'miss-knux', true) end
+function noteMissPress(nt) playAnim('boyfriend', getProperty('singAnimations['..nt..']') .. 'miss-knux', true) end

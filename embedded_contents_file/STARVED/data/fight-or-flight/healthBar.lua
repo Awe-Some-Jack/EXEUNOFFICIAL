@@ -28,11 +28,10 @@ function onCreatePost()
 	createInstance('iconOpp', 'objects.HealthIcon', {getProperty('dad.healthIcon'), false})
 	setObjectCamera('iconOpp', 'hud')
 
-	makeLuaText('exeScoreTxt', 'Score: 0 | Sacrifices: 0', screenWidth / 0.75)
+	makeLuaText('exeScoreTxt', 'Score: 0 | Sacrifices: 0', 22, 1090)
     setTextSize('exeScoreTxt', 22)
     setTextBorder('exeScoreTxt', 1, '000000')
-    screenCenter('exeScoreTxt', 'x')
-	setProperty('exeScoreTxt.y', downscroll and 50 or (screenHeight - getProperty('exeScoreTxt.height') - 50))
+    screenCenter('exeScoreTxt', 'y')
     setProperty('exeScoreTxt.x', math.floor(getProperty('exeScoreTxt.x')))
 
 	addLuaSprite('hbHealth')
@@ -56,7 +55,7 @@ function onUpdatePost(e)
     setGraphicSize('hbHealth2', 16, bound(lerp(464, 1, lerpHealth / 2), 1, 464))
     setProperty('separatorHealth.y', getProperty('healthBG.y') + 162 + bound(lerp(460, 0, lerpHealth / 2), 0, 460))
 
-	setTextString('exeScoreTxt', 'Score: '..callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {score, false})..' | Sacrifices: '..misses)
+	setTextString('exeScoreTxt', 'Score¨'..callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {score, false})..'_  Sacrifices¨'..misses)
 	if oldScoreTxt ~= getTextString('exeScoreTxt') then scaleObject('exeScoreTxt', 1.1, 1.1, false) end
 	oldScoreTxt = getTextString('exeScoreTxt')
 	scaleObject('exeScoreTxt', lerp(getProperty('exeScoreTxt.scale.x'), 1, e * 10), lerp(getProperty('exeScoreTxt.scale.y'), 1, e * 10), false)
@@ -65,6 +64,8 @@ function onUpdatePost(e)
 	setProperty('iconOpp.animation.curAnim.curFrame', (getHealth() > 1.6 and 1 or 0))
     local mult = lerp(1, getProperty('iconOpp.scale.x'), math.exp(-e * 9 * playbackRate)) scaleObject('iconOpp', mult, mult, false)
     local mult = lerp(1, getProperty('iconBF.scale.x'), math.exp(-e * 9 * playbackRate)) scaleObject('iconBF', mult, mult, false)
+
+	screenCenter('exeScoreTxt', 'y')
 end
 
 function onBeatHit()

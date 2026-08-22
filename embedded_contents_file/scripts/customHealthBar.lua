@@ -231,7 +231,7 @@ function onCreatePost()
     if songPath == 'chocolate-milk' or songPath == 'vanilla-milk' or songPath == 'b4cksl4sh' then setProperty('healthBG.visible', false) end
 
     if not healthProps.healthBar.hideScore then
-        makeLuaText('exeScoreTxt', 'Score: 0 | Misses: 0', screenWidth / 0.75, 0, getProperty('hbBG.y') + (downscroll and 40 or -40))
+        makeLuaText('exeScoreTxt', 'Score: 0 | Misses: 0', screenWidth / 0.75, 0, getProperty('hbBG.y') + 40)
         setTextSize('exeScoreTxt', 22)
         setTextFont('exeScoreTxt', scoreFont)
         setTextBorder('exeScoreTxt', 1, '000000')

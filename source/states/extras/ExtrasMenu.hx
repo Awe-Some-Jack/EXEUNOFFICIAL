@@ -13,18 +13,10 @@ import openfl.display.BitmapData;
 
 import states.EXEMenu;
 
-class CardSprite extends FlxSprite
-{
-    public var finalX:Float = 0;
-    public var finalY:Float = 0;
-    public var targetAlpha:Float = 0.5;
-    public var introDone:Bool = false;
+import hxvlc.flixel.FlxVideoSprite;
 
-    public function new(x:Float = 0, y:Float = 0)
-    {
-        super(x, y);
-    }
-}
+import states.extras.menuProps.CardSprite;
+import states.extras.menuProps.Arrow;
 
 class OrbitSprite extends FlxSprite
 {
@@ -74,13 +66,16 @@ class ExtrasMenu extends MusicBeatState
     var descBackdrops:Array<FlxBackdrop> = [];
     var curSelected:Int  = 0;
     var canMove:Bool     = true;
-    #if mobile var cooldownTimer:Float = 0.15; #end
+    var cooldownTimer:Float = #if mobile 0.15; #else 0.1; #end
 
     // select box for the selection shit 
     var _selLeft:FlxSprite;
     var _selMid:FlxSprite;
     var _selRight:FlxSprite;
     var disco:FlxSprite;
+    var arrowsGrp:FlxTypedGroup<Arrow>;
+    var arrowLeft:Arrow;
+    var arrowRight:Arrow;
     var box:FlxSprite;
     var sumky:FlxSprite;
     var np:FlxText;
@@ -92,6 +87,7 @@ class ExtrasMenu extends MusicBeatState
 
     var baseScale:Float = 1.;
     var ssGrp:FlxTypedGroup<CardSprite>;
+    var ssBoxGrp:FlxTypedGroup<FlxSprite>;
     
     var globalTime:Float = 0.0;
 
@@ -120,13 +116,37 @@ class ExtrasMenu extends MusicBeatState
         add(np);
 
         final daName = states.extras.dagarden.DAGarden.currentSong;
-        nowPlayingSong = new FlxText(169, np.y + np.height + 6, 0, daName != '' ? daName.toUpperCase() : 'EXTRAS MENU', 60);
-        nowPlayingSong.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
+        nowPlayingSong = new FlxText(169, np.y + np.height + 6, -1, daName != '' ? daName.toUpperCase() : 'EXTRAS MENU', 60);
+        nowPlayingSong.setFormat(Paths.font("bigass.otf"), 70, FlxColor.BLACK, LEFT);
         nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlayingSong.scale.set(0.22, 0.22);
         nowPlayingSong.updateHitbox();
         nowPlayingSong.antialiasing = ClientPrefs.data.antialiasing;
         add(nowPlayingSong);
+    
+        arrowsGrp = new FlxTypedGroup<Arrow>();
+        add(arrowsGrp);
+        
+        arrowLeft = new Arrow(nowPlayingSong.x+8, nowPlayingSong.y, flixel.input.keyboard.FlxKey.LEFT, 180);
+        arrowLeft.x = (nowPlayingSong.x + nowPlayingSong.width)+15;
+        arrowLeft.y = (nowPlayingSong.y + nowPlayingSong.height)-arrowLeft.height;
+        arrowLeft.onDown.add(event->{
+            trace("aqui va la logica de cuando presionas la tecla flecha bro, es un justPressed btw\npodemos acceder a su evento: "+event.toString()+"\ncomo tmb cancelarlo! con 'event.cancel();'");
+        });
+        arrowLeft.onUp.add(event->{
+            trace("aqui va la logica de cuando sueltas la tecla flecha bro, es un justReleased btw\npodemos acceder a su evento: "+event.toString()+"\ncomo tmb cancelarlo! con 'event.cancel();'");
+        });
+        arrowsGrp.add(arrowLeft);
+
+        arrowRight = new Arrow(arrowLeft.x + 20, arrowLeft.y, flixel.input.keyboard.FlxKey.RIGHT, 0);
+        arrowRight.x = (arrowLeft.x + arrowLeft.width) + 8;
+        arrowRight.onDown.add(event->{
+            trace("aqui va la logica de cuando presionas la tecla flecha bro, es un justPressed btw\npodemos acceder a su evento: "+event.toString()+"\ncomo tmb cancelarlo! con 'event.cancel();'");
+        });
+        arrowRight.onUp.add(event->{
+            trace("aqui va la logica de cuando sueltas la tecla flecha bro, es un justReleased btw\npodemos acceder a su evento: "+event.toString()+"\ncomo tmb cancelarlo! con 'event.cancel();'");
+        });
+        arrowsGrp.add(arrowRight); 
 
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the Extras", null); #end
 
@@ -163,9 +183,14 @@ class ExtrasMenu extends MusicBeatState
                 changeSelection(1);
             else if(deltaMouseY < -5)
                 changeSelection(-1);
+        #else
+        var mouseWheel = FlxG.mouse.wheel;
+        if (mouseWheel != 0 && cooldownTimer <= 0){
+            changeSelection(mouseWheel > 0 ? -1 :1);
+        }
         #end
         
-        #if mobile if (cooldownTimer > 0) cooldownTimer -= elapsed; #end
+        if (cooldownTimer > 0) cooldownTimer -= elapsed;
 
         if (controls.ACCEPT #if mobile || (shortPress && FlxG.mouse.overlaps(menuItems[curSelected])) #end)    selectOption();
 
@@ -188,10 +213,14 @@ class ExtrasMenu extends MusicBeatState
         }
     }
 
+    // finally
     function buildVideos():Void
     {
         ssGrp = new FlxTypedGroup<CardSprite>();
         add(ssGrp);
+
+        ssBoxGrp = new FlxTypedGroup<FlxSprite>();
+        add(ssBoxGrp);
 
         final baseImages:Array<Int> = [1, 2, 3, 4, 5];
         FlxG.random.shuffle(baseImages);
@@ -206,12 +235,10 @@ class ExtrasMenu extends MusicBeatState
         {
             final spr = new CardSprite();
             
-            final imgName:String = Std.string(imageList[i]);
-            spr.loadGraphic(Paths.getPath('extras/ss/$imgName.webp', 'exe'));
-            spr.scale.set(0.375, 0.375);
-            spr.updateHitbox();
+            final videoName:String = Std.string(imageList[i]);
+            spr.loadVideoCard(Paths.video('extrasMenu/$videoName')); 
 
-            final rightEdge = FlxG.width - spr.width;
+            var rightEdge = FlxG.width - 500;
             switch (i) {
                 case 0:
                     spr.finalX = rightEdge - 200;
@@ -237,12 +264,13 @@ class ExtrasMenu extends MusicBeatState
 
             spr.blend = ALPHA;
             spr.ID = i;
+            // spr.color = 0xFFBB102F;
 
             spr.x = spr.finalX;
             spr.y = spr.finalY;
             spr.alpha = spr.targetAlpha;
             spr.introDone = true;
-            
+
             ssGrp.add(spr);
         }
     }
@@ -512,7 +540,7 @@ class ExtrasMenu extends MusicBeatState
     function changeSelection(change:Int = 0):Void
     {
         curSelected = (curSelected + change + MENU_KEYS.length) % MENU_KEYS.length;
-        #if mobile cooldownTimer = 0.15; #end
+        #if mobile cooldownTimer = 0.15; #else cooldownTimer = 0.1; #end
         if (change != 0) { FlxG.sound.play(Paths.sound('scrollMenu')); animateBox(); }
 
         for (i in 0...menuItems.length)

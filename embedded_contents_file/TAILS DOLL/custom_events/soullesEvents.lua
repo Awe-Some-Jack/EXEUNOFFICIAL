@@ -6,7 +6,7 @@ end
 function onEvent(n,v1)
 	if n == 'soullesEvents' then
 		if v1 == 'shitcam' then
-			doTweenZoom('dhdaffg9jg', 'camGame', 1.4, crochet / (1000 / 48) / playbackRate, 'cubeInOut')
+			doTweenZoom('dhdaffg9jg', 'camGame', 1.75, crochet / (1000 / 48) / playbackRate, 'cubeInOut')
 			doTweenAlpha('dhjidhj', 'BlackGraphicGame', 0, crochet / (1000 / 28) / playbackRate, 'cubeInOut')
 		end
 		if v1 == 'hudappear' then

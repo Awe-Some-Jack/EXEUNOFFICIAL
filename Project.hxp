@@ -12,9 +12,9 @@ class Project extends HXProject
 {
     static final TITLE:String = "Friday Night Funkin': Vs Sonic.EXE";
     static final EXECUTABLE:String = "Vs Sonic";
-    static final PACKAGE_NAME:String = "com.xunofficial.vssonicexe";
+    static final PACKAGE_NAME:String = "com.exeunofficial.vssonicexe";
     static final VERSION:String = "1.0";
-    static final COMPANY:String = "XUnofficial";
+    static final COMPANY:String = "EXEUnofficial";
     static final MAIN_CLASS:String = "Main";
     static final PRELOADER:String = "flixel.system.FlxPreloader";
 

@@ -23,10 +23,7 @@ typedef BackGroundSprite =
     @:optional var animation:Array<Dynamic>;
 }
 
-var vignette:Array<BackGroundSprite> = 
-[
-    {name: "vg", path: 'VG', alpha: 0, color: "FF0000", front: true},
-];
+var vignette:Array<BackGroundSprite> = [{name: "vg", path: 'VG', alpha: 0, color: "FF0000", front: true}];
 
 var generalBG:Array<BackGroundSprite> = [
     {name:            "vc", path:            'yrc/vc', position: [-420,  -745], scale: [1.2, 1.2], scroll: [0.85,   0.85]},
@@ -45,10 +42,10 @@ var normalBG:Array<BackGroundSprite> =
 ];
 
 var pixelBG:Array<BackGroundSprite> = [
-	{name:       'pixelCave', path: 'yrc/caverna',      position: [520,  50], animation: [{name: 'idle', prefix: 'caverna_gif', fps: 24, loop: true}], scale: [2, 2],                     visible: false, antialiasing: false},
-	{name:     'pixelCaveBG', path: 'yrc/fondocaberna', position: [0,  -260],                                                                          scale: [2, 2], scroll: [0.9, 0.9], visible: false, antialiasing: false},
-	{name: 'pixelFloorRight', path: 'yrc/piso2',        position: [790, 130],                                                                          scale: [2, 2], scroll: [1,     1], visible: false, antialiasing: false},
-	{name:      'pixelFloor', path: 'yrc/piso',         position: [0,   130], animation: [{name: 'idle', prefix:    'piso_gif', fps: 24, loop: true}], scale: [2, 2],                     visible: false, antialiasing: false}
+	{name:       'pixelCave', path: 'yrc/caverna',      position: [520, -250], animation: [{name: 'idle', prefix: 'caverna_gif', fps: 24, loop: true}], scale: [4, 4],                     visible: false, antialiasing: false},
+	{name:     'pixelCaveBG', path: 'yrc/fondocaberna', position: [0,   -260],                                                                          scale: [4, 4], scroll: [0.9, 0.9], visible: false, antialiasing: false},
+	{name: 'pixelFloorRight', path: 'yrc/piso2',        position: [790,  130],                                                                          scale: [4, 4], scroll: [1,     1], visible: false, antialiasing: false},
+	{name:      'pixelFloor', path: 'yrc/piso',         position: [340,  430], animation: [{name: 'idle', prefix:    'piso_gif', fps: 24, loop: true}], scale: [4, 4],                     visible: false, antialiasing: false}
 ];
 
 var crystalBG:Array<BackGroundSprite> = 
@@ -59,57 +56,42 @@ var crystalBG:Array<BackGroundSprite> =
     {name:                 'glow', path:                 'yrc/glow', position: [ 100,    500],  scale: [2.5, 1.5], scroll: [1.2,   1.2], visible: false, front: true}
 ];
 
-var spriteNames:Array<String> = [];
-var spriteObjs:Array<String> = [];
-
-
-function getSpr(name)
-{
-	for (i in 0...spriteNames.length)
-		if (spriteNames[i] == name) return spriteObjs[i];
-	return null;
-}
-
 //Song variables
-var savedGFPos:Array<Float> = [];
-var savedGFFloatingPos:Array<Float> = [];
 var canGFFloat:Bool = false;
 var shakeIntensity:Float = 0.005;
 var vignetteMode:String = 'none';
 final isKostyaPuta:Bool = true;
 
-var savedScale:Array<Float> = [1, 1];
 var stageEvents:Map<String, Void->Void> = [
     "PixelMode" => () -> {
         destroyStage(normalBG);
         showStage(pixelBG);
 
+        setVignetteMode('none');
+
         shakeIntensity = 0.001;
 
         game.boyfriend.setPosition(game.boyfriend.x - 780, game.boyfriend.y - 420);
-        game.dad.setPosition(game.dad.x - 343, game.dad.y - 456);
+        game.dad.setPosition(game.dad.x - 525, game.dad.y - 470);
         game.gf.setPosition(game.gf.x - 105, game.gf.y - 280);
-
-        savedGFFloatingPos = [game.gf.x, game.gf.y];
 
         canGFFloat = true;
 
         game.triggerEvent('Set customCamera Position',     'bf', '900, 120');
-		game.triggerEvent('Set customCamera Position',    'dad', '800, 120');
-		game.triggerEvent('Set customCamera Position', 'middle', '850, 110');
+		game.triggerEvent('Set customCamera Position',    'dad', '600, 120');
+		game.triggerEvent('Set customCamera Position', 'middle', '850,  110');
 
-        game.triggerEvent('Set customCamera Zoom',     'OGZoom', '2.2');
-		game.triggerEvent('Set customCamera Zoom', 'MiddleZoom', '1.8');
+        game.triggerEvent('Set customCamera Zoom',     'OGZoom', '0.7');
+		game.triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.65');
 
 		game.triggerEvent('Set Character Offset',  'bf', '5');
 		game.triggerEvent('Set Character Offset', 'dad', '5');
 
         game.gameplayCam.settings.OverrideZoom = false;
 
-        for (chars in [boyfriend, dad, gf]) chars.scale.set(2, 2);
+        for (chars in [boyfriend, dad, gf]) chars.scale.set(4, 4);
 
-        PlayState.stageUI = "pixel"; 
-
+        
         for (i in 0...notes.length - 1)
         {
             if (notes.members[i].isSustainNote)
@@ -118,11 +100,11 @@ var stageEvents:Map<String, Void->Void> = [
                     notes.members[i].scale.set(notes.members[i].scale.x, ((Conductor.stepCrochet / 100 * 1.05) * 1.19) * 18.6);
                 else
                     notes.members[i].scale.set(notes.members[i].scale.x, 6);
-
-                notes.members[i].offset.set(notes.members[i].offset.x - 10, notes.members[i].offset.y - 10);
+                
+                //notes.members[i].offset.set(notes.members[i].offset.x - 10, notes.members[i].offset.y - 10);
             }
         }
-        
+        PlayState.stageUI = "pixel"; 
         reloadNotes();
     },
     "CrystalMode" => () -> {
@@ -145,8 +127,7 @@ var stageEvents:Map<String, Void->Void> = [
 
         if (!ClientPrefs.lowQuality) crystalBG[3].spr.alpha = 0.5;
 
-        PlayState.stageUI = "normal"; 
-
+        
         for (i in 0...notes.length - 1)
         {
             if (notes.members[i].isSustainNote)
@@ -157,6 +138,8 @@ var stageEvents:Map<String, Void->Void> = [
                     notes.members[i].scale.set(notes.members[i].scale.x, 1);
             }
         }
+
+        PlayState.stageUI = "normal"; 
         reloadNotes();
     }
 ];
@@ -174,8 +157,6 @@ function onCreate()
     for (bg1     in    normalBG)     createSprite(bg1);
     for (bg2     in     pixelBG)     createSprite(bg2);
     for (bg3     in   crystalBG)     createSprite(bg3);
-
-    vignette[0].spr.camera = camOther;
 }
 
 function onEvent(e, v1, v2){
@@ -187,35 +168,22 @@ function onEvent(e, v1, v2){
             if (stageEvent != null)
                 stageEvent();
         }
-        if (v1 == 'vignetteMode') {
+        if (v1 == 'vignetteMode') 
             setVignetteMode(split[0]);
-            trace(split[0]);
-        }
-        if (v1 == 'tweenObjectAlpha') 
-            FlxTween.tween(getSpr(split[0]), {alpha: split[1]}, split[2]);
-    }
-}
 
-function setVignetteMode(mode:String){
-    vignetteMode = mode != null ? mode : "none";
-    FlxTween.cancelTweensOf(vignette[0].spr);
-
-    switch(mode){
-        case "slow":
-            FlxTween.tween(vignette[0].spr, {alpha: 1}, 1, {type: FlxTweenType.PINGPONG});
-        case "none":
-            FlxTween.tween(vignette[0].spr, {alpha: 0}, 0.7);
+        if (v1 == 'tweenCamHUDAlpha')
+            FlxTween.tween(camHUD, {alpha: Std.parseFloat(split[0])}, Std.parseFloat(split[1]));
     }
 }
 
 function onCreatePost() 
 {
     camHUD.alpha = 0;
+    vignette[0].spr.camera = camOther;
     game.triggerEvent('Tweening Camera', '-500, 0', '0.001, linear');
     game.triggerEvent('Tween Camera Zoom', '1.4, true', '0.001, linear');
 
     game.gf.scrollFactor.set(1, 1);
-
 }
 
 
@@ -226,9 +194,10 @@ function onUpdatePost(e:Float) {
     var mathCos:Float = FlxMath.fastCos(floatTimer * 0.5) * 10;
     var mathSin:Float = FlxMath.fastSin(floatTimer) * 10;
 
-    if (canGFFloat){
-        pixelBG[2].spr.setPosition(790 + mathCos, -130 + mathSin);
-        game.gf.setPosition(savedGFPos[0] + mathCos, savedGFPos[1] + mathSin);
+    if (canGFFloat)
+    {
+        game.gf.setPosition(590 + mathCos, -80 + mathSin);
+        pixelBG[2].spr.setPosition(740 + mathCos, 10 + mathSin);
     }
 
     if (PlayState.stageUI == "pixel")
@@ -242,7 +211,7 @@ function onUpdatePost(e:Float) {
                 else
                     notes.members[i].scale.set(notes.members[i].scale.x, 6);
 
-                //notes.members[i].offset.set(notes.members[i].offset.x - 10, notes.members[i].offset.y - 10);
+                notes.members[i].offset.set(notes.members[i].offset.x - 10, notes.members[i].offset.y - 10);
             }
         }
     }
@@ -258,7 +227,7 @@ function reloadNotes()
         for (note in game.unspawnNotes)
             if (note != null) 
                 for (i in 0...note.length - 1)
-                    if (note.members[i].noteType == '')
+                    if (note.members[i].noteType = '')
                         note.reloadNote();
 
     if (game.notes != null)
@@ -275,20 +244,30 @@ function destroyStage(stage)
 function showStage(stage)
     for (stg in stage) stg.spr.visible = true;
 
+function setVignetteMode(mode:String){
+    vignetteMode = mode != null ? mode : "none";
+    switch(mode){
+        case "slow":
+            FlxTween.cancelTweensOf(vignette[0].spr);
+            FlxTween.tween(vignette[0].spr, {alpha: 1}, 1, {type: FlxTweenType.PINGPONG});
+        case "none":
+            FlxTween.cancelTweensOf(vignette[0].spr);
+            vignette[0].spr.alpha = 0;
+        case "1beat":
+            vignetteMode = '1beat';
+        case "2beat":
+            vignetteMode = '2beat';
+    }
+}
+
 function onBeatHit()
 {
-    switch(vignetteMode){
+    switch(vignetteMode)
+    {
         case '1beat':
-            FlxTween.cancelTweensOf(vignette[0].spr);
-            vignette[0].spr.alpha = 0.6;
-            FlxTween.tween(vignette[0].spr, {alpha: 0}, 0.6);
+            FlxTween.num(0.6, 0, 0.6, null, (val:Float) -> vignette[0].spr.alpha = val);
         case '2beat':
-            if (curBeat % 2 == 0)
-            {
-                FlxTween.cancelTweensOf(vignette[0].spr);
-                vignette[0].spr.alpha = 0.6;
-                FlxTween.tween(vignette[0].spr, {alpha: 0}, 0.6);
-            }
+            if (curBeat % 2 == 0) FlxTween.num(0.6, 0, 0.6, null, (val:Float) -> vignette[0].spr.alpha = val);
     }
 }
 
@@ -323,10 +302,8 @@ function createSprite(sprite:BackGroundSprite)
     if (sprite.front) game.add(spriteShit);
     else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), spriteShit);
     sprite.spr = spriteShit;
-
-    spriteNames.push(sprite.name);
-    spriteObjs.push(spriteShit);
 }
+
 
 function precacheSprite(sprite:BackGroundSprite)
 {

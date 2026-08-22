@@ -1,0 +1,749 @@
+{
+	"events": [
+		[
+			-1.4210854715202e-13,
+			[
+				["Tween Camera Zoom", "1.1, true", "1.6, smootherStepInOut"]
+			]
+		],
+		[
+			1714.28571428571,
+			[
+				["Tweening Camera", "500, 120", "0.001, linear"],
+				["FlashCamera", "FF0000, 0.8", "1.2, ADD"],
+				["Set Property", "cameraSpeed", "100000"]
+			]
+		],
+		[
+			1741.07142857143,
+			[
+				["Tween Camera Zoom", "1, true", "0.5, circOut"],
+				["Screen Shake", "0.01, 0.8", ""]
+			]
+		],
+		[
+			4500,
+			[
+				["Tween Camera Zoom", "1.6, true", "0.6, circIn"]
+			]
+		],
+		[
+			5142.85714285714,
+			[
+				["Tween Camera Zoom", "1.2, true", "0.001, linear"],
+				["Tweening Camera", "-500, 0", "0.001, linear"],
+				["FlashCamera", "FF0000, 0.8", "1.2, ADD"],
+				["Set Property", "cameraSpeed", "10000"]
+			]
+		],
+		[
+			5169.64285714286,
+			[
+				["Tween Camera Zoom", "1, true", "0.5, circOut"],
+				["Screen Shake", "0.01, 0.8", ""]
+			]
+		],
+		[
+			7928.57142857143,
+			[
+				["Tween Camera Zoom", "1.6, true", "0.6, circIn"]
+			]
+		],
+		[
+			8571.42857142857,
+			[
+				["Tween Camera Zoom", "0.5, true", "0.001, linear"],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["FlashCamera", "FF0000, 1", "1"],
+				["Set Property", "cameraSpeed", "1000000"],
+				["ycrEvents", "vignetteMode", "slow"]
+			]
+		],
+		[
+			8678.57142857143,
+			[
+				["Tween Camera Zoom", "0.9, true", "6, smootherStepInOut"],
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			13714.2857142857,
+			[
+				["cameracenter", "false", ""],
+				["Tween Camera Zoom", "1.2, true", "0.9, sineOut"],
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			13928.5714285714,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			14142.8571428571,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			14357.1428571429,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			14571.4285714286,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			14785.7142857143,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			15000,
+			[
+				["ycrEvents", "tweenCamHUDAlpha", "1, 0.8"],
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			15428.5714285714,
+			[
+				["Set Property", "gameplayCam.settings.OverrideZoom", "false"]
+			]
+		],
+		[
+			25714.2857142857,
+			[
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			27428.5714285714,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			28607.1428571428,
+			[
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"],
+				["Tween Camera Zoom", "1, true", "0.5, circIn"],
+				["Tweening Camera", "60, 60", "0.5, circIn"]
+			]
+		],
+		[
+			29142.8571428571,
+			[
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"],
+				["Tween Camera Zoom", "0.65", ""],
+				["Set Property", "cameraSpeed", "10000"],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			29250,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			32571.4285714286,
+			[
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			35142.8571428571,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			35357.1428571429,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			35571.4285714286,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			35785.7142857143,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			36000,
+			[
+				["Tween Camera Zoom", "0.65", ""]
+			]
+		],
+		[
+			39428.5714285714,
+			[
+				["Tween Camera Zoom", "0.75", ""]
+			]
+		],
+		[
+			42857.1428571429,
+			[
+				["ycrEvents", "vignetteMode", "none"],
+				["Set Property", "cameraSpeed", "10000"],
+				["Tweening Camera", "-80, 50", "0.001, linear"]
+			]
+		],
+		[
+			42964.2857142857,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			43285.7142857143,
+			[
+				["Tween Camera Zoom", "0.65", ""],
+				["FlashCamera", "FF0000, 0.5", "1, add"],
+				["ycrEvents", "vignetteMode", "1beat"],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			46285.7142857143,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			49714.2857142857,
+			[
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			54857.1428571429,
+			[
+				["Tween Camera Zoom", "1, true", "0.6, smootherStepInOut"],
+				["Tweening Camera", "-800, 0", "0.6, smootherStepInOut"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"]
+			]
+		],
+		[
+			55714.2857142857,
+			[
+				["Change Character", "dad", "sonic.exe 2-grito"],
+				["Tween Camera Zoom", "0.9, false", ""],
+				["glitchFlash", "0, 1.2", "1.3"],
+				["Play Animation", "grito1", "dad"]
+			]
+		],
+		[
+			56571.4285714286,
+			[
+				["Change Character", "bf", "bfpixel"],
+				["Change Character", "dad", "sonic.exe 2 p"],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["FlashCamera", "FF0000, 1", "1.2"],
+				["Change Character", "gf", "gf pixel yrc"],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Swap Pixel Combo", "", ""],
+				["Set Property", "cameraSpeed", "10000"],
+				["ycrEvents", "stageMode", "PixelMode"],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"],
+				["glitchFlash", "1.2, 0", "1"],
+				["Set Property", "gameplayCam.settings.OverrideZoom", "false"]
+			]
+		],
+		[
+			56678.5714285715,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			70285.7142857143,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			77142.8571428572,
+			[
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			84000,
+			[
+				["Normal Lyrics", "lyrics.youcantrun.1", "1"]
+			]
+		],
+		[
+			84214.2857142857,
+			[
+				["glitchFlash", "0, 0.5", "1"]
+			]
+		],
+		[
+			84428.5714285714,
+			[
+				["Normal Lyrics", "lyrics.youcantrun.1", "2"]
+			]
+		],
+		[
+			84964.2857142857,
+			[
+				["Normal Lyrics", "lyrics.youcantrun.1", "3"]
+			]
+		],
+		[
+			85178.5714285714,
+			[
+				["Normal Lyrics", "lyrics.youcantrun.1", "4"]
+			]
+		],
+		[
+			85285.7142857143,
+			[
+				["glitchFlash", "0.5, 1", "0.5"]
+			]
+		],
+		[
+			85714.2857142857,
+			[
+				["Change Character", "bf", "bf"],
+				["Change Character", "dad", "sonic.exe 2"],
+				["Change Character", "gf", "gf parada"],
+				["FlashCamera", "FF0000, 1", "1"],
+				["Swap Pixel Combo", "", ""],
+				["Normal Lyrics", "", ""],
+				["Set Property", "cameraSpeed", "10000"],
+				["ycrEvents", "stageMode", "CrystalMode"],
+				["ycrEvents", "vignetteMode", "2beat"],
+				["glitchFlash", "0, 0", "1"],
+				["chromFlash", "0, 0.4", "0.9"],
+				["Set Property", "dad.idleSuffix", "-alt"],
+				["Set Property", "dad.animSuffix", "-alt"]
+			]
+		],
+		[
+			85767.8571428572,
+			[
+				["Tween Camera Zoom", "0.6", ""]
+			]
+		],
+		[
+			85821.4285714286,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			89142.8571428571,
+			[
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			90000,
+			[
+				["Tween Camera Zoom", "0.75", ""]
+			]
+		],
+		[
+			90857.1428571429,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			91714.2857142857,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			92571.4285714286,
+			[
+				["Tween Camera Zoom", "0.65", ""],
+				["ycrEvents", "vignetteMode", "slow"]
+			]
+		],
+		[
+			96000,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			99428.5714285714,
+			[
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			101142.857142857,
+			[
+				["Tween Camera Zoom", "0.75", ""]
+			]
+		],
+		[
+			102000,
+			[
+				["Tween Camera Zoom", "0.85", ""]
+			]
+		],
+		[
+			102857.142857143,
+			[
+				["Tween Camera Zoom", "0.65", ""]
+			]
+		],
+		[
+			108000,
+			[
+				["Tween Camera Zoom", "0.75", ""]
+			]
+		],
+		[
+			108857.142857143,
+			[
+				["Tween Camera Zoom", "0.85", ""]
+			]
+		],
+		[
+			109714.285714286,
+			[
+				["Tween Camera Zoom", "0.65", ""]
+			]
+		],
+		[
+			112285.714285714,
+			[
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			113142.857142857,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			120000,
+			[
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			121714.285714286,
+			[
+				["Tween Camera Zoom", "0.75", ""]
+			]
+		],
+		[
+			122571.428571428,
+			[
+				["Tween Camera Zoom", "0.85", ""]
+			]
+		],
+		[
+			123428.571428571,
+			[
+				["Tween Camera Zoom", "0.65", ""]
+			]
+		],
+		[
+			126000,
+			[
+				["Change Character", "dad", "sonic.exe 2-grito"],
+				["Tweening Camera", "-800, 90", "0.001, linear"],
+				["Tween Camera Zoom", "1, true", "0.001, linear"],
+				["Set Property", "cameraSpeed", "10000"],
+				["glitchFlash", "0, 1.2", "1.3"],
+				["Set Property", "dad.animSuffix", ""],
+				["Play Animation", "grito2", "dad"]
+			]
+		],
+		[
+			126107.142857143,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			126857.142857143,
+			[
+				["Tween Camera Zoom", "0.7", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Change Health Damage", "0.015", ""],
+				["ycrEvents", "vignetteMode", "1beat"],
+				["glitchFlash", "1.2, 0", "1"],
+				["Change Character", "dad", "sonic.exe 2"],
+				["Set Property", "dad.animSuffix", "-alt"]
+			]
+		],
+		[
+			128571.428571428,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			129428.571428571,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			130285.714285714,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			132857.142857143,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			133285.714285714,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			133714.285714286,
+			[
+				["Tween Camera Zoom", "0.65", ""]
+			]
+		],
+		[
+			135428.571428571,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			136285.714285714,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			137142.857142857,
+			[
+				["Tween Camera Zoom", "0.75", ""]
+			]
+		],
+		[
+			139714.285714286,
+			[
+				["Tween Camera Zoom", "0.85", ""],
+				["Tweening Camera", "-800, 40", "0.001, linear"],
+				["Set Property", "cameraSpeed", "100000"],
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			139821.428571428,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			139928.571428571,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			140142.857142857,
+			[
+				["Tween Camera Zoom", "0.95", ""],
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			140357.142857143,
+			[
+				["Play Animation", "laugh", "dad"]
+			]
+		],
+		[
+			140571.428571428,
+			[
+				["Tween Camera Zoom", "0.65", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			142285.714285714,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			143142.857142857,
+			[
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			144000,
+			[
+				["Tween Camera Zoom", "0.65", ""]
+			]
+		],
+		[
+			145285.714285714,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
+			147428.571428571,
+			[
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			149142.857142857,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			150000,
+			[
+				["Tween Camera Zoom", "0.7", ""]
+			]
+		],
+		[
+			150857.142857143,
+			[
+				["Tween Camera Zoom", "0.65", ""]
+			]
+		],
+		[
+			153428.571428571,
+			[
+				["Normal Lyrics", "lyrics.youcantrun.2", "1"],
+				["Set Property", "dad.animSuffix", ""],
+				["Play Animation", "die", "dad"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"],
+				["Set Character Offset", "bf", "0"],
+				["Set Character Offset", "dad", "0"],
+				["Set Property", "cameraSpeed", "100000"],
+				["Tween Camera Zoom", "0.5, true", "0.85, circIn"],
+				["Tweening Camera", "-210, -80", "0.85, circIn"]
+			]
+		],
+		[
+			154285.714285714,
+			[
+				["Normal Lyrics", "lyrics.youcantrun.2", "2,FF0000"],
+				["ycrEvents", "tweenCamHUDAlpha", "0, 1"],
+				["ycrEvents", "vignetteMode", "slow"],
+				["Screen Shake", "1.15, 0.005", "0, 0"],
+				["Tween Camera Zoom", "0.4, true", "8, sineInOut"]
+			]
+		],
+		[
+			155464.285714286,
+			[
+				["Set Property", "dad.animSuffix", "-alt"]
+			]
+		],
+		[
+			156000,
+			[
+				["Normal Lyrics", "", ""]
+			]
+		],
+		[
+			156750,
+			[
+				["chromFlash", "0.4, 1.2", "0.9"]
+			]
+		],
+		[
+			156857.142857143,
+			[
+				["FlashCamera", "FF0000, 0.1", "0.05, add"]
+			]
+		],
+		[
+			156964.285714286,
+			[
+				["FlashCamera", "FF0000, 0.1", "0.05, add"]
+			]
+		],
+		[
+			157071.428571428,
+			[
+				["FlashCamera", "FF0000, 0.1", "0.05, add"]
+			]
+		],
+		[
+			157178.571428571,
+			[
+				["FlashCamera", "FF0000, 0.1", "0.05, add"]
+			]
+		],
+		[
+			157285.714285714,
+			[
+				["FlashCamera", "FF0000, 0.1", "0.05, add"]
+			]
+		],
+		[
+			157392.857142857,
+			[
+				["FlashCamera", "FF0000, 0.1", "0.05, add"]
+			]
+		],
+		[
+			157500,
+			[
+				["FlashCamera", "FF0000, 0.1", "0.05, add"]
+			]
+		],
+		[
+			157607.142857143,
+			[
+				["FlashCamera", "FF0000, 0.1", "0.05, add"]
+			]
+		],
+		[
+			157714.285714286,
+			[
+				["FlashCamera", "FF0000, 1", "2.5"],
+				["Set Property", "camGame.alpha", "0"]
+			]
+		],
+		[
+			157821.428571428,
+			[
+				["ycrEvents", "vignetteMode", "none"]
+			]
+		]
+	],
+	"format": "psych_v1"
+}

@@ -11,6 +11,4 @@ function onEndSong()
     return Function_Continue
 end
 
-function onEndVideo()
-    endSong()
-end
+function onEndVideo() endSong() end

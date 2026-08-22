@@ -8,6 +8,7 @@ var section:Int = sections.shift();
 var pattern:Array<Int> = [0, 4, 8, 12, 14, 18, 20, 24, 28, 32, 36, 40, 43, 46, 50, 52, 56, 60];
 var intensity:Float = 1.5;
 var prevScale:Float = 1;
+var prevDownscroll:Bool = false;
 
 function onStepHit() {
     switch(curStep) {
@@ -17,36 +18,40 @@ function onStepHit() {
                 positions.y.push(strum.y);
                 prevScale = strum.scale.x;
             }
+            prevDownscroll = playerStrums.members[0].downScroll;
             
-        case 4032: intensity = 1.1;
-        case 4096: intensity = 1.4;
-        case 4160: intensity = 1.2;
-        case 4210: intensity = 1.4;
+        case 4221: 
+            for(i => strum in playerStrums.members) {
+                FlxTween.tween(
+                    strum, 
+                    {x: positions.x[i], y: positions.y[i]}, 
+                    (Conductor.stepCrochet / 1000) * 30,
+                    {ease: FlxEase.expoInOut}
+                );
+                strum.downScroll = prevDownscroll;
+            }
     }
     
     if(curStep > section + pattern[pattern.length - 1]) section = sections.shift();
     for(n in pattern) 
-        if(curStep == section + n) pattern1();
+        if(curStep == section + n) pattern2();
 }
 
-function pattern1() {
-    var amt = FlxG.random.int(10, 50) * intensity;
-    for(i => strum in playerStrums.members) {
-        var x = switch(i) {
-            case 0: -amt;
-            case 1: -amt * 0.4;
-            case 2: amt * 0.4;
-            case 3: amt;
-        }
+var ang:Bool = false;
+function pattern2() {
+    camHUD.angle = camGame.angle = (ang = !ang) ? -3 : 3;
+    FlxTween.cancelTweensOf(camHUD);
+    FlxTween.cancelTweensOf(camGame);
+    FlxTween.tween(camHUD, {angle: 0}, (Conductor.stepCrochet / 1000) * 2.5);
+    FlxTween.tween(camGame, {angle: 0}, (Conductor.stepCrochet / 1000) * 2.5);
 
-        strum.x += x;  strum.y += FlxG.random.int(-30, 30) * intensity; strum.angle = FlxG.random.int(-30, 30);
-        strum.scale.set(prevScale * intensity, prevScale * intensity);
-        FlxTween.cancelTweensOf(strum);
-        FlxTween.tween(
-            strum, 
-            {x: positions.x[i], y: positions.y[i], angle: 0, "scale.x": prevScale, "scale.y": prevScale}, 
-            curStep == 4220 ? (Conductor.stepCrochet / 1000) * 30 : (Conductor.stepCrochet / 1000) * 2,
-            {ease: curStep == 4220 ? FlxEase.expoInOut : FlxEase.linear}
-        );
+    var y:Int = FlxG.random.int(0, FlxG.height - playerStrums.members[0].height);
+    var prevX:Int = 0;
+    for(i => strum in playerStrums.members) {
+        var x = prevX = Math.min(i == 0 ? (prevX + FlxG.random.int(50, 500)) : (prevX + FlxG.random.int(50, 300)), FlxG.width - strum.width);
+        strum.y = y;
+        strum.x = x;
+        if(y + strum.height / 2 > FlxG.height / 2) strum.downScroll = true;
+        else strum.downScroll = false;
     }
 }

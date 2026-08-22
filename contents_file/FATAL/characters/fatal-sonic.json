@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"offsets": [4, 519],
 			"loop": false,
-			"fps": 24,
+			"offsets": [0, 0],
 			"anim": "idle",
-			"indices": [],
-			"name": "Fatal sonic idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [4, 519],
+			"offsets": [0, 0],
 			"anim": "singUP",
 			"fps": 24,
-			"name": "Fatal sonic up",
+			"name": "up",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [4, 519],
+			"offsets": [0, 0],
 			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "Fatal sonic right",
+			"name": "right",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [4, 519],
+			"offsets": [0, 0],
 			"anim": "singLEFT",
 			"fps": 24,
-			"name": "Fatal sonic left",
+			"name": "left",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [4, 519],
+			"offsets": [0, 0],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "Fatal sonic down",
+			"name": "down",
 			"indices": []
 		},
 		{
-			"offsets": [4, 519],
+			"offsets": [0, 0],
 			"loop": true,
 			"fps": 25,
 			"anim": "singLEFT-loop",
-			"indices": [15, 16, 17, 18],
-			"name": "Fatal sonic left"
+			"indices": [8, 9, 10, 11, 12, 13, 14, 15],
+			"name": "left"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
-	"image": "characters/fatal-error-sonic",
-	"position": [-250, 240],
+	"image": "characters/fatal-error",
+	"position": [0, 0],
 	"healthicon": "fatal-sonic",
 	"flip_x": false,
 	"healthbar_colors": [255, 0, 0],
-	"camera_position": [-550, -810],
-	"sing_duration": 4,
+	"camera_position": [0, 0],
+	"sing_duration": 8,
 	"scale": 4.00000000000001,
 	"_editor_isPlayer": false
 }

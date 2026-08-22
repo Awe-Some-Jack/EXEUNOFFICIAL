@@ -1,49 +1,49 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
 			"loop": true,
-			"fps": 24,
+			"offsets": [0, 0],
 			"anim": "idle",
-			"indices": [],
-			"name": "tails doll pov idle"
+			"fps": 24,
+			"name": "tails doll pov idle",
+			"indices": []
 		},
 		{
-			"offsets": [-7, 8],
 			"loop": false,
-			"fps": 30,
+			"offsets": [0, 0],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "tails doll pov left"
+			"fps": 30,
+			"name": "tails doll pov left",
+			"indices": []
 		},
 		{
-			"offsets": [-1, 5],
 			"loop": false,
-			"fps": 30,
+			"offsets": [0, 0],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "tails doll pov down"
+			"fps": 30,
+			"name": "tails doll pov down",
+			"indices": []
 		},
 		{
-			"offsets": [3, 71],
 			"loop": false,
-			"fps": 30,
+			"offsets": [0, 0],
 			"anim": "singUP",
-			"indices": [],
-			"name": "tails doll pov up"
+			"fps": 30,
+			"name": "tails doll pov up",
+			"indices": []
 		},
 		{
-			"offsets": [13, 1],
 			"loop": false,
-			"fps": 30,
+			"offsets": [0, 0],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "tails doll pov right"
+			"fps": 30,
+			"name": "tails doll pov right",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
-	"image": "characters/tails doll pov",
+	"image": "characters/tail doll pov",
 	"position": [0, 0],
 	"healthicon": "taildoll",
 	"flip_x": false,

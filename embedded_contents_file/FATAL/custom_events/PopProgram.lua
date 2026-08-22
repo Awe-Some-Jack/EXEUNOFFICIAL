@@ -62,6 +62,13 @@ function onCreatePost()
 	]]);
 end
 
+function onPause()
+	if isFatalitySong then
+		return Function_Stop
+	end
+	return Function_Continue
+end
+
 function onStepHit()
 	if not isFatalitySong then return end
 
@@ -124,8 +131,9 @@ function onEvent(n, v1)
 			var processClass = Type.resolveClass('sys.io.Process');
 			if (processClass != null) {
 				try {
-					var noArgs:Array<String> = [];
-					var proc = Type.createInstance(processClass, ['contents/FATAL/tools/PopUp.exe', noArgs]);
+					var vol = FlxG.sound.muted ? 0.0 : FlxG.sound.volume;
+					var popArgs:Array<String> = [Std.string(vol)];
+					var proc = Type.createInstance(processClass, ['contents/FATAL/tools/PopUp.exe', popArgs]);
 					processes.push(proc);
 				} catch (e:Dynamic) {
 				}
@@ -133,6 +141,9 @@ function onEvent(n, v1)
 
 			setVar('fatalErrorProcesses', processes);
 		]]);
+	end
+	if n == 'Clear Fatal Popups' then
+		closeAllPopups()
 	end
 end
 
@@ -166,8 +177,9 @@ local function floodWithPopups()
 			var processClass = Type.resolveClass('sys.io.Process');
 			if (processClass != null) {
 				try {
-					var noArgs:Array<String> = [];
-					var proc = Type.createInstance(processClass, ['contents/FATAL/tools/PopUp.exe', noArgs]);
+					var vol = FlxG.sound.muted ? 0.0 : FlxG.sound.volume;
+					var popArgs:Array<String> = [Std.string(vol)];
+					var proc = Type.createInstance(processClass, ['contents/FATAL/tools/PopUp.exe', popArgs]);
 					var processes:Array<Dynamic> = getVar('fatalErrorProcesses');
 					if (processes == null) processes = [];
 					processes.push(proc);

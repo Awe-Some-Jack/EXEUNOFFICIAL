@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="edificios.png">
+<SubTexture name="idle0000" x="0" y="0" width="913" height="375" frameX="-33" frameY="-40" frameWidth="1005" frameHeight="586" />
+<SubTexture name="idle0001" x="0" y="375" width="928" height="365" frameX="-18" frameY="-51" frameWidth="1005" frameHeight="586" />
+<SubTexture name="idle0002" x="928" y="740" width="870" height="353" frameX="-38" frameY="-57" frameWidth="1005" frameHeight="586" />
+<SubTexture name="idle0003" x="928" y="375" width="893" height="356" frameX="-14" frameY="-53" frameWidth="1005" frameHeight="586" />
+<SubTexture name="idle0004" x="0" y="740" width="928" height="359" frameX="-18" frameY="-44" frameWidth="1005" frameHeight="586" />
+<SubTexture name="idle0005" x="913" y="0" width="922" height="373" frameX="-23" frameY="-43" frameWidth="1005" frameHeight="586" />
+</TextureAtlas>

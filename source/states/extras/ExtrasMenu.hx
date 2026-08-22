@@ -203,6 +203,18 @@ class ExtrasMenu extends MusicBeatState
             FlxG.switchState(() -> new EXEMenu());
         }
 
+        #if !mobile
+        if (FlxG.mouse.justMoved){
+            FlxG.mouse.visible = true;
+        }
+        #end
+
+        if (FlxG.sound.music.playing){
+            discoTween.active = true;
+        }else{
+            discoTween.active = false;
+        }
+
         if (FlxG.mouse.justPressed && disco != null && disco.overlapsPoint(new flixel.math.FlxPoint(FlxG.mouse.x, FlxG.mouse.y)))
         {
             if (FlxG.sound.music != null)
@@ -238,7 +250,7 @@ class ExtrasMenu extends MusicBeatState
             final videoName:String = Std.string(imageList[i]);
             spr.loadVideoCard(Paths.video('extrasMenu/$videoName')); 
 
-            var rightEdge = FlxG.width - 500;
+            var rightEdge = FlxG.width - 300;
             switch (i) {
                 case 0:
                     spr.finalX = rightEdge - 200;
@@ -394,6 +406,7 @@ class ExtrasMenu extends MusicBeatState
         add(sumky);
     }
 
+    var discoTween:FlxTween;
     function buildDisco():Void
     {
         final bmp = Paths.getBitmapData("assets/exe/extras/disco.webp");
@@ -410,7 +423,7 @@ class ExtrasMenu extends MusicBeatState
         disco.scale.set(0.29, 0.29);
         disco.updateHitbox();
         add(disco);
-        FlxTween.angle(disco, 0, 360, 3.0, {type: LOOPING});
+        discoTween = FlxTween.angle(disco, 0, 360, 3.0, {type: LOOPING});
     }
 
     function buildLogo():Void

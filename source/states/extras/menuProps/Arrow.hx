@@ -10,6 +10,7 @@ import flixel.tweens.FlxEase;
 class ArrowEvent 
 {
     public var sprite:FlxSprite;
+    public var arrowScale:Float = 0.44;
     public var twn:FlxTween;
     public var eventCanceled:Bool = false;
 
@@ -37,6 +38,7 @@ class Arrow extends FlxSprite
     public var arrowTwn:FlxTween;
     public var isLeft:Bool = false;
     public var angleDir:Float = 0;
+    public var arrowScale:Float = 0.44;
 
     /**
         @angleDir 0 = right dir
@@ -53,7 +55,9 @@ class Arrow extends FlxSprite
         onDown = new FlxTypedSignal<ArrowEvent->Void>();
 
         loadGraphic(Paths.getBitmapData("assets/exe/extras/arrow.webp"));
+        setGraphicSize(Std.int(width * arrowScale));
         updateHitbox();
+        offset.set(0,0);
         angle = angleDir;
         if (isLeft){
             flipY = true;
@@ -73,7 +77,7 @@ class Arrow extends FlxSprite
             }
             
             final rad:Float = angleDir * (Math.PI / 180);
-            final distance:Float = 5.0;
+            final distance:Float = 5.0 * arrowScale;
             
             final event = new ArrowEvent(this, arrowTwn);
 

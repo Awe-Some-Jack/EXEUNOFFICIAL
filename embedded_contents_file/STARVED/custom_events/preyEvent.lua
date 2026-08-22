@@ -37,12 +37,10 @@ function onEvent(n, v1)
 
 		if v1 == 'secondcamera' then screenCenter('sonicintro') end
 		if v1 == 'thirdcamera' then scaleObject('sonicintro', 3, 3, false) end
-		if v1 == 'fourthcamera' then
-			doTweenAlpha('sonicintro', 'sonicintro', 0, crochet / (1000 / 8))
-			setProperty('introsonic.alpha', 1)
-		end
+		if v1 == 'fourthcamera' then doTweenAlpha('sonicintro', 'sonicintro', 0, crochet / (1000 / 8)) end
 
 		if v1 == 'addbg' then
+			setProperty('introsonic.alpha', 1)
 			removeLuaSprite('sonicintro', true)
 			if not lowQuality then
 				for i = 1,15 do

@@ -222,7 +222,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 	var tipBg:FlxSprite;
 	var fullTipText:FlxText;
 	
-	var vortexEnabled:Bool = false;
+	var vortexEnabled:Bool = true;
 	var waveformEnabled:Bool = false;
 	var waveformTarget:WaveformTarget = INST;
 

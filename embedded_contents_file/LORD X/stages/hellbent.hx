@@ -29,7 +29,9 @@ var bgFirst:Array<BackgroundSprite> = [
 	{path: 'hellbent/bgnew/hellbentnew', position: [-2450, -1310], visible: false, scroll: [0.2, 0.2], animation: [{name: "4"}]},
 	{path: 'hellbent/bgnew/hellbentnew', position: [-2520, -1310], visible: false, scale: [0.9, 0.9], scroll: [0.5, 0.5], animation: [{name: "3"}]},
 	{path: 'hellbent/bgnew/hellbentnew', position: [-2600, -1310], visible: false, scale: [0.9, 0.9], scroll: [0.7, 0.7], animation: [{name: "2"}]},
-	{path: 'hellbent/bgnew/hellbentnew', position: [-2745, -1310], visible: false, scale: [0.9, 0.9], animation: [{name: "1"}]}
+	{path: 'hellbent/bgnew/hellbentnew', position: [-2745, -1310], visible: false, scale: [0.9, 0.9], animation: [{name: "1"}]},
+	{path: 'hellbent/bgnew/banderas', position: [-440, 550], visible: false, scale: [4, 4], animation: [{name: "bandera instancia 1", looped: true}]},
+	{path: 'hellbent/bgnew/banderas', position: [850, 550], visible: false, scale: [4, 4], animation: [{name: "bandera instancia 1", looped: true}], flipX: true}
 ];
 
 var bgHell:Array<BackgroundSprite> = [

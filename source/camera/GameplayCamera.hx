@@ -518,7 +518,7 @@ class GameplayCamera
 				new flixel.util.FlxTimer().start(0.01, function(_) PlayState.instance.camGame.snapToTarget());
 
 			case 'soullesEvents':
-				if (v1 == 'startcam') { PlayState.instance.camZooming = true; settings.MiddleY = 600; }
+				if (v1 == 'startcam') { PlayState.instance.camZooming = true; settings.MiddleY = 550; }
 
 			case 'BGchange':
 				switch (v1) {

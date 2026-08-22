@@ -1,11 +1,13 @@
 import openfl.display.BlendMode;
 
+var bg:FlxSprite;
 var sombra2:FlxSprite;
 function onCreatePost()
 {
 	PlayState.instance.boyfriend.alpha = 0;
 
-	var bg:FlxSprite = new FlxSprite(-800, -500).loadGraphic(Paths.image('soullessbg/bg'));
+	bg = new FlxSprite(-800, -500).loadGraphic(Paths.image('soullessbg/bgclean'));
+	bg.scrollFactor.set(0.6, 0.6);
 	addBehindDad(bg);
 
 	sombra2 = new FlxSprite(-550).loadGraphic(Paths.image('soullessbg/sombra2'));
@@ -33,6 +35,8 @@ function onEvent(n,v1,v2)
 				FlxTween.tween(sombra2, {alpha: 0.8}, Conductor.crochet / (1000 / duration) / PlayState.instance.playbackRate, {ease: FlxEase.cubeOut});
 			case 'light':
 				FlxTween.tween(sombra2, {alpha: 0}, Conductor.crochet / (1000 / duration) / PlayState.instance.playbackRate, {ease: FlxEase.cubeOut});
+			case 'newbg':
+				bg.loadGraphic(Paths.image('soullessbg/bg'));
 		}
 	}
 }

@@ -1,14 +1,6 @@
 {
 	"animations": [
 		{
-			"offsets": [-190, 20],
-			"loop": false,
-			"fps": 24,
-			"anim": "idle",
-			"indices": [],
-			"name": "idle"
-		},
-		{
 			"offsets": [-96, 64],
 			"loop": false,
 			"fps": 24,
@@ -17,7 +9,7 @@
 			"name": "up"
 		},
 		{
-			"offsets": [-31, 88],
+			"offsets": [-22, 92],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -25,7 +17,7 @@
 			"name": "left"
 		},
 		{
-			"offsets": [-71, 33],
+			"offsets": [-69, 34],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
@@ -33,7 +25,7 @@
 			"name": "down"
 		},
 		{
-			"offsets": [-197, 21],
+			"offsets": [-189, 11],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
@@ -49,18 +41,26 @@
 			"indices": []
 		},
 		{
+			"loop": true,
+			"offsets": [-190, 20],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
 			"loop": false,
 			"offsets": [-252, 20],
 			"anim": "smile",
 			"fps": 24,
 			"name": "smile",
-			"indices": []
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 25, 26, 27, 28, 25, 26, 27, 28, 25, 26, 27, 28, 25, 26, 27, 28, 25, 26, 27, 28]
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/taildoll",
-	"position": [30, 40],
+	"position": [40, -20],
 	"healthicon": "soultails",
 	"flip_x": false,
 	"healthbar_colors": [247, 156, 25],

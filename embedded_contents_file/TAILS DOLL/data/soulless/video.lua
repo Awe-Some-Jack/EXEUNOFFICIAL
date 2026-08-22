@@ -1,7 +1,7 @@
 local allowCountdown = false
 
 function onStartCountdown()
-    if not allowCountdown and not seenCutscene then
+    if not allowCountdown and not seenCutscene and isStoryMode then
         startVideo('soulless')
         allowCountdown = true
         return Function_Stop

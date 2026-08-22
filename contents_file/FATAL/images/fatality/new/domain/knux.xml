@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="spritesheet.png">
+	<SubTexture name="dance0000" x="0" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0001" x="0" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0002" x="85" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0003" x="85" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0004" x="170" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0005" x="170" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0006" x="0" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0007" x="0" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0008" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0009" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0010" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0011" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0012" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0013" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+</TextureAtlas>

@@ -134,6 +134,9 @@ function onEvent(n, v1)
 			setVar('fatalErrorProcesses', processes);
 		]]);
 	end
+	if n == 'Clear Fatal Popups' then
+		closeAllPopups()
+	end
 end
 
 local function shakeEverything()

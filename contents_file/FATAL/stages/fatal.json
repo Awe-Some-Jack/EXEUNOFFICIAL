@@ -1,0 +1,9 @@
+{
+	"defaultZoom": 0.4,
+	"stageUI": "pixel",
+	"hide_girlfriend": true,
+	
+	"boyfriend": [1100, 700],
+	"opponent": [0, 0],
+	"girlfriend": [0, 0]
+}

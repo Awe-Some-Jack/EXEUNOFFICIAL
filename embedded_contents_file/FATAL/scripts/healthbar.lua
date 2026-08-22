@@ -6,6 +6,13 @@ function onCreatePost()
 	lastSentSquares = -1
 	if not isFatalitySong then return end
 
+	runTimer('fatalHealthBarInit', 0.15)
+end
+
+function onTimerCompleted(tag)
+	if tag ~= 'fatalHealthBarInit' then return end
+	if not isFatalitySong then return end
+
 	setPropertyFromClass('openfl.Lib', 'application.window.borderless', true)
 
 	setProperty('healthBar.visible', false)
@@ -82,15 +89,18 @@ function onUpdatePost(elapsed)
 end
 
 function onEndSong()
+	cancelTimer('fatalHealthBarInit')
 	if isFatalitySong then closeHealthBar() end
 	return Function_Continue
 end
 
 function onGameOver()
+	cancelTimer('fatalHealthBarInit')
 	if isFatalitySong then closeHealthBar() end
 	return Function_Continue
 end
 
 function onDestroy()
+	cancelTimer('fatalHealthBarInit')
 	if isFatalitySong then closeHealthBar() end
 end

@@ -118,3 +118,7 @@ function makeBackground(background:Array<BackgroundSprite>)
 		spriteDef.sprite = sprite;
 	}
 }
+
+function onGameOverStart()  commercial?.destroy();Q
+function onPause() commercial?.pause();
+function onResume() commercial?.resume();

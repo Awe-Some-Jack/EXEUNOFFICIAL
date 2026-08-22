@@ -333,6 +333,7 @@
 				["Normal Lyrics", "", ""],
 				["Set Property", "cameraSpeed", "10000"],
 				["ycrEvents", "stageMode", "CrystalMode"],
+				["ycrEvents", "vignetteMode", "2beat"],
 				["glitchFlash", "0, 0", "1"],
 				["chromFlash", "0, 0.4", "0.9"],
 				["Set Property", "dad.idleSuffix", "-alt"],

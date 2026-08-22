@@ -130,7 +130,7 @@ function onUpdate(elapsed)
 		hbOriginalY = getProperty('hbBG.y')
 		local hiddenY = 800
 		setProperty('hbBG.y', hiddenY)
-		setProperty('exeScoreTxt.y', hiddenY + (downscroll and 30 or -30))
+		setProperty('exeScoreTxt.y', hiddenY + 30)
 		for _, name in ipairs(HB_ELEMENTS) do
 			setProperty(name .. '.y', hiddenY + 5)
 		end

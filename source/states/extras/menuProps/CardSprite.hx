@@ -12,7 +12,7 @@ class CardSprite extends FlxVideoSprite
 {
     public var finalX:Float = 0;
     public var finalY:Float = 0;
-    public var targetAlpha:Float = 0.5;
+    public var targetAlpha:Float = 0.67;
     public var introDone:Bool = false;
 
     public var borderSprite:FlxSprite;

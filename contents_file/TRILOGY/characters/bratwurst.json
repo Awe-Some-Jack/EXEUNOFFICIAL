@@ -1,92 +1,92 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [0, 0],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "idle",
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [285, 53],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
 			"indices": []
 		},
 		{
-			"offsets": [285, 53],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT",
 			"loop": false,
-			"name": "left"
-		},
-		{
 			"offsets": [79, 7],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
-			"offsets": [0, 110],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [30, 240],
 			"anim": "singUP",
-			"loop": false,
-			"name": "up"
-		},
-		{
-			"offsets": [-32, -120],
-			"indices": [],
 			"fps": 24,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right"
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [117, -110],
-			"indices": [],
-			"fps": 24,
-			"anim": "tooslow",
 			"loop": false,
-			"name": "too slow"
-		},
-		{
 			"offsets": [-1, 10],
-			"indices": [],
+			"anim": "singRIGHT",
 			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [117, -110],
+			"anim": "tooslow",
+			"fps": 24,
+			"name": "too slow",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-1, 10],
 			"anim": "getit",
-			"loop": false,
-			"name": "entiendes"
+			"fps": 24,
+			"name": "entiendes",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [60, 77],
-			"indices": [],
-			"fps": 24,
 			"anim": "nomoregames",
-			"loop": false,
-			"name": "nomore"
+			"fps": 24,
+			"name": "nomore",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [113, 103],
-			"indices": [],
-			"fps": 24,
 			"anim": "risa",
-			"loop": false,
-			"name": "risa"
+			"fps": 24,
+			"name": "risa",
+			"indices": []
 		},
 		{
-			"offsets": [270, 63],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [162, 80],
 			"anim": "lodijo",
-			"loop": false,
-			"name": "yousoyel"
+			"fps": 24,
+			"name": "yousoyel",
+			"indices": []
 		},
 		{
-			"offsets": [260, 150],
-			"indices": [],
-			"fps": 24,
-			"anim": "intro",
 			"loop": false,
-			"name": "intro"
+			"offsets": [260, 150],
+			"anim": "intro",
+			"fps": 24,
+			"name": "intro",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

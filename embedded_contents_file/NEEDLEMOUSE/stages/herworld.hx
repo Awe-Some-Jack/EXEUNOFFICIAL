@@ -20,6 +20,16 @@ typedef BackgroundSprite =
 	@:optional var animation:Array<Dynamic>;
 }
 
+var activeSprites:Array<FlxSprite> = [];
+var glitch:FlxRuntimeShader;
+var colorShader:ColorSwap;
+var water:FlxRuntimeShader;
+var camGlitch:FlxRuntimeShader;
+var fireBG:FlxVideoSprite;
+var blackCircle:FlxSprite;
+var isAtem:Bool = false;
+var camZoomingBeat:Bool = false;
+
 var bgNeedle:Array<BackgroundSprite> = [
 	{path: 'roundabout/sky', position: [-750, -900], scroll: [0.3, 0.3]},
 	{path: 'roundabout/bg3', position: [-500, -700], scroll: [0.5, 0.5]},
@@ -38,15 +48,157 @@ var bgLuther:Array<BackgroundSprite> = [
 	{path: 'herworld/knux', position: [3350, 1050], scroll: [1.25, 1.1], front: true},
 ];
 
-var activeSprites:Array<FlxSprite> = [];
-var glitch:FlxRuntimeShader;
-var colorShader:ColorSwap;
-var water:FlxRuntimeShader;
-var camGlitch:FlxRuntimeShader;
-var fireBG:FlxVideoSprite;
-var blackCircle:FlxSprite;
-var isAtem:Bool = false;
-var camZoomingBeat:Bool = false;
+var stepEvents = [
+		{ 
+			step: 798, callback: () -> {	// luther transition
+				FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> makeBackground(bgLuther)});
+				FlxTween.num(0, 1, 1.5, null, v -> {
+					camGlitch.setFloat('AMT', v); 
+					camGlitch.setFloat('SPEED', v);
+				});
+				FlxTween.tween(black, {alpha: 0}, 1.5, {startDelay: 2});
+				FlxTween.num(1, 0, 1.5, {startDelay: 2}, v -> {
+					camGlitch.setFloat('AMT', v); 
+					camGlitch.setFloat('SPEED', v);
+				});
+			}
+		},
+		{ 
+			step: 1269, callback: () -> {
+			FlxTween.num(0, 0.1, 4.2, {onComplete: () -> {
+					camGlitch.setFloat('AMT', 0); 
+					camGlitch.setFloat('SPEED', 0);
+				}}, v -> {
+					camGlitch.setFloat('AMT', v); 
+					camGlitch.setFloat('SPEED', v / 2);
+				});
+
+				FlxTween.num(1, 0.3, 4.2, {onComplete: () -> {
+					FlxTween.num(0.3, 1, 0.5, null, v -> bright.setFloat('saturation', v));
+				}}, v -> {
+					bright.setFloat('saturation', v);
+				});
+			}
+		},
+		{ 
+			step: 1312, callback: () -> {
+				water.setFloat('waveAmplitude', 0.008);
+			}
+		},
+		{ 
+			step: 2176, callback: () -> {
+				FlxTween.num(0, 0.3, 3, {ease: FlxEase.cubeIn}, v -> {
+					camGlitch.setFloat('AMT', v); 
+					camGlitch.setFloat('SPEED', v);
+				});
+			}
+		},
+		{ 
+			step: 2208, callback: () -> {
+				camGlitch.setFloat('AMT', 0); 
+				camGlitch.setFloat('SPEED', 0);
+				water.setFloat('waveAmplitude', 0.02);
+			}
+		},
+		{ 
+			step: 2464, callback: () -> {
+				FlxTween.num(0.02, 0.008, 1, null, v -> water.setFloat('waveAmplitude', v));
+			},
+		},	
+		{ 
+			step: 2976, callback: () -> {	//solo transition
+				triggerEvent('Set customCamera Position', 'bf', '2500, 1000');
+				FlxTween.tween(black, {alpha: 1}, 2, {onComplete: _ -> makeBackground([]) });
+				FlxTween.num(0, 1, 2, {onComplete: _ -> {
+					camGlitch.setFloat('AMT', 0.0); 
+					camGlitch.setFloat('SPEED', 0.0);
+					game.comboGroup.x = -400;
+					camZooming = false;
+					gf.alpha = 0.001;
+					dad.alpha = 0.001;
+					for(obj in [game.getLuaObject('hbBG'), game.getLuaObject('hbHealth'), game.getLuaObject('hbHealth2'), game.getLuaObject('iconBF'), game.getLuaObject('iconOpp'), game.getLuaObject('separatorHealth')]) obj.alpha = 0;
+					for(strum in opponentStrums.members) strum.x -= 600;
+					for(strum in playerStrums.members) strum.x -= 320;
+				}}, v -> {
+					camGlitch.setFloat('AMT', v); 
+					camGlitch.setFloat('SPEED', v);
+				});
+				FlxTween.tween(black, {alpha: 0}, 5, {startDelay: 5});
+			}
+		},
+		{ 
+			step: 3292, callback: () -> { //atem transition
+				FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> 
+				{
+					dad.alpha = 1;
+					gf.alpha = 1;
+					boyfriend.alpha = 1;
+					camZooming = true;
+
+					triggerEvent('Change Character', 'BF', 'bf-needlefinal');
+					triggerEvent('Change Character', 'GF', 'lutherfinal');
+					game.remove(dadGroup);
+					game.addBehindGF(dadGroup);
+
+					blackCircle = new FlxSprite(0, 0, Paths.image('herworld/black'));
+					blackCircle.x = dad.x - blackCircle.width / 2.5;
+					blackCircle.y = dad.y - blackCircle.height / 4;
+					blackCircle.scale.set(2.6, 4);
+					game.addBehindDad(blackCircle);
+				}});
+				FlxTween.tween(black, {alpha: 0}, 1, {startDelay: 2.5});
+			}
+		},
+		{ 
+			step: 3392, callback: () -> {
+				for(obj in [game.getLuaObject('hbBG'), game.getLuaObject('hbHealth'), game.getLuaObject('hbHealth2'), game.getLuaObject('iconBF'), game.getLuaObject('iconOpp'), game.getLuaObject('separatorHealth')]) 
+					FlxTween.tween(obj, {alpha: 1}, 1);
+			}
+		},	
+		{ 
+			step: 3968, callback: () -> {
+				game.camZoomingMult = 3;
+				game.camZoomingDecay = 1.5;
+				camZoomingBeat = true;
+				fireBG.play();
+				fireBG.alpha = 0.7;
+			}
+		},
+		{ 
+			step: 4224, callback: () -> {
+				camZoomingBeat = false;
+				game.camZoomingMult = 1;
+				game.camZoomingDecay = 1;
+				FlxTween.tween(white, {alpha: 1}, 1.5);
+				for(obj in [game.getLuaObject('hbBG'), game.getLuaObject('hbHealth'), game.getLuaObject('hbHealth2'), game.getLuaObject('iconBF'), game.getLuaObject('iconOpp'), game.getLuaObject('separatorHealth')]) 
+					FlxTween.tween(obj, {alpha: 0}, 1.5);
+			}
+		},
+		{ 
+			step: 4260, callback: () -> {
+				FlxTween.tween(end, {alpha: 1}, 2);
+			}
+		},
+		{ 
+			step: 4280, callback: () -> {
+				FlxTween.tween(end, {"scale.x": 0.5, "scale.y": 0.5}, 40);
+			}
+		},
+		{ 
+			step: 4740, callback: () -> {
+				FlxTween.tween(end, {alpha: 0}, 4);
+			}
+		},
+		{ 
+			step: 4768, callback: () -> {
+				FlxTween.tween(black, {alpha: 1}, 3);
+				FlxTween.num(0, 1, 3, null, v -> {
+					camGlitch.setFloat('AMT', v); 
+					camGlitch.setFloat('SPEED', v);
+				});
+			}
+		}
+];
 
 //! añadir eventos
 
@@ -145,15 +297,15 @@ function onEvent(n, v1, v2) {
 			case 'luther':
 				dad.setPosition(1025, 850);
 			case 'atem': 
-				dad.setPosition(2600, 850);
-				triggerEvent('Set customCamera Position', 'dad', '2700, 650');
+				dad.setPosition(2650, 750);
+				triggerEvent('Set customCamera Position', 'dad', '2700, 700');
 				isAtem = true;
 			case 'lutherfinal':
-				gf.setPosition(2600, 830);
-				triggerEvent('Set customCamera Position', 'gf', '2900, 800');
+				gf.setPosition(2650, 830);
+				triggerEvent('Set customCamera Position', 'gf', '2800, 800');
 			case 'bf-needlefinal':
-				boyfriend.setPosition(1900, 870);
-				triggerEvent('Set customCamera Position', 'bf', '2500, 800');
+				boyfriend.setPosition(1850, 870);
+				triggerEvent('Set customCamera Position', 'bf', '2600, 800');
 				boyfriend.flipX = false;
 		}
 	}
@@ -167,127 +319,17 @@ function onSectionHit(section:Dynamic) {
 	if(!isAtem) return;
 
     if(!mustHitSection) 
-		triggerEvent("Tween Camera Zoom", "0.75, true", "0.75, cubeOut");
+		triggerEvent("Tween Camera Zoom", "0.8, true", "0.75, cubeOut");
 	else 
-		triggerEvent("Tween Camera Zoom", "0.6, true", "0.75, cubeOut");
+		triggerEvent("Tween Camera Zoom", "0.65, true", "0.75, cubeOut");
 }
 
+var curEvent;
 function onStepHit() {
-	switch(curStep) {
-		case 798:	// luther transition
-			FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> makeBackground(bgLuther)});
-			FlxTween.num(0, 1, 1.5, null, v -> {
-				camGlitch.setFloat('AMT', v); 
-				camGlitch.setFloat('SPEED', v);
-			});
-			FlxTween.tween(black, {alpha: 0}, 1.5, {startDelay: 2});
-			FlxTween.num(1, 0, 1.5, {startDelay: 2}, v -> {
-				camGlitch.setFloat('AMT', v); 
-				camGlitch.setFloat('SPEED', v);
-			});
-
-		case 1269:
-			FlxTween.num(0, 0.1, 4.2, {onComplete: () -> {
-				camGlitch.setFloat('AMT', 0); 
-				camGlitch.setFloat('SPEED', 0);
-			}}, v -> {
-				camGlitch.setFloat('AMT', v); 
-				camGlitch.setFloat('SPEED', v / 2);
-			});
-
-			FlxTween.num(1, 0.3, 4.2, {onComplete: () -> {
-				FlxTween.num(0.3, 1, 0.5, null, v -> bright.setFloat('saturation', v));
-			}}, v -> {
-				bright.setFloat('saturation', v);
-			});
-		case 1312:
-			water.setFloat('waveAmplitude', 0.008);
-		case 2176:
-			FlxTween.num(0, 0.3, 3, {ease: FlxEase.cubeIn}, v -> {
-				camGlitch.setFloat('AMT', v); 
-				camGlitch.setFloat('SPEED', v);
-			});
-		case 2208:
-			camGlitch.setFloat('AMT', 0); 
-			camGlitch.setFloat('SPEED', 0);
-			water.setFloat('waveAmplitude', 0.02);
-		case 2464:
-			FlxTween.num(0.02, 0.008, 1, null, v -> water.setFloat('waveAmplitude', v));
-			
-		case 2976:	//solo transition
-			triggerEvent('Set customCamera Position', 'bf', '2500, 1000');
-			FlxTween.tween(black, {alpha: 1}, 2, {onComplete: _ -> makeBackground([]) });
-			FlxTween.num(0, 1, 2, {onComplete: _ -> {
-				camGlitch.setFloat('AMT', 0.0); 
-				camGlitch.setFloat('SPEED', 0.0);
-				game.comboGroup.x = -400;
-				camZooming = false;
-				gf.alpha = 0.001;
-				dad.alpha = 0.001;
-				for(obj in [game.getLuaObject('hbBG'), game.getLuaObject('hbHealth'), game.getLuaObject('hbHealth2'), game.getLuaObject('iconBF'), game.getLuaObject('iconOpp'), game.getLuaObject('separatorHealth')]) obj.alpha = 0;
-				for(strum in opponentStrums.members) strum.x -= 600;
-				for(strum in playerStrums.members) strum.x -= 320;
-			}}, v -> {
-				camGlitch.setFloat('AMT', v); 
-				camGlitch.setFloat('SPEED', v);
-			});
-			FlxTween.tween(black, {alpha: 0}, 5, {startDelay: 5});
-
-		case 3292: //atem transition
-			FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> 
-			{
-				dad.alpha = 1;
-				gf.alpha = 1;
-				boyfriend.alpha = 1;
-				camZooming = true;
-
-				triggerEvent('Change Character', 'BF', 'bf-needlefinal');
-				triggerEvent('Change Character', 'GF', 'lutherfinal');
-				game.remove(dadGroup);
-				game.addBehindGF(dadGroup);
-
-				blackCircle = new FlxSprite(0, 0, Paths.image('herworld/black'));
-				blackCircle.x = dad.x - blackCircle.width / 2;
-				blackCircle.y = dad.y - blackCircle.height / 4;
-				blackCircle.scale.set(2.8, 4);
-				game.addBehindDad(blackCircle);
-			}});
-			FlxTween.tween(black, {alpha: 0}, 1, {startDelay: 2.5});
-
-		case 3392:
-			for(obj in [game.getLuaObject('hbBG'), game.getLuaObject('hbHealth'), game.getLuaObject('hbHealth2'), game.getLuaObject('iconBF'), game.getLuaObject('iconOpp'), game.getLuaObject('separatorHealth')]) 
-				FlxTween.tween(obj, {alpha: 1}, 1);
-			
-		case 3968:
-
-		case 3968:
-			game.camZoomingMult = 3;
-			game.camZoomingDecay = 1.5;
-			camZoomingBeat = true;
-			fireBG.play();
-			fireBG.alpha = 0.7;
-		
-		case 4224: 
-			camZoomingBeat = false;
-			game.camZoomingMult = 1;
-			game.camZoomingDecay = 1;
-			FlxTween.tween(white, {alpha: 1}, 1.5);
-			for(obj in [game.getLuaObject('hbBG'), game.getLuaObject('hbHealth'), game.getLuaObject('hbHealth2'), game.getLuaObject('iconBF'), game.getLuaObject('iconOpp'), game.getLuaObject('separatorHealth')]) 
-				FlxTween.tween(obj, {alpha: 0}, 1.5);
-
-		case 4260:
-			FlxTween.tween(end, {alpha: 1}, 2);
-		case 4280:
-			FlxTween.tween(end, {"scale.x": 0.5, "scale.y": 0.5}, 40);
-		case 4740:
-			FlxTween.tween(end, {alpha: 0}, 4);
-
-		case 4768:
-			FlxTween.tween(black, {alpha: 1}, 3);
-			FlxTween.num(0, 1, 3, null, v -> {
-				camGlitch.setFloat('AMT', v); 
-				camGlitch.setFloat('SPEED', v);
-			});
+	curEvent ??= stepEvents.shift();
+	if(curEvent != null && curStep >= curEvent.step) {
+		curEvent.callback();
+		curEvent = stepEvents.shift();
 	}
 }
 

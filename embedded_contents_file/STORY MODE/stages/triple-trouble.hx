@@ -373,6 +373,7 @@ function onUpdatePost(elapsed:Float)
 
 function goodNoteHitPre(note) if (curBG == 'knux' || curBG == 'xeno2') note.animSuffix = '-knux';
 function noteMiss(note) if (curBG == 'knux' || curBG == 'xeno2') boyfriend.playAnim(game.singAnimations[note.noteData] + 'miss-knux', true);
+function noteMissPress(note) if (curBG == 'knux' || curBG == 'xeno2') boyfriend.playAnim(game.singAnimations[note] + 'miss-knux', true);
 
 function onBeatHit()
 {

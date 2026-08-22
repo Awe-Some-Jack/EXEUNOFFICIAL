@@ -108,3 +108,5 @@ function onTimerCompleted(t)
 		setProperty('XDD2.visible', false)
 	end
 end
+
+function noteMissPress(nt) if curBeat >= 252 then playAnim('boyfriend', getProperty('singAnimations['..nt..']') .. 'miss-alt', true) end end

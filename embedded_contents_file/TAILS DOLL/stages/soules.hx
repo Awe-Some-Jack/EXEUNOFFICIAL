@@ -10,13 +10,13 @@ function onCreatePost()
 	bg.scrollFactor.set(0.6, 0.6);
 	addBehindDad(bg);
 
-	sombra2 = new FlxSprite(-600).loadGraphic(Paths.image('soullessbg/sombra2'));
+	sombra2 = new FlxSprite(-550, -100).loadGraphic(Paths.image('soullessbg/sombra2'));
 	sombra2.scale.set(1.643, 1.643);
 	sombra2.updateHitbox();
 	sombra2.alpha = 1;
 	add(sombra2);
 
-	var sombra:FlxSprite = new FlxSprite(-600).loadGraphic(Paths.image('soullessbg/sombra'));
+	var sombra:FlxSprite = new FlxSprite(-550, -100).loadGraphic(Paths.image('soullessbg/sombra'));
 	sombra.scale.set(1.643, 1.643);
 	sombra.updateHitbox();
 	sombra.alpha = 0.8;

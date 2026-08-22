@@ -119,6 +119,6 @@ function makeBackground(background:Array<BackgroundSprite>)
 	}
 }
 
-function onGameOverStart()  commercial?.destroy();Q
+function onGameOverStart()  commercial?.destroy();
 function onPause() commercial?.pause();
 function onResume() commercial?.resume();

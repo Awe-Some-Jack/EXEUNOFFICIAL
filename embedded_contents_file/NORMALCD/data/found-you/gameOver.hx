@@ -40,7 +40,7 @@ function onGameOverStart()
 	daGameOverLoop = new FlxSprite();
 	daGameOverLoop.frames = Paths.getSparrowAtlas('characters/loop');
 	daGameOverLoop.animation.addByPrefix('xd', 'Símbolo 4', 24, true); daGameOverLoop.animation.play('xd');
-	daGameOverLoop.screenCenter(); daGameOverLoop.y += 200;
+	daGameOverLoop.screenCenter(); daGameOverLoop.y += 250;
 	daGameOverLoop.scrollFactor.set();
 	daGameOverLoop.visible = false;
 	GameOverSubstate.instance.add(daGameOverLoop);
@@ -49,7 +49,7 @@ function onGameOverStart()
 	daGameOverRetry.frames = Paths.getSparrowAtlas('characters/retry');
 	daGameOverRetry.animation.addByPrefix('c', 'confirm', 24, false);
 	daGameOverRetry.animation.addByPrefix('idle', 'Símbolo 1', 24, true); daGameOverRetry.animation.play('idle');
-	daGameOverRetry.screenCenter(); daGameOverRetry.y -= 350; daGameOverRetry.y += 200;
+	daGameOverRetry.screenCenter(); daGameOverRetry.y -= 350; daGameOverRetry.y += 250;
 	daGameOverRetry.scrollFactor.set();
 	daGameOverRetry.visible = false;
 	GameOverSubstate.instance.add(daGameOverRetry);
@@ -145,6 +145,7 @@ function onGameOverConfirm(retry)
 		FlxG.camera.flash(0xFFFFFFFF, 1, null, true);
 		FlxG.sound.play(Paths.music('gameOverEnd'));
 		daGameOverRetry.animation.play('c', true);
+		daGameOverRetry.y -= 100; daGameOverRetry.x += 30;
 		deadMusic.stop();
 		cdLine.stop();
 		daGameOver.destroy();

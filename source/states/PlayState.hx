@@ -2701,36 +2701,39 @@ class PlayState extends MusicBeatState
 
 			storyPlaylist.shift();
 
-			FlxG.save.data.lastCoverPlay ??= 0;
-			if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay++;
+			if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay ??= 0;
 
 			switch(formattedSong)
 			{
+				case "too-slow":
+					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 0;
+				case "you-cant-run":
+					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 1;
 				case "triple-trouble":
 					FlxG.save.data.goToFinalEscape = true;
+					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 2;
 					FlxG.save.flush();
 
-					Sys.exit(1);
+					trace("Save Data for Final Escape is: " + FlxG.save.data.goToFinalEscape);
 
-					return true;
+					Application.current.window.close()
 				case "final-escape":
+					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 3;
 					FlxG.save.data.theYourselfCutscene = true;
 					FlxG.save.flush();
 
 					FlxG.switchState(() -> new StoryModeState());
-
 					return true;
 				case "yourself":
+					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 4;
 					FlxG.save.data.theYourselfCutscene = null;
 					FlxG.save.data.storyModeDone = true;
-					FlxG.save.data.lastCoverPlay = 4;
 					FlxG.save.flush();
 			}
+			if (!FlxG.save.data.storyModeDone) trace(FlxG.save.data.lastCoverPlay);
 
 			if (storyPlaylist.length <= 0)
 			{
-				FlxG.save.data.lastCoverPlay = 4;
-				FlxG.save.data.storyModeDone = true;
 
 				if(!ClientPrefs.getGameplaySetting('practice') && !ClientPrefs.getGameplaySetting('botplay')) {
 					StoryModeState.weekCompleted.set(WeekData.weeksList[storyWeek], true);

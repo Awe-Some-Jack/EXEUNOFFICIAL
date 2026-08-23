@@ -97,21 +97,43 @@ class EXETitle extends MusicBeatState
 		buildTitle();
 
 		FlxG.camera.visible = false;
-		new FlxTimer().start(0.1, (_) -> {
-			FlxG.sound.play(Paths.sound('exelaugh'));
-			new FlxTimer().start(1.6, (_) -> {
-				canStart = true;
-				FlxG.mouse.visible = true;
-				FlxG.camera.visible = true;
 
-				FlxG.camera.flash(FlxColor.RED, 1);
+		if (FlxG.save.data.goToFinalEscape != null){
+			FlxG.save.data.goToFinalEscape = null;
+			FlxG.save.flush();
 
-				FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
-				FlxG.sound.play(Paths.sound('showMoment'));
+			Mods.currentModDirectory = "STORY MODE";
+			WeekData.reloadWeekFiles(false);
+			Difficulty.loadFromWeek();
 
-				Main.fpsVar.visible = ClientPrefs.data.showFPS;
+			final song:String = 'final-escape';
+			final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
+			final launchDiff = (normalIdx > -1) ? normalIdx : 0;
+
+			PlayState.SONG = Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
+			PlayState.isStoryMode = true;
+			PlayState.storyWeek = 0;
+			PlayState.storyDifficulty = launchDiff;
+
+			LoadingState.loadAndSwitchState(new PlayState(), true);
+			return;
+		} else {
+			new FlxTimer().start(0.1, (_) -> {
+				FlxG.sound.play(Paths.sound('exelaugh'));
+				new FlxTimer().start(1.6, (_) -> {
+					canStart = true;
+					FlxG.mouse.visible = true;
+					FlxG.camera.visible = true;
+					
+					FlxG.camera.flash(FlxColor.RED, 1);
+					
+					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+					FlxG.sound.play(Paths.sound('showMoment'));
+					
+					Main.fpsVar.visible = ClientPrefs.data.showFPS;
+				});
 			});
-		});
+		}
 	}
 
 	function buildTitle():Void
@@ -250,28 +272,7 @@ class EXETitle extends MusicBeatState
 					FlxTween.tween(blackScreen, {alpha: 1}, 1);
 					FlxTween.tween(eyes, {alpha: 0}, 1.5, {ease: FlxEase.expoIn});
 
-					new FlxTimer().start(1.5, (_) -> { 
-						if (FlxG.save.data.goToFinalEscape == true){
-							FlxG.save.data.goToFinalEscape = null;
-							FlxG.save.flush();
-
-							Mods.currentModDirectory = "STORY MODE";
-							WeekData.reloadWeekFiles(false);
-							Difficulty.loadFromWeek();
-
-							final song:String = 'final-escape';
-							final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-							final launchDiff = (normalIdx > -1) ? normalIdx : 0;
-
-							PlayState.SONG = Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
-							PlayState.isStoryMode = true;
-							PlayState.storyWeek = 0;
-							PlayState.storyDifficulty = launchDiff;
-
-							LoadingState.loadAndSwitchState(new PlayState(), true);
-							return;
-						} else FlxG.switchState(() -> new EXEMenu()); 
-					});
+					new FlxTimer().start(1.5, (_) -> FlxG.switchState(() -> new EXEMenu()));
 				});
 			}
 		}

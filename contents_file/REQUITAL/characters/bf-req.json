@@ -10,99 +10,99 @@
 		},
 		{
 			"offsets": [51, -22],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		},
 		{
 			"offsets": [40, -68],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
 			"offsets": [0, 50],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up"
 		},
 		{
 			"offsets": [-56, -2],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		},
 		{
 			"offsets": [46, -35],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "mleft"
 		},
 		{
 			"offsets": [29, -68],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": false,
+			"indices": [],
 			"name": "mdown"
 		},
 		{
 			"offsets": [-4, 30],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": false,
+			"indices": [],
 			"name": "mup"
 		},
 		{
 			"offsets": [-56, 5],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "mright"
 		},
 		{
 			"offsets": [95, -31],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "dodge",
-			"loop": false,
+			"indices": [],
 			"name": "dodge"
 		},
 		{
 			"offsets": [58, -44],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "hit",
-			"loop": false,
+			"indices": [],
 			"name": "hit"
 		},
 		{
 			"offsets": [15, 8],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "cabron",
-			"loop": false,
+			"indices": [],
 			"name": "lol"
 		},
 		{
-			"offsets": [67, 3],
-			"indices": [],
-			"fps": 24,
-			"anim": "hey",
 			"loop": false,
-			"name": "yeah"
+			"offsets": [67, 3],
+			"anim": "hey",
+			"fps": 24,
+			"name": "yeah",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]
 		}
 	],
 	"vocals_file": "",

@@ -73,8 +73,10 @@ function onCreatePost()
 	addCharacterToList('pico-reqos', 'gf')
 end
 
+local _cbg = 'n'
 local separation = 50
 local function switchToAlt()
+	_cbg = 'o'
 	setProperty('bgf.visible', false)
 	setProperty('bgf2.visible', true)
 	setProperty('antoos.visible', true)
@@ -87,9 +89,9 @@ local function switchToAlt()
 	triggerEvent('Change Character', 'bf', 'bf-reqos')
 	triggerEvent('Change Character', 'gf', 'pico-reqos')
 	setProperty('gf.flipX', false)
-	callMethod('boyfriend.setPosition', {700, 1400})
-	callMethod('dad.setPosition', {1490, 930})
-	callMethod('gf.setPosition', {1780, 1350})
+	callMethod('boyfriend.setPosition', {400, 1400})
+	callMethod('dad.setPosition', {1540, 930})
+	callMethod('gf.setPosition', {2200, 1350})
 
 	for i = 0,3 do
 		setProperty('opponentStrums.members['..i..'].x', -1000)
@@ -98,6 +100,7 @@ local function switchToAlt()
 end
 
 local function switchToNormal()
+	_cbg = 'n'
 	setProperty('bgf.visible', true)
 	setProperty('bgf2.visible', false)
 	setProperty('antoos.visible', false)
@@ -153,4 +156,23 @@ function onTimerCompleted(t)
 		doTweenAlpha('BlackGraphicGame', 'BlackGraphicGame', 0, 3)
 		doTweenAlpha('BlackGraphicOther', 'BlackGraphicOther', 0, 3)
 	end
+end
+
+local oldMHS = false
+function onSectionHit()
+	if oldMHS ~= mustHitSection and _cbg == 'o' then
+		setProperty('gameplayCam.settings.OverrideZoom', false)
+		if mustHitSection then
+			setProperty('gameplayCam.settings.MiddleZoom', 0.5)
+		else
+			setProperty('gameplayCam.settings.MiddleZoom', 1)
+		end
+	end
+	oldMHS = mustHitSection
+end
+
+function onUpdatePost()
+	if _cbg ~= 'o' then return end
+	scaleObject('boyfriend', getProperty('camGame.zoom') + 1, getProperty('camGame.zoom') + 1, false)
+	scaleObject('gf', getProperty('camGame.zoom') + 1, getProperty('camGame.zoom') + 1, false)
 end

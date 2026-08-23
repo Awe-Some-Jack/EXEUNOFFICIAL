@@ -2716,7 +2716,7 @@ class PlayState extends MusicBeatState
 
 					trace("Save Data for Final Escape is: " + FlxG.save.data.goToFinalEscape);
 
-					Application.current.window.close()
+					Application.current.window.close();
 				case "final-escape":
 					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 3;
 					FlxG.save.data.theYourselfCutscene = true;

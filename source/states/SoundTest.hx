@@ -421,7 +421,7 @@ class SoundTest extends MusicBeatState
 				return;
 			}
 
-			if (!save.data.songs.contains('prey')) //starved arg
+			if (save.data.songs != null && !save.data.songs.contains('prey')) //starved arg
 			{
 				if (pcmValue == 19 && daValue == 91) {
 					notFoundAny = false;

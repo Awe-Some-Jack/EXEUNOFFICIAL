@@ -82,6 +82,13 @@ function onCreate()
 	end
 end
 
+function onCreatePost()
+	if not isStoryMode then setProperty('BlackGraphicHUD.alpha', 1) end
+	if seenCutscene and isStoryMode then
+		setProperty('BlackGraphicHUD.alpha', 1)
+	end
+end
+
 local h = 0
 function onUpdatePost(e)
 	h = h + e * 2
@@ -99,7 +106,9 @@ function onSongStart()
 end
 
 function onStartCountdown()
-	if not videoPlayed and not seenCutscene then
+	setProperty('BlackGraphicHUD.alpha', 1)
+	if not videoPlayed and not seenCutscene and isStoryMode then
+		setProperty('BlackGraphicHUD.alpha', 0)
 		startVideo('SONIC FEO')
 		videoPlayed = true
 		return Function_Stop
@@ -111,7 +120,6 @@ function onCountdownStarted()
 		setProperty('strumLineNotes.members[' .. i .. '].x', _G['default' .. (i < 4 and 'Player' or 'Opponent') .. 'StrumX' .. (i % 4)])
 	end
 	triggerEvent('Flip Health Bar')
-	setProperty('BlackGraphicHUD.alpha', 1)
 end
 
 function onEvent(n,v1,v2)

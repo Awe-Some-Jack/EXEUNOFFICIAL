@@ -4,23 +4,24 @@ function onCreatePost()
 
 	--sonic hud
 
-	makeHUDSprite('HUD', 'HUD', 20)
+	makeHUDSprite('HUD', 'HUD')
+	setProperty('HUD.y', downscroll and 20 or (screenHeight - getProperty('HUD.height') - 20))
 
 	initialY = 6 * 3
 	local iconOffset = 75 * 0.5
-	createInstance('iconSonic', 'objects.HealthIcon', {'bfburning', false})
+	createInstance('iconSonic', 'objects.HealthIcon', {'bfgenesys', false})
 	setObjectCamera('iconSonic', 'hud')
 	setProperty('iconSonic.antialiasing', false)
 	scaleObject('iconSonic', 0.5, 0.5)
-	callMethod('iconSonic.setPosition', {-iconOffset + initialY, -iconOffset + (downscroll and (-initialY + (screenHeight - 75)) or initialY)})
+	callMethod('iconSonic.setPosition', {-iconOffset + initialY, (downscroll and (screenHeight - getProperty('iconSonic.height') - initialY - iconOffset) or (-iconOffset + initialY + getProperty('iconSonic.height')))})
 	addInstance('iconSonic')
 	makeHUDSprite('futureHealthSonic', 'healthFuture', getProperty('iconSonic.x') + iconOffset + 72, getProperty('iconSonic.y') + iconOffset + 18)
 
-	createInstance('iconFurn', 'objects.HealthIcon', {'burning', false})
+	createInstance('iconFurn', 'objects.HealthIcon', {'genesysegg', false})
 	setObjectCamera('iconFurn', 'hud')
 	setProperty('iconFurn.antialiasing', false)
 	scaleObject('iconFurn', 0.5, 0.5)
-	callMethod('iconFurn.setPosition', {-iconOffset + initialY, -iconOffset + (downscroll and (-(initialY / 2) + (screenHeight - 75) - (75 + (initialY / 2))) or initialY)})
+	callMethod('iconFurn.setPosition', {-iconOffset + initialY, (downscroll and (screenHeight - getProperty('iconSonic.height') * 2 - initialY - iconOffset) or (-iconOffset + initialY))})
 	addInstance('iconFurn')
 	makeHUDSprite('futureHealthFurn', 'healthFuture', getProperty('iconFurn.x') + iconOffset + 72, getProperty('iconFurn.y') + iconOffset + 18)
 

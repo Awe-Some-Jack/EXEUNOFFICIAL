@@ -28,7 +28,7 @@ function onCreatePost()
 	setObjectCamera('iconSonic', 'hud')
 	setProperty('iconSonic.antialiasing', false)
 	scaleObject('iconSonic', 0.5, 0.5)
-	callMethod('iconSonic.setPosition', {-iconOffset + initialY, -iconOffset + (downscroll and (-initialY + (screenHeight - 75)) or initialY)})
+	callMethod('iconSonic.setPosition', {-iconOffset + initialY, -iconOffset + (downscroll and (-initialY + (screenHeight - 75)) or (initialY + iconOffset * 2))})
 	addInstance('iconSonic')
 	makeHUDSprite('futureHealthSonic', 'healthFuture', getProperty('iconSonic.x') + iconOffset + 72, getProperty('iconSonic.y') + iconOffset + 18)
 

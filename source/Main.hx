@@ -114,7 +114,6 @@ class Main extends Sprite
 
 		//FlxG.saves
 		FlxG.save.data.theYourselfCutscene = null;
-		FlxG.save.data.goToFinalEscape = null;
 		
 
 		#if HSCRIPT_ALLOWED

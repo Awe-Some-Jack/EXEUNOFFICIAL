@@ -1323,7 +1323,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.list.add(vocals);
 		FlxG.sound.list.add(opponentVocals);
 
-		FlxG.sound.music.volume = 0;
+		if(FlxG.sound.music != null) FlxG.sound.music.volume = 0;
 		vocals.volume = 0;
 		opponentVocals.volume = 0;
 
@@ -1858,7 +1858,7 @@ class PlayState extends MusicBeatState
 		if (startedCountdown && !paused)
 		{
 			Conductor.songPosition += elapsed * 1000 * playbackRate;
-			if (Conductor.songPosition >= Conductor.offset)
+			if (FlxG.sound.music != null && Conductor.songPosition >= Conductor.offset)
 			{
 				Conductor.songPosition = FlxMath.lerp(FlxG.sound.music.time + Conductor.offset, Conductor.songPosition, Math.exp(-elapsed * 5));
 				var timeDiff:Float = Math.abs((FlxG.sound.music.time + Conductor.offset) - Conductor.songPosition);

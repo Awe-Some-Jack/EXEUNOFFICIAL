@@ -227,7 +227,6 @@ local stageMode = {
         triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.35')
     end
 }
-local changeUnspawnNotesColor = false
 
 local hudMode = {
     ['healthStuff'] = function(hide, time)
@@ -254,13 +253,15 @@ local hudMode = {
             setProperty('playerStrums.members['..i..'].color', getColorFromHex('FF0000'))
             doTweenAngle(i..'Angle', 'playerStrums.members['..i..']', 360, 0.6, 'backOut')
         end
-        changeUnspawnNotesColor = true
+        for i = 0,getProperty('unspawnNotes.length')-1 do setPropertyFromGroup('unspawnNotes', i, 'color', getColorFromHex('FF0000')) end
+        for i = 0,getProperty('notes.length')-1 do setPropertyFromGroup('notes', i, 'color', getColorFromHex('FF0000')) end
     end,
     ['returnNotesColor'] = function ()
         for i = 0, 3 do setProperty('playerStrums.members['..i..'].color', getColorFromHex('FFFFFF')) end
     end,
     ['returnUnspawnNotesColor'] = function ()
-        changeUnspawnNotesColor = false
+        for i = 0,getProperty('unspawnNotes.length')-1 do setPropertyFromGroup('unspawnNotes', i, 'color', getColorFromHex('FFFFFF')) end
+        for i = 0,getProperty('notes.length')-1 do setPropertyFromGroup('notes', i, 'color', getColorFromHex('FFFFFF')) end
     end,
     ['zoomBack'] = function ()
         cancelTween('hudZoom')
@@ -311,14 +312,6 @@ local modchart = {
         end
     end
 }
-
-function onSpawnNote(i)
-    if changeUnspawnNotesColor then
-        setPropertyFromGroup('unspawnNotes', i, 'color', getColorFromHex('FF0000'))
-    else
-        setPropertyFromGroup('unspawnNotes', i, 'color', getColorFromHex('FFFFFF'))
-    end
-end
 
 luaDebugMode = true
 function onEvent(e, v1, v2)

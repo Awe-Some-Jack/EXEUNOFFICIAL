@@ -6,7 +6,7 @@
 			"fps": 24,
 			"anim": "firstDeath",
 			"loop": false,
-			"name": "sl4sh bf death start"
+			"name": "firstdeatj"
 		},
 		{
 			"offsets": [0, 0],
@@ -14,7 +14,7 @@
 			"fps": 24,
 			"anim": "deathLoop",
 			"loop": true,
-			"name": "sl4sh bf dead loop"
+			"name": "deathloop"
 		},
 		{
 			"offsets": [0, 0],
@@ -22,16 +22,16 @@
 			"fps": 24,
 			"anim": "deathConfirm",
 			"loop": false,
-			"name": "sl4sh bf death end"
+			"name": "deathconfirm"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
-	"image": "characters/sl4sh_bf_gameover",
+	"image": "characters/sl4shdeath",
 	"position": [0, 0],
 	"healthicon": "bf-slash",
 	"flip_x": true,
-	"healthbar_colors": [49, 189, 255],
+	"healthbar_colors": [36, 144, 255],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
 	"scale": 6,

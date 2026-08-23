@@ -2,7 +2,7 @@ local first = true
 
 
 function onCreate()
-    if seenCutscene then return end
+    if seenCutscene or not isStoryMode then return end
 
     precacheSound('introSong')
     addCharacterToList('exetior-intro', 'dad')
@@ -11,7 +11,7 @@ end
 
 function onSongStart() setProperty('cameraSpeed', 1) end
 function onStartCountdown()
-    if seenCutscene then return end
+    if seenCutscene or not isStoryMode then return end
     if first then
         -- PROPERTIES --
         setProperty('camHUD.alpha', 0)

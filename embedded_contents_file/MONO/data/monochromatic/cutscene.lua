@@ -1,11 +1,11 @@
 local firstTime = true
 
 function onCreatePost()
-	if seenCutscene then return end
+	if seenCutscene or not isStoryMode then return end
 end
 
 function onStartCountdown()
-	if seenCutscene then return end
+	if seenCutscene or not isStoryMode then return end
 	if firstTime then
 		setProperty('camHUD.alpha', 0)
 
@@ -29,7 +29,7 @@ end
 
 local istweeening = false
 function onUpdatePost()
-	if seenCutscene then return end
+	if seenCutscene or not isStoryMode then return end
 	if getProperty('dad.animation.curAnim.finished') == true and getProperty('dad.animation.curAnim.name') == 'hey' then
 		startCountdown()
 		setProperty('bflooking.visible', false)

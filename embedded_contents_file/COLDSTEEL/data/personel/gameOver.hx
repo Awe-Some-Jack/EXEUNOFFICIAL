@@ -7,6 +7,11 @@ var inGameOver:Bool = false;
 var deadMusic:FlxSound;
 var keith:FlxSprite;
 
+function onCreate()
+{
+	GameOverSubstate.deathSoundName = 'empty';
+}
+
 function onGameOverStart()
 {
 	inGameOver = true;

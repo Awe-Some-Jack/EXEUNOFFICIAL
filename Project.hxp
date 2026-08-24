@@ -246,6 +246,8 @@ class Project extends HXProject
         addAssetPath("assets/songs", "assets/songs", false);
         addAssetPath("assets/week_assets", "assets", false);
 
+        addAssetPath("flixel", "assets/flixel", true);
+
         if (VIDEOS_ALLOWED.isEnabled(this) && FileSystem.exists("assets/videos"))
             addAssetRecursive("assets/videos", "assets/videos", false, ["*"], []);
 

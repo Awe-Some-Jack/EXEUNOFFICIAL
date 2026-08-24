@@ -9,7 +9,7 @@ final hbvanilla:Array<String> = ['hbBG', 'hbHealth', 'hbHealth2', 'separatorHeal
 
 function onCreatePost()
 {
-	healthColor = new FlxSprite(320, prefs.downScroll ? 80 : FlxG.height - 126).makeGraphic(660, 20, 0xFFFFFFFF);
+	healthColor = new FlxSprite(320, prefs.downScroll ? 80 : FlxG.height - 80).makeGraphic(660, 20, 0xFFFFFFFF);
 	healthColor.color = 0xFF24CDF1;
 	healthColor.camera = camHUD;
 	game.add(healthColor);

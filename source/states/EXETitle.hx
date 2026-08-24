@@ -41,7 +41,7 @@ class EXETitle extends MusicBeatState
 	var eyes:FlxSprite;
 	var whiteBG:FlxSprite;
 	var parallaxArrow:FlxSprite;
-	var flixelIntro:Bool = false;
+	var playedIntro:Bool = false;
 
 	var canStart:Bool = false;
 
@@ -67,7 +67,6 @@ class EXETitle extends MusicBeatState
 			Main.fpsVar.visible = false;
 
 			playVideo('introexe');
-			flixelIntro = true;
 			
 			videoPlaying = true;
 		}
@@ -100,14 +99,6 @@ class EXETitle extends MusicBeatState
 
 	function onVideoEnd():Void
 	{
-		if(FlxG.save.data.firstBoot == null) 
-		{
-			FlxG.save.data.firstBoot = true;
-			FlxG.save.flush();
-
-			playVideo('introcutscene');
-			return;
-		}
 
 		if (FlxG.save.data.goToFinalEscape != null){
 			FlxG.save.data.goToFinalEscape = null;
@@ -130,10 +121,18 @@ class EXETitle extends MusicBeatState
 			return;
 		} 
 
-		if(flixelIntro) 
+		if(FlxG.save.data.firstBoot == null) 
 		{
-			flixelIntro = false;
+			FlxG.save.data.firstBoot = true;
+			FlxG.save.flush();
 
+			playedIntro = true;
+			playVideo('introcutscene');
+			return;
+		}
+		else if(FlxG.save.data.firstBoot && !playedIntro)
+		{
+			playedIntro = true;
 			playVideo('postIntro');
 			return;
 		}

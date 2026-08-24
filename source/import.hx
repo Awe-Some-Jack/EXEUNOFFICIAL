@@ -42,6 +42,8 @@ import backend.Difficulty;
 import backend.Mods;
 import backend.Language;
 
+import backend.haxe.*;
+
 import backend.ui.*; //Psych-UI
 
 import objects.Alphabet;

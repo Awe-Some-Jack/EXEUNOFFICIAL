@@ -893,7 +893,7 @@ class FunkinLua
 		});
 
 		#if DISCORD_ALLOWED    DiscordClient.addLuaCallbacks(lua); #end
-		#if TRANSLATIONS_ALLOWED Language.addLuaCallbacks(lua); #end
+		Language.addLuaCallbacks(lua);
 
 		HScript.implement(this);
 		#if flixel_animate FlxAnimateFunctions.implement(this); #end

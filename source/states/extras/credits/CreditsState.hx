@@ -400,14 +400,14 @@ private class CreditPopup extends MusicBeatSubstate
 
             for (ext in Paths.VIDEO_EXTS) 
             {
-                if (userVideo.loadVideo('assets/exe/extras/credits/${CreditsState.userSelected[0]}/extra/${user.extra[1]}.$ext', [VideoSprite.ARG_LOOPING])) 
+                if (userVideo.loadVideo('assets/exe/extras/credits/extra/${user.extra[1]}.$ext', [VideoSprite.ARG_LOOPING])) 
                     userVideo.playDelayed();
             }
             #end
         }
         else if (user.extra[0] == 'image')
         {
-            final img = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/$col/extra/${user.extra[1]}'));
+            final img = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/extra/${user.extra[1]}'));
             fit(img, 200, 200);
             img.setPosition(bg.x + 40 + ((bg.width / 2 - 50) - img.width) / 2, bg.y + bg.height - img.height - 50);
             final ish = new shaders.RoundedBorderShader(10.0, 0.0, 0xFF000000); ish.setSize(img.frameWidth, img.frameHeight); img.shader = ish;

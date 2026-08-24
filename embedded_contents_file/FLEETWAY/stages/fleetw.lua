@@ -10,7 +10,7 @@ local fleetBG = {
 	{name = 'XDD2', path = 'bg/DUDU2', animated = true, animName = 'idle', animPrefix = 'Emerald Beam Charged', fps = 24, loop = true,  x = 1480, y = -1000, scaleX = 2, scaleY = 2, scrollX = 1, scrollY = 1, front = false},
 	{name = 'emeralds', path = 'bg/esmeraldas', animated = true, animName = 'idle', animPrefix = 'TheEmeralds', fps = 24, loop = true, x = 2140, y = 1200, scaleX = 2, scaleY = 2, scrollX = 1, scrollY = 1, front = false},
 	{name = 'fuentes-2', path = 'bg/fuentes-2', animated = false, x = 1910, y = 1890, scaleX = 0.51, scaleY = 0.51, scrollX = 1, scrollY = 1, front = false},
-	{name = 'fuente', path = 'bg/fuentes', animated = true, animName = 'fuente', animPrefix = 'Símbolo 466', fps = 24, loop = false,  x = 1910, y = (1890 - 222), scaleX = 0.51, scaleY = 0.51, scrollX = 1, scrollY = 1, front = false},
+	{name = 'fuente', path = 'bg/fuentes', animated = true, animName = 'fuente', animPrefix = 'Símbolo 466', fps = 24, loop = false,  x = 1910, y = (1890 - 220), scaleX = 0.51, scaleY = 0.51, scrollX = 1, scrollY = 1, front = false},
 	{name = '6', path = 'bg/6', animated = false, x = 3500, y = 750, scaleX = 2, scaleY = 2, scrollX = 1, scrollY = 1, front = true, lowQualityHide = true},
 	{name = '7', path = 'bg/7', animated = false, x = 1400, y = 500, scaleX = 2, scaleY = 2, scrollX = 1.2, scrollY = 1.2, front = true, lowQualityHide = true},
 	{name = '6f', path = 'bg/6', animated = false, x = 4400, y = 400, scaleX = 2.8, scaleY = 2.8, scrollX = 1.2, scrollY = 1.2, front = true, lowQualityHide = true},
@@ -93,6 +93,7 @@ function onTimerCompleted(t)
 		playSound('sonicscream', 0.85)
 	end
 	if t == 'xdddddd' then
+		setObjectOrder('fuentes-2', getObjectOrder('dadGroup') + 1)
 		startCountdown()
 		playSound('beam', 0.6)
 		cameraFlash('game', 'FFFFBB', 1, true)

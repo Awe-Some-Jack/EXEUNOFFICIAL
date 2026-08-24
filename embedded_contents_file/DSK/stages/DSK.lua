@@ -88,12 +88,12 @@ function onCreatePost()
 	setProperty('rock1.antialiasing', true);
 	addLuaSprite('rock1', false);
 
-	makeAnimatedLuaSprite('fuegocaca', 'Miasma/fuegocaca', -1050, -470);
-	addAnimationByPrefix('fuegocaca', 'idle', 'fuegocaca instancia 1', 50, true);
+	makeAnimatedLuaSprite('fuegocaca', 'Miasma/fuegodecum', -1050, -330);
+	addAnimationByPrefix('fuegocaca', 'idle', 'idle', 27, true);
 	objectPlayAnimation('fuegocaca', 'idle', true);
-	scaleObject('fuegocaca', 1.06, 1.06);
+	scaleObject('fuegocaca', 2, 2);
 	addLuaSprite('fuegocaca', false);
-	setProperty('fuegocaca.alpha', 0.000001);
+	setProperty('fuegocaca.alpha', 0.001);
 	fuegoYBase = getProperty('fuegocaca.y');
 	doTweenY(
 		'fuegoBobDown',

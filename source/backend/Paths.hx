@@ -27,17 +27,17 @@ import backend.AtlasSpriteSettings;
 @:access(openfl.display.BitmapData)
 class Paths
 {
-	public static final SOUND_EXT = #if web "mp3" #else "ogg" #end;
 	public static final SOUND_EXTS:Array<String> = ["ogg", "mp3", "wav", "flac", "opus"];
 	public static final VIDEO_EXTS:Array<String> = ["mp4", "avi", "mkv", "mov", "wmv", "flv", "webm"];
 	public static final IMAGE_EXTS:Array<String> = [
-		"png", "jpg", "jpeg", "bmp", "tga", "webp", "avif", "tif", "tiff", 
+		"png", "jpg", "jpeg", "bmp", "tga", "webp", "avif", "tif", "tiff", "gif",
 		"jxl", "pcx", "xcf", "xpm", "qoi", "lbm", "iff", "pnm", "ppm", "pgm", "pbm",
 		#if mobile "astc" #end
 	];
 
 	//for backward compatibility
     public static final VIDEO_EXT = VIDEO_EXTS[0];
+	public static final SOUND_EXT = SOUND_EXTS[0];
 
 	public static var tempFramesCache:Map<String, FlxFramesCollection> = [];
 

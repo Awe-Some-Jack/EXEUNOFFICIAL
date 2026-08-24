@@ -294,7 +294,7 @@ private class CreditPopup extends MusicBeatSubstate
 
 		final col = CreditsState.userSelected[0];
 		
-		final iconBase = 'extras/credits/$col/icons/${user.icon}';
+		final iconBase = 'extras/credits/icons/${user.icon}';
 		final iconPath = resolveImagePath(iconBase, user.icon, 'assets/exe/extras/credits/missing_icon.webp');
 		
 		userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(iconPath);

@@ -112,14 +112,13 @@ function onEvent(n, v1)
 		end
 
 		if v1 == 'furnaceappearing' then
-			setProperty('gf.x', -1500)
+			setProperty('gf.x', -1400)
 			setProperty('gf.flipX', false)
 			scaleObject('gf', 6, 6, false)
 			setObjectOrder('gfGroup', getObjectOrder('floor2') + 1)
 			callMethod('gf.changeCharacter', {'furnace'})
-			playAnim('gf', 'fly', true)
-			setProperty('gf.specialAnim', true)
-			setProperty('gf.velocity.x', 300)
+			runTimer('xdjiasfaishjf', 2)
+			setProperty('gf.velocity.x', 200)
 			setProperty('gf.y', 960)
 			furn = true
 		end
@@ -205,6 +204,11 @@ function onTimerCompleted(t)
 		doTweenX('dieStarvX', 'starvHit', -5000, getTime(6), 'cubeIn')
 		doTweenY('dieStarvY', 'starvHit', 1300, getTime(6), 'cubeIn')
 	end
+	if t == 'xdjiasfaishjf' then
+		setProperty('gf.acceleration.x', -300)
+		playAnim('gf', 'fly', true)
+		setProperty('gf.specialAnim', true)
+	end
 end
 
 local playEndOnce = true
@@ -221,6 +225,13 @@ function onUpdatePost(e)
 		setProperty('boyfriend.visible', true)
 	end
 
+	if getProperty('gf.animation.curAnim.name') == 'fly' and getProperty('gf.animation.curAnim.finished') then
+		playAnim('gf', 'flyloop', true)
+		setProperty('gf.specialAnim', true)
+		setProperty('gf.acceleration.x', 300)
+		setProperty('gf.maxVelocity.x', 350)
+	end
+
 	if starv then
 		xd = xd + e * 5 * playbackRate
 		setProperty('gf.y', -34 + math.sin(xd + (math.pi / 2)) * 5)
@@ -233,10 +244,11 @@ function onUpdatePost(e)
 
 	if furn then
 		xd = xd + e * 3 * playbackRate
-		setProperty('gf.y', 850 + math.sin(xd + (math.pi / 2)) * 5)
+		setProperty('gf.y', 830 + math.sin(xd + (math.pi / 2)) * 5)
 
-		if getProperty('gf.x') >= 1800 then
+		if getProperty('gf.x') >= 1900 then
 			furn = false
+			setProperty('gf.acceleration.x', 0)
 			setProperty('gf.velocity.x', 0)
 		end
 	end

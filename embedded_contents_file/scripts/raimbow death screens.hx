@@ -121,12 +121,11 @@ function changeGameOvers() {
 }
 
 function setCamEvents() {
-    FlxG.camera.follow();
-    FlxG.camera.scroll.set(0, 0);
-    FlxG.camera.zoom = initialDeathZoom;
-    switch(songName){
-        case "yourself":
-            new FlxTimer().start(0.3, (_) -> FlxTween.tween(FlxG.camera, {zoom: 0.9, y: FlxG.camera.y - 90}, 2, {ease: FlxEase.sineInOut}));
+    if (songName != 'yourself')
+    {
+        FlxG.camera.follow();
+        FlxG.camera.scroll.set(0, 0);
+        FlxG.camera.zoom = initialDeathZoom;
     }
 }
 
@@ -139,8 +138,12 @@ function onGameOverStart()
         if (songName == song) {
             inGameOver = true;
             if (GameOverSubstate.instance.boyfriend != null && deadChar == null) deadChar = GameOverSubstate.instance.boyfriend;
-            deadChar.scrollFactor.set();
-            deadChar.setPosition(charPositions[0], charPositions[1]);
+            if (songName != 'yourself')
+            {
+                deadChar.scrollFactor.set();
+                deadChar.setPosition(charPositions[0], charPositions[1]);
+            }
+            else { deadChar.y -= 100; }
 
             setCamEvents();
 

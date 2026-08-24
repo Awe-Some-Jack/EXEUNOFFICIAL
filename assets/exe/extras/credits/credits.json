@@ -915,16 +915,6 @@
 
 	"external": [
 		{
-			"name": "The Funkin' Crew",
-			"icon": "fnf",
-			"description": "Voice Actor"
-		},
-		{
-			"name": "John9Doe",
-			"icon": "jhondoe",
-			"description": "Endless JP Backgrounds"
-		},
-		{
 			"name": "Zeurel",
 			"icon": "zeurel",
 			"description": "Secret Histories Tails Animator"
@@ -943,31 +933,6 @@
 			"name": "Hop",
 			"icon": "hop",
 			"description": "NormalCD OLD VA & Hedge Creator"
-		},
-		{
-			"name": "Garry's Mod",
-			"icon": "garrysmod",
-			"description": "Sanic Background & Sanic 3D Game Over"
-		},
-		{
-			"name": "Sonic CD",
-			"icon": "soniccd",
-			"description": "Sonic CD Past & Future HQ Images, Pause SFX Sounds & Commercial TV"
-		},
-		{
-			"name": "KadeDeveloper",
-			"icon": "kade",
-			"description": "Special Thanks (Engine)"
-		},
-		{
-			"name": "Shadow Mario",
-			"icon": "shadowmario",
-			"description": "Special Thanks (Engine)"
-		},
-		{
-			"name": "Discord",
-			"icon": "discord",
-			"description": "Special Thanks"
 		}
 	]
 }

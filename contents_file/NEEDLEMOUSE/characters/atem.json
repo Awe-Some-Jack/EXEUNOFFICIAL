@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
+			"offsets": [174, 362],
 			"loop": true,
-			"offsets": [80, 380],
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "sarah idle",
-			"indices": []
+			"indices": [],
+			"name": "sarah idle"
 		},
 		{
+			"loop": false,
 			"offsets": [258, 397],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "sarah right"
+			"fps": 24,
+			"name": "sarah right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [408, 284],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "sarah left"
+			"fps": 24,
+			"name": "sarah left",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [170, 454],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "sarah up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "sarah up"
 		},
 		{
-			"loop": false,
 			"offsets": [242, 405],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "s down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "s down"
 		}
 	],
 	"vocals_file": "",

@@ -9,7 +9,7 @@
 			"name": "idle"
 		},
 		{
-			"offsets": [317, 1],
+			"offsets": [346, 33],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -17,7 +17,7 @@
 			"name": "left"
 		},
 		{
-			"offsets": [107, -113],
+			"offsets": [113, -92],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
@@ -25,7 +25,7 @@
 			"name": "down"
 		},
 		{
-			"offsets": [145, 155],
+			"offsets": [147, 138],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
@@ -33,7 +33,7 @@
 			"name": "up"
 		},
 		{
-			"offsets": [41, -55],
+			"offsets": [89, -48],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
@@ -41,7 +41,7 @@
 			"name": "right"
 		},
 		{
-			"offsets": [172, 62],
+			"offsets": [190, 62],
 			"loop": false,
 			"fps": 24,
 			"anim": "laugh",
@@ -49,7 +49,7 @@
 			"name": "risa"
 		},
 		{
-			"offsets": [259, 46],
+			"offsets": [255, 70],
 			"loop": false,
 			"fps": 24,
 			"anim": "anim",
@@ -57,11 +57,11 @@
 			"name": "escape"
 		},
 		{
-			"offsets": [215, 54],
-			"indices": [],
+			"offsets": [234, 73],
+			"loop": false,
 			"fps": 24,
 			"anim": "s",
-			"loop": false,
+			"indices": [],
 			"name": "enconder"
 		}
 	],

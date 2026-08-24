@@ -723,14 +723,12 @@ class PlayState extends MusicBeatState
 		iconP2.alpha = ClientPrefs.data.healthBarAlpha;
 		uiGroup.add(iconP2);
 
-		botplayTxt = new FlxText(400, healthBar.y + 45, FlxG.width - 800, Language.getPhrase("sunky_is_playing", "SUNKY IS PLAYING").toUpperCase(), 20);
+		botplayTxt = new FlxText(400, healthBar.y - 35, FlxG.width - 800, Language.getPhrase("sunky_is_playing", "SUNKY IS PLAYING").toUpperCase(), 20);
 		botplayTxt.setFormat(Paths.font(Language.fontOrCJK('vcr.ttf')), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
 		botplayTxt.visible = cpuControlled;
 		uiGroup.add(botplayTxt);
-		if(ClientPrefs.data.downScroll)
-			botplayTxt.y = healthBar.y + 70;
 
 		uiGroup.cameras = [camHUD];
 		noteGroup.cameras = [camHUD];

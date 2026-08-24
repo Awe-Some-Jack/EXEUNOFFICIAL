@@ -46,12 +46,6 @@ import backend.Highscore;
 
 import states.EXEFreeplay;
 
-// NATIVE API STUFF, YOU CAN IGNORE THIS AND SCROLL //
-#if (linux && !debug)
-@:cppInclude('./external/gamemode_client.h')
-@:cppFileCode('#define GAMEMODE_AUTO')
-#end
-
 // // // // // // // // //
 class Main extends Sprite
 {
@@ -67,6 +61,23 @@ class Main extends Sprite
 	public static var fpsVar:FPSCounter;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
+
+	@:noCompletion
+	private static function __init__():Void
+	{
+		#if (linux && !debug)
+		if (hxgamemode.GamemodeClient.request_start() != 0)
+		{
+		  Sys.println('Failed to request gamemode start: ${hxgamemode.GamemodeClient.error_string()}...');
+		  openfl.system.System.exit(1);
+		} 
+		else
+		{
+		  Sys.println('Succesfully requested gamemode to start...');
+		}
+		#end
+	}
+
 
 	public static function main():Void
 	{

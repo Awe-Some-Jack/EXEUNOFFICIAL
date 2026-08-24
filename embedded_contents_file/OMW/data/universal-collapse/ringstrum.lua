@@ -47,6 +47,7 @@ end
 local penaltyStart = false
 local targetHealth = 0
 function onUpdatePost(e)
+	if inGameOver then return end
 	if penaltyStart then
 		setHealth(lerp(2, 0 + targetHealth, (getSongPosition() - 185142) / (239892 - 185142)))
 	end

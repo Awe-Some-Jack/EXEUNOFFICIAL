@@ -17,14 +17,14 @@ typedef EXEAchievement =
 class EXEAchievements 
 {
     public static var achievements(get, never):Map<String, EXEAchievement>;
-    
+
     public static final achievementSongGroups:Map<String, Array<String>> = [
         'xeno' => ['yourself', 'too-slow', 'you-cant-run', 'triple-trouble', 'final-escape'],
         'lordx' => ['cycles', 'hellbent', 'fate', 'gotta-go'],
         'majin' => ['endless-us', 'endless-jp'],
         'tailsdoll' => ['sunshine', 'soulless'],
         'fleetway' => ['chaos'],
-        'exe' => ['faker', 'black-sun', 'the-valley', 'godspeed'],
+        'exe' => ['faker', 'black-sun', 'godspeed'],
         'sanic' => ['too-fest'],
         'needlemouse' => ['round-a-bout', 'her-world'],
         'chaotix' => ['starline'],

@@ -88,7 +88,7 @@ function onCreatePost()
 	setProperty('rock1.antialiasing', true);
 	addLuaSprite('rock1', false);
 
-	makeAnimatedLuaSprite('fuegocaca', 'Miasma/fuegodecum', -1050, -330);
+	makeAnimatedLuaSprite('fuegocaca', 'Miasma/fuegodecum', -1050, -270);
 	addAnimationByPrefix('fuegocaca', 'idle', 'idle', 27, true);
 	objectPlayAnimation('fuegocaca', 'idle', true);
 	scaleObject('fuegocaca', 2, 2);

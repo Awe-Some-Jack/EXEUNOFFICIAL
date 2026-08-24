@@ -3958,7 +3958,11 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public var ratingPercent:SecureFloat;
+	private var _ratingPercent:SecureFloat = 0.0;
+	public var ratingPercent(get, set):Float;
+	inline function get_ratingPercent():Float return _ratingPercent.toFloat();
+	inline function set_ratingPercent(val:Float):Float { _ratingPercent = val; return val; }
+
 	public function RecalculateRating(badHit:Bool = false, scoreBop:Bool = true) {
 		setOnScripts('score', songScore);
 		setOnScripts('misses', songMisses);

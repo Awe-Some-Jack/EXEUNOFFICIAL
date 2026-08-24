@@ -179,7 +179,6 @@ class HScript extends Iris
 		set('Paths',           Paths);
 		set('Conductor',       Conductor);
 		set('ClientPrefs',     ClientPrefs);
-		set('Achievements',    Achievements);
 		set('Character',       Character);
 		set('Alphabet',        Alphabet);
 		set('Note',            objects.Note);

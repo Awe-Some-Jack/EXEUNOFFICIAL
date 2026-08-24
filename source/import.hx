@@ -15,8 +15,6 @@ import hxluajit.wrapper.LuaConverter;
 
 import cpp.RawPointer;
 
-import backend.Achievements;
-
 #if sys
 import sys.*;
 import sys.io.*;

@@ -249,7 +249,7 @@ class PlayState extends MusicBeatState
 	inline function get_songScore():Int return _songScore.toInt();
 	inline function set_songScore(val:Int):Int { _songScore = val; return val; }
 
-	public var songHits:SecureInt = 0;
+	public var songHits(get, set):Int;
 	inline function get_songHits():Int return _songHits.toInt();
 	inline function set_songHits(val:Int):Int { _songHits = val; return val; }
 
@@ -2801,7 +2801,11 @@ class PlayState extends MusicBeatState
 	}
 
 	public var totalPlayed:Int = 0;
-	public var totalNotesHit:SecureFloat = 0.0;
+	
+	private var _totalNotesHit:SecureFloat = 0.0;
+	public var totalNotesHit(get, set):Float;
+	inline function get_totalNotesHit():Float return _totalNotesHit.toFloat();
+	inline function set_totalNotesHit(val:Float):Float { _totalNotesHit = val; return val; }
 
 	public var comboGroup:FlxSpriteGroup;
 	public var uiGroup:FlxSpriteGroup;

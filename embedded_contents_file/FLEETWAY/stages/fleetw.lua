@@ -33,7 +33,16 @@ function onCreatePost()
 			setScrollFactor(e.name, e.scrollX, e.scrollY)
 			setProperty(e.name..'.angle', (e.angle == nil and 0 or e.angle))
 			addLuaSprite(e.name, e.front)
-			if seenCutscene == true then
+			if not isStoryMode then
+				setProperty('fuente.visible', false)
+
+				setProperty('4.visible', true)
+				setProperty('42.visible', false)
+
+				setProperty('XDD.visible', true)
+				setProperty('XDD2.visible', false)
+			else
+				if seenCutscene == true then
 				setProperty('fuente.visible', false)
 
 				setProperty('4.visible', true)
@@ -50,6 +59,7 @@ function onCreatePost()
 				setProperty('XDD.visible', false)
 				setProperty('XDD2.visible', true)
 			end
+			end
 		end
 		if lowQuality then setProperty(e.name..'.antialiasing', false) end
 	end
@@ -63,6 +73,7 @@ end
 
 function onStartCountdown()
 	runTimer('pipipi', 0.02)
+	if not isStoryMode then return end
 	if seenCutscene then return end
 	if firstTime then
 		setProperty('boyfriend.visible', false)

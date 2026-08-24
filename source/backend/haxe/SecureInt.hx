@@ -35,6 +35,19 @@ abstract SecureInt(SecureIntData) {
         return new SecureInt(value);
     }
 
+    @:op(A > B)  public inline function gt(v:Int):Bool return this.get() > v;
+    @:op(A >= B) public inline function gte(v:Int):Bool return this.get() >= v;
+    @:op(A < B)  public inline function lt(v:Int):Bool return this.get() < v;
+    @:op(A <= B) public inline function lte(v:Int):Bool return this.get() <= v;
+    @:op(A == B) public inline function eq(v:Int):Bool return this.get() == v;
+    @:op(A != B) public inline function neq(v:Int):Bool return this.get() != v;
+
+    @:op(A + B)  public inline function add(v:Int):Int return this.get() + v;
+    @:op(A - B)  public inline function sub(v:Int):Int return this.get() - v;
+    @:op(A * B)  public inline function mul(v:Int):Int return this.get() * v;
+    @:op(A / B)  public inline function div(v:Int):Float return this.get() / v;
+    @:op(A % B)  public inline function mod(v:Int):Int return this.get() % v;
+
     @:op(A += B)
     public inline function addEq(v:Int):SecureInt {
         this.set(this.get() + v);
@@ -50,6 +63,12 @@ abstract SecureInt(SecureIntData) {
     @:op(A *= B)
     public inline function mulEq(v:Int):SecureInt {
         this.set(this.get() * v);
+        return cast this;
+    }
+    
+    @:op(A /= B)
+    public inline function divEq(v:Int):SecureInt {
+        this.set(Std.int(this.get() / v));
         return cast this;
     }
 

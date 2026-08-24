@@ -190,9 +190,18 @@ class PlayState extends MusicBeatState
 	private var curSong:String = "";
 
 	public var gfSpeed:Int = 1;
-	public var health(default, set):Float = 1;
+
+	private var _health:SecureFloat = 1;
+	public var health(get, set):Float;
+	inline function get_health():Float return _health.toFloat();
+
 	public var displayHealth:Float = 1;
-	public var combo:Int = 0;
+
+	private var _combo:SecureInt = 0;
+
+	public var combo(get, set):Int;
+	inline function get_combo():Int return _combo.toInt();
+	inline function set_combo(val:Int):Int { _combo = val; return val; }
 
 	public var healthBar:Bar;
 
@@ -232,15 +241,27 @@ class PlayState extends MusicBeatState
 	public var camOther:FlxCamera;
 	public var cameraSpeed:Float = 1;
 
-	public var songScore:Int = 0;
-	public var songHits:Int = 0;
-	public var songMisses:Int = 0;
+	private var _songScore:SecureInt = 0;
+	private var _songHits:SecureInt = 0;
+	private var _songMisses:SecureInt = 0;
 
-	public static var campaignScore:Int = 0;
-	public static var campaignMisses:Int = 0;
+	public var songScore(get, set):Int;
+	inline function get_songScore():Int return _songScore.toInt();
+	inline function set_songScore(val:Int):Int { _songScore = val; return val; }
+
+	public var songHits:SecureInt = 0;
+	inline function get_songHits():Int return _songHits.toInt();
+	inline function set_songHits(val:Int):Int { _songHits = val; return val; }
+
+	public var songMisses(get, set):Int;
+	inline function get_songMisses():Int return _songMisses.toInt();
+	inline function set_songMisses(val:Int):Int { _songMisses = val; return val; }
+
+	public static var campaignScore:SecureInt = 0;
+	public static var campaignMisses:SecureInt = 0;
 	public static var seenCutscene:Bool = false;
 	public static var firstPlay:Bool = false;
-	public static var deathCounter:Int = 0;
+	public static var deathCounter:SecureInt = 0;
 
 	public var defaultCamZoom:Float = 1.05;
 	public var tweenCamZoom:Bool = false;
@@ -2030,40 +2051,41 @@ class PlayState extends MusicBeatState
 	// Health icon updaters
 	public dynamic function updateIconsScale(elapsed:Float)
 	{
-		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, Math.exp(-elapsed * 9 * playbackRate));
+		final mult:Float = FlxMath.lerp(1, iconP1.scale.x, Math.exp(-elapsed * 9 * playbackRate));
 		iconP1.scale.set(mult, mult);
 		iconP1.updateHitbox();
 
-		var mult:Float = FlxMath.lerp(1, iconP2.scale.x, Math.exp(-elapsed * 9 * playbackRate));
+		final mult:Float = FlxMath.lerp(1, iconP2.scale.x, Math.exp(-elapsed * 9 * playbackRate));
 		iconP2.scale.set(mult, mult);
 		iconP2.updateHitbox();
 	}
 
 	public dynamic function updateIconsPosition()
 	{
-		var iconOffset:Int = 26;
+		final iconOffset:Int = 26;
 		iconP1.x = healthBar.barCenter + (150 * (FlxMath.remapToRange(displayHealth, 0, 2, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
 		iconP2.x = healthBar.barCenter - (150 * (FlxMath.remapToRange(displayHealth, 0, 2, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
 	}
 
 	var iconsAnimations:Bool = true;
-	function set_health(value:Float):Float // You can alter how icon animations work here
+	function set_health(value:Float):Float 
 	{
 		value = FlxMath.roundDecimal(value, 5); //Fix Float imprecision
 		if(!iconsAnimations || healthBar == null || !healthBar.enabled || healthBar.valueFunction == null)
 		{
-			health = value;
-			return health;
+			_health = value;
+			return _health.toFloat();
 		}
 
 		// update health bar
-		health = value;
-		var newPercent:Null<Float> = FlxMath.remapToRange(FlxMath.bound(healthBar.valueFunction(), healthBar.bounds.min, healthBar.bounds.max), healthBar.bounds.min, healthBar.bounds.max, 0, 100);
+		_health = value;
+		
+		final newPercent:Null<Float> = FlxMath.remapToRange(FlxMath.bound(healthBar.valueFunction(), healthBar.bounds.min, healthBar.bounds.max), healthBar.bounds.min, healthBar.bounds.max, 0, 100);
 		healthBar.percent = (newPercent != null ? newPercent : 0);
 
-		iconP1.animation.curAnim.curFrame = (healthBar.percent < 20) ? 1 : 0; //If health is under 20%, change player icon to frame 1 (losing icon), otherwise, frame 0 (normal)
-		iconP2.animation.curAnim.curFrame = (healthBar.percent > 80) ? 1 : 0; //If health is over 80%, change opponent icon to frame 1 (losing icon), otherwise, frame 0 (normal)
-		return health;
+		iconP1.animation.curAnim.curFrame = (healthBar.percent < 20) ? 1 : 0; 
+		iconP2.animation.curAnim.curFrame = (healthBar.percent > 80) ? 1 : 0; 
+		return _health.toFloat();
 	}
 
 	var _daPauseTarget:Int = 1;
@@ -2779,7 +2801,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public var totalPlayed:Int = 0;
-	public var totalNotesHit:Float = 0.0;
+	public var totalNotesHit:SecureFloat = 0.0;
 
 	public var comboGroup:FlxSpriteGroup;
 	public var uiGroup:FlxSpriteGroup;
@@ -2818,9 +2840,17 @@ class PlayState extends MusicBeatState
 		note.ratingMod = daRating.ratingMod;
 		if(!note.ratingDisabled) daRating.hits++;
 		note.rating = daRating.name;
+		
 		score = daRating.score;
 
-		if(!cpuControlled) {
+		if (daRating.name == 'sick') 
+		{
+			final precisionBonus:Int = Math.floor(Math.max(0, 50 - noteDiff));
+			score += precisionBonus;
+		}
+
+		if(!cpuControlled) 
+		{
 			songScore += score;
 			if(!note.ratingDisabled)
 			{
@@ -3179,18 +3209,21 @@ class PlayState extends MusicBeatState
 			doDeathCheck(true);
 		}
 
-		var lastCombo:Int = combo;
+		final lastCombo:Int = combo;
 		combo = 0;
 
 		health -= subtract * healthLoss;
-		songScore -= 10;
+
+		final progressivePenalty:Int = 10 + (songMisses * 5); 
+		songScore -= progressivePenalty;
+
 		if(!endingSong) songMisses++;
 		totalPlayed++;
 		RecalculateRating(true);
 
 		// play character anims
 		var char:Character = boyfriend;
-		if((note != null && note.gfNote) || (SONG.notes[curSection] != null && SONG.notes[curSection].gfSection)) char = gf;
+		if(note?.gfNote || (SONG.notes[curSection] != null && SONG.notes[curSection].gfSection)) char = gf;
 
 		if(char != null && (note == null || !note.noMissAnimation) && char.hasMissAnimations)
 		{
@@ -3925,7 +3958,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public var ratingPercent:Float;
+	public var ratingPercent:SecureFloat;
 	public function RecalculateRating(badHit:Bool = false, scoreBop:Bool = true) {
 		setOnScripts('score', songScore);
 		setOnScripts('misses', songMisses);

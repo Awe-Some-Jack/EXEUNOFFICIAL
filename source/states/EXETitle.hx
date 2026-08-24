@@ -41,6 +41,7 @@ class EXETitle extends MusicBeatState
 	var eyes:FlxSprite;
 	var whiteBG:FlxSprite;
 	var parallaxArrow:FlxSprite;
+	var flixelIntro:Bool = false;
 
 	var canStart:Bool = false;
 
@@ -48,8 +49,6 @@ class EXETitle extends MusicBeatState
 	{
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
-
-		trace(FlxG.save.data.goToFinalEscape);
 
 		if (!initialized)
 		{
@@ -67,15 +66,8 @@ class EXETitle extends MusicBeatState
 			FlxG.mouse.visible = false;
 			Main.fpsVar.visible = false;
 
-			video = new VideoSprite();
-			video.loadVideo(Paths.video('introexe'));
-			video.onFormat(() -> {
-				video.setGraphicSize(FlxG.width, FlxG.height);
-				video.video.screenCenter();
-			});
-			video.onEnd(() -> onVideoEnd());
-			video.playDelayed();
-			add(video);
+			playVideo('introexe');
+			flixelIntro = true;
 			
 			videoPlaying = true;
 		}
@@ -89,14 +81,33 @@ class EXETitle extends MusicBeatState
 		super.create();
 	}
 
+	function playVideo(vid:String)
+	{
+		if(video != null) video.destroy();
+
+		video = new VideoSprite();
+		video.loadVideo(Paths.video(vid));
+		video.onEnd(onVideoEnd);
+		video.onFormat(() -> {
+			video.setGraphicSize(FlxG.width, FlxG.height);
+			video.video.screenCenter();
+		});
+		video.playDelayed();
+		add(video);
+		
+		videoPlaying = true;
+	}
+
 	function onVideoEnd():Void
 	{
-		videoPlaying = false;
-		initialized = true;
+		if(FlxG.save.data.firstBoot == null) 
+		{
+			FlxG.save.data.firstBoot = true;
+			FlxG.save.flush();
 
-		buildTitle();
-
-		FlxG.camera.visible = false;
+			playVideo('introcutscene');
+			return;
+		}
 
 		if (FlxG.save.data.goToFinalEscape != null){
 			FlxG.save.data.goToFinalEscape = null;
@@ -117,23 +128,39 @@ class EXETitle extends MusicBeatState
 
 			LoadingState.loadAndSwitchState(new PlayState(), true);
 			return;
-		} else {
-			new FlxTimer().start(0.1, (_) -> {
-				FlxG.sound.play(Paths.sound('exelaugh'));
-				new FlxTimer().start(1.6, (_) -> {
-					canStart = true;
-					FlxG.mouse.visible = true;
-					FlxG.camera.visible = true;
-					
-					FlxG.camera.flash(FlxColor.RED, 1);
-					
-					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
-					FlxG.sound.play(Paths.sound('showMoment'));
-					
-					Main.fpsVar.visible = ClientPrefs.data.showFPS;
-				});
-			});
+		} 
+
+		if(flixelIntro) 
+		{
+			flixelIntro = false;
+
+			playVideo('postIntro');
+			return;
 		}
+
+		videoPlaying = false;
+		initialized = true;
+
+		buildTitle();
+
+		FlxG.camera.visible = false;
+
+		new FlxTimer().start(0.1, (_) -> {
+			FlxG.sound.play(Paths.sound('exelaugh'));
+			new FlxTimer().start(1.6, (_) -> {
+				canStart = true;
+				FlxG.mouse.visible = true;
+				FlxG.camera.visible = true;
+				
+				FlxG.camera.flash(FlxColor.RED, 1);
+				
+				FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+				FlxG.sound.play(Paths.sound('showMoment'));
+				
+				Main.fpsVar.visible = ClientPrefs.data.showFPS;
+			});
+		});
+		
 	}
 
 	function buildTitle():Void

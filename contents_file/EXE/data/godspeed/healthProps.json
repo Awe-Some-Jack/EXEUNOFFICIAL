@@ -11,7 +11,7 @@
 	},
 	"playerIcon": {
 		"scale": 1,
-		"offsetX": 4,
+		"offsetX": 20,
 		"offsetY": 0,
 		"bopAmount": 1.2
 	},

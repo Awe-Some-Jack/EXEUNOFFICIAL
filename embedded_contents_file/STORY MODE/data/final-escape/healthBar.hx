@@ -8,7 +8,7 @@ final cam = game.gameplayCam.settings;
 
 function onCreatePost()
 {
-	healthColor = new FlxSprite(320, prefs.downScroll ? 80 : FlxG.height - 126).makeGraphic(660, 20, 0xFFFFFFFF);
+	healthColor = new FlxSprite(320, prefs.downScroll ? 80 : FlxG.height - 80).makeGraphic(660, 20, 0xFFFFFFFF);
 	healthColor.color = 0xFF24CDF1;
 	healthColor.camera = camHUD;
 	healthColor.visible = false;

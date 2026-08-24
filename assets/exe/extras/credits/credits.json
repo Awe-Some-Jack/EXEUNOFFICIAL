@@ -722,8 +722,9 @@
 		{
 			"name": "Divide",
 			"icon": "divide",
-			"quote": "Divide is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"quote": "Divide is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.\n\n\nRest in peace.",
+			"description": "Artist",
+			"extra": ["image", "divide.png"]
 		},
 		{
 			"name": "shutupjojo",

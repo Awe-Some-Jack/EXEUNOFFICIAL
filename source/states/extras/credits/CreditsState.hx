@@ -301,9 +301,11 @@ private class CreditPopup extends MusicBeatSubstate
 		userIcon.camera = popCam; fit(userIcon, 100, 100); savedIconScale = userIcon.scale.x; add(userIcon);
 
 		final nm = new FlxText(0, 0, bg.width - 100, user.name ?? "Unknown");
-		nm.setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(76), 0xFFFFFFFF, LEFT, OUTLINE, 0x55000000);
+		nm.setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(76), (user.name == 'Divide' ? 0xFFFFFF00 : 0xFFFFFFFF), LEFT, OUTLINE, 0x55000000);
 		nm.borderSize = Language.cjkBorder(3); nm.setPosition(userIcon.x + userIcon.width + 25, userIcon.y + (userIcon.height - nm.height) / 2);
 		nm.camera = popCam; add(nm);
+
+        if (col != 'unofficial') return;
 
 		final flagBase = 'extras/credits/countries/${user.nation}';
 		final flagPath = resolveImagePath(flagBase, user.nation, 'assets/exe/extras/credits/missing_country.webp');

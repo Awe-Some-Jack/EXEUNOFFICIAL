@@ -2663,20 +2663,23 @@ class PlayState extends MusicBeatState
 		}
 
 		final formattedSong = Paths.formatToSongPath(SONG.song);
-		if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong)
-		{
-			states.EXEMenu.secretSong = false;
+		
+		checkSavedSongs(formattedSong);
 
-			final save:FlxSave = new FlxSave();
-			save.bind('savedSongs', CoolUtil.getSavePath());
-			save.data.songs ??= [];
-			if (!save.data.songs.contains(formattedSong))
-			{
-				save.data.songs.push(formattedSong);
-				save.flush();
-				FlxG.log.add("Song(s) saved!");
-			}
-		}
+		// if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong)
+		// {
+		// 	states.EXEMenu.secretSong = false;
+
+		// 	final save:FlxSave = new FlxSave();
+		// 	save.bind('savedSongs', CoolUtil.getSavePath());
+		// 	save.data.songs ??= [];
+		// 	if (!save.data.songs.contains(formattedSong))
+		// 	{
+		// 		save.data.songs.push(formattedSong);
+		// 		save.flush();
+		// 		FlxG.log.add("Song(s) saved!");
+		// 	}
+		// }
 
 		if (formattedSong == "fight-or-flight") 
 			EXEFreeplay.maniaUnlock = true;
@@ -2787,6 +2790,68 @@ class PlayState extends MusicBeatState
 		}
 		
 		return true;
+	}
+
+	public function checkSavedSongs(formattedSong){
+        final save:FlxSave = new FlxSave();
+        save.bind('savedSongs', CoolUtil.getSavePath());
+        save.data.songs ??= [];
+        var unlocked:Array<String> = save.data.songs;
+
+        if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong || isStoryMode)
+        {
+            states.EXEMenu.secretSong = false;
+
+            if (!unlocked.contains(formattedSong))
+            {
+                unlocked.push(formattedSong);
+                trace('[DEBUG] Song saved: ' + formattedSong);
+            }
+        }
+
+        var secretSongPath:String = Paths.formatToSongPath('shocker'); 
+        var allSongsCompleted:Bool = true;
+        var missingSongs:Array<String> = [];
+
+        trace('[DEBUG] === STARTING SONGS CHECK ===');
+        trace('[DEBUG] Saved Beated Songs: ' + unlocked);
+
+        for (i in 0...WeekData.weeksList.length)
+        {
+            final weekName:String = WeekData.weeksList[i];
+            final leWeek:WeekData = WeekData.weeksLoaded.get(weekName);
+
+            if (leWeek == null || leWeek.songs == null) continue;
+
+            for (song in leWeek.songs)
+            {
+                final sName:String = Paths.formatToSongPath(song[0]);
+                
+                if (sName != secretSongPath && !unlocked.contains(sName))
+                {
+                    allSongsCompleted = false;
+                    missingSongs.push(sName);
+                }
+            }
+        }
+
+        if (allSongsCompleted)
+        {
+            trace('[DEBUG] SUCCESS: Beated all Songs');
+            if (!unlocked.contains(secretSongPath))
+            {
+                unlocked.push(secretSongPath);
+                trace('[DEBUG] Secret song '+secretSongPath+" unlocked!");
+            }
+        }
+        else
+        {
+            trace('[DEBUG] '+missingSongs.length+' REMAINING SONG: ' + missingSongs);
+        }
+
+        save.data.songs = unlocked;
+        save.flush();
+        trace('[DEBUG] === END SONGS CHECKING ===');
 	}
 
 	public function KillNotes() {

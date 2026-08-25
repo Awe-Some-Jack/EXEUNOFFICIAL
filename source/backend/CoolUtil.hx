@@ -204,4 +204,9 @@ class CoolUtil
 				text.borderStyle = NONE;
 		}
 	}
+
+	public static var totalSongs:Int = 0;
+	public static function isBeatedSong(songID:String){
+		
+	}
 }

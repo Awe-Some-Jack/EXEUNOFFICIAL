@@ -221,6 +221,10 @@ class Main extends Sprite
 		FlxG.mouse.visible = false;
 		#end
 
+		#if windows
+		backend.windows.WindowsApi.enableDarkMode();
+		#end
+
 		FlxG.fixedTimestep = false;
 		FlxG.game.focusLostFramerate = 60;
 		FlxG.keys.preventDefaultKeys = [TAB];

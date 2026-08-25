@@ -112,7 +112,7 @@ var stepEvents = [
 				FlxTween.num(0, 1, 2, {onComplete: _ -> {
 					camGlitch.setFloat('AMT', 0.0); 
 					camGlitch.setFloat('SPEED', 0.0);
-					game.comboGroup.x = -400;
+					comboGroup.x = -400;
 					camZooming = false;
 					gf.alpha = 0.001;
 					dad.alpha = 0.001;

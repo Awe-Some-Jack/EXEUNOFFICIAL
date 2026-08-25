@@ -2882,7 +2882,8 @@ class PlayState extends MusicBeatState
 		else rating.setGraphicSize(Std.int(rating.width * 4 * 1.1));
 		rating.updateHitbox();
 		rating.screenCenter(X);
-		rating.y = (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
+		rating.y = comboGroup.y + (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
+		rating.x += comboGroup.x;
 		
 		final targetScale:Float = PlayState.isPixelStage ? 4 : 0.6;
 		rating.scale.set(targetScale, targetScale);
@@ -2908,8 +2909,8 @@ class PlayState extends MusicBeatState
 			else numScore.setGraphicSize(Std.int(numScore.width * 4 * 1.1));
 			numScore.updateHitbox();
 			
-			numScore.x = FlxG.width / 2 - numScore.width / 2 + (i - (separatedScore.length - 1) / 2) * 50;
-			numScore.y = (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
+			numScore.x = comboGroup.x + FlxG.width / 2 - numScore.width / 2 + (i - (separatedScore.length - 1) / 2) * 50;
+			numScore.y = comboGroup.y + (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
 			
 			numScore.scale.set(targetScale, targetScale);
 			

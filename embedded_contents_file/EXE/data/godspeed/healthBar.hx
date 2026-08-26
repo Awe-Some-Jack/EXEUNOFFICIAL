@@ -49,7 +49,7 @@ function onUpdatePost(elapsed:Float)
 	}
 	healthBG.x = 225 + (43 * Std.int(shouldPlay - 1));
 	healthColor.x = 320 + (43 * Std.int(shouldPlay - 1));
-	game.getLuaObject('iconOpp').x = 264.5 + (43 * Std.int(shouldPlay - 1)) + FlxG.random.float(-1, 1);
+	game.getLuaObject('iconOpp').x = 250 + (43 * Std.int(shouldPlay - 1)) + FlxG.random.float(-1, 1);
 	game.getLuaObject('iconOpp').y = game.getLuaObject('hbBG').y + (game.getLuaObject('hbBG').height / 2) - 75 + FlxG.random.float(-1, 1);
 	game.getLuaObject('iconOpp').angle = FlxG.random.float(-1, 1);
 	game.getLuaObject('iconOpp').animation.curAnim.curFrame = game.health < 0.4 ? 1 : 0;

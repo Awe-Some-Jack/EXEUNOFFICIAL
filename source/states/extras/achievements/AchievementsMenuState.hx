@@ -4,7 +4,7 @@ import flixel.FlxObject;
 import flixel.util.FlxSort;
 import objects.Bar;
 
-class AchievementsMenuState extends MusicBeatSubstate
+class AchievementsMenuState extends SonicSubState
 {
 	public var curSelected:Int = 0;
 

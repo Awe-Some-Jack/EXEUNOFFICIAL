@@ -8,7 +8,7 @@ import backend.EXEAchievements.EXEAchievement;
 import backend.EXEAchievements;
 import states.EXEMenu;
 
-class AchievementsState extends MusicBeatSubstate 
+class AchievementsState extends SonicSubState 
 {
     var bg:FlxSprite;
     var bg2:FlxSprite;
@@ -176,9 +176,10 @@ class AchievementsState extends MusicBeatSubstate
         FlxTween.tween(sideBar, {alpha: 0}, 0.8, {ease: FlxEase.cubeIn});
         FlxTween.tween(sideBarScroll, {alpha: 0}, 0.8, {ease: FlxEase.cubeIn});
         FlxTween.tween(achievementProgress, {alpha: 0}, 0.8, {ease: FlxEase.cubeIn});
-        FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.cubeInOut});
-        FlxTween.tween(bg2, {alpha: 0}, 0.8, {ease: FlxEase.cubeInOut});
-        FlxTween.tween(bg3, {alpha: 0}, 0.8, {ease: FlxEase.cubeInOut});
+        // commented for the transition! 
+        // FlxTween.tween(bg, {alpha: 0}, 0.8, {ease: FlxEase.cubeInOut});
+        // FlxTween.tween(bg2, {alpha: 0}, 0.8, {ease: FlxEase.cubeInOut});
+        // FlxTween.tween(bg3, {alpha: 0}, 0.8, {ease: FlxEase.cubeInOut});
         FlxTween.tween(achievementGroup, {x: -FlxG.width}, 0.8, {ease: FlxEase.cubeIn});
 
         FlxTimer.wait(0.8, close);

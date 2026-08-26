@@ -31,7 +31,7 @@ typedef Credit = {
 }
 
 
-class CreditsState extends MusicBeatSubstate
+class CreditsState extends SonicSubState
 {
     public static var credits:Map<String, Array<Credit>> = [];
     public static var userSelected:Array<Dynamic> = ['unofficial', 0];

@@ -17,6 +17,10 @@ import hxvlc.flixel.FlxVideoSprite;
 
 import states.extras.menuProps.CardSprite;
 import states.extras.menuProps.Arrow;
+import shaders.ColorShiftShader;
+#if !flash
+import openfl.filters.ShaderFilter;
+#end
 
 class OrbitSprite extends FlxSprite
 {
@@ -151,6 +155,9 @@ class ExtrasMenu extends MusicBeatState
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the Extras", null); #end
 
         super.create();
+
+        SonicRetroTransition.init();
+        SonicRetroTransition.play(false, 0.5);
     }
 
     override public function update(elapsed:Float):Void
@@ -312,11 +319,11 @@ class ExtrasMenu extends MusicBeatState
 
     override function closeSubState():Void
     {
-        super.closeSubState();
-
         canMove = true;
         if (np != null) np.visible = true;
         if (nowPlayingSong != null) nowPlayingSong.visible = true;
+
+        super.closeSubState();
     }
 
     override public function destroy():Void
@@ -634,12 +641,31 @@ class ExtrasMenu extends MusicBeatState
 
     function openOption():Void
     {
+        var nextSubState:flixel.FlxSubState = null;
+
         switch (curSelected)
         {
-            case 0: openSubState(new states.extras.dagarden.DAGarden());
-            case 1: openSubState(new states.extras.cutscenes.Cutscene());
-            case 2: openSubState(new states.extras.achievements.AchievementsState());
-            case 3: openSubState(new states.extras.credits.CreditsState());
+            case 0: nextSubState = new states.extras.dagarden.DAGarden();
+            case 1: nextSubState = new states.extras.cutscenes.Cutscene();
+            case 2: nextSubState = new states.extras.achievements.AchievementsState();
+            case 3: nextSubState = new states.extras.credits.CreditsState();
+        }
+
+        if (nextSubState != null)
+        {
+            if (Std.isOfType(nextSubState, SonicSubState)) {
+                cast(nextSubState, SonicSubState).onBeforeClose = function() {
+                    canMove = true;
+                    if (np != null) np.visible = true;
+                    if (nowPlayingSong != null) nowPlayingSong.visible = true;
+                };
+            }
+
+            SonicRetroTransition.openSubState(nextSubState, 0.5, function() {
+                canMove = false;
+                if (np != null) np.visible = false;
+                if (nowPlayingSong != null) nowPlayingSong.visible = false;
+            });
         }
     }
 }

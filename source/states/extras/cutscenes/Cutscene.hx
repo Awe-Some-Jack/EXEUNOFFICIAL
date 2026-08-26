@@ -21,7 +21,7 @@ import sys.io.File;
 import objects.VideoSprite;
 #end
 
-class Cutscene extends MusicBeatSubstate
+class Cutscene extends SonicSubState
 {
     static inline final MENU_START_Y:Float          = 180.0;
     static inline final MENU_SPACING:Float          = 58.0;

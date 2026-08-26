@@ -940,7 +940,7 @@ class DAGPlayer extends FlxGroup
     }
 }
 
-class DAGarden extends MusicBeatSubstate
+class DAGarden extends SonicSubState
 {
     public static var currentSong:String    = '';
     public static var currentSongMod:String = '';

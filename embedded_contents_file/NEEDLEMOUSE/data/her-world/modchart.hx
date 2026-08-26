@@ -45,7 +45,7 @@ function pattern2() {
     FlxTween.tween(camHUD, {angle: 0}, (Conductor.stepCrochet / 1000) * 2.5);
     FlxTween.tween(camGame, {angle: 0}, (Conductor.stepCrochet / 1000) * 2.5);
 
-    var y:Int = FlxG.random.int(0, FlxG.height - playerStrums.members[0].height);
+    var y:Int = prevDownscroll ? FlxG.random.int(FlxG.height / 2, FlxG.height - playerStrums.members[0].height) : FlxG.random.int(0, FlxG.height / 2 - playerStrums.members[0].height);
     var prevX:Int = 0;
     for(i => strum in playerStrums.members) {
         var x = prevX = Math.min(i == 0 ? (prevX + FlxG.random.int(50, 500)) : (prevX + FlxG.random.int(50, 300)), FlxG.width - strum.width);

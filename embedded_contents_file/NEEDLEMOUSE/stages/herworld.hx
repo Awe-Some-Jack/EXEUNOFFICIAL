@@ -63,6 +63,11 @@ var stepEvents = [
 				});
 			}
 		},
+		{
+			step: 1216, callback: () -> {
+				FlxTween.tween(camHUD, {alpha: 0}, 2, {startDelay: 1.5});
+			}
+		},
 		{ 
 			step: 1269, callback: () -> {
 			FlxTween.num(0, 0.1, 4.2, {onComplete: () -> {
@@ -83,6 +88,7 @@ var stepEvents = [
 		{ 
 			step: 1312, callback: () -> {
 				water.setFloat('waveAmplitude', 0.008);
+				FlxTween.tween(camHUD, {alpha: 1}, 1);
 			}
 		},
 		{ 
@@ -112,7 +118,7 @@ var stepEvents = [
 				FlxTween.num(0, 1, 2, {onComplete: _ -> {
 					camGlitch.setFloat('AMT', 0.0); 
 					camGlitch.setFloat('SPEED', 0.0);
-					comboGroup.x = -400;
+					game.comboGroup.x = -400;
 					camZooming = false;
 					gf.alpha = 0.001;
 					dad.alpha = 0.001;

@@ -5,7 +5,7 @@ import flixel.addons.display.FlxRuntimeShader;
 
 var luzbf:FlxSprite;
 var luzther:FlxSprite;
-var ignoreLuther:Bool = true;
+var ignoreLuther:Bool = false;
 var ignoreBf:Bool = false;
 
 var bfColor;
@@ -14,7 +14,7 @@ var gfColor;
 
 var colorSettings = {
     hue: -0.04,
-    brightness: -0.85,
+    brightness: -0.75,
     saturation: -0.3
 };
 
@@ -25,12 +25,14 @@ function onCreatePost() {
     luzbf.blend = BlendMode.ADD;
     luzbf.scale.set(1.25, 1.5);
     luzbf.visible = false;
+    luzbf.alpha = 0;
     add(luzbf);
 
     luzther = new FlxSprite(900, 100, Paths.image('herworld/luz'));
     luzther.blend = BlendMode.ADD;
     luzther.scale.set(1.25, 1.5);
     luzther.visible = false;
+    luzther.alpha = 0;
     add(luzther);
 
     bfColor = new ColorSwap();
@@ -64,9 +66,20 @@ function onUpdate(e) {
         FlxTween.tween(luzther, {alpha: 1}, 0.5);
     }
 
-    if(boyfriend.shader == null) boyfriend.shader = bfColor.shader;
-    if(dad.shader == null) dad.shader = dadColor.shader;
+    if(boyfriend.shader == null) {
+        boyfriend.shader = bfColor.shader;
+        for(strum in playerStrums.members) {
+            strum.shader = bfColor.shader;
+        }
+    }
+    if(dad.shader == null) {
+        dad.shader = dadColor.shader;
+        for(strum in opponentStrums.members) {
+            strum.shader = dadColor.shader;
+        }
+    }
     if(gf.shader == null) gf.shader = gfColor.shader;
+
 
     if(prevBfAlpha != (prevBfAlpha = luzbf.alpha)) {
         bfColor.hue = colorSettings.hue * (1 - luzbf.alpha);
@@ -85,14 +98,26 @@ function onUpdate(e) {
     }
 }
 
+function onSpawnNote(note:Note) {
+    if(curStep < 816 || curStep > 1500) return;
+    if(note.mustPress){
+        note.shader = bfColor.shader;
+    }
+    else {
+        note.shader = dadColor.shader;
+    }
+}
+
 function onStepHit() {
     switch(curStep) {
         case 816: luzbf.visible = luzther.visible = true;
-        case 1023, 1316: ignoreLuther = false;
+        case 896: 
+            ignoreLuther = true;
+            FlxTween.tween(luzther, {alpha: 1}, 1);
+        case 960, 1023, 1316: ignoreLuther = false;
         case 1216: ignoreLuther = true;
         case 1440: 
-            ignoreLuther = true;
-            ignoreBf = true;
+            ignoreLuther = ignoreBf = true;
         case 3020: 
             luzbf.visible = luzther.visible = false;
             boyfriend.shader = dad.shader = gf.shader = null;

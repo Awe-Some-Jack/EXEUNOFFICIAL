@@ -1,44 +1,68 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": false,
-			"name": "idle copia"
+			"fps": 24,
+			"name": "normal/idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [19, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "left copia"
+			"fps": 24,
+			"name": "normal/left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-6, 1],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "down copia"
+			"fps": 24,
+			"name": "normal/down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-5, 46],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "up copia"
+			"fps": 24,
+			"name": "normal/up",
+			"indices": []
 		},
 		{
-			"offsets": [-5, 2],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
 			"loop": false,
-			"name": "right copia"
+			"offsets": [-5, 2],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "normal/right",
+			"indices": []
+		},
+		{
+			"offsets": [130, 303],
+			"loop": false,
+			"fps": 24,
+			"anim": "intro",
+			"indices": [],
+			"name": "normal/intro"
+		},
+		{
+			"offsets": [19, -2],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "normal/altleft"
+		},
+		{
+			"offsets": [-27, 91],
+			"loop": false,
+			"fps": 24,
+			"anim": "glitch",
+			"indices": [],
+			"name": "glitch"
 		}
 	],
 	"vocals_file": "",

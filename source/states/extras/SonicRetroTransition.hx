@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxState;
 import flixel.FlxSubState;
 import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 import openfl.filters.ShaderFilter;
 import shaders.ColorShiftShader;
 
@@ -29,14 +30,14 @@ class SonicRetroTransition
     {
         if (activeTween != null) activeTween.cancel();
 
-        var totalSteps:Float = 5.0;
         var startVal:Float = toIn ? 0.0 : 1.0;
         var endVal:Float = toIn ? 1.0 : 0.0;
 
         shader.progress.value = [startVal];
 
-        activeTween = FlxTween.num(startVal, endVal, duration, 
+        activeTween = FlxTween.num(startVal, endVal, duration,
             {
+                ease: FlxEase.quadInOut,
                 onComplete: function(t:FlxTween) {
                     shader.progress.value = [endVal];
                     activeTween = null;
@@ -44,8 +45,7 @@ class SonicRetroTransition
                 }
             },
             function(v:Float) {
-                var steppedValue = Math.floor(v * totalSteps) / totalSteps;
-                shader.progress.value = [steppedValue];
+                shader.progress.value = [v];
             },
         );
     }

@@ -10,6 +10,7 @@ import backend.Paths;
 
 import psychlua.ModchartAnimateSprite;
 import psychlua.FlxAnimateFunctions;
+import psychlua.CustomSubstate;
 
 import lime.app.Application as Application;
 
@@ -32,7 +33,9 @@ var charPositions:Array<Float> = [];
 var maxVoicelines:Int = 0;
 
 var songShaders:Array<String> = ['yourself'];
-var pixel:ShaderFilter;
+var pixel :ShaderFilter;
+var pseudo:ShaderFilter;
+var wave  :ShaderFilter;
 
 var majinPairs:Array<Array<FlxSprite>> = [];
 var toolateurfucked:Bool = false;
@@ -55,7 +58,7 @@ function setCustomGameOvers() {
     switch(songName){
         case "cycles", "hellbent", "fate":
             exeGameOvers = true;
-            GameOverSubstate.characterName = "lordx-death";
+            GameOverSubstate.characterName  = "lordx-death";
             GameOverSubstate.deathSoundName = "crushDeath";
             charPositions = [500, 350];
 
@@ -64,32 +67,32 @@ function setCustomGameOvers() {
             maxVoicelines = 5;
         case "yourself":
             exeGameOvers = false;
-            GameOverSubstate.characterName = "bfyourself-dead";
+            GameOverSubstate.characterName  = "bfyourself-dead";
             GameOverSubstate.deathSoundName = "deathSounds/yourself-sfx";
-            GameOverSubstate.loopSoundName = "deathSongs/yourself";
-            GameOverSubstate.endSoundName = "deathSongs/yourself-retry";
+            GameOverSubstate.loopSoundName  = "deathSongs/yourself";
+            GameOverSubstate.endSoundName   = "deathSongs/yourself-retry";
             charPositions = [250, -140];
 
             initialDeathZoom = 1.2;
         case "hollow":
             exeGameOvers = false;
             GameOverSubstate.loopSoundName = "deathSongs/hollow";
-            GameOverSubstate.endSoundName = "deathSongs/hollow-retry";
+            GameOverSubstate.endSoundName  = "deathSongs/hollow-retry";
 
             charPositions = [400, 50];
             initialDeathZoom = 1.2;
         case "endless-us":
             exeGameOvers = false;
             GameOverSubstate.deathSoundName = "deathSounds/endless-us-sfx";
-            GameOverSubstate.loopSoundName = "deathSongs/endless-us";
+            GameOverSubstate.loopSoundName  = "deathSongs/endless-us";
             charPositions = [320, 80];
             initialDeathZoom = 0.85;
         case "starline":
             gameOverChangeStep = 1088;
             exeGameOvers = false;
-            GameOverSubstate.characterName = "chaotixbfdeath";
+            GameOverSubstate.characterName  = "chaotixbfdeath";
             GameOverSubstate.deathSoundName = "deathSounds/glitch-chaotix";
-            GameOverSubstate.loopSoundName = "deathSongs/chaotix-beast-sfx";
+            GameOverSubstate.loopSoundName  = "deathSongs/chaotix-beast-sfx";
             charPositions = [590, 350];
             initialDeathZoom = 0.7;
         case "uh-oh":
@@ -123,6 +126,7 @@ function changeGameOvers() {
 function setCamEvents() {
     if (songName != 'yourself')
     {
+        FlxTween.cancelTweensOf(FlxG.camera); //Just in case, heh.
         FlxG.camera.follow();
         FlxG.camera.scroll.set(0, 0);
         FlxG.camera.zoom = initialDeathZoom;
@@ -133,7 +137,6 @@ function setCamEvents() {
 var inGameOver:Bool = false;
 function onGameOverStart()
 {
-    FlxTween.cancelTweensOf(FlxG.camera); //Just in case, heh.
     for (song in songs)  {
         if (songName == song) {
             inGameOver = true;
@@ -143,7 +146,7 @@ function onGameOverStart()
                 deadChar.scrollFactor.set();
                 deadChar.setPosition(charPositions[0], charPositions[1]);
             }
-            else { deadChar.y -= 100; }
+            else deadChar.y -= 100; 
 
             setCamEvents();
 
@@ -360,26 +363,188 @@ function onGameOverConfirm(retry)
 	actuallynotfuckd = true;
 
 	if (retry) {
-		for (sound in FlxG.sound.list) if (sound.playing && sound != deadMusic && exeGameOvers) sound.volume = 0;
-	}
-
-    if (countdown != null) countdown.cancel();
+        for (sound in FlxG.sound.list) if (sound.playing && sound != deadMusic && exeGameOvers) sound.volume = 0;
+    }
+    
+    //FlxTween.cancelTweensOf(FlxG.camera);
+    if (countdown     != null) countdown.cancel();
     if (countdownText != null) countdownText.destroy();
-    FlxTween.cancelTweensOf(FlxG.camera);
     for (pair in majinPairs) { pair[0].destroy(); pair[1].destroy(); }
 
     switch(songName){
         case "yourself":
-            if (retry) new FlxTimer().start(0.7, (_) ->
+        if (retry) new FlxTimer().start(0.7, (_) ->
+        {
+            FlxTween.num(0.1, 50, 4, {ease:FlxEase.sineInOut}, (val:Float) -> pixel.setFloat("pixelsize", val));
+            FlxTween.tween(FlxG.camera, {zoom: 0.5, y: FlxG.camera.y - 90}, 4, {ease: FlxEase.smootherStepInOut});
+            FlxG.camera.stopFade();
+            FlxG.camera.fade(FlxColor.BLACK, 4, false, function()
             {
-                FlxTween.num(0.1, 50, 4, {ease:FlxEase.sineInOut}, (val:Float) -> pixel.setFloat("pixelsize", val));
-                FlxTween.tween(FlxG.camera, {zoom: 0.5, y: FlxG.camera.y - 90}, 4, {ease: FlxEase.smootherStepInOut});
-                FlxG.camera.stopFade();
-                FlxG.camera.fade(FlxColor.BLACK, 4, false, function()
-                {
-                    for (tweens in [pixel, FlxG.camera]) FlxTween.cancelTweensOf(tweens);
-                    FlxG.resetState();
-                });
+                for (tweens in [pixel, FlxG.camera]) FlxTween.cancelTweensOf(tweens);
+                FlxG.resetState();
             });
+        });
     }
+}
+
+//Haze Gameover. I believe this one is more tricky.
+
+final hazeBG:Array<String> = [
+    'redSun', 
+    'bg', 'ola', 'trees3', 'trees2', 'trees', 'floor', 'fore', 
+    'sky3', 'montains', 'lol', 'suelo', 'totem', 'm', 't',
+    'overlay', 'sun-clouds', 'cloudFront', 'water2', 'waterfall1', 'waterfall2', 'groundShit', 'dedplants', 'k',
+    'sky', 'clouds1', 'clouds2', 'clouds-mountains', 'clouds3', 'ground', 'thomas', 'kyle'
+];
+
+var canPress:Bool = false;
+
+function onGameOver() {
+    if (songName == 'haze'){
+        persistentDraw = false;
+        CustomSubstate.openCustomSubstate("hazeGameOver", true);
+        return Function_Stop;
+    }
+}
+
+var redGraphicShit:FlxSprite;
+var bfEerie:FlxSprite;
+var griatosScream:FlxSprite;
+var hazeSound:FlxSound;
+
+function onCustomSubstateCreate(n)
+{
+    if (n == "hazeGameOver") {        
+        redGraphicShit = new FlxSprite(0, 0);
+        redGraphicShit.makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFFF0000);
+        redGraphicShit.scrollFactor.set(0, 0);
+        redGraphicShit.screenCenter();
+        redGraphicShit.cameras = [FlxG.camera];
+        CustomSubstate.instance.insert(members.indexOf(boyfriendGroup), redGraphicShit);
+        
+        bfEerie = new FlxSprite(0, 0);
+        bfEerie.loadGraphic(Paths.image("gameovers/eerie"));
+        bfEerie.scrollFactor.set(0, 0);
+        bfEerie.cameras = [FlxG.camera];
+        bfEerie.screenCenter();
+        bfEerie.alpha = 0;
+        CustomSubstate.instance.add(bfEerie);
+        
+        setupHazeGameOver();
+    }
+}
+
+var holdTime:Float;
+function onCustomSubstateUpdate(n)
+{
+    if (n == "hazeGameOver")
+    {
+        holdTime++;
+        if (canPress){
+            if (controls.ACCEPT){
+                FlxG.camera.fade(FlxColor.BLACK, 3, false, () -> FlxG.resetState());
+                canPress = false;
+            }
+        }
+        boyfriend.animation.paused = true;
+        dad.animation.paused = true;
+
+        pseudo.setFloat("iTime", holdTime);
+        wave.setFloat("iTime", holdTime * 2);
+    }
+}
+
+function setupHazeGameOver() {
+    FlxG.stage.window.title = PlayState.instance.appName + " | Was Playing: " + PlayState.SONG.song;
+    //Shader shit
+    for (guys in [boyfriend, dad]) guys.shader = null;
+    
+    var fragSrc:String = Assets.getText(Paths.shaderFragment('pseudo'));
+    pseudo = new FlxRuntimeShader(fragSrc);
+    pseudo.setFloat("sort", 0);
+    var fragSrc2:String = Assets.getText(Paths.shaderFragment('wavyDistortion'));
+    wave = new FlxRuntimeShader(fragSrc2);
+    wave.setFloat("amount", 0);
+
+    FlxG.camera.filters = [new ShaderFilter(pseudo), new ShaderFilter(wave)];
+    
+    FlxG.camera.zoom = 0.7;
+    PlayState.instance.camHUD.visible = false;
+    FlxTween.cancelTweensOf(FlxG.camera);
+
+    for (bgStuff in hazeBG) {
+        var bgObject:Dynamic = getVar(bgStuff);
+        if (bgObject != null) bgObject.visible = false;
+    }
+
+    for (guys in [boyfriend, dad]) guys.alpha = 0;
+
+    new FlxTimer().start(0.6, () -> startScreamShit());
+
+    hazeSound = new FlxSound();
+    hazeSound.load(Paths.sound("deathSounds/hazeScream"));
+    hazeSound.play();
+    hazeSound.onComplete = () -> bfCreepy();
+}
+
+function startScreamShit() {
+    configureChars();
+    
+    new FlxTimer().start(2.5, () -> showJumpscare());
+
+    wave.setFloat("amount", 0.2);
+
+    new FlxTimer().start(0.6, () -> pseudo.setFloat("sort", 0.4));
+}
+
+function configureChars()
+{
+    for (guys in [boyfriend, dad]){
+        guys.color = FlxColor.BLACK;
+        guys.alpha = 1;
+    }
+
+    boyfriend.setPosition(670, 200);
+    boyfriend.scale.set(0.6, 0.6);
+    boyfriend.stunned = true;
+    dad.setPosition(-370, -260);
+    dad.scale.set(0.6, 0.6);
+    dad.stunned = true;
+    CustomSubstate.instance.insert(0, dadGroup);
+    CustomSubstate.instance.insert(0, boyfriendGroup);
+}
+
+function showJumpscare() {
+    griatosScream = new FlxSprite();
+    griatosScream.frames = Paths.getSparrowAtlas("gameovers/Griatos_Scream");
+    griatosScream.animation.addByPrefix('idle', 'Griatos_Scream scream', 24, true);
+    griatosScream.animation.play('idle', true);
+    griatosScream.scrollFactor.set(0, 0);
+    griatosScream.scale.set(2, 2);
+    griatosScream.cameras = [FlxG.camera];
+    griatosScream.screenCenter();
+    griatosScream.alpha = 0;
+    CustomSubstate.instance.add(griatosScream);
+
+    griatosScream.alpha += 0.2;
+    for (guys in [boyfriend, dad]) guys.alpha -= 0.2;
+
+    new FlxTimer().start(1.4,   () -> {griatosScream.alpha += 0.2; for (guys in [boyfriend, dad]) guys.alpha -= 0.2;});
+    new FlxTimer().start(1.8,   () -> {griatosScream.alpha += 0.2; for (guys in [boyfriend, dad]) guys.alpha -= 0.2; pseudo.setFloat("sort", 0.6);});
+    new FlxTimer().start(2.4,   () -> {griatosScream.alpha += 0.6; for (guys in [boyfriend, dad]) guys.alpha -= 0.6; pseudo.setFloat("sort", 0.9);});
+    
+    new FlxTimer().start(3.3,   () -> hideThem());
+}
+
+function hideThem() {
+    for (guys in [boyfriend, dad, griatosScream, redGraphicShit])
+        guys.alpha = 0;
+    pseudo.setFloat("sort", 0);
+}
+
+function bfCreepy() {
+    FlxG.camera.zoom = 1.1;
+    wave.setFloat("amount", 0.6);
+    FlxG.sound.play(Paths.sound("deathSounds/hazeLoop", 1, true));
+    FlxTween.tween(bfEerie, {alpha: 1}, 3, {onComplete: () -> canPress = true});
 }

@@ -2,6 +2,8 @@
 
 local byeByeActivated = false
 
+addHaxeLibrary('EXEAchievements', "backend.EXEAchievements")
+
 --CurStep doesn't work, so i'll repeat the event here with the byeByeActivated variable (Event script by Dudu)
 local curText = {}
 local curStringText = ''
@@ -16,9 +18,9 @@ function onEvent(e, v1, v2)
 			triggerEvent('Play Animation', 'mispulmones', 'dad')
 
 			runHaxeCode([[
-				backend.EXEAchievements.unlock('byebye');
-				backend.EXEAchievements.checkFinale();
-				backend.EXEAchievements.save();
+				EXEAchievements.unlock('byebye');
+				EXEAchievements.checkFinale();
+				EXEAchievements.save();
 			]])
         end
     end

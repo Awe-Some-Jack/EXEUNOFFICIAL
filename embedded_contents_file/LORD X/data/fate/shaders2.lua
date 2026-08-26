@@ -7,7 +7,7 @@ local dadFrame = 0;
 -- luaDebugMode = true;
 
 function updateCameraFilters()
-    debugPrint('updated');
+    --debugPrint('updated');
 
     runHaxeCode([[
         var sexoShader = game.getLuaObject('sexo').shader;

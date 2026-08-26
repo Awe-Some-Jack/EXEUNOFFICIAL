@@ -19,7 +19,6 @@ local sprites = {
 	{name = 'grass',     path = 'cycles/grass',                      x = -1027, y = 85,   scaleX = 0.75, scaleY = 0.7},
 	{name = 'knuxd',     path = 'cycles/knuxd',                      x = -339,  y = 243,  animated = true, prefix = 'knuxd'},
 	{name = 'treesBack', path = 'cycles/fondo animado/plant 1',      x = -947,  y = 250,  animated = true, prefix = "Símbolo 43", scaleX = 0.6, scaleY = 0.6},
-	{name = 'eye',       path = 'cycles/fondo animado/ojo',          x = -614,  y = 722,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 12'},
 	{name = 'treeFront', path = 'cycles/fondo animado/plant t',      x = 772,  y = 90,  animated = true, prefix = 'Símbolo 50',  scaleX = 1.2, scaleY = 1.2},
 	{name = 'flor1',     path = 'cycles/fondo animado/flor',         x = 914,   y = 922,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 39'},
 	{name = 'eye',       path = 'cycles/fondo animado/ojo',          x = -614,  y = 722,  scaleX = 0.8, scaleY = 0.8, animated = true, prefix = 'Símbolo 12'},
@@ -74,7 +73,7 @@ function onCreate()
 	addLuaSprite('overlay')
 
 	-- EYES --
-	makeLuaSprite('ais', 'characters/ojos cycles', getMidpointX('dad') - 280, getMidpointY('dad') - 270)
+	makeLuaSprite('ais', 'characters/ojos cycles', getMidpointX('dad') - 285, getMidpointY('dad') - 360)
 	setProperty('ais.alpha', 0)
 	setBlendMode('ais', 'add')
 	scaleObject('ais', 0.9, 0.9)
@@ -160,7 +159,7 @@ function onEvent(e, v1, v2)
 	if e == 'cyclesEvents' then
 		if v1 == 'revealHUD' then
 			for i = 0, 7 do noteTweenY(i..'TweenY', i, strumsY, 2 + (i * 0.1), 'quartOut') noteTweenAlpha(i..'TweenAlpha', i, 1, 2 + (i * 0.1), 'quartOut') end
-			doTweenY('hbBGTween', 'hbBG', hbOriginalY, 0.8, 'quartOut') doTweenY('exeScoreTxtTween', 'exeScoreTxt', hbOriginalY + (downscroll and 30 or -30), 0.8, 'quartOut')
+			doTweenY('hbBGTween', 'hbBG', hbOriginalY, 0.8, 'quartOut') doTweenY('exeScoreTxtTween', 'exeScoreTxt', hbOriginalY + 50, 0.8, 'quartOut')
 			for _, name in ipairs(HB_ELEMENTS) do doTweenY(name .. 'Tween', name, hbOriginalY + 5, 0.8, 'quartOut') end
 		end
 		if v1 == 'tweenObject' then

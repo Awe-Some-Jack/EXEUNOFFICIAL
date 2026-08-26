@@ -23,7 +23,7 @@ local fateAssets = {
     },
     ['Misc'] = {
         {name = 'spaceBar',    path =      'fate/spacebar',  x =  380, y =   360, scaleX = 1, scaleY = 1,               animated =  true, animName = 'idle',  animPrefix =   'Símbolo 8',              fps = 24, loop = true, camera = 'camHUD', alpha = 0,                                  front = false},
-        {name = 'lordXBite',   path = 'characters/mordida',  x = 1350, y =  1200, scaleX = 0, scaleY = 0,               animated =  true, animName = 'idle',  animPrefix = 'Símbolo 403', index = '0', fps = 24, loop = true,                    alpha = 1,                                  front = false},
+        {name = 'lordXBite',   path = 'characters/mordida',  x = 1355, y =  1200, scaleX = 0, scaleY = 0,               animated =  true, animName = 'idle',  animPrefix = 'Símbolo 403', index = '0', fps = 24, loop = true,                    alpha = 1,                                  front = false},
         {name = 'bfFALL',      path = 'characters/bf void',  x =  600, y =  1900, scaleX = 3, scaleY = 3,               animated =  true, animName = 'idle',  animPrefix =  'Símbolo 71',              fps = 24, loop = true,                    alpha = 1,                                  front = false},
         {name = 'transition',  path =       'fate/overlay',  x = -550, y = -1500, scaleX = 1, scaleY = 3,               animated = false,                                                                                     camera = 'camHUD', alpha = 0, color = '000000',                front = false},
         {name = 'fog',         path =           'fate/fog',  x =    0, y =     0, scaleX = 1, scaleY = 1,               animated = false,                                                                                     camera = 'camHUD', alpha = 0,                   blend = 'add', front = false},
@@ -149,8 +149,10 @@ local fateStrumEvents = {
         end
         if mode == 'fall' then
             for i = 4, 7 do
-                noteTweenY(i..'BFFall',      i, 850, 1.3 + (i * math.random(0.1, 0.2)) / playbackRate, 'backIn')
-                noteTweenAngle(i..'BFAngle', i, math.random(15, -15), 1.3 + (i * math.random(0.1, 0.2)) / playbackRate)
+                cancelTween(i..'BFFallX') cancelTween(i..'BFFallY')
+                noteTweenX(i..'BFFallX',      i, getProperty('strumLineNotes.members['..i..'].x') + math.random(-25, 25), 1.3 / playbackRate, 'circOut')
+                noteTweenY(i..'BFFallY',      i, 850, 2 / playbackRate, 'backIn')
+                noteTweenAngle(i..'BFAngle', i, math.random(15, -15), 1.3 + (i * math.random(0.1, 0.15)) / playbackRate)
             end
         end
     end,
@@ -402,7 +404,7 @@ local function popUpSpace()
     cancelTween('dodgeTextAngle') cancelTween('spaceBarScale')
     scaleObject('spaceBar', 0.8, 0.8) scaleObject('dodgeText', 1.1, 1.1)
     setProperty('dodgeText.angle', getRandomFloat(-5, 5)) setProperty('spaceBar.alpha', 1)
-    doTweenScale('spaceBar', 'spaceBar', 1, 0.5, 'circOut') doTweenScale('dodgeText', 'dodgeText', 1, 0.5, 'circOut') doTweenAngle('dodgeTextAngle', 'dodgeText', 0, 0.5, 'circOut')
+    doTweenScale('spaceBar', 'spaceBar', 0.85, 0.5, 'circOut') doTweenScale('dodgeText', 'dodgeText', 1, 0.5, 'circOut') doTweenAngle('dodgeTextAngle', 'dodgeText', 0, 0.5, 'circOut')
 end
 
 local function dodgeMechanic()

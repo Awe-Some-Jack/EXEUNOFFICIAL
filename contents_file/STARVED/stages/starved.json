@@ -1,10 +1,10 @@
 {
   "directory": "",
-  "defaultZoom": 1,
+  "defaultZoom": 0.8,
   "stageUI": "",
 
-  "boyfriend": [250, 2450],
-  "opponent": [580, 550],
-  "girlfriend": [580, 810],
+  "boyfriend": [-1050, -50],
+  "opponent": [-118, -450],
+  "girlfriend": [0, 0],
   "hide_girlfriend": true
 }

@@ -17,42 +17,46 @@ final prefs = ClientPrefs.data;
 final cam = game.gameplayCam.settings;
 
 var starv:Array<BackgroundSprite> = [
-	{path: 'starved/new bg/sky', position: [-910, -900], scroll: [0.4, 0.4]},
-	{path: 'starved/new bg/bg', position: [-910, -650], scroll: [0.6, 0.6]},
-	{path: 'starved/new bg/floor', position: [-910, -500]},
-	{path: 'starved/sonic', position: [100, 1350], scale: [1.3, 1.3], ID: 'sonic'},
-	{path: 'starved/sonic-dark', position: [100, 1350], scale: [1.3, 1.3], alpha: 0, ID: 'sonicdark'},
-	{path: 'starved/shoe', position: [900, 1000], scale: [0.6, 0.6]},
-	{path: 'starved/picky', position: [-230, 1500], scale: [1.1, 1.1]},
-	{path: 'starved/mrcrabs', position: [1100, 1100], scale: [1.7, 1.7]},
-	{path: 'starved/pocky', position: [1300, 1300], scale: [0.7, 0.7]},
-	{path: 'starved/ricky', position: [-200, 200], scale: [0.7, 0.7], scroll: [1.5, 1.5]},
-	{path: 'starved/cucky', position: [1100, 100], scale: [0.7, 0.7], scroll: [1.3, 1.3]},
-	{path: 'starved/flicky', position: [1300, 400], scale: [0.9, 0.9], scroll: [1.6, 1.6]},
-	{path: 'starved/fishF1', position: [140, 1450], scale: [2.7, 2.7], scroll: [2, 2]},
-	{path: 'starved/new bg/light', position: [-910, -400], front: true}
+	{path: 'new bg/sky', position: [-1220, -1250], scroll: [0.4, 0.4], scale: [0.8, 0.8]},
+	{path: 'new bg/bg', position: [-1350, -1300], scroll: [0.6, 0.6], scale: [0.8, 0.8]},
+	{path: 'new bg/floor', position: [-1610, -1450], scale: [0.8, 0.8]},
+	{path: 'bee', position: [-520, -150], scale: [0.7, 0.7], darkVariant: true},
+	{path: 'moto', position: [-1050, 120], scale: [0.9, 0.9], darkVariant: true},
+	{path: 'sonic', position: [-650, 180], scale: [1, 1], darkVariant: true},
+	{path: 'shoe', position: [300, 320], scale: [0.8, 0.8], darkVariant: true},
+	{path: 'picky', position: [-870, 390], scale: [0.85, 0.85], darkVariant: true},
+	{path: 'mrcrabs', position: [350, 0], scale: [1.5, 1.5], darkVariant: true},
+	{path: 'pocky', position: [400, 230], scale: [0.6, 0.6], darkVariant: true},
+	{path: 'ricky', position: [-1300, -1000], scale: [0.5, 0.5], scroll: [1.7, 1.7], darkVariant: true},
+	{path: 'cucky', position: [-150, -900], scale: [0.5, 0.5], scroll: [1.5, 1.5], front: true, darkVariant: true},
+	{path: 'flicky', position: [-400, -1100], scale: [0.8, 0.8], scroll: [2.2, 2.2], darkVariant: true},
+	{path: 'fish', position: [-1500, 260], scale: [1.2, 1.2], scroll: [2, 2], darkVariant: true},
+	{path: 'new bg/light', position: [-1350, -1300], front: true, scale: [0.8, 0.8]}
 ];
 
 var vg:FlxSprite;
 function onCreate()
 {
 	makeBackground(starv);
-
 	boyfriend.scrollFactor.set(2, 2);
 
 	vg = new FlxSprite().loadGraphic(Paths.image('starved/vinevrom'));
 	vg.camera = camHUD;
 	add(vg);
+
+	game.gameplayCam._targetAlpha = 0.5;
 }
 
 var _inTrans:Bool = false;
 function onSectionHit(x)
 {
 	if (_inTrans) return;
-	if (x.mustHitSection == false) cam.OGZoom = 0.5;
-	else cam.OGZoom = 0.4;
+	if (x.mustHitSection == false) cam.OGZoom = 0.8;
+	else cam.OGZoom = 0.65;
 }
 
+var _isDark:Bool = false;
+var notesPosition:Array<Array<Array<Float>>> = [[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]]];
 function onEvent(n,v1)
 {
 	if (n == 'Hide') FlxTween.tween(camHUD, {alpha: Std.int(v1)}, 0.3);
@@ -62,34 +66,72 @@ function onEvent(n,v1)
 		{
 			case 'fadeout':
 				_inTrans = true;
-				for (spr in starv) if (spr.ID == null) FlxTween.tween(spr.sprite, {alpha: 0}, 3);
+				for (spr in starv) FlxTween.color(spr.sprite, 1, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.color(boyfriend, 3, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.color(vg, 3, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.tween(camHUD, {alpha: 0}, 3);
+				for (i in 0...4)
+				{
+					notesPosition[0][i][0] = opponentStrums.members[i].x; notesPosition[1][i][0] = playerStrums.members[i].x;
+					notesPosition[0][i][1] = opponentStrums.members[i].y; notesPosition[1][i][1] = playerStrums.members[i].y;
+				}
 			case 'fight':
 				_inTrans = false;
-				for (spr in starv) if (spr.ID == 'sonicdark') FlxTween.tween(spr.sprite, {alpha: 1}, 1);
+				for (spr in starv)
+				{
+					if (spr.darkVariant != null)
+					{
+						spr.spriteDark.alpha = 1;
+						FlxTween.color(spr.spriteDark, 1, 0xFF000000, 0xFFFFFFFF);
+					}
+				}
 				FlxTween.color(boyfriend, 1, 0xFF000000, 0xFFFF0000);
 				FlxTween.color(vg, 1, 0xFF000000, 0xFFFF0000);
 				FlxTween.color(dad, 1, 0xFFFFFFFF, 0xFFFF0000);
 				FlxTween.tween(camHUD, {alpha: 1}, 1);
+				_isDark = true;
 			case 'starved':
 				_inTrans = true;
-				for (spr in starv) if (spr.ID == 'sonicdark') FlxTween.tween(spr.sprite, {alpha: 0}, 1);
+				for (spr in starv) if (spr.darkVariant != null) FlxTween.color(spr.spriteDark, 1, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.color(boyfriend, 1, 0xFFFF0000, 0xFF000000);
 				FlxTween.tween(camHUD, {alpha: 0}, 1);
 				FlxTween.color(vg, 3, 0xFFFF0000, 0xFF000000);
 			case 'fadein':
 				_inTrans = false;
+				_isDark = false;
+				for (i in 0...4)
+				{
+					opponentStrums.members[i].setPosition(notesPosition[0][i][0], notesPosition[0][i][1]);
+					playerStrums.members[i].setPosition(notesPosition[1][i][0], notesPosition[1][i][1]);
+					opponentStrums.members[i].angle = 0;
+					playerStrums.members[i].angle = 0;
+				}
 				for (spr in starv)
 				{
-					if (spr.ID == null) FlxTween.tween(spr.sprite, {alpha: 1}, 4);
-					if (spr.ID == 'sonic') FlxTween.color(spr.sprite, 4, 0xFF000000, 0xFFFFFFFF);
+					for (spr in starv)
+					{
+						spr.spriteDark.alpha = 0;
+						FlxTween.color(spr.sprite, 1, 0xFF000000, 0xFFFFFFFF);
+					}
 				}
 				FlxTween.tween(camHUD, {alpha: 1}, 4);
 				FlxTween.color(boyfriend, 1, 0xFF000000, 0xFFFFFFFF);
 				FlxTween.color(vg, 1, 0xFF000000, 0xFFFFFFFF);
 				FlxTween.color(dad, 1, 0xFFFF0000, 0xFFFFFFFF);
+		}
+	}
+}
+
+function onUpdatePost()
+{
+	if (_isDark)
+	{
+		for (i in 0...4)
+		{
+			opponentStrums.members[i].setPosition(notesPosition[0][i][0] + FlxG.random.float(-1, 1), notesPosition[0][i][1] + FlxG.random.float(-1, 1));
+			playerStrums.members[i].setPosition(notesPosition[1][i][0] + FlxG.random.float(-1, 1), notesPosition[1][i][1] + FlxG.random.float(-1, 1));
+			opponentStrums.members[i].angle = FlxG.random.float(-1, 1);
+			playerStrums.members[i].angle = FlxG.random.float(-1, 1);
 		}
 	}
 }
@@ -101,10 +143,10 @@ function makeBackground(background:Array<BackgroundSprite>)
 		var sprite:FlxSprite = new FlxSprite((spriteDef.position ?? [0, 0])[0], (spriteDef.position ?? [0, 0])[1]);
 		if (spriteDef.animation != null)
 		{
-			sprite.frames = Paths.getSparrowAtlas(spriteDef.path);
+			sprite.frames = Paths.getSparrowAtlas('starved/' + spriteDef.path);
 			for (anim in spriteDef.animation) {sprite.animation.addByPrefix(anim.name, anim.name, anim.fps ?? 24, anim.looped ?? false); sprite.animation.play(anim.name, true);}
 		}
-		else sprite.loadGraphic(Paths.image(spriteDef.path));
+		else sprite.loadGraphic(Paths.image('starved/' + spriteDef.path));
 		sprite.scrollFactor.set((spriteDef.scroll ?? [1, 1])[0], (spriteDef.scroll ?? [1, 1])[1]);
 		sprite.scale.set((spriteDef.scale ?? [1, 1, true])[0], (spriteDef.scale ?? [1, 1, true])[1]); if ((spriteDef.scale ?? [1, 1, true])[2]) sprite.updateHitbox();
 		if (spriteDef.visible != null) sprite.visible = spriteDef.visible;
@@ -112,5 +154,21 @@ function makeBackground(background:Array<BackgroundSprite>)
 		if (spriteDef.front) game.add(sprite);
 		else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
 		spriteDef.sprite = sprite;
+
+		if (spriteDef.darkVariant != null) {
+			var sprite:FlxSprite = new FlxSprite((spriteDef.position ?? [0, 0])[0], (spriteDef.position ?? [0, 0])[1]);
+			if (spriteDef.animation != null)
+			{
+				sprite.frames = Paths.getSparrowAtlas('starved/dark/' + spriteDef.path);
+				for (anim in spriteDef.animation) {sprite.animation.addByPrefix(anim.name, anim.name, anim.fps ?? 24, anim.looped ?? false); sprite.animation.play(anim.name, true);}
+			}
+			else sprite.loadGraphic(Paths.image('starved/dark/' + spriteDef.path));
+			sprite.scrollFactor.set((spriteDef.scroll ?? [1, 1])[0], (spriteDef.scroll ?? [1, 1])[1]);
+			sprite.scale.set((spriteDef.scale ?? [1, 1, true])[0], (spriteDef.scale ?? [1, 1, true])[1]); if ((spriteDef.scale ?? [1, 1, true])[2]) sprite.updateHitbox();
+			sprite.alpha = 0;
+			if (spriteDef.front) game.add(sprite);
+			else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
+			spriteDef.spriteDark = sprite;
+		}
 	}
 }

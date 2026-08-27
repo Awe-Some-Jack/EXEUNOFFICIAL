@@ -346,7 +346,7 @@ function onUpdatePost(e)
 		string.format('%.'..(settings.decimals)..'f', decimal(math.max(0, curDecBeat)))..')\nCur Step: '..curStep..' ('..string.format('%.'..(settings.decimals)..'f', decimal(math.max(0, curDecStep)))..')')
 
 		gfCheck = ''
-		if getProperty('gf') then 
+		if getProperty('gf.visible') then 
 			gfCheck = '\n\nGirlfriend\n• Current Animation: '..(getProperty('gf.animation.name') or (getProperty('gf._lastPlayedAnimation') or 'Not Found'))..' ['..(getProperty('gf.animation.curAnim.curFrame') or (getProperty('gf.atlas.anim.curFrame') or '?'))..'/'..(getProperty('gf.animation.curAnim.numFrames') and (getProperty('gf.animation.curAnim.numFrames') - 1) or ((getProperty('gf.atlas.anim.length') - 1) or '?'))..']\n• Current Character: '..getProperty('gf.curCharacter')..'\n• Properties: [X: '..decimal(getProperty('gf.x'))..', Y: '..decimal(getProperty('gf.y'))..', Angle: '..decimal(getProperty('gf.angle'))..', Alpha: '..decimal(getProperty('gf.alpha'))..']'
 		end
 		updateBoxText('charInfo',
@@ -355,10 +355,10 @@ function onUpdatePost(e)
 		gfCheck)
 
 		if combo > highCombo then highCombo = highCombo + 1 end
-		updateBoxText('playerInfo',
+		--[[updateBoxText('playerInfo',
 		'Deaths: '..deaths..'\nCombo: '..combo..' (High Combo: '..highCombo..')\nScore: '..callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {score, false})..' (Total Score: '..callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {totalScore, false})..')\nAccuracy: '..decimal(rating * 100)..'%\nHealth: '..decimal(getHealth() * 50)..'% ('..(getHealth() < 0.4 and 'Losing' or (getHealth() > 1.6 and 'Winning' or 'Tie'))..')'..weekCampaign[2]..weekCampaign[3]..'\n\nHits: '..hits..
 		' (Total: '..totalNotes..')\nOpponent Hits: '..oppHits..' (Total: '..totalOppNotes..')\nNotes Played: '..totalPlayed..'\nTotal Notes Hit: '..totalNotesHit..'\nNPS: '..nps..' (Max. NPS: '..maxNps..')\n\nSicks: '..getProperty('ratingsData[0].hits')..'\nGoods: '..getProperty('ratingsData[1].hits')..
-		'\nBads: '..getProperty('ratingsData[2].hits')..'\nShits: '..getProperty('ratingsData[3].hits')..'\nMisses: '..misses..'\n\nBotplay: '..tostring(botPlay)..'\nPractice Mode: '..tostring(getProperty('practiceMode')))
+		'\nBads: '..getProperty('ratingsData[2].hits')..'\nShits: '..getProperty('ratingsData[3].hits')..'\nMisses: '..misses..'\n\nBotplay: '..tostring(botPlay)..'\nPractice Mode: '..tostring(getProperty('practiceMode')))]]
 
 		dayThing, form = {'st', 'nd', 'rd', 'th'}, (os.date('*t').day % 100 >= 11 and os.date('*t').day % 100 <= 13) and 4 or math.min(4, (os.date('*t').day % 10 == 0 and 4 or os.date('*t').day % 10))
 		if getPropertyFromClass("Main", "fpsVar.currentMemory") > totalMemory then totalMemory = getPropertyFromClass("Main", "fpsVar.currentMemory") end

@@ -1,76 +1,76 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
 			"loop": true,
-			"fps": 24,
+			"offsets": [0, 0],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle instancia "
+			"fps": 24,
+			"name": "idle instancia ",
+			"indices": []
 		},
 		{
-			"offsets": [30, 10],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [60, 10],
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "singLEFT instancia "
+			"fps": 24,
+			"name": "singLEFT instancia ",
+			"indices": []
 		},
 		{
-			"offsets": [-30, -10],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [-40, -10],
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "singDOWN instancia "
+			"fps": 24,
+			"name": "singDOWN instancia ",
+			"indices": []
 		},
 		{
-			"offsets": [-45, 87],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [-55, 70],
 			"anim": "singUP",
-			"loop": false,
-			"name": "singUP instancia"
+			"fps": 24,
+			"name": "singUP instancia",
+			"indices": []
 		},
 		{
-			"offsets": [-20, 10],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [-30, 0],
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "singRIGHT instancia "
+			"fps": 24,
+			"name": "singRIGHT instancia ",
+			"indices": []
 		},
 		{
-			"offsets": [5, 2],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [26, 4],
 			"anim": "singLEFTmiss",
-			"loop": false,
-			"name": "bl"
+			"fps": 24,
+			"name": "bl",
+			"indices": []
 		},
 		{
-			"offsets": [-50, -30],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [-67, -31],
 			"anim": "singDOWNmiss",
-			"loop": false,
-			"name": "bd"
+			"fps": 24,
+			"name": "bd",
+			"indices": []
 		},
 		{
-			"offsets": [-104, 86],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [-121, 68],
 			"anim": "singUPmiss",
-			"loop": false,
-			"name": "bu"
+			"fps": 24,
+			"name": "bu",
+			"indices": []
 		},
 		{
-			"offsets": [-70, 10],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHTmiss",
 			"loop": false,
-			"name": "br"
+			"offsets": [-85, -6],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "br",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
@@ -82,6 +82,6 @@
 	"healthbar_colors": [255, 157, 0],
 	"camera_position": [-150, -140],
 	"sing_duration": 4,
-	"scale": 0.9,
+	"scale": 1,
 	"_editor_isPlayer": true
 }

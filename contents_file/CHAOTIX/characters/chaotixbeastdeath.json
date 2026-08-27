@@ -10,18 +10,18 @@
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": false,
 			"fps": 8,
 			"anim": "firstDeath",
-			"loop": false,
+			"indices": [],
 			"name": "chaotix-beastdeath gore"
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [4],
+			"loop": true,
 			"fps": 8,
 			"anim": "deathLoop",
-			"loop": true,
+			"indices": [4],
 			"name": "bf-chaotixdeath loop"
 		}
 	],
@@ -34,6 +34,6 @@
 	"healthbar_colors": [175, 102, 206],
 	"camera_position": [0, 0],
 	"sing_duration": 6.1,
-	"scale": 6,
+	"scale": 5.3,
 	"_editor_isPlayer": true
 }

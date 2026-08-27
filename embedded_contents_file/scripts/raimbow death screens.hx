@@ -118,7 +118,7 @@ function changeGameOvers() {
             exeGameOvers = true;
             GameOverSubstate.characterName  = "chaotixbeastdeath";
             GameOverSubstate.deathSoundName = "deathSounds/gore-chaotix";
-            charPositions = [520, 300];
+            charPositions = [460, 250];
             initialDeathZoom = 0.7;
     }
 }
@@ -257,7 +257,7 @@ function startCountdownMajin()
         var bell:Float = 1.0 - Math.abs(i - 3) * 0.2;
         var dynamicSpacing:Float = spacing * (1.0 + bell);
         var leftX:Float = i >= 3 ? baseLeft + ((i - 3) * (i - 3) * 30) : baseLeft - (i * dynamicSpacing);
-        var yOffset:Float = i == 1 ? 70 : 65;
+        var yOffset:Float = i == 1 ? 140 : 135;
         left.setPosition(leftX, deadChar.y + yOffset);
         left.scrollFactor.set(0, 0);
         left.scale.set(scale, scale);
@@ -283,14 +283,14 @@ function startCountdownMajin()
     var left0 = new FlxSprite();
     left0.loadGraphic(Paths.image('gameovers/us/evil majin'));
     left0.flipX = true;
-    left0.setPosition(baseLeft, deadChar.y + 20);
+    left0.setPosition(baseLeft, deadChar.y + 80);
     left0.scrollFactor.set(0, 0);
     left0.alpha = 0;
     GameOverSubstate.instance.add(left0);
 
     var right0 = new FlxSprite();
     right0.loadGraphic(Paths.image('gameovers/us/evil majin'));
-    right0.setPosition(baseRight, deadChar.y + 20);
+    right0.setPosition(baseRight, deadChar.y + 80);
     right0.scrollFactor.set(0, 0);
     right0.alpha = 0;
     GameOverSubstate.instance.add(right0);
@@ -499,6 +499,7 @@ function startScreamShit() {
 
 function configureChars()
 {
+    PlayState.instance.triggerEvent("Change Character", "dad", "griatos");
     for (guys in [boyfriend, dad]){
         guys.color = FlxColor.BLACK;
         guys.alpha = 1;

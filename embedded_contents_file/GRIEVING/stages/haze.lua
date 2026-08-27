@@ -4,7 +4,7 @@ local hazeBGAssets = {
     },
     ['phase2'] = {
         {name =     'bg', path =       'grieving/uh-oh/new/sky', x = -1150, y = -1600,                                                                            scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
-        {name =    'ola', path = 'grieving/uh-oh/new/sebasolas', x =   190, y =  -151, animName = 'idle', animPrefix = 'olas instancia 1', fps = 24, loop = true, scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
+        {name =    'ola', path = 'grieving/uh-oh/new/sebasolas', x =   190, y =  -140, animName = 'idle', animPrefix = 'olas instancia 1', fps = 24, loop = true, scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
         {name = 'trees3', path =    'grieving/uh-oh/new/trees3', x = -1500, y =  -600,                                                                            scrollX = 0.5, scrollY = 0.5, front = false, lowQualityHide = true},
         {name = 'trees2', path =    'grieving/uh-oh/new/trees2', x = -1350, y = -1400,                                                                            scrollX = 0.7, scrollY = 0.7, front = false, lowQualityHide = true},
         {name =  'trees', path =     'grieving/uh-oh/new/trees', x = -1400, y = -1400,                                                                            scrollX = 0.9, scrollY = 0.9, front = false, lowQualityHide = true},
@@ -36,14 +36,12 @@ local hazeBGAssets = {
         { name = 'ground',           path = 'grieving/haze/4th/1', x = -1000, y =     0,                  scrollX =    1, scrollY =    1,                 alpha = 1, front = true},
     },
     ['atlases'] = {
-        { name = 'k', path = 'characters/k', x = 100, y = -700, scale = 0.2, animSymbol = 'knux',  alpha = 1, front = false},
-        { name = 'm', path = 'characters/m', x = 600, y = -400, scale = 1, animSymbol = 'momi',  alpha = 1, front = false},
-        { name = 't', path = 'characters/t', x = 300, y = -100, scale = 0.2, animSymbol = 'tails', alpha = 1, front = false},
+        { name =      'k', path = 'characters/k', x =  100, y = -700, scale = 0.2, animSymbol =     'knux',  alpha = 1, front = false},
+        { name =      'm', path = 'characters/m', x =  600, y = -400, scale =   1, animSymbol =     'momi',  alpha = 1, front = false},
+        { name =      't', path = 'characters/t', x =  300, y = -100, scale = 0.2, animSymbol =     'tails', alpha = 1, front = false},
+        { name =   'kyle', path = 'characters/1', x =    0, y = -200, scale = 0.3, animSymbol = 'Símbolo 2', alpha = 0, front = false, flipX = true},
+        { name = 'thomas', path = 'characters/2', x = -400, y = -500, scale = 0.3, animSymbol =         '2', alpha = 0, front = false, flipX = true},
     },
-    ['theBoys'] = {
-        {name = 'thomas', path = 'grieving/haze/4th/ff', x = -400, y = -500, flipX = true, scaleX = 0.3, scaleY = 0.3, scrollX = 1, scrollY = 1, alpha = 0, front = false},
-        {name =   'kyle', path = 'grieving/haze/4th/gg', x =    0, y = -200, flipX = true, scaleX = 0.3, scaleY = 0.3, scrollX = 1, scrollY = 1, alpha = 0, front = false},
-    }
 }
 
 local spriteGroups = {
@@ -81,6 +79,7 @@ local function addAtlas(e)
     addAnimationBySymbol(e.name, 'idle', e.animSymbol, 24, true)
     scaleObject(e.name, e.scale, e.scale)
     setProperty(e.name..'.alpha', e.alpha)
+    if e.flipX then setProperty(e.name..'.flipX', e.flipX) end
     addLuaSprite(e.name, e.front)
 end
 
@@ -95,7 +94,6 @@ function onCreate()
         for _, phase3 in ipairs(hazeBGAssets['phase3'])  do precacheImage(phase3.path) end
         for _, phase4 in ipairs(hazeBGAssets['phase4'])  do precacheImage(phase4.path) end
         for _, phase5 in ipairs(hazeBGAssets['phase5'])  do precacheImage(phase5.path) end
-        for _,   bois in ipairs(hazeBGAssets['theBoys']) do   precacheImage(bois.path) end
 
         for _, atlas in ipairs(hazeBGAssets['atlases']) do precacheImage(atlas.path) end
     end
@@ -109,17 +107,15 @@ function onCreatePost()
     for _, spr in ipairs(hazeBGAssets['phase4']) do addSprite(spr) end
     for _, spr in ipairs(hazeBGAssets['phase5']) do addSprite(spr) end
 
-    for _, spr in ipairs(hazeBGAssets['theBoys']) do addSprite(spr) end
-
     for _, spr in ipairs(hazeBGAssets['atlases']) do addAtlas(spr) end
 
-    for _, phase1 in ipairs(hazeBGAssets['phase1']) do setProperty(phase1.name..'.alpha', 1) end
-    for _, phase2 in ipairs(hazeBGAssets['phase2']) do setProperty(phase2.name..'.alpha', 0) end
-    for _, phase3 in ipairs(hazeBGAssets['phase3']) do setProperty(phase3.name..'.alpha', 0) end
-    for _, phase4 in ipairs(hazeBGAssets['phase4']) do setProperty(phase4.name..'.alpha', 0) end
-    for _, phase5 in ipairs(hazeBGAssets['phase5']) do setProperty(phase5.name..'.alpha', 0) end
+    for _, phase1 in ipairs(hazeBGAssets['phase1']) do setProperty(phase1.name..'.visible', true) end
+    for _, phase2 in ipairs(hazeBGAssets['phase2']) do setProperty(phase2.name..'.visible', false) end
+    for _, phase3 in ipairs(hazeBGAssets['phase3']) do setProperty(phase3.name..'.visible', false) end
+    for _, phase4 in ipairs(hazeBGAssets['phase4']) do setProperty(phase4.name..'.visible', false) end
+    for _, phase5 in ipairs(hazeBGAssets['phase5']) do setProperty(phase5.name..'.visible', false) end
 
-    for _, atlas in ipairs(hazeBGAssets['atlases']) do setProperty(atlas.name..'.alpha', 0) end
+    for _, atlas in ipairs(hazeBGAssets['atlases']) do setProperty(atlas.name..'.visible', false) end
     --THAT bf anim
     makeAnimatedLuaSprite('bfTransition', 'characters/atlas', 210, -10)
     addAnimationByIndices('bfTransition', 'idle', 'atlas instancia 1', {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 24, true)
@@ -138,7 +134,6 @@ function onCreatePost()
     addLuaSprite('missingPoster')
 
     --Other Stuff
-
     setProperty('dad.visible', false)
     setObjectOrder('clouds3', getObjectOrder('dadGroup') + 1)
     setObjectOrder('ground', getObjectOrder('boyfriendGroup'))
@@ -157,27 +152,27 @@ end
 local stageMode = {
     ['1'] = function () --Phase 1 (This one just in case).
 
-        for _, phase1 in ipairs(spriteGroups.phase1) do setProperty(phase1..'.alpha', 1) end
-        for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.alpha', 0) end
-        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.alpha', 0) end
-        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.alpha', 0) end
-        for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.alpha', 0) end
+        for _, phase1 in ipairs(spriteGroups.phase1) do setProperty(phase1..'.visible', true) end
+        for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.visible', false) end
+        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.visible', false) end
+        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.visible', false) end
+        for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.visible', false) end
 
         triggerEvent('Change Character', 'bf', 'bf-red')
 
-        for _, hudStuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(hudStuff..'.alpha', 0) end
+        for _, hudStuff in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(hudStuff..'.visible', false) end
     end,
     ['2'] = function () -- Phase 2
         for i = 0, getProperty('notes.length') - 1 do setPropertyFromGroup('notes', i, 'texture', "noteSkins/NOTE_assets") end
         for i = 0, getProperty('unspawnNotes.length') - 1 do setPropertyFromGroup('unspawnNotes', i, 'texture', "noteSkins/NOTE_assets") end
         for i = 0, 7 do setProperty('strumLineNotes.members['..i..'].texture', 'noteSkins/NOTE_assets') end
         cancelTween('BlackGraphicGameOP') setProperty('BlackGraphicGame.alpha', 0)
-        for _, phase1 in ipairs(spriteGroups.phase1) do setProperty(phase1..'.alpha', 0) end
+        for _, phase1 in ipairs(spriteGroups.phase1) do setProperty(phase1..'.visible', false) end
         for _, phase1 in ipairs(spriteGroups.phase1) do    removeLuaSprite(phase1, true) end
-        for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.alpha', 1) end
-        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.alpha', 0) end
-        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.alpha', 0) end
-        for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.alpha', 0) end
+        for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.visible', true) end
+        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.visible', false) end
+        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.visible', false) end
+        for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.visible', false) end
 
         triggerEvent('Set customCamera Position', 'bf', '600, 130')
         triggerEvent('Change Character', 'bf', 'bf')
@@ -186,11 +181,11 @@ local stageMode = {
         setProperty('dad.visible', true)
     end,
     ['3'] = function () --Phase 3
-        for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.alpha', 0) end
+        for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.visible', false) end
         for _, phase2 in ipairs(spriteGroups.phase2) do    removeLuaSprite(phase2, true) end
-        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.alpha', 1) end
-        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.alpha', 0) end
-        for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.alpha', 0) end
+        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.visible', true) end
+        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.visible', false) end
+        for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.visible', false) end
 
         setProperty('dad.y', getProperty('dad.y') - 30)
 
@@ -198,18 +193,18 @@ local stageMode = {
         triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.4')
     end,
     ['4'] = function ()
-        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.alpha', 0) end
+        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.visible', false) end
         for _, phase3 in ipairs(spriteGroups.phase3) do    removeLuaSprite(phase3, true) end
-        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.alpha', 1) end
-        for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.alpha', 0) end
+        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.visible', true) end
+        for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.visible', false) end
 
         triggerEvent('Set customCamera Position', 'middle', '420, -250')
         triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.35')
     end,
     ['5'] = function () -- Phase 4
-        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.alpha', 0) end
+        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.visible', false) end
         for _, phase4 in ipairs(spriteGroups.phase4) do    removeLuaSprite(phase4, true) end
-        for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.alpha', 1) end
+        for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.visible', true) end
 
         triggerEvent('Change Character', 'dad', 'griatos 2')
         triggerEvent('Change Character',  'bf',       'bf2')
@@ -217,7 +212,10 @@ local stageMode = {
         callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 120, getProperty('boyfriend.y') + 730})
         callMethod('dad.setPosition', {getProperty('dad.x') + 2020, getProperty('dad.y') - 30})
 
-        for _, bois in ipairs({'thomas', 'kyle'}) do startTween(bois..'AlphaGhost', bois, {alpha = 0.7}, 0.4, {type = 'PINGPONG'}) end
+        --setProperty('thomas.alpha', 0) setProperty('kyle.alpha', 0)
+
+        runTimer('thomasGhost', math.random(3, 10))
+        runTimer('kyleGhost',   math.random(2, 10))
 
         triggerEvent('Set customCamera Position', 'bf',     '800, 550')
         triggerEvent('Set customCamera Position', 'dad',  '1100,   50')
@@ -225,6 +223,8 @@ local stageMode = {
         triggerEvent('Set Character Offset', 'bf',  '5')
         triggerEvent('Set Character Offset', 'dad', '5')
         triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.35')
+
+        setProperty('iconOpp.flipX', true)
     end
 }
 
@@ -363,11 +363,13 @@ function onUpdatePost(e)
     end
 
     for i, bois in ipairs({'thomas', 'kyle'}) do
-        setShaderFloat(bois, 'iTime', holdWave)
-        callMethod(bois..'.setPosition', {
-            getProperty(bois..'.x') + math.cos(holdWave + (i * math.random(-0.2, 0.2))) * 0.1,
-            getProperty(bois..'.y') + math.sin(holdWave + (i * math.random(-0.4, 0.7))) * 0.4
-        })
+        if luaSpriteExists(bois) then
+            setShaderFloat(bois, 'iTime', holdWave)
+            callMethod(bois..'.setPosition', {
+                getProperty(bois..'.x') + math.cos(holdWave + (i * math.random(-0.2, 0.2))) * 0.1,
+                getProperty(bois..'.y') + math.sin(holdWave + (i * math.random(-0.4, 0.7))) * 0.4
+            })
+        end
     end
 end
 
@@ -376,4 +378,14 @@ function onTweenCompleted(tag)
         setProperty('camZoomingMult',  1) setProperty('camZoomingDecay', 1)
     end
     if tag == '0Angle' then canAngleDance = true end
+    if tag == 'KyleGhost1'   then doTweenAlpha('KyleGhost2',     'kyle', 0, 0.4) runTimer('kyleGhost',   math.random(2, 10)) end
+    if tag == 'ThomasGhost1' then doTweenAlpha('ThomasGhost2', 'thomas', 0, 0.4) runTimer('thomasGhost', math.random(3, 10)) end
+end
+
+function onTimerCompleted(tag, loops, loopsLeft)
+    if tag == 'thomasGhost' then
+        doTweenAlpha('ThomasGhost1', 'thomas', math.random(0.1, 0.35), 0.7)
+    elseif tag == 'kyleGhost' then
+        doTweenAlpha('KyleGhost1', 'kyle', math.random(0.1, 0.3), 0.7)
+    end
 end

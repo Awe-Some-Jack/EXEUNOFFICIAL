@@ -1,6 +1,6 @@
 local uhOhBG = {
     {name =     'bg', path =       'grieving/uh-oh/new/sky',        x = -1150, y = -1600,                                                                            scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
-    {name =    'ola', path = 'grieving/uh-oh/new/sebasolas',        x =   190, y =  -151, animName = 'idle', animPrefix = 'olas instancia 1', fps = 24, loop = true, scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
+    {name =    'ola', path = 'grieving/uh-oh/new/sebasolas',        x =   190, y =  -140, animName = 'idle', animPrefix = 'olas instancia 1', fps = 24, loop = true, scrollX = 0.3, scrollY = 0.3, front = false, lowQualityHide = true},
     {name = 'trees3', path =    'grieving/uh-oh/new/trees3',        x = -1500, y =  -600,                                                                            scrollX = 0.5, scrollY = 0.5, front = false, lowQualityHide = true},
     {name = 'trees2', path =    'grieving/uh-oh/new/trees2',        x = -1350, y = -1400,                                                                            scrollX = 0.7, scrollY = 0.7, front = false, lowQualityHide = true},
     {name =  'trees', path =     'grieving/uh-oh/new/trees',        x = -1400, y = -1400,                                                                            scrollX = 0.9, scrollY = 0.9, front = false, lowQualityHide = true},

@@ -1,103 +1,103 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"offsets": [274, 51],
 			"loop": false,
-			"offsets": [285, 53],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [77, 5],
 			"loop": false,
-			"offsets": [79, 7],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [30, 231],
 			"loop": false,
-			"offsets": [30, 240],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [-1, 10],
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
+			"offsets": [114, -108],
 			"loop": false,
-			"offsets": [117, -110],
+			"fps": 24,
 			"anim": "tooslow",
-			"fps": 24,
-			"name": "too slow",
-			"indices": []
+			"indices": [],
+			"name": "too slow"
 		},
 		{
+			"offsets": [-3, 5],
 			"loop": false,
-			"offsets": [-1, 10],
+			"fps": 24,
 			"anim": "getit",
-			"fps": 24,
-			"name": "entiendes",
-			"indices": []
+			"indices": [],
+			"name": "entiendes"
 		},
 		{
+			"offsets": [63, 79],
 			"loop": false,
-			"offsets": [60, 77],
+			"fps": 24,
 			"anim": "nomoregames",
-			"fps": 24,
-			"name": "nomore",
-			"indices": []
+			"indices": [],
+			"name": "nomore"
 		},
 		{
+			"offsets": [107, 94],
 			"loop": false,
-			"offsets": [113, 103],
+			"fps": 24,
 			"anim": "risa",
-			"fps": 24,
-			"name": "risa",
-			"indices": []
+			"indices": [],
+			"name": "risa"
 		},
 		{
+			"offsets": [260, 62],
 			"loop": false,
-			"offsets": [162, 80],
+			"fps": 24,
 			"anim": "lodijo",
-			"fps": 24,
-			"name": "yousoyel",
-			"indices": []
+			"indices": [],
+			"name": "yousoyel"
 		},
 		{
+			"offsets": [265, 134],
 			"loop": false,
-			"offsets": [260, 150],
-			"anim": "intro",
 			"fps": 24,
-			"name": "intro",
-			"indices": []
+			"anim": "intro",
+			"indices": [],
+			"name": "intro"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/Bratburst",
-	"position": [287, -10],
+	"position": [167, -60],
 	"healthicon": "icon-bratwurst",
 	"flip_x": false,
 	"healthbar_colors": [51, 73, 91],
 	"camera_position": [-210, 110],
 	"sing_duration": 8,
-	"scale": 1.2,
+	"scale": 1,
 	"_editor_isPlayer": false
 }

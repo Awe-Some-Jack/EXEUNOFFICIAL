@@ -3778,6 +3778,12 @@ class PlayState extends MusicBeatState
 			case 'expulsion':
 				if (curBeat >= 304) PauseSubState.miniSonicImage = 'expulsion-2';
 				if (curBeat >= 368) PauseSubState.miniSonicImage = 'expulsion-1';
+			case 'her-world':
+				if(curBeat >= 208) PauseSubState.miniSonicImage = 'her-world-2';
+				if(curBeat >= 208 && curBeat < 552) if(FlxG.random.bool(5)) PauseSubState.miniSonicImage = 'her-world-luther-look-how-small-he-is-how-cute-look-how-mini-awww-w-mini-luther-yeah-thanks-for-everything-mini-mini-luther-the-goat';
+				if(curBeat >= 552) PauseSubState.miniSonicImage = 'her-world-3';
+				if(curBeat >= 832) PauseSubState.miniSonicImage = 'her-world-4';
+				if(curBeat >= 1064) PauseSubState.miniSonicImage = 'her-world-5';
 		}
 
 		setOnScripts('curBeat', curBeat);

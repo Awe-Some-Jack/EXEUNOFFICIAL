@@ -1,74 +1,74 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle copia",
-			"indices": []
+			"indices": [],
+			"name": "idle copia"
 		},
 		{
-			"loop": false,
 			"offsets": [19, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left copia",
-			"indices": []
+			"indices": [],
+			"name": "left copia"
 		},
 		{
-			"loop": false,
 			"offsets": [-6, 1],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down copia",
-			"indices": []
+			"indices": [],
+			"name": "down copia"
 		},
 		{
-			"loop": false,
 			"offsets": [-5, 46],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up copia",
-			"indices": []
+			"indices": [],
+			"name": "up copia"
 		},
 		{
-			"loop": false,
 			"offsets": [-5, 2],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "right copia",
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right copia"
+		},
+		{
+			"loop": false,
+			"offsets": [141, 267],
+			"anim": "intro",
+			"fps": 24,
+			"name": "intro",
 			"indices": []
 		},
 		{
-			"offsets": [141, 267],
 			"loop": false,
-			"fps": 24,
-			"anim": "intro",
-			"indices": [],
-			"name": "intro"
-		},
-		{
 			"offsets": [19, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT-alt",
-			"indices": [],
-			"name": "altlefitas"
+			"fps": 24,
+			"name": "altlefitas",
+			"indices": []
 		},
 		{
-			"offsets": [-27, 92],
 			"loop": false,
-			"fps": 24,
+			"offsets": [-27, 92],
 			"anim": "glitch",
-			"indices": [],
-			"name": "glitch"
+			"fps": 24,
+			"name": "glitch",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/lutherherwolrd",
-	"position": [150, 280],
+	"position": [150, 300],
 	"healthicon": "luther",
 	"flip_x": false,
 	"healthbar_colors": [161, 161, 161],

@@ -161,10 +161,10 @@ class ParallaxState extends MusicBeatState
 			{
 				transitioning = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
-				var sonicY:Float = sonic.y;
+				var sonicBottom:Float = sonic.y + sonic.height;
 				sonic.animation.play('selected');
 				sonic.updateHitbox();
-				sonic.y = sonicY;
+				sonic.y = sonicBottom - sonic.height;
 
 				spikesbot.acceleration.x = -1000;
 				spikestop.acceleration.x = 1000;

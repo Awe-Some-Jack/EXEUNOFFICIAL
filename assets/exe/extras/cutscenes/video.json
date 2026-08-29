@@ -1,0 +1,109 @@
+{
+  "videos": [
+    {
+      "displayName": "Tooslow",
+      "name": "tooslow",
+      "path": "contents/STORY MODE/videos/tooslow.mp4"
+    },
+    {
+      "displayName": "Tripletrouble",
+      "name": "tripletrouble",
+      "path": "contents/STORY MODE/videos/tripletrouble.mp4"
+    },
+    {
+      "displayName": "What",
+      "name": "what",
+      "path": "contents/STORY MODE/videos/what.mp4"
+    },
+    {
+      "displayName": "Yrc",
+      "name": "YRC",
+      "path": "contents/STORY MODE/videos/YRC.mp4"
+    },
+    {
+      "displayName": "Soulless",
+      "name": "soulless",
+      "path": "contents/TAILS DOLL/videos/soulless.mp4"
+    },
+    {
+      "displayName": "Intro",
+      "name": "intro",
+      "path": "contents/COLDSTEEL/videos/intro.mp4"
+    },
+    {
+      "displayName": "Tails Cutscene",
+      "name": "Who is he",
+      "path": "contents/CRAZY TAILS/videos/Who is he.mp4"
+    },
+    {
+      "displayName": "Black Sun",
+      "name": "Black Sun Transition",
+      "path": "contents/EXE/videos/Black Sun Transition.mp4"
+    },
+    {
+      "displayName": "GodSpeed",
+      "name": "good speed",
+      "path": "contents/EXE/videos/good speed.mp4"
+    },
+    {
+      "displayName": "Ugly Sonic",
+      "name": "SONIC FEO",
+      "path": "contents/MOVIE/videos/SONIC FEO.mp4"
+    },
+    {
+      "displayName": "Fakebaby",
+      "name": "fakebaby",
+      "path": "contents/NMI/videos/fakebaby.mp4"
+    },
+    {
+      "displayName": "Fakebaby End",
+      "name": "fakebabyfinal",
+      "path": "contents/NMI/videos/fakebabyfinal.mp4"
+    },
+    {
+      "displayName": "BF Fetus",
+      "name": "gameover",
+      "path": "contents/OMW/videos/gameover.mp4"
+    },
+    {
+      "displayName": "OMW Intro",
+      "name": "omwintro",
+      "path": "contents/OMW/videos/omwintro.mp4"
+    },
+    {
+      "displayName": "Requital",
+      "name": "anim",
+      "path": "contents/REQUITAL/videos/anim.mp4"
+    },
+    {
+      "displayName": "Jumpscare",
+      "name": "scream",
+      "path": "contents/REQUITAL/videos/scream.mp4"
+    },
+    {
+      "displayName": "Get Eaten",
+      "name": "death",
+      "path": "contents/STARVED/videos/death.mp4"
+    },
+    {
+      "displayName": "Starved",
+      "name": "loop",
+      "path": "contents/STARVED/videos/loop.mp4"
+    },
+    {
+      "displayName": "Eye For Eye",
+      "name": "EYE FOR EYE",
+      "path": "contents/STORY MODE/videos/EYE FOR EYE.mp4"
+    },
+    {
+      "displayName": "Eye To Eye Intro",
+      "name": "EYE_TO_EYE intro",
+      "path": "contents/STORY MODE/videos/EYE_TO_EYE intro.mp4"
+    },
+    {
+      "displayName": "Fake Intro",
+      "name": "fake intro",
+      "path": "contents/STORY MODE/videos/fake intro.mp4"
+    }
+  ]
+}

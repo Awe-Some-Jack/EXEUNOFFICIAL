@@ -14,6 +14,7 @@ import openfl.display.BitmapData;
 import openfl.geom.Rectangle;
 import sys.FileSystem;
 import sys.io.File;
+import backend.InputFormatter;
 
 class DAGSongs extends MusicBeatSubstate
 {
@@ -126,10 +127,8 @@ class DAGSongs extends MusicBeatSubstate
     {
         final targetY  = 116.0 + selectedIndex * 120.0;
         final visibleH = FlxG.height - 116.0 - 120.0;
-        if (targetY - scrollTarget < 0)
-            scrollTarget = targetY;
-        else if (targetY - scrollTarget > visibleH - 120.0)
-            scrollTarget = targetY - visibleH + 120.0;
+        final desiredCenterY = FlxG.height / 2.0 - 60.0;
+        scrollTarget = targetY - desiredCenterY;
         scrollTarget = FlxMath.bound(scrollTarget, 0, Math.max(0.0, (songList.length - 1) * 120.0 - visibleH));
     }
 
@@ -359,36 +358,6 @@ class DAGPlayer extends FlxGroup
         #if !mobile lime.app.Application.current.window.title = origTitle; #end
     }
 
-    public function detach():{inst:FlxSound, vocals:Array<FlxSound>, instSound:openfl.media.Sound, vocalSounds:Array<openfl.media.Sound>, song:String, mod:String, wasPlaying:Bool}
-    {
-        final result = {inst: inst, vocals: vocals, instSound: instSound, vocalSounds: vocalSounds, song: loadedSong, mod: loadedMod, wasPlaying: isPlaying};
-        inst        = null;
-        vocals      = [];
-        oppVocals   = [];
-        instSound   = null;
-        vocalSounds = [];
-        isPlaying  = false;
-        loadedSong = '';
-        loadedMod  = '';
-        return result;
-    }
-
-    public function reclaim(snd:FlxSound, vocs:Array<FlxSound>, sndSound:openfl.media.Sound, vocSounds:Array<openfl.media.Sound>, mod:String, wasPlaying:Bool):Void
-    {
-        inst        = snd;
-        vocals      = vocs != null ? vocs : [];
-        instSound   = sndSound;
-        vocalSounds = vocSounds != null ? vocSounds : [];
-        loadedMod  = mod;
-        isPlaying  = wasPlaying;
-        fadeTarget = 1.0;
-        fadeSpeed  = 0;
-        if (inst != null) inst.volume = 1.0;
-        applyVocalVol(1.0);
-        pitchCurrent = 1.0;
-        applyPitch(1.0);
-    }
-
     public function setSongInfo(song:String, creds:Array<String>):Void
     {
         loadedSong = song;
@@ -545,7 +514,7 @@ class DAGPlayer extends FlxGroup
         barKnob.alpha  = 0;
         add(barKnob);
 
-        timeTxt = new FlxText(765, 662, Std.int(bW), '0:00', 44);
+        timeTxt = new FlxText(765, 652, Std.int(bW), '0:00', 44);
         timeTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 44, FlxColor.BLACK, CENTER);
         timeTxt.scale.set(0.5, 0.5);
         timeTxt.updateHitbox();
@@ -945,38 +914,6 @@ class DAGarden extends SonicSubState
     public static var currentSong:String    = '';
     public static var currentSongMod:String = '';
 
-    static var persistedInst:FlxSound          = null;
-    static var persistedVocals:Array<FlxSound> = [];
-    static var persistedInstSound:openfl.media.Sound          = null;
-    static var persistedVocalSounds:Array<openfl.media.Sound> = [];
-    static var persistedMod:String             = '';
-    static var persistedWasPlaying:Bool        = false;
-
-    public static function stopPersisted():Void
-    {
-        if (persistedInst != null)
-        {
-            persistedInst.stop();
-            FlxG.sound.list.remove(persistedInst, true);
-            persistedInst.destroy();
-        }
-        for (v in persistedVocals) if (v != null)
-        {
-            v.stop();
-            FlxG.sound.list.remove(v, true);
-            v.destroy();
-        }
-        persistedInstSound?.close();
-        for (s in persistedVocalSounds) s?.close();
-        persistedInst        = null;
-        persistedVocals      = [];
-        persistedInstSound   = null;
-        persistedVocalSounds = [];
-        persistedMod        = '';
-        persistedWasPlaying = false;
-        currentSong    = '';
-        currentSongMod = '';
-    }
 
     var checkers:FlxBackdrop;
     var decors:Array<FlxSprite> = [];
@@ -986,6 +923,25 @@ class DAGarden extends SonicSubState
     var rotTime:Float = 0.0;
     var songs:DAGSongs;
     var player:DAGPlayer;
+    var ambientMusic:FlxSound;
+
+    var drawerOpen:Bool = false;
+    var drawerGroup:flixel.group.FlxSpriteGroup;
+    var drawerBtnTxt:Array<FlxText> = [];
+    var drawerBtnAction:Array<Void->Void> = [];
+    var drawerBtnKey:Array<String> = [];
+    var drawerKeycapBg:Array<FlxSprite> = [];
+    var drawerKeycapTxt:Array<FlxText> = [];
+    var _keycapInkOffsetX:Array<Float> = [];
+    var _keycapInkOffsetY:Array<Float> = [];
+    var drawerRowsAlpha:Float = 0.0;
+    var drawerBorder:FlxSprite;
+    var drawerBg:FlxSprite;
+    var drawerTabBorder:FlxSprite;
+    var drawerTabBg:FlxSprite;
+    var drawerTabTxt:FlxText;
+    var drawerW:Float = 118.0;
+    var drawerH:Float = 184.0;
 
     override public function create():Void
     {
@@ -1011,26 +967,161 @@ class DAGarden extends SonicSubState
         player = new DAGPlayer();
         add(player);
 
-        if (persistedInst != null)
-        {
-            final idx = songs.songList.indexOf(currentSong);
-            if (idx >= 0) songs.selectIndex(idx);
-            player.setSongInfo(currentSong, songs.selectedCredits());
-            player.reclaim(persistedInst, persistedVocals, persistedInstSound, persistedVocalSounds, persistedMod, persistedWasPlaying);
-            persistedInst        = null;
-            persistedVocals      = [];
-            persistedInstSound   = null;
-            persistedVocalSounds = [];
-        }
-        else
-        {
-            FlxG.sound.music?.pause();
-            if (songs.songList.length > 0)
-                songs.selectSong(0);
-        }
+        FlxG.sound.music?.pause();
+        if (songs.songList.length > 0)
+            songs.selectSong(0);
+
+        ambientMusic = FlxG.sound.load(OpenFlAssets.getSound('assets/exe/extras/music/ChaoGarden.ogg'), 1.0, true);
+
+        buildDrawer();
+
+        final panelRingW = 596.0 + 4 * 2;
+        final panelRingH = 592.0 + 4 * 2;
+        final panelRing = new FlxSprite(602.0 - 4, 97.0 - 4);
+        panelRing.makeGraphic(Std.int(panelRingW), Std.int(panelRingH), FlxColor.TRANSPARENT, true);
+        final ringShader = new shaders.RoundedBorderShader(18.0, 4.0, 0xFF000000, 15);
+        ringShader.setSize(panelRingW, panelRingH);
+        panelRing.shader = ringShader;
+        add(panelRing);
 
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", null); #end
         super.create();
+    }
+
+    function buildDrawer():Void
+    {
+        drawerGroup = new flixel.group.FlxSpriteGroup(485.0, 402.0);
+        add(drawerGroup);
+
+        final b = 4;
+        drawerBorder = new FlxSprite(-b, -b);
+        drawerGroup.add(drawerBorder);
+
+        drawerBg = new FlxSprite(0, 0);
+        drawerGroup.add(drawerBg);
+
+        drawerTabBorder = new FlxSprite(0, 0);
+        drawerGroup.add(drawerTabBorder);
+
+        drawerTabBg = new FlxSprite(0, 0);
+        drawerGroup.add(drawerTabBg);
+
+        drawerTabTxt = new FlxText(0, 0, 0, 'MENU', 32);
+        drawerTabTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 32, FlxColor.BLACK, CENTER);
+        drawerTabTxt.scale.set(0.6, 0.6);
+        drawerTabTxt.updateHitbox();
+        drawerTabTxt.antialiasing = ClientPrefs.data.antialiasing;
+        drawerGroup.add(drawerTabTxt);
+
+        _redrawDrawerBg();
+
+        final rows = [
+            {key: 'dagarden_play',    action: () -> { if (player.isPlaying) player.pause(); else player.playAudio(songs.selectedSong(), songs.selectedMod()); }},
+            {key: 'dagarden_loop',    action: () -> player.toggleLoop()},
+            {key: 'dagarden_vocals',  action: () -> player.toggleVocals()},
+            {key: 'dagarden_rewind',  action: () -> player.seek(-DAGPlayer.SEEK_SECONDS)},
+            {key: 'dagarden_forward', action: () -> player.seek(DAGPlayer.SEEK_SECONDS)},
+            {key: 'dagarden_stop',    action: () -> player.fadeOutAndStop()}
+        ];
+
+        for (i in 0...rows.length)
+        {
+            drawerBtnKey.push(rows[i].key);
+            drawerBtnAction.push(rows[i].action);
+
+            final rowY = 5 + i * 29.0;
+
+            final cap = new FlxSprite(8.0, rowY);
+            cap.makeGraphic(Std.int(22.0), Std.int(22.0), FlxColor.BLACK);
+            final capShader = new shaders.RoundedBorderShader(5.0, 0.0, 0xFF000000);
+            capShader.setSize(22.0, 22.0);
+            cap.shader = capShader;
+            drawerGroup.add(cap);
+            drawerKeycapBg.push(cap);
+
+            final capTxt = new FlxText(0, 0, 0, '', 20);
+            capTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 20, FlxColor.WHITE, CENTER);
+            capTxt.scale.set(0.5, 0.5);
+            capTxt.updateHitbox();
+            capTxt.antialiasing = ClientPrefs.data.antialiasing;
+            drawerGroup.add(capTxt);
+            drawerKeycapTxt.push(capTxt);
+            _keycapInkOffsetX.push(0.0);
+            _keycapInkOffsetY.push(0.0);
+
+            final lbl = new FlxText(8.0 + 22.0 + 8.0, rowY, 0, '', 20);
+            lbl.setFormat(Paths.font('NiseSegaSonic.TTF'), 20, FlxColor.BLACK, LEFT);
+            lbl.wordWrap = false;
+            lbl.scale.set(0.5, 0.5);
+            lbl.updateHitbox();
+            lbl.antialiasing = ClientPrefs.data.antialiasing;
+            drawerGroup.add(lbl);
+            drawerBtnTxt.push(lbl);
+        }
+    }
+
+    function _redrawDrawerBg():Void
+    {
+        final b  = 4;
+        final bw = drawerW + b; 
+        final bh = drawerH + b * 2;
+
+        drawerBorder.makeGraphic(Std.int(bw), Std.int(bh), FlxColor.BLACK);
+        final borderShader = new shaders.RoundedBorderShader(10.0, 0.0, 0xFF000000, 9);
+        borderShader.setSize(bw, bh);
+        drawerBorder.shader = borderShader;
+
+        final gshape = new openfl.display.Shape();
+        final mat = new openfl.geom.Matrix();
+        mat.createGradientBox(drawerW, drawerH, Math.PI * 0.5);
+        gshape.graphics.beginGradientFill(openfl.display.GradientType.LINEAR, [0xFFFFFF, 0xB2B1B1], [1, 1], [0, 255], mat);
+        gshape.graphics.drawRect(0, 0, drawerW, drawerH);
+        gshape.graphics.endFill();
+        final bmd = new BitmapData(Std.int(drawerW), Std.int(drawerH), false, 0xFFFFFFFF);
+        bmd.draw(gshape);
+        drawerBg.loadGraphic(bmd);
+        final bgShader = new shaders.RoundedBorderShader(8.0, 0.0, 0xFF000000, 9);
+        bgShader.setSize(drawerW, drawerH);
+        drawerBg.shader = bgShader;
+
+        _redrawDrawerTab();
+    }
+
+    function _redrawDrawerTab():Void
+    {
+        final b    = 4;
+        final tabW = 44.0 + 2.0;
+        final tw   = tabW + b; 
+        final th   = drawerH + b * 2;
+        final tabLocalX = drawerW - 2.0;
+
+        drawerTabBorder.makeGraphic(Std.int(tw), Std.int(th), FlxColor.BLACK);
+        drawerTabBorder.x = drawerGroup.x + tabLocalX;
+        drawerTabBorder.y = drawerGroup.y - b;
+        final tabBorderShader = new shaders.RoundedBorderShader(10.0, 0.0, 0xFF000000, 6);
+        tabBorderShader.setSize(tw, th);
+        drawerTabBorder.shader = tabBorderShader;
+
+        final gshape = new openfl.display.Shape();
+        final mat = new openfl.geom.Matrix();
+        mat.createGradientBox(tabW, drawerH, Math.PI * 0.5);
+        gshape.graphics.beginGradientFill(openfl.display.GradientType.LINEAR, [0xFFFFFF, 0xB2B1B1], [1, 1], [0, 255], mat);
+        gshape.graphics.drawRect(0, 0, tabW, drawerH);
+        gshape.graphics.endFill();
+        final bmd = new BitmapData(Std.int(tabW), Std.int(drawerH), false, 0xFFFFFFFF);
+        bmd.draw(gshape);
+        drawerTabBg.loadGraphic(bmd);
+        drawerTabBg.x = drawerGroup.x + tabLocalX;
+        drawerTabBg.y = drawerGroup.y;
+        final tabBgShader = new shaders.RoundedBorderShader(8.0, 0.0, 0xFF000000, 6);
+        tabBgShader.setSize(tabW, drawerH);
+        drawerTabBg.shader = tabBgShader;
+
+        drawerTabTxt.angle = 90;
+        final tabCenterX = drawerGroup.x + tabLocalX + 2.0 + 44.0 / 2;
+        final tabCenterY = drawerGroup.y + drawerH / 2;
+        drawerTabTxt.x = tabCenterX - drawerTabTxt.width  / 2;
+        drawerTabTxt.y = tabCenterY - drawerTabTxt.height / 2;
     }
 
     override public function update(elapsed:Float):Void
@@ -1045,12 +1136,119 @@ class DAGarden extends SonicSubState
         currentSong    = player.isPlaying ? player.loadedSong : '';
         currentSongMod = player.isPlaying ? player.loadedMod  : '';
 
+        if (ambientMusic != null)
+        {
+            if (player.isPlaying) { if (ambientMusic.playing) ambientMusic.pause(); }
+            else                  { if (!ambientMusic.playing) ambientMusic.play();  }
+        }
+
+        updateDrawer();
         handleInput();
+    }
+
+    function updateDrawer():Void
+    {
+        _applyDrawerClip();
+
+        if (FlxG.keys.justPressed.TAB) toggleDrawer();
+
+        final mp = FlxG.mouse.getWorldPosition();
+        if (FlxG.mouse.justPressed && drawerTabBg.overlapsPoint(mp)) toggleDrawer();
+
+        if (drawerOpen)
+        {
+            final labels = [
+                player.isPlaying ? 'PAUSE' : 'PLAY',
+                'LOOP: '   + (player.loopEnabled   ? 'ON' : 'OFF'),
+                'VOCALS: ' + (player.vocalsEnabled ? 'ON' : 'OFF'),
+                'REWIND',
+                'FORWARD',
+                'STOP'
+            ];
+            for (i in 0...drawerBtnTxt.length)
+            {
+                if (drawerBtnTxt[i].text != labels[i])
+                {
+                    drawerBtnTxt[i].text = labels[i];
+                    drawerBtnTxt[i].updateHitbox();
+                }
+
+                final keys = ClientPrefs.keyBinds.get(drawerBtnKey[i]);
+                final keyName = (keys != null && keys.length > 0) ? InputFormatter.getKeyName(keys[0]) : '?';
+                final cap = drawerKeycapBg[i];
+                if (drawerKeycapTxt[i].text != keyName)
+                {
+                    drawerKeycapTxt[i].text = keyName;
+                    drawerKeycapTxt[i].scale.set(0.5, 0.5);
+                    drawerKeycapTxt[i].updateHitbox();
+                    drawerKeycapTxt[i].offset.set(0, 0);
+                    drawerKeycapTxt[i].origin.set(0, 0);
+
+                    final capW = Math.max(22.0, drawerKeycapTxt[i].width + 8);
+                    cap.makeGraphic(Std.int(capW), Std.int(22.0), FlxColor.BLACK);
+                    final capShader = new shaders.RoundedBorderShader(5.0, 0.0, 0xFF000000);
+                    capShader.setSize(capW, 22.0);
+                    cap.shader = capShader;
+
+                    drawerBtnTxt[i].x = cap.x + capW + 8.0;
+
+                    final ink = drawerKeycapTxt[i].pixels.getColorBoundsRect(0xFF000000, 0x00000000, false);
+                    final sx = drawerKeycapTxt[i].scale.x;
+                    final sy = drawerKeycapTxt[i].scale.y;
+                    _keycapInkOffsetX[i] = (ink.width  <= 0) ? 0.0 : (ink.x + ink.width  / 2) * sx;
+                    _keycapInkOffsetY[i] = (ink.width  <= 0) ? 0.0 : (ink.y + ink.height / 2) * sy;
+                }
+                drawerKeycapTxt[i].x = cap.x + cap.frameWidth / 2 - _keycapInkOffsetX[i];
+                drawerKeycapTxt[i].y = cap.y + 22.0 / 2     - _keycapInkOffsetY[i];
+
+                final clickable = (drawerBtnTxt[i].overlapsPoint(mp) || cap.overlapsPoint(mp)) && cap.x >= 602.0;
+                if (FlxG.mouse.justPressed && clickable) drawerBtnAction[i]();
+            }
+        }
+        mp.put();
+    }
+
+    function _applyDrawerClip():Void
+    {
+        _clipToBoundary(drawerBorder);
+        _clipToBoundary(drawerBg);
+
+        final fadeRange = 24.0;
+        drawerRowsAlpha = FlxMath.bound((drawerBg.x - 602.0 + fadeRange) / fadeRange, 0, 1);
+        for (t in drawerBtnTxt)    t.alpha = drawerRowsAlpha;
+        for (k in drawerKeycapBg)  k.alpha = drawerRowsAlpha;
+        for (k in drawerKeycapTxt) k.alpha = drawerRowsAlpha;
+    }
+
+    function _clipToBoundary(spr:FlxSprite):Void
+    {
+        final localX = 602.0 - spr.x;
+        if (localX <= 0)
+            spr.clipRect = null; // show all of it
+        else if (localX >= spr.frameWidth)
+            spr.clipRect = new flixel.math.FlxRect(0, 0, 0, spr.frameHeight); // then hide all of it
+        else
+            spr.clipRect = new flixel.math.FlxRect(localX, 0, spr.frameWidth - localX, spr.frameHeight);
+    }
+
+    function toggleDrawer():Void
+    {
+        drawerOpen = !drawerOpen;
+        FlxTween.cancelTweensOf(drawerGroup);
+        final targetX = drawerOpen ? 604.0 : 485.0;
+        FlxTween.tween(drawerGroup, {x: targetX}, 0.3, {ease: drawerOpen ? FlxEase.expoOut : FlxEase.expoIn});
     }
 
     override public function destroy():Void
     {
         FlxG.autoPause = true;
+        if (ambientMusic != null)
+        {
+            ambientMusic.stop();
+            FlxG.sound.list.remove(ambientMusic, true);
+            ambientMusic.destroy();
+            ambientMusic = null;
+        }
         super.destroy();
     }
 
@@ -1155,25 +1353,10 @@ class DAGarden extends SonicSubState
         if (controls.BACK)
         {
             player.restoreWindowTitle();
-            if (player.isPlaying)
-            {
-                final d = player.detach();
-                persistedInst        = d.inst;
-                persistedVocals      = d.vocals;
-                persistedInstSound   = d.instSound;
-                persistedVocalSounds = d.vocalSounds;
-                persistedMod        = d.mod;
-                persistedWasPlaying = d.wasPlaying;
-                currentSong    = d.song;
-                currentSongMod = d.mod;
-            }
-            else
-            {
-                player.stop();
-                FlxG.sound.music?.resume();
-                currentSong    = '';
-                currentSongMod = '';
-            }
+            player.stop();
+            FlxG.sound.music?.resume();
+            currentSong    = '';
+            currentSongMod = '';
             close();
         }
     }

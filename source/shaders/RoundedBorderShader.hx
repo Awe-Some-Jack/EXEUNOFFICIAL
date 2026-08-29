@@ -9,9 +9,16 @@ class RoundedBorderShader extends FlxShader
         uniform float uBorderWidth;
         uniform vec4 uBorderColor;
         uniform vec2 uSize;
-
-        float roundedBox(vec2 p, vec2 b, float r)
+        uniform vec4 uCorners; 
+        float roundedBox(vec2 p, vec2 b, vec4 corners, float radius)
         {
+            float r;
+            if (p.x < 0.0)
+                r = (p.y < 0.0) ? corners.x : corners.w; 
+            else
+                r = (p.y < 0.0) ? corners.y : corners.z;
+            r *= radius;
+
             vec2 q = abs(p) - b + r;
             return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
         }
@@ -22,21 +29,28 @@ class RoundedBorderShader extends FlxShader
 
         void main()
         {
-            vec2 uv      = openfl_TextureCoordv;
-            vec4 col     = flixel_texture2D(bitmap, uv);
+            vec2 uv = openfl_TextureCoordv;
 
             vec2 pixelPos = (uv - 0.5) * uSize;
             vec2 boxHalf  = uSize * 0.5;
 
-            float d = roundedBox(pixelPos, boxHalf, uRadius);
+            float d = roundedBox(pixelPos, boxHalf, uCorners, uRadius);
 
-            if (d > 0.0) discard;
-
-            gl_FragColor = col;
+            if (uBorderWidth > 0.0)
+            {
+                if (d > 0.0 || d < -uBorderWidth) discard;
+                gl_FragColor = uBorderColor;
+            }
+            else
+            {
+                vec4 col = flixel_texture2D(bitmap, uv);
+                if (d > 0.0) discard;
+                gl_FragColor = col;
+            }
         }
     ')
 
-    public function new(radius:Float = 8.0, borderWidth:Float = 3.0, borderColor:Int = 0xFF5C0010)
+    public function new(radius:Float = 8.0, borderWidth:Float = 3.0, borderColor:Int = 0xFF5C0010, corners:Int = 15)
     {
         super();
         this.uRadius.value      = [radius];
@@ -47,6 +61,12 @@ class RoundedBorderShader extends FlxShader
         final ca = ((borderColor >> 24) & 0xFF) / 255.0;
         this.uBorderColor.value = [cr, cg, cb, ca];
         this.uSize.value        = [100.0, 56.0];
+        this.uCorners.value     = [
+            (corners & 1) != 0 ? 1.0 : 0.0,
+            (corners & 2) != 0 ? 1.0 : 0.0,
+            (corners & 4) != 0 ? 1.0 : 0.0,
+            (corners & 8) != 0 ? 1.0 : 0.0
+        ];
     }
 
     public function setSize(w:Float, h:Float):Void

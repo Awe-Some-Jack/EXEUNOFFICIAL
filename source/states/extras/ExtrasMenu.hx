@@ -12,6 +12,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import openfl.display.BitmapData;
 
 import states.EXEMenu;
+import shaders.ErrorHandledShader.ErrorHandledRuntimeShader;
 
 import hxvlc.flixel.FlxVideoSprite;
 
@@ -60,6 +61,8 @@ class OrbitSprite extends FlxSprite
 class ExtrasMenu extends MusicBeatState
 {
     static final MENU_KEYS = [
+        "extras.menu.gallery",
+        "extras.menu.characterbios",
         "extras.menu.dagarden",
         "extras.menu.cutscenes",
         "extras.menu.achievements",
@@ -86,14 +89,18 @@ class ExtrasMenu extends MusicBeatState
     var nowPlayingSong:FlxText;
     var extrasLogo:FlxSprite;
 
-    var luis:OrbitSprite;
-    var lordX:OrbitSprite;
-
     var baseScale:Float = 1.;
     var ssGrp:FlxTypedGroup<CardSprite>;
     var ssBoxGrp:FlxTypedGroup<FlxSprite>;
-    
+    var videoTargetScale:Array<Float> = [];
+    var videoBaseAngle:Array<Float> = [];
+
     var globalTime:Float = 0.0;
+
+    var checkerSprite:FlxSprite;
+    var checkShader:ErrorHandledRuntimeShader;
+    var checkerSpriteRight:FlxSprite;
+    var checkShaderRight:ErrorHandledRuntimeShader;
 
     override function create():Void
     {
@@ -111,7 +118,7 @@ class ExtrasMenu extends MusicBeatState
 
         FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/ExtrasMenu.ogg'));
 
-        np = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
+        np = new FlxText(149, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
         np.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
         np.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         np.scale.set(0.22, 0.22);
@@ -120,7 +127,7 @@ class ExtrasMenu extends MusicBeatState
         add(np);
 
         final daName = states.extras.dagarden.DAGarden.currentSong;
-        nowPlayingSong = new FlxText(169, np.y + np.height + 6, -1, daName != '' ? daName.toUpperCase() : 'EXTRAS MENU', 60);
+        nowPlayingSong = new FlxText(149, np.y + np.height + 6, -1, daName != '' ? daName.toUpperCase() : 'EXTRAS MENU', 60);
         nowPlayingSong.setFormat(Paths.font("bigass.otf"), 70, FlxColor.BLACK, LEFT);
         nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlayingSong.scale.set(0.22, 0.22);
@@ -163,8 +170,14 @@ class ExtrasMenu extends MusicBeatState
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
-        
+
         globalTime += elapsed;
+
+        if (checkShader != null)
+            checkShader.setFloat('uTime', checkShader.getFloat('uTime') + elapsed);
+
+        if (checkShaderRight != null)
+            checkShaderRight.setFloat('uTime', checkShaderRight.getFloat('uTime') + elapsed);
 
         if (ssGrp != null)
         {
@@ -206,7 +219,6 @@ class ExtrasMenu extends MusicBeatState
             canMove = false;
             FlxG.sound.music?.fadeOut(0.3);
 
-            states.extras.dagarden.DAGarden.stopPersisted();
             FlxG.switchState(() -> new EXEMenu());
         }
 
@@ -232,7 +244,15 @@ class ExtrasMenu extends MusicBeatState
         }
     }
 
-    // finally
+    static final VIDEO_LAYOUT:Array<{x:Float, y:Float, scale:Float, angle:Float, alpha:Float}> = [
+        {x: 733,  y: 43,  scale: 0.81, angle: 17.7,  alpha: 0.69},
+        {x: 1016, y: 55,  scale: 0.83, angle: -12.5, alpha: 0.61},
+        {x: 647,  y: 256, scale: 0.77, angle: 0,     alpha: 0.54},
+        {x: 759,  y: 466, scale: 0.85, angle: -21.1, alpha: 0.60},
+        {x: 977,  y: 329, scale: 0.91, angle: 17.7,  alpha: 0.69},
+        {x: 794,  y: 218, scale: 0.85, angle: -8.2,  alpha: 0.83},
+    ];
+
     function buildVideos():Void
     {
         ssGrp = new FlxTypedGroup<CardSprite>();
@@ -240,6 +260,8 @@ class ExtrasMenu extends MusicBeatState
 
         ssBoxGrp = new FlxTypedGroup<FlxSprite>();
         add(ssBoxGrp);
+        videoTargetScale = [];
+        videoBaseAngle = [];
 
         final baseImages:Array<Int> = [1, 2, 3, 4, 5];
         FlxG.random.shuffle(baseImages);
@@ -253,40 +275,26 @@ class ExtrasMenu extends MusicBeatState
         for (i in 0...6)
         {
             final spr = new CardSprite();
-            
+
             final videoName:String = Std.string(imageList[i]);
-            spr.loadVideoCard(Paths.video('extrasMenu/$videoName')); 
+            spr.loadVideoCard(Paths.video('extrasMenu/$videoName'));
 
-            var rightEdge = FlxG.width - 300;
-            switch (i) {
-                case 0:
-                    spr.finalX = rightEdge - 200;
-                    spr.finalY = 20;
-                case 1:
-                    spr.finalX = rightEdge - 20;
-                    spr.finalY = 120;
-                case 2:
-                    spr.finalX = rightEdge - 250;
-                    spr.finalY = 220;
-                case 3:
-                    spr.finalX = rightEdge - 60;
-                    spr.finalY = 320;
-                case 4:
-                    spr.finalX = rightEdge - 180;
-                    spr.finalY = 420;
-                case 5:
-                    spr.finalX = rightEdge;
-                    spr.finalY = 510;
-            }
+            final layout = VIDEO_LAYOUT[i];
+            spr.finalX = layout.x;
+            spr.finalY = layout.y;
+            spr.angle = layout.angle;
+            spr.targetAlpha = layout.alpha;
+            videoTargetScale.push(layout.scale);
+            videoBaseAngle.push(layout.angle);
 
-            baseScale = spr.scale.x;
+            baseScale = layout.scale;
 
             spr.blend = ALPHA;
             spr.ID = i;
-            // spr.color = 0xFFBB102F;
 
             spr.x = spr.finalX;
             spr.y = spr.finalY;
+            spr.scale.set(layout.scale, layout.scale);
             spr.alpha = spr.targetAlpha;
             spr.introDone = true;
 
@@ -298,15 +306,17 @@ class ExtrasMenu extends MusicBeatState
     {
         final spr = ssGrp.members[idx];
         if (spr == null || !spr.introDone) return;
+        final driftX = Math.sin(globalTime * 0.9 + idx * 1.3) * 22;
+        final driftY = Math.cos(globalTime * 0.75 + idx * 0.9) * 18;
+        spr.x = spr.finalX + driftX;
+        spr.y = spr.finalY + driftY;
 
-        final linearDrift = Math.sin(globalTime * 0.8 + idx * 0.5) * 50;
-        spr.x = spr.finalX + linearDrift;
-        spr.y = spr.finalY + linearDrift * 0.5;
+        if (idx < videoBaseAngle.length)
+            spr.angle = videoBaseAngle[idx] + Math.sin(globalTime * 0.8 + idx * 1.1) * 5;
 
-        final rotDirection = (idx % 2 == 0) ? 1 : -1;
-        spr.angle += rotDirection * (8 + idx * 2.0) * elapsed;
-
-        spr.alpha = spr.targetAlpha + Math.sin(globalTime * 1.5 + idx) * 0.1;
+        spr.alpha = spr.targetAlpha;
+        if (idx < videoTargetScale.length)
+            spr.scale.set(videoTargetScale[idx], videoTargetScale[idx]);
     }
 
     override function openSubState(subState:flixel.FlxSubState):Void
@@ -347,17 +357,6 @@ class ExtrasMenu extends MusicBeatState
         }
         add(new FlxSprite().loadGraphic(bmd));
 
-        final ts   = 40;
-        final cbmd = new openfl.display.BitmapData(ts * 2, ts * 2, true, 0x00000000);
-        cbmd.fillRect(new openfl.geom.Rectangle(0,  0,  ts, ts), 0xFF3d0008);
-        cbmd.fillRect(new openfl.geom.Rectangle(ts, 0,  ts, ts), 0xFF831826);
-        cbmd.fillRect(new openfl.geom.Rectangle(0,  ts, ts, ts), 0xFF831826);
-        cbmd.fillRect(new openfl.geom.Rectangle(ts, ts, ts, ts), 0xFF3d0008);
-        final ch = new FlxBackdrop(cbmd, XY, 0, 0);
-        ch.alpha      = 0.10;
-        ch.velocity.x = -60;
-        add(ch);
-
         final fadeBmd = new openfl.display.BitmapData(w, h, true, 0x00000000);
         for (x in 0...w)
         {
@@ -368,35 +367,58 @@ class ExtrasMenu extends MusicBeatState
             fadeBmd.fillRect(new openfl.geom.Rectangle(x, 0, 1, h), (a << 24) | (r << 16) | b);
         }
         add(new FlxSprite().loadGraphic(fadeBmd));
+
+        checkerSprite = new FlxSprite(0, 0);
+        checkerSprite.makeGraphic(w, h, FlxColor.TRANSPARENT);
+        checkerSprite.scrollFactor.set();
+        checkShader = new ErrorHandledRuntimeShader('extrasMenuChecker', '
+            #pragma header
+            uniform float uTime;
+            void main()
+            {
+                vec2 uv = openfl_TextureCoordv;
+                float tileSize = 40.0;
+                float tx = floor((uv.x * ${w}.0 - uTime * 60.0) / tileSize);
+                float ty = floor((uv.y * ${h}.0) / tileSize);
+                float check = mod(tx + ty, 2.0);
+                vec3 colorA = vec3(0.45, 0.08, 0.10);
+                float tileAlpha = mix(0.25, 0.0, check);
+                float fadeX = 1.0 - smoothstep(0.0, 0.45, uv.x);
+                float finalAlpha = tileAlpha * fadeX;
+                gl_FragColor = vec4(colorA * finalAlpha, finalAlpha);
+            }
+        ');
+        checkShader.setFloat('uTime', 0.0);
+        checkerSprite.shader = checkShader;
+        add(checkerSprite);
+        checkerSpriteRight = new FlxSprite(0, 0);
+        checkerSpriteRight.makeGraphic(w, h, FlxColor.TRANSPARENT);
+        checkerSpriteRight.scrollFactor.set();
+        checkShaderRight = new ErrorHandledRuntimeShader('extrasMenuCheckerRight', '
+            #pragma header
+            uniform float uTime;
+            void main()
+            {
+                vec2 uv = openfl_TextureCoordv;
+                float tileSize = 40.0;
+                float tx = floor((uv.x * ${w}.0 + uTime * 60.0) / tileSize);
+                float ty = floor((uv.y * ${h}.0) / tileSize);
+                float check = mod(tx + ty, 2.0);
+                vec3 colorA = vec3(0.45, 0.08, 0.10);
+                float tileAlpha = mix(0.5, 0.0, check);
+                float fadeX = 1.0 - smoothstep(0.0, 0.45, 1.0 - uv.x);
+                float finalAlpha = tileAlpha * fadeX;
+                gl_FragColor = vec4(colorA * finalAlpha, finalAlpha);
+            }
+        ');
+        checkShaderRight.setFloat('uTime', 0.0);
+        checkerSpriteRight.shader = checkShaderRight;
+        add(checkerSpriteRight);
     }
 
     function buildBox():Void
     {
-        luis = new OrbitSprite(0, 0, "assets/exe/extras/luis.webp");
-        luis.scale.set(0.07, 0.07);
-        luis.updateHitbox();
-        luis.screenCenter();
-        luis.x += 475;
-        luis.y -= 50;
-        luis.angle += 15;
-        luis.radius = 20;
-        luis.speed = 0.75;
-        luis.setCenterFromCurrentPos();
-        add(luis);
-
-        lordX = new OrbitSprite(0, 0, "assets/exe/extras/lordx.webp");
-        lordX.scale.set(0.07, 0.07);
-        lordX.updateHitbox();
-        lordX.screenCenter();
-        lordX.x += 200;
-        lordX.y -= 50;
-        lordX.radius = 20;
-        lordX.speed = 0.75;
-        lordX.angleOffset = Math.PI;
-        lordX.setCenterFromCurrentPos();
-        add(lordX);
-        
-        box = new FlxSprite(750, 120).loadGraphic(Paths.getBitmapData("assets/exe/extras/box.webp"));
+        box = new FlxSprite(750, 120).loadGraphic(Paths.getBitmapData("assets/exe/extras/boxextras.webp"));
         box.scale.set(0.3, 0.3);
         box.updateHitbox();
         add(box);
@@ -419,14 +441,14 @@ class ExtrasMenu extends MusicBeatState
         final bmp = Paths.getBitmapData("assets/exe/extras/disco.webp");
         for (off in [{x: -2, y: -2}, {x: 0, y: -2}, {x: 2, y: -2}, {x: -2, y: 0}, {x: 2, y: 0}, {x: -2, y: 2}, {x: 0, y: 2}, {x: 2, y: 2}])
         {
-            final s = new FlxSprite(61 + off.x, 541 + off.y).loadGraphic(bmp);
+            final s = new FlxSprite(41 + off.x, 541 + off.y).loadGraphic(bmp);
             s.scale.set(0.29, 0.29);
             s.updateHitbox();
             s.color = FlxColor.BLACK;
             s.alpha  = 0.3;
             add(s);
         }
-        disco = new FlxSprite(61, 541).loadGraphic(bmp);
+        disco = new FlxSprite(41, 541).loadGraphic(bmp);
         disco.scale.set(0.29, 0.29);
         disco.updateHitbox();
         add(disco);
@@ -435,8 +457,8 @@ class ExtrasMenu extends MusicBeatState
 
     function buildLogo():Void
     {
-        extrasLogo = new FlxSprite(49, 54).loadGraphic(Paths.getBitmapData("assets/exe/extras/extrasss.webp"));
-        extrasLogo.scale.set(0.32, 0.32);
+        extrasLogo = new FlxSprite(44.62, 58.31).loadGraphic(Paths.getBitmapData("assets/exe/extras/extras.webp"));
+        extrasLogo.scale.set(0.18, 0.18);
         extrasLogo.updateHitbox();
         add(extrasLogo);
     }
@@ -445,7 +467,12 @@ class ExtrasMenu extends MusicBeatState
     {
         for (i in 0...MENU_KEYS.length)
         {
-            final label = Language.getArray(MENU_KEYS[i], ['?', ''])[0];
+            final fallback = switch (i) {
+                case 0: ['GALLERY', 'View the community gallery'];
+                case 1: ['CHARACTER BIOS', 'Learn more about the cast'];
+                default: ['?', ''];
+            }
+            final label = Language.getArray(MENU_KEYS[i], fallback)[0];
             final t = new FlxText(50, 180 + i * 58, 0, label, Language.cjkSize(88));
             t.setFormat(Paths.font("bigass.otf"), Language.cjkSize(88), FlxColor.WHITE, LEFT);
             t.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
@@ -491,8 +518,8 @@ class ExtrasMenu extends MusicBeatState
 
     function buildDescBar():Void
     {
-        final gradH = 30;
-        final bar   = new FlxSprite(0, 670 - gradH);
+        final gradH = 15;
+        final bar   = new FlxSprite(0, 680 - gradH);
         bar.makeGraphic(FlxG.width, 100 + gradH, FlxColor.TRANSPARENT, true);
         for (i in 0...gradH)
             bar.pixels.fillRect(new openfl.geom.Rectangle(0, i, FlxG.width, 1), FlxColor.fromRGBFloat(0, 0, 0, (i / gradH) * 0.3));
@@ -501,15 +528,20 @@ class ExtrasMenu extends MusicBeatState
 
         for (i in 0...MENU_KEYS.length)
         {
-            final desc = Language.getArray(MENU_KEYS[i], ['', ''])[1];
+            final fallback = switch (i) {
+                case 0: ['GALLERY', 'View the community gallery'];
+                case 1: ['CHARACTER BIOS', 'Learn more about the cast'];
+                default: ['?', ''];
+            }
+            final desc = Language.getArray(MENU_KEYS[i], fallback)[1];
             final tmp  = new FlxText(0, 0, 0, desc, Language.cjkSize(56));
             tmp.setFormat(Paths.font(Language.fontOrCJK("smallass.ttf")), Language.cjkSize(56), FlxColor.WHITE, LEFT);
             tmp.antialiasing = ClientPrefs.data.antialiasing;
             tmp.drawFrame(true);
             final bd = new FlxBackdrop(tmp.graphic, X, 0, 0);
-            bd.scale.set(0.5, 0.5);
+            bd.scale.set(0.4, 0.4);
             bd.updateHitbox();
-            bd.y          = 675;
+            bd.y          = 685;
             bd.velocity.x = -30;
             bd.visible    = (i == 0);
             add(bd);
@@ -521,14 +553,14 @@ class ExtrasMenu extends MusicBeatState
     function _calcSelectLayout():{targetX:Float, targetY:Float, capPx:Float, midPx:Float, midScaleX:Float, scaleY:Float}
     {
         final item      = menuItems[curSelected];
-        final itemW     = item.frameWidth * 0.525 + 46;
+        final itemW     = item.frameWidth * 0.525 + 56;
         final scaleY    = 0.28;
         final capPx     = _selLeft.frameWidth * scaleY;
         final minMidPx  = _selMid.frameWidth * scaleY;
         final midPx     = Math.max(minMidPx, itemW - capPx * 2);
         final midScaleX = midPx / _selMid.frameWidth;
         final targetY   = menuItems[curSelected].y - 16;
-        return {targetX: 50.0 - 18, targetY: targetY, capPx: capPx, midPx: midPx, midScaleX: midScaleX, scaleY: scaleY};
+        return {targetX: 50.0 - 28, targetY: targetY, capPx: capPx, midPx: midPx, midScaleX: midScaleX, scaleY: scaleY};
     }
 
     function _snapSelectBox():Void
@@ -600,25 +632,22 @@ class ExtrasMenu extends MusicBeatState
         FlxTween.cancelTweensOf(box);
         FlxTween.cancelTweensOf(box.scale);
         if (sumky != null) FlxTween.cancelTweensOf(sumky);
-        if (luis != null) FlxTween.cancelTweensOf(luis);
-        if (lordX != null) FlxTween.cancelTweensOf(lordX);
+        inline function syncSumky():Void
+            if (sumky != null) { sumky.x = box.x - 75; sumky.y = box.y + 2; }
 
         box.scale.set(0.6, 0.6);
         box.updateHitbox();
         box.x     = 200;
         box.y     = 120;
         box.alpha = 0;
+        syncSumky();
 
         if (sumky != null) sumky.alpha = 0;
-        if (luis != null) luis.alpha = 0;
-        if (lordX != null) lordX.alpha = 0;
 
-        FlxTween.tween(box, {x: 750}, 0.5, {ease: FlxEase.expoOut});
+        FlxTween.tween(box, {x: 750}, 0.5, {ease: FlxEase.expoOut, onUpdate: (_) -> syncSumky()});
         FlxTween.tween(box, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
 
         if (sumky != null) FlxTween.tween(sumky, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
-        if (luis != null) FlxTween.tween(luis, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
-        if (lordX != null) FlxTween.tween(lordX, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
 
         FlxTween.tween(box.scale, {x: 0.3, y: 0.3}, 0.5, {ease: FlxEase.expoOut, onUpdate: (_) -> {
             final cx = box.x;
@@ -626,6 +655,7 @@ class ExtrasMenu extends MusicBeatState
             box.updateHitbox();
             box.x = cx;
             box.y = cy;
+            syncSumky();
         }});
     }
 
@@ -645,10 +675,14 @@ class ExtrasMenu extends MusicBeatState
 
         switch (curSelected)
         {
-            case 0: nextSubState = new states.extras.dagarden.DAGarden();
-            case 1: nextSubState = new states.extras.cutscenes.Cutscene();
-            case 2: nextSubState = new states.extras.achievements.AchievementsState();
-            case 3: nextSubState = new states.extras.credits.CreditsState();
+            case 0:
+                lime.system.System.openURL('https://vsexeunofficial.com/gallery');
+                canMove = true;
+            case 1: canMove = true; // havent done yet lol
+            case 2: nextSubState = new states.extras.dagarden.DAGarden();
+            case 3: nextSubState = new states.extras.cutscenes.Cutscene();
+            case 4: nextSubState = new states.extras.achievements.AchievementsState();
+            case 5: nextSubState = new states.extras.credits.CreditsState();
         }
 
         if (nextSubState != null)

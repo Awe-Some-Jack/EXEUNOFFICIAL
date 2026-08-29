@@ -23,45 +23,28 @@ import objects.VideoSprite;
 
 class Cutscene extends SonicSubState
 {
-    static inline final MENU_START_Y:Float          = 180.0;
-    static inline final MENU_SPACING:Float          = 58.0;
-    static inline final MENU_START_X:Float          = 50.0;
-    static inline final MENU_FONT_SIZE:Int          = 88;
-    static inline final MENU_SCALE_DURATION:Float   = 0.2;
-    static inline final SELECTION_TWEEN_DURATION:Float = 0.2;
-    static inline final VISIBLE_COUNT:Int           = 6;
-    static inline final SCROLL_LERP:Float           = 0.12;
-    static inline final BORDER:Float                = 6.0;
-    static inline final BOX_FINAL_X:Float           = 750.0;
-    static inline final BOX_FINAL_Y:Float           = 120.0;
-    static inline final BOX_FINAL_SCALE:Float       = 0.3;
-    static inline final BOX_ANIM_DURATION:Float     = 0.5;
-    static inline final SLIDE_DURATION:Float        = 0.35;
-    static inline final HUD_H:Float                 = 52.0;
-    static inline final BAR_PAD:Float               = 14.0;
-    static inline final BTN_SIZE:Float              = 32.0;
-    static inline final KNOB_R:Float                = 7.0;
-    static inline final HUD_FADE_TIME:Float         = 0.22;
-    static inline final HUD_IDLE_TIME:Float         = 2.5;
     
-    #if mobile var COOLDOWN_TIMER:Float = 0.15; #end
+    var COOLDOWN_TIMER:Float = #if mobile 0.15; #else 0.1; #end
 
-    var checkers:FlxBackdrop;
+    var checkerSprite:FlxSprite;
+    var checkShader:shaders.ErrorHandledShader.ErrorHandledRuntimeShader;
+    var checkerSpriteRight:FlxSprite;
+    var checkShaderRight:shaders.ErrorHandledShader.ErrorHandledRuntimeShader;
     var box:FlxSprite;
+    var boxHitboxRect:{x:Float, y:Float, w:Float, h:Float} = null;
+    #if VIDEOS_ALLOWED
+    var boxThumb:VideoSprite;
+    #end
+    var _boxThumbPath:String = null;
+    var _boxThumbPendingPath:String = null;
+    var _boxThumbDebounce:Float = 0.0;
+    var _boxThumbReady:Bool = false;
     var disco:FlxSprite;
+    var discoTween:FlxTween;
     var discoShadows:Array<FlxSprite> = [];
-    var titleText:FlxText;
+    var titleText:FlxSprite;
     var nowPlaying:FlxText;
     var nowPlayingSong:FlxText;
-
-    var _debugMode:Bool      = false;
-    var _debugSelected:FlxSprite = null;
-    var _debugDragging:Bool  = false;
-    var _debugDragOffX:Float = 0;
-    var _debugDragOffY:Float = 0;
-    var _debugRotating:Bool  = false;
-    var _debugOpacity:Bool   = false;
-    var _debugLabel:FlxText;
 
     var videoEntries:Array<{name:String, displayName:String, path:String}> = [];
     var menuItems:Array<FlxText> = [];
@@ -107,16 +90,14 @@ class Cutscene extends SonicSubState
         _buildMenu();
         changeSelection(0);
 
-        titleText = new FlxText(49, 68, 0, Language.getArray('extras.menu.cutscenes', ['CUTSCENES', ''])[0], Language.cjkSize(88));
-        titleText.setFormat(Paths.font("bigass.otf"), Language.cjkSize(88), 0xFFf48000, LEFT);
-        titleText.setBorderStyle(OUTLINE_FAST, 0xFF510500, Language.cjkBorder(8));
-        titleText.scale.set(0.66, 0.66);
+        titleText = new FlxSprite(44.62, 58.31).loadGraphic(Paths.getBitmapData("assets/exe/extras/cutscenes/cutscene.webp"));
+        titleText.scale.set(0.18, 0.18);
         titleText.updateHitbox();
         titleText.antialiasing = ClientPrefs.data.antialiasing;
         add(titleText);
 
-        final gradientHeight:Int = 30;
-        final descBar = new FlxSprite(0, 670 - gradientHeight);
+        final gradientHeight:Int = 15;
+        final descBar = new FlxSprite(0, 680 - gradientHeight);
         descBar.makeGraphic(FlxG.width, 100 + gradientHeight, FlxColor.TRANSPARENT, true);
         for (i in 0...gradientHeight)
         {
@@ -133,14 +114,14 @@ class Cutscene extends SonicSubState
         descTemp.drawFrame(true);
         
         final descBackdrop = new FlxBackdrop(descTemp.graphic, X, 0, 0);
-        descBackdrop.scale.set(0.5, 0.5);
+        descBackdrop.scale.set(0.4, 0.4);
         descBackdrop.updateHitbox();
-        descBackdrop.y = 675;
+        descBackdrop.y = 685;
         descBackdrop.velocity.x = -30;
         add(descBackdrop);
         descTemp.destroy();
 
-        nowPlaying = new FlxText(169, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
+        nowPlaying = new FlxText(149, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
         nowPlaying.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
         nowPlaying.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlaying.scale.set(0.22, 0.22);
@@ -152,20 +133,13 @@ class Cutscene extends SonicSubState
         // still lines up correctly when the label text is longer/taller in another language
         final daName = states.extras.dagarden.DAGarden.currentSong;
         final songName = daName != '' ? daName.toUpperCase() : 'EXTRAS MENU';
-        nowPlayingSong = new FlxText(169, nowPlaying.y + nowPlaying.height + 6, 0, songName, 60);
+        nowPlayingSong = new FlxText(149, nowPlaying.y + nowPlaying.height + 6, 0, songName, 60);
         nowPlayingSong.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
         nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlayingSong.scale.set(0.22, 0.22);
         nowPlayingSong.updateHitbox();
         nowPlayingSong.antialiasing = ClientPrefs.data.antialiasing;
         add(nowPlayingSong);
-        _debugLabel = new FlxText(4, 4, 0, "", 14);
-        _debugLabel.setFormat(null, 14, FlxColor.WHITE, LEFT);
-        _debugLabel.setBorderStyle(OUTLINE, FlxColor.BLACK, 1);
-        _debugLabel.scrollFactor.set(0, 0);
-        _debugLabel.visible = false;
-        add(_debugLabel);
-
     }
 
     function createBackground():Void
@@ -186,24 +160,143 @@ class Cutscene extends SonicSubState
         final background = new FlxSprite(0, 0).loadGraphic(bmd);
         add(background);
 
-        final tileSize:Int = 40;
-        final cbmd = new openfl.display.BitmapData(tileSize * 2, tileSize * 2, true, 0x00000000);
-        cbmd.fillRect(new openfl.geom.Rectangle(0,        0,        tileSize, tileSize), 0xFF00073d);
-        cbmd.fillRect(new openfl.geom.Rectangle(tileSize, 0,        tileSize, tileSize), 0xFF001865);
-        cbmd.fillRect(new openfl.geom.Rectangle(0,        tileSize, tileSize, tileSize), 0xFF001865);
-        cbmd.fillRect(new openfl.geom.Rectangle(tileSize, tileSize, tileSize, tileSize), 0xFF00073d);
-        checkers = new FlxBackdrop(cbmd, XY, 0, 0);
-        checkers.alpha = 0.10;
-        checkers.velocity.x = -60;
-        add(checkers);
+        checkerSprite = new FlxSprite(0, 0);
+        checkerSprite.makeGraphic(w, h, FlxColor.TRANSPARENT);
+        checkerSprite.scrollFactor.set();
+        checkShader = new shaders.ErrorHandledShader.ErrorHandledRuntimeShader('cutsceneChecker', '
+            #pragma header
+            uniform float uTime;
+            void main()
+            {
+                vec2 uv = openfl_TextureCoordv;
+                float tileSize = 40.0;
+                float tx = floor((uv.x * ${w}.0 - uTime * 60.0) / tileSize);
+                float ty = floor((uv.y * ${h}.0) / tileSize);
+                float check = mod(tx + ty, 2.0);
+                vec3 colorA = vec3(0.0, 0.09, 0.4);
+                float tileAlpha = mix(0.25, 0.0, check);
+                float fadeX = 1.0 - smoothstep(0.0, 0.45, uv.x);
+                float finalAlpha = tileAlpha * fadeX;
+                gl_FragColor = vec4(colorA * finalAlpha, finalAlpha);
+            }
+        ');
+        checkShader.setFloat('uTime', 0.0);
+        checkerSprite.shader = checkShader;
+        add(checkerSprite);
+        checkerSpriteRight = new FlxSprite(0, 0);
+        checkerSpriteRight.makeGraphic(w, h, FlxColor.TRANSPARENT);
+        checkerSpriteRight.scrollFactor.set();
+        checkShaderRight = new shaders.ErrorHandledShader.ErrorHandledRuntimeShader('cutsceneCheckerRight', '
+            #pragma header
+            uniform float uTime;
+            void main()
+            {
+                vec2 uv = openfl_TextureCoordv;
+                float tileSize = 40.0;
+                float tx = floor((uv.x * ${w}.0 + uTime * 60.0) / tileSize);
+                float ty = floor((uv.y * ${h}.0) / tileSize);
+                float check = mod(tx + ty, 2.0);
+                vec3 colorA = vec3(0.0, 0.09, 0.4);
+                float tileAlpha = mix(0.5, 0.0, check);
+                float fadeX = 1.0 - smoothstep(0.0, 0.45, 1.0 - uv.x);
+                float finalAlpha = tileAlpha * fadeX;
+                gl_FragColor = vec4(colorA * finalAlpha, finalAlpha);
+            }
+        ');
+        checkShaderRight.setFloat('uTime', 0.0);
+        checkerSpriteRight.shader = checkShaderRight;
+        add(checkerSpriteRight);
     }
 
     function createBox():Void
     {
-        box = new FlxSprite(BOX_FINAL_X, BOX_FINAL_Y).loadGraphic(Paths.getBitmapData("assets/exe/extras/box.webp"));
-        box.scale.set(BOX_FINAL_SCALE, BOX_FINAL_SCALE);
+        box = new FlxSprite(750.0, 120.0).loadGraphic(Paths.getBitmapData("assets/exe/extras/cutscenes/box.webp"));
+        box.scale.set(0.3, 0.3);
         box.updateHitbox();
         add(box);
+
+        boxHitboxRect = _findRedRect(Paths.getBitmapData("assets/exe/extras/boxhitbox.webp"));
+    }
+
+    function _findRedRect(bmp:BitmapData):{x:Float, y:Float, w:Float, h:Float}
+    {
+        var minX = bmp.width, minY = bmp.height, maxX = 0, maxY = 0, found = false;
+        for (y in 0...bmp.height)
+        {
+            for (x in 0...bmp.width)
+            {
+                final c = bmp.getPixel32(x, y);
+                final a = (c >>> 24) & 0xFF;
+                final r = (c >>> 16) & 0xFF;
+                final g = (c >>> 8)  & 0xFF;
+                final b = c & 0xFF;
+                if (a > 200 && r > 180 && g < 100 && b < 100)
+                {
+                    found = true;
+                    if (x < minX) minX = x;
+                    if (x > maxX) maxX = x;
+                    if (y < minY) minY = y;
+                    if (y > maxY) maxY = y;
+                }
+            }
+        }
+        if (!found) return {x: 0.0, y: 0.0, w: bmp.width * 1.0, h: bmp.height * 1.0};
+        return {x: minX * 1.0, y: minY * 1.0, w: (maxX - minX + 1) * 1.0, h: (maxY - minY + 1) * 1.0};
+    }
+
+    function _loadBoxThumb(path:String):Void
+    {
+        #if VIDEOS_ALLOWED
+        if (path == null || path == _boxThumbPath) return;
+        _boxThumbPath  = path;
+        _boxThumbReady = false;
+
+        if (boxThumb != null) { remove(boxThumb, true); boxThumb.destroy(); boxThumb = null; }
+
+        final thumb = new VideoSprite(0, 0, false);
+        thumb.autoDestroyOnComplete = false;
+        thumb.isStateAffected       = false;
+        thumb.visible = false;
+        thumb.onFormat(() -> { if (thumb == boxThumb) _boxThumbReady = true; });
+
+        final boxIdx = (box != null) ? members.indexOf(box) : -1;
+        if (boxIdx >= 0) insert(boxIdx, thumb); else add(thumb);
+        boxThumb = thumb;
+
+        if (thumb.loadVideo(path, [VideoSprite.ARG_LOOPING, VideoSprite.ARG_MUTED]))
+            thumb.play();
+        else if (boxThumb == thumb)
+        {
+            remove(thumb, true); thumb.destroy();
+            boxThumb = null;
+        }
+        #end
+    }
+
+    function _syncBoxThumb(elapsed:Float):Void
+    {
+        #if VIDEOS_ALLOWED
+        if (_boxThumbPendingPath != null)
+        {
+            _boxThumbDebounce -= elapsed;
+            if (_boxThumbDebounce <= 0)
+            {
+                _loadBoxThumb(_boxThumbPendingPath);
+                _boxThumbPendingPath = null;
+            }
+        }
+
+        if (boxThumb != null && boxHitboxRect != null && box != null)
+        {
+            boxThumb.x = box.x + boxHitboxRect.x * box.scale.x;
+            boxThumb.y = box.y + boxHitboxRect.y * box.scale.y;
+            if (_boxThumbReady)
+            {
+                boxThumb.setGraphicSize(boxHitboxRect.w * box.scale.x, boxHitboxRect.h * box.scale.y);
+                boxThumb.visible = !_vidOpen;
+            }
+        }
+        #end
     }
 
     function createDisco():Void
@@ -216,7 +309,7 @@ class Cutscene extends SonicSubState
         final discoBmp = Paths.getBitmapData("assets/exe/extras/disco.webp");
         for (offset in shadowOffsets)
         {
-            final s = new FlxSprite(61 + offset.x, 541 + offset.y).loadGraphic(discoBmp);
+            final s = new FlxSprite(41 + offset.x, 541 + offset.y).loadGraphic(discoBmp);
             s.scale.set(0.29, 0.29);
             s.updateHitbox();
             s.color = FlxColor.BLACK;
@@ -224,11 +317,11 @@ class Cutscene extends SonicSubState
             add(s);
             discoShadows.push(s);
         }
-        disco = new FlxSprite(61, 541).loadGraphic(discoBmp);
+        disco = new FlxSprite(41, 541).loadGraphic(discoBmp);
         disco.scale.set(0.29, 0.29);
         disco.updateHitbox();
         add(disco);
-        FlxTween.angle(disco, 0, 360, 3.0, {type: LOOPING});
+        discoTween = FlxTween.angle(disco, 0, 360, 3.0, {type: LOOPING});
     }
 
     function animateBox():Void
@@ -239,12 +332,12 @@ class Cutscene extends SonicSubState
         box.scale.set(0.6, 0.6);
         box.updateHitbox();
         box.x     = 200.0;
-        box.y     = BOX_FINAL_Y;
+        box.y     = 120.0;
         box.alpha = 0;
 
-        FlxTween.tween(box, {x: BOX_FINAL_X}, BOX_ANIM_DURATION, {ease: FlxEase.expoOut});
+        FlxTween.tween(box, {x: 750.0}, 0.5, {ease: FlxEase.expoOut});
         FlxTween.tween(box, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
-        FlxTween.tween(box.scale, {x: BOX_FINAL_SCALE, y: BOX_FINAL_SCALE}, BOX_ANIM_DURATION, {
+        FlxTween.tween(box.scale, {x: 0.3, y: 0.3}, 0.5, {
             ease: FlxEase.expoOut,
             onUpdate: (_) -> {
                 if (box == null) return;
@@ -256,27 +349,46 @@ class Cutscene extends SonicSubState
         });
     }
 
+
     function _scanVideos():Void
     {
-        videoEntries = [];
-        final jsonPath = 'assets/exe/video.json';
-        if (FileSystem.exists(jsonPath))
+        if (FileSystem.exists('assets/exe/extras/cutscenes/video.json'))
         {
-            try
-            {
-                final json:Dynamic = haxe.Json.parse(Paths.getContent(jsonPath));
-                final arr:Array<Dynamic> = cast json.videos;
-                if (arr != null)
-                {
-                    for (v in arr)
-                        videoEntries.push({name: Std.string(v.name), displayName: Std.string(v.displayName), path: Std.string(v.path)});
-                    return;
-                }
-            }
-            catch (_:Dynamic) {}
+            _loadJsonManifest();
+            return;
         }
-        _scanDir('assets/exe/extras/cutscenes');
+
+        videoEntries = [];
+
+        _scanDirIfExists('assets/exe/extras/cutscenes');
+        _scanDirIfExists(Paths.mods('videos'));
+        for (modName in Mods.getModDirectories())
+            _scanDirIfExists(Paths.mods('$modName/videos'));
+
         _saveJson();
+        _loadJsonManifest();
+    }
+
+    function _loadJsonManifest():Void
+    {
+        videoEntries = [];
+        if (!FileSystem.exists('assets/exe/extras/cutscenes/video.json')) return;
+
+        try
+        {
+            final json:Dynamic = haxe.Json.parse(File.getContent('assets/exe/extras/cutscenes/video.json'));
+            final arr:Array<Dynamic> = cast json.videos;
+            if (arr != null)
+                for (v in arr)
+                    videoEntries.push({name: Std.string(v.name), displayName: Std.string(v.displayName), path: Std.string(v.path)});
+        }
+        catch (_:Dynamic) {}
+    }
+
+    function _scanDirIfExists(dir:String):Void
+    {
+        if (FileSystem.exists(dir) && FileSystem.isDirectory(dir))
+            _scanDir(dir);
     }
 
     function _scanDir(dir:String):Void
@@ -315,15 +427,15 @@ class Cutscene extends SonicSubState
         for (e in videoEntries)
             arr.push({name: e.name, displayName: e.displayName, path: e.path});
         final json = haxe.Json.stringify({videos: arr}, null, '  ');
-        try { File.saveContent('assets/exe/video.json', json); } catch (_:Dynamic) {}
+        try { File.saveContent('assets/exe/extras/cutscenes/video.json', json); } catch (_:Dynamic) {}
     }
 
     function _buildMenu():Void
     {
         if (videoEntries.length == 0)
         {
-            final lbl = new FlxText(MENU_START_X, MENU_START_Y, 0, Language.get('cutscenes.empty', 'NO VIDEOS FOUND'), Language.cjkSize(MENU_FONT_SIZE));
-            lbl.setFormat(Paths.font("bigass.otf"), Language.cjkSize(MENU_FONT_SIZE), FlxColor.WHITE, LEFT);
+            final lbl = new FlxText(50.0, 180.0, 0, Language.get('cutscenes.empty', 'NO VIDEOS FOUND'), Language.cjkSize(88));
+            lbl.setFormat(Paths.font("bigass.otf"), Language.cjkSize(88), FlxColor.WHITE, LEFT);
             lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
             lbl.scale.set(0.5, 0.5);
             lbl.updateHitbox();
@@ -334,8 +446,8 @@ class Cutscene extends SonicSubState
         {
             for (i in 0...videoEntries.length)
             {
-                final lbl = new FlxText(MENU_START_X, MENU_START_Y + (i * MENU_SPACING), 0, videoEntries[i].displayName.toUpperCase(), Language.cjkSize(MENU_FONT_SIZE));
-                lbl.setFormat(Paths.font("bigass.otf"), Language.cjkSize(MENU_FONT_SIZE), FlxColor.WHITE, LEFT);
+                final lbl = new FlxText(50.0, 180.0 + (i * 58.0), 0, videoEntries[i].displayName.toUpperCase(), Language.cjkSize(88));
+                lbl.setFormat(Paths.font("bigass.otf"), Language.cjkSize(88), FlxColor.WHITE, LEFT);
                 lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
                 lbl.antialiasing = ClientPrefs.data.antialiasing;
                 lbl.pixelPerfectRender = false;
@@ -380,15 +492,15 @@ class Cutscene extends SonicSubState
 
     function _scrollTargetFor(index:Int):Float
     {
-        final ideal = (index - Std.int(VISIBLE_COUNT / 2)) * MENU_SPACING;
-        final maxScroll = Math.max(0.0, (menuItems.length - VISIBLE_COUNT) * MENU_SPACING);
+        final ideal = (index - Std.int(6 / 2)) * 58.0;
+        final maxScroll = Math.max(0.0, (menuItems.length - 6) * 58.0);
         return FlxMath.bound(ideal, 0, maxScroll);
     }
 
     function changeSelection(change:Int = 0):Void
     {
         curSelected += change;
-        #if mobile COOLDOWN_TIMER = 0.15; #end
+        #if mobile COOLDOWN_TIMER = 0.15; #else COOLDOWN_TIMER = 0.1; #end
         final maxIdx = menuItems.length - 1;
         if (curSelected < 0) curSelected = maxIdx;
         if (curSelected > maxIdx) curSelected = 0;
@@ -405,30 +517,40 @@ class Cutscene extends SonicSubState
             if (i == curSelected)
             {
                 menuItems[i].setBorderStyle(OUTLINE_FAST, 0xFF3a6bc9, Language.cjkBorder(10));
-                FlxTween.tween(menuItems[i].scale, {x: 0.525, y: 0.525}, MENU_SCALE_DURATION, {ease: FlxEase.smootherStepInOut});
+                FlxTween.tween(menuItems[i].scale, {x: 0.525, y: 0.525}, 0.2, {ease: FlxEase.smootherStepInOut});
             }
             else
             {
                 menuItems[i].setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
-                FlxTween.tween(menuItems[i].scale, {x: 0.5, y: 0.5}, MENU_SCALE_DURATION, {ease: FlxEase.smootherStepInOut});
+                FlxTween.tween(menuItems[i].scale, {x: 0.5, y: 0.5}, 0.2, {ease: FlxEase.smootherStepInOut});
             }
+            menuItems[i].updateHitbox();
         }
 
         _updateSelectBox();
+
+        #if VIDEOS_ALLOWED
+        if (videoEntries.length > 0)
+        {
+            _boxThumbPendingPath = videoEntries[curSelected].path;
+            _boxThumbDebounce = (change != 0) ? 0.18 : 0.0;
+        }
+        #end
     }
 
     function _calcSelectLayout():{targetX:Float, targetY:Float, capPx:Float, midPx:Float, midScaleX:Float, scaleY:Float}
     {
         final item      = menuItems[curSelected];
-        final itemW     = item.frameWidth * 0.525 + 46;
+        final itemW     = item.frameWidth * 0.525 + 56;
         final scaleY    = 0.28;
         final capPx     = _selLeft.frameWidth * scaleY;
         final minMidPx  = _selMid.frameWidth * scaleY;
         final midPx     = Math.max(minMidPx, itemW - capPx * 2);
         final midScaleX = midPx / _selMid.frameWidth;
-        final targetY   = MENU_START_Y + (curSelected * MENU_SPACING) - scrollYTarget - 16;
-        return {targetX: MENU_START_X - 18, targetY: targetY, capPx: capPx, midPx: midPx, midScaleX: midScaleX, scaleY: scaleY};
+        final targetY   = 180.0 + (curSelected * 58.0) - scrollYTarget - 16;
+        return {targetX: 50.0 - 28, targetY: targetY, capPx: capPx, midPx: midPx, midScaleX: midScaleX, scaleY: scaleY};
     }
+
 
     function _snapSelectBox():Void
     {
@@ -437,8 +559,8 @@ class Cutscene extends SonicSubState
         for (s in [_selLeft, _selMid, _selRight]) { FlxTween.cancelTweensOf(s); FlxTween.cancelTweensOf(s.scale); }
         _selLeft.setPosition(l.targetX, l.targetY);
         _selLeft.scale.set(l.scaleY, l.scaleY);
-        _selMid.setPosition(l.targetX + l.capPx, l.targetY);
-        _selMid.scale.set(l.midScaleX, l.scaleY);
+        _selMid.setPosition(l.targetX + l.capPx - 1.0, l.targetY);
+        _selMid.scale.set((l.midPx + 1.0 * 2) / _selMid.frameWidth, l.scaleY);
         _selRight.setPosition(l.targetX + l.capPx + l.midPx, l.targetY);
         _selRight.scale.set(l.scaleY, l.scaleY);
     }
@@ -448,29 +570,29 @@ class Cutscene extends SonicSubState
         if (_selLeft == null || _selMid == null || _selRight == null) return;
         final l = _calcSelectLayout();
         for (s in [_selLeft, _selMid, _selRight]) { FlxTween.cancelTweensOf(s); FlxTween.cancelTweensOf(s.scale); }
-        FlxTween.tween(_selLeft,        {x: l.targetX,                     y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
-        FlxTween.tween(_selLeft.scale,  {x: l.scaleY,     y: l.scaleY},                  0.35, {ease: FlxEase.expoOut});
-        FlxTween.tween(_selMid,         {x: l.targetX + l.capPx,           y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
-        FlxTween.tween(_selMid.scale,   {x: l.midScaleX,  y: l.scaleY},                  0.35, {ease: FlxEase.expoOut});
-        FlxTween.tween(_selRight,       {x: l.targetX + l.capPx + l.midPx, y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
-        FlxTween.tween(_selRight.scale, {x: l.scaleY,     y: l.scaleY},                  0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selLeft,        {x: l.targetX,                                    y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selLeft.scale,  {x: l.scaleY,     y: l.scaleY},                                 0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selMid,         {x: l.targetX + l.capPx - 1.0,            y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selMid.scale,   {x: (l.midPx + 1.0 * 2) / _selMid.frameWidth, y: l.scaleY}, 0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selRight,       {x: l.targetX + l.capPx + l.midPx,                y: l.targetY}, 0.35, {ease: FlxEase.expoOut});
+        FlxTween.tween(_selRight.scale, {x: l.scaleY,     y: l.scaleY},                                 0.35, {ease: FlxEase.expoOut});
     }
 
     function _applyScroll():Void
     {
         for (i in 0...menuItems.length)
         {
-            final rawY = MENU_START_Y + (i * MENU_SPACING) - scrollY;
+            final rawY = 180.0 + (i * 58.0) - scrollY;
             menuItems[i].y = rawY;
 
-            final topEdge    = MENU_START_Y - MENU_SPACING;
-            final bottomEdge = MENU_START_Y + VISIBLE_COUNT * MENU_SPACING;
+            final topEdge    = 180.0 - 58.0;
+            final bottomEdge = 180.0 + 6 * 58.0;
             if (rawY < topEdge || rawY > bottomEdge)
                 menuItems[i].alpha = 0;
-            else if (rawY < MENU_START_Y)
-                menuItems[i].alpha = (rawY - topEdge) / MENU_SPACING;
-            else if (rawY > MENU_START_Y + (VISIBLE_COUNT - 1) * MENU_SPACING)
-                menuItems[i].alpha = 1.0 - (rawY - (MENU_START_Y + (VISIBLE_COUNT - 1) * MENU_SPACING)) / MENU_SPACING;
+            else if (rawY < 180.0)
+                menuItems[i].alpha = (rawY - topEdge) / 58.0;
+            else if (rawY > 180.0 + (6 - 1) * 58.0)
+                menuItems[i].alpha = 1.0 - (rawY - (180.0 + (6 - 1) * 58.0)) / 58.0;
             else
                 menuItems[i].alpha = 1.0;
         }
@@ -484,6 +606,8 @@ class Cutscene extends SonicSubState
         _vidOpen   = true;
         _vidPaused = false;
         canMove    = false;
+
+        if (boxThumb != null) { boxThumb.pause(); boxThumb.visible = false; }
 
         _vidBorder = new FlxSprite(0, 0);
         _vidBorder.makeGraphic(1, 1, 0xFF3a6bc9);
@@ -510,15 +634,15 @@ class Cutscene extends SonicSubState
   
             _vidSprite.video.shader = vidShader;
 
-            final bw = fw + Std.int(BORDER * 2);
-            final bh = fh + Std.int(BORDER * 2);
+            final bw = fw + Std.int(6.0 * 2);
+            final bh = fh + Std.int(6.0 * 2);
             _vidBorder.makeGraphic(bw, bh, 0xFF3a6bc9);
-            _vidBorder.setPosition(_vidSprite.x - BORDER, _vidSprite.y - BORDER);
-            final borderShader = new shaders.RoundedBorderShader(16.0 + BORDER, 0.0, 0xFF000000);
+            _vidBorder.setPosition(_vidSprite.x - 6.0, _vidSprite.y - 6.0);
+            final borderShader = new shaders.RoundedBorderShader(16.0 + 6.0, 0.0, 0xFF000000);
             borderShader.setSize(bw, bh);
             _vidBorder.shader = borderShader;
-            FlxTween.tween(_vidSprite,  {y: finalY},                    SLIDE_DURATION, {ease: FlxEase.expoOut});
-            FlxTween.tween(_vidBorder,  {y: finalY - BORDER, alpha: 1}, SLIDE_DURATION, {ease: FlxEase.expoOut});
+            FlxTween.tween(_vidSprite,  {y: finalY},                    0.35, {ease: FlxEase.expoOut});
+            FlxTween.tween(_vidBorder,  {y: finalY - 6.0, alpha: 1}, 0.35, {ease: FlxEase.expoOut});
 
             _buildHud(fw, finalY + fh);
         });
@@ -546,24 +670,24 @@ class Cutscene extends SonicSubState
         final hudX = _vidSprite.x;
         final hudY = hudTopY + 8;
         final w    = vidW;
-        final bg = new FlxSprite(hudX, hudY).makeGraphic(Std.int(w), Std.int(HUD_H), 0x00000000, true);
-        bg.pixels.fillRect(new openfl.geom.Rectangle(0, 0, w, HUD_H), 0xBB000000);
-        final hudShader = new shaders.RoundedBorderShader(HUD_H * 0.5, 0.0, 0xFF000000);
-        hudShader.setSize(Std.int(w), Std.int(HUD_H));
+        final bg = new FlxSprite(hudX, hudY).makeGraphic(Std.int(w), Std.int(52.0), 0x00000000, true);
+        bg.pixels.fillRect(new openfl.geom.Rectangle(0, 0, w, 52.0), 0xBB000000);
+        final hudShader = new shaders.RoundedBorderShader(52.0 * 0.5, 0.0, 0xFF000000);
+        hudShader.setSize(Std.int(w), Std.int(52.0));
         bg.shader = hudShader;
         _hud.add(bg);
 
         _hudBtn = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/pause.webp'));
-        final btnScale = BTN_SIZE / Math.max(_hudBtn.width, _hudBtn.height);
+        final btnScale = 32.0 / Math.max(_hudBtn.width, _hudBtn.height);
         _hudBtn.scale.set(btnScale, btnScale);
         _hudBtn.updateHitbox();
-        _hudBtn.x = hudX + BAR_PAD;
-        _hudBtn.y = hudY + (HUD_H - _hudBtn.height) * 0.5;
+        _hudBtn.x = hudX + 14.0;
+        _hudBtn.y = hudY + (52.0 - _hudBtn.height) * 0.5;
         _hudBtn.color = 0xFFFFFFFF;
         _hud.add(_hudBtn);
-        final barX = _hudBtn.x + _hudBtn.width + BAR_PAD;
-        final barY = hudY + HUD_H * 0.5 - 3;
-        final barW = w - (barX - hudX) - BAR_PAD * 2 - 60;
+        final barX = _hudBtn.x + _hudBtn.width + 14.0;
+        final barY = hudY + 52.0 * 0.5 - 3;
+        final barW = w - (barX - hudX) - 14.0 * 2 - 60;
 
         _hudBar = new FlxSprite(barX, barY);
         _hudBar.makeGraphic(Std.int(barW), 6, 0xFF555577);
@@ -577,22 +701,22 @@ class Cutscene extends SonicSubState
         _hudFill.updateHitbox();
         _hud.add(_hudFill);
 
-        final knobD = Std.int(KNOB_R * 2);
+        final knobD = Std.int(7.0 * 2);
         _hudKnob = new FlxSprite(0, 0);
         _hudKnob.makeGraphic(knobD, knobD, 0x00000000, true);
-        final cx = KNOB_R; final cy = KNOB_R;
+        final cx = 7.0; final cy = 7.0;
         for (py in 0...knobD)
             for (px in 0...knobD)
-                if (Math.sqrt((px - cx) * (px - cx) + (py - cy) * (py - cy)) <= KNOB_R)
+                if (Math.sqrt((px - cx) * (px - cx) + (py - cy) * (py - cy)) <= 7.0)
                     _hudKnob.pixels.setPixel32(px, py, 0xFFFFFFFF);
-        _hudKnob.x = barX - KNOB_R;
-        _hudKnob.y = barY + 3 - KNOB_R;
+        _hudKnob.x = barX - 7.0;
+        _hudKnob.y = barY + 3 - 7.0;
         _hud.add(_hudKnob);
         _hudTimeTxt = new FlxText(0, 0, 55, "0:00", 14);
         _hudTimeTxt.setFormat(Paths.font("bigass.otf"), 14, FlxColor.WHITE, RIGHT);
         _hudTimeTxt.antialiasing = ClientPrefs.data.antialiasing;
-        _hudTimeTxt.x = hudX + w - BAR_PAD - 55;
-        _hudTimeTxt.y = hudY + (HUD_H - _hudTimeTxt.height) * 0.5;
+        _hudTimeTxt.x = hudX + w - 14.0 - 55;
+        _hudTimeTxt.y = hudY + (52.0 - _hudTimeTxt.height) * 0.5;
         _hud.add(_hudTimeTxt);
 
         add(_hud);
@@ -607,13 +731,13 @@ class Cutscene extends SonicSubState
         _hudBtn.loadGraphic(Paths.getBitmapData(_vidPaused
             ? 'assets/exe/extras/credits/play.webp'
             : 'assets/exe/extras/credits/pause.webp'));
-        final btnScale = BTN_SIZE / Math.max(_hudBtn.frameWidth, _hudBtn.frameHeight);
+        final btnScale = 32.0 / Math.max(_hudBtn.frameWidth, _hudBtn.frameHeight);
         _hudBtn.scale.set(btnScale, btnScale);
         _hudBtn.updateHitbox();
         if (_hud != null && _hud.members.length > 0)
         {
             final bg = _hud.members[0];
-            _hudBtn.y = bg.y + (HUD_H - _hudBtn.height) * 0.5;
+            _hudBtn.y = bg.y + (52.0 - _hudBtn.height) * 0.5;
         }
     }
 
@@ -623,7 +747,7 @@ class Cutscene extends SonicSubState
         if (_hudVisible == v) return;
         _hudVisible = v;
         FlxTween.cancelTweensOf(_hud);
-        FlxTween.tween(_hud, {alpha: v ? 1.0 : 0.0}, HUD_FADE_TIME, {ease: FlxEase.quadInOut});
+        FlxTween.tween(_hud, {alpha: v ? 1.0 : 0.0}, 0.22, {ease: FlxEase.quadInOut});
     }
 
     function _hudFmtTime(ms:Int):String
@@ -646,7 +770,7 @@ class Cutscene extends SonicSubState
         else if (_hudVisible && !_seekDragging)
         {
             _hudIdleTimer += elapsed;
-            if (_hudIdleTimer >= HUD_IDLE_TIME) _hudSetVisible(false);
+            if (_hudIdleTimer >= 2.5) _hudSetVisible(false);
         }
 
         if (_hudBar != null && _hudFill != null && _hudKnob != null)
@@ -657,7 +781,7 @@ class Cutscene extends SonicSubState
             final fillW = Math.max(1, barW * pct);
             _hudFill.scale.x = fillW;
             _hudFill.updateHitbox();
-            _hudKnob.x = _hudBar.x + barW * pct - KNOB_R;
+            _hudKnob.x = _hudBar.x + barW * pct - 7.0;
             if (_hudTimeTxt != null) _hudTimeTxt.text = _hudFmtTime(Std.int(pct * haxe.Int64.toInt(dur)));
         }
 
@@ -711,8 +835,8 @@ class Cutscene extends SonicSubState
         {
             vidRef.stop();
             final targetY = -vidRef.height - 50;
-            FlxTween.tween(vidRef,    {y: targetY}, SLIDE_DURATION, {ease: FlxEase.expoIn});
-            FlxTween.tween(borderRef, {y: targetY - BORDER, alpha: 0}, SLIDE_DURATION, {
+            FlxTween.tween(vidRef,    {y: targetY}, 0.35, {ease: FlxEase.expoIn});
+            FlxTween.tween(borderRef, {y: targetY - 6.0, alpha: 0}, 0.35, {
                 ease: FlxEase.expoIn,
                 onComplete: (_) -> {
                     remove(vidRef,    true); vidRef.destroy();
@@ -734,86 +858,17 @@ class Cutscene extends SonicSubState
         #end
     }
 
-    function _updateDebug():Void
-    {
-        final mx:Float = FlxG.mouse.x;
-        final my:Float = FlxG.mouse.y;
-
-        if (FlxG.keys.justPressed.T)
-        {
-            if (_debugSelected != null)
-            {
-                var n = _debugSelected == titleText ? "titleText" : (_debugSelected == box ? "box" : "unknown");
-                trace('$n | x:${_debugSelected.x} y:${_debugSelected.y} scale:${_debugSelected.scale.x} angle:${_debugSelected.angle} alpha:${_debugSelected.alpha}');
-            }
-            else trace('DEBUG | nothing selected');
-        }
-
-        if (FlxG.mouse.justPressed)
-        {
-            _debugSelected = null;
-            _debugDragging = false;
-            _debugRotating = false;
-            _debugOpacity  = false;
-            final debugSprites:Array<FlxSprite> = [cast titleText, box, disco];
-            for (s in debugSprites)
-            {
-                if (s != null && s.overlapsPoint(new flixel.math.FlxPoint(mx, my)))
-                {
-                    _debugSelected = s;
-                    _debugDragOffX = mx - s.x;
-                    _debugDragOffY = my - s.y;
-                    _debugDragging = true;
-                    break;
-                }
-            }
-        }
-
-        if (FlxG.mouse.justReleased) _debugDragging = false;
-        if (_debugSelected != null)
-        {
-            _debugRotating = FlxG.keys.pressed.R;
-            _debugOpacity  = FlxG.keys.pressed.O;
-        }
-
-        if (_debugDragging && _debugSelected != null && !_debugRotating && !_debugOpacity)
-        {
-            _debugSelected.x = mx - _debugDragOffX;
-            _debugSelected.y = my - _debugDragOffY;
-        }
-
-        if (_debugSelected != null && FlxG.mouse.deltaWheel.y != 0)
-        {
-            if (_debugRotating)
-                _debugSelected.angle += FlxG.mouse.deltaWheel.y * 2.0;
-            else if (_debugOpacity)
-                _debugSelected.alpha = Math.max(0, Math.min(1, _debugSelected.alpha + FlxG.mouse.deltaWheel.y * 0.05));
-            else
-            {
-                final delta:Float = FlxG.mouse.deltaWheel.y * 0.01;
-                _debugSelected.scale.x = Math.max(0.01, _debugSelected.scale.x + delta);
-                _debugSelected.scale.y = Math.max(0.01, _debugSelected.scale.y + delta);
-                _debugSelected.updateHitbox();
-            }
-        }
-
-        var selName = "none";
-        if (_debugSelected == cast titleText) selName = "titleText";
-        else if (_debugSelected == box) selName = "box";
-        else if (_debugSelected == disco) selName = "disco";
-        final modeStr = _debugRotating ? " [R=rotate]" : (_debugOpacity ? " [O=opacity]" : " [scroll=scale]");
-        if (_debugSelected != null)
-            _debugLabel.text = '[F3] DEBUG$modeStr  |  $selName\nx: ${Math.round(_debugSelected.x)}  y: ${Math.round(_debugSelected.y)}  scale: ${Math.round(_debugSelected.scale.x * 1000) / 1000}  angle: ${Math.round(_debugSelected.angle)}  alpha: ${Math.round(_debugSelected.alpha * 100)}%';
-        else
-            _debugLabel.text = '[F3] DEBUG  |  click sprite | hold R+scroll=rotate | hold O+scroll=opacity';
-    }
-
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
 
-        #if mobile if (COOLDOWN_TIMER > 0) COOLDOWN_TIMER -= elapsed; #end
-       
+        if (COOLDOWN_TIMER > 0) COOLDOWN_TIMER -= elapsed;
+
+        if (checkShader != null)
+            checkShader.setFloat('uTime', checkShader.getFloat('uTime') + elapsed);
+        if (checkShaderRight != null)
+            checkShaderRight.setFloat('uTime', checkShaderRight.getFloat('uTime') + elapsed);
+
         if (nowPlayingSong != null)
         {
             final daName = states.extras.dagarden.DAGarden.currentSong;
@@ -823,18 +878,9 @@ class Cutscene extends SonicSubState
 
         if (disco != null && discoShadows != null)
             for (s in discoShadows) s.angle = disco.angle;
-        if (FlxG.keys.justPressed.F3)
-        {
-            _debugMode = !_debugMode;
-            _debugLabel.visible = _debugMode;
-            if (!_debugMode) { _debugSelected = null; _debugDragging = false; }
-        }
 
-        if (_debugMode)
-        {
-            _updateDebug();
-            return;
-        }
+        if (discoTween != null && FlxG.sound.music != null)
+            discoTween.active = FlxG.sound.music.playing;
 
         if (_vidOpen)
         {
@@ -843,8 +889,9 @@ class Cutscene extends SonicSubState
             return;
         }
 
-        scrollY = FlxMath.lerp(scrollY, scrollYTarget, SCROLL_LERP);
+        scrollY += (scrollYTarget - scrollY) * FlxMath.bound(15.0 * elapsed, 0, 1);
         _applyScroll();
+        _syncBoxThumb(elapsed);
         if (!canMove) return;
 
         if (controls.UI_UP_P)   changeSelection(-1);
@@ -856,6 +903,10 @@ class Cutscene extends SonicSubState
                 changeSelection(1);
             else if(deltaMouseY < -1)
                 changeSelection(-1);
+        #else
+        final mouseWheel = FlxG.mouse.wheel;
+        if (mouseWheel != 0 && COOLDOWN_TIMER <= 0)
+            changeSelection(mouseWheel > 0 ? -1 : 1);
         #end
 
         if ((controls.ACCEPT #if mobile || (shortPress && FlxG.mouse.overlaps(menuItems[curSelected])) #end) && videoEntries.length > 0)
@@ -884,7 +935,7 @@ class Cutscene extends SonicSubState
         };
 
         FlxTween.cancelTweensOf(box);
-        FlxTween.tween(box, {x: FlxG.width + 50}, SLIDE_DURATION, {ease: FlxEase.expoIn, onComplete: onDone});
+        FlxTween.tween(box, {x: FlxG.width + 50}, 0.35, {ease: FlxEase.expoIn, onComplete: onDone});
         final leftItems:Array<flixel.FlxObject> = [];
         for (item in menuItems) if (item != null) leftItems.push(item);
         if (_selLeft  != null) leftItems.push(_selLeft);
@@ -904,7 +955,7 @@ class Cutscene extends SonicSubState
         {
             FlxTween.cancelTweensOf(item);
             final target = -item.width - 100;
-            FlxTween.tween(item, {x: target}, SLIDE_DURATION, {
+            FlxTween.tween(item, {x: target}, 0.35, {
                 ease: FlxEase.expoIn,
                 onComplete: (_) -> {
                     if (!leftDone) { leftDone = true; onDone(null); }
@@ -920,8 +971,12 @@ class Cutscene extends SonicSubState
         {
             FlxTween.cancelTweensOf(box);
             box.x = FlxG.width + 50;
-            FlxTween.tween(box, {x: BOX_FINAL_X}, SLIDE_DURATION, {ease: FlxEase.expoOut});
+            FlxTween.tween(box, {x: 750.0}, 0.35, {ease: FlxEase.expoOut});
         }
+
+        #if VIDEOS_ALLOWED
+        if (boxThumb != null) { boxThumb.resume(); boxThumb.visible = _boxThumbReady; }
+        #end
 
         final leftItems:Array<flixel.FlxObject> = [];
         for (item in menuItems) if (item != null) leftItems.push(item);
@@ -939,7 +994,7 @@ class Cutscene extends SonicSubState
             final origX = _leftOrigX.exists(item) ? _leftOrigX.get(item) : item.x;
             item.x = -item.width - 100;
             FlxTween.cancelTweensOf(item);
-            FlxTween.tween(item, {x: origX}, SLIDE_DURATION, {ease: FlxEase.expoOut});
+            FlxTween.tween(item, {x: origX}, 0.35, {ease: FlxEase.expoOut});
         }
     }
 

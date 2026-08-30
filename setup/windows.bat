@@ -6,7 +6,7 @@ echo Installing dependencies...
 echo This might take a few moments depending on your internet speed.
 haxelib git flixel https://github.com/FNF-CC-ENGINE/flixel.git
 haxelib git lime https://github.com/GreenColdTea/lime-fc.git
-haxelib git openfl https://github.com/GreenColdTea/openfl.git
+haxelib git openfl https://github.com/FNF-CC-ENGINE/openfl-fc.git
 haxelib git flixel-addons https://github.com/GreenColdTea/flixel-addons.git funkin-before-rebase --skip-dependencies
 haxelib git extension-androidtools https://github.com/LimeExtensions/extension-androidtools.git --skip-dependencies
 haxelib git astc-compressor https://github.com/Wolfie1985yt/astc-compressor.git --skip-dependencies

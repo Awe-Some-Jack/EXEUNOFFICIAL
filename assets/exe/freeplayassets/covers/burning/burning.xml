@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="burning.png">
+<TextureAtlas imagePath="burning.webp">
 <SubTexture name="burning appear0000" x="0" y="0" width="949" height="740" frameX="0" frameY="0" frameWidth="929" frameHeight="720" />
 <SubTexture name="burning appear0001" x="949" y="0" width="949" height="740" frameX="0" frameY="0" frameWidth="929" frameHeight="720" />
 <SubTexture name="burning appear0002" x="0" y="740" width="949" height="740" frameX="0" frameY="0" frameWidth="929" frameHeight="720" />

@@ -285,7 +285,7 @@ class BurningBot
     {
         if (cover.animation.getByName('appear') == null)
         {
-            cover.frames = FlxAtlasFrames.fromSparrow('assets/exe/freeplayassets/covers/burning/burning.png', 'assets/exe/freeplayassets/covers/burning/burning.xml');
+            cover.frames = FlxAtlasFrames.fromSparrow('assets/exe/freeplayassets/covers/burning/burning.webp', 'assets/exe/freeplayassets/covers/burning/burning.xml');
             cover.animation.addByPrefix('appear', 'burning appear', 6, false);
         }
 

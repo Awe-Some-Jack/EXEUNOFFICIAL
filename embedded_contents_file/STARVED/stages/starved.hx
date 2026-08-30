@@ -9,6 +9,7 @@ typedef BackgroundSprite =
 	@:optional var front:Bool;
 	@:optional var visible:Bool;
 	@:optional var alpha:Float;
+	@:optional var angle:Float;
 	@:optional var animation:Array<Dynamic>;
 }
 
@@ -19,18 +20,19 @@ final cam = game.gameplayCam.settings;
 var starv:Array<BackgroundSprite> = [
 	{path: 'new bg/sky', position: [-1220, -1250], scroll: [0.4, 0.4], scale: [0.8, 0.8]},
 	{path: 'new bg/bg', position: [-1350, -1300], scroll: [0.6, 0.6], scale: [0.8, 0.8]},
+	{path: 'new bg/tv', position: [40, -680], scale: [1.5, 1.35], animation: [{name: 'idle', looped: true}], angle: -6},
 	{path: 'new bg/floor', position: [-1610, -1450], scale: [0.8, 0.8]},
 	{path: 'bee', position: [-520, -150], scale: [0.7, 0.7], darkVariant: true},
-	{path: 'moto', position: [-1050, 120], scale: [0.9, 0.9], darkVariant: true},
-	{path: 'sonic', position: [-650, 180], scale: [1, 1], darkVariant: true},
+	{path: 'moto', position: [-1000, 120], scale: [0.9, 0.9], darkVariant: true},
+	{path: 'sonic', position: [-550, 240], scale: [1.15, 1.15], darkVariant: true},
 	{path: 'shoe', position: [300, 320], scale: [0.8, 0.8], darkVariant: true},
-	{path: 'picky', position: [-870, 390], scale: [0.85, 0.85], darkVariant: true},
-	{path: 'mrcrabs', position: [350, 0], scale: [1.5, 1.5], darkVariant: true},
-	{path: 'pocky', position: [400, 230], scale: [0.6, 0.6], darkVariant: true},
-	{path: 'ricky', position: [-1300, -1000], scale: [0.5, 0.5], scroll: [1.7, 1.7], darkVariant: true},
-	{path: 'cucky', position: [-150, -900], scale: [0.5, 0.5], scroll: [1.5, 1.5], front: true, darkVariant: true},
-	{path: 'flicky', position: [-400, -1100], scale: [0.8, 0.8], scroll: [2.2, 2.2], darkVariant: true},
-	{path: 'fish', position: [-1500, 260], scale: [1.2, 1.2], scroll: [2, 2], darkVariant: true},
+	{path: 'picky', position: [-870, 400], darkVariant: true},
+	{path: 'mrcrabs', position: [200, -30], scale: [1.3, 1.3], darkVariant: true},
+	{path: 'pocky', position: [400, 230], scale: [0.7, 0.7], darkVariant: true},
+	{path: 'ricky', position: [-1300, -1000], scale: [0.6, 0.6], scroll: [1.7, 1.7], darkVariant: true},
+	{path: 'cucky', position: [-50, -900], scale: [0.5, 0.5], scroll: [1.5, 1.5], front: true, darkVariant: true},
+	{path: 'flicky', position: [-300, -1100], scale: [0.8, 0.8], scroll: [2.2, 2.2], darkVariant: true},
+	{path: 'fish', position: [-1500, 250], scale: [1.2, 1.2], scroll: [2, 2], darkVariant: true},
 	{path: 'new bg/light', position: [-1350, -1300], front: true, scale: [0.8, 0.8]}
 ];
 
@@ -148,6 +150,7 @@ function makeBackground(background:Array<BackgroundSprite>)
 		sprite.scale.set((spriteDef.scale ?? [1, 1, true])[0], (spriteDef.scale ?? [1, 1, true])[1]); if ((spriteDef.scale ?? [1, 1, true])[2]) sprite.updateHitbox();
 		if (spriteDef.visible != null) sprite.visible = spriteDef.visible;
 		if (spriteDef.alpha != null) sprite.alpha = spriteDef.alpha;
+		if (spriteDef.angle != null) sprite.angle = spriteDef.angle;
 		if (spriteDef.front) game.add(sprite);
 		else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
 		spriteDef.sprite = sprite;

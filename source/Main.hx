@@ -126,7 +126,6 @@ class Main extends Sprite
 		//FlxG.saves
 		FlxG.save.data.theYourselfCutscene = null;
 		
-
 		#if HSCRIPT_ALLOWED
 		Iris.warn = function(x, ?pos:haxe.PosInfos) {
 			Iris.logLevel(WARN, x, pos);

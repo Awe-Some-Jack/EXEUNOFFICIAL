@@ -79,7 +79,7 @@ function onEvent(n,v1)
 				_inTrans = false;
 				for (spr in starv)
 				{
-					if (spr.darkVariant != null)
+					if (spr.darkVariant != null && spr.spriteDark != null)
 					{
 						spr.spriteDark.alpha = 1;
 						FlxTween.color(spr.spriteDark, 1, 0xFF000000, 0xFFFFFFFF);
@@ -92,7 +92,7 @@ function onEvent(n,v1)
 				_isDark = true;
 			case 'starved':
 				_inTrans = true;
-				for (spr in starv) if (spr.darkVariant != null) FlxTween.color(spr.spriteDark, 1, 0xFFFFFFFF, 0xFF000000);
+				for (spr in starv) if (spr.darkVariant != null && spr.spriteDark != null) FlxTween.color(spr.spriteDark, 1, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.color(boyfriend, 1, 0xFFFF0000, 0xFF000000);
 				FlxTween.tween(camHUD, {alpha: 0}, 1);
 				FlxTween.color(vg, 3, 0xFFFF0000, 0xFF000000);
@@ -108,11 +108,8 @@ function onEvent(n,v1)
 				}
 				for (spr in starv)
 				{
-					for (spr in starv)
-					{
-						spr.spriteDark.alpha = 0;
-						FlxTween.color(spr.sprite, 1, 0xFF000000, 0xFFFFFFFF);
-					}
+					if (spr.darkVariant != null && spr.spriteDark != null) spr.spriteDark.alpha = 0;
+					FlxTween.color(spr.sprite, 1, 0xFF000000, 0xFFFFFFFF);
 				}
 				FlxTween.tween(camHUD, {alpha: 1}, 4);
 				FlxTween.color(boyfriend, 1, 0xFF000000, 0xFFFFFFFF);

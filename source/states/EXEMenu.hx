@@ -22,6 +22,7 @@ import states.EXEFreeplay;
 import states.LoadingState;
 import states.PlayState;
 
+@:allow(backend.BurningBot)
 class EXEMenu extends MusicBeatState
 {
 	public static var selectedOptionIndex:Int = 2;
@@ -276,8 +277,14 @@ class EXEMenu extends MusicBeatState
 
 		if (canInteract && !isBlinking)
 		{
+			if (backend.BurningBot.active)
+			{
+				backend.BurningBot.updateMenu(this, elapsed);
+				return;
+			}
+
 			updateScrollInput(elapsed);
-			
+
 			if (controls.BACK)
 			{
 				canInteract = false;

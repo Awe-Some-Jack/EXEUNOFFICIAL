@@ -39,6 +39,7 @@ typedef ExeSongEntry = {
 	var songs:Array<ExeSongInfo>;
 }
 
+@:allow(backend.BurningBot)
 class EXEFreeplay extends MusicBeatState
 {
 	static inline final BOX_SCALE:Float = 0.52;
@@ -133,6 +134,12 @@ class EXEFreeplay extends MusicBeatState
 		Mods.loadTopMod();
 		WeekData.reloadWeekFiles(false);
 
+		if (backend.BurningBot.active)
+		{
+			inDevMode = true;
+			backend.BurningBot.resetFreeplayState();
+		}
+
 		buildSongList();
 
 		//Desactiva esto para usar el desbloqueo de Mania! - Uncomment this to use Mania's Unlock!
@@ -203,6 +210,7 @@ class EXEFreeplay extends MusicBeatState
 		}
 
 		createBoxesAndCovers();
+		backend.BurningBot.fixInitialCover(this);
 
 		if (songEntries.length == 0)
 		{
@@ -252,6 +260,8 @@ class EXEFreeplay extends MusicBeatState
 		lerpScore = intendedScore;
 		lerpRating = intendedRating;
 		updateScoreDisplay();
+
+		backend.BurningBot.applyLockIfNeeded(this);
 
 		updateWindowTitle();
 		
@@ -463,7 +473,7 @@ class EXEFreeplay extends MusicBeatState
 			}
 		}
 	}
-	
+
 	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
@@ -492,7 +502,7 @@ class EXEFreeplay extends MusicBeatState
 		if (bgChecker != null && bgSonic != null)
 		{
 			bgChecker.color = bgSonic.color;
-			bgChecker.alpha = 0.10;
+			if (!backend.BurningBot.sceneCleared) bgChecker.alpha = 0.10;
 		}
 
 		if (changeCooldown > 0) changeCooldown -= elapsed;
@@ -508,7 +518,15 @@ class EXEFreeplay extends MusicBeatState
 		
 		if (lerpScore != prevScore || lerpRating != prevRating) updateScoreDisplay();
 
-		if (controls.BACK && !maniaUnlock)
+		backend.BurningBot.enforceSceneCleared(this);
+
+		if (backend.BurningBot.active)
+		{
+			backend.BurningBot.updateFreeplay(this, elapsed);
+			return;
+		}
+
+		if (controls.BACK && !maniaUnlock && !backend.BurningBot.burningLocked)
 		{
 			if (choosingSong)
 			{
@@ -521,7 +539,7 @@ class EXEFreeplay extends MusicBeatState
 			return;
 		}
 
-		if (changeCooldown <= 0 && !choosingSong && !maniaUnlock)
+		if (changeCooldown <= 0 && !choosingSong && !maniaUnlock && !backend.BurningBot.burningLocked)
 		{
 			var newSel = selectedBox;
 			if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
@@ -585,49 +603,74 @@ class EXEFreeplay extends MusicBeatState
 		}
 
 		if ((controls.ACCEPT #if mobile || shortPress #end) && !maniaUnlock)
+			enterSelectedBox();
+	}
+
+	function enterSelectedBox():Void
+	{
+		holdCheck = 0;
+		final entry = songEntries[selectedBox];
+
+		Mods.currentModDirectory = entry.folder;
+		PlayState.storyWeek = entry.week;
+		Difficulty.loadFromWeek();
+
+		curDifficulty = getNormalDiffIdx();
+		choosingSong = true;
+		cancelAllTweens();
+
+		freeBoxes.forEach((box:FlxSprite) -> {
+			if (box.ID != selectedBox)
+			{
+				final offset:Float = -selectedBox * boxWidth;
+				final baseX = centerX + (box.ID * boxWidth) + offset;
+				box.scale.set(BOX_SCALE, BOX_SCALE);
+				box.updateHitbox();
+				box.x = baseX - box.width / 2;
+				box.y = centerY - box.height / 2;
+				box.alpha = 0.5;
+				if (cardPositions != null && box.ID < cardPositions.length)
+					cardPositions[box.ID].setPosition(box.x, box.y);
+			}
+		});
+
+		covers.forEach((cover:FlxSprite) -> {
+			if (cover.ID != selectedBox)
+			{
+				final offset:Float = -selectedBox * boxWidth;
+				final baseX = centerX + (cover.ID * boxWidth) + offset;
+				cover.scale.set(COVER_SCALE, COVER_SCALE);
+				cover.updateHitbox();
+				cover.x = baseX - cover.width / 2;
+				cover.y = centerY - cover.height / 2;
+				cover.alpha = 0.5;
+				_applyCardPosition(cover.ID);
+			}
+		});
+
+		scaleSongBox(true);
+		chooseSong(0, false);
+	}
+
+	function positionCover(cover:FlxSprite, ss:FlxSprite, daStatic:Bool):Void
+	{
+		cover.updateHitbox();
+		cover.x = centerX - cover.width / 2;
+		cover.y = centerY - cover.height / 2;
+
+		if (ss != null)
 		{
-			holdCheck = 0;
-			final entry = songEntries[selectedBox];
-			
-			Mods.currentModDirectory = entry.folder;
-			PlayState.storyWeek = entry.week;
-			Difficulty.loadFromWeek();
+			ss.setGraphicSize(Std.int(cover.width), Std.int(cover.height));
+			ss.updateHitbox();
+			ss.x = cover.x;
+			ss.y = cover.y;
 
-			curDifficulty = getNormalDiffIdx();
-			choosingSong = true;
-			cancelAllTweens();
-
-			freeBoxes.forEach((box:FlxSprite) -> {
-				if (box.ID != selectedBox)
-				{
-					final offset:Float = -selectedBox * boxWidth;
-					final baseX = centerX + (box.ID * boxWidth) + offset;
-					box.scale.set(BOX_SCALE, BOX_SCALE);
-					box.updateHitbox();
-					box.x = baseX - box.width / 2;
-					box.y = centerY - box.height / 2;
-					box.alpha = 0.5;
-					if (cardPositions != null && box.ID < cardPositions.length)
-						cardPositions[box.ID].setPosition(box.x, box.y);
-				}
-			});
-
-			covers.forEach((cover:FlxSprite) -> {
-				if (cover.ID != selectedBox)
-				{
-					final offset:Float = -selectedBox * boxWidth;
-					final baseX = centerX + (cover.ID * boxWidth) + offset;
-					cover.scale.set(COVER_SCALE, COVER_SCALE);
-					cover.updateHitbox();
-					cover.x = baseX - cover.width / 2;
-					cover.y = centerY - cover.height / 2;
-					cover.alpha = 0.5;
-					_applyCardPosition(cover.ID);
-				}
-			});
-
-			scaleSongBox(true);
-			chooseSong(0, false);
+			if (choosingSong && daStatic)
+			{
+				staticTween?.cancel();
+				ss.alpha = 1.0;
+				staticTween = FlxTween.tween(ss, {alpha: 0.18}, 0.45, {ease: FlxEase.quadOut});
+			}
 		}
 	}
 
@@ -656,7 +699,7 @@ class EXEFreeplay extends MusicBeatState
 		for (i in 0...songs.length)
 		{
 			final spr = songTexts.members[i];
-			spr.text = songs[i].toUpperCase();
+			spr.text = (backend.BurningBot.active && songs[i] == 'burning') ? '????' : songs[i].toUpperCase();
 			spr.color = FlxColor.WHITE;
 			spr.ID = i;
 			spr.y = slot0Y + (i * SONG_SPACING_Y);
@@ -700,35 +743,28 @@ class EXEFreeplay extends MusicBeatState
 		if (songSelector < 0 || songSelector >= entry.songs.length) return;
 
 		final songName = entry.songs[songSelector].songName;
-		final coverPath = PATH_COVERS + Paths.formatToSongPath(songName) + '.webp';
+		final cover = covers.members[selectedBox];
+		final ss = staticScreens.members[selectedBox];
+		if (cover == null) return;
+
+		if (songName == 'burning' && backend.BurningBot.active)
+		{
+			backend.BurningBot.setCoverBlackFrame(cover);
+			positionCover(cover, ss, daStatic);
+			return;
+		}
+
+		final coverPath = (songName == 'burning')
+			? 'assets/exe/freeplayassets/covers/burning/burningidle.webp'
+			: PATH_COVERS + Paths.formatToSongPath(songName) + '.webp';
 
 		var bmp = loadRawBitmap(coverPath);
 		bmp ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.webp');
-		
-		final cover = covers.members[selectedBox];
-		final ss = staticScreens.members[selectedBox];
-		
-		if (cover != null && bmp != null)
+
+		if (bmp != null)
 		{
 			cover.loadGraphic(bmp);
-			cover.updateHitbox();
-			cover.x = centerX - cover.width / 2;
-			cover.y = centerY - cover.height / 2;
-
-			if (ss != null)
-			{
-				ss.setGraphicSize(Std.int(cover.width), Std.int(cover.height));
-				ss.updateHitbox();
-				ss.x = cover.x;
-				ss.y = cover.y;
-
-				if (choosingSong && daStatic)
-				{
-					staticTween?.cancel();
-					ss.alpha = 1.0;
-					staticTween = FlxTween.tween(ss, {alpha: 0.18}, 0.45, {ease: FlxEase.quadOut});
-				}
-			}
+			positionCover(cover, ss, daStatic);
 		}
 	}
 
@@ -913,17 +949,27 @@ class EXEFreeplay extends MusicBeatState
 		if (PlayState._lastLoadedModDirectory != Mods.currentModDirectory)
 			Paths.freeGraphicsFromMemory();
 
-		if (songEntries[selectedBox].songs[0].transitionShape != null) 
-			CustomShapeTransition.shape = CustomShapeTransition.getShapeByString(songEntries[selectedBox].songs[0].transitionShape);
+		function finishLaunch():Void
+		{
+			LoadingState.prepareToSong();
+			LoadingState.loadAndSwitchState(new PlayState());
+			FlxG.sound.music?.fadeOut(0.3);
+			stopMusicPlay = true;
 
-		LoadingState.prepareToSong();
-		LoadingState.loadAndSwitchState(new PlayState());
-		FlxG.sound.music?.fadeOut(0.3);
-		stopMusicPlay = true;
+			#if (MODS_ALLOWED && DISCORD_ALLOWED)
+			DiscordClient.loadModRPC();
+			#end
+		}
 
-		#if (MODS_ALLOWED && DISCORD_ALLOWED)
-		DiscordClient.loadModRPC();
-		#end
+		if (songLower == 'burning')
+			backend.BurningBot.startBurningLaunch(this, finishLaunch);
+		else
+		{
+			if (songEntries[selectedBox].songs[0].transitionShape != null)
+				CustomShapeTransition.shape = CustomShapeTransition.getShapeByString(songEntries[selectedBox].songs[0].transitionShape);
+
+			finishLaunch();
+		}
 	}
 
 	function changeSelection(newIndex:Int):Void
@@ -990,8 +1036,11 @@ class EXEFreeplay extends MusicBeatState
 
 	function loadCharText(index:Int):Void
 	{
-		final title = (index >= 0 && index < songEntries.length && songEntries[index].songs.length > 0)
+		var title = (index >= 0 && index < songEntries.length && songEntries[index].songs.length > 0)
 			? songEntries[index].songs[0].title : "???";
+
+		if (backend.BurningBot.active && index == backend.BurningBot.targetBox)
+			title = "???";
 
 		charText.text = title;
 		FlxTween.cancelTweensOf(charText);

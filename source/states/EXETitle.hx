@@ -22,6 +22,7 @@ import states.EXEMenu;
 import states.LoadingState;
 import states.parallax.ParallaxState;
 
+@:allow(backend.BurningBot)
 class EXETitle extends MusicBeatState
 {
 	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
@@ -49,6 +50,13 @@ class EXETitle extends MusicBeatState
 	{
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
+
+		if (FlxG.save.data.burningBot == true)
+		{
+			FlxG.save.data.burningBot = false;
+			FlxG.save.flush();
+			backend.BurningBot.active = true;
+		}
 
 		if (!initialized)
 		{
@@ -130,7 +138,7 @@ class EXETitle extends MusicBeatState
 			playVideo('introcutscene');
 			return;
 		}
-		else if(FlxG.save.data.firstBoot && !playedIntro)
+		else if(FlxG.save.data.firstBoot && !playedIntro && !backend.BurningBot.active)
 		{
 			playedIntro = true;
 			playVideo('postIntro');
@@ -145,7 +153,7 @@ class EXETitle extends MusicBeatState
 		FlxG.camera.visible = false;
 
 		new FlxTimer().start(0.1, (_) -> {
-			FlxG.sound.play(Paths.sound('exelaugh'));
+			FlxG.sound.play(Paths.sound(backend.BurningBot.active ? 'eggmanlaugh' : 'exelaugh'));
 			new FlxTimer().start(1.6, (_) -> {
 				canStart = true;
 				FlxG.mouse.visible = true;
@@ -282,25 +290,12 @@ class EXETitle extends MusicBeatState
 			#end
 		}
 
-		if (initialized && !transitioning && canStart && mousePosition == 'left')
+		if (initialized && !transitioning && canStart)
 		{
-			if (pressedEnter)
-			{
-				titleText.animation.play('press', true);
-				transitioning = true;
-				spikes.acceleration.x = -100;
-				
-				FlxG.sound.play(Paths.sound('menulaugh'));
-				FlxG.sound.play(Paths.sound('menumomentclick'));
-				FlxG.camera.flash(FlxColor.RED, 0.5);
-				
-				new FlxTimer().start(1, (_) -> {
-					FlxTween.tween(blackScreen, {alpha: 1}, 1);
-					FlxTween.tween(eyes, {alpha: 0}, 1.5, {ease: FlxEase.expoIn});
-
-					new FlxTimer().start(1.5, (_) -> FlxG.switchState(() -> new EXEMenu()));
-				});
-			}
+			if (backend.BurningBot.active)
+				backend.BurningBot.updateTitle(this, elapsed);
+			else if (mousePosition == 'left' && pressedEnter)
+				confirmStart();
 		}
 
 		if (!transitioning && canStart)
@@ -421,6 +416,24 @@ class EXETitle extends MusicBeatState
 				FlxG.switchState(() -> new states.access.FridgeAccess()); 
 			});
 		}
+	}
+
+	function confirmStart():Void
+	{
+		titleText.animation.play('press', true);
+		transitioning = true;
+		spikes.acceleration.x = -100;
+
+		FlxG.sound.play(Paths.sound(backend.BurningBot.active ? 'menueggmanlaugh' : 'menulaugh'));
+		FlxG.sound.play(Paths.sound('menumomentclick'));
+		FlxG.camera.flash(FlxColor.RED, 0.5);
+
+		new FlxTimer().start(1, (_) -> {
+			FlxTween.tween(blackScreen, {alpha: 1}, 1);
+			FlxTween.tween(eyes, {alpha: 0}, 1.5, {ease: FlxEase.expoIn});
+
+			new FlxTimer().start(1.5, (_) -> FlxG.switchState(() -> new EXEMenu()));
+		});
 	}
 
 	function cancelLogoTweens():Void

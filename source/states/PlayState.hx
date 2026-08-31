@@ -1846,7 +1846,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (controls.PAUSE && startedCountdown && canPause)
+		if (controls.PAUSE && startedCountdown && canPause && (Paths.formatToSongPath(SONG.song) != 'burning' || FlxG.save.data.burningWon == true))
 		{
 			var ret:Dynamic = LuaUtils.Function_Continue;
 			if (hasScripts) ret = callOnScripts('onPause', null, true);
@@ -2787,8 +2787,22 @@ class PlayState extends MusicBeatState
 		else
 		{
 			exitToMenu();
+
+			if (formattedSong == 'personel')
+			{
+				FlxG.save.data.burningBot = true;
+				FlxG.save.flush();
+				haxe.Timer.delay(() -> Application.current.window.close(), 3000);
+			}
+
+			if (formattedSong == 'burning')
+			{
+				backend.BurningBot.resetFreeplayState();
+				FlxG.save.data.burningWon = true;
+				FlxG.save.flush();
+			}
 		}
-		
+
 		return true;
 	}
 
@@ -3780,7 +3794,7 @@ class PlayState extends MusicBeatState
 				if (curBeat >= 368) PauseSubState.miniSonicImage = 'expulsion-1';
 			case 'her-world':
 				if(curBeat >= 208) PauseSubState.miniSonicImage = 'her-world-2';
-				if(curBeat >= 208 && curBeat < 552) if(FlxG.random.bool(5)) PauseSubState.miniSonicImage = 'her-world-luther-look-how-small-he-is-how-cute-look-how-mini-awww-w-mini-luther-yeah-thanks-for-everything-mini-mini-luther-the-goat';
+				if(curBeat >= 208 && curBeat < 552) if(FlxG.random.bool(5)) PauseSubState.miniSonicImage = 'her-world-6';
 				if(curBeat >= 552) PauseSubState.miniSonicImage = 'her-world-3';
 				if(curBeat >= 832) PauseSubState.miniSonicImage = 'her-world-4';
 				if(curBeat >= 1064) PauseSubState.miniSonicImage = 'her-world-5';

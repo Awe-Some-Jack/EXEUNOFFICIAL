@@ -6,6 +6,7 @@ var deadBoyfriend:Character;
 var inGameOver:Bool = false;
 var deadMusic:FlxSound;
 var keith:FlxSprite;
+var luis:FlxSprite;
 
 function onCreate()
 {
@@ -35,10 +36,13 @@ function onGameOverStart()
 	keith.alpha = 0;
 	GameOverSubstate.instance.add(keith);
 
-	bf = new Character(5000, 100, 'coldsteel_bf', true);
-	bf.scale.set(bf.scale.x * 2, bf.scale.y * 2);
-	bf.alpha = 0;
-	GameOverSubstate.instance.add(bf);
+	luis = new FlxSprite().loadGraphic(Paths.image('luis'));
+	luis.scale.set(0.6, 0.6);
+	luis.updateHitbox();
+	luis.screenCenter(0x10);
+	luis.x = 2200;
+	luis.alpha = 0;
+	GameOverSubstate.instance.add(luis);
 }
 
 var _canZoom = false;
@@ -51,7 +55,7 @@ function onUpdatePost(e)
 	if (_canZoom){
 		keith.scale.set(keith.scale.x + e / 500, keith.scale.y + e / 500);
 		keith.y -= e / 2.5;
-		bf.x -= e * 50;
+		luis.x -= e * 20;
 	}
 
 	if (deadBoyfriend.getAnimationName() == 'deathLoop')
@@ -64,9 +68,9 @@ function onUpdatePost(e)
 				_canZoom = true;
 				FlxTween.tween(keith, {alpha: 1}, 40, {ease: FlxEase.easeInOut});
 				new FlxTimer().start(70, _ -> {
-					FlxTween.tween(bf, {alpha: 1}, 10, {ease: FlxEase.easeInOut});
-					new FlxTimer().start(15, _ -> {
-						FlxTween.tween(bf, {alpha: 0}, 10, {ease: FlxEase.easeInOut});
+					FlxTween.tween(luis, {alpha: 1}, 10, {ease: FlxEase.easeInOut});
+					new FlxTimer().start(20, _ -> {
+						FlxTween.tween(luis, {alpha: 0}, 10, {ease: FlxEase.easeInOut});
 					});
 				});
 			});

@@ -188,7 +188,7 @@
 			"twitter": "https://x.com/Art_VN2",
 			"nation": "peru",
 			"colors": [[175, 38, 130], [25, 41, 183]],
-			"extra": ["image", "endadenao.png"]
+			"extra": ["video", "tiseapapi"]
 		},
 		{
 			"name": "Mariano",
@@ -203,7 +203,7 @@
 		{
 			"name": "Kostya Hernandez",
 			"icon": "kostya",
-			"quote": "Dudu pollo te va a coger en coders",
+			"quote": "Amo a todos los que están en Unoficial, son unas personitas increíbles y me gustó trabajar en este proyecto. Puedes buscarme para tus proyectos y acordar todo al MD!",
 			"description": "Artist and 3D Artist",
 			"nation": "mexico",
 			"colors": [[221, 141, 71], [154, 0, 102]],
@@ -386,7 +386,8 @@
 			"quote": "Hermano, trabajar aquí fue una de las mejores experiencias que he tenido en esta comunidad. Nunca había estado en un mod EXE terminado, y que el primero sea este me tiene muy emocionado.\n\nMe encanta ver que con trabajo, tiempo y esfuerzo pudimos crear algo especial entre todos nosotros.\n\nPasé muy buenos momentos y conocí personas increíbles. Muchas gracias por creer en nosotros y por dejarme formar parte de este proyecto.\n\nEspero se pueda dar la oportunidad de una v2 para seguir viviendo esta bonita experiencia.\n\nCon mucho cariño, gracias... Rogy los quiere :D",
 			"nation": "chile",
 			"colors": [[45, 0, 68], [6, 0, 10]],
-			"youtube": "https://youtube.com/@rogtarymusic"
+			"youtube": "https://youtube.com/@rogtarymusic",
+			"extra": ["image", "xdddd.png"]
 		},
 		{
 			"name": "Ryan2511Pro",
@@ -476,8 +477,20 @@
 		{
 			"name": "RightBurstUltra",
 			"icon": "rightburst",
-			"quote": "RightBurst Ultra is the original creator and former director of the Vs. Sonic.exe mod, credited with its initial art, music, and the character Xenophanes. His leadership ended after internal conflicts led to his removal from the project, though he continues to develop his own Friday Night Funkin' mods.",
+			"quote": "RightBurst_Ultra was known as the creator and former director of the original Vs. Sonic.EXE mod, and he later created what we now know as Parallax, which ended up being an extension of the original mod along with its EXE characters. He was also kicked out of the team due to past behavior and conflicts.",
 			"description": "Mod Creator & Former Director"
+		},
+		{
+			"name": "Raven",
+			"icon": "raven",
+			"quote": "revie03 (Formely known as revie03) was a former director and the creator of the character EXE, leading the mod during the development of updates 2.0 and 2.5. She was removed from the project following controversial accusations that were later debunked, though she briefly returned before departing permanently.",
+			"description": "Former Director"
+		},
+		{
+			"name": "ComGamingNZ",
+			"icon": "commando",
+			"quote": "ComGamingNZ (also known as CommandoDev) is a director and artist who co-led the project during its later stages and is credited with creating the character Requital. He played a significant role in the mod's direction and contributed artwork and character designs during a period of intense team restructuring.",
+			"description": "Director & Artist"
 		},
 		{
 			"name": "Saster",
@@ -486,28 +499,16 @@
 			"description": "Director & Composer"
 		},
 		{
-			"name": "ComGamingNZ",
-			"icon": "commando",
-			"quote": "ComGamingNZ (also known as Commando) is a director and artist who co-led the project during its later stages and is credited with creating the character Requital. He played a significant role in the mod's direction and contributed artwork and character designs during a period of intense team restructuring.",
-			"description": "Director & Artist"
-		},
-		{
 			"name": "averyavary",
 			"icon": "avery",
 			"quote": "averyavary served as a former director and programmer, contributing to the codebase and project management before stepping down from his leadership role. He was involved in the early to mid-stages of development, helping to shape the mod's technical foundation before leaving the team.",
 			"description": "Former Director & Former Programmer"
 		},
 		{
-			"name": "revie03",
-			"icon": "raven",
-			"quote": "revie03 (known as Raven) was a former director and the creator of the character EXE, leading the mod during the development of updates 2.0 and 2.5. She was removed from the project following controversial accusations that were later debunked, though she briefly returned before departing permanently.",
-			"description": "Former Director"
-		},
-		{
 			"name": "Falsecow",
 			"icon": "false",
 			"quote": "Falsecow is a co-director and digital artist known for creating the 'I AM GOD' artwork and the character Sally_ALT. They served in a leadership role during the mod's later development and contributed significant artistic assets to the EXE universe.",
-			"description": "Co-Director"
+			"description": "Former Co-Director & Artist"
 		},
 		{
 			"name": "Razencro",
@@ -555,7 +556,7 @@
 			"name": "Wilde",
 			"icon": "wilde",
 			"quote": "Wilde is a charter and artist who contributed to the mod's charting and visual design, helping to align the gameplay with the artistic vision. His work ensured that the note patterns matched the animations and atmosphere of the characters.",
-			"description": "Charter & Artist"
+			"description": "Charter & Animator"
 		},
 		{
 			"name": "niffirg",
@@ -573,7 +574,7 @@
 			"name": "Echolocated",
 			"icon": "echo",
 			"quote": "Echolocated is a former charter who was involved in the charting process during the mod's development, contributing to the structure of various songs. He left the team before the project's cancellation.",
-			"description": "Former Charter"
+			"description": "Former Charter & Former Composer"
 		},
 		{
 			"name": "Degen Dan",
@@ -585,7 +586,7 @@
 			"name": "Dk.",
 			"icon": "dk",
 			"quote": "Dk. is a former charter who worked on the note placement for several songs, helping to refine the gameplay mechanics before leaving the team. His contributions were part of the early charting efforts for the mod.",
-			"description": "Former Charter"
+			"description": "Former Programmer"
 		},
 		{
 			"name": "SmileySqueak",
@@ -596,14 +597,8 @@
 		{
 			"name": "Jacaris",
 			"icon": "jacaris",
-			"quote": "Jacaris is a composer and voice actor who provided vocals for characters like Fleetway Super Sonic and Coldsteel the Hedgeheg. He also composed music for the mod, contributing to the soundtrack's variety.",
+			"quote": "Jacaris is a composer and voice actor who provided vocals for characters like Super Sonic Fleetway, Coldsteel the Hedgeheg & Zodick The Hellhog. He also composed music for the mod, contributing to the soundtrack's variety.",
 			"description": "Composer & Voice Actor"
-		},
-		{
-			"name": "LongestSoloEver",
-			"icon": "lse",
-			"quote": "LongestSoloEver is a composer who contributed original music to the mod, adding to the rich soundtrack that defined the horror atmosphere. His compositions helped enhance the tension and drama of the gameplay.",
-			"description": "Composer"
 		},
 		{
 			"name": "River",
@@ -633,13 +628,7 @@
 			"name": "Adam McHummus",
 			"icon": "adam",
 			"quote": "Adam McHummus is a composer who contributed original music to the mod, helping to expand the soundtrack with unique and atmospheric tracks. His work added to the overall horror aesthetic of the game.",
-			"description": "Composer"
-		},
-		{
-			"name": "Case117",
-			"icon": "case",
-			"quote": "Case117 is a composer who created original tracks for the mod, contributing to the musical diversity and intensity of the Vs. Sonic.exe experience. His compositions helped shape the rhythm and flow of several songs.",
-			"description": "Composer"
+			"description": "3D Animator, Composer & Voice Actor"
 		},
 		{
 			"name": "Teein",
@@ -674,19 +663,13 @@
 		{
 			"name": "Jamangar",
 			"icon": "jamangar",
-			"quote": "Jamangar is a former composer who contributed music to the mod in its earlier stages before leaving the project. His work helped establish the initial musical foundation.",
+			"quote": "Jamangar was a composer who contributed to the development of Version 2.0 of the Original Mod and composed the song “Black Sun”; after that, he did not contribute any further work during the development.",
 			"description": "Former Composer"
 		},
 		{
 			"name": "JesterFrog",
 			"icon": "jester",
-			"quote": "JesterFrog is a former composer who contributed music to the mod in its earlier stages before leaving the project. His work helped establish the initial musical foundation.",
-			"description": "Former Composer"
-		},
-		{
-			"name": "Misfire",
-			"icon": "misfire",
-			"quote": "Misfire is a former composer who contributed music to the mod in its earlier stages before leaving the project. His work helped establish the initial musical foundation.",
+			"quote": "JesterFrog was a composer and creator for NormalCD who worked on the development of the original mod. She was expelled from the team due to allegations that led to all of her work being removed from the mod.",
 			"description": "Former Composer"
 		},
 		{
@@ -698,26 +681,20 @@
 		{
 			"name": "Voidicus",
 			"icon": "voidicus",
-			"quote": "Voidicus is a former composer who contributed music to the mod in its earlier stages before leaving the project. His work helped establish the initial musical foundation.",
-			"description": "Former Composer"
-		},
-		{
-			"name": "Neutroa",
-			"icon": "neutroa",
-			"quote": "Neutroa is a former composer who contributed music to the mod in its earlier stages before leaving the project. His work helped establish the initial musical foundation.",
+			"quote": "Voidicus was a composer who only contributed to the song “Soink.FLA,” known as “Flash.”",
 			"description": "Former Composer"
 		},
 		{
 			"name": "Benlab",
 			"icon": "benlab",
-			"quote": "Benlab is a former composer who contributed music to the mod in its earlier stages before leaving the project. His work helped establish the initial musical foundation.",
+			"quote": "Benlab was a composer who was part of the original mod for a short time. He is known for creating the song “Divine Strike” for Sir X.",
 			"description": "Former Composer"
 		},
 		{
 			"name": "SwappyBlue",
 			"icon": "swappyblue",
 			"quote": "SwappyBlue is a former composer who contributed music to the mod in its earlier stages before leaving the project. His work helped establish the initial musical foundation.",
-			"description": "Former Composer"
+			"description": "Concept Artist & Composer"
 		},
 		{
 			"name": "Divide",
@@ -735,31 +712,31 @@
 			"name": "Zekuta",
 			"icon": "zekuta",
 			"quote": "Zekuta is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist & Animator"
 		},
 		{
 			"name": "Stankfield",
 			"icon": "stankfield",
 			"quote": "Stankfield is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Former Artist"
 		},
 		{
 			"name": "Erick Animations",
 			"icon": "erick",
 			"quote": "Erick Animations is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist & Animator"
 		},
 		{
 			"name": "ScorchVx",
 			"icon": "scorch",
 			"quote": "ScorchVx is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist & Animator"
 		},
 		{
 			"name": "BombNon",
 			"icon": "bombnon",
 			"quote": "BombNon is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist & Animator"
 		},
 		{
 			"name": "ADJ",
@@ -794,7 +771,7 @@
 		{
 			"name": "GrayAnimates",
 			"icon": "gray",
-			"quote": "GrayAnimates is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
+			"quote": "GrayAnimates (also known as PaigePayper) is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
 			"description": "Artist"
 		},
 		{
@@ -813,13 +790,13 @@
 			"name": "AnarackWarriors",
 			"icon": "anarack",
 			"quote": "AnarackWarriors is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist, Pixel Artist & Animator"
 		},
 		{
-			"name": "Madzilla",
+			"name": "MadzillaK0TH",
 			"icon": "madzilla",
-			"quote": "Madzilla is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"quote": "MadzillaK0TH is an artist, charter member, and voice actor who worked on the mod. His most significant contributions were providing the voice samples for Faker, designing the sound effects for the “Triple Trouble” scare sequences, and creating the characters Demogri and Griatos, who appeared in the original mod.",
+			"description": "Artist, Charter & Voice Actor"
 		},
 		{
 			"name": "SrGenesis",
@@ -858,21 +835,9 @@
 			"description": "Voice Actor"
 		},
 		{
-			"name": "Microsoft SAM",
-			"icon": "microsoftsam",
-			"quote": "Microsoft SAM is a voice actor who provided vocals for the character Fatal Error and contributed to the mod's audio. He was a key voice actor during the mod's development.",
-			"description": "Voice Actor"
-		},
-		{
 			"name": "StarlySammie",
 			"icon": "starly",
 			"quote": "StarlySammie is a voice actor who provided vocals for the character Sarah NeedleM0use Henderson and contributed to the mod's audio. She was a key voice actor during the mod's development.",
-			"description": "Voice Actor"
-		},
-		{
-			"name": "Tom Kenny",
-			"icon": "tomkenny",
-			"quote": "Tom Kenny is a voice actor who provided vocals for the character Sunky's Spongebob form (sampled) and contributed to the mod's audio. He was a key voice actor during the mod's development.",
 			"description": "Voice Actor"
 		},
 		{

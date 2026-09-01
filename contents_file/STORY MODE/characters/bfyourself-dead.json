@@ -2,37 +2,37 @@
 	"animations": [
 		{
 			"offsets": [494, 472],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "firstDeath",
-			"loop": false,
+			"indices": [],
 			"name": "die"
 		},
 		{
 			"offsets": [283, -283],
-			"indices": [],
+			"loop": true,
 			"fps": 24,
 			"anim": "deathLoop",
-			"loop": true,
+			"indices": [],
 			"name": "loop"
 		},
 		{
 			"offsets": [282, -196],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "deathConfirm",
-			"loop": false,
+			"indices": [],
 			"name": "retry"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "gameovers/yourself/lookalike gameover",
-	"position": [-85, 320],
+	"position": [-125, -240],
 	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],
-	"camera_position": [60, -30],
+	"camera_position": [220, 90],
 	"sing_duration": 5.99999999999999,
 	"scale": 0.7,
 	"_editor_isPlayer": true

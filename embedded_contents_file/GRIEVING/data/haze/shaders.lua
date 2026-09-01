@@ -85,7 +85,7 @@ local lightningPhase = {
             setShaderFloat(char, 'saturation', 0)
             setShaderFloat(char, 'contrast', 0)
             setShaderFloat(char, 'str', 1)
-            setShaderFloat(char, 'brightness', char == 'dad' and 0 or -30)
+            setShaderFloat(char, 'brightness', char == 'dad' and 0 or -60)
             setShaderFloat(char, 'thr', 0.1)
             setShaderFloat(char, 'uSpriteAlpha', 1.0)
             setShaderFloat(char, 'AA_STAGES', 1.0)
@@ -106,12 +106,11 @@ local lightningPhase = {
         end
         setShaderFloat('dad', 'ang', math.rad(75))
         setShaderFloat('boyfriend', 'ang', math.rad(115))
-        --setShaderFloat('m', 'ang', math.rad(115)) setShaderFloat('t', 'ang', math.rad(115))
         setShaderFloat('dad', 'dist', 10)
-        setShaderFloat('boyfriend', 'dist', 20)
+        setShaderFloat('boyfriend', 'dist', 30)
         setShaderBool('boyfriend', 'doBlend', true) -- sorry wolfie. boss's orders. if you're seeing this and still see this stupid, talk to treno abt this.
         setShaderBool('boyfriend', 'pixelPerfect', true)
-        setShaderBool('boyfriend', 'useOverlay', true)
+        setShaderBool('boyfriend', 'useOverlay', false)
     end,
     [2] = function ()
         for _, them in ipairs({'m', 't'}) do removeSpriteShader(them) end

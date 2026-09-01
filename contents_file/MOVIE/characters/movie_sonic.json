@@ -1,84 +1,84 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [104, -29],
 			"loop": false,
-			"fps": 24,
+			"offsets": [75, -27],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
-			"offsets": [140, -160],
 			"loop": false,
-			"fps": 24,
+			"offsets": [130, -160],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [11, 67],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-15, -2],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [27, 13],
-			"loop": false,
-			"fps": 24,
 			"anim": "meow",
-			"indices": [],
-			"name": "meaw"
+			"fps": 24,
+			"name": "meaw",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [280, 60],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT-alt",
-			"fps": 24,
-			"name": "leftalt",
-			"indices": []
+			"indices": [],
+			"name": "leftalt"
 		},
 		{
-			"loop": false,
 			"offsets": [220, -210],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN-alt",
-			"fps": 24,
-			"name": "downalt",
-			"indices": []
+			"indices": [],
+			"name": "downalt"
 		},
 		{
-			"loop": false,
 			"offsets": [-3, 40],
-			"anim": "singUP-alt",
+			"loop": false,
 			"fps": 24,
-			"name": "upalt",
-			"indices": []
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "upalt"
 		},
 		{
-			"loop": false,
 			"offsets": [20, -80],
-			"anim": "singRIGHT-alt",
+			"loop": false,
 			"fps": 24,
-			"name": "rightalt",
-			"indices": []
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "rightalt"
 		}
 	],
 	"vocals_file": "",

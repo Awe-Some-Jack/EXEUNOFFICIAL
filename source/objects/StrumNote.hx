@@ -15,7 +15,15 @@ class StrumNote extends FlxSprite
 	private var noteData:Int = 0;
 	private var player:Int = 0;
 
+	public var isPlayer:Bool = false;
+
 	public var texture(default, set):String = null;
+
+	public var useVSliceReceptorFeature:Bool = true;
+
+	public var holdTimer = 0.0;
+	public var confirmDuration = 4.0;
+
 	private function set_texture(value:String):String
 	{
 		if (texture != value)
@@ -35,6 +43,7 @@ class StrumNote extends FlxSprite
 		noteData = leData;
 		this.player = player;
 		this.ID = noteData;
+		this.isPlayer = player == 1;
 
 		var skin:String = (PlayState.SONG != null && PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1)
 			? PlayState.SONG.arrowSkin
@@ -157,6 +166,27 @@ class StrumNote extends FlxSprite
 			}
 		}
 		super.update(elapsed);
+
+		if (!useVSliceReceptorFeature) return;
+
+		 if (animation.curAnim != null && animation.curAnim.name.startsWith('confirm'))
+		{
+			holdTimer += elapsed;
+		}
+
+		if (holdTimer >= Conductor.stepCrochet * (0.0011 #if FLX_PITCH / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1) #end) * confirmDuration)
+		{
+			if (animation.curAnim != null && animation.curAnim.name.startsWith('confirm')){
+				if (isPlayer){
+					playAnim("pressed");
+				}/*else{
+					playAnim("static");
+				}*/
+			}else{
+				playAnim("static");
+			}
+			holdTimer = 0;
+		}
 	}
 
 	public function playAnim(anim:String, force:Bool = false):Void
@@ -164,6 +194,9 @@ class StrumNote extends FlxSprite
 		animation.play(anim, force);
 		if (animation.curAnim != null)
 		{
+			if (anim == "confirm"){
+				holdTimer = 0;
+			}
 			centerOffsets();
 			centerOrigin();
 		}

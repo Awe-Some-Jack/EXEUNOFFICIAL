@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="starv.png">
+<SubTexture name="idle0000" x="0" y="0" width="510" height="482" frameX="0" frameY="0" frameWidth="510" frameHeight="482" />
+<SubTexture name="idle0001" x="510" y="0" width="510" height="482" frameX="0" frameY="0" frameWidth="510" frameHeight="482" />
+<SubTexture name="idle0002" x="0" y="482" width="510" height="482" frameX="0" frameY="0" frameWidth="510" frameHeight="482" />
+<SubTexture name="idle0003" x="510" y="482" width="510" height="482" frameX="0" frameY="0" frameWidth="510" frameHeight="482" />
+<SubTexture name="idle0004" x="1020" y="0" width="510" height="482" frameX="0" frameY="0" frameWidth="510" frameHeight="482" />
+<SubTexture name="idle0005" x="1020" y="482" width="510" height="482" frameX="0" frameY="0" frameWidth="510" frameHeight="482" />
+</TextureAtlas>

@@ -36,6 +36,7 @@ class VideoSprite extends FlxSpriteGroup
 	public var onSkip:Void->Void = null;
 
 	private var wasPlayingBeforeFocusLost:Bool = false;
+	private var _shouldBePlaying:Bool = false;
 
 	public function new(x:Float = 0, y:Float = 0, autoDestroy:Bool = true)
 	{
@@ -110,6 +111,8 @@ class VideoSprite extends FlxSpriteGroup
 
 	public function playDelayed(delay:Float = 0):Void
 	{
+		_shouldBePlaying = true;
+
 		if (delay <= 0)
 			video.play();
 		else
@@ -128,7 +131,10 @@ class VideoSprite extends FlxSpriteGroup
     }
 
 	public inline function play():Void
+	{
+		_shouldBePlaying = true;
 		video.play();
+	}
 
 	public inline function pause():Void
 		video.bitmap?.pause();
@@ -137,7 +143,10 @@ class VideoSprite extends FlxSpriteGroup
 		video.bitmap?.resume();
 
 	public inline function stop():Void
+	{
+		_shouldBePlaying = false;
 		video.bitmap?.stop();
+	}
 
 	public function onComplete(callback:Void->Void):VideoSprite
 	{
@@ -248,17 +257,15 @@ class VideoSprite extends FlxSpriteGroup
 	{
 		if (FlxG.autoPause)
 		{
-			wasPlayingBeforeFocusLost = isPlaying();
-			
-			if (wasPlayingBeforeFocusLost)
-				video.bitmap?.pause();
+			wasPlayingBeforeFocusLost = isPlaying() || _shouldBePlaying;
+			video.bitmap?.pause();
 		}
 	}
 
 	private function onFocusGained():Void
 	{
 		if (FlxG.autoPause && wasPlayingBeforeFocusLost)
-			video.bitmap?.resume();
+			video.bitmap?.play();
 	}
 
 	override public function update(elapsed:Float):Void

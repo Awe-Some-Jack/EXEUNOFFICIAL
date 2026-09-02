@@ -76,7 +76,7 @@ function onCreatePost()
 		setShaderFloat('dad', 'ang', math.rad(75))
 		setShaderFloat('boyfriend', 'ang', math.rad(115))
 		setShaderFloat('dad', 'dist', 10)
-		setShaderFloat('boyfriend', 'dist', 20)
+		setShaderFloat('boyfriend', 'dist', 30)
         setShaderBool('boyfriend', 'pixelPerfect', true)
         setShaderBool('boyfriend', 'useOverlay', true)
 

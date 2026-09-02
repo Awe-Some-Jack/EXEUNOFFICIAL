@@ -153,7 +153,7 @@ class EXETitle extends MusicBeatState
 		FlxG.camera.visible = false;
 
 		new FlxTimer().start(0.1, (_) -> {
-			FlxG.sound.play(Paths.sound('exelaugh'));
+			FlxG.sound.play(Paths.sound(backend.BurningBot.active ? 'eggmanlaugh' : 'exelaugh'));
 			new FlxTimer().start(1.6, (_) -> {
 				canStart = true;
 				FlxG.mouse.visible = true;
@@ -424,7 +424,7 @@ class EXETitle extends MusicBeatState
 		transitioning = true;
 		spikes.acceleration.x = -100;
 
-		FlxG.sound.play(Paths.sound('menulaugh'));
+		FlxG.sound.play(Paths.sound(backend.BurningBot.active ? 'menueggmanlaugh' : 'menulaugh'));
 		FlxG.sound.play(Paths.sound('menumomentclick'));
 		FlxG.camera.flash(FlxColor.RED, 0.5);
 

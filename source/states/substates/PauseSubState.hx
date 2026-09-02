@@ -94,7 +94,7 @@ class PauseSubState extends MusicBeatSubstate
 		{
 		    if (Paths.fileExists('pause/mini-sonics/$miniSonicImage-1.$exts', IMAGE, 'exe')) 
 			{
-			    daImage = daImage + '-1';
+			    daImage = miniSonicImage + '-1';
 				break;
 			}
 		}

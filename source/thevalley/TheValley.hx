@@ -5,9 +5,21 @@ import flixel.FlxCamera.FlxCameraFollowStyle;
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.FlxSprite;
+import flixel.text.FlxText;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.nape.FlxNapeSpace;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.util.FlxColor;
+import flixel.sound.FlxSound;
+
+import nape.geom.Vec2;
+import nape.phys.Body;
+import nape.phys.BodyType;
+import nape.phys.Material;
+import nape.shape.Polygon;
+
 import thevalley.bg.BGValley;
 import thevalley.map.TVNapeWorld;
 import thevalley.player.Player;
@@ -20,15 +32,21 @@ import thevalley.tiles.Tiles.Totem;
 import thevalley.tiles.Tiles.TotemType;
 import thevalley.tiles.Tiles.SpineTile;
 import thevalley.Monster.MonsterAnim;
+
 import backend.Song;
 import backend.WeekData;
 import backend.Highscore;
+import backend.Difficulty;
+import backend.ClientPrefs;
+import backend.Mods;
+import states.PlayState;
+import states.LoadingState;
 
 class TheValley extends MusicBeatState
 {
-	static inline var MAP_PARTS:Int = 11;
+	static inline final MAP_PARTS:Int = 11;
 
-	var _mapParts:Array<{ part:Int, x:Float, y:Float, width:Float, height:Float }> = [];
+	final _mapParts:Array<{ part:Int, x:Float, y:Float, width:Float, height:Float }> = [];
 
 	public var bgCam:FlxCamera;
 	public var uiCam:FlxCamera;
@@ -44,18 +62,18 @@ class TheValley extends MusicBeatState
 
 	var _gameplayStarted:Bool = false;
 
-	var _ambientSound:flixel.sound.FlxSound;
+	var _ambientSound:FlxSound;
 	var _ambientCloseness:Float = 0;
 
-	var _breathingSound:flixel.sound.FlxSound;
+	var _breathingSound:FlxSound;
 	var _monsterCloseness:Float = 0;
 
 	var _lookDownTimer:Float = 0;
 
 	var _deathFade:FlxSprite;
-	var _spineDeathPhase:Int   = 0;
+	var _spineDeathPhase:Int = 0;
 	var _spineDeathTimer:Float = 0;
-	var _musicFadeFrom:Float   = 1.0;
+	var _musicFadeFrom:Float = 1.0;
 
 	var _finalTriggered:Bool = false;
 
@@ -64,7 +82,7 @@ class TheValley extends MusicBeatState
 	var _gateMsgTxt:FlxText;
 	var _gateMsgTimer:Float = 0;
 
-	static var GATE_LINES:Array<String> = [
+	static final GATE_LINES:Array<String> = [
 		"I can't leave yet... I haven't found all of him.",
 		"Not yet. There's still more of him out there.",
 		"I won't go without him. Not all of him.",
@@ -72,21 +90,21 @@ class TheValley extends MusicBeatState
 
 	var _occlusionAmount:Float = 0;
 
-	var _isRestarting:Bool          = false;
-	var _pauseWatcher:Void->Void    = null;
+	var _isRestarting:Bool = false;
+	var _pauseWatcher:()->Void = null;
 
 	public var cutscene:TVCutscene;
 	public var player:Player;
 
-	public var launchpads:Array<Launchpad>     = [];
-	public var skullPrompts:Array<SkullPrompt> = [];
-	public var totems:Array<Totem>             = [];
+	public final launchpads:Array<Launchpad> = [];
+	public final skullPrompts:Array<SkullPrompt> = [];
+	public final totems:Array<Totem> = [];
 
 	public var objectGroup:FlxTypedGroup<FlxSprite>;
 	public var treeGroup:FlxTypedGroup<FlxSprite>;
-	public var trees:Array<FlxSprite> = [];
-	public var tileCheckers:Array<FlxSprite> = [];
-	public var monsters:Array<Monster> = [];
+	public final trees:Array<FlxSprite> = [];
+	public final tileCheckers:Array<FlxSprite> = [];
+	public final monsters:Array<Monster> = [];
 
 	static var _prevAntialiasing:Bool = false;
 	var _prevWindowTitle:String;
@@ -114,9 +132,9 @@ class TheValley extends MusicBeatState
 
 		for (i in 1...MAP_PARTS + 1)
 		{
-			var path = 'assets/shared/data/minigame/thevalley/map/$i.json';
+			final path = 'assets/shared/data/minigame/thevalley/map/$i.json';
 			if (!openfl.Assets.exists(path)) continue;
-			var raw = openfl.Assets.getText(path);
+			final raw = openfl.Assets.getText(path);
 			if (raw != null) _mapParts.push(haxe.Json.parse(raw));
 		}
 
@@ -127,9 +145,9 @@ class TheValley extends MusicBeatState
 
 		for (p in _mapParts)
 		{
-			if (p.x + p.width  > mapW)    mapW    = p.x + p.width;
-			if (p.x            < mapMinX) mapMinX = p.x;
-			if (p.y            < mapMinY) mapMinY = p.y;
+			if (p.x + p.width > mapW) mapW = p.x + p.width;
+			if (p.x < mapMinX) mapMinX = p.x;
+			if (p.y < mapMinY) mapMinY = p.y;
 			if (p.y + p.height > mapMaxY) mapMaxY = p.y + p.height;
 		}
 
@@ -140,20 +158,20 @@ class TheValley extends MusicBeatState
 		napeWorld.partOffsets = [for (p in _mapParts) { x: p.x, y: p.y }];
 		napeWorld.loadParts("assets/shared/images/minigame/thevalley/map/", MAP_PARTS);
 
-		var wallMat = new nape.phys.Material(0.0, 0.0, 0.0, 1.0, 0.0);
+		final wallMat = new Material(0.0, 0.0, 0.0, 1.0, 0.0);
 
-		var leftWall = new nape.phys.Body(nape.phys.BodyType.STATIC, nape.geom.Vec2.weak(mapMinX - 500, -5000));
-		leftWall.shapes.add(new nape.shape.Polygon(nape.shape.Polygon.rect(0, 0, 500, 20000)));
+		final leftWall = new Body(BodyType.STATIC, Vec2.weak(mapMinX - 500, -5000));
+		leftWall.shapes.add(new Polygon(Polygon.rect(0, 0, 500, 20000)));
 		leftWall.setShapeMaterials(wallMat);
 		leftWall.space = FlxNapeSpace.space;
 
-		var rightWall = new nape.phys.Body(nape.phys.BodyType.STATIC, nape.geom.Vec2.weak(mapW, -5000));
-		rightWall.shapes.add(new nape.shape.Polygon(nape.shape.Polygon.rect(0, 0, 500, 20000)));
+		final rightWall = new Body(BodyType.STATIC, Vec2.weak(mapW, -5000));
+		rightWall.shapes.add(new Polygon(Polygon.rect(0, 0, 500, 20000)));
 		rightWall.setShapeMaterials(wallMat);
 		rightWall.space = FlxNapeSpace.space;
 
-		var floorWall = new nape.phys.Body(nape.phys.BodyType.STATIC, nape.geom.Vec2.weak(-5000, mapMaxY + 200));
-		floorWall.shapes.add(new nape.shape.Polygon(nape.shape.Polygon.rect(0, 0, 30000, 500)));
+		final floorWall = new Body(BodyType.STATIC, Vec2.weak(-5000, mapMaxY + 200));
+		floorWall.shapes.add(new Polygon(Polygon.rect(0, 0, 30000, 500)));
 		floorWall.setShapeMaterials(wallMat);
 		floorWall.space = FlxNapeSpace.space;
 
@@ -163,7 +181,7 @@ class TheValley extends MusicBeatState
 		treeGroup = new FlxTypedGroup<FlxSprite>();
 		add(treeGroup);
 
-		var map1Spr = bg.mapSprites.length > 0 ? bg.mapSprites[0] : null;
+		final map1Spr = bg.mapSprites.length > 0 ? bg.mapSprites[0] : null;
 		if (map1Spr != null)
 		{
 			members.remove(treeGroup);
@@ -188,21 +206,14 @@ class TheValley extends MusicBeatState
 		cutscene = new TVCutscene(this, player, bgCam, uiCam, hud);
 		cutscene.addSprites(this, uiCam);
 
-		cutscene.onGameplayStart = function()
-		{
+		cutscene.onGameplayStart = () -> {
 			_gameplayStarted  = true;
 			player.cinematic  = false;
 			hud.timerRunning  = true;
 		};
 
-		cutscene.onSkullWin = function()
-		{
-			hud.addShard();
-		};
-		cutscene.onSkullCS2Done = function()
-		{
-			hud.addShard();
-		};
+		cutscene.onSkullWin = () -> hud.addShard();
+		cutscene.onSkullCS2Done = () -> hud.addShard();
 		cutscene.playIntro();
 
 		_ambientSound = FlxG.sound.load(Paths.music("minigame/thevalley/ambient"), 0, true, null, false, true);
@@ -214,9 +225,8 @@ class TheValley extends MusicBeatState
 		tileMap.onPlayerKilled = _startSpineDeathSequence;
 		tileMap.loadFromJson(this);
 
-		var map7Spr = bg.mapSpriteByPart.get(7);
-		if (map7Spr != null)
-			tileMap.insertSpineSprites(this, map7Spr);
+		final map7Spr = bg.mapSpriteByPart.get(7);
+		if (map7Spr != null) tileMap.insertSpineSprites(this, map7Spr);
 
 		var waypointMinX = Math.POSITIVE_INFINITY;
 		var waypointMaxX = Math.NEGATIVE_INFINITY;
@@ -228,13 +238,10 @@ class TheValley extends MusicBeatState
 		if (waypointMinX == Math.POSITIVE_INFINITY) { waypointMinX = 0; waypointMaxX = 0; }
 		waypointGraph = new WaypointGraph(this);
 		waypointGraph.generate(waypointMinX, waypointMaxX);
-		trace('[EXE] waypoint graph: ${waypointGraph.nodes.length} nodes over x=${Math.round(waypointMinX)}..${Math.round(waypointMaxX)}');
 
 		_loadObjects();
 
-		var holdingAnchors = tileCheckers.length > 0
-			? tileCheckers
-			: [for (sp in tileMap.spines) sp.sprite];
+		final holdingAnchors = tileCheckers.length > 0 ? tileCheckers : [for (sp in tileMap.spines) sp.sprite];
 		tileMap.insertHoldingSprites(this, holdingAnchors);
 
 		_deathFade = new FlxSprite(0, 0);
@@ -244,7 +251,7 @@ class TheValley extends MusicBeatState
 		_deathFade.alpha = 0;
 		add(_deathFade);
 
-		var gateBarH = 54;
+		final gateBarH = 54;
 		_gateMsgBar = new FlxSprite(0, FlxG.height - gateBarH);
 		_gateMsgBar.makeGraphic(FlxG.width, gateBarH, 0xFF000000);
 		_gateMsgBar.scrollFactor.set(0, 0);
@@ -256,7 +263,7 @@ class TheValley extends MusicBeatState
 		_gateMsgTxt.font = "assets/fonts/timer.otf";
 		_gateMsgTxt.color = FlxColor.WHITE;
 		_gateMsgTxt.setBorderStyle(FlxTextBorderStyle.SHADOW, FlxColor.BLACK, 3);
-		_gateMsgTxt.alignment = flixel.text.FlxText.FlxTextAlign.CENTER;
+		_gateMsgTxt.alignment = FlxTextAlign.CENTER;
 		_gateMsgTxt.scrollFactor.set(0, 0);
 		_gateMsgTxt.cameras = [uiCam];
 		_gateMsgTxt.alpha = 0;
@@ -265,7 +272,7 @@ class TheValley extends MusicBeatState
 
 		if (PlayState.instance == null)
 		{
-			var dummyPlayState = new PlayState();
+			final dummyPlayState = new PlayState();
 			dummyPlayState.vocals = new FlxSound();
 			PlayState.instance = dummyPlayState;
 		}
@@ -278,15 +285,12 @@ class TheValley extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.justPressed.P)
-			trace('player pos: x=${Math.round(player.x)}, y=${Math.round(player.y)}');
-
 		if (bgCam.target != null) bgCam.followLerp = 0.08;
 
-		var nape = FlxG.plugins.get(FlxNapeSpace);
+		final nape = FlxG.plugins.get(FlxNapeSpace);
 		if (nape != null) nape.active = true;
 
-		if (FlxG.sound.music != null) FlxG.sound.music.play();
+		FlxG.sound.music?.play();
 
 		if (controls.PAUSE)
 		{
@@ -294,16 +298,15 @@ class TheValley extends MusicBeatState
 			persistentDraw   = true;
 			bgCam.followLerp = 0;
 			if (nape != null) nape.active = false;
-			if (FlxG.sound.music != null) FlxG.sound.music.pause();
+			FlxG.sound.music?.pause();
 
 			options.OptionsState.standaloneReturnState = () -> new thevalley.TheValley();
-
 			states.substates.PauseSubState.cameraWidth = FlxG.width;
 			openSubState(new states.substates.PauseSubState());
 
 			var canCheckRestart = true;
 			_pauseWatcher = () -> {
-				var pauseSub = Std.downcast(subState, states.substates.PauseSubState);
+				final pauseSub = Std.downcast(subState, states.substates.PauseSubState);
 				if (pauseSub == null) { _removePauseWatcher(); return; }
 				if (canCheckRestart)
 				{
@@ -317,7 +320,6 @@ class TheValley extends MusicBeatState
 
 		bg.update(elapsed, player);
 		_updateVignette(elapsed);
-
 		_updatePlayerOcclusion(elapsed);
 
 		hud.setVisible(!player.cinematic && !player.isHiding && !player.isHidden && !cutscene.skullCSPlaying);
@@ -328,11 +330,12 @@ class TheValley extends MusicBeatState
 		for (m in monsters)
 		{
 			if (m.isDormant) continue;
-			var dx = m.sprite.x - player.x;
-			var dy = m.sprite.y - player.y;
-			var d = Math.sqrt(dx * dx + dy * dy);
+			final dx = m.sprite.x - player.x;
+			final dy = m.sprite.y - player.y;
+			final d = Math.sqrt(dx * dx + dy * dy);
 			if (d < nearestActiveDist) { nearestActiveDist = d; nearestActiveMonster = m; }
 		}
+		
 		if (nearestActiveMonster != null)
 			hud.setMonsterDirection(nearestActiveMonster.sprite.x - player.x, nearestActiveMonster.sprite.y - player.y, true);
 		else
@@ -349,8 +352,7 @@ class TheValley extends MusicBeatState
 
 		if (_gameplayStarted)
 		{
-			if (_spineDeathPhase == 0)
-				player.handleInput(elapsed, 146.0, 134.0);
+			if (_spineDeathPhase == 0) player.handleInput(elapsed, 146.0, 134.0);
 
 			hud.setStamina(player.stamina / player.cfg.physics.staminaMax);
 			_updateLookDown(elapsed);
@@ -368,6 +370,7 @@ class TheValley extends MusicBeatState
 
 			var busySkull:SkullPrompt = null;
 			for (sk in skullPrompts) if (sk.isBusy()) { busySkull = sk; break; }
+			
 			if (busySkull != null)
 			{
 				busySkull.updateActive(elapsed, busySkull.getDist());
@@ -378,7 +381,7 @@ class TheValley extends MusicBeatState
 				var nearDist = SkullPrompt.INTERACT_DIST;
 				for (sk in skullPrompts)
 				{
-					var d = sk.getDist();
+					final d = sk.getDist();
 					if (d < nearDist) { nearDist = d; nearest = sk; }
 				}
 				if (nearest != null) nearest.updateActive(elapsed, nearDist);
@@ -386,6 +389,7 @@ class TheValley extends MusicBeatState
 
 			var busyTotem:Totem = null;
 			for (tm in totems) if (tm.isBusy()) { busyTotem = tm; break; }
+			
 			if (busyTotem != null)
 			{
 				busyTotem.updateActive(elapsed, busyTotem.getDist());
@@ -396,11 +400,10 @@ class TheValley extends MusicBeatState
 				var nearTotemDist = 120.0;
 				for (tm in totems)
 				{
-					var d = tm.getDist();
+					final d = tm.getDist();
 					if (d < nearTotemDist) { nearTotemDist = d; nearestTotem = tm; }
 				}
-				if (nearestTotem != null)
-					nearestTotem.updateActive(elapsed, nearTotemDist);
+				nearestTotem?.updateActive(elapsed, nearTotemDist);
 			}
 
 			_updateTotemHide(elapsed);
@@ -422,17 +425,16 @@ class TheValley extends MusicBeatState
 
 	function _updateLookDown(elapsed:Float):Void
 	{
-		var holding = FlxG.keys.pressed.S && !player.cinematic;
+		final holding = FlxG.keys.pressed.S && !player.cinematic;
 		_lookDownTimer = holding ? _lookDownTimer + elapsed : 0;
 
-		var active = _lookDownTimer >= 3.0;
+		final active = _lookDownTimer >= 3.0;
 		bgCam.targetOffset.y = active ? 80.0 : 0;
 	}
 
 	function _updatePlayerOcclusion(elapsed:Float):Void
 	{
-
-		var target = bg.getOcclusionAmount(player, trees);
+		final target = bg.getOcclusionAmount(player, trees);
 		_occlusionAmount += (target - _occlusionAmount) * (1.0 - Math.pow(0.01, elapsed * 6.0));
 		player.color = FlxColor.interpolate(FlxColor.WHITE, 0xFF63636E, _occlusionAmount);
 	}
@@ -443,15 +445,15 @@ class TheValley extends MusicBeatState
 		var forceFull = false;
 		for (g in tileMap.garys)
 		{
-			var d = g.getDist();
-			var c = 1.0 - Math.min(Math.max((d - 60.0) / (220.0 - 60.0), 0.0), 1.0);
+			final d = g.getDist();
+			final c = 1.0 - Math.min(Math.max((d - 60.0) / (220.0 - 60.0), 0.0), 1.0);
 			if (c > closeness) closeness = c;
 			if (g.isTalking) forceFull = true;
 		}
 		for (tm in totems)
 		{
-			var dt = tm.getDist();
-			var ct = 1.0 - Math.min(Math.max((dt - 70.0) / (220.0 - 70.0), 0.0), 1.0);
+			final dt = tm.getDist();
+			final ct = 1.0 - Math.min(Math.max((dt - 70.0) / (220.0 - 70.0), 0.0), 1.0);
 			if (ct > closeness) closeness = ct;
 			if (tm.isBusy()) forceFull = true;
 		}
@@ -461,28 +463,28 @@ class TheValley extends MusicBeatState
 
 		var monsterCloseness = 0.0;
 		var nearestMonster:Monster = null;
-		var nearestMonsterDist = (500.0);
+		var nearestMonsterDist = 500.0;
 		for (m in monsters)
 		{
-			var breathesNow = m.anim == MonsterAnim.Idle
-				|| m.anim == MonsterAnim.Walk
-				|| m.anim == MonsterAnim.Searching;
+			final breathesNow = m.anim == MonsterAnim.Idle || m.anim == MonsterAnim.Walk || m.anim == MonsterAnim.Searching;
 			if (!breathesNow) continue;
 
-			var dx = m.sprite.x - player.x;
-			var dy = m.sprite.y - player.y;
-			var d = Math.sqrt(dx * dx + dy * dy);
+			final dx = m.sprite.x - player.x;
+			final dy = m.sprite.y - player.y;
+			final d = Math.sqrt(dx * dx + dy * dy);
 			if (d < nearestMonsterDist) { nearestMonsterDist = d; nearestMonster = m; }
 		}
+		
 		if (nearestMonster != null)
-			monsterCloseness = 1.0 - Math.min(Math.max((nearestMonsterDist - (100.0)) / ((500.0) - (100.0)), 0.0), 1.0);
+			monsterCloseness = 1.0 - Math.min(Math.max((nearestMonsterDist - 100.0) / (500.0 - 100.0), 0.0), 1.0);
 
 		_monsterCloseness += (monsterCloseness - _monsterCloseness) * (1.0 - Math.pow(0.01, elapsed * 2.0));
 
-		var totalCloseness = Math.max(_ambientCloseness, _monsterCloseness);
+		final totalCloseness = Math.max(_ambientCloseness, _monsterCloseness);
 
 		if (_spineDeathPhase == 0 && !_finalTriggered && FlxG.sound.music != null)
 			FlxG.sound.music.volume = 1.0 - totalCloseness;
+			
 		if (!_finalTriggered && _ambientSound != null)
 			_ambientSound.volume = _ambientCloseness * 0.5;
 
@@ -491,53 +493,52 @@ class TheValley extends MusicBeatState
 			_breathingSound.volume = _monsterCloseness;
 			if (nearestMonster != null)
 			{
-				var pan = (nearestMonster.sprite.x - player.x) / (350.0);
+				final pan = (nearestMonster.sprite.x - player.x) / 350.0;
 				_breathingSound.pan = Math.max(-1.0, Math.min(1.0, pan));
 			}
 		}
 	}
 
-	static inline var TOTEM_ZOOM_RATE:Float = 1.0;
+	static inline final TOTEM_ZOOM_RATE:Float = 1.0;
 
 	function _updateTotemHide(elapsed:Float):Void
 	{
-		var hiding = player.isHiding || player.isHidden;
+		final hiding = player.isHiding || player.isHidden;
 		if (!hiding && Math.abs(bgCam.zoom - 2.8) < 0.01) return;
 
-		var targetZoom = hiding ? 4.80 : 2.8;
+		final targetZoom = hiding ? 4.80 : 2.8;
 		bgCam.zoom += (targetZoom - bgCam.zoom) * (1.0 - Math.pow(0.01, elapsed * TOTEM_ZOOM_RATE));
 	}
 
 	function _buildVignette():FlxSprite
 	{
-		var w  = FlxG.width;
-		var h  = FlxG.height;
-		var bmd = new openfl.display.BitmapData(w, h, true, 0x00000000);
-		var cx = w * 0.5;
-		var cy = h * 0.5;
+		final w  = FlxG.width;
+		final h  = FlxG.height;
+		final bmd = new openfl.display.BitmapData(w, h, true, 0x00000000);
+		final cx = w * 0.5;
+		final cy = h * 0.5;
 
 		for (y in 0...h)
 		{
-			var dy = (y - cy) / cy;
+			final dy = (y - cy) / cy;
 			for (x in 0...w)
 			{
-				var dx = (x - cx) / cx;
-				var dist = Math.sqrt(dx * dx + dy * dy);
+				final dx = (x - cx) / cx;
+				final dist = Math.sqrt(dx * dx + dy * dy);
 
 				var a = (dist - 0.35) / (1.15 - 0.35);
 				if (a < 0) a = 0;
 				if (a > 1) a = 1;
 				a *= a;
 
-				var alpha = Std.int(a * 235);
+				final alpha = Std.int(a * 235);
 				bmd.setPixel32(x, y, (alpha << 24) | 0x000000);
 			}
 		}
 
-		var spr = new FlxSprite(0, 0);
+		final spr = new FlxSprite(0, 0);
 		spr.loadGraphic(bmd, false, 0, 0, true);
 		spr.origin.set(0, 0);
-
 		spr.scrollFactor.set(0, 0);
 		spr.cameras = [uiCam];
 		return spr;
@@ -546,7 +547,7 @@ class TheValley extends MusicBeatState
 	function _updateVignette(elapsed:Float):Void
 	{
 		_vigTimer += elapsed;
-		var wave = 0.5 + 0.5 * Math.sin(_vigTimer * 0.5 * Math.PI * 2);
+		final wave = 0.5 + 0.5 * Math.sin(_vigTimer * 0.5 * Math.PI * 2);
 		_vignette.alpha = 1.0 - 0.12 * wave;
 	}
 
@@ -555,16 +556,15 @@ class TheValley extends MusicBeatState
 		_removePauseWatcher();
 		FlxSprite.defaultAntialiasing = _prevAntialiasing;
 		FlxG.stage.window.title = _prevWindowTitle;
-		if (!_isRestarting)
-			PlayState.isLetterboxedAspectRatio = false;
+		if (!_isRestarting) PlayState.isLetterboxedAspectRatio = false;
 		super.destroy();
 	}
 
 	public function reorderSpine(sp:thevalley.tiles.SpineTile):Void
 	{
-		var map7Spr = bg.mapSpriteByPart.get(7);
+		final map7Spr = bg.mapSpriteByPart.get(7);
 		if (map7Spr == null) return;
-		var idx = members.indexOf(map7Spr);
+		final idx = members.indexOf(map7Spr);
 		if (idx < 0) return;
 		members.remove(sp.sprite);
 		members.insert(idx + 1, sp.sprite);
@@ -572,7 +572,7 @@ class TheValley extends MusicBeatState
 
 	public function spawnTree(wx:Float, wy:Float):FlxSprite
 	{
-		var t = new FlxSprite(wx, wy);
+		final t = new FlxSprite(wx, wy);
 		t.loadGraphic(Paths.image("minigame/thevalley/map/1/tree", false));
 		t.scrollFactor.set(1, 1);
 		trees.push(t);
@@ -582,23 +582,23 @@ class TheValley extends MusicBeatState
 
 	public function spawnMonster(wx:Float, wy:Float):Monster
 	{
-		var m = new Monster(wx, wy, this, player);
+		final m = new Monster(wx, wy, this, player);
 		monsters.push(m);
 		return m;
 	}
 
 	public function spawnTileChecker(wx:Float, wy:Float):FlxSprite
 	{
-		var tc = new FlxSprite(wx, wy);
+		final tc = new FlxSprite(wx, wy);
 		tc.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/tilecheckers/tilecheckers"));
 		tc.scrollFactor.set(1, 1);
 		tileCheckers.push(tc);
 
-		var map7Spr = bg.mapSpriteByPart.get(7);
+		final map7Spr = bg.mapSpriteByPart.get(7);
 		if (map7Spr != null)
 		{
 			add(tc);
-			var idx = members.indexOf(map7Spr);
+			final idx = members.indexOf(map7Spr);
 			members.remove(tc);
 			members.insert(idx + 1, tc);
 		}
@@ -611,16 +611,15 @@ class TheValley extends MusicBeatState
 
 	public function spawnLaunchpad(wx:Float, wy:Float):Launchpad
 	{
-		var lp = new Launchpad(wx, wy);
+		final lp = new Launchpad(wx, wy);
 		launchpads.push(lp);
-
 		objectGroup.add(lp);
 		return lp;
 	}
 
 	public function spawnSkull(wx:Float, wy:Float):SkullPrompt
 	{
-		var sk = new SkullPrompt(wx, wy, player, cutscene, objectGroup, bgCam);
+		final sk = new SkullPrompt(wx, wy, player, cutscene, objectGroup, bgCam);
 		sk.skullId = skullPrompts.length;
 		skullPrompts.push(sk);
 		return sk;
@@ -628,7 +627,7 @@ class TheValley extends MusicBeatState
 
 	public function spawnTotem(wx:Float, wy:Float, type:TotemType):Totem
 	{
-		var tm = new Totem(wx, wy, type, player, cutscene, objectGroup, this, bgCam);
+		final tm = new Totem(wx, wy, type, player, cutscene, objectGroup, this, bgCam);
 		totems.push(tm);
 		return tm;
 	}
@@ -636,9 +635,9 @@ class TheValley extends MusicBeatState
 	public function saveObjects():Void
 	{
 		#if sys
-		var lps = [for (lp in launchpads) { x: lp.x, y: lp.y }];
-		var sks = [for (sk in skullPrompts) { x: sk.skullX, y: sk.skullY }];
-		var tms = [for (tm in totems) {
+		final lps = [for (lp in launchpads) { x: lp.x, y: lp.y }];
+		final sks = [for (sk in skullPrompts) { x: sk.skullX, y: sk.skullY }];
+		final tms = [for (tm in totems) {
 			x: tm.totemX, y: tm.totemY,
 			type: switch (tm.totemType) {
 				case Short: "short";
@@ -646,32 +645,35 @@ class TheValley extends MusicBeatState
 				default:    "fake";
 			}
 		}];
-		var trs = [for (t in trees) { x: t.x, y: t.y }];
-		var tcs = [for (tc in tileCheckers) { x: tc.x, y: tc.y }];
-		var mns = [for (m in monsters) { x: m.sprite.x, y: m.sprite.y }];
-		var json = haxe.Json.stringify({ launchpads: lps, skulls: sks, totems: tms, trees: trs, tileCheckers: tcs, monsters: mns }, null, "  ");
+		final trs = [for (t in trees) { x: t.x, y: t.y }];
+		final tcs = [for (tc in tileCheckers) { x: tc.x, y: tc.y }];
+		final mns = [for (m in monsters) { x: m.sprite.x, y: m.sprite.y }];
+		final json = haxe.Json.stringify({ launchpads: lps, skulls: sks, totems: tms, trees: trs, tileCheckers: tcs, monsters: mns }, null, "  ");
 		sys.io.File.saveContent("assets/shared/data/minigame/thevalley/objects.json", json);
 		#end
 	}
 
 	function _loadObjects():Void
 	{
-		var path = "assets/shared/data/minigame/thevalley/objects.json";
+		final path = "assets/shared/data/minigame/thevalley/objects.json";
 		if (!openfl.Assets.exists(path)) return;
-		var raw = openfl.Assets.getText(path);
+
+		final raw = openfl.Assets.getText(path);
 		if (raw == null || raw == "") return;
-		var data:{ launchpads:Array<{x:Float,y:Float}>, skulls:Array<{x:Float,y:Float}>,
+		
+		final data:{ launchpads:Array<{x:Float,y:Float}>, skulls:Array<{x:Float,y:Float}>,
 		           totems:Array<{x:Float,y:Float,type:String}>, trees:Array<{x:Float,y:Float}>,
 		           tileCheckers:Array<{x:Float,y:Float}>, ?monsters:Array<{x:Float,y:Float}> } = haxe.Json.parse(raw);
-		if (data.launchpads   != null) for (d in data.launchpads)   spawnLaunchpad(d.x, d.y);
-		if (data.skulls       != null) for (d in data.skulls)       spawnSkull(d.x, d.y);
-		if (data.trees        != null) for (d in data.trees)        spawnTree(d.x, d.y);
+		           
+		if (data.launchpads != null) for (d in data.launchpads) spawnLaunchpad(d.x, d.y);
+		if (data.skulls != null) for (d in data.skulls) spawnSkull(d.x, d.y);
+		if (data.trees != null) for (d in data.trees) spawnTree(d.x, d.y);
 		if (data.tileCheckers != null) for (d in data.tileCheckers) spawnTileChecker(d.x, d.y);
-		if (data.monsters     != null) for (d in data.monsters)     spawnMonster(d.x, d.y);
-		if (data.totems       != null)
+		if (data.monsters != null) for (d in data.monsters) spawnMonster(d.x, d.y);
+		if (data.totems != null)
 			for (d in data.totems)
 			{
-				var t = switch (d.type) {
+				final t = switch (d.type) {
 					case "short": TotemType.Short;
 					case "tall":  TotemType.Tall;
 					default:      TotemType.Fake;
@@ -680,7 +682,7 @@ class TheValley extends MusicBeatState
 			}
 	}
 
-	function _onPlayerKilled():Void
+	public function onPlayerKilled():Void
 	{
 		hud.lives--;
 		if (hud.lives <= 0)
@@ -689,15 +691,14 @@ class TheValley extends MusicBeatState
 		}
 		else
 		{
-			player.body.type = nape.phys.BodyType.DYNAMIC;
-
+			player.body.type = BodyType.DYNAMIC;
 			player.body.position.setxy(146.0 + player.width * 0.5, 134.0 + player.height * 0.5);
 			player.body.velocity.setxy(0, 0);
-			player.jumpHeld     = false;
+			player.jumpHeld = false;
 			player.jumpBufTimer = 0;
-			player.coyoteTimer  = player.cfg.tuning.coyoteFrames / 60.0;
-			player.isGrounded   = true;
-			player.mode         = Ground;
+			player.coyoteTimer = player.cfg.tuning.coyoteFrames / 60.0;
+			player.isGrounded = true;
+			player.mode = Ground;
 		}
 	}
 
@@ -707,9 +708,9 @@ class TheValley extends MusicBeatState
 
 		_spineDeathPhase = 1;
 		_spineDeathTimer = 0;
-		_musicFadeFrom   = (FlxG.sound.music != null) ? FlxG.sound.music.volume : 1.0;
+		_musicFadeFrom = (FlxG.sound.music != null) ? FlxG.sound.music.volume : 1.0;
 
-		player.body.type = nape.phys.BodyType.KINEMATIC;
+		player.body.type = BodyType.KINEMATIC;
 		player.body.velocity.setxy(0, 0);
 		player.body.position.y += 18;
 	}
@@ -722,7 +723,6 @@ class TheValley extends MusicBeatState
 		switch (_spineDeathPhase)
 		{
 			case 1:
-
 				if (FlxG.sound.music != null)
 					FlxG.sound.music.volume = _musicFadeFrom * (1.0 - Math.min(_spineDeathTimer / 0.9, 1.0));
 				if (_spineDeathTimer >= 0.9)
@@ -736,8 +736,7 @@ class TheValley extends MusicBeatState
 				if (_spineDeathTimer >= 0.4)
 				{
 					_deathFade.alpha = 1.0;
-
-					_onPlayerKilled();
+					onPlayerKilled();
 					tileMap.clearDying(player);
 					_spineDeathPhase = 3;
 					_spineDeathTimer = 0;
@@ -748,7 +747,7 @@ class TheValley extends MusicBeatState
 					FlxG.sound.music.volume = Math.min(_spineDeathTimer / 0.4, 1.0);
 				if (_spineDeathTimer >= 0.4)
 				{
-					_deathFade.alpha  = 0;
+					_deathFade.alpha = 0;
 					if (FlxG.sound.music != null) FlxG.sound.music.volume = 1.0;
 					_spineDeathPhase = 0;
 				}
@@ -759,7 +758,7 @@ class TheValley extends MusicBeatState
 	{
 		if (_finalTriggered || player.cinematic) return;
 
-		var pastGate = player.x + player.width * 0.5 >= 10368.0;
+		final pastGate = player.x + player.width * 0.5 >= 10368.0;
 
 		if (hud.shards < 6)
 		{
@@ -787,11 +786,9 @@ class TheValley extends MusicBeatState
 		if (player.mode == Glide || player.mode == WingOpen || player.mode == WingClose)
 			player.mode = Air;
 
-		var maxX = 10368.0 - player.width * 0.5;
-		if (player.body.position.x > maxX)
-			player.body.position.x = maxX;
-		if (player.body.velocity.x > 0)
-			player.body.velocity.x = 0;
+		final maxX = 10368.0 - player.width * 0.5;
+		if (player.body.position.x > maxX) player.body.position.x = maxX;
+		if (player.body.velocity.x > 0) player.body.velocity.x = 0;
 
 		if (!_gateNotified)
 		{
@@ -804,10 +801,10 @@ class TheValley extends MusicBeatState
 
 	function _updateGateMessage(elapsed:Float):Void
 	{
-		var target = _gateMsgTimer > 0 ? 1.0 : 0.0;
+		final target = _gateMsgTimer > 0 ? 1.0 : 0.0;
 		if (_gateMsgTimer > 0) _gateMsgTimer -= elapsed;
 
-		var spd = 1.0 - Math.pow(0.01, elapsed * 6.0);
+		final spd = 1.0 - Math.pow(0.01, elapsed * 6.0);
 		_gateMsgBar.alpha += (target - _gateMsgBar.alpha) * spd;
 		_gateMsgTxt.alpha  = _gateMsgBar.alpha;
 	}
@@ -817,9 +814,9 @@ class TheValley extends MusicBeatState
 		player.cinematic = true;
 		player.body.velocity.setxy(0, 0);
 
-		if (FlxG.sound.music != null) FlxG.sound.music.fadeOut(1.0, 0.0);
-		if (_ambientSound != null) _ambientSound.fadeIn(1.0, _ambientSound.volume, 0.5);
-		if (_breathingSound != null) _breathingSound.fadeOut(1.0, 0.0);
+		FlxG.sound.music?.fadeOut(1.0, 0.0);
+		_ambientSound?.fadeIn(1.0, _ambientSound.volume, 0.5);
+		_breathingSound?.fadeOut(1.0, 0.0);
 
 		FlxTween.tween(_deathFade, { alpha: 1.0 }, 1.0, { ease: FlxEase.quadInOut, onComplete: (_) -> _playFinalVideo() });
 	}
@@ -827,19 +824,20 @@ class TheValley extends MusicBeatState
 	function _playFinalVideo():Void
 	{
 		#if VIDEOS_ALLOWED
-		var vid = new VideoSprite(0, 0, true);
+		final vid = new VideoSprite(0, 0, true);
 		vid.antialiasing = vid.video.antialiasing = ClientPrefs.data.antialiasing;
 		vid.camera = uiCam;
 		add(vid);
 
 		vid.onFormat(() -> {
-			if (vid.video.bitmap != null && vid.video.bitmap.bitmapData != null)
+			if (vid.video.bitmap?.bitmapData != null)
 			{
-				var bw:Float = vid.video.bitmap.bitmapData.width;
-				var bh:Float = vid.video.bitmap.bitmapData.height;
-				var cw:Float = uiCam.width;
-				var ch:Float = uiCam.height;
-				var scale:Float = Math.max(cw / bw, ch / bh);
+				final bw:Float = vid.video.bitmap.bitmapData.width;
+				final bh:Float = vid.video.bitmap.bitmapData.height;
+				final cw:Float = uiCam.width;
+				final ch:Float = uiCam.height;
+				final scale:Float = Math.max(cw / bw, ch / bh);
+				
 				vid.video.setGraphicSize(Std.int(bw * scale), Std.int(bh * scale));
 				vid.video.updateHitbox();
 				vid.video.x = (cw - vid.video.width)  * 0.5;
@@ -865,13 +863,13 @@ class TheValley extends MusicBeatState
 		PlayState.storyWeek = 1;
 		Difficulty.loadFromWeek();
 
-		var normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-		var launchDiff = (normalIdx > -1) ? normalIdx : 0;
+		final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
+		final launchDiff = (normalIdx > -1) ? normalIdx : 0;
 
 		try
 		{
 			Song.loadFromJson('godspeed', Highscore.formatSong('godspeed', launchDiff));
-			PlayState.isStoryMode     = false;
+			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = launchDiff;
 		}
 		catch (e:haxe.Exception)

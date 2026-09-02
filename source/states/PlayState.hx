@@ -3739,10 +3739,13 @@ class PlayState extends MusicBeatState
 			case 'you-cant-run':
 				if (curBeat >= 200) PauseSubState.miniSonicImage = 'you-cant-run-2';
 			case 'triple-trouble':
+				if (curBeat >= 133) PauseSubState.miniSonicImage = 'triple-trouble-2';
 				if (curBeat >= 200) PauseSubState.miniSonicImage = 'triple-trouble-7';
 				if (curBeat >= 324) PauseSubState.miniSonicImage = 'triple-trouble-3';
+				if (curBeat >= 420) PauseSubState.miniSonicImage = 'triple-trouble-4';
 				if (curBeat >= 580) PauseSubState.miniSonicImage = 'triple-trouble-7';
 				if (curBeat >= 707) PauseSubState.miniSonicImage = 'triple-trouble-5';
+				if (curBeat >= 868) PauseSubState.miniSonicImage = 'triple-trouble-6';
 				if (curBeat >= 1028) PauseSubState.miniSonicImage = 'triple-trouble-7';
 			case 'yourself':
 				if (curBeat >= 209) PauseSubState.miniSonicImage = 'yourself-2';

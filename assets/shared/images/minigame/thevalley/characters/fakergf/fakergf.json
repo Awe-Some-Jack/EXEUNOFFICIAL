@@ -24,7 +24,7 @@
     "airMax":           200.0,
     "jumpVy":          -700.0,
     "jumpCut":         -180.0,
-    "maxFall":          400.0,
+    "maxFall":          150.0,
     "launchVy":         -200.0,
     "glideGravity":     120.0,
     "glideMaxFall":      60.0,

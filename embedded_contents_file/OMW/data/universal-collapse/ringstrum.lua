@@ -80,11 +80,6 @@ function onUpdatePost(e)
 	if not getProperty('cpuControlled') then
 		if keyboardJustPressed(ringKeybind) and getProperty('strumLineRing.animation.curAnim.name') ~= 'confirm' then
 			ringAnim('pressed')
-			if ghostTapping == false then
-				playSound('missnote'..getRandomInt(1,3), getRandomFloat(0.1, 0.2))
-				rings = math.max(rings - 1, 0)
-				setTextString('ringTxt', tostring(rings))
-			end
 			hasBeenPressed = true
 		end
 

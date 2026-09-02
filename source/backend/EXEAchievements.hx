@@ -191,9 +191,11 @@ class EXEAchievements
     public static function checkSecondaryCodes():Void
     {
         if(isUnlocked('secondary')) return;
-        var a = get('secondary');
+
+        final a = get('secondary');
         if(a == null) return;
-        var codes = cast(a.extra ?? []);
+
+        final codes = cast(a.extra ?? []);
         if (codes.length >= SECONDARY_CODES.length) 
         {
             unlock(a.id);

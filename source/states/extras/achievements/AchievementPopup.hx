@@ -1,13 +1,15 @@
 package states.extras.achievements;
 
 import openfl.display.BitmapData;
+import openfl.display.Bitmap;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.geom.Matrix;
-import openfl.Lib;
+
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.tweens.FlxEase;
 
+@:access(flixel.FlxGame)
 class AchievementPopup extends Sprite
 {
     static inline final POP_W:Int            = 420;
@@ -87,29 +89,34 @@ class AchievementPopup extends Sprite
         graphics.drawRect(0, 0, 4, POP_H);
         graphics.endFill();
 
-        var iconX:Int = MARGIN + 4;
-        var iconY:Int = (POP_H - ICON_SIZE) >> 1;
+        final iconX:Int = MARGIN + 4;
+        final iconY:Int = (POP_H - ICON_SIZE) >> 1;
 
         graphics.beginFill(0xFFFFFF, 0.2);
         graphics.drawRect(iconX, iconY, ICON_SIZE, ICON_SIZE);
         graphics.endFill();
 
-        var iconPath = 'assets/exe/extras/achievements/icons/$id.webp';
+        final iconPath = 'assets/exe/extras/achievements/icons/$id.webp';
         if (openfl.Assets.exists(iconPath))
         {
-            var bmd:BitmapData = openfl.Assets.getBitmapData(iconPath);
+            final bmd:BitmapData = openfl.Assets.getBitmapData(iconPath);
             if (bmd != null)
             {
-                var sw = ICON_SIZE / bmd.width;
-                var sh = ICON_SIZE / bmd.height;
-                graphics.beginBitmapFill(bmd, new Matrix(sw, 0, 0, sh, iconX, iconY), false, true);
-                graphics.drawRect(iconX, iconY, ICON_SIZE, ICON_SIZE);
-                graphics.endFill();
+                final sw = ICON_SIZE / bmd.width;
+                final sh = ICON_SIZE / bmd.height;
+                
+                final iconBmp = new Bitmap(bmd);
+                iconBmp.x = iconX;
+                iconBmp.y = iconY;
+                iconBmp.scaleX = sw;
+                iconBmp.scaleY = sh;
+                iconBmp.smoothing = ClientPrefs.data.antialiasing;
+                addChild(iconBmp);
             }
         }
 
-        var textX:Int = MARGIN + 4 + ICON_SIZE + 10;
-        var textW:Int = POP_W - ICON_SIZE - MARGIN * 2 - 20;
+        final textX:Int = MARGIN + 4 + ICON_SIZE + 10;
+        final textW:Int = POP_W - ICON_SIZE - MARGIN * 2 - 20;
 
         _drawText(Language.get('popup_achievement_unlocked', 'ACHIEVEMENT UNLOCKED'), 18, 0xBD0033, 0xFFFFFF,
                   textX, (POP_H >> 1) - 22, textW);
@@ -121,10 +128,10 @@ class AchievementPopup extends Sprite
     function _drawText(str:String, size:Int, color:Int, outlineColor:Int,
                        tx:Float, ty:Float, maxW:Int):Void
     {
-        var renderSize = Std.int(size / TEXT_SCALE);
-        var renderW    = Std.int(maxW  / TEXT_SCALE);
+        final renderSize = Std.int(size / TEXT_SCALE);
+        final renderW    = Std.int(maxW  / TEXT_SCALE);
 
-        var t = new FlxText(0, 0, renderW, str, renderSize);
+        final t = new FlxText(0, 0, renderW, str, renderSize);
         t.font = Paths.font('NiseSega.ttf');
         t.color = color;
         t.setBorderStyle(FlxTextBorderStyle.OUTLINE, outlineColor, 2);
@@ -132,12 +139,16 @@ class AchievementPopup extends Sprite
         t.updateHitbox();
         t.drawFrame(true);
 
-        var bmd:BitmapData = t.graphic.bitmap.clone();
+        final bmd:BitmapData = t.graphic.bitmap.clone();
         _bitmaps.push(bmd);
 
-        graphics.beginBitmapFill(bmd, new Matrix(TEXT_SCALE, 0, 0, TEXT_SCALE, tx, ty), false, true);
-        graphics.drawRect(tx, ty, bmd.width * TEXT_SCALE, bmd.height * TEXT_SCALE);
-        graphics.endFill();
+        final textBmp = new Bitmap(bmd);
+        textBmp.x = tx;
+        textBmp.y = ty;
+        textBmp.scaleX = TEXT_SCALE;
+        textBmp.scaleY = TEXT_SCALE;
+        textBmp.smoothing = ClientPrefs.data.antialiasing;
+        addChild(textBmp);
 
         t.destroy();
     }
@@ -145,9 +156,9 @@ class AchievementPopup extends Sprite
     var activateOnce:Bool = true;
     function _update(e:Event):Void
     {
-        if (_timePassed < 0) { _timePassed = Lib.getTimer(); return; }
+        if (_timePassed < 0) { _timePassed = FlxG.game.getTimer(); return; }
 
-        var now     = Lib.getTimer();
+        var now     = FlxG.game.getTimer();
         var elapsed = (now - _timePassed) / 1000;
         _timePassed = now;
 

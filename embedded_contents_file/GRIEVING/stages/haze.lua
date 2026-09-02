@@ -39,9 +39,11 @@ local hazeBGAssets = {
         { name =      'k', path = 'characters/k', x =  100, y = -700, scale = 0.2, animSymbol =     'knux',  alpha = 1, front = false},
         { name =      'm', path = 'characters/m', x =  600, y = -400, scale =   1, animSymbol =     'momi',  alpha = 1, front = false},
         { name =      't', path = 'characters/t', x =  300, y = -100, scale = 0.2, animSymbol =     'tails', alpha = 1, front = false},
-        { name =   'kyle', path = 'characters/1', x =    0, y = -200, scale = 0.3, animSymbol = 'Símbolo 2', alpha = 0, front = false, flipX = true},
-        { name = 'thomas', path = 'characters/2', x = -400, y = -500, scale = 0.3, animSymbol =         '2', alpha = 0, front = false, flipX = true},
     },
+    ['theBoys'] = {
+        { name =   'kyle', path = 'characters/locos de haze', x =  400, y = -300, scaleX = 0.8, scaleY = 0.8, animName = 'idle', animPrefix = '1', fps = 12, loop = true, alpha = 0, front = false, flipX = true},
+        { name = 'thomas', path =             'characters/2', x = -200, y = -600, scaleX = 0.8, scaleY = 0.8, animName = 'idle', animPrefix = '3', fps = 12, loop = true, alpha = 0, front = false, flipX = true},
+    }
 }
 
 local spriteGroups = {
@@ -68,7 +70,7 @@ local function addSprite(yea)
     end
     if yea.flipX then setProperty(yea.name..'.flipX', yea.flipX) end
     if yea.scaleX or yea.scaleY then scaleObject(yea.name, yea.scaleX, yea.scaleY) end
-    setScrollFactor(yea.name, yea.scrollX, yea.scrollY)
+    setScrollFactor(yea.name, yea.scrollX or 1, yea.scrollY or 1)
     if yea.alpha then setProperty(yea.name..'.alpha', yea.alpha) end
     if yea.antialiasing then setProperty(yea.name..'.antialiasing', yea.antialiasing) end
     addLuaSprite(yea.name, yea.front)
@@ -79,7 +81,6 @@ local function addAtlas(e)
     addAnimationBySymbol(e.name, 'idle', e.animSymbol, 24, true)
     scaleObject(e.name, e.scale, e.scale)
     setProperty(e.name..'.alpha', e.alpha)
-    if e.flipX then setProperty(e.name..'.flipX', e.flipX) end
     addLuaSprite(e.name, e.front)
 end
 
@@ -96,6 +97,8 @@ function onCreate()
         for _, phase5 in ipairs(hazeBGAssets['phase5'])  do precacheImage(phase5.path) end
 
         for _, atlas in ipairs(hazeBGAssets['atlases']) do precacheImage(atlas.path) end
+
+        for _, theBoys in ipairs(hazeBGAssets['theBoys']) do precacheImage(theBoys.path) end
     end
 end
 
@@ -109,6 +112,8 @@ function onCreatePost()
 
     for _, spr in ipairs(hazeBGAssets['atlases']) do addAtlas(spr) end
 
+    for _, theBoys in ipairs(hazeBGAssets['theBoys']) do addSprite(theBoys) end
+
     for _, phase1 in ipairs(hazeBGAssets['phase1']) do setProperty(phase1.name..'.visible', true) end
     for _, phase2 in ipairs(hazeBGAssets['phase2']) do setProperty(phase2.name..'.visible', false) end
     for _, phase3 in ipairs(hazeBGAssets['phase3']) do setProperty(phase3.name..'.visible', false) end
@@ -116,6 +121,8 @@ function onCreatePost()
     for _, phase5 in ipairs(hazeBGAssets['phase5']) do setProperty(phase5.name..'.visible', false) end
 
     for _, atlas in ipairs(hazeBGAssets['atlases']) do setProperty(atlas.name..'.visible', false) end
+
+    for _, theBoys in ipairs(hazeBGAssets['theBoys']) do setProperty(theBoys.name..'.visible', false) end
     --THAT bf anim
     makeAnimatedLuaSprite('bfTransition', 'characters/atlas', 210, -10)
     addAnimationByIndices('bfTransition', 'idle', 'atlas instancia 1', {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 24, true)
@@ -168,8 +175,8 @@ local stageMode = {
         for i = 0, 7 do setProperty('strumLineNotes.members['..i..'].texture', 'noteSkins/NOTE_assets') end
         cancelTween('BlackGraphicGameOP') setProperty('BlackGraphicGame.alpha', 0)
         for _, phase1 in ipairs(spriteGroups.phase1) do setProperty(phase1..'.visible', false) end
-        for _, phase1 in ipairs(spriteGroups.phase1) do    removeLuaSprite(phase1, true) end
-        for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.visible', true) end
+        for _, phase1 in ipairs(spriteGroups.phase1) do          removeLuaSprite(phase1, true) end
+        for _, phase2 in ipairs(spriteGroups.phase2) do  setProperty(phase2..'.visible', true) end
         for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.visible', false) end
         for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.visible', false) end
         for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.visible', false) end
@@ -177,34 +184,37 @@ local stageMode = {
         triggerEvent('Set customCamera Position', 'bf', '600, 130')
         triggerEvent('Change Character', 'bf', 'bf')
         triggerEvent('Change Character', 'dad', 'griatos')
-        callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') + 20, getProperty('boyfriend.y') + 280})
+        callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 20, getProperty('boyfriend.y') + 260})
+        callMethod('dad.setPosition', {getProperty('dad.x') - 80, getProperty('dad.y') - 30})
         setProperty('dad.visible', true)
     end,
     ['3'] = function () --Phase 3
         for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.visible', false) end
-        for _, phase2 in ipairs(spriteGroups.phase2) do    removeLuaSprite(phase2, true) end
-        for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.visible', true) end
+        for _, phase2 in ipairs(spriteGroups.phase2) do          removeLuaSprite(phase2, true) end
+        for _, phase3 in ipairs(spriteGroups.phase3) do  setProperty(phase3..'.visible', true) end
         for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.visible', false) end
         for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.visible', false) end
 
-        setProperty('dad.y', getProperty('dad.y') - 30)
+        setProperty('dad.y', getProperty('dad.y') - 70)
 
         triggerEvent('Set customCamera Position', 'middle', '100, -250')
         triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.4')
     end,
     ['4'] = function ()
         for _, phase3 in ipairs(spriteGroups.phase3) do setProperty(phase3..'.visible', false) end
-        for _, phase3 in ipairs(spriteGroups.phase3) do    removeLuaSprite(phase3, true) end
-        for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.visible', true) end
+        for _, phase3 in ipairs(spriteGroups.phase3) do          removeLuaSprite(phase3, true) end
+        for _, phase4 in ipairs(spriteGroups.phase4) do  setProperty(phase4..'.visible', true) end
         for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.visible', false) end
 
         triggerEvent('Set customCamera Position', 'middle', '420, -250')
         triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.35')
+
+        setProperty('boyfriend.y', getProperty('boyfriend.y') - 40)
     end,
     ['5'] = function () -- Phase 4
         for _, phase4 in ipairs(spriteGroups.phase4) do setProperty(phase4..'.visible', false) end
-        for _, phase4 in ipairs(spriteGroups.phase4) do    removeLuaSprite(phase4, true) end
-        for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.visible', true) end
+        for _, phase4 in ipairs(spriteGroups.phase4) do          removeLuaSprite(phase4, true) end
+        for _, phase5 in ipairs(spriteGroups.phase5) do  setProperty(phase5..'.visible', true) end
 
         triggerEvent('Change Character', 'dad', 'griatos 2')
         triggerEvent('Change Character',  'bf',       'bf2')
@@ -212,7 +222,7 @@ local stageMode = {
         callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 120, getProperty('boyfriend.y') + 730})
         callMethod('dad.setPosition', {getProperty('dad.x') + 2020, getProperty('dad.y') - 30})
 
-        --setProperty('thomas.alpha', 0) setProperty('kyle.alpha', 0)
+        setProperty('thomas.alpha', 1) setProperty('kyle.alpha', 1)
 
         runTimer('thomasGhost', math.random(3, 10))
         runTimer('kyleGhost',   math.random(2, 10))

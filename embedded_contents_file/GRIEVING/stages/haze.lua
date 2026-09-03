@@ -156,6 +156,7 @@ function onCreatePost()
     for _, bois in ipairs({'thomas', 'kyle'}) do setShaderFloat(bois, 'amount', 0.8) end
 end
 
+local canShakeGriatos = false
 local stageMode = {
     ['1'] = function () --Phase 1 (This one just in case).
 
@@ -219,10 +220,12 @@ local stageMode = {
         triggerEvent('Change Character', 'dad', 'griatos 2')
         triggerEvent('Change Character',  'bf',       'bf2')
 
+        canShakeGriatos = true
+
         callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 120, getProperty('boyfriend.y') + 730})
         callMethod('dad.setPosition', {getProperty('dad.x') + 2020, getProperty('dad.y') - 30})
 
-        setProperty('thomas.alpha', 1) setProperty('kyle.alpha', 1)
+        --setProperty('thomas.alpha', 1) setProperty('kyle.alpha', 1)
 
         runTimer('thomasGhost', math.random(3, 10))
         runTimer('kyleGhost',   math.random(2, 10))
@@ -230,7 +233,7 @@ local stageMode = {
         triggerEvent('Set customCamera Position', 'bf',     '800, 550')
         triggerEvent('Set customCamera Position', 'dad',  '1100,   50')
         triggerEvent('Set customCamera Position', 'middle', '870, 120')
-        triggerEvent('Set Character Offset', 'bf',  '5')
+        triggerEvent('Set Character Offset',  'bf', '5')
         triggerEvent('Set Character Offset', 'dad', '5')
         triggerEvent('Set customCamera Zoom', 'MiddleZoom', '0.35')
 
@@ -398,4 +401,8 @@ function onTimerCompleted(tag, loops, loopsLeft)
     elseif tag == 'kyleGhost' then
         doTweenAlpha('KyleGhost1', 'kyle', math.random(0.1, 0.3), 0.7)
     end
+end
+
+function opponentNoteHit()
+    if canShakeGriatos then cameraShake('camGame', 0.004, 0.2) cameraShake('camHUD', 0.004, 0.2) end
 end

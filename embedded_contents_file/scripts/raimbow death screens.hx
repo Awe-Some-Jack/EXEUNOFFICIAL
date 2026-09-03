@@ -257,7 +257,7 @@ function startCountdownMajin()
         var bell:Float = 1.0 - Math.abs(i - 3) * 0.2;
         var dynamicSpacing:Float = spacing * (1.0 + bell);
         var leftX:Float = i >= 3 ? baseLeft + ((i - 3) * (i - 3) * 30) : baseLeft - (i * dynamicSpacing);
-        var yOffset:Float = i == 1 ? 140 : 135;
+        var yOffset:Float = i == 1 ? 70 : 65;
         left.setPosition(leftX, deadChar.y + yOffset);
         left.scrollFactor.set(0, 0);
         left.scale.set(scale, scale);
@@ -283,14 +283,14 @@ function startCountdownMajin()
     var left0 = new FlxSprite();
     left0.loadGraphic(Paths.image('gameovers/us/evil majin'));
     left0.flipX = true;
-    left0.setPosition(baseLeft, deadChar.y + 80);
+    left0.setPosition(baseLeft, deadChar.y + 70);
     left0.scrollFactor.set(0, 0);
     left0.alpha = 0;
     GameOverSubstate.instance.add(left0);
 
     var right0 = new FlxSprite();
     right0.loadGraphic(Paths.image('gameovers/us/evil majin'));
-    right0.setPosition(baseRight, deadChar.y + 80);
+    right0.setPosition(baseRight, deadChar.y + 70);
     right0.scrollFactor.set(0, 0);
     right0.alpha = 0;
     GameOverSubstate.instance.add(right0);
@@ -414,7 +414,7 @@ var hazeSound:FlxSound;
 
 function onCustomSubstateCreate(n)
 {
-    if (n == "hazeGameOver") {        
+    if (n == "hazeGameOver") {
         redGraphicShit = new FlxSprite(0, 0);
         redGraphicShit.makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFFF0000);
         redGraphicShit.scrollFactor.set(0, 0);

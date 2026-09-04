@@ -1,92 +1,92 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "idle",
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+			"name": "idle"
 		},
 		{
-			"loop": true,
 			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
 			"anim": "idle-loop",
-			"fps": 24,
-			"name": "idle",
-			"indices": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+			"indices": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
+			"name": "idle"
 		},
 		{
+			"offsets": [66, 11],
 			"loop": false,
-			"offsets": [27, 4],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [44, 57],
 			"loop": false,
-			"offsets": [-29, 43],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [-2, 92],
 			"loop": false,
-			"offsets": [5, 88],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"offsets": [-30, 21],
 			"loop": false,
-			"offsets": [-41, 35],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
+			"offsets": [41, 3],
 			"loop": false,
-			"offsets": [39, 3],
+			"fps": 24,
 			"anim": "singLEFTmiss",
-			"fps": 24,
-			"name": "mleft",
-			"indices": []
+			"indices": [],
+			"name": "mleft"
 		},
 		{
+			"offsets": [-50, 43],
 			"loop": false,
-			"offsets": [-49, 43],
+			"fps": 24,
 			"anim": "singDOWNmiss",
-			"fps": 24,
-			"name": "mdown",
-			"indices": []
+			"indices": [],
+			"name": "mdown"
 		},
 		{
+			"offsets": [-45, 80],
 			"loop": false,
-			"offsets": [-26, 73],
+			"fps": 24,
 			"anim": "singUPmiss",
-			"fps": 24,
-			"name": "mup",
-			"indices": []
+			"indices": [],
+			"name": "mup"
 		},
 		{
+			"offsets": [-56, 21],
 			"loop": false,
-			"offsets": [-47, 21],
+			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"fps": 24,
-			"name": "mright",
-			"indices": []
+			"indices": [],
+			"name": "mright"
 		},
 		{
+			"offsets": [399, 218],
 			"loop": false,
-			"offsets": [529, 339],
-			"anim": "outro",
 			"fps": 24,
-			"name": "outro",
-			"indices": []
+			"anim": "outro",
+			"indices": [],
+			"name": "outro"
 		}
 	],
 	"vocals_file": "",

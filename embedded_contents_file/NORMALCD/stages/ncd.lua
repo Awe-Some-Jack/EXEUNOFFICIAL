@@ -1,5 +1,5 @@
 local shadows = {
-	{name = 'bfShadow',  path = 'bg/shadow',  target = 'boyfriend', offsetX = 410,   offsetY = 550, alpha = 0.7},
+	{name = 'bfShadow',  path = 'bg/shadow',  target = 'boyfriend', offsetX = 370,   offsetY = 500, alpha = 0.7},
 	{name = 'dadShadow', path = 'bg/shadow2', target = 'dad',       offsetX = 460,  offsetY = 468, alpha = 0},
 }
 

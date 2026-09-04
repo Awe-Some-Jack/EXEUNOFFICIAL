@@ -47,7 +47,7 @@ function onUpdatePost()
 
 var notesPosition:Array<Array<Float>> = [[0,0,0,0], [0,0,0,0]];
 var inDark:Bool = false;
-final separation:Float = 50;
+final separation:Float = 10;
 function onEvent(n,v1)
 {
 	if (n == 'sunshinEvent')
@@ -72,7 +72,7 @@ function onEvent(n,v1)
 						playerStrums.members[i].x = (FlxG.width / 2) + (separation / 2) - (((playerStrums.members[i].width + (separation * 2)) * 4) / 2) + ((playerStrums.members[i].width) + separation * (i > 1 ? (i == 3 ? 2.33 : 3) : 1)) * i;
 						opponentStrums.members[i].x = -1000;
 					}
-					playerStrums.members[i].alpha = 0;
+					//playerStrums.members[i].alpha = 0;
 				}
 				inDark = !inDark;
 			case 'creepy':
@@ -117,17 +117,6 @@ function onEvent(n,v1)
 				if (introCutscene?.loadVideo(Paths.video('dollending'))) introCutscene.playDelayed();
 				FlxTween.tween(camHUD, {alpha: 0}, 3, {ease: FlxEase.cubeInOut});
 		}
-	}
-}
-
-function opponentNoteHit(note)
-{
-	if (!inDark) return;
-	for (i in 0...4)
-	{
-		FlxTween.cancelTweensOf(playerStrums.members[i]);
-		playerStrums.members[i].alpha = 1;
-		FlxTween.tween(playerStrums.members[i], {alpha: 0}, Conductor.stepCrochet / 500);
 	}
 }
 

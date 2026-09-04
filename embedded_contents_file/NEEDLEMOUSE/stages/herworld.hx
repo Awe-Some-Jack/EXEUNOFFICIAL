@@ -20,6 +20,9 @@ typedef BackgroundSprite =
 	@:optional var animation:Array<Dynamic>;
 }
 
+//! Eventos conforme a la cancion en la parte que aparece sarah con needle
+//! Vibracion cuando cambie sprite luther
+
 var activeSprites:Array<FlxSprite> = [];
 var glitch:FlxRuntimeShader;
 var colorShader:ColorSwap;
@@ -91,11 +94,23 @@ var stepEvents = [
 				FlxTween.tween(camHUD, {alpha: 1}, 1);
 			}
 		},
+		{
+			step: 1570, callback: () -> {
+				camZoomingBeat = true;
+			}
+		},
+		{
+			step: 1824, callback: () -> {
+				camZoomingBeat = false;
+			}
+		},
 		{ 
 			step: 2176, callback: () -> {
 				FlxTween.num(0, 0.3, 3, {ease: FlxEase.cubeIn}, v -> {
 					camGlitch.setFloat('AMT', v); 
 					camGlitch.setFloat('SPEED', v);
+					camHUD.shake(v/8, 0.1);
+					camGame.shake(v/8, 0.1);
 				});
 			}
 		},
@@ -388,14 +403,4 @@ function makeBackground(background:Array<BackgroundSprite>)
 			case 'bg', '2', '1': sprite.shader = water;
 		}
 	}
-}
-
-function setShaderFrameInfo(char:FlxSprite) {
-    char.animation.callback = function(name:String, frameNumber:Int, frameIndex:Int)
-    {
-        if (char.shader != null) {
-            char.shader.setFloatArray('uFrameBounds', [char.frame.uv.x, char.frame.uv.y, char.frame.uv.width, char.frame.uv.height]);
-            char.shader.setFloat('angOffset', char.frame.angle * FlxAngle.TO_RAD);
-        }
-    };
 }

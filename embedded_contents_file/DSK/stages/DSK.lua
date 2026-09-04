@@ -1,5 +1,7 @@
 -- Code by Kophy232, omg hiiiii :DD
--- If you use it in your Lua Recreation Remember to credit properly.
+-- If you use it in your Lua Recreation Remember to credit properly. 
+-- ofc no one will steal this, unless if we won't make source code public -JustX
+
 -- Recuerda acreditar si lo usas en tu recreacion Lua.
 
 local fuegoDistancia = 30
@@ -15,77 +17,65 @@ function onCreatePost()
 	makeLuaSprite('sky', 'Miasma/sky', -820, -600);
 	scaleObject('sky', 1.5, 1.5);
 	setScrollFactor('sky', 0.5, 0.5);
-	setProperty('sky.antialiasing', true);
 	addLuaSprite('sky', false);
 
 	makeLuaSprite('montanasquetelasclavasenelpoto', 'Miasma/montanasquetelasclavasenelpoto', -250, -530);
 	scaleObject('montanasquetelasclavasenelpoto', 1.9, 1.9);
 	setScrollFactor('montanasquetelasclavasenelpoto', 0.4, 0.4);
-	setProperty('montanasquetelasclavasenelpoto.antialiasing', true);
 	addLuaSprite('montanasquetelasclavasenelpoto', false);
 
 	makeLuaSprite('luzblanca', 'Miasma/luzblanca', -300, -780);
 	scaleObject('luzblanca', 1.5, 1.5);
 	setScrollFactor('luzblanca', 0.4, 0.4);
 	setProperty('luzblanca.alpha', 0.7);
-	setProperty('luzblanca.antialiasing', true);
 	addLuaSprite('luzblanca', false);
 
 	makeLuaSprite('montanasnegrascomotuano', 'Miasma/montanasnegrascomotuano', -1010, -800);
 	scaleObject('montanasnegrascomotuano', 1.9, 1.9);
 	setScrollFactor('montanasnegrascomotuano', 0.5, 0.5);
-	setProperty('montanasnegrascomotuano.antialiasing', true);
 	addLuaSprite('montanasnegrascomotuano', false);
 
 	makeLuaSprite('potonegro', 'Miasma/potonegro', -900, -780);
 	scaleObject('potonegro', 2.7, 2.7);
 	setScrollFactor('potonegro', 0.4, 0.4);
-	setProperty('potonegro.antialiasing', true);
 	setProperty('potonegro.alpha', 0.9);
 	addLuaSprite('potonegro', false);
 
 	makeLuaSprite('rock2', 'Miasma/rock2', -850, -500);
 	scaleObject('rock2', 1, 1);
 	setScrollFactor('rock2', 0.6, 0.6);
-	setProperty('rock2.antialiasing', true);
 	addLuaSprite('rock2', false);
 
 	makeLuaSprite('rock2b', 'Miasma/rock2b', 710, -460);
 	scaleObject('rock2b', 1, 1);
 	setScrollFactor('rock2b', 0.6, 0.6);
-	setProperty('rock2b.antialiasing', true);
 	addLuaSprite('rock2b', false);
 
 	makeLuaSprite('rock3', 'Miasma/rock3', -420, -70);
 	scaleObject('rock3', 1, 1);
 	setScrollFactor('rock3', 0.6, 0.6);
-	setProperty('rock3.antialiasing', true);
 	addLuaSprite('rock3', false);
 
 	makeLuaSprite('rock3b', 'Miasma/rock3', 580, -70);
 	scaleObject('rock3b', 1, 1);
 	setScrollFactor('rock3b', 0.6, 0.6);
 	setProperty('rock3b.flipX', true);
-	setProperty('rock3b.antialiasing', true);
 	addLuaSprite('rock3b', false);
 
 	makeLuaSprite('rock4', 'Miasma/rock4', -950, -100);
 	scaleObject('rock4', 0.9, 0.9);
 	setScrollFactor('rock4', 0.8, 0.8);
-	setProperty('rock4.antialiasing', true);
 	addLuaSprite('rock4', false);
 
 	makeLuaSprite('rock4b', 'Miasma/rock4', 1100, -100);
 	scaleObject('rock4b', 0.9, 0.9);
 	setScrollFactor('rock4b', 0.8, 0.8);
 	setProperty('rock4b.flipX', true);
-	setProperty('rock4b.antialiasing', true);
 	addLuaSprite('rock4b', false);
 
 	makeLuaSprite('rock1', 'Miasma/rock1', -110, 220);
 	scaleObject('rock1', 1, 1);
 	setScrollFactor('rock1', 0.9, 0.9);
-	setProperty('rock1.antialiasing', true);
 	addLuaSprite('rock1', false);
 
 	makeAnimatedLuaSprite('fuegocaca', 'Miasma/fuegodecum', -1050, -270);
@@ -108,39 +98,33 @@ function onCreatePost()
 	setScrollFactor('tree1', 1, 1);
 	setProperty('tree1.flipX', true);
 	setProperty('tree1.angle', -7);
-	setProperty('tree1.antialiasing', true);
 	addLuaSprite('tree1', false);
 
 	makeLuaSprite('tree2', 'Miasma/tree', 475, -210);
 	scaleObject('tree2', 0.2, 0.2);
 	setScrollFactor('tree2', 1, 1);
 	setProperty('tree2.angle', 3);
-	setProperty('tree2.antialiasing', true);
 	addLuaSprite('tree2', false);
 
 	makeLuaSprite('floor', 'Miasma/floor', -1050, 120);
 	scaleObject('floor', 1, 1);
 	setScrollFactor('floor', 1, 1);
-	setProperty('floor.antialiasing', true);
 	addLuaSprite('floor', false);
 
 	makeLuaSprite('whitebg', 'FX/white', -1050, -680);
 	scaleObject('whitebg', 2, 2);
 	setProperty('whitebg.alpha', 0.000001);
 	setScrollFactor('whitebg', 1, 1);
-	setProperty('whitebg.antialiasing', true);
 	addLuaSprite('whitebg', false);
 
 	makeLuaSprite('FG1', 'Miasma/FG1', -1150, 800);
 	scaleObject('FG1', 1, 1);
 	setScrollFactor('FG1', 1.2, 1.2);
-	setProperty('FG1.antialiasing', true);
 	addLuaSprite('FG1', true);
 
 	makeLuaSprite('FG2', 'Miasma/FG2', 1000, 570);
 	scaleObject('FG2', 1, 1);
 	setScrollFactor('FG2', 1.2, 1.2);
-	setProperty('FG2.antialiasing', true);
 	addLuaSprite('FG2', true);
 
 	makeLuaSprite('black', '', 0, -250);
@@ -173,19 +157,16 @@ function onCreatePost()
 	makeLuaSprite('FX2', 'FX/black_vignette', 0, 0);
 	scaleObject('FX2', 1, 1);
 	setProperty('FX2.alpha', 1);
-	setProperty('FX2.antialiasing', true);
 	addLuaSprite('FX2', false);
 	setObjectCamera('FX2', 'camOther');
 
 	makeLuaSprite('cc', 'StartScreens/miasma/circle', 1400, 250);
 	scaleObject('cc', 0.8, 0.8);
-	setProperty('cc.antialiasing', true);
 	addLuaSprite('cc', false);
 	setObjectCamera('cc', 'camOther');
 
 	makeLuaSprite('txtm', 'StartScreens/miasma/text', 1400, 250);
 	scaleObject('txtm',  0.8, 0.8);
-	setProperty('txtm.antialiasing', true);
 	addLuaSprite('txtm', false);
 	setObjectCamera('txtm', 'camOther');
 

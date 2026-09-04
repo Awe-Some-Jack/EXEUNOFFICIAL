@@ -29,11 +29,13 @@ function onCreatePost()
     createInstance('iconOpp', 'objects.HealthIcon', {getProperty('dad.healthIcon'), false})
     setObjectCamera('iconOpp', 'hud')
 
-    makeLuaText('exeScoreTxt', 'Score: 0 | Sacrifices: 0', 22, 1090)
+    makeLuaText('exeScoreTxt', 'Score: 0 | Sacrifices: 0', screenWidth * 0.9)
     setTextSize('exeScoreTxt', 22)
+    setTextAlignment('exeScoreTxt', 'center')
     setTextBorder('exeScoreTxt', 1, '000000')
-    screenCenter('exeScoreTxt', 'y')
+    screenCenter('exeScoreTxt', 'x')
     setProperty('exeScoreTxt.x', math.floor(getProperty('exeScoreTxt.x')))
+    setProperty('exeScoreTxt.y', downscroll and (screenHeight - getProperty('exeScoreTxt.height') - 10) or 10)
 
     addLuaSprite('hbHealth')
     addLuaSprite('hbHealth2')
@@ -59,7 +61,7 @@ function onUpdatePost(e)
     setProperty('separatorHealth.y', getProperty('healthBG.y') + 162 + bound(lerp(460, 0, lerpHealth / 2), 0, 460))
     
     setTextString('exeScoreTxt', capitalize(getTranslationPhrase("freeplay.score", "SCORE")) 
-					.. '¨' .. formatScore(score) .. '_  ' .. capitalize(getTranslationPhrase("starved_sacrifices", "Sacrifices")) .. '¨' .. misses)
+					.. ': ' .. formatScore(score) .. ' | ' .. capitalize(getTranslationPhrase("starved_sacrifices", "Sacrifices")) .. ': ' .. misses)
 
     if oldScoreTxt ~= getTextString('exeScoreTxt') then 
         scaleObject('exeScoreTxt', 1.1, 1.1, false) 
@@ -76,8 +78,6 @@ function onUpdatePost(e)
     
     local multBf = lerp(1, getProperty('iconBF.scale.x'), math.exp(-e * 9 * playbackRate)) 
     scaleObject('iconBF', multBf, multBf, false)
-
-    screenCenter('exeScoreTxt', 'y')
 end
 
 function onBeatHit()

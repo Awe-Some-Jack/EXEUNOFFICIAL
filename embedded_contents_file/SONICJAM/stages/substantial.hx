@@ -31,9 +31,11 @@ function onCreate()
 	spotlight.blend = BlendMode.ADD;
 	spotlight.camera = camGame;
 	add(spotlight);
+
+	skyCamera.visible = false;
 }
 
-function onSongStart() makeStar();
+function onSongStart()  makeStar();
 function onSectionHit() makeStar();
 
 var starID:Int = 0;
@@ -91,4 +93,28 @@ function setupCameras()
 	FlxG.cameras.add(camHUD, false);
 	FlxG.cameras.add(camOther, false);
 	camGame.bgColor = 0x0; 
+}
+
+function onEvent(e, v1, v2)
+{
+	if (e == 'substantialEvent'){
+		if (v1 == 'showSky')
+			skyCamera.visible = true;
+
+		if (v1 == 'fadeBG')
+		{
+			if (v2 == 'true')
+				FlxTween.tween(game.getLuaObject("BlackGraphicBehind"), {alpha: 0.6}, 0.8);
+			else
+				FlxTween.tween(game.getLuaObject("BlackGraphicBehind"), {alpha: 0}, 0.4);
+		}
+		if (v1 == 'fadeSky')
+		{
+			if (v2 == 'true')
+				FlxTween.tween(skyCamera, {alpha: 0.6}, 2);
+			else
+				FlxTween.tween(skyCamera, {alpha: 0}, 0.4);
+		}
+
+	}
 }

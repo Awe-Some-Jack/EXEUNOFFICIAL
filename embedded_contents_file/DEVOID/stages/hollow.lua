@@ -10,7 +10,6 @@ local hollowBG = {
 local cloudsLoop = {
     {name = 'clouds1', path = 'hollow/nubes', velocity = 50, x = -1950, spacingX = 0},
     {name = 'clouds2', path = 'hollow/nubes2', velocity = 50, x = -1450, spacingX = 0},
-    {name = 'clouds3', path = 'hollow/nubes3', velocity = 50, x = -2650, spacingX = 0},
 }
 
 function onCreate()
@@ -28,9 +27,9 @@ function onCreate()
         loadGraphic(o.name, o.path)
         callMethod(o.name..'.setPosition', {o.x, o.y})
         setProperty(o.name..'.velocity.x', 50)
+        setObjectOrder(o.name, getObjectOrder('ciudad'))
         addInstance(o.name)
     end
-
     makeLuaSprite('night', nil, 0, 0)
     makeGraphic('night', screenWidth * 2, screenHeight * 2, '060d94')
     setProperty('night.alpha', 0.3)

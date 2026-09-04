@@ -47,7 +47,7 @@
 	"position": [220, 310],
 	"healthicon": "luther",
 	"flip_x": false,
-	"healthbar_colors": [161, 161, 161],
+	"healthbar_colors": [224, 104, 10],
 	"camera_position": [-150, 0],
 	"sing_duration": 4,
 	"scale": 1.25,

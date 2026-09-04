@@ -1,73 +1,68 @@
 #pragma header
 
-//2D (returns 0 - 1)
-float random2d(vec2 n) { 
-    return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
-}
-
-float randomRange (in vec2 seed, in float min, in float max) {
-		return min + random2d(seed) * (max - min);
-}
-
-// return 1 if v inside 1d range
-float insideRange(float v, float bottom, float top) {
-   return step(bottom, v) - step(top, v);
-}
-
-//inputs
-uniform float AMT = 0.2; //0 - 1 glitch amount
-uniform float SPEED = 0.6; //0 - 1 speed
+uniform float AMT; //0 - 1 glitch amount
+uniform float SPEED; //0 - 1 speed
 uniform float iTime;
 
 // Wave parameters
 uniform float wVel;
 uniform float wIntensity;
-   
+
+//2D (returns 0 - 1)
+float random2d(vec2 n) { 
+    return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
+}
+
 void main()
 {
-    
     float time = floor(iTime * SPEED * 60.0);    
-	vec2 uv = openfl_TextureCoordv;
+    vec2 uv = openfl_TextureCoordv;
     
-    // Added a wavey shader too :)
-    // Time varying pixel color
-    float jacked_time = 5.5*iTime;
-    vec2 scale = vec2(0.5*wVel);
-   	
-    uv += 0.01*sin(scale*jacked_time + length( uv )*(10.0*wIntensity));
+    // Wave distortion
+    uv += 0.01 * sin(vec2(0.5 * wVel) * (5.5 * iTime) + length(uv) * (10.0 * wIntensity));
     
-    //copy orig
     vec4 outCol = texture2D(bitmap, uv);
     
-    if(outCol.a > 0.0) {
-        //randomly offset slices horizontally
-        float maxOffset = AMT/2.0;
-        for (float i = 0.0; i < 10.0 * AMT; i += 1.0) {
-            float sliceY = random2d(vec2(time , 2345.0 + float(i)));
-            float sliceH = random2d(vec2(time , 9035.0 + float(i))) * 0.25;
-            float hOffset = randomRange(vec2(time , 9625.0 + float(i)), -maxOffset, maxOffset);
-            vec2 uvOff = uv;
-            uvOff.x += hOffset;
-            if (insideRange(uv.y, sliceY, fract(sliceY+sliceH)) == 1.0 ){
-                outCol = texture2D(bitmap, uvOff);
+    if (outCol.a > 0.0) {
+        float maxOffset = AMT * 0.5;
+        float limit = 10.0 * AMT;
+        
+        float finalOffset = 0.0;
+        bool hit = false;
+        
+        for (float i = 0.0; i < 10.0; i += 1.0) {
+            if (i >= limit) break;
+            
+            float sliceY = random2d(vec2(time, 2345.0 + i));
+            float sliceH = random2d(vec2(time, 9035.0 + i)) * 0.25;
+            
+            if (uv.y >= sliceY && uv.y < fract(sliceY + sliceH)) {
+                finalOffset = mix(-maxOffset, maxOffset, random2d(vec2(time, 9625.0 + i)));
+                hit = true;
             }
         }
         
-        //do slight offset on one entire channel
-        float maxColOffset = AMT/6.0;
-        float rnd = random2d(vec2(time , 9545.0));
-        vec2 colOffset = vec2(randomRange(vec2(time , 9545.0),-maxColOffset,maxColOffset), 
-                        randomRange(vec2(time , 7205.0),-maxColOffset,maxColOffset));
-        if (rnd < 0.33){
+        if (hit) {
+            outCol = texture2D(bitmap, vec2(uv.x + finalOffset, uv.y));
+        }
+        
+        // Channel glitch offset
+        float rnd = random2d(vec2(time, 9545.0));
+        float maxColOffset = AMT * 0.16666667;
+        
+        vec2 colOffset = vec2(
+            mix(-maxColOffset, maxColOffset, random2d(vec2(time, 9545.0))), 
+            mix(-maxColOffset, maxColOffset, random2d(vec2(time, 7205.0)))
+        );
+        
+        if (rnd < 0.33) {
             outCol.r = texture2D(bitmap, uv + colOffset).r;
-            
-        }else if (rnd < 0.66){
+        } else if (rnd < 0.66) {
             outCol.g = texture2D(bitmap, uv + colOffset).g;
-            
-        } else{
+        } else {
             outCol.b = texture2D(bitmap, uv + colOffset).b;  
         }
     }
     
-	gl_FragColor = vec4(outCol);
+    gl_FragColor = outCol;
 }

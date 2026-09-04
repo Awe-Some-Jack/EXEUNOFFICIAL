@@ -1,6 +1,6 @@
 -- Code by Kophy232, omg hiiiii :DD
 -- If you use it in your Lua Recreation Remember to credit properly. 
--- ofc no one will steal this, unless if won't make source code public -JustX
+-- ofc no one will steal this, unless if we won't make source code public -JustX
 
 -- Recuerda acreditar si lo usas en tu recreacion Lua.
 

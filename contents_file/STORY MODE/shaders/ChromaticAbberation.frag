@@ -1,28 +1,18 @@
 #pragma header
 
-//uniform float iTime;
 uniform float amount;
 
 vec2 PincushionDistortion(in vec2 uv, float strength) {
-	vec2 st = uv - 0.5;
-    float uvA = atan(st.x, st.y);
-    float uvD = dot(st, st);
-    return 0.5 + vec2(sin(uvA), cos(uvA)) * sqrt(uvD) * (1.0 - strength * uvD);
+    vec2 st = uv - 0.5;
+    return 0.5 + st * (1.0 - strength * dot(st, st));
 }
 
-vec4 ChromaticAbberation(sampler2D tex, in vec2 uv) 
-{
-	float rChannel = texture2D(tex, PincushionDistortion(uv, 0.3 * amount)).r;
-	float gChannel = texture2D(tex, PincushionDistortion(uv, 0.15 * amount)).g;
-	float bChannel = texture2D(tex, PincushionDistortion(uv, 0.075 * amount)).b;
-	float aChannel = texture2D(tex, PincushionDistortion(uv, 0.15 * amount)).a;
-	vec4 retColor = vec4(rChannel, gChannel, bChannel, aChannel);
-	return retColor;
-}
-
-void main(){
-	vec2 uv = openfl_TextureCoordv;
-	vec4 col = ChromaticAbberation(bitmap, uv);
-	
-	gl_FragColor = col;
+void main() {
+    vec2 uv = openfl_TextureCoordv;
+    
+    float r = flixel_texture2D(bitmap, PincushionDistortion(uv, 0.3 * amount)).r;
+    vec2 ga = flixel_texture2D(bitmap, PincushionDistortion(uv, 0.15 * amount)).ga;
+    float b = flixel_texture2D(bitmap, PincushionDistortion(uv, 0.075 * amount)).b;
+    
+    gl_FragColor = vec4(r, ga.x, b, ga.y);
 }

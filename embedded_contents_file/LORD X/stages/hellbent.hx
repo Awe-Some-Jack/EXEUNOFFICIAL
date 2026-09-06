@@ -136,6 +136,7 @@ function onUpdatePost(elapsed:Float)
 	if (!_phase2Active)
 	{
 		if (eyes.alpha != game.getLuaObject('BlackGraphicHUD').alpha) eyes.alpha = game.getLuaObject('BlackGraphicHUD').alpha;
+		if (eyes != null) eyes.visible = dad?.getAnimationName() == 'idle';
 		if (eyes != null && dad?.getAnimationName() == 'idle')
 		{
 			eyes.scale.set(camGame.zoom * 0.5, camGame.zoom * 0.5);

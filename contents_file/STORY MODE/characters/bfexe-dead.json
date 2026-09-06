@@ -1,39 +1,39 @@
 {
 	"animations": [
 		{
-			"offsets": [578, 771],
 			"loop": false,
-			"fps": 24,
+			"offsets": [255, 442],
 			"anim": "firstDeath",
-			"indices": [],
-			"name": "deadintro"
+			"fps": 24,
+			"name": "bfexe-dead",
+			"indices": []
 		},
 		{
-			"offsets": [578, 771],
 			"loop": true,
-			"fps": 24,
+			"offsets": [255, 470],
 			"anim": "deathLoop",
-			"indices": [],
-			"name": "deadloop"
+			"fps": 24,
+			"name": "deathLoop",
+			"indices": []
 		},
 		{
-			"offsets": [600, 771],
 			"loop": false,
-			"fps": 24,
+			"offsets": [277, 446],
 			"anim": "deathConfirm",
-			"indices": [],
-			"name": "deadend"
+			"fps": 24,
+			"name": "deathConfirm",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "gameovers/tooslow/gameoverluis",
+	"image": "gameovers/tooslow/gameluisover",
 	"position": [0, 0],
 	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 0.7,
+	"scale": 1.1,
 	"_editor_isPlayer": true
 }

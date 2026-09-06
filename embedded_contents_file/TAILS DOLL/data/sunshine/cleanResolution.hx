@@ -15,7 +15,7 @@ function onCreate()
 
 function onCreatePost() 
 {
-    comboGroup.y -= 100;
+    comboGroup.y += 100 * (ClientPrefs.data.downScroll ? -1 : 1);
 }
 
 function onDestroy()

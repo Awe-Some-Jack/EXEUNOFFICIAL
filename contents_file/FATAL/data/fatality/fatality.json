@@ -147,6 +147,12 @@
 			]
 		],
 		[
+			40000,
+			[
+				["FatalityFlashin", "rain", ""]
+			]
+		],
+		[
 			40250,
 			[
 				["Add Camera Zoom", "", ""]
@@ -402,6 +408,12 @@
 			53750,
 			[
 				["Add Camera Zoom", "", ""]
+			]
+		],
+		[
+			54000,
+			[
+				["FatalityFlashin", "rain", ""]
 			]
 		],
 		[
@@ -666,6 +678,12 @@
 			]
 		],
 		[
+			108000,
+			[
+				["FatalityFlashin", "rain", ""]
+			]
+		],
+		[
 			108500,
 			[
 				["Add Camera Zoom", "", ""]
@@ -864,12 +882,6 @@
 			]
 		],
 		[
-			123937.5,
-			[
-				["FatalityStage", "", ""]
-			]
-		],
-		[
 			124000,
 			[
 				["FatalityFlashin", "3rdbg", ""],
@@ -950,6 +962,12 @@
 			]
 		],
 		[
+			139375,
+			[
+				["FatalityFlashin", "glitch", ""]
+			]
+		],
+		[
 			139437.5,
 			[
 				["PopProgram", "", ""]
@@ -1007,6 +1025,12 @@
 			140000,
 			[
 				["Clear Fatal Popups", "", ""]
+			]
+		],
+		[
+			140000,
+			[
+				["FatalityFlashin", "glitchbgg", ""]
 			]
 		],
 		[
@@ -1097,6 +1121,12 @@
 			158000,
 			[
 				["PopProgram", "", ""]
+			]
+		],
+		[
+			158000,
+			[
+				["FatalityFlashin", "scream", ""]
 			]
 		],
 		[
@@ -1283,6 +1313,12 @@
 			159937.5,
 			[
 				["PopProgram", "", ""]
+			]
+		],
+		[
+			160000,
+			[
+				["FatalityFlashin", "bluescreen", ""]
 			]
 		]
 	],
@@ -3659,12 +3695,12 @@
 			"sectionNotes": [
 				[139000, 3, 0],
 				[139250, 1, 0],
-				[139375, 6, 625],
-				[139375, 5, 625],
-				[139375, 7, 625],
-				[139375, 2, 625],
-				[139375, 4, 625],
-				[139375, 3, 625]
+				[139375, 6, 625, "No Animation"],
+				[139375, 5, 625, "No Animation"],
+				[139375, 7, 625, "No Animation"],
+				[139375, 2, 625, "No Animation"],
+				[139375, 4, 625, "No Animation"],
+				[139375, 3, 625, "No Animation"]
 			],
 			"typeOfSection": 0,
 			"altAnim": false,

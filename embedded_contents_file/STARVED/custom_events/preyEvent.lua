@@ -145,6 +145,7 @@ function onEvent(n, v1)
 			starv = false
 			furn = false
 			callMethod('gf.setPosition', {14400, 350})
+			setProperty('gf.maxVelocity.x', 0)
 			setProperty('gf.velocity.x', -5000)
 			setProperty('gf.flipX', true)
 		end

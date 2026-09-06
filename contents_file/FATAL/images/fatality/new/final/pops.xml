@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="pops.png">
+<SubTexture name="idle0000" x="0" y="0" width="507" height="208" frameX="-210" frameY="-80" frameWidth="800" frameHeight="500" />
+<SubTexture name="idle0001" x="0" y="208" width="507" height="206" frameX="-212" frameY="-81" frameWidth="800" frameHeight="500" />
+<SubTexture name="idle0002" x="507" y="0" width="510" height="206" frameX="-210" frameY="-82" frameWidth="800" frameHeight="500" />
+<SubTexture name="idle0003" x="507" y="206" width="508" height="206" frameX="-211" frameY="-81" frameWidth="800" frameHeight="500" />
+</TextureAtlas>

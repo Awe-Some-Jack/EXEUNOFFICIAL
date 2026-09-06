@@ -5,7 +5,8 @@ local stage1 = {
 	{name = 'slashCracks', path = 'bg/slashCracks', x = -600, y = -353, animated = true, prefix = 'idle', fps = 12},
 	{name = 'slashFloor',  path = 'bg/slashFloor',  x = -600, y = -234},
 	{name = 'shaderRoom',  path = 'bg/Shader_Room',  x = -600, y = -318, front = true},
-	{name = 'slashLava',   path = 'bg/slashLava',   x = -504, y = -372, animated = true, prefix = 'sl4sh background lava', fps = 24, front = true},
+	{name = 'slashLava',   path = 'bg/slashLava',   x = -640, y = -372, animated = true, prefix = 'sl4sh background lava', fps = 24, front = true},
+	{name = 'slashLava2',   path = 'bg/slashLava',   x = 1226, y = -372, animated = true, prefix = 'sl4sh background lava', fps = 24, front = true},
 }
 
 local stage2 = {
@@ -42,19 +43,26 @@ function onCreatePost()
 
 	addCharacterToList('sl4shfront', 'dad')
 
+	setProperty('hbBG.alpha', 0)
 	setProperty('hbHealth.alpha', 0)
 	setProperty('hbHealth2.alpha', 0)
+	setProperty('healthBG.alpha', 0)
 	
+	makeLuaSprite('bghb',  'pixelUI/hud/hbBG', 0, 0)
+	setObjectCamera('bghb', 'camHUD')
+	scaleObject('bghb', 2.5, 2.5)
 	makeLuaSprite('leftBar',  'pixelUI/hud/bar1', 0, 0)
 	makeLuaSprite('rightBar', 'pixelUI/hud/bar2', 0, 0)
 	setObjectCamera('leftBar', 'camHUD') setObjectCamera('rightBar', 'camHUD')
 	setObjectOrder('leftBar', getObjectOrder('separatorHealth')) setObjectOrder('rightBar', getObjectOrder('separatorHealth'))
-	callMethod('leftBar.setPosition',  {getProperty('hbHealth.x')  - 5, getProperty('hbHealth.y') - 4.5})
-	callMethod('rightBar.setPosition', {getProperty('hbHealth2.x') - 5, getProperty('hbHealth2.y') - 4.5})
+	callMethod('leftBar.setPosition',  {getProperty('hbHealth.x'), getProperty('hbHealth.y')})
+	callMethod('bghb.setPosition',  {getProperty('hbHealth.x') - 4, getProperty('hbHealth.y') - 42.5})
+	callMethod('rightBar.setPosition', {getProperty('hbHealth2.x'), getProperty('hbHealth2.y')})
 	setProperty('leftBar.antialiasing', false)
+	setProperty('bghb.antialiasing', false)
 	setProperty('rightBar.antialiasing', false)
 	addLuaSprite('leftBar') addLuaSprite('rightBar')
-	setObjectOrder('healthBG', getObjectOrder('leftBar'))
+	setObjectOrder('bghb', getObjectOrder('leftBar') - 1)
 end
 
 function onEvent(n)
@@ -75,12 +83,18 @@ function onEvent(n)
 end
 
 
-function onUpdatePost()
-	scaleObject('rightBar', clamp(getHealth(), 0, 2) * 3.685, 4)
-	scaleObject('leftBar',  clamp(2 - getHealth(), 0, 2) * 3.685, 4)
-	setProperty('rightBar.x', getProperty('leftBar.x') + getProperty('leftBar.width') - 10)
+local lerpHealth = 1
+function onUpdatePost(e)
+	lerpHealth = lerp(getHealth(), lerpHealth, math.exp(-e * 12 * playbackRate))
+	setGraphicSize('rightBar', bound(lerpHealth, 0, 2) * ((601 - 10) / 2), 25 - 10)
+	setGraphicSize('leftBar',  bound(2 - lerpHealth, 0, 2) * ((601 - 10) / 2), 25 - 10)
+	setProperty('rightBar.x', getProperty('leftBar.x') + getProperty('leftBar.width'))
 end
 
-function clamp(val, lower, upper)
-    return math.min(math.max(val, lower), upper)
+function lerp(a, b, t)
+	return a + t * (b - a)
+end
+
+function bound(number, min, max)
+	return math.max(min, math.min(max, number))
 end

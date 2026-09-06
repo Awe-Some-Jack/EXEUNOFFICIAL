@@ -21,7 +21,6 @@ function onEvent(n,v1,v2)
 			callMethod('ahh.play')
 		end
 		if v1 == 'bestday' then
-			if getProperty('ahh') == nil then return end
 			callMethod('ahh.destroy')
     		callMethod('remove', {instanceArg('ahh')})
 

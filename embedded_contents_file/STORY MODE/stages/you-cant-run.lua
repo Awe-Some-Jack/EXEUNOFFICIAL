@@ -218,6 +218,14 @@ function onUpdatePost(elapsed)
 	setProperty('pixelFlyingRocks.y', 10 + getProperty('gf.y'))
 end
 
+local function spinStrums()
+	for i = 0, 7 do
+		setProperty('strumLineNotes.members['..i..'].angle', 0)
+		cancelTween(i..'AngleTween')
+		noteTweenAngle(i..'AngleTween', i, 360, 0.3, 'circOut')
+	end
+end
+
 local savedScale = {1, 1}
 function onStepHit()
 	if curStep == 80 then
@@ -347,5 +355,16 @@ function onStepHit()
 	elseif curStep == 1472 then
 		setVignette('none')
 	end
+
+	local offset = (curStep - 1184) % 32
+
+	if curStep >= 1192 and curStep <= 1418 then
+		if offset == 8 or offset == 11 then
+			spinStrums()
+		end
+	end
+
+	if curStep == 1439 then
+		doTweenAlpha('hudFadeIn', 'camHUD', 0, 0.6, 'linear')
+	end
 end
--- assman.brain.hp -1

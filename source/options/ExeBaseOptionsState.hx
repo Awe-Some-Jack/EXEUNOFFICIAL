@@ -27,6 +27,11 @@ typedef ExeGenericOption = {
 	@:optional var isFloat:Bool;
 }
 
+typedef ExeRowData = {
+	var label:String;
+	var value:String;
+}
+
 class ExeBaseOptionsState extends MusicBeatSubstate
 {
 	public static final TB_X:Float       = -134;
@@ -54,6 +59,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	}
 	public static final FONT_SIZE:Int    = 18;
 	public static final OPTIONS_PAGE_SIZE:Int    = 4;
+	public static final MAX_VISIBLE_ROWS:Int     = 4;
 
 	public static final ARR_L_X:Float   = 773;
 	public static final ARR_R_X:Float   = 1075;
@@ -73,6 +79,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	public var editingValue:Bool = false;
 	public var backLock:Bool = false;
 	public var introAnimating:Bool = true;
+	public var scrollOffset:Int = 0;
 
 	var arrowTweenL:FlxTween;
 	var arrowTweenR:FlxTween;
@@ -186,13 +193,106 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	public function clearPage()
 	{
 		for (g in optionGroups)
-		{
-			rightGroup.remove(g.nameBG);   remove(g.nameBG);   g.nameBG.destroy();
-			rightGroup.remove(g.valueBG);  remove(g.valueBG);  g.valueBG.destroy();
-			rightGroup.remove(g.nameText); remove(g.nameText); g.nameText.destroy();
-			rightGroup.remove(g.valueText);remove(g.valueText);g.valueText.destroy();
-		}
+			destroyRow(g);
 		optionGroups = [];
+	}
+
+	public function buildRow(label:String, valueStr:String, rowY:Float, offscreen:Bool, ?valueFont:String, ?valueFontSize:Int):ExeMenuOptionGroup
+	{
+		var offRight:Float = FlxG.width + 200;
+
+		var nameBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.webp'));
+		nameBG.scale.set(NB_SCALE_X, NB_SCALE_Y); nameBG.updateHitbox();
+		nameBG.x = offscreen ? offRight : NB_X; nameBG.y = rowY; nameBG.scrollFactor.set(0, 0);
+		add(nameBG); rightGroup.push(nameBG);
+
+		var valueBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.webp'));
+		valueBG.scale.set(VB_SCALE_X, VB_SCALE_Y); valueBG.updateHitbox();
+		valueBG.x = offscreen ? offRight : VB_X; valueBG.y = rowY; valueBG.scrollFactor.set(0, 0);
+		add(valueBG); rightGroup.push(valueBG);
+
+		var lblSize = backend.Language.scaledFontSize(FONT_SIZE);
+		var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), label, lblSize);
+		nameTxt.setFormat(Paths.font(getLangFont()), lblSize, FlxColor.WHITE, LEFT);
+		nameTxt.x = offscreen ? offRight : nameBG.x + 120;
+		nameTxt.y = nameBG.y + (nameBG.height - nameTxt.height) / 2; nameTxt.scrollFactor.set(0, 0);
+		add(nameTxt); rightGroup.push(cast nameTxt);
+
+		var vFont = valueFont ?? getLangFont();
+		var vSize = valueFontSize ?? lblSize;
+		var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), valueStr, vSize);
+		valueTxt.setFormat(Paths.font(vFont), vSize, FlxColor.WHITE, CENTER);
+		valueTxt.x = offscreen ? offRight : valueBG.x + (valueBG.width - valueTxt.width) / 2;
+		valueTxt.y = valueBG.y + (valueBG.height - valueTxt.height) / 2; valueTxt.scrollFactor.set(0, 0);
+		add(valueTxt); rightGroup.push(cast valueTxt);
+
+		return {nameBG: nameBG, valueBG: valueBG, nameText: nameTxt, valueText: valueTxt};
+	}
+
+	public function destroyRow(g:ExeMenuOptionGroup):Void
+	{
+		rightGroup.remove(g.nameBG);   remove(g.nameBG);   g.nameBG.destroy();
+		rightGroup.remove(g.valueBG);  remove(g.valueBG);  g.valueBG.destroy();
+		rightGroup.remove(g.nameText); remove(g.nameText); g.nameText.destroy();
+		rightGroup.remove(g.valueText);remove(g.valueText);g.valueText.destroy();
+	}
+
+	public function buildVisibleRows(totalCount:Int, getRowData:Int->ExeRowData, ?valueFont:String, ?valueFontSize:Int):Void
+	{
+		var visibleCount = Std.int(Math.min(totalCount, MAX_VISIBLE_ROWS));
+		for (i in 0...visibleCount)
+		{
+			var rowY = NB_Y + i * ROW_GAP;
+			var data = getRowData(scrollOffset + i);
+			optionGroups.push(buildRow(data.label, data.value, rowY, introAnimating, valueFont, valueFontSize));
+		}
+	}
+
+	public function scrollList(dir:Int, totalCount:Int, getRowData:Int->ExeRowData, ?valueFont:String, ?valueFontSize:Int):Void
+	{
+		var visibleCount = Std.int(Math.min(totalCount, MAX_VISIBLE_ROWS));
+
+		var leaving = dir > 0 ? optionGroups.shift() : optionGroups.pop();
+		if (leaving != null)
+		{
+			FlxTween.tween(leaving.nameBG,   {alpha: 0, y: leaving.nameBG.y   - dir * 60}, 0.2, {ease: FlxEase.quadIn});
+			FlxTween.tween(leaving.valueBG,  {alpha: 0, y: leaving.valueBG.y  - dir * 60}, 0.2, {ease: FlxEase.quadIn});
+			FlxTween.tween(leaving.nameText, {alpha: 0, y: leaving.nameText.y - dir * 60}, 0.2, {ease: FlxEase.quadIn});
+			FlxTween.tween(leaving.valueText,{alpha: 0, y: leaving.valueText.y- dir * 60}, 0.2, {ease: FlxEase.quadIn,
+				onComplete: (_) -> destroyRow(leaving)});
+		}
+
+		for (i in 0...optionGroups.length)
+		{
+			final g = optionGroups[i];
+			final slot = dir > 0 ? i : i + 1;
+			final targetY = NB_Y + slot * ROW_GAP;
+
+			FlxTween.cancelTweensOf(g.nameBG); FlxTween.cancelTweensOf(g.valueBG);
+			FlxTween.cancelTweensOf(g.nameText); FlxTween.cancelTweensOf(g.valueText);
+
+			FlxTween.tween(g.nameBG,   {y: targetY}, 0.22, {ease: FlxEase.quadInOut});
+			FlxTween.tween(g.valueBG,  {y: targetY}, 0.22, {ease: FlxEase.quadInOut});
+			FlxTween.tween(g.nameText, {y: targetY + (g.nameBG.height - g.nameText.height) / 2}, 0.22, {ease: FlxEase.quadInOut});
+			FlxTween.tween(g.valueText,{y: targetY + (g.valueBG.height - g.valueText.height) / 2}, 0.22, {ease: FlxEase.quadInOut});
+		}
+
+		final enteringIdx = dir > 0 ? scrollOffset + visibleCount - 1 : scrollOffset;
+		final enteringSlot = dir > 0 ? visibleCount - 1 : 0;
+		final enteringY = NB_Y + enteringSlot * ROW_GAP;
+		final startY = enteringY + dir * 50;
+
+		final data = getRowData(enteringIdx);
+		final row = buildRow(data.label, data.value, startY, false, valueFont, valueFontSize);
+		row.nameBG.alpha = 0; row.valueBG.alpha = 0; row.nameText.alpha = 0; row.valueText.alpha = 0;
+		FlxTween.tween(row.nameBG,   {alpha: 1, y: enteringY}, 0.26, {ease: FlxEase.backOut});
+		FlxTween.tween(row.valueBG,  {alpha: 1, y: enteringY}, 0.26, {ease: FlxEase.backOut});
+		FlxTween.tween(row.nameText, {alpha: 1, y: enteringY + (row.nameBG.height - row.nameText.height) / 2}, 0.26, {ease: FlxEase.backOut});
+		FlxTween.tween(row.valueText,{alpha: 1, y: enteringY + (row.valueBG.height - row.valueText.height) / 2}, 0.26, {ease: FlxEase.backOut});
+
+		if (dir > 0) optionGroups.push(row); else optionGroups.unshift(row);
+
+		new FlxTimer().start(0.27, (_) -> changeSelection());
 	}
 
 	function playIntro(rectX:Int)

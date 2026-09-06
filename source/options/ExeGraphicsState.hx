@@ -1,9 +1,5 @@
 package options;
 
-import flixel.math.FlxMath;
-import flixel.text.FlxText;
-import flixel.util.FlxColor;
-
 import backend.Paths;
 import backend.ClientPrefs;
 import backend.Language;
@@ -12,16 +8,17 @@ import Main;
 class ExeGraphicsState extends ExeBaseOptionsState
 {
 	var allOptions:Array<ExeBaseOptionsState.ExeGenericOption>;
-	var pageOptions:Array<Array<ExeBaseOptionsState.ExeGenericOption>> = [];
 
 	public static var curSelected:Int = 0;
-	public static var curPage:Int = 0;
 
 	var holdTimer:Float = 0;
 	var holdRepeat:Float = 0;
 
 	override public function create()
 	{
+		curSelected = 0;
+		scrollOffset = 0;
+
 		menuTitle = Language.get('options.graphics', 'GRAPHICS');
 		var lbl = Language.getArray('options.graphics.labels', ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADERS", "UNCAPPED FPS", "FRAMERATE"]);
 		allOptions = [
@@ -33,54 +30,27 @@ class ExeGraphicsState extends ExeBaseOptionsState
 			{label: lbl[5], getValue: () -> ClientPrefs.data.framerate,   setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true},
 		];
 
-		var i = 0;
-		while (i < allOptions.length) { pageOptions.push(allOptions.slice(i, i + ExeBaseOptionsState.OPTIONS_PAGE_SIZE)); i += ExeBaseOptionsState.OPTIONS_PAGE_SIZE; }
-
 		super.create();
 	}
 
-	override public function getCurrentSelectionIndex():Int { return curSelected; }
+	override public function getCurrentSelectionIndex():Int { return curSelected - scrollOffset; }
+
+	function formatValue(opt:ExeBaseOptionsState.ExeGenericOption):String
+	{
+		var val = opt.getValue();
+		var on = Language.get('options.on', 'ON'); var off = Language.get('options.off', 'OFF');
+		return Std.isOfType(val, Bool) ? (cast(val, Bool) ? on : off) : Std.string(val);
+	}
+
+	function getRowData(i:Int):ExeBaseOptionsState.ExeRowData
+		return {label: allOptions[i].label, value: formatValue(allOptions[i])};
 
 	override public function loadPage()
 	{
 		clearPage();
-		var page = pageOptions[curPage];
 		titlebarTxt.text = menuTitle;
-		var offRight:Float = FlxG.width + 200;
 
-		for (i in 0...page.length)
-		{
-			var opt = page[i];
-			var rowY = ExeBaseOptionsState.NB_Y + i * ExeBaseOptionsState.ROW_GAP;
-
-			var nameBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.webp'));
-			nameBG.scale.set(ExeBaseOptionsState.NB_SCALE_X, ExeBaseOptionsState.NB_SCALE_Y); nameBG.updateHitbox();
-			nameBG.x = introAnimating ? offRight : ExeBaseOptionsState.NB_X; nameBG.y = rowY; nameBG.scrollFactor.set(0, 0);
-			add(nameBG); rightGroup.push(nameBG);
-
-			var valueBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.webp'));
-			valueBG.scale.set(ExeBaseOptionsState.VB_SCALE_X, ExeBaseOptionsState.VB_SCALE_Y); valueBG.updateHitbox();
-			valueBG.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X; valueBG.y = rowY; valueBG.scrollFactor.set(0, 0);
-			add(valueBG); rightGroup.push(valueBG);
-
-			var lblSize = Language.scaledFontSize(ExeBaseOptionsState.FONT_SIZE);
-			var nameTxt = new FlxText(0, 0, Std.int(nameBG.width), opt.label, lblSize);
-			nameTxt.setFormat(Paths.font(ExeBaseOptionsState.getLangFont()), lblSize, FlxColor.WHITE, LEFT);
-			nameTxt.x = introAnimating ? offRight : ExeBaseOptionsState.NB_X + 120;
-			nameTxt.y = rowY + (nameBG.height - nameTxt.height) / 2; nameTxt.scrollFactor.set(0, 0);
-			add(nameTxt); rightGroup.push(cast nameTxt);
-
-			var val = opt.getValue();
-			var on = Language.get('options.on', 'ON'); var off = Language.get('options.off', 'OFF');
-			var valStr = Std.isOfType(val, Bool) ? (cast(val, Bool) ? on : off) : Std.string(val);
-			var valueTxt = new FlxText(0, 0, Std.int(valueBG.width), valStr, lblSize);
-			valueTxt.setFormat(Paths.font(ExeBaseOptionsState.getLangFont()), lblSize, FlxColor.WHITE, CENTER);
-			valueTxt.x = introAnimating ? offRight : ExeBaseOptionsState.VB_X + (valueBG.width - valueTxt.width) / 2;
-			valueTxt.y = rowY + (valueBG.height - valueTxt.height) / 2; valueTxt.scrollFactor.set(0, 0);
-			add(valueTxt); rightGroup.push(cast valueTxt);
-
-			optionGroups.push({nameBG: nameBG, valueBG: valueBG, nameText: nameTxt, valueText: valueTxt});
-		}
+		buildVisibleRows(allOptions.length, getRowData);
 
 		if (!introAnimating) changeSelection();
 	}
@@ -101,9 +71,9 @@ class ExeGraphicsState extends ExeBaseOptionsState
 			if (isLeft || isRight)
 			{
 				if (controls.UI_LEFT_P || controls.UI_RIGHT_P) holdRepeat = 0; else holdRepeat = 0.07;
-				var opt = pageOptions[curPage][curSelected];
+				var opt = allOptions[curSelected];
 				var val = opt.getValue();
-				var txt = optionGroups[curSelected].valueText;
+				var txt = optionGroups[curSelected - scrollOffset].valueText;
 
 				if (Std.isOfType(val, Bool))
 				{
@@ -162,22 +132,41 @@ class ExeGraphicsState extends ExeBaseOptionsState
 
 		if (controls.UI_UP_P || controls.UI_DOWN_P)
 		{
-			FlxG.sound.play(Paths.sound('scrollMenu'));
-			curSelected = FlxMath.wrap(curSelected + (controls.UI_UP_P ? -1 : 1), 0, optionGroups.length - 1);
-			hideArrows(); changeSelection();
-		}
-		if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
-		{
-			FlxG.sound.play(Paths.sound('scrollMenu'));
-			var isRight = controls.UI_RIGHT_P;
-			if (isRight && curPage < pageOptions.length - 1) { curPage++; curSelected = 0; loadPage(); }
-			else if (!isRight && curPage > 0) { curPage--; curSelected = 0; loadPage(); }
+			var visibleCount = Std.int(Math.min(allOptions.length, ExeBaseOptionsState.MAX_VISIBLE_ROWS));
+			var maxScroll = Std.int(Math.max(0, allOptions.length - visibleCount));
+			scrollOffset = Std.int(Math.max(0, Math.min(scrollOffset, maxScroll)));
+			curSelected = Std.int(Math.max(0, Math.min(curSelected, allOptions.length - 1)));
+
+			var dir = controls.UI_UP_P ? -1 : 1;
+			var newSelected = curSelected + dir;
+
+			if (newSelected >= 0 && newSelected <= allOptions.length - 1)
+			{
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				curSelected = newSelected;
+				hideArrows();
+
+				if (newSelected < scrollOffset)
+				{
+					scrollOffset += dir;
+					scrollList(dir, allOptions.length, getRowData);
+				}
+				else if (newSelected >= scrollOffset + visibleCount)
+				{
+					scrollOffset += dir;
+					scrollList(dir, allOptions.length, getRowData);
+				}
+				else
+				{
+					changeSelection();
+				}
+			}
 		}
 		if (controls.ACCEPT)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			editingValue = true; nudgeSelectedText(true);
-			var g = optionGroups[curSelected];
+			var g = optionGroups[curSelected - scrollOffset];
 			showArrows(g.valueBG.y + (g.valueBG.height - arrowLeft.height) / 2);
 		}
 		if (controls.BACK) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }

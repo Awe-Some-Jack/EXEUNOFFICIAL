@@ -67,8 +67,8 @@ class Arrow extends FlxSprite
     override function update(elapsed:Float) 
     {
         super.update(elapsed);
-        var justPressed = (FlxG.mouse.justPressed && overlapsPoint(new flixel.math.FlxPoint(FlxG.mouse.x, FlxG.mouse.y))) || FlxG.keys.anyJustPressed([key]);
-        var justReleased = (FlxG.mouse.justReleased && overlapsPoint(new flixel.math.FlxPoint(FlxG.mouse.x, FlxG.mouse.y))) || FlxG.keys.anyJustReleased([key]);
+        var justPressed = (FlxG.mouse.justPressed && overlapsPoint(new flixel.math.FlxPoint(FlxG.mouse.x, FlxG.mouse.y))) || (key != FlxKey.NONE && FlxG.keys.anyJustPressed([key]));
+        var justReleased = (FlxG.mouse.justReleased && overlapsPoint(new flixel.math.FlxPoint(FlxG.mouse.x, FlxG.mouse.y))) || (key != FlxKey.NONE && FlxG.keys.anyJustReleased([key]));
 
         if (this == null) return;
  

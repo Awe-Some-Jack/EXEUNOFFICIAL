@@ -38,6 +38,14 @@ class OptionsState extends MusicBeatState
 
 	var circleShader:CirclesShader;
 	static final SECTION_KEYS = ["CONTROLS", "VISUALS", "GAMEPLAY", "GRAPHICS", "LANGUAGE", "GAMEJOLT"];
+	static final SECTION_NEIGHBORS:Array<Array<Int>> = [
+		[-1,    1,    -1,    2],
+		[ 0,   -1,    -1,    3],
+		[-1,    3,     0,    4],
+		[ 2,   -1,     1,    5],
+		[-1,    5,     2,   -1],
+		[ 4,   -1,     3,   -1],
+	];
 
 	var sectionsList:Array<String> = [];
 	var sectionsGrp:FlxTypedGroup<FlxText>;
@@ -89,26 +97,22 @@ class OptionsState extends MusicBeatState
 		add(bgCanvas);
 
 		final dotSize:Int = 160;
-		final dotSize2:Int = 160;
 		final dotShape = new Shape();
 		dotShape.graphics.beginFill(0x4a0008);
 		dotShape.graphics.drawCircle(dotSize / 2, dotSize / 2, dotSize / 2);
 		dotShape.graphics.endFill();
 		final bmpDotA = new BitmapData(dotSize, dotSize, true, 0x00000000); bmpDotA.draw(dotShape);
 		orbitDotA = new FlxSprite().loadGraphic(bmpDotA); add(orbitDotA);
-		final bmpDotB = new BitmapData(dotSize, dotSize, true, 0x00000000); bmpDotB.draw(dotShape);
-		orbitDotB = new FlxSprite().loadGraphic(bmpDotB); add(orbitDotB);
+		orbitDotB = new FlxSprite().loadGraphic(bmpDotA); add(orbitDotB);
 
 		final dotShape2 = new Shape();
 		dotShape2.graphics.beginFill(0x3b060c, 1);
-		dotShape2.graphics.drawCircle(dotSize2 / 2, dotSize2 / 2, dotSize2 / 2);
+		dotShape2.graphics.drawCircle(dotSize / 2, dotSize / 2, dotSize / 2);
 		dotShape2.graphics.endFill();
-		
-		final bmpDotA2 = new BitmapData(dotSize2, dotSize2, true, 0x00000000); bmpDotA2.draw(dotShape2);
+
+		final bmpDotA2 = new BitmapData(dotSize, dotSize, true, 0x00000000); bmpDotA2.draw(dotShape2);
 		orbitDotA2 = new FlxSprite().loadGraphic(bmpDotA2); add(orbitDotA2);
-		
-		final bmpDotB2 = new BitmapData(dotSize2, dotSize2, true, 0x00000000); bmpDotB2.draw(dotShape2);
-		orbitDotB2 = new FlxSprite().loadGraphic(bmpDotB2); add(orbitDotB2);
+		orbitDotB2 = new FlxSprite().loadGraphic(bmpDotA2); add(orbitDotB2);
 		FlxTween.tween(this, {orbitDotScale: 0.3}, 14.0, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 		FlxTween.tween(this, {orbitDotScale2: 0.3}, 14.0, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 
@@ -145,7 +149,7 @@ class OptionsState extends MusicBeatState
 		add(vigTop);
 
 		title = new FlxSprite(0, 20).loadGraphic(Paths.getBitmapData('assets/exe/options/optionsTitle.webp'));
-		title.setGraphicSize(Std.int(title.width * GLOBAL_SCALE));
+		title.setGraphicSize(Std.int(title.width * GLOBAL_SCALE * 0.75));
 		title.updateHitbox();
 		title.screenCenter(X);
 		add(title);
@@ -267,19 +271,11 @@ class OptionsState extends MusicBeatState
 		
 		if (!canAction || subState != null) return;
 
-		final neighbors:Array<Array<Int>> = [
-			[-1,    1,    -1,    2], 
-			[ 0,   -1,    -1,    3],
-			[-1,    3,     0,    4],  
-			[ 2,   -1,     1,    5], 
-			[-1,    5,     2,   -1],  
-			[ 4,   -1,     3,   -1], 
-		];
 		var moved = false;
-		if (controls.UI_LEFT_P)  { final n = neighbors[curSelected][0]; if (n != -1) { curSelected = n; moved = true; } }
-		if (controls.UI_RIGHT_P) { final n = neighbors[curSelected][1]; if (n != -1) { curSelected = n; moved = true; } }
-		if (controls.UI_UP_P)    { final n = neighbors[curSelected][2]; if (n != -1) { curSelected = n; moved = true; } }
-		if (controls.UI_DOWN_P)  { final n = neighbors[curSelected][3]; if (n != -1) { curSelected = n; moved = true; } }
+		if (controls.UI_LEFT_P)  { final n = SECTION_NEIGHBORS[curSelected][0]; if (n != -1) { curSelected = n; moved = true; } }
+		if (controls.UI_RIGHT_P) { final n = SECTION_NEIGHBORS[curSelected][1]; if (n != -1) { curSelected = n; moved = true; } }
+		if (controls.UI_UP_P)    { final n = SECTION_NEIGHBORS[curSelected][2]; if (n != -1) { curSelected = n; moved = true; } }
+		if (controls.UI_DOWN_P)  { final n = SECTION_NEIGHBORS[curSelected][3]; if (n != -1) { curSelected = n; moved = true; } }
 
 		if (moved)
 		{

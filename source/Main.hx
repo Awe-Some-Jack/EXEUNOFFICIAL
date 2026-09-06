@@ -88,7 +88,6 @@ class Main extends Sprite
 	{
 		super();
 
-		//trolleados
 		trace("sonic.exe: hola");
 
 		#if CRASH_HANDLER

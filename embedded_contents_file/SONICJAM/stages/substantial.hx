@@ -111,9 +111,9 @@ function onEvent(e, v1, v2)
 		if (v1 == 'fadeSky')
 		{
 			if (v2 == 'true')
-				FlxTween.tween(skyCamera, {alpha: 0.6}, 2);
+				FlxTween.tween(skyCamera, {alpha: 0.1}, 2);
 			else
-				FlxTween.tween(skyCamera, {alpha: 0}, 0.4);
+				FlxTween.tween(skyCamera, {alpha: 1}, 0.4);
 		}
 
 	}

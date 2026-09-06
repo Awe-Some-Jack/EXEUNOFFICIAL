@@ -118,7 +118,6 @@ function onUpdatePost(e)
 	thing = thing + e
 	setShaderFloat('glitch', 'iTime', thing)
 	setShaderFloat('glitch2', 'iTime', thing)
-	setShaderFloat('gBlur', 'iTime', thing)
 
 	if not inGameOver then
 		setShaderFloat('sexo', 'brightness', getProperty('sexo.x') * 2)

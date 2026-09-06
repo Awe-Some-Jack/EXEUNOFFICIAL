@@ -39,6 +39,8 @@ class BGHelper
 		{
 			_orderNum++;
 			spriteDef.orderNum = _orderNum;
+			if (spriteDef.lq == true && ClientPrefs.data.lowQuality) continue;
+
 			var sprite:FlxSprite;
 			if (spriteDef.backdrop != null)
 			{
@@ -104,7 +106,6 @@ class BGHelper
 			if (spriteDef.color != null) sprite.color = spriteDef.color;
 			if (spriteDef.camera != null) sprite.camera = LuaUtils.cameraFromString(spriteDef.camera);
 			if (spriteDef.blend != null) sprite.blend = LuaUtils.blendModeFromString(spriteDef.blend);
-
 			if (spriteDef.front != null) PlayState.instance.add(sprite);
 			else PlayState.instance.insert(PlayState.instance.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
 

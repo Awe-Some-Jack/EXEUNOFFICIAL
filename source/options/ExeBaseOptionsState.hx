@@ -389,15 +389,19 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 	public function showArrows(rowY:Float)
 	{
-		arrowTweenL?.cancel();
-		arrowTweenR?.cancel();
+		FlxTween.cancelTweensOf(arrowLeft);
+		FlxTween.cancelTweensOf(arrowRight);
+		arrowTweenL = null;
+		arrowTweenR = null;
 
+		remove(arrowLeft, true);
+		remove(arrowRight, true);
 		add(arrowLeft);
 		add(arrowRight);
 
 		arrowLeft.y  = rowY; arrowLeft.x  = ARR_L_X + 12; arrowLeft.visible  = true; arrowLeft.alpha  = 0;
 		arrowRight.y = rowY; arrowRight.x = ARR_R_X - 12; arrowRight.visible = true; arrowRight.alpha = 0;
-		
+
 		FlxTween.tween(arrowLeft,  {x: ARR_L_X, alpha: 1}, 0.18, {ease: FlxEase.backOut, onComplete: (_) -> {
 			arrowTweenL = FlxTween.tween(arrowLeft,  {x: ARR_L_X - 6}, 0.4, {ease: FlxEase.sineInOut, type: FlxTweenType.PINGPONG});
 		}});
@@ -408,8 +412,10 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 	public function hideArrows()
 	{
-		if (arrowTweenL != null) { arrowTweenL.cancel(); arrowTweenL = null; }
-		if (arrowTweenR != null) { arrowTweenR.cancel(); arrowTweenR = null; }
+		FlxTween.cancelTweensOf(arrowLeft);
+		FlxTween.cancelTweensOf(arrowRight);
+		arrowTweenL = null;
+		arrowTweenR = null;
 		arrowLeft.visible  = false;
 		arrowRight.visible = false;
 	}

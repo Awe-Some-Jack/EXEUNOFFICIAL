@@ -7,7 +7,7 @@ import flixel.math.FlxAngle;
 
 using StringTools;
 
-typedef BackgroundSprite =
+typedef BackgroundSpriteAlt =
 {
 	var path:String;
 	var sprite:FlxSprite;
@@ -33,7 +33,7 @@ var blackCircle:FlxSprite;
 var isAtem:Bool = false;
 var camZoomingBeat:Bool = false;
 
-var bgNeedle:Array<BackgroundSprite> = [
+var bgNeedle:Array<BackgroundSpriteAlt> = [
 	{path: 'roundabout/sky', position: [-750, -900], scroll: [0.3, 0.3]},
 	{path: 'roundabout/bg3', position: [-500, -700], scroll: [0.5, 0.5]},
 	{path: 'roundabout/bg2', position: [-600, -550], scroll: [0.65, 0.65]},
@@ -43,7 +43,7 @@ var bgNeedle:Array<BackgroundSprite> = [
 	{path: 'roundabout/foreground', position: [100, 450], scroll: [1.2, 1.2], front: true}
 ];
 
-var bgLuther:Array<BackgroundSprite> = [
+var bgLuther:Array<BackgroundSpriteAlt> = [
 	{path: 'herworld/bg', position: [-750, -900], scroll: [0.3, 0.3]},
 	{path: 'herworld/2', position: [300, 180], scroll: [0.45, 0.45]},
 	{path: 'herworld/1', position: [0, 300], scroll: [0.5, 0.5]},
@@ -54,7 +54,7 @@ var bgLuther:Array<BackgroundSprite> = [
 var stepEvents = [
 		{ 
 			step: 798, callback: () -> {	// luther transition
-				FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> makeBackground(bgLuther)});
+				FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> makeBackgroundAlt(bgLuther)});
 				FlxTween.num(0, 1, 1.5, null, v -> {
 					camGlitch.setFloat('AMT', v); 
 					camGlitch.setFloat('SPEED', v);
@@ -129,7 +129,7 @@ var stepEvents = [
 		{ 
 			step: 2976, callback: () -> {	//solo transition
 				triggerEvent('Set customCamera Position', 'bf', '2500, 1000');
-				FlxTween.tween(black, {alpha: 1}, 2, {onComplete: _ -> makeBackground([]) });
+				FlxTween.tween(black, {alpha: 1}, 2, {onComplete: _ -> makeBackgroundAlt([]) });
 				FlxTween.num(0, 1, 2, {onComplete: _ -> {
 					camGlitch.setFloat('AMT', 0.0); 
 					camGlitch.setFloat('SPEED', 0.0);
@@ -289,7 +289,7 @@ function onCreatePost()
 	preloadCharacter(0, 'bf-needlefinal');
 	preloadCharacter(2, 'lutherfinal');
 
-	makeBackground(bgNeedle);
+	makeBackgroundAlt(bgNeedle);
 	triggerEvent("Tween Camera Zoom", "1.5, true", "0.001, cubeIn");
 	triggerEvent("Tweening Camera", "0, -2000", "0.001, cubeIn");
 }
@@ -359,7 +359,7 @@ function onBeatHit() {
 		sectionHit();
 }
 
-function makeBackground(background:Array<BackgroundSprite>)
+function makeBackgroundAlt(background:Array<BackgroundSpriteAlt>)
 {
 	for (sprite in activeSprites) 
 	{

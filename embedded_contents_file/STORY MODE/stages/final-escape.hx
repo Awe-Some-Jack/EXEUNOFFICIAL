@@ -1,8 +1,6 @@
 import psychlua.LuaUtils;
-import flixel.addons.display.FlxBackdrop;
 import objects.Character;
 import objects.VideoSprite;
-import openfl.display.BlendMode;
 import backend.Controls;
 
 import flixel.addons.display.FlxRuntimeShader;
@@ -11,23 +9,9 @@ import openfl.utils.Assets;
 
 using StringTools;
 
-typedef BackgroundSprite =
-{
-	var path:String;
-	var sprite:FlxSprite;
-	@:optional var position:Array<Float>;
-	@:optional var scale:Array<Dynamic>;
-	@:optional var scroll:Array<Float>;
-	@:optional var front:Bool;
-	@:optional var visible:Bool;
-	@:optional var alpha:Float;
-	@:optional var animation:Array<Dynamic>;
-	@:optional var backdrop:Array<Dynamic>;
-}
-
 var bgIntro:Array<BackgroundSprite> = [
 	{path: 'final/intro/sky', position: [-500, -220], scroll: [0.3, 0.3]},
-	{path: 'final/intro/lightnings', position: [-500, -220], scroll: [0.4, 0.4], scale: [0.5, 0.5, true], animation: [{name: "variant1"}, {name: "variant2"}, {name: "variant3"}]},
+	{path: 'final/intro/lightnings', position: [-500, -220], scroll: [0.4, 0.4], scale: [0.5, 0.5, true], animation: [{name: "variant1"}, {name: "variant2"}, {name: "variant3"}], alpha: 0},
 	{path: 'final/intro/cloudsbg', position: [-560, -250], scroll: [0.4, 0.4]},
 	{path: 'final/intro/clouds2', position: [-625, -250], scroll: [0.5, 0.5]},
 	{path: 'final/intro/clouds1', position: [-690, -250], scroll: [0.6, 0.6]},
@@ -39,19 +23,19 @@ var bgIntro:Array<BackgroundSprite> = [
 ];
 
 var bgSecond:Array<BackgroundSprite> = [
-	{path: 'final/escape/bg3', position: [-950, -480], scroll: [0.35, 0.35], visible: false, backdrop: [0x01, [-750, 0]]},
-	{path: 'final/escape/clouds1', position: [0, -480], scroll: [0.35, 0.35], visible: false, backdrop: [0x01, [20, 0]], alpha: 0.35},
-	{path: 'final/escape/clouds2', position: [0, -480], scroll: [0.35, 0.35], visible: false, backdrop: [0x01, [40, 0]], alpha: 0.5},
+	{path: 'final/escape/bg3', position: [-950, -480], scroll: [0.35, 0.35], visible: false, backdrop: ['x', [-750, 0]]},
+	{path: 'final/escape/clouds1', position: [0, -480], scroll: [0.35, 0.35], visible: false, backdrop: ['x', [20, 0]], alpha: 0.35},
+	{path: 'final/escape/clouds2', position: [0, -480], scroll: [0.35, 0.35], visible: false, backdrop: ['x', [40, 0]], alpha: 0.5},
 	{path: 'final/escape/water', position: [-1200, -500], scroll: [0.7, 0.7], scale: [0.7, 0.7, true], animation: [{name: "idle", fps: 9, looped: true}], visible: false},
-	{path: 'final/escape/bg2', position: [-1100, -600], scroll: [0.5, 0.5], visible: false, backdrop: [0x01, [-1250, 0]]},
-	{path: 'final/escape/bg1', position: [-1200, -550], scroll: [0.7, 0.7], visible: false, backdrop: [0x01, [-2000, 0]]},
+	{path: 'final/escape/bg2', position: [-1100, -600], scroll: [0.5, 0.5], visible: false, backdrop: ['x', [-1250, 0]]},
+	{path: 'final/escape/bg1', position: [-1200, -550], scroll: [0.7, 0.7], visible: false, backdrop: ['x', [-2000, 0]]},
 	{path: 'final/escape/objects3', position: [-1210, -745], visible: false},
 	{path: 'final/escape/objects2', position: [-1210, -745], visible: false, front: true},
 	{path: 'final/escape/objects1', position: [-1210, -745], visible: false, front: true},
 	{path: 'final/escape/floor', position: [-1210, -665], scale: [0.7, 0.7, true], animation: [{name: "idle", looped: true}], visible: false},
 	{path: 'final/escape/overlay', position: [-1210, -705], visible: false, front: true},
-	{path: 'final/escape/multiply', position: [-1210, -705], visible: false, front: true},
-	{path: 'final/escape/edge', position: [-1210, -705], visible: false, front: true}
+	{path: 'final/escape/multiply', position: [-1210, -705], visible: false, front: true, blend: 'multiply'},
+	{path: 'final/escape/edge', position: [-1210, -705], visible: false, front: true, color: 0xFF000000}
 ];
 
 var bgThird:Array<BackgroundSprite> = [
@@ -61,10 +45,10 @@ var bgThird:Array<BackgroundSprite> = [
 ];
 
 var bgCarnival:Array<BackgroundSprite> = [
-	{path: 'final/carnival/bg-lol', position: [0, -530], visible: false, backdrop: [0x01, [-2000, 0]]},
-	{path: 'final/carnival/carnivalbg', position: [0, -530], visible: false, backdrop: [0x01, [-2000, 0]]},
-	{path: 'final/carnival/pinchos', position: [0, -520], visible: false, backdrop: [0x01, [4000, 0]]}
-	{path: 'final/carnival/pinchos', position: [0, 430], visible: false, backdrop: [0x01, [-4000, 0]]},
+	{path: 'final/carnival/bg-lol', position: [0, -530], visible: false, backdrop: ['x', [-2000, 0]]},
+	{path: 'final/carnival/carnivalbg', position: [0, -530], visible: false, backdrop: ['x', [-2000, 0]]},
+	{path: 'final/carnival/pinchos', position: [0, -520], visible: false, backdrop: ['x', [4000, 0]], flip: [false, true]}
+	{path: 'final/carnival/pinchos', position: [0, 430], visible: false, backdrop: ['x', [-4000, 0]]},
 ];
 
 final hbvanilla:Array<String> = ['hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG'];
@@ -122,14 +106,11 @@ function onCreate()
 	//da bgs
 
 	makeBackground(bgIntro);
-	bgIntro[1].sprite.alpha = 0;
 	bgIntro[1].sprite.animation.finishCallback = function(name:String){ bgIntro[1].sprite.alpha = 0; };
 	game.remove(dadGroup, true);
 	game.insert(game.members.indexOf(bgIntro[bgIntro.length - 1].sprite), dadGroup);
-	bgIntro[bgIntro.length - 1].sprite.color = 0xFF000000;
 
 	makeBackground(bgSecond);
-	bgSecond[bgSecond.length - 2].sprite.blend = BlendMode.MULTIPLY;
 	makeBackground(bgThird);
 	
 	fourthFloor = new FlxSprite(-1300, -900);
@@ -146,7 +127,7 @@ function onCreate()
 	fifthFloor.visible = false;
 	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), fifthFloor);
 
-	makeBackground(bgCarnival); bgCarnival[2].sprite.flipY = true;
+	makeBackground(bgCarnival);
 
 	// preload chars
 
@@ -1140,34 +1121,3 @@ function onBeatHit()
 
 function preloadCharacter(char:Int, target:String) game.addCharacterToList(target, char);
 function changeCharacter(char:String, target:String) game.triggerEvent('Change Character', char, target, Conductor.songPosition);
-function makeBackground(background:Array<BackgroundSprite>)
-{
-	for (spriteDef in background)
-	{
-		var sprite:FlxSprite;
-
-		if (spriteDef.backdrop != null)
-		{
-			sprite = new FlxBackdrop(Paths.image(spriteDef.path), spriteDef.backdrop[0] ?? 0x11);
-			sprite.velocity.set((spriteDef.backdrop[1] ?? [0, 0])[0], (spriteDef.backdrop[1] ?? [0, 0])[1]);
-			sprite.setPosition((spriteDef.position ?? [0, 0])[0], (spriteDef.position ?? [0, 0])[1]);
-		}
-		else
-		{
-			sprite = new FlxSprite((spriteDef.position ?? [0, 0])[0], (spriteDef.position ?? [0, 0])[1]);
-			if (spriteDef.animation != null)
-			{
-				sprite.frames = Paths.getSparrowAtlas(spriteDef.path);
-				for (anim in spriteDef.animation) {sprite.animation.addByPrefix(anim.name, anim.name, anim.fps ?? 24, anim.looped ?? false); sprite.animation.play(anim.name, true);}
-			}
-			else sprite.loadGraphic(Paths.image(spriteDef.path));
-		}
-		sprite.scrollFactor.set((spriteDef.scroll ?? [1, 1])[0], (spriteDef.scroll ?? [1, 1])[1]);
-		sprite.scale.set((spriteDef.scale ?? [1, 1, true])[0], (spriteDef.scale ?? [1, 1, true])[1]); if ((spriteDef.scale ?? [1, 1, true])[2]) sprite.updateHitbox();
-		if (spriteDef.visible != null) sprite.visible = spriteDef.visible;
-		if (spriteDef.alpha != null) sprite.alpha = spriteDef.alpha;
-		if (spriteDef.front) game.add(sprite);
-		else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
-		spriteDef.sprite = sprite;
-	}
-}

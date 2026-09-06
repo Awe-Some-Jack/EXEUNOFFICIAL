@@ -3,6 +3,7 @@ package psychlua;
 import flixel.FlxBasic;
 import objects.Character;
 import psychlua.LuaUtils;
+import psychlua.BGHelper;
 import psychlua.CustomSubstate;
 
 #if LUA_ALLOWED
@@ -194,6 +195,8 @@ class HScript extends Iris
 		#end
 		set('Reflect',  Reflect);
 		set('Sys',      Sys);
+
+		set('makeBackground', BGHelper.makeBackground);
 
 		set('setVar', function(name:String, value:Dynamic) {
 			MusicBeatState.getVariables().set(name, value);

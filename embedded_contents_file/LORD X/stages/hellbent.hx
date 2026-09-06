@@ -1,22 +1,5 @@
 import psychlua.LuaUtils;
-import openfl.display.BlendMode;
 import objects.VideoSprite;
-
-typedef BackgroundSprite =
-{
-	var path:String;
-	var sprite:FlxSprite;
-	@:optional var position:Array<Float>;
-	@:optional var scale:Array<Dynamic>;
-	@:optional var scroll:Array<Float>;
-	@:optional var front:Bool;
-	@:optional var visible:Bool;
-	@:optional var alpha:Float;
-	@:optional var flipX:Bool;
-	@:optional var lq:Bool;
-	@:optional var animation:Array<Dynamic>;
-	@:optional var backdrop:Array<Dynamic>;
-}
 
 var bgDark:Array<BackgroundSprite> = [
 	{path: 'hellbent/GUARDIAN-N', position: [-1000, -430], scroll: [0.7, 0.7]},
@@ -27,16 +10,16 @@ var bgDark:Array<BackgroundSprite> = [
 
 var bgFirst:Array<BackgroundSprite> = [
 	{path: 'hellbent/bgnew/hellbentnew', position: [-2450, -1310], visible: false, scroll: [0.2, 0.2], animation: [{name: "4"}]},
-	{path: 'hellbent/bgnew/hellbentnew', position: [-2520, -1310], visible: false, scale: [0.9, 0.9], scroll: [0.5, 0.5], animation: [{name: "3"}]},
-	{path: 'hellbent/bgnew/hellbentnew', position: [-2600, -1310], visible: false, scale: [0.9, 0.9], scroll: [0.7, 0.7], animation: [{name: "2"}]},
-	{path: 'hellbent/bgnew/hellbentnew', position: [-2745, -1310], visible: false, scale: [0.9, 0.9], animation: [{name: "1"}]},
-	{path: 'hellbent/bgnew/banderas', position: [-440, 550], visible: false, scale: [4, 4], animation: [{name: "bandera instancia 1", looped: true}]},
-	{path: 'hellbent/bgnew/banderas', position: [850, 550], visible: false, scale: [4, 4], animation: [{name: "bandera instancia 1", looped: true}], flipX: true}
+	{path: 'hellbent/bgnew/hellbentnew', position: [-2520, -1310], visible: false, scale: [0.9, 0.9, false], scroll: [0.5, 0.5], animation: [{name: "3"}]},
+	{path: 'hellbent/bgnew/hellbentnew', position: [-2600, -1310], visible: false, scale: [0.9, 0.9, false], scroll: [0.7, 0.7], animation: [{name: "2"}]},
+	{path: 'hellbent/bgnew/hellbentnew', position: [-2745, -1310], visible: false, scale: [0.9, 0.9, false], animation: [{name: "1"}]},
+	{path: 'hellbent/bgnew/banderas', position: [-440, 550], visible: false, scale: [4, 4, false], animation: [{name: "bandera instancia 1", looped: true}]},
+	{path: 'hellbent/bgnew/banderas', position: [850, 550], visible: false, scale: [4, 4, false], animation: [{name: "bandera instancia 1", looped: true}], flipX: true}
 ];
 
 var bgHell:Array<BackgroundSprite> = [
-	{path: 'hellbent/plataformna', position: [440, 1250], visible: false, scale: [0.45, 0.45]},
-	{path: 'hellbent/plataformna', position: [-950, 1200], visible: false, scale: [0.55, 0.55], flipX: true}
+	{path: 'hellbent/plataformna', position: [440, 1250], visible: false, scale: [0.45, 0.45, false]},
+	{path: 'hellbent/plataformna', position: [-950, 1200], visible: false, scale: [0.55, 0.55, false], flipX: true}
 ]; 
 
 var hellBG:VideoSprite;
@@ -172,35 +155,3 @@ function onUpdatePost(elapsed:Float)
 
 function preloadCharacter(char:Int, target:String) game.addCharacterToList(target, char);
 function changeCharacter(char:String, target:String) game.triggerEvent('Change Character', char, target, Conductor.songPosition);
-function makeBackground(background:Array<BackgroundSprite>)
-{
-	for (spriteDef in background)
-	{
-		var sprite:FlxSprite;
-
-		if (spriteDef.backdrop != null)
-		{
-			sprite = new FlxBackdrop(Paths.image(spriteDef.path), spriteDef.backdrop[0] ?? 0x11);
-			sprite.velocity.set((spriteDef.backdrop[1] ?? [0, 0])[0], (spriteDef.backdrop[1] ?? [0, 0])[1]);
-			sprite.setPosition((spriteDef.position ?? [0, 0])[0], (spriteDef.position ?? [0, 0])[1]);
-		}
-		else
-		{
-			sprite = new FlxSprite((spriteDef.position ?? [0, 0])[0], (spriteDef.position ?? [0, 0])[1]);
-			if (spriteDef.animation != null)
-			{
-				sprite.frames = Paths.getSparrowAtlas(spriteDef.path);
-				for (anim in spriteDef.animation) {sprite.animation.addByPrefix(anim.name, anim.name, anim.fps ?? 24, anim.looped ?? false); sprite.animation.play(anim.name, true);}
-			}
-			else sprite.loadGraphic(Paths.image(spriteDef.path));
-		}
-		sprite.scrollFactor.set((spriteDef.scroll ?? [1, 1])[0], (spriteDef.scroll ?? [1, 1])[1]);
-		sprite.scale.set((spriteDef.scale ?? [1, 1, true])[0], (spriteDef.scale ?? [1, 1, true])[1]); if ((spriteDef.scale ?? [1, 1, true])[2]) sprite.updateHitbox();
-		if (spriteDef.visible != null) sprite.visible = spriteDef.visible;
-		if (spriteDef.alpha != null) sprite.alpha = spriteDef.alpha;
-		if (spriteDef.flipX != null) sprite.flipX = spriteDef.flipX;
-		if (spriteDef.front) game.add(sprite);
-		else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
-		spriteDef.sprite = sprite;
-	}
-}

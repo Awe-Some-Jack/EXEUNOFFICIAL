@@ -1,4 +1,4 @@
-local fleetBG = {
+--[[local fleetBG = {
 	{name = '4', path = 'bg/4', animated = false, x = 0, y = 0, scaleX = 2, scaleY = 2, scrollX = 1, scrollY = 1, front = false},
 	{name = '42', path = 'bg/4-alt', animated = false, x = 0, y = 0, scaleX = 2, scaleY = 2, scrollX = 1, scrollY = 1, front = false},
 	{name = '1', path = 'bg/1', animated = false, x = 650, y = 1320, scaleX = 2, scaleY = 2, scrollX = 1, scrollY = 1, front = false, lowQualityHide = true},
@@ -121,4 +121,4 @@ function onTimerCompleted(t)
 	end
 end
 
-function noteMissPress(nt) if curBeat >= 252 then playAnim('boyfriend', getProperty('singAnimations['..nt..']') .. 'miss-alt', true) end end
+function noteMissPress(nt) if curBeat >= 252 then playAnim('boyfriend', getProperty('singAnimations['..nt..']') .. 'miss-alt', true) end end]]

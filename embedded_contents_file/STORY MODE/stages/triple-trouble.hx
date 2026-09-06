@@ -5,7 +5,7 @@ import openfl.utils.Assets;
 
 using StringTools;
 
-typedef BackgroundSprite =
+typedef BackgroundSpriteAlt =
 {
 	var path:String;
 	var sprite:FlxSprite;
@@ -22,7 +22,7 @@ typedef BackgroundSprite =
 	@:optional var spriteF:FlxSprite;
 }
 
-var normal:Array<BackgroundSprite> = [
+var normal:Array<BackgroundSpriteAlt> = [
 	{path: 'tt/bgn/bg', position: [-600, -200], scroll: [0.3, 0.3], pathF: 'tt/bgn/fire/bg'},
 	{path: 'tt/bgn/trees4', position: [-600, -300], scroll: [0.3, 0.3], pathF: 'tt/bgn/fire/trees4'},
 	{path: 'tt/bgn/trees3', position: [-900, -200], scroll: [0.55, 0.55], pathF: 'tt/bgn/fire/trees3'},
@@ -36,7 +36,7 @@ var normal:Array<BackgroundSprite> = [
 	{path: 'tt/bgn/fire/FIRE 2', position: [-800, 100], scroll: [1.2, 1.2], front: true, scale: [6, 6, true], animation: [{name: 'fire instancia 1', looped: true}], visible: false, isFire: true}
 ];
 
-var xeno:Array<BackgroundSprite> = [
+var xeno:Array<BackgroundSpriteAlt> = [
 	{path: 'tt/bgx/bg', position: [-1000, -1000], scroll: [0.3, 0.3], visible: false, pathF: 'tt/bgx/fire/bg'},
 	{path: 'tt/bgx/trees4', position: [-800, -800], scroll: [0.3, 0.3], visible: false, pathF: 'tt/bgx/fire/trees4'},
 	{path: 'tt/bgx/trees3', position: [-700, -600], scroll: [0.55, 0.55], visible: false, pathF: 'tt/bgx/fire/trees3'},
@@ -53,7 +53,7 @@ var xeno:Array<BackgroundSprite> = [
 	{path: 'tt/bgx/foreground', position: [-1700, 1300], scroll: [1.3, 1.3], front: true, visible: false, pathF: 'tt/bgx/fire/foreground'}
 ];
 
-var tails:Array<BackgroundSprite> = [
+var tails:Array<BackgroundSpriteAlt> = [
 	{path: 'tt/tails/bg5', position: [-650, -900], scroll: [0.3, 0.3], visible: false},
 	{path: 'tt/tails/bg4', position: [-450, -850], scroll: [0.55, 0.55], visible: false},
 	{path: 'tt/tails/bg3', position: [-450, -850], scroll: [0.6, 0.6], visible: false},
@@ -62,7 +62,7 @@ var tails:Array<BackgroundSprite> = [
 	{path: 'tt/tails/floor', position: [-1850, -2350], visible: false}
 ];
 
-var knux:Array<BackgroundSprite> = [
+var knux:Array<BackgroundSpriteAlt> = [
 	{path: 'tt/knux/bg', position: [-780, -500], scroll: [0.4, 0.4], scale: [1, 1, true], visible: false},
 	{path: 'tt/knux/platform3', position: [-780, -600], scroll: [0.5, 0.5], scale: [1, 1, true], visible: false},
 	{path: 'tt/knux/fog2', position: [-780, -700], scroll: [0.5, 0.5], scale: [1, 1, true], visible: false},
@@ -72,7 +72,7 @@ var knux:Array<BackgroundSprite> = [
 	{path: 'tt/knux/floor', position: [-730, -350], visible: false}
 ];
 
-var egg:Array<BackgroundSprite> = [
+var egg:Array<BackgroundSpriteAlt> = [
 	{path: 'tt/egg/sky', position: [-680, -850], scroll: [0.3, 0.3], visible: false},
 	{path: 'tt/egg/bg1', position: [-630, -770], scroll: [0.45, 0.45], visible: false},
 	{path: 'tt/egg/bg2', position: [-580, -670], scroll: [0.65, 0.65], visible: false},
@@ -100,11 +100,11 @@ var frameCounter:Int = 0;
 
 function onCreate()
 {
-	makeBackground(normal, true);
-	makeBackground(xeno, true);
-	makeBackground(tails);
-	makeBackground(knux);
-	makeBackground(egg);
+	makeBackgroundAlt(normal, true);
+	makeBackgroundAlt(xeno, true);
+	makeBackgroundAlt(tails);
+	makeBackgroundAlt(knux);
+	makeBackgroundAlt(egg);
 
 	for (spr in normal)
 	{
@@ -392,7 +392,7 @@ function onBeatHit()
 function triggerEvent(n, v1, v2) game.triggerEvent(n, v1, v2, Conductor.songPosition);
 function preloadCharacter(char:Int, target:String) game.addCharacterToList(target, char);
 function changeCharacter(char:String, target:String) game.triggerEvent('Change Character', char, target, Conductor.songPosition);
-function makeBackground(background:Array<BackgroundSprite>, ?makeFire:Bool = false)
+function makeBackgroundAlt(background:Array<BackgroundSpriteAlt>, ?makeFire:Bool = false)
 {
 	for (spriteDef in background)
 	{

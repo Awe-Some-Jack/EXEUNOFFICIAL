@@ -1,5 +1,5 @@
 import psychlua.LuaUtils;
-typedef BackgroundSprite =
+typedef BackgroundSpriteAlt =
 {
 	var path:String;
 	var sprite:FlxSprite;
@@ -17,7 +17,7 @@ final game:PlayState = PlayState.instance;
 final prefs = ClientPrefs.data;
 final cam = game.gameplayCam.settings;
 
-var starv:Array<BackgroundSprite> = [
+var starv:Array<BackgroundSpriteAlt> = [
 	{path: 'new bg/sky', position: [-1220, -1250], scroll: [0.4, 0.4], scale: [0.8, 0.8]},
 	{path: 'new bg/bg', position: [-1350, -1300], scroll: [0.6, 0.6], scale: [0.8, 0.8]},
 	{path: 'new bg/tv', position: [40, -680], scale: [1.5, 1.35], animation: [{name: 'idle', looped: true}], angle: -6},
@@ -42,7 +42,7 @@ var starv:Array<BackgroundSprite> = [
 var vg:FlxSprite;
 function onCreate()
 {
-	makeBackground(starv);
+	makeBackgroundAlt(starv);
 	boyfriend.scrollFactor.set(2, 2);
 
 	vg = new FlxSprite().loadGraphic(Paths.image('starved/vinevrom'));
@@ -144,7 +144,7 @@ function onUpdatePost()
 	}
 }
 
-function makeBackground(background:Array<BackgroundSprite>)
+function makeBackgroundAlt(background:Array<BackgroundSpriteAlt>)
 {
 	for (spriteDef in background)
 	{

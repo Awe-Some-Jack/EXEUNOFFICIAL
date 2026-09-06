@@ -102,7 +102,6 @@ function onEvent(n,v1)
 			case 'changeBG':
 				camGame.alpha = 1; camHUD.alpha = 1;
 				trans.destroy();
-				eyes.destroy();
 				_phase2Active = true;
 				bgDark[2].sprite.destroy(); bgDark[3].sprite.destroy();
 				for (spr in bgFirst) spr.sprite.destroy();
@@ -117,7 +116,8 @@ function onEvent(n,v1)
 				dad.setPosition(-700, 960);
 				boyfriend.setPosition(650, 1100);
 			case 'scaryyy':
-				eyes.visible = false;
+				eyes?.destroy();
+				eyes = null;
 				camGame.alpha = 0; camHUD.alpha = 0;
 				trans.alpha = 1;
 				new FlxTimer().start(Conductor.crochet / 500, function(_){trans?.alpha = 0;});
@@ -135,7 +135,7 @@ function onUpdatePost(elapsed:Float)
 {
 	if (!_phase2Active)
 	{
-		if (eyes.alpha != game.getLuaObject('BlackGraphicHUD').alpha) eyes.alpha = game.getLuaObject('BlackGraphicHUD').alpha;
+		if (eyes != null && eyes.alpha != game.getLuaObject('BlackGraphicHUD').alpha) eyes.alpha = game.getLuaObject('BlackGraphicHUD').alpha;
 		if (eyes != null) eyes.visible = dad?.getAnimationName() == 'idle';
 		if (eyes != null && dad?.getAnimationName() == 'idle')
 		{

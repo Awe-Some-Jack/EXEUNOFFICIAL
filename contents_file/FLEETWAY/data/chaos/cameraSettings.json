@@ -1,9 +1,9 @@
 {
-    "BFx": 3100,
-    "BFy": 1900,
+    "BFx": 2700,
+    "BFy": 1850,
 
     "DADx": 2200,
-    "DADy": 1400,
+    "DADy": 1450,
 
     "GFx": 700,
     "GFy": 770,
@@ -14,8 +14,8 @@
 
     "OverrideZoom": false,
 
-    "OGZoom": 0.7,
-    "MiddleZoom": 0.6,
+    "OGZoom": 0.6,
+    "MiddleZoom": 0.45,
 
     "OffsetsBF": 25,
     "OffsetsDAD": 25,

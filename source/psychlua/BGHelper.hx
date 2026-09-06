@@ -20,6 +20,7 @@ typedef BackgroundSprite =
 	@:optional var front:Bool;
 	@:optional var visible:Bool;
 	@:optional var alpha:Float;
+	@:optional var lq:Bool;
 	@:optional var flip:Array<Bool>;
 	@:optional var color:FlxColor;
 	@:optional var blend:String;

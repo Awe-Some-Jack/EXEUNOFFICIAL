@@ -10,7 +10,7 @@ local shaders = {
         contrast = 1,
         saturation = 1,
     }},
-
+    
     --[[
     {name = 'uhoh', shader = 'uhOh', x = 0,
     uniforms = {
@@ -21,9 +21,8 @@ local shaders = {
     ]]
 }
 
-addHaxeLibrary('FlxAngle', 'flixel.math')
-
 runHaxeCode([[
+	import flixel.math.FlxAngle;
 	function setShaderFrameInfo(obj:String) {
 		var char:FlxSprite;
 		switch(obj) {
@@ -44,7 +43,6 @@ runHaxeCode([[
         }
 	}
 ]])
-
 local dashads = ''
 function onCreatePost()
     local dashads = 'game.camGame.filters = ['
@@ -60,22 +58,20 @@ function onCreatePost()
     dashads = dashads..']; return;'
     if shadersEnabled and not lowQuality then
         for _,char in ipairs({'dad', 'boyfriend'}) do
-            setProperty(char..'.useRenderTexture', true)
 			setSpriteShader(char, 'DropShadowShader')
 			setShaderFloat(char, 'hue', 0)
 			setShaderFloat(char, 'saturation', 0)
 			setShaderFloat(char, 'contrast', 0)
 			setShaderFloat(char, 'str', 1)
 			setShaderFloat(char, 'brightness', -30)
+            setShaderFloat(char, 'thr', 0.1)
 			setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
 			runHaxeFunction('setShaderFrameInfo', {char})
 		end
-        setShaderFloat('dad', 'thr', 0.1)
-        setShaderFloat('boyfriend', 'thr', 0.1)
 		setShaderFloat('dad', 'ang', math.rad(75))
-		setShaderFloat('boyfriend', 'ang', math.rad(135))
+		setShaderFloat('boyfriend', 'ang', math.rad(115))
 		setShaderFloat('dad', 'dist', 10)
-		setShaderFloat('boyfriend', 'dist', 10)
+		setShaderFloat('boyfriend', 'dist', 20)
 
         runHaxeCode(dashads)
     end
@@ -121,10 +117,6 @@ function onEvent(eventName, value1, value2)
 end
 
 function onUpdatePost(e)
-    if shadersEnabled and not lowQuality then
-        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'uSpriteAlpha', getProperty('dad.alpha')) end
-        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'uSpriteAlpha', getProperty('boyfriend.alpha')) end
-    end
     if onTween1 then
         setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
         setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))

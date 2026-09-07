@@ -13,8 +13,7 @@ local function closeAllPopups()
 			for (proc in processes) {
 				try {
 					if (proc.exitCode(false) == null) {
-						proc.stdin.writeString('close\n');
-						proc.stdin.flush();
+						proc.kill();
 					}
 				} catch (e:Dynamic) {
 				}
@@ -29,8 +28,7 @@ local function closeCorruptionBar()
 		var proc = getVar('corruptionBarProcess');
 		if (proc != null) {
 			try {
-				proc.stdin.writeString('close\n');
-				proc.stdin.flush();
+				proc.kill();
 			} catch (e:Dynamic) {
 			}
 			setVar('corruptionBarProcess', null);
@@ -130,8 +128,7 @@ function onEvent(n, v1)
 				var oldest = processes.shift();
 				try {
 					if (oldest.exitCode(false) == null) {
-						oldest.stdin.writeString('close\n');
-						oldest.stdin.flush();
+						oldest.kill();
 					}
 				} catch (e:Dynamic) {
 				}
@@ -219,7 +216,7 @@ local function shutEverythingDown()
 	closeCorruptionBar()
 	runHaxeCode([[
 		var hbProc = getVar('healthBarProcess');
-		if (hbProc != null) { try { hbProc.stdin.writeString('close\n'); hbProc.stdin.flush(); } catch (e:Dynamic) {} }
+		if (hbProc != null) { try { hbProc.kill(); } catch (e:Dynamic) {} }
 		Sys.exit(0);
 	]]);
 end
@@ -238,25 +235,36 @@ function onTimerCompleted(tag)
 		runTimer('fatalCorruptionShutdown', 1.5)
 	elseif tag == 'fatalCorruptionShutdown' then
 		shutEverythingDown()
+	elseif tag == 'fatalRefocusWindow' then
+		callMethodFromClass('openfl.Lib', 'application.window.focus', {})
 	end
 end
 
 function onUpdatePost(elapsed)
-	if not isFatalitySong or corruptionTriggered then return end
+	if not isFatalitySong then return end
 
 	runHaxeCode([[
 		var processes:Array<Dynamic> = getVar('fatalErrorProcesses');
 		if (processes == null) processes = [];
 		var alive:Array<Dynamic> = [];
+		var closedOne = false;
 		for (p in processes) {
 			try {
 				if (p.exitCode(false) == null) alive.push(p);
+				else closedOne = true;
 			} catch (e:Dynamic) {
 			}
 		}
 		setVar('fatalErrorProcesses', alive);
 		setVar('aliveFatalPopups', alive.length);
+		setVar('fatalPopupJustClosed', closedOne);
 	]]);
+
+	if getVar('fatalPopupJustClosed') then
+		callMethodFromClass('openfl.Lib', 'application.window.focus', {})
+	end
+
+	if corruptionTriggered then return end
 
 	local aliveCount = getVar('aliveFatalPopups')
 	if aliveCount == nil then aliveCount = 0 end

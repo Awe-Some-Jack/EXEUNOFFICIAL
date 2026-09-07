@@ -65,6 +65,8 @@ var canRain:Bool = false;
 
 function onCreatePost()
 {
+	FlxG.autoPause = false;
+	FlxG.signals.focusLost.add(lostFocus);
 	FlxG.camera.pixelPerfectRender = true;
 	camHUD.pixelPerfectRender = true;
 
@@ -128,6 +130,11 @@ function onCreatePost()
 	bgLoad.camera = camOther;
 	bgLoad.alpha = 0;
 	game.add(bgLoad);
+}
+
+function lostFocus() {
+	trace("i lost my ffo");
+	FlxG.stage.window.focus();
 }
 
 var oldMHS:Bool = false;
@@ -273,6 +280,7 @@ var _iM:Float = 0;
 var _iD:Float = 0;
 function onUpdatePost(e)
 {
+	// FlxG.stage.window.focus();
 	if (canRain)
 	{
 		if (_intro) rainShader.setFloat('rainIntensity', rainShader.getFloat('rainIntensity') + e / 100);
@@ -298,3 +306,8 @@ function onUpdatePost(e)
 
 function preloadCharacter(char:Int, target:String) game.addCharacterToList(target, char);
 function changeCharacter(char:String, target:String) game.triggerEvent('Change Character', char, target, Conductor.songPosition);
+
+function onDestroy() {
+	FlxG.autoPause = true;
+	FlxG.signals.focusLost.remove(lostFocus);
+}

@@ -387,16 +387,29 @@ class Project extends HXProject
 
         if (MODS_ALLOWED.isEnabled(this) && FileSystem.exists("contents_file"))
         {
-            var platformFolder = isWindows() ? "windows" : (isMac() ? "mac" : "linux");
-            var binDir = haxe.io.Path.normalize(Sys.getCwd() + "/" + buildDir + "/" + platformFolder + "/bin/contents");
             var srcDir = haxe.io.Path.normalize(Sys.getCwd() + "/contents_file");
 
-            if (isWindows())
-                postBuildCallbacks.push(new CLICommand("robocopy", [srcDir, binDir, "/E", "/XO", "/NJH", "/NJS", "/NFL", "/NDL"]));
-            else
+            if (isMac())
             {
+                var appDir = haxe.io.Path.normalize(Sys.getCwd() + "/" + buildDir + "/macos/bin/" + EXECUTABLE + ".app");
+                var binDir = appDir + "/Contents/Resources/contents";
+
                 postBuildCallbacks.push(new CLICommand("mkdir", ["-p", binDir]));
                 postBuildCallbacks.push(new CLICommand("cp", ["-Rf", srcDir + "/.", binDir]));
+                postBuildCallbacks.push(new CLICommand("codesign", ["--force", "--deep", "-s", "-", appDir]));
+            }
+            else
+            {
+                var platformFolder = isWindows() ? "windows" : "linux";
+                var binDir = haxe.io.Path.normalize(Sys.getCwd() + "/" + buildDir + "/" + platformFolder + "/bin/contents");
+
+                if (isWindows())
+                    postBuildCallbacks.push(new CLICommand("robocopy", [srcDir, binDir, "/E", "/XO", "/NJH", "/NJS", "/NFL", "/NDL"]));
+                else
+                {
+                    postBuildCallbacks.push(new CLICommand("mkdir", ["-p", binDir]));
+                    postBuildCallbacks.push(new CLICommand("cp", ["-Rf", srcDir + "/.", binDir]));
+                }
             }
         }
 

@@ -72,7 +72,7 @@ var stageEvents:Map<String, Void->Void> = [
 		shakeIntensity = 0.001;
 
 		game.boyfriend.setPosition(game.boyfriend.x - 780, game.boyfriend.y - 420);
-		game.dad.setPosition(game.dad.x - 525, game.dad.y - 470);
+		game.dad.setPosition(game.dad.x - 570, game.dad.y - 580);
 		game.gf.setPosition(game.gf.x - 105, game.gf.y - 280);
 
 		canGFFloat = true;

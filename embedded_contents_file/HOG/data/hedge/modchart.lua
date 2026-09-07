@@ -1,4 +1,4 @@
-local modcharts = {
+--[==[local modcharts = {
 	[1] = function()
 			for i = 0,3 do
 				noteTweenX('noteX'..i, i, _G['defaultOpponentStrumX'..(3 - i)], 0.1, 'cubeOut')
@@ -100,4 +100,4 @@ function revertDirection()
 			updateHitbox('unspawnNotes['..i..']')
 		end
 	end
-end
+end]==]

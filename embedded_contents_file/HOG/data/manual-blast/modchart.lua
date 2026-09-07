@@ -1,4 +1,4 @@
-local modchart = 0
+--[==[local modchart = 0
 local thing = 0
 local pressedRing = false
 
@@ -56,4 +56,4 @@ function onUpdatePost(e)
 			setProperty('playerStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i] + math.cos(thing + i) * 6)
 		end
 	end
-end
+end]==]

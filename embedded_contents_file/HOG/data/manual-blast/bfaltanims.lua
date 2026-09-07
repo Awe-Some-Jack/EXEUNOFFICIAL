@@ -1,4 +1,4 @@
-local altAnimsXd = false
+--[==[local altAnimsXd = false
 
 function onUpdatePost(e)
 	if curBeat >= 188 and not altAnimsXd then
@@ -15,4 +15,4 @@ end
 
 function noteMiss()
 	if altAnimsXd then setProperty('boyfriend.holdTimer', 0) end
-end
+end]==]

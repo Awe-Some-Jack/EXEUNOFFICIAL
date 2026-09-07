@@ -17,7 +17,8 @@ typedef BackgroundSprite =
 	@:optional var position:Array<Float>;
 	@:optional var scale:Array<Dynamic>;
 	@:optional var scroll:Array<Float>;
-	@:optional var front:Bool;
+	@:optional var front:Bool; //deprecated, use `layer` instead!
+	@:optional var layer:Dynamic;
 	@:optional var visible:Bool;
 	@:optional var alpha:Float;
 	@:optional var lq:Bool;
@@ -106,8 +107,38 @@ class BGHelper
 			if (spriteDef.color != null) sprite.color = spriteDef.color;
 			if (spriteDef.camera != null) sprite.camera = LuaUtils.cameraFromString(spriteDef.camera);
 			if (spriteDef.blend != null) sprite.blend = LuaUtils.blendModeFromString(spriteDef.blend);
-			if (spriteDef.front != null) PlayState.instance.add(sprite);
-			else PlayState.instance.insert(PlayState.instance.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
+
+			if (spriteDef.layer == null)
+			{
+				//deprecated, use `layer` instead!
+				if (spriteDef.front != null) PlayState.instance.add(sprite);
+				else PlayState.instance.insert(PlayState.instance.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
+			}
+
+			if (spriteDef.layer != null)
+			{
+				if (Type.typeof(spriteDef.layer) == TInt)
+				{
+					if (spriteDef.layer > -1) PlayState.instance.insert(spriteDef.layer, sprite);
+				}
+				else if (Std.isOfType(spriteDef.layer, String) && spriteDef.layer.length > 0)
+				{
+					final layer:String = Paths.formatToSongPath(spriteDef.layer);
+					switch(layer)
+					{
+						case 'top':
+							PlayState.instance.add(sprite);
+						case 'behindbf' | 'behindboyfriend':
+							PlayState.instance.insert(PlayState.instance.members.indexOf(PlayState.instance.boyfriendGroup), sprite);
+						case 'behindgf' | 'behindgirlfriend':
+							PlayState.instance.insert(PlayState.instance.members.indexOf(PlayState.instance.gfGroup), sprite);
+						case 'behinddad' | 'behindopponent':
+							PlayState.instance.insert(PlayState.instance.members.indexOf(PlayState.instance.dadGroup), sprite);
+						default:
+							PlayState.instance.insert(PlayState.instance.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
+					}
+				}
+			}
 
 			spriteDef.sprite = sprite;
 		}

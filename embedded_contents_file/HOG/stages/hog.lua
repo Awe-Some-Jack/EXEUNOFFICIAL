@@ -1,4 +1,4 @@
-local MONITOR_ANIMS = {'fatal', 'nmi', 'needle', 'starv'}
+--[==[local MONITOR_ANIMS = {'fatal', 'nmi', 'needle', 'starv'}
 local canGlitch = false
 local scorchedSinging = false
 local dadOriginalOrder = 0
@@ -402,4 +402,4 @@ end
 
 function onTimerCompleted(tag)
 	if tag == 'scorchedTimer' then scorchedSinging = false end
-end
+end]==]

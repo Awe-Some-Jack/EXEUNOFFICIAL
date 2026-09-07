@@ -1,4 +1,4 @@
-function onCreatePost()
+--[==[function onCreatePost()
 	makeLuaSprite('bloom')
 	setSpriteShader('bloom', 'brightness')
 	setShaderFloat('bloom', 'saturation', 1)
@@ -45,4 +45,4 @@ function onEvent(n)
 			setShaderFloat('glitch', 'GLITCH', 0)
 		end
 	end
-end
+end]==]

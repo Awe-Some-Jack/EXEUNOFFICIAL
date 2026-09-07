@@ -5,6 +5,7 @@ import states.substates.PauseSubState;
 import flixel.text.FlxText;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.FlxCamera;
+import backend.EXEAchievements;
 
 var deadBoyfriend:Character;
 var inGameOver:Bool = false;
@@ -42,16 +43,17 @@ function onGameOverStart()
 	FlxG.sound.list.add(deadMusic);
 	deadMusic.looped = true;
 
-	if(!backend.EXEAchievements.isUnlocked('tripledeaths')) {
-		var _a = backend.EXEAchievements.get('tripledeaths');
+	if(!EXEAchievements.isUnlocked('tripledeaths')) {
+		var _a = EXEAchievements.get('tripledeaths');
 		if(_a != null) {
-			var _seen:Array<String> = cast(_a.extra ?? []);
+			var _seen = _a.extra;
+			if (_seen == null) _seen = [];
 			var _key:String = PauseSubState.miniSonicImage ?? 'triple-trouble';
 			if(!_seen.contains(_key)) {
 				_seen.push(_key);
 				_a.extra = _seen;
-				if(_seen.length >= 4) _a.unlocked = true;
-				backend.EXEAchievements.save();
+				if(_seen.length >= 4) EXEAchievements.unlock(_a.id);
+				EXEAchievements.save();
 			}
 		}
 	}

@@ -298,14 +298,14 @@ function onUpdatePost(e)
 
 		--Text Updating.
 		weekCampaign = {'','','',''}
-		if isStoryMode then
+		--[[if isStoryMode then
 			weekCampaign = {
 				'\nWeek: '..week..' (ID: '..weekRaw ..')',
 				'\n\nWeek Score: '..getPropertyFromClass('states.PlayState', 'campaignScore') + score,
 				'\nWeek Misses: '..getPropertyFromClass('states.PlayState', 'campaignMisses') + misses,
 				'\nWeek Accuracy: ' --STOP I NEED TO FIGURE OUT HOW TO GET CAMPAIGN ACCURACY BUT I WILL MAKE IT POSSIBLE SOON
 			}
-		end
+		end]]
 
 		--NPS Calculation.
 		while #npsNotes > 0 and getSongPosition() - npsNotes[1] > 1000 do

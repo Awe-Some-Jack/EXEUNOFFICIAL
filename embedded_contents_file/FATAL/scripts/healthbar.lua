@@ -36,6 +36,8 @@ function onTimerCompleted(tag)
 			}
 		}
 	]]);
+
+	callMethodFromClass('openfl.Lib', 'application.window.focus', {})
 end
 
 local function closeHealthBar()
@@ -61,6 +63,8 @@ end
 
 function onStepHit()
 	if not isFatalitySong then return end
+
+	callMethodFromClass('openfl.Lib', 'application.window.focus', {})
 
 	if curStep == 255 then
 		runHaxeCode([[

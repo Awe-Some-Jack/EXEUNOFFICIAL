@@ -65,6 +65,8 @@ function onCreatePost()
 			}
 		}
 	]]);
+
+	callMethodFromClass('openfl.Lib', 'application.window.focus', {})
 end
 
 function onPause()
@@ -76,6 +78,8 @@ end
 
 function onStepHit()
 	if not isFatalitySong then return end
+
+	callMethodFromClass('openfl.Lib', 'application.window.focus', {})
 
 	if curStep == 255 then
 		runHaxeCode([[
@@ -151,6 +155,8 @@ function onEvent(n, v1)
 
 			setVar('fatalErrorProcesses', processes);
 		]]);
+
+		callMethodFromClass('openfl.Lib', 'application.window.focus', {})
 	end
 	if n == 'Clear Fatal Popups' then
 		closeAllPopups()
@@ -204,6 +210,8 @@ local function floodWithPopups()
 			}
 		]]);
 	end
+
+	callMethodFromClass('openfl.Lib', 'application.window.focus', {})
 end
 
 local function shutEverythingDown()

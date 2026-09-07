@@ -94,6 +94,7 @@ class Note extends FlxSprite
 
 	public var offsetX:Float = 0;
 	public var offsetY:Float = 0;
+	public var holdNoteOffsetX:Float = -4;
 	public var offsetAngle:Float = 0;
 	public var multAlpha:Float = 1;
 
@@ -238,6 +239,11 @@ class Note extends FlxSprite
 				updateHitbox();
 			}
 			earlyHitMult = 0;
+
+			if (prevNote != null){
+				prevNote.offsetX += holdNoteOffsetX;
+			}
+			offsetX += holdNoteOffsetX;
 		}
 		else if (!isSustainNote)
 		{

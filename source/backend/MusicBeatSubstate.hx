@@ -70,7 +70,7 @@ class MusicBeatSubstate extends FlxSubState
 
 		for(touch in FlxG.touches.list) {
 			touchLength = FlxG.game.ticks - touch.justPressedTimeInTicks;
-			shortPress = (touch.justReleased && touchLength <= 150);
+			shortPress = (touch.justReleased && touchLength <= 100);
 			pressHolding = (touch.pressed && touchLength > 10);
 		}
 

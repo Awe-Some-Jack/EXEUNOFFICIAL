@@ -255,10 +255,10 @@ class PauseSubState extends MusicBeatSubstate
 			curSelected = 3;
 			changeSelection(0);
 		}
-		#else
+		#end
+		
 		if (controls.UI_UP_P)   changeSelection(-1);
 		if (controls.UI_DOWN_P) changeSelection(1);
-		#end
 
 		if (controls.ACCEPT #if mobile || (shortPress && FlxG.mouse.overlaps(menuItems.members[curSelected], camPause)) #end)
 		{

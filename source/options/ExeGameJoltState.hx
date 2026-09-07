@@ -175,6 +175,20 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		super.update(elapsed);
 		if (introAnimating || backLock || _waitingLogin) { backLock = false; return; }
 
+		#if mobile
+		if(pressHolding && deltaMouseY != 0 && cooldownTimer <= 0) {
+			if(deltaMouseY < -5) {
+				curRow = (curRow - 1 + totalRows) % totalRows;
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				changeSelection();
+			} else if(deltaMouseY > 5) {
+				curRow = (curRow + 1 + totalRows) % totalRows;
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				changeSelection();
+			}
+		}
+		#end
+
 		if (controls.UI_UP_P || controls.UI_DOWN_P)
 		{
 			curRow = (curRow + (controls.UI_UP_P ? -1 : 1) + totalRows) % totalRows;
@@ -182,7 +196,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			changeSelection();
 		}
 
-		if (controls.ACCEPT)
+		if (controls.ACCEPT #if mobile || shortPress #end)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			if (GameJoltManager.isLoggedIn())

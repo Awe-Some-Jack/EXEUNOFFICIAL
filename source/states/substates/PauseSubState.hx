@@ -7,6 +7,7 @@ import states.StoryModeState;
 import states.EXEFreeplay;
 import options.OptionsState;
 import states.substates.PauseSubState;
+import backend.EXEAchievements;
 
 import openfl.utils.Assets;
 
@@ -204,9 +205,8 @@ class PauseSubState extends MusicBeatSubstate
 		{
 			pauseMusic.loadEmbedded(Assets.getSound('assets/exe/music/trololo.ogg'), true, true);
 
-			backend.EXEAchievements.unlock('troll');
-			backend.EXEAchievements.checkFinale();
-			backend.EXEAchievements.save();
+			EXEAchievements.unlock('troll');
+			EXEAchievements.save();
 		}
 		else pauseMusic.loadEmbedded(Assets.getSound('assets/exe/music/pause.ogg'), true, true);
 		pauseMusic.volume = 0;
@@ -216,9 +216,8 @@ class PauseSubState extends MusicBeatSubstate
 
 		if (miniSonicImage == 'hollow-3')
 		{
-			backend.EXEAchievements.unlock('void');
-			backend.EXEAchievements.checkFinale();
-			backend.EXEAchievements.save();
+			EXEAchievements.unlock('void');
+			EXEAchievements.save();
 		}
 	}
 

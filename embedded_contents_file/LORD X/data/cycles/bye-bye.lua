@@ -20,7 +20,6 @@ function onEvent(e, v1, v2)
 			runHaxeCode([[
 				import backend.EXEAchievements;
 				EXEAchievements.unlock('byebye');
-				EXEAchievements.checkFinale();
 				EXEAchievements.save();
 			]])
         end

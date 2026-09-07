@@ -54,6 +54,7 @@ var bgLuther:Array<BackgroundSpriteAlt> = [
 var stepEvents = [
 		{ 
 			step: 798, callback: () -> {	// luther transition
+				game.health = 1;
 				FlxTween.tween(black, {alpha: 1}, 1.5, {onComplete: _ -> makeBackgroundAlt(bgLuther)});
 				FlxTween.num(0, 1, 1.5, null, v -> {
 					camGlitch.setFloat('AMT', v); 

@@ -242,16 +242,26 @@ function onCreatePost()
 
     -- CHARRACTER ICONS CONFIGS HEREEE --
     local bfChar = getProperty('iconP1.char')
-    
-    local offsetsY = {
+    local dadChar = getProperty('iconP2.char')
+
+    local bfOffsetsY = {
         ['bf-needle']    = -17
     }
-    local offsetsX = {
+    local bfOffsetsX = {
         -- empty bruh
     }
 
-    healthProps.playerIcon.offsetY = offsetsY[bfChar] or 0
-    healthProps.playerIcon.offsetX = offsetsX[bfChar] or 0
+    local dadOffsetsY = {
+        -- empty bruh
+    }
+    local dadOffsetsX = {
+        -- empty bruh
+    }
+
+    healthProps.playerIcon.offsetY = bfOffsetsY[bfChar] or 0
+    healthProps.playerIcon.offsetX = bfOffsetsX[bfChar] or 0
+    healthProps.opponentIcon.offsetY = dadOffsetsY[dadChar] or 0
+    healthProps.opponentIcon.offsetX = dadOffsetsX[dadChar] or 0
 end
 
 function onEvent(n, v1)

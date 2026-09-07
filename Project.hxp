@@ -385,11 +385,19 @@ class Project extends HXProject
         if (isSwitch())
             setHaxedef("APP_ID", SWITCH_APP_ID);
 
-        if (MODS_ALLOWED.isEnabled(this) && isWindows() && FileSystem.exists("contents_file"))
+        if (MODS_ALLOWED.isEnabled(this) && FileSystem.exists("contents_file"))
         {
-            var binDir = haxe.io.Path.normalize(Sys.getCwd() + "/" + buildDir + "/windows/bin/contents");
+            var platformFolder = isWindows() ? "windows" : (isMac() ? "mac" : "linux");
+            var binDir = haxe.io.Path.normalize(Sys.getCwd() + "/" + buildDir + "/" + platformFolder + "/bin/contents");
             var srcDir = haxe.io.Path.normalize(Sys.getCwd() + "/contents_file");
-            postBuildCallbacks.push(new CLICommand("robocopy", [srcDir, binDir, "/E", "/XO", "/NJH", "/NJS", "/NFL", "/NDL"]));
+
+            if (isWindows())
+                postBuildCallbacks.push(new CLICommand("robocopy", [srcDir, binDir, "/E", "/XO", "/NJH", "/NJS", "/NFL", "/NDL"]));
+            else
+            {
+                postBuildCallbacks.push(new CLICommand("mkdir", ["-p", binDir]));
+                postBuildCallbacks.push(new CLICommand("cp", ["-Rf", srcDir + "/.", binDir]));
+            }
         }
 
         if (isAndroid())

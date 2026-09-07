@@ -251,4 +251,4 @@ function onTimerCompleted(t) if t == 'lolero' then scorchedSinging = false end e
 
 function lerp(a, b, t)
 	return a + t * (b - a)
-end]]
+end]==]

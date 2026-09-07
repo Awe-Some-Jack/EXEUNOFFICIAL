@@ -173,7 +173,7 @@ class GameplayCamera
 		{
 			var rate:Float = PlayState.instance.playbackRate;
 			FlxG.camera.zoom = FlxMath.lerp(PlayState.instance.defaultCamZoom, FlxG.camera.zoom, Math.exp(-elapsed * (3.125 * 2) * PlayState.instance.camZoomingDecay * rate));
-			PlayState.instance.camHUD.zoom = FlxMath.lerp(1, PlayState.instance.camHUD.zoom, Math.exp(-elapsed * (3.125 * 2) * PlayState.instance.camZoomingDecay * rate));
+			PlayState.instance.camHUD.zoom = FlxMath.lerp(PlayState.instance.defaultCamHUD, PlayState.instance.camHUD.zoom, Math.exp(-elapsed * (3.125 * 2) * PlayState.instance.camZoomingDecay * rate));
 		}
 
 		if (!customCameraEnabled) return;

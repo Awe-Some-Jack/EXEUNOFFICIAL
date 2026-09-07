@@ -298,6 +298,18 @@
 			]
 		],
 		[
+			78600,
+			[
+				["substantialEvent", "showClones", ""]
+			]
+		],
+		[
+			87942.8571428571,
+			[
+				["substantialEvent", "fadeClones", ""]
+			]
+		],
+		[
 			88457.1428571428,
 			[
 				["Tweening Camera", "370, 40", "1.1, circInOut"]
@@ -313,6 +325,12 @@
 			90514.2857142856,
 			[
 				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			91028.5714285713,
+			[
+				["substantialEvent", "floatMode", "start"]
 			]
 		],
 		[
@@ -340,7 +358,21 @@
 				["cameracenter", "false", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"],
 				["saturation", "1", ""],
-				["bright zoom", "1", ""]
+				["bright zoom", "1", ""],
+				["Tween Camera Zoom", "0.45", ""],
+				["Set Property", "defaultCamHUD", "0.8"]
+			]
+		],
+		[
+			91971.4285714285,
+			[
+				["substantialEvent", "removeClones", ""]
+			]
+		],
+		[
+			135600,
+			[
+				["substantialEvent", "floatMode", "end"]
 			]
 		],
 		[
@@ -359,15 +391,80 @@
 			]
 		],
 		[
+			167742.857142857,
+			[
+				["substantialEvent", "floatMode", "start"]
+			]
+		],
+		[
 			168000,
+			[
+				["Tween Camera Zoom", "1.1, true", "0.7, circIn"],
+				["saturation", "0.6", ""]
+			]
+		],
+		[
+			168085.714285714,
 			[
 				["substantialEvent", "fadeSky", ""]
 			]
 		],
 		[
+			168171.428571429,
+			[
+				["substantialEvent", "fadeBG", ""]
+			]
+		],
+		[
+			168685.714285714,
+			[
+				["substantialEvent", "redSkyColor", ""],
+				["Flash", "8c0a0a, 1", "camHUD"],
+				["Tween Camera Zoom", "0.45", ""],
+				["saturation", "1", ""],
+				["Set Property", "defaultCamHUD", "0.8"]
+			]
+		],
+		[
+			190628.571428572,
+			[
+				["saturation", "0.7", ""]
+			]
+		],
+		[
+			193371.428571429,
+			[
+				["saturation", "1", ""],
+				["bright zoom", "", ""],
+				["substantialEvent", "blueSkyColor", ""],
+				["Flash", "0c0a8c, 1", "camHUD"]
+			]
+		],
+		[
 			212571.428571429,
 			[
-				["substantialEvent", "fadeBG", "true"]
+				["substantialEvent", "badAppleTime", ""],
+				["Flash", "FFFFFF, 1", "camHUD"],
+				["substantialEvent", "deactivateHUDFloating", ""],
+				["Set Property", "defaultCamHUD", "1"],
+				["cameracenter", "true", ""],
+				["Tween Camera Zoom", "0.5", ""],
+				["Set Character Offset", "bf", "0"],
+				["Set Character Offset", "dad", "0"],
+				["Set Property", "cameraSpeed", "100000"]
+			]
+		],
+		[
+			214371.428571429,
+			[
+				["Tween Camera Zoom", "0.35, true", "32, sineInOut"],
+				["Tweening Camera", "0, 290", "32, sineInOut"]
+			]
+		],
+		[
+			234514.285714286,
+			[
+				["substantialEvent", "fadeEverything", ""]
 			]
 		]
 	],

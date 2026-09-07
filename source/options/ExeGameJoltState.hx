@@ -6,12 +6,15 @@ import openfl.events.TextEvent;
 import backend.GameJoltManager;
 import backend.Language;
 import backend.Paths;
+import lime.system.Clipboard;
 
+using StringTools;
 class ExeGameJoltState extends ExeBaseOptionsState
 {
 	static inline final ROW_Y0:Float = 290;
 	static inline final ROW_Y1:Float = 370;
 	static inline final ROW_Y2:Float = 450;
+	static inline final TIMEOUT_THRESHOLD:Int = 30;
 
 	var statusTxt:FlxText;
 	var userLabel:FlxText;
@@ -30,6 +33,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 	var tokenInput:String    = '';
 
 	var _waitingLogin:Bool = false;
+	var _waitingTimer:Float = 0;
 
 	override public function create()
 	{
@@ -78,12 +82,12 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			add(valBG); rightGroup.push(valBG);
 
 			final nameTxt = new FlxText(offRight, rowY + 10, 300, ['USERNAME', 'TOKEN', 'ACTION'][i], lblSize);
-			nameTxt.setFormat(font, lblSize, FlxColor.WHITE, LEFT);
+			nameTxt.setFormat(Paths.font('vcr'), lblSize, FlxColor.WHITE, LEFT);
 			nameTxt.scrollFactor.set(0, 0);
 			add(nameTxt); rightGroup.push(cast nameTxt);
 
 			final valTxt = new FlxText(offRight, rowY + 10, 400, '', lblSize);
-			valTxt.setFormat(font, lblSize, FlxColor.WHITE, LEFT);
+			valTxt.setFormat(Paths.font('vcr'), lblSize, FlxColor.WHITE, LEFT);
 			valTxt.scrollFactor.set(0, 0);
 			add(valTxt); rightGroup.push(cast valTxt);
 
@@ -156,8 +160,34 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			return;
 		}
 
+		if(_waitingLogin)
+		{
+			if(_waitingTimer > TIMEOUT_THRESHOLD) 
+			{
+				_waitingTimer = 0;
+				_waitingLogin = false;
+				statusTxt.text  = 'LOGIN FAILED — SERVER TOOK TOO LONG TO RESPOND';
+				statusTxt.color = 0xFFFF6666;
+			}
+			else _waitingTimer += elapsed;
+		}
+
 		super.update(elapsed);
 		if (introAnimating || backLock || _waitingLogin) { backLock = false; return; }
+
+		#if mobile
+		if(pressHolding && deltaMouseY != 0 && cooldownTimer <= 0) {
+			if(deltaMouseY < -5) {
+				curRow = (curRow - 1 + totalRows) % totalRows;
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				changeSelection();
+			} else if(deltaMouseY > 5) {
+				curRow = (curRow + 1 + totalRows) % totalRows;
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				changeSelection();
+			}
+		}
+		#end
 
 		if (controls.UI_UP_P || controls.UI_DOWN_P)
 		{
@@ -166,7 +196,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			changeSelection();
 		}
 
-		if (controls.ACCEPT)
+		if (controls.ACCEPT #if mobile || shortPress #end)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			if (GameJoltManager.isLoggedIn())
@@ -227,6 +257,9 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			return;
 		}
 
+		if(isTyping && FlxG.keys.justPressed.V && FlxG.keys.pressed.CONTROL) 
+			_typingBuf += Clipboard.text.trim();
+
 		if (FlxG.keys.justPressed.BACKSPACE && _typingBuf.length > 0)
 			_typingBuf = _typingBuf.substr(0, _typingBuf.length - 1);
 
@@ -255,6 +288,9 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		_waitingLogin   = true;
 		statusTxt.text  = 'CONNECTING...';
 		statusTxt.color = 0xFFFFDD00;
+
+		trace(usernameInput);
+		trace(tokenInput);
 
 		GameJoltManager.login(usernameInput, tokenInput, function(ok:Bool) {
 			_waitingLogin = false;

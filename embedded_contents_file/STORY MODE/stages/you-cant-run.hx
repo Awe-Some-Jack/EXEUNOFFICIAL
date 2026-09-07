@@ -27,7 +27,7 @@ var vignette:Array<BackGroundSprite> = [{name: "vg", path: 'VG', alpha: 0, color
 
 var generalBG:Array<BackGroundSprite> = [
 	{name:            "vc", path:            'yrc/vc', position: [-420,  -745], scale: [1.2, 1.2], scroll: [0.85,   0.85]},
-	{name:           "sky", path:           'yrc/sky', position: [-650,  -520],                    scroll: [0.87,   0.87]},
+	{name:           "sky", path:           'yrc/sky', position: [-650,  -520], scale: [1.1, 1.1], scroll: [0.87,   0.87]},
 	{name: "backBackRocks", path: 'yrc/backBackRocks', position: [-754,  -644], scale: [1,   1.6], scroll: [0.9,     0.9]},
 	{name:   "middleRocks", path:   'yrc/middleRocks', position: [-1120, -740], scale: [1,  1.05], scroll: [0.92,   0.92]},
 	{name:  "middleRocks2", path:   'yrc/middleRocks', position: [-1650, -740],                    scroll: [0.95,   0.95]},
@@ -72,7 +72,7 @@ var stageEvents:Map<String, Void->Void> = [
 		shakeIntensity = 0.001;
 
 		game.boyfriend.setPosition(game.boyfriend.x - 780, game.boyfriend.y - 420);
-		game.dad.setPosition(game.dad.x - 525, game.dad.y - 470);
+		game.dad.setPosition(game.dad.x - 570, game.dad.y - 580);
 		game.gf.setPosition(game.gf.x - 105, game.gf.y - 280);
 
 		canGFFloat = true;
@@ -147,14 +147,14 @@ var stageEvents:Map<String, Void->Void> = [
 
 function onCreate()
 {
-	for (vig     in  vignette)     precacheSprite(vig);
-	for (general in generalBG) precacheSprite(general);
-	for (bg1     in  normalBG)     precacheSprite(bg1);
-	for (bg2     in   pixelBG)     precacheSprite(bg2);
-	for (bg3     in crystalBG)     precacheSprite(bg3);
+	for (vig     in  vignette)     	precacheSprite(vig);
+	for (general in generalBG) 	   	precacheSprite(general);
+	for (bg1     in  normalBG)     	precacheSprite(bg1);
+	for (bg2     in   pixelBG)     	precacheSprite(bg2);
+	for (bg3     in crystalBG)     	precacheSprite(bg3);
 	
 	for (vig     in    vignette)     createSprite(vig);
-	for (general in   generalBG) createSprite(general);
+	for (general in   generalBG) 	 createSprite(general);
 	for (bg1     in    normalBG)     createSprite(bg1);
 	for (bg2     in     pixelBG)     createSprite(bg2);
 	for (bg3     in   crystalBG)     createSprite(bg3);

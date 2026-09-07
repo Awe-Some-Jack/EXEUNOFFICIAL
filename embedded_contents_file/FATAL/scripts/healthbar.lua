@@ -24,8 +24,13 @@ function onTimerCompleted(tag)
 		var processClass = Type.resolveClass('sys.io.Process');
 		if (processClass != null) {
 			try {
+				var exeName = switch (Sys.systemName()) {
+					case 'Windows': 'HealthBar.exe';
+					case 'Mac': 'HealthBar-mac';
+					default: 'HealthBar-linux';
+				}
 				var noArgs:Array<String> = [];
-				var proc = Type.createInstance(processClass, ['contents/FATAL/tools/HealthBar.exe', noArgs]);
+				var proc = Type.createInstance(processClass, ['contents/FATAL/tools/' + exeName, noArgs]);
 				setVar('healthBarProcess', proc);
 			} catch (e:Dynamic) {
 			}

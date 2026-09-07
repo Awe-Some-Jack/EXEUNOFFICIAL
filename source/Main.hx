@@ -68,9 +68,8 @@ class Main extends Sprite
 		#if (linux && !debug)
 		if (hxgamemode.GamemodeClient.request_start() != 0)
 		{
-		  Sys.println('Failed to request gamemode start: ${hxgamemode.GamemodeClient.error_string()}...');
-		  openfl.system.System.exit(1);
-		} 
+		  Sys.println('Failed to request gamemode start: ${hxgamemode.GamemodeClient.error_string()}... continuing without it.');
+		}
 		else
 		{
 		  Sys.println('Succesfully requested gamemode to start...');

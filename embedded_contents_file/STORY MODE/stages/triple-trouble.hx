@@ -23,7 +23,7 @@ typedef BackgroundSpriteAlt =
 }
 
 var normal:Array<BackgroundSpriteAlt> = [
-	{path: 'tt/bgn/bg', position: [-600, -200], scroll: [0.3, 0.3], pathF: 'tt/bgn/fire/bg'},
+	{path: 'tt/bgn/bg', position: [-600, -300], scale: [1.1, 1.1], scroll: [0.3, 0.3], pathF: 'tt/bgn/fire/bg'},
 	{path: 'tt/bgn/trees4', position: [-600, -300], scroll: [0.3, 0.3], pathF: 'tt/bgn/fire/trees4'},
 	{path: 'tt/bgn/trees3', position: [-900, -200], scroll: [0.55, 0.55], pathF: 'tt/bgn/fire/trees3'},
 	{path: 'tt/bgn/fire/FIRE 2', position: [-1000, -2700], scroll: [0.55, 0.55], scale: [6, 10, true], animation: [{name: 'fire instancia 1', looped: true}], visible: false, isFire: true},

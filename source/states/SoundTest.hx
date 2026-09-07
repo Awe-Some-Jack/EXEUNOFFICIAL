@@ -46,6 +46,8 @@ class SoundTest extends MusicBeatState
 	var pcmValue:Int = 0;
 	var daValue:Int = 0;
 
+	var cooldownTimer = 0.1;
+
 	var isPCMSelected:Bool = true;
 	var currentArrowIndex:Int = 0;
 
@@ -303,13 +305,15 @@ class SoundTest extends MusicBeatState
 	{
 		var change:Int = 0;
 
-		if (controls.UI_DOWN_P || FlxG.mouse.deltaWheel.y < 0)
+		if (controls.UI_DOWN_P || FlxG.mouse.deltaWheel.y < 0 #if mobile || swipeDOWN || (deltaMouseY > 5 && cooldownTimer <= 0 && pressHolding) #end)
 		{
+			cooldownTimer = 0.1;
 			change = (FlxG.keys.pressed.SHIFT ? 3 : 1);
 			changeHold = 0;
 		}
-		else if (controls.UI_UP_P || FlxG.mouse.deltaWheel.y > 0)
+		else if (controls.UI_UP_P || FlxG.mouse.deltaWheel.y > 0 #if mobile || swipeUP || (deltaMouseY < -5 && cooldownTimer <= 0 && pressHolding) #end)
 		{
+			cooldownTimer = 0.1;
 			change = -(FlxG.keys.pressed.SHIFT ? 3 : 1);
 			changeHold = 0;
 		}
@@ -354,6 +358,8 @@ class SoundTest extends MusicBeatState
 		if (subState != null) return;
 		if (transitioning) return;
 
+		if(cooldownTimer > 0) cooldownTimer -= elapsed;
+
 		handleSelection();
 		handleValueChange(elapsed);
 		updateDisplayedValues();
@@ -366,7 +372,7 @@ class SoundTest extends MusicBeatState
 			FlxG.switchState(() -> new EXEMenu());
 		}
 
-		if (controls.ACCEPT)
+		if (controls.ACCEPT || shortPress)
 		{
 			notFoundAny = true;
 			

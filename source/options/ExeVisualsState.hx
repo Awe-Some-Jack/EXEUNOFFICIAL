@@ -38,6 +38,7 @@ class ExeVisualsState extends ExeBaseOptionsState
 	override public function loadPage()
 	{
 		clearPage();
+		FlxG.sound.play(Paths.sound('scrollMenu'));
 		var page = pageOptions[curPage];
 		titlebarTxt.text = menuTitle;
 		var offRight:Float = FlxG.width + 200;
@@ -86,9 +87,9 @@ class ExeVisualsState extends ExeBaseOptionsState
 
 		if (editingValue)
 		{
-			if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
+			if (#if mobile ((FlxG.mouse.overlaps(arrowRight) || FlxG.mouse.overlaps(arrowLeft)) && shortPress) || swipeLEFT || swipeRIGHT || #end controls.UI_LEFT_P || controls.UI_RIGHT_P)
 			{
-				var isRight = controls.UI_RIGHT_P;
+				var isRight = #if mobile (FlxG.mouse.overlaps(arrowRight) && shortPress) || swipeRIGHT || #end controls.UI_RIGHT_P;
 				var opt = pageOptions[curPage][curSelected];
 				var val = opt.getValue();
 				var txt = optionGroups[curSelected].valueText;
@@ -116,20 +117,33 @@ class ExeVisualsState extends ExeBaseOptionsState
 			return;
 		}
 
+		#if mobile
+		if(pressHolding && deltaMouseY != 0 && cooldownTimer <= 0) {
+			if(deltaMouseY < -5) {
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				curSelected = FlxMath.wrap(curSelected - 1, 0, optionGroups.length - 1);
+				hideArrows(); changeSelection();
+			} else if(deltaMouseY > 5) {
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				curSelected = FlxMath.wrap(curSelected + 1, 0, optionGroups.length - 1);
+				hideArrows(); changeSelection();
+			}
+		}
+		#end
+
 		if (controls.UI_UP_P || controls.UI_DOWN_P)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			curSelected = FlxMath.wrap(curSelected + (controls.UI_UP_P ? -1 : 1), 0, optionGroups.length - 1);
 			hideArrows(); changeSelection();
 		}
-		if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
+		if (#if mobile swipeLEFT || swipeRIGHT || #end controls.UI_LEFT_P || controls.UI_RIGHT_P)
 		{
-			FlxG.sound.play(Paths.sound('scrollMenu'));
-			var isRight = controls.UI_RIGHT_P;
+			var isRight = #if mobile swipeRIGHT || #end controls.UI_RIGHT_P;
 			if (isRight && curPage < pageOptions.length - 1) { curPage++; curSelected = 0; loadPage(); }
 			else if (!isRight && curPage > 0) { curPage--; curSelected = 0; loadPage(); }
 		}
-		if (controls.ACCEPT) { 
+		if (controls.ACCEPT #if mobile || shortPress #end) { 
 			FlxG.sound.play(Paths.sound('scrollMenu')); 
 			editingValue = true; nudgeSelectedText(true); 
 			var g = optionGroups[curSelected];

@@ -72,6 +72,8 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	public var arrowLeft:FlxSprite;
 	public var arrowRight:FlxSprite;
 	
+	#if mobile public var cooldownTimer:Float = 0.0; #end
+
 	public var optionGroups:Array<ExeMenuOptionGroup> = [];
 	public var leftGroup:Array<FlxSprite>  = [];
 	public var rightGroup:Array<FlxSprite> = [];
@@ -354,6 +356,8 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 	public function changeSelection()
 	{
+		#if mobile cooldownTimer = 0.15; #end
+
 		final idx = getCurrentSelectionIndex();
 		if (optionGroups.length == 0 || idx >= optionGroups.length) return;
 
@@ -431,6 +435,33 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		FlxTween.tween(g.nameText,  {y: targetY}, 0.15, {ease: FlxEase.quadOut});
 		FlxTween.tween(g.valueText, {y: targetY}, 0.15, {ease: FlxEase.quadOut});
 	}
+
+	#if mobile
+	override function update(elapsed:Float) {
+		if (cooldownTimer > 0) cooldownTimer -= elapsed;
+
+		mouseX = FlxG.mouse.x;
+		mouseY = FlxG.mouse.y;
+
+		deltaMouseX = FlxG.mouse.deltaScreenX;
+		deltaMouseY = FlxG.mouse.deltaScreenY;
+
+		if(FlxG.touches.list.length == 0) touchLength = 0;
+
+		for(touch in FlxG.touches.list) {
+			touchLength = FlxG.game.ticks - touch.justPressedTimeInTicks;
+			shortPress = (touch.justReleased && touchLength <= 100);
+			pressHolding = (touch.pressed && touchLength > 10);
+		}
+
+		swipeUP = deltaMouseY <= -5 && pressHolding && Math.abs(deltaMouseY) > Math.abs(deltaMouseX);
+		swipeDOWN = deltaMouseY >= 5 && pressHolding && Math.abs(deltaMouseY) > Math.abs(deltaMouseX);
+		swipeLEFT = deltaMouseX <= -5 && pressHolding && Math.abs(deltaMouseY) < Math.abs(deltaMouseX);
+		swipeRIGHT = deltaMouseX >= 5 && pressHolding && Math.abs(deltaMouseY) < Math.abs(deltaMouseX);
+
+		super.update(elapsed);
+	}
+	#end
 
 	override function destroy()
 	{

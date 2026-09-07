@@ -275,11 +275,7 @@ class EXETitle extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-		#if !mobile
-		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT;
-		#else
-		var pressedEnter:Bool = shortPress;
-		#end
+		var pressedEnter:Bool = #if mobile shortPress || #end FlxG.keys.justPressed.ENTER || controls.ACCEPT;
 
 		final gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 		if (gamepad != null)

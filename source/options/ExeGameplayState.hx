@@ -70,15 +70,16 @@ class ExeGameplayState extends ExeBaseOptionsState
 
 		if (editingValue)
 		{
-			var isLeft  = controls.UI_LEFT_P  || (controls.UI_LEFT  && holdTimer > 0.4 && holdRepeat <= 0);
-			var isRight = controls.UI_RIGHT_P || (controls.UI_RIGHT && holdTimer > 0.4 && holdRepeat <= 0);
+			var isLeft  = (#if mobile (FlxG.mouse.overlaps(arrowLeft) && shortPress) || swipeLEFT || #end controls.UI_LEFT_P) || (controls.UI_LEFT && holdTimer > 0.4 && holdRepeat <= 0);
+			var isRight = (#if mobile (FlxG.mouse.overlaps(arrowRight) && shortPress) || swipeRIGHT || #end controls.UI_RIGHT_P) || (controls.UI_RIGHT && holdTimer > 0.4 && holdRepeat <= 0);
 
-			if (controls.UI_LEFT || controls.UI_RIGHT) holdTimer += elapsed; else holdTimer = 0;
+			if (#if mobile (FlxG.mouse.overlaps(arrowLeft) || (FlxG.mouse.overlaps(arrowRight)) && pressHolding) || #end controls.UI_LEFT || controls.UI_RIGHT) holdTimer += elapsed; else holdTimer = 0;
 			if (holdRepeat > 0) holdRepeat -= elapsed;
 
-			if (isLeft || isRight)
+			if ((isLeft || isRight) #if mobile && cooldownTimer <= 0 #end)
 			{
-				if (controls.UI_LEFT_P || controls.UI_RIGHT_P) holdRepeat = 0; else holdRepeat = 0.07;
+				#if mobile cooldownTimer = 0.1; #end
+				if (#if mobile (FlxG.mouse.overlaps(arrowLeft) || FlxG.mouse.overlaps(arrowRight)) && pressHolding || #end controls.UI_LEFT_P || controls.UI_RIGHT_P) holdRepeat = 0; else holdRepeat = 0.07;
 				var opt = allOptions[curSelected];
 				var val = opt.getValue();
 				var txt = optionGroups[curSelected - scrollOffset].valueText;
@@ -118,18 +119,19 @@ class ExeGameplayState extends ExeBaseOptionsState
 			return;
 		}
 
-		if (controls.UI_UP_P || controls.UI_DOWN_P)
+		if ((controls.UI_UP_P || controls.UI_DOWN_P) #if mobile || (cooldownTimer <= 0 && (swipeUP || swipeDOWN)) #end)
 		{
 			var visibleCount = Std.int(Math.min(allOptions.length, ExeBaseOptionsState.MAX_VISIBLE_ROWS));
 			var maxScroll = Std.int(Math.max(0, allOptions.length - visibleCount));
 			scrollOffset = Std.int(Math.max(0, Math.min(scrollOffset, maxScroll)));
 			curSelected = Std.int(Math.max(0, Math.min(curSelected, allOptions.length - 1)));
 
-			var dir = controls.UI_UP_P ? -1 : 1;
+			var dir = (controls.UI_UP_P #if mobile || swipeUP #end) ? -1 : 1;
 			var newSelected = curSelected + dir;
 
 			if (newSelected >= 0 && newSelected <= allOptions.length - 1)
 			{
+				#if mobile cooldownTimer = 0.2; #end
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				curSelected = newSelected;
 				hideArrows();
@@ -150,7 +152,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 				}
 			}
 		}
-		if (controls.ACCEPT)
+		if (controls.ACCEPT #if mobile || shortPress #end)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			editingValue = true; backLock = true; nudgeSelectedText(true);

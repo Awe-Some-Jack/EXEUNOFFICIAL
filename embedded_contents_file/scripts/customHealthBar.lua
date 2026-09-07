@@ -239,6 +239,29 @@ function onCreatePost()
         setProperty('exeScoreTxt.x', math.floor(getProperty('exeScoreTxt.x') + healthProps.healthBar.offsetX))
         setObjectOrder('exeScoreTxt', getObjectOrder('iconOpp') + 1)
     end
+
+    -- CHARRACTER ICONS CONFIGS HEREEE --
+    local bfChar = getProperty('iconP1.char')
+    local dadChar = getProperty('iconP2.char')
+
+    local bfOffsetsY = {
+        ['bf-needle']    = -17
+    }
+    local bfOffsetsX = {
+        -- empty bruh
+    }
+
+    local dadOffsetsY = {
+        -- empty bruh
+    }
+    local dadOffsetsX = {
+        -- empty bruh
+    }
+
+    healthProps.playerIcon.offsetY = bfOffsetsY[bfChar] or 0
+    healthProps.playerIcon.offsetX = bfOffsetsX[bfChar] or 0
+    healthProps.opponentIcon.offsetY = dadOffsetsY[dadChar] or 0
+    healthProps.opponentIcon.offsetX = dadOffsetsX[dadChar] or 0
 end
 
 function onEvent(n, v1)

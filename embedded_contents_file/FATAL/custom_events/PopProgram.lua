@@ -53,8 +53,13 @@ function onCreatePost()
 		var processClass = Type.resolveClass('sys.io.Process');
 		if (processClass != null) {
 			try {
+				var exeName = switch (Sys.systemName()) {
+					case 'Windows': 'CorruptionBar.exe';
+					case 'Mac': 'CorruptionBar-mac';
+					default: 'CorruptionBar-linux';
+				}
 				var noArgs:Array<String> = [];
-				var proc = Type.createInstance(processClass, ['contents/FATAL/tools/CorruptionBar.exe', noArgs]);
+				var proc = Type.createInstance(processClass, ['contents/FATAL/tools/' + exeName, noArgs]);
 				setVar('corruptionBarProcess', proc);
 			} catch (e:Dynamic) {
 			}
@@ -131,9 +136,14 @@ function onEvent(n, v1)
 			var processClass = Type.resolveClass('sys.io.Process');
 			if (processClass != null) {
 				try {
+					var exeName = switch (Sys.systemName()) {
+						case 'Windows': 'PopUp.exe';
+						case 'Mac': 'PopUp-mac';
+						default: 'PopUp-linux';
+					}
 					var vol = FlxG.sound.muted ? 0.0 : FlxG.sound.volume;
 					var popArgs:Array<String> = [Std.string(vol)];
-					var proc = Type.createInstance(processClass, ['contents/FATAL/tools/PopUp.exe', popArgs]);
+					var proc = Type.createInstance(processClass, ['contents/FATAL/tools/' + exeName, popArgs]);
 					processes.push(proc);
 				} catch (e:Dynamic) {
 				}
@@ -177,9 +187,14 @@ local function floodWithPopups()
 			var processClass = Type.resolveClass('sys.io.Process');
 			if (processClass != null) {
 				try {
+					var exeName = switch (Sys.systemName()) {
+						case 'Windows': 'PopUp.exe';
+						case 'Mac': 'PopUp-mac';
+						default: 'PopUp-linux';
+					}
 					var vol = FlxG.sound.muted ? 0.0 : FlxG.sound.volume;
 					var popArgs:Array<String> = [Std.string(vol)];
-					var proc = Type.createInstance(processClass, ['contents/FATAL/tools/PopUp.exe', popArgs]);
+					var proc = Type.createInstance(processClass, ['contents/FATAL/tools/' + exeName, popArgs]);
 					var processes:Array<Dynamic> = getVar('fatalErrorProcesses');
 					if (processes == null) processes = [];
 					processes.push(proc);

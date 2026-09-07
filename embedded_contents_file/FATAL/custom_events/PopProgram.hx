@@ -15,7 +15,7 @@ var floodSpawnTimer:FlxTimer = null;
 var shutdownTimer:FlxTimer = null;
 
 var lastRefocusAttempt:Float = 0;
-final refocusCooldown:Float = 1.0;
+final refocusCooldown:Float = 1;
 var windowHasFocus:Bool = true;
 
 function killProcess(proc:Dynamic) {
@@ -130,6 +130,10 @@ function sendCorruptionCommand(cmd:String) {
 }
 
 function onCreatePost() {
+    if(Sys.systemName() == 'Mac') {
+        refocusCooldown = 0.05;
+    }
+    FlxG.autoPause = false;
     isFatalitySong = (songName.toLowerCase() == 'fatality');
     corruptionTriggered = false;
     warningActive = false;
@@ -156,6 +160,8 @@ function onCreatePost() {
         }
     }
 }
+
+function onStartCountdown() tryRefocusWindow();
 
 function onPause() {
     if(isFatalitySong)
@@ -285,6 +291,23 @@ function spawnFloodPopup() {
     }
 }
 
+var noteSpawnTimer:Float = 0;
+function onSpawnNote(note:Dynamic) {
+    if(note.mustPress && Sys.systemName() == 'Mac') {
+        noteSpawnTimer = 0.5;
+        if(!windowHasFocus)
+            tryRefocusWindow();
+    }
+}
+
+function goodNoteHitPre(note:Dynamic) {
+    if(Sys.systemName() == 'Mac') {
+        noteSpawnTimer = 1;
+        if(!windowHasFocus)
+            tryRefocusWindow();
+    }
+}
+
 function floodWithPopups() {
     if(floodSpawnTimer != null) floodSpawnTimer.cancel();
     floodSpawnTimer = new FlxTimer().start(0.05, function(tmr) {
@@ -308,8 +331,13 @@ function shutEverythingDown() {
 function onUpdatePost(elapsed:Float) {
     if(!isFatalitySong) return;
 
-    if(!windowHasFocus && FlxG.keys.justPressed.ANY) {
-        var pressedKey = FlxG.keys.firstJustPressed();
+    if(noteSpawnTimer > 0 && !windowHasFocus && Sys.systemName() == 'Mac')
+        tryRefocusWindow();
+    else if(Sys.systemName() == 'Mac')
+        noteSpawnTimer -= elapsed;
+
+    if(!windowHasFocus && FlxG.keys.pressed.ANY) {
+        var pressedKey = FlxG.keys.firstressed();
         trace('Key pressed: ' + FlxKey.toStringMap.get(pressedKey));
         tryRefocusWindow();
     }

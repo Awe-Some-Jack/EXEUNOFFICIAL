@@ -396,6 +396,7 @@ class Project extends HXProject
 
                 postBuildCallbacks.push(new CLICommand("mkdir", ["-p", binDir]));
                 postBuildCallbacks.push(new CLICommand("cp", ["-Rf", srcDir + "/.", binDir]));
+                postBuildCallbacks.push(new CLICommand("find", [binDir, "-type", "f", "-name", "*-mac", "-exec", "chmod", "+x", "{}", "+"]));
                 postBuildCallbacks.push(new CLICommand("codesign", ["--force", "--deep", "-s", "-", appDir]));
             }
             else

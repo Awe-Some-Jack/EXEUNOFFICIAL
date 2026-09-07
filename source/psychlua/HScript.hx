@@ -184,7 +184,7 @@ class HScript extends Iris
 		set('Alphabet',        Alphabet);
 		set('Note',            objects.Note);
 		set('CustomSubstate',  CustomSubstate);
-		set('EXEAchievement',  backend.EXEAchievement);
+		set('EXEAchievements',  backend.EXEAchievements);
 		#if (!flash && sys)
 		set('FlxRuntimeShader', flixel.addons.display.FlxRuntimeShader);
 		set('ErrorHandledRuntimeShader', shaders.ErrorHandledShader.ErrorHandledRuntimeShader);

@@ -90,8 +90,8 @@ function onUpdatePost(e)
 		setHealth(getRandomFloat(0.75,0.6))
 
 		callMethod('winpos.setPosition', {
-			((getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.width') - getPropertyFromClass('flixel.FlxG', 'stage.window.width')) / 2) + math.sin(sex / 2) * 30,
-			((getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.height') - getPropertyFromClass('flixel.FlxG', 'stage.window.height')) / 2) + math.cos(sex + (math.pi / 2)) * 30
+			getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.x') + ((getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.width') - getPropertyFromClass('flixel.FlxG', 'stage.window.width')) / 2) + math.sin(sex / 2) * 30,
+			getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.y') + ((getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.height') - getPropertyFromClass('flixel.FlxG', 'stage.window.height')) / 2) + math.cos(sex + (math.pi / 2)) * 30
 		})
 
 		setShaderFloat('iconBF', 'binaryIntensity', getRandomFloat(2,5))
@@ -201,8 +201,8 @@ function onEvent(n, v1)
 
 			moveWindow = true
 			callMethod('winpos.setPosition', {getPropertyFromClass('flixel.FlxG', 'stage.window.x'), getPropertyFromClass('flixel.FlxG', 'stage.window.y')})
-			doTweenX('winposx', 'winpos', (getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.width') - getPropertyFromClass('flixel.FlxG', 'stage.window.width')) / 2, crochet / (1000 / 8), 'cubeInOut')
-			doTweenY('winposy', 'winpos', (getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.height') - getPropertyFromClass('flixel.FlxG', 'stage.window.height')) / 2, crochet / (1000 / 8), 'cubeInOut')
+			doTweenX('winposx', 'winpos', getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.x') + (getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.width') - getPropertyFromClass('flixel.FlxG', 'stage.window.width')) / 2, crochet / (1000 / 8), 'cubeInOut')
+			doTweenY('winposy', 'winpos', getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.y') + (getPropertyFromClass('flixel.FlxG', 'stage.window.display.bounds.height') - getPropertyFromClass('flixel.FlxG', 'stage.window.height')) / 2, crochet / (1000 / 8), 'cubeInOut')
 
 			if shadersEnabled and not lowQuality then
 				runHaxeCode([[

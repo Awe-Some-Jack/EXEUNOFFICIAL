@@ -339,8 +339,8 @@ class PlayState extends MusicBeatState
 			FlxG.resizeGame(960, 720);
 			FlxG.resizeWindow(960, 720);
 			
-			final winX = Std.int((screenWidth - 960) / 2);
-			final winY = Std.int((screenHeight - 720) / 2);
+			final winX = Std.int(screen.bounds.x + (screenWidth - 960) / 2);
+			final winY = Std.int(screen.bounds.y + (screenHeight - 720) / 2);
 			FlxG.stage.window.move(winX, winY);
 		} else {
 			FlxG.stage.window.resizable = true;
@@ -356,10 +356,10 @@ class PlayState extends MusicBeatState
 			FlxG.resizeGame(_originalWidth, _originalHeight);
 			FlxG.resizeWindow(_originalWidth, _originalHeight);
 			
-			final winX = Std.int((screenWidth - _originalWidth) / 2);
-			final winY = Std.int((screenHeight - _originalHeight) / 2);
+			final winX = Std.int(screen.bounds.x + (screenWidth - _originalWidth) / 2);
+			final winY = Std.int(screen.bounds.y + (screenHeight - _originalHeight) / 2);
 			FlxG.stage.window.move(winX, winY);
-			
+
 			FlxG.fullscreen = _wasFullscreen;
 		}
 
@@ -420,8 +420,8 @@ class PlayState extends MusicBeatState
 					FlxG.resizeWindow(FlxG.initialWidth, FlxG.initialHeight);
 
 					final screen = FlxG.stage.window.display;
-					final winX = Std.int((screen.bounds.width  - FlxG.initialWidth)  / 2);
-					final winY = Std.int((screen.bounds.height - FlxG.initialHeight) / 2);
+					final winX = Std.int(screen.bounds.x + (screen.bounds.width  - FlxG.initialWidth)  / 2);
+					final winY = Std.int(screen.bounds.y + (screen.bounds.height - FlxG.initialHeight) / 2);
 					FlxG.stage.window.move(winX, winY);
 				}
 			}
@@ -435,8 +435,8 @@ class PlayState extends MusicBeatState
 		FlxG.resizeWindow(960, 720);
 
 		final screen = FlxG.stage.window.display;
-		final winX = Std.int((screen.bounds.width - 960) / 2);
-		final winY = Std.int((screen.bounds.height - 720) / 2);
+		final winX = Std.int(screen.bounds.x + (screen.bounds.width - 960) / 2);
+		final winY = Std.int(screen.bounds.y + (screen.bounds.height - 720) / 2);
 		FlxG.stage.window.move(winX, winY);
 	}
 

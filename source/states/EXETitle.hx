@@ -266,6 +266,10 @@ class EXETitle extends MusicBeatState
 
 	override function update(elapsed:Float):Void
 	{
+		if(videoPlaying && controls.ACCEPT) 
+		{
+			if(video != null) video.setVideoPercent(1);
+		}
 		if (videoPlaying || subState != null)
 		{
 			super.update(elapsed);

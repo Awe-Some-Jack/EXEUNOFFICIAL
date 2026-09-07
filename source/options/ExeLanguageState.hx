@@ -95,16 +95,20 @@ class ExeLanguageState extends ExeBaseOptionsState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
 		if (introAnimating || backLock) { backLock = false; return; }
 
 		if (editingValue)
 		{
-			if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
+			#if mobile if(cooldownTimer <= 0) { #end
+			if (#if mobile ((FlxG.mouse.overlaps(arrowRight) || FlxG.mouse.overlaps(arrowLeft)) && shortPress) || swipeLEFT || swipeRIGHT || #end controls.UI_LEFT_P || controls.UI_RIGHT_P)
 			{
-				curLangIdx = FlxMath.wrap(curLangIdx + (controls.UI_RIGHT_P ? 1 : -1), 0, LANG_KEYS.length - 1);
+				#if mobile cooldownTimer = 0.15; #end
+				curLangIdx = FlxMath.wrap(curLangIdx + (#if mobile (FlxG.mouse.overlaps(arrowRight) && shortPress) || swipeRIGHT || #end controls.UI_RIGHT_P ? 1 : -1), 0, LANG_KEYS.length - 1);
 				applyLanguage();
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
+			#if mobile } #end
 			if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
@@ -114,7 +118,7 @@ class ExeLanguageState extends ExeBaseOptionsState
 			return;
 		}
 
-		if (controls.ACCEPT) {
+		if (controls.ACCEPT #if mobile || shortPress #end) {
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			editingValue = true; nudgeSelectedText(true);
 			var g = optionGroups[0];

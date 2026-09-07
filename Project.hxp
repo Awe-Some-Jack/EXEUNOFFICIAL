@@ -207,6 +207,9 @@ class Project extends HXProject
         if(isCPP() && isWindows())
             haxelibs.push(new Haxelib("sl-windows-api"));
 
+        if (isLinux())
+            haxelibs.push(new Haxelib("hxgamemode"));
+
         if (LUA_ALLOWED.isEnabled(this)) {
             haxelibs.push(new Haxelib("hxluajit"));
             haxelibs.push(new Haxelib("hxluajit-wrapper"));

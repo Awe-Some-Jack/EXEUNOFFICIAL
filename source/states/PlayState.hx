@@ -3033,6 +3033,8 @@ class PlayState extends MusicBeatState
 	{
 		if(cpuControlled || paused || inCutscene || key < 0 || key >= playerStrums.length || !generatedMusic || endingSong || boyfriend.stunned) return;
 
+		trace(key);
+
 		final lastTime:Float = Conductor.songPosition;
 		if(Conductor.songPosition >= 0)
 		{

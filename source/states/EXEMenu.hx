@@ -291,13 +291,12 @@ class EXEMenu extends MusicBeatState
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(() -> new EXETitle());
 			}
-			#if !mobile
 			else if (controls.ACCEPT)
 				startBlink();
 			final wheel = FlxG.mouse.deltaWheel.y;
 			if (wheel != 0 && cooldownTimer <= 0)
 				changeSelection(wheel > 0 ? -1 : 1, wheel > 0);
-			#else
+			#if mobile
 			if(pressHolding && deltaMouseY != 0 && cooldownTimer <= 0)
 				if(deltaMouseY > 5)
 					changeSelection(-1, false);

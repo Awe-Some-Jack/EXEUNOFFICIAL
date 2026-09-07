@@ -220,10 +220,10 @@ function onUpdatePost(e:Float) {
 
 function onStepHit()
 {
-	final offset = (curStep - 1184) % 32
+	final offset = (curStep - 1184) % 32;
 	if (curStep >= 1192 && curStep <= 1418 && (offset == 8 || offset == 11)) spinStrums();
 
-	if (curStep == 1439 ) FlxTween.tween(camHUD, {alpha: 0}, 0.6)
+	if (curStep == 1439 ) FlxTween.tween(camHUD, {alpha: 0}, 0.6);
 }
 
 function spinStrums()

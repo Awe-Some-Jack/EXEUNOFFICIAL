@@ -15,7 +15,7 @@ var floodSpawnTimer:FlxTimer = null;
 var shutdownTimer:FlxTimer = null;
 
 var lastRefocusAttempt:Float = 0;
-final refocusCooldown:Float = 1;
+var refocusCooldown:Float = 1;
 var windowHasFocus:Bool = true;
 
 function killProcess(proc:Dynamic) {

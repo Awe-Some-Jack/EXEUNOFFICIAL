@@ -20,17 +20,17 @@ final cam = game.gameplayCam.settings;
 var starv:Array<BackgroundSpriteAlt> = [
 	{path: 'new bg/sky', position: [-1220, -1250], scroll: [0.4, 0.4], scale: [0.8, 0.8]},
 	{path: 'new bg/bg', position: [-1350, -1300], scroll: [0.6, 0.6], scale: [0.8, 0.8]},
-	{path: 'new bg/tv', position: [40, -680], scale: [1.5, 1.35], animation: [{name: 'idle', looped: true}], angle: -6},
+	{path: 'new bg/tv', position: [40, -680], scale: [1.5, 1.35], animation: [{name: 'idle', looped: true}], angle: -6, hide: false},
 	{path: 'new bg/floor', position: [-1610, -1450], scale: [0.8, 0.8]},
-	{path: 'new bg/metal', position: [-650, -500], scale: [0.38, 0.38], animation: [{name: 'idle', looped: true}]},
-	{path: 'new bg/tails', position: [-290, -410], scale: [0.45, 0.45], animation: [{name: 'idle', looped: true}]},
-	{path: 'new bg/starv', position: [150, -480], scale: [0.4, 0.4], animation: [{name: 'idle', looped: true}]},
+	{path: 'new bg/metal', position: [-650, -500], scale: [0.38, 0.38], animation: [{name: 'idle', looped: true}], blend: 'add', hide: false},
+	{path: 'new bg/tails', position: [-290, -410], scale: [0.45, 0.45], animation: [{name: 'idle', looped: true}], blend: 'add', hide: false},
+	{path: 'new bg/starv', position: [150, -480], scale: [0.4, 0.4], animation: [{name: 'idle', looped: true}], blend: 'add', hide: false},
 	{path: 'bee', position: [-520, -150], scale: [0.7, 0.7], darkVariant: true},
 	{path: 'moto', position: [-1000, 120], scale: [0.9, 0.9], darkVariant: true},
 	{path: 'sonic', position: [-550, 240], scale: [1.15, 1.15], darkVariant: true},
 	{path: 'shoe', position: [300, 320], scale: [0.8, 0.8], darkVariant: true},
 	{path: 'picky', position: [-870, 400], darkVariant: true},
-	{path: 'mrcrabs', position: [200, -30], scale: [1.3, 1.3], darkVariant: true},
+	{path: 'mrcrabs', position: [200, -60], scale: [1.3, 1.3], darkVariant: true},
 	{path: 'pocky', position: [400, 230], scale: [0.7, 0.7], darkVariant: true},
 	{path: 'ricky', position: [-1300, -1000], scale: [0.6, 0.6], scroll: [1.7, 1.7], darkVariant: true},
 	{path: 'cucky', position: [-50, -900], scale: [0.5, 0.5], scroll: [1.5, 1.5], front: true, darkVariant: true},
@@ -71,7 +71,7 @@ function onEvent(n,v1)
 		{
 			case 'fadeout':
 				_inTrans = true;
-				for (spr in starv) FlxTween.color(spr.sprite, 1, 0xFFFFFFFF, 0xFF000000);
+				for (spr in starv) if (spr.hide == null || spr.hide == true) FlxTween.color(spr.sprite, 1, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.color(boyfriend, 3, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.color(vg, 3, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.tween(camHUD, {alpha: 0}, 3);
@@ -84,7 +84,7 @@ function onEvent(n,v1)
 				_inTrans = false;
 				for (spr in starv)
 				{
-					if (spr.darkVariant != null && spr.spriteDark != null)
+					if (spr.darkVariant != null && spr.spriteDark != null && (spr.hide == null || spr.hide == true))
 					{
 						spr.spriteDark.alpha = 1;
 						FlxTween.color(spr.spriteDark, 1, 0xFF000000, 0xFFFFFFFF);
@@ -97,7 +97,7 @@ function onEvent(n,v1)
 				_isDark = true;
 			case 'starved':
 				_inTrans = true;
-				for (spr in starv) if (spr.darkVariant != null && spr.spriteDark != null) FlxTween.color(spr.spriteDark, 1, 0xFFFFFFFF, 0xFF000000);
+				for (spr in starv) if (spr.darkVariant != null && spr.spriteDark != null && (spr.hide == null || spr.hide == true)) FlxTween.color(spr.spriteDark, 1, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.color(boyfriend, 1, 0xFFFF0000, 0xFF000000);
 				FlxTween.tween(camHUD, {alpha: 0}, 1);
 				FlxTween.color(vg, 3, 0xFFFF0000, 0xFF000000);
@@ -113,6 +113,7 @@ function onEvent(n,v1)
 				}
 				for (spr in starv)
 				{
+					if (spr.hide == false) continue;
 					if (spr.darkVariant != null && spr.spriteDark != null) spr.spriteDark.alpha = 0;
 					FlxTween.color(spr.sprite, 1, 0xFF000000, 0xFFFFFFFF);
 				}
@@ -160,6 +161,7 @@ function makeBackgroundAlt(background:Array<BackgroundSpriteAlt>)
 		if (spriteDef.visible != null) sprite.visible = spriteDef.visible;
 		if (spriteDef.alpha != null) sprite.alpha = spriteDef.alpha;
 		if (spriteDef.angle != null) sprite.angle = spriteDef.angle;
+		if (spriteDef.blend != null) sprite.blend = LuaUtils.blendModeFromString(spriteDef.blend);
 		if (spriteDef.front) game.add(sprite);
 		else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
 		spriteDef.sprite = sprite;
@@ -175,6 +177,7 @@ function makeBackgroundAlt(background:Array<BackgroundSpriteAlt>)
 			sprite.scrollFactor.set((spriteDef.scroll ?? [1, 1])[0], (spriteDef.scroll ?? [1, 1])[1]);
 			sprite.scale.set((spriteDef.scale ?? [1, 1, true])[0], (spriteDef.scale ?? [1, 1, true])[1]); if ((spriteDef.scale ?? [1, 1, true])[2]) sprite.updateHitbox();
 			sprite.alpha = 0;
+			if (spriteDef.blend != null) sprite.blend = LuaUtils.blendModeFromString(spriteDef.blend);
 			if (spriteDef.front) game.add(sprite);
 			else game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), sprite);
 			spriteDef.spriteDark = sprite;

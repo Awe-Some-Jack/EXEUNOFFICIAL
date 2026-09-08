@@ -42,7 +42,7 @@ local modConfigs = {
 		type = 'slide',
 		skipSongs = {'prey'},
 		useSeenCutscene = true,
-		phase = 'post',
+		phase = 'both',
 		snapDelay = 0.025,
 	},
 	['TAILS DOLL'] = {

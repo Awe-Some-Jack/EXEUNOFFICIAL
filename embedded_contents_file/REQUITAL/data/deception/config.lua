@@ -399,6 +399,24 @@ function noteMiss(id, direction, noteType, isSustainNote)
     updateHealthText()
 end
 
+function noteMissPress(direction)
+    if noteType == 'GF Sing' then
+        if health.pico > 0 then
+            health.pico = math.max(0, health.pico - DAMAGE.NOTE_MISS * 0.5)
+        elseif health.bf > 0 then
+            health.bf = math.max(0, health.bf - DAMAGE.NOTE_MISS * 0.5)
+        end
+    else
+        if health.bf > 0 then
+            health.bf = math.max(0, health.bf - DAMAGE.NOTE_MISS * 0.5)
+        elseif health.pico > 0 then
+            health.pico = math.max(0, health.pico - DAMAGE.NOTE_MISS * 0.5)
+        end
+    end
+
+    updateHealthText()
+end
+
 function goodNoteHit(id, direction, noteType, isSustainNote)
     if isSustainNote then return end
 

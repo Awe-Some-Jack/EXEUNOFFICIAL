@@ -1,68 +1,68 @@
 {
 	"animations": [
 		{
-			"offsets": [160, 48],
 			"loop": false,
+			"offsets": [346, 33],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [113, -92],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [147, 138],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [89, -48],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [190, 62],
+			"anim": "laugh",
+			"fps": 24,
+			"name": "risa",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [255, 70],
+			"anim": "anim",
+			"fps": 24,
+			"name": "escape",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [234, 73],
+			"anim": "s",
+			"fps": 24,
+			"name": "enconder",
+			"indices": []
+		},
+		{
+			"offsets": [160, 48],
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
 			"fps": 24,
 			"anim": "idle",
-			"indices": [],
+			"loop": false,
 			"name": "idle"
-		},
-		{
-			"offsets": [346, 33],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [113, -92],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [147, 138],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [89, -48],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [190, 62],
-			"loop": false,
-			"fps": 24,
-			"anim": "laugh",
-			"indices": [],
-			"name": "risa"
-		},
-		{
-			"offsets": [255, 70],
-			"loop": false,
-			"fps": 24,
-			"anim": "anim",
-			"indices": [],
-			"name": "escape"
-		},
-		{
-			"offsets": [234, 73],
-			"loop": false,
-			"fps": 24,
-			"anim": "s",
-			"indices": [],
-			"name": "enconder"
 		}
 	],
 	"vocals_file": "",

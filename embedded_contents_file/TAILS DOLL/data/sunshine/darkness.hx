@@ -42,12 +42,14 @@ function onCreatePost()
     gradient.screenCenter();
     gradient.camera = camDark;
     gradient.color = 0xFF000000;
-    gradient.scale.set(1.5, 1.5);
+    gradient.scale.set(2.2, 2.2);
     game.add(gradient);
 }
 
 function onUpdate(e) 
 {
+    if(!camDark.visible) return;
+
     for(data in gradients)
     {
         if(!data.note.alive && data.sprite.alive) FlxTween.tween(data.sprite, {alpha: 0}, 0.2, {onComplete: _ -> data.sprite.kill()});
@@ -61,6 +63,8 @@ function onUpdate(e)
 
 function opponentNoteHit(note)
 {
+    if(!camDark.visible) return;
+
     FlxTween.cancelTweensOf(gradient);
     gradient.alpha = 1;
     FlxTween.tween(gradient, {alpha: 0}, Conductor.stepCrochet / 500);
@@ -84,7 +88,7 @@ function opponentNoteHit(note)
 
 function onSpawnNote(note:Note)
 {
-    if(!note.mustPress || note.isSustainNote) return;
+    if(!note.mustPress || note.isSustainNote || !camDark.visible) return;
 
     var grad:FlxSprite;
     for(data in gradients)
@@ -110,6 +114,7 @@ function onSpawnNote(note:Note)
     gradients.push({sprite: grad, note: note});
 }
 
+var inDark:Bool = false;
 function onEvent(n,v1)
 {
 	if (n == 'sunshinEvent')
@@ -117,13 +122,12 @@ function onEvent(n,v1)
 		switch(v1)
 		{
 			case 'lightsOut':
-                camDark.visible = true;
-            case 'back':
-                camDark.visible = false;
+                if(inDark) for (i in 0...4) playerStrums.members[i].alpha = 0;
+                camDark.visible = !camDark.visible;
+                inDark = !inDark;
         }
     }
 }
-
 typedef GradientData = 
 {
     var sprite:FlxSprite;

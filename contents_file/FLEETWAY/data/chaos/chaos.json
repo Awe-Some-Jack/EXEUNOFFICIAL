@@ -3131,10 +3131,61 @@
 			]
 		],
 		[
+			92684.2105263157,
+			[
+				["Tween Camera Zoom", "0.8, true", "0.25, cubeOut"]
+			]
+		],
+		[
+			93157.894736842,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.25, cubeOut"]
+			]
+		],
+		[
+			93631.5789473683,
+			[
+				["Tween Camera Zoom", "1, true", "0.25, cubeOut"]
+			]
+		],
+		[
+			94105.2631578946,
+			[
+				["Tween Camera Zoom", "1.1, true", "0.001 linear"],
+				["Tweening Camera", "-50, 0", "0.001 linear"]
+			]
+		],
+		[
+			94421.0526315788,
+			[
+				["Tween Camera Zoom", "1.2, true", "0.001, linear"],
+				["Tweening Camera", "-100, 0", "0.001, linear"]
+			]
+		],
+		[
+			94736.8421052631,
+			[
+				["Tween Camera Zoom", "0.65, true", "0.2, cubeOut"],
+				["Tweening Camera", "0, 0", "0.2, cubeOut"]
+			]
+		],
+		[
+			95210.5263157894,
+			[
+				["Tween Camera Zoom", "0.75, true", "0.2, cubeOut"]
+			]
+		],
+		[
+			95684.2105263157,
+			[
+				["Tween Camera Zoom", "0.85, true", "0.2, cubeOut"]
+			]
+		],
+		[
 			95999.9999999999,
 			[
 				["Play Animation", "grrr", "dad"],
-				["Tween Camera Zoom", "0.9, true", "1, sineInOut"]
+				["Tween Camera Zoom", "0.8, true", "0.75, sineInOut"]
 			]
 		],
 		[
@@ -3207,8 +3258,7 @@
 		[
 			107368.421052631,
 			[
-				["Tween Camera Zoom", "0.7", ""],
-				["Tweening Camera", "0, 0", "0.001, linear"]
+				["cameracenter", "true"]
 			]
 		],
 		[
@@ -3218,45 +3268,34 @@
 			]
 		],
 		[
-			109894.736842105,
-			[
-				["Tween Camera Zoom", "0.8", ""]
-			]
-		],
-		[
 			112421.052631579,
 			[
-				["Tween Camera Zoom", "0.9", ""]
+				["cameracenter", "false", ""]
 			]
 		],
 		[
 			114947.368421052,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.8, true", "0.5, cubeOut"]
 			]
 		],
 		[
 			117473.684210526,
 			[
-				["Tween Camera Zoom", "0.7", ""]
-			]
-		],
-		[
-			120000,
-			[
-				["Tween Camera Zoom", "0.8", ""]
-			]
-		],
-		[
-			121263.157894737,
-			[
-				["Tween Camera Zoom", "0.9", ""]
+				["cameracenter", "true", ""]
 			]
 		],
 		[
 			122526.315789474,
 			[
-				["Tween Camera Zoom", "1", ""]
+				["cameracenter", "false", ""]
+			]
+		],
+		[
+			125052.631578947,
+			[
+				["Tween Camera Zoom", "0.8, true", "0.5, cubeOut"],
+				["Tweening Camera", "50, 0", "0.25, cubeOut"]
 			]
 		],
 		[
@@ -3266,10 +3305,17 @@
 			]
 		],
 		[
+			126631.578947368,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.5, cubeOut"]
+			]
+		],
+		[
 			126947.368421052,
 			[
 				["Play Animation", "scream", "dad"],
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.8", ""],
+				["Tweening Camera", "0, 0", "0.25, cubeOut"]
 			]
 		],
 		[
@@ -3288,6 +3334,12 @@
 			127588.815789474,
 			[
 				["Normal Lyrics", "", ""]
+			]
+		],
+		[
+			127657.894736842,
+			[
+				["cameracenter", "false", ""]
 			]
 		],
 		[
@@ -3624,9 +3676,9 @@
 		]
 	],
 	"song": "Chaos",
-	"arrowSkin": "noteSkins/NOTENORMAL_assets",
 	"needsVoices": true,
 	"stage": "fleetw",
+	"arrowSkin": "noteSkins/NOTENORMAL_assets",
 	"format": "psych_v1_convert",
 	"speed": 2.8,
 	"bpm": 190

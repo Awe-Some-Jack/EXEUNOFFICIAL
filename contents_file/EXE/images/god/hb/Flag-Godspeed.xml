@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Flag-Godspeed.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Símbolo 3 instancia 10000" x="50" y="50" width="123" height="114" frameX="-13" frameY="-25" frameWidth="136" frameHeight="148"/>
+	<SubTexture name="Símbolo 3 instancia 10001" x="50" y="50" width="123" height="114" frameX="-13" frameY="-25" frameWidth="136" frameHeight="148"/>
+	<SubTexture name="Símbolo 3 instancia 10002" x="223" y="50" width="122" height="97" frameX="-14" frameY="-6" frameWidth="136" frameHeight="148"/>
+	<SubTexture name="Símbolo 3 instancia 10003" x="223" y="50" width="122" height="97" frameX="-14" frameY="-6" frameWidth="136" frameHeight="148"/>
+	<SubTexture name="Símbolo 3 instancia 10004" x="395" y="50" width="116" height="103" frameX="-20" frameY="0" frameWidth="136" frameHeight="148"/>
+	<SubTexture name="Símbolo 3 instancia 10005" x="395" y="50" width="116" height="103" frameX="-20" frameY="0" frameWidth="136" frameHeight="148"/>
+	<SubTexture name="Símbolo 3 instancia 10006" x="50" y="214" width="136" height="121" frameX="0" frameY="-12" frameWidth="136" frameHeight="148"/>
+	<SubTexture name="Símbolo 3 instancia 10007" x="50" y="214" width="136" height="121" frameX="0" frameY="-12" frameWidth="136" frameHeight="148"/>
+	<SubTexture name="Símbolo 3 instancia 10008" x="236" y="214" width="131" height="109" frameX="-5" frameY="-39" frameWidth="136" frameHeight="148"/>
+	<SubTexture name="Símbolo 3 instancia 10009" x="236" y="214" width="131" height="109" frameX="-5" frameY="-39" frameWidth="136" frameHeight="148"/>
+	<SubTexture name="Símbolo 3 instancia 10010" x="417" y="214" width="132" height="106" frameX="-4" frameY="-35" frameWidth="136" frameHeight="148"/>
+	<SubTexture name="Símbolo 3 instancia 10011" x="417" y="214" width="132" height="106" frameX="-4" frameY="-35" frameWidth="136" frameHeight="148"/>
+</TextureAtlas>

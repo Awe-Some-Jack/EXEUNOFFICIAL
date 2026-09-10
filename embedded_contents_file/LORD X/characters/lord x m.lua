@@ -19,16 +19,27 @@ function onCreatePost()
     end
 end
 
-function onSectionHit() doTweenX('ojosPutaX', 'ojosPuta', (mustHitSection and getProperty('gf.x') + 130 or getProperty('gf.x') + 100), 0.9, 'smootherStepInOut') end
+local _eyeLerp = 0
+local _target = 0
+local _sine = 0
+local _oldMHS = false
+function onSectionHit()
+    if _oldMHS ~= mustHitSection then
+        if mustHitSection then _target = 1
+        else _target = 0 end
+    end
 
-local holdMove = 0
+    _oldMHS = mustHitSection
+end
+
 function onUpdatePost(elapsed)
-    holdMove = holdMove + elapsed
+    _sine = _sine + elapsed
+    _eyeLerp = lerp(_eyeLerp, _target, elapsed * 15)
+    setProperty('ojosPuta.x', getProperty('gf.x') + lerp(100, 130, _eyeLerp))
+end
 
-    callMethod('ojosPuta.setPosition', {
-        getProperty('ojosPuta.x') + math.cos(holdMove + 0.5) * 0.05,
-        getProperty('ojosPuta.y') + math.sin(holdMove + 0.5) * 0.05
-    })
+function lerp(a, b, t)
+	return a + t * (b - a)
 end
 
 function onEvent(eventName, value1, value2)

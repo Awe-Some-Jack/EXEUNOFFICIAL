@@ -82,8 +82,8 @@ function onCreatePost()
 	addLuaSprite('universe')
 	setProperty('universe.visible', false)
 
-	makeLuaSprite('piedra', 'universal-collapse/universe/xd', -150, 400)
-	scaleObject('piedra', 0.8, 0.8)
+	makeLuaSprite('piedra', 'universal-collapse/universe/xd', -80, 370)
+	scaleObject('piedra', 0.5, 0.5)
 	setProperty('piedra.visible', false)
 	setObjectOrder('piedra', getObjectOrder('boyfriendGroup'))
 

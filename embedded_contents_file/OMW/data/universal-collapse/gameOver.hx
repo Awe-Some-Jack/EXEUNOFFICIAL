@@ -7,13 +7,12 @@ var deadBoyfriend:Character;
 var inGameOver:Bool = false;
 var deadMusic:FlxSound;
 
-var introDead:VideoSprite;
-
 function onCreate()
 {
 	GameOverSubstate.deathSoundName = 'die';
 }
 
+var bfDeath:FlxSprite;
 function onGameOverStart()
 {
 	inGameOver = true;
@@ -30,13 +29,14 @@ function onGameOverStart()
 	FlxG.sound.list.add(deadMusic);
 	deadMusic.looped = true;
 
-	introDead = new VideoSprite(0, 0, false);
-	introDead.onFormat(() -> {
-		introDead.scale.set(1.5, 1.5);
-		introDead.screenCenter();
-	});
-	GameOverSubstate.instance.add(introDead);
-	if (introDead?.loadVideo(Paths.video('gameover'))) introDead.playDelayed();
+	bfDeath = new FlxSprite();
+	bfDeath.frames = Paths.getSparrowAtlas('characters/ga');
+	bfDeath.animation.addByPrefix('idle', 'feto', 24, false);
+	new FlxTimer().start(0.7, _ -> { bfDeath.animation.play('idle', true); });
+	bfDeath.scale.set(2, 2); bfDeath.updateHitbox();
+	bfDeath.screenCenter();
+	bfDeath.x -= 100; bfDeath.y += 100;
+	GameOverSubstate.instance.add(bfDeath);
 }
 
 var toggleOnce:Bool = false;
@@ -62,6 +62,6 @@ function onGameOverConfirm(retry)
 		FlxG.camera.flash(0xFFFF0000, 1, null, true);
 		FlxG.sound.play(Paths.music('gameOverUCEnd'));
 		deadMusic.stop();
-		introDead?.destroy();
+		bfDeath.destroy();
 	}
 }

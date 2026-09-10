@@ -104,6 +104,8 @@ function onEvent(n,v1)
 
 			setProperty('cameraSpeed', 2)
 			triggerEvent('Change Character', 'dad', 'omw2')
+			setProperty('dad.x', getProperty('dad.x') - 10)
+			triggerEvent('Change Character', 'bf', 'bfs')
 			setProperty('gameplayCam.settings.BFy', 100)
 
 			setShaderFloat('cab', 'amount', 0.2)

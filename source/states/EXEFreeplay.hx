@@ -824,13 +824,13 @@ class EXEFreeplay extends MusicBeatState
 
 	function exitSongChoose():Void
 	{
-		if (songSelector != 0) 
+		final oldSelector:Int = songSelector;
+
+		if (oldSelector != 0)
 		{
 			final staticSound = FlxG.sound.play(Paths.sound('static'), 0.15);
 			staticSound?.fadeOut(0.3, 0);
 		}
-		
-		choosingSong = false;
 
 		for (j in 0...activeSongCount)
 		{
@@ -840,42 +840,9 @@ class EXEFreeplay extends MusicBeatState
 			spr.alpha = 1;
 		}
 
-		final oldSelector:Int = songSelector;
 		songSelector = 0;
-		final entry = songEntries[selectedBox];
-		
-		if (entry != null && entry.songs.length > 0)
-		{
-			final firstSong = entry.songs[0].songName;
-			var bmp = loadRawBitmap('assets/exe/freeplayassets/covers/' + Paths.formatToSongPath(firstSong) + '.webp');
-			bmp ??= loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.webp');
-			
-			final cover = covers.members[selectedBox];
-			final ss = staticScreens.members[selectedBox];
-			
-			if (cover != null && bmp != null)
-			{
-				cover.loadGraphic(bmp);
-				cover.updateHitbox();
-				cover.x = centerX - cover.width / 2;
-				cover.y = centerY - cover.height / 2;
-				
-				if (ss != null)
-				{
-					ss.setGraphicSize(Std.int(cover.width), Std.int(cover.height));
-					ss.updateHitbox();
-					ss.x = cover.x;
-					ss.y = cover.y;
-					
-					if (oldSelector != 0) 
-					{
-						staticTween?.cancel();
-						ss.alpha = 1.0;
-						staticTween = FlxTween.tween(ss, {alpha: 0.18}, 0.45, {ease: FlxEase.quadOut});
-					}
-				}
-			}
-		}
+		updateSelectedCover(oldSelector != 0); // reuses the burning cover
+		choosingSong = false;
 
 		scaleSongBox(false);
 	}

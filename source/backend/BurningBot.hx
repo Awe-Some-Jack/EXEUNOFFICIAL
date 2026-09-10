@@ -329,6 +329,7 @@ class BurningBot
                 {
                     cover.animation.finishCallback = (name:String) -> finishCoverReveal(state);
                     cover.animation.play('appear', true, true);
+                    FlxG.sound.play(Paths.sound('eggmanmoving'));
                 }
             }
         }
@@ -441,8 +442,16 @@ class BurningBot
         final cover = state.covers.members[targetBox];
         if (cover != null)
         {
-            FlxG.camera.focusOn(cover.getMidpoint());
+            final mid = cover.getMidpoint();
+            if (state.bgCam != null)
+            {
+                state.bgCam.focusOn(mid);
+                FlxTween.tween(state.bgCam, {zoom: state.bgCam.zoom * 2.5}, 1.2, {ease: FlxEase.quadIn});
+            }
+            FlxG.camera.focusOn(mid);
             FlxTween.tween(FlxG.camera, {zoom: FlxG.camera.zoom * 2.5}, 1.2, {ease: FlxEase.quadIn});
+
+            mid.put();
         }
 
         FlxTween.tween(overlay, {alpha: 1}, 1.2, {ease: FlxEase.quadIn, onComplete: (_) -> onComplete()});

@@ -3,20 +3,20 @@ import objects.Character;
 using StringTools;
 
 var stage:Array<BackgroundSprite> = [
-	{path: 'SS/bg', position: [-1500, -1500], scale: [1.2, 1.2], scroll: [0.8, 0.8]},
-	{path: 'SS/floor', position: [-2100, 560], scale: [1.6, 1.6]},
-	{path: 'SS/arch', position: [-1000, -680], scale: [1.2, 1.2]},
-	{path: 'SS/tv', position: [-200, -700], scale: [1.2, 1.2]},
-	{path: 'SS/simulation-error', position: [-330, -730], scale: [0.9, 0.9], animation: [{name: 'simulation-error error', looped: true}]},
-	{path: 'characters/k', tag: 'knux', scale: [1.6, 1.6], position: [-1320, -470], isAtlas: true, animation: [{name: 'knuxx'}]},
-	{path: 'characters/tails', tag: 'tails', position: [880, -570], isAtlas: true, animation: [{name: 'tails'}]},
-	{path: 'characters/eggman', tag: 'eggman', scale: [1.6, 1.6], position: [-930, 0], isAtlas: true, animation: [{name: 'eggman', indices: [9,10,11,12,13,0,1,2,3,4,5,6,7,8]}]},
+	{path: 'SS/bg', position: [-1690, -1500], scale: [1.35, 1.35], scroll: [0.8, 0.8]},
+	{path: 'SS/floor', position: [-2100, 545], scale: [1.7, 1.7]},
+	{path: 'SS/arch', position: [-1180, -840], scale: [1.35, 1.35]},
+	{path: 'SS/tv', position: [-280, -850], scale: [1.35, 1.35]},
+	{path: 'SS/simulation-error', position: [-440, -870], scale: [1.05, 1.05], animation: [{name: 'simulation-error error', looped: true}]},
+	{path: 'characters/k', tag: 'knux', scale: [1.9, 1.9], position: [-1550, -670], isAtlas: true, animation: [{name: 'knuxx'}]},
+	{path: 'characters/tails', tag: 'tails', scale: [1.1, 1.1], position: [1020, -690], isAtlas: true, animation: [{name: 'tails'}]},
+	{path: 'characters/eggman', tag: 'eggman', scale: [1.7, 1.7], position: [-1080, -50], isAtlas: true, animation: [{name: 'eggman', indices: [9,10,11,12,13,0,1,2,3,4,5,6,7,8]}]},
 	{path: 'SS/crystal-walls', position: [-1550, -1200], scale: [1.1, 1.25], scroll: [1.3, 1.3], front: true},
 ];
 
 var dark:Array<BackgroundSprite> = [
 	{path: 'characters/exe1', tag: 'exe1', position: [60, 0], scale: [0.65, 0.65], scroll: [0.8, 0.8], animation: [{name: 'idle'}]},
-	{path: 'SS/2nd/spotlight', position: [-700, 600], scale: [0.85, 1.5]},
+	{path: 'SS/2nd/spotlight', position: [-820, 600], scale: [0.9, 1.5]},
 	{path: 'SS/2nd/lights', position: [-900, -820], scale: [0.65, 0.75], blend: 'add', front: true},
 	{path: 'characters/exeller', tag: 'exeller', position: [1000, 50], scroll: [1.3, 1.3], animation: [{name: 'Símbolo 23'}], front: true},
 	{path: 'characters/sark', tag: 'sark', position: [-1800, -80], scroll: [1.3, 1.3], animation: [{name: 'sark'}], front: true}

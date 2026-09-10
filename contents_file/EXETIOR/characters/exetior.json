@@ -1,68 +1,68 @@
 {
 	"animations": [
 		{
+			"offsets": [316, 6],
 			"loop": false,
-			"offsets": [346, 33],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [93, -135],
 			"loop": false,
-			"offsets": [113, -92],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [137, 118],
 			"loop": false,
-			"offsets": [147, 138],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"offsets": [79, -77],
 			"loop": false,
-			"offsets": [89, -48],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
+			"offsets": [180, 34],
 			"loop": false,
-			"offsets": [190, 62],
+			"fps": 24,
 			"anim": "laugh",
-			"fps": 24,
-			"name": "risa",
-			"indices": []
+			"indices": [],
+			"name": "risa"
 		},
 		{
+			"offsets": [243, 43],
 			"loop": false,
-			"offsets": [255, 70],
+			"fps": 24,
 			"anim": "anim",
-			"fps": 24,
-			"name": "escape",
-			"indices": []
+			"indices": [],
+			"name": "escape"
 		},
 		{
+			"offsets": [214, 53],
 			"loop": false,
-			"offsets": [234, 73],
+			"fps": 24,
 			"anim": "s",
-			"fps": 24,
-			"name": "enconder",
-			"indices": []
+			"indices": [],
+			"name": "enconder"
 		},
 		{
-			"offsets": [160, 48],
-			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-			"fps": 24,
-			"anim": "idle",
 			"loop": false,
-			"name": "idle"
+			"offsets": [138, 18],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 		}
 	],
 	"vocals_file": "",
@@ -74,6 +74,6 @@
 	"healthbar_colors": [0, 49, 106],
 	"camera_position": [0, 0],
 	"sing_duration": 6.1,
-	"scale": 1,
+	"scale": 1.11,
 	"_editor_isPlayer": false
 }

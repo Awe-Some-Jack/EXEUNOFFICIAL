@@ -366,7 +366,7 @@ class EXEFreeplay extends MusicBeatState
 		centerY = FlxG.height / 2;
 
 		final screenstaticFrames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.webp', 'assets/exe/story/screenstatic.xml');
-		final placeholderBitmap = loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.webp') ?? loadRawBitmap('assets/exe/freeplayassets/placeholder.webp');
+		final placeholderBitmap = loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.webp');
 		final entryLangFont = Paths.font(Language.getFontForLanguage());
 		final entryExeSize = Language.cjkSize(34);
 		final translatedLabels = Language.getArray('freeplay.labels', []);
@@ -742,7 +742,7 @@ class EXEFreeplay extends MusicBeatState
 			: 'assets/exe/freeplayassets/covers/' + Paths.formatToSongPath(songName) + '.webp';
 
 		var bmp = loadRawBitmap(coverPath);
-		bmp ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.webp');
+		bmp ??= loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.webp');
 
 		if (bmp != null)
 		{
@@ -848,7 +848,7 @@ class EXEFreeplay extends MusicBeatState
 		{
 			final firstSong = entry.songs[0].songName;
 			var bmp = loadRawBitmap('assets/exe/freeplayassets/covers/' + Paths.formatToSongPath(firstSong) + '.webp');
-			bmp ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.webp');
+			bmp ??= loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.webp');
 			
 			final cover = covers.members[selectedBox];
 			final ss = staticScreens.members[selectedBox];

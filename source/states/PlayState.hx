@@ -4065,6 +4065,9 @@ class PlayState extends MusicBeatState
 		setOnScripts('hits', songHits);
 		setOnScripts('combo', combo);
 
+		if (totalPlayed > 0)
+			ratingPercent = Math.max(0, Math.min(1, totalNotesHit / totalPlayed));
+
 		if (gf != null && combo > 0) {
 			var anim:String = null;
 			if (combo % 200 == 0 && gf.hasAnimation('combo200')) anim = 'combo200';

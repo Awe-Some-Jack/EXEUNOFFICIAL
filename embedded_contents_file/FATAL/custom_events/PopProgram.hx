@@ -4,10 +4,11 @@ import flixel.input.keyboard.FlxKey;
 var isFatalitySong:Bool = false;
 var corruptionTriggered = false;
 var warningActive = false;
+var mechanicActive = true;
 var lastSentCorruptionSquares = -1;
 final squareCount = 22;
-final popupsPerSquare = 2;
-final maxPopups = squareCount * popupsPerSquare;
+final maxPopups = 25;
+final mechanicDisableStep = 2229;
 
 var warningTimer:FlxTimer = null;
 var floodTimer:FlxTimer = null;
@@ -137,6 +138,7 @@ function onCreatePost() {
     isFatalitySong = (songName.toLowerCase() == 'fatality');
     corruptionTriggered = false;
     warningActive = false;
+    mechanicActive = true;
     lastSentCorruptionSquares = -1;
     if(!isFatalitySong) return;
 
@@ -183,6 +185,14 @@ function onStepHit() {
                     trace(e);
 				}
 			}
+        case mechanicDisableStep:
+            mechanicActive = false;
+            if(warningActive) {
+                warningActive = false;
+                cancelWarningTimer();
+            }
+            sendCorruptionCommand('hide');
+            setVar('corruptionBarProcess', null);
     }
 }
 
@@ -357,13 +367,13 @@ function onUpdatePost(elapsed:Float) {
     setVar('aliveFatalPopups', alive.length);
     setVar('fatalPopupJustClosed', closedOne);
 
-    if(corruptionTriggered) return;
+    if(corruptionTriggered || !mechanicActive) return;
 
     var aliveCount = getVar('aliveFatalPopups');
 
     if(aliveCount == null) aliveCount = 0;
 
-    var squares = Math.min(Math.floor(aliveCount/popupsPerSquare), squareCount);
+    var squares = Math.min(Math.floor(aliveCount * squareCount / maxPopups), squareCount);
     if(squares != lastSentCorruptionSquares) {
         lastSentCorruptionSquares = squares;
         var proc = getVar("corruptionBarProcess"); if(proc != null) { try { proc.stdin.writeString('corruption:${aliveCount}\n'); proc.stdin.flush(); } catch (e:Dynamic) {} }

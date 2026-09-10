@@ -23,6 +23,9 @@ import flixel.util.FlxGradient;
 import flixel.util.FlxTimer;
 
 import openfl.display.BitmapData;
+import openfl.filters.ShaderFilter;
+
+import shaders.PincushionShader;
 
 typedef ExeSongInfo = {
 	var songName:String;
@@ -42,33 +45,14 @@ typedef ExeSongEntry = {
 @:allow(backend.BurningBot)
 class EXEFreeplay extends MusicBeatState
 {
-	static inline final BOX_SCALE:Float = 0.52;
-	static inline final BOX_SCALE_SELECTED:Float = 0.58;
-	static inline final BOX_SCALE_SONG:Float = 0.63;
-	static inline final COVER_SCALE:Float = 0.35;
-	static inline final COVER_SCALE_SELECTED:Float = 0.39;
-	static inline final COVER_SCALE_SONG:Float = 0.421;
-	static inline final BOX_SPACING_X:Float = -75;
-	static inline final CHANGE_COOLDOWN:Float = 0;
-	static inline final ARROW_UPDATE_INTERVAL:Float = 0.5;
-	static inline final TWEEN_DURATION:Float = 0.3;
-
-	static inline final PATH_FREEBOX:String = 'assets/exe/freeplayassets/FreeBox.webp';
-	static inline final PATH_COVERS:String = 'assets/exe/freeplayassets/covers/';
-	static inline final FONT_PATH:String = 'assets/fonts/SonicFont.ttf';
-
-	static inline final TITLE_SIZE:Int = 44;
-	static inline final EXE_LABEL_SIZE:Int = 34;
-	static inline final SONG_TITLE_SIZE:Int = 48;
-	static inline final SONG_SPACING_Y:Float = 65;
-	static inline final MAX_VISIBLE_SONGS:Int = 2;
-
 	#if mobile var COOLDOWN_TIMER:Float = 0.15; #end
 	
 	var songEntries:Array<ExeSongEntry> = [];
 
 	var bgChecker:FlxBackdrop;
 	var bgSonic:FlxBackdrop;
+	var bgCam:FlxCamera;
+	var pincushionShader:PincushionShader;
 	var verticalLine:FlxSprite;
 	var degradado:FlxSprite;
 	var spikesUp:FlxBackdrop;
@@ -105,7 +89,6 @@ class EXEFreeplay extends MusicBeatState
 	var curDifficulty:Int = -1;
 	static var lastDifficultyName:String = '';
 
-	var scoreBG:FlxSprite;
 	var scoreText:FlxText;
 	var rankText:FlxText;
 	var lerpScore:Int = 0;
@@ -151,9 +134,9 @@ class EXEFreeplay extends MusicBeatState
 		songTexts = new FlxTypedGroup<FlxText>();
 
 		final langFont = Paths.font(Language.getFontForLanguage());
-		final charSize = Language.cjkSize(TITLE_SIZE);
+		final charSize = Language.cjkSize(42);
 		charText = new FlxText(0, 5, FlxG.width, "", charSize);
-		charText.setFormat(langFont, charSize, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		charText.setFormat(Paths.font('SonicCD.ttf'), charSize, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		charText.antialiasing = false;
 		charText.borderSize = 3;
 		
@@ -187,10 +170,6 @@ class EXEFreeplay extends MusicBeatState
 			scoreText.borderSize = 3;
 			scoreText.y = rankText.y - scoreText.height - 25;
 
-			scoreBG = new FlxSprite(0, scoreText.y - 4).makeGraphic(1, Std.int(FlxG.height - scoreText.y + 4), 0xFF000000);
-			scoreBG.alpha = 0.6;
-			
-			add(scoreBG);
 			add(scoreText);
 			add(rankText);
 
@@ -215,7 +194,7 @@ class EXEFreeplay extends MusicBeatState
 		if (songEntries.length == 0)
 		{
 			updateWindowTitle();
-			arrowTimer = new FlxTimer().start(ARROW_UPDATE_INTERVAL, (_) -> {
+			arrowTimer = new FlxTimer().start(0.5, (_) -> {
 				currentArrowIndex = (currentArrowIndex + 1) % ARROW_ICONS.length;
 				updateWindowTitle();
 			}, 0);
@@ -233,6 +212,8 @@ class EXEFreeplay extends MusicBeatState
 			bgSonic.color = 0xFFFF0000;
 			verticalLine.color = 0xFFFF0000;
 			bgChecker.color = 0xFFFF0000;
+
+			setupBgWarp();
 
 			return;
 		}
@@ -265,13 +246,13 @@ class EXEFreeplay extends MusicBeatState
 
 		updateWindowTitle();
 		
-		arrowTimer = new FlxTimer().start(ARROW_UPDATE_INTERVAL, (_) -> {
+		arrowTimer = new FlxTimer().start(0.5, (_) -> {
 			currentArrowIndex = (currentArrowIndex + 1) % ARROW_ICONS.length;
 			updateWindowTitle();
 		}, 0);
 
 		super.create();
-		
+
 		CustomShapeTransition.shape = HEAD;
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/freeplay.ogg'));
 		Conductor.bpm = 96;
@@ -280,6 +261,8 @@ class EXEFreeplay extends MusicBeatState
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Freeplay", null);
 		#end
+
+		setupBgWarp();
 	}
 
 	function buildSongList():Void
@@ -376,16 +359,16 @@ class EXEFreeplay extends MusicBeatState
 
 	function createBoxesAndCovers():Void
 	{
-		final boxBitmap = loadRawBitmap(PATH_FREEBOX);
-		boxWidth = (boxBitmap != null) ? (boxBitmap.width * BOX_SCALE) + BOX_SPACING_X : 150;
+		final boxBitmap = loadRawBitmap('assets/exe/freeplayassets/FreeBox.webp');
+		boxWidth = (boxBitmap != null) ? (boxBitmap.width * 0.52) - 75 : 150;
 
 		centerX = FlxG.width / 2;
 		centerY = FlxG.height / 2;
 
 		final screenstaticFrames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.webp', 'assets/exe/story/screenstatic.xml');
-		final placeholderBitmap = loadRawBitmap(PATH_COVERS + 'placeholder.webp') ?? loadRawBitmap('assets/exe/freeplayassets/placeholder.webp');
+		final placeholderBitmap = loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.webp') ?? loadRawBitmap('assets/exe/freeplayassets/placeholder.webp');
 		final entryLangFont = Paths.font(Language.getFontForLanguage());
-		final entryExeSize = Language.cjkSize(EXE_LABEL_SIZE);
+		final entryExeSize = Language.cjkSize(34);
 		final translatedLabels = Language.getArray('freeplay.labels', []);
 
 		for (i in 0...songEntries.length)
@@ -400,13 +383,13 @@ class EXEFreeplay extends MusicBeatState
 			final proxy = new FlxObject(0, 0);
 			cardPositions.push(proxy);
 
-			final coverPath = PATH_COVERS + Paths.formatToSongPath(firstSong.songName) + '.webp';
+			final coverPath = 'assets/exe/freeplayassets/covers/' + Paths.formatToSongPath(firstSong.songName) + '.webp';
 			final coverBitmap = loadRawBitmap(coverPath) ?? placeholderBitmap;
 
 			if (coverBitmap != null)
 			{
 				final cover = new FlxSprite(0, 0).loadGraphic(coverBitmap);
-				cover.scale.set(COVER_SCALE, COVER_SCALE);
+				cover.scale.set(0.35, 0.35);
 				cover.updateHitbox();
 				cover.ID = i;
 				covers.add(cover);
@@ -429,7 +412,7 @@ class EXEFreeplay extends MusicBeatState
 			if (boxBitmap != null)
 			{
 				final box = new FlxSprite(0, 0).loadGraphic(boxBitmap);
-				box.scale.set(BOX_SCALE, BOX_SCALE);
+				box.scale.set(0.52, 0.52);
 				box.updateHitbox();
 				box.ID = i;
 
@@ -624,7 +607,7 @@ class EXEFreeplay extends MusicBeatState
 			{
 				final offset:Float = -selectedBox * boxWidth;
 				final baseX = centerX + (box.ID * boxWidth) + offset;
-				box.scale.set(BOX_SCALE, BOX_SCALE);
+				box.scale.set(0.52, 0.52);
 				box.updateHitbox();
 				box.x = baseX - box.width / 2;
 				box.y = centerY - box.height / 2;
@@ -639,7 +622,7 @@ class EXEFreeplay extends MusicBeatState
 			{
 				final offset:Float = -selectedBox * boxWidth;
 				final baseX = centerX + (cover.ID * boxWidth) + offset;
-				cover.scale.set(COVER_SCALE, COVER_SCALE);
+				cover.scale.set(0.35, 0.35);
 				cover.updateHitbox();
 				cover.x = baseX - cover.width / 2;
 				cover.y = centerY - cover.height / 2;
@@ -687,14 +670,14 @@ class EXEFreeplay extends MusicBeatState
 			
 		while (songTexts.length < songs.length)
 		{
-			final t = new FlxText(0, 0, FlxG.width, "", SONG_TITLE_SIZE);
-			t.setFormat(FONT_PATH, SONG_TITLE_SIZE, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			final t = new FlxText(0, 0, FlxG.width, "", 48);
+			t.setFormat('assets/fonts/SonicFont.ttf', 48, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			t.antialiasing = false;
 			t.borderSize = 2;
 			songTexts.add(t);
 		}
 
-		final slot0Y:Float = FlxG.height - 18 - (MAX_VISIBLE_SONGS * SONG_SPACING_Y);
+		final slot0Y:Float = FlxG.height - 18 - (2 * 65);
 		
 		for (i in 0...songs.length)
 		{
@@ -702,14 +685,14 @@ class EXEFreeplay extends MusicBeatState
 			spr.text = (backend.BurningBot.active && songs[i] == 'burning') ? '????' : songs[i].toUpperCase();
 			spr.color = FlxColor.WHITE;
 			spr.ID = i;
-			spr.y = slot0Y + (i * SONG_SPACING_Y);
+			spr.y = slot0Y + (i * 65);
 			
-			if (i < MAX_VISIBLE_SONGS)
+			if (i < 2)
 			{
 				spr.visible = true;
 				spr.alpha = 0;
-				spr.y = slot0Y + (i * SONG_SPACING_Y) + 14;
-				FlxTween.tween(spr, {alpha: 1.0, y: slot0Y + (i * SONG_SPACING_Y)}, 0.2, {ease: FlxEase.sineOut, startDelay: i * 0.05});
+				spr.y = slot0Y + (i * 65) + 14;
+				FlxTween.tween(spr, {alpha: 1.0, y: slot0Y + (i * 65)}, 0.2, {ease: FlxEase.sineOut, startDelay: i * 0.05});
 			}
 			else
 			{
@@ -756,7 +739,7 @@ class EXEFreeplay extends MusicBeatState
 
 		final coverPath = (songName == 'burning')
 			? 'assets/exe/freeplayassets/covers/burning/burningidle.webp'
-			: PATH_COVERS + Paths.formatToSongPath(songName) + '.webp';
+			: 'assets/exe/freeplayassets/covers/' + Paths.formatToSongPath(songName) + '.webp';
 
 		var bmp = loadRawBitmap(coverPath);
 		bmp ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.webp');
@@ -788,10 +771,10 @@ class EXEFreeplay extends MusicBeatState
 
 		if (songSelector < songScrollOffset)
 			songScrollOffset = songSelector;
-		else if (songSelector >= songScrollOffset + MAX_VISIBLE_SONGS)
-			songScrollOffset = songSelector - MAX_VISIBLE_SONGS + 1;
+		else if (songSelector >= songScrollOffset + 2)
+			songScrollOffset = songSelector - 2 + 1;
 
-		final slot0Y:Float = FlxG.height - 18 - (MAX_VISIBLE_SONGS * SONG_SPACING_Y);
+		final slot0Y:Float = FlxG.height - 18 - (2 * 65);
 
 		for (j in 0...activeSongCount)
 		{
@@ -800,9 +783,9 @@ class EXEFreeplay extends MusicBeatState
 			
 			FlxTween.cancelTweensOf(spr);
 
-			final inWindow = (spr.ID >= songScrollOffset && spr.ID < songScrollOffset + MAX_VISIBLE_SONGS);
+			final inWindow = (spr.ID >= songScrollOffset && spr.ID < songScrollOffset + 2);
 			final slot = spr.ID - songScrollOffset;
-			final targetY = slot0Y + (slot * SONG_SPACING_Y);
+			final targetY = slot0Y + (slot * 65);
 			final isSelected = (spr.ID == songSelector);
 
 			spr.color = isSelected ? FlxColor.YELLOW : FlxColor.WHITE;
@@ -864,7 +847,7 @@ class EXEFreeplay extends MusicBeatState
 		if (entry != null && entry.songs.length > 0)
 		{
 			final firstSong = entry.songs[0].songName;
-			var bmp = loadRawBitmap(PATH_COVERS + Paths.formatToSongPath(firstSong) + '.webp');
+			var bmp = loadRawBitmap('assets/exe/freeplayassets/covers/' + Paths.formatToSongPath(firstSong) + '.webp');
 			bmp ??= loadRawBitmap('assets/exe/freeplayassets/placeholder.webp');
 			
 			final cover = covers.members[selectedBox];
@@ -979,7 +962,7 @@ class EXEFreeplay extends MusicBeatState
 		updateSelectedCover();
 
 		selectedBox = newIndex;
-		changeCooldown = CHANGE_COOLDOWN;
+		changeCooldown = 0;
 
 		final newColorArray = songEntries[selectedBox].songs[0].bgColor;
 		final newColor:Int = FlxColor.fromRGB(newColorArray[0], newColorArray[1], newColorArray[2]);
@@ -1075,23 +1058,18 @@ class EXEFreeplay extends MusicBeatState
 
 	function positionHighscore():Void
 	{
-		if (scoreText == null || scoreBG == null || rankText == null) return;
+		if (scoreText == null || rankText == null) return;
 
 		scoreText.x = FlxG.width - scoreText.width - 6;
 		scoreText.y = rankText.y - scoreText.height - 15;
 		rankText.x = FlxG.width - rankText.width - 6;
 		rankText.y = FlxG.height - rankText.height - 25;
-		
-		final bgWidth = FlxG.width - Math.min(scoreText.x, rankText.x) + 6;
-		scoreBG.scale.x = bgWidth;
-		scoreBG.x = FlxG.width - bgWidth / 2;
-		scoreBG.y = scoreText.y - 4;
 	}
 
 	function scaleSongBox(enlarge:Bool):Void
 	{
-		final targetBoxScale = enlarge ? BOX_SCALE_SONG : BOX_SCALE_SELECTED;
-		final targetCoverScale = enlarge ? COVER_SCALE_SONG : COVER_SCALE_SELECTED;
+		final targetBoxScale = enlarge ? 0.63 : 0.58;
+		final targetCoverScale = enlarge ? 0.421 : 0.39;
 		
 		freeBoxes.forEach((box:FlxSprite) -> {
 			FlxTween.cancelTweensOf(box); 
@@ -1100,7 +1078,7 @@ class EXEFreeplay extends MusicBeatState
 			if (box.ID == selectedBox)
 			{
 				final idx = box.ID;
-				FlxTween.tween(box.scale, {x: targetBoxScale, y: targetBoxScale}, TWEEN_DURATION, {
+				FlxTween.tween(box.scale, {x: targetBoxScale, y: targetBoxScale}, 0.42, {
 					ease: FlxEase.backOut,
 					onUpdate: (_) -> {
 						box.updateHitbox();
@@ -1110,11 +1088,11 @@ class EXEFreeplay extends MusicBeatState
 							cardPositions[idx].setPosition(box.x, box.y);
 					}
 				});
-				FlxTween.tween(box, {alpha: 1.0}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
+				FlxTween.tween(box, {alpha: 1.0}, 0.42, {ease: FlxEase.cubeOut});
 			}
 			else
 			{
-				FlxTween.tween(box, {alpha: 0.5}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
+				FlxTween.tween(box, {alpha: 0.5}, 0.42, {ease: FlxEase.cubeOut});
 			}
 		});
 
@@ -1125,7 +1103,7 @@ class EXEFreeplay extends MusicBeatState
 			if (cover.ID == selectedBox)
 			{
 				final ss = staticScreens.members[cover.ID];
-				FlxTween.tween(cover.scale, {x: targetCoverScale, y: targetCoverScale}, TWEEN_DURATION, {
+				FlxTween.tween(cover.scale, {x: targetCoverScale, y: targetCoverScale}, 0.42, {
 					ease: FlxEase.backOut,
 					onUpdate: (_) -> {
 						cover.updateHitbox();
@@ -1140,11 +1118,11 @@ class EXEFreeplay extends MusicBeatState
 						}
 					}
 				});
-				FlxTween.tween(cover, {alpha: 1.0}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
+				FlxTween.tween(cover, {alpha: 1.0}, 0.42, {ease: FlxEase.cubeOut});
 			}
 			else
 			{
-				FlxTween.tween(cover, {alpha: 0.5}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
+				FlxTween.tween(cover, {alpha: 0.5}, 0.42, {ease: FlxEase.cubeOut});
 			}
 		});
 	}
@@ -1162,36 +1140,49 @@ class EXEFreeplay extends MusicBeatState
 			final ss = staticScreens.members[i];
 
 			final targetAlpha:Float = isSelected ? 1.0 : 0.5;
-			final targetBoxScale = isSelected ? BOX_SCALE_SELECTED : BOX_SCALE;
-			final targetCoverScale = isSelected ? COVER_SCALE_SELECTED : COVER_SCALE;
+			final targetBoxScale = isSelected ? 0.58 : 0.52;
+			final targetCoverScale = isSelected ? 0.39 : 0.35;
 			final baseX = centerX + (i * boxWidth) + offset;
 
-			if (box != null) { 
-				box.scale.set(targetBoxScale, targetBoxScale); 
-				box.updateHitbox(); 
-			}
-			if (cover != null) { 
-				cover.scale.set(targetCoverScale, targetCoverScale); 
-				cover.updateHitbox();
-			}
-
-			final targetX = baseX - (box != null ? box.width : 0) / 2;
-			final targetY = centerY - (box != null ? box.height : 0) / 2;
+			final finalBoxW = (box != null) ? box.frameWidth * targetBoxScale : 0;
+			final finalBoxH = (box != null) ? box.frameHeight * targetBoxScale : 0;
+			final targetX = baseX - finalBoxW / 2;
+			final targetY = centerY - finalBoxH / 2;
 
 			if (animate)
 			{
-				FlxTween.cancelTweensOf(proxy);
 				final fi = i;
-				FlxTween.tween(proxy, {x: targetX, y: targetY}, TWEEN_DURATION, {
-					ease: FlxEase.cubeOut,
+
+				if (box != null)
+				{
+					FlxTween.cancelTweensOf(box.scale);
+					FlxTween.tween(box.scale, {x: targetBoxScale, y: targetBoxScale}, 0.42, {
+						ease: FlxEase.expoOut,
+						onUpdate: (_) -> box.updateHitbox()
+					});
+				}
+				if (cover != null)
+				{
+					FlxTween.cancelTweensOf(cover.scale);
+					FlxTween.tween(cover.scale, {x: targetCoverScale, y: targetCoverScale}, 0.42, {
+						ease: FlxEase.expoOut,
+						onUpdate: (_) -> cover.updateHitbox()
+					});
+				}
+
+				FlxTween.cancelTweensOf(proxy);
+				FlxTween.tween(proxy, {x: targetX, y: targetY}, 0.42, {
+					ease: FlxEase.expoOut,
 					onUpdate: (_) -> _applyCardPosition(fi)
 				});
-				
-				if (box != null) FlxTween.tween(box, {alpha: targetAlpha}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
-				if (cover != null) FlxTween.tween(cover, {alpha: targetAlpha}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
+
+				if (box != null) FlxTween.tween(box, {alpha: targetAlpha}, 0.42, {ease: FlxEase.expoOut});
+				if (cover != null) FlxTween.tween(cover, {alpha: targetAlpha}, 0.42, {ease: FlxEase.expoOut});
 			}
 			else
 			{
+				if (box != null) { box.scale.set(targetBoxScale, targetBoxScale); box.updateHitbox(); }
+				if (cover != null) { cover.scale.set(targetCoverScale, targetCoverScale); cover.updateHitbox(); }
 				proxy.setPosition(targetX, targetY);
 				_applyCardPosition(i);
 				if (box != null) box.alpha = targetAlpha;
@@ -1207,7 +1198,7 @@ class EXEFreeplay extends MusicBeatState
 			{
 				text.visible = true;
 				if (animate)
-					FlxTween.tween(text, {alpha: 1.0}, TWEEN_DURATION, {ease: FlxEase.cubeOut});
+					FlxTween.tween(text, {alpha: 1.0}, 0.42, {ease: FlxEase.cubeOut});
 				else
 					text.alpha = 1.0;
 			}
@@ -1274,32 +1265,43 @@ class EXEFreeplay extends MusicBeatState
 	{
 		final bmp = loadRawBitmap('assets/exe/freeplayassets/bgsonic.webp');
 		if (bmp == null) return;
-		
+
 		bgSonic = new FlxBackdrop(bmp, FlxAxes.X);
 		bgSonic.antialiasing = false;
-		bgSonic.velocity.x = 80;
+		bgSonic.velocity.x = 55;
 		add(bgSonic);
+	}
+
+	function setupBgWarp():Void
+	{
+		if (!ClientPrefs.data.shaders) return;
+		if (bgSonic == null && bgChecker == null) return;
+
+		bgCam = new FlxCamera();
+		bgCam.bgColor = FlxColor.TRANSPARENT;
+		FlxG.cameras.insert(bgCam, 0, false);
+		FlxG.camera.bgColor = FlxColor.TRANSPARENT;
+
+		if (bgSonic != null) bgSonic.cameras = [bgCam];
+		if (bgChecker != null) bgChecker.cameras = [bgCam];
+		if (verticalLine != null) verticalLine.cameras = [bgCam];
+		if (cardGroupsLayer != null) cardGroupsLayer.cameras = [bgCam];
+		if (degradado != null) degradado.cameras = [bgCam];
+		if (spikesUp != null) spikesUp.cameras = [bgCam];
+
+		pincushionShader = new PincushionShader();
+		bgCam.filters = [new ShaderFilter(pincushionShader)];
 	}
 
 	function loadVerticalLine():Void
 	{
 		final lh = 20;
-		final lw = Std.int(FlxG.width * 2);
-		
-		verticalLine = new FlxSprite(0, FlxG.height / 2 - lh / 2);
-		verticalLine.makeGraphic(lw, lh, 0xFF000000);
-		
-		final px = verticalLine.pixels;
-		px.lock();
-		for (y in 0...lh) {
-			final t = y / (lh - 1);
-			final v = Std.int(0x4B * (1 - t) + 0x1A * t);
-			final c:Int = (0xFF << 24) | (v << 16) | (v << 8) | v;
-			for (x in 0...lw) px.setPixel32(x, y, c);
-		}
-		px.unlock();
-		verticalLine.dirty = true;
-		
+
+		verticalLine = FlxGradient.createGradientFlxSprite(1, lh, [0xFF4B4B4B, 0xFF1A1A1A], 1, 90);
+		verticalLine.origin.set(0, 0);
+		verticalLine.scale.x = FlxG.width * 2;
+		verticalLine.setPosition(0, FlxG.height / 2 - lh / 2);
+
 		add(verticalLine);
 	}
 
@@ -1326,16 +1328,13 @@ class EXEFreeplay extends MusicBeatState
 
 	function loadDegradado():Void
 	{
-		final bmp = loadRawBitmap('assets/exe/freeplayassets/degradado.webp');
-		if (bmp == null) return;
-		
-		degradado = new FlxSprite(0, FlxG.height).loadGraphic(bmp);
-		degradado.scale.set(0.5, 0.5);
-		degradado.updateHitbox();
-		degradado.y = FlxG.height - degradado.height + 30;
-		
+		final h = Std.int(FlxG.height / 2);
+		degradado = FlxGradient.createGradientFlxSprite(1, h, [0x00000000, 0xF2000000, 0xFF000000], 1, 90);
+		degradado.origin.set(0, 0);
+		degradado.scale.x = FlxG.width;
+		degradado.setPosition(0, FlxG.height - h);
+		degradado.scrollFactor.set(0, 0);
 		add(degradado);
-		FlxTween.tween(degradado, {y: degradado.y - 6}, 2.0, {ease: FlxEase.sineInOut, type: PINGPONG});
 	}
 
 	function loadSpikesUp():Void
@@ -1389,11 +1388,11 @@ class EXEFreeplay extends MusicBeatState
 		
 		songTexts?.forEach((t) -> FlxTween.cancelTweensOf(t));
 		
-		if (charText != null) 
-		{ 
-			FlxTween.cancelTweensOf(charText); 
-			charText.alpha = 1.0; 
-			charText.y = 28;
+		if (charText != null)
+		{
+			FlxTween.cancelTweensOf(charText);
+			charText.alpha = 1.0;
+			charText.y = 18;
 		}
 		
 		if (cardPositions != null) 
@@ -1421,10 +1420,18 @@ class EXEFreeplay extends MusicBeatState
 			
 		arrowTimer?.cancel();
 		arrowTimer = null;
-		
-		staticTween?.cancel(); 
+
+		staticTween?.cancel();
 		staticTween = null;
-		
+
+		if (bgCam != null)
+		{
+			bgCam.filters = [];
+			if (FlxG.cameras.list.indexOf(bgCam) != -1) FlxG.cameras.remove(bgCam);
+			bgCam = null;
+		}
+		pincushionShader = null;
+
 		cancelAllTweens();
 
 		if (!stopMusicPlay)

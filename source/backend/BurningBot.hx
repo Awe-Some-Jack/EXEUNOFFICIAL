@@ -232,7 +232,6 @@ class BurningBot
         if (state.degradado != null) state.degradado.alpha = 0;
         if (state.spikesUp != null) state.spikesUp.alpha = 0;
 
-        if (state.scoreBG != null) state.scoreBG.alpha = 0;
         if (state.scoreText != null) state.scoreText.alpha = 0;
         if (state.rankText != null) state.rankText.alpha = 0;
 
@@ -261,7 +260,6 @@ class BurningBot
         if (state.degradado != null) state.degradado.alpha = _fadeAlpha;
         if (state.spikesUp != null) state.spikesUp.alpha = _fadeAlpha;
 
-        if (state.scoreBG != null) state.scoreBG.alpha = _fadeAlpha;
         if (state.scoreText != null) state.scoreText.alpha = _fadeAlpha;
         if (state.rankText != null) state.rankText.alpha = _fadeAlpha;
 
@@ -404,7 +402,7 @@ class BurningBot
                 if (bmp != null) cover.loadGraphic(bmp);
             }
 
-            cover.scale.set(EXEFreeplay.COVER_SCALE, EXEFreeplay.COVER_SCALE);
+            cover.scale.set(0.35, 0.35);
             cover.updateHitbox();
 
             final ss = state.staticScreens.members[i];

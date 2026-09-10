@@ -24,19 +24,10 @@ class Highscore
 		if(song == null) return;
 		var daSong:String = formatSong(song, diff);
 
-		if (songScores.exists(daSong))
-		{
-			if (songScores.get(daSong) < score)
-			{
-				setScore(daSong, score);
-				if(rating >= 0) setRating(daSong, rating);
-			}
-		}
-		else
-		{
+		if (!songScores.exists(daSong) || songScores.get(daSong) < score)
 			setScore(daSong, score);
-			if(rating >= 0) setRating(daSong, rating);
-		}
+		if (rating >= 0 && (!songRating.exists(daSong) || songRating.get(daSong) < rating))
+			setRating(daSong, rating);
 	}
 
 	public static function saveWeekScore(week:String, score:Int = 0, ?diff:Int = 0):Void

@@ -74,9 +74,12 @@
 			"name": "Remagets",
 			"icon": "rema",
 			"description": "Coder",
-			"quote": "",
-			"colors": [[0, 0, 0], [0, 0, 0]],
-			"nation": "dominicano"
+			"quote": "It was a pleasure to work in this mod besides of joining at a late state, i could do many different and interesting stuff, learned and met new incredible people, I hope the development goes well in the future.\n\n\n\nDonde estan los her worlds? Se lo comieron los remas",
+			"colors": [[0, 154, 194], [18, 40, 76]],
+			"nation": "republicadominicana",
+			"twitter": "https://x.com/Remagets",
+			"youtube": "https://www.youtube.com/@printcodeRem",
+			"extra": ["video", "ola", true]
 		},
 		{
 			"name": "CherryLemur",

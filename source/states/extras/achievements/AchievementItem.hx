@@ -21,7 +21,7 @@ class AchievementItem extends FlxSpriteGroup
 
     public static final ICON_SIZE:Int = 115;
     public static final ITEM_HEIGHT:Int = 145;
-    public static final ITEM_WIDTH:Int = 950;
+    public static final ITEM_WIDTH:Int = 1000;
 
     public function new(data:EXEAchievement)
     {

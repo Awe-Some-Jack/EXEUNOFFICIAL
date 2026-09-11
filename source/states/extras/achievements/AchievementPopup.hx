@@ -28,7 +28,7 @@ class AchievementPopup extends Sprite
     public static function show(achievementId:String):Void
     {
         var achieve = backend.EXEAchievements.get(achievementId);
-        if (achieve == null) return next();
+        if (achieve == null) return;
 
         var pop = new AchievementPopup(achievementId, achieve.name);
         if(queue.length != 0) for(popup in queue) popup.slideUp();

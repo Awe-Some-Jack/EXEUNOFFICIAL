@@ -42,7 +42,7 @@ function onCreatePost()
     gradient.screenCenter();
     gradient.camera = camDark;
     gradient.color = 0xFF000000;
-    gradient.scale.set(2.2, 2.2);
+    gradient.scale.set(2.1, 2.1);
     game.add(gradient);
 }
 

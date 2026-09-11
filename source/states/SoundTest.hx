@@ -496,6 +496,10 @@ class SoundTest extends MusicBeatState
 				PlayState.campaignScore = 0;
 				PlayState.campaignMisses = 0;
 
+				@:privateAccess
+				if (PlayState._lastLoadedModDirectory != Mods.currentModDirectory)
+					Paths.freeGraphicsFromMemory();
+
 				Song.loadFromJson(firstSong, firstSong);
 			}
 			catch (e:Dynamic)
@@ -514,6 +518,10 @@ class SoundTest extends MusicBeatState
 				PlayState.storyPlaylist = [songLower];
 				PlayState.isStoryMode = false;
 				PlayState.storyDifficulty = 0;
+
+				@:privateAccess
+				if (PlayState._lastLoadedModDirectory != Mods.currentModDirectory)
+					Paths.freeGraphicsFromMemory();
 
 				Song.loadFromJson(songLower, songLower);
 			}

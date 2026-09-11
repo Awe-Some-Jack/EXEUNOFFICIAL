@@ -537,9 +537,6 @@ class GameplayCamera
 						PlayState.instance.camGame.zoom = 1.25;
 						PlayState.instance.camGame.snapToTarget();
 				}
-
-			case 'chaosEvent':
-				if (v1 == 'bftransform') { settings.BFx = 2900; settings.BFy = 1400; }
 		}
 	}
 

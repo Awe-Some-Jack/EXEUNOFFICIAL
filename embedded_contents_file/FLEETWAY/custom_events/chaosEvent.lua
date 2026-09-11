@@ -49,14 +49,23 @@ function onEvent(n,v1)
 			runTimer('fuckye', crochet / (1000 / 3) / playbackRate)
 		end
 		
-		if v1 == 'bftransform' then
+		if v1 == 'superanim' and getVar('canTransform') then
+			triggerEvent('Play Animation', 'super', 'bf')
+		end
+
+		if v1 == 'bftransform' and getVar('canTransform') then
 			callMethod('iconBF.changeIcon', {'icon-bfsuperfleet'})
 			setProperty('hbHealth.color', getColorFromHex('FED14F'))
 			doTweenX('bfX', 'boyfriendGroup', 2910, 1, 'cubeOut')
 			doTweenY('bfY', 'boyfriendGroup', 1100, 1, 'cubeOut')
 			playSound('SUPERBF', 0.8)
 			cameraFlash('game', 'FFFF00', 1, true)
+			triggerEvent('Alt Idle Animation', 'bf', '-alt')
+			
+			setProperty('gameplayCam.settings.BFx', 2900) 
+			setProperty('gameplayCam.settings.BFy', 1400) 
 		end
+
 		if v1 == 'getblacklmao' then
 			setProperty('camGame.alpha', 0)
 			runTimer('fuckYOU', 3)

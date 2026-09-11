@@ -1,12 +1,12 @@
 {
 	"animations": [
 		{
-			"offsets": [164, 56],
-			"indices": [],
-			"fps": 12,
-			"anim": "intro",
 			"loop": false,
-			"name": "intro"
+			"offsets": [185, 68],
+			"anim": "intro",
+			"fps": 12,
+			"name": "intro",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

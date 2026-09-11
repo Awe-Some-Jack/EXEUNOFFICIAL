@@ -21,7 +21,7 @@ class AchievementItem extends FlxSpriteGroup
 
     public static final ICON_SIZE:Int = 115;
     public static final ITEM_HEIGHT:Int = 145;
-    public static final ITEM_WIDTH:Int = 900;
+    public static final ITEM_WIDTH:Int = 950;
 
     public function new(data:EXEAchievement)
     {
@@ -41,10 +41,10 @@ class AchievementItem extends FlxSpriteGroup
         add(icon);
 
         final textW:Int = (ITEM_WIDTH - 155 - 15) * 2;
-        title = new FlxText(155, 0, textW, Language.getPhrase('achievement_' + data.id, data.name), 80);
+        title = new FlxText(155, 0, 0, Language.getPhrase('achievement_' + data.id, data.name), 40);
         title.antialiasing = ClientPrefs.data.antialiasing;
         title.font = Paths.font('NiseSega.ttf');
-        title.scale.set(0.5, 0.5);
+        while(title.width > textW) title.size -= 1;
         title.updateHitbox();
 
         description = new FlxText(155, 0, textW, Language.getPhrase('achievement_description_' + data.id, data.description), 56);
@@ -56,7 +56,7 @@ class AchievementItem extends FlxSpriteGroup
         final totalTextH = title.height + 6 + description.height;
         final textY = (ITEM_HEIGHT - totalTextH) / 2;
         title.y = textY;
-        description.y = textY + title.height + 6;
+        description.y = textY + title.height - 5;
 
         add(title);
         add(description);

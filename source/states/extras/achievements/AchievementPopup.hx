@@ -12,7 +12,7 @@ import flixel.tweens.FlxEase;
 @:access(flixel.FlxGame)
 class AchievementPopup extends Sprite
 {
-    static inline final POP_W:Int            = 420;
+    static inline final POP_W:Int            = 450;
     static inline final POP_H:Int            = 86;
     static inline final ICON_SIZE:Int        = 60;
     static inline final MARGIN:Int           = 14;
@@ -20,32 +20,19 @@ class AchievementPopup extends Sprite
     static inline final STAY_DURATION:Float  = 3.0;
     static inline final HIDE_DURATION:Float  = 0.4;
     static inline final TEXT_SCALE:Float     = 0.5;
+    static inline final V_SPACING:Int        = 5;
 
-    static var queue:Array<String> = [];
+    static var queue:Array<AchievementPopup> = [];
     static var showing:Bool = false;
 
     public static function show(achievementId:String):Void
     {
-        queue.push(achievementId);
-        if (!showing) next();
-    }
+        var achieve = backend.EXEAchievements.get(achievementId);
+        if (achieve == null) return next();
 
-    public static function clearQueue():Void
-    {
-        queue = [];
-        showing = false;
-    }
-
-    static function next():Void
-    {
-        if (queue.length == 0) { showing = false; return; }
-        showing = true;
-
-        var id = queue.shift();
-        var achieve = backend.EXEAchievements.get(id);
-        if (achieve == null) { next(); return; }
-
-        new AchievementPopup(id, achieve.name);
+        var pop = new AchievementPopup(achievementId, achieve.name);
+        if(queue.length != 0) for(popup in queue) popup.slideUp();
+        queue.push(pop);
     }
 
     var _bitmaps:Array<BitmapData> = [];
@@ -53,24 +40,27 @@ class AchievementPopup extends Sprite
     var _timePassed:Float = -1;
     var _state:Int = 0;
     var _slideProgress:Float = 0;
+    var _slideUpProgress:Float = 0;
     var _stayTimer:Float = 0;
     var _targetX:Float;
+    var _targetY:Float;
     var _startX:Float;
-    var _posY:Float;
+    var _startY:Float;
 
     public function new(id:String, achieveName:String)
     {
         super();
 
         _lastScale = FlxG.stage.stageHeight / FlxG.height;
+        _startY    = FlxG.height - POP_H - 16;
+        _targetY   = _startY; 
         _targetX   = FlxG.width - POP_W - 16;
         _startX    = FlxG.width + 10;
-        _posY      = FlxG.height - POP_H - 16;
 
         _build(id, achieveName);
 
         x      = _startX * _lastScale;
-        y      = _posY   * _lastScale;
+        y      = _startY * _lastScale;
         scaleX = _lastScale;
         scaleY = _lastScale;
 
@@ -131,13 +121,15 @@ class AchievementPopup extends Sprite
         final renderSize = Std.int(size / TEXT_SCALE);
         final renderW    = Std.int(maxW  / TEXT_SCALE);
 
-        final t = new FlxText(0, 0, renderW, str, renderSize);
+        final t = new FlxText(0, 0, 0, str, renderSize);
         t.font = Paths.font('NiseSega.ttf');
         t.color = color;
         t.setBorderStyle(FlxTextBorderStyle.OUTLINE, outlineColor, 2);
         t.antialiasing = ClientPrefs.data.antialiasing;
         t.updateHitbox();
         t.drawFrame(true);
+
+        while(t.width >= renderW) t.size -= 1;
 
         final bmd:BitmapData = t.graphic.bitmap.clone();
         _bitmaps.push(bmd);
@@ -164,6 +156,17 @@ class AchievementPopup extends Sprite
 
         if (elapsed >= 0.5) return;
 
+        _targetX   = FlxG.width - POP_W - 16;
+        _startX    = FlxG.width + 10;
+
+        if(_slideUp)
+        {
+            _slideUpProgress = Math.min(1, _slideUpProgress + elapsed / SLIDE_DURATION);
+            y = (_startY + (_targetY - _startY) * FlxEase.expoOut(_slideUpProgress) * _lastScale);
+
+            if(_slideUpProgress >= 1) _slideUp = false;
+        }
+
         switch (_state)
         {
             case 0:
@@ -184,12 +187,21 @@ class AchievementPopup extends Sprite
         }
     }
 
+    var _slideUp:Bool = false;
+    public function slideUp():Void
+    {
+        _startY = y;
+        _targetY -= (POP_H + V_SPACING) * _lastScale;
+        _slideUpProgress = 0;
+        _slideUp = true;
+    }
+
     function _onResize(e:Event):Void
     {
         var mult   = FlxG.stage.stageHeight / FlxG.height;
         scaleX     = mult;
         scaleY     = mult;
-        y          = _posY * mult;
+        y          = _startY * mult;
         var logX:Float = switch (_state)
         {
             case 0:  _startX  + (_targetX - _startX)  * FlxEase.expoOut(_slideProgress);
@@ -211,6 +223,6 @@ class AchievementPopup extends Sprite
 
         if (FlxG.game.contains(this)) FlxG.game.removeChild(this);
 
-        next();
+        AchievementPopup.queue.remove(this);
     }
 }

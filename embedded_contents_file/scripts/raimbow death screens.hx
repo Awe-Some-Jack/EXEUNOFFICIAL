@@ -1,6 +1,7 @@
 import states.substates.GameOverSubstate;
 import flixel.sound.FlxSound;
 import flixel.FlxCameraFollowStyle;
+import backend.MusicBeatState;
 
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
@@ -146,7 +147,11 @@ function onGameOverStart()
                 deadChar.scrollFactor.set();
                 deadChar.setPosition(charPositions[0], charPositions[1]);
             }
-            else deadChar.y -= 100; 
+            else
+            {
+                FlxG.camera.zoom = 1;
+                deadChar.y -= 100;
+            }
 
             setCamEvents();
 
@@ -167,7 +172,7 @@ function onGameOverStart()
 function setCustomEvents() {
     switch(songName){
         case "starline":
-            FlxG.camera.flash(FlxColor.RED, 1);
+            FlxG.cameras.flash(FlxColor.RED, 1);
     }
 }
 

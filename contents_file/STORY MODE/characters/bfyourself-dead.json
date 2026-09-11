@@ -1,28 +1,28 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [494, 472],
-			"loop": false,
-			"fps": 24,
 			"anim": "firstDeath",
-			"indices": [],
-			"name": "die"
+			"fps": 24,
+			"name": "die",
+			"indices": []
 		},
 		{
-			"offsets": [283, -283],
 			"loop": true,
-			"fps": 24,
+			"offsets": [283, -283],
 			"anim": "deathLoop",
-			"indices": [],
-			"name": "loop"
+			"fps": 24,
+			"name": "loop",
+			"indices": []
 		},
 		{
-			"offsets": [282, -196],
 			"loop": false,
-			"fps": 24,
+			"offsets": [282, -196],
 			"anim": "deathConfirm",
-			"indices": [],
-			"name": "retry"
+			"fps": 24,
+			"name": "retry",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
@@ -32,7 +32,7 @@
 	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],
-	"camera_position": [220, 90],
+	"camera_position": [-60, 150],
 	"sing_duration": 5.99999999999999,
 	"scale": 0.7,
 	"_editor_isPlayer": true

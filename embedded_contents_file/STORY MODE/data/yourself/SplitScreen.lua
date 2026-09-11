@@ -110,5 +110,6 @@ function getCharacterCameraPos(char)
 end
 
 function onGameOverStart()
-	for _, cams in ipairs({'camLeft', 'camRight'}) do callMethod(cams..'.destroy') end
+	callMethodFromClass('flixel.FlxG', 'cameras.remove', {instanceArg('camLeft'), true})
+	callMethodFromClass('flixel.FlxG', 'cameras.remove', {instanceArg('camRight'), true})
 end

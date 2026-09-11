@@ -31,6 +31,7 @@ function onCreatePost()
 	makeBackground(stage);
 	makeBackground(dark);
 	for (spr in dark) spr.sprite.alpha = 0;
+	for (spr in stage) if (spr.tag == 'eggman') spr.sprite.ID = 123;
 
 	exeeye = new FlxSprite(170, 140).loadGraphic(Paths.image('characters/ojo-exe1'));
 	exeeye.scrollFactor.set(0.8, 0.8);

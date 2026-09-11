@@ -71,6 +71,14 @@
 			"extra": ["video", "jujutsu", true]
 		},
 		{
+			"name": "Remagets",
+			"icon": "rema",
+			"description": "Coder",
+			"quote": "",
+			"colors": [[0, 0, 0], [0, 0, 0]],
+			"nation": "dominicano"
+		},
+		{
 			"name": "CherryLemur",
 			"icon": "cherry",
 			"description": "Coder",
@@ -354,10 +362,12 @@
 		{
 			"name": "DX Black Fire",
 			"icon": "dxbf",
+			"quote": "Years may pass, communities may change, but the moments we shared will always remain, And deciding to share my songs with you all was the best choice I've ever made, One of the memories I will never forget.",
 			"description": "Composer",
 			"youtube": "https://www.youtube.com/@DXBlackFirelol",
 			"colors": [[96, 96, 96], [0, 0, 0]],
-			"nation": "brazil"
+			"nation": "brazil",
+			"extra": ["image", "dxplush.png"]
 		},
 		{
 			"name": "LyricalMaxi",

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="lava.png">
+<SubTexture name="idle0000" x="1457" y="256" width="193" height="142" frameX="-156" frameY="-213" frameWidth="500" frameHeight="500" />
+<SubTexture name="idle0001" x="1457" y="0" width="269" height="256" frameX="-120" frameY="-155" frameWidth="500" frameHeight="500" />
+<SubTexture name="idle0002" x="494" y="957" width="350" height="399" frameX="-81" frameY="-61" frameWidth="500" frameHeight="500" />
+<SubTexture name="idle0003" x="971" y="429" width="419" height="418" frameX="-38" frameY="-48" frameWidth="500" frameHeight="500" />
+<SubTexture name="idle0004" x="434" y="504" width="389" height="433" frameX="-60" frameY="-46" frameWidth="500" frameHeight="500" />
+<SubTexture name="idle0005" x="0" y="504" width="434" height="453" frameX="-47" frameY="-38" frameWidth="500" frameHeight="500" />
+<SubTexture name="idle0006" x="504" y="0" width="467" height="467" frameX="-25" frameY="-36" frameWidth="500" frameHeight="500" />
+<SubTexture name="idle0007" x="971" y="0" width="486" height="429" frameX="-14" frameY="-74" frameWidth="500" frameHeight="500" />
+<SubTexture name="idle0008" x="0" y="957" width="494" height="400" frameX="-10" frameY="-104" frameWidth="500" frameHeight="500" />
+<SubTexture name="idle0009" x="844" y="957" width="495" height="399" frameX="-9" frameY="-105" frameWidth="500" frameHeight="500" />
+<SubTexture name="idle0010" x="0" y="0" width="504" height="504" frameX="0" frameY="0" frameWidth="500" frameHeight="500" />
+</TextureAtlas>

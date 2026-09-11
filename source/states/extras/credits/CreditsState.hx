@@ -18,6 +18,8 @@ import haxe.Json;
 import objects.VideoSprite;
 #end
 
+using StringTools;
+
 typedef Credit = {
     var name:String;
     var icon:String;
@@ -367,8 +369,10 @@ private class CreditPopup extends MusicBeatSubstate
 
     function buildExplosion():Void
     {
+        var exp:String = 'explosion';
+        if (user.name.toLowerCase() == 'vn2' ) exp = 'lava';
         explosion = new FlxSprite(userIcon.x - 50, userIcon.y - 100);
-        explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow('assets/exe/extras/credits/explosion.webp', 'assets/exe/extras/credits/explosion.xml');
+        explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow('assets/exe/extras/credits/$exp.webp', 'assets/exe/extras/credits/$exp.xml');
         explosion.animation.addByPrefix('idle', 'idle', 16, false);
         explosion.animation.play('idle');
         explosion.scale.set(3, 3); explosion.antialiasing = false; explosion.updateHitbox();

@@ -11,14 +11,14 @@
 	},
 	"playerIcon": {
 		"scale": 1,
-		"offsetX": 20,
+		"offsetX": 40,
 		"offsetY": 0,
 		"bopAmount": 1.2
 	},
 	"opponentIcon": {
-		"scale": 1,
+		"scale": 1.1,
 		"offsetX": -3,
-		"offsetY": 0,
+		"offsetY": -1,
 		"bopAmount": 1
 	}
 }

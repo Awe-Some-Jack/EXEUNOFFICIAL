@@ -13,6 +13,7 @@ var collectedEmeralds:Int = 0;
 var emeraldsAmount:Int = 7;
 var emeralds:Array = [];
 var emeraldsMoving:Array = [];
+var muteOpponentVocals:Bool = false;
 
 // Properties
 var velocityMult:Float = 0.5;
@@ -67,6 +68,11 @@ function onUpdate(e)
     }
 }
 
+function onUpdatePost()
+{
+    if(muteOpponentVocals) opponentVocals.volume = 0;
+}
+
 function goodNoteHit(note:Note)
 {
     var curEmeraldIndex:Int = collectedEmeralds + missedEmeralds;
@@ -99,23 +105,39 @@ function onSpawnNote(note:Note)
 
 function onStepHit()
 {
-    if(curStep == 954 && collectedEmeralds == emeraldsAmount)
-    {
-        FlxTween.num(MOVEMENT_RADIUS, MOVEMENT_RADIUS * 0.1, 4, {ease: FlxEase.backIn}, v -> MOVEMENT_RADIUS = v);
-        FlxTween.num(velocityMult, 3.5, 4, null, v -> velocityMult = v);
-        for(em in emeraldsMoving) {
-            FlxTween.num(0, 255, 4, null, v -> em.colorTransform.redOffset = em.colorTransform.greenOffset = em.colorTransform.blueOffset = v);
-            FlxTween.tween(em.scale, {x: 0, y: 0}, 0.5, {startDelay: 3.5});
-        }
-    }
-    else if(curStep == 954 && collectedEmeralds != emeraldsAmount)
-    {
-        FlxTween.num(MOVEMENT_RADIUS, MOVEMENT_RADIUS * 0.1, 3, {
-            ease: FlxEase.backIn, 
-            onComplete: () -> FlxTween.num(MOVEMENT_RADIUS, 225, 1, null, v -> MOVEMENT_RADIUS = v)
-        }, v -> MOVEMENT_RADIUS = v);
-        FlxTween.num(velocityMult, 3.5, 3, {
-            onComplete: () -> FlxTween.num(velocityMult, 0.1, 1, null, v -> velocityMult = v)
-        }, v -> velocityMult = v);
+    switch(curStep) {
+        case 954:
+            if(collectedEmeralds == emeraldsAmount)
+            {
+                FlxTween.num(MOVEMENT_RADIUS, MOVEMENT_RADIUS * 0.1, 4, {ease: FlxEase.backIn}, v -> MOVEMENT_RADIUS = v);
+                FlxTween.num(velocityMult, 3.5, 4, null, v -> velocityMult = v);
+                for(em in emeraldsMoving) {
+                    FlxTween.num(0, 255, 4, null, v -> em.colorTransform.redOffset = em.colorTransform.greenOffset = em.colorTransform.blueOffset = v);
+                    FlxTween.tween(em.scale, {x: 0, y: 0}, 0.5, {startDelay: 3.5});
+                }
+            }
+            else
+            {
+                FlxTween.num(MOVEMENT_RADIUS, MOVEMENT_RADIUS * 0.1, 3, {
+                    ease: FlxEase.backIn, 
+                    onComplete: () -> FlxTween.num(MOVEMENT_RADIUS, 225, 1, null, v -> MOVEMENT_RADIUS = v)
+                }, v -> MOVEMENT_RADIUS = v);
+                FlxTween.num(velocityMult, 3.5, 3, {
+                    onComplete: () -> FlxTween.num(velocityMult, 0.1, 1, null, v -> velocityMult = v)
+                }, v -> velocityMult = v);
+            }
+
+        case 1034:
+            if(getVar('canTransform')) {
+                dad.playAnim('what', true);
+                triggerEvent('Normal Lyrics', 'lyrics.chaos.6', '1');
+                dad.specialAnim = true;
+            }
+            else
+                muteOpponentVocals = true;
+        
+        case 1040: muteOpponentVocals = false;
+        case 1221: if(!getVar('canTransform')) triggerEvent('Change Health Damage', '0.035');
+        case 1328: if(!getVar('canTransform')) triggerEvent('Change Health Damage', '0.05');
     }
 }

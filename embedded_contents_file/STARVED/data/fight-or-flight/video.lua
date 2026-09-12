@@ -1,6 +1,6 @@
 local allowCountdown = false
 
-function onCreatePost() setProperty('camHUD.visible', false) end
+function onCreatePost() if not seenCutscene and isStoryMode then setProperty('camHUD.visible', false) end end
 
 function onStartCountdown()
     if not allowCountdown and not seenCutscene and isStoryMode then

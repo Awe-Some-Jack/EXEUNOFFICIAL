@@ -1,28 +1,28 @@
 {
 	"animations": [
 		{
+			"offsets": [250, 466],
 			"loop": false,
-			"offsets": [255, 442],
+			"fps": 24,
 			"anim": "firstDeath",
-			"fps": 24,
-			"name": "bfexe-dead",
-			"indices": []
+			"indices": [],
+			"name": "bfexe-dead"
 		},
 		{
+			"offsets": [250, 466],
 			"loop": true,
-			"offsets": [255, 470],
-			"anim": "deathLoop",
 			"fps": 24,
-			"name": "deathLoop",
-			"indices": []
+			"anim": "deathLoop",
+			"indices": [],
+			"name": "deathLoop"
 		},
 		{
+			"offsets": [272, 466],
 			"loop": false,
-			"offsets": [277, 446],
-			"anim": "deathConfirm",
 			"fps": 24,
-			"name": "deathConfirm",
-			"indices": []
+			"anim": "deathConfirm",
+			"indices": [],
+			"name": "deathConfirm"
 		}
 	],
 	"vocals_file": "",

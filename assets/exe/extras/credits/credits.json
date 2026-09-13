@@ -118,7 +118,11 @@
 			"icon": "mays",
 			"description": "Mobile Coder",
 			"quote": "I am Embodiment of Laziness",
-			"nation": "ua"
+			"colors": [[21, 40, 114], [0, 136, 43]],
+			"twitter": "https://x.com/MaysLastPlay",
+			"youtube": "https://www.youtube.com/channel/UCx0LxtFR8ROd9sFAq-UxDfw",
+			"nation": "usa",
+			"extra": ["video", "springtrap"]
 		},
 		{
 			"name": "Snorby",

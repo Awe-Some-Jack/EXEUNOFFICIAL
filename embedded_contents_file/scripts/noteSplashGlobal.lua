@@ -187,8 +187,8 @@ local blacklistenedSongs = {}
 
 --DONT TOUCH
 
+local holdsSplashTimer = {0,0,0,0,0,0,0,0}
 local daHoldConfig = {offsetX = 0, offsetY = 0}
-local holdsSplashHold = {0,0,0,0,0,0,0,0}
 local holdsEnabled = true
 local currentSkin = 'BloodSplash'
 
@@ -268,36 +268,28 @@ function onCreatePost()
 	if not foundSkin then doSplash(nil, currentSkin, true) end
 end
 
+function goodNoteHit(id,nd,nt,isn) if not isn and getProperty('notes.members['..id..'].noteSplashDisabled') == false and getProperty('notes.members['..id..'].rating') == 'sick' then doSplash(nd, currentSkin) end end
+
+-- new system
 function goodNoteHitPre(id,nd,nt,isn)
 	if not holdsEnabled then return end
-	if isn then
-		if not stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then
-			cancelTimer('noteHold'..(nd + 4))
-			runTimer('noteHold'..(nd + 4), stepCrochet / playbackRate)
-		end
-
-		if getProperty('noteHold'..(nd + 4)..'.visible') == false and holdsSplashHold[nd + 5] == 0 then
-			setProperty('noteHold'..(nd + 4)..'.visible', true)
-			playAnim('noteHold'..(nd + 4), 'start', true)
-		end
-		if stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then cancelTimer('noteHold'..(nd + 4)) playAnim('noteHold'..(nd + 4), 'end', true) holdsSplashHold[nd + 5] = 0 end
+	local noteHold = 'noteHold'..(nd + 4)
+	if isn then holdsSplashTimer[nd + 4] = 0 end
+	if not isn and getProperty('notes.members['..id..'].tail.length') > 0 then
+		holdsSplashTimer[nd] = 0
+		setProperty(noteHold..'.visible', true)
+		playAnim(noteHold, 'start', true)
 	end
 end
-function goodNoteHit(id,nd,nt,isn) if not isn and getProperty('notes.members['..id..'].noteSplashDisabled') == false and getProperty('notes.members['..id..'].rating') == 'sick' then doSplash(nd, currentSkin) end end
 
 function opponentNoteHitPre(id,nd,nt,isn)
 	if not holdsEnabled then return end
-	if isn then
-		if not stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then
-			cancelTimer('noteHold'..nd)
-			runTimer('noteHold'..nd, stepCrochet / playbackRate)
-		end
-
-		if getProperty('noteHold'..nd..'.visible') == false and holdsSplashHold[nd + 1] == 0 then
-			setProperty('noteHold'..nd..'.visible', true)
-			playAnim('noteHold'..nd, 'start', true)
-		end
-		if stringEndsWith(getProperty('notes.members['..id..'].animation.curAnim.name'), 'end') then cancelTimer('noteHold'..nd) setProperty('noteHold'..nd..'.visible', false) holdsSplashHold[nd + 1] = 0 end
+	local noteHold = 'noteHold'..nd
+	if isn then holdsSplashTimer[nd] = 0 end
+	if not isn and getProperty('notes.members['..id..'].tail.length') > 0 then
+		holdsSplashTimer[nd] = 0
+		setProperty(noteHold..'.visible', true)
+		playAnim(noteHold, 'start', true)
 	end
 end
 
@@ -380,13 +372,31 @@ end
 
 function onUpdatePost(e)
 	if not holdsEnabled then return end
+	for i = 0,getProperty('notes.length')-1 do
+		local note = 'notes.members['..i..']'
+		if getProperty(note..'.isSustainNote') and getProperty(note..'.parent.wasGoodHit') then
+			if getProperty(note..'.strumTime') == getProperty(note..'.parent.tail['..(getProperty(note..'.parent.tail.length') - 1)..'].strumTime') and getSongPosition() >= getProperty(note..'.parent.strumTime') + getProperty(note..'.parent.sustainLength') and not getProperty(note..'.noteWasHit') then
+				if getProperty(note..'.mustPress') then
+					playAnim('noteHold'..(getProperty(note..'.noteData') + 4), 'end', true)
+				else
+					setProperty('noteHold'..getProperty(note..'.noteData')..'.visible', false)
+					holdsSplashTimer[getProperty(note..'.noteData')] = 0
+				end
+				setProperty(note..'.noteWasHit', true)
+			end
+		end
+	end
 	for i = 0,7 do
 		if getProperty('noteHold'..i..'.visible') then
-			holdsSplashHold[i + 1] = holdsSplashHold[i + 1] + e * playbackRate
+			holdsSplashTimer[i] = holdsSplashTimer[i] + e * playbackRate
+			if holdsSplashTimer[i] > (stepCrochet / (1000 / (1.5 * playbackRate)) / playbackRate) and getProperty('noteHold'..i..'.animation.curAnim.name') ~= 'end' then
+				setProperty('noteHold'..i..'.visible', false)
+			end
+
 			if getProperty('noteHold'..i..'.animation.curAnim.finished') then
 				local name = getProperty('noteHold'..i..'.animation.curAnim.name')
 				if name == 'start' then playAnim('noteHold'..i, 'hold', true) end
-				if name == 'end' then setProperty('noteHold'..i..'.visible', false) holdsSplashHold[i + 1] = 0 end
+				if name == 'end' then setProperty('noteHold'..i..'.visible', false) holdsSplashTimer[i] = 0 end
 			end
 
 			local dastrum = ((getProperty('strumLineNotes.length') > 8 and i > 5) and (i + 1) or i)
@@ -423,12 +433,12 @@ function onEvent(n,v1,v2)
 				cancelTimer('noteHold'..i)
 
 				setProperty('noteHold'..i..'.visible', false)
-    			holdsSplashHold[i + 1] = 0
 
                 loadFrames('noteHold'..i, targetPath)
                 addAnimationByPrefix('noteHold'..i, 'start', holdSplashConf.startAnim[(i % 4) + 1].name, holdSplashConf.startAnim[(i % 4) + 1].fps, false)
                 addAnimationByPrefix('noteHold'..i, 'hold', holdSplashConf.holdAnim[(i % 4) + 1].name, holdSplashConf.holdAnim[(i % 4) + 1].fps, true)
                 addAnimationByPrefix('noteHold'..i, 'end', holdSplashConf.endAnim[(i % 4) + 1].name, holdSplashConf.endAnim[(i % 4) + 1].fps, false)
+				holdsSplashTimer[i] = 0
             end
         end
     end
@@ -447,6 +457,7 @@ function onEvent(n,v1,v2)
                 scaleObject('noteHold'..i, 6, 6)
                 daHoldConfig = {offsetX = -102, offsetY = -42}
                 if getProperty('noteHold'..i..'.visible') then playAnim('noteHold'..i, 'hold', true) end
+				holdsSplashTimer[i] = 0
             end
         else
             currentSkin = 'BloodSplash'
@@ -461,7 +472,7 @@ function onEvent(n,v1,v2)
                 daHoldConfig = {offsetX = -85, offsetY = -62}
                 playAnim('noteHold'..i, 'end', true)
                 setProperty('noteHold'..i..'.visible', false)
-                holdsSplashHold[i + 1] = 0
+				holdsSplashTimer[i] = 0
             end
         end
     end

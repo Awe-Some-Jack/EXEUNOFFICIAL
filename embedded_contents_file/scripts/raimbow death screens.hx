@@ -72,9 +72,6 @@ function setCustomGameOvers() {
             GameOverSubstate.deathSoundName = "deathSounds/yourself-sfx";
             GameOverSubstate.loopSoundName  = "deathSongs/yourself";
             GameOverSubstate.endSoundName   = "deathSongs/yourself-retry";
-            charPositions = [250, -140];
-
-            initialDeathZoom = 1.2;
         case "hollow":
             exeGameOvers = false;
             GameOverSubstate.loopSoundName = "deathSongs/hollow";
@@ -146,11 +143,6 @@ function onGameOverStart()
             {
                 deadChar.scrollFactor.set();
                 deadChar.setPosition(charPositions[0], charPositions[1]);
-            }
-            else
-            {
-                FlxG.camera.zoom = 1;
-                deadChar.y -= 100;
             }
 
             setCamEvents();

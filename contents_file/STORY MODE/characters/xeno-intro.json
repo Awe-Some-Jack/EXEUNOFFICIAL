@@ -2,51 +2,51 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [0, 0],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
-			"anim": "dialogue",
-			"fps": 24,
-			"name": "dialogue",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [0, 0],
+			"offsets": [0, -157],
 			"anim": "idle",
 			"fps": 24,
-			"name": "idle",
-			"indices": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+			"name": "intro xeno export/idle_intro",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, -147],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "intro xeno export/left_intro",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, -157],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "intro xeno export/down_intro",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, -1],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "intro xeno export/up_intro",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, -157],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "intro xeno export/rigth_intro",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [19, -88],
+			"anim": "dialogue",
+			"fps": 24,
+			"name": "intro xeno export/Sex copia",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

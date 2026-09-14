@@ -2,8 +2,8 @@
 <TextureAtlas imagePath="bfsuperbg.png">
 	<!-- Created with Adobe Animate version 23.0.0.407 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 232 instancia 10000" x="438" y="313" width="397" height="282" frameX="-23" frameY="0" frameWidth="440" frameHeight="300"/>
-	<SubTexture name="Símbolo 232 instancia 10001" x="5" y="313" width="423" height="279" frameX="-15" frameY="-14" frameWidth="440" frameHeight="300"/>
-	<SubTexture name="Símbolo 232 instancia 10002" x="455" y="5" width="392" height="256" frameX="-28" frameY="-21" frameWidth="440" frameHeight="300"/>
-	<SubTexture name="Símbolo 232 instancia 10003" x="5" y="5" width="440" height="298" frameX="0" frameY="-2" frameWidth="440" frameHeight="300"/>
+	<SubTexture name="Símbolo 306 instancia 10000" x="860" y="579" width="796" height="519" frameX="-40" frameY="-27" frameWidth="857" frameHeight="565"/>
+	<SubTexture name="Símbolo 306 instancia 10001" x="5" y="569" width="845" height="527" frameX="0" frameY="-20" frameWidth="857" frameHeight="565"/>
+	<SubTexture name="Símbolo 306 instancia 10002" x="5" y="5" width="851" height="554" frameX="-6" frameY="-11" frameWidth="857" frameHeight="565"/>
+	<SubTexture name="Símbolo 306 instancia 10003" x="866" y="5" width="815" height="564" frameX="-23" frameY="0" frameWidth="857" frameHeight="565"/>
 </TextureAtlas>

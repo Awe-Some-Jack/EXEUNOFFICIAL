@@ -1,55 +1,55 @@
 {
 	"animations": [
 		{
-			"offsets": [-10, 0],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [0, -20],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [0, 60],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [8, 26],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [0, 0],
+			"offsets": [162, 88],
 			"indices": [],
 			"fps": 24,
 			"anim": "idle",
 			"loop": false,
-			"name": "idle"
+			"name": "Símbolo 55"
+		},
+		{
+			"offsets": [240, 100],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "Símbolo 55 copia"
+		},
+		{
+			"offsets": [155, -25],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "Símbolo 55 copia 4"
+		},
+		{
+			"offsets": [170, 240],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "Símbolo 55 copia 3"
+		},
+		{
+			"offsets": [148, 136],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Símbolo 55 copia 2"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/finalebffe",
+	"image": "characters/finalebffe2",
 	"position": [0, 0],
 	"healthicon": "superbf",
 	"flip_x": true,
 	"healthbar_colors": [254, 210, 77],
 	"camera_position": [0, 0],
 	"sing_duration": 6,
-	"scale": 1,
+	"scale": 0.9,
 	"_editor_isPlayer": true
 }

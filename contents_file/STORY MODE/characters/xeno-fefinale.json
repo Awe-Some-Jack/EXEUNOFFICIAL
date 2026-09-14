@@ -1,49 +1,49 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
-			"indices": [],
+			"offsets": [710, 110],
+			"loop": false,
 			"fps": 24,
 			"anim": "idle",
-			"loop": false,
+			"indices": [],
 			"name": "idle"
 		},
 		{
-			"offsets": [51, -6],
+			"offsets": [710, 110],
 			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
 			"loop": false,
-			"name": "xeno end left"
+			"name": "Símbolo 47"
 		},
 		{
-			"offsets": [-77, -3],
+			"offsets": [710, 110],
 			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
 			"loop": false,
-			"name": "end xeno down"
+			"name": "Símbolo 49"
 		},
 		{
-			"offsets": [6, 110],
+			"offsets": [710, 306],
 			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
 			"loop": false,
-			"name": "end xeno up"
+			"name": "Símbolo 48"
 		},
 		{
-			"offsets": [-42, -9],
+			"offsets": [710, 110],
 			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
 			"loop": false,
-			"name": "end xeno rigth"
+			"name": "Símbolo 50"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/finalescapegrandxeno",
+	"image": "characters/finalescapegrandxeno2",
 	"position": [0, 0],
 	"healthicon": "XENO-P4",
 	"flip_x": false,

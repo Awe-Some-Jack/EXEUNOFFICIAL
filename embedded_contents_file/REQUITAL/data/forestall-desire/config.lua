@@ -237,6 +237,7 @@ function createKnife(target, strumTime)
     if not targetConfig then return end
 
     playAnim('dad', 'attack', true)
+    playSound('dodge', 0.7)
     setProperty('dad.specialAnim', true)
 
     local knifeName = 'knife'..math.floor(strumTime)

@@ -15,7 +15,7 @@ function onCreatePost()
 	scaleObject('iconSonic', 0.5, 0.5)
 	callMethod('iconSonic.setPosition', {-iconOffset + initialY, (downscroll and (screenHeight - getProperty('iconSonic.height') - initialY - iconOffset) or (-iconOffset + initialY + getProperty('iconSonic.height')))})
 	addInstance('iconSonic')
-	makeHUDSprite('futureHealthSonic', 'healthFuture', getProperty('iconSonic.x') + iconOffset + 72, getProperty('iconSonic.y') + iconOffset + 18)
+	makeHUDSprite('futureHealthSonic', 'healthFuture', getProperty('iconSonic.x') + iconOffset + 72 + 12, getProperty('iconSonic.y') + iconOffset + 18)
 
 	createInstance('iconFurn', 'objects.HealthIcon', {'genesysegg', false})
 	setObjectCamera('iconFurn', 'hud')
@@ -23,7 +23,7 @@ function onCreatePost()
 	scaleObject('iconFurn', 0.5, 0.5)
 	callMethod('iconFurn.setPosition', {-iconOffset + initialY, (downscroll and (screenHeight - getProperty('iconSonic.height') * 2 - initialY - iconOffset) or (-iconOffset + initialY))})
 	addInstance('iconFurn')
-	makeHUDSprite('futureHealthFurn', 'healthFuture', getProperty('iconFurn.x') + iconOffset + 72, getProperty('iconFurn.y') + iconOffset + 18)
+	makeHUDSprite('futureHealthFurn', 'healthFuture', getProperty('iconFurn.x') + iconOffset + 72 + 12, getProperty('iconFurn.y') + iconOffset + 18)
 
 	updateHUD()
 end
@@ -56,7 +56,7 @@ function updateHUD()
 	local splittedHealth = splitShit(tostring(math.floor(bound(getHealth() * 50, 0, 100)))..'%', false)
 	for i = 1,math.max(#splittedHealth, 1) do
 		local tag = 'healthNum'..i
-		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealth[i], 117 + ((i - 1) * 24), getProperty('futureHealthSonic.y') + 15, true) end
+		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealth[i], 117 + 12 + ((i - 1) * 24), getProperty('futureHealthSonic.y') + 15, true) end
 		setProperty(tag..'.animation.curAnim.curFrame', (splittedHealth[i] == '-' and 12 or (splittedHealth[i] == '%' and 13 or splittedHealth[i])))
 	end
 	if #splittedHealth ~= oldScore[3] then for i = 1,oldScore[3] do if i > #splittedHealth and luaSpriteExists('healthNum'..i) then removeLuaSprite('healthNum'..i) end end end
@@ -66,7 +66,7 @@ function updateHUD()
 	local splittedHealthOpp = splitShit(tostring(math.floor(bound((2 - getHealth()) * 50, 0, 100) + 0.5))..'%', false)
 	for i = 1,math.max(#splittedHealthOpp, 1) do
 		local tag = 'health2Num'..i
-		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealthOpp[i], 117 + ((i - 1) * 24), getProperty('futureHealthFurn.y') + 15, true) end
+		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealthOpp[i], 117 + 12 + ((i - 1) * 24), getProperty('futureHealthFurn.y') + 15, true) end
 		setProperty(tag..'.animation.curAnim.curFrame', (splittedHealthOpp[i] == '-' and 12 or (splittedHealthOpp[i] == '%' and 13 or splittedHealthOpp[i])))
 	end
 	if #splittedHealthOpp ~= oldScore[4] then for i = 1,oldScore[4] do if i > #splittedHealthOpp and luaSpriteExists('health2Num'..i) then removeLuaSprite('health2Num'..i) end end end

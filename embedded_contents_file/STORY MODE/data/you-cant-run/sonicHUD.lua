@@ -22,7 +22,7 @@ function onCreatePost()
 	scaleObject('iconBFP', 0.5, 0.5)
 	callMethod('iconBFP.setPosition', {-iconOffset + initialY, -iconOffset + (downscroll and (-initialY + (screenHeight - 75)) or initialY)})
 	addInstance('iconBFP')
-	makeHUDSprite('futureHealthBF', 'health', getProperty('iconBFP.x') + iconOffset + 72, getProperty('iconBFP.y') + iconOffset + 18)
+	makeHUDSprite('futureHealthBF', 'health', getProperty('iconBFP.x') + iconOffset + 72 + 12, getProperty('iconBFP.y') + iconOffset + 18)
 
 	createInstance('iconOppP', 'objects.HealthIcon', {'XENO-P2P', false})
 	setObjectCamera('iconOppP', 'hud')
@@ -30,7 +30,7 @@ function onCreatePost()
 	scaleObject('iconOppP', 0.5, 0.5)
 	callMethod('iconOppP.setPosition', {-iconOffset + initialY, -iconOffset + (downscroll and (-(initialY / 2) + (screenHeight - 75) - (75 + (initialY / 2))) or (initialY + 75))})
 	addInstance('iconOppP')
-	makeHUDSprite('futureHealthOpp', 'health', getProperty('iconOppP.x') + iconOffset + 72, getProperty('iconOppP.y') + iconOffset + 18)
+	makeHUDSprite('futureHealthOpp', 'health', getProperty('iconOppP.x') + iconOffset + 72 + 12, getProperty('iconOppP.y') + iconOffset + 18)
 
 	setProperty('scoreText.alpha', 0)
 	setProperty('timeText.alpha', 0)
@@ -77,7 +77,7 @@ function updateHUD()
 	local splittedHealth = splitShit(tostring(math.floor(bound(getHealth() * 50, 0, 100)))..'%', false)
 	for i = 1,math.max(#splittedHealth, 1) do
 		local tag = 'healthNum'..i
-		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealth[i], 117 + ((i - 1) * 24), getProperty('futureHealthBF.y') + 15, true) end
+		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealth[i], 117 + 12 + ((i - 1) * 24), getProperty('futureHealthBF.y') + 15, true) end
 		setProperty(tag..'.animation.curAnim.curFrame', (splittedHealth[i] == '-' and 11 or (splittedHealth[i] == '%' and 12 or splittedHealth[i])))
 		setProperty(tag..'.alpha', a)
 	end
@@ -88,7 +88,7 @@ function updateHUD()
 	local splittedHealthOpp = splitShit(tostring(math.floor(bound((2 - getHealth()) * 50, 0, 100) + 0.5))..'%', false)
 	for i = 1,math.max(#splittedHealthOpp, 1) do
 		local tag = 'health2Num'..i
-		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealthOpp[i], 117 + ((i - 1) * 24), getProperty('futureHealthOpp.y') + 15, true) end
+		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealthOpp[i], 117 + 12 + ((i - 1) * 24), getProperty('futureHealthOpp.y') + 15, true) end
 		setProperty(tag..'.animation.curAnim.curFrame', (splittedHealthOpp[i] == '-' and 11 or (splittedHealthOpp[i] == '%' and 12 or splittedHealthOpp[i])))
 		setProperty(tag..'.alpha', a)
 	end

@@ -67,19 +67,21 @@ function onCreatePost()
     if shadersEnabled then runHaxeCode(dashads) end
     if shadersEnabled then runHaxeCode("game.camHUD.filters = [new ShaderFilter(game.getLuaObject('color').shader)]; return;") end
 
-    for _,char in ipairs({'boyfriend'}) do
+    for _,char in ipairs({'boyfriend', 'dad'}) do
             setSpriteShader(char, 'DropShadowShader')
             setShaderFloat(char, 'hue', 0)
             setShaderFloat(char, 'saturation', 0)
             setShaderFloat(char, 'contrast', 0)
             setShaderFloat(char, 'str', 1)
-            setShaderFloat(char, 'brightness', -80)
-            setShaderFloat(char, 'thr', 0.1)
-            setShaderFloatArray(char, 'dropColor', {0 / 5, 5 / 255, 255 / 255})
+            setShaderFloat(char, 'brightness', 0)
+            setShaderFloat(char, 'thr', 0.05)
+            setShaderFloatArray(char, 'dropColor', {0 / 225, 64 / 255, 128 / 255})
             runHaxeFunction('setShaderFrameInfo', {char})
         end
         setShaderFloat('boyfriend', 'ang', math.rad(75))
         setShaderFloat('boyfriend', 'dist', 20)
+        setShaderFloat('dad', 'ang', math.rad(75))
+        setShaderFloat('dad', 'dist', 20)
 end
 
 local onTween1 = false

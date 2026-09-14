@@ -557,7 +557,7 @@ class PlayState extends MusicBeatState
 		if(SONG.stage == null || SONG.stage.length < 1)
 			SONG.stage = StageData.vanillaSongStage(Paths.formatToSongPath(Song.loadedSongName));
 
-		PauseSubState.miniSonicOffsets = [0, 0]
+		PauseSubState.miniSonicOffsets = [0, 0];
 		PauseSubState.miniSonicImage = Paths.formatToSongPath(SONG.song);
 		switch(Paths.formatToSongPath(SONG.song))
 		{

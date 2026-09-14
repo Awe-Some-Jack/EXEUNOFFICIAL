@@ -1,9 +1,9 @@
 local starlineAssets = {
 	['BGAssets'] = {
-		{name = 'cieeelo',     path = 'bg/horizonsky', x = -1900, y = -1300,                                                  scaleX = 6, scaleY = 6, scrollX = 0.8, scrollY = 1, antialiasing = false, alpha = 1, front = false},
-		{name = 'cieloFucked', path =   'bg/bgglitch', x = -1600, y = -1000, animName = 'idle', animPrefix = 'bgglitch idle', scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
-		{name = 'bg1',         path =       'bg/piso', x = -1600, y = -1000,                                                  scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 1, front = false},
-		{name = 'bg2',         path =      'bg/piso2', x = -1600, y = -1000,                                                  scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
+		{name = 'cieeelo',     path = 'bg/horizonsky', x = -1900, y = -1300,                                                                scaleX = 6, scaleY = 6, scrollX = 0.8, scrollY = 1, antialiasing = false, alpha = 1, front = false},
+		{name = 'cieloFucked', path =   'bg/bgglitch', x = -1600, y = -1000, animName = 'idle', animPrefix = 'bgglitch idle', loop = false, scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
+		{name = 'bg1',         path =       'bg/piso', x = -1600, y = -1000,                                                                scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 1, front = false},
+		{name = 'bg2',         path =      'bg/piso2', x = -1600, y = -1000,                                                                scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
 	},
 	['characters'] = {
 		{name = 'espio',    character = 'espio',      x =   930, y = 130,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
@@ -17,13 +17,16 @@ local starlineAssets = {
 		{name = 'wech',  char =   'anim',  x = 500, y = 300, scaleX =  4.6, scaleY = 4.6, antialiasing = false, alpha = 0, front = false},
 		{name = 'bf-gf', char =  'anim2',  x = 430, y = 180, scaleX =  3.8, scaleY = 3.8, antialiasing = false, alpha = 0, front = false},
 	},
+	['dontMiss'] = {
+		{name = 'chaotixStance', path = 'bg/characters/big-chaotix', x = -400, y = -50, animName = 'stance', animPrefix = 'big-chaotix stance', scaleX = 4, scaleY = 4, loop = false, scrollX = 1, scrollY = 1, camera = 'camHUD', antialiasing = false, alpha = 0, front = false},
+		{name =      'bfStance', path =      'bg/characters/big-bf', x =    0, y =   0, animName = 'stance', animPrefix =          'big-bf UP', scaleX = 4, scaleY = 4, loop = false, scrollX = 1, scrollY = 1, camera = 'camHUD', antialiasing = false, alpha = 0, front = false},
+	},
 	['icons'] = {
-		{name = 'bfStarlineIcon',            path = 'icons/icon-bfstarline',    xIcon = 1110, yIcon = {25, 535}, prefixThing = 'icon-bfstarline ',   positionFrom = 'iconBF',  alpha = 1},
-		{name = 'chaotixBeastStarlineIcon',  path = 'icons/icon-chaotixbeast',  xIcon =  500, yIcon = {25, 560}, prefixThing = 'icon-chaotixbeast ', positionFrom = 'iconOpp', alpha = 0},
-		{name = 'chaotixNormalStarlineIcon', path = 'icons/icon-chaotixnormal', xIcon =  500, yIcon = {5, 560}, prefixThing = 'icon-chaotixnormal ', positionFrom = 'iconOpp', alpha = 1}
+		{name = 'bfStarlineIcon',            path =    'icons/icon-bfstarline', xIcon = 1110, yIcon = {25, 535}, prefixThing =    'icon-bfstarline', positionFrom = 'iconBF',  alpha = 1},
+		{name = 'chaotixBeastStarlineIcon',  path =  'icons/icon-chaotixbeast', xIcon =  500, yIcon = {25, 560}, prefixThing =  'icon-chaotixbeast', positionFrom = 'iconOpp', alpha = 0},
+		{name = 'chaotixNormalStarlineIcon', path = 'icons/icon-chaotixnormal', xIcon =  500, yIcon = {5,  560}, prefixThing = 'icon-chaotixnormal', positionFrom = 'iconOpp', alpha = 1}
 	}
 }
-
 
 -- [[VARIABLES]]
 local glitchedActive = false
@@ -38,13 +41,14 @@ local changeIdles = false
 local function createSprite(sexo)
 	if sexo.animName then
 		makeAnimatedLuaSprite(sexo.name, sexo.path, sexo.x, sexo.y)
-		addAnimationByPrefix(sexo.name, sexo.animName, sexo.animPrefix, 10, true)
+		addAnimationByPrefix(sexo.name, sexo.animName, sexo.animPrefix, 10, sexo.loop)
 	else
 		makeLuaSprite(sexo.name, sexo.path, sexo.x, sexo.y)
 	end
 	scaleObject(sexo.name, sexo.scaleX, sexo.scaleY)
 	setScrollFactor(sexo.name, sexo.scrollX, sexo.scrollY)
 	setProperty(sexo.name..'.antialiasing', sexo.antialiasing)
+	if sexo.camera then setObjectCamera(sexo.name, sexo.camera) end
 	setProperty(sexo.name..'.alpha', sexo.alpha)
 	addLuaSprite(sexo.name, sexo.front)
 end
@@ -73,6 +77,7 @@ local function createIcon(icon)
 	setProperty(icon.name..'.antialiasing', false)
 	setObjectCamera(icon.name, 'camHUD')
 	scaleObject(icon.name, 3.2, 3.2)
+	playAnim(icon.name, 'normal', true)
 	setObjectOrder(icon.name, getObjectOrder('healthBG'))
 	addLuaSprite(icon.name)
 end
@@ -92,6 +97,7 @@ end
 
 function onCreatePost()
 	for _, bgs   in ipairs(starlineAssets['BGAssets'])      do	              createSprite(bgs) end
+	for _, chrs  in ipairs(starlineAssets['dontMiss'])      do	             createSprite(chrs) end
 	for _, chars in ipairs(starlineAssets['characters'])    do	         createCharacter(chars) end
 	for _, chars in ipairs(starlineAssets['cutsceneChars']) do	createCutsceneCharacters(chars) end
 
@@ -101,7 +107,6 @@ function onCreatePost()
 
 	createTails()
 
-
 	makeLuaSprite('blackOverlay', nil, getProperty('dad.x') - 120, -320)
 	makeGraphic('blackOverlay', screenWidth * 1.8, screenHeight * 1.8, '000000')
 	setScrollFactor('blackOverlay', 0, 0)
@@ -109,7 +114,7 @@ function onCreatePost()
 	addLuaSprite('blackOverlay', false)
 
 	setScrollFactor('gf', 1, 1)
-	setObjectOrder('blackOverlay', getObjectOrder('gfGroup'))
+	setObjectOrder('blackOverlay', getObjectOrder('gfGroup') - 1)
 end
 
 function spawnStar()
@@ -158,6 +163,7 @@ luaDebugMode = true
 local starlineEvents = {
 	['startAnim'] = function(number)
 		if number == '1' then
+			setProperty('gf.skipDance', true)
 			transPlaying = true
 			setProperty('dad.specialAnim', true)
 			playAnim('dad', 'trans1', true)
@@ -193,6 +199,8 @@ local starlineEvents = {
 		transPlaying = false
 		canFly = false
 		changeIdles = true
+
+		runTimer('gfReaction3', 1)
 		triggerEvent('Change Character', '1', 'beast_chaotix')
 		callMethod('dad.setPosition', {-376.9, 120.7})
 		cancelTween('fadeToBlack')
@@ -210,6 +218,25 @@ local starlineEvents = {
 		setProperty('bg2.alpha', 1)
 		setProperty('tails.alpha', 1)
 		setProperty('cieloFucked.alpha', 1)
+	end,
+	['dontMiss'] = function(mode)
+		if mode == 'chaotix' then
+			for _, chars in ipairs({'boyfriend', 'dad', 'gf'}) do setProperty(chars..'.visible', false) end
+			for _, chars in ipairs(starlineAssets["characters"]) do setProperty(chars.name..'.visible', false) end
+
+			setProperty('chaotixStance.alpha', 1) playAnim('chaotixStance', 'stance', true)
+			doTweenX('chaotixStanceX', 'chaotixStance', getProperty('chaotixStance.x') - 200, 0.5, 'circOut')
+		end
+		if mode == 'bf' then
+			setProperty('chaotixStance.alpha', 0) setProperty('bfStance.alpha', 1) playAnim('bfStance', 'stance', true)
+			doTweenX('bfStanceX', 'bfStance', getProperty('bfStance.x') + 200, 0.5, 'circOut')
+		end
+		if mode == 'back' then
+			for _, chars in ipairs({'boyfriend', 'dad', 'gf'}) do setProperty(chars..'.visible', true) end
+			for _, chars in ipairs(starlineAssets["characters"]) do setProperty(chars.name..'.visible', true) end
+
+			removeLuaSprite('chaotixStance', true) removeLuaSprite('bfStance', true)
+		end
 	end,
 	['fadeSong'] = function() doTweenAlpha('fadeSongTween', 'BlackGraphicOther', 1, 4) end
 }
@@ -263,7 +290,9 @@ function onUpdatePost(e)
 	flyHold = flyHold + e
 	if glitchedActive then setProperty('tails.y', tailsBaseY + getRandomInt(-8, 8))	end
 	if transPlaying then setProperty('dad.specialAnim', true) end
-	if getProperty('dad.animation.curAnim.name') == 'trans2' and getProperty('dad.animation.curAnim.finished') and transPlaying then playAnim('dad', 'trans3', true) end
+	if getProperty('dad.animation.curAnim.name') == 'trans2'    and getProperty('dad.animation.curAnim.finished') and transPlaying then playAnim('dad', 'trans3', true) end
+	if getProperty('gf.animation.curAnim.name')  == 'reaction1' and getProperty('gf.animation.curAnim.finished')  and transPlaying then playAnim('gf', 'reaction2', true) end
+	if getProperty('gf.animation.curAnim.name')  == 'reaction3' and getProperty('gf.animation.curAnim.finished') then setProperty('gf.skipDance', false) end
 	for _, beatGuys in ipairs(starlineAssets['characters']) do
 		if beatGuys.canFloat and canFly then
 			callMethod(beatGuys.name..'.setPosition', {
@@ -278,4 +307,8 @@ end
 
 function opponentNoteHitPre(i)
 	if getProperty('dad.animation.curAnim.name') == 'trans1' and not getPropertyFromGroup('notes', i, 'mustPress') then setPropertyFromGroup('notes', i, 'noAnimation', true) end
+end
+
+function onTimerCompleted(t)
+	if t == 'gfReaction3' then playAnim('gf', 'reaction3', true) end
 end

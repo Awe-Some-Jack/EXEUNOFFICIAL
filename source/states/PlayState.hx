@@ -3775,7 +3775,7 @@ class PlayState extends MusicBeatState
 			case 'manual-blast':
 				if (curBeat >= 192) 
 				{
-					PauseSubState.miniSonicOffsets = [-3, 0]
+					PauseSubState.miniSonicOffsets = [-3, 0];
 					PauseSubState.miniSonicImage = 'manual-blast-2';
 				}
 			case 'haze':

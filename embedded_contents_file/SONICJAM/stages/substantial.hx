@@ -16,6 +16,7 @@ var floor    :FlxSprite;
 var spotlight:FlxSprite;
 
 var charPositions:Array<Array<Float>> = [];
+var healthStuff:Array<String> = ["hbBG", "hbHealth", "hbHealth2", "separatorHealth", "iconBF", "iconOpp", "healthBG"];
 
 var whiteGraphic:FlxSprite;
 function onCreate()
@@ -216,6 +217,7 @@ function onEvent(e, v1, v2)
 		{
 			if (v2 == 'start')
 			{
+				for (health in healthStuff) FlxTween.tween(game.getLuaObject(health), {alpha: 0}, 1);
 				FlxTween.num(1, 0.8, 1, {ease:FlxEase.circIn}, (val:Float) -> defaultCamHUD = val);
 				FlxTween.tween(floor, {y: floor.y + 1250}, 1, {ease: FlxEase.circIn, onComplete: () -> {areFloating = true; areFloatingHUD = true;}});
 				FlxTween.tween(boyfriend, {x: boyfriend.x + 150}, 1, {ease: FlxEase.circIn});
@@ -229,10 +231,12 @@ function onEvent(e, v1, v2)
 				
 				FlxTween.tween(boyfriend, {x: charPositions[0][0], y: charPositions[0][1], angle: 0}, 3, {ease: FlxEase.circOut});
 				FlxTween.tween(dad,       {x: charPositions[1][0], y: charPositions[1][1], angle: 0}, 3, {ease: FlxEase.circOut});
+
 				boyfriend.angularVelocity = 0;
 				dad.angularVelocity       = 0;
-
+				
 				FlxTween.tween(camHUD, {angle: 0, y: 0}, 3, {ease: FlxEase.circOut});
+				for (health in healthStuff) FlxTween.tween(game.getLuaObject(health), {alpha: 1}, 1);
 				game.defaultCamHUD = 1;
 			}
 		}
@@ -268,13 +272,15 @@ function onEvent(e, v1, v2)
 
 			areFloatingIntense = false;
 			areFloatingHUD = false;
-			areFloating = true;
+			areFloating = false;
 
-			FlxTween.tween(camHUD, {angle: 0, y: 0}, 3, {ease: FlxEase.circOut});
+			FlxTween.tween(camHUD, {angle: 0, x: 0, y: 0}, 3, {ease: FlxEase.circOut});
+			FlxTween.tween(boyfriend, {x: charPositions[0][0], y: charPositions[0][1], angle: 0}, 8, {ease: FlxEase.circOut});
+			FlxTween.tween(dad,       {x: charPositions[1][0], y: charPositions[1][1], angle: 0}, 8, {ease: FlxEase.circOut});
 		}
 		if (v1 == 'fadeEverything'){
 			for (chars in [boyfriend, dad]) FlxTween.tween(chars, {alpha: 0}, 3, {startDelay: 1});
-		    FlxTween.tween(camHUD, {alpha: 0}, 1.2, {startDelay: 3.5});
+		    FlxTween.tween(camHUD, {alpha: 0}, 2.2, {startDelay: 3.5});
 		    FlxTween.tween(game.getLuaObject("BlackGraphicOther"), {alpha: 1}, 2, {startDelay: 5});
 		}
 	}

@@ -1,9 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="gf-chaotix.png">
-<SubTexture name="left0000" x="0" y="44" width="41" height="42" frameX="-6" frameY="-2" frameWidth="54" frameHeight="41" />
-<SubTexture name="left0001" x="41" y="0" width="41" height="43" frameX="-6" frameY="-1" frameWidth="54" frameHeight="41" />
-<SubTexture name="left0002" x="0" y="0" width="41" height="44" frameX="-6" frameY="0" frameWidth="54" frameHeight="41" />
-<SubTexture name="right0000" x="41" y="44" width="41" height="42" frameX="-6" frameY="-2" frameWidth="54" frameHeight="41" />
-<SubTexture name="right0001" x="82" y="44" width="41" height="42" frameX="-6" frameY="-2" frameWidth="54" frameHeight="41" />
-<SubTexture name="right0002" x="82" y="0" width="41" height="43" frameX="-6" frameY="-1" frameWidth="54" frameHeight="41" />
+<SubTexture name="gf-chaotix left0000" x="0" y="40" width="37" height="38" frameX="-6" frameY="-2" frameWidth="54" frameHeight="41" />
+<SubTexture name="gf-chaotix left0001" x="37" y="0" width="37" height="39" frameX="-6" frameY="-1" frameWidth="54" frameHeight="41" />
+<SubTexture name="gf-chaotix left0002" x="0" y="0" width="37" height="40" frameX="-6" frameY="0" frameWidth="54" frameHeight="41" />
+<SubTexture name="gf-chaotix right0000" x="0" y="78" width="37" height="37" frameX="-6" frameY="-2" frameWidth="54" frameHeight="41" />
+<SubTexture name="gf-chaotix right0001" x="37" y="78" width="37" height="37" frameX="-6" frameY="-2" frameWidth="54" frameHeight="41" />
+<SubTexture name="gf-chaotix right0002" x="74" y="0" width="37" height="39" frameX="-6" frameY="-1" frameWidth="54" frameHeight="41" />
+<SubTexture name="gf-chaotix what0000" x="0" y="40" width="37" height="38" frameX="-6" frameY="-2" frameWidth="46" frameHeight="41" />
+<SubTexture name="gf-chaotix what0001" x="37" y="40" width="37" height="38" frameX="-6" frameY="-2" frameWidth="46" frameHeight="41" />
+<SubTexture name="gf-chaotix what0002" x="74" y="40" width="37" height="38" frameX="-6" frameY="-2" frameWidth="46" frameHeight="41" />
+<SubTexture name="gf-chaotix oh0000" x="111" y="0" width="37" height="38" frameX="-6" frameY="-2" frameWidth="46" frameHeight="41" />
+<SubTexture name="gf-chaotix ok0000" x="111" y="38" width="37" height="38" frameX="-6" frameY="-2" frameWidth="46" frameHeight="41" />
+<SubTexture name="gf-chaotix ok0001" x="37" y="40" width="37" height="38" frameX="-6" frameY="-2" frameWidth="46" frameHeight="41" />
+<SubTexture name="gf-chaotix ok0002" x="0" y="40" width="37" height="38" frameX="-6" frameY="-2" frameWidth="46" frameHeight="41" />
 </TextureAtlas>

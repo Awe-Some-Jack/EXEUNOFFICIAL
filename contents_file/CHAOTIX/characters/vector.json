@@ -1,20 +1,20 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [0, 0],
-			"anim": "idle",
+			"indices": [],
 			"fps": 9,
-			"name": "idle",
-			"indices": []
+			"anim": "idle",
+			"loop": false,
+			"name": "vector idle"
 		},
 		{
-			"loop": true,
-			"offsets": [-53, 18],
-			"anim": "idle-alt",
+			"offsets": [-59, 18],
+			"indices": [],
 			"fps": 9,
-			"name": "scared",
-			"indices": []
+			"anim": "idle-alt",
+			"loop": true,
+			"name": "vector scared"
 		}
 	],
 	"vocals_file": "",

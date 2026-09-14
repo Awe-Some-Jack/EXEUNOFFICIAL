@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="vector.png">
-<SubTexture name="idle0000" x="164" y="61" width="41" height="59" frameX="-10" frameY="-3" frameWidth="75" frameHeight="58" />
-<SubTexture name="idle0001" x="0" y="124" width="42" height="60" frameX="-9" frameY="-2" frameWidth="75" frameHeight="58" />
-<SubTexture name="idle0002" x="0" y="63" width="41" height="61" frameX="-11" frameY="-1" frameWidth="75" frameHeight="58" />
-<SubTexture name="idle0003" x="41" y="63" width="42" height="61" frameX="-12" frameY="-1" frameWidth="75" frameHeight="58" />
-<SubTexture name="idle0004" x="83" y="124" width="44" height="56" frameX="-12" frameY="-6" frameWidth="75" frameHeight="58" />
-<SubTexture name="idle0005" x="42" y="124" width="41" height="58" frameX="-11" frameY="-4" frameWidth="75" frameHeight="58" />
-<SubTexture name="scared0000" x="124" y="63" width="40" height="59" frameX="-3" frameY="-6" frameWidth="44" frameHeight="63" />
-<SubTexture name="scared0001" x="83" y="63" width="41" height="61" frameX="-3" frameY="-4" frameWidth="44" frameHeight="63" />
-<SubTexture name="scared0002" x="41" y="0" width="41" height="62" frameX="-3" frameY="-3" frameWidth="44" frameHeight="63" />
-<SubTexture name="scared0003" x="82" y="0" width="41" height="62" frameX="-3" frameY="-3" frameWidth="44" frameHeight="63" />
-<SubTexture name="scared0004" x="0" y="0" width="41" height="63" frameX="-3" frameY="-2" frameWidth="44" frameHeight="63" />
-<SubTexture name="scared0005" x="123" y="0" width="41" height="62" frameX="-3" frameY="-3" frameWidth="44" frameHeight="63" />
-<SubTexture name="scared0006" x="164" y="0" width="41" height="61" frameX="-3" frameY="-4" frameWidth="44" frameHeight="63" />
+<SubTexture name="vector idle0000" x="0" y="116" width="37" height="55" frameX="-10" frameY="-3" frameWidth="75" frameHeight="58" />
+<SubTexture name="vector idle0001" x="148" y="0" width="38" height="56" frameX="-9" frameY="-2" frameWidth="75" frameHeight="58" />
+<SubTexture name="vector idle0002" x="111" y="0" width="37" height="57" frameX="-11" frameY="-1" frameWidth="75" frameHeight="58" />
+<SubTexture name="vector idle0003" x="0" y="59" width="38" height="57" frameX="-12" frameY="-1" frameWidth="75" frameHeight="58" />
+<SubTexture name="vector idle0004" x="74" y="116" width="40" height="52" frameX="-12" frameY="-6" frameWidth="75" frameHeight="58" />
+<SubTexture name="vector idle0005" x="37" y="116" width="37" height="54" frameX="-11" frameY="-4" frameWidth="75" frameHeight="58" />
+<SubTexture name="vector scared0000" x="112" y="59" width="36" height="55" frameX="-3" frameY="-6" frameWidth="44" frameHeight="63" />
+<SubTexture name="vector scared0001" x="148" y="56" width="37" height="56" frameX="-3" frameY="-5" frameWidth="44" frameHeight="63" />
+<SubTexture name="vector scared0002" x="38" y="59" width="37" height="57" frameX="-3" frameY="-4" frameWidth="44" frameHeight="63" />
+<SubTexture name="vector scared0003" x="37" y="0" width="37" height="58" frameX="-3" frameY="-3" frameWidth="44" frameHeight="63" />
+<SubTexture name="vector scared0004" x="0" y="0" width="37" height="59" frameX="-3" frameY="-2" frameWidth="44" frameHeight="63" />
+<SubTexture name="vector scared0005" x="74" y="0" width="37" height="58" frameX="-3" frameY="-3" frameWidth="44" frameHeight="63" />
+<SubTexture name="vector scared0006" x="75" y="59" width="37" height="57" frameX="-3" frameY="-4" frameWidth="44" frameHeight="63" />
 </TextureAtlas>

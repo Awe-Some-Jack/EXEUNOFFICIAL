@@ -23,10 +23,11 @@ function onGameOverStart()
 	FlxG.camera.scroll.set(0, 0);
 	FlxG.camera.zoom = 0.5;
 	FlxTween.tween(FlxG.camera, {zoom: 1.2}, 2, {ease: FlxEase.cubeInOut});
-	FlxTween.num(1, 0, 3, {ease: FlxEase.cubeInOut}, n -> {
-		FlxG.camera.targetOffset.x = n * 100;
-		FlxG.camera.targetOffset.y = n * 100;
-		FlxG.camera.snapToTarget();
+	FlxTween.num(0, 1, 2, {ease: FlxEase.cubeInOut}, n -> {
+		deadBoyfriend.setPosition(
+			980 - (n * 50),
+			430 - (n * 100)
+		);
 	});
 
 	deadMusic = new FlxSound();

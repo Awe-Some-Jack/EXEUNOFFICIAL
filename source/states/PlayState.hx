@@ -557,12 +557,15 @@ class PlayState extends MusicBeatState
 		if(SONG.stage == null || SONG.stage.length < 1)
 			SONG.stage = StageData.vanillaSongStage(Paths.formatToSongPath(Song.loadedSongName));
 
+		PauseSubState.miniSonicOffsets = [0, 0]
 		PauseSubState.miniSonicImage = Paths.formatToSongPath(SONG.song);
 		switch(Paths.formatToSongPath(SONG.song))
 		{
 			case 'final-escape': PauseSubState.miniSonicImage = 'triple-trouble-7';
 			case 'manual-blast': PauseSubState.miniSonicImage = 'hedge';
 			case 'prey': PauseSubState.miniSonicImage = 'sonic';
+			case 'fate': PauseSubState.miniSonicOffsets = [-6, 0];
+			case 'hijacked-transmission': PauseSubState.miniSonicOffsets = [-12, 0];
 		}
 
 		curStage = SONG.stage;
@@ -3756,17 +3759,25 @@ class PlayState extends MusicBeatState
 			case 'hellbent':
 				if (curBeat >= 296) PauseSubState.miniSonicImage = 'hellbent-2';
 			case 'fate':
-				if (curBeat >= 224) PauseSubState.miniSonicImage = 'fate-2';
-				if (curBeat >= 579) PauseSubState.miniSonicImage = 'fate-3';
+				if (curBeat >= 136) PauseSubState.miniSonicImage = 'fate-2';
+				if (curBeat >= 224) PauseSubState.miniSonicImage = 'fate-3';
+				if (curBeat >= 508) PauseSubState.miniSonicImage = 'fate-4';
+				if (curBeat >= 579) PauseSubState.miniSonicImage = 'fate-5';
 			case 'endless-jp':
 				if (curBeat >= 228) PauseSubState.miniSonicImage = 'endless-jp-2';
 				if (curBeat >= 292 && curBeat < 356) PauseSubState.miniSonicImage = 'endless-jp';
+			case 'soulless':
+				if (curBeat >= 136) PauseSubState.miniSonicImage = 'soulless-2';
 			case 'too-fest':
 				if (curBeat >= 296) PauseSubState.miniSonicImage = 'too-fest-2';
 			case 'starline':
 				if (curBeat >= 272) PauseSubState.miniSonicImage = 'starline-2';
 			case 'manual-blast':
-				if (curBeat >= 192) PauseSubState.miniSonicImage = 'manual-blast-2';
+				if (curBeat >= 192) 
+				{
+					PauseSubState.miniSonicOffsets = [-3, 0]
+					PauseSubState.miniSonicImage = 'manual-blast-2';
+				}
 			case 'haze':
 				if (curBeat >= 99) PauseSubState.miniSonicImage = 'haze-2';
 				if (curBeat >= 400) PauseSubState.miniSonicImage = 'haze-3';
@@ -3785,6 +3796,9 @@ class PlayState extends MusicBeatState
 			case 'prey':
 				if (curBeat >= 60) PauseSubState.miniSonicImage = 'prey';
 				if (curBeat >= 388) PauseSubState.miniSonicImage = 'prey-2';
+			case 'fight-or-flight':
+				if (curBeat >= 296) PauseSubState.miniSonicImage = 'fight-or-flight-2';
+				if (curBeat >= 505) PauseSubState.miniSonicImage = 'fight-or-flight';
 			case 'deception':
 				if (curBeat >= 128) PauseSubState.miniSonicImage = 'deception-2';
 			case 'malediction':

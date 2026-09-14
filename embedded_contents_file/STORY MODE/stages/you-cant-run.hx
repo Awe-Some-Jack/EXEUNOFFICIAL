@@ -142,6 +142,8 @@ var stageEvents:Map<String, Void->Void> = [
 
 		PlayState.stageUI = "normal"; 
 		reloadNotes();
+
+		game.getLuaObject('iconOpp').changeIcon('XENO-P22');
 	}
 ];
 

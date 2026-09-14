@@ -1,191 +1,191 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "Idle",
-			"indices": []
+			"indices": [],
+			"name": "Idle"
 		},
 		{
+			"offsets": [601, 79],
 			"loop": false,
-			"offsets": [702, 92],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "Left",
-			"indices": []
+			"indices": [],
+			"name": "Left"
 		},
 		{
+			"offsets": [144, -38],
 			"loop": false,
-			"offsets": [168, -44],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Down",
-			"indices": []
+			"indices": [],
+			"name": "Down"
 		},
 		{
+			"offsets": [260, 419],
 			"loop": false,
-			"offsets": [304, 489],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "Up",
-			"indices": []
+			"indices": [],
+			"name": "Up"
 		},
 		{
+			"offsets": [208, -36],
 			"loop": false,
-			"offsets": [243, -42],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "Right",
-			"indices": []
+			"indices": [],
+			"name": "Right"
 		},
 		{
+			"offsets": [0, 87],
 			"loop": true,
-			"offsets": [0, 101],
+			"fps": 24,
 			"anim": "idle-g1",
-			"fps": 24,
-			"name": "glitch1 Idle",
-			"indices": []
+			"indices": [],
+			"name": "glitch1 Idle"
 		},
 		{
+			"offsets": [652, 185],
 			"loop": false,
-			"offsets": [762, 216],
+			"fps": 24,
 			"anim": "singLEFT-g1",
-			"fps": 24,
-			"name": "glitch1 Left",
-			"indices": []
+			"indices": [],
+			"name": "glitch1 Left"
 		},
 		{
+			"offsets": [144, -34],
 			"loop": false,
-			"offsets": [168, -40],
+			"fps": 24,
 			"anim": "singDOWN-g1",
-			"fps": 24,
-			"name": "glitch1 Down",
-			"indices": []
+			"indices": [],
+			"name": "glitch1 Down"
 		},
 		{
+			"offsets": [260, 441],
 			"loop": false,
-			"offsets": [304, 516],
+			"fps": 24,
 			"anim": "singUP-g1",
-			"fps": 24,
-			"name": "glitch1 Up",
-			"indices": []
+			"indices": [],
+			"name": "glitch1 Up"
 		},
 		{
+			"offsets": [208, -32],
 			"loop": false,
-			"offsets": [243, -38],
+			"fps": 24,
 			"anim": "singRIGHT-g1",
-			"fps": 24,
-			"name": "glitch1 Right",
-			"indices": []
+			"indices": [],
+			"name": "glitch1 Right"
 		},
 		{
+			"offsets": [0, 87],
 			"loop": true,
-			"offsets": [0, 102],
+			"fps": 24,
 			"anim": "idle-g2",
-			"fps": 24,
-			"name": "glitch2 Idle",
-			"indices": []
+			"indices": [],
+			"name": "glitch2 Idle"
 		},
 		{
+			"offsets": [601, 139],
 			"loop": false,
-			"offsets": [702, 162],
+			"fps": 24,
 			"anim": "singLEFT-g2",
-			"fps": 24,
-			"name": "glitch2 Left",
-			"indices": []
+			"indices": [],
+			"name": "glitch2 Left"
 		},
 		{
+			"offsets": [144, -38],
 			"loop": false,
-			"offsets": [169, -45],
+			"fps": 24,
 			"anim": "singDOWN-g2",
-			"fps": 24,
-			"name": "glitch2 Down",
-			"indices": []
+			"indices": [],
+			"name": "glitch2 Down"
 		},
 		{
+			"offsets": [260, 441],
 			"loop": false,
-			"offsets": [304, 515],
+			"fps": 24,
 			"anim": "singUP-g2",
-			"fps": 24,
-			"name": "glitch2 Up",
-			"indices": []
+			"indices": [],
+			"name": "glitch2 Up"
 		},
 		{
+			"offsets": [208, 35],
 			"loop": false,
-			"offsets": [243, 41],
+			"fps": 24,
 			"anim": "singRIGHT-g2",
-			"fps": 24,
-			"name": "glitch2 Right",
-			"indices": []
+			"indices": [],
+			"name": "glitch2 Right"
 		},
 		{
+			"offsets": [0, 87],
 			"loop": true,
-			"offsets": [0, 101],
+			"fps": 24,
 			"anim": "idle-g3",
-			"fps": 24,
-			"name": "glitch3 Idle",
-			"indices": []
+			"indices": [],
+			"name": "glitch3 Idle"
 		},
 		{
+			"offsets": [907, 403],
 			"loop": false,
-			"offsets": [1060, 470],
+			"fps": 24,
 			"anim": "singLEFT-g3",
-			"fps": 24,
-			"name": "glitch3 Left",
-			"indices": []
+			"indices": [],
+			"name": "glitch3 Left"
 		},
 		{
+			"offsets": [144, -38],
 			"loop": false,
-			"offsets": [168, -45],
+			"fps": 24,
 			"anim": "singDOWN-g3",
-			"fps": 24,
-			"name": "glitch3 Down",
-			"indices": []
+			"indices": [],
+			"name": "glitch3 Down"
 		},
 		{
+			"offsets": [260, 441],
 			"loop": false,
-			"offsets": [304, 516],
+			"fps": 24,
 			"anim": "singUP-g3",
-			"fps": 24,
-			"name": "glitch3 Up",
-			"indices": []
+			"indices": [],
+			"name": "glitch3 Up"
 		},
 		{
+			"offsets": [208, 1],
 			"loop": false,
-			"offsets": [243, 0],
+			"fps": 24,
 			"anim": "singRIGHT-g3",
+			"indices": [],
+			"name": "glitch3 Right"
+		},
+		{
+			"loop": false,
+			"offsets": [185, 169],
+			"anim": "sad",
 			"fps": 24,
-			"name": "glitch3 Right",
+			"name": "triste",
 			"indices": []
 		},
 		{
-			"offsets": [217, 199],
 			"loop": false,
-			"fps": 24,
-			"anim": "sad",
-			"indices": [],
-			"name": "triste"
-		},
-		{
-			"offsets": [213, 326],
-			"loop": false,
-			"fps": 24,
+			"offsets": [182, 279],
 			"anim": "replace",
-			"indices": [],
-			"name": "no replace"
+			"fps": 24,
+			"name": "no replace",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/atlas/scorched",
-	"position": [-1100, -950],
+	"image": "characters/scorched",
+	"position": [-296, -967],
 	"healthicon": "scorched",
 	"flip_x": false,
 	"healthbar_colors": [23, 30, 74],
 	"camera_position": [0, 0],
 	"sing_duration": 14,
-	"scale": 0.9,
+	"scale": 0.77,
 	"_editor_isPlayer": false
 }

@@ -3822,7 +3822,7 @@
 		[
 			151708.72953697,
 			[
-				["hazeEvents", "tweenObject", "missingPoster, 1, 2"],
+				["hazeEvents", "tweenObject", "missingPoster, 1, 22"],
 				["Tween Camera Zoom", "1.4, true", "0.001"],
 				["Tweening Camera", "0, 90", "0.001, linear"],
 				["Set Property", "cameraSpeed", "100000"]

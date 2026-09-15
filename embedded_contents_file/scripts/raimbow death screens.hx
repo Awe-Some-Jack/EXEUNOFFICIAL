@@ -62,7 +62,7 @@ function setCustomGameOvers() {
             exeGameOvers = true;
             GameOverSubstate.characterName  = "lordx-death";
             GameOverSubstate.deathSoundName = "crushDeath";
-            charPositions = [500, 350];
+            charPositions = [480, 350];
 
             initialDeathZoom = 0.7;
 
@@ -174,7 +174,7 @@ function setCustomEvents() {
             head.anim.addBySymbol('deathstart', 'deahrt', 24, false);
             head.anim.addBySymbol('deathloop', 'loop', 24, true);
             head.anim.play('deathstart');
-            head.scale.set(1.5, 1.5);
+            head.scale.set(1.7, 1.7);
             head.anim.onFinish.add( name -> {
                 head.anim.play('deathloop');
             });

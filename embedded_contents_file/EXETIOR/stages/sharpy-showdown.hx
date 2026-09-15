@@ -69,7 +69,7 @@ function onEvent(n,v1,v2)
 				exeeye.alpha = 0;
 				dad.alpha = 0;
 				boyfriend.alpha = 0;
-			case 'si':
+			case 'si': 
 			case 'hideHUD':
 				for (spr in hudSprites) FlxTween.tween(game.getLuaObject(spr), {alpha: (v2 == 'true' ? 1 : 0)}, 1.2);
 				for (i in 0...8) FlxTween.tween(strumLineNotes.members[i], {alpha: (v2 == 'true' ? 1 : 0)}, 1.2);
@@ -91,6 +91,7 @@ function onEvent(n,v1,v2)
 				}
 			case 'part1':
 				for (spr in stage) spr.sprite.alpha = 1;
+				gf.alpha = 1;
 			case 'tweenObject':
 				var split = v2.split(', ');
 				FlxTween.tween(camHUD, {alpha: Std.parseFloat(split[1])}, Std.parseFloat(split[2]));

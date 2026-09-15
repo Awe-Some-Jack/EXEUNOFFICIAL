@@ -71,8 +71,8 @@ end
 
 local function createIcon(icon)
 	makeAnimatedLuaSprite(icon.name, icon.path, icon.xIcon, downscroll and icon.yIcon[1] or icon.yIcon[2]) -- Positions kinda doesnt matter here cause the xml is fucked up dude
-	addAnimationByPrefix(icon.name, 'normal', icon.prefixThing..'normal', 8, true)
-	addAnimationByPrefix(icon.name, 'losing', icon.prefixThing..'losing', 8, true)
+	addAnimationByPrefix(icon.name, 'normal', icon.prefixThing..' normal', 8, true)
+	addAnimationByPrefix(icon.name, 'losing', icon.prefixThing..' losing', 8, true)
 	setProperty(icon.name..'.alpha', icon.alpha)
 	setProperty(icon.name..'.antialiasing', false)
 	setObjectCamera(icon.name, 'camHUD')
@@ -226,6 +226,7 @@ local starlineEvents = {
 
 			setProperty('chaotixStance.alpha', 1) playAnim('chaotixStance', 'stance', true)
 			doTweenX('chaotixStanceX', 'chaotixStance', getProperty('chaotixStance.x') - 200, 0.5, 'circOut')
+			setProperty('bg2.alpha', 0)
 		end
 		if mode == 'bf' then
 			setProperty('chaotixStance.alpha', 0) setProperty('bfStance.alpha', 1) playAnim('bfStance', 'stance', true)
@@ -236,6 +237,7 @@ local starlineEvents = {
 			for _, chars in ipairs(starlineAssets["characters"]) do setProperty(chars.name..'.visible', true) end
 
 			removeLuaSprite('chaotixStance', true) removeLuaSprite('bfStance', true)
+			setProperty('bg2.alpha', 1)
 		end
 	end,
 	['fadeSong'] = function() doTweenAlpha('fadeSongTween', 'BlackGraphicOther', 1, 4) end

@@ -1,76 +1,76 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [-73, 0],
-			"loop": false,
-			"fps": 11,
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "bf-chaotix missright"
+			"fps": 11,
+			"name": "bf-chaotix missright",
+			"indices": []
 		},
 		{
-			"offsets": [95, 42],
 			"loop": false,
-			"fps": 11,
+			"offsets": [93, 42],
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "bf-chaotix missleft"
+			"fps": 11,
+			"name": "bf-chaotix missleft",
+			"indices": []
 		},
 		{
-			"offsets": [-56, 0],
 			"loop": false,
-			"fps": 11,
+			"offsets": [-66, 0],
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "bf-chaotix missup"
-		},
-		{
-			"offsets": [-60, 0],
-			"loop": false,
 			"fps": 11,
+			"name": "bf-chaotix missup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-61, 0],
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "bf-chaotix missdown"
+			"fps": 11,
+			"name": "bf-chaotix missdown",
+			"indices": []
 		},
 		{
-			"offsets": [17, 24],
 			"loop": false,
-			"fps": 24,
+			"offsets": [15, 24],
 			"anim": "singLEFT",
-			"indices": [0, 0, 1, 1],
-			"name": "bf-chaotix left"
+			"fps": 24,
+			"name": "bf-chaotix left",
+			"indices": [0, 0, 1, 1]
 		},
 		{
+			"loop": false,
 			"offsets": [12, 24],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [0, 0, 1, 1],
-			"name": "bf-chaotix up"
+			"fps": 24,
+			"name": "bf-chaotix up",
+			"indices": [0, 0, 1, 1]
 		},
 		{
-			"offsets": [17, 24],
 			"loop": false,
-			"fps": 24,
+			"offsets": [17, 24],
 			"anim": "singDOWN",
-			"indices": [0, 0, 1, 1],
-			"name": "bf-chaotix down"
-		},
-		{
-			"offsets": [17, 24],
-			"loop": false,
 			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [0, 0, 1, 1],
-			"name": "bf-chaotix right"
+			"name": "bf-chaotix down",
+			"indices": [0, 0, 1, 1]
 		},
 		{
-			"offsets": [-1, 0],
 			"loop": false,
-			"fps": 18,
+			"offsets": [17, 24],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "bf-chaotix right",
+			"indices": [0, 0, 1, 1]
+		},
+		{
+			"loop": false,
+			"offsets": [-1, 0],
 			"anim": "idle",
-			"indices": [0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
-			"name": "bf-chaotix idle"
+			"fps": 18,
+			"name": "bf-chaotix idle",
+			"indices": [0, 0, 1, 1, 2, 2, 3, 3, 4, 4]
 		}
 	],
 	"vocals_file": "",

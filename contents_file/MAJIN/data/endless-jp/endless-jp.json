@@ -2923,9 +2923,7 @@
 		[
 			0,
 			[
-				["Change Health Damage", "0.009", ""],
-				["Tweening Camera", "250, -800", "0.001, linear"],
-				["Tween Camera Zoom", "1.1, true", "0.001, linear"]
+				["Change Health Damage", "0.009", ""]
 			]
 		],
 		[

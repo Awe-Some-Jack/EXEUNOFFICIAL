@@ -1,108 +1,108 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": true,
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [230, -1],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-12, -6],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [0, 110],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-3, -3],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-14, -17],
-			"indices": [],
-			"fps": 24,
 			"anim": "laugh",
-			"loop": false,
-			"name": "laugh"
+			"fps": 24,
+			"name": "laugh",
+			"indices": []
 		},
 		{
-			"offsets": [-116, -70],
-			"indices": [],
-			"fps": 24,
-			"anim": "idle-alt",
 			"loop": true,
-			"name": "madidle"
+			"offsets": [-116, -70],
+			"anim": "idle-alt",
+			"fps": 24,
+			"name": "madidle",
+			"indices": []
 		},
 		{
-			"offsets": [171, 46],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [140, 33],
 			"anim": "singLEFT-alt",
-			"loop": false,
-			"name": "madleft"
+			"fps": 24,
+			"name": "madleft",
+			"indices": []
 		},
 		{
-			"offsets": [10, -77],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [-1, -76],
 			"anim": "singDOWN-alt",
-			"loop": false,
-			"name": "maddown"
+			"fps": 24,
+			"name": "maddown",
+			"indices": []
 		},
 		{
-			"offsets": [61, 173],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [52, 148],
 			"anim": "singUP-alt",
-			"loop": false,
-			"name": "madup"
+			"fps": 24,
+			"name": "madup",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-118, -77],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT-alt",
-			"loop": false,
-			"name": "madright"
+			"fps": 24,
+			"name": "madright",
+			"indices": []
 		},
 		{
-			"offsets": [-14, -80],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [-14, -83],
 			"anim": "laugh-alt",
-			"loop": false,
-			"name": "madlaugh"
+			"fps": 24,
+			"name": "madlaugh",
+			"indices": []
 		},
 		{
-			"offsets": [-68, -34],
-			"indices": [],
-			"fps": 24,
-			"anim": "die",
 			"loop": false,
-			"name": "justdie"
+			"offsets": [-61, -41],
+			"anim": "die",
+			"fps": 24,
+			"name": "justdie",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

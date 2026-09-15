@@ -13,7 +13,7 @@
 			"indices": []
 		},
 		{
-			"offsets": [37, 138],
+			"offsets": [-9, 162],
 			"loop": false,
 			"shadow_offsets": [
 				0,
@@ -25,40 +25,28 @@
 			"name": "Tails Up"
 		},
 		{
-			"offsets": [105, 29],
-			"loop": false,
-			"shadow_offsets": [
-				0,
-				0
-			],
+			"offsets": [114, 44],
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
+			"loop": false,
+			"name": "Tails Left"
+		},
+		{
+			"offsets": [-7, 0],
 			"indices": [],
-			"name": "Tales Left2"
-		},
-		{
-			"loop": false,
-			"offsets": [2, -1],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"shadow_offsets": [
-				0,
-				0
-			],
-			"name": "TailsFull",
-			"indices": [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 44]
+			"loop": false,
+			"name": "Tails Down"
 		},
 		{
-			"loop": false,
-			"offsets": [19, -9],
-			"anim": "singRIGHT",
+			"offsets": [-9, 12],
+			"indices": [],
 			"fps": 24,
-			"shadow_offsets": [
-				0,
-				0
-			],
-			"name": "Tales RIght1",
-			"indices": []
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "Tails Right"
 		}
 	],
 	"vocals_file": "",

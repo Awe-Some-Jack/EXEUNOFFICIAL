@@ -1,49 +1,49 @@
 {
 	"animations": [
 		{
-			"offsets": [-145, -80],
-			"indices": [],
-			"fps": 48,
-			"anim": "idle",
 			"loop": true,
-			"name": "8 Water Memorie/Water Memories BF/Idle"
+			"offsets": [-145, -80],
+			"anim": "idle",
+			"fps": 48,
+			"name": "8 Water Memorie/Water Memories BF/Idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-108, -69],
-			"indices": [],
-			"fps": 48,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "8 Water Memorie/Water Memories BF/right"
+			"fps": 48,
+			"name": "8 Water Memorie/Water Memories BF/right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-96, -73],
-			"indices": [],
-			"fps": 48,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "8 Water Memorie/Water Memories BF/down"
+			"fps": 48,
+			"name": "8 Water Memorie/Water Memories BF/down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-134, -40],
-			"indices": [],
-			"fps": 48,
 			"anim": "singUP",
-			"loop": false,
-			"name": "8 Water Memorie/Water Memories BF/up"
+			"fps": 48,
+			"name": "8 Water Memorie/Water Memories BF/up",
+			"indices": []
 		},
 		{
-			"offsets": [-148, -57],
-			"indices": [],
-			"fps": 48,
-			"anim": "singRIGHT",
 			"loop": false,
-			"name": "8 Water Memorie/Water Memories BF/left"
+			"offsets": [-148, -57],
+			"anim": "singRIGHT",
+			"fps": 48,
+			"name": "8 Water Memorie/Water Memories BF/left",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/bf lol2",
+	"image": "characters/bf lol",
 	"position": [0, 0],
 	"healthicon": "bf",
 	"flip_x": true,

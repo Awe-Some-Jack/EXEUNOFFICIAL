@@ -3339,7 +3339,21 @@ class PlayState extends MusicBeatState
 		}
 		
 		var missNote:FlxSound = FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.2, 0.35));
-		if (ClientPrefs.data.ghostTapping) {
+		if (countAsMiss)
+		{
+			vocals.volume = 0;
+			missNotePlaying = true;
+			var restoreVocals = () -> {
+				if (!missNotePlaying) return;
+				missNotePlaying = false;
+				vocals.volume = 1;
+			};
+			if (missNote != null) {
+				missNote.onComplete = restoreVocals;
+				new FlxTimer().start(0.8, (_) -> restoreVocals());
+			} else restoreVocals();
+		}
+		/*if (ClientPrefs.data.ghostTapping) {
 			vocals.volume = 0;
 			missNotePlaying = true;
 			var restoreVocals = () -> {
@@ -3353,7 +3367,7 @@ class PlayState extends MusicBeatState
 			} else restoreVocals();
 		} else {
 			vocals.volume = 0;
-		}
+		}*/
 	}
 
 	function opponentNoteHit(note:Note):Void

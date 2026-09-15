@@ -71,7 +71,7 @@ local modConfigs = {
 	},
 	['STORY MODE'] = {
 		type = 'slide',
-		skipSongs = {'yourself'},
+		skipSongs = {'final-escape', 'yourself'},
 		useSeenCutscene = true,
 		phase = 'both',
 		postOnlySongs = {'triple-trouble'},

@@ -3336,7 +3336,7 @@ class PlayState extends MusicBeatState
 		}
 		
 		var missNote:FlxSound = FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.2, 0.35));
-		if (countAsMiss)
+		if (!countAsMiss)
 		{
 			vocals.volume = 0;
 			missNotePlaying = true;

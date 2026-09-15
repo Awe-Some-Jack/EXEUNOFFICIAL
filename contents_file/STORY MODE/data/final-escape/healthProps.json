@@ -18,7 +18,7 @@
 	"opponentIcon": {
 		"scale": 1.2,
 		"offsetX": 0,
-		"offsetY": 0,
+		"offsetY": -10,
 		"bopAmount": 1.2
 	}
 }

@@ -1,49 +1,49 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [-71, 200],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": false,
-			"name": "Símbolo 60 copia 3"
+			"fps": 24,
+			"name": "Símbolo 60 copia 3",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [81, 183],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "Símbolo 60 copia"
+			"fps": 24,
+			"name": "Símbolo 60 copia",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-128, 65],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "Símbolo 60"
+			"fps": 24,
+			"name": "Símbolo 60",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-143, 577],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "Símbolo 60 copia 2 copia"
+			"fps": 24,
+			"name": "Símbolo 60 copia 2 copia",
+			"indices": []
 		},
 		{
-			"offsets": [-37, 274],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
 			"loop": false,
-			"name": "Símbolo 60 copia 2"
+			"offsets": [-37, 274],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Símbolo 60 copia 2",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/finalexenofe2",
+	"image": "characters/finalexenofe",
 	"position": [0, 0],
 	"healthicon": "XENO-P4",
 	"flip_x": false,

@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [-71, 200],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "Símbolo 60 copia 3",
-			"indices": []
+			"indices": [],
+			"name": "Símbolo 60 copia 3"
 		},
 		{
+			"offsets": [41, 183],
 			"loop": false,
-			"offsets": [81, 183],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "Símbolo 60 copia",
-			"indices": []
+			"indices": [],
+			"name": "Símbolo 60 copia"
 		},
 		{
+			"offsets": [-148, 65],
 			"loop": false,
-			"offsets": [-128, 65],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Símbolo 60",
-			"indices": []
+			"indices": [],
+			"name": "Símbolo 60"
 		},
 		{
+			"offsets": [-133, 577],
 			"loop": false,
-			"offsets": [-143, 577],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "Símbolo 60 copia 2 copia",
-			"indices": []
+			"indices": [],
+			"name": "Símbolo 60 copia 2 copia"
 		},
 		{
+			"offsets": [-77, 274],
 			"loop": false,
-			"offsets": [-37, 274],
-			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "Símbolo 60 copia 2",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Símbolo 60 copia 2"
 		}
 	],
 	"vocals_file": "",

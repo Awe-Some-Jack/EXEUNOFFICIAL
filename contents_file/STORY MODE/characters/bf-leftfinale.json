@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
+			"offsets": [172, 88],
 			"loop": false,
-			"offsets": [162, 88],
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "Símbolo 55",
-			"indices": []
+			"indices": [],
+			"name": "Símbolo 55"
 		},
 		{
+			"offsets": [250, 100],
 			"loop": false,
-			"offsets": [240, 100],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "Símbolo 55 copia",
-			"indices": []
+			"indices": [],
+			"name": "Símbolo 55 copia"
 		},
 		{
+			"offsets": [165, -25],
 			"loop": false,
-			"offsets": [155, -25],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Símbolo 55 copia 4",
-			"indices": []
+			"indices": [],
+			"name": "Símbolo 55 copia 4"
 		},
 		{
+			"offsets": [180, 240],
 			"loop": false,
-			"offsets": [170, 240],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "Símbolo 55 copia 3",
-			"indices": []
+			"indices": [],
+			"name": "Símbolo 55 copia 3"
 		},
 		{
+			"offsets": [158, 136],
 			"loop": false,
-			"offsets": [148, 136],
-			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "Símbolo 55 copia 2",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Símbolo 55 copia 2"
 		}
 	],
 	"vocals_file": "",

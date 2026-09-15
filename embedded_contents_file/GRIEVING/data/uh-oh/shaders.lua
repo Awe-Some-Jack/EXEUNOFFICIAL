@@ -65,13 +65,16 @@ function onCreatePost()
 			setShaderFloat(char, 'str', 1)
 			setShaderFloat(char, 'brightness', -30)
             setShaderFloat(char, 'thr', 0.1)
+            setShaderFloat(char, 'uSpriteAlpha', 1.0)
+            setShaderFloat(char, 'AA_STAGES', 1.0)
 			setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
 			runHaxeFunction('setShaderFrameInfo', {char})
 		end
 		setShaderFloat('dad', 'ang', math.rad(75))
-		setShaderFloat('boyfriend', 'ang', math.rad(115))
 		setShaderFloat('dad', 'dist', 10)
-		setShaderFloat('boyfriend', 'dist', 20)
+		setShaderFloat('boyfriend', 'dist', 0)
+		setShaderFloat('boyfriend', 'brightness', -40)
+		setShaderFloat('boyfriend', 'contrast', 15)
 
         runHaxeCode(dashads)
     end

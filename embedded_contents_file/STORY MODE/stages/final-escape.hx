@@ -844,13 +844,13 @@ function onEvent(n,v1,v2)
 				FlxTween.tween(bfDrowningPlayable, {x: 600}, 2, {ease: FlxEase.cubeOut});
 			case 'flackback':
 				_fbc++;
-				var fbs:FlxSprite = new FlxSprite().loadGraphic(Paths.image('final/flashbacks/$_fbc'));
+				var fbs:FlxSprite = new FlxSprite(-50).loadGraphic(Paths.image('final/flashbacks/$_fbc'));
 				fbs.camera = camVideo;
 				fbs.scale.set(0.6, 0.6); fbs.updateHitbox();
 				fbs.screenCenter(0x10);
 				fbs.alpha = 0;
 				game.add(fbs);
-				FlxTween.tween(fbs, {x: 50, alpha: 0.7}, 1, {ease: FlxEase.cubeOut, onComplete: function(_) { FlxTween.tween(fbs, {alpha: 0, y: fbs.y - 50}, 1, {ease: FlxEase.cubeIn}); }});
+				FlxTween.tween(fbs, {x: 0, alpha: 0.7}, 1, {ease: FlxEase.cubeOut, onComplete: function(_) { FlxTween.tween(fbs, {alpha: 0, y: fbs.y - 50}, 1, {ease: FlxEase.cubeIn}); }});
 			case 'endwatersection':
 				FlxTween.cancelTweensOf(bfDrowningPlayable);
 				FlxTween.tween(bfDrowningPlayable, {x: 2000}, 6, {ease: FlxEase.cubeIn});

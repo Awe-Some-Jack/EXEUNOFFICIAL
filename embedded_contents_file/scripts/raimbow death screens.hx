@@ -408,12 +408,17 @@ var redGraphicShit:FlxSprite;
 var bfEerie:FlxSprite;
 var griatosScream:FlxSprite;
 var hazeSound:FlxSound;
+var camHaze:FlxCamera;
 
 function onCustomSubstateCreate(n)
 {
     if (n == "hazeGameOver") {
+        camHaze = new FlxCamera();
+        camHaze.bgColor = 0x0;
+        FlxG.cameras.add(camHaze);
+        
         redGraphicShit = new FlxSprite(0, 0);
-        redGraphicShit.makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFFF0000);
+        redGraphicShit.makeGraphic(FlxG.width * 3, FlxG.height * 3, 0xFFFF0000);
         redGraphicShit.scrollFactor.set(0, 0);
         redGraphicShit.screenCenter();
         redGraphicShit.cameras = [FlxG.camera];
@@ -427,6 +432,8 @@ function onCustomSubstateCreate(n)
         bfEerie.alpha = 0;
         CustomSubstate.instance.add(bfEerie);
         
+        if(PlayState.instance.curStep >= 384) {FlxG.camera.scroll.set(-400, -400); FlxG.camera.zoom = 0.8;}
+        if(PlayState.instance.curStep >= 1600) {FlxG.camera.scroll.set(300, 100); FlxG.camera.zoom = 0.6;}
         setupHazeGameOver();
     }
 }
@@ -465,7 +472,6 @@ function setupHazeGameOver() {
 
     FlxG.camera.filters = [new ShaderFilter(pseudo), new ShaderFilter(wave)];
     
-    FlxG.camera.zoom = 0.7;
     PlayState.instance.camHUD.visible = false;
     FlxTween.cancelTweensOf(FlxG.camera);
 
@@ -496,20 +502,25 @@ function startScreamShit() {
 
 function configureChars()
 {
-    PlayState.instance.triggerEvent("Change Character", "dad", "griatos");
+    //PlayState.instance.triggerEvent("Change Character", "dad", "griatos");
     for (guys in [boyfriend, dad]){
         guys.color = FlxColor.BLACK;
         guys.alpha = 1;
     }
-
-    boyfriend.setPosition(670, 200);
-    boyfriend.scale.set(0.6, 0.6);
-    boyfriend.stunned = true;
-    dad.setPosition(-370, -260);
-    dad.scale.set(0.6, 0.6);
-    dad.stunned = true;
-    CustomSubstate.instance.insert(0, dadGroup);
-    CustomSubstate.instance.insert(0, boyfriendGroup);
+    
+    //boyfriend.setPosition(670, 200);
+    //boyfriend.scale.set(0.6, 0.6);
+    boyfriend.specialAnim = true;
+    boyfriend.animation.pause();
+    boyfriend.cameras = [FlxG.camera];
+    //dad.setPosition(-370, -260);
+    //dad.scale.set(0.6, 0.6);
+    dad.animation.play('singRIGHT');
+    dad.cameras = [FlxG.camera];
+    dad.specialAnim = true;
+    dad.animation.pause();
+    CustomSubstate.instance.add(dadGroup);
+    CustomSubstate.instance.add(boyfriendGroup);
 }
 
 function showJumpscare() {
@@ -518,8 +529,8 @@ function showJumpscare() {
     griatosScream.animation.addByPrefix('idle', 'Griatos_Scream scream', 24, true);
     griatosScream.animation.play('idle', true);
     griatosScream.scrollFactor.set(0, 0);
-    griatosScream.scale.set(2, 2);
-    griatosScream.cameras = [FlxG.camera];
+    griatosScream.scale.set(1.35, 1.35);
+    griatosScream.cameras = [camHaze];
     griatosScream.screenCenter();
     griatosScream.alpha = 0;
     CustomSubstate.instance.add(griatosScream);

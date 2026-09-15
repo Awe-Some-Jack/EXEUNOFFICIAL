@@ -15,6 +15,8 @@ import psychlua.CustomSubstate;
 
 import lime.app.Application as Application;
 
+import animate.FlxAnimate;
+
 var exeGameOvers:Bool = false;
 var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline', 'uh-oh', 'sharpy-showdown'];
 var voicelineSongs:Array<String> = ["cycles", "hellbent", "fate"];
@@ -22,6 +24,7 @@ var diffGameOverSongs:Array<String> = ["starline"];
 
 var gameOverChangeStep:Int = null;
 
+var head:FlxSprite;
 var deadChar:Character;
 var deadMusic:FlxSound;
 var voiceline:FlxSound;
@@ -52,8 +55,6 @@ function onCreate(){
         if (songName == song) setCustomGameOvers();
 }
 
-
-
 function setCustomGameOvers() {
     GameOverSubstate.resetVariables();
     switch(songName){
@@ -64,6 +65,8 @@ function setCustomGameOvers() {
             charPositions = [500, 350];
 
             initialDeathZoom = 0.7;
+
+            trace('Lord X death animation loaded');
 
             maxVoicelines = 5;
         case "yourself":
@@ -165,6 +168,17 @@ function setCustomEvents() {
     switch(songName){
         case "starline":
             FlxG.cameras.flash(FlxColor.RED, 1);
+        case "cycles", "hellbent", "fate":
+            head = new FlxAnimate(480, 50);
+            head.frames = Paths.getAnimateAtlas('gameovers/LORD X DEATH HEAD');
+            head.anim.addBySymbol('deathstart', 'deahrt', 24, false);
+            head.anim.addBySymbol('deathloop', 'loop', 24, true);
+            head.anim.play('deathstart');
+            head.scale.set(1.5, 1.5);
+            head.anim.onFinish.add( name -> {
+                head.anim.play('deathloop');
+            });
+            GameOverSubstate.instance.add(head);
     }
 }
 
@@ -205,6 +219,7 @@ function onUpdatePost()
         {
             FlxG.camera.flash(0xFFFF0000, 1, null, true);
             deadChar.visible = false;
+            if(head != null) head.visible = false;
             FlxG.sound.play(Paths.music('gameOverEnd'));
             deadMusic.stop();
             voiceline.stop();

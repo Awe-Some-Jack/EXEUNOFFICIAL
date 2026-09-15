@@ -170,7 +170,7 @@ function setCustomEvents() {
             FlxG.cameras.flash(FlxColor.RED, 1);
         case "cycles", "hellbent", "fate":
             head = new FlxAnimate(480, 50);
-            head.frames = Paths.getAnimateAtlas('gameovers/LORD X DEATH HEAD');
+            head.frames = Paths.getAnimateAtlas('gameovers/LORD-X-DEATH-HEAD');
             head.anim.addBySymbol('deathstart', 'deahrt', 24, false);
             head.anim.addBySymbol('deathloop', 'loop', 24, true);
             head.anim.play('deathstart');

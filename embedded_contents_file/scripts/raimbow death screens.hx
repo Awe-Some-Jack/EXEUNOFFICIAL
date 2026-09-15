@@ -1,6 +1,7 @@
 import states.substates.GameOverSubstate;
 import flixel.sound.FlxSound;
 import flixel.FlxCameraFollowStyle;
+import flixel.tweens.FlxTween.FlxTweenType;
 import backend.MusicBeatState;
 
 import flixel.addons.display.FlxRuntimeShader;
@@ -133,7 +134,7 @@ function changeGameOvers() {
 }
 
 function setCamEvents() {
-    if (songName != 'yourself')
+    if (exeGameOvers)
     {
         FlxTween.cancelTweensOf(FlxG.camera); //Just in case, heh.
         FlxG.camera.follow();
@@ -150,7 +151,7 @@ function onGameOverStart()
         if (songName == song) {
             inGameOver = true;
             if (GameOverSubstate.instance.boyfriend != null && deadChar == null) deadChar = GameOverSubstate.instance.boyfriend;
-            if (songName != 'yourself')
+            if (exeGameOvers)
             {
                 deadChar.scrollFactor.set();
                 deadChar.setPosition(charPositions[0], charPositions[1]);
@@ -174,6 +175,9 @@ function onGameOverStart()
 
 function setCustomEvents() {
     switch(songName){
+        case "hollow":
+            Conductor.bpm = 138;
+            FlxTween.tween(FlxG.camera, {zoom: 0.8}, 2, {ease: FlxEase.sineInOut});
         case "substantial":
             GameOverSubstate.instance.boyfriend.visible = false;
             subsDeath = new VideoSprite(-520, -250, false);
@@ -220,6 +224,8 @@ function addShaders() {
 }
 
 var toggleOnce:Bool = false;
+var curBeat:Int = 0;
+var oldBeat:Int = 0;
 function onUpdatePost()
 {
 	if (!inGameOver) return;
@@ -243,6 +249,24 @@ function onUpdatePost()
             FlxG.sound.play(Paths.music('gameOverEnd'));
             deadMusic.stop();
             voiceline.stop();
+        }
+    }
+
+    if (songName == 'hollow' && deadChar.animation.curAnim.name == 'deathLoop')
+    {
+        Conductor.songPosition = FlxG.sound.music.time;
+        curBeat = GameOverSubstate.instance.curBeat;
+        if (!toggleOnce) {
+            if (Conductor.songPosition >= 6900){
+                if (oldBeat != curBeat)
+                {
+                    trace("It's bumping!");
+                    FlxTween.num(0.9, 0.8, (Conductor.crochet / 1000), {ease: FlxEase.circOut, type: FlxTweenType.LOOPING}, (val:Float) -> FlxG.camera.zoom = val);
+                    oldBeat = curBeat;
+                }
+                toggleOnce = true;
+            }
+            
         }
     }
 
@@ -413,6 +437,9 @@ function onGameOverConfirm(retry)
     for (pair in majinPairs) { pair[0].destroy(); pair[1].destroy(); }
 
     switch(songName){
+        case "hollow":
+            FlxTween.cancelTweensOf(FlxG.camera);
+            FlxTween.num(1, 0.8, 1, {ease: FlxEase.circOut,  onComplete: () -> FlxTween.tween(FlxG.camera, {zoom: 1.4}, 2, {ease: FlxEase.circIn})}, (val:Float) -> FlxG.camera.zoom = val);
         case "substantial":
             FlxG.cameras.flash(FlxColor.BLUE, 2);
             subsDeath.destroy();

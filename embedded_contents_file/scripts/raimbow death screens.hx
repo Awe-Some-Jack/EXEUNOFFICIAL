@@ -15,10 +15,12 @@ import psychlua.CustomSubstate;
 
 import lime.app.Application as Application;
 
+import objects.VideoSprite;
+
 import animate.FlxAnimate;
 
 var exeGameOvers:Bool = false;
-var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline', 'uh-oh', 'sharpy-showdown'];
+var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline', 'uh-oh', 'sharpy-showdown', 'substantial'];
 var voicelineSongs:Array<String> = ["cycles", "hellbent", "fate"];
 var diffGameOverSongs:Array<String> = ["starline"];
 
@@ -37,9 +39,9 @@ var charPositions:Array<Float> = [];
 var maxVoicelines:Int = 0;
 
 var songShaders:Array<String> = ['yourself'];
-var pixel :ShaderFilter;
-var pseudo:ShaderFilter;
-var wave  :ShaderFilter;
+var pixel     :ShaderFilter;
+var pseudo    :ShaderFilter;
+var wave      :ShaderFilter;
 
 var majinPairs:Array<Array<FlxSprite>> = [];
 var toolateurfucked:Bool = false;
@@ -49,6 +51,8 @@ var secondsLeft:Int = 10;
 var countdownText:FlxText;
 var majinBF:ModchartAnimateSprite;
 var blueVG:FlxSprite;
+
+var subsDeath:FlxVideoSprite;
 
 function onCreate(){
     for (song in songs) 
@@ -106,6 +110,10 @@ function setCustomGameOvers() {
             GameOverSubstate.endSoundName  = "deathSongs/exetior-retry";
             charPositions = [400, 50];
             initialDeathZoom = 1.2;
+        case "substantial":
+            initialDeathZoom = 0.9;
+            GameOverSubstate.loopSoundName =   "deathSongs/xterion-loop";
+            GameOverSubstate.endSoundName  = "deathSounds/xterion-retry";
     }
 }
 
@@ -166,6 +174,18 @@ function onGameOverStart()
 
 function setCustomEvents() {
     switch(songName){
+        case "substantial":
+            GameOverSubstate.instance.boyfriend.visible = false;
+            subsDeath = new VideoSprite(-520, -250, false);
+            subsDeath.loadVideo(Paths.video("substantialDeath"));
+            subsDeath.canSkip = false;
+            subsDeath.alpha = 0.0001;
+            subsDeath.scale.set(0.55, 0.688);
+            subsDeath.onEnd(() -> {
+                subsDeath.loadVideo(Paths.video("substantialDeath"));
+                subsDeath.play();
+            });
+            GameOverSubstate.instance.add(subsDeath);
         case "starline":
             FlxG.cameras.flash(FlxColor.RED, 1);
         case "cycles", "hellbent", "fate":
@@ -234,6 +254,15 @@ function onUpdatePost()
             startCountdownMajin();
         }
     }
+    if (songName == 'substantial' && deadChar.animation.curAnim.name == 'deathLoop')
+    {
+        if (!toggleOnce) {
+            toggleOnce = true;
+            deadMusic.play();
+            subsDeath.play();
+            FlxTween.tween(subsDeath, {alpha: 1}, 3);
+        }
+    }
 }
 
 function startCountdownMajin()
@@ -267,8 +296,8 @@ function startCountdownMajin()
         left.loadGraphic(Paths.image('gameovers/us/evil majin'));
         left.flipX = true;
         var bell:Float = 1.0 - Math.abs(i - 3) * 0.2;
-        var dynamicSpacing:Float = spacing * (1.0 + bell);
-        var leftX:Float = i >= 3 ? baseLeft + ((i - 3) * (i - 3) * 30) : baseLeft - (i * dynamicSpacing);
+        var dynamicSpacing:Float = spacing (1.0 + bell);
+        var leftX:Float = i >= 3 ? baseLeft + ((i - 3) (i - 3) * 30) : baseLeft - (i * dynamicSpacing);
         var yOffset:Float = i == 1 ? 70 : 65;
         left.setPosition(leftX, deadChar.y + yOffset);
         left.scrollFactor.set(0, 0);
@@ -278,7 +307,7 @@ function startCountdownMajin()
 
         var right = new FlxSprite();
         right.loadGraphic(Paths.image('gameovers/us/evil majin'));
-        var rightX:Float = i >= 3 ? baseRight - ((i - 3) * (i - 3) * 30) : baseRight + (i * dynamicSpacing);
+        var rightX:Float = i >= 3 ? baseRight - ((i - 3) (i - 3) * 30) : baseRight + (i * dynamicSpacing);
         right.setPosition(rightX, deadChar.y + yOffset);
         right.scrollFactor.set(0, 0);
         right.scale.set(scale, scale);
@@ -328,8 +357,8 @@ function startCountdownMajin()
             countdownText.x = FlxG.width / 2 - 20;
             var t:Float = 1.0 - (secondsLeft / 10.0);
             var r:Int = 255;
-            var g:Int = Std.int(255 * (1.0 - t));
-            var b:Int = Std.int(255 * (1.0 - t));
+            var g:Int = Std.int(255 (1.0 - t));
+            var b:Int = Std.int(255 (1.0 - t));
             countdownText.color = FlxColor.fromRGB(r, g, b);
         }
         if (secondsLeft <= 0) {
@@ -384,6 +413,10 @@ function onGameOverConfirm(retry)
     for (pair in majinPairs) { pair[0].destroy(); pair[1].destroy(); }
 
     switch(songName){
+        case "substantial":
+            FlxG.cameras.flash(FlxColor.BLUE, 2);
+            subsDeath.destroy();
+
         case "yourself":
         if (retry) new FlxTimer().start(0.7, (_) ->
         {

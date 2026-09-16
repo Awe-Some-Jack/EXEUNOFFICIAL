@@ -374,7 +374,7 @@ class OptionsState extends MusicBeatState
 
 			switch (SECTION_KEYS[curSelected])
 			{
-				case "CONTROLS":  openSubState(new options.ExeControlsState());
+				case "CONTROLS":  openSubState(new #if mobile options.ExeMobileControlsState() #else options.ExeControlsState() #end);
 				case "VISUALS":   openSubState(new options.ExeVisualsState());
 				case "GRAPHICS":  openSubState(new options.ExeGraphicsState());
 				case "GAMEPLAY":  openSubState(new options.ExeGameplayState());

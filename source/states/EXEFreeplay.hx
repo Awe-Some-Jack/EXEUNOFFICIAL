@@ -462,7 +462,7 @@ class EXEFreeplay extends MusicBeatState
 		super.update(elapsed);
 		if (subState != null) return;
 
-		if (FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
+		if (#if mobile shortPress && !inDevMode || #end FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
 
 		#if mobile if (COOLDOWN_TIMER > 0) COOLDOWN_TIMER -= elapsed; #end
 

@@ -9,9 +9,9 @@ import Main;
 
 // Add a variable here and it will get automatically saved
 @:structInit class SaveVariables {
-  public var storageType:String = 'EXTERNAL';
-	public var downScroll:Bool = false;
-	public var middleScroll:Bool = false;
+  	public var storageType:String = 'EXTERNAL';
+	public var downScroll:Bool = #if !mobile false #else true #end;
+	public var middleScroll:Bool = #if !mobile false #else true #end;
 	public var opponentStrums:Bool = true;
 	public var showFPS:Bool = true;
 	public var flashing:Bool = true;
@@ -27,13 +27,20 @@ import Main;
 	public var camZooms:Bool = true;
 	public var hideHud:Bool = false;
 	public var noteOffset:Int = 0;
-	public var ghostTapping:Bool = false;
+	public var ghostTapping:Bool = #if !mobile false #else true #end;
 	public var scoreZoom:Bool = true;
 	public var noReset:Bool = false;
 	public var healthBarAlpha:Float = 1;
 	public var hitsoundVolume:Float = 0;
 	public var checkForUpdates:Bool = true;
 	public var comboStacking:Bool = true;
+	#if mobile
+	public var controlsType:String = 'hitbox';
+	public var middlescrollType:String = 'pc';
+	public var defHitboxAlpha:Float = 0.1;
+	public var pressHitboxAlpha:Float = 0.3;
+	public var slideMechanic:Bool = true;
+	#end
 	public var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 

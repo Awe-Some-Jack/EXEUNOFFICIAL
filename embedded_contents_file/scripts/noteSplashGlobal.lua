@@ -183,7 +183,8 @@ local specialSplashes = {
 }
 
 local blacklistenedSongs = {}
-
+local opponentHoldSplashesDisabled = false
+local isMobile = false;
 
 --DONT TOUCH
 
@@ -266,6 +267,9 @@ function onCreatePost()
 	end
 	
 	if not foundSkin then doSplash(nil, currentSkin, true) end
+
+	isMobile = (buildTarget == 'android' or buildTarget == 'ios');
+	opponentHoldSplashesDisabled = (getPropertyFromClass('backend.ClientPrefs', 'data.controlsType') == 'base' and isMobile);
 end
 
 function goodNoteHit(id,nd,nt,isn) if not isn and getProperty('notes.members['..id..'].noteSplashDisabled') == false and getProperty('notes.members['..id..'].rating') == 'sick' then doSplash(nd, currentSkin) end end
@@ -283,7 +287,7 @@ function goodNoteHitPre(id,nd,nt,isn)
 end
 
 function opponentNoteHitPre(id,nd,nt,isn)
-	if not holdsEnabled then return end
+	if not holdsEnabled or opponentHoldSplashesDisabled then return end
 	local noteHold = 'noteHold'..nd
 	if isn then holdsSplashTimer[nd] = 0 end
 	if not isn and getProperty('notes.members['..id..'].tail.length') > 0 then

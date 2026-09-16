@@ -973,7 +973,7 @@ function onEvent(n,v1,v2)
 				changeCharacter('dad', 'xeno-rightfinale');
 				changeCharacter('bf', 'bf-leftfinale');
 				dad.setPosition(7580, -100);
-				boyfriend.setPosition(120, -200);
+				boyfriend.setPosition(120, -100);
 				cameraLeft.filters = camGame.filters;
 				cameraRight.filters = camGame.filters;
 				cameraLeft.visible = true;

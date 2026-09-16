@@ -1,0 +1,39 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [494, 664],
+			"anim": "deathLoop",
+			"fps": 24,
+			"name": "loop",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [394, 664],
+			"anim": "deathConfirm",
+			"fps": 24,
+			"name": "confirm",
+			"indices": []
+		},
+		{
+			"offsets": [494, 664],
+			"indices": [],
+			"fps": 24,
+			"anim": "firstDeath",
+			"loop": false,
+			"name": "loop"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "gameovers/final-escape/feover",
+	"position": [0, 0],
+	"healthicon": "bf",
+	"flip_x": true,
+	"healthbar_colors": [58, 205, 241],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 0.92,
+	"_editor_isPlayer": true
+}

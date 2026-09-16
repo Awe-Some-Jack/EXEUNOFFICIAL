@@ -1,5 +1,5 @@
 local offsetX, offsetY = -160, 110
-local offsetBFX, offsetBFY = 160, 18
+local offsetBFX, offsetBFY = 160, 100
 local camZoomOffset = 0
 
 function onCreatePost()

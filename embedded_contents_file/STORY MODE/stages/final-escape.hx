@@ -82,10 +82,8 @@ var bfLegs4:Character;
 var bfAtlas:FlxSpriteElement;
 var bf:Character;
 
-
 //ChromShader
 var chrom:FlxRuntimeShader;
-
 
 var cameraLeft:FlxCamera;
 var cameraRight:FlxCamera;
@@ -113,6 +111,7 @@ function onCreate()
 		YWGA.setGraphicSize(FlxG.width, FlxG.height);
 		YWGA.screenCenter();
 		camHUD.visible = false;
+		camHUD.flash(0xFFFFFFFF, Conductor.crochet / 500, null, true);
 	});
 	YWGA.camera = camVideo;
 	game.add(YWGA);
@@ -974,7 +973,7 @@ function onEvent(n,v1,v2)
 				changeCharacter('dad', 'xeno-rightfinale');
 				changeCharacter('bf', 'bf-leftfinale');
 				dad.setPosition(7580, -100);
-				boyfriend.setPosition(120, -160);
+				boyfriend.setPosition(120, -200);
 				cameraLeft.filters = camGame.filters;
 				cameraRight.filters = camGame.filters;
 				cameraLeft.visible = true;

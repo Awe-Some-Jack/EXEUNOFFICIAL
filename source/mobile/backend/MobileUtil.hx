@@ -26,8 +26,7 @@ class MobileUtil
 {
 	#if sys
 	public static inline function getAssetDirectory():String {
-		trace(lime.system.System.documentsDirectory);
-		return #if android haxe.io.Path.addTrailingSlash("/sdcard/Android/data/com.exeunofficial.vssonicexe/files") #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
+		return #if android haxe.io.Path.addTrailingSlash(AndroidContext.getExternalFilesDir()) #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
 	}
 	#if android
 	public static inline function getCustomStoragePath():String
@@ -109,9 +108,7 @@ class MobileUtil
 		}
 		catch (e:Dynamic)
 		{
-			Application.current.window.alert("Directory not found:\n" + MobileUtil.getAssetDirectory() +
-			"\nIf you have created this directory, make sure the folder is named properly and it's in the correct path. Otherwise, skip this message.\n" + e, "Warning!");
-			//lime.system.System.exit(1);
+			trace("Directory not found: " + MobileUtil.getAssetDirectory() + " (" + e + ")");
 		}
 
 		try
@@ -121,9 +118,7 @@ class MobileUtil
 		}
 		catch (e:Dynamic)
 		{
-			Application.current.window.alert("Directory not found:\n" + MobileUtil.getDirectory() + "contents/" + 
-			"\nIf you have created this directory, make sure the folder is named properly and it's in the correct path. Otherwise, skip this message.\n" + e, "Warning!");
-			//lime.system.System.exit(1);
+			trace("Directory not found: " + MobileUtil.getDirectory() + "contents/ (" + e + ")");
 		}
 
 		return daPath;
@@ -321,4 +316,71 @@ class MobileUtil
 		}
 		#end
 	}
+
+	#if (mobile && flixel_animate)
+	static inline function resolveExternalPath(path:String):String
+		return path.startsWith("/") ? path : getDirectory() + path;
+
+	public static function initAnimateAssetOverrides():Void
+	{
+		final originalExists = animate.FlxAnimateAssets.exists;
+		animate.FlxAnimateAssets.exists = function(path, type) {
+			return originalExists(path, type) || FileSystem.exists(resolveExternalPath(path));
+		};
+
+		final originalGetText = animate.FlxAnimateAssets.getText;
+		animate.FlxAnimateAssets.getText = function(path) {
+			final result = originalGetText(path);
+			if (result != null) return result;
+			final fullPath = resolveExternalPath(path);
+			return FileSystem.exists(fullPath) ? File.getContent(fullPath) : null;
+		};
+
+		final originalGetBytes = animate.FlxAnimateAssets.getBytes;
+		animate.FlxAnimateAssets.getBytes = function(path) {
+			final result = originalGetBytes(path);
+			if (result != null) return result;
+			final fullPath = resolveExternalPath(path);
+			return FileSystem.exists(fullPath) ? File.getBytes(fullPath) : null;
+		};
+
+		final originalGetBitmapData = animate.FlxAnimateAssets.getBitmapData;
+		animate.FlxAnimateAssets.getBitmapData = function(path) {
+			final result = originalGetBitmapData(path);
+			if (result != null) return result;
+			final fullPath = resolveExternalPath(path);
+			if (!FileSystem.exists(fullPath)) return null;
+
+			if (Path.extension(fullPath) == "astc")
+			{
+				if (FlxG.stage.context3D == null || !FlxG.stage.context3D.isASTCSupported())
+					return null;
+				try
+				{
+					final astcBytes = openfl.utils.ByteArray.fromBytes(File.getBytes(fullPath));
+					return openfl.display.BitmapData.fromTexture(FlxG.stage.context3D.createASTCTexture(astcBytes), false);
+				}
+				catch (e:Dynamic)
+				{
+					trace('Error loading ASTC from external storage: $fullPath ($e)');
+					return null;
+				}
+			}
+
+			return openfl.display.BitmapData.fromFile(fullPath);
+		};
+
+		final originalList = animate.FlxAnimateAssets.list;
+		animate.FlxAnimateAssets.list = function(path, ?type, ?library, includeSubDirectories = false) {
+			final result = originalList(path, type, library, includeSubDirectories);
+			final fullPath = resolveExternalPath(path);
+			if (FileSystem.exists(fullPath) && FileSystem.isDirectory(fullPath)) {
+				for (file in FileSystem.readDirectory(fullPath)) {
+					if (result.indexOf(file) == -1) result.push(file);
+				}
+			}
+			return result;
+		};
+	}
+	#end
 }

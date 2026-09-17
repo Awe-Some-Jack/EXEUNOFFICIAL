@@ -1,121 +1,121 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
 			"loop": false,
-			"fps": 24,
+			"offsets": [949, 696],
 			"anim": "idle",
-			"indices": [],
-			"name": "Símbolo 213"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [0, 0],
 			"loop": true,
-			"fps": 24,
+			"offsets": [949, 696],
 			"anim": "idle-loop",
-			"indices": [9, 10, 11],
-			"name": "Símbolo 213 instancia 1"
+			"fps": 24,
+			"name": "idle",
+			"indices": [9, 10, 11]
 		},
 		{
-			"offsets": [23, 4],
 			"loop": false,
-			"fps": 24,
+			"offsets": [1007, 709],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left S i"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
-			"offsets": [-4, -45],
 			"loop": false,
-			"fps": 24,
+			"offsets": [936, 703],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down S i"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
-			"offsets": [-2, 84],
 			"loop": false,
-			"fps": 24,
+			"offsets": [958, 821],
 			"anim": "singUP",
-			"indices": [],
-			"name": "up S i"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [-11, 24],
 			"loop": false,
-			"fps": 24,
+			"offsets": [1018, 841],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right S i"
-		},
-		{
-			"offsets": [27, -4],
-			"loop": false,
 			"fps": 24,
-			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "left S MISS"
+			"name": "right",
+			"indices": []
 		},
 		{
-			"offsets": [4, -42],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "down S MISS"
-		},
-		{
-			"offsets": [14, 85],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUPmiss",
-			"indices": [],
-			"name": "up S MISS"
-		},
-		{
-			"offsets": [-1, 22],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "right S MISS"
-		},
-		{
-			"offsets": [23, 4],
 			"loop": true,
-			"fps": 24,
+			"offsets": [1007, 709],
 			"anim": "singLEFT-loop",
-			"indices": [7, 8, 9],
-			"name": "left S instancia 1"
+			"fps": 24,
+			"name": "left",
+			"indices": [7, 8, 9]
 		},
 		{
-			"offsets": [-4, -45],
 			"loop": true,
-			"fps": 24,
+			"offsets": [936, 703],
 			"anim": "singDOWN-loop",
-			"indices": [7, 8, 9],
-			"name": "down S instancia 1"
+			"fps": 24,
+			"name": "down",
+			"indices": [7, 8, 9]
 		},
 		{
-			"offsets": [-2, 84],
 			"loop": true,
-			"fps": 24,
+			"offsets": [958, 821],
 			"anim": "singUP-loop",
-			"indices": [7, 8, 9],
-			"name": "up S instancia 1"
+			"fps": 24,
+			"name": "up",
+			"indices": [7, 8, 9]
 		},
 		{
-			"offsets": [-11, 24],
 			"loop": true,
-			"fps": 24,
+			"offsets": [1018, 841],
 			"anim": "singRIGHT-loop",
-			"indices": [7, 8, 9],
-			"name": "right S instancia 1"
+			"fps": 24,
+			"name": "right",
+			"indices": [7, 8, 9]
+		},
+		{
+			"loop": false,
+			"offsets": [1008, 709],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "leftmiss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [936, 703],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "downmiss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [958, 821],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "upmiss",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [1018, 841],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "rightmiss",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/superbffinalefe",
+	"image": "characters/superbf",
 	"position": [0, 0],
 	"healthicon": "superbf",
 	"flip_x": true,

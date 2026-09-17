@@ -111,7 +111,7 @@ function onCreate()
 		YWGA.setGraphicSize(FlxG.width, FlxG.height);
 		YWGA.screenCenter();
 		camHUD.visible = false;
-		camHUD.flash(0xFFFFFFFF, Conductor.crochet / 500, null, true);
+		camOther.flash(0xFFFFFFFF, Conductor.crochet / 500, null, true);
 	});
 	YWGA.camera = camVideo;
 	game.add(YWGA);
@@ -241,6 +241,13 @@ function onCreatePost()
 	bfYeah.camera = camVideo;
 	bfYeah.visible = false;
 	game.add(bfYeah);
+
+	jumpscare = new FlxSprite().loadGraphic(Paths.image('slow/simplejump'));
+	jumpscare.setGraphicSize(Std.int(FlxG.width * 1.1), Std.int(FlxG.height * 1.1)); jumpscare.updateHitbox();
+	jumpscare.screenCenter();
+	jumpscare.camera = camHUD;
+	jumpscare.alpha = 0.0001;
+	game.add(jumpscare);
 
 	drowningBf = new FlxSprite(100, -250);
 	drowningBf.frames = Paths.getSparrowAtlas('characters/bfdrowningfe');
@@ -445,6 +452,9 @@ function onUpdatePost(elapsed:Float)
 			}
 			if (bfPressAction == 'jump' && !jump) bfPressAction = '';
 			if (bfPressAction == 'slide' && !slide) bfPressAction = '';
+
+			if (jumpscare != null && jumpscare.alpha > 0.5)
+				jumpscare.setPosition(((FlxG.width - jumpscare.width) / 2) + Math.sin(floatSine * 10) * 10, ((FlxG.height - jumpscare.height) / 2) - Math.cos(floatSine * 10) * 3);
 		case 'hand':
 			if (bf?.visible) bf?.update(elapsed);
 			if (xenoLaugh?.visible)
@@ -469,7 +479,6 @@ function onUpdatePost(elapsed:Float)
 				boyfriend.y = Math.cos(floatSine * 2) * 15;
 				bgSecond[9].sprite.y = bgSecond[9].position[1] + Math.cos(floatSine) * 15;
 				superBFAura.setPosition(boyfriend.x + 10, boyfriend.y - 10);
-				superBFAura.alpha = 0.8 + Math.sin(floatSine) * 0.2;
 			}
 
 			dad.setPosition(
@@ -764,6 +773,11 @@ function onEvent(n,v1,v2)
 					}
 					else if (tmr.loopsLeft == 0) obstacle?.destroy();
 				}, 4);
+			case 'jumpscarelol':
+				jumpscare.alpha = 1;
+				new FlxTimer().start(Conductor.crochet / 500, _ -> {
+					jumpscare?.destroy();
+				});
 			case 'wontgetaway':
 				if (curBeat <= 404 && YWGA?.loadVideo(Paths.video('you know'))) YWGA.playDelayed();
 			case 'wontgetaway2':
@@ -919,6 +933,7 @@ function onEvent(n,v1,v2)
 				curBG = 'nulo jajaja para q no pase nada aca';
 				FlxTween.tween(camHUD, {alpha: 0}, Conductor.crochet / 250);
 			case 'superbf':
+				chrom.setFloat('amount', 0.4);
 				for (s in 0...ballList.length - 2) FlxTween.cancelTweensOf(shields.members[s]);
 				shields?.destroy();
 				for (spr in hbvanilla) game.getLuaObject(spr).alpha = 0;
@@ -934,7 +949,6 @@ function onEvent(n,v1,v2)
 				for (spr in bgSecond) spr.sprite.visible = true;
 				bgIntro[1].sprite.visible = true;
 				game.remove(bgIntro[1].sprite, true); game.insert(game.members.indexOf(bgSecond[4].sprite), bgIntro[1].sprite);
-				superBFAura.visible = true;
 				xenoRing.visible = true;
 				cam.BFx = 250;
 				cam.BFy = 120;
@@ -972,16 +986,17 @@ function onEvent(n,v1,v2)
 
 				changeCharacter('dad', 'xeno-rightfinale');
 				changeCharacter('bf', 'bf-leftfinale');
-				dad.setPosition(7580, -100);
-				boyfriend.setPosition(120, -100);
+				dad.setPosition(7550, -100);
+				boyfriend.setPosition(170, -60);
 				cameraLeft.filters = camGame.filters;
 				cameraRight.filters = camGame.filters;
 				cameraLeft.visible = true;
 				cameraRight.visible = true;
 				cameraRight.scroll.x = 8000;
-				superBFAura.scale.set(3, 3); superBFAura.updateHitbox(); superBFAura.x += -400; superBFAura.y = -400;
+				superBFAura.visible = true; superBFAura.scale.set(3, 3); superBFAura.updateHitbox(); superBFAura.x += -400; superBFAura.y = -400;
 				xenoRing.visible = false;
 			case 'normal':
+				chrom.setFloat('amount', 0.5);
 				xdringbg?.destroy();
 				camHUD.flash(0xFFFFFFFF, Conductor.crochet / 250, null, true);
 				for (spr in bgIntro) if (spr.sprite != bgIntro[1].sprite) spr.sprite?.destroy();
@@ -989,7 +1004,7 @@ function onEvent(n,v1,v2)
 				bgIntro[1].sprite.visible = true;
 				game.remove(bgIntro[1].sprite, true); game.insert(game.members.indexOf(bgSecond[4].sprite), bgIntro[1].sprite);
 				curBG = 'super';
-				superBFAura.scale.set(0.65, 0.65); superBFAura.updateHitbox();
+				superBFAura.visible = false; superBFAura.scale.set(0.65, 0.65); superBFAura.updateHitbox();
 				xenoRing.visible = true;
 				changeCharacter('dad', 'xeno-fe2');
 				changeCharacter('bf', 'bf-superfe');
@@ -1001,7 +1016,7 @@ function onEvent(n,v1,v2)
 				bgSecond[2].sprite.velocity.x = -1200;
 				bgSecond[4].sprite.velocity.x = -3000;
 				bgSecond[5].sprite.velocity.x = -4500;
-				floatIntensity = 5.5;
+				floatIntensity = 6;
 			case 'finale':
 				camHUD.flash(0xFFFFFFFF, Conductor.crochet / 250, null, true);
 				xenoRing?.destroy();
@@ -1049,15 +1064,20 @@ function onDestroy() prefs.ghostTapping = oldGT;
 
 function opponentNoteHit(note)
 {
-	if (curBG == 'second' || curBG == 'third' || curBG == 'fourth' || curBG == 'fifth')
-	{
-		FlxG.camera.shake(0.005, 0.1);
-		camHUD.shake(0.0025, 0.1);
-	}
-	else
+	if (curBG == 'intro')
 	{
 		FlxG.camera.shake(0.0015, 0.1);
 		camHUD.shake(0.001, 0.1);
+	}
+	else if ((curBG == 'super' || curBG == 'sides' || curBG == 'finale') && floatIntensity == 6)
+	{
+		FlxG.camera.shake(0.0075, 0.1);
+		camHUD.shake(0.004, 0.1);
+	}
+	else
+	{
+		FlxG.camera.shake(0.005, 0.1);
+		camHUD.shake(0.0025, 0.1);
 	}
 }
 

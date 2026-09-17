@@ -25,9 +25,10 @@ typedef ModeData = { Name:String, Folder:String }
 class MobileUtil
 {
 	#if sys
-	public static inline function getAssetDirectory():String
-		return #if android haxe.io.Path.addTrailingSlash("/sdcard/Android/data/com.xunofficial.vssonicexe/files") #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
-
+	public static inline function getAssetDirectory():String {
+		trace(lime.system.System.documentsDirectory);
+		return #if android haxe.io.Path.addTrailingSlash("/sdcard/Android/data/com.exeunofficial.vssonicexe/files") #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
+	}
 	#if android
 	public static inline function getCustomStoragePath():String
 		return AndroidContext.getExternalFilesDir() + '/storageModes.json';
@@ -89,14 +90,14 @@ class MobileUtil
 				daPath = "/sdcard/.Vs Sonic";
 			/* obb doesnt work and I dont wanna fix it -ArkoseLabs
 			case 'EXTERNAL_OBB':
-				daPath = "/sdcard/Android/obb/com.xunofficial.vssonicexe";
+				daPath = "/sdcard/Android/obb/com.exeunofficial.vssonicexe";
 			*/
 			case 'EXTERNAL_MEDIA':
-				daPath = "/sdcard/Android/media/com.xunofficial.vssonicexe";
+				daPath = "/sdcard/Android/media/com.exeunofficial.vssonicexe";
 			case 'EXTERNAL_DATA':
-				daPath = "/sdcard/Android/data/com.xunofficial.vssonicexe/files";
+				daPath = "/sdcard/Android/data/com.exeunofficial.vssonicexe/files";
 			default: //technically not needed but here for safety -ArkoseLabs
-				if (daPath == null || daPath == '') daPath = "/sdcard/Android/data/com.xunofficial.vssonicexe/files";
+				if (daPath == null || daPath == '') daPath = "/sdcard/Android/data/com.exeunofficial.vssonicexe/files";
 		}
 		daPath = Path.addTrailingSlash(daPath);
 		currentDirectory = daPath;
@@ -108,8 +109,8 @@ class MobileUtil
 		}
 		catch (e:Dynamic)
 		{
-			Application.current.window.alert("Looks like you doesn't have directory named\n" + MobileUtil.getAssetDirectory() +
-			"\nBut maybe this couldn't be right, android loves to give errors like this\nPress OK & let's see what happens\nCurrent Error You Got:\n" + e, "Warning!");
+			Application.current.window.alert("Directory not found:\n" + MobileUtil.getAssetDirectory() +
+			"\nIf you have created this directory, make sure the folder is named properly and it's in the correct path. Otherwise, skip this message.\n" + e, "Warning!");
 			//lime.system.System.exit(1);
 		}
 
@@ -120,8 +121,8 @@ class MobileUtil
 		}
 		catch (e:Dynamic)
 		{
-			Application.current.window.alert("Looks like you doesn't have directory named\n" + MobileUtil.getDirectory() + "contents/" + 
-			"\nBut maybe this couldn't be right, android loves to give errors like this\nPress OK & let's see what happens\nCurrent Error You Got:\n" + e, "Warning!");
+			Application.current.window.alert("Directory not found:\n" + MobileUtil.getDirectory() + "contents/" + 
+			"\nIf you have created this directory, make sure the folder is named properly and it's in the correct path. Otherwise, skip this message.\n" + e, "Warning!");
 			//lime.system.System.exit(1);
 		}
 
@@ -218,6 +219,17 @@ class MobileUtil
 		try {
 			var assetList:Array<String> = Assets.list();
 
+			var embeddedKeys:Map<String, Bool> = [];
+			try {
+				var manifestText:String = Assets.getText("assets/embedded-assets.json");
+				if (manifestText != null) {
+					for (key in (haxe.Json.parse(manifestText):Array<String>))
+						embeddedKeys.set(key, true);
+				}
+			} catch (e:Dynamic) {
+				trace('Could not load embedded-assets manifest: $e');
+			}
+
 			var toCopy = assetList.filter(function(assetKey) {
 				var cleanPath = assetKey;
 				var colonIndex = cleanPath.indexOf(":");
@@ -226,6 +238,7 @@ class MobileUtil
 				}
 
 				if (!StringTools.startsWith(cleanPath, "assets/")) return false;
+				if (embeddedKeys.exists(cleanPath)) return false;
 				if (folders == null) return true;
 
 				for (f in folders) {

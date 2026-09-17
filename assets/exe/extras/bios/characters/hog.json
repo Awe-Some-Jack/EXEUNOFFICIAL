@@ -1,4 +1,7 @@
 {
+	"bio_appear": true,
+	"list_position": 23,
+	"display_name": "HOG",
 	"variants": [
 		{
 			"bio": "Hog himself is a heroic tenrec. Together with his best friend Prowler, he ventures out to stop the evil Doctor Bio \"Yolkman\" Mechanik from conquering planet Torus. Occasionally others like Fists, Holly or Shade and Velvet join his little quest.",
@@ -8,11 +11,11 @@
 				696,
 				470
 			],
-			"char_scale": 0.6,
+			"char_scale": 0.55,
 			"mod": "HOG",
 			"char_offset": [
-				585,
-				320
+				518,
+				221
 			],
 			"char": "hog",
 			"flip_x": false,
@@ -20,24 +23,18 @@
 		},
 		{
 			"bio": "On the contrary, Scorched used to be Sonic the Hedgehog, the Fastest Thing Alive. The moment a Sonic 3 & Knuckles cartridge was locked into Giga's Switch N' Play, he was sent to the void as the only survivor. Years have passed and he became a mere shadow of his former self. Having snapped, he decided to spread destruction and gain the Power Rubies using Hog as a puppet.",
-			"display_name": "scorched",
+			"display_name": "SCORCHED",
 			"icon": "scorched",
 			"icon_offset": [
 				701,
 				465
 			],
-			"char_scale": 0.4,
-			"mod": "HOG",
+			"char_scale": 0.25,
 			"char_offset": [
-				690,
-				465
+				506,
+				158
 			],
-			"char": "scorched",
-			"flip_x": false,
-			"artist": "JackGore"
+			"char": "scorched"
 		}
-	],
-	"bio_appear": true,
-	"list_position": 9999,
-	"display_name": "HOG"
+	]
 }

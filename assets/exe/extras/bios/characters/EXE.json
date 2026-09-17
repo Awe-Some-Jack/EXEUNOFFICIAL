@@ -1,4 +1,7 @@
 {
+	"bio_appear": true,
+	"list_position": 9,
+	"display_name": "FAKER",
 	"variants": [
 		{
 			"bio": "EXE was an entity that has its origins sprouted from X, before his first appearance in 2011. Unlike the latter, EXE was not an entity that hailed from the void directly, rather he was one of X's experiments with creating a new form of life, based on his own matter from the void, technically making them related by blood. \n\t\t\t\n\t\t\tDespite this, EXE did not agree with the objectives of his predecessor, wishing to overthrow him for the sake of his own goals. \n\t\t\t\n\t\t\tEXE had a vision for humanity and all other life. X, however, did not take too kindly to his insubordination. X cast out EXE for rebelling, believing him to be simply getting in the way of his \"fun\". EXE ended up banished to another part of the universe.",
@@ -8,11 +11,11 @@
 				690,
 				465
 			],
-			"char_scale": 0.5,
+			"char_scale": 0.55,
 			"mod": "EXE",
 			"char_offset": [
-				610,
-				360
+				484,
+				178
 			],
 			"char": "faker",
 			"flip_x": false,
@@ -20,24 +23,18 @@
 		},
 		{
 			"bio": "The Beast is not a transformation. It is not a power-up.\nIt is what EXE becomes when there is nothing left to imitate.\n\nOnce forced to wear a Sonic-like vessel to exist, EXE’s identity was built on imitation—copying form, voice, and behavior to interact with reality. But that structure was never stable. It was a shell… and shells eventually crack.\n\nIn this form, that shell is completely gone.\n\nWhat stands now is something far more unstable and incomprehensible: a towering mass of anti-matter, constantly shifting between shapes that never fully settle. Limbs stretch beyond natural proportions, splitting and reforming without pattern. His face barely holds together—multiple eyes flicker in and out of existence, while his jaw extends unnaturally, revealing layers of jagged, uneven teeth that seem to grow and retract at will.\n\nHis body does not obey anatomy.\nIt obeys instability.\n\nThe Beast is not trying to resemble anything anymore. It has abandoned identity entirely—becoming a living distortion of rage, rejection, and uncontrolled evolution.",
-			"display_name": "exe",
+			"display_name": "EXE",
 			"icon": "exe",
 			"icon_offset": [
 				696,
 				460
 			],
-			"char_scale": 0.45,
-			"mod": "EXE",
+			"char_scale": 0.47,
 			"char_offset": [
-				655,
-				380
+				506,
+				149
 			],
-			"char": "exe",
-			"flip_x": false,
-			"artist": "Raven/Corven03"
+			"char": "exe"
 		}
-	],
-	"bio_appear": true,
-	"list_position": 9,
-	"display_name": "FAKER"
+	]
 }

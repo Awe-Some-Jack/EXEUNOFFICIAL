@@ -1,25 +1,20 @@
 {
-	"variants": [
-		{
-			"char_scale": 0.45,
-			"artist": "Lucifer Azran",
-			"bio": "Curse is a version of Sonic affected by an external force known as the “Curse of X.” Unlike most EXE characters, he is not naturally evil; he was originally normal before being changed by a traumatic event and the curse itself.\r\n\r\nThe curse activates under certain conditions, especially when he forms close connections, causing him to unintentionally harm others. Because of this, he becomes isolated and avoids relationships, despite still having a generally calm and caring personality.\r\n\r\nPhysically, he appears more worn and unstable than Sonic, with darker tones, injuries, and abnormal eyes. He remains self-aware and understands what is happening to him, often showing guilt for his actions. Over time, he travels between dimensions, trying to find a place where he can exist without hurting others.",
-			"mod": "CURSE",
-			"icon_offset": [
-				696,
-				465
-			],
-			"char_offset": [
-				645,
-				375
-			],
-			"flip_x": false,
-			"char": "Curse",
-			"icon": "cursehappy",
-			"display_name": "Curse happy"
-		}
+	"bio_appear": true,
+	"list_position": 14,
+	"display_name": "CURSE SONIC",
+	"char_scale": 0.45,
+	"artist": "Lucifer Azran",
+	"bio": "Curse is a version of Sonic affected by an external force known as the “Curse of X.” Unlike most EXE characters, he is not naturally evil; he was originally normal before being changed by a traumatic event and the curse itself.\r\n\r\nThe curse activates under certain conditions, especially when he forms close connections, causing him to unintentionally harm others. Because of this, he becomes isolated and avoids relationships, despite still having a generally calm and caring personality.\r\n\r\nPhysically, he appears more worn and unstable than Sonic, with darker tones, injuries, and abnormal eyes. He remains self-aware and understands what is happening to him, often showing guilt for his actions. Over time, he travels between dimensions, trying to find a place where he can exist without hurting others.",
+	"mod": "CURSE",
+	"icon_offset": [
+		696,
+		465
 	],
-	"display_name": "Curse",
-	"list_position": 9999,
-	"bio_appear": true
+	"char_offset": [
+		535,
+		174
+	],
+	"flip_x": false,
+	"char": "Curse happy",
+	"icon": "cursehappy"
 }

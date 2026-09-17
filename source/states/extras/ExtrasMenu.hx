@@ -678,7 +678,7 @@ class ExtrasMenu extends MusicBeatState
             case 0:
                 lime.system.System.openURL('https://vsexeunofficial.com/gallery');
                 canMove = true;
-            case 1: canMove = true; // havent done yet lol
+            case 1: nextSubState = new states.extras.bios.BIOS();
             case 2: nextSubState = new states.extras.dagarden.DAGarden();
             case 3: nextSubState = new states.extras.cutscenes.Cutscene();
             case 4: nextSubState = new states.extras.achievements.AchievementsState();

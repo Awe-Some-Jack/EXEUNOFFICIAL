@@ -916,6 +916,36 @@
 			"name": "Hop",
 			"icon": "hop",
 			"description": "NormalCD OLD VA & Hedge Creator"
+		},
+		{
+			"name": "SCHIO",
+			"icon": "schio",
+			"description": "1st place winner for the SUNKY RENDER CONTEST",
+			"extra": ["image", "schio.png"]
+		},
+		{
+			"name": "Capitan Sonic",
+			"icon": "captainsonic",
+			"description": "2nd place winner for the SUNKY RENDER CONTEST",
+			"extra": ["image", "captain.png"]
+		},
+		{
+			"name": "Cardoso",
+			"icon": "cardoso",
+			"description": "3rd place winner for the SUNKY RENDER CONTEST",
+			"extra": ["image", "cardoso.png"]
+		},
+		{
+			"name": "Ms.Cooks",
+			"icon": "cooks",
+			"description": "4th place winner for the SUNKY RENDER CONTEST",
+			"extra": ["image", "cooks.png"]
+		},
+		{
+			"name": "Rabty",
+			"icon": "rabty",
+			"description": "5th place winner for the SUNKY RENDER CONTEST",
+			"extra": ["image", "rabty.png"]
 		}
 	]
 }

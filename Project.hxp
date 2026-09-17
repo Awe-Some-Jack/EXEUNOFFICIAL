@@ -283,6 +283,9 @@ class Project extends HXProject
         var outputRoot = "export/mobile-contents/contents";
         copyContentsWithASTCSwap("contents_file", outputRoot);
 
+        if (FileSystem.exists("list.txt"))
+            File.copy("list.txt", "export/mobile-contents/contentsList.dat");
+
         Sys.println(' INFO : Mobile contents package generated at ${outputRoot} - copy this "contents" folder to the device\'s contents/ directory.');
     }
 

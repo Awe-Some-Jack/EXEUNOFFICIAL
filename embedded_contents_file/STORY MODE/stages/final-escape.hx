@@ -1114,8 +1114,9 @@ function goodNoteHit(note)
 	}
 
 	//xd
-	if (note.noteType == '' && bf.visible && curBG == 'hand')
+	if (bf.visible && curBG == 'hand')
 	{
+		if (note.noAnimation || note.hitCausesMiss) return;
 		bf.playAnim(singAnimations[note.noteData], true);
 		bf.holdTimer = 0;
 	}

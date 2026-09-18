@@ -196,7 +196,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			changeSelection();
 		}
 
-		if (controls.ACCEPT #if mobile || shortPress #end)
+		if (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			if (GameJoltManager.isLoggedIn())
@@ -225,7 +225,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			}
 		}
 
-		if (controls.BACK) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
+		if (controls.BACK #if mobile || backPressed #end) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
 	}
 
 	function _startTyping(user:Bool):Void

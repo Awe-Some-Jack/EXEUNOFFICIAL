@@ -313,6 +313,8 @@ class PlayState extends MusicBeatState
 	public static var hitboxesHeld:Array<Bool> = [false, false, false, false];
 	public static var noteSlide:Array<Bool> = [false, false, false, false];
 	public static var hitboxOwner:Array<Int> = [-1, -1, -1, -1];
+	// tracks, per active pointer (touch id, or -2 for mouse), whether it was overlapping each hitbox last frame
+	public static var hitboxPointerOver:Map<Int, Array<Bool>> = new Map();
 	#end
 
 	static var _originalWidth:Int = FlxG.width;
@@ -855,6 +857,11 @@ class PlayState extends MusicBeatState
 				if(i > 0) opponentStrums.members[i].x = opponentStrums.members[0].x + (i*.3*162);
 			}
 		}
+
+		hitboxesHeld = [false, false, false, false];
+		hitboxOwner = [-1, -1, -1, -1];
+		noteSlide = [false, false, false, false];
+		hitboxPointerOver = new Map();
 
 		if(ClientPrefs.data.controlsType == 'base')
 		{
@@ -1842,6 +1849,7 @@ class PlayState extends MusicBeatState
 	private var _holdArray:Array<Bool> = [];
 	private var _pressArray:Array<Bool> = [];
 	private var _releaseArray:Array<Bool> = [];
+	#if mobile private var _activePointers:Array<Int> = []; #end
 
 	// pre-allocated script argument arrays — avoids heap allocation on every note hit/miss
 	private final _noteArgs:Array<Dynamic>  = [0, 0, '', false, 0.0]; // [index, noteData, noteType, isSustain, strumTime]
@@ -3331,21 +3339,45 @@ class PlayState extends MusicBeatState
 		}
 
 		#if mobile
-		for(i in 0...4) {
-			if(!hitboxesHeld[i]) {
-				var newOwner:Int = -1;
-				if(FlxG.mouse.pressed && FlxG.mouse.overlaps(hitboxesGroup[i], camOther)) newOwner = -2;
-				else for(touch in FlxG.touches.list) {
-					if(touch.pressed && touch.overlaps(hitboxesGroup[i], camOther)) { newOwner = touch.touchPointID; break; }
+		{
+			// build the list of pointers currently pressed down (mouse uses the -2 sentinel id).
+			// touch devices also mirror the primary touch as a synthetic mouse event, so only
+			// fall back to the mouse when there's no real touch active, otherwise the same physical
+			// press gets counted twice (once as a hit, once as a miss when the note's already consumed)
+			_activePointers.resize(0);
+			for(touch in FlxG.touches.list) if(touch.pressed) _activePointers.push(touch.touchPointID);
+			if(_activePointers.length == 0 && FlxG.mouse.pressed) _activePointers.push(-2);
+
+			for(pid in _activePointers) {
+				var overlapState = hitboxPointerOver.get(pid);
+				if(overlapState == null) {
+					overlapState = [false, false, false, false];
+					hitboxPointerOver.set(pid, overlapState);
 				}
-				if(newOwner != -1) {
-					hitboxesHeld[i] = true;
-					hitboxOwner[i] = newOwner;
-					hitboxesGroup[i].alpha = ClientPrefs.data.pressHitboxAlpha;
-					_pressTimestamp = haxe.Timer.stamp();
-					keyPressed(i);
+
+				for(i in 0...4) {
+					final overlapsNow = pointerOverlapsHitbox(pid, i);
+					// only a fresh landing on the hitbox (not a continuous overlap) should count as a press,
+					// so sliding back onto a hitbox or a second finger tapping a held one presses again,
+					// while a touch that's still sustaining its own hold note doesn't re-trigger itself
+					if(overlapsNow && !overlapState[i]) {
+						final isReturningOwner = hitboxOwner[i] == pid && ClientPrefs.data.slideMechanic && noteSlide[i];
+						if(!isReturningOwner) {
+							hitboxesHeld[i] = true;
+							hitboxOwner[i] = pid;
+							hitboxesGroup[i].alpha = ClientPrefs.data.pressHitboxAlpha;
+							_pressTimestamp = haxe.Timer.stamp();
+							keyPressed(i);
+						}
+					}
+					overlapState[i] = overlapsNow;
 				}
 			}
+
+			// drop pointers that are no longer active so a future touch reusing an id starts with a clean slate
+			for(pid in hitboxPointerOver.keys())
+				if(_activePointers.indexOf(pid) == -1)
+					hitboxPointerOver.remove(pid);
 		}
 		#end
 
@@ -3860,6 +3892,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 		hitboxesGroup = [];
+		hitboxPointerOver = new Map();
 		#end
 
 		hscriptArray = null;

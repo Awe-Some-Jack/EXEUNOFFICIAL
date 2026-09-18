@@ -96,6 +96,8 @@ class StoryModeState extends MusicBeatState
 		#end
 
 		super.create();
+
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}
 
 	static function getUnlockedCovers(){
@@ -482,7 +484,7 @@ class StoryModeState extends MusicBeatState
 					if ((FlxG.mouse.overlaps(arrow) && FlxG.mouse.justPressed) || (FlxG.mouse.overlaps(arrow2) && FlxG.mouse.justPressed) || controls.UI_RIGHT_P || controls.UI_LEFT_P)
 						FlxG.sound.play(Paths.sound('denied'));
 
-					if (controls.ACCEPT #if mobile || shortPress && !FlxG.mouse.overlaps(arrow) && !FlxG.mouse.overlaps(arrow2) #end) {
+					if (controls.ACCEPT #if mobile || shortPress && !FlxG.mouse.overlaps(arrow) && !FlxG.mouse.overlaps(arrow2) && !buttonOverlaps #end) {
 						isSelecting = true;
 						FlxG.sound.play(Paths.sound('menuConfirmYourself'));
 						_yourselfCutscene = new YourselfCutscene(this, bfBOX, redBOX, yourselfCover); _yourselfCutscene.start();
@@ -495,7 +497,7 @@ class StoryModeState extends MusicBeatState
 					else if (((FlxG.mouse.overlaps(arrow) && FlxG.mouse.justPressed) || controls.UI_LEFT_P) && selectedCover > 0)
 						changeCover(selectedCover - 1);
 					
-					if (controls.ACCEPT #if mobile || shortPress && !FlxG.mouse.overlaps(arrow) && !FlxG.mouse.overlaps(arrow2) #end) {
+					if (controls.ACCEPT #if mobile || shortPress && !FlxG.mouse.overlaps(arrow) && !FlxG.mouse.overlaps(arrow2) && !buttonOverlaps  #end) {
 						isSelecting = true;
 						bfBOX.animation.play('yeah', true);
 						bfBOX.x += 10;
@@ -504,7 +506,7 @@ class StoryModeState extends MusicBeatState
 					}
 				}
 					
-				if (controls.BACK)
+				if (controls.BACK #if mobile || backPressed #end)
 					exitCoverSelect();
 			}
 			else
@@ -523,7 +525,7 @@ class StoryModeState extends MusicBeatState
 					moved = true;
 				}
 
-				if (controls.BACK)
+				if (controls.BACK #if mobile || backPressed #end)
 				{
 					if (yt == true)
 						FlxG.sound.play(Paths.sound('denied'));
@@ -537,7 +539,7 @@ class StoryModeState extends MusicBeatState
 					}
 				}
 
-				if (!moved && (controls.ACCEPT #if mobile || shortPress #end))
+				if (!moved && (controls.ACCEPT #if mobile || shortPress && !buttonOverlaps  #end))
 				{
 					if (selectedBox == 0) onBox1Accept();
 					else { FlxG.sound.play(Paths.sound('denied')); shakeBox2(); }

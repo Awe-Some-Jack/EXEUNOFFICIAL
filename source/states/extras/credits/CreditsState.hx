@@ -143,6 +143,8 @@ class CreditsState extends SonicSubState
         }
 
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the Credits Menu"); #end
+
+        #if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
     }
 
     override function update(elapsed:Float)
@@ -150,7 +152,7 @@ class CreditsState extends SonicSubState
         super.update(elapsed);
         if (subState != null) return;
 
-        if (controls.BACK)
+        if (controls.BACK #if mobile || backPressed #end)
         {
             FlxG.sound.play(Paths.sound('cancelMenu'));
             FlxG.sound.music?.stop();
@@ -257,6 +259,10 @@ private class CreditPopup extends MusicBeatSubstate
         FlxTween.tween(bg,       {alpha: 1},       0.25, {ease: FlxEase.quadOut});
         FlxTween.tween(bg.scale, {x: 1.0, y: 1.0}, 0.3,  {ease: FlxEase.backOut});
         popCam.alpha = 0; FlxTween.tween(popCam, {alpha: 1}, 0.2, {ease: FlxEase.quadOut});
+        #if mobile
+        createBackButton(FlxG.width - 245, FlxG.height - 710);
+        backButton.camera = popCam;
+        #end
     }
 
     function buildBackground():Void
@@ -547,7 +553,7 @@ private class CreditPopup extends MusicBeatSubstate
 
     function updateNavigation():Void
     {
-        if (controls.BACK) { doClose(); return; }
+        if (controls.BACK #if mobile || backPressed #end) { doClose(); return; }
         
         final len = CreditsState.credits.get(CreditsState.userSelected[0])?.length ?? 1;
         if (controls.UI_LEFT_P)  navTo(FlxMath.wrap(Std.int(CreditsState.userSelected[1]) - 1, 0, len - 1));

@@ -2,9 +2,10 @@ import openfl.display.BlendMode;
 import flixel.tweens.FlxTween.FlxTweenType;
 
 final bg:Array<BackgroundSprite> = [
-	{path: 'hollow/sky', position: [-800, -500], scroll: [0.35, 0.35]},
-	{path: 'hollow/cloud1', position: [-800, -500], scroll: [0.35, 0.35], backdrop: ['x', [50, 0]]},
-	{path: 'hollow/cloud2', position: [-800, -500], scroll: [0.35, 0.35], backdrop: ['x', [50, 0]]},
+	{path: 'hollow/sky', position: [-800, -300], scroll: [0.35, 0.35]},
+	{path: 'hollow/cloud1', position: [-800, -300], scroll: [0.35, 0.35], backdrop: ['x', [50, 0]]},
+	{path: 'hollow/cloud2', position: [-800, -300], scroll: [0.35, 0.35], backdrop: ['x', [50, 0]]},
+	{path: 'hollow/FalseSonicBro', position: [1952, 50], scale: [0.7, 0.7], scroll: [0.7, 0.7], isAtlas: true, animation: [{name: 'Símbolo 1'}], alpha: 0.0001}
 	{path: 'hollow/city', position: [-400, -100], scroll: [0.7, 0.7]},
 	{path: 'hollow/falsebot', position: [1600, 0], scale: [0.5, 0.5], isAtlas: true, animation: [{name: 'falseappear'}, {name: 'idle', looped: true}], alpha: 0.0001}
 	{path: 'hollow/floor'},
@@ -32,14 +33,25 @@ function onEvent(n, v1)
 	}
 	if (n == 'Trigger BG Ghouls')
 	{
-		bg[4].sprite.animation.play('falseappear', true);
-		bg[4].sprite.offset.set(0, 0);
-		bg[4].sprite.alpha = 1;
-		FlxTween.tween(bg[4].sprite, {y: bg[4].sprite.y + 20}, Conductor.crochet / 250, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
-		bg[4].sprite.animation.onFinish.addOnce(function(_)
+		bg[5].sprite.animation.play('falseappear', true);
+		bg[5].sprite.offset.set(0, 0);
+		bg[5].sprite.alpha = 1;
+		FlxTween.tween(bg[5].sprite, {y: bg[5].sprite.y + 20}, Conductor.crochet / 250, {type: FlxTweenType.PINGPONG, ease: FlxEase.sineInOut});
+		bg[5].sprite.animation.onFinish.addOnce(function(_)
 		{
-			bg[4].sprite.animation.play('idle', true);
-			bg[4].sprite.offset.set(-25, -199);
+			bg[5].sprite.animation.play('idle', true);
+			bg[5].sprite.offset.set(-25, -199);
+		});
+	}
+	if (n == 'Kill Henchmen')
+	{
+		FlxTween.tween(camHUD, {alpha: 0.15}, 1);
+		bg[3].sprite.animation.play('Símbolo 1', true);
+		bg[3].sprite.alpha = 1;
+		bg[3].sprite.animation.onFinish.addOnce(function(_)
+		{
+			FlxTween.tween(camHUD, {alpha: 1}, 1);
+			bg[3].sprite.alpha = 0;
 		});
 	}
 }
@@ -52,7 +64,7 @@ function onSectionHit()
 function spawnBadnick()
 {
 	final t:Int = FlxG.random.int(0,3);
-	final setupBadnick:Array<BackgroundSprite> = [{path: 'hollow/badnick', position: [500, 0], scale: [0.5, 0.5], scroll: [0.7, 0.7], isAtlas: true, animation: [{name: 'visorappear'}, {name: 'idlevisor', looped: true}, {name: 'murcielgao', looped: true}, {name: 'Símbolo 23', looped: true}, {name: 'abejorro', looped: true}], layer: (PlayState.instance.members.indexOf(bg[4].sprite))}];
+	final setupBadnick:Array<BackgroundSprite> = [{path: 'hollow/badnick', position: [500, 0], scale: [0.5, 0.5], scroll: [0.7, 0.7], isAtlas: true, animation: [{name: 'visorappear'}, {name: 'idlevisor', looped: true}, {name: 'murcielgao', looped: true}, {name: 'Símbolo 23', looped: true}, {name: 'abejorro', looped: true}], layer: (PlayState.instance.members.indexOf(bg[5].sprite))}];
 	makeBackground(setupBadnick);
 	var badnick:FlxSprite = setupBadnick[0].sprite;
 	badnick.flipX = FlxG.random.bool();

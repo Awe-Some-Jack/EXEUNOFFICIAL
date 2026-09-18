@@ -25,6 +25,14 @@ local shaders = {
         saturation = -50,
         brightness = -15,
     }},
+
+    {name = 'distortion', shader = 'distortion', x = 0,
+    uniforms = {
+        xPos = 0,
+        yPos = 0,
+        size = 0,
+        amount = 0
+    }},
 }
 
 addHaxeLibrary('FlxAngle', 'flixel.math')
@@ -84,6 +92,7 @@ function onCreatePost()
         setShaderFloat('dad', 'dist', 20)
 end
 
+local sexo = false
 local onTween1 = false
 local onTween2 = false
 local onTween3 = false
@@ -115,10 +124,40 @@ function onEvent(eventName, value1, value2)
         doTweenX('colorX', 'color', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
         onTween4 = true
     end
+
+    if eventName == 'BG Freaks Expression' then
+        sexo = not sexo
+        setProperty('distortion.x', 0)
+        setShaderFloat('distortion', 'size', 0)
+        if sexo then
+            setProperty('distortion.x', 0.2)
+        else
+            doTweenX('distortion', 'distortion', 0, 1, 'cubeInOut')
+        end
+    end
 end
 
+local _pos = {1220, 1280}
+function opponentNoteHit(id,nd,nt,isn)
+    if nd == 0 then
+        _pos = {1220, 1250}
+    elseif nd == 1 then
+        _pos = {1335, 1360}
+    elseif nd == 2 then
+        _pos = {1280, 1165}
+    elseif nd == 3 then
+        _pos = {1520, 1280}
+    end
+end
 
-function onUpdatePost()
+local iTime = 0
+function onUpdatePost(e)
+    iTime = iTime + e
+    setShaderFloat('distortion', 'iTime', iTime * 2)
+    setShaderFloat('distortion', 'amount', getProperty('distortion.x'))
+    setShaderFloat('distortion', 'size', (10 + math.sin(iTime * 2) * 0.15) * getProperty('camGame.zoom'))
+    setShaderFloat('distortion', 'xPos', (_pos[1] - (getProperty('camGame.scroll.x') + screenWidth / 2)) * getProperty('camGame.zoom') + screenWidth / 2)
+    setShaderFloat('distortion', 'yPos', (_pos[2] - (getProperty('camGame.scroll.y') + screenHeight / 2)) * getProperty('camGame.zoom') + screenHeight / 2)
     if onTween1 then
         setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
         setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))

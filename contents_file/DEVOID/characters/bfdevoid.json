@@ -1,0 +1,159 @@
+{
+	"animations": [
+		{
+			"offsets": [-43, -24],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "nuevo bf/normal poses/idle"
+		},
+		{
+			"offsets": [-43, -24],
+			"indices": [10, 11, 12, 13],
+			"fps": 24,
+			"anim": "idle-loop",
+			"loop": true,
+			"name": "nuevo bf/normal poses/idle"
+		},
+		{
+			"offsets": [-15, -22],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "nuevo bf/normal poses/singLeft"
+		},
+		{
+			"offsets": [5, -42],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "nuevo bf/normal poses/singDown"
+		},
+		{
+			"offsets": [-50, 29],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "nuevo bf/normal poses/singUp"
+		},
+		{
+			"offsets": [-57, 13],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "nuevo bf/normal poses/singRight"
+		},
+		{
+			"offsets": [-15, -22],
+			"indices": [10, 11, 12, 13],
+			"fps": 24,
+			"anim": "singLEFT-loop",
+			"loop": true,
+			"name": "nuevo bf/normal poses/singLeft"
+		},
+		{
+			"offsets": [5, -42],
+			"indices": [10, 11, 12, 13],
+			"fps": 24,
+			"anim": "singDOWN-loop",
+			"loop": true,
+			"name": "nuevo bf/normal poses/singDown"
+		},
+		{
+			"offsets": [-50, 29],
+			"indices": [10, 11, 12, 13],
+			"fps": 24,
+			"anim": "singUP-loop",
+			"loop": true,
+			"name": "nuevo bf/normal poses/singUp"
+		},
+		{
+			"offsets": [-57, 13],
+			"indices": [10, 11, 12, 13],
+			"fps": 24,
+			"anim": "singRIGHT-loop",
+			"loop": true,
+			"name": "nuevo bf/normal poses/singRight"
+		},
+		{
+			"offsets": [-18, 3],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "nuevo bf/normal poses/missLeft"
+		},
+		{
+			"offsets": [-25, -24],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "nuevo bf/normal poses/missDown"
+		},
+		{
+			"offsets": [-58, 37],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "nuevo bf/normal poses/missUp"
+		},
+		{
+			"offsets": [-57, 15],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "nuevo bf/normal poses/missRight"
+		},
+		{
+			"offsets": [-18, 3],
+			"indices": [10, 11, 12, 13],
+			"fps": 24,
+			"anim": "singLEFTmiss-loop",
+			"loop": true,
+			"name": "nuevo bf/normal poses/missLeft"
+		},
+		{
+			"offsets": [-25, -24],
+			"indices": [10, 11, 12, 13],
+			"fps": 24,
+			"anim": "singDOWNmiss-loop",
+			"loop": true,
+			"name": "nuevo bf/normal poses/missDown"
+		},
+		{
+			"offsets": [-58, 37],
+			"indices": [10, 11, 12, 13],
+			"fps": 24,
+			"anim": "singUPmiss-loop",
+			"loop": true,
+			"name": "nuevo bf/normal poses/missUp"
+		},
+		{
+			"offsets": [-57, 15],
+			"indices": [10, 11, 12, 13],
+			"fps": 24,
+			"anim": "singRIGHTmiss-loop",
+			"loop": true,
+			"name": "nuevo bf/normal poses/missRight"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/bfvoid",
+	"position": [0, 0],
+	"healthicon": "bf",
+	"flip_x": true,
+	"healthbar_colors": [58, 205, 241],
+	"camera_position": [60, -30],
+	"sing_duration": 5.99999999999999,
+	"scale": 0.73,
+	"_editor_isPlayer": true
+}

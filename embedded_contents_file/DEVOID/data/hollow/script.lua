@@ -48,7 +48,7 @@ function onStepHit()
     end
     if curStep == 528 or curStep == 784 or curStep == 1296 or curStep == 1552 then
         doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', .6, 0.6)
-    elseif curStep == 544 or curStep == 1056 or curStep == 1312 or curStep == 1568 then
+    elseif curStep == 544 or curStep == 1056 or curStep == 1312 or curStep == 1824 then
         doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', 0, 0.4)
     end
     if curStep == 1568 then

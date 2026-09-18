@@ -97,6 +97,8 @@ class SoundTest extends MusicBeatState
 		save = new FlxSave();
 		save.bind('savedSongs', CoolUtil.getSavePath());
 		if (save.data.songs == null) save.data.songs = [];
+
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}
 
 	function loadCodesFromWeeks():Void
@@ -364,7 +366,7 @@ class SoundTest extends MusicBeatState
 		handleValueChange(elapsed);
 		updateDisplayedValues();
 
-		if (controls.BACK)
+		if (controls.BACK #if mobile || backPressed #end)
 		{
 			menuSong = true;
 			transitioning = true;
@@ -372,7 +374,7 @@ class SoundTest extends MusicBeatState
 			FlxG.switchState(() -> new EXEMenu());
 		}
 
-		if (controls.ACCEPT || shortPress)
+		if (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
 		{
 			notFoundAny = true;
 			

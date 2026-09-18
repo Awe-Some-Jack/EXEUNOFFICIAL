@@ -8,6 +8,11 @@ import openfl.display.BitmapData;
 import openfl.geom.Point;
 import openfl.geom.Rectangle;
 
+#if mobile
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.frames.FlxFrame;
+#end
+
 import objects.HealthIcon;
 
 import flixel.*;
@@ -77,9 +82,11 @@ class BIOS extends SonicSubState
 	var _lastCharId:String  = '';
 	var _lastCharMod:String = '';
 
-	static var _frameCache:Map<String, { bmp:BitmapData, offset:Array<Float> }> = new Map();
+	static var _frameCache:Map<String, { ?bmp:BitmapData, #if mobile ?frames:FlxAtlasFrames, ?frame:FlxFrame, #end offset:Array<Float> }> = new Map();
 
 	var iconBoundsBox:FlxSprite;
+
+	#if mobile public var cooldownTimer:Float = 0.0; #end
 
 	override function create():Void
 	{
@@ -145,6 +152,8 @@ class BIOS extends SonicSubState
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Bios Menu", null);
 		#end
+
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}
 
 	function loadEntries():Void
@@ -219,6 +228,9 @@ class BIOS extends SonicSubState
 
 	function _loadIdleAtlas():Void
 	{
+		#if mobile
+		return;
+		#else
 		if (!BIOSCharacter.exists())
 			BIOSCharacter.generate(_collectModCharPairs());
 
@@ -248,6 +260,7 @@ class BIOS extends SonicSubState
 		{
 			trace('BIOS: failed to load idle atlas: $e');
 		}
+		#end
 	}
 
 	function _buildShowcase():Void
@@ -487,6 +500,18 @@ class BIOS extends SonicSubState
 
 			final imageKey:String = Std.string(json.image).split(',')[0].trim();
 
+			#if mobile
+			final atlasFrames:FlxAtlasFrames = Paths.getAtlas(imageKey);
+			if (atlasFrames == null) { charSprite.visible = false; return; }
+
+			var matched:FlxFrame = _findFrameByPrefix(atlasFrames, idleAnim.prefix);
+			if (matched == null && idleAnim.altPrefix != null && idleAnim.altPrefix != idleAnim.prefix)
+				matched = _findFrameByPrefix(atlasFrames, idleAnim.altPrefix);
+
+			if (matched == null) { charSprite.visible = false; return; }
+
+			cached = { frames: atlasFrames, frame: matched, offset: animOffset };
+			#else
 			final pngPath = _resolveImagePath(imageKey, mod);
 			if (pngPath == null) { charSprite.visible = false; return; }
 
@@ -510,12 +535,18 @@ class BIOS extends SonicSubState
 			sheetBmp.dispose();
 
 			cached = { bmp: frameBmp, offset: animOffset };
+			#end
 			_frameCache.set(cacheKey, cached);
 		}
 
+		#if mobile
+		charSprite.frames = cached.frames;
+		charSprite.frame  = cached.frame;
+		#else
 		charSprite.makeGraphic(cached.bmp.width, cached.bmp.height, 0x00000000, true);
 		charSprite.pixels.copyPixels(cached.bmp, cached.bmp.rect, new Point(0, 0));
 		charSprite.dirty = true;
+		#end
 
 		charSprite.scale.set(scale, scale);
 		charSprite.flipX = flipX;
@@ -530,6 +561,16 @@ class BIOS extends SonicSubState
 		_lastCharMod = mod;
 	}
 
+	#if mobile
+	function _findFrameByPrefix(atlasFrames:FlxAtlasFrames, prefix:String):FlxFrame
+	{
+		if (prefix == null || prefix == '') return null;
+		for (f in atlasFrames.frames)
+			if (f.name != null && f.name.indexOf(prefix) == 0)
+				return f;
+		return null;
+	}
+	#else
 	function _resolveImagePath(imageKey:String, mod:String):String
 	{
 		final pngKey = 'images/$imageKey.webp';
@@ -638,6 +679,7 @@ class BIOS extends SonicSubState
 
 		return null;
 	}
+	#end
 
 	function _findIdleAnim(json:Dynamic):{ prefix:String, altPrefix:String, offset:Array<Float> }
 	{
@@ -685,6 +727,7 @@ class BIOS extends SonicSubState
 
 	function _changeEntry(delta:Int):Void
 	{
+		#if mobile cooldownTimer = 0.15; #end
 		if (entries.length <= 1) return;
 		virtualIdx += delta;
 		final n = entries.length;
@@ -706,7 +749,7 @@ class BIOS extends SonicSubState
 
 	public function reloadEntries():Void
 	{
-		for (c in _frameCache) c.bmp.dispose();
+		for (c in _frameCache) if (c.bmp != null) c.bmp.dispose();
 		_frameCache = new Map();
 		_lastCharId  = '';
 		_lastCharMod = '';
@@ -734,6 +777,8 @@ class BIOS extends SonicSubState
 	{
 		super.update(elapsed);
 
+		#if mobile if (cooldownTimer > 0) cooldownTimer -= elapsed; #end
+
 		if (subState != null) return;
 
 		_updateArtistCycle(elapsed);
@@ -742,8 +787,8 @@ class BIOS extends SonicSubState
 
 		if (entries.length > 1)
 		{
-			if (FlxG.mouse.deltaWheel.y != 0 && !FlxG.mouse.overlaps(bioBox))
-				_changeEntry(Math.round(-FlxG.mouse.deltaWheel.y));
+			if ((FlxG.mouse.deltaWheel.y != 0 #if mobile || (deltaMouseY != 0 && pressHolding && cooldownTimer <= 0) #end) && !FlxG.mouse.overlaps(bioBox))
+				_changeEntry(Math.round(#if !mobile -FlxG.mouse.deltaWheel.y #else -deltaMouseY #end));
 			if (controls.UI_UP_P   || FlxG.keys.justPressed.W) _changeEntry(-1);
 			if (controls.UI_DOWN_P || FlxG.keys.justPressed.S) _changeEntry(1);
 		}
@@ -758,7 +803,7 @@ class BIOS extends SonicSubState
 
 		if (controls.RESET) FlxG.resetState();
 
-		if (controls.BACK)
+		if (controls.BACK #if mobile || backPressed #end)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			close();
@@ -867,9 +912,9 @@ class BIOS extends SonicSubState
 
 		if (textTaller)
 		{
-			if (FlxG.mouse.deltaWheel.y != 0 && FlxG.mouse.overlaps(bioBox))
+			if ((FlxG.mouse.deltaWheel.y != 0 #if mobile || (deltaMouseY != 0 && pressHolding) #end) && FlxG.mouse.overlaps(bioBox))
 			{
-				bioTxt.y += FlxG.mouse.deltaWheel.y * 10;
+				bioTxt.y += #if !mobile FlxG.mouse.deltaWheel.y * 10 #else deltaMouseY #end;
 				bioTxt.y  = FlxMath.bound(bioTxt.y, 36 - (bioTxt.height - 642), 36 + 13);
 				_bioClipRect.set(0, (36 + 13) - bioTxt.y, 407 - 16 - 80, viewH);
 				bioTxt.clipRect = _bioClipRect;

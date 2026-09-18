@@ -173,6 +173,8 @@ class FridgeAccess extends MusicBeatState
 		DiscordClient.changePresence("In the Fridge!", "Selecting da Sunky");
 		#end
 
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 710); #end
+
 		//object = doorup;
 	}
 
@@ -187,7 +189,7 @@ class FridgeAccess extends MusicBeatState
 
 		if (!transitioning)
 		{
-			if (controls.BACK)
+			if (controls.BACK #if mobile || backPressed #end)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.sound.music.fadeOut(0.3);

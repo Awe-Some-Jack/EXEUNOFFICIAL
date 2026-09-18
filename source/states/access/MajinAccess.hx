@@ -146,6 +146,8 @@ class MajinAccess extends MusicBeatState
 		blackBG.screenCenter();
 		add(blackBG);
 
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
+
 		shaderOut.invert.value = [true];
 		shaderOut.lowerBound.value = [0.0];
 		shaderOut.borderTint.value = [0.0, 0.0, 0.0];
@@ -166,7 +168,7 @@ class MajinAccess extends MusicBeatState
 
 		if (!transitioning)
 		{
-			if (controls.BACK)
+			if (controls.BACK #if mobile || backPressed #end)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(() -> new EXEMenu());

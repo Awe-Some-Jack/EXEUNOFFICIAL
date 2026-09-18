@@ -78,6 +78,8 @@ class StoryParallaxState extends MusicBeatState
 
 		if (fromSong) FlxG.sound.playMusic(Assets.getSound('assets/exe/music/parallax.ogg'));
 		fromSong = false;
+
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}
 	
 	var activateOnce:Bool = true;
@@ -91,14 +93,14 @@ class StoryParallaxState extends MusicBeatState
 
 		if (!transitioning)
 		{
-			if (controls.BACK)
+			if (controls.BACK #if mobile || backPressed #end)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(() -> new ParallaxState());
 				transitioning = true;
 			}
 
-			if (controls.ACCEPT #if mobile || shortPress #end)
+			if (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
 			{
 				transitioning = true;
 				mdcd.animation.play('selected');

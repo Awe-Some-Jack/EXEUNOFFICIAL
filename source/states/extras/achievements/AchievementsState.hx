@@ -118,6 +118,8 @@ class AchievementsState extends SonicSubState
 
         achievementGroup.x = -FlxG.width;
         FlxTween.tween(achievementGroup, {x: 30}, 1.2, {ease: FlxEase.expoOut});
+
+        #if mobile createBackButton(FlxG.width - 245, FlxG.height - 710); #end
     }
 
     var isScrolling:Bool = false;
@@ -125,7 +127,7 @@ class AchievementsState extends SonicSubState
     {
         super.update(elapsed);
 
-        if(controls.BACK) back();
+        if(controls.BACK #if mobile || backPressed #end) back();
         
         if(FlxG.keys.justPressed.G) EXEAchievements.unlockAll();
         if(FlxG.keys.justPressed.H) EXEAchievements.lockAll();

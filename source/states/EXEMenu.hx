@@ -173,6 +173,8 @@ class EXEMenu extends MusicBeatState
 		FlxG.mouse.visible = true;
 
 		super.create();
+
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}
 
 	function maniaEmail():Void
@@ -285,7 +287,7 @@ class EXEMenu extends MusicBeatState
 
 			updateScrollInput(elapsed);
 
-			if (controls.BACK)
+			if (controls.BACK #if mobile || backPressed #end)
 			{
 				canInteract = false;
 				FlxG.sound.play(Paths.sound('cancelMenu'));

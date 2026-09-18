@@ -102,6 +102,8 @@ class ParallaxState extends MusicBeatState
 			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/parallax.ogg'));
 			parallaxSong = false;
 		}
+
+		#if mobile createBackButton(FlxG.width - 270, FlxG.height - 240); #end
 	}
 
 	var transitioning:Bool = false;
@@ -112,7 +114,7 @@ class ParallaxState extends MusicBeatState
 
 		if (!transitioning)
 		{
-			if (controls.BACK)
+			if (controls.BACK #if mobile || backPressed #end)
 			{
 				toTitle = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));

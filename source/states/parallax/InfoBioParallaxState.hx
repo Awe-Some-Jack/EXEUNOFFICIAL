@@ -146,6 +146,8 @@ class InfoBioParallaxState extends MusicBeatState
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Parallax Menus", 'Checking Info Bios');
 		#end
+
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}
 
 	function loadCharData():Void
@@ -281,7 +283,7 @@ class InfoBioParallaxState extends MusicBeatState
 
 		if (!transitioning)
 		{
-			if (controls.BACK)
+			if (controls.BACK #if mobile || backPressed #end)
 			{
 				transitioning = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));

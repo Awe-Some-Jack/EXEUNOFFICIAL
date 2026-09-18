@@ -263,6 +263,8 @@ class EXEFreeplay extends MusicBeatState
 		#end
 
 		setupBgWarp();
+
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 710); #end
 	}
 
 	function buildSongList():Void
@@ -468,7 +470,7 @@ class EXEFreeplay extends MusicBeatState
 
 		if (songEntries.length < 1)
 		{
-			if (controls.BACK && !maniaUnlock)
+			if ((controls.BACK #if mobile || backPressed #end) && !maniaUnlock)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxG.switchState(() -> new EXEMenu());
@@ -509,7 +511,7 @@ class EXEFreeplay extends MusicBeatState
 			return;
 		}
 
-		if (controls.BACK && !maniaUnlock && !backend.BurningBot.burningLocked)
+		if ((controls.BACK #if mobile || backPressed #end) && !maniaUnlock && !backend.BurningBot.burningLocked)
 		{
 			if (choosingSong)
 			{

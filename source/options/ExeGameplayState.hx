@@ -110,7 +110,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 				ClientPrefs.saveSettings();
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
-			if (controls.BACK)
+			if (controls.BACK #if mobile || backPressed #end)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				editingValue = false; holdTimer = 0; holdRepeat = 0; backLock = true;
@@ -152,13 +152,13 @@ class ExeGameplayState extends ExeBaseOptionsState
 				}
 			}
 		}
-		if (controls.ACCEPT #if mobile || shortPress #end)
+		if (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			editingValue = true; backLock = true; nudgeSelectedText(true);
 			var g = optionGroups[curSelected - scrollOffset];
 			showArrows(g.valueBG.y + (g.valueBG.height - arrowLeft.height) / 2);
 		}
-		if (controls.BACK) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
+		if (controls.BACK #if mobile || backPressed #end) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
 	}
 }

@@ -99,6 +99,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	{
 		super.create();
 		buildUI();
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}
 
 	function buildUI()
@@ -458,6 +459,37 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		swipeDOWN = deltaMouseY >= 5 && pressHolding && Math.abs(deltaMouseY) > Math.abs(deltaMouseX);
 		swipeLEFT = deltaMouseX <= -5 && pressHolding && Math.abs(deltaMouseY) < Math.abs(deltaMouseX);
 		swipeRIGHT = deltaMouseX >= 5 && pressHolding && Math.abs(deltaMouseY) < Math.abs(deltaMouseX);
+
+		if(backButton != null) {
+			if(FlxG.mouse.pressedRight) {
+				backButton.x += deltaMouseX;
+				backButton.y += deltaMouseY;
+				trace(backButton.x + ' ' + backButton.y);
+			}
+
+			buttonOverlaps = FlxG.mouse.overlaps(backButton);
+
+			if(buttonOverlaps) {
+				backButton.animation.play('press', true);
+				
+				backPressed = shortPress;
+
+				if(backButton.scale.x != 0.19 && tweenScale == null) {
+					FlxTween.cancelTweensOf(backButton);
+					FlxTween.cancelTweensOf(backButton.scale);
+					tweenScale = FlxTween.tween(backButton.scale, {x: 0.19, y: 0.19}, 0.2, {ease: FlxEase.backOut, onComplete: function(_) tweenScale = null});
+					FlxTween.tween(backButton, {alpha: 1}, 0.2, {ease: FlxEase.smootherStepOut});
+				}
+			} else {
+				backButton.animation.play('idle', true);
+				if(backButton.scale.x != 0.17 && tweenScale == null) {
+					FlxTween.cancelTweensOf(backButton);
+					FlxTween.cancelTweensOf(backButton.scale);
+					tweenScale = FlxTween.tween(backButton.scale, {x: 0.17, y: 0.17}, 0.2, {ease: FlxEase.backOut, onComplete: function(_) tweenScale = null});
+					FlxTween.tween(backButton, {alpha: 0.6}, 0.2, {ease: FlxEase.smootherStepOut});
+				}
+			}
+		}
 
 		super.update(elapsed);
 	}

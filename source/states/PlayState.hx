@@ -3064,7 +3064,8 @@ class PlayState extends MusicBeatState
 			combo = 0;
 			
 			// correctly?
-			if(gf != null && lastCombo > 10 && gf != null && gf.hasAnimation('sad'))
+			final lastCombo:Int = combo; // uuhhhh
+			if(gf != null && lastCombo > 10 && gf.hasAnimation('sad'))
 			{
 				gf.playAnim('sad');
 				gf.specialAnim = true;

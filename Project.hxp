@@ -119,6 +119,9 @@ class Project extends HXProject
         if (!isWeb())
             setHaxedef("openfl_dpi_aware");
 
+        if (isIOS())
+            setHaxedef("openfl_disable_hdpi_cacheasbitmap");
+
         if (DISCORD_ALLOWED.isEnabled(this))
             setHaxedef("DISCORD_DISABLE_IO_THREAD");
 

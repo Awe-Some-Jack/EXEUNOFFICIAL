@@ -6,6 +6,6 @@
   "colorprofile": "cs",
   "custom": [],
   "excludes": [
-    "embedded_contents_file/SONICHU/images/bg/5.webp"
+    "embedded_contents_file/SONICHU/images/"
   ]
 }

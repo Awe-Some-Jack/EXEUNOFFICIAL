@@ -93,14 +93,14 @@ function onCreatePost()
 		'sineInOut'
 	);
 
-	makeLuaSprite('tree1', 'Miasma/tree', -810, -240);
+	makeLuaSprite('tree1', 'Miasma/Tree', -810, -240);
 	scaleObject('tree1', 0.2, 0.2);
 	setScrollFactor('tree1', 1, 1);
 	setProperty('tree1.flipX', true);
 	setProperty('tree1.angle', -7);
 	addLuaSprite('tree1', false);
 
-	makeLuaSprite('tree2', 'Miasma/tree', 475, -210);
+	makeLuaSprite('tree2', 'Miasma/Tree', 475, -210);
 	scaleObject('tree2', 0.2, 0.2);
 	setScrollFactor('tree2', 1, 1);
 	setProperty('tree2.angle', 3);

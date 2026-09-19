@@ -28,9 +28,9 @@ var normal:Array<BackgroundSpriteAlt> = [
 	{path: 'tt/bgn/trees3', position: [-900, -200], scroll: [0.55, 0.55], pathF: 'tt/bgn/fire/trees3'},
 	{path: 'tt/bgn/fire/FIRE 2', position: [-1000, -2700], scroll: [0.55, 0.55], scale: [6, 10, true], animation: [{name: 'fire instancia 1', looped: true}], visible: false, isFire: true},
 	{path: 'tt/bgn/trees2', position: [-800, -200], scroll: [0.7, 0.7], pathF: 'tt/bgn/fire/trees2'},
-	{path: 'tt/bgn/fire/FIRE', position: [-600, 100], scroll: [0.85, 0.85], scale: [3, 3, true], animation: [{name: 'fuego true instancia 1', looped: true}], visible: false, isFire: true},
+	{path: 'tt/bgn/fire/fire', position: [-600, 100], scroll: [0.85, 0.85], scale: [3, 3, true], animation: [{name: 'fuego true instancia 1', looped: true}], visible: false, isFire: true},
 	{path: 'tt/bgn/trees1', position: [-600, -200], scroll: [0.85, 0.85], pathF: 'tt/bgn/fire/trees1'},
-	{path: 'tt/bgn/fire/FIRE', position: [-800, 400], scroll: [0.925, 0.925], scale: [3, 3, true], animation: [{name: 'fuego true instancia 1', looped: true}], visible: false, isFire: true},
+	{path: 'tt/bgn/fire/fire', position: [-800, 400], scroll: [0.925, 0.925], scale: [3, 3, true], animation: [{name: 'fuego true instancia 1', looped: true}], visible: false, isFire: true},
 	{path: 'tt/bgn/floor', position: [-600, -200], pathF: 'tt/bgn/fire/floor'},
 	{path: 'tt/bgn/foreground', position: [-600, -200], scroll: [1.2, 1.2], front: true, pathF: 'tt/bgn/fire/foreground'},
 	{path: 'tt/bgn/fire/FIRE 2', position: [-800, 100], scroll: [1.2, 1.2], front: true, scale: [6, 6, true], animation: [{name: 'fire instancia 1', looped: true}], visible: false, isFire: true}

@@ -385,11 +385,19 @@ class Paths
 		return getContent(path);
 	}
 
-	inline static public function getContent(path:String):String
+	static public function getContent(path:String):String
 	{
 		if (OpenFlAssets.exists(path)) return OpenFlAssets.getText(path);
 		#if sys
 		if (sys.FileSystem.exists(path)) return sys.io.File.getContent(path);
+		#end
+		#if mobile
+		final mobileRoot = MobileUtil.getDirectory();
+		if (path.startsWith(mobileRoot))
+		{
+			final relative = path.substr(mobileRoot.length);
+			if (OpenFlAssets.exists(relative)) return OpenFlAssets.getText(relative);
+		}
 		#end
 		return null;
 	}
@@ -474,16 +482,19 @@ class Paths
 			for(mod in Mods.getGlobalMods())
 			{
 				final modPath:String = mods('$mod/$modKey');
-				if (#if sys sys.FileSystem.exists(modPath) || #end OpenFlAssets.exists(modPath)) return true;
+				#if sys
+				if (sys.FileSystem.exists(modPath)) return true;
+				#end
+				if (OpenFlAssets.exists('contents/$mod/$modKey')) return true;
 			}
 
 			final currentModPath:String = mods(Mods.currentModDirectory + '/' + modKey);
 			final baseModPath:String = mods(modKey);
-			
+
 			#if sys
 			if (sys.FileSystem.exists(currentModPath) || sys.FileSystem.exists(baseModPath)) return true;
 			#end
-			if (OpenFlAssets.exists(currentModPath) || OpenFlAssets.exists(baseModPath)) return true;
+			if (OpenFlAssets.exists('contents/' + Mods.currentModDirectory + '/' + modKey) || OpenFlAssets.exists('contents/' + modKey)) return true;
 		}
 		
 		final defaultPath:String = getPath(key, type, parentFolder, false);
@@ -497,21 +508,28 @@ class Paths
 	public static function readDirectory(folder:String):Array<String> {
 		final scannedFiles:Array<String> = [];
 		final scanFolder:String = folder.endsWith('/') ? folder : folder + '/';
-		
+
 		#if sys
 		if (sys.FileSystem.exists(scanFolder) && sys.FileSystem.isDirectory(scanFolder)) {
 			for (file in sys.FileSystem.readDirectory(scanFolder))
 				if (!scannedFiles.contains(file)) scannedFiles.push(file);
 		}
 		#end
-		
+
+		var manifestScanFolder = scanFolder;
+		#if mobile
+		final mobileRoot = MobileUtil.getDirectory();
+		if (manifestScanFolder.startsWith(mobileRoot))
+			manifestScanFolder = manifestScanFolder.substr(mobileRoot.length);
+		#end
+
 		for (file in OpenFlAssets.list()) {
 			var cleanFile = file;
 			final colonIndex = cleanFile.indexOf(":");
 			if (colonIndex != -1) cleanFile = cleanFile.substring(colonIndex + 1);
 
-			if (cleanFile.indexOf(scanFolder) == 0) {
-				final rest = cleanFile.substr(scanFolder.length);
+			if (cleanFile.indexOf(manifestScanFolder) == 0) {
+				final rest = cleanFile.substr(manifestScanFolder.length);
 
 				var item = rest;
 				if (rest.indexOf('/') != -1)

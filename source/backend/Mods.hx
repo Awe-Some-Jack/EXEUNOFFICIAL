@@ -56,7 +56,49 @@ class Mods
 			if (!folder.contains('.') && !ignoreModFolders.contains(folder.toLowerCase()) && !list.contains(folder))
 				list.push(folder);
 		}
+
+		#if mobile
+		for (folder in getEmbeddedModFolders())
+			if (!list.contains(folder))
+				list.push(folder);
+		#end
+
 		return list;
+	}
+
+	#if mobile
+	inline static function getEmbeddedModFolders():Array<String>
+	{
+		var list:Array<String> = [];
+		for (key in OpenFlAssets.list())
+		{
+			var cleanKey = key;
+			var colonIndex = cleanKey.indexOf(":");
+			if (colonIndex != -1) cleanKey = cleanKey.substring(colonIndex + 1);
+
+			if (cleanKey.indexOf('contents/') == 0)
+			{
+				var rest = cleanKey.substr('contents/'.length);
+				var folder = rest.indexOf('/') != -1 ? rest.substr(0, rest.indexOf('/')) : rest;
+				if (folder.length > 0 && !folder.contains('.') && !ignoreModFolders.contains(folder.toLowerCase()) && !list.contains(folder))
+					list.push(folder);
+			}
+		}
+		return list;
+	}
+	#end
+
+	static function modFolderExists(folder:String):Bool
+	{
+		if (FileSystem.exists(Paths.mods(folder)) && FileSystem.isDirectory(Paths.mods(folder)))
+			return true;
+
+		#if mobile
+		if (getEmbeddedModFolders().contains(folder))
+			return true;
+		#end
+
+		return false;
 	}
 	
 	inline public static function mergeAllTextsNamed(path:String, ?defaultDirectory:String = null, allowDuplicates:Bool = false)
@@ -200,7 +242,7 @@ class Mods
 				var dat:Array<String> = mod.split("|");
 				var folder:String = dat[0];
 				
-				if(folder.trim().length > 0 && FileSystem.exists(Paths.mods(folder)) && FileSystem.isDirectory(Paths.mods(folder)) && !added.contains(folder))
+				if(folder.trim().length > 0 && modFolderExists(folder) && !added.contains(folder))
 				{
 					added.push(folder);
 					list.push([folder, (dat[1] == "1")]);

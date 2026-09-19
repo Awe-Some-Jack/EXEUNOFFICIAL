@@ -21,7 +21,7 @@ function onCreate()
 	ring.updateHitbox();
 	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), ring);
 
-	vg = new FlxSprite(0, 0).loadGraphic(Paths.image('vg'));
+	vg = new FlxSprite(0, 0).loadGraphic(Paths.image('VG'));
 	vg.updateHitbox();
 	vg.color = 0xFF000000;
 	vg.alpha = 0;

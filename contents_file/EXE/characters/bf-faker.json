@@ -147,7 +147,7 @@
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/Bf faker",
+	"image": "characters/bf faker",
 	"position": [-85, 260],
 	"healthicon": "bf",
 	"flip_x": true,

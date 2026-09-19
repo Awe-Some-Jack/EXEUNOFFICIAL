@@ -77,6 +77,8 @@ import Main;
 }
 
 class ClientPrefs {
+	public static var MAX_FRAMERATE:Int = #if ios 60 #else 360 #end;
+
 	public static var data:SaveVariables = {};
 	public static var defaultData:SaveVariables = {};
 
@@ -177,6 +179,9 @@ class ClientPrefs {
 		for (key in Reflect.fields(data))
 			if (key != 'gameplaySettings' && Reflect.hasField(FlxG.save.data, key))
 				Reflect.setField(data, key, Reflect.field(FlxG.save.data, key));
+
+		if (data.framerate > MAX_FRAMERATE)
+			data.framerate = MAX_FRAMERATE;
 
 		FlxG.autoPause = ClientPrefs.data.autoPause;
 

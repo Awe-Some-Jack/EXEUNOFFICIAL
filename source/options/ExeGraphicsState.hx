@@ -84,7 +84,7 @@ class ExeGraphicsState extends ExeBaseOptionsState
 				else if (opt.isInt == true)
 				{
 					var n = cast(val, Int) + (isRight ? 1 : -1);
-					n = isRight ? Std.int(Math.min(n, 240)) : Std.int(Math.max(n, 30));
+					n = isRight ? Std.int(Math.min(n, ClientPrefs.MAX_FRAMERATE)) : Std.int(Math.max(n, 30));
 					opt.setValue(n); txt.text = Std.string(n);
 				}
 				ClientPrefs.saveSettings();

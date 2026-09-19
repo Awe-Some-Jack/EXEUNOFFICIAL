@@ -51,7 +51,7 @@
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
-	"image": "characters/fatal-error-glitch",
+	"image": "characters/Fatal-error-glitch",
 	"position": [0, 0],
 	"healthicon": "fatal-sonic",
 	"flip_x": false,

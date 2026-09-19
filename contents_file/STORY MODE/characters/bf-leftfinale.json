@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"offsets": [-10, 0],
 			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [0, -20],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [0, 60],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [8, 26],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
+			"offsets": [172, 88],
 			"anim": "idle",
+			"fps": 24,
+			"name": "Símbolo 55",
+			"indices": []
+		},
+		{
 			"loop": false,
-			"name": "idle"
+			"offsets": [250, 100],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Símbolo 55 copia",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [165, -25],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Símbolo 55 copia 4",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [180, 240],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Símbolo 55 copia 3",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [178, 136],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Símbolo 55 copia 2",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
@@ -50,6 +50,6 @@
 	"healthbar_colors": [254, 210, 77],
 	"camera_position": [0, 0],
 	"sing_duration": 6,
-	"scale": 1,
+	"scale": 0.9,
 	"_editor_isPlayer": true
 }

@@ -165,6 +165,8 @@ class ExtrasMenu extends MusicBeatState
 
         SonicRetroTransition.init();
         SonicRetroTransition.play(false, 0.5);
+
+        #if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
     }
 
     override public function update(elapsed:Float):Void
@@ -214,7 +216,7 @@ class ExtrasMenu extends MusicBeatState
 
         if (controls.ACCEPT #if mobile || (shortPress && FlxG.mouse.overlaps(menuItems[curSelected])) #end)    selectOption();
 
-        if (controls.BACK)
+        if (controls.BACK #if mobile || backPressed #end)
         {
             canMove = false;
             FlxG.sound.music?.fadeOut(0.3);
@@ -678,7 +680,7 @@ class ExtrasMenu extends MusicBeatState
             case 0:
                 lime.system.System.openURL('https://vsexeunofficial.com/gallery');
                 canMove = true;
-            case 1: canMove = true; // havent done yet lol
+            case 1: nextSubState = new states.extras.bios.BIOS();
             case 2: nextSubState = new states.extras.dagarden.DAGarden();
             case 3: nextSubState = new states.extras.cutscenes.Cutscene();
             case 4: nextSubState = new states.extras.achievements.AchievementsState();

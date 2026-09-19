@@ -1,108 +1,108 @@
 {
 	"animations": [
 		{
-			"offsets": [13, -13],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [-14, -19],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [-10, 47],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [-38, -2],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [13, -13],
 			"loop": true,
-			"fps": 24,
-			"anim": "singLEFT-loop",
-			"indices": [7, 8, 9],
-			"name": "left s2 instancia 1"
-		},
-		{
-			"offsets": [-14, -19],
-			"loop": true,
-			"fps": 24,
-			"anim": "singDOWN-loop",
-			"indices": [7, 8, 9],
-			"name": "down e2 instancia 1"
-		},
-		{
-			"offsets": [-10, 47],
-			"loop": true,
-			"fps": 24,
-			"anim": "singUP-loop",
-			"indices": [7, 8, 9],
-			"name": "up e2 instancia 1"
-		},
-		{
-			"offsets": [-38, -2],
-			"loop": true,
-			"fps": 24,
-			"anim": "singRIGHT-loop",
-			"indices": [7, 8, 9],
-			"name": "right s2 instancia 1"
-		},
-		{
-			"loop": true,
-			"offsets": [0, 0],
+			"offsets": [0, 9],
 			"anim": "idle",
 			"fps": 24,
-			"name": "cabeza idle",
+			"name": "3 Front/Front Bf Export/cabeza idle",
 			"indices": []
 		},
 		{
-			"offsets": [0, 0],
 			"loop": false,
+			"offsets": [20, 5],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "3 Front/Front Bf Export/left s2",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-7, 0],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "3 Front/Front Bf Export/down e2",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-3, 62],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "3 Front/Front Bf Export/up e2",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-16, 15],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "3 Front/Front Bf Export/right s2",
+			"indices": []
+		},
+		{
+			"offsets": [20, 5],
+			"indices": [7, 8, 9],
+			"fps": 24,
+			"anim": "singLEFT-loop",
+			"loop": true,
+			"name": "3 Front/Front Bf Export/left s2"
+		},
+		{
+			"offsets": [-7, 0],
+			"indices": [7, 8, 9],
+			"fps": 24,
+			"anim": "singDOWN-loop",
+			"loop": true,
+			"name": "3 Front/Front Bf Export/down e2"
+		},
+		{
+			"offsets": [-3, 62],
+			"indices": [7, 8, 9],
+			"fps": 24,
+			"anim": "singUP-loop",
+			"loop": true,
+			"name": "3 Front/Front Bf Export/up e2"
+		},
+		{
+			"offsets": [-16, 15],
+			"indices": [7, 8, 9],
+			"fps": 24,
+			"anim": "singRIGHT-loop",
+			"loop": true,
+			"name": "3 Front/Front Bf Export/right s2"
+		},
+		{
+			"offsets": [11, 10],
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "miss"
+			"loop": false,
+			"name": "3 Front/Front Bf Export/miss idle"
 		},
 		{
-			"offsets": [0, 0],
-			"loop": false,
+			"offsets": [11, 10],
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "miss"
+			"loop": false,
+			"name": "3 Front/Front Bf Export/miss idle"
 		},
 		{
-			"offsets": [0, 0],
-			"loop": false,
+			"offsets": [11, 10],
+			"indices": [],
 			"fps": 24,
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "miss"
+			"loop": false,
+			"name": "3 Front/Front Bf Export/miss idle"
 		},
 		{
-			"offsets": [0, 0],
-			"loop": false,
+			"offsets": [11, 9],
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "miss"
+			"loop": false,
+			"name": "3 Front/Front Bf Export/miss idle"
 		}
 	],
 	"vocals_file": "",

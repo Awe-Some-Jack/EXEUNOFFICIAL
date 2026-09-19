@@ -2,7 +2,7 @@
 	{
 		"code": [0,0],
 		"type": "video",
-		"path": "assets/exe/soundtest/videos/vssanic.mp4"
+		"path": "assets/exe/soundtest/videos/sanicvid.mp4"
 	},
 	{
 		"code": [24, 4],
@@ -43,5 +43,125 @@
 		"code": [14,2],
 		"type": "video",
 		"path": "assets/exe/soundtest/videos/tooslowencore.mp4"
+	},
+	{
+		"code": [1,11],
+		"type": "week",
+		"weekName": "Curse"
+	},
+	{
+		"code": [15,21],
+		"type": "week",
+		"weekName": "DSK"
+	},
+	{
+		"code": [3,20],
+		"type": "week",
+		"weekName": "GRIEVING"
+	},
+	{
+		"code": [9,42],
+		"type": "week",
+		"weekName": "Innocence"
+	},
+	{
+		"code": [7,7],
+		"type": "week",
+		"weekName": "LORDX"
+	},
+	{
+		"code": [16,11],
+		"type": "week",
+		"weekName": "MONO"
+	},
+	{
+		"code": [12,13],
+		"type": "week",
+		"weekName": "OMW"
+	},
+	{
+		"code": [26,92],
+		"type": "week",
+		"weekName": "RE-RUN"
+	},
+	{
+		"code": [5,96],
+		"type": "week",
+		"weekName": "Soink"
+	},
+	{
+		"code": [22,16],
+		"type": "week",
+		"weekName": "Tornt Sonic.EXE Trilogy"
+	},
+	{
+		"code": [8,17],
+		"type": "week",
+		"weekName": "chaotix"
+	},
+	{
+		"code": [31,13],
+		"type": "week",
+		"weekName": "exe"
+	},
+	{
+		"code": [1,26],
+		"type": "week",
+		"weekName": "exetior"
+	},
+	{
+		"code": [8,21],
+		"type": "week",
+		"weekName": "fleetway"
+	},
+	{
+		"code": [17,1],
+		"type": "week",
+		"weekName": "hedge"
+	},
+	{
+		"code": [6,20],
+		"type": "week",
+		"weekName": "jam"
+	},
+	{
+		"code": [20,19],
+		"type": "week",
+		"weekName": "movie"
+	},
+	{
+		"code": [19,63],
+		"type": "week",
+		"weekName": "needles"
+	},
+	{
+		"code": [23,9],
+		"type": "week",
+		"weekName": "normalcd"
+	},
+	{
+		"code": [24,92],
+		"type": "week",
+		"weekName": "requital"
+	},
+	{
+		"code": [4,20],
+		"type": "week",
+		"weekName": "sanic"
+	},
+	{
+		"code": [2,23],
+		"type": "week",
+		"weekName": "starv"
+	},
+	{
+		"code": [66,6],
+		"type": "week",
+		"weekName": "tailsdoll"
+	},
+	{
+		"code": [19,93],
+		"type": "week",
+		"weekName": "weekdevoid"
 	}
 ]

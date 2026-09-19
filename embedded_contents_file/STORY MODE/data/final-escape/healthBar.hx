@@ -55,7 +55,7 @@ function onUpdatePost(elapsed:Float)
 	hbChain.updateHitbox();
 
 	flagRight.x = 960 - (636 - hbChain.width);
-	game.getLuaObject('iconBF').x = 865.5 - (636 - hbChain.width);
+	game.getLuaObject('iconBF').x = 865.5 + 10 - (636 - hbChain.width);
 
 	healthColor.setGraphicSize(FlxMath.bound(FlxMath.lerp(hbChain.width + 35, 660 - ((2 - game.health) * (660 / 2)), elapsed * 10), 1, 660), 20);
 	healthColor.updateHitbox();

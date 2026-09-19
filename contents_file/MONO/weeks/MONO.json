@@ -27,6 +27,5 @@
 	"weekName": "Mono.bw",
 	"exeTitle": "MONO.BW",
 	"exeCover": "mono",
-	"exeLabel": "EXE",
-	"soundTestCode": [16, 11, true]
+	"exeLabel": "EXE"
 }

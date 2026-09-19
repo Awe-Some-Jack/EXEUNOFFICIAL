@@ -390,7 +390,8 @@
 		[
 			132647.598488937,
 			[
-				["chaotixEvents", "hideAnim", ""]
+				["chaotixEvents", "hideAnim", ""],
+				["Play Animation", "reaction1", "gf"]
 			]
 		],
 		[
@@ -857,7 +858,8 @@
 				["Set Random Health", "", ""],
 				["Set Property", "cameraSpeed", "10000"],
 				["Tween Camera Zoom", "1.2, true", "0.001, linear"],
-				["Tweening Camera", "-400, 90", "0.001, linear"]
+				["Tweening Camera", "-400, 90", "0.001, linear"],
+				["chaotixEvents", "dontMiss", "chaotix"]
 			]
 		],
 		[
@@ -878,7 +880,8 @@
 				["Set Random Health", "", ""],
 				["Tween Camera Zoom", "1.4, true", "0.001"],
 				["Tweening Camera", "800, 120", "0.001, linear"],
-				["Set Property", "cameraSpeed", "100000"]
+				["Set Property", "cameraSpeed", "100000"],
+				["chaotixEvents", "dontMiss", "bf"]
 			]
 		],
 		[
@@ -899,7 +902,8 @@
 				["Set Random Health", "", ""],
 				["Tween Camera Zoom", "0.45", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"],
-				["Set Property", "cameraSpeed", "100000"]
+				["Set Property", "cameraSpeed", "100000"],
+				["chaotixEvents", "dontMiss", "back"]
 			]
 		],
 		[

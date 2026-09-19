@@ -140,6 +140,8 @@ class Cutscene extends SonicSubState
         nowPlayingSong.updateHitbox();
         nowPlayingSong.antialiasing = ClientPrefs.data.antialiasing;
         add(nowPlayingSong);
+
+        #if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
     }
 
     function createBackground():Void
@@ -352,12 +354,6 @@ class Cutscene extends SonicSubState
 
     function _scanVideos():Void
     {
-        if (FileSystem.exists('assets/exe/extras/cutscenes/video.json'))
-        {
-            _loadJsonManifest();
-            return;
-        }
-
         videoEntries = [];
 
         _scanDirIfExists('assets/exe/extras/cutscenes');
@@ -398,9 +394,14 @@ class Cutscene extends SonicSubState
 		{
 			final full = scanPath + entry;
 
-			if (entry.toLowerCase().endsWith('.mp4'))
+			final lowerEntry = entry.toLowerCase();
+			var matchedExt:String = null;
+			for (ext in Paths.VIDEO_EXTS)
+				if (lowerEntry.endsWith('.$ext')) { matchedExt = ext; break; }
+
+			if (matchedExt != null)
 			{
-				final noExt = entry.substr(0, entry.length - 4);
+				final noExt = entry.substr(0, entry.length - matchedExt.length - 1);
                 videoEntries.push({name: noExt, displayName: _toDisplayName(noExt), path: full});
 			}
 			else if (!entry.contains('.'))
@@ -885,7 +886,7 @@ class Cutscene extends SonicSubState
         if (_vidOpen)
         {
             _updateHud(elapsed);
-            if (controls.BACK && !_seekDragging) _closeVideo();
+            if ((controls.BACK #if mobile || backPressed #end) && !_seekDragging) _closeVideo();
             return;
         }
 
@@ -920,7 +921,7 @@ class Cutscene extends SonicSubState
             }
         }
 
-        if (controls.BACK)
+        if (controls.BACK #if mobile || backPressed #end)
             close();
     }
 

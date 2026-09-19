@@ -28,6 +28,5 @@
 	"exeTitle": "SANIC",
 	"exeCover": "sanic",
 	"exeLabel": "MEME",
-	"transitionShape": "sanic",
-	"soundTestCode": [4, 20, true]
+	"transitionShape": "sanic"
 }

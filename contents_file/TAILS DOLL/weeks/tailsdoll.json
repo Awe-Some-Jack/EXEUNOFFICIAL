@@ -37,6 +37,5 @@
 	"exeTitle": "TAILS DOLL",
 	"exeCover": "tailsdoll",
 	"exeLabel": "OFFICIAL",
-	"transitionShape": "oval",
-	"soundTestCode": [66, 6, true]
+	"transitionShape": "oval"
 }

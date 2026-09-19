@@ -2,6 +2,7 @@ local separation = 50
 
 for i = 1,4 do precacheImage('renders/render'..i) end
 precacheImage('ycstnmi')
+precacheImage('noteSkins/NOTERED_assets')
 
 setProperty('skipArrowStartTween', true)
 function onCreatePost()
@@ -84,15 +85,6 @@ function onCreatePost()
 	scaleObject('floorpov', 1.1, 1.1)
 	setProperty('floorpov.alpha', 0.0001)
 
-	makeLuaSprite('whiteBG')
-	makeGraphic('whiteBG', screenWidth, screenHeight, 'FFFFFF')
-	setObjectCamera('whiteBG', 'video')
-	setObjectOrder('whiteBG', getObjectOrder('hbBG') - 1)
-	screenCenter('whiteBG')
-	setProperty('whiteBG.alpha', 0)
-end
-
-local function makeThirdBG()
 	makeLuaSprite('room', 'bg/room/4', -960, -660)
 	addLuaSprite('room')
 	scaleObject('room', 0.9, 0.9)
@@ -121,6 +113,13 @@ local function makeThirdBG()
 	screenCenter('overlay')
 	setObjectCamera('overlay', 'other')
 	setProperty('overlay.alpha', 0.0001)
+
+	makeLuaSprite('whiteBG')
+	makeGraphic('whiteBG', screenWidth, screenHeight, 'FFFFFF')
+	setObjectCamera('whiteBG', 'video')
+	setObjectOrder('whiteBG', getObjectOrder('hbBG') - 1)
+	screenCenter('whiteBG')
+	setProperty('whiteBG.alpha', 0)
 end
 
 function onSongStart()
@@ -215,8 +214,6 @@ function onEvent(n,v1,v2)
 			for i = 0,7 do setProperty('strumLineNotes.members['..i..'].texture', 'noteSkins/NOTERED_assets') end
 			for i = 0,getProperty('notes.length')-1 do setProperty('notes.members['..i..'].texture', 'noteSkins/NOTERED_assets') end
 			for i = 0,getProperty('unspawnNotes.length')-1 do setProperty('unspawnNotes['..i..'].texture', 'noteSkins/NOTERED_assets') end
-
-			makeThirdBG()
 
 			setProperty('cpuAssist', true)
 		end

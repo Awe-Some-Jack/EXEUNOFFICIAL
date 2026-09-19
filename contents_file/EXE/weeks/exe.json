@@ -54,6 +54,5 @@
 	"bgColor": [255, 0, 0],
 	"exeTitle": "EXE",
 	"exeCover": "exe",
-	"exeLabel": "EXE",
-	"soundTestCode": [31, 13, true]
+	"exeLabel": "EXE"
 }

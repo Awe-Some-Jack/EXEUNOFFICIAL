@@ -294,6 +294,7 @@ class TheValley extends MusicBeatState
 
 		if (controls.PAUSE)
 		{
+			states.substates.PauseSubState.miniSonicImage = 'the-valley';
 			persistentUpdate = false;
 			persistentDraw   = true;
 			bgCam.followLerp = 0;

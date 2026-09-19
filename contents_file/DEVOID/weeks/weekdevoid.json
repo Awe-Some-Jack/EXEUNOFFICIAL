@@ -27,6 +27,5 @@
 	"weekName": "Custom Week",
 	"exeTitle": "DEVOID",
 	"exeCover": "devoid",
-	"exeLabel": "NON EXE",
-	"soundTestCode": [19, 93, true]
+	"exeLabel": "NON EXE"
 }

@@ -37,6 +37,5 @@
 	"exeTitle": "MAJIN",
 	"exeCover": "majin",
 	"exeLabel": "OFFICIAL",
-	"transitionShape": "infinite",
-	"soundTestCode": [0, 0, false]
+	"transitionShape": "infinite"
 }

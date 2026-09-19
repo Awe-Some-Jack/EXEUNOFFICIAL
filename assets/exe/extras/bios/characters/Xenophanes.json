@@ -1,19 +1,22 @@
 {
+	"bio_appear": true,
+	"list_position": 1,
+	"display_name": "XENOPHANES",
 	"variants": [
 		{
 			"bio": "Luis is an entity born from the Void, a being that exists between dimensions and defies human logic. While his appearance resembles a corrupted version of Sonic, his true form constantly evolves, becoming more grotesque and crystallized with each phase.\n\nUnlike other entities of his kind, Luis does not see himself as a villain. He believes he has a purpose… even if that purpose involves breaking reality itself.",
-			"display_name": "Sonic.EXE",
+			"display_name": "Luis",
 			"icon": "sonicexe",
 			"icon_offset": [
 				693,
 				470
 			],
-			"char_scale": 0.75,
-			"char_angle": -90,
+			"char_scale": 0.85,
+			"char_angle": 0,
 			"mod": "STORY MODE",
 			"char_offset": [
-				569,
-				385
+				499,
+				170
 			],
 			"char": "sonic.exe",
 			"flip_x": false,
@@ -21,39 +24,17 @@
 		},
 		{
 			"bio": "This version of Xenophanes represents a transitional stage in his evolution—unstable, aggressive, and increasingly monstrous. During “You Can’t Run,” he begins shifting away from his classic Sonic disguise into something far more distorted and unnatural.\n\nHis body shows early signs of crystallization, his form becoming more chaotic as his true nature slowly breaks through.",
-			"display_name": "Xenophanes",
 			"icon": "XENO-P2",
 			"icon_offset": [
-				696,
-				465
-			],
-			"char_scale": 0.5,
-			"mod": "STORY MODE",
-			"char_offset": [
-				605,
-				340
-			],
-			"char": "sonic.exe 2",
-			"flip_x": false,
-			"artist": "Erick Animations"
-		},
-		{
-			"bio": "This version of Xenophanes represents a transitional stage in his evolution—unstable, aggressive, and increasingly monstrous. During “You Can’t Run,” he begins shifting away from his classic Sonic disguise into something far more distorted and unnatural.\n\nHis body shows early signs of crystallization, his form becoming more chaotic as his true nature slowly breaks through.",
-			"display_name": "Xenophanes (Mad)",
-			"icon": "XENO-P22",
-			"icon_offset": [
-				696,
-				465
+				460,
+				40
 			],
 			"char_scale": 0.55,
-			"mod": "STORY MODE",
 			"char_offset": [
-				625,
-				330
+				462,
+				157
 			],
-			"char": "sonic.exe 2 mad",
-			"flip_x": false,
-			"artist": "Erick Animations"
+			"char": "sonic.exe 2"
 		},
 		{
 			"bio": "This version of Xenophanes represents his fully realized form—the result of his evolution throughout previous encounters. In “Triple Trouble,” he has completed his metamorphosis, becoming a far more powerful and grotesque entity.\n\nHis body is heavily distorted: crystallized quills, stretched skin exposing parts of his skull, and unnatural limbs that move in inhuman ways. He towers over his opponent, no longer hiding behind a simple disguise—this is what he truly is.",
@@ -63,18 +44,12 @@
 				696,
 				467
 			],
-			"char_scale": 0.72,
-			"mod": "STORY MODE",
+			"char_scale": 0.82,
 			"char_offset": [
-				530,
-				200
+				473,
+				114
 			],
-			"char": "BEAST",
-			"flip_x": false,
-			"artist": "Erick Animations"
+			"char": "BEAST"
 		}
-	],
-	"bio_appear": true,
-	"list_position": 1,
-	"display_name": "Xenophanes"
+	]
 }

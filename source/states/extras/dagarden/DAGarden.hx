@@ -986,6 +986,8 @@ class DAGarden extends SonicSubState
 
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", null); #end
         super.create();
+
+        #if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
     }
 
     function buildDrawer():Void
@@ -1350,7 +1352,7 @@ class DAGarden extends SonicSubState
         if (dagKey('dagarden_stop'))    player.fadeOutAndStop();
         if (dagKey('dagarden_rewind'))  player.seek(-DAGPlayer.SEEK_SECONDS);
         if (dagKey('dagarden_forward')) player.seek(DAGPlayer.SEEK_SECONDS);
-        if (controls.BACK)
+        if (controls.BACK #if mobile || backPressed #end)
         {
             player.restoreWindowTitle();
             player.stop();

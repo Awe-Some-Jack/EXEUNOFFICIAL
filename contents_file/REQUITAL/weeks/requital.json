@@ -37,6 +37,5 @@
 	"exeTitle": "REQUITAL",
 	"exeCover": "requital",
 	"exeLabel": "NON EXE",
-	"transitionShape": "tails",
-	"soundTestCode": [24, 92, true]
+	"transitionShape": "tails"
 }

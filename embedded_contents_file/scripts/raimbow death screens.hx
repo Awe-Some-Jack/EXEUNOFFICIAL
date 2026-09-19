@@ -1,6 +1,7 @@
 import states.substates.GameOverSubstate;
 import flixel.sound.FlxSound;
 import flixel.FlxCameraFollowStyle;
+import flixel.tweens.FlxTween.FlxTweenType;
 import backend.MusicBeatState;
 
 import flixel.addons.display.FlxRuntimeShader;
@@ -15,13 +16,18 @@ import psychlua.CustomSubstate;
 
 import lime.app.Application as Application;
 
+import objects.VideoSprite;
+
+import animate.FlxAnimate;
+
 var exeGameOvers:Bool = false;
-var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline', 'uh-oh', 'sharpy-showdown'];
+var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline', 'uh-oh', 'sharpy-showdown', 'substantial'];
 var voicelineSongs:Array<String> = ["cycles", "hellbent", "fate"];
 var diffGameOverSongs:Array<String> = ["starline"];
 
 var gameOverChangeStep:Int = null;
 
+var head:FlxSprite;
 var deadChar:Character;
 var deadMusic:FlxSound;
 var voiceline:FlxSound;
@@ -34,9 +40,9 @@ var charPositions:Array<Float> = [];
 var maxVoicelines:Int = 0;
 
 var songShaders:Array<String> = ['yourself'];
-var pixel :ShaderFilter;
-var pseudo:ShaderFilter;
-var wave  :ShaderFilter;
+var pixel     :ShaderFilter;
+var pseudo    :ShaderFilter;
+var wave      :ShaderFilter;
 
 var majinPairs:Array<Array<FlxSprite>> = [];
 var toolateurfucked:Bool = false;
@@ -47,12 +53,12 @@ var countdownText:FlxText;
 var majinBF:ModchartAnimateSprite;
 var blueVG:FlxSprite;
 
+var subsDeath:FlxVideoSprite;
+
 function onCreate(){
     for (song in songs) 
         if (songName == song) setCustomGameOvers();
 }
-
-
 
 function setCustomGameOvers() {
     GameOverSubstate.resetVariables();
@@ -61,9 +67,11 @@ function setCustomGameOvers() {
             exeGameOvers = true;
             GameOverSubstate.characterName  = "lordx-death";
             GameOverSubstate.deathSoundName = "crushDeath";
-            charPositions = [500, 350];
+            charPositions = [480, 350];
 
             initialDeathZoom = 0.7;
+
+            trace('Lord X death animation loaded');
 
             maxVoicelines = 5;
         case "yourself":
@@ -103,6 +111,10 @@ function setCustomGameOvers() {
             GameOverSubstate.endSoundName  = "deathSongs/exetior-retry";
             charPositions = [400, 50];
             initialDeathZoom = 1.2;
+        case "substantial":
+            initialDeathZoom = 0.9;
+            GameOverSubstate.loopSoundName =   "deathSongs/xterion-loop";
+            GameOverSubstate.endSoundName  = "deathSounds/xterion-retry";
     }
 }
 
@@ -122,7 +134,7 @@ function changeGameOvers() {
 }
 
 function setCamEvents() {
-    if (songName != 'yourself')
+    if (exeGameOvers)
     {
         FlxTween.cancelTweensOf(FlxG.camera); //Just in case, heh.
         FlxG.camera.follow();
@@ -139,7 +151,7 @@ function onGameOverStart()
         if (songName == song) {
             inGameOver = true;
             if (GameOverSubstate.instance.boyfriend != null && deadChar == null) deadChar = GameOverSubstate.instance.boyfriend;
-            if (songName != 'yourself')
+            if (exeGameOvers)
             {
                 deadChar.scrollFactor.set();
                 deadChar.setPosition(charPositions[0], charPositions[1]);
@@ -163,8 +175,34 @@ function onGameOverStart()
 
 function setCustomEvents() {
     switch(songName){
+        case "hollow":
+            Conductor.bpm = 138;
+            FlxTween.tween(FlxG.camera, {zoom: 0.8}, 2, {ease: FlxEase.sineInOut});
+        case "substantial":
+            GameOverSubstate.instance.boyfriend.visible = false;
+            subsDeath = new VideoSprite(-520, -250, false);
+            subsDeath.loadVideo(Paths.video("substantialDeath"));
+            subsDeath.canSkip = false;
+            subsDeath.alpha = 0.0001;
+            subsDeath.scale.set(0.55, 0.688);
+            subsDeath.onEnd(() -> {
+                subsDeath.loadVideo(Paths.video("substantialDeath"));
+                subsDeath.play();
+            });
+            GameOverSubstate.instance.add(subsDeath);
         case "starline":
             FlxG.cameras.flash(FlxColor.RED, 1);
+        case "cycles", "hellbent", "fate":
+            head = new FlxAnimate(480, 50);
+            head.frames = Paths.getAnimateAtlas('gameovers/LORD-X-DEATH-HEAD');
+            head.anim.addBySymbol('deathstart', 'deahrt', 24, false);
+            head.anim.addBySymbol('deathloop', 'loop', 24, true);
+            head.anim.play('deathstart');
+            head.scale.set(1.7, 1.7);
+            head.anim.onFinish.add( name -> {
+                head.anim.play('deathloop');
+            });
+            GameOverSubstate.instance.add(head);
     }
 }
 
@@ -186,6 +224,8 @@ function addShaders() {
 }
 
 var toggleOnce:Bool = false;
+var curBeat:Int = 0;
+var oldBeat:Int = 0;
 function onUpdatePost()
 {
 	if (!inGameOver) return;
@@ -205,9 +245,28 @@ function onUpdatePost()
         {
             FlxG.camera.flash(0xFFFF0000, 1, null, true);
             deadChar.visible = false;
+            if(head != null) head.visible = false;
             FlxG.sound.play(Paths.music('gameOverEnd'));
             deadMusic.stop();
             voiceline.stop();
+        }
+    }
+
+    if (songName == 'hollow' && deadChar.animation.curAnim.name == 'deathLoop')
+    {
+        Conductor.songPosition = FlxG.sound.music.time;
+        curBeat = GameOverSubstate.instance.curBeat;
+        if (!toggleOnce) {
+            if (Conductor.songPosition >= 6900){
+                if (oldBeat != curBeat)
+                {
+                    trace("It's bumping!");
+                    FlxTween.num(0.9, 0.8, (Conductor.crochet / 1000), {ease: FlxEase.circOut, type: FlxTweenType.LOOPING}, (val:Float) -> FlxG.camera.zoom = val);
+                    oldBeat = curBeat;
+                }
+                toggleOnce = true;
+            }
+            
         }
     }
 
@@ -217,6 +276,15 @@ function onUpdatePost()
             toggleOnce = true;
             deadMusic.play();
             startCountdownMajin();
+        }
+    }
+    if (songName == 'substantial' && deadChar.animation.curAnim.name == 'deathLoop')
+    {
+        if (!toggleOnce) {
+            toggleOnce = true;
+            deadMusic.play();
+            subsDeath.play();
+            FlxTween.tween(subsDeath, {alpha: 1}, 3);
         }
     }
 }
@@ -252,8 +320,8 @@ function startCountdownMajin()
         left.loadGraphic(Paths.image('gameovers/us/evil majin'));
         left.flipX = true;
         var bell:Float = 1.0 - Math.abs(i - 3) * 0.2;
-        var dynamicSpacing:Float = spacing * (1.0 + bell);
-        var leftX:Float = i >= 3 ? baseLeft + ((i - 3) * (i - 3) * 30) : baseLeft - (i * dynamicSpacing);
+        var dynamicSpacing:Float = spacing (1.0 + bell);
+        var leftX:Float = i >= 3 ? baseLeft + ((i - 3) (i - 3) * 30) : baseLeft - (i * dynamicSpacing);
         var yOffset:Float = i == 1 ? 70 : 65;
         left.setPosition(leftX, deadChar.y + yOffset);
         left.scrollFactor.set(0, 0);
@@ -263,7 +331,7 @@ function startCountdownMajin()
 
         var right = new FlxSprite();
         right.loadGraphic(Paths.image('gameovers/us/evil majin'));
-        var rightX:Float = i >= 3 ? baseRight - ((i - 3) * (i - 3) * 30) : baseRight + (i * dynamicSpacing);
+        var rightX:Float = i >= 3 ? baseRight - ((i - 3) (i - 3) * 30) : baseRight + (i * dynamicSpacing);
         right.setPosition(rightX, deadChar.y + yOffset);
         right.scrollFactor.set(0, 0);
         right.scale.set(scale, scale);
@@ -313,8 +381,8 @@ function startCountdownMajin()
             countdownText.x = FlxG.width / 2 - 20;
             var t:Float = 1.0 - (secondsLeft / 10.0);
             var r:Int = 255;
-            var g:Int = Std.int(255 * (1.0 - t));
-            var b:Int = Std.int(255 * (1.0 - t));
+            var g:Int = Std.int(255 (1.0 - t));
+            var b:Int = Std.int(255 (1.0 - t));
             countdownText.color = FlxColor.fromRGB(r, g, b);
         }
         if (secondsLeft <= 0) {
@@ -369,6 +437,13 @@ function onGameOverConfirm(retry)
     for (pair in majinPairs) { pair[0].destroy(); pair[1].destroy(); }
 
     switch(songName){
+        case "hollow":
+            FlxTween.cancelTweensOf(FlxG.camera);
+            FlxTween.num(1, 0.8, 1, {ease: FlxEase.circOut,  onComplete: () -> FlxTween.tween(FlxG.camera, {zoom: 1.4}, 2, {ease: FlxEase.circIn})}, (val:Float) -> FlxG.camera.zoom = val);
+        case "substantial":
+            FlxG.cameras.flash(FlxColor.BLUE, 2);
+            subsDeath.destroy();
+
         case "yourself":
         if (retry) new FlxTimer().start(0.7, (_) ->
         {
@@ -408,12 +483,17 @@ var redGraphicShit:FlxSprite;
 var bfEerie:FlxSprite;
 var griatosScream:FlxSprite;
 var hazeSound:FlxSound;
+var camHaze:FlxCamera;
 
 function onCustomSubstateCreate(n)
 {
     if (n == "hazeGameOver") {
+        camHaze = new FlxCamera();
+        camHaze.bgColor = 0x0;
+        FlxG.cameras.add(camHaze);
+        
         redGraphicShit = new FlxSprite(0, 0);
-        redGraphicShit.makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFFF0000);
+        redGraphicShit.makeGraphic(FlxG.width * 3, FlxG.height * 3, 0xFFFF0000);
         redGraphicShit.scrollFactor.set(0, 0);
         redGraphicShit.screenCenter();
         redGraphicShit.cameras = [FlxG.camera];
@@ -427,6 +507,8 @@ function onCustomSubstateCreate(n)
         bfEerie.alpha = 0;
         CustomSubstate.instance.add(bfEerie);
         
+        if(PlayState.instance.curStep >= 384) {FlxG.camera.scroll.set(-400, -400); FlxG.camera.zoom = 0.8;}
+        if(PlayState.instance.curStep >= 1600) {FlxG.camera.scroll.set(300, 100); FlxG.camera.zoom = 0.6;}
         setupHazeGameOver();
     }
 }
@@ -465,7 +547,6 @@ function setupHazeGameOver() {
 
     FlxG.camera.filters = [new ShaderFilter(pseudo), new ShaderFilter(wave)];
     
-    FlxG.camera.zoom = 0.7;
     PlayState.instance.camHUD.visible = false;
     FlxTween.cancelTweensOf(FlxG.camera);
 
@@ -496,20 +577,25 @@ function startScreamShit() {
 
 function configureChars()
 {
-    PlayState.instance.triggerEvent("Change Character", "dad", "griatos");
+    //PlayState.instance.triggerEvent("Change Character", "dad", "griatos");
     for (guys in [boyfriend, dad]){
         guys.color = FlxColor.BLACK;
         guys.alpha = 1;
     }
-
-    boyfriend.setPosition(670, 200);
-    boyfriend.scale.set(0.6, 0.6);
-    boyfriend.stunned = true;
-    dad.setPosition(-370, -260);
-    dad.scale.set(0.6, 0.6);
-    dad.stunned = true;
-    CustomSubstate.instance.insert(0, dadGroup);
-    CustomSubstate.instance.insert(0, boyfriendGroup);
+    
+    //boyfriend.setPosition(670, 200);
+    //boyfriend.scale.set(0.6, 0.6);
+    boyfriend.specialAnim = true;
+    boyfriend.animation.pause();
+    boyfriend.cameras = [FlxG.camera];
+    //dad.setPosition(-370, -260);
+    //dad.scale.set(0.6, 0.6);
+    dad.animation.play('singRIGHT');
+    dad.cameras = [FlxG.camera];
+    dad.specialAnim = true;
+    dad.animation.pause();
+    CustomSubstate.instance.add(dadGroup);
+    CustomSubstate.instance.add(boyfriendGroup);
 }
 
 function showJumpscare() {
@@ -518,8 +604,8 @@ function showJumpscare() {
     griatosScream.animation.addByPrefix('idle', 'Griatos_Scream scream', 24, true);
     griatosScream.animation.play('idle', true);
     griatosScream.scrollFactor.set(0, 0);
-    griatosScream.scale.set(2, 2);
-    griatosScream.cameras = [FlxG.camera];
+    griatosScream.scale.set(1.35, 1.35);
+    griatosScream.cameras = [camHaze];
     griatosScream.screenCenter();
     griatosScream.alpha = 0;
     CustomSubstate.instance.add(griatosScream);

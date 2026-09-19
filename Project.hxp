@@ -30,6 +30,7 @@ class Project extends HXProject
     static final SWITCH_APP_ID:String = "0x0100f6c013bbc000";
 
     static var astcExcludes:Array<String> = [];
+    static var embeddedAssetKeys:Array<String> = [];
 
     public function new()
     {
@@ -40,7 +41,9 @@ class Project extends HXProject
         configureCompileDefines();
         configureHaxelibs();
         configureASTCTextures();
+        generateMobileContentsPackage();
         configureAssets();
+        writeEmbeddedAssetManifest();
         configureIcons();
         configurePlatformSpecific();
     }
@@ -256,17 +259,11 @@ class Project extends HXProject
 
         if (MODS_ALLOWED.isEnabled(this))
         {
-            if (FileSystem.exists("contents_file"))
-            {
-                var contentsExclude:Array<String> = isMobile()
-                    ? ["Animation.json", "spritemap1.json"]
-                    : [];
-
-                addAssetRecursive("contents_file", "contents", false, ["*"], contentsExclude);
-            }
+            if (FileSystem.exists("contents_file") && !isMobile())
+                addAssetRecursive("contents_file", "contents", false, ["*"], []);
 
             if (isMobile() && FileSystem.exists("mobile_embed"))
-                addAssetRecursive("mobile_embed", "contents", true, ["*"], []);
+                addAssetRecursive("mobile_embed", "contents", isMobile(), ["*"], []);
 
             if (FileSystem.exists("embedded_contents_file"))
                 addAssetRecursive("embedded_contents_file", "contents", defines.exists("final") || isMobile(), ["*"], []);
@@ -277,6 +274,84 @@ class Project extends HXProject
 
         if (FileSystem.exists("psych-ui"))
             addAssetRecursive("psych-ui", "assets/psych-ui", true, ["*"], []);
+    }
+
+    function generateMobileContentsPackage()
+    {
+        if (!isMobile() || !FileSystem.exists("contents_file")) return;
+
+        var outputRoot = "export/mobile-contents/contents";
+        copyContentsWithASTCSwap("contents_file", outputRoot);
+
+        if (FileSystem.exists("list.txt"))
+            File.copy("list.txt", "export/mobile-contents/contentsList.dat");
+
+        Sys.println(' INFO : Mobile contents package generated at ${outputRoot} - copy this "contents" folder to the device\'s contents/ directory.');
+    }
+
+    function copyContentsWithASTCSwap(srcDir:String, destDir:String)
+    {
+        if (!FileSystem.exists(destDir))
+            FileSystem.createDirectory(destDir);
+
+        for (file in FileSystem.readDirectory(srcDir))
+        {
+            var srcPath = Path.join([srcDir, file]);
+            var destPath = Path.join([destDir, file]);
+
+            var isDir:Bool = false;
+            try { isDir = FileSystem.isDirectory(srcPath); } catch (e:Dynamic) { continue; }
+
+            if (isDir)
+            {
+                copyContentsWithASTCSwap(srcPath, destPath);
+                continue;
+            }
+
+            if (file == "Animation.json" || file == "spritemap1.json")
+                continue;
+
+            var actualSrcPath = srcPath;
+            var actualDestPath = destPath;
+
+            if ((Path.extension(srcPath) == 'png' || Path.extension(srcPath) == 'webp') && FEATURE_COMPRESSED_TEXTURES.isEnabled(this))
+            {
+                var relativePathWithAstc = Path.withExtension(srcPath, "astc");
+                var astcPath = Path.join(["astc-textures", relativePathWithAstc]);
+
+                if (!isASTCExcluded(srcPath) && FileSystem.exists(astcPath))
+                {
+                    actualSrcPath = astcPath;
+                    actualDestPath = Path.withExtension(destPath, "astc");
+                }
+            }
+
+            var shouldCopy = true;
+            if (FileSystem.exists(actualDestPath))
+            {
+                try { shouldCopy = FileSystem.stat(actualDestPath).size != FileSystem.stat(actualSrcPath).size; }
+                catch (e:Dynamic) { shouldCopy = true; }
+            }
+
+            if (shouldCopy)
+                File.copy(actualSrcPath, actualDestPath);
+        }
+    }
+
+    function writeEmbeddedAssetManifest()
+    {
+        if (!isMobile()) return;
+
+        var manifestDir = "generated";
+        if (!FileSystem.exists(manifestDir))
+            FileSystem.createDirectory(manifestDir);
+
+        var manifestPath = manifestDir + "/embedded-assets.json";
+        File.saveContent(manifestPath, haxe.Json.stringify(embeddedAssetKeys));
+
+        var manifestAsset = new Asset(manifestPath, "assets/embedded-assets.json");
+        manifestAsset.embed = true;
+        assets.push(manifestAsset);
     }
 
     function configureASTCTextures()
@@ -385,7 +460,7 @@ class Project extends HXProject
         if (isSwitch())
             setHaxedef("APP_ID", SWITCH_APP_ID);
 
-        if (MODS_ALLOWED.isEnabled(this) && FileSystem.exists("contents_file"))
+        if (MODS_ALLOWED.isEnabled(this) && FileSystem.exists("contents_file") && (isMac() || isWindows() || isLinux()))
         {
             var srcDir = haxe.io.Path.normalize(Sys.getCwd() + "/contents_file");
 
@@ -574,6 +649,9 @@ class Project extends HXProject
                     if (Path.extension(fullPath) == 'astc')
                         asset.type = AssetType.IMAGE;
                     assets.push(asset);
+
+                    if (embed && targetPath.startsWith("assets/"))
+                        embeddedAssetKeys.push(targetPath);
                 }
             }
         }

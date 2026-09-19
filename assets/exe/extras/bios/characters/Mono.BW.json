@@ -1,40 +1,20 @@
 {
-	"bio": "Looks like sonic except for his black and white colors and the lack of a nose and a mouth\nStory: 12-year-old boy who had achromatopsia died and possesed sonic in a sonic 2 cartridge, turned everything into monocrhomatic tones, has a chance of taking over other games.\n",
-	"display_name": "mono",
-	"char_scale": 0.9,
-	"icon_offset": [
-		786,
-		430
-	],
-	"icon": "mono",
-	"mod": "MONO",
-	"list_position": 9999,
-	"char_offset": [
-		505,
-		200
-	],
 	"bio_appear": true,
-	"variants": [
-		{
-			"char_scale": 0.9,
-			"artist": "CryBit",
-			"bio": "Looks like sonic except for his black and white colors and the lack of a nose and a mouth\nStory: 12-year-old boy who had achromatopsia died and possesed sonic in a sonic 2 cartridge, turned everything into monocrhomatic tones, has a chance of taking over other games.\n",
-			"mod": "MONO",
-			"icon_offset": [
-				696,
-				470
-			],
-			"char_offset": [
-				505,
-				200
-			],
-			"flip_x": false,
-			"char": "mono",
-			"icon": "mono",
-			"display_name": "mono"
-		}
+	"list_position": 28,
+	"display_name": "MONO.BW",
+	"char_scale": 0.85,
+	"artist": "CryBit",
+	"bio": "He was the soul of a 12-year-old Sonic fan with severe achromatopsia (couldn't see color) who died mysteriously and ended up possessing Sonic inside a Sonic the Hedgehog 2 cartridge he owned. Possessing Sonic actually cured him — for the first time he could see color. Problem is, he hated it. Found it disgusting, imperfect, ugly. So he went on a rampage draining color out of everything and everyone he saw, Tails and Eggman included, giving them sentience just so they could suffer through it. Even after draining the whole Sonic 2 world dry, it still wasn't enough — he wanted more colors to take. Now he just waits inside the cartridge, certain that someday he'll break out of that prison.",
+	"mod": "MONO",
+	"icon_offset": [
+		696,
+		470
+	],
+	"char_offset": [
+		504,
+		226
 	],
 	"flip_x": false,
 	"char": "mono",
-	"artist": "CryBit"
+	"icon": "mono"
 }

@@ -36,6 +36,5 @@
 	"startUnlocked": true,
 	"exeTitle": "X-Terion",
 	"exeCover": "sonicjam",
-	"exeLabel": "EXE",
-	"soundTestCode": [6, 20, true]
+	"exeLabel": "EXE"
 }

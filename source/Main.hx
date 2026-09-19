@@ -104,7 +104,10 @@ class Main extends Sprite
 		MobileUtil.initDirectory();
 		#end
 		Sys.setCwd(MobileUtil.getAssetDirectory());
-		MobileUtil.copyAssets(); //copies assets folder only
+		MobileUtil.copyAssets();
+		#if flixel_animate
+		MobileUtil.initAnimateAssetOverrides();
+		#end
     	#end
 
 		FlxG.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (e) ->

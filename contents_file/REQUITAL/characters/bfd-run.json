@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"offsets": [30, 30],
 			"loop": false,
-			"fps": 24,
+			"offsets": [50, 30],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "bfleft"
+			"fps": 24,
+			"name": "bfleft",
+			"indices": []
 		},
 		{
-			"offsets": [0, 20],
 			"loop": false,
-			"fps": 24,
+			"offsets": [10, 30],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "bfdown"
+			"fps": 24,
+			"name": "bfdown",
+			"indices": []
 		},
 		{
-			"offsets": [10, 20],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [20, 10],
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "bfup"
+			"fps": 24,
+			"name": "bfup",
+			"indices": []
 		},
 		{
-			"offsets": [35, 60],
-			"indices": [],
-			"fps": 24,
+			"loop": false,
+			"offsets": [35, 70],
 			"anim": "singUP",
-			"loop": false,
-			"name": "bfright"
+			"fps": 24,
+			"name": "bfright",
+			"indices": []
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "idle",
 			"loop": true,
-			"name": "bfidle"
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "bfidle",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

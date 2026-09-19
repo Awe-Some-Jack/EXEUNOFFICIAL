@@ -2,10 +2,18 @@ function onCreatePost()
     setProperty('BlackGraphicGame.alpha', 1)
     setProperty('camHUD.alpha', 0)
     addHaxeLibrary('FlxTrail', 'flixel.addons.effects')
+
+    for i = 1,4 do
+        makeLuaSprite('render'..i, 'hollow/renders/Intro-'..i)
+        setObjectCamera('render'..i, 'other')
+        setProperty('render'..i..'.alpha', 0.0001)
+        addLuaSprite('render'..i, true)
+    end
 end
 
 function onSongStart()
-    doTweenAlpha('BlackGraphicGameAlpha', 'BlackGraphicGame', 0.9, 1)
+    setProperty('render1.alpha', 1)
+    doTweenAlpha('render1', 'render1', 0, 1, 'cubeOut')
 end
 
 
@@ -33,22 +41,22 @@ end
 
 function onStepHit()
     if curStep == 8 then
-        cancelTween('BlackGraphicGameAlpha')
-        setProperty('BlackGraphicGame.alpha', 0.8)
+        setProperty('render2.alpha', 1)
+        doTweenAlpha('render2', 'render2', 0, 1, 'cubeOut')
     elseif curStep == 16 then
-        setProperty('BlackGraphicGame.alpha', 0.6)
+        setProperty('render3.alpha', 1)
+        doTweenAlpha('render3', 'render3', 0, 1, 'cubeOut')
     elseif curStep == 24 then
-        setProperty('BlackGraphicGame.alpha', 0.4)
-        doTweenAlpha('WhiteGraphicOtherAlpha', 'WhiteGraphicOther', 1, 1)
+        setProperty('render4.alpha', 1)
+        doTweenAlpha('render4', 'render4', 0, 1, 'cubeOut')
     elseif curStep == 32 then
-        cancelTween('WhiteGraphicOtherAlpha')
-        doTweenAlpha('WhiteGraphicOtherAlpha2', 'WhiteGraphicOther', 0, 1)
+        cameraFlash('game', 'FFFFFF', 1, true)
         setProperty('BlackGraphicGame.alpha', 0)
         doTweenAlpha('camHUDAlpha2', 'camHUD', 1, 1)
     end
     if curStep == 528 or curStep == 784 or curStep == 1296 or curStep == 1552 then
         doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', .6, 0.6)
-    elseif curStep == 544 or curStep == 1056 or curStep == 1312 or curStep == 1568 then
+    elseif curStep == 544 or curStep == 1056 or curStep == 1312 or curStep == 1824 then
         doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', 0, 0.4)
     end
     if curStep == 1568 then

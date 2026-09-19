@@ -28,6 +28,5 @@
 	"exeTitle": "CHAOTIX",
 	"exeCover": "chaotix",
 	"exeLabel": "GLITCH",
-	"transitionShape": "knux",
-	"soundTestCode": [8, 17, true]
+	"transitionShape": "knux"
 }

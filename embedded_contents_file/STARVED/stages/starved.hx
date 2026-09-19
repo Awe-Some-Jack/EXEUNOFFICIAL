@@ -20,11 +20,11 @@ final cam = game.gameplayCam.settings;
 var starv:Array<BackgroundSpriteAlt> = [
 	{path: 'new bg/sky', position: [-1220, -1250], scroll: [0.4, 0.4], scale: [0.8, 0.8]},
 	{path: 'new bg/bg', position: [-1350, -1300], scroll: [0.6, 0.6], scale: [0.8, 0.8]},
-	{path: 'new bg/tv', position: [40, -680], scale: [1.5, 1.35], animation: [{name: 'idle', looped: true}], angle: -6, hide: false},
+	{path: 'new bg/tv', position: [40, -680], tag: 'tv', scale: [1.5, 1.35], animation: [{name: 'idle', looped: true}], angle: -6, hide: false},
 	{path: 'new bg/floor', position: [-1610, -1450], scale: [0.8, 0.8]},
 	{path: 'new bg/metal', position: [-650, -500], scale: [0.38, 0.38], animation: [{name: 'idle', looped: true}], blend: 'add', hide: false},
 	{path: 'new bg/tails', position: [-290, -410], scale: [0.45, 0.45], animation: [{name: 'idle', looped: true}], blend: 'add', hide: false},
-	{path: 'new bg/starv', position: [150, -480], scale: [0.4, 0.4], animation: [{name: 'idle', looped: true}], blend: 'add', hide: false},
+	{path: 'new bg/starv', tag: 'starvTV', position: [150, -480], scale: [0.4, 0.4], animation: [{name: 'idle', looped: true}], blend: 'add', hide: false},
 	{path: 'bee', position: [-520, -150], scale: [0.7, 0.7], darkVariant: true},
 	{path: 'moto', position: [-1000, 120], scale: [0.9, 0.9], darkVariant: true},
 	{path: 'sonic', position: [-550, 240], scale: [1.15, 1.15], darkVariant: true},
@@ -84,7 +84,8 @@ function onEvent(n,v1)
 				_inTrans = false;
 				for (spr in starv)
 				{
-					if (spr.darkVariant != null && spr.spriteDark != null && (spr.hide == null || spr.hide == true))
+					if (spr.tag == 'starvTV' || spr.tag == 'tv') FlxTween.color(spr.sprite, 1, 0xFFFFFFFF, 0xFFFF0000);
+					if (spr.darkVariant != null && spr.spriteDark != null && (spr.hide == null || spr.hide == true) && (spr.tag != 'starvTV' || spr.tag != 'tv'))
 					{
 						spr.spriteDark.alpha = 1;
 						FlxTween.color(spr.spriteDark, 1, 0xFF000000, 0xFFFFFFFF);
@@ -97,7 +98,7 @@ function onEvent(n,v1)
 				_isDark = true;
 			case 'starved':
 				_inTrans = true;
-				for (spr in starv) if (spr.darkVariant != null && spr.spriteDark != null && (spr.hide == null || spr.hide == true)) FlxTween.color(spr.spriteDark, 1, 0xFFFFFFFF, 0xFF000000);
+				for (spr in starv) if (spr.darkVariant != null && spr.spriteDark != null && (spr.hide == null || spr.hide == true) && (spr.tag != 'starvTV' || spr.tag != 'tv')) FlxTween.color(spr.spriteDark, 1, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.color(boyfriend, 1, 0xFFFF0000, 0xFF000000);
 				FlxTween.tween(camHUD, {alpha: 0}, 1);
 				FlxTween.color(vg, 3, 0xFFFF0000, 0xFF000000);
@@ -113,6 +114,7 @@ function onEvent(n,v1)
 				}
 				for (spr in starv)
 				{
+					if (spr.tag == 'starvTV' || spr.tag == 'tv') FlxTween.color(spr.sprite, 1, 0xFFFF0000, 0xFFFFFFFF);
 					if (spr.hide == false) continue;
 					if (spr.darkVariant != null && spr.spriteDark != null) spr.spriteDark.alpha = 0;
 					FlxTween.color(spr.sprite, 1, 0xFF000000, 0xFFFFFFFF);

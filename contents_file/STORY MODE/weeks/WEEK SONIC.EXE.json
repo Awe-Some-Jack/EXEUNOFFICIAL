@@ -63,6 +63,5 @@
 	"weekName": "Custom Week",
 	"exeTitle": "SONIC.EXE",
 	"exeCover": "sonicexe",
-	"exeLabel": "EXE",
-	"soundTestCode": [0, 0, false]
+	"exeLabel": "EXE"
 }

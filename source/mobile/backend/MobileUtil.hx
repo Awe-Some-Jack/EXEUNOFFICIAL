@@ -25,9 +25,9 @@ typedef ModeData = { Name:String, Folder:String }
 class MobileUtil
 {
 	#if sys
-	public static inline function getAssetDirectory():String
-		return #if android haxe.io.Path.addTrailingSlash("/sdcard/Android/data/com.xunofficial.vssonicexe/files") #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
-
+	public static inline function getAssetDirectory():String {
+		return #if android haxe.io.Path.addTrailingSlash(AndroidContext.getExternalFilesDir()) #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
+	}
 	#if android
 	public static inline function getCustomStoragePath():String
 		return AndroidContext.getExternalFilesDir() + '/storageModes.json';
@@ -89,14 +89,14 @@ class MobileUtil
 				daPath = "/sdcard/.Vs Sonic";
 			/* obb doesnt work and I dont wanna fix it -ArkoseLabs
 			case 'EXTERNAL_OBB':
-				daPath = "/sdcard/Android/obb/com.xunofficial.vssonicexe";
+				daPath = "/sdcard/Android/obb/com.exeunofficial.vssonicexe";
 			*/
 			case 'EXTERNAL_MEDIA':
-				daPath = "/sdcard/Android/media/com.xunofficial.vssonicexe";
+				daPath = "/sdcard/Android/media/com.exeunofficial.vssonicexe";
 			case 'EXTERNAL_DATA':
-				daPath = "/sdcard/Android/data/com.xunofficial.vssonicexe/files";
+				daPath = "/sdcard/Android/data/com.exeunofficial.vssonicexe/files";
 			default: //technically not needed but here for safety -ArkoseLabs
-				if (daPath == null || daPath == '') daPath = "/sdcard/Android/data/com.xunofficial.vssonicexe/files";
+				if (daPath == null || daPath == '') daPath = "/sdcard/Android/data/com.exeunofficial.vssonicexe/files";
 		}
 		daPath = Path.addTrailingSlash(daPath);
 		currentDirectory = daPath;
@@ -108,9 +108,7 @@ class MobileUtil
 		}
 		catch (e:Dynamic)
 		{
-			Application.current.window.alert("Looks like you doesn't have directory named\n" + MobileUtil.getAssetDirectory() +
-			"\nBut maybe this couldn't be right, android loves to give errors like this\nPress OK & let's see what happens\nCurrent Error You Got:\n" + e, "Warning!");
-			//lime.system.System.exit(1);
+			trace("Directory not found: " + MobileUtil.getAssetDirectory() + " (" + e + ")");
 		}
 
 		try
@@ -120,9 +118,7 @@ class MobileUtil
 		}
 		catch (e:Dynamic)
 		{
-			Application.current.window.alert("Looks like you doesn't have directory named\n" + MobileUtil.getDirectory() + "contents/" + 
-			"\nBut maybe this couldn't be right, android loves to give errors like this\nPress OK & let's see what happens\nCurrent Error You Got:\n" + e, "Warning!");
-			//lime.system.System.exit(1);
+			trace("Directory not found: " + MobileUtil.getDirectory() + "contents/ (" + e + ")");
 		}
 
 		return daPath;
@@ -218,6 +214,17 @@ class MobileUtil
 		try {
 			var assetList:Array<String> = Assets.list();
 
+			var embeddedKeys:Map<String, Bool> = [];
+			try {
+				var manifestText:String = Assets.getText("assets/embedded-assets.json");
+				if (manifestText != null) {
+					for (key in (haxe.Json.parse(manifestText):Array<String>))
+						embeddedKeys.set(key, true);
+				}
+			} catch (e:Dynamic) {
+				trace('Could not load embedded-assets manifest: $e');
+			}
+
 			var toCopy = assetList.filter(function(assetKey) {
 				var cleanPath = assetKey;
 				var colonIndex = cleanPath.indexOf(":");
@@ -226,6 +233,7 @@ class MobileUtil
 				}
 
 				if (!StringTools.startsWith(cleanPath, "assets/")) return false;
+				if (embeddedKeys.exists(cleanPath)) return false;
 				if (folders == null) return true;
 
 				for (f in folders) {
@@ -308,4 +316,71 @@ class MobileUtil
 		}
 		#end
 	}
+
+	#if (mobile && flixel_animate)
+	static inline function resolveExternalPath(path:String):String
+		return path.startsWith("/") ? path : getDirectory() + path;
+
+	public static function initAnimateAssetOverrides():Void
+	{
+		final originalExists = animate.FlxAnimateAssets.exists;
+		animate.FlxAnimateAssets.exists = function(path, type) {
+			return originalExists(path, type) || FileSystem.exists(resolveExternalPath(path));
+		};
+
+		final originalGetText = animate.FlxAnimateAssets.getText;
+		animate.FlxAnimateAssets.getText = function(path) {
+			final result = originalGetText(path);
+			if (result != null) return result;
+			final fullPath = resolveExternalPath(path);
+			return FileSystem.exists(fullPath) ? File.getContent(fullPath) : null;
+		};
+
+		final originalGetBytes = animate.FlxAnimateAssets.getBytes;
+		animate.FlxAnimateAssets.getBytes = function(path) {
+			final result = originalGetBytes(path);
+			if (result != null) return result;
+			final fullPath = resolveExternalPath(path);
+			return FileSystem.exists(fullPath) ? File.getBytes(fullPath) : null;
+		};
+
+		final originalGetBitmapData = animate.FlxAnimateAssets.getBitmapData;
+		animate.FlxAnimateAssets.getBitmapData = function(path) {
+			final result = originalGetBitmapData(path);
+			if (result != null) return result;
+			final fullPath = resolveExternalPath(path);
+			if (!FileSystem.exists(fullPath)) return null;
+
+			if (Path.extension(fullPath) == "astc")
+			{
+				if (FlxG.stage.context3D == null || !FlxG.stage.context3D.isASTCSupported())
+					return null;
+				try
+				{
+					final astcBytes = openfl.utils.ByteArray.fromBytes(File.getBytes(fullPath));
+					return openfl.display.BitmapData.fromTexture(FlxG.stage.context3D.createASTCTexture(astcBytes), false);
+				}
+				catch (e:Dynamic)
+				{
+					trace('Error loading ASTC from external storage: $fullPath ($e)');
+					return null;
+				}
+			}
+
+			return openfl.display.BitmapData.fromFile(fullPath);
+		};
+
+		final originalList = animate.FlxAnimateAssets.list;
+		animate.FlxAnimateAssets.list = function(path, ?type, ?library, includeSubDirectories = false) {
+			final result = originalList(path, type, library, includeSubDirectories);
+			final fullPath = resolveExternalPath(path);
+			if (FileSystem.exists(fullPath) && FileSystem.isDirectory(fullPath)) {
+				for (file in FileSystem.readDirectory(fullPath)) {
+					if (result.indexOf(file) == -1) result.push(file);
+				}
+			}
+			return result;
+		};
+	}
+	#end
 }

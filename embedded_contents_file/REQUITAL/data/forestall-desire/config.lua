@@ -237,6 +237,7 @@ function createKnife(target, strumTime)
     if not targetConfig then return end
 
     playAnim('dad', 'attack', true)
+    runTimer('playSound', 0.1)
     setProperty('dad.specialAnim', true)
 
     local knifeName = 'knife'..math.floor(strumTime)
@@ -524,6 +525,8 @@ function onTimerCompleted(tag)
         end
 
         dodgeNoteHits[target] = {}
+    elseif tag == 'playSound' then
+        playSound('dodge', 1)
     else
         handleKnifeHit(tag)
     end

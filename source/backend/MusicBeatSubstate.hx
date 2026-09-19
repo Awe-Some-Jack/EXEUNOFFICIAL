@@ -1,6 +1,7 @@
 package backend;
 
 import flixel.FlxSubState;
+import flixel.graphics.frames.FlxAtlasFrames;
 
 class MusicBeatSubstate extends FlxSubState
 {
@@ -25,10 +26,15 @@ class MusicBeatSubstate extends FlxSubState
 	public var touchLength:Float = 0;
 	public var shortPress:Bool = false;
 	public var pressHolding:Bool = false;
+	public var backPressed:Bool = false;
+	public var buttonOverlaps:Bool = false;
 	public var swipeUP:Bool = false;
 	public var swipeDOWN:Bool = false;
 	public var swipeLEFT:Bool = false;
 	public var swipeRIGHT:Bool = false;
+
+	public var backButton:FlxSprite;
+	var tweenScale:FlxTween;
 
 	private var curDecStep:Float = 0;
 	private var curDecBeat:Float = 0;
@@ -36,6 +42,20 @@ class MusicBeatSubstate extends FlxSubState
 
 	inline function get_controls():Controls
 		return Controls.instance;
+
+	public function createBackButton(x:Float, y:Float) {
+		backButton = new FlxSprite(0, 0);
+		backButton.frames = FlxAtlasFrames.fromSparrow('assets/exe/backButton.webp', 'assets/exe/backButton.xml');
+		backButton.animation.addByPrefix('idle', 'idle', 24, false);
+		backButton.animation.addByPrefix('press', 'press', 24, false);
+		backButton.animation.play('idle', true);
+		backButton.scale.set(0.17, 0.17);
+		backButton.alpha = 0.6;
+		backButton.updateHitbox();
+		backButton.x = x;
+		backButton.y = y;
+		add(backButton);
+	}
 
 	override function update(elapsed:Float)
 	{
@@ -78,6 +98,37 @@ class MusicBeatSubstate extends FlxSubState
 		swipeDOWN = deltaMouseY >= 5 && pressHolding && Math.abs(deltaMouseY) > Math.abs(deltaMouseX);
 		swipeLEFT = deltaMouseX <= -5 && pressHolding && Math.abs(deltaMouseY) < Math.abs(deltaMouseX);
 		swipeRIGHT = deltaMouseX >= 5 && pressHolding && Math.abs(deltaMouseY) < Math.abs(deltaMouseX);
+
+		if(backButton != null) {
+			if(FlxG.mouse.pressedRight) {
+				backButton.x += deltaMouseX;
+				backButton.y += deltaMouseY;
+				trace(backButton.x + ' ' + backButton.y);
+			}
+
+			buttonOverlaps = FlxG.mouse.overlaps(backButton);
+
+			if(buttonOverlaps) {
+				backButton.animation.play('press', true);
+				
+				backPressed = shortPress;
+
+				if(backButton.scale.x != 0.19 && tweenScale == null) {
+					FlxTween.cancelTweensOf(backButton);
+					FlxTween.cancelTweensOf(backButton.scale);
+					tweenScale = FlxTween.tween(backButton.scale, {x: 0.19, y: 0.19}, 0.2, {ease: FlxEase.backOut, onComplete: function(_) tweenScale = null});
+					FlxTween.tween(backButton, {alpha: 1}, 0.2, {ease: FlxEase.smootherStepOut});
+				}
+			} else {
+				backButton.animation.play('idle', true);
+				if(backButton.scale.x != 0.17 && tweenScale == null) {
+					FlxTween.cancelTweensOf(backButton);
+					FlxTween.cancelTweensOf(backButton.scale);
+					tweenScale = FlxTween.tween(backButton.scale, {x: 0.17, y: 0.17}, 0.2, {ease: FlxEase.backOut, onComplete: function(_) tweenScale = null});
+					FlxTween.tween(backButton, {alpha: 0.6}, 0.2, {ease: FlxEase.smootherStepOut});
+				}
+			}
+		}
 
 		super.update(elapsed);
 	}

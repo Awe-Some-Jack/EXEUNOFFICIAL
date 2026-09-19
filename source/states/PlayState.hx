@@ -308,6 +308,15 @@ class PlayState extends MusicBeatState
 
 	public static var isFixedAspectRatio(default, set):Bool = false;
 
+	#if mobile
+	public static var hitboxesGroup:Array<FlxSprite> = [];
+	public static var hitboxesHeld:Array<Bool> = [false, false, false, false];
+	public static var noteSlide:Array<Bool> = [false, false, false, false];
+	public static var hitboxOwner:Array<Int> = [-1, -1, -1, -1];
+	// tracks, per active pointer (touch id, or -2 for mouse), whether it was overlapping each hitbox last frame
+	public static var hitboxPointerOver:Map<Int, Array<Bool>> = new Map();
+	#end
+
 	static var _originalWidth:Int = FlxG.width;
 	static var _originalHeight:Int = FlxG.height;
 	static var _wasFullscreen:Bool = false;
@@ -557,12 +566,15 @@ class PlayState extends MusicBeatState
 		if(SONG.stage == null || SONG.stage.length < 1)
 			SONG.stage = StageData.vanillaSongStage(Paths.formatToSongPath(Song.loadedSongName));
 
+		PauseSubState.miniSonicOffsets = [0, 0];
 		PauseSubState.miniSonicImage = Paths.formatToSongPath(SONG.song);
 		switch(Paths.formatToSongPath(SONG.song))
 		{
 			case 'final-escape': PauseSubState.miniSonicImage = 'triple-trouble-7';
 			case 'manual-blast': PauseSubState.miniSonicImage = 'hedge';
 			case 'prey': PauseSubState.miniSonicImage = 'sonic';
+			case 'fate': PauseSubState.miniSonicOffsets = [-6, 0];
+			case 'hijacked-transmission': PauseSubState.miniSonicOffsets = [-12, 0];
 		}
 
 		curStage = SONG.stage;
@@ -614,7 +626,6 @@ class PlayState extends MusicBeatState
 			if(SONG.gfVersion == null || SONG.gfVersion.length < 1) SONG.gfVersion = 'gf'; //Fix for the Chart Editor
 			gf = new Character(0, 0, SONG.gfVersion);
 			startCharacterPos(gf);
-			gfGroup.scrollFactor.set(0.95, 0.95);
 			gfGroup.add(gf);
 		}
 
@@ -815,6 +826,96 @@ class PlayState extends MusicBeatState
 		stagesFunc(function(stage:BaseStage) stage.createPost());
 		callOnScripts('onCreatePost');
 
+		#if mobile
+		if(ClientPrefs.data.middleScroll && ClientPrefs.data.middlescrollType == 'mobile')
+		{
+			var spacing:Float = 172;
+			var pairGap:Float = 150;
+
+			var centerX:Float = 418.5 + (112 * 1.5);
+			var start:Float = centerX - (spacing * 1.5);
+
+			for(i in 0...4) {
+				var x:Float = start + (spacing * i);
+				x += (i < 2) ? -pairGap / 2 : pairGap / 2;
+				playerStrums.members[i].x = x;
+			}
+
+			for(n in notes) {
+				if(n != null && !n.mustPress) n.visible = false;
+			}
+
+			for(n in unspawnNotes) {
+				if(n != null && !n.mustPress) n.visible = false;
+			}
+
+			opponentStrums.members[0].x = 0;
+
+			for(i in 0...4) {
+				opponentStrums.members[i].y = ClientPrefs.data.downScroll ? 50 : 561;
+				opponentStrums.members[i].scale.set(0.3, 0.3);
+				if(i > 0) opponentStrums.members[i].x = opponentStrums.members[0].x + (i*.3*162);
+			}
+		}
+
+		hitboxesHeld = [false, false, false, false];
+		hitboxOwner = [-1, -1, -1, -1];
+		noteSlide = [false, false, false, false];
+		hitboxPointerOver = new Map();
+
+		if(ClientPrefs.data.controlsType == 'base')
+		{
+			for(i in 0...4) {
+				var hitbox:FlxSprite = new FlxSprite(0, 0).makeGraphic(172, Std.int(FlxG.height/1.6));
+				hitbox.color = 0xFFFF0000;
+
+				switch(i) {
+					case 0:
+						hitbox.color = 0xFFad3a5c;
+					case 1:
+						hitbox.color = 0xFF00c9bb;
+					case 2:
+						hitbox.color = 0xFF12e303;
+					case 3:
+						hitbox.color = 0xFFad3933;
+				}
+
+				hitbox.alpha = ClientPrefs.data.defHitboxAlpha;
+				hitbox.updateHitbox();
+				hitbox.x = playerStrums.members[i].x + (playerStrums.members[i].width - hitbox.width) / 2;
+				hitbox.y = ClientPrefs.data.downScroll ? FlxG.height - hitbox.height : 0;
+				hitbox.cameras = [camOther];
+				hitboxesGroup.push(hitbox);
+				add(hitbox);
+			}
+		}
+		else if(ClientPrefs.data.controlsType == 'hitbox')
+		{
+			for(i in 0...4) {
+				var hitbox:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width/4), Std.int(FlxG.height));
+				hitbox.color = 0xFFFF0000;
+
+				switch(i) {
+					case 0:
+						hitbox.color = 0xFFad3a5c;
+					case 1:
+						hitbox.color = 0xFF00c9bb;
+					case 2:
+						hitbox.color = 0xFF12e303;
+					case 3:
+						hitbox.color = 0xFFad3933;
+				}
+
+				hitbox.alpha = ClientPrefs.data.defHitboxAlpha;
+				hitbox.updateHitbox();
+				hitbox.x = hitbox.width*i;
+				hitbox.cameras = [camOther];
+				hitboxesGroup.push(hitbox);
+				add(hitbox);
+			}
+		}
+		#end
+
 		gameplayCam.loadSongSettings();
 		gameplayCam.onCreatePost();
 		FlxG.camera.snapToTarget();
@@ -968,7 +1069,6 @@ class PlayState extends MusicBeatState
 			case 2:
 				if(gf != null && !gfMap.exists(newCharacter)) {
 					var newGf:Character = new Character(0, 0, newCharacter);
-					newGf.scrollFactor.set(0.95, 0.95);
 					gfMap.set(newCharacter, newGf);
 					gfGroup.add(newGf);
 					startCharacterPos(newGf);
@@ -994,7 +1094,6 @@ class PlayState extends MusicBeatState
 	public function startCharacterPos(char:Character, ?gfCheck:Bool = false) {
 		if(gfCheck && char.curCharacter.startsWith('gf')) { //IF DAD IS GIRLFRIEND, HE GOES TO HER POSITION
 			char.setPosition(GF_X, GF_Y);
-			char.scrollFactor.set(0.95, 0.95);
 			char.danceEveryNumBeats = 2;
 		}
 		char.x += char.positionArray[0];
@@ -1574,7 +1673,7 @@ class PlayState extends MusicBeatState
 			if (player < 1)
 			{
 				if(!ClientPrefs.data.opponentStrums) targetAlpha = 0;
-				else if(ClientPrefs.data.middleScroll) targetAlpha = 0.35;
+				else if(ClientPrefs.data.middleScroll #if mobile && ClientPrefs.data.middlescrollType == 'pc' #end) targetAlpha = 0.35;
 			}
 
 			var babyArrow:StrumNote = new StrumNote(0, 0, i, player);
@@ -1750,6 +1849,7 @@ class PlayState extends MusicBeatState
 	private var _holdArray:Array<Bool> = [];
 	private var _pressArray:Array<Bool> = [];
 	private var _releaseArray:Array<Bool> = [];
+	#if mobile private var _activePointers:Array<Int> = []; #end
 
 	// pre-allocated script argument arrays — avoids heap allocation on every note hit/miss
 	private final _noteArgs:Array<Dynamic>  = [0, 0, '', false, 0.0]; // [index, noteData, noteType, isSustain, strumTime]
@@ -1759,6 +1859,31 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
+		#if mobile
+		for(i in 0...4) {
+			final ownerId = hitboxOwner[i];
+			final ownerHeld = ownerId != -1 && pointerHeld(ownerId);
+			final overHitbox = ownerHeld && pointerOverlapsHitbox(ownerId, i);
+			if(!ownerHeld || (!overHitbox && !ClientPrefs.data.slideMechanic) || (!overHitbox && !noteSlide[i] && ClientPrefs.data.slideMechanic)) {
+				if(hitboxesHeld[i] && !overHitbox && !ClientPrefs.data.slideMechanic) {
+					for (n in notes) {
+						if(n != null && n.mustPress && n.noteData == i && n.isSustainNote && n.canBeHit && !n.tooLate && !n.wasGoodHit && !n.missed) {
+							noteMiss(n);
+							n.active = n.visible = false;
+							invalidateNote(n);
+							break;
+						}
+					}
+				}
+				hitboxesGroup[i].alpha = ClientPrefs.data.defHitboxAlpha;
+				hitboxesHeld[i] = false;
+				noteSlide[i] = false;
+				hitboxOwner[i] = -1;
+				keyReleased(i);
+			}
+		}
+		#end
+
 		var hasScripts:Bool = false;
 		#if LUA_ALLOWED if (luaArray?.length > 0) hasScripts = true; #end
 		#if HSCRIPT_ALLOWED if (hscriptArray?.length > 0) hasScripts = true; #end
@@ -1991,6 +2116,10 @@ class PlayState extends MusicBeatState
 							{
 								if (daNote.mustPress && !cpuControlled && !cpuAssist && !daNote.ignoreNote && !endingSong && (daNote.tooLate || !daNote.wasGoodHit))
 									noteMiss(daNote);
+
+								#if mobile
+								if (daNote.mustPress && daNote.isSustainNote) noteSlide[daNote.noteData] = false;
+								#end
 
 								daNote.active = daNote.visible = false;
 								invalidateNote(daNote);
@@ -3140,6 +3269,25 @@ class PlayState extends MusicBeatState
 		callOnScripts('onKeyRelease', _keyArgs);
 	}
 
+	#if mobile
+	function pointerHeld(id:Int):Bool
+	{
+		if (id == -2) return FlxG.mouse.pressed;
+		for (touch in FlxG.touches.list)
+			if (touch.touchPointID == id) return touch.pressed;
+		return false;
+	}
+
+	function pointerOverlapsHitbox(id:Int, i:Int):Bool
+	{
+		if (hitboxesGroup[i] == null) return false;
+		if (id == -2) return FlxG.mouse.overlaps(hitboxesGroup[i], camOther);
+		for (touch in FlxG.touches.list)
+			if (touch.touchPointID == id) return touch.overlaps(hitboxesGroup[i], camOther);
+		return false;
+	}
+	#end
+
 	public static function getKeyFromEvent(arr:Array<String>, key:FlxKey):Int
 	{
 		if(key != NONE)
@@ -3162,9 +3310,16 @@ class PlayState extends MusicBeatState
 		_holdArray.resize(0);
 		_pressArray.resize(0);
 		_releaseArray.resize(0);
-		for (key in keysArray)
+		
+		for (i in 0...keysArray.length)
 		{
-			_holdArray.push(controls.pressed(key));
+			final key = keysArray[i];
+			#if mobile
+			final ownerId = hitboxOwner[i];
+			final ownerHeld = ownerId != -1 && pointerHeld(ownerId);
+			final mouseHeld = ownerHeld && (pointerOverlapsHitbox(ownerId, i) || (ClientPrefs.data.slideMechanic && noteSlide[i]));
+			#end
+			_holdArray.push(controls.pressed(key) #if mobile || mouseHeld #end);
 			_pressArray.push(controls.justPressed(key));
 			_releaseArray.push(controls.justReleased(key));
 		}
@@ -3182,6 +3337,49 @@ class PlayState extends MusicBeatState
 					if(pressArray[i] && strumsBlocked[i] != true)
 						keyPressed(i);
 		}
+
+		#if mobile
+		{
+			// build the list of pointers currently pressed down (mouse uses the -2 sentinel id).
+			// touch devices also mirror the primary touch as a synthetic mouse event, so only
+			// fall back to the mouse when there's no real touch active, otherwise the same physical
+			// press gets counted twice (once as a hit, once as a miss when the note's already consumed)
+			_activePointers.resize(0);
+			for(touch in FlxG.touches.list) if(touch.pressed) _activePointers.push(touch.touchPointID);
+			if(_activePointers.length == 0 && FlxG.mouse.pressed) _activePointers.push(-2);
+
+			for(pid in _activePointers) {
+				var overlapState = hitboxPointerOver.get(pid);
+				if(overlapState == null) {
+					overlapState = [false, false, false, false];
+					hitboxPointerOver.set(pid, overlapState);
+				}
+
+				for(i in 0...4) {
+					final overlapsNow = pointerOverlapsHitbox(pid, i);
+					// only a fresh landing on the hitbox (not a continuous overlap) should count as a press,
+					// so sliding back onto a hitbox or a second finger tapping a held one presses again,
+					// while a touch that's still sustaining its own hold note doesn't re-trigger itself
+					if(overlapsNow && !overlapState[i]) {
+						final isReturningOwner = hitboxOwner[i] == pid && ClientPrefs.data.slideMechanic && noteSlide[i];
+						if(!isReturningOwner) {
+							hitboxesHeld[i] = true;
+							hitboxOwner[i] = pid;
+							hitboxesGroup[i].alpha = ClientPrefs.data.pressHitboxAlpha;
+							_pressTimestamp = haxe.Timer.stamp();
+							keyPressed(i);
+						}
+					}
+					overlapState[i] = overlapsNow;
+				}
+			}
+
+			// drop pointers that are no longer active so a future touch reusing an id starts with a clean slate
+			for(pid in hitboxPointerOver.keys())
+				if(_activePointers.indexOf(pid) == -1)
+					hitboxPointerOver.remove(pid);
+		}
+		#end
 
 		if (startedCountdown && !inCutscene && !boyfriend.stunned && generatedMusic)
 		{
@@ -3221,6 +3419,15 @@ class PlayState extends MusicBeatState
 			if (daNote != note && daNote.mustPress && daNote.noteData == note.noteData && daNote.isSustainNote == note.isSustainNote && Math.abs(daNote.strumTime - note.strumTime) < 1)
 				invalidateNote(note);
 		});
+
+		#if mobile
+		if(ClientPrefs.data.slideMechanic) {
+			for(i in 0...4) {
+				noteSlide[i] = false;
+				keyReleased(i);
+			}
+		}
+		#end
 
 		noteMissCommon(daNote.noteData, daNote);
 		stagesFunc(function(stage:BaseStage) stage.noteMiss(daNote));
@@ -3337,7 +3544,21 @@ class PlayState extends MusicBeatState
 		}
 		
 		var missNote:FlxSound = FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.2, 0.35));
-		if (ClientPrefs.data.ghostTapping) {
+		if (countAsMiss)
+		{
+			vocals.volume = 0;
+			missNotePlaying = true;
+			var restoreVocals = () -> {
+				if (!missNotePlaying) return;
+				missNotePlaying = false;
+				vocals.volume = 1;
+			};
+			if (missNote != null) {
+				missNote.onComplete = restoreVocals;
+				new FlxTimer().start(0.8, (_) -> restoreVocals());
+			} else restoreVocals();
+		}
+		/*if (ClientPrefs.data.ghostTapping) {
 			vocals.volume = 0;
 			missNotePlaying = true;
 			var restoreVocals = () -> {
@@ -3351,7 +3572,7 @@ class PlayState extends MusicBeatState
 			} else restoreVocals();
 		} else {
 			vocals.volume = 0;
-		}
+		}*/
 	}
 
 	function opponentNoteHit(note:Note):Void
@@ -3408,6 +3629,8 @@ class PlayState extends MusicBeatState
 		_gnhArgs[1] = leData;
 		_gnhArgs[2] = leType;
 		_gnhArgs[3] = isSus;
+
+		#if mobile noteSlide[leData] = isSus && ClientPrefs.data.slideMechanic; #end
 
 		stagesFunc(function(stage:BaseStage) stage.goodNoteHitPre(note));
 
@@ -3662,6 +3885,17 @@ class PlayState extends MusicBeatState
 				script.destroy();
 			}
 
+		#if mobile
+		for(hit in hitboxesGroup) {
+			if(hit != null) {
+				remove(hit);
+				hit.destroy();
+			}
+		}
+		hitboxesGroup = [];
+		hitboxPointerOver = new Map();
+		#end
+
 		hscriptArray = null;
 		#end
 		stagesFunc(function(stage:BaseStage) stage.destroy());
@@ -3757,17 +3991,25 @@ class PlayState extends MusicBeatState
 			case 'hellbent':
 				if (curBeat >= 296) PauseSubState.miniSonicImage = 'hellbent-2';
 			case 'fate':
-				if (curBeat >= 224) PauseSubState.miniSonicImage = 'fate-2';
-				if (curBeat >= 579) PauseSubState.miniSonicImage = 'fate-3';
+				if (curBeat >= 136) PauseSubState.miniSonicImage = 'fate-2';
+				if (curBeat >= 224) PauseSubState.miniSonicImage = 'fate-3';
+				if (curBeat >= 508) PauseSubState.miniSonicImage = 'fate-4';
+				if (curBeat >= 579) PauseSubState.miniSonicImage = 'fate-5';
 			case 'endless-jp':
 				if (curBeat >= 228) PauseSubState.miniSonicImage = 'endless-jp-2';
 				if (curBeat >= 292 && curBeat < 356) PauseSubState.miniSonicImage = 'endless-jp';
+			case 'soulless':
+				if (curBeat >= 136) PauseSubState.miniSonicImage = 'soulless-2';
 			case 'too-fest':
 				if (curBeat >= 296) PauseSubState.miniSonicImage = 'too-fest-2';
 			case 'starline':
 				if (curBeat >= 272) PauseSubState.miniSonicImage = 'starline-2';
 			case 'manual-blast':
-				if (curBeat >= 192) PauseSubState.miniSonicImage = 'manual-blast-2';
+				if (curBeat >= 192) 
+				{
+					PauseSubState.miniSonicOffsets = [-3, 0];
+					PauseSubState.miniSonicImage = 'manual-blast-2';
+				}
 			case 'haze':
 				if (curBeat >= 99) PauseSubState.miniSonicImage = 'haze-2';
 				if (curBeat >= 400) PauseSubState.miniSonicImage = 'haze-3';
@@ -3786,6 +4028,9 @@ class PlayState extends MusicBeatState
 			case 'prey':
 				if (curBeat >= 60) PauseSubState.miniSonicImage = 'prey';
 				if (curBeat >= 388) PauseSubState.miniSonicImage = 'prey-2';
+			case 'fight-or-flight':
+				if (curBeat >= 296) PauseSubState.miniSonicImage = 'fight-or-flight-2';
+				if (curBeat >= 505) PauseSubState.miniSonicImage = 'fight-or-flight';
 			case 'deception':
 				if (curBeat >= 128) PauseSubState.miniSonicImage = 'deception-2';
 			case 'malediction':

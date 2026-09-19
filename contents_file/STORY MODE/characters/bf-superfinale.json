@@ -2,23 +2,23 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [0, 2],
+			"offsets": [-101, -22],
 			"anim": "idle",
 			"fps": 24,
-			"name": "idle",
+			"name": "Símbolo 68",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [47, -28],
+			"offsets": [62, -48],
 			"anim": "singLEFT",
 			"fps": 24,
-			"name": "super bf left",
+			"name": "left",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [-17, -74],
+			"offsets": [-69, -32],
 			"anim": "singDOWN",
 			"fps": 24,
 			"name": "down",
@@ -26,18 +26,50 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-37, 139],
+			"offsets": [-145, 120],
 			"anim": "singUP",
 			"fps": 24,
-			"name": "super bf up",
+			"name": "u`p",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [-73, 28],
+			"offsets": [-182, 28],
 			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "rigth",
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-103, -22],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "m",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-103, -22],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "m",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-103, -22],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "m",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-103, -22],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "m",
 			"indices": []
 		}
 	],

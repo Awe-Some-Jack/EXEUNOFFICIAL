@@ -17,5 +17,6 @@ function goodNoteHit(id,nd,nt,isn)
 		setProperty('gf.specialAnim', true)
 		playAnim('dad', 'dodged', true)
 		setProperty('dad.specialAnim', true)
+		playSound('shot', 0.85)
 	end
 end

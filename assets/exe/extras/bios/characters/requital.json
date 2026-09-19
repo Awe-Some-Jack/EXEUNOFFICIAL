@@ -1,27 +1,21 @@
 {
-	"display_name": "REQUITAL",
-	"list_position": 9999,
 	"bio_appear": true,
+	"list_position": 32,
+	"display_name": "REQUITAL",
 	"variants": [
 		{
 			"display_name": "REQUITAL",
 			"char": "requital",
 			"char_scale": 0.5,
-			"char_offset": [454, 181],
-			"icon_offset": [693, 464],
+			"char_offset": [
+				454,
+				181
+			],
+			"icon_offset": [
+				693,
+				464
+			],
 			"icon_scale": 0.44,
-			"icon": "requital",
-			"flip_x": true,
-			"mod": "REQUITAL",
-			"artist": "CommandoDev",
-			"bio": "Requital got his start exactly the same way the normal Tails did, an outcast bullied for his two tails who saw Sonic cruising by one day. Tails would try following the hedgehog, and the two would head out and face the world together.\n\nHowever, things would take a turn as the adventures with the so-called \"hero\" would result in Tails dying over and over and over again. With his numerous deaths came a slew of side-effects. The fur that was normally white had turned a bold yellow, and the three bangs on his head has been reduced to one. His eyes have turned into slits, and his mouth had become crooked and marred.\n\nEventually, the fox had decided that he's had enough with the abuse and took action. One day, when Tails was flying Sonic high above Carnival Night Zone, Tails let the hedgehog go from his grasp, leading him to plummet to his death.\n\nHe finally did it. Tails had finally achieved his vengeance, his retaliation, his requital. From that day onwards, every Tuesday, the fox would smear himself in Sonic's blood to remind him of his kill.\n\nYears went by ever since then. Some say that the fox, now known as \"Requital\" is still out there, hunting down anyone who's too similar to his former idol. Some claim that they can hear him wandering in the ruins of Marble Zone."
-		},
-		{
-			"display_name": "REQUITAL (crazy)",
-			"char": "requitalpiss",
-			"char_scale": 0.55,
-			"char_offset": [540, 330],
-			"icon_offset": [786, 425],
 			"icon": "requital",
 			"flip_x": true,
 			"mod": "REQUITAL",
@@ -31,14 +25,15 @@
 		{
 			"display_name": "REQUITAL (beast)",
 			"char": "requital-beast",
-			"char_scale": 0.5,
-			"char_offset": [585, 355],
-			"icon_offset": [786, 430],
-			"icon": "requital-beast",
-			"flip_x": true,
-			"mod": "REQUITAL",
-			"artist": "CommandoDev",
-			"bio": "Requital got his start exactly the same way the normal Tails did, an outcast bullied for his two tails who saw Sonic cruising by one day. Tails would try following the hedgehog, and the two would head out and face the world together.\n\nHowever, things would take a turn as the adventures with the so-called \"hero\" would result in Tails dying over and over and over again. With his numerous deaths came a slew of side-effects. The fur that was normally white had turned a bold yellow, and the three bangs on his head has been reduced to one. His eyes have turned into slits, and his mouth had become crooked and marred.\n\nEventually, the fox had decided that he's had enough with the abuse and took action. One day, when Tails was flying Sonic high above Carnival Night Zone, Tails let the hedgehog go from his grasp, leading him to plummet to his death.\n\nHe finally did it. Tails had finally achieved his vengeance, his retaliation, his requital. From that day onwards, every Tuesday, the fox would smear himself in Sonic's blood to remind him of his kill.\n\nYears went by ever since then. Some say that the fox, now known as \"Requital\" is still out there, hunting down anyone who's too similar to his former idol. Some claim that they can hear him wandering in the ruins of Marble Zone."
+			"char_offset": [
+				502,
+				172
+			],
+			"icon_offset": [
+				786,
+				430
+			],
+			"icon": "requital-beast"
 		}
 	]
 }

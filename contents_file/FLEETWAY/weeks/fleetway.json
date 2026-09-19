@@ -28,6 +28,5 @@
 	"exeTitle": "FLEETWAY",
 	"exeCover": "fleetway",
 	"exeLabel": "OFFICIAL",
-	"transitionShape": "FLEET",
-	"soundTestCode": [8, 21, true]
+	"transitionShape": "FLEET"
 }

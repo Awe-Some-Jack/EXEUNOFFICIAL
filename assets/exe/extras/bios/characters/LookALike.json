@@ -1,4 +1,7 @@
 {
+	"bio_appear": true,
+	"list_position": 8,
+	"display_name": "LOOKALIKE",
 	"variants": [
 		{
 			"bio": "Lookalike resembles Boyfriend but appears more ominous and unkept, having a dark shade over his eyes, yellow teeth, and torn and ragged clothes. His prohibition sign is now a circle with an X and most of his colors are faded. He also wears a red shirt under the white t-shirt, which is also torn and ragged.",
@@ -17,45 +20,6 @@
 			"char": "LookALike",
 			"flip_x": false,
 			"artist": "Saster & Dorknoob"
-		},
-		{
-			"bio": "Lookalike resembles Boyfriend but appears more ominous and unkept, having a dark shade over his eyes, yellow teeth, and torn and ragged clothes. His prohibition sign is now a circle with an X and most of his colors are faded. He also wears a red shirt under the white t-shirt, which is also torn and ragged.",
-			"display_name": "LOOKALIKE",
-			"icon": "lookalike",
-			"icon_offset": [
-				691,
-				470
-			],
-			"char_scale": 0.55,
-			"mod": "STORY MODE",
-			"char_offset": [
-				600,
-				315
-			],
-			"char": "LookALike2",
-			"flip_x": false,
-			"artist": "Saster & Dorknoob"
-		},
-		{
-			"bio": "Lookalike resembles Boyfriend but appears more ominous and unkept, having a dark shade over his eyes, yellow teeth, and torn and ragged clothes. His prohibition sign is now a circle with an X and most of his colors are faded. He also wears a red shirt under the white t-shirt, which is also torn and ragged.",
-			"display_name": "LOOKALIKE (SMALL)",
-			"icon": "minilook",
-			"icon_offset": [
-				689,
-				472
-			],
-			"char_scale": 0.8,
-			"mod": "STORY MODE",
-			"char_offset": [
-				510,
-				270
-			],
-			"char": "silly look",
-			"flip_x": false,
-			"artist": "Saster & Dorknoob"
 		}
-	],
-	"bio_appear": true,
-	"list_position": 8,
-	"display_name": "LOOKALIKE"
+	]
 }

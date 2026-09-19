@@ -27,6 +27,5 @@
 	"bgColor": [120, 120, 120],
 	"exeTitle": "No More Innocence",
 	"exeCover": "nmi",
-	"exeLabel": "ENTITY",
-	"soundTestCode": [9, 42, true]
+	"exeLabel": "ENTITY"
 }

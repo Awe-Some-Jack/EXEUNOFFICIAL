@@ -2,43 +2,43 @@
 	"animations": [
 		{
 			"loop": true,
-			"offsets": [0, 0],
+			"offsets": [36, 18],
 			"anim": "idle",
 			"fps": 24,
-			"name": "idle",
+			"name": "3 Front/Front Xeno Export/idle s3",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [1, 0],
+			"offsets": [36, 18],
 			"anim": "singLEFT",
 			"fps": 24,
-			"name": "left",
+			"name": "3 Front/Front Xeno Export/left s3",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [0, 0],
+			"offsets": [36, 18],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "down",
+			"name": "3 Front/Front Xeno Export/down s3",
 			"indices": []
 		},
 		{
 			"loop": false,
-			"offsets": [1, 34],
+			"offsets": [36, 52],
 			"anim": "singUP",
 			"fps": 24,
-			"name": "up",
+			"name": "3 Front/Front Xeno Export/up s3",
 			"indices": []
 		},
 		{
-			"offsets": [2, 0],
 			"loop": false,
-			"fps": 24,
+			"offsets": [36, 18],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "rigth"
+			"fps": 24,
+			"name": "3 Front/Front Xeno Export/rigth s3",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
@@ -50,6 +50,6 @@
 	"healthbar_colors": [45, 18, 105],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 1.27,
+	"scale": 1.21,
 	"_editor_isPlayer": false
 }

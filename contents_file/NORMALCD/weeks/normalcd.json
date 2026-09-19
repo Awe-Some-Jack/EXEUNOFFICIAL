@@ -27,6 +27,5 @@
 	"weekName": "Custom Week",
 	"exeTitle": "NORMAL CD",
 	"exeCover": "normalcd",
-	"exeLabel": "NON EXE",
-	"soundTestCode": [23, 9, true]
+	"exeLabel": "NON EXE"
 }

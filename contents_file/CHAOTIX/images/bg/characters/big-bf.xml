@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="big-bf.png">
+<SubTexture name="big-bf UP0000" x="0" y="179" width="221" height="162" frameX="-14" frameY="-28" frameWidth="324" frameHeight="204" />
+<SubTexture name="big-bf UP0001" x="387" y="0" width="223" height="161" frameX="-16" frameY="-28" frameWidth="324" frameHeight="204" />
+<SubTexture name="big-bf UP0002" x="190" y="0" width="197" height="174" frameX="-40" frameY="-15" frameWidth="324" frameHeight="204" />
+<SubTexture name="big-bf UP0003" x="0" y="0" width="190" height="179" frameX="-46" frameY="-10" frameWidth="324" frameHeight="204" />
+</TextureAtlas>

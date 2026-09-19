@@ -1,4 +1,7 @@
 {
+	"bio_appear": true,
+	"list_position": 4,
+	"display_name": "SOULS",
 	"variants": [
 		{
 			"bio": "Miles \"Tails\" Prower is a character in the Sonic series, and the first to fall victim to Sonic.EXE. He appears as Soul Tails in Triple Trouble, summoned by Sonic.EXE to defeat Boyfriend. Soul Tails looks similar to normal Tails, being an anthropomorphic fox with white gloves, red shoes, and two tails, has several major differences compared to his living counterpart. His fur color has shifted from yellow to gray, and both of his eyes are missing; the sockets dripping with blood. His right eye has an X-shaped gash around it, and his right hand and the tips of both his tails have been torn off. In his down pose, his eyes merge into a single, glaring red eye.",
@@ -27,14 +30,12 @@
 				470
 			],
 			"char_scale": 0.9,
-			"mod": "STORY MODE",
 			"char_offset": [
 				520,
 				205
 			],
 			"char": "knux",
-			"flip_x": true,
-			"artist": "SEGA"
+			"flip_x": true
 		},
 		{
 			"bio": "Dr. Ivo Robotnik, also known as Dr. Eggman, is the main antagonist of the Sonic series, and the last to die by the hands of Sonic.EXE. He appears as Soul Robotnik in Triple Trouble, summoned by Sonic.EXE to defeat Boyfriend. Compared to regular Robotnik as he appears in classic Sonic titles, Soul Robotnik's skin has faded and paled, and his head is partially split open, revealing his brain. He lacks eyes and a skull, as his brain now covers the entirety of his upper head. His jaw hangs open limply, and his teeth are yellowed; one of which is missing entirely. Blood also drips from his eye sockets and his mouth. His collar is torn and his clothes have grayed slightly, and both of his hands are gone.",
@@ -46,17 +47,11 @@
 			],
 			"char_scale": 0.8,
 			"char_angle": -90,
-			"mod": "STORY MODE",
 			"char_offset": [
 				500,
 				195
 			],
-			"char": "eggman",
-			"flip_x": false,
-			"artist": "SEGA"
+			"char": "eggman"
 		}
-	],
-	"bio_appear": true,
-	"list_position": 4,
-	"display_name": "SOULS"
+	]
 }

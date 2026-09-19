@@ -1,40 +1,20 @@
 {
-	"bio": "Sonic.exe (Bratwurst) is a reinterpretation of the Sonic.exe concept that focuses on consistency, control, and deliberate behavior rather than chaos or unpredictability. This version presents itself in a form very close to Sonic’s original appearance, maintaining recognizable proportions and movements, but with subtle differences that make it clear something is wrong. His eyes lack normal expression, often appearing empty or unnaturally bright, and his constant smile does not change according to context, giving him a fixed and unnatural look.\r\n\r\nUnlike other EXE variants that rely on visible glitches, exaggerated transformations, or erratic movements, Bratwurst’s Sonic.exe remains visually stable most of the time. This stability is a defining trait, as it suggests that the entity is not struggling to maintain its form, but instead has full control over how it presents itself. His movements are intentional and measured, without unnecessary exaggeration, reinforcing the idea that everything he does is planned.",
-	"display_name": "BRATWURST",
-	"char_scale": 0.75,
-	"icon_offset": [
-		791,
-		425
-	],
-	"icon": "icon-bratwurst",
-	"mod": "TRILOGY",
-	"list_position": 9999,
-	"char_offset": [
-		520,
-		205
-	],
 	"bio_appear": true,
-	"variants": [
-		{
-			"char_scale": 0.75,
-			"artist": "Tornt",
-			"bio": "Sonic.exe (Bratwurst) is a reinterpretation of the Sonic.exe concept that focuses on consistency, control, and deliberate behavior rather than chaos or unpredictability. This version presents itself in a form very close to Sonic’s original appearance, maintaining recognizable proportions and movements, but with subtle differences that make it clear something is wrong. His eyes lack normal expression, often appearing empty or unnaturally bright, and his constant smile does not change according to context, giving him a fixed and unnatural look.\r\n\r\nUnlike other EXE variants that rely on visible glitches, exaggerated transformations, or erratic movements, Bratwurst’s Sonic.exe remains visually stable most of the time. This stability is a defining trait, as it suggests that the entity is not struggling to maintain its form, but instead has full control over how it presents itself. His movements are intentional and measured, without unnecessary exaggeration, reinforcing the idea that everything he does is planned.",
-			"mod": "TRILOGY",
-			"icon_offset": [
-				691,
-				465
-			],
-			"char_offset": [
-				520,
-				205
-			],
-			"flip_x": false,
-			"char": "ESOBRAT",
-			"icon": "icon-bratwurst",
-			"display_name": "BRATWURST"
-		}
+	"list_position": 10,
+	"display_name": "BRATWURST",
+	"char_scale": 0.65,
+	"artist": "Tornt",
+	"bio": "Eggman's attempt at the perfect Sonic-killer, spliced together from Sonic's cells and a modified Metal Sonic base. The build had a fatal error buried in the code that Eggman just ignored, and the second this thing woke up it smashed his head into a glass tube and walked out. Egotistical, sadistic, gets off on toying with victims before finishing them — killed Tails, Knuckles, and Eggman himself to fuel a transformation, growing more monstrous and less recognizable with every soul he collects, then moved on to Amy and Cream too, reanimating Amy's corpse as his own puppet afterward. Basically unkillable, regenerates fast, flies, teleports, claws that shred through anything, and can straight-up move objects with his mind (ripped a tree out of the ground and turned it into spikes). Every soul taken pushes him toward being less \"Sonic\" and more some twisted, godlike mass — and he genuinely believes he IS the universe, life, death, all of it.",
+	"mod": "TRILOGY",
+	"icon_offset": [
+		691,
+		465
+	],
+	"char_offset": [
+		499,
+		147
 	],
 	"flip_x": false,
-	"char": "ESOBRAT",
-	"artist": "Tornt"
+	"char": "bratwurst",
+	"icon": "icon-bratwurst"
 }

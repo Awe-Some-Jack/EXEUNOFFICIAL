@@ -1,87 +1,191 @@
 {
 	"animations": [
 		{
-			"loop": false,
-			"offsets": [120, -13],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [224, 27],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [120, 87],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [58, -4],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
-		},
-		{
-			"offsets": [-20, 10],
-			"loop": false,
-			"fps": 24,
-			"anim": "good",
-			"indices": [],
-			"name": "good"
-		},
-		{
-			"offsets": [66, 503],
-			"loop": false,
-			"fps": 24,
-			"anim": "f",
-			"indices": [],
-			"name": "f"
-		},
-		{
-			"loop": false,
-			"offsets": [592, 304],
-			"anim": "getfuckedlol",
-			"fps": 24,
-			"name": "lmao",
-			"indices": []
-		},
-		{
-			"loop": false,
 			"offsets": [0, 0],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "idle",
+			"anim": "idle",
+			"indices": [],
+			"name": "Idle"
+		},
+		{
+			"offsets": [237, 29],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left"
+		},
+		{
+			"offsets": [126, -13],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down"
+		},
+		{
+			"offsets": [126, 93],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Up"
+		},
+		{
+			"offsets": [61, -4],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right"
+		},
+		{
+			"offsets": [-30, 20],
+			"loop": false,
+			"fps": 24,
+			"anim": "myturn",
+			"indices": [],
+			"name": "MyTurn"
+		},
+		{
+			"offsets": [70, 542],
+			"loop": false,
+			"fps": 24,
+			"anim": "ending",
+			"indices": [],
+			"name": "Ending"
+		},
+		{
+			"offsets": [627, 321],
+			"loop": false,
+			"fps": 24,
+			"anim": "attack",
+			"indices": [],
+			"name": "Dodge"
+		},
+		{
+			"offsets": [0, 5],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle-alt",
+			"indices": [],
+			"name": "IdleAlt"
+		},
+		{
+			"offsets": [237, 29],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "LeftAlt"
+		},
+		{
+			"offsets": [126, -13],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"indices": [],
+			"name": "DownAlt"
+		},
+		{
+			"offsets": [126, 93],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "UpAlt"
+		},
+		{
+			"offsets": [61, -5],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "RightAlt"
+		},
+		{
+			"offsets": [424, 225],
+			"loop": false,
+			"fps": 24,
+			"anim": "attack-alt",
+			"indices": [],
+			"name": "DodgeAlt"
+		},
+		{
+			"loop": false,
+			"offsets": [-245, -94],
+			"anim": "trans1",
+			"fps": 12,
+			"name": "trans1",
 			"indices": []
 		},
 		{
-			"offsets": [214, 804],
+			"offsets": [-151, -122],
 			"indices": [],
 			"fps": 12,
-			"anim": "trans",
+			"anim": "trans2",
 			"loop": false,
-			"name": "Carpeta de elementos duplicados/trans"
+			"name": "trans2"
+		},
+		{
+			"offsets": [-133, -99],
+			"indices": [],
+			"fps": 12,
+			"anim": "trans3",
+			"loop": false,
+			"name": "trans3"
+		},
+		{
+			"offsets": [-46, 49],
+			"indices": [],
+			"fps": 12,
+			"anim": "trans4",
+			"loop": false,
+			"name": "trans4"
+		},
+		{
+			"offsets": [228, 291],
+			"indices": [],
+			"fps": 12,
+			"anim": "trans5",
+			"loop": false,
+			"name": "trans5"
+		},
+		{
+			"offsets": [107, 263],
+			"indices": [],
+			"fps": 12,
+			"anim": "trans6",
+			"loop": false,
+			"name": "trans6"
+		},
+		{
+			"offsets": [223, 850],
+			"indices": [],
+			"fps": 12,
+			"anim": "trans7",
+			"loop": false,
+			"name": "trans7"
+		},
+		{
+			"offsets": [213, 729],
+			"indices": [],
+			"fps": 12,
+			"anim": "trans8",
+			"loop": false,
+			"name": "trans8"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/atlas/hog atlas",
-	"position": [388, 554],
+	"image": "characters/hog",
+	"position": [0, 0],
 	"healthicon": "hog",
 	"flip_x": false,
 	"healthbar_colors": [28, 45, 166],
-	"camera_position": [-220, 220],
+	"camera_position": [0, 0],
 	"sing_duration": 8,
-	"scale": 1.5,
+	"scale": 1,
 	"_editor_isPlayer": false
 }

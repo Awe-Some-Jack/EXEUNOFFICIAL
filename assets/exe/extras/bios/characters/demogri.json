@@ -1,4 +1,7 @@
 {
+	"bio_appear": true,
+	"list_position": 15,
+	"display_name": "DEMOGRI",
 	"variants": [
 		{
 			"bio": "As an angel, Demogri served to entertain the masses and the rest of the gods. However, due to reasons the angels still can not solve, he fell from the skies and was never seen again. Unbeknownst to them, after he fell, he was swiftly captured by a rogue reaper entity, Griatos, enslaved for eons before finally finding his freedom one faithful night, also saving 2 lost children souls from Griatos' clutches. Their whereabouts were unknown until the events of Sonic: Grieving.",
@@ -11,51 +14,12 @@
 			"char_scale": 0.6,
 			"mod": "GRIEVING",
 			"char_offset": [
-				585,
-				295
+				502,
+				196
 			],
 			"char": "demogri",
 			"flip_x": false,
 			"artist": "MadzillaK0th"
-		},
-		{
-			"bio": "As an angel, Demogri served to entertain the masses and the rest of the gods. However, due to reasons the angels still can not solve, he fell from the skies and was never seen again. Unbeknownst to them, after he fell, he was swiftly captured by a rogue reaper entity, Griatos, enslaved for eons before finally finding his freedom one faithful night, also saving 2 lost children souls from Griatos' clutches. Their whereabouts were unknown until the events of Sonic: Grieving.",
-			"display_name": "DEMOGRI (mad)",
-			"icon": "demogri",
-			"icon_offset": [
-				701,
-				465
-			],
-			"char_scale": 0.6,
-			"mod": "GRIEVING",
-			"char_offset": [
-				555,
-				275
-			],
-			"char": "demogri2",
-			"flip_x": false,
-			"artist": "MadzillaK0th"
-		},
-		{
-			"bio": "As an angel, Demogri served to entertain the masses and the rest of the gods. However, due to reasons the angels still can not solve, he fell from the skies and was never seen again. Unbeknownst to them, after he fell, he was swiftly captured by a rogue reaper entity, Griatos, enslaved for eons before finally finding his freedom one faithful night, also saving 2 lost children souls from Griatos' clutches. Their whereabouts were unknown until the events of Sonic: Grieving.",
-			"display_name": "demogri (nervous)",
-			"icon": "demogri",
-			"icon_offset": [
-				701,
-				465
-			],
-			"char_scale": 0.6,
-			"mod": "GRIEVING",
-			"char_offset": [
-				550,
-				280
-			],
-			"char": "demogri3",
-			"flip_x": false,
-			"artist": "MadzillaK0th"
 		}
-	],
-	"bio_appear": true,
-	"list_position": 9999,
-	"display_name": "DEMOGRI"
+	]
 }

@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="bf-chaotix.png">
-<SubTexture name="bf-chaotix missleft0000" x="0" y="0" width="30" height="38" frameX="-4" frameY="-3" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix missleft0001" x="91" y="76" width="28" height="36" frameX="-5" frameY="-5" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix missdown0000" x="174" y="0" width="29" height="31" frameX="-5" frameY="-10" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix missdown0001" x="29" y="114" width="30" height="35" frameX="-4" frameY="-6" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix missup0000" x="30" y="0" width="29" height="38" frameX="-5" frameY="-3" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix missup0001" x="59" y="0" width="30" height="38" frameX="-4" frameY="-3" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix missright0000" x="0" y="38" width="29" height="38" frameX="-8" frameY="-3" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix missright0001" x="29" y="38" width="30" height="38" frameX="-6" frameY="-3" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix idle0000" x="119" y="0" width="27" height="36" frameX="-7" frameY="-5" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix idle0001" x="88" y="114" width="30" height="34" frameX="-4" frameY="-7" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix idle0002" x="59" y="114" width="29" height="35" frameX="-4" frameY="-6" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix idle0003" x="61" y="76" width="30" height="37" frameX="-4" frameY="-4" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix idle0004" x="146" y="0" width="28" height="36" frameX="-6" frameY="-5" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix up0000" x="59" y="38" width="29" height="38" frameX="-5" frameY="-3" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix up0001" x="89" y="0" width="30" height="38" frameX="-4" frameY="-3" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix down0000" x="118" y="114" width="30" height="33" frameX="-4" frameY="-8" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix down0001" x="0" y="114" width="29" height="36" frameX="-6" frameY="-5" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix right0000" x="0" y="76" width="31" height="38" frameX="-6" frameY="-3" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix right0001" x="89" y="38" width="30" height="38" frameX="-6" frameY="-3" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix left0000" x="31" y="76" width="30" height="38" frameX="-4" frameY="-3" frameWidth="38" frameHeight="44" />
-<SubTexture name="bf-chaotix left0001" x="146" y="36" width="28" height="36" frameX="-5" frameY="-5" frameWidth="38" frameHeight="44" />
+<SubTexture name="bf-chaotix idle0000" x="93" y="37" width="27" height="36" frameX="-17" frameY="-5" frameWidth="63" frameHeight="45" />
+<SubTexture name="bf-chaotix idle0001" x="96" y="113" width="30" height="34" frameX="-14" frameY="-7" frameWidth="63" frameHeight="45" />
+<SubTexture name="bf-chaotix idle0002" x="125" y="0" width="29" height="35" frameX="-14" frameY="-6" frameWidth="63" frameHeight="45" />
+<SubTexture name="bf-chaotix idle0003" x="59" y="38" width="30" height="37" frameX="-14" frameY="-4" frameWidth="63" frameHeight="45" />
+<SubTexture name="bf-chaotix idle0004" x="66" y="76" width="27" height="36" frameX="-17" frameY="-5" frameWidth="63" frameHeight="45" />
+<SubTexture name="bf-chaotix down0000" x="154" y="68" width="30" height="33" frameX="-17" frameY="-12" frameWidth="65" frameHeight="46" />
+<SubTexture name="bf-chaotix down0001" x="93" y="76" width="29" height="36" frameX="-19" frameY="-9" frameWidth="65" frameHeight="46" />
+<SubTexture name="bf-chaotix right0000" x="0" y="0" width="34" height="38" frameX="-18" frameY="-7" frameWidth="65" frameHeight="46" />
+<SubTexture name="bf-chaotix right0001" x="93" y="0" width="32" height="37" frameX="-19" frameY="-8" frameWidth="65" frameHeight="46" />
+<SubTexture name="bf-chaotix missleft0000" x="0" y="113" width="33" height="35" frameX="-25" frameY="-13" frameWidth="86" frameHeight="50" />
+<SubTexture name="bf-chaotix missleft0001" x="154" y="0" width="31" height="34" frameX="-27" frameY="-14" frameWidth="86" frameHeight="50" />
+<SubTexture name="bf-chaotix missright0000" x="0" y="76" width="33" height="37" frameX="-3" frameY="-4" frameWidth="38" frameHeight="44" />
+<SubTexture name="bf-chaotix missright0001" x="33" y="76" width="33" height="37" frameX="-3" frameY="-4" frameWidth="38" frameHeight="44" />
+<SubTexture name="bf-chaotix missdown0000" x="154" y="101" width="29" height="31" frameX="-5" frameY="-10" frameWidth="38" frameHeight="44" />
+<SubTexture name="bf-chaotix missdown0001" x="33" y="113" width="30" height="35" frameX="-4" frameY="-6" frameWidth="38" frameHeight="44" />
+<SubTexture name="bf-chaotix missup0000" x="34" y="0" width="29" height="38" frameX="-5" frameY="-3" frameWidth="38" frameHeight="44" />
+<SubTexture name="bf-chaotix missup0001" x="63" y="0" width="30" height="38" frameX="-4" frameY="-3" frameWidth="38" frameHeight="44" />
+<SubTexture name="bf-chaotix left0000" x="63" y="113" width="33" height="35" frameX="-12" frameY="-10" frameWidth="65" frameHeight="46" />
+<SubTexture name="bf-chaotix left0001" x="154" y="34" width="31" height="34" frameX="-14" frameY="-11" frameWidth="65" frameHeight="46" />
+<SubTexture name="bf-chaotix up0000" x="0" y="38" width="29" height="38" frameX="-18" frameY="-7" frameWidth="65" frameHeight="46" />
+<SubTexture name="bf-chaotix up0001" x="29" y="38" width="30" height="38" frameX="-17" frameY="-7" frameWidth="65" frameHeight="46" />
 </TextureAtlas>

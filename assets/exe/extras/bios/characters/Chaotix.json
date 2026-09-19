@@ -1,7 +1,10 @@
 {
+	"bio_appear": true,
+	"list_position": 11,
+	"display_name": "CHAOTIX",
 	"variants": [
 		{
-			"bio": "",
+			"bio": "He's leftover broken code meant for Tails, scrapped during the Sonic Crackers/Knuckles Chaotix prototype days. Stuck in the game for years, he wanders around looking like a slightly-off Classic Knuckles (pinkish tint, one scribble eye, code engravings on his dreads) searching for \"the other piece of Tails\" he swears still exists — never realizing he IS Tails, and that other piece was just a tiny leftover fragment. He can glitch the game, mess with save states to rewind progress, plant dreams in people's heads, and talk straight into a player's mind. Quiet, mournful, genuinely doesn't want to hurt anyone — he just wants to stop being broken.",
 			"display_name": "Chaotix",
 			"icon": "chaotix-pixel",
 			"icon_offset": [
@@ -11,34 +14,28 @@
 			"char_scale": 5.7,
 			"mod": "CHAOTIX",
 			"char_offset": [
-				215,
-				-120
+				386,
+				-15
 			],
 			"char": "faker_chaotix",
 			"flip_x": false,
 			"artist": "Niall"
 		},
 		{
-			"bio": "He is the broken remnants of leftover code meant for Tails from the prototype version of Knuckles' Chaotix. Having been abandoned in the game for years, Chaotix desperately searches for the other leftover remnant of Tails in order to become whole once more and fix himself, not realizing that he himself is Tails and the other remnant doesn't exist.",
+			"bio": "What he turns into when he actually catches someone. Skin goes full light gray covered in hex patterns, grows fox ears, red sclera with messed-up pupils, two stubby little tails — every detail screaming \"missing Tails data.\" This is the form that lunges, screeches, and corrupts whoever he grabs into a glitching, mindless \"chaos servant\" that forgets who they even were. No more sad wandering here, just raw panic and violence from something that's losing its grip trying to fix itself.",
 			"display_name": "Chaotix (Beast)",
 			"icon": "chaotix-beast-pixel",
 			"icon_offset": [
 				693,
 				466
 			],
-			"char_scale": 4.05518072289154,
+			"char_scale": 4.6,
 			"char_angle": 0,
-			"mod": "CHAOTIX",
 			"char_offset": [
-				264,
-				67
+				409,
+				186
 			],
-			"char": "beast_chaotix",
-			"flip_x": false,
-			"artist": "Niall"
+			"char": "beast_chaotix"
 		}
-	],
-	"bio_appear": true,
-	"list_position": 9999,
-	"display_name": "Chaotix"
+	]
 }

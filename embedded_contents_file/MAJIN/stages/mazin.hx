@@ -41,6 +41,12 @@ function onCreate()
 	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), BG2);
 }
 
+function onCreatePost()
+{
+	triggerEvent("Tweening Camera", "250, -800", "0.001, linear");
+	triggerEvent("Tween Camera Zoom", "1.1, true", "0.001, linear");
+}
+
 var sine:Float = 0;
 function onUpdatePost(elapsed)
 {

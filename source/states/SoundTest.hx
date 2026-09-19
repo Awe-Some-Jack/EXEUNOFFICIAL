@@ -87,7 +87,6 @@ class SoundTest extends MusicBeatState
 		Paths.clearUnusedMemory();
 
 		WeekData.reloadWeekFiles(true);
-		loadCodesFromWeeks();
 		loadCodesFromJSON();
 
 		#if DISCORD_ALLOWED
@@ -97,35 +96,14 @@ class SoundTest extends MusicBeatState
 		save = new FlxSave();
 		save.bind('savedSongs', CoolUtil.getSavePath());
 		if (save.data.songs == null) save.data.songs = [];
-	}
 
-	function loadCodesFromWeeks():Void
-	{
-		codes = [];
-		for (weekName in WeekData.weeksList)
-		{
-			final week:WeekData = WeekData.weeksLoaded.get(weekName);
-			if (week?.soundTestCode == null) continue;
-			
-			final code = week.soundTestCode;
-			if (code.length < 3) continue;
-			
-			final enabled:Bool = code[2] == true;
-			if (!enabled) continue;
-			
-			codes.push({
-				pcm: Std.int(code[0]),
-				da: Std.int(code[1]),
-				type: "week",
-				path: "",
-				isWeek: true,
-				weekName: weekName
-			});
-		}
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}
 
 	function loadCodesFromJSON():Void
 	{
+		codes = [];
+
 		if (!AssetPaths.exists("assets/exe/soundtest/extraCodes.json"))
 		{
 			trace("JSON no encontrado");
@@ -140,13 +118,14 @@ class SoundTest extends MusicBeatState
 			for (entry in data)
 			{
 				if (entry.code == null || entry.code.length < 2) continue;
+				final isWeekEntry:Bool = entry.type == "week";
 				codes.push({
 					pcm: Std.int(entry.code[0]),
 					da: Std.int(entry.code[1]),
 					type: entry.type,
-					path: entry.path,
-					isWeek: false,
-					weekName: ""
+					path: isWeekEntry ? "" : entry.path,
+					isWeek: isWeekEntry,
+					weekName: isWeekEntry ? entry.weekName : ""
 				});
 			}
 		}
@@ -364,7 +343,7 @@ class SoundTest extends MusicBeatState
 		handleValueChange(elapsed);
 		updateDisplayedValues();
 
-		if (controls.BACK)
+		if (controls.BACK #if mobile || backPressed #end)
 		{
 			menuSong = true;
 			transitioning = true;
@@ -372,7 +351,7 @@ class SoundTest extends MusicBeatState
 			FlxG.switchState(() -> new EXEMenu());
 		}
 
-		if (controls.ACCEPT || shortPress)
+		if (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
 		{
 			notFoundAny = true;
 			

@@ -192,6 +192,8 @@ class OptionsState extends MusicBeatState
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("Options Menu", null);
 		#end
+
+		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}
 
 	override public function update(elapsed:Float)
@@ -299,7 +301,7 @@ class OptionsState extends MusicBeatState
 			select();
 		}
 
-		if (controls.BACK)
+		if (controls.BACK #if mobile || backPressed #end)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			if (onPlayState)
@@ -374,7 +376,7 @@ class OptionsState extends MusicBeatState
 
 			switch (SECTION_KEYS[curSelected])
 			{
-				case "CONTROLS":  openSubState(new options.ExeControlsState());
+				case "CONTROLS":  openSubState(new #if mobile options.ExeMobileControlsState() #else options.ExeControlsState() #end);
 				case "VISUALS":   openSubState(new options.ExeVisualsState());
 				case "GRAPHICS":  openSubState(new options.ExeGraphicsState());
 				case "GAMEPLAY":  openSubState(new options.ExeGameplayState());

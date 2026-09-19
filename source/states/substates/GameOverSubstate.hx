@@ -128,6 +128,8 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 
 		super.create();
+
+		#if mobile createBackButton(FlxG.width - 270, FlxG.height - 240); #end
 	}
 
 	var forcedReset:Bool = false;
@@ -154,11 +156,11 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if(!isEnding)
 		{
-			if (controls.ACCEPT)
+			if (controls.ACCEPT #if mobile || shortPress #end)
 			{
 				endBullshit();
 			}
-			else if (controls.BACK)
+			else if (controls.BACK #if mobile || backPressed #end)
 			{
 				#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 				FlxG.camera.visible = false;
@@ -207,7 +209,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 		else
 		{
-			if (controls.ACCEPT)
+			if (controls.ACCEPT #if mobile || shortPress #end)
 			{
 				forcedReset = true;
 				FlxG.resetState();

@@ -36,6 +36,5 @@
 	"bgColor": [255, 0, 0],
 	"exeTitle": "NEEDLEMOUSE",
 	"exeCover": "needlemouse",
-	"exeLabel": "ENTITY",
-	"soundTestCode": [19, 63, true]
+	"exeLabel": "ENTITY"
 }

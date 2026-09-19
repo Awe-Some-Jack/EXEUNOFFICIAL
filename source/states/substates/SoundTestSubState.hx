@@ -36,9 +36,10 @@ class SoundTestSubState extends MusicBeatSubstate
 				setImageSize(video.video, FlxG.width, FlxG.height, 1, false);
 				video.screenCenter();
 			});
+			video.onEnd(onVideoEnd, true);
 			add(video);
 
-            if (video.loadVideo(daPath, [VideoSprite.ARG_LOOPING]))
+            if (video.loadVideo(daPath))
                 video.playDelayed();
 		}
 		else

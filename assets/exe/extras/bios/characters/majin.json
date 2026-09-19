@@ -1,4 +1,7 @@
 {
+	"bio_appear": true,
+	"list_position": 26,
+	"display_name": "MAJIN",
 	"variants": [
 		{
 			"bio": "Majin is a dark blue hedgehog with blue shoes. His skin is a light purple, as are his gloves, shoe cuffs, and the stripes on his shoes. His face resembles that of a human, and his eyes are completely black. his mouth is also partially black due to shading, and he has a cleft chin",
@@ -8,11 +11,11 @@
 				701,
 				470
 			],
-			"char_scale": 0.55,
+			"char_scale": 0.7,
 			"mod": "MAJIN",
 			"char_offset": [
-				585,
-				320
+				471,
+				211
 			],
 			"char": "majin",
 			"flip_x": false,
@@ -27,17 +30,11 @@
 				460
 			],
 			"char_scale": 0.7,
-			"mod": "MAJIN",
 			"char_offset": [
-				555,
-				250
+				483,
+				201
 			],
-			"char": "mazin",
-			"flip_x": false,
-			"artist": "Masoto Nishimura"
+			"char": "mazin"
 		}
-	],
-	"bio_appear": true,
-	"list_position": 9999,
-	"display_name": "Majin"
+	]
 }

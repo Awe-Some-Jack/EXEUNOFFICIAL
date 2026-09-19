@@ -27,6 +27,5 @@
 	"weekName": "Custom Week",
 	"exeTitle": "SL4SH",
 	"exeCover": "sl4sh",
-	"exeLabel": "EXE",
-	"soundTestCode": [0, 0, false]
+	"exeLabel": "EXE"
 }

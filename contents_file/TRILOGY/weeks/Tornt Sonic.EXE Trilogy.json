@@ -27,6 +27,5 @@
 	"exeTitle": "Bratwurst",
 	"bgColor": [255, 0, 0],
 	"exeCover": "trilogy",
-	"exeLabel": "EXE",
-	"soundTestCode": [22, 16, true]
+	"exeLabel": "EXE"
 }

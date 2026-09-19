@@ -200,6 +200,6 @@ class ExeControlsState extends ExeBaseOptionsState
 			}
 		}
 		if (controls.ACCEPT) { FlxG.sound.play(Paths.sound('scrollMenu')); editingValue = true; nudgeSelectedText(true); }
-		if (controls.BACK) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
+		if (controls.BACK #if mobile || backPressed #end) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
 	}
 }

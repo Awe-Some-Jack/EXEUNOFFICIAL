@@ -18,7 +18,7 @@ end
 
 function onUpdatePost(e)
 	setGraphicSize('fear', 12, lerp(1, 254, bound(fear / 100, 0, 1))) setProperty('fear.y', 213.5 + lerp(274, 20, bound(fear / 100, 0, 1)))
-	if getHealth() >= 0.1 then addHealth(-(0.1 + (fear / 100) * 0.05) * e) end
+	if getHealth() >= 0.1 then addHealth(-((fear / 100) * 0.2) * e) end
 end
 
 function opponentNoteHit(id,nd,nt,isn) if isn then return end fear = fear + 0.15 end

@@ -1295,14 +1295,11 @@ class PlayState extends MusicBeatState
 			var swagCounter:Int = 0;
 			if (startOnTime > 0) {
 				clearNotesBefore(startOnTime);
-				final resumeTime:Float = startOnTime - 350;
-				startSong();
-				setSongTime(resumeTime);
+				setSongTime(startOnTime - 350);
 				return true;
 			}
 			else if (skipCountdown)
 			{
-				startSong();
 				setSongTime(0);
 				return true;
 			}

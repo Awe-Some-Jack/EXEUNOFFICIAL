@@ -3296,6 +3296,7 @@ class PlayState extends MusicBeatState
 
 		final lastCombo:Int = combo;
 		final progressivePenalty:Int = 10 + (songMisses * 5); 
+		if (!note.isSustainNote)
 		health -= subtract * healthLoss;
 		if(countAsMiss)
 		{
@@ -3436,7 +3437,7 @@ class PlayState extends MusicBeatState
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll)
 			callOnHScript('goodNoteHit', [note]);
 
-		if(!note.isSustainNote)
+		if(!note.isSustainNote && (note.rating != "shit" || note.rating != "bad"))
 			invalidateNote(note);
 	}
 

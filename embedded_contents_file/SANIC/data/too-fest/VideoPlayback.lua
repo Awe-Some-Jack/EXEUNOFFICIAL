@@ -1,4 +1,4 @@
-local videoSprites = {}
+--[=[local videoSprites = {}
 local playedVideos = {}
 
 local videoSchedule = {
@@ -86,3 +86,4 @@ function onDestroy()
     videoSprites = {}
     playedVideos = {}
 end
+]=]

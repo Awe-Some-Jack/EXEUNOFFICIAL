@@ -1,5 +1,5 @@
 {
-	"player1": "sanic-bf",
+	"player1": "bfsanic",
 	"events": [
 		[
 			5333.33333333333,
@@ -72,8 +72,7 @@
 			[
 				["notespin", "45", "0.25"],
 				["bright zoom", "", "0"],
-				["Normal Lyrics", "lyrics.toofest.1", "1"],
-				["cameracenter", "true", ""]
+				["Normal Lyrics", "lyrics.toofest.1", "1"]
 			]
 		],
 		[
@@ -99,6 +98,12 @@
 			]
 		],
 		[
+			33166.6666666666,
+			[
+				["cameracenter", "true", ""]
+			]
+		],
+		[
 			33333.3333333333,
 			[
 				["bright zoom", "", ""],
@@ -115,6 +120,12 @@
 			33333.3333333333,
 			[
 				["yayfun", "", ""]
+			]
+		],
+		[
+			33333.3333333333,
+			[
+				["cameracenter", "true", ""]
 			]
 		],
 		[
@@ -364,7 +375,9 @@
 				["Flash", "FFFFFF,1", "hud"],
 				["notespin", "360", "1"],
 				["yayfun", "", ""],
-				["cameracenter", "false", ""]
+				["cameracenter", "false", ""],
+				["Change Character", "dad", "sanicsad"],
+				["Change Character", "bf", "bfsanicsad"]
 			]
 		],
 		[
@@ -418,7 +431,8 @@
 		[
 			64500,
 			[
-				["notespin", "180", "0.1"]
+				["notespin", "180", "0.1"],
+				["Change Character", "bf", "bf"]
 			]
 		],
 		[
@@ -426,6 +440,12 @@
 			[
 				["bfsent", "", ""],
 				["notespin", "360", "0.1"]
+			]
+		],
+		[
+			65000,
+			[
+				["Change Character", "bf", "bfsanicsad"]
 			]
 		],
 		[
@@ -1012,7 +1032,7 @@
 			"altAnim": false,
 			"bpm": 180,
 			"changeBPM": false,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"lengthInSteps": 16,

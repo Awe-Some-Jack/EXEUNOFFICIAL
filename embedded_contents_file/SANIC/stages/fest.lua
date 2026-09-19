@@ -1,4 +1,4 @@
-local SANIC_ANIMS = {'idle', 'left', 'down', 'up', 'right'}
+--[=[local SANIC_ANIMS = {'idle', 'left', 'down', 'up', 'right'}
 
 local sentimentalActive = false
 
@@ -143,4 +143,4 @@ function onEvent(n)
 end
 
 function onPause() callMethod('bgFront.pause') end
-function onResume() callMethod('bgFront.resume') end
+function onResume() callMethod('bgFront.resume') end]=]

@@ -1,50 +1,50 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [51, -9],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [21, -14],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [81, 78],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [-71, -27],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "right",
-			"indices": []
-		},
-		{
-			"offsets": [0, 0],
 			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [21, -14],
+			"loop": false,
 			"fps": 24,
-			"anim": "idle",
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [81, 78],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [-71, -27],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
 			"loop": true,
-			"name": "idle"
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/sanic-2",
-	"position": [0, 0],
+	"position": [35, -15],
 	"healthicon": "sanic",
 	"flip_x": false,
 	"healthbar_colors": [63, 71, 204],

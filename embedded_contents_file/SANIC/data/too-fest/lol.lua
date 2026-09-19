@@ -1,4 +1,4 @@
-function onCreatePost()
+--[=[function onCreatePost()
 	makeLuaSprite('rgbmierda')
 	setSpriteShader('rgbmierda', 'Gay')
 
@@ -98,4 +98,4 @@ function onTimerCompleted(tag)
 	if tag:match('sanichit') then
 		removeFromGroup('noteGroup', _, tag)
 	end
-end
+end]=]

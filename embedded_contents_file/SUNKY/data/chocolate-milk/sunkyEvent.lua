@@ -1,5 +1,5 @@
 local renders = {'cereal', 'Ilustracion23', 'SunkyGiveYouCereal', 'sunkyMunch', 'sunkyPose', 'jajaxd', 'SunkehTake1', 'sunkyrender', 'SUNKYYYYSYSYSYSYSYSY', 'sunkasd', 'sunkehhh', 'lunky', 'sunkyhog', 'sunkypoto', 'sunkypiss', 'sunkyrtx', 'sunkyevil', 'schio', 'rabty', 'cooks', 'captain', 'cardoso'}
-local oldRender = 0
+local availableRenders = {}
 local canRendersAppear = false
 
 function onCreatePost()
@@ -10,6 +10,7 @@ function onCreatePost()
 	setProperty('sunkdance.alpha', 0)
 
 	for i = 1,#renders do
+		table.insert(availableRenders, i)
 		makeLuaSprite(renders[i], 'chocolate/renders/'..renders[i])
 		setObjectCamera(renders[i], 'other')
 		addLuaSprite(renders[i], true)
@@ -96,8 +97,11 @@ function onEvent(n,v1,v2)
 end
 
 function onSectionHit()
-	if curSection % 16 == 1 and canRendersAppear then
-		local render = getRandomInt(1,#renders,oldRender)
+	if curSection % 8 == 1 and canRendersAppear then
+		if #availableRenders == 0 then for i = 1, #renders do table.insert(availableRenders, i) end end
+		local i = getRandomInt(1, #availableRenders)
+		local render = availableRenders[i]
+		table.remove(availableRenders, i)
 
 		if getRandomBool(35) then
 			if getRandomBool() then

@@ -1219,11 +1219,14 @@ class PlayState extends MusicBeatState
 			var swagCounter:Int = 0;
 			if (startOnTime > 0) {
 				clearNotesBefore(startOnTime);
-				setSongTime(startOnTime - 350);
+				final resumeTime:Float = startOnTime - 350;
+				startSong();
+				setSongTime(resumeTime);
 				return true;
 			}
 			else if (skipCountdown)
 			{
+				startSong();
 				setSongTime(0);
 				return true;
 			}
@@ -3526,9 +3529,8 @@ class PlayState extends MusicBeatState
 
 		final lastCombo:Int = combo;
 		final progressivePenalty:Int = 10 + (songMisses * 5); 
-
-		if (!note.isSustainNote) health -= subtract * healthLoss;
-		
+		if (!note.isSustainNote)
+		health -= subtract * healthLoss;
 		if(countAsMiss)
 		{
 			combo = 0;

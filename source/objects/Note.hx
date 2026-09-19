@@ -89,6 +89,7 @@ class Note extends FlxSprite
 	public static var swagWidth:Float = 160 * 0.7;
 	public static var colArray:Array<String> = ['purple', 'blue', 'green', 'red'];
 	public static var defaultNoteSkin(default, never):String = 'noteSkins/NOTE_assets';
+	public var adjustColor:shaders.AdjustColorShader;
 
 	public var noteSplashDisabled:Bool = false;
 
@@ -251,6 +252,9 @@ class Note extends FlxSprite
 			centerOrigin();
 		}
 		x += offsetX;
+
+		adjustColor = new shaders.AdjustColorShader();
+		shader = adjustColor;
 	}
 
 	private function set_noteType(value:String):String
@@ -507,5 +511,15 @@ class Note extends FlxSprite
 		if (frames != null)
 			frame = frames.frames[animation.frameIndex];
 		return rect;
+	}
+
+	public function desat(){
+		alpha = 0.7;
+		multAlpha = 0.7;
+		if (adjustColor != null) {
+			adjustColor.brightness = 30;
+			adjustColor.contrast = 25;
+			adjustColor.saturation = -100;
+		}
 	}
 }

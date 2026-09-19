@@ -3056,10 +3056,31 @@ class PlayState extends MusicBeatState
 		
 		score = daRating.score;
 
+		// Combo counter moved here for the desaturated note feature to work properly
+		if (note.rating == "bad" || note.rating == "shit"){
+			combo = 0;
+			
+			// correctly?
+			if(gf != null && lastCombo > 10 && gf != null && gf.hasAnimation('sad'))
+			{
+				gf.playAnim('sad');
+				gf.specialAnim = true;
+			}
+
+			totalPlayed++;
+			RecalculateRating(true);
+		}else{
+			combo++;
+		}
+
+		if(combo > 9999) combo = 9999;
+
 		if (daRating.name == 'sick') 
 		{
 			final precisionBonus:Int = Math.floor(Math.max(0, 50 - noteDiff));
 			score += precisionBonus;
+		}else if (daRating.name == "bad" || daRating.name == "shit"){
+			note.desat();
 		}
 
 		if(!cpuControlled) 
@@ -3200,11 +3221,11 @@ class PlayState extends MusicBeatState
 				if (pickNew)
 				{
 					if (Math.abs(n.strumTime - funnyNote.strumTime) < 1.0)
-						invalidateNote(funnyNote);
+						invalidateNote(funnyNote, true);
 					funnyNote = n;
 				}
 				else if (Math.abs(n.strumTime - funnyNote.strumTime) < 1.0)
-					invalidateNote(n);
+					invalidateNote(n, true);
 			}
 			
 			if (funnyNote != null && !funnyNote.lowPriority) break;
@@ -3466,9 +3487,11 @@ class PlayState extends MusicBeatState
 					childNote.canBeHit = false;
 					childNote.ignoreNote = true;
 					childNote.tooLate = true;
+					// childNote.desat();
 				}
 				note.missed = true;
 				note.canBeHit = false;
+				// note.desat();
 
 				//subtract += 0.385; // you take some more damage if playing with this gameplay changer enabled.
 				// i mean its fair :p -Crow
@@ -3503,8 +3526,9 @@ class PlayState extends MusicBeatState
 
 		final lastCombo:Int = combo;
 		final progressivePenalty:Int = 10 + (songMisses * 5); 
-		if (!note.isSustainNote)
-		health -= subtract * healthLoss;
+
+		if (!note.isSustainNote) health -= subtract * healthLoss;
+		
 		if(countAsMiss)
 		{
 			combo = 0;
@@ -3660,8 +3684,8 @@ class PlayState extends MusicBeatState
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll)
 			callOnHScript('goodNoteHit', [note]);
 
-		if(!note.isSustainNote && (note.rating != "shit" || note.rating != "bad"))
-			invalidateNote(note);
+		if(!note.isSustainNote)
+			invalidateNote(note, true);
 	}
 
 	function handleCommonNote(note:Note):Void
@@ -3716,9 +3740,15 @@ class PlayState extends MusicBeatState
 
 		if(!note.isSustainNote)
 		{
-			combo++;
-			if(combo > 9999) combo = 9999;
 			popUpScore(note);
+		}else{
+			if (note.tail != null){
+				if(note.tail.length > 0) {
+					for(childNote in note.tail) {
+						childNote?.desat();
+					}
+				}
+			}
 		}
 
 		var gainHealth:Bool = true;
@@ -3849,10 +3879,13 @@ class PlayState extends MusicBeatState
 		char.holdTimer = 0;
 	}
 
-	public function invalidateNote(note:Note):Void {
-		if (note.noteData >= 0 && note.noteData < 4)
-			noteQueues[note.noteData].remove(note);
+	public function invalidateNote(note:Note, ?byHit:Bool = false):Void {
+		if (byHit && (note.rating == "bad" || note.rating == "shit")) return;
 
+		if (note.noteData >= 0 && note.noteData < 4) {
+			noteQueues[note.noteData].remove(note);
+		}
+		
 		note.kill();
 		notes.remove(note, true);
 		note.destroy();

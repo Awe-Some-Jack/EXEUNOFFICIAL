@@ -36,6 +36,5 @@
 	"weekName": "Custom Week",
 	"exeTitle": "HOG",
 	"exeCover": "hog",
-	"exeLabel": "EXE",
-	"soundTestCode": [17, 1, true]
+	"exeLabel": "EXE"
 }

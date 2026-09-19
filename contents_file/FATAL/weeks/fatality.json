@@ -32,6 +32,5 @@
 	"weekName": "Custom Week",
 	"exeTitle": "FATAL ERROR",
 	"exeCover": "fatal",
-	"exeLabel": "EXE",
-	"soundTestCode": [0, 0, false]
+	"exeLabel": "EXE"
 }

@@ -28,6 +28,5 @@
 	"exeTitle": "Genesys Eggman",
 	"exeCover": "genesys",
 	"exeLabel": "ENTITY",
-	"transitionShape": "egg",
-	"soundTestCode": [0, 0, false]
+	"transitionShape": "egg"
 }

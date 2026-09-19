@@ -27,6 +27,5 @@
 	"bgColor": [120, 120, 120],
 	"exeTitle": "DSK",
 	"exeCover": "dsk",
-	"exeLabel": "EXE",
-	"soundTestCode": [15, 21, true]
+	"exeLabel": "EXE"
 }

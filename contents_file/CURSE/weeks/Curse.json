@@ -27,6 +27,5 @@
 	"weekName": "CurseX",
 	"exeTitle": "CURSE",
 	"exeCover": "curse",
-	"exeLabel": "EXE",
-	"soundTestCode": [1, 11, true]
+	"exeLabel": "EXE"
 }

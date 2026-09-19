@@ -27,6 +27,5 @@
 	"startUnlocked": true,
 	"exeTitle": "EXETIOR",
 	"exeCover": "exetior",
-	"exeLabel": "EXE",
-	"soundTestCode": [1, 26, true]
+	"exeLabel": "EXE"
 }

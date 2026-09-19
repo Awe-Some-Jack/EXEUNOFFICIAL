@@ -37,6 +37,5 @@
 	"exeTitle": "STARVED",
 	"exeCover": "starved",
 	"exeLabel": "NON EXE",
-	"transitionShape": "egg",
-	"soundTestCode": [2, 23, true]
+	"transitionShape": "egg"
 }

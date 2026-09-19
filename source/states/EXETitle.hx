@@ -50,6 +50,7 @@ class EXETitle extends MusicBeatState
 	{
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
+		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'), 0);
 
 		if (FlxG.save.data.burningBot == true)
 		{

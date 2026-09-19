@@ -795,10 +795,10 @@ class DAGPlayer extends FlxGroup
 
         final i = Paths.inst(song);
         final vs:Array<{snd:openfl.media.Sound, isOpp:Bool}> = [];
-        for (pf in [null, 'opponent', 'player'])
+        for (pf in [null, 'Opponent', 'Player'])
         {
             final s = Paths.voices(song, pf);
-            if (s != null) vs.push({snd: s, isOpp: pf == 'opponent'});
+            if (s != null) vs.push({snd: s, isOpp: pf == 'Opponent'});
         }
         Mods.currentModDirectory = prevMod;
         _finishLoad({inst: i, vocs: vs, gen: gen, lyricsMod: lMod, lyricsSong: lSong});

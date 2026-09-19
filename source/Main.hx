@@ -104,7 +104,7 @@ class Main extends Sprite
 		MobileUtil.initDirectory();
 		#end
 		Sys.setCwd(MobileUtil.getAssetDirectory());
-		MobileUtil.copyAssets();
+		MobileUtil.mountAssets();
 		#if flixel_animate
 		MobileUtil.initAnimateAssetOverrides();
 		#end

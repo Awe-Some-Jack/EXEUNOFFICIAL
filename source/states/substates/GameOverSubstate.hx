@@ -14,7 +14,7 @@ class GameOverSubstate extends MusicBeatSubstate
 {
 	public var boyfriend:Character;
 	var camFollow:FlxObject;
-
+	var camOver:FlxCamera;
 	var stagePostfix:String = "";
 
 	public static var characterName:String = 'bf-dead';
@@ -81,6 +81,10 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.camera.focusOn(new FlxPoint(FlxG.camera.scroll.x + (FlxG.camera.width / 2), FlxG.camera.scroll.y + (FlxG.camera.height / 2)));
 		FlxG.camera.follow(camFollow, LOCKON, 0.01);
 		add(camFollow);
+
+		camOver = new FlxCamera();
+		camOver.bgColor.alpha = 0;
+		FlxG.cameras.add(camOver, false);
 		
 		PlayState.instance.setOnScripts('inGameOver', true);
 		PlayState.instance.callOnScripts('onGameOverStart', []);
@@ -129,7 +133,10 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		super.create();
 
-		#if mobile createBackButton(FlxG.width - 270, FlxG.height - 240); #end
+		#if mobile 
+		createBackButton(FlxG.width - 270, FlxG.height - 240); 
+		backButton.cameras = [camOver];
+		#end
 	}
 
 	var forcedReset:Bool = false;
@@ -156,7 +163,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if(!isEnding)
 		{
-			if (controls.ACCEPT #if mobile || shortPress #end)
+			if (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
 			{
 				endBullshit();
 			}
@@ -209,7 +216,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 		else
 		{
-			if (controls.ACCEPT #if mobile || shortPress #end)
+			if (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
 			{
 				forcedReset = true;
 				FlxG.resetState();

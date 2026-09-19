@@ -323,12 +323,27 @@ class PlayState extends MusicBeatState
 
 	static var prevWindowTitle = null;
 
+	#if mobile
+	static function applyFixedScale(enabled:Bool):Void
+	{
+		for (cam in FlxG.cameras.list)
+			enabled ? cam.setSize(960, 720) : cam.setSize(FlxG.initialWidth, FlxG.initialHeight);
+
+		FlxG.scaleMode = enabled
+			? new flixel.system.scaleModes.FixedRatioScaleMode(960, 720)
+			: new flixel.system.scaleModes.RatioScaleMode();
+	}
+	#end
+
 	static function set_isFixedAspectRatio(value:Bool):Bool
 	{
 		if (isFixedAspectRatio == value) return value;
 		
 		isFixedAspectRatio = value;
 		
+		#if mobile
+		applyFixedScale(value);
+		#else
 		if (value) {
 			_originalWidth = FlxG.width;
 			_originalHeight = FlxG.height;
@@ -371,6 +386,7 @@ class PlayState extends MusicBeatState
 
 			FlxG.fullscreen = _wasFullscreen;
 		}
+		#end
 
 		return value;
 	}
@@ -383,6 +399,10 @@ class PlayState extends MusicBeatState
 	static var _letterboxOrigWinHeight:Int = 0;
 	static var _letterboxOrigWinX:Int = 0;
 	static var _letterboxOrigWinY:Int = 0;
+	static var _letterboxForcedFullscreen:Bool = false;
+	#if mac
+	static var _letterboxRestoreFullscreen:Bool = false;
+	#end
 
 	static function set_isLetterboxedAspectRatio(value:Bool):Bool
 	{
@@ -390,6 +410,9 @@ class PlayState extends MusicBeatState
 
 		isLetterboxedAspectRatio = value;
 
+		#if mobile
+		applyFixedScale(value);
+		#else
 		if (value) {
 			for (cam in FlxG.cameras.list)
 				cam.setSize(960, 720);
@@ -399,6 +422,16 @@ class PlayState extends MusicBeatState
 
 			_letterboxWasFullscreen = FlxG.fullscreen;
 			_letterboxWasMaximized  = FlxG.stage.window.maximized;
+			#if mac
+			_letterboxRestoreFullscreen = _letterboxWasFullscreen;
+			if (_letterboxWasFullscreen) {
+				_letterboxWasMaximized = false;
+				_letterboxOrigWinWidth = 0;
+				_letterboxOrigWinHeight = 0;
+				FlxG.fullscreen = false;
+				_letterboxWasFullscreen = false;
+			}
+			#end
 			if (!FlxG.fullscreen) {
 				if (_letterboxWasMaximized) {
 					FlxG.stage.window.maximized = false;
@@ -417,6 +450,11 @@ class PlayState extends MusicBeatState
 			FlxG.scaleMode = new flixel.system.scaleModes.RatioScaleMode();
 			FlxG.stage.window.resizable = true;
 
+			if (_letterboxForcedFullscreen) {
+				_letterboxForcedFullscreen = false;
+				FlxG.fullscreen = false;
+			}
+
 			if (!FlxG.fullscreen) {
 				if (_letterboxWasMaximized) {
 					FlxG.stage.window.maximized = true;
@@ -434,9 +472,60 @@ class PlayState extends MusicBeatState
 					FlxG.stage.window.move(winX, winY);
 				}
 			}
+
+			#if mac
+			if (_letterboxRestoreFullscreen) {
+				_letterboxRestoreFullscreen = false;
+				FlxG.fullscreen = true;
+			}
+			#end
 		}
+		#end
 
 		return value;
+	}
+
+	public static function fullscreenLetterbox():Void
+	{
+		#if !(mobile || mac)
+		if (FlxG.fullscreen) return;
+		_letterboxForcedFullscreen = true;
+		FlxG.fullscreen = true;
+		#end
+	}
+
+	public static function tweenWindow(width:Int, height:Int, x:Int, y:Int, duration:Float, ?ease:Float->Float, ?onComplete:Void->Void):Void
+	{
+		#if mobile
+		if (onComplete != null) onComplete();
+		#else
+		final window = FlxG.stage.window;
+		final fromW = window.width;
+		final fromH = window.height;
+		final fromX = window.x;
+		final fromY = window.y;
+		var lastApply:Float = 0;
+
+		function apply(t:Float):Void
+		{
+			window.resize(Std.int(fromW + (width - fromW) * t), Std.int(fromH + (height - fromH) * t));
+			window.move(Std.int(fromX + (x - fromX) * t), Std.int(fromY + (y - fromY) * t));
+			window.onResize.dispatch(window.width, window.height);
+		}
+
+		FlxTween.num(0, 1, duration, {
+			ease: ease,
+			onComplete: (_) -> {
+				apply(1);
+				if (onComplete != null) onComplete();
+			}
+		}, (t:Float) -> {
+			final now = haxe.Timer.stamp();
+			if (now - lastApply < 1 / 24) return;
+			lastApply = now;
+			apply(t);
+		});
+		#end
 	}
 
 	static function snapLetterboxWindow():Void
@@ -829,18 +918,6 @@ class PlayState extends MusicBeatState
 		#if mobile
 		if(ClientPrefs.data.middleScroll && ClientPrefs.data.middlescrollType == 'mobile')
 		{
-			var spacing:Float = 172;
-			var pairGap:Float = 150;
-
-			var centerX:Float = 418.5 + (112 * 1.5);
-			var start:Float = centerX - (spacing * 1.5);
-
-			for(i in 0...4) {
-				var x:Float = start + (spacing * i);
-				x += (i < 2) ? -pairGap / 2 : pairGap / 2;
-				playerStrums.members[i].x = x;
-			}
-
 			for(n in notes) {
 				if(n != null && !n.mustPress) n.visible = false;
 			}
@@ -849,13 +926,10 @@ class PlayState extends MusicBeatState
 				if(n != null && !n.mustPress) n.visible = false;
 			}
 
-			opponentStrums.members[0].x = 0;
+			for(i in 0...4) opponentStrums.members[i].scale.set(0.3, 0.3);
 
-			for(i in 0...4) {
-				opponentStrums.members[i].y = ClientPrefs.data.downScroll ? 50 : 561;
-				opponentStrums.members[i].scale.set(0.3, 0.3);
-				if(i > 0) opponentStrums.members[i].x = opponentStrums.members[0].x + (i*.3*162);
-			}
+			positionMobileMiddlescroll();
+			FlxG.signals.gameResized.add(onMobileMiddlescrollResize);
 		}
 
 		hitboxesHeld = [false, false, false, false];
@@ -886,10 +960,12 @@ class PlayState extends MusicBeatState
 				hitbox.y = ClientPrefs.data.downScroll ? FlxG.height - hitbox.height : 0;
 				hitbox.cameras = [camOther];
 				hitboxesGroup.push(hitbox);
+
+				trace(hitbox.x + ' ' + hitbox.y);
 				add(hitbox);
 			}
 		}
-		else if(ClientPrefs.data.controlsType == 'hitbox')
+		else if(ClientPrefs.data.controlsType == 'psych')
 		{
 			for(i in 0...4) {
 				var hitbox:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width/4), Std.int(FlxG.height));
@@ -1667,6 +1743,33 @@ class PlayState extends MusicBeatState
 	}
 
 	public var skipArrowStartTween:Bool = false; //for lua
+	#if mobile
+	function positionMobileMiddlescroll():Void
+	{
+		var spacing:Float = 172;
+		var pairGap:Float = 150;
+
+		var centerX:Float = (FlxG.width / 2) - (playerStrums.members[0].width / 2);
+		var start:Float = centerX - (spacing * 1.5);
+
+		for(i in 0...4) {
+			var x:Float = start + (spacing * i);
+			x += (i < 2) ? -pairGap / 2 : pairGap / 2;
+			playerStrums.members[i].x = x;
+		}
+
+		opponentStrums.members[0].x = 0;
+
+		for(i in 0...4) {
+			opponentStrums.members[i].y = ClientPrefs.data.downScroll ? 50 : FlxG.height - 159;
+			if(i > 0) opponentStrums.members[i].x = opponentStrums.members[0].x + (i*.3*162);
+		}
+	}
+
+	function onMobileMiddlescrollResize(width:Int, height:Int):Void
+		positionMobileMiddlescroll();
+	#end
+
 	private function generateStaticArrows(player:Int):Void
 	{
 		for (i in 0...4)
@@ -1891,6 +1994,7 @@ class PlayState extends MusicBeatState
 		#if LUA_ALLOWED if (luaArray?.length > 0) hasScripts = true; #end
 		#if HSCRIPT_ALLOWED if (hscriptArray?.length > 0) hasScripts = true; #end
 
+		#if !mobile
 		if (isFixedAspectRatio && FlxG.fullscreen)
 		{
 			FlxG.fullscreen = false;
@@ -1902,6 +2006,7 @@ class PlayState extends MusicBeatState
 			if (_letterboxWasFullscreen && !fs) snapLetterboxWindow();
 			_letterboxWasFullscreen = fs;
 		}
+		#end
 
 		#if (!js && !html5)
 		if (ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null)

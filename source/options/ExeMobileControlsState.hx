@@ -9,7 +9,7 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 {
 	var allOptions:Array<ExeBaseOptionsState.ExeGenericOption>;
 
-	static final CONTROL_TYPES:Array<String> = ["hitbox", "base", "buttons", "mixed"];
+	static final CONTROL_TYPES:Array<String> = ["psych", "base", "buttons", "mixed"];
 	static final MIDDLESCROLL_TYPES:Array<String> = ["pc", "mobile"];
 	var controlsIndex:Int = 0;
 
@@ -30,7 +30,7 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 
 		menuTitle = Language.get('options.mobilecontrols', 'ANDROID CONTROLS');
 		var lbl = Language.getArray('options.mobilecontrols.labels', ["NOTE SLIDE", "MIDDLESCROLL", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA"]);
-		controlTypeLabels = Language.getArray('controls_type.labels', ["HITBOX", "BASE", "BUTTONS", "MIXED"]);
+		controlTypeLabels = Language.getArray('controls_type.labels', ["PSYCH", "BASE", "BUTTONS", "MIXED"]);
 		middlescrollTypeLabels = Language.getArray('middlescroll_type.labels', ["PC", "MOBILE"]);
 		controlsTypeOption = {label: lbl[2], getValue: () -> ClientPrefs.data.controlsType, setValue: (v) -> ClientPrefs.data.controlsType = v};
 		middlescrollTypeOption = {label: lbl[3], getValue: () -> ClientPrefs.data.middlescrollType, setValue: (v) -> ClientPrefs.data.middlescrollType = v};

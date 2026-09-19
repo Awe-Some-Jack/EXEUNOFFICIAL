@@ -6,6 +6,8 @@ import haxe.Exception;
 
 import lime.system.System;
 import lime.app.Application;
+import lime.utils.AssetType;
+import openfl.text.Font;
 import openfl.Assets;
 import haxe.io.Bytes;
 #if sys
@@ -205,117 +207,89 @@ class MobileUtil
 	}
 	#end
 
-	/**
-	 * @param folders Optional list of specific folders (e.g. ["assets/data/"]). If null, copies all assets.
-	 */
-	public static function copyAssets(folders:Array<String> = null, onProgress:String->Int->Int->Void = null, onComplete:Void->Void = null):Void {
-		#if mobile
-		var rootTarget = getAssetDirectory();
-		try {
-			var assetList:Array<String> = Assets.list();
+	@:access(lime.utils.AssetLibrary)
+	public static function mountAssets():Void
+	{
+		#if (mobile && sys)
+		final rootDirectory:String = getAssetDirectory();
+		final assetsRoot:String = Path.join([rootDirectory, 'assets']);
 
-			var embeddedKeys:Map<String, Bool> = [];
-			try {
-				var manifestText:String = Assets.getText("assets/embedded-assets.json");
-				if (manifestText != null) {
-					for (key in (haxe.Json.parse(manifestText):Array<String>))
-						embeddedKeys.set(key, true);
-				}
-			} catch (e:Dynamic) {
-				trace('Could not load embedded-assets manifest: $e');
-			}
-
-			var toCopy = assetList.filter(function(assetKey) {
-				var cleanPath = assetKey;
-				var colonIndex = cleanPath.indexOf(":");
-				if (colonIndex != -1) {
-					cleanPath = cleanPath.substring(colonIndex + 1);
-				}
-
-				if (!StringTools.startsWith(cleanPath, "assets/")) return false;
-				if (embeddedKeys.exists(cleanPath)) return false;
-				if (folders == null) return true;
-
-				for (f in folders) {
-					if (StringTools.startsWith(cleanPath, f)) return true;
-				}
-				return false;
-			});
-
-			var total = toCopy.length;
-			if (total == 0) {
-				if (onComplete != null) onComplete();
-				return;
-			}
-
-			for (i in 0...total) {
-				var assetKey = toCopy[i];
-
-				var cleanPath = assetKey;
-				var colonIndex = cleanPath.indexOf(":");
-				if (colonIndex != -1) {
-					cleanPath = cleanPath.substring(colonIndex + 1);
-				}
-
-				var fullPath = Path.join([rootTarget, cleanPath]);
-
-				var directory = Path.directory(fullPath);
-				if (!FileSystem.exists(directory)) FileSystem.createDirectory(directory);
-				var shouldCopy = !FileSystem.exists(fullPath);
-
-				if (!shouldCopy) {
-					try {
-						var assetBytes = Assets.getBytes(assetKey);
-						var localBytes = File.getBytes(fullPath);
-						
-						if (localBytes != null && assetBytes != null) {
-							if (localBytes.length != assetBytes.length) {
-								shouldCopy = true;
-							} else {
-								for (j in 0...localBytes.length) {
-									if (localBytes.get(j) != assetBytes[j]) {
-										shouldCopy = true;
-										break;
-									}
-								}
-							}
-						}
-					} catch (e:Dynamic) {
-						shouldCopy = true;
-					}
-				}
-
-				if (shouldCopy) {
-					var bytes:Bytes = null;
-					try {
-						bytes = Assets.getBytes(assetKey);
-					} catch (e:Dynamic) {
-						try {
-							var text:String = Assets.getText(assetKey);
-							if (text != null) {
-								bytes = Bytes.ofString(text);
-							}
-						} catch (e2:Dynamic) {
-							trace('Failed to read text fallback for $assetKey: $e2');
-						}
-					}
-
-					if (bytes != null) {
-						File.saveBytes(fullPath, bytes);
-					} else {
-						trace('Could not extract data for asset: $assetKey');
-					}
-				}
-
-				if (onProgress != null) onProgress(cleanPath, i + 1, total);
-			}
-
-			if (onComplete != null) onComplete();
-		} catch (e:Dynamic) {
-			trace('Asset Copy Error: $e');
+		if (!FileSystem.exists(assetsRoot) || !FileSystem.isDirectory(assetsRoot))
+		{
+			trace('Assets folder not found: $assetsRoot');
+			Application.current.window.alert('Assets folder not found.\nCopy the "assets" folder from export/mobile-contents into:\n' + rootDirectory, 'Missing assets');
+			return;
 		}
+
+		final library = Assets.getLibrary('default');
+		if (library == null)
+			return;
+
+		function scan(directory:String, idPrefix:String):Void
+		{
+			for (name in FileSystem.readDirectory(directory))
+			{
+				if (name.startsWith('.'))
+					continue;
+
+				final fullPath:String = directory + '/' + name;
+				final id:String = idPrefix + '/' + name;
+
+				if (FileSystem.isDirectory(fullPath))
+				{
+					scan(fullPath, id);
+					continue;
+				}
+
+				if (library.types.exists(id))
+					continue;
+
+				final size:Int = FileSystem.stat(fullPath).size;
+				final type:AssetType = getAssetType(fullPath, size);
+				library.paths.set(id, fullPath);
+				library.types.set(id, type);
+				library.sizes.set(id, size);
+
+				if (type == AssetType.FONT)
+					registerFont(fullPath);
+			}
+		}
+
+		try
+		{
+			scan(assetsRoot, 'assets');
+		}
+		catch (e:Dynamic)
+			trace('Asset mount error: $e');
 		#end
 	}
+
+	#if (mobile && sys)
+	static function registerFont(path:String):Void
+	{
+		try
+		{
+			final font:Font = Font.fromFile(path);
+			if (font != null)
+				Font.registerFont(font);
+		}
+		catch (e:Dynamic)
+			trace('Font register error: $path ($e)');
+	}
+
+	static function getAssetType(path:String, size:Int):AssetType
+	{
+		return switch (Path.extension(path).toLowerCase())
+		{
+			case 'png' | 'jpg' | 'jpeg' | 'gif' | 'webp' | 'astc': AssetType.IMAGE;
+			case 'ogg' | 'm4a': size > 1024 * 1024 ? AssetType.MUSIC : AssetType.SOUND;
+			case 'mp3' | 'wav' | 'flac': AssetType.SOUND;
+			case 'ttf' | 'otf': AssetType.FONT;
+			case 'json' | 'xml' | 'txt' | 'frag' | 'vert' | 'lua' | 'hx' | 'csv': AssetType.TEXT;
+			default: AssetType.BINARY;
+		}
+	}
+	#end
 
 	#if (mobile && flixel_animate)
 	static inline function resolveExternalPath(path:String):String

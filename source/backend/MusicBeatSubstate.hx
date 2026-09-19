@@ -106,7 +106,7 @@ class MusicBeatSubstate extends FlxSubState
 				trace(backButton.x + ' ' + backButton.y);
 			}
 
-			buttonOverlaps = FlxG.mouse.overlaps(backButton);
+			buttonOverlaps = FlxG.mouse.overlaps(backButton, backButton.cameras[0]);
 
 			if(buttonOverlaps) {
 				backButton.animation.play('press', true);

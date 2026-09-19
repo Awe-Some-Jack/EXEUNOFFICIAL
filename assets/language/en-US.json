@@ -1,7 +1,7 @@
 {
 	"soundtray.volume": "VOLUME",
 	"language": "ENGLISH",
-	"controls_type.labels": ["HITBOX", "BASE", "BUTTONS", "MIXED"],
+	"controls_type.labels": ["PSYCH", "BASE", "BUTTONS", "MIXED"],
 	"middlescroll_type.labels": ["PC", "MOBILE"],
 	"language_auto": "SYSTEM DEFAULT",
 	"mainmenu.soundtest": "SOUND TEST",

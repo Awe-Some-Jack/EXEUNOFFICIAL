@@ -30,7 +30,6 @@ class Project extends HXProject
     static final SWITCH_APP_ID:String = "0x0100f6c013bbc000";
 
     static var astcExcludes:Array<String> = [];
-    static var embeddedAssetKeys:Array<String> = [];
 
     public function new()
     {
@@ -43,7 +42,6 @@ class Project extends HXProject
         configureASTCTextures();
         generateMobileContentsPackage();
         configureAssets();
-        writeEmbeddedAssetManifest();
         configureIcons();
         configurePlatformSpecific();
     }
@@ -244,21 +242,16 @@ class Project extends HXProject
                 addAssetRecursive(path, rename, embed, ["*"], exclude ?? []);
         }
 
-        addAssetPath("assets/fonts", "assets/fonts", false);
-        addAssetPath("assets/language", "assets/language", false);
+        for (folder in externalAssetFolders())
+        {
+            if (isMobile())
+                addMobileEmbeddedAssets(folder[0], folder[1]);
+            else
+                addAssetPath(folder[0], folder[1], false);
+        }
 
-        if (FileSystem.exists("assets/exe"))
-            addAssetPath("assets/exe", "assets/exe", false);
-
-        addAssetPath("assets/shared", "assets/shared", false);
         addAssetPath("assets/embed", "assets", true);
-        addAssetPath("assets/songs", "assets/songs", false);
-        addAssetPath("assets/week_assets", "assets", false);
-
         addAssetPath("flixel", "assets/flixel", true);
-
-        if (VIDEOS_ALLOWED.isEnabled(this) && FileSystem.exists("assets/videos"))
-            addAssetRecursive("assets/videos", "assets/videos", false, ["*"], []);
 
         if (MODS_ALLOWED.isEnabled(this))
         {
@@ -279,23 +272,87 @@ class Project extends HXProject
             addAssetRecursive("psych-ui", "assets/psych-ui", true, ["*"], []);
     }
 
+    function externalAssetFolders():Array<Array<String>>
+    {
+        var folders = [
+            ["assets/fonts", "assets/fonts"],
+            ["assets/language", "assets/language"],
+            ["assets/exe", "assets/exe"],
+            ["assets/shared", "assets/shared"],
+            ["assets/songs", "assets/songs"],
+            ["assets/week_assets", "assets"]
+        ];
+
+        if (VIDEOS_ALLOWED.isEnabled(this))
+            folders.push(["assets/videos", "assets/videos"]);
+
+        return folders;
+    }
+
+    function isMobileEmbeddedFile(file:String):Bool
+    {
+        return file == "Animation.json" || file == "spritemap1.json";
+    }
+
+    function addMobileEmbeddedAssets(path:String, rename:String)
+    {
+        if (!FileSystem.exists(path)) return;
+
+        for (file in FileSystem.readDirectory(path))
+        {
+            var fullPath = Path.join([path, file]);
+            var targetPath = Path.join([rename, file]);
+
+            var isDir:Bool = false;
+            try { isDir = FileSystem.isDirectory(fullPath); } catch (e:Dynamic) { continue; }
+
+            if (isDir)
+            {
+                addMobileEmbeddedAssets(fullPath, targetPath);
+            }
+            else if (isMobileEmbeddedFile(file))
+            {
+                var asset = new Asset(fullPath, targetPath);
+                asset.embed = true;
+                assets.push(asset);
+            }
+        }
+    }
+
     function generateMobileContentsPackage()
     {
-        if (!isMobile() || !FileSystem.exists("contents_file")) return;
+        if (!isMobile()) return;
 
-        var outputRoot = "export/mobile-contents/contents";
-        copyContentsWithASTCSwap("contents_file", outputRoot);
+        var packageRoot = "export/mobile-contents";
 
-        if (FileSystem.exists("list.txt"))
-            File.copy("list.txt", "export/mobile-contents/contentsList.dat");
+        if (FileSystem.exists("contents_file"))
+        {
+            var outputRoot = packageRoot + "/contents";
+            copyContentsWithASTCSwap("contents_file", outputRoot);
 
-        Sys.println(' INFO : Mobile contents package generated at ${outputRoot} - copy this "contents" folder to the device\'s contents/ directory.');
+            if (FileSystem.exists("list.txt"))
+                File.copy("list.txt", packageRoot + "/contentsList.dat");
+
+            Sys.println(' Info: Mobile contents package generated at ${outputRoot} - copy this "contents" folder to the device\'s contents/ directory.');
+        }
+
+        var assetsGenerated = false;
+        for (folder in externalAssetFolders())
+        {
+            if (!FileSystem.exists(folder[0])) continue;
+
+            copyContentsWithASTCSwap(folder[0], packageRoot + "/" + folder[1]);
+            assetsGenerated = true;
+        }
+
+        if (assetsGenerated)
+            Sys.println(' Info: Mobile assets package generated at ${packageRoot}/assets - copy this "assets" folder next to the "contents" folder on the device.');
     }
 
     function copyContentsWithASTCSwap(srcDir:String, destDir:String)
     {
         if (!FileSystem.exists(destDir))
-            FileSystem.createDirectory(destDir);
+            hxp.System.mkdir(destDir);
 
         for (file in FileSystem.readDirectory(srcDir))
         {
@@ -311,7 +368,7 @@ class Project extends HXProject
                 continue;
             }
 
-            if (file == "Animation.json" || file == "spritemap1.json")
+            if (isMobileEmbeddedFile(file))
                 continue;
 
             var actualSrcPath = srcPath;
@@ -337,24 +394,11 @@ class Project extends HXProject
             }
 
             if (shouldCopy)
+            {
+                Sys.println(' Copying file: ${actualSrcPath} -> ${actualDestPath}');
                 File.copy(actualSrcPath, actualDestPath);
+            }
         }
-    }
-
-    function writeEmbeddedAssetManifest()
-    {
-        if (!isMobile()) return;
-
-        var manifestDir = "generated";
-        if (!FileSystem.exists(manifestDir))
-            FileSystem.createDirectory(manifestDir);
-
-        var manifestPath = manifestDir + "/embedded-assets.json";
-        File.saveContent(manifestPath, haxe.Json.stringify(embeddedAssetKeys));
-
-        var manifestAsset = new Asset(manifestPath, "assets/embedded-assets.json");
-        manifestAsset.embed = true;
-        assets.push(manifestAsset);
     }
 
     function configureASTCTextures()
@@ -418,11 +462,11 @@ class Project extends HXProject
 
     public function runASTCCompressor():Void
     {
-        Sys.println(' INFO : Compressing ASTC textures...');
+        Sys.println(' Info: Compressing ASTC textures...');
         for (jsonFile in ['./astc-compression-data-assets.json', './astc-compression-data-contents.json', './astc-compression-data-embed.json']) {
             Sys.command('haxelib', ['run', 'astc-compressor', 'compress-from-json', '-json', jsonFile]);
         }
-        Sys.println(' INFO : Done compressing ASTC textures.');
+        Sys.println(' Info: Finished compressing ASTC textures.');
     }
 
     function configureIcons()
@@ -652,9 +696,6 @@ class Project extends HXProject
                     if (Path.extension(fullPath) == 'astc')
                         asset.type = AssetType.IMAGE;
                     assets.push(asset);
-
-                    if (embed && targetPath.startsWith("assets/"))
-                        embeddedAssetKeys.push(targetPath);
                 }
             }
         }

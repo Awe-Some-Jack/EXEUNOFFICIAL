@@ -36,7 +36,7 @@ import Main;
 	public var comboStacking:Bool = true;
 	#if mobile
 	public var controlsType:String = 'base';
-	public var middlescrollType:String = 'pc';
+	public var middlescrollType:String = 'mobile';
 	public var defHitboxAlpha:Float = 0;
 	public var pressHitboxAlpha:Float = 0.3;
 	public var slideMechanic:Bool = true;

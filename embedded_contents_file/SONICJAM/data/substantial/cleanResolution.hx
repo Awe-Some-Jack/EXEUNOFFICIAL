@@ -65,7 +65,7 @@ function onEvent(n,v1)
             case 'fullscreen':
                 PlayState.canPause = true;
                 var daWindow = Lib.application.window;
-                FlxTween.tween(daWindow, {width: daWindow.stage.fullScreenWidth + 1, height: daWindow.stage.fullScreenHeight + 1, x: 0, y: 0}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
+                PlayState.tweenWindow(daWindow.stage.fullScreenWidth + 1, daWindow.stage.fullScreenHeight + 1, 0, 0, Conductor.crochet / (1000 / 4), FlxEase.cubeInOut, () -> PlayState.fullscreenLetterbox());
         }
     }
 }

@@ -3529,8 +3529,10 @@ class PlayState extends MusicBeatState
 
 		final lastCombo:Int = combo;
 		final progressivePenalty:Int = 10 + (songMisses * 5); 
-		if (!note.isSustainNote)
-		health -= subtract * healthLoss;
+	
+		if (note == null || !note.isSustainNote)
+			health -= subtract * healthLoss;
+	
 		if(countAsMiss)
 		{
 			combo = 0;

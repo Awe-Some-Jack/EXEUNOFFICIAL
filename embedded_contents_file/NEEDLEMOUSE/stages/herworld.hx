@@ -226,13 +226,13 @@ var stepEvents = [
 
 function onCreatePost()
 {
-	glitch = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('glitch')));
+	glitch = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('glitch')));
 	glitch.setFloat('AMT', 0.3);
 	glitch.setFloat('SPEED', 0.6);
 	glitch.setFloat('wVel', 0.5);
 	glitch.setFloat('wIntensity', 0.5);
 
-	camGlitch = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('glitch')));
+	camGlitch = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('glitch')));
 	camGlitch.setFloat('AMT', 0.0);
 	camGlitch.setFloat('SPEED', 0.0);
 	camGlitch.setFloat('wVel', 0.1);
@@ -240,14 +240,14 @@ function onCreatePost()
 	game.camGame.filters.push(new ShaderFilter(camGlitch));
 	game.camHUD.filters.push(new ShaderFilter(camGlitch));
 
-	bright = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('brightness')));
+	bright = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('brightness')));
 	bright.setFloat('brightness', 0);
 	bright.setFloat('contrast', 1);
 	bright.setFloat('saturation', 1);
 	game.camGame.filters.push(new ShaderFilter(bright));
 	game.camHUD.filters.push(new ShaderFilter(bright));
 
-	water = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('water')));
+	water = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('water')));
 	water.setFloat('waveAmplitude', 0.003);
 	water.setFloat('waveFrequency', 20);
 

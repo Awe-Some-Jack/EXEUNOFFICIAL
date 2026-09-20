@@ -271,7 +271,7 @@ function onCreatePost()
 	if not foundSkin then doSplash(nil, currentSkin, true) end
 
 	isMobile = (buildTarget == 'android' or buildTarget == 'ios');
-	opponentHoldSplashesDisabled = (getPropertyFromClass('backend.ClientPrefs', 'data.controlsType') == 'base' and isMobile);
+	opponentHoldSplashesDisabled = isMobile and getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') and (getPropertyFromClass('backend.ClientPrefs', 'data.middlescrollType') == 'mobile' or getPropertyFromClass('backend.ClientPrefs', 'data.mobileOpponentNotes'));
 end
 
 function goodNoteHit(id,nd,nt,isn) if not isn and getProperty('notes.members['..id..'].noteSplashDisabled') == false and getProperty('notes.members['..id..'].rating') == 'sick' then doSplash(nd, currentSkin) end end

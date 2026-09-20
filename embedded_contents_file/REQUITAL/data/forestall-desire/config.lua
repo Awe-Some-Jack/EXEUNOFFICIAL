@@ -18,6 +18,8 @@ local UI_CONFIG = {
     FONT = 'sonichud.ttf'
 }
 
+local IS_MOBILE = (buildTarget == 'ios' or buildTarget == 'android')
+
 local KNIFE_CONFIG = {
     BF_ANGLE = 170,
     PICO_ANGLE = 160,
@@ -27,12 +29,12 @@ local KNIFE_CONFIG = {
     SPRITE = 'characters/cuter',
     OFFSET_X = -50,
     OFFSET_Y = 350,
-    HIT_DELAY = 0.1
+    HIT_DELAY = IS_MOBILE and 0.18 or 0.1
 }
 
 local DODGE_CONFIG = {
-    TIME_WINDOW = 120,
-    CHECK_DELAY = 0.13
+    TIME_WINDOW = IS_MOBILE and 260 or 120,
+    CHECK_DELAY = IS_MOBILE and 0.27 or 0.13
 }
 
 local health = {
@@ -108,9 +110,11 @@ function hideDefaultHUD()
 end
 
 function swapStrumPositions()
-    for i = 0, 3 do
-        setProperty('playerStrums.members['..i..'].x', _G['defaultOpponentStrumX'..i])
-        setProperty('opponentStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i])
+    if not getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') then
+        for i = 0, 3 do
+            setProperty('playerStrums.members['..i..'].x', _G['defaultOpponentStrumX'..i])
+            setProperty('opponentStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i])
+        end
     end
 end
 

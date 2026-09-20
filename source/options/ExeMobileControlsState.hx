@@ -29,18 +29,19 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 		scrollOffset = 0;
 
 		menuTitle = Language.get('options.mobilecontrols', 'ANDROID CONTROLS');
-		var lbl = Language.getArray('options.mobilecontrols.labels', ["NOTE SLIDE", "MIDDLESCROLL", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA"]);
-		controlTypeLabels = Language.getArray('controls_type.labels', ["PSYCH", "BASE", "BUTTONS", "MIXED"]);
+		var lbl = Language.getArray('options.mobilecontrols.labels', ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA"]);
+		controlTypeLabels = Language.getArray('controls_type.labels', ["PSYCH", "BASE", "BUTTONS", "D-PAD"]);
 		middlescrollTypeLabels = Language.getArray('middlescroll_type.labels', ["PC", "MOBILE"]);
-		controlsTypeOption = {label: lbl[2], getValue: () -> ClientPrefs.data.controlsType, setValue: (v) -> ClientPrefs.data.controlsType = v};
-		middlescrollTypeOption = {label: lbl[3], getValue: () -> ClientPrefs.data.middlescrollType, setValue: (v) -> ClientPrefs.data.middlescrollType = v};
+		controlsTypeOption = {label: lbl[3], getValue: () -> ClientPrefs.data.controlsType, setValue: (v) -> ClientPrefs.data.controlsType = v};
+		middlescrollTypeOption = {label: lbl[4], getValue: () -> ClientPrefs.data.middlescrollType, setValue: (v) -> ClientPrefs.data.middlescrollType = v};
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.slideMechanic,  setValue: (v) -> ClientPrefs.data.slideMechanic = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.middleScroll, setValue: (v) -> ClientPrefs.data.middleScroll = v},
+			{label: lbl[2], getValue: () -> ClientPrefs.data.mobileOpponentNotes, setValue: (v) -> ClientPrefs.data.mobileOpponentNotes = v},
 			controlsTypeOption,
 			middlescrollTypeOption,
-			{label: lbl[4], getValue: () -> ClientPrefs.data.defHitboxAlpha, setValue: (v) -> ClientPrefs.data.defHitboxAlpha = v, isFloat: true},
-			{label: lbl[5], getValue: () -> ClientPrefs.data.pressHitboxAlpha, setValue: (v) -> ClientPrefs.data.pressHitboxAlpha = v, isFloat: true},
+			{label: lbl[5], getValue: () -> ClientPrefs.data.defHitboxAlpha, setValue: (v) -> ClientPrefs.data.defHitboxAlpha = v, isFloat: true},
+			{label: lbl[6], getValue: () -> ClientPrefs.data.pressHitboxAlpha, setValue: (v) -> ClientPrefs.data.pressHitboxAlpha = v, isFloat: true},
 		];
 
 		final saved = CONTROL_TYPES.indexOf(ClientPrefs.data.controlsType);

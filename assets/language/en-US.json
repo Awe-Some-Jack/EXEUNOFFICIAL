@@ -1,7 +1,7 @@
 {
 	"soundtray.volume": "VOLUME",
 	"language": "ENGLISH",
-	"controls_type.labels": ["PSYCH", "BASE", "BUTTONS", "MIXED"],
+	"controls_type.labels": ["PSYCH", "BASE", "BUTTONS", "D-PAD"],
 	"middlescroll_type.labels": ["PC", "MOBILE"],
 	"language_auto": "SYSTEM DEFAULT",
 	"mainmenu.soundtest": "SOUND TEST",
@@ -33,7 +33,7 @@
 	"options.controls": "CONTROLS",
 	"options.controls.labels": ["NOTES", "UI", "ACTIONS", "LEFT", "DOWN", "UP", "RIGHT", "ACCEPT", "BACK", "PAUSE", "RESET"],
 	"options.mobilecontrols": "ANDROID CONTROLS",
-	"options.mobilecontrols.labels": ["NOTE SLIDE", "MIDDLESCROLL", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA"],
+	"options.mobilecontrols.labels": ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA"],
 	"options.visuals": "VISUALS",
 	"options.visuals.labels": ["HIDE HUD", "FLASHING LIGHTS", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS COUNTER"],
 	"options.gameplay": "GAMEPLAY",

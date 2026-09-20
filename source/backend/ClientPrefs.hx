@@ -40,6 +40,7 @@ import Main;
 	public var defHitboxAlpha:Float = 0;
 	public var pressHitboxAlpha:Float = 0.3;
 	public var slideMechanic:Bool = true;
+	public var mobileOpponentNotes:Bool = true;
 	#end
 	public var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,

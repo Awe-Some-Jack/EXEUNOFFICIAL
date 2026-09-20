@@ -190,8 +190,6 @@ function onCreatePost()
 	game.triggerEvent('Tween Camera Zoom', '1.4, true', '0.001, linear');
 
 	game.gf.scrollFactor.set(1, 1);
-
-	FlxG.autoPause = false;
 }
 
 var floatTimer:Float = 0;
@@ -233,7 +231,7 @@ function onStepHit()
 	if (curStep == 520 || curStep == 1176){
 		game.camHUD.shake(0.036, 1/game.playbackRate);
 		FlxG.camera.shake(0.026, 1/game.playbackRate);
-		initOppStrumsShaking(false);		
+		// initOppStrumsShaking(false);		
 	}
 
 	if (curStep == 528){

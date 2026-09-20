@@ -215,7 +215,7 @@ function addVoiceLines() {
 function addShaders() {
     switch(songName){
         case "yourself":
-            var fragSrc:String = Assets.getText(Paths.shaderFragment('pixelsplash'));
+            var fragSrc:String = Paths.getContent(Paths.shaderFragment('pixelsplash'));
             pixel = new FlxRuntimeShader(fragSrc);
             pixel.setFloat("pixelsize", 0.1);
 
@@ -538,10 +538,10 @@ function setupHazeGameOver() {
     //Shader shit
     for (guys in [boyfriend, dad]) guys.shader = null;
     
-    var fragSrc:String = Assets.getText(Paths.shaderFragment('pseudo'));
+    var fragSrc:String = Paths.getContent(Paths.shaderFragment('pseudo'));
     pseudo = new FlxRuntimeShader(fragSrc);
     pseudo.setFloat("sort", 0);
-    var fragSrc2:String = Assets.getText(Paths.shaderFragment('wavyDistortion'));
+    var fragSrc2:String = Paths.getContent(Paths.shaderFragment('wavyDistortion'));
     wave = new FlxRuntimeShader(fragSrc2);
     wave.setFloat("amount", 0);
 

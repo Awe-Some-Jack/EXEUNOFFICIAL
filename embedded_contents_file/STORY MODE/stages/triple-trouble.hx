@@ -168,7 +168,7 @@ function onCreate()
 
 	if (!ClientPrefs.data.lowQuality)
 	{
-		fogShader = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('wavyDistortion')));
+		fogShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('wavyDistortion')));
 		fogShader.setFloat('amount', 2);
 		fogOverlay.shader = fogShader;
 	}

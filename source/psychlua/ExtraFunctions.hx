@@ -9,9 +9,9 @@ class ExtraFunctions
 	{
 		var lua:Null<RawPointer<Lua_State>> = funk.lua;
 
-		LuaUtilsHx.addFunction(lua, 'keyboardJustPressed', (name:String) -> Reflect.getProperty(FlxG.keys.justPressed, name));
-		LuaUtilsHx.addFunction(lua, 'keyboardPressed',     (name:String) -> Reflect.getProperty(FlxG.keys.pressed, name));
-		LuaUtilsHx.addFunction(lua, 'keyboardReleased',    (name:String) -> Reflect.getProperty(FlxG.keys.justReleased, name));
+		LuaUtilsHx.addFunction(lua, 'keyboardJustPressed', (name:String) -> Reflect.getProperty(FlxG.keys.justPressed, name) == true || PlayState.mobileKeyJustPressed(name));
+		LuaUtilsHx.addFunction(lua, 'keyboardPressed',     (name:String) -> Reflect.getProperty(FlxG.keys.pressed, name) == true || PlayState.mobileKeyPressed(name));
+		LuaUtilsHx.addFunction(lua, 'keyboardReleased',    (name:String) -> Reflect.getProperty(FlxG.keys.justReleased, name) == true || PlayState.mobileKeyJustReleased(name));
 
 		LuaUtilsHx.addFunction(lua, 'anyGamepadJustPressed', (name:String) -> FlxG.gamepads.anyJustPressed(name));
 		LuaUtilsHx.addFunction(lua, 'anyGamepadPressed',     (name:String) -> FlxG.gamepads.anyPressed(name));

@@ -1,7 +1,6 @@
 // https://www.shadertoy.com/view/XtyXzW
 
 #pragma header
-#extension GL_EXT_gpu_shader4 : enable
 
 uniform float time;
 uniform float prob;
@@ -154,16 +153,22 @@ vec4 transverseChromatic(vec2 p) {
     vec2 velocity = dist * dot(dist, dist) * intensityChromatic;
     
     float inverseSampleCount = 0.02; // 1.0 / 50.0
-    mat3x2 increments = mat3x2(velocity * inverseSampleCount, velocity * (2.0 * inverseSampleCount), velocity * (4.0 * inverseSampleCount));
+    vec2 incrementR = velocity * inverseSampleCount;
+    vec2 incrementG = velocity * (2.0 * inverseSampleCount);
+    vec2 incrementB = velocity * (4.0 * inverseSampleCount);
     
     vec3 accumulator = vec3(0.0);
-    mat3x2 offsets = mat3x2(0.0); 
+    vec2 offsetR = vec2(0.0);
+    vec2 offsetG = vec2(0.0);
+    vec2 offsetB = vec2(0.0);
     
     for (int i = 0; i < 50; i++) {
-        accumulator.r += texture(bitmap, p + offsets[0]).r; 
-        accumulator.g += texture(bitmap, p + offsets[1]).g; 
-        accumulator.b += texture(bitmap, p + offsets[2]).b;         
-        offsets -= increments;
+        accumulator.r += texture(bitmap, p + offsetR).r; 
+        accumulator.g += texture(bitmap, p + offsetG).g; 
+        accumulator.b += texture(bitmap, p + offsetB).b;         
+        offsetR -= incrementR;
+        offsetG -= incrementG;
+        offsetB -= incrementB;
     }
     return vec4(accumulator * inverseSampleCount, 1.0);
 }

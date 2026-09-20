@@ -94,9 +94,11 @@ local function switchToAlt()
 	callMethod('dad.setPosition', {1540, 930})
 	callMethod('gf.setPosition', {2200, 1350})
 
-	for i = 0,3 do
-		setProperty('opponentStrums.members['..i..'].x', -1000)
-		setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+	if not getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') then
+		for i = 0,3 do
+			setProperty('opponentStrums.members['..i..'].x', -1000)
+			setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+		end
 	end
 end
 
@@ -124,9 +126,11 @@ local function switchToNormal()
 	doTweenX('gfX', 'gf', 910, 1, 'cubeOut')
 	doTweenY('gfY', 'gf', 995, 1, 'cubeOut')
 
-	for i = 0, 3 do
-        setProperty('playerStrums.members['..i..'].x', _G['defaultOpponentStrumX'..i])
-        setProperty('opponentStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i])
+	if not getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') then
+		for i = 0, 3 do
+			setProperty('playerStrums.members['..i..'].x', _G['defaultOpponentStrumX'..i])
+			setProperty('opponentStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i])
+		end
     end
 end
 

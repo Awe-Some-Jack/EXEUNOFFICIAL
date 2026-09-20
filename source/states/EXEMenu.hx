@@ -272,7 +272,7 @@ class EXEMenu extends MusicBeatState
 
 		updateShadow(elapsed);
 
-		if (canManiaInteract && controls.ACCEPT)
+		if (canManiaInteract && (controls.ACCEPT #if mobile || shortPress #end))
 		{
 			goToMania();
 		}

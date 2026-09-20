@@ -114,10 +114,12 @@ function onCreatePost()
 	makeLuaSprite('tv', 'vanilla/tv/tv', 650, 150)
 	addLuaSprite('tv')
 
-	for i = 0, 3 do
-		local strumW = getProperty('opponentStrums.members[' .. i .. '].width')
-		setProperty('opponentStrums.members[' .. i .. '].x', 10 + (strumW * i))
-		setProperty('playerStrums.members[' .. i .. '].x', (screenWidth - 10 - (strumW * 4)) + (strumW * i))
+	if not getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') then
+		for i = 0, 3 do
+			local strumW = getProperty('opponentStrums.members[' .. i .. '].width')
+			setProperty('opponentStrums.members[' .. i .. '].x', 10 + (strumW * i))
+			setProperty('playerStrums.members[' .. i .. '].x', (screenWidth - 10 - (strumW * 4)) + (strumW * i))
+		end
 	end
 
 	applyColorTheme()

@@ -122,6 +122,9 @@ class Note extends FlxSprite
 	public var ratingDisabled:Bool = false;
 
 	public var texture(default, set):String = null;
+
+	var baseScaleX:Float = 0;
+	var baseScaleY:Float = 0;
 	private function set_texture(value:String):String
 	{
 		if (texture != value) reloadNote(value);
@@ -312,6 +315,8 @@ class Note extends FlxSprite
 		final animName:Null<String> = animation.curAnim?.name;
 		final skinPixel:String = skin;
 		final lastScaleY:Float = scale.y;
+		final lastScaleX:Float = scale.x;
+		final hadFrames:Bool = frames != null;
 		final skinPostfix:String = getNoteSkinPostfix();
 		final customSkin:String = skin + skinPostfix;
 		final path:String = PlayState.isPixelStage ? 'pixelUI/' : '';
@@ -361,7 +366,16 @@ class Note extends FlxSprite
 			}
 		}
 
-		if (isSustainNote) scale.y = lastScaleY;
+		final newBaseX:Float = scale.x;
+		final newBaseY:Float = scale.y;
+		if (hadFrames && baseScaleX > 0 && baseScaleY > 0)
+		{
+			scale.x = newBaseX * (lastScaleX / baseScaleX);
+			scale.y = isSustainNote ? lastScaleY : newBaseY * (lastScaleY / baseScaleY);
+		}
+		else if (isSustainNote) scale.y = lastScaleY;
+		baseScaleX = newBaseX;
+		baseScaleY = newBaseY;
 		updateHitbox();
 
 		if (animName != null)

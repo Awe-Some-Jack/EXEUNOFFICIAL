@@ -164,8 +164,8 @@ function onEvent(e, v1, v2)
 
 		if (prefs.shaders)
 		{
-			waveShader = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('wavyDistortion')));
-			bwShader   = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('blackwhite')));
+			waveShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('wavyDistortion')));
+			bwShader   = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('blackwhite')));
 
 			waveVal = 0;
 			bwVal   = 0;

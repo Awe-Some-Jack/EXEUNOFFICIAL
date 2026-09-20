@@ -223,9 +223,9 @@ class HScript extends Iris
 			return LuaUtils.getModSetting(saveTag, modName);
 		});
 
-		set('keyboardJustPressed', (name:String) -> Reflect.getProperty(FlxG.keys.justPressed, name));
-		set('keyboardPressed',     (name:String) -> Reflect.getProperty(FlxG.keys.pressed, name));
-		set('keyboardReleased',    (name:String) -> Reflect.getProperty(FlxG.keys.justReleased, name));
+		set('keyboardJustPressed', (name:String) -> Reflect.getProperty(FlxG.keys.justPressed, name) == true || PlayState.mobileKeyJustPressed(name));
+		set('keyboardPressed',     (name:String) -> Reflect.getProperty(FlxG.keys.pressed, name) == true || PlayState.mobileKeyPressed(name));
+		set('keyboardReleased',    (name:String) -> Reflect.getProperty(FlxG.keys.justReleased, name) == true || PlayState.mobileKeyJustReleased(name));
 
 		set('anyGamepadJustPressed', (name:String) -> FlxG.gamepads.anyJustPressed(name));
 		set('anyGamepadPressed',     (name:String) -> FlxG.gamepads.anyPressed(name));

@@ -19,6 +19,9 @@ class StrumNote extends FlxSprite
 
 	public var texture(default, set):String = null;
 
+	var baseScaleX:Float = 0;
+	var baseScaleY:Float = 0;
+
 	public var useVSliceReceptorFeature:Bool = true;
 
 	public var holdTimer = 0.0;
@@ -29,6 +32,7 @@ class StrumNote extends FlxSprite
     **/
     public var shakeDuration:Float = 0;
     public var shakeIntensity:Float = 0;
+    var shakeReturning:Bool = false;
 
     public var firstPosition = {
         x: 0.0,
@@ -79,6 +83,14 @@ class StrumNote extends FlxSprite
 	public function reloadNote():Void
 	{
 		final lastAnim:Null<String> = animation.curAnim?.name;
+		final hadFrames:Bool = frames != null;
+		final prevScaleX:Float = scale.x;
+		final prevScaleY:Float = scale.y;
+		final prevWidth:Float = width;
+		final prevHeight:Float = height;
+		final prevOffsetX:Float = offset.x;
+		final prevOffsetY:Float = offset.y;
+		final hitboxStale:Bool = hadFrames && (Math.abs(width - Math.abs(scale.x) * frameWidth) > 1 || Math.abs(height - Math.abs(scale.y) * frameHeight) > 1);
 
 		if (PlayState.isPixelStage)
 		{
@@ -145,7 +157,20 @@ class StrumNote extends FlxSprite
 					animation.addByPrefix('confirm', 'right confirm', 24, false);
 			}
 		}
-		updateHitbox();
+		final newBaseX:Float = scale.x;
+		final newBaseY:Float = scale.y;
+		if (hadFrames && baseScaleX > 0 && baseScaleY > 0)
+			scale.set(newBaseX * (prevScaleX / baseScaleX), newBaseY * (prevScaleY / baseScaleY));
+		baseScaleX = newBaseX;
+		baseScaleY = newBaseY;
+
+		if (hitboxStale)
+		{
+			width = prevWidth;
+			height = prevHeight;
+			offset.set(prevOffsetX, prevOffsetY);
+		}
+		else updateHitbox();
 
 		if (lastAnim != null)
 			playAnim(lastAnim, true);
@@ -171,19 +196,36 @@ class StrumNote extends FlxSprite
 
 	override function update(elapsed:Float):Void
 	{
-		if (shakeDuration != 0) {
-            if (shakeDuration > 0)
-                shakeDuration -= elapsed;
+		if (shakeDuration != 0)
+		{
+			if (shakeDuration > 0)
+			{
+				shakeDuration -= elapsed;
+				if (shakeDuration <= 0)
+				{
+					shakeDuration = 0;
+					shakeReturning = true;
+				}
+			}
 
-            x = firstPosition.x + FlxG.random.float(-shakeIntensity, shakeIntensity);
-            y = firstPosition.y + FlxG.random.float(-shakeIntensity, shakeIntensity);
-        } 
-        else 
-        {
-            x = FlxMath.lerp(x, firstPosition.x, FlxMath.bound(elapsed * 12, 0, 1));
-            y = FlxMath.lerp(y, firstPosition.y, FlxMath.bound(elapsed * 12, 0, 1));
-        }
+			if (shakeDuration != 0)
+			{
+				x = firstPosition.x + FlxG.random.float(-shakeIntensity, shakeIntensity);
+				y = firstPosition.y + FlxG.random.float(-shakeIntensity, shakeIntensity);
+			}
+		}
 
+		if (shakeReturning)
+		{
+			x = FlxMath.lerp(x, firstPosition.x, FlxMath.bound(elapsed * 12, 0, 1));
+			y = FlxMath.lerp(y, firstPosition.y, FlxMath.bound(elapsed * 12, 0, 1));
+			if (Math.abs(x - firstPosition.x) < 0.5 && Math.abs(y - firstPosition.y) < 0.5)
+			{
+				x = firstPosition.x;
+				y = firstPosition.y;
+				shakeReturning = false;
+			}
+		}
 
 		if (resetAnim > 0)
 		{
@@ -235,9 +277,15 @@ class StrumNote extends FlxSprite
      * @param intensity displacement pixel force
     **/
     public function shakeStrum(intensity:Float, duration:Float) {
+        final wasShaking:Bool = shakeDuration != 0;
+        if (!wasShaking && !shakeReturning)
+        {
+            firstPosition.x = x;
+            firstPosition.y = y;
+        }
+
         this.shakeIntensity = intensity;
         this.shakeDuration = duration;
-		firstPosition.x = x;
-        firstPosition.y = y;
+        shakeReturning = duration == 0 && (wasShaking || shakeReturning);
     }
 }

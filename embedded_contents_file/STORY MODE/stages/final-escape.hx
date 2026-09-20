@@ -207,7 +207,7 @@ function onCreatePost()
 {
 
 	//shader
-	chrom = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment('ChromaticAbberation')));
+	chrom = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('ChromaticAbberation')));
     chrom.setFloat('amount', 0.3);
 
 	camGame.filters = [new ShaderFilter(game.getLuaObject('sexo').shader), new ShaderFilter(chrom)];
@@ -437,8 +437,8 @@ function onUpdatePost(elapsed:Float)
 			bfLegs4?.animation.curAnim.curFrame = legsFrame;
 			if (boyfriend?.animation.curAnim.name == 'idle') boyfriend.animation.curAnim.curFrame = legsFrame;
 		case 'fifth':
-			var slide:Bool = Controls.instance.UI_DOWN || Controls.instance.NOTE_DOWN;
-			var jump:Bool = Controls.instance.UI_UP || Controls.instance.NOTE_UP;
+			var slide:Bool = Controls.instance.UI_DOWN || Controls.instance.NOTE_DOWN || game.swipeDOWN;
+			var jump:Bool = Controls.instance.UI_UP || Controls.instance.NOTE_UP || game.swipeUP;
 
 			if (slide && bfAction == '' && bfPressAction != 'slide')
 			{
@@ -501,13 +501,13 @@ function onUpdatePost(elapsed:Float)
 				game.insert(game.members.indexOf(xenoRing) + 1, dadGroup);
 			}
 
-			for (i in 0...8) strumLineNotes.members[i].y = notesPosition[Std.int(i / 4 - 0.5)][i % 4][1] + Math.sin(floatSine * 1.5 + i) * 10;
+			for (i in 0...8) strumLineNotes.members[i].y = notesPosition[Std.int(i / 4)][i % 4][1] + Math.sin(floatSine * 1.5 + i) * 10;
 		case 'sides':
 			cameraLeft.zoom = camGame.zoom + 0.2;
 			cameraRight.zoom = camGame.zoom + 0.2;
-			for (i in 0...8) strumLineNotes.members[i].y = notesPosition[Std.int(i / 4 - 0.5)][i % 4][1] + Math.sin(floatSine * 1 + i) * 10;
+			for (i in 0...8) strumLineNotes.members[i].y = notesPosition[Std.int(i / 4)][i % 4][1] + Math.sin(floatSine * 1 + i) * 10;
 		case 'finale':
-			for (i in 0...8) strumLineNotes.members[i].y = notesPosition[Std.int(i / 4 - 0.5)][i % 4][1] + Math.sin(floatSine * 1.5 + i) * 10;
+			for (i in 0...8) strumLineNotes.members[i].y = notesPosition[Std.int(i / 4)][i % 4][1] + Math.sin(floatSine * 1.5 + i) * 10;
 		case 'tvfinal':
 			renderFinale.scale.y = FlxMath.lerp(renderFinale.scale.y, 0.0001, elapsed * 10);
 	}
@@ -1043,7 +1043,7 @@ function onEvent(n,v1,v2)
 				bgIntro[1].sprite.destroy();
 				for (spr in bgSecond) spr.sprite?.destroy();
 				curBG = 'ending';
-				for (i in 0...8) strumLineNotes.members[i].y = notesPosition[Std.int(i / 4 - 0.5)][i % 4][1];
+				for (i in 0...8) strumLineNotes.members[i].y = notesPosition[Std.int(i / 4)][i % 4][1];
 				for (spr in hbvanilla) game.getLuaObject(spr).alpha = 0;
 				for (spr in hudSprites) game.getLuaObject(spr).alpha = 0;
 				FlxTween.tween(camHUD, {alpha: 0}, Conductor.crochet / (1000 / 8));

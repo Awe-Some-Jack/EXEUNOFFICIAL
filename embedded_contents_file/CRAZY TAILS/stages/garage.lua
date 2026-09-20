@@ -356,8 +356,10 @@ function onEvent(n,v1)
 			callMethod('camGame.snapToTarget')
 
 			for i = 0,7 do
-				setProperty('strumLineNotes.members['..i..'].y', _G['default'..(i < 4 and 'Player' or 'Opponent')..'StrumY'..(i % 4)])
-				setProperty('strumLineNotes.members['..i..'].x', _G['default'..(i < 4 and 'Player' or 'Opponent')..'StrumX'..(i % 4)])
+				if not getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') then
+					setProperty('strumLineNotes.members['..i..'].y', _G['default'..(i < 4 and 'Player' or 'Opponent')..'StrumY'..(i % 4)])
+					setProperty('strumLineNotes.members['..i..'].x', _G['default'..(i < 4 and 'Player' or 'Opponent')..'StrumX'..(i % 4)])
+				end
 				setProperty('strumLineNotes.members['..i..'].angle', 0)
 			end
 		end

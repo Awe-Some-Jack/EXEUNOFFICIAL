@@ -2,9 +2,12 @@ local INITIAL_HEALTH = 2
 local MAX_HEALTH = 2
 local MIN_HEALTH = 0
 
+local IS_MOBILE = (buildTarget == 'ios' or buildTarget == 'android')
+local PENALTY_MULT = IS_MOBILE and 0.5 or 1
+
 local DAMAGE = {
-    NOTE_MISS = 10 / 50,
-    KNIFE_HIT = 45 / 50,
+    NOTE_MISS = 10 / 50 * PENALTY_MULT,
+    KNIFE_HIT = 45 / 50 * PENALTY_MULT,
     SHOOT_DAMAGE = 1 / 50,
     SHOOT_HEAL = 5 / 50
 }
@@ -108,9 +111,11 @@ function hideDefaultHUD()
 end
 
 function swapStrumPositions()
-    for i = 0, 3 do
-        setProperty('playerStrums.members['..i..'].x', _G['defaultOpponentStrumX'..i])
-        setProperty('opponentStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i])
+    if not getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') then
+        for i = 0, 3 do
+            setProperty('playerStrums.members['..i..'].x', _G['defaultOpponentStrumX'..i])
+            setProperty('opponentStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i])
+        end
     end
 end
 

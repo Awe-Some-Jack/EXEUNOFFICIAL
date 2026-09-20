@@ -1,16 +1,32 @@
-local changeNotes = false
+local currentSkin = nil
+
+function onCreatePost()
+	local precached = {}
+	for i = 0, getProperty('eventNotes.length') - 1 do
+		if getPropertyFromGroup('eventNotes', i, 'event') == 'changenoteSkin' then
+			local skin = getPropertyFromGroup('eventNotes', i, 'value1')
+			if skin ~= nil and skin ~= '' and not precached[skin] then
+				precached[skin] = true
+				precacheImage('noteSkins/'..skin)
+			end
+		end
+	end
+end
+
 function onEvent(n, v1)
-    if n == 'changenoteSkin' then
-        for i = 0, 8 do
-            if i ~= 6 then
-                setPropertyFromGroup('strumLineNotes', i, 'texture', 'noteSkins/'..v1)
-            end
-        end
-        for i = 0,getProperty('unspawnNotes.length')-1 do
-            if getPropertyFromGroup('unspawnNotes', i, 'noteType') ~= 'Ring Note' then setPropertyFromGroup('unspawnNotes', i, 'texture', 'noteSkins/'..v1) end
-        end
-        for i = 0,getProperty('notes.length')-1 do
-            if getPropertyFromGroup('notes', i, 'noteType') ~= 'Ring Note' then setPropertyFromGroup('notes', i, 'texture', 'noteSkins/'..v1) end
-        end
-    end
+	if n ~= 'changenoteSkin' then return end
+
+	local skin = 'noteSkins/'..v1
+	currentSkin = skin
+
+	for i = 0, getProperty('playerStrums.length') - 1 do setPropertyFromGroup('playerStrums', i, 'texture', skin) end
+	for i = 0, getProperty('opponentStrums.length') - 1 do setPropertyFromGroup('opponentStrums', i, 'texture', skin) end
+
+	for i = 0, getProperty('notes.length') - 1 do
+		if getPropertyFromGroup('notes', i, 'noteType') ~= 'Ring Note' then setPropertyFromGroup('notes', i, 'texture', skin) end
+	end
+end
+
+function onSpawnNote(id, nd, nt)
+	if currentSkin ~= nil and nt ~= 'Ring Note' then setPropertyFromGroup('notes', id, 'texture', currentSkin) end
 end

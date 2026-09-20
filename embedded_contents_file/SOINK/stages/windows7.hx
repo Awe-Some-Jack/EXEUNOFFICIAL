@@ -498,12 +498,12 @@ function onStepHit() {
             boyfriend.y = 2134;
             dad.x = 2687;
             dad.y = 2575;
-            comboGroup.x = -500;
+            if(!ClientPrefs.data.middleScroll) comboGroup.x = -500;
             comboGroup.alpha = 0.7;
             for(i in 0...4) {
                 opponentStrums.members[i].alpha = 0;
                 playerStrums.members[i].alpha = 0.7;
-                playerStrums.members[i].x = i == 0 ? opponentStrums.members[3].x : playerStrums.members[i-1].x + 117;
+                if(!ClientPrefs.data.middleScroll) playerStrums.members[i].x = i == 0 ? opponentStrums.members[3].x : playerStrums.members[i-1].x + 117;
             }
             for(obj in luaObjects) {
                 game.getLuaObject(obj).alpha = 0;
@@ -517,12 +517,12 @@ function onStepHit() {
             FlxTween.tween(dad, {y: 2275}, 2.8, {ease: FlxEase.smootherStepOut});
             for(i in 0...4) {
                 FlxTween.tween(opponentStrums.members[i], {alpha: 0.7}, 2.8, {ease: FlxEase.smootherStepInOut});
-                FlxTween.tween(playerStrums.members[i], {x: 740+(117*i), angle: 360}, 2.8, {ease: FlxEase.smootherStepInOut});
+                if(!ClientPrefs.data.middleScroll) FlxTween.tween(playerStrums.members[i], {x: 740+(117*i), angle: 360}, 2.8, {ease: FlxEase.smootherStepInOut});
             }
             for(obj in luaObjects) {
                 FlxTween.tween(game.getLuaObject(obj), {alpha: 1}, 2.8, {ease: FlxEase.smootherStepInOut});
             }
-            FlxTween.tween(comboGroup, {x: 0}, 2.8, {ease: FlxEase.smootherStepInOut});
+            if(!ClientPrefs.data.middleScroll) FlxTween.tween(comboGroup, {x: 0}, 2.8, {ease: FlxEase.smootherStepInOut});
 
         case 1656, 1688, 1720, 1784:
             cracker.alpha = 0;

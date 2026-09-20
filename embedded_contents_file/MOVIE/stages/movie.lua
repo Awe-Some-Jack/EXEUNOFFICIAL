@@ -116,8 +116,10 @@ function onStartCountdown()
 end
 
 function onCountdownStarted()
-	for i = 0, 7 do
-		setProperty('strumLineNotes.members[' .. i .. '].x', _G['default' .. (i < 4 and 'Player' or 'Opponent') .. 'StrumX' .. (i % 4)])
+	if not getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') then
+		for i = 0, 7 do
+			setProperty('strumLineNotes.members[' .. i .. '].x', _G['default' .. (i < 4 and 'Player' or 'Opponent') .. 'StrumX' .. (i % 4)])
+		end
 	end
 	triggerEvent('Flip Health Bar')
 end

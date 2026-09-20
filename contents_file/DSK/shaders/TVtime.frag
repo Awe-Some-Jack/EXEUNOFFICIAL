@@ -195,7 +195,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
                 else if (halationPosition == 10.0) dir = normalize(vec2(1.0, -1.0));
                 else if (halationPosition == 11.0) dir = normalize(vec2(-1.0, -1.0));
                 
-                int clones = max(1, int(halationClone));
+                int clones = int(max(1.0, halationClone));
                 for (int i = 0; i < clones; i++) {
                     float t = clones > 1 ? float(i) / float(clones - 1) : 0.0;
                     vec3 texSample = texture(iChannel0, inputUV + dir * distance * t * px).rgb;

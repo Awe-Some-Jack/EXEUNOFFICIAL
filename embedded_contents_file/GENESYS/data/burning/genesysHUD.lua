@@ -4,7 +4,7 @@ function onCreatePost()
 
 	--sonic hud
 
-	makeHUDSprite('HUD', 'HUD')
+	makeHUDSprite('HUD', 'hud')
 	setProperty('HUD.y', downscroll and 20 or (screenHeight - getProperty('HUD.height') - 20))
 
 	initialY = 6 * 3

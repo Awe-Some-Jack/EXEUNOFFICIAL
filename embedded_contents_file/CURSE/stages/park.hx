@@ -59,7 +59,7 @@ function onCreate()
     fore.scrollFactor.set(1.3, 1.3);
     add(fore);
 
-    wavyShader = new FlxRuntimeShader(Assets.getText(Paths.shaderFragment("wavyDistortion")));
+    wavyShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("wavyDistortion")));
 
     makeCloud();
     new FlxTimer().start(10, (_) -> { makeCloud(); }, 0);

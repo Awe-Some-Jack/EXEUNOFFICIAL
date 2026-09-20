@@ -277,7 +277,7 @@ class VideoSprite extends FlxSpriteGroup
 			pieTrack.visible = true;
 			pieTrack.alpha = 0.35;
 
-			if (FlxG.keys.pressed.SPACE && skipKeyReleasedOnce)
+			if ((FlxG.keys.pressed.SPACE || PlayState.instance.pressHolding) && skipKeyReleasedOnce)
 			{
 				skipHold += elapsed;
 				var progress:Float = skipHold / skipNeed;
@@ -295,7 +295,7 @@ class VideoSprite extends FlxSpriteGroup
 			}
 			else
 			{
-				if (!FlxG.keys.pressed.SPACE)
+				if (!FlxG.keys.pressed.SPACE && !PlayState.instance.pressHolding)
 					skipKeyReleasedOnce = true;
 
 				skipHold = 0;

@@ -997,12 +997,12 @@ function handleMouseLogic() {
 		if(FlxG.mouse.overlaps(stoplightHitboxes[0], camVideo)) {
 			stoplightHovering = true;
 
-			if(!numHovering && FlxG.mouse.justPressed)
+			if(!numHovering && FlxG.mouse.justPressed && buildTarget != 'android' && buildTarget != 'ios')
 				Sys.exit(0);
 		} else if(game.canPause && FlxG.mouse.overlaps(stoplightHitboxes[1], camVideo)) {
 			stoplightHovering = true;
 
-			if(!numHovering && FlxG.mouse.justPressed)
+			if(!numHovering && FlxG.mouse.justPressed && buildTarget != 'android' && buildTarget != 'ios')
 				game.openPauseMenu();
 		}
 	}

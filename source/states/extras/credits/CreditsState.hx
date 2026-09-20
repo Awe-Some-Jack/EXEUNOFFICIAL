@@ -287,6 +287,7 @@ private class CreditPopup extends MusicBeatSubstate
         bg = new FlxSprite().loadGraphic(bmp); bg.screenCenter(); bg.camera = popCam; add(bg);
     }
 
+    var dax:Float = 0; var day:Float = 100;
     function buildHeader():Void
 	{
 		function resolveImagePath(basePath:String, param:Dynamic, fallback:String):String
@@ -313,9 +314,11 @@ private class CreditPopup extends MusicBeatSubstate
             createdIcon = true;
         }
 
+        if (userIcon != null) dax = userIcon.width;
+        if (userIcon != null) day = userIcon.height;
 		final nm = new FlxText(0, 0, bg.width - 100, user.name ?? "Unknown");
 		nm.setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(76), (user.name == 'Divide' ? 0xFFFDFD51 : 0xFFFFFFFF), LEFT, OUTLINE, 0x55000000);
-		nm.borderSize = Language.cjkBorder(3); nm.setPosition((bg.x + 40) + (userIcon.width ?? 100) + 25, (bg.y + 40) + ((userIcon.height ?? 100) - nm.height) / 2);
+		nm.borderSize = Language.cjkBorder(3); nm.setPosition((bg.x + 40) + dax + 25, (bg.y + 40) + (day - nm.height) / 2);
 		nm.camera = popCam; add(nm);
 
         final flagBase = 'extras/credits/countries/${user.nation}';
@@ -331,7 +334,7 @@ private class CreditPopup extends MusicBeatSubstate
     function buildDescription():Void
     {
         final sepW = Std.int(bg.width / 2 - 50);
-        final sepY = (bg.y + 40) + (userIcon.height ?? 100) + 25;
+        final sepY = (bg.y + 40) + day + 25;
         final sepX = (bg.x + 40);
         final sbmp = new BitmapData(sepW, 3, true, 0x00000000);
         for (px in 0...sepW)
@@ -387,7 +390,7 @@ private class CreditPopup extends MusicBeatSubstate
         explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow('assets/exe/extras/credits/$exp.webp', 'assets/exe/extras/credits/$exp.xml');
         explosion.animation.addByPrefix('idle', 'idle', 16, false);
         explosion.animation.play('idle');
-        explosion.scale.set(3, 3); explosion.antialiasing = false; explosion.updateHitbox();
+        explosion.scale.set((exp == 'lava' ? 1 : 3), (exp == 'lava' ? 1 : 3)); explosion.antialiasing = false; explosion.updateHitbox();
         explosion.alpha = 0; explosion.camera = popCam; add(explosion);
     }
 

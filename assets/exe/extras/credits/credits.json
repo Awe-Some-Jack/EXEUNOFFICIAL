@@ -894,7 +894,9 @@
 		{
 			"name": "Rabty",
 			"icon": "rabty",
+			"nation": "mexico",
 			"description": "5th place winner for the SUNKY RENDER CONTEST",
+			"quote": "My son Sunion is right there",
 			"twitter": "https://x.com/Rabtyone",
 			"youtube": "https://www.youtube.com/@Rabtyone",
 			"colors": [[75, 116, 225], [89, 70, 221]],

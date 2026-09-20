@@ -72,7 +72,7 @@ var stageEvents:Map<String, Void->Void> = [
 		shakeIntensity = 0.001;
 
 		game.boyfriend.setPosition(game.boyfriend.x - 780, game.boyfriend.y - 420);
-		game.dad.setPosition(game.dad.x - 525, game.dad.y - 470);
+		game.dad.setPosition(game.dad.x - 525, game.dad.y - 450);
 		game.gf.setPosition(game.gf.x - 105, game.gf.y - 280);
 		game.gf.scrollFactor.set(0.9, 0.9);
 
@@ -89,6 +89,7 @@ var stageEvents:Map<String, Void->Void> = [
 		game.triggerEvent('Set Character Offset', 'dad', '5');
 
 		game.gameplayCam.settings.OverrideZoom = false;
+		game.camZooming = false;
 
 		for (chars in [boyfriend, dad, gf]) chars.scale.set(4, 4);
 
@@ -125,6 +126,7 @@ var stageEvents:Map<String, Void->Void> = [
 		game.triggerEvent('Set Character Offset', 'dad', '25');
 
 		game.gameplayCam.settings.OverrideZoom = false;
+		game.camZooming = true;
 
 		if (!ClientPrefs.lowQuality) crystalBG[3].spr.alpha = 0.5;
 
@@ -188,8 +190,9 @@ function onCreatePost()
 	game.triggerEvent('Tween Camera Zoom', '1.4, true', '0.001, linear');
 
 	game.gf.scrollFactor.set(1, 1);
-}
 
+	FlxG.autoPause = false;
+}
 
 var floatTimer:Float = 0;
 function onUpdatePost(e:Float) {
@@ -200,12 +203,16 @@ function onUpdatePost(e:Float) {
 
 	if (canGFFloat)
 	{
-		game.gf.setPosition(590 + mathCos, -90 + mathSin);
-		pixelBG[2].spr.setPosition(740 + mathCos, 10 + mathSin);
+		game.gf.setPosition(580 + mathCos, -90 + mathSin);
+		pixelBG[2].spr.setPosition(game.gf.x + 150, game.gf.y +100);
 	}
 
 	if (PlayState.stageUI == "pixel")
 	{
+		// force cam shit :'''v
+		game.camZooming = false;
+		game.camGame.zoom = 1;
+
 		for (i in 0...notes.length)
 		{
 			if (notes.members[i].isSustainNote)
@@ -223,10 +230,52 @@ function onUpdatePost(e:Float) {
 
 function onStepHit()
 {
+	if (curStep == 520 || curStep == 1176){
+		game.camHUD.shake(0.036, 1/game.playbackRate);
+		FlxG.camera.shake(0.026, 1/game.playbackRate);
+		initOppStrumsShaking(false);		
+	}
+
+	if (curStep == 528){
+		for (oppStrum in game.opponentStrums){
+			oppStrum.visible = false;
+		}
+
+		if (game.unspawnNotes != null)
+			for (note in game.unspawnNotes)
+				if (note != null)
+					if (!note.mustPress)
+						note.visible = false;
+
+		if (game.notes != null)
+			for (note in game.notes.members)
+				if (note != null && !note.mustPress) note.visible = false;
+	}
+
+	if (curStep == 800){
+		game.getLuaObject('iconOpp').changeIcon('XENO-P22');
+
+		for (oppStrum in game.opponentStrums){
+			oppStrum.visible = true;
+		}
+
+		if (game.unspawnNotes != null)
+			for (note in game.unspawnNotes)
+				if (note != null)
+					if (!note.mustPress)
+						note.visible = true;
+
+		if (game.notes != null)
+			for (note in game.notes.members)
+				if (note != null && !note.mustPress) note.visible = true;
+
+		initOppStrumsShaking(true);
+	}
+
 	final offset = (curStep - 1184) % 32;
 	if (curStep >= 1192 && curStep <= 1418 && (offset == 8 || offset == 11)) spinStrums();
 
-	if (curStep == 1439 ) FlxTween.tween(camHUD, {alpha: 0}, 0.6);
+	if (curStep == 1439 ) FlxTween.tween(camHUD, {alpha: 0}, 0.6/game.playbackRate);
 }
 
 function spinStrums()
@@ -239,9 +288,15 @@ function spinStrums()
 			{
 				FlxTween.cancelTweensOf(note);
 				note.angle = 0;
-				FlxTween.tween(note, {angle: 360}, 0.3, {ease: FlxEase.circOut});
+				FlxTween.tween(note, {angle: 360}, 0.3/game.playbackRate, {ease: FlxEase.circOut});
 			}
 		}
+	}
+}
+
+function initOppStrumsShaking(loop:Bool){
+	for (oppStrum in game.opponentStrums){
+		oppStrum.shakeStrum(8, loop ? -1 : 1);
 	}
 }
 
@@ -263,7 +318,7 @@ function reloadNotes()
 }
 
 function opponentNoteHit()
-	FlxG.camera.shake(shakeIntensity, 0.05);
+	FlxG.camera.shake(shakeIntensity, 0.05/game.playbackRate);
 
 function destroyStage(stage)
 	for (stg in stage) stg.spr.destroy();

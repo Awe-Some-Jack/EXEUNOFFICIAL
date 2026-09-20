@@ -3158,11 +3158,12 @@ class PlayState extends MusicBeatState
 		note.ratingMod = daRating.ratingMod;
 		if(!note.ratingDisabled) daRating.hits++;
 		note.rating = daRating.name;
+		note.comboBreak = daRating.comboBreak;
 		
 		score = daRating.score;
 
 		// Combo counter moved here for the desaturated note feature to work properly
-		if (note.rating == "bad" || note.rating == "shit"){
+		if (daRating.comboBreak){
 			combo = 0;
 			
 			// correctly?
@@ -3175,6 +3176,7 @@ class PlayState extends MusicBeatState
 
 			totalPlayed++;
 			RecalculateRating(true);
+			note.desat();
 		}else{
 			combo++;
 		}
@@ -3185,8 +3187,6 @@ class PlayState extends MusicBeatState
 		{
 			final precisionBonus:Int = Math.floor(Math.max(0, 50 - noteDiff));
 			score += precisionBonus;
-		}else if (daRating.name == "bad" || daRating.name == "shit"){
-			note.desat();
 		}
 
 		if(!cpuControlled) 
@@ -3848,14 +3848,6 @@ class PlayState extends MusicBeatState
 		if(!note.isSustainNote)
 		{
 			popUpScore(note);
-		}else{
-			if (note.tail != null){
-				if(note.tail.length > 0) {
-					for(childNote in note.tail) {
-						childNote?.desat();
-					}
-				}
-			}
 		}
 
 		var gainHealth:Bool = true;
@@ -3987,7 +3979,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public function invalidateNote(note:Note, ?byHit:Bool = false):Void {
-		if (byHit && (note.rating == "bad" || note.rating == "shit")) return;
+		if (byHit && (note.comboBreak)) return;
 
 		if (note.noteData >= 0 && note.noteData < 4) {
 			noteQueues[note.noteData].remove(note);
@@ -4214,7 +4206,6 @@ class PlayState extends MusicBeatState
 		{
 			if (generatedMusic && !endingSong && !gameplayCam.isCameraOnForcedPos)
 				moveCameraSection();
-
 			gameplayCam.onSectionZoomBump();
 
 			if (sec.changeBPM)

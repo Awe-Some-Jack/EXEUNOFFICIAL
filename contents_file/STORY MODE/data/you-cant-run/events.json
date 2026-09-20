@@ -244,6 +244,7 @@
 		[
 			55714.2857142857,
 			[
+				["chromFlash", "0, 2.8", "0.9"],
 				["Change Character", "dad", "sonic.exe 2-grito"],
 				["Tween Camera Zoom", "0.9, false", ""],
 				["glitchFlash", "0, 1.2", "1.3"],
@@ -253,6 +254,7 @@
 		[
 			56571.4285714286,
 			[
+				["chromFlash", "0, 0", "0.9"],
 				["Change Character", "bf", "bfpixel"],
 				["Change Character", "dad", "sonic.exe 2 p"],
 				["Tweening Camera", "0, 0", "0.001, linear"],
@@ -470,6 +472,7 @@
 		[
 			126000,
 			[
+				["chromFlash", "0, 2.8", "0.9"],
 				["Change Character", "dad", "sonic.exe 2-grito"],
 				["Tweening Camera", "-800, 90", "0.001, linear"],
 				["Tween Camera Zoom", "1, true", "0.001, linear"],
@@ -488,6 +491,7 @@
 		[
 			126857.142857143,
 			[
+				["chromFlash", "0, 0", "0.9"],
 				["Tween Camera Zoom", "0.7", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"],
 				["Change Health Damage", "0.015", ""],

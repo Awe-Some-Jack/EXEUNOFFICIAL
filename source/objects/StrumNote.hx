@@ -24,6 +24,17 @@ class StrumNote extends FlxSprite
 	public var holdTimer = 0.0;
 	public var confirmDuration = 4.0;
 
+	/**
+     * set `shakeDuration` -1 to start a loop shake, set 0 to cancel it :3
+    **/
+    public var shakeDuration:Float = 0;
+    public var shakeIntensity:Float = 0;
+
+    public var firstPosition = {
+        x: 0.0,
+        y: 0.0
+    }
+
 	private function set_texture(value:String):String
 	{
 		if (texture != value)
@@ -146,16 +157,34 @@ class StrumNote extends FlxSprite
 		x += Note.swagWidth * noteData;
 		x += 50;
 		x += (FlxG.width / 2) * player;
+		firstPosition.x = x;
+        firstPosition.y = y;
 	}
 
 	public function centerStrums():Void
 	{
 		//lol
 		x = (FlxG.width / 2) + ((100 + (5 + Note.swagWidth) * (player == 1 ? noteData : (4 - noteData))) * (player == 1 ? 1 : -1));
+		firstPosition.x = x;
+        firstPosition.y = y;
 	}
 
 	override function update(elapsed:Float):Void
 	{
+		if (shakeDuration != 0) {
+            if (shakeDuration > 0)
+                shakeDuration -= elapsed;
+
+            x = firstPosition.x + FlxG.random.float(-shakeIntensity, shakeIntensity);
+            y = firstPosition.y + FlxG.random.float(-shakeIntensity, shakeIntensity);
+        } 
+        else 
+        {
+            x = FlxMath.lerp(x, firstPosition.x, FlxMath.bound(elapsed * 12, 0, 1));
+            y = FlxMath.lerp(y, firstPosition.y, FlxMath.bound(elapsed * 12, 0, 1));
+        }
+
+
 		if (resetAnim > 0)
 		{
 			resetAnim -= elapsed;
@@ -179,9 +208,7 @@ class StrumNote extends FlxSprite
 			if (animation.curAnim != null && animation.curAnim.name.startsWith('confirm')){
 				if (isPlayer){
 					playAnim("pressed");
-				}/*else{
-					playAnim("static");
-				}*/
+				}
 			}else{
 				playAnim("static");
 			}
@@ -201,4 +228,16 @@ class StrumNote extends FlxSprite
 			centerOrigin();
 		}
 	}
+
+	/**
+     * Call this fuction to active shaking
+     * @param duration -1 to loop, 0 to force stop it
+     * @param intensity displacement pixel force
+    **/
+    public function shakeStrum(intensity:Float, duration:Float) {
+        this.shakeIntensity = intensity;
+        this.shakeDuration = duration;
+		firstPosition.x = x;
+        firstPosition.y = y;
+    }
 }

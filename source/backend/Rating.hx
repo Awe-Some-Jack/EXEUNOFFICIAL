@@ -11,6 +11,7 @@ class Rating
 	public var score:Int = 350;
 	public var noteSplash:Bool = true;
 	public var hits:Int = 0;
+	public var comboBreak:Bool = false;
 
 	public function new(name:String)
 	{
@@ -34,12 +35,14 @@ class Rating
 		rating.ratingMod = 0.67;
 		rating.score = 200;
 		rating.noteSplash = false;
+		rating.comboBreak = false;
 		ratingsData.push(rating);
 
 		var rating:Rating = new Rating('bad');
 		rating.ratingMod = 0.34;
 		rating.score = 100;
 		rating.noteSplash = false;
+		rating.comboBreak = true;
 		ratingsData.push(rating);
 
 		var rating:Rating = new Rating('shit');
@@ -47,6 +50,7 @@ class Rating
 		rating.score = 50;
 		rating.noteSplash = false;
 		ratingsData.push(rating);
+		rating.comboBreak = true;
 		return ratingsData;
 	}
 }

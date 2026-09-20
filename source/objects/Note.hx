@@ -54,6 +54,8 @@ class Note extends FlxSprite
 	public var hitByOpponent:Bool = false;
 	public var noteWasHit:Bool = false;
 
+	public var comboBreak:Bool = false;
+
 	public var prevNote:Note;
 	public var nextNote:Note;
 

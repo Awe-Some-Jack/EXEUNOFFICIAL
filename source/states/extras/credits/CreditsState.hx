@@ -306,7 +306,7 @@ private class CreditPopup extends MusicBeatSubstate
 		
 		final iconBase = 'extras/credits/icons/${user.icon}';
 		final iconPath = resolveImagePath(iconBase, user.icon, 'assets/exe/extras/credits/missing_icon.webp');
-        if (iconPath.contains('missing_icon'))
+        if (!iconPath.contains('missing_icon'))
         {
             userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(iconPath);
             userIcon.camera = popCam; fit(userIcon, 100, 100); savedIconScale = userIcon.scale.x; add(userIcon);
@@ -320,7 +320,7 @@ private class CreditPopup extends MusicBeatSubstate
 
         final flagBase = 'extras/credits/countries/${user.nation}';
         final flagPath = resolveImagePath(flagBase, user.nation, 'assets/exe/extras/credits/missing_country.webp');
-        if (flagPath.contains('missing_country'))
+        if (!flagPath.contains('missing_country'))
         {    
             final flag = new FlxSprite().loadGraphic(flagPath);
             flag.setPosition(Std.int(nm.x + nm.textField.textWidth + 15), Std.int(nm.y + (nm.height - flag.height) / 2));

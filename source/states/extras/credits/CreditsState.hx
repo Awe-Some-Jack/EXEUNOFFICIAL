@@ -248,6 +248,8 @@ private class CreditPopup extends MusicBeatSubstate
     var canClick:Bool = true;
     var pressingBtn:String = '';
 
+    var createdIcon:Bool = false;
+
     override function create()
     {
         super.create();
@@ -285,6 +287,7 @@ private class CreditPopup extends MusicBeatSubstate
         bg = new FlxSprite().loadGraphic(bmp); bg.screenCenter(); bg.camera = popCam; add(bg);
     }
 
+    var dax:Float = 0; var day:Float = 100;
     function buildHeader():Void
 	{
 		function resolveImagePath(basePath:String, param:Dynamic, fallback:String):String
@@ -304,30 +307,35 @@ private class CreditPopup extends MusicBeatSubstate
 		
 		final iconBase = 'extras/credits/icons/${user.icon}';
 		final iconPath = resolveImagePath(iconBase, user.icon, 'assets/exe/extras/credits/missing_icon.webp');
-		
-		userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(iconPath);
-		userIcon.camera = popCam; fit(userIcon, 100, 100); savedIconScale = userIcon.scale.x; add(userIcon);
+        if (!iconPath.contains('missing_icon'))
+        {
+            userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(iconPath);
+            userIcon.camera = popCam; fit(userIcon, 100, 100); savedIconScale = userIcon.scale.x; add(userIcon);
+            createdIcon = true;
+        }
 
+        if (userIcon != null) dax = userIcon.width;
+        if (userIcon != null) day = userIcon.height;
 		final nm = new FlxText(0, 0, bg.width - 100, user.name ?? "Unknown");
-		nm.setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(76), (user.name == 'Divide' ? 0xFFFFFF00 : 0xFFFFFFFF), LEFT, OUTLINE, 0x55000000);
-		nm.borderSize = Language.cjkBorder(3); nm.setPosition(userIcon.x + userIcon.width + 25, userIcon.y + (userIcon.height - nm.height) / 2);
+		nm.setFormat(Paths.font(Language.fontOrCJK("vcr.ttf")), Language.cjkSize(76), (user.name == 'Divide' ? 0xFFFDFD51 : 0xFFFFFFFF), LEFT, OUTLINE, 0x55000000);
+		nm.borderSize = Language.cjkBorder(3); nm.setPosition((bg.x + 40) + dax + 25, (bg.y + 40) + (day - nm.height) / 2);
 		nm.camera = popCam; add(nm);
 
-        if (col != 'unofficial') return;
-
-		final flagBase = 'extras/credits/countries/${user.nation}';
-		final flagPath = resolveImagePath(flagBase, user.nation, 'assets/exe/extras/credits/missing_country.webp');
-		
-		final flag = new FlxSprite().loadGraphic(flagPath);
-		flag.setPosition(Std.int(nm.x + nm.textField.textWidth + 15), Std.int(nm.y + (nm.height - flag.height) / 2));
-		flag.camera = popCam; add(flag);
+        final flagBase = 'extras/credits/countries/${user.nation}';
+        final flagPath = resolveImagePath(flagBase, user.nation, 'assets/exe/extras/credits/missing_country.webp');
+        if (!flagPath.contains('missing_country'))
+        {    
+            final flag = new FlxSprite().loadGraphic(flagPath);
+            flag.setPosition(Std.int(nm.x + nm.textField.textWidth + 15), Std.int(nm.y + (nm.height - flag.height) / 2));
+            flag.camera = popCam; add(flag);
+        }
 	}
 
     function buildDescription():Void
     {
         final sepW = Std.int(bg.width / 2 - 50);
-        final sepY = userIcon.y + userIcon.height + 25;
-        final sepX = userIcon.x;
+        final sepY = (bg.y + 40) + day + 25;
+        final sepX = (bg.x + 40);
         final sbmp = new BitmapData(sepW, 3, true, 0x00000000);
         for (px in 0...sepW)
         {
@@ -375,13 +383,14 @@ private class CreditPopup extends MusicBeatSubstate
 
     function buildExplosion():Void
     {
+        if (!createdIcon) return;
         var exp:String = 'explosion';
         if (user.name.toLowerCase() == 'vn2' ) exp = 'lava';
         explosion = new FlxSprite(userIcon.x - 50, userIcon.y - 100);
         explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow('assets/exe/extras/credits/$exp.webp', 'assets/exe/extras/credits/$exp.xml');
         explosion.animation.addByPrefix('idle', 'idle', 16, false);
         explosion.animation.play('idle');
-        explosion.scale.set(3, 3); explosion.antialiasing = false; explosion.updateHitbox();
+        explosion.scale.set((exp == 'lava' ? 1 : 3), (exp == 'lava' ? 1 : 3)); explosion.antialiasing = false; explosion.updateHitbox();
         explosion.alpha = 0; explosion.camera = popCam; add(explosion);
     }
 
@@ -454,7 +463,8 @@ private class CreditPopup extends MusicBeatSubstate
         updateNavigation();
         super.update(elapsed);
 
-        var hovering = FlxG.mouse.overlaps(userIcon) && canClick;
+        var hovering = false;
+        if (createdIcon) hovering = FlxG.mouse.overlaps(userIcon) && canClick;
         if (twitterBtn != null && FlxG.mouse.overlaps(twitterBtn)) hovering = true;
         if (youtubeBtn != null && FlxG.mouse.overlaps(youtubeBtn)) hovering = true;
         #if VIDEOS_ALLOWED if (userVideo != null && FlxG.mouse.overlaps(userVideo.video)) hovering = true; #end

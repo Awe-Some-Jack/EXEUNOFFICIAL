@@ -3,285 +3,285 @@
 		{
 			"name": "Treno",
 			"icon": "treno",
-			"description": "Lead Director, Artist and Animator",
 			"nation": "venezuela",
+			"description": "Lead Director, Artist and Animator",
 			"quote": "Bueno... por fin aquí está... La V3 de VS Sonic.EXE.\nPor desgracia no fue como todo quisimos, pero creo que es un buen intento. Muchas gracias a todos los amigos y gente que me apoyaron, que me hicieron ser un mejor director para todos ellos y mejorar como artista y animador.\nVeremos si quizás nos animamos a hacer una v2, ¿No? \n\nTreno artes y animaciones.",
-			"colors": [[218, 37, 169], [109, 18, 84]],
 			"twitter": "https://x.com/TRENO_ART",
 			"youtube": "https://www.youtube.com/@treno7178",
+			"colors": [[218, 37, 169], [109, 18, 84]],
 			"extra": ["video", "treno"]
 		},
 		{
 			"name": "MeDicenKay",
 			"icon": "kay",
+			"nation": "chile",
 			"description": "Director, Composer, Charter and Voice Actor for Devoid",
 			"quote": "Este mod es como la última cosa que haría en realidad de fnf aparte de otros projectos jeje pero bueno fue un viaje excelente y me siento muy agradecido de todo lo que aporte aqui en Unofficial tanto como Director, Compositor Y Etc.\n\nPor Cierto Apoyen el MisfitsKay Pack.\n\n-RatonAguja",
-			"nation": "chile",
-			"colors": [[26, 39, 102], [174, 27, 30]],
 			"youtube": "https://www.youtube.com/@MeDicenKay",
+			"colors": [[26, 39, 102], [174, 27, 30]],
 			"extra": ["video", "kaydancing"]
 		},
 		{
 			"name": "KivFLP",
 			"icon": "kiv",
+			"nation": "espana",
 			"description": "Director and Composer",
 			"quote": "Fueron 4 años bastante largos, movidos y llenos de puro arte. Pero también he descubierto lo tóxica y envidiosa que puede ser la gente en esta comunidad. He podido ver los sabotajes que son capaces de hacer para arruinar los proyectos de los demás.\n\nPero hoooly shit, puedo aseguraros que ha merecido la pena cada tarde, cada conversación y todo lo que he aportado a este mundillo de EXE.\n\nAgradecimientos a mis suscriptores, a todos mis colaboradores y a todos los que me han dado buenas experiencias en sus mods, además de a mi gente de la vida real.\n\nNo pudieron pararnos de nuevo.\n#EXEmovement",
-			"nation": "espana",
-			"colors": [[221, 159, 152], [70, 44, 47]],
 			"youtube": "https://www.youtube.com/@Kiv_FLP",
+			"colors": [[221, 159, 152], [70, 44, 47]],
 			"extra": ["image", "karlosmuere.jpg"]
 		},
 		{
 			"name": "Dudu",
 			"icon": "dudu",
+			"nation": "chile",
 			"description": "Main Coder and Charter",
 			"quote": "Estoy muy agradecido de entrar al mod y ser una parte fundamental de este, fue una experiencia tanto maravillosa como nueva.\nMe aceptaron rápidamente en su grupo de amigos y en lo que puedo llamar familia. Todos los que conocí por el mod fueron muy amables conmigo, la cual siempre estaré agradecido.\n\nFue y es un gusto poder ser el lead coder del mod y poder contribuir en gran parte en el desarrollo de este proyecto en el cual le dediqué muchisimo tiempo y amor.\n\nSimplemente espero que la comunidad reciba el mod como un regalo que nunca llegó por parte del mod original, que reconozca el esfuerzo que todo el equipo hizo para que esto fuese realidad y darles contenido de calidad y disfrutable.\n\n- Dudu 2026\n\n\n\n\n\nposdata treno es gay :speaking_head: :fire: :fire:",
-			"colors": [[64, 64, 64], [192, 192, 192]],
-			"nation": "chile",
 			"twitter": "https://x.com/dudugd20",
 			"youtube": "https://www.youtube.com/@dudugd20",
+			"colors": [[64, 64, 64], [192, 192, 192]],
 			"extra": ["video", "tungtung", true]
 		},
 		{
 			"name": "KrazyKazu",
 			"icon": "kazu",
-			"description": "Coder",
 			"nation": "peru",
+			"description": "Coder",
 			"extra": ["video", "bow", true]
 		},
 		{
 			"name": "Raimbowcore12",
 			"icon": "raimbow",
+			"nation": "espana",
 			"description": "Coder and Charter",
 			"quote": "[ENG]\nI'm Raimbow! Just your average Stickman. I am one of coders and charters that has worked in many of the songs here, I hope you enjoy them, hehe.\nI don't really wanna drag out sentimental stuff, but I'm grateful for EVERYONE in this development team. It's because of them that I have REALLY improved in my coding/charting skills, and thanks to it i can push harder on future proyects. Don't forget to check the devs' works, they're also INCREDIBLE.\nAnyways check this peak GIF/Video right here.\n[ESP]\nSoy Raimbow! Tu Stickman Promedio. Soy uno de los programadores y charters que se ha encargado de unas cuantas canciones del mod. Espero que te hayan gustado, jeje. No es por ser sentimental ni nada, pero estoy MUUUY agradecido con todo el equipo de este mod. De no ser por ellos, no habría mejorado, ni divertido tanto como lo he hecho hasta ahora. En fin, mira este pedazo GIF/Vídeo.",
-			"colors": [[40, 247, 17], [27, 173, 10]],
-			"nation": "espana",
 			"twitter": "https://x.com/raimbowcore12",
 			"youtube": "https://www.youtube.com/@raimbowcore12",
+			"colors": [[40, 247, 17], [27, 173, 10]],
 			"extra": ["video", "el putisimo pan de ayer", true]
 		},
 		{
 			"name": "AssmanBruh",
+			"nation": "peru",
 			"icon": "assman",
 			"description": "Coder",
-			"nation": "peru",
 			"quote": "haxeflixel my beloved",
-			"colors": [[123, 142, 153], [255, 255, 255]],
 			"twitter": "https://x.com/assmansito_",
 			"youtube": "https://www.youtube.com/@assmanbruh",
+			"colors": [[123, 142, 153], [255, 255, 255]],
 			"extra": ["video", "jujutsu", true]
 		},
 		{
 			"name": "Remagets",
 			"icon": "rema",
+			"nation": "republicadominicana",
 			"description": "Coder",
 			"quote": "It was a pleasure to work in this mod besides of joining at a late state, i could do many different and interesting stuff, learned and met new incredible people, I hope the development goes well in the future.\n\n\n\nDonde estan los her worlds? Se lo comieron los remas",
-			"colors": [[0, 154, 194], [18, 40, 76]],
-			"nation": "republicadominicana",
 			"twitter": "https://x.com/Remagets",
 			"youtube": "https://www.youtube.com/@printcodeRem",
+			"colors": [[0, 154, 194], [18, 40, 76]],
 			"extra": ["video", "ola", true]
 		},
 		{
 			"name": "CherryLemur",
 			"icon": "cherry",
+			"nation": "argentina",
 			"description": "Coder",
 			"quote": "\"Si huyes ganas uno, si avanzas ganas dos.\nCada error enseña algo, cada derrota deja experiencia.\nNo se trata de llegar rápido, sino de seguir adelante incluso cuando todo parece ir en contra.\nMientras exista la voluntad de continuar, siempre habrá una oportunidad de superarte y convertirte en alguien más fuerte.\" - Sonia\n\nSAQUENME DE LATINO AMERICAAAAAAAAA",
-			"colors": [[23, 29, 124], [16, 20, 84]],
-			"nation": "argentina",
 			"youtube": "https://youtube.com/@thesillysoniava",
+			"colors": [[23, 29, 124], [16, 20, 84]],
 			"extra": ["video", "void", true]
 		},
 		{
 			"name": "Kophy232",
 			"icon": "kophy",
+			"nation": "peru",
 			"description": "Coder",
 			"quote": "Hola! :] peak Coder de Miasma Aqui! Fue un gusto ayudar en este exitoso proyecto de Sonic.exe, siempre le tuve fe, fue grandioso ver a tanta gente talentosa trabajar unida para sacar un proyecto tan grande y dificil! que no se compara a ninguna otra restauracion. En mi caso, viniendo del mod que no deberia mencionarse, fueron 3 largos años de espera y sufrimiento, desarrollando cutres restauraciones para que solo sean una perdida de tiempo y esfuerzo invertido para nada, pero estoy muy orgulloso que finalmente lograramos publicar algo de lo que habria sido un gran proyecto hecho con amor y dedicacion.\nMis mas sinceras gracias al dev team por hacer este proyecto una realidad, y nunca rendirse! Vieron que no era tan dificil despues de todo? oh and.. fuck the leakers=!=!)!",
-			"nation": "peru",
-			"colors": [[0, 23, 182], [140, 23, 51]],
-			"youtube": "https://www.youtube.com/@kophy232",
 			"twitter": "https://x.com/kophy232",
+			"youtube": "https://www.youtube.com/@kophy232",
+			"colors": [[0, 23, 182], [140, 23, 51]],
 			"extra": ["image", "callate.png"]
 		},
 		{
 			"name": "Wolfie",
 			"icon": "wolfie",
+			"nation": "usa",
 			"description": "Coder and Charter",
 			"quote": "Coming from the mod that shall not be named, this was definitely a fresh breath of air and I'm glad I got to work on songs I liked the most, even if I joined a bit late lmao. Hopefully I'll be able to do more cool stuff like this in the future\n\nTeto Supremacy",
-			"nation": "usa",
-			"colors": [[13, 39, 124], [188, 3, 16]],
-			"youtube": "https://www.youtube.com/@Wolfie_1985",
 			"twitter": "https://x.com/Wolfie64745554",
+			"youtube": "https://www.youtube.com/@Wolfie_1985",
+			"colors": [[13, 39, 124], [188, 3, 16]],
 			"extra": ["video", "obituary"]
 		},
 		{
 			"name": "MaysLastPlay",
 			"icon": "mays",
+			"nation": "usa",
 			"description": "Mobile Coder",
 			"quote": "I am Embodiment of Laziness",
-			"colors": [[21, 40, 114], [0, 136, 43]],
 			"twitter": "https://x.com/MaysLastPlay",
 			"youtube": "https://www.youtube.com/channel/UCx0LxtFR8ROd9sFAq-UxDfw",
-			"nation": "usa",
+			"colors": [[21, 40, 114], [0, 136, 43]],
 			"extra": ["video", "springtrap"]
 		},
 		{
 			"name": "Snorby",
 			"icon": "jason",
+			"nation": "uzbek",
 			"description": "Coder",
 			"quote": "*Your ad could be here*",
-			"nation": "uzbek",
-			"colors": [[211, 3, 252], [252, 32, 3]],
 			"twitter": "https://x.com/JustX_LOL",
+			"colors": [[211, 3, 252], [252, 32, 3]],
 			"extra": ["video", "table"]
 		},
 		{
 			"name": "HyperDream",
 			"icon": "hyper",
-			"quote": "- Jisoo hits me like an earthquake -",
-			"description": "Artist",
 			"nation": "mongolia",
-			"youtube": "https://youtube.com/@hyperisdreaming",
+			"description": "Artist",
+			"quote": "- Jisoo hits me like an earthquake -",
 			"twitter": "https://x.com/hyperisdreaming",
+			"youtube": "https://youtube.com/@hyperisdreaming",
 			"colors": [[30, 21, 19], [130, 119, 113]]
 		},
 		{
 			"name": "Engineer",
 			"icon": "engineer",
+			"nation": "usa",
 			"description": "Artist",
 			"quote": "Incase I don’t see you again, Good Morning, Good Evening, and Goodnight",
 			"youtube": "https://www.youtube.com/@engineer-vc2zw",
-			"nation": "usa",
 			"colors": [[211, 59, 21], [216, 148, 21]],
 			"extra": ["video", "message"]
 		},
 		{
 			"name": "Artisus",
 			"icon": "artisus",
-			"quote": "Fab 5 Freddy told me everybody's fly\nDJ spinnin', I said, \"My, my\"\nFlash is fast, Flash is cool\nFrançois c'est pas, flashé no deux\nAnd you don't stop, sure shot\nGo out to the parking lot\nAnd you get in your car and drive real far\nAnd you drive all night, and then you see a light\nAnd it comes right down, and it lands on the ground\nAnd out comes a man from Mars\nAnd you try to run, but he's got a gun\nAnd he shoots you dead, and he eats your head\nAnd then you're in the man from Mars\nYou go out at night, eatin' cars\nYou eat Cadillacs, Lincolns, too\nMercurys and Subaru\nAnd you don't stop, you keep on eatin' cars\nThen, when there's no more cars, you go out at night\nAnd eat up bars where the people meet\nFace to face, dance cheek to cheek\nOne to one, man to man\nDance toe to toe, don't move too slow\n'Cause the man from Mars is through with cars\nHe's eatin' bars, yeah, wall to wall\nDoor to door, hall to hall\nHe's gonna eat 'em all\nRapture, be pure",
-			"description": "Artist",
-			"colors": [[32, 19, 165], [124, 28, 168]],
-			"youtube": "https://www.youtube.com/@Artless-f2y",
 			"nation": "usa",
+			"description": "Artist",
+			"quote": "Fab 5 Freddy told me everybody's fly\nDJ spinnin', I said, \"My, my\"\nFlash is fast, Flash is cool\nFrançois c'est pas, flashé no deux\nAnd you don't stop, sure shot\nGo out to the parking lot\nAnd you get in your car and drive real far\nAnd you drive all night, and then you see a light\nAnd it comes right down, and it lands on the ground\nAnd out comes a man from Mars\nAnd you try to run, but he's got a gun\nAnd he shoots you dead, and he eats your head\nAnd then you're in the man from Mars\nYou go out at night, eatin' cars\nYou eat Cadillacs, Lincolns, too\nMercurys and Subaru\nAnd you don't stop, you keep on eatin' cars\nThen, when there's no more cars, you go out at night\nAnd eat up bars where the people meet\nFace to face, dance cheek to cheek\nOne to one, man to man\nDance toe to toe, don't move too slow\n'Cause the man from Mars is through with cars\nHe's eatin' bars, yeah, wall to wall\nDoor to door, hall to hall\nHe's gonna eat 'em all\nRapture, be pure",
+			"youtube": "https://www.youtube.com/@Artless-f2y",
+			"colors": [[32, 19, 165], [124, 28, 168]],
 			"extra": ["video", "artisus"]
 		},
 		{
 			"name": "CM_drawe",
 			"icon": "cm",
+			"nation": "espana",
 			"description": "Artist",
 			"quote": "Algo que me gustaría agradecer es que, durante el proceso de este proyecto, pude mejorar en muchos ámbitos de mi arte y animación.\n\nFue un desarrollo muy unido, con un ambiente fantástico que se quedará en mi corazón, ya que son experiencias que es muy poco probable que vuelvan a repetirse.\n\nDisfruten esto como un trabajo honesto y como lo que siempre fue todo esto\n- un homenaje para la comunidad.\n\n\nSomething I'd like to express my gratitude for is that, throughout the development of this project, I was able to grow and improve in many aspects of my art and animation.\n\nIt was a deeply united project, built within an incredible atmosphere that will always remain in my heart.\n\nPlease enjoy this for what it truly is: an honest piece of work, and what it was always meant to be\n- a tribute to the community.",
-			"colors": [[236, 0, 31], [0, 0, 0]],
 			"twitter": "https://x.com/CM_drawe",
-			"nation": "espana",
+			"colors": [[236, 0, 31], [0, 0, 0]],
 			"extra": ["image", "laburo.png"]
 		},
 		{
 			"name": "BarcoBasurero",
 			"icon": "barco",
+			"nation": "paraguay",
 			"description": "Artist",
 			"quote": "¡Oído cocina! Olvidémonos del streamer y pasemos a la ficción absoluta. Aquí tienes la biografía de un personaje completamente inventado bajo ese nombre.\n\nBarcobasurero (nacido como Baltazar \"Baco\" Suárez el 14 de noviembre de 1982 en el Puerto de San Antonio, Chile) es un célebre artista conceptual, ecologista radical y arquitecto naval empírico. Es mundialmente reconocido por fundar el movimiento artístico «Basurismo Flotante», el cual transforma residuos industriales en embarcaciones habitables autosustentables.\n\nResumen Biográfico\n\n| Datos Clave | Detalles |\n|---|---|\n| Nombre Real | Baltazar Suárez |\n| Apodo | Barcobasurero |\n| Nacionalidad | Chilena |\n| Ocupación | Escultor naval, activista ecológico, filósofo del residuo |\n| Obra Magna | La balsa de los mil plásticos (2018) |\n| Estilo | Eco-Art / Escultura funcional minimalista |\n\nOrígenes y Filosofía\n\nCriado en una zona portuaria de alta densidad industrial, Baltazar pasó su infancia recolectando maderas, redes rotas y contenedores de plástico que el mar arrojaba a la costa. A los 20 años, tras abandonar la carrera de Ingeniería Naval por considerarla \"demasiado rígida y destructiva para el ecosistema\", adoptó el seudónimo Barcobasurero.\nSu filosofía se basa en una premisa radical: \"La humanidad navega sobre su propia basura; es hora de aprender a flotar con dignidad sobre ella\". En lugar de ver el desecho como un final, Barcobasurero lo ve como la materia prima\n\nEl Arca de PET (2012)\n\nSu primera gran creación fue un catamarán de 12 metros de eslora construido enteramente con 45.000 botellas de plástico recicladas, compactadas mediante un sistema de presión hidráulica casero. El barco completó con éxito la travesía desde Valparaíso hasta la Isla de Pascua, demostrando la viabilidad de sus estructuras.\n\nLa balsa de los mil plásticos (2018)\n\nInstalación flotante y laboratorio móvil que actualmente navega por el Giro del Pacífico Norte. La embarcación cuenta con paneles solares hechos de silicio recuperado y un sistema de filtrado de microplásticos que utiliza redes de pesca fantasma modificadas.\n\nCiudades de Desecho (Proyecto en curso)\n\nUn plano arquitectónico utópico para construir plataformas habitables en el océano destinadas a refugiados climáticos, utilizando únicamente la basura compactada que flota en las corrientes marinas.\n\n- Barcobasurero, durante su discurso en la Cumbre del Océano Limpio (2025).",
-			"nation": "paraguay",
-			"colors": [[86, 43, 14], [103, 103, 103]],
 			"twitter": "https://x.com/barcobasurerow",
 			"youtube": "https://youtube.com/@barcobasurerow",
+			"colors": [[86, 43, 14], [103, 103, 103]],
 			"extra": ["image", "barco.png"]
 		},
 		{
 			"name": "Sebas1554",
 			"icon": "sebas",
-			"description": "Artist and Animator",
-			"quote": "No hay mayor gusto ver este mod terminado, fue un camino muy impredecible y nisiquiera sabía que iba a ser parte de esto puesto que hace 2 años solo era un simple espectador más de la comunidad, este trayecto fue una combinación tanto de cosas buenas como malas, pero es lo que tuvimos que pasar para que pudiéramos porfin terminar este mod que, aunque me duela decirlo, marco mi adolescencia en cierta parte, el desarrollo fue una experiencia única con mucha gente que me cae de maravilla y sobretodo, disfrutamos haciendo el mod, que supongo que es lo más importante. Pero con seguridad dire que no será lo último que vean de mi, reignited los espera cabrones",
-			"colors": [[0, 39, 84], [131, 0, 28]],
 			"nation": "peru",
+			"description": "Artist and Animator",
+			"quote": "No hay mayor gusto ver este mod terminado, fue un camino muy impredecible y nisiquiera sabía que iba a ser parte de esto puesto que hace 2 años solo era un simple espectador más de la comunidad, este trayecto fue una combinación tanto de cosas buenas como malas, pero es lo que tuvimos que pasar para que pudiéramos porfin terminar este mod que, aunque me duela decirlo, marco mi adolescencia en cierta parte, el desarrollo fue una experiencia única con mucha gente que me cae de maravilla y sobretodo, disfrutamos haciendo el mod, que supongo que es lo más importante. Pero con seguridad dire que no será lo último que vean de mi, reignited ya no los espera cabrones",
 			"twitter": "https://x.com/LG090297",
+			"colors": [[0, 39, 84], [131, 0, 28]],
 			"extra": ["video", "sebas"]
 		},
 		{
 			"name": "VN2",
 			"icon": "vn2",
-			"quote": "La verdad no esperé llegar tan lejos con mi arte, literalmente entrando a pocos dias de que salga Xddd.\nEspero nos volvamos a ver pronto en otros poroyectos! tengo tanto por mostrar jeje.\n\nPSDT: Fare acaba los sprites",
-			"description": "Artist",
-			"twitter": "https://x.com/Art_VN2",
 			"nation": "peru",
+			"description": "Artist",
+			"quote": "La verdad no esperé llegar tan lejos con mi arte, literalmente entrando a pocos dias de que salga Xddd.\nEspero nos volvamos a ver pronto en otros poroyectos! tengo tanto por mostrar jeje.\n\nPSDT: Fare acaba los sprites",
+			"twitter": "https://x.com/Art_VN2",
 			"colors": [[175, 38, 130], [25, 41, 183]],
 			"extra": ["video", "tiseapapi"]
 		},
 		{
 			"name": "Mariano",
 			"icon": "mariano",
-			"description": "Artist",
 			"nation": "peru",
-			"colors": [[255, 122, 0], [255, 213, 74]],
+			"description": "Artist",
 			"quote": "Hola soy Mariano\nAlguien apasionado a la animación en general, para mi fue un gusto hacer muchas cosas en este mod, creo que soy el equilibrio del proyecto...\n\nY quien diga lo contrario solo es un envidioso egoísta!!!!!!!, como sea nos vemos en otra querido público que anda de curioso en ver los créditos del mod.",
 			"youtube": "https://youtube.com/@mar-z6b5k",
+			"colors": [[255, 122, 0], [255, 213, 74]],
 			"extra": ["image", "mariano.jpg"]
 		},
 		{
 			"name": "Kostya Hernandez",
 			"icon": "kostya",
-			"quote": "Amo a todos los que están en Unoficial, son unas personitas increíbles y me gustó trabajar en este proyecto. Puedes buscarme para tus proyectos y acordar todo al MD!",
-			"description": "Artist and 3D Artist",
 			"nation": "mexico",
-			"colors": [[221, 141, 71], [154, 0, 102]],
+			"description": "Artist and 3D Artist",
+			"quote": "Amo a todos los que están en Unoficial, son unas personitas increíbles y me gustó trabajar en este proyecto. Puedes buscarme para tus proyectos y acordar todo al MD!",
 			"twitter": "https://x.com/HernandezKostya",
+			"colors": [[221, 141, 71], [154, 0, 102]],
 			"extra": ["image", "kitty.jpg"]
 		},
 		{
 			"name": "Tomasero",
 			"icon": "tomasero",
-			"description": "Artist, Animator and Charter",
 			"nation": "argentina",
-			"colors": [[43, 38, 38], [204, 43, 43]],
+			"description": "Artist, Animator and Charter",
 			"youtube": "https://www.youtube.com/@eltomasero3367",
-			"twitter": "https://x.com/ztomasero"
+			"twitter": "https://x.com/ztomasero",
+			"colors": [[43, 38, 38], [204, 43, 43]]
 		},
 		{
 			"name": "Pekoso",
 			"icon": "pekoso",
-			"description": "Artist",
-			"colors": [[105, 0, 150], [74, 108, 204]],
-			"quote": "Podre ser flojo, pero no al nivel de fare, termina cycles\n\nGotta go es la mejor cancion porque la hice yo osi osi fare jodete",
 			"nation": "chile",
+			"description": "Artist",
+			"quote": "Podre ser flojo, pero no al nivel de fare, termina cycles\n\nGotta go es la mejor cancion porque la hice yo osi osi fare jodete",
 			"twitter": "https://x.com/Pekoso_72",
+			"colors": [[105, 0, 150], [74, 108, 204]],
 			"extra": ["video", "invencible"]
 		},
 		{
 			"name": "Fare.dz",
 			"icon": "fare",
-			"quote": "Gracias al Unnoficial team\nPor aceptarme y tratarme como parte de la familia,\nPerdón por un año de demora con los sprite de brawbrust \nPero se terminó y ahora lo ven en life and death\nLos quiero chicos\nSomos un team muy talentoso\nMas peak que gotta go\n\n//Así y que pekoso72 me coma todo el titanoso ",
-			"description": "Artist",
-			"colors": [[0, 0, 0], [19, 25, 99]],
 			"nation": "peru",
+			"description": "Artist",
+			"quote": "Gracias al Unnoficial team\nPor aceptarme y tratarme como parte de la familia,\nPerdón por un año de demora con los sprite de brawbrust \nPero se terminó y ahora lo ven en life and death\nLos quiero chicos\nSomos un team muy talentoso\nMas peak que gotta go\n\n//Así y que pekoso72 me coma todo el titanoso ",
 			"twitter": "https://x.com/niggstress21",
+			"colors": [[0, 0, 0], [19, 25, 99]],
 			"extra": ["image", "imbecil.png"]
 		},
 		{
 			"name": "Suonima",
 			"icon": "suo",
+			"nation": "mexico",
 			"description": "Artist",
 			"quote": "\"Sinceramente, nunca creí llegar tan lejos.\nSé que este mod será polémico y que quizá no sea del agrado de todos, pero si  logramos tener éxito con el proyecto, me gustaría dedicarlo a mi familia y al Unofficial Crew, quienes me adoptaron como parte de su grupo y me consideraron un amigo.\nDe verdad, esta fue una aventura grandiosa.\"\n\n\"No me arrepiento de nada y me muero de ganas por volverlo a hacer una vez más, genuinamente fue algo increíble.\"\n\nSuo Was Here (2026)",
-			"colors": [[26, 19, 55], [0, 143, 167]],
-			"nation": "mexico",
 			"twitter": "https://www.x.com/SuonimaG_",
+			"colors": [[26, 19, 55], [0, 143, 167]],
 			"extra": ["video", "kayesgay"]
 		},
 		{
 			"name": "johnwindowsxp",
 			"icon": "jhon",
+			"nation": "espana",
 			"description": "3D Artist",
 			"quote": "I hate remaking tails doll SHOOT HIM. oh and raimbow it's smelly SHOWER",
 			"twitter": "https://x.com/johnwindowsxp",
 			"youtube": "https://www.youtube.com/@johwindoesxp",
-			"nation": "espana",
 			"colors": [[252, 159, 50], [252, 159, 50]],
 			"extra": ["video", "jhon"]
 		},
 		{
 			"name": "Nebros",
 			"icon": "nebros",
+			"nation": "chile",
 			"description": "Animator and 3D Artist",
 			"quote": "\"La comunidad EXE actúa como si estuviera construyendo el Cuarto Reich del cringe digital: reglas absurdas, elitismo ridículo, peleas internas eternas y una obsesión enfermiza con imponer cuál Sonic edgy es el 'canon definitivo'. Cada servidor de Discord parece una dictadura estética donde un morro de 14 años con foto de Xenophanes se cree comandante supremo del horror psicológico.\"\n\n-chat gpt escribio esto",
-			"nation": "chile",
 			"twitter": "https://x.com/ebrosBM",
 			"colors": [[213, 0, 20], [70, 170, 33]],
 			"extra": ["video", "exe", true]
@@ -289,22 +289,22 @@
 		{
 			"name": "RoxasWhite_",
 			"icon": "white",
+			"nation": "brazil",
 			"description": "Pixel Artist",
 			"quote": "Everything in the life depends on how much you want to fuck someone, and I really wanted with this mod. All my work in pixel art here was all made with a lot of love and dedication. To my younger self, I leave here my tribute to the entire EXE community, that on my lowest time, gave me a hand to get up. From your Brazilian friend RoxasWhite_",
-			"nation": "brazil",
-			"colors": [[155, 13, 13], [0, 0, 0]],
 			"twitter": "https://x.com/RoxasWhite_",
 			"youtube": "https://youtube.com/@whiteroxas_",
+			"colors": [[155, 13, 13], [0, 0, 0]],
 			"extra": ["image", "vidaedura.jpg"]
 		},
 		{
 			"name": "Sr. Kleynner",
 			"icon": "kleynner",
+			"nation": "colombia",
 			"description": "Pixel Artist",
 			"quote": "Hola! soy Kleynner, pixel artista; es la primera vez que estoy en un mod de fnf y la verdad me entretuve mucho trabajando en este, entré gracias a un amigo que me invitó a ver cómo iba el mod y gracias a saber un poco de pixel art pude ayudar a que este proyecto pudiera completarse, del cual me siento muy feliz de ser parte para finalmente ver Vs Sonic.exe terminado, mod que me gustaba mucho y siempre quise ver algún mod que lo terminara, me divertí bastante aquí y me alegro de haber compartido con todo este increíble equipo\n\nlo ironico es que realmente es la primera vez que hago cosas de fnf y Sonic así que aprendí varias cosas aquí también, además que me motivó a seguir con el pixel art después de un tiempo donde había perdido toda motivación, este mod está hecho con amor y cariño, no por fama espero lo disfruten así cómo disfrutamos haciéndolo \n\n\n-POLLO ME ROBÓ LA FRASE\n-Chad\n-Familia Unofficial\n-UMW",
-			"nation": "colombia",
-			"youtube": "https://youtube.com/@srkleynner",
 			"twitter": "https://x.com/SrKleynner",
+			"youtube": "https://youtube.com/@srkleynner",
 			"colors": [[180, 66, 255], [255, 66, 223]],
 			"extra": ["video", "chadchadchad"]
 		},
@@ -312,168 +312,168 @@
 			"name": "T4co",
 			"icon": "taco",
 			"nation": "peru",
-			"quote": "platano",
 			"description": "Pixel Artist",
-			"youtube": "https://www.youtube.com/@lithium5356",
+			"quote": "platano",
 			"twitter": "https://x.com/lith90124",
+			"youtube": "https://www.youtube.com/@lithium5356",
 			"colors": [[255, 163, 26], [194, 55, 55]],
 			"extra": ["video", "pez", true]
 		},
 		{
 			"name": "SlaxPe",
 			"icon": "slax",
+			"nation": "peru",
 			"description": "Pixel Artist",
 			"quote": "brawl stars terminó en la temporada de godzilla",
-			"nation": "peru",
-			"colors": [[205, 20, 91], [97, 9, 183]],
-			"youtube": "https://www.youtube.com/@SlaxBy2010",
 			"twitter": "https://x.com/Slax_Art",
+			"youtube": "https://www.youtube.com/@SlaxBy2010",
+			"colors": [[205, 20, 91], [97, 9, 183]],
 			"extra": ["video", "amogus"]
 		},
 		{
 			"name": "ExeTh3F4k3d",
 			"icon": "exe",
-			"quote": "I can't beat triple trouble under 100 misses",
-			"youtube": "https://youtube.com/@exethefaker",
 			"nation": "usa",
 			"description": "Composer",
-			"extra": ["image", "chukls.jpg"],
-			"colors": [[198, 23, 23], [20, 20, 206]]
+			"quote": "I can't beat triple trouble under 100 misses",
+			"youtube": "https://youtube.com/@exethefaker",
+			"colors": [[198, 23, 23], [20, 20, 206]],
+			"extra": ["image", "chukls.jpg"]
 		},
 		{
 			"name": "DaRealT0bi",
 			"icon": "tobi",
+			"nation": "chile",
 			"description": "Composer",
 			"quote": "Hola soy Tobi y dejo mi marca",
-			"colors": [[71, 67, 226], [49, 160, 134]],
-			"nation": "chile",
 			"youtube": "https://www.youtube.com/@MxdT0biMain",
+			"colors": [[71, 67, 226], [49, 160, 134]],
 			"extra": ["image", "banaduck.png"]
 		},
 		{
 			"name": "LifeyTheRay",
 			"icon": "lifey",
+			"nation": "brazil",
 			"description": "Composer",
 			"quote": "say less bud, i got the WORLD CUP in my veins Little Quantum!",
-			"nation": "brazil",
-			"colors": [[71, 67, 226], [49, 160, 134]],
-			"youtube": "https://www.youtube.com/@Lifeylmao",
 			"twitter": "https://x.com/Samu3470",
+			"youtube": "https://www.youtube.com/@Lifeylmao",
+			"colors": [[71, 67, 226], [49, 160, 134]],
 			"extra": ["image", "brasil.jpg"]
 		},
 		{
 			"name": "KraimYT",
 			"icon": "kraim",
-			"description": "Composer",
-			"nation": "chile"
+			"nation": "chile",
+			"description": "Composer"
 		},
 		{
 			"name": "DX Black Fire",
 			"icon": "dxbf",
-			"quote": "Years may pass, communities may change, but the moments we shared will always remain, And deciding to share my songs with you all was the best choice I've ever made, One of the memories I will never forget.",
+			"nation": "brazil",
 			"description": "Composer",
+			"quote": "Years may pass, communities may change, but the moments we shared will always remain, And deciding to share my songs with you all was the best choice I've ever made, One of the memories I will never forget.",
 			"youtube": "https://www.youtube.com/@DXBlackFirelol",
 			"colors": [[96, 96, 96], [0, 0, 0]],
-			"nation": "brazil",
 			"extra": ["image", "dxplush.png"]
 		},
 		{
 			"name": "LyricalMaxi",
 			"icon": "maxi",
+			"nation": "chile",
 			"description": "Composer",
 			"quote": "El llanto es el esposo de la llanta...",
-			"nation": "chile",
-			"colors": [[255, 255, 255], [0, 178, 255]],
 			"youtube": "https://www.youtube.com/@lyricalmaxi",
+			"colors": [[255, 255, 255], [0, 178, 255]],
 			"extra": ["video", "medico"]
 		},
 		{
 			"name": "rak",
 			"icon": "rak",
+			"nation": "argentina",
 			"description": "Composer",
 			"quote": "gracias porco.jerme96/thanks dixon.mayas99",
-			"colors": [[120, 0, 31], [40, 0, 0]],
-			"nation": "argentina",
 			"youtube": "https://youtube.com/@rakeishon",
+			"colors": [[120, 0, 31], [40, 0, 0]],
 			"extra": ["image", "rak.jpg"]
 		},
 		{
 			"name": "Rogtary",
 			"icon": "rogtary",
+			"nation": "chile",
 			"description": "Composer",
 			"quote": "Hermano, trabajar aquí fue una de las mejores experiencias que he tenido en esta comunidad. Nunca había estado en un mod EXE terminado, y que el primero sea este me tiene muy emocionado.\n\nMe encanta ver que con trabajo, tiempo y esfuerzo pudimos crear algo especial entre todos nosotros.\n\nPasé muy buenos momentos y conocí personas increíbles. Muchas gracias por creer en nosotros y por dejarme formar parte de este proyecto.\n\nEspero se pueda dar la oportunidad de una v2 para seguir viviendo esta bonita experiencia.\n\nCon mucho cariño, gracias... Rogy los quiere :D",
-			"nation": "chile",
-			"colors": [[45, 0, 68], [6, 0, 10]],
 			"youtube": "https://youtube.com/@rogtarymusic",
+			"colors": [[45, 0, 68], [6, 0, 10]],
 			"extra": ["image", "xdddd.png"]
 		},
 		{
 			"name": "Ryan2511Pro",
 			"icon": "ryan",
+			"nation": "peru",
 			"description": "Composer",
 			"quote": "PaRappa mi GOAT",
-			"colors": [[227, 62, 58], [121, 234, 94]],
-			"nation": "peru",
 			"youtube": "https://www.youtube.com/@ryan2511pro",
+			"colors": [[227, 62, 58], [121, 234, 94]],
 			"extra": ["video", "baldi humor"]
 		},
 		{
 			"name": "Tomis Turbando",
 			"icon": "tomis",
+			"nation": "brazil",
 			"description": "Composer",
 			"quote": "Sou um compositor nerd, amo fazer musicas, Sata andagi :D",
-			"nation": "brazil",
-			"colors": [[230, 247, 255], [37, 39, 51]],
-			"youtube": "https://youtube.com/@tomisturbando",
 			"twitter": "https://x.com/Tomis_Turbando",
+			"youtube": "https://youtube.com/@tomisturbando",
+			"colors": [[230, 247, 255], [37, 39, 51]],
 			"extra": ["video", "santa", true]
 		},
 		{
 			"name": "Sanko",
 			"icon": "sanko",
+			"nation": "mexico",
 			"description": "Composer",
 			"quote": "QUE?! QUE TU GODSPEED ES EL NEGRO JOSÉ? Que pena...\nLlegando tarde al mod del momento como siempre.\nMe hubiera gustado haber tenido la oportunidad de trabajar en más canciones aquí (más que nada porque casi no estuve presente en todo el desarrollo) pero me alegra que hayan querido usar mi versión de el Dios que se corre o como le digan.\nFuera de bromas, estuve impresionado de la calidad del trabajo y el talento que hubo en el mod, por cierto DUDU EL GOAT DEL CHARTING\nah si y es coder tambien, eso.",
-			"nation": "mexico",
-			"colors": [[199, 4, 2], [16, 0, 0]],
 			"youtube": "https://youtube.com/@sanko89858",
+			"colors": [[199, 4, 2], [16, 0, 0]],
 			"extra": ["image", "chinito.jpg"]
 		},
 		{
 			"name": "Alex_Hamud",
 			"icon": "alex",
+			"nation": "russia",
 			"description": "Composer and Voice Actor for Xenophanes and Scorched",
 			"quote": "\"Gallop on, Rocinante! Justice shall prevail!\"\n\n- Don Quixote",
 			"youtube": "https://www.youtube.com/@Alex_Hamud",
-			"nation": "russia",
 			"colors": [[225, 157, 0], [130, 39, 39]],
 			"extra": ["video", "voleyball"]
 		},
 		{
 			"name": "PolloRostizado",
 			"icon": "pollo",
+			"nation": "mexico",
 			"description": "Main Charter",
 			"quote": "Si no quieres comer nada come pene\n\nHola soy Pollo, nose que poner aqui w  yo chartie como la mitad de las canciones del mod o si bro\n\nRandomonus si estas leyendo esto te mando un saludo mi fan\n\nEstos son mis artistas mas escuchados en spotify: \nKendrick Lamar\nDrake\nKanye West\nTyler, The Creator\nMetro Boomin\nTravis Scott\nBNYX\nDon Toliver\nBaby Keem",
-			"colors": [[152, 147, 147], [0, 0, 0]],
-			"nation": "mexico",
 			"youtube": "https://youtube.com/@ronmcbonbon5660",
+			"colors": [[152, 147, 147], [0, 0, 0]],
 			"extra": ["image", "sam.jpg"]
 		},
 		{
 			"name": "Sr. EspantaViejas",
 			"icon": "espantaviejas",
+			"nation": "paraguay",
 			"description": "Charter",
 			"quote": "AHHHH SIII ESTE MOD ES UNA PUTA JOYA, por cierto amo a natsuki, es mi vieja, no se si se dieron cuenta, ah... cierto apoyen el mod, treno, kay y kawai son unos grandes directores.\n\nYa enserio, ame estar en este equipo, es de los grupo mas divertidos que estuve en mi vida, jamas me la pase tan bien estando en un equipo, especialmente de sonic.exe, me agrado muchisimo interactuar con la gente y expresar lo raro q puedo a llegar a ser sin que me juzguen o algo asi.\nAsi que basicamente amo este equipo y si se sigue adelante yo estare tambien aunque solo sea un simple charter\n\nPosdata dudu es gay",
-			"nation": "paraguay",
-			"colors": [[209, 15, 15], [18, 17, 17]],
 			"twitter": "https://x.com/EspantaViejas97",
+			"colors": [[209, 15, 15], [18, 17, 17]],
 			"extra": ["video", "natsuki"]
 		},
 		{
 			"name": "sevulda",
 			"icon": "sevulda",
 			"nation": "chile",
-			"quote": "muchas tardes buenas gracias",
 			"description": "Charter",
+			"quote": "muchas tardes buenas gracias",
 			"twitter": "https://x.com/Sevulda230",
 			"colors": [[156, 35, 255], [68, 31, 142]],
 			"extra": ["video", "skeleton-running-past", true]
@@ -482,469 +482,424 @@
 			"name": "LuisukeDestroyer",
 			"icon": "luisuke",
 			"nation": "venezuela",
-			"quote": "Salchicha alemanaaaa",
 			"description": "Voice Actor for Brawturst",
-			"colors": [[209, 15, 15], [18, 17, 17]],
-			"youtube": "https://www.youtube.com/@LuisukeDestroyer",
+			"quote": "Salchicha alemanaaaa",
 			"twitter": "https://x.com/LuisukeDTR",
+			"youtube": "https://www.youtube.com/@LuisukeDestroyer",
+			"colors": [[209, 15, 15], [18, 17, 17]],
 			"extra": ["video", "man-trying-to-kil-himself-joke"]
 		}
 	],
-
 	"original": [
 		{
 			"name": "RightBurstUltra",
-			"icon": "rightburst",
-			"quote": "RightBurst_Ultra was known as the creator and former director of the original Vs. Sonic.EXE mod, and he later created what we now know as Parallax, which ended up being an extension of the original mod along with its EXE characters. He was also kicked out of the team due to past behavior and conflicts.",
-			"description": "Mod Creator & Former Director"
+			"description": "Mod Creator & Former Director",
+			"quote": "RightBurst_Ultra was known as the creator and former director of the original Vs. Sonic.EXE mod, and he later created what we now know as Parallax, which ended up being an extension of the original mod along with its EXE characters. He was also kicked out of the team due to past behavior and conflicts."
 		},
 		{
 			"name": "Raven",
-			"icon": "raven",
-			"quote": "revie03 (Formely known as revie03) was a former director and the creator of the character EXE, leading the mod during the development of updates 2.0 and 2.5. She was removed from the project following controversial accusations that were later debunked, though she briefly returned before departing permanently.",
-			"description": "Former Director"
+			"description": "Former Director",
+			"quote": "revie03 (Formely known as revie03) was a former director and the creator of the character EXE, leading the mod during the development of updates 2.0 and 2.5. She was removed from the project following controversial accusations that were later debunked, though she briefly returned before departing permanently."
 		},
 		{
 			"name": "ComGamingNZ",
-			"icon": "commando",
-			"quote": "ComGamingNZ (also known as CommandoDev) is a director and artist who co-led the project during its later stages and is credited with creating the character Requital. He played a significant role in the mod's direction and contributed artwork and character designs during a period of intense team restructuring.",
-			"description": "Director & Artist"
+			"description": "Director & Artist",
+			"quote": "ComGamingNZ (also known as CommandoDev) is a director and artist who co-led the project during its later stages and is credited with creating the character Requital. He played a significant role in the mod's direction and contributed artwork and character designs during a period of intense team restructuring."
 		},
 		{
 			"name": "Saster",
-			"icon": "saster",
-			"quote": "Saster is a director and composer who took over leadership of Vs. Sonic.exe after RightBurst Ultra's removal, helping to steer the project through its turbulent mid-development phase. A musician of over eight years, he composed several tracks for the mod and served as a primary director alongside CommandoDev.",
-			"description": "Director & Composer"
+			"description": "Director & Composer",
+			"quote": "Saster is a director and composer who took over leadership of Vs. Sonic.exe after RightBurst Ultra's removal, helping to steer the project through its turbulent mid-development phase. A musician of over eight years, he composed several tracks for the mod and served as a primary director alongside CommandoDev."
 		},
 		{
 			"name": "averyavary",
-			"icon": "avery",
-			"quote": "averyavary served as a former director and programmer, contributing to the codebase and project management before stepping down from his leadership role. He was involved in the early to mid-stages of development, helping to shape the mod's technical foundation before leaving the team.",
-			"description": "Former Director & Former Programmer"
+			"description": "Former Director & Former Programmer",
+			"quote": "averyavary served as a former director and programmer, contributing to the codebase and project management before stepping down from his leadership role. He was involved in the early to mid-stages of development, helping to shape the mod's technical foundation before leaving the team."
 		},
 		{
 			"name": "Falsecow",
-			"icon": "false",
-			"quote": "Falsecow is a co-director and digital artist known for creating the 'I AM GOD' artwork and the character Sally_ALT. They served in a leadership role during the mod's later development and contributed significant artistic assets to the EXE universe.",
-			"description": "Former Co-Director & Artist"
+			"description": "Former Co-Director & Artist",
+			"quote": "Falsecow is a co-director and digital artist known for creating the 'I AM GOD' artwork and the character Sally_ALT. They served in a leadership role during the mod's later development and contributed significant artistic assets to the EXE universe."
 		},
 		{
 			"name": "Razencro",
-			"icon": "razen",
-			"quote": "Razencro is a co-director, charter, artist, and programmer who handled multiple technical and creative roles, including animation and video editing. He was a versatile contributor who helped manage the mod's complex charting and visual style throughout its development.",
-			"description": "Co-Director, Charter, Artist & Programmer"
+			"description": "Co-Director, Charter, Artist & Programmer",
+			"quote": "Razencro is a co-director, charter, artist, and programmer who handled multiple technical and creative roles, including animation and video editing. He was a versatile contributor who helped manage the mod's complex charting and visual style throughout its development."
 		},
 		{
 			"name": "JoeDoughBoi",
-			"icon": "joedough",
-			"quote": "JoeDoughBoi is a co-director and artist who created the character Lord X and contributed to the mod's direction and visual design. His creation of Lord X became one of the most iconic elements of the mod, featured prominently in updates 2.0 and beyond.",
-			"description": "Co-Director & Artist"
+			"description": "Co-Director & Artist",
+			"quote": "JoeDoughBoi is a co-director and artist who created the character Lord X and contributed to the mod's direction and visual design. His creation of Lord X became one of the most iconic elements of the mod, featured prominently in updates 2.0 and beyond."
 		},
 		{
 			"name": "SimplyCrispy",
-			"icon": "simply",
-			"quote": "SimplyCrispy is a co-director and composer who contributed to the mod's musical direction and leadership during its final development phases. He worked alongside other directors to finalize the soundtrack and oversee the project's completion before it was officially canceled.",
-			"description": "Co-Director & Composer"
+			"description": "Co-Director & Composer",
+			"quote": "SimplyCrispy is a co-director and composer who contributed to the mod's musical direction and leadership during its final development phases. He worked alongside other directors to finalize the soundtrack and oversee the project's completion before it was officially canceled."
 		},
 		{
 			"name": "MarStarBro",
-			"icon": "marstarbro",
-			"quote": "MarStarBro is a charter, composer, and voice actor who provided the voice for Sonic.exe's primary forms and Majin Sonic. He also composed music for the mod and created the character SL4SH, contributing significantly to the audio and vocal performance aspects.",
-			"description": "Charter, Composer & Voice Actor"
+			"description": "Charter, Composer & Voice Actor",
+			"quote": "MarStarBro is a charter, composer, and voice actor who provided the voice for Sonic.exe's primary forms and Majin Sonic. He also composed music for the mod and created the character SL4SH, contributing significantly to the audio and vocal performance aspects."
 		},
 		{
 			"name": "MadzillaKOTH",
-			"icon": "madzilla",
-			"quote": "MadzillaKOTH is a charter and voice actor who provided vocals for characters like Furnace and created the characters Griatos and Demogri. He also contributed to the charting of several songs, helping to define the gameplay rhythm for various opponents.",
-			"description": "Charter & Voice Actor"
+			"description": "Charter & Voice Actor",
+			"quote": "MadzillaKOTH is a charter and voice actor who provided vocals for characters like Furnace and created the characters Griatos and Demogri. He also contributed to the charting of several songs, helping to define the gameplay rhythm for various opponents."
 		},
 		{
 			"name": "Punkett",
-			"icon": "punkett",
-			"quote": "Punkett is a charter and composer who contributed music and charting to the mod, working on multiple tracks during its development. He was part of the team responsible for the song arrangements and note placement that defined the mod's difficulty and flow.",
-			"description": "Charter & Composer"
+			"description": "Charter & Composer",
+			"quote": "Punkett is a charter and composer who contributed music and charting to the mod, working on multiple tracks during its development. He was part of the team responsible for the song arrangements and note placement that defined the mod's difficulty and flow."
 		},
 		{
 			"name": "UpTaunt",
-			"icon": "uptaunt",
-			"quote": "UpTaunt is a charter and former composer who worked on the mod's charting and contributed music during the earlier phases of development. He was part of the core team that helped shape the gameplay experience before stepping away from the composition role.",
-			"description": "Charter & Former Composer"
+			"description": "Charter & Former Composer",
+			"quote": "UpTaunt is a charter and former composer who worked on the mod's charting and contributed music during the earlier phases of development. He was part of the core team that helped shape the gameplay experience before stepping away from the composition role."
 		},
 		{
 			"name": "Wilde",
-			"icon": "wilde",
-			"quote": "Wilde is a charter and artist who contributed to the mod's charting and visual design, helping to align the gameplay with the artistic vision. His work ensured that the note patterns matched the animations and atmosphere of the characters.",
-			"description": "Charter & Animator"
+			"description": "Charter & Animator",
+			"quote": "Wilde is a charter and artist who contributed to the mod's charting and visual design, helping to align the gameplay with the artistic vision. His work ensured that the note patterns matched the animations and atmosphere of the characters."
 		},
 		{
 			"name": "niffirg",
-			"icon": "niffirg",
-			"quote": "niffirg is a charter who focused on the technical aspect of note placement, ensuring the rhythm and difficulty of the songs were consistent and challenging. He worked closely with composers and artists to finalize the gameplay experience.",
-			"description": "Charter"
+			"description": "Charter",
+			"quote": "niffirg is a charter who focused on the technical aspect of note placement, ensuring the rhythm and difficulty of the songs were consistent and challenging. He worked closely with composers and artists to finalize the gameplay experience."
 		},
 		{
 			"name": "Sandplanet",
-			"icon": "sandplanet",
-			"quote": "Sandplanet is a former charter who contributed to the note charting of the mod before leaving the project. His work helped establish the baseline difficulty for several of the early songs.",
-			"description": "Former Charter"
+			"description": "Former Charter",
+			"quote": "Sandplanet is a former charter who contributed to the note charting of the mod before leaving the project. His work helped establish the baseline difficulty for several of the early songs."
 		},
 		{
 			"name": "Echolocated",
-			"icon": "echo",
-			"quote": "Echolocated is a former charter who was involved in the charting process during the mod's development, contributing to the structure of various songs. He left the team before the project's cancellation.",
-			"description": "Former Charter & Former Composer"
+			"description": "Former Charter & Former Composer",
+			"quote": "Echolocated is a former charter who was involved in the charting process during the mod's development, contributing to the structure of various songs. He left the team before the project's cancellation."
 		},
 		{
 			"name": "Degen Dan",
-			"icon": "degen",
-			"quote": "Degen Dan is a former charter and former programmer who contributed to both the technical coding and the charting of the mod in its earlier stages. He was part of the initial development team before moving on to other projects.",
-			"description": "Former Charter & Former Programmer"
+			"description": "Former Charter & Former Programmer",
+			"quote": "Degen Dan is a former charter and former programmer who contributed to both the technical coding and the charting of the mod in its earlier stages. He was part of the initial development team before moving on to other projects."
 		},
 		{
 			"name": "Dk.",
-			"icon": "dk",
-			"quote": "Dk. is a former charter who worked on the note placement for several songs, helping to refine the gameplay mechanics before leaving the team. His contributions were part of the early charting efforts for the mod.",
-			"description": "Former Programmer"
+			"description": "Former Programmer",
+			"quote": "Dk. is a former charter who worked on the note placement for several songs, helping to refine the gameplay mechanics before leaving the team. His contributions were part of the early charting efforts for the mod."
 		},
 		{
 			"name": "SmileySqueak",
-			"icon": "squeak",
-			"quote": "SmileySqueak is a composer who created original tracks for the mod, adding to the diverse musical landscape of the Vs. Sonic.exe universe. His work helped define the unique sound of several bonus tracks.",
-			"description": "Composer"
+			"description": "Composer",
+			"quote": "SmileySqueak is a composer who created original tracks for the mod, adding to the diverse musical landscape of the Vs. Sonic.exe universe. His work helped define the unique sound of several bonus tracks."
 		},
 		{
 			"name": "Jacaris",
-			"icon": "jacaris",
-			"quote": "Jacaris is a composer and voice actor who provided vocals for characters like Super Sonic Fleetway, Coldsteel the Hedgeheg & Zodick The Hellhog. He also composed music for the mod, contributing to the soundtrack's variety.",
-			"description": "Composer & Voice Actor"
+			"description": "Composer & Voice Actor",
+			"quote": "Jacaris is a composer and voice actor who provided vocals for characters like Super Sonic Fleetway, Coldsteel the Hedgeheg & Zodick The Hellhog. He also composed music for the mod, contributing to the soundtrack's variety."
 		},
 		{
 			"name": "River",
-			"icon": "river",
-			"quote": "River is a composer and artist who contributed both music and visual art to the mod, helping to bridge the gap between audio and visuals. His dual role allowed for a more cohesive artistic vision in his contributions.",
-			"description": "Composer & Artist"
+			"description": "Composer & Artist",
+			"quote": "River is a composer and artist who contributed both music and visual art to the mod, helping to bridge the gap between audio and visuals. His dual role allowed for a more cohesive artistic vision in his contributions."
 		},
 		{
 			"name": "TaeSkull",
-			"icon": "tae",
-			"quote": "TaeSkull is a composer who created original tracks for the mod, adding to the musical diversity of the Vs. Sonic.exe experience. His work helped shape the auditory identity of several key songs.",
-			"description": "Composer"
+			"description": "Composer",
+			"quote": "TaeSkull is a composer who created original tracks for the mod, adding to the musical diversity of the Vs. Sonic.exe experience. His work helped shape the auditory identity of several key songs."
 		},
 		{
 			"name": "Armydillo",
-			"icon": "armydillo",
-			"quote": "Armydillo is a composer who contributed music to the mod, helping to create the haunting and intense atmosphere that defined the project. His compositions are a key part of the mod's soundtrack.",
-			"description": "Composer"
+			"description": "Composer",
+			"quote": "Armydillo is a composer who contributed music to the mod, helping to create the haunting and intense atmosphere that defined the project. His compositions are a key part of the mod's soundtrack."
 		},
 		{
 			"name": "Churgney Gurgney",
-			"icon": "sturm",
-			"quote": "Churgney Gurgney is a composer and voice actor who provided vocals for characters like Starved and Furnace, adding depth to their performances. He also composed music, contributing to the mod's auditory experience.",
-			"description": "Composer & Voice Actor"
+			"description": "Composer & Voice Actor",
+			"quote": "Churgney Gurgney is a composer and voice actor who provided vocals for characters like Starved and Furnace, adding depth to their performances. He also composed music, contributing to the mod's auditory experience."
 		},
 		{
 			"name": "Adam McHummus",
-			"icon": "adam",
-			"quote": "Adam McHummus is a composer who contributed original music to the mod, helping to expand the soundtrack with unique and atmospheric tracks. His work added to the overall horror aesthetic of the game.",
-			"description": "3D Animator, Composer & Voice Actor"
+			"description": "3D Animator, Composer & Voice Actor",
+			"quote": "Adam McHummus is a composer who contributed original music to the mod, helping to expand the soundtrack with unique and atmospheric tracks. His work added to the overall horror aesthetic of the game."
 		},
 		{
 			"name": "Teein",
-			"icon": "teein",
-			"quote": "Teein is a composer who contributed music to the mod, helping to create the haunting and intense atmosphere that defined the project. His work is a key part of the mod's soundtrack.",
-			"description": "Composer"
+			"description": "Composer",
+			"quote": "Teein is a composer who contributed music to the mod, helping to create the haunting and intense atmosphere that defined the project. His work is a key part of the mod's soundtrack."
 		},
 		{
 			"name": "BagheadBeatz",
-			"icon": "baghead",
-			"quote": "BagheadBeatz is a composer who created original tracks for the mod, adding to the musical diversity and intensity of the Vs. Sonic.exe experience. His compositions helped shape the rhythm and flow of several songs.",
-			"description": "Composer"
+			"description": "Composer",
+			"quote": "BagheadBeatz is a composer who created original tracks for the mod, adding to the musical diversity and intensity of the Vs. Sonic.exe experience. His compositions helped shape the rhythm and flow of several songs."
 		},
 		{
 			"name": "Samiiwave",
-			"icon": "samii",
-			"quote": "Samiiwave is a composer who contributed music to the mod, helping to create the haunting and intense atmosphere that defined the project. His work is a key part of the mod's soundtrack.",
-			"description": "Composer"
+			"description": "Composer",
+			"quote": "Samiiwave is a composer who contributed music to the mod, helping to create the haunting and intense atmosphere that defined the project. His work is a key part of the mod's soundtrack."
 		},
 		{
 			"name": "bbpanzu",
-			"icon": "panzu",
-			"quote": "bbpanzu is a former composer who contributed music to the mod in its earlier stages before leaving the project. His work helped establish the initial musical foundation.",
-			"description": "Former Composer"
+			"description": "Former Composer",
+			"quote": "bbpanzu is a former composer who contributed music to the mod in its earlier stages before leaving the project. His work helped establish the initial musical foundation."
 		},
 		{
 			"name": "Vania",
-			"icon": "vania",
-			"quote": "Vania is a former composer who contributed music to the mod in its earlier stages before leaving the project. Her work helped establish the initial musical foundation.",
-			"description": "Former Composer"
+			"description": "Former Composer",
+			"quote": "Vania is a former composer who contributed music to the mod in its earlier stages before leaving the project. Her work helped establish the initial musical foundation."
 		},
 		{
 			"name": "Jamangar",
-			"icon": "jamangar",
-			"quote": "Jamangar was a composer who contributed to the development of Version 2.0 of the Original Mod and composed the song “Black Sun”; after that, he did not contribute any further work during the development.",
-			"description": "Former Composer"
+			"description": "Former Composer",
+			"quote": "Jamangar was a composer who contributed to the development of Version 2.0 of the Original Mod and composed the song “Black Sun”; after that, he did not contribute any further work during the development."
 		},
 		{
 			"name": "JesterFrog",
-			"icon": "jester",
-			"quote": "JesterFrog was a composer and creator for NormalCD who worked on the development of the original mod. She was expelled from the team due to allegations that led to all of her work being removed from the mod.",
-			"description": "Former Composer"
+			"description": "Former Composer",
+			"quote": "JesterFrog was a composer and creator for NormalCD who worked on the development of the original mod. She was expelled from the team due to allegations that led to all of her work being removed from the mod."
 		},
 		{
 			"name": "Notakin",
-			"icon": "notakin",
-			"quote": "Notakin is a former composer and artist who contributed both music and visual art to the mod in its earlier stages before leaving the project. Her dual role allowed for a more cohesive artistic vision in her contributions.",
-			"description": "Former Composer & Artist"
+			"description": "Former Composer & Artist",
+			"quote": "Notakin is a former composer and artist who contributed both music and visual art to the mod in its earlier stages before leaving the project. Her dual role allowed for a more cohesive artistic vision in her contributions."
 		},
 		{
 			"name": "Voidicus",
-			"icon": "voidicus",
-			"quote": "Voidicus was a composer who only contributed to the song “Soink.FLA,” known as “Flash.”",
-			"description": "Former Composer"
+			"description": "Former Composer",
+			"quote": "Voidicus was a composer who only contributed to the song “Soink.FLA,” known as “Flash.”"
 		},
 		{
 			"name": "Benlab",
-			"icon": "benlab",
-			"quote": "Benlab was a composer who was part of the original mod for a short time. He is known for creating the song “Divine Strike” for Sir X.",
-			"description": "Former Composer"
+			"description": "Former Composer",
+			"quote": "Benlab was a composer who was part of the original mod for a short time. He is known for creating the song “Divine Strike” for Sir X."
 		},
 		{
 			"name": "SwappyBlue",
-			"icon": "swappyblue",
-			"quote": "SwappyBlue is a former composer who contributed music to the mod in its earlier stages before leaving the project. His work helped establish the initial musical foundation.",
-			"description": "Concept Artist & Composer"
+			"description": "Concept Artist & Composer",
+			"quote": "SwappyBlue is a former composer who contributed music to the mod in its earlier stages before leaving the project. His work helped establish the initial musical foundation."
 		},
 		{
 			"name": "Divide",
-			"icon": "divide",
-			"quote": "Divide is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.\n\n\nRest in peace.",
-			"description": "Artist"
+			"description": "Artist",
+			"quote": "Divide is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.\n\n\nRest in peace."
 		},
 		{
 			"name": "shutupjojo",
-			"icon": "shutupjojo",
-			"quote": "shutupjojo is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist",
+			"quote": "shutupjojo is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "Zekuta",
-			"icon": "zekuta",
-			"quote": "Zekuta is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist & Animator"
+			"description": "Artist & Animator",
+			"quote": "Zekuta is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "Stankfield",
-			"icon": "stankfield",
-			"quote": "Stankfield is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Former Artist"
+			"description": "Former Artist",
+			"quote": "Stankfield is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "Erick Animations",
-			"icon": "erick",
-			"quote": "Erick Animations is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist & Animator"
+			"description": "Artist & Animator",
+			"quote": "Erick Animations is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "ScorchVx",
-			"icon": "scorch",
-			"quote": "ScorchVx is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist & Animator"
+			"description": "Artist & Animator",
+			"quote": "ScorchVx is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "BombNon",
-			"icon": "bombnon",
-			"quote": "BombNon is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist & Animator"
+			"description": "Artist & Animator",
+			"quote": "BombNon is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "ADJ",
-			"icon": "arthur",
-			"quote": "ADJ is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist",
+			"quote": "ADJ is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "Mocha",
-			"icon": "mocha",
-			"quote": "Mocha is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist",
+			"quote": "Mocha is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "Cherribun",
-			"icon": "cherri",
-			"quote": "Cherribun is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist",
+			"quote": "Cherribun is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "Doorknob",
-			"icon": "doorknob",
-			"quote": "Doorknob is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist",
+			"quote": "Doorknob is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "blueberry",
-			"icon": "blueberry",
-			"quote": "blueberry is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist",
+			"quote": "blueberry is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "GrayAnimates",
-			"icon": "gray",
-			"quote": "GrayAnimates (also known as PaigePayper) is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist"
+			"description": "Artist",
+			"quote": "GrayAnimates (also known as PaigePayper) is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "Jack Gore",
-			"icon": "jack",
-			"quote": "Jack Gore is an artist and voice actor who provided vocals for the character Starved and contributed to the mod's visual design. He was a key artist and voice actor during the mod's development.",
-			"description": "Artist & Voice Actor"
+			"description": "Artist & Voice Actor",
+			"quote": "Jack Gore is an artist and voice actor who provided vocals for the character Starved and contributed to the mod's visual design. He was a key artist and voice actor during the mod's development."
 		},
 		{
 			"name": "CryBit",
-			"icon": "crybit",
-			"quote": "CryBit is an artist and programmer who served as the main programmer for the mod, handling the technical implementation and codebase. He also contributed to the visual design, creating character sprites and animations.",
-			"description": "Artist & Programmer"
+			"description": "Artist & Programmer",
+			"quote": "CryBit is an artist and programmer who served as the main programmer for the mod, handling the technical implementation and codebase. He also contributed to the visual design, creating character sprites and animations."
 		},
 		{
 			"name": "AnarackWarriors",
-			"icon": "anarack",
-			"quote": "AnarackWarriors is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development.",
-			"description": "Artist, Pixel Artist & Animator"
+			"description": "Artist, Pixel Artist & Animator",
+			"quote": "AnarackWarriors is an artist who contributed to the mod's visual design, creating character sprites and animations that defined the horror aesthetic. He was a key artist during the mod's development."
 		},
 		{
 			"name": "MadzillaK0TH",
-			"icon": "madzilla",
-			"quote": "MadzillaK0TH is an artist, charter member, and voice actor who worked on the mod. His most significant contributions were providing the voice samples for Faker, designing the sound effects for the “Triple Trouble” scare sequences, and creating the characters Demogri and Griatos, who appeared in the original mod.",
-			"description": "Artist, Charter & Voice Actor"
+			"description": "Artist, Charter & Voice Actor",
+			"quote": "MadzillaK0TH is an artist, charter member, and voice actor who worked on the mod. His most significant contributions were providing the voice samples for Faker, designing the sound effects for the “Triple Trouble” scare sequences, and creating the characters Demogri and Griatos, who appeared in the original mod."
 		},
 		{
 			"name": "SrGenesis",
-			"icon": "genesis",
-			"quote": "SrGenesis is a former artist who contributed to the mod's visual design in its earlier stages before leaving the project. His work helped establish the initial visual foundation.",
-			"description": "Former Artist"
+			"description": "Former Artist",
+			"quote": "SrGenesis is a former artist who contributed to the mod's visual design in its earlier stages before leaving the project. His work helped establish the initial visual foundation."
 		},
 		{
 			"name": "GP",
-			"icon": "gp",
-			"quote": "GP is a former artist who contributed to the mod's visual design in its earlier stages before leaving the project. His work helped establish the initial visual foundation.",
-			"description": "Former Artist"
+			"description": "Former Artist",
+			"quote": "GP is a former artist who contributed to the mod's visual design in its earlier stages before leaving the project. His work helped establish the initial visual foundation."
 		},
 		{
 			"name": "RekkaDraws",
-			"icon": "rekka",
-			"quote": "RekkaDraws is a former artist who contributed to the mod's visual design in its earlier stages before leaving the project. Her work helped establish the initial visual foundation.",
-			"description": "Former Artist"
+			"description": "Former Artist",
+			"quote": "RekkaDraws is a former artist who contributed to the mod's visual design in its earlier stages before leaving the project. Her work helped establish the initial visual foundation."
 		},
 		{
 			"name": "IagoAnims",
-			"icon": "iago",
-			"quote": "IagoAnims is a former artist who contributed to the mod's visual design in its earlier stages before leaving the project. His work helped establish the initial visual foundation.",
-			"description": "Former Artist"
+			"description": "Former Artist",
+			"quote": "IagoAnims is a former artist who contributed to the mod's visual design in its earlier stages before leaving the project. His work helped establish the initial visual foundation."
 		},
 		{
 			"name": "KGBepis",
-			"icon": "kgbepis",
-			"quote": "KGBepis is a voice actor who provided vocals for the character Xenophanes and contributed to the mod's audio. He was a key voice actor during the mod's development.",
-			"description": "Voice Actor"
+			"description": "Voice Actor",
+			"quote": "KGBepis is a voice actor who provided vocals for the character Xenophanes and contributed to the mod's audio. He was a key voice actor during the mod's development."
 		},
 		{
 			"name": "Illuztriouz",
-			"icon": "illuztriouz",
-			"quote": "Illuztriouz is a voice actor who provided vocals for the character Sonic in Prey and contributed to the mod's audio. He was a key voice actor during the mod's development.",
-			"description": "Voice Actor"
+			"description": "Voice Actor",
+			"quote": "Illuztriouz is a voice actor who provided vocals for the character Sonic in Prey and contributed to the mod's audio. He was a key voice actor during the mod's development."
 		},
 		{
 			"name": "StarlySammie",
-			"icon": "starly",
-			"quote": "StarlySammie is a voice actor who provided vocals for the character Sarah NeedleM0use Henderson and contributed to the mod's audio. She was a key voice actor during the mod's development.",
-			"description": "Voice Actor"
+			"description": "Voice Actor",
+			"quote": "StarlySammie is a voice actor who provided vocals for the character Sarah NeedleM0use Henderson and contributed to the mod's audio. She was a key voice actor during the mod's development."
 		},
 		{
 			"name": "Nebula",
-			"icon": "nebula",
-			"quote": "Nebula is a programmer who contributed to the mod's codebase and technical implementation. He was a key programmer during the mod's development.",
-			"description": "Programmer"
+			"description": "Programmer",
+			"quote": "Nebula is a programmer who contributed to the mod's codebase and technical implementation. He was a key programmer during the mod's development."
 		},
 		{
 			"name": "DuskieWhy",
-			"icon": "duskie",
-			"quote": "DuskieWhy is a programmer who contributed to the mod's codebase and technical implementation. He was a key programmer during the mod's development.",
-			"description": "Programmer"
+			"description": "Programmer",
+			"quote": "DuskieWhy is a programmer who contributed to the mod's codebase and technical implementation. He was a key programmer during the mod's development."
 		},
 		{
 			"name": "Ash",
-			"icon": "ash",
-			"quote": "Ash is a former programmer who contributed to the mod's codebase in its earlier stages before leaving the project. His work helped establish the initial technical foundation.",
-			"description": "Former Programmer"
+			"description": "Former Programmer",
+			"quote": "Ash is a former programmer who contributed to the mod's codebase in its earlier stages before leaving the project. His work helped establish the initial technical foundation."
 		},
 		{
 			"name": "kaydotnet",
-			"icon": "kaydotnet",
-			"quote": "kaydotnet is a special thanks contributor who provided programming help during the mod's development. His assistance was crucial in resolving technical issues.",
-			"description": "Special Thanks (Programming Help)"
+			"description": "Special Thanks (Programming Help)",
+			"quote": "kaydotnet is a special thanks contributor who provided programming help during the mod's development. His assistance was crucial in resolving technical issues."
 		},
 		{
 			"name": "Tae Yai",
-			"icon": "taeyai",
-			"quote": "Tae Yai is a special thanks contributor who provided programming help during the mod's development. His assistance was crucial in resolving technical issues.",
-			"description": "Special Thanks (Programming Help)"
+			"description": "Special Thanks (Programming Help)",
+			"quote": "Tae Yai is a special thanks contributor who provided programming help during the mod's development. His assistance was crucial in resolving technical issues."
 		},
 		{
 			"name": "PolybiusProxy",
-			"icon": "proxy",
-			"quote": "PolybiusProxy is a special thanks contributor who provided MP4 support during the mod's development. His assistance was crucial in enabling video playback features.",
-			"description": "Special Thanks (MP4 Support)"
+			"description": "Special Thanks (MP4 Support)",
+			"quote": "PolybiusProxy is a special thanks contributor who provided MP4 support during the mod's development. His assistance was crucial in enabling video playback features."
 		}
 	],
-
 	"external": [
 		{
 			"name": "Zeurel",
-			"icon": "zeurel",
-			"description": "Secret Histories Tails Animator"
+			"description": "Secret Histories Tails Animator",
+			"nation": "newzealand",
+			"youtube": "https://www.youtube.com/@ZeurelArchive"
 		},
 		{
 			"name": "DanlyDaMusician",
-			"icon": "danly",
-			"description": "Sharpy Showdown Composer"
+			"nation": "russia",
+			"description": "Sharpy Showdown Composer",
+			"youtube": "https://www.youtube.com/@DanlyDaMusician"
 		},
 		{
 			"name": "Zar0k4l",
-			"icon": "zarok",
-			"description": "Mania, Forestall Desire & Final Escape Help"
+			"nation": "peru",
+			"description": "Mania, Forestall Desire & Final Escape Help",
+			"twitter": "https://x.com/zarokalo",
+			"youtube": "https://www.youtube.com/@zar0k4l"
 		},
 		{
 			"name": "Hop",
-			"icon": "hop",
-			"description": "NormalCD OLD VA & Hedge Creator"
+			"description": "NormalCD OLD VA",
+			"youtube": "https://www.youtube.com/@NarrowYourEyes"
 		},
 		{
 			"name": "SCHIO",
 			"icon": "schio",
 			"description": "1st place winner for the SUNKY RENDER CONTEST",
+			"colors": [[255, 193, 43], [255, 119, 0]],
 			"extra": ["image", "schio.png"]
 		},
 		{
 			"name": "Capitan Sonic",
-			"icon": "captainsonic",
+			"icon": "captain",
+			"nation": "mexico",
 			"description": "2nd place winner for the SUNKY RENDER CONTEST",
+			"twitter": "https://x.com/de_marcele56786",
+			"youtube": "https://www.youtube.com/@elcapitansonic",
+			"colors": [[183, 183, 198], [128, 113, 140]],
 			"extra": ["image", "captain.png"]
 		},
 		{
 			"name": "Cardoso",
 			"icon": "cardoso",
+			"nation": "brazil",
 			"description": "3rd place winner for the SUNKY RENDER CONTEST",
+			"quote": "Just a Brazilian artist making his way. Thank God for everything, glad to be here!",
+			"twitter": "https://x.com/alecaldoso",
+			"youtube": "https://www.youtube.com/@alecaldos0",
+			"colors": [[181, 88, 30], [116, 24, 0]],
 			"extra": ["image", "cardoso.png"]
 		},
 		{
-			"name": "Ms.Cooks",
+			"name": "Sr.Clocks115",
 			"icon": "cooks",
+			"nation": "peru",
 			"description": "4th place winner for the SUNKY RENDER CONTEST",
+			"quote": "imagina conocer a señor pollas\n\nQuiero keke!!!",
+			"twitter": "https://x.com/SrClocks115_",
+			"youtube": "https://www.youtube.com/@ms.clocks115",
+			"colors": [[75, 116, 225], [89, 70, 221]],
 			"extra": ["image", "cooks.png"]
 		},
 		{
 			"name": "Rabty",
 			"icon": "rabty",
+			"nation": "mexico",
 			"description": "5th place winner for the SUNKY RENDER CONTEST",
+			"quote": "My son Sunion is right there",
+			"twitter": "https://x.com/Rabtyone",
+			"youtube": "https://www.youtube.com/@Rabtyone",
+			"colors": [[75, 116, 225], [89, 70, 221]],
 			"extra": ["image", "rabty.png"]
 		}
 	]

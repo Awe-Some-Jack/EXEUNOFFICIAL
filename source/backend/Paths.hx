@@ -223,6 +223,16 @@ class Paths
 
 	static public function video(key:String)
 	{
+		if (key.startsWith('../'))
+		{
+			final relative:String = key.substr(3);
+			for (ext in VIDEO_EXTS)
+			{
+				final path:String = getPath('$relative.$ext');
+				if (#if sys FileSystem.exists(path) || #end OpenFlAssets.exists(path)) return path;
+			}
+		}
+
 		#if MODS_ALLOWED
 		final file:String = modsVideo(key);
 		if(#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file)) return file;

@@ -208,18 +208,6 @@ class StrumNote extends FlxSprite
             offset.y = FlxMath.lerp(offset.y, baseOffset.y, FlxMath.bound(elapsed * 12, 0, 1));
         }
 
-		if (shakeReturning)
-		{
-			x = FlxMath.lerp(x, firstPosition.x, FlxMath.bound(elapsed * 12, 0, 1));
-			y = FlxMath.lerp(y, firstPosition.y, FlxMath.bound(elapsed * 12, 0, 1));
-			if (Math.abs(x - firstPosition.x) < 0.5 && Math.abs(y - firstPosition.y) < 0.5)
-			{
-				x = firstPosition.x;
-				y = firstPosition.y;
-				shakeReturning = false;
-			}
-		}
-
 		if (resetAnim > 0)
 		{
 			resetAnim -= elapsed;

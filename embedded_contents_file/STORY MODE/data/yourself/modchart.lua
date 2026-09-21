@@ -25,8 +25,9 @@ function onEvent(n,v1)
 		end
 		if v1 == 'modchart2' then
 			for i = 0,7 do
+				
 				noteTweenX('notex'..i, i, getRandomBool() and screenWidth or (-getProperty('strumLineNotes.members['..i..'].width')), crochet / 260, 'cubeIn')
-				noteTweenY('notey'..i, i, getRandomInt(screenHeight, -getProperty('strumLineNotes.members['..i..'].height')), crochet / 260, 'cubeIn')
+				noteTweenY('notey'..i, i, getRandomInt(downscroll and screenHeight or screenHeight/2, downscroll and screenHeight/2 or -getProperty('strumLineNotes.members['..i..'].height')), crochet / 260, 'cubeIn')
 			end
 		end
 		if v1 == 'modchartstart' then

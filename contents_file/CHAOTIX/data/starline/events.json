@@ -3,341 +3,588 @@
 		[
 			0,
 			[
-				["Swap Pixel Combo", "", ""]
+				["Swap Pixel Combo", "", ""],
+				["Set customCamera Position", "bf", "-100, 100"],
+				["Set Property", "cameraSpeed", "10000"],
+				["Set Character Offset", "bf", "0"],
+				["Set Character Offset", "dad", "0"]
 			]
 		],
 		[
-			825.688073394495,
+			552.960800667222,
 			[
 				["Tween Camera Zoom", "1, true", "5, sineInOut"],
 				["Set Property", "camZoomingMult", "0"],
-				["Set Property", "camZoomingDecay", "0"]
+				["Set Property", "camZoomingDecay", "0"],
+				["Tweening Camera", "-110, 20", "5, sineInOut"]
 			]
 		],
 		[
-			6605.50458715596,
+			6545.45454545454,
 			[
 				["Set Property", "camZoomingMult", "1"],
 				["Set Property", "camZoomingDecay", "1"]
 			]
 		],
 		[
-			17614.6788990826,
+			7090.90909090909,
 			[
-				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
+				["Tweening Camera", "610, 20", "6, quadInOut"],
+				["Tween Camera Zoom", "0.9, true", "6, quadInOut"]
 			]
 		],
 		[
-			22018.3486238532,
+			8181.81818181818,
+			[
+				["chaotixEvents", "modchart", "startBF"]
+			]
+		],
+		[
+			16090.9090909091,
+			[
+				["bloomFlash", "0, 0.6", "0.8, circIn"]
+			]
+		],
+		[
+			16909.0909090909,
+			[
+				["Tween Camera Zoom", "0.95, true", "0.001"],
+				["bloomFlash", "0, 0", "0.2"],
+				["bwFlash", "0.2, 0.2", "0.2"],
+				["brightnessFlash", "-40, -40", "0.2"]
+			]
+		],
+		[
+			17181.8181818182,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001"]
+			]
+		],
+		[
+			17318.1818181818,
+			[
+				["Tween Camera Zoom", "1.3, true", "0.001"]
+			]
+		],
+		[
+			17454.5454545455,
+			[
+				["Tween Camera Zoom", "0.8, true", "1, cubeOut"],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Set Property", "cameraSpeed", "1"],
+				["Set Character Offset", "bf", "25"],
+				["Set Character Offset", "dad", "25"],
+				["Set customCamera Position", "bf", "300, 100"],
+				["brightnessFlash", "0, 0", "0.2"],
+				["bwFlash", "0, 0", "0.2"],
+				["bloomFlash", "0.4, 0", "0.8"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			21818.1818181818,
 			[
 				["Tween Camera Zoom", "0.9, true", "1, cubeOut"]
 			]
 		],
 		[
-			25321.1009174312,
+			25090.9090909091,
 			[
 				["Tween Camera Zoom", "0.92, true", "0.5, circOut"]
 			]
 		],
 		[
-			25871.5596330275,
+			25636.3636363636,
 			[
 				["Tween Camera Zoom", "0.95, true", "0.5, circOut"]
 			]
 		],
 		[
-			26422.0183486238,
+			26181.8181818182,
 			[
 				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
 			]
 		],
 		[
-			30825.6880733945,
+			30545.4545454545,
 			[
 				["Tween Camera Zoom", "0.9, true", "1, cubeOut"]
 			]
 		],
 		[
-			33577.9816513761,
+			33272.7272727273,
 			[
 				["Tween Camera Zoom", "1, true", "3, smootherStepInOut"]
 			]
 		],
 		[
-			35229.3577981651,
+			34363.6363636364,
 			[
-				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
+				["bwFlash", "0, 0.5", "0.5, circOut"]
 			]
 		],
 		[
-			41834.8623853211,
+			34636.3636363636,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001"]
+			]
+		],
+		[
+			34772.7272727273,
+			[
+				["Tween Camera Zoom", "1.3, true", "0.001"]
+			]
+		],
+		[
+			34909.0909090909,
+			[
+				["Tween Camera Zoom", "0.8, true", "1, cubeOut"],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["bwFlash", "0.5, 0", "0.4"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			37090.9090909091,
 			[
 				["Tween Camera Zoom", "0.9", ""]
 			]
 		],
 		[
-			42385.3211009174,
+			39272.7272727273,
 			[
 				["Tween Camera Zoom", "0.8", ""]
 			]
 		],
 		[
-			46238.5321100917,
+			41454.5454545454,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			42000,
+			[
+				["Tween Camera Zoom", "1", ""]
+			]
+		],
+		[
+			42545.4545454545,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			43636.3636363636,
+			[
+				["Tween Camera Zoom", "0.8", ""]
+			]
+		],
+		[
+			45818.1818181818,
 			[
 				["Tween Camera Zoom", "0.9, true", "1, cubeOut"]
 			]
 		],
 		[
-			48440.3669724771,
+			48000,
 			[
 				["Tween Camera Zoom", "1, true", "1, cubeOut"]
 			]
 		],
 		[
-			50642.2018348624,
+			50181.8181818182,
 			[
 				["Tween Camera Zoom", "1.1, true", "0.4, circOut"]
 			]
 		],
 		[
-			51192.6605504587,
+			50727.2727272727,
 			[
 				["Tween Camera Zoom", "1, true", "0.4, circOut"]
 			]
 		],
 		[
-			51743.1192660551,
+			51272.7272727273,
 			[
-				["Tween Camera Zoom", "0.9, true", "0.8, sineInOut"]
+				["Tween Camera Zoom", "1.4, true", "0.8, circIn"]
 			]
 		],
 		[
-			52844.0366972477,
+			52363.6363636364,
 			[
-				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
+				["Tween Camera Zoom", "0.8, true", "1, cubeOut"],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			59449.5412844037,
+			58909.0909090909,
 			[
 				["Tween Camera Zoom", "0.9", ""]
 			]
 		],
 		[
-			60550.4587155964,
+			60000,
 			[
 				["Tween Camera Zoom", "1", ""]
 			]
 		],
 		[
-			61100.9174311927,
+			60545.4545454546,
 			[
 				["Tween Camera Zoom", "0.9", ""]
 			]
 		],
 		[
-			61651.376146789,
+			61090.9090909091,
 			[
 				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
 			]
 		],
 		[
-			68256.880733945,
+			67636.3636363636,
 			[
 				["Tween Camera Zoom", "0.9", ""]
 			]
 		],
 		[
-			69357.7981651377,
+			68727.2727272727,
 			[
 				["Tween Camera Zoom", "1", ""]
 			]
 		],
 		[
-			69908.256880734,
+			69136.3636363636,
 			[
-				["Tween Camera Zoom", "0.9", ""]
+				["bloomFlash", "0, 0.4", "0.5, circIn"]
 			]
 		],
 		[
-			70458.7155963303,
+			69818.1818181818,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.8", ""],
+				["Set Character Offset", "bf", "0"],
+				["Set Character Offset", "dad", "0"],
+				["Set customCamera Position", "bf", "-100, 100"],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			71009.1743119266,
+			70090.9090909091,
 			[
-				["Tween Camera Zoom", "0.65, true", "3.1, smootherStepInOut"],
-				["Set Property", "camZoomingMult", "0"],
-				["Set Property", "camZoomingDecay", "0"]
+				["chaotixEvents", "theSky", "true"],
+				["chaotixEvents", "modchart", "waveNotes"]
 			]
 		],
 		[
-			77064.2201834863,
+			70636.3636363636,
 			[
-				["Set Property", "camZoomingMult", "1"],
-				["Set Property", "camZoomingDecay", "1"]
+				["waveFlash", "0, 0.4", "3"]
 			]
 		],
 		[
-			83669.7247706422,
+			72136.3636363636,
 			[
 				["Set Property", "camZoomingMult", "0"],
 				["Set Property", "camZoomingDecay", "0"],
-				["Tween Camera Zoom", "1, true", "2.6, smootherStepInOut"]
+				["Tween Camera Zoom", "1, true", "6, smootherStepInOut"],
+				["Tweening Camera", "160, -250", "6, smootherStepInOut"],
+				["Set Property", "cameraSpeed", "10000"]
 			]
 		],
 		[
-			86972.4770642202,
+			77863.6363636364,
+			[
+				["Tween Camera Zoom", "0.8, true", "14, smootherStepInOut"],
+				["Tweening Camera", "160, -140", "14, smootherStepInOut"],
+				["Set Property", "cameraSpeed", "10000"]
+			]
+		],
+		[
+			85772.7272727272,
+			[
+				["waveFlash", "0.4, 0", "3"]
+			]
+		],
+		[
+			85909.0909090909,
+			[
+				["chaotixEvents", "theSky", ""]
+			]
+		],
+		[
+			86181.8181818182,
 			[
 				["Tween Camera Zoom", "0.7, true", "1.1, circIn"],
-				["Tweening Camera", "-450, 0", "1.1, circIn"]
+				["Tweening Camera", "90, -60", "1.1, circIn"]
 			]
 		],
 		[
-			88073.3944954129,
+			86454.5454545454,
+			[
+				["bloomFlash", "0.2, 0", "0.2"]
+			]
+		],
+		[
+			86727.2727272727,
+			[
+				["bloomFlash", "0.2, 0", "0.2"]
+			]
+		],
+		[
+			87000,
+			[
+				["bloomFlash", "0.2, 0", "0.2"]
+			]
+		],
+		[
+			87272.7272727273,
+			[
+				["Set Property", "cameraSpeed", "1"],
+				["Set Property", "camZoomingMult", "1"],
+				["Set Property", "camZoomingDecay", "1"],
+				["Set Property", "cameraSpeed", "1"],
+				["Set customCamera Position", "bf", "300, 100"],
+				["Set Character Offset", "bf", "25"],
+				["Set Character Offset", "dad", "25"],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Tween Camera Zoom", "0.8", ""],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "noWaveNotes"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			91636.3636363636,
+			[
+				["Tween Camera Zoom", "0.9, true", "1, cubeOut"]
+			]
+		],
+		[
+			93818.1818181818,
+			[
+				["Tween Camera Zoom", "1, true", "1, cubeOut"]
+			]
+		],
+		[
+			94909.0909090909,
+			[
+				["Tween Camera Zoom", "1.1, true", "1, cubeOut"]
+			]
+		],
+		[
+			95999.9999999999,
+			[
+				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
+			]
+		],
+		[
+			100363.636363636,
+			[
+				["Tween Camera Zoom", "0.9, true", "1, cubeOut"]
+			]
+		],
+		[
+			102545.454545454,
+			[
+				["Tween Camera Zoom", "1, true", "1, cubeOut"]
+			]
+		],
+		[
+			103636.363636364,
+			[
+				["Tween Camera Zoom", "1.1, true", "1, cubeOut"]
+			]
+		],
+		[
+			104181.818181818,
+			[
+				["bwFlash", "0, 0.5", "0.5, circOut"]
+			]
+		],
+		[
+			104454.545454545,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001"]
+			]
+		],
+		[
+			104590.909090909,
+			[
+				["Tween Camera Zoom", "1.3, true", "0.001"]
+			]
+		],
+		[
+			104727.272727273,
+			[
+				["Tween Camera Zoom", "0.8, true", "1, cubeOut"],
+				["Set Character Offset", "dad", "0"],
+				["Set Property", "cameraSpeed", "1.5"],
+				["bwFlash", "0.5, 0", "0.4"],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			106227.272727273,
+			[
+				["Tweening Camera", "520, 20", "0.65, circIn"],
+				["Set Property", "cameraSpeed", "10000"],
+				["Set Property", "camZoomingMult", "0"],
+				["Set Property", "camZoomingDecay", "0"],
+				["Tween Camera Zoom", "1.4, true", "0.65, circIn"],
+				["chaotixEvents", "darkenBG", "true"]
+			]
+		],
+		[
+			106363.636363636,
+			[
+				["bloomFlash", "0, 0.2", "0.45"]
+			]
+		],
+		[
+			106909.090909091,
+			[
+				["bloomFlash", "0.2, 0", "0.8"],
+				["chaotixEvents", "bumpBF", ""],
+				["ScreenBorders", "1", "0.6"],
+				["Tween Camera Zoom", "1.1, true", "1, cubeOut"]
+			]
+		],
+		[
+			108545.454545454,
+			[
+				["Tween Camera Zoom", "1.2, true", "0.001"]
+			]
+		],
+		[
+			108681.818181818,
+			[
+				["Tween Camera Zoom", "1.1, true", "0.001"]
+			]
+		],
+		[
+			108818.181818182,
+			[
+				["Tween Camera Zoom", "1.2, true", "0.001"]
+			]
+		],
+		[
+			108954.545454545,
+			[
+				["Tween Camera Zoom", "1.3, true", "0.001"]
+			]
+		],
+		[
+			109090.909090909,
 			[
 				["Tween Camera Zoom", "0.8", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Set Property", "cameraSpeed", "4"],
 				["Set Property", "camZoomingMult", "1"],
-				["Set Property", "camZoomingDecay", "1"]
+				["Set Property", "camZoomingDecay", "1"],
+				["Set Character Offset", "dad", "25"],
+				["ScreenBorders", "0", "1"],
+				["chaotixEvents", "darkenBG", ""],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			92477.0642201835,
+			109363.636363636,
 			[
-				["Tween Camera Zoom", "0.9, true", "1, cubeOut"]
+				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
-			94678.8990825689,
-			[
-				["Tween Camera Zoom", "1, true", "1, cubeOut"]
-			]
-		],
-		[
-			95779.8165137615,
-			[
-				["Tween Camera Zoom", "1.1, true", "1, cubeOut"]
-			]
-		],
-		[
-			96880.7339449542,
-			[
-				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
-			]
-		],
-		[
-			101284.403669725,
-			[
-				["Tween Camera Zoom", "0.9, true", "1, cubeOut"]
-			]
-		],
-		[
-			103486.23853211,
-			[
-				["Tween Camera Zoom", "1, true", "1, cubeOut"]
-			]
-		],
-		[
-			104587.155963303,
-			[
-				["Tween Camera Zoom", "1.1, true", "1, cubeOut"]
-			]
-		],
-		[
-			105688.073394495,
-			[
-				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
-			]
-		],
-		[
-			110642.201834862,
+			109636.363636364,
 			[
 				["Tween Camera Zoom", "0.9, true", "0.2, circOut"]
 			]
 		],
 		[
-			111055.04587156,
+			110045.454545454,
 			[
 				["Tween Camera Zoom", "1, true", "0.2, circOut"]
 			]
 		],
 		[
-			111330.275229358,
+			110318.181818182,
 			[
 				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
 			]
 		],
 		[
-			112844.036697248,
+			111818.181818182,
 			[
 				["Tween Camera Zoom", "0.9, true", "0.2, circOut"]
 			]
 		],
 		[
-			113256.880733945,
+			112227.272727273,
 			[
 				["Tween Camera Zoom", "1, true", "0.2, circOut"]
 			]
 		],
 		[
-			113532.110091743,
+			112500,
 			[
 				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
 			]
 		],
 		[
-			119449.541284404,
+			118363.636363636,
 			[
 				["Tween Camera Zoom", "0.9, true", "0.2, circOut"]
 			]
 		],
 		[
-			119862.385321101,
+			118772.727272727,
 			[
 				["Tween Camera Zoom", "1, true", "0.2, circOut"]
 			]
 		],
 		[
-			120137.614678899,
+			119045.454545454,
 			[
 				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
 			]
 		],
 		[
-			121651.376146789,
+			120545.454545454,
 			[
 				["Tween Camera Zoom", "0.9, true", "0.2, circOut"]
 			]
 		],
 		[
-			122064.220183486,
+			120954.545454545,
 			[
 				["Tween Camera Zoom", "1, true", "0.2, circOut"]
 			]
 		],
 		[
-			122339.449541284,
+			121227.272727273,
 			[
 				["Tween Camera Zoom", "0.8, true", "1, cubeOut"]
 			]
 		],
 		[
-			123302.752293578,
+			122181.818181818,
 			[
-				["Tween Camera Zoom", "0.6, true", "1, cubeOut"]
+				["Tween Camera Zoom", "0.6, true", "1, cubeOut"],
+				["bloomFlash", "0.4, 0", "0.7"]
 			]
 		],
 		[
-			124541.28440367,
+			123409.09090909,
 			[
 				["Play Animation", "trans1", "dad"]
 			]
 		],
 		[
-			125504.587155963,
+			124355.614973262,
 			[
 				["Tweening Camera", "-800, -340", "0.001, linear"],
 				["Set Property", "cameraSpeed", "10000"],
@@ -345,14 +592,28 @@
 			]
 		],
 		[
-			125642.201834862,
+			124504.812834225,
 			[
 				["Set Property", "cameraSpeed", "1"],
 				["Tweening Camera", "-800, -400", "0.5, linear"]
 			]
 		],
 		[
-			127155.963302752,
+			127075.539665407,
+			[
+				["Set Property", "cameraSpeed", "10000"],
+				["chaotixEvents", "startAnim", "2"],
+				["Tweening Camera", "0, 0", "0.001, linear"]
+			]
+		],
+		[
+			127117.451430113,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			127165.106951872,
 			[
 				["Tween Camera Zoom", "1.2, true", "12, smootherStepInOut"],
 				["Tweening Camera", "-290, 60", "12, smootherStepInOut"],
@@ -362,40 +623,32 @@
 			]
 		],
 		[
-			128412.30437129,
+			127251.336898396,
 			[
-				["Set Property", "cameraSpeed", "10000"],
-				["chaotixEvents", "startAnim", "2"],
-				["Tweening Camera", "0, 0", "0.001, linear"]
+				["chromFlash", "0, 0.6", "12"]
 			]
 		],
 		[
-			128500.539665408,
-			[
-				["Set Property", "cameraSpeed", "1"]
-			]
-		],
-		[
-			129294.657312466,
+			128485.098488937,
 			[
 				["Tweening Camera", "-210, -20", "10, sineInOut"]
 			]
 		],
 		[
-			131235.833783055,
+			129899.069077172,
 			[
 				["chaotixEvents", "startAnim", "3"]
 			]
 		],
 		[
-			132647.598488937,
+			130849.80437129,
 			[
 				["chaotixEvents", "hideAnim", ""],
 				["Play Animation", "reaction1", "gf"]
 			]
 		],
 		[
-			137324.069077172,
+			135634.363194823,
 			[
 				["Tween Camera Zoom", "1.4, true", "1.4, smootherStepInOut"],
 				["Tweening Camera", "-310, -70", "1.4, smootherStepInOut"]
@@ -408,244 +661,799 @@
 			]
 		],
 		[
-			141294.657312466,
+			139780.748663101,
+			[
+				["chromFlash", "0.6, 0.1", "1"]
+			]
+		],
+		[
+			140129.951430114,
 			[
 				["Tween Camera Zoom", "0.7, true", "1, circInOut"],
 				["Tweening Camera", "0, 0", "1, circInOut"]
 			]
 		],
 		[
-			141471.127900702,
+			140306.42201835,
 			[
 				["chaotixEvents", "chaotixTime", ""]
 			]
 		],
 		[
-			142706.422018349,
+			140663.774959526,
 			[
 				["Set Property", "camZoomingMult", "1"],
 				["Set Property", "camZoomingDecay", "1"]
 			]
 		],
 		[
-			144647.598488937,
+			143133.689839572,
 			[
-				["Tween Camera Zoom", "0.8, true", "0.8, circOut"],
-				["Tweening Camera", "-30, -30", "0.001, linear"]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			146059.363194819,
+			143487.30437129,
+			[
+				["Tween Camera Zoom", "0.8, true", "0.8, circOut"],
+				["Tweening Camera", "-30, -30", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			144901.274959525,
 			[
 				["Tween Camera Zoom", "0.9, true", "0.8, circOut"],
 				["Tweening Camera", "-60, -60", "0.001, linear"]
 			]
 		],
 		[
-			147471.127900702,
+			145604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			146310.833783055,
 			[
 				["Tween Camera Zoom", "1.2, true", "0.8, circOut"],
-				["Tweening Camera", "160, 60", "0.001, linear"]
+				["Tweening Camera", "160, 60", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			150294.657312466,
+			147016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			147721.92513369,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			148427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			148780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			149136.569077172,
 			[
 				["Tween Camera Zoom", "1.1, true", "0.8, circOut"],
-				["Tweening Camera", "130, 30", "0.001, linear"]
+				["Tweening Camera", "130, 30", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			151706.422018349,
+			149486.631016043,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			149839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			150192.513368984,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			150548.333783055,
 			[
 				["Tween Camera Zoom", "1.3, true", "0.8, circOut"],
-				["Tweening Camera", "160, 60", "0.001, linear"]
+				["Tweening Camera", "160, 60", "0.001, linear"],
+				["bwFlash", "0, 0.7", "0.2"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			152412.30437129,
+			151247.598488937,
 			[
 				["Tween Camera Zoom", "1, true", "0.9, circIn"],
-				["Tweening Camera", "-260, -20", "0.9, circIn"]
+				["Tweening Camera", "-260, -20", "0.9, circIn"],
+				["brightnessFlash", "0, -50", "0.75, circIn"]
 			]
 		],
 		[
-			153118.186724231,
+			151962.30437129,
 			[
 				["Tween Camera Zoom", "0.8, true", "0.9, circOut"],
-				["Tweening Camera", "0, 0", "0.001, linear"]
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["contrastFlash", "4, 0", "0.7"],
+				["bwFlash", "0, 0", "0.2"],
+				["brightnessFlash", "0, 0", "0.2"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			155941.716135996,
+			152310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			152839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			153016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			153368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			153721.92513369,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			154251.336898396,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			154427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			154781.422018349,
 			[
 				["Tween Camera Zoom", "0.9", ""],
-				["Tweening Camera", "-90, -20", "0.001, linear"]
+				["Tweening Camera", "-90, -20", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			157353.480841878,
+			155133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			155663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			155839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			156192.513368984,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			156545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			156901.274959525,
 			[
 				["Tween Camera Zoom", "1", ""],
 				["Tweening Camera", "-120, -50", "0.001, linear"]
 			]
 		],
 		[
-			158059.363194819,
+			157074.86631016,
 			[
-				["Tween Camera Zoom", "0.9", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			158765.24554776,
+			157252.010253643,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			157607.157312466,
+			[
+				["Tween Camera Zoom", "0.8", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			157957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			158486.631016043,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			158663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			159016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			159368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			159898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			160074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			160428.480841878,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["Tweening Camera", "90, 20", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			160780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			161310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			161486.631016043,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			161839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			162016.716135996,
 			[
 				["Tween Camera Zoom", "0.8", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"]
 			]
 		],
 		[
-			161765.24554776,
+			162192.513368984,
 			[
-				["Tween Camera Zoom", "0.9", ""],
-				["Tweening Camera", "90, 20", "0.001, linear"]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			163706.422018349,
+			162543.922018349,
 			[
 				["Tween Camera Zoom", "1", ""]
 			]
 		],
 		[
-			164059.363194819,
+			162721.92513369,
 			[
-				["Tween Camera Zoom", "0.9", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			164412.30437129,
+			162901.274959525,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			163251.336898396,
 			[
 				["Tween Camera Zoom", "0.8", ""],
-				["Tweening Camera", "0, 0", "0.001, linear"]
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			168647.598488937,
+			163604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			164133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			164310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			164663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			165016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			165545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			165721.92513369,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			166074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			166427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			166957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			167133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			167487.30437129,
 			[
 				["Tween Camera Zoom", "0.9", ""],
-				["Tweening Camera", "-140, -50", "0.001, linear"]
+				["Tweening Camera", "-140, -50", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			169000.539665407,
+			167840.24554776,
 			[
-				["Tween Camera Zoom", "1", ""]
+				["Tween Camera Zoom", "1", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			169353.480841878,
+			168193.186724231,
 			[
 				["Tween Camera Zoom", "1.1", ""]
 			]
 		],
 		[
-			169706.422018349,
+			168368.983957219,
 			[
-				["Tween Camera Zoom", "1.2", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			170059.363194819,
+			168546.127900702,
+			[
+				["Tween Camera Zoom", "1.2", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			168721.92513369,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			168899.069077172,
 			[
 				["Tween Camera Zoom", "0.8", ""],
-				["Tweening Camera", "0, 0", "0.001, linear"]
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			172882.892606584,
+			169251.336898396,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			169780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			169957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			170310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			170663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			171192.513368984,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			171368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			171722.598488937,
 			[
 				["Tween Camera Zoom", "0.9", ""],
-				["Tweening Camera", "90, 20", "0.001, linear"]
+				["Tweening Camera", "90, 20", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			174294.657312466,
+			172074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			172604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			172780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			173136.569077172,
 			[
 				["Tween Camera Zoom", "1", ""],
-				["Tweening Camera", "110, 40", "0.001, linear"]
+				["Tweening Camera", "110, 40", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			175000.539665407,
+			173486.631016043,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			173840.24554776,
 			[
 				["Tween Camera Zoom", "1.1", ""],
 				["Tweening Camera", "140, 60", "0.001, linear"]
 			]
 		],
 		[
-			175706.422018349,
+			174016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			174192.513368984,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			174368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			174546.127900702,
 			[
 				["Tween Camera Zoom", "0.8", ""],
-				["Tweening Camera", "-130, -50", "0.001, linear"]
+				["Tweening Camera", "-130, -50", "0.001, linear"],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			177118.186724231,
+			174898.395721925,
 			[
-				["Tween Camera Zoom", "0.9", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			178529.951430113,
+			175427.807486631,
 			[
-				["Tween Camera Zoom", "1", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			178882.892606584,
+			175604.278074866,
 			[
-				["Tween Camera Zoom", "1.05", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			179235.833783054,
+			175957.892606584,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			176310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			176839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			177016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			177369.657312466,
+			[
+				["Tween Camera Zoom", "1", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			177722.598488938,
+			[
+				["Tween Camera Zoom", "1.05", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			178075.539665408,
 			[
 				["Tween Camera Zoom", "1.15", ""]
 			]
 		],
 		[
-			179941.716135996,
+			178251.336898395,
 			[
-				["Tween Camera Zoom", "0.9", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			181353.480841878,
+			178427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			178783.627900701,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			179133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			179663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			179839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			180016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			180193.186724231,
 			[
 				["Tween Camera Zoom", "0.8", ""],
-				["Tweening Camera", "110, 40", "0.001, linear"]
+				["Tweening Camera", "110, 40", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			182765.24554776,
+			180545.454545454,
 			[
-				["Tween Camera Zoom", "0.9", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			184177.010253643,
+			181074.86631016,
 			[
-				["Tween Camera Zoom", "1.1", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			184882.892606584,
+			181251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			181604.951430113,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			181957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			182486.631016043,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			182663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			183018.922018348,
+			[
+				["Tween Camera Zoom", "1.1", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			183368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			183724.804371289,
 			[
 				["Tween Camera Zoom", "1", ""]
 			]
 		],
 		[
-			186294.657312466,
+			183898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			184074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			184427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			184780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			185136.569077171,
 			[
 				["Tween Camera Zoom", "1.6, true", "0.75, circIn"],
 				["Set Property", "camZoomingMult", "0"],
@@ -653,346 +1461,2271 @@
 			]
 		],
 		[
-			187000.539665407,
+			185310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			185486.631016043,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			185663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			185842.451430112,
 			[
 				["Tween Camera Zoom", "0.65", ""],
 				["Set Property", "camZoomingMult", "1"],
 				["Set Property", "camZoomingDecay", "1"],
 				["Tweening Camera", "0, 0", "0.001, linear"],
-				["Set Property", "cameraSpeed", "10000"]
+				["Set Property", "cameraSpeed", "10000"],
+				["bloomFlash", "0.4, 0", "0.7"]
 			]
 		],
 		[
-			187088.774959525,
+			185930.68672423,
 			[
 				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
-			198294.657312466,
+			186192.513368984,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			201118.186724231,
+			186721.92513369,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			186898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			187251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			187604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			188133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			188310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			188486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			188663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			189016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			189545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			189721.92513369,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			190074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			190427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			190957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			191133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			191310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			191486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			191839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			192368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			192545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			192898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			193251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			193780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			193957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			194133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			194310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			194663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			195192.513368984,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			195368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			195721.92513369,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			196074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			196604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			196780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			196957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			197134.363194819,
+			[
+				["Tween Camera Zoom", "0.8", ""],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			197486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			198016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			198192.513368984,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			198545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			198898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			199427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			199604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			199957.892606584,
 			[
 				["Tween Camera Zoom", "0.9", ""],
-				["Tweening Camera", "-112, -70", "0.001, linear"]
+				["Tweening Camera", "-112, -70", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			203059.363194819,
+			200310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			200839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			201016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			201368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			201721.92513369,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			202077.745547761,
 			[
 				["Tween Camera Zoom", "1", ""],
 				["Tweening Camera", "-162, -90", "0.001, linear"]
 			]
 		],
 		[
-			203941.716135996,
+			202251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			202427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			202781.422018349,
 			[
 				["Tween Camera Zoom", "1.1", ""],
-				["Tweening Camera", "162, 90", "0.001, linear"]
+				["Tweening Camera", "162, 90", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			206765.24554776,
+			203133.689839572,
 			[
-				["Tween Camera Zoom", "1", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			208177.010253643,
+			203663.101604278,
 			[
-				["Tween Camera Zoom", "0.9", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			209588.774959525,
+			203839.572192513,
 			[
-				["Tween Camera Zoom", "0.8", ""],
-				["Tweening Camera", "0, 0", "0.001, linear"]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			211000.539665407,
+			204192.513368984,
 			[
-				["Tween Camera Zoom", "0.9", ""],
-				["Tweening Camera", "-20, -20", "0.001, linear"]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			212412.30437129,
+			204545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			205074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			205251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			205604.951430113,
 			[
 				["Tween Camera Zoom", "1", ""],
-				["Tweening Camera", "-40, -40", "0.001, linear"]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			213824.069077172,
+			205957.219251337,
 			[
-				["Tween Camera Zoom", "1.1", ""],
-				["Tweening Camera", "-120, -70", "0.001, linear"]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			215235.833783054,
+			206486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			206663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			207016.716135996,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			207368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			207721.92513369,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			207898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			208074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			208251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			208428.480841878,
 			[
 				["Tween Camera Zoom", "0.8", ""],
-				["Tweening Camera", "0, 0", "0.001, linear"]
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			218059.363194819,
+			208780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			209310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			209486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			209840.24554776,
+			[
+				["Tween Camera Zoom", "0.9", ""],
+				["Tweening Camera", "-20, -20", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			210192.513368984,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			210721.92513369,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			210898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			211074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			211252.010253643,
+			[
+				["Tween Camera Zoom", "1", ""],
+				["Tweening Camera", "-40, -40", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			211604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			212133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			212310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			212663.774959525,
+			[
+				["Tween Camera Zoom", "1.1", ""],
+				["Tweening Camera", "-120, -70", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			213016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			213545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			213721.92513369,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			213898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			214075.539665407,
+			[
+				["Tween Camera Zoom", "0.8", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			214427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			214957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			215133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			215486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			215839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			216368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			216545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			216899.069077172,
 			[
 				["Tween Camera Zoom", "1, true", "3, sineInOut"],
 				["Tweening Camera", "170, 80", "3, sineInOut"],
 				["Set Property", "camZoomingMult", "0"],
-				["Set Property", "camZoomingDecay", "0"]
+				["Set Property", "camZoomingDecay", "0"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			220882.892606584,
+			217251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			217780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			217957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			218310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			218663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			219016.042780748,
+			[
+				["Tween Camera Zoom", "1.1, true", "0.001"],
+				["brightnessFlash", "-20, -20", "0.2"],
+				["bwFlash", "0.4, 0.4", "0.2"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			219368.983957219,
+			[
+				["Tween Camera Zoom", "1.5, true", "0.001"],
+				["brightnessFlash", "-50, -50", "0.2"],
+				["bwFlash", "0.8, 0.8", "0.2"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			219722.598488937,
 			[
 				["Tween Camera Zoom", "0.8", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"],
 				["Set Property", "camZoomingMult", "1"],
 				["Set Property", "camZoomingDecay", "1"],
-				["Set Property", "cameraSpeed", "10000"]
+				["Set Property", "cameraSpeed", "10000"],
+				["brightnessFlash", "0, 0", "0.2"],
+				["bwFlash", "0, 0", "0.2"],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "spinBumpNotes"]
 			]
 		],
 		[
-			220971.127900701,
+			219810.833783054,
 			[
 				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
-			222294.657312466,
+			220074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			220604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			220780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			221136.569077172,
 			[
 				["Tweening Camera", "-180, -80", "0.001, linear"],
-				["Tween Camera Zoom", "1", ""]
+				["Tween Camera Zoom", "1", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			223706.422018349,
+			221486.631016042,
 			[
-				["Tweening Camera", "0, 0", "0.001, linear"],
-				["Tween Camera Zoom", "0.8", ""],
-				["Set Property", "cameraSpeed", "10000"]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			223794.657312466,
+			222016.042780748,
 			[
-				["Set Property", "cameraSpeed", "1"]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			225118.186724231,
+			222192.513368984,
 			[
-				["Tweening Camera", "180, 80", "0.001, linear"],
-				["Tween Camera Zoom", "1", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			226529.951430113,
+			222368.983957219,
 			[
-				["Tweening Camera", "0, 0", "0.001, linear"],
-				["Tween Camera Zoom", "0.8", ""],
-				["Set Property", "cameraSpeed", "10000"]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			226618.186724231,
-			[
-				["Set Property", "cameraSpeed", "1"]
-			]
-		],
-		[
-			227941.716135996,
-			[
-				["Tweening Camera", "-180, -80", "0.001, linear"],
-				["Tween Camera Zoom", "1", ""]
-			]
-		],
-		[
-			229353.480841878,
-			[
-				["Tweening Camera", "0, 0", "0.001, linear"],
-				["Tween Camera Zoom", "0.8", ""],
-				["Set Property", "cameraSpeed", "10000"]
-			]
-		],
-		[
-			229441.716135996,
-			[
-				["Set Property", "cameraSpeed", "1"]
-			]
-		],
-		[
-			230765.24554776,
-			[
-				["Tweening Camera", "180, 80", "0.001, linear"],
-				["Tween Camera Zoom", "1", ""]
-			]
-		],
-		[
-			232177.010253643,
+			222548.333783055,
 			[
 				["Tweening Camera", "0, 0", "0.001, linear"],
 				["Tween Camera Zoom", "0.8", ""],
 				["Set Property", "cameraSpeed", "10000"],
-				["cameracenter", "true", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			232265.24554776,
+			222636.569077172,
 			[
 				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
-			235000.539665407,
+			222898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			223427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			223604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			223960.098488937,
+			[
+				["Tweening Camera", "180, 80", "0.001, linear"],
+				["Tween Camera Zoom", "1", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			224310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			224839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			225016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			225192.513368984,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			225371.863194819,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Tween Camera Zoom", "0.8", ""],
+				["Set Property", "cameraSpeed", "10000"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			225460.098488937,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			225721.925133689,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			226251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			226427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			226783.627900702,
+			[
+				["Tweening Camera", "-180, -80", "0.001, linear"],
+				["Tween Camera Zoom", "1", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			227133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			227663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			227839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			228195.392606584,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Tween Camera Zoom", "0.8", ""],
+				["Set Property", "cameraSpeed", "10000"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			228283.627900702,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			228545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			229074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			229251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			229607.157312466,
+			[
+				["Tweening Camera", "180, 80", "0.001, linear"],
+				["Tween Camera Zoom", "1", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			229957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			230486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			230663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			230839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			231018.922018349,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Tween Camera Zoom", "0.8", ""],
+				["Set Property", "cameraSpeed", "10000"],
+				["cameracenter", "true", ""],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			231107.157312466,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			231545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			231721.925133689,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			232251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			232604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			232957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			233133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			233486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			233842.451430113,
 			[
 				["Set Random Health", "", ""],
 				["Set Property", "cameraSpeed", "10000"],
 				["Tween Camera Zoom", "1.2, true", "0.001, linear"],
 				["Tweening Camera", "-400, 90", "0.001, linear"],
-				["chaotixEvents", "dontMiss", "chaotix"]
+				["chaotixEvents", "dontMiss", "chaotix"],
+				["bloomFlash", "0.2, 0", "0.4"],
+				["chaotixEvents", "modchart", "bumpSideNotes"]
 			]
 		],
 		[
-			235022.598488937,
+			233864.510253643,
 			[
 				["Tween Camera Zoom", "1, true", "0.3, circOut"]
 			]
 		],
 		[
-			235088.774959525,
+			233930.686724231,
 			[
 				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
-			235529.951430113,
+			234371.863194819,
 			[
 				["Set Random Health", "", ""],
 				["Tween Camera Zoom", "1.4, true", "0.001"],
 				["Tweening Camera", "800, 120", "0.001, linear"],
 				["Set Property", "cameraSpeed", "100000"],
-				["chaotixEvents", "dontMiss", "bf"]
+				["chaotixEvents", "dontMiss", "bf"],
+				["bloomFlash", "0.2, 0", "0.7"],
+				["chaotixEvents", "modchart", "bumpVertNotes"]
 			]
 		],
 		[
-			235552.010253643,
+			234393.922018349,
 			[
 				["Tween Camera Zoom", "1, true", "0.3, circOut"]
 			]
 		],
 		[
-			235618.186724231,
+			234460.098488937,
 			[
 				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
-			236059.363194819,
+			234901.274959525,
 			[
 				["Set Random Health", "", ""],
 				["Tween Camera Zoom", "0.45", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"],
 				["Set Property", "cameraSpeed", "100000"],
-				["chaotixEvents", "dontMiss", "back"]
+				["chaotixEvents", "dontMiss", "back"],
+				["bloomFlash", "0.4, 0", "0.5"],
+				["chaotixEvents", "modchart", "spinBumpNotes"]
 			]
 		],
 		[
-			236147.598488937,
+			234989.510253643,
 			[
 				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
-			236941.716135996,
+			235783.627900702,
 			[
 				["Tween Camera Zoom", "1.4, true", "0.85, circIn"],
 				["Tweening Camera", "710, 180", "0.85, circIn"],
 				["Set Property", "camZoomingMult", "0"],
-				["Set Property", "camZoomingDecay", "0"]
+				["Set Property", "camZoomingDecay", "0"],
+				["chromFlash", "0.1, 0.5", "0.5"]
 			]
 		],
 		[
-			237824.069077172,
+			236665.980841878,
 			[
 				["cameracenter", "false", ""],
 				["Tweening Camera", "0, 0", "0.001, linear"],
 				["Set Property", "camZoomingMult", "1"],
 				["Set Property", "camZoomingDecay", "1"],
-				["Set Property", "cameraSpeed", "10000"]
+				["Set Property", "cameraSpeed", "10000"],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chromFlash", "0.1, 0.1", "0.7"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			237912.30437129,
+			236754.216135996,
 			[
 				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
-			249118.186724231,
+			237016.042780748,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			251941.716135995,
+			237545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			237721.925133689,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			238074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			238427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			238957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			239133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			239310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			239486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			239839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			240368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			240545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			240898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			241251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			241780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			241957.219251337,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			242133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			242310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			242663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			243192.513368984,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			243368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			243721.925133689,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			244074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			244604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			244780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			244957.219251336,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			245133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			245486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			246016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			246192.513368984,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			246545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			246898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			247427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			247604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			247780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			247957.892606584,
+			[
+				["Tween Camera Zoom", "0.8", ""],
+				["bloomFlash", "0.4, 0", "0.7"],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			248310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			248839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			249016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			249368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			249721.925133689,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			250251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			250427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			250604.278074866,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			250781.422018348,
 			[
 				["Tween Camera Zoom", "0.9", ""],
-				["Tweening Camera", "-112, -70", "0.001, linear"]
+				["Tweening Camera", "-112, -70", "0.001, linear"],
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			253882.892606584,
+			251133.689839572,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			251663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			251839.572192513,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			252192.513368984,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			252545.454545454,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			252722.598488937,
 			[
 				["Tween Camera Zoom", "1", ""],
 				["Tweening Camera", "-162, -90", "0.001, linear"]
 			]
 		],
 		[
-			254765.24554776,
+			253074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			253251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			253427.807486631,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			253604.951430113,
 			[
 				["Tween Camera Zoom", "1.1", ""],
-				["Tweening Camera", "162, 90", "0.001, linear"]
+				["Tweening Camera", "162, 90", "0.001, linear"],
+				["chaotixEvents", "modchart", "spinBumpNotes"]
 			]
 		],
 		[
-			257588.774959525,
+			253957.219251336,
 			[
-				["Tween Camera Zoom", "1", ""]
+				["chaotixEvents", "modchart", "bumpNotes"]
 			]
 		],
 		[
-			259000.539665407,
+			254486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			254663.101604278,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			255016.042780748,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			255368.983957219,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			255898.395721925,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			256074.86631016,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			256251.336898395,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			256428.480841878,
+			[
+				["Tween Camera Zoom", "1", ""],
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			256780.748663101,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			257310.160427807,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			257486.631016042,
+			[
+				["chaotixEvents", "modchart", "bumpNotes"]
+			]
+		],
+		[
+			257840.24554776,
 			[
 				["Tween Camera Zoom", "0.9", ""]
 			]
 		],
 		[
-			260412.30437129,
+			258016.042780748,
 			[
-				["cameracenter", "true", ""],
-				["Tweening Camera", "0, 0", "0.001, linear"],
-				["Set Property", "cameraSpeed", "10000"],
-				["Play Animation", "thanos", "dad"]
+				["brightnessFlash", "-40,-40", "0.1"],
+				["glitchFlash", "0.001, 0.3", "0.1"],
+				["chaotixEvents", "modchart", "lilRandomizeNotes"]
 			]
 		],
 		[
-			260500.539665407,
+			258060.160427807,
+			[
+				["chaotixEvents", "modchart", "lilRandomizeNotes"]
+			]
+		],
+		[
+			258148.395721925,
+			[
+				["chaotixEvents", "modchart", "lilRandomizeNotes"]
+			]
+		],
+		[
+			258192.513368984,
+			[
+				["glitchFlash", "0.2, 0.8", "0.1"]
+			]
+		],
+		[
+			258280.748663101,
+			[
+				["brightnessFlash", "20, 20", "0.1"],
+				["chaotixEvents", "modchart", "lilRandomizeNotes"]
+			]
+		],
+		[
+			258368.983957219,
+			[
+				["glitchFlash", "0.4, 0.001", "0.1"]
+			]
+		],
+		[
+			258457.219251336,
+			[
+				["negFlash", "1, 1", "0.2"],
+				["chaotixEvents", "modchart", "lilRandomizeNotes"]
+			]
+		],
+		[
+			258545.454545454,
+			[
+				["chaotixEvents", "modchart", "lilRandomizeNotes"]
+			]
+		],
+		[
+			258633.689839572,
+			[
+				["glitchFlash", "2, 0.2", "0.3"],
+				["chaotixEvents", "modchart", "lilRandomizeNotes"]
+			]
+		],
+		[
+			258721.925133689,
+			[
+				["brightnessFlash", "-70, -70", "0.1"]
+			]
+		],
+		[
+			258810.160427807,
+			[
+				["negFlash", "0, 0", "0.2"],
+				["chaotixEvents", "modchart", "lilRandomizeNotes"]
+			]
+		],
+		[
+			258898.395721925,
+			[
+				["chaotixEvents", "modchart", "tweenToCrazy"]
+			]
+		],
+		[
+			258986.631016042,
+			[
+				["brightnessFlash", "0, 0", "0.1"]
+			]
+		],
+		[
+			259074.86631016,
+			[
+				["glitchFlash", "0.9, 0.001", "0.3"]
+			]
+		],
+		[
+			259251.336898395,
+			[
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Set Property", "cameraSpeed", "10000"],
+				["bloomFlash", "0.4, 0", "0.5"],
+				["chaotixEvents", "glitchBG", "0.4"],
+				["Tween Camera Zoom", "0.6", ""],
+				["glitchFlash", "0.001, 0.001", "0.2"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			259339.572192513,
 			[
 				["Set Property", "cameraSpeed", "1"]
 			]
 		],
 		[
-			261471.127900701,
+			259604.278074866,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			259957.219251336,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			260310.160427807,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			260663.101604278,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			261016.042780748,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			261368.983957219,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			261721.925133689,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			262074.86631016,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.001"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			262163.101604278,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.001"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			262251.336898395,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.001"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			262339.572192513,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			262427.807486631,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.001"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			262780.748663101,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			263133.689839572,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			263486.631016042,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			263663.101604278,
+			[
+				["chaotixEvents", "modchart", "tweenToUpscroll"]
+			]
+		],
+		[
+			264192.513368984,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.001"]
+			]
+		],
+		[
+			264545.454545454,
+			[
+				["Tween Camera Zoom", "0.8, true", "0.001"]
+			]
+		],
+		[
+			264721.925133689,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001"]
+			]
+		],
+		[
+			264898.395721925,
+			[
+				["Tween Camera Zoom", "0.6", ""],
+				["Set Property", "cameraSpeed", "10000"]
+			]
+		],
+		[
+			264986.631016042,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			265251.336898395,
+			[
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			265604.278074866,
+			[
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			265957.219251336,
+			[
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			266310.160427807,
+			[
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			266663.101604278,
+			[
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			267016.042780748,
+			[
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			267368.983957219,
+			[
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			267721.925133689,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.001"],
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			267810.160427807,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.001"],
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			267898.395721925,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.001"],
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			267986.631016042,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001"],
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			268074.86631016,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.001"],
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			268427.807486631,
+			[
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			268780.748663101,
+			[
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			269133.689839572,
+			[
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			269486.631016042,
+			[
+				["chaotixEvents", "modchart", "bfUpscrollRandomize"]
+			]
+		],
+		[
+			269839.572192513,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.001"]
+			]
+		],
+		[
+			270192.513368983,
+			[
+				["Tween Camera Zoom", "0.8, true", "0.001"]
+			]
+		],
+		[
+			270368.983957219,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001"]
+			]
+		],
+		[
+			270545.454545454,
+			[
+				["Tween Camera Zoom", "0.6", ""],
+				["Set Property", "cameraSpeed", "10000"],
+				["glitchFlash", "0.4, 1", "0.5"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			270633.689839571,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			270898.395721925,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			271251.336898395,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			271604.278074866,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			271957.219251336,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			272310.160427807,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			272663.101604278,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			273016.042780748,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			273368.983957219,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.001"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			273457.219251336,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.001"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			273545.454545454,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.001"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			273633.689839572,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			273721.925133689,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.001"],
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			274074.86631016,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			274427.807486631,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			274780.748663101,
+			[
+				["chaotixEvents", "modchart", "randomizeNotes"]
+			]
+		],
+		[
+			274957.219251336,
+			[
+				["chaotixEvents", "modchart", "tweenToDownscroll"]
+			]
+		],
+		[
+			275486.631016042,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.001"]
+			]
+		],
+		[
+			275663.101604278,
+			[
+				["chaotixEvents", "setTailsTimer", "0.25"]
+			]
+		],
+		[
+			275839.572192513,
+			[
+				["Tween Camera Zoom", "0.8, true", "0.001"]
+			]
+		],
+		[
+			276016.042780748,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001"]
+			]
+		],
+		[
+			276192.513368983,
+			[
+				["Tween Camera Zoom", "0.6", ""],
+				["Set Property", "cameraSpeed", "10000"]
+			]
+		],
+		[
+			276280.748663101,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			276545.454545454,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			276898.395721925,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			277251.336898395,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			277604.278074866,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			277957.219251336,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			278310.160427807,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			278663.101604278,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			279016.042780748,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.001"],
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			279104.278074866,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.001"]
+			]
+		],
+		[
+			279192.513368983,
+			[
+				["Tween Camera Zoom", "0.7, true", "0.001"],
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			279280.748663101,
+			[
+				["Tween Camera Zoom", "0.9, true", "0.001"],
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			279368.983957219,
+			[
+				["Tween Camera Zoom", "0.6, true", "0.001"],
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			279721.925133689,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			280074.86631016,
+			[
+				["chaotixEvents", "setTailsTimer", "0.05"],
+				["chaotixEvents", "modchart", "bfDownscrollRandomize"]
+			]
+		],
+		[
+			280428.480841878,
+			[
+				["Tween Camera Zoom", "0.9", ""]
+			]
+		],
+		[
+			280516.042780748,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollBIGRandomize"]
+			]
+		],
+		[
+			280604.278074866,
+			[
+				["brightnessFlash", "-40,-40", "0.1"],
+				["glitchFlash", "0.001, 0.3", "0.1"],
+				["Tween Camera Zoom", "1.3, true", "0.001"]
+			]
+		],
+		[
+			280780.748663101,
+			[
+				["glitchFlash", "0.2, 0.8", "0.1"]
+			]
+		],
+		[
+			280868.983957219,
+			[
+				["brightnessFlash", "20, 20", "0.1"],
+				["Tween Camera Zoom", "0.7, true", "0.0001"]
+			]
+		],
+		[
+			280957.219251336,
+			[
+				["glitchFlash", "0.4, 0.001", "0.1"],
+				["chaotixEvents", "modchart", "bfDownscrollBIGRandomize"]
+			]
+		],
+		[
+			281045.454545454,
+			[
+				["negFlash", "1, 1", "0.2"],
+				["Tween Camera Zoom", "1.1, true", "0.001"],
+				["chaotixEvents", "modchart", "bfDownscrollBIGRandomize"]
+			]
+		],
+		[
+			281133.689839572,
+			[
+				["negFlash", "0, 0", "0.2"]
+			]
+		],
+		[
+			281221.925133689,
+			[
+				["glitchFlash", "2, 0.2", "0.3"],
+				["Tween Camera Zoom", "0.6, true", "0.001"],
+				["chaotixEvents", "modchart", "bfDownscrollBIGRandomize"]
+			]
+		],
+		[
+			281266.042780748,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollBIGRandomize"]
+			]
+		],
+		[
+			281310.160427807,
+			[
+				["brightnessFlash", "-70, -70", "0.1"],
+				["Tween Camera Zoom", "0.9, true", "0.0001"]
+			]
+		],
+		[
+			281354.278074866,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollBIGRandomize"]
+			]
+		],
+		[
+			281398.395721925,
+			[
+				["negFlash", "0, 0", "0.2"]
+			]
+		],
+		[
+			281486.631016042,
+			[
+				["negFlash", "1, 1", "0.2"],
+				["Tween Camera Zoom", "1.4, true", "0.001"]
+			]
+		],
+		[
+			281574.86631016,
+			[
+				["brightnessFlash", "0, 0", "0.1"],
+				["Tween Camera Zoom", "1.6, true", "0.001"]
+			]
+		],
+		[
+			281618.983957219,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollBIGRandomize"]
+			]
+		],
+		[
+			281663.101604278,
+			[
+				["glitchFlash", "0.9, 0.001", "0.3"]
+			]
+		],
+		[
+			281707.219251336,
+			[
+				["chaotixEvents", "modchart", "bfDownscrollBIGRandomize"]
+			]
+		],
+		[
+			281751.336898395,
+			[
+				["negFlash", "0, 0", "0.2"],
+				["chaotixEvents", "stopTails", ""]
+			]
+		],
+		[
+			281840.245547761,
+			[
+				["cameracenter", "true", ""],
+				["Tweening Camera", "0, 0", "0.001, linear"],
+				["Set Property", "cameraSpeed", "10000"],
+				["Play Animation", "thanos", "dad"],
+				["chaotixEvents", "modchart", "finalNote"],
+				["bloomFlash", "0.4, 0", "0.5"],
+				["chaotixEvents", "glitchBG", "0.7"],
+				["glitchFlash", "0.001, 0.001", "0.2"]
+			]
+		],
+		[
+			281928.480841878,
+			[
+				["Set Property", "cameraSpeed", "1"]
+			]
+		],
+		[
+			282899.069077172,
 			[
 				["Set Property", "camZoomingMult", "0"],
 				["Set Property", "camZoomingDecay", "0"],
@@ -1000,13 +3733,13 @@
 			]
 		],
 		[
-			261824.069077172,
+			283252.010253643,
 			[
 				["chaotixEvents", "fadeSong", ""]
 			]
 		],
 		[
-			264647.598488937,
+			286075.539665408,
 			[
 				["Play Animation", "thanosEnd", "dad"]
 			]

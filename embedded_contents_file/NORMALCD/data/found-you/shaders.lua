@@ -8,20 +8,20 @@ local shaders = {
     uniforms = {
         grayness = 0
     }},
-    
+
     {name = 'shine', shader = 'brightness', x = 0,
     uniforms = {
         brightness = 0,
         contrast = 1,
         saturation = 1,
     }},
-    
+
     {name = 'wave', shader = 'wavyDistortion', x = 0,
     uniforms = {
         amount = 0,
         iTime = 0,
     }},
-    
+
     {name = 'color', shader = 'DropShadowShader', x = 0, angle = 0, scaleX = 1, scaleY = 1,
     uniforms = {
         hue        =   1,

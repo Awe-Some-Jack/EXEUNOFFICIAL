@@ -20,6 +20,8 @@ using StringTools;
 
 /** 
 * @Authors MaysLastPlay, ArkoseLabs, MarioMaster (MasterX-39), Dechis (dx7405)
+* Edits: Wolfie_1985
+* Notes: Mays your shit sucks ass
 * @version: 0.4.0
 **/
 typedef CustomStorageModeData = { modes:Array<ModeData> }

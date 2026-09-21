@@ -134,7 +134,7 @@ function changeGameOvers() {
 }
 
 function setCamEvents() {
-    if (exeGameOvers)
+    if (exeGameOvers || songName == "endless-us")
     {
         FlxTween.cancelTweensOf(FlxG.camera); //Just in case, heh.
         FlxG.camera.follow();

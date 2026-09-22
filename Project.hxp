@@ -349,10 +349,26 @@ class Project extends HXProject
             Sys.println(' Info: Mobile assets package generated at ${packageRoot}/assets - copy this "assets" folder next to the "contents" folder on the device.');
     }
 
+    function alignExportCase(destDir:String, existing:Map<String, String>, name:String)
+    {
+        var current = existing.get(name.toLowerCase());
+        if (current == null || current == name) return;
+
+        var from = Path.join([destDir, current]);
+        var temp = from + ".casefix";
+        FileSystem.rename(from, temp);
+        FileSystem.rename(temp, Path.join([destDir, name]));
+        existing.set(name.toLowerCase(), name);
+    }
+
     function copyContentsWithASTCSwap(srcDir:String, destDir:String)
     {
         if (!FileSystem.exists(destDir))
             hxp.System.mkdir(destDir);
+
+        var existing:Map<String, String> = new Map();
+        for (entry in FileSystem.readDirectory(destDir))
+            existing.set(entry.toLowerCase(), entry);
 
         for (file in FileSystem.readDirectory(srcDir))
         {
@@ -364,6 +380,7 @@ class Project extends HXProject
 
             if (isDir)
             {
+                alignExportCase(destDir, existing, file);
                 copyContentsWithASTCSwap(srcPath, destPath);
                 continue;
             }

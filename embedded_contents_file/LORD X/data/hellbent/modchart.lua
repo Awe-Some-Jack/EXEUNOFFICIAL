@@ -122,7 +122,7 @@ function onEvent(n,v1)
 					setObjectCamera('opponentStrums.members['..i..']', 'hud')
 					scaleObject('opponentStrums.members['..i..']', getProperty('opponentStrums.members['..i..'].scale.x') * 0.5, getProperty('opponentStrums.members['..i..'].scale.y') * 0.5, true)
 					callMethod('opponentStrums.members['..i..'].scrollFactor.set', {0, 0})
-					setProperty('opponentStrums.members['..i..'].y', (downscroll and 570 or 50))
+					setProperty('opponentStrums.members['..i..'].y', _G['defaultOpponentStrumY'..i])
 				end
 
 				for i = 0,getProperty('unspawnNotes.length') - 1 do

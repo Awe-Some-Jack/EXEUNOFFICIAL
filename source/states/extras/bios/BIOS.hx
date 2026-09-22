@@ -289,7 +289,7 @@ class BIOS extends SonicSubState
 		add(icon);
 
 		charName = new FlxText(460, 34, 0, e0 != null ? e0.displayName : '', 136);
-		charName.setFormat(Paths.font(Language.fontOrCJK('NiseSegaSonic.TTF')), 136, FlxColor.WHITE, CENTER);
+		charName.setFormat(Paths.font(Language.fontOrCJK('NiseSegaSonic.ttf')), 136, FlxColor.WHITE, CENTER);
 		charName.antialiasing = ClientPrefs.data.antialiasing;
 		charName.scale.set(0.5, 0.5);
 		charName.scrollFactor.set();
@@ -297,7 +297,7 @@ class BIOS extends SonicSubState
 		_fitCharName();
 
 		artistName = new FlxText(471, 588, 0, '', 80);
-		artistName.setFormat(Paths.font(Language.fontOrCJK('NiseSegaSonic.TTF')), 80, FlxColor.WHITE, CENTER);
+		artistName.setFormat(Paths.font(Language.fontOrCJK('NiseSegaSonic.ttf')), 80, FlxColor.WHITE, CENTER);
 		artistName.antialiasing = ClientPrefs.data.antialiasing;
 		artistName.scale.set(0.5, 0.5);
 		artistName.scrollFactor.set();
@@ -305,7 +305,7 @@ class BIOS extends SonicSubState
 		if (e0 != null) _setArtists(e0.artist);
 
 		variantDots = new FlxText(0, FlxG.height - 60, 0, '', 44);
-		variantDots.setFormat(Paths.font('NiseSegaSonic.TTF'), 44, FlxColor.WHITE, CENTER);
+		variantDots.setFormat(Paths.font('NiseSegaSonic.ttf'), 44, FlxColor.WHITE, CENTER);
 		variantDots.scale.set(0.5, 0.5);
 		variantDots.scrollFactor.set();
 		variantDots.visible = false;
@@ -326,7 +326,7 @@ class BIOS extends SonicSubState
 		add(bioBox);
 
 		bioTxt = new FlxText(845 + 16, 36 + 13, 407 - 16 - 80, '', Language.cjkSize(23));
-		bioTxt.setFormat(Paths.font(Language.fontOrCJK('smallass.TTF')), Language.cjkSize(23), FlxColor.WHITE, LEFT);
+		bioTxt.setFormat(Paths.font(Language.fontOrCJK('smallass.ttf')), Language.cjkSize(23), FlxColor.WHITE, LEFT);
 		bioTxt.antialiasing = ClientPrefs.data.antialiasing;
 		bioTxt.scrollFactor.set();
 		_bioClipRect.set(0, 0, 407 - 16 - 80, 642 - 13);
@@ -377,7 +377,7 @@ class BIOS extends SonicSubState
 	function _rebuildNames():Void
 	{
 		namesGrp.clear();
-		final font = Paths.font(Language.fontOrCJK('NiseSegaSonic.TTF'));
+		final font = Paths.font(Language.fontOrCJK('NiseSegaSonic.ttf'));
 		final size = Language.cjkSize(68);
 		final aa   = ClientPrefs.data.antialiasing;
 		for (i in 0...entries.length)

@@ -99,9 +99,9 @@ function onCreatePost()
 		if (i < 4)
 		{
 			strum.texture = 'noteSkins/NOTEFATAL_assets';
-			strum.x = 10 + (strum.width * i);
+			if (!ClientPrefs.data.middleScroll) strum.x = 10 + (strum.width * i);
 		}
-		else strum.x = (FlxG.width - 10 - (strum.width * 4)) + (strum.width * (i - 4));
+		else if (!ClientPrefs.data.middleScroll) strum.x = (FlxG.width - 10 - (strum.width * 4)) + (strum.width * (i - 4));
 	}
 	for (i in 0...unspawnNotes.length-1)
 	{

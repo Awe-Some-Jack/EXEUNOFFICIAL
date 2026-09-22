@@ -83,7 +83,7 @@ function onCreatePost() {
 
 	logo = new FlxSprite(0, 0).loadGraphic(Paths.image('bg/cartoon-network', 'RERUN'));
 	logo.scale.set(0.8, 0.8);
-	logo.cameras = [camOther];
+	logo.cameras = [camVideo];
 	logo.alpha = 0.00001;
 	logo.screenCenter();
 	add(logo);
@@ -179,7 +179,7 @@ function onStepHit() {
 			for (i in 0...4) opponentStrums.members[i].x = -1000;
 		case 2036:
 			FlxTween.tween(black, {alpha: 0}, 0.3075, {ease: FlxEase.smootherStepIn});
-			comboGroup.x = -500;
+			if(!ClientPrefs.data.middleScroll) comboGroup.x = -500;
 		case 2076:
 			FlxTween.tween(black, {alpha: 1}, 0.3, {ease: FlxEase.smootherStepIn});
 		case 2080:

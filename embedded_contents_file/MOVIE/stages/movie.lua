@@ -41,6 +41,8 @@ end
 local videoPlayed = false
 
 function onCreate()
+	setProperty('opponentStrumsFlipSide', true)
+
 	for _, spr in ipairs(sprites) do
 		addSprite(spr)
 	end

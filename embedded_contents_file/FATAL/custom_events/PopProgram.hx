@@ -213,6 +213,7 @@ function onGameOver() {
 }
 
 function onDestroy() {
+    FlxG.autoPause = true;
 	warningActive = false;
 	cancelWarningTimer();
 	closeAllPopups();

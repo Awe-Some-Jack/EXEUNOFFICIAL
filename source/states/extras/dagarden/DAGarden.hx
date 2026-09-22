@@ -515,14 +515,14 @@ class DAGPlayer extends FlxGroup
         add(barKnob);
 
         timeTxt = new FlxText(765, 652, Std.int(bW), '0:00', 44);
-        timeTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 44, FlxColor.BLACK, CENTER);
+        timeTxt.setFormat(Paths.font('NiseSegaSonic.ttf'), 44, FlxColor.BLACK, CENTER);
         timeTxt.scale.set(0.5, 0.5);
         timeTxt.updateHitbox();
         timeTxt.antialiasing = ClientPrefs.data.antialiasing;
         add(timeTxt);
 
         songNameTxt = new FlxText(625, 132, 1120, '???????', 120);
-        songNameTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 120, FlxColor.BLACK, CENTER);
+        songNameTxt.setFormat(Paths.font('NiseSegaSonic.ttf'), 120, FlxColor.BLACK, CENTER);
         songNameTxt.letterSpacing = 2;
         songNameTxt.wordWrap      = false;
         songNameTxt.scale.set(0.5, 0.5);
@@ -532,7 +532,7 @@ class DAGPlayer extends FlxGroup
 
         final byLabel = Language.getArray('extras.dagarden', ['BY'])[0];
         composerTxt = new FlxText(625, 196, 1120, '$byLabel ?????', 36);
-        composerTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 36, FlxColor.BLACK, CENTER);
+        composerTxt.setFormat(Paths.font('NiseSegaSonic.ttf'), 36, FlxColor.BLACK, CENTER);
         composerTxt.letterSpacing = 6;
         composerTxt.wordWrap      = false;
         composerTxt.scale.set(0.5, 0.5);
@@ -1009,7 +1009,7 @@ class DAGarden extends SonicSubState
         drawerGroup.add(drawerTabBg);
 
         drawerTabTxt = new FlxText(0, 0, 0, 'MENU', 32);
-        drawerTabTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 32, FlxColor.BLACK, CENTER);
+        drawerTabTxt.setFormat(Paths.font('NiseSegaSonic.ttf'), 32, FlxColor.BLACK, CENTER);
         drawerTabTxt.scale.set(0.6, 0.6);
         drawerTabTxt.updateHitbox();
         drawerTabTxt.antialiasing = ClientPrefs.data.antialiasing;
@@ -1042,7 +1042,7 @@ class DAGarden extends SonicSubState
             drawerKeycapBg.push(cap);
 
             final capTxt = new FlxText(0, 0, 0, '', 20);
-            capTxt.setFormat(Paths.font('NiseSegaSonic.TTF'), 20, FlxColor.WHITE, CENTER);
+            capTxt.setFormat(Paths.font('NiseSegaSonic.ttf'), 20, FlxColor.WHITE, CENTER);
             capTxt.scale.set(0.5, 0.5);
             capTxt.updateHitbox();
             capTxt.antialiasing = ClientPrefs.data.antialiasing;
@@ -1052,7 +1052,7 @@ class DAGarden extends SonicSubState
             _keycapInkOffsetY.push(0.0);
 
             final lbl = new FlxText(8.0 + 22.0 + 8.0, rowY, 0, '', 20);
-            lbl.setFormat(Paths.font('NiseSegaSonic.TTF'), 20, FlxColor.BLACK, LEFT);
+            lbl.setFormat(Paths.font('NiseSegaSonic.ttf'), 20, FlxColor.BLACK, LEFT);
             lbl.wordWrap = false;
             lbl.scale.set(0.5, 0.5);
             lbl.updateHitbox();

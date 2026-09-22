@@ -25,14 +25,22 @@ function onCreatePost()
 	callMethod('ringTxt.setPosition', {getProperty('ringCounter.x') + 76, getProperty('ringCounter.y') - 6})
 end
 
+function usesMobileLayout()
+	return getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') and getPropertyFromClass('backend.ClientPrefs', 'data.middlescrollType') == 'mobile'
+end
+
 function onCountdownStarted()
-	for i = 0,3 do
-		setProperty('playerStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i] + (56 * round((i > 1 and (i + 1) or i) - 2, -1, 1)))
+	local mobileLayout = usesMobileLayout()
+	if not mobileLayout then
+		for i = 0,3 do
+			setProperty('playerStrums.members['..i..'].x', _G['defaultPlayerStrumX'..i] + (56 * round((i > 1 and (i + 1) or i) - 2, -1, 1)))
+		end
 	end
 
 	makeAnimatedLuaSprite('strumLineRing', 'noteSkins/ring', defaultPlayerStrumX1 + 50, defaultPlayerStrumY2)
 	setObjectCamera('strumLineRing', 'hud')
 	scaleObject('strumLineRing', 0.7, 0.7)
+	if mobileLayout then setProperty('strumLineRing.x', (screenWidth - getProperty('strumLineRing.width')) / 2) end
 	addLuaSprite('strumLineRing', false)
 	addToGroup('strumLineNotes', 'strumLineRing', 6)
 

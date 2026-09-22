@@ -180,6 +180,10 @@ function onCreate()
 	preloadCharacter(1, 'eggman');
 }
 
+function onSongStart() {
+	if(ClientPrefs.data.middleScroll && (buildTarget == 'ios' || buildTarget == 'android')) PlayState.instance.mobileComboOffsetX = playerStrums.members[0].x / 2 - FlxG.width / 2;
+}
+
 function onEvent(n, v1, v2)
 {
 	switch(n)

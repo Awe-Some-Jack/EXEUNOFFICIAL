@@ -14,6 +14,7 @@ class MusicBeatState extends FlxTransitionableState
 	public var curStep:Int = 0;
 	public var curBeat:Int = 0;
 
+	#if mobile
 	public var mouseX:Float = 0;
 	public var deltaMouseX:Float = 0;
 	public var mouseY:Float = 0;
@@ -30,6 +31,7 @@ class MusicBeatState extends FlxTransitionableState
 
 	public var backButton:FlxSprite;
 	var tweenScale:FlxTween;
+	#end
 
 	public var curDecStep:Float = 0;
 	public var curDecBeat:Float = 0;
@@ -58,6 +60,7 @@ class MusicBeatState extends FlxTransitionableState
 		timePassedOnState = 0;
 	}
 
+	#if mobile
 	public function createBackButton(x:Float, y:Float) {
 		backButton = new FlxSprite(0, 0);
 		backButton.frames = FlxAtlasFrames.fromSparrow('assets/exe/backButton.webp', 'assets/exe/backButton.xml');
@@ -71,6 +74,7 @@ class MusicBeatState extends FlxTransitionableState
 		backButton.y = y;
 		add(backButton);
 	}
+	#end
 
 	public function initPsychCamera():PsychCamera
 	{
@@ -106,6 +110,7 @@ class MusicBeatState extends FlxTransitionableState
 			}
 		}
 
+		#if mobile
 		mouseX = FlxG.mouse.x;
 		mouseY = FlxG.mouse.y;
 
@@ -124,6 +129,7 @@ class MusicBeatState extends FlxTransitionableState
 		swipeDOWN = deltaMouseY >= 5 && pressHolding && Math.abs(deltaMouseY) > Math.abs(deltaMouseX);
 		swipeLEFT = deltaMouseX <= -5 && pressHolding && Math.abs(deltaMouseY) < Math.abs(deltaMouseX);
 		swipeRIGHT = deltaMouseX >= 5 && pressHolding && Math.abs(deltaMouseY) < Math.abs(deltaMouseX);
+		#end
 
 		if(FlxG.save.data != null) FlxG.save.data.fullscreen = FlxG.fullscreen;
 
@@ -131,6 +137,7 @@ class MusicBeatState extends FlxTransitionableState
 			stage.update(elapsed);
 		});
 
+		#if mobile
 		if(backButton != null) {
 			if(FlxG.mouse.pressedRight) {
 				backButton.x += deltaMouseX;
@@ -142,7 +149,7 @@ class MusicBeatState extends FlxTransitionableState
 
 			if(buttonOverlaps) {
 				backButton.animation.play('press', true);
-				
+
 				backPressed = shortPress;
 
 				if(backButton.scale.x != 0.19 && tweenScale == null) {
@@ -161,6 +168,7 @@ class MusicBeatState extends FlxTransitionableState
 				}
 			}
 		}
+		#end
 
 		super.update(elapsed);
 	}

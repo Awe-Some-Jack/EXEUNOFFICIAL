@@ -8,6 +8,10 @@ var bgNeedle:Array<BackgroundSprite> = [
 	{path: 'roundabout/foreground', position: [100, 450], scroll: [1.2, 1.2], front: true}
 ];
 
+function onCreate() {
+	if(ClientPrefs.data.middleScroll && (ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes)) PlayState.instance.opponentStrumOffsetY = -10;
+}
+
 function onCreatePost() {
 	makeBackground(bgNeedle);
 }

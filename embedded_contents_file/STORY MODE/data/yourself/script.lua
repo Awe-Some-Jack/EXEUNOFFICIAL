@@ -31,18 +31,10 @@ function onEvent(eventName, value1, value2)
         if value1 == 'startMiddleScroll' then
             for i = 0, 3 do
                 noteTweenAlpha(i..'Alpha', i, 0, 0.001)
-                if getPropertyFromClass('backend.ClientPrefs', 'data.downScroll') then
-                    noteTweenY(i..'Tween', i, 570, 5 + (i * 0.5), 'smootherStepOut')
-                else
-                    noteTweenY(i..'Tween', i, 50, 5 + (i * 0.5), 'smootherStepOut')
-                end
+                noteTweenY(i..'Tween', i, _G['defaultOpponentStrumY'..i], 5 + (i * 0.5), 'smootherStepOut')
             end
             for i = 4, 7 do
-                if getPropertyFromClass('backend.ClientPrefs', 'data.downScroll') then
-                    noteTweenY(i..'Tween', i, 570, 3 + (i * 0.5), 'smootherStepOut')
-                else
-                    noteTweenY(i..'Tween', i, 50, 3 + (i * 0.5), 'smootherStepOut')
-                end
+                noteTweenY(i..'Tween', i, _G['defaultPlayerStrumY'..(i - 4)], 3 + (i * 0.5), 'smootherStepOut')
             end
         end
         if value1 == 'revealYourself' then

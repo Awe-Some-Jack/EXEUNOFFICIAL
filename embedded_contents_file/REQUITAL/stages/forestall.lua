@@ -33,6 +33,12 @@ local function addAnimated(def, visible)
 	addLuaSprite(def.name)
 end
 
+function onCreate()
+	if getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') and (getPropertyFromClass('backend.ClientPrefs', 'data.middlescrollType') == 'mobile' or getPropertyFromClass('backend.ClientPrefs', 'data.mobileOpponentNotes')) then
+		setProperty('opponentStrumOffsetY', -90);
+	end
+end
+
 function onCreatePost()
 	triggerEvent('Tween Camera Zoom', '1.4, true', '0.001') triggerEvent('Tweening Camera', '90, -90', '0.001, linear')
 	addStatic(staticSprites[1])

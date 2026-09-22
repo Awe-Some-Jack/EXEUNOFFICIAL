@@ -29,7 +29,7 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 		scrollOffset = 0;
 
 		menuTitle = Language.get('options.mobilecontrols', 'ANDROID CONTROLS');
-		var lbl = Language.getArray('options.mobilecontrols.labels', ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA"]);
+		var lbl = Language.getArray('options.mobilecontrols.labels', ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA", "VISIBLE PAUSE BUTTON"]);
 		controlTypeLabels = Language.getArray('controls_type.labels', ["PSYCH", "BASE", "BUTTONS", "D-PAD"]);
 		middlescrollTypeLabels = Language.getArray('middlescroll_type.labels', ["PC", "MOBILE"]);
 		controlsTypeOption = {label: lbl[3], getValue: () -> ClientPrefs.data.controlsType, setValue: (v) -> ClientPrefs.data.controlsType = v};
@@ -42,6 +42,7 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 			middlescrollTypeOption,
 			{label: lbl[5], getValue: () -> ClientPrefs.data.defHitboxAlpha, setValue: (v) -> ClientPrefs.data.defHitboxAlpha = v, isFloat: true},
 			{label: lbl[6], getValue: () -> ClientPrefs.data.pressHitboxAlpha, setValue: (v) -> ClientPrefs.data.pressHitboxAlpha = v, isFloat: true},
+			{label: lbl[7], getValue: () -> ClientPrefs.data.visiblePauseButton, setValue: (v) -> ClientPrefs.data.visiblePauseButton = v},
 		];
 
 		final saved = CONTROL_TYPES.indexOf(ClientPrefs.data.controlsType);

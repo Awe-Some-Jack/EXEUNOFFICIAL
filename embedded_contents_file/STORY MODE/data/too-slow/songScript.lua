@@ -50,11 +50,11 @@ local tooSlowEvents = {
     ['revealNotes'] = function(strums)
         if strums == 'opponent' then
             for i = 0, 3 do
-                doTweenY(i..'OppNoteY', 'opponentStrums.members['..i..']', downscroll and 570 or 50, math.random(2, 4) + (i * 0.1), 'smootherStepOut')
+                doTweenY(i..'OppNoteY', 'opponentStrums.members['..i..']', _G['defaultOpponentStrumY'..i], math.random(2, 4) + (i * 0.1), 'smootherStepOut')
             end
         elseif strums == 'player' then
             for i = 0, 3 do
-                doTweenY(i..'PlayerNoteY', 'playerStrums.members['..i..']', downscroll and 570 or 50, math.random(2, 4) + (i * 0.1), 'smootherStepOut')
+                doTweenY(i..'PlayerNoteY', 'playerStrums.members['..i..']', _G['defaultPlayerStrumY'..i], math.random(2, 4) + (i * 0.1), 'smootherStepOut')
             end
         end
     end,

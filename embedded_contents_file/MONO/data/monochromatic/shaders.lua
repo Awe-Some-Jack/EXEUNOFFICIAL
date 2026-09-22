@@ -16,10 +16,17 @@ function onCreatePost()
 	setSpriteShader('pixel', 'pixel')
 	setShaderFloat('pixel', 'pixelsize', 0.0001)
 
+	makeLuaSprite('bwOther')
+	setSpriteShader('bwOther', 'brightness')
+	setShaderFloat('bwOther', 'brightness', 0)
+	setShaderFloat('bwOther', 'contrast', 1)
+	setShaderFloat('bwOther', 'saturation', 0)
+
 	if shadersEnabled and not lowQuality then
 		runHaxeCode([[game.camGame.filters = [
 			new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('cab').shader), new ShaderFilter(game.getLuaObject('pixel').shader)
-		];]])
+		];
+		game.camOther.filters = [new ShaderFilter(game.getLuaObject('bwOther').shader)];]])
 	end
 end
 

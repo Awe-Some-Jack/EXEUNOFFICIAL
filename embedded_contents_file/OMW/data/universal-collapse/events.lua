@@ -1,6 +1,10 @@
 addCharacterToList('omw', 'dad')
 addCharacterToList('omw2', 'dad')
 
+function onCreate()
+	setProperty('disableMobileComboOffset', true)
+end
+
 function onCreatePost()
 	callMethod('comboGroup.setPosition', {500, 0})
 

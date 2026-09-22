@@ -139,8 +139,8 @@ var stepEvents = [
 					gf.alpha = 0.001;
 					dad.alpha = 0.001;
 					for(obj in [game.getLuaObject('hbBG'), game.getLuaObject('hbHealth'), game.getLuaObject('hbHealth2'), game.getLuaObject('iconBF'), game.getLuaObject('iconOpp'), game.getLuaObject('separatorHealth')]) obj.alpha = 0;
-					for(strum in opponentStrums.members) strum.x -= 600;
-					for(strum in playerStrums.members) strum.x -= 320;
+					for(strum in opponentStrums.members) strum.x = 6000;
+					if(!ClientPrefs.data.middleScroll) for(strum in playerStrums.members) strum.x -= 320;
 				}}, v -> {
 					camGlitch.setFloat('AMT', v); 
 					camGlitch.setFloat('SPEED', v);
@@ -223,6 +223,10 @@ var stepEvents = [
 ];
 
 //! añadir eventos
+
+function onCreate() {
+	if(ClientPrefs.data.middleScroll && (ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes)) PlayState.instance.opponentStrumOffsetY = -10;
+}
 
 function onCreatePost()
 {

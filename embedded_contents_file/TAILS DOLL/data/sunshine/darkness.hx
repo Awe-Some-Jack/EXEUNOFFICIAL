@@ -27,7 +27,7 @@ function onCreatePost()
 
             float colorAmount = (color.r + color.g + color.b) / 3.0;
 
-            color.a = 1 - color.a;
+            color.a = 1.0 - color.a;
 
 
             gl_FragColor = color;

@@ -315,10 +315,10 @@ class PlayState extends MusicBeatState
 	public static var hitboxOwner:Array<Int> = [-1, -1, -1, -1];
 	// tracks, per active pointer (touch id, or -2 for mouse), whether it was overlapping each hitbox last frame
 	public static var hitboxPointerOver:Map<Int, Array<Bool>> = new Map();
-
 	static final SPACE_HITBOX_SONGS:Array<String> = [
 		'chaos', 'b4cksl4sh', 'manual-blast', 'hedge', 'fate', 'deception', 'prey', 'universal-collapse', 'triple-trouble'
 	];
+	public static var pauseButton:FlxSprite;
 
 	var spaceHitbox:FlxSprite = null;
 	var spaceHeld:Bool = false;
@@ -952,6 +952,7 @@ class PlayState extends MusicBeatState
 		callOnScripts('onCreatePost');
 
 		#if mobile
+		updateMobileComboOffset();
 		if(usesMobileStrumLayout())
 		{
 			for(n in notes) {
@@ -1031,6 +1032,16 @@ class PlayState extends MusicBeatState
 			add(spaceHitbox);
 			positionSpaceHitbox();
 		}
+
+		pauseButton = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/pause/pauseButton.webp'));
+		pauseButton.scale.set(0.35, 0.35);
+		pauseButton.updateHitbox();
+		pauseButton.cameras = [camOther];
+		pauseButton.x = FlxG.width - pauseButton.width - 10;
+		pauseButton.y = 10;
+		pauseButton.alpha = 0.7;
+		pauseButton.visible = ClientPrefs.data.visiblePauseButton;
+		add(pauseButton);
 		#end
 
 		gameplayCam.loadSongSettings();
@@ -1322,6 +1333,17 @@ class PlayState extends MusicBeatState
 			if(usesMobileStrumLayout()) applyMobileMiddlescrollStrums();
 			positionBaseHitboxes();
 			#end
+			for (strum in opponentStrums) strum.y += opponentStrumOffsetY * (ClientPrefs.data.downScroll ? -1 : 1);
+			if (closeOpponentStrumGap && ClientPrefs.data.middleScroll
+				&& !(#if mobile (ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes) #else false #end)
+				&& opponentStrums.length >= 4 && playerStrums.length >= 4)
+			{
+				final gapSpacing:Float = 5 + playerStrums.members[0].width;
+				opponentStrums.members[1].x = playerStrums.members[0].x - gapSpacing;
+				opponentStrums.members[0].x = opponentStrums.members[1].x - gapSpacing;
+				opponentStrums.members[2].x = playerStrums.members[3].x + gapSpacing;
+				opponentStrums.members[3].x = opponentStrums.members[2].x + gapSpacing;
+			}
 			updateStrumDefaults();
 
 			startedCountdown = true;
@@ -1783,15 +1805,58 @@ class PlayState extends MusicBeatState
 			setOnScripts('defaultPlayerStrumX' + i, playerStrums.members[i].x);
 			setOnScripts('defaultPlayerStrumY' + i, playerStrums.members[i].y);
 		}
+		opponentDefaultYs = [];
 		for (i in 0...opponentStrums.length) {
+			opponentDefaultYs.push(opponentStrums.members[i].y);
 			setOnScripts('defaultOpponentStrumX' + i, opponentStrums.members[i].x);
 			setOnScripts('defaultOpponentStrumY' + i, opponentStrums.members[i].y);
+		}
+	}
+
+	public var closeOpponentStrumGap:Bool = false;
+	public var opponentStrumOffsetY(default, null):Float = 0;
+	var opponentDefaultYs:Array<Float> = [];
+
+	public function setOpponentStrumOffsetY(offset:Float):Void
+	{
+		final delta:Float = (offset - opponentStrumOffsetY) * (ClientPrefs.data.downScroll ? -1 : 1);
+		opponentStrumOffsetY = offset;
+		if (delta == 0) return;
+
+		for (i in 0...opponentStrums.length)
+		{
+			opponentStrums.members[i].y += delta;
+			if (i < opponentDefaultYs.length)
+			{
+				opponentDefaultYs[i] += delta;
+				setOnScripts('defaultOpponentStrumY' + i, opponentDefaultYs[i]);
+			}
 		}
 	}
 
 	#if mobile
 	function usesMobileStrumLayout():Bool
 		return ClientPrefs.data.middleScroll && (ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes);
+
+	function updateMobileComboOffset():Void
+	{
+		mobileComboOffsetX = 0;
+		mobileComboOffsetY = 0;
+		comboGroupBaseX = comboGroup.x;
+		comboGroupBaseY = comboGroup.y;
+		if(disableMobileComboOffset || !ClientPrefs.data.middleScroll || playerStrums.length < 4) return;
+
+		if(!usesMobileStrumLayout())
+		{
+			final playerRightEdge:Float = playerStrums.members[3].x + playerStrums.members[3].width;
+			mobileComboOffsetX = (FlxG.width + playerRightEdge) / 4 - 20;
+			mobileComboOffsetY = (ClientPrefs.data.downScroll ? -1 : 1) * (FlxG.height / 2 - 90);
+		}
+		else if(ClientPrefs.data.middlescrollType == 'pc')
+		{
+			mobileComboOffsetX = playerStrums.members[0].x / 2 - FlxG.width / 2;
+		}
+	}
 
 	function isMobileRingNote(n:Note):Bool
 		return n.noteType == 'Ring Note' && usesMobileStrumLayout();
@@ -1891,13 +1956,16 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		opponentStrums.members[0].x = 0;
+		final groupSpan:Float = (3 * .3 * 162) + opponentStrums.members[0].width;
+		opponentStrums.members[0].x = opponentStrumsFlipSide ? (FlxG.width - groupSpan) : 0;
 
 		for(i in 0...4) {
 			opponentStrums.members[i].y = ClientPrefs.data.downScroll ? 50 : FlxG.height - 159;
 			if(i > 0) opponentStrums.members[i].x = opponentStrums.members[0].x + (i*.3*162);
 		}
 	}
+
+	public var opponentStrumsFlipSide:Bool = false;
 
 	#end
 
@@ -2113,6 +2181,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
+		syncMobileComboOffset();
 		#if mobile
 		updateSpaceHitbox();
 		for(i in 0...4) {
@@ -2137,6 +2206,9 @@ class PlayState extends MusicBeatState
 				keyReleased(i);
 			}
 		}
+
+		if(shortPress && startedCountdown && canPause && (Paths.formatToSongPath(SONG.song) != 'burning' || FlxG.save.data.burningWon == true) && FlxG.mouse.overlaps(pauseButton, camOther))
+			openPauseMenu();
 		#end
 
 		var hasScripts:Bool = false;
@@ -3280,6 +3352,20 @@ class PlayState extends MusicBeatState
 	inline function set_totalNotesHit(val:Float):Float { _totalNotesHit = val; return val; }
 
 	public var comboGroup:FlxSpriteGroup;
+	public var mobileComboOffsetX:Float = 0;
+	public var mobileComboOffsetY:Float = 0;
+	public var disableMobileComboOffset:Bool = false;
+	var comboGroupBaseX:Float = 0;
+	var comboGroupBaseY:Float = 0;
+
+	function syncMobileComboOffset():Void
+	{
+		if((mobileComboOffsetX != 0 || mobileComboOffsetY != 0) && (comboGroup.x != comboGroupBaseX || comboGroup.y != comboGroupBaseY))
+		{
+			mobileComboOffsetX = 0;
+			mobileComboOffsetY = 0;
+		}
+	}
 	public var uiGroup:FlxSpriteGroup;
 	public var noteGroup:FlxTypedGroup<FlxBasic>;
 
@@ -3299,6 +3385,7 @@ class PlayState extends MusicBeatState
 	{
 		final noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.data.ratingOffset);
 		vocals.volume = 1;
+		syncMobileComboOffset();
 		
 		for (spr in comboGroup.members)
 		{
@@ -3376,9 +3463,9 @@ class PlayState extends MusicBeatState
 		else rating.setGraphicSize(Std.int(rating.width * 4 * 1.1));
 		rating.updateHitbox();
 		rating.screenCenter(X);
-		rating.y = comboGroup.y + (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
-		rating.x += comboGroup.x;
-		
+		rating.y = comboGroup.y + mobileComboOffsetY + (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
+		rating.x += comboGroup.x + mobileComboOffsetX;
+
 		final targetScale:Float = PlayState.isPixelStage ? 4 : 0.6;
 		rating.scale.set(targetScale, targetScale);
 		
@@ -3403,8 +3490,8 @@ class PlayState extends MusicBeatState
 			else numScore.setGraphicSize(Std.int(numScore.width * 4 * 1.1));
 			numScore.updateHitbox();
 			
-			numScore.x = comboGroup.x + FlxG.width / 2 - numScore.width / 2 + (i - (separatedScore.length - 1) / 2) * 50;
-			numScore.y = comboGroup.y + (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
+			numScore.x = comboGroup.x + mobileComboOffsetX + FlxG.width / 2 - numScore.width / 2 + (i - (separatedScore.length - 1) / 2) * 50;
+			numScore.y = comboGroup.y + mobileComboOffsetY + (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
 			
 			numScore.scale.set(targetScale, targetScale);
 			
@@ -3578,6 +3665,18 @@ class PlayState extends MusicBeatState
 		if (pointerOverlapsSprite(id, spaceHitbox)) return false;
 		return pointerOverlapsSprite(id, hitboxesGroup[i]);
 	}
+
+	function hasHittableTap(key:Int):Bool
+	{
+		if (strumsBlocked[key]) return false;
+		for (n in noteQueues[key])
+		{
+			if (n == null || n.isSustainNote) continue;
+			if (n.strumTime > Conductor.songPosition + 500) break;
+			if (n.canBeHit && n.mustPress && !n.tooLate && !n.wasGoodHit && !n.blockHit) return true;
+		}
+		return false;
+	}
 	#end
 
 	public static function getKeyFromEvent(arr:Array<String>, key:FlxKey):Int
@@ -3653,7 +3752,7 @@ class PlayState extends MusicBeatState
 					// so sliding back onto a hitbox or a second finger tapping a held one presses again,
 					// while a touch that's still sustaining its own hold note doesn't re-trigger itself
 					if(overlapsNow && !overlapState[i]) {
-						final isReturningOwner = hitboxOwner[i] == pid && ClientPrefs.data.slideMechanic && noteSlide[i];
+						final isReturningOwner = hitboxOwner[i] == pid && ClientPrefs.data.slideMechanic && noteSlide[i] && !hasHittableTap(i);
 						if(!isReturningOwner) {
 							hitboxesHeld[i] = true;
 							hitboxOwner[i] = pid;

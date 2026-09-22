@@ -1,3 +1,9 @@
+function onCreate()
+	if getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') and (getPropertyFromClass('backend.ClientPrefs', 'data.middlescrollType') == 'mobile' or getPropertyFromClass('backend.ClientPrefs', 'data.mobileOpponentNotes')) then
+		setProperty('opponentStrumOffsetY', -90);
+	end
+end
+
 function onCreatePost()
 	makeLuaSprite('bg2', 'bg/deception/bg-f 2', 0, -350)
 	scaleObject('bg2', 2.5, 2.5)

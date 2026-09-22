@@ -142,9 +142,9 @@ function onCreate()
     precacheImage('exeSplashes/noteSplashes-flash');
     precacheImage('exeSplashes/noteSplashes-flash2');
     precacheImage('exeSplashes/noteSplashes-flash3');
-    precacheImage('exeSplashes/noteSplashesHOLD-flash');
-    precacheImage('exeSplashes/noteSplashesHOLD-flash2');
-    precacheImage('exeSplashes/noteSplashesHOLD-flash3');
+    precacheImage('exeSplashes/holds/noteSplashesHOLD-flash');
+    precacheImage('exeSplashes/holds/noteSplashesHOLD-flash2');
+    precacheImage('exeSplashes/holds/noteSplashesHOLD-flash3');
     precacheImage('noteSkins/NOTE_assets_FLASH');
     precacheImage('noteSkins/NOTE_assets_FLASH2');
     precacheImage('noteSkins/NOTE_assets_FLASH3');

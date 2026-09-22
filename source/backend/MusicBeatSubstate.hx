@@ -19,6 +19,7 @@ class MusicBeatSubstate extends FlxSubState
 	private var curStep:Int = 0;
 	private var curBeat:Int = 0;
 
+	#if mobile
 	public var mouseX:Float = 0;
 	public var deltaMouseX:Float = 0;
 	public var mouseY:Float = 0;
@@ -35,6 +36,7 @@ class MusicBeatSubstate extends FlxSubState
 
 	public var backButton:FlxSprite;
 	var tweenScale:FlxTween;
+	#end
 
 	private var curDecStep:Float = 0;
 	private var curDecBeat:Float = 0;
@@ -43,6 +45,7 @@ class MusicBeatSubstate extends FlxSubState
 	inline function get_controls():Controls
 		return Controls.instance;
 
+	#if mobile
 	public function createBackButton(x:Float, y:Float) {
 		backButton = new FlxSprite(0, 0);
 		backButton.frames = FlxAtlasFrames.fromSparrow('assets/exe/backButton.webp', 'assets/exe/backButton.xml');
@@ -56,6 +59,7 @@ class MusicBeatSubstate extends FlxSubState
 		backButton.y = y;
 		add(backButton);
 	}
+	#end
 
 	override function update(elapsed:Float)
 	{
@@ -80,6 +84,7 @@ class MusicBeatSubstate extends FlxSubState
 			}
 		}
 
+		#if mobile
 		mouseX = FlxG.mouse.x;
 		mouseY = FlxG.mouse.y;
 
@@ -110,7 +115,7 @@ class MusicBeatSubstate extends FlxSubState
 
 			if(buttonOverlaps) {
 				backButton.animation.play('press', true);
-				
+
 				backPressed = shortPress;
 
 				if(backButton.scale.x != 0.19 && tweenScale == null) {
@@ -129,6 +134,7 @@ class MusicBeatSubstate extends FlxSubState
 				}
 			}
 		}
+		#end
 
 		super.update(elapsed);
 	}

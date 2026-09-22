@@ -13,6 +13,12 @@ local function applyColorTheme()
 	setTextBorder('hitCounterText', 2, c)
 end
 
+function onCreate()
+	if getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') and (getPropertyFromClass('backend.ClientPrefs', 'data.middlescrollType') == 'mobile' or getPropertyFromClass('backend.ClientPrefs', 'data.mobileOpponentNotes')) then
+		setProperty('opponentStrumOffsetY', -60);
+	end
+end
+
 function onCreatePost()
 	makeLuaSprite('bg', 'bg/bg', -1200, -800)
 	addLuaSprite('bg')

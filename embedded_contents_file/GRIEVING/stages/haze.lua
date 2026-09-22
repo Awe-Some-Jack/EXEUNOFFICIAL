@@ -316,6 +316,7 @@ local modchart = {
         end
     end,
     ['reverseNotesPosition'] = function ()
+        if middlescroll then return end
         for i = 0, 3 do
             noteTweenX(i..'X' , i , (screenWidth / 1.3)--[[Offset]]+(115 * (i - 2))--[[NotesSeparation]], 2, 'circOut')
             noteTweenAlpha(i..'AlphaBack', i, 1, 1)

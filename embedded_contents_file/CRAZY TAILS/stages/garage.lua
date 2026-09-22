@@ -84,6 +84,12 @@ local function setupAnims()
 	setProperty('final5.alpha', 0.0001)
 end
 
+function onCreate()
+	if getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') and (getPropertyFromClass('backend.ClientPrefs', 'data.middlescrollType') == 'mobile' or getPropertyFromClass('backend.ClientPrefs', 'data.mobileOpponentNotes')) then
+		setProperty('opponentStrumOffsetY', -10);
+	end
+end
+
 function onCreatePost()
 	makeLuaSprite('bg', 'bg/bg', -440, -310)
 	scaleObject('bg', 0.7, 0.7)

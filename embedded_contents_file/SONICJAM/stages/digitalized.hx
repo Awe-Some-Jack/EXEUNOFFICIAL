@@ -37,6 +37,8 @@ var bg:FlxSprite;
 
 function onCreate()
 {
+	if(ClientPrefs.data.middleScroll && (ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes)) PlayState.instance.opponentStrumOffsetY = -60;
+
 	setupCameras();
 
 	//intro

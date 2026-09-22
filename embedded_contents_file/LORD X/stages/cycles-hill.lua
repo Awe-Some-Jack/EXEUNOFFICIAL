@@ -56,7 +56,6 @@ local transitionStartTime = 0
 
 local hbOriginalY = 0
 local hbHidden = false
-local strumsY = 50
 local shaderTime = 0
 
 function onCreate()
@@ -88,8 +87,6 @@ function onCreatePost()
 	for i = 0, 3 do for _, strums in ipairs({'playerStrums', 'opponentStrums'}) do
 		setProperty(strums..'.members['..i..'].y', downscroll and 800 or -200) setProperty(strums..'.members['..i..'].alpha', 0)
 	end end
-
-	strumsY = downscroll and 570 or 50
 
 	initLuaShader('water')
 	setSpriteShader('water', 'water')
@@ -158,7 +155,7 @@ end
 function onEvent(e, v1, v2)
 	if e == 'cyclesEvents' then
 		if v1 == 'revealHUD' then
-			for i = 0, 7 do noteTweenY(i..'TweenY', i, strumsY, 2 + (i * 0.1), 'quartOut') noteTweenAlpha(i..'TweenAlpha', i, 1, 2 + (i * 0.1), 'quartOut') end
+			for i = 0, 7 do noteTweenY(i..'TweenY', i, _G['default'..(i < 4 and 'Opponent' or 'Player')..'StrumY'..(i % 4)], 2 + (i * 0.1), 'quartOut') noteTweenAlpha(i..'TweenAlpha', i, 1, 2 + (i * 0.1), 'quartOut') end
 			doTweenY('hbBGTween', 'hbBG', hbOriginalY, 0.8, 'quartOut') doTweenY('exeScoreTxtTween', 'exeScoreTxt', hbOriginalY + 50, 0.8, 'quartOut')
 			for _, name in ipairs(HB_ELEMENTS) do doTweenY(name .. 'Tween', name, hbOriginalY + 5, 0.8, 'quartOut') end
 		end

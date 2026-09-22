@@ -1,28 +1,28 @@
-addHaxeLibrary('FlxAngle', 'flixel.math')
-
-runHaxeCode([[
-	function setShaderFrameInfo(obj:String) {
-		var char:FlxSprite;
-		switch(obj) {
-			case 'boyfriend':
-				char = game.boyfriend;
-			case 'dad':
-				char = game.dad;
-			case 'gf':
-				char = game.gf;
-		}
-
-        char.animation.callback = function(name:String, frameNumber:Int, frameIndex:Int)
-		{
-			if (char.shader != null) {
-				char.shader.setFloatArray('uFrameBounds', [char.frame.uv.x, char.frame.uv.y, char.frame.uv.width, char.frame.uv.height]);
-				char.shader.setFloat('angOffset', char.frame.angle * FlxAngle.TO_RAD);
-			}
-        }
-	}
-]])
-
 function onCreatePost()
+	addHaxeLibrary('FlxAngle', 'flixel.math')
+
+	runHaxeCode([[
+		function setShaderFrameInfo(obj:String) {
+			var char:FlxSprite;
+			switch(obj) {
+				case 'boyfriend':
+					char = game.boyfriend;
+				case 'dad':
+					char = game.dad;
+				case 'gf':
+					char = game.gf;
+			}
+
+			char.animation.callback = function(name:String, frameNumber:Int, frameIndex:Int)
+			{
+				if (char.shader != null) {
+					char.shader.setFloatArray('uFrameBounds', [char.frame.uv.x, char.frame.uv.y, char.frame.uv.width, char.frame.uv.height]);
+					char.shader.setFloat('angOffset', char.frame.angle * FlxAngle.TO_RAD);
+				}
+			}
+		}
+	]])
+
 	makeLuaSprite('bloom')
 	setSpriteShader('bloom', 'brightness')
 	setShaderFloat('bloom', 'saturation', 1)

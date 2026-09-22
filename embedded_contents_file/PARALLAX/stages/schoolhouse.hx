@@ -151,7 +151,6 @@ function onCreatePost() {
 	
 	camZooming = false;
 	camGame.pixelPerfectRender = camVideo.pixelPerfectRender = camHUD.pixelPerfectRender = camOther.pixelPerfectRender = true;
-	comboGroup.y += 100 * (ClientPrefs.data.downScroll ? -1 : 1);
 
 	camHUD.alpha = 0;
 

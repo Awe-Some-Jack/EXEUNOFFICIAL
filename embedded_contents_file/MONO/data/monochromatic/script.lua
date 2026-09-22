@@ -1,4 +1,5 @@
 local ogNotesScale = {}
+local scalesCaptured = false
 local startMessingAround = false
 local insaneModchart1 = false
 local insaneModchart2 = false
@@ -9,6 +10,22 @@ function onCountdownStarted()
 		setPropertyFromGroup('opponentStrums', i, 'x', -500)
 		setPropertyFromGroup('playerStrums', i, 'x', 1300)
 	end
+end
+
+local function captureScales()
+    if scalesCaptured then return end
+    scalesCaptured = true
+    for i = 0, 7 do
+        ogNotesScale[i] = {getPropertyFromGroup('strumLineNotes', i, 'scale.x'), getPropertyFromGroup('strumLineNotes', i, 'scale.y')}
+    end
+end
+
+local function restoreScales()
+    if not scalesCaptured then return end
+    for i = 0, 7 do
+        setPropertyFromGroup('strumLineNotes', i, 'scale.x', ogNotesScale[i][1])
+        setPropertyFromGroup('strumLineNotes', i, 'scale.y', ogNotesScale[i][2])
+    end
 end
 
 function onEvent(eventName, value1)
@@ -23,6 +40,9 @@ function onEvent(eventName, value1)
                 noteTweenX(i..'X' , i , _G['defaultPlayerStrumX'..(i - 4)], 1 + ((i - 4) * 0.2), 'backOut')
             end
         end
+        if value1 == 'messyModchart' then
+            captureScales()
+        end
         if value1 == 'messyModchart' and flashingLights then
             startMessingAround = true
             for _, e in ipairs({'iconBF', 'iconOpp', 'healthBar', 'healthBarBG'}) do
@@ -30,13 +50,13 @@ function onEvent(eventName, value1)
             end
         end
         if value1 == 'insaneModchart1' then
+            captureScales()
             startMessingAround = false
             for _, e in ipairs({'iconBF', 'iconOpp', 'healthBar', 'healthBarBG'}) do
                 setProperty(e..'.alpha', 1)
             end
+            restoreScales()
             for i = 0,7 do
-                setPropertyFromGroup('strumLineNotes', i, 'scale.x', ogNotesScale[1])
-                setPropertyFromGroup('strumLineNotes', i, 'scale.y', ogNotesScale[2])
                 setPropertyFromGroup('strumLineNotes', i, 'x', _G['default'..(i > 3 and 'Player' or 'Opponent')..'StrumX'..(i % 4)])
                 setPropertyFromGroup('strumLineNotes', i, 'y', _G['default'..(i > 3 and 'Player' or 'Opponent')..'StrumY'..(i % 4)])
             end
@@ -50,6 +70,7 @@ function onEvent(eventName, value1)
             startMessingAround = false
             insaneModchart1 = false
             insaneModchart2 = false
+            restoreScales()
             for i = 0, 7 do
                 setPropertyFromGroup('strumLineNotes', i, 'x', _G['default'..(i > 3 and 'Player' or 'Opponent')..'StrumX'..(i % 4)])
                 setPropertyFromGroup('strumLineNotes', i, 'y', _G['default'..(i > 3 and 'Player' or 'Opponent')..'StrumY'..(i % 4)])
@@ -93,15 +114,6 @@ function onBeatHit()
             noteTweenY('lolnote'..n, n, _G['default'..(i > 3 and 'Player' or 'Opponent')..'StrumY'..(n % 4)], 0.3 / playbackRate, 'circOut')
             setPropertyFromGroup('strumLineNotes', n2, 'y', _G['default'..(i > 3 and 'Player' or 'Opponent')..'StrumY'..(n2 % 4)] - (downscroll and 20 or -20))
             noteTweenY('lolnote'..n2, n2, _G['default'..(i > 3 and 'Player' or 'Opponent')..'StrumY'..(n2 % 4)], 0.3 / playbackRate, 'circOut')
-        end
-    end
-end
-
-function onTweenCompleted(tag)
-    for i = 0, 7 do
-        if tag == i..'X' then
-            ogNotesPosition = {getPropertyFromGroup('strumLineNotes', i, 'x'), getPropertyFromGroup('strumLineNotes', i, 'y')}
-            ogNotesScale = {getPropertyFromGroup('strumLineNotes', i, 'scale.x'), getPropertyFromGroup('strumLineNotes', i, 'scale.y')}
         end
     end
 end

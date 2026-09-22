@@ -159,7 +159,7 @@ local fateStrumEvents = {
     ['dadStrums'] = function(mode)
         if mode == 'show' then
             for i = 0, 3 do
-                noteTweenY(i..'DAD', i, (downscroll and 570 or 50), 0.9 + (i * 0.1) / playbackRate, 'smootherStepOut')
+                noteTweenY(i..'DAD', i, _G['defaultOpponentStrumY'..i], 0.9 + (i * 0.1) / playbackRate, 'smootherStepOut')
                 noteTweenAlpha(i..'Tween', i, 1, 0.4 / playbackRate)
 
 

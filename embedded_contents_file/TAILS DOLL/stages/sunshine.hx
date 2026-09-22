@@ -7,6 +7,11 @@ var spotlight:FlxSprite;
 var redOverlay:FlxSprite;
 
 final hudSprites:Array<String> = ['iconBF', 'iconOpp', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG', 'exeScoreTxt'];
+
+function onCreate() {
+	if(ClientPrefs.data.middleScroll && (ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes)) PlayState.instance.opponentStrumOffsetY = -70;
+}
+
 function onCreatePost()
 {
 	introCutscene = new VideoSprite();
@@ -82,7 +87,7 @@ function onEvent(n,v1)
 				camGame.snapToTarget();
 				PlayState.instance.gameplayCam.settings.MiddleZoom = 0.8;
 				dad.alpha = 1;
-				PlayState.instance.comboGroup.x = -1000;
+				PlayState.instance.comboGroup.visible = false;
 			case 'fadeNotes':
 				for (i in 0...4)
 				{
@@ -108,7 +113,7 @@ function onEvent(n,v1)
 				floor.alpha = 1;
 				spotlight.alpha = 1;
 
-				PlayState.instance.comboGroup.x = 0;
+				PlayState.instance.comboGroup.visible = true;
 				camGame.zoom = 0.55;
 				camGame.snapToTarget();
 				PlayState.instance.gameplayCam.settings.MiddleZoom = 0.55;

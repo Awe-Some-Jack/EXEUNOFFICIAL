@@ -13,10 +13,11 @@
 	],
 	"icon_scale": 0.48,
 	"char_offset": [
-		387,
+		374,
 		66
 	],
 	"flip_x": false,
+	"antialiasing": false,
 	"char": "sl4sh",
 	"icon": "sl4sh"
 }

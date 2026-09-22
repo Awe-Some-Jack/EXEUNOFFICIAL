@@ -15,6 +15,7 @@
 		128
 	],
 	"flip_x": false,
+	"antialiasing": false,
 	"char": "furnace",
 	"icon": "furnace"
 }

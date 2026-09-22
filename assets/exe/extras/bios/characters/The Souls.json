@@ -46,9 +46,9 @@
 				472
 			],
 			"char_scale": 0.8,
-			"char_angle": -90,
+			"char_angle": 0,
 			"char_offset": [
-				500,
+				450,
 				195
 			],
 			"char": "eggman"

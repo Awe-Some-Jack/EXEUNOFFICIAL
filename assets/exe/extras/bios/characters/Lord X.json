@@ -14,8 +14,8 @@
 			"char_scale": 0.5,
 			"mod": "LORD X",
 			"char_offset": [
-				503,
-				215
+				501,
+				224.5
 			],
 			"char": "lordx",
 			"flip_x": false,
@@ -25,8 +25,8 @@
 			"display_name": "LORDX (mad)",
 			"icon": "lordx-p2",
 			"char_offset": [
-				478,
-				195
+				450,
+				212.5
 			],
 			"char": "lord x podrido"
 		},
@@ -40,8 +40,8 @@
 			"char_scale": 0.61,
 			"char_angle": 0,
 			"char_offset": [
-				408,
-				176
+				390.9,
+				165.59
 			],
 			"char": "lord x p3largo"
 		}

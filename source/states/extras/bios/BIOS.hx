@@ -33,6 +33,7 @@ typedef BioEntry =
 	var artist:String;
 	var scale:Float;
 	var flipX:Bool;
+	var antialiasing:Bool;
 	var charAngle:Float;
 	var charOffset:Array<Float>;
 	var iconOffset:Array<Float>;
@@ -187,6 +188,7 @@ class BIOS extends SonicSubState
 			final artist      = _str(base.artist, '');
 			final scale:Float      = (base.char_scale != null) ? base.char_scale : 0.5;
 			final flipX:Bool       = (base.flip_x == true);
+			final antialiasing:Bool = (base.antialiasing == false) ? false : ClientPrefs.data.antialiasing;
 			final charAngle:Float  = (base.char_angle != null) ? base.char_angle : 0.0;
 			final charOff          = _arr2(base.char_offset, [300.0, 100.0]);
 			final iconOff          = _arr2(base.icon_offset, [786.0, 425.0]);
@@ -195,7 +197,7 @@ class BIOS extends SonicSubState
 			entries.push({
 				displayName: displayName, charId: charId, iconId: iconId,
 				mod: mod, bio: bio, artist: artist, scale: scale,
-				flipX: flipX, charAngle: charAngle, charOffset: charOff, iconOffset: iconOff,
+				flipX: flipX, antialiasing: antialiasing, charAngle: charAngle, charOffset: charOff, iconOffset: iconOff,
 				listOrder: order, filePath: path, variants: variants
 			});
 		}
@@ -407,6 +409,7 @@ class BIOS extends SonicSubState
 		var bio      = e.bio;
 		var scale      = e.scale;
 		var flipX      = e.flipX;
+		var antialiasing = e.antialiasing;
 		var charAngle  = e.charAngle;
 		var charOff    = e.charOffset;
 		var iconOff    = e.iconOffset;
@@ -422,6 +425,7 @@ class BIOS extends SonicSubState
 			bio       = _str(v.bio,          bio);
 			scale     = (v.char_scale  != null) ? v.char_scale  : scale;
 			flipX     = (v.flip_x == true);
+			antialiasing = (v.antialiasing == false) ? false : ClientPrefs.data.antialiasing;
 			charAngle = (v.char_angle != null) ? v.char_angle : charAngle;
 			charOff   = _arr2(v.char_offset, charOff);
 			iconOff   = _arr2(v.icon_offset, iconOff);
@@ -446,7 +450,7 @@ class BIOS extends SonicSubState
 		if (icon.getCharacter() != iconId) _swapIcon(iconId);
 		icon.setPosition(iconOff[0], iconOff[1]);
 
-		_loadCharFrame(charId, mod, scale, flipX, charOff);
+		_loadCharFrame(charId, mod, scale, flipX, antialiasing, charOff);
 		_fitToBoxes(charAngle);
 
 		#if DISCORD_ALLOWED
@@ -454,14 +458,15 @@ class BIOS extends SonicSubState
 		#end
 	}
 
-	function _loadCharFrame(charId:String, mod:String, scale:Float, flipX:Bool, charOff:Array<Float>):Void
+	function _loadCharFrame(charId:String, mod:String, scale:Float, flipX:Bool, antialiasing:Bool, charOff:Array<Float>):Void
 	{
 		if (_lastCharId == charId && _lastCharMod == mod)
 		{
 			charSprite.scale.set(scale, scale);
 			charSprite.flipX = flipX;
+			charSprite.antialiasing = antialiasing;
 			charSprite.updateHitbox();
-			charSprite.setPosition(lockedX, lockedY);
+			// charSprite.setPosition(lockedX, lockedY);
 			charSprite.visible = true;
 			return;
 		}
@@ -550,11 +555,12 @@ class BIOS extends SonicSubState
 
 		charSprite.scale.set(scale, scale);
 		charSprite.flipX = flipX;
+		charSprite.antialiasing = antialiasing;
 		charSprite.updateHitbox();
 
 		lockedX = charOff[0] - cached.offset[0] * scale;
 		lockedY = charOff[1] - cached.offset[1] * scale;
-		charSprite.setPosition(lockedX, lockedY);
+		charSprite.setPosition(charOff[0], charOff[1]);
 		charSprite.visible = true;
 
 		_lastCharId  = charId;
@@ -795,11 +801,26 @@ class BIOS extends SonicSubState
 		if (FlxG.keys.justPressed.A) _changeVariant(-1);
 		if (FlxG.keys.justPressed.D) _changeVariant(1);
 
+		/* deberia borrar este bloque de codigo? xd
 		if (charSprite != null)
 		{
-			charSprite.x = lockedX;
-			charSprite.y = lockedY;
+			// charSprite.x = lockedX;
+			// charSprite.y = lockedY;
+			// debug shit
+			var px = 1 * (FlxG.keys.pressed.SHIFT ? 10 : 1);
+			if (FlxG.keys.justPressed.I || FlxG.keys.justPressed.K){
+				charSprite.y += FlxG.keys.justPressed.I ? -px : px;
+				trace("Character Offsets, X: "+charSprite.x+", Y: "+charSprite.y);
+			}
+			if (FlxG.keys.justPressed.J || FlxG.keys.justPressed.L){
+				charSprite.x += FlxG.keys.justPressed.J ? -px : px;
+				trace("Character Offsets, X: "+charSprite.x+", Y: "+charSprite.y);
+			}
+			if (FlxG.keys.justPressed.SPACE){
+				trace("Character "+charName.text+" needs disable antialiasing");
+			}
 		}
+		*/
 
 		if (controls.RESET) FlxG.resetState();
 
@@ -816,7 +837,7 @@ class BIOS extends SonicSubState
 		{
 			charSprite.angle = charAngle;
 			charSprite.updateHitbox();
-			charSprite.setPosition(lockedX, lockedY);
+			// charSprite.setPosition(lockedX, lockedY);
 		}
 
 		if (icon != null)

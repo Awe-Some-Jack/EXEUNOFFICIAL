@@ -19,6 +19,7 @@
 			],
 			"char": "faker_chaotix",
 			"flip_x": false,
+			"antialiasing": false,
 			"artist": "Niall"
 		},
 		{
@@ -31,9 +32,10 @@
 			],
 			"char_scale": 4.6,
 			"char_angle": 0,
+			"antialiasing": false,
 			"char_offset": [
-				409,
-				186
+				390.4,
+				210.8
 			],
 			"char": "beast_chaotix"
 		}

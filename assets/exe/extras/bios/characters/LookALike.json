@@ -14,8 +14,8 @@
 			"char_scale": 0.55,
 			"mod": "STORY MODE",
 			"char_offset": [
-				615,
-				305
+				499,
+				198
 			],
 			"char": "LookALike",
 			"flip_x": false,

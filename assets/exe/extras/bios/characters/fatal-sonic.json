@@ -19,6 +19,7 @@
 				44
 			],
 			"flip_x": false,
+			"antialiasing": false,
 			"char": "fatal-sonic",
 			"artist": "AnarackWarriors"
 		},
@@ -31,9 +32,10 @@
 			],
 			"icon": "true-fatal",
 			"char_offset": [
-				274,
-				108
+				278,
+				119
 			],
+			"antialiasing": false,
 			"char": "true-fatal"
 		}
 	]

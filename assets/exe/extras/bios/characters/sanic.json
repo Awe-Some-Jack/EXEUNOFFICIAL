@@ -15,6 +15,7 @@
 		245
 	],
 	"flip_x": false,
+	"antialiasing": false,
 	"char": "sanic",
 	"icon": "sanic"
 }

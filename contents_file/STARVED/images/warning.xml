@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="warning.png">
+<SubTexture name="10000" x="0" y="244" width="87" height="87" frameX="-35" frameY="-35" frameWidth="153" frameHeight="153" />
+<SubTexture name="10001" x="266" y="0" width="91" height="91" frameX="-33" frameY="-33" frameWidth="153" frameHeight="153" />
+<SubTexture name="10002" x="0" y="133" width="111" height="111" frameX="-23" frameY="-23" frameWidth="153" frameHeight="153" />
+<SubTexture name="10003" x="0" y="0" width="133" height="133" frameX="-12" frameY="-12" frameWidth="153" frameHeight="153" />
+<SubTexture name="10004" x="0" y="244" width="87" height="87" frameX="-35" frameY="-35" frameWidth="153" frameHeight="153" />
+<SubTexture name="20000" x="87" y="244" width="87" height="87" frameX="-35" frameY="-35" frameWidth="153" frameHeight="153" />
+<SubTexture name="20001" x="266" y="91" width="91" height="91" frameX="-33" frameY="-33" frameWidth="153" frameHeight="153" />
+<SubTexture name="20002" x="111" y="133" width="111" height="111" frameX="-23" frameY="-23" frameWidth="153" frameHeight="153" />
+<SubTexture name="20003" x="133" y="0" width="133" height="133" frameX="-12" frameY="-12" frameWidth="153" frameHeight="153" />
+<SubTexture name="20004" x="87" y="244" width="87" height="87" frameX="-35" frameY="-35" frameWidth="153" frameHeight="153" />
+</TextureAtlas>

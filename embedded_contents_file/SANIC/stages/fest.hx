@@ -1,4 +1,6 @@
 import psychlua.LuaUtils;
+import flixel.addons.display.FlxBackdrop;
+import flixel.util.FlxAxes;
 import hxvlc.flixel.FlxVideoSprite;
 import openfl.display.BlendMode;
 
@@ -8,6 +10,7 @@ final game = PlayState.instance;
 var rgbShit:ErrorHandledRuntimeShader;
 var brightness:ErrorHandledRuntimeShader;
 
+var stars:FlxBackdrop;
 var introCutscene:FlxVideoSprite;
 var sanicBG:FlxVideoSprite;
 var videos:Array<FlxVideoSprite> = [];
@@ -16,8 +19,8 @@ function onCreate()
 {
 	camGame.alpha = 0; camHUD.alpha = 0;
 	introCutscene = new FlxVideoSprite();
-	introCutscene.load(Paths.video('intro'));
-	introCutscene.bitmap.rate = 1.08;
+	introCutscene.load(Paths.video('Sanic Intro'));
+	introCutscene.bitmap.volume = 0;
 	introCutscene.bitmap.onFormatSetup.add(() -> { 
 		introCutscene.setGraphicSize(FlxG.width, FlxG.height);
 		introCutscene.screenCenter();
@@ -34,8 +37,17 @@ function onCreate()
 		sanicBG.updateHitbox();
 	});
 	sanicBG.bitmap.onEndReached.add(() -> {sanicBG.destroy();});
-	insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), sanicBG);
+	insert(0, sanicBG);
 	videos.push(sanicBG);
+
+	stars = new FlxBackdrop(null, FlxAxes.XY);
+	stars.drawBlit = false;
+	stars.frames = Paths.getSparrowAtlas('star');
+	stars.scale.set(2, 2); stars.updateHitbox();
+	stars.antialiasing = false;
+	stars.animation.addByPrefix('idle', 'idle', 6, true);
+	stars.animation.play('idle', true);
+	insert(1, stars);
 
 	for (s in 0...2)
 	{

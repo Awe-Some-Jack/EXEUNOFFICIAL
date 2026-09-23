@@ -1,5 +1,5 @@
 local isJumping = false
-local canJump = true
+local canJump = false
 
 function onCreatePost()
 	makeAnimatedLuaSprite('sonic-jump', 'sonic-jump')
@@ -12,6 +12,7 @@ function onCreatePost()
 	setProperty('sonic-jump.visible', false)
 end
 
+local spikeGroup = {}
 local cantMore = false
 local jumpAmount = 2000
 local gravity = 7000
@@ -61,9 +62,23 @@ function onUpdatePost(e)
 		setProperty('boyfriend.velocity.y', 0)
 		setProperty('boyfriend.acceleration.y', 0)
 	end
+
+	for i,s in ipairs(spikeGroup) do
+		local spr = 'spike'..s.id
+		if overlaps('boyfriend', spr) and s.detect then
+			s.detect = false
+			cameraShake('game', 0.01, 0.1)
+			addHealth(-0.2)
+		end
+
+		if getProperty(spr..'.x') < -1200 - getProperty(spr..'.width') then
+			removeLuaSprite(spr, true)
+			table.remove(spikeGroup, i)
+		end
+	end
 end
 
---[[function onBeatHit()
+function onBeatHit()
 	--cinematic 1 (furnace appears)
 	if curBeat >= 64 and curBeat < 384 then canJump = true end
 	--cinematic 2 (starved appears)
@@ -71,7 +86,38 @@ end
 	elseif curBeat >= 448 and curBeat < 832 then canJump = true end
 	--final cinematic to end song (super sonic)
 	if curBeat >= 832 then canJump = false end
-end]]
+end
+
+local mech = false
+function onEvent(n,v1)
+	if n == 'preyEvent' and v1 == 'mech' then
+		mech = not mech
+	end
+end
+
+local id = 0
+function onSectionHit()
+	if mech and canJump and getRandomBool(35) then
+		id = id + 1
+		local spike = 'spike'..id
+		makeLuaSprite(spike, 'prey/spikes'..getRandomInt(1,3), 200 + ((crochet * 3) / 1000) * math.abs(getProperty('floor1.velocity.x')), 423)
+		scaleObject(spike, 5, 5)
+		setProperty(spike..'.offset.x', 200)
+		setProperty(spike..'.antialiasing', false)
+		setProperty(spike..'.velocity.x', getProperty('floor1.velocity.x'))
+		setObjectOrder(spike, getObjectOrder('floor1'))
+		playSound('warnin', 1)
+		runTimer('xd', crochet / 1000)
+		table.insert(spikeGroup, {id = id, detect = true})
+
+		local warning = 'warning'..id
+		makeAnimatedLuaSprite(warning, 'warning')
+		addAnimationByPrefix(warning, 'idle', '2', 12, true)
+		addLuaSprite(warning)
+	end
+end
+
+function onTimerCompleted(t) if t == 'xd' then playSound('warnin', 1) end end
 
 function lerp(a, b, t)
 	return a + t * (b - a)

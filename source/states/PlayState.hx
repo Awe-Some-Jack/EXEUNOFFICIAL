@@ -1033,7 +1033,7 @@ class PlayState extends MusicBeatState
 			positionSpaceHitbox();
 		}
 
-		pauseButton = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/pause/pauseButton.webp'));
+		pauseButton = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/pause/pauseButton.jxl'));
 		pauseButton.scale.set(0.35, 0.35);
 		pauseButton.updateHitbox();
 		pauseButton.cameras = [camOther];

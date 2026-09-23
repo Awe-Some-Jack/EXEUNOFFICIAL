@@ -51,7 +51,7 @@ class VideoSprite extends FlxSpriteGroup
 			video.bitmap.onEndReached.add(onVideoComplete, true, -10);
 
 		pieTrack = new FlxSprite(0, 0);
-		pieTrack.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.webp', 'assets/exe/ring.xml');
+		pieTrack.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.jxl', 'assets/exe/ring.xml');
 		pieTrack.animation.addByPrefix('idle', 'idle', 60, true);
 		pieTrack.animation.play('idle', true);
 		pieTrack.scale.set(SKIP_RING_SCALE, SKIP_RING_SCALE);
@@ -62,7 +62,7 @@ class VideoSprite extends FlxSpriteGroup
 		add(pieTrack);
 
 		pie = new FlxSprite(0, 0);
-		pie.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.webp', 'assets/exe/ring.xml');
+		pie.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.jxl', 'assets/exe/ring.xml');
 		pie.animation.addByPrefix('idle', 'idle', 60, true);
 		pie.animation.play('idle', true);
 		pie.scale.set(SKIP_RING_SCALE, SKIP_RING_SCALE);

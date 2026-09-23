@@ -51,7 +51,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		final lblSize = Language.scaledFontSize(ExeBaseOptionsState.FONT_SIZE);
 		final font    = Paths.font(ExeBaseOptionsState.getLangFont());
 		final offRight:Float = FlxG.width + 200;
-		final boxBitmap = Paths.getBitmapData('assets/exe/options/propertyBG.webp');
+		final boxBitmap = Paths.getBitmapData('assets/exe/options/propertyBG.jxl');
 
 		if (statusTxt == null)
 		{

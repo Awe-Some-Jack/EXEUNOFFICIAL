@@ -28,32 +28,32 @@ class FridgeAccess extends MusicBeatState
 
 		CustomShapeTransition.shape = SUNKY;
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/wall.webp'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/wall.jxl'));
 		bg.scale.set(0.51, 0.51);
 		bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);
 
-		var gang:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/the gang.webp'));
+		var gang:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/the gang.jxl'));
 		gang.scale.set(0.52, 0.52);
 		gang.updateHitbox();
 		gang.setPosition(57, 41);
 		add(gang);
 
-		var frige:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/frige.webp'));
+		var frige:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/frige.jxl'));
 		frige.scale.set(0.521, 0.521);
 		frige.updateHitbox();
 		frige.setPosition(354, 14);
 		add(frige);
 
-		var paper:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/paper.webp'));
+		var paper:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/paper.jxl'));
 		paper.scale.set(0.52, 0.52);
 		paper.updateHitbox();
 		paper.setPosition(536, 486);
 		add(paper);
 
 		vanilla = new FlxSprite();
-		vanilla.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/Vanilla-Milk.webp', 'assets/exe/access/fridge/Vanilla-Milk.xml');
+		vanilla.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/Vanilla-Milk.jxl', 'assets/exe/access/fridge/Vanilla-Milk.xml');
 		vanilla.animation.addByPrefix('idle', 'vanilla instancia 1', 24, false);
 		vanilla.animation.addByPrefix('selected', 'vanilla selected instancia 1', 24, false);
 		vanilla.animation.play('idle');
@@ -63,7 +63,7 @@ class FridgeAccess extends MusicBeatState
 		add(vanilla);
 
 		chocolate = new FlxSprite();
-		chocolate.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/Choco-Milk.webp', 'assets/exe/access/fridge/Choco-Milk.xml');
+		chocolate.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/Choco-Milk.jxl', 'assets/exe/access/fridge/Choco-Milk.xml');
 		chocolate.animation.addByPrefix('idle', 'chocolate instancia 1', 24, false);
 		chocolate.animation.addByPrefix('selected', 'chocolate selected instancia 1', 24, false);
 		chocolate.animation.play('idle');
@@ -72,38 +72,38 @@ class FridgeAccess extends MusicBeatState
 		chocolate.setPosition(697, 461);
 		add(chocolate);
 
-		mustard = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/MUSTARD.webp'));
+		mustard = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/MUSTARD.jxl'));
 		mustard.scale.set(0.52, 0.52);
 		mustard.updateHitbox();
 		mustard.setPosition(643, 546);
 		add(mustard);
 		
-		var sushi:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/sushi.webp'));
+		var sushi:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/sushi.jxl'));
 		sushi.scale.set(0.52, 0.52);
 		sushi.updateHitbox();
 		sushi.setPosition(430, 703);
 		add(sushi);
 
-		var flower:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/flower.webp'));
+		var flower:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/flower.jxl'));
 		flower.scale.set(0.52, 0.52);
 		flower.updateHitbox();
 		flower.setPosition(529, 698);
 		add(flower);
 
-		amongus = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/amongus.webp'));
+		amongus = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/amongus.jxl'));
 		amongus.scale.set(0.52, 0.52);
 		amongus.updateHitbox();
 		amongus.setPosition(604, 814);
 		add(amongus);
 
-		var tv:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/tv.webp'));
+		var tv:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/tv.jxl'));
 		tv.scale.set(0.52, 0.52);
 		tv.updateHitbox();
 		tv.setPosition(625, 685);
 		add(tv);
 
 		var doordown:FlxSprite = new FlxSprite();
-		doordown.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/door.webp', 'assets/exe/access/fridge/door.xml');
+		doordown.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/door.jxl', 'assets/exe/access/fridge/door.xml');
 		doordown.animation.addByPrefix('idle', 'door instancia 1', 24, false);
 		doordown.animation.play('idle');
 		doordown.scale.set(0.52, 0.52);
@@ -111,14 +111,14 @@ class FridgeAccess extends MusicBeatState
 		doordown.setPosition(71, 426);
 		add(doordown);
 
-		var doorup:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/door up.webp'));
+		var doorup:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/door up.jxl'));
 		doorup.scale.set(0.52, 0.52);
 		doorup.updateHitbox();
 		doorup.setPosition(381, 62);
 		add(doorup);
 
 		var sunkyhand:FlxSprite = new FlxSprite();
-		sunkyhand.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/sunky-hand.webp', 'assets/exe/access/fridge/sunky-hand.xml');
+		sunkyhand.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/sunky-hand.jxl', 'assets/exe/access/fridge/sunky-hand.xml');
 		sunkyhand.animation.addByPrefix('idle', 'sunky hand instancia 1', 24, false);
 		sunkyhand.animation.play('idle');
 		sunkyhand.animation.paused = true;
@@ -142,13 +142,13 @@ class FridgeAccess extends MusicBeatState
 			});
 		});
 
-		var shit:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/shit.webp'));
+		var shit:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/shit.jxl'));
 		shit.scale.set(0.52, 0.52);
 		shit.updateHitbox();
 		shit.setPosition(893, 433);
 		add(shit);
 
-		/*ref = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/ref inside.webp'));
+		/*ref = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/fridge/ref inside.jxl'));
 		ref.setGraphicSize(FlxG.width, FlxG.height);
 		ref.updateHitbox();
 		ref.alpha = 0.5;

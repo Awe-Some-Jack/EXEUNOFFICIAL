@@ -18,7 +18,7 @@ import states.editors.content.PsychJsonPrinter;
 import animate.FlxAnimate;
 #end
 
-@:bitmap("psych-ui/images/cursorCross.webp")
+@:bitmap("psych-ui/images/cursorCross.jxl")
 class GraphicCursorCross extends openfl.display.BitmapData {}
 
 class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler.PsychUIEvent

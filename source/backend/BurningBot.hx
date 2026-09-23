@@ -283,7 +283,7 @@ class BurningBot
     {
         if (cover.animation.getByName('appear') == null)
         {
-            cover.frames = FlxAtlasFrames.fromSparrow('assets/exe/freeplayassets/covers/burning/burning.webp', 'assets/exe/freeplayassets/covers/burning/burning.xml');
+            cover.frames = FlxAtlasFrames.fromSparrow('assets/exe/freeplayassets/covers/burning/burning.jxl', 'assets/exe/freeplayassets/covers/burning/burning.xml');
             cover.animation.addByPrefix('appear', 'burning appear', 6, false);
         }
 
@@ -346,7 +346,7 @@ class BurningBot
         {
             cover.animation.finishCallback = null;
 
-            final bmp = EXEFreeplay.loadRawBitmap('assets/exe/freeplayassets/covers/burning/burningidle.webp');
+            final bmp = EXEFreeplay.loadRawBitmap('assets/exe/freeplayassets/covers/burning/burningidle.jxl');
             if (bmp != null)
             {
                 cover.loadGraphic(bmp);
@@ -399,7 +399,7 @@ class BurningBot
                 setCoverBlackFrame(cover);
             else
             {
-                final bmp = EXEFreeplay.loadRawBitmap('assets/exe/freeplayassets/covers/burning/burningidle.webp');
+                final bmp = EXEFreeplay.loadRawBitmap('assets/exe/freeplayassets/covers/burning/burningidle.jxl');
                 if (bmp != null) cover.loadGraphic(bmp);
             }
 

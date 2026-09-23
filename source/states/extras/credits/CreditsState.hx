@@ -306,7 +306,7 @@ private class CreditPopup extends MusicBeatSubstate
 		final col = CreditsState.userSelected[0];
 		
 		final iconBase = 'extras/credits/icons/${user.icon}';
-		final iconPath = resolveImagePath(iconBase, user.icon, 'assets/exe/extras/credits/missing_icon.webp');
+		final iconPath = resolveImagePath(iconBase, user.icon, 'assets/exe/extras/credits/missing_icon.jxl');
         if (!iconPath.contains('missing_icon'))
         {
             userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(iconPath);
@@ -322,7 +322,7 @@ private class CreditPopup extends MusicBeatSubstate
 		nm.camera = popCam; add(nm);
 
         final flagBase = 'extras/credits/countries/${user.nation}';
-        final flagPath = resolveImagePath(flagBase, user.nation, 'assets/exe/extras/credits/missing_country.webp');
+        final flagPath = resolveImagePath(flagBase, user.nation, 'assets/exe/extras/credits/missing_country.jxl');
         if (!flagPath.contains('missing_country'))
         {    
             final flag = new FlxSprite().loadGraphic(flagPath);
@@ -387,7 +387,7 @@ private class CreditPopup extends MusicBeatSubstate
         var exp:String = 'explosion';
         if (user.name.toLowerCase() == 'vn2' ) exp = 'lava';
         explosion = new FlxSprite(userIcon.x - 50, userIcon.y - 100);
-        explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow('assets/exe/extras/credits/$exp.webp', 'assets/exe/extras/credits/$exp.xml');
+        explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow('assets/exe/extras/credits/$exp.jxl', 'assets/exe/extras/credits/$exp.xml');
         explosion.animation.addByPrefix('idle', 'idle', 16, false);
         explosion.animation.play('idle');
         explosion.scale.set((exp == 'lava' ? 1 : 3), (exp == 'lava' ? 1 : 3)); explosion.antialiasing = false; explosion.updateHitbox();
@@ -405,7 +405,7 @@ private class CreditPopup extends MusicBeatSubstate
             if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume: 0.3}, 0.6); }
 
             #if VIDEOS_ALLOWED
-            pauseBtn = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/play.webp'));
+            pauseBtn = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/play.jxl'));
             pauseBtn.alpha = 0; pauseBtn.camera = popCam;
 
             userVideo = new VideoSprite(0, 0, false);
@@ -439,7 +439,7 @@ private class CreditPopup extends MusicBeatSubstate
         var sy = quoteCam.y + quoteCam.height + 10;
         if (user.youtube != null)
         {
-            youtubeBtn = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/youtube.webp'));
+            youtubeBtn = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/youtube.jxl'));
             youtubeBtn.setPosition(quoteCam.x - youtubeBtn.width - 15, sy - youtubeBtn.height);
             youtubeBtn.camera = popCam; youtubeBtn.color = 0xFF686868;
             youtubeBtn.scale.set(0.9, 0.9); youtubeBtn.updateHitbox(); add(youtubeBtn);
@@ -447,7 +447,7 @@ private class CreditPopup extends MusicBeatSubstate
         }
         if (user.twitter != null)
         {
-            twitterBtn = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/twitter.webp'));
+            twitterBtn = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/twitter.jxl'));
             twitterBtn.setPosition(quoteCam.x - twitterBtn.width - 15, sy - twitterBtn.height);
             twitterBtn.camera = popCam; twitterBtn.color = 0xFF686868;
             twitterBtn.scale.set(0.9, 0.9); twitterBtn.updateHitbox(); add(twitterBtn);
@@ -512,14 +512,14 @@ private class CreditPopup extends MusicBeatSubstate
         {
             userVideo.pause();
             FlxTween.cancelTweensOf(pauseBtn); FlxTween.cancelTweensOf(pauseBtn.scale);
-            pauseBtn.loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/pause.webp'));
+            pauseBtn.loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/pause.jxl'));
             pauseBtn.scale.set(1,1); pauseBtn.alpha = 1;
             if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume:1}, 0.6); }
         }
         else
         {
             userVideo.resume();
-            pauseBtn.loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/play.webp'));
+            pauseBtn.loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/play.jxl'));
             FlxTween.tween(pauseBtn.scale, {x:0,y:0}, 0.3);
             FlxTween.tween(pauseBtn, {alpha:0}, 0.3);
             if (affectsMusic) { FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume:0.3}, 0.6); }

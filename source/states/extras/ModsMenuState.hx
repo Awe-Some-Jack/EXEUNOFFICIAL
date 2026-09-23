@@ -864,10 +864,10 @@ class ModItem extends FlxSpriteGroup
 		add(text);
 
 		var isPixel = false;
-		var file:String = Paths.mods('$folder/pack.webp');
+		var file:String = Paths.mods('$folder/pack.jxl');
 		if (!FileSystem.exists(file))
 		{
-			file = Paths.mods('$folder/pack-pixel.webp');
+			file = Paths.mods('$folder/pack-pixel.jxl');
 			isPixel = true;
 		}
 		

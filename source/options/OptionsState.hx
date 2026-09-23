@@ -148,17 +148,17 @@ class OptionsState extends MusicBeatState
 		vigTop.scrollFactor.set(0, 0);
 		add(vigTop);
 
-		title = new FlxSprite(0, 20).loadGraphic(Paths.getBitmapData('assets/exe/options/optionsTitle.webp'));
+		title = new FlxSprite(0, 20).loadGraphic(Paths.getBitmapData('assets/exe/options/optionsTitle.jxl'));
 		title.setGraphicSize(Std.int(title.width * GLOBAL_SCALE * 0.75));
 		title.updateHitbox();
 		title.screenCenter(X);
 		add(title);
 
-		sectionBGClone = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGClone.webp'));
+		sectionBGClone = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGClone.jxl'));
 		sectionBGClone.setGraphicSize(Std.int(sectionBGClone.width * GLOBAL_SCALE));
 		sectionBGClone.updateHitbox();
 		add(sectionBGClone);
-		sectionBGCloneWhite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGWhite.webp'));
+		sectionBGCloneWhite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGWhite.jxl'));
 		sectionBGCloneWhite.setGraphicSize(Std.int(sectionBGCloneWhite.width * GLOBAL_SCALE));
 		sectionBGCloneWhite.updateHitbox();
 		sectionBGCloneWhite.color = FlxColor.WHITE;
@@ -177,7 +177,7 @@ class OptionsState extends MusicBeatState
 			sectionsGrp.add(section);
 			sectionPos.push({x: 0, y: 0});
 
-			final sectionBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.webp'));
+			final sectionBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.jxl'));
 			sectionBG.setGraphicSize(Std.int(sectionBG.width * GLOBAL_SCALE));
 			sectionBG.updateHitbox();
 			sectionBG.ID = i;

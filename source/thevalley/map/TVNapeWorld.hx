@@ -42,7 +42,7 @@ class TVNapeWorld
 	{
 		for (i in 1...count + 1)
 		{
-			var hbPath = basePath + i + "/hitbox.webp";
+			var hbPath = basePath + i + "/hitbox.jxl";
 			var bmd    = Paths.getBitmapData(hbPath);
 			if (bmd == null)
 			{

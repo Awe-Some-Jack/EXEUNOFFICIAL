@@ -28,7 +28,7 @@ class OptimizedBitmapData extends BitmapData
 
 	@SuppressWarnings("checkstyle:Dynamic")
 	@:noCompletion
-	private override function __fromImage(image:#if lime Image #else Dynamic #end):Void
+	private override function __fromImage(image:#if lime Image #else Dynamic #end, hardware:Bool = false):Void
 	{
 		#if lime
 		if (image != null && image.buffer != null)
@@ -43,12 +43,17 @@ class OptimizedBitmapData extends BitmapData
 			__textureHeight = height;
 
 			#if sys
-			image.format       = BGRA32;
+			if (!hardware)
+			{
+				image.format = BGRA32;
+			}
+
 			image.premultiplied = true;
 			#end
 
+			readable = !hardware;
+
 			__isValid = true;
-			readable  = true;
 
 			if (FlxG.stage.context3D != null)
 			{
@@ -56,7 +61,7 @@ class OptimizedBitmapData extends BitmapData
 				getTexture(FlxG.stage.context3D);
 				getSurface();
 
-				readable   = true;
+				readable   = !hardware;
 				this.image = null;
 			}
 		}

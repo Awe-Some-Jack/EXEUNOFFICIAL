@@ -35,7 +35,7 @@ class AchievementItem extends FlxSpriteGroup
         add(iconBg);
 
         final iconName:String = !unlocked && data.secret ? 'locked' : achievementId;
-        icon = new FlxSprite(15, 15).loadGraphic(Paths.getBitmapData('assets/exe/extras/achievements/icons/${iconName}.webp'));
+        icon = new FlxSprite(15, 15).loadGraphic(Paths.getBitmapData('assets/exe/extras/achievements/icons/${iconName}.jxl'));
         icon.setGraphicSize(ICON_SIZE, ICON_SIZE);
         icon.updateHitbox();
         add(icon);

@@ -322,7 +322,7 @@ class EXEFreeplay extends MusicBeatState
 	function maniaNotif():Void 
 	{
 		final maniaNotifSprite = new FlxSprite();
-		maniaNotifSprite.loadGraphic(Paths.getBitmapData('assets/exe/access/mania/mania-notif.webp'));
+		maniaNotifSprite.loadGraphic(Paths.getBitmapData('assets/exe/access/mania/mania-notif.jxl'));
 		maniaNotifSprite.scale.set(0.3, 0.3);
 		maniaNotifSprite.setPosition(250, -340);
 		add(maniaNotifSprite);
@@ -361,14 +361,14 @@ class EXEFreeplay extends MusicBeatState
 
 	function createBoxesAndCovers():Void
 	{
-		final boxBitmap = loadRawBitmap('assets/exe/freeplayassets/FreeBox.webp');
+		final boxBitmap = loadRawBitmap('assets/exe/freeplayassets/FreeBox.jxl');
 		boxWidth = (boxBitmap != null) ? (boxBitmap.width * 0.52) - 75 : 150;
 
 		centerX = FlxG.width / 2;
 		centerY = FlxG.height / 2;
 
-		final screenstaticFrames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.webp', 'assets/exe/story/screenstatic.xml');
-		final placeholderBitmap = loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.webp');
+		final screenstaticFrames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.jxl', 'assets/exe/story/screenstatic.xml');
+		final placeholderBitmap = loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.jxl');
 		final entryLangFont = Paths.font(Language.getFontForLanguage());
 		final entryExeSize = Language.cjkSize(34);
 		final translatedLabels = Language.getArray('freeplay.labels', []);
@@ -385,7 +385,7 @@ class EXEFreeplay extends MusicBeatState
 			final proxy = new FlxObject(0, 0);
 			cardPositions.push(proxy);
 
-			final coverPath = 'assets/exe/freeplayassets/covers/' + Paths.formatToSongPath(firstSong.songName) + '.webp';
+			final coverPath = 'assets/exe/freeplayassets/covers/' + Paths.formatToSongPath(firstSong.songName) + '.jxl';
 			final coverBitmap = loadRawBitmap(coverPath) ?? placeholderBitmap;
 
 			if (coverBitmap != null)
@@ -740,11 +740,11 @@ class EXEFreeplay extends MusicBeatState
 		}
 
 		final coverPath = (songName == 'burning')
-			? 'assets/exe/freeplayassets/covers/burning/burningidle.webp'
-			: 'assets/exe/freeplayassets/covers/' + Paths.formatToSongPath(songName) + '.webp';
+			? 'assets/exe/freeplayassets/covers/burning/burningidle.jxl'
+			: 'assets/exe/freeplayassets/covers/' + Paths.formatToSongPath(songName) + '.jxl';
 
 		var bmp = loadRawBitmap(coverPath);
-		bmp ??= loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.webp');
+		bmp ??= loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.jxl');
 
 		if (bmp != null)
 		{
@@ -1232,7 +1232,7 @@ class EXEFreeplay extends MusicBeatState
 
 	function loadBgSonic():Void
 	{
-		final bmp = loadRawBitmap('assets/exe/freeplayassets/bgsonic.webp');
+		final bmp = loadRawBitmap('assets/exe/freeplayassets/bgsonic.jxl');
 		if (bmp == null) return;
 
 		bgSonic = new FlxBackdrop(bmp, FlxAxes.X);
@@ -1308,7 +1308,7 @@ class EXEFreeplay extends MusicBeatState
 
 	function loadSpikesUp():Void
 	{
-		final bmp = loadRawBitmap('assets/exe/freeplayassets/spikesup.webp');
+		final bmp = loadRawBitmap('assets/exe/freeplayassets/spikesup.jxl');
 		if (bmp == null) return;
 		
 		spikesUp = new FlxBackdrop(bmp, FlxAxes.X);

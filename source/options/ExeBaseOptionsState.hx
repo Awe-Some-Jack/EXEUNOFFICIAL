@@ -143,7 +143,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		rightGroup.push(borderTop);
 		rightGroup.push(borderBot);
 
-		titlebar = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.webp'));
+		titlebar = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.jxl'));
 		titlebar.scale.set(TB_SCALE_X, TB_SCALE_Y); titlebar.updateHitbox();
 		titlebar.x = offLeft; titlebar.y = TB_Y; titlebar.scrollFactor.set(0, 0);
 		add(titlebar);
@@ -158,31 +158,31 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		add(titlebarTxt);
 		leftGroup.push(cast titlebarTxt);
 
-		selectionClone = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGClone.webp'));
+		selectionClone = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGClone.jxl'));
 		selectionClone.scale.set(NB_SCALE_X, NB_SCALE_Y); selectionClone.updateHitbox();
 		selectionClone.x = offRight; selectionClone.scrollFactor.set(0, 0); add(selectionClone);
 		rightGroup.push(selectionClone);
 
-		selectionCloneWhite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGWhite.webp'));
+		selectionCloneWhite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGWhite.jxl'));
 		selectionCloneWhite.scale.set(NB_SCALE_X, NB_SCALE_Y); selectionCloneWhite.updateHitbox();
 		selectionCloneWhite.alpha = 0; selectionCloneWhite.x = offRight; selectionCloneWhite.scrollFactor.set(0, 0); add(selectionCloneWhite);
 		rightGroup.push(selectionCloneWhite);
 
-		selectionCloneV = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGClone.webp'));
+		selectionCloneV = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGClone.jxl'));
 		selectionCloneV.scale.set(VB_SCALE_X, VB_SCALE_Y); selectionCloneV.updateHitbox();
 		selectionCloneV.x = offRight; selectionCloneV.scrollFactor.set(0, 0); add(selectionCloneV);
 		rightGroup.push(selectionCloneV);
 
-		selectionCloneWhiteV = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGWhite.webp'));
+		selectionCloneWhiteV = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/sectionBGWhite.jxl'));
 		selectionCloneWhiteV.scale.set(VB_SCALE_X, VB_SCALE_Y); selectionCloneWhiteV.updateHitbox();
 		selectionCloneWhiteV.alpha = 0; selectionCloneWhiteV.x = offRight; selectionCloneWhiteV.scrollFactor.set(0, 0); add(selectionCloneWhiteV);
 		rightGroup.push(selectionCloneWhiteV);
 
-		arrowLeft = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/arrow.webp'));
+		arrowLeft = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/arrow.jxl'));
 		arrowLeft.scale.set(ARR_SCALE, ARR_SCALE); arrowLeft.updateHitbox();
 		arrowLeft.x = ARR_L_X; arrowLeft.scrollFactor.set(0, 0); arrowLeft.visible = false;
 
-		arrowRight = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/arrow.webp'));
+		arrowRight = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/arrow.jxl'));
 		arrowRight.scale.set(ARR_SCALE, ARR_SCALE); arrowRight.updateHitbox();
 		arrowRight.x = ARR_R_X; arrowRight.flipX = true; arrowRight.scrollFactor.set(0, 0); arrowRight.visible = false;
 
@@ -204,12 +204,12 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	{
 		var offRight:Float = FlxG.width + 200;
 
-		var nameBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.webp'));
+		var nameBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.jxl'));
 		nameBG.scale.set(NB_SCALE_X, NB_SCALE_Y); nameBG.updateHitbox();
 		nameBG.x = offscreen ? offRight : NB_X; nameBG.y = rowY; nameBG.scrollFactor.set(0, 0);
 		add(nameBG); rightGroup.push(nameBG);
 
-		var valueBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.webp'));
+		var valueBG = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/options/propertyBG.jxl'));
 		valueBG.scale.set(VB_SCALE_X, VB_SCALE_Y); valueBG.updateHitbox();
 		valueBG.x = offscreen ? offRight : VB_X; valueBG.y = rowY; valueBG.scrollFactor.set(0, 0);
 		add(valueBG); rightGroup.push(valueBG);

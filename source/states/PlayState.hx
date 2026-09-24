@@ -221,6 +221,12 @@ class PlayState extends MusicBeatState
 	public var instakillOnMiss:Bool = false;
 	public var cpuControlled:Bool = false;
 	public var cpuAssist:Bool = false;
+	/**
+		* Variable for the possible cheat scripts that activate botplay
+		- cool or cooln't
+	**/
+	private var botplayWasActivated:Bool = false;
+
 	public var practiceMode:Bool = false;
 	public var pressMissDamage:Float = 0.05;
 
@@ -2286,6 +2292,10 @@ class PlayState extends MusicBeatState
 				FlxTween.cancelTweensOf(sunkyBotSprite);
 				FlxTween.tween(sunkyBotSprite, {x: camOther.width - sunkyBotSprite.width - 10}, 0.7, {ease: FlxEase.elasticOut});
 			}
+
+			if (!botplayWasActivated){
+				botplayWasActivated = true;
+			}
 		} else if (sunkyBotSprite != null && sunkyBotShown) {
 			sunkyBotShown = false;
 			FlxTween.cancelTweensOf(sunkyBotSprite);
@@ -3077,6 +3087,9 @@ class PlayState extends MusicBeatState
 	public var transitioning = false;
 	public function endSong()
 	{
+		// Scripts Anticheat shit uuu ;p
+		if (!Main.DEVELOPMENT_BUILD && !chartingMode && botplayWasActivated) FlxG.resetState();
+
 		if(!startingSong)
 		{
 			final limitTime = songLength - Conductor.safeZoneOffset;
@@ -3130,21 +3143,6 @@ class PlayState extends MusicBeatState
 		final formattedSong = Paths.formatToSongPath(SONG.song);
 		
 		checkSavedSongs(formattedSong);
-
-		// if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong)
-		// {
-		// 	states.EXEMenu.secretSong = false;
-
-		// 	final save:FlxSave = new FlxSave();
-		// 	save.bind('savedSongs', CoolUtil.getSavePath());
-		// 	save.data.songs ??= [];
-		// 	if (!save.data.songs.contains(formattedSong))
-		// 	{
-		// 		save.data.songs.push(formattedSong);
-		// 		save.flush();
-		// 		FlxG.log.add("Song(s) saved!");
-		// 	}
-		// }
 
 		if (formattedSong == "fight-or-flight") 
 			EXEFreeplay.maniaUnlock = true;

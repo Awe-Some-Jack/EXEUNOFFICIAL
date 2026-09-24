@@ -492,7 +492,7 @@ class Note extends FlxSprite
 		if (copyAlpha) alpha = myStrum.alpha * multAlpha;
 		if (copyX){
 			if (!isSustainNote){
-				//maybe good¿
+				//maybe good¿ its good :p
 				x = myStrum.x + (((myStrum.width - width)/2)+offsetX) + Math.cos(angleDir) * distance;
 			}else{
 				x = myStrum.x + offsetX + Math.cos(angleDir) * distance;

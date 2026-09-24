@@ -391,7 +391,7 @@ class Project extends HXProject
             var actualSrcPath = srcPath;
             var actualDestPath = destPath;
 
-            if ((Path.extension(srcPath) == 'png' || Path.extension(srcPath) == 'webp') && FEATURE_COMPRESSED_TEXTURES.isEnabled(this))
+            if ((Path.extension(srcPath) == 'png' || Path.extension(srcPath) == 'webp' || Path.extension(srcPath) == 'jxl') && FEATURE_COMPRESSED_TEXTURES.isEnabled(this))
             {
                 var relativePathWithAstc = Path.withExtension(srcPath, "astc");
                 var astcPath = Path.join(["astc-textures", relativePathWithAstc]);
@@ -488,21 +488,21 @@ class Project extends HXProject
 
     function configureIcons()
     {
-        if (FileSystem.exists("assets/icons/icon16.webp"))
-            icons.push(new Icon("assets/icons/icon16.webp", 16));
+        if (FileSystem.exists("assets/icons/icon16.jxl"))
+            icons.push(new Icon("assets/icons/icon16.jxl", 16));
 
-        if (FileSystem.exists("assets/icons/icon32.webp"))
-            icons.push(new Icon("assets/icons/icon32.webp", 32));
+        if (FileSystem.exists("assets/icons/icon32.jxl"))
+            icons.push(new Icon("assets/icons/icon32.jxl", 32));
 
-        if (FileSystem.exists("assets/icons/icon64.webp"))
-            icons.push(new Icon("assets/icons/icon64.webp", 64));
+        if (FileSystem.exists("assets/icons/icon64.jxl"))
+            icons.push(new Icon("assets/icons/icon64.jxl", 64));
 
-        if (FileSystem.exists("assets/icons/iconOG.webp"))
+        if (FileSystem.exists("assets/icons/iconOG.jxl"))
         {
-            icons.push(new Icon("assets/icons/iconOG.webp"));
+            icons.push(new Icon("assets/icons/iconOG.jxl"));
 
             if (isLinux() || isMac())
-                assets.push(new Asset("assets/icons/iconOG.webp", "icon.webp"));
+                assets.push(new Asset("assets/icons/iconOG.jxl", "icon.jxl"));
         }
     }
 
@@ -697,7 +697,7 @@ class Project extends HXProject
                     addAssetRecursive(fullPath, targetPath, embed, include, exclude, library);
             } else {
                 if (filterFile(file, include, exclude)) {
-                    if ((Path.extension(fullPath) == 'png' || Path.extension(fullPath) == 'webp') && FEATURE_COMPRESSED_TEXTURES.isEnabled(this)) {
+                    if ((Path.extension(fullPath) == 'png' || Path.extension(fullPath) == 'webp' || Path.extension(fullPath) == 'jxl') && FEATURE_COMPRESSED_TEXTURES.isEnabled(this)) {
                         final relativePathWithAstc = Path.withExtension(fullPath, "astc");
                         final astcPath:String = Path.join(["astc-textures", relativePathWithAstc]);
                         

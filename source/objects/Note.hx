@@ -97,7 +97,6 @@ class Note extends FlxSprite
 
 	public var offsetX:Float = 0;
 	public var offsetY:Float = 0;
-	public var holdNoteOffsetX:Float = -4;
 	public var offsetAngle:Float = 0;
 	public var multAlpha:Float = 1;
 
@@ -207,17 +206,13 @@ class Note extends FlxSprite
 
 			if (PlayState.isPixelStage)
 			{
-				offsetX += width / 2;
 				animation.play(colArray[noteData % colArray.length] + 'holdend');
 				updateHitbox();
-				offsetX -= width / 2;
-				offsetX += 30;
 			}
 			else
 			{
 				animation.play(colArray[noteData % colArray.length] + 'holdend');
 				updateHitbox();
-				offsetX = (Note.swagWidth / 2) - (width / 2);
 			}
 
 			if (prevNote.isSustainNote)
@@ -235,8 +230,11 @@ class Note extends FlxSprite
 				}
 				prevNote.updateHitbox();
 
-				if (!PlayState.isPixelStage)
-					prevNote.offsetX = (Note.swagWidth / 2) - (prevNote.width / 2);
+				var headNote:Note = (prevNote.parent != null) ? prevNote.parent : prevNote;
+				var headWidth:Float = headNote.frameWidth * headNote.scale.x;
+				var prevWidth:Float = prevNote.frameWidth * prevNote.scale.x;
+
+				prevNote.offsetX = (headWidth - prevWidth) / 2;
 			}
 
 			if (PlayState.isPixelStage)
@@ -246,15 +244,24 @@ class Note extends FlxSprite
 			}
 			earlyHitMult = 0;
 
-			if (prevNote != null){
-				prevNote.offsetX += holdNoteOffsetX;
+			var mainHead:Note = (parent != null) ? parent : (prevNote.isSustainNote ? prevNote.parent : prevNote);
+			if (mainHead != null)
+			{
+				var mainHeadWidth:Float = mainHead.frameWidth * mainHead.scale.x;
+				var myWidth:Float = frameWidth * scale.x;
+
+				offsetX = (mainHeadWidth - myWidth) / 2;
 			}
-			offsetX += holdNoteOffsetX;
+			else
+			{
+				offsetX = (Note.swagWidth - (frameWidth * scale.x)) / 2;
+			}
 		}
 		else if (!isSustainNote)
 		{
 			centerOffsets();
 			centerOrigin();
+			offsetX = (width - (frameWidth * scale.x)) / 2;
 		}
 		x += offsetX;
 
@@ -481,7 +488,14 @@ class Note extends FlxSprite
 		final angleDir:Float = myStrum.direction * Math.PI / 180;
 		if (copyAngle) angle = myStrum.direction - 90 + myStrum.angle + offsetAngle;
 		if (copyAlpha) alpha = myStrum.alpha * multAlpha;
-		if (copyX)     x = myStrum.x + offsetX + Math.cos(angleDir) * distance;
+		if (copyX){
+			if (!isSustainNote){
+				//maybe good¿
+				x = myStrum.x + ((myStrum.width - width)/2) + Math.cos(angleDir) * distance;
+			}else{
+				x = myStrum.x + offsetX + Math.cos(angleDir) * distance;
+			}
+		}
 
 		if (copyY)
 		{

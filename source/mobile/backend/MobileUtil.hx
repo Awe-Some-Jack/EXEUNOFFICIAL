@@ -283,7 +283,7 @@ class MobileUtil
 	{
 		return switch (Path.extension(path).toLowerCase())
 		{
-			case 'png' | 'jpg' | 'jpeg' | 'gif' | 'webp' | 'astc': AssetType.IMAGE;
+			case 'png' | 'jpg' | 'jpeg' | 'gif' | 'webp' | 'jxl' | 'astc': AssetType.IMAGE;
 			case 'ogg' | 'm4a': size > 1024 * 1024 ? AssetType.MUSIC : AssetType.SOUND;
 			case 'mp3' | 'wav' | 'flac': AssetType.SOUND;
 			case 'ttf' | 'otf': AssetType.FONT;

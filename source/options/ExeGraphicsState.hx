@@ -122,7 +122,7 @@ class ExeGraphicsState extends ExeBaseOptionsState
 				}
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
-			if (controls.BACK #if mobile || backPressed #end)
+			if ((controls.ACCEPT || controls.BACK) #if mobile || backPressed #end)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				editingValue = false; holdTimer = 0; holdRepeat = 0; backLock = true;
@@ -171,6 +171,6 @@ class ExeGraphicsState extends ExeBaseOptionsState
 			var g = optionGroups[curSelected - scrollOffset];
 			showArrows(g.valueBG.y + (g.valueBG.height - arrowLeft.height) / 2);
 		}
-		if (controls.BACK #if mobile || backPressed #end) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
+		if ((controls.BACK) #if mobile || backPressed #end) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
 	}
 }

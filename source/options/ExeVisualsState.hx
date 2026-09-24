@@ -108,7 +108,7 @@ class ExeVisualsState extends ExeBaseOptionsState
 				ClientPrefs.saveSettings();
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
-			if (controls.BACK #if mobile || backPressed #end)
+			if ((controls.ACCEPT || controls.BACK) #if mobile || backPressed #end)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				editingValue = false; backLock = true; 

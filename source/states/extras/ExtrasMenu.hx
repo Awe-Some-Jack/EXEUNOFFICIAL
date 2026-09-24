@@ -324,16 +324,16 @@ class ExtrasMenu extends MusicBeatState
     override function openSubState(subState:flixel.FlxSubState):Void
     {
         canMove = false;
-        if (np != null) np.visible = false;
-        if (nowPlayingSong != null) nowPlayingSong.visible = false;
+        // if (np != null) np.visible = false;
+        // if (nowPlayingSong != null) nowPlayingSong.visible = false;
         super.openSubState(subState);
     }
 
     override function closeSubState():Void
     {
         canMove = true;
-        if (np != null) np.visible = true;
-        if (nowPlayingSong != null) nowPlayingSong.visible = true;
+        // if (np != null) np.visible = true;
+        // if (nowPlayingSong != null) nowPlayingSong.visible = true;
 
         super.closeSubState();
     }
@@ -680,7 +680,7 @@ class ExtrasMenu extends MusicBeatState
             case 0:
                 lime.system.System.openURL('https://vsexeunofficial.com/gallery');
                 canMove = true;
-            case 1: nextSubState = new states.extras.bios.BIOS();
+            case 1: nextSubState = new states.extras.bios.BIOSLoadingState();
             case 2: nextSubState = new states.extras.dagarden.DAGarden();
             case 3: nextSubState = new states.extras.cutscenes.Cutscene();
             case 4: nextSubState = new states.extras.achievements.AchievementsState();
@@ -692,15 +692,15 @@ class ExtrasMenu extends MusicBeatState
             if (Std.isOfType(nextSubState, SonicSubState)) {
                 cast(nextSubState, SonicSubState).onBeforeClose = function() {
                     canMove = true;
-                    if (np != null) np.visible = true;
-                    if (nowPlayingSong != null) nowPlayingSong.visible = true;
+                    // if (np != null) np.visible = true;
+                    // if (nowPlayingSong != null) nowPlayingSong.visible = true;
                 };
             }
 
             SonicRetroTransition.openSubState(nextSubState, 0.5, function() {
                 canMove = false;
-                if (np != null) np.visible = false;
-                if (nowPlayingSong != null) nowPlayingSong.visible = false;
+                // if (np != null) np.visible = false;
+                // if (nowPlayingSong != null) nowPlayingSong.visible = false;
             });
         }
     }

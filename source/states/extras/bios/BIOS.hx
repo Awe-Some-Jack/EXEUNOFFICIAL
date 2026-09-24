@@ -287,6 +287,12 @@ class BIOS extends SonicSubState
 		icon.scale.set(0.7, 0.7);
 		icon.setPosition(e0 != null ? e0.iconOffset[0] : 786, e0 != null ? e0.iconOffset[1] : 425);
 		icon.updateHitbox();
+		if (icon.getCharacter() == "face"){
+			icon.visible = false;
+		}else if (icon.getCharacter().contains("requital")){
+			//betterr
+			icon.replaceColor(0xFFFFFFFF, FlxColor.TRANSPARENT);
+		}
 		savedIconScale = icon.scale.x;
 		add(icon);
 
@@ -984,7 +990,14 @@ class BIOS extends SonicSubState
 	function _swapIcon(iconId:String):Void
 	{
 		if (icon.getCharacter() == iconId) return;
-		try { icon.changeIcon(iconId); }
+		try {
+			icon.changeIcon(iconId);
+			if (icon.getCharacter() == "face"){
+				icon.visible = false;
+			}else if (icon.getCharacter().contains("requital")){
+				icon.replaceColor(0xFFFFFFFF, FlxColor.TRANSPARENT);
+			} 
+		}
 		catch (e:Dynamic) { trace('BIOS: failed to load icon "$iconId": $e'); }
 	}
 

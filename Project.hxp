@@ -4,7 +4,9 @@ import hxp.*;
 import lime.tools.*;
 import sys.FileSystem;
 import sys.io.File;
+import sys.io.Process;
 import haxe.io.Path;
+import haxe.io.Eof;
 
 using StringTools;
 
@@ -30,6 +32,8 @@ class Project extends HXProject
     static final SWITCH_APP_ID:String = "0x0100f6c013bbc000";
 
     static var astcExcludes:Array<String> = [];
+
+    static final ASTC_SUPPORTED_EXTENSIONS:Array<String> = ['bmp', 'jpg', 'jpeg', 'jpe', 'jfif', 'png', 'tga', 'hdr', 'exr', 'webp', 'jxl'];
 
     public function new()
     {
@@ -452,7 +456,12 @@ class Project extends HXProject
 
     public function isASTCExcluded(file:String):Bool
     {
-        for (exclusion in astcExcludes)
+        return matchesASTCExclusion(file, astcExcludes);
+    }
+
+    function matchesASTCExclusion(file:String, excludes:Array<String>):Bool
+    {
+        for (exclusion in excludes)
         {
             if (exclusion.endsWith("/"))
             {
@@ -477,12 +486,166 @@ class Project extends HXProject
         return false;
     }
 
+    function readDirectoryRecursiveHxp(path:String):Array<String>
+    {
+        var results:Array<String> = [];
+
+        function walk(subPath:String):Void
+        {
+            var fullPath = Path.join([path, subPath]);
+
+            for (entry in FileSystem.readDirectory(fullPath))
+            {
+                var relPath = subPath.length > 0 ? Path.join([subPath, entry]) : entry;
+                var absPath = Path.join([path, relPath]);
+
+                var isDir:Bool = false;
+                try { isDir = FileSystem.isDirectory(absPath); } catch (e:Dynamic) { continue; }
+
+                if (isDir)
+                    walk(relPath);
+                else
+                    results.push(relPath);
+            }
+        }
+
+        if (FileSystem.exists(path) && FileSystem.isDirectory(path))
+            walk('');
+
+        return results;
+    }
+
+    function countPendingASTCFiles(jsonFile:String):Int
+    {
+        if (!FileSystem.exists(jsonFile)) return 0;
+
+        @:nullSafety(Off)
+        var data:Dynamic = haxe.Json.parse(File.getContent(jsonFile));
+
+        var input:String = data.input;
+        var output:String = data.output;
+        var excludes:Array<String> = data.excludes != null ? cast data.excludes : [];
+
+        if (input == null || !FileSystem.exists(input)) return 0;
+
+        var count = 0;
+
+        for (relFile in readDirectoryRecursiveHxp(input))
+        {
+            var path = Path.join([input, relFile]);
+            var ext = Path.extension(path);
+
+            if (ext == null || ext.length == 0 || !ASTC_SUPPORTED_EXTENSIONS.contains(ext.toLowerCase())) continue;
+
+            var outputFile = Path.withExtension(path, "astc");
+            if (output != null && output.length > 0) outputFile = Path.join([output, outputFile]);
+
+            if (FileSystem.exists(outputFile)) continue;
+            if (matchesASTCExclusion(path, excludes)) continue;
+
+            count++;
+        }
+
+        return count;
+    }
+
+    var astcBarLineLength:Int = 0;
+
+    function clearASTCProgressLine():Void
+    {
+        if (astcBarLineLength > 0)
+        {
+            Sys.print('\r' + StringTools.rpad('', ' ', astcBarLineLength) + '\r');
+            astcBarLineLength = 0;
+        }
+    }
+
+    function renderASTCProgressBar(current:Int, total:Int):Void
+    {
+        var width = 30;
+        var ratio = total > 0 ? current / total : 1.0;
+        if (ratio > 1) ratio = 1;
+
+        var filled = Math.round(width * ratio);
+        var bar = StringTools.rpad(StringTools.lpad('', '=', filled), ' ', width);
+        var percent = Math.round(ratio * 100);
+        var text = ' Compressing ASTC textures: [' + bar + '] ' + current + '/' + total + ' (' + percent + '%)';
+
+        clearASTCProgressLine();
+        Sys.print(text + '\r');
+        astcBarLineLength = text.length;
+        Sys.stdout().flush();
+    }
+
+    function printAboveASTCProgressBar(text:String):Void
+    {
+        clearASTCProgressLine();
+        Sys.println(text);
+    }
+
     public function runASTCCompressor():Void
     {
-        Sys.println(' Info: Compressing ASTC textures...');
-        for (jsonFile in ['./astc-compression-data-assets.json', './astc-compression-data-contents.json', './astc-compression-data-embed.json']) {
-            Sys.command('haxelib', ['run', 'astc-compressor', 'compress-from-json', '-json', jsonFile]);
+        var jsonFiles = ['./astc-compression-data-assets.json', './astc-compression-data-contents.json', './astc-compression-data-embed.json'];
+
+        var total = 0;
+        for (jsonFile in jsonFiles)
+            total += countPendingASTCFiles(jsonFile);
+
+        if (total == 0)
+        {
+            Sys.println(' Info: No ASTC textures need compressing.');
+            return;
         }
+
+        Sys.println(' Info: Compressing ${total} ASTC texture(s)...');
+
+        var processed = 0;
+        renderASTCProgressBar(processed, total);
+
+        for (jsonFile in jsonFiles)
+        {
+            if (!FileSystem.exists(jsonFile)) continue;
+
+            var isWindows = Sys.systemName() == 'Windows';
+            var shell = isWindows ? 'cmd' : '/bin/sh';
+            var command = 'haxelib run astc-compressor compress-from-json -json ' + jsonFile + ' 2>&1';
+            var shellArgs = isWindows ? ['/c', command] : ['-c', command];
+
+            var process = new Process(shell, shellArgs);
+
+            try
+            {
+                while (true)
+                {
+                    var line = process.stdout.readLine();
+
+                    if (line.startsWith('  - '))
+                    {
+                        processed++;
+                        printAboveASTCProgressBar(line);
+                        renderASTCProgressBar(processed, total);
+                    }
+                    else if (line.indexOf('[Error]') >= 0)
+                    {
+                        printAboveASTCProgressBar(' ' + line);
+                        renderASTCProgressBar(processed, total);
+                    }
+                }
+            }
+            catch (e:Eof) {}
+
+            var exitCode = process.exitCode();
+            process.close();
+
+            if (exitCode != 0)
+            {
+                printAboveASTCProgressBar(' Warning: astc-compressor exited with code ${exitCode} while processing ${jsonFile}.');
+                renderASTCProgressBar(processed, total);
+            }
+        }
+
+        renderASTCProgressBar(total, total);
+        Sys.println('');
         Sys.println(' Info: Finished compressing ASTC textures.');
     }
 

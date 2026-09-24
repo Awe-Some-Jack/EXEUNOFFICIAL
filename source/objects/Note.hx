@@ -134,7 +134,10 @@ class Note extends FlxSprite
 	public var noAnimation:Bool = false;
 	public var noMissAnimation:Bool = false;
 	public var hitCausesMiss:Bool = false;
-	/** Maximum distance from the strum line before the note is culled (scroll-direction use). **/
+	/**
+		* Maximum distance from the strum line before the note is culled (scroll-direction use). 
+		- exactly 2 seconds.
+	**/
 	public var distance:Float = 2000;
 
 	public var hitsoundDisabled:Bool = false;

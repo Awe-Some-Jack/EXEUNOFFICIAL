@@ -28,7 +28,7 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 		curSelected = 0;
 		scrollOffset = 0;
 
-		menuTitle = Language.get('options.mobilecontrols', 'ANDROID CONTROLS');
+		menuTitle = Language.get('options.mobilecontrols', 'MOBILE CONTROLS');
 		var lbl = Language.getArray('options.mobilecontrols.labels', ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA", "VISIBLE PAUSE BUTTON"]);
 		controlTypeLabels = Language.getArray('controls_type.labels', ["PSYCH", "BASE", "BUTTONS", "D-PAD"]);
 		middlescrollTypeLabels = Language.getArray('middlescroll_type.labels', ["PC", "MOBILE"]);

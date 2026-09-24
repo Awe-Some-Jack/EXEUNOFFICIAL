@@ -13,7 +13,7 @@ import sys.FileSystem;
 import sys.io.File;
 import haxe.Json;
 
-class BIOSLoadingState extends MusicBeatSubstate
+class BIOSLoadingState extends SonicSubState
 {
 	public var progressBar:FlxSprite;
 	public var loadingTxt:FlxText;
@@ -164,7 +164,8 @@ class BIOSLoadingState extends MusicBeatSubstate
             FlxG.autoPause = true;
 			loadingTxt.text = "Done!";
 			new FlxTimer().start(1, tmr -> {
-				FlxG.state.openSubState(new BIOS());
+				SonicRetroTransition.openSubState(new BIOS(), 0.5, function() {
+				});
 			});
 			uuh = true;
 		}

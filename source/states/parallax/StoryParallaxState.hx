@@ -23,19 +23,19 @@ class StoryParallaxState extends MusicBeatState
 	{
 		super.create();
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/1.jxl'));
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/1.webp'));
 		bg.scale.set(0.34, 0.34);
 		bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);
 
-		var tables:FlxSprite = new FlxSprite(0, 80).loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/2.jxl'));
+		var tables:FlxSprite = new FlxSprite(0, 80).loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/2.webp'));
 		tables.scale.set(0.34, 0.34);
 		tables.updateHitbox();
 		tables.screenCenter(X);
 		add(tables);
 
-		megadrive = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/consola.jxl'));
+		megadrive = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/consola.webp'));
 		megadrive.scale.set(0.9, 0.9);
 		megadrive.updateHitbox();
 		megadrive.screenCenter(X);
@@ -43,7 +43,7 @@ class StoryParallaxState extends MusicBeatState
 		add(megadrive);
 
 		mdcd = new FlxSprite(megadrive.x + 752, megadrive.y + 82);
-		mdcd.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/story mode/cd.jxl', 'assets/exe/parallax/story mode/cd.xml');
+		mdcd.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/story mode/cd.webp', 'assets/exe/parallax/story mode/cd.xml');
 		mdcd.animation.addByPrefix('idle', 'idle instancia 1', 24, true);
 		mdcd.animation.addByPrefix('selected', 'cd instancia 1', 24, false);
 		mdcd.animation.play('idle');
@@ -52,7 +52,7 @@ class StoryParallaxState extends MusicBeatState
 		add(mdcd);
 
 		cd = new FlxSprite(914, 126);
-		cd.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/story mode/educador.jxl', 'assets/exe/parallax/story mode/educador.xml');
+		cd.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/story mode/educador.webp', 'assets/exe/parallax/story mode/educador.xml');
 		cd.animation.addByPrefix('idle', 'ecuador idle instancia 1', 24, true);
 		cd.animation.addByPrefix('selected', 'ecuador instancia 1', 24, false);
 		cd.animation.play('idle');
@@ -60,7 +60,7 @@ class StoryParallaxState extends MusicBeatState
 		cd.updateHitbox();
 		add(cd);
 
-		luz = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/luz.jxl'));
+		luz = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/luz.webp'));
 		luz.scale.set(0.34, 0.34);
 		luz.updateHitbox();
 		luz.screenCenter();

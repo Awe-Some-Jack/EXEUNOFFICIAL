@@ -289,7 +289,7 @@ class Paths
 	static public function image(key:String, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxGraphic
 	{
 		var translatedKey:String = Language.getFileTranslation('images/$key');
-		var finalKey:String = translatedKey + '.jxl';
+		var finalKey:String = translatedKey + '.webp';
 
 		for (ext in IMAGE_EXTS)
 		{
@@ -885,7 +885,7 @@ class Paths
             if (#if sys sys.FileSystem.exists(fileToCheck) || #end OpenFlAssets.exists(fileToCheck)) return fileToCheck;
         }
         
-        return modFolders('images/' + key + '.jxl');
+        return modFolders('images/' + key + '.webp');
     }
 
     inline static public function modsXml(key:String):String

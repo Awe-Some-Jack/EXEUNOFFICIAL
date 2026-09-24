@@ -86,7 +86,7 @@ class AchievementPopup extends Sprite
         graphics.drawRect(iconX, iconY, ICON_SIZE, ICON_SIZE);
         graphics.endFill();
 
-        final iconPath = 'assets/exe/extras/achievements/icons/$id.jxl';
+        final iconPath = 'assets/exe/extras/achievements/icons/$id.webp';
         if (openfl.Assets.exists(iconPath))
         {
             final bmd:BitmapData = openfl.Assets.getBitmapData(iconPath);

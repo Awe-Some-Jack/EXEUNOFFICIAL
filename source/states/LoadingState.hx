@@ -70,7 +70,7 @@ class LoadingState extends MusicBeatState
 		Paths.clearUnusedMemory();
 
 		var logo:FlxSprite = new FlxSprite();
-		logo.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.jxl', 'assets/exe/ring.xml');
+		logo.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.webp', 'assets/exe/ring.xml');
 		logo.animation.addByPrefix('idle', 'idle', 60, true);
 		logo.animation.play('idle', true);
 		logo.scale.set(0.35, 0.35);
@@ -465,7 +465,7 @@ class LoadingState extends MusicBeatState
 
 	public static function clearInvalids()
 	{
-		clearInvalidFrom(imagesToPrepare, 'images', '.jxl', IMAGE);
+		clearInvalidFrom(imagesToPrepare, 'images', '.webp', IMAGE);
 		clearInvalidFrom(soundsToPrepare, 'sounds', '.${Paths.SOUND_EXT}', SOUND);
 		clearInvalidFrom(musicToPrepare, 'music',' .${Paths.SOUND_EXT}', SOUND);
 		clearInvalidFrom(songsToPrepare, 'songs', '.${Paths.SOUND_EXT}', SOUND, 'songs');
@@ -639,7 +639,7 @@ class LoadingState extends MusicBeatState
 			#if TRANSLATIONS_ALLOWED requestKey = Language.getFileTranslation(requestKey);
 			#end
 			
-			if (requestKey.endsWith('.jxl'))
+			if (requestKey.endsWith('.webp'))
 				requestKey = requestKey.substr(0, requestKey.length - 4);
 
 			if (!Paths.currentTrackedAssets.exists(requestKey))

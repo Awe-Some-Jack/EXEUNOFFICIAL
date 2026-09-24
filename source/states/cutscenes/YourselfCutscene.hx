@@ -41,7 +41,7 @@ class YourselfCutscene
 		FlxG.camera.shake(0.01, 0.2);
 
 		randomMIC = new FlxSprite();
-		randomMIC.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/microfono_lookalike.jxl', 'assets/exe/story/microfono_lookalike.xml');
+		randomMIC.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/microfono_lookalike.webp', 'assets/exe/story/microfono_lookalike.xml');
 		randomMIC.animation.addByPrefix('idle', 'micro', 24, false);
 		randomMIC.setGraphicSize(Std.int(FlxG.width * 0.183));
 		randomMIC.setPosition(302, 116);

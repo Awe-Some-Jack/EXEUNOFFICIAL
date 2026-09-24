@@ -185,7 +185,7 @@ class EXETitle extends MusicBeatState
 
 		makeLogo();
 
-		spikes = new FlxBackdrop(Paths.getBitmapData('assets/exe/title/spikesdown.jxl'), X);
+		spikes = new FlxBackdrop(Paths.getBitmapData('assets/exe/title/spikesdown.webp'), X);
 		spikes.scale.set(0.4, 0.4);
 		spikes.updateHitbox();
 		spikes.y = FlxG.height - spikes.height;
@@ -193,7 +193,7 @@ class EXETitle extends MusicBeatState
 		add(spikes);
 		
 		titleText = new FlxSprite();
-		titleText.frames = FlxAtlasFrames.fromSparrow('assets/exe/title/titleEnterNEW.jxl', 'assets/exe/title/titleEnterNEW.xml');
+		titleText.frames = FlxAtlasFrames.fromSparrow('assets/exe/title/titleEnterNEW.webp', 'assets/exe/title/titleEnterNEW.xml');
 		titleText.animation.addByPrefix('idle', 'Press Enter to Begin instance 1', 24, true);
 		titleText.animation.addByPrefix('press', 'ENTER PRESSED instance 1', 24, false);
 		titleText.animation.play('idle');
@@ -202,7 +202,7 @@ class EXETitle extends MusicBeatState
 		titleText.y += 80;
 		add(titleText);
 
-		parallaxArrow = new FlxSprite(FlxG.width).loadGraphic(Paths.getBitmapData('assets/exe/parallax/parallaxarrow.jxl'));
+		parallaxArrow = new FlxSprite(FlxG.width).loadGraphic(Paths.getBitmapData('assets/exe/parallax/parallaxarrow.webp'));
 		parallaxArrow.screenCenter(Y);
 		add(parallaxArrow);
 		
@@ -210,7 +210,7 @@ class EXETitle extends MusicBeatState
 		blackScreen.alpha = 0.0000001;
 		add(blackScreen);
 
-		eyes = new FlxSprite(ring.x + (1074 * 0.4)).loadGraphic(Paths.getBitmapData('assets/exe/title/logo/eyes.jxl'));
+		eyes = new FlxSprite(ring.x + (1074 * 0.4)).loadGraphic(Paths.getBitmapData('assets/exe/title/logo/eyes.webp'));
 		eyes.scale.set(0.4, 0.4);
 		eyes.updateHitbox();
 		add(eyes);
@@ -226,19 +226,19 @@ class EXETitle extends MusicBeatState
 	{
 		final path:String = 'assets/exe/title/logo/';
 		
-		ring = new FlxSprite().loadGraphic(Paths.getBitmapData(path + 'ring.jxl'));
+		ring = new FlxSprite().loadGraphic(Paths.getBitmapData(path + 'ring.webp'));
 		ring.scale.set(0.4, 0.4);
 		ring.updateHitbox();
 		ring.screenCenter(X);
 		add(ring);
 
 		savedRingX = ring.x;
-		bandana = new FlxSprite(ring.x + (329 * 0.4)).loadGraphic(Paths.getBitmapData(path + 'bandana.jxl'));
+		bandana = new FlxSprite(ring.x + (329 * 0.4)).loadGraphic(Paths.getBitmapData(path + 'bandana.webp'));
 		bandana.scale.set(0.4, 0.4);
 		bandana.updateHitbox();
 		add(bandana);
 		
-		logotxt = new FlxSprite(ring.x + (711 * 0.4)).loadGraphic(Paths.getBitmapData(path + 'sonic.jxl'));
+		logotxt = new FlxSprite(ring.x + (711 * 0.4)).loadGraphic(Paths.getBitmapData(path + 'sonic.webp'));
 		logotxt.scale.set(0.4, 0.4);
 		logotxt.updateHitbox();
 		add(logotxt);

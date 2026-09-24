@@ -54,7 +54,7 @@ class Arrow extends FlxSprite
         onUp = new FlxTypedSignal<ArrowEvent->Void>();
         onDown = new FlxTypedSignal<ArrowEvent->Void>();
 
-        loadGraphic(Paths.getBitmapData("assets/exe/extras/arrow.jxl"));
+        loadGraphic(Paths.getBitmapData("assets/exe/extras/arrow.webp"));
         setGraphicSize(Std.int(width * arrowScale));
         updateHitbox();
         offset.set(0,0);

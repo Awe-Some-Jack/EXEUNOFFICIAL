@@ -142,7 +142,7 @@ class SoundTest extends MusicBeatState
 
 	function createBackground():Void
 	{
-		backdrop = new FlxBackdrop('assets/exe/soundtest/bgtest.jxl', FlxAxes.XY);
+		backdrop = new FlxBackdrop('assets/exe/soundtest/bgtest.webp', FlxAxes.XY);
 		backdrop.scale.set(3.0, 3.0);
 		backdrop.velocity.set(-50.0, -50.0);
 		add(backdrop);
@@ -150,7 +150,7 @@ class SoundTest extends MusicBeatState
 
 	function createTitle():Void
 	{
-		final title = new FlxSprite().loadGraphic(AssetPaths.getBitmapData('assets/exe/soundtest/soundtest.jxl'));
+		final title = new FlxSprite().loadGraphic(AssetPaths.getBitmapData('assets/exe/soundtest/soundtest.webp'));
 		title.antialiasing = false;
 		title.scale.set(3.0, 3.0);
 		title.updateHitbox();
@@ -166,7 +166,7 @@ class SoundTest extends MusicBeatState
 		final labelY:Float = (FlxG.height / 2) - 70.0;
 
 		pcmLabel = new FlxSprite(pcmX, labelY);
-		pcmLabel.frames = FlxAtlasFrames.fromSparrow('assets/exe/soundtest/pcm.jxl', 'assets/exe/soundtest/pcm.xml');
+		pcmLabel.frames = FlxAtlasFrames.fromSparrow('assets/exe/soundtest/pcm.webp', 'assets/exe/soundtest/pcm.xml');
 		pcmLabel.animation.addByPrefix('idle', 'pcm idle', 24, false);
 		pcmLabel.animation.addByPrefix('selected', 'pcm selected', 24, false);
 		pcmLabel.animation.play('idle');
@@ -176,7 +176,7 @@ class SoundTest extends MusicBeatState
 		add(pcmLabel);
 
 		daLabel = new FlxSprite(daX, labelY);
-		daLabel.frames = FlxAtlasFrames.fromSparrow('assets/exe/soundtest/dano.jxl', 'assets/exe/soundtest/dano.xml');
+		daLabel.frames = FlxAtlasFrames.fromSparrow('assets/exe/soundtest/dano.webp', 'assets/exe/soundtest/dano.xml');
 		daLabel.animation.addByPrefix('idle', 'dano idle', 24, false);
 		daLabel.animation.addByPrefix('selected', 'dano selected', 24, false);
 		daLabel.animation.play('idle');
@@ -189,7 +189,7 @@ class SoundTest extends MusicBeatState
 	function createNumbers():Void
 	{
 		final frames = FlxAtlasFrames.fromSparrow(
-			'assets/exe/soundtest/numbers.jxl',
+			'assets/exe/soundtest/numbers.webp',
 			'assets/exe/soundtest/numbers.xml'
 		);
 		

@@ -133,7 +133,7 @@ class BIOS extends SonicSubState
 		checkers.scrollFactor.set();
 		add(checkers);
 
-		final spikestop = new FlxBackdrop(Paths.getBitmapData('assets/exe/extras/bios/backdrop.jxl'), Y);
+		final spikestop = new FlxBackdrop(Paths.getBitmapData('assets/exe/extras/bios/backdrop.webp'), Y);
 		spikestop.velocity.y = 60;
 		spikestop.screenCenter();
 		spikestop.scrollFactor.set();
@@ -320,7 +320,7 @@ class BIOS extends SonicSubState
 		add(variantDots);
 
 		final charBiosSprite = new FlxSprite(36, 19);
-		charBiosSprite.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios.jxl'));
+		charBiosSprite.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios.webp'));
 		charBiosSprite.scrollFactor.set();
 		add(charBiosSprite);
 	}
@@ -374,9 +374,9 @@ class BIOS extends SonicSubState
 	function _buildOverlays():Void
 	{
 		final charBiosOverlay = new FlxSprite(36, 19);
-		if (Assets.exists('assets/exe/extras/bios/characterbios_overlay.jxl'))
+		if (Assets.exists('assets/exe/extras/bios/characterbios_overlay.webp'))
 		{
-			charBiosOverlay.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios_overlay.jxl'));
+			charBiosOverlay.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios_overlay.webp'));
 			charBiosOverlay.scrollFactor.set();
 			add(charBiosOverlay);
 		}
@@ -585,7 +585,7 @@ class BIOS extends SonicSubState
 	#else
 	function _resolveImagePath(imageKey:String, mod:String):String
 	{
-		final pngKey = 'images/$imageKey.jxl';
+		final pngKey = 'images/$imageKey.webp';
 		#if MODS_ALLOWED
 		if (mod != '')
 		{

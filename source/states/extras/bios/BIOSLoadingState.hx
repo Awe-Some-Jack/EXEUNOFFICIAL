@@ -47,7 +47,7 @@ class BIOSLoadingState extends SonicSubState
 		add(bg);
 
 		var logo:FlxSprite = new FlxSprite();
-		logo.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.jxl', 'assets/exe/ring.xml');
+		logo.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.webp', 'assets/exe/ring.xml');
 		logo.animation.addByPrefix('idle', 'idle', 60, true);
 		logo.animation.play('idle', true);
 		logo.scale.set(0.35, 0.35);

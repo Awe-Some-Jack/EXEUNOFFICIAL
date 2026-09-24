@@ -90,7 +90,7 @@ class Cutscene extends SonicSubState
         _buildMenu();
         changeSelection(0);
 
-        titleText = new FlxSprite(44.62, 58.31).loadGraphic(Paths.getBitmapData("assets/exe/extras/cutscenes/cutscene.jxl"));
+        titleText = new FlxSprite(44.62, 58.31).loadGraphic(Paths.getBitmapData("assets/exe/extras/cutscenes/cutscene.webp"));
         titleText.scale.set(0.18, 0.18);
         titleText.updateHitbox();
         titleText.antialiasing = ClientPrefs.data.antialiasing;
@@ -212,12 +212,12 @@ class Cutscene extends SonicSubState
 
     function createBox():Void
     {
-        box = new FlxSprite(750.0, 120.0).loadGraphic(Paths.getBitmapData("assets/exe/extras/cutscenes/box.jxl"));
+        box = new FlxSprite(750.0, 120.0).loadGraphic(Paths.getBitmapData("assets/exe/extras/cutscenes/box.webp"));
         box.scale.set(0.3, 0.3);
         box.updateHitbox();
         add(box);
 
-        boxHitboxRect = _findRedRect(Paths.getBitmapData("assets/exe/extras/boxhitbox.jxl"));
+        boxHitboxRect = _findRedRect(Paths.getBitmapData("assets/exe/extras/boxhitbox.webp"));
     }
 
     function _findRedRect(bmp:BitmapData):{x:Float, y:Float, w:Float, h:Float}
@@ -308,7 +308,7 @@ class Cutscene extends SonicSubState
             {x: -2, y: 0},                  {x: 2, y: 0},
             {x: -2, y: 2},  {x: 0, y: 2},  {x: 2, y: 2}
         ];
-        final discoBmp = Paths.getBitmapData("assets/exe/extras/disco.jxl");
+        final discoBmp = Paths.getBitmapData("assets/exe/extras/disco.webp");
         for (offset in shadowOffsets)
         {
             final s = new FlxSprite(41 + offset.x, 541 + offset.y).loadGraphic(discoBmp);
@@ -460,7 +460,7 @@ class Cutscene extends SonicSubState
             }
         }
 
-        final selBmp = Paths.getBitmapData("assets/exe/extras/select.jxl");
+        final selBmp = Paths.getBitmapData("assets/exe/extras/select.webp");
         final capW = 80;
         final selH = selBmp.height;
         final midW = selBmp.width - capW * 2;
@@ -678,7 +678,7 @@ class Cutscene extends SonicSubState
         bg.shader = hudShader;
         _hud.add(bg);
 
-        _hudBtn = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/pause.jxl'));
+        _hudBtn = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/pause.webp'));
         final btnScale = 32.0 / Math.max(_hudBtn.width, _hudBtn.height);
         _hudBtn.scale.set(btnScale, btnScale);
         _hudBtn.updateHitbox();
@@ -730,8 +730,8 @@ class Cutscene extends SonicSubState
     {
         if (_hudBtn == null) return;
         _hudBtn.loadGraphic(Paths.getBitmapData(_vidPaused
-            ? 'assets/exe/extras/credits/play.jxl'
-            : 'assets/exe/extras/credits/pause.jxl'));
+            ? 'assets/exe/extras/credits/play.webp'
+            : 'assets/exe/extras/credits/pause.webp'));
         final btnScale = 32.0 / Math.max(_hudBtn.frameWidth, _hudBtn.frameHeight);
         _hudBtn.scale.set(btnScale, btnScale);
         _hudBtn.updateHitbox();

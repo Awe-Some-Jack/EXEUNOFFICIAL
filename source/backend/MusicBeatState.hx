@@ -63,7 +63,7 @@ class MusicBeatState extends FlxTransitionableState
 	#if mobile
 	public function createBackButton(x:Float, y:Float) {
 		backButton = new FlxSprite(0, 0);
-		backButton.frames = FlxAtlasFrames.fromSparrow('assets/exe/backButton.jxl', 'assets/exe/backButton.xml');
+		backButton.frames = FlxAtlasFrames.fromSparrow('assets/exe/backButton.webp', 'assets/exe/backButton.xml');
 		backButton.animation.addByPrefix('idle', 'idle', 24, false);
 		backButton.animation.addByPrefix('press', 'press', 24, false);
 		backButton.animation.play('idle', true);

@@ -752,8 +752,26 @@ class DAGPlayer extends FlxGroup
     {
         if (!seekPending || inst == null) return;
         seekPending = false;
-        try { inst.time = seekTargetMs; } catch (_:Dynamic) {}
-        for (v in vocals) try { v.time = seekTargetMs; } catch (_:Dynamic) {}
+        try {
+            FlxTween.cancelTweensOf(inst);
+            FlxTween.tween(inst, {volume: 0}, 0.2, {
+                ease: FlxEase.quadIn,
+                onComplete: twn->{
+                    inst.time = seekTargetMs;
+                    FlxTween.tween(inst, {volume: 1}, 0.2, {ease: FlxEase.quadIn});
+                }
+            }); 
+        } catch (_:Dynamic) {}
+        for (v in vocals) try {
+            FlxTween.cancelTweensOf(v);
+            FlxTween.tween(v, {volume: 0}, 0.2, {
+                ease: FlxEase.quadIn,
+                onComplete: twn->{
+                    v.time = seekTargetMs;
+                    FlxTween.tween(v, {volume: 1}, 0.2, {ease: FlxEase.quadIn});
+                }
+            }); 
+        } catch (_:Dynamic) {}
         if (seekWasPlaying) { inst.resume(); for (v in vocals) v.resume(); }
     }
 

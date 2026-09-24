@@ -2205,7 +2205,7 @@ class PlayState extends MusicBeatState
 						}
 					}
 				}
-				hitboxesGroup[i].alpha = ClientPrefs.data.defHitboxAlpha;
+				if(hitboxesGroup[i] != null) hitboxesGroup[i].alpha = ClientPrefs.data.defHitboxAlpha;
 				hitboxesHeld[i] = false;
 				noteSlide[i] = false;
 				hitboxOwner[i] = -1;
@@ -3096,12 +3096,12 @@ class PlayState extends MusicBeatState
 			
 			for (daNote in notes.members)
 			{
-				if(daNote?.alive && daNote?.strumTime < limitTime)
+				if(daNote?.alive && !daNote.missed && !daNote.wasGoodHit && daNote?.strumTime < limitTime)
 					health -= 0.05 * healthLoss;
 			}
 			for (daNote in unspawnNotes)
 			{
-				if(daNote?.strumTime < limitTime)
+				if(!daNote.missed && !daNote.wasGoodHit && daNote?.strumTime < limitTime)
 					health -= 0.05 * healthLoss;
 			}
 

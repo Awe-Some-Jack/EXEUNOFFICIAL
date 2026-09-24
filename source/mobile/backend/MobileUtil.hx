@@ -30,7 +30,7 @@ class MobileUtil
 {
 	#if sys
 	public static inline function getAssetDirectory():String {
-		return #if android haxe.io.Path.addTrailingSlash(AndroidContext.getExternalFilesDir()) #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
+		return #if android getDirectory() #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
 	}
 	#if android
 	public static inline function getCustomStoragePath():String

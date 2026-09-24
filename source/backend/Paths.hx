@@ -350,7 +350,8 @@ class Paths
 			else if (fileExistsSys)
 			{
 				#if sys
-				bitmap = useOptimized ? OptimizedBitmapData.fromFile(file) : BitmapData.fromFile(file);
+				final absFile:String = sys.FileSystem.fullPath(file);
+				bitmap = useOptimized ? OptimizedBitmapData.fromFile(absFile) : BitmapData.fromFile(absFile);
 				#end
 			}
 			else if (OpenFlAssets.exists(file))
@@ -458,17 +459,17 @@ class Paths
 			}
 
 			#if sys
-			if (sys.FileSystem.exists(testPath)) 
+			if (sys.FileSystem.exists(testPath))
 			{
 				try {
-					return BitmapData.fromFile(testPath);
+					return BitmapData.fromFile(sys.FileSystem.fullPath(testPath));
 				} catch (e:Dynamic) {
 					trace('Error loading bitmap from sys: $testPath ($e)');
 				}
 			}
 			#end
 
-			if (OpenFlAssets.exists(testPath)) 
+			if (OpenFlAssets.exists(testPath))
 			{
 				try {
 					return OpenFlAssets.getBitmapData(testPath, useCache);
@@ -751,7 +752,12 @@ class Paths
 			var loaded:Bool = false;
 			#if sys
 			if(sys.FileSystem.exists(file)) {
-				final decoded:Sound = loadSoundFromFile(file);
+				var decoded:Sound = null;
+				try {
+					decoded = loadSoundFromFile(sys.FileSystem.fullPath(file));
+				} catch (e:Dynamic) {
+					decoded = null;
+				}
 				if (decoded != null) {
 					currentTrackedSounds.set(file, decoded);
 					loaded = true;
@@ -762,7 +768,12 @@ class Paths
 			}
 			#end
 			if(!loaded && OpenFlAssets.exists(file)) {
-				final decoded:Sound = loadSoundFromAssets(file);
+				var decoded:Sound = null;
+				try {
+					decoded = loadSoundFromAssets(file);
+				} catch (e:Dynamic) {
+					decoded = null;
+				}
 				if (decoded != null) {
 					currentTrackedSounds.set(file, decoded);
 					loaded = true;
@@ -804,7 +815,7 @@ class Paths
 				#if sys
 				if (sys.FileSystem.exists(file))
 				{
-					vorbisFile = lime.media.vorbis.VorbisFile.fromFile(file);
+					vorbisFile = lime.media.vorbis.VorbisFile.fromFile(sys.FileSystem.fullPath(file));
 				}
 				#end
 

@@ -795,11 +795,10 @@ class Paths
 	}
 
 	/**
-	 * Streams a `.ogg` file straight off disk instead of decoding it fully into memory,
+	 * Streams an audio file straight off disk instead of decoding it fully into memory,
 	 * giving much faster load times for large song audio (inst/voices).
 	 *
-	 * Falls back to `returnSound` if streaming is disabled, unsupported on this target,
-	 * or the file can't be opened as vorbis (e.g. it's actually a `.wav`).
+	 * Falls back to `returnSound` if streaming is disabled or the file can't be opened.
 	 */
 	public static function returnVorbisSound(key:String, ?path:String, ?modsAllowed:Bool = true, ?beepOnNull:Bool = true):Sound
 	{
@@ -807,38 +806,45 @@ class Paths
 		if (ClientPrefs.data.streamedAudio)
 		{
 			var file:String = resolveSoundFile(key, path, modsAllowed);
+			var ext = haxe.io.Path.extension(file).toLowerCase();
 
-			if (file.toLowerCase().endsWith('.ogg'))
+			if (SOUND_EXTS.contains(ext))
 			{
-				var vorbisFile = null;
+				var buffer:lime.media.AudioBuffer = null;
 
-				#if sys
-				if (sys.FileSystem.exists(file))
+				if (ext == 'ogg')
 				{
-					vorbisFile = lime.media.vorbis.VorbisFile.fromFile(sys.FileSystem.fullPath(file));
+					var vorbisFile = null;
+
+					#if sys
+					if (sys.FileSystem.exists(file))
+					{
+						vorbisFile = lime.media.vorbis.VorbisFile.fromFile(file);
+					}
+					#end
+
+					if (vorbisFile == null && OpenFlAssets.exists(file))
+					{
+						var bytes = OpenFlAssets.getBytes(file);
+						if (bytes != null) vorbisFile = lime.media.vorbis.VorbisFile.fromBytes(bytes);
+					}
+
+					if (vorbisFile != null)
+					{
+						buffer = lime.media.AudioBuffer.fromVorbisFile(vorbisFile);
+					}
+				}
+				
+				#if sys
+				if (buffer == null && sys.FileSystem.exists(file))
+				{
+					buffer = lime.media.AudioBuffer.fromFileStream(file);
 				}
 				#end
 
-				// Not a loose file on disk (e.g. a "final"/Android build with embedded assets) -
-				// stream straight from the embedded bytes instead of falling back to a full decode.
-				if (vorbisFile == null && OpenFlAssets.exists(file))
+				if (buffer != null)
 				{
-					var bytes = OpenFlAssets.getBytes(file);
-
-					if (bytes != null)
-					{
-						vorbisFile = lime.media.vorbis.VorbisFile.fromBytes(bytes);
-					}
-				}
-
-				if (vorbisFile != null)
-				{
-					var buffer = lime.media.AudioBuffer.fromVorbisFile(vorbisFile);
-
-					if (buffer != null)
-					{
-						return Sound.fromAudioBuffer(buffer);
-					}
+					return Sound.fromAudioBuffer(buffer);
 				}
 			}
 		}

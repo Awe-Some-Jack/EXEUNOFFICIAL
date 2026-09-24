@@ -14,19 +14,12 @@ class SonicRetroTransition
     private static var activeTween:FlxTween;
     public static var isTransitioning:Bool = false;
 
-    /**
-     * Aplica el shader a la cámara principal. Llama a esto en el create() de tus States.
-     */
     public static function init():Void
     {
         FlxG.camera.filters = [new ShaderFilter(shader)];
         shader.progress.value = [0.0];
     }
 
-    /**
-     * Ejecuta el fade retro en pasos discretos.
-     * @param toIn true = Fade Out hacia azul/negro | false = Fade In revelando la pantalla
-     */
     public static function play(toIn:Bool, duration:Float = 0.5, ?onComplete:Void->Void):Void
     {
         if (activeTween != null) activeTween.cancel();
@@ -54,9 +47,6 @@ class SonicRetroTransition
         );
     }
 
-    /**
-     * Cambia de FlxState ejecutando la transición completa.
-     */
     public static function switchState(nextState:FlxState, duration:Float = 0.5):Void
     {
         if (isTransitioning) return;
@@ -66,9 +56,6 @@ class SonicRetroTransition
         });
     }
 
-    /**
-     * Abre un SubState coordinando el fade out e in.
-     */
     public static function openSubState(subState:FlxSubState, duration:Float = 0.5, ?onFadeOut:Void->Void):Void
     {
         if (isTransitioning) return;
@@ -80,9 +67,6 @@ class SonicRetroTransition
         });
     }
 
-    /**
-     * Cierra el SubState actual coordinando el fade out e in.
-     */
     public static function closeSubState(duration:Float = 0.5, ?onFadeOut:Void->Void):Void
     {
         if (isTransitioning) return;

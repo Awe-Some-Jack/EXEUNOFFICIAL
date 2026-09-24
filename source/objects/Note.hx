@@ -261,7 +261,6 @@ class Note extends FlxSprite
 		{
 			centerOffsets();
 			centerOrigin();
-			offsetX = (width - (frameWidth * scale.x)) / 2;
 		}
 		x += offsetX;
 
@@ -491,7 +490,7 @@ class Note extends FlxSprite
 		if (copyX){
 			if (!isSustainNote){
 				//maybe good¿
-				x = myStrum.x + ((myStrum.width - width)/2) + Math.cos(angleDir) * distance;
+				x = myStrum.x + (((myStrum.width - width)/2)+offsetX) + Math.cos(angleDir) * distance;
 			}else{
 				x = myStrum.x + offsetX + Math.cos(angleDir) * distance;
 			}

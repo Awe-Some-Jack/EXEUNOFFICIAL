@@ -21,11 +21,15 @@ class ExeGameJoltState extends ExeBaseOptionsState
 	var tokenLabel:FlxText;
 	var userValueTxt:FlxText;
 	var tokenValueTxt:FlxText;
-	var actionLabel:FlxText;
-	var syncLabel:FlxText;
+
+	var actionBG:FlxSprite;
+	var actionValueTxt:FlxText;
+	
+	var syncBG:FlxSprite;
+	var syncValueTxt:FlxText;
 
 	var curRow:Int    = 0;
-	var totalRows:Int = 3;
+	var totalRows:Int = GameJoltManager.isLoggedIn() ? 4 : 3;
 	var isTyping:Bool = false;
 	var typingUser:Bool = true;
 
@@ -55,15 +59,18 @@ class ExeGameJoltState extends ExeBaseOptionsState
 
 		if (statusTxt == null)
 		{
-			statusTxt = new FlxText(ExeBaseOptionsState.NB_X + 320, 220, 800, '', lblSize);
-			statusTxt.setFormat(font, lblSize, 0xFFFFDD00, LEFT);
+			statusTxt = new FlxText(ExeBaseOptionsState.NB_X + 320, 220, -1, '', lblSize);
+			statusTxt.setFormat(font, lblSize+8, 0xFFFFDD00, LEFT, OUTLINE, 0xFF000000);
+			statusTxt.borderSize = 2.23;
 			statusTxt.scrollFactor.set(0, 0);
-			statusTxt.x = offRight;
+			statusTxt.x = FlxG.width-statusTxt.width;
+			statusTxt.x -= 20;
+			statusTxt.y = 180;
 			add(statusTxt);
 			rightGroup.push(cast statusTxt);
 		}
 
-		for (i in 0...3)
+		for (i in 0...4)
 		{
 			final rowY = ROW_Y0 + i * (ROW_Y1 - ROW_Y0);
 
@@ -72,6 +79,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			nameBG.updateHitbox();
 			nameBG.x = offRight; nameBG.y = rowY;
 			nameBG.scrollFactor.set(0, 0);
+			nameBG.ID = i;
 			add(nameBG); rightGroup.push(nameBG);
 
 			final valBG = new FlxSprite().loadGraphic(boxBitmap);
@@ -79,17 +87,30 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			valBG.updateHitbox();
 			valBG.x = offRight; valBG.y = rowY;
 			valBG.scrollFactor.set(0, 0);
+			valBG.ID = i;
 			add(valBG); rightGroup.push(valBG);
 
-			final nameTxt = new FlxText(offRight, rowY + 10, 300, ['USERNAME', 'TOKEN', 'ACTION'][i], lblSize);
-			nameTxt.setFormat(Paths.font('vcr'), lblSize, FlxColor.WHITE, LEFT);
+			final nameTxt = new FlxText(offRight, rowY + 10, 300, ['USERNAME', 'TOKEN', 'ACTION', 'TROPHIES'][i], lblSize);
+			nameTxt.setFormat(Paths.font('vcr.ttf'), lblSize, FlxColor.WHITE, LEFT);
 			nameTxt.scrollFactor.set(0, 0);
+			nameTxt.ID = i;
 			add(nameTxt); rightGroup.push(cast nameTxt);
 
-			final valTxt = new FlxText(offRight, rowY + 10, 400, '', lblSize);
-			valTxt.setFormat(Paths.font('vcr'), lblSize, FlxColor.WHITE, LEFT);
+			final valTxt = new FlxText(offRight, rowY + 10, (i > 1) ? -1 : 400, '', lblSize);
+			valTxt.setFormat(Paths.font('vcr.ttf'), lblSize, FlxColor.WHITE, LEFT);
 			valTxt.scrollFactor.set(0, 0);
+			valTxt.ID = i;
 			add(valTxt); rightGroup.push(cast valTxt);
+
+			if (i >= 2){
+				nameBG.visible = false;
+				nameTxt.visible = false;
+				valTxt.x = valBG.x + ((valBG.width - valTxt.width)/2);
+				if (i == 3){
+					valBG.visible = GameJoltManager.isLoggedIn();
+					valTxt.visible = GameJoltManager.isLoggedIn();
+				}
+			}
 
 			optionGroups.push({nameBG: nameBG, valueBG: valBG, nameText: nameTxt, valueText: valTxt});
 		}
@@ -98,8 +119,10 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		userValueTxt  = optionGroups[0].valueText;
 		tokenLabel    = optionGroups[1].nameText;
 		tokenValueTxt = optionGroups[1].valueText;
-		actionLabel   = optionGroups[2].nameText;
-		syncLabel     = optionGroups[2].valueText;
+		actionBG      = optionGroups[2].valueBG;
+		actionValueTxt= optionGroups[2].valueText;
+		syncBG        = optionGroups[3].valueBG;
+		syncValueTxt  = optionGroups[3].valueText;
 
 		tokenLabel.text = 'TOKEN';
 
@@ -117,26 +140,32 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		userValueTxt.text  = usernameInput != '' ? usernameInput : '...';
 		tokenLabel.text    = 'TOKEN';
 		tokenValueTxt.text = tokenInput != '' ? _maskToken(tokenInput) : '...';
-		actionLabel.text   = 'LOGIN';
-		syncLabel.text     = '';
+		actionValueTxt.text   = 'LOGIN';
+		syncValueTxt.text     = '';
+		syncValueTxt.visible = false;
+		syncBG.visible = false;
+		totalRows = 3;
 	}
 
 	function _setLoggedInView():Void
 	{
 		statusTxt.text     = 'LOGGED IN: ' + GameJoltManager.getUsername();
-		statusTxt.color    = 0xFF88FF88;
+		statusTxt.color    = 0xFFEBFF88;
 		userLabel.text     = 'USERNAME';
 		userValueTxt.text  = GameJoltManager.getUsername();
 		tokenLabel.text    = 'TOKEN';
 		tokenValueTxt.text = _maskToken(tokenInput);
-		actionLabel.text   = 'LOGOUT';
-		syncLabel.text     = 'SYNC TROPHIES';
+		actionValueTxt.text   = 'LOGOUT';
+		syncValueTxt.text     = 'SYNC TROPHIES';
+		syncValueTxt.visible = true;
+		syncBG.visible = true;
+		totalRows = 4;
 	}
 
 	function _maskToken(t:String):String
 	{
 		if (t.length <= 4) return '****';
-		return t.substr(0, 2) + StringTools.rpad('', '*', t.length - 4) + t.substr(t.length - 2);
+		return t.substr(0, 1) + StringTools.rpad('', '*', t.length - 3) + t.substr(t.length - 1);
 	}
 
 	override public function getCurrentSelectionIndex():Int return curRow;
@@ -150,6 +179,8 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		for (ch in e.text.split(''))
 			_pendingChars.push(ch);
 	}
+
+	var syncStatusHoldingTime:Float = 3;
 
 	override public function update(elapsed:Float)
 	{
@@ -175,16 +206,29 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		super.update(elapsed);
 		if (introAnimating || backLock || _waitingLogin) { backLock = false; return; }
 
+		if (statusTxt.text  == 'SYNCED!'){
+			if (syncStatusHoldingTime <= 0){
+				statusTxt.text = 'LOGGED IN: ' + GameJoltManager.getUsername(); // correct method?
+			}
+			syncStatusHoldingTime-=elapsed;
+		}
+
+		if (statusTxt != null){
+			statusTxt.x = FlxG.width-statusTxt.width;
+			statusTxt.x -= 20;
+			statusTxt.y = 180;
+		}
+
 		#if mobile
 		if(pressHolding && deltaMouseY != 0 && cooldownTimer <= 0) {
 			if(deltaMouseY < -5) {
 				curRow = (curRow - 1 + totalRows) % totalRows;
 				FlxG.sound.play(Paths.sound('scrollMenu'));
-				changeSelection();
+				changeSelection(curRow>1);
 			} else if(deltaMouseY > 5) {
 				curRow = (curRow + 1 + totalRows) % totalRows;
 				FlxG.sound.play(Paths.sound('scrollMenu'));
-				changeSelection();
+				changeSelection(curRow>1);
 			}
 		}
 		#end
@@ -193,7 +237,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		{
 			curRow = (curRow + (controls.UI_UP_P ? -1 : 1) + totalRows) % totalRows;
 			FlxG.sound.play(Paths.sound('scrollMenu'));
-			changeSelection();
+			changeSelection(curRow>1);
 		}
 
 		if (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
@@ -208,12 +252,13 @@ class ExeGameJoltState extends ExeBaseOptionsState
 					tokenInput    = '';
 					_setLoggedOutView();
 				}
-				else if (curRow == 1)
+				else if (curRow == 3)
 				{
 					statusTxt.text  = 'SYNCING...';
 					statusTxt.color = 0xFFFFDD00;
 					GameJoltManager.syncAllTrophies();
 					statusTxt.text  = 'SYNCED!';
+					syncStatusHoldingTime = 3;
 					statusTxt.color = 0xFF88FF88;
 				}
 			}
@@ -290,7 +335,8 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		statusTxt.color = 0xFFFFDD00;
 
 		trace(usernameInput);
-		trace(tokenInput);
+		// no this time friend
+		// trace(tokenInput);
 
 		GameJoltManager.login(usernameInput, tokenInput, function(ok:Bool) {
 			_waitingLogin = false;

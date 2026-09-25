@@ -1,7 +1,11 @@
 package backend;
 
 import flixel.FlxG;
-import flixel.addons.api.FlxGameJolt;
+import gamejolt.GameJolt;
+import gamejolt.Trophies;
+import gamejolt.Sessions;
+import gamejolt.Scores;
+
 using StringTools;
 
 class GameJoltManager
@@ -71,10 +75,10 @@ class GameJoltManager
 	static var _token:String    = '';
 
 	public static function isLoggedIn():Bool
-		return FlxGameJolt.initialized;
+		return GameJolt.initialized;
 
 	public static function getUsername():String
-		return _username;
+		return GameJolt.username;
 
 	public static function getSavedUsername():String
 		return FlxG.save.data.gjUsername ?? '';
@@ -84,9 +88,6 @@ class GameJoltManager
 
 	public static function login(username:String, token:String, callback:Bool->Void):Void
 	{
-		_username = username.trim();
-		_token    = token.trim();
-
 		final keyStr:String = getPrivateKey();
 
 		if (keyStr == '')
@@ -95,13 +96,17 @@ class GameJoltManager
 			callback(false);
 			return;
 		}
+		
+		GameJolt.init(GAME_ID, keyStr);
 
-		FlxGameJolt.init(GAME_ID, keyStr, true, _username, _token, function(result:Bool) {
+		GameJolt.login(username, token, function(result:Bool) {
 			if (result)
 			{
-				FlxG.save.data.gjUsername = _username;
-				FlxG.save.data.gjToken    = _token;
+				FlxG.save.data.gjUsername = GameJolt.username;
+				FlxG.save.data.gjToken    = GameJolt.userToken;
 				FlxG.save.flush();
+
+				Sessions.open(true);
 			}
 			callback(result);
 		});
@@ -109,27 +114,27 @@ class GameJoltManager
 
 	public static function logout():Void
 	{
-		_username = '';
-		_token    = '';
+		Sessions.close();
+
 		FlxG.save.data.gjUsername = '';
 		FlxG.save.data.gjToken    = '';
 		FlxG.save.flush();
 
-		@:privateAccess 
-		{ 
-			FlxGameJolt._initialized = false;
-			FlxGameJolt._gameID      = 0;
-			FlxGameJolt._privateKey  = '';
-			FlxGameJolt._userName    = null;
-			FlxGameJolt._userToken   = null;
-		}
+		GameJolt.logout();
 	}
 
 	public static function unlockTrophy(internalId:String):Void
 	{
 		if (!isLoggedIn()) return;
 		final gjId = TROPHY_MAP.get(internalId);
-		if (gjId != null) FlxGameJolt.addTrophy(gjId);
+		if (gjId != null) Trophies.unlock(gjId);
+	}
+
+	public static function removeTrophy(internalId:String):Void
+	{
+		if (!isLoggedIn()) return;
+		final gjId = TROPHY_MAP.get(internalId);
+		if (gjId != null) Trophies.remove(gjId);
 	}
 
 	public static function syncAllTrophies():Void
@@ -137,6 +142,25 @@ class GameJoltManager
 		if (!isLoggedIn()) return;
 		for (id => achieve in EXEAchievements.achievements.keyValueIterator())
 			if (achieve.unlocked ?? false) unlockTrophy(id);
+	}
+	
+	public static function submitScore(scoreText:String, scoreValue:Int, extraData:String = "", callback:Bool->Void = null):Void
+	{
+		if (!isLoggedIn()) return;
+		Scores.add(scoreText, scoreValue, TABLE_ID, "", extraData, callback);
+	}
+
+
+	public static function pauseSession():Void
+	{
+		if (!isLoggedIn()) return;
+		Sessions.ping("idle");
+	}
+
+	public static function resumeSession():Void
+	{
+		if (!isLoggedIn()) return;
+		Sessions.ping("active");
 	}
 
 	public static function autoLogin(callback:Bool->Void):Void

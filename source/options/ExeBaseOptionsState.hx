@@ -355,13 +355,17 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		return -20;
 	}
 
-	public function changeSelection()
+	public function changeSelection(?hideSelectionClone:Bool = false, ?hideSelectionCloneValue:Bool = false)
 	{
 		#if mobile cooldownTimer = 0.15; #end
 
 		final idx = getCurrentSelectionIndex();
 		if (optionGroups.length == 0 || idx >= optionGroups.length) return;
 
+		selectionClone.visible = !hideSelectionClone;
+		selectionCloneWhite.visible = !hideSelectionClone;
+		selectionCloneV.visible = !hideSelectionCloneValue;
+		selectionCloneWhiteV.visible = !hideSelectionCloneValue;
 		final group = optionGroups[idx];
 		selectionClone.setPosition(group.nameBG.x - 3, group.nameBG.y - 3);
 

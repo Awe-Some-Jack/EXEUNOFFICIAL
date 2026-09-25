@@ -208,6 +208,7 @@ class Project extends HXProject
         haxelibs.push(new Haxelib("nape-haxe4"));
         haxelibs.push(new Haxelib("tjson", "1.4.0"));
         haxelibs.push(new Haxelib("flixel-animate"));
+        haxelibs.push(new Haxelib("hx-gamejolt"));
 
         if(isAndroid())
             haxelibs.push(new Haxelib("extension-androidtools", "git"));

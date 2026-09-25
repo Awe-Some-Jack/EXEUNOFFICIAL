@@ -764,13 +764,17 @@ class DAGPlayer extends FlxGroup
         } catch (_:Dynamic) {}
         for (v in vocals) try {
             FlxTween.cancelTweensOf(v);
-            FlxTween.tween(v, {volume: 0}, 0.2, {
-                ease: FlxEase.quadIn,
-                onComplete: twn->{
-                    v.time = seekTargetMs;
-                    FlxTween.tween(v, {volume: 1}, 0.2, {ease: FlxEase.quadIn});
-                }
-            }); 
+
+            if (!vocalsEnabled){ v.time = inst.time; v.volume = 0; }
+            else{
+                FlxTween.tween(v, {volume: 0}, 0.2, {
+                    ease: FlxEase.quadIn,
+                    onComplete: twn->{
+                        v.time = inst.time;
+                        FlxTween.tween(v, {volume: inst?.volume}, 0.2, {ease: FlxEase.quadIn});
+                    }
+                }); 
+            }
         } catch (_:Dynamic) {}
         if (seekWasPlaying) { inst.resume(); for (v in vocals) v.resume(); }
     }

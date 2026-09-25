@@ -23,6 +23,12 @@ import shaders.ColorShiftShader;
 import openfl.filters.ShaderFilter;
 #end
 
+typedef ExtrasMenuThemeEntry = {
+    var name:String;
+    var src:String;
+    var volume:Float;
+}
+
 class OrbitSprite extends FlxSprite
 {
     public var centerX:Float = 0;
@@ -83,6 +89,7 @@ class ExtrasMenu extends MusicBeatState
     var arrowsGrp:FlxTypedGroup<Arrow>;
     var arrowLeft:Arrow;
     var arrowRight:Arrow;
+    var blackBox:FlxSprite;
     var box:FlxSprite;
     var sumky:FlxSprite;
     var np:FlxText;
@@ -102,6 +109,25 @@ class ExtrasMenu extends MusicBeatState
     var checkerSpriteRight:FlxSprite;
     var checkShaderRight:ErrorHandledRuntimeShader;
 
+    var extrasMenuThemes:Array<ExtrasMenuThemeEntry> = [
+        {
+            name: "EXTRAS MENU",
+            src: "ExtrasMenu",
+            volume: 1
+        },
+        {
+            name: "WELCOME TO THE EXTRAS",
+            src: "ExtrasMenu_DataSelectSonic3",
+            volume: 1
+        }
+    ];
+
+    public function getCurrentMenuTheme():ExtrasMenuThemeEntry{
+        return extrasMenuThemes[currentExtrasTheme];
+    }
+
+    public static var currentExtrasTheme:Int = 0;
+
     override function create():Void
     {
         Paths.clearStoredMemory();
@@ -116,9 +142,11 @@ class ExtrasMenu extends MusicBeatState
         buildDescBar();
         changeSelection(0);
 
-        FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/ExtrasMenu.ogg'));
+        if (FlxG.sound.music != null && !FlxG.sound.music.playing)
+            FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/${getCurrentMenuTheme().src}.ogg'));
+        FlxG.sound.music.volume = getCurrentMenuTheme().volume;
 
-        np = new FlxText(149, 558, 0, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
+        np = new FlxText(149, 558, -1, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
         np.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
         np.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         np.scale.set(0.22, 0.22);
@@ -127,7 +155,7 @@ class ExtrasMenu extends MusicBeatState
         add(np);
 
         final daName = states.extras.dagarden.DAGarden.currentSong;
-        nowPlayingSong = new FlxText(149, np.y + np.height + 6, -1, daName != '' ? daName.toUpperCase() : 'EXTRAS MENU', 60);
+        nowPlayingSong = new FlxText(149, np.y + np.height + 6, -1, daName != '' ? daName.toUpperCase() : getCurrentMenuTheme().name, 60);
         nowPlayingSong.setFormat(Paths.font("bigass.otf"), 70, FlxColor.BLACK, LEFT);
         nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlayingSong.scale.set(0.22, 0.22);
@@ -141,21 +169,38 @@ class ExtrasMenu extends MusicBeatState
         arrowLeft = new Arrow(nowPlayingSong.x+8, nowPlayingSong.y, flixel.input.keyboard.FlxKey.LEFT, 180);
         arrowLeft.x = (nowPlayingSong.x + nowPlayingSong.width)+15;
         arrowLeft.y = (nowPlayingSong.y + nowPlayingSong.height)-arrowLeft.height;
+        arrowLeft.y -= arrowLeft.height/2;
+        arrowLeft.y -= arrowLeft.height;
+        arrowLeft.x += arrowLeft.width;
         arrowLeft.onDown.add(event->{
-            trace("aqui va la logica de cuando presionas la tecla flecha bro, es un justPressed btw\npodemos acceder a su evento: "+event.toString()+"\ncomo tmb cancelarlo! con 'event.cancel();'");
+            if (!canMove) {
+                event.cancel();
+                return;
+            }
         });
         arrowLeft.onUp.add(event->{
-            trace("aqui va la logica de cuando sueltas la tecla flecha bro, es un justReleased btw\npodemos acceder a su evento: "+event.toString()+"\ncomo tmb cancelarlo! con 'event.cancel();'");
+            if (!canMove) {
+                event.cancel();
+                return;
+            }
+            navigateExtrasMenuTheme(-1);
         });
         arrowsGrp.add(arrowLeft);
 
         arrowRight = new Arrow(arrowLeft.x + 20, arrowLeft.y, flixel.input.keyboard.FlxKey.RIGHT, 0);
         arrowRight.x = (arrowLeft.x + arrowLeft.width) + 8;
         arrowRight.onDown.add(event->{
-            trace("aqui va la logica de cuando presionas la tecla flecha bro, es un justPressed btw\npodemos acceder a su evento: "+event.toString()+"\ncomo tmb cancelarlo! con 'event.cancel();'");
+            if (!canMove) {
+                event.cancel();
+                return;
+            }
         });
         arrowRight.onUp.add(event->{
-            trace("aqui va la logica de cuando sueltas la tecla flecha bro, es un justReleased btw\npodemos acceder a su evento: "+event.toString()+"\ncomo tmb cancelarlo! con 'event.cancel();'");
+            if (!canMove) {
+                event.cancel();
+                return;
+            }
+            navigateExtrasMenuTheme(1);
         });
         arrowsGrp.add(arrowRight); 
 
@@ -185,13 +230,6 @@ class ExtrasMenu extends MusicBeatState
         {
             for (i in 0...ssGrp.members.length)
                 objBehavior(i, elapsed);
-        }
-
-        if (nowPlayingSong != null)
-        {
-            final daName  = states.extras.dagarden.DAGarden.currentSong;
-            final display = daName != '' ? daName.toUpperCase() : 'EXTRAS MENU';
-            if (nowPlayingSong.text != display) nowPlayingSong.text = display;
         }
 
         if (!canMove) return;
@@ -336,6 +374,13 @@ class ExtrasMenu extends MusicBeatState
         // if (nowPlayingSong != null) nowPlayingSong.visible = true;
 
         super.closeSubState();
+        if (nowPlayingSong != null)
+        {
+            final daName  = states.extras.dagarden.DAGarden.currentSong;
+            final display = daName != '' ? daName.toUpperCase() : getCurrentMenuTheme().name;
+            if (nowPlayingSong.text != display) nowPlayingSong.text = display;
+            nowPlayingSong.x = 149;
+        }
     }
 
     override public function destroy():Void
@@ -420,12 +465,22 @@ class ExtrasMenu extends MusicBeatState
 
     function buildBox():Void
     {
+        blackBox = new FlxSprite().makeGraphic(1470,1451,0xFF000000);
+        add(blackBox);
+
         box = new FlxSprite(750, 120).loadGraphic(Paths.getBitmapData("assets/exe/extras/boxextras.webp"));
+        blackBox.setGraphicSize(box.width-2, box.height-2);
+        blackBox.updateHitbox();
         box.scale.set(0.3, 0.3);
         box.updateHitbox();
         add(box);
 
-        sumky = new FlxSprite(box.x - 75, box.y + 2);
+        //nice
+        blackBox.scale.set(0.3, 0.3);
+        blackBox.updateHitbox();
+        blackBox.setPosition(box.x, box.y);
+
+        sumky = new FlxSprite(box.x - 80, box.y + 2);
         sumky.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow(
             Paths.getBitmapData('assets/exe/extras/sumky.webp'),
             openfl.utils.Assets.getText('assets/exe/extras/sumky.xml')
@@ -629,13 +684,32 @@ class ExtrasMenu extends MusicBeatState
         }
     }
 
+    public function navigateExtrasMenuTheme(add:Int = 0){
+        currentExtrasTheme = FlxMath.wrap(currentExtrasTheme+add, 0, extrasMenuThemes.length-1);
+
+        FlxTween.cancelTweensOf(nowPlayingSong);
+        FlxTween.cancelTweensOf(FlxG.sound.music);
+        FlxTween.tween(nowPlayingSong, {alpha: 0}, 0.2, {ease: FlxEase.quadIn});
+        FlxTween.tween(FlxG.sound.music, {volume: 0}, 0.2, {ease: FlxEase.quadIn, 
+            onComplete: twn->{
+                nowPlayingSong.text = getCurrentMenuTheme().name;
+                nowPlayingSong.updateHitbox(); // aaahhh
+                nowPlayingSong.x = np.x;
+                FlxTween.tween(nowPlayingSong, {alpha: 1}, 0.2, {ease: FlxEase.quadIn});
+                FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/${getCurrentMenuTheme().src}.ogg'));
+                FlxG.sound.music.volume = 0;
+                FlxTween.tween(FlxG.sound.music, {volume: getCurrentMenuTheme().volume}, 0.2, {ease: FlxEase.quadOut}); 
+            }
+        });
+    }
+
     function animateBox():Void
     {
         FlxTween.cancelTweensOf(box);
         FlxTween.cancelTweensOf(box.scale);
         if (sumky != null) FlxTween.cancelTweensOf(sumky);
         inline function syncSumky():Void
-            if (sumky != null) { sumky.x = box.x - 75; sumky.y = box.y + 2; }
+            if (sumky != null) { sumky.x = box.x - 80; sumky.y = box.y + 2; }
 
         box.scale.set(0.6, 0.6);
         box.updateHitbox();
@@ -643,6 +717,7 @@ class ExtrasMenu extends MusicBeatState
         box.y     = 120;
         box.alpha = 0;
         syncSumky();
+        // blackBox.alpha = 0;
 
         if (sumky != null) sumky.alpha = 0;
 
@@ -657,6 +732,11 @@ class ExtrasMenu extends MusicBeatState
             box.updateHitbox();
             box.x = cx;
             box.y = cy;
+            blackBox.scale.set(box.scale.x,box.scale.y);
+            blackBox.updateHitbox();
+            blackBox.x = box.x+4;
+            blackBox.y = box.y;
+            blackBox.alpha = box.alpha;
             syncSumky();
         }});
     }

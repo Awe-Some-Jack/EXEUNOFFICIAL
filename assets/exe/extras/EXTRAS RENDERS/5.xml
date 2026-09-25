@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="5.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="quien instancia 10000" x="40" y="40" width="1462" height="1435"/>
+	<SubTexture name="quien instancia 10001" x="40" y="40" width="1462" height="1435"/>
+	<SubTexture name="quien instancia 10002" x="1558" y="40" width="1462" height="1435"/>
+	<SubTexture name="quien instancia 10003" x="1558" y="40" width="1462" height="1435"/>
+	<SubTexture name="quien instancia 10004" x="3076" y="40" width="1462" height="1435"/>
+	<SubTexture name="quien instancia 10005" x="3076" y="40" width="1462" height="1435"/>
+</TextureAtlas>

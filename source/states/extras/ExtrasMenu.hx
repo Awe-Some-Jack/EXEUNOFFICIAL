@@ -142,8 +142,7 @@ class ExtrasMenu extends MusicBeatState
         buildDescBar();
         changeSelection(0);
 
-        if (FlxG.sound.music != null && !FlxG.sound.music.playing)
-            FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/${getCurrentMenuTheme().src}.ogg'));
+        FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/${getCurrentMenuTheme().src}.ogg'));
         FlxG.sound.music.volume = getCurrentMenuTheme().volume;
 
         np = new FlxText(149, 558, -1, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);

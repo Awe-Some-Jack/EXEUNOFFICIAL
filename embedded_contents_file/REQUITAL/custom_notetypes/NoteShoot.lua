@@ -6,6 +6,7 @@ function onCreate()
 			setProperty('unspawnNotes['..i..'].noMissAnimation', true)
 			setProperty('unspawnNotes['..i..'].ignoreNote', true)
 			setProperty('unspawnNotes['..i..'].ratingDisabled', true)
+			setProperty('unspawnNotes['..i..'].offsetX', -getProperty('unspawnNotes['..i..'].width') * 1.125)
 		end
 	end
 end

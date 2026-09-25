@@ -71,15 +71,15 @@ Treno_Arts
 CM_drawe
 Mariano
 KrazyKazu
-Pekoso
+Pekoso72
 Remagets
 DuduGD20
 
 =Freeplay Artwork
 Treno_Arts
 Hyperdream
-Pekoso
-Fare
+Pekoso72
+Fare.dz
 Artisus
 Engineer
 BarcoBasurero
@@ -103,16 +103,16 @@ Treno_Arts
 Hyperdream
 Tomasero
 Sebas1554
-Pekoso
+Pekoso72
 Fare.dz
 Artisus
 Nebros
 CM_drawe
 RoxasWhite_
-S4ndr0
+S4ndr0.2
 SlaxPe
 T4co
-Twisted
+Johnwindowsxp
 PaigeyPapers (Chocolate Milk)
 
 =Background Artwork
@@ -123,10 +123,11 @@ Artisus
 Hyperdream
 VN2
 BarcoBasurero
-Twisted
+Johnwindowsxp
 RoxasWhite_
-S4ndr0
+S4ndr0.2
 DuduGD20
+SuonimaG
 KrazyKazu
 Wolfie
 PaigeyPapers (Vanilla Milk & Chocolate Milk)
@@ -142,14 +143,17 @@ VN2
 DuduGD20
 Wolfie
 KrazyKazu
-Twisted
+Johnwindowsxp
+Kostya Hernández
 Sr. Kleynner
 Wolfie
+ScorchVX (Triple Trouble Jumpscares)
 Paige (Sunky Notes)
 
 =3D Spriting Rendering
 Nebros
-Twisted
+Johnwindowsxp
+Kostya Hernández
 
 =Art Assisting
 Zar0c4l
@@ -160,7 +164,7 @@ RoxasWhite_
 =Pixel Artwork
 RoxasWhite_
 Sr. Kleynner
-S4ndro
+S4ndr0.2
 T4co
 SlaxPe
 KrazyKazu
@@ -180,7 +184,7 @@ CM_drawe
 Mariano
 BarcoBasurero
 KrazyKazu
-Pekoso
+Pekoso72
 SuonimaG
 
 =Promotional Artwork
@@ -191,6 +195,9 @@ RoxasWhite_
 
 =Composing Leader
 MeDicenKay
+
+=Original Level and Menu Music Composing
+Original Vs Sonic.EXE Team
 
 =Menu Music Composing
 MeDicenKay
@@ -240,6 +247,7 @@ Sr. Espanta Viejas
 MeDicenKay
 RogtaryMusic
 lifeytheray3470
+CoverRuisna
 Tomasero
 RoxasWhite_
 Vs Sonic.EXE (Original Team)
@@ -272,7 +280,7 @@ RoxasWhite_
 KrazyKazu
 SlaxPe
 Lithium_69_50516
-S4ndro
+S4ndr0.2
 Sr. Kleynner
 
 ="The Valley" Concept Artists
@@ -294,7 +302,7 @@ Tomasero
 RoxasWhite_
 
 ="The Valley" Voice Cast
-Kostya Hernández as
+Kostya Hernández
 Sr. Espanta Viejas
 
 ="SUNKY RENDER CONTEST" WINNERS
@@ -305,8 +313,14 @@ Sr.Clocks115
 Rabty
 
 =Beta Testers
+MeDicenKay
+Kiv.FLP
+Sebas1554
 Tomasero
+Sr. Kleynner
 SuonimaG
+CoverRuisna
+RoxasWhite_
 
 =Special Thanks
 Original Vs Sonic.EXE Team
@@ -328,8 +342,6 @@ Snorby
 RoxasWhite_
 Tomis Turbando
 
-=French Translation
-
 =Uzbek Translation
 Snorby
 
@@ -349,14 +361,6 @@ Alex_Hamud
 
 =Ukranian Translation
 Snorby
-
-=German Translation
-
-=Italian Translation
-
-=Polish Translation
-
-=Turkish Translation
 
 =Character Designs
 "Boyfriend" by Funkin' Crew
@@ -409,14 +413,6 @@ Snorby
 "Exetior" by JaizKoys
 "Sonichu" by Christine Weston Chandler (Chris-Chan)
 
-=Copyright
-Funkin' Crew
-SEGA Enterprise
-Paramount Pictures
-Valve Corporation 
-Cartoon Network Inc.
-Newgrounds
-Mashed
 
 
 
@@ -432,4 +428,11 @@ With everything said, I say goodbye to you, until the next project! -Dudu
 
 
 
-The End.
+
+
+
+
+
+
+
+==The End.

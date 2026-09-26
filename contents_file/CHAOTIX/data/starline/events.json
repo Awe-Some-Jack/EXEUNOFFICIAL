@@ -3737,12 +3737,6 @@
 			[
 				["chaotixEvents", "fadeSong", ""]
 			]
-		],
-		[
-			286075.539665408,
-			[
-				["Play Animation", "thanosEnd", "dad"]
-			]
 		]
 	],
 	"format": "psych_v1"

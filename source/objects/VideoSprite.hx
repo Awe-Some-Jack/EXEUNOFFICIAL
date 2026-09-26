@@ -38,11 +38,14 @@ class VideoSprite extends FlxSpriteGroup
 	private var wasPlayingBeforeFocusLost:Bool = false;
 	private var _shouldBePlaying:Bool = false;
 
-	public function new(x:Float = 0, y:Float = 0, autoDestroy:Bool = true)
+	public var playStateSrc:Bool = false;
+
+	public function new(x:Float = 0, y:Float = 0, autoDestroy:Bool = true, ?playStateSrc:Bool = false)
 	{
 		super(x, y);
 
 		autoDestroyOnComplete = autoDestroy;
+		this.playStateSrc = playStateSrc;
 
 		video = new FlxVideoSprite(0, 0);
 		add(video);
@@ -264,8 +267,8 @@ class VideoSprite extends FlxSpriteGroup
 
 	private function onFocusGained():Void
 	{
-		if (FlxG.autoPause && wasPlayingBeforeFocusLost)
-			video.bitmap?.play();
+		if ((playStateSrc && !PlayState.instance.paused) && FlxG.autoPause && wasPlayingBeforeFocusLost)
+			video.bitmap?.play(); // sure???????'
 	}
 
 	override public function update(elapsed:Float):Void

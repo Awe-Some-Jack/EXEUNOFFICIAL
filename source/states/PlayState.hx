@@ -176,6 +176,7 @@ class PlayState extends MusicBeatState
 	public var notes:FlxTypedGroup<Note>;
 	public var unspawnNotes:Array<Note> = [];
 	public var eventNotes:Array<EventNote> = [];
+	public var opponentStrumsFlipSide:Bool = false;
 
 	public var camFollow:FlxObject;
 	private static var prevCamFollow:FlxObject;
@@ -1970,8 +1971,6 @@ class PlayState extends MusicBeatState
 			if(i > 0) opponentStrums.members[i].x = opponentStrums.members[0].x + (i*.3*162);
 		}
 	}
-
-	public var opponentStrumsFlipSide:Bool = false;
 
 	#end
 

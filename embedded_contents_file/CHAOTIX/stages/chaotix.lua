@@ -112,6 +112,8 @@ function onCreatePost()
 
 	createTails()
 
+	initLuaShader('NewGlitch2')
+
 	makeLuaSprite('blackOverlay', nil, getProperty('dad.x') - 120, -320)
 	makeGraphic('blackOverlay', screenWidth * 1.8, screenHeight * 1.8, '000000')
 	setScrollFactor('blackOverlay', 0, 0)
@@ -126,6 +128,8 @@ function onCreatePost()
 
 	setScrollFactor('gf', 1, 1)
 	setObjectOrder('blackOverlay', getObjectOrder('gfGroup') - 1) setObjectOrder('starSky', getObjectOrder('gfGroup'))
+
+	for _, chrs  in ipairs(starlineAssets['dontMiss']) do setObjectOrder(chrs.name, getObjectOrder('scoreText') - 1) end
 
 	for i = 0, 3 do
 		setPropertyFromGroup('opponentStrums', i, 'x', -1000)
@@ -316,7 +320,7 @@ local starlineEvents = {
 		doTweenAlpha('fadeFromBlackHUD',     'camHUD', 1, 1.5, 'sineOut')
 
 		loadGraphic('healthBG', 'hud/hud_chaotix_beast')
-		setProperty('chaotixNormalStarlineIcon.alpha', 0) setProperty('chaotixBeastStarlineIcon.alpha', 1)
+		setProperty('chaotixNormalStarlineIcon.alpha', 0) setProperty('chaotixBeastStarlineIcon.alpha', 1) setProperty('chaotixNormalStarlineIcon.visible', false)
 		--callMethod('chaotixBeastStarlineIcon.setPosition', {400, 520})
 
 		for _, chars in ipairs(starlineAssets['characters']) do setProperty(chars.name..'.idleSuffix', '-alt') setProperty(chars.name..'.alpha', 1) playAnim(chars.name, 'idle-alt', true) end
@@ -348,7 +352,7 @@ local starlineEvents = {
 			setProperty('bg2.alpha', 1)
 		end
 	end,
-	['fadeSong'] = function() doTweenAlpha('fadeSongTween', 'BlackGraphicOther', 1, 4) end,
+	['fadeSong'] = function() doTweenAlpha('fadeSongTween', 'BlackGraphicOther', 1, 5) end,
 	['glitchBG'] = function(intensity)
 		for _, bg in ipairs(starlineAssets['BGAssets']) do
 			for _, healthShit in ipairs({'hbHealth', 'hbHealth2', 'healthBG', 'hbBG', 'separatorHealth', 'bfStarlineIcon', 'chaotixBeastStarlineIcon'}) do doTweenAlpha(healthShit..'Alpha', healthShit, 0, 0.5) end
@@ -364,6 +368,8 @@ local starlineEvents = {
 	['setTailsTimer'] = function(timer)	tailsTimer = timer end,
 	['stopTails'] = function()
 		crazyTime  = false
+		removeSpriteShader('dad')
+		cancelTimer('returnChaotixGlitch')
 		tailsTimer = 40
 		cancelTimer('tailsTime')
 		setProperty('bg2.y', getProperty('bg2.y') - 20)
@@ -690,6 +696,16 @@ function opponentNoteHitPre(i)
 			cameraShake('camGame', 0.001, 0.1) cameraShake('camHUD', 0.001, 0.1)
 		end
 	end
+
+	if crazyTime then
+		if getProperty('dad.shader') == nil then setSpriteShader('dad', 'NewGlitch2') end
+
+		if getRandomInt(0, 1) == 1 then
+			setShaderFloat('dad', 'binaryIntensity', getRandomFloat(0.2, 0.8))
+			setShaderFloat('dad', 'negativity', getRandomInt(0, 1))
+			runTimer('returnChaotixGlitch', 0.5)
+		end
+	end
 end
 
 function onTimerCompleted(t)
@@ -697,4 +713,6 @@ function onTimerCompleted(t)
 	if t ==     'waitToSpawn' then runTimer('spawnPeaceStars', 0.5, 0) end
 	if t == 'spawnPeaceStars' then createPeaceStars() end
 	if t ==       'tailsTime' then   spawnTailsText() end
+
+	if t == 'returnChaotixGlitch' then setShaderFloat('dad', 'binaryIntensity', 0.001) setShaderFloat('dad', 'negativity', 0) end
 end

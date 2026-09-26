@@ -134,7 +134,7 @@ function changeGameOvers() {
 }
 
 function setCamEvents() {
-    if (exeGameOvers || songName == "endless-us")
+    if (exeGameOvers)
     {
         FlxTween.cancelTweensOf(FlxG.camera); //Just in case, heh.
         FlxG.camera.follow();
@@ -151,7 +151,7 @@ function onGameOverStart()
         if (songName == song) {
             inGameOver = true;
             if (GameOverSubstate.instance.boyfriend != null && deadChar == null) deadChar = GameOverSubstate.instance.boyfriend;
-            if (exeGameOvers)
+            if (exeGameOvers || songName == 'endless-us')
             {
                 deadChar.scrollFactor.set();
                 deadChar.setPosition(charPositions[0], charPositions[1]);
@@ -237,7 +237,7 @@ function onUpdatePost()
             if (!toggleOnce) {
                 toggleOnce = true;
                 deadMusic.play();
-                voiceline.play();
+                voiceline?.play();
             }
         }
 
@@ -320,8 +320,8 @@ function startCountdownMajin()
         left.loadGraphic(Paths.image('gameovers/us/evil majin'));
         left.flipX = true;
         var bell:Float = 1.0 - Math.abs(i - 3) * 0.2;
-        var dynamicSpacing:Float = spacing (1.0 + bell);
-        var leftX:Float = i >= 3 ? baseLeft + ((i - 3) (i - 3) * 30) : baseLeft - (i * dynamicSpacing);
+        var dynamicSpacing:Float = spacing * (1.0 + bell);
+        var leftX:Float = i >= 3 ? baseLeft + ((i - 3) * (i - 3) * 30) : baseLeft - (i * dynamicSpacing);
         var yOffset:Float = i == 1 ? 70 : 65;
         left.setPosition(leftX, deadChar.y + yOffset);
         left.scrollFactor.set(0, 0);
@@ -331,7 +331,7 @@ function startCountdownMajin()
 
         var right = new FlxSprite();
         right.loadGraphic(Paths.image('gameovers/us/evil majin'));
-        var rightX:Float = i >= 3 ? baseRight - ((i - 3) (i - 3) * 30) : baseRight + (i * dynamicSpacing);
+        var rightX:Float = i >= 3 ? baseRight - ((i - 3) * (i - 3) * 30) : baseRight + (i * dynamicSpacing);
         right.setPosition(rightX, deadChar.y + yOffset);
         right.scrollFactor.set(0, 0);
         right.scale.set(scale, scale);

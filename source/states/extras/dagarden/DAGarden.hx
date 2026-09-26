@@ -142,12 +142,15 @@ class DAGSongs extends MusicBeatSubstate
             try
             {
                 for (song in Paths.readDirectory(dir))
-                    if (!seen.exists(song) && !song.contains('.'))
+                {
+                    final lowerSong = song.toLowerCase();
+                    if (!seen.exists(lowerSong) && !song.contains('.'))
                     {
-                        seen.set(song, true);
+                        seen.set(lowerSong, true);
                         songList.push(song);
                         songMods.push(mod);
                     }
+                }
             }
             catch (_:Dynamic) {}
         }
@@ -156,12 +159,15 @@ class DAGSongs extends MusicBeatSubstate
         try
         {
             for (song in Paths.readDirectory(globalDir))
-                if (!seen.exists(song) && !song.contains('.'))
+            {
+                final lowerSong = song.toLowerCase();
+                if (!seen.exists(lowerSong) && !song.contains('.'))
                 {
-                    seen.set(song, true);
+                    seen.set(lowerSong, true);
                     songList.push(song);
                     songMods.push('');
                 }
+            }
         }
         catch (_:Dynamic) {}
 
@@ -771,7 +777,7 @@ class DAGPlayer extends FlxGroup
                     ease: FlxEase.quadIn,
                     onComplete: twn->{
                         v.time = inst.time;
-                        FlxTween.tween(v, {volume: inst?.volume}, 0.2, {ease: FlxEase.quadIn});
+                        FlxTween.tween(v, {volume: 1}, 0.2, {ease: FlxEase.quadIn});
                     }
                 }); 
             }

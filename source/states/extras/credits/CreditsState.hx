@@ -50,10 +50,6 @@ class CreditsState extends SonicSubState
         FlxG.mouse.visible = true;
         FlxG.sound.playMusic(Assets.getSound('assets/exe/music/credits.ogg'));
 
-        backend.EXEAchievements.unlock('credits');
-		backend.EXEAchievements.checkFinale();
-		backend.EXEAchievements.save();
-
         final json:Dynamic = Json.parse(Assets.getText("assets/exe/extras/credits/credits.json"));
         for (cat in Reflect.fields(json)) credits.set(cat, cast Reflect.field(json, cat));
 
@@ -558,6 +554,9 @@ private class CreditPopup extends MusicBeatSubstate
             iconClickSpeed = 0; canClick = false;
             explosion.alpha = 1; explosion.animation.play('idle');
             userIcon.alpha = 0; FlxG.sound.play(Paths.sound('explosion'));
+
+            backend.EXEAchievements.unlock('explotion');
+		    backend.EXEAchievements.save();
         }
     }
 

@@ -197,7 +197,6 @@ function onEndSong()
 	if not getProperty('cpuControlled') and not getProperty('practiceMode') and rings == 0 then
 		runHaxeCode([[
 			backend.EXEAchievements.unlock('rings');
-			backend.EXEAchievements.checkFinale();
 			backend.EXEAchievements.save();
 		]])
 	end

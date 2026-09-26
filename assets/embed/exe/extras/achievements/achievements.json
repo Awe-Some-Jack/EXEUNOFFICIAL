@@ -1,5 +1,10 @@
 [
 	{
+		"name": "GOD KILLER",
+		"description": "Beat the Main Week",
+		"id": "xeno"
+	},
+	{
 		"name": "Allergic to Rings",
 		"description": "Beat Triple Trouble without collecting any ring",
 		"id": "rings"
@@ -10,11 +15,6 @@
 		"id": "tripledeaths"
 	},
 	{
-		"name": "GOD KILLER",
-		"description": "Beat the Main Week",
-		"id": "xeno"
-	},
-	{
 		"name": "DON'T COME BACK",
 		"description": "Find and beat Lord X",
 		"id": "lordx"
@@ -22,8 +22,8 @@
 	{
 		"name": "DIGA BYE BYE!",
 		"description": "Find the Cycles easter-egg",
-		"secret": true,
-		"id": "byebye"
+		"id": "byebye",
+		"secret": true
 	},
 	{
 		"name": "FUN IS INFINITE",
@@ -46,22 +46,22 @@
 		"id": "exe"
 	},
 	{
-		"name": "S.. SANS?!",
-		"description": "Find the The Valley easter-egg",
-		"secret": true,
-		"id": "sans"
-	},
-	{
 		"name": "Milk and cereal",
 		"description": "Find Sunky in The Valley",
-		"secret": true,
-		"id": "sunkyvalley"
+		"id": "sunkyvalley",
+		"secret": true
 	},
 	{
 		"name": "Magos y Magas!",
 		"description": "Find Pepe el Mago in The Valley.",
-		"secret": true,
-		"id": "pepe"
+		"id": "pepe",
+		"secret": true
+	},
+	{
+		"name": "So... Is the Exe Challenge still going?",
+		"description": "Find Luigikid in The Valley.",
+		"id": "luigikid",
+		"secret": true
 	},
 	{
 		"name": "Would you do it all again?",
@@ -72,6 +72,12 @@
 		"name": "Could you repeat that?",
 		"description": "Find and beat Needlemouse",
 		"id": "needlemouse"
+	},
+	{
+		"name": "LUKAS WORLD",
+		"description": "Find le luter in Her World",
+		"id": "lukas",
+		"secret": true
 	},
 	{
 		"name": "It wasn't Tails...",
@@ -106,8 +112,8 @@
 	{
 		"name": "Long Neck",
 		"description": "Find the OMW easter-egg",
-		"secret": true,
-		"id": "neck"
+		"id": "neck",
+		"secret": true
 	},
 	{
 		"name": "The hedgehog of the night.",
@@ -117,8 +123,8 @@
 	{
 		"name": "Que void",
 		"description": "Find the Hollow easter-egg",
-		"secret": true,
-		"id": "void"
+		"id": "void",
+		"secret": true
 	},
 	{
 		"name": "Like the FNF Mod?!",
@@ -129,12 +135,6 @@
 		"name": "Adobe please...",
 		"description": "Find and beat Soink.FLA",
 		"id": "soink"
-	},
-	{
-		"name": "Update to Windows 11 already...",
-		"description": "Beat Flash 3 times",
-		"secret": true,
-		"id": "flash"
 	},
 	{
 		"name": "Uh... ¿Meow?",
@@ -149,8 +149,8 @@
 	{
 		"name": "SUNKYTASTIC!",
 		"description": "Find the Sunky Troll easter-egg",
-		"secret": true,
-		"id": "troll"
+		"id": "troll",
+		"secret": true
 	},
 	{
 		"name": "A FATAL Experience",
@@ -160,13 +160,8 @@
 	{
 		"name": "Tumba la casa mami",
 		"description": "Find the Fatality easter-egg",
-		"secret": true,
-		"id": "tumbalacasamami"
-	},
-	{
-		"name": "HAVE SOME ORGANIZATION PLEASE!",
-		"description": "Beat Fatality without closing any pop-up",
-		"id": "popup"
+		"id": "tumbalacasamami",
+		"secret": true
 	},
 	{
 		"name": "One last meal",
@@ -223,8 +218,8 @@
 	{
 		"name": "Mattpro",
 		"description": "Mattpro",
-		"secret": true,
-		"id": "mattpro"
+		"id": "mattpro",
+		"secret": true
 	},
 	{
 		"name": "MUSIC ENJOYER!",
@@ -240,6 +235,12 @@
 		"name": "Source Investigator",
 		"description": "Watch the mod credits",
 		"id": "credits"
+	},
+	{
+		"name": "GET OUT OF ME HEAD MAN",
+		"description": "Explode one of the Devs heads in the Credits menu.",
+		"id": "explotion",
+		"secret": true
 	},
 	{
 		"name": "Super Player!",

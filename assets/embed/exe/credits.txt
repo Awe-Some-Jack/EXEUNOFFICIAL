@@ -406,7 +406,7 @@ Snorby
 "Normal CD" by JesterFrog
 "Metal Sonic CD" by JesterFrog
 "Amy CD" by JesterFrog
-"X-terion" by goji_boi
+"X-Terion" by goji_boi
 "Mono.BW" by CryBit
 "No More Innocence" by DumbieDombie
 "Daddy Dearest" by Funkin' Crew
@@ -425,6 +425,8 @@ If you're one of the original Vs Sonic.EXE Devs, please I want you to understand
 Even though we had some hard time while working on this, we managed to keep going and release this.
 Thank you again for watching the entire credits and reading this little letter I added here.
 With everything said, I say goodbye to you, until the next project! -Dudu
+
+
 
 
 

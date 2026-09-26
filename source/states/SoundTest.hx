@@ -529,7 +529,6 @@ class SoundTest extends MusicBeatState
 		if (savedCode == [24, 4])
 		{
 			backend.EXEAchievements.unlock('mattpro');
-			backend.EXEAchievements.checkFinale();
 			backend.EXEAchievements.save();
 		}
 

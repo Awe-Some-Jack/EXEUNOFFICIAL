@@ -219,6 +219,11 @@ class PauseSubState extends MusicBeatSubstate
 			EXEAchievements.unlock('void');
 			EXEAchievements.save();
 		}
+		else if (miniSonicImage == 'her-world-6')
+		{
+			EXEAchievements.unlock('lukas');
+			EXEAchievements.save();
+		}
 	}
 
 	static inline final MUSIC_FADE_RATE:Float = 0.01;
@@ -285,7 +290,6 @@ class PauseSubState extends MusicBeatSubstate
 			longneck.members[1].updateHitbox();
 
 			backend.EXEAchievements.unlock('neck');
-			backend.EXEAchievements.checkFinale();
 			backend.EXEAchievements.save();
 		}
 

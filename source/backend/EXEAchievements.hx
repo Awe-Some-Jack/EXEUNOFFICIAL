@@ -81,6 +81,7 @@ class EXEAchievements
         a.unlocked = true;
         states.extras.achievements.AchievementPopup.show(name);
         GameJoltManager.unlockTrophy(name);
+        checkFinale();
     }
 
     public static function unlockAll():Void { for(a in achievements) a.unlocked = true; }
@@ -107,7 +108,6 @@ class EXEAchievements
             if(deathList.length >= allSongs.length)
             {
                 unlock(a.id);
-                checkFinale();
             }
             save();
         }
@@ -128,7 +128,6 @@ class EXEAchievements
         if(count + 1 >= max)
         {
             unlock(a.id);
-            checkFinale();
         }
         save();
     }
@@ -146,7 +145,6 @@ class EXEAchievements
             }
         }
 
-        checkFinale();
         save();
     }
 
@@ -199,7 +197,6 @@ class EXEAchievements
         if (codes.length >= SECONDARY_CODES.length) 
         {
             unlock(a.id);
-            checkFinale();
             save();
         }
     }

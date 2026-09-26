@@ -30,7 +30,6 @@ class ParallaxState extends MusicBeatState
 		super.create();
 
 		backend.EXEAchievements.unlock('parallax');
-		backend.EXEAchievements.checkFinale();
 		backend.EXEAchievements.save();
 
 		#if VIDEOS_ALLOWED

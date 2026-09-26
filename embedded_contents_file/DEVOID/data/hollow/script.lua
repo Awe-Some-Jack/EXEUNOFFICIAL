@@ -41,12 +41,15 @@ end
 
 function onStepHit()
     if curStep == 8 then
+        removeLuaSprite('render1', true)
         setProperty('render2.alpha', 1)
         doTweenAlpha('render2', 'render2', 0, 1, 'cubeOut')
     elseif curStep == 16 then
+        removeLuaSprite('render2', true)
         setProperty('render3.alpha', 1)
         doTweenAlpha('render3', 'render3', 0, 1, 'cubeOut')
     elseif curStep == 24 then
+        removeLuaSprite('render3', true)
         setProperty('render4.alpha', 1)
         doTweenAlpha('render4', 'render4', 0, 1, 'cubeOut')
     elseif curStep == 32 then

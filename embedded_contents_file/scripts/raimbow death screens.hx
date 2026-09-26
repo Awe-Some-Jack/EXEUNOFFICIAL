@@ -71,8 +71,6 @@ function setCustomGameOvers() {
 
             initialDeathZoom = 0.7;
 
-            trace('Lord X death animation loaded');
-
             maxVoicelines = 5;
         case "yourself":
             exeGameOvers = false;
@@ -197,12 +195,21 @@ function setCustomEvents() {
             head.frames = Paths.getAnimateAtlas('gameovers/LORD-X-DEATH-HEAD');
             head.anim.addBySymbol('deathstart', 'deahrt', 24, false);
             head.anim.addBySymbol('deathloop', 'loop', 24, true);
-            head.anim.play('deathstart');
             head.scale.set(1.7, 1.7);
+            head.alpha = 0.001;
             head.anim.onFinish.add( name -> {
                 head.anim.play('deathloop');
             });
             GameOverSubstate.instance.add(head);
+
+            GameOverSubstate.instance.boyfriend.alpha = 0.001;
+            GameOverSubstate.instance.boyfriend.animation.pause();
+
+            FlxTimer.wait(0.8, () -> {
+                head.alpha = GameOverSubstate.instance.boyfriend.alpha = 1;
+                head.anim.play('deathstart', true);
+                GameOverSubstate.instance.boyfriend.animation.play('firstDeath', true);
+            });
     }
 }
 

@@ -791,7 +791,7 @@ class BIOS extends SonicSubState
 
 		#if mobile if (cooldownTimer > 0) cooldownTimer -= elapsed; #end
 
-		if (subState != null) return;
+		if (subState != null || _closing) return;
 
 		_updateArtistCycle(elapsed);
 		_updateListScroll(elapsed);

@@ -24,6 +24,7 @@ class AchievementsState extends SonicSubState
     var achievementsData:Array<EXEAchievement>;
     var unlockedAmount:Int = 0;
     var achievementAmount:Int = 0;
+    var closing:Bool = false;
 
     static inline final ACHIEVEMENTS_PATH:String = 'assets/exe/extras/achievements/';
     static inline final WHEEL_SENSITIVITY:Float = #if !mobile 4 #else 0.05 #end;
@@ -127,6 +128,8 @@ class AchievementsState extends SonicSubState
     {
         super.update(elapsed);
 
+        if(closing) return;
+        
         if(controls.BACK #if mobile || backPressed #end) back();
         
         if(FlxG.keys.justPressed.G) EXEAchievements.unlockAll();
@@ -170,6 +173,8 @@ class AchievementsState extends SonicSubState
 
     function back():Void
     {
+        closing = true;
+        
         FlxG.sound.play(Paths.sound('cancelMenu'));
 
         FlxTween.tween(spikes, {y: -400}, 0.8, {ease: FlxEase.cubeIn});

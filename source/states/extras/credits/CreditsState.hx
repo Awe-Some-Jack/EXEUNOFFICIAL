@@ -152,7 +152,7 @@ class CreditsState extends SonicSubState
         super.update(elapsed);
         if (subState != null) return;
 
-        if (controls.BACK #if mobile || backPressed #end)
+        if (controls.BACK && !_closing #if mobile || backPressed #end)
         {
             FlxG.sound.play(Paths.sound('cancelMenu'));
             FlxG.sound.music?.stop();

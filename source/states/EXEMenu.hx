@@ -10,6 +10,7 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
+import flixel.util.FlxSave;
 import flixel.math.FlxMath;
 
 import backend.Song;
@@ -21,6 +22,8 @@ import backend.Language;
 import states.EXEFreeplay;
 import states.LoadingState;
 import states.PlayState;
+
+import shaders.ColorSwap;
 
 @:allow(backend.BurningBot)
 class EXEMenu extends MusicBeatState
@@ -76,6 +79,8 @@ class EXEMenu extends MusicBeatState
 	#if VIDEOS_ALLOWED
 	var menuVideo:VideoSprite;
 	#end
+
+	var unlocked:Array<String> = [];
 
 	override function create()
 	{
@@ -146,6 +151,22 @@ class EXEMenu extends MusicBeatState
 			add(hitbox);
 			menuHitboxes.push(hitbox);
 		}
+
+		var save:FlxSave = new FlxSave();
+		save.bind('savedSongs', CoolUtil.getSavePath());
+		unlocked = cast (save.data.songs ?? []);
+		trace(unlocked);
+
+		var colorSwap = new ColorSwap();
+		colorSwap.saturation = -1;
+		if (unlocked.length < 5)
+		{
+			menuOptions[0].shader = colorSwap.shader;
+			menuTexts[0].color = 0xFFACACAC;
+			menuOptions[3].shader = colorSwap.shader;
+			menuTexts[3].color = 0xFFACACAC;
+		}
+		if (unlocked.length < 6) { menuOptions[1].shader = colorSwap.shader; menuTexts[1].color = 0xFFACACAC; }
 
 		if (EXEFreeplay.maniaUnlock)
 		{
@@ -261,10 +282,13 @@ class EXEMenu extends MusicBeatState
 			}
 	}
 
+	var soundHold:Float = 0;
 	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 		if (subState != null) return;
+
+		soundHold += elapsed;
 
 		updateBlink(elapsed);
 
@@ -312,6 +336,7 @@ class EXEMenu extends MusicBeatState
 				startBlink();
 		}
 
+		if (unlocked.length < 5) return;
 		for (i in 0...secretCodes.length)
 		{
 			final code = secretCodes[i];
@@ -343,6 +368,52 @@ class EXEMenu extends MusicBeatState
 
 	function startBlink():Void
 	{
+		if (unlocked.length < 5 && (selectedOptionIndex == 0 || selectedOptionIndex == 3))
+		{
+			if (soundHold > 0.5)
+			{
+				final optX = menuOptions[selectedOptionIndex].x;
+				final txtX = menuTexts[selectedOptionIndex].x;
+				FlxTween.num(0, 1, 0.25, {
+					onComplete: _ -> {
+						menuOptions[selectedOptionIndex].x = optX;
+						menuTexts[selectedOptionIndex].x = txtX;
+					}
+				}, v -> {
+					final offset = Math.sin(v * Math.PI * 8) * 8 * (1 - v);
+					menuOptions[selectedOptionIndex].x = optX + offset;
+					menuTexts[selectedOptionIndex].x = txtX + offset;
+				});
+				FlxG.sound.play(Paths.sound('denied'));
+				FlxG.sound.play(Paths.sound('deniedMOMENT'), 0.7);
+				soundHold = 0;
+			}
+			return;
+		}
+
+		if (unlocked.length < 6 && selectedOptionIndex == 1)
+		{
+			if (soundHold > 0.5)
+			{
+				final optX = menuOptions[selectedOptionIndex].x;
+				final txtX = menuTexts[selectedOptionIndex].x;
+				FlxTween.num(0, 1, 0.25, {
+					onComplete: _ -> {
+						menuOptions[selectedOptionIndex].x = optX;
+						menuTexts[selectedOptionIndex].x = txtX;
+					}
+				}, v -> {
+					final offset = Math.sin(v * Math.PI * 8) * 8 * (1 - v);
+					menuOptions[selectedOptionIndex].x = optX + offset;
+					menuTexts[selectedOptionIndex].x = txtX + offset;
+				});
+				FlxG.sound.play(Paths.sound('denied'));
+				FlxG.sound.play(Paths.sound('deniedMOMENT'), 0.7);
+				soundHold = 0;
+			}
+			return;
+		}
+
 		FlxG.sound.play(Paths.sound('confirmMenu'));
 		isBlinking = true;
 		canInteract = false;

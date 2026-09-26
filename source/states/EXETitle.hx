@@ -8,6 +8,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
+import flixel.util.FlxSave;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 
@@ -45,6 +46,8 @@ class EXETitle extends MusicBeatState
 	var playedIntro:Bool = false;
 
 	var canStart:Bool = false;
+
+	var unlocked:Array<String> = [];
 
 	override function create():Void
 	{
@@ -86,6 +89,10 @@ class EXETitle extends MusicBeatState
 			buildTitle();
 		}
 
+		var save:FlxSave = new FlxSave();
+		save.bind('savedSongs', CoolUtil.getSavePath());
+		unlocked = cast (save.data.songs ?? []);
+
 		super.create();
 	}
 
@@ -108,8 +115,8 @@ class EXETitle extends MusicBeatState
 
 	function onVideoEnd():Void
 	{
-
 		if (FlxG.save.data.goToFinalEscape != null){
+			initialized = true;
 			FlxG.save.data.goToFinalEscape = null;
 			FlxG.save.flush();
 
@@ -299,7 +306,7 @@ class EXETitle extends MusicBeatState
 				confirmStart();
 		}
 
-		if (!transitioning && canStart)
+		if (!transitioning && canStart && unlocked.length >= 5)
 		{
 			final threshold:Float = FlxG.width * PARALLAX_THRESHOLD;
 			final arrowW:Float = parallaxArrow.width;
@@ -374,7 +381,7 @@ class EXETitle extends MusicBeatState
 			eyes.angle = Math.sin(logoSin + (Math.PI / 2.5) + 0.15) * 2;
 		}
 
-		if (!canStart) return;
+		if (!canStart || unlocked.length < 5) return;
 
 		final anyDir:Bool = controls.UI_UP_P || controls.UI_DOWN_P || controls.UI_LEFT_P || controls.UI_RIGHT_P #if mobile || swipeUP || swipeDOWN || swipeLEFT || swipeRIGHT #end;
 		

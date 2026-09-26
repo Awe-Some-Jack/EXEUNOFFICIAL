@@ -7,6 +7,7 @@ echo Makking the main haxelib and setuping folder in same time..
 mkdir ~/haxelib && haxelib setup ~/haxelib
 echo Installing dependencies...
 echo This might take a few moments depending on your internet speed.
+haxelib git hx-gamejolt https://github.com/cocoCode17/hx-gamejolt
 haxelib git flixel-addons https://github.com/GreenColdTea/flixel-addons.git funkin-before-rebase --skip-dependencies
 haxelib install flixel-tools 1.5.1
 haxelib install tjson 1.4.0
@@ -28,4 +29,5 @@ haxelib git flixel https://github.com/FNF-CC-ENGINE/flixel.git --skip-dependenci
 haxelib git lime https://github.com/GreenColdTea/lime-fc.git
 haxelib git openfl https://github.com/FNF-CC-ENGINE/openfl-fc.git
 haxelib git hxcpp https://github.com/Wolfie1985yt/hxcpp.git
+haxelib set hxcpp git
 echo Finished!

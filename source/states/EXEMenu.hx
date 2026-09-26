@@ -81,6 +81,7 @@ class EXEMenu extends MusicBeatState
 	#end
 
 	var unlocked:Array<String> = [];
+	public static var inDevMode:Bool = false;
 
 	override function create()
 	{
@@ -152,21 +153,24 @@ class EXEMenu extends MusicBeatState
 			menuHitboxes.push(hitbox);
 		}
 
-		var save:FlxSave = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
-		unlocked = cast (save.data.songs ?? []);
-		trace(unlocked);
-
-		var colorSwap = new ColorSwap();
-		colorSwap.saturation = -1;
-		if (unlocked.length < 5)
+		if (!inDevMode)
 		{
-			menuOptions[0].shader = colorSwap.shader;
-			menuTexts[0].color = 0xFFACACAC;
-			menuOptions[3].shader = colorSwap.shader;
-			menuTexts[3].color = 0xFFACACAC;
+			var save:FlxSave = new FlxSave();
+			save.bind('savedSongs', CoolUtil.getSavePath());
+			unlocked = cast (save.data.songs ?? []);
+
+			var colorSwap = new ColorSwap();
+			colorSwap.saturation = -1;
+			if (unlocked.length < 5)
+			{
+				menuOptions[0].shader = colorSwap.shader;
+				menuTexts[0].color = 0xFFACACAC;
+				menuOptions[3].shader = colorSwap.shader;
+				menuTexts[3].color = 0xFFACACAC;
+			}
+			if (unlocked.length < 6) { menuOptions[1].shader = colorSwap.shader; menuTexts[1].color = 0xFFACACAC; }
 		}
-		if (unlocked.length < 6) { menuOptions[1].shader = colorSwap.shader; menuTexts[1].color = 0xFFACACAC; }
+		else unlocked = ['f', 'u', 'c', 'k', 'y', 'o', 'u']; //fuck :)
 
 		if (EXEFreeplay.maniaUnlock)
 		{
@@ -287,6 +291,8 @@ class EXEMenu extends MusicBeatState
 	{
 		super.update(elapsed);
 		if (subState != null) return;
+
+		if (#if mobile shortPress && !inDevMode || #end FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
 
 		soundHold += elapsed;
 

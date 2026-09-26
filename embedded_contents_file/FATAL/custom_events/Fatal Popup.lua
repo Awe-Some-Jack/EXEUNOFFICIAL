@@ -369,12 +369,3 @@ end
 function round(number, min, max)
 	return math.max(min, math.min(max, number))
 end
-
-function onEndSong()
-	if not playerClosedPopup and not getProperty('cpuControlled') and not getProperty('practiceMode') then
-		runHaxeCode([[
-			backend.EXEAchievements.unlock('popup');
-			backend.EXEAchievements.save();
-		]])
-	end
-end

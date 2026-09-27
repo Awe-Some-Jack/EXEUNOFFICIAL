@@ -132,13 +132,14 @@ class Cutscene extends SonicSubState
         // positioned relative to nowPlaying's real rendered height (not a hardcoded offset) so it
         // still lines up correctly when the label text is longer/taller in another language
         final daName = states.extras.dagarden.DAGarden.currentSong;
-        final songName = daName != '' ? daName.toUpperCase() : 'EXTRAS MENU';
-        nowPlayingSong = new FlxText(149, nowPlaying.y + nowPlaying.height + 6, 0, songName, 60);
+        final songName = daName != '' ? daName.toUpperCase() : ExtrasMenu.instance.getThemeLabel();
+        nowPlayingSong = new FlxText(149, nowPlaying.y + nowPlaying.height + 6, -1, songName, 60);
         nowPlayingSong.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
         nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlayingSong.scale.set(0.22, 0.22);
         nowPlayingSong.updateHitbox();
         nowPlayingSong.antialiasing = ClientPrefs.data.antialiasing;
+        nowPlayingSong.x = nowPlaying.x;
         add(nowPlayingSong);
 
         #if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
@@ -385,6 +386,8 @@ class Cutscene extends SonicSubState
     {
         if (FileSystem.exists(dir) && FileSystem.isDirectory(dir))
             _scanDir(dir);
+
+        trace(dir);
     }
 
     function _scanDir(dir:String):Void
@@ -402,6 +405,7 @@ class Cutscene extends SonicSubState
 			if (matchedExt != null)
 			{
 				final noExt = entry.substr(0, entry.length - matchedExt.length - 1);
+                trace(full);
                 videoEntries.push({name: noExt, displayName: _toDisplayName(noExt), path: full});
 			}
 			else if (!entry.contains('.'))

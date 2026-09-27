@@ -18,6 +18,7 @@ import hxvlc.flixel.FlxVideoSprite;
 
 import states.extras.menuProps.CardSprite;
 import states.extras.menuProps.Arrow;
+import states.extras.menuProps.ExtrasMenuRenders;
 import shaders.ColorShiftShader;
 #if !flash
 import openfl.filters.ShaderFilter;
@@ -27,6 +28,7 @@ typedef ExtrasMenuThemeEntry = {
     var name:String;
     var src:String;
     var volume:Float;
+    var author:String;
 }
 
 class OrbitSprite extends FlxSprite
@@ -92,6 +94,7 @@ class ExtrasMenu extends MusicBeatState
     var blackBox:FlxSprite;
     var box:FlxSprite;
     var sumky:FlxSprite;
+    var menuRenders:ExtrasMenuRenders;
     var np:FlxText;
     var nowPlayingSong:FlxText;
     var extrasLogo:FlxSprite;
@@ -111,16 +114,20 @@ class ExtrasMenu extends MusicBeatState
 
     static final extrasMenuThemes:Array<ExtrasMenuThemeEntry> = [
         {
-            name: "EXTRAS MENU",
+            name: "WELCOME TO THE EXTRAS",
             src: "ExtrasMenu",
+            author: "MeDicenKay",
             volume: 1
         },
         {
-            name: "WELCOME TO THE EXTRAS",
+            name: "EXTRAS MENU",
             src: "ExtrasMenu_DataSelectSonic3",
+            author: "MeDicenKay",
             volume: 1
         }
     ];
+
+    public static var currentExtrasTheme:Int = 0;
 
     public static function getCurrentMenuTheme():ExtrasMenuThemeEntry{
         return extrasMenuThemes[currentExtrasTheme];
@@ -131,7 +138,30 @@ class ExtrasMenu extends MusicBeatState
         FlxG.sound.music.volume = getCurrentMenuTheme().volume;
     }
 
-    public static var currentExtrasTheme:Int = 0;
+    /**
+        * Returns the Current Name Theme + Theme Author
+    **/
+    public function getThemeLabel():String{
+        return getCurrentMenuTheme().name+" BY: "+getCurrentMenuTheme().author;
+    }
+
+    public function updateArrowPositions(){
+        arrowLeft.x = nowPlayingSong.x + nowPlayingSong.width;
+        arrowLeft.x -= 15;
+        arrowRight.x = (arrowLeft.x + arrowLeft.width) + 8;
+        arrowLeft.y = nowPlayingSong.y + ((nowPlayingSong.height-arrowLeft.height)/2);
+        arrowLeft.y -= arrowLeft.height;
+        arrowLeft.y += 4;
+        arrowRight.y = arrowLeft.y;
+    }
+
+    public static var instance:ExtrasMenu = null;
+
+    public function new(){
+        super();
+
+        instance ??= this;
+    }
 
     override function create():Void
     {
@@ -158,11 +188,12 @@ class ExtrasMenu extends MusicBeatState
         add(np);
 
         final daName = states.extras.dagarden.DAGarden.currentSong;
-        nowPlayingSong = new FlxText(149, np.y + np.height + 6, -1, daName != '' ? daName.toUpperCase() : getCurrentMenuTheme().name, 60);
+        nowPlayingSong = new FlxText(149, np.y + np.height + 6, -1, daName != '' ? daName.toUpperCase() : getThemeLabel(), 60);
         nowPlayingSong.setFormat(Paths.font("bigass.otf"), 70, FlxColor.BLACK, LEFT);
         nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlayingSong.scale.set(0.22, 0.22);
         nowPlayingSong.updateHitbox();
+        nowPlayingSong.x = np.x;
         nowPlayingSong.antialiasing = ClientPrefs.data.antialiasing;
         add(nowPlayingSong);
     
@@ -170,13 +201,15 @@ class ExtrasMenu extends MusicBeatState
         add(arrowsGrp);
         
         arrowLeft = new Arrow(nowPlayingSong.x+8, nowPlayingSong.y, flixel.input.keyboard.FlxKey.LEFT, 180);
-        arrowLeft.x = (nowPlayingSong.x + nowPlayingSong.width)+15;
-        arrowLeft.y = (nowPlayingSong.y + nowPlayingSong.height)-arrowLeft.height;
-        arrowLeft.y -= arrowLeft.height/2;
-        arrowLeft.y -= arrowLeft.height;
-        arrowLeft.x += arrowLeft.width;
-        arrowLeft.x += arrowLeft.offset.x;
-        arrowLeft.y += arrowLeft.offset.y;
+        // arrowLeft.x = (nowPlayingSong.x + nowPlayingSong.width)+15;
+        // arrowLeft.y = (nowPlayingSong.y + nowPlayingSong.height)-arrowLeft.height;
+        // arrowLeft.y -= arrowLeft.height/2;
+        // arrowLeft.y -= arrowLeft.height;
+        // arrowLeft.x += arrowLeft.width;
+        // arrowLeft.x += arrowLeft.offset.x;
+        // arrowLeft.y += arrowLeft.offset.y;
+        arrowLeft.x = nowPlayingSong.x + nowPlayingSong.width;
+        arrowLeft.x += 10;
         arrowLeft.onDown.add(event->{
             if (!canMove) {
                 event.cancel();
@@ -208,6 +241,8 @@ class ExtrasMenu extends MusicBeatState
             navigateExtrasMenuTheme(1);
         });
         arrowsGrp.add(arrowRight); 
+
+        updateArrowPositions();
 
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the Extras", null); #end
 
@@ -382,9 +417,10 @@ class ExtrasMenu extends MusicBeatState
         if (nowPlayingSong != null)
         {
             final daName  = states.extras.dagarden.DAGarden.currentSong;
-            final display = daName != '' ? daName.toUpperCase() : getCurrentMenuTheme().name;
+            final display = daName != '' ? daName.toUpperCase() : getThemeLabel();
             if (nowPlayingSong.text != display) nowPlayingSong.text = display;
-            nowPlayingSong.x = 149;
+            nowPlayingSong.x = np.x;
+            updateArrowPositions();
         }
     }
 
@@ -495,6 +531,9 @@ class ExtrasMenu extends MusicBeatState
         sumky.scale.set(0.64, 0.64);
         sumky.updateHitbox();
         add(sumky);
+
+        menuRenders = new ExtrasMenuRenders(750, 120);
+        add(menuRenders);
     }
 
     var discoTween:FlxTween;
@@ -697,9 +736,10 @@ class ExtrasMenu extends MusicBeatState
         FlxTween.tween(nowPlayingSong, {alpha: 0}, 0.2, {ease: FlxEase.quadIn});
         FlxTween.tween(FlxG.sound.music, {volume: 0}, 0.2, {ease: FlxEase.quadIn, 
             onComplete: twn->{
-                nowPlayingSong.text = getCurrentMenuTheme().name;
+                nowPlayingSong.text = getThemeLabel();
                 nowPlayingSong.updateHitbox(); // aaahhh
                 nowPlayingSong.x = np.x;
+                updateArrowPositions();
                 FlxTween.tween(nowPlayingSong, {alpha: 1}, 0.2, {ease: FlxEase.quadIn});
                 FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/${getCurrentMenuTheme().src}.ogg'));
                 FlxG.sound.music.volume = 0;
@@ -744,6 +784,7 @@ class ExtrasMenu extends MusicBeatState
             blackBox.alpha = box.alpha;
             syncSumky();
         }});
+        menuRenders.swapRender(curSelected);
     }
 
     function selectOption():Void

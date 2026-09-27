@@ -69,6 +69,8 @@ function onUpdatePost(e)
 			s.detect = false
 			cameraShake('game', 0.01, 0.1)
 			addHealth(-0.2)
+			--callMethodFromClass('states.PlayState', 'updateScore', {false, false})
+			callMethod('updateScore', {false, false})
 		end
 
 		if getProperty(spr..'.x') < -1200 - getProperty(spr..'.width') then
@@ -100,6 +102,8 @@ function onSectionHit()
 	if mech and canJump and getRandomBool(35) then
 		id = id + 1
 		local spike = 'spike'..id
+		local warning = 'warning'..id
+
 		makeLuaSprite(spike, 'prey/spikes'..getRandomInt(1,3), 200 + ((crochet * 3) / 1000) * math.abs(getProperty('floor1.velocity.x')), 423)
 		scaleObject(spike, 5, 5)
 		setProperty(spike..'.offset.x', 200)
@@ -107,17 +111,29 @@ function onSectionHit()
 		setProperty(spike..'.velocity.x', getProperty('floor1.velocity.x'))
 		setObjectOrder(spike, getObjectOrder('floor1'))
 		playSound('warnin', 1)
-		runTimer('xd', crochet / 1000)
+		runTimer(warning, crochet / 1000)
 		table.insert(spikeGroup, {id = id, detect = true})
 
-		local warning = 'warning'..id
-		makeAnimatedLuaSprite(warning, 'warning')
-		addAnimationByPrefix(warning, 'idle', '2', 12, true)
-		addLuaSprite(warning)
+		makeAnimatedLuaSprite(warning, 'warning', 500, 200)
+		scaleObject(warning, 2, 2)
+		addAnimationByPrefix(warning, '1', '1', 12, false)
+		addAnimationByPrefix(warning, '2', '2', 12, false)
+		playAnim(warning, '1', true)
+		setProperty(warning..'.antialiasing', false)
+		addLuaSprite(warning, true)
 	end
 end
 
-function onTimerCompleted(t) if t == 'xd' then playSound('warnin', 1) end end
+function onTimerCompleted(t)
+	if stringStartsWith(t, 'warning') then
+		playAnim(t, '2', true)
+		playSound('warnin', 1)
+		runTimer('2'..t, crochet / 1000)
+	end
+	if stringStartsWith(t, '2warning') then
+		removeLuaSprite(t:sub(2), true)
+	end
+end
 
 function lerp(a, b, t)
 	return a + t * (b - a)

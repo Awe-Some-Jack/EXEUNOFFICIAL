@@ -31,41 +31,6 @@ typedef ExtrasMenuThemeEntry = {
     var author:String;
 }
 
-class OrbitSprite extends FlxSprite
-{
-    public var centerX:Float = 0;
-    public var centerY:Float = 0;
-    public var radius:Float = 40.0;
-    public var speed:Float = 2.5;
-    public var angleOffset:Float = 0.0;
-
-    private var timer:Float = 0.0;
-
-    public function new(x:Float = 0, y:Float = 0, ?imagePath:String)
-    {
-        super(x, y);
-
-        if (imagePath != null)
-            loadGraphic(Paths.getBitmapData(imagePath));
-    }
-
-    public function setCenterFromCurrentPos():Void
-    {
-        centerX = x;
-        centerY = y;
-    }
-
-    override public function update(elapsed:Float):Void
-    {
-        super.update(elapsed);
-
-        timer += speed * elapsed;
-
-        x = centerX + Math.cos(timer + angleOffset) * radius;
-        y = centerY + Math.sin(timer + angleOffset) * radius;
-    }
-}
-
 class ExtrasMenu extends MusicBeatState
 {
     static final MENU_KEYS = [

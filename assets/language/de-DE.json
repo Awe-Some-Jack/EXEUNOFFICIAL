@@ -86,7 +86,6 @@
 	"achievement_parallax": "Die andere Seite des Rings", "achievement_description_parallax": "Geh ins PARALLAX Menü",
 	"achievement_secondary": "Was zur Hölle passiert da...", "achievement_description_secondary": "Finde alle Geheimcodes",
 	"achievement_sega": "NACHRICHT EMPFANGEN", "achievement_description_sega": "Erhalte eine Benachrichtigung von SEGA Enterprise",
-	"achievement_popup": "BRING HIER ORDNUNG REIN!", "achievement_description_popup": "Schließe Fatality ab, ohne ein Pop-up zu schließen",
 	"achievement_super": "Super Spieler!", "achievement_description_super": "Erreiche Rang A oder höher in 5 Songs",
 	"achievement_hyper": "Hyper Spieler!!", "achievement_description_hyper": "Erreiche den P-Rang in irgendeinem Song",
 	"achievement_die": "Du bist einfach schlecht...", "achievement_description_die": "Sammle jeden Game Over",
@@ -94,15 +93,17 @@
 	"achievement_finale": "Willst du mal Gras anfassen?", "achievement_description_finale": "Spiele den gesamten Mod durch",
 
 	"achievement_byebye": "DIGA BYE BYE!", "achievement_description_byebye": "Finde das Cycles-Easter-Egg",
-	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "Finde das The Valley-Easter-Egg",
 	"achievement_sunkyvalley": "Milch und Müsli", "achievement_description_sunkyvalley": "Finde Sunky in The Valley",
 	"achievement_pepe": "Magos y Magas!", "achievement_description_pepe": "Finde Pepe el Mago in The Valley.",
 	"achievement_neck": "Langer Hals", "achievement_description_neck": "Finde das OMW-Easter-Egg",
 	"achievement_void": "Que void", "achievement_description_void": "Finde das Hollow-Easter-Egg",
-	"achievement_flash": "Update doch mal auf Windows 11...", "achievement_description_flash": "Besiege Flash 3 Mal",
 	"achievement_troll": "SUNKYTASTISCH!", "achievement_description_troll": "Finde das Sunky Troll-Easter-Egg",
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Finde das Fatality-Easter-Egg",
 	"achievement_sonichu": "Zapp bis zum Äußersten!", "achievement_description_sonichu": "Finde und besiege Sonichu",
 	"achievement_shocks": "Was für ein Volttackle, hä?!", "achievement_description_shocks": "Stirb durch Sonichus Elektroschocks",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "Finde das The Valley-Easter-Egg",
+	"achievement_flash": "Update doch mal auf Windows 11...", "achievement_description_flash": "Besiege Flash 3 Mal",
+	"achievement_popup": "BRING HIER ORDNUNG REIN!", "achievement_description_popup": "Schließe Fatality ab, ohne ein Pop-up zu schließen"
 }

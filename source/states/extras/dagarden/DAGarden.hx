@@ -1188,12 +1188,12 @@ class DAGarden extends SonicSubState
         if (drawerOpen)
         {
             final labels = [
-                player.isPlaying ? 'PAUSE' : 'PLAY',
-                'LOOP: '   + (player.loopEnabled   ? 'ON' : 'OFF'),
-                'VOCALS: ' + (player.vocalsEnabled ? 'ON' : 'OFF'),
-                'REWIND',
-                'FORWARD',
-                'STOP'
+                player.isPlaying ? Language.getArray('extras.dagarden', ['PAUSE'])[2] : Language.getArray('extras.dagarden', ['PLAY'])[1],
+                Language.getArray('extras.dagarden', ['LOOP: '])[3]   + (player.loopEnabled   ? Language.get('options.on', "ON") : Language.get('options.off', "OFF")),
+                Language.getArray('extras.dagarden', ['VOCALS: '])[4] + (player.vocalsEnabled ? Language.get('options.on', "ON") : Language.get('options.off', "OFF")),
+                Language.getArray('extras.dagarden', ['REWIND'])[5],
+                Language.getArray('extras.dagarden', ['FORWARD'])[6],
+                Language.getArray('extras.dagarden', ['STOP'])[7]
             ];
             for (i in 0...drawerBtnTxt.length)
             {

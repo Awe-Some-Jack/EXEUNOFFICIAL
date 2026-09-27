@@ -23,7 +23,7 @@
 	"extras.menu.achievements": ["LOGROS", "¡Revisa qué logros ya desbloqueaste y descubre cuáles te faltan conseguir!"],
 	"extras.menu.credits": ["CRÉDITOS", "¡Un gran saludo a todos los que ayudaron a hacer este mod realidad!"],
 	"extras.menu.valley": ["MINI-JUEGO THE VALLEY", "próximamente"],
-	"extras.dagarden": ["POR", "INST", "REPRODUCIR/PAUSAR", "RETROCEDER", "AVANZAR", "PARAR", "BUCLE"],
+	"extras.dagarden": ["POR:", "REPRODUCIR", "PAUSA", "REPETIR: ", "VOCES: ", "RETROCEDER", "ADELANTAR", "DETENER"],
 	"extras.credits.unofficial": "Equipo Unofficial",
 	"extras.credits.original": "Equipo original",
 	"extras.credits.external": "Créditos externos",

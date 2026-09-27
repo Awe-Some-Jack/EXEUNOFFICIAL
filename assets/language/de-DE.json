@@ -23,7 +23,7 @@
 	"extras.menu.achievements": ["ERFOLGE", "Check ab, welche Erfolge du schon hast und was es noch zu holen gibt!"],
 	"extras.menu.credits": ["CREDITS", "Ein riesiges Shoutout an alle, die diesen Mod zum Leben erweckt haben!"],
 	"extras.menu.valley": ["TAL-MINISPIEL", "Platzhalter"],
-	"extras.dagarden": ["VON", "INST", "PLAY/PAUSE", "ZURÜCK", "WEITER", "STOPP", "SCHLEIFE"],
+	"extras.dagarden": ["VON:", "ABSPIELEN", "PAUSE", "SCHLEIFE: ", "GESANG: ", "ZURÜCKSPULEN", "VORSPULEN", "STOPP"],
 	"extras.credits.unofficial": "Team \"Unofficial\"",
 	"extras.credits.original": "Original-Team",
 	"extras.credits.external": "Besonderer Dank",

@@ -23,7 +23,7 @@
 	"extras.menu.achievements": ["OSIĄGNIĘCIA", "Sprawdź, które osiągnięcia odblokowałeś i co jeszcze zostało do zdobycia!"],
 	"extras.menu.credits": ["NAPISY", "Wielkie podziękowania dla wszystkich, którzy pomogli stworzyć tego moda!"],
 	"extras.menu.valley": ["MINI-GRA THE VALLEY", "wkrótce"],
-	"extras.dagarden": ["PRZEZ", "INST", "ODTWÓRZ/PAUZA", "PRZEWIŃ", "DO PRZODU", "STOP", "PĘTLA"],
+	"extras.dagarden": ["AUTOR:", "ODTWÓRZ", "PAUZA", "ZAPĘTL: ", "WOKAL: ", "COFNIJ", "PRZEWIŃ", "STOP"],
 	"extras.credits.unofficial": "Zespół Deweloperski Unofficial",
 	"extras.credits.original": "Oryginalny Zespół",
 	"extras.credits.external": "Zewnętrzne Podziękowania",

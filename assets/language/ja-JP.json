@@ -23,7 +23,7 @@
 	"extras.menu.achievements": ["実績", "解除済みの実績を確認して、まだゲットしてないものをチェックしよう！"],
 	"extras.menu.credits": ["クレジット", "このMODを実現させてくれた全ての人に特大のシャウトアウトを！"],
 	"extras.menu.valley": ["バレー・ミニゲーム", "プレースホルダー"],
-	"extras.dagarden": ["作曲", "インスト", "再生/一時停止", "前へ", "次へ", "停止", "ループ"],
+	"extras.dagarden": ["作成者:", "再生", "一時停止", "ループ: ", "ボーカル: ", "巻き戻し", "早送り", "停止"],
 	"extras.credits.unofficial": "Unofficialチーム",
 	"extras.credits.original": "オリジナルチーム",
 	"extras.credits.external": "スペシャルサンクス",

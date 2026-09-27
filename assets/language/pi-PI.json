@@ -23,7 +23,7 @@
 	"extras.menu.achievements": ["BOUNTIES", "Check out which bounties ye've claimed, and see what loot's left to grab!"],
 	"extras.menu.credits": ["CREW", "A massive 'Yo-ho!' to every scallywag who brought this voyage to life!"],
 	"extras.menu.valley": ["THE VALLEY MINI-GAME", "placeholder"],
-	"extras.dagarden": ["BY", "INST", "PLAY/PAUSE", "REWIND", "FORWARD", "STOP", "LOOP"],
+	"extras.dagarden": ["BY:", "SET SAIL", "AVAST", "ANOTHER ROUND: ", "SHANTIES: ", "HEAVE ASTERN", "FULL AHEAD", "DROP ANCHOR"],
 	"extras.credits.unofficial": "Unofficial Crew",
 	"extras.credits.original": "Original Crew",
 	"extras.credits.external": "Special Thanks",

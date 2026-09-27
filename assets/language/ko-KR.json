@@ -23,7 +23,7 @@
 	"extras.menu.achievements": ["도전 과제", "이미 잠금 해제한 도전 과제를 확인하고, 아직 남은 것들도 쓸어 담아 보세요!"],
 	"extras.menu.credits": ["크레딧", "이 모드가 세상에 나올 수 있게 도와준 모든 분들께 엄청난 감사(Shoutout)를 전합니다!"],
 	"extras.menu.valley": ["계곡 미니게임", "플레이스홀더"],
-	"extras.dagarden": ["작곡", "INST", "재생/일시정지", "이전", "다음", "정지", "반복"],
+	"extras.dagarden": ["제작:", "재생", "일시정지", "반복: ", "보컬: ", "되감기", "빨리감기", "정지"],
 	"extras.credits.unofficial": "Unofficial 개발팀",
 	"extras.credits.original": "원작 팀",
 	"extras.credits.external": "스페셜 땡스",

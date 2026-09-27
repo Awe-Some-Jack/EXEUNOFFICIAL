@@ -175,6 +175,8 @@ class ExtrasMenu extends MusicBeatState
         arrowLeft.y -= arrowLeft.height/2;
         arrowLeft.y -= arrowLeft.height;
         arrowLeft.x += arrowLeft.width;
+        arrowLeft.x += arrowLeft.offset.x;
+        arrowLeft.y += arrowLeft.offset.y;
         arrowLeft.onDown.add(event->{
             if (!canMove) {
                 event.cancel();

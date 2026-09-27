@@ -877,7 +877,7 @@ class Cutscene extends SonicSubState
         if (nowPlayingSong != null)
         {
             final daName = states.extras.dagarden.DAGarden.currentSong;
-            final display = daName != '' ? daName.toUpperCase() : getThemeLabel();
+            final display = daName != '' ? daName.toUpperCase() : ExtrasMenu.instance.getThemeLabel();
             if (nowPlayingSong.text != display) nowPlayingSong.text = display;
             nowPlayingSong.x = nowPlaying.x;
         }

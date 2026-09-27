@@ -112,11 +112,12 @@ class ExtrasMenu extends MusicBeatState
 
     public function updateArrowPositions(){
         arrowLeft.x = nowPlayingSong.x + nowPlayingSong.width;
-        arrowLeft.x -= 15;
+        arrowLeft.x += 20;
         arrowRight.x = (arrowLeft.x + arrowLeft.width) + 8;
         arrowLeft.y = nowPlayingSong.y + ((nowPlayingSong.height-arrowLeft.height)/2);
-        arrowLeft.y -= arrowLeft.height;
         arrowLeft.y += 4;
+        arrowLeft.y -= arrowLeft.height / 2;
+        arrowLeft.y += 5;
         arrowRight.y = arrowLeft.y;
     }
 

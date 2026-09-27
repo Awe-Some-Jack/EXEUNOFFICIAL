@@ -109,7 +109,7 @@ class ExtrasMenu extends MusicBeatState
     var checkerSpriteRight:FlxSprite;
     var checkShaderRight:ErrorHandledRuntimeShader;
 
-    var extrasMenuThemes:Array<ExtrasMenuThemeEntry> = [
+    static final extrasMenuThemes:Array<ExtrasMenuThemeEntry> = [
         {
             name: "EXTRAS MENU",
             src: "ExtrasMenu",
@@ -122,8 +122,13 @@ class ExtrasMenu extends MusicBeatState
         }
     ];
 
-    public function getCurrentMenuTheme():ExtrasMenuThemeEntry{
+    public static function getCurrentMenuTheme():ExtrasMenuThemeEntry{
         return extrasMenuThemes[currentExtrasTheme];
+    }
+
+    public static function playCurrentMenuTheme():Void {
+        FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/${getCurrentMenuTheme().src}.ogg'));
+        FlxG.sound.music.volume = getCurrentMenuTheme().volume;
     }
 
     public static var currentExtrasTheme:Int = 0;
@@ -142,8 +147,7 @@ class ExtrasMenu extends MusicBeatState
         buildDescBar();
         changeSelection(0);
 
-        FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/${getCurrentMenuTheme().src}.ogg'));
-        FlxG.sound.music.volume = getCurrentMenuTheme().volume;
+        playCurrentMenuTheme();
 
         np = new FlxText(149, 558, -1, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
         np.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
@@ -776,11 +780,13 @@ class ExtrasMenu extends MusicBeatState
                 };
             }
 
-            SonicRetroTransition.openSubState(nextSubState, 0.5, function() {
+            final started = SonicRetroTransition.openSubState(nextSubState, 0.5, function() {
                 canMove = false;
                 // if (np != null) np.visible = false;
                 // if (nowPlayingSong != null) nowPlayingSong.visible = false;
             });
+
+            if (!started) canMove = true;
         }
     }
 }

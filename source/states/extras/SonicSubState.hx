@@ -10,11 +10,14 @@ class SonicSubState extends MusicBeatSubstate
         if(_closing) return;
         
         _closing = true;
-        SonicRetroTransition.closeSubState(0.5, function() {
+        final started = SonicRetroTransition.closeSubState(0.5, function() {
             if (onBeforeClose != null) onBeforeClose();
-            
+
             _rawClose();
         });
+
+        // transition was busy, let back work again instead of locking up
+        if (!started) _closing = false;
     }
 
     private function _rawClose():Void

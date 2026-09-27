@@ -18,16 +18,57 @@ class SonicRetroTransition
     {
         FlxG.camera.filters = [new ShaderFilter(shader)];
         shader.progress.value = [0.0];
+
+        activeTween = null;
+        isTransitioning = false;
     }
 
     public static function play(toIn:Bool, duration:Float = 0.5, ?onComplete:Void->Void):Void
     {
-        if (activeTween != null) activeTween.cancel();
+        tweenProgress(toIn ? 0.0 : 1.0, toIn ? 1.0 : 0.0, duration, onComplete);
+    }
+
+    public static function switchState(nextState:FlxState, duration:Float = 0.5):Bool
+    {
+        return cover(duration, false, function() {
+            FlxG.switchState(nextState);
+        });
+    }
+
+    public static function openSubState(subState:FlxSubState, duration:Float = 0.5, ?onFadeOut:Void->Void):Bool
+    {
+        return cover(duration, true, function() {
+            if (onFadeOut != null) onFadeOut();
+            FlxG.state.openSubState(subState);
+        });
+    }
+
+    public static function closeSubState(duration:Float = 0.5, ?onFadeOut:Void->Void):Bool
+    {
+        return cover(duration, true, function() {
+            if (onFadeOut != null) onFadeOut();
+            FlxG.state.closeSubState();
+        });
+    }
+
+    static function cover(duration:Float, fadeBack:Bool, action:Void->Void):Bool
+    {
+        if (isTransitioning) return false;
 
         isTransitioning = true;
 
-        var startVal:Float = toIn ? 0.0 : 1.0;
-        var endVal:Float = toIn ? 1.0 : 0.0;
+        final from:Float = shader.progress.value != null ? shader.progress.value[0] : 0.0;
+        tweenProgress(from, 1.0, Math.max(duration * (1.0 - from), 0.01), function() {
+            isTransitioning = false;
+            action();
+            if (fadeBack) play(false, duration);
+        });
+        return true;
+    }
+
+    static function tweenProgress(startVal:Float, endVal:Float, duration:Float, ?onComplete:Void->Void):Void
+    {
+        if (activeTween != null && activeTween.active) activeTween.cancel();
 
         shader.progress.value = [startVal];
 
@@ -37,7 +78,6 @@ class SonicRetroTransition
                 onComplete: function(t:FlxTween) {
                     shader.progress.value = [endVal];
                     activeTween = null;
-                    isTransitioning = false;
                     if (onComplete != null) onComplete();
                 }
             },
@@ -45,36 +85,5 @@ class SonicRetroTransition
                 shader.progress.value = [v];
             },
         );
-    }
-
-    public static function switchState(nextState:FlxState, duration:Float = 0.5):Void
-    {
-        if (isTransitioning) return;
-
-        play(true, duration, function() {
-            FlxG.switchState(nextState);
-        });
-    }
-
-    public static function openSubState(subState:FlxSubState, duration:Float = 0.5, ?onFadeOut:Void->Void):Void
-    {
-        if (isTransitioning) return;
-
-        play(true, duration, function() {
-            if (onFadeOut != null) onFadeOut();
-            FlxG.state.openSubState(subState);
-            play(false, duration);
-        });
-    }
-
-    public static function closeSubState(duration:Float = 0.5, ?onFadeOut:Void->Void):Void
-    {
-        if (isTransitioning) return;
-
-        play(true, duration, function() {
-            if (onFadeOut != null) onFadeOut();
-            FlxG.state.closeSubState();
-            play(false, duration);
-        });
     }
 }

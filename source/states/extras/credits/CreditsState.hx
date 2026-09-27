@@ -209,7 +209,7 @@ class CreditsState extends SonicSubState
     {
         FlxG.mouse.visible = false;
         
-        FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/ExtrasMenu.ogg'));
+        states.extras.ExtrasMenu.playCurrentMenuTheme();
 
         for (col in columns) 
             FlxG.cameras.remove(col.cam);

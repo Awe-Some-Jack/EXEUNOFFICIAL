@@ -106,7 +106,7 @@ class GameJoltManager
 				FlxG.save.data.gjToken    = GameJolt.userToken;
 				FlxG.save.flush();
 
-				Sessions.open(true);
+				// Sessions.open(true);
 			}
 			callback(result);
 		});
@@ -114,7 +114,7 @@ class GameJoltManager
 
 	public static function logout():Void
 	{
-		Sessions.close();
+		// Sessions.close();
 
 		FlxG.save.data.gjUsername = '';
 		FlxG.save.data.gjToken    = '';
@@ -154,13 +154,13 @@ class GameJoltManager
 	public static function pauseSession():Void
 	{
 		if (!isLoggedIn()) return;
-		Sessions.ping("idle");
+		// Sessions.ping("idle");
 	}
 
 	public static function resumeSession():Void
 	{
 		if (!isLoggedIn()) return;
-		Sessions.ping("active");
+		// Sessions.ping("active");
 	}
 
 	public static function autoLogin(callback:Bool->Void):Void

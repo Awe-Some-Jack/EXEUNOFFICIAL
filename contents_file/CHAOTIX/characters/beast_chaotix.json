@@ -77,16 +77,8 @@
 			"offsets": [168, 321],
 			"anim": "thanos",
 			"fps": 24,
-			"name": "thanos",
+			"name": "chaotix_beast thanos",
 			"indices": []
-		},
-		{
-			"offsets": [0, 0],
-			"indices": [102],
-			"fps": 24,
-			"anim": "thanosEnd",
-			"loop": true,
-			"name": "thanos"
 		}
 	],
 	"vocals_file": "",

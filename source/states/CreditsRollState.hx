@@ -54,6 +54,8 @@ class CreditsRollState extends MusicBeatState
 
 		speed = (FlxG.keys.pressed.SHIFT ? 3 : 1);
 
+		if (FlxG.keys.pressed.CONTROL) speed = 0;
+
 		if (((controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end) || (controls.BACK #if mobile || backPressed #end)) && canLeave)
 		{
 			canLeave = false;

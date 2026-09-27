@@ -23,7 +23,7 @@
 	"extras.menu.achievements": ["成就", "来看看你已经解锁了哪些成就，以及还有什么奖励在等着你！"],
 	"extras.menu.credits": ["制作人员", "向所有帮助这个模组诞生的大佬们致上最诚挚的感谢（Shoutout）！"],
 	"extras.menu.valley": ["山谷小游戏", "占位符"],
-	"extras.dagarden": ["作曲", "器乐", "播放/暂停", "快退", "快进", "停止", "循环"],
+	"extras.dagarden": ["作者:", "播放", "暂停", "循环: ", "人声: ", "快退", "快进", "停止"],
 	"extras.credits.unofficial": "非官方开发团队",
 	"extras.credits.original": "原始团队",
 	"extras.credits.external": "外部致谢",

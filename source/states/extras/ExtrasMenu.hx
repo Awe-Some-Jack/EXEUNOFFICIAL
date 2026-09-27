@@ -68,7 +68,7 @@ class ExtrasMenu extends MusicBeatState
 {
     static final MENU_KEYS = [
         "extras.menu.gallery",
-        "extras.menu.characterbios",
+        "extras.menu.character",
         "extras.menu.dagarden",
         "extras.menu.cutscenes",
         "extras.menu.achievements",

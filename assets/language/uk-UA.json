@@ -23,7 +23,7 @@
 	"extras.menu.achievements": ["ДОСЯГНЕННЯ", "Гляньте, які ачівки ви вже відкрили, і дізнайтеся, що ще залишилося забрати!"],
 	"extras.menu.credits": ["АВТОРИ", "Величезний респект усім, хто допоміг втілити цей мод у життя!"],
 	"extras.menu.valley": ["МІНІ-ГРА ДОЛИНА", "Плейсхолдер"],
-	"extras.dagarden": ["АВТОР", "ІНСТР.", "ВІДТВ./ПАУЗА", "НАЗАД", "ВПЕРЕД", "СТОП", "ПОВТОР"],
+	"extras.dagarden": ["АВТОР:", "ВІДТВОРЕННЯ", "ПАУЗА", "ПОВТОР: ", "ВОКАЛ: ", "НАЗАД", "ВПЕРЕД", "СТОП"],
 	"extras.credits.unofficial": "Команда розробників Unofficial",
 	"extras.credits.original": "Оригінальна команда",
 	"extras.credits.external": "Окрема подяка",
@@ -86,7 +86,6 @@
 	"achievement_parallax": "По той бік кільця", "achievement_description_parallax": "Зайди в меню PARALLAX",
 	"achievement_secondary": "Що за чорт відбувається...", "achievement_description_secondary": "Знайди всі секретні коди",
 	"achievement_sega": "ПОВІДОМЛЕННЯ ОТРИМАНО", "achievement_description_sega": "Отримай сповіщення від SEGA Enterprise",
-	"achievement_popup": "ДЕ ТВІЙ ЛАД?!", "achievement_description_popup": "Пройди Fatality, не закривши жодного вікна",
 	"achievement_super": "Супер Гравець!", "achievement_description_super": "Отримай ранг A або вище в 5 піснях",
 	"achievement_hyper": "Гіпер Гравець!!", "achievement_description_hyper": "Отримай ранг P в будь-якій пісні",
 	"achievement_die": "Ти просто погано граєш...", "achievement_description_die": "Збери кожен Game Over",
@@ -94,15 +93,17 @@
 	"achievement_finale": "Хочеш торкнутися травичку?", "achievement_description_finale": "Пройди весь мод",
 
 	"achievement_byebye": "DIGA BYE BYE!", "achievement_description_byebye": "Знайди пасхалку Cycles",
-	"achievement_sans": "С.. САНС?!", "achievement_description_sans": "Знайди пасхалку The Valley",
 	"achievement_sunkyvalley": "Молоко та пластівці", "achievement_description_sunkyvalley": "Знайди Санкі в The Valley",
 	"achievement_pepe": "Magos y Magas!", "achievement_description_pepe": "Знайди Пепе Мага (Pepe el Mago) в The Valley",
 	"achievement_neck": "Довга шия", "achievement_description_neck": "Знайди пасхалку OMW",
 	"achievement_void": "Que void", "achievement_description_void": "Знайди пасхалку Hollow",
-	"achievement_flash": "Оновися вже до Windows 11...", "achievement_description_flash": "Пройди Flash 3 рази",
 	"achievement_troll": "САНКІФАНТАСТИКА!", "achievement_description_troll": "Знайди пасхалку Sunky Troll",
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Знайди пасхалку Fatality",
 	"achievement_sonichu": "Розряд на максимум!", "achievement_description_sonichu": "Знайди і переможи Сонічу",
 	"achievement_shocks": "Нічого собі розряд, так?!", "achievement_description_shocks": "Помри від ударів струмом Сонічу",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"achievement_sans": "С.. САНС?!", "achievement_description_sans": "Знайди пасхалку в The Valley",
+	"achievement_flash": "Оновися вже до Windows 11...", "achievement_description_flash": "Пройди Flash 3 рази",
+	"achievement_popup": "ДЕ ТВІЙ ЛАД?!", "achievement_description_popup": "Пройди Fatality, не закривши жодного вікна"
 }

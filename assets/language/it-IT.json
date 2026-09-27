@@ -23,7 +23,7 @@
 	"extras.menu.achievements": ["OBIETTIVI", "Scopri quali obiettivi hai sbloccato e cosa manca ancora!"],
 	"extras.menu.credits": ["CREDITI", "Un grande ringraziamento a tutti coloro che hanno contribuito a realizzare questo mod!"],
 	"extras.menu.valley": ["MINI-GIOCO THE VALLEY", "prossimamente"],
-	"extras.dagarden": ["DI", "INST", "RIPRODUCI/PAUSA", "INDIETRO", "AVANTI", "STOP", "LOOP"],
+	"extras.dagarden": ["DI:", "RIPRODUCI", "PAUSA", "RIPETI: ", "VOCI: ", "INDIETRO", "AVANTI", "STOP"],
 	"extras.credits.unofficial": "Team di Sviluppo Unofficial",
 	"extras.credits.original": "Team Originale",
 	"extras.credits.external": "Crediti Esterni",

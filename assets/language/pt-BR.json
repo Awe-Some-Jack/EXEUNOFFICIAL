@@ -23,7 +23,7 @@
 	"extras.menu.achievements": ["CONQUISTAS", "Dá uma olhada nas conquistas que você já liberou e vê o que ainda falta pegar!"],
 	"extras.menu.credits": ["CRÉDITOS", "Um salve gigante pra todo mundo que ajudou a dar vida a esse mod!"],
 	"extras.menu.valley": ["THE VALLEY MINIGAME", "placeholder"],
-	"extras.dagarden": ["POR", "INST", "TOCAR/PAUSAR", "VOLTAR", "AVANCAR", "PARAR", "REPETIR"],
+	"extras.dagarden": ["POR:", "REPRODUZIR", "PAUSAR", "REPETIR: ", "VOCAIS: ", "RETROCEDER", "AVANÇAR", "PARAR"],
 	"extras.credits.unofficial": "Equipe Unofficial",
 	"extras.credits.original": "Equipe Original",
 	"extras.credits.external": "Creditos Externos",

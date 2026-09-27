@@ -359,8 +359,9 @@ Snorby
 MaysLastPlay
 Alex_Hamud
 
-=Ukranian Translation
+=Ukrainian Translation
 Snorby
+MaysLastPlay
 
 =Character Designs
 "Boyfriend" by Funkin' Crew

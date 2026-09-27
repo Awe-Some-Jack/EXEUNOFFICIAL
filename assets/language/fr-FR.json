@@ -23,7 +23,7 @@
 	"extras.menu.achievements": ["SUCCÈS", "Check les succès que t'as déjà débloqués, et vois ce qu'il te reste à choper !"],
 	"extras.menu.credits": ["CRÉDITS", "Un gros big up à tous ceux qui ont donné vie à ce mod !"],
 	"extras.menu.valley": ["MINI-JEU DE LA VALLÉE", "Placeholder"],
-	"extras.dagarden": ["PAR", "INST", "LECTURE/PAUSE", "RETOUR", "AVANCER", "STOP", "EN BOUCLE"],
+	"extras.dagarden": ["POR:", "REPRODUZIR", "PAUSAR", "REPETIR: ", "VOCAIS: ", "RETROCEDER", "AVANÇAR", "PARAR"],
 	"extras.credits.unofficial": "Équipe Unofficial",
 	"extras.credits.original": "Équipe originale",
 	"extras.credits.external": "Remerciements spéciaux",

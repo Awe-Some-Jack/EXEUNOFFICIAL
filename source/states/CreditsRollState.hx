@@ -72,6 +72,7 @@ class CreditsRollState extends MusicBeatState
 					new FlxTimer().start(3, _ -> {
 						canLeave = false;
 						FlxG.camera.fade(0xFF000000, 5, false, () -> { FlxG.switchState(() -> new states.EXEMenu()); }, true);
+						FlxG.sound.music?.fadeOut(5);
 					});
 				}
 				return;

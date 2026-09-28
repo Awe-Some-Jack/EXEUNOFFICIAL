@@ -69,7 +69,6 @@ function onUpdatePost(e)
 			s.detect = false
 			cameraShake('game', 0.01, 0.1)
 			addHealth(-0.2)
-			--callMethodFromClass('states.PlayState', 'updateScore', {false, false})
 			callMethod('updateScore', {false, false})
 		end
 
@@ -81,13 +80,8 @@ function onUpdatePost(e)
 end
 
 function onBeatHit()
-	--cinematic 1 (furnace appears)
-	if curBeat >= 64 and curBeat < 384 then canJump = true end
-	--cinematic 2 (starved appears)
-	if curBeat >= 384 and curBeat < 448 then canJump = false
-	elseif curBeat >= 448 and curBeat < 832 then canJump = true end
-	--final cinematic to end song (super sonic)
-	if curBeat >= 832 then canJump = false end
+	canJump = false
+	if (curBeat >= 96 and curBeat < 384) or (curBeat >= 448 and curBeat < 832) then canJump = true end
 end
 
 local mech = false

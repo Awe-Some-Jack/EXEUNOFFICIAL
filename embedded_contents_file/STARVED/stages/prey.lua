@@ -54,7 +54,7 @@ function onCreatePost()
 			scaleX = 5, scaleY = 5, y = FLOOR_Y, scrollX = 1, scrollY = 1,
 		})
 		addBackdrop('fg', 'prey/fg-pilar-anim', {
-			animated = true, fps = 8, axis = 0x01, gap = 2800, gapY = 0,
+			animated = true, fps = 8, axis = 0x01, gap = 1000, gapY = 0,
 			scaleX = 5, scaleY = 5, y = FLOOR_Y + 1300,
 			scrollX = 1, scrollY = 1, orderAfter = 'floor1',
 		})

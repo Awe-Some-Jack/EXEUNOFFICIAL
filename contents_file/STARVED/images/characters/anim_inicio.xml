@@ -1,634 +1,613 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="anim_inicio.png">
-	<!-- Created with Adobe Animate version 24.0.7.61 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="anim_Inicio0000" x="0" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0001" x="31" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0002" x="62" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0003" x="93" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0004" x="124" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0005" x="155" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0006" x="186" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0007" x="217" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0008" x="248" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0009" x="279" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0010" x="310" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0011" x="341" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0012" x="372" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0013" x="403" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0014" x="434" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0015" x="465" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0016" x="496" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0017" x="527" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0018" x="558" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0019" x="589" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0020" x="620" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0021" x="651" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0022" x="682" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0023" x="713" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0024" x="744" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0025" x="775" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0026" x="806" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0027" x="837" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0028" x="868" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0029" x="899" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0030" x="930" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0031" x="961" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0032" x="992" y="0" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0033" x="0" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0034" x="31" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0035" x="62" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0036" x="93" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0037" x="124" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0038" x="155" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0039" x="186" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0040" x="217" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0041" x="248" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0042" x="279" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0043" x="310" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0044" x="341" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0045" x="372" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0046" x="403" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0047" x="434" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0048" x="465" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0049" x="496" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0050" x="527" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0051" x="558" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0052" x="589" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0053" x="620" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0054" x="651" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0055" x="682" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0056" x="713" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0057" x="744" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0058" x="775" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0059" x="806" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0060" x="837" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0061" x="868" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0062" x="899" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0063" x="930" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0064" x="961" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0065" x="992" y="36" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0066" x="0" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0067" x="31" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0068" x="62" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0069" x="93" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0070" x="124" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0071" x="155" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0072" x="186" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0073" x="217" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0074" x="248" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0075" x="279" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0076" x="310" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0077" x="341" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0078" x="372" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0079" x="403" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0080" x="434" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0081" x="465" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0082" x="496" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0083" x="527" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0084" x="558" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0085" x="589" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0086" x="620" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0087" x="651" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0088" x="682" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0089" x="713" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0090" x="744" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0091" x="775" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0092" x="806" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0093" x="837" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0094" x="868" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0095" x="899" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0096" x="930" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0097" x="961" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0098" x="992" y="72" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0099" x="0" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0100" x="31" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0101" x="62" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0102" x="93" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0103" x="124" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0104" x="155" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0105" x="186" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0106" x="217" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0107" x="248" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0108" x="279" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0109" x="310" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0110" x="341" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0111" x="372" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0112" x="403" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0113" x="434" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0114" x="465" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0115" x="496" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0116" x="527" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0117" x="558" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0118" x="589" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0119" x="620" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0120" x="651" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0121" x="682" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0122" x="713" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0123" x="744" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0124" x="775" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0125" x="806" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0126" x="837" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0127" x="868" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0128" x="899" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0129" x="930" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0130" x="961" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0131" x="992" y="108" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0132" x="0" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0133" x="31" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0134" x="62" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0135" x="93" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0136" x="124" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0137" x="155" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0138" x="186" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0139" x="217" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0140" x="248" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0141" x="279" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0142" x="310" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0143" x="341" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0144" x="372" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0145" x="403" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0146" x="434" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0147" x="465" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0148" x="496" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0149" x="527" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0150" x="558" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0151" x="589" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0152" x="620" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0153" x="651" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0154" x="682" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0155" x="713" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0156" x="744" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0157" x="775" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0158" x="806" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0159" x="837" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0160" x="868" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0161" x="899" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0162" x="930" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0163" x="961" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0164" x="992" y="144" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0165" x="0" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0166" x="31" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0167" x="62" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0168" x="93" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0169" x="124" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0170" x="155" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0171" x="186" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0172" x="217" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0173" x="248" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0174" x="279" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0175" x="310" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0176" x="341" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0177" x="372" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0178" x="403" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0179" x="434" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0180" x="465" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0181" x="496" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0182" x="527" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0183" x="558" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0184" x="589" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0185" x="620" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0186" x="651" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0187" x="682" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0188" x="713" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0189" x="744" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0190" x="775" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0191" x="806" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0192" x="837" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0193" x="868" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0194" x="899" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0195" x="930" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0196" x="961" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0197" x="992" y="180" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0198" x="0" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0199" x="31" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0200" x="62" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0201" x="93" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0202" x="124" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0203" x="155" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0204" x="186" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0205" x="217" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0206" x="248" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0207" x="279" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0208" x="310" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0209" x="341" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0210" x="372" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0211" x="403" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0212" x="434" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0213" x="465" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0214" x="496" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0215" x="527" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0216" x="558" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0217" x="589" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0218" x="620" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0219" x="651" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0220" x="682" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0221" x="713" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0222" x="744" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0223" x="775" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0224" x="806" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0225" x="837" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0226" x="868" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0227" x="899" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0228" x="930" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0229" x="961" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0230" x="992" y="216" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0231" x="0" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0232" x="31" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0233" x="62" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0234" x="93" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0235" x="124" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0236" x="155" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0237" x="186" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0238" x="217" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0239" x="248" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0240" x="279" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0241" x="310" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0242" x="341" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0243" x="372" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0244" x="403" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0245" x="434" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0246" x="465" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0247" x="496" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0248" x="527" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0249" x="558" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0250" x="589" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0251" x="620" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0252" x="651" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0253" x="682" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0254" x="713" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0255" x="744" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0256" x="775" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0257" x="806" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0258" x="837" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0259" x="868" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0260" x="899" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0261" x="930" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0262" x="961" y="252" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0263" x="0" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0264" x="35" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0265" x="70" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0266" x="105" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0267" x="140" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0268" x="175" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0269" x="210" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0270" x="245" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0271" x="280" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0272" x="315" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0273" x="350" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0274" x="385" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0275" x="420" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0276" x="455" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0277" x="490" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0278" x="525" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0279" x="560" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0280" x="595" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0281" x="630" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0282" x="665" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0283" x="700" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0284" x="735" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0285" x="770" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0286" x="805" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0287" x="840" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0288" x="875" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0289" x="910" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0290" x="945" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0291" x="980" y="288" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0292" x="0" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0293" x="35" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0294" x="70" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0295" x="105" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0296" x="140" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0297" x="175" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0298" x="210" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0299" x="245" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0300" x="280" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0301" x="315" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0302" x="350" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0303" x="385" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0304" x="420" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0305" x="455" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0306" x="490" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0307" x="525" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0308" x="560" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0309" x="595" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0310" x="630" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0311" x="665" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0312" x="700" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0313" x="735" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0314" x="770" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0315" x="805" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0316" x="840" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0317" x="875" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0318" x="910" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0319" x="945" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0320" x="980" y="326" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0321" x="0" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0322" x="35" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0323" x="70" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0324" x="105" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0325" x="140" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0326" x="175" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0327" x="210" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0328" x="245" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0329" x="280" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0330" x="315" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0331" x="350" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0332" x="385" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0333" x="420" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0334" x="455" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0335" x="490" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0336" x="525" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0337" x="560" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0338" x="595" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0339" x="630" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0340" x="665" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0341" x="700" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0342" x="735" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0343" x="770" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0344" x="805" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0345" x="840" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0346" x="875" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0347" x="910" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0348" x="945" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0349" x="980" y="364" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0350" x="0" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0351" x="35" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0352" x="70" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0353" x="105" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0354" x="140" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0355" x="175" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0356" x="210" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0357" x="245" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0358" x="280" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0359" x="315" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0360" x="350" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0361" x="385" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0362" x="420" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0363" x="455" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0364" x="490" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0365" x="525" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0366" x="560" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0367" x="595" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0368" x="630" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0369" x="665" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0370" x="700" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0371" x="735" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0372" x="770" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0373" x="805" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0374" x="840" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0375" x="875" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0376" x="910" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0377" x="945" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0378" x="980" y="402" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0379" x="0" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0380" x="35" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0381" x="70" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0382" x="105" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0383" x="140" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0384" x="175" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0385" x="210" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0386" x="245" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0387" x="280" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0388" x="315" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0389" x="350" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0390" x="385" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0391" x="420" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0392" x="455" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0393" x="490" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0394" x="525" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0395" x="560" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0396" x="595" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0397" x="630" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0398" x="665" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0399" x="700" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0400" x="735" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0401" x="770" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0402" x="805" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0403" x="840" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0404" x="875" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0405" x="910" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0406" x="945" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0407" x="980" y="440" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0408" x="0" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0409" x="35" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0410" x="70" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0411" x="105" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0412" x="140" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0413" x="175" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0414" x="210" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0415" x="245" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0416" x="280" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0417" x="315" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0418" x="350" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0419" x="385" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0420" x="420" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0421" x="455" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0422" x="490" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0423" x="525" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0424" x="560" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0425" x="595" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0426" x="630" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0427" x="665" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0428" x="700" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0429" x="735" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0430" x="770" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0431" x="805" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0432" x="840" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0433" x="875" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0434" x="910" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0435" x="945" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0436" x="980" y="478" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0437" x="0" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0438" x="35" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0439" x="70" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0440" x="105" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0441" x="140" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0442" x="175" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0443" x="210" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0444" x="245" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0445" x="280" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0446" x="315" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0447" x="350" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0448" x="385" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0449" x="420" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0450" x="455" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0451" x="490" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0452" x="525" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0453" x="560" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0454" x="595" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0455" x="630" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0456" x="665" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0457" x="700" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0458" x="735" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0459" x="770" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0460" x="805" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0461" x="840" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0462" x="875" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0463" x="910" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0464" x="945" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0465" x="980" y="516" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0466" x="0" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0467" x="35" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0468" x="70" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0469" x="105" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0470" x="140" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0471" x="175" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0472" x="210" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0473" x="245" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0474" x="280" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0475" x="315" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0476" x="350" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0477" x="385" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0478" x="420" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0479" x="455" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0480" x="490" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0481" x="525" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0482" x="560" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0483" x="595" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0484" x="630" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0485" x="665" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0486" x="700" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0487" x="735" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0488" x="770" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0489" x="805" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0490" x="840" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0491" x="875" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0492" x="910" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0493" x="945" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0494" x="980" y="554" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0495" x="0" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0496" x="35" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0497" x="70" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0498" x="105" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0499" x="140" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0500" x="175" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0501" x="210" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0502" x="245" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0503" x="280" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0504" x="315" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0505" x="350" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0506" x="385" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0507" x="420" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0508" x="455" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0509" x="490" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0510" x="525" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0511" x="560" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0512" x="595" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0513" x="630" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0514" x="665" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0515" x="700" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0516" x="735" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0517" x="770" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0518" x="805" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0519" x="840" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0520" x="875" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0521" x="910" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0522" x="945" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0523" x="980" y="592" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0524" x="0" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0525" x="35" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0526" x="70" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0527" x="105" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0528" x="140" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0529" x="175" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0530" x="210" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0531" x="245" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0532" x="280" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0533" x="315" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0534" x="350" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0535" x="385" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0536" x="420" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0537" x="455" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0538" x="490" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0539" x="525" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0540" x="560" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0541" x="595" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0542" x="630" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0543" x="665" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0544" x="700" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0545" x="735" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0546" x="770" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0547" x="805" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0548" x="840" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0549" x="875" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0550" x="910" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0551" x="945" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0552" x="980" y="630" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0553" x="0" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0554" x="35" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0555" x="70" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0556" x="105" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0557" x="140" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0558" x="175" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0559" x="210" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0560" x="245" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0561" x="280" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0562" x="315" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0563" x="350" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0564" x="385" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0565" x="420" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0566" x="455" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0567" x="490" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0568" x="525" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0569" x="560" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0570" x="595" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0571" x="630" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0572" x="665" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0573" x="700" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0574" x="735" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0575" x="770" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0576" x="805" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0577" x="840" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0578" x="875" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0579" x="910" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0580" x="945" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0581" x="980" y="668" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0582" x="0" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0583" x="35" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0584" x="70" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0585" x="105" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0586" x="140" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0587" x="175" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0588" x="210" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0589" x="245" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0590" x="280" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0591" x="315" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0592" x="350" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0593" x="385" y="706" width="35" height="38"/>
-	<SubTexture name="anim_Inicio0594" x="420" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0595" x="451" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0596" x="482" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0597" x="513" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0598" x="544" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0599" x="575" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0600" x="606" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0601" x="637" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0602" x="668" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0603" x="699" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0604" x="730" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0605" x="761" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0606" x="792" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0607" x="823" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0608" x="854" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0609" x="885" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0610" x="916" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0611" x="947" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0612" x="978" y="706" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0613" x="0" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0614" x="31" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0615" x="62" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0616" x="93" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0617" x="124" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0618" x="155" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0619" x="186" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0620" x="217" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0621" x="248" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0622" x="279" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0623" x="310" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0624" x="341" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0625" x="372" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0626" x="403" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0627" x="434" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
-	<SubTexture name="anim_Inicio0628" x="465" y="744" width="31" height="36" frameX="0" frameY="-2" frameWidth="35" frameHeight="38"/>
+<SubTexture name="anim_Inicio0000" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0001" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0002" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0003" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0004" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0005" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0006" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0007" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0008" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0009" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0010" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0011" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0012" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0013" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0014" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0015" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0016" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0017" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0018" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0019" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0020" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0021" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0022" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0023" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0024" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0025" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0026" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0027" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0028" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0029" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0030" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0031" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0032" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0033" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0034" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0035" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0036" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0037" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0038" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0039" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0040" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0041" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0042" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0043" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0044" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0045" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0046" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0047" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0048" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0049" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0050" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0051" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0052" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0053" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0054" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0055" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0056" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0057" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0058" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0059" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0060" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0061" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0062" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0063" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0064" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0065" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0066" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0067" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0068" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0069" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0070" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0071" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0072" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0073" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0074" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0075" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0076" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0077" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0078" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0079" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0080" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0081" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0082" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0083" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0084" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0085" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0086" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0087" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0088" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0089" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0090" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0091" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0092" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0093" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0094" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0095" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0096" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0097" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0098" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0099" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0100" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0101" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0102" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0103" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0104" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0105" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0106" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0107" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0108" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0109" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0110" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0111" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0112" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0113" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0114" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0115" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0116" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0117" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0118" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0119" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0120" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0121" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0122" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0123" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0124" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0125" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0126" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0127" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0128" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0129" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0130" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0131" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0132" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0133" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0134" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0135" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0136" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0137" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0138" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0139" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0140" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0141" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0142" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0143" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0144" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0145" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0146" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0147" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0148" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0149" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0150" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0151" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0152" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0153" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0154" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0155" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0156" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0157" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0158" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0159" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0160" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0161" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0162" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0163" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0164" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0165" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0166" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0167" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0168" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0169" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0170" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0171" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0172" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0173" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0174" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0175" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0176" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0177" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0178" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0179" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0180" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0181" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0182" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0183" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0184" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0185" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0186" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0187" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0188" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0189" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0190" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0191" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0192" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0193" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0194" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0195" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0196" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0197" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0198" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0199" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0200" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0201" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0202" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0203" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0204" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0205" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0206" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0207" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0208" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0209" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0210" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0211" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0212" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0213" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0214" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0215" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0216" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0217" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0218" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0219" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0220" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0221" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0222" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0223" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0224" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0225" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0226" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0227" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0228" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0229" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0230" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0231" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0232" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0233" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0234" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0235" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0236" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0237" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0238" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0239" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0240" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0241" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0242" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0243" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0244" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0245" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0246" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0247" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0248" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0249" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0250" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0251" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0252" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0253" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0254" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0255" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0256" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0257" x="0" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0258" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0259" x="31" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0260" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0261" x="317" y="38" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0262" x="64" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0263" x="97" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0264" x="130" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0265" x="130" y="119" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0266" x="186" y="0" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0267" x="186" y="0" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0268" x="0" y="158" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0269" x="0" y="158" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0270" x="33" y="158" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0271" x="33" y="158" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0272" x="33" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0273" x="33" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0274" x="186" y="38" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0275" x="186" y="38" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0276" x="66" y="158" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0277" x="66" y="158" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0278" x="66" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0279" x="66" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0280" x="99" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0281" x="99" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0282" x="317" y="75" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0283" x="317" y="75" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0284" x="132" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0285" x="132" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0286" x="165" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0287" x="165" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0288" x="198" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0289" x="198" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0290" x="317" y="75" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0291" x="317" y="75" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0292" x="231" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0293" x="231" y="348" width="33" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0294" x="317" y="112" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0295" x="317" y="112" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0296" x="186" y="76" width="32" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0297" x="186" y="76" width="32" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0298" x="186" y="114" width="30" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0299" x="186" y="114" width="30" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0300" x="99" y="158" width="32" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0301" x="99" y="158" width="32" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0302" x="131" y="158" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0303" x="131" y="158" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0304" x="164" y="158" width="34" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0305" x="164" y="158" width="34" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0306" x="218" y="0" width="33" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0307" x="218" y="0" width="33" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0308" x="0" y="196" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0309" x="0" y="196" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0310" x="35" y="196" width="36" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0311" x="35" y="196" width="36" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0312" x="71" y="196" width="37" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0313" x="71" y="196" width="37" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0314" x="0" y="80" width="31" height="39" frameX="-1" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0315" x="0" y="80" width="31" height="39" frameX="-1" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0316" x="31" y="80" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0317" x="31" y="80" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0318" x="62" y="80" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0319" x="62" y="80" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0320" x="218" y="38" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0321" x="218" y="38" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0322" x="218" y="76" width="30" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0323" x="218" y="76" width="30" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0324" x="123" y="0" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0325" x="123" y="0" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0326" x="0" y="0" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0327" x="0" y="0" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0328" x="31" y="0" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0329" x="31" y="0" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0330" x="123" y="39" width="30" height="39" frameX="-1" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0331" x="123" y="39" width="30" height="39" frameX="-1" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0332" x="123" y="78" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0333" x="123" y="78" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0334" x="218" y="114" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0335" x="218" y="114" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0336" x="218" y="152" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0337" x="218" y="152" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0338" x="93" y="80" width="30" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0339" x="93" y="80" width="30" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0340" x="108" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0341" x="108" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0342" x="218" y="114" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0343" x="218" y="114" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0344" x="139" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0345" x="139" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0346" x="93" y="80" width="30" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0347" x="93" y="80" width="30" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0348" x="108" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0349" x="108" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0350" x="218" y="114" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0351" x="218" y="114" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0352" x="139" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0353" x="139" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0354" x="93" y="80" width="30" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0355" x="93" y="80" width="30" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0356" x="108" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0357" x="108" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0358" x="170" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0359" x="170" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0360" x="218" y="38" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0361" x="218" y="38" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0362" x="62" y="40" width="30" height="39" frameX="-1" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0363" x="62" y="40" width="30" height="39" frameX="-1" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0364" x="154" y="0" width="32" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0365" x="154" y="0" width="32" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0366" x="201" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0367" x="201" y="196" width="31" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0368" x="34" y="385" width="33" height="36" frameX="0" frameY="-4" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0369" x="34" y="385" width="33" height="36" frameX="0" frameY="-4" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0370" x="317" y="149" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0371" x="317" y="149" width="32" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0372" x="251" y="0" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0373" x="251" y="0" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0374" x="251" y="38" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0375" x="251" y="38" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0376" x="251" y="76" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0377" x="251" y="76" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0378" x="251" y="114" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0379" x="251" y="114" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0380" x="251" y="152" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0381" x="251" y="152" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0382" x="251" y="190" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0383" x="251" y="190" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0384" x="0" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0385" x="0" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0386" x="33" y="234" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0387" x="33" y="234" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0388" x="65" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0389" x="65" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0390" x="98" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0391" x="98" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0392" x="131" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0393" x="131" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0394" x="164" y="234" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0395" x="164" y="234" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0396" x="196" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0397" x="196" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0398" x="229" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0399" x="229" y="234" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0400" x="284" y="0" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0401" x="284" y="0" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0402" x="284" y="38" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0403" x="284" y="38" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0404" x="284" y="76" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0405" x="284" y="76" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0406" x="284" y="114" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0407" x="284" y="114" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0408" x="284" y="152" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0409" x="284" y="152" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0410" x="284" y="38" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0411" x="284" y="38" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0412" x="284" y="190" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0413" x="284" y="190" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0414" x="284" y="228" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0415" x="284" y="228" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0416" x="0" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0417" x="0" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0418" x="33" y="272" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0419" x="33" y="272" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0420" x="65" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0421" x="65" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0422" x="98" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0423" x="98" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0424" x="131" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0425" x="131" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0426" x="164" y="272" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0427" x="164" y="272" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0428" x="196" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0429" x="196" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0430" x="229" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0431" x="229" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0432" x="262" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0433" x="262" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0434" x="164" y="272" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0435" x="164" y="272" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0436" x="196" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0437" x="196" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0438" x="229" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0439" x="229" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0440" x="262" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0441" x="262" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0442" x="164" y="272" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0443" x="164" y="272" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0444" x="196" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0445" x="196" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0446" x="229" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0447" x="229" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0448" x="262" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0449" x="262" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0450" x="164" y="272" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0451" x="164" y="272" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0452" x="196" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0453" x="196" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0454" x="229" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0455" x="229" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0456" x="262" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0457" x="262" y="272" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0458" x="317" y="186" width="31" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0459" x="317" y="186" width="31" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0460" x="317" y="223" width="31" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0461" x="317" y="223" width="31" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0462" x="317" y="260" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0463" x="317" y="260" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0464" x="264" y="348" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0465" x="264" y="348" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0466" x="296" y="348" width="31" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0467" x="296" y="348" width="31" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0468" x="327" y="348" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0469" x="327" y="348" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0470" x="317" y="260" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0471" x="317" y="260" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0472" x="264" y="348" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0473" x="264" y="348" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0474" x="296" y="348" width="31" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0475" x="296" y="348" width="31" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0476" x="327" y="348" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0477" x="327" y="348" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0478" x="359" y="348" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0479" x="359" y="348" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0480" x="417" y="0" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0481" x="417" y="0" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0482" x="317" y="0" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0483" x="317" y="0" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0484" x="0" y="310" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0485" x="0" y="310" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0486" x="33" y="310" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0487" x="33" y="310" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0488" x="66" y="310" width="34" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0489" x="66" y="310" width="34" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0490" x="0" y="385" width="34" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0491" x="0" y="385" width="34" height="37" frameX="-1" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0492" x="100" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0493" x="100" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0494" x="135" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0495" x="135" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0496" x="170" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0497" x="170" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0498" x="205" y="310" width="34" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0499" x="205" y="310" width="34" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0500" x="239" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0501" x="239" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0502" x="274" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0503" x="274" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0504" x="309" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0505" x="309" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0506" x="205" y="310" width="34" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0507" x="205" y="310" width="34" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0508" x="349" y="0" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0509" x="349" y="0" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0510" x="274" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0511" x="274" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0512" x="309" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0513" x="309" y="310" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0514" x="205" y="310" width="34" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0515" x="205" y="310" width="34" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0516" x="349" y="0" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0517" x="349" y="0" width="35" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0518" x="349" y="38" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0519" x="349" y="38" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0520" x="349" y="76" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0521" x="349" y="76" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0522" x="349" y="114" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0523" x="349" y="114" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0524" x="349" y="152" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0525" x="349" y="152" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0526" x="349" y="190" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0527" x="349" y="190" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0528" x="349" y="228" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0529" x="349" y="228" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0530" x="349" y="266" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0531" x="349" y="266" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0532" x="349" y="304" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0533" x="349" y="304" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0534" x="384" y="0" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0535" x="384" y="0" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0536" x="384" y="38" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0537" x="384" y="38" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0538" x="384" y="76" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0539" x="384" y="76" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0540" x="349" y="304" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0541" x="349" y="304" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0542" x="384" y="0" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0543" x="384" y="0" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0544" x="384" y="38" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0545" x="384" y="38" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0546" x="384" y="76" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0547" x="384" y="76" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0548" x="349" y="304" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0549" x="349" y="304" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0550" x="384" y="0" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0551" x="384" y="0" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0552" x="384" y="38" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0553" x="384" y="38" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0554" x="384" y="76" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0555" x="384" y="76" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0556" x="384" y="114" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0557" x="384" y="114" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0558" x="417" y="37" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0559" x="417" y="37" width="32" height="37" frameX="0" frameY="-3" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0560" x="67" y="385" width="33" height="36" frameX="0" frameY="-4" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0561" x="67" y="385" width="33" height="36" frameX="0" frameY="-4" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0562" x="384" y="152" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0563" x="384" y="152" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0564" x="384" y="190" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0565" x="384" y="190" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0566" x="384" y="228" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0567" x="384" y="228" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0568" x="384" y="266" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0569" x="384" y="266" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0570" x="384" y="304" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0571" x="384" y="304" width="32" height="38" frameX="-1" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0572" x="384" y="190" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0573" x="384" y="190" width="33" height="38" frameX="0" frameY="-2" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0574" x="154" y="39" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0575" x="154" y="39" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0576" x="154" y="78" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0577" x="154" y="78" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0578" x="62" y="0" width="30" height="40" frameX="-1" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0579" x="62" y="0" width="30" height="40" frameX="-1" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0580" x="0" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0581" x="0" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0582" x="31" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0583" x="31" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0584" x="92" y="0" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0585" x="92" y="0" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0586" x="92" y="40" width="30" height="40" frameX="-1" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0587" x="92" y="40" width="30" height="40" frameX="-1" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0588" x="0" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0589" x="0" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0590" x="31" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0591" x="31" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0592" x="92" y="0" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0593" x="92" y="0" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0594" x="92" y="40" width="30" height="40" frameX="-1" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0595" x="92" y="40" width="30" height="40" frameX="-1" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0596" x="0" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0597" x="0" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0598" x="31" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0599" x="31" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0600" x="92" y="0" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0601" x="92" y="0" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0602" x="92" y="40" width="30" height="40" frameX="-1" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0603" x="92" y="40" width="30" height="40" frameX="-1" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0604" x="0" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0605" x="0" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0606" x="31" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0607" x="31" y="40" width="31" height="40" frameX="0" frameY="0" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0608" x="0" y="119" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
+<SubTexture name="anim_Inicio0609" x="0" y="119" width="31" height="39" frameX="0" frameY="-1" frameWidth="35" frameHeight="38" />
 </TextureAtlas>

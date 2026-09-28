@@ -13,6 +13,7 @@ class GameJoltManager
 {
 	static inline final GAME_ID:Int  = 1055030;
 	static inline final TABLE_ID:Int = 1068403;
+	static inline final TotalScoreTableID:Int = TABLE_ID;
 
 	private static function getPrivateKey():String
 	{
@@ -70,6 +71,62 @@ class GameJoltManager
 		'investigator'   => 303908,
 		'where'          => 303909,
 		'idk'            => 303910,
+	];
+
+	static final SONGS_SCOREBOARD_MAP:Map<String, Int> = [
+		'too-slow'         => 1117272,
+		'you-cant-run' 	   => 1117296,
+		'triple-trouble'   => 1117297,
+		'final-escape'     => 1117298,
+		'yourself'         => 1117299,
+		'cycles'           => 1117300,
+		'hellbent'         => 1117301,
+		'fate'             => 1117302,
+		'gotta-go'         => 1117303,
+		'endless-us'       => 1117304,
+		'endless-jp'       => 1117305,
+		'vanilla-milk'     => 1117306,
+		'chocolate-milk'   => 1117307,
+		'sunshine'         => 1117308,
+		'soulless'         => 1117308,
+		'chaos'            => 1117309,
+		'faker'            => 1117310,
+		'black-sun'        => 1117311,
+		'the-valley'       => 1117312,
+		'godspeed'         => 1117313,
+		'too-fest'         => 1117314,
+		'round-a-bout'     => 1117315,
+		'her-world'        => 1117316,
+		'starline'         => 1117317,
+		'hedge'            => 1117318,
+		'manual-blast'     => 1117319,
+		'uh-oh'            => 1117320,
+		'haze'             => 1117321,
+		'life-and-death'   => 1117322,
+		'hollow'           => 1117323,
+		'longstrider'      => 1117324,
+		'universal-collapse'  => 1117325,
+		'hijacked-transmission'  => 1117326,
+		'flash'            => 1117327,
+		'pre-design'       => 1117328,
+		'fatality'         => 1117330,
+		'prey'             => 1117331,
+		'fight-or-flight'  => 1117332,
+		'mania'            => 1117333,
+		'personel'         => 1117334,
+		'burning'          => 1117335,
+		'forestall-desire' => 1117336,
+		'deception'        => 1117337,
+		'miasma'           => 1117338,
+		'b4cksl4sh'        => 1117339,
+		'malediction'      => 1117340,
+		'found-you'        => 1117341,
+		'substantial'      => 1117342,
+		'digitalized'      => 1117343,
+		'monochromatic'    => 1117344,
+		'fakebaby'         => 1117345,
+		'sharpy-showdown'  => 1117346,
+		'shocker'          => TABLE_ID
 	];
 
 	static var _username:String = '';
@@ -138,6 +195,43 @@ class GameJoltManager
 		if (gjId != null) Trophies.remove(gjId);
 	}
 
+	/**
+	* Debugger function
+	*/
+	public static function resetAllTrophies(resetBuild:Bool = true, resetGameJolt:Bool = true):Void
+    {
+        if (resetBuild)
+        {
+            EXEAchievements.lockAll();
+            EXEAchievements.save();
+        }
+
+        if (resetGameJolt)
+        {
+            if (!isLoggedIn())
+            {
+                return;
+            }
+
+            Trophies.fetch(true, function(trophies:Array<GJTrophy>):Void
+            {
+                if (trophies == null || trophies.length == 0)
+                {
+                    return;
+                }
+
+                for (trophy in trophies)
+                {
+                    Trophies.remove(trophy.id, function(success:Bool):Void
+                    {
+                        if (success)
+                            trace("Removed trophy' (ID:"+trophy.id+")");
+                    });
+                }
+            });
+        }
+    }
+
 	public static function syncAllTrophies():Void
 	{
 		if (!GameJolt.initialized) return;
@@ -182,12 +276,96 @@ class GameJoltManager
 		});
 	}
 	
-	public static function submitScore(scoreText:String, scoreValue:Int, extraData:String = "", callback:Bool->Void = null):Void
+	public static function submitScore(scoreText:String, scoreValue:Int, tableId:Null<Int> = null, guestNickname:String="", extraData:String = "", callback:Bool->Void = null):Void
 	{
 		if (!isLoggedIn()) return;
-		Scores.add(scoreText, scoreValue, TABLE_ID, "", extraData, callback);
+		Scores.add(scoreText, scoreValue, (tableId ?? TABLE_ID), guestNickname, extraData, callback);
 	}
 
+	/**
+     * Send the best score for a especified song
+     * @param songName Song Tag / ID / Name  (ex. 'too-slow').
+     * @param score obtained song points. (¿money...?)
+     */
+    public static function submitSongScore(songName:String, score:Int, callback:Bool->Void = null):Void
+    {
+        if (!isLoggedIn())
+        {
+            if (callback != null) callback(false);
+            return;
+        }
+
+        final formattedSong:String = Paths.formatToSongPath(songName);
+
+        if (SONGS_SCOREBOARD_MAP.exists(formattedSong))
+        {
+            final tableId:Int = SONGS_SCOREBOARD_MAP.get(formattedSong);
+            final scoreText:String = formatNumber(score) + " SCR";
+
+			submitScore(scoreText, score, tableId, "", "", function(success:Bool)
+            {
+                if (success)
+					trace("Nice, Sending "+score+" points to the table of "+formattedSong);
+                else
+					trace("Uh! failed to send the points dude!");
+
+                if (callback != null) callback(success);
+            });
+        }
+        else
+        {
+            if (callback != null) callback(false);
+        }
+    }
+
+	public static function submitTotalScore(callback:Bool->Void = null):Void
+	{
+		if (!isLoggedIn())
+		{
+			if (callback != null) callback(false);
+			return;
+		}
+
+		var totalScore:Int = 0;
+
+		for (song in SONGS_SCOREBOARD_MAP.keys())
+		{
+			if (SONGS_SCOREBOARD_MAP.get(song) == TotalScoreTableID) continue;
+
+			var songScore:Int = Highscore.getScore(song, 1); 
+			if (songScore > 0)
+			{
+				totalScore += songScore;
+			}
+		}
+
+		if (totalScore > 0)
+		{
+			final scoreText:String = formatNumber(totalScore) + " SCR";
+			
+			submitScore(scoreText, totalScore, TotalScoreTableID, "", "", function(success:Bool)
+			{
+				if (callback != null) callback(success);
+			});
+		}
+		else
+		{
+			if (callback != null) callback(false);
+		}
+	}
+
+	function formatNumber(num:Int):String {
+		var str = Std.string(num);
+		var result = "";
+		var len = str.length;
+		for (i in 0...len) {
+			if ((len - i) % 3 == 0 && i != 0) {
+				result += ",";
+			}
+			result += str.charAt(i);
+		}
+		return result;
+	}
 
 	public static function pauseSession():Void
 	{

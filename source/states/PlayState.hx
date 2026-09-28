@@ -3140,7 +3140,24 @@ class PlayState extends MusicBeatState
 		}
 
 		final formattedSong = Paths.formatToSongPath(SONG.song);
-		
+		var currentScore:Int = songScore; 
+		var previousHighScore:Int = Highscore.getScore(formattedSong, storyDifficulty);
+		trace("Previous High Score: "+previousHighScore+", Local Score: "+currentScore);
+
+        if (currentScore >= previousHighScore)
+        {
+            backend.GameJoltManager.submitSongScore(formattedSong, currentScore, function(success:Bool) {
+                if (success) {
+					trace("good");
+					backend.GameJoltManager.submitTotalScore(function(totalSuccess:Bool) {
+						if (totalSuccess) trace("good x2");
+						else trace("actually bad");
+					});
+				}
+                else trace("bad");
+            });
+        }
+       
 		checkSavedSongs(formattedSong);
 
 		if (formattedSong == "fight-or-flight") 

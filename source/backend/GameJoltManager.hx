@@ -5,6 +5,7 @@ import gamejolt.GameJolt;
 import gamejolt.Trophies;
 import gamejolt.Sessions;
 import gamejolt.Scores;
+import gamejolt.Types.GJTrophy;
 
 using StringTools;
 
@@ -139,9 +140,39 @@ class GameJoltManager
 
 	public static function syncAllTrophies():Void
 	{
-		if (!isLoggedIn()) return;
+		if (!GameJolt.initialized) return;
+
 		for (id => achieve in EXEAchievements.achievements.keyValueIterator())
-			if (achieve.unlocked ?? false) unlockTrophy(id);
+		{
+			if (achieve.unlocked ?? false)
+			{
+				Trophies.unlock(id);
+			}
+		}
+
+		/**
+			* Sync GJ Trophies on build trophies
+		*/
+		Trophies.fetch(true, function(trophies:Array<GJTrophy>):Void
+		{
+			if (trophies == null || trophies.length == 0) return;
+
+			for (trophy in trophies)
+			{
+				var trophyId:Int = trophy.id;
+
+				if (EXEAchievements.achievements.exists(trophyId))
+				{
+					var localAchieve = EXEAchievements.achievements.get(trophyId);
+
+					if (!(localAchieve.unlocked ?? false))
+					{
+						localAchieve.unlocked = true;
+					}
+				}
+			}
+			EXEAchievements.save();
+		});
 	}
 	
 	public static function submitScore(scoreText:String, scoreValue:Int, extraData:String = "", callback:Bool->Void = null):Void

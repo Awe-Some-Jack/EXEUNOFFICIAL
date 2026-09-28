@@ -146,7 +146,7 @@ class GameJoltManager
 		{
 			if (achieve.unlocked ?? false)
 			{
-				Trophies.unlock(id);
+				unlockTrophy(id);
 			}
 		}
 
@@ -161,13 +161,20 @@ class GameJoltManager
 			{
 				var trophyId:Int = trophy.id;
 
-				if (EXEAchievements.achievements.exists(trophyId))
+				for (localId => gjId in TROPHY_MAP.keyValueIterator())
 				{
-					var localAchieve = EXEAchievements.achievements.get(trophyId);
-
-					if (!(localAchieve.unlocked ?? false))
+					if (gjId == trophyId)
 					{
-						localAchieve.unlocked = true;
+						if (EXEAchievements.exists(localId))
+						{
+							var localAchieve = EXEAchievements.get(localId);
+
+							if (!(localAchieve.unlocked ?? false))
+							{
+								localAchieve.unlocked = true;
+							}
+						}
+						break; 
 					}
 				}
 			}

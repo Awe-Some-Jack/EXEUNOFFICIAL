@@ -58,7 +58,6 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
             var entry = rendersEntry[i];
             if (entry == null) return;
             var isAtlasRender = entry.type == "atlas";
-            trace("Index "+i+" is "+isAtlasRender);
             if (isAtlasRender){
                 var render = new FlxAnimate(-446, 8);
                 

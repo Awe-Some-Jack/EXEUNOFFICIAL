@@ -56,9 +56,6 @@ class ExtrasMenu extends MusicBeatState
     var arrowsGrp:FlxTypedGroup<Arrow>;
     var arrowLeft:Arrow;
     var arrowRight:Arrow;
-    var blackBox:FlxSprite;
-    var box:FlxSprite;
-    var sumky:FlxSprite;
     var menuRenders:ExtrasMenuRenders;
     var np:FlxText;
     var nowPlayingSong:FlxText;
@@ -66,7 +63,6 @@ class ExtrasMenu extends MusicBeatState
 
     var baseScale:Float = 1.;
     var ssGrp:FlxTypedGroup<CardSprite>;
-    var ssBoxGrp:FlxTypedGroup<FlxSprite>;
     var videoTargetScale:Array<Float> = [];
     var videoBaseAngle:Array<Float> = [];
 
@@ -136,7 +132,7 @@ class ExtrasMenu extends MusicBeatState
 
         buildBG();
         buildVideos();
-        buildBox();
+        buildRenders();
         buildDisco();
         buildLogo();
         buildMenu();
@@ -304,8 +300,6 @@ class ExtrasMenu extends MusicBeatState
         ssGrp = new FlxTypedGroup<CardSprite>();
         add(ssGrp);
 
-        ssBoxGrp = new FlxTypedGroup<FlxSprite>();
-        add(ssBoxGrp);
         videoTargetScale = [];
         videoBaseAngle = [];
 
@@ -470,36 +464,11 @@ class ExtrasMenu extends MusicBeatState
         add(checkerSpriteRight);
     }
 
-    function buildBox():Void
+    function buildRenders():Void
     {
-        blackBox = new FlxSprite().makeGraphic(1470,1451,0xFF000000);
-        add(blackBox);
-
-        box = new FlxSprite(750, 120).loadGraphic(Paths.getBitmapData("assets/exe/extras/boxextras.webp"));
-        blackBox.setGraphicSize(box.width-2, box.height-2);
-        blackBox.updateHitbox();
-        box.scale.set(0.3, 0.3);
-        box.updateHitbox();
-        add(box);
-
-        //nice
-        blackBox.scale.set(0.3, 0.3);
-        blackBox.updateHitbox();
-        blackBox.setPosition(box.x, box.y);
-
-        sumky = new FlxSprite(box.x - 80, box.y + 2);
-        sumky.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow(
-            Paths.getBitmapData('assets/exe/extras/sumky.webp'),
-            openfl.utils.Assets.getText('assets/exe/extras/sumky.xml')
-        );
-        sumky.animation.addByPrefix('idle', 'sunki instancia', 12, true);
-        sumky.animation.play('idle');
-        sumky.scale.set(0.64, 0.64);
-        sumky.updateHitbox();
-        add(sumky);
-
         menuRenders = new ExtrasMenuRenders(750, 120);
         add(menuRenders);
+        menuRenders.swapRender(curSelected);
     }
 
     var discoTween:FlxTween;
@@ -660,7 +629,7 @@ class ExtrasMenu extends MusicBeatState
     {
         curSelected = (curSelected + change + MENU_KEYS.length) % MENU_KEYS.length;
         #if mobile cooldownTimer = 0.15; #else cooldownTimer = 0.1; #end
-        if (change != 0) { FlxG.sound.play(Paths.sound('scrollMenu')); animateBox(); }
+        if (change != 0) { FlxG.sound.play(Paths.sound('scrollMenu')); swapRender(); }
 
         for (i in 0...menuItems.length)
         {
@@ -714,42 +683,8 @@ class ExtrasMenu extends MusicBeatState
         });
     }
 
-    function animateBox():Void
+    function swapRender():Void
     {
-        FlxTween.cancelTweensOf(box);
-        FlxTween.cancelTweensOf(box.scale);
-        if (sumky != null) FlxTween.cancelTweensOf(sumky);
-        inline function syncSumky():Void
-            if (sumky != null) { sumky.x = box.x - 80; sumky.y = box.y + 2; }
-
-        box.scale.set(0.6, 0.6);
-        box.updateHitbox();
-        box.x     = 200;
-        box.y     = 120;
-        box.alpha = 0;
-        syncSumky();
-        // blackBox.alpha = 0;
-
-        if (sumky != null) sumky.alpha = 0;
-
-        FlxTween.tween(box, {x: 750}, 0.5, {ease: FlxEase.expoOut, onUpdate: (_) -> syncSumky()});
-        FlxTween.tween(box, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
-
-        if (sumky != null) FlxTween.tween(sumky, {alpha: 1}, 0.6, {ease: FlxEase.quadOut});
-
-        FlxTween.tween(box.scale, {x: 0.3, y: 0.3}, 0.5, {ease: FlxEase.expoOut, onUpdate: (_) -> {
-            final cx = box.x;
-            final cy = box.y;
-            box.updateHitbox();
-            box.x = cx;
-            box.y = cy;
-            blackBox.scale.set(box.scale.x,box.scale.y);
-            blackBox.updateHitbox();
-            blackBox.x = box.x+4;
-            blackBox.y = box.y;
-            blackBox.alpha = box.alpha;
-            syncSumky();
-        }});
         menuRenders.swapRender(curSelected);
     }
 

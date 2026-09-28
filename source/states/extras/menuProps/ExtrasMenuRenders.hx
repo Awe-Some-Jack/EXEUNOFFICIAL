@@ -4,6 +4,9 @@ import flixel.group.FlxSpriteGroup;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.math.FlxMath;
+import animate.FlxAnimate;
+import flixel.graphics.frames.FlxAtlasFrames;
+import backend.AtlasSpriteSettings;
 
 typedef RenderEntry = {
     var src:String;
@@ -16,7 +19,7 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
     private var rendersEntry:Array<RenderEntry> = [
         {
             src: "4",
-            animName: "sunki",
+            animName: "sunkia",
             type: "atlas" 
         },
         {
@@ -55,8 +58,19 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
             var entry = rendersEntry[i];
             if (entry == null) return;
             var isAtlasRender = entry.type == "atlas";
-            trace("Index "+i+" is "+isAtlasRender);
             if (isAtlasRender){
+                var render = new FlxAnimate(-446, 8);
+                
+                render.frames = getAtlasRender(entry.src);
+                render.anim.addBySymbol('render', entry.animName, 24, true);
+                render.anim.play('render', true);
+                render.ID = i;
+                render.antialiasing = ClientPrefs.data.antialiasing;
+                render.scale.set(0.5,0.5);
+                render.visible = false;
+                render.updateHitbox();
+                add(render);
+                rendersList.push(render);
             }else{
                 var render = new FlxSprite(x,y);
                 render.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow(
@@ -76,6 +90,47 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
         }
     }
 
+    // var A:Float;
+    // var B:Float;
+    // var C:Float;
+
+    // public function calculateX(i:Float, j:Float, k:Float):Float{
+    //     return j * Math.sin(A)*Math.sin(B)*Math.cos(C) - k * Math.cos(A) * Math.sin(B) * Math.cos(C) + k*Math.sin(A) * Math.sin(C)+ i * Math.cos(B)*Math.cos(C);
+    // }
+
+    // public function calculateY(i:Float, j:Float, k:Float):Float{
+    //     return j * Math.cos(A)*Math.cos(C)+ k * Math.sin(A)*Math.cos(C) - j* Math.sin(A)*Math.sin(B)*Math.sin(C) + k*Math.cos(A)*Math.sin(B)*Math.sin(C) - i*Math.cos(B)*Math.sin(C);
+    // }    
+
+    public function getAtlasRender(key:String, ?settings:AtlasSpriteSettings){
+        try{
+        final validatedSettings:AtlasSpriteSettings =
+        {
+            swfMode: settings?.swfMode ?? false,
+            cacheOnLoad: settings?.cacheOnLoad ?? ClientPrefs.data.cacheOnGPU,
+            filterQuality: settings?.filterQuality ?? (!ClientPrefs.data.lowQuality ? MEDIUM : LOW),
+            spritemaps: settings?.spritemaps ?? null,
+            metadataJson: settings?.metadataJson ?? null,
+            cacheKey: settings?.cacheKey ?? null,
+            uniqueInCache: settings?.uniqueInCache ?? false,
+            onSymbolCreate: settings?.onSymbolCreate ?? null,
+            applyStageMatrix: settings?.applyStageMatrix ?? false,
+            useRenderTexture: settings?.useRenderTexture ?? false
+        };
+
+        var path = 'assets/exe/extras/EXTRAS RENDERS/'+key;
+
+        return FlxAnimateFrames.fromAnimate(path, validatedSettings.spritemaps, validatedSettings.metadataJson, validatedSettings.cacheKey,
+            validatedSettings.uniqueInCache, {
+                swfMode: validatedSettings.swfMode,
+                cacheOnLoad: validatedSettings.cacheOnLoad,
+                filterQuality: validatedSettings.filterQuality,
+                onSymbolCreate: validatedSettings.onSymbolCreate
+            }
+        );
+        }catch(e:Dynamic){ trace("Error loading Atlas Frames: "+e); return null; }
+    }
+
     public function swapRender(idx){
         var render = rendersList[idx];
         if (render == null) return;
@@ -83,10 +138,11 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
         for (renders in rendersList){
             if (renders != null)
                 if (renders != render) 
-                    render.visible = false;
+                    renders.active = renders.visible = false;
         }
 
         render.visible = true;
+        render.active = true;
         FlxTween.cancelTweensOf(render);
         FlxTween.cancelTweensOf(render.scale);
         render.scale.set(0.5, 0.5);
@@ -105,9 +161,5 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
             render.x = cx;
             render.y = cy;
         }});
-    }
-
-    public function updateRender(elapsed:Float, selectionIndex:Int){
-        this.selectionIndex = selectionIndex;
     }
 }

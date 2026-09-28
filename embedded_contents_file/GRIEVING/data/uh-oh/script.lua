@@ -9,8 +9,8 @@ end
 function onEvent(n, v1)
     if n == 'fade' then
         if v1 == 'bg' then
-            makeLuaSprite('blackOnBF', nil, getMidpointX('boyfriend') - 125, getMidpointY('boyfriend') - 188)
-            makeGraphic('blackOnBF', getProperty('boyfriend.width') - 185, getProperty('boyfriend.height'), '000000')
+            makeLuaSprite('blackOnBF', nil, getMidpointX('boyfriend') - 215, getMidpointY('boyfriend') - 258)
+            makeGraphic('blackOnBF', getProperty('boyfriend.width') - 5, getProperty('boyfriend.height') + 50, '000000')
             setProperty('blackOnBF.alpha', 0)
             addLuaSprite('blackOnBF', true)
             doTweenAlpha('blackOnBFAlpha', 'blackOnBF', 1, 17)

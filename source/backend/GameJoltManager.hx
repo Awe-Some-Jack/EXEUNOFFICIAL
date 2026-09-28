@@ -354,7 +354,7 @@ class GameJoltManager
 		}
 	}
 
-	function formatNumber(num:Int):String {
+	public static function formatNumber(num:Int):String {
 		var str = Std.string(num);
 		var result = "";
 		var len = str.length;

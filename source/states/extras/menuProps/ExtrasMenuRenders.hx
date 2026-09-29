@@ -29,7 +29,7 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
         },
         {
             src: "2",
-            animName: "garden",
+            animName: "sonic",
             type: "atlas"
         },
         {
@@ -65,7 +65,6 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
                 render.anim.addBySymbol('render', entry.animName, 24, true);
                 render.anim.play('render', true);
                 render.ID = i;
-                render.antialiasing = ClientPrefs.data.antialiasing;
                 render.scale.set(0.5,0.5);
                 render.visible = false;
                 render.updateHitbox();
@@ -80,7 +79,6 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
                 render.animation.addByPrefix("render", entry.animName, 24, true);
                 render.animation.play("render", true);
                 render.ID = i;
-                render.antialiasing = ClientPrefs.data.antialiasing;
                 render.scale.set(0.5,0.5);
                 render.visible = false;
                 render.updateHitbox();

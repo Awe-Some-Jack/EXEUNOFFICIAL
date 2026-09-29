@@ -143,6 +143,10 @@ class Cutscene extends SonicSubState
         add(nowPlayingSong);
 
         #if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
+
+        #if DISCORD_ALLOWED
+        DiscordClient.changePresence("In the Сutscenes menu", "Browsing Cutscenes", null, true, 0, "icon", 0, 0);
+        #end
     }
 
     function createBackground():Void
@@ -643,15 +647,29 @@ class Cutscene extends SonicSubState
             final bh = fh + Std.int(6.0 * 2);
             _vidBorder.makeGraphic(bw, bh, 0xFF3a6bc9);
             _vidBorder.setPosition(_vidSprite.x - 6.0, _vidSprite.y - 6.0);
+
             final borderShader = new shaders.RoundedBorderShader(16.0 + 6.0, 0.0, 0xFF000000);
             borderShader.setSize(bw, bh);
+
             _vidBorder.shader = borderShader;
+
             FlxTween.tween(_vidSprite,  {y: finalY},                    0.35, {ease: FlxEase.expoOut});
             FlxTween.tween(_vidBorder,  {y: finalY - 6.0, alpha: 1}, 0.35, {ease: FlxEase.expoOut});
 
             _buildHud(fw, finalY + fh);
+
+            #if DISCORD_ALLOWED
+            DiscordClient.changePresence("In the Сutscenes menu", 'Watching ${videoEntries[curSelected].displayName}', null, true, haxe.Int64.toInt(_vidSprite.video.bitmap.duration), "icon", 3, 0);
+            #end
         });
-        _vidSprite.onEnd(() -> { _vidSprite.play(); _vidPaused = false; _hudUpdateBtn(); });
+        _vidSprite.onEnd(() -> { 
+            _vidSprite.play(); 
+            _vidPaused = false; 
+            _hudUpdateBtn(); 
+            #if DISCORD_ALLOWED
+            DiscordClient.changePresence("In the Сutscenes menu", 'Watching ${videoEntries[curSelected].displayName}', null, true, haxe.Int64.toInt(_vidSprite.video.bitmap.duration), "icon", 3, 0);
+            #end
+        });
 
         if (FlxG.sound.music != null)
         {
@@ -800,7 +818,14 @@ class Cutscene extends SonicSubState
                 _seekDragging = true;
             if (_seekDragging)
                 _vidSprite.setVideoPercent(FlxMath.bound((mx - barX) / barW, 0, 1));
-            if (FlxG.mouse.justReleased) _seekDragging = false;
+
+            if (FlxG.mouse.justReleased) {
+                _seekDragging = false;
+                #if DISCORD_ALLOWED
+                if (_vidSprite?.video?.bitmap != null)
+                    DiscordClient.changePresence("In the Сutscenes menu", 'Watching ${videoEntries[curSelected].displayName}' + (_vidPaused ? ' (Paused)' : ''), null, true, haxe.Int64.toInt(_vidSprite.video.bitmap.duration), "icon", 3, _vidSprite.getTime());
+                #end
+            }
         }
 
         if (_hudBtn != null && FlxG.mouse.justPressed && _vidSprite != null && FlxG.mouse.overlaps(_hudBtn))
@@ -808,6 +833,13 @@ class Cutscene extends SonicSubState
             _vidPaused = !_vidPaused;
             if (_vidPaused) _vidSprite.pause(); else _vidSprite.resume();
             _hudUpdateBtn();
+            
+            #if DISCORD_ALLOWED
+            if (_vidSprite.video?.bitmap != null) {
+                final durMs = _vidPaused ? 0 : haxe.Int64.toInt(_vidSprite.video.bitmap.duration);
+                DiscordClient.changePresence("In the Сutscenes menu", 'Watching ${videoEntries[curSelected].displayName}' + (_vidPaused ? ' (Paused)' : ''), null, true, durMs, "icon", 3, _vidSprite.getTime());
+            }
+            #end
         }
         #end
     }
@@ -850,6 +882,9 @@ class Cutscene extends SonicSubState
                     if (dimRef != null) { remove(dimRef, true); dimRef.destroy(); }
                     _slideBackIn();
                     canMove = true;
+                    #if DISCORD_ALLOWED
+                    DiscordClient.changePresence("In the Сutscenes menu", "Browsing Cutscenes", null, true, 0, "icon", 0, 0);
+                    #end
                 }
             });
         }
@@ -859,6 +894,9 @@ class Cutscene extends SonicSubState
             if (dimRef    != null) { remove(dimRef,    true); dimRef.destroy(); }
             _slideBackIn();
             canMove = true;
+            #if DISCORD_ALLOWED
+            DiscordClient.changePresence("In the Сutscenes menu", "Browsing Cutscenes", null, true, 0, "icon", 0, 0);
+            #end
         }
         #end
     }

@@ -1530,7 +1530,7 @@ class PlayState extends MusicBeatState
 
 		#if DISCORD_ALLOWED
 		// Updating Discord Rich Presence (with Time Left)
-		if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song, iconP2.getCharacter(), true, songLength);
+		if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song, iconP2.getCharacter(), true, songLength, "icon", 0, Conductor.songPosition);
 		#end
 		setOnScripts('songLength', songLength);
 		callOnScripts('onSongStart');
@@ -2100,7 +2100,7 @@ class PlayState extends MusicBeatState
 
 		if (!paused && health > 0 && autoUpdateRPC)
 		{
-			DiscordClient.changePresence(detailsText, SONG.song + " (Paused)", iconP2.getCharacter());
+			DiscordClient.changePresence(detailsText, SONG.song + " (Paused)", iconP2.getCharacter(), true, 0, "icon", 0, Conductor.songPosition);
 		}
 	}
 	#end
@@ -2113,7 +2113,7 @@ class PlayState extends MusicBeatState
 		if(!autoUpdateRPC) return;
 
 		if (showTime)
-			DiscordClient.changePresence(detailsText, SONG.song, iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
+			DiscordClient.changePresence(detailsText, SONG.song, iconP2.getCharacter(), true, songLength, "icon", 0, Conductor.songPosition);
 		else
 			DiscordClient.changePresence(detailsText, SONG.song, iconP2.getCharacter());
 		#end
@@ -2612,7 +2612,7 @@ class PlayState extends MusicBeatState
 		#end
 
 		#if DISCORD_ALLOWED
-		if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song + " (Paused)", iconP2.getCharacter());
+		if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song + " (Paused)", iconP2.getCharacter(), true, 0, "icon", 0, Conductor.songPosition);
 		#end
 	}
 

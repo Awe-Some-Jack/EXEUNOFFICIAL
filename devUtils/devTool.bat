@@ -94,6 +94,20 @@ for /R "contents_file" %%i in (*.png) do (
     echo Processing: "%%i"
     ffmpeg -y -i "%%i" -c:v libwebp -lossless 1 -compression_level 6 -quality 100 "%%~dpi%%~ni.webp" && del "%%i"
 )
+echo Done!echo.
+echo JXL to WEBP
+echo.
+echo Processing "assets/"...
+for /R "assets" %%i in (*.jxl) do (
+    echo Processing: "%%i"
+    ffmpeg -y -i "%%i" -c:v libwebp -lossless 1 -compression_level 6 -quality 100 "%%~dpi%%~ni.webp" && del "%%i"
+)
+echo Done!
+echo Processing "contents_file/"...
+for /R "contents_file" %%i in (*.jxl) do (
+    echo Processing: "%%i"
+    ffmpeg -y -i "%%i" -c:v libwebp -lossless 1 -compression_level 6 -quality 100 "%%~dpi%%~ni.webp" && del "%%i"
+)
 echo Done!
 goto :SORT_FILES
 

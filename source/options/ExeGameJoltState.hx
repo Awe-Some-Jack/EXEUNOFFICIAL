@@ -2,13 +2,13 @@ package options;
 
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+
 import openfl.events.TextEvent;
-import backend.GameJoltManager;
-import backend.Language;
-import backend.Paths;
+
 import lime.system.Clipboard;
 
-using StringTools;
+import backend.GameJoltManager;
+
 class ExeGameJoltState extends ExeBaseOptionsState
 {
 	static inline final ROW_Y0:Float = 290;
@@ -44,8 +44,11 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		menuTitle = 'GAMEJOLT';
 		usernameInput = GameJoltManager.getSavedUsername();
 		tokenInput    = GameJoltManager.getSavedToken();
+
 		super.create();
+
 		titlebarTxt.text = menuTitle;
+
 		FlxG.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, _onKey);
 		FlxG.stage.addEventListener(TextEvent.TEXT_INPUT, _onTextInput);
 	}
@@ -59,33 +62,29 @@ class ExeGameJoltState extends ExeBaseOptionsState
 
 		if (statusTxt == null)
 		{
-			statusTxt = new FlxText(ExeBaseOptionsState.NB_X + 320, 220, -1, '', lblSize);
-			statusTxt.setFormat(font, lblSize+8, 0xFFFFDD00, LEFT, OUTLINE, 0xFF000000);
-			statusTxt.borderSize = 2.23;
+			statusTxt = new FlxText(0, 180, 450, '', lblSize);
+			statusTxt.setFormat(font, lblSize + 8, 0xFFFFDD00, RIGHT, OUTLINE, 0xFF000000);
 			statusTxt.scrollFactor.set(0, 0);
-			statusTxt.x = FlxG.width-statusTxt.width;
-			statusTxt.x -= 20;
-			statusTxt.y = 180;
+			statusTxt.borderSize = 2.23;
 			add(statusTxt);
-			rightGroup.push(cast statusTxt);
+
+			FlxTween.tween(statusTxt, {x: FlxG.width - statusTxt.width}, 0.45, {ease: FlxEase.quartOut});
 		}
 
 		for (i in 0...4)
 		{
 			final rowY = ROW_Y0 + i * (ROW_Y1 - ROW_Y0);
 
-			final nameBG = new FlxSprite().loadGraphic(boxBitmap);
+			final nameBG = new FlxSprite(offRight, rowY).loadGraphic(boxBitmap);
 			nameBG.scale.set(ExeBaseOptionsState.NB_SCALE_X, ExeBaseOptionsState.NB_SCALE_Y);
 			nameBG.updateHitbox();
-			nameBG.x = offRight; nameBG.y = rowY;
 			nameBG.scrollFactor.set(0, 0);
 			nameBG.ID = i;
 			add(nameBG); rightGroup.push(nameBG);
 
-			final valBG = new FlxSprite().loadGraphic(boxBitmap);
+			final valBG = new FlxSprite(offRight, rowY).loadGraphic(boxBitmap);
 			valBG.scale.set(ExeBaseOptionsState.VB_SCALE_X, ExeBaseOptionsState.VB_SCALE_Y);
 			valBG.updateHitbox();
-			valBG.x = offRight; valBG.y = rowY;
 			valBG.scrollFactor.set(0, 0);
 			valBG.ID = i;
 			add(valBG); rightGroup.push(valBG);
@@ -102,11 +101,13 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			valTxt.ID = i;
 			add(valTxt); rightGroup.push(cast valTxt);
 
-			if (i >= 2){
+			if (i >= 2)
+			{
 				nameBG.visible = false;
 				nameTxt.visible = false;
 				valTxt.x = valBG.x + ((valBG.width - valTxt.width)/2);
-				if (i == 3){
+				if (i == 3)
+				{
 					valBG.visible = GameJoltManager.isLoggedIn();
 					valTxt.visible = GameJoltManager.isLoggedIn();
 				}
@@ -204,23 +205,20 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		}
 
 		super.update(elapsed);
+		
 		if (introAnimating || backLock || _waitingLogin) { backLock = false; return; }
 
-		if (statusTxt.text  == 'SYNCED!'){
-			if (syncStatusHoldingTime <= 0){
+		if (statusTxt.text  == 'SYNCED!')
+		{
+			if (syncStatusHoldingTime <= 0)
 				statusTxt.text = 'LOGGED IN: ' + GameJoltManager.getUsername(); // correct method?
-			}
-			syncStatusHoldingTime-=elapsed;
-		}
 
-		if (statusTxt != null){
-			statusTxt.x = FlxG.width-statusTxt.width;
-			statusTxt.x -= 20;
-			statusTxt.y = 180;
+			syncStatusHoldingTime -= elapsed;
 		}
 
 		#if mobile
-		if(pressHolding && deltaMouseY != 0 && cooldownTimer <= 0) {
+		if(pressHolding && deltaMouseY != 0 && cooldownTimer <= 0) 
+		{
 			if(deltaMouseY < -5) {
 				curRow = (curRow - 1 + totalRows) % totalRows;
 				FlxG.sound.play(Paths.sound('scrollMenu'));
@@ -271,6 +269,16 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		}
 
 		if (controls.BACK #if mobile || backPressed #end) { FlxG.sound.play(Paths.sound('cancelMenu')); playOutro(); }
+	}
+
+	override public function playOutro()
+	{
+		if (statusTxt != null)
+		{
+			FlxTween.tween(statusTxt, {x: FlxG.width + 200}, 0.35, {ease: FlxEase.quartIn});
+		}
+
+		super.playOutro();
 	}
 
 	function _startTyping(user:Bool):Void
@@ -335,7 +343,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 		statusTxt.color = 0xFFFFDD00;
 
 		trace(usernameInput);
-		// no this time friend
+		// not this time friend
 		// trace(tokenInput);
 
 		GameJoltManager.login(usernameInput, tokenInput, function(ok:Bool) {

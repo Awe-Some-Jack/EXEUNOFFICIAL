@@ -114,7 +114,7 @@ class DiscordClient
 		presence.details = details;
 		presence.smallImageKey = smallImageKey;
 		presence.largeImageKey = largeImageKey;
-		presence.largeImageText = 'Version: (${Application.current.meta.get('version')})';
+		presence.largeImageText = 'Version: ${Application.current.meta.get('version')}';
 		presence.startTimestamp = Std.int(startTimestamp / 1000);
 		presence.endTimestamp = Std.int(endTimestamp / 1000);
 		presence.type = activityType; 
@@ -198,7 +198,8 @@ private final class DiscordPresence
 			LabelValuePair.weak("largeImageKey", largeImageKey),
 			LabelValuePair.weak("largeImageText", largeImageText),
 			LabelValuePair.weak("startTimestamp", startTimestamp),
-			LabelValuePair.weak("endTimestamp", endTimestamp)
+			LabelValuePair.weak("endTimestamp", endTimestamp),
+			LabelValuePair.weak("type", type)
 		]);
 	}
 

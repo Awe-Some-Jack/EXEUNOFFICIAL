@@ -1863,7 +1863,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		}
 
 		#if DISCORD_ALLOWED
-		DiscordClient.changePresence('Chart Editor', 'Song: ' + PlayState.SONG.song);
+		DiscordClient.changePresence('Chart Editor', 'Song: ' + PlayState.SONG.song + " (Paused)", null, true, 0, "icon", 2, Conductor.songPosition);
 		#end
 
 		updateAudioVolume();
@@ -1894,7 +1894,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 	function setPitch(?value:Null<Float>)
 	{
 		#if FLX_PITCH
-		if (value == null) value = playbackRate;
+		value ??= playbackRate;
 		FlxG.sound.music.pitch = value;
 		vocals.pitch = value;
 		opponentVocals.pitch = value;
@@ -1931,6 +1931,13 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 				note.resetAnim = 0;
 			}
 		}
+
+		#if DISCORD_ALLOWED
+		if (doPlay)
+			DiscordClient.changePresence('Chart Editor', 'Song: ' + PlayState.SONG.song, null, true, FlxG.sound.music?.length ?? 0, "icon", 2, Conductor.songPosition);
+		else
+			DiscordClient.changePresence('Chart Editor', 'Song: ' + PlayState.SONG.song + " (Paused)", null, true, 0, "icon", 2, Conductor.songPosition);
+		#end
 	}
 
 	function reloadNotes()

@@ -18,7 +18,7 @@
 	"extras.menu.nowplaying": "TOCANDO AGORA:",
 	"extras.menu.gallery": ["GALERIA", "Dá uma olhada nas fotos dos bastidores, prints do desenvolvimento e memes na galeria!"],
 	"extras.menu.character": ["BIOS", "Quer saber mais sobre a galera? Confere as bios deles aqui, muitos têm um lore muito doido!"],
-	"extras.menu.dagarden": ["D.A GARDEN", "Relaxa e curte a OST do mod. Nossos compositores criaram uns bangers absurdos pra você!"],
+	"extras.menu.dagarden": ["JARDIM D.A", "Relaxa e curte a OST do mod. Nossos compositores criaram uns bangers absurdos pra você!"],
 	"extras.menu.cutscenes": ["CINEMÁTICAS", "Assista de novo todas as cutscenes do mod bem aqui. Simples assim, né?"],
 	"extras.menu.achievements": ["CONQUISTAS", "Dá uma olhada nas conquistas que você já liberou e vê o que ainda falta pegar!"],
 	"extras.menu.credits": ["CRÉDITOS", "Um salve gigante pra todo mundo que ajudou a dar vida a esse mod!"],
@@ -82,7 +82,7 @@
 	"achievement_rings": "Alérgico a anéis", "achievement_description_rings": "Passe da Triple Trouble sem pegar nenhum anel",
 	"achievement_norings": "Eu sou a velocidade!", "achievement_description_norings": "Passe da Manual Blast sem pressionar nenhum anel",
 	"achievement_tripledeaths": "Problemas para avançar?", "achievement_description_tripledeaths": "Veja todas as mortes na Triple Trouble",
-	"achievement_dagarden": "AMANTE DE MÚSICA!", "achievement_description_dagarden": "Complete a biblioteca de músicas do DA Garden",
+	"achievement_dagarden": "AMANTE DE MÚSICA!", "achievement_description_dagarden": "Complete a biblioteca de músicas do Jardim D.A",
 	"achievement_parallax": "O outro lado do anel", "achievement_description_parallax": "Entre no Menu PARALLAX",
 	"achievement_secondary": "Que diabos está acontecendo...", "achievement_description_secondary": "Encontre todos os códigos secretos",
 	"achievement_sega": "MENSAGEM RECEBIDA", "achievement_description_sega": "Receba uma notificação da SEGA Enterprise",
@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Encontre o easter-egg de Fatality",
 	"achievement_sonichu": "Zap ao extremo!", "achievement_description_sonichu": "Encontre e derrote o Sonichu",
 	"achievement_shocks": "Que Investida Trovão foi essa, hein?!", "achievement_description_shocks": "Morra pelos choques elétricos do Sonichu",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["USUÁRIO", "TOKEN", "AÇÃO", "TROFÉUS"],
+	"gamejolt.status.notloggedin": "NÃO CONECTADO",
+	"gamejolt.status.loggedin": "CONECTADO: {1}",
+	"gamejolt.action.login": "ENTRAR",
+	"gamejolt.action.logout": "SAIR",
+	"gamejolt.action.sync": "SINCRONIZAR",
+	"gamejolt.status.timeout": "FALHA AO ENTRAR — SERVIDOR DEMOROU MUITO",
+	"gamejolt.status.syncing": "SINCRONIZANDO...",
+	"gamejolt.status.synced": "SINCRONIZADO!",
+	"gamejolt.status.empty": "INSIRA O USUÁRIO E TOKEN",
+	"gamejolt.status.connecting": "CONECTANDO...",
+	"gamejolt.status.failed": "FALHA AO ENTRAR — VERIFIQUE USUÁRIO/TOKEN"
 }

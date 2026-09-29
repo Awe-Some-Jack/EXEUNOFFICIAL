@@ -82,7 +82,7 @@
 	"achievement_rings": "Allergisch gegen Ringe", "achievement_description_rings": "Schließe Triple Trouble ab, ohne einen Ring zu sammeln",
 	"achievement_norings": "Ich zeige Geschwindigkeit!", "achievement_description_norings": "Schließe Manual Blast ab, ohne einen Ring zu drücken",
 	"achievement_tripledeaths": "Probleme beim Vorankommen?", "achievement_description_tripledeaths": "Schau dir alle Tode in Triple Trouble an",
-	"achievement_dagarden": "MUSIKLIEBHABER!", "achievement_description_dagarden": "Vervollständige die DA Garden Song-Bibliothek",
+	"achievement_dagarden": "MUSIKLIEBHABER!", "achievement_description_dagarden": "Vervollständige die D.A Garden Song-Bibliothek",
 	"achievement_parallax": "Die andere Seite des Rings", "achievement_description_parallax": "Geh ins PARALLAX Menü",
 	"achievement_secondary": "Was zur Hölle passiert da...", "achievement_description_secondary": "Finde alle Geheimcodes",
 	"achievement_sega": "NACHRICHT EMPFANGEN", "achievement_description_sega": "Erhalte eine Benachrichtigung von SEGA Enterprise",
@@ -105,5 +105,18 @@
 
 	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "Finde das The Valley-Easter-Egg",
 	"achievement_flash": "Update doch mal auf Windows 11...", "achievement_description_flash": "Besiege Flash 3 Mal",
-	"achievement_popup": "BRING HIER ORDNUNG REIN!", "achievement_description_popup": "Schließe Fatality ab, ohne ein Pop-up zu schließen"
+	"achievement_popup": "BRING HIER ORDNUNG REIN!", "achievement_description_popup": "Schließe Fatality ab, ohne ein Pop-up zu schließen",
+
+	"gamejolt.labels": ["BENUTZERNAME", "TOKEN", "AKTION", "TROPHÄEN"],
+	"gamejolt.status.notloggedin": "NICHT ANGEMELDET",
+	"gamejolt.status.loggedin": "ANGEMELDET: {1}",
+	"gamejolt.action.login": "ANMELDEN",
+	"gamejolt.action.logout": "ABMELDEN",
+	"gamejolt.action.sync": "TROPHÄEN SYNC",
+	"gamejolt.status.timeout": "ANMELDUNG FEHLGESCHLAGEN — SERVER-ZEITÜBERSCHREITUNG",
+	"gamejolt.status.syncing": "WIRD SYNCHRONISIERT...",
+	"gamejolt.status.synced": "SYNCHRONISIERT!",
+	"gamejolt.status.empty": "BENUTZERNAME UND TOKEN EINGEBEN",
+	"gamejolt.status.connecting": "VERBINDEN...",
+	"gamejolt.status.failed": "ANMELDUNG FEHLGESCHLAGEN — BENUTZER/TOKEN PRÜFEN"
 }

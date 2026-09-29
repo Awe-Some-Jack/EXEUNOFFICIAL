@@ -82,7 +82,7 @@
 	"achievement_rings": "Alergia na pierścienie", "achievement_description_rings": "Przejdź Triple Trouble nie zbierając żadnego pierścienia",
 	"achievement_norings": "Pokażę ci prędkość!", "achievement_description_norings": "Przejdź Manual Blast nie wciskając żadnego pierścienia",
 	"achievement_tripledeaths": "Problemy z postępem?", "achievement_description_tripledeaths": "Zobacz każdą śmierć w Triple Trouble",
-	"achievement_dagarden": "KONESER MUZYKI!", "achievement_description_dagarden": "Skompletuj bibliotekę piosenek w DA Garden",
+	"achievement_dagarden": "KONESER MUZYKI!", "achievement_description_dagarden": "Skompletuj bibliotekę piosenek w D.A Garden",
 	"achievement_parallax": "Druga strona pierścienia", "achievement_description_parallax": "Wejdź do menu PARALLAX",
 	"achievement_secondary": "Co tu się u diabła dzieje...", "achievement_description_secondary": "Znajdź wszystkie ukryte kody",
 	"achievement_sega": "WIADOMOŚĆ ODEBRANA", "achievement_description_sega": "Odbierz powiadomienie od SEGA Enterprise",
@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Znajdź easter egga Fatality",
 	"achievement_sonichu": "Ekstremalne porażenie!", "achievement_description_sonichu": "Znajdź i pokonaj Sonichu",
 	"achievement_shocks": "Niezły Volt Tackle, co?!", "achievement_description_shocks": "Zgiń od porażenia prądem Sonichu",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["UŻYTKOWNIK", "TOKEN", "AKCJA", "TROFEA"],
+	"gamejolt.status.notloggedin": "NIEZALOGOWANY",
+	"gamejolt.status.loggedin": "ZALOGOWANY: {1}",
+	"gamejolt.action.login": "ZALOGUJ",
+	"gamejolt.action.logout": "WYLOGUJ",
+	"gamejolt.action.sync": "SYNCHRONIZUJ",
+	"gamejolt.status.timeout": "BŁĄD LOGOWANIA — SERWER ZBYT DŁUGO NIE ODPOWIADAŁ",
+	"gamejolt.status.syncing": "SYNCHRONIZACJA...",
+	"gamejolt.status.synced": "ZSYNCHRONIZOWANO!",
+	"gamejolt.status.empty": "WPROWADŹ NAZWĘ I TOKEN",
+	"gamejolt.status.connecting": "ŁĄCZENIE...",
+	"gamejolt.status.failed": "BŁĄD LOGOWANIA — SPRAWDŹ NAZWĘ/TOKEN"
 }

@@ -82,7 +82,7 @@
 	"achievement_rings": "Allergico agli Anelli", "achievement_description_rings": "Supera Triple Trouble senza raccogliere alcun anello",
 	"achievement_norings": "Io sono la Velocità!", "achievement_description_norings": "Supera Manual Blast senza premere alcun anello",
 	"achievement_tripledeaths": "Problemi ad andare avanti?", "achievement_description_tripledeaths": "Guarda tutti i Game Over in Triple Trouble",
-	"achievement_dagarden": "AMANTE DELLA MUSICA!", "achievement_description_dagarden": "Completa la libreria musicale del DA Garden",
+	"achievement_dagarden": "AMANTE DELLA MUSICA!", "achievement_description_dagarden": "Completa la libreria musicale del D.A Garden",
 	"achievement_parallax": "L'altro lato dell'anello", "achievement_description_parallax": "Entra nel menu PARALLAX",
 	"achievement_secondary": "Cosa diavolo sta succedendo...", "achievement_description_secondary": "Trova tutti i codici segreti",
 	"achievement_sega": "MESSAGGIO RICEVUTO", "achievement_description_sega": "Ricevi una notifica da SEGA Enterprise",
@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Trova l'easter-egg di Fatality",
 	"achievement_sonichu": "Zap all'estremo!", "achievement_description_sonichu": "Trova e sconfiggi Sonichu",
 	"achievement_shocks": "Che Locomovolt, eh?!", "achievement_description_shocks": "Muori per le scosse elettriche di Sonichu",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["UTENTE", "TOKEN", "AZIONE", "TROFEI"],
+	"gamejolt.status.notloggedin": "NON CONNESSO",
+	"gamejolt.status.loggedin": "CONNESSO: {1}",
+	"gamejolt.action.login": "ACCEDI",
+	"gamejolt.action.logout": "ESCI",
+	"gamejolt.action.sync": "SINCRONIZZA",
+	"gamejolt.status.timeout": "ACCESSO FALLITO — IL SERVER CI HA MESSO TROPPO",
+	"gamejolt.status.syncing": "SINCRONIZZAZIONE...",
+	"gamejolt.status.synced": "SINCRONIZZATO!",
+	"gamejolt.status.empty": "INSERISCI UTENTE E TOKEN",
+	"gamejolt.status.connecting": "CONNESSIONE...",
+	"gamejolt.status.failed": "ACCESSO FALLITO — CONTROLLA UTENTE/TOKEN"
 }

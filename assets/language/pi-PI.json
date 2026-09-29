@@ -82,7 +82,7 @@
 	"achievement_rings": "Allergic to Doubloons", "achievement_description_rings": "Survive Triple Trouble without pillagin' any rings",
 	"achievement_norings": "I Show Speed!", "achievement_description_norings": "Survive Manual Blast without pressin' any rings",
 	"achievement_tripledeaths": "Rough waters ahead?", "achievement_description_tripledeaths": "Witness every watery grave in Triple Trouble",
-	"achievement_dagarden": "SHANTY LOVER!", "achievement_description_dagarden": "Complete th' DA Garden Song Chest",
+	"achievement_dagarden": "SHANTY LOVER!", "achievement_description_dagarden": "Complete th' D.A Garden Song Chest",
 	"achievement_parallax": "Th' other side of th' coin", "achievement_description_parallax": "Enter th' PARALLAX Menu",
 	"achievement_secondary": "What in Davy Jones...", "achievement_description_secondary": "Unearth all th' secret codes",
 	"achievement_sega": "BOTTLED MESSAGE RECEIVED", "achievement_description_sega": "Get a missive from SEGA Enterprise",
@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Unearth th' Fatality easter-egg",
 	"achievement_sonichu": "Zap to th' extreme, arrr!", "achievement_description_sonichu": "Find an' sink Sonichu",
 	"achievement_shocks": "What a Volt Tackle ye got huh?!", "achievement_description_shocks": "Die from Sonichu's electro-shocks",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["YER NAME", "SECRET CODE", "YER ORDERS", "BOOTY"],
+	"gamejolt.status.notloggedin": "NOT ABOARD",
+	"gamejolt.status.loggedin": "ABOARD: {1}",
+	"gamejolt.action.login": "SET SAIL",
+	"gamejolt.action.logout": "WALK THE PLANK",
+	"gamejolt.action.sync": "STASH YER BOOTY",
+	"gamejolt.status.timeout": "MISHAP — TH' SERVER BE SUNK",
+	"gamejolt.status.syncing": "STASHIN'...",
+	"gamejolt.status.synced": "STASHED!",
+	"gamejolt.status.empty": "GIMME YER NAME N' CODE",
+	"gamejolt.status.connecting": "SAILIN'...",
+	"gamejolt.status.failed": "MISHAP — CHECK YER NAME N' CODE"
 }

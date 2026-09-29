@@ -82,7 +82,7 @@
 	"achievement_rings": "Uzuklarga allergiya", "achievement_description_rings": "Triple Trouble'ni bitta ham uzuk yig'masdan yakunlang",
 	"achievement_norings": "Men tezlikni ko'rsataman!", "achievement_description_norings": "Manual Blast'ni uzuklarni bosmasdan yakunlang",
 	"achievement_tripledeaths": "Oldinga borishda muammolar bormi?", "achievement_description_tripledeaths": "Triple Trouble'dagi barcha o'limlarni ko'ring",
-	"achievement_dagarden": "MUSIQA SHAYDOSI!", "achievement_description_dagarden": "DA Garden qo'shiqlar kutubxonasini to'ldiring",
+	"achievement_dagarden": "MUSIQA SHAYDOSI!", "achievement_description_dagarden": "D.A Bog'ning qo'shiqlar kutubxonasini to'ldiring",
 	"achievement_parallax": "Uzukning narigi tomoni", "achievement_description_parallax": "PARALLAX menyusiga kiring",
 	"achievement_secondary": "Nimalar bo'lyapti o'zi...", "achievement_description_secondary": "Barcha maxfiy kodlarni toping",
 	"achievement_sega": "XABAR QABUL QILINDI", "achievement_description_sega": "SEGA Enterprise dan xabarnoma oling",
@@ -105,5 +105,18 @@
 
 	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "The Valley'da pasxalkasini toping",
 	"achievement_flash": "Windows 11 ga yangilab ol endi...", "achievement_description_flash": "Flash'ni 3 marta yakunlang",
-	"achievement_popup": "TARTIBGA SOL!", "achievement_description_popup": "Fatality'ni bitta ham oyna yopmasdan yakunlang"
+	"achievement_popup": "TARTIBGA SOL!", "achievement_description_popup": "Fatality'ni bitta ham oyna yopmasdan yakunlang",
+
+	"gamejolt.labels": ["FOYDALANUVCHI", "TOKEN", "AMAL", "YUTUQLAR"],
+	"gamejolt.status.notloggedin": "TIZIMGA KIRILMAGAN",
+	"gamejolt.status.loggedin": "TIZIMDA: {1}",
+	"gamejolt.action.login": "KIRISH",
+	"gamejolt.action.logout": "CHIQISH",
+	"gamejolt.action.sync": "YUTUQLARNI SINXRONLASH",
+	"gamejolt.status.timeout": "KIRISHDA XATOLIK — SERVER JAVOB BERISHI CHO'ZILIB KETDI",
+	"gamejolt.status.syncing": "SINXRONLANMOQDA...",
+	"gamejolt.status.synced": "SINXRONLANDI!",
+	"gamejolt.status.empty": "FOYDALANUVCHI NOMI VA TOKENNI KIRITING",
+	"gamejolt.status.connecting": "ULANMOQDA...",
+	"gamejolt.status.failed": "KIRISHDA XATOLIK — NOMI YOKI TOKENNI TEKSHIRING"
 }

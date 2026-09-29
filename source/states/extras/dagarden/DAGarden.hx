@@ -7,13 +7,18 @@ import flixel.tweens.FlxEase;
 import flixel.addons.display.FlxBackdrop;
 import flixel.sound.FlxSound;
 import flixel.math.FlxMath;
+import flixel.math.FlxRect;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.group.FlxGroup;
+
 import openfl.display.BitmapData;
 import openfl.geom.Rectangle;
+import openfl.media.Sound;
+
 import sys.FileSystem;
 import sys.io.File;
+
 import backend.InputFormatter;
 
 class DAGSongs extends MusicBeatSubstate
@@ -37,6 +42,23 @@ class DAGSongs extends MusicBeatSubstate
         super();
         loadAll();
         buildBoxes();
+    }
+
+    override public function destroy():Void
+    {
+        for (bx in boxes) bx?.destroy();
+        for (cv in covers) cv?.destroy();
+        for (lbl in labels) lbl?.destroy();
+        
+        boxes = [];
+        covers = [];
+        labels = [];
+        hasCover = [];
+        songList = [];
+        songMods = [];
+        songCredits = [];
+        
+        super.destroy();
     }
 
     public function selectIndex(i:Int):Void
@@ -152,7 +174,7 @@ class DAGSongs extends MusicBeatSubstate
                     }
                 }
             }
-            catch (_:Dynamic) {}
+            catch (e:Dynamic) { trace('Error loading mod songs $mod: $e'); }
         }
 
         final globalDir = Paths.mods('songs');
@@ -169,7 +191,7 @@ class DAGSongs extends MusicBeatSubstate
                 }
             }
         }
-        catch (_:Dynamic) {}
+        catch (e:Dynamic) { trace('Error loading global songs: $e'); }
 
         applyOrder();
         for (i in 0...songList.length) songCredits.push(readCredits(songList[i], songMods[i]));
@@ -197,7 +219,7 @@ class DAGSongs extends MusicBeatSubstate
             songList = [for (p in pairs) p.s];
             songMods = [for (p in pairs) p.m];
         }
-        catch (_:Dynamic) { sortAlpha(); }
+        catch (e:Dynamic) { trace('Error applying song order: $e'); sortAlpha(); }
     }
 
     function sortAlpha():Void
@@ -221,12 +243,12 @@ class DAGSongs extends MusicBeatSubstate
             if (Std.isOfType(json.composer, Array))
             {
                 final arr:Array<String> = cast json.composer;
-                return arr.filter(s -> s != null && s.length > 0);
+                return arr.filter(s -> s?.length > 0);
             }
             final s = Std.string(json.composer);
-            return s != null && s.length > 0 ? [s] : [];
+            return s?.length > 0 ? [s] : [];
         }
-        catch (_:Dynamic) {}
+        catch (e:Dynamic) { trace('Error parsing credits for $song: $e'); }
         return [];
     }
 
@@ -297,7 +319,7 @@ class DAGPlayer extends FlxGroup
     var barInnerY:Float;
     var barInnerW:Float;
     var barInnerH:Float;
-    var barClipRect:flixel.math.FlxRect;
+    var barClipRect:FlxRect;
     var timeTxt:FlxText;
     var songNameTxt:FlxText;
     var composerTxt:FlxText;
@@ -308,14 +330,13 @@ class DAGPlayer extends FlxGroup
     var barDragging:Bool   = false;
     var barLastRatio:Float = 0.0;
     var barDragVel:Float   = 0.0;
+    var scrubTime:Float    = 0.0;
 
     var inst:FlxSound         = null;
     var vocals:Array<FlxSound> = [];
     var oppVocals:Array<FlxSound> = [];
-    // Kept so destroyAudio() can explicitly .close() the streamed Sounds - FlxSound.destroy()
-    // only drops its reference, which would leave the vorbis file open until GC.
-    var instSound:openfl.media.Sound = null;
-    var vocalSounds:Array<openfl.media.Sound> = [];
+    var instSound:Sound = null;
+    var vocalSounds:Array<Sound> = [];
     
     public var loadedSong:String = '';
     public var loadedMod:String  = '';
@@ -344,6 +365,7 @@ class DAGPlayer extends FlxGroup
     var _debugPanel:FlxSprite  = null;
     var origTitle:String  = '';
     var lastTitleSec:Int  = -1;
+
     public function new()
     {
         super();
@@ -372,7 +394,7 @@ class DAGPlayer extends FlxGroup
         songNameTxt.size = sz;
         while (songNameTxt.textField.textWidth > 1080 && sz > 20) songNameTxt.size = --sz;
 
-        credits    = creds != null ? creds : [];
+        credits    = creds ?? [];
         credIdx    = 0;
         credTimer  = 0.0;
         final byLabel = Language.getArray('extras.dagarden', ['BY'])[0];
@@ -393,7 +415,7 @@ class DAGPlayer extends FlxGroup
             fadeTarget = 1.0;
             fadeSpeed  = 12.0;
             isPlaying  = true;
-            #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, FlxMath.bound(inst.time, 0, Math.max(1, inst.length))); #end
+            #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, inst.length, "icon", 2, inst.time); #end
             return;
         }
         stop();
@@ -404,7 +426,7 @@ class DAGPlayer extends FlxGroup
     {
         isPlaying = false;
         pitchDown(() -> { inst?.pause(); for (v in vocals) v.pause(); });
-        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text} (Paused)', null, true, FlxMath.bound(inst?.time ?? 0, 0, Math.max(1, inst?.length ?? 1))); #end
+        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text} (Paused)', null, true, 0, "icon", 2, inst?.time ?? 0); #end
     }
 
     public function stop():Void
@@ -439,10 +461,10 @@ class DAGPlayer extends FlxGroup
     }
 
     public function toggleVocals():Void { vocalsEnabled = !vocalsEnabled; applyVocalVol(inst?.volume ?? 1.0); }
-    public function toggleLoop():Void   { loopEnabled = !loopEnabled; if (inst != null) inst.looped = loopEnabled; }
+    public function toggleLoop():Void   { loopEnabled = !loopEnabled; }
 
     public inline function hasAudio():Bool      return inst != null;
-    public inline function currentTime():Float  return inst != null ? inst.time : -1.0;
+    public inline function currentTime():Float  return inst?.time ?? -1.0;
     public function updateTitle():Void
     {
         #if !mobile
@@ -503,7 +525,7 @@ class DAGPlayer extends FlxGroup
         barProgress = new FlxSprite(barInnerX, barInnerY);
         barProgress.makeGraphic(Std.int(Math.ceil(barInnerW)), Std.int(Math.ceil(barInnerH)), 0xFFCC0000);
         barProgress.antialiasing = false;
-        barClipRect = new flixel.math.FlxRect(0, 0, 0, barInnerH);
+        barClipRect = new FlxRect(0, 0, 0, barInnerH);
         barProgress.clipRect = barClipRect;
         add(barProgress);
         spr(BX, BY, "sprites/bar.webp", SC);
@@ -576,6 +598,7 @@ class DAGPlayer extends FlxGroup
         final b  = 4;
         final bw = _panelW + b * 2;
         final bh = _panelH + b * 2;
+        
         final bbmd = new BitmapData(bw, bh, false, 0xFF000000);
         _panelBorder.loadGraphic(bbmd);
         _panelBorder.x = _debugPanel.x - b;
@@ -583,6 +606,7 @@ class DAGPlayer extends FlxGroup
         final bsh = new shaders.RoundedBorderShader(18.0, 0.0, 0xFF000000);
         bsh.setSize(bw, bh);
         _panelBorder.shader = bsh;
+        
         final bmd    = new BitmapData(_panelW, _panelH, false, 0xFFFFFFFF);
         final gshape = new openfl.display.Shape();
         final mat    = new openfl.geom.Matrix();
@@ -632,22 +656,31 @@ class DAGPlayer extends FlxGroup
             diskDragging  = true;
             diskDragAngle = Math.atan2(my - cy, mx - cx);
             diskDragVel   = 0.0;
+            scrubTime     = inst?.time ?? 0.0;
         }
 
         final was = diskDragging;
         if (!FlxG.mouse.pressed) diskDragging = false;
-        if (was && !diskDragging && elapsed > 0) diskSpeed = (diskDragVel / elapsed) * (180 / Math.PI);
+        
+        if (was && !diskDragging) {
+            if (elapsed > 0) diskSpeed = (diskDragVel / elapsed) * (180 / Math.PI);
+            cleanSeek(scrubTime);
+        }
+        
         if (!diskDragging) { diskDragVel = 0.0; return; }
         if (inst == null || inst.length <= 0) return;
+        
         var angle = Math.atan2(my - cy, mx - cx);
         var da    = angle - diskDragAngle;
         if (da >  Math.PI) da -= Math.PI * 2;
         if (da < -Math.PI) da += Math.PI * 2;
         diskDragAngle = angle;
         diskDragVel   = da;
-        if (da == 0) return;
-        disk.angle += da * (180 / Math.PI);
-        cleanSeek(FlxMath.bound(inst.time + da * 120.0, 0, inst.length - 100));
+        
+        if (da != 0) {
+            disk.angle += da * (180 / Math.PI);
+            scrubTime = FlxMath.bound(scrubTime + da * 120.0, 0, inst.length - 100);
+        }
     }
 
     function handleBarMouse(elapsed:Float):Void
@@ -661,16 +694,24 @@ class DAGPlayer extends FlxGroup
             barDragging  = true;
             barLastRatio = FlxMath.bound((mx - barInnerX) / barInnerW, 0, 1);
             barDragVel   = 0.0;
-            cleanSeek(barLastRatio * inst.length);
+            scrubTime    = barLastRatio * inst.length;
         }
 
-        if (!FlxG.mouse.pressed) { barDragging = false; barDragVel = 0.0; return; }
+        final was = barDragging;
+        if (!FlxG.mouse.pressed) { 
+            barDragging = false; 
+            barDragVel = 0.0; 
+            if (was) cleanSeek(scrubTime);
+            return; 
+        }
+        
         if (!barDragging) return;
+        
         final ratio = FlxMath.bound((mx - barInnerX) / barInnerW, 0, 1);
         barDragVel   = ratio - barLastRatio;
         barLastRatio = ratio;
-        if (Math.abs(barDragVel) < 0.0005) return;
-        cleanSeek(ratio * inst.length);
+        
+        scrubTime = ratio * inst.length;
     }
 
     function updateScratch(elapsed:Float):Void
@@ -696,8 +737,9 @@ class DAGPlayer extends FlxGroup
     function updateBar():Void
     {
         final total = inst?.length ?? 0.0;
-        final cur   = inst?.time   ?? 0.0;
+        final cur   = (diskDragging || barDragging) ? scrubTime : (inst?.time ?? 0.0);
         final pct   = total > 0 ? FlxMath.bound(cur / total, 0, 1) : 0.0;
+        
         barClipRect.width = barInnerW * pct;
         barProgress.clipRect = barClipRect;
         barKnob.setPosition(barInnerX + barInnerW * pct - barKnob.width * 0.5, barInnerY + barInnerH * 0.5 - barKnob.height * 0.5);
@@ -710,10 +752,13 @@ class DAGPlayer extends FlxGroup
     function updateFade(elapsed:Float):Void
     {
         if (fadeSpeed == 0) return;
+
         final cur  = inst?.volume ?? 0.0;
         final next = cur + (fadeTarget - cur) * fadeSpeed * elapsed;
         if (inst != null) inst.volume = next;
+
         applyVocalVol(next);
+
         if (Math.abs(next - fadeTarget) < 0.01)
         {
             if (inst != null) inst.volume = fadeTarget;
@@ -822,7 +867,7 @@ class DAGPlayer extends FlxGroup
         final lSong = song;
 
         final i = Paths.inst(song);
-        final vs:Array<{snd:openfl.media.Sound, isOpp:Bool}> = [];
+        final vs:Array<{snd:Sound, isOpp:Bool}> = [];
         for (pf in [null, 'Opponent', 'Player'])
         {
             final s = Paths.voices(song, pf);
@@ -832,13 +877,13 @@ class DAGPlayer extends FlxGroup
         _finishLoad({inst: i, vocs: vs, gen: gen, lyricsMod: lMod, lyricsSong: lSong});
     }
 
-    function _finishLoad(data:{inst:openfl.media.Sound, vocs:Array<{snd:openfl.media.Sound, isOpp:Bool}>, gen:Int, lyricsMod:String, lyricsSong:String}):Void
+    function _finishLoad(data:{inst:Sound, vocs:Array<{snd:Sound, isOpp:Bool}>, gen:Int, lyricsMod:String, lyricsSong:String}):Void
     {
         if (data == null) return;
         if (data.gen != loadGen)
         {
             data.inst?.close();
-            for (v in data.vocs) if (v != null && v.snd != null) v.snd.close();
+            for (v in data.vocs) v?.snd?.close();
             return;
         }
         loadPending = false;
@@ -846,7 +891,7 @@ class DAGPlayer extends FlxGroup
         if (data.inst == null) return;
 
         inst = FlxG.sound.load(data.inst);
-        inst.looped = loopEnabled;
+        inst.looped = false;
         inst.volume = 0.0;
         instSound = data.inst;
         for (v in data.vocs)
@@ -866,30 +911,31 @@ class DAGPlayer extends FlxGroup
         fadeTarget = 1.0;
         fadeSpeed  = 12.0;
         isPlaying  = true;
-        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, FlxMath.bound(inst.time, 0, Math.max(1, inst.length))); #end
+        #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text}', null, true, inst.length, "icon", 2, inst.time); #end
     }
 
     function checkEnd():Void
     {
-        if (!isPlaying || inst == null || inst.length <= 0 || inst.time < inst.length - 100 || !inst.playing) return;
-        if (loopEnabled)
+        if (!isPlaying || seekPending || diskDragging || barDragging || inst == null || inst.length <= 0) return;
+
+        if (!inst.playing || inst.time >= inst.length - 50)
         {
-            cleanSeek(0);
-            inst.play();
-            for (v in vocals) v.play();
-        }
-        else
-        {
-            isPlaying  = false;
-            inst.pause();
-            inst.time  = 0;
-            for (v in vocals) if (v != null) { v.play(); v.pause(); v.time = 0; }
+            if (loopEnabled)
+            {
+                cleanSeek(0);
+                inst.play();
+                for (v in vocals) v?.play();
+            }
+            else
+            {
+                isPlaying = false;
+                inst.pause();
+                inst.time = 0;
+                for (v in vocals) if (v != null) { v.pause(); v.time = 0; }
+            }
         }
     }
 
-	// Streamed (vorbis) tracks only advance in ~270ms chunks between refills, and FlxSound's
-	// time setter fully rebuilds the audio source - a tight threshold here causes constant
-	// rebuild churn (audible stuttering), so this needs to be looser than that chunk size.
 	static inline final threshold:Float = 300.0;
 
     function resyncVocals():Void
@@ -918,15 +964,19 @@ class DAGPlayer extends FlxGroup
             inst.destroy();
             inst = null;
         }
+
         for (v in vocals) if (v != null)
         {
             v.stop();
             FlxG.sound.list.remove(v, true);
             v.destroy();
         }
+
         instSound?.close();
         instSound = null;
+
         for (s in vocalSounds) s?.close();
+
         vocalSounds = [];
         vocals     = [];
         oppVocals  = [];
@@ -941,7 +991,6 @@ class DAGarden extends SonicSubState
 {
     public static var currentSong:String    = '';
     public static var currentSongMod:String = '';
-
 
     var checkers:FlxBackdrop;
     var decors:Array<FlxSprite> = [];
@@ -970,6 +1019,8 @@ class DAGarden extends SonicSubState
     var drawerTabTxt:FlxText;
     var drawerW:Float = 118.0;
     var drawerH:Float = 184.0;
+    
+    var sharedCapShader:shaders.RoundedBorderShader;
 
     override public function create():Void
     {
@@ -1023,6 +1074,8 @@ class DAGarden extends SonicSubState
         drawerGroup = new flixel.group.FlxSpriteGroup(485.0, 402.0);
         add(drawerGroup);
 
+        sharedCapShader = new shaders.RoundedBorderShader(5.0, 0.0, 0xFF000000);
+
         final b = 4;
         drawerBorder = new FlxSprite(-b, -b);
         drawerGroup.add(drawerBorder);
@@ -1063,9 +1116,11 @@ class DAGarden extends SonicSubState
 
             final cap = new FlxSprite(8.0, rowY);
             cap.makeGraphic(Std.int(22.0), Std.int(22.0), FlxColor.BLACK);
-            final capShader = new shaders.RoundedBorderShader(5.0, 0.0, 0xFF000000);
-            capShader.setSize(22.0, 22.0);
-            cap.shader = capShader;
+            
+            final instShader = new shaders.RoundedBorderShader(5.0, 0.0, 0xFF000000);
+            instShader.setSize(22.0, 22.0);
+            cap.shader = instShader;
+            
             drawerGroup.add(cap);
             drawerKeycapBg.push(cap);
 
@@ -1113,7 +1168,7 @@ class DAGarden extends SonicSubState
         final bgShader = new shaders.RoundedBorderShader(8.0, 0.0, 0xFF000000, 9);
         bgShader.setSize(drawerW, drawerH);
         drawerBg.shader = bgShader;
-
+        
         _redrawDrawerTab();
     }
 
@@ -1128,6 +1183,7 @@ class DAGarden extends SonicSubState
         drawerTabBorder.makeGraphic(Std.int(tw), Std.int(th), FlxColor.BLACK);
         drawerTabBorder.x = drawerGroup.x + tabLocalX;
         drawerTabBorder.y = drawerGroup.y - b;
+
         final tabBorderShader = new shaders.RoundedBorderShader(10.0, 0.0, 0xFF000000, 6);
         tabBorderShader.setSize(tw, th);
         drawerTabBorder.shader = tabBorderShader;
@@ -1138,16 +1194,20 @@ class DAGarden extends SonicSubState
         gshape.graphics.beginGradientFill(openfl.display.GradientType.LINEAR, [0xFFFFFF, 0xB2B1B1], [1, 1], [0, 255], mat);
         gshape.graphics.drawRect(0, 0, tabW, drawerH);
         gshape.graphics.endFill();
+
         final bmd = new BitmapData(Std.int(tabW), Std.int(drawerH), false, 0xFFFFFFFF);
         bmd.draw(gshape);
+
         drawerTabBg.loadGraphic(bmd);
         drawerTabBg.x = drawerGroup.x + tabLocalX;
         drawerTabBg.y = drawerGroup.y;
+
         final tabBgShader = new shaders.RoundedBorderShader(8.0, 0.0, 0xFF000000, 6);
         tabBgShader.setSize(tabW, drawerH);
         drawerTabBg.shader = tabBgShader;
 
         drawerTabTxt.angle = 90;
+
         final tabCenterX = drawerGroup.x + tabLocalX + 2.0 + 44.0 / 2;
         final tabCenterY = drawerGroup.y + drawerH / 2;
         drawerTabTxt.x = tabCenterX - drawerTabTxt.width  / 2;
@@ -1157,12 +1217,16 @@ class DAGarden extends SonicSubState
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+
         if (subState != null) return;
+
         rotTime += elapsed;
+
         decors[0].angle = Math.sin(rotTime * 0.5) * 3;
         decors[2].angle = Math.cos(rotTime * 0.7) * 4;
         decors[5].angle = Math.sin(rotTime * 0.6) * 2;
         decors[6].angle = Math.cos(rotTime * 0.8) * 3.5;
+
         currentSong    = player.isPlaying ? player.loadedSong : '';
         currentSongMod = player.isPlaying ? player.loadedMod  : '';
 
@@ -1204,7 +1268,7 @@ class DAGarden extends SonicSubState
                 }
 
                 final keys = ClientPrefs.keyBinds.get(drawerBtnKey[i]);
-                final keyName = (keys != null && keys.length > 0) ? InputFormatter.getKeyName(keys[0]) : '?';
+                final keyName = keys?.length > 0 ? InputFormatter.getKeyName(keys[0]) : '?';
                 final cap = drawerKeycapBg[i];
                 if (drawerKeycapTxt[i].text != keyName)
                 {
@@ -1216,9 +1280,10 @@ class DAGarden extends SonicSubState
 
                     final capW = Math.max(22.0, drawerKeycapTxt[i].width + 8);
                     cap.makeGraphic(Std.int(capW), Std.int(22.0), FlxColor.BLACK);
-                    final capShader = new shaders.RoundedBorderShader(5.0, 0.0, 0xFF000000);
-                    capShader.setSize(capW, 22.0);
-                    cap.shader = capShader;
+                    
+                    if (cap.shader != null && Std.isOfType(cap.shader, shaders.RoundedBorderShader)) {
+                         cast(cap.shader, shaders.RoundedBorderShader).setSize(capW, 22.0);
+                    }
 
                     drawerBtnTxt[i].x = cap.x + capW + 8.0;
 
@@ -1245,6 +1310,7 @@ class DAGarden extends SonicSubState
 
         final fadeRange = 24.0;
         drawerRowsAlpha = FlxMath.bound((drawerBg.x - 602.0 + fadeRange) / fadeRange, 0, 1);
+
         for (t in drawerBtnTxt)    t.alpha = drawerRowsAlpha;
         for (k in drawerKeycapBg)  k.alpha = drawerRowsAlpha;
         for (k in drawerKeycapTxt) k.alpha = drawerRowsAlpha;
@@ -1256,9 +1322,9 @@ class DAGarden extends SonicSubState
         if (localX <= 0)
             spr.clipRect = null; // show all of it
         else if (localX >= spr.frameWidth)
-            spr.clipRect = new flixel.math.FlxRect(0, 0, 0, spr.frameHeight); // then hide all of it
+            spr.clipRect = new FlxRect(0, 0, 0, spr.frameHeight); // then hide all of it
         else
-            spr.clipRect = new flixel.math.FlxRect(localX, 0, spr.frameWidth - localX, spr.frameHeight);
+            spr.clipRect = new FlxRect(localX, 0, spr.frameWidth - localX, spr.frameHeight);
     }
 
     function toggleDrawer():Void
@@ -1306,6 +1372,7 @@ class DAGarden extends SonicSubState
         checkers.alpha      = 0.10;
         checkers.velocity.x = -60;
         add(checkers);
+
         for (d in [
             {x: 560, y: 560, f: "objects/1.webp", s: 0.25},
             {x: 950, y: 580, f: "objects/2.webp", s: 0.15},
@@ -1327,6 +1394,7 @@ class DAGarden extends SonicSubState
         spikes.updateHitbox();
         spikes.velocity.y = 50;
         add(spikes);
+
         final ox = [20.0, -10.0,  25.0, -18.0,  12.0, -16.0, 28.0];
         final oy = [ 8.0,  18.0, -15.0,  22.0, -20.0,  14.0, 10.0];
         final dx = [ 3.2,   1.8,   2.9,   2.4,   3.6,   1.9,  3.3];
@@ -1368,13 +1436,14 @@ class DAGarden extends SonicSubState
     inline function dagKey(saveKey:String):Bool
     {
         final keys = ClientPrefs.keyBinds.get(saveKey);
-        return keys != null && keys.length > 0 && FlxG.keys.anyJustPressed(keys);
+        return keys?.length > 0 && FlxG.keys.anyJustPressed(keys);
     }
 
     function handleInput():Void
     {
         if (dagKey('dagarden_play'))    { if (player.isPlaying) player.pause();
         else player.playAudio(songs.selectedSong(), songs.selectedMod()); }
+
         if (dagKey('dagarden_loop'))    player.toggleLoop();
         if (dagKey('dagarden_vocals'))  player.toggleVocals();
         if (dagKey('dagarden_stop'))    player.fadeOutAndStop();

@@ -82,7 +82,7 @@
 	"achievement_rings": "戒指过敏", "achievement_description_rings": "在不收集任何戒指的情况下完成 Triple Trouble",
 	"achievement_norings": "让你看看速度！", "achievement_description_norings": "在不按下任何戒指的情况下完成 Manual Blast",
 	"achievement_tripledeaths": "前进遇到困难了？", "achievement_description_tripledeaths": "查看 Triple Trouble 的所有死亡画面",
-	"achievement_dagarden": "音乐爱好者！", "achievement_description_dagarden": "完成 DA Garden 歌曲库",
+	"achievement_dagarden": "音乐爱好者！", "achievement_description_dagarden": "完成 D.A Garden 歌曲库",
 	"achievement_parallax": "戒指的另一边", "achievement_description_parallax": "进入 PARALLAX 菜单",
 	"achievement_secondary": "到底发生了什么...", "achievement_description_secondary": "找到所有隐藏代码",
 	"achievement_sega": "收到信息", "achievement_description_sega": "收到 SEGA Enterprise 的通知",
@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "找到 Fatality 彩蛋",
 	"achievement_sonichu": "极限电击！", "achievement_description_sonichu": "找到并击败 Sonichu",
 	"achievement_shocks": "这伏特攻击可真猛啊？！", "achievement_description_shocks": "死于 Sonichu 的电击",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["用户名", "令牌", "操作", "奖杯"],
+	"gamejolt.status.notloggedin": "未登录",
+	"gamejolt.status.loggedin": "已登录: {1}",
+	"gamejolt.action.login": "登录",
+	"gamejolt.action.logout": "注销",
+	"gamejolt.action.sync": "同步奖杯",
+	"gamejolt.status.timeout": "登录失败 — 服务器响应超时",
+	"gamejolt.status.syncing": "同步中...",
+	"gamejolt.status.synced": "同步完成！",
+	"gamejolt.status.empty": "请输入用户名和令牌",
+	"gamejolt.status.connecting": "连接中...",
+	"gamejolt.status.failed": "登录失败 — 请检查用户名或令牌"
 }

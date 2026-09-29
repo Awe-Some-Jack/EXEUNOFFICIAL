@@ -2,6 +2,7 @@ package backend;
 
 import haxe.Json;
 import lime.system.Locale;
+import lime.system.System;
 
 class Language
 {
@@ -9,8 +10,10 @@ class Language
 	static var currentKey:String = 'en-US';
 
 	public static function getSystemLanguage():String {
-		var sysLang:String = Locale.systemLocale.language; 
-		if (sysLang != null) sysLang = sysLang.toLowerCase();
+		final locales:Array<Locale> = System.getPreferredLocales();
+
+		var sysLang:String = (locales?.length > 0 && locales[0].language != null) ? locales[0].language : 'en';
+		sysLang = sysLang.toLowerCase();
 
 		return switch (sysLang) {
 			case 'es': 'es-419';

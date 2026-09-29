@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Trouvez l'easter-egg de Fatality",
 	"achievement_sonichu": "Zap à l'extrême !", "achievement_description_sonichu": "Trouvez et battez Sonichu",
 	"achievement_shocks": "C'est quoi cet Électacle ?!", "achievement_description_shocks": "Mourez des chocs électriques de Sonichu",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["UTILISATEUR", "JETON", "ACTION", "TROPHÉES"],
+	"gamejolt.status.notloggedin": "NON CONNECTÉ",
+	"gamejolt.status.loggedin": "CONNECTÉ : {1}",
+	"gamejolt.action.login": "CONNEXION",
+	"gamejolt.action.logout": "DÉCONNEXION",
+	"gamejolt.action.sync": "SYNC TROPHÉES",
+	"gamejolt.status.timeout": "ÉCHEC DE CONNEXION — LE SERVEUR A MIS TROP DE TEMPS",
+	"gamejolt.status.syncing": "SYNCHRONISATION...",
+	"gamejolt.status.synced": "SYNCHRONISÉ !",
+	"gamejolt.status.empty": "ENTREZ L'UTILISATEUR ET LE JETON",
+	"gamejolt.status.connecting": "CONNEXION...",
+	"gamejolt.status.failed": "ÉCHEC DE CONNEXION — VÉRIFIEZ L'UTILISATEUR/JETON"
 }

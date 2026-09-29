@@ -105,5 +105,18 @@
 
 	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "Finde das The Valley-Easter-Egg",
 	"achievement_flash": "Update doch mal auf Windows 11...", "achievement_description_flash": "Besiege Flash 3 Mal",
-	"achievement_popup": "BRING HIER ORDNUNG REIN!", "achievement_description_popup": "Schließe Fatality ab, ohne ein Pop-up zu schließen"
+	"achievement_popup": "BRING HIER ORDNUNG REIN!", "achievement_description_popup": "Schließe Fatality ab, ohne ein Pop-up zu schließen",
+
+	"gamejolt.labels": ["BENUTZERNAME", "TOKEN", "AKTION", "TROPHÄEN"],
+	"gamejolt.status.notloggedin": "NICHT ANGEMELDET",
+	"gamejolt.status.loggedin": "ANGEMELDET: {1}",
+	"gamejolt.action.login": "ANMELDEN",
+	"gamejolt.action.logout": "ABMELDEN",
+	"gamejolt.action.sync": "TROPHÄEN SYNC",
+	"gamejolt.status.timeout": "ANMELDUNG FEHLGESCHLAGEN — SERVER-ZEITÜBERSCHREITUNG",
+	"gamejolt.status.syncing": "WIRD SYNCHRONISIERT...",
+	"gamejolt.status.synced": "SYNCHRONISIERT!",
+	"gamejolt.status.empty": "BENUTZERNAME UND TOKEN EINGEBEN",
+	"gamejolt.status.connecting": "VERBINDEN...",
+	"gamejolt.status.failed": "ANMELDUNG FEHLGESCHLAGEN — BENUTZER/TOKEN PRÜFEN"
 }

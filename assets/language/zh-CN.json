@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "找到 Fatality 彩蛋",
 	"achievement_sonichu": "极限电击！", "achievement_description_sonichu": "找到并击败 Sonichu",
 	"achievement_shocks": "这伏特攻击可真猛啊？！", "achievement_description_shocks": "死于 Sonichu 的电击",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["用户名", "令牌", "操作", "奖杯"],
+	"gamejolt.status.notloggedin": "未登录",
+	"gamejolt.status.loggedin": "已登录: {1}",
+	"gamejolt.action.login": "登录",
+	"gamejolt.action.logout": "注销",
+	"gamejolt.action.sync": "同步奖杯",
+	"gamejolt.status.timeout": "登录失败 — 服务器响应超时",
+	"gamejolt.status.syncing": "同步中...",
+	"gamejolt.status.synced": "同步完成！",
+	"gamejolt.status.empty": "请输入用户名和令牌",
+	"gamejolt.status.connecting": "连接中...",
+	"gamejolt.status.failed": "登录失败 — 请检查用户名或令牌"
 }

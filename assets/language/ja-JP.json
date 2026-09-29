@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Fatalityのイースターエッグを見つける",
 	"achievement_sonichu": "極限までザップ！", "achievement_description_sonichu": "Sonichuを見つけて倒す",
 	"achievement_shocks": "すごいボルテッカーだな？！", "achievement_description_shocks": "Sonichuの電撃で死ぬ",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["ユーザー名", "トークン", "アクション", "トロフィー"],
+	"gamejolt.status.notloggedin": "未ログイン",
+	"gamejolt.status.loggedin": "ログイン中: {1}",
+	"gamejolt.action.login": "ログイン",
+	"gamejolt.action.logout": "ログアウト",
+	"gamejolt.action.sync": "トロフィーを同期",
+	"gamejolt.status.timeout": "ログイン失敗 — サーバー応答タイムアウト",
+	"gamejolt.status.syncing": "同期中...",
+	"gamejolt.status.synced": "同期完了！",
+	"gamejolt.status.empty": "ユーザー名とトークンを入力してください",
+	"gamejolt.status.connecting": "接続中...",
+	"gamejolt.status.failed": "ログイン失敗 — ユーザー名/トークンを確認してください"
 }

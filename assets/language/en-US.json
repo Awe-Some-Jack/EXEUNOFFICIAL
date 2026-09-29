@@ -107,5 +107,18 @@
 
 	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "Find the The Valley easter-egg",
 	"achievement_flash": "Update to Windows 11 already...", "achievement_description_flash": "Beat Flash 3 times",
-	"achievement_popup": "HAVE SOME ORGANIZATION!", "achievement_description_popup": "Beat Fatality without closing any pop-up"
+	"achievement_popup": "HAVE SOME ORGANIZATION!", "achievement_description_popup": "Beat Fatality without closing any pop-up",
+
+	"gamejolt.labels": ["USERNAME", "TOKEN", "ACTION", "TROPHIES"],
+	"gamejolt.status.notloggedin": "NOT LOGGED IN",
+	"gamejolt.status.loggedin": "LOGGED IN: {1}",
+	"gamejolt.action.login": "LOGIN",
+	"gamejolt.action.logout": "LOGOUT",
+	"gamejolt.action.sync": "SYNC TROPHIES",
+	"gamejolt.status.timeout": "LOGIN FAILED — SERVER TOOK TOO LONG TO RESPOND",
+	"gamejolt.status.syncing": "SYNCING...",
+	"gamejolt.status.synced": "SYNCED!",
+	"gamejolt.status.empty": "ENTER USERNAME AND TOKEN",
+	"gamejolt.status.connecting": "CONNECTING...",
+	"gamejolt.status.failed": "LOGIN FAILED — CHECK USERNAME/TOKEN"
 }

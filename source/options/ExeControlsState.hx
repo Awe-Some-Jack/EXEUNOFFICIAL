@@ -61,7 +61,7 @@ class ExeControlsState extends ExeBaseOptionsState
 
 		var lbl = Language.getArray('options.controls.labels', ["NOTES", "UI", "ACTIONS", "LEFT", "DOWN", "UP", "RIGHT", "ACCEPT", "BACK", "PAUSE", "RESET"]);
 		var dag = Language.getArray('extras.dagarden', ["BY", "INST", "PLAY/PAUSE", "REWIND", "FORWARD", "STOP", "LOOP"]);
-		sections = [lbl[0], lbl[1], lbl[2], "D.A GARDEN"];
+		sections = [lbl[0], lbl[1], lbl[2], Language.getArray("extras.menu.dagarden", ["D.A GARDEN"])[0]];
 
 		noteOptions[0].label = lbl[3]; noteOptions[1].label = lbl[4];
 		noteOptions[2].label = lbl[5]; noteOptions[3].label = lbl[6];
@@ -73,7 +73,7 @@ class ExeControlsState extends ExeBaseOptionsState
 		actionOptions[2].label = lbl[9]; actionOptions[3].label = lbl[10];
 
 		dagardenOptions[0].label = dag[2]; dagardenOptions[1].label = dag[5];
-		dagardenOptions[2].label = dag[3]; dagardenOptions[3].label = dag[4];
+		dagardenOptions[2].label = dag[3].replace(": ", ""); dagardenOptions[3].label = dag[4].replace(": ", "");
 		dagardenOptions2[0].label = dag[6]; dagardenOptions2[1].label = dag[1];
 
 		for (opt in noteOptions)

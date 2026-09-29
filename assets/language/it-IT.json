@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Trova l'easter-egg di Fatality",
 	"achievement_sonichu": "Zap all'estremo!", "achievement_description_sonichu": "Trova e sconfiggi Sonichu",
 	"achievement_shocks": "Che Locomovolt, eh?!", "achievement_description_shocks": "Muori per le scosse elettriche di Sonichu",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["UTENTE", "TOKEN", "AZIONE", "TROFEI"],
+	"gamejolt.status.notloggedin": "NON CONNESSO",
+	"gamejolt.status.loggedin": "CONNESSO: {1}",
+	"gamejolt.action.login": "ACCEDI",
+	"gamejolt.action.logout": "ESCI",
+	"gamejolt.action.sync": "SINCRONIZZA",
+	"gamejolt.status.timeout": "ACCESSO FALLITO — IL SERVER CI HA MESSO TROPPO",
+	"gamejolt.status.syncing": "SINCRONIZZAZIONE...",
+	"gamejolt.status.synced": "SINCRONIZZATO!",
+	"gamejolt.status.empty": "INSERISCI UTENTE E TOKEN",
+	"gamejolt.status.connecting": "CONNESSIONE...",
+	"gamejolt.status.failed": "ACCESSO FALLITO — CONTROLLA UTENTE/TOKEN"
 }

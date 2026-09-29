@@ -105,5 +105,18 @@
 
 	"achievement_sans": "С.. САНС?!", "achievement_description_sans": "Знайди пасхалку в The Valley",
 	"achievement_flash": "Оновися вже до Windows 11...", "achievement_description_flash": "Пройди Flash 3 рази",
-	"achievement_popup": "ДЕ ТВІЙ ЛАД?!", "achievement_description_popup": "Пройди Fatality, не закривши жодного вікна"
+	"achievement_popup": "ДЕ ТВІЙ ЛАД?!", "achievement_description_popup": "Пройди Fatality, не закривши жодного вікна",
+
+	"gamejolt.labels": ["ІМ'Я КОРИСТУВАЧА", "ТОКЕН", "ДІЯ", "ТРОФЕЇ"],
+	"gamejolt.status.notloggedin": "ВХІД НЕ ВИКОНАНО",
+	"gamejolt.status.loggedin": "В МЕРЕЖІ: {1}",
+	"gamejolt.action.login": "УВІЙТИ",
+	"gamejolt.action.logout": "ВИЙТИ",
+	"gamejolt.action.sync": "СИНХРОНІЗУВАТИ",
+	"gamejolt.status.timeout": "ПОМИЛКА ВХОДУ — СЕРВЕР ЗАНАДТО ДОВГО НЕ ВІДПОВІДАВ",
+	"gamejolt.status.syncing": "СИНХРОНІЗАЦІЯ...",
+	"gamejolt.status.synced": "СИНХРОНІЗОВАНО!",
+	"gamejolt.status.empty": "ВВЕДИ ІМ'Я ТА ТОКЕН",
+	"gamejolt.status.connecting": "ПІДКЛЮЧЕННЯ...",
+	"gamejolt.status.failed": "ПОМИЛКА ВХОДУ — ПЕРЕВІР ІМ'Я/ТОКЕН"
 }

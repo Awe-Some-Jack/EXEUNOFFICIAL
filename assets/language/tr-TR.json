@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Fatality sürpriz yumurtasını bul",
 	"achievement_sonichu": "Ekstrem şok!", "achievement_description_sonichu": "Sonichu'yu bul ve yen",
 	"achievement_shocks": "Ne Volt Tackle'dı ama?!", "achievement_description_shocks": "Sonichu'nun elektroşoklarından öl",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["KULLANICI", "TOKEN", "İŞLEM", "KUPALAR"],
+	"gamejolt.status.notloggedin": "GİRİŞ YAPILMADI",
+	"gamejolt.status.loggedin": "GİRİŞ YAPILDI: {1}",
+	"gamejolt.action.login": "GİRİŞ YAP",
+	"gamejolt.action.logout": "ÇIKIŞ YAP",
+	"gamejolt.action.sync": "SENKRONİZE ET",
+	"gamejolt.status.timeout": "GİRİŞ BAŞARISIZ — SUNUCU YANIT VERMEDİ",
+	"gamejolt.status.syncing": "SENKRONİZE EDİLİYOR...",
+	"gamejolt.status.synced": "SENKRONİZE EDİLDİ!",
+	"gamejolt.status.empty": "KULLANICI ADI VE TOKEN GİR",
+	"gamejolt.status.connecting": "BAĞLANIYOR...",
+	"gamejolt.status.failed": "GİRİŞ BAŞARISIZ — KULLANICI/TOKEN KONTROL ED"
 }

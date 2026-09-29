@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Encontre o easter-egg de Fatality",
 	"achievement_sonichu": "Zap ao extremo!", "achievement_description_sonichu": "Encontre e derrote o Sonichu",
 	"achievement_shocks": "Que Investida Trovão foi essa, hein?!", "achievement_description_shocks": "Morra pelos choques elétricos do Sonichu",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["USUÁRIO", "TOKEN", "AÇÃO", "TROFÉUS"],
+	"gamejolt.status.notloggedin": "NÃO CONECTADO",
+	"gamejolt.status.loggedin": "CONECTADO: {1}",
+	"gamejolt.action.login": "ENTRAR",
+	"gamejolt.action.logout": "SAIR",
+	"gamejolt.action.sync": "SINCRONIZAR",
+	"gamejolt.status.timeout": "FALHA AO ENTRAR — SERVIDOR DEMOROU MUITO",
+	"gamejolt.status.syncing": "SINCRONIZANDO...",
+	"gamejolt.status.synced": "SINCRONIZADO!",
+	"gamejolt.status.empty": "INSIRA O USUÁRIO E TOKEN",
+	"gamejolt.status.connecting": "CONECTANDO...",
+	"gamejolt.status.failed": "FALHA AO ENTRAR — VERIFIQUE USUÁRIO/TOKEN"
 }

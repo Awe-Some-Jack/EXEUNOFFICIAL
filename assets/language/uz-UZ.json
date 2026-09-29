@@ -105,5 +105,18 @@
 
 	"achievement_sans": "S.. SANS?!", "achievement_description_sans": "The Valley'da pasxalkasini toping",
 	"achievement_flash": "Windows 11 ga yangilab ol endi...", "achievement_description_flash": "Flash'ni 3 marta yakunlang",
-	"achievement_popup": "TARTIBGA SOL!", "achievement_description_popup": "Fatality'ni bitta ham oyna yopmasdan yakunlang"
+	"achievement_popup": "TARTIBGA SOL!", "achievement_description_popup": "Fatality'ni bitta ham oyna yopmasdan yakunlang",
+
+	"gamejolt.labels": ["FOYDALANUVCHI", "TOKEN", "AMAL", "YUTUQLAR"],
+	"gamejolt.status.notloggedin": "TIZIMGA KIRILMAGAN",
+	"gamejolt.status.loggedin": "TIZIMDA: {1}",
+	"gamejolt.action.login": "KIRISH",
+	"gamejolt.action.logout": "CHIQISH",
+	"gamejolt.action.sync": "YUTUQLARNI SINXRONLASH",
+	"gamejolt.status.timeout": "KIRISHDA XATOLIK — SERVER JAVOB BERISHI CHO'ZILIB KETDI",
+	"gamejolt.status.syncing": "SINXRONLANMOQDA...",
+	"gamejolt.status.synced": "SINXRONLANDI!",
+	"gamejolt.status.empty": "FOYDALANUVCHI NOMI VA TOKENNI KIRITING",
+	"gamejolt.status.connecting": "ULANMOQDA...",
+	"gamejolt.status.failed": "KIRISHDA XATOLIK — NOMI YOKI TOKENNI TEKSHIRING"
 }

@@ -104,5 +104,18 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Fatality 이스터에그를 찾으세요",
 	"achievement_sonichu": "극한의 짜릿함!", "achievement_description_sonichu": "Sonichu를 찾고 쓰러뜨리세요",
 	"achievement_shocks": "엄청난 볼트태클이네, 안 그래?!", "achievement_description_shocks": "Sonichu의 전기 충격으로 죽으세요",
-	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro"
+	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
+
+	"gamejolt.labels": ["사용자 이름", "토큰", "작업", "트로피"],
+	"gamejolt.status.notloggedin": "로그인되지 않음",
+	"gamejolt.status.loggedin": "로그인됨: {1}",
+	"gamejolt.action.login": "로그인",
+	"gamejolt.action.logout": "로그아웃",
+	"gamejolt.action.sync": "트로피 동기화",
+	"gamejolt.status.timeout": "로그인 실패 — 서버 응답 초과",
+	"gamejolt.status.syncing": "동기화 중...",
+	"gamejolt.status.synced": "동기화 완료!",
+	"gamejolt.status.empty": "사용자 이름과 토큰을 입력하세요",
+	"gamejolt.status.connecting": "연결 중...",
+	"gamejolt.status.failed": "로그인 실패 — 사용자 이름/토큰 확인"
 }

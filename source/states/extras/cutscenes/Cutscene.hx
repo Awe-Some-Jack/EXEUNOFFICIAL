@@ -901,9 +901,12 @@ class Cutscene extends SonicSubState
         #end
     }
 
+    var isBacking:Bool = false;
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+
+        if (isBacking) return;
 
         if (COOLDOWN_TIMER > 0) COOLDOWN_TIMER -= elapsed;
 
@@ -965,7 +968,11 @@ class Cutscene extends SonicSubState
         }
 
         if (controls.BACK #if mobile || backPressed #end)
+        {
+            isBacking = true;
+            FlxG.sound.play(Paths.sound('cancelMenu'));
             close();
+        }
     }
 
     function _slideOutAndOpenVideo():Void

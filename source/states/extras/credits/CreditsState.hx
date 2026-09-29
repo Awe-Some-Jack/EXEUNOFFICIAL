@@ -49,7 +49,6 @@ class CreditsState extends SonicSubState
 		super.create();
 
 		FlxG.mouse.visible = true;
-		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/credits.ogg'));
 
 		final json:Dynamic = Json.parse(Assets.getText("assets/exe/extras/credits/credits.json"));
 		for (cat in Reflect.fields(json)) credits.set(cat, cast Reflect.field(json, cat));
@@ -152,7 +151,7 @@ class CreditsState extends SonicSubState
 		if (controls.BACK && !_closing #if mobile || backPressed #end)
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			FlxG.sound.music?.stop();
+			FlxTween.cancelTweensOf(FlxG.sound.music); FlxTween.tween(FlxG.sound.music, {volume:1}, 0.6);
 			close(); return;
 		}
 
@@ -209,8 +208,6 @@ class CreditsState extends SonicSubState
 	override function destroy()
 	{
 		FlxG.mouse.visible = false;
-		
-		states.extras.ExtrasMenu.playCurrentMenuTheme();
 
 		for (col in columns) 
 			FlxG.cameras.remove(col.cam);

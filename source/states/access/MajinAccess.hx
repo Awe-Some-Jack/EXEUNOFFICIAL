@@ -32,7 +32,7 @@ class MajinAccess extends MusicBeatState
 	{
 		super.create();
 
-		FlxG.sound.playMusic(Assets.getSound('assets/exe/access/majin/selectsoundtrack.ogg'), 0.8);
+		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/selectmajin.ogg'), 0.8);
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/access/majin/bg.webp'));
 		bg.scale.set(1500, 1500);

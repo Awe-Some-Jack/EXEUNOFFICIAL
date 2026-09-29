@@ -177,6 +177,14 @@ class AchievementsState extends SonicSubState
         
         FlxG.sound.play(Paths.sound('cancelMenu'));
 
+        FlxTween.cancelTweensOf(spikes);
+        FlxTween.cancelTweensOf(black);
+        FlxTween.cancelTweensOf(achievementsTitle);
+        FlxTween.cancelTweensOf(sideBar);
+        FlxTween.cancelTweensOf(sideBarScroll);
+        FlxTween.cancelTweensOf(achievementProgress);
+        FlxTween.cancelTweensOf(achievementGroup);
+
         FlxTween.tween(spikes, {y: -400}, 0.8, {ease: FlxEase.cubeIn});
         FlxTween.tween(black, {y: -400}, 0.8, {ease: FlxEase.cubeIn});
         FlxTween.tween(achievementsTitle, {y: -400}, 0.8, {ease: FlxEase.cubeIn});

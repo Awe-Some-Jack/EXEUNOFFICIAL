@@ -1000,7 +1000,6 @@ class DAGarden extends SonicSubState
     var rotTime:Float = 0.0;
     var songs:DAGSongs;
     var player:DAGPlayer;
-    var ambientMusic:FlxSound;
 
     var drawerOpen:Bool = false;
     var drawerGroup:flixel.group.FlxSpriteGroup;
@@ -1024,7 +1023,6 @@ class DAGarden extends SonicSubState
 
     override public function create():Void
     {
-        FlxG.autoPause = false;
         FlxG.mouse.visible = true;
 
         buildBG();
@@ -1046,11 +1044,8 @@ class DAGarden extends SonicSubState
         player = new DAGPlayer();
         add(player);
 
-        FlxG.sound.music?.pause();
         if (songs.songList.length > 0)
             songs.selectSong(0);
-
-        ambientMusic = FlxG.sound.load(OpenFlAssets.getSound('assets/exe/extras/music/ChaoGarden.ogg'), 1.0, true);
 
         buildDrawer();
 
@@ -1230,10 +1225,24 @@ class DAGarden extends SonicSubState
         currentSong    = player.isPlaying ? player.loadedSong : '';
         currentSongMod = player.isPlaying ? player.loadedMod  : '';
 
-        if (ambientMusic != null)
+        if (FlxG.sound.music != null)
         {
-            if (player.isPlaying) { if (ambientMusic.playing) ambientMusic.pause(); }
-            else                  { if (!ambientMusic.playing) ambientMusic.play();  }
+            if (player.isPlaying)
+            {
+                if (FlxG.sound.music.playing)
+                {
+                    FlxG.sound.music.pause();
+                    FlxG.autoPause = false;
+                }
+            }
+            else
+            {
+                if(!FlxG.sound.music.playing)
+                {
+                    FlxG.sound.music.play(); 
+                    FlxG.autoPause = true;
+                }
+            }
         }
 
         updateDrawer();
@@ -1338,13 +1347,6 @@ class DAGarden extends SonicSubState
     override public function destroy():Void
     {
         FlxG.autoPause = true;
-        if (ambientMusic != null)
-        {
-            ambientMusic.stop();
-            FlxG.sound.list.remove(ambientMusic, true);
-            ambientMusic.destroy();
-            ambientMusic = null;
-        }
         super.destroy();
     }
 
@@ -1439,8 +1441,10 @@ class DAGarden extends SonicSubState
         return keys?.length > 0 && FlxG.keys.anyJustPressed(keys);
     }
 
+    var isBacking:Bool = false;
     function handleInput():Void
     {
+        if (isBacking) return;
         if (dagKey('dagarden_play'))    { if (player.isPlaying) player.pause();
         else player.playAudio(songs.selectedSong(), songs.selectedMod()); }
 
@@ -1451,9 +1455,11 @@ class DAGarden extends SonicSubState
         if (dagKey('dagarden_forward')) player.seek(DAGPlayer.SEEK_SECONDS);
         if (controls.BACK #if mobile || backPressed #end)
         {
+            isBacking = true;
             player.restoreWindowTitle();
             player.stop();
-            FlxG.sound.music?.resume();
+            FlxG.sound.play(Paths.sound('cancelMenu'));
+            if (!FlxG.sound.music?.playing) FlxG.sound.music.resume();
             currentSong    = '';
             currentSongMod = '';
             close();

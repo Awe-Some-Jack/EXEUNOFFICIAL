@@ -161,7 +161,7 @@ class FridgeAccess extends MusicBeatState
 		whiteBG.screenCenter();
 		add(whiteBG);
 
-		FlxG.sound.playMusic(Assets.getSound('assets/exe/access/fridge/sunky.ogg'), 0.8);
+		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/sunky.ogg'), 0.8);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);

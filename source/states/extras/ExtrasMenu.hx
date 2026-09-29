@@ -75,15 +75,33 @@ class ExtrasMenu extends MusicBeatState
 
     static final extrasMenuThemes:Array<ExtrasMenuThemeEntry> = [
         {
-            name: "WELCOME TO THE EXTRAS",
-            src: "ExtrasMenu",
+            name: "Welcome to the Extras",
+            src: "extras",
             author: "MeDicenKay",
             volume: 1
         },
         {
-            name: "EXTRAS MENU",
-            src: "ExtrasMenu_DataSelectSonic3",
+            name: "Data Select (Reimagined)",
+            src: "extras2",
             author: "MeDicenKay",
+            volume: 1
+        },
+        {
+            name: "Chao Garden",
+            src: "chaogarden",
+            author: "Kiv.FLP",
+            volume: 1
+        },
+        {
+            name: "Old Freeplay Theme",
+            src: "extras3",
+            author: "Alex Hamud",
+            volume: 1
+        },
+        {
+            name: "Credits Theme",
+            src: "credits",
+            author: "MeDicenKay ft. Suonima",
             volume: 1
         }
     ];
@@ -95,7 +113,7 @@ class ExtrasMenu extends MusicBeatState
     }
 
     public static function playCurrentMenuTheme():Void {
-        FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/${getCurrentMenuTheme().src}.ogg'));
+        FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/music/${getCurrentMenuTheme().src}.ogg'));
         FlxG.sound.music.volume = getCurrentMenuTheme().volume;
     }
 
@@ -103,7 +121,7 @@ class ExtrasMenu extends MusicBeatState
         * Returns the Current Name Theme + Theme Author
     **/
     public function getThemeLabel():String{
-        return getCurrentMenuTheme().name+" BY: "+getCurrentMenuTheme().author;
+        return getCurrentMenuTheme().name + '\n${Language.getArray('extras.dagarden', ['BY'])[0].toLowerCase().replace(":", "")} ${getCurrentMenuTheme().author}';
     }
 
     public function updateArrowPositions(){
@@ -259,6 +277,7 @@ class ExtrasMenu extends MusicBeatState
         if (controls.BACK #if mobile || backPressed #end)
         {
             canMove = false;
+            FlxG.sound.play(Paths.sound('cancelMenu'));
             FlxG.sound.music?.fadeOut(0.3);
 
             FlxG.switchState(() -> new EXEMenu());
@@ -676,7 +695,7 @@ class ExtrasMenu extends MusicBeatState
                 nowPlayingSong.x = np.x;
                 updateArrowPositions();
                 FlxTween.tween(nowPlayingSong, {alpha: 1}, 0.2, {ease: FlxEase.quadIn});
-                FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/extras/music/${getCurrentMenuTheme().src}.ogg'));
+                FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/music/${getCurrentMenuTheme().src}.ogg'));
                 FlxG.sound.music.volume = 0;
                 FlxTween.tween(FlxG.sound.music, {volume: getCurrentMenuTheme().volume}, 0.2, {ease: FlxEase.quadOut}); 
             }

@@ -41,8 +41,6 @@ function onCreate()
     fuente.animation.addByPrefix('idle', 'fountain', 12, true);
     fuente.animation.play('idle', true);
     fuente.scale.set(1.2, 1.2);
-    fuente.antialiasing = true;
-    fuente.visible = true;
     addBehindGF(fuente);
 
     menuSTATIC = new VideoSprite();

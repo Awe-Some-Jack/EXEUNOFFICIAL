@@ -102,23 +102,24 @@ class DiscordClient
 		isInitialized = true;
 	}
 
-	public static function changePresence(details:String = 'In the Menus', ?state:String, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float, largeImageKey:String = 'icon')
+	public static function changePresence(details:String = 'In the Menus', ?state:String, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float, largeImageKey:String = 'icon', activityType:Int = 0, currentSongPos:Float = 0)
 	{
 		var startTimestamp:Float = 0;
-		if (hasStartTimestamp) startTimestamp = Date.now().getTime();
-		if (endTimestamp > 0) endTimestamp = startTimestamp + endTimestamp;
+		if (hasStartTimestamp)
+			startTimestamp = Date.now().getTime() - currentSongPos; 
+		if (endTimestamp > 0)
+			endTimestamp = startTimestamp + endTimestamp; 
 
 		presence.state = state;
 		presence.details = details;
 		presence.smallImageKey = smallImageKey;
 		presence.largeImageKey = largeImageKey;
 		presence.largeImageText = 'Version: (${Application.current.meta.get('version')})';
-		// Obtained times are in milliseconds so they are divided so Discord can use it
 		presence.startTimestamp = Std.int(startTimestamp / 1000);
 		presence.endTimestamp = Std.int(endTimestamp / 1000);
+		presence.type = activityType; 
+		
 		updatePresence();
-
-		//trace('Discord RPC Updated. Arguments: $details, $state, $smallImageKey, $hasStartTimestamp, $endTimestamp, $largeImageKey');
 	}
 
 	public static function updatePresence()
@@ -179,6 +180,7 @@ private final class DiscordPresence
 	public var largeImageText(get, set):String;
 	public var startTimestamp(get, set):Int;
 	public var endTimestamp(get, set):Int;
+	public var type(get, set):Int;
 
 	@:noCompletion private var __presence:DiscordRichPresence;
 
@@ -269,6 +271,17 @@ private final class DiscordPresence
 	@:noCompletion inline function set_endTimestamp(value:Int):Int
 	{
 		__presence.endTimestamp = value;
+		return value;
+	}
+
+	@:noCompletion inline function get_type():Int
+	{
+		return cast(__presence.type, Int);
+	}
+
+	@:noCompletion inline function set_type(value:Int):Int
+	{
+		__presence.type = value;
 		return value;
 	}
 }

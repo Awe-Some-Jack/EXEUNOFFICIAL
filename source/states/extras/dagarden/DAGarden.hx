@@ -415,7 +415,7 @@ class DAGPlayer extends FlxGroup
             fadeTarget = 1.0;
             fadeSpeed  = 12.0;
             isPlaying  = true;
-            #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, FlxMath.bound(inst.time, 0, Math.max(1, inst.length))); #end
+            #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, inst.length, "icon", 2, inst.time); #end
             return;
         }
         stop();
@@ -426,7 +426,7 @@ class DAGPlayer extends FlxGroup
     {
         isPlaying = false;
         pitchDown(() -> { inst?.pause(); for (v in vocals) v.pause(); });
-        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text} (Paused)', null, true, FlxMath.bound(inst?.time ?? 0, 0, Math.max(1, inst?.length ?? 1))); #end
+        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text} (Paused)', null, true, 0, "icon", 2, inst?.time ?? 0); #end
     }
 
     public function stop():Void
@@ -911,7 +911,7 @@ class DAGPlayer extends FlxGroup
         fadeTarget = 1.0;
         fadeSpeed  = 12.0;
         isPlaying  = true;
-        #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text}', null, true, FlxMath.bound(inst.time, 0, Math.max(1, inst.length))); #end
+        #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text}', null, true, inst.length, "icon", 2, inst.time); #end
     }
 
     function checkEnd():Void

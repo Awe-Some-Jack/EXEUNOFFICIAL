@@ -10,10 +10,13 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.group.FlxGroup;
+
 import openfl.display.BitmapData;
 import openfl.geom.Rectangle;
+
 import sys.FileSystem;
 import sys.io.File;
+
 import backend.InputFormatter;
 
 class DAGSongs extends MusicBeatSubstate
@@ -37,6 +40,23 @@ class DAGSongs extends MusicBeatSubstate
         super();
         loadAll();
         buildBoxes();
+    }
+
+    override public function destroy():Void
+    {
+        for (bx in boxes) bx?.destroy();
+        for (cv in covers) cv?.destroy();
+        for (lbl in labels) lbl?.destroy();
+        
+        boxes = [];
+        covers = [];
+        labels = [];
+        hasCover = [];
+        songList = [];
+        songMods = [];
+        songCredits = [];
+        
+        super.destroy();
     }
 
     public function selectIndex(i:Int):Void
@@ -152,7 +172,7 @@ class DAGSongs extends MusicBeatSubstate
                     }
                 }
             }
-            catch (_:Dynamic) {}
+            catch (e:Dynamic) { trace('Error loading mod songs $mod: $e'); }
         }
 
         final globalDir = Paths.mods('songs');
@@ -169,7 +189,7 @@ class DAGSongs extends MusicBeatSubstate
                 }
             }
         }
-        catch (_:Dynamic) {}
+        catch (e:Dynamic) { trace('Error loading global songs: $e'); }
 
         applyOrder();
         for (i in 0...songList.length) songCredits.push(readCredits(songList[i], songMods[i]));
@@ -197,7 +217,7 @@ class DAGSongs extends MusicBeatSubstate
             songList = [for (p in pairs) p.s];
             songMods = [for (p in pairs) p.m];
         }
-        catch (_:Dynamic) { sortAlpha(); }
+        catch (e:Dynamic) { trace('Error applying song order: $e'); sortAlpha(); }
     }
 
     function sortAlpha():Void
@@ -226,7 +246,7 @@ class DAGSongs extends MusicBeatSubstate
             final s = Std.string(json.composer);
             return s != null && s.length > 0 ? [s] : [];
         }
-        catch (_:Dynamic) {}
+        catch (e:Dynamic) { trace('Error parsing credits for $song: $e'); }
         return [];
     }
 
@@ -308,12 +328,11 @@ class DAGPlayer extends FlxGroup
     var barDragging:Bool   = false;
     var barLastRatio:Float = 0.0;
     var barDragVel:Float   = 0.0;
+    var scrubTime:Float    = 0.0;
 
     var inst:FlxSound         = null;
     var vocals:Array<FlxSound> = [];
     var oppVocals:Array<FlxSound> = [];
-    // Kept so destroyAudio() can explicitly .close() the streamed Sounds - FlxSound.destroy()
-    // only drops its reference, which would leave the vorbis file open until GC.
     var instSound:openfl.media.Sound = null;
     var vocalSounds:Array<openfl.media.Sound> = [];
     
@@ -344,6 +363,7 @@ class DAGPlayer extends FlxGroup
     var _debugPanel:FlxSprite  = null;
     var origTitle:String  = '';
     var lastTitleSec:Int  = -1;
+
     public function new()
     {
         super();
@@ -576,6 +596,7 @@ class DAGPlayer extends FlxGroup
         final b  = 4;
         final bw = _panelW + b * 2;
         final bh = _panelH + b * 2;
+        
         final bbmd = new BitmapData(bw, bh, false, 0xFF000000);
         _panelBorder.loadGraphic(bbmd);
         _panelBorder.x = _debugPanel.x - b;
@@ -583,6 +604,7 @@ class DAGPlayer extends FlxGroup
         final bsh = new shaders.RoundedBorderShader(18.0, 0.0, 0xFF000000);
         bsh.setSize(bw, bh);
         _panelBorder.shader = bsh;
+        
         final bmd    = new BitmapData(_panelW, _panelH, false, 0xFFFFFFFF);
         final gshape = new openfl.display.Shape();
         final mat    = new openfl.geom.Matrix();
@@ -632,22 +654,31 @@ class DAGPlayer extends FlxGroup
             diskDragging  = true;
             diskDragAngle = Math.atan2(my - cy, mx - cx);
             diskDragVel   = 0.0;
+            scrubTime     = inst?.time ?? 0.0;
         }
 
         final was = diskDragging;
         if (!FlxG.mouse.pressed) diskDragging = false;
-        if (was && !diskDragging && elapsed > 0) diskSpeed = (diskDragVel / elapsed) * (180 / Math.PI);
+        
+        if (was && !diskDragging) {
+            if (elapsed > 0) diskSpeed = (diskDragVel / elapsed) * (180 / Math.PI);
+            cleanSeek(scrubTime);
+        }
+        
         if (!diskDragging) { diskDragVel = 0.0; return; }
         if (inst == null || inst.length <= 0) return;
+        
         var angle = Math.atan2(my - cy, mx - cx);
         var da    = angle - diskDragAngle;
         if (da >  Math.PI) da -= Math.PI * 2;
         if (da < -Math.PI) da += Math.PI * 2;
         diskDragAngle = angle;
         diskDragVel   = da;
-        if (da == 0) return;
-        disk.angle += da * (180 / Math.PI);
-        cleanSeek(FlxMath.bound(inst.time + da * 120.0, 0, inst.length - 100));
+        
+        if (da != 0) {
+            disk.angle += da * (180 / Math.PI);
+            scrubTime = FlxMath.bound(scrubTime + da * 120.0, 0, inst.length - 100);
+        }
     }
 
     function handleBarMouse(elapsed:Float):Void
@@ -661,16 +692,24 @@ class DAGPlayer extends FlxGroup
             barDragging  = true;
             barLastRatio = FlxMath.bound((mx - barInnerX) / barInnerW, 0, 1);
             barDragVel   = 0.0;
-            cleanSeek(barLastRatio * inst.length);
+            scrubTime    = barLastRatio * inst.length;
         }
 
-        if (!FlxG.mouse.pressed) { barDragging = false; barDragVel = 0.0; return; }
+        final was = barDragging;
+        if (!FlxG.mouse.pressed) { 
+            barDragging = false; 
+            barDragVel = 0.0; 
+            if (was) cleanSeek(scrubTime);
+            return; 
+        }
+        
         if (!barDragging) return;
+        
         final ratio = FlxMath.bound((mx - barInnerX) / barInnerW, 0, 1);
         barDragVel   = ratio - barLastRatio;
         barLastRatio = ratio;
-        if (Math.abs(barDragVel) < 0.0005) return;
-        cleanSeek(ratio * inst.length);
+        
+        scrubTime = ratio * inst.length;
     }
 
     function updateScratch(elapsed:Float):Void
@@ -696,8 +735,9 @@ class DAGPlayer extends FlxGroup
     function updateBar():Void
     {
         final total = inst?.length ?? 0.0;
-        final cur   = inst?.time   ?? 0.0;
+        final cur   = (diskDragging || barDragging) ? scrubTime : (inst?.time ?? 0.0);
         final pct   = total > 0 ? FlxMath.bound(cur / total, 0, 1) : 0.0;
+        
         barClipRect.width = barInnerW * pct;
         barProgress.clipRect = barClipRect;
         barKnob.setPosition(barInnerX + barInnerW * pct - barKnob.width * 0.5, barInnerY + barInnerH * 0.5 - barKnob.height * 0.5);
@@ -887,9 +927,6 @@ class DAGPlayer extends FlxGroup
         }
     }
 
-	// Streamed (vorbis) tracks only advance in ~270ms chunks between refills, and FlxSound's
-	// time setter fully rebuilds the audio source - a tight threshold here causes constant
-	// rebuild churn (audible stuttering), so this needs to be looser than that chunk size.
 	static inline final threshold:Float = 300.0;
 
     function resyncVocals():Void
@@ -942,7 +979,6 @@ class DAGarden extends SonicSubState
     public static var currentSong:String    = '';
     public static var currentSongMod:String = '';
 
-
     var checkers:FlxBackdrop;
     var decors:Array<FlxSprite> = [];
     var arrow:FlxSprite;
@@ -970,6 +1006,8 @@ class DAGarden extends SonicSubState
     var drawerTabTxt:FlxText;
     var drawerW:Float = 118.0;
     var drawerH:Float = 184.0;
+    
+    var sharedCapShader:shaders.RoundedBorderShader;
 
     override public function create():Void
     {
@@ -1023,6 +1061,8 @@ class DAGarden extends SonicSubState
         drawerGroup = new flixel.group.FlxSpriteGroup(485.0, 402.0);
         add(drawerGroup);
 
+        sharedCapShader = new shaders.RoundedBorderShader(5.0, 0.0, 0xFF000000);
+
         final b = 4;
         drawerBorder = new FlxSprite(-b, -b);
         drawerGroup.add(drawerBorder);
@@ -1063,9 +1103,11 @@ class DAGarden extends SonicSubState
 
             final cap = new FlxSprite(8.0, rowY);
             cap.makeGraphic(Std.int(22.0), Std.int(22.0), FlxColor.BLACK);
-            final capShader = new shaders.RoundedBorderShader(5.0, 0.0, 0xFF000000);
-            capShader.setSize(22.0, 22.0);
-            cap.shader = capShader;
+            
+            final instShader = new shaders.RoundedBorderShader(5.0, 0.0, 0xFF000000);
+            instShader.setSize(22.0, 22.0);
+            cap.shader = instShader;
+            
             drawerGroup.add(cap);
             drawerKeycapBg.push(cap);
 
@@ -1113,7 +1155,7 @@ class DAGarden extends SonicSubState
         final bgShader = new shaders.RoundedBorderShader(8.0, 0.0, 0xFF000000, 9);
         bgShader.setSize(drawerW, drawerH);
         drawerBg.shader = bgShader;
-
+        
         _redrawDrawerTab();
     }
 
@@ -1128,6 +1170,7 @@ class DAGarden extends SonicSubState
         drawerTabBorder.makeGraphic(Std.int(tw), Std.int(th), FlxColor.BLACK);
         drawerTabBorder.x = drawerGroup.x + tabLocalX;
         drawerTabBorder.y = drawerGroup.y - b;
+
         final tabBorderShader = new shaders.RoundedBorderShader(10.0, 0.0, 0xFF000000, 6);
         tabBorderShader.setSize(tw, th);
         drawerTabBorder.shader = tabBorderShader;
@@ -1138,16 +1181,20 @@ class DAGarden extends SonicSubState
         gshape.graphics.beginGradientFill(openfl.display.GradientType.LINEAR, [0xFFFFFF, 0xB2B1B1], [1, 1], [0, 255], mat);
         gshape.graphics.drawRect(0, 0, tabW, drawerH);
         gshape.graphics.endFill();
+
         final bmd = new BitmapData(Std.int(tabW), Std.int(drawerH), false, 0xFFFFFFFF);
         bmd.draw(gshape);
+
         drawerTabBg.loadGraphic(bmd);
         drawerTabBg.x = drawerGroup.x + tabLocalX;
         drawerTabBg.y = drawerGroup.y;
+
         final tabBgShader = new shaders.RoundedBorderShader(8.0, 0.0, 0xFF000000, 6);
         tabBgShader.setSize(tabW, drawerH);
         drawerTabBg.shader = tabBgShader;
 
         drawerTabTxt.angle = 90;
+
         final tabCenterX = drawerGroup.x + tabLocalX + 2.0 + 44.0 / 2;
         final tabCenterY = drawerGroup.y + drawerH / 2;
         drawerTabTxt.x = tabCenterX - drawerTabTxt.width  / 2;
@@ -1216,9 +1263,10 @@ class DAGarden extends SonicSubState
 
                     final capW = Math.max(22.0, drawerKeycapTxt[i].width + 8);
                     cap.makeGraphic(Std.int(capW), Std.int(22.0), FlxColor.BLACK);
-                    final capShader = new shaders.RoundedBorderShader(5.0, 0.0, 0xFF000000);
-                    capShader.setSize(capW, 22.0);
-                    cap.shader = capShader;
+                    
+                    if (cap.shader != null && Std.isOfType(cap.shader, shaders.RoundedBorderShader)) {
+                         cast(cap.shader, shaders.RoundedBorderShader).setSize(capW, 22.0);
+                    }
 
                     drawerBtnTxt[i].x = cap.x + capW + 8.0;
 

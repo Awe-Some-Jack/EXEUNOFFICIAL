@@ -197,7 +197,6 @@ local holdSplashConf = {
 	skin = 'BloodSplashHOLD',
 	scale = 0.9,
 	multiKeyHold = false,
-	antialiasing = true,
 	offset = {
 		x = -85,
 		y = -62
@@ -489,7 +488,6 @@ function onEvent(n,v1,v2)
                 addAnimationByPrefix('noteHold'..i, 'start', 'sustain cover intro', 24, false)
                 addAnimationByPrefix('noteHold'..i, 'hold', 'sustain cover loop', 24, true)
                 addAnimationByPrefix('noteHold'..i, 'end', 'sustain cover end', 24, false)
-                setProperty('noteHold'..i..'.antialiasing', true)
                 scaleObject('noteHold'..i, 0.9, 0.9)
                 daHoldConfig = {offsetX = -85, offsetY = -62}
                 playAnim('noteHold'..i, 'end', true)

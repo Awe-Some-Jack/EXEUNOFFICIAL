@@ -25,7 +25,6 @@ function onCreatePost()
             end
             setScrollFactor(pepe.name, pepe.scrollX, pepe.scrollY)
             addLuaSprite(pepe.name, pepe.front)
-            setProperty(pepe.name..'.antialiasing', not lowQuality)
         end
     end
 

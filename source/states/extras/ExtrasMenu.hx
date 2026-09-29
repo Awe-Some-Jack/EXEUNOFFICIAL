@@ -1,28 +1,20 @@
 package states.extras;
 
-import flixel.FlxG;
-import flixel.FlxSprite;
-import flixel.text.FlxText;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
-import flixel.util.FlxColor;
 import flixel.addons.display.FlxBackdrop;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.input.keyboard.FlxKey;
 
 import openfl.display.BitmapData;
-
-import states.EXEMenu;
-import shaders.ErrorHandledShader.ErrorHandledRuntimeShader;
+import openfl.filters.ShaderFilter;
+import openfl.geom.Rectangle;
 
 import hxvlc.flixel.FlxVideoSprite;
 
-import states.extras.menuProps.CardSprite;
-import states.extras.menuProps.Arrow;
-import states.extras.menuProps.ExtrasMenuRenders;
+import states.EXEMenu;
+import states.extras.menuProps.*;
+
 import shaders.ColorShiftShader;
-#if !flash
-import openfl.filters.ShaderFilter;
-#end
+import shaders.ErrorHandledShader.ErrorHandledRuntimeShader;
 
 typedef ExtrasMenuThemeEntry = {
     var name:String;
@@ -108,11 +100,13 @@ class ExtrasMenu extends MusicBeatState
 
     public static var currentExtrasTheme:Int = 0;
 
-    public static function getCurrentMenuTheme():ExtrasMenuThemeEntry{
+    public static function getCurrentMenuTheme():ExtrasMenuThemeEntry
+    {
         return extrasMenuThemes[currentExtrasTheme];
     }
 
-    public static function playCurrentMenuTheme():Void {
+    public static function playCurrentMenuTheme():Void 
+    {
         FlxG.sound.playMusic(OpenFlAssets.getSound('assets/exe/music/${getCurrentMenuTheme().src}.ogg'));
         FlxG.sound.music.volume = getCurrentMenuTheme().volume;
     }
@@ -120,11 +114,13 @@ class ExtrasMenu extends MusicBeatState
     /**
         * Returns the Current Name Theme + Theme Author
     **/
-    public function getThemeLabel():String{
-        return getCurrentMenuTheme().name + '\n${Language.getArray('extras.dagarden', ['BY'])[0].toLowerCase().replace(":", "")} ${getCurrentMenuTheme().author}';
+    public function getThemeLabel():String
+    {
+        return getCurrentMenuTheme().name + '\n${Language.getArray('extras.dagarden', ['BY'])[0].toLowerCase()} ${getCurrentMenuTheme().author}';
     }
 
-    public function updateArrowPositions(){
+    public function updateArrowPositions()
+    {
         arrowLeft.x = nowPlayingSong.x + nowPlayingSong.width;
         arrowLeft.x += 20;
         arrowRight.x = (arrowLeft.x + arrowLeft.width) + 8;
@@ -137,7 +133,8 @@ class ExtrasMenu extends MusicBeatState
 
     public static var instance:ExtrasMenu = null;
 
-    public function new(){
+    public function new()
+    {
         super();
 
         instance ??= this;
@@ -159,8 +156,14 @@ class ExtrasMenu extends MusicBeatState
 
         playCurrentMenuTheme();
 
+        @:privateAccess
+        final font = switch (Language.currentKey) {
+            case 'ko-KR': 'korean.ttf';
+            default: 'bigass.otf';
+        }
+
         np = new FlxText(149, 558, -1, Language.get('extras.menu.nowplaying', 'NOW PLAYING:'), 60);
-        np.setFormat(Paths.font("bigass.otf"), 60, FlxColor.BLACK, LEFT);
+        np.setFormat(Paths.font(font), 60, FlxColor.BLACK, LEFT);
         np.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         np.scale.set(0.22, 0.22);
         np.updateHitbox();
@@ -169,7 +172,7 @@ class ExtrasMenu extends MusicBeatState
 
         final daName = states.extras.dagarden.DAGarden.currentSong;
         nowPlayingSong = new FlxText(149, np.y + np.height + 6, -1, daName != '' ? daName.toUpperCase() : getThemeLabel(), 60);
-        nowPlayingSong.setFormat(Paths.font("bigass.otf"), 70, FlxColor.BLACK, LEFT);
+        nowPlayingSong.setFormat(Paths.font(font), 70, FlxColor.BLACK, LEFT);
         nowPlayingSong.setBorderStyle(OUTLINE_FAST, FlxColor.WHITE, Language.cjkBorder(6));
         nowPlayingSong.scale.set(0.22, 0.22);
         nowPlayingSong.updateHitbox();
@@ -180,7 +183,7 @@ class ExtrasMenu extends MusicBeatState
         arrowsGrp = new FlxTypedGroup<Arrow>();
         add(arrowsGrp);
         
-        arrowLeft = new Arrow(nowPlayingSong.x+8, nowPlayingSong.y, flixel.input.keyboard.FlxKey.LEFT, 180);
+        arrowLeft = new Arrow(nowPlayingSong.x+8, nowPlayingSong.y, FlxKey.LEFT, 180);
         // arrowLeft.x = (nowPlayingSong.x + nowPlayingSong.width)+15;
         // arrowLeft.y = (nowPlayingSong.y + nowPlayingSong.height)-arrowLeft.height;
         // arrowLeft.y -= arrowLeft.height/2;
@@ -205,7 +208,7 @@ class ExtrasMenu extends MusicBeatState
         });
         arrowsGrp.add(arrowLeft);
 
-        arrowRight = new Arrow(arrowLeft.x + 20, arrowLeft.y, flixel.input.keyboard.FlxKey.RIGHT, 0);
+        arrowRight = new Arrow(arrowLeft.x + 20, arrowLeft.y, FlxKey.RIGHT, 0);
         arrowRight.x = (arrowLeft.x + arrowLeft.width) + 8;
         arrowRight.onDown.add(event->{
             if (!canMove) {
@@ -413,25 +416,25 @@ class ExtrasMenu extends MusicBeatState
     {
         final w   = FlxG.width;
         final h   = FlxG.height;
-        final bmd = new openfl.display.BitmapData(w, h, false, 0xFFbd0033);
+        final bmd = new BitmapData(w, h, false, 0xFFbd0033);
         for (x in 0...w)
         {
             final t = x / (w - 1);
             final r = Math.round(0xbd + (0x57 - 0xbd) * t);
             final g = Math.round(0x00 + (0x00 - 0x00) * t);
             final b = Math.round(0x33 + (0x0b - 0x33) * t);
-            bmd.fillRect(new openfl.geom.Rectangle(x, 0, 1, h), 0xFF000000 | (r << 16) | (g << 8) | b);
+            bmd.fillRect(new Rectangle(x, 0, 1, h), 0xFF000000 | (r << 16) | (g << 8) | b);
         }
         add(new FlxSprite().loadGraphic(bmd));
 
-        final fadeBmd = new openfl.display.BitmapData(w, h, true, 0x00000000);
+        final fadeBmd = new BitmapData(w, h, true, 0x00000000);
         for (x in 0...w)
         {
             final t = x / (w - 1);
             final r = Math.round(0xbd + (0x57 - 0xbd) * t);
             final b = Math.round(0x33 + (0x0b - 0x33) * t);
             final a = Math.round((1.0 - t) * 255);
-            fadeBmd.fillRect(new openfl.geom.Rectangle(x, 0, 1, h), (a << 24) | (r << 16) | b);
+            fadeBmd.fillRect(new Rectangle(x, 0, 1, h), (a << 24) | (r << 16) | b);
         }
         add(new FlxSprite().loadGraphic(fadeBmd));
 
@@ -522,6 +525,11 @@ class ExtrasMenu extends MusicBeatState
     {
         for (i in 0...MENU_KEYS.length)
         {
+            @:privateAccess
+            final font = switch (Language.currentKey) {
+                case 'ko-KR': 'noto-serif/korean.ttf';
+                default: 'bigass.otf';
+            }
             final fallback = switch (i) {
                 case 0: ['GALLERY', 'View the community gallery'];
                 case 1: ['CHARACTER BIOS', 'Learn more about the cast'];
@@ -529,7 +537,7 @@ class ExtrasMenu extends MusicBeatState
             }
             final label = Language.getArray(MENU_KEYS[i], fallback)[0];
             final t = new FlxText(50, 180 + i * 58, 0, label, Language.cjkSize(88));
-            t.setFormat(Paths.font("bigass.otf"), Language.cjkSize(88), FlxColor.WHITE, LEFT);
+            t.setFormat(Paths.font(font), Language.cjkSize(88), FlxColor.WHITE, LEFT);
             t.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
             t.antialiasing = ClientPrefs.data.antialiasing;
             t.scale.set(0.5, 0.5);
@@ -544,24 +552,23 @@ class ExtrasMenu extends MusicBeatState
         final midW = selBmp.width - capW * 2;
 
         final leftBmp = new BitmapData(capW, selH, true, 0);
-        leftBmp.copyPixels(selBmp, new openfl.geom.Rectangle(0, 0, capW, selH), new openfl.geom.Point(0, 0));
+        leftBmp.copyPixels(selBmp, new Rectangle(0, 0, capW, selH), new openfl.geom.Point(0, 0));
         _selLeft = new FlxSprite(0, 0);
         _selLeft.loadGraphic(leftBmp);
         _selLeft.antialiasing = ClientPrefs.data.antialiasing;
         _selLeft.origin.set(0, 0);
 
         final midBmp = new BitmapData(midW, selH, true, 0);
-        midBmp.copyPixels(selBmp, new openfl.geom.Rectangle(capW, 0, midW, selH), new openfl.geom.Point(0, 0));
+        midBmp.copyPixels(selBmp, new Rectangle(capW, 0, midW, selH), new openfl.geom.Point(0, 0));
         _selMid = new FlxSprite(0, 0);
         _selMid.loadGraphic(midBmp);
-        _selMid.antialiasing = ClientPrefs.data.antialiasing;
         _selMid.origin.set(0, 0);
 
         final rightBmp = new BitmapData(capW, selH, true, 0);
-        rightBmp.copyPixels(selBmp, new openfl.geom.Rectangle(selBmp.width - capW, 0, capW, selH), new openfl.geom.Point(0, 0));
+        rightBmp.copyPixels(selBmp, new Rectangle(selBmp.width - capW, 0, capW, selH), new openfl.geom.Point(0, 0));
         _selRight = new FlxSprite(0, 0);
         _selRight.loadGraphic(rightBmp);
-        _selRight.antialiasing = ClientPrefs.data.antialiasing;
+
         _selRight.origin.set(0, 0);
 
         add(_selLeft);
@@ -577,22 +584,31 @@ class ExtrasMenu extends MusicBeatState
         final bar   = new FlxSprite(0, 680 - gradH);
         bar.makeGraphic(FlxG.width, 100 + gradH, FlxColor.TRANSPARENT, true);
         for (i in 0...gradH)
-            bar.pixels.fillRect(new openfl.geom.Rectangle(0, i, FlxG.width, 1), FlxColor.fromRGBFloat(0, 0, 0, (i / gradH) * 0.3));
-        bar.pixels.fillRect(new openfl.geom.Rectangle(0, gradH, FlxG.width, 100), FlxColor.fromRGBFloat(0, 0, 0, 0.3));
+            bar.pixels.fillRect(new Rectangle(0, i, FlxG.width, 1), FlxColor.fromRGBFloat(0, 0, 0, (i / gradH) * 0.3));
+        bar.pixels.fillRect(new Rectangle(0, gradH, FlxG.width, 100), FlxColor.fromRGBFloat(0, 0, 0, 0.3));
         add(bar);
 
         for (i in 0...MENU_KEYS.length)
         {
+            @:privateAccess
+            final font = switch (Language.currentKey) {
+                case 'ja-JP': 'noto-serif/japanese.ttf';
+                case 'ko-KR': 'noto-serif/korean.ttf';
+                case 'zh-CN': 'noto-serif/simplified-chinese.ttf';
+                default: 'smallass.ttf';
+            }
             final fallback = switch (i) {
                 case 0: ['GALLERY', 'View the community gallery'];
                 case 1: ['CHARACTER BIOS', 'Learn more about the cast'];
                 default: ['?', ''];
             }
+
             final desc = Language.getArray(MENU_KEYS[i], fallback)[1];
             final tmp  = new FlxText(0, 0, 0, desc, Language.cjkSize(56));
-            tmp.setFormat(Paths.font(Language.fontOrCJK("smallass.ttf")), Language.cjkSize(56), FlxColor.WHITE, LEFT);
+            tmp.setFormat(Paths.font(font), Language.cjkSize(56), FlxColor.WHITE, LEFT);
             tmp.antialiasing = ClientPrefs.data.antialiasing;
             tmp.drawFrame(true);
+
             final bd = new FlxBackdrop(tmp.graphic, X, 0, 0);
             bd.scale.set(0.4, 0.4);
             bd.updateHitbox();
@@ -600,6 +616,7 @@ class ExtrasMenu extends MusicBeatState
             bd.velocity.x = -30;
             bd.visible    = (i == 0);
             add(bd);
+
             descBackdrops.push(bd);
             tmp.destroy();
         }

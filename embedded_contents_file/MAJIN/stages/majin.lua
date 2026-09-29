@@ -1,12 +1,12 @@
 local elPutoPajinDeMierda = {
-    {name = "pajin_frontal", path = "majin/a", x = -1292, y = -212, animName = "Idle", animPrefix = "a", fps = 24, loop = false, flipX = false, scaleX = 1.5, scaleY = 1.5, scrollX = 0.85, scrollY = 0, antialiasing = true, front = true, lowQualityHide = true}
+    {name = "pajin_frontal", path = "majin/a", x = -1292, y = -212, animName = "Idle", animPrefix = "a", fps = 24, loop = false, flipX = false, scaleX = 1.5, scaleY = 1.5, scrollX = 0.85, scrollY = 0, front = true, lowQualityHide = true}
 }
 
 local countdador = {
-    {name = "three", path = "majin/three", x = 0, y = 0, scaleX = 1, scaleY = 1, antialiasing = true, alpha = 0, front = false},
-    {name = "two", path = "majin/two", x = 0, y = 0, scaleX = 1, scaleY = 1, antialiasing = true, alpha = 0, front = false},
-    {name = "one", path = "majin/one", x = 0, y = 0, scaleX = 1, scaleY = 1, antialiasing = true, alpha = 0, front = false},
-    {name = "go", path = "majin/gofun", x = 0, y = 0, scaleX = 1, scaleY = 1, antialiasing = true, alpha = 0, front = false}
+    {name = "three", path = "majin/three", x = 0, y = 0, scaleX = 1, scaleY = 1, alpha = 0, front = false},
+    {name = "two", path = "majin/two", x = 0, y = 0, scaleX = 1, scaleY = 1, alpha = 0, front = false},
+    {name = "one", path = "majin/one", x = 0, y = 0, scaleX = 1, scaleY = 1, alpha = 0, front = false},
+    {name = "go", path = "majin/gofun", x = 0, y = 0, scaleX = 1, scaleY = 1, alpha = 0, front = false}
 
 }
 function onCreate()
@@ -17,7 +17,6 @@ function onCreate()
             setProperty(putoMajin.name..'.flipX', putoMajin.flipX)
             scaleObject(putoMajin.name, putoMajin.scaleX, putoMajin.scaleY)
             setScrollFactor(putoMajin.name, putoMajin.scrollX, putoMajin.scrollY)
-            setProperty(putoMajin.name..'.antialiasing', putoMajin.antialiasing)
             addLuaSprite(putoMajin.name, putoMajin.front)
             --debugPrint(putoMajin.name.." Esta vivo. Por mi que se muera")
         end
@@ -28,7 +27,6 @@ function onCreate()
         scaleObject(counter.name, counter.scaleX, counter.scaleY)
         setObjectCamera(counter.name, 'camHUD')
         screenCenter(counter.name)
-        setProperty(counter.name..'.antialiasing', counter.antialiasing)
         setProperty(counter.name..'.alpha', counter.alpha)
         addLuaSprite(counter.name, counter.front)
     end

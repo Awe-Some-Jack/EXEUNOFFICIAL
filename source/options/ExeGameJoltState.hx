@@ -94,13 +94,13 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			add(valBG); rightGroup.push(valBG);
 
 			final nameTxt = new FlxText(offRight, rowY + 10, 300, labels[i], lblSize);
-			nameTxt.setFormat(Paths.font('vcr.ttf'), lblSize, FlxColor.WHITE, LEFT);
+			nameTxt.setFormat(Paths.font(Language.fontOrCJK('vcr.ttf')), lblSize, FlxColor.WHITE, LEFT);
 			nameTxt.scrollFactor.set(0, 0);
 			nameTxt.ID = i;
 			add(nameTxt); rightGroup.push(cast nameTxt);
 
 			final valTxt = new FlxText(offRight, rowY + 10, (i > 1) ? -1 : 400, '', lblSize);
-			valTxt.setFormat(Paths.font('vcr.ttf'), lblSize, FlxColor.WHITE, LEFT);
+			valTxt.setFormat(Paths.font(Language.fontOrCJK('vcr.ttf')), lblSize, FlxColor.WHITE, LEFT);
 			valTxt.scrollFactor.set(0, 0);
 			valTxt.ID = i;
 			add(valTxt); rightGroup.push(cast valTxt);

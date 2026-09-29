@@ -211,6 +211,8 @@ function onEvent(n, v1, v2)
 			particleSprites = [];
 		case 'fadeHUD': FlxTween.tween(camHUD, {alpha: 0}, 2.8);
 	}
+
+	if (n == 'Dadbattle Spotlight') vgSpr.visible = false;
 }
 
 function toggleFlashback()
@@ -381,11 +383,21 @@ function noteMissPress(note) if (curBG == 'knux' || curBG == 'xeno2') boyfriend.
 
 function onBeatHit()
 {
-	if (curBeat % 2 == 0 && vgSpr.visible)
+	if (curBG != 'xeno3')
+	{
+		if (curBeat % 2 == 0 && vgSpr.visible)
+		{
+			FlxTween.cancelTweensOf(vgSpr);
+			FlxTween.tween(vgSpr, {alpha: (curBeat % 4 == 0 ? 1 : 0)}, Conductor.crochet / 1000 * 2);
+		}
+	}
+	else
 	{
 		FlxTween.cancelTweensOf(vgSpr);
-		FlxTween.tween(vgSpr, {alpha: (curBeat % 4 == 0 ? 1 : 0)}, Conductor.crochet / 1000 * 2);
+		vgSpr.alpha = 0.7;
+		FlxTween.tween(vgSpr, {alpha: 0}, Conductor.crochet / 750);
 	}
+
 	if (curBG.startsWith('xeno') && curBeat % 2 == 0)
 	{
 		if (dad.getAnimationName() == 'idle') dad.playAnim('idle', true);

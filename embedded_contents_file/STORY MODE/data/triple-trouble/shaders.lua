@@ -32,6 +32,23 @@ function onEvent(n,v1,v2)
 		end
 	end
 
+	if n == 'flashbackstt' and lmao then
+		if shadersEnabled then runHaxeCode([[game.camGame.filters = [
+			new ShaderFilter(game.getLuaObject('cab').shader),
+			new ShaderFilter(game.getLuaObject('glitch').shader)
+			];]])
+		end
+	end
+
+	if n == 'tripletroublebgchange' and v1 == 'xeno3' then
+		if shadersEnabled then runHaxeCode([[game.camGame.filters = [
+			new ShaderFilter(game.getLuaObject('hws').shader),
+			new ShaderFilter(game.getLuaObject('cab').shader),
+			new ShaderFilter(game.getLuaObject('glitch').shader)
+			];]])
+		end
+	end
+
 	if n == 'glitchtween' then
 		local tweenS = stringSplit(v2, ',')
 		cancelTween('lolfuckxd')

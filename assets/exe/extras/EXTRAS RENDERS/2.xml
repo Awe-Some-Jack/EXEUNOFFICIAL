@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="2.png">
+	<!-- Created with Adobe Animate version 24.0.12.3 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="xaf instancia 10000" x="40" y="40" width="1486" height="1449"/>
+	<SubTexture name="xaf instancia 10001" x="40" y="40" width="1486" height="1449"/>
+	<SubTexture name="xaf instancia 10002" x="1582" y="40" width="1486" height="1449"/>
+	<SubTexture name="xaf instancia 10003" x="1582" y="40" width="1486" height="1449"/>
+	<SubTexture name="xaf instancia 10004" x="1582" y="40" width="1486" height="1449"/>
+	<SubTexture name="xaf instancia 10005" x="1582" y="40" width="1486" height="1449"/>
+</TextureAtlas>

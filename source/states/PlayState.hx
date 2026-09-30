@@ -3481,7 +3481,7 @@ class PlayState extends MusicBeatState
 		rating.x += comboGroup.x + mobileComboOffsetX;
 
 		final targetScale:Float = PlayState.isPixelStage ? 4 : 0.6;
-		rating.scale.set(targetScale * 0.85, targetScale * 0.85);
+		rating.scale.set(targetScale * 1.15, targetScale * 1.15);
 				
 		FlxTween.tween(rating.scale, {x: targetScale, y: targetScale}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
 		rating.antialiasing = antialias;
@@ -3507,7 +3507,7 @@ class PlayState extends MusicBeatState
 			numScore.x = comboGroup.x + mobileComboOffsetX + FlxG.width / 2 - numScore.width / 2 + (i - (separatedScore.length - 1) / 2) * 50;
 			numScore.y = comboGroup.y + mobileComboOffsetY + (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
 			
-			numScore.scale.set(targetScale * 0.85, targetScale * 0.85);
+			numScore.scale.set(targetScale * 1.15, targetScale * 1.15);
 		
 			FlxTween.tween(numScore.scale, {x: targetScale, y: targetScale}, 0.2 / playbackRate, {ease: FlxEase.cubeOut});
 			numScore.antialiasing = antialias;

@@ -31,8 +31,10 @@
 			"nation": "espana",
 			"description": "Director and Composer",
 			"quote": "Fueron 4 años bastante largos, movidos y llenos de puro arte. Pero también he descubierto lo tóxica y envidiosa que puede ser la gente en esta comunidad. He podido ver los sabotajes que son capaces de hacer para arruinar los proyectos de los demás.\n\nPero hoooly shit, puedo aseguraros que ha merecido la pena cada tarde, cada conversación y todo lo que he aportado a este mundillo de EXE.\n\nAgradecimientos a mis suscriptores, a todos mis colaboradores y a todos los que me han dado buenas experiencias en sus mods, además de a mi gente de la vida real.\n\nNo pudieron pararnos de nuevo.\n#EXEmovement",
+			"twitter": "https://x.com/kiv_flp",
 			"youtube": "https://www.youtube.com/@Kiv_FLP",
 			"discord": "k_was.flp",
+			"kofi": "https://ko-fi.com/kivflp",
 			"colors": [[221, 159, 152], [70, 44, 47]],
 			"extra": ["image", "karlosmuere.jpg"]
 		},
@@ -377,7 +379,10 @@
 			"nation": "chile",
 			"description": "Composer",
 			"quote": "Hola soy Tobi y dejo mi marca",
+			"twitter": "https://x.com/darealt0bi",
 			"youtube": "https://www.youtube.com/@MxdT0biMain",
+			"discord": "dat0biforreal",
+			"kofi": "https://ko-fi.com/mxdt0bimain",
 			"colors": [[71, 67, 226], [49, 160, 134]],
 			"extra": ["image", "banaduck.png"]
 		},

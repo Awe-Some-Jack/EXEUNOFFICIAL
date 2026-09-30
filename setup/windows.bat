@@ -23,8 +23,9 @@ haxelib install tjson 1.4.0
 haxelib install hxdiscord_rpc 1.2.4
 haxelib install hxvlc 2.3.0 --skip-dependencies
 haxelib install hxp 1.3.1
-haxelib install hxcpp 4.3.2
 haxelib install tink_core 1.26.0
 haxelib install nape-haxe4
+haxelib git hxcpp https://github.com/Wolfie1985yt/hxcpp.git
+haxelib set hxcpp git
 echo Finished!
 pause

@@ -32,7 +32,11 @@ class CreditsRollState extends MusicBeatState
 				size = 28;
 			}
 
+			#if DISCORD_ALLOWED
 			text = StringTools.replace(text, "{user}", DiscordClient.username ?? 'boyfriend');
+			#else
+			text = StringTools.replace(text, "{user}", 'boyfriend');
+			#end
 
 			var creditsTxt:FlxText = new FlxText(15, y, Std.int(FlxG.width * 0.6), text);
 			creditsTxt.setFormat(Paths.font("sonic4.ttf"), size, 0xFFFFFFFF, "left");

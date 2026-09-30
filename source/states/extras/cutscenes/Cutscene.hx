@@ -799,7 +799,11 @@ class Cutscene extends SonicSubState
         if (_hudBar != null && _hudFill != null && _hudKnob != null)
         {
             final pct   = FlxMath.bound(_vidSprite.getVideoPercent(), 0, 1);
+            #if switch
+            final dur   = haxe.Int64.ofInt(_vidSprite.video.duration);
+            #else
             final dur   = _vidSprite.video.bitmap.duration;
+            #end
             final barW  = _hudBar.width;
             final fillW = Math.max(1, barW * pct);
             _hudFill.scale.x = fillW;

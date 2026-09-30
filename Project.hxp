@@ -58,7 +58,7 @@ class Project extends HXProject
         this.meta.company = COMPANY;
 
         this.app.main = MAIN_CLASS;
-        this.app.file = EXECUTABLE;
+        this.app.file = isSwitch() ? StringTools.replace(EXECUTABLE, " ", "") : EXECUTABLE;
         this.app.preloader = PRELOADER;
 
         this.templatePaths.push("templates");
@@ -93,6 +93,8 @@ class Project extends HXProject
         {
             this.window.fullscreen = true;
             this.window.resizable = true;
+            this.window.width = 0;
+            this.window.height = 0;
         }
     }
 
@@ -110,6 +112,14 @@ class Project extends HXProject
 
     function configureCompileDefines()
     {
+        if (isSwitch())
+        {
+            setHaxedef("lime-opengl");
+            setHaxedef("lime-cairo", "false");
+            environment.set("LIME_CAIRO", "0");
+            environment.set("LIME_OPENGL", "1");
+        }
+
         setHaxedef("SWF_VERSION", "11.8");
         setHaxedef("LINC_LUA_RELATIVE_DYNAMIC_LIB");
         setHaxedef("MULTITHREADED_LOADING");
@@ -129,11 +139,19 @@ class Project extends HXProject
 
         if (VIDEOS_ALLOWED.isEnabled(this))
         {
-            setHaxedef("HXVLC_NO_SHARE_DIRECTORY");
-            haxeflags.push("--macro include('hxvlc')");
+            if (isSwitch())
+            {
+                if (debug)
+                    setHaxedef("SWITCHVIDEO_LOGGING");
+            }
+            else
+            {
+                setHaxedef("HXVLC_NO_SHARE_DIRECTORY");
+                haxeflags.push("--macro include('hxvlc')");
 
-            if (debug)
-                setHaxedef("HXC_LIBVLC_LOGGING");
+                if (debug)
+                    setHaxedef("HXC_LIBVLC_LOGGING");
+            }
         }
 
         setHaxedef("FLX_NO_FOCUS_LOST_SCREEN");
@@ -228,7 +246,12 @@ class Project extends HXProject
             haxelibs.push(new Haxelib("hscript-iris"));
 
         if (VIDEOS_ALLOWED.isEnabled(this))
-            haxelibs.push(new Haxelib("hxvlc"));
+        {
+            if (isSwitch())
+                haxelibs.push(new Haxelib("hxswitchvideo"));
+            else
+                haxelibs.push(new Haxelib("hxvlc"));
+        }
 
         if (DISCORD_ALLOWED.isEnabled(this))
             haxelibs.push(new Haxelib("hxdiscord_rpc", "1.2.4"));
@@ -260,7 +283,7 @@ class Project extends HXProject
 
         if (MODS_ALLOWED.isEnabled(this))
         {
-            if (FileSystem.exists("contents_file") && !isMobile())
+            if (FileSystem.exists("contents_file") && !isMobile() && !isSwitch())
                 addAssetRecursive("contents_file", "contents", false, ["*"], []);
 
             if (isMobile() && FileSystem.exists("mobile_embed"))
@@ -688,7 +711,7 @@ class Project extends HXProject
         if (isSwitch())
             setHaxedef("APP_ID", SWITCH_APP_ID);
 
-        if (MODS_ALLOWED.isEnabled(this) && FileSystem.exists("contents_file") && (isMac() || isWindows() || isLinux()))
+        if (MODS_ALLOWED.isEnabled(this) && FileSystem.exists("contents_file") && (isMac() || isWindows() || isLinux() || isSwitch()))
         {
             var srcDir = haxe.io.Path.normalize(Sys.getCwd() + "/contents_file");
 
@@ -701,6 +724,13 @@ class Project extends HXProject
                 postBuildCallbacks.push(new CLICommand("cp", ["-Rf", srcDir + "/.", binDir]));
                 postBuildCallbacks.push(new CLICommand("find", [binDir, "-type", "f", "-name", "*-mac", "-exec", "chmod", "+x", "{}", "+"]));
                 postBuildCallbacks.push(new CLICommand("codesign", ["--force", "--deep", "-s", "-", appDir]));
+            }
+            else if (isSwitch())
+            {
+                var binDir = haxe.io.Path.normalize(Sys.getCwd() + "/" + buildDir + "/switch/bin/contents");
+
+                postBuildCallbacks.push(new CLICommand("mkdir", ["-p", binDir]));
+                postBuildCallbacks.push(new CLICommand("cp", ["-Rf", srcDir + "/.", binDir]));
             }
             else
             {

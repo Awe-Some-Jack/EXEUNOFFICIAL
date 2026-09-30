@@ -6,9 +6,15 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import openfl.display.BitmapData;
+#if switch
+import switchvideo.SwitchVideo;
+private typedef VideoBase = SwitchVideo;
+#else
 import hxvlc.flixel.FlxVideoSprite;
+private typedef VideoBase = FlxVideoSprite;
+#end
 
-class CardSprite extends FlxVideoSprite
+class CardSprite extends VideoBase
 {
     public var finalX:Float = 0;
     public var finalY:Float = 0;
@@ -16,40 +22,67 @@ class CardSprite extends FlxVideoSprite
     public var introDone:Bool = false;
 
     public var borderSprite:FlxSprite;
-    public var borderWidth:Int = 6; 
+    public var borderWidth:Int = 6;
 
     public function new(x:Float = 0, y:Float = 0)
     {
+        #if switch
+        super();
+        setPosition(x, y);
+        #else
         super(null, x, y);
+        #end
         borderSprite = new FlxSprite();
     }
 
     public function loadVideoCard(path:String):Void
     {
-        if (load(path, [':input-repeat=2147483647', ':no-audio', ':avcodec-hw=any']))
+        #if switch
+        final loaded = load(path, ['input-repeat=65545']);
+        if (loaded)
+            setLooping(true);
+        #else
+        final loaded = load(path, [':input-repeat=2147483647', ':no-audio', ':avcodec-hw=any']);
+        #end
+
+        if (loaded)
         {
-            bitmap.onFormatSetup.add(function():Void {
+            final onReady = function():Void
+            {
                 scale.set(0.85, 0.85);
                 updateHitbox();
 
+                #if switch
+                final vWidth:Int = frameWidth;
+                final vHeight:Int = frameHeight;
+                #else
+                var vWidth:Int = 0;
+                var vHeight:Int = 0;
                 if (bitmap != null && bitmap.bitmapData != null)
                 {
-                    final vWidth:Int = bitmap.bitmapData.width;
-                    final vHeight:Int = bitmap.bitmapData.height;
-
-                    final bWidth:Int = vWidth + (borderWidth * 2);
-                    final bHeight:Int = vHeight + (borderWidth * 2);
-
-                    final frameBmd = new BitmapData(bWidth, bHeight, true, FlxColor.TRANSPARENT);
-
-                    frameBmd.fillRect(new openfl.geom.Rectangle(0, 0, bWidth, bHeight), FlxColor.WHITE);
-
-                    frameBmd.fillRect(new openfl.geom.Rectangle(borderWidth, borderWidth, vWidth, vHeight), FlxColor.TRANSPARENT);
-
-                    borderSprite.loadGraphic(frameBmd);
-                    // borderSprite.ignoreDrawDebug = true;
+                    vWidth = bitmap.bitmapData.width;
+                    vHeight = bitmap.bitmapData.height;
                 }
-            });
+                #end
+
+                final bWidth:Int = vWidth + (borderWidth * 2);
+                final bHeight:Int = vHeight + (borderWidth * 2);
+
+                final frameBmd = new BitmapData(bWidth, bHeight, true, FlxColor.TRANSPARENT);
+
+                frameBmd.fillRect(new openfl.geom.Rectangle(0, 0, bWidth, bHeight), FlxColor.WHITE);
+
+                frameBmd.fillRect(new openfl.geom.Rectangle(borderWidth, borderWidth, vWidth, vHeight), FlxColor.TRANSPARENT);
+
+                borderSprite.loadGraphic(frameBmd);
+            };
+
+            #if switch
+            onFormatSetup = onReady;
+            #else
+            bitmap.onFormatSetup.add(onReady);
+            #end
+
             play();
         }
     }

@@ -1270,10 +1270,20 @@ class PlayState extends MusicBeatState
 		videoCutscene.onEnd(() -> endVideo());
 
 		videoCutscene.onFormat(() -> {
-			if (videoCutscene.video.bitmap != null && videoCutscene.video.bitmap.bitmapData != null)
+			#if switch
+			final hasFrame = videoCutscene.video != null;
+			#else
+			final hasFrame = videoCutscene.video.bitmap != null && videoCutscene.video.bitmap.bitmapData != null;
+			#end
+			if (hasFrame)
 			{
+				#if switch
+				final bw:Float = videoCutscene.video.frameWidth;
+				final bh:Float = videoCutscene.video.frameHeight;
+				#else
 				final bw:Float = videoCutscene.video.bitmap.bitmapData.width;
 				final bh:Float = videoCutscene.video.bitmap.bitmapData.height;
+				#end
 				final scale:Float = Math.min(FlxG.width / bw, FlxG.height / bh);
 				videoCutscene.video.setGraphicSize(Std.int(bw * scale), Std.int(bh * scale));
 				videoCutscene.video.updateHitbox();

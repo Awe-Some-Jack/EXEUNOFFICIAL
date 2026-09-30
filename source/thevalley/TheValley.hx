@@ -831,10 +831,20 @@ class TheValley extends MusicBeatState
 		add(vid);
 
 		vid.onFormat(() -> {
-			if (vid.video.bitmap?.bitmapData != null)
+			#if switch
+			final hasFrame = vid.video != null;
+			#else
+			final hasFrame = vid.video.bitmap?.bitmapData != null;
+			#end
+			if (hasFrame)
 			{
+				#if switch
+				final bw:Float = vid.video.frameWidth;
+				final bh:Float = vid.video.frameHeight;
+				#else
 				final bw:Float = vid.video.bitmap.bitmapData.width;
 				final bh:Float = vid.video.bitmap.bitmapData.height;
+				#end
 				final cw:Float = uiCam.width;
 				final ch:Float = uiCam.height;
 				final scale:Float = Math.max(cw / bw, ch / bh);

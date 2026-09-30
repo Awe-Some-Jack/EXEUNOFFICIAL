@@ -40,6 +40,7 @@ var tableBottom:Array<Float> = [];
 
 function sendTo(varName:String, line:String) {
     var proc = getVar(varName);
+    if(proc == null) return;
     try {
         proc.stdin.writeString(line + '\n');
         proc.stdin.flush();

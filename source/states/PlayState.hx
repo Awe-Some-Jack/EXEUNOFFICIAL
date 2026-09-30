@@ -7,6 +7,7 @@ import backend.WeekData;
 import backend.Song;
 import backend.Rating;
 import backend.EXEAchievements;
+import backend.SunkyBOT;
 
 import flixel.effects.particles.FlxEmitter;
 import flixel.FlxBasic;
@@ -222,21 +223,29 @@ class PlayState extends MusicBeatState
 	public var instakillOnMiss:Bool = false;
 	public var cpuControlled:Bool = false;
 	public var cpuAssist:Bool = false;
-	/**
-		* Variable for the possible cheat scripts that activate botplay
-		- cool or cooln't
-	**/
-	private var botplayWasActivated:Bool = false;
 
 	public var practiceMode:Bool = false;
 	public var pressMissDamage:Float = 0.05;
 
-	public var botplaySine:Float = 0;
-	public var botplayTxt:FlxText;
-	public var sunkyBotSprite:FlxSprite;
-	var sunkyBotTimer:Float = 0;
-	var sunkyBotAnimPlaying:Bool = false;
-	var sunkyBotShown:Bool = false;
+	public var sunkyBot:SunkyBOT;
+	public var botplayTxt(get, never):FlxText;
+	public var botplaySine(get, set):Float;
+	public var sunkyBotSprite(get, never):FlxSprite;
+
+	function get_botplayTxt():FlxText
+		return sunkyBot?.text;
+
+	function get_botplaySine():Float
+		return sunkyBot != null ? sunkyBot.sine : 0;
+
+	function set_botplaySine(value:Float):Float
+	{
+		if (sunkyBot != null) sunkyBot.sine = value;
+		return value;
+	}
+
+	function get_sunkyBotSprite():FlxSprite
+		return sunkyBot?.sprite;
 
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
@@ -888,12 +897,8 @@ class PlayState extends MusicBeatState
 		iconP2.alpha = ClientPrefs.data.healthBarAlpha;
 		uiGroup.add(iconP2);
 
-		botplayTxt = new FlxText(400, healthBar.y - 35, FlxG.width - 800, Language.getPhrase("sunky_is_playing", "SUNKY IS PLAYING").toUpperCase(), 20);
-		botplayTxt.setFormat(Paths.font(Language.fontOrCJK('vcr.ttf')), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		botplayTxt.scrollFactor.set();
-		botplayTxt.borderSize = 1.25;
-		botplayTxt.visible = cpuControlled;
-		uiGroup.add(botplayTxt);
+		sunkyBot = new SunkyBOT(this);
+		uiGroup.add(sunkyBot.createText(healthBar.y - 35));
 
 		uiGroup.cameras = [camHUD];
 		noteGroup.cameras = [camHUD];
@@ -1056,7 +1061,7 @@ class PlayState extends MusicBeatState
 		FlxG.camera.snapToTarget();
 
 		super.create();
-		initSunkyBotSprite();
+		sunkyBot.createSprite();
 
 		if(isFixedAspectRatio && !hasRestarted) {
 			hasRestarted = true;
@@ -1073,43 +1078,6 @@ class PlayState extends MusicBeatState
 		if(eventNotes.length < 1) checkEventNote();
 
 		PauseSubState.cameraWidth = FlxG.width;
-	}
-
-	function initSunkyBotSprite():Void {
-		if (!cpuControlled) return;
-		var spriteScale:Float = 0.6;
-		sunkyBotSprite = new FlxSprite();
-
-		final bmpPath = 'assets/exe/botplay/sunkyplaying.png';
-		final xmlPath = 'assets/exe/botplay/sunkyplaying.xml';
-
-		final sunkyBmp:openfl.display.BitmapData = Paths.getBitmapData(bmpPath);
-		final sunkyXml:String = Paths.getContent(xmlPath);
-		sunkyBotSprite.frames = FlxAtlasFrames.fromSparrow(sunkyBmp, sunkyXml);
-
-		sunkyBotSprite.animation.addByPrefix('idle',  'idle instancia',  24, true);
-		sunkyBotSprite.animation.addByPrefix('left',  'left instancia',  24, false);
-		sunkyBotSprite.animation.addByPrefix('down',  'down instancia',  24, false);
-		sunkyBotSprite.animation.addByPrefix('up',    'up instancia',    24, false);
-		sunkyBotSprite.animation.addByPrefix('right', 'right instancia', 24, false);
-		sunkyBotSprite.animation.addByPrefix('space', 'space instancia', 24, false);
-		sunkyBotSprite.animation.play('idle');
-
-		sunkyBotSprite.setGraphicSize(Std.int(sunkyBotSprite.width * spriteScale));
-		sunkyBotSprite.updateHitbox();
-		sunkyBotSprite.scrollFactor.set();
-		sunkyBotSprite.antialiasing = ClientPrefs.data.antialiasing;
-		sunkyBotSprite.visible = true;
-		sunkyBotSprite.alpha = 1;
-		sunkyBotSprite.cameras = [camOther];
-		var targetX:Float = FlxG.width  - sunkyBotSprite.width  - 10;
-		var targetY:Float = FlxG.height - sunkyBotSprite.height - 10;
-		sunkyBotSprite.x = FlxG.width + 50;
-		sunkyBotSprite.y = targetY;
-		add(sunkyBotSprite);
-		FlxTween.cancelTweensOf(sunkyBotSprite);
-		FlxTween.tween(sunkyBotSprite, {x: targetX}, 0.7, {ease: FlxEase.elasticOut, startDelay: 0.3});
-		sunkyBotShown = true;
 	}
 
 	function set_songSpeed(value:Float):Float
@@ -2289,41 +2257,7 @@ class PlayState extends MusicBeatState
 			setOnScripts('curDecBeat', curDecBeat);
 		}
 
-		if(botplayTxt != null && botplayTxt.visible) {
-			botplaySine += 90 * elapsed;
-			if(botplaySine >= 360) botplaySine -= 360;
-			botplayTxt.color = FlxColor.fromHSB(botplaySine, 1.0, 1.0);
-			botplayTxt.alpha = 1.0;
-		}
-
-		if (cpuControlled) {
-			if (sunkyBotSprite == null)
-				initSunkyBotSprite();
-			else if (!sunkyBotShown)
-			{
-				sunkyBotShown = true;
-				sunkyBotSprite.visible = true;
-				FlxTween.cancelTweensOf(sunkyBotSprite);
-				FlxTween.tween(sunkyBotSprite, {x: camOther.width - sunkyBotSprite.width - 10}, 0.7, {ease: FlxEase.elasticOut});
-			}
-
-			if (!botplayWasActivated){
-				botplayWasActivated = true;
-			}
-		} else if (sunkyBotSprite != null && sunkyBotShown) {
-			sunkyBotShown = false;
-			FlxTween.cancelTweensOf(sunkyBotSprite);
-			final spr = sunkyBotSprite;
-			FlxTween.tween(spr, {x: camOther.width + 50}, 0.4, {ease: FlxEase.quadIn, onComplete: (_) -> { if (!sunkyBotShown) spr.visible = false; }});
-		}
-
-		if(sunkyBotSprite != null && sunkyBotAnimPlaying) {
-			sunkyBotTimer -= elapsed;
-			if(sunkyBotTimer <= 0) {
-				sunkyBotAnimPlaying = false;
-				sunkyBotSprite.animation.play('idle');
-			}
-		}
+		sunkyBot.update(elapsed);
 
 		if (controls.PAUSE && startedCountdown && canPause && (Paths.formatToSongPath(SONG.song) != 'burning' || FlxG.save.data.burningWon == true))
 		{
@@ -2459,7 +2393,7 @@ class PlayState extends MusicBeatState
 
 							if(daNote.mustPress)
 							{
-								if((cpuControlled || cpuAssist) && !daNote.blockHit && daNote.canBeHit && !daNote.wasGoodHit && (daNote.isSustainNote || daNote.strumTime <= Conductor.songPosition))
+								if(sunkyBot.shouldHit(daNote))
 									goodNoteHit(daNote);
 							}
 							else if (daNote.wasGoodHit && !daNote.hitByOpponent && !daNote.ignoreNote)
@@ -3102,7 +3036,7 @@ class PlayState extends MusicBeatState
 	public function endSong()
 	{
 		// Scripts Anticheat shit uuu ;p
-		if (!Main.DEVELOPMENT_BUILD && !chartingMode && botplayWasActivated) FlxG.resetState();
+		if (!Main.DEVELOPMENT_BUILD && !chartingMode && sunkyBot.wasActivated) FlxG.resetState();
 
 		if(!startingSong)
 		{
@@ -4116,20 +4050,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
-
-			if(sunkyBotSprite != null) {
-				var sunkyAnim:String = switch(Std.int(Math.abs(note.noteData))) {
-					case 0: 'left';
-					case 1: 'down';
-					case 2: 'up';
-					case 3: 'right';
-					default: 'space';
-				};
-				if (sunkyBotSprite.animation.curAnim == null || sunkyBotSprite.animation.curAnim.name != sunkyAnim)
-					sunkyBotSprite.animation.play(sunkyAnim, true);
-				sunkyBotAnimPlaying = true;
-				sunkyBotTimer = Conductor.stepCrochet * 1.5 / 1000 / playbackRate;
-			}
+			sunkyBot.onNoteHit(Std.int(Math.abs(note.noteData)));
 		}
 
 		if(cpuAssist && !cpuControlled)

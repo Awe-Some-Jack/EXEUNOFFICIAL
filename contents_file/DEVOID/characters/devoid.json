@@ -1,0 +1,119 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [889, 27],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"offsets": [881, 27],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [902, 172],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [877, 27],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"loop": false,
+			"offsets": [1023, 27],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [1025, 62],
+			"anim": "singALTLEFT",
+			"fps": 24,
+			"name": "altleft",
+			"indices": []
+		},
+		{
+			"offsets": [980, -12],
+			"loop": false,
+			"fps": 24,
+			"anim": "singALTDOWN",
+			"indices": [],
+			"name": "altdown"
+		},
+		{
+			"offsets": [910, 160],
+			"loop": false,
+			"fps": 24,
+			"anim": "singALTUP",
+			"indices": [],
+			"name": "altup"
+		},
+		{
+			"offsets": [880, 49],
+			"loop": false,
+			"fps": 24,
+			"anim": "singALTRIGHT",
+			"indices": [],
+			"name": "altright"
+		},
+		{
+			"loop": false,
+			"offsets": [1000, -184],
+			"anim": "singHDOWN",
+			"fps": 24,
+			"name": "hdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [916, -82],
+			"anim": "singHUP",
+			"fps": 24,
+			"name": "hup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [963, -37],
+			"anim": "singHLEFT",
+			"fps": 24,
+			"name": "hleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [799, -95],
+			"anim": "singHRIGHT",
+			"fps": 24,
+			"name": "hright",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/devoid",
+	"position": [670, 0],
+	"healthicon": "bf",
+	"flip_x": false,
+	"healthbar_colors": [58, 205, 241],
+	"camera_position": [-1980, -520],
+	"sing_duration": 6,
+	"scale": 0.9,
+	"_editor_isPlayer": false
+}

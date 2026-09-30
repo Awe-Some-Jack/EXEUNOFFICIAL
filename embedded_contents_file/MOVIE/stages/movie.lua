@@ -34,7 +34,6 @@ local function addSprite(def)
 	makeLuaSprite(def.name, def.path, def.x, def.y)
 	scaleObject(def.name, def.scale or 1, def.scale or 1)
 	setScrollFactor(def.name, def.scroll or 1, def.scroll or 1)
-	setProperty(def.name .. '.antialiasing', not lowQuality)
 	addLuaSprite(def.name, def.front or false)
 end
 

@@ -1,0 +1,4 @@
+Turns off the popup corruption mechanic
+and slides the corruption bar away
+
+doesnt use value 1 nor value 2

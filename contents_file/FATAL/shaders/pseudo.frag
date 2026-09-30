@@ -3,61 +3,35 @@
 
 #pragma header
 
-#define iResolution vec3(openfl_TextureSize, 0.)
 uniform float iTime;
 uniform float sort;
-#define iChannel0 bitmap
-#define texture flixel_texture2D
 
-void mainImage(out vec4 fragColor, in vec2 fragCoord) {
-    vec2 uv = fragCoord.xy / iResolution.xy;
-    vec4 tex = texture(iChannel0, uv);
+const float maskLow = 0.6 - 0.7;
+const float maskHigh = 0.6 + 0.7;
 
-    float delay = 0.0; // Espera de 1 segundo antes de empezar la animacin
+void main()
+{
+    vec2 uv = (openfl_TextureCoordv * openfl_TextureSize) / openfl_TextureSize;
+    vec4 tex = flixel_texture2D(bitmap, uv);
 
-    if (iTime < delay) {
-        fragColor = tex;
+    if (sort <= 0.0 || iTime < 0.0)
+    {
+        gl_FragColor = tex;
         return;
     }
 
-    float t = iTime;
-
-    // Control de tiempo para ida y reversa
-    float anim_duration = 6.5;
-    float reverse_duration = 6.5;
-    float total_duration = anim_duration + 4.0 + reverse_duration; // incluye 4 segundos en negro
-
-    // Mscara
-    float mask_softness = 1.4;
-    float mask_threshold = 0.6;
-
-    float f = mask_softness / 2.0;
-    float a = mask_threshold - f;
-    float b = mask_threshold + f;
-    float average = (tex.r + tex.g + tex.b) / 3.0;
-    float mask = smoothstep(a, b, average);
-
-    float sort_threshold = 1.0 - clamp(sort / 2.6, 0.0, 1.0);
-    vec2 sort_uv = vec2(uv.x, sort_threshold);
-
-    vec2 transition_uv = uv;
-    float turbulence = fract(sin(dot(vec2(transition_uv.x), vec2(12.9, 78.2))) * 437.5);
-    float displacement = pow(sort, 2.0 + (sort * 2.0)) * mask * turbulence;
-    transition_uv.y += displacement;
-
-    vec4 result;
-    if (transition_uv.y > 1.0) {
-        result = texture(iChannel0, sort_uv);
-    } else {
-        result = texture(iChannel0, transition_uv);
+    float blackMix = smoothstep(1.5, 2.5, sort);
+    if (blackMix >= 1.0)
+    {
+        gl_FragColor = vec4(0.0);
+        return;
     }
 
-    // Mezclar progresivamente con negro segn la intensidad del sort
-    float black_mix = smoothstep(1.5, 2.5, sort);
-    fragColor = mix(result, vec4(0.0), black_mix);
-}
+    float mask = smoothstep(maskLow, maskHigh, (tex.r + tex.g + tex.b) / 3.0);
+    float turbulence = fract(sin(dot(vec2(uv.x), vec2(12.9, 78.2))) * 437.5);
+    vec2 transitionUV = vec2(uv.x, uv.y + pow(sort, 2.0 + (sort * 2.0)) * mask * turbulence);
+    vec2 sortUV = vec2(uv.x, 1.0 - clamp(sort / 2.6, 0.0, 1.0));
 
-
-void main() {
-	mainImage(gl_FragColor, openfl_TextureCoordv*openfl_TextureSize);
+    vec4 result = flixel_texture2D(bitmap, transitionUV.y > 1.0 ? sortUV : transitionUV);
+    gl_FragColor = mix(result, vec4(0.0), blackMix);
 }

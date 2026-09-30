@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="MButton.png">
-<SubTexture name="MButton idle0000" x="0" y="0" width="15" height="15" frameX="0" frameY="0" frameWidth="15" frameHeight="15" />
-<SubTexture name="MButton idle0001" x="15" y="0" width="15" height="15" frameX="0" frameY="0" frameWidth="15" frameHeight="15" />
-</TextureAtlas>

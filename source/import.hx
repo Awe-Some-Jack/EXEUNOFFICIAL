@@ -18,6 +18,7 @@ import cpp.RawPointer;
 #if sys
 import sys.*;
 import sys.io.*;
+import backend.LineProcess;
 #elseif js
 import js.html.*;
 #end

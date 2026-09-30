@@ -1,5 +1,6 @@
 import openfl.Lib;
 import flixel.input.keyboard.FlxKey;
+import backend.LineProcess;
 
 var isFatalitySong:Bool = false;
 var corruptionTriggered = false;
@@ -8,7 +9,8 @@ var mechanicActive = true;
 var lastSentCorruptionSquares = -1;
 final squareCount = 22;
 final maxPopups = 25;
-final mechanicDisableStep = 2229;
+final dangerPopups = 15;
+final warningSeconds = 2;
 
 var warningTimer:FlxTimer = null;
 var floodTimer:FlxTimer = null;
@@ -18,6 +20,9 @@ var shutdownTimer:FlxTimer = null;
 var lastRefocusAttempt:Float = 0;
 var refocusCooldown:Float = 1;
 var windowHasFocus:Bool = true;
+
+var popupHost:LineProcess = null;
+var alivePopups:Int = 0;
 
 function killProcess(proc:Dynamic) {
     killProcesses([proc]);
@@ -76,7 +81,7 @@ function tryRefocusWindow() {
 
 function startWarningTimer() {
     if(warningTimer != null) warningTimer.cancel();
-    warningTimer = new FlxTimer().start(3, function(_) onCorruptionWarningDone());
+    warningTimer = new FlxTimer().start(warningSeconds, function(_) onCorruptionWarningDone());
 }
 
 function cancelWarningTimer() {
@@ -102,12 +107,45 @@ function onCorruptionFloodDone() {
     floodWithPopups();
 }
 
-function closeAllPopups() {
-    var processes:Array<Dynamic> = getVar('fatalErrorProcesses');
-    if(processes != null) {
-        killProcesses(processes);
-        setVar('fatalErrorProcesses', []);
+function startPopupHost():Bool {
+    if(popupHost != null && popupHost.isRunning()) return true;
+    stopPopupHost();
+
+    var exeName = switch (Sys.systemName()) {
+        case 'Windows': 'PopUp.exe';
+        case 'Mac': 'PopUp-mac';
+        default: 'PopUp-linux';
     }
+    try {
+        popupHost = new LineProcess('contents/FATAL/tools/' + exeName, ['--host']);
+        popupHost.send('max:' + maxPopups);
+        setVar('fatalPopupHost', popupHost);
+        return true;
+    } catch (e:Dynamic) {
+        trace('popup host failed to start: ' + e);
+        popupHost = null;
+        return false;
+    }
+}
+
+function stopPopupHost() {
+    if(popupHost != null) {
+        popupHost.kill();
+        popupHost = null;
+    }
+    setVar('fatalPopupHost', null);
+    alivePopups = 0;
+}
+
+function spawnPopup(ignoreLimit:Bool) {
+    if(!startPopupHost()) return;
+
+    var vol = FlxG.sound.muted ? 0.0 : FlxG.sound.volume;
+    popupHost.send((ignoreLimit ? 'flood:' : 'spawn:') + vol);
+}
+
+function closeAllPopups() {
+    if(popupHost != null) popupHost.send('clear');
 }
 
 function closeCorruptionBar() {
@@ -161,6 +199,8 @@ function onCreatePost() {
             trace(e);
         }
     }
+
+    startPopupHost();
 }
 
 function onStartCountdown() tryRefocusWindow();
@@ -185,21 +225,25 @@ function onStepHit() {
                     trace(e);
 				}
 			}
-        case mechanicDisableStep:
-            mechanicActive = false;
-            if(warningActive) {
-                warningActive = false;
-                cancelWarningTimer();
-            }
-            sendCorruptionCommand('hide');
-            setVar('corruptionBarProcess', null);
     }
+}
+
+function disableCorruptionMechanic() {
+    if(!isFatalitySong || !mechanicActive) return;
+
+    mechanicActive = false;
+    if(warningActive) {
+        warningActive = false;
+        cancelWarningTimer();
+    }
+    sendCorruptionCommand('hide');
+    setVar('corruptionBarProcess', null);
 }
 
 function onEndSong() {
     warningActive = false;
 	cancelWarningTimer();
-	closeAllPopups();
+	stopPopupHost();
 	closeCorruptionBar();
 	return Function_Continue;
 }
@@ -207,7 +251,7 @@ function onEndSong() {
 function onGameOver() {
 	warningActive = false;
 	cancelWarningTimer();
-	closeAllPopups();
+	stopPopupHost();
 	closeCorruptionBar();
 	return Function_Continue;
 }
@@ -216,7 +260,7 @@ function onDestroy() {
     FlxG.autoPause = true;
 	warningActive = false;
 	cancelWarningTimer();
-	closeAllPopups();
+	stopPopupHost();
 	closeCorruptionBar();
 	FlxG.signals.focusLost.remove(onWindowFocusLost);
 	FlxG.signals.focusGained.remove(onWindowFocusGained);
@@ -225,37 +269,14 @@ function onDestroy() {
 function onEvent(n:Dynamic, v1:Dynamic, v2:Dynamic, v3:Dynamic) {
     switch(n) {
         case 'PopProgram':
-            var processes:Array<Dynamic> = getVar('fatalErrorProcesses');
-            if(processes == null) {
-                processes = [];
-            }
-
-            if(processes.length >= maxPopups) {
-                var oldest = processes.shift();
-                killProcess(oldest);
-            }
-
-            var processClass = Type.resolveClass('sys.io.Process');
-            if(processClass != null) {
-                try {
-                    var exeName = switch (Sys.systemName()) {
-                        case 'Windows': 'PopUp.exe';
-                        case 'Mac': 'PopUp-mac';
-                        default: 'PopUp-linux';
-                    }
-                    var vol = FlxG.sound.muted ? 0.0 : FlxG.sound.volume;
-                    var popArgs:Array<String> = [Std.string(vol)];
-                    var proc = Type.createInstance(processClass, ['contents/FATAL/tools/' + exeName, popArgs]);
-                    processes.push(proc);
-                } catch (e:Dynamic) {
-                }
-            }
-
-            setVar('fatalErrorProcesses', processes);
+            spawnPopup(false);
 
         case 'Clear Fatal Popups':
             trace('Clear Fatal Popups event received');
             closeAllPopups();
+
+        case 'Disable Fatal Corruption':
+            disableCorruptionMechanic();
     }
 }
 
@@ -273,33 +294,7 @@ function shakeEverything() {
     var cbProc = getVar('corruptionBarProcess');
     if(cbProc != null) { try { cbProc.stdin.writeString('shake\n'); cbProc.stdin.flush(); } catch (e:Dynamic) {} }
 
-    var processes:Array<Dynamic> = getVar('fatalErrorProcesses');
-    if(processes != null) {
-        for (p in processes) {
-            try { p.stdin.writeString('shake\n'); p.stdin.flush(); } catch (e:Dynamic) {}
-        }
-    }
-}
-
-function spawnFloodPopup() {
-    var processClass = Type.resolveClass('sys.io.Process');
-    if(processClass != null) {
-        try {
-            var exeName = switch (Sys.systemName()) {
-                case 'Windows': 'PopUp.exe';
-                case 'Mac': 'PopUp-mac';
-                default: 'PopUp-linux';
-            }
-            var vol = FlxG.sound.muted ? 0.0 : FlxG.sound.volume;
-            var popArgs:Array<String> = [Std.string(vol)];
-            var proc = Type.createInstance(processClass, ['contents/FATAL/tools/' + exeName, popArgs]);
-            var processes:Array<Dynamic> = getVar('fatalErrorProcesses');
-            if(processes == null) processes = [];
-            processes.push(proc);
-            setVar('fatalErrorProcesses', processes);
-        } catch (e:Dynamic) {
-        }
-    }
+    if(popupHost != null) popupHost.send('shake');
 }
 
 var noteSpawnTimer:Float = 0;
@@ -322,7 +317,7 @@ function goodNoteHitPre(note:Dynamic) {
 function floodWithPopups() {
     if(floodSpawnTimer != null) floodSpawnTimer.cancel();
     floodSpawnTimer = new FlxTimer().start(0.05, function(tmr) {
-        spawnFloodPopup();
+        spawnPopup(true);
         if(tmr.loopsLeft <= 0) {
             if(shutdownTimer != null) shutdownTimer.cancel();
             shutdownTimer = new FlxTimer().start(1.5, function(_) shutEverythingDown());
@@ -331,7 +326,7 @@ function floodWithPopups() {
 }
 
 function shutEverythingDown() {
-	closeAllPopups();
+	stopPopupHost();
 	closeCorruptionBar();
 
     var hbProc = getVar('healthBarProcess');
@@ -348,39 +343,38 @@ function onUpdatePost(elapsed:Float) {
         noteSpawnTimer -= elapsed;
 
     if(!windowHasFocus && FlxG.keys.pressed.ANY) {
-        var pressedKey = FlxG.keys.firstressed();
+        var pressedKey = FlxG.keys.firstPressed();
         trace('Key pressed: ' + FlxKey.toStringMap.get(pressedKey));
         tryRefocusWindow();
     }
 
-    var processes:Array<Dynamic> = getVar('fatalErrorProcesses');
-    if(processes == null) processes = [];
-    var alive:Array<Dynamic> = [];
     var closedOne = false;
-    for (p in processes) {
-        try {
-            if(p.exitCode(false) == null) alive.push(p);
-            else closedOne = true;
-        } catch (e:Dynamic) {
+    if(popupHost != null) {
+        for(line in popupHost.poll()) {
+            if(line.indexOf('count:') == 0) {
+                var count = Std.parseInt(line.substr(6));
+                if(count != null) {
+                    if(count < alivePopups) closedOne = true;
+                    alivePopups = count;
+                }
+            }
         }
+        if(!popupHost.isRunning()) alivePopups = 0;
     }
-    setVar('fatalErrorProcesses', alive);
-    setVar('aliveFatalPopups', alive.length);
+    setVar('aliveFatalPopups', alivePopups);
     setVar('fatalPopupJustClosed', closedOne);
 
     if(corruptionTriggered || !mechanicActive) return;
 
-    var aliveCount = getVar('aliveFatalPopups');
+    var aliveCount = alivePopups;
 
-    if(aliveCount == null) aliveCount = 0;
-
-    var squares = Math.min(Math.floor(aliveCount * squareCount / maxPopups), squareCount);
+    var squares = Std.int(Math.min(Math.floor(aliveCount * squareCount / dangerPopups), squareCount));
     if(squares != lastSentCorruptionSquares) {
         lastSentCorruptionSquares = squares;
-        var proc = getVar("corruptionBarProcess"); if(proc != null) { try { proc.stdin.writeString('corruption:${aliveCount}\n'); proc.stdin.flush(); } catch (e:Dynamic) {} }
+        var proc = getVar("corruptionBarProcess"); if(proc != null) { try { proc.stdin.writeString('corruption:${squares}\n'); proc.stdin.flush(); } catch (e:Dynamic) {} }
     }
 
-    if(aliveCount >= maxPopups) {
+    if(aliveCount >= dangerPopups) {
         if(!warningActive) {
             warningActive = true;
             sendCorruptionCommand('danger');

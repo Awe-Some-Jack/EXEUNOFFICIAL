@@ -582,6 +582,24 @@
 			]
 		],
 		[
+			72046.875,
+			[
+				["Fatal Hand", "left", "0.5"]
+			]
+		],
+		[
+			72062.5,
+			[
+				["Fatal Hand", "right", "0.5"]
+			]
+		],
+		[
+			72125,
+			[
+				["Fatal Window Float", "", ""]
+			]
+		],
+		[
 			72500,
 			[
 				["PopProgram", "", ""]
@@ -681,6 +699,18 @@
 			108000,
 			[
 				["FatalityFlashin", "rain", ""]
+			]
+		],
+		[
+			108005.208333333,
+			[
+				["Fatal Hand", "release", ""]
+			]
+		],
+		[
+			108010.416666667,
+			[
+				["Fatal Window Float", "stop", ""]
 			]
 		],
 		[
@@ -956,6 +986,12 @@
 			]
 		],
 		[
+			139312.5,
+			[
+				["Disable Fatal Corruption", "", ""]
+			]
+		],
+		[
 			139375,
 			[
 				["PopProgram", "", ""]
@@ -1018,7 +1054,8 @@
 		[
 			139937.5,
 			[
-				["PopProgram", "", ""]
+				["PopProgram", "", ""],
+				["Fatal Window Roam", "", ""]
 			]
 		],
 		[
@@ -1034,6 +1071,12 @@
 			]
 		],
 		[
+			140062.5,
+			[
+				["Fatal Hand", "random", ""]
+			]
+		],
+		[
 			140125,
 			[
 				["PopProgram", "", ""]
@@ -1046,9 +1089,21 @@
 			]
 		],
 		[
+			141187.5,
+			[
+				["Fatal Hand", "random", ""]
+			]
+		],
+		[
 			142125,
 			[
 				["PopProgram", "", ""]
+			]
+		],
+		[
+			142875,
+			[
+				["Fatal Hand", "random", ""]
 			]
 		],
 		[
@@ -1058,9 +1113,21 @@
 			]
 		],
 		[
+			143125,
+			[
+				["Fatal Hand", "random", ""]
+			]
+		],
+		[
 			144000,
 			[
 				["PopProgram", "", ""]
+			]
+		],
+		[
+			144812.5,
+			[
+				["Fatal Hand", "random", ""]
 			]
 		],
 		[
@@ -1070,9 +1137,21 @@
 			]
 		],
 		[
+			146000,
+			[
+				["Fatal Hand", "random", ""]
+			]
+		],
+		[
 			146250,
 			[
 				["PopProgram", "", ""]
+			]
+		],
+		[
+			146437.5,
+			[
+				["Fatal Hand", "random", ""]
 			]
 		],
 		[
@@ -1082,15 +1161,39 @@
 			]
 		],
 		[
+			148500,
+			[
+				["Fatal Hand", "random", ""]
+			]
+		],
+		[
 			150000,
 			[
 				["PopProgram", "", ""]
 			]
 		],
 		[
+			150500,
+			[
+				["Fatal Hand", "random", ""]
+			]
+		],
+		[
 			151000,
 			[
 				["PopProgram", "", ""]
+			]
+		],
+		[
+			152000,
+			[
+				["Fatal Hand", "release", ""]
+			]
+		],
+		[
+			151937.5,
+			[
+				["Fatal Window Roam", "return", ""]
 			]
 		],
 		[

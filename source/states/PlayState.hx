@@ -399,7 +399,7 @@ class PlayState extends MusicBeatState
 			FlxG.fullscreen = false;
 			FlxG.stage.window.resizable = false;
 			
-			FlxG.scaleMode = new flixel.system.scaleModes.StageSizeScaleMode();
+			FlxG.scaleMode = new flixel.system.scaleModes.FixedRatioScaleMode(960, 720);
 
 			for (cam in FlxG.cameras.list)
 				cam.setSize(960, 720);
@@ -2234,6 +2234,11 @@ class PlayState extends MusicBeatState
 		if (isFixedAspectRatio && FlxG.fullscreen)
 		{
 			FlxG.fullscreen = false;
+		}
+		else if (isFixedAspectRatio && !FlxG.stage.window.minimized && !FlxG.stage.window.maximized
+			&& (FlxG.stage.window.width != 960 || FlxG.stage.window.height != 720))
+		{
+			FlxG.resizeWindow(960, 720);
 		}
 
 		if (isLetterboxedAspectRatio)

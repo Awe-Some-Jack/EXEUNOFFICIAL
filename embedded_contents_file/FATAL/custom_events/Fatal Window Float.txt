@@ -1,0 +1,4 @@
+Value 1: how far it moves in pixels, write "stop" to make it glide back and stop
+
+Value 2: seconds for one full left-right swing
+

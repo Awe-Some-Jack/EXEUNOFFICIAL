@@ -1,0 +1,5 @@
+Value 1: empty = start roaming
+Write "return" to make it glide back to
+its original position and stop
+
+Value 2: seconds for one full loop of the 8

@@ -659,7 +659,7 @@ class Cutscene extends SonicSubState
             _buildHud(fw, finalY + fh);
 
             #if DISCORD_ALLOWED
-            DiscordClient.changePresence("In the Сutscenes menu", 'Watching ${videoEntries[curSelected].displayName}', null, true, haxe.Int64.toInt(_vidSprite.video.bitmap.duration), "icon", 3, 0);
+                DiscordClient.changePresence("In the Сutscenes menu", 'Watching ${videoEntries[curSelected].displayName}', null, true, haxe.Int64.toInt(#if switch _vidSprite.video.duration #else _vidSprite.video.bitmap.duration #end), "icon", 3, 0);
             #end
         });
         _vidSprite.onEnd(() -> { 
@@ -667,7 +667,7 @@ class Cutscene extends SonicSubState
             _vidPaused = false; 
             _hudUpdateBtn(); 
             #if DISCORD_ALLOWED
-            DiscordClient.changePresence("In the Сutscenes menu", 'Watching ${videoEntries[curSelected].displayName}', null, true, haxe.Int64.toInt(_vidSprite.video.bitmap.duration), "icon", 3, 0);
+                DiscordClient.changePresence("In the Сutscenes menu", 'Watching ${videoEntries[curSelected].displayName}', null, true, haxe.Int64.toInt(#if switch _vidSprite.video.duration #else _vidSprite.video.bitmap.duration #end), "icon", 3, 0);
             #end
         });
 
@@ -827,7 +827,7 @@ class Cutscene extends SonicSubState
                 _seekDragging = false;
                 #if DISCORD_ALLOWED
                 if (_vidSprite?.video?.bitmap != null)
-                    DiscordClient.changePresence("In the Сutscenes menu", 'Watching ${videoEntries[curSelected].displayName}' + (_vidPaused ? ' (Paused)' : ''), null, true, haxe.Int64.toInt(_vidSprite.video.bitmap.duration), "icon", 3, _vidSprite.getTime());
+                    DiscordClient.changePresence("In the Сutscenes menu", 'Watching ${videoEntries[curSelected].displayName}' + (_vidPaused ? ' (Paused)' : ''), null, true, haxe.Int64.toInt(#if switch _vidSprite.video.duration #else _vidSprite.video.bitmap.duration #end), "icon", 3, _vidSprite.getTime());
                 #end
             }
         }
@@ -840,7 +840,7 @@ class Cutscene extends SonicSubState
             
             #if DISCORD_ALLOWED
             if (_vidSprite.video?.bitmap != null) {
-                final durMs = _vidPaused ? 0 : haxe.Int64.toInt(_vidSprite.video.bitmap.duration);
+                final durMs = _vidPaused ? 0 : haxe.Int64.toInt(#if switch _vidSprite.video.duration #else _vidSprite.video.bitmap.duration #end);
                 DiscordClient.changePresence("In the Сutscenes menu", 'Watching ${videoEntries[curSelected].displayName}' + (_vidPaused ? ' (Paused)' : ''), null, true, durMs, "icon", 3, _vidSprite.getTime());
             }
             #end

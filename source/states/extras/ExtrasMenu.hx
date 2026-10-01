@@ -8,8 +8,6 @@ import openfl.display.BitmapData;
 import openfl.filters.ShaderFilter;
 import openfl.geom.Rectangle;
 
-import hxvlc.flixel.FlxVideoSprite;
-
 import states.EXEMenu;
 import states.extras.menuProps.*;
 

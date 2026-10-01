@@ -29,8 +29,8 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
         },
         {
             src: "2",
-            animName: "sonic",
-            type: "atlas"
+            animName: "xaf",
+            type: "sparrow"
         },
         {
             src: "1",

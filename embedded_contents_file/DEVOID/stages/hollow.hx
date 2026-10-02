@@ -2,7 +2,7 @@ import openfl.display.BlendMode;
 import flixel.tweens.FlxTween.FlxTweenType;
 
 final bg:Array<BackgroundSprite> = [
-	{path: 'hollow/sky', position: [-800, -300], scroll: [0.35, 0.35]},
+	{path: 'hollow/sky', position: [-850, -300], scroll: [0.35, 0.35]},
 	{path: 'hollow/cloud1', position: [-800, -300], scroll: [0.35, 0.35], backdrop: ['x', [50, 0]]},
 	{path: 'hollow/cloud2', position: [-800, -300], scroll: [0.35, 0.35], backdrop: ['x', [50, 0]]},
 	{path: 'hollow/FalseSonicBro', position: [1952, 50], scale: [0.7, 0.7], scroll: [0.7, 0.7], isAtlas: true, animation: [{name: 'Símbolo 1'}], alpha: 0.0001}

@@ -109,4 +109,5 @@ function onGameOverConfirm(retry)
 		deadMusic.stop();
 		curseLine.stop();
 	}
+	else for (sound in FlxG.sound.list) if (sound.playing && sound != null) sound.volume = 0;
 }

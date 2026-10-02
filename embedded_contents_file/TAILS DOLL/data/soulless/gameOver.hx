@@ -77,4 +77,5 @@ function onGameOverConfirm(retry)
 		eyes.visible = true;
 		eyes.animation.play('ojos', true);
 	}
+	else for (sound in FlxG.sound.list) if (sound.playing && sound != null) sound.volume = 0;
 }

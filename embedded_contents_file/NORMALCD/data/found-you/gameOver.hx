@@ -150,4 +150,5 @@ function onGameOverConfirm(retry)
 		cdLine.stop();
 		daGameOver.destroy();
 	}
+	else for (sound in FlxG.sound.list) if (sound.playing && sound != null) sound.volume = 0;
 }

@@ -150,4 +150,5 @@ function onGameOverConfirm(retry)
 		FlxG.cameras.remove(gameOverHUD, true);
 		for (sound in FlxG.sound.list) if (sound.playing && sound != deadMusic) sound.volume = 0;
 	}
+	else for (sound in FlxG.sound.list) if (sound.playing && sound != null) sound.volume = 0;
 }

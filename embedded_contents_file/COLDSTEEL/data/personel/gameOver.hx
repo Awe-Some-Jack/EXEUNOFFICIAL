@@ -89,4 +89,5 @@ function onGameOverConfirm(retry)
 		_canZoom = false;
 		keith.destroy();
 	}
+	else for (sound in FlxG.sound.list) if (sound.playing && sound != null) sound.volume = 0;
 }

@@ -437,6 +437,7 @@ function onGameOverConfirm(retry)
 	if (retry) {
         for (sound in FlxG.sound.list) if (sound.playing && sound != deadMusic && exeGameOvers) sound.volume = 0;
     }
+    else for (sound in FlxG.sound.list) if (sound.playing && sound != null) sound.volume = 0;
     
     //FlxTween.cancelTweensOf(FlxG.camera);
     if (countdown     != null) countdown.cancel();

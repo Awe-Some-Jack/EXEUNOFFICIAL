@@ -64,4 +64,5 @@ function onGameOverConfirm(retry)
 		deadMusic.stop();
 		bfDeath.destroy();
 	}
+	else for (sound in FlxG.sound.list) if (sound.playing && sound != null) sound.volume = 0;
 }

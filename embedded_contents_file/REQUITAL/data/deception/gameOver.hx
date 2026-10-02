@@ -200,4 +200,5 @@ function onGameOverConfirm(retry)
 		for (pixelAssets in [star1, star2, countdownText]) pixelAssets.destroy();
 		reqLine.stop();
 	}
+	else for (sound in FlxG.sound.list) if (sound.playing && sound != null) sound.volume = 0;
 }

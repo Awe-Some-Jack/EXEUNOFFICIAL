@@ -130,7 +130,7 @@ function onEvent(n, v1)
 			callMethod('gf.changeCharacter', {'furnace'})
 			runTimer('xdjiasfaishjf', 2)
 			setProperty('gf.velocity.x', 200)
-			setProperty('gf.y', 960)
+			setProperty('gf.y', 1200)
 			furn = true
 		end
 
@@ -252,7 +252,7 @@ function onUpdatePost(e)
 
 	if furn then
 		xd = xd + e * 3 * playbackRate
-		setProperty('gf.y', 830 + math.sin(xd + (math.pi / 2)) * 5)
+		setProperty('gf.y', 1000 + math.sin(xd + (math.pi / 2)) * 10)
 
 		if getProperty('gf.x') >= 1900 then
 			furn = false

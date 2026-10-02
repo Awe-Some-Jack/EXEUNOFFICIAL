@@ -1,18 +1,5 @@
 function onCreatePost()
-	makeAnimatedLuaSprite('introsonic', 'characters/anim_inicio', getProperty('boyfriend.x') + 82, getProperty('boyfriend.y') + 31)
-	addAnimationByPrefix('introsonic', 'intro', 'anim_Inicio', 24, false)
-	scaleObject('introsonic', 6, 6, false)
-	setProperty('introsonic.antialiasing', false)
-	addLuaSprite('introsonic')
-	setObjectOrder('introsonic', getObjectOrder('boyfriendGroup') + 1)
-	setProperty('introsonic.alpha', 0)
-
-	makeAnimatedLuaSprite('sonicfinal', 'characters/sonicfinale', getProperty('boyfriend.x') + 355, getProperty('boyfriend.y') - 55)
-	addAnimationByPrefix('sonicfinal', 'idle', 'idle', 12, false)
-	scaleObject('sonicfinal', 6, 6, false)
-	setProperty('sonicfinal.antialiasing', false)
-	addLuaSprite('sonicfinal', true)
-	setProperty('sonicfinal.alpha', 0)
+	setProperty('boyfriend.alpha', 0)
 
 	makeAnimatedLuaSprite('starvHit', 'characters/starvfinal', getProperty('dad.x') + 20, getProperty('dad.y') - 100)
 	addAnimationByPrefix('starvHit', 'idle', 'idle', 12, false)
@@ -21,7 +8,7 @@ function onCreatePost()
 	addLuaSprite('starvHit')
 	setProperty('starvHit.alpha', 0)
 
-	makeAnimatedLuaSprite('sonicintro', 'characters/sonicprey')
+	makeAnimatedLuaSprite('sonicintro', 'characters/sonicpreyintro')
 	setObjectCamera('sonicintro', 'video')
 	addAnimationByPrefix('sonicintro', 'idle', 'idle', 12, true)
 	scaleObject('sonicintro', 8, 8, true)
@@ -34,11 +21,6 @@ end
 function onSongStart() doTweenAlpha('sonicintro', 'sonicintro', 1, crochet / 500) end
 
 function onUpdatePost(e)
-	if getProperty('introsonic.animation.curAnim.name') == 'intro' and getProperty('introsonic.animation.curAnim.finished') then
-		removeLuaSprite('introsonic', true)
-		setProperty('boyfriend.alpha', 1)
-	end
-
 	if curBeat < 388 then
 		setProperty('furnaceHit.x', getProperty('dad.x') - 20)
 		setProperty('furnaceHit.y', getProperty('dad.y') + 51)

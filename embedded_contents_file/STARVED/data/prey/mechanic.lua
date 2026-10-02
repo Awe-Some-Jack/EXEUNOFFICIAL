@@ -10,17 +10,23 @@ function onCreatePost()
 	setObjectOrder('sonic-jump', getObjectOrder('boyfriendGroup') + 1)
 	
 	setProperty('sonic-jump.visible', false)
+
+	makeLuaSprite('sonicHitboxFix', nil, 0, 0)
+	makeGraphic('sonicHitboxFix', 160, 170, '0000FF')
+	setProperty('sonicHitboxFix.alpha', 0)
+	addLuaSprite('sonicHitboxFix', true)
 end
 
 local spikeGroup = {}
 local cantMore = false
 local jumpAmount = 2000
 local gravity = 7000
-local time = 0
 local amountOfTime = 0
-local lerpAmount = 0
 local holdTimer = 0
+local triggerOnce = false
 function onUpdatePost(e)
+	callMethod('sonicHitboxFix.setPosition', {getProperty('boyfriend.x') + 10, getProperty('boyfriend.y') - 25})
+
 	if getProperty('boyfriend.velocity.x') < 0 then
 		setProperty('boyfriend.acceleration.x', 0)
 		setProperty('boyfriend.velocity.x', 0)
@@ -29,29 +35,29 @@ function onUpdatePost(e)
 	setProperty('sonic-jump.x', getProperty('boyfriend.x') - 100)
 	setProperty('sonic-jump.y', getProperty('boyfriend.y') - 100)
 
-	if keyboardJustPressed('SPACE') then holdTimer = 0 end
-	if keyboardPressed('SPACE') then holdTimer = holdTimer + e end
+	if not getProperty('cpuControlled') then
+		if keyboardJustPressed('SPACE') then holdTimer = 0 end
+		if keyboardPressed('SPACE') then holdTimer = holdTimer + e end
 
-	if keyboardPressed('SPACE') and not isJumping and canJump and holdTimer < 0.15 then
-		cantMore = false
-		isJumping = true
-		amountOfTime = 0
-		time = 0
+		if keyboardPressed('SPACE') and not isJumping and canJump and holdTimer < 0.15 then
+			cantMore = false
+			isJumping = true
+			amountOfTime = 0
 
-		setProperty('sonic-jump.visible', true)
-		setProperty('boyfriend.alpha', 0)
-		playAnim('sonic-jump', 'jump', true)
-		playSound('sonicJump')
+			setProperty('sonic-jump.visible', true)
+			setProperty('boyfriend.alpha', 0)
+			playAnim('sonic-jump', 'jump', true)
+			playSound('sonicJump')
+		end
+		if keyboardReleased('SPACE') then cantMore = true end
+		if keyboardPressed('SPACE') and cantMore == false and amountOfTime < 0.1 and canJump then
+			amountOfTime = amountOfTime + e
+			
+			setProperty('boyfriend.acceleration.y', gravity)
+			setProperty('boyfriend.velocity.y', -jumpAmount * (1 + (amountOfTime * 3)))
+		end
 	end
-	if keyboardReleased('SPACE') then cantMore = true end
-	if keyboardPressed('SPACE') and cantMore == false and amountOfTime < 0.1 and canJump then
-		amountOfTime = amountOfTime + e
-		
-		setProperty('boyfriend.acceleration.y', gravity)
-		setProperty('boyfriend.velocity.y', -jumpAmount * (1 + (amountOfTime * 3)))
-	end
 
-	if isJumping then time = time + e end
 	if getProperty('boyfriend.y') > 420 and isJumping then
 		isJumping = false
 
@@ -63,13 +69,30 @@ function onUpdatePost(e)
 		setProperty('boyfriend.acceleration.y', 0)
 	end
 
+	if stringStartsWith(getProperty('boyfriend.animation.curAnim.name'), 'idle') and triggerOnce then
+		triggerOnce = false
+		for i = 0,getProperty('notes.length')-1 do
+			setProperty('notes.members['..i..'].noAnimation', false)
+			setProperty('notes.members['..i..'].noMissAnimation', false)
+		end
+	end
+
 	for i,s in ipairs(spikeGroup) do
 		local spr = 'spike'..s.id
-		if overlaps('boyfriend', spr) and s.detect then
+		if overlaps('sonicHitboxFix', spr) and s.detect then
 			s.detect = false
 			cameraShake('game', 0.01, 0.1)
 			addHealth(-0.2)
 			callMethod('updateScore', {false, false})
+			playSound('hit')
+			playAnim('boyfriend', 'hit'..getProperty('boyfriend.idleSuffix'), true)
+			setProperty('boyfriend.specialAnim', true)
+			triggerOnce = true
+
+			for i = 0,getProperty('notes.length')-1 do
+				setProperty('notes.members['..i..'].noAnimation', true)
+				setProperty('notes.members['..i..'].noMissAnimation', true)
+			end
 		end
 
 		if getProperty(spr..'.x') < -1200 - getProperty(spr..'.width') then
@@ -81,7 +104,7 @@ end
 
 function onBeatHit()
 	canJump = false
-	if (curBeat >= 96 and curBeat < 384) or (curBeat >= 448 and curBeat < 832) then canJump = true end
+	if (curBeat >= 96 and curBeat < 379) or (curBeat >= 448 and curBeat < 823) then canJump = true end
 end
 
 local mech = false
@@ -98,9 +121,8 @@ function onSectionHit()
 		local spike = 'spike'..id
 		local warning = 'warning'..id
 
-		makeLuaSprite(spike, 'prey/spikes'..getRandomInt(1,3), 200 + ((crochet * 3) / 1000) * math.abs(getProperty('floor1.velocity.x')), 423)
+		makeLuaSprite(spike, 'prey/spikes'..getRandomInt(1,3), ((crochet * 3) / 1000) * math.abs(getProperty('floor1.velocity.x') * 1.07), 423)
 		scaleObject(spike, 5, 5)
-		setProperty(spike..'.offset.x', 200)
 		setProperty(spike..'.antialiasing', false)
 		setProperty(spike..'.velocity.x', getProperty('floor1.velocity.x'))
 		setObjectOrder(spike, getObjectOrder('floor1'))
@@ -125,6 +147,16 @@ function onTimerCompleted(t)
 		runTimer('2'..t, crochet / 1000)
 	end
 	if stringStartsWith(t, '2warning') then
+		if getProperty('cpuControlled') then
+			isJumping = true
+			setProperty('sonic-jump.visible', true)
+			setProperty('boyfriend.alpha', 0)
+			playAnim('sonic-jump', 'jump', true)
+			playSound('sonicJump')
+			setProperty('boyfriend.acceleration.y', gravity)
+			setProperty('boyfriend.velocity.y', -jumpAmount * 1.5)
+		end
+
 		removeLuaSprite(t:sub(2), true)
 	end
 end

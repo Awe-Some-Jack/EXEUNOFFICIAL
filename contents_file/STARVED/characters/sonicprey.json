@@ -1,0 +1,287 @@
+{
+	"animations": [
+		{
+			"offsets": [-150, -54],
+			"loop": true,
+			"fps": 24,
+			"anim": "intro",
+			"indices": [],
+			"name": "intro"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "left"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"indices": [],
+			"name": "missleft"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"indices": [],
+			"name": "missdown"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUPmiss",
+			"indices": [],
+			"name": "missup"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"indices": [],
+			"name": "missright"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFT-loop",
+			"indices": [4, 5, 6, 7],
+			"name": "left"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "singDOWN-loop",
+			"indices": [4, 5, 6, 7],
+			"name": "down"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUP-loop",
+			"indices": [4, 5, 6, 7],
+			"name": "up"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHT-loop",
+			"indices": [4, 5, 6, 7],
+			"name": "right"
+		},
+		{
+			"offsets": [438, 354],
+			"loop": false,
+			"fps": 18,
+			"anim": "attack",
+			"indices": [],
+			"name": "attack0"
+		},
+		{
+			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
+			"anim": "dialogue",
+			"indices": [],
+			"name": "dialogue"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-alt",
+			"indices": [],
+			"name": "altidle"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "altleft"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"indices": [],
+			"name": "altdown"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "altup"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "altright"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFTmiss-alt",
+			"indices": [],
+			"name": "altmissleft"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": true,
+			"fps": 24,
+			"anim": "singDOWNmiss-alt",
+			"indices": [],
+			"name": "altmissdown"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUPmiss-alt",
+			"indices": [],
+			"name": "altmissup"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHTmiss-alt",
+			"indices": [],
+			"name": "altmissright"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFT-alt-loop",
+			"indices": [4, 5, 6, 7],
+			"name": "altleft"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": true,
+			"fps": 24,
+			"anim": "singDOWN-alt-loop",
+			"indices": [4, 5, 6, 7],
+			"name": "altdown"
+		},
+		{
+			"offsets": [-132, -60],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUP-alt-loop",
+			"indices": [4, 5, 6, 7],
+			"name": "altup"
+		},
+		{
+			"offsets": [-132, -59],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHT-alt-loop",
+			"indices": [4, 5, 6, 7],
+			"name": "altright"
+		},
+		{
+			"loop": false,
+			"offsets": [144, 342],
+			"anim": "attack2",
+			"fps": 12,
+			"name": "altattack",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-132, -60],
+			"anim": "ending",
+			"fps": 26,
+			"name": "ending0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [30, -30],
+			"anim": "ending-death",
+			"fps": 24,
+			"name": "endingdeath",
+			"indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+		},
+		{
+			"loop": false,
+			"offsets": [36, 84],
+			"anim": "hit",
+			"fps": 24,
+			"name": "hit",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [60, 84],
+			"anim": "hit-alt",
+			"fps": 24,
+			"name": "althit",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "characters/sonicprey",
+	"position": [0, 0],
+	"healthicon": "sonicprey",
+	"flip_x": true,
+	"healthbar_colors": [36, 36, 144],
+	"camera_position": [0, 0],
+	"sing_duration": 4,
+	"scale": 6,
+	"_editor_isPlayer": true
+}

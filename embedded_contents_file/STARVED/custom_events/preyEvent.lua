@@ -1,16 +1,8 @@
 local oppFloat = false
 local dadX, dadY = -666, 104
 local floatTime = 0
-
+local oldGT = false
 function onCreatePost()
-	makeAnimatedLuaSprite('sonicattack', 'characters/sonic-attack', getProperty('boyfriend.x') - 71, getProperty('boyfriend.y') - 203)
-	addAnimationByPrefix('sonicattack', 'idle', 'idle', 18, false)
-	scaleObject('sonicattack', 6, 6, false)
-	setProperty('sonicattack.visible', false)
-	setProperty('sonicattack.antialiasing', false)
-	setObjectOrder('sonicattack', getObjectOrder('boyfriendGroup') + 1)
-	addLuaSprite('sonicattack')
-
 	setProperty('boyfriend.alpha', 0)
 	setProperty('camHUD.alpha', 0)
 	for i = 0,3 do setProperty('playerStrums.members['..i..'].y', downscroll and screenHeight or (-getProperty('playerStrums.members['..i..'].height'))) end
@@ -24,15 +16,24 @@ function onCreatePost()
 	setProperty('redbg.alpha', 0)
 	makeGraphic('redbg', screenWidth / 0.5, screenHeight / 0.5, 'FF0000')
 	addLuaSprite('redbg')
+
+	oldGT = getPropertyFromClass('backend.ClientPrefs', 'data.ghostTapping')
+	setPropertyFromClass('backend.ClientPrefs', 'data.ghostTapping', true)
 end
 
+local altTime = false
 local starv = false
 local furn = false
 function onEvent(n, v1)
 	if n == 'preyEvent' and songPath == 'prey' then
+		if v1 == 'gt' then
+			setPropertyFromClass('backend.ClientPrefs', 'data.ghostTapping', oldGT)
+		end
+
 		if v1 == 'startanim' then
-			playAnim('introsonic', 'intro', true)
-			setProperty('introsonic.animation.curAnim.curFrame', 8)
+			playAnim('boyfriend', 'intro', true)
+			setProperty('boyfriend.specialAnim', true)
+			setProperty('boyfriend.animation.curAnim.curFrame', 8)
 		end
 
 		if v1 == 'secondcamera' then screenCenter('sonicintro') end
@@ -40,7 +41,7 @@ function onEvent(n, v1)
 		if v1 == 'fourthcamera' then doTweenAlpha('sonicintro', 'sonicintro', 0, crochet / (1000 / 8)) end
 
 		if v1 == 'addbg' then
-			setProperty('introsonic.alpha', 1)
+			setProperty('boyfriend.alpha', 1)
 			removeLuaSprite('sonicintro', true)
 			if not lowQuality then
 				for i = 1,15 do
@@ -78,9 +79,13 @@ function onEvent(n, v1)
 		end
 
 		if v1 == 'sonicattack' then
-			setProperty('sonicattack.visible', true)
-			setProperty('boyfriend.visible', false)
-			playAnim('sonicattack', 'idle', true)
+			setPropertyFromClass('backend.ClientPrefs', 'data.ghostTapping', true)
+			playAnim('boyfriend', 'attack', true)
+			setProperty('boyfriend.specialAnim', true)
+			for i = 0,getProperty('notes.length')-1 do
+				setProperty('notes.members['..i..'].noAnimation', true)
+				setProperty('notes.members['..i..'].noMissAnimation', true)
+			end
 			runTimer('impact', getTime(2))
 		end
 
@@ -99,6 +104,12 @@ function onEvent(n, v1)
 			runTimer('startFloating', getTime(14))
 			runTimer('backtonormalsize', getTime(8))
 			setProperty('dad.alpha', 1)
+			altTime = true
+
+			for i = 0,getProperty('notes.length')-1 do
+				setProperty('notes.members['..i..'].noAnimation', false)
+				setProperty('notes.members['..i..'].noMissAnimation', false)
+			end
 		end
 
 		if v1 == 'backtostarved' then
@@ -131,9 +142,6 @@ function onEvent(n, v1)
 		end
 
 		if v1 == 'byehud' then
-			setProperty('sonicfinal.alpha', 0)
-			setProperty('boyfriend.visible', true)
-
 			cancelTween('camHUD')
 			setProperty('camHUD.alpha', 1)
 			doTweenAlpha('camHUD', 'camHUD', 0, getTime(4))
@@ -144,17 +152,21 @@ function onEvent(n, v1)
 
 			starv = false
 			furn = false
-			callMethod('gf.setPosition', {14400, 350})
+			callMethod('gf.setPosition', {14800, 350})
 			setProperty('gf.maxVelocity.x', 0)
 			setProperty('gf.velocity.x', -5000)
 			setProperty('gf.flipX', true)
 		end
 
 		if v1 == 'sonicAttackFinal' then
+			setPropertyFromClass('backend.ClientPrefs', 'data.ghostTapping', true)
 			setProperty('dad.angle', 0)
-			setProperty('sonicfinal.alpha', 1)
-			setProperty('boyfriend.visible', false)
-			playAnim('sonicfinal', 'idle', true)
+			playAnim('boyfriend', 'attack2', true)
+			setProperty('boyfriend.specialAnim', true)
+			for i = 0,getProperty('notes.length')-1 do
+				setProperty('notes.members['..i..'].noAnimation', true)
+				setProperty('notes.members['..i..'].noMissAnimation', true)
+			end
 			setProperty('dad.alpha', 0)
 			setProperty('starvHit.alpha', 1)
 			playAnim('starvHit', 'idle', true)
@@ -221,11 +233,6 @@ function onUpdatePost(e)
 		setProperty('dad.y', dadY + math.cos(floatTime * 0.8 + (math.pi / 2)) * 24)
 	end
 
-	if getProperty('sonicattack.visible') == true and getProperty('sonicattack.animation.curAnim.finished') then
-		setProperty('sonicattack.visible', false)
-		setProperty('boyfriend.visible', true)
-	end
-
 	if getProperty('gf.animation.curAnim.name') == 'fly' and getProperty('gf.animation.curAnim.finished') then
 		playAnim('gf', 'flyloop', true)
 		setProperty('gf.specialAnim', true)
@@ -254,11 +261,12 @@ function onUpdatePost(e)
 		end
 	end
 
-	if getProperty('boyfriend.animation.curAnim.name') == 'dialogue' and getProperty('boyfriend.animation.curAnim.finished') and boyfriendName == 'sonic-peelout' and playEndOnce then
+	if getProperty('boyfriend.animation.curAnim.name') == 'ending' and getProperty('boyfriend.animation.curAnim.finished') and playEndOnce then
 		setProperty('redbg.alpha', 1) doTweenAlpha('redbgxddfd', 'redbg', 0, 3)
 		setProperty('boyfriend.color', getColorFromHex('000000')) doTweenColor('boyfriendcolor', 'boyfriend', 'FF0000', 2, 'expoOut') doTweenAlpha('bffdsasda', 'boyfriend', 0, 4)
 		setProperty('gf.color', getColorFromHex('000000')) doTweenColor('gfcolor', 'gf', 'FF0000', 2, 'expoOut') doTweenAlpha('gfxadasd', 'gf', 0, 4)
-		triggerEvent('Play Animation', 'dead_h', 'bf')
+		playAnim('boyfriend', 'ending-death', true)
+		setProperty('boyfriend.specialAnim', true)
 		setProperty('gf.velocity.x', 0)
 		setProperty('camOther.visible', false)
 		cameraShake('game', 0.02, 0.1)
@@ -284,3 +292,7 @@ function onUpdatePost(e)
 		end
 	end
 end
+
+function noteMissPress(nt) if not altTime then return end playAnim('boyfriend', getProperty('singAnimations['..nt..']') .. 'miss-alt', true) end
+
+function onDestroy() setPropertyFromClass('backend.ClientPrefs', 'data.ghostTapping', oldGT) end

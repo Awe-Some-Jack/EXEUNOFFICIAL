@@ -208,3 +208,5 @@ function splitShit(s, f)
 	if f then for i = #temp,1,-1 do splitted[#splitted + 1] = temp[i] end else for i = 1,#temp do splitted[#splitted + 1] = temp[i] end end
 	return splitted
 end
+
+function noteMissPress() callMethod('updateScore', {false, false}) end

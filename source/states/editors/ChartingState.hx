@@ -2537,7 +2537,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		{
 			var eventSelected:Array<String> = eventsList[id];
 			var eventName:String = eventSelected[0];
-			var description:String = eventSelected[1];
+			var description:String = eventSelected[1] ?? '';
 			eventDescriptionText.text = description;
 			if (selectedNotes.length > 1)
 			{

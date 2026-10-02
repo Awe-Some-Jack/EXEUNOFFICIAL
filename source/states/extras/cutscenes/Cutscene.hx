@@ -79,6 +79,8 @@ class Cutscene extends SonicSubState
     var _lastMouseY:Float   = -1;
 
     var _leftOrigX:Map<flixel.FlxBasic, Float> = new Map();
+
+    public static var debugMode:Bool = false;
     override public function create():Void
     {
         super.create();
@@ -361,13 +363,61 @@ class Cutscene extends SonicSubState
     {
         videoEntries = [];
 
-        _scanDirIfExists('assets/exe/extras/cutscenes');
-        _scanDirIfExists(Paths.mods('videos'));
-        for (modName in Mods.getModDirectories())
-            _scanDirIfExists(Paths.mods('$modName/videos'));
+        final save:flixel.util.FlxSave = new flixel.util.FlxSave();
+        save.bind('savedSongs', CoolUtil.getSavePath());
+        save.data.songs ??= [];
+        var unlocked:Array<String> = save.data.songs;
 
-        _saveJson();
-        _loadJsonManifest();
+        // bye bye read json for load videos!! HAahahah 
+        final rawList:Array<{name:String, displayName:String, path:String}> = [
+            {name: "too-slow",           displayName: "Too Slow Cutscene",              path: "contents/STORY MODE/videos/tooslow.mp4"},
+            {name: "you-cant-run",       displayName: "You Can't Run Cutscene",         path: "contents/STORY MODE/videos/YRC.mp4"},
+            {name: "triple-trouble",     displayName: "Triple Trouble Cutscene",        path: "contents/STORY MODE/videos/tripletrouble.mp4"},
+            {name: "final-escape",       displayName: "Intro (Final Escape Fakeout)",   path: "contents/STORY MODE/videos/fake intro.mp4"},
+            {name: "final-escape",       displayName: "Final Escape Dialogue Scene",    path: "contents/STORY MODE/videos/you know.mp4"},
+            {name: "final-escape",       displayName: "Final Escape Super BF Scene",    path: "contents/STORY MODE/videos/what.mp4"},
+            {name: "yourself",           displayName: "Yourself Cutscene",              path: "contents/STORY MODE/videos/EYE_TO_EYE intro.mp4"},
+            {name: "yourself",           displayName: "Yourself Mirror Scene",          path: "contents/STORY MODE/videos/EYE FOR EYE.mp4"},
+            {name: "sunshine",           displayName: "Sunshine Ending Cutscene",       path: "contents/TAILS DOLL/videos/dollending.mp4"},
+            {name: "soulless",           displayName: "Soulless Cutscene",              path: "contents/TAILS DOLL/videos/soulless.mp4"},
+            {name: "black-sun",          displayName: "Black Sun Ending Cutscene",      path: "contents/EXE/videos/Black Sun Transition.mp4"},
+            {name: "godspeed",           displayName: "Godspeed Cutscene",              path: "contents/EXE/videos/good speed.mp4"},
+            {name: "universal-collapse", displayName: "Universal Collapse Cutscene",    path: "contents/OMW/videos/omwintro.mp4"},
+            {name: "pre-design",         displayName: "Movie Ugly Sonic Cutscene",      path: "contents/MOVIE/videos/SONIC FEO.mp4"},
+            {name: "fight-or-flight",    displayName: "Fight or Flight Cutscene",       path: "contents/STARVED/videos/intro.mp4"},
+            {name: "mania",              displayName: "Mania Ending Cutscene",          path: "contents/CRAZY TAILS/videos/Who is he.mp4"},
+            {name: "personel",           displayName: "Personel Cutscene",              path: "contents/COLDSTEEL/videos/intro.mp4"},
+            {name: "deception",          displayName: "Deception Cutscene",             path: "contents/REQUITAL/videos/anim.mp4"},
+            {name: "fakebaby",           displayName: "Fakebaby Cutscene",              path: "contents/NMI/videos/fakebaby.mp4"},
+            {name: "fakebaby",           displayName: "Fakebaby Ending Cutscene",       path: "contents/NMI/videos/fakebabyfinal.mp4"}
+        ];
+
+        for (entry in rawList)
+        {
+            final songKey:String = Paths.formatToSongPath(entry.name);
+            final isUnlocked:Bool = debugMode || unlocked.contains(songKey);
+
+            if (isUnlocked)
+            {
+                final fullPath = Paths.mods(entry.path);
+                if (FileSystem.exists(fullPath))
+                {
+                    videoEntries.push({
+                        name: entry.name,
+                        displayName: entry.displayName,
+                        path: fullPath
+                    });
+                }
+                else if (FileSystem.exists(entry.path))
+                {
+                    videoEntries.push({
+                        name: entry.name,
+                        displayName: entry.displayName,
+                        path: entry.path
+                    });
+                }
+            }
+        }
     }
 
     function _loadJsonManifest():Void
@@ -456,7 +506,7 @@ class Cutscene extends SonicSubState
             for (i in 0...videoEntries.length)
             {
                 final lbl = new FlxText(50.0, 180.0 + (i * 58.0), 0, videoEntries[i].displayName.toUpperCase(), Language.cjkSize(88));
-                lbl.setFormat(Paths.font("bigass.otf"), Language.cjkSize(88), FlxColor.WHITE, LEFT);
+                lbl.setFormat(Paths.font("bigass.otf"), Language.cjkSize(60), FlxColor.WHITE, LEFT);
                 lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
                 lbl.antialiasing = ClientPrefs.data.antialiasing;
                 lbl.pixelPerfectRender = false;
@@ -550,7 +600,7 @@ class Cutscene extends SonicSubState
     function _calcSelectLayout():{targetX:Float, targetY:Float, capPx:Float, midPx:Float, midScaleX:Float, scaleY:Float}
     {
         final item      = menuItems[curSelected];
-        final itemW     = item.frameWidth * 0.525 + 56;
+        final itemW     = item.frameWidth * 0.525 + 26;
         final scaleY    = 0.28;
         final capPx     = _selLeft.frameWidth * scaleY;
         final minMidPx  = _selMid.frameWidth * scaleY;
@@ -911,6 +961,11 @@ class Cutscene extends SonicSubState
         super.update(elapsed);
 
         if (isBacking) return;
+
+        if (FlxG.keys.justPressed.TAB){
+            debugMode = !debugMode;
+            FlxG.resetState();
+        }
 
         if (COOLDOWN_TIMER > 0) COOLDOWN_TIMER -= elapsed;
 

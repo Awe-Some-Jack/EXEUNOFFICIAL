@@ -130,8 +130,12 @@ function onEvent(eventName, value1, value2)
         setProperty('distortion.x', 0)
         setShaderFloat('distortion', 'size', 0)
         if sexo then
+            for i = 0,getProperty('notes.length')-1 do if not getProperty('notes.members['..i..'].mustPress') and getProperty('notes.members['..i..'].animSuffix') == '' then setProperty('notes.members['..i..'].animSuffix', '-hard') end end
+            for i = 0,getProperty('unspawnNotes.length')-1 do if not getProperty('unspawnNotes['..i..'].mustPress') and getProperty('unspawnNotes['..i..'].animSuffix') == '' then setProperty('unspawnNotes['..i..'].animSuffix', '-hard') end end
             setProperty('distortion.x', 0.2)
         else
+            for i = 0,getProperty('notes.length')-1 do if not getProperty('notes.members['..i..'].mustPress') and getProperty('notes.members['..i..'].animSuffix') == '-hard' then setProperty('notes.members['..i..'].animSuffix', '') end end
+            for i = 0,getProperty('unspawnNotes.length')-1 do if not getProperty('unspawnNotes['..i..'].mustPress') and getProperty('unspawnNotes['..i..'].animSuffix') == '-hard' then setProperty('unspawnNotes['..i..'].animSuffix', '') end end
             doTweenX('distortion', 'distortion', 0, 1, 'cubeInOut')
         end
     end

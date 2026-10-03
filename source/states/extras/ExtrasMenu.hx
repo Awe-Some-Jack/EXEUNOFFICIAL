@@ -13,6 +13,7 @@ import states.extras.menuProps.*;
 
 import shaders.ColorShiftShader;
 import shaders.ErrorHandledShader.ErrorHandledRuntimeShader;
+import flixel.sound.FlxSound;
 
 typedef ExtrasMenuThemeEntry = {
     var name:String;
@@ -89,7 +90,7 @@ class ExtrasMenu extends MusicBeatState
             volume: 1
         },
         {
-            name: "Credits Theme",
+            name: "Hall of Fame",
             src: "credits",
             author: "MeDicenKay ft. Suonima",
             volume: 1
@@ -117,6 +118,20 @@ class ExtrasMenu extends MusicBeatState
         return getCurrentMenuTheme().name + '\n${Language.getArray('extras.dagarden', ['BY'])[0].toLowerCase()} ${getCurrentMenuTheme().author}';
     }
 
+    public static function preloadExtrasThemes(?exception:Int = -1):Void
+    {
+        for (i in 0...extrasMenuThemes.length)
+        {
+            if (i != exception)
+            {
+                final soundPath:String = 'assets/exe/music/${extrasMenuThemes[i].src}.ogg';
+                if (openfl.utils.Assets.exists(soundPath)){
+                    openfl.utils.Assets.getSound(soundPath, true);
+                }
+            }
+        }
+    }
+
     public function updateArrowPositions()
     {
         arrowLeft.x = nowPlayingSong.x + nowPlayingSong.width;
@@ -142,7 +157,6 @@ class ExtrasMenu extends MusicBeatState
     {
         Paths.clearStoredMemory();
         Paths.clearUnusedMemory();
-
         buildBG();
         buildVideos();
         buildRenders();
@@ -152,6 +166,7 @@ class ExtrasMenu extends MusicBeatState
         buildDescBar();
         changeSelection(0);
 
+        preloadExtrasThemes(currentExtrasTheme);
         playCurrentMenuTheme();
 
         @:privateAccess
@@ -182,13 +197,6 @@ class ExtrasMenu extends MusicBeatState
         add(arrowsGrp);
         
         arrowLeft = new Arrow(nowPlayingSong.x+8, nowPlayingSong.y, FlxKey.LEFT, 180);
-        // arrowLeft.x = (nowPlayingSong.x + nowPlayingSong.width)+15;
-        // arrowLeft.y = (nowPlayingSong.y + nowPlayingSong.height)-arrowLeft.height;
-        // arrowLeft.y -= arrowLeft.height/2;
-        // arrowLeft.y -= arrowLeft.height;
-        // arrowLeft.x += arrowLeft.width;
-        // arrowLeft.x += arrowLeft.offset.x;
-        // arrowLeft.y += arrowLeft.offset.y;
         arrowLeft.x = nowPlayingSong.x + nowPlayingSong.width;
         arrowLeft.x += 10;
         arrowLeft.onDown.add(event->{
@@ -382,17 +390,12 @@ class ExtrasMenu extends MusicBeatState
     override function openSubState(subState:flixel.FlxSubState):Void
     {
         canMove = false;
-        // if (np != null) np.visible = false;
-        // if (nowPlayingSong != null) nowPlayingSong.visible = false;
         super.openSubState(subState);
     }
 
     override function closeSubState():Void
     {
         canMove = true;
-        // if (np != null) np.visible = true;
-        // if (nowPlayingSong != null) nowPlayingSong.visible = true;
-
         super.closeSubState();
         if (nowPlayingSong != null)
         {
@@ -753,15 +756,11 @@ class ExtrasMenu extends MusicBeatState
             if (Std.isOfType(nextSubState, SonicSubState)) {
                 cast(nextSubState, SonicSubState).onBeforeClose = function() {
                     canMove = true;
-                    // if (np != null) np.visible = true;
-                    // if (nowPlayingSong != null) nowPlayingSong.visible = true;
                 };
             }
 
             final started = SonicRetroTransition.openSubState(nextSubState, 0.5, function() {
                 canMove = false;
-                // if (np != null) np.visible = false;
-                // if (nowPlayingSong != null) nowPlayingSong.visible = false;
             });
 
             if (!started) canMove = true;

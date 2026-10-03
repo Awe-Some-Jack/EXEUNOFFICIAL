@@ -399,6 +399,7 @@ class Cutscene extends SonicSubState
 
             if (isUnlocked)
             {
+                trace("unlocked "+entry.name);
                 final fullPath = Paths.mods(entry.path);
                 if (FileSystem.exists(fullPath))
                 {

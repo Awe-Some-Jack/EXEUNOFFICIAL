@@ -24,7 +24,7 @@ function onBeatHit()
 
 function onStartCountdown()
 {
-	if (!PlayState.isStoryMode || !firstPlay) return;
+	if (!firstPlay) return;
 	if (firstTime)
 	{
 		game.cameraSpeed = 9999;

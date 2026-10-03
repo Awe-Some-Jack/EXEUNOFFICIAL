@@ -87,7 +87,7 @@ local lerpHealth = 1
 function onUpdatePost(e)
 	lerpHealth = lerp(getHealth(), lerpHealth, math.exp(-e * 12 * playbackRate))
 	setGraphicSize('rightBar', bound(lerpHealth, 0, 2) * ((601 - 10) / 2), 25 - 10)
-	setGraphicSize('leftBar',  bound(2 - lerpHealth, 0, 2) * ((601 - 10) / 2), 25 - 10)
+	setGraphicSize('leftBar',  bound(2 - lerpHealth, 0.1, 2) * ((601 - 10) / 2), 25 - 10)
 	setProperty('rightBar.x', getProperty('leftBar.x') + getProperty('leftBar.width'))
 end
 

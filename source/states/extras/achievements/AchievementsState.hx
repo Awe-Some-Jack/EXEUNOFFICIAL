@@ -132,6 +132,7 @@ class AchievementsState extends SonicSubState
         
         if(controls.BACK #if mobile || backPressed #end) back();
         
+        // RECUERDEN BORRAR ESTO CUADNO SUBAN EL MOD OJO
         if(FlxG.keys.justPressed.G) EXEAchievements.unlockAll();
         if(FlxG.keys.justPressed.H) EXEAchievements.lockAll();
 

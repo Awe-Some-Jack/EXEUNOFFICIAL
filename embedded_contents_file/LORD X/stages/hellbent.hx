@@ -153,5 +153,9 @@ function onUpdatePost(elapsed:Float)
 	}
 }
 
+function onPause(){ hellBG?.pause(); }
+
+function onResume(){ hellBG?.play(); }
+
 function preloadCharacter(char:Int, target:String) game.addCharacterToList(target, char);
 function changeCharacter(char:String, target:String) game.triggerEvent('Change Character', char, target, Conductor.songPosition);

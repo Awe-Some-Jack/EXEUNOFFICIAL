@@ -85,7 +85,10 @@ class EXEAchievements
     }
 
     public static function unlockAll():Void { for(a in achievements) a.unlocked = true; }
-    public static function lockAll():Void { for(a in achievements) a.unlocked = false; }
+    public static function lockAll():Void { 
+        for(a in achievements) a.unlocked = false;
+        GameJoltManager.resetAllTrophies(false, true);
+    }
 
     public static function achieveGameOver(songId:String):Void
     {

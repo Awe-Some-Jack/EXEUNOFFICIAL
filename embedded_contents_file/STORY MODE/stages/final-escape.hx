@@ -318,7 +318,13 @@ function onCreatePost()
 }
 
 function onSongStart() if (introCutscene?.loadVideo(Paths.video('fake intro'))) introCutscene.playDelayed();
-function onGameOverStart()  { introCutscene?.destroy(); YWGA?.destroy(); }
+function onGameOverStart()  { 
+	camGame.alpha = 1;
+	cameraRight.visible = false;
+	cameraLeft.visible = false;
+	introCutscene?.destroy(); 
+	YWGA?.destroy(); 
+}
 function onPause() { introCutscene?.pause(); YWGA?.pause(); }
 function onResume() { introCutscene?.resume(); YWGA?.resume(); }
 

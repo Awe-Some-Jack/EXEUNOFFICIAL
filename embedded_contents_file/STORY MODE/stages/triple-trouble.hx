@@ -383,6 +383,9 @@ function noteMissPress(note) if (curBG == 'knux' || curBG == 'xeno2') boyfriend.
 
 function onBeatHit()
 {
+	// Ending
+	if(curBeat >= 1284) return;
+	
 	if (curBG != 'xeno3')
 	{
 		if (curBeat % 2 == 0 && vgSpr.visible)

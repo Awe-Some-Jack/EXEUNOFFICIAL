@@ -1,14 +1,14 @@
 local fear = 0
 
 function onCreatePost()
-	makeLuaSprite('fearBar', 'fearbar', 1194, 213.5)
+	makeLuaSprite('fearBar', 'starved/fearbar', 1194, 213.5)
 	setObjectCamera('fearBar', 'hud')
 	
 	makeLuaSprite('fear', nil, 1230, 233.5)
 	makeGraphic('fear', 12, 254, 'FF0000')
 	setObjectCamera('fear', 'hud')
 
-	makeLuaSprite('fearBarBG', 'fearbarBG', 1194, 213.5)
+	makeLuaSprite('fearBarBG', 'starved/fearbarBG', 1194, 213.5)
 	setObjectCamera('fearBarBG', 'hud')
 
 	addLuaSprite('fearBarBG')

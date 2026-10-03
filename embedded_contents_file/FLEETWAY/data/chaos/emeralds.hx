@@ -106,6 +106,10 @@ function noteMiss(note:Note)
     if(note.noteType == 'emerald') missedEmeralds++;
 }
 
+/**
+ * Transform and events change stuff, here i change the events if the user is superbf or not along with the chaosEvent.lua script
+ */
+
 function onSpawnNote(note:Note)
 {
     if(!note.mustPress) return;
@@ -117,7 +121,7 @@ function onStepHit()
 {
     switch(curStep) {
         case 954:
-            if(collectedEmeralds == emeraldsAmount)
+            if(getVar('canTransform'))
             {
                 FlxTween.num(MOVEMENT_RADIUS, MOVEMENT_RADIUS * 0.1, 4, {ease: FlxEase.backIn}, v -> MOVEMENT_RADIUS = v);
                 FlxTween.num(velocityMult, 3.5, 4, null, v -> velocityMult = v);
@@ -150,9 +154,54 @@ function onStepHit()
             }
             else
                 muteOpponentVocals = true;
+
+        case 1216: //lyric 4 steps ahead
+            if(getVar('canTransform')) {
+                dad.playAnim('grrr', true);
+                triggerEvent('Normal Lyrics', 'lyrics.chaos.16', '1');
+                triggerEvent('Tween Camera Zoom', '0.8, true', '0.75, sineInOut');
+                dad.specialAnim = true;
+            }
+            else
+                muteOpponentVocals = true;
+
+        case 1322: //lyric 2 steps ahead
+            if(getVar('canTransform')) {
+                dad.playAnim('showyou', true);
+                triggerEvent('Normal Lyrics', 'lyrics.chaos.8', '1');
+                triggerEvent("Tween Camera Zoom", "1, true", "0.9, smootherStepInOut");
+                dad.specialAnim = true;
+            }
+            else
+                muteOpponentVocals = true;
+        case 1345: 
+            if(getVar('canTransform')) {
+                triggerEvent('Normal Lyrics', 'lyrics.chaos.8', '2');
+            }
+        case 1347: 
+            if(getVar('canTransform')) {
+                triggerEvent('Normal Lyrics', 'lyrics.chaos.8', '3');
+            }
+        case 1352: 
+            if(getVar('canTransform')) {
+                triggerEvent('Normal Lyrics', 'lyrics.chaos.8', '4');
+            }
+        case 1356: 
+            if(getVar('canTransform')) {
+                triggerEvent('Normal Lyrics', 'lyrics.chaos.8', '5');
+            }
+
+        case 1600: 
+            if(getVar('canTransform')) {
+                triggerEvent('chaosEvent', 'eatthis');
+            }
+        case 1999: 
+            if(!getVar('canTransform')) {
+                game.health = -10;
+            }
         
-        case 1040: muteOpponentVocals = false;
+        case 1040, 1230, 1359: muteOpponentVocals = false;
         case 1221: if(!getVar('canTransform')) triggerEvent('Change Health Damage', '0.035');
-        case 1328: if(!getVar('canTransform')) triggerEvent('Change Health Damage', '0.05');
+        case 1328: if(!getVar('canTransform')) triggerEvent('Change Health Damage', '0.045');
     }
 }

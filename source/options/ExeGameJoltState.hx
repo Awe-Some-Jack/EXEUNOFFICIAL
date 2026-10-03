@@ -72,7 +72,8 @@ class ExeGameJoltState extends ExeBaseOptionsState
 			statusTxt.borderSize = 2.23;
 			add(statusTxt);
 
-			FlxTween.tween(statusTxt, {x: FlxG.width - statusTxt.width}, 0.45, {ease: FlxEase.quartOut});
+			final rightPadding = 20;
+			FlxTween.tween(statusTxt, {x: (FlxG.width - statusTxt.width)-rightPadding}, 0.45, {ease: FlxEase.quartOut});
 		}
 
 		for (i in 0...4)
@@ -171,8 +172,7 @@ class ExeGameJoltState extends ExeBaseOptionsState
 
 	function _maskToken(t:String):String
 	{
-		if (t.length <= 4) return '****';
-		return t.substr(0, 1) + StringTools.rpad('', '*', t.length - 3) + t.substr(t.length - 1);
+		return StringTools.rpad('', '*', t.length);
 	}
 
 	override public function getCurrentSelectionIndex():Int return curRow;

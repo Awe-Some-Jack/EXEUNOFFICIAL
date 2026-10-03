@@ -45,7 +45,7 @@
 	"no_antialiasing": false,
 	"image": "characters/atem",
 	"position": [-150, 30],
-	"healthicon": "mom",
+	"healthicon": "atem",
 	"flip_x": false,
 	"healthbar_colors": [76, 5, 202],
 	"camera_position": [70, 200],

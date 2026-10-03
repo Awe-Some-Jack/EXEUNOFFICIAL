@@ -46,7 +46,7 @@ local modConfigs = {
 		snapDelay = 0.025,
 	},
 	['TAILS DOLL'] = {
-		type = 'slide',
+		type = 'countdown',
 		skipSongs = {'soulless'},
 		useSeenCutscene = true,
 		phase = 'post',
@@ -194,6 +194,13 @@ local function shouldSkip()
 	return false
 end
 
+local function createCountdownIntro()
+	if introCreated then return end
+	introCreated = true
+
+	setProperty('skipCountdown', false)
+end
+
 local function createSlideIntro()
 	if introCreated then return end
 	introCreated = true
@@ -323,6 +330,8 @@ end
 local function createIntro()
 	if cfg.type == 'slide' then
 		createSlideIntro()
+	elseif cfg.type == 'countdown' then
+		createCountdownIntro()
 	elseif cfg.type == 'mono' then
 		createMonoIntro()
 	elseif cfg.type == 'bounce' then

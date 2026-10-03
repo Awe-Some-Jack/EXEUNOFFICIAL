@@ -66,7 +66,7 @@ function onEvent(n,v1)
 			setProperty('gameplayCam.settings.BFy', 1400) 
 		end
 
-		if v1 == 'getblacklmao' then
+		if v1 == 'getblacklmao' and getVar('canTransform') then
 			setProperty('camGame.alpha', 0)
 			runTimer('fuckYOU', 3)
 		end

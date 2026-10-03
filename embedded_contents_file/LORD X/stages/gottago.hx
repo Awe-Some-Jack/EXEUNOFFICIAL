@@ -4,6 +4,7 @@ import flixel.addons.display.FlxBackdrop;
 final game:PlayState = PlayState.instance;
 final luaObjects:Array<String> = ['hbBG', 'iconOpp', 'iconBF', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG', 'exeScoreTxt'];
 var vg:FlxSprite;
+var black:FlxSprite;
 
 function onCreate()
 {
@@ -48,7 +49,9 @@ function onCreate()
 function onStepHit()
 	switch(curStep) {
 		case 508: FlxTween.tween(black, {alpha: 1}, 0.3, {ease: FlxEase.linear});
-		case 512: black.alpha = 0;
+		case 512: 
+			FlxTween.cancelTweensOf(black);
+			black.alpha = 0;
 		case 1824:
             for(obj in luaObjects) {
 				if(obj != null) FlxTween.tween(game.getLuaObject(obj), {alpha: 0}, 1.2, {ease: FlxEase.smootherStepInOut});

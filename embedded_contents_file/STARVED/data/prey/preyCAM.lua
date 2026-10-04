@@ -1,7 +1,9 @@
+local lerpFloorY = 420
 function onCreatePost() makeLuaSprite('camPos', nil, 100, 350) end
 
-function onUpdatePost()
-	callMethod('camFollow.setPosition', {getProperty('camPos.x'), getProperty('camPos.y')})
+function onUpdatePost(e)
+	lerpFloorY = lerp(lerpFloorY, getVar('floorY'), e * 5)
+	callMethod('camFollow.setPosition', {getProperty('camPos.x'), getProperty('camPos.y') + (lerpFloorY - 420)})
 	callMethod('camGame.snapToTarget')
 end
 
@@ -12,7 +14,7 @@ function onEvent(n,v1)
 			setProperty('camGame.zoom', 0.5)
 			doTweenZoom('camgame', 'game', 1, crochet / (1000 / 26), 'cubeInOut')
 			setProperty('defaultCamZoom', 1)
-			startTween('cammovement', 'camPos', {x = 600, y = 100}, crochet / (1000 / 26), {ease = 'cubeInOut'})
+			startTween('cammovement', 'camPos', {x = 600, y = 50}, crochet / (1000 / 26), {ease = 'cubeInOut'})
 		end
 		if v1 == 'backtostarved' then
 			setProperty('camZoomingMult', 1)
@@ -41,4 +43,8 @@ function onEvent(n,v1)
 			doTweenY('cammovement', 'camPos', 350, crochet / (1000 / 16), 'cubeInOut')
 		end
 	end
+end
+
+function lerp(a, b, t)
+	return a + t * (b - a)
 end

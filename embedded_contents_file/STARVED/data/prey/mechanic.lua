@@ -2,7 +2,7 @@ local isJumping = false
 local canJump = false
 
 function onCreatePost()
-	makeAnimatedLuaSprite('sonic-jump', 'sonic-jump')
+	makeAnimatedLuaSprite('sonic-jump', 'prey/sonic-jump')
 	addAnimationByPrefix('sonic-jump', 'jump', 'jump', 24, true)
 	scaleObject('sonic-jump', 6, 6)
 	setProperty('sonic-jump.antialiasing', false)
@@ -15,6 +15,8 @@ function onCreatePost()
 	makeGraphic('sonicHitboxFix', 160, 170, '0000FF')
 	setProperty('sonicHitboxFix.alpha', 0)
 	addLuaSprite('sonicHitboxFix', true)
+
+	setVar('isJumping', false)
 end
 
 local spikeGroup = {}
@@ -42,6 +44,7 @@ function onUpdatePost(e)
 		if keyboardPressed('SPACE') and not isJumping and canJump and holdTimer < 0.15 then
 			cantMore = false
 			isJumping = true
+			setVar('isJumping', isJumping)
 			amountOfTime = 0
 
 			setProperty('sonic-jump.visible', true)
@@ -58,13 +61,14 @@ function onUpdatePost(e)
 		end
 	end
 
-	if getProperty('boyfriend.y') > 420 and isJumping then
+	if getProperty('boyfriend.y') > getVar('floorY') and isJumping then
 		isJumping = false
+		setVar('isJumping', isJumping)
 
 		setProperty('sonic-jump.visible', false)
 		setProperty('boyfriend.alpha', 1)
 
-		setProperty('boyfriend.y', 420)
+		setProperty('boyfriend.y', getVar('floorY'))
 		setProperty('boyfriend.velocity.y', 0)
 		setProperty('boyfriend.acceleration.y', 0)
 	end
@@ -78,11 +82,12 @@ function onUpdatePost(e)
 	end
 
 	for i,s in ipairs(spikeGroup) do
-		local spr = 'spike'..s.id
+		local spr = s.sprite
 		if overlaps('sonicHitboxFix', spr) and s.detect then
-			s.detect = false
+			for _,o in ipairs(spikeGroup) do if o.id == s.id then o.detect = false end end
+
 			cameraShake('game', 0.01, 0.1)
-			addHealth(-0.2)
+			addHealth(-0.5 * (math.abs(getProperty('floor.velocity.x')) / 2000))
 			callMethod('updateScore', {false, false})
 			playSound('hit')
 			playAnim('boyfriend', 'hit'..getProperty('boyfriend.idleSuffix'), true)
@@ -116,27 +121,42 @@ end
 
 local id = 0
 function onSectionHit()
-	if mech and canJump and getRandomBool(35) then
+	if mech and canJump and getRandomBool(100) then
+		local speed = math.abs(getProperty('floorGroup[0].velocity.x'))
+		local delay = ((crochet * 3) / 1000) * 1.07
+		local futureFloorY = callOnHScript('getRampFloorY', {delay, 1})
+
+		local daOffset = futureFloorY - 420
+
+		if daOffset ~= 0 and math.abs(daOffset) ~= 384 then
+			debugPrint('yea it can, proof: '..daOffset)
+			return
+		end
 		id = id + 1
-		local spike = 'spike'..id
+
+		for i = 1,getRandomInt(1,3) do
+			local spike = 'spike'..id..'_'..i
+
+			makeLuaSprite(spike, 'prey/spikes', ((crochet * 3) / 1000) * math.abs(getProperty('floorGroup[0].velocity.x') * 1.07) + ((i - 1) * (32 * 6)), 392 + daOffset)
+			scaleObject(spike, 6, 6)
+			setProperty(spike..'.antialiasing', false)
+			setProperty(spike..'.velocity.x', getProperty('floorGroup[0].velocity.x'))
+			setObjectOrder(spike, getObjectOrder('floorGroup[0]'))
+
+			table.insert(spikeGroup, {id = id, sprite = spike, detect = true})
+		end
+
 		local warning = 'warning'..id
-
-		makeLuaSprite(spike, 'prey/spikes'..getRandomInt(1,3), ((crochet * 3) / 1000) * math.abs(getProperty('floor1.velocity.x') * 1.07), 423)
-		scaleObject(spike, 5, 5)
-		setProperty(spike..'.antialiasing', false)
-		setProperty(spike..'.velocity.x', getProperty('floor1.velocity.x'))
-		setObjectOrder(spike, getObjectOrder('floor1'))
-		playSound('warnin', 1)
-		runTimer(warning, crochet / 1000)
-		table.insert(spikeGroup, {id = id, detect = true})
-
-		makeAnimatedLuaSprite(warning, 'warning', 500, 200)
+		makeAnimatedLuaSprite(warning, 'prey/warning', 500, 200)
 		scaleObject(warning, 2, 2)
 		addAnimationByPrefix(warning, '1', '1', 12, false)
 		addAnimationByPrefix(warning, '2', '2', 12, false)
 		playAnim(warning, '1', true)
 		setProperty(warning..'.antialiasing', false)
 		addLuaSprite(warning, true)
+
+		playSound('warnin', 1)
+		runTimer(warning, crochet / 1000)
 	end
 end
 

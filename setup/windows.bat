@@ -21,7 +21,7 @@ haxelib git grig.audio https://github.com/osakared/grig.audio.git
 haxelib install flixel-tools 1.5.1
 haxelib install tjson 1.4.0
 haxelib install hxdiscord_rpc 1.2.4
-haxelib install hxvlc 2.3.0 --skip-dependencies
+haxelib install hxvlc 2.3.1 --skip-dependencies
 haxelib install hxp 1.3.1
 haxelib install tink_core 1.26.0
 haxelib install nape-haxe4

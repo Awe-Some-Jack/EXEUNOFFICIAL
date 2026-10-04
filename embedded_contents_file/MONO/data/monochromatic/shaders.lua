@@ -1,7 +1,7 @@
 local tweening = false
 local doGlitch = false
 
-local monoBGlol = {'cielo 7','nubes 6','mar','montañas 4','suelo 3','torre fea con bocas bien feas 2','roca 1'}
+local monoBGlol = {'cielo 7','nubes 6','mar','montanas 4','suelo 3','torre fea con bocas bien feas 2','roca 1'}
 
 function onCreatePost()
 	makeLuaSprite('cab')

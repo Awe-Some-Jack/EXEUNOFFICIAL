@@ -1490,6 +1490,7 @@ class PlayState extends MusicBeatState
 		vocals.volume = 1;
 		opponentVocals.volume = 1;
 		inst.volume = 1;
+		trace('inst and vocals started playing');
 
 		setSongTime(Math.max(0, startOnTime - 500) + Conductor.offset);
 		startOnTime = 0;
@@ -1575,6 +1576,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.list.add(inst);
 
 		inst.volume = 0;
+		trace('inst loaded and added to sound list');
 
 		notes = new FlxTypedGroup<Note>();
 		noteGroup.add(notes);

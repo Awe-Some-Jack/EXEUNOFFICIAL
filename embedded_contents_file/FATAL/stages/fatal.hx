@@ -15,7 +15,7 @@ var bgIntro:Array<BackgroundSprite> = [
 var bgGlitch:Array<BackgroundSprite> = [
 	{path: "fatality/new/bgmask", scale: [4, 4, false], scroll: [0.2, 0.2], canDestroy: false},
 	{path: "fatality/new/domain/popupsbg", position: [0, -400], scale: [3, 3, false], animation: [{name: "idle", looped: true, fps: 12}], scroll: [0.2, 0.2], backdrop: ['x', [-200, 0], [80, 0]]},
-	{path: "fatality/new/domain/montañas", position: [73.5, 56], scale: [4, 4, false], animation: [{name: "idle", looped: true, fps: 12}], scroll: [0.4, 0.4], canDestroy: false},
+	{path: "fatality/new/domain/montanas", position: [73.5, 56], scale: [4, 4, false], animation: [{name: "idle", looped: true, fps: 12}], scroll: [0.4, 0.4], canDestroy: false},
 	{path: "fatality/new/domain/popupsbg", position: [0, 100], scale: [4, 4, false], animation: [{name: "idle", looped: true, fps: 12}], scroll: [0.4, 0.4], backdrop: ['x', [-400, 0], [80, 0]]},
 	{path: "fatality/new/domain/edificios", position: [30, 70], scale: [4, 4, false], animation: [{name: "idle", looped: true, fps: 12}], scroll: [0.5, 0.5]},
 	{path: "fatality/new/domain/planta2", position: [0, 1000], scale: [4, 4, false], scroll: [0.8, 0.8]},

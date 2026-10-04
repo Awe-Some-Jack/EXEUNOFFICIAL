@@ -2,6 +2,7 @@
 # SETUP FOR MAC AND LINUX SYSTEMS!!!
 # REMINDER THAT YOU NEED HAXE INSTALLED PRIOR TO USING THIS
 # https://haxe.org/download
+# ditto -c -k --keepParent "export/release/macos/bin/Vs Sonic.app" "export/release/macos/bin/Vs Sonic.zip"
 cd ..
 echo Makking the main haxelib and setuping folder in same time..
 mkdir ~/haxelib && haxelib setup ~/haxelib
@@ -12,7 +13,7 @@ haxelib git flixel-addons https://github.com/GreenColdTea/flixel-addons.git funk
 haxelib install flixel-tools 1.5.1
 haxelib install tjson 1.4.0
 haxelib install hxdiscord_rpc 1.2.4
-haxelib install hxvlc 2.3.0 --skip-dependencies
+haxelib install hxvlc 2.3.1 --skip-dependencies
 haxelib install hxp 1.3.1
 haxelib install nape-haxe4
 haxelib install hxgamemode --quiet

@@ -459,7 +459,9 @@ class SoundTest extends MusicBeatState
 			final leWeek:WeekData = WeekData.weeksLoaded.get(name);
 			if (leWeek == null)
 			{
-				trace("Week no encontrada: " + name);
+				trace(leWeek);
+				lime.app.Application.current.window.alert("NOT FOUNDED WEEK: " + name, "SoundTest Error:");
+				FlxG.resetState();
 				return;
 			}
 

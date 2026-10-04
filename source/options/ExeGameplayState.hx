@@ -19,15 +19,16 @@ class ExeGameplayState extends ExeBaseOptionsState
 		scrollOffset = 0;
 
 		menuTitle = Language.get('options.gameplay', 'GAMEPLAY');
-		var lbl = Language.getArray('options.gameplay.labels', ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"]);
+		var lbl = Language.getArray('options.gameplay.labels', ["DOWNSCROLL", "GHOST TAPPING", "FREEZE SYNC DELAY", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"]);
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.downScroll,   setValue: (v) -> ClientPrefs.data.downScroll   = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.ghostTapping, setValue: (v) -> ClientPrefs.data.ghostTapping = v},
-			{label: lbl[2], getValue: () -> ClientPrefs.data.sickWindow,   setValue: (v) -> ClientPrefs.data.sickWindow   = v, isFloat: true},
-			{label: lbl[3], getValue: () -> ClientPrefs.data.goodWindow,   setValue: (v) -> ClientPrefs.data.goodWindow   = v, isFloat: true},
-			{label: lbl[4], getValue: () -> ClientPrefs.data.badWindow,    setValue: (v) -> ClientPrefs.data.badWindow    = v, isFloat: true},
-			{label: lbl[5], getValue: () -> ClientPrefs.data.safeFrames,   setValue: (v) -> ClientPrefs.data.safeFrames   = v, isFloat: true},
-			{label: lbl[6], getValue: () -> ClientPrefs.data.streamedAudio,   setValue: (v) -> ClientPrefs.data.streamedAudio   = v, isFloat: true},
+			{label: lbl[2], getValue: () -> ClientPrefs.data.freezeSyncDelay, setValue: (v) -> ClientPrefs.data.freezeSyncDelay = v},
+			{label: lbl[3], getValue: () -> ClientPrefs.data.sickWindow,   setValue: (v) -> ClientPrefs.data.sickWindow   = v, isFloat: true},
+			{label: lbl[4], getValue: () -> ClientPrefs.data.goodWindow,   setValue: (v) -> ClientPrefs.data.goodWindow   = v, isFloat: true},
+			{label: lbl[5], getValue: () -> ClientPrefs.data.badWindow,    setValue: (v) -> ClientPrefs.data.badWindow    = v, isFloat: true},
+			{label: lbl[6], getValue: () -> ClientPrefs.data.safeFrames,   setValue: (v) -> ClientPrefs.data.safeFrames   = v, isFloat: true},
+			{label: lbl[7], getValue: () -> ClientPrefs.data.streamedAudio,   setValue: (v) -> ClientPrefs.data.streamedAudio   = v, isFloat: true},
 		];
 
 		super.create();

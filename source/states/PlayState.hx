@@ -103,7 +103,7 @@ class PlayState extends MusicBeatState
 	private var gameFroze:Bool = false;
 	private var requiresSyncing:Bool = false;
 	private var lastCorrectSongPos:Float = -1.0;
-	public var enableFreezeSync:Bool = false;
+	public var enableFreezeSync:Bool = ClientPrefs.data.freezeSyncDelay;
 	var _xdd:FlxEmitter;
 
 	//event variables
@@ -1078,6 +1078,8 @@ class PlayState extends MusicBeatState
 		if(eventNotes.length < 1) checkEventNote();
 
 		PauseSubState.cameraWidth = FlxG.width;
+
+		trace("Freeze Sync Delay: " + enableFreezeSync);
 	}
 
 	function set_songSpeed(value:Float):Float

@@ -126,7 +126,19 @@ class Project extends HXProject
         setHaxedef("SHOW_LOADING_SCREEN");
 
         if (isMac())
-            setHaxedef("MACOSX_VER", "26.5");
+        {
+            var sdkVersion = "26.5";
+            try
+            {
+                var proc = new Process("xcrun", ["--sdk", "macosx", "--show-sdk-version"]);
+                var out = proc.stdout.readAll().toString().trim();
+                if (proc.exitCode() == 0 && out.length > 0)
+                    sdkVersion = out;
+                proc.close();
+            }
+            catch (e:Dynamic) {}
+            setHaxedef("MACOSX_VER", sdkVersion);
+        }
 
         if (!isWeb())
             setHaxedef("openfl_dpi_aware");
@@ -148,9 +160,6 @@ class Project extends HXProject
             {
                 setHaxedef("HXVLC_NO_SHARE_DIRECTORY");
                 haxeflags.push("--macro include('hxvlc')");
-
-                if (debug)
-                    setHaxedef("HXC_LIBVLC_LOGGING");
             }
         }
 

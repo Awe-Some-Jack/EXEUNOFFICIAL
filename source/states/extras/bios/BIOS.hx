@@ -464,6 +464,7 @@ class BIOS extends SonicSubState
 		#end
 	}
 
+	var charYOffset:Float = 0;
 	function _loadCharFrame(charId:String, mod:String, scale:Float, flipX:Bool, antialiasing:Bool, charOff:Array<Float>):Void
 	{
 		if (_lastCharId == charId && _lastCharMod == mod)
@@ -567,7 +568,13 @@ class BIOS extends SonicSubState
 		lockedX = charOff[0] - cached.offset[0] * scale;
 		lockedY = charOff[1] - cached.offset[1] * scale;
 		charSprite.setPosition(charOff[0], charOff[1]);
+		charSprite.alpha = 0;
+		charYOffset = charSprite.y;
+		charSprite.y = charYOffset - 20;
+		FlxTween.cancelTweensOf(charSprite);
+		FlxTween.tween(charSprite, { alpha: 1, y: charYOffset }, 0.33, { ease: FlxEase.cubeOut});
 		charSprite.visible = true;
+
 
 		_lastCharId  = charId;
 		_lastCharMod = mod;
@@ -801,32 +808,10 @@ class BIOS extends SonicSubState
 		{
 			if ((FlxG.mouse.deltaWheel.y != 0 #if mobile || (deltaMouseY != 0 && pressHolding && cooldownTimer <= 0) #end) && !FlxG.mouse.overlaps(bioBox))
 				_changeEntry(Math.round(#if !mobile -FlxG.mouse.deltaWheel.y #else -deltaMouseY #end));
-			if (controls.UI_UP_P   || FlxG.keys.justPressed.W) _changeEntry(-1);
-			if (controls.UI_DOWN_P || FlxG.keys.justPressed.S) _changeEntry(1);
+			if (controls.UI_UP_P || controls.UI_DOWN_P) _changeEntry(controls.UI_UP_P ? -1 : 1);
 		}
-		if (FlxG.keys.justPressed.A) _changeVariant(-1);
-		if (FlxG.keys.justPressed.D) _changeVariant(1);
 
-		/* deberia borrar este bloque de codigo? xd
-		if (charSprite != null)
-		{
-			// charSprite.x = lockedX;
-			// charSprite.y = lockedY;
-			// debug shit
-			var px = 1 * (FlxG.keys.pressed.SHIFT ? 10 : 1);
-			if (FlxG.keys.justPressed.I || FlxG.keys.justPressed.K){
-				charSprite.y += FlxG.keys.justPressed.I ? -px : px;
-				trace("Character Offsets, X: "+charSprite.x+", Y: "+charSprite.y);
-			}
-			if (FlxG.keys.justPressed.J || FlxG.keys.justPressed.L){
-				charSprite.x += FlxG.keys.justPressed.J ? -px : px;
-				trace("Character Offsets, X: "+charSprite.x+", Y: "+charSprite.y);
-			}
-			if (FlxG.keys.justPressed.SPACE){
-				trace("Character "+charName.text+" needs disable antialiasing");
-			}
-		}
-		*/
+		if (controls.UI_LEFT_P || controls.UI_RIGHT_P) _changeVariant(controls.UI_LEFT_P ? -1 : 1);
 
 		if (controls.RESET) FlxG.resetState();
 

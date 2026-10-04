@@ -127,7 +127,7 @@ function onTimerCompleted(t)
 		attacking = false
 		setProperty('spacebar.visible', false)
 
-		if dodging == false and not getProperty('cpuControlled') then
+		if (dodging == false and not getProperty('cpuControlled')) or (curBeat > 252 and not getVar('canTransform')) then
 			cameraShake('game', 0.01, 0.1)
 			addHealth(-10)
 			yourdeadnow = true

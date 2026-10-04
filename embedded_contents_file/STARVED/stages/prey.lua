@@ -1,4 +1,4 @@
-setProperty('skipCountdown', true)
+--[==[setProperty('skipCountdown', true)
 runHaxeCode([[FlxG.camera.pixelPerfectRender = true;]])
 setPropertyFromClass('flixel.addons.transition.FlxTransitionableState', 'skipNextTransOut', true)
 
@@ -138,3 +138,4 @@ function onEvent(n, v1)
 		end
 	end
 end
+]==]

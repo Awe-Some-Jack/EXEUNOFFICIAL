@@ -1,6 +1,6 @@
-local oppFloat = false
+local oppFloatX, oppFloatY = false, false
 local dadX, dadY = -666, 104
-local floatTime = 0
+local floatTimeX, floatTimeY = 0, 0
 local oldGT = false
 function onCreatePost()
 	setProperty('boyfriend.alpha', 0)
@@ -10,20 +10,22 @@ function onCreatePost()
 	setProperty('gf.flipX', true)
 	scaleObject('gf', 1.6, 1.6, false)
 	callMethod('gf.setPosition', {1500, -34})
-	setObjectOrder('gfGroup', getObjectOrder('floor2'))
+	setObjectOrder('gfGroup', getObjectOrder('bgGroup[0]') + 1)
 
-	makeLuaSprite('redbg', nil, -1180, -370)
+	makeLuaSprite('redbg', nil, -1180, -600)
 	setProperty('redbg.alpha', 0)
-	makeGraphic('redbg', screenWidth / 0.5, screenHeight / 0.5, 'FF0000')
+	makeGraphic('redbg', screenWidth * 2, screenHeight * 4, 'FF0000')
 	addLuaSprite('redbg')
 
 	oldGT = getPropertyFromClass('backend.ClientPrefs', 'data.ghostTapping')
 	setPropertyFromClass('backend.ClientPrefs', 'data.ghostTapping', true)
+	setVar('ending', false)
 end
 
 local altTime = false
 local starv = false
 local furn = false
+local furnaceKilling = false
 function onEvent(n, v1)
 	if n == 'preyEvent' and songPath == 'prey' then
 		if v1 == 'gt' then
@@ -45,12 +47,11 @@ function onEvent(n, v1)
 			removeLuaSprite('sonicintro', true)
 			if not lowQuality then
 				for i = 1,15 do
-					setProperty('bg'..i..'.color', getColorFromHex('FFFFFF'))
+					setProperty('bgGroup['..i..'].color', getColorFromHex('FFFFFF'))
 				end
-				setProperty('sky15flash.color', getColorFromHex('FFFFFF'))
 
-				setProperty('floor1.color', getColorFromHex('FFFFFF'))
-				setProperty('floor2.color', getColorFromHex('FFFFFF'))
+				for i = 1,3 do setProperty('floorGroup['..(i - 1)..'].color', getColorFromHex('FFFFFF')) end
+				for i = 1,3 do setProperty('floorBGGroup['..(i - 1)..'].color', getColorFromHex('FFFFFF')) end
 
 				setProperty('fg.color', getColorFromHex('FFFFFF'))
 			else
@@ -61,8 +62,8 @@ function onEvent(n, v1)
 
 		if v1 == 'startsong' then
 			doTweenX('furnaceX', 'dad', -666, getTime(8), 'cubeOut')
-			doTweenY('furnaceY', 'dad', 104, getTime(8), 'smoothStepOut')
 			runTimer('startFloating', getTime(8))
+			oppFloatY = true
 
 			doTweenAlpha('camHUD', 'camHUD', 1, getTime(4))
 			for i = 0,3 do noteTweenY('noteY'..i, i + 4, _G['defaultPlayerStrumY'..i], getTime(6), 'cubeOut') end
@@ -76,6 +77,8 @@ function onEvent(n, v1)
 			for i = 0,3 do setProperty('playerStrums.members['..i..'].y', _G['defaultPlayerStrumY'..i]) end
 			starv = true
 			setProperty('gf.velocity.x', -500)
+			setProperty('gf.color', getColorFromHex('C48383'))
+			setScrollFactor('gf', 1, 0.6)
 		end
 
 		if v1 == 'sonicattack' then
@@ -91,17 +94,19 @@ function onEvent(n, v1)
 
 		if v1 == 'starvedappears' then
 			dadX, dadY = 552, 54
-			floatTime = 0
+			floatTimeX = 0
+			floatTimeY = 0
 			cancelTween('furnaceX')
 			cancelTween('furnaceY')
 			cancelTween('furnaceA')
 			setProperty('dad.angle', 0)
-			setObjectOrder('dadGroup', getObjectOrder('floor2') - 1)
+			setObjectOrder('dadGroup', getObjectOrder('floorBGGroup[0]') - 1)
 			scaleObject('dad', 4, 4, false)
 			setProperty('dad.y', -200)
 			doTweenX('starvedX', 'dad', 552, getTime(14), 'backOut')
 			doTweenY('starvedY', 'dad', 54, getTime(14), 'backOut')
 			runTimer('startFloating', getTime(14))
+			oppFloatY = true
 			runTimer('backtonormalsize', getTime(8))
 			setProperty('dad.alpha', 1)
 			altTime = true
@@ -123,19 +128,20 @@ function onEvent(n, v1)
 		end
 
 		if v1 == 'furnaceappearing' then
+			setScrollFactor('gf', 1, 1)
 			setProperty('gf.x', -1400)
 			setProperty('gf.flipX', false)
-			scaleObject('gf', 6, 6, false)
-			setObjectOrder('gfGroup', getObjectOrder('floor2') + 1)
+			setObjectOrder('gfGroup', getObjectOrder('floorBGGroup[0]') + 1)
 			callMethod('gf.changeCharacter', {'furnace'})
 			runTimer('xdjiasfaishjf', 2)
 			setProperty('gf.velocity.x', 200)
 			setProperty('gf.y', 1200)
 			furn = true
+			scaleObject('gf', 4, 4, false)
 		end
 
 		if v1 == 'byestarvlol' then
-			oppFloat = false
+			oppFloatY = false
 			cancelTween('starvedX') cancelTween('starvedY')
 			doTweenX('starvedX', 'dad', -1500, getTime(8), 'cubeIn')
 			doTweenY('starvedY', 'dad', 0, getTime(8), 'smoothStepIn')
@@ -152,6 +158,7 @@ function onEvent(n, v1)
 
 			starv = false
 			furn = false
+			furnaceKilling = true
 			callMethod('gf.setPosition', {14900, 350})
 			setProperty('gf.maxVelocity.x', 0)
 			setProperty('gf.velocity.x', -5000)
@@ -181,7 +188,7 @@ end
 
 function onTimerCompleted(t)
 	if t == 'startFloating' then
-		oppFloat = true
+		oppFloatX = true
 	end
 	if t == 'backtonormalsize' then
 		doTweenX('starvedXX', 'dad.scale', 6, getTime(6), 'cubeInOut')
@@ -197,7 +204,8 @@ function onTimerCompleted(t)
 		cancelTimer('startFloating')
 		cancelTween('furnaceX')
 		cancelTween('furnaceY')
-		oppFloat = false
+		oppFloatY = false
+		oppFloatX = false
 
 		doTweenX('furnaceX', 'dad', -1600, getTime(4), 'cubeOut')
 		doTweenY('furnaceY', 'dad', 250, getTime(4), 'cubeOut')
@@ -212,7 +220,8 @@ function onTimerCompleted(t)
 	if t == 'impact2' then
 		cameraShake('game', 0.02, 0.1)
 
-		oppFloat = false
+		oppFloatY = false
+		oppFloatX = false
 
 		doTweenX('dieStarvX', 'starvHit', -5000, getTime(6), 'cubeIn')
 		doTweenY('dieStarvY', 'starvHit', 1300, getTime(6), 'cubeIn')
@@ -224,13 +233,18 @@ function onTimerCompleted(t)
 	end
 end
 
+local lerpY = 420
 local playEndOnce = true
 local xd = 0
 function onUpdatePost(e)
-	if oppFloat == true then
-		floatTime = floatTime + e * playbackRate
-		setProperty('dad.x', dadX + math.sin(floatTime) * 72)
-		setProperty('dad.y', dadY + math.cos(floatTime * 0.8 + (math.pi / 2)) * 24)
+	lerpY = lerp(lerpY, getVar('floorY'), e * 3)
+	if oppFloatX then
+		floatTimeX = floatTimeX + e * playbackRate
+		setProperty('dad.x', dadX + math.sin(floatTimeX) * 72)
+	end
+	if oppFloatY then
+		floatTimeY = floatTimeY + e * playbackRate
+		setProperty('dad.y', dadY + (lerpY - 420) + math.cos(floatTimeY * 0.8 + (math.pi / 2)) * 24)
 	end
 
 	if getProperty('gf.animation.curAnim.name') == 'fly' and getProperty('gf.animation.curAnim.finished') then
@@ -242,7 +256,7 @@ function onUpdatePost(e)
 
 	if starv then
 		xd = xd + e * 5 * playbackRate
-		setProperty('gf.y', -34 + math.sin(xd + (math.pi / 2)) * 5)
+		setProperty('gf.y', 66 + math.sin(xd + (math.pi / 2)) * 5)
 
 		if getProperty('gf.x') <= -1500 then
 			starv = false
@@ -252,13 +266,19 @@ function onUpdatePost(e)
 
 	if furn then
 		xd = xd + e * 3 * playbackRate
-		setProperty('gf.y', 1000 + math.sin(xd + (math.pi / 2)) * 10)
+		setProperty('gf.y', 850 + math.sin(xd + (math.pi / 2)) * 10)
 
 		if getProperty('gf.x') >= 1900 then
+			scaleObject('gf', 6, 6, false)
+			setProperty('gf.color', getColorFromHex('FFFFFF'))
 			furn = false
 			setProperty('gf.acceleration.x', 0)
 			setProperty('gf.velocity.x', 0)
 		end
+	end
+
+	if furnaceKilling then
+		setProperty('gf.y', getVar('floorY') - 50)
 	end
 
 	if getProperty('boyfriend.animation.curAnim.name') == 'ending' and getProperty('boyfriend.animation.curAnim.finished') and playEndOnce then
@@ -275,15 +295,15 @@ function onUpdatePost(e)
 		doTweenX('boyfrienxd', 'boyfriend', getProperty('boyfriend.x') - 300, 3, 'expoOut')
 		doTweenX('gfxdxd', 'gf', getProperty('gf.x') - 50, 3, 'expoOut')
 		playEndOnce = false
+		furnaceKilling = false
+		setVar('ending', true)
 
 		if not lowQuality then
-			for i = 1,15 do
-				setProperty('bg'..i..'.visible', false)
-			end
+			for i = 1,15 do setProperty('bgGroup['..(i - 1)..'].visible', false) end
 			setProperty('sky15flash.visible', false)
 
-			setProperty('floor1.visible', false)
-			setProperty('floor2.visible', false)
+			for i = 1,3 do setProperty('floorGroup['..(i - 1)..'].visible', false) end
+			for i = 1,3 do setProperty('floorBGGroup['..(i - 1)..'].visible', false) end
 
 			setProperty('fg.visible', false)
 		else
@@ -296,3 +316,7 @@ end
 function noteMissPress(nt) if not altTime then return end playAnim('boyfriend', getProperty('singAnimations['..nt..']') .. 'miss-alt', true) end
 
 function onDestroy() setPropertyFromClass('backend.ClientPrefs', 'data.ghostTapping', oldGT) end
+
+function lerp(a, b, t)
+	return a + t * (b - a)
+end

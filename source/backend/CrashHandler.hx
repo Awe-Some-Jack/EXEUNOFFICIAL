@@ -200,8 +200,8 @@ class CrashHandler
             logContent.add('\n${content}\n');
             logContent.add('==================== SYSTEM INFORMATION ==================\n\n');
 
-            var osInfo = '${System.platformLabel} ${System.platformVersion}';
-            
+            logContent.add('OS: ${getOsInfo()}\n');
+
             var arch = "Unknown";
             try {
                 arch = Sys.getEnv("PROCESSOR_ARCHITECTURE");
@@ -235,7 +235,25 @@ class CrashHandler
         return value;
     }
     
-    private static function getGpuInfo():String 
+    private static function getOsInfo():String
+    {
+        #if linux
+        try {
+            if (FileSystem.exists("/etc/os-release")) {
+                for (line in File.getContent("/etc/os-release").split("\n")) {
+                    if (line.startsWith("PRETTY_NAME="))
+                        return line.substr("PRETTY_NAME=".length).replace('"', "").trim();
+                }
+            }
+        } catch (e:Dynamic) {}
+
+        return "Linux";
+        #else
+        return '${System.platformLabel} ${System.platformVersion}';
+        #end
+    }
+
+    private static function getGpuInfo():String
     {
         try {
             var gpuName:String = "N/A";

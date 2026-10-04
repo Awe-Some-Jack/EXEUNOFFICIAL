@@ -148,9 +148,6 @@ class Project extends HXProject
             {
                 setHaxedef("HXVLC_NO_SHARE_DIRECTORY");
                 haxeflags.push("--macro include('hxvlc')");
-
-                if (debug)
-                    setHaxedef("HXC_LIBVLC_LOGGING");
             }
         }
 

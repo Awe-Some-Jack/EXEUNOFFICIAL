@@ -7,14 +7,14 @@ typedef EmeraldData = {         // Had to make a typedef since there arent custo
     var xOffset:Float;
 }
 
-var positions = [
-    {x: 2100, y: 1450},
-    {x: 2200, y: 1450},
-    {x: 2300, y: 1450},
-    {x: 2400, y: 1450},
-    {x: 2500, y: 1450},
-    {x: 2600, y: 1450},
-    {x: 2700, y: 1450}
+var colors = [  // Colors in order
+    "green",
+    "yellow",
+    "blue",
+    "purple",
+    "gray",
+    "cyan",
+    "red"
 ];
 
 var masterEmerald:FlxSprite;
@@ -30,22 +30,35 @@ var scaleMult:Float = 1;
 var velocityMult:Float = 0.5;
 var radiusMult:Float = 1;
 var LERP_VELOCITY:Float = 15;
-var INITIAL_SCALE:Float = 1.5;
+var INITIAL_SCALE:Float = 0.45;
 
 var emeraldsData:Array<EmeraldData> = [];
 
 function onCreatePost()
 {
-    masterEmerald = new FlxSprite().loadGraphic(Paths.image('emeralds/placeholder'));
-    masterEmerald.setPosition(2250, 1250);
-    masterEmerald.scale.set(INITIAL_SCALE * 5, INITIAL_SCALE * 5);
+    var guh = FlxG.random.bool(1);
+    masterEmerald = new FlxSprite();
+    masterEmerald.setPosition(2250, 1050);
+    masterEmerald.scale.set(0.4, 0.4);
+    if(guh) {
+        masterEmerald.loadGraphic(Paths.image('bg/emerals/placeholder'));
+        masterEmerald.scale.set(8.5, 8.5);
+    }
+    else {
+        masterEmerald.frames = Paths.getSparrowAtlas('bg/emerals/master');
+        masterEmerald.animation.addByPrefix('anim', 'Símbolo', 24, true);
+        masterEmerald.animation.play('anim');
+    }
     masterEmerald.updateHitbox();
     insert(members.indexOf(boyfriendGroup) - 1, masterEmerald);
 
     for(i in 0...7)
     {
-        var emerald = new FlxSprite().loadGraphic(Paths.image('emeralds/placeholder'));
-        emerald.setPosition(positions[i].x, positions[i].y);
+        var emerald = new FlxSprite(0, 1450);
+        emerald.frames = Paths.getSparrowAtlas('bg/emerals/${colors[i]}');
+        emerald.animation.addByPrefix('anim', 'Símbolo', 24, true);
+        emerald.animation.play('anim');
+        //emerald.setPosition(positions[i].x, positions[i].y);
         emerald.scale.set(INITIAL_SCALE, INITIAL_SCALE);
         emerald.updateHitbox();
         insert(members.indexOf(boyfriendGroup) - 1, emerald);
@@ -82,7 +95,7 @@ function onUpdate(e)
         var circularMovement = sine * emerald.movingRadius * radiusMult;
         
         var isBehind = members.indexOf(emerald.sprite) < members.indexOf(emerald.targetRef);
-        var scaleFactor = INITIAL_SCALE + (isBehind ?  -(1 - Math.abs(sine)) : 1 - Math.abs(sine)) * 0.45;
+        var scaleFactor = INITIAL_SCALE + (isBehind ?  -(1 - Math.abs(sine)) : 1 - Math.abs(sine)) * 0.175;
         emerald.sprite.scale.set(scaleFactor * scaleMult, scaleFactor * scaleMult); // Modify the scale depending of its position to make a 3d illusion
         
         if(isBehind && sine >= 0.95) // Place this emerald in front of bf if its approximately in the right limit

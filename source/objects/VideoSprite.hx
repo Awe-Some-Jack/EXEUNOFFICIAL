@@ -168,8 +168,10 @@ class VideoSprite extends FlxSpriteGroup
 			new FlxTimer().start(delay, _ -> video.play());
 
 		#if FLX_PITCH
+		#if !switch
 		if (video.bitmap != null)
 			video.bitmap.rate = PlayState.instance != null ? PlayState.instance.playbackRate : 1.0;
+		#end
 		#end
 	}
 
@@ -243,7 +245,7 @@ class VideoSprite extends FlxSpriteGroup
 			video.time = Std.int(time);
 		#else
 		if (video.bitmap != null)
-			video.bitmap.time = haxe.Int64.fromFloat(time * 1000);
+			video.bitmap.time = haxe.Int64.fromFloat(time);
 		#end
 	}
 
@@ -255,10 +257,8 @@ class VideoSprite extends FlxSpriteGroup
 		if (video.bitmap != null)
 		{
 			final time64 = video.bitmap.time;
-			final microSeconds:Float = (time64.high * 4294967296.0) + time64.low;
-			return microSeconds / 1000;
+			return (time64.high * 4294967296.0) + time64.low;
 		}
-
 		return 0;
 		#end
 	}
@@ -308,20 +308,18 @@ class VideoSprite extends FlxSpriteGroup
 		#else
 		if (video.bitmap == null) return;
 
-		final durationMicro = video.bitmap.length;
+		final durationMs = video.bitmap.length;
 
-		if (haxe.Int64.compare(durationMicro, haxe.Int64.ofInt(0)) <= 0)
+		if (haxe.Int64.compare(durationMs, haxe.Int64.ofInt(0)) <= 0)
 		{
 			setTime(ms);
 			return;
 		}
 
-		final targetMicro = haxe.Int64.fromFloat(ms * 1000);
-		final durationFloat = haxe.Int64.toInt(durationMicro);
-		final targetFloat = haxe.Int64.toInt(targetMicro);
+		final durFloat = (durationMs.high * 4294967296.0) + durationMs.low;
 
-		if (durationFloat > 0)
-			setVideoPercent(targetFloat / durationFloat);
+		if (durFloat > 0)
+			setVideoPercent(ms / durFloat);
 		#end
 	}
 
@@ -387,6 +385,19 @@ class VideoSprite extends FlxSpriteGroup
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+
+		if (isPlaying() && PlayState.instance != null && !PlayState.instance.paused)
+		{
+			final targetTime = Conductor.songPosition - Conductor.offset;
+			if (targetTime >= 0)
+			{
+				final drift = Math.abs(getTime() - targetTime);
+				if (drift > 205.0)
+				{
+					setTime(targetTime);
+				}
+			}
+		}
 
 		#if switch
 		#if FLX_SOUND_SYSTEM

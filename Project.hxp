@@ -184,6 +184,9 @@ class Project extends HXProject
         if (defines.exists("32bits"))
             setHaxedef("x86_BUILD");
 
+        if (isLinux() && defines.exists("steamdeck"))
+            setHaxedef("STEAMDECK");
+
         setHaxedef("no-deprecation-warnings");
         setHaxedef("message.reporting", "pretty");
         setHaxedef("openfl-enable-handle-error");
@@ -705,6 +708,9 @@ class Project extends HXProject
 
         if (defines.exists("32bits"))
             buildDir = "export/32bit";
+
+        if (isLinux() && defines.exists("steamdeck"))
+            buildDir = "export/steamdeck";
 
         app.path = buildDir;
 

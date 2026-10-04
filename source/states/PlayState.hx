@@ -103,7 +103,7 @@ class PlayState extends MusicBeatState
 	private var gameFroze:Bool = false;
 	private var requiresSyncing:Bool = false;
 	private var lastCorrectSongPos:Float = -1.0;
-
+	public var enableFreezeSync:Bool = false;
 	var _xdd:FlxEmitter;
 
 	//event variables
@@ -1514,7 +1514,7 @@ class PlayState extends MusicBeatState
 		setOnScripts('songLength', songLength);
 		callOnScripts('onSongStart');
 		gameplayCam.onSongStart();
-		// runSongSyncThread();
+		if (enableFreezeSync) runSongSyncThread();
 	}
 
 	private var noteTypes:Array<String> = [];
@@ -2040,7 +2040,7 @@ class PlayState extends MusicBeatState
 
 			paused = false;
 			callOnScripts('onResume');
-			// runSongSyncThread();
+			if (enableFreezeSync) runSongSyncThread();
 			resetRPC(startTimer?.finished);
 
 			if (ClientPrefs.data.shaders)
@@ -2061,8 +2061,10 @@ class PlayState extends MusicBeatState
 	#if DISCORD_ALLOWED
 	override public function onFocus():Void
 	{
-		// shutdownThread = false;
-		// runSongSyncThread();
+		if (enableFreezeSync){
+			shutdownThread = false;
+			runSongSyncThread();
+		}
 
 		super.onFocus();
 
@@ -2074,7 +2076,7 @@ class PlayState extends MusicBeatState
 
 	override public function onFocusLost():Void
 	{
-		// shutdownThread = true;
+		if (enableFreezeSync) shutdownThread = true;
 
 		super.onFocusLost();
 
@@ -4277,9 +4279,10 @@ class PlayState extends MusicBeatState
 		if (vocals != null) { vocals.stop(); vocals.destroy(); vocals = null; }
 		if (opponentVocals != null) { opponentVocals.stop(); opponentVocals.destroy(); opponentVocals = null; }
 
-		shutdownThread = true;
-		// FlxG.signals.preUpdate.remove(checkForResync);
-
+		if (enableFreezeSync) {
+			shutdownThread = true;
+			FlxG.signals.preUpdate.remove(checkForResync);
+		}
 		instance = null;
 
 		super.destroy();
@@ -4735,7 +4738,6 @@ class PlayState extends MusicBeatState
 		return false;
 	}
 
-	/*
 	function checkForResync()
 	{
 		if (paused) return;
@@ -4772,5 +4774,4 @@ class PlayState extends MusicBeatState
 
 		if (!FlxG.signals.preUpdate.has(checkForResync)) FlxG.signals.preUpdate.add(checkForResync);
 	}
-	*/
 }

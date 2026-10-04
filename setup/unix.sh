@@ -2,6 +2,7 @@
 # SETUP FOR MAC AND LINUX SYSTEMS!!!
 # REMINDER THAT YOU NEED HAXE INSTALLED PRIOR TO USING THIS
 # https://haxe.org/download
+# ditto -c -k --keepParent "export/release/macos/bin/Vs Sonic.app" "export/release/macos/bin/Vs Sonic.zip"
 cd ..
 echo Makking the main haxelib and setuping folder in same time..
 mkdir ~/haxelib && haxelib setup ~/haxelib

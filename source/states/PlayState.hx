@@ -1114,17 +1114,9 @@ class PlayState extends MusicBeatState
 		FlxG.animationTimeScale = value;
 		Conductor.offset = Reflect.hasField(PlayState.SONG, 'offset') ? (PlayState.SONG.offset / value) : 0;
 		Conductor.safeZoneOffset = (ClientPrefs.data.safeFrames / 60) * 1000 * value;
-		
 		#if VIDEOS_ALLOWED
-		if(videoCutscene != null)
-		{
-			#if !switch
-			if(videoCutscene.video?.bitmap != null) 
-				videoCutscene.video.bitmap.rate = value;
-			#end
-		}
+		if(videoCutscene?.video?.bitmap != null) videoCutscene.video.bitmap.rate = value;
 		#end
-		
 		setOnScripts('playbackRate', playbackRate);
 		#else
 		playbackRate = 1.0; // ensuring -Crow
@@ -1236,6 +1228,7 @@ class PlayState extends MusicBeatState
 		}
 
 		videoCutscene = new VideoSprite(0, 0, true);
+		videoCutscene.antialiasing = videoCutscene.video.antialiasing = ClientPrefs.data.antialiasing;
 		videoCutscene.camera = camVideo;
 		videoCutscene.canSkip = canSkip;
 		add(videoCutscene);
@@ -1481,11 +1474,6 @@ class PlayState extends MusicBeatState
 		}
 		else opponentVocals.pause();
 		Conductor.songPosition = time;
-
-		#if VIDEOS_ALLOWED
-		if (videoCutscene?.isPlaying())
-			videoCutscene.setTime(FlxG.sound.music.time);
-		#end
 	}
 
 	function startSong():Void
@@ -2141,7 +2129,7 @@ class PlayState extends MusicBeatState
 		final checkVocals = [vocals, opponentVocals];
 		for (voc in checkVocals)
 		{
-			if (FlxG.sound.music.time < voc.length)
+			if (FlxG.sound.music.time < vocals.length)
 			{
 				voc.time = FlxG.sound.music.time;
 				#if FLX_PITCH voc.pitch = playbackRate; #end
@@ -2149,11 +2137,6 @@ class PlayState extends MusicBeatState
 			}
 			else voc.pause();
 		}
-
-		#if VIDEOS_ALLOWED
-		if (videoCutscene?.isPlaying())
-			videoCutscene.setTime(FlxG.sound.music.time);
-		#end
 	}
 
 	public var paused:Bool = false;

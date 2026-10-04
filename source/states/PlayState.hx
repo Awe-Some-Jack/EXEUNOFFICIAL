@@ -1514,7 +1514,7 @@ class PlayState extends MusicBeatState
 		setOnScripts('songLength', songLength);
 		callOnScripts('onSongStart');
 		gameplayCam.onSongStart();
-		// runSongSyncThread();
+		runSongSyncThread();
 	}
 
 	private var noteTypes:Array<String> = [];
@@ -2040,7 +2040,7 @@ class PlayState extends MusicBeatState
 
 			paused = false;
 			callOnScripts('onResume');
-			// runSongSyncThread();
+			runSongSyncThread();
 			resetRPC(startTimer?.finished);
 
 			if (ClientPrefs.data.shaders)
@@ -2061,8 +2061,8 @@ class PlayState extends MusicBeatState
 	#if DISCORD_ALLOWED
 	override public function onFocus():Void
 	{
-		// shutdownThread = false;
-		// runSongSyncThread();
+		shutdownThread = false;
+		runSongSyncThread();
 
 		super.onFocus();
 
@@ -2074,7 +2074,7 @@ class PlayState extends MusicBeatState
 
 	override public function onFocusLost():Void
 	{
-		// shutdownThread = true;
+		shutdownThread = true;
 
 		super.onFocusLost();
 
@@ -4278,7 +4278,7 @@ class PlayState extends MusicBeatState
 		if (opponentVocals != null) { opponentVocals.stop(); opponentVocals.destroy(); opponentVocals = null; }
 
 		shutdownThread = true;
-		// FlxG.signals.preUpdate.remove(checkForResync);
+		FlxG.signals.preUpdate.remove(checkForResync);
 
 		instance = null;
 
@@ -4735,7 +4735,6 @@ class PlayState extends MusicBeatState
 		return false;
 	}
 
-	/*
 	function checkForResync()
 	{
 		if (paused) return;
@@ -4772,5 +4771,4 @@ class PlayState extends MusicBeatState
 
 		if (!FlxG.signals.preUpdate.has(checkForResync)) FlxG.signals.preUpdate.add(checkForResync);
 	}
-	*/
 }

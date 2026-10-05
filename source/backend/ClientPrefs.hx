@@ -20,6 +20,7 @@ import Main;
 	public var uncappedFPS:Bool = false;
 	public var noteSkin:String = 'Default';
 	public var lowQuality:Bool = false;
+	public var freezeSyncDelay:Bool = false;
 	public var shaders:Bool = true;
 	// Do NOT always force gpu caching cause it kills a lot of mid-low end pcs, leave it up to the player
 	public var cacheOnGPU:Bool = false;

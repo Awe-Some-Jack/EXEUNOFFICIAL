@@ -7,14 +7,24 @@ typedef EmeraldData = {         // Had to make a typedef since there arent custo
     var xOffset:Float;
 }
 
-var positions = [
-    {x: 2100, y: 1450},
-    {x: 2200, y: 1450},
-    {x: 2300, y: 1450},
-    {x: 2400, y: 1450},
-    {x: 2500, y: 1450},
-    {x: 2600, y: 1450},
-    {x: 2700, y: 1450}
+var colors = [  // Colors in order
+    "green",
+    "yellow",
+    "blue",
+    "purple",
+    "gray",
+    "cyan",
+    "red"
+];
+
+var colorsHex = [  // Colors in order
+    0xFF00FF44,
+    0xFFFFFF00,
+    0xFF0000FF,
+    0xFFFF00FF,
+    0xFF444444,
+    0xFF00FFFF,
+    0xFFFF0000
 ];
 
 var masterEmerald:FlxSprite;
@@ -30,22 +40,36 @@ var scaleMult:Float = 1;
 var velocityMult:Float = 0.5;
 var radiusMult:Float = 1;
 var LERP_VELOCITY:Float = 15;
-var INITIAL_SCALE:Float = 1.5;
+var INITIAL_SCALE:Float = 0.45;
 
 var emeraldsData:Array<EmeraldData> = [];
 
 function onCreatePost()
 {
-    masterEmerald = new FlxSprite().loadGraphic(Paths.image('emeralds/placeholder'));
-    masterEmerald.setPosition(2250, 1250);
-    masterEmerald.scale.set(INITIAL_SCALE * 5, INITIAL_SCALE * 5);
-    masterEmerald.updateHitbox();
+    var guh = FlxG.random.bool(1);
+    masterEmerald = new FlxSprite();
+    masterEmerald.setPosition(1900, 1050);
+    masterEmerald.scale.set(0.5, 0.5);
+    if(guh) 
+    {
+        masterEmerald.loadGraphic(Paths.image('bg/emerals/placeholder'));
+        masterEmerald.scale.set(9, 9);
+    }
+    else 
+    {
+        masterEmerald.frames = Paths.getSparrowAtlas('bg/emerals/master');
+        masterEmerald.animation.addByPrefix('anim', 'Símbolo', 24, true);
+        masterEmerald.animation.play('anim');
+    }
     insert(members.indexOf(boyfriendGroup) - 1, masterEmerald);
 
     for(i in 0...7)
     {
-        var emerald = new FlxSprite().loadGraphic(Paths.image('emeralds/placeholder'));
-        emerald.setPosition(positions[i].x, positions[i].y);
+        var emerald = new FlxSprite(0, 1450);
+        emerald.frames = Paths.getSparrowAtlas('bg/emerals/${colors[i]}');
+        emerald.animation.addByPrefix('anim', 'Símbolo', 24, true);
+        emerald.animation.play('anim');
+        //emerald.setPosition(positions[i].x, positions[i].y);
         emerald.scale.set(INITIAL_SCALE, INITIAL_SCALE);
         emerald.updateHitbox();
         insert(members.indexOf(boyfriendGroup) - 1, emerald);
@@ -53,16 +77,22 @@ function onCreatePost()
         emeraldsData.push({
             sprite: emerald,
             moving: true,
-            movingRadius: 275,
+            movingRadius: 325,
             target: masterEmerald,
             targetRef: masterEmerald,
-            xOffset: 140
+            xOffset: 475
         });
 
         FlxTween.tween(emerald.offset, {y: 45}, 2, {ease: FlxEase.sineInOut, type: 4, startDelay: 0.2 * i});
     }
 
     setVar('canTransform', false);
+
+    gradient = new FlxSprite().loadGraphic(Paths.image('grad'));
+    gradient.cameras = [camHUD];
+    gradient.alpha = 0;
+    gradient.y = game.downscroll ? -gradient.height/2 : FlxG.height - gradient.height/2;
+    game.insert(0, gradient);
 }
 
 var _time:Float = 0;
@@ -82,7 +112,7 @@ function onUpdate(e)
         var circularMovement = sine * emerald.movingRadius * radiusMult;
         
         var isBehind = members.indexOf(emerald.sprite) < members.indexOf(emerald.targetRef);
-        var scaleFactor = INITIAL_SCALE + (isBehind ?  -(1 - Math.abs(sine)) : 1 - Math.abs(sine)) * 0.45;
+        var scaleFactor = INITIAL_SCALE + (isBehind ?  -(1 - Math.abs(sine)) : 1 - Math.abs(sine)) * 0.175;
         emerald.sprite.scale.set(scaleFactor * scaleMult, scaleFactor * scaleMult); // Modify the scale depending of its position to make a 3d illusion
         
         if(isBehind && sine >= 0.95) // Place this emerald in front of bf if its approximately in the right limit
@@ -120,6 +150,10 @@ function goodNoteHit(note:Note)
             curEmerald.xOffset = 100;
         }});
         collectedEmeralds++;
+
+        FlxTween.cancelTweensOf(gradient);
+        gradient.alpha = 1;
+        FlxTween.tween(gradient, {alpha: 0}, 0.4);
     }
 
     if(collectedEmeralds >= 7 || game.cpuControlled) setVar('canTransform', true);
@@ -132,22 +166,36 @@ function onUpdatePost()
 
 function noteMiss(note:Note)
 {
-    if(note.noteType == 'emerald') missedEmeralds++;
+    if(note.noteType == 'emerald') {
+        missedEmeralds++;
+
+        FlxTween.cancelTweensOf(gradient);
+        FlxTween.tween(gradient, {alpha: 0}, 0.25);
+    }
 }
 
 function onCountdownStarted()
 {
-    FlxTween.num(3, 0.55, 4, null, v -> velocityMult = v);
+    FlxTween.num(4, 0.55, 4, null, v -> velocityMult = v);
 }
 
 /**
  * Transform and events change stuff, here i change the events if the user is superbf or not along with the chaosEvent.lua script
  */
 
+ var spawnCount:Int = 0;
 function onSpawnNote(note:Note)
 {
     if(!note.mustPress) return;
 
+    if(note.noteType == 'emerald') 
+    {
+        gradient.color = colorsHex[spawnCount];
+        gradient.scale.set(1, 1);
+        gradient.x = note.x - 25;
+        FlxTween.tween(gradient, {alpha: 0.6, "scale.y": 8}, 1.75);
+        spawnCount++;
+    }
     if(!getVar('canTransform')) note.animSuffix = '';
 }
 
@@ -221,11 +269,6 @@ function onStepHit()
         case 1356: 
             if(getVar('canTransform')) {
                 triggerEvent('Normal Lyrics', 'lyrics.chaos.8', '5');
-            }
-
-        case 1600: 
-            if(getVar('canTransform')) {
-                triggerEvent('chaosEvent', 'eatthis');
             }
         case 1999: 
             if(!getVar('canTransform')) {

@@ -106,7 +106,7 @@ class SoundTest extends MusicBeatState
 
 		if (!AssetPaths.exists("assets/exe/soundtest/extraCodes.json"))
 		{
-			trace("JSON no encontrado");
+			trace("JSON not founded");
 			return;
 		}
 
@@ -131,7 +131,7 @@ class SoundTest extends MusicBeatState
 		}
 		catch (e:Dynamic)
 		{
-			trace("Error leyendo JSON de SoundTest: " + e);
+			trace("Errpr on soundTest JSON: " + e);
 		}
 	}
 
@@ -363,17 +363,20 @@ class SoundTest extends MusicBeatState
 					transitioning = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					FlxG.sound.music?.fadeOut(0.3);
-					
+					whiteBG.alpha = 0;
+					FlxTween.cancelTweensOf(whiteBG);
 					FlxTween.tween(whiteBG, {alpha: 1}, 1, {
 						onComplete: (_) -> {
 							if (code.isWeek) 
 							{
+								trace("loading week");
 								loadSong(code.weekName, true);
 							}
 							else
 							{
 								savedCode = [pcmValue, daValue];
 
+								trace("Saving code: " + savedCode);
 								var a = backend.EXEAchievements.get('secondary');
 								var savedCodes:Array<Array<Int>> = cast(a.extra ?? []);
 								if(!savedCodes.contains(savedCode)) savedCodes.push(savedCode);
@@ -456,7 +459,9 @@ class SoundTest extends MusicBeatState
 			final leWeek:WeekData = WeekData.weeksLoaded.get(name);
 			if (leWeek == null)
 			{
-				trace("Week no encontrada: " + name);
+				trace(leWeek);
+				lime.app.Application.current.window.alert("NOT FOUNDED WEEK: " + name, "SoundTest Error:");
+				FlxG.resetState();
 				return;
 			}
 

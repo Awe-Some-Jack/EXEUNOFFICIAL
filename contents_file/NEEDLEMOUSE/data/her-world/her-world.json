@@ -1,5 +1,5 @@
 {
-	"player1": "bf",
+	"player1": "bf-needle-scared",
 	"events": [
 		[
 			102.040816326531,
@@ -681,8 +681,8 @@
 			]
 		]
 	],
-	"gfVersion": "gf",
-	"player2": "dad",
+	"gfVersion": "gf-needlemouse-scared",
+	"player2": "Needlemouse2",
 	"notes": [
 		{
 			"lengthInSteps": 16,
@@ -6523,7 +6523,7 @@
 	"song": "Her-World",
 	"validScore": true,
 	"needsVoices": true,
-	"stage": "stage",
+	"stage": "herworld",
 	"speed": 3,
 	"bpm": 147,
 	"format": "psych_v1_convert"

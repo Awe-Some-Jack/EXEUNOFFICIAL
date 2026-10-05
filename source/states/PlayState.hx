@@ -3818,7 +3818,7 @@ class PlayState extends MusicBeatState
 		// GUITAR HERO SUSTAIN CHECK LOL!!!!
 		if (note != null && guitarHeroSustains && note.parent == null) {
 			if(note.tail.length > 0) {
-				note.alpha = 0.3;
+				note.alpha = 0.7;
 				for(childNote in note.tail) {
 					childNote.copyAlpha = false;
 					childNote.alpha = note.alpha;
@@ -3826,16 +3826,11 @@ class PlayState extends MusicBeatState
 					childNote.canBeHit = false;
 					childNote.ignoreNote = true;
 					childNote.tooLate = true;
-					// childNote.desat();
+					childNote.desat();
 				}
 				note.missed = true;
 				note.canBeHit = false;
-				// note.desat();
-
-				//subtract += 0.385; // you take some more damage if playing with this gameplay changer enabled.
-				// i mean its fair :p -Crow
-				//subtract *= note.tail.length + 1;
-				// i think it would be fair if damage multiplied based on how long the sustain is -[REDACTED]
+				note.desat();
 			}
 		}
 		if (note != null && guitarHeroSustains && note.parent != null && note.isSustainNote) {

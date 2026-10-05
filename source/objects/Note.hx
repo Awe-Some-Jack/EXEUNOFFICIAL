@@ -458,10 +458,11 @@ class Note extends FlxSprite
 
 		if (mustPress)
 		{
-			canBeHit = strumTime > Conductor.songPosition - (Conductor.safeZoneOffset * lateHitMult)
-			        && strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * earlyHitMult);
+			final safeZoneOffset:Float = Conductor.safeZoneOffset + ((Conductor.safeZoneOffset*0.53)*(noteType == "emerald" ? 1 : 0));
+			canBeHit = strumTime > Conductor.songPosition - (safeZoneOffset * lateHitMult)
+			        && strumTime < Conductor.songPosition + (safeZoneOffset * earlyHitMult);
 
-			if (strumTime < Conductor.songPosition - Conductor.safeZoneOffset && !wasGoodHit)
+			if (strumTime < Conductor.songPosition - safeZoneOffset && !wasGoodHit)
 				tooLate = true;
 		}
 		else
@@ -484,7 +485,7 @@ class Note extends FlxSprite
 
 	public function followStrumNote(myStrum:StrumNote, fakeCrochet:Float, songSpeed:Float = 1):Void
 	{
-		distance = 0.45 * (Conductor.songPosition - strumTime) * songSpeed * multSpeed;
+		distance = ((noteType == 'emerald') ? 0.4 :0.45) * (Conductor.songPosition - strumTime) * songSpeed * multSpeed;
 		if (!myStrum.downScroll) distance *= -1;
 
 		final angleDir:Float = myStrum.direction * Math.PI / 180;

@@ -445,8 +445,8 @@ class BIOS extends SonicSubState
 		if (isXenoLuis(dispName)){
 			final chance = ((dispName.length > 0) ? dispName.length*7 : FlxG.random.int(20, 50));
 			if (!FlxG.random.bool(chance)){
-				dispName = "Xeno";
-				if (bio.toLowerCase().contains("luis")) bio = bio.replace("Luis", "Xeno");
+				dispName = "Xenophanes";
+				if (bio.toLowerCase().contains("luis")) bio = bio.replace("Luis", "Xenophanes");
 			}
 		}
 		

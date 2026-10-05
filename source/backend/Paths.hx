@@ -361,7 +361,8 @@ class Paths
 
 			if (bitmap == null)
 			{
-				trace('Bitmap not found: $file | key: $key');
+				// is necesary?? hehe...., creo q takes a lot of ms on game 
+				// trace('Bitmap not found: $file | key: $key');
 				return null;
 			}
 		}

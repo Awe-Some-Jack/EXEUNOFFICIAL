@@ -45,6 +45,7 @@ function onEvent(n,v1)
 		if v1 == 'eatthis' then
 			attacking = true
 			time = 0
+			setProperty('canPause', false)
 			setProperty('spacebar.visible', true)
 			runTimer('fuckye', crochet / (1000 / 3) / playbackRate)
 		end
@@ -125,6 +126,7 @@ end
 function onTimerCompleted(t)
 	if t == 'fuckye' then
 		attacking = false
+		setProperty('canPause', true)
 		setProperty('spacebar.visible', false)
 
 		if (dodging == false and not getProperty('cpuControlled')) or (curBeat > 252 and not getVar('canTransform')) then

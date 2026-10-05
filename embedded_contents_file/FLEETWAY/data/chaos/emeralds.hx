@@ -83,7 +83,7 @@ function onCreatePost()
             xOffset: 475
         });
 
-        FlxTween.tween(emerald.offset, {y: 45}, 2, {ease: FlxEase.sineInOut, type: 4, startDelay: 0.2 * i});
+        // FlxTween.tween(emerald.offset, {y: 45}, 2, {ease: FlxEase.sineInOut, type: 4, startDelay: 0.2 * i});
     }
 
     setVar('canTransform', false);
@@ -97,12 +97,16 @@ function onCreatePost()
 
 var _time:Float = 0;
 var _masterTime:Float = 0;
-function onUpdate(e) 
+var waveAmplitude:Float = 30;
+var waveFrequency:Float = 3;
+var wavePhaseShift:Float = 0.6;
+
+function onUpdate(e:Float) 
 {
     _time += e * velocityMult;
     _masterTime += e * velocityMult * 0.4;
 
-    masterEmerald.offset.y = FlxMath.fastSin(Math.PI * _masterTime) * 110;
+    masterEmerald.offset.y = -FlxMath.fastSin(Math.PI * _masterTime) * 80;
 
     for(idx => emerald in emeraldsData)
     {
@@ -112,7 +116,7 @@ function onUpdate(e)
         var circularMovement = sine * emerald.movingRadius * radiusMult;
         
         var isBehind = members.indexOf(emerald.sprite) < members.indexOf(emerald.targetRef);
-        var scaleFactor = INITIAL_SCALE + (isBehind ?  -(1 - Math.abs(sine)) : 1 - Math.abs(sine)) * 0.175;
+        var scaleFactor = INITIAL_SCALE + (isBehind ? -(1 - Math.abs(sine)) : 1 - Math.abs(sine)) * 0.175;
         emerald.sprite.scale.set(scaleFactor * scaleMult, scaleFactor * scaleMult); // Modify the scale depending of its position to make a 3d illusion
         
         if(isBehind && sine >= 0.95) // Place this emerald in front of bf if its approximately in the right limit
@@ -126,6 +130,9 @@ function onUpdate(e)
             insert(members.indexOf(emerald.targetRef) - 1, emerald.sprite);
         }
         emerald.sprite.x = emerald.xOffset + emerald.target.x + circularMovement;
+
+        var waveSine = FlxMath.fastSin((_time * waveFrequency) + (idx * wavePhaseShift));
+        emerald.sprite.offset.y = (waveSine * waveAmplitude)+50;
     }
 }
 

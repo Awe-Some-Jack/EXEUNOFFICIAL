@@ -100,7 +100,7 @@ class BGHelper
 			sprite.scale.set((spriteDef.scale ?? [1, 1, true])[0], (spriteDef.scale ?? [1, 1, true])[1]);
 			if (spriteDef.scale != null && (spriteDef.scale[2] == null || spriteDef.scale[2] == true)) sprite.updateHitbox();
 			sprite.antialiasing = false;
-
+			if (spriteDef.antialiasing != null) sprite.antialiasing = spriteDef.antialiasing;
 			if (spriteDef.flip != null) {sprite.flipX = spriteDef.flip[0]; sprite.flipY = spriteDef.flip[1];}
 			if (spriteDef.visible != null) sprite.visible = spriteDef.visible;
 			if (spriteDef.alpha != null) sprite.alpha = spriteDef.alpha;

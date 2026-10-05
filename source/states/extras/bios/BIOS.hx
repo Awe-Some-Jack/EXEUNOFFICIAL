@@ -401,6 +401,10 @@ class BIOS extends SonicSubState
 		}
 	}
 
+	public function isXenoLuis(?x:String){
+		return (x != null) ? x.toLowerCase() == "luis" : entries[curEntry].displayName.toLowerCase() == "luis";
+	}
+
 	function _applyEntry(index:Int, variantIdx:Int):Void
 	{
 		if (entries.length == 0) return;
@@ -438,7 +442,16 @@ class BIOS extends SonicSubState
 			mod       = _str(v.mod,          mod);
 		}
 
+		if (isXenoLuis(dispName)){
+			final chance = ((dispName.length > 0) ? dispName.length*7 : FlxG.random.int(20, 50));
+			if (!FlxG.random.bool(chance)){
+				dispName = "Xeno";
+				if (bio.toLowerCase().contains("luis")) bio = bio.replace("Luis", "Xeno");
+			}
+		}
+		
 		charName.text = dispName;
+		
 		_fitCharName();
 		_setArtists(artist);
 		_updateDots();

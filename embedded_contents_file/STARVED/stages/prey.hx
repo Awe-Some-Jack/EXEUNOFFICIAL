@@ -22,8 +22,8 @@ function onCreate()
 	if (!prefs.lowQuality)
 	{
 		replaceColor = new ErrorHandledRuntimeShader('replaceColor', File.getContent('contents/STARVED/shaders/replaceColor.frag'));
-		replaceColor.setFloatArray('targetColor', [255, 255, 153]);
-		replaceColor.setFloatArray('replaceColor', [36, 0, 0]);
+		replaceColor.setFloatArray('targetColor', [255, 255, 168]);
+		replaceColor.setFloatArray('replaceColor', [0, 0, 0]);
 		for (i in 0...15)
 		{
 			var bg:FlxBackdrop = new FlxBackdrop(Paths.image('prey/bg/bg' + (i + 1)), FlxAxes.X);
@@ -72,7 +72,7 @@ function onCreate()
 			add(floor);
 		}
 
-		fg = new FlxBackdrop(null, FlxAxes.X, 1000);
+		fg = new FlxBackdrop(null, FlxAxes.X, 800);
 		fg.frames = Paths.getSparrowAtlas('prey/bg/fg-pilar-anim');
 		fg.animation.addByPrefix('idle', 'idle', 8, true); fg.animation.play('idle', true);
 		fg.y = -600;
@@ -126,7 +126,7 @@ function onUpdatePost(elapsed:Float)
 			if (lightning.animation.curAnim.finished)
 			{
 				FlxTween.num(0, 1, 2, null, n -> {
-					var r = 216 + (36 - 216) * n;
+					var r = 216 + (9 - 216) * n;
 					var g = 108 + (0 - 108) * n;
 					var b = 180 + (0 - 180) * n;
 
@@ -308,49 +308,4 @@ function clearRampTimers()
 	for (tween in rampTweens) if (!tween.finished) tween.cancel();
 	rampTimers.resize(0);
 	rampTweens.resize(0);
-}
-
-function getRampFloorY(delay:Float, i:Int = 0):Float
-{
-	var speed = Math.abs(floorGroup[1 - i].velocity.x);
-
-	if (floorGroup[1 - i].ID == 1)
-	{
-		var t = ((824 - movementOffset) * 6) / speed;
-		if (delay < t) return 420;
-		delay -= t;
-		final rampTime = (142 * 6) / speed;
-		if (delay < rampTime) return 420 - (delay / rampTime) * 384;
-		delay -= rampTime;
-		if (delay < (1043 * 6) / speed) return 420 - 384;
-		delay -= (1043 * 6) / speed;
-		if (delay < rampTime) return 420 - (1 - delay / rampTime) * 384;
-
-		return 420;
-	}
-
-	if (floorGroup[1 - i].ID == 2)
-	{
-		var t = ((331 - movementOffset) * 6) / speed;
-		if (delay < t) return 420;
-		delay -= t;
-		final rampTime = (142 * 6) / speed;
-		if (delay < rampTime) return 420 + (delay / rampTime) * 384;
-		delay -= rampTime;
-		if (delay < (1005 * 6) / speed) return 420 + 384;
-		delay -= (1005 * 6) / speed;
-		if (delay < rampTime) return 420 + (1 - delay / rampTime) * 384;
-		delay -= rampTime;
-		if (delay < (512 * 6) / speed) return 420;
-		delay -= (512 * 6) / speed;
-		if (delay < rampTime) return 420 - (delay / rampTime) * 384;
-		delay -= rampTime;
-		if (delay < (1811 * 6) / speed) return 420 - 384;
-		delay -= (1811 * 6) / speed;
-		if (delay < rampTime) return 420 - (1 - delay / rampTime) * 384;
-
-		return 420;
-	}
-
-	return 420;
 }

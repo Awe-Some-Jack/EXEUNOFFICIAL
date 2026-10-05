@@ -20,13 +20,20 @@ function onCreatePost()
 end
 
 local spikeGroup = {}
+local ringGroup = {}
+local missedRings = {}
 local cantMore = false
 local jumpAmount = 2000
 local gravity = 7000
 local amountOfTime = 0
 local holdTimer = 0
 local triggerOnce = false
+local _lF = 0
+local leftFloor = 0
+local floorPassed = false
+local canceledJump = false
 function onUpdatePost(e)
+	if inGameOver then return end
 	callMethod('sonicHitboxFix.setPosition', {getProperty('boyfriend.x') + 10, getProperty('boyfriend.y') - 25})
 
 	if getProperty('boyfriend.velocity.x') < 0 then
@@ -34,30 +41,34 @@ function onUpdatePost(e)
 		setProperty('boyfriend.velocity.x', 0)
 	end
 
+	if canceledJump == true and not stringStartsWith(getProperty('boyfriend.animation.curAnim.name'), 'hit') then canceledJump = false end
+
 	setProperty('sonic-jump.x', getProperty('boyfriend.x') - 100)
 	setProperty('sonic-jump.y', getProperty('boyfriend.y') - 100)
 
-	if not getProperty('cpuControlled') then
-		if keyboardJustPressed('SPACE') then holdTimer = 0 end
-		if keyboardPressed('SPACE') then holdTimer = holdTimer + e end
+	if not getProperty('cpuControlled') or not stringStartsWith(getProperty('boyfriend.animation.curAnim.name'), 'hit') then
+		if not canceledJump then
+			if keyboardJustPressed('SPACE') then holdTimer = 0 end
+			if keyboardPressed('SPACE') then holdTimer = holdTimer + e end
 
-		if keyboardPressed('SPACE') and not isJumping and canJump and holdTimer < 0.15 then
-			cantMore = false
-			isJumping = true
-			setVar('isJumping', isJumping)
-			amountOfTime = 0
+			if keyboardPressed('SPACE') and not isJumping and canJump and holdTimer < 0.15 then
+				cantMore = false
+				isJumping = true
+				setVar('isJumping', isJumping)
+				amountOfTime = 0
 
-			setProperty('sonic-jump.visible', true)
-			setProperty('boyfriend.alpha', 0)
-			playAnim('sonic-jump', 'jump', true)
-			playSound('sonicJump')
-		end
-		if keyboardReleased('SPACE') then cantMore = true end
-		if keyboardPressed('SPACE') and cantMore == false and amountOfTime < 0.1 and canJump then
-			amountOfTime = amountOfTime + e
-			
-			setProperty('boyfriend.acceleration.y', gravity)
-			setProperty('boyfriend.velocity.y', -jumpAmount * (1 + (amountOfTime * 3)))
+				setProperty('sonic-jump.visible', true)
+				setProperty('boyfriend.alpha', 0)
+				playAnim('sonic-jump', 'jump', true)
+				playSound('sonicJump')
+			end
+			if keyboardReleased('SPACE') then cantMore = true end
+			if keyboardPressed('SPACE') and cantMore == false and amountOfTime < 0.1 and canJump then
+				amountOfTime = amountOfTime + e
+				
+				setProperty('boyfriend.acceleration.y', gravity)
+				setProperty('boyfriend.velocity.y', -jumpAmount * (1 + (amountOfTime * 3)))
+			end
 		end
 	end
 
@@ -84,19 +95,46 @@ function onUpdatePost(e)
 	for i,s in ipairs(spikeGroup) do
 		local spr = s.sprite
 		if overlaps('sonicHitboxFix', spr) and s.detect then
-			for _,o in ipairs(spikeGroup) do if o.id == s.id then o.detect = false end end
+			if getVar('rings') > 0 then
+				for _,o in ipairs(spikeGroup) do if o.id == s.id then o.detect = false end end
 
-			cameraShake('game', 0.01, 0.1)
-			addHealth(-0.5 * (math.abs(getProperty('floor.velocity.x')) / 2000))
-			callMethod('updateScore', {false, false})
-			playSound('hit')
-			playAnim('boyfriend', 'hit'..getProperty('boyfriend.idleSuffix'), true)
-			setProperty('boyfriend.specialAnim', true)
-			triggerOnce = true
+				for j = 1,getVar('rings') do
+					local missedRing = 'missedRing'..j
+					makeAnimatedLuaSprite(missedRing, 'prey/ring', getProperty('boyfriend.x'), getProperty('boyfriend.y'))
+					addAnimationByPrefix(missedRing, 'idle', 'ring', 8, true)
+					scaleObject(missedRing, 6, 6)
+					setProperty(missedRing..'.antialiasing', false)
+					setProperty(missedRing..'.velocity.x', getRandomInt(-500, 500))
+					setProperty(missedRing..'.acceleration.x', getProperty('floorGroup[0].velocity.x'))
+					setProperty(missedRing..'.maxVelocity.x', math.abs(getProperty('floorGroup[0].velocity.x')))
+					setProperty(missedRing..'.velocity.y', -getRandomInt(1500, 2000))
+					setProperty(missedRing..'.acceleration.y', gravity)
+					addLuaSprite(missedRing, true)
+					table.insert(missedRings, missedRing)
+				end
+				runTimer('removeMissedRings', 1)
 
-			for i = 0,getProperty('notes.length')-1 do
-				setProperty('notes.members['..i..'].noAnimation', true)
-				setProperty('notes.members['..i..'].noMissAnimation', true)
+				setProperty('boyfriend.velocity.y', 0)
+				cameraShake('game', 0.01, 0.1)
+				setProperty('sonic-jump.visible', false)
+				setProperty('boyfriend.alpha', 1)
+				playSound('hit')
+				playSound('loseRings')
+				setVar('rings', 0)
+				callOnScripts('updateRings')
+				playAnim('boyfriend', 'hit'..getProperty('boyfriend.idleSuffix'), true)
+				setProperty('boyfriend.specialAnim', true)
+				triggerOnce = true
+				canceledJump = true
+
+				for j = 0,getProperty('notes.length')-1 do
+					setProperty('notes.members['..j..'].noAnimation', true)
+					setProperty('notes.members['..j..'].noMissAnimation', true)
+				end
+			else
+				playSound('hit')
+				setProperty('instakillOnMiss', true)
+				callMethod('doDeathCheck', {true})
 			end
 		end
 
@@ -105,6 +143,32 @@ function onUpdatePost(e)
 			table.remove(spikeGroup, i)
 		end
 	end
+
+	for i,r in ipairs(ringGroup) do
+		local ring = r.sprite
+		if overlaps('sonicHitboxFix', ring) then
+			setVar('rings', math.min(getVar('rings') + 1, 150))
+			callOnScripts('updateRings')
+			playSound('Ringer', 0.8)
+			playAnim(ring, 'sparkle', true)
+			runTimer(ring, 0.4)
+			table.remove(ringGroup, i)
+		end
+
+		if getProperty(ring..'.x') < -1200 - getProperty(ring..'.width') then
+			removeLuaSprite(ring, true)
+			table.remove(ringGroup, i)
+		end
+	end
+
+    local distance = ((crochet * 3) / 1000) * math.abs(getProperty('floorGroup[0].velocity.x') * 1.07)
+	if not floorPassed and getProperty('floorGroup['.._lF..'].x') < distance then
+		_lF = 1 - _lF
+		floorPassed = true
+	elseif floorPassed and getProperty('floorGroup['.._lF..'].x') > distance then
+		floorPassed = false
+	end
+	leftFloor = 1 - _lF
 end
 
 function onBeatHit()
@@ -119,51 +183,117 @@ function onEvent(n,v1)
 	end
 end
 
+local playSoundOnce = true
 local id = 0
+local ringId = 0
 function onSectionHit()
-	if mech and canJump and getRandomBool(100) then
-		local speed = math.abs(getProperty('floorGroup[0].velocity.x'))
-		local delay = ((crochet * 3) / 1000) * 1.07
-		local futureFloorY = callOnHScript('getRampFloorY', {delay, 1})
+	if mech and canJump and getRandomBool(65) then
+		local amount = getRandomInt(1,3)
+		local distance = ((crochet * 3) / 1000) * math.abs(getProperty('floorGroup[0].velocity.x') * 1.07)
+		local daOffset = 0
+		local floorX = getProperty('floorGroup['..leftFloor..'].x') + distance - (math.abs(getProperty('floorGroup[0].velocity.x')) - 2000) * 2.14
+		if getProperty('floorGroup['..leftFloor..'].ID') == 2 then
+			if (floorX < (2429 + (amount * (32 * 6))) and floorX > 1503)
+			or (floorX < (-3618 + (amount * (32 * 6))) and floorX > -4491)
+			or (floorX < (-6716 + (amount * (32 * 6))) and floorX > -7542)
+			or (floorX < -(17557 + (amount * (32 * 6))) and floorX > -18445) then
+				return
+			end
 
-		local daOffset = futureFloorY - 420
+			if (floorX < 1503 and floorX > (-3618 + (amount * (32 * 6)))) then daOffset = 384 end
+			if (floorX < -4491 and floorX > (-6716 + (amount * (32 * 6)))) then daOffset = 0 end
+			if (floorX < -7542 and floorX > (-17557 + (amount * (32 * 6)))) then daOffset = -384 end
+			if floorX < -18445 then daOffset = 0 end
+		else
+			if (floorX < (-532 + (amount * (32 * 6))) and floorX > -1430)
+			or (floorX < (-6797 + (amount * (32 * 6))) and floorX > -7665) then
+				return
+			end
 
-		if daOffset ~= 0 and math.abs(daOffset) ~= 384 then
-			debugPrint('yea it can, proof: '..daOffset)
-			return
+			if (floorX < -1430 and floorX > (-6797 + (amount * (32 * 6)))) then daOffset = -384 end
+			if floorX < -7665 then daOffset = 0 end
 		end
-		id = id + 1
 
-		for i = 1,getRandomInt(1,3) do
-			local spike = 'spike'..id..'_'..i
+		if getRandomBool(50) then
+			ringId = ringId + 1
 
-			makeLuaSprite(spike, 'prey/spikes', ((crochet * 3) / 1000) * math.abs(getProperty('floorGroup[0].velocity.x') * 1.07) + ((i - 1) * (32 * 6)), 392 + daOffset)
-			scaleObject(spike, 6, 6)
-			setProperty(spike..'.antialiasing', false)
-			setProperty(spike..'.velocity.x', getProperty('floorGroup[0].velocity.x'))
-			setObjectOrder(spike, getObjectOrder('floorGroup[0]'))
+			local ringOffset = getRandomBool(50) and 0 or 500
+			for i = 1,getRandomInt(3, 5, 4) do
+				local ring = 'ring'..ringId..'_'..i
 
-			table.insert(spikeGroup, {id = id, sprite = spike, detect = true})
+				makeAnimatedLuaSprite(ring, 'prey/ring', distance + ((i - 1) * (32 * 6)) + (8 * 6), 392 + daOffset - ringOffset)
+				addAnimationByPrefix(ring, 'idle', 'ring', 8, true)
+				addAnimationByPrefix(ring, 'sparkle', 'sparkle', 8, true)
+				playAnim(ring, 'idle', true)
+				scaleObject(ring, 6, 6)
+				setProperty(ring..'.antialiasing', false)
+				setProperty(ring..'.velocity.x', getProperty('floorGroup[0].velocity.x'))
+				setObjectOrder(ring, getObjectOrder('floorGroup[0]'))
+
+				table.insert(ringGroup, {id = ringId, sprite = ring})
+			end
+		else
+			id = id + 1
+
+			for i = 1,amount do
+				local spike = 'spike'..id..'_'..i
+
+				makeLuaSprite(spike, 'prey/spikes', distance + ((i - 1) * (32 * 6)), 392 + daOffset)
+				scaleObject(spike, 6, 6)
+				setProperty(spike..'.antialiasing', false)
+				setProperty(spike..'.velocity.x', getProperty('floorGroup[0].velocity.x'))
+				setObjectOrder(spike, getObjectOrder('floorGroup[0]'))
+
+				table.insert(spikeGroup, {id = id, sprite = spike, detect = true})
+			end
+
+			local warning = 'warning'..id
+			makeAnimatedLuaSprite(warning, 'prey/warning', 500, (getVar('floorY') - 420))
+			scaleObject(warning, 2, 2)
+			addAnimationByPrefix(warning, '1', '1', 12, false)
+			addAnimationByPrefix(warning, '2', '2', 12, false)
+			playAnim(warning, '1', true)
+			setProperty(warning..'.antialiasing', false)
+			addLuaSprite(warning, true)
+
+			if playSoundOnce then playSound('warnin', 0.8) end
+			runTimer(warning, crochet / 1000)
 		end
+	end
+end
 
-		local warning = 'warning'..id
-		makeAnimatedLuaSprite(warning, 'prey/warning', 500, 200)
-		scaleObject(warning, 2, 2)
-		addAnimationByPrefix(warning, '1', '1', 12, false)
-		addAnimationByPrefix(warning, '2', '2', 12, false)
-		playAnim(warning, '1', true)
-		setProperty(warning..'.antialiasing', false)
-		addLuaSprite(warning, true)
+local mrid = 0
+function noteMiss(_,_,_,isn)
+	if isn then return end
+	if getVar('rings') > 0 then
+		mrid = mrid + 1
+		local missedRing = 'missedRing'..mrid
+		makeAnimatedLuaSprite(missedRing, 'prey/ring', getProperty('boyfriend.x'), getProperty('boyfriend.y'))
+		addAnimationByPrefix(missedRing, 'idle', 'ring', 8, true)
+		scaleObject(missedRing, 6, 6)
+		setProperty(missedRing..'.antialiasing', false)
+		setProperty(missedRing..'.velocity.x', getRandomInt(-500, 500))
+		setProperty(missedRing..'.acceleration.x', getProperty('floorGroup[0].velocity.x'))
+		setProperty(missedRing..'.maxVelocity.x', math.abs(getProperty('floorGroup[0].velocity.x')))
+		setProperty(missedRing..'.velocity.y', -getRandomInt(1500, 2000))
+		setProperty(missedRing..'.acceleration.y', gravity)
+		addLuaSprite(missedRing, true)
+		runTimer(missedRing, 1)
 
-		playSound('warnin', 1)
-		runTimer(warning, crochet / 1000)
+		playSound('loseRings', 0.45)
+		setVar('rings', getVar('rings') - 1)
+		callOnScripts('updateRings')
+	else
+		setProperty('instakillOnMiss', true)
+		callMethod('doDeathCheck', {true})
 	end
 end
 
 function onTimerCompleted(t)
 	if stringStartsWith(t, 'warning') then
 		playAnim(t, '2', true)
-		playSound('warnin', 1)
+		if playSoundOnce then playSound('warnin', 0.8) end
+		playSoundOnce = false
 		runTimer('2'..t, crochet / 1000)
 	end
 	if stringStartsWith(t, '2warning') then
@@ -179,6 +309,16 @@ function onTimerCompleted(t)
 
 		removeLuaSprite(t:sub(2), true)
 	end
+
+	if stringStartsWith(t, 'ring') then removeLuaSprite(t, true) end
+
+	if t == 'removeMissedRings' then
+		for i,r in ipairs(missedRings) do
+			removeLuaSprite(r, true)
+			missedRings = {}
+		end
+	end
+	if stringStartsWith(t, 'missedRing') then removeLuaSprite(t, true) end
 end
 
 function lerp(a, b, t)

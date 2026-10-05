@@ -37,7 +37,7 @@ function onEvent(n,v1)
 			doTweenY('bottomBar', 'botbar', screenHeight, crochet / (1000 / 4), 'cubeOut')
 		end
 		if v1 == 'furnaceappearing' then
-			doTweenY('cammovement', 'camPos', 600, crochet / (1000 / 16), 'cubeInOut')
+			doTweenY('cammovement', 'camPos', 500, crochet / (1000 / 16), 'cubeInOut')
 		end
 		if v1 == 'backtocam' then
 			doTweenY('cammovement', 'camPos', 350, crochet / (1000 / 16), 'cubeInOut')

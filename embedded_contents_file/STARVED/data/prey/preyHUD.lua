@@ -5,6 +5,8 @@ local function killMainHUD()
 	callMethod('scoreTxt.kill')
 end
 
+local rings = 10
+setVar('rings', rings)
 local postCreate = false
 function onCreatePost()
 	postCreate = true
@@ -15,32 +17,16 @@ function onCreatePost()
 
 	makeHUDSprite('scoreText', 'score', 20)
 	makeHUDSprite('timeText', 'time', 20)
-	makeHUDSprite('missesText', 'misses-normal', 20) makeHUDSprite('missesText-alt', 'misses-alt', 20) setProperty('missesText-alt.visible', false)
+	makeHUDSprite('ringsText', 'rings-normal', 20) makeHUDSprite('ringsText-alt', 'rings-alt', 20) setProperty('ringsText-alt.visible', false)
 
 	initialY = 6 * 3
 	setProperty('scoreText.y', downscroll and initialY or (screenHeight - getProperty('scoreText.height') - initialY - ((getProperty('scoreText.height') * 2) + initialY)))
 	setProperty('timeText.y', downscroll and (initialY + (getProperty('timeText.height') + (initialY / 2))) or (screenHeight - getProperty('timeText.height') - initialY - (getProperty('timeText.height') + (initialY / 2))))
-	setProperty('missesText.y', downscroll and (initialY + ((getProperty('missesText.height') * 2) + initialY)) or (screenHeight - getProperty('missesText.height') - initialY))
-	setProperty('missesText-alt.y', getProperty('missesText.y'))
-
-	local iconOffset = 75 * 0.5
-	createInstance('iconSonic', 'objects.HealthIcon', {getProperty('boyfriend.healthIcon'), false})
-	setObjectCamera('iconSonic', 'hud')
-	setProperty('iconSonic.antialiasing', false)
-	scaleObject('iconSonic', 0.5, 0.5)
-	callMethod('iconSonic.setPosition', {-iconOffset + initialY, -iconOffset + (downscroll and (-initialY + (screenHeight - 75)) or (initialY + iconOffset * 2))})
-	addInstance('iconSonic')
-	makeHUDSprite('futureHealthSonic', 'healthFuture', getProperty('iconSonic.x') + iconOffset + 72 + 12, getProperty('iconSonic.y') + iconOffset + 18)
-
-	createInstance('iconFurn', 'objects.HealthIcon', {getProperty('dad.healthIcon'), false})
-	setObjectCamera('iconFurn', 'hud')
-	setProperty('iconFurn.antialiasing', false)
-	scaleObject('iconFurn', 0.5, 0.5)
-	callMethod('iconFurn.setPosition', {-iconOffset + initialY, -iconOffset + (downscroll and (-(initialY / 2) + (screenHeight - 75) - (75 + (initialY / 2))) or initialY)})
-	addInstance('iconFurn')
-	makeHUDSprite('futureHealthFurn', 'healthFuture', getProperty('iconFurn.x') + iconOffset + 72 + 12, getProperty('iconFurn.y') + iconOffset + 18)
+	setProperty('ringsText.y', downscroll and (initialY + ((getProperty('ringsText.height') * 2) + initialY)) or (screenHeight - getProperty('ringsText.height') - initialY))
+	setProperty('ringsText-alt.y', getProperty('ringsText.y'))
 
 	updateHUD()
+	updateRings()
 
 	--intro card
 
@@ -66,44 +52,26 @@ function updateHUD()
 	end
 	if #splittedScore ~= oldScore[1] then for i = 1,oldScore[1] do if i > #splittedScore and luaSpriteExists('scoreNum'..i) then removeLuaSprite('scoreNum'..i) end end end
 	oldScore[1] = #splittedScore
+end
 
-	--misses
-	local splittedMisses = splitShit(misses)
-	for i = 1,math.max(#splittedMisses, 1) do
-		local tag = 'missesNum'..i
-		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedMisses[i], 308 - ((i - 1) * 24), getProperty('missesText.y'), true) end
-		setProperty(tag..'.animation.curAnim.curFrame', splittedMisses[i])
+function updateRings()
+	local splittedRings = splitShit(getVar('rings'))
+	for i = 1,math.max(#splittedRings, 1) do
+		local tag = 'ringsNum'..i
+		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedRings[i], 308 - ((i - 1) * 24), getProperty('ringsText.y'), true) end
+		setProperty(tag..'.animation.curAnim.curFrame', splittedRings[i])
 	end
-	if #splittedMisses ~= oldScore[2] then for i = 1,oldScore[2] do if i > #splittedMisses and luaSpriteExists('missesNum'..i) then removeLuaSprite('missesNum'..i) end end end
-	oldScore[2] = #splittedMisses
+	if #splittedRings ~= oldScore[2] then for i = 1,oldScore[2] do if i > #splittedRings and luaSpriteExists('ringsNum'..i) then removeLuaSprite('ringsNum'..i) end end end
+	oldScore[2] = #splittedRings
 
-	--health player
-	local splittedHealth = splitShit(tostring(math.floor(bound(getHealth() * 50, 0, 100)))..'%', false)
-	for i = 1,math.max(#splittedHealth, 1) do
-		local tag = 'healthNum'..i
-		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealth[i], 117 + 12 + ((i - 1) * 24), getProperty('futureHealthSonic.y') + 15, true) end
-		setProperty(tag..'.animation.curAnim.curFrame', (splittedHealth[i] == '-' and 12 or (splittedHealth[i] == '%' and 13 or splittedHealth[i])))
-	end
-	if #splittedHealth ~= oldScore[3] then for i = 1,oldScore[3] do if i > #splittedHealth and luaSpriteExists('healthNum'..i) then removeLuaSprite('healthNum'..i) end end end
-	oldScore[3] = #splittedHealth
-
-	--health opp
-	local splittedHealthOpp = splitShit(tostring(math.floor(bound((2 - getHealth()) * 50, 0, 100) + 0.5))..'%', false)
-	for i = 1,math.max(#splittedHealthOpp, 1) do
-		local tag = 'health2Num'..i
-		if not luaSpriteExists(tag) then makeHUDSprite(tag, splittedHealthOpp[i], 117 + 12 + ((i - 1) * 24), getProperty('futureHealthFurn.y') + 15, true) end
-		setProperty(tag..'.animation.curAnim.curFrame', (splittedHealthOpp[i] == '-' and 12 or (splittedHealthOpp[i] == '%' and 13 or splittedHealthOpp[i])))
-	end
-	if #splittedHealthOpp ~= oldScore[4] then for i = 1,oldScore[4] do if i > #splittedHealthOpp and luaSpriteExists('health2Num'..i) then removeLuaSprite('health2Num'..i) end end end
-	oldScore[4] = #splittedHealthOpp
-
-	setProperty('iconSonic.animation.curAnim.curFrame', (getHealth() < 0.4 and 1 or 0))
-	setProperty('iconFurn.animation.curAnim.curFrame', (getHealth() > 1.6 and 1 or 0))
+	setProperty('ringsText-alt.visible', (getVar('rings') == 0 and true or false))
+	setProperty('ringsText.visible', (getVar('rings') == 0 and false or true))
 end
 
 local oldTime = ''
 function onUpdatePost()
 	if not inGameOver then
+		setHealth(2)
 		--time
 		local daTime = formatTime(bound(getSongPosition() - noteOffset, 0, songLength))
 		if oldTime ~= daTime then
@@ -139,9 +107,9 @@ function onBeatHit()
 		runTimer('endIntroCard', crochet / (1000 / 6) / playbackRate)
 	end
 
-	if misses >= 1 then
-		setProperty('missesText.visible', curBeat % 2 == 0)
-		setProperty('missesText-alt.visible', curBeat % 2 == 1)
+	if getVar('rings') == 0 then
+		setProperty('ringsText-alt.visible', curBeat % 2 == 0)
+		setProperty('ringsText.visible', curBeat % 2 == 1)
 	end
 end
 
@@ -150,7 +118,6 @@ function onEvent(n,v1)
 		if v1 == 'starvedappears' then
 			setHealth(1)
 			updateHUD()
-			callMethod('iconFurn.changeIcon', {getProperty('dad.healthIcon')})
 		end
 	end
 end
@@ -178,5 +145,3 @@ function splitShit(s, f)
 	if f then for i = #temp,1,-1 do splitted[#splitted + 1] = temp[i] end else for i = 1,#temp do splitted[#splitted + 1] = temp[i] end end
 	return splitted
 end
-
-function noteMissPress() callMethod('updateScore', {false, false}) end

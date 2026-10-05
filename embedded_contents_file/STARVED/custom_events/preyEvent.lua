@@ -12,7 +12,7 @@ function onCreatePost()
 	callMethod('gf.setPosition', {1500, -34})
 	setObjectOrder('gfGroup', getObjectOrder('bgGroup[0]') + 1)
 
-	makeLuaSprite('redbg', nil, -1180, -600)
+	makeLuaSprite('redbg', nil, -1180, -900)
 	setProperty('redbg.alpha', 0)
 	makeGraphic('redbg', screenWidth * 2, screenHeight * 4, 'FF0000')
 	addLuaSprite('redbg')

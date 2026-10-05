@@ -25,6 +25,7 @@ typedef BackgroundSprite =
 	@:optional var flip:Array<Bool>;
 	@:optional var color:FlxColor;
 	@:optional var blend:String;
+	@:optional var antialiasing:Bool;
 	@:optional var animation:Array<Dynamic>;
 	@:optional var camera:String;
 	@:optional var backdrop:Array<Dynamic>;

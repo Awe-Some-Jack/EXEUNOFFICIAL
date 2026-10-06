@@ -24,6 +24,7 @@ function onCreatePost()
 	setObjectCamera('ringTxt', 'hud')
 	addLuaText('ringTxt')
 	callMethod('ringTxt.setPosition', {getProperty('ringCounter.x') + 76, getProperty('ringCounter.y') - 6})
+	callMethod('comboGroup.setPosition', {-((screenWidth - 275) / 2), (downscroll and (-(screenHeight - 200)) or (screenHeight - 200))})
 end
 
 function usesMobileLayout()

@@ -2,8 +2,8 @@ local allowCountdown = false
 local finalCutscene = false
 local seenVideo = false
 
-function onCreatePost()
-    setProperty('camGame.visible', false) setProperty('camHUD.visible', false)
+function onCreate()
+    if not seenCutscene then setProperty('camGame.visible', false) setProperty('camHUD.visible', false) end
 end
 
 function onStartCountdown()

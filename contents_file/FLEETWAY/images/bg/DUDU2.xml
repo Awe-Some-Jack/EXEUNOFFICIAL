@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="DUDU.png">
-	<!-- Created with Adobe Animate version 24.0.10.14 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Emerald Beam Charged instancia 10000" x="40" y="40" width="741" height="1570" frameX="-126" frameY="-120" frameWidth="993" frameHeight="1810"/>
-	<SubTexture name="Emerald Beam Charged instancia 10001" x="856" y="40" width="866" height="1690" frameX="-63" frameY="-60" frameWidth="993" frameHeight="1810"/>
-	<SubTexture name="Emerald Beam Charged instancia 10002" x="1797" y="40" width="993" height="1810"/>
-</TextureAtlas>

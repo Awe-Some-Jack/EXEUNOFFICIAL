@@ -20,10 +20,10 @@ var colors = [  // Colors in order
 var colorsHex = [  // Colors in order
     0xFF00FF44,
     0xFFFFFF00,
-    0xFF0000FF,
-    0xFFFF00FF,
-    0xFF444444,
-    0xFF00FFFF,
+    0xFF2736FF,
+    0xFFFF35E4,
+    0xFFCECECE,
+    0xFF32FFFF,
     0xFFFF0000
 ];
 
@@ -40,7 +40,7 @@ var scaleMult:Float = 1;
 var velocityMult:Float = 0.5;
 var radiusMult:Float = 1;
 var LERP_VELOCITY:Float = 15;
-var INITIAL_SCALE:Float = 0.45;
+var INITIAL_SCALE:Float = 0.325;
 
 var emeraldsData:Array<EmeraldData> = [];
 
@@ -49,7 +49,7 @@ function onCreatePost()
     var guh = FlxG.random.bool(1);
     masterEmerald = new FlxSprite();
     masterEmerald.setPosition(1900, 1050);
-    masterEmerald.scale.set(0.5, 0.5);
+    masterEmerald.scale.set(0.4, 0.4);
     if(guh) 
     {
         masterEmerald.loadGraphic(Paths.image('bg/emerals/placeholder'));
@@ -127,7 +127,7 @@ function onUpdate(e:Float)
         else if(!isBehind && sine <= -0.95) // Place this emerald behind bf if its approximately the left limit
         {
             remove(emerald.sprite);
-            insert(members.indexOf(emerald.targetRef) - 1, emerald.sprite);
+            insert(members.indexOf(emerald.targetRef), emerald.sprite);
         }
         emerald.sprite.x = emerald.xOffset + emerald.target.x + circularMovement;
 

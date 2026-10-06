@@ -1,6 +1,10 @@
 package objects;
 
 import backend.animation.PsychAnimationController;
+import flixel.FlxSprite;
+import flixel.math.FlxPoint;
+import flixel.math.FlxMath;
+import flixel.FlxG;
 
 class StrumNote extends FlxSprite
 {
@@ -9,6 +13,8 @@ class StrumNote extends FlxSprite
 	public var downScroll:Bool = false;
 	public var sustainReduce:Bool = true;
 
+	public var animOffsets:Map<String, Array<Float>> = new Map<String, Array<Float>>();
+
 	/** Extra data map for Lua/HScript access. **/
 	public var extraData:Map<String, Dynamic> = new Map();
 
@@ -16,6 +22,7 @@ class StrumNote extends FlxSprite
 	private var player:Int = 0;
 
 	public var isPlayer:Bool = false;
+	public var inEditor:Bool = false;
 
 	public var texture(default, set):String = null;
 
@@ -33,7 +40,7 @@ class StrumNote extends FlxSprite
     public var shakeDuration:Float = 0;
     public var shakeIntensity:Float = 0;
 
-   private var baseOffset:FlxPoint = FlxPoint.get(0, 0);
+    private var baseOffset:FlxPoint = FlxPoint.get(0, 0);
 
 	private function set_texture(value:String):String
 	{
@@ -172,6 +179,11 @@ class StrumNote extends FlxSprite
 			playAnim(lastAnim, true);
 	}
 
+	public function addOffset(name:String, x:Float = 0, y:Float = 0):Void
+	{
+		animOffsets.set(name, [x, y]);
+	}
+
 	/** Positions this strum in the player lane. Call after construction if needed. **/
 	public function playerPosition():Void
 	{
@@ -182,46 +194,47 @@ class StrumNote extends FlxSprite
 
 	public function centerStrums():Void
 	{
-		//lol
 		x = (FlxG.width / 2) + ((100 + (5 + Note.swagWidth) * (player == 1 ? noteData : (4 - noteData))) * (player == 1 ? 1 : -1));
 	}
 
 	override function update(elapsed:Float):Void
 	{
-		if (shakeDuration != 0) 
-        {
-            if (shakeDuration > 0)
-                shakeDuration -= elapsed;
-
-            offset.x = baseOffset.x + FlxG.random.float(-shakeIntensity, shakeIntensity);
-            offset.y = baseOffset.y + FlxG.random.float(-shakeIntensity, shakeIntensity);
-
-            if (shakeDuration <= 0 && shakeDuration != -1)
-            {
-                shakeDuration = 0;
-                offset.set(baseOffset.x, baseOffset.y);
-            }
-        } 
-        else 
-        {
-            offset.x = FlxMath.lerp(offset.x, baseOffset.x, FlxMath.bound(elapsed * 12, 0, 1));
-            offset.y = FlxMath.lerp(offset.y, baseOffset.y, FlxMath.bound(elapsed * 12, 0, 1));
-        }
-
-		if (resetAnim > 0)
-		{
-			resetAnim -= elapsed;
-			if (resetAnim <= 0)
+		if (!inEditor){
+			if (shakeDuration != 0) 
 			{
-				playAnim('static');
-				resetAnim = 0;
+				if (shakeDuration > 0)
+					shakeDuration -= elapsed;
+
+				offset.x = baseOffset.x + FlxG.random.float(-shakeIntensity, shakeIntensity);
+				offset.y = baseOffset.y + FlxG.random.float(-shakeIntensity, shakeIntensity);
+
+				if (shakeDuration <= 0 && shakeDuration != -1)
+				{
+					shakeDuration = 0;
+					offset.set(baseOffset.x, baseOffset.y);
+				}
+			} 
+			else 
+			{
+				offset.x = FlxMath.lerp(offset.x, baseOffset.x, FlxMath.bound(elapsed * 12, 0, 1));
+				offset.y = FlxMath.lerp(offset.y, baseOffset.y, FlxMath.bound(elapsed * 12, 0, 1));
+			}
+
+			if (resetAnim > 0)
+			{
+				resetAnim -= elapsed;
+				if (resetAnim <= 0)
+				{
+					playAnim('static');
+					resetAnim = 0;
+				}
 			}
 		}
 		super.update(elapsed);
 
-		if (!useVSliceReceptorFeature) return;
+		if (!useVSliceReceptorFeature || inEditor) return;
 
-		 if (animation.curAnim != null && animation.curAnim.name.startsWith('confirm'))
+		if (animation.curAnim != null && animation.curAnim.name.startsWith('confirm'))
 		{
 			holdTimer += elapsed;
 		}
@@ -247,8 +260,25 @@ class StrumNote extends FlxSprite
 			if (anim == "confirm"){
 				holdTimer = 0;
 			}
-			centerOffsets();
-			centerOrigin();
+
+			if (PlayState.isPixelStage)
+			{
+				centerOffsets();
+				centerOrigin();
+			}
+			else
+			{
+				if (animOffsets.exists(anim))
+				{
+					var daOffset:Array<Float> = animOffsets.get(anim);
+					offset.set(daOffset[0], daOffset[1]);
+				}
+				else
+				{
+					centerOffsets();
+					centerOrigin();
+				}
+			}
 
 			baseOffset.set(offset.x, offset.y);
 		}

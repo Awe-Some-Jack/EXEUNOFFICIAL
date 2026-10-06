@@ -1983,6 +1983,24 @@ class PlayState extends MusicBeatState
 
 			babyArrow.y = (ClientPrefs.data.downScroll ? (FlxG.height - babyArrow.height - 50) : 50);
 			babyArrow.centerStrums();
+			switch(i){
+				case 0: 
+					babyArrow.addOffset('static', 24.5, 22.3051948051948);
+					babyArrow.addOffset('pressed', 24.5, 22.3051948051948);
+					babyArrow.addOffset('confirm', 24.5 + 22.8, 22.3051948051948 + 23.4);
+				case 1:
+					babyArrow.addOffset('static', 23.5, 23.8051948051948);
+					babyArrow.addOffset('pressed', 23.5, 23.8051948051948+0.9);
+					babyArrow.addOffset('confirm', 23.5 + 22.6, 23.8051948051948 + 23.6);
+				case 2:
+					babyArrow.addOffset('static', 23.5, 23.8051948051948);
+					babyArrow.addOffset('pressed', 23.5, 23.8051948051948);
+					babyArrow.addOffset('confirm', 23.5 + 24.1, 23.8051948051948 + 23.4);
+				case 3:
+					babyArrow.addOffset('static', 24.5, 22.8051948051948);
+					babyArrow.addOffset('pressed', 24.5+0.1, 22.8051948051948);
+					babyArrow.addOffset('confirm', 24.5 + 21.4, 22.8051948051948 + 20.4);
+			}
 			if(ClientPrefs.data.middleScroll)
 			{
 				if (player == 1) babyArrow.x = (FlxG.width / 2) + ((5 + babyArrow.width) * (i - 2) + (5 / 2));

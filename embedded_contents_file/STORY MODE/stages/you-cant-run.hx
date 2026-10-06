@@ -279,7 +279,7 @@ function onStepHit()
 	}
 
 	final offset = (curStep - 1184) % 32;
-	if (curStep >= 1192 && curStep <= 1418 && (offset == 8 || offset == 11)) spinStrums();
+	if (curStep >= 1192 && curStep <= 1418 && (offset == 8 || offset == 12)) spinStrums();
 
 	if (curStep == 1439 ) FlxTween.tween(camHUD, {alpha: 0}, 0.6/game.playbackRate);
 }
@@ -310,17 +310,28 @@ function reloadNotes()
 {
 	if (game.strumLineNotes != null)
 		for (note in game.strumLineNotes.members)
-			if (note != null) note.reloadNote();
+			if (note != null)
+				{
+					note.reloadNote();
+					note.antialiasing = (PlayState.stageUI == 'pixel' ? false : true);
+				}
 
 	if (game.unspawnNotes != null)
 		for (note in game.unspawnNotes)
 			if (note != null)
 				if (note.noteType == '')
+				{
 					note.reloadNote();
+					note.antialiasing = (PlayState.stageUI == 'pixel' ? false : true);
+				}
 
 	if (game.notes != null)
 		for (note in game.notes.members)
-			if (note != null && note.noteType == '') note.reloadNote();
+			if (note != null && note.noteType == '')
+				{
+					note.antialiasing = (PlayState.stageUI == 'pixel' ? false : true);
+					note.reloadNote();
+				}
 }
 
 function opponentNoteHit()

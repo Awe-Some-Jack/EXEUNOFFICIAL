@@ -10,7 +10,7 @@ local curStringText = ''
 
 function onCreate() 
 	-- preloading this thing bruh
-	playSound("DIGA-BYE-BYE", 0.00000000001, "yes")
+	precacheSound("DIGA-BYE-BYE")
 end
 
 function onEvent(e, v1, v2)

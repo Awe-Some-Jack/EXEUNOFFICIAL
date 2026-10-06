@@ -111,7 +111,7 @@ class WeekData {
                         }
                         #end
 
-                        if(weekFile != null) {
+                        if(weekFile != null && (!isStoryMode && !weekFile.hideFreeplay)) {
                             weeksLoaded.set(sexList[i], weekFile);
                             weeksList.push(sexList[i]);
                         }
@@ -163,8 +163,11 @@ class WeekData {
                     weekFile.folder = directory.substring(Paths.mods().length, directory.length-1);
                     #end
                 }
-                weeksLoaded.set(weekToCheck, weekFile);
-                weeksList.push(weekToCheck);
+                if(!PlayState.isStoryMode && !weekFile.hideFreeplay)
+                {
+                    weeksLoaded.set(weekToCheck, weekFile);
+                    weeksList.push(weekToCheck);
+                }
             }
         }
     }

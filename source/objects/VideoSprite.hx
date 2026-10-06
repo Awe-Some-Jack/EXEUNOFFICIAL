@@ -46,29 +46,26 @@ class VideoSprite extends FlxSpriteGroup
 	private var wasPlayingBeforeFocusLost:Bool = false;
 	private var _shouldBePlaying:Bool = false;
 
-	public var playStateSrc:Bool = false;
-
 	#if switch
 	var _endCallbacks:Array<Void->Void> = [];
 	var _formatCallbacks:Array<Void->Void> = [];
 	#end
 
-	public function new(x:Float = 0, y:Float = 0, autoDestroy:Bool = true, ?playStateSrc:Bool = false)
+	public function new(x:Float = 0, y:Float = 0, autoDestroy:Bool = true)
 	{
 		super(x, y);
 
 		autoDestroyOnComplete = autoDestroy;
-		this.playStateSrc = playStateSrc;
 
 		#if switch
 		video = new SwitchVideo();
 		video.setPosition(0, 0);
-		video.onEndReached = function():Void
+		video.onEndReached = () ->
 		{
 			for (cb in _endCallbacks)
 				cb();
 		};
-		video.onFormatSetup = function():Void
+		video.onFormatSetup = () ->
 		{
 			for (cb in _formatCallbacks)
 				cb();
@@ -121,7 +118,7 @@ class VideoSprite extends FlxSpriteGroup
 
 		try
 		{
-			var loadArgs:Array<String> = args != null ? args.copy() : [];
+			var loadArgs:Array<String> = args?.copy() ?? [];
 
 			#if switch
 			var wantsLoop:Bool = loadArgs.remove(ARG_LOOPING);
@@ -132,7 +129,7 @@ class VideoSprite extends FlxSpriteGroup
 
 			var success = video.load(videoPath, wantsLoop ? ['input-repeat=65545'] : null);
 
-			if (success && args != null && args.contains(ARG_MUTED))
+			if (success && args?.contains(ARG_MUTED))
 				video.setVolume(0);
 			#else
 			if (!loadArgs.contains(ARG_HW_ACCEL))
@@ -169,7 +166,7 @@ class VideoSprite extends FlxSpriteGroup
 
 		#if FLX_PITCH
 		if (video.bitmap != null)
-			video.bitmap.rate = PlayState.instance != null ? PlayState.instance.playbackRate : 1.0;
+			video.bitmap.rate = PlayState.instance?.playbackRate ?? 1.0;
 		#end
 	}
 
@@ -243,20 +240,19 @@ class VideoSprite extends FlxSpriteGroup
 			video.time = Std.int(time);
 		#else
 		if (video.bitmap != null)
-			video.bitmap.time = haxe.Int64.fromFloat(time * 1000);
+			video.bitmap.time = haxe.Int64.fromFloat(time);
 		#end
 	}
 
 	public function getTime():Float
 	{
 		#if switch
-		return video != null ? video.time : 0;
+		return video?.time ?? 0;
 		#else
 		if (video.bitmap != null)
 		{
 			final time64 = video.bitmap.time;
-			final microSeconds:Float = (time64.high * 4294967296.0) + time64.low;
-			return microSeconds / 1000;
+			return (time64.high * 4294967296.0) + time64.low;
 		}
 
 		return 0;
@@ -286,9 +282,9 @@ class VideoSprite extends FlxSpriteGroup
 
 	public function getVideoPercent():Float
 		#if switch
-		return video != null ? video.position : 0;
+		return video?.position ?? 0;
 		#else
-		return video.bitmap != null ? video.bitmap.position : 0;
+		return video.bitmap?.position ?? 0;
 		#end
 
 	public function seekToMs(ms:Float):Void
@@ -308,20 +304,17 @@ class VideoSprite extends FlxSpriteGroup
 		#else
 		if (video.bitmap == null) return;
 
-		final durationMicro = video.bitmap.length;
-
-		if (haxe.Int64.compare(durationMicro, haxe.Int64.ofInt(0)) <= 0)
+		final durationMs = video.bitmap.length;
+		if (haxe.Int64.compare(durationMs, haxe.Int64.ofInt(0)) <= 0)
 		{
 			setTime(ms);
 			return;
 		}
 
-		final targetMicro = haxe.Int64.fromFloat(ms * 1000);
-		final durationFloat = haxe.Int64.toInt(durationMicro);
-		final targetFloat = haxe.Int64.toInt(targetMicro);
+		final durFloat = (durationMs.high * 4294967296.0) + durationMs.low;
 
-		if (durationFloat > 0)
-			setVideoPercent(targetFloat / durationFloat);
+		if (durFloat > 0)
+			setVideoPercent(ms / durFloat);
 		#end
 	}
 
@@ -330,9 +323,9 @@ class VideoSprite extends FlxSpriteGroup
 
 	public function isPlaying():Bool
 		#if switch
-		return video != null && video.isPlaying;
+		return video?.isPlaying;
 		#else
-		return video.bitmap != null && video.bitmap.isPlaying;
+		return video.bitmap?.isPlaying;
 		#end
 
 	private function setupEventListeners():Void
@@ -374,7 +367,7 @@ class VideoSprite extends FlxSpriteGroup
 
 	private function onFocusGained():Void
 	{
-		if ((playStateSrc && !PlayState.instance.paused) && FlxG.autoPause && wasPlayingBeforeFocusLost)
+		if (PlayState.instance != null && !PlayState.instance.paused && FlxG.autoPause && wasPlayingBeforeFocusLost)
 		{
 			#if switch
 			video?.resume();
@@ -388,11 +381,8 @@ class VideoSprite extends FlxSpriteGroup
 	{
 		super.update(elapsed);
 
-		#if switch
-		#if FLX_SOUND_SYSTEM
-		if (video != null)
-			video.setVolume((FlxG.sound.muted ? 0 : 1) * FlxG.sound.volume);
-		#end
+		#if (switch && FLX_SOUND_SYSTEM)
+		video?.setVolume((FlxG.sound.muted ? 0 : 1) * FlxG.sound.volume);
 		#end
 
 		if (canSkip)
@@ -400,10 +390,11 @@ class VideoSprite extends FlxSpriteGroup
 			pieTrack.visible = true;
 			pieTrack.alpha = 0.35;
 
-			if ((FlxG.keys.pressed.SPACE || #if mobile PlayState.instance.pressHolding #else false #end) && skipKeyReleasedOnce)
+			if ((FlxG.keys.pressed.SPACE #if mobile || PlayState.instance?.pressHolding #end) && skipKeyReleasedOnce)
 			{
 				skipHold += elapsed;
-				var progress:Float = skipHold / skipNeed;
+
+				final progress:Float = skipHold / skipNeed;
 				pie.scale.set(SKIP_RING_SCALE * progress, SKIP_RING_SCALE * progress);
 				pie.alpha = FlxMath.remapToRange(progress, 0.025, 1, 0, 1);
 
@@ -422,7 +413,7 @@ class VideoSprite extends FlxSpriteGroup
 			}
 			else
 			{
-				if (!FlxG.keys.pressed.SPACE && !(#if mobile PlayState.instance.pressHolding #else false #end))
+				if (!FlxG.keys.pressed.SPACE #if mobile && PlayState.instance != null && !PlayState.instance.pressHolding #end)
 					skipKeyReleasedOnce = true;
 
 				skipHold = 0;
@@ -453,7 +444,7 @@ class VideoSprite extends FlxSpriteGroup
 			video.stop();
 		}
 		#else
-		if (video != null && video.bitmap != null)
+		if (video?.bitmap != null)
 		{
 			video.bitmap.onEndReached.removeAll();
 			video.bitmap.onOpening.removeAll();

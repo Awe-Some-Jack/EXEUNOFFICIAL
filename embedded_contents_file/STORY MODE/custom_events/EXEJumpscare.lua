@@ -21,12 +21,24 @@ end
 function onEvent(lol)
     if not isScaringYou then
         if lol == "EXEJumpscare" then
-            isScaringYou = true
-
-            setProperty('jumpscare.alpha', 1)
-            playAnim('jumpscare', 'aidel', true)
-            playSound('jumpscareSound')
+            runTimer('freeze', stepCrochet / (1000 / 13))
+            setProperty('cameraSpeed', 0)
+            setProperty('camZoomingMult', 0)
+            setProperty('camZoomingDecay', 0)
+            runHaxeCode("camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = false;")
         end
+    end
+end
+
+function onTimerCompleted(t)
+    if t == 'freeze' then
+        isScaringYou = true
+
+        setProperty('jumpscare.alpha', 1)
+        playAnim('jumpscare', 'aidel', true)
+        playSound('jumpscareSound')
+        setProperty('cameraSpeed', 1)
+        runHaxeCode("camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = true;")
     end
 end
 
@@ -34,6 +46,8 @@ function onUpdate(elapsed)
     if isScaringYou then
         if getProperty('jumpscare.animation.curAnim.finished') then
             setProperty('jumpscare.alpha', 0)
+            setProperty('camZoomingMult', 1)
+            setProperty('camZoomingDecay', 1)
             isScaringYou = false
         end
     end

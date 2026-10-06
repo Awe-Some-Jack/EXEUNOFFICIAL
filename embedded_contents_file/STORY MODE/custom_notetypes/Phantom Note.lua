@@ -27,6 +27,7 @@ end
 
 function goodNoteHit(id,nd,nt,isn)
 	if not isn and nt == 'Phantom Note' then
+		playSound('phantom', 0.35)
 		healthDrop = healthDrop + 0.00025
 		dropTime = 10
 	end

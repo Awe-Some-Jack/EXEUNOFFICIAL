@@ -30,9 +30,8 @@ function onEvent(n,v1,v2)
 		if v1 == 'destroyday' then --NOOO its not longer the best day
 			cancelTween('sdasdfas') 
 
-			if getProperty('bestday') == nil then return end
-			callMethod('bestday.destroy')
     		callMethod('remove', {instanceArg('bestday')})
+			callMethod('bestday.destroy')
 		end
 		if v1 == 'gato' then doTweenAlpha('gato', 'gato', 1, crochet / 1000) end
 		if v1 == 'disk' then

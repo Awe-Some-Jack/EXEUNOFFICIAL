@@ -1078,8 +1078,6 @@ class PlayState extends MusicBeatState
 		if(eventNotes.length < 1) checkEventNote();
 
 		PauseSubState.cameraWidth = FlxG.width;
-
-		trace("Freeze Sync Delay: " + enableFreezeSync);
 	}
 
 	function set_songSpeed(value:Float):Float

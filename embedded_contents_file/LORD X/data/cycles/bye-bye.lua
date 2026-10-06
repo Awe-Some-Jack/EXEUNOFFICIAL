@@ -8,12 +8,16 @@ addHaxeLibrary('EXEAchievements', "backend.EXEAchievements")
 local curText = {}
 local curStringText = ''
 
+function onCreate(){
+	-- preloading this thing bruh
+	playSound("DIGA-BYE-BYE", 0.00000000001, "yes")
+}
 
 function onEvent(e, v1, v2)
     if e == "triggerByeByeChance" then
         if byeByeActivated then
             setProperty("opponentVocals.volume", 0)
-            playSound("DIGA-BYE-BYE", 1, "yes")
+            playSound("DIGA-BYE-BYE", 0.7, "yes")
             runTimer("setVocalsBack", 8)
 			triggerEvent('Play Animation', 'mispulmones', 'dad')
 

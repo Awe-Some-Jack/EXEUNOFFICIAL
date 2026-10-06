@@ -786,7 +786,11 @@ class ModsMenuState extends MusicBeatState
 		}
 
 		var path:String = 'contentsList.dat';
-		File.saveContent(path, fileStr);
+		try {
+			File.saveContent(path, fileStr);
+		} catch(e) {
+			trace(e);
+		}
 		Mods.parseList();
 		Mods.loadTopMod();
 	}

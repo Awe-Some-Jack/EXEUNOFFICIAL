@@ -274,7 +274,11 @@ class Mods
 		/*#if mobile
 		File.saveBytes('contentsList.dat', Assets.getBytes('contentsList.dat'));
 		#else*/
-		File.saveContent(#if mobile MobileUtil.getDirectory() + #end 'contentsList.dat', fileStr);
+		try {
+			File.saveContent(#if mobile MobileUtil.getDirectory() + #end 'contentsList.dat', fileStr);
+		} catch(e) {
+			trace(e);
+		}
 		//#end
 
 		updatedOnState = true;

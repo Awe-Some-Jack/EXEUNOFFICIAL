@@ -738,7 +738,6 @@ class Project extends HXProject
                 postBuildCallbacks.push(new CLICommand("mkdir", ["-p", binDir]));
                 postBuildCallbacks.push(new CLICommand("cp", ["-Rf", srcDir + "/.", binDir]));
                 postBuildCallbacks.push(new CLICommand("find", [binDir, "-type", "f", "-name", "*-mac", "-exec", "chmod", "+x", "{}", "+"]));
-                postBuildCallbacks.push(new CLICommand("codesign", ["--force", "--deep", "-s", "-", appDir]));
             }
             else if (isSwitch())
             {
@@ -760,6 +759,14 @@ class Project extends HXProject
                     postBuildCallbacks.push(new CLICommand("cp", ["-Rf", srcDir + "/.", binDir]));
                 }
             }
+        }
+
+        if (isMac())
+        {
+            var appDir = haxe.io.Path.normalize(Sys.getCwd() + "/" + buildDir + "/macos/bin/" + EXECUTABLE + ".app");
+
+            postBuildCallbacks.push(new CLICommand("python3", [haxe.io.Path.normalize(Sys.getCwd() + "/devUtils/bundle_mac_dylibs.py"), appDir]));
+            postBuildCallbacks.push(new CLICommand("codesign", ["--force", "--deep", "-s", "-", appDir]));
         }
 
         if (isAndroid())

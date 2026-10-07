@@ -266,7 +266,7 @@ class Project extends HXProject
         }
 
         if (DISCORD_ALLOWED.isEnabled(this))
-            haxelibs.push(new Haxelib("hxdiscord_rpc", "1.2.4"));
+            haxelibs.push(new Haxelib("hxdiscord_rpc"));
 
         if (debug)
             haxelibs.push(new Haxelib("hxcpp-debug-server"));

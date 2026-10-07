@@ -54,8 +54,9 @@ var bgCarnival:Array<BackgroundSprite> = [
 final hbvanilla:Array<String> = ['hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG'];
 final hudSprites:Array<String> = ['iconBF', 'iconOpp', 'exeScoreTxt'];
 
-var introCutscene:hxvlc.flixel.FlxVideoSprite;
-var YWGA:hxvlc.flixel.FlxVideoSprite;
+var introCutscene:VideoSprite;
+var YWGA:VideoSprite;
+
 final game:PlayState = PlayState.instance;
 final prefs = ClientPrefs.data;
 final cam = game.gameplayCam.settings;
@@ -113,6 +114,7 @@ function onCreate()
 		camHUD.visible = false;
 		camOther.flash(0xFFFFFFFF, Conductor.crochet / 500, null, true);
 	});
+	YWGA.precacheVideo(Paths.video('you know'));
 	YWGA.camera = camVideo;
 	game.add(YWGA);
 
@@ -325,8 +327,6 @@ function onGameOverStart()  {
 	introCutscene?.destroy(); 
 	YWGA?.destroy(); 
 }
-function onPause() { introCutscene?.pause(); YWGA?.pause(); }
-function onResume() { introCutscene?.resume(); YWGA?.resume(); }
 
 var inFront:Bool = true;
 var floatSine:Float = 0;

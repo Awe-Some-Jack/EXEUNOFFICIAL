@@ -46,6 +46,8 @@ class VideoSprite extends FlxSpriteGroup
 
 	public var onSkip:Void->Void = null;
 
+	public var initialConductTime:Float = 0;
+
 	private var wasPlayingBeforeFocusLost:Bool = false;
 	private var _shouldBePlaying:Bool = false;
 
@@ -55,6 +57,8 @@ class VideoSprite extends FlxSpriteGroup
 	var _endCallbacks:Array<Void->Void> = [];
 	var _formatCallbacks:Array<Void->Void> = [];
 	#end
+
+	
 
 	public function new(x:Float = 0, y:Float = 0, autoDestroy:Bool = true)
 	{
@@ -117,6 +121,7 @@ class VideoSprite extends FlxSpriteGroup
 	{
 		if (videoPath == null || videoPath == "")
 		{
+			trace("Video path is empty!");
 			return false;
 		}
 
@@ -168,6 +173,7 @@ class VideoSprite extends FlxSpriteGroup
 	{
 		if (videoPath == null || videoPath == "")
 		{
+			trace("Video path is empty!");
 			return false;
 		}
 
@@ -190,8 +196,15 @@ class VideoSprite extends FlxSpriteGroup
 		}
 		catch (e:Dynamic)
 		{
+			trace('Exception occurred while precaching video: $e | Path: $videoPath');
 			return false;
 		}
+	}
+
+	override public function setGraphicSize(width:Float = 0, height:Float = 0):Void
+	{
+		video.setGraphicSize(width, height);
+		video.updateHitbox();
 	}
 
 	public function playDelayed(delay:Float = 0):Void
@@ -203,36 +216,29 @@ class VideoSprite extends FlxSpriteGroup
 		else
 			new FlxTimer().start(delay, _ -> play());
 
-		#if FLX_PITCH
-		#if !switch
+		#if (FLX_PITCH && !switch)
 		if (video.bitmap != null)
 			video.bitmap.rate = PlayState.instance?.playbackRate ?? 1.0;
-		#end
 		#end
 	}
 
 	public inline function play():Void
 	{
 		_shouldBePlaying = true;
+		initialConductTime = Conductor.songPosition;
 		video.play();
 	}
 
-	override public function setGraphicSize(width:Float = 0, height:Float = 0):Void
-	{
-		video.setGraphicSize(width, height);
-		video.updateHitbox();
-	}
-
 	public inline function pause():Void
-		#if switch video?.pause(); #else video.bitmap?.pause(); #end
+		video?.pause();
 
 	public inline function resume():Void
-		#if switch video?.resume(); #else video.bitmap?.resume(); #end
+		video?.resume();
 
 	public inline function stop():Void
 	{
 		_shouldBePlaying = false;
-		#if switch video?.stop(); #else video.bitmap?.stop(); #end
+		video?.stop();
 	}
 
 	public function onComplete(callback:Void->Void):VideoSprite
@@ -308,7 +314,7 @@ class VideoSprite extends FlxSpriteGroup
 			video.position = Math.max(0, Math.min(1, percent));
 
 			if (!video.isPlaying)
-				video.play();
+				play();
 		}
 		#else
 		if (video.bitmap != null)
@@ -316,7 +322,7 @@ class VideoSprite extends FlxSpriteGroup
 			video.bitmap.position = Math.max(0, Math.min(1, percent));
 
 			if (!video.bitmap.isPlaying)
-				video.play();
+				play();
 		}
 		#end
 	}
@@ -398,11 +404,7 @@ class VideoSprite extends FlxSpriteGroup
 		if (FlxG.autoPause)
 		{
 			wasPlayingBeforeFocusLost = isPlaying() || _shouldBePlaying;
-			#if switch
-			video?.pause();
-			#else
-			video.bitmap?.pause();
-			#end
+			pause();
 		}
 	}
 
@@ -410,11 +412,7 @@ class VideoSprite extends FlxSpriteGroup
 	{
 		if (PlayState.instance != null && !PlayState.instance.paused && FlxG.autoPause && wasPlayingBeforeFocusLost)
 		{
-			#if switch
-			video?.resume();
-			#else
-			video.bitmap?.play(); // sure???????'
-			#end
+			resume(); // sure???????'
 		}
 	}
 
@@ -427,9 +425,9 @@ class VideoSprite extends FlxSpriteGroup
 		#end
 
 		final isGamePaused:Bool = PlayState.instance?.paused ?? true;
-		if (isPlaying() && !isGamePaused)
+		if (isPlaying() && !isGamePaused && ClientPrefs.data?.freezeSyncDelay)
 		{
-			final targetTime:Float = Conductor.songPosition - Conductor.offset;
+			final targetTime:Float = Conductor.songPosition - Conductor.offset - initialConductTime;
 			if (targetTime >= 0)
 			{
 				final drift:Float = Math.abs(getTime() - targetTime);
@@ -456,11 +454,7 @@ class VideoSprite extends FlxSpriteGroup
 					if (onSkip != null)
 						onSkip();
 
-					#if switch
-					video?.stop();
-					#else
-					video.bitmap?.stop();
-					#end
+					stop();
 					destroy();
 				}
 			}
@@ -494,7 +488,7 @@ class VideoSprite extends FlxSpriteGroup
 				FlxG.signals.focusLost.remove(onFocusLost);
 			}
 
-			video.stop();
+			stop();
 		}
 		#else
 		if (video?.bitmap != null)
@@ -509,7 +503,7 @@ class VideoSprite extends FlxSpriteGroup
 				FlxG.signals.focusLost.remove(onFocusLost);
 			}
 
-			video.bitmap.stop();
+			stop();
 		}
 		#end
 

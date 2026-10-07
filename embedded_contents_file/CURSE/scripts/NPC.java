@@ -7,10 +7,19 @@ public class NPC {
     public NPC (String[] args){
         System.out.println("NPC "+tag);
         switch (curState) {
-            case "":
-                
+            case "DANCE":
                 break;
-        
+            case "STATIC":
+                break;
+            case "ACTION":
+                switch (tag){
+                    case "abuelita":
+                        System.out.println("abuelita gruñonaaa");
+                        break;
+                    case "reportera":
+                        System.out.println("entrevistando hmmmm");
+                }
+                break;
             default:
                 break;
         }

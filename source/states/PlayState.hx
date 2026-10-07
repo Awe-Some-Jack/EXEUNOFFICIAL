@@ -1111,7 +1111,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 		playbackRate = value;
-		FlxG.animationTimeScale = value;
+		FlxG.timeScale = value;
 		Conductor.offset = Reflect.hasField(PlayState.SONG, 'offset') ? (PlayState.SONG.offset / value) : 0;
 		Conductor.safeZoneOffset = (ClientPrefs.data.safeFrames / 60) * 1000 * value;
 		#if VIDEOS_ALLOWED
@@ -2689,7 +2689,7 @@ class PlayState extends MusicBeatState
 			if(ret != LuaUtils.Function_Stop)
 			{
 				EXEAchievements.achieveGameOver(SONG.song);
-				FlxG.animationTimeScale = 1;
+				FlxG.timeScale = 1;
 				boyfriend.stunned = true;
 				deathCounter++;
 
@@ -4284,7 +4284,7 @@ class PlayState extends MusicBeatState
 		FlxG.camera.filters = [];
 
 		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
-		FlxG.animationTimeScale = 1;
+		FlxG.timeScale = 1;
 
 		backend.NoteTypesConfig.clearNoteTypesData();
 

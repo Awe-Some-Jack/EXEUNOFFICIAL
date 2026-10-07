@@ -1240,7 +1240,7 @@ class PlayState extends MusicBeatState
 			#if switch
 			final hasFrame = videoCutscene.video != null;
 			#else
-			final hasFrame = videoCutscene.video.bitmap != null && videoCutscene.video.bitmap.bitmapData != null;
+			final hasFrame = videoCutscene.video.bitmap?.bitmapData != null;
 			#end
 			if (hasFrame)
 			{

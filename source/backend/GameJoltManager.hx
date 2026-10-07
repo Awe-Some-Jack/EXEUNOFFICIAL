@@ -304,7 +304,7 @@ class GameJoltManager
         if (SONGS_SCOREBOARD_MAP.exists(formattedSong))
         {
             final tableId:Int = SONGS_SCOREBOARD_MAP.get(formattedSong);
-            final scoreText:String = formatNumber(score) + " SCR";
+            final scoreText:String = formatNumber(score) + " Song HighScore";
 
 			submitScore(scoreText, score, tableId, "", "", function(success:Bool)
             {
@@ -345,7 +345,7 @@ class GameJoltManager
 
 		if (totalScore > 0)
 		{
-			final scoreText:String = formatNumber(totalScore) + " SCR";
+			final scoreText:String = formatNumber(totalScore) + " Total HighScores";
 			
 			submitScore(scoreText, totalScore, TotalScoreTableID, "", "", function(success:Bool)
 			{
@@ -358,7 +358,7 @@ class GameJoltManager
 		}
 	}
 
-	public static function formatNumber(num:Int):String {
+	static function formatNumber(num:Int):String {
 		var str = Std.string(num);
 		var result = "";
 		var len = str.length;

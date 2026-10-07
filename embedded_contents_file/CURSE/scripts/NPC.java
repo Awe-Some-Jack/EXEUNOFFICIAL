@@ -4,7 +4,7 @@ public class NPC {
     public int beatProgress = -1;
     public String curState = "DANCE";
     public double animTimer = 2;
-    public NPC (String[] args){
+    public NPC (String tag, int dancePerBeats){
         System.out.println("NPC "+tag);
         switch (curState) {
             case "DANCE":

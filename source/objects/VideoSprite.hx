@@ -7,6 +7,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import flixel.math.FlxMath;
 
 #if switch
 import switchvideo.SwitchVideo;
@@ -19,6 +20,8 @@ class VideoSprite extends FlxSpriteGroup
 	public static final ARG_LOOPING:String = ':input-repeat=2147483647';
 	public static final ARG_MUTED:String = ':no-audio';
 	public static final ARG_HW_ACCEL:String = ':avcodec-hw=any';
+	public static final ARG_DROP_LATE:String = ':drop-late-frames';
+    public static final ARG_SKIP_FRAMES:String = ':skip-frames';
 
 	#if switch
 	public var video:SwitchVideo;
@@ -35,16 +38,18 @@ class VideoSprite extends FlxSpriteGroup
 	public var pie:FlxSprite;
 	public var pieTrack:FlxSprite;
 
-	var skipKeyReleasedOnce:Bool = false;
-
 	private static final SKIP_RING_SCALE:Float = 0.35;
 	private static final SKIP_RING_MARGIN_X:Float = 24;
 	private static final SKIP_RING_MARGIN_Y:Float = 70;
+
+	private var syncLeniency:Float = 600.0;
 
 	public var onSkip:Void->Void = null;
 
 	private var wasPlayingBeforeFocusLost:Bool = false;
 	private var _shouldBePlaying:Bool = false;
+
+	private var skipKeyReleasedOnce:Bool = false;
 
 	#if switch
 	var _endCallbacks:Array<Void->Void> = [];
@@ -112,7 +117,6 @@ class VideoSprite extends FlxSpriteGroup
 	{
 		if (videoPath == null || videoPath == "")
 		{
-			trace("Video path is empty!");
 			return false;
 		}
 
@@ -121,22 +125,27 @@ class VideoSprite extends FlxSpriteGroup
 			var loadArgs:Array<String> = args?.copy() ?? [];
 
 			#if switch
-			var wantsLoop:Bool = loadArgs.remove(ARG_LOOPING);
+			final wantsLoop:Bool = loadArgs.remove(ARG_LOOPING);
 			loadArgs.remove(ARG_MUTED);
 			loadArgs.remove(ARG_HW_ACCEL);
+			loadArgs.remove(ARG_DROP_LATE);
+			loadArgs.remove(ARG_SKIP_FRAMES);
+
 			if (wantsLoop)
 				video.setLooping(true);
 
-			var success = video.load(videoPath, wantsLoop ? ['input-repeat=65545'] : null);
-
+			final success = video.load(videoPath, wantsLoop ? ['input-repeat=65545'] : null);
 			if (success && args?.contains(ARG_MUTED))
 				video.setVolume(0);
 			#else
 			if (!loadArgs.contains(ARG_HW_ACCEL))
 				loadArgs.push(ARG_HW_ACCEL);
+			if (!loadArgs.contains(ARG_DROP_LATE))
+				loadArgs.push(ARG_DROP_LATE);
+			if (!loadArgs.contains(ARG_SKIP_FRAMES))
+				loadArgs.push(ARG_SKIP_FRAMES);
 
-			var success = video.load(videoPath, loadArgs);
-
+			final success = video.load(videoPath, loadArgs);
 			if (success)
 			{
 				#if FLX_PITCH
@@ -155,6 +164,36 @@ class VideoSprite extends FlxSpriteGroup
 		}
 	}
 
+	public function precacheVideo(videoPath:String, ?args:Array<String>):Bool
+	{
+		if (videoPath == null || videoPath == "")
+		{
+			return false;
+		}
+
+		try
+		{
+			var loadArgs:Array<String> = args?.copy() ?? [];
+
+			#if switch
+			return true;
+			#else
+			if (!loadArgs.contains(ARG_HW_ACCEL))
+				loadArgs.push(ARG_HW_ACCEL);
+			if (!loadArgs.contains(ARG_DROP_LATE))
+				loadArgs.push(ARG_DROP_LATE);
+			if (!loadArgs.contains(ARG_SKIP_FRAMES))
+				loadArgs.push(ARG_SKIP_FRAMES);
+
+			return video.precache(videoPath, loadArgs);
+			#end
+		}
+		catch (e:Dynamic)
+		{
+			return false;
+		}
+	}
+
 	public function playDelayed(delay:Float = 0):Void
 	{
 		_shouldBePlaying = true;
@@ -165,21 +204,17 @@ class VideoSprite extends FlxSpriteGroup
 			new FlxTimer().start(delay, _ -> video.play());
 
 		#if FLX_PITCH
+		#if !switch
 		if (video.bitmap != null)
 			video.bitmap.rate = PlayState.instance?.playbackRate ?? 1.0;
 		#end
+		#end
 	}
 
-    override public function setGraphicSize(width:Float = 0, height:Float = 0):Void
-    {
-        video.setGraphicSize(width, height);
-        video.updateHitbox();
-    }
-
-	public inline function play():Void
+	override public function setGraphicSize(width:Float = 0, height:Float = 0):Void
 	{
-		_shouldBePlaying = true;
-		video.play();
+		video.setGraphicSize(width, height);
+		video.updateHitbox();
 	}
 
 	public inline function pause():Void
@@ -275,7 +310,7 @@ class VideoSprite extends FlxSpriteGroup
 			video.bitmap.position = Math.max(0, Math.min(1, percent));
 
 			if (!video.bitmap.isPlaying)
-				video.bitmap.play();
+				video.play();
 		}
 		#end
 	}
@@ -384,6 +419,18 @@ class VideoSprite extends FlxSpriteGroup
 		#if (switch && FLX_SOUND_SYSTEM)
 		video?.setVolume((FlxG.sound.muted ? 0 : 1) * FlxG.sound.volume);
 		#end
+
+		final isGamePaused:Bool = PlayState.instance?.paused ?? true;
+		if (isPlaying() && !isGamePaused)
+		{
+			final targetTime:Float = Conductor.songPosition - Conductor.offset;
+			if (targetTime >= 0)
+			{
+				final drift:Float = Math.abs(getTime() - targetTime);
+				if (drift > syncLeniency)
+					setTime(targetTime);
+			}
+		}
 
 		if (canSkip)
 		{

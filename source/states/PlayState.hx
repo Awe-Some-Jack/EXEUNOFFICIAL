@@ -1204,7 +1204,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public var videoCutscene:VideoSprite = null;
-	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = true)
+	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = false)
 	{
 		function endVideo()
 		{
@@ -1228,7 +1228,6 @@ class PlayState extends MusicBeatState
 		}
 
 		videoCutscene = new VideoSprite(0, 0, true);
-		videoCutscene.antialiasing = videoCutscene.video.antialiasing = ClientPrefs.data.antialiasing;
 		videoCutscene.camera = camVideo;
 		videoCutscene.canSkip = canSkip;
 		add(videoCutscene);
@@ -1262,16 +1261,21 @@ class PlayState extends MusicBeatState
 			}
 		});
 
-		if(videoCutscene.loadVideo(filePath, loop ? [VideoSprite.ARG_LOOPING] : [])) {
-			videoCutscene.playDelayed();
-		} else {
-			FlxG.log.warn('Failed to load video: $name');
-			if(!forMidSong) startAndEnd();
-		}
-
-		if(!playOnLoad) {
-			videoCutscene.play();
-			videoCutscene.stop();
+		final loadArgs:Array<String> = loop ? [VideoSprite.ARG_LOOPING] : [];
+		if (playOnLoad) 
+		{
+			if(videoCutscene.loadVideo(filePath, loadArgs)) {
+				videoCutscene.playDelayed();
+			} else {
+				FlxG.log.warn('Failed to load video: $name');
+				if(!forMidSong) startAndEnd();
+			}
+		} 
+		else 
+		{
+			if (!videoCutscene.precacheVideo(filePath, loadArgs)) {
+				FlxG.log.warn('Failed to precache video: $name');
+			}
 		}
 		#else
 		FlxG.log.warn('Platform not supported!');

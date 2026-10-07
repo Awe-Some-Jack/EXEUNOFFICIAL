@@ -755,7 +755,7 @@ class FunkinLua
 			return spr != null ? spr.pixels.getPixel32(x, y) : FlxColor.BLACK;
 		});
 
-		LuaUtilsHx.addFunction(lua, 'startVideo', function(videoFile:String, canSkip:Bool = true, forMidSong:Bool = false, shouldLoop:Bool = false, ?playOnLoad:Bool = true) {
+		LuaUtilsHx.addFunction(lua, 'startVideo', function(videoFile:String, canSkip:Bool = true, forMidSong:Bool = false, shouldLoop:Bool = false, ?playOnLoad:Bool = false) {
 			#if VIDEOS_ALLOWED
 			if (#if sys FileSystem.exists(Paths.video(videoFile)) || #end OpenFlAssets.exists(Paths.video(videoFile)))
 			{

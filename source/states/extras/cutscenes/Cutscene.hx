@@ -273,7 +273,7 @@ class Cutscene extends SonicSubState
         boxThumb = thumb;
 
         if (thumb.loadVideo(path, [VideoSprite.ARG_LOOPING, VideoSprite.ARG_MUTED]))
-            thumb.play();
+            thumb.playDelayed();
         else if (boxThumb == thumb)
         {
             remove(thumb, true); thumb.destroy();
@@ -714,7 +714,7 @@ class Cutscene extends SonicSubState
             #end
         });
         _vidSprite.onEnd(() -> { 
-            _vidSprite.play(); 
+            _vidSprite.playDelayed(); 
             _vidPaused = false; 
             _hudUpdateBtn(); 
             #if DISCORD_ALLOWED

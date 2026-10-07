@@ -272,6 +272,8 @@ class EXETitle extends MusicBeatState
 	static inline final LOGOTXT_Y:Float = 20 + (777 * 0.4);
 	static inline final EYES_Y:Float = 20 + (517 * 0.4);
 	static inline final PARALLAX_THRESHOLD:Float = 0.85;
+	private var movedMouse:Bool = false;
+	private var activeMouse:Float = 0.5;
 
 	override function update(elapsed:Float):Void
 	{
@@ -307,7 +309,16 @@ class EXETitle extends MusicBeatState
 				confirmStart();
 		}
 
-		if (!transitioning && canStart && unlocked.length >= 5)
+		if (activeMouse <= 0){
+			if (FlxG.mouse.justMoved){
+				movedMouse = true;
+			}
+			activeMouse = 0;
+		}else{
+			activeMouse -= elapsed;
+		}
+
+		if (!transitioning && canStart && unlocked.length >= 5 && movedMouse)
 		{
 			final threshold:Float = FlxG.width * PARALLAX_THRESHOLD;
 			final arrowW:Float = parallaxArrow.width;

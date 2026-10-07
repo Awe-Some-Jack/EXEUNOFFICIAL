@@ -10,7 +10,7 @@ haxelib git hx-gamejolt https://github.com/cocoCode17/hx-gamejolt
 haxelib git flixel-addons https://github.com/GreenColdTea/flixel-addons.git funkin-before-rebase --skip-dependencies
 haxelib install flixel-tools 1.5.1
 haxelib install tjson 1.4.0
-haxelib install hxdiscord_rpc 1.2.4
+haxelib git hxdiscord_rpc https://github.com/Wolfie1985yt/hxdiscord_rpc.git
 haxelib git hxswitchvideo https://github.com/Slushi-Github/HxSwitchVideo.git
 haxelib git hx_libnx https://github.com/Slushi-Github/hx_libnx.git
 haxelib install hxp 1.3.1

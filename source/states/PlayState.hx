@@ -1111,7 +1111,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 		playbackRate = value;
-		FlxG.animationTimeScale = value;
+		FlxG.timeScale = value;
 		Conductor.offset = Reflect.hasField(PlayState.SONG, 'offset') ? (PlayState.SONG.offset / value) : 0;
 		Conductor.safeZoneOffset = (ClientPrefs.data.safeFrames / 60) * 1000 * value;
 		#if VIDEOS_ALLOWED
@@ -1222,13 +1222,12 @@ class PlayState extends MusicBeatState
 		var fileExists = #if sys FileSystem.exists(filePath) || #end OpenFlAssets.exists(filePath) || name.startsWith("https://");
 
 		if(!fileExists) {
-			FlxG.log.warn('Couldnt find video file: $name');
+			trace('Couldnt find video file: $name');
 			if(!forMidSong) startAndEnd();
 			return;
 		}
 
 		videoCutscene = new VideoSprite(0, 0, true);
-		videoCutscene.antialiasing = videoCutscene.video.antialiasing = ClientPrefs.data.antialiasing;
 		videoCutscene.camera = camVideo;
 		videoCutscene.canSkip = canSkip;
 		add(videoCutscene);
@@ -1241,7 +1240,7 @@ class PlayState extends MusicBeatState
 			#if switch
 			final hasFrame = videoCutscene.video != null;
 			#else
-			final hasFrame = videoCutscene.video.bitmap != null && videoCutscene.video.bitmap.bitmapData != null;
+			final hasFrame = videoCutscene.video.bitmap?.bitmapData != null;
 			#end
 			if (hasFrame)
 			{
@@ -1262,16 +1261,21 @@ class PlayState extends MusicBeatState
 			}
 		});
 
-		if(videoCutscene.loadVideo(filePath, loop ? [VideoSprite.ARG_LOOPING] : [])) {
-			videoCutscene.playDelayed();
-		} else {
-			FlxG.log.warn('Failed to load video: $name');
-			if(!forMidSong) startAndEnd();
-		}
-
-		if(!playOnLoad) {
-			videoCutscene.play();
-			videoCutscene.stop();
+		final loadArgs:Array<String> = loop ? [VideoSprite.ARG_LOOPING] : [];
+		if (playOnLoad) 
+		{
+			if(videoCutscene.loadVideo(filePath, loadArgs)) {
+				videoCutscene.playDelayed();
+			} else {
+				trace('Failed to load video: $name');
+				if(!forMidSong) startAndEnd();
+			}
+		} 
+		else 
+		{
+			if (!videoCutscene.precacheVideo(filePath, loadArgs)) {
+				trace('Failed to precache video: $name');
+			}
 		}
 		#else
 		FlxG.log.warn('Platform not supported!');
@@ -2689,7 +2693,7 @@ class PlayState extends MusicBeatState
 			if(ret != LuaUtils.Function_Stop)
 			{
 				EXEAchievements.achieveGameOver(SONG.song);
-				FlxG.animationTimeScale = 1;
+				FlxG.timeScale = 1;
 				boyfriend.stunned = true;
 				deathCounter++;
 
@@ -4284,7 +4288,7 @@ class PlayState extends MusicBeatState
 		FlxG.camera.filters = [];
 
 		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
-		FlxG.animationTimeScale = 1;
+		FlxG.timeScale = 1;
 
 		backend.NoteTypesConfig.clearNoteTypesData();
 

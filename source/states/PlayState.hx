@@ -1204,7 +1204,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public var videoCutscene:VideoSprite = null;
-	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = false)
+	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = true)
 	{
 		function endVideo()
 		{
@@ -1222,7 +1222,7 @@ class PlayState extends MusicBeatState
 		var fileExists = #if sys FileSystem.exists(filePath) || #end OpenFlAssets.exists(filePath) || name.startsWith("https://");
 
 		if(!fileExists) {
-			FlxG.log.warn('Couldnt find video file: $name');
+			print('Couldnt find video file: $name');
 			if(!forMidSong) startAndEnd();
 			return;
 		}
@@ -1267,14 +1267,14 @@ class PlayState extends MusicBeatState
 			if(videoCutscene.loadVideo(filePath, loadArgs)) {
 				videoCutscene.playDelayed();
 			} else {
-				FlxG.log.warn('Failed to load video: $name');
+				print('Failed to load video: $name');
 				if(!forMidSong) startAndEnd();
 			}
 		} 
 		else 
 		{
 			if (!videoCutscene.precacheVideo(filePath, loadArgs)) {
-				FlxG.log.warn('Failed to precache video: $name');
+				print('Failed to precache video: $name');
 			}
 		}
 		#else

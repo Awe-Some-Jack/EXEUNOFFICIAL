@@ -3,7 +3,7 @@ public class NPC {
     public int dancePerBeats = 2;
     public int beatProgress = -1;
     public String curState = "DANCE";
-    
+    public double animTimer = 2;
     public NPC (String[] args){
         System.out.println("NPC "+tag);
         switch (curState) {
@@ -27,5 +27,11 @@ public class NPC {
 
     public void onBeatHit(int beats){
         beatProgress += beats;
+
+        if (curState == "DANCE"){
+            if (beats % 2 == 0){
+                System.out.println("dance dance dancing");
+            }
+        }
     }
 }

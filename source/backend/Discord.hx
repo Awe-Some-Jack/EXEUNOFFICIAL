@@ -26,14 +26,30 @@ class DiscordClient
 
 	public static function check()
 	{
-		if(ClientPrefs.data.discordRPC) initialize();
+		if(ClientPrefs.data.discordRPC)
+		{
+			#if linux
+			if(isDiscordRunning()) initialize();
+			#else
+			initialize();
+			#end
+		}
 		else if(isInitialized) shutdown();
 	}
-	
+
 	public static function prepare()
 	{
 		if (!isInitialized && ClientPrefs.data.discordRPC)
+		{
+			#if linux
+			if(!isDiscordRunning())
+				trace("Discord: Not initializing - Discord isn't running");			
+			else
+				initialize();
+			#else
 			initialize();
+			#end
+		}
 
 		Application.current.onExit.add((_) -> if(isInitialized) shutdown());
 	}
@@ -62,7 +78,11 @@ class DiscordClient
 
 	private static function onError(errorCode:Int, message:cpp.ConstCharStar):Void
 	{
-		trace('Discord: Error ($errorCode: ${cast(message, String)})');
+		var errorMsg = cast(message, String);
+		trace('Discord: Error ($errorCode: $errorMsg)');
+		#if linux
+		trace('Discord: Linux RPC issue - ensure Discord is running and /tmp is accessible');
+		#end
 	}
 
 	private static function onDisconnected(errorCode:Int, message:cpp.ConstCharStar):Void
@@ -70,13 +90,72 @@ class DiscordClient
 		trace('Discord: Disconnected ($errorCode: ${cast(message, String)})');
 	}
 
+	#if linux
+	private static function findDiscordSocket(directory:String, maxDepth:Int = 3, currentDepth:Int = 0):String
+	{
+		if (currentDepth >= maxDepth) return null;
+
+		try
+		{
+			for (entry in sys.FileSystem.readDirectory(directory))
+			{
+				if (entry.startsWith("discord-ipc-"))
+				{
+					var fullPath = '$directory/$entry';
+					if (sys.FileSystem.exists(fullPath))
+					{
+						trace('Discord: Found IPC socket at $fullPath');
+						return fullPath;
+					}
+				}
+
+				var fullPath = '$directory/$entry';
+				if (sys.FileSystem.isDirectory(fullPath) && !entry.startsWith('.'))
+				{
+					var result = findDiscordSocket(fullPath, maxDepth, currentDepth + 1);
+					if (result != null) return result;
+				}
+			}
+		}
+		catch (e:Dynamic) {}
+
+		return null;
+	}
+
+	private static function isDiscordRunning():Bool
+	{
+		try
+		{
+			var tempDir = Sys.getEnv("XDG_RUNTIME_DIR");
+			if (tempDir == null) tempDir = Sys.getEnv("TMPDIR");
+			if (tempDir == null) tempDir = Sys.getEnv("TMP");
+			if (tempDir == null) tempDir = Sys.getEnv("TEMP");
+			if (tempDir == null) tempDir = "/tmp";
+
+			var socketPath = findDiscordSocket(tempDir);
+			if (socketPath != null)
+			{
+				return true;
+			}
+
+			trace('Discord: No IPC sockets found');
+			return false;
+		}
+		catch (e:Dynamic)
+		{
+			trace('Discord: Error checking for IPC sockets: $e');
+			return false;
+		}
+	}
+	#end
+
 	public static function initialize()
 	{
-		var discordHandlers:DiscordEventHandlers = DiscordEventHandlers.create();
+		var discordHandlers:DiscordEventHandlers = new DiscordEventHandlers();
 		discordHandlers.ready = cpp.Function.fromStaticFunction(onReady);
 		discordHandlers.disconnected = cpp.Function.fromStaticFunction(onDisconnected);
 		discordHandlers.errored = cpp.Function.fromStaticFunction(onError);
-		Discord.Initialize(clientID, cpp.RawPointer.addressOf(discordHandlers), 1, null);
+		Discord.Initialize(clientID, cpp.RawPointer.addressOf(discordHandlers), true, null);
 
 		if(!isInitialized) trace("Discord Client initialized");
 
@@ -186,7 +265,7 @@ private final class DiscordPresence
 
 	function new()
 	{
-		__presence = DiscordRichPresence.create();
+		__presence = new DiscordRichPresence();
 	}
 
 	public function toString():String

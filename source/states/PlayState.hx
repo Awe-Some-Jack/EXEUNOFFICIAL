@@ -1204,7 +1204,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public var videoCutscene:VideoSprite = null;
-	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = false)
+	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = true)
 	{
 		function endVideo()
 		{
@@ -1267,7 +1267,6 @@ class PlayState extends MusicBeatState
 			if(videoCutscene.loadVideo(filePath, loadArgs)) {
 				videoCutscene.playDelayed();
 			} else {
-				trace('Failed to load video: $name');
 				if(!forMidSong) startAndEnd();
 			}
 		} 

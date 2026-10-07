@@ -1222,7 +1222,7 @@ class PlayState extends MusicBeatState
 		var fileExists = #if sys FileSystem.exists(filePath) || #end OpenFlAssets.exists(filePath) || name.startsWith("https://");
 
 		if(!fileExists) {
-			trace('Couldnt find video file: $name');
+			print('Couldnt find video file: $name');
 			if(!forMidSong) startAndEnd();
 			return;
 		}
@@ -1267,14 +1267,14 @@ class PlayState extends MusicBeatState
 			if(videoCutscene.loadVideo(filePath, loadArgs)) {
 				videoCutscene.playDelayed();
 			} else {
-				trace('Failed to load video: $name');
+				print('Failed to load video: $name');
 				if(!forMidSong) startAndEnd();
 			}
 		} 
 		else 
 		{
 			if (!videoCutscene.precacheVideo(filePath, loadArgs)) {
-				trace('Failed to precache video: $name');
+				print('Failed to precache video: $name');
 			}
 		}
 		#else

@@ -199,9 +199,9 @@ class VideoSprite extends FlxSpriteGroup
 		_shouldBePlaying = true;
 
 		if (delay <= 0)
-			video.play();
+			play();
 		else
-			new FlxTimer().start(delay, _ -> video.play());
+			new FlxTimer().start(delay, _ -> play());
 
 		#if FLX_PITCH
 		#if !switch
@@ -209,6 +209,12 @@ class VideoSprite extends FlxSpriteGroup
 			video.bitmap.rate = PlayState.instance?.playbackRate ?? 1.0;
 		#end
 		#end
+	}
+
+	public inline function play():Void
+	{
+		_shouldBePlaying = true;
+		video.play();
 	}
 
 	override public function setGraphicSize(width:Float = 0, height:Float = 0):Void

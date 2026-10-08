@@ -960,8 +960,6 @@ class Paths
 			path = modPath;
 		#end
 
-		trace(isValidFolder);
-
 		return FlxAnimateFrames.fromAnimate(path, validatedSettings.spritemaps, validatedSettings.metadataJson, validatedSettings.cacheKey,
 			validatedSettings.uniqueInCache, {
 				swfMode: validatedSettings.swfMode,

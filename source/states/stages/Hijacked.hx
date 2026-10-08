@@ -35,6 +35,7 @@ class Hijacked extends BaseStage
 		gf2Group = new FlxSpriteGroup(GF2_X, GF2_Y);
 
 		gf2 = new Character(0, 0, 'lili');
+		gf2.useRenderTexture = true;
 		PS.startCharacterPos(gf2);
 		gf2Group.add(gf2);
 		gf2.blend = psychlua.LuaUtils.blendModeFromString('screen');

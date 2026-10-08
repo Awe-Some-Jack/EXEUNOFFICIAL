@@ -184,16 +184,21 @@ class CrashHandler
     private static function saveCrashLog(content:String):Void
     {
         try {
-            if (!FileSystem.exists(LOGS_DIR))
-                FileSystem.createDirectory(LOGS_DIR);
-            
+            try {
+                if (!FileSystem.exists(LOGS_DIR))
+                    FileSystem.createDirectory(LOGS_DIR);
+            } catch (e:Exception) {
+                trace('Failed to create logs directory: ${e.message}');
+                return;
+            }
+
             var now = Date.now();
             var timestamp = '${now.getFullYear()}-${lpad(Std.string(now.getMonth() + 1), "0", 2)}'
                 + '-${lpad(Std.string(now.getDate()), "0", 2)}_${lpad(Std.string(now.getHours()), "0", 2)}'
                 + '-${lpad(Std.string(now.getMinutes()), "0", 2)}-${lpad(Std.string(now.getSeconds()), "0", 2)}';
-            
+
             var fileName = LOGS_DIR + 'crash_$timestamp.txt';
-            
+
             var logContent = new StringBuf();
             logContent.add('======================= CRASH LOG =======================\n\n');
             logContent.add('CRASH TIME: ${now.toString()}\n');
@@ -207,22 +212,22 @@ class CrashHandler
                 arch = Sys.getEnv("PROCESSOR_ARCHITECTURE");
             } catch(e:Dynamic) {}
             logContent.add('Architecture: ${arch.toString().replace("AMD", "ARM")}\n');
-            
+
             logContent.add('Screen: ${FlxG.stage.window.width}x${FlxG.stage.window.height}\n');
-            
+
             logContent.add('\n------ HARDWARE INFORMATION ------\n');
             logContent.add('GPU: ${getGpuInfo()}\n');
             logContent.add('RAM: ${getRamInfo()}\n');
-            
+
             logContent.add('\n------ LIBRARY VERSIONS ------\n');
             logContent.add('Haxe: ${haxe.macro.Compiler.getDefine("haxe")}\n');
 
             var flxVer = FlxG.VERSION.toString();
             logContent.add('Flixel: ${flxVer.replace("HaxeFlixel ", "")}\n');
-            
+
             logContent.add('\n------ SYSTEM RESOURCES ------\n');
             logContent.add('Memory Usage: ${Math.round(#if (openfl >= "9.4.0") OpenFlSystem.totalMemoryNumber #else OpenFlSystem.totalMemory #end / 1024 / 1024 * 100)/100} MB\n');
-            
+
             File.saveContent(fileName, logContent.toString());
         } catch (e:Exception) {
             trace('Failed to save crash log: ${e.message}');

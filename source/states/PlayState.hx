@@ -963,6 +963,9 @@ class PlayState extends MusicBeatState
 		stagesFunc(function(stage:BaseStage) stage.createPost());
 		callOnScripts('onCreatePost');
 
+		boyfriend.useRenderTexture = dad.useRenderTexture = true;
+		if(gf != null) gf.useRenderTexture = true;
+
 		#if mobile
 		updateMobileComboOffset();
 		if(usesMobileStrumLayout())
@@ -2894,13 +2897,16 @@ class PlayState extends MusicBeatState
 					case 'gf' | 'girlfriend':
 						charType = 2;
 						gf.shader = null;
+						gf.useRenderTexture = true;
 					case 'dad' | 'opponent':
 						charType = 1;
 						dad.shader = null;
+						dad.useRenderTexture = true;
 					default:
 						charType = Std.parseInt(value1);
 						if(Math.isNaN(charType)) charType = 0;
 						boyfriend.shader = null;
+						boyfriend.useRenderTexture = true;
 				}
 
 				switch(charType) {

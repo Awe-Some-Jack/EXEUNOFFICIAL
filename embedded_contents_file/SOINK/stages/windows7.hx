@@ -168,7 +168,7 @@ function onCreatePost() {
         var hue:Float = FlxG.random.float(0,360);
         hues.push(hue);
         
-        var bubble = new FlxSprite(0, FlxG.height, Paths.image('bg/bubble', 'SOINK', false));
+        var bubble = new FlxSprite(0, FlxG.height, Paths.image('bg/bubble', 'SOINK'));
         bubble.scale.set(0.45, 0.45);
         bubble.updateHitbox();
 

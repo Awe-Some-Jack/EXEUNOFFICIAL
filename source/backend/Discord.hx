@@ -91,7 +91,7 @@ class DiscordClient
 	}
 
 	#if linux
-	private static function findDiscordSocket(directory:String, maxDepth:Int = 3, currentDepth:Int = 0):String
+	private static function findDiscordSocket(directory:String, maxDepth:Int = 5, currentDepth:Int = 0):String
 	{
 		if (currentDepth >= maxDepth) return null;
 
@@ -110,11 +110,15 @@ class DiscordClient
 				}
 
 				var fullPath = '$directory/$entry';
-				if (sys.FileSystem.isDirectory(fullPath) && !entry.startsWith('.'))
+				try
 				{
-					var result = findDiscordSocket(fullPath, maxDepth, currentDepth + 1);
-					if (result != null) return result;
+					if (sys.FileSystem.isDirectory(fullPath))
+					{
+						var result = findDiscordSocket(fullPath, maxDepth, currentDepth + 1);
+						if (result != null) return result;
+					}
 				}
+				catch (e:Dynamic) {}
 			}
 		}
 		catch (e:Dynamic) {}
@@ -133,17 +137,12 @@ class DiscordClient
 			if (tempDir == null) tempDir = "/tmp";
 
 			var socketPath = findDiscordSocket(tempDir);
-			if (socketPath != null)
-			{
-				return true;
-			}
+			if (socketPath != null) return true;
 
-			trace('Discord: No IPC sockets found');
 			return false;
 		}
 		catch (e:Dynamic)
 		{
-			trace('Discord: Error checking for IPC sockets: $e');
 			return false;
 		}
 	}

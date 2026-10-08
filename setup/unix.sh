@@ -31,4 +31,5 @@ haxelib git lime https://github.com/GreenColdTea/lime-fc.git
 haxelib git openfl https://github.com/FNF-CC-ENGINE/openfl-fc.git
 haxelib git hxcpp https://github.com/Wolfie1985yt/hxcpp.git
 haxelib set hxcpp git
+haxelib remove hxcpp 4.3.2
 echo Finished!

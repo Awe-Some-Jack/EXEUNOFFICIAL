@@ -5,30 +5,10 @@ public class NPC extends FlxSprite {
     public static var DEFAULT_BEATS_PER_BEATS:Int = 2;
     public var dancePerBeats:Int = DEFDAULT_BEATS_PER_BEATS;
     public var beatProgress:Int = -1;
+
+    // for now, default states are DANCE, STATIC, ACTION
     public var curState:String = "DANCE";
-    public var NPC_STATES:Array<String> = [
-        "DANCE",
-        "STATIC",
-        "ACTION",
-    ];
-
-    public function getIdByStateTag(t:String){
-        var id = switch(t){
-            case "DANCE":
-                0;
-            case "STATIC":
-                1;
-            case "ACTION":
-                2;
-            default:
-                0;
-        }
-        return id;
-    }
-
-    public function getState(id:Int) {
-        return NPC_STATS[id];
-    }
+   
     public var animTimer:Float = 2;
 
     public function new (tag:String, dancePerBeats:Int, initialState:String){
@@ -37,6 +17,12 @@ public class NPC extends FlxSprite {
         this.tag = tag;
         this.dancePerBeats = dancePerBeats;
         this.curState = initialState; 
+    }
+
+    override function update(elapsed:Float) {
+        super.update(elapsed);
+
+        animTimer -= elapsed;
     }
 
     public function onBeatHit(beats:Int){

@@ -49,16 +49,15 @@ class VideoSprite extends FlxSpriteGroup
 	public var initialConductTime:Float = 0;
 
 	private var wasPlayingBeforeFocusLost:Bool = false;
-	private var _shouldBePlaying:Bool = false;
-
 	private var skipKeyReleasedOnce:Bool = false;
+
+	private var _shouldBePlaying:Bool = false;
+	private var _isLooped:Bool = false;
 
 	#if switch
 	var _endCallbacks:Array<Void->Void> = [];
 	var _formatCallbacks:Array<Void->Void> = [];
 	#end
-
-	
 
 	public function new(x:Float = 0, y:Float = 0, autoDestroy:Bool = true)
 	{
@@ -149,6 +148,8 @@ class VideoSprite extends FlxSpriteGroup
 				loadArgs.push(ARG_DROP_LATE);
 			if (!loadArgs.contains(ARG_SKIP_FRAMES))
 				loadArgs.push(ARG_SKIP_FRAMES);
+
+			_isLooped = args?.contains(ARG_LOOPING) ?? false;
 
 			final success = video.load(videoPath, loadArgs);
 			if (success)
@@ -425,9 +426,9 @@ class VideoSprite extends FlxSpriteGroup
 		#end
 
 		final isGamePaused:Bool = PlayState.instance?.paused ?? true;
-		if (isPlaying() && !isGamePaused && ClientPrefs.data?.freezeSyncDelay)
+		if (isPlaying() && !isGamePaused && ClientPrefs.data?.freezeSyncDelay && !_isLooped)
 		{
-			final targetTime:Float = Conductor.songPosition - Conductor.offset - initialConductTime;
+			final targetTime:Float = Conductor.songPosition - initialConductTime - Conductor.offset;
 			if (targetTime >= 0)
 			{
 				final drift:Float = Math.abs(getTime() - targetTime);

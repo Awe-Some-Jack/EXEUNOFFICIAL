@@ -42,5 +42,6 @@ function onUpdate(elapsed:Float) {
     if (FlxG.keys.justPressed.SIX) {
         game.cpuControlled = !game.cpuControlled;
         game.botplayTxt.visible = game.cpuControlled;
+        botplayfichgerald = game.cpuControlled;
     }
 } 

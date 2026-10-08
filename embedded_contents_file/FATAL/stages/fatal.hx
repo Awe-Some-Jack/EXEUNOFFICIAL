@@ -65,6 +65,7 @@ var canRain:Bool = false;
 
 function onCreatePost()
 {
+	FlxSprite.defaultAntialiasing = false;
 	FlxG.camera.pixelPerfectRender = true;
 	camHUD.pixelPerfectRender = true;
 
@@ -298,3 +299,5 @@ function onUpdatePost(e)
 
 function preloadCharacter(char:Int, target:String) game.addCharacterToList(target, char);
 function changeCharacter(char:String, target:String) game.triggerEvent('Change Character', char, target, Conductor.songPosition);
+
+function onEndSong() { 	FlxSprite.defaultAntialiasing = ClientPrefs?.data?.antialiasing; }

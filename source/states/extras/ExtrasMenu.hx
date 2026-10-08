@@ -78,6 +78,12 @@ class ExtrasMenu extends MusicBeatState
             volume: 1
         },
         {
+            name: "Door Into Summer",
+            src: "extras4",
+            author: "MeDicenKay",
+            volume: 1
+        },
+        {
             name: "Chao Garden",
             src: "chaogarden",
             author: "Kiv.FLP",

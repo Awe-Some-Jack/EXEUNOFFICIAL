@@ -11,6 +11,11 @@ var prevScale:Float = 1;
 var prevDownscroll:Bool = false;
 
 function onStepHit() {
+    if(game.isDead) {
+        camHUD.angle = camGame.angle = 0;
+        return;
+    }
+
     switch(curStep) {
         case 3968:
             for(strum in playerStrums.members) {
@@ -29,6 +34,15 @@ function onStepHit() {
                     {ease: FlxEase.expoInOut}
                 );
                 strum.downScroll = prevDownscroll;
+            }
+
+        case 4240:
+            var separation:Int = 110;
+            for(i => strum in opponentStrums.members) {
+                strum.alpha = 0;
+                strum.x = (FlxG.width / 2) + (separation / 2) - (((opponentStrums.members[i].width + (separation * 2)) * 4) / 2) + ((opponentStrums.members[i].width + separation * (i > 1 ? (i == 3 ? 2.33 : 3) : 1)) * i);
+                strum.y = -100;
+                FlxTween.tween(strum, {y: positions.y[i], alpha: 0.4}, 0.75, {ease: FlxEase.cubeOut, startDelay: 0.15 * i});
             }
     }
     

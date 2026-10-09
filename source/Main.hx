@@ -201,6 +201,20 @@ class Main extends Sprite
 
 		addChild(push);
 
+		final fontCache:Map<String, openfl.text.Font> = [];
+		final getAssetOriginal = FlxG.assets.getAssetUnsafe;
+		FlxG.assets.getAssetUnsafe = function(id:String, type:flixel.system.frontEnds.AssetFrontEnd.FlxAssetType, useCache:Bool = true):Null<Any>
+		{
+			if (type != flixel.system.frontEnds.AssetFrontEnd.FlxAssetType.FONT) return getAssetOriginal(id, type, useCache);
+			var font = fontCache.get(id);
+			if (font == null)
+			{
+				font = cast getAssetOriginal(id, type, useCache);
+				if (font != null) fontCache.set(id, font);
+			}
+			return font;
+		};
+
 		#if final
 		final cheatCheckTimer = new haxe.Timer(1000);
         cheatCheckTimer.run = () -> backend.AntiCheat.checkDebugger();

@@ -20,9 +20,6 @@ typedef BackgroundSpriteAlt =
 	@:optional var animation:Array<Dynamic>;
 }
 
-//! Eventos conforme a la cancion en la parte que aparece sarah con needle
-//! Vibracion cuando cambie sprite luther
-
 var activeSprites:Array<FlxSprite> = [];
 var glitch:FlxRuntimeShader;
 var colorShader:ColorSwap;
@@ -197,17 +194,20 @@ var stepEvents = [
 			}
 		},
 		{ 
-			step: 4260, callback: () -> {
-				FlxTween.tween(end, {alpha: 1}, 2);
+			step: 4512, callback: () -> {
+				end.scale.set(0.9, 0.9);
+				FlxTween.tween(end, {alpha: 1, "scale.x": 1, "scale.y": 1}, 0.5, {ease: FlxEase.cubeOut});
 			}
 		},
 		{ 
-			step: 4280, callback: () -> {
-				FlxTween.tween(end, {"scale.x": 0.5, "scale.y": 0.5}, 40);
+			step: 4580, callback: () -> {
+				FlxTween.tween(end, {"scale.x": 0.5, "scale.y": 0.5}, 30);
 			}
 		},
 		{ 
-			step: 4740, callback: () -> {
+			step: 4750, callback: () -> {
+				FlxTween.cancelTweensOf(end);
+				FlxTween.tween(end, {"scale.x": 0.35, "scale.y": 0.35}, 4);
 				FlxTween.tween(end, {alpha: 0}, 4);
 			}
 		},
@@ -221,8 +221,6 @@ var stepEvents = [
 			}
 		}
 ];
-
-//! añadir eventos
 
 function onCreate() {
 	if(ClientPrefs.data.middleScroll && (ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes)) PlayState.instance.opponentStrumOffsetY = -10;
@@ -272,8 +270,11 @@ function onCreatePost()
 	black.camera = game.camHUD;
 	game.add(black);
 
-	end = new FlxSprite().loadGraphic(Paths.image('herworld/end'));
-	end.scale.set(1.5, 1.5);
+	end = new FlxSprite();
+	end.frames = Paths.getSparrowAtlas('herworld/sarah ending');
+	end.animation.addByPrefix('loop', 'saraxd', 24, true);
+	end.animation.play('loop');
+	end.scale.set(1, 1);
 	end.alpha = 0.001;
 	end.screenCenter();
 	end.camera = game.camHUD;

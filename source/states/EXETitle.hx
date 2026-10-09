@@ -49,6 +49,9 @@ class EXETitle extends MusicBeatState
 
 	var unlocked:Array<String> = [];
 
+	public static var AFK_TIMER_VALUE:Float = 25.0;
+	var afkTimer:Float = AFK_TIMER_VALUE;
+
 	override function create():Void
 	{
 		Paths.clearStoredMemory();
@@ -274,6 +277,8 @@ class EXETitle extends MusicBeatState
 	static inline final PARALLAX_THRESHOLD:Float = 0.85;
 	private var movedMouse:Bool = false;
 	private var activeMouse:Float = 0.5;
+	private	var inAction:Bool = false; 
+	private var afkConsider:Float = 1.5;
 
 	override function update(elapsed:Float):Void
 	{
@@ -289,6 +294,30 @@ class EXETitle extends MusicBeatState
 		
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
+
+		if (FlxG.keys.justPressed.ANY){
+			inAction = true;
+			afkConsider  = 1.5;
+			afkTimer = AFK_TIMER_VALUE;
+		}
+
+		if (afkConsider > 0){
+			afkConsider -= elapsed;
+			trace("AFK CONSIDER: "+afkConsider);
+		}else{
+			inAction = false;
+		}
+
+		if (!inAction){
+			if (afkTimer <= 0){
+				trace("AFKKK HE IS AFKKK");
+				afkTimer = 0;
+			}else{
+				afkTimer -= elapsed;
+				trace("AFK TIME: "+afkTimer);
+			}
+		}
+
 
 		var pressedEnter:Bool = #if mobile shortPress || #end FlxG.keys.justPressed.ENTER || controls.ACCEPT;
 
@@ -312,6 +341,9 @@ class EXETitle extends MusicBeatState
 		if (activeMouse <= 0){
 			if (FlxG.mouse.justMoved){
 				movedMouse = true;
+				inAction = true;
+				afkConsider  = 1.5;
+				afkTimer = AFK_TIMER_VALUE;
 			}
 			activeMouse = 0;
 		}else{

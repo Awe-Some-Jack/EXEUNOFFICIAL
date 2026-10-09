@@ -77,6 +77,13 @@ local modConfigs = {
 		postOnlySongs = {'triple-trouble'},
 		snapDelay = 0.025,
 	},
+	['NEEDLEMOUSE'] = {
+		type = 'slide',
+		skipSongs = {},
+		useSeenCutscene = true,
+		phase = 'both',
+		snapDelay = 0.05,
+	},
 	['GRIEVING'] = {
 		type = 'slide',
 		skipSongs = {'triple-trouble'},
@@ -144,14 +151,6 @@ local modConfigs = {
 		useSeenCutscene = true,
 		phase = 'post',
 		snapDelay = 0.1,
-	},
-	['NEEDLEMOUSE'] = {
-		type = 'slide',
-		skipSongs = {},
-		useSeenCutscene = true,
-		phase = 'post',
-		snapDelay = 0.05,
-		forceSkipCountdown = false,
 	},
 	['CRAZY TAILS'] = {
 		type = 'slide',

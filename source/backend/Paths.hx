@@ -93,6 +93,7 @@ class Paths
 				currentTrackedSounds.remove(key);
 			}
 		}
+		closeStreamedSounds();
 		// flags everything to be cleared out next unused memory clear
 		localTrackedAssets = [];
 		#if !html5
@@ -100,6 +101,19 @@ class Paths
 		openfl.Assets.cache.clear("music");
 		openfl.Assets.cache.clear("sounds");
 		#end
+	}
+
+	static var streamedSounds:Map<String, Sound> = [];
+
+	static function closeStreamedSounds():Void
+	{
+		final playing:Sound = @:privateAccess FlxG.sound.music?._sound;
+		for (key => snd in streamedSounds)
+		{
+			if (dumpExclusions.contains(key) || snd == playing) continue;
+			try snd.close() catch (e:Dynamic) {}
+			streamedSounds.remove(key);
+		}
 	}
 
 	public static function freeGraphicsFromMemory()
@@ -845,7 +859,11 @@ class Paths
 
 				if (buffer != null)
 				{
-					return Sound.fromAudioBuffer(buffer);
+					final snd:Sound = Sound.fromAudioBuffer(buffer);
+					final old:Sound = streamedSounds.get(file);
+					if (old != null) try old.close() catch (e:Dynamic) {}
+					streamedSounds.set(file, snd);
+					return snd;
 				}
 			}
 		}

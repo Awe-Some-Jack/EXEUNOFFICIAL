@@ -102,7 +102,7 @@ class EXETitle extends MusicBeatState
 
 	function playVideo(vid:String)
 	{
-		if(video != null) video.destroy();
+		video?.destroy();
 
 		video = new VideoSprite();
 		video.loadVideo(Paths.video(vid));
@@ -284,8 +284,9 @@ class EXETitle extends MusicBeatState
 	{
 		if(videoPlaying && controls.ACCEPT #if mobile || shortPress #end) 
 		{
-			if(video != null) video.setVideoPercent(1);
+			video?.setVideoPercent(1);
 		}
+
 		if (videoPlaying || subState != null)
 		{
 			super.update(elapsed);
@@ -295,27 +296,24 @@ class EXETitle extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-		if (FlxG.keys.justPressed.ANY){
+		if (FlxG.keys.justPressed.ANY)
+		{
 			inAction = true;
 			afkConsider  = 1.5;
 			afkTimer = AFK_TIMER_VALUE;
 		}
 
-		if (afkConsider > 0){
+		if (afkConsider > 0)
 			afkConsider -= elapsed;
-			trace("AFK CONSIDER: "+afkConsider);
-		}else{
+		else
 			inAction = false;
-		}
 
-		if (!inAction){
-			if (afkTimer <= 0){
-				trace("AFKKK HE IS AFKKK");
+		if (!inAction)
+		{
+			if (afkTimer <= 0)
 				afkTimer = 0;
-			}else{
+			else
 				afkTimer -= elapsed;
-				trace("AFK TIME: "+afkTimer);
-			}
 		}
 
 
@@ -338,15 +336,17 @@ class EXETitle extends MusicBeatState
 				confirmStart();
 		}
 
-		if (activeMouse <= 0){
-			if (FlxG.mouse.justMoved){
+		if (activeMouse <= 0)
+		{
+			if (FlxG.mouse.justMoved)
+			{
 				movedMouse = true;
 				inAction = true;
 				afkConsider  = 1.5;
 				afkTimer = AFK_TIMER_VALUE;
 			}
 			activeMouse = 0;
-		}else{
+		} else {
 			activeMouse -= elapsed;
 		}
 

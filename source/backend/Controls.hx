@@ -82,6 +82,11 @@ class Controls
 	private function get_PAUSE() return justPressed('pause');
 	private function get_RESET() return justPressed('reset');
 
+	public var JUMP(get, never):Bool;
+	public var JUMP_P(get, never):Bool;
+	private function get_JUMP() return pressed('jump');
+	private function get_JUMP_P() return justPressed('jump');
+
 	//Gamepad & Keyboard stuff
 	public var keyboardBinds:Map<String, Array<FlxKey>>;
 	public var gamepadBinds:Map<String, Array<FlxGamepadInputID>>;

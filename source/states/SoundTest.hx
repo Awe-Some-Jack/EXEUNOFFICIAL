@@ -367,7 +367,12 @@ class SoundTest extends MusicBeatState
 					FlxTween.cancelTweensOf(whiteBG);
 					FlxTween.tween(whiteBG, {alpha: 1}, 1, {
 						onComplete: (_) -> {
-							if (code.isWeek) 
+							if (code.isWeek && code.weekName == 'starv')
+							{
+								minigames.preymini.PreyMini.fromSoundTest = true;
+								FlxG.switchState(() -> new minigames.preymini.PreyMini());
+							}
+							else if (code.isWeek) 
 							{
 								trace("loading week");
 								loadSong(code.weekName, true);
@@ -454,6 +459,7 @@ class SoundTest extends MusicBeatState
 
 	function loadSong(name:String, isWeek:Bool = false):Void
 	{
+		minigames.preymini.PreyMini.songLives = 0;
 		if (isWeek)
 		{
 			final leWeek:WeekData = WeekData.weeksLoaded.get(name);
@@ -472,8 +478,8 @@ class SoundTest extends MusicBeatState
 
 			try
 			{
-				final firstSong:String = Paths.formatToSongPath(leWeek.songs[0][0]);
-				PlayState.storyPlaylist = [for (song in leWeek.songs) Paths.formatToSongPath(song[0])];
+				PlayState.storyPlaylist = [for (song in leWeek.songs) if (Paths.formatToSongPath(song[0]) != 'minigame') Paths.formatToSongPath(song[0])];
+				final firstSong:String = PlayState.storyPlaylist[0];
 				PlayState.isStoryMode = true;
 				PlayState.storyDifficulty = 1;
 				PlayState.storyWeek = WeekData.weeksList.indexOf(name);

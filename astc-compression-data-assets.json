@@ -15,6 +15,7 @@
     }
   ],
   "excludes": [
+  	"assets/shared/images/minigame/",
     "assets/embed/exe/extras/achievements/icons/",
     "assets/exe/access/",
     "assets/exe/extras/bios/",

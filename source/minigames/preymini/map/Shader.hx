@@ -17,15 +17,21 @@ class LightsShader extends FlxShader
 		uniform vec3 dst1;
 		uniform vec3 dst2;
 
-		const float CLOSE = 4.0;
+		const float CLOSE_SQ = 16.0;
 
 		void main()
 		{
 			vec4 color = flixel_texture2D(bitmap, openfl_TextureCoordv);
 			vec3 c = color.rgb * 255.0;
-			if (distance(c, src0) < CLOSE || distance(c, src3) < CLOSE) color.rgb = dst0 / 255.0;
-			else if (distance(c, src1) < CLOSE || distance(c, src4) < CLOSE) color.rgb = dst1 / 255.0;
-			else if (distance(c, src2) < CLOSE || distance(c, src5) < CLOSE) color.rgb = dst2 / 255.0;
+
+			vec3 d0 = c - src0; vec3 d3 = c - src3;
+			vec3 d1 = c - src1; vec3 d4 = c - src4;
+			vec3 d2 = c - src2; vec3 d5 = c - src5;
+
+			if (dot(d0, d0) < CLOSE_SQ || dot(d3, d3) < CLOSE_SQ) color.rgb = dst0 / 255.0;
+			else if (dot(d1, d1) < CLOSE_SQ || dot(d4, d4) < CLOSE_SQ) color.rgb = dst1 / 255.0;
+			else if (dot(d2, d2) < CLOSE_SQ || dot(d5, d5) < CLOSE_SQ) color.rgb = dst2 / 255.0;
+
 			gl_FragColor = color;
 		}
 	')
@@ -80,10 +86,12 @@ class ParadeShader extends FlxShader
 			{
 				vec3 body = haze / 255.0 + vec3(dot(c, vec3(0.3, 0.59, 0.11)) * 0.1);
 				vec2 texel = 1.0 / openfl_TextureSize;
-				if (texture2D(bitmap, openfl_TextureCoordv - vec2(0.0, texel.y)).a < 0.1)
+
+				if (flixel_texture2D(bitmap, openfl_TextureCoordv - vec2(0.0, texel.y)).a < 0.1)
 					body = mix(body, rim / 255.0, rimAlpha);
-				else if (texture2D(bitmap, openfl_TextureCoordv - vec2(texel.x, 0.0)).a < 0.1)
+				else if (flixel_texture2D(bitmap, openfl_TextureCoordv - vec2(texel.x, 0.0)).a < 0.1)
 					body = mix(body, rim / 255.0, rimAlpha * 0.45);
+
 				vec3 lit = min(c * flashColor / 255.0 * 1.7, vec3(1.0));
 				result = mix(body, lit, flash);
 			}
@@ -114,11 +122,17 @@ class ReplaceColorShader extends FlxShader
 		uniform vec3 targetColor;
 		uniform vec3 replaceColor;
 
+		const float THRESHOLD_SQ = 0.0025;
+
 		void main()
 		{
 			vec4 color = flixel_texture2D(bitmap, openfl_TextureCoordv);
-			if (distance(color.rgb, targetColor / 255.0) < 0.05)
+			vec3 targetNorm = targetColor / 255.0;
+			vec3 diff = color.rgb - targetNorm;
+
+			if (dot(diff, diff) < THRESHOLD_SQ)
 				color.rgb = replaceColor / 255.0;
+
 			gl_FragColor = color;
 		}
 	')

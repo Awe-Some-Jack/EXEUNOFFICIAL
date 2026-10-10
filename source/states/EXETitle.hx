@@ -36,6 +36,7 @@ class EXETitle extends MusicBeatState
 	var videoPlaying:Bool = false;
 	var titleText:FlxSprite;
 	var blackScreen:FlxSprite;
+	var screenBg:VideoSprite;
 	var spikes:FlxBackdrop;
 	var ring:FlxSprite;
 	var bandana:FlxSprite;
@@ -100,13 +101,15 @@ class EXETitle extends MusicBeatState
 		super.create();
 	}
 
-	function playVideo(vid:String)
+	function playVideo(vid:String, ?byAfk:Bool = false)
 	{
 		video?.destroy();
 
 		video = new VideoSprite();
 		video.loadVideo(Paths.video(vid));
-		video.onEnd(onVideoEnd);
+		video.onEnd(()->{
+			onVideoEnd(byAfk);
+		});
 		video.onFormat(() -> {
 			video.setGraphicSize(FlxG.width, FlxG.height);
 			video.video.screenCenter();
@@ -117,7 +120,7 @@ class EXETitle extends MusicBeatState
 		videoPlaying = true;
 	}
 
-	function onVideoEnd():Void
+	function onVideoEnd(byAfk:Bool):Void
 	{
 		if (FlxG.save.data.goToFinalEscape != null){
 			initialized = true;
@@ -160,8 +163,13 @@ class EXETitle extends MusicBeatState
 		videoPlaying = false;
 		initialized = true;
 
-		buildTitle();
-
+		if (byAfk){
+			afkConsider  = 1.5;
+			afkTimer = AFK_TIMER_VALUE;
+			showTitle();
+		}else{
+			buildTitle();
+		}
 		FlxG.camera.visible = false;
 
 		new FlxTimer().start(0.1, (_) -> {
@@ -185,7 +193,7 @@ class EXETitle extends MusicBeatState
 	function buildTitle():Void
 	{
 		#if VIDEOS_ALLOWED
-		final screenBg = new VideoSprite();
+		screenBg = new VideoSprite();
 		screenBg.onFormat(() -> {
 			screenBg.setGraphicSize(FlxG.width, FlxG.height);
 			screenBg.screenCenter();
@@ -232,6 +240,54 @@ class EXETitle extends MusicBeatState
 		add(whiteBG);
 	}
 
+	function hideTitle():Void{
+		#if VIDEOS_ALLOWED
+		if (screenBg != null) screenBg.active = screenBg.visible = false;
+		#end
+
+		if (ring != null) ring.active = ring.visible = false;
+
+		if (bandana != null) bandana.active = bandana.visible = false;
+		
+		if (logotxt != null)  logotxt.active = logotxt.visible = false;
+
+		if (spikes != null)  spikes.active = spikes.visible = false;
+		
+		if (titleText != null) titleText.active = titleText.visible = false;
+
+		if (parallaxArrow != null) parallaxArrow.active = parallaxArrow.visible = false;
+		
+		if (blackScreen != null) blackScreen.active = blackScreen.visible = false;
+
+		if (eyes != null) eyes.active = eyes.visible = false;
+
+		if (whiteBG != null) whiteBG.active = whiteBG.visible = false;
+	}
+
+	function showTitle():Void{
+		#if VIDEOS_ALLOWED
+		if (screenBg != null) screenBg.active = screenBg.visible = true;
+		#end
+
+		if (ring != null) ring.active = ring.visible = true;
+
+		if (bandana != null) bandana.active = bandana.visible = true;
+		
+		if (logotxt != null)  logotxt.active = logotxt.visible = true;
+
+		if (spikes != null)  spikes.active = spikes.visible = true;
+		
+		if (titleText != null) titleText.active = titleText.visible = true;
+
+		if (parallaxArrow != null) parallaxArrow.active = parallaxArrow.visible = true;
+		
+		if (blackScreen != null) blackScreen.active = blackScreen.visible = true;
+
+		if (eyes != null) eyes.active = eyes.visible = true;
+
+		if (whiteBG != null) whiteBG.active = whiteBG.visible = true;
+	}
+
 	var savedRingX:Float = 0;
 	function makeLogo():Void
 	{
@@ -265,20 +321,21 @@ class EXETitle extends MusicBeatState
 
 	var mousePosition:String = 'left';
 	var transitioning:Bool = false;
-	var logoSin:Float = 0;
+	var logoSine:Float = 0;
 	var fridgeStatus:Int = 0;
 	
 	static inline final BANDANA_OFF:Float = 329 * 0.4;
-	static inline final LOGOTXT_OFF:Float = 711 * 0.4;
+	static inline final logotxt_OFF:Float = 711 * 0.4;
 	static inline final EYES_OFF:Float = 1074 * 0.4;
 	static inline final BANDANA_Y:Float = 20 + (873 * 0.4);
-	static inline final LOGOTXT_Y:Float = 20 + (777 * 0.4);
+	static inline final logotxt_Y:Float = 20 + (777 * 0.4);
 	static inline final EYES_Y:Float = 20 + (517 * 0.4);
 	static inline final PARALLAX_THRESHOLD:Float = 0.85;
 	private var movedMouse:Bool = false;
 	private var activeMouse:Float = 0.5;
 	private	var inAction:Bool = false; 
 	private var afkConsider:Float = 1.5;
+	private var videoAFKReason:Bool = false;
 
 	override function update(elapsed:Float):Void
 	{
@@ -286,7 +343,6 @@ class EXETitle extends MusicBeatState
 		{
 			video?.setVideoPercent(1);
 		}
-
 		if (videoPlaying || subState != null)
 		{
 			super.update(elapsed);
@@ -296,24 +352,33 @@ class EXETitle extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-		if (FlxG.keys.justPressed.ANY)
-		{
-			inAction = true;
-			afkConsider  = 1.5;
-			afkTimer = AFK_TIMER_VALUE;
-		}
+		if (!videoPlaying){
+			if (FlxG.keys.justPressed.ANY){
+				inAction = true;
+				afkConsider  = 1.5;
+				afkTimer = AFK_TIMER_VALUE;
+			}
 
-		if (afkConsider > 0)
-			afkConsider -= elapsed;
-		else
-			inAction = false;
+			if (afkConsider > 0){
+				afkConsider -= elapsed;
+			}else{
+				inAction = false;
+			}
 
-		if (!inAction)
-		{
-			if (afkTimer <= 0)
-				afkTimer = 0;
-			else
-				afkTimer -= elapsed;
+			if (!inAction){
+				if (afkTimer <= 0){
+					FlxG.mouse.visible = false;
+					Main.fpsVar.visible = false;
+
+					playedIntro = true;
+					hideTitle();
+					playVideo('postIntro', true);
+					afkTimer = AFK_TIMER_VALUE;
+					videoPlaying = true;
+				}else{
+					afkTimer -= elapsed;
+				}
+			}
 		}
 
 
@@ -336,17 +401,15 @@ class EXETitle extends MusicBeatState
 				confirmStart();
 		}
 
-		if (activeMouse <= 0)
-		{
-			if (FlxG.mouse.justMoved)
-			{
+		if (activeMouse <= 0){
+			if (FlxG.mouse.justMoved){
 				movedMouse = true;
 				inAction = true;
 				afkConsider  = 1.5;
 				afkTimer = AFK_TIMER_VALUE;
 			}
 			activeMouse = 0;
-		} else {
+		}else{
 			activeMouse -= elapsed;
 		}
 
@@ -359,21 +422,21 @@ class EXETitle extends MusicBeatState
 			{
 				cancelLogoTweens();
 				mousePosition = 'right';
-				FlxTween.tween(ring,          {x: savedRingX - arrowW},                 0.50, {ease: FlxEase.cubeOut});
-				FlxTween.tween(bandana,       {x: savedRingX + BANDANA_OFF - arrowW},   0.51, {ease: FlxEase.cubeOut});
-				FlxTween.tween(logotxt,       {x: savedRingX + LOGOTXT_OFF - arrowW},   0.52, {ease: FlxEase.cubeOut});
-				FlxTween.tween(eyes,          {x: savedRingX + EYES_OFF - arrowW},      0.55, {ease: FlxEase.cubeOut});
-				FlxTween.tween(parallaxArrow, {x: FlxG.width - arrowW},                 0.50, {ease: FlxEase.cubeOut});
+				if (ring != null) FlxTween.tween(ring,          {x: savedRingX - arrowW},                 0.50, {ease: FlxEase.cubeOut});
+				if (bandana != null) FlxTween.tween(bandana,       {x: savedRingX + BANDANA_OFF - arrowW},   0.51, {ease: FlxEase.cubeOut});
+				if (logotxt != null) FlxTween.tween(logotxt,       {x: savedRingX + logotxt_OFF - arrowW},   0.52, {ease: FlxEase.cubeOut});
+				if (eyes != null) FlxTween.tween(eyes,          {x: savedRingX + EYES_OFF - arrowW},      0.55, {ease: FlxEase.cubeOut});
+				if (parallaxArrow != null) FlxTween.tween(parallaxArrow, {x: FlxG.width - arrowW},                 0.50, {ease: FlxEase.cubeOut});
 			}
 			else if (mousePosition == 'right' && FlxG.mouse.viewX < threshold)
 			{
 				cancelLogoTweens();
 				mousePosition = 'left';
-				FlxTween.tween(ring,          {x: savedRingX},                          0.50, {ease: FlxEase.cubeOut});
-				FlxTween.tween(bandana,       {x: savedRingX + BANDANA_OFF},            0.51, {ease: FlxEase.cubeOut});
-				FlxTween.tween(logotxt,       {x: savedRingX + LOGOTXT_OFF},            0.52, {ease: FlxEase.cubeOut});
-				FlxTween.tween(eyes,          {x: savedRingX + EYES_OFF},               0.55, {ease: FlxEase.cubeOut});
-				FlxTween.tween(parallaxArrow, {x: FlxG.width},                          0.50, {ease: FlxEase.cubeOut});
+				if (ring != null) FlxTween.tween(ring,          {x: savedRingX},                          0.50, {ease: FlxEase.cubeOut});
+				if (bandana != null) FlxTween.tween(bandana,       {x: savedRingX + BANDANA_OFF},            0.51, {ease: FlxEase.cubeOut});
+				if (logotxt != null) FlxTween.tween(logotxt,       {x: savedRingX + logotxt_OFF},            0.52, {ease: FlxEase.cubeOut});
+				if (eyes != null) FlxTween.tween(eyes,          {x: savedRingX + EYES_OFF},               0.55, {ease: FlxEase.cubeOut});
+				if (parallaxArrow != null) FlxTween.tween(parallaxArrow, {x: FlxG.width},                          0.50, {ease: FlxEase.cubeOut});
 			}
 
 			if (mousePosition == 'right' && (pressedEnter || FlxG.mouse.justPressed))
@@ -389,40 +452,40 @@ class EXETitle extends MusicBeatState
 
 				cancelLogoTweens();
 				final arrowW25:Float = arrowW * 2.5;
-				FlxTween.tween(ring,          {x: savedRingX - arrowW25},                 0.90, {ease: FlxEase.cubeOut});
-				FlxTween.tween(bandana,       {x: savedRingX + BANDANA_OFF - arrowW25},   0.91, {ease: FlxEase.cubeOut});
-				FlxTween.tween(logotxt,       {x: savedRingX + LOGOTXT_OFF - arrowW25},   0.92, {ease: FlxEase.cubeOut});
-				FlxTween.tween(eyes,          {x: savedRingX + EYES_OFF - arrowW25},      0.95, {ease: FlxEase.cubeOut});
-				FlxTween.tween(parallaxArrow, {x: FlxG.width - arrowW * 2},               0.90, {ease: FlxEase.cubeOut});
+				if (ring != null) FlxTween.tween(ring,          {x: savedRingX - arrowW25},                 0.90, {ease: FlxEase.cubeOut});
+				if (bandana != null) FlxTween.tween(bandana,       {x: savedRingX + BANDANA_OFF - arrowW25},   0.91, {ease: FlxEase.cubeOut});
+				if (logotxt != null) FlxTween.tween(logotxt,       {x: savedRingX + logotxt_OFF - arrowW25},   0.92, {ease: FlxEase.cubeOut});
+				if (eyes != null) FlxTween.tween(eyes,          {x: savedRingX + EYES_OFF - arrowW25},      0.95, {ease: FlxEase.cubeOut});
+				if (parallaxArrow != null) FlxTween.tween(parallaxArrow, {x: FlxG.width - arrowW * 2},               0.90, {ease: FlxEase.cubeOut});
 			}
 		}
 
 		super.update(elapsed);
 
-		logoSin += elapsed;
+		logoSine += elapsed;
 
-		final sinBase:Float = Math.sin(logoSin);
-		final sinHalf:Float = Math.sin(logoSin + (Math.PI / 2)) * 0.15;
+		final sinBase:Float = Math.sin(logoSine);
+		final sinHalf:Float = Math.sin(logoSine + (Math.PI / 2)) * 0.15;
 		
 		if (ring != null)
 			ring.y = 20 + sinBase * 10;
 			
 		if (bandana != null) 
 		{
-			bandana.y = BANDANA_Y + Math.sin(logoSin - 0.05) * 10;
+			bandana.y = BANDANA_Y + Math.sin(logoSine - 0.05) * 10;
 			bandana.angle = sinHalf;
 		}
 
 		if (logotxt != null) 
 		{
-			logotxt.y = LOGOTXT_Y + Math.sin(logoSin - 0.1) * 10;
+			logotxt.y = logotxt_Y + Math.sin(logoSine - 0.1) * 10;
 			logotxt.angle = sinHalf;
 		}
 
 		if (eyes != null) 
 		{
-			eyes.y = EYES_Y + Math.sin(logoSin - 0.15) * 7;
-			eyes.angle = Math.sin(logoSin + (Math.PI / 2.5) + 0.15) * 2;
+			eyes.y = EYES_Y + Math.sin(logoSine - 0.15) * 7;
+			eyes.angle = Math.sin(logoSine + (Math.PI / 2.5) + 0.15) * 2;
 		}
 
 		if (!canStart || unlocked.length < 5) return;

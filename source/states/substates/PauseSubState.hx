@@ -31,12 +31,16 @@ class PauseSubState extends MusicBeatSubstate
 	public static var miniSonicImage:String = 'sonic';
 	public static var miniSonicOffsets:Array<Int> = [0, 0];
 	public static var songName:String = null;
+	public static var standaloneExit:Void->Void = null;
 
 	public static function restartSong(noTrans:Bool = false)
 	{
-		PlayState.instance.paused = true;
-		FlxG.sound.music.volume = 0;
-		PlayState.instance.vocals.volume = 0;
+		if (PlayState.instance != null)
+		{
+			PlayState.instance.paused = true;
+			PlayState.instance.vocals.volume = 0;
+		}
+		if (FlxG.sound.music != null) FlxG.sound.music.volume = 0;
 		if (noTrans)
 		{
 			FlxTransitionableState.skipNextTransIn = true;
@@ -337,18 +341,28 @@ class PauseSubState extends MusicBeatSubstate
 				case 1:
 					PauseSubState.restartSong();
 				case 2:
-					PlayState.instance.paused = true; // For lua
-					PlayState.instance.vocals.volume = 0;
-					PlayState.instance.canResync = false;
+					if (PlayState.instance != null)
+					{
+						PlayState.instance.paused = true; // For lua
+						PlayState.instance.vocals.volume = 0;
+						PlayState.instance.canResync = false;
+					}
 					OptionsState.onPlayState = true;
 					FlxG.switchState(() -> new OptionsState());
 					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/pause.ogg'), 1);
 				case 3:
+					if (standaloneExit != null)
+					{
+						final exit = standaloneExit;
+						standaloneExit = null;
+						exit();
+						return;
+					}
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 					PlayState.deathCounter    = 0;
 					PlayState.seenCutscene    = false;
 					PlayState.firstPlay       = false;
-					PlayState.instance.canResync = false;
+					if (PlayState.instance != null) PlayState.instance.canResync = false;
 					Mods.loadTopMod();
 					if (states.StoryModeState.fromStoryMode) { states.StoryModeState.fromStoryMode = false; FlxG.switchState(() -> new states.StoryModeState()); }
 					else if (states.SoundTest.fromSoundTest) { states.SoundTest.fromSoundTest = false; FlxG.switchState(() -> new states.SoundTest()); }

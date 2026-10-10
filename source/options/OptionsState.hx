@@ -307,7 +307,7 @@ class OptionsState extends MusicBeatState
 			if (onPlayState)
 			{
 				onPlayState = false;
-				if (PlayState.SONG != null)
+				if (PlayState.SONG != null && standaloneReturnState == null)
 				{
 					backend.StageData.loadDirectory(PlayState.SONG);
 					LoadingState.loadAndSwitchState(new PlayState());

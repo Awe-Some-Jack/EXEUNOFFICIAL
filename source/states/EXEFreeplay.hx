@@ -297,7 +297,8 @@ class EXEFreeplay extends MusicBeatState
 				final sName:String = song[0];
 				final title:String = weekExeTitle ?? sName.toUpperCase();
 
-				if (unlocked.indexOf(Paths.formatToSongPath(sName)) == -1 && !inDevMode) continue;
+				final unlockKey:String = Paths.formatToSongPath(sName) == 'minigame' && Mods.currentModDirectory == 'STARVED' ? 'prey' : Paths.formatToSongPath(sName);
+				if (unlocked.indexOf(unlockKey) == -1 && !inDevMode) continue;
 
 				songInfoList.push({
 					songName: sName,
@@ -857,15 +858,17 @@ class EXEFreeplay extends MusicBeatState
 		final entry = songEntries[selectedBox];
 		final songLower = Paths.formatToSongPath(songs[songSelector]);
 
-		if (songLower == 'the-valley')
+		if (songLower == 'minigame' && entry.folder == 'STARVED')
 		{
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 			FlxG.sound.music?.fadeOut(0.3);
 			stopMusicPlay = true;
-			FlxG.switchState(() -> new thevalley.TheValley());
+			minigames.preymini.PreyMini.fromSoundTest = false;
+			FlxG.switchState(() -> new minigames.preymini.PreyMini());
 			return;
 		}
 
+		minigames.preymini.PreyMini.songLives = 0;
 		Mods.currentModDirectory = entry.folder;
 		PlayState.storyWeek = entry.week;
 		Difficulty.loadFromWeek();

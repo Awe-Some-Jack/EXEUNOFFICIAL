@@ -95,7 +95,7 @@ class PreyMini extends MusicBeatState
 		_spikes = new Spikes(_terrain, "minigame/preymini/bg/map/spikes");
 		_spikes.onHurt = _hurt;
 		add(_spikes.art);
-		add(_terrain.addSprite("minigame/preymini/objects/easter", 52, 700 - 41));
+		add(_terrain.addSprite("minigame/preymini/objects/easter", 52, 700 - 50));
 		add(_terrain.addSprite("minigame/preymini/objects/carteles/cartel1", 4357, 348 - 61));
 		add(_terrain.addSprite("minigame/preymini/objects/carteles/goal", 10138, 1022 - 28));
 		add(_terrain.addSprite("minigame/preymini/objects/carteles/cartel2", 14401, 1213 - 59));

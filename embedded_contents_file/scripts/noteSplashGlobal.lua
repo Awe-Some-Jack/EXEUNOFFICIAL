@@ -224,7 +224,7 @@ function onCreatePost()
 				if splashes.skin ~= nil then holdSplashConf.skin = splashes.skin..'HOLD' end
 				if splashes.holdConfig.skin ~= nil then holdSplashConf.skin = splashes.holdConfig.skin end
 				if splashes.holdConfig.scale ~= nil then holdSplashConf.scale = splashes.holdConfig.scale end
-				if splashes.holdConfig.antialiasing ~= nil then holdSplashConf.antialiasing = splashes.holdConfig.antialiasing end
+				if splashes.holdConfig.antialiasing ~= nil then holdSplashConf.antialiasing = splashes.holdConfig.antialiasing else holdSplashConf.antialiasing = getPropertyFromClass('backend.ClientPrefs', 'data.antialiasing') end
 				if splashes.holdConfig.offset ~= nil then for z,v in pairs(splashes.holdConfig.offset) do if v ~= nil then holdSplashConf.offset[z] = v end end end
 				for n,d in pairs(splashes.holdConfig) do if type(v) == 'table' then for k,v in pairs(d) do if v ~= nil then holdSplashConf[n][k] = v end end end end
 				if splashes.holdConfig.multiKeyHold then
@@ -317,7 +317,7 @@ function doSplash(data, skin, precache)
 	local animName = 'Squirt'
 	local framerate = 24
 	local scale = 1
-	local antialiasing = true
+	local antialiasing = getPropertyFromClass('backend.ClientPrefs', 'data.antialiasing')
 	local lifeTime = 0.5
 
 	if tryAndChange then
@@ -488,6 +488,7 @@ function onEvent(n,v1,v2)
                 addAnimationByPrefix('noteHold'..i, 'start', 'sustain cover intro', 24, false)
                 addAnimationByPrefix('noteHold'..i, 'hold', 'sustain cover loop', 24, true)
                 addAnimationByPrefix('noteHold'..i, 'end', 'sustain cover end', 24, false)
+				setProperty('noteHold'..i..'.antialiasing', getPropertyFromClass('backend.ClientPrefs', 'data.antialiasing'))
                 scaleObject('noteHold'..i, 0.9, 0.9)
                 daHoldConfig = {offsetX = -85, offsetY = -62}
                 playAnim('noteHold'..i, 'end', true)

@@ -52,6 +52,8 @@ class PreyMini extends MusicBeatState
 	var _oneUps:Int = 0;
 	var _prevUpdateFps:Int = 60;
 	var _prevDrawFps:Int = 60;
+	
+	var _exitTimer:FlxTimer = null;
 
 	public function new(lives:Int = 3, score:Int = 0)
 	{
@@ -412,7 +414,9 @@ class PreyMini extends MusicBeatState
 			return;
 		}
 		final lives = _lives, score = _hud.score;
-		new FlxTimer().start(1, _ -> _overlay.fade(FlxColor.BLACK, 0.5, false, () ->
+		
+		_exitTimer?.cancel();
+		_exitTimer = new FlxTimer().start(1, _ -> _overlay.fade(FlxColor.BLACK, 0.5, false, () ->
 		{
 			if (quit) _exitMinigame();
 			else FlxG.switchState(() -> new PreyMini(lives, score));
@@ -433,6 +437,7 @@ class PreyMini extends MusicBeatState
 
 	override public function destroy():Void
 	{
+		_exitTimer?.cancel();
 		PauseSubState.standaloneExit = null;
 		FlxG.stage.window.title = _prevWindowTitle;
 		_setFps(_prevUpdateFps, _prevDrawFps);

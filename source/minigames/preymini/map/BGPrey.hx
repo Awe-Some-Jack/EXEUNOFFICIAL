@@ -12,6 +12,8 @@ class BGPrey
 	static final DARK:Array<Float>   = [0, 0, 0];
 	static final STRIKE:Array<Float> = [216, 108, 180];
 	static final EMBERS:Array<Float> = [9, 0, 0];
+	
+	static final TEMP_REPLACE:Array<Float> = [0, 0, 0];
 
 	public var speed(default, null):Float = 0;
 	public var lit(default, null):Bool = false;
@@ -173,9 +175,13 @@ class BGPrey
 
 		_striking = false;
 		_lightning.visible = false;
-		_afterglow = FlxTween.num(0, 1, 2.0, null, n -> _shader.setReplace([
-			for (c in 0...3) STRIKE[c] + (EMBERS[c] - STRIKE[c]) * n
-		]));
+		
+		_afterglow = FlxTween.num(0, 1, 2.0, null, n -> {
+			TEMP_REPLACE[0] = STRIKE[0] + (EMBERS[0] - STRIKE[0]) * n;
+			TEMP_REPLACE[1] = STRIKE[1] + (EMBERS[1] - STRIKE[1]) * n;
+			TEMP_REPLACE[2] = STRIKE[2] + (EMBERS[2] - STRIKE[2]) * n;
+			_shader.setReplace(TEMP_REPLACE);
+		});
 	}
 
 	static function _pixelArt(spr:FlxSprite, scale:Float, scrollX:Float, scrollY:Float):Void

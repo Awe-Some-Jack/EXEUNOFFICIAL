@@ -108,7 +108,7 @@ class BigOven extends FlxSprite
 			case Alert:
 				_timer -= elapsed;
 				final urgency = 1 - Math.max(0, _timer) / (defeated ? 0.9 : 1.3);
-				animation.curAnim.frameRate = 8 + 22 * urgency;
+				if (animation.curAnim != null) animation.curAnim.frameRate = 8 + 22 * urgency;
 				offset.x = (Std.int(_timer / 0.03) % 2 == 0 ? 1 : -1) * 6 * urgency;
 				if (_timer <= 0) _explode();
 			case Exploding:

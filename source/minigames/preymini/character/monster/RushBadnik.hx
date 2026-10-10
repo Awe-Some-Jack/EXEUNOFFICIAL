@@ -1,6 +1,7 @@
 package minigames.preymini.character.monster;
 
 import haxe.io.Bytes;
+
 import minigames.preymini.character.player.Sonic;
 import minigames.preymini.map.Terrain;
 
@@ -13,6 +14,8 @@ enum RushBadnikState
 
 class RushBadnik extends FlxSprite
 {
+	static final _rushMaskCache:Map<String, Array<Bytes>> = new Map();
+
 	public var state(default, null):RushBadnikState = Waiting;
 
 	public var onHurt:Float->Void = null;
@@ -46,7 +49,24 @@ class RushBadnik extends FlxSprite
 		frames = Paths.getSparrowAtlas("minigame/preymini/characters/enemys/Badnik_3", null, false);
 		animation.addByPrefix("spin", "Badnik_3", 10, true);
 		animation.play("spin");
-		for (i in animation.getByName("spin").frames) _masks.push(_mask(i));
+
+		final cacheKey = "Badnik_3_spin";
+		if (_rushMaskCache.exists(cacheKey))
+		{
+			for (m in _rushMaskCache.get(cacheKey))
+			{
+				_masks.push(m);
+			}
+		}
+		else
+		{
+			for (i in animation.getByName("spin").frames)
+			{
+				_masks.push(_mask(i));
+			}
+			_rushMaskCache.set(cacheKey, _masks);
+		}
+
 		antialiasing = false;
 		moves = false;
 		scale.set(6, 6);
@@ -110,6 +130,7 @@ class RushBadnik extends FlxSprite
 
 	function _touches():Bool
 	{
+		if (_masks.length == 0) return false;
 		final mask = _masks[animation.curAnim != null ? animation.curAnim.curFrame : 0];
 		final x0 = Std.int(Math.max(0, Math.floor(_sonic.posX - _sonic.hitRadiusX - posX)));
 		final x1 = Std.int(Math.min(frameWidth, Math.ceil(_sonic.posX + _sonic.hitRadiusX - posX)));

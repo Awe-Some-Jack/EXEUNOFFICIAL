@@ -5,6 +5,18 @@ import minigames.preymini.map.Terrain;
 
 class Sonic extends FlxSprite implements CameraTarget
 {
+	static final TOP_SPEED:Float = 6.0;
+	static final ACCELERATION:Float = 0.046875;
+	static final DECELERATION:Float = 0.5;
+	static final FRICTION:Float = 0.046875;
+	static final JUMP_FORCE:Float = -6.5;
+	static final GRAVITY:Float = 0.21875;
+	static final AIR_ACCEL:Float = 0.09375;
+	static final ROLL_DOWN_ACCEL:Float = 0.3125;
+	static final ROLL_UP_ACCEL:Float = 0.078125;
+	static final ROLL_FRICTION:Float = 0.0234375;
+	static final SLOPE_GRAVITY:Float = 0.125;
+
 	static final OUTTA_FRAMES:Array<Int> = [0, 1, 1, 2, 2, 3, 3, 4, 4, 1, 1, 2, 2, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 10, 11];
 
 	static final DX:Array<Int> = [0, 1, 0, -1];
@@ -245,10 +257,10 @@ class Sonic extends FlxSprite implements CameraTarget
 		if (grounded)
 		{
 			final sin = Math.sin(groundAngle), cos = Math.cos(groundAngle);
-			_xsp = _gsp * cos + 6.5 * sin;
-			_ysp = _gsp * sin - 6.5 * cos;
+			_xsp = _gsp * cos - JUMP_FORCE * sin;
+			_ysp = _gsp * sin + JUMP_FORCE * cos;
 		}
-		else _ysp = -6.5;
+		else _ysp = JUMP_FORCE;
 		_leaveGround();
 		_curled = true;
 		rolling = crouching = _skidding = false;
@@ -279,13 +291,13 @@ class Sonic extends FlxSprite implements CameraTarget
 		if (!down) crouching = false;
 
 		final sin = Math.sin(groundAngle);
-		if (rolling) _gsp += (_gsp * sin >= 0 ? 0.3125 : 0.078125) * sin;
-		else if (!crouching && (_gsp != 0 || Math.abs(0.125 * sin) >= 0.05078125)) _gsp += 0.125 * sin;
+		if (rolling) _gsp += (_gsp * sin >= 0 ? ROLL_DOWN_ACCEL : ROLL_UP_ACCEL) * sin;
+		else if (!crouching && (_gsp != 0 || Math.abs(SLOPE_GRAVITY * sin) >= 0.05078125)) _gsp += SLOPE_GRAVITY * sin;
 
 		if (rolling)
 		{
 			if (dir != 0 && dir * _gsp < 0) _gsp = _toward(_gsp, 0, 0.125);
-			_gsp = _toward(_gsp, 0, 0.0234375);
+			_gsp = _toward(_gsp, 0, ROLL_FRICTION);
 			if (Math.abs(_gsp) < 0.5 && mode == 0)
 			{
 				rolling = false;
@@ -293,7 +305,7 @@ class Sonic extends FlxSprite implements CameraTarget
 			}
 			_skidding = false;
 		}
-		else if (crouching) _gsp = _toward(_gsp, 0, 0.046875);
+		else if (crouching) _gsp = _toward(_gsp, 0, FRICTION);
 		else if (dir != 0 && dir * _gsp < 0)
 		{
 			if (!_skidding && Math.abs(_gsp) >= 4 && mode == 0)
@@ -301,17 +313,26 @@ class Sonic extends FlxSprite implements CameraTarget
 				_skidding = true;
 				_sfx("skid");
 			}
-			_gsp = _toward(_gsp, 0, 0.5);
+			_gsp = _toward(_gsp, 0, DECELERATION);
 			if (_gsp == 0) _skidding = false;
 		}
 		else if (dir != 0)
 		{
 			_skidding = false;
-			if (dir * _gsp < 6) _gsp = _toward(_gsp, dir * 6, 0.046875);
+			
+			final uphill = dir * sin > 0;
+			if (uphill && Math.abs(_gsp) < 2.0 && Math.abs(sin) > 0.4)
+			{
+				_gsp = _toward(_gsp, 0, ACCELERATION);
+			}
+			else
+			{
+				if (dir * _gsp < TOP_SPEED) _gsp = _toward(_gsp, dir * TOP_SPEED, ACCELERATION);
+			}
 		}
 		else
 		{
-			_gsp = _toward(_gsp, 0, 0.046875);
+			_gsp = _toward(_gsp, 0, FRICTION);
 			if (Math.abs(_gsp) < 4) _skidding = false;
 		}
 		_gsp = Math.max(-16, Math.min(16, _gsp));
@@ -354,7 +375,7 @@ class Sonic extends FlxSprite implements CameraTarget
 			if (_gsp == 0) break;
 		}
 
-		if (mode != 0 && Math.abs(_gsp) < 2.5)
+		if (mode != 0 && Math.abs(_gsp) < 1.0)
 		{
 			_xsp = _gsp * Math.cos(groundAngle);
 			_ysp = _gsp * Math.sin(groundAngle);
@@ -410,7 +431,7 @@ class Sonic extends FlxSprite implements CameraTarget
 		if (_coyote > 0) _coyote--;
 
 		if (_jumped && _ysp < -4 && !held) _ysp = -4;
-		if (dir != 0 && dir * _xsp < 6) _xsp = _toward(_xsp, dir * 6, 0.09375);
+		if (dir != 0 && dir * _xsp < TOP_SPEED) _xsp = _toward(_xsp, dir * TOP_SPEED, AIR_ACCEL);
 		if (_ysp < 0 && _ysp > -4 && Math.abs(_xsp) >= 0.125) _xsp -= _xsp * (1 / 32);
 
 		final steps = Std.int(Math.max(1, Math.ceil(Math.max(Math.abs(_xsp), Math.abs(_ysp)) / 8)));
@@ -420,7 +441,7 @@ class Sonic extends FlxSprite implements CameraTarget
 			posY += _ysp / steps;
 			if (_airCollide()) return;
 		}
-		_ysp = Math.min(_ysp + (hurting ? 0.1875 : 0.21875), 16);
+		_ysp = Math.min(_ysp + (hurting ? 0.1875 : GRAVITY), 16);
 		_switchPath();
 	}
 
@@ -684,7 +705,7 @@ class Sonic extends FlxSprite implements CameraTarget
 		}
 		posX += _xsp;
 		posY += _ysp;
-		_ysp = Math.min(_ysp + 0.21875, 16);
+		_ysp = Math.min(_ysp + GRAVITY, 16);
 	}
 
 	function _edgeSide():Int
@@ -733,7 +754,7 @@ class Sonic extends FlxSprite implements CameraTarget
 			{
 				cx -= dx;
 				cy -= dy;
-				if (++n >= 32) return Math.NaN;
+				if (++n >= 96) return Math.NaN;
 			}
 		}
 		else
@@ -742,7 +763,7 @@ class Sonic extends FlxSprite implements CameraTarget
 			{
 				cx += dx;
 				cy += dy;
-				if (++n > 32) return Math.NaN;
+				if (++n > 96) return Math.NaN;
 			}
 			while (!_solid(cx, cy, platforms));
 		}
@@ -871,5 +892,13 @@ class Sonic extends FlxSprite implements CameraTarget
 	static inline function _toward(value:Float, target:Float, step:Float):Float
 	{
 		return value < target ? Math.min(value + step, target) : Math.max(value - step, target);
+	}
+
+	override public function destroy():Void
+	{
+		_stopCharge();
+		_revSound?.destroy();
+		_chargeSound?.destroy();
+		super.destroy();
 	}
 }

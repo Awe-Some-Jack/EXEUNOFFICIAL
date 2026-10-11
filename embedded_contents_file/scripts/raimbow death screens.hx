@@ -133,7 +133,7 @@ function changeGameOvers() {
 }
 
 function setCamEvents() {
-    if (exeGameOvers)
+    if (exeGameOvers || songName == 'substantial')
     {
         FlxTween.cancelTweensOf(FlxG.camera); //Just in case, heh.
         FlxG.camera.follow();

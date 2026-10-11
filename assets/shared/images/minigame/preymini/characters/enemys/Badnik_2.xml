@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="Badnik_2.png">
+<TextureAtlas imagePath="Badnik_2.webp">
 <SubTexture name="Badnik_20000" x="0" y="0" width="79" height="80" frameX="0" frameY="0" frameWidth="79" frameHeight="80" />
 <SubTexture name="Badnik_20001" x="81" y="0" width="79" height="80" frameX="0" frameY="0" frameWidth="79" frameHeight="80" />
 <SubTexture name="Badnik_20002" x="162" y="0" width="79" height="80" frameX="0" frameY="0" frameWidth="79" frameHeight="80" />

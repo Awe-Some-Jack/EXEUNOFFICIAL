@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="SonicCutscene.png">
+<TextureAtlas imagePath="SonicCutscene.webp">
 <SubTexture name="SonicCutscene0000" x="0" y="0" width="29" height="39" frameX="-30" frameY="-40" frameWidth="87" frameHeight="101" />
 <SubTexture name="SonicCutscene0001" x="31" y="0" width="27" height="39" frameX="-30" frameY="-40" frameWidth="87" frameHeight="101" />
 <SubTexture name="SonicCutscene0002" x="60" y="0" width="26" height="39" frameX="-32" frameY="-40" frameWidth="87" frameHeight="101" />

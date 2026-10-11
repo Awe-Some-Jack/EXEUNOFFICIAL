@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="bf_menu.png">
+<TextureAtlas imagePath="bf_menu.webp">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="ay instancia 10000" x="36" y="36" width="291" height="326" frameX="-12" frameY="-167" frameWidth="849" frameHeight="2094"/>

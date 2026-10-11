@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="sky15-lightning-anim.png">
+<TextureAtlas imagePath="sky15-lightning-anim.webp">
 <SubTexture name="idle0000" x="0" y="0" width="772" height="84" frameX="0" frameY="-296" frameWidth="768" frameHeight="768" />
 <SubTexture name="idle0001" x="0" y="84" width="772" height="84" frameX="0" frameY="-296" frameWidth="768" frameHeight="768" />
 <SubTexture name="idle0002" x="0" y="168" width="772" height="84" frameX="0" frameY="-296" frameWidth="768" frameHeight="768" />

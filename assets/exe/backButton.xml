@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="backButton.png">
+<TextureAtlas imagePath="backButton.webp">
 	<!-- Created using the Spritesheet and XML generator -->
 	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
 	<SubTexture name="press0000" x="0" y="0" width="891" height="985" frameX="-301" frameY="-159" frameWidth="1500" frameHeight="1300"/>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="Fire_Box.png">
+<TextureAtlas imagePath="Fire_Box.webp">
 <SubTexture name="box0000" x="0" y="0" width="33" height="31" frameX="-83" frameY="-46" frameWidth="200" frameHeight="100" />
 <SubTexture name="box0001" x="35" y="0" width="33" height="31" frameX="-83" frameY="-46" frameWidth="200" frameHeight="100" />
 <SubTexture name="box0002" x="70" y="0" width="33" height="31" frameX="-83" frameY="-46" frameWidth="200" frameHeight="100" />

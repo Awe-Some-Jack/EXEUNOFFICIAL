@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="sonic.png">
+<TextureAtlas imagePath="sonic.webp">
 <SubTexture name="idle0000" x="0" y="0" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
 <SubTexture name="bored0000" x="0" y="65" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
 <SubTexture name="bored0001" x="65" y="0" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />

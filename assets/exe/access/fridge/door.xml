@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="door.png">
+<TextureAtlas imagePath="door.webp">
 	<!-- Created with Adobe Animate version 22.0.7.214 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="door instancia 10000" x="0" y="0" width="945" height="1043" frameX="-611" frameY="-26" frameWidth="1571" frameHeight="1069"/>

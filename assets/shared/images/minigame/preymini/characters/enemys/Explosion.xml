@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="Explosion.png">
+<TextureAtlas imagePath="Explosion.webp">
 <SubTexture name="Explosion0000" x="0" y="0" width="20" height="16" frameX="-50" frameY="-47" frameWidth="119" frameHeight="89" />
 <SubTexture name="Explosion0001" x="22" y="0" width="26" height="30" frameX="-47" frameY="-43" frameWidth="119" frameHeight="89" />
 <SubTexture name="Explosion0002" x="50" y="0" width="32" height="32" frameX="-44" frameY="-45" frameWidth="119" frameHeight="89" />

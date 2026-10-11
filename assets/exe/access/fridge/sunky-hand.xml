@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="Sunky-Hand.png">
+<TextureAtlas imagePath="Sunky-Hand.webp">
 	<!-- Created with Adobe Animate version 22.0.7.214 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="sunky hand instancia 10000" x="0" y="0" width="0" height="0" frameX="-697" frameY="290" frameWidth="1680" frameHeight="998"/>

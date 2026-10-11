@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="Mail Box.png">
+<TextureAtlas imagePath="Mail Box.webp">
 	<!-- Created with Adobe Animate version 22.0.7.214 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="Mail instancia 10000" x="0" y="0" width="0" height="0" frameX="-432" frameY="-259" frameWidth="2058" frameHeight="1414"/>

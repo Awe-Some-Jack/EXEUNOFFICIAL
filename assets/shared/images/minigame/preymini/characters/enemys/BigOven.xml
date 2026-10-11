@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="BigOven.png">
+<TextureAtlas imagePath="BigOven.webp">
 <SubTexture name="BigOven_Walk0000" x="0" y="0" width="53" height="71" frameX="-85" frameY="-97" frameWidth="371" frameHeight="187" />
 <SubTexture name="BigOven_Walk0001" x="55" y="0" width="49" height="73" frameX="-85" frameY="-95" frameWidth="371" frameHeight="187" />
 <SubTexture name="BigOven_Walk0002" x="106" y="0" width="47" height="74" frameX="-84" frameY="-94" frameWidth="371" frameHeight="187" />

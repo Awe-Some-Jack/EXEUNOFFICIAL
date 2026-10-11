@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="ring.png">
+<TextureAtlas imagePath="ring.webp">
 <SubTexture name="idle0000" x="321" y="1336" width="332" height="332" frameX="-1" frameY="-1" frameWidth="326" frameHeight="326" />
 <SubTexture name="idle0001" x="653" y="1336" width="331" height="332" frameX="0" frameY="-1" frameWidth="326" frameHeight="326" />
 <SubTexture name="idle0002" x="984" y="1336" width="328" height="332" frameX="0" frameY="-1" frameWidth="326" frameHeight="326" />

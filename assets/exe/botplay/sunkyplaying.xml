@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="sunkyplaying.png">
+<TextureAtlas imagePath="sunkyplaying.webp">
 	<!-- Created with Adobe Animate version 22.0.7.214 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="down instancia 10000" x="0" y="0" width="377" height="320" frameX="0" frameY="-2" frameWidth="377" frameHeight="321"/>

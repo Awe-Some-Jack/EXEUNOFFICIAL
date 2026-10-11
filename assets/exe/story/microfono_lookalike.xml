@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="microfono_lookalike.png">
+<TextureAtlas imagePath="microfono_lookalike.webp">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="micro instancia 10000" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>

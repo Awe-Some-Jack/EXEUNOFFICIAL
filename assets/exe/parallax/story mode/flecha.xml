@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="flecha.png">
+<TextureAtlas imagePath="flecha.webp">
 	<!-- Created with Adobe Animate version 24.0.10.14 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="Símbolo 2 instancia 10000" x="100" y="100" width="304" height="350" frameX="0" frameY="-44" frameWidth="304" frameHeight="394"/>

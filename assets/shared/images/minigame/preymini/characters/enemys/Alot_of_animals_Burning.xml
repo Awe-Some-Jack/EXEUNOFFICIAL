@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="Alot_of_animals_Burning.png">
+<TextureAtlas imagePath="Alot_of_animals_Burning.webp">
 <SubTexture name="Alot_of_animals_Burning0000" x="0" y="0" width="107" height="76" frameX="0" frameY="0" frameWidth="107" frameHeight="76" />
 <SubTexture name="Alot_of_animals_Burning0001" x="109" y="0" width="107" height="76" frameX="0" frameY="0" frameWidth="107" frameHeight="76" />
 <SubTexture name="Alot_of_animals_Burning0002" x="218" y="0" width="107" height="76" frameX="0" frameY="0" frameWidth="107" frameHeight="76" />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="cd.png">
+<TextureAtlas imagePath="cd.webp">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="cd instancia 10000" x="451" y="466" width="395" height="74" frameX="-16" frameY="-247" frameWidth="395" frameHeight="74"/>

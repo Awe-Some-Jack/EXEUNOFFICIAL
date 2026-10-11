@@ -1,129 +1,137 @@
 {
 	"animations": [
 		{
-			"offsets": [0, 0],
 			"loop": true,
-			"fps": 24,
+			"offsets": [0, 0],
 			"anim": "idle",
-			"indices": [],
-			"name": "edcuator idle0"
+			"fps": 24,
+			"name": "edcuator idle0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [0, -3],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "edcuator up0"
+			"fps": 24,
+			"name": "edcuator up0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [0, -9],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "edcuator down0"
+			"fps": 24,
+			"name": "edcuator down0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-13, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "edcuator right0"
+			"fps": 24,
+			"name": "edcuator right0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [30, -5],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "edcuator left0"
+			"fps": 24,
+			"name": "edcuator left0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [15, 12],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT-alt",
-			"indices": [],
-			"name": "edcuator left pose"
+			"fps": 24,
+			"name": "edcuator left pose",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-15, 12],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP-alt",
-			"indices": [],
-			"name": "edcuator up pose"
+			"fps": 24,
+			"name": "edcuator up pose",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-15, -2],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN-alt",
-			"indices": [],
-			"name": "edcuator down pose"
+			"fps": 24,
+			"name": "edcuator down pose",
+			"indices": []
 		},
 		{
-			"offsets": [-7, 4],
 			"loop": true,
-			"fps": 24,
+			"offsets": [-7, 4],
 			"anim": "idle-alt",
-			"indices": [],
-			"name": "edcuator idle 0"
+			"fps": 24,
+			"name": "edcuator idle 0",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [-3, 0],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT-alt",
-			"indices": [],
-			"name": "edcuator right pose"
+			"fps": 24,
+			"name": "edcuator right pose",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "problem",
-			"fps": 24,
-			"name": "Edcuator If you got problem",
-			"indices": []
+			"indices": [],
+			"name": "Edcuator If you got problem"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "character",
-			"fps": 24,
-			"name": "Edcuator If you don",
-			"indices": []
+			"indices": [],
+			"name": "Edcuator If you don"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "im",
-			"fps": 24,
-			"name": "Edcuator im sonic",
-			"indices": []
+			"indices": [],
+			"name": "Edcuator im sonic"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "hi",
-			"fps": 24,
-			"name": "edcuator sonic",
-			"indices": []
+			"indices": [],
+			"name": "edcuator sonic"
 		},
 		{
-			"loop": false,
 			"offsets": [0, 0],
-			"anim": "click",
+			"loop": false,
 			"fps": 24,
-			"name": "edcuator click",
-			"indices": []
+			"anim": "click",
+			"indices": [],
+			"name": "edcuator click"
+		},
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "find",
+			"loop": false,
+			"name": "Edcuator find me last line"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
-	"image": "characters/edcuator, characters/edcuator_if_you_got_problem, characters/edcuator_if_you_dont_believe, characters/edcuator_im_sonic, characters/edcuator_hi_me_sonic, characters/edcuator_click_me_for_help, characters/edcuator_light_out",
+	"image": "characters/edcuator, characters/Edcuator_find_me, characters/edcuator_if_you_got_problem, characters/edcuator_if_you_dont_believe, characters/edcuator_im_sonic, characters/edcuator_hi_me_sonic, characters/edcuator_click_me_for_help, characters/edcuator_light_out",
 	"position": [0, 0],
 	"healthicon": "sonic",
 	"flip_x": false,

@@ -405,7 +405,7 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 						fracX -= 170;
 					case 'tr-TR':
 						fracX -= 140;
-					case 'pi-PI':
+					case 'en-PIRATE':
 						fracX -= 7.5;
 					case 'es-419', "uk-UA", "it-IT", "fr-FR":
 						fracX += 100;
@@ -573,7 +573,7 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 						fracX += 40;
 					case 'tr-TR':
 						fracX += 2.5;
-					case 'pi-PI':
+					case 'en-PIRATE':
 						fracX += 85;
 					case "uk-UA", "de-DE":
 						fracX += 5;

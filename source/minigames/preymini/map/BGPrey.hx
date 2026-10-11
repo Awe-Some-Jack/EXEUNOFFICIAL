@@ -38,7 +38,7 @@ class BGPrey
 	{
 		_state = state;
 		_shader.setColors(GLOW, DARK);
-		_parade = new SkyParade(this);
+		_parade = new SkyParade(layer -> layerVelocity(layer), () -> layerY, 4);
 
 		for (i in 0...15)
 		{

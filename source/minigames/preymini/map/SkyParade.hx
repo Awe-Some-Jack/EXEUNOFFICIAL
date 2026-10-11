@@ -43,7 +43,12 @@ class SkyParade
 
 	public var burning:Bool = false;
 
-	final _bg:BGPrey;
+	public var crowd:Float = 1;
+
+	public final unit:Float;
+
+	final _velocity:Int->Float;
+	final _layerY:Void->Float;
 	final _raiders:Array<Raider> = [];
 	final _booms:Array<Boom> = [];
 	var _calm:Float = 4.5;
@@ -56,9 +61,11 @@ class SkyParade
 	var _right:Float = 0;
 	var _rally:Bool = false;
 
-	public function new(bg:BGPrey)
+	public function new(velocity:Int->Float, layerY:Void->Float, unit:Float)
 	{
-		_bg = bg;
+		_velocity = velocity;
+		_layerY = layerY;
+		this.unit = unit;
 		for (lane in LANES)
 		{
 			groups.push(new FlxTypedGroup<FlxSprite>());
@@ -89,7 +96,7 @@ class SkyParade
 			_spawnTimer -= elapsed;
 			if (_spawnTimer <= 0)
 			{
-				_spawnTimer = _rally ? FlxG.random.float(0.25, 0.5) : FlxG.random.float(0.8, 1.6);
+				_spawnTimer = _rally ? FlxG.random.float(0.25, 0.5) : FlxG.random.float(0.8, 1.6) / crowd;
 				_spawn(FlxG.random.weightedPick(KIND_WEIGHTS));
 			}
 			_cityTimer -= elapsed;
@@ -98,10 +105,10 @@ class SkyParade
 				_cityTimer = _rally ? FlxG.random.float(0.45, 1.1) : FlxG.random.float(3, 6);
 				final x = FlxG.random.float(_rally ? _left + (_right - _left) * 0.6 : _left, _right);
 				final size = _rally ? FlxG.random.float(1, 1.8) : 1;
-				_boom(0, x, FlxG.random.float(392, 410), size);
+				_boom(0, x, FlxG.random.float(392, 410), size * unit / 4);
 				if (_rally && onBoom != null) onBoom((x - _left) / (_right - _left) * 2 - 1, size);
 			}
-			if (_wave <= 0) _calm = FlxG.random.float(5, 9);
+			if (_wave <= 0) _calm = FlxG.random.float(5, 9) / crowd;
 		}
 		else if ((_calm -= elapsed) <= 0)
 		{
@@ -117,7 +124,7 @@ class SkyParade
 			final r = _raiders[i];
 			if (r.age > 45) r.fade = Math.max(0, r.fade - elapsed);
 			r.onScreen = r.x > _left && r.x < _right;
-			r.update(elapsed, _bg.layerVelocity(LANES[r.lane].layer), _bg.layerY);
+			r.update(elapsed, _velocity(LANES[r.lane].layer), _layerY());
 			if (r.hasImpact)
 			{
 				r.hasImpact = false;
@@ -134,7 +141,7 @@ class SkyParade
 		while (j-- > 0)
 		{
 			final b = _booms[j];
-			b.update(elapsed, _bg.layerVelocity(LANES[b.lane].layer), _bg.layerY);
+			b.update(elapsed, _velocity(LANES[b.lane].layer), _layerY());
 			if (b.done)
 			{
 				b.destroy();
@@ -179,21 +186,21 @@ class SkyParade
 
 	function _spawn(kind:RaiderKind):Void
 	{
-		if (_raiders.length >= (_rally ? 14 : 9)) return;
+		if (_raiders.length >= (_rally ? 14 : Std.int(9 * crowd))) return;
 
 		for (_ in 0...6)
 		{
 			final lane = _laneFor(kind);
 			final l = LANES[lane];
 			final row = FlxG.random.float(l.top, l.bottom);
-			final v = _bg.layerVelocity(l.layer) + _dir * Raider.cruise(kind);
+			final v = _velocity(l.layer) + _dir * Raider.cruise(kind) * unit / 4;
 			final fromRight = v < 0 || (v == 0 && _dir < 0);
 			if (_crowded(lane, row, fromRight ? _right : _left)) continue;
 
 			final r = new Raider(this, kind, lane, row, _dir);
 			final jitter = 40 + FlxG.random.float(0, 200);
 			r.x = fromRight ? _right + r.extent + jitter : _left - r.extent - jitter;
-			r.update(0, 0, _bg.layerY);
+			r.update(0, 0, _layerY());
 			_raiders.push(r);
 			return;
 		}
@@ -219,7 +226,7 @@ class SkyParade
 	function _boom(lane:Int, x:Float, row:Float, scale:Float):Void
 	{
 		final b = new Boom(this, lane, x, row, scale);
-		b.update(0, 0, _bg.layerY);
+		b.update(0, 0, _layerY());
 		_booms.push(b);
 	}
 
@@ -244,6 +251,7 @@ class SkyParade
 private class SkyBits
 {
 	public final scale:Float;
+	final _unit:Float;
 	final _group:FlxTypedGroup<FlxSprite>;
 	final _shader:ParadeShader;
 	final _sprites:Array<FlxSprite> = [];
@@ -251,6 +259,7 @@ private class SkyBits
 	public function new(parade:SkyParade, lane:Int, scale:Float)
 	{
 		this.scale = scale;
+		_unit = parade.unit;
 		_group = parade.groups[lane];
 		_shader = parade.shaders[lane];
 	}
@@ -355,7 +364,7 @@ private class Raider extends SkyBits
 
 	public function new(parade:SkyParade, kind:RaiderKind, lane:Int, row:Float, dir:Int)
 	{
-		super(parade, lane, SkyParade.LANES[lane].scale);
+		super(parade, lane, SkyParade.LANES[lane].scale * parade.unit / 4);
 		this.kind = kind;
 		this.lane = lane;
 		this.row = row;
@@ -390,7 +399,7 @@ private class Raider extends SkyBits
 				_vx = FlxG.random.float(1100, 1500);
 				_vy = FlxG.random.float(60, 140);
 		}
-		_vx *= dir;
+		_vx *= dir * _unit / 4;
 		_body.flipX = dir > 0;
 		extent = (_body.frameWidth / 2 + (kind == Lantern ? 20 : 0)) * scale;
 	}
@@ -425,7 +434,7 @@ private class Raider extends SkyBits
 		row += _vy * elapsed / 4;
 
 		final bob = _diving || kind == Rush ? 0 : Math.sin(_t * 2.4 + _phase) * 3;
-		final cy = layerY + row * 4 + bob * scale;
+		final cy = layerY + row * _unit + bob * scale;
 		_body.x = x - _body.frameWidth / 2;
 		_body.y = cy - _body.frameHeight / 2;
 		_body.angle = _diving ? (_body.flipX ? 1 : -1) * 40 * _vy / 320 : 0;
@@ -439,7 +448,7 @@ private class Raider extends SkyBits
 			default:
 		}
 
-		if (_diving && _diveRows >= 36) _impact(x, row + _body.frameHeight / 2 * scale / 4, true);
+		if (_diving && _diveRows >= 36) _impact(x, row + _body.frameHeight / 2 * scale / _unit, true);
 	}
 
 	function _placeLantern(elapsed:Float, scrollVx:Float, layerY:Float, cy:Float):Void
@@ -454,8 +463,8 @@ private class Raider extends SkyBits
 			_boxRow += fall;
 			_bombRows += fall;
 			_box.x = _boxX - (99.5) * scale;
-			_box.y = layerY + _boxRow * 4 - (61.5) * scale;
-			_centerGlow(_light, _boxX, layerY + _boxRow * 4);
+			_box.y = layerY + _boxRow * _unit - (61.5) * scale;
+			_centerGlow(_light, _boxX, layerY + _boxRow * _unit);
 		}
 		else
 		{
@@ -466,7 +475,7 @@ private class Raider extends SkyBits
 			_box.x = left + (boxAt - 83) * scale;
 			_box.y = top + (hold - 46) * scale;
 			_boxX = left + (boxAt + 16.5) * scale;
-			_boxRow = (top + (hold + 15.5) * scale - layerY) / 4;
+			_boxRow = (top + (hold + 15.5) * scale - layerY) / _unit;
 			_centerGlow(_light, _boxX, top + (hold + 15.5) * scale);
 		}
 
@@ -476,7 +485,7 @@ private class Raider extends SkyBits
 
 		if (_boxFalling && _bombRows >= 30)
 		{
-			_impact(_boxX, _boxRow + 15.5 * scale / 4, false);
+			_impact(_boxX, _boxRow + 15.5 * scale / _unit, false);
 			_box.visible = _light.visible = false;
 			_box = null;
 			_boxFalling = false;
@@ -561,7 +570,7 @@ private class Boom extends SkyBits
 	{
 		_t += elapsed;
 		_x += scrollVx * elapsed;
-		final ground = layerY + _row * 4;
+		final ground = layerY + _row * _unit;
 		_fire.x = _x - 100 * scale;
 		_fire.y = ground - 79 * scale;
 

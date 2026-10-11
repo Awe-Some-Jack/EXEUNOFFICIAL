@@ -15,11 +15,6 @@ function onCreate()
     PlayState.instance.disableMobileComboOffset = true;
 }
 
-function onCreatePost() 
-{
-    comboGroup.y += 100 * (ClientPrefs.data.downScroll ? -1 : 1);
-}
-
 function onDestroy()
 {
     if (luaCallback != null) {

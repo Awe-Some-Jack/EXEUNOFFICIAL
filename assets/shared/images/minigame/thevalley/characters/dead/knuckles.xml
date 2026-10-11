@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="knuckles.png">
-<SubTexture name="knuckles dead0000" x="0" y="0" width="81" height="37" frameX="-2" frameY="-5" frameWidth="73" frameHeight="32" />
-<SubTexture name="knuckles dead0001" x="0" y="37" width="79" height="37" frameX="-4" frameY="-5" frameWidth="73" frameHeight="32" />
-<SubTexture name="knuckles dead0002" x="81" y="0" width="79" height="37" frameX="-4" frameY="-5" frameWidth="73" frameHeight="32" />
-<SubTexture name="knuckles dead0003" x="0" y="74" width="80" height="37" frameX="-3" frameY="-5" frameWidth="73" frameHeight="32" />
-<SubTexture name="knuckles dead0004" x="0" y="111" width="81" height="37" frameX="-2" frameY="-5" frameWidth="73" frameHeight="32" />
-</TextureAtlas>

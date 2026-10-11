@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Badnik_3.png">
+<SubTexture name="Badnik_30000" x="0" y="0" width="43" height="35" frameX="0" frameY="0" frameWidth="43" frameHeight="35" />
+<SubTexture name="Badnik_30001" x="45" y="0" width="43" height="35" frameX="0" frameY="0" frameWidth="43" frameHeight="35" />
+<SubTexture name="Badnik_30002" x="90" y="0" width="43" height="35" frameX="0" frameY="0" frameWidth="43" frameHeight="35" />
+<SubTexture name="Badnik_30003" x="135" y="0" width="43" height="35" frameX="0" frameY="0" frameWidth="43" frameHeight="35" />
+</TextureAtlas>

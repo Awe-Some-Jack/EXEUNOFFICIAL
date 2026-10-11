@@ -1,6 +1,7 @@
 import states.substates.GameOverSubstate;
 import objects.Character;
 import flixel.sound.FlxSound;
+import minigames.preymini.PreyMini;
 
 var deadBoyfriend:Character;
 var inGameOver:Bool = false;
@@ -10,6 +11,29 @@ function onCreate()
 {
 	GameOverSubstate.characterName = 'sonic-dead';
 	GameOverSubstate.deathSoundName = 'prey-death';
+	setVar('preyLives', PreyMini.songLives);
+}
+
+var backToMinigame:Bool = false;
+function onGameOver()
+{
+	if (backToMinigame) return Function_Stop;
+	if (PreyMini.songLives <= 0) return Function_Continue;
+	PreyMini.songLives--;
+	setVar('preyLives', PreyMini.songLives);
+	if (PreyMini.songLives > 0) return Function_Continue;
+
+	backToMinigame = true;
+	final game = PlayState.instance;
+	game.canPause = false;
+	game.boyfriend.stunned = true;
+	game.paused = true;
+	if (FlxG.sound.music != null) FlxG.sound.music.pause();
+	if (game.vocals != null) game.vocals.pause();
+	if (game.opponentVocals != null) game.opponentVocals.pause();
+	FlxG.sound.play(Paths.sound('minigame/preymini/death'));
+	camOther.fade(0xFF000000, 0.8, false, () -> FlxG.switchState(() -> new PreyMini()));
+	return Function_Stop;
 }
 
 function onGameOverStart()

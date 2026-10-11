@@ -426,7 +426,10 @@ class EXEMenu extends MusicBeatState
 		}
 
 		var soundKey:String = 'confirmMenu';
-		if (selectedOptionIndex == 2) soundKey = 'confirmMenuCREEPY';
+		if (selectedOptionIndex == 2){
+			soundKey = 'confirmMenuCREEPY';
+			FlxTween.color(menuTexts[selectedOptionIndex], 0.5, menuTexts[selectedOptionIndex].color, FlxColor.RED);
+		}
 		FlxG.sound.play(Paths.sound(soundKey));
 		isBlinking = true;
 		canInteract = false;

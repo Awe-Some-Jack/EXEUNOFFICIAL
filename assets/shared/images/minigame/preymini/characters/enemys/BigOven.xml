@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="BigOven.png">
+<SubTexture name="BigOven_Walk0000" x="0" y="0" width="53" height="71" frameX="-85" frameY="-97" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Walk0001" x="55" y="0" width="49" height="73" frameX="-85" frameY="-95" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Walk0002" x="106" y="0" width="47" height="74" frameX="-84" frameY="-94" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Walk0003" x="155" y="0" width="47" height="74" frameX="-84" frameY="-94" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Walk0004" x="204" y="0" width="47" height="73" frameX="-85" frameY="-95" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Walk0005" x="253" y="0" width="47" height="75" frameX="-85" frameY="-93" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Walk0006" x="302" y="0" width="47" height="74" frameX="-86" frameY="-94" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Walk0007" x="351" y="0" width="51" height="72" frameX="-85" frameY="-96" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Damaged0000" x="404" y="0" width="80" height="62" frameX="-68" frameY="-100" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Damaged0001" x="486" y="0" width="109" height="65" frameX="-50" frameY="-105" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Damaged0002" x="597" y="0" width="124" height="67" frameX="-44" frameY="-106" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Damaged0003" x="723" y="0" width="104" height="72" frameX="-55" frameY="-104" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Damaged0004" x="829" y="0" width="133" height="65" frameX="-40" frameY="-106" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Damaged0005" x="964" y="0" width="47" height="62" frameX="-86" frameY="-106" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Alert0000" x="1013" y="0" width="47" height="62" frameX="-86" frameY="-106" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Alert0001" x="1062" y="0" width="47" height="62" frameX="-86" frameY="-106" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Explosion0000" x="1111" y="0" width="57" height="65" frameX="-81" frameY="-104" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Explosion0001" x="1170" y="0" width="87" height="79" frameX="-67" frameY="-98" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Explosion0002" x="1259" y="0" width="97" height="82" frameX="-62" frameY="-97" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Explosion0003" x="1358" y="0" width="1" height="1" frameX="0" frameY="0" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Explosion0004" x="1361" y="0" width="108" height="84" frameX="-57" frameY="-95" frameWidth="371" frameHeight="187" />
+<SubTexture name="BigOven_Explosion0005" x="1471" y="0" width="1" height="1" frameX="0" frameY="0" frameWidth="371" frameHeight="187" />
+</TextureAtlas>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Badnik5.png">
+<SubTexture name="Badnik5_Knife0000" x="0" y="0" width="38" height="38" frameX="-16" frameY="-7" frameWidth="65" frameHeight="48" />
+<SubTexture name="Badnik5_Knife0001" x="40" y="0" width="38" height="37" frameX="-16" frameY="-8" frameWidth="65" frameHeight="48" />
+<SubTexture name="Badnik5_Knife0002" x="80" y="0" width="37" height="37" frameX="-17" frameY="-8" frameWidth="65" frameHeight="48" />
+<SubTexture name="Badnik5_NOKnife0000" x="119" y="0" width="30" height="38" frameX="-24" frameY="-7" frameWidth="65" frameHeight="48" />
+<SubTexture name="Badnik5_NOKnife0001" x="151" y="0" width="30" height="37" frameX="-24" frameY="-8" frameWidth="65" frameHeight="48" />
+<SubTexture name="Badnik5_NOKnife0002" x="183" y="0" width="29" height="37" frameX="-25" frameY="-8" frameWidth="65" frameHeight="48" />
+</TextureAtlas>

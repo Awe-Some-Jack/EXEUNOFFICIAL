@@ -114,7 +114,6 @@ function onCreate()
 		camHUD.visible = false;
 		camOther.flash(0xFFFFFFFF, Conductor.crochet / 500, null, true);
 	});
-	YWGA.precacheVideo(Paths.video('you know'));
 	YWGA.camera = camVideo;
 	game.add(YWGA);
 

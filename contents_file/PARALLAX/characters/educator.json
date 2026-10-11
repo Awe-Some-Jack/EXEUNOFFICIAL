@@ -1,124 +1,124 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [0, 0],
+			"loop": true,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "edcuator idle0",
-			"indices": []
+			"indices": [],
+			"name": "edcuator idle0"
 		},
 		{
-			"loop": false,
 			"offsets": [0, -3],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "edcuator up0",
-			"indices": []
+			"indices": [],
+			"name": "edcuator up0"
 		},
 		{
-			"loop": false,
 			"offsets": [0, -9],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "edcuator down0",
-			"indices": []
+			"indices": [],
+			"name": "edcuator down0"
 		},
 		{
-			"loop": false,
 			"offsets": [-13, 0],
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "edcuator right0",
-			"indices": []
+			"indices": [],
+			"name": "edcuator right0"
 		},
 		{
-			"loop": false,
 			"offsets": [30, -5],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "edcuator left0",
-			"indices": []
+			"indices": [],
+			"name": "edcuator left0"
 		},
 		{
+			"offsets": [15, 12],
 			"loop": false,
-			"offsets": [22, 5],
+			"fps": 24,
 			"anim": "singLEFT-alt",
-			"fps": 24,
-			"name": "edcuator left pose",
-			"indices": []
+			"indices": [],
+			"name": "edcuator left pose"
 		},
 		{
+			"offsets": [-15, 12],
 			"loop": false,
-			"offsets": [-16, 3],
+			"fps": 24,
 			"anim": "singUP-alt",
-			"fps": 24,
-			"name": "edcuator up pose",
-			"indices": []
+			"indices": [],
+			"name": "edcuator up pose"
 		},
 		{
+			"offsets": [-15, -2],
 			"loop": false,
-			"offsets": [-15, -6],
+			"fps": 24,
 			"anim": "singDOWN-alt",
-			"fps": 24,
-			"name": "edcuator down pose",
-			"indices": []
+			"indices": [],
+			"name": "edcuator down pose"
 		},
 		{
+			"offsets": [-7, 4],
 			"loop": true,
-			"offsets": [-3, 0],
+			"fps": 24,
 			"anim": "idle-alt",
-			"fps": 24,
-			"name": "edcuator idle 0",
-			"indices": []
+			"indices": [],
+			"name": "edcuator idle 0"
 		},
 		{
+			"offsets": [-3, 0],
 			"loop": false,
-			"offsets": [10, -4],
+			"fps": 24,
 			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "edcuator right pose"
+		},
+		{
+			"loop": false,
+			"offsets": [0, 0],
+			"anim": "problem",
 			"fps": 24,
-			"name": "edcuator right pose",
+			"name": "Edcuator If you got problem",
 			"indices": []
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "problem",
 			"loop": false,
-			"name": "Edcuator If you got problem"
-		},
-		{
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "character",
-			"loop": false,
-			"name": "Edcuator If you don"
+			"fps": 24,
+			"name": "Edcuator If you don",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "im",
-			"loop": false,
-			"name": "Edcuator im sonic"
+			"fps": 24,
+			"name": "Edcuator im sonic",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
 			"anim": "hi",
-			"loop": false,
-			"name": "edcuator sonic"
+			"fps": 24,
+			"name": "edcuator sonic",
+			"indices": []
 		},
 		{
-			"offsets": [0, 0],
-			"indices": [],
-			"fps": 24,
-			"anim": "click",
 			"loop": false,
-			"name": "edcuator click"
+			"offsets": [0, 0],
+			"anim": "click",
+			"fps": 24,
+			"name": "edcuator click",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

@@ -281,8 +281,8 @@ function onCreatePost() {
 
 	boyfriendGroup.visible = iconP1.visible = iconP2.visible = healthBar.visible = false;
 
-	gf.x = dad.x+24;
-	gf.y = dad.y+17;
+	gf.x = dad.x;
+	gf.y = dad.y;
 
 	gf.animSuffix = '-alt';
 	gf.alpha = 0;
@@ -405,7 +405,7 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 						fracX -= 170;
 					case 'tr-TR':
 						fracX -= 140;
-					case 'pi-PI':
+					case 'en-PIRATE':
 						fracX -= 7.5;
 					case 'es-419', "uk-UA", "it-IT", "fr-FR":
 						fracX += 100;
@@ -573,7 +573,7 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 						fracX += 40;
 					case 'tr-TR':
 						fracX += 2.5;
-					case 'pi-PI':
+					case 'en-PIRATE':
 						fracX += 85;
 					case "uk-UA", "de-DE":
 						fracX += 5;
@@ -712,10 +712,9 @@ function switchStage(time:Float = 1, ?amount1:Float = 1, ?amount2:Float = 0, twe
 
 function opponentNoteHit(note:Note):Void {
 	if(!note.isSustain && (dad.alpha >= 0.5 || usingBG3) && Math.round(gf.alpha) != 0) {
-		var ghost = new Character(0, 0, gf.curCharacter, gf.isPlayer);
-		ghost.updateHitbox();
-		ghost.x = gf.x-24;
-		ghost.y = gf.y-17;
+		var ghost = new Character(0, 0, dad.curCharacter, dad.isPlayer);
+		ghost.x = dad.x;
+		ghost.y = dad.y;
 		if(usingBG3) ghost.color = 0xFFFF0000;
 		ghost.alpha = gf.alpha;
 		ghost.blend = BlendMode.SCREEN;

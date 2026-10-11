@@ -1,6 +1,7 @@
 import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxAxes;
 import openfl.display.BlendMode;
+import minigames.preymini.map.SkyParade;
 
 final game:PlayState = PlayState.instance;
 final prefs = ClientPrefs.data;
@@ -10,6 +11,8 @@ var lightning:FlxBackdrop;
 var floorGroup:Array<FlxSprite> = [];
 var floorBGGroup:Array<FlxSprite> = [];
 var fg:FlxBackdrop;
+var parade:SkyParade;
+var paradeOn:Bool = false;
 
 var rampTimers:Array<FlxTimer> = [];
 var rampTweens:Array<FlxTween> = [];
@@ -47,6 +50,16 @@ function onCreate()
 		lightning.scale.set(3, 3); lightning.updateHitbox();
 		lightning.visible = false;
 		insert(game.members.indexOf(bgGroup[13]), lightning);
+
+		parade = new SkyParade(layer -> bgGroup[layer - 1].velocity.x, () -> bgGroup[0].y, 3);
+		parade.crowd = 2;
+		for (i in 0...parade.groups.length)
+		{
+			parade.groups[i].visible = false;
+			insert(game.members.indexOf(bgGroup[SkyParade.LANES[i].layer - 1]) + 1, parade.groups[i]);
+		}
+		for (atlas in ['Badnik_1', 'Badnik_2', 'Badnik_3', 'Fire_Box']) Paths.getSparrowAtlas('minigame/preymini/characters/enemys/' + atlas, null, false);
+		SkyParade.halo();
 
 		for (i in 0...2)
 		{
@@ -114,6 +127,7 @@ function onUpdatePost(elapsed:Float)
 {
 	if (getVar('ending'))
 	{
+		if (parade != null) for (group in parade.groups) group.visible = false;
 		for (tmr in rampTimers) if (!tmr.finished) tmr.cancel();
 		for (twn in rampTweens) if (!twn.finished) twn.cancel();
 		return;
@@ -121,6 +135,8 @@ function onUpdatePost(elapsed:Float)
 
 	if (!prefs.lowQuality)
 	{
+		if (paradeOn) parade.update(elapsed);
+
 		if (lightningActive)
 		{
 			if (lightning.animation.curAnim.finished)
@@ -257,6 +273,7 @@ function doLightning()
 	lightning.animation.play('idle', true);
 
 	replaceColor.setFloatArray('replaceColor', [216, 108, 180]);
+	if (paradeOn) parade.strike();
 
 	if (prefs.flashing)
 	{
@@ -277,6 +294,12 @@ function onEvent(n, v1)
 		{
 			case 'stopnextshock': stopNextShock = true;
 			case 'shock': doLightning();
+			case 'addbg':
+				if (parade != null)
+				{
+					paradeOn = true;
+					for (group in parade.groups) group.visible = true;
+				}
 		}
 	}
 }
@@ -300,6 +323,33 @@ function addRampTween(from:Float, to:Float, duration:Float):FlxTween
 	final tween = FlxTween.num(from, to, duration, null, n -> {updateBFY(n);});
 	rampTweens.push(tween);
 	return tween;
+}
+
+function isRampAt(startX:Float, endX:Float):Bool
+{
+	for (floor in floorGroup)
+	{
+		if (endX >= floor.x && startX <= floor.x + floor.width)
+		{
+			var checkX = startX;
+			while (checkX <= endX)
+			{
+				final localX = checkX - floor.x;
+				final texX = localX / 6;
+
+				if (floor.ID == 1)
+				{
+					if (texX >= 800 && texX <= 2175) return true;
+				}
+				else if (floor.ID == 2)
+				{
+					if ((texX >= 300 && texX <= 1650) || (texX >= 2100 && texX <= 4250)) return true;
+				}
+				checkX += 40;
+			}
+		}
+	}
+	return false;
 }
 
 function clearRampTimers()

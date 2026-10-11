@@ -1,5 +1,10 @@
 local isJumping = false
 local canJump = false
+local airTime = 0
+
+local isInvulnerable = false
+local invulnerableTimer = 0
+local INVULN_DURATION = 2.0
 
 function onCreatePost()
 	makeAnimatedLuaSprite('sonic-jump', 'prey/sonic-jump')
@@ -23,8 +28,8 @@ local spikeGroup = {}
 local ringGroup = {}
 local missedRings = {}
 local cantMore = false
-local jumpAmount = 2000
-local gravity = 7000
+local jumpAmount = 1400
+local gravity = 4000
 local amountOfTime = 0
 local holdTimer = 0
 local triggerOnce = false
@@ -32,8 +37,14 @@ local _lF = 0
 local leftFloor = 0
 local floorPassed = false
 local canceledJump = false
+
 function onUpdatePost(e)
 	if inGameOver then return end
+
+	if isJumping then
+		airTime = airTime + e
+	end
+
 	callMethod('sonicHitboxFix.setPosition', {getProperty('boyfriend.x') + 10, getProperty('boyfriend.y') - 25})
 
 	if getProperty('boyfriend.velocity.x') < 0 then
@@ -41,10 +52,27 @@ function onUpdatePost(e)
 		setProperty('boyfriend.velocity.x', 0)
 	end
 
-	if canceledJump == true and not stringStartsWith(getProperty('boyfriend.animation.curAnim.name'), 'hit') then canceledJump = false end
+	if canceledJump == true and not stringStartsWith(getProperty('boyfriend.animation.curAnim.name'), 'hit') then 
+		canceledJump = false 
+	end
 
 	setProperty('sonic-jump.x', getProperty('boyfriend.x') - 100)
 	setProperty('sonic-jump.y', getProperty('boyfriend.y') - 100)
+
+	if isInvulnerable then
+		invulnerableTimer = invulnerableTimer - e
+		local alphaVal = (math.floor(invulnerableTimer * 15) % 2 == 0) and 0.3 or 1.0
+		if not getProperty('sonic-jump.visible') then
+			setProperty('boyfriend.alpha', alphaVal)
+		end
+		
+		if invulnerableTimer <= 0 then
+			isInvulnerable = false
+			if not isJumping then
+				setProperty('boyfriend.alpha', 1.0)
+			end
+		end
+	end
 
 	if not getProperty('cpuControlled') or not stringStartsWith(getProperty('boyfriend.animation.curAnim.name'), 'hit') then
 		if not canceledJump then
@@ -56,6 +84,7 @@ function onUpdatePost(e)
 				isJumping = true
 				setVar('isJumping', isJumping)
 				amountOfTime = 0
+				airTime = 0
 
 				setProperty('sonic-jump.visible', true)
 				setProperty('boyfriend.alpha', 0)
@@ -72,12 +101,15 @@ function onUpdatePost(e)
 		end
 	end
 
-	if getProperty('boyfriend.y') > getVar('floorY') and isJumping then
+	if getProperty('boyfriend.y') >= getVar('floorY') and isJumping and airTime > 0.55 and getProperty('boyfriend.velocity.y') >= 0 then
 		isJumping = false
 		setVar('isJumping', isJumping)
+		airTime = 0
 
 		setProperty('sonic-jump.visible', false)
-		setProperty('boyfriend.alpha', 1)
+		if not isInvulnerable then
+			setProperty('boyfriend.alpha', 1)
+		end
 
 		setProperty('boyfriend.y', getVar('floorY'))
 		setProperty('boyfriend.velocity.y', 0)
@@ -86,19 +118,24 @@ function onUpdatePost(e)
 
 	if stringStartsWith(getProperty('boyfriend.animation.curAnim.name'), 'idle') and triggerOnce then
 		triggerOnce = false
-		for i = 0,getProperty('notes.length')-1 do
+		for i = 0, getProperty('notes.length')-1 do
 			setProperty('notes.members['..i..'].noAnimation', false)
 			setProperty('notes.members['..i..'].noMissAnimation', false)
 		end
 	end
 
-	for i,s in ipairs(spikeGroup) do
+	for i, s in ipairs(spikeGroup) do
 		local spr = s.sprite
-		if overlaps('sonicHitboxFix', spr) and s.detect then
+		if overlaps('sonicHitboxFix', spr) and s.detect and not isInvulnerable and not isJumping then
 			if getVar('rings') > 0 then
-				for _,o in ipairs(spikeGroup) do if o.id == s.id then o.detect = false end end
+				isInvulnerable = true
+				invulnerableTimer = INVULN_DURATION
 
-				for j = 1,getVar('rings') do
+				for _, o in ipairs(spikeGroup) do 
+					if o.id == s.id then o.detect = false end 
+				end
+
+				for j = 1, getVar('rings') do
 					local missedRing = 'missedRing'..j
 					makeAnimatedLuaSprite(missedRing, 'prey/ring', getProperty('boyfriend.x'), getProperty('boyfriend.y'))
 					addAnimationByPrefix(missedRing, 'idle', 'ring', 8, true)
@@ -114,10 +151,9 @@ function onUpdatePost(e)
 				end
 				runTimer('removeMissedRings', 1)
 
-				setProperty('boyfriend.velocity.y', 0)
 				cameraShake('game', 0.01, 0.1)
 				setProperty('sonic-jump.visible', false)
-				setProperty('boyfriend.alpha', 1)
+				
 				playSound('hit')
 				playSound('loseRings')
 				setVar('rings', 0)
@@ -127,7 +163,7 @@ function onUpdatePost(e)
 				triggerOnce = true
 				canceledJump = true
 
-				for j = 0,getProperty('notes.length')-1 do
+				for j = 0, getProperty('notes.length')-1 do
 					setProperty('notes.members['..j..'].noAnimation', true)
 					setProperty('notes.members['..j..'].noMissAnimation', true)
 				end
@@ -144,7 +180,7 @@ function onUpdatePost(e)
 		end
 	end
 
-	for i,r in ipairs(ringGroup) do
+	for i, r in ipairs(ringGroup) do
 		local ring = r.sprite
 		if overlaps('sonicHitboxFix', ring) then
 			setVar('rings', math.min(getVar('rings') + 1, 150))
@@ -177,7 +213,7 @@ function onBeatHit()
 end
 
 local mech = false
-function onEvent(n,v1)
+function onEvent(n, v1)
 	if n == 'preyEvent' and v1 == 'mech' then
 		mech = not mech
 	end
@@ -188,7 +224,7 @@ local id = 0
 local ringId = 0
 function onSectionHit()
 	if mech and canJump and getRandomBool(65) then
-		local amount = getRandomInt(1,3)
+		local amount = getRandomInt(1, 3)
 		local distance = ((crochet * 3) / 1000) * math.abs(getProperty('floorGroup[0].velocity.x') * 1.07)
 		local daOffset = 0
 		local floorX = getProperty('floorGroup['..leftFloor..'].x') + distance - (math.abs(getProperty('floorGroup[0].velocity.x')) - 2000) * 2.14
@@ -218,7 +254,7 @@ function onSectionHit()
 			ringId = ringId + 1
 
 			local ringOffset = getRandomBool(50) and 0 or 500
-			for i = 1,getRandomInt(3, 5, 4) do
+			for i = 1, getRandomInt(3, 5, 4) do
 				local ring = 'ring'..ringId..'_'..i
 
 				makeAnimatedLuaSprite(ring, 'prey/ring', distance + ((i - 1) * (32 * 6)) + (8 * 6), 392 + daOffset - ringOffset)
@@ -235,7 +271,14 @@ function onSectionHit()
 		else
 			id = id + 1
 
-			for i = 1,amount do
+			local startX = distance
+			local endX = distance + (amount * (32 * 6))
+			
+			if callHScript and callHScript('isRampAt', {startX, endX}) then
+				return
+			end
+
+			for i = 1, amount do
 				local spike = 'spike'..id..'_'..i
 
 				makeLuaSprite(spike, 'prey/spikes', distance + ((i - 1) * (32 * 6)), 392 + daOffset)
@@ -263,8 +306,8 @@ function onSectionHit()
 end
 
 local mrid = 0
-function noteMiss(_,_,_,isn)
-	if isn then return end
+function noteMiss(_, _, _, isn)
+	if isn and isInvulnerable then return end
 	if getVar('rings') > 0 then
 		mrid = mrid + 1
 		local missedRing = 'missedRing'..mrid
@@ -313,10 +356,10 @@ function onTimerCompleted(t)
 	if stringStartsWith(t, 'ring') then removeLuaSprite(t, true) end
 
 	if t == 'removeMissedRings' then
-		for i,r in ipairs(missedRings) do
+		for _, r in ipairs(missedRings) do
 			removeLuaSprite(r, true)
-			missedRings = {}
 		end
+		missedRings = {}
 	end
 	if stringStartsWith(t, 'missedRing') then removeLuaSprite(t, true) end
 end

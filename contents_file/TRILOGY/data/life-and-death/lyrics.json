@@ -17,7 +17,7 @@
         "lyrics.lifeandeath.4": "Yo; SOY",
         "lyrics.lifeandeath.5": "Yo; SOY; DIOS!",
         "lyrics.lifeandeath.6": "E;res; muy lento",
-        "lyrics.lifeandeath.7": "Soy; la; Vi;da; y la Muerte",
+        "lyrics.lifeandeath.7": "Soy; la; Vida; y; la Muerte",
         "lyrics.lifeandeath.8": "Sim;ple;mente; no; lo entiendes",
         "lyrics.lifeandeath.9": "NO; MÁS; JUEGOS!"
     },
@@ -28,7 +28,7 @@
         "lyrics.lifeandeath.4": "Eu; SOU",
         "lyrics.lifeandeath.5": "Eu; SOU; DEUS!",
         "lyrics.lifeandeath.6": "Vo;cê; é muito lento",
-        "lyrics.lifeandeath.7": "Eu; sou; a; vi;da e a morte",
+        "lyrics.lifeandeath.7": "Eu; sou; a vida; e; a morte",
         "lyrics.lifeandeath.8": "Vo;cê; sim;ples;mente não entende",
         "lyrics.lifeandeath.9": "SEM; MAIS; JOGUINHOS!"
     },
@@ -39,8 +39,8 @@
         "lyrics.lifeandeath.4": "Je; SUIS",
         "lyrics.lifeandeath.5": "Je; SUIS; DIEU!",
         "lyrics.lifeandeath.6": "Tu; es; trop lent",
-        "lyrics.lifeandeath.7": "Je; suis; la; Vie; et la Mort",
-        "lyrics.lifeandeath.8": "Tu; ne; com;prends; tout simplement pas",
+        "lyrics.lifeandeath.7": "Je; suis; la Vie; et; la Mort",
+        "lyrics.lifeandeath.8": "Tu; ne; comprends; tout; simplement pas",
         "lyrics.lifeandeath.9": "PLUS; DE; JEUX!"
     },
     "de-DE": {
@@ -51,7 +51,7 @@
         "lyrics.lifeandeath.5": "Ich; BIN; GOTT!",
         "lyrics.lifeandeath.6": "Du; bist; zu langsam",
         "lyrics.lifeandeath.7": "Ich; bin; Le;ben; und Tod",
-        "lyrics.lifeandeath.8": "Du; ver;stehst; es; einfach nicht",
+        "lyrics.lifeandeath.8": "Du; verstehst; es; einfach; nicht",
         "lyrics.lifeandeath.9": "KEIN; SPIEL; MEHR!"
     },
     "ru-RU": {
@@ -60,7 +60,7 @@
         "lyrics.lifeandeath.3": "Я",
         "lyrics.lifeandeath.4": "Я; ЕСТЬ",
         "lyrics.lifeandeath.5": "Я; ЕСТЬ; БОГ!",
-        "lyrics.lifeandeath.6": "Ты; слиш;ком медленный",
+        "lyrics.lifeandeath.6": "Ты; слишком; медленный",
         "lyrics.lifeandeath.7": "Я; есть; Жизнь; и; Смерть",
         "lyrics.lifeandeath.8": "Ты; прос;то; не; понимаешь",
         "lyrics.lifeandeath.9": "ИГ;РЫ; КОНЧИЛИСЬ!"
@@ -71,21 +71,21 @@
         "lyrics.lifeandeath.3": "Я",
         "lyrics.lifeandeath.4": "Я; Є",
         "lyrics.lifeandeath.5": "Я; Є; БОГ!",
-        "lyrics.lifeandeath.6": "Ти; над;то повільний",
+        "lyrics.lifeandeath.6": "Ти; надто; повільний",
         "lyrics.lifeandeath.7": "Я; Жит;тя; i; Смерть",
         "lyrics.lifeandeath.8": "Ти; прос;то; не; розумієш",
-        "lyrics.lifeandeath.9": "ІГ;РИ; ЗА;КІНЧИЛИСЬ!"
+        "lyrics.lifeandeath.9": "ІГ;РИ; ЗАКІНЧИЛИСЬ!"
     },
     "uz-UZ": {
         "lyrics.lifeandeath.1": "Boy;friend....",
         "lyrics.lifeandeath.2": "Sho;shil;ma...",
         "lyrics.lifeandeath.3": "Men",
         "lyrics.lifeandeath.4": "Men; XUDO",
-        "lyrics.lifeandeath.5": "Men; XU;DOMAN!",
+        "lyrics.lifeandeath.5": "Men; XUDO;MAN!",
         "lyrics.lifeandeath.6": "Sen; ju;da sekinsan",
         "lyrics.lifeandeath.7": "Men; Hay;ot; va; O'limman",
         "lyrics.lifeandeath.8": "Sen; shun;cha;ki; tushunmayapsan",
-        "lyrics.lifeandeath.9": "OR;TIQ; O'YINLAR YO'Q!"
+        "lyrics.lifeandeath.9": "O'YIN;LAR; TUGADI!"
     },
     "ja-JP": {
         "lyrics.lifeandeath.1": "ボーイ;フレンド....",
@@ -120,7 +120,7 @@
         "lyrics.lifeandeath.8": "넌; 그;냥; 이;해를 못하는 거야",
         "lyrics.lifeandeath.9": "더; 이;상 게임은 없다!"
     },
-    "pi-PI": {
+    "en-PIRATE": {
         "lyrics.lifeandeath.1": "Boy;friend....",
         "lyrics.lifeandeath.2": "Not; so; fast...",
         "lyrics.lifeandeath.3": "I",
@@ -133,35 +133,35 @@
     },
     "it-IT": {
         "lyrics.lifeandeath.1": "Boy;friend....",
-        "lyrics.lifeandeath.2": "Non; co;sì; in; fret;ta...",
+        "lyrics.lifeandeath.2": "Non; così; in fretta...",
         "lyrics.lifeandeath.3": "Io",
-        "lyrics.lifeandeath.4": "Io; SO;NO",
-        "lyrics.lifeandeath.5": "Io; SO;NO; DIO!",
-        "lyrics.lifeandeath.6": "Sei; trop;po; len;to",
-        "lyrics.lifeandeath.7": "Io; so;no; la; Vi;ta; e; la; Mor;te",
-        "lyrics.lifeandeath.8": "Non; ca;pi;sci; sem;pli;ce;men;te",
-        "lyrics.lifeandeath.9": "NES;SUN; AL;TRO; GIOCO!"
+        "lyrics.lifeandeath.4": "Io; SONO",
+        "lyrics.lifeandeath.5": "Io; SONO; DIO!",
+        "lyrics.lifeandeath.6": "Sei; troppo; lento",
+        "lyrics.lifeandeath.7": "Io; sono; la Vita; e; la Morte",
+        "lyrics.lifeandeath.8": "Non; capisci; sem;plice;mente",
+        "lyrics.lifeandeath.9": "NESSUN; ALTRO; GIOCO!"
     },
     "pl-PL": {
         "lyrics.lifeandeath.1": "Boy;friend....",
-        "lyrics.lifeandeath.2": "Nie; tak; szyb;ko...",
+        "lyrics.lifeandeath.2": "Nie; tak; szybko...",
         "lyrics.lifeandeath.3": "Ja",
-        "lyrics.lifeandeath.4": "Ja; JE;STEM",
-        "lyrics.lifeandeath.5": "Ja; JE;STEM; BO;GIEM!",
-        "lyrics.lifeandeath.6": "Je;steś; za; wol;ny",
-        "lyrics.lifeandeath.7": "Je;stem; Ży;ciem; i; Śmier;cią",
-        "lyrics.lifeandeath.8": "Po; pro;stu; nie; ro;zu;miesz",
-        "lyrics.lifeandeath.9": "KO;NIEC; Z GRA;MI!"
+        "lyrics.lifeandeath.4": "Ja; JESTEM",
+        "lyrics.lifeandeath.5": "Ja; JESTEM; BOGIEM!",
+        "lyrics.lifeandeath.6": "Jesteś; za; wolny",
+        "lyrics.lifeandeath.7": "Je;stem; Życiem; i; Śmiercią",
+        "lyrics.lifeandeath.8": "Po; prostu; nie; rozu;miesz",
+        "lyrics.lifeandeath.9": "KONIEC; Z; GRAMI!"
     },
     "tr-TR": {
         "lyrics.lifeandeath.1": "Boy;friend....",
-        "lyrics.lifeandeath.2": "Bu; ka;dar; hiz;li; de;gil...",
+        "lyrics.lifeandeath.2": "Bu; kadar; hizli degil...",
         "lyrics.lifeandeath.3": "Ben",
-        "lyrics.lifeandeath.4": "Ben; TAN;RI;YIM",
-        "lyrics.lifeandeath.5": "Ben; TAN;RI;YIM!",
-        "lyrics.lifeandeath.6": "Cok; ya;vas;sin",
-        "lyrics.lifeandeath.7": "Ben; Ha;yat; ve; Ol;u;mum",
-        "lyrics.lifeandeath.8": "An;la;mi;yor;sun; is;te",
-        "lyrics.lifeandeath.9": "AR;TIK; OYUN; YOK!"
+        "lyrics.lifeandeath.4": "Ben; TANRI",
+        "lyrics.lifeandeath.5": "Ben; TANRI;YIM!",
+        "lyrics.lifeandeath.6": "Cok; ya;vassin",
+        "lyrics.lifeandeath.7": "Ben; Ha;yat; ve; Olumum",
+        "lyrics.lifeandeath.8": "Anla;mi;yor;sun; iste",
+        "lyrics.lifeandeath.9": "ARTIK; OYUN; YOK!"
     }
 }

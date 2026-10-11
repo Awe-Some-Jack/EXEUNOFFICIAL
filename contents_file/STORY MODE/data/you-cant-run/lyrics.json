@@ -5,14 +5,14 @@
     },
     "es-419": {
         "lyrics.youcantrun.1": "¡MAL;DITO; MO;COSO!",
-        "lyrics.youcantrun.2": "¡SÓ;LO MUERE!"
+        "lyrics.youcantrun.2": "¡SÓLO; MUERE!"
     },
     "pt-BR": {
-        "lyrics.youcantrun.1": "O;RA; SEU; MO;LEQUE!",
-        "lyrics.youcantrun.2": "SÓ; MOR;RA!"
+        "lyrics.youcantrun.1": "ORA; SEU; MO;LEQUE!",
+        "lyrics.youcantrun.2": "SÓ; MORRA!"
     },
     "fr-FR": {
-        "lyrics.youcantrun.1": "SA;LE; GOSSE!",
+        "lyrics.youcantrun.1": "SA;LE; GOS;SE!",
         "lyrics.youcantrun.2": "CRÈVE; DONC!"
     },
     "de-DE": {
@@ -21,15 +21,15 @@
     },
     "ru-RU": {
         "lyrics.youcantrun.1": "АХ; ТЫ; МЕЛ;КИЙ!",
-        "lyrics.youcantrun.2": "ПРОС;ТО; СДОХ;НИ!"
+        "lyrics.youcantrun.2": "ПРОСТО; СДОХНИ!"
     },
     "uk-UA": {
-        "lyrics.youcantrun.1": "АХ; ТИ; ГАДЕНЯ!",
-        "lyrics.youcantrun.2": "ПРОС;ТО; ЗДОХ;НИ!"
+        "lyrics.youcantrun.1": "АХ; ТИ; ГА;ДЕНЯ!",
+        "lyrics.youcantrun.2": "ПРОСТО; ЗДОХНИ!"
     },
     "uz-UZ": {
         "lyrics.youcantrun.1": "AH,; SEN; TIR;RANCHA!",
-        "lyrics.youcantrun.2": "SHUN;CHA;KI; O'L!"
+        "lyrics.youcantrun.2": "SHUNCHAKI; O'L!"
     },
     "ja-JP": {
         "lyrics.youcantrun.1": "この; 小僧; が;!",
@@ -37,26 +37,26 @@
     },
     "zh-CN": {
         "lyrics.youcantrun.1": "你; 这; 小; 鬼!",
-        "lyrics.youcantrun.2": "给; 我; 去; 死!"
+        "lyrics.youcantrun.2": "给 我; 去 死!"
     },
     "ko-KR": {
         "lyrics.youcantrun.1": "이; 녀;석;아!",
         "lyrics.youcantrun.2": "그냥; 죽어!"
     },
-    "pi-PI": {
+    "en-PIRATE": {
         "lyrics.youcantrun.1": "WHY; YE; LI;TTLE?!",
         "lyrics.youcantrun.2": "Just; DIE!"
     },
     "it-IT": {
         "lyrics.youcantrun.1": "MA; CO;SA; FAI!?",
-        "lyrics.youcantrun.2": "MUO;RI; E; BAS;TA!"
+        "lyrics.youcantrun.2": "MUORI E; BASTA!"
     },
     "pl-PL": {
-        "lyrics.youcantrun.1": "CO; TY; TAM!?",
-        "lyrics.youcantrun.2": "PO; PRO;STU; GIŃ!"
+        "lyrics.youcantrun.1": "CO; TY;; TAM!?",
+        "lyrics.youcantrun.2": "PO PROSTU; GIŃ!"
     },
     "tr-TR": {
         "lyrics.youcantrun.1": "SEN; NE;SIN; YA!?",
-        "lyrics.youcantrun.2": "SAL; DE; OL!"
+        "lyrics.youcantrun.2": "SAL DE; OL!"
     }
 }

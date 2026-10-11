@@ -28,6 +28,22 @@ function onCreatePost()
 	updateHUD()
 	updateRings()
 
+	--lives from the minigame
+
+	local lives = getVar('preyLives') or 0
+	if lives > 0 then
+		local livesY = downscroll and (screenHeight - 72) or 18
+		makeLuaSprite('livesIcon', 'minigame/preymini/hud/life/lifecounter', 48, livesY)
+		scaleObject('livesIcon', 3, 3)
+		setObjectCamera('livesIcon', 'hud')
+		setProperty('livesIcon.antialiasing', false)
+		setProperty('livesIcon.moves', false)
+		addLuaSprite('livesIcon')
+
+		local digits = splitShit(math.min(lives, 99), false)
+		for i = 1,#digits do makeHUDSprite('livesNum'..i, digits[i], 123 + ((i - 1) * 24), livesY + 15, true) end
+	end
+
 	--intro card
 
 	makeHUDSprite('cardBar', 'card/cardBar')

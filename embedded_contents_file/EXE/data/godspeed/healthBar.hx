@@ -39,6 +39,7 @@ function onCreatePost()
 
 	game.health = 2;
 	game.healthGain = 0;
+	game.healthLoss = 0.7;
 
 	game.remove(game.getLuaObject('iconOpp')); game.insert(game.members.indexOf(flagRight) + 1, game.getLuaObject('iconOpp'));
 	game.remove(game.getLuaObject('iconBF')); game.insert(game.members.indexOf(flagRight) + 1, game.getLuaObject('iconBF'));

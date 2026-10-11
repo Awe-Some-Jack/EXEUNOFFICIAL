@@ -302,6 +302,33 @@ function addRampTween(from:Float, to:Float, duration:Float):FlxTween
 	return tween;
 }
 
+function isRampAt(startX:Float, endX:Float):Bool
+{
+	for (floor in floorGroup)
+	{
+		if (endX >= floor.x && startX <= floor.x + floor.width)
+		{
+			var checkX = startX;
+			while (checkX <= endX)
+			{
+				final localX = checkX - floor.x;
+				final texX = localX / 6;
+
+				if (floor.ID == 1)
+				{
+					if (texX >= 800 && texX <= 2175) return true;
+				}
+				else if (floor.ID == 2)
+				{
+					if ((texX >= 300 && texX <= 1650) || (texX >= 2100 && texX <= 4250)) return true;
+				}
+				checkX += 40;
+			}
+		}
+	}
+	return false;
+}
+
 function clearRampTimers()
 {
 	for (timer in rampTimers) if (!timer.finished) timer.cancel();

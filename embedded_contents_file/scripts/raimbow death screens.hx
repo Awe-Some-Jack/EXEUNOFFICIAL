@@ -78,6 +78,7 @@ function setCustomGameOvers() {
             GameOverSubstate.deathSoundName = "deathSounds/yourself-sfx";
             GameOverSubstate.loopSoundName  = "deathSongs/yourself";
             GameOverSubstate.endSoundName   = "deathSongs/yourself-retry";
+            initialDeathZoom = 0.9;
         case "hollow":
             exeGameOvers = false;
             GameOverSubstate.loopSoundName = "deathSongs/hollow";
@@ -116,9 +117,9 @@ function setCustomGameOvers() {
     }
 }
 
-function onStepHit() {
+function onStepHit() 
     if (gameOverChangeStep != null && curStep >= gameOverChangeStep) changeGameOvers();
-}
+
 
 function changeGameOvers() {
     switch(songName){
@@ -137,8 +138,9 @@ function setCamEvents() {
         FlxTween.cancelTweensOf(FlxG.camera); //Just in case, heh.
         FlxG.camera.follow();
         FlxG.camera.scroll.set(0, 0);
-        FlxG.camera.zoom = initialDeathZoom;
     }
+    camGame.targetOffset.set(0, 0);
+    FlxG.camera.zoom = initialDeathZoom;
 }
 
 //Base of this code by dudu. I'll try to make this my own.
@@ -149,7 +151,7 @@ function onGameOverStart()
         if (songName == song) {
             inGameOver = true;
             if (GameOverSubstate.instance.boyfriend != null && deadChar == null) deadChar = GameOverSubstate.instance.boyfriend;
-            if (exeGameOvers || songName == 'endless-us')
+            if (exeGameOvers || songName == 'endless-us' || songName == 'substantial')
             {
                 deadChar.scrollFactor.set();
                 deadChar.setPosition(charPositions[0], charPositions[1]);
@@ -178,18 +180,18 @@ function setCustomEvents() {
             FlxTween.tween(FlxG.camera, {zoom: 0.8}, 2, {ease: FlxEase.sineInOut});
         case "substantial":
             GameOverSubstate.instance.boyfriend.visible = false;
-            subsDeath = new VideoSprite(-520, -250, false);
+            subsDeath = new VideoSprite(-500, -390, false);
             subsDeath.loadVideo(Paths.video("substantialDeath"));
             subsDeath.canSkip = false;
             subsDeath.alpha = 0.0001;
-            subsDeath.scale.set(0.55, 0.688);
+            subsDeath.scale.set(0.6, 0.6);
             subsDeath.onEnd(() -> {
                 subsDeath.loadVideo(Paths.video("substantialDeath"));
                 subsDeath.play();
             });
             GameOverSubstate.instance.add(subsDeath);
         case "starline":
-            FlxG.cameras.flash(FlxColor.RED, 1);
+            FlxG.cameras.flash(FlxColor.RED, 0.2);
         case "cycles", "hellbent", "fate":
             head = new FlxAnimate(480, 50);
             head.frames = Paths.getAnimateAtlas('gameovers/LORD-X-DEATH-HEAD');
@@ -307,7 +309,7 @@ function startCountdownMajin()
     majinBF.frames = Paths.getAnimateAtlas('gameovers/us/us');
     majinBF.anim.addBySymbol('dying', 'majinbf', 24, false);
     majinBF.active = true;
-    majinBF.setPosition(deadChar.x - 520, deadChar.y - 520);
+    majinBF.setPosition(deadChar.x + 190, deadChar.y - 700);
     majinBF.scale.set(0.7, 0.7);
     majinBF.alpha = 0;
     GameOverSubstate.instance.add(majinBF);
@@ -449,7 +451,9 @@ function onGameOverConfirm(retry)
             FlxTween.cancelTweensOf(FlxG.camera);
             FlxTween.num(1, 0.8, 1, {ease: FlxEase.circOut,  onComplete: () -> FlxTween.tween(FlxG.camera, {zoom: 1.4}, 2, {ease: FlxEase.circIn})}, (val:Float) -> FlxG.camera.zoom = val);
         case "substantial":
-            FlxG.cameras.flash(FlxColor.BLUE, 2);
+            if (retry)
+                FlxG.cameras.flash(FlxColor.BLUE, 2);
+            
             subsDeath.destroy();
 
         case "yourself":

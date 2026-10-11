@@ -415,7 +415,7 @@ class DAGPlayer extends FlxGroup
             fadeTarget = 1.0;
             fadeSpeed  = 12.0;
             isPlaying  = true;
-            #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text}', null, true, inst.length, "icon", 2, inst.time); #end
+            #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text}', null, true, inst.length, "icon", 2, inst.time); #end
             return;
         }
         stop();
@@ -426,7 +426,7 @@ class DAGPlayer extends FlxGroup
     {
         isPlaying = false;
         pitchDown(() -> { inst?.pause(); for (v in vocals) v.pause(); });
-        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", 'Listening to ${songNameTxt.text} (Paused)', null, true, 0, "icon", 2, inst?.time ?? 0); #end
+        #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text} (Paused)', null, false, 0, "icon"); #end
     }
 
     public function stop():Void
@@ -797,6 +797,13 @@ class DAGPlayer extends FlxGroup
         seekPending    = true;
         if (seekWasPlaying) inst.pause();
         for (v in vocals) if (v.playing) v.pause();
+
+        #if DISCORD_ALLOWED
+        if (seekWasPlaying)
+            DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text}', null, true, inst.length, "icon", 2, seekTargetMs);
+        else
+            DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text} (Paused)', null, false, 0, "icon");
+        #end
     }
 
     function applySeek():Void
@@ -813,6 +820,7 @@ class DAGPlayer extends FlxGroup
                 }
             }); 
         } catch (_:Dynamic) {}
+
         for (v in vocals) try {
             FlxTween.cancelTweensOf(v);
 
@@ -983,7 +991,7 @@ class DAGPlayer extends FlxGroup
         isPlaying  = false;
         loadedSong = '';
         loadedMod  = '';
-        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", null); #end
+        #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", null); #end
     }
 }
 
@@ -1058,7 +1066,7 @@ class DAGarden extends SonicSubState
         panelRing.shader = ringShader;
         add(panelRing);
 
-        #if DISCORD_ALLOWED DiscordClient.changePresence("In the DA Garden", null); #end
+        #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", null); #end
         super.create();
 
         #if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end

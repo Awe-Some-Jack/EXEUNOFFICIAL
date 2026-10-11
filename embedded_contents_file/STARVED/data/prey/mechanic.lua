@@ -307,7 +307,7 @@ end
 
 local mrid = 0
 function noteMiss(_, _, _, isn)
-	if isn then return end
+	if isn and isInvulnerable then return end
 	if getVar('rings') > 0 then
 		mrid = mrid + 1
 		local missedRing = 'missedRing'..mrid

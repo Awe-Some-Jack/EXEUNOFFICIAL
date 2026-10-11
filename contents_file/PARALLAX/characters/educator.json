@@ -131,7 +131,7 @@
 	],
 	"vocals_file": "",
 	"no_antialiasing": true,
-	"image": "characters/edcuator, characters/Edcuator_find_me, characters/edcuator_if_you_got_problem, characters/edcuator_if_you_dont_believe, characters/edcuator_im_sonic, characters/edcuator_hi_me_sonic, characters/edcuator_click_me_for_help, characters/edcuator_light_out",
+	"image": "characters/edcuator, characters/edcuator_find_me, characters/edcuator_if_you_got_problem, characters/edcuator_if_you_dont_believe, characters/edcuator_im_sonic, characters/edcuator_hi_me_sonic, characters/edcuator_click_me_for_help, characters/edcuator_light_out",
 	"position": [0, 0],
 	"healthicon": "sonic",
 	"flip_x": false,

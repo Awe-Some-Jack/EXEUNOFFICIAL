@@ -372,7 +372,15 @@ class EXETitle extends MusicBeatState
 
 					playedIntro = true;
 					hideTitle();
-					playVideo('postIntro', true);
+					// why not FlxG.sound.music.fade...? uuuhhhh idk.
+					// - friendmanBruh
+					FlxTween.tween(FlxG.sound.music, {volume: 0}, 0.3, {ease: FlxEase.quadOut, 
+						onComplete: twn->
+						{
+							FlxG.sound.music.stop();	
+						}
+					});
+					playVideo('introcutscene', true);
 					afkTimer = AFK_TIMER_VALUE;
 					videoPlaying = true;
 				}else{

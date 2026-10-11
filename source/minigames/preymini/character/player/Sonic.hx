@@ -121,6 +121,10 @@ class Sonic extends FlxSprite implements CameraTarget
 	var _hitX:Float = 0;
 	var _hitY:Float = 0;
 
+	var _dropDash:Bool = false;
+	var _dropDashTimer:Float = 0;
+	var _dropDashCharged:Bool = false;
+
 	public function new(terrain:Terrain, artX:Float)
 	{
 		super();
@@ -157,6 +161,7 @@ class Sonic extends FlxSprite implements CameraTarget
 		_still = _leaveTime = 0;
 		_lock = _coyote = _buffer = _peelTime = 0;
 		_peel = 0;
+		_resetDropDash();
 		_place();
 	}
 
@@ -204,7 +209,7 @@ class Sonic extends FlxSprite implements CameraTarget
 		while (_acc > (1 / 60) * 0.5)
 		{
 			_acc -= 1 / 60;
-			_step(dir, down, up, held, _jumpQueued);
+			_step(dir, down, up, held, tap);
 			if (!dead && !leaving) _keepInside();
 			_jumpQueued = false;
 			if (_invulnerable > 0) _invulnerable--;
@@ -216,7 +221,7 @@ class Sonic extends FlxSprite implements CameraTarget
 		super.update(elapsed);
 	}
 
-	function _step(dir:Int, down:Bool, up:Bool, held:Bool, pressed:Bool):Void
+	function _step(dir:Int, down:Bool, up:Bool, held:Bool, tap:Bool):Void
 	{
 		if (dead || leaving)
 		{
@@ -225,13 +230,13 @@ class Sonic extends FlxSprite implements CameraTarget
 		}
 		if (hurting)
 		{
-			_air(0, false);
+			_air(0, false, false);
 			return;
 		}
-		_buffer = pressed ? 7 : Std.int(Math.max(0, _buffer - 1));
+		_buffer = tap ? 7 : Std.int(Math.max(0, _buffer - 1));
 		if (grounded)
 		{
-			if (_spinDash(down, pressed) || _peelOut(up, pressed)) return;
+			if (_spinDash(down, tap) || _peelOut(up, tap)) return;
 			if (_buffer <= 0)
 			{
 				_ground(dir, down);
@@ -240,7 +245,7 @@ class Sonic extends FlxSprite implements CameraTarget
 			_jump();
 		}
 		else if (_buffer > 0 && _coyote > 0) _jump();
-		_air(dir, held);
+		_air(dir, held, tap);
 	}
 
 	function _keepInside():Void
@@ -266,6 +271,7 @@ class Sonic extends FlxSprite implements CameraTarget
 		rolling = crouching = _skidding = false;
 		_jumped = true;
 		_buffer = _coyote = 0;
+		_resetDropDash();
 		_sfx("jump");
 	}
 
@@ -426,13 +432,40 @@ class Sonic extends FlxSprite implements CameraTarget
 		return _wrap(fallback);
 	}
 
-	function _air(dir:Int, held:Bool):Void
+	function _air(dir:Int, held:Bool, tap:Bool):Void
 	{
 		if (_coyote > 0) _coyote--;
 
 		if (_jumped && _ysp < -4 && !held) _ysp = -4;
 		if (dir != 0 && dir * _xsp < TOP_SPEED) _xsp = _toward(_xsp, dir * TOP_SPEED, AIR_ACCEL);
 		if (_ysp < 0 && _ysp > -4 && Math.abs(_xsp) >= 0.125) _xsp -= _xsp * (1 / 32);
+
+		if (!grounded && _curled && !hurting)
+		{
+			if (tap && !_dropDash)
+			{
+				_dropDash = true;
+				_dropDashTimer = 0;
+				_dropDashCharged = false;
+			}
+			
+			if (_dropDash)
+			{
+				if (!held)
+				{
+					_resetDropDash();
+				}
+				else
+				{
+					_dropDashTimer += 1 / 60;
+					if (_dropDashTimer >= 0.3 && !_dropDashCharged)
+					{
+						_dropDashCharged = true;
+						_rev();
+					}
+				}
+			}
+		}
 
 		final steps = Std.int(Math.max(1, Math.ceil(Math.max(Math.abs(_xsp), Math.abs(_ysp)) / 8)));
 		for (_ in 0...steps)
@@ -519,10 +552,26 @@ class Sonic extends FlxSprite implements CameraTarget
 		posY += useA ? da : db;
 		groundAngle = _surfaceAngle(useA ? ax : bx, useA ? ay : by, 0, true, 0);
 		mode = _modeOf(groundAngle);
-		_gsp = _xsp * Math.cos(groundAngle) + _ysp * Math.sin(groundAngle);
+		
 		grounded = true;
-		_jumped = rolling = false;
-		_curl(false);
+		_jumped = false;
+
+		if (_dropDash)
+		{
+			rolling = true;
+			_curl(true);
+			final boost = _dropDashCharged ? 12.0 : 8.0;
+			_gsp = (flipX ? -1 : 1) * boost;
+			_sfx("spindashgo");
+			_resetDropDash();
+		}
+		else
+		{
+			rolling = false;
+			_gsp = _xsp * Math.cos(groundAngle) + _ysp * Math.sin(groundAngle);
+			_curl(false);
+		}
+
 		if (hurting)
 		{
 			hurting = false;
@@ -609,6 +658,13 @@ class Sonic extends FlxSprite implements CameraTarget
 		_stopCharge();
 	}
 
+	function _resetDropDash():Void
+	{
+		_dropDash = false;
+		_dropDashTimer = 0;
+		_dropDashCharged = false;
+	}
+
 	function _rev():Void
 	{
 		_revSound ??= FlxG.sound.load(Paths.sound("minigame/preymini/spindash"));
@@ -693,6 +749,7 @@ class Sonic extends FlxSprite implements CameraTarget
 		_gsp = _xsp = _ysp = 0;
 		_peel = 0;
 		anchored = false;
+		_resetDropDash();
 	}
 
 	function _fallOut():Void

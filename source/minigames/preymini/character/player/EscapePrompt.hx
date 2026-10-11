@@ -3,6 +3,7 @@ package minigames.preymini.character.player;
 import flixel.graphics.FlxGraphic;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
+
 import openfl.display.BitmapData;
 
 class EscapePrompt extends FlxTypedGroup<FlxSprite>
@@ -108,7 +109,9 @@ class EscapePrompt extends FlxTypedGroup<FlxSprite>
 
 	static function _keycap(glyph:String):BitmapData
 	{
-		final cap = Paths.getBitmapData(Paths.getPath("images/minigame/preymini/hud/escape/keycap.png", IMAGE));
+		final originalCap = Paths.getBitmapData(Paths.getPath("images/minigame/preymini/hud/escape/keycap.png", IMAGE));
+		final cap = originalCap.clone(); 
+		
 		final font = Paths.getBitmapData(Paths.getPath("images/minigame/preymini/hud/escape/font.png", IMAGE));
 		final index = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!<>".indexOf(glyph);
 		if (index >= 0)

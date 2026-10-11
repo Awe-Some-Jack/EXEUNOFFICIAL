@@ -1,9 +1,12 @@
 package minigames.preymini.character.monster;
 
 import haxe.io.Bytes;
+import flixel.FlxSprite;
 
 class PixelMask
 {
+	static final _globalMaskCache:Map<String, Array<Bytes>> = new Map();
+
 	final _masks:Array<Bytes> = [];
 	final _w:Int;
 	final _h:Int;
@@ -12,25 +15,45 @@ class PixelMask
 	{
 		_w = sprite.frameWidth;
 		_h = sprite.frameHeight;
-		final bitmap = sprite.frames.parent.bitmap;
-		for (index in sprite.animation.getByName(anim).frames)
+
+		final graphicKey = sprite.frames.parent?.key ?? "";
+		final cacheKey = graphicKey + "_" + anim;
+
+		if (_globalMaskCache.exists(cacheKey))
 		{
-			final frame = sprite.frames.frames[index];
-			final mask = Bytes.alloc(_w * _h);
-			final fx = Std.int(frame.frame.x), fy = Std.int(frame.frame.y);
-			final ox = Std.int(frame.offset.x), oy = Std.int(frame.offset.y);
-			for (y in 0...Std.int(frame.frame.height))
-				for (x in 0...Std.int(frame.frame.width))
-				{
-					final cx = ox + x, cy = oy + y;
-					if (cx < _w && cy < _h && (bitmap.getPixel32(fx + x, fy + y) >>> 24) & 0xFF >= 128) mask.set(cy * _w + cx, 1);
-				}
-			_masks.push(mask);
+			for (m in _globalMaskCache.get(cacheKey))
+			{
+				_masks.push(m);
+			}
+			return;
+		}
+
+		final bitmap = sprite.frames.parent.bitmap;
+		final animationObj = sprite.animation.getByName(anim);
+		if (animationObj != null)
+		{
+			for (index in animationObj.frames)
+			{
+				final frame = sprite.frames.frames[index];
+				final mask = Bytes.alloc(_w * _h);
+				final fx = Std.int(frame.frame.x), fy = Std.int(frame.frame.y);
+				final ox = Std.int(frame.offset.x), oy = Std.int(frame.offset.y);
+				for (y in 0...Std.int(frame.frame.height))
+					for (x in 0...Std.int(frame.frame.width))
+					{
+						final cx = ox + x, cy = oy + y;
+						if (cx < _w && cy < _h && (bitmap.getPixel32(fx + x, fy + y) >>> 24) & 0xFF >= 128)
+							mask.set(cy * _w + cx, 1);
+					}
+				_masks.push(mask);
+			}
+			_globalMaskCache.set(cacheKey, _masks);
 		}
 	}
 
 	public function touches(frame:Int, x:Float, y:Float, flipX:Bool, cx:Float, cy:Float, rx:Float, ry:Float):Bool
 	{
+		if (_masks.length == 0) return false;
 		final mask = _masks[frame % _masks.length];
 		final x0 = Std.int(Math.max(0, Math.floor(cx - rx - x))), x1 = Std.int(Math.min(_w, Math.ceil(cx + rx - x)));
 		final y0 = Std.int(Math.max(0, Math.floor(cy - ry - y))), y1 = Std.int(Math.min(_h, Math.ceil(cy + ry - y)));

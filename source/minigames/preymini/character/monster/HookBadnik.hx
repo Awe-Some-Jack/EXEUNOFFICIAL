@@ -13,6 +13,8 @@ enum HookBadnikState
 
 class HookBadnik extends FlxSprite
 {
+	static final _hookCache:Map<String, Array<Array<Int>>> = new Map();
+
 	public var state(default, null):HookBadnikState = Hover;
 
 	public var onGrab:Void->Void = null;
@@ -50,7 +52,22 @@ class HookBadnik extends FlxSprite
 		frames = Paths.getSparrowAtlas("minigame/preymini/characters/enemys/Badnik_1", null, false);
 		animation.addByPrefix("fly", "Badnik_1", 10, true);
 		animation.play("fly");
-		for (i in animation.getByName("fly").frames) _hooks.push(_findHook(i));
+		
+		final cacheKey = "Badnik_1_fly";
+		if (_hookCache.exists(cacheKey))
+		{
+			for (h in _hookCache.get(cacheKey)) _hooks.push(h);
+		}
+		else
+		{
+			for (i in animation.getByName("fly").frames)
+			{
+				final h = _findHook(i);
+				_hooks.push(h);
+			}
+			_hookCache.set(cacheKey, _hooks);
+		}
+
 		_body = new PixelMask(this, "fly");
 		antialiasing = false;
 		moves = false;

@@ -161,7 +161,7 @@ class Sonic extends FlxSprite implements CameraTarget
 		_still = _leaveTime = 0;
 		_lock = _coyote = _buffer = _peelTime = 0;
 		_peel = 0;
-		_resetDropDash();
+		//_resetDropDash();
 		_place();
 	}
 
@@ -271,7 +271,7 @@ class Sonic extends FlxSprite implements CameraTarget
 		rolling = crouching = _skidding = false;
 		_jumped = true;
 		_buffer = _coyote = 0;
-		_resetDropDash();
+		//_resetDropDash();
 		_sfx("jump");
 	}
 
@@ -449,22 +449,22 @@ class Sonic extends FlxSprite implements CameraTarget
 				_dropDashCharged = false;
 			}
 			
-			if (_dropDash)
-			{
-				if (!held)
-				{
-					_resetDropDash();
-				}
-				else
-				{
-					_dropDashTimer += 1 / 60;
-					if (_dropDashTimer >= 0.3 && !_dropDashCharged)
-					{
-						_dropDashCharged = true;
-						_rev();
-					}
-				}
-			}
+			// if (_dropDash)
+			// {
+			// 	if (!held)
+			// 	{
+			// 		_resetDropDash();
+			// 	}
+			// 	else
+			// 	{
+			// 		_dropDashTimer += 1 / 60;
+			// 		if (_dropDashTimer >= 0.3 && !_dropDashCharged)
+			// 		{
+			// 			_dropDashCharged = true;
+			// 			_rev();
+			// 		}
+			// 	}
+			// }
 		}
 
 		final steps = Std.int(Math.max(1, Math.ceil(Math.max(Math.abs(_xsp), Math.abs(_ysp)) / 8)));
@@ -556,16 +556,16 @@ class Sonic extends FlxSprite implements CameraTarget
 		grounded = true;
 		_jumped = false;
 
-		if (_dropDash)
-		{
-			rolling = true;
-			_curl(true);
-			final boost = _dropDashCharged ? 12.0 : 8.0;
-			_gsp = (flipX ? -1 : 1) * boost;
-			_sfx("spindashgo");
-			_resetDropDash();
-		}
-		else
+		// if (_dropDash)
+		// {
+		// 	rolling = true;
+		// 	_curl(true);
+		// 	final boost = _dropDashCharged ? 12.0 : 8.0;
+		// 	_gsp = (flipX ? -1 : 1) * boost;
+		// 	_sfx("spindashgo");
+		// 	_resetDropDash();
+		// }
+		// else
 		{
 			rolling = false;
 			_gsp = _xsp * Math.cos(groundAngle) + _ysp * Math.sin(groundAngle);
@@ -749,7 +749,7 @@ class Sonic extends FlxSprite implements CameraTarget
 		_gsp = _xsp = _ysp = 0;
 		_peel = 0;
 		anchored = false;
-		_resetDropDash();
+		//_resetDropDash();
 	}
 
 	function _fallOut():Void

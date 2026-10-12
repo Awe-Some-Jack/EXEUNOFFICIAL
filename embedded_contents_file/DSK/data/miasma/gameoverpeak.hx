@@ -5,7 +5,6 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.FlxCamera;
 import flixel.tweens.FlxEase;
 import animate.FlxAnimate;
-import openfl.filters.ShaderFilter;
 
 // Lo que costo hacer esta mierdaaaaa GAAAAAAA
 // By Kophy232
@@ -104,12 +103,6 @@ function onGameOverStart()
 	blackfuck2.alpha = 0;
 	GameOverSubstate.instance.add(blackfuck2);
 	blackfuck2.cameras = [camGameOver];
-
-	var shaderSpr = game.getLuaObject('shaderSprite_camGame');
-	if(shaderSpr != null && shaderSpr.shader != null) {
-		var filterObj = new ShaderFilter(shaderSpr.shader);
-		camGameOver.filters = [filterObj];
-	}
 
 	FlxTween.cancelTweensOf(FlxG.camera.scroll);
 	FlxTween.cancelTweensOf(FlxG.camera);

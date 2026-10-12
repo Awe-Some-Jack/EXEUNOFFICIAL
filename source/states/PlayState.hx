@@ -3146,9 +3146,6 @@ class PlayState extends MusicBeatState
        
 		checkSavedSongs(formattedSong);
 
-		if (formattedSong == "fight-or-flight") 
-			EXEFreeplay.maniaUnlock = true;
-
 		final exitToMenu = () -> {
 			Mods.loadTopMod();
 			#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
@@ -3217,6 +3214,13 @@ class PlayState extends MusicBeatState
 					FlxG.save.data.theYourselfCutscene = null;
 					FlxG.save.data.storyModeDone = true;
 					FlxG.save.flush();
+				case "fight-or-flight":
+					if (states.SoundTest.fromSoundTest) 
+					{
+						EXEFreeplay.maniaUnlock = true;
+						states.SoundTest.fromSoundTest = false;
+						FlxG.switchState(() -> new states.EXEFreeplay());
+					}
 			}
 			if (!FlxG.save.data.storyModeDone) trace(FlxG.save.data.lastCoverPlay);
 

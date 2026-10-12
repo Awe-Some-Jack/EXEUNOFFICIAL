@@ -248,7 +248,8 @@ class EXEMenu extends MusicBeatState
 			#if !SHOW_LOADING_SCREEN
 			FlxG.sound.music?.stop();
 			#end
-
+			FlxG.save.data.unlockManiaOnce = true;
+			states.SoundTest.fromSoundTest = true;
 			EXEFreeplay.maniaUnlock = false;
 		});
 	}

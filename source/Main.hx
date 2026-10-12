@@ -210,6 +210,14 @@ class Main extends Sprite
 			if (font == null)
 			{
 				font = cast getAssetOriginal(id, type, useCache);
+				#if mobile
+				if (font == null && !haxe.io.Path.isAbsolute(id))
+				{
+					final absolutePath:String = haxe.io.Path.join([MobileUtil.getAssetDirectory(), id]);
+					if (sys.FileSystem.exists(absolutePath))
+						font = openfl.text.Font.fromFile(absolutePath);
+				}
+				#end
 				if (font != null)
 				{
 					#if mobile

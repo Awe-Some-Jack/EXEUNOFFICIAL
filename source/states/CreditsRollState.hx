@@ -77,8 +77,6 @@ class CreditsRollState extends MusicBeatState
 			FlxG.sound.music?.fadeOut(5);
 		}
 
-		timer += elapsed * speed;
-		trace(timer);
 		if (timer > 3)
 		{
 			if (lastTxt != null && lastTxt.y <= FlxG.height / 2)
@@ -104,11 +102,12 @@ class CreditsRollState extends MusicBeatState
 				if (Std.isOfType(member, FlxText))
 				{
 					final text:FlxText = cast(member, FlxText);
-					text.y -= 75 * elapsed * speed;
+					text.y -= 85 * elapsed * speed;
 					lastTxt = text;
 				}
 			}
 		}
+		else timer += elapsed * speed;
 	}
 
 	override function destroy()

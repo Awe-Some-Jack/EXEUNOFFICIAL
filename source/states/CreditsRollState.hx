@@ -14,7 +14,7 @@ class CreditsRollState extends MusicBeatState
 
 	public function new(?file:String = 'credits')
 	{
-		super(file);
+		super();
 		creditsFile = file;
 		if (creditsFile == 'truecredits') trueEnding = true;
 	}

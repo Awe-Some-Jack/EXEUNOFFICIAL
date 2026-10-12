@@ -68,7 +68,7 @@ class CreditsRollState extends MusicBeatState
 
 		speed = (FlxG.keys.pressed.SHIFT ? 3 : 1);
 
-		if (FlxG.keys.pressed.CONTROL) speed = 0;
+		if (FlxG.keys.pressed.CONTROL) speed = 0.5;
 
 		if (((controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end) || (controls.BACK #if mobile || backPressed #end)) && canLeave)
 		{
@@ -77,6 +77,8 @@ class CreditsRollState extends MusicBeatState
 			FlxG.sound.music?.fadeOut(5);
 		}
 
+		timer += elapsed * speed;
+		trace(timer);
 		if (timer > 3)
 		{
 			if (lastTxt != null && lastTxt.y <= FlxG.height / 2)
@@ -102,12 +104,11 @@ class CreditsRollState extends MusicBeatState
 				if (Std.isOfType(member, FlxText))
 				{
 					final text:FlxText = cast(member, FlxText);
-					text.y -= 62 * elapsed * speed;
+					text.y -= 75 * elapsed * speed;
 					lastTxt = text;
 				}
 			}
 		}
-		else timer += elapsed * speed;
 	}
 
 	override function destroy()

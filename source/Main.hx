@@ -210,7 +210,21 @@ class Main extends Sprite
 			if (font == null)
 			{
 				font = cast getAssetOriginal(id, type, useCache);
-				if (font != null) fontCache.set(id, font);
+				#if mobile
+				if (font == null && !haxe.io.Path.isAbsolute(id))
+				{
+					final absolutePath:String = haxe.io.Path.join([MobileUtil.getAssetDirectory(), id]);
+					if (sys.FileSystem.exists(absolutePath))
+						font = openfl.text.Font.fromFile(absolutePath);
+				}
+				#end
+				if (font != null)
+				{
+					#if mobile
+					try openfl.text.Font.registerFont(font) catch (e:Dynamic) {}
+					#end
+					fontCache.set(id, font);
+				}
 			}
 			return font;
 		};

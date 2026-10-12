@@ -47,7 +47,7 @@ class BIOSLoadingState extends SonicSubState
 		add(bg);
 
 		var logo:FlxSprite = new FlxSprite();
-		logo.frames = FlxAtlasFrames.fromSparrow('assets/exe/ring.webp', 'assets/exe/ring.xml');
+		logo.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/ring.webp'), 'assets/exe/ring.xml');
 		logo.animation.addByPrefix('idle', 'idle', 60, true);
 		logo.animation.play('idle', true);
 		logo.scale.set(0.35, 0.35);
@@ -126,9 +126,7 @@ class BIOSLoadingState extends SonicSubState
 					else if (ch.hasAnimation('danceLeft')) animName = 'danceLeft';
 
 					if (animName != null) ch.playAnim(animName, true, false, 0);
-					ch.updateFramePixels();
-
-					final fp = ch.framePixels;
+					final fp = BIOSCharacter.capture(ch);
 					if (fp != null && fp.width > 0 && fp.height > 0)
 					{
 						final owned = new BitmapData(fp.width, fp.height, true, 0x00000000);
@@ -216,8 +214,8 @@ class BIOSLoadingState extends SonicSubState
 		}
 
 		final bytes = atlas.encode(atlas.rect, new PNGEncoderOptions());
-		File.saveBytes('assets/exe/extras/bios/idle_atlas.png', bytes);
-		File.saveContent('assets/exe/extras/bios/idle_atlas.json', Json.stringify(manifest, null, '\t'));
+		File.saveBytes(BIOSCharacter.atlasPng(), bytes);
+		File.saveContent(BIOSCharacter.atlasJson(), Json.stringify(manifest, null, '\t'));
 		atlas.dispose();
 	}
 }

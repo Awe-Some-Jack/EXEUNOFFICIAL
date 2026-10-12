@@ -334,6 +334,7 @@ class PlayState extends MusicBeatState
 	static final SPACE_HITBOX_SONGS:Array<String> = [
 		'chaos', 'b4cksl4sh', 'manual-blast', 'hedge', 'fate', 'deception', 'prey', 'universal-collapse', 'triple-trouble'
 	];
+	static final OPPONENT_FLIP_SIDE_SONGS:Array<String> = ['pre-design'];
 	public static var pauseButton:FlxSprite;
 
 	var spaceHitbox:FlxSprite = null;
@@ -1926,7 +1927,12 @@ class PlayState extends MusicBeatState
 	{
 		if (opponentStrums.length < 4 || playerStrums.length < 4) return;
 
-		for(i in 0...4) opponentStrums.members[i].scale.set(0.3, 0.3);
+		for(i in 0...4)
+		{
+			final strum:StrumNote = opponentStrums.members[i];
+			final mobileScale:Float = isPixelStage ? strum.baseScaleX * (0.3 / 0.7) : 0.3;
+			strum.scale.set(mobileScale, mobileScale);
+		}
 		positionMobileMiddlescroll();
 		if (startedCountdown) updateStrumDefaults();
 	}
@@ -1950,7 +1956,7 @@ class PlayState extends MusicBeatState
 		}
 
 		final groupSpan:Float = (3 * .3 * 162) + opponentStrums.members[0].width;
-		opponentStrums.members[0].x = opponentStrumsFlipSide ? (FlxG.width - groupSpan) : 0;
+		opponentStrums.members[0].x = (opponentStrumsFlipSide || OPPONENT_FLIP_SIDE_SONGS.contains(Paths.formatToSongPath(SONG.song))) ? (FlxG.width - groupSpan) : 0;
 
 		for(i in 0...4) {
 			opponentStrums.members[i].y = ClientPrefs.data.downScroll ? 50 : FlxG.height - 159;

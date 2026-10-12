@@ -43,7 +43,7 @@ class StoryParallaxState extends MusicBeatState
 		add(megadrive);
 
 		mdcd = new FlxSprite(megadrive.x + 752, megadrive.y + 82);
-		mdcd.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/story mode/cd.webp', 'assets/exe/parallax/story mode/cd.xml');
+		mdcd.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/parallax/story mode/cd.webp'), 'assets/exe/parallax/story mode/cd.xml');
 		mdcd.animation.addByPrefix('idle', 'idle instancia 1', 24, true);
 		mdcd.animation.addByPrefix('selected', 'cd instancia 1', 24, false);
 		mdcd.animation.play('idle');
@@ -52,7 +52,7 @@ class StoryParallaxState extends MusicBeatState
 		add(mdcd);
 
 		cd = new FlxSprite(914, 126);
-		cd.frames = FlxAtlasFrames.fromSparrow('assets/exe/parallax/story mode/educador.webp', 'assets/exe/parallax/story mode/educador.xml');
+		cd.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/parallax/story mode/educador.webp'), 'assets/exe/parallax/story mode/educador.xml');
 		cd.animation.addByPrefix('idle', 'ecuador idle instancia 1', 24, true);
 		cd.animation.addByPrefix('selected', 'ecuador instancia 1', 24, false);
 		cd.animation.play('idle');

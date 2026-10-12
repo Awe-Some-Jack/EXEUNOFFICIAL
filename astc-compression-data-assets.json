@@ -3,12 +3,9 @@
   "output": "./astc-textures/",
   "quality": "thorough",
   "blocksize": "6x6",
-  "colorprofile": "cs",
+  "colorprofile": "cl",
+  "premultiplyAlpha": true,
   "custom": [
-    {
-      "asset": "",
-      "blocksize": "4x4"
-    },
     {
       "asset": "",
       "blocksize": "4x4"
@@ -17,17 +14,11 @@
   "excludes": [
   	"assets/shared/images/minigame/",
     "assets/embed/exe/extras/achievements/icons/",
-    "assets/exe/access/",
-    "assets/exe/extras/bios/",
-    "assets/exe/extras/select.webp",
+    "assets/exe/access/majin",
+    "assets/exe/extras/bios/characterbios.webp",
     "assets/exe/pause/",
     "assets/exe/soundtest/",
     "assets/exe/story/padLock.webp",
-    "assets/exe/title/logo/eyes.webp",
-    "assets/exe/title/titleEnterNEW.webp",
-    "assets/exe/transitions/",
-    "assets/shared/images/pixelUI/",
-    "assets/shared/images/noteSkins/NOTE_assets.webp",
-    "assets/shared/images/noteSkins/NOTENORMAL_assets.webp"
+    "assets/shared/images/pixelUI/"
   ]
 }

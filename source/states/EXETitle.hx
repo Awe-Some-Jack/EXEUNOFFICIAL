@@ -212,7 +212,7 @@ class EXETitle extends MusicBeatState
 		add(spikes);
 		
 		titleText = new FlxSprite();
-		titleText.frames = FlxAtlasFrames.fromSparrow('assets/exe/title/titleEnterNEW.webp', 'assets/exe/title/titleEnterNEW.xml');
+		titleText.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/title/titleEnterNEW.webp'), 'assets/exe/title/titleEnterNEW.xml');
 		titleText.animation.addByPrefix('idle', 'Press Enter to Begin instance 1', 24, true);
 		titleText.animation.addByPrefix('press', 'ENTER PRESSED instance 1', 24, false);
 		titleText.animation.play('idle');

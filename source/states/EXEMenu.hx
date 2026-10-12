@@ -176,7 +176,7 @@ class EXEMenu extends MusicBeatState
 		{
 			new FlxTimer().start(0.4, (_) -> maniaEmail());
 			heylookanemail = new FlxSprite();
-			heylookanemail.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/mania/Mail Box.webp', 'assets/exe/access/mania/Mail Box.xml');
+			heylookanemail.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/access/mania/Mail Box.webp'), 'assets/exe/access/mania/Mail Box.xml');
 			heylookanemail.animation.addByPrefix('email', 'Mail', 24, false);
 			heylookanemail.scale.set(0.5, 0.5);
 			heylookanemail.alpha = 0;

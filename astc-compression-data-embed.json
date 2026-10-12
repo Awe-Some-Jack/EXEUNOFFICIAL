@@ -3,7 +3,8 @@
   "output": "./astc-textures/",
   "quality": "thorough",
   "blocksize": "6x6",
-  "colorprofile": "cs",
+  "colorprofile": "cl",
+  "premultiplyAlpha": true,
   "custom": [],
   "excludes": [
     "embedded_contents_file/SONICHU/images/"

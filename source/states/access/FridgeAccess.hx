@@ -53,7 +53,7 @@ class FridgeAccess extends MusicBeatState
 		add(paper);
 
 		vanilla = new FlxSprite();
-		vanilla.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/Vanilla-Milk.webp', 'assets/exe/access/fridge/Vanilla-Milk.xml');
+		vanilla.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/access/fridge/Vanilla-Milk.webp'), 'assets/exe/access/fridge/Vanilla-Milk.xml');
 		vanilla.animation.addByPrefix('idle', 'vanilla instancia 1', 24, false);
 		vanilla.animation.addByPrefix('selected', 'vanilla selected instancia 1', 24, false);
 		vanilla.animation.play('idle');
@@ -63,7 +63,7 @@ class FridgeAccess extends MusicBeatState
 		add(vanilla);
 
 		chocolate = new FlxSprite();
-		chocolate.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/Choco-Milk.webp', 'assets/exe/access/fridge/Choco-Milk.xml');
+		chocolate.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/access/fridge/Choco-Milk.webp'), 'assets/exe/access/fridge/Choco-Milk.xml');
 		chocolate.animation.addByPrefix('idle', 'chocolate instancia 1', 24, false);
 		chocolate.animation.addByPrefix('selected', 'chocolate selected instancia 1', 24, false);
 		chocolate.animation.play('idle');
@@ -103,7 +103,7 @@ class FridgeAccess extends MusicBeatState
 		add(tv);
 
 		var doordown:FlxSprite = new FlxSprite();
-		doordown.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/door.webp', 'assets/exe/access/fridge/door.xml');
+		doordown.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/access/fridge/door.webp'), 'assets/exe/access/fridge/door.xml');
 		doordown.animation.addByPrefix('idle', 'door instancia 1', 24, false);
 		doordown.animation.play('idle');
 		doordown.scale.set(0.52, 0.52);
@@ -118,7 +118,7 @@ class FridgeAccess extends MusicBeatState
 		add(doorup);
 
 		var sunkyhand:FlxSprite = new FlxSprite();
-		sunkyhand.frames = FlxAtlasFrames.fromSparrow('assets/exe/access/fridge/sunky-hand.webp', 'assets/exe/access/fridge/sunky-hand.xml');
+		sunkyhand.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/access/fridge/sunky-hand.webp'), 'assets/exe/access/fridge/sunky-hand.xml');
 		sunkyhand.animation.addByPrefix('idle', 'sunky hand instancia 1', 24, false);
 		sunkyhand.animation.play('idle');
 		sunkyhand.animation.paused = true;

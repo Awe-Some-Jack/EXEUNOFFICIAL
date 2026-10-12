@@ -210,7 +210,13 @@ class Main extends Sprite
 			if (font == null)
 			{
 				font = cast getAssetOriginal(id, type, useCache);
-				if (font != null) fontCache.set(id, font);
+				if (font != null)
+				{
+					#if mobile
+					try openfl.text.Font.registerFont(font) catch (e:Dynamic) {}
+					#end
+					fontCache.set(id, font);
+				}
 			}
 			return font;
 		};

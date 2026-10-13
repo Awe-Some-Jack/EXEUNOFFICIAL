@@ -1,6 +1,8 @@
 {
 	"soundtray.volume": "GŁOŚNOŚĆ",
 	"language": "POLSKI",
+	"controls_type.labels": ["PSYCH", "BASE", "PRZYCISKI", "D-PAD"],
+	"middlescroll_type.labels": ["PC", "MOBILNE"],
 	"language_auto": "DOMYŚLNY SYSTEMU",
 	"mainmenu.soundtest": "TEST DŹWIĘKU",
 	"mainmenu.freeplay": "SWOBODNA GRA",
@@ -30,6 +32,8 @@
 	"options.title": "OPCJE GRY",
 	"options.controls": "STEROWANIE",
 	"options.controls.labels": ["NUTY", "UI", "AKCJE", "LEWO", "DÓŁ", "GÓRA", "PRAWO", "POTWIERDŹ", "WRÓĆ", "PAUZA", "RESETUJ"],
+	"options.mobilecontrols": "STEROWANIE MOBILNE",
+	"options.mobilecontrols.labels": ["PRZESUWANIE NUT", "MIDDLESCROLL", "NUTY PRZECIWNIKA NA MOBILNYCH", "TYP STEROWANIA", "TYP MIDDLESCROLL", "ALFA HITBOXA (DOMYŚLNA)", "ALFA HITBOXA (WCIŚNIĘTY)", "WIDOCZNY PRZYCISK PAUZY"],
 	"options.visuals": "WYGLĄD",
 	"options.visuals.labels": ["UKRYJ HUD", "MIGAJĄCE ŚWIATŁA", "ZOOM KAMERY", "ZOOM TEKSTU WYNIKU", "LICZNIK FPS"],
 	"options.gameplay": "ROZGRYWKA",

@@ -1,6 +1,8 @@
 {
 	"soundtray.volume": "音量",
 	"language": "简体中文",
+	"controls_type.labels": ["PSYCH", "BASE", "按钮", "方向键"],
+	"middlescroll_type.labels": ["PC", "移动端"],
 	"language_auto": "系统默认",
 	"mainmenu.soundtest": "声音测试",
 	"mainmenu.freeplay": "自由模式",
@@ -30,6 +32,8 @@
 	"options.title": "游戏选项",
 	"options.controls": "按键设置",
 	"options.controls.labels": ["音符", "界面", "操作", "左", "下", "上", "右", "确认", "返回", "暂停", "重置"],
+	"options.mobilecontrols": "移动端操作",
+	"options.mobilecontrols.labels": ["音符滑动", "MIDDLESCROLL", "移动端对手音符", "操作类型", "MIDDLESCROLL 类型", "默认判定框 Alpha", "按下判定框 Alpha", "显示暂停按钮"],
 	"options.visuals": "视觉效果",
 	"options.visuals.labels": ["隐藏界面", "闪烁灯光", "镜头缩放", "分数文字缩放", "帧数显示"],
 	"options.gameplay": "游戏玩法",

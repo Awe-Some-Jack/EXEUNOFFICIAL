@@ -1,6 +1,8 @@
 {
 	"soundtray.volume": "LAUTSTÄRKE",
 	"language": "DEUTSCH",
+	"controls_type.labels": ["PSYCH", "BASIS", "TASTEN", "STEUERKREUZ"],
+	"middlescroll_type.labels": ["PC", "MOBIL"],
 	"language_auto": "SYSTEM-STANDARD",
 	"mainmenu.soundtest": "SOUNDTEST",
 	"mainmenu.freeplay": "FREEPLAY",
@@ -30,6 +32,8 @@
 	"options.title": "SPIELEINSTELLUNGEN",
 	"options.controls": "STEUERUNG",
 	"options.controls.labels": ["NOTEN", "UI", "AKTIONEN", "LINKS", "UNTEN", "OBEN", "RECHTS", "BESTÄTIGEN", "ZURÜCK", "PAUSE", "ZURÜCKSETZEN"],
+	"options.mobilecontrols": "MOBILE STEUERUNG",
+	"options.mobilecontrols.labels": ["NOTEN-SLIDE", "MIDDLESCROLL", "GEGNERNOTEN AUF MOBILGERÄTEN", "STEUERUNGSTYP", "MIDDLESCROLL-TYP", "STANDARD-HITBOX-ALPHA", "GEDRÜCKT-HITBOX-ALPHA", "PAUSE-BUTTON SICHTBAR"],
 	"options.visuals": "OPTIK",
 	"options.visuals.labels": ["HUD AUSBLENDEN", "BLINKENDE LICHTER", "KAMERA-ZOOM", "SCORE-ZOOM", "FPS-ANZEIGE"],
 	"options.gameplay": "GAMEPLAY",

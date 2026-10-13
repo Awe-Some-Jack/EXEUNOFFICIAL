@@ -50,6 +50,7 @@ class CreditsRollState extends MusicBeatState
 
 			var creditsTxt:FlxText = new FlxText(15, y, Std.int(FlxG.width * 0.6), text);
 			creditsTxt.setFormat(Paths.font("sonic4.ttf"), size, 0xFFFFFFFF, "left");
+			creditsTxt.antialiasing = ClientPrefs.data.antialiasing;
 			add(creditsTxt);
 			y += creditsTxt.height + 4;
 		}

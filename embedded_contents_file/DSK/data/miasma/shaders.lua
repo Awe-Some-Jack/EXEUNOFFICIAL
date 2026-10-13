@@ -1,6 +1,9 @@
 -- Shader by Kophy232, Remember to credit if use! it took me months xd
 
-local shaderName = "TVtime"
+local tvShaderName = "TVtime"
+local shaderName = tvShaderName
+local cameraShaderName = "CameraStuff"
+local shadersOn = (shadersEnabled ~= false)
 local shaderTime = 0
 local shaderBase = {}
 local shaderState = {}
@@ -8,9 +11,18 @@ local shaderPulses = {}
 local shaderObjectPulses = {}
 local shaderObjectTweens = {}
 local shaderObjectBase = {}
-local cameraToShaderSprite = {
+local cameraToShaderSprite = {	-- CameraStuff (siempre activo)
     camGame = "shaderSprite_camGame",
     camHUD = "shaderSprite_camHUD"
+}
+local cameraToTVSprite = {	-- TVtime (solo si los shaders estan activados)
+    camGame = "shaderSpriteTV_camGame",
+    camHUD = "shaderSpriteTV_camHUD"
+}
+local cameraOnlyParams = {	-- Estos parametros los maneja CameraStuff, el resto TVtime
+    cangle = true,
+    brightness = true,
+    contrast = true
 }
 local cameraDefaults = {	-- DEFAULT SHADER EFFECTS FOR EACH CAMERA
     camGame = {
@@ -77,15 +89,17 @@ function initShaderValues(camera)  -- DEFAULT SHADER EFFECTS FOR ALL THE CAMERAS
 	cuwarph = 0, -- test = -0.4
 	cuwarpv = 0, -- -0.4
     }
-    local sprites = getShaderSprites(camera or "all")
-    for _, sprite in ipairs(sprites) do
-        local cameraName = nil
-        for cam, spriteName in pairs(cameraToShaderSprite) do
-            if spriteName == sprite then
-                cameraName = cam
-                break
+    local function cameraMatches(camName)
+        if camera == nil or camera == "all" then return true end
+        if type(camera) == "string" then return camera == camName end
+        if type(camera) == "table" then
+            for _, c in ipairs(camera) do
+                if c == camName then return true end
             end
         end
+        return false
+    end
+    local function buildDefaults(cameraName)
         local defaults = {}
         for k,v in pairs(baseDefaults) do
             defaults[k] = v
@@ -95,12 +109,30 @@ function initShaderValues(camera)  -- DEFAULT SHADER EFFECTS FOR ALL THE CAMERAS
                 defaults[k] = v
             end
         end
+        return defaults
+    end
+    local function applyDefaults(sprite, defaults, onlyCameraParams)
         shaderBase[sprite] = {}
         shaderState[sprite] = {}
         for k,v in pairs(defaults) do
-            setShaderFloat(sprite, k, v)
-            shaderBase[sprite][k] = v
-            shaderState[sprite][k] = v
+            local isCameraParam = cameraOnlyParams[k] == true
+            if (onlyCameraParams and isCameraParam) or (not onlyCameraParams and not isCameraParam) then
+                setShaderFloat(sprite, k, v)
+                shaderBase[sprite][k] = v
+                shaderState[sprite][k] = v
+            end
+        end
+    end
+    for camName, spriteName in pairs(cameraToShaderSprite) do
+        if cameraMatches(camName) then
+            applyDefaults(spriteName, buildDefaults(camName), true)
+        end
+    end
+    if shadersOn then
+        for camName, spriteName in pairs(cameraToTVSprite) do
+            if cameraMatches(camName) then
+                applyDefaults(spriteName, buildDefaults(camName), false)
+            end
         end
     end
 end
@@ -677,6 +709,31 @@ function getShaderSprites(camera)
         return {}
     end
 end
+function getTVSprites(camera)
+    if not shadersOn then return {} end
+    if camera == "all" then
+        return {
+            "shaderSpriteTV_camGame",
+            "shaderSpriteTV_camHUD"
+        }
+    elseif type(camera) == "string" then
+        return { cameraToTVSprite[camera] }
+    elseif type(camera) == "table" then
+        local sprites = {}
+        for _, cam in ipairs(camera) do
+            table.insert(sprites, cameraToTVSprite[cam])
+        end
+        return sprites
+    else
+        return {}
+    end
+end
+function getSpritesForParam(camera, param)
+    if cameraOnlyParams[param] then
+        return getShaderSprites(camera)
+    end
+    return getTVSprites(camera)
+end
 function flashentuano(alpha, timeIn, timeOut, color)
 	local hexColor = color or "FFFFFF"
 
@@ -766,7 +823,7 @@ function pulseShaderSum(param, amount, totalDuration, camera)
     totalDuration = totalDuration or 2
     if totalDuration <= 0 then totalDuration = 0.001 end
     camera = camera or "all"
-    local sprites = getShaderSprites(camera)
+    local sprites = getSpritesForParam(camera, param)
     for _, sprite in ipairs(sprites) do
         local pulse = {
             type = "pulse",
@@ -794,7 +851,7 @@ function pulseShaderFlash(param, amount, fadeOut, fadeIn, camera)
     camera = camera or "all"
     local cameraParams = {"czoom", "cangle", "cx", "cy", "cwarph", "cwarpv", "cuwarph", "cuwarpv"}
     local isCameraParam = contains(cameraParams, param)
-    local sprites = getShaderSprites(camera)
+    local sprites = getSpritesForParam(camera, param)
     for _, sprite in ipairs(sprites) do
         local baseValue = shaderBase[sprite][param] or 0
         table.insert(shaderPulses, {
@@ -881,7 +938,7 @@ function ShaderInst(param, value, camera)
     if not param or type(value) ~= "number" then return end
     camera = camera or "all"
     
-    local sprites = getShaderSprites(camera)
+    local sprites = getSpritesForParam(camera, param)
     for _, sprite in ipairs(sprites) do
         shaderBase[sprite][param] = value
         setShaderFloat(sprite, param, value)
@@ -890,7 +947,7 @@ end
 function TweenShadersin(param, targetValue, duration, easeType, camera)
     if not param or type(targetValue) ~= "number" or type(duration) ~= "number" then return end
     camera = camera or "all"
-    local sprites = getShaderSprites(camera)
+    local sprites = getSpritesForParam(camera, param)
     for _, sprite in ipairs(sprites) do
         local startValue = shaderBase[sprite][param] or 0
         local tween = {
@@ -1064,7 +1121,7 @@ function pulseColorSwapObject(objs, hue, sat, brt, fadeOut, fadeIn, camera)
 end
 function onUpdate(elapsed)
     shaderTime = shaderTime + elapsed
-    local sprites = getShaderSprites("all")
+    local sprites = getTVSprites("all")
     for _, sprite in ipairs(sprites) do
         setShaderFloat(sprite, "time", shaderTime)
     end
@@ -1473,7 +1530,7 @@ function onEvent(name, v1, v2)
 end
 function setShaderBaseFloat(param, value, camera)
     camera = camera or "all"
-    local sprites = getShaderSprites(camera)
+    local sprites = getSpritesForParam(camera, param)
     for _, sprite in ipairs(sprites) do
         shaderBase[sprite][param] = value or 0
         setShaderFloat(sprite, param, shaderBase[sprite][param])
@@ -1485,11 +1542,13 @@ function onCreate()
     local hudCode    = 'game.camHUD.filters = ['
     local firstGame  = true
     local firstHUD   = true
-    for camName, spriteName in pairs(cameraToShaderSprite) do
+    local function addFilter(spriteName, shader, force)
         makeLuaSprite(spriteName)
         makeGraphic(spriteName, screenWidth, screenHeight)
-        setSpriteShader(spriteName, shaderName)
-        local filterEntry = 'new ShaderFilter(game.getLuaObject("' .. spriteName .. '").shader)'
+        setSpriteShader(spriteName, shader, force)
+        return 'new ShaderFilter(game.getLuaObject("' .. spriteName .. '").shader)'
+    end
+    local function pushFilter(camName, filterEntry)
         if camName == 'camGame' then
             if not firstGame then filterCode = filterCode .. ', ' end
             filterCode = filterCode .. filterEntry
@@ -1498,6 +1557,14 @@ function onCreate()
             if not firstHUD then hudCode = hudCode .. ', ' end
             hudCode = hudCode .. filterEntry
             firstHUD = false
+        end
+    end
+    for camName, spriteName in pairs(cameraToShaderSprite) do
+        pushFilter(camName, addFilter(spriteName, cameraShaderName, true))
+    end
+    if shadersOn then
+        for camName, spriteName in pairs(cameraToTVSprite) do
+            pushFilter(camName, addFilter(spriteName, tvShaderName, false))
         end
     end
     filterCode = filterCode .. ']; return;'

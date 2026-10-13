@@ -8,7 +8,6 @@
 uniform float time;
 uniform float desaturation;
 uniform float sharpness;
-uniform float brightness;
 uniform float crtGammaEnabled;
 uniform float lcdGammaEnabled;
 uniform float crtGammaValue;
@@ -18,7 +17,6 @@ uniform float lightingIntensity;
 uniform float halationAmount;
 uniform float halationPosition;
 uniform float halationClone;
-uniform float contrast;
 uniform float horizontalGlitchAmount;
 uniform float waveDistortion;
 uniform float waveBarGlitch;
@@ -26,7 +24,6 @@ uniform float chromAblineal;
 uniform float chromAbRadial;
 uniform float pixelateAmount;
 uniform float czoom;
-uniform float cangle;
 uniform float cx;
 uniform float cy;
 uniform float cwarph;
@@ -79,7 +76,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     vec2 px = vec2(1.0) / iResolution.xy;
     vec2 uv = fragCoord * px;
 
-    if (czoom != 1.0 || cangle != 0.0 || cx != 0.0 || cy != 0.0) {
+    if (czoom != 1.0 || cx != 0.0 || cy != 0.0) {
         vec2 center = iResolution.xy * 0.5;
         vec2 centered = fragCoord - center;
         float aspectRatio = iResolution.x * px.y; // iResolution.x / iResolution.y
@@ -88,13 +85,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
         normalized.x += cx * aspectRatio;
         normalized.y += cy;
         normalized *= czoom;
-        
-        if (cangle != 0.0) {
-            float angInRad = radians(cangle);
-            float s = sin(angInRad);
-            float c_ang = cos(angInRad);
-            normalized = mat2(c_ang, -s, s, c_ang) * normalized;
-        }
         
         uv = (normalized * iResolution.y + center) * px;
         vec2 c = uv - 0.5;
@@ -219,7 +209,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
             lighting = lightingBlur * glowMask * lightingIntensity;
         }
         
-        vec3 finalColor = sharpColor * brightness + lighting;
+        vec3 finalColor = sharpColor + lighting;
         
         if (waveBarGlitch > 0.0) {
             vec2 uvWB = inputUV;
@@ -249,7 +239,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
         if (crtGammaEnabled > 0.5) finalColor = pow(finalColor, vec3(crtGammaValue));
         if (lcdGammaEnabled > 0.5) finalColor = pow(finalColor, vec3(1.0 / lcdGammaValue));
         
-        finalColor = mix(vec3(0.5), finalColor, contrast);
         if (desaturation > 0.0) {
             finalColor = mix(finalColor, vec3(dot(finalColor, LUMA)), desaturation);
         }

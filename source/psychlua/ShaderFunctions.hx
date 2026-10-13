@@ -10,20 +10,20 @@ class ShaderFunctions
 	{
 		var lua = funk.lua;
 
-		funk.addLocalCallback('initLuaShader', function(name:String) {
-			if (!ClientPrefs.data.shaders) return false;
+		funk.addLocalCallback('initLuaShader', function(name:String, ?force:Bool = false) {
+			if (!ClientPrefs.data.shaders && !force) return false;
 			#if (!flash && MODS_ALLOWED && sys)
-			return funk.initLuaShader(name);
+			return funk.initLuaShader(name, force);
 			#else
 			FunkinLua.luaTrace('initLuaShader: Platform unsupported for Runtime Shaders!', false, false, FlxColor.RED);
 			return false;
 			#end
 		});
 
-		funk.addLocalCallback('setSpriteShader', function(obj:String, shader:String) {
-			if (!ClientPrefs.data.shaders) return false;
+		funk.addLocalCallback('setSpriteShader', function(obj:String, shader:String, ?force:Bool = false) {
+			if (!ClientPrefs.data.shaders && !force) return false;
 			#if (!flash && sys)
-			if (!funk.runtimeShaders.exists(shader) && !funk.initLuaShader(shader))
+			if (!funk.runtimeShaders.exists(shader) && !funk.initLuaShader(shader, force))
 			{
 				FunkinLua.luaTrace('setSpriteShader: Shader $shader is missing!', false, false, FlxColor.RED);
 				return false;

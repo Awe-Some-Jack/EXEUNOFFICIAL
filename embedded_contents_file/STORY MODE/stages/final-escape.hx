@@ -327,6 +327,9 @@ function onGameOverStart()  {
 	YWGA?.destroy(); 
 }
 
+function onPause() { introCutscene?.pause(); YWGA?.pause(); }
+function onResume() { introCutscene?.resume(); YWGA?.resume(); }
+
 var inFront:Bool = true;
 var floatSine:Float = 0;
 var floatIntensity:Float = 1;

@@ -1,6 +1,8 @@
 {
 	"soundtray.volume": "音量",
 	"language": "日本語",
+	"controls_type.labels": ["PSYCH", "BASE", "ボタン", "十字キー"],
+	"middlescroll_type.labels": ["PC", "モバイル"],
 	"language_auto": "システムデフォルト",
 	"mainmenu.soundtest": "サウンドテスト",
 	"mainmenu.freeplay": "フリープレイ",
@@ -30,6 +32,8 @@
 	"options.title": "ゲームオプション",
 	"options.controls": "操作設定",
 	"options.controls.labels": ["ノーツ", "UI", "アクション", "左", "下", "上", "右", "決定", "戻る", "ポーズ", "リセット"],
+	"options.mobilecontrols": "モバイル操作",
+	"options.mobilecontrols.labels": ["ノートスライド", "MIDDLESCROLL", "モバイルで相手ノートを表示", "操作タイプ", "MIDDLESCROLLタイプ", "通常時のヒットボックスAlpha", "押下時のヒットボックスAlpha", "ポーズボタンを表示"],
 	"options.visuals": "ビジュアル",
 	"options.visuals.labels": ["HUD非表示", "フラッシュ演出", "カメラズーム", "スコアテキストズーム", "FPSカウンター"],
 	"options.gameplay": "ゲームプレイ",

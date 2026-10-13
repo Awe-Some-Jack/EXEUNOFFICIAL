@@ -1,6 +1,8 @@
 {
 	"soundtray.volume": "VOLUME",
 	"language": "FRANÇAIS",
+	"controls_type.labels": ["PSYCH", "BASE", "BOUTONS", "CROIX DIRECTIONNELLE"],
+	"middlescroll_type.labels": ["PC", "MOBILE"],
 	"language_auto": "PAR DÉFAUT",
 	"mainmenu.soundtest": "TEST DE SON",
 	"mainmenu.freeplay": "JEU LIBRE",
@@ -30,6 +32,8 @@
 	"options.title": "PARAMÈTRES DU JEU",
 	"options.controls": "COMMANDES",
 	"options.controls.labels": ["NOTES", "INTERFACE", "ACTIONS", "GAUCHE", "BAS", "HAUT", "DROITE", "VALIDER", "RETOUR", "PAUSE", "RÉINITIALISER"],
+	"options.mobilecontrols": "COMMANDES MOBILES",
+	"options.mobilecontrols.labels": ["GLISSER SUR LES NOTES", "MIDDLESCROLL", "NOTES ADVERSES SUR MOBILE", "TYPE DE COMMANDES", "TYPE DE MIDDLESCROLL", "ALPHA DE LA HITBOX PAR DÉFAUT", "ALPHA DE LA HITBOX PRESSÉE", "BOUTON PAUSE VISIBLE"],
 	"options.visuals": "AFFICHAGE",
 	"options.visuals.labels": ["MASQUER L'HUD", "LUMIÈRES CLIGNOTANTES", "ZOOM DE LA CAMÉRA", "ZOOM DU TEXTE DE SCORE", "COMPTEUR FPS"],
 	"options.gameplay": "GAMEPLAY",

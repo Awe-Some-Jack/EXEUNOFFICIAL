@@ -84,7 +84,7 @@ class BIOS extends SonicSubState
 	var _lastCharId:String  = '';
 	var _lastCharMod:String = '';
 
-	static var _frameCache:Map<String, { ?bmp:BitmapData, #if mobile ?frames:FlxAtlasFrames, ?frame:FlxFrame, #end offset:Array<Float> }> = new Map();
+	static var _frameCache:Map<String, { ?bmp:BitmapData, ?graphic:flixel.graphics.FlxGraphic, #if mobile ?frames:FlxAtlasFrames, ?frame:FlxFrame, #end offset:Array<Float> }> = new Map();
 
 	var iconBoundsBox:FlxSprite;
 
@@ -231,20 +231,17 @@ class BIOS extends SonicSubState
 
 	function _loadIdleAtlas():Void
 	{
-		#if mobile
-		return;
-		#else
 		if (!BIOSCharacter.exists())
 			BIOSCharacter.generate(_collectModCharPairs());
 
-		if (!FileSystem.exists('assets/exe/extras/bios/idle_atlas.png') || !FileSystem.exists('assets/exe/extras/bios/idle_atlas.json'))
+		if (!BIOSCharacter.exists())
 			return;
 
 		var manifest:Dynamic;
 		try
 		{
-			final atlasBmp = BitmapData.fromFile('assets/exe/extras/bios/idle_atlas.png');
-			manifest = Json.parse(File.getContent('assets/exe/extras/bios/idle_atlas.json'));
+			final atlasBmp = BitmapData.fromFile(BIOSCharacter.atlasPng());
+			manifest = Json.parse(File.getContent(BIOSCharacter.atlasJson()));
 
 			for (key in Reflect.fields(manifest))
 			{
@@ -263,7 +260,6 @@ class BIOS extends SonicSubState
 		{
 			trace('BIOS: failed to load idle atlas: $e');
 		}
-		#end
 	}
 
 	function _buildShowcase():Void
@@ -568,13 +564,22 @@ class BIOS extends SonicSubState
 			_frameCache.set(cacheKey, cached);
 		}
 
+		if (cached.bmp != null)
+		{
+			if (cached.graphic == null || cached.graphic.bitmap == null || cached.graphic.bitmap.width == 0)
+			{
+				cached.graphic = flixel.graphics.FlxGraphic.fromBitmapData(cached.bmp, false, 'bios_char_$cacheKey');
+				cached.graphic.persist = true;
+				cached.graphic.destroyOnNoUse = false;
+			}
+			charSprite.loadGraphic(cached.graphic);
+		}
 		#if mobile
-		charSprite.frames = cached.frames;
-		charSprite.frame  = cached.frame;
-		#else
-		charSprite.makeGraphic(cached.bmp.width, cached.bmp.height, 0x00000000, true);
-		charSprite.pixels.copyPixels(cached.bmp, cached.bmp.rect, new Point(0, 0));
-		charSprite.dirty = true;
+		else
+		{
+			charSprite.frames = cached.frames;
+			charSprite.frame  = cached.frame;
+		}
 		#end
 
 		charSprite.scale.set(scale, scale);
@@ -823,8 +828,8 @@ class BIOS extends SonicSubState
 
 		if (entries.length > 1)
 		{
-			if ((FlxG.mouse.deltaWheel.y != 0 #if mobile || (deltaMouseY != 0 && pressHolding && cooldownTimer <= 0) #end) && !FlxG.mouse.overlaps(bioBox))
-				_changeEntry(Math.round(#if !mobile -FlxG.mouse.deltaWheel.y #else -deltaMouseY #end));
+			if ((FlxG.mouse.deltaWheel.y != 0 #if mobile || (Math.abs(deltaMouseY) >= 5 && pressHolding && cooldownTimer <= 0) #end) && !FlxG.mouse.overlaps(bioBox))
+				_changeEntry(Math.round(#if !mobile -FlxG.mouse.deltaWheel.y #else -deltaMouseY/Math.abs(deltaMouseY) #end));
 			if (controls.UI_UP_P || controls.UI_DOWN_P) _changeEntry(controls.UI_UP_P ? -1 : 1);
 		}
 
@@ -1007,7 +1012,12 @@ class BIOS extends SonicSubState
 		var size = 136;
 		charName.size = size;
 		final maxW = 328 / 0.5;
-		while (charName.width > maxW && size > 32) { size--; charName.size = size; }
+		if (charName.width > maxW)
+		{
+			size = Std.int(Math.max(32, Math.floor(size * maxW / charName.width)));
+			charName.size = size;
+			while (charName.width > maxW && size > 32) { size--; charName.size = size; }
+		}
 		charName.fieldWidth = Std.int(maxW);
 		charName.updateHitbox();
 		charName.y = 34 + (100 - charName.height * 0.5) * 0.5;

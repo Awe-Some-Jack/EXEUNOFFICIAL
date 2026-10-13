@@ -619,7 +619,7 @@
 				["Play Animation", "god", "dad"],
 				["Tweening Camera", "-120, 20", "2, sineInOut"],
 				["Cinematics (With HUD)", "1.4", "90"],
-				["tooslowlyric", "im", ""],
+				["tooslowlyric", "xd", ""],
 				["cameracenter", "false", ""]
 			]
 		],
@@ -635,24 +635,6 @@
 			155376.363479751,
 			[
 				["tooSlowEvents", "tweenObject", "camHUD, 0, 0.9"]
-			]
-		],
-		[
-			155715.346530599,
-			[
-				["tooslowlyric", "gonna", ""]
-			]
-		],
-		[
-			156223.82110687,
-			[
-				["tooslowlyric", "getcha", ""]
-			]
-		],
-		[
-			157579.75331026,
-			[
-				["tooslowlyric", "end", ""]
 			]
 		],
 		[

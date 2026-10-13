@@ -126,7 +126,7 @@ class EXEFreeplay extends MusicBeatState
 		buildSongList();
 
 		//Desactiva esto para usar el desbloqueo de Mania! - Uncomment this to use Mania's Unlock!
-		if (maniaUnlock) new FlxTimer().start(0.6, (_) -> maniaNotif());
+		if (maniaUnlock && FlxG.save.data.unlockManiaOnce != null) new FlxTimer().start(0.6, (_) -> maniaNotif());
 
 		covers = new FlxTypedGroup<FlxSprite>();
 		freeBoxes = new FlxTypedGroup<FlxSprite>();
@@ -368,7 +368,7 @@ class EXEFreeplay extends MusicBeatState
 		centerX = FlxG.width / 2;
 		centerY = FlxG.height / 2;
 
-		final screenstaticFrames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.webp', 'assets/exe/story/screenstatic.xml');
+		final screenstaticFrames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/screenstatic.webp'), 'assets/exe/story/screenstatic.xml');
 		final placeholderBitmap = loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.webp');
 		final entryLangFont = Paths.font(Language.getFontForLanguage());
 		final entryExeSize = Language.cjkSize(34);
@@ -563,10 +563,10 @@ class EXEFreeplay extends MusicBeatState
 			#if mobile
 			if(pressHolding && deltaMouseY != 0 && COOLDOWN_TIMER <= 0) {
 				if(deltaMouseY > 5) {
-					chooseSong(-1);
+					chooseSong(1);
 					holdCheck = 0;
 				} else if(deltaMouseY < -5) {
-					chooseSong(1);
+					chooseSong(-1);
 					holdCheck = 0;
 				}
 			}

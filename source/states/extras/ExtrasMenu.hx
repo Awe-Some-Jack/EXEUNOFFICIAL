@@ -78,7 +78,7 @@ class ExtrasMenu extends MusicBeatState
             volume: 1
         },
         {
-            name: "Door Into Summer",
+            name: "Door Into Summer (Reimagined)",
             src: "extras4",
             author: "MeDicenKay",
             volume: 1
@@ -90,7 +90,7 @@ class ExtrasMenu extends MusicBeatState
             volume: 1
         },
         {
-            name: "Old Freeplay Theme",
+            name: "Parallel Zone",
             src: "extras3",
             author: "Alex Hamud",
             volume: 1

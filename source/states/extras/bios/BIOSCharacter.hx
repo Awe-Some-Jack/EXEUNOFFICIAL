@@ -11,10 +11,64 @@ import openfl.geom.Rectangle;
 
 import objects.Character;
 
+#if (mobile && flixel_animate)
+import animate.internal.FilterRenderer;
+import flixel.math.FlxMatrix;
+#end
+
 class BIOSCharacter
 {
+	public static inline function atlasPng():String
+		return atlasDir() + 'idle_atlas.png';
+
+	public static inline function atlasJson():String
+		return atlasDir() + 'idle_atlas.json';
+
+	static inline function atlasDir():String
+		return #if mobile MobileUtil.getAssetDirectory() + #end 'assets/exe/extras/bios/';
+
+	public static function capture(ch:Character):BitmapData
+	{
+		ch.updateFramePixels();
+		final fp = ch.framePixels;
+
+		#if (mobile && flixel_animate)
+		if (!ch.isAnimateAtlas && ch.frame != null && (fp == null || fp.width <= 0 || fp.height <= 0 || isBlank(fp)))
+		{
+			final gpu = renderFrame(ch);
+			if (gpu != null) return gpu;
+		}
+		#end
+
+		return fp;
+	}
+
+	static function isBlank(bmp:BitmapData):Bool
+		return bmp.getColorBoundsRect(0xFF000000, 0x00000000, false).width == 0;
+
+	#if (mobile && flixel_animate)
+	@:access(animate.internal.FilterRenderer)
+	@:access(flixel.FlxCamera)
+	@:access(openfl.display.Graphics)
+	static function renderFrame(ch:Character):BitmapData
+	{
+		final fr = ch.frame;
+		final w:Float = Math.ceil(fr.sourceSize.x);
+		final h:Float = Math.ceil(fr.sourceSize.y);
+
+		return FilterRenderer.renderToBitmap((cam:flixel.FlxCamera, mat:FlxMatrix) ->
+		{
+			fr.prepareMatrix(mat);
+			cam.drawPixels(fr, null, mat, null, NORMAL, false, null);
+			cam.render();
+			if (cam.canvas.graphics.__bounds != null)
+				cam.canvas.graphics.__bounds.setTo(0, 0, w, h);
+		});
+	}
+	#end
+
 	public static function exists():Bool
-		return FileSystem.exists('assets/exe/extras/bios/idle_atlas.png') && FileSystem.exists('assets/exe/extras/bios/idle_atlas.json');
+		return FileSystem.exists(atlasPng()) && FileSystem.exists(atlasJson());
 
 	public static function generate(pairs:Array<{mod:String, charId:String}>):Void
 	{
@@ -38,9 +92,7 @@ class BIOSCharacter
 				else if (ch.hasAnimation('danceLeft')) animName = 'danceLeft';
 
 				if (animName != null) ch.playAnim(animName, true, false, 0);
-				ch.updateFramePixels();
-
-				final fp = ch.framePixels;
+				final fp = capture(ch);
 				if (fp != null && fp.width > 0 && fp.height > 0)
 				{
 					final owned = new BitmapData(fp.width, fp.height, true, 0x00000000);
@@ -97,8 +149,8 @@ class BIOSCharacter
 		}
 
 		final bytes = atlas.encode(atlas.rect, new PNGEncoderOptions());
-		File.saveBytes('assets/exe/extras/bios/idle_atlas.png', bytes);
-		File.saveContent('assets/exe/extras/bios/idle_atlas.json', Json.stringify(manifest, null, '\t'));
+		File.saveBytes(atlasPng(), bytes);
+		File.saveContent(atlasJson(), Json.stringify(manifest, null, '\t'));
 		atlas.dispose();
 	}
 }

@@ -138,7 +138,7 @@ class StoryModeState extends MusicBeatState
 		}
 
 		var smmStatic:FlxSprite = new FlxSprite(0, 0);
-		smmStatic.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/SMMStatic.webp', 'assets/exe/story/SMMStatic.xml');
+		smmStatic.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/SMMStatic.webp'), 'assets/exe/story/SMMStatic.xml');
 		smmStatic.animation.addByPrefix('static', 'static', 24);
 		smmStatic.animation.play('static');
 		smmStatic.setGraphicSize(FlxG.width, FlxG.height);
@@ -147,7 +147,7 @@ class StoryModeState extends MusicBeatState
 		add(smmStatic);
 
 		var dataSelect:FlxSprite = new FlxSprite(0, 312);
-		dataSelect.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/dataselect.webp', 'assets/exe/story/dataselect.xml');
+		dataSelect.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/dataselect.webp'), 'assets/exe/story/dataselect.xml');
 		dataSelect.animation.addByPrefix('idle', 'dataselect dataselect', 6);
 		dataSelect.animation.play('idle');
 		dataSelect.setGraphicSize(FlxG.width * 0.885);
@@ -205,7 +205,7 @@ class StoryModeState extends MusicBeatState
 
 		if (FlxG.save.data.theYourselfCutscene != null){	
 			microphone = new FlxSprite();
-			microphone.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/microfono_lookalike.webp', 'assets/exe/story/microfono_lookalike.xml');
+			microphone.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/microfono_lookalike.webp'), 'assets/exe/story/microfono_lookalike.xml');
 			microphone.animation.addByIndices('idle', 'micro', [0], '', 24, false);
 			microphone.setGraphicSize(Std.int(FlxG.width * 0.183));
 			microphone.setPosition(302, 116);
@@ -215,7 +215,7 @@ class StoryModeState extends MusicBeatState
 		
 		for (coversPos in [tooSlowCover, youCantRunCover, tripleTroubleCover, finalEscapeCover, yourselfCover]) coversPos.setPosition(192, 74);
 		
-		final screenstaticFrames = FlxAtlasFrames.fromSparrow('assets/exe/story/screenstatic.webp', 'assets/exe/story/screenstatic.xml');
+		final screenstaticFrames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/screenstatic.webp'), 'assets/exe/story/screenstatic.xml');
 
 		staticscreen = new FlxSprite();
 		staticscreen.frames = screenstaticFrames;
@@ -228,7 +228,7 @@ class StoryModeState extends MusicBeatState
 		add(staticscreen);
 		
 		bfBOX = new FlxSprite();
-		bfBOX.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/bf_menu.webp', 'assets/exe/story/bf_menu.xml');
+		bfBOX.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/bf_menu.webp'), 'assets/exe/story/bf_menu.xml');
 		bfBOX.animation.addByPrefix('idle', 'idle', 24, true);
 		bfBOX.animation.addByPrefix('ouch', 'ay', 24, false);
 		bfBOX.animation.addByPrefix('black', 'nega', 24, true);
@@ -284,7 +284,7 @@ class StoryModeState extends MusicBeatState
 		add(gfBOX);
 		
 		padLock = new FlxSprite();
-		padLock.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/padLock.webp', 'assets/exe/story/padLock.xml');
+		padLock.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/padLock.webp'), 'assets/exe/story/padLock.xml');
 		padLock.animation.addByPrefix('idle', 'idle', 24, true);
 		padLock.animation.play('idle');
 		padLock.setGraphicSize(Std.int(padLock.width * 0.27));
@@ -302,7 +302,7 @@ class StoryModeState extends MusicBeatState
 		
 		// ── REDBOX ──
 		redBOX = new FlxSprite();
-		redBOX.frames = FlxAtlasFrames.fromSparrow('assets/exe/story/cuadro.webp', 'assets/exe/story/cuadro.xml');
+		redBOX.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/cuadro.webp'), 'assets/exe/story/cuadro.xml');
 		redBOX.animation.addByPrefix('idle', 'cuandrado', 1, true);
 		redBOX.animation.addByPrefix('break', 'evet', 16, false);
 		redBOX.animation.play('idle', true);

@@ -6,14 +6,24 @@ import openfl.utils.Assets as AssetPaths;
 
 class CreditsRollState extends MusicBeatState
 {
+	var creditsFile:String = 'credits';
 	var timer:Float = 0;
 	var credits:String = 'Not Found';
 	var canLeave:Bool = false;
+	var trueEnding:Bool = false;
+
+	public function new(?file:String = 'credits')
+	{
+		super();
+		creditsFile = file;
+		if (creditsFile == 'truecredits') trueEnding = true;
+	}
+
 	override function create()
 	{
 		super.create();
 
-		credits = AssetPaths.getText("assets/exe/credits.txt");
+		credits = AssetPaths.getText("assets/exe/" + creditsFile + ".txt");
 
 		var y:Float = FlxG.height / 2;
 		for (line in credits.split('\n'))
@@ -58,7 +68,7 @@ class CreditsRollState extends MusicBeatState
 
 		speed = (FlxG.keys.pressed.SHIFT ? 3 : 1);
 
-		if (FlxG.keys.pressed.CONTROL) speed = 0;
+		if (FlxG.keys.pressed.CONTROL) speed = 0.5;
 
 		if (((controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end) || (controls.BACK #if mobile || backPressed #end)) && canLeave)
 		{
@@ -72,8 +82,11 @@ class CreditsRollState extends MusicBeatState
 			if (lastTxt != null && lastTxt.y <= FlxG.height / 2)
 			{
 				if (activateOnce) {
-					backend.EXEAchievements.unlock('credits');
-					backend.EXEAchievements.save();
+					if (trueEnding)
+					{
+						backend.EXEAchievements.unlock('credits');
+						backend.EXEAchievements.save();
+					}
 					activateOnce = false;
 					new FlxTimer().start(3, _ -> {
 						canLeave = false;
@@ -89,7 +102,7 @@ class CreditsRollState extends MusicBeatState
 				if (Std.isOfType(member, FlxText))
 				{
 					final text:FlxText = cast(member, FlxText);
-					text.y -= 62 * elapsed * speed;
+					text.y -= 85 * elapsed * speed;
 					lastTxt = text;
 				}
 			}

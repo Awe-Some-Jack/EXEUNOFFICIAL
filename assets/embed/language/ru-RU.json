@@ -1,6 +1,8 @@
 {
 	"soundtray.volume": "ГРОМКОСТЬ",
 	"language": "РУССКИЙ",
+	"controls_type.labels": ["PSYCH", "BASE", "КНОПКИ", "D-PAD"],
+	"middlescroll_type.labels": ["ПК", "МОБИЛЬНЫЙ"],
 	"language_auto": "СИСТЕМНЫЙ",
 	"mainmenu.soundtest": "ТЕСТ ЗВУКА",
 	"mainmenu.freeplay": "СВОБОД. ИГРА",
@@ -30,6 +32,8 @@
 	"options.title": "НАСТРОЙКИ ИГРЫ",
 	"options.controls": "УПРАВЛЕНИЕ",
 	"options.controls.labels": ["НОТЫ", "ИНТЕРФЕЙС", "ДЕЙСТВИЯ", "ВЛЕВО", "ВНИЗ", "ВВЕРХ", "ВПРАВО", "ПРИНЯТЬ", "НАЗАД", "ПАУЗА", "СБРОС"],
+	"options.mobilecontrols": "МОБИЛЬНОЕ УПРАВЛЕНИЕ",
+	"options.mobilecontrols.labels": ["СКОЛЬЖЕНИЕ ПО НОТАМ", "MIDDLESCROLL", "НОТЫ ОППОНЕНТА НА МОБИЛЬНЫХ", "ТИП УПРАВЛЕНИЯ", "ТИП MIDDLESCROLL", "АЛЬФА ХИТБОКСА (ОБЫЧНАЯ)", "АЛЬФА ХИТБОКСА (НАЖАТОГО)", "ВИДИМАЯ КНОПКА ПАУЗЫ"],
 	"options.visuals": "ВИЗУАЛ",
 	"options.visuals.labels": ["СКРЫТЬ HUD", "ВСПЫШКИ", "ПРИБЛИЖЕНИЕ КАМЕРЫ", "ЗУМ СЧЁТЧИКА ОЧКОВ", "СЧЁТЧИК FPS"],
 	"options.gameplay": "ГЕЙМПЛЕЙ",

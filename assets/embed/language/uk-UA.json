@@ -1,6 +1,8 @@
 {
 	"soundtray.volume": "ГУЧНІСТЬ",
 	"language": "УКРАЇНСЬКА",
+	"controls_type.labels": ["PSYCH", "BASE", "КНОПКИ", "D-PAD"],
+	"middlescroll_type.labels": ["ПК", "МОБІЛЬНИЙ"],
 	"language_auto": "СИСТЕМНИЙ",
 	"mainmenu.soundtest": "ТЕСТ ЗВУКУ",
 	"mainmenu.freeplay": "ВІЛЬНА ГРА",
@@ -30,6 +32,8 @@
 	"options.title": "НАЛАШТУВАННЯ ГРИ",
 	"options.controls": "КЕРУВАННЯ",
 	"options.controls.labels": ["НОТИ", "ІНТЕРФЕЙС", "ДІЇ", "ВЛІВО", "ВНИЗ", "ВГОРУ", "ВПРАВО", "ПРИЙНЯТИ", "НАЗАД", "ПАУЗА", "СКИНУТИ"],
+	"options.mobilecontrols": "МОБІЛЬНЕ КЕРУВАННЯ",
+	"options.mobilecontrols.labels": ["КОВЗАННЯ ПО НОТАХ", "MIDDLESCROLL", "НОТИ СУПЕРНИКА НА МОБІЛЬНИХ", "ТИП КЕРУВАННЯ", "ТИП MIDDLESCROLL", "АЛЬФА ХІТБОКСА (ЗВИЧАЙНА)", "АЛЬФА ХІТБОКСА (НАТИСНУТОГО)", "ВИДИМА КНОПКА ПАУЗИ"],
 	"options.visuals": "ВІЗУАЛ",
 	"options.visuals.labels": ["ПРИХОВАТИ HUD", "СПАЛАХИ", "НАБЛИЖЕННЯ КАМЕРИ", "ЗУМ ЛІЧИЛЬНИКА РАХУНКУ", "ЛІЧИЛЬНИК FPS"],
 	"options.gameplay": "ГЕЙМПЛЕЙ",

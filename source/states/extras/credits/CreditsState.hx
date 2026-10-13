@@ -119,7 +119,7 @@ class CreditsState extends SonicSubState
 				var textOffX = 8 * 2;
 				if (iconPath != null)
 				{
-					final ic = new FlxSprite(8*2, cardY + (44-4-30)*0.5).loadGraphic(iconPath);
+					final ic = new FlxSprite(8*2, cardY + (44-4-30)*0.5).loadGraphic(Paths.getBitmapData(iconPath));
 					ic.setGraphicSize(30, 30); ic.updateHitbox();
 					final ish = new shaders.RoundedBorderShader(30*0.5, 0.0, 0xFF000000); ish.setSize(30, 30); ic.shader = ish;
 					ic.camera = cam; add(ic); textOffX = 8*2 + 30 + 8;
@@ -302,7 +302,7 @@ private class CreditPopup extends MusicBeatSubstate
 		final iconPath = resolveImagePath(iconBase, user.icon, 'assets/exe/extras/credits/missing_icon.webp');
 		if (!iconPath.contains('missing_icon'))
 		{
-			userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(iconPath);
+			userIcon = new FlxSprite(bg.x + 40, bg.y + 40).loadGraphic(Paths.getBitmapData(iconPath));
 			userIcon.camera = popCam; fit(userIcon, 100, 100); savedIconScale = userIcon.scale.x; add(userIcon);
 			createdIcon = true;
 		}
@@ -318,7 +318,7 @@ private class CreditPopup extends MusicBeatSubstate
 		final flagPath = resolveImagePath(flagBase, user.nation, 'assets/exe/extras/credits/missing_country.webp');
 		if (!flagPath.contains('missing_country'))
 		{    
-			final flag = new FlxSprite().loadGraphic(flagPath);
+			final flag = new FlxSprite().loadGraphic(Paths.getBitmapData(flagPath));
 			flag.setPosition(Std.int(nm.x + nm.textField.textWidth + 15), Std.int(nm.y + (nm.height - flag.height) / 2));
 			flag.camera = popCam; add(flag);
 		}
@@ -380,7 +380,7 @@ private class CreditPopup extends MusicBeatSubstate
 		var exp:String = 'explosion';
 		if (user.name.toLowerCase() == 'vn2' ) exp = 'lava';
 		explosion = new FlxSprite(userIcon.x - (exp == 'lava' ? 80 : 50), userIcon.y - (exp == 'lava' ? 80 : 100));
-		explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow('assets/exe/extras/credits/$exp.webp', 'assets/exe/extras/credits/$exp.xml');
+		explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/extras/credits/$exp.webp'), 'assets/exe/extras/credits/$exp.xml');
 		explosion.animation.addByPrefix('idle', 'idle', 16, false);
 		explosion.animation.play('idle');
 		explosion.scale.set((exp == 'lava' ? 0.5 : 3), (exp == 'lava' ? 0.5 : 3)); explosion.antialiasing = false; explosion.updateHitbox();

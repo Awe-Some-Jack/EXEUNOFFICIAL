@@ -5,7 +5,6 @@
 #define iResolution openfl_TextureSize
 #define iChannel0 bitmap
 #define texture flixel_texture2D
-
 uniform float time;
 uniform float desaturation;
 uniform float sharpness;
@@ -34,7 +33,6 @@ uniform float cwarph;
 uniform float cwarpv;
 uniform float cuwarph;
 uniform float cuwarpv;
-
 const vec3 LUMA = vec3(0.299, 0.587, 0.114);
 
 float waveRand(vec2 n) {
@@ -43,12 +41,10 @@ float waveRand(vec2 n) {
 
 float waveNoise(vec2 n) {
     const vec2 d = vec2(0.0, 1.0);
+    const vec2 k = vec2(12.9898, 4.1414);
     vec2 b = floor(n), f = smoothstep(vec2(0.0), vec2(1.0), fract(n));
-    return mix(
-        mix(waveRand(b), waveRand(b + d.yx), f.x),
-        mix(waveRand(b + d.xy), waveRand(b + d.yy), f.x),
-        f.y
-    );
+    vec4 h = fract(sin(vec4(dot(b, k), dot(b + d.yx, k), dot(b + d.xy, k), dot(b + d.yy, k))) * 43758.5453);
+    return mix(mix(h.x, h.y, f.x), mix(h.z, h.w, f.x), f.y);
 }
 
 vec4 waveBarRender(vec2 uvLocal) {
@@ -140,7 +136,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     }
     else
     {
-        // moved wave distortion up to prevent redundant texture fetches
         if (waveDistortion > 0.0) {
             vec2 offsetUV = vec2(
                 waveNoise(vec2(inputUV.x, inputUV.y + time * 0.1) * 50.0),
@@ -228,18 +223,18 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
         
         if (waveBarGlitch > 0.0) {
             vec2 uvWB = inputUV;
-            vec4 originalColor = waveBarRender(uvWB);
             uvWB.x += (waveNoise(vec2(uvWB.y, time)) - 0.5) * 0.005;
             uvWB.x += (waveNoise(vec2(uvWB.y * 1000.0, time * 10.0)) - 0.5) * 0.008;
-            
             float barWave = sin(uvWB.y * 7.5 + time * 3.5);
-            float barMask = clamp((barWave - 0.94) * waveNoise(vec2(time)), 0.0, 0.05);
-            float barDistortion = (waveNoise(vec2(uvWB.y * 500.0, time * 15.0)) - 0.5) * 3.0;
-            
-            uvWB.x -= barMask * barDistortion;
+            if (barWave > 0.94) {
+                float barMask = clamp((barWave - 0.94) * waveNoise(vec2(time)), 0.0, 0.05);
+                float barDistortion = (waveNoise(vec2(uvWB.y * 500.0, time * 15.0)) - 0.5) * 3.0;
+                uvWB.x -= barMask * barDistortion;
+            }
+
             vec4 glitchColor = waveBarRender(uvWB);
             glitchColor.rgb *= 0.5;
-            
+
             const float chromaStrength = 0.002;
             glitchColor.r += waveBarRender(uvWB + vec2(-1.0, 0.0) * chromaStrength).r * 0.25;
             glitchColor.g += waveBarRender(uvWB + vec2(-2.0, 0.0) * chromaStrength).g * 0.25;
@@ -247,7 +242,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
             glitchColor.r += waveBarRender(uvWB + vec2( 1.0, 0.0) * chromaStrength).r * 0.25;
             glitchColor.g += waveBarRender(uvWB + vec2( 2.0, 0.0) * chromaStrength).g * 0.25;
             glitchColor.b += waveBarRender(uvWB + vec2( 3.0, 0.0) * chromaStrength).b * 0.25;
-            
+
             finalColor = mix(finalColor, glitchColor.rgb, waveBarGlitch);
         }
         

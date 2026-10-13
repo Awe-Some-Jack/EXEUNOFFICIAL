@@ -1,15 +1,10 @@
 function onCreatePost()
-	makeAnimatedLuaSprite('getcha', 'slow/imgonnagetcha')
-	addAnimationByPrefix('getcha', 'im', 'im-intro', 12, false)
-	addAnimationByPrefix('getcha', 'im-loop', 'im-loop', 12, true)
-	addAnimationByPrefix('getcha', 'gonna', 'gonna-intro', 12, false)
-	addAnimationByPrefix('getcha', 'gonna-loop', 'gonna-loop', 12, true)
-	addAnimationByPrefix('getcha', 'getcha', 'getcha-intro', 12, false)
-	addAnimationByPrefix('getcha', 'getcha-loop', 'getcha-loop', 12, true)
-	addAnimationByPrefix('getcha', 'end-loop', 'ending', 12, false)
+	makeAnimatedLuaSprite('getcha', 'slow/dialogue')
+	addAnimationByPrefix('getcha', 'idle', 'idle', 25, false)
 	setObjectCamera('getcha', 'other')
 	scaleObject('getcha', 5, 5)
 	screenCenter('getcha')
+	callMethod('getcha.setPosition', {getProperty('getcha.x') - 25, getProperty('getcha.y') - 90})
 	setProperty('getcha.antialiasing', false)
 	addLuaSprite('getcha', true)
 	setProperty('getcha.visible', false)
@@ -26,23 +21,11 @@ function onCreatePost()
 	setProperty('godlol.visible', false)
 end
 
-function onUpdatePost()
-	if getProperty('getcha.animation.curAnim.finished') and not stringEndsWith(getProperty('getcha.animation.curAnim.name'), 'loop') then
-		playAnim('getcha', getProperty('getcha.animation.curAnim.name')..'-loop', true)
-	end
-end
-
 function onEvent(n,v1)
 	if n == 'tooslowlyric' then
-		if v1 == 'im' then
+		if v1 == 'xd' then
 			setProperty('getcha.visible', true)
-			playAnim('getcha', 'im', true)
-		elseif v1 == 'gonna' then
-			playAnim('getcha', 'gonna', true)
-		elseif v1 == 'getcha' then
-			playAnim('getcha', 'getcha', true)
-		elseif v1 == 'end' then
-			playAnim('getcha', 'end-loop', true)
+			playAnim('getcha', 'idle', true)
 		elseif v1 == 'i' then
 			removeLuaSprite('getcha', true)
 			setProperty('godlol.visible', true)

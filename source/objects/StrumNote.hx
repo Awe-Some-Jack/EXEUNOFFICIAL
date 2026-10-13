@@ -26,7 +26,7 @@ class StrumNote extends FlxSprite
 
 	public var texture(default, set):String = null;
 
-	var baseScaleX:Float = 0;
+	public var baseScaleX:Float = 0;
 	var baseScaleY:Float = 0;
 
 	public var useVSliceReceptorFeature:Bool = true;
@@ -275,7 +275,12 @@ class StrumNote extends FlxSprite
 				if (animOffsets.exists(anim))
 				{
 					var daOffset:Array<Float> = animOffsets.get(anim);
-					offset.set(daOffset[0], daOffset[1]);
+					final staticOffset:Array<Float> = animOffsets.get('static');
+					final scaleRatio:Float = baseScaleX > 0 ? scale.x / baseScaleX : 1;
+					if (staticOffset != null && scaleRatio != 1)
+						offset.set(staticOffset[0] + (daOffset[0] - staticOffset[0]) * scaleRatio, staticOffset[1] + (daOffset[1] - staticOffset[1]) * scaleRatio);
+					else
+						offset.set(daOffset[0], daOffset[1]);
 				}
 				else
 				{

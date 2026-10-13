@@ -118,10 +118,6 @@ function onCreatePost()
 	setProperty('trees.visible', false)
 	setProperty('gradient.visible', false)
 
-	startVideo('omwintro', false, true, false, false)
-    callMethod('remove', {instanceArg('videoCutscene')})
-	setProperty('inCutscene', false)
-
 	setProperty('camGame.alpha', 0)
 	setProperty('camHUD.alpha', 0)
 end

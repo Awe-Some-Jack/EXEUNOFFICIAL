@@ -1,6 +1,8 @@
 {
 	"soundtray.volume": "OVOZ",
 	"language": "O'ZBEKCHA",
+	"controls_type.labels": ["PSYCH", "BASE", "TUGMALAR", "D-PAD"],
+	"middlescroll_type.labels": ["PC", "MOBIL"],
 	"language_auto": "TIZIM STANDARTI",
 	"mainmenu.soundtest": "OVOZ TESTI",
 	"mainmenu.freeplay": "ERKIN O'YIN",
@@ -30,6 +32,8 @@
 	"options.title": "O'YIN SOZLAMALARI",
 	"options.controls": "BOSHQARUV",
 	"options.controls.labels": ["TUGMALAR", "INTERFEYS", "HARAKATLAR", "CHAP", "PAST", "TEPA", "O'NG", "QABUL QILISH", "ORQAGA", "PAUZA", "QAYTARISH"],
+	"options.mobilecontrols": "MOBIL BOSHQARUV",
+	"options.mobilecontrols.labels": ["NOTALARNI SURISH", "MIDDLESCROLL", "MOBILDA RAQIB NOTALARI", "BOSHQARUV TURI", "MIDDLESCROLL TURI", "HITBOX ALFA (STANDART)", "HITBOX ALFA (BOSILGAN)", "PAUZA TUGMASI KO'RINADI"],
 	"options.visuals": "VIZUAL SOZLAMALAR",
 	"options.visuals.labels": ["HUD'NI YASHIRISH", "MILTILLOVCHI CHIROQLAR", "KAMERA YAQINLASHUVI", "HISOB MATNI KATTALASHUVI", "FPS KO'RSATISH"],
 	"options.gameplay": "GEYMPLEY",

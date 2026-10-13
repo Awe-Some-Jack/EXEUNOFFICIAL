@@ -1,6 +1,8 @@
 {
 	"soundtray.volume": "VOLUME",
 	"language": "PORTUGUÊS",
+	"controls_type.labels": ["PSYCH", "BASE", "BOTÕES", "D-PAD"],
+	"middlescroll_type.labels": ["PC", "CELULAR"],
 	"language_auto": "PADRÃO DO SISTEMA",
 	"mainmenu.soundtest": "SOUND TEST",
 	"mainmenu.freeplay": "MODO LIVRE",
@@ -30,6 +32,8 @@
 	"options.title": "OPCOES DE JOGO",
 	"options.controls": "CONTROLES",
 	"options.controls.labels": ["NOTAS", "UI", "ACOES", "ESQUERDA", "BAIXO", "CIMA", "DIREITA", "ACEITAR", "VOLTAR", "PAUSA", "REINICIAR"],
+	"options.mobilecontrols": "CONTROLES MÓVEIS",
+	"options.mobilecontrols.labels": ["DESLIZAR NOTAS", "MIDDLESCROLL", "NOTAS DO OPONENTE NO CELULAR", "TIPO DE CONTROLES", "TIPO DE MIDDLESCROLL", "ALFA PADRÃO DA HITBOX", "ALFA DA HITBOX PRESSIONADA", "BOTÃO DE PAUSA VISÍVEL"],
 	"options.visuals": "VISUAIS",
 	"options.visuals.labels": ["OCULTAR HUD", "LUZES PISCANTES", "ZOOM DA CAMERA", "ZOOM DO TEXTO DE PONTUACAO", "CONTADOR DE FPS"],
 	"options.gameplay": "JOGABILIDADE",

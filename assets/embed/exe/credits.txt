@@ -1,5 +1,16 @@
 ==Vs Sonic.EXE (Unofficial)
 
+
+
+
+
+
+
+
+
+
+
+
 =Lead Director
 Treno_Arts
 
@@ -28,16 +39,11 @@ Wolfie
 Remagets
 AssmanBruh
 MaysLastPlay
-Kophy232
-CherryLemur
 
 =Level Programmers
 DuduGD20
 RaimbowCore12
 Remagets
-Wolfie
-KrazyKazu
-Kophy232
 
 =Modchart Scripting
 DuduGD20
@@ -68,70 +74,27 @@ Treno_Arts
 
 =Menus Artwork
 Treno_Arts
-CM_drawe
-Mariano
 KrazyKazu
-Pekoso72
-Remagets
-DuduGD20
-
-=Freeplay Artwork
-Treno_Arts
-Hyperdream
-Pekoso72
-Fare.dz
-Artisus
-Engineer
-BarcoBasurero
-CM_drawe
-Tomasero
-DuduGD20
-KrazyKazu
-ShutUpJoJo (Round-A-Bout)
-ScorchVX (Black Sun)
-JackGore (Manual Blast)
 
 =Cutscene Artwork
 Treno_Arts
-CM_drawe
 Hyperdream
-Sebas1554
-RoxasWhite_
 
 =Character Sprite Artwork
 Treno_Arts
 Hyperdream
 Tomasero
-Sebas1554
-Pekoso72
-Fare.dz
-Artisus
 Nebros
-CM_drawe
-RoxasWhite_
 S4ndr0.2
-SlaxPe
-T4co
-Johnwindowsxp
-PaigeyPapers (Chocolate Milk)
 
 =Background Artwork
-CM_drawe
 Treno_Arts
 Engineer
 Artisus
 Hyperdream
-VN2
-BarcoBasurero
-Johnwindowsxp
 RoxasWhite_
 S4ndr0.2
-DuduGD20
 SuonimaG
-KrazyKazu
-Wolfie
-PaigeyPapers (Vanilla Milk & Chocolate Milk)
-CryBit (Sunshine & Substantial)
 
 =UI Artwork
 Treno_Arts
@@ -139,24 +102,11 @@ Hyperdream
 CM_drawe
 Tomasero
 RoxasWhite_
-VN2
 DuduGD20
 Wolfie
 KrazyKazu
-Johnwindowsxp
-Kostya Hernández
 Sr. Kleynner
-Wolfie
 ScorchVX (Triple Trouble Jumpscares)
-Paige (Sunky Notes)
-
-=3D Spriting Rendering
-Nebros
-Johnwindowsxp
-Kostya Hernández
-
-=Art Assisting
-Zar0c4l
 
 =Pixel Artwork Leader
 RoxasWhite_
@@ -165,8 +115,6 @@ RoxasWhite_
 RoxasWhite_
 Sr. Kleynner
 S4ndr0.2
-T4co
-SlaxPe
 KrazyKazu
 
 =Pause Artwork
@@ -204,44 +152,25 @@ MeDicenKay
 Kiv.FLP
 Tomis Turbando
 LifeyTheRay
-Alex_Hamud
-SuonimaG
 
 =Level Music Composing
 MeDicenKay
 Kiv.FLP
-ExeTh3F4k3d
-DaRealT0bi
 LifeyTheRay
 KraimYT
-DX Black Fire
 LyricalMaxi
 rak
 RogtaryMusic
 Ryan2511Pro
 Tomis Turbando
-Sanko
-Alex_Hamud
 SuonimaG
-DanlyDaMusician (Sharpy Showdown)
-MarStarBro (Final Escape and Fate)
+MarStarBro (Final Escape)
 Nickolas Mendoza (Final Escape)
 Saster (Final Escape)
-River (Final Escape and Endless JP)
-Juno (Fate)
-Vania (Fate)
-Armydillo (Hedge, Manual Blast, Universal Collapse and Prey)
-Sturm (Manual Blast, Fight or Flight, Substantial and Fakebaby)
-Squeak (Chocolate Milk)
-Neutroa (Substantial)
-Lymph (Fakebaby)
+River (Final Escape)
 
 =Voice Cast
-MeDicenKay
-Luisuke Destroyer
 Alex_Hamud
-Kostya Hernández
-Sr. Espanta Viejas
 
 =Sound Design
 MeDicenKay
@@ -263,54 +192,6 @@ RaimbowCore12
 DuduGD20
 MeDicenKay
 sevulda
-Tomasero
-Wolfie
-
-="The Valley" Directors
-RoxasWhite_
-KrazyKazu
-
-="The Valley" Programmers
-KrazyKazu
-Snorby
-Remagets
-
-="The Valley" Artwork
-RoxasWhite_
-KrazyKazu
-SlaxPe
-Lithium_69_50516
-S4ndr0.2
-Sr. Kleynner
-
-="The Valley" Concept Artists
-RoxasWhite_
-Treno
-KrazyKazu
-Engineer
-
-="The Valley" Music
-MeDicenKay
-RogtaryMusic
-Alex_Hamud
-
-="The Valley" Sound Design
-MeDicenKay
-RogtaryMusic
-lifeytheray3470
-Tomasero
-RoxasWhite_
-
-="The Valley" Voice Cast
-Kostya Hernández
-Sr. Espanta Viejas
-
-="SUNKY RENDER CONTEST" WINNERS
-SCHIO
-Capitan Sonic
-Cardoso
-Sr.Clocks115
-Rabty
 
 =Beta Testers
 MeDicenKay
@@ -368,64 +249,6 @@ MaysLastPlay
 "Xenophanes" by Erick Animations
 "Yourself" by Divide
 "LookALike" by Saster & Doorknob
-"Lord X" by JoeDoughBoi
-"RedGlove" by JoeDoughBoi & STURMVIDEO
-"Majin/Mazin Sonic" by SEGA
-"Sunky" by LooneyDude
-"Sunky.MPEG" by LooneyDude
-"Tails Doll" by SEGA
-"Super Sonic (Fleetway Comics)" by SEGA
-"Faker & EXE" by Raven
-"Sanic" by Onyxheart
-"Sanic.EXE" by puddin_tan
-"Needlemouse Sonic" by ShutUpJoJo
-"Sarah Henderson" by ShutUpJoJo
-"Luther Artwright" by ShutUpJoJo
-"Chaotix" by Niall
-"Hog & Scorched" by JackGore
-"Demogri & Griatos" by MadzillaK0th
-"Bratwurst" by Jeremy "TorntAnimations"
-"Devoid" by Cherribun & Mr. GreenBean
-"OMW.EXE" by KGBepis
-"Re-Run" by ErickAnimations
-"Lilith" by ErickAnimations
-"Soink.fla" by skyee
-"Ugly Movie Sonic" by Paramount Pictures
-"Fatal Error" by AnarackWarriors
-"Furnace Metal Sonic" by DumbieDombie
-"Starved Eggman" by Niall & DumbieDombie
-"Crazy Tails" by Mashed
-"Coldsteel" by blood_skull_boi84
-"Genesys Eggman" by Raven & DumbieDombie
-"Requital" by CommandoDev
-"Mobianified Boyfriend" by CommandoDev
-"Pico" by Tom Fulp
-"Mobianified Pico" by CommandoDev
-"DSK" by CommandoDev
-"Sl4sh" by MarStarBro
-"Curse" by Lucifer Azran
-"Normal CD" by JesterFrog
-"Metal Sonic CD" by JesterFrog
-"Amy CD" by JesterFrog
-"X-Terion" by goji_boi
-"Mono.BW" by CryBit
-"No More Innocence" by DumbieDombie
-"Daddy Dearest" by Funkin' Crew
-"Exetior" by JaizKoys
-"Sonichu" by Christine Weston Chandler (Chris-Chan)
-
-
-
-
-
-=And thank you for playing, {user}!
-We really hope you had an amazing time beating all of the content we made for you.
-This project was incredible and super cool to work in, not only for me but for everyone in the team.
-I can't be more thankful to everyone I have met in the development of this project, everyone it's amazing and really talented, this helped me to improve as a Programmer and as a Friend.
-If you're one of the original Vs Sonic.EXE Devs, please I want you to understand that we never wanted to be unrespectful to any of you, even if you guys wanted us to remove Characters from this, it's just a restoration made with a lot of effort and love, I know this may not change your point of view, but at least I want you to see all the effort we made for this project, even for your own exes.
-Even though we had some hard time while working on this, we managed to keep going and release this.
-Thank you again for watching the entire credits and reading this little letter I added here.
-With everything said, I say goodbye to you, until the next project! -Dudu
 
 
 
@@ -438,4 +261,4 @@ With everything said, I say goodbye to you, until the next project! -Dudu
 
 
 
-==The End.
+==The End?

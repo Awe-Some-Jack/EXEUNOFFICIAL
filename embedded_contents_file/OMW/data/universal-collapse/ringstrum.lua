@@ -71,9 +71,9 @@ function onUpdatePost(e)
 			--RING MISS
 			local noteKillOffset = math.max(stepCrochet, 350 / getProperty('songSpeed') * playbackRate) - 5
 			if (getSongPosition() - getProperty('notes.members['..i..'].strumTime')) > noteKillOffset then
-				setProperty('notes.members['..id..'].active', false)
-				removeFromGroup('notes', id, false)
-				setProperty('notes.members['..id..'].tooLate', true)
+				setProperty('notes.members['..i..'].active', false)
+				removeFromGroup('notes', i, false)
+				setProperty('notes.members['..i..'].tooLate', true)
 			end
 		end
 	end

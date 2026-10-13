@@ -1,6 +1,8 @@
 {
   "soundtray.volume": "SES DÜZEYİ",
+
   "language": "TÜRKÇE",
+
   "controls_type.labels": [
     "PSYCH",
     "TEMEL",
@@ -11,13 +13,16 @@
     "PC",
     "MOBİL"
   ],
+
   "language_auto": "SİSTEM VARSAYILANI",
+
   "mainmenu.soundtest": "SES TESTİ",
   "mainmenu.freeplay": "SERBEST OYUN",
   "mainmenu.storymode": "HİKÂYE MODU",
   "mainmenu.extras": "EKSTRALAR",
   "mainmenu.options": "AYARLAR",
   "mainmenu.achievements": "BAŞARIMLAR",
+
   "freeplay.score": "SKOR",
   "freeplay.rank": "DERECE",
   "freeplay.reset": "{1} İÇİN SKOR SIFIRLANSIN MI?",
@@ -29,11 +34,13 @@
     "VARLIK",
     "GLITCH"
   ],
+
   "soundtest.title": "SES TESTİ",
   "soundtest.labels": [
     "PCM NO.",
     "DA NO."
   ],
+
   "extras.menu.title": "EKSTRALAR",
   "extras.menu.nowplaying": "ŞU AN ÇALIYOR:",
   "extras.menu.gallery": [
@@ -77,6 +84,7 @@
   "extras.credits.unofficial": "Unofficial Ekib",
   "extras.credits.original": "Orijinal Ekip",
   "extras.credits.external": "Haricî Katkılar",
+
   "options.title": "OYUN AYARLARI",
   "options.controls": "KONTROLLER",
   "options.controls.labels": [
@@ -141,6 +149,7 @@
     "MEMLER",
     "VAZGEÇİLENLER"
   ],
+
   "extras.gallery.empty": "BURADA HİÇBİR ŞEY YOK",
   "cutscenes.empty": "VİDEO BULUNAMADI",
   "score_text": "Skor: {1} | Iska: {2}",
@@ -148,6 +157,7 @@
   "no": "HAYIR",
   "sunky_is_playing": "SUNKY OYNUYOR",
   "starved_sacrifices": "Kurbanlar",
+
   "achievements_unlocked": "Açılanlar:",
   "popup_achievement_unlocked": "BAŞARIM AÇILDI",
   "achievement_secret_desc": "Açıklamasını görmek için bu başarımı aç.",
@@ -251,6 +261,7 @@
   "achievement_description_flash": "Flash'ı 3 kez yen",
   "achievement_popup": "BİRAZ DÜZENLİ OL!",
   "achievement_description_popup": "Fatality'yi hiçbir açılır pencereyi kapatmadan bitir",
+  
   "gamejolt.labels": [
     "KULLANICI ADI",
     "ERİŞİM ANAHTARI",

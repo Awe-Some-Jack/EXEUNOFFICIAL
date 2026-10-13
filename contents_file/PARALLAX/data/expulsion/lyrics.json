@@ -15,7 +15,7 @@
     "lyrics.expulsion.2": "¡Soy; So;nic; el; e;rizo!",
     "lyrics.expulsion.3": "¡Vas; a; ju;gar; en; mi; es;cu;e;la!",
     "lyrics.expulsion.4": "Soy; So;nic-",
-    "lyrics.expulsion.5": "¡Ha;zme; clic; para; ayuda!",
+    "lyrics.expulsion.5": "¡Hazme; clic; para; recibir; ayuda!",
     "lyrics.expulsion.6": "Si; tie;nes; un; pro;ble;ma,; búsc;a; me; y-",
     "lyrics.expulsion.7": "¡Ah;í; es; don;de e;li;ges a; tu; per;so;na;je!",
     "lyrics.expulsion.8": "Prue;ba;lo; si; no; me; cre;es.",
@@ -143,15 +143,15 @@
     "lyrics.expulsion.9": "Znajdź; mnie; a; po;mogę!"
   },
   "tr-TR": {
-    "lyrics.expulsion.1": "Mer;haba!",
-    "lyrics.expulsion.2": "Ben; kir;pi; So;nic;!",
-    "lyrics.expulsion.3": "O;ku;lum;da; o;y;na;ya;cak;sın!",
+   "lyrics.expulsion.1": "Se;lam!",
+    "lyrics.expulsion.2": "Ben; So;nic; the; he;dgehog'um!",
+    "lyrics.expulsion.3": "Benim; o;yun; e;vimde; oy;na;ya;cak;sın!",
     "lyrics.expulsion.4": "Ben; So;nic-",
-    "lyrics.expulsion.5": "Yardım; için; ba;na; tıkla!",
-    "lyrics.expulsion.6": "Bir; so;ru;nun; var;sa,; be;ni; bul; ve;-",
-    "lyrics.expulsion.7": "İş;te; tam; or;a;da; ka;rak;te;ri;ni; seçersin!",
-    "lyrics.expulsion.8": "Bana; i;nan;mı;yor;san; de;ne.",
-    "lyrics.expulsion.9": "Bul; be;ni,; yardım; edeyim!"
+    "lyrics.expulsion.5": "Yar;dım; için; bana; tıkla!",
+    "lyrics.expulsion.6": "Eğer; hiç; bir; so;ru;n o;lur;sa,; beni; bul; ve-",
+    "lyrics.expulsion.7": "Ka;rak;ter; seç;mek;; i;çin; şu;ra;ya; git!",
+    "lyrics.expulsion.8": "Ba;na; inan;mı;yor;san; de;ne.",
+    "lyrics.expulsion.9": "Beni; bul ve; sana; yardım; ederim!"
   },
   "en-PIRATE": {
     "lyrics.expulsion.1": "A;hoy!",

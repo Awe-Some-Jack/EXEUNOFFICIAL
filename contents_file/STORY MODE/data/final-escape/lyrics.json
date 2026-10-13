@@ -16,7 +16,7 @@
     },
     "fr-FR": {
         "lyrics.finalescape.1": "C'est; par;ti!",
-        "lyrics.finalescape.2": "Tu; ne; m'é;chap;pe;ras; pas!",
+        "lyrics.finalescape.2": "Tu; ne; m'é;chapperas; pas!",
         "lyrics.finalescape.3": "Yeah!"
     },
     "de-DE": {
@@ -36,22 +36,22 @@
     },
     "uz-UZ": {
         "lyrics.finalescape.1": "Qa;ni; ket;dik!",
-        "lyrics.finalescape.2": "Qo;chib; ke;tol;may;san!",
+        "lyrics.finalescape.2": "Qo;chib; ketol;may;san!",
         "lyrics.finalescape.3": "Ha!"
     },
     "ja-JP": {
         "lyrics.finalescape.1": "行;く;ぞ!",
-        "lyrics.finalescape.2": "逃;が;す;か!",
+        "lyrics.finalescape.2": "逃;が;す;か;!",
         "lyrics.finalescape.3": "Yeah!"
     },
     "zh-CN": {
-        "lyrics.finalescape.1": "走;起!",
+        "lyrics.finalescape.1": "走;起;!",
         "lyrics.finalescape.2": "你;跑;不;掉!",
         "lyrics.finalescape.3": "Yeah!"
     },
     "ko-KR": {
         "lyrics.finalescape.1": "자; 간;다!",
-        "lyrics.finalescape.2": "도;망;못;쳐!",
+        "lyrics.finalescape.2": "도;망;못;쳐;!",
         "lyrics.finalescape.3": "Yeah!"
     },
     "en-PIRATE": {
@@ -61,17 +61,17 @@
     },
     "it-IT": {
         "lyrics.finalescape.1": "An;dia;mo!",
-        "lyrics.finalescape.2": "Non; la; sfa;rà; fran;ca!",
+        "lyrics.finalescape.2": "Non; la; sfarà; fran;ca!",
         "lyrics.finalescape.3": "Yeah!"
     },
     "pl-PL": {
-        "lyrics.finalescape.1": "Da;lej!",
-        "lyrics.finalescape.2": "Nie; uciek;niesz!",
+        "lyrics.finalescape.1": "Da;lej;!",
+        "lyrics.finalescape.2": "Nie; u;ciek;ni;esz!",
         "lyrics.finalescape.3": "Yeah!"
     },
     "tr-TR": {
-        "lyrics.finalescape.1": "Ha;ydi; gi;del;im!",
-        "lyrics.finalescape.2": "Ka;ca;maz;sin!",
+        "lyrics.finalescape.1": "Haydi; gidel;im!",
+        "lyrics.finalescape.2": "Ka;ça;maz;sın;!",
         "lyrics.finalescape.3": "Yeah!"
     }
 }

@@ -4,8 +4,8 @@
 				  "lyrics.godspeed.2":  "run; a;way; from; your; GOD?"
 			  },
 	"es-419":  {
-				  "lyrics.godspeed.1":  "Por; que; tra;tas; de; huir",
-				  "lyrics.godspeed.2":  "de; tu; Dios;,; eh;?"
+				  "lyrics.godspeed.1":  "Por; que; tra;tas; de",
+				  "lyrics.godspeed.2":  "es;ca;par; de; tu; Dios?"
 			  },
 	"pt-BR":  {
 				  "lyrics.godspeed.1":  "Por; que; es;ta; ten;tando fugir",
@@ -56,7 +56,7 @@
 				  "lyrics.godspeed.2":  "przed; swo;im; BO;GIEM?"
 			  },
 	"tr-TR":  {
-				  "lyrics.godspeed.1":  "Ni;cin; TAN;RI;NIN;DAN; ka;cma;ya",
-				  "lyrics.godspeed.2":  "ca;li;si;yor;sun?"
+				  "lyrics.godspeed.1": "Ne; den; ka;çı;yor;sun",
+    			  "lyrics.godspeed.2": "Tan;rın;dan; mı; kaçıyor;sun?"
 			  }
 }

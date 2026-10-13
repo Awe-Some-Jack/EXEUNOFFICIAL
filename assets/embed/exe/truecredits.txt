@@ -394,6 +394,9 @@ Snorby
 MaysLastPlay
 Alex_Hamud
 
+Turkish Translation
+Jacob
+
 =Ukrainian Translation
 Snorby
 MaysLastPlay

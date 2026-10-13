@@ -3986,7 +3986,8 @@ class PlayState extends MusicBeatState
 
 		strumPlayAnim(true,
 			Std.int(Math.abs(note.noteData)),
-			Conductor.stepCrochet * 1.25 / 1000 / playbackRate
+			Conductor.stepCrochet * 1.25 / 1000 / playbackRate,
+			note
 		);
 
 		note.hitByOpponent = true;
@@ -4072,16 +4073,16 @@ class PlayState extends MusicBeatState
 		if(!cpuControlled)
 		{
 			var spr = playerStrums.members[note.noteData];
-			if(spr != null) spr.playAnim('confirm', true);
+			if(spr != null) spr.playAnim('confirm', true, note);
 		}
 		else
 		{
-			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
+			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate, note);
 			sunkyBot.onNoteHit(Std.int(Math.abs(note.noteData)));
 		}
 
 		if(cpuAssist && !cpuControlled)
-			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate);
+			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate, note);
 
 		vocals.volume = 1;
 		opponentVocals.volume = 1;
@@ -4667,11 +4668,11 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
-	function strumPlayAnim(isDad:Bool, id:Int, time:Float) {
+	function strumPlayAnim(isDad:Bool, id:Int, time:Float, ?n:Note = null) {
 		final spr:StrumNote = isDad ? opponentStrums.members[id] : playerStrums.members[id];
 
 		if(spr != null) {
-			spr.playAnim('confirm', true);
+			spr.playAnim('confirm', true, n);
 			spr.resetAnim = time;
 		}
 	}

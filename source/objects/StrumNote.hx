@@ -31,8 +31,8 @@ class StrumNote extends FlxSprite
 
 	public var useVSliceReceptorFeature:Bool = true;
 
-	public var holdTimer = 0.0;
-	public var confirmDuration = 4.0;
+	public var holdTimer:Float = 0.0;
+	public var confirmDuration:Float = 4.0;
 
 	/**
      * set `shakeDuration` -1 to start a loop shake, set 0 to cancel it :3
@@ -252,13 +252,17 @@ class StrumNote extends FlxSprite
 		}
 	}
 
-	public function playAnim(anim:String, force:Bool = false):Void
+	public function playAnim(anim:String, force:Bool = false, ?note:Note=null):Void
 	{
 		animation.play(anim, force);
 		if (animation.curAnim != null)
 		{
 			if (anim == "confirm"){
 				holdTimer = 0;
+				if (note != null)
+				{
+					confirmDuration = note.isSustainNote ? 1.3 : 4;
+				}
 			}
 
 			if (PlayState.isPixelStage)

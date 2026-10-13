@@ -99,6 +99,7 @@ class EXEMenu extends MusicBeatState
 			menuVideo.screenCenter();
 		});
 		if (menuVideo.loadVideo('assets/exe/mainmenu/menu.mp4', [VideoSprite.ARG_LOOPING])) menuVideo.playDelayed();
+		menuVideo.isStateAffected = false;
 		add(menuVideo);
 		#end
 

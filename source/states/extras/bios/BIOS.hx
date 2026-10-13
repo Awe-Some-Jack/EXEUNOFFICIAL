@@ -57,6 +57,7 @@ class BIOS extends SonicSubState
 	var listScrollThumb:FlxSprite;
 
 	public var charSprite:FlxSprite;
+	public var circleIcon:FlxSprite;
 	public var icon:HealthIcon;
 	var charName:FlxText;
 	var artistName:FlxText;
@@ -269,15 +270,12 @@ class BIOS extends SonicSubState
 	{
 		final e0 = entries.length > 0 ? entries[0] : null;
 
-		final circle = new FlxShapeCircle(727, 501, 40, {thickness: 0, color: FlxColor.TRANSPARENT}, FlxColor.BLACK);
-		circle.alpha = 0.75;
-		circle.scrollFactor.set();
-		add(circle);
-
-		final circleBig = new FlxShapeCircle(721, 495, 46, {thickness: 4, color: FlxColor.BLACK}, FlxColor.TRANSPARENT);
-		circleBig.alpha = 0.75;
-		circleBig.scrollFactor.set();
-		add(circleBig);
+		circleIcon = new FlxSprite(721, 495);
+		circleIcon.loadGraphic("assets/exe/extras/bios/biosCircle.webp");
+		circleIcon.setGraphicSize(102,102);
+		circleIcon.antialiasing = ClientPrefs?.data?.antialiasing;
+		circleIcon.updateHitbox();
+		add(circleIcon);
 
 		charSprite = new FlxSprite(e0 != null ? e0.charOffset[0] : 300, e0 != null ? e0.charOffset[1] : 100);
 		charSprite.scrollFactor.set();
@@ -293,6 +291,8 @@ class BIOS extends SonicSubState
 			//betterr
 			icon.replaceColor(0xFFFFFFFF, FlxColor.TRANSPARENT);
 		}
+		icon.x = circleIcon.x + ((circleIcon.width - icon.width)/2);
+		icon.y = circleIcon.y + ((circleIcon.height - icon.height)/2);
 		savedIconScale = icon.scale.x;
 		add(icon);
 
@@ -445,12 +445,13 @@ class BIOS extends SonicSubState
 		if (isXenoLuis(dispName)){
 			final chance = ((dispName.length > 0) ? dispName.length*7 : FlxG.random.int(20, 50));
 			if (!FlxG.random.bool(chance)){
-				dispName = "Xenophanes";
-				if (bio.toLowerCase().contains("luis")) bio = bio.replace("Luis", "Xenophanes");
+				dispName = "XENOPHANES";
+				if (bio.toLowerCase().contains("luis")) bio = bio.replace("Luis", "XENOPHANES");
 			}
 		}
 		
-		charName.text = dispName;
+		// sera bueno?, quizas en un futuro un personaje con letras minusculas... q haremos en ese caso? 
+		charName.text = dispName.toUpperCase();
 		
 		_fitCharName();
 		_setArtists(artist);
@@ -467,11 +468,14 @@ class BIOS extends SonicSubState
 
 		Mods.currentModDirectory = mod;
 		if (icon.getCharacter() != iconId) _swapIcon(iconId);
-		icon.setPosition(iconOff[0], iconOff[1]);
-
 		_loadCharFrame(charId, mod, scale, flipX, antialiasing, charOff);
 		_fitToBoxes(charAngle);
-
+		icon.updateHitbox();
+		icon.setPosition(iconOff[0], iconOff[1]);
+		if (icon != null && circleIcon != null){
+			icon.x = circleIcon.x + ((circleIcon.width - icon.width)/2);
+			icon.y = circleIcon.y + ((circleIcon.height - icon.height)/2);
+		}
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Bios Menu", 'Checking $dispName');
 		#end
@@ -825,8 +829,6 @@ class BIOS extends SonicSubState
 		}
 
 		if (controls.UI_LEFT_P || controls.UI_RIGHT_P) _changeVariant(controls.UI_LEFT_P ? -1 : 1);
-
-		if (controls.RESET) FlxG.resetState();
 
 		if (controls.BACK #if mobile || backPressed #end)
 		{

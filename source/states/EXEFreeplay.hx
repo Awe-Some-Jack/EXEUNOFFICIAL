@@ -126,7 +126,7 @@ class EXEFreeplay extends MusicBeatState
 		buildSongList();
 
 		//Desactiva esto para usar el desbloqueo de Mania! - Uncomment this to use Mania's Unlock!
-		if (maniaUnlock && FlxG.save.data.unlockManiaOnce != null) new FlxTimer().start(0.6, (_) -> maniaNotif());
+		if (maniaUnlock && FlxG.save.data.unlockManiaOnce == null) new FlxTimer().start(0.6, (_) -> maniaNotif());
 
 		covers = new FlxTypedGroup<FlxSprite>();
 		freeBoxes = new FlxTypedGroup<FlxSprite>();

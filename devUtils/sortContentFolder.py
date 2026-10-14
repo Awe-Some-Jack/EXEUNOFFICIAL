@@ -4,7 +4,7 @@ import shutil
 CONTENTS = "contents_file"
 EMBEDDED = "embedded_contents_file"
 
-EMBEDDED_EXTS = {".lua", ".hx", ".txt"}
+EMBEDDED_EXTS = {".lua", ".hx", ".txt", ".json"}
 
 FORCE_EMBEDDED_DIRS = {"SONICHU"}
 

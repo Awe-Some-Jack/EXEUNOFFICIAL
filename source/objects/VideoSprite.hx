@@ -411,7 +411,7 @@ class VideoSprite extends FlxSpriteGroup
 
 	private function onFocusGained():Void
 	{
-		if (PlayState.instance != null && !PlayState.instance.paused && FlxG.autoPause && wasPlayingBeforeFocusLost)
+		if ((PlayState.instance != null && !PlayState.instance.paused || PlayState.instance == null) && FlxG.autoPause && wasPlayingBeforeFocusLost)
 		{
 			resume(); // sure???????'
 		}

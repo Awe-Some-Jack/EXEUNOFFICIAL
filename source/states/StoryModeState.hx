@@ -565,7 +565,7 @@ class StoryModeState extends MusicBeatState
 		arrowTween  = FlxTween.tween(arrow,  {x: arrow.x  - 6}, 1.2, {ease: FlxEase.sineInOut, type: PINGPONG});
 		arrow2Tween = FlxTween.tween(arrow2, {x: arrow2.x + 6}, 1.2, {ease: FlxEase.sineInOut, type: PINGPONG});
 
-		updateScoreDisplay();
+		if (FlxG.save.data.storyModeDone) updateScoreDisplay();
 	}
 
 	function exitCoverSelect():Void

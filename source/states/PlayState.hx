@@ -104,6 +104,10 @@ class PlayState extends MusicBeatState
 	private var requiresSyncing:Bool = false;
 	private var lastCorrectSongPos:Float = -1.0;
 	public var enableFreezeSync:Bool = ClientPrefs.data.freezeSyncDelay;
+
+	private var _pendingStart:Bool = false;
+	private var _startCallbackCalled:Bool = false;
+
 	var _xdd:FlxEmitter;
 
 	//event variables
@@ -949,8 +953,8 @@ class PlayState extends MusicBeatState
 			eventNotes.sort(sortByTime);
 		}
 
-		startCallback();
-		RecalculateRating(false, false);
+		if (!hasTransIn)
+    		_pendingStart = true;
 
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
@@ -2199,6 +2203,10 @@ class PlayState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 		syncMobileComboOffset();
+
+		if (!hasTransIn)
+    		_pendingStart = true;
+
 		#if mobile
 		updateSpaceHitbox();
 		for(i in 0...4) {
@@ -4807,5 +4815,20 @@ class PlayState extends MusicBeatState
 		#end
 
 		if (!FlxG.signals.preUpdate.has(checkForResync)) FlxG.signals.preUpdate.add(checkForResync);
+	}
+
+	override function finishTransIn():Void
+	{
+		super.finishTransIn();
+		_pendingStart = true;
+	}
+
+	private function delayedStartCallback():Void
+	{
+		if (_startCallbackCalled) return;
+		_startCallbackCalled = true;
+		_pendingStart = false;
+		startCallback();
+		RecalculateRating(false, false);
 	}
 }

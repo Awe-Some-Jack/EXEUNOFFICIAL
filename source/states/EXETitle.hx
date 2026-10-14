@@ -247,52 +247,36 @@ class EXETitle extends MusicBeatState
 		hideTitle();
 	}
 
-	function hideTitle():Void{
-		#if VIDEOS_ALLOWED
-		if (screenBg != null) screenBg.active = screenBg.visible = false;
-		#end
-
+	function hideTitle():Void
+	{
 		if (ring != null) ring.active = ring.visible = false;
-
 		if (bandana != null) bandana.active = bandana.visible = false;
-		
 		if (logotxt != null)  logotxt.active = logotxt.visible = false;
-
 		if (spikes != null)  spikes.active = spikes.visible = false;
-		
 		if (titleText != null) titleText.active = titleText.visible = false;
-
 		if (parallaxArrow != null) parallaxArrow.active = parallaxArrow.visible = false;
-		
 		if (blackScreen != null) blackScreen.active = blackScreen.visible = false;
-
 		if (eyes != null) eyes.active = eyes.visible = false;
-
 		if (whiteBG != null) whiteBG.active = whiteBG.visible = false;
 	}
 
-	function showTitle():Void{
-		#if VIDEOS_ALLOWED
-		if (screenBg != null) screenBg.active = screenBg.visible = true;
-		#end
-
+	function showTitle():Void
+	{
 		if (ring != null) ring.active = ring.visible = true;
-
 		if (bandana != null) bandana.active = bandana.visible = true;
-		
-		if (logotxt != null)  logotxt.active = logotxt.visible = true;
-
-		if (spikes != null)  spikes.active = spikes.visible = true;
-		
+		if (logotxt != null) logotxt.active = logotxt.visible = true;
+		if (spikes != null) spikes.active = spikes.visible = true;
 		if (titleText != null) titleText.active = titleText.visible = true;
-
 		if (parallaxArrow != null) parallaxArrow.active = parallaxArrow.visible = true;
-		
 		if (blackScreen != null) blackScreen.active = blackScreen.visible = true;
-
 		if (eyes != null) eyes.active = eyes.visible = true;
-
 		if (whiteBG != null) whiteBG.active = whiteBG.visible = true;
+
+		if (screenBg != null)
+		{
+			screenBg.visible = true;
+			screenBg.resume();
+		}
 	}
 
 	var savedRingX:Float = 0;
@@ -351,25 +335,36 @@ class EXETitle extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-		if (!transitioning && canStart && FlxG.keys.justPressed.ANY || FlxG.mouse.justMoved) afkTimer = AFK_TIMER_VALUE;
-		if (afkTimer <= 0)
+		if (!transitioning && canStart && (FlxG.keys.justPressed.ANY || FlxG.mouse.justMoved))
+			afkTimer = AFK_TIMER_VALUE;
+
+		if (!transitioning && afkTimer <= 0)
 		{
 			transitioning = true;
 			canStart = false;
+			afkTimer = AFK_TIMER_VALUE;
+
 			whiteBG.color = 0xFF000000;
 			FlxTween.tween(whiteBG, {alpha: 1}, 1, {ease: FlxEase.quadOut});
-			FlxTween.tween(FlxG.sound.music, {volume: 0}, 1, {ease: FlxEase.quadOut, 
-				onComplete: twn->
+			FlxTween.tween(FlxG.sound.music, {volume: 0}, 1, {ease: FlxEase.quadOut,
+				onComplete: twn ->
 				{
 					Main.fpsVar.visible = false;
 					hideTitle();
+
+					if (screenBg != null)
+					{
+						screenBg.pause();
+						screenBg.visible = false;
+					}
+
 					FlxG.sound.music.stop();
-					playVideo(afkVideos[FlxG.random.int(0,afkVideos.length - 1)], true);
-					afkTimer = AFK_TIMER_VALUE;
+					playVideo(afkVideos[FlxG.random.int(0, afkVideos.length - 1)], true);
 				}
 			});
 		}
-		else if (afkTimer > 0 && canStart) afkTimer -= elapsed;
+		else if (afkTimer > 0 && canStart)
+			afkTimer -= elapsed;
 
 		var pressedEnter:Bool = #if mobile shortPress || #end FlxG.keys.justPressed.ENTER || controls.ACCEPT;
 

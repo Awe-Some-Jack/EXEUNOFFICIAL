@@ -6,7 +6,7 @@
     "math_before": "{1} dan oldin qaysi son keladi? _",
     "math_after": "{1} dan keyin qaysi son keladi? _",
     "math_eval": "Hisoblang: _",
-    "math_health": "Sog'liq: {1}%",
+    "math_health": "Sog‘liq: {1}%",
     "math_div_frac": "       nechiga teng? _",
     "math_solve_x_sub_1": "X ni toping: X - {1} = {2} _",
     "math_solve_x_sub_2": "X ni toping: {1}X - {2} = {3} _",
@@ -36,6 +36,6 @@
       "Soddalashtiring: (8x^3+14x^2+15x+18)/(2x+3) _",
       "Soddalashtiring: 5(2xy^2+3x^2y-xy) _",
       "cos(asin(sin(ln(e^3!)))) nechiga teng? _",
-      "Ko'paytuvchilarga ajrating: 7x^3+4x^2-6x+9"
+      "Ko‘paytuvchilarga ajrating: 7x^3+4x^2-6x+9"
     ]
 }

@@ -13,6 +13,11 @@ local exe = {
 	{name = '1', path = '1', x = -1050, y = 0, scroll = 1.2, front = true},
 }
 
+setProperty('camGame.visible', false) setProperty('camHUD.visible', false)
+setProperty('cameraSpeed', 99999)
+setProperty('camGame.targetOffset.y', -280)
+setProperty('camGame.targetOffset.x', -150)
+setPropertyFromClass('flixel.addons.transition.FlxTransitionableState', 'skipNextTransIn', true)
 function onCreatePost()
 	for _,e in ipairs(exe) do
 		if not (lowQuality and e.lowQualityHide) then
@@ -35,6 +40,22 @@ function onCreatePost()
 	setProperty('blackbgxd.alpha', 0)
 
 	setScrollFactor('gf', 1, 1)
+	setProperty('cameraSpeed', 1)
+	runTimer('xd', 0.1)
+	if seenCutscene then
+		setProperty('camGame.targetOffset.y', 0)
+		setProperty('camGame.zoom', 0.45)
+		setProperty('defaultCamZoom', 0.45)
+	end
+end
+
+function onTimerCompleted(t) if t == 'xd' then setProperty('camGame.visible', true) setProperty('camHUD.visible', true) end end
+
+function onSongStart()
+	if firstPlay then return end
+	setProperty('camGame.targetOffset.y', 0)
+	setProperty('camZooming', true)
+	setProperty('defaultCamZoom', 0.45)
 end
 
 function onEvent(n) if n == 'cambiarsolxd' then setProperty('7.y', -1400) setProperty('6.y', -1400) end end

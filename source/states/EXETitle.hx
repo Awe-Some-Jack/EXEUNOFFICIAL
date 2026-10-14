@@ -50,8 +50,9 @@ class EXETitle extends MusicBeatState
 
 	var unlocked:Array<String> = [];
 
-	public static var AFK_TIMER_VALUE:Float = 25.0;
+	public static var AFK_TIMER_VALUE:Float = 25;
 	var afkTimer:Float = AFK_TIMER_VALUE;
+	public static var afkVideos:Array<String> = ["introcutscene"];
 
 	override function create():Void
 	{
@@ -80,7 +81,6 @@ class EXETitle extends MusicBeatState
 
 		if (!initialized)
 		{
-			FlxG.mouse.visible = false;
 			Main.fpsVar.visible = false;
 
 			playVideo('introexe');
@@ -90,7 +90,6 @@ class EXETitle extends MusicBeatState
 		else
 		{
 			canStart = true;
-			FlxG.mouse.visible = true;
 			buildTitle();
 		}
 
@@ -120,66 +119,72 @@ class EXETitle extends MusicBeatState
 		videoPlaying = true;
 	}
 
+	var transitioning:Bool = false;
 	function onVideoEnd(byAfk:Bool):Void
 	{
-		if (FlxG.save.data.goToFinalEscape != null){
-			initialized = true;
-			FlxG.save.data.goToFinalEscape = null;
-			FlxG.save.flush();
-
-			Mods.currentModDirectory = "STORY MODE";
-			WeekData.reloadWeekFiles(false);
-			Difficulty.loadFromWeek();
-
-			final song:String = 'final-escape';
-			final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-			final launchDiff = (normalIdx > -1) ? normalIdx : 0;
-
-			PlayState.SONG = Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
-			PlayState.isStoryMode = true;
-			PlayState.storyWeek = 0;
-			PlayState.storyDifficulty = launchDiff;
-
-			LoadingState.loadAndSwitchState(new PlayState(), true);
-			return;
-		} 
-
-		if(FlxG.save.data.firstBoot == null) 
-		{
-			FlxG.save.data.firstBoot = true;
-			FlxG.save.flush();
-
-			playedIntro = true;
-			playVideo('introcutscene');
-			return;
-		}
-		else if(FlxG.save.data.firstBoot && !playedIntro && !backend.BurningBot.active)
-		{
-			playedIntro = true;
-			playVideo('postIntro');
-			return;
-		}
-
 		videoPlaying = false;
-		initialized = true;
+		
+		if (!byAfk)
+		{
+			if (FlxG.save.data.goToFinalEscape != null){
+				initialized = true;
+				FlxG.save.data.goToFinalEscape = null;
+				FlxG.save.flush();
+
+				Mods.currentModDirectory = "STORY MODE";
+				WeekData.reloadWeekFiles(false);
+				Difficulty.loadFromWeek();
+
+				final song:String = 'final-escape';
+				final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
+				final launchDiff = (normalIdx > -1) ? normalIdx : 0;
+
+				PlayState.SONG = Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
+				PlayState.isStoryMode = true;
+				PlayState.storyWeek = 0;
+				PlayState.storyDifficulty = launchDiff;
+
+				LoadingState.loadAndSwitchState(new PlayState(), true);
+				return;
+			} 
+
+			if(FlxG.save.data.firstBoot == null) 
+			{
+				FlxG.save.data.firstBoot = true;
+				FlxG.save.flush();
+
+				playedIntro = true;
+				playVideo('introcutscene');
+				return;
+			}
+			else if(FlxG.save.data.firstBoot && !playedIntro && !backend.BurningBot.active)
+			{
+				playedIntro = true;
+				playVideo('postIntro');
+				return;
+			}
+
+			initialized = true;
+
+			buildTitle();
+		}
 
 		if (byAfk){
-			afkConsider  = 1.5;
+			transitioning = false;
 			afkTimer = AFK_TIMER_VALUE;
-			showTitle();
-		}else{
-			buildTitle();
 		}
 		FlxG.camera.visible = false;
 
-		new FlxTimer().start(0.1, (_) -> {
+		new FlxTimer().start(0.5, (_) -> {
 			FlxG.sound.play(Paths.sound(backend.BurningBot.active ? 'eggmanlaugh' : 'exelaugh'));
 			new FlxTimer().start(1.6, (_) -> {
 				canStart = true;
-				FlxG.mouse.visible = true;
+				showTitle();
 				FlxG.camera.visible = true;
 				
 				FlxG.camera.flash(FlxColor.RED, 1);
+				whiteBG.alpha = 0.00001;
+				whiteBG.color = 0xFFFFFFFF;
 				
 				FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
 				FlxG.sound.play(Paths.sound('showMoment'));
@@ -235,9 +240,11 @@ class EXETitle extends MusicBeatState
 		add(eyes);
 
 		whiteBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
-		whiteBG.alpha = 0.0000001;
+		whiteBG.alpha = 0.00001;
 		whiteBG.screenCenter();
 		add(whiteBG);
+
+		hideTitle();
 	}
 
 	function hideTitle():Void{
@@ -320,7 +327,6 @@ class EXETitle extends MusicBeatState
 	}
 
 	var mousePosition:String = 'left';
-	var transitioning:Bool = false;
 	var logoSine:Float = 0;
 	var fridgeStatus:Int = 0;
 	
@@ -331,68 +337,42 @@ class EXETitle extends MusicBeatState
 	static inline final logotxt_Y:Float = 20 + (777 * 0.4);
 	static inline final EYES_Y:Float = 20 + (517 * 0.4);
 	static inline final PARALLAX_THRESHOLD:Float = 0.85;
-	private var movedMouse:Bool = false;
-	private var activeMouse:Float = 0.5;
-	private	var inAction:Bool = false; 
-	private var afkConsider:Float = 1.5;
-	private var videoAFKReason:Bool = false;
 
 	override function update(elapsed:Float):Void
 	{
-		if(videoPlaying && controls.ACCEPT #if mobile || shortPress #end) 
+		final gamepad:FlxGamepad = FlxG.gamepads.lastActive;
+		if (videoPlaying)
 		{
-			video?.setVideoPercent(1);
-		}
-		if (videoPlaying || subState != null)
-		{
+			if (controls.ACCEPT #if mobile || shortPress #end || (gamepad != null && gamepad.justPressed.START #if switch || gamepad.justPressed.B #end)) video?.setVideoPercent(1);
 			super.update(elapsed);
 			return;
 		}
-		
+
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-		if (!videoPlaying){
-			if (FlxG.keys.justPressed.ANY){
-				inAction = true;
-				afkConsider  = 1.5;
-				afkTimer = AFK_TIMER_VALUE;
-			}
-
-			if (afkConsider > 0){
-				afkConsider -= elapsed;
-			}else{
-				inAction = false;
-			}
-
-			if (!inAction){
-				if (afkTimer <= 0){
-					FlxG.mouse.visible = false;
+		if (!transitioning && canStart && FlxG.keys.justPressed.ANY || FlxG.mouse.justMoved) afkTimer = AFK_TIMER_VALUE;
+		if (afkTimer <= 0)
+		{
+			transitioning = true;
+			canStart = false;
+			whiteBG.color = 0xFF000000;
+			FlxTween.tween(whiteBG, {alpha: 1}, 1, {ease: FlxEase.quadOut});
+			FlxTween.tween(FlxG.sound.music, {volume: 0}, 1, {ease: FlxEase.quadOut, 
+				onComplete: twn->
+				{
 					Main.fpsVar.visible = false;
-
-					playedIntro = true;
 					hideTitle();
-					// why not FlxG.sound.music.fade...? uuuhhhh idk.
-					// - friendmanBruh
-					FlxTween.tween(FlxG.sound.music, {volume: 0}, 0.3, {ease: FlxEase.quadOut, 
-						onComplete: twn->
-						{
-							FlxG.sound.music.stop();	
-						}
-					});
-					playVideo('introcutscene', true);
+					FlxG.sound.music.stop();
+					playVideo(afkVideos[FlxG.random.int(0,afkVideos.length - 1)], true);
 					afkTimer = AFK_TIMER_VALUE;
-					videoPlaying = true;
-				}else{
-					afkTimer -= elapsed;
 				}
-			}
+			});
 		}
-
+		else if (afkTimer > 0 && canStart) afkTimer -= elapsed;
 
 		var pressedEnter:Bool = #if mobile shortPress || #end FlxG.keys.justPressed.ENTER || controls.ACCEPT;
 
-		final gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 		if (gamepad != null)
 		{
 			if (gamepad.justPressed.START) pressedEnter = true;
@@ -409,19 +389,7 @@ class EXETitle extends MusicBeatState
 				confirmStart();
 		}
 
-		if (activeMouse <= 0){
-			if (FlxG.mouse.justMoved){
-				movedMouse = true;
-				inAction = true;
-				afkConsider  = 1.5;
-				afkTimer = AFK_TIMER_VALUE;
-			}
-			activeMouse = 0;
-		}else{
-			activeMouse -= elapsed;
-		}
-
-		if (!transitioning && canStart && unlocked.length >= 5 && movedMouse)
+		if (!transitioning && canStart && unlocked.length >= 5)
 		{
 			final threshold:Float = FlxG.width * PARALLAX_THRESHOLD;
 			final arrowW:Float = parallaxArrow.width;

@@ -825,6 +825,12 @@ class Paths
 
 			if (SOUND_EXTS.contains(ext))
 			{
+				// Reuse an already streamed sound instead of closing & recreating it
+				// Closing the previous instance would break any other FlxSound still using it
+				// Example: a custom Game Over music script
+				final cached:Sound = streamedSounds.get(file);
+				if (cached != null) return cached;
+
 				var buffer:lime.media.AudioBuffer = null;
 
 				if (ext == 'ogg')
@@ -860,8 +866,6 @@ class Paths
 				if (buffer != null)
 				{
 					final snd:Sound = Sound.fromAudioBuffer(buffer);
-					final old:Sound = streamedSounds.get(file);
-					if (old != null) try old.close() catch (e:Dynamic) {}
 					streamedSounds.set(file, snd);
 					return snd;
 				}

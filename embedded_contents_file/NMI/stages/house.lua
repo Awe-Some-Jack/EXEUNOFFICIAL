@@ -1,6 +1,6 @@
 local separation = 50
 
-for i = 1,4 do precacheImage('renders/render'..i) end
+for i = 1,8 do precacheImage('renders/render'..i) end
 precacheImage('ycstnmi')
 precacheImage('noteSkins/NOTERED_assets')
 
@@ -218,14 +218,17 @@ function onEvent(n,v1,v2)
 			setProperty('cpuAssist', true)
 		end
 		if v1 == 'flashback' then
-			flashNum = flashNum + 1
-			cancelTween('render')
-			makeLuaSprite('render', 'renders/render'..((flashNum % 4) + 1))
-			scaleObject('render', 0.34, 0.34)
+			cancelTween('renderX') cancelTween('renderY') cancelTween('renderA')
+			makeLuaSprite('render', 'renders/render'..((flashNum % 8) + 1))
+			scaleObject('render', 1.3, 1.3)
 			addLuaSprite('render')
 			setObjectCamera('render', 'other')
 			screenCenter('render')
-			doTweenAlpha('render', 'render', 0, crochet / (1000 / 4), 'cubeInOut')
+			doTweenX('renderX', 'render.scale', 1.15, crochet / (1000 / 5), 'expoOut')
+			doTweenY('renderY', 'render.scale', 1.15, crochet / (1000 / 5), 'expoOut')
+			doTweenAlpha('renderA', 'render', 0, crochet / (1000 / 4), 'expoOut')
+			setBlendMode('render', 'add')
+			flashNum = flashNum + 1
 		end
 		if v1 == 'redfadein' then
 			setProperty('whiteBG.color', getColorFromHex('FF0000'))

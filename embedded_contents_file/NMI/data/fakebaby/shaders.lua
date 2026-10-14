@@ -29,9 +29,9 @@ function onEvent(n,v1,v2)
 		setProperty('bloom.x', tonumber(v1 == '' and '0.2' or v1))
 		doTweenX('bloom', 'bloom', 0, crochet / (250 * tonumber(v2 == '' and '1' or v2)), 'cubeOut')
 	end
-	if n == 'saturation' then
-		setShaderFloat('bloom', 'saturation', tonumber(v1))
-	end
+	if n == 'saturation' then setShaderFloat('bloom', 'saturation', tonumber(v1)) end
+	if n == 'brightness' then setProperty('bloom2.x', tonumber(v1 == '' and '0.2' or v1)) end
+	if n == 'contrast' then setProperty('bloom3.x', tonumber(v1 == '' and '0.2' or v1)) end
 	if n == 'innocenceEvents' then
 		if v1 == 'appear' then
 			doTweenX('bloom2', 'bloom2', 0, crochet / (1000 / 8), 'expoOut')

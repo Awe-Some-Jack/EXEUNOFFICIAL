@@ -249,6 +249,9 @@ class EXETitle extends MusicBeatState
 
 	function hideTitle():Void
 	{
+		#if VIDEOS_ALLOWED
+		if (screenBg != null) screenBg.active = screenBg.visible = false;
+		#end
 		if (ring != null) ring.active = ring.visible = false;
 		if (bandana != null) bandana.active = bandana.visible = false;
 		if (logotxt != null)  logotxt.active = logotxt.visible = false;
@@ -262,6 +265,9 @@ class EXETitle extends MusicBeatState
 
 	function showTitle():Void
 	{
+		#if VIDEOS_ALLOWED
+		if (screenBg != null) screenBg.active = screenBg.visible = true;
+		#end
 		if (ring != null) ring.active = ring.visible = true;
 		if (bandana != null) bandana.active = bandana.visible = true;
 		if (logotxt != null) logotxt.active = logotxt.visible = true;
@@ -271,12 +277,6 @@ class EXETitle extends MusicBeatState
 		if (blackScreen != null) blackScreen.active = blackScreen.visible = true;
 		if (eyes != null) eyes.active = eyes.visible = true;
 		if (whiteBG != null) whiteBG.active = whiteBG.visible = true;
-
-		if (screenBg != null)
-		{
-			screenBg.visible = true;
-			screenBg.resume();
-		}
 	}
 
 	var savedRingX:Float = 0;
@@ -351,12 +351,6 @@ class EXETitle extends MusicBeatState
 				{
 					Main.fpsVar.visible = false;
 					hideTitle();
-
-					if (screenBg != null)
-					{
-						screenBg.pause();
-						screenBg.visible = false;
-					}
 
 					FlxG.sound.music.stop();
 					playVideo(afkVideos[FlxG.random.int(0, afkVideos.length - 1)], true);

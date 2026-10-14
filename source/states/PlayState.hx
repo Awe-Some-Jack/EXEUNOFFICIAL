@@ -2186,17 +2186,16 @@ class PlayState extends MusicBeatState
 	private final _updateArgs:Array<Dynamic> = [0.0];
 	private var _lastTimeText:String = '';
 	private var _freedCpuImages:Bool = false;
-	private var _cpuFreeFrameDelay:Int = 0; // wait N frames before first CPU image free pass
-	private var _cpuFreeTimer:Float = 0;    // periodic re-scan for script-loaded bitmaps
+	private var _cpuFreeFrameDelay:Int = 0;
+	private var _cpuFreeTimer:Float = 0;
 
 	private var _holdArray:Array<Bool> = [];
 	private var _pressArray:Array<Bool> = [];
 	private var _releaseArray:Array<Bool> = [];
 	#if mobile private var _activePointers:Array<Int> = []; #end
 
-	// pre-allocated script argument arrays — avoids heap allocation on every note hit/miss
-	private final _noteArgs:Array<Dynamic>  = [0, 0, '', false, 0.0]; // [index, noteData, noteType, isSustain, strumTime]
-	private final _gnhArgs:Array<Dynamic>   = [0, 0, '', false, 0.0]; // dedicated copy for goodNoteHit (can't share: noteMiss clobbers _noteArgs)
+	private final _noteArgs:Array<Dynamic>  = [0, 0, '', false, 0.0];
+	private final _gnhArgs:Array<Dynamic>   = [0, 0, '', false, 0.0];
 	private final _spawnArgs:Array<Dynamic> = [0, 0, '', false, 0.0];
 	private final _keyArgs:Array<Dynamic>   = [0];
 
@@ -2273,7 +2272,6 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				// Periodically scan for script-loaded bitmaps that arrived after the initial pass
 				_cpuFreeTimer += elapsed;
 				if (_cpuFreeTimer >= 5.0)
 				{

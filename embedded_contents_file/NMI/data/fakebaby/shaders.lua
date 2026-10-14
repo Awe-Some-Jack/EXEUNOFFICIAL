@@ -59,6 +59,10 @@ function onEvent(n,v1,v2)
 		if v1 == 'changebgfinal' then
 			setShaderFloat('fisheye', 'amount', -0.4)
 		end
+		if v1 == 'redfadein' then
+			setProperty('bloom2.x', 0)
+			setProperty('bloom3.x', 1)
+		end
 	end
 end
 

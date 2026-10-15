@@ -2,7 +2,7 @@
   "input": "./assets",
   "output": "./astc-textures/",
   "quality": "thorough",
-  "blocksize": "6x6",
+  "blocksize": "8x8",
   "colorprofile": "cl",
   "premultiplyAlpha": true,
   "custom": [

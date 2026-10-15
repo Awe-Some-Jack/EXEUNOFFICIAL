@@ -298,9 +298,6 @@ class Project extends HXProject
             if (FileSystem.exists("contents_file") && !isMobile() && !isSwitch())
                 addAssetRecursive("contents_file", "contents", false, ["*"], []);
 
-            if (isMobile() && FileSystem.exists("mobile_embed"))
-                addAssetRecursive("mobile_embed", "contents", isMobile(), ["*"], []);
-
             if (FileSystem.exists("embedded_contents_file"))
                 addAssetRecursive("embedded_contents_file", "contents", defines.exists("final") || isMobile(), ["*"], []);
 

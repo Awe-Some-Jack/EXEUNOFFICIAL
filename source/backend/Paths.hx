@@ -41,9 +41,21 @@ class Paths
 
 	public static var tempFramesCache:Map<String, FlxFramesCollection> = [];
 
+	static final resolvedImageKeys:Map<String, String> = [];
+	static final resolvedSoundFiles:Map<String, String> = [];
+
+	public static function clearResolvedPaths():Void
+	{
+		resolvedImageKeys.clear();
+		resolvedSoundFiles.clear();
+	}
+
 	public static function initStateSignals():Void
 	{
-		FlxG.signals.preStateSwitch.add(() -> tempFramesCache.clear());
+		FlxG.signals.preStateSwitch.add(() -> {
+			tempFramesCache.clear();
+			clearResolvedPaths();
+		});
 	}
 
 	public static function excludeAsset(key:String) {
@@ -76,6 +88,7 @@ class Paths
 	public static function clearStoredMemory()
 	{
 		MemoryUtil.clearMajor();
+		clearResolvedPaths();
 		
 		// clear anything not in the tracked assets list
 		for (key in FlxG.bitmap._cache.keys())
@@ -303,15 +316,23 @@ class Paths
 	static public function image(key:String, ?parentFolder:String = null, ?allowGPU:Bool = true):FlxGraphic
 	{
 		var translatedKey:String = Language.getFileTranslation('images/$key');
-		var finalKey:String = translatedKey + '.webp';
+		final resolveId:String = Mods.currentModDirectory + '|' + parentFolder + '|' + translatedKey;
+		var finalKey:String = resolvedImageKeys.get(resolveId);
 
-		for (ext in IMAGE_EXTS)
+		if (finalKey == null)
 		{
-			if (fileExists(translatedKey + '.' + ext, IMAGE, false, parentFolder))
+			finalKey = translatedKey + '.webp';
+
+			for (ext in IMAGE_EXTS)
 			{
-				finalKey = translatedKey + '.' + ext;
-				break;
+				if (fileExists(translatedKey + '.' + ext, IMAGE, false, parentFolder))
+				{
+					finalKey = translatedKey + '.' + ext;
+					break;
+				}
 			}
+
+			resolvedImageKeys.set(resolveId, finalKey);
 		}
 
 		var bitmap:BitmapData = null;
@@ -537,8 +558,12 @@ class Paths
 
 		#if sys
 		if (sys.FileSystem.exists(scanFolder) && sys.FileSystem.isDirectory(scanFolder)) {
-			for (file in sys.FileSystem.readDirectory(scanFolder))
-				if (!scannedFiles.contains(file)) scannedFiles.push(file);
+			try {
+				for (file in sys.FileSystem.readDirectory(scanFolder))
+					if (!scannedFiles.contains(file)) scannedFiles.push(file);
+			} catch (e:Dynamic) {
+				trace('Could not read directory: $scanFolder ($e)');
+			}
 		}
 		#end
 
@@ -691,7 +716,17 @@ class Paths
 	static public function resolveSoundFile(key:String, ?path:String, ?modsAllowed:Bool = true):String
 	{
 		final translatedKey:String = Language.getFileTranslation(key);
+		final resolveId:String = Mods.currentModDirectory + '|' + path + '|' + modsAllowed + '|' + translatedKey;
+		final cached:String = resolvedSoundFiles.get(resolveId);
+		if (cached != null) return cached;
 
+		final file:String = findSoundFile(translatedKey, path, modsAllowed);
+		resolvedSoundFiles.set(resolveId, file);
+		return file;
+	}
+
+	static function findSoundFile(translatedKey:String, path:String, modsAllowed:Bool):String
+	{
 		var file:String = getPath('$translatedKey.$SOUND_EXT', SOUND, path, modsAllowed);
 		if (#if sys FileSystem.exists(file) || #end OpenFlAssets.exists(file)) return file;
 

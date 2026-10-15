@@ -50,7 +50,7 @@ class EXETitle extends MusicBeatState
 
 	var unlocked:Array<String> = [];
 
-	public static var AFK_TIMER_VALUE:Float = 25;
+	public static var AFK_TIMER_VALUE:Float = 60;
 	var afkTimer:Float = AFK_TIMER_VALUE;
 	public static var afkVideos:Array<String> = ["introcutscene"];
 

@@ -12,6 +12,7 @@ function onCreate() {
 	if(ClientPrefs.data.middleScroll && (ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes)) PlayState.instance.opponentStrumOffsetY = -10;
 }
 
-function onCreatePost() {
+function onCreatePost() 
+{
 	makeBackground(bgNeedle);
 }

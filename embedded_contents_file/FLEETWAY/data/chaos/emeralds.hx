@@ -40,7 +40,7 @@ var scaleMult:Float = 1;
 var velocityMult:Float = 0.5;
 var radiusMult:Float = 1;
 var LERP_VELOCITY:Float = 15;
-var INITIAL_SCALE:Float = 0.325;
+var INITIAL_SCALE:Float = 0.45;
 
 var emeraldsData:Array<EmeraldData> = [];
 
@@ -48,12 +48,14 @@ function onCreatePost()
 {
     var guh = FlxG.random.bool(1);
     masterEmerald = new FlxSprite();
-    masterEmerald.setPosition(1900, 1050);
+    masterEmerald.setPosition(1925, 1050);
     masterEmerald.scale.set(0.4, 0.4);
     if(guh) 
     {
         masterEmerald.loadGraphic(Paths.image('bg/emerals/placeholder'));
         masterEmerald.scale.set(9, 9);
+        masterEmerald.x += 550;
+        masterEmerald.y += 150;
     }
     else 
     {
@@ -61,7 +63,7 @@ function onCreatePost()
         masterEmerald.animation.addByPrefix('anim', 'Símbolo', 24, true);
         masterEmerald.animation.play('anim');
     }
-    insert(members.indexOf(boyfriendGroup) - 1, masterEmerald);
+    insert(5, masterEmerald);   // In front of the beam and behind the beam blend
 
     for(i in 0...7)
     {
@@ -80,7 +82,7 @@ function onCreatePost()
             movingRadius: 325,
             target: masterEmerald,
             targetRef: masterEmerald,
-            xOffset: 475
+            xOffset: guh ? -25 : 475
         });
 
         // FlxTween.tween(emerald.offset, {y: 45}, 2, {ease: FlxEase.sineInOut, type: 4, startDelay: 0.2 * i});
@@ -91,7 +93,7 @@ function onCreatePost()
     gradient = new FlxSprite().loadGraphic(Paths.image('grad'));
     gradient.cameras = [camHUD];
     gradient.alpha = 0;
-    gradient.y = game.downscroll ? -gradient.height/2 : FlxG.height - gradient.height/2;
+    gradient.y = ClientPrefs.data.downScroll ? -gradient.height/2 : FlxG.height - gradient.height/2;
     game.insert(0, gradient);
 }
 

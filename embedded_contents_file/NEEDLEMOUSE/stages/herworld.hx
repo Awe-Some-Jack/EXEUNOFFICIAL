@@ -65,6 +65,11 @@ var stepEvents = [
 			}
 		},
 		{
+			step: 815, callback: () -> {
+				game.getLuaObject('iconOpp').offset.set(-25, 15);
+			}
+		}
+		{
 			step: 1216, callback: () -> {
 				FlxTween.tween(camHUD, {alpha: 0}, 2, {startDelay: 1.5});
 			}

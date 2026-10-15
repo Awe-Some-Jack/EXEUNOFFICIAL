@@ -7,6 +7,7 @@ import flixel.FlxSubState;
 import options.OptionsState;
 import states.substates.PauseSubState;
 import minigames.Camera;
+import minigames.ShakeCamera;
 import minigames.preymini.character.monster.EnemySpawner;
 import minigames.preymini.character.player.EscapePrompt;
 import minigames.preymini.character.player.HUD;
@@ -28,6 +29,7 @@ class PreyMini extends MusicBeatState
 	static final CHAIN_SCORE:Array<Int> = [100, 200, 500, 1000];
 
 	var _prevWindowTitle:String;
+	var _paused:Bool = false;
 	var _bg:BGPrey;
 	var _terrain:Terrain;
 	var _lights:MapLights;
@@ -64,15 +66,15 @@ class PreyMini extends MusicBeatState
 
 	override public function create():Void
 	{
+		_prevWindowTitle = FlxG.stage.window.title;
 		super.create();
 		songLives = 0;
 		_prevUpdateFps = FlxG.updateFramerate;
 		_prevDrawFps = FlxG.drawFramerate;
 		_setFps(60, 60);
-		_prevWindowTitle = FlxG.stage.window.title;
 		_setTitle(false);
 
-		FlxG.cameras.reset();
+		FlxG.cameras.reset(new ShakeCamera());
 		FlxG.camera.bgColor = 0xFF000000;
 		FlxG.camera.pixelPerfectRender = true;
 
@@ -225,16 +227,22 @@ class PreyMini extends MusicBeatState
 
 	override function openSubState(sub:FlxSubState):Void
 	{
-		if (FlxG.sound.music != null) FlxG.sound.music.pause();
-		FlxTimer.globalManager.forEach(t -> if (!t.finished) t.active = false);
-		FlxTween.globalManager.forEach(t -> if (!t.finished) t.active = false);
-		_setTitle(true);
+		if (Std.isOfType(sub, PauseSubState))
+		{
+			_paused = true;
+			if (FlxG.sound.music != null) FlxG.sound.music.pause();
+			FlxTimer.globalManager.forEach(t -> if (!t.finished) t.active = false);
+			FlxTween.globalManager.forEach(t -> if (!t.finished) t.active = false);
+			_setTitle(true);
+		}
 		super.openSubState(sub);
 	}
 
 	override function closeSubState():Void
 	{
 		super.closeSubState();
+		if (!_paused) return;
+		_paused = false;
 		PauseSubState.standaloneExit = null;
 		OptionsState.standaloneReturnState = null;
 		FlxTimer.globalManager.forEach(t -> if (!t.finished) t.active = true);
@@ -275,7 +283,7 @@ class PreyMini extends MusicBeatState
 		{
 			if (fromSoundTest)
 			{
-				PlayState.storyPlaylist = [for (song in data.songs) if (Paths.formatToSongPath(song[0]) != "minigame") Paths.formatToSongPath(song[0])];
+				PlayState.storyPlaylist = [for (song in data.songs) if (Paths.formatToSongPath(song[0]) != "stardust-speedway") Paths.formatToSongPath(song[0])];
 				PlayState.isStoryMode = true;
 				PlayState.storyDifficulty = 1;
 				PlayState.campaignScore = 0;
@@ -378,6 +386,7 @@ class PreyMini extends MusicBeatState
 				_oneUps |= 1 << step;
 				_lives++;
 				_hud.lives = _lives;
+				FlxG.sound.play(Paths.sound("minigame/preymini/extralife"));
 			}
 	}
 

@@ -3345,7 +3345,7 @@ class PlayState extends MusicBeatState
             for (song in leWeek.songs)
             {
                 final sName:String = Paths.formatToSongPath(song[0]);
-                if (sName == 'minigame') continue;
+                if (sName == 'stardust-speedway') continue;
                 
                 if (sName != secretSongPath && !unlocked.contains(sName))
                 {

@@ -118,7 +118,7 @@ class EscapePrompt extends FlxTypedGroup<FlxSprite>
 			for (frame in 0...2)
 				for (y in 0...7)
 					for (x in 0...5)
-						if ((font.getPixel32(index * 6 + x, y) >>> 24) & 0xFF >= 128)
+						if ((font.getPixel32(index * 6 + x, y) >>> 24) & 0xFF >= 128 && (font.getPixel32(index * 6 + x, y) >> 16) & 0xFF >= 128)
 							cap.setPixel32(frame * 17 + 6 + x, (frame == 1 ? 3 : 1) + 3 + y, 0xFF2A2440);
 		font.dispose();
 		return cap;

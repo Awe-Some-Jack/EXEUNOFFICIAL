@@ -271,6 +271,14 @@
 			"fps": 24,
 			"name": "althit",
 			"indices": []
+		},
+		{
+			"offsets": [-75, -6],
+			"loop": true,
+			"fps": 24,
+			"anim": "death",
+			"indices": [],
+			"name": "death"
 		}
 	],
 	"vocals_file": "",

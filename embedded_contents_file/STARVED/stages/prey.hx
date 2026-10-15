@@ -2,6 +2,8 @@ import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxAxes;
 import openfl.display.BlendMode;
 import minigames.preymini.map.SkyParade;
+import minigames.preymini.map.MapLights;
+import minigames.preymini.map.SongFloors;
 
 final game:PlayState = PlayState.instance;
 final prefs = ClientPrefs.data;
@@ -12,12 +14,15 @@ var floorGroup:Array<FlxSprite> = [];
 var floorBGGroup:Array<FlxSprite> = [];
 var fg:FlxBackdrop;
 var parade:SkyParade;
+var lights:MapLights;
 var paradeOn:Bool = false;
+var frozen:Bool = false;
 
 var rampTimers:Array<FlxTimer> = [];
 var rampTweens:Array<FlxTween> = [];
 
 final movementOffset:Int = 220;
+
 
 var replaceColor:ErrorHandledRuntimeShader;
 function onCreate()
@@ -58,27 +63,28 @@ function onCreate()
 			parade.groups[i].visible = false;
 			insert(game.members.indexOf(bgGroup[SkyParade.LANES[i].layer - 1]) + 1, parade.groups[i]);
 		}
-		for (atlas in ['Badnik_1', 'Badnik_2', 'Badnik_3', 'Fire_Box']) Paths.getSparrowAtlas('minigame/preymini/characters/enemys/' + atlas, null, false);
+		for (atlas in ['Badnik_1', 'Badnik_2', 'Badnik_3', 'Fire_Box', 'Explosion', 'Animal_Burning', 'Animal_Burning2']) Paths.getSparrowAtlas('minigame/preymini/characters/enemys/' + atlas, null, false);
 		SkyParade.halo();
 
+		lights = new MapLights();
+		for (id in 1...SongFloors.count() + 1) SongFloors.clear(id);
 		for (i in 0...2)
 		{
-			final v = FlxG.random.int(1,2);
+			final v = FlxG.random.int(1, SongFloors.count());
 
 			var floorBG:FlxSprite = new FlxSprite(0, -1912).loadGraphic(Paths.image('prey/floor-variants/$v/floor2'));
 			floorBG.antialiasing = false;
 			floorBG.scale.set(6, 6); floorBG.updateHitbox();
-			floorBG.x = i * floorBG.width;
+			floorBG.x = i == 0 ? 0 : floorBGGroup[0].x + floorBGGroup[0].width;
 			floorBG.color = 0xFF000000;
 			floorBGGroup.push(floorBG);
 			insert(game.members.indexOf(bgGroup[0]) + 1, floorBG);
 
-			var floor:FlxSprite = new FlxSprite(0, -1912);
-			floor.frames = Paths.getSparrowAtlas('prey/floor-variants/$v/floor1');
-			floor.animation.addByPrefix('idle', 'idle', 8, true); floor.animation.play('idle', true);
+			var floor:FlxSprite = new FlxSprite(0, -1912).loadGraphic(Paths.image('prey/floor-variants/$v/floor1'));
+			floor.shader = lights.shader;
 			floor.antialiasing = false;
 			floor.scale.set(6, 6); floor.updateHitbox();
-			floor.x = i * floor.width;
+			floor.x = i == 0 ? 0 : floorGroup[0].x + floorGroup[0].width;
 			floor.color = 0xFF000000;
 			floor.ID = v;
 			floorGroup.push(floor);
@@ -132,10 +138,12 @@ function onUpdatePost(elapsed:Float)
 		for (twn in rampTweens) if (!twn.finished) twn.cancel();
 		return;
 	}
+	if (frozen) return;
 
 	if (!prefs.lowQuality)
 	{
 		if (paradeOn) parade.update(elapsed);
+		lights.update(elapsed * 2 / 3);
 
 		if (lightningActive)
 		{
@@ -163,11 +171,9 @@ function onUpdatePost(elapsed:Float)
 			{
 				var right = 0;
 				for (floor in floorGroup) right = Math.max(right, floor.x + floor.width);
-				final v = FlxG.random.int(1, 2);
+				final v = FlxG.random.int(1, SongFloors.count());
 
-				floorGroup[i].frames = Paths.getSparrowAtlas('prey/floor-variants/$v/floor1');
-				floorGroup[i].animation.addByPrefix('idle', 'idle', 8, true);
-				floorGroup[i].animation.play('idle', true);
+				floorGroup[i].loadGraphic(Paths.image('prey/floor-variants/$v/floor1'));
 				floorGroup[i].updateHitbox();
 				floorGroup[i].x = right;
 				floorGroup[i].ID = v;
@@ -191,37 +197,12 @@ function checkTimers(?i:Int = 0, ?extraOffset:Float = 0)
 
 	final floor = 1 - i;
 	final speed = Math.abs(floorGroup[floor].velocity.x);
+	for (ramp in SongFloors.ramps(floorGroup[floor].ID)) scheduleRamp(floor, ramp, ((ramp[0] - (movementOffset + extraOffset)) * 6) / speed);
+}
 
-	if (floorGroup[floor].ID == 1)
-	{
-		addRampTimer(((824 - (movementOffset + extraOffset)) * 6) / speed, _ -> {
-			final speed = Math.abs(floorGroup[floor].velocity.x);
-			addRampTween(0, 1, (142 * 6) / speed);
-			addRampTimer((1043 * 6) / speed, _ -> {
-				final speed = Math.abs(floorGroup[floor].velocity.x);
-				addRampTween(1, 0, (142 * 6) / speed);
-			});
-		});
-	}
-	else if (floorGroup[floor].ID == 2)
-	{
-		addRampTimer(((331 - (movementOffset + extraOffset)) * 6) / speed, _ -> {
-			final speed = Math.abs(floorGroup[floor].velocity.x);
-			addRampTween(0, -1, (142 * 6) / speed);
-			addRampTimer((1005 * 6) / speed, _ -> {
-				final speed = Math.abs(floorGroup[floor].velocity.x);
-				addRampTween(-1, 0, (142 * 6) / speed);
-				addRampTimer((512 * 6) / speed, _ -> {
-					final speed = Math.abs(floorGroup[floor].velocity.x);
-					addRampTween(0, 1, (142 * 6) / speed);
-					addRampTimer((1811 * 6) / speed, _ -> {
-						final speed = Math.abs(floorGroup[floor].velocity.x);
-						addRampTween(1, 0, (142 * 6) / speed);
-					});
-				});
-			});
-		});
-	}
+function scheduleRamp(floor:Int, ramp:Array<Int>, time:Float)
+{
+	addRampTimer(time, _ -> addRampTween(ramp[1], ramp[2], (142 * 6) / Math.abs(floorGroup[floor].velocity.x)));
 }
 
 function updateBFY(n:Float)
@@ -331,25 +312,62 @@ function isRampAt(startX:Float, endX:Float):Bool
 	{
 		if (endX >= floor.x && startX <= floor.x + floor.width)
 		{
-			var checkX = startX;
-			while (checkX <= endX)
+			var checkX = Math.max(startX, floor.x);
+			while (checkX <= Math.min(endX, floor.x + floor.width))
 			{
-				final localX = checkX - floor.x;
-				final texX = localX / 6;
-
-				if (floor.ID == 1)
-				{
-					if (texX >= 800 && texX <= 2175) return true;
-				}
-				else if (floor.ID == 2)
-				{
-					if ((texX >= 300 && texX <= 1650) || (texX >= 2100 && texX <= 4250)) return true;
-				}
+				if (floorLevel(floor.ID, (checkX - floor.x) / 6, 24) != 0) return true;
 				checkX += 40;
 			}
 		}
 	}
 	return false;
+}
+
+function floorLevel(id:Int, tex:Float, margin:Float):Float
+{
+	return SongFloors.levelAt(id, tex, margin);
+}
+
+function floorSpot(startX:Float, endX:Float, clear:Bool):Float
+{
+	for (floor in floorGroup)
+	{
+		if (startX < floor.x || endX > floor.x + floor.width) continue;
+		final a = (startX - floor.x) / 6;
+		final b = (endX - floor.x) / 6;
+		final level = floorLevel(floor.ID, a, 24);
+		if (Math.isNaN(level) || floorLevel(floor.ID, b, 24) != level) return -1;
+		if (clear)
+		{
+			var inside = false;
+			for (span in SongFloors.clear(floor.ID)) if (a >= span[0] && b <= span[1]) inside = true;
+			if (!inside) return -1;
+		}
+		return 584 - 384 * level;
+	}
+	return -1;
+}
+
+function opponentBody():Array<Float>
+{
+	final dad = game.dad;
+	if (dad == null || dad.curCharacter != 'furnace' || !dad.visible || dad.alpha < 0.5) return null;
+	final bounds = dad.getGraphicBounds();
+	return [bounds.x + bounds.width * 0.13, bounds.y + bounds.height * 0.25, bounds.x + bounds.width * 0.68, bounds.y + bounds.height * 0.89];
+}
+
+function freezeStage()
+{
+	frozen = true;
+	clearRampTimers();
+	if (prefs.lowQuality) return;
+	for (bg in bgGroup) bg.velocity.x = 0;
+	lightning.velocity.x = 0;
+	for (floor in floorGroup) floor.velocity.x = 0;
+	for (floorBG in floorBGGroup) floorBG.velocity.x = 0;
+	fg.velocity.x = 0;
+	fg.animation.pause();
+	paradeOn = false;
 }
 
 function clearRampTimers()

@@ -298,7 +298,7 @@ class EXEFreeplay extends MusicBeatState
 				final sName:String = song[0];
 				final title:String = weekExeTitle ?? sName.toUpperCase();
 
-				final unlockKey:String = Paths.formatToSongPath(sName) == 'minigame' && Mods.currentModDirectory == 'STARVED' ? 'prey' : Paths.formatToSongPath(sName);
+				final unlockKey:String = Paths.formatToSongPath(sName) == 'stardust-speedway' && Mods.currentModDirectory == 'STARVED' ? 'prey' : Paths.formatToSongPath(sName);
 				if (unlocked.indexOf(unlockKey) == -1 && !inDevMode) continue;
 
 				songInfoList.push({
@@ -895,7 +895,7 @@ class EXEFreeplay extends MusicBeatState
 		final entry = songEntries[selectedBox];
 		final songLower = Paths.formatToSongPath(songs[songSelector]);
 
-		if (songLower == 'minigame' && entry.folder == 'STARVED')
+		if (songLower == 'stardust-speedway' && entry.folder == 'STARVED')
 		{
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 			FlxG.sound.music?.fadeOut(0.3);

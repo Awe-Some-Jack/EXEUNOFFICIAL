@@ -478,7 +478,7 @@ class SoundTest extends MusicBeatState
 
 			try
 			{
-				PlayState.storyPlaylist = [for (song in leWeek.songs) if (Paths.formatToSongPath(song[0]) != 'minigame') Paths.formatToSongPath(song[0])];
+				PlayState.storyPlaylist = [for (song in leWeek.songs) if (Paths.formatToSongPath(song[0]) != 'stardust-speedway') Paths.formatToSongPath(song[0])];
 				final firstSong:String = PlayState.storyPlaylist[0];
 				PlayState.isStoryMode = true;
 				PlayState.storyDifficulty = 1;

@@ -1372,4 +1372,5 @@
 <SubTexture name="althit0008" x="0" y="698" width="43" height="36" frameX="-2" frameY="-28" frameWidth="72" frameHeight="61" />
 <SubTexture name="althit0009" x="637" y="659" width="43" height="37" frameX="-14" frameY="-28" frameWidth="72" frameHeight="61" />
 <SubTexture name="althit0010" x="706" y="108" width="42" height="36" frameX="-34" frameY="-29" frameWidth="72" frameHeight="61" />
+<SubTexture name="death0000" x="0" y="763" width="65" height="65" frameX="0" frameY="0" frameWidth="65" frameHeight="65" />
 </TextureAtlas>

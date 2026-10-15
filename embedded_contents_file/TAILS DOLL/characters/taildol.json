@@ -1,44 +1,52 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [0, 0],
-			"anim": "idle",
+			"loop": true,
 			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
 		},
 		{
+			"offsets": [120, 105],
 			"loop": false,
-			"offsets": [119, 105],
+			"fps": 30,
 			"anim": "singLEFT",
-			"fps": 30,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
+			"offsets": [57, 10],
 			"loop": false,
-			"offsets": [55, 8],
+			"fps": 30,
 			"anim": "singDOWN",
-			"fps": 30,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
+			"offsets": [31, 72],
 			"loop": false,
-			"offsets": [31, 71],
+			"fps": 30,
 			"anim": "singUP",
-			"fps": 30,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"offsets": [0, 69],
 			"loop": false,
-			"offsets": [-1, 70],
-			"anim": "singRIGHT",
 			"fps": 30,
-			"name": "right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "right"
+		},
+		{
+			"offsets": [136, 162],
+			"loop": true,
+			"fps": 24,
+			"anim": "stare",
+			"indices": [],
+			"name": "tails doll stare"
 		}
 	],
 	"vocals_file": "",

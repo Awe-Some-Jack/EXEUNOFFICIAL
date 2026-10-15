@@ -2590,7 +2590,7 @@ class PlayState extends MusicBeatState
 
 		#if !mac
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
-		if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + "(Paused)";
+		if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + " (Paused)";
 		if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 		#end
 

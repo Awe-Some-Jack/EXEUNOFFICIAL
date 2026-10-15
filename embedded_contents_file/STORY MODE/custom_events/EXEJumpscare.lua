@@ -1,5 +1,5 @@
 local jumpscareSprite = {
-    {name = 'jumpscare', path = 'characters/jumcare', x = 0, y = -200, animName = 'aidel', animPrefix = 'jum', fps = 24, loop = false, scaleX = 1, scaleY = 1, antialisasing = true, alpha = 0, camera = 'camHUD', front = true}
+    {name = 'jumpscare', path = 'characters/jumcare', x = 0, y = -200, animName = 'aidel', animPrefix = 'jum', fps = 24, loop = false, scaleX = 1, scaleY = 1, antialisasing = true, alpha = 0.0001, camera = 'camHUD', front = true}
 }
 
 local isScaringYou = false
@@ -21,24 +21,13 @@ end
 function onEvent(lol)
     if not isScaringYou then
         if lol == "EXEJumpscare" then
-            runTimer('freeze', stepCrochet / (1000 / 13))
-            setProperty('cameraSpeed', 0)
-            setProperty('camZoomingMult', 0)
-            setProperty('camZoomingDecay', 0)
-            runHaxeCode("camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = false;")
+            isScaringYou = true
+            setProperty('jumpscare.alpha', 1)
+            playAnim('jumpscare', 'aidel', true)
+            playSound('jumpscareSound')
+            setProperty('cameraSpeed', 1)
+            runHaxeCode("camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = true;")
         end
-    end
-end
-
-function onTimerCompleted(t)
-    if t == 'freeze' then
-        isScaringYou = true
-
-        setProperty('jumpscare.alpha', 1)
-        playAnim('jumpscare', 'aidel', true)
-        playSound('jumpscareSound')
-        setProperty('cameraSpeed', 1)
-        runHaxeCode("camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = true;")
     end
 end
 

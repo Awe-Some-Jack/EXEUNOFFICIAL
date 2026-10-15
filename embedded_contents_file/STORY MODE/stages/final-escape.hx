@@ -94,7 +94,6 @@ var curBG:String = 'intro';
 var oldGT:Bool = false;
 function onCreate()
 {
-	game.canPause = false;
 	oldGT = prefs.ghostTapping;
 	//intro
 	camGame.alpha = 0;
@@ -207,7 +206,8 @@ var notesPosition:Array<Array<Array<Float>>> = [[[0,0],[0,0],[0,0],[0,0]],[[0,0]
 final separation:Float = 50;
 function onCreatePost()
 {
-
+	game.canPause = false;
+	game.canReset = false;
 	//shader
 	chrom = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('ChromaticAbberation')));
     chrom.setFloat('amount', 0.3);
@@ -367,6 +367,7 @@ function onUpdatePost(elapsed:Float)
 			if (eyes != null) eyes.setPosition(dad.x + 400, dad.y + 440);
 		case 'second':
 			game.canPause = true;
+			game.canReset = true;
 			for (i in 6...9) {
 				if (bgSecond[i].sprite.visible)
 				{

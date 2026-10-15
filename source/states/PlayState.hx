@@ -3234,19 +3234,26 @@ class PlayState extends MusicBeatState
 					FlxG.save.data.goToFinalEscape = true;
 					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 2;
 					FlxG.save.flush();
-
-					trace("Save Data for Final Escape is: " + FlxG.save.data.goToFinalEscape);
-
-					Application.current.window.close();
+					if (StoryModeState.fromTooSlow || !FlxG.save.data.storyModeDone)
+					{	
+						trace("Save Data for Final Escape is: " + FlxG.save.data.goToFinalEscape);
+						
+						Application.current.window.close();
+					}
 				case "final-escape":
 					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 3;
-					FlxG.save.data.theYourselfCutscene = true;
-					FlxG.save.flush();
+					if (StoryModeState.fromTooSlow)
+					{
 
-					FlxG.switchState(() -> new StoryModeState());
-					return true;
+						FlxG.save.data.theYourselfCutscene = true;
+						FlxG.save.flush();
+						
+						FlxG.switchState(() -> new StoryModeState());
+						return true;
+					}
 				case "yourself":
 					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 4;
+					if (StoryModeState.fromTooSlow == true) StoryModeState.fromTooSlow = false;
 					FlxG.save.data.theYourselfCutscene = null;
 					FlxG.save.data.storyModeDone = true;
 					FlxG.save.flush();

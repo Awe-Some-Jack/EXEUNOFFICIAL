@@ -76,6 +76,7 @@ class StoryModeState extends MusicBeatState
 	var scoreVisible:Bool = false;
 
 	public static var fromStoryMode:Bool = false;
+	public static var fromTooSlow:Bool = false;
 
 
 	final yt = FlxG.save.data.theYourselfCutscene;
@@ -654,6 +655,9 @@ class StoryModeState extends MusicBeatState
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());
 		StoryModeState.fromStoryMode = true;
+
+		if (songLower == "too-slow")
+			fromTooSlow = true;
 
 		#if !SHOW_LOADING_SCREEN FlxG.sound.music.stop(); #end
 	}

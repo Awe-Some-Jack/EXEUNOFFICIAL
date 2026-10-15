@@ -1,15 +1,10 @@
 {
 	"events": [
 		[
-			0,
-			[
-				["animation", "intro", ""]
-			]
-		],
-		[
 			83.3333333333333,
 			[
-				["ScreenBorders", "1", "1"]
+				["ScreenBorders", "1", "1"],
+				["animation", "intro", ""]
 			]
 		],
 		[
@@ -140,9 +135,14 @@
 			]
 		],
 		[
+			7791.66666666667,
+			[
+				["Play Animation", "intro", "dad"]
+			]
+		],
+		[
 			7833.33333333333,
 			[
-				["Play Animation", "intro", "dad"],
 				["Set Property", "dad.alpha", "1"],
 				["Tween Camera Zoom", "1.45, true", "0.5, circOut"]
 			]
@@ -160,7 +160,7 @@
 			]
 		],
 		[
-			8500,
+			8416.66666666667,
 			[
 				["Tween Camera Zoom", "1.67,true", "0.3, circIn"],
 				["Tweening Camera", "0, 60", "0.3, circIn"],
@@ -168,17 +168,17 @@
 			]
 		],
 		[
-			8916.66666666667,
+			8750,
 			[
-				["Tween Camera Zoom", "1.35,true", "0.1, circOut"],
-				["Tweening Camera", "-150, -80", "0.1, circOut"]
+				["Tween Camera Zoom", "1.15,true", "0.2, circOut"],
+				["Tweening Camera", "-150, -110", "0.2, circOut"]
 			]
 		],
 		[
-			9083.33333333333,
+			9000,
 			[
-				["Tween Camera Zoom", "1.5,true", "0.5, circInOut"],
-				["Tweening Camera", "-300, 50", "0.5, circOut"]
+				["Tween Camera Zoom", "1.5,true", "1, circInOut"],
+				["Tweening Camera", "-300, 50", "1, circInOut"]
 			]
 		],
 		[

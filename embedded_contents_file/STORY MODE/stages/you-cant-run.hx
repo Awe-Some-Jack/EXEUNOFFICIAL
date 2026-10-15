@@ -44,7 +44,7 @@ var normalBG:Array<BackGroundSprite> =
 var pixelBG:Array<BackGroundSprite> = [
 	{name:       'pixelCave', path: 'yrc/caverna',      position: [520, -250], animation: [{name: 'idle', prefix: 'caverna_gif', fps: 24, loop: true}], scale: [4, 4],                     visible: false, antialiasing: false},
 	{name:     'pixelCaveBG', path: 'yrc/fondocaberna', position: [0,   -260],                                                                          scale: [4, 4], scroll: [0.9, 0.9], visible: false, antialiasing: false},
-	{name: 'pixelFloorRight', path: 'yrc/piso2',        position: [790,  130],                                                                          scale: [4, 4], scroll: [0.9, 0.9], visible: false, antialiasing: false},
+	{name: 'pixelFloorRight', path: 'yrc/piso2',        position: [790,  330],                                                                          scale: [4, 4], scroll: [0.9, 0.9], visible: false, antialiasing: false},
 	{name:      'pixelFloor', path: 'yrc/piso',         position: [340,  430], animation: [{name: 'idle', prefix:    'piso_gif', fps: 24, loop: true}], scale: [4, 4],                     visible: false, antialiasing: false}
 ];
 
@@ -73,7 +73,7 @@ var stageEvents:Map<String, Void->Void> = [
 
 		game.boyfriend.setPosition(game.boyfriend.x - 780, game.boyfriend.y - 420);
 		game.dad.setPosition(game.dad.x - 525, game.dad.y - 450);
-		game.gf.setPosition(game.gf.x - 105, game.gf.y - 280);
+		game.gf.setPosition(game.gf.x - 105, game.gf.y - 230);
 		game.gf.scrollFactor.set(0.9, 0.9);
 
 		canGFFloat = true;
@@ -201,7 +201,7 @@ function onUpdatePost(e:Float) {
 
 	if (canGFFloat)
 	{
-		game.gf.setPosition(580 + mathCos, -90 + mathSin);
+		game.gf.setPosition(580 + mathCos, 60 + mathSin);
 		pixelBG[2].spr.setPosition(game.gf.x + 150, game.gf.y +100);
 	}
 

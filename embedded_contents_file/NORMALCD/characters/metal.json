@@ -18,7 +18,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [66, 11],
+			"offsets": [46, -3],
 			"anim": "singLEFT",
 			"fps": 24,
 			"name": "left",
@@ -26,7 +26,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [44, 57],
+			"offsets": [-18, 50],
 			"anim": "singDOWN",
 			"fps": 24,
 			"name": "down",
@@ -34,7 +34,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-2, 92],
+			"offsets": [49, 95],
 			"anim": "singUP",
 			"fps": 24,
 			"name": "up",
@@ -42,7 +42,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-30, 21],
+			"offsets": [-34, 31],
 			"anim": "singRIGHT",
 			"fps": 24,
 			"name": "right",
@@ -50,7 +50,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [41, 3],
+			"offsets": [39, -3],
 			"anim": "singLEFTmiss",
 			"fps": 24,
 			"name": "mleft",
@@ -58,7 +58,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-50, 43],
+			"offsets": [-53, 51],
 			"anim": "singDOWNmiss",
 			"fps": 24,
 			"name": "mdown",
@@ -66,7 +66,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-45, 80],
+			"offsets": [-44, 80],
 			"anim": "singUPmiss",
 			"fps": 24,
 			"name": "mup",
@@ -74,7 +74,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-56, 21],
+			"offsets": [-49, 16],
 			"anim": "singRIGHTmiss",
 			"fps": 24,
 			"name": "mright",
@@ -82,7 +82,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [399, 218],
+			"offsets": [406, 219],
 			"anim": "outro",
 			"fps": 24,
 			"name": "outro",

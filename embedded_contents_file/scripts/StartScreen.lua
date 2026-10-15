@@ -19,6 +19,7 @@ local modConfigs = {
 	['EXE'] = {
 		type = 'slide',
 		skipSongs = {},
+		dontShowSlide = true,
 		useSeenCutscene = true,
 		phase = 'post',
 		snapDelay = 0.05,
@@ -201,7 +202,7 @@ local function createCountdownIntro()
 end
 
 local function createSlideIntro()
-	if introCreated then return end
+	if introCreated or cfg.dontShowSlide then return end
 	introCreated = true
 	local song = string.lower(songName):gsub(' ', '-')
 	local circlePath = cfg.circlePath or ('StartScreens/' .. song .. '/circle')

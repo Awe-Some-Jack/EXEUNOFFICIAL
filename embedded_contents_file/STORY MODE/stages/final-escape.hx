@@ -94,6 +94,7 @@ var curBG:String = 'intro';
 var oldGT:Bool = false;
 function onCreate()
 {
+	game.canPause = false;
 	oldGT = prefs.ghostTapping;
 	//intro
 	camGame.alpha = 0;
@@ -365,6 +366,7 @@ function onUpdatePost(elapsed:Float)
 			);
 			if (eyes != null) eyes.setPosition(dad.x + 400, dad.y + 440);
 		case 'second':
+			game.canPause = true;
 			for (i in 6...9) {
 				if (bgSecond[i].sprite.visible)
 				{

@@ -190,6 +190,7 @@ class PlayState extends MusicBeatState
 	public var camZoomingMult:Float = 1;
 	public var camZoomingDecay:Float = 1;
 	private var curSong:String = "";
+	var _phase:Int = 0;
 
 	public var gfSpeed:Int = 1;
 
@@ -701,7 +702,7 @@ class PlayState extends MusicBeatState
 		}
 
 		#if !mac
-		if (Paths.formatToSongPath(SONG.song) != 'burning') FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Loading)";
+		if (Paths.formatToSongPath(SONG.song) != 'burning' && Paths.formatToSongPath(SONG.song) != 'final-escape') FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Loading)";
 		#end
 
 		GameOverSubstate.resetVariables();
@@ -712,7 +713,6 @@ class PlayState extends MusicBeatState
 		PauseSubState.miniSonicImage = Paths.formatToSongPath(SONG.song);
 		switch(Paths.formatToSongPath(SONG.song))
 		{
-			case 'final-escape': PauseSubState.miniSonicImage = 'triple-trouble-7';
 			case 'manual-blast': PauseSubState.miniSonicImage = 'hedge';
 			case 'prey': PauseSubState.miniSonicImage = 'sonic';
 			case 'fate': PauseSubState.miniSonicOffsets = [-6, 0];
@@ -1309,6 +1309,7 @@ class PlayState extends MusicBeatState
 		#if !mac
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song;
 		if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
+		if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = prevWindowTitle + '?';
 		#end
 
 		seenCutscene = true;
@@ -2041,6 +2042,7 @@ class PlayState extends MusicBeatState
 
 			#if !mac
 			FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
+			if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + "(Paused)";
 			if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 			#end
 		}
@@ -2581,7 +2583,6 @@ class PlayState extends MusicBeatState
 		}
 		if (Paths.formatToSongPath(SONG.song) == 'vanilla-milk') PauseSubState.miniSonicImage = 'vanilla-milk-' + (FlxG.random.bool(1) ? 2 : 1);
 		if (Paths.formatToSongPath(SONG.song) == 'hollow') PauseSubState.miniSonicImage = 'hollow-' + (FlxG.random.bool(10) ? 3 : _daPauseTarget);
-		if (Paths.formatToSongPath(SONG.song) == 'personel') PauseSubState.miniSonicImage = 'personel-' + FlxG.random.int(1, 3);
 		if (Paths.formatToSongPath(SONG.song) == 'longstrider' || Paths.formatToSongPath(SONG.song) == 'universal-collapse') PauseSubState.miniSonicImage = 'omw';
 
 		if(chartingMode) openSubState(new PauseSubState());
@@ -2589,6 +2590,7 @@ class PlayState extends MusicBeatState
 
 		#if !mac
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
+		if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + "(Paused)";
 		if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 		#end
 
@@ -2748,6 +2750,42 @@ class PlayState extends MusicBeatState
 				#if (!mac && DISCORD_ALLOWED)
 				FlxG.stage.window.title = appName + " | Was Playing: " + SONG.song;
 				var dausername:String = DiscordClient.username ?? 'boyfriend';
+				final message:Array<Array<String>> = [
+					[ // INTRO
+						'You\'re too slow... Don\'t be afraid, ${dausername}... We are having so much fun!',
+						'Death again? How pathetic. I guess, you can\'t stand up to a GOD after all, huh?',
+						'Third time in a row? Come on, we are just getting started, ${dausername}!',
+						'Fourth time in a row... I\'m not done with you, ${dausername}. Im waiting if you wanna die AGAIN.',
+						'Fifth death... You know... Nobody have ever died this many times in a row. Are you kind of a noob or looking for something special to happen?',
+						'Sixth death... ${dausername}... I guess you are special after all... You have to be such a dissapointing life-form.',
+						'Seventh times... Are you not getting tired of being such a loser? Come on.',
+						'Eighth, You know what, I\'m so done with you.',
+						' '
+					],
+					[ //HALF WAY
+						'You can\'t escape from me, you know? You almost make me use all of my power.',
+						'Death again? This is so much fun, ${dausername}, ain\'t it?',
+						'Third time in a row? I know you were an annoying prey but I didn\' know you were THIS dumb.',
+						'Fourth time in a row... You are really such a loser ${dausername}.',
+						'Fifth death... You know... Nobody have ever died this many times in a row. Are you kind of a noob or looking for something special to happen?',
+						'Sixth death... ${dausername}... I guess you are special after all... You have to be such a dissapointing life-form.',
+						'Seventh times... Are you not getting tired of being such a loser? Come on.',
+						'Eighth, You know what, I\'m so done with you.',
+						' '
+					],
+					[ //ENDING
+						'Awww... You were so close for your FIRST attempt, you\'re really dissapointing just to lose in the end.',
+						'Death again? HAHAHA! Remember, YOU CAN\' WIN in my world.',
+						'Third time in a row? Hah... I almost thought you were going to WIN this time! Who am I kidding? I KNOW YOU CAN\'T WIN!',
+						'Fourth time in a row... I think you should just give up, ${dausername}. This is getting boring, always in the end.',
+						'Fifth death... You know... Nobody have ever died this many times in a row. Are you kind of a noob or looking for something special to happen?',
+						'Sixth death... ${dausername}... I guess you are special after all... You have to be such a dissapointing life-form.',
+						'Seventh times... Are you not getting tired of being such a loser? Come on.',
+						'Eighth, You know what, I\'m so done with you.',
+						' '
+					]
+				];
+				if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = message[_phase][Std.int(Math.min(deathCounter.toInt() - 1, 10))];
 				if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = 'Lets try that again, shall we ${dausername}?';
 				#end
 				isDead = true;
@@ -4371,6 +4409,25 @@ class PlayState extends MusicBeatState
 				if (curBeat >= 707) PauseSubState.miniSonicImage = 'triple-trouble-5';
 				if (curBeat >= 868) PauseSubState.miniSonicImage = 'triple-trouble-6';
 				if (curBeat >= 1028) PauseSubState.miniSonicImage = 'triple-trouble-7';
+			case 'final-escape':
+				if (curBeat == 23) FlxG.stage.window.title = '???';
+				if (curBeat == 44) FlxG.stage.window.title = '...';
+				if (curBeat == 116) FlxG.stage.window.title = 'HERE';
+				if (curBeat == 117) FlxG.stage.window.title = 'HERE WE';
+				if (curBeat == 118) FlxG.stage.window.title = 'HERE WE GO!';
+				if (curBeat == 120) FlxG.stage.window.title = ' ';
+				if (curBeat == 121) FlxG.stage.window.title = "Playing: " + SONG.song;
+				if (curBeat >= 438)
+				{
+					_phase = 1;
+					PauseSubState.miniSonicImage = 'final-escape-2';
+				}
+				if (curBeat >= 548) PauseSubState.miniSonicImage = 'triple-trouble-7';
+				if (curBeat >= 654)
+				{
+					_phase = 2;
+					PauseSubState.miniSonicImage = 'final-escape-3';
+				}
 			case 'yourself':
 				if (curBeat >= 209) PauseSubState.miniSonicImage = 'yourself-2';
 				if (curBeat >= 272) PauseSubState.miniSonicImage = 'yourself-3';
@@ -4419,6 +4476,9 @@ class PlayState extends MusicBeatState
 			case 'fight-or-flight':
 				if (curBeat >= 296) PauseSubState.miniSonicImage = 'fight-or-flight-2';
 				if (curBeat >= 505) PauseSubState.miniSonicImage = 'fight-or-flight';
+			case 'personel':
+				if (curBeat >= 264) PauseSubState.miniSonicImage = 'personel-2';
+				if (curBeat >= 424) PauseSubState.miniSonicImage = 'personel';
 			case 'deception':
 				if (curBeat >= 128) PauseSubState.miniSonicImage = 'deception-2';
 			case 'malediction':

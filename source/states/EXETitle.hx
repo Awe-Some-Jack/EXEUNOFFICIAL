@@ -82,15 +82,14 @@ class EXETitle extends MusicBeatState
 		if (!initialized)
 		{
 			Main.fpsVar.visible = false;
-
 			playVideo('introexe');
-			
 			videoPlaying = true;
 		}
 		else
 		{
 			canStart = true;
 			buildTitle();
+			showTitle();
 		}
 
 		var save:FlxSave = new FlxSave();
@@ -250,7 +249,11 @@ class EXETitle extends MusicBeatState
 	function hideTitle():Void
 	{
 		#if VIDEOS_ALLOWED
-		if (screenBg != null) screenBg.active = screenBg.visible = false;
+		if (screenBg != null) 
+		{
+			screenBg.pause();
+			screenBg.active = screenBg.visible = false;
+		}
 		#end
 		if (ring != null) ring.active = ring.visible = false;
 		if (bandana != null) bandana.active = bandana.visible = false;
@@ -266,7 +269,11 @@ class EXETitle extends MusicBeatState
 	function showTitle():Void
 	{
 		#if VIDEOS_ALLOWED
-		if (screenBg != null) screenBg.active = screenBg.visible = true;
+		if (screenBg != null) 
+		{
+			screenBg.active = screenBg.visible = true;
+			screenBg.resume();
+		}
 		#end
 		if (ring != null) ring.active = ring.visible = true;
 		if (bandana != null) bandana.active = bandana.visible = true;

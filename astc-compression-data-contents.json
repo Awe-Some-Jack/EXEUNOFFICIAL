@@ -2,15 +2,12 @@
   "input": "./contents_file",
   "output": "./astc-textures/",
   "quality": "thorough",
-  "blocksize": "6x6",
+  "blocksize": "8x8",
   "colorprofile": "cl",
   "premultiplyAlpha": true,
-  "custom": [
-
-  ],
+  "custom": [],
   "excludes": [
     "contents_file/images/chaotix/",
-    "contents_file/images/exeSplashes/",
     "contents_file/images/chaotix/",
     "contents_file/CHAOTIX/images/",
     "contents_file/FATAL/images/",

@@ -8,6 +8,7 @@ import backend.Language;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.graphics.FlxGraphic;
 import flixel.addons.display.FlxBackdrop;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -344,6 +345,42 @@ class EXEFreeplay extends MusicBeatState
 				}));
 			}
 		});
+	}
+
+	static final COVER_CACHE_MAX:Int = 8;
+	var coverCache:Map<String, FlxGraphic> = [];
+	var coverCacheOrder:Array<String> = [];
+
+	function getCoverGraphic(path:String):FlxGraphic
+	{
+		var gfx = coverCache.get(path);
+		if (gfx != null && gfx.bitmap != null)
+		{
+			coverCacheOrder.remove(path);
+			coverCacheOrder.push(path);
+			return gfx;
+		}
+
+		final bmp = loadRawBitmap(path);
+		if (bmp == null) return null;
+
+		gfx = FlxGraphic.fromBitmapData(bmp);
+		gfx.persist = true;
+		coverCache.set(path, gfx);
+		coverCacheOrder.remove(path);
+		coverCacheOrder.push(path);
+
+		while (coverCacheOrder.length > COVER_CACHE_MAX)
+		{
+			final oldPath = coverCacheOrder.shift();
+			final old = coverCache.get(oldPath);
+			coverCache.remove(oldPath);
+			if (old == null) continue;
+			old.persist = false;
+			if (old.useCount <= 0) old.destroy();
+		}
+
+		return gfx;
 	}
 
 	static function loadRawBitmap(path:String):BitmapData
@@ -744,12 +781,12 @@ class EXEFreeplay extends MusicBeatState
 			? 'assets/exe/freeplayassets/covers/burning/burningidle.webp'
 			: 'assets/exe/freeplayassets/covers/' + Paths.formatToSongPath(songName) + '.webp';
 
-		var bmp = loadRawBitmap(coverPath);
-		bmp ??= loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.webp');
+		var gfx = getCoverGraphic(coverPath);
+		gfx ??= getCoverGraphic('assets/exe/freeplayassets/covers/placeholder.webp');
 
-		if (bmp != null)
+		if (gfx != null)
 		{
-			cover.loadGraphic(bmp);
+			cover.loadGraphic(gfx);
 			positionCover(cover, ss, daStatic);
 		}
 	}

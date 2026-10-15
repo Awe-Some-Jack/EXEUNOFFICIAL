@@ -76,6 +76,9 @@ class MobileUtil
 
 		var curStorageType:String = File.getContent(getStorageTypePath());
 
+		if (curStorageType == 'EXTERNAL' && AndroidVersion.SDK_INT < AndroidVersionCode.R)
+			curStorageType = 'EXTERNAL_DATA';
+
 		/* Put this there because I don't want to override original paths, also brokes the normal storage system */
 		for (line in getCustomStorageDirectories(true))
 		{

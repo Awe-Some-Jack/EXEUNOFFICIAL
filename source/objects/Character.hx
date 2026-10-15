@@ -112,7 +112,7 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 	public static function getPlayerMissHold():Float
 	{
 		if (PlayState.instance == null || PlayState.SONG == null) return -1;
-		final defaultHold:Float = Conductor.crochet / 500; // idea del bb dudu
+		final defaultHold:Float = Conductor.crochet / 350; // idea del bb dudu
 		var bestStep:Int = 0;
 		var hold:Float = defaultHold;
 

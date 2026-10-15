@@ -2785,7 +2785,7 @@ class PlayState extends MusicBeatState
 						' '
 					]
 				];
-				if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = message[_phase][Std.int(Math.min(deathCounter.toInt() - 1, 10))];
+				if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = message[_phase][Std.int(Math.min(deathCounter.toInt() - 1, 8))];
 				if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = 'Lets try that again, shall we ${dausername}?';
 				#end
 				isDead = true;

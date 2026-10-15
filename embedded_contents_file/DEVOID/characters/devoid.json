@@ -2,106 +2,106 @@
 	"animations": [
 		{
 			"offsets": [136, -1],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		},
 		{
-			"offsets": [-7, -1],
-			"indices": [],
+			"offsets": [18, 16],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
 			"offsets": [14, 145],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up"
 		},
 		{
-			"offsets": [-8, -1],
-			"indices": [],
+			"offsets": [42, -5],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		},
 		{
 			"offsets": [134, 32],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT-alt",
-			"loop": false,
+			"indices": [],
 			"name": "altleft"
 		},
 		{
-			"offsets": [96, -40],
-			"indices": [],
+			"offsets": [40, -38],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN-alt",
-			"loop": false,
+			"indices": [],
 			"name": "altdown"
 		},
 		{
 			"offsets": [22, 130],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP-alt",
-			"loop": false,
+			"indices": [],
 			"name": "altup"
 		},
 		{
 			"offsets": [-8, 20],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT-alt",
-			"loop": false,
+			"indices": [],
 			"name": "altright"
 		},
 		{
 			"offsets": [20, -80],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT-hard",
-			"loop": false,
+			"indices": [],
 			"name": "hleft"
 		},
 		{
 			"offsets": [80, -210],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN-hard",
-			"loop": false,
+			"indices": [],
 			"name": "hdown"
 		},
 		{
 			"offsets": [18, -116],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUP-hard",
-			"loop": false,
+			"indices": [],
 			"name": "hup"
 		},
 		{
 			"offsets": [-60, -130],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT-hard",
-			"loop": false,
+			"indices": [],
 			"name": "hright"
 		},
 		{
 			"offsets": [0, 0],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "idle",
-			"loop": false,
+			"indices": [],
 			"name": "idle"
 		}
 	],
@@ -113,7 +113,7 @@
 	"flip_x": false,
 	"healthbar_colors": [66, 55, 162],
 	"camera_position": [0, 0],
-	"sing_duration": 6,
+	"sing_duration": 10,
 	"scale": 0.9,
 	"_editor_isPlayer": false
 }

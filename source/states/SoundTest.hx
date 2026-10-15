@@ -415,32 +415,29 @@ class SoundTest extends MusicBeatState
 				return;
 			}
 
-			if (!save.data.songs.contains('prey')) //starved arg
-			{
-				if (pcmValue == 19 && daValue == 91) {
-					notFoundAny = false;
-					transitioning = true;
-					FlxG.sound.play(Paths.sound('confirmMenu'));
-					FlxG.sound.music?.fadeOut(0.3);
-					
-					FlxTween.tween(whiteBG, {alpha: 1}, 1, {
-						onComplete: (_) -> {
-							{
-								persistentUpdate = false;
-								persistentDraw = true;
-								openSubState(new SoundTestSubState(true, "assets/exe/soundtest/videos/starvedarg1final.mp4"));
-							}
+			if (pcmValue == 19 && daValue == 91) {
+				notFoundAny = false;
+				transitioning = true;
+				FlxG.sound.play(Paths.sound('confirmMenu'));
+				FlxG.sound.music?.fadeOut(0.3);
+				
+				FlxTween.tween(whiteBG, {alpha: 1}, 1, {
+					onComplete: (_) -> {
+						{
+							persistentUpdate = false;
+							persistentDraw = true;
+							openSubState(new SoundTestSubState(true, "assets/exe/soundtest/videos/starvedarg1final.mp4"));
 						}
-					});
-				}
-				if (pcmValue == 9 && daValue == 23) {
-					notFoundAny = false;
-					CoolUtil.browserLoad('https://youtu.be/ectquv64pZ0');
-				}
-				if (pcmValue == 11 && daValue == 21) {
-					notFoundAny = false;
-					CoolUtil.browserLoad('https://youtu.be/o1Oum6QOEnk?si=J2AnC6JyMiVLK5Sy ');
-				}
+					}
+				});
+			}
+			if (pcmValue == 9 && daValue == 23) {
+				notFoundAny = false;
+				CoolUtil.browserLoad('https://youtu.be/ectquv64pZ0');
+			}
+			if (pcmValue == 11 && daValue == 21) {
+				notFoundAny = false;
+				CoolUtil.browserLoad('https://youtu.be/o1Oum6QOEnk?si=J2AnC6JyMiVLK5Sy ');
 			}
 
 			//19-91 - Starved arg 1

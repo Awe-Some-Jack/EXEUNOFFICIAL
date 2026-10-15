@@ -2037,7 +2037,7 @@ class PlayState extends MusicBeatState
 			FlxTween.globalManager.forEach(function(twn:FlxTween) if(!twn.finished) twn.active = false);
 
 			#if VIDEOS_ALLOWED
-			if (videoCutscene != null && videoCutscene.isPlaying()) videoCutscene.pause();
+			if (videoCutscene?.isPlaying()) videoCutscene.pause();
 			#end
 
 			#if !mac
@@ -2067,7 +2067,7 @@ class PlayState extends MusicBeatState
 			FlxTween.globalManager.forEach(function(twn:FlxTween) if(!twn.finished) twn.active = true);
 
 			#if VIDEOS_ALLOWED
-			if (videoCutscene != null) videoCutscene.resume();
+			videoCutscene?.resume();
 			#end
 
 			paused = false;

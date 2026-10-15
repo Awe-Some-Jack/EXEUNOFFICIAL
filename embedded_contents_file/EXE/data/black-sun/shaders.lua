@@ -57,10 +57,6 @@ function onCreatePost()
 			game.camHUD.filters = [new ShaderFilter(game.getLuaObject('bloom').shader)];
 		]])
 	end
-
-	startVideo('Black Sun Transition', false, true, false, false)
-	if getProperty('videoCutscene') == nil then return end
-    callMethod('remove', {instanceArg('videoCutscene')})
 end
 
 local istwning = false

@@ -119,9 +119,6 @@ function onCreatePost()
 	setObjectOrder('spacebar', getObjectOrder('BlackGraphicOther') + 1)
 	setProperty('spacebar.alpha', 0)
 
-	startVideo('anim', false, true, false, false)
-	if getProperty('videoCutscene') == nil then return end
-	callMethod('remove', {instanceArg('videoCutscene')})
 	setProperty('inCutscene', false)
 end
 

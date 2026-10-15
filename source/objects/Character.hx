@@ -98,6 +98,38 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 	public var noAntialiasing:Bool = false;
 	public var originalFlipX:Bool = false;
 	public var editorIsPlayer:Null<Bool> = null;
+	public static var playerMissHoldSongs:Map<String, Array<{step:Int, hold:Float}>> = [
+		'fakebaby' => [
+			// {step: 0, hold: 0.6},   From the start of the song
+			{step: 2112, hold: 1.5}
+			// {step: 5000, hold: -1}  Revert back to normal (example)
+		],
+		//'faker' => [
+		//	{step: 0, hold: 30}
+		//],
+	];
+
+	public static function getPlayerMissHold():Float
+	{
+		if (PlayState.instance == null || PlayState.SONG == null) return -1;
+		final defaultHold:Float = Conductor.crochet / 500; // idea del bb dudu
+		var bestStep:Int = 0;
+		var hold:Float = defaultHold;
+
+		final list = playerMissHoldSongs.get(Paths.formatToSongPath(PlayState.SONG.song));
+		if (list != null)
+		{
+			for (cfg in list)
+			{
+				if (PlayState.instance.curStep >= cfg.step && cfg.step >= bestStep)
+				{
+					bestStep = cfg.step;
+					hold = cfg.hold < 0 ? defaultHold : cfg.hold;
+				}
+			}
+		}
+		return hold;
+	}
 
 	// Typed offset map — no Array<Dynamic> boxing
 	private var _offsets:Map<String, AnimOffset> = new Map();
@@ -282,6 +314,9 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 			return;
 		}
 
+		final isMissAnim:Bool = _lastPlayedAnimation?.endsWith('miss') ?? false;
+		final playerMissHold:Float = (isPlayer && isMissAnim) ? getPlayerMissHold() : -1;
+
 		if(heyTimer > 0)
 		{
 			final rate:Float = PlayState.instance?.playbackRate ?? 1.0;
@@ -302,7 +337,7 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 			specialAnim = false;
 			dance();
 		}
-		else if (_lastPlayedAnimation?.endsWith('miss') && isAnimationFinished())
+		else if (isMissAnim && isAnimationFinished() && (playerMissHold < 0 || holdTimer >= playerMissHold))
 		{
 			dance();
 			finishAnimation();
@@ -310,7 +345,9 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 
 		if (_lastPlayedAnimation?.startsWith('sing')) holdTimer += elapsed;
 
-		if (holdTimer >= Conductor.stepCrochet * (0.0011 #if FLX_PITCH / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1) #end) * singDuration)
+		final holdThreshold:Float = playerMissHold >= 0 ? playerMissHold
+			: (Conductor.stepCrochet * (0.0011 #if FLX_PITCH / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1) #end) * singDuration);
+		if (holdTimer >= holdThreshold)
 		{
 			dance();
 			holdTimer = 0;
@@ -393,6 +430,7 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 		animation.play(AnimName, Force, Reversed, Frame);
 		
 		_lastPlayedAnimation = AnimName;
+		if (isPlayer && AnimName.endsWith('miss') && getPlayerMissHold() >= 0) holdTimer = 0;
 
 		final off = _offsets.get(AnimName);
 		if (off != null)

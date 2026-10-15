@@ -117,6 +117,27 @@ class Paths
 	}
 
 	static var streamedSounds:Map<String, Sound> = [];
+	static var orphanedStreamedSounds:Array<Sound> = [];
+
+	static function isStreamedSoundInUse(snd:Sound):Bool
+	{
+		if (snd == null) return false;
+
+		final music = FlxG.sound.music;
+		if (music != null && @:privateAccess music._sound == snd) return true;
+
+		return isStreamedSoundUsedByOther(snd);
+	}
+
+	static function isStreamedSoundUsedByOther(snd:Sound):Bool
+	{
+		if (snd == null || FlxG.sound.list == null) return false;
+
+		for (s in FlxG.sound.list.members)
+			if (s != null && s != FlxG.sound.music && @:privateAccess s._sound == snd) return true;
+
+		return false;
+	}
 
 	static function closeStreamedSounds():Void
 	{
@@ -127,6 +148,13 @@ class Paths
 			try snd.close() catch (e:Dynamic) {}
 			streamedSounds.remove(key);
 		}
+
+		for (snd in orphanedStreamedSounds)
+		{
+			if (snd == playing) continue;
+			try snd.close() catch (e:Dynamic) {}
+		}
+		orphanedStreamedSounds = [];
 	}
 
 	public static function freeGraphicsFromMemory()
@@ -860,6 +888,9 @@ class Paths
 
 			if (SOUND_EXTS.contains(ext))
 			{
+				final cached:Sound = streamedSounds.get(file);
+				if (cached != null && !isStreamedSoundInUse(cached)) return cached;
+
 				var buffer:lime.media.AudioBuffer = null;
 
 				if (ext == 'ogg')
@@ -896,7 +927,11 @@ class Paths
 				{
 					final snd:Sound = Sound.fromAudioBuffer(buffer);
 					final old:Sound = streamedSounds.get(file);
-					if (old != null) try old.close() catch (e:Dynamic) {}
+					if (old != null)
+					{
+						if (isStreamedSoundUsedByOther(old)) orphanedStreamedSounds.push(old);
+						else try old.close() catch (e:Dynamic) {}
+					}
 					streamedSounds.set(file, snd);
 					return snd;
 				}

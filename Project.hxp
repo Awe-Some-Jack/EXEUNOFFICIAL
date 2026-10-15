@@ -204,7 +204,7 @@ class Project extends HXProject
         haxeflags.push("--macro allowPackage('flash')");
         haxeflags.push("--macro include('flixel.effects',true)");
         haxeflags.push("--macro include('flixel.system.scaleModes',true)");
-        haxeflags.push("--macro include('minigames.preymini.map.SongFloors')");
+        haxeflags.push("--macro include('minigames.preymini.map', false)");
 
         if (hasLib("away3d"))
             haxeflags.push("--macro include('away3d.*',true)");

@@ -40,7 +40,7 @@ var scaleMult:Float = 1;
 var velocityMult:Float = 0.5;
 var radiusMult:Float = 1;
 var LERP_VELOCITY:Float = 15;
-var INITIAL_SCALE:Float = 0.45;
+var INITIAL_SCALE:Float = 0.35;
 
 var emeraldsData:Array<EmeraldData> = [];
 
@@ -49,7 +49,7 @@ function onCreatePost()
     var guh = FlxG.random.bool(1);
     masterEmerald = new FlxSprite();
     masterEmerald.setPosition(1925, 1050);
-    masterEmerald.scale.set(0.4, 0.4);
+    masterEmerald.scale.set(0.28, 0.28);
     if(guh) 
     {
         masterEmerald.loadGraphic(Paths.image('bg/emerals/placeholder'));
@@ -79,7 +79,7 @@ function onCreatePost()
         emeraldsData.push({
             sprite: emerald,
             moving: true,
-            movingRadius: 325,
+            movingRadius: 275,
             target: masterEmerald,
             targetRef: masterEmerald,
             xOffset: guh ? -25 : 475
@@ -244,6 +244,15 @@ function onStepHit()
             else
                 muteOpponentVocals = true;
 
+        case 1040:
+            if(getVar('canTransform')) {
+                dad.playAnim('again', true);
+                dad.specialAnim = true;
+            }
+            else
+                dad.playAnim('2again', true);
+                dad.specialAnim = true;
+
         case 1216: //lyric 4 steps ahead
             if(getVar('canTransform')) {
                 dad.playAnim('grrr', true);
@@ -284,7 +293,7 @@ function onStepHit()
                 game.health = -10;
             }
         
-        case 1040, 1230, 1359: muteOpponentVocals = false;
+        case 1039, 1230, 1359: muteOpponentVocals = false;
         case 1221: if(!getVar('canTransform')) triggerEvent('Change Health Damage', '0.035');
         case 1328: if(!getVar('canTransform')) triggerEvent('Change Health Damage', '0.045');
     }

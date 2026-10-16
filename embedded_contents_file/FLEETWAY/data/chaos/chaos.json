@@ -452,7 +452,7 @@
 				[42789.4736842105, 0, 0]
 			],
 			"sectionBeats": 4,
-			"mustHitSection": true
+			"mustHitSection": false
 		},
 		{
 			"sectionNotes": [
@@ -2390,25 +2390,29 @@
 		[
 			10105.2631578947,
 			[
-				["Tween Camera Zoom", "0.85, true", "0.001, linear"]
+				["Tween Camera Zoom", "0.85, true", "0.001, linear"],
+				["Tweening Camera", "100, 30", "0.001, linear"]
 			]
 		],
 		[
 			10578.947368421,
 			[
-				["Tween Camera Zoom", "0.9, true", "0.001, linear"]
+				["Tween Camera Zoom", "0.9, true", "0.001, linear"],
+				["Tweening Camera", "200, 60", "0.001, linear"]
 			]
 		],
 		[
 			11052.6315789474,
 			[
-				["Tween Camera Zoom", "1, true", "0.001, linear"]
+				["Tween Camera Zoom", "1, true", "0.001, linear"],
+				["Tweening Camera", "300, 90", "0.001, linear"]
 			]
 		],
 		[
 			11368.4210526316,
 			[
-				["Tween Camera Zoom", "0.8", ""]
+				["Tween Camera Zoom", "0.8", ""],
+				["Tweening Camera", "0, 0", "0.5, cubeOut"]
 			]
 		],
 		[
@@ -2564,20 +2568,21 @@
 		[
 			36631.5789473684,
 			[
-				["Tween Camera Zoom", "0.95, true", "0.5, cubeOut"]
+				["Tween Camera Zoom", "0.95, true", "0.5, cubeOut"],
+				["Tweening Camera", "50, 15", "0.4, cubeOut"]
 			]
 		],
 		[
 			37894.7368421053,
 			[
 				["Tween Camera Zoom", "1.15, true", "0.5, cubeOut"],
-				["Tweening Camera", "100, 0", "0.5, cubeOut"]
+				["Tweening Camera", "100, 0", "0.4, cubeOut"]
 			]
 		],
 		[
 			39157.8947368421,
 			[
-				["Tweening Camera", "200, 0", "0.5, cubeOut"],
+				["Tweening Camera", "175, 60", "0.4, cubeOut"],
 				["Tween Camera Zoom", "1.3, true", "0.5, cubeOut"]
 			]
 		],
@@ -2612,9 +2617,16 @@
 			]
 		],
 		[
-			41684.2105263158,
+			41605.2631578947,
 			[
-				["Tween Camera Zoom", "1.2", ""]
+				["Tween Camera Zoom", "1.2, true", "0.001, linear"]
+			]
+		],
+		[
+			41605.2631578947,
+			[
+				["Tweening Camera", "-120, -90", "0.001, linear"],
+				["Set Property", "cameraSpeed", "10000"]
 			]
 		],
 		[
@@ -2625,7 +2637,14 @@
 			]
 		],
 		[
-			41763.1578947368,
+			42315.7894736842,
+			[
+				["Tweening Camera", "740, 490", "0.001, linear"],
+				["Set Property", "cameraSpeed", "100000"]
+			]
+		],
+		[
+			42394.7368421053,
 			[
 				["Set Property", "cameraSpeed", "1"]
 			]
@@ -3005,8 +3024,7 @@
 		[
 			82105.2631578947,
 			[
-				["Tween Camera Zoom", "0.9", ""],
-				["Play Animation", "again", "dad"]
+				["Tween Camera Zoom", "0.9", ""]
 			]
 		],
 		[
@@ -3623,9 +3641,9 @@
 		]
 	],
 	"song": "Chaos",
-	"stage": "fleetw",
 	"arrowSkin": "noteSkins/NOTENORMAL_assets",
 	"needsVoices": true,
+	"stage": "fleetw",
 	"format": "psych_v1_convert",
 	"speed": 2.8,
 	"bpm": 190

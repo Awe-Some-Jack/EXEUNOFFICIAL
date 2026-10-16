@@ -3,7 +3,7 @@ import flixel.FlxCameraFollowStyle;
 import shaders.ColorSwap;
 
 var chaosBG:Array<BackgroundSprite> = [
-	{path: 'bg/4', tag: '4', position: [200, 400],  scale: [1, 1], scroll: [0.7, 0.9]},
+	{path: 'bg/4', tag: '4', position: [200, 300],  scale: [1, 1], scroll: [0.7, 0.9]},
 	{path: 'bg/3', tag: '3', position: [720, 600], scale: [0.9, 0.9]},
 	{path: 'bg/rayo', tag: 'fuente', position: [1840, -180], color: 0xFFCCCCCC, scale: [0.85, 0.8], animation: [{name: 'ramaquin instancia', looped: true}, {name: 'ramaquintranqui', looped: true}]},
 	{path: 'bg/rayo', tag: 'fuente', alpha: 0.35, blend: 'add', position: [1840, -180], scale: [0.9, 0.8], animation: [{name: 'ramaquin instancia', looped: true}, {name: 'ramaquintranqui', looped: true}]},
@@ -55,14 +55,17 @@ var timeline:Array<{step:Float, callback:Void->Void}> = [
 	},
 	{
 		step: 524, callback: () -> {
-			//FlxTween.tween(camOpp, {width: camOpp.width * 1.1, height: camOpp.height * 1.175}, 0.2, {ease: FlxEase.cubeOut});
+			FlxTween.tween(camOpp, {width: camOpp.width * 1.1, height: camOpp.height * 1.175}, 0.2, {ease: FlxEase.cubeOut});
 			FlxTween.tween(black, {alpha: black.alpha + 0.25}, 0.2);
-
+		}
+	},
+	{
+		step: 529, callback: () -> {
 			camOpp.target = null;
 
-			FlxTween.tween(camOpp, {x: camGame.x, y: camGame.y, width: camGame.width, height: camGame.height}, 0.25, {ease: FlxEase.cubeInOut});
-			FlxTween.tween(camOpp, {"scroll.x": camGame.scroll.x, "scroll.y": camGame.scroll.y, zoom: camGame.zoom, "targetOffset.x": camGame.targetOffset.x, "targetOffset.y": camGame.targetOffset.y}, 0.25, {ease: FlxEase.cubeInOut});
-			FlxTimer.wait(0.25, () -> {
+			FlxTween.tween(camOpp, {x: camGame.x, y: camGame.y, width: camGame.width, height: camGame.height}, 0.2, {ease: FlxEase.cubeInOut});
+			FlxTween.tween(camOpp, {"scroll.x": camGame.scroll.x, "scroll.y": camGame.scroll.y, zoom: camGame.zoom, "targetOffset.x": camGame.targetOffset.x, "targetOffset.y": camGame.targetOffset.y}, 0.2, {ease: FlxEase.cubeInOut});
+			FlxTimer.wait(0.2, () -> {
 				camOpp.alpha = 0;
 				black.alpha = 0;
 			});

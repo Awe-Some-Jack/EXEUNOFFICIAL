@@ -1,4 +1,4 @@
-local separation = 50
+--[=[local separation = 50
 local pauseEverything = false
 local savedThings = {}
 
@@ -154,4 +154,4 @@ function onTimerCompleted(tag, loops, loopsLeft)
 		setProperty('camGame.exists', false);
 		setProperty('camGame.alive', false);
 	end
-end
+end]=]

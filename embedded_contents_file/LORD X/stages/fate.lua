@@ -23,7 +23,7 @@ local fateAssets = {
     },
     ['Misc'] = {
         {name = 'spaceBar',    path =      'fate/spacebar',  x =  380, y =   360, scaleX = 1, scaleY = 1,               animated =  true, animName = 'idle',  animPrefix =   'Símbolo 8',              fps = 24, loop = true, camera = 'camHUD', alpha = 0,                                  front = false},
-        {name = 'lordXBite',   path = 'characters/mordida',  x = 1355, y =  1200, scaleX = 0, scaleY = 0,               animated =  true, animName = 'idle',  animPrefix = 'Símbolo 403', index = '0', fps = 24, loop = true,                    alpha = 1,                                  front = false},
+        {name = 'lordXBite',   path = 'characters/mordida',  x = 1367, y =  1200, scaleX = 0, scaleY = 0,               animated =  true, animName = 'idle',  animPrefix = 'Símbolo 403', index = '0', fps = 24, loop = true,                    alpha = 1,                                  front = false},
         {name = 'bfFALL',      path = 'characters/bf void',  x =  600, y =  1900, scaleX = 3, scaleY = 3,               animated =  true, animName = 'idle',  animPrefix =  'Símbolo 71',              fps = 24, loop = true,                    alpha = 1,                                  front = false},
         {name = 'transition',  path =       'fate/overlay',  x = -550, y = -1500, scaleX = 1, scaleY = 3,               animated = false,                                                                                     camera = 'camHUD', alpha = 0, color = '000000',                front = false},
         {name = 'fog',         path =           'fate/fog',  x =    0, y =     0, scaleX = 1, scaleY = 1,               animated = false,                                                                                     camera = 'camHUD', alpha = 0,                   blend = 'add', front = false},
@@ -255,7 +255,7 @@ local fateStageEvents = {
         for _, trans in ipairs({'transition', 'transition2'}) do if luaSpriteExists(trans) then removeLuaSprite(trans, true) end end
         for _, hola in ipairs(fateAssets['BG2']) do setProperty(hola.name..'.alpha', 1) end
 
-        triggerEvent('Change Character', 'dad', 'lord x p3largo')
+        triggerEvent('Change Character', 'dad', 'lord x p3corto')
         triggerEvent('Change Character', 'bf', 'bf-perspective-right')
 
         setProperty('dad.alpha', 1)
@@ -321,7 +321,7 @@ local fateSongEvents  = {
         addCountDown(count)
     end,
     ['in his world'] = function()
-        triggerEvent('Change Character', 'dad', 'lord x p3corto')
+        triggerEvent('Change Character', 'dad', 'lord x p3largo')
 
         callMethod('dad.setPosition', {getProperty('dad.x') - 500, getProperty('dad.y') - 840})
 

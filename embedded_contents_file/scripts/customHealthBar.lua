@@ -127,6 +127,7 @@ local healthBarsBG = {
 }
 local blacklistenedSongs = {'prey', 'forestall-desire', 'deception', 'fatality', 'longstrider', 'universal-collapse', 'fight-or-flight', 'burning', 'expulsion'}
 
+setVar('canChangeTxt', true)
 local flipped = false
 local oldScoreTxt = ''
 function onCreatePost()
@@ -281,7 +282,7 @@ function onUpdatePost(e)
         end
     end
 
-    if not healthProps.healthBar.hideScore then
+    if not healthProps.healthBar.hideScore and getVar('canChangeTxt') then
         setTextString('exeScoreTxt', getPhrase('score_text', 'Score: {1} | Misses: {2}', {callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {score, false}), misses}))
         if oldScoreTxt ~= getTextString('exeScoreTxt') then scaleObject('exeScoreTxt', healthProps.healthBar.textBopAmount, healthProps.healthBar.textBopAmount, false) end
         oldScoreTxt = getTextString('exeScoreTxt')

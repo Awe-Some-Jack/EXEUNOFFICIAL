@@ -226,7 +226,7 @@ function onEvent(n,v1,v2)
 			screenCenter('render')
 			doTweenX('renderX', 'render.scale', 1.15, crochet / (1000 / 5), 'expoOut')
 			doTweenY('renderY', 'render.scale', 1.15, crochet / (1000 / 5), 'expoOut')
-			doTweenAlpha('renderA', 'render', 0, crochet / (1000 / 4), 'expoOut')
+			doTweenAlpha('renderA', 'render', 0, crochet / (1000 / 4), 'cubeOut')
 			flashNum = flashNum + 1
 		end
 		if v1 == 'redfadein' then

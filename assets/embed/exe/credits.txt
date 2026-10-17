@@ -430,7 +430,7 @@ Snorby
 MaysLastPlay
 Alex_Hamud
 
-Turkish Translation
+=Turkish Translation
 Jacob
 
 =Ukrainian Translation

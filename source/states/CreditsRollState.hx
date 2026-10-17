@@ -428,10 +428,13 @@ class CreditsRollState extends MusicBeatState
 			case 76: addImage('assets/exe/creditsroll/tt.webp');
 			case 84: playVideo('contents/STORY MODE/videos/fake intro.mp4');
 			case 92: addImage('contents/STORY MODE/images/final/finale.webp');
-			case 110: playVideo('contents/STORY MODE/videos/EYE_TO_EYE intro.mp4');
-			case 121: addImage('assets/exe/creditsroll/y.webp');
-			case 130: addImage('assets/exe/creditsroll/lookalike.webp');
-			case 137: addImage('assets/exe/creditsroll/exe.webp');
+			case 100: playVideo('contents/STORY MODE/videos/EYE_TO_EYE intro.mp4');
+			case 108: addImage('assets/exe/creditsroll/y.webp');
+			case 116: addImage('assets/exe/creditsroll/finals.webp');
+			case 126: addImage('assets/exe/creditsroll/redglove.webp');
+			case 133: addImage('assets/exe/creditsroll/lookalike.webp');
+			case 140: addImage('assets/exe/creditsroll/exe.webp');
+			case 147: addImage('assets/exe/creditsroll/lordx.webp');
 			case 157: addImage('assets/exe/creditsroll/xeno.webp');
 			case 170: addImage('assets/exe/creditsroll/byebye.webp');
 			case 183: addImage('assets/exe/creditsroll/scorched.webp');

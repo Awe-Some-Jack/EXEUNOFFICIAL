@@ -73,6 +73,15 @@ class Camera
 	var _shotEase:EaseFunction = FlxEase.smootherStepInOut;
 	var _shotBounded:Bool = false;
 
+	var _blendTime:Float = 0;
+	var _blendLength:Float = 0;
+	var _blendX:Float = 0;
+	var _blendY:Float = 0;
+	var _blendZoom:Float = 1;
+	var _followX:Float = 0;
+	var _followY:Float = 0;
+	var _followZoom:Float = 1;
+
 	public function new(cam:FlxCamera, target:CameraTarget, baseZoom:Float)
 	{
 		_cam = cam;
@@ -130,22 +139,46 @@ class Camera
 		_shotLength = time;
 		_shotEase = ease ?? FlxEase.smootherStepInOut;
 		_shotBounded = bounded;
+		_blendLength = 0;
 		mode = Shot;
 		if (time <= 0) _shot(0);
 	}
 
-	public function followTarget():Void
+	public function followTarget(blend:Float = 0):Void
 	{
 		if (mode == Follow) return;
+		final shownX = _shotBounded ? _clampX(x, zoom) : x;
 		mode = Follow;
 		_floorY = _target.cameraY() + offsetY;
 		_ahead = _look = _frameOffset = _lookTimer = 0;
 		_lookDir = 0;
+		_blendLength = blend;
+		_blendTime = 0;
+		if (blend <= 0) return;
+		_blendX = _followX = shownX;
+		_blendY = _followY = y;
+		_blendZoom = _followZoom = zoom;
+		_cutFrames = 1;
 	}
 
 	public function update(elapsed:Float):Void
 	{
-		if (mode == Follow) _follow(elapsed);
+		if (mode == Follow && _blendTime < _blendLength)
+		{
+			x = _followX;
+			y = _followY;
+			zoom = _followZoom;
+			_follow(elapsed);
+			_followX = x;
+			_followY = y;
+			_followZoom = zoom;
+			_blendTime += elapsed;
+			final t = FlxEase.sineInOut(Math.min(1, _blendTime / _blendLength));
+			x = _blendX + (x - _blendX) * t;
+			y = _blendY + (y - _blendY) * t;
+			zoom = _blendZoom + (zoom - _blendZoom) * t;
+		}
+		else if (mode == Follow) _follow(elapsed);
 		else _shot(elapsed);
 
 		_zoomAsked = false;

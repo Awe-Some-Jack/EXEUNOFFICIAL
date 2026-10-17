@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="gary.png">
+<SubTexture name="gary aura0000" x="0" y="0" width="46" height="57" frameX="-6" frameY="-7" frameWidth="64" frameHeight="64" />
+<SubTexture name="gary aura0001" x="46" y="0" width="44" height="57" frameX="-8" frameY="-7" frameWidth="64" frameHeight="64" />
+<SubTexture name="gary aura0002" x="90" y="0" width="46" height="57" frameX="-6" frameY="-7" frameWidth="64" frameHeight="64" />
+</TextureAtlas>

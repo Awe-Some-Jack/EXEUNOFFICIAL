@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sparkle.png">
+<SubTexture name="sparkle win0000" x="0" y="0" width="19" height="18" frameX="-22" frameY="-7" frameWidth="60" frameHeight="73" />
+<SubTexture name="sparkle win0001" x="20" y="0" width="17" height="17" frameX="-23" frameY="-11" frameWidth="60" frameHeight="73" />
+<SubTexture name="sparkle win0002" x="38" y="0" width="15" height="14" frameX="-24" frameY="-12" frameWidth="60" frameHeight="73" />
+<SubTexture name="sparkle win0003" x="54" y="0" width="20" height="21" frameX="-21" frameY="-7" frameWidth="60" frameHeight="73" />
+</TextureAtlas>

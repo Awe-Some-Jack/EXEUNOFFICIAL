@@ -1,0 +1,11 @@
+{
+  "x": 2375,
+  "y": -355,
+  "layers": [
+    { "inFront": true, "x": 0, "y": 0, "file": "black", "blackFade": true },
+    { "inFront": true, "x": 2, "y": 0, "file": "walls" }
+  ],
+  "width": 310,
+  "height": 811,
+  "part": 5
+}

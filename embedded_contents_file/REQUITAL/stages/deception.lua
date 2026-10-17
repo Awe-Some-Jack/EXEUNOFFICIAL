@@ -120,6 +120,25 @@ function onCreatePost()
 	setProperty('spacebar.alpha', 0)
 
 	setProperty('inCutscene', false)
+
+	runHaxeCode([[
+		import shaders.AdjustColorShader;
+		var playersColor = new AdjustColorShader();
+        playersColor.brightness = -18;
+        playersColor.contrast = 18;
+        playersColor.hue = -34;
+        playersColor.saturation = -23;    
+		
+		var reqColor = new AdjustColorShader();
+        reqColor.brightness = -19;
+        reqColor.contrast = -2;
+        reqColor.hue = -16;
+        reqColor.saturation = -41;    
+		
+        game.boyfriend.shader = playersColor; 
+        game.gf.shader = playersColor; 
+		game.dad.shader = reqColor;
+	]])
 end
 
 function onSongStart()

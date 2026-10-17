@@ -620,6 +620,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	override public function destroy():Void
 	{
 		_removePauseWatcher();
+		if (!options.OptionsState.onPlayState) options.OptionsState.standaloneReturnState = null;
 		FlxSprite.defaultAntialiasing = _prevAntialiasing;
 		FlxG.stage.window.title = _prevWindowTitle;
 		_setFps(_prevUpdateFps, _prevDrawFps);

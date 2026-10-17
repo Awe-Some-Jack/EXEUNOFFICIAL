@@ -469,8 +469,14 @@ class BIOS extends SonicSubState
 		icon.updateHitbox();
 		icon.setPosition(iconOff[0], iconOff[1]);
 		if (icon != null && circleIcon != null){
-			icon.x = circleIcon.x + ((circleIcon.width - icon.width)/2);
-			icon.y = circleIcon.y + ((circleIcon.height - icon.height)/2);
+			var circleCenterX:Float = circleIcon.x + (circleIcon.width / 2);
+			var circleCenterY:Float = circleIcon.y + (circleIcon.height / 2);
+			var iconWidth:Float = icon.frameWidth * icon.scale.x;
+			var iconHeight:Float = icon.frameHeight * icon.scale.y;
+			icon.x = circleCenterX - (iconWidth / 2) + (icon.offset.x * icon.scale.x);
+			icon.y = circleCenterY - (iconHeight / 2) + (icon.offset.y * icon.scale.y);
+			icon.x -= iconWidth/2;
+			icon.y -= iconHeight/2;
 		}
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Bios Menu", 'Checking $dispName');

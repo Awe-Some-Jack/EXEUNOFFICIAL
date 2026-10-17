@@ -336,7 +336,7 @@ function onEvent(n, v1, v2)
 			case 'l11':
 				game.getLuaObject('exeScoreTxt').text = 'FAS';
 				FlxG.stage.window.title = 'FAS';
-				lyrics.x += 100;
+				lyrics.x += 80;
 			case 'l12':
 				game.getLuaObject('exeScoreTxt').text = 'FASTER!';
 				FlxG.stage.window.title = 'FASTER!';

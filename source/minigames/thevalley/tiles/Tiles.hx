@@ -417,44 +417,113 @@ class SonicBridge
 	public var totalWidth(get, never):Float;
 
 	final _planks:Array<FlxSprite> = [];
-	final _bodies:Array<Body> = [];
 	final _supports:Array<Body> = [];
 	final _supportRects:Array<{ x:Float, y:Float, w:Float, h:Float }> = [];
 	final _plankW:Float;
 	final _plankH:Float;
 	final _supportW:Float;
+	final _line:Body;
+	final _leftSeg:Polygon;
+	final _rightSeg:Polygon;
 	var _sag:Float = 0.0;
-	var _center:Int = 7;
+	var _sagVel:Float = 0.0;
+	var _dip:Float = 0.5;
+	var _wasOn:Bool = false;
+	var _lastFall:Float = 0.0;
 
 	inline function get_totalWidth() return _supportW * 2 + PLANKS * _plankW;
+	inline function _left():Float return x + _supportW;
+	inline function _right():Float return x + _supportW + PLANKS * _plankW;
+	inline function _top():Float return y + 7.0;
+	inline function _dipX():Float return _left() + (_right() - _left()) * _dip;
+
+	function _depth():Float
+	{
+		final d = _dipX();
+		final cap = 0.3 * Math.min(d - _left(), _right() - d);
+		return Math.max(-cap, Math.min(cap, _sag * MAX_SAG));
+	}
 
 	public function new(wx:Float, wy:Float, state:FlxState)
 	{
 		x = wx;
 		y = wy;
 
-		final supportMask = HitboxMask.get("minigame/thevalley/bg/tiles/" + "bridge/estribohitbox");
 		final plankMask = HitboxMask.get("minigame/thevalley/bg/tiles/" + "bridge/bridgehitbox");
-		_supportW = supportMask.width;
+		_supportW = Paths.image("minigame/thevalley/bg/tiles/" + "bridge/estribo").width;
 		_plankW = plankMask.width;
 		_plankH = plankMask.height;
 
-		_addSupport(wx, wy, state, false, supportMask);
+		_addSupport(wx, wy, state, false);
 		for (i in 0...PLANKS)
 		{
-			final px = wx + _supportW + i * _plankW;
-			final spr = new FlxSprite(px, wy + 7.0);
+			final spr = new FlxSprite(wx + _supportW + i * _plankW, wy + 7.0);
 			spr.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/" + "bridge/bridge"));
 			spr.scrollFactor.set(1, 1);
 			spr.moves = false;
 			state.add(spr);
 			_planks.push(spr);
-			_bodies.push(TileKit.body(BodyType.KINEMATIC, px + _plankW * 0.5, spr.y + PLANK_THICKNESS * 0.5, _plankW, PLANK_THICKNESS, true));
 		}
-		_addSupport(wx + _supportW + PLANKS * _plankW, wy, state, true, supportMask);
+		_addSupport(wx + _supportW + PLANKS * _plankW, wy, state, true);
+
+		_line = new Body(BodyType.KINEMATIC, Vec2.weak(0, 0));
+		_leftSeg = new Polygon(Polygon.box(1, 1));
+		_rightSeg = new Polygon(Polygon.box(1, 1));
+		_line.shapes.add(_leftSeg);
+		_line.shapes.add(_rightSeg);
+		_line.allowRotation = false;
+		_line.setShapeMaterials(new Material(0.0, 0.0, 0.0, 1.0, 0.0));
+		_line.cbTypes.add(TVNapeWorld.CB_PLATFORM);
+		_line.space = FlxNapeSpace.space;
+		_applyLine(0.0);
 	}
 
-	function _addSupport(sx:Float, sy:Float, state:FlxState, flip:Bool, mask:HitboxMask):Void
+	public function lineY(px:Float):Float
+	{
+		final l = _left();
+		final r = _right();
+		final d = _dipX();
+		final depth = _depth();
+		if (px <= d) return _top() + depth * Math.max(0.0, px - l) / Math.max(1.0, d - l);
+		return _top() + depth * Math.max(0.0, r - px) / Math.max(1.0, r - d);
+	}
+
+	function _applyLine(elapsed:Float):Void
+	{
+		final top = _top();
+		final d = _dipX();
+		final depth = _depth();
+		_setSegment(_leftSeg, _left(), top - depth, d, top);
+		_setSegment(_rightSeg, d, top, _right(), top - depth);
+
+		if (atRest() || elapsed <= 0)
+		{
+			_line.position.setxy(0, depth);
+			_line.velocity.setxy(0, 0);
+		}
+		else
+			_line.velocity.setxy(0, (depth - _line.position.y) / elapsed);
+
+		for (p in _planks)
+		{
+			final yl = lineY(p.x);
+			final yr = lineY(p.x + _plankW);
+			p.y = (yl + yr) * 0.5;
+			p.angle = Math.atan2(yr - yl, _plankW) * 180.0 / Math.PI;
+		}
+	}
+
+	function _setSegment(seg:Polygon, x0:Float, y0:Float, x1:Float, y1:Float):Void
+	{
+		if (x1 - x0 < 1.0) x1 = x0 + 1.0;
+		final verts = seg.localVerts;
+		verts.at(0).setxy(x0, y0);
+		verts.at(1).setxy(x1, y1);
+		verts.at(2).setxy(x1, y1 + PLANK_THICKNESS);
+		verts.at(3).setxy(x0, y0 + PLANK_THICKNESS);
+	}
+
+	function _addSupport(sx:Float, sy:Float, state:FlxState, flip:Bool):Void
 	{
 		final spr = new FlxSprite(sx, sy);
 		spr.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/" + "bridge/estribo"));
@@ -463,46 +532,62 @@ class SonicBridge
 		spr.moves = false;
 		state.add(spr);
 
-		final r = mask.bounds(Support);
-		final rx = sx + (flip ? mask.width - r.x - r.w : r.x);
-		_supportRects.push({ x: rx, y: sy + r.y, w: r.w, h: r.h });
-		_supports.push(TileKit.body(BodyType.STATIC, rx + r.w * 0.5, sy + r.y + r.h * 0.5, r.w, r.h, true));
+		final rx = flip ? sx : sx + _supportW - _plankW;
+		final ry = _top();
+		_supportRects.push({ x: rx, y: ry, w: _plankW, h: _plankH });
+		_supports.push(TileKit.body(BodyType.STATIC, rx + _plankW * 0.5, ry + _plankH * 0.5, _plankW, _plankH, true));
 	}
 
-	public inline function atRest():Bool return _sag <= 0;
+	public inline function atRest():Bool return _sag == 0 && _sagVel == 0;
 
 	public function update(elapsed:Float, player:Player):Void
 	{
-		var on = -1;
-		for (i in 0...PLANKS)
-			if (TileKit.standing(player, _planks[i].x, _plankW, _planks[i].y))
-			{
-				on = i;
-				break;
-			}
+		final l = _left();
+		final r = _right();
+		final px = player.x + player.width * 0.5;
+		final on = px > l && px < r && TileKit.standing(player, l, r - l, lineY(px));
 
-		if (on >= 0) _center = on;
-		_sag = on >= 0 ? Math.min(1.0, _sag + 6.0 * elapsed) : Math.max(0.0, _sag - 4.0 * elapsed);
-
-		for (i in 0...PLANKS)
+		if (on)
 		{
-			final arch = Math.sin((i + 0.5) / PLANKS * Math.PI);
-			final weight = Math.max(0.0, 1.0 - Math.abs(i - _center) / PLANKS * 2.5);
-			final py = y + 7.0 + arch * weight * _sag * MAX_SAG;
-			_planks[i].y = py;
-			TileKit.moveKinematic(_bodies[i], _planks[i].x + _plankW * 0.5, py + PLANK_THICKNESS * 0.5, elapsed);
+			_dip = Math.max(0.02, Math.min(0.98, (px - l) / (r - l)));
+			if (!_wasOn) _sagVel += Math.min(_lastFall, 900.0) / 120.0 * 4.0 * _dip * (1.0 - _dip);
 		}
+		else if (_wasOn && player.body != null && player.body.velocity.y < -150)
+			_sagVel += 2.0 * 4.0 * _dip * (1.0 - _dip);
+		_wasOn = on;
+		_lastFall = player.body != null ? Math.max(0.0, player.body.velocity.y) : 0.0;
+
+		final target = on ? 4.0 * _dip * (1.0 - _dip) : 0.0;
+		var left = elapsed;
+		while (left > 0)
+		{
+			final dt = Math.min(left, 1.0 / 60.0);
+			_sagVel += ((target - _sag) * 160.0 - _sagVel * 12.0) * dt;
+			_sag = Math.max(-0.35, _sag + _sagVel * dt);
+			left -= dt;
+		}
+		if (!on && Math.abs(_sag) < 0.002 && Math.abs(_sagVel) < 0.01)
+		{
+			_sag = 0;
+			_sagVel = 0;
+		}
+
+		_applyLine(elapsed);
 	}
 
 	public function drawDebug(debug:HitboxDebug):Void
 	{
-		for (p in _planks) debug.box(p.x, p.y, _plankW, PLANK_THICKNESS, 0xFF40FF40);
+		for (p in _planks)
+		{
+			final cx = p.x + _plankW * 0.5;
+			debug.box(p.x, lineY(cx), _plankW, PLANK_THICKNESS, 0xFF40FF40);
+		}
 		for (r in _supportRects) debug.box(r.x, r.y, r.w, r.h, 0xFF40A0FF);
 	}
 
 	public function destroy():Void
 	{
-		for (b in _bodies.concat(_supports)) TileKit.removeBody(b);
+		for (b in _supports.concat([_line])) TileKit.removeBody(b);
 		for (s in _planks) s.destroy();
 	}
 }

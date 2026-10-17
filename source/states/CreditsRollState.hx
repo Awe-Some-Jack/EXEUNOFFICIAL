@@ -107,6 +107,7 @@ class CreditsRollState extends MusicBeatState
 
 		final colW:Int = Std.int(FlxG.width * 0.6);
 		final lines = credits.split('\n');
+		final playerName = _playerName();
 		var letterTop:Float = -1;
 		var letterBottom:Float = -1;
 		var letterChars:Int = 0;
@@ -132,11 +133,7 @@ class CreditsRollState extends MusicBeatState
 				kind = 1;
 			}
 
-			#if DISCORD_ALLOWED
-			text = StringTools.replace(text, "{user}", DiscordClient.username ?? 'boyfriend');
-			#else
-			text = StringTools.replace(text, "{user}", 'boyfriend');
-			#end
+			text = StringTools.replace(text, "{user}", playerName);
 
 			var wide = kind >= 2;
 			var letter = kind == 3;
@@ -370,6 +367,18 @@ class CreditsRollState extends MusicBeatState
 	{
 		final k = 1 - 0.8 * _reading;
 		return FlxMath.bound(Math.min((cy - FlxG.height * 0.03 * k) / (FlxG.height * 0.17 * k), (FlxG.height * (1 - 0.01 * k) - cy) / (FlxG.height * 0.12 * k)), 0, 1);
+	}
+
+	function _playerName():String
+	{
+		#if DISCORD_ALLOWED
+		if (DiscordClient.username != null && DiscordClient.username.trim() != '') return DiscordClient.username;
+		#end
+		#if sys
+		final sysName = Sys.getEnv(#if windows "USERNAME" #else "USER" #end);
+		if (sysName != null && sysName.trim() != '') return sysName;
+		#end
+		return 'boyfriend';
 	}
 
 	inline function _isLetter(s:String):Bool

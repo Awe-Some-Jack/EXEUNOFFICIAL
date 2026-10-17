@@ -1083,7 +1083,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	{
 		Mods.currentModDirectory = "EXE";
 		WeekData.reloadWeekFiles(false);
-		PlayState.storyWeek = 1;
+		PlayState.storyWeek = Std.int(Math.max(0, WeekData.weeksList.indexOf('exe')));
 		Difficulty.loadFromWeek();
 
 		final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');

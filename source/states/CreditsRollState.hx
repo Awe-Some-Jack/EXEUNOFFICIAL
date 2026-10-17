@@ -414,28 +414,54 @@ class CreditsRollState extends MusicBeatState
 	override function beatHit():Void
 	{
 		super.beatHit();
-		trace(curBeat);
 		if (curBeat % 4 == 0) _pulse = 1;
 		switch(curBeat)
 		{
 			case 4: playVideo('assets/videos/introcutscene.mp4');
-			case 20: playVideo('assets/videos/postIntro.mp4');
-			case 36: playVideo('contents/STORY MODE/videos/tooslow.mp4');
-			case 44: addImage('assets/exe/creditsroll/ts.webp');
-			case 52: playVideo('contents/STORY MODE/videos/YRC.mp4');
-			case 60: addImage('assets/exe/creditsroll/ycr.webp');
-			case 68: playVideo('contents/STORY MODE/videos/tripletrouble.mp4');
-			case 76: addImage('assets/exe/creditsroll/tt.webp');
-			case 84: playVideo('contents/STORY MODE/videos/fake intro.mp4');
-			case 92: addImage('contents/STORY MODE/images/final/finale.webp');
-			case 110: playVideo('contents/STORY MODE/videos/EYE_TO_EYE intro.mp4');
-			case 121: addImage('assets/exe/creditsroll/y.webp');
-			case 130: addImage('assets/exe/creditsroll/lookalike.webp');
-			case 137: addImage('assets/exe/creditsroll/exe.webp');
-			case 157: addImage('assets/exe/creditsroll/xeno.webp');
-			case 170: addImage('assets/exe/creditsroll/byebye.webp');
-			case 183: addImage('assets/exe/creditsroll/scorched.webp');
-			case 196: addImage('assets/exe/creditsroll/omw.webp');
+			case 12: playVideo('assets/videos/postIntro.mp4');
+			case 20: playVideo('contents/STORY MODE/videos/tooslow.mp4');
+            case 28: playVideo('contents/STORY MODE/videos/YRC.mp4');
+            case 36: playVideo('contents/STORY MODE/videos/tripletrouble.mp4');
+            case 44: playVideo('contents/STORY MODE/videos/fake intro.mp4');
+            case 52: playVideo('contents/STORY MODE/videos/EYE_TO_EYE intro.mp4');
+            case 60: addImage('assets/exe/creditsroll/ts.webp');
+            case 64: addImage('assets/exe/creditsroll/ycr.webp');
+            case 68: addImage('assets/exe/creditsroll/tt.webp');
+            case 72: addImage('contents/STORY MODE/images/final/finale.webp');
+            case 76: addImage('assets/exe/creditsroll/y.webp');
+            case 80: addImage('assets/exe/creditsroll/1.webp');
+            case 84: addImage('assets/exe/creditsroll/2.webp');
+            case 88: addImage('assets/exe/creditsroll/16.webp');
+            case 92: addImage('assets/exe/creditsroll/3.webp');
+            case 96: addImage('assets/exe/creditsroll/4.webp');
+            case 100: addImage('assets/exe/creditsroll/5.webp');
+            case 104: addImage('assets/exe/creditsroll/18.webp');
+            case 108: addImage('assets/exe/creditsroll/6.webp');
+            case 112: addImage('assets/exe/creditsroll/19.webp');
+            case 116: addImage('assets/exe/creditsroll/7.webp');
+            case 120: addImage('assets/exe/creditsroll/8.webp');
+            case 124: addImage('assets/exe/creditsroll/20.webp');
+            case 128: addImage('assets/exe/creditsroll/21.webp');
+            case 132: addImage('assets/exe/creditsroll/9.webp');
+            case 136: addImage('assets/exe/creditsroll/10.webp');
+            case 140: addImage('assets/exe/creditsroll/22.webp');
+            case 144: addImage('assets/exe/creditsroll/32.webp');
+            case 148: addImage('assets/exe/creditsroll/11.webp');
+            case 152: addImage('assets/exe/creditsroll/12.webp');
+            case 156: addImage('assets/exe/creditsroll/13.webp');
+            case 160: addImage('assets/exe/creditsroll/23.webp');
+            case 164: addImage('assets/exe/creditsroll/14.webp');
+            case 168: addImage('contents/REQUITAL/images/finale.webp');
+            case 172: addImage('assets/exe/creditsroll/24.webp');
+            case 176: addImage('assets/exe/creditsroll/25.webp');
+            case 180: addImage('assets/exe/creditsroll/26.webp');
+            case 184: addImage('assets/exe/creditsroll/27.webp');
+            case 188: addImage('assets/exe/creditsroll/17.webp');
+            case 192: addImage('assets/exe/creditsroll/28.webp');
+            case 196: addImage('assets/exe/creditsroll/15.webp');
+            case 200: addImage('assets/exe/creditsroll/29.webp');
+            case 204: addImage('assets/exe/creditsroll/31.webp');
+            case 208: addImage('assets/exe/creditsroll/30.webp');
 		}
 	}
 

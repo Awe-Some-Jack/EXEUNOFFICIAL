@@ -9,7 +9,7 @@ var chaosBG:Array<BackgroundSprite> = [
 	{path: 'bg/rayo', tag: 'fuente', alpha: 0.35, blend: 'add', position: [1840, -180], scale: [0.9, 0.8], animation: [{name: 'ramaquin instancia', looped: true}, {name: 'ramaquintranqui', looped: true}]},
 	{path: 'bg/2', tag: '2', position: [720, 600], scale: [0.9, 0.9], layer: 'top'},
 	{path: 'bg/sonic', tag: 'sonic', position: [2255, 1640], scale: [0.545, 0.545], layer: 'top', isAtlas: true, animation: [{name: 'intro'}, {name: 'fuentes', indices: [92, 92]}]},
-	{path: 'bg/1', tag: 'pillars', position: [1300, 950], scale: [0.9, 0.9], scroll: [1.3, 1.3], layer: 'top'},
+	{path: 'bg/1', tag: 'pillars', position: [1300, 550], scale: [0.9, 0.9], scroll: [1.3, 1.1], layer: 'top'},
 	{path: 'bg/puelco', tag: 'cochinito', position: [4000, 2150], scale: [1.2, 1.2], scroll: [1.3, 1.3], front: true, animation: [{name: 'Porker Lewis'}]}
 ];
 
@@ -71,6 +71,22 @@ var timeline:Array<{step:Float, callback:Void->Void}> = [
 			});
 
 			for(strum in opponentStrums.members) FlxTween.tween(strum, {alpha: 1}, 0.5);
+		}
+	},
+	{
+		step: 1600, callback: () -> {
+			camOpp.width = FlxG.width / 2 - 80; camOpp.height = 200;
+			camOpp.x = -camOpp.width; camOpp.y = 40;
+			camOpp.target = dad;
+			camOpp.targetOffset.set(camOppOffset[0], camOppOffset[1]);
+			camOpp.followLerp = 0.07;
+			camOpp.zoom = 0.7;
+			camOpp.alpha = 0;
+
+			for(strum in opponentStrums.members) FlxTween.tween(strum, {alpha: 0.1}, 0.2);
+			for(strum in opponentStrums.members) FlxTween.tween(strum, {alpha: 1}, 0.5, {startDelay: 1});
+			FlxTween.tween(camOpp, {x: 40, alpha: 1}, 0.25, {ease: FlxEase.cubeInOut});
+			FlxTween.tween(camOpp, {x: -camOpp.width, alpha: 0}, 0.5, {ease: FlxEase.cubeInOut, startDelay: 0.75});
 		}
 	},
 ];

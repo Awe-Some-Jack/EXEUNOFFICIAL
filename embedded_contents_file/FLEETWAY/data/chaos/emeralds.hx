@@ -195,7 +195,7 @@ function onNoteLeave(note:Note, strum:StrumNote, killTime:Float) { // unofficial
 
 function onCountdownStarted()
 {
-    FlxTween.num(4, 0.55, 4, null, v -> velocityMult = v);
+    FlxTween.num(4, 0.55, 1.5, null, v -> velocityMult = v);
 }
 
 /**
@@ -218,9 +218,18 @@ function onSpawnNote(note:Note)
     if(!getVar('canTransform')) note.animSuffix = '';
 }
 
+function noteMissPress(direction)
+{
+    if(curBeat > 252 && getVar('canTransform')) 
+        boyfriend.playAnim(game.singAnimations[direction] + 'miss-alt', true);
+} 
+
 function onStepHit()
 {
     switch(curStep) {
+        case 26:
+            FlxTween.num(velocityMult, 2.5, 0.5, null, v -> velocityMult = v);
+            FlxTween.num(2.5, 0.55, 1, {startDelay: 2.5}, v -> velocityMult = v);
         case 954:
             if(getVar('canTransform'))
             {

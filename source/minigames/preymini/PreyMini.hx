@@ -448,6 +448,7 @@ class PreyMini extends MusicBeatState
 	{
 		_exitTimer?.cancel();
 		PauseSubState.standaloneExit = null;
+		if (!OptionsState.onPlayState) OptionsState.standaloneReturnState = null;
 		FlxG.stage.window.title = _prevWindowTitle;
 		_setFps(_prevUpdateFps, _prevDrawFps);
 		super.destroy();

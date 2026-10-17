@@ -280,6 +280,13 @@ class HUD
 		_shardNotifyTimer = SHARD_NOTIFY_DUR;
 	}
 
+	public function showShardsNow():Void
+	{
+		_shardNotifyTimer = SHARD_NOTIFY_DUR;
+		_shardAlpha = 1;
+		_refreshDisplays(0);
+	}
+
 	public function addPoints(amount:Int, label:String):Void
 	{
 		final before = score;

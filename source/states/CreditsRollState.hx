@@ -302,7 +302,7 @@ class CreditsRollState extends MusicBeatState
 		while (i-- > 0)
 		{
 			final c = _cards[i];
-			var mv = amount;
+			var mv = amount * 0.75;
 			if (c.pin && c.ready)
 			{
 				final dist = Math.max(0, c.top - (FlxG.height - c.h) / 2);
@@ -428,16 +428,17 @@ class CreditsRollState extends MusicBeatState
 			case 76: addImage('assets/exe/creditsroll/tt.webp');
 			case 84: playVideo('contents/STORY MODE/videos/fake intro.mp4');
 			case 92: addImage('contents/STORY MODE/images/final/finale.webp');
-			case 110: playVideo('contents/STORY MODE/videos/EYE_TO_EYE intro.mp4');
-			case 121: addImage('assets/exe/creditsroll/y.webp');
-			case 130: trace('XD');
-			case 137: trace('XD');
-			case 144: addImage('assets/exe/creditsroll/xeno.webp');
-			case 157: addImage('assets/exe/creditsroll/byebye.webp');
-			case 170: addImage('assets/exe/creditsroll/scorched.webp');
-			case 183: addImage('assets/exe/creditsroll/omw.webp');
-			case 211: trace('XD');
-			case 232: trace('XD');
+			case 100: playVideo('contents/STORY MODE/videos/EYE_TO_EYE intro.mp4');
+			case 108: addImage('assets/exe/creditsroll/y.webp');
+			case 116: addImage('assets/exe/creditsroll/finals.webp');
+			case 126: addImage('assets/exe/creditsroll/redglove.webp');
+			case 133: addImage('assets/exe/creditsroll/lookalike.webp');
+			case 140: addImage('assets/exe/creditsroll/exe.webp');
+			case 147: addImage('assets/exe/creditsroll/lordx.webp');
+			case 157: addImage('assets/exe/creditsroll/xeno.webp');
+			case 170: addImage('assets/exe/creditsroll/byebye.webp');
+			case 183: addImage('assets/exe/creditsroll/scorched.webp');
+			case 196: addImage('assets/exe/creditsroll/omw.webp');
 		}
 	}
 

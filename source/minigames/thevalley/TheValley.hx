@@ -336,6 +336,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 			options.OptionsState.standaloneReturnState = () -> new minigames.thevalley.TheValley();
 			states.substates.PauseSubState.cameraWidth = FlxG.width;
 			_setTitle(true);
+			hud.showShardsNow();
 			openSubState(new states.substates.PauseSubState());
 
 			var canCheckRestart = true;
@@ -358,7 +359,8 @@ class TheValley extends MusicBeatState implements ExeWorld
 		_updatePlayerOcclusion(elapsed);
 
 		hud.setVisible(!player.cinematic && !player.isHiding && !player.isHidden && !cutscene.skullCSPlaying);
-		hud.forceShardsVisible = cutscene.skullCSPlaying;
+		hud.forceShardsVisible = cutscene.skullCSPlaying || (_gameplayStarted && FlxG.keys.pressed.TAB);
+		if (_gameplayStarted && FlxG.keys.justPressed.TAB) hud.flashShards();
 
 		var nearestActiveMonster:Monster = null;
 		var nearestActiveDist = Math.POSITIVE_INFINITY;
@@ -618,6 +620,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	override public function destroy():Void
 	{
 		_removePauseWatcher();
+		if (!options.OptionsState.onPlayState) options.OptionsState.standaloneReturnState = null;
 		FlxSprite.defaultAntialiasing = _prevAntialiasing;
 		FlxG.stage.window.title = _prevWindowTitle;
 		_setFps(_prevUpdateFps, _prevDrawFps);
@@ -700,7 +703,14 @@ class TheValley extends MusicBeatState implements ExeWorld
 	public function spawnSkull(wx:Float, wy:Float):SkullPrompt
 	{
 		final sk = new SkullPrompt(wx, wy, player, cutscene.eButton, objectGroup, gameCamera, shardHunt, (first, released) -> {
-			if (first) cutscene.triggerSkullCS2(!released);
+			_checkX = player.body.position.x - player.width * 0.5;
+			_checkY = player.body.position.y - player.height * 0.5;
+			if (first && FlxG.save.data.tvSkullSeen != true)
+			{
+				FlxG.save.data.tvSkullSeen = true;
+				FlxG.save.flush();
+				cutscene.triggerSkullCS2(!released);
+			}
 			else if (cutscene.onSkullWin != null) cutscene.onSkullWin();
 		});
 		sk.skullId = skullPrompts.length;
@@ -768,11 +778,18 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 	var _lastGetaway:Float = -999;
 	var _clock:Float = 0;
+	var _checkX:Float = 146.0;
+	var _checkY:Float = 134.0;
 
 	function _onShardFound():Void
 	{
 		hud.addShard();
 		hud.addPoints(1000, "PIECE FOUND");
+		if (hud.shards % 3 == 0)
+		{
+			hud.lives++;
+			hud.addPoints(0, "+1 LIFE");
+		}
 	}
 
 	function _onExeLostYou(hidden:Bool, closest:Float):Void
@@ -796,7 +813,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 		else
 		{
 			player.body.type = BodyType.DYNAMIC;
-			player.body.position.setxy(146.0 + player.width * 0.5, 134.0 + player.height * 0.5);
+			player.body.position.setxy(_checkX + player.width * 0.5, _checkY + player.height * 0.5);
 			player.body.velocity.setxy(0, 0);
 			player.jumpHeld = false;
 			player.jumpBufTimer = 0;

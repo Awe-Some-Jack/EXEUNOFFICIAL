@@ -136,6 +136,9 @@ function onUpdate(e:Float)
         var waveSine = FlxMath.fastSin((_time * waveFrequency) + (idx * wavePhaseShift));
         emerald.sprite.offset.y = (waveSine * waveAmplitude)+50;
     }
+
+    //! Debug, delete on release
+    if(FlxG.keys.justPressed.C) setVar('canTransform', true);
 }
 
 function goodNoteHit(note:Note)
@@ -165,7 +168,7 @@ function goodNoteHit(note:Note)
         FlxTween.tween(gradient, {alpha: 0}, 0.4);
     }
 
-    if(collectedEmeralds >= 7 || game.cpuControlled) setVar('canTransform', true);
+    if(collectedEmeralds >= 7) setVar('canTransform', true);
 }
 
 function onUpdatePost()
@@ -271,6 +274,9 @@ function onStepHit()
             else
                 dad.playAnim('2again', true);
                 dad.specialAnim = true;
+
+        case 1070:
+            if(getVar('canTransform')) triggerEvent("Alt Idle Animation", "dad", "-alt");
 
         case 1216: //lyric 4 steps ahead
             if(getVar('canTransform')) {

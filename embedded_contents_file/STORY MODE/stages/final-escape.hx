@@ -2,12 +2,14 @@ import psychlua.LuaUtils;
 import objects.Character;
 import objects.VideoSprite;
 import backend.Controls;
-
+import openfl.display.BlendMode;
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
 import openfl.utils.Assets;
 
 using StringTools;
+
+typedef RollEmber = { spr:FlxSprite, vy:Float, phase:Float, sway:Float, base:Float }
 
 var bgIntro:Array<BackgroundSprite> = [
 	{path: 'final/intro/sky', position: [-500, -220], scroll: [0.3, 0.3]},
@@ -90,6 +92,9 @@ var cameraLeft:FlxCamera;
 var cameraRight:FlxCamera;
 
 var curBG:String = 'intro';
+
+var bfSuperRender:FlxSprite;
+var palsSuperRender:FlxSprite;
 
 var oldGT:Bool = false;
 function onCreate()
@@ -204,6 +209,7 @@ var shields:FlxSpriteGroup;
 final ballList:Array<String> = ['water', 'electric', 'fire', 'rings', 'super'];
 var notesPosition:Array<Array<Array<Float>>> = [[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]]];
 final separation:Float = 50;
+var _particleGroup:Array<RollEmber> = [];
 function onCreatePost()
 {
 	game.canPause = false;
@@ -294,6 +300,34 @@ function onCreatePost()
 		shield.scale.set(0.7, 0.7); shield.updateHitbox();
 		shields.add(shield);
 	}
+
+	whiteBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
+	whiteBG.scrollFactor.set();
+	whiteBG.screenCenter();
+	whiteBG.alpha = 0.0001;
+	add(whiteBG);
+	
+	palsSuperRender = new FlxSprite().loadGraphic(Paths.image('final/superpals'));
+	palsSuperRender.alpha = 0.0001;
+	palsSuperRender.scale.set(0.7, 0.7); palsSuperRender.updateHitbox();
+	add(palsSuperRender);
+
+	bfSuperRender = new FlxSprite().loadGraphic(Paths.image('final/bfsuper'));
+	bfSuperRender.alpha = 0.0001;
+	bfSuperRender.scale.set(0.7, 0.7); bfSuperRender.updateHitbox();
+	add(bfSuperRender);
+
+	for (i in 0...46)
+	{
+		final big = FlxG.random.bool(30);
+		final e = new FlxSprite().makeGraphic(big ? 20 : 10, big ? 20 : 10, FlxG.random.bool(70) ? 0xFFFF9137 : 0xFFFFEC41);
+		e.blend = BlendMode.ADD;
+		e.active = false;
+		e.visible = false;
+		e.setPosition(FlxG.random.float(-800, 1100), FlxG.random.float(-600, FlxG.height));
+		add(e);
+		_particleGroup.push({spr: e, vy: FlxG.random.float(big ? 30 : 12, big ? 60 : 30), phase: FlxG.random.float(0, Math.PI * 2), sway: FlxG.random.float(6, 22), base: e.x});
+	}
 	
 	renderFinale = new FlxSprite().loadGraphic(Paths.image('final/finale'));
 	renderFinale.setGraphicSize(Std.int(FlxG.width * 1.2), Std.int(FlxG.height * 1.2)); renderFinale.updateHitbox();
@@ -339,9 +373,12 @@ var offsetScale:Float = 1;
 var legsFrame:Int = 0;
 var bfAction:String = '';
 var bfPressAction:String = '';
+var speed:Float = 1;
+var _ep:Bool = false;
 function onUpdatePost(elapsed:Float)
 {
 	blackBG.scale.set((1 / camGame.zoom) * offsetScale, (1 / camGame.zoom) * offsetScale);
+	if (whiteBG != null) whiteBG.scale.set((1 / camGame.zoom), (1 / camGame.zoom));
 	floatSine += elapsed * floatIntensity;
 
 	bfLegsFramerate?.update();
@@ -521,6 +558,21 @@ function onUpdatePost(elapsed:Float)
 			for (i in 0...8) strumLineNotes.members[i].y = notesPosition[Std.int(i / 4)][i % 4][1] + Math.sin(floatSine * 1.5 + i) * 10;
 		case 'tvfinal':
 			renderFinale.scale.y = FlxMath.lerp(renderFinale.scale.y, 0.0001, elapsed * 10);
+	}
+
+	if (!_ep) return;
+	for (e in _particleGroup)
+	{
+		if (e.spr == null) continue;
+		e.phase += elapsed * 3 * speed;
+		e.spr.y -= e.vy * elapsed * 3 * speed;
+		e.spr.x = e.base + Math.sin(e.phase * 0.9) * e.sway;
+		e.spr.alpha = 0.35 + 0.3 * Math.sin(e.phase * 2.3);
+		if (e.spr.y < -600)
+		{
+			e.spr.y = FlxG.height + FlxG.random.float(5, 60);
+			e.base = FlxG.random.float(-800, 1100);
+		}
 	}
 }
 
@@ -1006,7 +1058,46 @@ function onEvent(n,v1,v2)
 				cameraRight.scroll.x = 8000;
 				superBFAura.visible = true; superBFAura.scale.set(3, 3); superBFAura.updateHitbox(); superBFAura.x += -400; superBFAura.y = -400;
 				xenoRing.visible = false;
+			case 'superpals':
+				_ep = true;
+				for (e in _particleGroup) e.spr.visible = true;
+				for (spr in hudSprites) game.getLuaObject(spr).alpha = 0;
+				for (spr in bgIntro) spr.sprite?.visible = true;
+				bgIntro[bgIntro.length - 1].sprite.setPosition(-948 - 700, 230 + 350);
+				camHUD.flash(0xFFFFFFFF, Conductor.crochet / 500, null, true);
+				boyfriend.visible = false;
+				dad.visible = false;
+				superBFAura.visible = false;
+				FlxG.cameras.remove(cameraLeft, true);
+				FlxG.cameras.remove(cameraRight, true);
+				
+				bfSuperRender.y = 250;
+				bfSuperRender.alpha = 1;
+				FlxTween.tween(bfSuperRender.scale, {x: 0.85, y: 0.85}, Conductor.crochet / 250, {ease: FlxEase.cubeOut});
+				FlxTween.tween(bfSuperRender, {y: bfSuperRender.y + 75}, Conductor.crochet / 250, {ease: FlxEase.cubeOut});
+				
+				FlxTween.num(1, 6, Conductor.crochet / 300, {ease: FlxEase.expoIn}, v -> {speed = v;});
+
+				palsSuperRender.setPosition(-300, -250);
+				palsSuperRender.alpha = 0.45;
+				FlxTween.tween(palsSuperRender.scale, {x: 0.85, y: 0.85}, Conductor.crochet / 250, {ease: FlxEase.cubeOut});
+				FlxTween.tween(palsSuperRender, {y: palsSuperRender.y - 75, alpha: 0.85}, Conductor.crochet / 250, {ease: FlxEase.cubeOut});
+
+				FlxTween.tween(whiteBG, {alpha: 1}, Conductor.crochet / 250, {ease: FlxEase.expoIn});
+				blackBG.color = 0xFFFFFFFF;
+				FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / 250, {ease: FlxEase.expoIn});
+				game.triggerEvent('Tween Camera Zoom', '1, true', Std.string(Conductor.crochet / 250) + ', expoIn', Conductor.songPosition);
+				game.triggerEvent('bloomFlash', '0, 2', Std.string(Conductor.crochet / 250) + ', expoIn', Conductor.songPosition);
 			case 'normal':
+				speed = 2;
+				for (spr in hudSprites) game.getLuaObject(spr).alpha = 1;
+				FlxTween.cancelTweensOf(bfSuperRender); FlxTween.cancelTweensOf(bfSuperRender.scale); bfSuperRender.destroy();
+				FlxTween.cancelTweensOf(palsSuperRender); FlxTween.cancelTweensOf(palsSuperRender.scale); palsSuperRender.destroy();
+				FlxTween.cancelTweensOf(blackBG); blackBG.alpha = 0;
+				FlxTween.cancelTweensOf(whiteBG); whiteBG.destroy();
+				whiteBG = null;
+				boyfriend.visible = true;
+				dad.visible = true;
 				chrom.setFloat('amount', 0.5);
 				xdringbg?.destroy();
 				camHUD.flash(0xFFFFFFFF, Conductor.crochet / 250, null, true);
@@ -1015,12 +1106,9 @@ function onEvent(n,v1,v2)
 				bgIntro[1].sprite.visible = true;
 				game.remove(bgIntro[1].sprite, true); game.insert(game.members.indexOf(bgSecond[4].sprite), bgIntro[1].sprite);
 				curBG = 'super';
-				superBFAura.visible = false; superBFAura.scale.set(0.65, 0.65); superBFAura.updateHitbox();
 				xenoRing.visible = true;
 				changeCharacter('dad', 'xeno-fe2');
 				changeCharacter('bf', 'bf-superfe');
-				FlxG.cameras.remove(cameraLeft, true);
-				FlxG.cameras.remove(cameraRight, true);
 
 				bgSecond[0].sprite.velocity.x = -2500;
 				bgSecond[1].sprite.velocity.x = -600;
@@ -1059,6 +1147,8 @@ function onEvent(n,v1,v2)
 				for (spr in hudSprites) game.getLuaObject(spr).alpha = 0;
 				FlxTween.tween(camHUD, {alpha: 0}, Conductor.crochet / (1000 / 8));
 			case 'tvoff':
+				_ep = false;
+				for (e in _particleGroup) e.spr.destroy();
 				FlxTween.cancelTweensOf(renderFinale.scale);
 				renderFinale.setColorTransform(0, 0, 0, 1, 255, 255, 255, 0);
 				curBG = 'tvfinal';

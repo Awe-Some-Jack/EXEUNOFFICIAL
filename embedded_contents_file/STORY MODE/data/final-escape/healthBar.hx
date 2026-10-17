@@ -95,6 +95,16 @@ function onEvent(n,v1,v2)
 				flagLeft.visible = true;
 				hbChain.visible = true;
 				flagRight.visible = true;
+			case 'superpals':
+				healthColor.visible = false;
+				flagLeft.visible = false;
+				hbChain.visible = false;
+				flagRight.visible = false;
+			case 'normal':
+				healthColor.visible = true;
+				flagLeft.visible = true;
+				hbChain.visible = true;
+				flagRight.visible = true;
 			case 'ending':
 				_xd = false;
 				game.health = 2;

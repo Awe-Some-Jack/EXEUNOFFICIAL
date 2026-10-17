@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="launchpad.png">
+<SubTexture name="launchpad idle0000" x="0" y="50" width="41" height="26" frameX="-2" frameY="-24" frameWidth="35" frameHeight="40" />
+<SubTexture name="launchpad goingup0000" x="0" y="50" width="41" height="26" frameX="-2" frameY="-24" frameWidth="35" frameHeight="40" />
+<SubTexture name="launchpad goingup0001" x="42" y="0" width="41" height="34" frameX="-2" frameY="-16" frameWidth="35" frameHeight="40" />
+<SubTexture name="launchpad goingup0002" x="0" y="0" width="42" height="50" frameX="-1" frameY="0" frameWidth="35" frameHeight="40" />
+<SubTexture name="launchpad up0000" x="0" y="0" width="42" height="50" frameX="-1" frameY="0" frameWidth="35" frameHeight="40" />
+</TextureAtlas>

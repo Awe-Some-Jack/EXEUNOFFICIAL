@@ -309,6 +309,16 @@ class EXEFreeplay extends MusicBeatState
 					bgColor: leWeek.bgColor,
 					transitionShape: weekTransition
 				});
+
+				if (Paths.formatToSongPath(sName) == 'black-sun' && Mods.currentModDirectory == 'EXE')
+					songInfoList.push({
+						songName: 'The Valley',
+						coverFile: weekExeCover,
+						title: title,
+						exeLabel: weekExeLabel,
+						bgColor: leWeek.bgColor,
+						transitionShape: weekTransition
+					});
 			}
 
 			if (songInfoList.length == 0) continue;
@@ -902,6 +912,15 @@ class EXEFreeplay extends MusicBeatState
 			stopMusicPlay = true;
 			minigames.preymini.PreyMini.fromSoundTest = false;
 			FlxG.switchState(() -> new minigames.preymini.PreyMini());
+			return;
+		}
+
+		if (songLower == 'the-valley' && entry.folder == 'EXE')
+		{
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			FlxG.sound.music?.fadeOut(0.3);
+			stopMusicPlay = true;
+			FlxG.switchState(() -> new minigames.thevalley.TheValley());
 			return;
 		}
 

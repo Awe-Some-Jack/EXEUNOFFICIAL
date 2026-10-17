@@ -693,7 +693,9 @@
 			163746.154247276,
 			[
 				["bright zoom", "", ""],
-				["saturation", "0.75", ""]
+				["saturation", "0.75", ""],
+				["brightness", "-0.15", ""],
+				["contrast", "1.2", ""]
 			]
 		],
 		[
@@ -800,7 +802,31 @@
 			]
 		],
 		[
-			263702.241467142,
+			236823.077324198,
+			[
+				["ScreenBorders", "1", "1"],
+				["saturation", "0", ""],
+				["Tween Camera Zoom", "0.75", ""]
+			]
+		],
+		[
+			237592.308093429,
+			[
+				["ScreenBorders", "0", "1"],
+				["saturation", "1", ""],
+				["Tween Camera Zoom", "0.6", ""],
+				["bright zoom", "", ""]
+			]
+		],
+		[
+			259130.769631891,
+			[
+				["Tween Camera Zoom", "1,true", "6, cubeInOut"],
+				["Tweening Camera", "300,0", "6, cubeInOut"]
+			]
+		],
+		[
+			263650.000401121,
 			[
 				["innocenceEvents", "finale", ""]
 			]
@@ -3963,9 +3989,9 @@
 	],
 	"gfVersion": "gf",
 	"song": "Fakebaby",
-	"stage": "house",
 	"validScore": true,
 	"needsVoices": true,
+	"stage": "house",
 	"bpm": 127,
 	"speed": 3.2,
 	"format": "psych_v1_convert"

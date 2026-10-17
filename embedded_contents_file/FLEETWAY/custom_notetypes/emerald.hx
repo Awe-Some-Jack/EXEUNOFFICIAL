@@ -19,11 +19,23 @@ function onCreate() {
             note.updateHitbox();
             note.ratingDisabled = true;
             note.noAnimation = true;
-            //note.ignoreNote = true;
+            note.ignoreNote = !game.cpuControlled;
             note.hitHealth = 0;
             note.missHealth = 0;
             
             count++;
         }
+    }
+    lastBotplay = game.cpuControlled;
+}
+
+var lastBotplay:Bool = false;
+function onUpdatePost(e) {
+    if (lastBotplay != game.cpuControlled){
+        game.notes.forEachAlive(note->{
+            if (note == null) return;
+            if (note.noteType == "emerald") note.ignoreNote = !game.cpuControlled;
+        });
+        lastBotplay = game.cpuCOntrolled;
     }
 }

@@ -2449,6 +2449,7 @@ class PlayState extends MusicBeatState
 								#end
 
 								daNote.active = daNote.visible = false;
+								callOnScripts('onNoteLeave', [daNote, strum, noteKillOffset + killTime]);
 								invalidateNote(daNote);
 							}
 							if(daNote.exists) i++;

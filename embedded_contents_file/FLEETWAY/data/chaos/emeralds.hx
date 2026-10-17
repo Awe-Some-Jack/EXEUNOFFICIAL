@@ -173,9 +173,19 @@ function onUpdatePost()
     if(muteOpponentVocals) opponentVocals.volume = 0;
 }
 
+// useless?
 function noteMiss(note:Note)
 {
     if(note.noteType == 'emerald') {
+        missedEmeralds++;
+
+        FlxTween.cancelTweensOf(gradient);
+        FlxTween.tween(gradient, {alpha: 0}, 0.25);
+    }
+}
+
+function onNoteLeave(note:Note, strum:StrumNote, killTime:Float) { // unofficial exclusive scriptfunction babe
+    if (note?.noteType == "emerald"){
         missedEmeralds++;
 
         FlxTween.cancelTweensOf(gradient);

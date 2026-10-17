@@ -56,10 +56,25 @@ enum abstract GaryState(Int)
 
 class GaryNPC extends DeadNPC
 {
-	static final LINES:Array<{ text:String, start:Float, end:Float }> = [
-		{ text: "Your beloved dear isn't just asleep, girl.", start: 0.00,  end: 5.92 },
-		{ text: "Whatever put him under.....",                start: 7.62,  end: 9.64 },
-		{ text: "*it* knew what it was doing.",               start: 10.70, end: 14.71 },
+	static final CLIPS:Array<{ sound:String, len:Float, lines:Array<{ text:String, start:Float, end:Float }> }> = [
+		{ sound: "Gary1", len: 13.11, lines: [
+			{ text: "Your friend isn't just asleep, girl.",       start: 0.00, end: 4.90 },
+			{ text: "Whatever put him under.....",                start: 5.20, end: 7.90 },
+			{ text: "*it* knew what it was doing.",               start: 8.05, end: 12.40 },
+		] },
+		{ sound: "Gary2", len: 13.25, lines: [
+			{ text: "An impersonation of something everybody loves,", start: 0.00, end: 4.70 },
+			{ text: "but close enough to fool you,",                  start: 5.00, end: 8.75 },
+			{ text: "wrong enough to haunt you.",                     start: 9.00, end: 12.40 },
+		] },
+		{ sound: "GaryInterrumpt", len: 7.64, lines: [
+			{ text: "Are you going to let me finish?", start: 0.00, end: 4.50 },
+			{ text: "*clears throat*",                 start: 4.85, end: 6.80 },
+		] },
+		{ sound: "GaryEnd", len: 5.60, lines: [
+			{ text: "There's no more to it,", start: 0.00, end: 1.95 },
+			{ text: "now scram.",             start: 2.00, end: 4.90 },
+		] },
 	];
 
 	public var isTalking(get, never):Bool;
@@ -77,6 +92,10 @@ class GaryNPC extends DeadNPC
 	var _voice:FlxSound;
 	var _prompting:Bool = false;
 	var _flicker:Float = 0;
+	var _next:Int = 0;
+	var _cutOff:Bool = false;
+	var _clip:Int = 0;
+	var _queue:Array<Int> = [];
 
 	public function new(x:Float, y:Float, ?valley:TheValley)
 	{
@@ -169,8 +188,19 @@ class GaryNPC extends DeadNPC
 		_player.cinematic = true;
 		_player.facing = x + width * 0.5 < _player.x + _player.width * 0.5 ? FlxDirectionFlags.LEFT : FlxDirectionFlags.RIGHT;
 
-		_voice = FlxG.sound.play(Paths.sound("minigame/thevalley/gary"), 0.8);
+		_queue = _next >= 2 ? [3] : (_cutOff ? [2, _next] : [_next]);
+		_cutOff = false;
 		_subs.open();
+		_playNext();
+	}
+
+	function _playNext():Void
+	{
+		_clip = _queue.shift();
+		_time = 0;
+		_line = -1;
+		_subs.clear();
+		_voice = FlxG.sound.play(Paths.sound("minigame/thevalley/gary/" + CLIPS[_clip].sound), 0.8);
 	}
 
 	function _talk(elapsed:Float):Void
@@ -181,23 +211,29 @@ class GaryNPC extends DeadNPC
 		if (line != _line)
 		{
 			_line = line;
-			if (line >= 0) _subs.say(LINES[line].text, 0.045);
+			if (line >= 0) _subs.say(CLIPS[_clip].lines[line].text, 0.045);
 			else _subs.clear();
 		}
 
-		if (_eButton != null && _time >= 0.6)
+		if (_eButton != null && _time >= 0.6 && _clip != 2)
 		{
 			_eButton.alpha = 0.3;
 			_eButton.x = _player.x + (_player.width - _eButton.width) * 0.5;
 			_eButton.y = _player.y - _eButton.height - 16;
 		}
 
-		if (_time >= 16.19) _finish(false);
-		else if (FlxG.keys.justPressed.E && _time >= 0.6) _finish(true);
+		if (_time >= CLIPS[_clip].len)
+		{
+			if (_clip == _next && _next < 2) _next++;
+			if (_queue.length > 0) _playNext();
+			else _finish(false);
+		}
+		else if (FlxG.keys.justPressed.E && _time >= 0.6 && _clip != 2) _finish(true);
 	}
 
 	function _finish(skipped:Bool):Void
 	{
+		if (skipped && _clip != 3) _cutOff = true;
 		if (skipped && _voice != null)
 		{
 			final voice = _voice;
@@ -213,10 +249,11 @@ class GaryNPC extends DeadNPC
 		_closeTimer = 0.35;
 	}
 
-	static function _lineAt(time:Float):Int
+	function _lineAt(time:Float):Int
 	{
-		for (i in 0...LINES.length)
-			if (time >= LINES[i].start && time < LINES[i].end) return i;
+		final lines = CLIPS[_clip].lines;
+		for (i in 0...lines.length)
+			if (time >= lines[i].start && time < lines[i].end) return i;
 		return -1;
 	}
 }

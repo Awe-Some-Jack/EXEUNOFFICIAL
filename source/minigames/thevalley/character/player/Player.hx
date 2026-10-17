@@ -89,6 +89,7 @@ class Player extends FlxSprite implements CameraTarget
 	var _squatTimer:Float       = 0.0;
 	var _windup:Float           = 0.0;
 	var _gravityOn:Bool         = true;
+	var _launchWings:Bool       = false;
 
 	public function new(spawnX:Float, spawnY:Float, configPath:String = "assets/shared/images/minigame/thevalley/characters/fakergf/fakergf.json")
 	{
@@ -199,7 +200,7 @@ class Player extends FlxSprite implements CameraTarget
 		if (_glideCooldownSec > 0) _glideCooldownSec -= elapsed;
 		if (mode == Glide && !cinematic)
 		{
-			_glideTimer -= elapsed;
+			if (body.velocity.y >= cfg.physics.wingOpenImpulse) _glideTimer -= elapsed;
 			if (_glideTimer <= 0) { _glideTimer = 0; mode = WingClose; _glideCooldownSec = 1.0; }
 		}
 
@@ -421,11 +422,13 @@ class Player extends FlxSprite implements CameraTarget
 		switch (mode)
 		{
 			case WingOpen:
-				body.velocity.y -= TVNapeWorld.GRAVITY * 0.6 * elapsed;
+				if (body.velocity.y < p.wingOpenImpulse) { if (!_launchWings) body.velocity.y += (_riseGravity() - TVNapeWorld.GRAVITY) * elapsed; }
+				else body.velocity.y -= TVNapeWorld.GRAVITY * 0.6 * elapsed;
 				if (body.velocity.y > p.glideMaxFall) body.velocity.y = p.glideMaxFall;
 				if (wingOpenTimer > 0) { wingOpenTimer -= elapsed; if (wingOpenTimer <= 0) { wingOpenTimer = 0; mode = Glide; } }
 			case Glide:
-				body.velocity.y += (p.glideGravity - TVNapeWorld.GRAVITY) * elapsed;
+				if (body.velocity.y < p.wingOpenImpulse) { if (!_launchWings) body.velocity.y += (_riseGravity() - TVNapeWorld.GRAVITY) * elapsed; }
+				else body.velocity.y += (p.glideGravity - TVNapeWorld.GRAVITY) * elapsed;
 				if (body.velocity.y > p.glideMaxFall) body.velocity.y = p.glideMaxFall;
 			case WingClose:
 				if (body.velocity.y > p.wingCloseMaxFall) body.velocity.y = p.wingCloseMaxFall;
@@ -554,7 +557,7 @@ class Player extends FlxSprite implements CameraTarget
 		final left        = FlxG.keys.pressed.LEFT  || FlxG.keys.pressed.A;
 		final right       = FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D;
 		final shift       = FlxG.keys.pressed.SHIFT;
-		final jumpJust    = FlxG.keys.justPressed.SPACE;
+		final jumpJust    = FlxG.keys.justPressed.Z || FlxG.keys.justPressed.SPACE;
 		final jumpRel     = FlxG.keys.justReleased.Z || FlxG.keys.justReleased.SPACE;
 		final jumpHeldNow = FlxG.keys.pressed.Z     || FlxG.keys.pressed.SPACE;
 
@@ -607,12 +610,13 @@ class Player extends FlxSprite implements CameraTarget
 			else _takeOff(jumpHeldNow);
 		}
 
-		if (jumpJust && !gnd && mode == Air && body.velocity.y > p.glideOpenVy && glideCooldown <= 0 && _glideCooldownSec <= 0 && lockedAnim != "fallingtodeath")
+		if (jumpJust && !gnd && (mode == Air || mode == Launch) && glideCooldown <= 0 && _glideCooldownSec <= 0 && lockedAnim != "fallingtodeath")
 		{
 			body.velocity.y = Math.min(body.velocity.y, p.wingOpenImpulse);
 			wingOpenTimer   = p.wingOpenFrames / 60.0;
 			glideCooldown   = p.glideCooldown / 60.0;
 			_glideTimer     = p.glideTime;
+			_launchWings    = mode == Launch;
 			mode            = WingOpen;
 		}
 		else if (!jumpHeldNow && mode == Glide)

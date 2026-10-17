@@ -1,9 +1,15 @@
 import psychlua.LuaUtils;
 import flixel.addons.display.FlxBackdrop;
+import states.substates.GameOverSubstate;
+import objects.Character;
+import flixel.sound.FlxSound;
 
 final game:PlayState = PlayState.instance;
 final prefs = ClientPrefs.data;
 var bg:FlxSprite;
+var bgBlue:FlxSprite;
+var ring:FlxSprite;
+var ringBlue:FlxSprite;
 var vg:FlxSprite;
 var black:FlxSprite;
 var oldGT:Bool = false;
@@ -19,13 +25,20 @@ var glitch2:ErrorHandledRuntimeShader;
 var fishEye:ErrorHandledRuntimeShader;
 var illegalInstruction:FlxSprite;
 
-var bgCamera:FlxCamera;
+//gameover vars
+var deadBoyfriend:Character;
+var deadMusic:FlxSound;
+var inGameOver:Bool = false;
 
+var bgCamera:FlxCamera;
 function onCreate()
 {
 	oldGT = prefs.ghostTapping;
 
 	setupCameras();
+
+	GameOverSubstate.characterName = 'redglovegameover';
+	GameOverSubstate.deathSoundName = '../music/gameOverStartGo';
 
 	if (prefs.shaders)
 	{
@@ -62,12 +75,30 @@ function onCreate()
 	bg.velocity.x = -1500;
 	add(bg);
 
-	var ring = new FlxSprite(-1090, -500);
+	bgBlue = new FlxBackdrop(Paths.image('gameovers/bg'), 0x01);
+	bgBlue.scale.set(0.9, 0.9);
+	bgBlue.updateHitbox();
+	bgBlue.y = -600;
+	bgBlue.camera = bgCamera;
+	bgBlue.scrollFactor.set(0.6, 0.6);
+	bgBlue.antialiasing = false;
+	bgBlue.alpha = 0.0001;
+	add(bgBlue);
+
+	ring = new FlxSprite(-1090, -500);
 	ring.loadGraphic(Paths.image('gottago/ring'));
 	ring.scale.set(0.3, 0.3);
 	ring.updateHitbox();
 	ring.antialiasing = prefs.antialiasing;
 	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), ring);
+
+	ringBlue = new FlxSprite(-1090, -500);
+	ringBlue.loadGraphic(Paths.image('gameovers/ring'));
+	ringBlue.scale.set(0.3, 0.3);
+	ringBlue.updateHitbox();
+	ringBlue.antialiasing = prefs.antialiasing;
+	ringBlue.alpha = 0.0001;
+	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), ringBlue);
 
 	vg = new FlxSprite(0, 0).loadGraphic(Paths.image('VG'));
 	vg.updateHitbox();
@@ -127,22 +158,68 @@ function setupCameras()
 	camGame.bgColor = 0x0; 
 }
 
+var threshold:Float = 1550;
 final separation:Float = 50;
 function onCreatePost()
 {
 	for (i in 0...4)
 	{
-		opponentStrums.members[i].x = -1000;
+		opponentStrums.members[i].downScroll = true;
+		opponentStrums.members[i].scale.set(1.5, 1.5);
+		opponentStrums.members[i].x = -opponentStrums.members[i].width - 1000;
+		opponentStrums.members[i].y = -190 + ((opponentStrums.members[i].height + 150) * i);
+		opponentStrums.members[i].direction = 180;
+		opponentStrums.members[i].angle = 90;
+		opponentStrums.members[i].camera = bgCamera;
+		opponentStrums.members[i].scrollFactor.set(1, 1);
 		playerStrums.members[i].y += (ClientPrefs.data.downScroll ? 10 : -10);
 		playerStrums.members[i].x = (FlxG.width / 2) + (separation / 2) - (((playerStrums.members[i].width + (separation * 2)) * 4) / 2) + ((playerStrums.members[i].width) + separation * (i > 1 ? (i == 3 ? 2.33 : 3) : 1)) * i;
 	}
+	for (i in 0...unspawnNotes.length)
+	{
+		var note:Note = unspawnNotes[i];
+		if (note.mustPress) continue;
+		note.camera = bgCamera;
+		if (!note.isSustainNote || (note.isSustainNote && note.parent != null && note.parent.tail[note.parent.tail.length - 1] == note)) note.scale.set(1.5, 1.5);
+		else note.scale.set(1.5, note.scale.y);
+		if (note.isSustainNote) note.offsetY = 55;
+		if (note.isSustainNote && note.parent != null && note.parent.tail[note.parent.tail.length - 1] == note)
+		{
+			note.offsetX = -3;
+			note.offsetY = 57.5;
+		}
+		note.copyAngle = false;
+		note.color = 0xFF721111;
+		note.angle = 90;
+		note.multSpeed = Math.abs(bg.velocity.x) / threshold;
+		note.scrollFactor.set(1, 1);
+	}
 }
 
+var toggleOnce:Bool = false;
 var savedThings:Array<Float>;
 var _phase:String = 'intro';
 var _iT:Float = 0;
+var _glitchTimer:Float = 0.5;
 function onUpdatePost(elapsed:Float)
 {
+	if (inGameOver)
+	{
+		_glitchTimer -= elapsed;
+		if (_glitchTimer <= 0)
+		{
+			_glitchTimer = 0.5;
+			glitch.setFloat('time', FlxG.random.float(0,50));
+		}
+		if (deadBoyfriend.getAnimationName() == 'deathLoop')
+		{
+			if (!toggleOnce) {
+				toggleOnce = true;
+				FlxG.sound.music.stop();
+			}
+		}
+	}
+
 	bgCamera.zoom = camGame.zoom;
 	bgCamera.scroll.set(camGame.scroll.x, camGame.scroll.y);
 
@@ -180,6 +257,8 @@ function onEvent(n, v1, v2)
 				pixelShader.setFloat('pixelsize', 0);
 				bg.velocity.x = -2000;
 				glitch.setFloat('prob', 0.15);
+				for (i in 0...unspawnNotes.length) if (!unspawnNotes[i].mustPress) unspawnNotes[i].multSpeed = Math.abs(bg.velocity.x) / threshold;
+				for (i in 0...notes.length) if (!notes.members[i].mustPress) notes.members[i].multSpeed = Math.abs(bg.velocity.x) / threshold;
 			case 'XD': prefs.ghostTapping = true;
 			case 'pauseshit':
 				illegalInstruction.visible = true;
@@ -202,7 +281,7 @@ function onEvent(n, v1, v2)
 					camGame.filters = camHUD.filters = [new ShaderFilter(brightness), new ShaderFilter(antiPiracy), new ShaderFilter(cloneImage), new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
 				}
 			case 'blackshit':
-				illegalInstruction.destroy();
+				illegalInstruction.visible = false;
 				vg.alpha = 0.75;
 				_phase = 'halfway';
 				if (prefs.shaders)
@@ -215,6 +294,8 @@ function onEvent(n, v1, v2)
 			case 'resumeshit':
 				glitch.setFloat('prob', 0.3);
 				bg.velocity.x = -2500;
+				for (i in 0...unspawnNotes.length) if (!unspawnNotes[i].mustPress) unspawnNotes[i].multSpeed = Math.abs(bg.velocity.x) / threshold;
+				for (i in 0...notes.length) if (!notes.members[i].mustPress) notes.members[i].multSpeed = Math.abs(bg.velocity.x) / threshold;
 				game.camZoomingMult = 1;
 				game.cameraSpeed = 1.15;
 				game.camZoomingDecay = 1;
@@ -282,7 +363,83 @@ function onEvent(n, v1, v2)
 function onBeatHit()
 {
 	if (curBeat % speed == 0)
-		glitch.setFloat('time', FlxG.random.float(0,20));
+		glitch.setFloat('time', FlxG.random.float(0,50));
 }
 
 function onDestroy() prefs.ghostTapping = oldGT;
+
+function onGameOverStart()
+{
+	lyrics.visible = false;
+	glitch.setFloat('prob', 0.45);
+	glitch2.setFloat('binaryIntensity', 0);
+	bgCamera.filters = [new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
+	FlxG.camera.filters = [new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
+	pixelShader.setFloat('pixelsize', 15);
+	if (pixelTween?.active ?? false) pixelTween.cancel();
+	pixelTween = FlxTween.num(15, 0, Conductor.crochet / 250, {ease: FlxEase.cubeOut}, v -> {
+		pixelShader.setFloat('pixelsize', v);
+	});
+
+	game.gameplayCam.settings.OverrideZoom = true;
+	game.gameplayCam.overrideZoomValue = 0.6;
+	inGameOver = true;
+	if (GameOverSubstate.instance.boyfriend != null && deadBoyfriend == null) deadBoyfriend = GameOverSubstate.instance.boyfriend;
+	dad.visible = false;
+	deadBoyfriend.setPosition(dadGroup.x - 330, dadGroup.y - 30);
+	game.camZoomingMult = 0.5;
+
+	FlxG.camera.follow();
+	FlxG.camera.targetOffset.set();
+	FlxG.camera.scroll.set(game.camFollow.x - (FlxG.width / 2), game.camFollow.y - (FlxG.height / 2));
+
+	deadMusic = new FlxSound();
+	deadMusic.load(Paths.music('gameOverGo'), true);
+	FlxG.sound.list.add(deadMusic);
+	deadMusic.looped = true;
+	deadMusic.play();
+
+	game.camHUD.alpha = 0;
+	game.camVideo.alpha = 0;
+	game.persistentDraw = true;
+	game.persistentUpdate = true;
+	game.camZoomingMult = 0;
+	illegalInstruction.visible = true;
+
+	for (i in 0...notes.length) if (!notes.members[i].mustPress) notes.members[i].color = 0xFF0B0BDD;
+
+	game.generatedMusic = false;
+
+	bgBlue.x = bg.x;
+	bg.destroy();
+	ring.destroy();
+	bgBlue.alpha = 1;
+	ringBlue.alpha = 1;
+}
+
+function onGameOverConfirm(retry)
+{
+	if (retry) {
+		for (sound in FlxG.sound.list) if (sound.playing && sound != deadMusic) sound.volume = 0;
+
+		glitch.setFloat('prob', 0.8);
+		glitch2.setFloat('binaryIntensity', 0.1);
+		new FlxTimer().start(0.2, _ -> {glitch2.setFloat('binaryIntensity', 6);});
+		new FlxTimer().start(0.3, _ -> {glitch2.setFloat('binaryIntensity', 5);});
+		new FlxTimer().start(0.6, _ -> {glitch2.setFloat('binaryIntensity', 8);});
+		new FlxTimer().start(0.7, _ -> {glitch2.setFloat('binaryIntensity', 2);});
+		new FlxTimer().start(1, _ -> {glitch2.setFloat('binaryIntensity', 5);});
+		new FlxTimer().start(1.2, _ -> {glitch2.setFloat('binaryIntensity', 1);});
+		new FlxTimer().start(1.3, _ -> {glitch2.setFloat('binaryIntensity', 7);});
+		new FlxTimer().start(1.5, _ -> {glitch2.setFloat('binaryIntensity', 6);});
+		new FlxTimer().start(1.7, _ -> {for (cam in FlxG.cameras.list) cam.alpha = 0;});
+		FlxG.camera.flash(0x811414FF, 1, null, true);
+		FlxG.sound.play(Paths.music('gameOverEndGo'));
+		deadMusic.stop();
+	}
+	else
+	{
+		for (cam in FlxG.cameras.list) cam.alpha = 0;
+		for (sound in FlxG.sound.list) if (sound.playing && sound != null) sound.volume = 0;
+	}
+}

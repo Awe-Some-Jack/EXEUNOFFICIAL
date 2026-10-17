@@ -5247,6 +5247,7 @@
 		[
 			98742.857142857,
 			[
+				["Poster Mode", "on", ""],
 				["Tween Camera Zoom", "0.8", ""],
 				["Set Property", "camZoomingMult", "1"],
 				["Set Property", "camZoomingDecay", "1"],
@@ -6218,6 +6219,12 @@
 			[
 				["bright zoom", "", ""],
 				["saturation", "0.35", ""]
+			]
+		],
+		[
+			119485.714285714,
+			[
+				["Poster Mode", "off", ""]
 			]
 		],
 		[

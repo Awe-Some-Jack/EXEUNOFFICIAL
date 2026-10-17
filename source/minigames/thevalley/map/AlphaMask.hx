@@ -22,12 +22,14 @@ class AlphaMask
 	{
 		final g = spr != null ? spr.graphic : null;
 		if (g == null || g.bitmap == null || spr.numFrames > 1) return null;
-		if (g.key == null) return new AlphaMask(g.bitmap);
+		if (g.key == null) return g.bitmap.image != null ? new AlphaMask(g.bitmap) : null;
 
 		var mask = _cache.get(g.key);
 		if (mask == null)
 		{
-			mask = new AlphaMask(g.bitmap);
+			final fresh = g.bitmap.image == null ? Paths.getBitmapData(g.key) : null;
+			mask = new AlphaMask(fresh ?? g.bitmap);
+			fresh?.dispose();
 			_cache.set(g.key, mask);
 		}
 		return mask;

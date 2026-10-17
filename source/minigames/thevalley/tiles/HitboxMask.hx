@@ -34,8 +34,7 @@ class HitboxMask
 
 	function new(key:String)
 	{
-		final graphic = Paths.image(key, false);
-		final bmd = graphic != null ? graphic.bitmap : null;
+		final bmd = Paths.getBitmapData('assets/shared/images/' + key);
 
 		width = bmd != null ? bmd.width : 0;
 		height = bmd != null ? bmd.height : 0;
@@ -44,6 +43,7 @@ class HitboxMask
 		if (bmd == null) return;
 
 		final pixels = bmd.getVector(bmd.rect);
+		bmd.dispose();
 		final minX = [for (_ in 0...5) width], maxX = [for (_ in 0...5) -1];
 		final minY = [for (_ in 0...5) height], maxY = [for (_ in 0...5) -1];
 

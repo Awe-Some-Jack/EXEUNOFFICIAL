@@ -301,6 +301,7 @@ class EXEMenu extends MusicBeatState
 			if (FlxG.keys.justPressed.T) FlxG.switchState(() -> new states.CreditsRollState());
 
 		}
+
 		soundHold += elapsed;
 
 		updateBlink(elapsed);

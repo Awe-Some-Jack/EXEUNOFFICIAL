@@ -404,6 +404,7 @@ function onGameOverStart()
 	game.persistentDraw = true;
 	game.persistentUpdate = true;
 	game.camZoomingMult = 0;
+	illegalInstruction.setPosition(FlxG.random.float(100, FlxG.width / 2 - illegalInstruction.width), FlxG.random.float(FlxG.height / 2 + 100, FlxG.height - illegalInstruction.height - 100));
 	illegalInstruction.visible = true;
 
 	for (i in 0...notes.length) if (!notes.members[i].mustPress) notes.members[i].color = 0xFF0B0BDD;
@@ -411,6 +412,7 @@ function onGameOverStart()
 	game.generatedMusic = false;
 
 	bgBlue.x = bg.x;
+	bgBlue.velocity.x -10;
 	bg.destroy();
 	ring.destroy();
 	bgBlue.alpha = 1;

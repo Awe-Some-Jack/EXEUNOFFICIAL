@@ -29,7 +29,7 @@ class Language
 			case 'it': 'it-IT';
 			case 'pl': 'pl-PL';
 			case 'tr': 'tr-TR';
-			case 'hu': 'hu-HU'
+			case 'hu': 'hu-HU';
 			default: 'en-US';
 		};
 	}

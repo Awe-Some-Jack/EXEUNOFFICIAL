@@ -415,7 +415,7 @@ class DAGPlayer extends FlxGroup
             fadeTarget = 1.0;
             fadeSpeed  = 12.0;
             isPlaying  = true;
-            #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text}', null, true, inst.length, "icon", 2, inst.time); #end
+            #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text}', null, true, data.inst.length, "icon", 2, inst.time); #end
             return;
         }
         stop();
@@ -863,6 +863,8 @@ class DAGPlayer extends FlxGroup
 
     function loadAsync(song:String, mod:String):Void
     {
+        destroyAudio();
+
         loadedSong = song;
         loadedMod  = mod;
         final prevMod = Mods.currentModDirectory;
@@ -965,6 +967,20 @@ class DAGPlayer extends FlxGroup
 
     function destroyAudio():Void
     {
+        if (instSound != null)
+        {
+            try { instSound.close(); } catch(_:Dynamic) {}
+            instSound = null;
+        }
+
+        for (s in vocalSounds)
+        {
+            if (s != null) {
+                try { s.close(); } catch(_:Dynamic) {}
+            }
+        }
+        vocalSounds = [];
+
         if (inst != null)
         {
             inst.stop();
@@ -973,19 +989,16 @@ class DAGPlayer extends FlxGroup
             inst = null;
         }
 
-        for (v in vocals) if (v != null)
+        for (v in vocals) 
         {
-            v.stop();
-            FlxG.sound.list.remove(v, true);
-            v.destroy();
+            if (v != null)
+            {
+                v.stop();
+                FlxG.sound.list.remove(v, true);
+                v.destroy();
+            }
         }
 
-        instSound?.close();
-        instSound = null;
-
-        for (s in vocalSounds) s?.close();
-
-        vocalSounds = [];
         vocals     = [];
         oppVocals  = [];
         isPlaying  = false;

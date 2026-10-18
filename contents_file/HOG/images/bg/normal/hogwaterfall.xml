@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="hogwaterfall.png">
+	<!-- Created with FNF Spritesheet and XML Maker -->
+	<SubTexture name="leftwatermark0000" x="725" y="823" width="259" height="240" frameX="-26" frameY="-20" frameWidth="315" frameHeight="295"/>
+	<SubTexture name="leftwatermark0001" x="736" y="2" width="282" height="278" frameX="-24" frameY="-5" frameWidth="315" frameHeight="295"/>
+	<SubTexture name="leftwatermark0002" x="736" y="284" width="261" height="273" frameX="-29" frameY="-12" frameWidth="315" frameHeight="295"/>
+	<SubTexture name="leftwatermark0003" x="725" y="561" width="286" height="258" frameX="-12" frameY="-18" frameWidth="315" frameHeight="295"/>
+	<SubTexture name="rightwaterfall0000" x="2" y="1025" width="702" height="307" frameX="-8" frameY="-28" frameWidth="750" frameHeight="375"/>
+	<SubTexture name="rightwaterfall0001" x="2" y="705" width="719" height="316" frameX="-16" frameY="-36" frameWidth="750" frameHeight="375"/>
+	<SubTexture name="rightwaterfall0002" x="2" y="359" width="704" height="342" frameX="-8" frameY="-20" frameWidth="750" frameHeight="375"/>
+	<SubTexture name="rightwaterfall0003" x="2" y="2" width="730" height="353" frameX="-9" frameY="-12" frameWidth="750" frameHeight="375"/>
+</TextureAtlas>

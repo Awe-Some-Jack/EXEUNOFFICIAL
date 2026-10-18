@@ -1,5 +1,5 @@
 {
-	"player1": "bf hog",
+	"player1": "bfh",
 	"player2": "hog",
 	"notes": [
 		{
@@ -368,6 +368,7 @@
 				[45214.2857142857, 7, 428.571428571429],
 				[45642.8571428572, 4, 0],
 				[45857.1428571429, 5, 0],
+				[45964.2857142857, 6, 0],
 				[46071.4285714286, 7, 428.571428571429]
 			],
 			"sectionBeats": 4,
@@ -2102,6 +2103,15 @@
 			"bpm": 150,
 			"changeBPM": false,
 			"mustHitSection": false
+		},
+		{
+			"sectionBeats": 4,
+			"sectionNotes": [],
+			"gfSection": false,
+			"altAnim": false,
+			"mustHitSection": false,
+			"changeBPM": false,
+			"bpm": 140
 		}
 	],
 	"gfVersion": "gfh",
@@ -2109,7 +2119,7 @@
 		[
 			12000,
 			[
-				["Tweening Camera", "-450,0", "1.32,cubeInOut"]
+				["Tweening Camera", "-250,0", "1.32, cubeInOut"]
 			]
 		],
 		[
@@ -2122,98 +2132,132 @@
 		[
 			26571.4285714286,
 			[
-				["Tween Camera Zoom", "0.85", ""]
+				["Tween Camera Zoom", "0.6", ""]
 			]
 		],
 		[
 			26785.7142857143,
 			[
-				["Tween Camera Zoom", "1.25,true", "0.575,cubeIn"]
+				["Tween Camera Zoom", "0.8,true", "0.64, cubeIn"],
+				["Tweening Camera", "-250, 0", "0.64, cubeIn"]
 			]
 		],
 		[
 			27428.5714285714,
 			[
-				["Tween Camera Zoom", "0.65", ""],
-				["bright zoom", "", ""]
+				["Tween Camera Zoom", "0.55", ""],
+				["bright zoom", "", ""],
+				["Tweening Camera", "0, 0", "0.0001, linear"]
 			]
 		],
 		[
 			30857.1428571429,
 			[
-				["Tween Camera Zoom", "0.75", ""]
+				["Tween Camera Zoom", "0.65", ""],
+				["Tweening Camera", "-75, 25", "0.0001, linear"]
 			]
 		],
 		[
 			32571.4285714286,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tweening Camera", "-25, 0", "0.0001, linear"],
+				["Tween Camera Zoom", "0.6", ""]
+			]
+		],
+		[
+			33214.2857142857,
+			[
+				["Tweening Camera", "0, 0", "0.0001, linear"]
 			]
 		],
 		[
 			34285.7142857143,
 			[
-				["Tween Camera Zoom", "0.65", ""]
+				["Tween Camera Zoom", "0.55", ""]
 			]
 		],
 		[
 			37714.2857142857,
 			[
-				["Tween Camera Zoom", "0.75", ""]
+				["Tween Camera Zoom", "0.65", ""]
 			]
 		],
 		[
 			39428.5714285714,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.6", ""]
 			]
 		],
 		[
-			40285.7142857143,
+			40071.4285714286,
 			[
-				["Tween Camera Zoom", "0.65,true", "0.66,cubeIn"]
+				["Tween Camera Zoom", "0.535", ""]
+			]
+		],
+		[
+			40500,
+			[
+				["Tween Camera Zoom", "0.55, true", "0.64, cubeIn"]
+			]
+		],
+		[
+			41142.8571428572,
+			[
+				["bright zoom", "", ""]
 			]
 		],
 		[
 			44571.4285714286,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.6", ""]
 			]
 		],
 		[
-			46071.4285714286,
+			45214.2857142857,
 			[
-				["Tween Camera Zoom", "0.75", ""]
+				["Tween Camera Zoom", "0.625", ""]
 			]
 		],
 		[
-			46928.5714285714,
-			[
-				["Tween Camera Zoom", "0.7", ""]
-			]
-		],
-		[
-			48000,
+			46285.7142857143,
 			[
 				["Tween Camera Zoom", "0.65", ""]
 			]
 		],
 		[
+			46928.5714285714,
+			[
+				["Tween Camera Zoom", "0.6", ""]
+			]
+		],
+		[
+			48000,
+			[
+				["Tween Camera Zoom", "0.55", ""]
+			]
+		],
+		[
 			51428.5714285715,
 			[
-				["Tween Camera Zoom", "0.7", ""]
+				["Tween Camera Zoom", "0.6", ""]
 			]
 		],
 		[
-			52928.5714285715,
+			52071.4285714286,
 			[
-				["Tween Camera Zoom", "0.75", ""]
+				["Tween Camera Zoom", "0.625", ""]
 			]
 		],
 		[
-			54000,
+			53142.8571428572,
 			[
-				["Tween Camera Zoom", "0.55,true", "0.66,cubeIn"]
+				["Tween Camera Zoom", "0.65", ""]
+			]
+		],
+		[
+			53785.7142857143,
+			[
+				["Tween Camera Zoom", "0.47, true", "1.07,cubeIn"]
 			]
 		],
 		[
@@ -2468,7 +2512,7 @@
 		[
 			191785.714285714,
 			[
-				["Play Animation", "f", "dad"]
+				["Play Animation", "ending", "dad"]
 			]
 		],
 		[
@@ -2481,13 +2525,7 @@
 		[
 			193714.285714285,
 			[
-				["Play Animation", "a", "gf"]
-			]
-		],
-		[
-			195857.142857143,
-			[
-				["Change Character", "gf", "gfh2"]
+				["Play Animation", "ending", "gf"]
 			]
 		]
 	],

@@ -1,6 +1,6 @@
 {
-	"player1": "bf hog",
-	"gfVersion": "gfh2",
+	"player1": "bfh",
+	"gfVersion": "gfh",
 	"notes": [
 		{
 			"sectionBeats": 4,
@@ -5768,7 +5768,7 @@
 			"bpm": 191
 		}
 	],
-	"player2": "hog2",
+	"player2": "hog",
 	"events": [
 		[
 			13846.1538461538,
@@ -7754,9 +7754,9 @@
 		]
 	],
 	"song": "Manual Blast",
-	"stage": "hog",
 	"validScore": true,
 	"needsVoices": true,
+	"stage": "hog",
 	"format": "psych_v1_convert",
 	"speed": 2.9,
 	"bpm": 130

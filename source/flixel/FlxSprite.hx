@@ -18,6 +18,7 @@ import flixel.util.FlxDestroyUtil;
 import flixel.util.FlxDirectionFlags;
 import openfl.display.BitmapData;
 import openfl.display.BlendMode;
+import openfl.display3D.Context3DBlendTarget;
 import openfl.geom.ColorTransform;
 import openfl.geom.Point;
 import openfl.geom.Rectangle;
@@ -257,6 +258,15 @@ class FlxSprite extends FlxObject
 	 * Blending modes, just like Photoshop or whatever, e.g. "multiply", "screen", etc.
 	 */
 	public var blend(default, set):BlendMode;
+
+	/**
+	 * Blending modes target.
+	 *
+	 * BlendRenderTarget: The sprite is blended against the current render target.
+	 * BlendBackBuffer: The sprite is blended against the back buffer.
+	 * BlendCustomTarget: The sprite is blended against a custom bitmap.
+	 */
+	public var blendTarget:Context3DBlendTarget = Context3DBlendTarget.BlendRenderTarget;
 	
 	/**
 	 * Multiplies this sprite's image by the given red, green and blue components, alpha is ignored.
@@ -293,6 +303,12 @@ class FlxSprite extends FlxObject
 	 * @since 4.1.0
 	 */
 	public var shader:FlxShader;
+
+	/**
+	 * An array of additional GLSL shaders for this sprite.
+	 * Rendered on top of the base sprite via multi-pass rendering.
+	 */
+	public var shaders:Array<FlxShader> = [];
 
 	/**
 	 * The actual frame used for sprite rendering
@@ -446,6 +462,12 @@ class FlxSprite extends FlxObject
 		_frameGraphic = FlxDestroyUtil.destroy(_frameGraphic);
 
 		shader = null;
+
+		if (shaders != null)
+		{
+			shaders.splice(0, shaders.length);
+			shaders = null;
+		}
 	}
 
 	public function clone():FlxSprite
@@ -770,7 +792,7 @@ class FlxSprite extends FlxObject
 	public function clipToWorldBounds(left:Float, top:Float, right:Float, bottom:Float)
 	{
 		if (clipRect == null)
-			clipRect = new FlxRect();
+			clipRect = FlxRect.get();
 		
 		final p1 = worldToFramePosition(left, top);
 		final p2 = worldToFramePosition(right, bottom);
@@ -817,7 +839,7 @@ class FlxSprite extends FlxObject
 	public function clipToWorldBoundsSimple(left:Float, top:Float, right:Float, bottom:Float)
 	{
 		if (clipRect == null)
-			clipRect = new FlxRect();
+			clipRect = FlxRect.get();
 		
 		final p1 = worldToFrameSimpleHelper(left, top);
 		final p2 = worldToFrameSimpleHelper(right, bottom);
@@ -864,7 +886,7 @@ class FlxSprite extends FlxObject
 	public function clipToViewBounds(left:Float, top:Float, right:Float, bottom:Float, ?camera:FlxCamera)
 	{
 		if (clipRect == null)
-			clipRect = new FlxRect();
+			clipRect = FlxRect.get();
 		
 		if (camera == null)
 			camera = getDefaultCamera();
@@ -1009,7 +1031,7 @@ class FlxSprite extends FlxObject
 			_point.round();
 
 		_point.copyTo(_flashPoint);
-		camera.copyPixels(_frame, framePixels, _flashRect, _flashPoint, colorTransform, blend, antialiasing);
+		camera.copyPixels(_frame, framePixels, _flashRect, _flashPoint, colorTransform, blend, antialiasing, blendTarget);
 	}
 
 	@:noCompletion
@@ -1022,10 +1044,23 @@ class FlxSprite extends FlxObject
 	static final drawComplexMatrix = new FlxMatrix();
 	function drawFrameComplex(frame:FlxFrame, camera:FlxCamera):Void
 	{
-		final matrix = drawComplexMatrix; // TODO: Just use local?
+		final matrix = drawComplexMatrix;
+		
 		prepareComplexMatrix(matrix, frame, camera);
 		
-		camera.drawPixels(frame, framePixels, matrix, colorTransform, blend, antialiasing, shader);
+		camera.drawPixels(frame, framePixels, matrix, colorTransform, blend, antialiasing, shader, blendTarget);
+
+		if (shaders != null && shaders.length > 0)
+		{
+			for (i in 0...shaders.length)
+			{
+				var extraShader = shaders[i];
+				if (extraShader != null)
+				{
+					camera.drawPixels(frame, framePixels, matrix, colorTransform, blend, antialiasing, extraShader, blendTarget);
+				}
+			}
+		}
 	}
 	
 	function prepareComplexMatrix(matrix:FlxMatrix, frame:FlxFrame, camera:FlxCamera)

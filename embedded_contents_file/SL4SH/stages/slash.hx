@@ -14,6 +14,9 @@ function onCreate()
 {
 	makeBackground(firstBG);
 	firstBG[1].sprite.animation.paused = true;
+
+	for (i in 0...firstBG.length) //Fuck antialiasing
+		firstBG[i].sprite.antialiasing = false;
 }
 
 var oldMHS:Bool = false;

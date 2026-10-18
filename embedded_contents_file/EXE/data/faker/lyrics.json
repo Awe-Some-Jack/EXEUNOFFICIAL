@@ -73,5 +73,10 @@
 				  "lyrics.faker.1": "Çok; ...",
 				  "lyrics.faker.2": "ÇOK; ...",
 				  "lyrics.faker.3": "ÇOK; YA;VAŞSIN!"
+			  },
+	"hu-HU":  {
+				  "lyrics.faker.1":  "Te; túl...",
+				  "lyrics.faker.2":  "TE; TÚL...",
+				  "lyrics.faker.3":  "TE; TÚL; LASSÚ VAGY!"
 			  }
 }

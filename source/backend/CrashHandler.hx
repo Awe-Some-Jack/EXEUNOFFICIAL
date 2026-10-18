@@ -29,7 +29,7 @@ enum AudioStatus {
 class CrashHandler
 {
     @:unreflective
-    static final LOGS_DIR = "logs/";
+    static final LOGS_DIR = #if switch backend.SwitchStorage.LOGS #else "logs/" #end;
     
     public static function init():Void
     {

@@ -2940,16 +2940,13 @@ class PlayState extends MusicBeatState
 					case 'gf' | 'girlfriend':
 						charType = 2;
 						gf.shader = null;
-						gf.useRenderTexture = true;
 					case 'dad' | 'opponent':
 						charType = 1;
 						dad.shader = null;
-						dad.useRenderTexture = true;
 					default:
 						charType = Std.parseInt(value1);
 						if(Math.isNaN(charType)) charType = 0;
 						boyfriend.shader = null;
-						boyfriend.useRenderTexture = true;
 				}
 
 				switch(charType) {
@@ -2964,6 +2961,7 @@ class PlayState extends MusicBeatState
 							boyfriend = boyfriendMap.get(value2);
 							boyfriend.alpha = lastAlpha;
 							iconP1.changeIcon(boyfriend.healthIcon);
+							boyfriend.useRenderTexture = true;
 						}
 						setOnScripts('boyfriendName', boyfriend.curCharacter);
 
@@ -2986,6 +2984,7 @@ class PlayState extends MusicBeatState
 							}
 							dad.alpha = lastAlpha;
 							iconP2.changeIcon(dad.healthIcon);
+							dad.useRenderTexture = true;
 						}
 						setOnScripts('dadName', dad.curCharacter);
 
@@ -3002,6 +3001,7 @@ class PlayState extends MusicBeatState
 								gf.alpha = 0.00001;
 								gf = gfMap.get(value2);
 								gf.alpha = lastAlpha;
+								gf.useRenderTexture = true;
 							}
 							setOnScripts('gfName', gf.curCharacter);
 						}
@@ -3088,6 +3088,8 @@ class PlayState extends MusicBeatState
 	{
 		if (finishingSong) return;
 		finishingSong = true;
+
+		if (instance != this || vocals == null || opponentVocals == null) return;
 
 		FlxG.sound.music.volume = 0;
 
@@ -3956,7 +3958,7 @@ class PlayState extends MusicBeatState
 
 		// play character anims
 		var char:Character = boyfriend;
-		if(note?.gfNote || (SONG.notes[curSection] != null && SONG.notes[curSection].gfSection)) char = gf;
+		if((note?.gfNote && note?.noteType != 'BF and GF Sing') || (note?.noteType != 'BF Sing' && note?.noteType != 'BF and GF Sing' && SONG.notes[curSection] != null && SONG.notes[curSection].gfSection)) char = gf;
 
 		if(char != null && (note == null || !note.noMissAnimation) && char.hasMissAnimations)
 		{
@@ -4112,7 +4114,7 @@ class PlayState extends MusicBeatState
 			var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length - 1, note.noteData)))] + postfix;
 			
 			char = gf;
-			if(char != null && (note == null || !note.noMissAnimation) && char.hasMissAnimations) char.playAnim(animToPlay, true);
+			if(char != null && (note == null || !note.noMissAnimation) && char.hasMissAnimations && !slideBlocked(char, note)) char.playAnim(animToPlay, true);
 			char.holdTimer = 0;
 		}
 	}
@@ -4128,7 +4130,7 @@ class PlayState extends MusicBeatState
 		var char:Character = boyfriend;
 		var animCheck:String = 'hey';
 
-		if(note.gfNote)
+		if(note.gfNote && note.noteType != 'BF and GF Sing')
 		{
 			char = gf;
 			animCheck = 'cheer';
@@ -4200,6 +4202,7 @@ class PlayState extends MusicBeatState
 	function playCharacterNoteAnim(char:Character, note:Note, animToPlay:String):Void
 	{
 		if(char == null) return;
+		if(slideBlocked(char, note)) return;
 
 		var canPlay:Bool = true;
 
@@ -4252,6 +4255,9 @@ class PlayState extends MusicBeatState
 		if(char == null)
 			return;
 
+		if(slideBlocked(char, note))
+			return;
+
 		var animToPlay:String =
 			singAnimations[
 				Std.int(Math.abs(Math.min(singAnimations.length - 1, note.noteData)))
@@ -4285,6 +4291,45 @@ class PlayState extends MusicBeatState
 			char.playAnim(animToPlay, true);
 
 		char.holdTimer = 0;
+	}
+
+	var slideLocks:Map<Character, {data:Int, end:Float}> = new Map();
+	var chordTimes:Map<Character, Float> = new Map();
+	public var slideLeeway:Float = 0;
+
+	public function slideBlocked(char:Character, note:Note):Bool
+	{
+		if(char == null || note.mustPress)
+			return false;
+
+		if(note.visible && note.alpha > 0 && note.isOnScreen(note.camera))
+			return false;
+
+		if(!note.isSustainNote)
+		{
+			final lastTime:Null<Float> = chordTimes.get(char);
+			if(lastTime != null && Math.abs(note.strumTime - lastTime) < 2)
+			{
+				char.holdTimer = 0;
+				return true;
+			}
+			chordTimes.set(char, note.strumTime);
+		}
+
+		if(!(note.isSustainNote || note.sustainLength > 0))
+			return false;
+
+		final slideLeeway:Float = this.slideLeeway >= 0 ? this.slideLeeway : Conductor.stepCrochet;
+		final lock = slideLocks.get(char);
+		if(lock != null && Conductor.songPosition < lock.end - slideLeeway && note.noteData != lock.data)
+		{
+			char.holdTimer = 0;
+			return true;
+		}
+
+		final head:Note = (note.isSustainNote && note.parent != null) ? note.parent : note;
+		slideLocks.set(char, {data: note.noteData, end: head.strumTime + head.sustainLength});
+		return false;
 	}
 
 	public function invalidateNote(note:Note, ?byHit:Bool = false):Void {
@@ -4361,6 +4406,7 @@ class PlayState extends MusicBeatState
 
 		FlxG.camera.filters = [];
 
+		if (FlxG.sound.music != null) FlxG.sound.music.onComplete = null;
 		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
 		FlxG.timeScale = 1;
 

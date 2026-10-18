@@ -110,7 +110,7 @@ function opponentNoteHit(note:Note):Void {
 	if(note.noteType == 'GF2andDad' || note.noteType == 'GF2Sing') {
 		var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length-1, note.noteData)))] + note.animSuffix;
 
-		if(Hijacked.instance.gf2 != null) {
+		if(Hijacked.instance.gf2 != null && !PlayState.instance.slideBlocked(Hijacked.instance.gf2, note)) {
 			var canPlay:Bool = true;
 			if(note.isSustainNote)
 			{

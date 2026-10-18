@@ -44,7 +44,7 @@ function onCreatePost()
 			];
 
 			game.camVideo.filters = [
-				new ShaderFilter(game.getLuaObject('gBlur').shader), new ShaderFilter(game.getLuaObject('glitch2').shader), new ShaderFilter(game.getLuaObject('sexo2').shader), new ShaderFilter(game.getLuaObject('ca2').shader)
+				new ShaderFilter(game.getLuaObject('gBlur').shader), new ShaderFilter(game.getLuaObject('glitch2').shader), new ShaderFilter(game.getLuaObject('ca2').shader)
 			];
 		]])
 	end

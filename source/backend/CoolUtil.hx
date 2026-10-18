@@ -184,10 +184,14 @@ class CoolUtil
 	**/
 	@:access(flixel.util.FlxSave.validate)
 	inline public static function getSavePath():String {
+		#if switch
+		return 'saves';
+		#else
 		final company:String = FlxG.stage.application.meta.get('company');
 		// #if (flixel < "5.0.0") return company; #else
 		return '${company}/${flixel.util.FlxSave.validate(FlxG.stage.application.meta.get('file'))}';
 		// #end
+		#end
 	}
 
 	public static function setTextBorderFromString(text:FlxText, border:String)

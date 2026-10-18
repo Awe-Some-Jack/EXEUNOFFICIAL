@@ -466,11 +466,11 @@ class Paths
 		#if sys
 		if (sys.FileSystem.exists(path)) return sys.io.File.getContent(path);
 		#end
-		#if mobile
-		final mobileRoot = MobileUtil.getDirectory();
-		if (path.startsWith(mobileRoot))
+		#if (mobile || switch)
+		final deviceRoot = #if mobile MobileUtil.getDirectory() #else SwitchStorage.ROOT #end;
+		if (path.startsWith(deviceRoot))
 		{
-			final relative = path.substr(mobileRoot.length);
+			final relative = path.substr(deviceRoot.length);
 			if (OpenFlAssets.exists(relative)) return OpenFlAssets.getText(relative);
 		}
 		#end
@@ -596,10 +596,10 @@ class Paths
 		#end
 
 		var manifestScanFolder = scanFolder;
-		#if mobile
-		final mobileRoot = MobileUtil.getDirectory();
-		if (manifestScanFolder.startsWith(mobileRoot))
-			manifestScanFolder = manifestScanFolder.substr(mobileRoot.length);
+		#if (mobile || switch)
+		final deviceRoot = #if mobile MobileUtil.getDirectory() #else SwitchStorage.ROOT #end;
+		if (manifestScanFolder.startsWith(deviceRoot))
+			manifestScanFolder = manifestScanFolder.substr(deviceRoot.length);
 		#end
 
 		for (file in OpenFlAssets.list()) {
@@ -945,7 +945,7 @@ class Paths
 	#if MODS_ALLOWED
     inline static public function mods(key:String = '', ?embed:Bool = false):String {
 		if(embed) return 'contents/' + key;
-        return #if (mobile && sys) MobileUtil.getDirectory() + #end 'contents/' + key;
+        return #if (mobile && sys) MobileUtil.getDirectory() + #elseif switch SwitchStorage.ROOT + #end 'contents/' + key;
     }
 
     inline static public function modsJson(key:String):String

@@ -65,6 +65,9 @@ class Project extends HXProject
 
         this.sources.push("source");
 
+        if (isSwitch())
+            this.sources.push("switch-std");
+
         this.window.width = 1280;
         this.window.height = 720;
         this.window.fps = 60;
@@ -152,10 +155,7 @@ class Project extends HXProject
         if (VIDEOS_ALLOWED.isEnabled(this))
         {
             if (isSwitch())
-            {
-                if (debug)
-                    setHaxedef("SWITCHVIDEO_LOGGING");
-            }
+                setHaxedef("SWITCHVIDEO_LOGGING");
             else
             {
                 setHaxedef("HXVLC_NO_SHARE_DIRECTORY");
@@ -299,7 +299,7 @@ class Project extends HXProject
             if (FileSystem.exists("contents_file") && !isMobile() && !isSwitch())
                 addAssetRecursive("contents_file", "contents", false, ["*"], []);
 
-            if (FileSystem.exists("embedded_contents_file"))
+            if (FileSystem.exists("embedded_contents_file") && !isSwitch())
                 addAssetRecursive("embedded_contents_file", "contents", defines.exists("final") || isMobile(), ["*"], []);
 
             if (FileSystem.exists("list.txt"))
@@ -743,6 +743,9 @@ class Project extends HXProject
 
                 postBuildCallbacks.push(new CLICommand("mkdir", ["-p", binDir]));
                 postBuildCallbacks.push(new CLICommand("cp", ["-Rf", srcDir + "/.", binDir]));
+
+                if (FileSystem.exists("embedded_contents_file"))
+                    postBuildCallbacks.push(new CLICommand("cp", ["-Rf", haxe.io.Path.normalize(Sys.getCwd() + "/embedded_contents_file") + "/.", binDir]));
             }
             else
             {

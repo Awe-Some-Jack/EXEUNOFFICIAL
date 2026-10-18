@@ -521,7 +521,7 @@ function onUpdatePost(e)
 		if overlaps('sonicHitboxFix', ring) then
 			setVar('rings', math.min(getVar('rings') + 1, 150))
 			callOnScripts('updateRings')
-			playSound('Ringer', 0.4)
+			playSound('Ringer', 0.3)
 			playAnim(ring, 'sparkle', true)
 			runTimer(ring, 0.4)
 			table.remove(ringGroup, i)
@@ -732,7 +732,33 @@ function noteMiss(_, _, _, isn)
 		addLuaSprite(missedRing, true)
 		runTimer(missedRing, 1)
 
-		playSound('loseRings', 0.25)
+		playSound('loseRings', 0.15)
+		setVar('rings', getVar('rings') - 1)
+		callOnScripts('updateRings')
+	else
+		setProperty('instakillOnMiss', true)
+		callMethod('doDeathCheck', {true})
+	end
+end
+
+function noteMissPress(id)
+	if isInvulnerable then return end
+	if getVar('rings') > 0 then
+		mrid = mrid + 1
+		local missedRing = 'missedRing'..mrid
+		makeAnimatedLuaSprite(missedRing, 'prey/ring', getProperty('boyfriend.x'), getProperty('boyfriend.y'))
+		addAnimationByPrefix(missedRing, 'idle', 'ring', 8, true)
+		scaleObject(missedRing, 6, 6)
+		setProperty(missedRing..'.antialiasing', false)
+		setProperty(missedRing..'.velocity.x', getRandomInt(-500, 500))
+		setProperty(missedRing..'.acceleration.x', getProperty('floorGroup[0].velocity.x'))
+		setProperty(missedRing..'.maxVelocity.x', math.abs(getProperty('floorGroup[0].velocity.x')))
+		setProperty(missedRing..'.velocity.y', -getRandomInt(1500, 2000))
+		setProperty(missedRing..'.acceleration.y', gravity)
+		addLuaSprite(missedRing, true)
+		runTimer(missedRing, 1)
+
+		playSound('loseRings', 0.15)
 		setVar('rings', getVar('rings') - 1)
 		callOnScripts('updateRings')
 	else

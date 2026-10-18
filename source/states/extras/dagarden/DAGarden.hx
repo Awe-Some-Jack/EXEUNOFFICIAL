@@ -415,7 +415,7 @@ class DAGPlayer extends FlxGroup
             fadeTarget = 1.0;
             fadeSpeed  = 12.0;
             isPlaying  = true;
-            #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text}', null, true, data.inst.length, "icon", 2, inst.time); #end
+            #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text}', null, true, inst.length, "icon", 2, inst.time); #end
             return;
         }
         stop();
@@ -921,7 +921,7 @@ class DAGPlayer extends FlxGroup
         fadeTarget = 1.0;
         fadeSpeed  = 12.0;
         isPlaying  = true;
-        #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text}', null, true, inst.length, "icon", 2, inst.time); #end
+        #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", 'Listening to ${songNameTxt.text}', null, true, data.inst.length, "icon", 2, inst.time); #end
     }
 
     function checkEnd():Void

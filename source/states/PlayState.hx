@@ -3246,6 +3246,7 @@ class PlayState extends MusicBeatState
 					if (StoryModeState.fromTooSlow)
 					{
 
+						FlxG.save.data.goToFinalEscape = null;
 						FlxG.save.data.theYourselfCutscene = true;
 						FlxG.save.flush();
 						

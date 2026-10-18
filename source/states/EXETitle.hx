@@ -143,6 +143,9 @@ class EXETitle extends MusicBeatState
 				PlayState.storyWeek = 0;
 				PlayState.storyDifficulty = launchDiff;
 
+				states.StoryModeState.fromStoryMode = true;
+				StoryModeState.fromTooSlow = true;
+
 				LoadingState.loadAndSwitchState(new PlayState(), true);
 				return;
 			} 

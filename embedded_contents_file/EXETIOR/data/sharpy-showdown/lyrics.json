@@ -118,5 +118,13 @@
         "lyrics.sharpyshowdown.4": "Daha; fazla; sak;la;na;maz;sın;",
         "lyrics.sharpyshowdown.5": "Gerçek;ten; kaçabilece;ğini; mi; sa;nıyorsun?;",
         "lyrics.sharpyshowdown.6": "Evet;"
-	}
+	},
+    "hu-HU": {
+        "lyrics.sharpyshowdown.1":  "Tu;dod...;",
+		"lyrics.sharpyshowdown.2":  "Te; nem; fut; hatsz; el;",
+		"lyrics.sharpyshowdown.3":  "Tu;dom; hogy; hol; vagy...;",
+		"lyrics.sharpyshowdown.4":  "Több; ide;ig; úgy; se; búj;hatsz",
+		"lyrics.sharpyshowdown.5":  "Tény;leg; azt; hi;szed; el; futhatsz?; ",
+		"lyrics.sharpyshowdown.6":  "Ja;"
+    }
 }

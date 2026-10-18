@@ -58,5 +58,9 @@
 	"tr-TR":  {
 				  "lyrics.godspeed.1": "Ne; den; ka;çı;yor;sun",
     			  "lyrics.godspeed.2": "Tan;rın;dan; mı; kaçıyor;sun?"
+			  },
+	"hu-HU":  {
+				  "lyrics.godspeed.1":  "Miért; pró;bálsz; el; fut;ni",
+				  "lyrics.godspeed.2":  "ha; e;lőt;ted; egy; ISTEN?"
 			  }
 }

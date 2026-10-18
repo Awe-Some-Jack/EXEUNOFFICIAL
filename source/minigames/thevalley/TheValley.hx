@@ -362,6 +362,8 @@ class TheValley extends MusicBeatState implements ExeWorld
 		hud.forceShardsVisible = cutscene.skullCSPlaying || (_gameplayStarted && FlxG.keys.pressed.TAB);
 		if (_gameplayStarted && FlxG.keys.justPressed.TAB) hud.flashShards();
 
+		hud.timerRunning = _gameplayStarted && !cutscene.skullCSPlaying && (_deathPhase == 0);
+
 		var nearestActiveMonster:Monster = null;
 		var nearestActiveDist = Math.POSITIVE_INFINITY;
 		for (m in monsters)
@@ -487,7 +489,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 	function _updatePlayerOcclusion(elapsed:Float):Void
 	{
-		final target = bg.getOcclusionAmount(player, trees);
+		final target = bg.getOcclusionAmountThrottled(player, elapsed, trees);
 		_occlusionAmount += (target - _occlusionAmount) * (1.0 - Math.pow(0.01, elapsed * 6.0));
 		player.color = FlxColor.interpolate(FlxColor.WHITE, 0xFF63636E, _occlusionAmount);
 	}
@@ -712,7 +714,18 @@ class TheValley extends MusicBeatState implements ExeWorld
 				cutscene.triggerSkullCS2(!released);
 			}
 			else if (cutscene.onSkullWin != null) cutscene.onSkullWin();
+		}, () -> {
+			for (m in monsters)
+			{
+				if (m.isDormant || m.disguised) continue;
+				final dx = m.sprite.x - player.x;
+				final dy = m.sprite.y - player.y;
+				final dist = Math.sqrt(dx * dx + dy * dy);
+				if (dist < 480.0) return true;
+			}
+			return false;
 		});
+		
 		sk.skullId = skullPrompts.length;
 		skullPrompts.push(sk);
 		return sk;
@@ -1055,7 +1068,6 @@ class TheValley extends MusicBeatState implements ExeWorld
 	{
 		#if VIDEOS_ALLOWED
 		final vid = new VideoSprite(0, 0, true);
-		vid.antialiasing = vid.video.antialiasing = ClientPrefs.data.antialiasing;
 		vid.camera = uiCam;
 		add(vid);
 

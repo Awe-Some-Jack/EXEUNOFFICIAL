@@ -6,6 +6,7 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
+
 import minigames.Camera;
 import minigames.thevalley.character.player.Player;
 

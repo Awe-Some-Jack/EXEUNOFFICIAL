@@ -9,7 +9,9 @@ import flixel.text.FlxText;
 import flixel.text.FlxText.FlxTextAlign;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.util.FlxColor;
+
 import openfl.filters.ShaderFilter;
+
 import shaders.WiggleEffect;
 
 enum GameOverPhase

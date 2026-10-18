@@ -1,6 +1,9 @@
 --Script by Raimbowcore12
 
 local byeByeActivated = false
+local forceVocalsDown = false
+
+setVar("forceVocalsDown", false)
 
 addHaxeLibrary('EXEAchievements', "backend.EXEAchievements")
 
@@ -8,7 +11,7 @@ addHaxeLibrary('EXEAchievements', "backend.EXEAchievements")
 local curText = {}
 local curStringText = ''
 
-function onCreate() 
+function onCreate()
 	-- preloading this thing bruh
 	precacheSound("DIGA-BYE-BYE")
 end
@@ -16,7 +19,7 @@ end
 function onEvent(e, v1, v2)
     if e == "triggerByeByeChance" then
         if byeByeActivated then
-            setProperty("opponentVocals.volume", 0)
+			setVar("forceVocalsDown", true)
             playSound("DIGA-BYE-BYE", 0.54, "yes")
             runTimer("setVocalsBack", 8)
 			triggerEvent('Play Animation', 'mispulmones', 'dad')
@@ -88,7 +91,7 @@ end
 
 local curKey = 1
 local code = 'byebye'
-function onUpdatePost(e)
+function onUpdatePost()
     if curBeat < 272 then
         if keyboardJustPressed(code:sub(curKey, curKey):upper()) then
             curKey = curKey + 1
@@ -98,6 +101,7 @@ function onUpdatePost(e)
             playSound('ringSound')
             byeByeActivated = true
         end
+		if forceVocalsDown then setProperty("opponentVocals.volume", 0) debugPrint(getProperty("opponentVocals.volume")) end
     end
 end
 
@@ -125,7 +129,7 @@ function getHealthColor(arg)
 end
 
 function onTimerCompleted(t)
-    if t == "setVocalsBack" then byeByeActivated = false setProperty("opponentVocals.volume", 1) end
+    if t == "setVocalsBack" then byeByeActivated = false setVar("forceVocalsDown", false) end
 end
 
 

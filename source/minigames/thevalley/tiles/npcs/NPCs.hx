@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.sound.FlxSound;
 import flixel.util.FlxDirectionFlags;
+
 import minigames.Camera;
 import minigames.thevalley.TheValley;
 import minigames.thevalley.character.player.Player;
@@ -247,6 +248,8 @@ class GaryNPC extends DeadNPC
 		_subs.close(0.35);
 		_state = GClosing;
 		_closeTimer = 0.35;
+
+        _camera?.followTarget();
 	}
 
 	function _lineAt(time:Float):Int

@@ -3246,6 +3246,7 @@ class PlayState extends MusicBeatState
 					if (StoryModeState.fromTooSlow)
 					{
 
+						FlxG.save.data.goToFinalEscape = null;
 						FlxG.save.data.theYourselfCutscene = true;
 						FlxG.save.flush();
 						
@@ -4036,7 +4037,7 @@ class PlayState extends MusicBeatState
 		handleOpponentAnimation(note);
 
 		if (opponentVocals.length <= 0) vocals.volume = 1;
-		else opponentVocals.volume = 1;
+		else opponentVocals.volume = MusicBeatState.getVariables().get('forceVocalsDown') ? 0 : 1;
 
 		strumPlayAnim(true,
 			Std.int(Math.abs(note.noteData)),
@@ -4102,6 +4103,18 @@ class PlayState extends MusicBeatState
 
 		if(!note.isSustainNote)
 			invalidateNote(note, true);
+		
+		var char:Character = boyfriend;
+		if(note != null && note.noteType == 'BF and GF Sing') {
+			var postfix:String = '';
+			if(note != null) postfix = note.animSuffix;
+
+			var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length - 1, note.noteData)))] + postfix;
+			
+			char = gf;
+			if(char != null && (note == null || !note.noMissAnimation) && char.hasMissAnimations) char.playAnim(animToPlay, true);
+			char.holdTimer = 0;
+		}
 	}
 
 	function handleCommonNote(note:Note):Void
@@ -4139,7 +4152,7 @@ class PlayState extends MusicBeatState
 			strumPlayAnim(false, Std.int(Math.abs(note.noteData)), Conductor.stepCrochet * 1.25 / 1000 / playbackRate, note);
 
 		vocals.volume = 1;
-		opponentVocals.volume = 1;
+		//opponentVocals.volume = 1;
 
 		if(!note.isSustainNote)
 		{

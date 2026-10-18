@@ -39,6 +39,38 @@
 			"anim": "singRIGHT",
 			"indices": [0, 1, 2],
 			"name": "BF NOTE RIGHT"
+		},
+		{
+			"offsets": [-440, -341],
+			"indices": [0, 1, 2],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "BF NOTE LEFT MISS"
+		},
+		{
+			"offsets": [-439, -341],
+			"indices": [0, 1, 2],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "BF NOTE RIGHT MISS"
+		},
+		{
+			"offsets": [-440, -341],
+			"indices": [0, 1, 2],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "BF NOTE UP MISS"
+		},
+		{
+			"offsets": [-440, -341],
+			"indices": [0, 1, 2],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "BF NOTE DOWN MISS"
 		}
 	],
 	"vocals_file": "",

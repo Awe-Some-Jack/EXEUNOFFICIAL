@@ -6,11 +6,13 @@ import flixel.FlxState;
 import flixel.addons.nape.FlxNapeSpace;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxDirectionFlags;
+
 import nape.geom.Vec2;
 import nape.phys.Body;
 import nape.phys.BodyType;
 import nape.phys.Material;
 import nape.shape.Polygon;
+
 import minigames.Camera;
 import minigames.thevalley.character.player.Player;
 import minigames.thevalley.character.player.Player.PlayerMode;
@@ -700,6 +702,8 @@ class SkullPrompt
 	final _onWin:(first:Bool, playerReleased:Bool) -> Void;
 	final _camera:Camera;
 	final _hunt:ShardHunt;
+	final _isDanger:Null<() -> Bool>;
+	
 	var _state:SkullState = SkIdle;
 	var _timer:Float = 0;
 	var _win:Bool = false;
@@ -711,13 +715,14 @@ class SkullPrompt
 
 	inline function get_skullY() return _skull.y;
 
-	public function new(wx:Float, wy:Float, player:Player, eButton:FlxSprite, group:FlxTypedGroup<FlxSprite>, camera:Camera, hunt:ShardHunt, ?onWin:(first:Bool, playerReleased:Bool) -> Void)
+	public function new(wx:Float, wy:Float, player:Player, eButton:FlxSprite, group:FlxTypedGroup<FlxSprite>, camera:Camera, hunt:ShardHunt, ?onWin:(first:Bool, playerReleased:Bool) -> Void, ?isDanger:() -> Bool)
 	{
 		_player = player;
 		_eButton = eButton;
 		_onWin = onWin;
 		_camera = camera;
 		_hunt = hunt;
+		_isDanger = isDanger;
 		_hunt.addSkull();
 
 		_skull = new FlxSprite(wx, wy);
@@ -776,9 +781,20 @@ class SkullPrompt
 			case SkSearching:
 				_eButton.alpha = 0;
 				_timer += elapsed;
+
+				final wantsToMove = FlxG.keys.anyJustPressed([LEFT, RIGHT, UP, DOWN, SPACE, A, D, W, S, Z]);
+				if (wantsToMove && (_isDanger != null && _isDanger()))
+				{
+					interrupt();
+					_player.lockedAnim = null;
+					_player.cinematic = false;
+					_player.animation.play("idle");
+					return;
+				}
+
 				_camera.zoomIn(SEARCH_ZOOM_BUMP * _easeOut(_timer / 1.0), 0);
 				final dig = _player.animation.curAnim;
-				if ((dig != null && dig.name == "searching" && dig.finished) || _timer >= 1.5)
+				if ((dig?.name == "searching" && dig.finished) || _timer >= 1.5)
 				{
 					_searchSound?.stop();
 					_searchSound = null;
@@ -792,10 +808,18 @@ class SkullPrompt
 			case SkResult:
 				_eButton.alpha = 0;
 				_timer += elapsed;
+
+				final wantsToMove = FlxG.keys.anyJustPressed([LEFT, RIGHT, UP, DOWN, A, D, W, S]);
+				if (wantsToMove && (_isDanger != null && _isDanger()))
+				{
+					_finish(true);
+					return;
+				}
+
 				_camera.zoomIn(SEARCH_ZOOM_BUMP * (1 - _easeOut(_timer / 0.9)), 0);
 				final anim = _player.animation.curAnim;
-				if (!_win && anim != null && anim.name == "searchinglose" && anim.finished) _player.animation.pause();
-				if (_win && anim != null && anim.name == "searchreward" && anim.finished) _lockAnim("searchingwin");
+				if (!_win && anim?.name == "searchinglose" && anim.finished) _player.animation.pause();
+				if (_win && anim?.name == "searchreward" && anim.finished) _lockAnim("searchingwin");
 
 				if (_timer >= (_win ? 2.0 + 0.8 : 2.0)) _finish(true);
 		}

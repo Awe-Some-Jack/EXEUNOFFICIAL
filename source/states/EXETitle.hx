@@ -127,21 +127,25 @@ class EXETitle extends MusicBeatState
 		{
 			if (FlxG.save.data.goToFinalEscape != null){
 				initialized = true;
-				FlxG.save.data.goToFinalEscape = null;
-				FlxG.save.flush();
-
+				
 				Mods.currentModDirectory = "STORY MODE";
 				WeekData.reloadWeekFiles(false);
 				Difficulty.loadFromWeek();
-
+				
 				final song:String = 'final-escape';
 				final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
 				final launchDiff = (normalIdx > -1) ? normalIdx : 0;
-
+				
 				PlayState.SONG = Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
 				PlayState.isStoryMode = true;
 				PlayState.storyWeek = 0;
 				PlayState.storyDifficulty = launchDiff;
+				
+				states.StoryModeState.fromStoryMode = true;
+				StoryModeState.fromTooSlow = true;
+				
+				FlxG.save.data.goToFinalEscape = null;
+				FlxG.save.flush();
 
 				LoadingState.loadAndSwitchState(new PlayState(), true);
 				return;

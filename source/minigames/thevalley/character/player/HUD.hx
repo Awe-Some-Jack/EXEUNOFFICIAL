@@ -302,10 +302,9 @@ class HUD
 
 	function _updatePopups(elapsed:Float):Void
 	{
-		final order = _popups.copy();
-		order.sort((a, b) -> a.age < b.age ? -1 : (a.age > b.age ? 1 : 0));
+		_popups.sort((a, b) -> a.age < b.age ? -1 : (a.age > b.age ? 1 : 0));
 		var row = 0;
-		for (p in order)
+		for (p in _popups)
 		{
 			if (p.age >= 2.4)
 			{

@@ -637,7 +637,7 @@ class StoryModeState extends MusicBeatState
 		{
 			Song.loadFromJson(Highscore.formatSong(songLower, launchDiff), songLower);
 			PlayState.isStoryMode     = true;
-			PlayState.storyPlaylist   = STORY_SONGS.slice(curIndex).filter(song -> song != 'yourself');
+			PlayState.storyPlaylist   = fromTooSlow ? STORY_SONGS.slice(curIndex).filter(song -> song != 'yourself') : STORY_SONGS;
 			PlayState.storyDifficulty = launchDiff;
 		}
 		catch (e:haxe.Exception)

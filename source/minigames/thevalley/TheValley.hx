@@ -1068,6 +1068,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	{
 		#if VIDEOS_ALLOWED
 		final vid = new VideoSprite(0, 0, true);
+		vid.antialiasing = false;
 		vid.camera = uiCam;
 		add(vid);
 

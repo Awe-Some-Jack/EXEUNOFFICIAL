@@ -54,7 +54,7 @@ local function setFateConfig()
 end
 
 local function prepareCharacters()
-    addCharacterToList('lord x podrido', 'dad') addCharacterToList('lord x p3corto', 'dad') addCharacterToList('lord x p3largo', 'dad') addCharacterToList('lord x p3scream', 'dad')
+    addCharacterToList('lord x podrido', 'dad') addCharacterToList('lord x p3largo', 'dad') addCharacterToList('lord x p3scream', 'dad')
     addCharacterToList('bfo', 'bf') addCharacterToList('bf085', 'bf') addCharacterToList('bf-perspective-right', 'bf')
 end
 
@@ -255,7 +255,7 @@ local fateStageEvents = {
         for _, trans in ipairs({'transition', 'transition2'}) do if luaSpriteExists(trans) then removeLuaSprite(trans, true) end end
         for _, hola in ipairs(fateAssets['BG2']) do setProperty(hola.name..'.alpha', 1) end
 
-        triggerEvent('Change Character', 'dad', 'lord x p3corto')
+        triggerEvent('Change Character', 'dad', 'lord x p3largo')
         triggerEvent('Change Character', 'bf', 'bf-perspective-right')
 
         setProperty('dad.alpha', 1)
@@ -321,8 +321,6 @@ local fateSongEvents  = {
         addCountDown(count)
     end,
     ['in his world'] = function()
-        triggerEvent('Change Character', 'dad', 'lord x p3largo')
-
         callMethod('dad.setPosition', {getProperty('dad.x') - 500, getProperty('dad.y') - 840})
 
         doTweenAlpha('fogAlpha', 'fog', 1, 2)

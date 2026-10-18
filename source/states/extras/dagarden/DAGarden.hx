@@ -967,20 +967,6 @@ class DAGPlayer extends FlxGroup
 
     function destroyAudio():Void
     {
-        if (instSound != null)
-        {
-            try { instSound.close(); } catch(_:Dynamic) {}
-            instSound = null;
-        }
-
-        for (s in vocalSounds)
-        {
-            if (s != null) {
-                try { s.close(); } catch(_:Dynamic) {}
-            }
-        }
-        vocalSounds = [];
-
         if (inst != null)
         {
             inst.stop();
@@ -999,12 +985,18 @@ class DAGPlayer extends FlxGroup
             }
         }
 
+        instSound = null;
+        vocalSounds = [];
+
         vocals     = [];
         oppVocals  = [];
         isPlaying  = false;
         loadedSong = '';
         loadedMod  = '';
-        #if DISCORD_ALLOWED DiscordClient.changePresence("In the D.A Garden", null); #end
+        
+        #if DISCORD_ALLOWED 
+        DiscordClient.changePresence("In the D.A Garden", "Browsing D.A Garden", null, false, 0, "icon", 0, 0); 
+        #end
     }
 }
 

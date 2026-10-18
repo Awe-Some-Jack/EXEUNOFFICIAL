@@ -1,12 +1,13 @@
 package minigames.thevalley.map;
 
 import flixel.FlxSprite;
-import haxe.io.Bytes;
+
 import openfl.display.BitmapData;
 import openfl.geom.Rectangle;
-#if lime
+
 import lime.graphics.PixelFormat;
-#end
+
+import haxe.io.Bytes;
 
 class AlphaMask
 {

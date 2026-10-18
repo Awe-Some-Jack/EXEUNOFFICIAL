@@ -4,6 +4,7 @@ import flixel.FlxCamera;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.graphics.frames.FlxAtlasFrames;
+
 import minigames.thevalley.TheValley;
 import minigames.thevalley.character.player.Player;
 import minigames.thevalley.character.player.HUD;

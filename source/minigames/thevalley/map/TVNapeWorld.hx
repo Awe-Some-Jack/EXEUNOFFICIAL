@@ -1,7 +1,11 @@
 ﻿package minigames.thevalley.map;
 
+import flixel.FlxG;
+import flixel.addons.nape.FlxNapeSpace;
+
 import openfl.display.BitmapData;
 import openfl.Assets;
+
 import nape.phys.Body;
 import nape.phys.BodyType;
 import nape.phys.Material;
@@ -15,10 +19,8 @@ import nape.callbacks.PreListener;
 import nape.callbacks.PreCallback;
 import nape.callbacks.PreFlag;
 import nape.callbacks.InteractionType;
-import flixel.FlxG;
-import flixel.addons.nape.FlxNapeSpace;
 
-// so this whole class reads the collsion straight outta a png. 
+// so this whole class reads the collsion straight outta a photo. 
 class TVNapeWorld
 {
 	public static inline var GRAVITY:Float = 1800.0;

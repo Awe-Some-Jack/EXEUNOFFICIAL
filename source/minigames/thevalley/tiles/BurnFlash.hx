@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.util.FlxColor;
+
 import minigames.thevalley.character.player.Player;
 
 class BurnFlash

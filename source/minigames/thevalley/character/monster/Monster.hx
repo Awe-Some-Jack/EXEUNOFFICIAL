@@ -1,12 +1,17 @@
 package minigames.thevalley.character.monster;
 
 import flixel.FlxG;
+import flixel.FlxCamera;
 import flixel.FlxSprite;
+import flixel.FlxState;
+import flixel.graphics.FlxGraphic;
 import flixel.addons.nape.FlxNapeSpace;
 import flixel.text.FlxText;
 import flixel.text.FlxText.FlxTextAlign;
 import flixel.text.FlxText.FlxTextBorderStyle;
+import flixel.sound.FlxSound;
 import flixel.util.FlxColor;
+
 import nape.callbacks.CbType;
 import nape.callbacks.InteractionType;
 import nape.callbacks.PreCallback;
@@ -21,21 +26,19 @@ import nape.phys.Material;
 import nape.shape.Circle;
 import nape.shape.Polygon;
 import nape.space.Space;
+
 import minigames.thevalley.libs.ai.behavior.BT;
 import minigames.thevalley.libs.ai.behavior.BehaviorTree;
 import minigames.thevalley.libs.ai.behavior.node.NODE_STATUS;
 import minigames.thevalley.libs.ai.nav.NavAgent;
 import minigames.thevalley.libs.ai.nav.PathFollower;
 import minigames.thevalley.libs.ai.nav.PathFollower.NavStatus;
-import flixel.FlxState;
 import minigames.thevalley.map.WaypointGraph;
 import minigames.thevalley.map.WaypointGraph.WNode;
 import minigames.thevalley.map.TVNapeWorld;
 import minigames.thevalley.character.player.Player;
 import minigames.thevalley.tiles.Tiles.Totem;
-import flixel.FlxCamera;
 import minigames.thevalley.tiles.Tiles.SpineTile;
-import flixel.sound.FlxSound;
 
 using minigames.thevalley.libs.ai.behavior.BlackboardTools;
 
@@ -1944,11 +1947,20 @@ class Monster implements NavAgent
 			for (p in _dust) if (p.life <= 0) { d = p; break; }
 			if (d == null)
 			{
-				final spr = new FlxSprite().makeGraphic(3, 3, 0xFFB4ACC0);
+				static var _dustGraphic:FlxGraphic = null;
+
+				if (_dustGraphic == null) 
+				{
+					_dustGraphic = FlxG.bitmap.create(3, 3, 0xFFB4ACC0, true, "valley_dust_particle");
+					_dustGraphic.persist = true;
+				}
+				final spr = new FlxSprite().loadGraphic(_dustGraphic);
 				spr.active = false;
+
 				final at = _layer.members.indexOf(sprite);
 				if (at >= 0) _layer.insert(at, spr);
 				else _layer.add(spr);
+
 				d = { spr: spr, vx: 0.0, vy: 0.0, life: 0.0, max: 1.0 };
 				_dust.push(d);
 			}

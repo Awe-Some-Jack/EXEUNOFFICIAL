@@ -1,15 +1,16 @@
 package minigames.thevalley.cutscenes;
 
+import flixel.FlxG;
 import flixel.FlxCamera;
 import flixel.FlxSprite;
-import flixel.FlxG;
+import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
+
 import minigames.Camera;
 import minigames.thevalley.character.player.Player;
 import minigames.thevalley.map.BGValley;
-import flixel.FlxState;
 
 enum IntroPhase
 {
@@ -31,14 +32,16 @@ class IntroCutscene
 {
 	static final FALL_BOTTOMS:Array<Float> = [55, 55, 55, 55, 55, 54, 56, 57, 62, 68];
 
-	public var onDone:Void->Void;
 	public static var quickStart:Bool = false;
+
+	public var onDone:Void->Void;
 	public var musicMix(default, null):Float = 0;
 
 	final _camera:Camera;
 	final _player:Player;
 	final _bg:BGValley;
 	final _eButton:FlxSprite;
+	final _state:FlxState;
 	final _dimmer:FlxSprite;
 	final _flash:FlxSprite;
 	final _skipText:FlxText;
@@ -79,6 +82,7 @@ class IntroCutscene
 
 	public function new(state:flixel.FlxState, camera:Camera, uiCam:FlxCamera, player:Player, eButton:FlxSprite, bg:BGValley)
 	{
+		_state = state;
 		_camera = camera;
 		_player = player;
 		_bg = bg;
@@ -395,6 +399,13 @@ class IntroCutscene
 		_directing = false;
 		_camera.followTarget(2.8);
 		_fadeMusic(0, 2.8);
+
+		final tv = Std.downcast(_state, minigames.thevalley.TheValley);
+		if (tv != null)
+		{
+			for (m in tv.monsters)
+				m.forgetHunt();
+		}
 	}
 
 	function _quick(skipped:Bool):Void
@@ -472,10 +483,13 @@ class IntroCutscene
 	function _sink():Void
 	{
 		var drop = 0.0;
+
 		final anim = _player.animation.curAnim;
-		if (anim != null && (anim.name == "break_idle" || anim.name == "break_tap")) drop = 13.0;
+		if (anim != null && (anim.name == "break_idle" || anim.name == "break_tap")) 
+			drop = 13.0;
 		else if (anim != null && anim.name == "break_full" && anim.curFrame < FALL_BOTTOMS.length)
 			drop = 13.0 * Math.min(1, (73.0 - FALL_BOTTOMS[anim.curFrame]) / 18.0);
+
 		_player.offset.y = _baseOffsetY - Math.round(drop);
 	}
 

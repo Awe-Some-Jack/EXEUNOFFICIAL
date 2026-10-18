@@ -3,6 +3,7 @@ package minigames.thevalley.tiles;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+
 import minigames.thevalley.TheValley;
 import minigames.thevalley.character.player.Player;
 import minigames.thevalley.character.player.Player.PlayerMode;

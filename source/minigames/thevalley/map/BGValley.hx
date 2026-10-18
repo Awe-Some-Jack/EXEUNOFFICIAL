@@ -5,8 +5,11 @@ import flixel.FlxState;
 import flixel.addons.display.FlxBackdrop;
 import flixel.graphics.FlxGraphic;
 import flixel.util.FlxAxes;
-import haxe.ds.ArraySort;
+
 import openfl.Assets;
+
+import haxe.ds.ArraySort;
+
 import shaders.WiggleEffect;
 import minigames.thevalley.character.player.Player;
 
@@ -82,6 +85,9 @@ class BGValley
 	final _occluders:Array<Occluder> = [];
 	final _fades:Array<Occluder> = [];
 	final _near:Array<Occluder> = [];
+
+	var _occlusionTimer:Float = 0;
+	var _cachedOcclusion:Float = 0.0;
 
 	public static function loadParts(count:Int):Array<MapPart>
 	{
@@ -229,6 +235,17 @@ class BGValley
 			}
 		}
 		return hits / (12 * 12);
+	}
+
+	public function getOcclusionAmountThrottled(player:Player, elapsed:Float, ?extraSprites:Array<FlxSprite>):Float
+	{
+		_occlusionTimer -= elapsed;
+		if (_occlusionTimer <= 0)
+		{
+			_occlusionTimer = 0.05;
+			_cachedOcclusion = getOcclusionAmount(player, extraSprites);
+		}
+		return _cachedOcclusion;
 	}
 
 	function _addSky():Void

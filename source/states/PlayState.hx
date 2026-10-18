@@ -4103,6 +4103,18 @@ class PlayState extends MusicBeatState
 
 		if(!note.isSustainNote)
 			invalidateNote(note, true);
+		
+		var char:Character = boyfriend;
+		if(note != null && note.noteType == 'BF and GF Sing') {
+			var postfix:String = '';
+			if(note != null) postfix = note.animSuffix;
+
+			var animToPlay:String = singAnimations[Std.int(Math.abs(Math.min(singAnimations.length - 1, note.noteData)))] + postfix;
+			
+			char = gf;
+			if(char != null && (note == null || !note.noMissAnimation) && char.hasMissAnimations) char.playAnim(animToPlay, true);
+			char.holdTimer = 0;
+		}
 	}
 
 	function handleCommonNote(note:Note):Void

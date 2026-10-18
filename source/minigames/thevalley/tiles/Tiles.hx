@@ -782,7 +782,7 @@ class SkullPrompt
 				_eButton.alpha = 0;
 				_timer += elapsed;
 
-				final wantsToMove = FlxG.keys.anyJustPressed([LEFT, RIGHT, UP, DOWN, A, D, W, S]);
+				final wantsToMove = FlxG.keys.anyJustPressed([LEFT, RIGHT, UP, DOWN, SPACE, A, D, W, S, Z]);
 				if (wantsToMove && (_isDanger != null && _isDanger()))
 				{
 					interrupt();

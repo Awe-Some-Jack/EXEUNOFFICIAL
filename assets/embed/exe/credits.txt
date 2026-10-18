@@ -186,8 +186,6 @@ Kostya Hernández
 =Art Assisting
 Zar0c4l
 
-
-
 =Pixel Artwork Leader
 RoxasWhite_
 
@@ -436,6 +434,9 @@ Jacob
 =Ukrainian Translation
 Snorby
 MaysLastPlay
+
+=Hungarian Translation
+Szilváspite
 
 
 

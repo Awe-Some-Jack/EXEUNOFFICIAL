@@ -10,9 +10,10 @@ typedef DropShadow = {
 
 typedef Shader = {
 	var shader:ErrorHandledRuntimeShader;
+	@:optional var defaultConfig:Map<String, Dynamic>;
 	@:optional var config:Map<String, Dynamic>;
 	@:optional var configOffset:Map<String, Dynamic>;
-	var shaderTween:FlxTween;
+	@:optional var shaderTweens:Map<String, FlxTween>;
 }
 
 var hogBG:Array<BackgroundSprite> = [
@@ -26,9 +27,9 @@ var hogBG:Array<BackgroundSprite> = [
 	{path: 'bg/normal/hill', position: [-850, -130], scroll: [0.6, 0.6], isAtlas: true, animation: [{name: 'hill', fps: 36, looped: true}]},
 	{path: 'characters/tailsatlas', tag: 'tails', position: [100, -50], scale: [0.8, 0.8], scroll: [0.8, 0.8], isAtlas: true, animation: [{name: 'normalidle'}]},
 	{path: 'bg/normal/floor', position: [-900, -450]},
-	{path: 'characters/knuxatlas', tag: 'knux', position: [1180, 350], isAtlas: true, animation: [{name: 'normalidle'}], layer: 'behindbf'},
-	{path: 'bg/normal/fg', position: [-915, -950], scroll: [1.5, 1.5], front: true},
-	{path: 'bg/normal/overlay', position: [-900, -650], scroll: [1.5, 1.5], front: true, blend: 'add', color: 0xFFFF781E, alpha: 0}
+	{path: 'characters/knuxatlas', tag: 'knux', position: [1180, 350], isAtlas: true, animation: [{name: 'normalidle'}], layer: 'top'},
+	{path: 'bg/normal/fg', position: [-915, -950], scroll: [1.5, 1.5], layer: 'top'},
+	{path: 'bg/normal/overlay', position: [-900, -650], scroll: [1.5, 1.5], layer: 'top', blend: 'add', color: 0xFFFF781E, alpha: 0}
 ];
 
 final game:PlayState = PlayState.instance;
@@ -39,10 +40,12 @@ var isManualBlast:Bool = false;
 
 //objs
 
+var topBar:FlxSprite;
+var botBar:FlxSprite;
 var vignette:FlxSprite;
 
 //shaders
-var bloom:Shader = {shader: null, config: ['saturation' => 0.85, 'brightness' => -0.075, 'contrast' => 0.95]};
+var bloom:Shader = {shader: null, config: ['saturation' => 0.88, 'brightness' => -0.075, 'contrast' => 0.95]};
 var aberration:Shader = {shader: null, config: ['amount' => 0.1]};
 var chromatic:Shader = {shader: null};
 var glitch:Shader = {shader: null};
@@ -102,6 +105,14 @@ function onCreate()
 	vignette.alpha = 0.6;
 	add(vignette);
 
+	topBar = new FlxSprite(-50, -100).makeGraphic(FlxG.width + 100, 100, 0xFF000000);
+	topBar.camera = camHUD;
+	insert(0, topBar);
+
+	botBar = new FlxSprite(-50, FlxG.height).makeGraphic(FlxG.width + 100, 100, 0xFF000000);
+	botBar.camera = camHUD;
+	insert(0, botBar);
+
 	//handle shaders vvvvvvvvvvvv xd
 
 	for (c in shaderChars)
@@ -135,15 +146,19 @@ function onCreate()
 
 	bloom.shader = new ErrorHandledRuntimeShader('brightness', File.getContent(Paths.shaderFragment('brightness')));
 	bloom.configOffset = ['saturation' => 0, 'brightness' => 0, 'contrast' => 0]; //sucks
+	bloom.defaultConfig = ['saturation' => 0.88, 'brightness' => -0.075, 'contrast' => 0.95];
+	bloom.shaderTweens = [];
 
 	aberration.shader = new ErrorHandledRuntimeShader('chromabber', File.getContent(Paths.shaderFragment('chromabber')));
 	aberration.shader.setFloat('amount', aberration.config.get('amount'));
+	aberration.shaderTweens = [];
 
 	camGame.filters = camHUD.filters = [new ShaderFilter(aberration.shader), new ShaderFilter(bloom.shader)];
 
 	if (!isManualBlast)
 	{
-		bloom.config = ['saturation' => 1, 'brightness' => 0, 'contrast' => 1]; //sucks
+		bloom.config = ['saturation' => 1, 'brightness' => 0, 'contrast' => 1];
+		bloom.defaultConfig = ['saturation' => 1, 'brightness' => 0, 'contrast' => 1]; //sucks
 
 		chromatic.shader = new ErrorHandledRuntimeShader('chromatic', File.getContent(Paths.shaderFragment('chromatic')));
 		chromatic.shader.setFloatArray('rOffset', [0, 0]);
@@ -173,7 +188,7 @@ var _sine:Float = 0;
 function onUpdatePost(e:Float)
 {
 	_sine += e;
-
+	
 	bloom.shader.setFloat('saturation', bloom.config.get('saturation') + bloom.configOffset.get('saturation'));
 	bloom.shader.setFloat('brightness', bloom.config.get('brightness') + bloom.configOffset.get('brightness'));
 	bloom.shader.setFloat('contrast', bloom.config.get('contrast') + bloom.configOffset.get('contrast'));
@@ -190,7 +205,7 @@ function onUpdatePost(e:Float)
 
 		vignette.alpha = FlxMath.lerp(0.0001, 0.6, progress);
 
-		bloom.configOffset.set('saturation', FlxMath.lerp(0, -0.15, progress));
+		bloom.configOffset.set('saturation', FlxMath.lerp(0, -0.12, progress));
 		bloom.configOffset.set('brightness', FlxMath.lerp(0, -0.075, progress));
 		bloom.configOffset.set('contrast', FlxMath.lerp(0, -0.05, progress));
 
@@ -213,29 +228,27 @@ function onEvent(n,v1,v2)
 {
 	if (n == 'bright zoom' && prefs.flashing)
 	{
-		if (bloom.shaderTween?.active ?? false) bloom.shaderTween.cancel();
+		if (bloom.shaderTweens['bloom']?.active ?? false) bloom.shaderTweens['bloom'].cancel();
 
-		bloom.config = ['saturation' => 0.85, 'brightness' => -0.075, 'contrast' => 0.95];
-		if (!isManualBlast) bloom.config = ['saturation' => 1, 'brightness' => 0, 'contrast' => 1];
-		var baseBrightness:Float = bloom.config.get('brightness');
-   		var baseContrast:Float = bloom.config.get('contrast');
+		var baseBrightness:Float = bloom.defaultConfig.get('brightness');
+   		var baseContrast:Float = bloom.defaultConfig.get('contrast');
 
 		var oneSplit:Array<String> = v1.split(',');
 		var fromValue:Float = (Math.isNaN(Std.parseFloat(oneSplit[0])) ? 0.15 : Std.parseFloat(oneSplit[0]));
 		var toValue:Float = (Math.isNaN(Std.parseFloat(oneSplit[1])) ? 0 : Std.parseFloat(oneSplit[1]));
 
 		var twoSplit:Array<String> = v2.split(',');
-		var duration:Float = (Math.isNaN(Std.parseFloat(twoSplit[0])) ? 250 : Std.parseFloat(twoSplit[0]));
+		var duration:Float = (Math.isNaN(Std.parseFloat(twoSplit[0])) ? 4 : Std.parseFloat(twoSplit[0]));
 		var ease:String = (twoSplit[1] == null || twoSplit[1] == '') ? 'cubeOut' : twoSplit[1];
 
-		bloom.shaderTween = FlxTween.num(fromValue, toValue, Conductor.crochet / (1000 / duration), {ease: LuaUtils.getTweenEaseByString(ease)}, v -> {
+		bloom.shaderTweens['bloom'] = FlxTween.num(fromValue, toValue, Conductor.crochet / (1000 / duration), {ease: LuaUtils.getTweenEaseByString(ease)}, v -> {
 			bloom.config.set('brightness', baseBrightness + v * 2);
 			bloom.config.set('contrast', baseContrast + (v * 4));
 		});
 
-		if (aberration.shaderTween?.active ?? false) aberration.shaderTween.cancel();
+		if (aberration.shaderTweens['abb']?.active ?? false) aberration.shaderTweens['abb'].cancel();
 		
-		aberration.shaderTween = FlxTween.num(fromValue, toValue, Conductor.crochet / (1000 / duration), {ease: LuaUtils.getTweenEaseByString(ease)}, v -> {
+		aberration.shaderTweens['abb'] = FlxTween.num(fromValue, toValue, Conductor.crochet / (1000 / duration), {ease: LuaUtils.getTweenEaseByString(ease)}, v -> {
 			aberration.shader.setFloat('amount', aberration.config.get('amount') + (v / 5));
 		});
 	}
@@ -286,6 +299,36 @@ function onEvent(n,v1,v2)
 				c.char = char;
 				setShaderFrameInfo(c.tag);
 			}
+		}
+	}
+
+	if (n == 'sexxxxxx')
+	{
+		switch(v1)
+		{
+			case 'saturation':
+				if (bloom.shaderTweens['sat']?.active ?? false) bloom.shaderTweens['sat'].cancel();
+
+				var split:Array<String> = v2.split(',');
+				var sat:Float = (Math.isNaN(Std.parseFloat(split[0])) ? 1 : Std.parseFloat(split[0]));
+				var duration:Float = (Math.isNaN(Std.parseFloat(split[1])) ? 0 : Std.parseFloat(split[1]));
+				if (duration <= 0)
+					bloom.config.set('saturation', sat);
+				else
+				{
+					bloom.shaderTweens['sat'] = FlxTween.num(bloom.config.get('saturation'), sat, Conductor.crochet / (1000 / duration), {ease: FlxEase.cubeInOut}, v -> {
+						bloom.config.set('saturation', v);
+					});
+				}
+
+			case 'cinematicbars':
+				FlxTween.cancelTweensOf(topBar); FlxTween.cancelTweensOf(botBar);
+
+				var split:Array<String> = v2.split(',');
+				var duration:Float = (Math.isNaN(Std.parseFloat(split[1])) ? 4 : Std.parseFloat(split[1]));
+
+				FlxTween.tween(topBar, {y: split[0] == '1' ? -50 : -100}, Conductor.crochet / (1000 / duration), {ease: FlxEase.cubeInOut});
+				FlxTween.tween(botBar, {y: split[0] == '1' ? FlxG.height - 50 : FlxG.height}, Conductor.crochet / (1000 / duration), {ease: FlxEase.cubeInOut});
 		}
 	}
 }

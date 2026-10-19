@@ -34,7 +34,8 @@ class Note extends FlxSprite
 		'GF Sing',
 		'No Animation',
 		'Sustain Animation',
-		'BF and GF Sing'
+		'BF and GF Sing',
+		'BF Sing'
 	];
 
 	/** General-purpose key–value store; read/write from Lua and HScript. **/
@@ -294,6 +295,9 @@ class Note extends FlxSprite
 
 				case 'GF Sing':
 					gfNote = true;
+
+				case 'BF Sing':
+					gfNote = false;
 			}
 
 			if (value != null && value.length > 1)

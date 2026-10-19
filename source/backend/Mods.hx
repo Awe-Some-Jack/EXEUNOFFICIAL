@@ -14,6 +14,20 @@ typedef ModsList = {
 class Mods
 {
 	static public var currentModDirectory:String = '';
+
+	public static final CONTENTS_LIST:String = 'contentsList.dat';
+
+	public static function contentsListReadPath():String
+	{
+		#if switch
+		if (FileSystem.exists(contentsListSavePath())) return contentsListSavePath();
+		#end
+		return CONTENTS_LIST;
+	}
+
+	inline public static function contentsListSavePath():String
+		return #if switch SwitchStorage.ROOT + #end CONTENTS_LIST;
+
 	public static final ignoreModFolders:Array<String> = [
 		'characters',
 		'custom_events',
@@ -131,6 +145,7 @@ class Mods
 	public static function directoriesWithFile(path:String, fileToFind:String, mods:Bool = true):Array<String>
 	{
 		var foldersToCheck:Array<String> = [];
+		final embeddedRoot:Bool = #if switch false #else true #end;
 		
 		final checkFile = (folderPath:String) -> {
 			final fullPath = folderPath + fileToFind;
@@ -162,19 +177,19 @@ class Mods
 		{
 			for(mod in Mods.getGlobalMods())
 			{
-				final folder:String = Paths.mods(mod + '/', true);
+				final folder:String = Paths.mods(mod + '/', embeddedRoot);
 				if(checkFile(folder) && !foldersToCheck.contains(folder + fileToFind)) 
 					foldersToCheck.push(folder + fileToFind);
 			}
 
 			if(Mods.currentModDirectory?.length > 0)
 			{
-				final folder:String = Paths.mods(Mods.currentModDirectory + '/', true);
+				final folder:String = Paths.mods(Mods.currentModDirectory + '/', embeddedRoot);
 				if(checkFile(folder) && !foldersToCheck.contains(folder + fileToFind)) 
 					foldersToCheck.push(folder + fileToFind);
 			}
 
-			final folder:String = Paths.mods('', true);
+			final folder:String = Paths.mods('', embeddedRoot);
 			if(checkFile(folder) && !foldersToCheck.contains(folder + fileToFind)) 
 				foldersToCheck.push(folder + fileToFind);
 		}
@@ -211,7 +226,7 @@ class Mods
 
 		#if MODS_ALLOWED
 		try {
-			for (mod in CoolUtil.coolTextFile('contentsList.dat'))
+			for (mod in CoolUtil.coolTextFile(contentsListReadPath()))
 			{
 				//trace('Mod: $mod');
 				if(mod.trim().length < 1) continue;
@@ -237,7 +252,7 @@ class Mods
 		var list:Array<Array<Dynamic>> = [];
 		var added:Array<String> = [];
 		try {
-			for (mod in CoolUtil.coolTextFile('contentsList.dat'))
+			for (mod in CoolUtil.coolTextFile(contentsListReadPath()))
 			{
 				var dat:Array<String> = mod.split("|");
 				var folder:String = dat[0];
@@ -275,7 +290,7 @@ class Mods
 		File.saveBytes('contentsList.dat', Assets.getBytes('contentsList.dat'));
 		#else*/
 		try {
-			File.saveContent(#if mobile MobileUtil.getDirectory() + #end 'contentsList.dat', fileStr);
+			File.saveContent(#if mobile MobileUtil.getDirectory() + #end contentsListSavePath(), fileStr);
 		} catch(e) {
 			trace(e);
 		}

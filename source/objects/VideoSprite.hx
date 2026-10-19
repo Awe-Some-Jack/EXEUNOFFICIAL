@@ -70,11 +70,16 @@ class VideoSprite extends FlxSpriteGroup
 		video.setPosition(0, 0);
 		video.onEndReached = () ->
 		{
-			for (cb in _endCallbacks)
-				cb();
+			final callbacks:Array<Void->Void> = _endCallbacks.copy();
+			new FlxTimer().start(0.25, _ ->
+			{
+				for (cb in callbacks)
+					cb();
+			});
 		};
 		video.onFormatSetup = () ->
 		{
+			video.visible = true;
 			for (cb in _formatCallbacks)
 				cb();
 		};
@@ -138,7 +143,8 @@ class VideoSprite extends FlxSpriteGroup
 			if (wantsLoop)
 				video.setLooping(true);
 
-			final success = video.load(videoPath, wantsLoop ? ['input-repeat=65545'] : null);
+			video.visible = false;
+			final success = video.load(backend.SwitchStorage.toDevicePath(videoPath), wantsLoop ? ['input-repeat=65545'] : null);
 			if (success && args?.contains(ARG_MUTED))
 				video.setVolume(0);
 			#else
@@ -421,6 +427,11 @@ class VideoSprite extends FlxSpriteGroup
 	{
 		super.update(elapsed);
 
+		#if switch
+		if (video != null && (video.graphic == null || video.graphic.isDestroyed))
+			video.visible = false;
+		#end
+
 		#if (switch && FLX_SOUND_SYSTEM)
 		video?.setVolume((FlxG.sound.muted ? 0 : 1) * FlxG.sound.volume);
 		#end
@@ -490,6 +501,10 @@ class VideoSprite extends FlxSpriteGroup
 			}
 
 			stop();
+
+			remove(video, true);
+			video.destroy();
+			video = null;
 		}
 		#else
 		if (video?.bitmap != null)

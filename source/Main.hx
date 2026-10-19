@@ -68,6 +68,12 @@ class Main extends Sprite
 	@:noCompletion
 	private static function __init__():Void
 	{
+		boot('static init');
+
+		#if switch
+		untyped __global__.__hxcpp_set_critical_error_handler(onBootError);
+		#end
+
 		#if (linux && !debug)
 		if (hxgamemode.GamemodeClient.request_start() != 0)
 		{
@@ -81,8 +87,62 @@ class Main extends Sprite
 	}
 
 
+	inline static function boot(message:String):Void
+	{
+		#if switch
+		backend.SwitchStorage.bootLog(message);
+		#end
+	}
+
+	#if switch
+	static function probeImage(file:String):Void
+	{
+		try
+		{
+			final path:String = FileSystem.fullPath(file);
+			final bitmap = openfl.display.BitmapData.fromFile(path);
+			boot('probe ' + path + ' exists=' + FileSystem.exists(file) + ' asset=' + Assets.exists(file) + ' bitmap=' + (bitmap == null ? 'null' : bitmap.width + 'x' + bitmap.height));
+		}
+		catch (e:Dynamic)
+		{
+			boot('probe ' + file + ' failed: ' + Std.string(e));
+		}
+	}
+
+	static function probeGraphics():Void
+	{
+		try
+		{
+			final context = openfl.Lib.current.stage?.context3D;
+			if (context == null)
+			{
+				boot('graphics: no context3D');
+				return;
+			}
+
+			@:privateAccess final gl = context.gl;
+			final extensions:Array<String> = gl.getSupportedExtensions();
+			boot('graphics: renderer=' + gl.getParameter(gl.RENDERER) + ' version=' + gl.getParameter(gl.VERSION) + ' glsl=' + gl.getParameter(gl.SHADING_LANGUAGE_VERSION));
+			boot('graphics: isASTCSupported=' + context.isASTCSupported() + ' extensions=' + extensions.length);
+			boot('graphics: compression=' + extensions.filter(e -> e.toLowerCase().indexOf('compression') != -1 || e.toLowerCase().indexOf('astc') != -1 || e.toLowerCase().indexOf('etc') != -1).join(','));
+		}
+		catch (e:Dynamic)
+		{
+			boot('graphics probe failed: ' + Std.string(e));
+		}
+	}
+
+	static function onBootError(message:Dynamic):Void
+	{
+		final report:String = 'critical error: ' + Std.string(message) + '\n' + haxe.CallStack.toString(haxe.CallStack.callStack());
+		Sys.println(report);
+		boot(report);
+	}
+	#end
+
 	public static function main():Void
 	{
+		boot('main');
 		Lib.current.addChild(new Main());
 	}
 
@@ -90,10 +150,24 @@ class Main extends Sprite
 	{
 		super();
 
+		boot('new');
 		Sys.println("sonic.exe: hola");
+
+		#if switch
+		backend.SwitchStorage.init();
+		boot('storage ready, cwd=' + Sys.getCwd() + ' assets=' + FileSystem.exists('assets') + ' list=' + FileSystem.exists('contentsList.dat') + ' contents=' + FileSystem.exists(Paths.mods()));
+		#end
+
+		#if switch
+		probeGraphics();
+		switchvideo.backend.SwitchVideoLog.logCallBack = function(msg:String, ?pos:haxe.PosInfos):Void boot('video: ' + msg);
+		probeImage('assets/exe/ring.webp');
+		probeImage('assets/shared/images/minigame/preymini/bg/map/back.png');
+		#end
 
 		#if CRASH_HANDLER
 		backend.CrashHandler.init();
+		boot('crash handler ready');
 		#end
 
 		#if sl_windows_api
@@ -123,9 +197,11 @@ class Main extends Sprite
 		Mods.pushGlobalMods();
 		#end
 		Mods.loadTopMod();
+		boot('mods loaded: ' + Mods.currentModDirectory);
 
 		FlxG.save.bind('funkin', CoolUtil.getSavePath());
 		Highscore.load();
+		boot('save loaded');
 		backend.GameJoltManager.autoLogin((_) -> {});
 
 		//FlxG.saves
@@ -194,12 +270,15 @@ class Main extends Sprite
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
 		backend.Language.reload();
+		boot('language loaded');
 
 		final push = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen);
 		@:privateAccess
         push._customSoundTray = debug.EXESoundTray;
 
+		boot('game created');
 		addChild(push);
+		boot('game added');
 
 		final fontCache:Map<String, openfl.text.Font> = [];
 		final getAssetOriginal = FlxG.assets.getAssetUnsafe;
@@ -282,6 +361,7 @@ class Main extends Sprite
 			if (FlxG.game != null)
 				resetSpriteCache(FlxG.game);
 		});
+		boot('setup finished');
 	}
 
 	public static function resetSpriteCache(sprite:Sprite):Void {

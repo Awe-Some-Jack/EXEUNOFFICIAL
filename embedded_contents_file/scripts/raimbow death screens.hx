@@ -21,7 +21,7 @@ import objects.VideoSprite;
 import animate.FlxAnimate;
 
 var exeGameOvers:Bool = false;
-var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline', 'uh-oh', 'sharpy-showdown', 'substantial'];
+var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline', 'uh-oh', 'sharpy-showdown', 'substantial', 'digitalized'];
 var voicelineSongs:Array<String> = ["cycles", "hellbent", "fate"];
 var diffGameOverSongs:Array<String> = ["starline"];
 
@@ -110,7 +110,7 @@ function setCustomGameOvers() {
             GameOverSubstate.endSoundName  = "deathSongs/exetior-retry";
             charPositions = [400, 50];
             initialDeathZoom = 1.2;
-        case "substantial":
+        case "substantial", "digitalized":
             initialDeathZoom = 0.9;
             GameOverSubstate.loopSoundName =   "deathSongs/xterion-loop";
             GameOverSubstate.endSoundName  = "deathSounds/xterion-retry";
@@ -133,7 +133,7 @@ function changeGameOvers() {
 }
 
 function setCamEvents() {
-    if (exeGameOvers || songName == 'substantial')
+    if (exeGameOvers || songName == 'substantial' || songName == 'digitalized')
     {
         FlxTween.cancelTweensOf(FlxG.camera); //Just in case, heh.
         FlxG.camera.follow();
@@ -151,7 +151,7 @@ function onGameOverStart()
         if (songName == song) {
             inGameOver = true;
             if (GameOverSubstate.instance.boyfriend != null && deadChar == null) deadChar = GameOverSubstate.instance.boyfriend;
-            if (exeGameOvers || songName == 'endless-us' || songName == 'substantial')
+            if (exeGameOvers || songName == 'endless-us' || songName == 'substantial' || songName == 'digitalized')
             {
                 deadChar.scrollFactor.set();
                 deadChar.setPosition(charPositions[0], charPositions[1]);
@@ -178,7 +178,7 @@ function setCustomEvents() {
         case "hollow":
             Conductor.bpm = 138;
             FlxTween.tween(FlxG.camera, {zoom: 0.8}, 2, {ease: FlxEase.sineInOut});
-        case "substantial":
+        case "substantial", "digitalized":
             GameOverSubstate.instance.boyfriend.visible = false;
             subsDeath = new VideoSprite(-500, -390, false);
             subsDeath.loadVideo(Paths.video("substantialDeath"));
@@ -287,7 +287,7 @@ function onUpdatePost()
             startCountdownMajin();
         }
     }
-    if (songName == 'substantial' && deadChar.animation.curAnim.name == 'deathLoop')
+    if ((songName == 'substantial' || songName == 'digitalized') && deadChar.animation.curAnim.name == 'deathLoop')
     {
         if (!toggleOnce) {
             toggleOnce = true;
@@ -450,7 +450,7 @@ function onGameOverConfirm(retry)
         case "hollow":
             FlxTween.cancelTweensOf(FlxG.camera);
             FlxTween.num(1, 0.8, 1, {ease: FlxEase.circOut,  onComplete: () -> FlxTween.tween(FlxG.camera, {zoom: 1.4}, 2, {ease: FlxEase.circIn})}, (val:Float) -> FlxG.camera.zoom = val);
-        case "substantial":
+        case "substantial", "digitalized":
             if (retry)
                 FlxG.cameras.flash(FlxColor.BLUE, 2);
             

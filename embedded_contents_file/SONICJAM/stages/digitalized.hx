@@ -293,7 +293,7 @@ function makeStar()
 	var star:FlxSprite = new FlxSprite(1200, 0).loadGraphic(Paths.image('bg/star'));
 	star.camera = skyCamera;
 	star.y = FlxG.random.int(100, 600);
-	final speedX:Float = FlxG.random.int(300, 1500);
+	final speedX:Float = FlxG.random.int(300, 1500) + Math.abs(sky.velocity.x)-50;
 	final speedY:Float = FlxG.random.int(10, 300);
 	star.velocity.x = -speedX;
 	star.velocity.y = -speedY;
@@ -305,6 +305,8 @@ function makeStar()
 
 function onUpdatePost(elapsed:Float)
 {
+	game.canReset = curStep >= 128 ? true : false;
+
 	for (star in stargazers)
 	{
 		if (star.x < -800)
@@ -315,9 +317,18 @@ function onUpdatePost(elapsed:Float)
 			break;
 		}
 	}
+
+	if(curStep >= 1664) sky.velocity.x -= elapsed * 40;
 	
 	lua('iconBF').scale.set(1, 1);
 	lua('iconOpp').scale.set(1, 1);
+}
+
+function onStepHit() {
+	switch(curStep) {
+		case 1920: FlxTween.tween(camHUD, {alpha: 0}, 2.74, {ease: FlxEase.smootherStepInOut});
+			
+	}
 }
 
 function onCreatePost()
@@ -331,9 +342,9 @@ function onCreatePost()
 		mirror.setFloat('y', 0);
 		mirror.setFloat('angle', 0);
 
-		skyCamera.filters = [new ShaderFilter(fishEye), new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(game.getLuaObject('pixel').shader), new ShaderFilter(mirror)];
-		camGame.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(game.getLuaObject('pixel').shader), new ShaderFilter(mirror)];
-		camHUD.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(game.getLuaObject('pixel').shader)];
+		skyCamera.filters = [new ShaderFilter(game.getLuaObject('dss').shader), new ShaderFilter(fishEye), new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(mirror)];
+		camGame.filters = [new ShaderFilter(game.getLuaObject('dss').shader), new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader), new ShaderFilter(mirror)];
+		camHUD.filters = [new ShaderFilter(game.getLuaObject('dss').shader), new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader)];
 	}
 }
 

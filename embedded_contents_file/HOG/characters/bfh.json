@@ -425,18 +425,250 @@
 			"name": "mbaltmissright"
 		},
 		{
-			"offsets": [264, -39],
+			"offsets": [203, -3],
 			"loop": false,
 			"fps": 24,
-			"anim": "dodge-mb",
+			"anim": "idle-mb-g1",
 			"indices": [],
-			"name": "mbdodge"
+			"name": "mbidleg1"
+		},
+		{
+			"offsets": [203, -3],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-mb-g1-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbidleg1"
+		},
+		{
+			"offsets": [236, -12],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-mb-g1",
+			"indices": [],
+			"name": "mbleftg1"
+		},
+		{
+			"offsets": [236, -12],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFT-mb-g1-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbleftg1"
+		},
+		{
+			"offsets": [222, -112],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-mb-g1",
+			"indices": [],
+			"name": "mbdowng1"
+		},
+		{
+			"offsets": [222, -112],
+			"loop": true,
+			"fps": 24,
+			"anim": "singDOWN-mb-g1-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbdowng1"
+		},
+		{
+			"offsets": [198, 83],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-mb-g1",
+			"indices": [],
+			"name": "mbupg1"
+		},
+		{
+			"offsets": [198, 83],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUP-mb-g1-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbupg1"
+		},
+		{
+			"offsets": [201, 7],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-mb-g1",
+			"indices": [],
+			"name": "mbrightg1"
+		},
+		{
+			"offsets": [201, 7],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHT-mb-g1-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbrightg1"
+		},
+		{
+			"offsets": [198, 2],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle-mb-g2",
+			"indices": [],
+			"name": "mbidleg2"
+		},
+		{
+			"offsets": [198, 2],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-mb-g2-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbidleg2"
+		},
+		{
+			"offsets": [236, 82],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-mb-g2",
+			"indices": [],
+			"name": "mbleftg2"
+		},
+		{
+			"offsets": [236, 82],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFT-mb-g2-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbleftg2"
+		},
+		{
+			"offsets": [235, -2],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-mb-g2",
+			"indices": [],
+			"name": "mbdowng2"
+		},
+		{
+			"offsets": [235, -2],
+			"loop": true,
+			"fps": 24,
+			"anim": "singDOWN-mb-g2-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbdowng2"
+		},
+		{
+			"offsets": [198, 84],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-mb-g2",
+			"indices": [],
+			"name": "mbupg2"
+		},
+		{
+			"offsets": [198, 84],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUP-mb-g2-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbupg2"
+		},
+		{
+			"offsets": [200, 102],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-mb-g2",
+			"indices": [],
+			"name": "mbrightg2"
+		},
+		{
+			"offsets": [200, 102],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHT-mb-g2-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbrightg2"
+		},
+		{
+			"offsets": [232, -73],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle-mb-alt-g",
+			"indices": [],
+			"name": "mbaltidleg"
+		},
+		{
+			"offsets": [232, -73],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-mb-alt-g-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbaltidleg"
+		},
+		{
+			"offsets": [227, -9],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-mb-alt-g",
+			"indices": [],
+			"name": "mbaltleftg"
+		},
+		{
+			"offsets": [227, -9],
+			"loop": true,
+			"fps": 24,
+			"anim": "singLEFT-mb-alt-g-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbaltleftg"
+		},
+		{
+			"offsets": [234, 21],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-mb-alt-g",
+			"indices": [],
+			"name": "mbaltdowng"
+		},
+		{
+			"offsets": [234, 21],
+			"loop": true,
+			"fps": 24,
+			"anim": "singDOWN-mb-alt-g-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbaltdowng"
+		},
+		{
+			"offsets": [256, 62],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-mb-alt-g",
+			"indices": [],
+			"name": "mbaltupg"
+		},
+		{
+			"offsets": [256, 62],
+			"loop": true,
+			"fps": 24,
+			"anim": "singUP-mb-alt-g-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbaltupg"
+		},
+		{
+			"offsets": [245, -39],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-mb-alt-g",
+			"indices": [],
+			"name": "mbaltrightg"
+		},
+		{
+			"offsets": [245, -39],
+			"loop": true,
+			"fps": 24,
+			"anim": "singRIGHT-mb-alt-g-loop",
+			"indices": [8, 9, 10, 11, 12, 13],
+			"name": "mbaltrightg"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/bfhogatlas",
-	"position": [-290, 0],
+	"image": "characters/bfhog",
+	"position": [-510, 0],
 	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],

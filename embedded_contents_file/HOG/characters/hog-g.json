@@ -2,7 +2,7 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [199, -208],
+			"offsets": [162, 44],
 			"anim": "singDOWN",
 			"fps": 24,
 			"name": "down",
@@ -10,7 +10,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [302, -201],
+			"offsets": [274, 53],
 			"anim": "singLEFT",
 			"fps": 24,
 			"name": "left",
@@ -18,7 +18,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [197, -154],
+			"offsets": [199, 101],
 			"anim": "singUP",
 			"fps": 24,
 			"name": "up",
@@ -26,7 +26,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [107, -178],
+			"offsets": [75, 79],
 			"anim": "singRIGHT",
 			"fps": 24,
 			"name": "right",
@@ -36,12 +36,12 @@
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/hog-glitch",
-	"position": [-30, -90],
+	"position": [0, 0],
 	"healthicon": "glitchedhog",
 	"flip_x": false,
 	"healthbar_colors": [12, 25, 68],
-	"camera_position": [-220, 220],
+	"camera_position": [0, 0],
 	"sing_duration": 8,
-	"scale": 1.5,
+	"scale": 1.59,
 	"_editor_isPlayer": false
 }

@@ -120,7 +120,7 @@ class GameJoltManager
 		'personel'         => 1117334,
 		'burning'          => 1117335,
 		'forestall-desire' => 1117336,
-		'deception'        => 1117337,
+		'deception'        => 1123069,
 		'miasma'           => 1117338,
 		'b4cksl4sh'        => 1117339,
 		'malediction'      => 1117340,
@@ -345,7 +345,7 @@ class GameJoltManager
 
 		if (totalScore > 0)
 		{
-			final scoreText:String = formatNumber(totalScore) + " Total HighScores";
+			final scoreText:String = formatNumber(totalScore) + " Total HighScore";
 			
 			submitScore(scoreText, totalScore, TotalScoreTableID, "", "", function(success:Bool)
 			{

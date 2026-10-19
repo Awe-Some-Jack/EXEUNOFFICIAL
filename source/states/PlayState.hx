@@ -3261,6 +3261,12 @@ class PlayState extends MusicBeatState
 					FlxG.save.data.theYourselfCutscene = null;
 					FlxG.save.data.storyModeDone = true;
 					FlxG.save.flush();
+				case "fate":
+					if (states.SoundTest.fromSoundTest)
+					{
+						FlxTransitionableState.skipNextTransIn = true;
+						FlxTransitionableState.skipNextTransOut = true;
+					}
 				case "fight-or-flight":
 					if (states.SoundTest.fromSoundTest) 
 					{

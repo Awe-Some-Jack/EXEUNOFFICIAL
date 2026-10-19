@@ -65,8 +65,6 @@ function onUpdate() {
             case 161: bgGraphic.alpha = 1;
             case 230: eas.alpha = 1;
             case 256: eas.alpha = 0;
-            case 449:
-                FlxTween.tween(blackGraphic, {alpha: 1}, 3, {ease: FlxEase.smootherStepInOut});
         }
     }
 }

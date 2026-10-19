@@ -321,8 +321,6 @@ local fateSongEvents  = {
         addCountDown(count)
     end,
     ['in his world'] = function()
-        callMethod('dad.setPosition', {getProperty('dad.x') - 500, getProperty('dad.y') - 840})
-
         doTweenAlpha('fogAlpha', 'fog', 1, 2)
         setSpriteShader('fog', 'wavyDistortion')
         setShaderFloat('fog', 'amount', 0.5)

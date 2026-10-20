@@ -121,7 +121,7 @@
 	"flip_x": false,
 	"healthbar_colors": [36, 37, 146],
 	"camera_position": [-1110, -1080],
-	"sing_duration": 5,
+	"sing_duration": 7,
 	"scale": 0.7,
 	"_editor_isPlayer": false
 }

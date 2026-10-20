@@ -9,7 +9,7 @@ var chaosBG:Array<BackgroundSprite> = [
 	{path: 'bg/rayo', tag: 'fuente', alpha: 0.35, blend: 'add', position: [1840, -180], scale: [0.9, 0.8], animation: [{name: 'ramaquin instancia', looped: true}, {name: 'ramaquintranqui', looped: true}]},
 	{path: 'bg/2', tag: '2', position: [720, 600], scale: [0.9, 0.9], layer: 'top'},
 	{path: 'bg/sonic', tag: 'sonic', position: [2255, 1640], scale: [0.545, 0.545], layer: 'top', isAtlas: true, animation: [{name: 'intro'}, {name: 'fuentes', indices: [92, 92]}]},
-	{path: 'bg/1', tag: 'pillars', position: [1300, 550], scale: [0.9, 0.9], scroll: [1.3, 1.1], layer: 'top'},
+	{path: 'bg/1', tag: 'pillars', position: [1400, 500], scale: [0.9, 1.1], scroll: [1.3, 1.1], layer: 'top'},
 	{path: 'bg/puelco', tag: 'cochinito', position: [4000, 2150], scale: [1.2, 1.2], scroll: [1.3, 1.3], front: true, animation: [{name: 'Porker Lewis'}]}
 ];
 
@@ -20,19 +20,16 @@ var bgCam:FlxCamera;
 var camOppOffset:Array = [-400, -500];
 var camOpp:FlxCamera;
 var camOppBG:FlxSprite;
-var camBf:FlxCamera;
-var camBfBG:FlxSprite;
-var camEmeralds:FlxCamera;
-var camEmeraldsBG:FlxSprite;
 
 var black:FlxSprite;
 
 var timeline:Array<{step:Float, callback:Void->Void}> = [
 	{
 		step: 464, callback: () -> {
+			camOpp.active = true;
 			FlxTween.tween(camOpp, {x: 40, alpha: 1}, 0.25, {ease: FlxEase.cubeInOut});
 			//FlxTween.tween(camOppBG, {alpha: 1}, 0.25, {ease: FlxEase.cubeInOut});
-			for(strum in opponentStrums.members) FlxTween.tween(strum, {alpha: 0.3}, 0.5);
+			for(strum in opponentStrums.members) FlxTween.tween(strum, {alpha: 0.25}, 0.5);
 		}
 	},
 	{
@@ -66,6 +63,7 @@ var timeline:Array<{step:Float, callback:Void->Void}> = [
 			FlxTween.tween(camOpp, {x: camGame.x, y: camGame.y, width: camGame.width, height: camGame.height}, 0.2, {ease: FlxEase.cubeInOut});
 			FlxTween.tween(camOpp, {"scroll.x": camGame.scroll.x, "scroll.y": camGame.scroll.y, zoom: camGame.zoom, "targetOffset.x": camGame.targetOffset.x, "targetOffset.y": camGame.targetOffset.y}, 0.2, {ease: FlxEase.cubeInOut});
 			FlxTimer.wait(0.2, () -> {
+				camOpp.active = false;
 				camOpp.alpha = 0;
 				black.alpha = 0;
 			});
@@ -75,6 +73,7 @@ var timeline:Array<{step:Float, callback:Void->Void}> = [
 	},
 	{
 		step: 1600, callback: () -> {
+			camOpp.active = true;
 			camOpp.width = FlxG.width / 2 - 80; camOpp.height = 200;
 			camOpp.x = -camOpp.width; camOpp.y = 40;
 			camOpp.target = dad;
@@ -86,7 +85,9 @@ var timeline:Array<{step:Float, callback:Void->Void}> = [
 			for(strum in opponentStrums.members) FlxTween.tween(strum, {alpha: 0.1}, 0.2);
 			for(strum in opponentStrums.members) FlxTween.tween(strum, {alpha: 1}, 0.5, {startDelay: 1});
 			FlxTween.tween(camOpp, {x: 40, alpha: 1}, 0.25, {ease: FlxEase.cubeInOut});
-			FlxTween.tween(camOpp, {x: -camOpp.width, alpha: 0}, 0.5, {ease: FlxEase.cubeInOut, startDelay: 0.75});
+			FlxTween.tween(camOpp, {x: -camOpp.width, alpha: 0}, 0.5, {ease: FlxEase.cubeInOut, startDelay: 0.75, onComplete: () -> {
+				camOpp.active = false;
+			}});
 		}
 	},
 ];
@@ -103,6 +104,7 @@ function onCreate()
 	camOpp.followLerp = 0.07;
 	camOpp.zoom = 0.7;
 	camOpp.alpha = 0;
+	camOpp.active = false;
 	FlxG.cameras.insert(camOpp, 2);
 
 	bgCam = new FlxCamera();
@@ -162,6 +164,11 @@ function onGameOver()
 
 function onUpdate(e)
 {
+	if(!camOpp.active) {
+		camOppBG.alpha = 0;
+		return;
+	}
+	
 	camOppBG.setPosition(camOpp.x - 10, camOpp.y - 10);
 	camOppBG.setGraphicSize(camOpp.width + 20, camOpp.height + 20);
 	camOppBG.updateHitbox();

@@ -2,6 +2,7 @@ package psychlua;
 
 #if (!flash && sys)
 import flixel.addons.display.FlxRuntimeShader;
+import backend.FilterPruner;
 #end
 
 class ShaderFunctions
@@ -59,8 +60,27 @@ class ShaderFunctions
 		_addShaderSet(lua, 'setShaderBoolArray',  (s, p, v) -> s.setBoolArray(p, v));
 		_addShaderSet(lua, 'setShaderInt',        (s, p, v) -> s.setInt(p, v));
 		_addShaderSet(lua, 'setShaderIntArray',   (s, p, v) -> s.setIntArray(p, v));
-		_addShaderSet(lua, 'setShaderFloat',      (s, p, v) -> s.setFloat(p, v));
+		_addShaderSet(lua, 'setShaderFloat',      (s, p, v) -> { s.setFloat(p, v); FilterPruner.onSet(s, p); });
 		_addShaderSet(lua, 'setShaderFloatArray', (s, p, v) -> s.setFloatArray(p, v));
+
+		LuaUtilsHx.addFunction(lua, 'addPrunedFilter', function(cam:String, obj:String, uniform:String, neutral:Dynamic) {
+			var shader = getShader(obj);
+			if (shader == null) return false;
+			var neutralValue:Float = neutral;
+			FilterPruner.add(LuaUtils.cameraFromString(cam), shader, uniform, neutralValue);
+			return true;
+		});
+
+		LuaUtilsHx.addFunction(lua, 'setCameraFilterScale', function(cam:String, scale:Float) {
+			FilterPruner.setResolutionScale(LuaUtils.cameraFromString(cam), scale);
+		});
+
+		LuaUtilsHx.addFunction(lua, 'addStaticFilter', function(cam:String, obj:String) {
+			var shader = getShader(obj);
+			if (shader == null) return false;
+			FilterPruner.addStatic(LuaUtils.cameraFromString(cam), shader);
+			return true;
+		});
 
 		LuaUtilsHx.addFunction(lua, 'setShaderSampler2D', function(obj:String, prop:String, bitmapdataPath:String) {
 			#if (!flash && MODS_ALLOWED && sys)

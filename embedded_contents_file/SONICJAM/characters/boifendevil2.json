@@ -1,0 +1,87 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [0, 0],
+			"anim": "idle",
+			"fps": 24,
+			"name": "xterion bf idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [25, -6],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "xterion bf left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [2, -3],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "xterion bf down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, 1],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "xterion bf up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [-1, -2],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "xterion bf right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [24, -6],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "xterion MissLeft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [2, -3],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "xterion MissDown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [0, -1],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "xterion MissUp",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [1, -2],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "xterion MissRight",
+			"indices": []
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": true,
+	"image": "characters/digitalized boyfriend2",
+	"position": [0, 0],
+	"healthicon": "SSBF",
+	"flip_x": true,
+	"healthbar_colors": [127, 255, 255],
+	"camera_position": [0, 0],
+	"sing_duration": 8,
+	"scale": 1,
+	"_editor_isPlayer": true
+}

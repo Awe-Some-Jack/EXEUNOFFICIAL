@@ -30,7 +30,7 @@ local shaders = {
 
     {name = 'color', shader = 'DropShadowShader', x = 0, angle = 0, scaleX = 1, scaleY = 1,
     uniforms = {
-        hue        = 1,
+        hue        = 0,
         contrast   = 0,
         saturation = 0,
         brightness = 0,
@@ -39,11 +39,8 @@ local shaders = {
 
 luaDebugMode = true
 
-local dashads = ''
-
 luaDebugMode = true
 function onCreatePost()
-    dashads = 'game.camGame.filters = ['
     for num, shad in ipairs(shaders) do
         makeLuaSprite(shad.name, nil, shad.x)
         setSpriteShader(shad.name, shad.shader)
@@ -53,11 +50,28 @@ function onCreatePost()
         for u, v in pairs(shad.uniforms) do
             setShaderFloat(shad.name, u, v)
         end
-        if num == 1 then dashads = dashads..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)'
-        elseif num > 1 then dashads = dashads..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' end
     end
-    dashads = dashads..']; return;'
-    if shadersEnabled and not lowQuality then runHaxeCode(dashads) runHaxeCode("game.camHUD.filters = [new ShaderFilter(game.getLuaObject('bw').shader), new ShaderFilter(game.getLuaObject('shine').shader), new ShaderFilter(game.getLuaObject('color').shader), new ShaderFilter(game.getLuaObject('glitch').shader)]; return;") end
+    if shadersEnabled and not lowQuality then
+        local neutrals = {
+            chrom  = {amount = 0},
+            bw     = {grayness = 0},
+            shine  = {brightness = 0, contrast = 1, saturation = 1},
+            wave   = {amount = 0},
+            glitch = {binaryIntensity = 0.0001, negativity = 0},
+            color  = {hue = 0, contrast = 0, saturation = 0, brightness = 0},
+        }
+        local cameraFilters = {
+            camGame = {'chrom', 'bw', 'shine', 'wave', 'glitch', 'color'},
+            camHUD  = {'bw', 'shine', 'color', 'glitch'},
+        }
+        for cam, names in pairs(cameraFilters) do
+            for _, name in ipairs(names) do
+                for uniform, neutral in pairs(neutrals[name]) do
+                    addPrunedFilter(cam, name, uniform, neutral)
+                end
+            end
+        end
+    end
 end
 
 local onTween1 = false

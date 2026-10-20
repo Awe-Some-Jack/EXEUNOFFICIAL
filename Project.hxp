@@ -146,9 +146,6 @@ class Project extends HXProject
         if (!isWeb())
             setHaxedef("openfl_dpi_aware");
 
-        if (isIOS())
-            setHaxedef("openfl_disable_hdpi_cacheasbitmap");
-
         if (DISCORD_ALLOWED.isEnabled(this))
             setHaxedef("DISCORD_DISABLE_IO_THREAD");
 
@@ -199,6 +196,7 @@ class Project extends HXProject
         setHaxedef("no-deprecation-warnings");
         setHaxedef("message.reporting", "pretty");
         setHaxedef("openfl-enable-handle-error");
+        setHaxedef("openfl_disable_hdpi_cacheasbitmap");
         setHaxedef("lime_disable_assets_version");
 
         haxeflags.push("--macro allowPackage('flash')");

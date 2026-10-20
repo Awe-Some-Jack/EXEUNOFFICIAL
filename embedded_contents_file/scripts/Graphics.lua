@@ -1,5 +1,7 @@
 -- A scirpt that creates graphics for the mod so you don't create them every song
 
+local cams = {'camGame', 'camBack', 'camHUD', 'camOther', 'camVideo'}
+
 local graphics = {
     {name = 'BlackGraphicGame', color = '000000', scaleX = 5, scaleY = 5, camera = 'camGame', alpha = 0, front = true},
     {name = 'BlackGraphicHUD', color = '000000', scaleX = 4, scaleY = 4, camera = 'camHUD', alpha = 0, front = true},
@@ -27,5 +29,9 @@ function onCreatePost()
             setBlendMode(urmom.name, urmom.blend)
         end
         addLuaSprite(urmom.name, urmom.front)
+    end
+
+    for _, cam in ipairs(cams) do
+        setCameraFilterScale(cam, getPropertyFromClass('backend.ClientPrefs', 'data.shaderQuality'));
     end
 end

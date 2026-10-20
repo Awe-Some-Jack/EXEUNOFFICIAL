@@ -20,14 +20,15 @@ class ExeGraphicsState extends ExeBaseOptionsState
 		scrollOffset = 0;
 
 		menuTitle = Language.get('options.graphics', 'GRAPHICS');
-		var lbl = Language.getArray('options.graphics.labels', ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADERS", "UNCAPPED FPS", "FRAMERATE"]);
+		var lbl = Language.getArray('options.graphics.labels', ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "UNCAPPED FPS", "FRAMERATE"]);
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.lowQuality,  setValue: (v) -> ClientPrefs.data.lowQuality   = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.antialiasing, setValue: (v) -> ClientPrefs.data.antialiasing = v},
 			{label: lbl[2], getValue: () -> ClientPrefs.data.cacheOnGPU,  setValue: (v) -> ClientPrefs.data.cacheOnGPU   = v},
-			{label: lbl[3], getValue: () -> ClientPrefs.data.shaders,     setValue: (v) -> ClientPrefs.data.shaders      = v},
-			{label: lbl[4], getValue: () -> ClientPrefs.data.uncappedFPS, setValue: (v) -> ClientPrefs.data.uncappedFPS  = v},
-			{label: lbl[5], getValue: () -> ClientPrefs.data.framerate,   setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true},
+			{label: lbl[3], getValue: () -> ClientPrefs.data.shaderQuality, setValue: (v) -> ClientPrefs.data.shaderQuality = v, isFloat: true},
+			{label: lbl[4], getValue: () -> ClientPrefs.data.shaders,     setValue: (v) -> ClientPrefs.data.shaders      = v},
+			{label: lbl[5], getValue: () -> ClientPrefs.data.uncappedFPS, setValue: (v) -> ClientPrefs.data.uncappedFPS  = v},
+			{label: lbl[6], getValue: () -> ClientPrefs.data.framerate,   setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true},
 		];
 
 		super.create();
@@ -37,10 +38,15 @@ class ExeGraphicsState extends ExeBaseOptionsState
 
 	function formatValue(opt:ExeBaseOptionsState.ExeGenericOption):String
 	{
-		var val = opt.getValue();
+		var val:Dynamic = opt.getValue();
 		var on = Language.get('options.on', 'ON'); var off = Language.get('options.off', 'OFF');
-		return Std.isOfType(val, Bool) ? (cast(val, Bool) ? on : off) : Std.string(val);
+		if (Std.isOfType(val, Bool)) return cast(val, Bool) ? on : off;
+		if (opt.isFloat != null && opt.isFloat) return formatQuality(val);
+		return Std.string(val);
 	}
+
+	function formatQuality(v:Float):String
+		return Std.string(Math.round(v * 20) / 20);
 
 	function getRowData(i:Int):ExeBaseOptionsState.ExeRowData
 		return {label: allOptions[i].label, value: formatValue(allOptions[i])};
@@ -81,6 +87,12 @@ class ExeGraphicsState extends ExeBaseOptionsState
 					var b = !cast(val, Bool); opt.setValue(b);
 					txt.text = b ? Language.get('options.on', 'ON') : Language.get('options.off', 'OFF');
 				}
+				else if (opt.isFloat != null && opt.isFloat)
+				{
+					var f = Math.round((cast(val, Float) + (isRight ? 0.05 : -0.05)) * 20) / 20;
+					f = Math.max(0.1, Math.min(1, f));
+					opt.setValue(f); txt.text = formatQuality(f);
+				}
 				else if (opt.isInt == true)
 				{
 					var n = cast(val, Int) + (isRight ? 1 : -1);
@@ -90,7 +102,7 @@ class ExeGraphicsState extends ExeBaseOptionsState
 				ClientPrefs.saveSettings();
 
 				var optIdx = allOptions.indexOf(opt);
-				if (optIdx == 5) // FRAMERATE
+				if (optIdx == 6) // FRAMERATE
 				{
 					if (!ClientPrefs.data.uncappedFPS)
 					{
@@ -105,7 +117,7 @@ class ExeGraphicsState extends ExeBaseOptionsState
 				}
 				else if (optIdx == 1) // ANTI ALIASING
 					FlxSprite.defaultAntialiasing = ClientPrefs.data.antialiasing;
-				else if (optIdx == 4) // UNCAPPED FPS
+				else if (optIdx == 5) // UNCAPPED FPS
 				{
 					if (ClientPrefs.data.uncappedFPS) {
 						FlxG.drawFramerate = 0;

@@ -35,6 +35,7 @@ import Main;
 	public var hitsoundVolume:Float = 0;
 	public var checkForUpdates:Bool = true;
 	public var comboStacking:Bool = true;
+	public var shaderQuality:Float = #if desktop 1 #else 0.5 #end;
 	#if mobile
 	public var controlsType:String = 'base';
 	public var middlescrollType:String = 'mobile';

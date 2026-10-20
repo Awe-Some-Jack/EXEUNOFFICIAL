@@ -358,7 +358,7 @@ function onSectionHit(section:Dynamic) {
 
 var curEvent;
 function onStepHit() {
-	curEvent ??= stepEvents.shift();
+	if (curEvent == null) curEvent = stepEvents.shift();
 	if(curEvent != null && curStep >= curEvent.step) {
 		curEvent.callback();
 		curEvent = stepEvents.shift();

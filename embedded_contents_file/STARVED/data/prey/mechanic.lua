@@ -715,8 +715,8 @@ function onSectionHit()
 end
 
 local mrid = 0
-function noteMiss(_, _, _, isn)
-	if isn and isInvulnerable then return end
+function noteMiss(_, _, _, _)
+	if isInvulnerable then return end
 	if getVar('rings') > 0 then
 		mrid = mrid + 1
 		local missedRing = 'missedRing'..mrid

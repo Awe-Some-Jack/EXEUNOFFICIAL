@@ -1499,6 +1499,7 @@ class PlayState extends MusicBeatState
 		opponentVocals.volume = 1;
 		inst.volume = 1;
 		trace('inst and vocals started playing');
+		backend.SongGc.start();
 
 		setSongTime(Math.max(0, startOnTime - 500) + Conductor.offset);
 		startOnTime = 0;
@@ -4404,6 +4405,9 @@ class PlayState extends MusicBeatState
 			videoCutscene = null;
 		}
 		#end
+
+		backend.FilterPruner.clear();
+		backend.SongGc.stop();
 
 		gameplayCam?.destroy();
 

@@ -209,8 +209,8 @@ class FilterPruner
 
 		final scale:Float = scales.get(camera);
 		final transform:Matrix = sprite.__renderTransform;
-		final a:Float = transform.a * scale;
-		final d:Float = transform.d * scale;
+		final a:Float = Math.sqrt(transform.a * transform.a + transform.b * transform.b) * scale;
+		final d:Float = Math.sqrt(transform.c * transform.c + transform.d * transform.d) * scale;
 
 		if (state.a != a || state.d != d)
 		{
@@ -226,8 +226,13 @@ class FilterPruner
 			sprite.__getFilterBounds(bounds, new Matrix(a, 0, 0, d));
 			final offsetX:Float = bounds.x > 0 ? Math.ceil(bounds.x) : Math.floor(bounds.x);
 			final offsetY:Float = bounds.y > 0 ? Math.ceil(bounds.y) : Math.floor(bounds.y);
-			state.deltaX = offsetX * (1 / scale - 1);
-			state.deltaY = offsetY * (1 / scale - 1);
+			final localX:Float = offsetX * (1 / scale - 1);
+			final localY:Float = offsetY * (1 / scale - 1);
+			final radians:Float = sprite.rotation * Math.PI / 180;
+			final cos:Float = Math.cos(radians);
+			final sin:Float = Math.sin(radians);
+			state.deltaX = localX * cos - localY * sin;
+			state.deltaY = localX * sin + localY * cos;
 			sprite.x += state.deltaX;
 			sprite.y += state.deltaY;
 		}

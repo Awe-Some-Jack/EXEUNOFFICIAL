@@ -183,7 +183,7 @@ function onBeatHit()
 
 var curEvent;
 function onStepHit() {
-	curEvent ??= timeline.shift();
+	if (curEvent == null) curEvent = timeline.shift();
 	if(curEvent != null && curStep >= curEvent.step) {
 		curEvent.callback();
 		curEvent = timeline.shift();

@@ -69,6 +69,15 @@ final class MemoryUtil
 		#end
 	}
 
+	public static inline function heapInUse():Float
+	{
+		#if cpp
+		return Gc.memInfo64(Gc.MEM_INFO_CURRENT);
+		#else
+		return currentMemUsage();
+		#end
+	}
+
 	public static inline function currentMemUsage():Float
 	{
 		#if cpp

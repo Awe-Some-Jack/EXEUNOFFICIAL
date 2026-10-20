@@ -39,7 +39,7 @@
 	"options.gameplay": "GAMEPLAY",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "FREEZE SYNC DELAY", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"],
 	"options.graphics": "GRAPHICS",
-	"options.graphics.labels": ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADERS", "UNCAPPED FPS", "FRAMERATE"],
+	"options.graphics.labels": ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "UNCAPPED FPS", "FRAMERATE"],
 	"options.language": "LANGUAGE",
 	"options.on": "ON",
 	"options.off": "OFF",

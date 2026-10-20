@@ -121,6 +121,56 @@ class VideoSprite extends FlxSpriteGroup
 		setupEventListeners();
 	}
 
+	static function shouldMute(path:String):Bool
+	{
+		if (FlxG.sound.muted || FlxG.sound.volume <= 0)
+			return true;
+
+		#if sys
+		try
+		{
+			if (!sys.FileSystem.exists(path))
+				return false;
+
+			final total:Int = sys.FileSystem.stat(path).size;
+			final f = sys.io.File.read(path, true);
+			f.bigEndian = true;
+			var pos:Int = 0;
+			var result:Bool = false;
+			while (pos + 8 <= total)
+			{
+				f.seek(pos, SeekBegin);
+				var size:Int = f.readInt32();
+				final type:String = f.readString(4);
+				var header:Int = 8;
+				if (pos == 0 && type != 'ftyp')
+					break;
+				if (size == 1)
+				{
+					f.readInt32();
+					size = f.readInt32();
+					header = 16;
+				}
+				else if (size == 0)
+					size = total - pos;
+				if (size < header)
+					break;
+				if (type == 'moov')
+				{
+					final len:Int = size - header;
+					result = f.read(len).toString().indexOf('soun') == -1;
+					break;
+				}
+				pos += size;
+			}
+			f.close();
+			return result;
+		}
+		catch (e:Dynamic) {}
+		#end
+		return false;
+	}
+
 	public function loadVideo(videoPath:String, ?args:Array<String>):Bool
 	{
 		if (videoPath == null || videoPath == "")
@@ -148,6 +198,8 @@ class VideoSprite extends FlxSpriteGroup
 			if (success && args?.contains(ARG_MUTED))
 				video.setVolume(0);
 			#else
+			if (!loadArgs.contains(ARG_MUTED) && shouldMute(videoPath))
+				loadArgs.push(ARG_MUTED);
 			if (!loadArgs.contains(ARG_HW_ACCEL))
 				loadArgs.push(ARG_HW_ACCEL);
 			if (!loadArgs.contains(ARG_DROP_LATE))
@@ -191,6 +243,8 @@ class VideoSprite extends FlxSpriteGroup
 			#if switch
 			return true;
 			#else
+			if (!loadArgs.contains(ARG_MUTED) && shouldMute(videoPath))
+				loadArgs.push(ARG_MUTED);
 			if (!loadArgs.contains(ARG_HW_ACCEL))
 				loadArgs.push(ARG_HW_ACCEL);
 			if (!loadArgs.contains(ARG_DROP_LATE))

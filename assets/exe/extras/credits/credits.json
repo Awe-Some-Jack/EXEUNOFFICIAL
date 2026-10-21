@@ -55,6 +55,7 @@
 			"icon": "kazu",
 			"nation": "peru",
 			"description": "Coder",
+			"quote": "El kazú (frecuentemente adaptado del inglés como kazoo, y conocido también en español como mirlitón, turuta o pito de carnaval) es un instrumento musical membranófono que funciona como un modificador y distorsionador de la voz humana.\n\nConsiste en un pequeño tubo hueco —que puede ser de plástico, metal o madera— con tres aberturas. En una de las aberturas laterales cuenta con una membrana fina (tradicionalmente de papel de fumar o materiales sintéticos) que vibra cuando el músico tararea o canta a través del instrumento, añadiendo un característico timbre zumbón a la voz."
 			"extra": ["video", "bow", true]
 		},
 		{

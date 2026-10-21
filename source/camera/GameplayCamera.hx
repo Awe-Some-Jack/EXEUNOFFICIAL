@@ -74,7 +74,6 @@ class GameplayCamera
 	public var _sectionZoom:Bool   = false;
 	public var _oldHitSection:Bool = false;
 	public var _firstone:Bool      = true;
-	public var _sexogratisputocom:Bool = false;
 	public var _sexitosxd2:Bool    = false;
 	public var _targetAlpha:Float  = 1;
 

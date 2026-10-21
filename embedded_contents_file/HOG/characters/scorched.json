@@ -1,186 +1,186 @@
 {
 	"animations": [
-        {
-            "loop": true,
-            "offsets": [621, 1048],
-            "anim": "idle",
-            "fps": 24,
-            "name": "Idle",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [1222, 1127],
-            "anim": "singLEFT",
-            "fps": 24,
-            "name": "Left",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [765, 1010],
-            "anim": "singDOWN",
-            "fps": 24,
-            "name": "Down",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [881, 1467],
-            "anim": "singUP",
-            "fps": 24,
-            "name": "Up",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [829, 1012],
-            "anim": "singRIGHT",
-            "fps": 24,
-            "name": "Right",
-            "indices": []
-        },
-        {
-            "loop": true,
-            "offsets": [621, 1135],
-            "anim": "idle-g1",
-            "fps": 24,
-            "name": "glitch1 Idle",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [1273, 1233],
-            "anim": "singLEFT-g1",
-            "fps": 24,
-            "name": "glitch1 Left",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [765, 1014],
-            "anim": "singDOWN-g1",
-            "fps": 24,
-            "name": "glitch1 Down",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [881, 1489],
-            "anim": "singUP-g1",
-            "fps": 24,
-            "name": "glitch1 Up",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [829, 1016],
-            "anim": "singRIGHT-g1",
-            "fps": 24,
-            "name": "glitch1 Right",
-            "indices": []
-        },
-        {
-            "loop": true,
-            "offsets": [621, 1135],
-            "anim": "idle-g2",
-            "fps": 24,
-            "name": "glitch2 Idle",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [1222, 1187],
-            "anim": "singLEFT-g2",
-            "fps": 24,
-            "name": "glitch2 Left",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [765, 1010],
-            "anim": "singDOWN-g2",
-            "fps": 24,
-            "name": "glitch2 Down",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [881, 1489],
-            "anim": "singUP-g2",
-            "fps": 24,
-            "name": "glitch2 Up",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [829, 1083],
-            "anim": "singRIGHT-g2",
-            "fps": 24,
-            "name": "glitch2 Right",
-            "indices": []
-        },
-        {
-            "loop": true,
-            "offsets": [621, 1135],
-            "anim": "idle-g3",
-            "fps": 24,
-            "name": "glitch3 Idle",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [1528, 1451],
-            "anim": "singLEFT-g3",
-            "fps": 24,
-            "name": "glitch3 Left",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [765, 1010],
-            "anim": "singDOWN-g3",
-            "fps": 24,
-            "name": "glitch3 Down",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [881, 1489],
-            "anim": "singUP-g3",
-            "fps": 24,
-            "name": "glitch3 Up",
-            "indices": []
-        },
-        {
-            "loop": false,
-            "offsets": [829, 1049],
-            "anim": "singRIGHT-g3",
-            "fps": 24,
-            "name": "glitch3 Right",
-            "indices": []
-        },
-        {
-            "offsets": [806, 1217],
-            "loop": false,
-            "fps": 24,
-            "anim": "sad",
-            "indices": [],
-            "name": "triste"
-        },
-        {
-            "offsets": [803, 1327],
-            "loop": false,
-            "fps": 24,
-            "anim": "replace",
-            "indices": [],
-            "name": "no replace"
-        }
-    ],
+		{
+			"offsets": [621, 1048],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Idle"
+		},
+		{
+			"offsets": [1222, 1127],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left"
+		},
+		{
+			"offsets": [765, 1010],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down"
+		},
+		{
+			"offsets": [881, 1467],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Up"
+		},
+		{
+			"offsets": [829, 1012],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right"
+		},
+		{
+			"offsets": [621, 1135],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-g1",
+			"indices": [],
+			"name": "glitch1 Idle"
+		},
+		{
+			"offsets": [1273, 1233],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-g1",
+			"indices": [],
+			"name": "glitch1 Left"
+		},
+		{
+			"offsets": [765, 1014],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-g1",
+			"indices": [],
+			"name": "glitch1 Down"
+		},
+		{
+			"offsets": [881, 1489],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-g1",
+			"indices": [],
+			"name": "glitch1 Up"
+		},
+		{
+			"offsets": [829, 1016],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-g1",
+			"indices": [],
+			"name": "glitch1 Right"
+		},
+		{
+			"offsets": [621, 1135],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-g2",
+			"indices": [],
+			"name": "glitch2 Idle"
+		},
+		{
+			"offsets": [1222, 1187],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-g2",
+			"indices": [],
+			"name": "glitch2 Left"
+		},
+		{
+			"offsets": [765, 1010],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-g2",
+			"indices": [],
+			"name": "glitch2 Down"
+		},
+		{
+			"offsets": [881, 1489],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-g2",
+			"indices": [],
+			"name": "glitch2 Up"
+		},
+		{
+			"offsets": [829, 1083],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-g2",
+			"indices": [],
+			"name": "glitch2 Right"
+		},
+		{
+			"offsets": [621, 1135],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle-g3",
+			"indices": [],
+			"name": "glitch3 Idle"
+		},
+		{
+			"offsets": [1528, 1451],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-g3",
+			"indices": [],
+			"name": "glitch3 Left"
+		},
+		{
+			"offsets": [765, 1010],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-g3",
+			"indices": [],
+			"name": "glitch3 Down"
+		},
+		{
+			"offsets": [881, 1489],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-g3",
+			"indices": [],
+			"name": "glitch3 Up"
+		},
+		{
+			"offsets": [829, 1049],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-g3",
+			"indices": [],
+			"name": "glitch3 Right"
+		},
+		{
+			"loop": false,
+			"offsets": [806, 1217],
+			"anim": "sad",
+			"fps": 24,
+			"name": "triste",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [803, 1327],
+			"anim": "replace",
+			"fps": 24,
+			"name": "no replace",
+			"indices": []
+		}
+	],
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/scorched",
-	"position": [0, 0],
+	"position": [-146, 0],
 	"healthicon": "scorched",
 	"flip_x": false,
 	"healthbar_colors": [23, 30, 74],

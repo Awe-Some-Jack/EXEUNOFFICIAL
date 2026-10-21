@@ -155,24 +155,6 @@ class CameraStageHandler
 			},
 		};
 
-		// ---- hog ----
-		_handlers['hog'] = {
-			onBeatHit: function(cam:GameplayCamera, curBeat:Int, songName:String) {
-				if (curBeat >= 188 && songName == 'manual-blast' && !cam._sexitosxd2)
-				{
-					cam._sexitosxd2        = true;
-					cam.settings.DADAngle  = 1.5;
-				}
-				if (curBeat >= 1040 && songName == 'manual-blast')
-					cam.settings.MiddleZoom = 0.42;
-				if (curBeat >= 1238 && !cam._sexogratisputocom && songName == 'manual-blast')
-				{
-					cam._sexogratisputocom = true;
-					PlayState.instance.camZoomingMult     = 0;
-				}
-			},
-		};
-
 		// ---- forestall ----
 		_handlers['forestall'] = {
 			onSectionHit: function(cam:GameplayCamera, mustHit:Bool, curBeat:Int) {

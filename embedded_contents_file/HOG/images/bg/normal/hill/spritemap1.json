@@ -9,7 +9,10 @@
 {"SPRITE" : {"name": "0007","x":1076,"y":1268,"w":142,"h":139,"rotated": false}},
 {"SPRITE" : {"name": "0008","x":1228,"y":1268,"w":142,"h":139,"rotated": false}},
 {"SPRITE" : {"name": "0009","x":1380,"y":1268,"w":142,"h":139,"rotated": false}},
-{"SPRITE" : {"name": "0010","x":12,"y":12,"w":2880,"h":1246,"rotated": false}}
+{"SPRITE" : {"name": "0010","x":12,"y":12,"w":2880,"h":1246,"rotated": false}},
+{"SPRITE" : {"name": "0011","x":1532,"y":1333,"w":32,"h":32,"rotated": false}},
+{"SPRITE" : {"name": "0012","x":1532,"y":1375,"w":32,"h":32,"rotated": false}},
+{"SPRITE" : {"name": "0013","x":1532,"y":1268,"w":46,"h":55,"rotated": false}}
 ]},
 "meta": {
 "app": "Adobe Animate",

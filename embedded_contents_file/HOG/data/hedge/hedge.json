@@ -3012,7 +3012,7 @@
 			]
 		],
 		[
-			135107.142857143,
+			135000,
 			[
 				["Play Animation", "attack", "dad"]
 			]
@@ -3030,6 +3030,12 @@
 				["sexxxxxx", "cinematicbars", "0, 4"],
 				["sexxxxxx", "saturation", "1, 4"],
 				["Tween Camera Zoom", "0.55, true", "1.71, cubeInOut"]
+			]
+		],
+		[
+			135428.571428571,
+			[
+				["attack", "", ""]
 			]
 		],
 		[

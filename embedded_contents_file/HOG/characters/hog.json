@@ -113,7 +113,7 @@
 			"name": "DodgeAlt"
 		},
 		{
-			"loop": false,
+			"loop": true,
 			"offsets": [-245, -94],
 			"anim": "trans1",
 			"fps": 12,
@@ -122,58 +122,58 @@
 		},
 		{
 			"offsets": [-151, -122],
-			"indices": [],
+			"loop": true,
 			"fps": 12,
 			"anim": "trans2",
-			"loop": false,
+			"indices": [],
 			"name": "trans2"
 		},
 		{
 			"offsets": [-133, -99],
-			"indices": [],
+			"loop": true,
 			"fps": 12,
 			"anim": "trans3",
-			"loop": false,
+			"indices": [],
 			"name": "trans3"
 		},
 		{
 			"offsets": [-46, 49],
-			"indices": [],
+			"loop": true,
 			"fps": 12,
 			"anim": "trans4",
-			"loop": false,
+			"indices": [],
 			"name": "trans4"
 		},
 		{
 			"offsets": [228, 291],
-			"indices": [],
+			"loop": true,
 			"fps": 12,
 			"anim": "trans5",
-			"loop": false,
+			"indices": [],
 			"name": "trans5"
 		},
 		{
-			"offsets": [107, 263],
-			"indices": [],
+			"offsets": [137, 263],
+			"loop": true,
 			"fps": 12,
 			"anim": "trans6",
-			"loop": false,
+			"indices": [],
 			"name": "trans6"
 		},
 		{
-			"offsets": [223, 850],
-			"indices": [],
+			"offsets": [333, 850],
+			"loop": true,
 			"fps": 12,
 			"anim": "trans7",
-			"loop": false,
+			"indices": [],
 			"name": "trans7"
 		},
 		{
-			"offsets": [213, 729],
-			"indices": [],
+			"offsets": [359, 729],
+			"loop": false,
 			"fps": 12,
 			"anim": "trans8",
-			"loop": false,
+			"indices": [],
 			"name": "trans8"
 		}
 	],

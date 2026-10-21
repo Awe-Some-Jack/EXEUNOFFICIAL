@@ -24,10 +24,8 @@ local shaders = {
         brightness = 0,
     }},
 }
-local dashads = ''
 luaDebugMode = true
 function onCreatePost()
-    dashads = 'game.camGame.filters = ['
     for num, shad in ipairs(shaders) do
         makeLuaSprite(shad.name, nil, shad.x)
         setSpriteShader(shad.name, shad.shader)
@@ -36,12 +34,29 @@ function onCreatePost()
         for u, v in pairs(shad.uniforms) do
             setShaderFloat(shad.name, u, v)
         end
-        if num == 1 then dashads = dashads..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)'
-        elseif num > 1 then dashads = dashads..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' end
     end
-    dashads = dashads..']; return;'
-    if shadersEnabled then runHaxeCode(dashads) end
-    if shadersEnabled then runHaxeCode("game.camHUD.filters = [new ShaderFilter(game.getLuaObject('color').shader)]; return;") end
+    if shadersEnabled then
+        local neutrals = {
+            chrom = {amount = 0},
+            bw = {grayness = 0},
+            shine = {brightness = 0, contrast = 1, saturation = 1},
+        }
+        local cameraFilters = {
+            {'camGame', {'chrom', 'bw', 'shine', 'color'}},
+            {'camHUD', {'color'}},
+        }
+        for _, entry in ipairs(cameraFilters) do
+            for _, name in ipairs(entry[2]) do
+                if neutrals[name] then
+                    for uniform, neutral in pairs(neutrals[name]) do
+                        addPrunedFilter(entry[1], name, uniform, neutral)
+                    end
+                else
+                    addStaticFilter(entry[1], name)
+                end
+            end
+        end
+    end
 end
 
 local onTween1 = false

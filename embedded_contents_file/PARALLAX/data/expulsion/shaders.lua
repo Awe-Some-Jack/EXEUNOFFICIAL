@@ -11,6 +11,7 @@ end
 function onCreatePost()
     makeLuaSprite('sexo')
     setSpriteShader('sexo', 'brightness')
+    setShaderFloat('sexo', 'brightness', 0)
     setShaderFloat('sexo', 'saturation', 1)
     setShaderFloat('sexo', 'contrast', 1)
 
@@ -24,12 +25,9 @@ function onCreatePost()
     setProperty('sexo2.y', 1);
     -- setProperty('glitch.y', 1);
 
-    runHaxeCode([[
-        var sexoShader = game.getLuaObject('sexo').shader;
-
-        var gameFilters = [new ShaderFilter(sexoShader)];
-        game.camGame.filters = gameFilters;
-    ]])
+    for uniform, neutral in pairs({brightness = 0, contrast = 1, saturation = 1}) do
+        addPrunedFilter('camGame', 'sexo', uniform, neutral)
+    end
 end
 
 function onSongStart()

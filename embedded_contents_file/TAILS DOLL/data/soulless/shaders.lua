@@ -2,9 +2,12 @@ local tweening = false
 function onCreatePost()
 	makeLuaSprite('cab')
 	setSpriteShader('cab', 'chromabber')
+	setShaderFloat('cab', 'amount', 0.2)
 
 	makeLuaSprite('bloom')
 	setSpriteShader('bloom', 'brightness')
+	setShaderFloat('bloom', 'brightness', 0)
+	setShaderFloat('bloom', 'contrast', 1)
 	setShaderFloat('bloom', 'saturation', 1)
 
 	makeLuaSprite('ca2')
@@ -12,9 +15,21 @@ function onCreatePost()
 	setShaderFloat('ca2', 'amount', 0)
 
 	if shadersEnabled and not lowQuality then
-		runHaxeCode([[game.camGame.filters = [
-			new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('cab').shader), new ShaderFilter(game.getLuaObject('ca2').shader)
-		];]])
+		local neutrals = {
+			bloom = {brightness = 0, contrast = 1, saturation = 1},
+			cab = {amount = 0},
+			ca2 = {amount = 0},
+		}
+		local cameraFilters = {
+			{'camGame', {'bloom', 'cab', 'ca2'}},
+		}
+		for _, entry in ipairs(cameraFilters) do
+			for _, name in ipairs(entry[2]) do
+				for uniform, neutral in pairs(neutrals[name]) do
+					addPrunedFilter(entry[1], name, uniform, neutral)
+				end
+			end
+		end
 	end
 end
 

@@ -26,10 +26,25 @@ function onCreatePost()
 	setSpriteShader("chromatic", "chromatic")
     setShaderFloat('chromatic', 'amount', 1.5)
 	
-	runHaxeCode([[
-        FlxG.camera.filters = [new ShaderFilter(game.getLuaObject("shaderHolder").shader), new ShaderFilter(game.getLuaObject("brightness").shader), new ShaderFilter(game.getLuaObject("chromatic").shader)];
-        game.camHUD.filters = [new ShaderFilter(game.getLuaObject("shaderHolder").shader), new ShaderFilter(game.getLuaObject("brightness").shader), new ShaderFilter(game.getLuaObject("chromatic").shader)];
-	]])
+	local neutrals = {
+		brightness = {brightness = 0, contrast = 1, saturation = 1},
+		chromatic = {amount = 0},
+	}
+	local cameraFilters = {
+		{'camGame', {'shaderHolder', 'brightness', 'chromatic'}},
+		{'camHUD', {'shaderHolder', 'brightness', 'chromatic'}},
+	}
+	for _, entry in ipairs(cameraFilters) do
+		for _, name in ipairs(entry[2]) do
+			if neutrals[name] then
+				for uniform, neutral in pairs(neutrals[name]) do
+					addPrunedFilter(entry[1], name, uniform, neutral)
+				end
+			else
+				addStaticFilter(entry[1], name)
+			end
+		end
+	end
 end
 
 function onUpdatePost(e)

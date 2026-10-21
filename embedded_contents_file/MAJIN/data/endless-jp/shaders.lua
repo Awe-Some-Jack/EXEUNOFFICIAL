@@ -26,20 +26,35 @@ local shaders = {
         brightness = 0,
     }},
 }
-local dashads = ''
 function onCreatePost()
-    local dashads = 'game.camGame.filters = ['
     for num, shad in ipairs(shaders) do
         makeLuaSprite(shad.name, nil, shad.x)
         setSpriteShader(shad.name, shad.shader)
         for u, v in pairs(shad.uniforms) do
             setShaderFloat(shad.name, u, v)
         end
-        if num == 1 then dashads = dashads..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)'
-        elseif num > 1 then dashads = dashads..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' end
     end
-    dashads = dashads..']; return;'
-    if shadersEnabled and not lowQuality then runHaxeCode(dashads) end
+    if shadersEnabled and not lowQuality then
+        local neutrals = {
+            chrom = {amount = 0},
+            bw = {grayness = 0},
+            shine = {brightness = 0, contrast = 1, saturation = 1},
+        }
+        local cameraFilters = {
+            {'camGame', {'chrom', 'shine', 'bw', 'color'}},
+        }
+        for _, entry in ipairs(cameraFilters) do
+            for _, name in ipairs(entry[2]) do
+                if neutrals[name] then
+                    for uniform, neutral in pairs(neutrals[name]) do
+                        addPrunedFilter(entry[1], name, uniform, neutral)
+                    end
+                else
+                    addStaticFilter(entry[1], name)
+                end
+            end
+        end
+    end
 end
 
 local onTween1 = false

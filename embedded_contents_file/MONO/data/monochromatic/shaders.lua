@@ -10,6 +10,8 @@ function onCreatePost()
 
 	makeLuaSprite('bloom')
 	setSpriteShader('bloom', 'brightness')
+	setShaderFloat('bloom', 'brightness', 0)
+	setShaderFloat('bloom', 'contrast', 1)
 	setShaderFloat('bloom', 'saturation', 1)
 
 	makeLuaSprite('pixel', nil, 0.0001)
@@ -23,10 +25,26 @@ function onCreatePost()
 	setShaderFloat('bwOther', 'saturation', 0)
 
 	if shadersEnabled and not lowQuality then
-		runHaxeCode([[game.camGame.filters = [
-			new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('cab').shader), new ShaderFilter(game.getLuaObject('pixel').shader)
-		];
-		game.camOther.filters = [new ShaderFilter(game.getLuaObject('bwOther').shader)];]])
+		local neutrals = {
+			bloom = {brightness = 0, contrast = 1, saturation = 1},
+			cab = {amount = 0},
+			pixel = {pixelsize = 0.0001},
+		}
+		local cameraFilters = {
+			{'camGame', {'bloom', 'cab', 'pixel'}},
+			{'camOther', {'bwOther'}},
+		}
+		for _, entry in ipairs(cameraFilters) do
+			for _, name in ipairs(entry[2]) do
+				if neutrals[name] then
+					for uniform, neutral in pairs(neutrals[name]) do
+						addPrunedFilter(entry[1], name, uniform, neutral)
+					end
+				else
+					addStaticFilter(entry[1], name)
+				end
+			end
+		end
 	end
 end
 

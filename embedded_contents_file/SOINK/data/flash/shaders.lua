@@ -10,29 +10,9 @@ local pixelChange = false;
 -- luaDebugMode = true;
 
 function updateCameraFilters()
-    runHaxeCode([[
-        var sexoShader = game.getLuaObject('sexo').shader;
-        var glitchShader = game.getLuaObject('glitch').shader;
-        var chromShader = game.getLuaObject('chromGraphic').shader;
-        var invertShader = game.getLuaObject('invertGraphic').shader;
-        var invertShader2 = game.getLuaObject('invertGraphic2').shader;
-        var pixelShader = game.getLuaObject('pixel').shader;
-
-        var gameFilters = [new ShaderFilter(sexoShader), new ShaderFilter(glitchShader), new ShaderFilter(pixelShader)];
-        if (]] .. tostring(enabled) .. [[) {
-            gameFilters.push(new ShaderFilter(chromShader));
-        }
-        if (]] .. tostring(invertRN) .. [[) {
-            gameFilters.push(new ShaderFilter(invertShader));
-        }
-        game.camGame.filters = gameFilters;
-
-        var hudFilters = [new ShaderFilter(game.getLuaObject('sexo2').shader), new ShaderFilter(glitchShader), new ShaderFilter(pixelShader)];
-        if (]] .. tostring(invertRN2) .. [[) {
-            hudFilters.push(new ShaderFilter(invertShader2));
-        }
-        game.camHUD.filters = hudFilters;
-    ]])
+    setStaticFilterActive('camGame', 'chromGraphic', enabled)
+    setStaticFilterActive('camGame', 'invertGraphic', invertRN)
+    setStaticFilterActive('camHUD', 'invertGraphic2', invertRN2)
 end
 
 function chromToggle(ye)
@@ -153,11 +133,13 @@ end
 function onCreatePost()
     makeLuaSprite('sexo')
     setSpriteShader('sexo', 'brightness')
+    setShaderFloat('sexo', 'brightness', 0)
     setShaderFloat('sexo', 'saturation', 1)
     setShaderFloat('sexo', 'contrast', 1)
 
     makeLuaSprite('sexo2')
     setSpriteShader('sexo2', 'brightness')
+    setShaderFloat('sexo2', 'brightness', 0)
     setShaderFloat('sexo2', 'saturation', 1)
     setShaderFloat('sexo2', 'contrast', 1)
 
@@ -185,6 +167,26 @@ function onCreatePost()
     setProperty('glitch.y', 1);
     
     if shadersEnabled and not lowQuality then
+        local neutrals = {
+            sexo = {brightness = 0, contrast = 1, saturation = 1},
+            sexo2 = {brightness = 0, contrast = 1, saturation = 1},
+            glitch = {binaryIntensity = 0},
+            pixel = {pixelsize = 0},
+        }
+        local cameraFilters = {
+            {'camGame', {'sexo', 'glitch', 'pixel'}},
+            {'camHUD', {'sexo2', 'glitch', 'pixel'}},
+        }
+        for _, entry in ipairs(cameraFilters) do
+            for _, name in ipairs(entry[2]) do
+                for uniform, neutral in pairs(neutrals[name]) do
+                    addPrunedFilter(entry[1], name, uniform, neutral)
+                end
+            end
+        end
+        addStaticFilter('camGame', 'chromGraphic', false)
+        addStaticFilter('camGame', 'invertGraphic', false)
+        addStaticFilter('camHUD', 'invertGraphic2', false)
         updateCameraFilters()
     end
 end

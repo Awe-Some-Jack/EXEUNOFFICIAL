@@ -37,10 +37,8 @@ function onCreate() {
         glitch.setFloat('GLITCH', 0.0);
     }
 
-    var shaderFilters = [];
-    if (glitch != null) shaderFilters.push(new ShaderFilter(glitch));
-    if (chrom != null) shaderFilters.push(new ShaderFilter(chrom));
-    camGame.filters = shaderFilters;
+    if (glitch != null) FilterPruner.add(camGame, glitch, 'GLITCH', 0);
+    if (chrom != null) FilterPruner.add(camGame, chrom, 'amount', 0);
 }
 
 function onEvent(n, v1, v2){

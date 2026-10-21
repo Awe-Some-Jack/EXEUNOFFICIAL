@@ -19,14 +19,30 @@ function onCreatePost()
 
 	makeLuaSprite('bloom')
 	setSpriteShader('bloom', 'brightness')
+	setShaderFloat('bloom', 'brightness', 0)
+	setShaderFloat('bloom', 'contrast', 1)
 	setShaderFloat('bloom', 'saturation', 1)
 	
 	if shadersEnabled then
-		runHaxeCode([[
-			FlxG.camera.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader)];
-			game.camVideo.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader)];
-			game.camHUD.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject("VHS").shader)];
-		]])
+		local neutrals = {
+			bloom = {brightness = 0, contrast = 1, saturation = 1},
+		}
+		local cameraFilters = {
+			{'camGame', {'bloom', 'VHS'}},
+			{'camVideo', {'bloom', 'VHS'}},
+			{'camHUD', {'bloom', 'VHS'}},
+		}
+		for _, entry in ipairs(cameraFilters) do
+			for _, name in ipairs(entry[2]) do
+				if neutrals[name] then
+					for uniform, neutral in pairs(neutrals[name]) do
+						addPrunedFilter(entry[1], name, uniform, neutral)
+					end
+				else
+					addStaticFilter(entry[1], name)
+				end
+			end
+		end
 	end
 end
 

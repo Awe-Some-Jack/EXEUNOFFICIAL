@@ -75,10 +75,28 @@ class ShaderFunctions
 			FilterPruner.setResolutionScale(LuaUtils.cameraFromString(cam), scale);
 		});
 
-		LuaUtilsHx.addFunction(lua, 'addStaticFilter', function(cam:String, obj:String) {
+		LuaUtilsHx.addFunction(lua, 'addStaticFilter', function(cam:String, obj:String, ?active:Bool = true) {
 			var shader = getShader(obj);
 			if (shader == null) return false;
-			FilterPruner.addStatic(LuaUtils.cameraFromString(cam), shader);
+			FilterPruner.addStatic(LuaUtils.cameraFromString(cam), shader, active);
+			return true;
+		});
+
+		LuaUtilsHx.addFunction(lua, 'setStaticFilterActive', function(cam:String, obj:String, active:Bool) {
+			var shader = getShader(obj);
+			if (shader == null) return false;
+			FilterPruner.setActive(LuaUtils.cameraFromString(cam), shader, active);
+			return true;
+		});
+
+		LuaUtilsHx.addFunction(lua, 'setStaticFilters', function(cam:String, objs:Array<String>) {
+			var shaders:Array<FlxRuntimeShader> = [];
+			for (obj in objs)
+			{
+				var shader = getShader(obj);
+				if (shader != null) shaders.push(shader);
+			}
+			FilterPruner.setFilters(LuaUtils.cameraFromString(cam), shaders);
 			return true;
 		});
 

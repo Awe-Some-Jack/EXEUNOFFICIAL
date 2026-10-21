@@ -38,12 +38,8 @@ local shaders = {
 
 luaDebugMode = true
 
-local dashads = ''
-local dashadsHUD = ''
 luaDebugMode = true
 function onCreatePost()
-    dashads = 'game.camGame.filters = ['
-    dashadsHUD = 'game.camHUD.filters = ['
     for num, shad in ipairs(shaders) do
         makeLuaSprite(shad.name, nil, shad.x)
         setSpriteShader(shad.name, shad.shader)
@@ -53,12 +49,30 @@ function onCreatePost()
         for u, v in pairs(shad.uniforms) do
             setShaderFloat(shad.name, u, v)
         end
-        if num == 1 then dashads = dashads..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' dashadsHUD = dashadsHUD..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)'
-        elseif num > 1 then dashads = dashads..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' dashadsHUD = dashadsHUD..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' end
     end
-    dashads = dashads..']; return;'
-    dashadsHUD = dashadsHUD..']; return;'
-    if shadersEnabled and not lowQuality then runHaxeCode(dashads) runHaxeCode(dashadsHUD) end
+    if shadersEnabled and not lowQuality then
+        local neutrals = {
+            chrom = {amount = 0},
+            bw = {grayness = 0},
+            shine = {brightness = 0, contrast = 1, saturation = 1},
+            wave = {amount = 0},
+        }
+        local cameraFilters = {
+            {'camGame', {'chrom', 'bw', 'shine', 'wave', 'color', 'pixel'}},
+            {'camHUD', {'chrom', 'bw', 'shine', 'wave', 'color', 'pixel'}},
+        }
+        for _, entry in ipairs(cameraFilters) do
+            for _, name in ipairs(entry[2]) do
+                if neutrals[name] then
+                    for uniform, neutral in pairs(neutrals[name]) do
+                        addPrunedFilter(entry[1], name, uniform, neutral)
+                    end
+                else
+                    addStaticFilter(entry[1], name)
+                end
+            end
+        end
+    end
 end
 
 local onTween1 = false

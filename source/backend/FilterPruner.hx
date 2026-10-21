@@ -55,6 +55,7 @@ class FilterPruner
 	static var scales:Map<FlxCamera, Float> = new Map();
 	static var states:Map<FlxCamera, ScaleState> = new Map();
 	static var scaleHooked:Bool = false;
+	static var pollHooked:Bool = false;
 	static var byShader:Map<FlxRuntimeShader, Array<PrunedEntry>> = new Map();
 
 	public static function add(camera:FlxCamera, shader:FlxRuntimeShader, uniform:String, neutral:Float):Void
@@ -65,15 +66,74 @@ class FilterPruner
 		entry.neutral.set(uniform, neutral);
 		entry.active = !isNeutral(entry);
 		rebuild(entry.group);
+		hookPoll();
 	}
 
-	public static function addStatic(camera:FlxCamera, shader:FlxRuntimeShader):Void
+	public static function addStatic(camera:FlxCamera, shader:FlxRuntimeShader, active:Bool = true):Void
 	{
 		final entry:PrunedEntry = getEntry(camera, shader);
 		if (entry == null) return;
 
-		entry.active = true;
+		entry.active = active;
 		rebuild(entry.group);
+	}
+
+	public static function setActive(camera:FlxCamera, shader:FlxRuntimeShader, active:Bool):Void
+	{
+		if (camera == null || shader == null) return;
+
+		final entries:Array<PrunedEntry> = byShader.get(shader);
+		if (entries == null) return;
+
+		for (entry in entries)
+		{
+			if (entry.group.camera != camera || entry.active == active) continue;
+
+			entry.active = active;
+			rebuild(entry.group);
+		}
+	}
+
+	public static function setFilters(camera:FlxCamera, shaders:Array<FlxRuntimeShader>):Void
+	{
+		if (camera == null) return;
+
+		final group:PrunedGroup = groups.get(camera);
+		if (group == null) return;
+
+		for (entry in group.entries)
+		{
+			if (entry.neutral.keys().hasNext()) continue;
+			entry.active = shaders.indexOf(entry.shader) >= 0;
+		}
+		rebuild(group);
+	}
+
+	static function hookPoll():Void
+	{
+		if (pollHooked) return;
+
+		FlxG.signals.postUpdate.add(poll);
+		pollHooked = true;
+	}
+
+	static function poll():Void
+	{
+		for (group in groups)
+		{
+			var changed:Bool = false;
+			for (entry in group.entries)
+			{
+				if (!entry.neutral.keys().hasNext()) continue;
+
+				final active:Bool = !isNeutral(entry);
+				if (active == entry.active) continue;
+
+				entry.active = active;
+				changed = true;
+			}
+			if (changed) rebuild(group);
+		}
 	}
 
 	static function getEntry(camera:FlxCamera, shader:FlxRuntimeShader):PrunedEntry
@@ -170,6 +230,12 @@ class FilterPruner
 			FlxG.signals.postUpdate.remove(refreshScales);
 			scaleHooked = false;
 		}
+
+		if (pollHooked)
+		{
+			FlxG.signals.postUpdate.remove(poll);
+			pollHooked = false;
+		}
 	}
 
 	static function resetShift(camera:FlxCamera):Void
@@ -245,8 +311,9 @@ class FilterPruner
 	{
 		for (uniform => neutral in entry.neutral)
 		{
-			final value:Null<Float> = entry.shader.getFloat(uniform);
-			if (Math.abs((value ?? 0.0) - neutral) > EPSILON) return false;
+			var value:Null<Float> = null;
+			try value = entry.shader.getFloat(uniform) catch (e:Dynamic) {}
+			if (value == null || Math.abs(value - neutral) > EPSILON) return false;
 		}
 		return true;
 	}

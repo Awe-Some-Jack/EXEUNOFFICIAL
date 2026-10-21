@@ -1,17 +1,34 @@
 function onCreatePost()
 	makeLuaSprite('bloom')
 	setSpriteShader('bloom', 'brightness')
+	setShaderFloat('bloom', 'brightness', 0)
+	setShaderFloat('bloom', 'contrast', 1)
 	setShaderFloat('bloom', 'saturation', 1)
 
 	makeLuaSprite('chrom', nil, 0)
 	setSpriteShader('chrom', 'chromabber')
+	setShaderFloat('chrom', 'amount', 0)
 
 	makeLuaSprite("pixel", nil, 0.0001)
 	setSpriteShader("pixel", "pixelsplash")
 	setShaderFloat('pixel', 'pixelsize', 0.0001)
 
 	if shadersEnabled and not lowQuality then
-		runHaxeCode("game.camGame.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('chrom').shader), new ShaderFilter(game.getLuaObject('pixel').shader)];")
+		local neutrals = {
+			bloom = {brightness = 0, contrast = 1, saturation = 1},
+			chrom = {amount = 0},
+			pixel = {pixelsize = 0.0001},
+		}
+		local cameraFilters = {
+			{'camGame', {'bloom', 'chrom', 'pixel'}},
+		}
+		for _, entry in ipairs(cameraFilters) do
+			for _, name in ipairs(entry[2]) do
+				for uniform, neutral in pairs(neutrals[name]) do
+					addPrunedFilter(entry[1], name, uniform, neutral)
+				end
+			end
+		end
 	end
 end
 

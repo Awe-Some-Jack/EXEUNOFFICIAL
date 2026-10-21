@@ -485,8 +485,9 @@ function onUpdatePost(elapsed:Float)
 			bfLegs4?.animation.curAnim.curFrame = legsFrame;
 			if (boyfriend?.animation.curAnim.name == 'idle') boyfriend.animation.curAnim.curFrame = legsFrame;
 		case 'fifth':
-			var slide:Bool = Controls.instance.UI_DOWN || Controls.instance.NOTE_DOWN || game.swipeDOWN;
-			var jump:Bool = Controls.instance.UI_UP || Controls.instance.NOTE_UP || game.swipeUP;
+			final isMobile:Bool = buildTarget == 'ios' || buildTarget == 'android';
+			var slide:Bool = Controls.instance.UI_DOWN || Controls.instance.NOTE_DOWN || (isMobile && PlayState.hitboxesHeld[1]);
+			var jump:Bool = Controls.instance.UI_UP || Controls.instance.NOTE_UP || (isMobile && PlayState.hitboxesHeld[2]);
 
 			if (slide && bfAction == '' && bfPressAction != 'slide')
 			{

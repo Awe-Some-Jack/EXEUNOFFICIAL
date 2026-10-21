@@ -12,9 +12,10 @@ function onCreate()
 	setSpriteShader('glitch', 'glitchChromatic')
 	setShaderFloat('glitch', 'GLITCH', 0)
 
-	if shadersEnabled then runHaxeCode([[game.camGame.filters = [
-		new ShaderFilter(game.getLuaObject('glitch').shader)
-		];]])
+	if shadersEnabled then
+		addStaticFilter('camGame', 'hws', false)
+		addStaticFilter('camGame', 'cab', false)
+		addPrunedFilter('camGame', 'glitch', 'GLITCH', 0)
 	end
 end
 
@@ -24,29 +25,18 @@ local lmao = false
 function onEvent(n,v1,v2)
 	if n == 'ttfirestart' then
 		lmao = true
-		if shadersEnabled then runHaxeCode([[game.camGame.filters = [
-			new ShaderFilter(game.getLuaObject('hws').shader),
-			new ShaderFilter(game.getLuaObject('cab').shader),
-			new ShaderFilter(game.getLuaObject('glitch').shader)
-			];]])
-		end
+		setStaticFilterActive('camGame', 'hws', true)
+		setStaticFilterActive('camGame', 'cab', true)
 	end
 
 	if n == 'flashbackstt' and lmao then
-		if shadersEnabled then runHaxeCode([[game.camGame.filters = [
-			new ShaderFilter(game.getLuaObject('cab').shader),
-			new ShaderFilter(game.getLuaObject('glitch').shader)
-			];]])
-		end
+		setStaticFilterActive('camGame', 'hws', false)
+		setStaticFilterActive('camGame', 'cab', true)
 	end
 
 	if n == 'tripletroublebgchange' and v1 == 'xeno3' then
-		if shadersEnabled then runHaxeCode([[game.camGame.filters = [
-			new ShaderFilter(game.getLuaObject('hws').shader),
-			new ShaderFilter(game.getLuaObject('cab').shader),
-			new ShaderFilter(game.getLuaObject('glitch').shader)
-			];]])
-		end
+		setStaticFilterActive('camGame', 'hws', true)
+		setStaticFilterActive('camGame', 'cab', true)
 	end
 
 	if n == 'glitchtween' then

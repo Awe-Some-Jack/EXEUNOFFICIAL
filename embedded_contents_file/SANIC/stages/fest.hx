@@ -65,7 +65,12 @@ function onCreate()
 	brightness.setFloat('saturation', 1);
 	brightness.setFloat('brightness', 0);
 	brightness.setFloat('contrast', 1);
-	camGame.filters = [new ShaderFilter(brightness)]; camHUD.filters = [new ShaderFilter(brightness)];
+	for (cam in [camGame, camHUD])
+	{
+		FilterPruner.add(cam, brightness, 'brightness', 0);
+		FilterPruner.add(cam, brightness, 'contrast', 1);
+		FilterPruner.add(cam, brightness, 'saturation', 1);
+	}
 
 	//precache
 	preloadCharacter(1, 'sanicsad');

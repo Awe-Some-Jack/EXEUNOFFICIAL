@@ -190,6 +190,7 @@ class HScript extends Iris
 		set('ErrorHandledRuntimeShader', shaders.ErrorHandledShader.ErrorHandledRuntimeShader);
 		#end
 		set('ShaderFilter',    openfl.filters.ShaderFilter);
+		set('FilterPruner',    backend.FilterPruner);
 		set('StringTools',     StringTools);
 		#if flixel_animate
 		set('FlxAnimate', animate.FlxAnimate);

@@ -49,6 +49,8 @@ function onCreate()
 	if shadersEnabled and not lowQuality then
 		makeLuaSprite('bloom')
 		setSpriteShader('bloom', 'brightness')
+		setShaderFloat('bloom', 'brightness', 0)
+		setShaderFloat('bloom', 'contrast', 1)
 		setShaderFloat('bloom', 'saturation', 1)
 
 		makeLuaSprite('ac')
@@ -56,6 +58,7 @@ function onCreate()
 
 		makeLuaSprite('wave')
 		setSpriteShader('wave', 'wavyDistortion')
+		setShaderFloat('wave', 'amount', 0)
 
 		for _,char in ipairs({'dad', 'boyfriend'}) do
 			setProperty(char..'.useRenderTexture', true)
@@ -74,10 +77,25 @@ function onCreate()
 		setShaderFloat('boyfriend', 'thr', 0.1)
 		setShaderFloat('dad', 'thr', 0.1)
 
-		runHaxeCode([[
-			FlxG.camera.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('ac').shader), new ShaderFilter(game.getLuaObject('wave').shader)];
-			game.camHUD.filters = [new ShaderFilter(game.getLuaObject('bloom').shader), new ShaderFilter(game.getLuaObject('ac').shader), new ShaderFilter(game.getLuaObject('wave').shader)];
-		]])
+		local neutrals = {
+			bloom = {brightness = 0, contrast = 1, saturation = 1},
+			wave = {amount = 0},
+		}
+		local cameraFilters = {
+			{'camGame', {'bloom', 'ac', 'wave'}},
+			{'camHUD', {'bloom', 'ac', 'wave'}},
+		}
+		for _, entry in ipairs(cameraFilters) do
+			for _, name in ipairs(entry[2]) do
+				if neutrals[name] then
+					for uniform, neutral in pairs(neutrals[name]) do
+						addPrunedFilter(entry[1], name, uniform, neutral)
+					end
+				else
+					addStaticFilter(entry[1], name)
+				end
+			end
+		end
 	end
 end
 

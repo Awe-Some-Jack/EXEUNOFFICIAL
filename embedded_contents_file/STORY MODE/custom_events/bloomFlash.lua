@@ -2,12 +2,15 @@ function onCreatePost()
     makeLuaSprite('sexo')
 
     setSpriteShader('sexo', 'brightness', 0)
+    setShaderFloat('sexo', 'brightness', 0)
     setShaderFloat('sexo', 'saturation', 1)
     setShaderFloat('sexo', 'contrast', 1)
 
-    if shadersEnabled and not lowQuality then runHaxeCode([[ 
-    game.camGame.filters = [new ShaderFilter(game.getLuaObject('sexo').shader)]; 
-    return;]]) end
+    if shadersEnabled and not lowQuality then
+        for uniform, neutral in pairs({brightness = 0, contrast = 1, saturation = 1}) do
+            addPrunedFilter('camGame', 'sexo', uniform, neutral)
+        end
+    end
     -- Para mas de un shader: if shadersEnabled then runHaxeCode("game.camGame.filters = [new ShaderFilter(game.getLuaObject('sexo').shader), new ShaderFilter(game.getLuaObject('sexo').shader)];") end
 end
 

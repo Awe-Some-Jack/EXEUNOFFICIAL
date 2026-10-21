@@ -25,28 +25,38 @@ function onCreatePost()
 
     makeLuaSprite('sexo') -- Wolfie midd
     setSpriteShader('sexo', 'brightness', 0)
+    setShaderFloat('sexo', 'brightness', 0)
     setShaderFloat('sexo', 'saturation', 1)
     setShaderFloat('sexo', 'contrast', 1)
 
 	makeLuaSprite('sexo2')
     setSpriteShader('sexo2', 'brightness', 0)
+    setShaderFloat('sexo2', 'brightness', 0)
     setShaderFloat('sexo2', 'saturation', 1)
     setShaderFloat('sexo2', 'contrast', 1)
 
 	if shadersEnabled and not lowQuality then
-		runHaxeCode([[
-			game.camGame.filters = [
-				new ShaderFilter(game.getLuaObject('glitch').shader), new ShaderFilter(game.getLuaObject('sexo').shader), new ShaderFilter(game.getLuaObject('cab').shader), new ShaderFilter(game.getLuaObject('ca2').shader), new ShaderFilter(game.getLuaObject('gBlur').shader)
-			];
-
-			game.camHUD.filters = [
-				new ShaderFilter(game.getLuaObject('glitch2').shader), new ShaderFilter(game.getLuaObject('sexo2').shader), new ShaderFilter(game.getLuaObject('ca2').shader)
-			];
-
-			game.camVideo.filters = [
-				new ShaderFilter(game.getLuaObject('gBlur').shader), new ShaderFilter(game.getLuaObject('glitch2').shader), new ShaderFilter(game.getLuaObject('ca2').shader)
-			];
-		]])
+		local neutrals = {
+			glitch  = {GLITCH = 0},
+			glitch2 = {GLITCH = 0},
+			sexo    = {brightness = 0, contrast = 1, saturation = 1},
+			sexo2   = {brightness = 0, contrast = 1, saturation = 1},
+			cab     = {amount = 0},
+			ca2     = {amount = 0},
+			gBlur   = {distort = 0},
+		}
+		local cameraFilters = {
+			{'camGame',  {'glitch', 'sexo', 'cab', 'ca2', 'gBlur'}},
+			{'camHUD',   {'glitch2', 'sexo2', 'ca2'}},
+			{'camVideo', {'gBlur', 'glitch2', 'ca2'}},
+		}
+		for _, entry in ipairs(cameraFilters) do
+			for _, name in ipairs(entry[2]) do
+				for uniform, neutral in pairs(neutrals[name]) do
+					addPrunedFilter(entry[1], name, uniform, neutral)
+				end
+			end
+		end
 	end
 end
 

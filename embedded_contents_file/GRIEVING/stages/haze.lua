@@ -88,7 +88,7 @@ function onCreate()
     --Let's try separately
     if not lowQuality then
         addCharacterToList('griatos', 'dad') addCharacterToList('griatos 2', 'dad')
-        addCharacterToList('bf-red', 'bf')   addCharacterToList('bf', 'bf') addCharacterToList('bf2', 'bf')
+        addCharacterToList('bf-red', 'bf')   addCharacterToList('bf', 'bf-uhoh') addCharacterToList('bf2', 'bf')
 
         for _, phase1 in ipairs(hazeBGAssets['phase1'])  do precacheImage(phase1.path) end
         for _, phase2 in ipairs(hazeBGAssets['phase2'])  do precacheImage(phase2.path) end
@@ -183,7 +183,7 @@ local stageMode = {
         for _, phase5 in ipairs(spriteGroups.phase5) do setProperty(phase5..'.visible', false) end
 
         triggerEvent('Set customCamera Position', 'bf', '600, 130')
-        triggerEvent('Change Character', 'bf', 'bf')
+        triggerEvent('Change Character', 'bf', 'bf-uhoh')
         triggerEvent('Change Character', 'dad', 'griatos')
         callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 20, getProperty('boyfriend.y') + 260})
         callMethod('dad.setPosition', {getProperty('dad.x') - 80, getProperty('dad.y') - 30})

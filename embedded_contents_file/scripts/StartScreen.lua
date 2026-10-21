@@ -100,7 +100,7 @@ local modConfigs = {
 		snapDelay = 0.025,
 	},
 	['LORD X'] = {
-		type = 'slide',
+		type = 'lordX',
 		skipSongs = {},
 		useSeenCutscene = true,
 		phase = 'post',
@@ -303,6 +303,28 @@ local function createChaotixIntro()
 	runTimer('startAnims', 2.0)
 end
 
+local time = 1
+local function createlordXIntro()
+	if introCreated then return end
+	if songName ~= "gotta-go" then createSlideIntro() return end
+	introCreated = true
+	cutsceneActive = true
+
+	local fromSoundTest = getPropertyFromClass('states.SoundTest', "fromSoundTest")
+
+	if songName == "gotta-go" and fromSoundTest then
+		makeLuaSprite('bluescreen', 'fate/bluescreen')
+		updateHitbox("bluescreen")
+		screenCenter("bluescreen")
+		setGraphicSize("bluescreen", screenWidth, screenHeight)
+		setObjectCamera("bluescreen", 'camOther')
+		addLuaSprite("bluescreen")
+
+		setSpriteShader("bluescreen", "glitchChromatic")
+		runTimer('fadeBlueScreen', time)
+	end
+end
+
 local function createCardIntro()
 	if introCreated then return end
 	introCreated = true
@@ -330,6 +352,8 @@ end
 local function createIntro()
 	if cfg.type == 'slide' then
 		createSlideIntro()
+	elseif cfg.type == 'lordX' then
+		createlordXIntro()
 	elseif cfg.type == 'countdown' then
 		createCountdownIntro()
 	elseif cfg.type == 'mono' then
@@ -473,6 +497,11 @@ function onTweenCompleted(tag)
 			runTimer('wait', 0.5, 1)
 		end
 
+	elseif cfg.type == 'lordX' and songName ~= "gotta-go" then
+		if tag == 'circlemove' then
+			runTimer('wait', 0.5, 1)
+		end
+
 	elseif cfg.type == 'mono' then
 		if tag == 'textmove' and not waitTriggered then
 			waitTriggered = true
@@ -495,7 +524,7 @@ function onTimerCompleted(tag)
 		return
 	end
 
-	if cfg.type == 'slide' then
+	if cfg.type == 'slide' or cfg.type == "lordX" then
 		if tag == 'wait' then
 			doTweenAlpha('circlealpha', 'circle', 0, 1, 'linear')
 			doTweenAlpha('textalpha', 'text', 0, 1, 'linear')
@@ -507,6 +536,10 @@ function onTimerCompleted(tag)
 			removeLuaSprite('black', true)
 		end
 
+	elseif cfg.type == "lordX" then
+		if tag == "fadeBlueScreen" then
+			doTweenAlpha('BlueScreenalpha', 'bluescreen', 0, 1)
+		end
 	elseif cfg.type == 'mono' then
 		if tag == 'wait' then
 			doTweenY('downmove', 'down', screenHeight, 0.7, 'linear')
@@ -580,4 +613,16 @@ function onTimerCompleted(tag)
 			end
 		end
 	end
+end
+
+local holdTime = 0
+function onUpdate(elapsed)
+	holdTime = holdTime + elapsed
+	if getProperty("bluescreen.shader") == not nil then setShaderFloat("bluescreen", 'iTime', holdTime) end
+	if getProperty("bluescreen.shader") == not nil then setShaderFloat("bluescreen", 'GLITCH', lerp(0, 1, time)) end
+
+end
+
+function lerp(s, e, t)
+	return s + (e - s) * math.min(t, 1)
 end

@@ -4,7 +4,7 @@
 	"display_name": "FURNACE",
 	"char_scale": 4.1,
 	"artist": "DumbieDumbie",
-	"bio": "Furnace (Legacy) is a robotic antagonist created by Dr. Robotnik (Eggman) with a very specific purpose: hunting and cooking Mobians. Unlike typical EXE entities, Furnace is not supernatural, but a machine designed for efficiency, combining high intelligence with lethal functionality.\r\n\r\nHis design is heavily inspired by Metal Sonic, but modified into a larger and more industrial form. The most notable feature is the furnace built into his chest, which he uses to trap victims and burn them alive. This makes him both a hunter and a “processor,” turning his targets into food for his creator.",
+	"bio": "Furnace (Legacy) is a robotic antagonist created by Dr. Robotnik (Eggman) with a very specific purpose: hunting and cooking Mobians. Unlike typical EXE entities, Furnace is not supernatural, but a machine designed for efficiency, combining high intelligence with lethal functionality.\n\nHis design is heavily inspired by Metal Sonic, but modified into a larger and more industrial form. The most notable feature is the furnace built into his chest, which he uses to trap victims and burn them alive. This makes him both a hunter and a “processor,” turning his targets into food for his creator.",
 	"mod": "STARVED",
 	"icon_offset": [
 		691,

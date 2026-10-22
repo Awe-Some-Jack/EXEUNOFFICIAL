@@ -127,7 +127,6 @@ class Project extends HXProject
         setHaxedef("LINC_LUA_RELATIVE_DYNAMIC_LIB");
         setHaxedef("MULTITHREADED_LOADING");
         setHaxedef("SHOW_LOADING_SCREEN");
-        setHaxedef("HXCPP_GC_BIG_BLOCKS");
 
         if (isMac())
         {

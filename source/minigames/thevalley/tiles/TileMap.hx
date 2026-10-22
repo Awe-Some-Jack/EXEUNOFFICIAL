@@ -22,15 +22,12 @@ class TileMap
 	public final garys:Array<GaryNPC> = [];
 	public final amys:Array<AmyNPC> = [];
 	public final knuckles:Array<KnucklesNPC> = [];
+	public final loops:Array<LoopTile> = [];
+	public final tails:Array<FlxSprite> = [];
 
 	public var onPlayerKilled:Void->Void;
 
-	public var debugHitboxes:Bool = false;
-
-	public var invincible:Bool = false;
-
 	var _dying:Bool = false;
-	var _debug:HitboxDebug = null;
 
 	public function new() {}
 
@@ -63,6 +60,14 @@ class TileMap
 		each("crumble",  (x, y) -> { final t = new CrumblingTile(x, y); tiles.push(t); state.add(t); });
 		each("grabbed",  (x, y) -> grabbedTiles.push(new GrabbedTile(x, y, state)));
 		each("bridge",   (x, y) -> bridges.push(new SonicBridge(x, y, state)));
+		each("loop",     (x, y) -> { final l = new LoopTile(x, y); loops.push(l); place(l); });
+		each("tails",    (x, y) ->
+		{
+			final t = new FlxSprite(x, y, Paths.image('minigame/thevalley/bg/tiles/tails/tails'));
+			t.active = false;
+			tails.push(t);
+			place(t);
+		});
 	}
 
 	public function insertSpineSprites(state:FlxState, map7Spr:FlxSprite):Void
@@ -130,7 +135,7 @@ class TileMap
 		var warning = false;
 		for (sp in spines)
 		{
-			if (!invincible && sp.checkKill(player))
+			if (sp.checkKill(player))
 			{
 				_dying = true;
 				player.cinematic = true;
@@ -161,30 +166,5 @@ class TileMap
 		player.cinematic = false;
 		player.lockedAnim = null;
 		player.setGravity(true);
-	}
-
-	public function drawDebug(state:FlxState, player:Player, launchpads:Array<Launchpad>, skulls:Array<SkullPrompt>, totems:Array<Totem>):Void
-	{
-		if (!debugHitboxes)
-		{
-			if (_debug != null) _debug.hide();
-			return;
-		}
-		if (_debug == null) _debug = new HitboxDebug(state);
-
-		_debug.begin();
-		final platform = 0xFF40FF40;
-		for (t in tiles)
-			if (t.tileState != Gone && t.tileState != Sinking)
-				_debug.box(t.x + t.surface.x, t.surfaceTop(), t.surface.w, 8, platform);
-		for (ht in grabbedTiles) _debug.box(ht.tileSprite.x + ht.surface.x, ht.surfaceTop(), ht.surface.w, 6, platform);
-		for (ht in holdingTiles) _debug.box(ht.tileSprite.x + ht.surface.x, ht.surfaceTop(), ht.surface.w, 6, platform);
-		for (br in bridges) br.drawDebug(_debug);
-		for (sp in spines) _debug.shape(sp.x, sp.y, "hitbox:spikes", SpineTile.killLine);
-		for (lp in launchpads) _debug.box(lp.x, lp.triggerTop(), lp.width, lp.triggerHeight(), 0xFFFF40FF);
-		for (sk in skulls) sk.drawDebug(_debug);
-		for (tm in totems) tm.drawDebug(_debug);
-		_debug.box(player.x, player.y, player.width, player.height, 0xFF40FFFF);
-		_debug.end();
 	}
 }

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fakerbf.png">
+	<SubTexture name="fakerbf0000" x="0" y="0" width="30" height="36" frameX="0" frameY="0" frameWidth="32" frameHeight="36"/>
+	<SubTexture name="fakerbf0001" x="0" y="38" width="32" height="31" frameX="0" frameY="-5" frameWidth="32" frameHeight="36"/>
+</TextureAtlas>

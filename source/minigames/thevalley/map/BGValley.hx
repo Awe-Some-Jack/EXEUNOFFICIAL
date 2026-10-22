@@ -60,6 +60,7 @@ class BGValley
 	static final FADE_POINTS = [0.2, 0.5, 0.8];
 
 	public var eclipse(default, null):FlxSprite;
+	public var sun(default, null):FlxSprite;
 
 	public static final ECLIPSE_DISK_X:Float = EXTRASUN_X + 370.0 * 1.1;
 	public static final ECLIPSE_DISK_Y:Float = EXTRASUN_Y + 48.5 * 1.1;
@@ -85,6 +86,7 @@ class BGValley
 	final _occluders:Array<Occluder> = [];
 	final _fades:Array<Occluder> = [];
 	final _near:Array<Occluder> = [];
+	final _fx:SkyFX;
 
 	var _occlusionTimer:Float = 0;
 	var _cachedOcclusion:Float = 0.0;
@@ -114,6 +116,7 @@ class BGValley
 	{
 		_state = state;
 		_parts = parts;
+		_fx = new SkyFX(state);
 
 		var l = Math.POSITIVE_INFINITY, r = Math.NEGATIVE_INFINITY;
 		var t = Math.POSITIVE_INFINITY, b = Math.NEGATIVE_INFINITY;
@@ -168,6 +171,7 @@ class BGValley
 
 	public function update(elapsed:Float, ?player:Player):Void
 	{
+		_fx.update(elapsed);
 		for (fx in _fog) fx.update(elapsed);
 		if (player == null || _fades.length == 0) return;
 
@@ -209,14 +213,14 @@ class BGValley
 		return -1;
 	}
 
-	public function getOcclusionAmount(player:Player, ?extraSprites:Array<FlxSprite>):Float
+	public function getOcclusionAmount(target:FlxSprite, ?extraSprites:Array<FlxSprite>):Float
 	{
 		_near.resize(0);
 		for (o in _occluders)
-			if (_shown(o.spr) && _overlaps(o.spr, player)) _near.push(o);
+			if (_shown(o.spr) && _overlaps(o.spr, target)) _near.push(o);
 		if (extraSprites != null)
 			for (spr in extraSprites)
-				if (_shown(spr) && _overlaps(spr, player))
+				if (_shown(spr) && _overlaps(spr, target))
 				{
 					final mask = AlphaMask.of(spr);
 					if (mask != null) _near.push({ spr: spr, mask: mask });
@@ -226,10 +230,10 @@ class BGValley
 		var hits = 0;
 		for (i in 0...12)
 		{
-			final wx = player.x + player.width * (i + 0.5) / 12;
+			final wx = target.x + target.width * (i + 0.5) / 12;
 			for (j in 0...12)
 			{
-				final wy = player.y + player.height * (j + 0.5) / 12;
+				final wy = target.y + target.height * (j + 0.5) / 12;
 				for (o in _near)
 					if (o.mask.opaqueAt(o.spr, wx, wy)) { hits++; break; }
 			}
@@ -255,8 +259,14 @@ class BGValley
 		eclipse.animation.addByPrefix("idle", "eclipse idle", 3, true);
 		eclipse.animation.play("idle");
 		_addSkySprite(eclipse);
+		_fx.addSky(eclipse, spr ->
+		{
+			spr.scrollFactor.set(0, 0);
+			_sky.push({ spr: spr, x: spr.x, y: spr.y, moveX: true });
+			_state.add(spr);
+		});
 
-		final sun = new FlxSprite(EXTRASUN_X, EXTRASUN_Y, Paths.image('minigame/thevalley/bg/mountain/extra-sun'));
+		sun = new FlxSprite(EXTRASUN_X, EXTRASUN_Y, Paths.image('minigame/thevalley/bg/mountain/extra-sun'));
 		sun.active = false;
 		_addSkySprite(sun);
 	}
@@ -266,6 +276,7 @@ class BGValley
 		spr.scrollFactor.set(0, 0);
 		spr.scale.set(1.1, 1.1);
 		spr.updateHitbox();
+		spr.x += FlxG.width * 0.5 - ECLIPSE_DISK_X;
 		_sky.push({ spr: spr, x: spr.x, y: spr.y, moveX: true });
 		_state.add(spr);
 	}
@@ -276,7 +287,7 @@ class BGValley
 		{
 			final bd = new FlxBackdrop(Paths.image('minigame/thevalley/bg/mountain/${l.file}'), FlxAxes.X);
 			bd.scrollFactor.set(l.scroll, l.scrollY);
-			bd.setPosition(l.x, 350.0 + l.y);
+			bd.setPosition(l.x, 290.0 + l.y);
 			_sky.push({ spr: bd, x: bd.x, y: bd.y, moveX: false });
 			bd.scale.set(1.1, 1.1);
 
@@ -294,6 +305,7 @@ class BGValley
 			if (l.drift != null) bd.velocity.x = l.drift;
 			else bd.active = false;
 			_state.add(bd);
+			if (l.file == "5-mountain") _fx.addEmbers();
 		}
 	}
 
@@ -304,6 +316,23 @@ class BGValley
 			if (s.moveX) s.spr.x = s.x + dx;
 			s.spr.y = s.y + dy;
 		}
+	}
+
+	public function showParallax(on:Bool):Void
+	{
+		for (s in _sky)
+			if (!s.moveX) s.spr.visible = on;
+		_fx.showParallax(on);
+	}
+
+	public function eclipseOffset(dx:Float, dy:Float):Void
+	{
+		for (s in _sky)
+			if (s.moveX)
+			{
+				s.spr.x = s.x + dx;
+				s.spr.y = s.y + dy;
+			}
 	}
 
 	function _spawnLayer(p:MapPart, l:MapLayer):FlxSprite
@@ -354,9 +383,9 @@ class BGValley
 		return spr != null && spr.visible && spr.alpha > 0;
 	}
 
-	static inline function _overlaps(spr:FlxSprite, player:Player):Bool
+	static inline function _overlaps(spr:FlxSprite, target:FlxSprite):Bool
 	{
-		return player.x < spr.x + spr.width && player.x + player.width > spr.x
-			&& player.y < spr.y + spr.height && player.y + player.height > spr.y;
+		return target.x < spr.x + spr.width && target.x + target.width > spr.x
+			&& target.y < spr.y + spr.height && target.y + target.height > spr.y;
 	}
 }

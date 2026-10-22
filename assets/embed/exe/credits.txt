@@ -415,7 +415,7 @@ Tomis Turbando
 Snorby
 
 =Japanese Translation
-KrazyKazu_
+KrazyKazu
 
 =Chinese Translation
 xmo

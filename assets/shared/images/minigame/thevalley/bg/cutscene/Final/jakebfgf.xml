@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="jakebfgf.png">
+	<SubTexture name="jakebfgf0000" x="0" y="0" width="45" height="42" frameX="0" frameY="0" frameWidth="45" frameHeight="42"/>
+	<SubTexture name="jakebfgf0001" x="0" y="44" width="45" height="42" frameX="0" frameY="0" frameWidth="45" frameHeight="42"/>
+</TextureAtlas>

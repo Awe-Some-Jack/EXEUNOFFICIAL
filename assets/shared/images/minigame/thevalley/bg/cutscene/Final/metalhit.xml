@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="metalhit.png">
+	<SubTexture name="metalhit Final0000" x="0" y="0" width="78" height="76" frameX="0" frameY="0" frameWidth="78" frameHeight="76"/>
+	<SubTexture name="metalhit Final0001" x="80" y="0" width="78" height="74" frameX="0" frameY="-1" frameWidth="78" frameHeight="76"/>
+	<SubTexture name="metalhit Final0002" x="0" y="78" width="78" height="74" frameX="0" frameY="-1" frameWidth="78" frameHeight="76"/>
+	<SubTexture name="metalhit Final0003" x="80" y="78" width="78" height="74" frameX="0" frameY="-1" frameWidth="78" frameHeight="76"/>
+</TextureAtlas>

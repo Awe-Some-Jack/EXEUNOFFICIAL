@@ -30,6 +30,7 @@ import minigames.thevalley.cutscenes.TVCutscene;
 import minigames.thevalley.cutscenes.GameOver;
 import minigames.thevalley.cutscenes.IntroCutscene;
 import minigames.thevalley.character.player.Player;
+import minigames.thevalley.character.player.ValleyInput;
 import minigames.thevalley.character.player.Player.PlayerMode;
 import minigames.thevalley.character.player.HUD;
 import minigames.thevalley.tiles.TileMap;
@@ -80,6 +81,8 @@ class TheValley extends MusicBeatState implements ExeWorld
 	public var waypointGraph:WaypointGraph;
 
 	var _gameplayStarted:Bool = false;
+	var _finalCS:minigames.thevalley.cutscenes.FinalCutscene;
+	var _sunkyGag:minigames.thevalley.cutscenes.SunkyGag;
 
 	var _ambientSound:FlxSound;
 	var _windSound:FlxSound;
@@ -89,6 +92,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	var _ambientCloseness:Float = 0;
 
 	var _breath:minigames.thevalley.character.monster.Monster.ExeBreath;
+	var _scream:minigames.thevalley.character.monster.ExeScream;
 	var _monsterCloseness:Float = 0;
 
 	var _deathFade:FlxSprite;
@@ -108,6 +112,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	var _finalTriggered:Bool = false;
 
 	var _gateNotified:Bool = false;
+	var _gateAnim:Float = -1;
 	var _gateMsgBar:FlxSprite;
 	var _gateMsgTxt:FlxText;
 	var _gateMsgTimer:Float = 0;
@@ -119,9 +124,6 @@ class TheValley extends MusicBeatState implements ExeWorld
 	];
 
 	var _occlusionAmount:Float = 0;
-
-	var _isRestarting:Bool = false;
-	var _pauseWatcher:()->Void = null;
 
 	public var cutscene:TVCutscene;
 	public var player:Player;
@@ -135,6 +137,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	public final trees:Array<FlxSprite> = [];
 	public final tileCheckers:Array<FlxSprite> = [];
 	public final monsters:Array<Monster> = [];
+	public final easterEggs:Array<{ spr:FlxSprite, type:String, shown:Bool, found:Bool, wait:Float }> = [];
 
 	static var _prevAntialiasing:Bool = false;
 	var _prevWindowTitle:String;
@@ -153,8 +156,6 @@ class TheValley extends MusicBeatState implements ExeWorld
 		_prevDrawFps = FlxG.drawFramerate;
 		_setFps(60, 60);
 		_setTitle(false);
-
-		PlayState.isLetterboxedAspectRatio = true;
 
 		final shakeCam = new minigames.ShakeCamera();
 		shakeCam.shakeView = true;
@@ -223,6 +224,8 @@ class TheValley extends MusicBeatState implements ExeWorld
 		hud = new HUD(this, uiCam);
 		hud.onDeath = _timeUp;
 		hud.timerRunning = false;
+		_scream = new minigames.thevalley.character.monster.ExeScream(this, uiCam);
+		_scream.target = () -> { x: (player.x + player.width * 0.5 - bgCam.viewX) * bgCam.zoom, y: (player.y + player.height * 0.5 - bgCam.viewY) * bgCam.zoom };
 
 		cutscene = new TVCutscene(this, player, bgCam, uiCam, hud);
 		cutscene.addSprites(this, uiCam);
@@ -257,6 +260,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 		waypointGraph.generate(bg.left, bg.right);
 
 		_loadObjects();
+		minigames.thevalley.cutscenes.FinalCutscene.preload();
 		Monster.fakerSpent = false;
 		for (m in monsters) m.lurkAhead();
 
@@ -312,6 +316,25 @@ class TheValley extends MusicBeatState implements ExeWorld
 		super.update(elapsed);
 		_clock += elapsed;
 
+		if (_finalCS != null)
+		{
+			if (controls.PAUSE && !_finalCS.skipping)
+			{
+				_openPause();
+				return;
+			}
+			_finalCS.update(elapsed);
+			bg.update(elapsed, player);
+			_updateVignette(elapsed);
+			gameCamera.update(elapsed);
+			return;
+		}
+
+		if (_sunkyGag != null && _sunkyGag.blackout)
+		{
+			_sunkyGag.update(elapsed);
+			return;
+		}
 
 		if (gameOver.active)
 		{
@@ -326,30 +349,8 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 		if (controls.PAUSE)
 		{
-			states.substates.PauseSubState.miniSonicImage = 'the-valley';
-			persistentUpdate = false;
-			persistentDraw   = true;
-			if (nape != null) nape.active = false;
-			FlxG.sound.music?.pause();
-			_pauseSounds();
-
-			options.OptionsState.standaloneReturnState = () -> new minigames.thevalley.TheValley();
-			states.substates.PauseSubState.cameraWidth = FlxG.width;
-			_setTitle(true);
 			hud.showShardsNow();
-			openSubState(new states.substates.PauseSubState());
-
-			var canCheckRestart = true;
-			_pauseWatcher = () -> {
-				final pauseSub = Std.downcast(subState, states.substates.PauseSubState);
-				if (pauseSub == null) { _removePauseWatcher(); return; }
-				if (canCheckRestart)
-				{
-					@:privateAccess _isRestarting = (pauseSub.curSelected == 1);
-					if (controls.ACCEPT) canCheckRestart = false;
-				}
-			};
-			FlxG.signals.postUpdate.add(_pauseWatcher);
+			_openPause();
 			return;
 		}
 
@@ -359,8 +360,8 @@ class TheValley extends MusicBeatState implements ExeWorld
 		_updatePlayerOcclusion(elapsed);
 
 		hud.setVisible(!player.cinematic && !player.isHiding && !player.isHidden && !cutscene.skullCSPlaying);
-		hud.forceShardsVisible = cutscene.skullCSPlaying || (_gameplayStarted && FlxG.keys.pressed.TAB);
-		if (_gameplayStarted && FlxG.keys.justPressed.TAB) hud.flashShards();
+		hud.forceShardsVisible = cutscene.skullCSPlaying || (_gameplayStarted && ValleyInput.shardsHeld());
+		if (_gameplayStarted && ValleyInput.shardsJust()) hud.flashShards();
 
 		hud.timerRunning = _gameplayStarted && !cutscene.skullCSPlaying && (_deathPhase == 0);
 
@@ -382,7 +383,6 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 		hud.update(elapsed);
 		tileMap.update(elapsed, player);
-		tileMap.drawDebug(this, player, launchpads, skullPrompts, totems);
 
 		_updateDeath(elapsed);
 		if (gameOver.active) return;
@@ -393,11 +393,11 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 		if (_gameplayStarted)
 		{
-			if (FlxG.keys.justPressed.F7) tileMap.debugHitboxes = !tileMap.debugHitboxes;
-
 			if (_deathPhase == 0) player.handleInput(elapsed, 146.0, 134.0);
 
 			for (g in tileMap.garys) g.npcUpdate(elapsed);
+			if (_deathPhase == 0) _updateEasterEggs();
+			if (_sunkyGag != null) _sunkyGag.update(elapsed);
 			_updateAmbience(elapsed);
 
 			for (lp in launchpads)
@@ -451,10 +451,11 @@ class TheValley extends MusicBeatState implements ExeWorld
 			if (_burning) gameCamera.zoomIn(Totem.BURN_SHOT_ZOOM, 2.0);
 			_dread.update(elapsed, _burning ? 1.0 : Math.max(dread, _reveal.dread), !_burning);
 
+			_updateGateBounce(elapsed);
 			_updateFinalTrigger(elapsed);
 			_updateGateMessage(elapsed);
 			if (_finalTriggered) gameCamera.zoomIn(0.6, 0.6);
-			if (player.inDark && _deathPhase == 0) gameCamera.zoomIn(0.6, 1.0);
+			if (player.inDark && _deathPhase == 0) gameCamera.zoomIn(1.1, 1.0);
 			final fall = player.isGrounded ? 0.0 : Math.max(0, Math.min(1, (player.body.velocity.y - 150.0) / (550.0 - 150.0)));
 			gameCamera.followRateY = 1.4 + (9.0 - 1.4) * fall * fall * (3 - 2 * fall);
 			_reveal.update(elapsed, monsters);
@@ -468,15 +469,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 		gameCamera.update(elapsed);
 		_burnFlash.update(elapsed, player);
-	}
-
-	function _removePauseWatcher():Void
-	{
-		if (_pauseWatcher != null)
-		{
-			FlxG.signals.postUpdate.remove(_pauseWatcher);
-			_pauseWatcher = null;
-		}
+		_scream.update(elapsed);
 	}
 
 	function _updateDarkness():Void
@@ -595,6 +588,28 @@ class TheValley extends MusicBeatState implements ExeWorld
 	}
 
 	final _pausedSounds:Array<FlxSound> = [];
+	final _pausedTweens:Array<FlxTween> = [];
+
+	function _openPause():Void
+	{
+		states.substates.PauseSubState.miniSonicImage = 'the-valley';
+		persistentUpdate = false;
+		persistentDraw   = true;
+		final nape = FlxG.plugins.get(FlxNapeSpace);
+		if (nape != null) nape.active = false;
+		FlxG.sound.music?.pause();
+		_pauseSounds();
+		FlxTween.globalManager.forEach(t -> if (t.active && !t.finished)
+		{
+			t.active = false;
+			_pausedTweens.push(t);
+		});
+
+		options.OptionsState.standaloneReturnState = () -> new minigames.thevalley.TheValley();
+		states.substates.PauseSubState.cameraWidth = FlxG.width;
+		_setTitle(true);
+		openSubState(new states.substates.PauseSubState());
+	}
 
 	function _pauseSounds():Void
 	{
@@ -609,6 +624,9 @@ class TheValley extends MusicBeatState implements ExeWorld
 	function _setTitle(paused:Bool):Void
 	{
 		FlxG.stage.window.title = "Friday Night Funkin': Vs Sonic.EXE | Playing: In The Valley" + (paused ? " (Paused)" : "");
+		#if DISCORD_ALLOWED
+		DiscordClient.changePresence("In The Valley", paused ? "Paused" : (_finalCS != null ? "The End" : null));
+		#end
 	}
 
 	override public function closeSubState():Void
@@ -617,16 +635,16 @@ class TheValley extends MusicBeatState implements ExeWorld
 		_setTitle(false);
 		for (snd in _pausedSounds) snd.resume();
 		_pausedSounds.resize(0);
+		for (t in _pausedTweens) t.active = true;
+		_pausedTweens.resize(0);
 	}
 
 	override public function destroy():Void
 	{
-		_removePauseWatcher();
 		if (!options.OptionsState.onPlayState) options.OptionsState.standaloneReturnState = null;
 		FlxSprite.defaultAntialiasing = _prevAntialiasing;
 		FlxG.stage.window.title = _prevWindowTitle;
 		_setFps(_prevUpdateFps, _prevDrawFps);
-		if (!_isRestarting) PlayState.isLetterboxedAspectRatio = false;
 		super.destroy();
 	}
 
@@ -659,6 +677,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 		final t = new FlxSprite(wx, wy);
 		t.loadGraphic(Paths.image("minigame/thevalley/map/1/tree", false));
 		t.scrollFactor.set(1, 1);
+		t.active = false;
 		trees.push(t);
 		treeGroup.add(t);
 		return t;
@@ -668,6 +687,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	{
 		final m = new Monster(wx, wy, this, player);
 		m.onLostYou = _onExeLostYou;
+		m.onSpotted = _onExeSpotted;
 		monsters.push(m);
 		return m;
 	}
@@ -677,6 +697,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 		final tc = new FlxSprite(wx, wy);
 		tc.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/tilecheckers/tilecheckers"));
 		tc.scrollFactor.set(1, 1);
+		tc.active = false;
 		tileCheckers.push(tc);
 
 		final map7Spr = bg.mapSpriteByPart.get(7);
@@ -692,6 +713,65 @@ class TheValley extends MusicBeatState implements ExeWorld
 			objectGroup.add(tc);
 		}
 		return tc;
+	}
+
+	public function spawnEasterEgg(wx:Float, wy:Float, type:String):FlxSprite
+	{
+		final e = easterEggSprite(type);
+		e.setPosition(wx, wy);
+		e.active = type == "sunky";
+		e.visible = false;
+		easterEggs.push({ spr: e, type: type, shown: false, found: false, wait: 0.0 });
+		objectGroup.add(e);
+		return e;
+	}
+
+	public static function easterEggSprite(type:String):FlxSprite
+	{
+		final e = new FlxSprite();
+		if (type != "sunky")
+			return e.loadGraphic(Paths.image('minigame/thevalley/characters/easteregg/$type'));
+		e.frames = Paths.getSparrowAtlas('minigame/thevalley/characters/easteregg/sunky');
+		e.animation.add("idle", [0], 1, false);
+		e.animation.add("raise", [3, 4, 5, 6, 7, 8, 9, 10], 12, false);
+		e.animation.add("lower", [11, 12, 13], 10, false);
+		e.animation.play("idle");
+		return e;
+	}
+
+	function _updateEasterEggs():Void
+	{
+		for (egg in easterEggs)
+		{
+			final e = egg.spr;
+			e.visible = egg.shown;
+			if (!egg.shown || !e.isOnScreen(bgCam)) continue;
+			egg.wait -= FlxG.elapsed;
+			if (egg.wait <= 0)
+			{
+				egg.wait = 0.25;
+				e.color = FlxColor.interpolate(FlxColor.WHITE, 0xFF63636E, bg.getOcclusionAmount(e, trees));
+			}
+			if (egg.found || player.cinematic) continue;
+			if (egg.type == "sunky")
+			{
+				if (_sunkyGag == null && player.isGrounded && _chase.mix < 0.05 && minigames.thevalley.cutscenes.SunkyGag.inZone(e, player))
+				{
+					egg.found = true;
+					_sunkyGag = new minigames.thevalley.cutscenes.SunkyGag(this, e);
+				}
+				continue;
+			}
+			final dx = player.x + player.width * 0.5 - (e.x + e.width * 0.5);
+			final dy = player.y + player.height * 0.5 - (e.y + e.height * 0.5);
+			if (dx * dx + dy * dy > 90 * 90) continue;
+			egg.found = true;
+			final id = egg.type == "pepeelmago" ? "pepe" : egg.type;
+			if (backend.EXEAchievements.isUnlocked(id)) continue;
+			backend.EXEAchievements.unlock(id);
+			backend.EXEAchievements.save();
+			hud.addPoints(0, "SECRET FOUND");
+		}
 	}
 
 	public function spawnLaunchpad(wx:Float, wy:Float):Launchpad
@@ -739,27 +819,6 @@ class TheValley extends MusicBeatState implements ExeWorld
 		return tm;
 	}
 
-	public function saveObjects():Void
-	{
-		#if sys
-		final lps = [for (lp in launchpads) { x: lp.x, y: lp.y }];
-		final sks = [for (sk in skullPrompts) { x: sk.skullX, y: sk.skullY }];
-		final tms = [for (tm in totems) {
-			x: tm.totemX, y: tm.totemY,
-			type: switch (tm.totemType) {
-				case Short: "short";
-				case Tall:  "tall";
-				default:    "fake";
-			}
-		}];
-		final trs = [for (t in trees) { x: t.x, y: t.y }];
-		final tcs = [for (tc in tileCheckers) { x: tc.x, y: tc.y }];
-		final mns = [for (m in monsters) { x: m.sprite.x, y: m.sprite.y }];
-		final json = haxe.Json.stringify({ launchpads: lps, skulls: sks, totems: tms, trees: trs, tileCheckers: tcs, monsters: mns }, null, "  ");
-		sys.io.File.saveContent("assets/shared/data/minigame/thevalley/objects.json", json);
-		#end
-	}
-
 	function _loadObjects():Void
 	{
 		final path = "assets/shared/data/minigame/thevalley/objects.json";
@@ -770,14 +829,28 @@ class TheValley extends MusicBeatState implements ExeWorld
 		
 		final data:{ launchpads:Array<{x:Float,y:Float}>, skulls:Array<{x:Float,y:Float}>,
 		           totems:Array<{x:Float,y:Float,type:String}>, trees:Array<{x:Float,y:Float}>,
-		           tileCheckers:Array<{x:Float,y:Float}>, ?monsters:Array<{x:Float,y:Float}> } = haxe.Json.parse(raw);
+		           tileCheckers:Array<{x:Float,y:Float}>, ?monsters:Array<{x:Float,y:Float}>,
+		           ?eastereggs:Array<{x:Float,y:Float,type:String}> } = haxe.Json.parse(raw);
 		           
 		if (data.launchpads != null) for (d in data.launchpads) spawnLaunchpad(d.x, d.y);
 		if (data.skulls != null) for (d in data.skulls) spawnSkull(d.x, d.y);
 		if (data.trees != null) for (d in data.trees) spawnTree(d.x, d.y);
 		if (data.tileCheckers != null) for (d in data.tileCheckers) spawnTileChecker(d.x, d.y);
 		if (data.monsters != null) for (d in data.monsters) spawnMonster(d.x, d.y);
+		if (data.eastereggs != null)
+		{
+			for (d in data.eastereggs) spawnEasterEgg(d.x, d.y, d.type);
+			final types:Array<String> = [];
+			for (egg in easterEggs) if (!types.contains(egg.type)) types.push(egg.type);
+			for (type in types)
+			{
+				if (!FlxG.random.bool(20)) continue;
+				final egg = FlxG.random.getObject([for (egg in easterEggs) if (egg.type == type) egg]);
+				egg.shown = egg.spr.visible = true;
+			}
+		}
 		if (data.totems != null)
+		{
 			for (d in data.totems)
 			{
 				final t = switch (d.type) {
@@ -787,6 +860,15 @@ class TheValley extends MusicBeatState implements ExeWorld
 				};
 				spawnTotem(d.x, d.y, t);
 			}
+			final anchors = [for (t in totems) t.anchor()];
+			final shuffled = totems.copy();
+			FlxG.random.shuffle(shuffled);
+			for (i in 0...shuffled.length)
+			{
+				shuffled[i].placeAt(anchors[i].x, anchors[i].y);
+				totems[i] = shuffled[i];
+			}
+		}
 	}
 
 	var _lastGetaway:Float = -999;
@@ -803,6 +885,14 @@ class TheValley extends MusicBeatState implements ExeWorld
 			hud.lives++;
 			hud.addPoints(0, "+1 LIFE");
 		}
+	}
+
+	function _onExeSpotted(x:Float, y:Float):Bool
+	{
+		if (_deathPhase != 0 || _finalTriggered || player.cinematic) return false;
+		_scream.scream(x < bgCam.viewX + bgCam.viewWidth * 0.5 ? -1 : 1, (y - bgCam.viewY) * bgCam.zoom);
+		gameCamera.shake(0.0025, 3.2);
+		return true;
 	}
 
 	function _onExeLostYou(hidden:Bool, closest:Float):Void
@@ -935,7 +1025,11 @@ class TheValley extends MusicBeatState implements ExeWorld
 		_lastDeathByExe = byExe;
 		for (sk in skullPrompts) sk.interrupt();
 		for (tm in totems) tm.interrupt();
-		for (m in monsters) m.forgetHunt();
+		for (m in monsters)
+		{
+			m.forgetHunt();
+			m.resetFaker();
+		}
 		_chase.release();
 		_deathPhase = 1;
 		_deathTimer = 0;
@@ -997,12 +1091,12 @@ class TheValley extends MusicBeatState implements ExeWorld
 	{
 		if (_finalTriggered || player.cinematic) return;
 
-		final pastGate = player.x + player.width * 0.5 >= 10368.0;
+		final pastGate = player.x + player.width * 0.5 >= 10568.0;
 
 		if (!shardHunt.complete)
 		{
 			if (pastGate) _blockFinalGate();
-			else if (player.x + player.width * 0.5 < 10368.0 - 150.0) _gateNotified = false;
+			else if (player.x + player.width * 0.5 < 10568.0 - 150.0) _gateNotified = false;
 			return;
 		}
 
@@ -1026,9 +1120,14 @@ class TheValley extends MusicBeatState implements ExeWorld
 		if (player.mode == Glide || player.mode == WingOpen || player.mode == WingClose)
 			player.mode = Air;
 
-		final maxX = 10368.0 - player.width * 0.5;
-		if (player.body.position.x > maxX) player.body.position.x = maxX;
 		if (player.body.velocity.x > 0) player.body.velocity.x = 0;
+		if (!player.isGrounded) return;
+
+		player.cinematic = true;
+		player.body.velocity.setxy(0, 0);
+		player.facing = flixel.util.FlxDirectionFlags.RIGHT;
+		player.lockedAnim = "searchinglose";
+		_gateAnim = 0;
 
 		if (!_gateNotified)
 		{
@@ -1037,6 +1136,30 @@ class TheValley extends MusicBeatState implements ExeWorld
 			_gateMsgTxt.text = GATE_LINES[Std.random(GATE_LINES.length)];
 			_gateMsgTxt.y = _gateMsgBar.y + (_gateMsgBar.height - _gateMsgTxt.height) * 0.5;
 			hud.flashShards();
+		}
+	}
+
+	function _updateGateBounce(elapsed:Float):Void
+	{
+		if (_gateAnim < 0) return;
+		if (player.lockedAnim != "searchinglose" && player.lockedAnim != "walk")
+		{
+			_gateAnim = -1;
+			return;
+		}
+		_gateAnim += elapsed;
+		if (_gateAnim >= 1.45)
+		{
+			_gateAnim = -1;
+			player.lockedAnim = null;
+			player.cinematic = false;
+		}
+		else if (_gateAnim >= 0.85)
+		{
+			player.facing = flixel.util.FlxDirectionFlags.LEFT;
+			player.lockedAnim = "walk";
+			if (player.animation.curAnim != null) player.animation.curAnim.frameRate = 10;
+			player.body.position.x -= 70.0 * elapsed;
 		}
 	}
 
@@ -1056,57 +1179,14 @@ class TheValley extends MusicBeatState implements ExeWorld
 		player.body.velocity.setxy(0, 0);
 
 		FlxG.sound.music?.fadeOut(1.0, 0.0);
-		_ambientSound?.fadeIn(1.0, _ambientSound.volume, 0.5);
+		_ambientSound?.fadeOut(1.0, 0.0);
 		_breath.fadeOut(1.0);
 		_chase.stop();
 		_windSound?.fadeOut(1.0, 0.0);
 
-		FlxTween.tween(_deathFade, { alpha: 1.0 }, 1.0, { ease: FlxEase.quadInOut, onComplete: (_) -> _playFinalVideo() });
-	}
-
-	function _playFinalVideo():Void
-	{
-		#if VIDEOS_ALLOWED
-		final vid = new VideoSprite(0, 0, true);
-		vid.antialiasing = false;
-		vid.camera = uiCam;
-		add(vid);
-
-		vid.onFormat(() -> {
-			#if switch
-			final hasFrame = vid.video != null;
-			#else
-			final hasFrame = vid.video.bitmap?.bitmapData != null;
-			#end
-			if (hasFrame)
-			{
-				#if switch
-				final bw:Float = vid.video.frameWidth;
-				final bh:Float = vid.video.frameHeight;
-				#else
-				final bw:Float = vid.video.bitmap.bitmapData.width;
-				final bh:Float = vid.video.bitmap.bitmapData.height;
-				#end
-				final cw:Float = uiCam.width;
-				final ch:Float = uiCam.height;
-				final scale:Float = Math.max(cw / bw, ch / bh);
-				
-				vid.video.setGraphicSize(Std.int(bw * scale), Std.int(bh * scale));
-				vid.video.updateHitbox();
-				vid.video.x = (cw - vid.video.width)  * 0.5;
-				vid.video.y = (ch - vid.video.height) * 0.5;
-			}
-		});
-
-		vid.onEnd(() -> _finishFinalCutscene());
-
-		if (vid.loadVideo("assets/shared/images/minigame/thevalley/bg/cutscene/final.mp4"))
-			vid.playDelayed();
-		else
-			_finishFinalCutscene(); 
-		#else
-		_finishFinalCutscene();
-		#end
+		_finalCS = new minigames.thevalley.cutscenes.FinalCutscene(this);
+		_finalCS.onDone = _finishFinalCutscene;
+		_setTitle(false);
 	}
 
 	function _finishFinalCutscene():Void

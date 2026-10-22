@@ -10,6 +10,7 @@ import flixel.util.FlxColor;
 
 import minigames.Camera;
 import minigames.thevalley.character.player.Player;
+import minigames.thevalley.character.player.ValleyInput;
 import minigames.thevalley.map.BGValley;
 
 enum IntroPhase
@@ -60,7 +61,6 @@ class IntroCutscene
 	var _beatTimer:Float = 0;
 	var _stage:Int = 0;
 	var _walkStart:Float = 0;
-	var _skyX:Float = 0;
 	var _baseOffsetY:Float = 0;
 	var _directing:Bool = false;
 	var _canSkip:Bool = false;
@@ -150,10 +150,8 @@ class IntroCutscene
 		_title.x = -_title.width;
 		_dirt.x = FlxG.width;
 
-		final cam = _eButton.camera;
-		_skyX = cam.width * 0.5 - BGValley.ECLIPSE_DISK_X;
-		_skyY = cam.height * 0.5 - BGValley.ECLIPSE_DISK_Y;
-		_bg.skyOffset(_skyX, Math.min(_skyY, _skyRoom(6.6)));
+		_skyY = _eButton.camera.height * 0.5 - BGValley.ECLIPSE_DISK_Y;
+		_bg.skyOffset(0, Math.min(_skyY, _skyRoom(6.6)));
 		_camera.lookAt(146.0, -216.0, 6.6);
 
 		_player.cinematic = true;
@@ -184,7 +182,7 @@ class IntroCutscene
 		if (tied) _player.body.velocity.setxy(0, 0);
 
 		final skippable = _canSkip && _phase != Settle && _phase != Skipping && _phase != Done;
-		if (skippable && FlxG.keys.justPressed.SPACE)
+		if (skippable && ValleyInput.skip())
 		{
 			_fadeMusic(0, 0.4);
 			_setPhase(Skipping);
@@ -197,8 +195,8 @@ class IntroCutscene
 		{
 			case TitleIn:
 				final t = FlxEase.quartOut(Math.min(1, _timer / 1.8));
-				_title.x = -_title.width + (226.0 + _title.width) * t;
-				_dirt.x = FlxG.width + (206.0 - FlxG.width) * t;
+				_title.x = -_title.width + (FlxG.width * 0.5 - 254.0 + _title.width) * t;
+				_dirt.x = FlxG.width + (FlxG.width * 0.5 - 274.0 - FlxG.width) * t;
 				if (_timer >= 1.8) _setPhase(TitleHold);
 
 			case TitleHold:
@@ -208,8 +206,8 @@ class IntroCutscene
 				final t = Math.min(1, _timer / 3.8);
 				_title.alpha = _dirt.alpha = 1 - Math.min(1, t * 2);
 				final out = FlxEase.sineIn(Math.min(1, t * 2));
-				_title.x = 226.0 - 220.0 * out;
-				_dirt.x = 206.0 + 220.0 * out;
+				_title.x = FlxG.width * 0.5 - 254.0 - 220.0 * out;
+				_dirt.x = FlxG.width * 0.5 - 274.0 + 220.0 * out;
 				_dimmer.alpha = 1 - FlxEase.sineInOut(t);
 				if (_timer >= 3.8)
 				{
@@ -222,12 +220,12 @@ class IntroCutscene
 				if (_timer >= 2.8)
 				{
 					_setPhase(Descend);
-					_camera.lookAt(143.5, 162.5, 3.7, 9.0, FlxEase.smootherStepInOut);
+					_camera.lookAt(143.5, 162.5, 3.7, 9.0, FlxEase.smootherStepInOut, true);
 				}
 
 			case Descend:
 				final e = 1 - FlxEase.smootherStepInOut(Math.min(1, _timer / 9.0));
-				_bg.skyOffset(_skyX * e, Math.min(_skyY * e, _skyRoom(_camera.zoom)));
+				_bg.skyOffset(0, Math.min(_skyY * e, _skyRoom(_camera.zoom)));
 				if (_timer >= 9.0) _startTrapped();
 
 			case Trapped:
@@ -266,7 +264,7 @@ class IntroCutscene
 			case Confused:
 				_player.body.velocity.x = 0;
 				final anim = _player.animation.curAnim;
-				final moved = _timer >= 2.0 && (FlxG.keys.anyJustPressed([LEFT, RIGHT, A, D, SPACE]));
+				final moved = _timer >= 2.0 && ValleyInput.movedJust();
 				if (moved || (anim != null && anim.name == "looking" && anim.finished)) _finish();
 
 			case Skipping:
@@ -327,7 +325,7 @@ class IntroCutscene
 
 		_progress = Math.max(0, _progress - (_sincePress > 0.45 ? 0.25 : 0.06) * elapsed);
 
-		if (FlxG.keys.justPressed.E) _press();
+		if (ValleyInput.interact()) _press();
 
 		final cur = _player.animation.curAnim;
 		if (_sincePress > 0.3 && cur != null && cur.name == "break_tap" && (cur.finished || cur.looped)) _lock("break_idle");
@@ -341,7 +339,7 @@ class IntroCutscene
 
 		_shown += (_progress - _shown) * (1.0 - Math.pow(0.001, elapsed * 2.5));
 
-		_camera.lookAt(143.5, 162.5, 3.7 + _shown * 0.6);
+		_camera.lookAt(143.5, 162.5, 3.7 + _shown * 0.6, 0, null, true);
 
 		_eButton.x = 143.5 - _eButton.width * 0.5;
 		_eButton.y = 139.0 - _eButton.height - 6.0;
@@ -386,7 +384,7 @@ class IntroCutscene
 		FlxG.sound.play(Paths.sound("minigame/thevalley/ropesnap"), 0.45);
 		_camera.shake(0.006, 0.35);
 		_flash.alpha = 0.7;
-		_camera.lookAt(143.5 + 4, 162.5 + 10, 3.7 + 0.6 + 0.9, 0.35, FlxEase.expoOut);
+		_camera.lookAt(143.5 + 4, 162.5 + 10, 3.7 + 0.6 + 0.9, 0.35, FlxEase.expoOut, true);
 	}
 
 	function _finish():Void

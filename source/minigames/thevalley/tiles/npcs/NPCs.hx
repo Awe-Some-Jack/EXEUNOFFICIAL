@@ -8,6 +8,7 @@ import flixel.util.FlxDirectionFlags;
 import minigames.Camera;
 import minigames.thevalley.TheValley;
 import minigames.thevalley.character.player.Player;
+import minigames.thevalley.character.player.ValleyInput;
 import minigames.thevalley.cutscenes.Subtitles;
 
 class DeadNPC extends FlxSprite
@@ -133,7 +134,7 @@ class GaryNPC extends DeadNPC
 			case GIdle:
 				final dist = getDist();
 				_updatePrompt(dist);
-				if (FlxG.keys.justPressed.E && dist <= 50.0 && _canTalk()) _start();
+				if (ValleyInput.interact() && dist <= 50.0 && _canTalk()) _start();
 
 			case GTalking:
 				if (getDist() > 90.0 * 2) _finish(true);
@@ -188,6 +189,7 @@ class GaryNPC extends DeadNPC
 
 		_player.cinematic = true;
 		_player.facing = x + width * 0.5 < _player.x + _player.width * 0.5 ? FlxDirectionFlags.LEFT : FlxDirectionFlags.RIGHT;
+		_player.lockedAnim = "turnback";
 
 		_queue = _next >= 2 ? [3] : (_cutOff ? [2, _next] : [_next]);
 		_cutOff = false;
@@ -226,10 +228,11 @@ class GaryNPC extends DeadNPC
 		if (_time >= CLIPS[_clip].len)
 		{
 			if (_clip == _next && _next < 2) _next++;
+			if (_clip == 0) _queue.push(1);
 			if (_queue.length > 0) _playNext();
 			else _finish(false);
 		}
-		else if (FlxG.keys.justPressed.E && _time >= 0.6 && _clip != 2) _finish(true);
+		else if (ValleyInput.interact() && _time >= 0.6 && _clip != 2) _finish(true);
 	}
 
 	function _finish(skipped:Bool):Void
@@ -243,6 +246,12 @@ class GaryNPC extends DeadNPC
 		_voice = null;
 		_line = -1;
 		if (_eButton != null) _eButton.alpha = 0;
+
+		if (_player.lockedAnim == "turnback")
+		{
+			_player.lockedAnim = null;
+			_player.animation.play("turnfront", true);
+		}
 
 		_subs.clear();
 		_subs.close(0.35);

@@ -5,6 +5,7 @@ import flixel.addons.nape.FlxNapeSpace;
 import nape.geom.Ray;
 import nape.geom.RayResultList;
 import nape.geom.Vec2;
+import nape.phys.Body;
 import nape.shape.ShapeList;
 
 import minigames.thevalley.character.monster.Monster.ExeWorld;
@@ -12,7 +13,7 @@ import minigames.thevalley.libs.ai.nav.NavGraph;
 import minigames.thevalley.libs.ai.pathfinding.types.NextNodeCallback;
 import minigames.thevalley.map.TVNapeWorld;
 
-typedef WNode = { x:Float, y:Float };
+typedef WNode = { x:Float, y:Float, ?support:Body };
 
 class WaypointGraph extends NavGraph
 {
@@ -138,9 +139,10 @@ class WaypointGraph extends NavGraph
 	}
 
 	final _rays:RayResultList = new RayResultList();
+	final _ray:Ray = new Ray(Vec2.weak(0, 0), Vec2.weak(0, 1));
 	final _shapes:ShapeList = new ShapeList();
 
-	function _sampleColumns(minX:Float, maxX:Float):Array<{ x:Float, ys:Array<Float> }>
+	function _sampleColumns(minX:Float, maxX:Float):Array<{ x:Float, ys:Array<{ y:Float, body:Body }> }>
 	{
 		final columns = [];
 		var x = minX;
@@ -152,33 +154,32 @@ class WaypointGraph extends NavGraph
 		return columns;
 	}
 
-	function _surfacesAt(x:Float):Array<Float>
+	function _surfacesAt(x:Float):Array<{ y:Float, body:Body }>
 	{
-		final hits:Array<Float> = [];
-		final orig = Vec2.get(x, -1200.0);
-		final down = Vec2.get(0, 1);
-		final ray = new Ray(orig, down);
-		ray.maxDistance = 2600.0;
-		FlxNapeSpace.space.rayMultiCast(ray, false, null, _rays);
-		orig.dispose();
-		down.dispose();
+		final hits:Array<{ y:Float, body:Body }> = [];
+		_ray.origin.setxy(x, -1200.0);
+		_ray.direction.setxy(0, 1);
+		_ray.maxDistance = 2600.0;
+		FlxNapeSpace.space.rayMultiCast(_ray, false, null, _rays);
 
 		for (i in 0..._rays.length)
 		{
 			final r = _rays.at(i);
-			if (!r.shape.body.isDynamic()) hits.push(-1200.0 + r.distance);
+			final b = r.shape.body;
+			if (!b.isDynamic()) hits.push({ y: -1200.0 + r.distance, body: b.isKinematic() ? b : null });
 		}
 		while (_rays.length > 0) _rays.pop().dispose();
-		hits.sort((a, b) -> a < b ? -1 : (a > b ? 1 : 0));
+		hits.sort((a, b) -> a.y < b.y ? -1 : (a.y > b.y ? 1 : 0));
 
-		final ys:Array<Float> = [];
-		for (y in hits)
+		final ys:Array<{ y:Float, body:Body }> = [];
+		for (h in hits)
 		{
+			final y = h.y;
 			if (y > mapBottom - 2) continue;
-			if (ys.length > 0 && y - ys[ys.length - 1] < 20) continue;
+			if (ys.length > 0 && y - ys[ys.length - 1].y < 20) continue;
 			if (_solidAt(x, y - 3) || _solidAt(x, y - 88.0)) continue;
 			if (_spikesOn(x, y)) continue;
-			ys.push(y);
+			ys.push(h);
 		}
 		return ys;
 	}
@@ -216,13 +217,10 @@ class WaypointGraph extends NavGraph
 		final len = Math.sqrt(dx * dx + dy * dy);
 		if (len < 1) return true;
 
-		final orig = Vec2.get(x0, y0);
-		final dir = Vec2.get(dx / len, dy / len);
-		final ray = new Ray(orig, dir);
-		ray.maxDistance = len;
-		FlxNapeSpace.space.rayMultiCast(ray, false, null, _rays);
-		orig.dispose();
-		dir.dispose();
+		_ray.origin.setxy(x0, y0);
+		_ray.direction.setxy(dx / len, dy / len);
+		_ray.maxDistance = len;
+		FlxNapeSpace.space.rayMultiCast(_ray, false, null, _rays);
 
 		var free = true;
 		for (i in 0..._rays.length)
@@ -234,16 +232,16 @@ class WaypointGraph extends NavGraph
 		return free;
 	}
 
-	function _createNodes(columns:Array<{ x:Float, ys:Array<Float> }>):Void
+	function _createNodes(columns:Array<{ x:Float, ys:Array<{ y:Float, body:Body }> }>):Void
 	{
 		final ids:Array<Array<Int>> = [];
 		for (c in columns)
 		{
 			final colIds = [];
-			for (y in c.ys)
+			for (h in c.ys)
 			{
 				colIds.push(nodes.length);
-				nodes.push({x: c.x, y: y});
+				nodes.push({x: c.x, y: h.y, support: h.body});
 			}
 			ids.push(colIds);
 		}
@@ -377,8 +375,14 @@ class WaypointGraph extends NavGraph
 		var arr = _edges[state];
 		if (arr == null) return;
 		for (e in arr)
-			if (useComponentLinks || e.trans != 4)
+			if ((useComponentLinks || e.trans != 4) && usable(e.to))
 				callback(e.to, e.cost, e.trans);
+	}
+
+	public inline function usable(i:Int):Bool
+	{
+		final s = nodes[i].support;
+		return s == null || s.space != null;
 	}
 
 	public function edgeStats():Map<Int, Int>
@@ -403,6 +407,7 @@ class WaypointGraph extends NavGraph
 		var bestD = Math.POSITIVE_INFINITY;
 		for (i in 0...nodes.length)
 		{
+			if (!usable(i)) continue;
 			var n = nodes[i];
 			var dx = n.x - x;
 			var dy = (n.y - y) * (4.0);

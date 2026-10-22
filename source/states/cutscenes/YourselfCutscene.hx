@@ -86,6 +86,7 @@ class YourselfCutscene
 		{
 			Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
 			PlayState.isStoryMode     = true;
+			PlayState.storyPlaylist   = [song];
 			PlayState.storyDifficulty = 1;
 		}
 		catch (e:haxe.Exception)

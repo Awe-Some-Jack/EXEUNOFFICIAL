@@ -142,31 +142,34 @@ class PauseSubState extends MusicBeatSubstate
 
 		longneck = new FlxTypedGroup<FlxSprite>();
 		add(longneck);
-		if (miniSonicImage == 'omw')
-		{
-			longneck.add(miniSonic);
+		
+		switch (miniSonicImage){
+			case 'omw':
+				longneck.add(miniSonic);
 
-			var neck:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/pause/mini-sonics/omw-2.webp'));
-			neck.scale.set(3, 3);
-			neck.updateHitbox();
-			neck.antialiasing = false;
-			neck.scrollFactor.set();
-			neck.alpha = 0;
-			FlxTween.tween(neck, {alpha: 1}, 0.1);
-			longneck.add(neck);
-			add(neck);
+				var neck:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/pause/mini-sonics/omw-2.webp'));
+				neck.scale.set(3, 3);
+				neck.updateHitbox();
+				neck.antialiasing = false;
+				neck.scrollFactor.set();
+				neck.alpha = 0;
+				FlxTween.tween(neck, {alpha: 1}, 0.1);
+				longneck.add(neck);
+				add(neck);
 
-			var head:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/pause/mini-sonics/omw-3.webp'));
-			head.scale.set(3, 3);
-			head.updateHitbox();
-			head.antialiasing = false;
-			head.scrollFactor.set();
-			head.alpha = 0;
-			FlxTween.tween(head, {alpha: 1}, 0.1);
-			longneck.add(head);
-			add(head);
+				var head:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/pause/mini-sonics/omw-3.webp'));
+				head.scale.set(3, 3);
+				head.updateHitbox();
+				head.antialiasing = false;
+				head.scrollFactor.set();
+				head.alpha = 0;
+				FlxTween.tween(head, {alpha: 1}, 0.1);
+				longneck.add(head);
+				add(head);
+			case "prey":
+				miniSonic.offset.y = -60;
 		}
-
+	
 		selBar = new FlxSprite(cameraWidth, 181 - 40).loadGraphic(Paths.getBitmapData('assets/exe/pause/selected.webp'));
 		selBar.scale.set(3, 3);
 		selBar.updateHitbox();

@@ -315,7 +315,6 @@ class EXEMenu extends MusicBeatState
 		if (Main.DEVELOPMENT_BUILD){
 			if (#if mobile shortPress && !inDevMode || #end FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
 
-		if (FlxG.keys.justPressed.T) FlxG.switchState(() -> new states.CreditsRollState());
 			if (FlxG.keys.justPressed.T) FlxG.switchState(() -> new states.CreditsRollState());
 			if (FlxG.keys.justPressed.F && canInteract)
 			{

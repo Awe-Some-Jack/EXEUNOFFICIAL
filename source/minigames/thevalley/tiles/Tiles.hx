@@ -792,7 +792,7 @@ class SkullPrompt
 				_eButton.alpha = 0;
 				_timer += elapsed;
 
-				final wantsToMove = ValleyInput.movedJust(false);
+				final wantsToMove = ValleyInput.movedJust();
 				if (wantsToMove && (_isDanger != null && _isDanger()))
 				{
 					_finish(true);
@@ -800,6 +800,7 @@ class SkullPrompt
 				}
 
 				_camera.zoomIn(SEARCH_ZOOM_BUMP * (1 - _easeOut(_timer / 0.9)), 0);
+				
 				final anim = _player.animation.curAnim;
 				if (!_win && anim?.name == "searchinglose" && anim.finished) _player.animation.pause();
 				if (_win && anim?.name == "searchreward" && anim.finished) _lockAnim("searchingwin");

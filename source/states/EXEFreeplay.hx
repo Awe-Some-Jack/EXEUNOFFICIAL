@@ -35,6 +35,8 @@ typedef ExeSongInfo = {
 	var exeLabel:String;
 	var transitionShape:String;
 	var bgColor:Array<Int>;
+	@:optional var alt:ExeSongInfo;
+	@:optional var minigame:Bool;
 }
 
 typedef ExeSongEntry = {
@@ -64,6 +66,7 @@ class EXEFreeplay extends MusicBeatState
 
 	var charText:FlxText;
 	var songTexts:FlxTypedGroup<FlxText>;
+	var altArrow:FlxSprite;
 
 	var staticScreens:FlxTypedGroup<FlxSprite>;
 	var staticTween:FlxTween;
@@ -187,6 +190,9 @@ class EXEFreeplay extends MusicBeatState
 
 			add(charText);
 			add(songTexts);
+
+			altArrow = makeAltArrow();
+			add(altArrow);
 		}
 
 		createBoxesAndCovers();
@@ -298,27 +304,38 @@ class EXEFreeplay extends MusicBeatState
 				final sName:String = song[0];
 				final title:String = weekExeTitle ?? sName.toUpperCase();
 
-				final unlockKey:String = Paths.formatToSongPath(sName) == 'stardust-speedway' && Mods.currentModDirectory == 'STARVED' ? 'prey' : Paths.formatToSongPath(sName);
-				if (unlocked.indexOf(unlockKey) == -1 && !inDevMode) continue;
+				final songPath:String = Paths.formatToSongPath(sName);
+				if (songPath == 'stardust-speedway' && Mods.currentModDirectory == 'STARVED') continue;
+				if (unlocked.indexOf(songPath) == -1 && !inDevMode) continue;
 
-				songInfoList.push({
+				final info:ExeSongInfo = {
 					songName: sName,
 					coverFile: weekExeCover,
 					title: title,
 					exeLabel: weekExeLabel,
 					bgColor: leWeek.bgColor,
 					transitionShape: weekTransition
-				});
+				};
 
-				if (Paths.formatToSongPath(sName) == 'black-sun' && Mods.currentModDirectory == 'EXE')
-					songInfoList.push({
-						songName: 'The Valley',
+				final minigame:String = switch ([songPath, Mods.currentModDirectory])
+				{
+					case ['black-sun', 'EXE']: 'The Valley';
+					case ['prey', 'STARVED']: 'Stardust Speedway';
+					default: null;
+				}
+				if (minigame != null)
+					info.alt = {
+						songName: minigame,
 						coverFile: weekExeCover,
 						title: title,
 						exeLabel: weekExeLabel,
 						bgColor: leWeek.bgColor,
-						transitionShape: weekTransition
-					});
+						transitionShape: weekTransition,
+						minigame: true,
+						alt: info
+					};
+
+				songInfoList.push(info);
 			}
 
 			if (songInfoList.length == 0) continue;
@@ -532,6 +549,8 @@ class EXEFreeplay extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
+		updateAltArrow();
+
 		if (bgChecker != null && bgSonic != null)
 		{
 			bgChecker.color = bgSonic.color;
@@ -606,6 +625,8 @@ class EXEFreeplay extends MusicBeatState
 		{
 			if (controls.UI_DOWN_P) { chooseSong(1); holdCheck = 0; }
 			if (controls.UI_UP_P) { chooseSong(-1); holdCheck = 0; }
+			if (controls.UI_RIGHT_P) toggleMinigame(true);
+			if (controls.UI_LEFT_P) toggleMinigame(false);
 
 			#if mobile
 			if(pressHolding && deltaMouseY != 0 && COOLDOWN_TIMER <= 0) {
@@ -617,6 +638,8 @@ class EXEFreeplay extends MusicBeatState
 					holdCheck = 0;
 				}
 			}
+			if(pressHolding && Math.abs(deltaMouseX) > 5 && Math.abs(deltaMouseX) > Math.abs(deltaMouseY) && COOLDOWN_TIMER <= 0)
+				toggleMinigame(deltaMouseX < 0);
 			#end
 
 			if (controls.ACCEPT #if mobile || (shortPress && FlxG.mouse.overlaps(songTexts.members[songSelector])) #end)
@@ -775,7 +798,8 @@ class EXEFreeplay extends MusicBeatState
 		final entry = songEntries[selectedBox];
 		if (songSelector < 0 || songSelector >= entry.songs.length) return;
 
-		final songName = entry.songs[songSelector].songName;
+		final info = entry.songs[songSelector];
+		final songName = info.minigame == true ? info.alt.songName : info.songName;
 		final cover = covers.members[selectedBox];
 		final ss = staticScreens.members[selectedBox];
 		if (cover == null) return;
@@ -872,6 +896,48 @@ class EXEFreeplay extends MusicBeatState
 		updateSelectedCover(daStatic);
 	}
 
+	function toggleMinigame(toGame:Bool):Void
+	{
+		final songs = songEntries[selectedBox].songs;
+		final spr = songTexts.members[songSelector];
+		if (songSelector >= songs.length || spr == null) return;
+		final cur = songs[songSelector];
+		if (cur.alt == null || (cur.minigame == true) == toGame) return;
+
+		songs[songSelector] = cur.alt;
+		spr.text = cur.alt.songName.toUpperCase();
+		chooseSong(0);
+		FlxTween.cancelTweensOf(spr.offset);
+		spr.offset.x = toGame ? -60 : 60;
+		FlxTween.tween(spr.offset, {x: 0}, 0.2, {ease: FlxEase.sineOut});
+	}
+
+	function makeAltArrow():FlxSprite
+	{
+		final arrow = new FlxSprite().loadGraphic(loadRawBitmap('assets/exe/freeplayassets/arrow.webp'));
+		arrow.antialiasing = false;
+		arrow.scale.set(2, 2);
+		arrow.updateHitbox();
+		arrow.visible = false;
+		return arrow;
+	}
+
+	function updateAltArrow():Void
+	{
+		final songs = songEntries[selectedBox].songs;
+		final spr = songTexts.members[songSelector];
+		altArrow.visible = choosingSong && songSelector < songs.length && songs[songSelector].alt != null && spr != null && spr.visible;
+		if (!altArrow.visible) return;
+
+		final back = songs[songSelector].minigame == true;
+		final reach = spr.textField.textWidth * 0.5 + 24 + Math.abs(Math.sin(FlxG.game.ticks / 1000 * 5)) * 10;
+		altArrow.flipX = back;
+		altArrow.x = (back ? centerX - reach - altArrow.width : centerX + reach) - spr.offset.x;
+		altArrow.y = spr.y + (spr.height - altArrow.height) * 0.5;
+		altArrow.alpha = spr.alpha;
+		altArrow.color = spr.color;
+	}
+
 	function exitSongChoose():Void
 	{
 		final oldSelector:Int = songSelector;
@@ -882,12 +948,18 @@ class EXEFreeplay extends MusicBeatState
 			staticSound?.fadeOut(0.3, 0);
 		}
 
+		final entrySongs = songEntries[selectedBox].songs;
 		for (j in 0...activeSongCount)
 		{
 			final spr = songTexts.members[j];
 			if (spr == null) continue;
 			spr.color = FlxColor.WHITE;
 			spr.alpha = 1;
+			if (j < entrySongs.length && entrySongs[j].minigame == true)
+			{
+				entrySongs[j] = entrySongs[j].alt;
+				spr.text = entrySongs[j].songName.toUpperCase();
+			}
 		}
 
 		songSelector = 0;

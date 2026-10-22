@@ -319,8 +319,8 @@ class EXEMenu extends MusicBeatState
 			if (FlxG.keys.justPressed.T) FlxG.switchState(() -> new states.CreditsRollState());
 			if (FlxG.keys.justPressed.F && canInteract)
 			{
-				if (FlxG.keys.pressed.SHIFT) FatalAccess.resetForTesting();
-				else
+				FatalAccess.resetForTesting();
+				if (!FlxG.keys.pressed.SHIFT)
 				{
 					_fatalScene = TRANSMISSION;
 					_startFatalGlitch();

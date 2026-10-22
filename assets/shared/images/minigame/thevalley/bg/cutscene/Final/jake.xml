@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="jake.png">
+	<SubTexture name="jake Loop0000" x="43" y="79" width="47" height="22" frameX="0" frameY="-12" frameWidth="47" frameHeight="41"/>
+	<SubTexture name="jake Loop0001" x="0" y="111" width="47" height="22" frameX="0" frameY="-12" frameWidth="47" frameHeight="41"/>
+	<SubTexture name="jake0000" x="0" y="0" width="28" height="41" frameX="-9" frameY="0" frameWidth="47" frameHeight="41"/>
+	<SubTexture name="jake0001" x="0" y="43" width="35" height="34" frameX="-4" frameY="-7" frameWidth="47" frameHeight="41"/>
+	<SubTexture name="jake0002" x="37" y="43" width="35" height="33" frameX="-4" frameY="-8" frameWidth="47" frameHeight="41"/>
+	<SubTexture name="jake0003" x="79" y="0" width="37" height="35" frameX="-2" frameY="-6" frameWidth="47" frameHeight="41"/>
+	<SubTexture name="jake0004" x="0" y="79" width="41" height="30" frameX="-3" frameY="-6" frameWidth="47" frameHeight="41"/>
+	<SubTexture name="jake0005" x="30" y="0" width="47" height="36" frameX="0" frameY="-5" frameWidth="47" frameHeight="41"/>
+	<SubTexture name="jake0006" x="74" y="43" width="47" height="33" frameX="0" frameY="-6" frameWidth="47" frameHeight="41"/>
+</TextureAtlas>

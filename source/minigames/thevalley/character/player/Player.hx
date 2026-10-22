@@ -92,6 +92,13 @@ class Player extends FlxSprite implements CameraTarget
 	var _windup:Float           = 0.0;
 	var _gravityOn:Bool         = true;
 	var _launchWings:Bool       = false;
+	var _knockTimer:Float       = 0.0;
+	var _dustTimer:Float        = 0.0;
+	var _squashAmt:Float        = 0.0;
+	var _squashLeft:Float       = 0.0;
+	var _squashDur:Float        = 1.0;
+	final _dust:Array<{ spr:FlxSprite, vx:Float, vy:Float, life:Float, max:Float }> = [];
+	final _ray:Ray = new Ray(Vec2.weak(0, 0), Vec2.weak(0, 1));
 
 	public function new(spawnX:Float, spawnY:Float, configPath:String = "assets/shared/images/minigame/thevalley/characters/fakergf/fakergf.json")
 	{
@@ -168,6 +175,21 @@ class Player extends FlxSprite implements CameraTarget
 	{
 		sparkle.visible = sparkleGlow.visible = false;
 		_sparkleTime += elapsed;
+		final wf = frame;
+		if (wf != null && wf.name != null && StringTools.startsWith(wf.name, "fakergf win0"))
+		{
+			_crystalTime += elapsed;
+			_crystalOut = -1;
+		}
+		else
+		{
+			if (_crystalTime > 0) _crystalOut = 0;
+			else if (_crystalOut >= 0) _crystalOut += elapsed;
+			if (_crystalOut >= 10 / 16) _crystalOut = -1;
+			_crystalTime = 0;
+		}
+		if (_squashLeft > 0) _squashLeft -= elapsed;
+		_updateDust(elapsed);
 		if (body == null) { super.update(elapsed); return; }
 
 		if (cinematic || isHidden || isHiding)
@@ -236,18 +258,39 @@ class Player extends FlxSprite implements CameraTarget
 	public var sparkle(default, null):FlxSprite;
 	public var sparkleGlow(default, null):FlxSprite;
 	var _sparkleTime:Float = 0;
+	var _crystalTime:Float = 0;
+	var _crystalOut:Float = -1;
 
 	override public function draw():Void
 	{
-		super.draw();
+		if (_squashLeft > 0)
+		{
+			final t = _squashLeft / _squashDur;
+			final k = 1 + _squashAmt * t * t;
+			final sx = scale.x;
+			final sy = scale.y;
+			final ox = origin.x;
+			final oy = origin.y;
+			origin.set(offset.x + width * 0.5, offset.y + height);
+			scale.set(sx / k, sy * k);
+			super.draw();
+			scale.set(sx, sy);
+			origin.set(ox, oy);
+		}
+		else super.draw();
 		final f = frame;
-		if (f == null || f.name == null || !StringTools.startsWith(f.name, "fakergf win0")) return;
-		final sf = sparkle.frames.getByName("sparkle" + f.name.substr(7));
-		if (sf == null) return;
+		if (f == null || f.name == null) return;
+		final winning = StringTools.startsWith(f.name, "fakergf win0");
+		if (!winning && _crystalOut < 0) return;
+		final step = winning ? Std.int(_crystalTime * 12) : Std.int(_crystalOut * 16);
+		final cf = winning ? _crystal(step < 6 ? "appear" : "spin", step < 6 ? step : (step - 6) % 24) : _crystal("absorb", step);
+		final gf = winning ? _crystal("glow", step % 18) : _crystal("absorbglow", step);
+		if (cf == null || gf == null) return;
+		final bob = !winning || step < 6 ? 0 : Math.round(Math.sin((_crystalTime - 0.5) * 2.6) * 1.2);
 		for (s in [sparkle, sparkleGlow])
 		{
-			s.frame = sf;
-			s.setPosition(x, y);
+			s.frame = s == sparkle ? cf : gf;
+			s.setPosition(x, y + bob);
 			s.offset.copyFrom(offset);
 			s.origin.copyFrom(origin);
 			s.scale.copyFrom(scale);
@@ -259,8 +302,11 @@ class Player extends FlxSprite implements CameraTarget
 			s.visible = true;
 		}
 		sparkle.alpha = alpha;
-		sparkleGlow.alpha = alpha * (0.35 + 0.25 * Math.sin(_sparkleTime * 6.0));
+		sparkleGlow.alpha = winning ? alpha * Math.min(1, _crystalTime * 4) * (0.8 + 0.2 * Math.sin(_sparkleTime * 5.0)) : alpha;
 	}
+
+	inline function _crystal(name:String, n:Int)
+		return sparkle.frames.getByName('crystal $name' + StringTools.lpad(Std.string(n), "0", 4));
 
 	// shoots 3 little invisible lasers down outta the feet like kaboom type shi
 	function _detectGround(elapsed:Float):Void
@@ -279,19 +325,14 @@ class Player extends FlxSprite implements CameraTarget
 		var footY   = body.position.y + h.height * 0.5;
 		var DIST:Float = 10.0;
 
-		var rayDir = Vec2.get(0, 1);
-
-		var offsets:Array<Float> = [ -halfW * 0.7, 0.0, halfW * 0.7 ];
 		var shortestDist:Float = DIST + 1.0;
 
-		for (ox in offsets)
+		_ray.direction.setxy(0, 1);
+		_ray.maxDistance = DIST;
+		for (k in 0...3)
 		{
-			var orig = Vec2.get(body.position.x + ox, footY - 2);
-			var ray  = new Ray(orig, rayDir);
-			ray.maxDistance = DIST;
-
-			var res = body.space.rayCast(ray, false);
-			orig.dispose();
+			_ray.origin.setxy(body.position.x + (k - 1) * halfW * 0.7, footY - 2);
+			var res = body.space.rayCast(_ray, false);
 
 			if (res != null)
 			{
@@ -314,7 +355,6 @@ class Player extends FlxSprite implements CameraTarget
 				res.dispose();
 			}
 		}
-		rayDir.dispose();
 
 		var inAerialMove = mode == WingOpen || mode == Glide || mode == WingClose || mode == Launch;
 		if (isGrounded) { if (!inAerialMove) mode = Ground; }
@@ -339,13 +379,10 @@ class Player extends FlxSprite implements CameraTarget
 		body.velocity.y -= TVNapeWorld.GRAVITY * elapsed;
 
 		final footY = body.position.y + cfg.hitbox.height * 0.5;
-		final orig = Vec2.get(body.position.x, footY - 2);
-		final down = Vec2.get(0, 1);
-		final ray = new Ray(orig, down);
-		ray.maxDistance = 12.0;
-		final res = body.space.rayCast(ray, false);
-		orig.dispose();
-		down.dispose();
+		_ray.origin.setxy(body.position.x, footY - 2);
+		_ray.direction.setxy(0, 1);
+		_ray.maxDistance = 12.0;
+		final res = body.space.rayCast(_ray, false);
 		if (res == null) return;
 		final gap = res.distance - 2;
 		res.dispose();
@@ -359,13 +396,10 @@ class Player extends FlxSprite implements CameraTarget
 		final h     = cfg.hitbox;
 		final footY = body.position.y + h.height * 0.5;
 		final step  = TVNapeWorld.ONE_WAY_STEP;
-		final orig  = Vec2.get(body.position.x + dir * (h.width * 0.5 + 2.0), footY - step - 1.0);
-		final down  = Vec2.get(0, 1);
-		final ray   = new Ray(orig, down);
-		ray.maxDistance = step + 1.0;
-		final res = body.space.rayCast(ray, false);
-		orig.dispose();
-		down.dispose();
+		_ray.origin.setxy(body.position.x + dir * (h.width * 0.5 + 2.0), footY - step - 1.0);
+		_ray.direction.setxy(0, 1);
+		_ray.maxDistance = step + 1.0;
+		final res = body.space.rayCast(_ray, false);
 		if (res == null) return;
 
 		final rise = step + 1.0 - res.distance;
@@ -483,6 +517,15 @@ class Player extends FlxSprite implements CameraTarget
 		}
 		else if (drop >= p.softLandDrop && Math.abs(body.velocity.x) < p.walkMax)
 			_squatTimer = p.softLandTime;
+
+		final k = Math.min(1, drop / p.hardLandDrop);
+		if (drop > 12) _squash(-0.06 - 0.16 * k, 0.16 + 0.1 * k);
+		if (drop >= p.softLandDrop)
+		{
+			final n = drop >= p.hardLandDrop ? 3 : 2;
+			_puff(1, n, 50 + 40 * k);
+			_puff(-1, n, 50 + 40 * k);
+		}
 	}
 
 	static inline function _approach(v:Float, target:Float, step:Float):Float
@@ -546,6 +589,8 @@ class Player extends FlxSprite implements CameraTarget
 		_windup     = 0;
 		_jumpLock   = 0.1;
 		mode = Air;
+		_squash(0.14, 0.22);
+		if (speed > p.walkMax) _puff(body.velocity.x > 0 ? -1 : 1, 2, 50);
 	}
 
 	public function handleInput(elapsed:Float, spawnX:Float, spawnY:Float):Bool
@@ -556,12 +601,38 @@ class Player extends FlxSprite implements CameraTarget
 
 		if (isHidden || isHiding) return false;
 
-		final left        = FlxG.keys.pressed.LEFT  || FlxG.keys.pressed.A;
-		final right       = FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D;
-		final shift       = FlxG.keys.pressed.SHIFT;
-		final jumpJust    = FlxG.keys.justPressed.Z || FlxG.keys.justPressed.SPACE;
-		final jumpRel     = FlxG.keys.justReleased.Z || FlxG.keys.justReleased.SPACE;
-		final jumpHeldNow = FlxG.keys.pressed.Z     || FlxG.keys.pressed.SPACE;
+		if (_knockTimer > 0 && lockedAnim != "slide") _knockTimer = 0;
+		if (_knockTimer > 0)
+		{
+			if (coyoteTimer > 0 && isGrounded)
+			{
+				mode = Ground;
+				_knockTimer -= elapsed;
+				body.velocity.x = _approach(body.velocity.x, 0, 520.0 * elapsed);
+				_projectOnSlope();
+				_glue(elapsed);
+				_dustTimer -= elapsed;
+				if (_dustTimer <= 0 && Math.abs(body.velocity.x) > 30)
+				{
+					_dustTimer = 0.05;
+					_puff(body.velocity.x > 0 ? 1 : -1, 1, 50);
+				}
+				if (_knockTimer <= 0)
+				{
+					lockedAnim = null;
+					_landTimer = _squatTimer = 0.25;
+					_squash(0.1, 0.18);
+				}
+			}
+			return false;
+		}
+
+		final left        = ValleyInput.left();
+		final right       = ValleyInput.right();
+		final shift       = ValleyInput.run();
+		final jumpJust    = ValleyInput.jumpJust();
+		final jumpRel     = ValleyInput.jumpReleased();
+		final jumpHeldNow = ValleyInput.jumpHeld();
 
 		if (jumpRel)  jumpHeld = false;
 		if (jumpJust) jumpBufTimer = t.jumpBufferFrames / 60.0;
@@ -584,6 +655,13 @@ class Player extends FlxSprite implements CameraTarget
 		//gf cardio simulator. she out here doin more exercise than me fr fatass chair
 		isRunning = gnd && shift && dir != 0;
 		_updateFatigue(elapsed, gnd, dir != 0);
+
+		_dustTimer -= elapsed;
+		if (gnd && isGrounded && dir != 0 && body.velocity.x * dir < 0 && Math.abs(body.velocity.x) > p.skidSpeed && _dustTimer <= 0)
+		{
+			_dustTimer = 0.06;
+			_puff(body.velocity.x > 0 ? 1 : -1, 1, 60);
+		}
 
 		var vx = winding ? _approach(body.velocity.x, 0, p.windupDrag * elapsed)
 			: gnd ? _groundMove(body.velocity.x, dir, elapsed) : _airMove(body.velocity.x, dir, elapsed);
@@ -648,15 +726,16 @@ class Player extends FlxSprite implements CameraTarget
 			_idleTime = 0;
 			var cur = animation.curAnim;
 			var isBreakAnim = cur != null && (cur.name == "break_idle" || cur.name == "break_tap" || cur.name == "break_full");
-			if (!isBreakAnim && isGrounded && (cur == null || cur.name != "idle"))
+			var turning = cur != null && cur.name == "turnfront" && !cur.finished;
+			if (!isBreakAnim && !turning && isGrounded && (cur == null || cur.name != "idle"))
 				animation.play("idle");
 			return;
 		}
 
 		var gnd  = coyoteTimer > 0;
 		var absV = Math.abs(body.velocity.x);
-		var down = FlxG.keys.pressed.DOWN || FlxG.keys.pressed.S;
-		var up   = FlxG.keys.pressed.UP   || FlxG.keys.pressed.W;
+		var down = ValleyInput.down();
+		var up   = ValleyInput.up();
 
 		var animName:String;
 		if (mode == Launch)
@@ -683,7 +762,7 @@ class Player extends FlxSprite implements CameraTarget
 			else if (absV > 5)                animName = "walk";
 			else
 			{
-				_idleTime = FlxG.keys.pressed.ANY ? 0 : _idleTime + elapsed;
+				_idleTime = ValleyInput.any() ? 0 : _idleTime + elapsed;
 				final cur = animation.curAnim;
 				final boredDone = cur != null && (cur.name == "boredloop" || (cur.name == "bored" && cur.finished));
 				animName = _idleTime < 8.0 ? "idle" : (boredDone ? "boredloop" : "bored");
@@ -716,5 +795,77 @@ class Player extends FlxSprite implements CameraTarget
 		_airMax         = Math.max(_airMax, cfg.physics.glideSpeed);
 		_windup         = 0;
 		_launchCooldown = 20.0 / 60.0;
+		_squash(0.2, 0.25);
+	}
+
+	public function knockDown(vx:Float, vy:Float):Void
+	{
+		body.position.y -= 5;
+		body.velocity.setxy(vx, vy);
+		isGrounded    = false;
+		touchingFloor = false;
+		jumpHeld      = false;
+		coyoteTimer   = jumpBufTimer = 0;
+		_windup       = 0;
+		mode          = Air;
+		facing        = vx < 0 ? FlxDirectionFlags.LEFT : FlxDirectionFlags.RIGHT;
+		lockedAnim    = "slide";
+		_knockTimer   = 0.9;
+		_squash(0.12, 0.2);
+	}
+
+	function _squash(amt:Float, dur:Float):Void
+	{
+		_squashAmt = amt;
+		_squashLeft = _squashDur = dur;
+	}
+
+	function _puff(dir:Int, count:Int, speed:Float):Void
+	{
+		if (!visible || body == null) return;
+		final h = cfg.hitbox;
+		for (_ in 0...count)
+		{
+			var d = null;
+			for (p in _dust) if (p.life <= 0) { d = p; break; }
+			if (d == null)
+			{
+				var graphic = FlxG.bitmap.get("valley_dust_particle");
+				if (graphic == null)
+				{
+					graphic = FlxG.bitmap.create(3, 3, 0xFFB4ACC0, false, "valley_dust_particle");
+					graphic.persist = true;
+				}
+				final spr = new FlxSprite().loadGraphic(graphic);
+				spr.active = false;
+
+				final at = FlxG.state.members.indexOf(this);
+				if (at >= 0) FlxG.state.insert(at, spr);
+				else FlxG.state.add(spr);
+
+				d = { spr: spr, vx: 0.0, vy: 0.0, life: 0.0, max: 1.0 };
+				_dust.push(d);
+			}
+			d.max = d.life = FlxG.random.float(0.3, 0.5);
+			d.vx = dir * FlxG.random.float(0.4, 1.0) * speed;
+			d.vy = -FlxG.random.float(15, 45);
+			d.spr.setPosition(body.position.x + FlxG.random.float(-h.width * 0.4, h.width * 0.4), body.position.y + h.height * 0.5 - FlxG.random.float(2, 5));
+			d.spr.visible = true;
+		}
+	}
+
+	function _updateDust(elapsed:Float):Void
+	{
+		for (d in _dust)
+		{
+			if (d.life <= 0) continue;
+			d.life -= elapsed;
+			d.vx *= Math.pow(0.05, elapsed);
+			d.vy += 90 * elapsed;
+			d.spr.x += d.vx * elapsed;
+			d.spr.y += d.vy * elapsed;
+			d.spr.alpha = Math.max(0, d.life / d.max) * 0.85;
+			d.spr.visible = d.life > 0;
+		}
 	}
 }

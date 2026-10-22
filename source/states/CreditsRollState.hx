@@ -203,11 +203,13 @@ class CreditsRollState extends MusicBeatState
 
 		_speedTxt = new FlxText(0, FlxG.height - 46, FlxG.width - 24, '');
 		_speedTxt.setFormat(Paths.font("sonic4.ttf"), 20, 0xFFFFFFFF, "right", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+		_speedTxt.antialiasing = ClientPrefs.data.antialiasing;
 		_speedTxt.alpha = 0;
 		add(_speedTxt);
 
 		_hintTxt = new FlxText(24, FlxG.height - 46, 0, #if mobile 'TAP TO LEAVE' #else 'PRESS ENTER TO LEAVE' #end);
 		_hintTxt.setFormat(Paths.font("sonic4.ttf"), 18, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+		_hintTxt.antialiasing = ClientPrefs.data.antialiasing;
 		_hintTxt.alpha = 0;
 		add(_hintTxt);
 

@@ -61,6 +61,7 @@ class TVNapeWorld
 
 	function _setupPlatformListener():Void
 	{
+		final ray = new Ray(Vec2.weak(0, 0), Vec2.weak(0, 1));
 		var listener = new PreListener(
 			InteractionType.COLLISION,
 			CB_DYNAMIC,
@@ -84,13 +85,9 @@ class TVNapeWorld
 				if (relVy < -15.0)
 					return PreFlag.IGNORE;
 
-				final orig = Vec2.get(dynBody.position.x, footY - 2.0 - travel);
-				final down = Vec2.get(0, 1);
-				final ray  = new Ray(orig, down);
+				ray.origin.setxy(dynBody.position.x, footY - 2.0 - travel);
 				ray.maxDistance = 10.0 + travel;
 				final res = FlxNapeSpace.space.rayCast(ray, false);
-				orig.dispose();
-				down.dispose();
 				final standingOnPlatform = res != null && res.shape.body.cbTypes.has(CB_PLATFORM);
 				if (res != null) res.dispose();
 

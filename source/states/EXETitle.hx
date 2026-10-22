@@ -79,6 +79,16 @@ class EXETitle extends MusicBeatState
 		if (FlxG.save.data?.weekCompleted != null)
 			StoryModeState.weekCompleted = FlxG.save.data.weekCompleted;
 
+		final fatalScene = initialized ? null : states.access.FatalAccess.bootScene();
+		if (fatalScene != null)
+		{
+			initialized = true;
+			transitioning = true;
+			super.create();
+			FlxG.switchState(() -> new states.access.FatalAccess(fatalScene));
+			return;
+		}
+
 		if (!initialized)
 		{
 			Main.fpsVar.visible = false;

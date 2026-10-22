@@ -5,6 +5,7 @@ import flixel.FlxCamera;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
 
 typedef HudItem = {
@@ -196,7 +197,8 @@ class HUD
 			_lifeDisp.digitSprites[i].y = lifeDigitY;
 		}
 
-		_shardsHud = new FlxSprite(587.0, 18.0);
+		final panelX = FlxG.width - 373.0;
+		_shardsHud = new FlxSprite(panelX, 18.0);
 		_shardsHud.loadGraphic(Paths.image("minigame/thevalley/objects/hud/shards/shardstypeshi"));
 		_shardsHud.scale.set(3.12, 3.12);
 		_shardsHud.updateHitbox();
@@ -205,10 +207,10 @@ class HUD
 		_shardsHud.alpha = 0;
 		_group.add(_shardsHud);
 
-		var shardXs = [618.0, 648.0, 681.0, 713.0, 745.0, 775.0];
+		var shardXs = [31.0, 61.0, 94.0, 126.0, 158.0, 188.0];
 		for (i in 0...6)
 		{
-			var sh = new FlxSprite(shardXs[i], 16.0);
+			var sh = new FlxSprite(panelX + shardXs[i], 16.0);
 			sh.loadGraphic(Paths.image("minigame/thevalley/objects/hud/shards/shard"));
 			sh.scale.set(SHARD_SCALE, SHARD_SCALE);
 			sh.updateHitbox();
@@ -220,7 +222,7 @@ class HUD
 		}
 
 		_shardsDisp = new NumberDisplay(_group, cam, 1, 3.15);
-		_shardsDisp.digitSprites[0].x = 820.0;
+		_shardsDisp.digitSprites[0].x = panelX + 233.0;
 		_shardsDisp.digitSprites[0].y = 30.0;
 
 		_timeSep = new FlxSprite(248.0, 123.0);
@@ -233,14 +235,14 @@ class HUD
 		_timeSep.visible = false;
 		_group.add(_timeSep);
 
-		_radarCenter = new FlxSprite(900.0 - 3, 660.0 - 3);
+		_radarCenter = new FlxSprite(FlxG.width - 60.0 - 3, 660.0 - 3);
 		_radarCenter.makeGraphic(6, 6, 0xFF555555);
 		_radarCenter.scrollFactor.set(0, 0);
 		_radarCenter.cameras = [cam];
 		_radarCenter.alpha = 0;
 		_group.add(_radarCenter);
 
-		_radarDot = new FlxSprite(900.0 - 5, 660.0 - 5);
+		_radarDot = new FlxSprite(FlxG.width - 60.0 - 5, 660.0 - 5);
 		_radarDot.makeGraphic(10, 10, 0xFFFF3030);
 		_radarDot.scrollFactor.set(0, 0);
 		_radarDot.cameras = [cam];
@@ -249,9 +251,9 @@ class HUD
 
 		for (_ in 0...3)
 		{
-			final t = new FlxText(40.0, 84.0, 0, "", 18);
+			final t = new FlxText(-200.0, 662.0, 0, "", 16);
 			t.font = "assets/fonts/SonicFont.ttf";
-			t.setBorderStyle(FlxTextBorderStyle.SHADOW, FlxColor.BLACK, 3);
+			t.setBorderStyle(FlxTextBorderStyle.SHADOW, 0xFF0A0504, 3);
 			t.scrollFactor.set(0, 0);
 			t.cameras = [cam];
 			t.alpha = 0;
@@ -297,7 +299,8 @@ class HUD
 		for (p in _popups) if (p.age > slot.age) slot = p;
 		slot.age = 0;
 		slot.text.text = change > 0 ? '+$change $label' : change < 0 ? '$change $label' : label;
-		slot.text.color = amount >= 0 ? 0xFFFFE070 : 0xFFFF4040;
+		slot.text.color = amount >= 0 ? 0xFFFCFCFC : 0xFFE4220F;
+		slot.text.setPosition(-slot.text.width, 662.0);
 	}
 
 	function _updatePopups(elapsed:Float):Void
@@ -312,9 +315,11 @@ class HUD
 				continue;
 			}
 			p.age += elapsed;
-			final t = Math.min(p.age / 2.4, 1.0);
-			p.text.y = 84.0 + row * 24 - 10 * t;
-			p.text.alpha = t < 0.7 ? 1.0 : 1.0 - (t - 0.7) / 0.3;
+			final slide = FlxEase.quartOut(Math.min(1, p.age / 0.5));
+			final out = FlxEase.sineIn(Math.max(0, (p.age - 1.8) / 0.6));
+			p.text.x = 42.0 - (p.text.width + 42.0) * (1 - slide) - 24.0 * out;
+			p.text.y += (662.0 + row * 18 - p.text.y) * (1.0 - Math.pow(0.001, elapsed));
+			p.text.alpha = 1 - out;
 			row++;
 		}
 	}
@@ -325,7 +330,7 @@ class HUD
 		if (!active) return;
 
 		var angle = Math.atan2(dy, dx);
-		var cx = 900.0;
+		var cx = FlxG.width - 60.0;
 		var cy = 660.0;
 		_radarDot.x = cx + Math.cos(angle) * 22.0 - 5;
 		_radarDot.y = cy + Math.sin(angle) * 22.0 - 5;

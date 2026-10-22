@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bfintro.png">
+	<SubTexture name="bfintro Tag0000" x="0" y="129" width="102" height="125" frameX="-1" frameY="-2" frameWidth="103" frameHeight="127"/>
+	<SubTexture name="bfintro Tag0001" x="104" y="129" width="103" height="125" frameX="0" frameY="-2" frameWidth="103" frameHeight="127"/>
+	<SubTexture name="bfintro Tag0002" x="209" y="129" width="103" height="125" frameX="0" frameY="-2" frameWidth="103" frameHeight="127"/>
+	<SubTexture name="bfintro0000" x="0" y="0" width="101" height="127" frameX="-2" frameY="0" frameWidth="103" frameHeight="127"/>
+	<SubTexture name="bfintro0001" x="103" y="0" width="101" height="126" frameX="-2" frameY="-1" frameWidth="103" frameHeight="127"/>
+	<SubTexture name="bfintro0002" x="206" y="0" width="103" height="126" frameX="0" frameY="-1" frameWidth="103" frameHeight="127"/>
+</TextureAtlas>

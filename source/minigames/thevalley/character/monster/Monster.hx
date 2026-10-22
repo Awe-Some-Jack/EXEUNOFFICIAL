@@ -75,6 +75,7 @@ class Monster implements NavAgent
 	final _follower:PathFollower;
 	final _brain:BehaviorTree;
 	final _rays:RayResultList = new RayResultList();
+	final _ray:Ray = new Ray(Vec2.weak(0, 0), Vec2.weak(0, 1));
 
 	var _time:Float = 0;
 	var _dir:Int = 1;
@@ -104,6 +105,8 @@ class Monster implements NavAgent
 	var _stuckTimer:Float = 0;
 	var _spineRecoverCooldown:Float = 0;
 	var _killTimer:Float = 0;
+	var _blinkTimer:Float = 0;
+	var _stalkRounds:Int = 0;
 
 	var _lookTimer:Float = 0;
 	var _canSee:Bool = false;
@@ -137,6 +140,10 @@ class Monster implements NavAgent
 	var _ambushTime:Float = 5.0;
 
 	public var onLostYou:(hidden:Bool, closest:Float) -> Void = null;
+	public var onSpotted:(x:Float, y:Float) -> Bool = null;
+	var _screamTime:Float = -999;
+	var _screamHold:Float = 0;
+	var _locked:Bool = false;
 	var _huntChase:Float = 0;
 	var _huntClosest:Float = Math.POSITIVE_INFINITY;
 	var _searchTimer:Float = 0;
@@ -172,7 +179,13 @@ class Monster implements NavAgent
 
 	var _fallSpeed:Float = 0;
 	var _lastRunFrame:Int = -1;
+	var _stepSound:FlxSound = null;
+	var _stepEnd:Float = 0;
+	var _stepVolume:Float = 0;
 	var _dustTimer:Float = 0;
+	var _squashAmt:Float = 0;
+	var _squashLeft:Float = 0;
+	var _squashDur:Float = 1;
 	final _dust:Array<{ spr:FlxSprite, vx:Float, vy:Float, life:Float, max:Float }> = [];
 
 	public function new(x:Float, y:Float, world:ExeWorld, player:Player)
@@ -397,11 +410,15 @@ class Monster implements NavAgent
 		_leaving = false;
 		_prowlTime = 0;
 		_hasHunch = false;
-		if (_follower.status == NavStatus.Moving) _stalkTotal = 0;
+		if (_follower.status == NavStatus.Moving)
+		{
+			_stalkTotal = 0;
+			_stalkRounds = 0;
+		}
 
 		var tx:Float;
 		var ty:Float;
-		if (_canSee || _smells)
+		if (_canSee || _smells || _locked)
 		{
 			tx = _playerFeetX();
 			ty = _playerGroundY;
@@ -431,6 +448,13 @@ class Monster implements NavAgent
 		{
 			_stalkTotal = 0;
 			if (_tryLunge()) return SUCCESS;
+			if (_locked)
+			{
+				_stalkRounds++;
+				if (_offScreen(body.position.x, _feetY())) _teleportNear(_playerFeetX(), _playerFeetY(), 300.0, 700.0, true);
+				else if (_stalkRounds >= 2) _blink();
+				return SUCCESS;
+			}
 			_giveUp();
 			return FAILURE;
 		}
@@ -676,7 +700,7 @@ class Monster implements NavAgent
 		if (_lookTimer <= 0)
 		{
 			_lookTimer = 0.1;
-			final range = _time - _lastSeenTime <= 3.0 ? 640.0 : 480.0;
+			final range = _time - _lastSeenTime <= 3.0 ? 720.0 : 600.0;
 			_canSee = !hidden && !_dormant && d <= range && _lineOfSight(ex, ey, pcx, pcy, d);
 		}
 		if (hidden || _dormant) _canSee = false;
@@ -742,14 +766,21 @@ class Monster implements NavAgent
 		if (!hidden && _suspectTotem != null && !_suspectTotem.isBusy()) _suspectTotem = null;
 		_wasPlayerHidden = hidden;
 
+		if (hidden) _locked = false;
 		final hunting = _isHunting();
+		if (hunting && !_wasHunting && _canSee && _fakerPhase == 0 && _time - _screamTime >= 8.0 && FlxG.random.bool(45) && onSpotted != null && onSpotted(body.position.x, body.position.y))
+		{
+			_screamTime = _time;
+			_screamHold = 3.4;
+		}
+		if (hunting && !_wasHunting) _locked = true;
 		if (_wasHunting && !hunting && !_dormant && _suspectTotem == null && _trickTotem == null)
 			_setLead(_lastKnownX + _clamp(_lastKnownVx * 0.8, -220, 220), _lastKnownY);
 		_wasHunting = hunting;
 	}
 
 	inline function _isHunting():Bool
-		return !_playerHidden() && _time - _lastSeenTime <= 3.0;
+		return !_playerHidden() && (_locked || _time - _lastSeenTime <= 3.0);
 
 	inline function _hasLead():Bool
 		return _time - _leadTime <= 8.0;
@@ -798,6 +829,7 @@ class Monster implements NavAgent
 
 	public function forgetHunt():Void
 	{
+		_locked = false;
 		_huntChase = 0;
 		_huntClosest = Math.POSITIVE_INFINITY;
 	}
@@ -883,6 +915,17 @@ class Monster implements NavAgent
 	public var transforming(get, never):Bool;
 	inline function get_transforming() return _fakerPhase == 3;
 
+	public function resetFaker():Void
+	{
+		if (_fakerPhase < 2) return;
+		_fakerPhase = 1;
+		_fakerTimer = 0;
+		_fakerGrew = false;
+		fakerSpent = false;
+		_pose = Faker;
+		_playAnim(Faker);
+	}
+
 	public function lurkAhead():Bool
 	{
 		_graceTimer = 0;
@@ -940,10 +983,17 @@ class Monster implements NavAgent
 		final px = _playerFeetX();
 		final py = _playerFeetY();
 		final ahead = _aheadDir();
+		final reach = _nodesThatReach(graph.nearestNode(px, py));
+
+		if (px < 1935.0 - 250.0)
+		{
+			final tree = graph.nearestNode(1935.0, -210.0);
+			if (reach.exists(tree)) return graph.nodes[tree];
+		}
 
 		var best:WNode = null;
 		var bestScore = Math.POSITIVE_INFINITY;
-		for (i in _nodesThatReach(graph.nearestNode(px, py)).keys())
+		for (i in reach.keys())
 		{
 			final n = graph.nodes[i];
 			final along = (n.x - px) * ahead;
@@ -969,7 +1019,7 @@ class Monster implements NavAgent
 		if (_fakerPhase == 1)
 		{
 			_pose = Faker;
-			final ready = !_playerHidden() && _player.isGrounded && !_player.cinematic;
+			final ready = !_playerHidden() && _player.isGrounded && !_player.cinematic && _world.exeCanKill();
 			final close = _distToPlayer() <= 470.0 && Math.abs(_feetY() - _playerFeetY()) <= 160.0;
 			if (ready && (close || _inView(0)))
 			{
@@ -1033,6 +1083,7 @@ class Monster implements NavAgent
 			final good = [];
 			for (i in 0...graph.nodes.length)
 			{
+				if (!graph.usable(i)) continue;
 				final n = graph.nodes[i];
 				final d = _dist(n.x, n.y, px, py);
 				if (d < ring[0] || d > ring[1]) continue;
@@ -1068,6 +1119,7 @@ class Monster implements NavAgent
 		_progressTimer = 0;
 		_progressBest = Math.POSITIVE_INFINITY;
 		_spineHits = 0;
+		_stalkRounds = 0;
 		_follower.clear();
 		if (anim == Charge || anim == Takeoff || anim == AirFalling || anim == Landing || anim == Brake) _playAnim(Idle);
 		_syncSprite();
@@ -1121,6 +1173,11 @@ class Monster implements NavAgent
 		_progressTimer = 0;
 		_progressBest = Math.POSITIVE_INFINITY;
 		if (_tryLunge()) return;
+		if (_locked)
+		{
+			_follower.clear();
+			return;
+		}
 		_giveUp();
 	}
 
@@ -1292,8 +1349,18 @@ class Monster implements NavAgent
 
 		if (_feetY() > _world.exeGraph().mapBottom + 60 || sprite.y > 6000)
 		{
-			_goDormant(false, false);
-			_relocate();
+			if (!(_locked && !_dormant && _teleportNear(_playerFeetX(), _playerFeetY(), 260.0, 620.0, true)))
+			{
+				_goDormant(false, false);
+				_relocate();
+			}
+		}
+
+		if (_blinkTimer > 0)
+		{
+			body.velocity.x = 0;
+			_finishFrame(elapsed);
+			return;
 		}
 
 		if (_killTimer > 0)
@@ -1306,6 +1373,17 @@ class Monster implements NavAgent
 		}
 
 		_sense(elapsed);
+
+		if (_screamHold > 0 && _distToPlayer() > 90.0)
+		{
+			_screamHold -= elapsed;
+			body.velocity.x = 0;
+			_face(_playerFeetX());
+			if (isGrounded) _playAnim(Idle);
+			_finishFrame(elapsed);
+			return;
+		}
+		_screamHold = 0;
 
 		if (_verticalJumpCooldown > 0) _verticalJumpCooldown -= elapsed;
 
@@ -1336,6 +1414,7 @@ class Monster implements NavAgent
 		if (body.velocity.y > 900.0) body.velocity.y = 900.0;
 		if (anim == Takeoff) _fallSpeed = Math.max(_fallSpeed, body.velocity.y);
 		_syncSprite();
+		_updateSquash(elapsed);
 		_footsteps();
 		_updateDust(elapsed);
 		_updateAlpha(elapsed);
@@ -1351,9 +1430,27 @@ class Monster implements NavAgent
 
 	inline function _flipFor(d:Int):Bool return anim == Brake ? d > 0 : d < 0;
 
+	function _blink():Void
+	{
+		_blinkTimer = 0.35;
+		_stalkRounds = 0;
+		body.velocity.x = 0;
+	}
+
 	function _updateAlpha(elapsed:Float):Void
 	{
-		if (_vanishTimer > 0)
+		if (_blinkTimer > 0)
+		{
+			_blinkTimer -= elapsed;
+			sprite.alpha = Math.max(0, _blinkTimer / 0.35);
+			if (_blinkTimer <= 0)
+			{
+				if (!_teleportNear(_playerFeetX(), _playerFeetY(), 300.0, 700.0, true))
+					_teleportNear(_playerFeetX(), _playerFeetY(), 200.0, 900.0, false);
+				sprite.alpha = 0;
+			}
+		}
+		else if (_vanishTimer > 0)
 		{
 			_vanishTimer -= elapsed;
 			sprite.alpha = Math.max(0, _vanishTimer / 0.35);
@@ -1443,8 +1540,19 @@ class Monster implements NavAgent
 		final gapAhead = isGrounded && wantsToMove && !hasGroundAhead(newDir) && _intentY <= feetY + 24;
 		final stuck = checkStuck(elapsed, wantsToMove && !blockedBySpine, newDir);
 
-		final abyss = wantsToMove && isGrounded && !anticipatedJump && !blockedBySpine && isAbyssAhead(newDir);
-		if (abyss) wantsToMove = false;
+		final dropping = _intentTransition == 2 && _intentY > feetY + 20;
+		final abyss = wantsToMove && isGrounded && !anticipatedJump && !blockedBySpine && !dropping && isAbyssAhead(newDir);
+		if (abyss)
+		{
+			final land = dx * newDir > 60 && (newDir == _dir || Math.abs(body.velocity.x) <= 60) ? _gapLanding(newDir) : null;
+			if (land != null)
+			{
+				_setDir(newDir);
+				beginCharge(newDir, land.h, land.dist, Math.abs(body.velocity.x) > 115.0);
+				return;
+			}
+			wantsToMove = false;
+		}
 
 		if (newDir != _dir && wantsToMove)
 		{
@@ -1542,6 +1650,7 @@ class Monster implements NavAgent
 		_puff(-newDir, 4, 90);
 		_rumble(0.0012 * 1.6, 0.12, false);
 		_thump(false, 1.3);
+		_squash(-0.06, 0.16);
 		_setDir(newDir);
 		_playAnim(Brake);
 	}
@@ -1606,7 +1715,9 @@ class Monster implements NavAgent
 			_setDir(_jumpDir);
 			_fallSpeed = 0;
 			_puff(-_jumpDir, 3, 70);
+			_squash(0.16, 0.24);
 			_playAnim(Takeoff);
+			_sfx("EXEJump", 0.35);
 		}
 	}
 
@@ -1638,7 +1749,24 @@ class Monster implements NavAgent
 		_puff(-1, 2 + Std.int(impact * 4), 80 + impact * 60);
 		_rumble(0.006 * (0.35 + 0.65 * impact), 0.12 + 0.18 * impact, true);
 		_thump(true, 0.35 + 0.65 * impact);
+		_squash(-0.1 - 0.14 * impact, 0.2 + 0.1 * impact);
 		_playAnim(Landing);
+	}
+
+	function _squash(amt:Float, dur:Float):Void
+	{
+		_squashAmt = amt;
+		_squashLeft = _squashDur = dur;
+	}
+
+	function _updateSquash(elapsed:Float):Void
+	{
+		if (_squashLeft <= 0) return;
+		_squashLeft -= elapsed;
+		final t = Math.max(0, _squashLeft / _squashDur);
+		final k = 1 + _squashAmt * t * t;
+		sprite.origin.set(sprite.offset.x + 44.0 * 0.5, sprite.offset.y + 92.0);
+		sprite.scale.set(1 / k, k);
 	}
 
 	function _updateLanding(elapsed:Float):Void
@@ -1689,7 +1817,8 @@ class Monster implements NavAgent
 		{
 			_spineHits = 0;
 			_unstick();
-			if (!_dormant && _isOnSpine()) _goDormant(false, true);
+			if (!_dormant && _isOnSpine() && !(_locked && _teleportNear(_playerFeetX(), _playerFeetY(), 260.0, 620.0, true)))
+				_goDormant(false, true);
 			return true;
 		}
 
@@ -1703,6 +1832,7 @@ class Monster implements NavAgent
 		_setDir(escapeDir);
 		_spineRecoverCooldown = 1.2;
 		_playAnim(Takeoff);
+		_sfx("EXEJump", 0.35);
 		return true;
 	}
 
@@ -1711,13 +1841,10 @@ class Monster implements NavAgent
 		final space = body.space;
 		if (space == null) return -1;
 
-		final orig = Vec2.get(ox, oy);
-		final dir = Vec2.get(dx, dy);
-		final ray = new Ray(orig, dir);
-		ray.maxDistance = maxDist;
-		space.rayMultiCast(ray, false, null, _rays);
-		orig.dispose();
-		dir.dispose();
+		_ray.origin.setxy(ox, oy);
+		_ray.direction.setxy(dx, dy);
+		_ray.maxDistance = maxDist;
+		space.rayMultiCast(_ray, false, null, _rays);
 
 		var best = -1.0;
 		for (i in 0..._rays.length)
@@ -1743,9 +1870,10 @@ class Monster implements NavAgent
 	{
 		final startX = body.position.x + dir * (44.0 * 0.5);
 		final footY = _feetY();
-		for (hy in [footY - 10, footY - 92.0 * 0.35, footY - 92.0 * 0.65, footY - 92.0 + 6])
-			if (_probe(startX, hy, dir, 0, 26.0, true) >= 0) return true;
-		return false;
+		return _probe(startX, footY - 10, dir, 0, 26.0, true) >= 0
+			|| _probe(startX, footY - 92.0 * 0.35, dir, 0, 26.0, true) >= 0
+			|| _probe(startX, footY - 92.0 * 0.65, dir, 0, 26.0, true) >= 0
+			|| _probe(startX, footY - 92.0 + 6, dir, 0, 26.0, true) >= 0;
 	}
 
 	public function hasGroundAhead(dir:Int):Bool
@@ -1757,6 +1885,17 @@ class Monster implements NavAgent
 	public function isAbyssAhead(dir:Int):Bool
 	{
 		return _groundYAt(body.position.x + dir * (44.0 * 0.5 + 40.0)) == null;
+	}
+
+	function _gapLanding(dir:Int):Null<{ h:Float, dist:Float }>
+	{
+		final feet = _feetY();
+		for (s in [80.0, 110.0, 140.0, 170.0, 200.0, 230.0])
+		{
+			final gy = _groundYAt(body.position.x + dir * (44.0 * 0.5 + s));
+			if (gy != null && gy >= feet - 100.0 && gy <= feet + 80.0) return { h: Math.max(0, feet - gy), dist: s + 10.0 };
+		}
+		return null;
 	}
 
 	function _groundYAt(atX:Float):Null<Float>
@@ -1908,20 +2047,39 @@ class Monster implements NavAgent
 
 	function _thump(land:Bool, weight:Float = 1.0):Void
 	{
-		if (_dormant || _lurking || sprite.alpha < 0.5) return;
+		if (land)
+		{
+			_sfx("EXELanding", 0.4 * weight);
+			return;
+		}
+		if (_stepSound == null) _stepSound = FlxG.sound.load(Paths.sound("minigame/thevalley/EXE/EXERunning"), 0, false, null, false, false);
+		if (_sfx("EXERunning", 0.3 * weight, _stepSound) == null) return;
+		final start = 30.0 + 260.0 * FlxG.random.int(0, 3);
+		_stepEnd = start + 230.0;
+		_stepVolume = _stepSound.volume;
+		_stepSound.play(true, start, _stepEnd);
+	}
+
+	function _sfx(name:String, volume:Float, ?sound:FlxSound):FlxSound
+	{
+		if (_dormant || _lurking || sprite.alpha < 0.5) return null;
 		final near = 1 - Math.min(1, _distToPlayer() / 700.0);
-		if (near <= 0) return;
+		if (near <= 0) return null;
 		final cam = _world.exeCamera();
 		final half = cam.width * 0.5 / cam.zoom;
 		final dx = body.position.x - (cam.scroll.x + cam.width * 0.5);
-		final volume = (land ? 0.4 : 0.3) * weight * (0.35 + 0.65 * near);
-		final s = FlxG.sound.play(Paths.sound(land ? "minigame/thevalley/exeland" : "minigame/thevalley/exestep"), Math.min(1, volume));
+		final s = sound ?? FlxG.sound.play(Paths.sound('minigame/thevalley/EXE/$name'));
+		s.volume = Math.min(1, volume * (0.35 + 0.65 * near));
 		s.pan = Math.max(-1, Math.min(1, dx / half * 0.7));
 		s.pitch = FlxG.random.float(0.9, 1.1);
+		return s;
 	}
 
 	function _footsteps():Void
 	{
+		if (_stepSound != null && _stepSound.playing)
+			_stepSound.volume = _stepVolume * Math.min(1, (_stepEnd - _stepSound.time) / 70.0);
+
 		final cur = sprite.animation.curAnim;
 		if (anim != Run || cur == null || !isGrounded)
 		{
@@ -2044,7 +2202,7 @@ class ExeBreath
 
 	public function new()
 	{
-		_sound = FlxG.sound.load(Paths.sound("minigame/thevalley/breathing"), 0, true, null, false, true);
+		_sound = FlxG.sound.load(Paths.sound("minigame/thevalley/EXE/breathing"), 0, true, null, false, true);
 	}
 
 	public function update(elapsed:Float, monsters:Array<Monster>, player:Player, cam:FlxCamera, duck:Float = 1.0):Void
@@ -2084,7 +2242,7 @@ class ExeBreath
 			pitch = chasing ? 1.12 : (m.anim == MonsterAnim.Searching ? 0.9 : 1.0);
 		}
 
-		final ease = (rate:Float) -> 1.0 - Math.pow(0.01, elapsed * rate);
+		inline function ease(rate:Float) return 1.0 - Math.pow(0.01, elapsed * rate);
 		_volume += (Math.min(1, volume * duck) - _volume) * ease(volume > _volume ? 2.5 : 1.5);
 		_pan += (pan - _pan) * ease(4.0);
 		_pitch += (pitch - _pitch) * ease(2.0);
@@ -2110,7 +2268,7 @@ class ChaseMusic
 
 	public function new()
 	{
-		_sound = FlxG.sound.load(Paths.sound("minigame/thevalley/chasetheme"), 0, true, null, false, false);
+		_sound = FlxG.sound.load(Paths.sound("minigame/thevalley/EXE/chasetheme"), 0, true, null, false, false);
 	}
 
 	public function update(elapsed:Float, monsters:Array<Monster>):Void

@@ -8,10 +8,7 @@ import flixel.FlxSprite;
 class CSSkull
 {
 	static var LINE_VARIANTS:Array<Array<String>> = [
-		["I have to wake up BF but how?",         "I guess i'll have to find the other parts..."],
-		["How am I supposed to wake him up like this?", "There's gotta be more pieces out there somewhere."],
-		["Ugh, how do I even wake him up now?",   "Guess I'm not done looking yet."],
-		["I need to snap him out of it... but how?", "There must be more pieces scattered around here."]
+		["I have to wake up BF but how?",         "I guess i'll have to find the other parts..."]
 	];
 
 	public var playing:Bool    = false;

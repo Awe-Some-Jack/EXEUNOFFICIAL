@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Faker Pose.png">
+	<SubTexture name="Faker Pose0000" x="0" y="0" width="179" height="366" frameX="-133" frameY="-26" frameWidth="427" frameHeight="410"/>
+	<SubTexture name="Faker Pose0001" x="0" y="368" width="186" height="364" frameX="-130" frameY="-28" frameWidth="427" frameHeight="410"/>
+	<SubTexture name="Faker Pose0002" x="181" y="0" width="194" height="365" frameX="-127" frameY="-27" frameWidth="427" frameHeight="410"/>
+</TextureAtlas>

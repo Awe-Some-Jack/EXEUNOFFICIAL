@@ -7,6 +7,8 @@ import flixel.addons.nape.FlxNapeSpace;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxDirectionFlags;
 
+import nape.geom.AABB;
+import nape.geom.MarchingSquares;
 import nape.geom.Vec2;
 import nape.phys.Body;
 import nape.phys.BodyType;
@@ -15,6 +17,7 @@ import nape.shape.Polygon;
 
 import minigames.Camera;
 import minigames.thevalley.character.player.Player;
+import minigames.thevalley.character.player.ValleyInput;
 import minigames.thevalley.character.player.Player.PlayerMode;
 import minigames.thevalley.map.TVNapeWorld;
 import minigames.thevalley.tiles.HitboxMask.HitKind;
@@ -33,8 +36,6 @@ enum abstract LaunchState(Int)
 {
 	var LpIdle      = 0;
 	var LpGoingUp   = 1;
-	var LpUp        = 2;
-	var LpGoingDown = 3;
 }
 
 enum abstract SkullState(Int)
@@ -338,6 +339,7 @@ class SpineTile
 		sprite.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/" + "spines/spines"));
 		sprite.scrollFactor.set(1, 1);
 		sprite.moves = false;
+		sprite.active = false;
 
 		if (_profile == null) _profile = _buildProfile();
 	}
@@ -389,19 +391,6 @@ class SpineTile
 		return foot <= top + SINK && top - foot <= WARNING_HEIGHT;
 	}
 
-	public static function killLine():openfl.display.BitmapData
-	{
-		final h = Std.int(_profile.length > 0 ? 33 + SINK : 1);
-		final bmd = new openfl.display.BitmapData(_profile.length, h, true, 0);
-		for (c in 0..._profile.length)
-		{
-			final ky = Std.int(Math.min(h - 1, _profile[c] + SINK));
-			bmd.setPixel32(c, ky, 0xFFFF2020);
-			bmd.setPixel32(c, _profile[c], 0x80FF8080);
-		}
-		return bmd;
-	}
-
 	public function destroy():Void
 	{
 		sprite.destroy();
@@ -420,7 +409,6 @@ class SonicBridge
 
 	final _planks:Array<FlxSprite> = [];
 	final _supports:Array<Body> = [];
-	final _supportRects:Array<{ x:Float, y:Float, w:Float, h:Float }> = [];
 	final _plankW:Float;
 	final _plankH:Float;
 	final _supportW:Float;
@@ -463,6 +451,7 @@ class SonicBridge
 			spr.loadGraphic(Paths.image("minigame/thevalley/bg/tiles/" + "bridge/bridge"));
 			spr.scrollFactor.set(1, 1);
 			spr.moves = false;
+			spr.active = false;
 			state.add(spr);
 			_planks.push(spr);
 		}
@@ -532,11 +521,11 @@ class SonicBridge
 		spr.flipX = flip;
 		spr.scrollFactor.set(1, 1);
 		spr.moves = false;
+		spr.active = false;
 		state.add(spr);
 
 		final rx = flip ? sx : sx + _supportW - _plankW;
 		final ry = _top();
-		_supportRects.push({ x: rx, y: ry, w: _plankW, h: _plankH });
 		_supports.push(TileKit.body(BodyType.STATIC, rx + _plankW * 0.5, ry + _plankH * 0.5, _plankW, _plankH, true));
 	}
 
@@ -577,16 +566,6 @@ class SonicBridge
 		_applyLine(elapsed);
 	}
 
-	public function drawDebug(debug:HitboxDebug):Void
-	{
-		for (p in _planks)
-		{
-			final cx = p.x + _plankW * 0.5;
-			debug.box(p.x, lineY(cx), _plankW, PLANK_THICKNESS, 0xFF40FF40);
-		}
-		for (r in _supportRects) debug.box(r.x, r.y, r.w, r.h, 0xFF40A0FF);
-	}
-
 	public function destroy():Void
 	{
 		for (b in _supports.concat([_line])) TileKit.removeBody(b);
@@ -605,15 +584,14 @@ class Launchpad extends FlxSprite
 	var _lState:LaunchState = LpIdle;
 	var _holdTimer:Float = 0;
 	var _cooldown:Float = 0;
+	var _ext:Float = 0;
+	var _extVel:Float = 0;
 
 	public function new(tx:Float, ty:Float)
 	{
 		super(tx, ty);
 		frames = Paths.getSparrowAtlas("minigame/thevalley/objects/interactable/launchpad");
-		animation.addByPrefix("idle",    "launchpad idle",    12, true);
-		animation.addByPrefix("goingup", "launchpad goingup", 24, false);
-		animation.addByPrefix("up",      "launchpad up",      12, true);
-		animation.play("idle");
+		_showSpring();
 		scrollFactor.set(1, 1);
 		moves = false;
 
@@ -636,8 +614,8 @@ class Launchpad extends FlxSprite
 		player.doLaunch(LAUNCH_VY);
 		FlxG.sound.play(Paths.sound("minigame/thevalley/launchpad"), 0.3);
 		_lState = LpGoingUp;
-		_holdTimer = 0;
-		animation.play("goingup", true);
+		_holdTimer = 0.16;
+		_extVel = 1100;
 		return true;
 	}
 
@@ -645,35 +623,36 @@ class Launchpad extends FlxSprite
 	{
 		if (_cooldown > 0) _cooldown = Math.max(0, _cooldown - elapsed);
 
-		final finished = animation.curAnim != null && animation.curAnim.finished;
-		switch (_lState)
+		if (_lState == LpIdle) return;
+
+		_holdTimer -= elapsed;
+		final target = _holdTimer > 0 ? 24.0 : 0.0;
+		_extVel += ((target - _ext) * 520.0 - _extVel * 9.0) * elapsed;
+		_ext += _extVel * elapsed;
+		if (_ext > 28)
 		{
-			case LpGoingUp if (finished):
-				_lState = LpUp;
-				_holdTimer = 0;
-				animation.play("up");
-
-			case LpUp:
-				_holdTimer += elapsed;
-				if (_holdTimer >= 0.12)
-				{
-					_lState = LpGoingDown;
-					if (animation.getByName("_godown") == null)
-					{
-						final fwd = animation.getByName("goingup").frames.copy();
-						fwd.reverse();
-						animation.add("_godown", fwd, 12, false);
-					}
-					animation.play("_godown");
-				}
-
-			case LpGoingDown if (finished):
-				_lState = LpIdle;
-				_cooldown = 0.4;
-				animation.play("idle");
-
-			default:
+			_ext = 28;
+			if (_extVel > 0) _extVel *= -0.2;
 		}
+		if (_ext < 0)
+		{
+			_ext = 0;
+			if (_extVel < 0) _extVel *= -0.25;
+		}
+		if (_holdTimer <= 0 && _ext < 0.4 && Math.abs(_extVel) < 12)
+		{
+			_ext = 0;
+			_extVel = 0;
+			_lState = LpIdle;
+			_cooldown = 0.4;
+		}
+		_showSpring();
+	}
+
+	function _showSpring():Void
+	{
+		final i = Std.int(Math.max(0, Math.min(14, Math.round(_ext / 2))));
+		animation.frameName = "launchpad spring" + StringTools.lpad(Std.string(i), "0", 4);
 	}
 
 	override public function destroy():Void
@@ -687,7 +666,6 @@ class Launchpad extends FlxSprite
 class SkullPrompt
 {
 	public static inline var INTERACT_DIST:Float = 120.0;
-	static inline var PRESS_DIST:Float = 55.0;
 	static inline var SEARCH_ZOOM_BUMP:Float = 0.35;
 
 	public var skullX(get, never):Float;
@@ -746,6 +724,10 @@ class SkullPrompt
 		return Math.abs(dy) > 30.0 ? 9999.0 : Math.sqrt(dx * dx + dy * dy);
 	}
 
+	inline function _inZone():Bool
+		return Math.abs(_player.x + _player.width * 0.5 - (_skull.x + zone.x + zone.w * 0.5)) <= zone.w * 0.5
+			&& Math.abs(_player.y + _player.height * 0.5 - (_skull.y + zone.y + zone.h * 0.5)) <= 30.0;
+
 	public function update(elapsed:Float):Void
 	{
 		if (!_done) return;
@@ -760,11 +742,12 @@ class SkullPrompt
 		switch (_state)
 		{
 			case SkIdle:
-				_eButton.alpha = (1.0 - Math.min(Math.max((dist - 60.0) / (INTERACT_DIST - 60.0), 0.0), 1.0)) * 0.55;
+				final inZone = _inZone();
+				_eButton.alpha = (1.0 - Math.min(Math.max((dist - 60.0) / (INTERACT_DIST - 60.0), 0.0), 1.0)) * (inZone ? 0.55 : 0.25);
 				_eButton.x = _skull.x + (_skull.width - _eButton.width) * 0.5;
 				_eButton.y = _skull.y - _eButton.height - 6;
 
-				if (FlxG.keys.justPressed.E && dist <= PRESS_DIST)
+				if (ValleyInput.interact() && inZone)
 				{
 					_eButton.alpha = 0;
 					_state = SkSearching;
@@ -782,7 +765,7 @@ class SkullPrompt
 				_eButton.alpha = 0;
 				_timer += elapsed;
 
-				final wantsToMove = FlxG.keys.anyJustPressed([LEFT, RIGHT, UP, DOWN, SPACE, A, D, W, S, Z]);
+				final wantsToMove = ValleyInput.movedJust();
 				if (wantsToMove && (_isDanger != null && _isDanger()))
 				{
 					interrupt();
@@ -809,7 +792,7 @@ class SkullPrompt
 				_eButton.alpha = 0;
 				_timer += elapsed;
 
-				final wantsToMove = FlxG.keys.anyJustPressed([LEFT, RIGHT, UP, DOWN, A, D, W, S]);
+				final wantsToMove = ValleyInput.movedJust(false);
 				if (wantsToMove && (_isDanger != null && _isDanger()))
 				{
 					_finish(true);
@@ -867,11 +850,6 @@ class SkullPrompt
 		final c = Math.min(t, 1.0);
 		return 1.0 - (1.0 - c) * (1.0 - c);
 	}
-
-	public function drawDebug(debug:HitboxDebug):Void
-	{
-		if (!_done) debug.box(_skull.x + zone.x, _skull.y + zone.y, zone.w, zone.h, 0xFFFFE040);
-	}
 }
 
 class Totem
@@ -882,7 +860,6 @@ class Totem
 	static inline var DREAD_DELAY:Float = 3.75;
 	static inline var HIDE_ZOOM_BUMP:Float = 0.95;
 	static inline var HIDE_ZOOM_RATE:Float = 3.0;
-	static inline var ZONE_MARGIN:Float = 10.0;
 	static inline var USE_DIST:Float = 70.0;
 	static inline var HIDE_OFFSET:Float = 20.0;
 	static inline var EXIT_SLIDE:Float = 12.0;
@@ -974,8 +951,10 @@ class Totem
 				_sprite.animation.play("idle");
 			case Short:
 				_sprite.loadGraphic(Paths.image(dir + "totemshort"));
+				_sprite.active = false;
 			case Tall:
 				_sprite.loadGraphic(Paths.image(dir + "totemtall"));
+				_sprite.active = false;
 		}
 		_sprite.scrollFactor.set(1, 1);
 		group.add(_sprite);
@@ -988,6 +967,7 @@ class Totem
 		{
 			_disguise = new FlxSprite(0, 0, Paths.image(dir + "totemshort"));
 			_disguise.scrollFactor.set(1, 1);
+			_disguise.active = false;
 			_poleHalf = _disguise.width * 0.5;
 			_sprite.visible = false;
 			_placeDisguise();
@@ -999,6 +979,15 @@ class Totem
 	{
 		_sprite.y = y - _sprite.height;
 		if (_disguise != null) _placeDisguise();
+	}
+
+	public function anchor():{ x:Float, y:Float }
+		return { x: _sprite.x + _poleX, y: _sprite.y + _sprite.height };
+
+	public function placeAt(x:Float, bottom:Float):Void
+	{
+		_sprite.x = x - _poleX;
+		setBottom(bottom);
 	}
 
 	function _placeDisguise():Void
@@ -1042,7 +1031,7 @@ class Totem
 				}
 
 				final now = haxe.Timer.stamp();
-				if (FlxG.keys.justPressed.E && dist <= USE_DIST) _pressedAt = now;
+				if (ValleyInput.interact() && dist <= USE_DIST) _pressedAt = now;
 				if (now - _pressedAt <= PRESS_BUFFER && dist <= USE_DIST && (_player.isGrounded || _player.coyoteTimer > 0)) _startApproach();
 
 			case ToApproach:
@@ -1072,7 +1061,7 @@ class Totem
 					else if (hiddenTime >= DECOY_CALM) _crack(elapsed, (hiddenTime - DECOY_CALM) / DECOY_BREAK);
 				}
 				else if (hiddenTime >= BURN_TIME) _burn();
-				if (_state == ToHidden && FlxG.keys.justPressed.E && dist <= USE_DIST)
+				if (_state == ToHidden && ValleyInput.interact() && dist <= USE_DIST)
 				{
 					_mend();
 					_startExit();
@@ -1178,7 +1167,18 @@ class Totem
 		_disguise.offset.x = _sprite.offset.x = 0;
 		_sprite.visible = true;
 		_sprite.animation.play("press", true);
-		_startExit();
+		_eject();
+	}
+
+	function _eject():Void
+	{
+		_state = ToIdle;
+		_player.isHidden = false;
+		_player.isHiding = false;
+		_player.inDecoy = false;
+		_player.setGravity(true);
+		_player.knockDown(_side * 240.0, -210.0);
+		_camera?.shake(0.004, 0.2);
 	}
 
 	function _startExit():Void
@@ -1306,9 +1306,81 @@ class Totem
 		final d = dread;
 		_camera.zoomIn(HIDE_ZOOM_BUMP + (BURN_ZOOM - HIDE_ZOOM_BUMP) * d * d, HIDE_ZOOM_RATE);
 	}
+}
 
-	public function drawDebug(debug:HitboxDebug):Void
+class LoopTile extends FlxSprite
+{
+	final _bodies:Array<Body> = [];
+
+	public function new(wx:Float, wy:Float)
 	{
-		debug.box(_sprite.x - ZONE_MARGIN, _sprite.y - ZONE_MARGIN, _sprite.width + ZONE_MARGIN * 2, _sprite.height + ZONE_MARGIN * 2, 0xFFFFA040);
+		super(wx, wy);
+		frames = Paths.getSparrowAtlas("minigame/thevalley/bg/tiles/loop/loop");
+		animation.addByPrefix("collapse", "loop0", 10, false);
+		animation.frameIndex = 0;
+		_buildBodies();
+	}
+
+	public function collapse():Void
+	{
+		animation.play("collapse");
+		_removeBodies();
+	}
+
+	override public function destroy():Void
+	{
+		_removeBodies();
+		super.destroy();
+	}
+
+	function _removeBodies():Void
+	{
+		for (b in _bodies) TileKit.removeBody(b);
+		_bodies.resize(0);
+	}
+
+	function _buildBodies():Void
+	{
+		final hitbox = Paths.getBitmapData("assets/shared/images/minigame/thevalley/bg/tiles/loop/hitbox.webp");
+		if (hitbox == null) return;
+		final w = hitbox.width;
+		final h = hitbox.height;
+		final solid = new haxe.ds.Vector<Bool>(w * h);
+		final platform = new haxe.ds.Vector<Bool>(w * h);
+		final pixels = hitbox.getVector(hitbox.rect);
+		hitbox.dispose();
+		for (i in 0...w * h)
+		{
+			final argb = pixels[i];
+			if (((argb >> 24) & 0xFF) < 30) continue;
+			final r = (argb >> 16) & 0xFF;
+			final g = (argb >> 8) & 0xFF;
+			final b = argb & 0xFF;
+			if (r >= 160 && g < 100 && b < 100) solid[i] = true;
+			else if (r < 100 && g >= 160 && b < 100) platform[i] = true;
+		}
+		_addBody(solid, w, h, false);
+		_addBody(platform, w, h, true);
+	}
+
+	function _addBody(mask:haxe.ds.Vector<Bool>, w:Int, h:Int, oneWay:Bool):Void
+	{
+		final iso = (fx:Float, fy:Float) -> {
+			final ix = Std.int(fx);
+			final iy = Std.int(fy);
+			return ix < 0 || iy < 0 || ix >= w || iy >= h || !mask[iy * w + ix] ? 1.0 : -1.0;
+		};
+		final body = new Body(BodyType.STATIC, Vec2.weak(x, y));
+		if (oneWay) body.cbTypes.add(TVNapeWorld.CB_PLATFORM);
+		for (gp in MarchingSquares.run(iso, new AABB(0, 0, w, h), Vec2.weak(2, 2), 2, null, true, null))
+		{
+			gp.simplify(2.0);
+			for (cp in gp.convexDecomposition()) new Polygon(cp).body = body;
+			gp.dispose();
+		}
+		if (body.shapes.length == 0) return;
+		body.setShapeMaterials(new Material(0.0, 0.0, 0.0, 1.0, 0.0));
+		body.space = FlxNapeSpace.space;
+		_bodies.push(body);
 	}
 }

@@ -180,7 +180,7 @@ class GameOver
 
 	function _darkness():Void
 	{
-		_breath = FlxG.sound.play(Paths.sound("minigame/thevalley/breathing"), 0, true);
+		_breath = FlxG.sound.play(Paths.sound("minigame/thevalley/EXE/breathing"), 0, true);
 		_setPhase(Dark);
 	}
 

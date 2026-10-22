@@ -24,6 +24,8 @@ import states.LoadingState;
 import states.PlayState;
 
 import shaders.ColorSwap;
+import states.access.FatalAccess;
+import states.access.FatalAccess.FatalScene;
 
 @:allow(backend.BurningBot)
 class EXEMenu extends MusicBeatState
@@ -62,6 +64,8 @@ class EXEMenu extends MusicBeatState
 	var previousSelectedIndex:Int = 2;
 	var isMovingUpward:Bool = false;
 	var canInteract:Bool = true;
+	var _fatalScene:Null<FatalScene> = null;
+	var _fatalTimer:Float = -1;
 	var canManiaInteract:Bool = false;
 	var cooldownTimer:Float = 0.0;
 	var isBlinking:Bool = false;
@@ -200,6 +204,14 @@ class EXEMenu extends MusicBeatState
 
 		super.create();
 
+		FatalAccess.startWatching();
+		final fatalScene = FatalAccess.menuScene();
+		if (fatalScene != null && FlxG.random.bool(fatalScene == TRANSMISSION ? 15 : 8))
+		{
+			_fatalScene = fatalScene;
+			_fatalTimer = FlxG.random.float(4, 10);
+		}
+
 		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}
 
@@ -294,11 +306,26 @@ class EXEMenu extends MusicBeatState
 		super.update(elapsed);
 		if (subState != null) return;
 
+		if (_fatalTimer > 0 && canInteract)
+		{
+			_fatalTimer -= elapsed;
+			if (_fatalTimer <= 0) _startFatalGlitch();
+		}
+
 		if (Main.DEVELOPMENT_BUILD){
 			if (#if mobile shortPress && !inDevMode || #end FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
 
 		if (FlxG.keys.justPressed.T) FlxG.switchState(() -> new states.CreditsRollState());
 			if (FlxG.keys.justPressed.T) FlxG.switchState(() -> new states.CreditsRollState());
+			if (FlxG.keys.justPressed.F && canInteract)
+			{
+				FatalAccess.resetForTesting();
+				if (!FlxG.keys.pressed.SHIFT)
+				{
+					_fatalScene = TRANSMISSION;
+					_startFatalGlitch();
+				}
+			}
 
 		}
 
@@ -641,6 +668,37 @@ class EXEMenu extends MusicBeatState
 
 		FlxG.sound.play(Paths.sound('ringSound'));
 		curKey[codeIndex] = 0;
+	}
+
+	function _startFatalGlitch():Void
+	{
+		canInteract = false;
+		FlxG.sound.play(Paths.sound('static'), 0.8);
+		#if FLX_PITCH
+		if (FlxG.sound.music != null) FlxTween.tween(FlxG.sound.music, {pitch: 0.6}, 1.2);
+		#end
+		final w = 640;
+		final h = 190;
+		final x = (FlxG.width - w) * 0.5;
+		final y = (FlxG.height - h) * 0.5;
+		final box = FatalAccess.glitchBox(w, h, x, y, 0);
+		final label = FatalAccess.textSprite('A FATAL ERROR HAS OCCURRED', 15, Std.int((w - 40) / 2), false);
+		final bar = FatalAccess.barHeight(0);
+		label.setPosition(x + (w - label.width) * 0.5, y + bar + (h - bar - label.height) * 0.5);
+		label.visible = false;
+		for (spr in [box, label])
+		{
+			spr.scrollFactor.set();
+			add(spr);
+		}
+		final scene = _fatalScene;
+		new FlxTimer().start(0.35, _ -> label.visible = true);
+		new FlxTimer().start(2.6, _ -> {
+			FlxG.sound.music?.stop();
+			flixel.addons.transition.FlxTransitionableState.skipNextTransIn = true;
+			flixel.addons.transition.FlxTransitionableState.skipNextTransOut = true;
+			FlxG.switchState(() -> new FatalAccess(scene));
+		});
 	}
 
 	function loadSong(song:String, mod:String):Bool

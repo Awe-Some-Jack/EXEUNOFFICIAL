@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fall.png">
+	<SubTexture name="fall0000" x="0" y="161" width="82" height="72" frameX="-7" frameY="-2" frameWidth="89" frameHeight="81"/>
+	<SubTexture name="fall0001" x="0" y="83" width="85" height="76" frameX="0" frameY="-1" frameWidth="89" frameHeight="81"/>
+	<SubTexture name="fall0002" x="0" y="0" width="83" height="81" frameX="-1" frameY="0" frameWidth="89" frameHeight="81"/>
+	<SubTexture name="fall0003" x="85" y="0" width="82" height="77" frameX="-3" frameY="-2" frameWidth="89" frameHeight="81"/>
+	<SubTexture name="fall0004" x="87" y="83" width="81" height="73" frameX="-6" frameY="-3" frameWidth="89" frameHeight="81"/>
+</TextureAtlas>

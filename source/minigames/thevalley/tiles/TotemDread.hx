@@ -18,12 +18,13 @@ class TotemDread
 
 	public function new(state:FlxState, ui:FlxCamera)
 	{
-		final bmd = new BitmapData(240, 180, true, 0);
-		for (y in 0...180)
+		final h = Std.int(240 * FlxG.height / FlxG.width);
+		final bmd = new BitmapData(240, h, true, 0);
+		for (y in 0...h)
 			for (x in 0...240)
 			{
 				final dx = (x + 0.5 - 240 * 0.5) / (240 * 0.5);
-				final dy = (y + 0.5 - 180 * 0.5) / (180 * 0.5);
+				final dy = (y + 0.5 - h * 0.5) / (h * 0.5);
 				var t = (Math.sqrt(dx * dx + dy * dy) - 0.25) / (1 - 0.25);
 				t = t < 0 ? 0 : t > 1 ? 1 : t;
 				bmd.setPixel32(x, y, Std.int(t * t * (3 - 2 * t) * 255) << 24);

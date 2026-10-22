@@ -182,6 +182,7 @@ class Project extends HXProject
         {
             setHaxedef("HXCPP_GC_BIG_BLOCKS");
             setHaxedef("HXCPP_GC_DYNAMIC_SIZE");
+            setHaxedef("HXCPP_CPP20");
         }
 
         if (isLinux())
@@ -197,6 +198,7 @@ class Project extends HXProject
         setHaxedef("message.reporting", "pretty");
         setHaxedef("openfl-enable-handle-error");
         setHaxedef("openfl_disable_hdpi_cacheasbitmap");
+        setHaxedef("openfl_pool_events");
         setHaxedef("lime_disable_assets_version");
 
         haxeflags.push("--macro allowPackage('flash')");

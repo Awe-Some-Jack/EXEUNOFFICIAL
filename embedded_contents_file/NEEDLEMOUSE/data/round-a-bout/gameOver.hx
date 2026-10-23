@@ -24,12 +24,44 @@ function onGameOverStart()
 	FlxG.camera.zoom = 0.7;
 
 	deadMusic = new FlxSound();
-	deadMusic.load(Paths.music('gameOver'), true);
+	deadMusic.load(Paths.music('gameOverRAB'), true);
 	FlxG.sound.list.add(deadMusic);
 	deadMusic.looped = true;
+
+	vhsFilters();
+}
+
+var vhsCrt:ErrorHandledRuntimeShader;
+var vhsTime:Float = 0;
+function vhsFilters()
+{
+	if (!ClientPrefs.data.shaders) return;
+	vhsCrt = vhsShader('tvcrt');
+	final grade:ErrorHandledRuntimeShader = vhsShader('brightness');
+	final chroma:ErrorHandledRuntimeShader = vhsShader('chromatic');
+	if (vhsCrt == null || grade == null || chroma == null) return;
+	grade.setFloat('saturation', 1.25);
+	grade.setFloat('brightness', -0.08);
+	grade.setFloat('contrast', 1.2);
+	chroma.setFloat('amount', 0.6);
+	FlxG.camera.filters = [new ShaderFilter(vhsCrt), new ShaderFilter(grade), new ShaderFilter(chroma)];
+}
+
+function vhsShader(name:String):ErrorHandledRuntimeShader
+{
+	final code:String = Paths.getTextFromFile('shaders/' + name + '.frag');
+	return code != null ? new ErrorHandledRuntimeShader(name, code) : null;
+}
+
+function onUpdate(elapsed:Float)
+{
+	if (!inGameOver || vhsCrt == null) return;
+	vhsTime += elapsed;
+	vhsCrt.setFloat('iTime', vhsTime);
 }
 
 var toggleOnce:Bool = false;
+var confirmed:Bool = false;
 function onUpdatePost()
 {
 	if (!inGameOver) return;
@@ -39,14 +71,15 @@ function onUpdatePost()
 	{
 		if (!toggleOnce) {
 			toggleOnce = true;
-			deadMusic.play();
 			FlxG.sound.music.volume = 0;
+			FlxG.sound.play(Paths.music('GameOverIntro'), 1, false, null, true, () -> if (!confirmed) deadMusic.play());
 		}
 	}
 }
 
 function onGameOverConfirm(retry)
 {
+	confirmed = true;
 	if (retry) {
 		for (sound in FlxG.sound.list) if (sound.playing && sound != deadMusic) sound.volume = 0;
 

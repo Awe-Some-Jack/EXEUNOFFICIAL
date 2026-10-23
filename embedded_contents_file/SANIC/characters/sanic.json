@@ -17,7 +17,7 @@
 			"name": "idle"
 		},
 		{
-			"offsets": [149, 45],
+			"offsets": [206, 63],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
@@ -25,7 +25,7 @@
 			"name": "left"
 		},
 		{
-			"offsets": [149, 45],
+			"offsets": [206, 63],
 			"loop": true,
 			"fps": 24,
 			"anim": "singLEFT-loop",
@@ -33,7 +33,7 @@
 			"name": "left"
 		},
 		{
-			"offsets": [0, -125],
+			"offsets": [0, -175],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
@@ -41,7 +41,7 @@
 			"name": "down"
 		},
 		{
-			"offsets": [-55, 135],
+			"offsets": [-77, 187],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
@@ -49,44 +49,12 @@
 			"name": "up"
 		},
 		{
-			"offsets": [-57, -18],
+			"offsets": [-80, -24],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
 			"indices": [],
 			"name": "right"
-		},
-		{
-			"loop": false,
-			"offsets": [-6, 25],
-			"anim": "tooslow",
-			"fps": 24,
-			"name": "Too Slow",
-			"indices": []
-		},
-		{
-			"offsets": [18, 30],
-			"indices": [],
-			"fps": 24,
-			"anim": "comeon",
-			"loop": false,
-			"name": "Come On"
-		},
-		{
-			"offsets": [28, 576],
-			"indices": [],
-			"fps": 24,
-			"anim": "cake",
-			"loop": false,
-			"name": "Cake"
-		},
-		{
-			"offsets": [12, 395],
-			"indices": [],
-			"fps": 24,
-			"anim": "again",
-			"loop": false,
-			"name": "again sometime"
 		}
 	],
 	"vocals_file": "",
@@ -98,6 +66,6 @@
 	"healthbar_colors": [63, 71, 204],
 	"camera_position": [0, 0],
 	"sing_duration": 8,
-	"scale": 1,
+	"scale": 1.4,
 	"_editor_isPlayer": false
 }

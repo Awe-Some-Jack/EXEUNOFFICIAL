@@ -29,7 +29,7 @@ class VideoSprite extends FlxSpriteGroup
 	public var video:FlxVideoSprite;
 	#end
 
-	public var isStateAffected:Bool = true;
+	public var isStateAffected(default, set):Bool = true;
 	public var autoDestroyOnComplete:Bool = true;
 
 	public var canSkip:Bool = false;
@@ -449,6 +449,19 @@ class VideoSprite extends FlxSpriteGroup
 		}
 	}
 
+	private function set_isStateAffected(value:Bool):Bool
+	{
+		isStateAffected = value;
+		FlxG.signals.focusGained.remove(onFocusGained);
+		FlxG.signals.focusLost.remove(onFocusLost);
+		if (value)
+		{
+			FlxG.signals.focusGained.add(onFocusGained);
+			FlxG.signals.focusLost.add(onFocusLost);
+		}
+		return value;
+	}
+
 	private function onVideoComplete():Void
 	{
 		if (autoDestroyOnComplete)
@@ -548,11 +561,8 @@ class VideoSprite extends FlxSpriteGroup
 			_endCallbacks = [];
 			_formatCallbacks = [];
 
-			if (isStateAffected)
-			{
-				FlxG.signals.focusGained.remove(onFocusGained);
-				FlxG.signals.focusLost.remove(onFocusLost);
-			}
+			FlxG.signals.focusGained.remove(onFocusGained);
+			FlxG.signals.focusLost.remove(onFocusLost);
 
 			stop();
 
@@ -567,11 +577,8 @@ class VideoSprite extends FlxSpriteGroup
 			video.bitmap.onOpening.removeAll();
 			video.bitmap.onFormatSetup.removeAll();
 
-			if (isStateAffected)
-			{
-				FlxG.signals.focusGained.remove(onFocusGained);
-				FlxG.signals.focusLost.remove(onFocusLost);
-			}
+			FlxG.signals.focusGained.remove(onFocusGained);
+			FlxG.signals.focusLost.remove(onFocusLost);
 
 			stop();
 		}

@@ -2324,7 +2324,7 @@ class PlayState extends MusicBeatState
 
 		if (startedCountdown && !paused)
 		{
-			Conductor.songPosition += elapsed * 1000 * playbackRate;
+			Conductor.songPosition += elapsed / FlxG.timeScale * 1000 * playbackRate;
 			if (FlxG.sound.music != null && Conductor.songPosition >= Conductor.offset)
 			{
 				Conductor.songPosition = FlxMath.lerp(FlxG.sound.music.time + Conductor.offset, Conductor.songPosition, Math.exp(-elapsed * 5));
@@ -3342,17 +3342,26 @@ class PlayState extends MusicBeatState
             }
         }
 
-        var secretSongPath:String = Paths.formatToSongPath('shocker'); 
-        var allSongsCompleted:Bool = true;
+        final keepList = WeekData.weeksList;
+        final keepLoaded = WeekData.weeksLoaded;
+        WeekData.weeksLoaded = new Map<String, WeekData>();
+        WeekData.reloadWeekFiles(false);
+        final allWeeks = WeekData.weeksList;
+        final allLoaded = WeekData.weeksLoaded;
+        WeekData.weeksList = keepList;
+        WeekData.weeksLoaded = keepLoaded;
+
+        var secretSongPath:String = Paths.formatToSongPath('shocker');
+        var allSongsCompleted:Bool = allWeeks.length > 0;
         var missingSongs:Array<String> = [];
 
         trace('[DEBUG] === STARTING SONGS CHECK ===');
         trace('[DEBUG] Saved Beated Songs: ' + unlocked);
 
-        for (i in 0...WeekData.weeksList.length)
+        for (i in 0...allWeeks.length)
         {
-            final weekName:String = WeekData.weeksList[i];
-            final leWeek:WeekData = WeekData.weeksLoaded.get(weekName);
+            final weekName:String = allWeeks[i];
+            final leWeek:WeekData = allLoaded.get(weekName);
 
             if (leWeek == null || leWeek.songs == null) continue;
 
@@ -3594,7 +3603,7 @@ class PlayState extends MusicBeatState
 		if(Conductor.songPosition >= 0)
 		{
 			final now:Float = haxe.Timer.stamp();
-			final msElapsedSinceEvent:Float = Math.min((now - _pressTimestamp) * 1000, 50);
+			final msElapsedSinceEvent:Float = Math.min((now - _pressTimestamp) * 1000, 50) * playbackRate;
 			Conductor.songPosition = FlxG.sound.music.time + Conductor.offset + msElapsedSinceEvent;
 		}
 

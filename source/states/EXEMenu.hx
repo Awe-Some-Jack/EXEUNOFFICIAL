@@ -728,6 +728,12 @@ class EXEMenu extends MusicBeatState
 		return true;
 	}
 
+	override function onFocus():Void
+	{
+		super.onFocus();
+		menuVideo?.resume();
+	}
+
 	override function destroy():Void
 	{
 		FlxG.mouse.visible = false;

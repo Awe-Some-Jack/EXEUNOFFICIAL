@@ -192,7 +192,7 @@ class CustomShapeTransition extends MusicBeatSubstate
         var shit:String = shapeString.trim().toLowerCase();
         return switch(shit)
         {
-            case 'x': X;
+            case 'lordx': X;
             case 'infinite': INFINITE;
             case 'circle': CIRCLE;
             case 'oval': OVAL;

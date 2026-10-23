@@ -54,5 +54,6 @@
 	"weekName": "lordx",
 	"exeTitle": "LORD X",
 	"exeCover": "lordx",
-	"exeLabel": "EXE"
+	"exeLabel": "EXE",
+	"transitionShape": "lordx"
 }

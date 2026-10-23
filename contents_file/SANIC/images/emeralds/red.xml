@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="red.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="red0000" x="50" y="50" width="125" height="125"/>
+	<SubTexture name="red0001" x="50" y="50" width="125" height="125"/>
+	<SubTexture name="red0002" x="225" y="50" width="125" height="125"/>
+	<SubTexture name="red0003" x="225" y="50" width="125" height="125"/>
+	<SubTexture name="red0004" x="50" y="225" width="125" height="125"/>
+	<SubTexture name="red0005" x="50" y="225" width="125" height="125"/>
+	<SubTexture name="red0006" x="225" y="225" width="125" height="125"/>
+	<SubTexture name="red0007" x="225" y="225" width="125" height="125"/>
+</TextureAtlas>

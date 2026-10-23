@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="white.png">
+	<!-- Created with Adobe Animate version 22.0.7.214 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="white instancia 10000" x="50" y="50" width="125" height="125"/>
+	<SubTexture name="white instancia 10001" x="50" y="50" width="125" height="125"/>
+	<SubTexture name="white instancia 10002" x="225" y="50" width="125" height="125"/>
+	<SubTexture name="white instancia 10003" x="225" y="50" width="125" height="125"/>
+	<SubTexture name="white instancia 10004" x="50" y="225" width="125" height="125"/>
+	<SubTexture name="white instancia 10005" x="50" y="225" width="125" height="125"/>
+	<SubTexture name="white instancia 10006" x="225" y="225" width="125" height="125"/>
+	<SubTexture name="white instancia 10007" x="225" y="225" width="125" height="125"/>
+</TextureAtlas>

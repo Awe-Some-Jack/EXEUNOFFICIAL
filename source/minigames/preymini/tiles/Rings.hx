@@ -41,6 +41,8 @@ class Rings extends FlxTypedGroup<Ring>
 {
 	public var onCollect:Void->Void = null;
 
+	public var collectable:Bool = true;
+
 	final _terrain:Terrain;
 	final _sonic:Sonic;
 
@@ -86,7 +88,7 @@ class Rings extends FlxTypedGroup<Ring>
 	{
 		super.update(elapsed);
 		final f = elapsed * 60;
-		final canTake = !_sonic.dead && !_sonic.leaving && !_sonic.grabbed && !_sonic.hurting;
+		final canTake = collectable && !_sonic.dead && !_sonic.leaving && !_sonic.grabbed && !_sonic.hurting;
 		for (ring in members)
 		{
 			if (ring == null || !ring.alive) continue;

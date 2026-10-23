@@ -12,6 +12,7 @@ import minigames.preymini.character.monster.EnemySpawner;
 import minigames.preymini.character.player.EscapePrompt;
 import minigames.preymini.character.player.HUD;
 import minigames.preymini.character.player.Sonic;
+import minigames.preymini.cutscenes.LevelArrival;
 import minigames.preymini.cutscenes.LevelEnding;
 import minigames.preymini.cutscenes.LevelIntro;
 import minigames.preymini.map.BGPrey;
@@ -38,6 +39,8 @@ class PreyMini extends MusicBeatState
 	var _spikes:Spikes;
 	var _destroyed:FlxSprite;
 	var _cut:LevelEnding = null;
+	var _arrival:LevelArrival = null;
+	var _withIntro:Bool;
 	var _rallied:Bool = false;
 	var _chain:Int = 0;
 	var _lastView:Float = 0;
@@ -57,11 +60,12 @@ class PreyMini extends MusicBeatState
 	
 	var _exitTimer:FlxTimer = null;
 
-	public function new(lives:Int = 3, score:Int = 0)
+	public function new(lives:Int = 3, score:Int = 0, withIntro:Bool = true)
 	{
 		super();
 		_lives = lives;
 		_score = score;
+		_withIntro = withIntro;
 	}
 
 	override public function create():Void
@@ -111,6 +115,7 @@ class PreyMini extends MusicBeatState
 		_rings = new Rings(_terrain, _sonic);
 		_rings.onCollect = _collectRing;
 		insert(members.indexOf(_sonic), _rings);
+		if (_withIntro) _arrival = new LevelArrival(this, _sonic, _terrain, _rings);
 		_enemies = new EnemySpawner(this, _overlay, _terrain, _sonic, _hurt, _grabbed, _broke, _ovenHit, _bossDown, 220, Math.max(0, _terrain.topAt(220)));
 		add(_lit(_terrain.loadArt("minigame/preymini/bg/map/front")));
 		_lastView = _sonic.posX;
@@ -140,16 +145,30 @@ class PreyMini extends MusicBeatState
 		final intro = new LevelIntro(overlay);
 		intro.onFade = () ->
 		{
-			_hud.showCard();
-			if (!_sonic.dead) FlxG.sound.playMusic(Paths.music("minigame/preymini/stardustspeedway"), 1, true);
+			if (_arrival != null) _arrival.start();
+			else _startLevel();
 		};
-		intro.onDone = () ->
+		intro.onDone = () -> if (_arrival == null) _startPlaying();
+		if (_arrival != null) _arrival.onDone = () ->
 		{
-			if (_sonic.dead || _sonic.leaving) return;
-			_sonic.controllable = true;
-			_hud.timing = true;
+			_arrival = null;
+			_startLevel();
+			_startPlaying();
 		};
 		add(intro);
+	}
+
+	function _startLevel():Void
+	{
+		_hud.showCard();
+		if (!_sonic.dead) FlxG.sound.playMusic(Paths.music("minigame/preymini/stardustspeedway"), 1, true);
+	}
+
+	function _startPlaying():Void
+	{
+		if (_sonic.dead || _sonic.leaving) return;
+		_sonic.controllable = true;
+		_hud.timing = true;
 	}
 
 	override public function update(elapsed:Float):Void
@@ -168,6 +187,8 @@ class PreyMini extends MusicBeatState
 			}
 			if (_cut == null && _sonic.controllable && _sonic.posX >= 16480 && _sonic.grounded && !_sonic.grabbed && !_sonic.hurting) _startEnding();
 			_cut?.update(elapsed);
+			_arrival?.update(elapsed);
+			if (_arrival != null && controls.JUMP_P) _arrival.skip();
 			_moveWorld(elapsed);
 			_spikes.update(_sonic);
 			final onFloor = _sonic.grounded && _sonic.mode == 0;
@@ -221,7 +242,7 @@ class PreyMini extends MusicBeatState
 		PauseSubState.cameraWidth = FlxG.width;
 		PauseSubState.standaloneExit = _exitMinigame;
 		final lives = _lives, score = _hud.score;
-		OptionsState.standaloneReturnState = () -> new PreyMini(lives, score);
+		OptionsState.standaloneReturnState = () -> new PreyMini(lives, score, false);
 		openSubState(new PauseSubState());
 	}
 
@@ -428,7 +449,7 @@ class PreyMini extends MusicBeatState
 		_exitTimer = new FlxTimer().start(1, _ -> _overlay.fade(FlxColor.BLACK, 0.5, false, () ->
 		{
 			if (quit) _exitMinigame();
-			else FlxG.switchState(() -> new PreyMini(lives, score));
+			else FlxG.switchState(() -> new PreyMini(lives, score, false));
 		}));
 	}
 

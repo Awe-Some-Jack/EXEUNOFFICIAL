@@ -1,8 +1,8 @@
 import openfl.display.BitmapData;
 import psychlua.LuaUtils;
 
-var dadLight = {x: 0.0, y: 0.0, floorY: 0.0, size: 1.0, floorSize: 1.0};
-var bfLight = {x: 0.0, y: 0.0, floorY: 130.0, size: 1.0, floorSize: 1.0};
+var dadLight = {x: 0.0, y: 0.0, floorX: -60.0, floorY: 30.0, size: 1.0, floorSize: 1.0};
+var bfLight = {x: 0.0, y: 0.0, floorX: 0.0, floorY: 70.0, size: 1.0, floorSize: 1.0};
 
 var active:Bool = false;
 var restored:Bool = true;
@@ -471,7 +471,7 @@ function onUpdatePost(elapsed:Float)
 		if (gl.floor)
 		{
 			s.scale.set(c.width * 1.7 * L.floorSize * (1 + pulse * 0.12) / 96, c.height * 0.2 * L.floorSize / 96);
-			s.x = cx;
+			s.x = cx + L.floorX;
 			s.y = c.y + c.height * 0.91 + L.floorY - 48;
 			s.alpha = amount * (0.5 + pulse * 0.35);
 		}

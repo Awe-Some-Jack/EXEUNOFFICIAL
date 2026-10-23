@@ -1,55 +1,63 @@
 {
 	"animations": [
 		{
-			"offsets": [51, -9],
-			"loop": false,
+			"offsets": [-50, 31],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"offsets": [-14, 25],
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
+			"loop": false,
 			"name": "left"
 		},
 		{
-			"offsets": [21, -14],
-			"loop": false,
+			"offsets": [-38, 21],
+			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
+			"loop": false,
 			"name": "down"
 		},
 		{
-			"offsets": [81, 78],
-			"loop": false,
+			"offsets": [7, 89],
+			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
+			"loop": false,
 			"name": "up"
 		},
 		{
-			"offsets": [-71, -27],
-			"loop": false,
+			"offsets": [-100, 14],
+			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
+			"loop": false,
 			"name": "right"
 		},
 		{
-			"loop": true,
-			"offsets": [0, 0],
-			"anim": "idle",
+			"offsets": [0, 65],
+			"indices": [],
 			"fps": 24,
-			"name": "idle",
-			"indices": []
+			"anim": "show",
+			"loop": false,
+			"name": "show you"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/sanic-2",
-	"position": [35, -15],
+	"image": "characters/sanic-sad",
+	"position": [0, 0],
 	"healthicon": "sanic",
 	"flip_x": false,
 	"healthbar_colors": [63, 71, 204],
 	"camera_position": [0, 0],
 	"sing_duration": 8,
-	"scale": 1.4,
+	"scale": 1,
 	"_editor_isPlayer": false
 }

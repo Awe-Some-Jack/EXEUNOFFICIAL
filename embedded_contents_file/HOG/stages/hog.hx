@@ -28,10 +28,14 @@ var hogBG:Array<BackgroundSprite> = [
 	{path: 'bg/normal/hogwaterfall', position: [600, 50], scroll: [0.4, 0.4], animation: [{name: 'rightwaterfall', fps: 12, looped: true}]},
 	{path: 'bg/normal/hill', position: [-850, -130], scroll: [0.6, 0.6], isAtlas: true, animation: [{name: 'creepy', fps: 36, looped: true}, {name: 'normal', fps: 36, looped: true}]},
 	{path: 'bg/normal/floor', position: [-900, -450]},
-	{path: 'characters/tailsatlas', tag: 'tails', position: [-80, -100], scale: [0.8, 0.8], scroll: [0.8, 0.8], isAtlas: true, animation: [{name: 'evilidle'}, {name: 'normalidle'}]},
-	{path: 'characters/knuxatlas', tag: 'knux', position: [1280, 350], isAtlas: true, animation: [{name: 'evilidle'}, {name: 'normalidle'}], layer: 'top'},
+	{path: 'characters/tailsatlas', tag: 'tails', position: [-80, -100], scale: [0.8, 0.8], scroll: [0.8, 0.8], isAtlas: true, animation: [{name: 'evilidleg1'}, {name: 'evilidleg2'}, {name: 'evilidleg3'}, {name: 'evilidle'}, {name: 'normalidle'}]},
+	{path: 'characters/knuxatlas', tag: 'knux', position: [1350, 350], isAtlas: true, animation: [{name: 'evilidleg1'}, {name: 'evilidleg2'}, {name: 'evilidleg3'}, {name: 'evilidle'}, {name: 'normalidle'}], layer: 'top'},
 	{path: 'bg/normal/fg', position: [-1050, -1150], scroll: [1.5, 1.5], scale: [1.1, 1.1], layer: 'top'},
 	{path: 'bg/normal/overlay', position: [-900, -650], scroll: [1.5, 1.5], layer: 'top', blend: 'add', color: 0xFFFF781E, alpha: 0.5}
+];
+
+var scorchedBG:Array<BackgroundSprite> = [
+	{path: 'bg/evil/fg', position: [-1654, -310], scroll: [1.5, 1.5], scale: [1.1, 1.1], layer: 'top'},
 ];
 
 final game:PlayState = PlayState.instance;
@@ -106,6 +110,12 @@ function onCreate()
 
 	gf.scrollFactor.set(1, 1);
 	makeBackground(hogBG);
+
+	if (isManualBlast)
+	{
+		makeBackground(scorchedBG);
+		for (spr in scorchedBG) spr.sprite.alpha = 0.0001;
+	}
 	
 	vignette = new FlxSprite().loadGraphic(Paths.image('VG'));
 	vignette.color = 0xFF000000;
@@ -246,6 +256,7 @@ function onBeatHit()
 		{
 			var anim:String = 'normalidle';
 			if (songPhase == 'evil') anim = 'evilidle';
+			if (songPhase == 'glitch') anim = 'evilidleg' + FlxG.random.int(1,3);
 
 			spr.sprite.animation.play(anim, true);
 			if (animationOffsets.exists(spr.tag) && animationOffsets.get(spr.tag).exists(anim)) {
@@ -259,6 +270,7 @@ function onBeatHit()
 	if (curBeat % 2 == 0 && spacebar != null && spacebar.alpha >= 0.5) spacebar.animation.play('idle', true);
 }
 
+var _suffix:Array<String> = [];
 var _sine:Float = 0;
 function onUpdatePost(e:Float)
 {
@@ -301,6 +313,27 @@ function onUpdatePost(e:Float)
 		bloom.configOffset.set('contrast', FlxMath.lerp(0, -0.05, progress));
 
 		for (c in shaderChars) c.shader.setFloat('dist', FlxMath.lerp(15, 0, progress));
+	}
+
+	if (songPhase == 'glitch')
+	{
+		for (i in 0...notes.length)
+		{
+			var note:Note = notes.members[i];
+
+			if (note.mustPress)
+			{
+				if (note.animSuffix == _suffix[0]) continue;
+				var dasuffix:String = _suffix[0];
+				if (note.animSuffix == '-mb-alt') dasuffix = '-mb-alt-g';
+				note.animSuffix = dasuffix;
+			}
+			else 
+			{
+				if (note.animSuffix == _suffix[1]) continue;
+				note.animSuffix = _suffix[1];
+			}
+		}
 	}
 
 	if (isManualBlast && blackScreen != null && blackScreen.alpha > 0.001) blackScreen.scale.set(1 / camGame.zoom, 1 / camGame.zoom);
@@ -488,6 +521,9 @@ function onEvent(n,v1,v2)
 				hogBG[7].sprite.animation.play('creepy', true);
 				hogBG[12].sprite.alpha = 0;
 
+				hogBG[11].sprite.alpha = 0;
+				for (spr in scorchedBG) spr.sprite.alpha = spr.alpha ?? 1;
+
 				bloom.defaultConfig = ['saturation' => 1, 'brightness' => -0.075, 'contrast' => 1.05];
 				bloom.config = ['saturation' => 1, 'brightness' => -0.075, 'contrast' => 1.05];
 
@@ -502,11 +538,15 @@ function onEvent(n,v1,v2)
 				cam.DADy = -200;
 				cam.OffsetsDAD = 50;
 				cam.DADAngle = 1.5;
+				cam.OGZoom = 0.47;
+				camGame.zoom = 0.47;
 				
 				cam.BFx = 900;
 				cam.BFy = 350;
 
 				cam.OverrideZoom = false;
+			case 'worlddying':
+				songPhase = 'glitch';
 		}
 	}
 }
@@ -533,9 +573,29 @@ function onSectionHit()
 {
 	if (songPhase == 'evil' && _oldMHS != mustHitSection)
 	{
-		cam.OGZoom = mustHitSection ? 0.75 : 0.47;
+		cam.OGZoom = mustHitSection ? 0.7 : 0.47;
 	}
 	_oldMHS = mustHitSection;
+
+	if (songPhase == 'glitch')
+	{
+		gf.skipDance = true;
+		gf.playAnim('idle-alt' + FlxG.random.int(1,9), true);
+		gf.specialAnim = true;
+
+		boyfriend.idleSuffix = (curSection % 3 == 0 ? '-mb-g1' : (curSection % 3 == 1 ? '-mb-g2' : '-mb-alt-g'));
+		boyfriend.recalculateDanceIdle();
+		if (boyfriend.getAnimationName().startsWith('idle')) boyfriend.dance();
+
+		dad.idleSuffix = (curSection % 3 == 0 ? '-g1' : (curSection % 3 == 1 ? '-g2' : '-g3'));
+		dad.recalculateDanceIdle();
+		if (dad.getAnimationName().startsWith('idle')) dad.dance();
+
+		_suffix = [
+			(curSection % 2 == 0 ? '-mb-g1' : '-mb-g2'),
+			(curSection % 3 == 0 ? '-g1' : (curSection % 3 == 1 ? '-g2' : '-g3'))
+		];
+	}
 }
 
 function setShaderFrameInfo(obj:String) {

@@ -1,7 +1,7 @@
 import psychlua.LuaUtils;
 import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxAxes;
-import hxvlc.flixel.FlxVideoSprite;
+import objects.VideoSprite;
 import openfl.display.BlendMode;
 
 final game = PlayState.instance;
@@ -11,29 +11,29 @@ var rgbShit:ErrorHandledRuntimeShader;
 var brightness:ErrorHandledRuntimeShader;
 
 var stars:FlxBackdrop;
-var introCutscene:FlxVideoSprite;
+var introCutscene:VideoSprite;
 var sanicBG:FlxVideoSprite;
 var videos:Array<FlxVideoSprite> = [];
 var spotlights:Array<FlxSprite> = [];
 function onCreate()
 {
 	camGame.alpha = 0; camHUD.alpha = 0;
-	introCutscene = new FlxVideoSprite();
-	introCutscene.load(Paths.video('Sanic Intro'));
-	introCutscene.bitmap.volume = 0;
-	introCutscene.bitmap.onFormatSetup.add(() -> { 
+	introCutscene = new VideoSprite();
+	introCutscene.loadVideo(Paths.video('Sanic Intro'), [VideoSprite.ARG_MUTED]);
+	introCutscene.camera = camVideo;
+	introCutscene.onFormat(() -> {
 		introCutscene.setGraphicSize(FlxG.width, FlxG.height);
 		introCutscene.screenCenter();
+		introCutscene.video.antialiasing = ClientPrefs.data.antialiasing;
 	});
-	introCutscene.camera = camVideo;
-	introCutscene.bitmap.onEndReached.add(() -> {camGame.alpha = 1; introCutscene.destroy();});
-	game.add(introCutscene);
+	introCutscene.onEnd(() -> {camGame.alpha = 1; introCutscene.destroy();});
+	introCutscene.playDelayed();
 	videos.push(introCutscene);
 
-	sanicBG = new FlxVideoSprite(null, -900, -800);
+	sanicBG = new FlxVideoSprite(null, -800, -600);
 	sanicBG.load(Paths.video('bg${FlxG.random.int(1,2)}'));
 	sanicBG.bitmap.onFormatSetup.add(() -> { 
-		sanicBG.scale.set(2, 2);
+		sanicBG.scale.set(1.5, 1.5);
 		sanicBG.updateHitbox();
 	});
 	sanicBG.bitmap.onEndReached.add(() -> {sanicBG.destroy();});
@@ -65,12 +65,7 @@ function onCreate()
 	brightness.setFloat('saturation', 1);
 	brightness.setFloat('brightness', 0);
 	brightness.setFloat('contrast', 1);
-	for (cam in [camGame, camHUD])
-	{
-		FilterPruner.add(cam, brightness, 'brightness', 0);
-		FilterPruner.add(cam, brightness, 'contrast', 1);
-		FilterPruner.add(cam, brightness, 'saturation', 1);
-	}
+	camGame.filters = [new ShaderFilter(brightness)]; camHUD.filters = [new ShaderFilter(brightness)];
 
 	//precache
 	preloadCharacter(1, 'sanicsad');

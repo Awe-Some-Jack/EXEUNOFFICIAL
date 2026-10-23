@@ -1,20 +1,49 @@
 {
 	"bio_appear": true,
 	"list_position": 35,
-	"display_name": "SONIC?",
-	"char_scale": 0.52,
-	"artist": "ErickAnimations",
-	"bio": "Sonic is the protagonist of his own franchise, and the main character for Lilith's cartoon. However, Lilith has returned as RE-RUN and she often times disturbs his world, even possessing him. He was going to be an opponent in the first song, afterwards getting possessed by RE-RUN. He would've appeared in the 3.5 update.",
-	"mod": "RERUN",
-	"icon_offset": [
-		696,
-		465
-	],
-	"char_offset": [
-		479.88,
-		240.28
-	],
-	"flip_x": false,
-	"char": "sonic",
-	"icon": "sonic"
+	"display_name": "RE-RUN",
+	"variants": [
+		{
+			"display_name": "RE-RUN",
+			"char": "rerun",
+			"char_scale": 0.36,
+			"char_offset": [
+				448,
+				121
+			],
+			"icon": "rerun-sonic",
+			"icon_offset": [
+				696,
+				465
+			],
+			"flip_x": false,
+			"mod": "RERUN",
+			"artist": "ErickAnimations",
+			"bio": "RE-RUN is the digital entity and vengeful spirit born from the intense rage, hatred, and sorrow that Lilith harbored after her unfair death. Following her passing, the television network released the animation anyway, and it became a massive financial success before being abruptly canceled to cover up any mention of Lilith's death. Driven by wrath, Lilith's soul returned to possess the original cartoon tapes. Fused with the virtual landscape, she became an omnipotent, god-like being within the cartoon world, utilizing her professional animation skills to effortlessly bend reality, manipulate video code, and intercept broadcasts to hunt down her victims.\n\nWhen manifesting as her main EXE entity, she takes the shape of a grotesque, distorted version of Sonic that stands at an imposing 10'5\" (3.17 meters). Her design features long, rubber hose limbs inspired by early 1930s animation styles. Her skin is a melting yellow color around a pitch-black, toothless mouth, paired with dark eyes containing tiny red pupils.\n\nRE-RUN orchestrates a series of mysterious deaths across the United States by physically crawling out of TV screens into the real world to execute those who mistreated her. However, exiting the digital realm comes with a heavy price: while she retains her immortality and stretchy cartoon anatomy in reality, her god-like reality-warping powers are severely nullified when she steps into the real world."
+		},
+		{
+			"display_name": "LILITH",
+			"char": "lili",
+			"char_scale": 0.5,
+			"char_offset": [
+				432,
+				199
+			],
+			"icon": "face",
+			"artist": "ErickAnimations",
+			"bio": "Lilith Eve Rose was a passionate 26-year-old animator and television director employed by WarnerMedia. She was the lead animator for an ambitious cartoon series meant to tie together the chronological releases of the Sonic the Hedgehog games. Her happy life was completely shattered when her husband, Thomas Miller, and their two young children, Sally and Zachery, were brutally murdered in a tragic crime. Plunged into a deep, severe depression, Lilith was unable to work at her usual pace. Instead of supporting her, her corporate superiors subjected her to a hostile work environment, imposing grueling time crunches, forcing her to overwork while sleep-deprived, and cutting the production's budget. Just as the project neared completion, the intense physical and mental strain caused Lilith to pass out and die from exhaustion.\n\nIn her human form, Lilith stands at an incredibly tall 8'0\" (2.43 meters). She has long blonde hair tied in a ponytail, eyes that were originally blue, and wears a dark blue shirt with brown pants. Her jacket features custom-made pins of Sonic the Hedgehog and Oswald the Lucky Rabbit. Despite the tragedy that corrupted her fate, she still retains pieces of her humanity: she refuses to commit needlessly inhumane acts, targets only those who actively wronged her in life, and holds onto a desperate hope to eventually move past her pain and reunite with her beloved family."
+		},
+		{
+			"display_name": "SONIC?",
+			"char": "sonic",
+			"char_scale": 0.52,
+			"char_offset": [
+				479.88,
+				240.28
+			],
+			"icon": "sonic",
+			"artist": "ErickAnimations",
+			"bio": "Sonic is the protagonist of his own franchise, and the main character for Lilith's cartoon. However, Lilith has returned as RE-RUN and she often times disturbs his world, even possessing him. He was going to be an opponent in the first song, afterwards getting possessed by RE-RUN. He would've appeared in the 3.5 update."
+		}
+	]
 }

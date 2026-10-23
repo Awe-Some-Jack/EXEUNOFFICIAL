@@ -1,0 +1,434 @@
+{
+	"TAILS DOLL|p2doll": {
+		"h": 861,
+		"w": 605,
+		"x": 1866,
+		"y": 1751,
+		"offX": -190,
+		"offY": 20
+	},
+	"CHAOTIX|faker_chaotix": {
+		"h": 86,
+		"w": 93,
+		"x": 1910,
+		"y": 5318,
+		"offX": 0,
+		"offY": 0
+	},
+	"STORY MODE|sonic.exe": {
+		"h": 508,
+		"w": 299,
+		"x": 0,
+		"y": 4808,
+		"offX": -38,
+		"offY": -207
+	},
+	"STORY MODE|eggman": {
+		"h": 493,
+		"w": 428,
+		"x": 1893,
+		"y": 4808,
+		"offX": 0,
+		"offY": 0
+	},
+	"LORD X|lord x podrido": {
+		"h": 714,
+		"w": 576,
+		"x": 3320,
+		"y": 2695,
+		"offX": 110,
+		"offY": -219
+	},
+	"CHAOTIX|beast_chaotix": {
+		"h": 74,
+		"w": 114,
+		"x": 2005,
+		"y": 5318,
+		"offX": 41,
+		"offY": 112
+	},
+	"SL4SH|sl4sh": {
+		"h": 111,
+		"w": 134,
+		"x": 1609,
+		"y": 5318,
+		"offX": 0,
+		"offY": 0
+	},
+	"HOG|hog": {
+		"h": 585,
+		"w": 399,
+		"x": 2226,
+		"y": 4188,
+		"offX": 0,
+		"offY": 0
+	},
+	"NEEDLEMOUSE|Sarah": {
+		"h": 1023,
+		"w": 628,
+		"x": 3301,
+		"y": 0,
+		"offX": 80,
+		"offY": 380
+	},
+	"DEVOID|devoid-reanimated": {
+		"h": 618,
+		"w": 489,
+		"x": 0,
+		"y": 4188,
+		"offX": 0,
+		"offY": 0
+	},
+	"SONICJAM|jamsonic": {
+		"h": 492,
+		"w": 358,
+		"x": 2323,
+		"y": 4808,
+		"offX": 0,
+		"offY": 0
+	},
+	"RERUN|sonic": {
+		"h": 620,
+		"w": 594,
+		"x": 3327,
+		"y": 3485,
+		"offX": 56,
+		"offY": -164
+	},
+	"EXE|exe": {
+		"h": 942,
+		"w": 531,
+		"x": 0,
+		"y": 1751,
+		"offX": 0,
+		"offY": 0
+	},
+	"CURSE|Curse happy": {
+		"h": 858,
+		"w": 459,
+		"x": 2473,
+		"y": 1751,
+		"offX": 42,
+		"offY": 4
+	},
+	"MAJIN|mazin": {
+		"h": 521,
+		"w": 504,
+		"x": 3684,
+		"y": 4188,
+		"offX": 0,
+		"offY": 0
+	},
+	"CRAZY TAILS|mania": {
+		"h": 567,
+		"w": 545,
+		"x": 2627,
+		"y": 4188,
+		"offX": 0,
+		"offY": 0
+	},
+	"FATAL|fatal-sonic": {
+		"h": 495,
+		"w": 792,
+		"x": 1099,
+		"y": 4808,
+		"offX": 0,
+		"offY": 0
+	},
+	"STORY MODE|LookALike": {
+		"h": 716,
+		"w": 445,
+		"x": 2873,
+		"y": 2695,
+		"offX": 0,
+		"offY": 0
+	},
+	"GRIEVING|griatos": {
+		"h": 1186,
+		"w": 1290,
+		"x": 2009,
+		"y": 0,
+		"offX": 0,
+		"offY": 0
+	},
+	"REQUITAL|requital-beast": {
+		"h": 804,
+		"w": 619,
+		"x": 4054,
+		"y": 1751,
+		"offX": 0,
+		"offY": 0
+	},
+	"NEEDLEMOUSE|luther": {
+		"h": 474,
+		"w": 382,
+		"x": 3397,
+		"y": 4808,
+		"offX": 0,
+		"offY": 0
+	},
+	"NEEDLEMOUSE|Needlemouse": {
+		"h": 862,
+		"w": 583,
+		"x": 1281,
+		"y": 1751,
+		"offX": 0,
+		"offY": 0
+	},
+	"MOVIE|movie_sonic": {
+		"h": 766,
+		"w": 422,
+		"x": 1297,
+		"y": 2695,
+		"offX": 0,
+		"offY": 0
+	},
+	"STORY MODE|BEAST": {
+		"h": 590,
+		"w": 368,
+		"x": 1385,
+		"y": 4188,
+		"offX": 0,
+		"offY": 0
+	},
+	"COLDSTEEL|coldsteel": {
+		"h": 867,
+		"w": 746,
+		"x": 533,
+		"y": 1751,
+		"offX": 0,
+		"offY": 0
+	},
+	"GRIEVING|demogri": {
+		"h": 590,
+		"w": 469,
+		"x": 1755,
+		"y": 4188,
+		"offX": 0,
+		"offY": 0
+	},
+	"HOG|scorched": {
+		"h": 1749,
+		"w": 1085,
+		"x": 0,
+		"y": 0,
+		"offX": 621,
+		"offY": 1048
+	},
+	"EXE|faker": {
+		"h": 970,
+		"w": 745,
+		"x": 3931,
+		"y": 0,
+		"offX": 110,
+		"offY": 144
+	},
+	"NORMALCD|metal": {
+		"h": 621,
+		"w": 619,
+		"x": 2706,
+		"y": 3485,
+		"offX": 0,
+		"offY": 0
+	},
+	"STORY MODE|knux": {
+		"h": 383,
+		"w": 239,
+		"x": 857,
+		"y": 5318,
+		"offX": 0,
+		"offY": 0
+	},
+	"RERUN|rerun": {
+		"h": 1261,
+		"w": 920,
+		"x": 1087,
+		"y": 0,
+		"offX": 137,
+		"offY": 463
+	},
+	"STORY MODE|sonic.exe 2": {
+		"h": 788,
+		"w": 577,
+		"x": 0,
+		"y": 2695,
+		"offX": 0,
+		"offY": 0
+	},
+	"LORD X|lordx": {
+		"h": 701,
+		"w": 554,
+		"x": 0,
+		"y": 3485,
+		"offX": -2,
+		"offY": 89
+	},
+	"SONICJAM|madjamsonic": {
+		"h": 619,
+		"w": 626,
+		"x": 3923,
+		"y": 3485,
+		"offX": 0,
+		"offY": 0
+	},
+	"STORY MODE|tails": {
+		"h": 595,
+		"w": 498,
+		"x": 885,
+		"y": 4188,
+		"offX": 0,
+		"offY": 0
+	},
+	"TRILOGY|bratwurst": {
+		"h": 657,
+		"w": 338,
+		"x": 1833,
+		"y": 3485,
+		"offX": 0,
+		"offY": 0
+	},
+	"LORD X|RedGlove": {
+		"h": 852,
+		"w": 1118,
+		"x": 2934,
+		"y": 1751,
+		"offX": 0,
+		"offY": 0
+	},
+	"SANIC|sanic": {
+		"h": 458,
+		"w": 485,
+		"x": 0,
+		"y": 5318,
+		"offX": 0,
+		"offY": 0
+	},
+	"SUNKY|sunky": {
+		"h": 459,
+		"w": 866,
+		"x": 3781,
+		"y": 4808,
+		"offX": 0,
+		"offY": 0
+	},
+	"EXETIOR|exetior": {
+		"h": 598,
+		"w": 392,
+		"x": 491,
+		"y": 4188,
+		"offX": 0,
+		"offY": 0
+	},
+	"MAJIN|majin": {
+		"h": 506,
+		"w": 447,
+		"x": 301,
+		"y": 4808,
+		"offX": 0,
+		"offY": 0
+	},
+	"SUNKY|sunkyclassic": {
+		"h": 747,
+		"w": 1150,
+		"x": 1721,
+		"y": 2695,
+		"offX": 0,
+		"offY": 0
+	},
+	"NORMALCD|normal": {
+		"h": 554,
+		"w": 508,
+		"x": 3174,
+		"y": 4188,
+		"offX": 0,
+		"offY": 0
+	},
+	"MONO|mono": {
+		"h": 442,
+		"w": 368,
+		"x": 487,
+		"y": 5318,
+		"offX": -76,
+		"offY": 27
+	},
+	"DSK|dsk": {
+		"h": 518,
+		"w": 486,
+		"x": 4190,
+		"y": 4188,
+		"offX": 574,
+		"offY": 311
+	},
+	"REQUITAL|requital": {
+		"h": 689,
+		"w": 554,
+		"x": 556,
+		"y": 3485,
+		"offX": 0,
+		"offY": 0
+	},
+	"FATAL|true-fatal": {
+		"h": 301,
+		"w": 509,
+		"x": 1098,
+		"y": 5318,
+		"offX": 0,
+		"offY": 0
+	},
+	"SUNKY|sunkympeg": {
+		"h": 476,
+		"w": 712,
+		"x": 2683,
+		"y": 4808,
+		"offX": 0,
+		"offY": 0
+	},
+	"TAILS DOLL|taildol": {
+		"h": 503,
+		"w": 347,
+		"x": 750,
+		"y": 4808,
+		"offX": 0,
+		"offY": 0
+	},
+	"RERUN|lili": {
+		"h": 769,
+		"w": 716,
+		"x": 579,
+		"y": 2695,
+		"offX": 400,
+		"offY": 422
+	},
+	"GRIEVING|griatos 2": {
+		"h": 702,
+		"w": 717,
+		"x": 3898,
+		"y": 2695,
+		"offX": 610,
+		"offY": 604
+	},
+	"LORD X|lord x p3largo": {
+		"h": 669,
+		"w": 719,
+		"x": 1112,
+		"y": 3485,
+		"offX": 110,
+		"offY": -219
+	},
+	"STARVED|furnace": {
+		"h": 99,
+		"w": 163,
+		"x": 1745,
+		"y": 5318,
+		"offX": 0,
+		"offY": 0
+	},
+	"FLEETWAY|fletway": {
+		"h": 633,
+		"w": 531,
+		"x": 2173,
+		"y": 3485,
+		"offX": 0,
+		"offY": 0
+	}
+}

@@ -231,8 +231,9 @@ class BIOS extends SonicSubState
 
 	function _loadIdleAtlas():Void
 	{
-		if (!BIOSCharacter.exists())
-			BIOSCharacter.generate(_collectModCharPairs());
+		final pairs = _collectModCharPairs();
+		if (!BIOSCharacter.upToDate(pairs))
+			BIOSCharacter.generate(pairs);
 
 		if (!BIOSCharacter.exists())
 			return;
@@ -283,9 +284,6 @@ class BIOS extends SonicSubState
 		icon.updateHitbox();
 		if (icon.getCharacter() == "face"){
 			icon.visible = false;
-		}else if (icon.getCharacter().contains("requital")){
-			//betterr
-			icon.replaceColor(0xFFFFFFFF, FlxColor.TRANSPARENT);
 		}
 		icon.x = circleIcon.x + ((circleIcon.width - icon.width)/2);
 		icon.y = circleIcon.y + ((circleIcon.height - icon.height)/2);
@@ -1003,11 +1001,10 @@ class BIOS extends SonicSubState
 		if (icon.getCharacter() == iconId) return;
 		try {
 			icon.changeIcon(iconId);
+			icon.visible = true;
 			if (icon.getCharacter() == "face"){
 				icon.visible = false;
-			}else if (icon.getCharacter().contains("requital")){
-				icon.replaceColor(0xFFFFFFFF, FlxColor.TRANSPARENT);
-			} 
+			}
 		}
 		catch (e:Dynamic) { trace('BIOS: failed to load icon "$iconId": $e'); }
 	}

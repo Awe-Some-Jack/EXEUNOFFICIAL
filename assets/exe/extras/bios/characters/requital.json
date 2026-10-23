@@ -16,7 +16,7 @@
 				464
 			],
 			"icon_scale": 0.44,
-			"icon": "requital",
+			"icon": "requital-bios",
 			"flip_x": true,
 			"mod": "REQUITAL",
 			"artist": "CommandoDev",
@@ -33,7 +33,7 @@
 				786,
 				430
 			],
-			"icon": "requital-beast"
+			"icon": "requital-beast-bios"
 		}
 	]
 }

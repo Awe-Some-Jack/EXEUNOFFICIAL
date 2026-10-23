@@ -24,6 +24,19 @@ class BIOSCharacter
 	public static inline function atlasJson():String
 		return atlasDir() + 'idle_atlas.json';
 
+	public static inline function atlasKeys():String
+		return atlasDir() + 'idle_atlas.keys';
+
+	public static function keysOf(pairs:Array<{mod:String, charId:String}>):String
+	{
+		final keys = [for (p in pairs) '${p.mod}|${p.charId}'];
+		keys.sort((a, b) -> a < b ? -1 : (a > b ? 1 : 0));
+		return keys.join('\n');
+	}
+
+	public static function upToDate(pairs:Array<{mod:String, charId:String}>):Bool
+		return exists() && FileSystem.exists(atlasKeys()) && File.getContent(atlasKeys()) == keysOf(pairs);
+
 	static inline function atlasDir():String
 		return #if mobile MobileUtil.getAssetDirectory() + #end 'assets/exe/extras/bios/';
 
@@ -151,6 +164,7 @@ class BIOSCharacter
 		final bytes = atlas.encode(atlas.rect, new PNGEncoderOptions());
 		File.saveBytes(atlasPng(), bytes);
 		File.saveContent(atlasJson(), Json.stringify(manifest, null, '\t'));
+		File.saveContent(atlasKeys(), keysOf(pairs));
 		atlas.dispose();
 	}
 }

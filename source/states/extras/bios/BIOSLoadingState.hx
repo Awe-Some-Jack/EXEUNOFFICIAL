@@ -72,17 +72,17 @@ class BIOSLoadingState extends SonicSubState
 		loadingTxt.setFormat(Paths.font("visitor1.ttf"), 40, FlxColor.WHITE, LEFT);
 		add(loadingTxt);
 
-		if (BIOSCharacter.exists())
+		var tempBios = new BIOS();
+		@:privateAccess
+		tempBios.loadEntries();
+		pairsToProcess = Reflect.callMethod(tempBios, Reflect.field(tempBios, "_collectModCharPairs"), []);
+
+		if (BIOSCharacter.upToDate(pairsToProcess))
 		{
 			isDone = true;
 		}
 		else
 		{
-			var tempBios = new BIOS();
-			@:privateAccess
-			tempBios.loadEntries();
-
-			pairsToProcess = Reflect.callMethod(tempBios, Reflect.field(tempBios, "_collectModCharPairs"), []);
 			totalPairs = pairsToProcess.length;
 
 			if (totalPairs > 0)
@@ -140,8 +140,13 @@ class BIOSLoadingState extends SonicSubState
 				catch (e:Dynamic) {}
 
 				currentIndex++;
-				
+
 				simulatedProgress = currentIndex / totalPairs;
+				loadingTxt.text = 'Loading... $currentIndex/$totalPairs';
+			}
+			else if (loadingTxt.text != 'Saving...')
+			{
+				loadingTxt.text = 'Saving...';
 			}
 			else
 			{
@@ -216,6 +221,7 @@ class BIOSLoadingState extends SonicSubState
 		final bytes = atlas.encode(atlas.rect, new PNGEncoderOptions());
 		File.saveBytes(BIOSCharacter.atlasPng(), bytes);
 		File.saveContent(BIOSCharacter.atlasJson(), Json.stringify(manifest, null, '\t'));
+		File.saveContent(BIOSCharacter.atlasKeys(), BIOSCharacter.keysOf(pairsToProcess));
 		atlas.dispose();
 	}
 }

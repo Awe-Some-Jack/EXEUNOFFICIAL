@@ -189,7 +189,7 @@ class Main extends Sprite
 
 		FlxG.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (e) ->
 		{
-			if (e.keyCode == FlxKey.F11) FlxG.fullscreen = !FlxG.fullscreen;
+			if (e.keyCode == FlxKey.F11 && !states.PlayState.isFixedAspectRatio) FlxG.fullscreen = !FlxG.fullscreen;
 			if (e.keyCode == FlxKey.ENTER && e.altKey) e.stopImmediatePropagation();
 		}, false, 100);
 

@@ -408,6 +408,7 @@ class PlayState extends MusicBeatState
 			final screenHeight = screen.bounds.height;
 			
 			FlxG.fullscreen = false;
+			FlxG.stage.window.maximized = false;
 			FlxG.stage.window.resizable = false;
 			
 			FlxG.scaleMode = new flixel.system.scaleModes.FixedRatioScaleMode(960, 720);
@@ -2239,10 +2240,16 @@ class PlayState extends MusicBeatState
 		{
 			FlxG.fullscreen = false;
 		}
-		else if (isFixedAspectRatio && !FlxG.stage.window.minimized && !FlxG.stage.window.maximized
+		else if (isFixedAspectRatio && FlxG.stage.window.maximized)
+		{
+			FlxG.stage.window.maximized = false;
+		}
+		else if (isFixedAspectRatio && !FlxG.stage.window.minimized
 			&& (FlxG.stage.window.width != 960 || FlxG.stage.window.height != 720))
 		{
 			FlxG.resizeWindow(960, 720);
+			final bounds = FlxG.stage.window.display.bounds;
+			FlxG.stage.window.move(Std.int(bounds.x + (bounds.width - 960) / 2), Std.int(bounds.y + (bounds.height - 720) / 2));
 		}
 
 		if (isLetterboxedAspectRatio)

@@ -279,6 +279,18 @@ class PlayState extends MusicBeatState
 	public static var seenCutscene:Bool = false;
 	public static var firstPlay:Bool = false;
 	public static var deathCounter:SecureInt = 0;
+	public static var sunkyHelp:Bool = false;
+	static var sunkySong:String = null;
+	static var sunkyDeaths:Int = 0;
+	static var sunkyAskedAt:Int = 0;
+
+	public static function resetSunkyHelp():Void
+	{
+		sunkyDeaths = 0;
+		sunkyAskedAt = 0;
+		sunkyHelp = false;
+		sunkySong = null;
+	}
 
 	public var defaultCamZoom:Float = 1.05;
 	public var defaultCamHUD:Float = 1; //For substantial tehehe...
@@ -628,7 +640,14 @@ class PlayState extends MusicBeatState
 		healthLoss = ClientPrefs.getGameplaySetting('healthloss');
 		instakillOnMiss = ClientPrefs.getGameplaySetting('instakill');
 		practiceMode = ClientPrefs.getGameplaySetting('practice');
-		cpuControlled = ClientPrefs.getGameplaySetting('botplay');
+		if (sunkySong != Paths.formatToSongPath(SONG.song))
+		{
+			sunkySong = Paths.formatToSongPath(SONG.song);
+			sunkyDeaths = 0;
+			sunkyAskedAt = 0;
+			sunkyHelp = false;
+		}
+		cpuControlled = ClientPrefs.getGameplaySetting('botplay') || sunkyHelp;
 		guitarHeroSustains = ClientPrefs.data.guitarHeroSustains;
 
 		songName = Paths.formatToSongPath(SONG.song);
@@ -950,7 +969,13 @@ class PlayState extends MusicBeatState
 			eventNotes.sort(sortByTime);
 		}
 
-		startCallback();
+		if (sunkyDeaths > 0 && sunkyDeaths % 5 == 0 && sunkyAskedAt != sunkyDeaths && !cpuControlled && !chartingMode
+			&& (!isFixedAspectRatio || hasRestarted))
+		{
+			sunkyAskedAt = sunkyDeaths;
+			sunkyPending = true;
+		}
+		else startCallback();
 		RecalculateRating(false, false);
 
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
@@ -2199,8 +2224,24 @@ class PlayState extends MusicBeatState
 	private final _spawnArgs:Array<Dynamic> = [0, 0, '', false, 0.0];
 	private final _keyArgs:Array<Dynamic>   = [0];
 
+	var sunkyPending:Bool = false;
+	function openSunkyOffer():Void
+	{
+		sunkyPending = false;
+		openSubState(new states.substates.SunkySubstate(accepted -> {
+			if (accepted)
+			{
+				sunkyHelp = true;
+				cpuControlled = true;
+				sunkyBot.text.visible = true;
+			}
+			startCallback();
+		}));
+	}
+
 	override public function update(elapsed:Float)
 	{
+		if (sunkyPending && subState == null) openSunkyOffer();
 		syncMobileComboOffset();
 		#if mobile
 		updateSpaceHitbox();
@@ -2713,6 +2754,7 @@ class PlayState extends MusicBeatState
 				FlxG.timeScale = 1;
 				boyfriend.stunned = true;
 				deathCounter++;
+				sunkyDeaths++;
 
 				paused = true;
 				canResync = false;
@@ -3120,7 +3162,7 @@ class PlayState extends MusicBeatState
 	public function endSong()
 	{
 		// Scripts Anticheat shit uuu ;p
-		if (!Main.DEVELOPMENT_BUILD && !chartingMode && sunkyBot.wasActivated) FlxG.resetState();
+		if (!Main.DEVELOPMENT_BUILD && !chartingMode && sunkyBot.wasActivated && !sunkyHelp) FlxG.resetState();
 
 		if(!startingSong)
 		{
@@ -3147,6 +3189,7 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 
 		deathCounter = 0;
+		resetSunkyHelp();
 		seenCutscene = false;
 		firstPlay = false;
 		hasRestarted = false;

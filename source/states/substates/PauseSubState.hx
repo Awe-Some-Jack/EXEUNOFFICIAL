@@ -366,6 +366,7 @@ class PauseSubState extends MusicBeatSubstate
 					}
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 					PlayState.deathCounter    = 0;
+					PlayState.resetSunkyHelp();
 					PlayState.seenCutscene    = false;
 					PlayState.firstPlay       = false;
 					if (PlayState.instance != null) PlayState.instance.canResync = false;

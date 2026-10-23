@@ -132,6 +132,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				FlxG.camera.visible = false;
 				FlxG.sound.music.stop();
 				PlayState.deathCounter = 0;
+				PlayState.resetSunkyHelp();
 				PlayState.seenCutscene = false;
 				PlayState.firstPlay = false;
 				PlayState.chartingMode = false;

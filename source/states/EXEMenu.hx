@@ -61,6 +61,9 @@ class EXEMenu extends MusicBeatState
 	var menuHitboxes:Array<FlxSprite> = [];
 	var _cjkYOffset:Float = 0;
 	var shadowSprite:FlxSprite;
+	var menuLogo:FlxSprite;
+	var logoBaseOffset:Float = 0;
+	var logoTime:Float = 0;
 	var previousSelectedIndex:Int = 2;
 	var isMovingUpward:Bool = false;
 	var canInteract:Bool = true;
@@ -106,6 +109,17 @@ class EXEMenu extends MusicBeatState
 		menuVideo.isStateAffected = false;
 		add(menuVideo);
 		#end
+
+		menuLogo = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/mainmenu/logo.png'));
+		menuLogo.scale.set(0.4, 0.4);
+		menuLogo.updateHitbox();
+		menuLogo.antialiasing = ClientPrefs.data.antialiasing;
+		logoBaseOffset = menuLogo.offset.y;
+		final logoY:Float = 16;
+		menuLogo.setPosition(24, logoY - 40);
+		menuLogo.alpha = 0;
+		FlxTween.tween(menuLogo, {y: logoY, alpha: 1}, 0.9, {ease: FlxEase.quintOut, startDelay: 0.2});
+		add(menuLogo);
 
 		shadowSprite = new FlxSprite();
 		shadowSprite.loadGraphic(Paths.getBitmapData("assets/exe/mainmenu/options/shadow.webp"));
@@ -304,6 +318,8 @@ class EXEMenu extends MusicBeatState
 	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		logoTime += elapsed;
+		menuLogo.offset.y = logoBaseOffset + Math.sin(logoTime * 1.3) * 8;
 		if (subState != null) return;
 
 		if (_fatalTimer > 0 && canInteract)

@@ -5,6 +5,7 @@ import flixel.text.FlxText;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.FlxCamera;
+import backend.Language;
 
 var whiteBG:FlxSprite;
 var deadBoyfriend:Character;
@@ -102,8 +103,8 @@ function makeSubtitle(daLine:String):Void
 		"7" => "Get the FUCK out or I'm going to shoot Amy in the FUCKING face! I swear to god! I'll do *Laughs* it you bitch! *Laughs harder* GET OUT!"
 	];
 
-	subtitle = new FlxText(0, Std.int(FlxG.height * 0.8), Std.int(FlxG.width * 0.75), subtitles.get(daLine));
-	subtitle.setFormat(Paths.font("vcr.ttf"), 25, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+	subtitle = new FlxText(0, Std.int(FlxG.height * 0.8), Std.int(FlxG.width * 0.75), Language.getPhrase('found_you_death_' + daLine, subtitles.get(daLine)));
+	subtitle.setFormat(Paths.font(Language.getPhrase('found_you_death_font', 'vcr.ttf')), 25, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 	subtitle.borderSize = 2;
 	subtitle.camera = gameOverHUD;
 	subtitle.screenCenter(0x01);

@@ -121,5 +121,18 @@
 	"gamejolt.status.synced": "同步完成！",
 	"gamejolt.status.empty": "请输入用户名和令牌",
 	"gamejolt.status.connecting": "连接中...",
-	"gamejolt.status.failed": "登录失败 — 请检查用户名或令牌"
+	"gamejolt.status.failed": "登录失败 — 请检查用户名或令牌",
+	"valley_skull_1": "我得叫醒BF，但该怎么做呢？",
+	"valley_skull_2": "看来我得去找其他部件了……",
+	"valley_gary1_1": "你的朋友可不只是睡着了，姑娘。",
+	"valley_gary1_2": "不管是什么让他变成这样……",
+	"valley_gary1_3": "*它*很清楚自己在做什么。",
+	"valley_gary2_1": "一个模仿人人都爱之物的冒牌货，",
+	"valley_gary2_2": "像到足以骗过你，",
+	"valley_gary2_3": "怪到足以缠着你不放。",
+	"valley_gary3_1": "你能让我把话说完吗？",
+	"valley_gary3_2": "*清嗓子*",
+	"valley_gary4_1": "没别的了，",
+	"valley_gary4_2": "现在快滚。",
+	"valley_subtitle_font": "chinese.ttf"
 }

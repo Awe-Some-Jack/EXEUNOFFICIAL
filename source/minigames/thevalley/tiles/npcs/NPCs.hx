@@ -214,7 +214,7 @@ class GaryNPC extends DeadNPC
 		if (line != _line)
 		{
 			_line = line;
-			if (line >= 0) _subs.say(CLIPS[_clip].lines[line].text, 0.045);
+			if (line >= 0) _subs.say(Language.getPhrase('valley_gary${_clip + 1}_${line + 1}', CLIPS[_clip].lines[line].text), 0.045);
 			else _subs.clear();
 		}
 

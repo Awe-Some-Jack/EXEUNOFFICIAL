@@ -122,5 +122,18 @@
 	"gamejolt.status.synced": "SYNCED!",
 	"gamejolt.status.empty": "ÍRD BE A FELHASZNÁLÓNEVED ÉS TOKENED",
 	"gamejolt.status.connecting": "CSATLAKOZÁS...",
-	"gamejolt.status.failed": "BELÉPÉS SIKERTELEN — ELLENŐRIZD A FELHASZNÁLÓNEVET/TOKENT"
+	"gamejolt.status.failed": "BELÉPÉS SIKERTELEN — ELLENŐRIZD A FELHASZNÁLÓNEVET/TOKENT",
+	"valley_skull_1": "Fel kell ébresztenem BF-et, de hogyan?",
+	"valley_skull_2": "Azt hiszem, meg kell találnom a többi részt...",
+	"valley_gary1_1": "A barátod nem csak alszik, kislány.",
+	"valley_gary1_2": "Bármi is altatta el.....",
+	"valley_gary1_3": "*az* tudta, mit csinál.",
+	"valley_gary2_1": "Valami utánzata, amit mindenki szeret,",
+	"valley_gary2_2": "elég hasonló ahhoz, hogy átverjen,",
+	"valley_gary2_3": "elég rossz ahhoz, hogy kísértsen.",
+	"valley_gary3_1": "Hagysz befejezni?",
+	"valley_gary3_2": "*megköszörüli a torkát*",
+	"valley_gary4_1": "Nincs több mondanivalóm,",
+	"valley_gary4_2": "most tűnés.",
+	"valley_subtitle_font": "ari-w9500-bold.ttf"
 }

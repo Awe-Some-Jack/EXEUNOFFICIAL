@@ -121,5 +121,17 @@
 	"gamejolt.status.synced": "¡SINCRONIZADO!",
 	"gamejolt.status.empty": "INGRESA USUARIO Y TOKEN",
 	"gamejolt.status.connecting": "CONECTANDO...",
-	"gamejolt.status.failed": "ERROR DE INICIO — VERIFICA USUARIO/TOKEN"
+	"gamejolt.status.failed": "ERROR DE INICIO — VERIFICA USUARIO/TOKEN",
+	"valley_skull_1": "Tengo que despertar a BF, ¿pero cómo?",
+	"valley_skull_2": "Supongo que tendré que encontrar las otras partes...",
+	"valley_gary1_1": "Tu amigo no solo está dormido, niña.",
+	"valley_gary1_2": "Lo que sea que lo haya dejado así.....",
+	"valley_gary1_3": "*eso* sabía lo que hacía.",
+	"valley_gary2_1": "Una imitación de algo que todos aman,",
+	"valley_gary2_2": "lo bastante parecida para engañarte,",
+	"valley_gary2_3": "lo bastante extraña para atormentarte.",
+	"valley_gary3_1": "¿Me vas a dejar terminar?",
+	"valley_gary3_2": "*se aclara la garganta*",
+	"valley_gary4_1": "No hay nada más que decir,",
+	"valley_gary4_2": "ahora lárgate."
 }

@@ -121,5 +121,18 @@
 	"gamejolt.status.synced": "EŞİTLENDİ!",
 	"gamejolt.status.empty": "KULLANICI ADI VE JETON GİR",
 	"gamejolt.status.connecting": "BAĞLANILIYOR...",
-	"gamejolt.status.failed": "GİRİŞ BAŞARISIZ — KULLANICI ADINI/JETONU KONTROL ET"
+	"gamejolt.status.failed": "GİRİŞ BAŞARISIZ — KULLANICI ADINI/JETONU KONTROL ET",
+	"valley_skull_1": "BF'i uyandırmam lazım ama nasıl?",
+	"valley_skull_2": "Sanırım diğer parçaları bulmam gerekecek...",
+	"valley_gary1_1": "Arkadaşın sadece uyumuyor, kızım.",
+	"valley_gary1_2": "Onu bu hale her ne getirdiyse.....",
+	"valley_gary1_3": "*o* ne yaptığını biliyordu.",
+	"valley_gary2_1": "Herkesin sevdiği bir şeyin taklidi,",
+	"valley_gary2_2": "seni kandıracak kadar benzer,",
+	"valley_gary2_3": "sana musallat olacak kadar yanlış.",
+	"valley_gary3_1": "Sözümü bitirmeme izin verecek misin?",
+	"valley_gary3_2": "*boğazını temizler*",
+	"valley_gary4_1": "Başka bir şey yok,",
+	"valley_gary4_2": "şimdi defol.",
+	"valley_subtitle_font": "SonicFont.ttf"
 }

@@ -121,5 +121,17 @@
 	"gamejolt.status.synced": "SINCRONIZZATO!",
 	"gamejolt.status.empty": "INSERISCI UTENTE E TOKEN",
 	"gamejolt.status.connecting": "CONNESSIONE...",
-	"gamejolt.status.failed": "ACCESSO FALLITO — CONTROLLA UTENTE/TOKEN"
+	"gamejolt.status.failed": "ACCESSO FALLITO — CONTROLLA UTENTE/TOKEN",
+	"valley_skull_1": "Devo svegliare BF, ma come?",
+	"valley_skull_2": "Credo che dovrò trovare le altre parti...",
+	"valley_gary1_1": "Il tuo amico non sta solo dormendo, ragazza.",
+	"valley_gary1_2": "Qualunque cosa l'abbia ridotto così.....",
+	"valley_gary1_3": "*quella cosa* sapeva cosa stava facendo.",
+	"valley_gary2_1": "Un'imitazione di qualcosa che tutti amano,",
+	"valley_gary2_2": "abbastanza simile da ingannarti,",
+	"valley_gary2_3": "abbastanza sbagliata da perseguitarti.",
+	"valley_gary3_1": "Mi lasci finire?",
+	"valley_gary3_2": "*si schiarisce la gola*",
+	"valley_gary4_1": "Non c'è altro da dire,",
+	"valley_gary4_2": "ora sparisci."
 }

@@ -34,6 +34,8 @@ class Subtitles
 		_bar = _addBar(state, cam);
 
 		_text = new FlxText(0, 0, FlxG.width, "", 18);
+		final langFont = Language.getPhrase("valley_subtitle_font", "");
+		if (langFont.length > 0) font = Paths.font(langFont);
 		if (font != null) _text.font = font;
 		_text.color = FlxColor.WHITE;
 		_text.setBorderStyle(FlxTextBorderStyle.SHADOW, FlxColor.BLACK, 3);

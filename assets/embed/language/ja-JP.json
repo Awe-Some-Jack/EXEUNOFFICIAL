@@ -121,5 +121,18 @@
 	"gamejolt.status.synced": "同期完了！",
 	"gamejolt.status.empty": "ユーザー名とトークンを入力してください",
 	"gamejolt.status.connecting": "接続中...",
-	"gamejolt.status.failed": "ログイン失敗 — ユーザー名/トークンを確認してください"
+	"gamejolt.status.failed": "ログイン失敗 — ユーザー名/トークンを確認してください",
+	"valley_skull_1": "BFを起こさなきゃ、でもどうやって？",
+	"valley_skull_2": "他のパーツを探すしかないみたい…",
+	"valley_gary1_1": "お嬢ちゃん、あんたの友達はただ眠ってるだけじゃない。",
+	"valley_gary1_2": "あいつをこうした何かは…",
+	"valley_gary1_3": "*そいつ*は自分が何をしてるか分かってた。",
+	"valley_gary2_1": "誰もが愛するものの偽物さ、",
+	"valley_gary2_2": "騙せるくらいには似ていて、",
+	"valley_gary2_3": "取り憑くくらいには歪んでる。",
+	"valley_gary3_1": "最後まで言わせてくれるか？",
+	"valley_gary3_2": "*咳払い*",
+	"valley_gary4_1": "話はそれだけだ、",
+	"valley_gary4_2": "さっさと失せな。",
+	"valley_subtitle_font": "japanese.ttf"
 }

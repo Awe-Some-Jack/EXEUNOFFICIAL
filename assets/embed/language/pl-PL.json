@@ -121,5 +121,18 @@
 	"gamejolt.status.synced": "ZSYNCHRONIZOWANO!",
 	"gamejolt.status.empty": "WPROWADŹ NAZWĘ I TOKEN",
 	"gamejolt.status.connecting": "ŁĄCZENIE...",
-	"gamejolt.status.failed": "BŁĄD LOGOWANIA — SPRAWDŹ NAZWĘ/TOKEN"
+	"gamejolt.status.failed": "BŁĄD LOGOWANIA — SPRAWDŹ NAZWĘ/TOKEN",
+	"valley_skull_1": "Muszę obudzić BF, ale jak?",
+	"valley_skull_2": "Chyba będę musiała znaleźć pozostałe części...",
+	"valley_gary1_1": "Twój przyjaciel nie tylko śpi, dziewczyno.",
+	"valley_gary1_2": "Cokolwiek go w to wpędziło.....",
+	"valley_gary1_3": "*to* wiedziało, co robi.",
+	"valley_gary2_1": "Imitacja czegoś, co wszyscy kochają,",
+	"valley_gary2_2": "na tyle podobna, by cię oszukać,",
+	"valley_gary2_3": "na tyle zła, by cię prześladować.",
+	"valley_gary3_1": "Dasz mi skończyć?",
+	"valley_gary3_2": "*odchrząkuje*",
+	"valley_gary4_1": "Nic więcej do dodania,",
+	"valley_gary4_2": "a teraz spadaj.",
+	"valley_subtitle_font": "ari-w9500-bold.ttf"
 }

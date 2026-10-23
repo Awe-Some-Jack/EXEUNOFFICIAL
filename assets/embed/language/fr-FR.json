@@ -121,5 +121,17 @@
 	"gamejolt.status.synced": "SYNCHRONISÉ !",
 	"gamejolt.status.empty": "ENTREZ L'UTILISATEUR ET LE JETON",
 	"gamejolt.status.connecting": "CONNEXION...",
-	"gamejolt.status.failed": "ÉCHEC DE CONNEXION — VÉRIFIEZ L'UTILISATEUR/JETON"
+	"gamejolt.status.failed": "ÉCHEC DE CONNEXION — VÉRIFIEZ L'UTILISATEUR/JETON",
+	"valley_skull_1": "Je dois réveiller BF, mais comment ?",
+	"valley_skull_2": "Je suppose que je vais devoir trouver les autres morceaux...",
+	"valley_gary1_1": "Ton ami n'est pas juste endormi, petite.",
+	"valley_gary1_2": "Ce qui l'a plongé là-dedans.....",
+	"valley_gary1_3": "*ça* savait ce que ça faisait.",
+	"valley_gary2_1": "Une imitation de quelque chose que tout le monde aime,",
+	"valley_gary2_2": "assez proche pour te tromper,",
+	"valley_gary2_3": "assez fausse pour te hanter.",
+	"valley_gary3_1": "Tu vas me laisser finir ?",
+	"valley_gary3_2": "*se racle la gorge*",
+	"valley_gary4_1": "Il n'y a rien de plus,",
+	"valley_gary4_2": "maintenant dégage."
 }

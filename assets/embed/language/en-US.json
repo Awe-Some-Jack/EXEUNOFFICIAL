@@ -122,5 +122,17 @@
 	"gamejolt.status.synced": "SYNCED!",
 	"gamejolt.status.empty": "ENTER USERNAME AND TOKEN",
 	"gamejolt.status.connecting": "CONNECTING...",
-	"gamejolt.status.failed": "LOGIN FAILED — CHECK USERNAME/TOKEN"
+	"gamejolt.status.failed": "LOGIN FAILED — CHECK USERNAME/TOKEN",
+	"valley_skull_1": "I have to wake up BF but how?",
+	"valley_skull_2": "I guess i'll have to find the other parts...",
+	"valley_gary1_1": "Your friend isn't just asleep, girl.",
+	"valley_gary1_2": "Whatever put him under.....",
+	"valley_gary1_3": "*it* knew what it was doing.",
+	"valley_gary2_1": "An impersonation of something everybody loves,",
+	"valley_gary2_2": "but close enough to fool you,",
+	"valley_gary2_3": "wrong enough to haunt you.",
+	"valley_gary3_1": "Are you going to let me finish?",
+	"valley_gary3_2": "*clears throat*",
+	"valley_gary4_1": "There's no more to it,",
+	"valley_gary4_2": "now scram."
 }

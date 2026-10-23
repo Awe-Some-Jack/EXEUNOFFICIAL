@@ -122,5 +122,17 @@
 	"gamejolt.status.synced": "SYNCHRONISIERT!",
 	"gamejolt.status.empty": "BENUTZERNAME UND TOKEN EINGEBEN",
 	"gamejolt.status.connecting": "VERBINDEN...",
-	"gamejolt.status.failed": "ANMELDUNG FEHLGESCHLAGEN — BENUTZER/TOKEN PRÜFEN"
+	"gamejolt.status.failed": "ANMELDUNG FEHLGESCHLAGEN — BENUTZER/TOKEN PRÜFEN",
+	"valley_skull_1": "Ich muss BF aufwecken, aber wie?",
+	"valley_skull_2": "Ich schätze, ich muss die anderen Teile finden...",
+	"valley_gary1_1": "Dein Freund schläft nicht einfach nur, Mädchen.",
+	"valley_gary1_2": "Was auch immer ihn so zugerichtet hat.....",
+	"valley_gary1_3": "*es* wusste genau, was es tat.",
+	"valley_gary2_1": "Eine Nachahmung von etwas, das alle lieben,",
+	"valley_gary2_2": "ähnlich genug, um dich zu täuschen,",
+	"valley_gary2_3": "falsch genug, um dich heimzusuchen.",
+	"valley_gary3_1": "Lässt du mich ausreden?",
+	"valley_gary3_2": "*räuspert sich*",
+	"valley_gary4_1": "Mehr gibt es nicht zu sagen,",
+	"valley_gary4_2": "jetzt verschwinde."
 }

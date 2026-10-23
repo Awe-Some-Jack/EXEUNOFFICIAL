@@ -122,5 +122,18 @@
 	"gamejolt.status.synced": "SINXRONLANDI!",
 	"gamejolt.status.empty": "FOYDALANUVCHI NOMI VA TOKENNI KIRITING",
 	"gamejolt.status.connecting": "ULANMOQDA...",
-	"gamejolt.status.failed": "KIRISHDA XATOLIK — NOMI YOKI TOKENNI TEKSHIRING"
+	"gamejolt.status.failed": "KIRISHDA XATOLIK — NOMI YOKI TOKENNI TEKSHIRING",
+	"valley_skull_1": "BFni uyg‘otishim kerak, lekin qanday qilib?",
+	"valley_skull_2": "Menimcha, qolgan qismlarni topishim kerak...",
+	"valley_gary1_1": "Do‘sting shunchaki uxlamayapti, qizim.",
+	"valley_gary1_2": "Uni bu holga nima solgan bo‘lsa ham.....",
+	"valley_gary1_3": "*u* nima qilayotganini bilardi.",
+	"valley_gary2_1": "Hamma yaxshi ko‘radigan narsaning taqlidi,",
+	"valley_gary2_2": "seni aldash uchun yetarlicha o‘xshash,",
+	"valley_gary2_3": "seni ta'qib qilish uchun yetarlicha noto‘g‘ri.",
+	"valley_gary3_1": "Gapimni tugatishimga qo‘yasanmi?",
+	"valley_gary3_2": "*tomog‘ini qirib qo‘yadi*",
+	"valley_gary4_1": "Boshqa aytadigan gap yo‘q,",
+	"valley_gary4_2": "endi yo‘qol.",
+	"valley_subtitle_font": "SonicFont.ttf"
 }

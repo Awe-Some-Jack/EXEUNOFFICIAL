@@ -121,5 +121,18 @@
 	"gamejolt.status.synced": "동기화 완료!",
 	"gamejolt.status.empty": "사용자 이름과 토큰을 입력하세요",
 	"gamejolt.status.connecting": "연결 중...",
-	"gamejolt.status.failed": "로그인 실패 — 사용자 이름/토큰 확인"
+	"gamejolt.status.failed": "로그인 실패 — 사용자 이름/토큰 확인",
+	"valley_skull_1": "BF를 깨워야 하는데, 어떻게 하지?",
+	"valley_skull_2": "다른 부품들을 찾아야 할 것 같아...",
+	"valley_gary1_1": "네 친구는 그냥 잠든 게 아니야, 꼬마 아가씨.",
+	"valley_gary1_2": "그를 그렇게 만든 게 뭐든.....",
+	"valley_gary1_3": "*그것*은 자기가 뭘 하는지 알고 있었어.",
+	"valley_gary2_1": "모두가 사랑하는 무언가의 모조품,",
+	"valley_gary2_2": "널 속일 만큼 비슷하고,",
+	"valley_gary2_3": "널 괴롭힐 만큼 어긋나 있지.",
+	"valley_gary3_1": "말 좀 끝까지 하게 해 줄래?",
+	"valley_gary3_2": "*헛기침*",
+	"valley_gary4_1": "더 할 말은 없어,",
+	"valley_gary4_2": "이제 꺼져.",
+	"valley_subtitle_font": "korean.ttf"
 }

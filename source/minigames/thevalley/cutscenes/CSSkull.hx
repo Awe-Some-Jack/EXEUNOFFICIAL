@@ -126,7 +126,7 @@ class CSSkull
 			if (line != _lineShown)
 			{
 				_lineShown = line;
-				_subs.say(LINE_VARIANTS[_lineVariant][line]);
+				_subs.say(Language.getPhrase('valley_skull_${line + 1}', LINE_VARIANTS[_lineVariant][line]));
 			}
 		}
 

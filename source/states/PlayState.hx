@@ -3314,9 +3314,10 @@ class PlayState extends MusicBeatState
 		{
 			exitToMenu();
 
-			if (formattedSong == 'personel')
+			if (formattedSong == 'personel' && FlxG.save.data.burningCutsceneDone != true && FlxG.save.data.burningWon != true)
 			{
 				FlxG.save.data.burningBot = true;
+				FlxG.save.data.burningCutsceneDone = true;
 				FlxG.save.flush();
 				haxe.Timer.delay(() -> Application.current.window.close(), 3000);
 			}

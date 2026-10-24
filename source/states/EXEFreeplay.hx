@@ -106,7 +106,6 @@ class EXEFreeplay extends MusicBeatState
 	var stopMusicPlay:Bool = false;
 	
 	var holdCheck:Float = 0;
-	public static var inDevMode:Bool = false;
 
 	public static var maniaUnlock:Bool = false;
 
@@ -121,15 +120,10 @@ class EXEFreeplay extends MusicBeatState
 		Mods.loadTopMod();
 		WeekData.reloadWeekFiles(false);
 
-		if (backend.BurningBot.active)
-		{
-			inDevMode = true;
-			backend.BurningBot.resetFreeplayState();
-		}
+		if (backend.BurningBot.active) backend.BurningBot.resetFreeplayState();
 
 		buildSongList();
 
-		//Desactiva esto para usar el desbloqueo de Mania! - Uncomment this to use Mania's Unlock!
 		if (maniaUnlock && FlxG.save.data.unlockManiaOnce == null) new FlxTimer().start(0.6, (_) -> maniaNotif());
 
 		covers = new FlxTypedGroup<FlxSprite>();
@@ -306,7 +300,7 @@ class EXEFreeplay extends MusicBeatState
 
 				final songPath:String = Paths.formatToSongPath(sName);
 				if (songPath == 'stardust-speedway' && Mods.currentModDirectory == 'STARVED') continue;
-				if (unlocked.indexOf(songPath) == -1 && !inDevMode) continue;
+				if (unlocked.indexOf(songPath) == -1 && (backend.BurningBot.active && songPath != 'burning')) continue;
 
 				final info:ExeSongInfo = {
 					songName: sName,
@@ -528,8 +522,6 @@ class EXEFreeplay extends MusicBeatState
 	{
 		super.update(elapsed);
 		if (subState != null) return;
-
-		if (#if mobile shortPress && !inDevMode || #end FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
 
 		#if mobile if (COOLDOWN_TIMER > 0) COOLDOWN_TIMER -= elapsed; #end
 

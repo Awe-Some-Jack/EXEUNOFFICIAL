@@ -2415,9 +2415,10 @@ class PlayState extends MusicBeatState
 		if(!endingSong && !inCutscene && allowDebugKeys)
 		{
 			if (controls.justPressed('debug_1'))
-				openChartEditor();
-			else if (controls.justPressed('debug_2'))
-				openCharacterEditor();
+			{
+				if (FlxG.keys.pressed.SHIFT) openChartEditor();
+				else trace('NO CHEATING!!');
+			}
 		}
 
 		if (healthBar.bounds.max != null && health > healthBar.bounds.max)
@@ -2576,19 +2577,6 @@ class PlayState extends MusicBeatState
 			}
 			checkEventNote();
 		}
-
-		#if debug
-		if(!endingSong && !startingSong) {
-			if (FlxG.keys.justPressed.ONE) {
-				KillNotes();
-				FlxG.sound.music.onComplete();
-			}
-			if(FlxG.keys.justPressed.TWO) { 
-				setSongTime(Conductor.songPosition + 10000);
-				clearNotesBefore(Conductor.songPosition);
-			}
-		}
-		#end
 
 		if (hasScripts) {
 			setOnScripts('botPlay', cpuControlled);
@@ -4007,7 +3995,8 @@ class PlayState extends MusicBeatState
 
 	function noteMissPress(direction:Int = 1):Void //You pressed a key when there was no notes to press for this key
 	{
-		if(ClientPrefs.data.ghostTapping) return; //fuck it
+		if(ClientPrefs.data.ghostTapping || cpuAssist) return; //fuck it
+		//cpuAssists prevents you from taking damage lol
 
 		noteMissCommon(direction, null, false);
 		stagesFunc(function(stage:BaseStage) stage.noteMissPress(direction));

@@ -88,7 +88,6 @@ class EXEMenu extends MusicBeatState
 	#end
 
 	var unlocked:Array<String> = [];
-	public static var inDevMode:Bool = false;
 
 	override function create()
 	{
@@ -172,24 +171,20 @@ class EXEMenu extends MusicBeatState
 			menuHitboxes.push(hitbox);
 		}
 
-		if (!inDevMode)
-		{
-			var save:FlxSave = new FlxSave();
-			save.bind('savedSongs', CoolUtil.getSavePath());
-			unlocked = cast (save.data.songs ?? []);
+		var save:FlxSave = new FlxSave();
+		save.bind('savedSongs', CoolUtil.getSavePath());
+		unlocked = cast (save.data.songs ?? []);
 
-			var colorSwap = new ColorSwap();
-			colorSwap.saturation = -1;
-			if (unlocked.length < 5)
-			{
-				menuOptions[0].shader = colorSwap.shader;
-				menuTexts[0].color = 0xFFACACAC;
-				menuOptions[3].shader = colorSwap.shader;
-				menuTexts[3].color = 0xFFACACAC;
-			}
-			if (unlocked.length < 6) { menuOptions[1].shader = colorSwap.shader; menuTexts[1].color = 0xFFACACAC; }
+		var colorSwap = new ColorSwap();
+		colorSwap.saturation = -1;
+		if (unlocked.length < 5)
+		{
+			menuOptions[0].shader = colorSwap.shader;
+			menuTexts[0].color = 0xFFACACAC;
+			menuOptions[3].shader = colorSwap.shader;
+			menuTexts[3].color = 0xFFACACAC;
 		}
-		else unlocked = ['f', 'u', 'c', 'k', 'y', 'o', 'u']; //fuck :)
+		if (unlocked.length < 6) { menuOptions[1].shader = colorSwap.shader; menuTexts[1].color = 0xFFACACAC; }
 
 		if (EXEFreeplay.maniaUnlock)
 		{
@@ -326,22 +321,6 @@ class EXEMenu extends MusicBeatState
 		{
 			_fatalTimer -= elapsed;
 			if (_fatalTimer <= 0) _startFatalGlitch();
-		}
-
-		if (Main.DEVELOPMENT_BUILD){
-			if (#if mobile shortPress && !inDevMode || #end FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
-
-			if (FlxG.keys.justPressed.T) FlxG.switchState(() -> new states.CreditsRollState());
-			if (FlxG.keys.justPressed.F && canInteract)
-			{
-				FatalAccess.resetForTesting();
-				if (!FlxG.keys.pressed.SHIFT)
-				{
-					_fatalScene = TRANSMISSION;
-					_startFatalGlitch();
-				}
-			}
-
 		}
 
 		soundHold += elapsed;

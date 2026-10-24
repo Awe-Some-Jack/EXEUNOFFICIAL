@@ -130,7 +130,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [-144, -230],
+			"offsets": [-144, -70],
 			"anim": "sonic",
 			"fps": 10,
 			"name": "sonic",

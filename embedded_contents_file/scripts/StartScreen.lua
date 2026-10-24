@@ -28,6 +28,7 @@ local modConfigs = {
 	['REQUITAL'] = {
 		type = 'slide',
 		skipSongs = {},
+		dontShowSlide = {'deception'},
 		useSeenCutscene = true,
 		phase = 'post',
 		snapDelay = 0.025,
@@ -201,8 +202,16 @@ local function createCountdownIntro()
 	setProperty('skipCountdown', false)
 end
 
+local function slideHidden()
+	if type(cfg.dontShowSlide) ~= 'table' then return cfg.dontShowSlide end
+	for _, s in ipairs(cfg.dontShowSlide) do
+		if songPath == s then return true end
+	end
+	return false
+end
+
 local function createSlideIntro()
-	if introCreated or cfg.dontShowSlide then return end
+	if introCreated or slideHidden() then return end
 	introCreated = true
 	local song = string.lower(songName):gsub(' ', '-')
 	local circlePath = cfg.circlePath or ('StartScreens/' .. song .. '/circle')

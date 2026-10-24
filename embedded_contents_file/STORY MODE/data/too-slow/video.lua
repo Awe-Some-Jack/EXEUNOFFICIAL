@@ -1,7 +1,7 @@
 local allowCountdown = false
 
 function onCreatePost()
-    if not seenCutscene then
+    if not seenCutscene and cutsceneSkippable then
         local skipMsg = (buildTarget == 'ios' or buildTarget == 'android') and 'Press and hold to skip cutscene!' or 'Hold "SPACE" to skip cutscene!'
         makeLuaText('skipTxt', skipMsg, 0, 24, 655)
         setTextSize('skipTxt', 30)

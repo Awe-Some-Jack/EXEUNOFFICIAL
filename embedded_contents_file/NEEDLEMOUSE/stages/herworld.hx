@@ -276,7 +276,7 @@ function onCreatePost()
 	game.add(black);
 
 	end = new FlxSprite();
-	end.frames = Paths.getSparrowAtlas('herworld/sarah ending');
+	end.frames = Paths.getSparrowAtlas('herworld/sarahher');
 	end.animation.addByPrefix('loop', 'saraxd', 24, true);
 	end.animation.play('loop');
 	end.scale.set(1, 1);

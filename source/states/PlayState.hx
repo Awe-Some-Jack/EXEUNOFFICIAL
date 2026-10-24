@@ -386,6 +386,8 @@ class PlayState extends MusicBeatState
 	static var _originalWidth:Int = FlxG.width;
 	static var _originalHeight:Int = FlxG.height;
 	static var _wasFullscreen:Bool = false;
+	static var _fixedWindowTimer:Float = 0;
+	static var _fixedWindowTries:Int = 0;
 
 	static var prevWindowTitle = null;
 
@@ -419,20 +421,34 @@ class PlayState extends MusicBeatState
 			final screenWidth = screen.bounds.width;
 			final screenHeight = screen.bounds.height;
 			
-			FlxG.fullscreen = false;
-			FlxG.stage.window.maximized = false;
-			FlxG.stage.window.resizable = false;
-			
+			final window = FlxG.stage.window;
+			final covering = FlxG.fullscreen || window.fullscreen || (window.width >= screenWidth && window.height >= screenHeight);
+
 			FlxG.scaleMode = new flixel.system.scaleModes.FixedRatioScaleMode(960, 720);
 
 			for (cam in FlxG.cameras.list)
 				cam.setSize(960, 720);
-			FlxG.resizeGame(960, 720);
-			FlxG.resizeWindow(960, 720);
-			
-			final winX = Std.int(screen.bounds.x + (screenWidth - 960) / 2);
-			final winY = Std.int(screen.bounds.y + (screenHeight - 720) / 2);
-			FlxG.stage.window.move(winX, winY);
+
+			_fixedWindowTimer = 0;
+			_fixedWindowTries = 0;
+			if (covering)
+			{
+				FlxG.fullscreen = false;
+				window.fullscreen = false;
+				_fixedWindowTimer = 0.4;
+				_fixedWindowTries = 1;
+			}
+			else
+			{
+				window.maximized = false;
+				window.resizable = false;
+				FlxG.resizeGame(960, 720);
+				FlxG.resizeWindow(960, 720);
+
+				final winX = Std.int(screen.bounds.x + (screenWidth - 960) / 2);
+				final winY = Std.int(screen.bounds.y + (screenHeight - 720) / 2);
+				window.move(winX, winY);
+			}
 		} else {
 			FlxG.stage.window.resizable = true;
 
@@ -1233,11 +1249,25 @@ class PlayState extends MusicBeatState
 		char.y += char.positionArray[1];
 	}
 
+	public static function cutsceneWatched(song:String):Bool
+	{
+		final watched:Array<String> = FlxG.save.data.watchedCutscenes;
+		return watched != null && watched.contains(song);
+	}
+
 	public var videoCutscene:VideoSprite = null;
 	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = true)
 	{
 		function endVideo()
 		{
+			if (!forMidSong && !cutsceneWatched(songName))
+			{
+				var watched:Array<String> = FlxG.save.data.watchedCutscenes;
+				if (watched == null) watched = [];
+				watched.push(songName);
+				FlxG.save.data.watchedCutscenes = watched;
+				FlxG.save.flush();
+			}
 			callOnScripts('onVideoCompleted', [name]);
 			canPause = true;
 
@@ -1259,10 +1289,10 @@ class PlayState extends MusicBeatState
 
 		videoCutscene = new VideoSprite(0, 0, true);
 		videoCutscene.camera = camVideo;
-		videoCutscene.canSkip = canSkip;
+		videoCutscene.canSkip = canSkip && (forMidSong || cutsceneWatched(songName));
 		add(videoCutscene);
 
-		if (canSkip)
+		if (videoCutscene.canSkip)
 			videoCutscene.onSkip = () -> endVideo();
 		videoCutscene.onEnd(() -> endVideo());
 
@@ -2277,20 +2307,50 @@ class PlayState extends MusicBeatState
 		#if HSCRIPT_ALLOWED if (hscriptArray?.length > 0) hasScripts = true; #end
 
 		#if !mobile
-		if (isFixedAspectRatio && FlxG.fullscreen)
+		if (isFixedAspectRatio && !FlxG.stage.window.minimized)
 		{
-			FlxG.fullscreen = false;
+			final window = FlxG.stage.window;
+			final bounds = window.display.bounds;
+			_fixedWindowTimer -= elapsed;
+			if (FlxG.fullscreen || window.fullscreen || (window.width >= bounds.width && window.height >= bounds.height))
+			{
+				if (_fixedWindowTimer <= 0)
+				{
+					_fixedWindowTimer = 0.4;
+					if (_fixedWindowTries++ % 2 == 0)
+					{
+						FlxG.fullscreen = false;
+						window.fullscreen = false;
+					}
+					else
+					{
+						FlxG.resizeWindow(960, 720);
+						window.move(Std.int(bounds.x + (bounds.width - 960) / 2), Std.int(bounds.y + (bounds.height - 720) / 2));
+					}
+				}
+			}
+			else if (window.maximized)
+			{
+				window.maximized = false;
+			}
+			else if (window.resizable)
+			{
+				window.resizable = false;
+			}
+			else if (window.width != 960 || window.height != 720)
+			{
+				if (_fixedWindowTimer <= 0)
+				{
+					_fixedWindowTimer = 0.2;
+					FlxG.resizeWindow(960, 720);
+					window.move(Std.int(bounds.x + (bounds.width - 960) / 2), Std.int(bounds.y + (bounds.height - 720) / 2));
+				}
+			}
+			else _fixedWindowTries = 0;
 		}
-		else if (isFixedAspectRatio && FlxG.stage.window.maximized)
+		if (isFixedAspectRatio && (FlxG.scaleMode.deviceSize.x != FlxG.stage.stageWidth || FlxG.scaleMode.deviceSize.y != FlxG.stage.stageHeight))
 		{
-			FlxG.stage.window.maximized = false;
-		}
-		else if (isFixedAspectRatio && !FlxG.stage.window.minimized
-			&& (FlxG.stage.window.width != 960 || FlxG.stage.window.height != 720))
-		{
-			FlxG.resizeWindow(960, 720);
-			final bounds = FlxG.stage.window.display.bounds;
-			FlxG.stage.window.move(Std.int(bounds.x + (bounds.width - 960) / 2), Std.int(bounds.y + (bounds.height - 720) / 2));
+			@:privateAccess FlxG.game.onResize(null);
 		}
 
 		if (isLetterboxedAspectRatio)

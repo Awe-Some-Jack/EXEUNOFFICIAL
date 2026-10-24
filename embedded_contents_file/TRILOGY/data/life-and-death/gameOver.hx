@@ -10,6 +10,7 @@ function onCreate()
 {
 	GameOverSubstate.characterName = 'bft-dead';
 	GameOverSubstate.deathSoundName = 'die';
+	Paths.getSparrowAtlas('characters/GameOver');
 }
 
 function onGameOverStart()

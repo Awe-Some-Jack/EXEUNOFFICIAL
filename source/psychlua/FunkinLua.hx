@@ -105,6 +105,7 @@ class FunkinLua
 		set('weekRaw', PlayState.storyWeek);
 		set('week',    WeekData.weeksList[PlayState.storyWeek]);
 		set('seenCutscene', PlayState.seenCutscene);
+		set('cutsceneSkippable', PlayState.cutsceneWatched(Paths.formatToSongPath(PlayState.SONG.song)));
 		set('hasVocals',    PlayState.SONG.needsVoices);
 
 		set('screenWidth',  FlxG.width);

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bgzoom.png">
+	<SubTexture name="bgzoom0000" x="0" y="0" width="363" height="202" frameX="0" frameY="0" frameWidth="363" frameHeight="202"/>
+	<SubTexture name="bgzoom0001" x="364" y="0" width="363" height="202" frameX="0" frameY="0" frameWidth="363" frameHeight="202"/>
+	<SubTexture name="bgzoom0002" x="0" y="203" width="363" height="202" frameX="0" frameY="0" frameWidth="363" frameHeight="202"/>
+	<SubTexture name="bgzoom0003" x="364" y="203" width="363" height="202" frameX="0" frameY="0" frameWidth="363" frameHeight="202"/>
+	<SubTexture name="bgzoom0004" x="0" y="406" width="363" height="202" frameX="0" frameY="0" frameWidth="363" frameHeight="202"/>
+	<SubTexture name="bgzoom0005" x="0" y="203" width="363" height="202" frameX="0" frameY="0" frameWidth="363" frameHeight="202"/>
+	<SubTexture name="bgzoom0006" x="364" y="203" width="363" height="202" frameX="0" frameY="0" frameWidth="363" frameHeight="202"/>
+	<SubTexture name="bgzoom0007" x="0" y="406" width="363" height="202" frameX="0" frameY="0" frameWidth="363" frameHeight="202"/>
+	<SubTexture name="bgzoom0008" x="0" y="203" width="363" height="202" frameX="0" frameY="0" frameWidth="363" frameHeight="202"/>
+</TextureAtlas>

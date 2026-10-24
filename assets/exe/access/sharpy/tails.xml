@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="tails.png">
+	<SubTexture name="tails0000" x="0" y="0" width="38" height="25" frameX="0" frameY="0" frameWidth="41" frameHeight="25"/>
+	<SubTexture name="tails0001" x="39" y="0" width="40" height="25" frameX="0" frameY="0" frameWidth="41" frameHeight="25"/>
+	<SubTexture name="tails0002" x="80" y="0" width="41" height="25" frameX="0" frameY="0" frameWidth="41" frameHeight="25"/>
+	<SubTexture name="tails0003" x="122" y="0" width="40" height="25" frameX="0" frameY="0" frameWidth="41" frameHeight="25"/>
+	<SubTexture name="tails0004" x="163" y="0" width="36" height="25" frameX="0" frameY="0" frameWidth="41" frameHeight="25"/>
+	<SubTexture name="tails0005" x="0" y="0" width="38" height="25" frameX="0" frameY="0" frameWidth="41" frameHeight="25"/>
+</TextureAtlas>

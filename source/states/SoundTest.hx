@@ -520,6 +520,13 @@ class SoundTest extends MusicBeatState
 			}
 		}
 
+		if (isWeek && name == 'exetior')
+		{
+			FlxG.sound.music?.stop();
+			SoundTest.fromSoundTest = true;
+			FlxG.switchState(() -> new states.access.cutscene.SharpyCutscene());
+			return;
+		}
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());
 		FlxG.sound.music?.stop();

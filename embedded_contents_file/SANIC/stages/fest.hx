@@ -2,6 +2,7 @@ import psychlua.LuaUtils;
 import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxAxes;
 import objects.VideoSprite;
+import objects.Character;
 import openfl.display.BlendMode;
 
 final game = PlayState.instance;
@@ -35,6 +36,9 @@ var precacheVideos:Array<String> = [
     'smg4',
     'Illuminaticonfirmed'
 ];
+
+var sanicSentimental:Character;
+var bfSentimental:Character;
 function onCreate()
 {
 	var precacher:VideoSprite = new VideoSprite();
@@ -128,6 +132,18 @@ function onCreate()
 	botBar = new FlxSprite(-50, FlxG.height).makeGraphic(FlxG.width + 100, 100, 0xFF000000);
 	botBar.camera = camVideo;
 	insert(0, botBar);
+
+	sanicSentimental = new Character(-1300, 400, 'sanicsad', false);
+	sanicSentimental.camera = camOther;
+	sanicSentimental.alpha = 0;
+	sanicSentimental.scale.set(2.5, 2.5); sanicSentimental.updateHitbox();
+	add(sanicSentimental);
+
+	bfSentimental = new Character(1700, 400, 'bfsanicsad', true);
+	bfSentimental.camera = camOther;
+	bfSentimental.alpha = 0;
+	bfSentimental.scale.set(2.5, 2.5); bfSentimental.updateHitbox();
+	add(bfSentimental);
 }
 
 function onCreatePost()
@@ -146,11 +162,17 @@ function onUpdatePost(e)
 	iTime += e;
 	rgbShit.setFloat('iTime', iTime);
 
+	sanicSentimental.animation.play(dad.getAnimationName(), true);
+	sanicSentimental.animation.curAnim.curFrame = dad.animation.curAnim.curFrame;
+	sanicSentimental.offset.set(dadGroup.members[0].offset.x, dadGroup.members[0].offset.y);
+	bfSentimental.animation.play(boyfriend.getAnimationName(), true);
+	bfSentimental.animation.curAnim.curFrame = boyfriend.animation.curAnim.curFrame;
+	bfSentimental.offset.set(boyfriendGroup.members[0].offset.x, boyfriendGroup.members[0].offset.y);
+
 	if (sanics1.alpha < 0.01) return;
 	sanics1.animation.play(dad.getAnimationName(), true);
 	sanics1.animation.curAnim.curFrame = dad.animation.curAnim.curFrame;
 	sanics1.offset.set(dadGroup.members[0].offset.x, dadGroup.members[0].offset.y);
-
 	sanics2.animation.play(dad.getAnimationName(), true);
 	sanics2.animation.curAnim.curFrame = dad.animation.curAnim.curFrame;
 	sanics2.offset.set(dadGroup.members[0].offset.x, dadGroup.members[0].offset.y);
@@ -190,9 +212,16 @@ function onEvent(n,v1,v2)
 				changeCharacter('dad', 'sanicsad');
 				changeCharacter('bf', 'bfsanicsad');
 				for (s in spotlights) s.alpha = 0.35;
+			case 'bfsent':
+				FlxTween.tween(sanicSentimental, {alpha: 0.5, x: -300}, 6, {ease: FlxEase.cubeOut});
+				FlxTween.tween(bfSentimental, {alpha: 0.5, x: 1000}, 6, {ease: FlxEase.cubeOut});
 			case 'fadespotlight':
 				camGame.fade(0x75FFFFFF, Conductor.crochet / 250, false, null, true);
 				FlxTween.tween(spotlights[0], {alpha: 0}, Conductor.crochet / 500, {ease: FlxEase.cubeIn});
+
+				FlxTween.cancelTweensOf(sanicSentimental); FlxTween.cancelTweensOf(bfSentimental);
+				FlxTween.tween(sanicSentimental, {alpha: 0, x: -1300}, 1, {ease: FlxEase.cubeIn});
+				FlxTween.tween(bfSentimental, {alpha: 0, x: 1700}, 1, {ease: FlxEase.cubeIn});
 			case 'mgl':
 				sanics1.alpha = sanics2.alpha = 1;
 				game.gameplayCam.settings.DADy = 100;

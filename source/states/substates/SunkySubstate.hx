@@ -100,7 +100,10 @@ class SunkySubstate extends MusicBeatSubstate
 		_title.x = _titleX - 220 * _cs;
 		_title.setColorTransform(0, 0, 0, 1);
 
-		_subtitle = layer('letras 2.png', 85, 525, 0.76);
+		_subtitle = layer('letras 2.png', 85, 525);
+		_subtitle.setGraphicSize(Std.int(654 * _cs));
+		_subtitle.updateHitbox();
+		_subtitle.setPosition(85 * _cs, 525 * _cs);
 		_subtitle.visible = false;
 
 		stretch('marco.png');
@@ -110,7 +113,7 @@ class SunkySubstate extends MusicBeatSubstate
 		updateCard();
 
 		_message = place(new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/botplay/sunkybot/message.png')));
-		_message.scale.set(_k, _k);
+		_message.setGraphicSize(Std.int(508 * _k));
 		_message.updateHitbox();
 		_message.setPosition(-_message.width - 20, _oy + 128 * _k);
 

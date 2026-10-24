@@ -1,3 +1,7 @@
+// Raimbow's Ideas
+// - A shader that goes dizzy for Tails
+// - Once red, every drum beat shakes the camera.
+// - Your mom
 import psychlua.LuaUtils;
 typedef BackgroundSpriteAlt =
 {
@@ -11,6 +15,15 @@ typedef BackgroundSpriteAlt =
 	@:optional var alpha:Float;
 	@:optional var angle:Float;
 	@:optional var animation:Array<Dynamic>;
+}
+
+//Gonna take inspo from you Dudu
+typedef ShaderStuff = {
+	var daShader:ErrorHandledRuntimeShader;
+	@:optional var defaultValues:Map<String, Dynamic>;
+	@:optional var uniforms:Map<String, Dynamic>;
+	@:optional var valuesOffsets:Map<String, Dynamic>;
+	@:optional var shaderTweens:Map<String, FlxTween>;
 }
 
 final game:PlayState = PlayState.instance;
@@ -39,6 +52,12 @@ var starv:Array<BackgroundSpriteAlt> = [
 	{path: 'new bg/light', position: [-1350, -1300], front: true, scale: [0.8, 0.8]}
 ];
 
+//The Shaders. This is how they're set onCreate.
+var bloom    :ShaderStuff  = {daShader: null, uniforms: ["brightness" =>   0, "contrast" => 1, "saturation" => 1]};
+var chrom    :ShaderStuff  = {daShader: null, uniforms: ["amount"     => 0.2], defaultValues: ["amount" => 0.2]};
+var wave     :ShaderStuff  = {daShader: null, uniforms: ["amount"     =>   0]};
+var lilGlitch:ShaderStuff  = {daShader: null, uniforms: ["size"       =>   0]};
+
 var vg:FlxSprite;
 function onCreate()
 {
@@ -50,20 +69,87 @@ function onCreate()
 	add(vg);
 
 	game.gameplayCam._targetAlpha = 0.5;
+
+	bloom.daShader = new ErrorHandledRuntimeShader("brightness", File.getContent(Paths.shaderFragment('brightness')));
+	bloom.uniforms      = ["brightness" => 0, "contrast" => 1, "saturation" => 1]; 
+	bloom.defaultValues = ["brightness" => 0, "contrast" => 1, "saturation" => 1]; 
+	bloom.shaderTweens  = [];
+	
+	chrom.daShader = new ErrorHandledRuntimeShader("chromabber", File.getContent(Paths.shaderFragment('chromabber')));
+	chrom.daShader.setFloat("amount", chrom.uniforms.get("amount"));
+	chrom.shaderTweens = [];
+	
+	wave.daShader = new ErrorHandledRuntimeShader("wavyDistortion", File.getContent(Paths.shaderFragment('wavyDistortion')));
+	wave.uniforms      = ["amount" => 0];
+	wave.shaderTweens  = [];
+	
+	lilGlitch.daShader = new ErrorHandledRuntimeShader("followedglitch", File.getContent(Paths.shaderFragment('followedglitch')));
+	lilGlitch.uniforms      = ["size" => 0.001];
+	lilGlitch.shaderTweens  = [];
+
+	camGame.filters = camHUD.filters = [new ShaderFilter(bloom.daShader), new ShaderFilter(chrom.daShader), new ShaderFilter(wave.daShader), new ShaderFilter(lilGlitch.daShader)];
 }
 
 var _inTrans:Bool = false;
 function onSectionHit(x)
 {
 	if (_inTrans) return;
-	if (x.mustHitSection == false) cam.OGZoom = 0.8;
-	else cam.OGZoom = 0.65;
+	if (!tweenCamZoom)
+	{
+		if (x.mustHitSection == false) game.triggerEvent("Tween Camera Zoom", "0.9", "");
+		else game.triggerEvent("Tween Camera Zoom", "0.65", "");
+	}
 }
 
 var _isDark:Bool = false;
 var notesPosition:Array<Array<Array<Float>>> = [[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]]];
-function onEvent(n,v1)
+function onEvent(n, v1, v2)
 {
+	//Shader Tweens Event
+	//According to v1, you choose between the shaders in the script and set the start and end
+	//In v2, you just set the time and ease.
+	//Don't worry about having tweens in between, they'll be canceled!
+	//(sorry dudu i took some things from ya)
+	if (n == "shaderTween")
+	{
+		var split1:Array<String> = v1.split(", ");
+		var shaderName:String = split1[0];
+		var from:Float = Std.parseFloat(split1[1]);
+		var to:Float = Std.parseFloat(split1[2]);
+		
+		var split2:Array<String> = v2.split(", ");
+		var time:Float = Std.parseFloat(split2[0]);
+		var easeValue:String = (split2[1] == null || split2[1] == '') ? "linear" : split2[1];
+
+		switch(split1[0])
+		{
+			case "bloom":
+				if (bloom.shaderTweens['bloomBaby']?.active ?? false) bloom.shaderTweens['bloomBaby'].cancel();
+
+				bloom.shaderTweens['bloomBaby'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
+					bloom.uniforms.set("brightness", bloom.defaultValues.get("brightness") + v * 2);
+					bloom.uniforms.set("contrast", bloom.defaultValues.get("contrast") + v * 4);
+				});
+			case "chrom":
+				if (chrom.shaderTweens['chromTween']?.active ?? false) chrom.shaderTweens['chromTween'].cancel();
+
+				chrom.shaderTweens['chromTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
+					chrom.uniforms.set("amount", v);
+				});
+			case "wave":
+				if (wave.shaderTweens['waveTween']?.active ?? false) wave.shaderTweens['waveTween'].cancel();
+
+				wave.shaderTweens['waveTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
+					wave.uniforms.set("amount", v);
+				});
+			case "glitchie":
+				if (lilGlitch.shaderTweens['lilGlitchTween']?.active ?? false) lilGlitch.shaderTweens['lilGlitchTween'].cancel();
+
+				lilGlitch.shaderTweens['lilGlitchTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
+					lilGlitch.uniforms.set("size", v);
+				});
+		}
+	}
 	if (n == 'Hide') FlxTween.tween(camHUD, {alpha: Std.int(v1)}, 0.3);
 	if (n == 'secondPhase')
 	{
@@ -131,10 +217,27 @@ function onEvent(n,v1)
 				FlxTween.tween(camHUD, {alpha: 0}, 3);
 		}
 	}
+
 }
 
-function onUpdatePost()
+var holdTime:Float = 0;
+function onUpdatePost(e)
 {
+	holdTime += e;
+
+	//Shaders uniforms should be updated getting their numbers, duh. 
+	bloom.daShader.setFloat('brightness', bloom.uniforms.get('brightness'));
+	bloom.daShader.setFloat('saturation', bloom.uniforms.get('saturation'));
+	bloom.daShader.setFloat('contrast',   bloom.uniforms.get('contrast'));
+	
+	chrom.daShader.setFloat('amount', chrom.uniforms.get('amount'));
+	
+	wave.daShader.setFloat('amount', wave.uniforms.get('amount'));
+	
+	lilGlitch.daShader.setFloat('size', lilGlitch.uniforms.get('size'));
+	
+	for (holdShit in [wave, lilGlitch]) holdShit.daShader.setFloat('iTime', holdTime);
+	
 	if (_isDark)
 	{
 		for (i in 0...4)

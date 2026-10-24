@@ -9,13 +9,13 @@
     "GFy": 590,
 
     "MiddleCamera": false,
-    "MiddleX": 1150,
-    "MiddleY": 350,
+    "MiddleX": 700,
+    "MiddleY": 250,
 
     "OverrideZoom": false,
 
     "OGZoom": 0.8,
-    "MiddleZoom": 0.7,
+    "MiddleZoom": 0.65,
 
     "OffsetsBF": 25,
     "OffsetsDAD": 25,

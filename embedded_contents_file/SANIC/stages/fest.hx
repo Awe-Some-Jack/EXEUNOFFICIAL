@@ -12,14 +12,37 @@ var brightness:ErrorHandledRuntimeShader;
 
 var stars:FlxBackdrop;
 var introCutscene:VideoSprite;
-var sanicBG:FlxVideoSprite;
-var videos:Array<FlxVideoSprite> = [];
+var sanicBG:VideoSprite;
+var videos:Array<VideoSprite> = [];
 var spotlights:Array<FlxSprite> = [];
+
+var topBar:FlxSprite;
+var botBar:FlxSprite;
+
+var sanics1:FlxBackdrop;
+var sanics2:FlxBackdrop;
+
+var precacheVideos:Array<String> = [
+    'Mlg',
+    'Explosion',
+    'Glasses',
+    'Weed',
+    'Guns',
+    'Hitmarkers',
+    'OHHH',
+    'teletubby',
+    'Noscope',
+    'smg4',
+    'Illuminaticonfirmed'
+];
 function onCreate()
 {
+	var precacher:VideoSprite = new VideoSprite();
+    for (v in precacheVideos)
+		precacher.precacheVideo(Paths.video(v), [VideoSprite.ARG_MUTED]);
+
 	camGame.alpha = 0; camHUD.alpha = 0;
 	introCutscene = new VideoSprite();
-	introCutscene.loadVideo(Paths.video('Sanic Intro'), [VideoSprite.ARG_MUTED]);
 	introCutscene.camera = camVideo;
 	introCutscene.onFormat(() -> {
 		introCutscene.setGraphicSize(FlxG.width, FlxG.height);
@@ -27,18 +50,19 @@ function onCreate()
 		introCutscene.video.antialiasing = ClientPrefs.data.antialiasing;
 	});
 	introCutscene.onEnd(() -> {camGame.alpha = 1; introCutscene.destroy();});
-	introCutscene.playDelayed();
+	add(introCutscene);
 	videos.push(introCutscene);
 
-	sanicBG = new FlxVideoSprite(null, -800, -600);
-	sanicBG.load(Paths.video('bg${FlxG.random.int(1,2)}'));
-	sanicBG.bitmap.onFormatSetup.add(() -> { 
+	sanicBG = new VideoSprite(-1700, -1100);
+	sanicBG.onFormat(() -> { 
 		sanicBG.scale.set(1.5, 1.5);
 		sanicBG.updateHitbox();
+		sanicBG.video.antialiasing = ClientPrefs.data.antialiasing;
 	});
-	sanicBG.bitmap.onEndReached.add(() -> {sanicBG.destroy();});
+	sanicBG.onEnd(() -> {sanicBG.destroy();});
 	insert(0, sanicBG);
 	videos.push(sanicBG);
+	sanicBG.precacheVideo(Paths.video('bg${FlxG.random.int(1,2)}'), [VideoSprite.ARG_MUTED]);
 
 	stars = new FlxBackdrop(null, FlxAxes.XY);
 	stars.drawBlit = false;
@@ -47,12 +71,12 @@ function onCreate()
 	stars.antialiasing = false;
 	stars.animation.addByPrefix('idle', 'idle', 6, true);
 	stars.animation.play('idle', true);
-	insert(1, stars);
+	//insert(1, stars);
 
 	for (s in 0...2)
 	{
-		var spotlight:FlxSprite = new FlxSprite(-330 + (1370 * s), -700).loadGraphic(Paths.image('spotlight'));
-		spotlight.scale.set(2, 2.8); spotlight.updateHitbox();
+		var spotlight:FlxSprite = new FlxSprite(-320 + (900 * s), -700).loadGraphic(Paths.image('spotlight'));
+		spotlight.scale.set(1.5, 2.5); spotlight.updateHitbox();
 		spotlight.alpha = 0;
 		spotlight.blend = BlendMode.ADD;
 		spotlights.push(spotlight);
@@ -65,11 +89,45 @@ function onCreate()
 	brightness.setFloat('saturation', 1);
 	brightness.setFloat('brightness', 0);
 	brightness.setFloat('contrast', 1);
-	camGame.filters = [new ShaderFilter(brightness)]; camHUD.filters = [new ShaderFilter(brightness)];
+	camGame.filters = camHUD.filters = [new ShaderFilter(brightness)];
 
 	//precache
+	preloadCharacter(1, 'supersanic');
 	preloadCharacter(1, 'sanicsad');
 	preloadCharacter(0, 'bfsanicsad');
+
+	sanics2 = new FlxBackdrop(Paths.image('characters/sanic'), 0x01);
+	sanics2.frames = Paths.getSparrowAtlas('characters/sanic');
+	sanics2.animation.addByPrefix('singLEFT', 'left', 24, false);
+	sanics2.animation.addByPrefix('singDOWN', 'down', 24, false);
+	sanics2.animation.addByPrefix('singUP', 'up', 24, false);
+	sanics2.animation.addByPrefix('singRIGHT', 'right', 24, false);
+	sanics2.animation.addByPrefix('idle', 'idle', 24, false); sanics2.animation.play('idle', true);
+	sanics2.alpha = 0.0001;
+	sanics2.scale.set(0.5, 0.5); sanics2.updateHitbox();
+	sanics2.velocity.x = 1000;
+	insert(game.members.indexOf(dadGroup), sanics2);
+
+	sanics1 = new FlxBackdrop(Paths.image('characters/sanic'), 0x01);
+	sanics1.frames = Paths.getSparrowAtlas('characters/sanic');
+	sanics1.animation.addByPrefix('singLEFT', 'left', 24, false);
+	sanics1.animation.addByPrefix('singDOWN', 'down', 24, false);
+	sanics1.animation.addByPrefix('singUP', 'up', 24, false);
+	sanics1.animation.addByPrefix('singRIGHT', 'right', 24, false);
+	sanics1.animation.addByPrefix('idle', 'idle', 24, false); sanics1.animation.play('idle', true);
+	sanics1.alpha = 0.0001;
+	sanics1.y = 100;
+	sanics1.scale.set(0.8, 0.8); sanics1.updateHitbox();
+	sanics1.velocity.x = 2000;
+	insert(game.members.indexOf(dadGroup), sanics1);
+
+	topBar = new FlxSprite(-50, -100).makeGraphic(FlxG.width + 100, 100, 0xFF000000);
+	topBar.camera = camVideo;
+	insert(0, topBar);
+
+	botBar = new FlxSprite(-50, FlxG.height).makeGraphic(FlxG.width + 100, 100, 0xFF000000);
+	botBar.camera = camVideo;
+	insert(0, botBar);
 }
 
 function onCreatePost()
@@ -87,8 +145,18 @@ function onUpdatePost(e)
 {
 	iTime += e;
 	rgbShit.setFloat('iTime', iTime);
+
+	if (sanics1.alpha < 0.01) return;
+	sanics1.animation.play(dad.getAnimationName(), true);
+	sanics1.animation.curAnim.curFrame = dad.animation.curAnim.curFrame;
+	sanics1.offset.set(dadGroup.members[0].offset.x, dadGroup.members[0].offset.y);
+
+	sanics2.animation.play(dad.getAnimationName(), true);
+	sanics2.animation.curAnim.curFrame = dad.animation.curAnim.curFrame;
+	sanics2.offset.set(dadGroup.members[0].offset.x, dadGroup.members[0].offset.y);
 }
 
+var _xd:String = 'normal';
 var brightTween:FlxTween;
 function onEvent(n,v1,v2)
 {
@@ -105,7 +173,7 @@ function onEvent(n,v1,v2)
 		switch(v1)
 		{
 			case 'hud':
-				sanicBG.play();
+				if (sanicBG?.loadVideo(Paths.video('bg${FlxG.random.int(1,2)}'), [VideoSprite.ARG_MUTED])) sanicBG?.playDelayed();
 				FlxTween.tween(camHUD, {alpha: 1}, Conductor.crochet / 250);
 			case 'removeintro':
 				camGame.alpha = 1;
@@ -123,17 +191,57 @@ function onEvent(n,v1,v2)
 				changeCharacter('bf', 'bfsanicsad');
 				for (s in spotlights) s.alpha = 0.35;
 			case 'fadespotlight':
+				camGame.fade(0x75FFFFFF, Conductor.crochet / 250, false, null, true);
 				FlxTween.tween(spotlights[0], {alpha: 0}, Conductor.crochet / 500, {ease: FlxEase.cubeIn});
 			case 'mgl':
-				changeCharacter('dad', 'sanic');
+				sanics1.alpha = sanics2.alpha = 1;
+				game.gameplayCam.settings.DADy = 100;
+				_xd = 'mgl';
+				camGame.fade(0x00FFFFFF, 0.0001, false, null, true);
+				camGame.flash(0xFFFFFFFF, 1, null, true);
+				for (s in spotlights) s.destroy();
+				changeCharacter('dad', 'supersanic');
 				changeCharacter('bf', 'bfsanic');
 				for (s in spotlights) s.alpha = 0;
+				game.triggerEvent('Change Health Damage', '0.05', '', Conductor.songPosition);
 				sanicBG.alpha = 1;
+				camGame.filters = camHUD.filters = [new ShaderFilter(brightness), new ShaderFilter(rgbShit)];
+			case 'normal':
+				game.triggerEvent('Change Health Damage', '0.007', '', Conductor.songPosition);
+				game.gameplayCam.settings.DADy = 300;
+				sanics1.alpha = sanics2.alpha = 0;
+				_xd = 'normal';
+				camHUD.flash(0xFFFFFFFF, 1, null, true);
+				camGame.filters = camHUD.filters = [new ShaderFilter(brightness)];
+
+			case 'bars':
+				FlxTween.cancelTweensOf(topBar); FlxTween.cancelTweensOf(botBar);
+
+				var split:Array<String> = v2.split(',');
+				var duration:Float = (Math.isNaN(Std.parseFloat(split[1])) ? 4 : Std.parseFloat(split[1]));
+
+				FlxTween.tween(topBar, {y: split[0] == '1' ? -50 : -100}, Conductor.crochet / (1000 / duration), {ease: FlxEase.cubeInOut});
+				FlxTween.tween(botBar, {y: split[0] == '1' ? FlxG.height - 50 : FlxG.height}, Conductor.crochet / (1000 / duration), {ease: FlxEase.cubeInOut});
+			case 'video':
+				var split:Array<String> = v2.split(',');
+				var video:VideoSprite = new VideoSprite();
+				video.camera = camHUD;
+				video.onFormat(() -> {
+					video.setGraphicSize(FlxG.width, FlxG.height);
+					video.screenCenter();
+					video.video.antialiasing = ClientPrefs.data.antialiasing;
+				});
+				video.video.shader = new ErrorHandledRuntimeShader('GreenScreenShader', File.getContent('contents/SANIC/shaders/GreenScreenShader.frag'));
+				video.onEnd(() -> {video.destroy();});
+				if (split[1] == 'front') add(video);
+				else insert(0, video);
+				if (video?.loadVideo(Paths.video(split[0]), [VideoSprite.ARG_MUTED])) video?.playDelayed();
+				videos.push(video);
 		}
 	}
 }
 
-function onSongStart() introCutscene.play();
+function onSongStart() if (introCutscene?.loadVideo(Paths.video('Sanic Intro'), [VideoSprite.ARG_MUTED])) introCutscene?.playDelayed();
 function onGameOverStart() for (video in videos) video?.destroy();
 function onPause() for (video in videos) video?.pause();
 function onResume() for (video in videos) video?.resume();
@@ -143,6 +251,17 @@ function onBeatHit()
 	for (char in [boyfriend, dad])
 	{
 		if (char.getAnimationName() == 'idle' && char.animation.curAnim.curFrame > 3 && curBeat % 2 == 0) char.playAnim('idle', true);
+	}
+}
+
+function onSectionHit()
+{
+	if (_xd != 'mgl') return;
+	for (i in 0...8)
+	{
+		FlxTween.cancelTweensOf(strumLineNotes.members[i]);
+		strumLineNotes.members[i].angle = 0;
+		FlxTween.tween(strumLineNotes.members[i], {angle: 360}, 1, {ease: FlxEase.cubeOut});
 	}
 }
 

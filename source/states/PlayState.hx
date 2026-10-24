@@ -2417,10 +2417,10 @@ class PlayState extends MusicBeatState
 		{
 			if (controls.justPressed('debug_1'))
 			{
-				if (FlxG.keys.pressed.SHIFT) { openChartEditor(); }
+				if (FlxG.keys.pressed.SPACE && FlxG.keys.pressed.SHIFT) { openChartEditor(); } // mor safe
 				else
 				{
-					trace('NO CHEATING!!');
+					Sys.println((FlxG.random.bool(15) ? "Luis" : "Xeno") + ': NO CHEATING!!');
 
 					paused = true;
 					canResync = false;

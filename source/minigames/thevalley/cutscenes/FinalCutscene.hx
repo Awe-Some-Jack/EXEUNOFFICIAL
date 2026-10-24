@@ -88,7 +88,7 @@ class FinalCutscene
 		_bfGlow.blend = BlendMode.ADD;
 		_bfGlow.color = 0xFF55C8FF;
 		_kiss = _atlas('gfbfkiss', world);
-		_anim(_kiss, 'meet', 'gfbfkiss0', [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 1000, 100, 100], false, 0, 14);
+		_anim(_kiss, 'meet', 'gfbfkiss0', [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 1920, 100, 100], false, 0, 14);
 		_anim(_kiss, 'hug', 'gfbfkiss0', [100], false, 14, 3);
 		_anim(_kiss, 'kiss', 'gfbfkiss0', [100], false, 17, 4);
 		_heart = _atlas('heart', world);
@@ -108,9 +108,12 @@ class FinalCutscene
 		_faker.animation.addByIndices('run', 'exe run', [0, 1, 2, 3, 4, 5], '', 16, true);
 		_faker.animation.addByPrefix('air', 'exe airandfalling', 1, false);
 		_faker.animation.addByIndices('landing', 'exe landing', [0, 1], '', 12, false);
+		_faker.animation.addByIndices('jumpAngry', 'exe jumpangry', [0], '', 1, false);
+		_faker.animation.addByIndices('landAngry', 'exe jumpangry', [1, 2], '', 10, false);
 		_anim(_faker, 'growIn', 'exe grow', [50], false, 0, 4);
-		_anim(_faker, 'growLoop', 'exe grow', [150], true, 4, 2);
-		_anim(_faker, 'growUp', 'exe grow', [168], false, 6, 5);
+		_anim(_faker, 'growA', 'exe grow', [100], false, 4, 1);
+		_anim(_faker, 'growB', 'exe grow', [100], false, 5, 1);
+		_anim(_faker, 'growUp', 'exe grow', [60], false, 6, 5);
 		_anim(_faker, 'growBurst', 'exe grow', [104], false, 11, 11);
 		_anim(_faker, 'growEnd', 'exe grow', [100], false, 22, 1);
 		_mad = _exe(world);
@@ -167,7 +170,7 @@ class FinalCutscene
 		_skipText.visible = false;
 		_game.add(_skipText);
 
-		_music = FlxG.sound.play(Paths.sound('minigame/thevalley/finalcutscene'), 1.0);
+		_music =FlxG.sound.play(Paths.sound('minigame/thevalley/finalcutscene'), 1.0);
 	}
 
 	public static function preload():Void
@@ -215,25 +218,30 @@ class FinalCutscene
 			_camFrom = { x: cam.x, y: cam.y, zoom: cam.zoom };
 			_walk = { from: gfStart, to: gfStop };
 			_follow = true;
+			p.isRunning = false;
 		});
-		_at(4.8, () -> {
+		_at(5.298, () -> {
 			_follow = false;
-			_walk = null;
-			p.body.velocity.x = 0;
 			p.animation.addByIndices('stopconfused', 'fakergf looking', [4], '', 1, false);
 			p.lockedAnim = 'stopconfused';
 			_look((gfStop + bfX) * 0.5 + 6, 80, 4, 0.8, FlxEase.sineOut);
+		});
+		_at(5.498, () -> {
+			_walk = null;
+			p.body.velocity.x = 0;
 		});
 		_at(9.5, () -> {
 			_game.remove(p, true);
 			_game.add(p);
 			_game.remove(_balls, true);
 			_game.add(_balls);
-			p.animation.addByIndices('crouchlook', 'fakergf searching', [0], '', 1, false);
-			p.lockedAnim = 'crouchlook';
+			final f = p.frames;
+			final idle = f.frames.indexOf(f.getByName('fakergf idle0000'));
+			p.animation.add('crouchin', [idle, idle, f.frames.indexOf(f.getByName('fakergf reward0002')), f.frames.indexOf(f.getByName('fakergf reward0001')), f.frames.indexOf(f.getByName('fakergf searching0000'))], 10, false);
+			p.lockedAnim = 'crouchin';
 			FlxTween.tween(_spot, { alpha: 1 }, 0.45);
 		});
-		_at(5.6, () -> _look((gfStop + bfX) * 0.5 + 4, 84, 4.4, 3.9, FlxEase.sineInOut));
+		_at(6.098, () -> _look((gfStop + bfX) * 0.5 + 4, 84, 4.4, 3.9, FlxEase.sineInOut));
 		_at(10.0, () -> _look(bfX - 6, 112, 4.8, 2.3, FlxEase.sineInOut));
 		_at(27.85, () -> _punch(0.25, 0.4));
 		_at(32.5, () -> _look(bfX - 10, 104, 4.6, 2.5, FlxEase.sineInOut));
@@ -258,10 +266,10 @@ class FinalCutscene
 		_at(110.95, () -> _look(rubbleX + 10, rubbleGround - 76, 4.2, 0.45, FlxEase.quadIn));
 		_at(111.4, () -> _punch(0.25, 0.4));
 		_at(112.0, () -> _look(rubbleX + 10, rubbleGround - 78, 5.0, 3.0, FlxEase.sineInOut));
-		_at(115.94, () -> _look(rubbleX + 10, rubbleGround - 74, 4.1, 0.25, FlxEase.quadOut));
-		_at(117.2, () -> _look(rubbleX + 10, rubbleGround - 90, 4.9, 3.2, FlxEase.sineInOut));
-		_at(120.47, () -> _look(rubbleX + 40, rubbleGround - 74, 4.2, 0.6, FlxEase.quadOut));
-		_at(122.0, () -> _look(rubbleX + 20, rubbleGround - 68, 3.9, 2.8, FlxEase.sineInOut));
+		_at(115.149, () -> _look(rubbleX + 10, rubbleGround - 74, 4.1, 0.25, FlxEase.quadOut));
+		_at(116.41, () -> _look(rubbleX + 10, rubbleGround - 90, 4.9, 5.0, FlxEase.sineInOut));
+		_at(121.469, () -> _look(rubbleX + 40, rubbleGround - 74, 4.2, 0.6, FlxEase.quadOut));
+		_at(123.0, () -> _look(rubbleX + 20, rubbleGround - 68, 3.9, 1.8, FlxEase.sineInOut));
 
 		_at(12.33, () -> {
 			_black.alpha = 1;
@@ -350,7 +358,7 @@ class FinalCutscene
 			_look(kissX + 20, 80, 4);
 			FlxTween.tween(_white, { alpha: 0 }, 0.8, { ease: FlxEase.quadOut });
 		});
-		_at(56.1, () -> _kiss.animation.play('hug'));
+		_at(57.019, () -> _kiss.animation.play('hug'));
 		_at(57.9, () -> _kiss.animation.play('kiss'));
 		_at(58.2, () -> {
 			_heart.setPosition(kissX - 4.5, ground - 65);
@@ -447,11 +455,8 @@ class FinalCutscene
 			_feet(_metal, rubbleX, rubbleGround - 60, 23, 41);
 			_metal.visible = true;
 			_metal.animation.play('fall');
-			_metal.flipY = true;
-			FlxTween.tween(_metal, { x: _metal.x + 140, y: _metal.y - 220 }, 0.9, { ease: FlxEase.quadOut, onComplete: _ -> {
-				_metal.visible = false;
-				_metal.flipY = false;
-			} });
+			_metal.flipX = true;
+			FlxTween.tween(_metal, { x: _metal.x + 140, y: _metal.y - 220 }, 1.15, { ease: FlxEase.quadIn, onComplete: _ -> _metal.visible = false });
 		});
 
 		_at(93.9, () -> {
@@ -498,24 +503,27 @@ class FinalCutscene
 			for (i in 0...6) _dust(rubbleX - 15 + i * 6, rubbleGround - 40, i * 0.03);
 			_faker.visible = true;
 			_faker.flipX = false;
-			_exePose('takeoff', rubbleX, rubbleGround - 34);
-			FlxTween.num(0, 1, 0.9, null, k -> {
-				if (k >= 0.5 && _faker.animation.curAnim.name == 'takeoff') _faker.animation.play('air');
-				_feet(_faker, rubbleX + 10 * k, rubbleGround - 34 + (-6) * k - 280 * k * (1 - k), 65.5, 97);
-			});
+			_exePose('jumpAngry', rubbleX, rubbleGround - 34);
+			FlxTween.num(0, 1, 0.9, null, k -> _feet(_faker, rubbleX + 10 * k, rubbleGround - 34 + (-6) * k - 280 * k * (1 - k), 65.5, 97));
 		});
 		_at(111.4, () -> {
-			_exePose('landing', rubbleX + 10, rubbleGround - 40);
+			_exePose('landAngry', rubbleX + 10, rubbleGround - 40);
 			_game.gameCamera.shake(0.007, 0.25);
 			_debris(rubbleX + 10, rubbleGround - 40, 8, 0.5);
 			for (i in 0...6) _dust(rubbleX + 10 + (i % 2 == 0 ? -1 : 1) * (6 + i * 3), rubbleGround - 40, i * 0.04);
 		});
-		_at(111.6, () -> _exePose('idle', rubbleX + 10, rubbleGround - 40));
-		_at(112.82, () -> _exePose('growIn', rubbleX + 10, rubbleGround - 40));
-		_at(113.02, () -> _exePose('growLoop', rubbleX + 10, rubbleGround - 40));
+		_at(112.0, () -> _exePose('growIn', rubbleX + 10, rubbleGround - 40));
+		var flick = 112.2;
+		var frame = 0;
+		while (flick < 114.848)
+		{
+			final pose = frame++ % 2 == 0 ? 'growA' : 'growB';
+			_at(flick, () -> _exePose(pose, rubbleX + 10, rubbleGround - 40));
+			flick += 0.18 + (0.03 - 0.18) * (flick - 112.2) / (114.848 - 112.2);
+		}
 		for (i in 0...4) _at(113.1 + i * 0.5, () -> _redFlash(0.12 + i * 0.04, 0.35));
-		_at(115.1, () -> _exePose('growUp', rubbleX + 10, rubbleGround - 40));
-		_at(115.94, () -> {
+		_at(114.848, () -> _exePose('growUp', rubbleX + 10, rubbleGround - 40));
+		_at(115.149, () -> {
 			_redFlash(0.5, 1.0);
 			_exePose('growBurst', rubbleX + 10, rubbleGround - 40);
 			_game.gameCamera.shake(0.014, 0.6);
@@ -523,22 +531,22 @@ class FinalCutscene
 			_white.alpha = 0.85;
 			FlxTween.tween(_white, { alpha: 0 }, 0.5, { ease: FlxEase.quadOut });
 		});
-		_at(117.08, () -> {
+		_at(116.293, () -> {
 			_exePose('growEnd', rubbleX + 10, rubbleGround - 40);
 			_game.gameCamera.shake(0.004, 0.25);
 		});
-		_at(120.47, () -> {
+		_at(121.469, () -> {
 			_faker.visible = false;
 			_feet(_mad, rubbleX + 10, rubbleGround - 40, 94.5, 103);
 			_mad.visible = true;
 			_mad.animation.play('leave');
 		});
-		_at(120.93, () -> {
+		_at(121.929, () -> {
 			_redFlash(0.3, 0.5);
 			_game.gameCamera.shake(0.01, 0.3);
 			_debris(rubbleX + 10, rubbleGround - 40, 10, 0.8);
 		});
-		_at(121.8, () -> _mad.visible = false);
+		_at(122.799, () -> _mad.visible = false);
 		_at(124.8, () -> {
 			_black.alpha = 0;
 			FlxTween.tween(_black, { alpha: 1 }, 0.4);
@@ -560,9 +568,21 @@ class FinalCutscene
 		final p = _game.player;
 		if (_walk != null)
 		{
-			final k = Math.min(1, _time / 4.8) * Math.PI * 0.5;
-			p.body.position.x = _walk.from + (_walk.to - _walk.from) * Math.sin(k);
-			p.body.velocity.x = (_walk.to - _walk.from) * Math.PI * 0.5 / 4.8 * Math.cos(k);
+			final pace = [[0.0, 70.0], [4.318, 38.0], [5.298, 110.0], [5.498, 0.0]];
+			var dist = 0.0, total = 0.0, speed = 0.0;
+			for (i in 1...pace.length)
+			{
+				final t0 = pace[i - 1][0], v0 = pace[i - 1][1], t1 = pace[i][0], v1 = pace[i][1];
+				total += (v0 + v1) * 0.5 * (t1 - t0);
+				if (_time <= t0) continue;
+				final t = Math.min(_time, t1);
+				final v = v0 + (v1 - v0) * (t - t0) / (t1 - t0);
+				dist += (v0 + v) * 0.5 * (t - t0);
+				if (_time < t1) speed = v;
+			}
+			final k = (_walk.to - _walk.from) / total;
+			p.body.position.x = _walk.from + dist * k;
+			p.body.velocity.x = speed * k;
 		}
 		if (_follow)
 		{

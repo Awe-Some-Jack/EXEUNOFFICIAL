@@ -132,4 +132,7 @@
 <SubTexture name="exe mad0020" x="57" y="708" width="47" height="29" frameX="0" frameY="-73" frameWidth="211" frameHeight="103" />
 <SubTexture name="exe mad0021" x="254" y="708" width="1" height="1" frameX="0" frameY="0" frameWidth="211" frameHeight="103" />
 <SubTexture name="exe mad0022" x="254" y="708" width="1" height="1" frameX="0" frameY="0" frameWidth="211" frameHeight="103" />
+<SubTexture name="exe jumpangry0000" x="0" y="739" width="66" height="96" frameX="-37" frameY="0" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe jumpangry0001" x="68" y="739" width="70" height="66" frameX="-32" frameY="-31" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe jumpangry0002" x="140" y="739" width="72" height="67" frameX="-33" frameY="-30" frameWidth="120" frameHeight="97" />
 </TextureAtlas>

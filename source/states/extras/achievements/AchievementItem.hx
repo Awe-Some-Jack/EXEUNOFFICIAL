@@ -73,7 +73,7 @@ class AchievementItem extends FlxSpriteGroup
 
             if(data.secret)
             {
-                title.text = questionify(Language.getPhrase('achievement_' + data.id, data.name));
+                title.text = Language.getPhrase('achievement_' + data.id, data.name);
                 description.text = Language.get('achievement_secret_desc', 'Unlock this achievement to see its description.');
             }
         }

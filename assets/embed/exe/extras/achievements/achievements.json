@@ -54,13 +54,13 @@
 	{
 		"name": "Magos y Magas!",
 		"description": "Find Pepe el Mago in The Valley.",
-		"id": "pepe",
+		"id": "magosymagas",
 		"secret": true
 	},
 	{
 		"name": "So... Is the Exe Challenge still going?",
 		"description": "Find Luigikid in The Valley.",
-		"id": "luigikid",
+		"id": "exechallenge",
 		"secret": true
 	},
 	{
@@ -239,7 +239,7 @@
 	{
 		"name": "GET OUT OF ME HEAD MAN",
 		"description": "Explode one of the Devs heads in the Credits menu.",
-		"id": "explotion",
+		"id": "mehead",
 		"secret": true
 	},
 	{

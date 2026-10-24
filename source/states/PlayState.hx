@@ -32,6 +32,7 @@ import states.editors.CharacterEditorState;
 
 import states.substates.PauseSubState;
 import states.substates.GameOverSubstate;
+import states.NOCHEATING;
 
 import lime.app.Application as Application;
 
@@ -2416,8 +2417,33 @@ class PlayState extends MusicBeatState
 		{
 			if (controls.justPressed('debug_1'))
 			{
-				if (FlxG.keys.pressed.SHIFT) openChartEditor();
-				else trace('NO CHEATING!!');
+				if (FlxG.keys.pressed.SHIFT) { openChartEditor(); }
+				else
+				{
+					trace('NO CHEATING!!');
+
+					paused = true;
+					canResync = false;
+					canPause = false;
+					#if VIDEOS_ALLOWED
+					if(videoCutscene != null)
+					{
+						videoCutscene.destroy();
+						videoCutscene = null;
+					}
+					#end
+
+					persistentUpdate = false;
+					persistentDraw = false;
+					FlxTimer.globalManager.clear();
+					FlxTween.globalManager.clear();
+					FlxG.camera.filters = [];
+
+					vocals.stop();
+					opponentVocals.stop();
+					FlxG.sound.music.stop();
+					openSubState(new NOCHEATING());
+				}
 			}
 		}
 

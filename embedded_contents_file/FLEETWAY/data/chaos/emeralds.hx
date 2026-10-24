@@ -95,6 +95,8 @@ function onCreatePost()
     gradient.alpha = 0;
     gradient.y = ClientPrefs.data.downScroll ? -gradient.height/2 : FlxG.height - gradient.height/2;
     game.insert(0, gradient);
+
+    setupHUDEmeralds();
 }
 
 var _time:Float = 0;
@@ -162,6 +164,7 @@ function goodNoteHit(note:Note)
             curEmerald.xOffset = 100;
         }});
         collectedEmeralds++;
+        getHUDEmerald(curEmeraldIndex);
 
         FlxTween.cancelTweensOf(gradient);
         gradient.alpha = 1;
@@ -205,18 +208,18 @@ function onCountdownStarted()
  * Transform and events change stuff, here i change the events if the user is superbf or not along with the chaosEvent.lua script
  */
 
- var spawnCount:Int = 0;
 function onSpawnNote(note:Note)
 {
     if(!note.mustPress) return;
 
     if(note.noteType == 'emerald') 
     {
-        gradient.color = colorsHex[spawnCount];
+        var curEmeraldIndex:Int = collectedEmeralds + missedEmeralds;
+
+        gradient.color = colorsHex[curEmeraldIndex];
         gradient.scale.set(1, 1);
         gradient.x = note.x - 25;
         FlxTween.tween(gradient, {alpha: 0.6, "scale.y": 8}, 1.75);
-        spawnCount++;
     }
     if(!getVar('canTransform')) note.animSuffix = '';
 }
@@ -322,4 +325,53 @@ function onStepHit()
         case 1221: if(!getVar('canTransform')) triggerEvent('Change Health Damage', '0.035');
         case 1328: if(!getVar('canTransform')) triggerEvent('Change Health Damage', '0.045');
     }
+}
+
+var hudEmeralds:FlxSpriteGroup;
+// HUD Emeralds
+function setupHUDEmeralds():Void
+{
+    hudEmeralds = new FlxSpriteGroup();
+    hudEmeralds.camera = camHUD;
+    add(hudEmeralds);
+
+	for(i in 0...7)
+    {
+        var emerald = new FlxSprite(i * 60, 0);
+        emerald.loadGraphic(Paths.image('hud/emerald'));
+        emerald.active = false;
+        emerald.scale.set(0.09, 0.09);
+        emerald.updateHitbox();
+        emerald.color = 0xFF111111;
+        hudEmeralds.add(emerald);
+
+        // FlxTween.tween(emerald.offset, {y: 45}, 2, {ease: FlxEase.sineInOut, type: 4, startDelay: 0.2 * i});
+    }
+
+    hudEmeralds.setPosition((FlxG.width - hudEmeralds.width) / 2, 590);
+
+    new FlxTimer().start(5, bumpHUDEmeralds, 0);
+}
+
+function getHUDEmerald(idx:Int):Void
+{
+    var emerald:FlxSprite = hudEmeralds.members[idx];
+    emerald.color = colorsHex[idx];
+    FlxTween.tween(emerald, {"scale.x": 0.22, "scale.y": 0.22}, 0.25, {ease: FlxEase.cubeOut});
+    FlxTween.tween(emerald, {"scale.x": 0.18, "scale.y": 0.18}, 0.3, {ease: FlxEase.cubeIn, startDelay: 0.3});
+
+    if(idx == 6) FlxTween.tween(hudEmeralds, {alpha: 0}, 2);
+}
+
+function bumpHUDEmeralds():Void
+{
+    var index:Int = 0;
+    new FlxTimer().start(0.3, () -> {
+        var emerald:FlxSprite = hudEmeralds.members[index];
+        if(emerald.scale.x < 0.15) return;
+
+        FlxTween.tween(emerald, {y: emerald.y - 10}, 0.25);
+        FlxTween.tween(emerald, {y: emerald.y}, 0.25, {startDelay: 0.25});
+        index++;
+    }, 7);
 }

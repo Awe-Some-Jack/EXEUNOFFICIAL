@@ -4,6 +4,7 @@ import openfl.filters.ShaderFilter;
 import openfl.utils.Assets;
 import objects.VideoSprite;
 import flixel.math.FlxAngle;
+import flixel.util.FlxGradient;
 
 using StringTools;
 
@@ -29,6 +30,7 @@ var fireBG:FlxVideoSprite;
 var blackCircle:FlxSprite;
 var isAtem:Bool = false;
 var camZoomingBeat:Bool = false;
+var fade:FlxSprite;
 
 var bgNeedle:Array<BackgroundSpriteAlt> = [
 	{path: 'roundabout/sky', position: [-750, -900], scroll: [0.3, 0.3]},
@@ -193,6 +195,9 @@ var stepEvents = [
 				camZoomingBeat = false;
 				game.camZoomingMult = 1;
 				game.camZoomingDecay = 1;
+				game.insert(999, white);
+				isAtem = false;
+
 				FlxTween.tween(white, {alpha: 1}, 1.5);
 				for(obj in [game.getLuaObject('hbBG'), game.getLuaObject('hbHealth'), game.getLuaObject('hbHealth2'), game.getLuaObject('iconBF'), game.getLuaObject('iconOpp'), game.getLuaObject('separatorHealth')]) 
 					FlxTween.tween(obj, {alpha: 0}, 1.5);
@@ -200,19 +205,15 @@ var stepEvents = [
 		},
 		{ 
 			step: 4512, callback: () -> {
+				game.insert(999, end);
+				game.insert(999, fade);
 				end.scale.set(0.9, 0.9);
 				FlxTween.tween(end, {alpha: 1, "scale.x": 1, "scale.y": 1}, 0.5, {ease: FlxEase.cubeOut});
 			}
 		},
 		{ 
-			step: 4580, callback: () -> {
-				FlxTween.tween(end, {"scale.x": 0.5, "scale.y": 0.5}, 30);
-			}
-		},
-		{ 
-			step: 4750, callback: () -> {
+			step: 4760, callback: () -> {
 				FlxTween.cancelTweensOf(end);
-				FlxTween.tween(end, {"scale.x": 0.35, "scale.y": 0.35}, 4);
 				FlxTween.tween(end, {alpha: 0}, 4);
 			}
 		},
@@ -275,20 +276,24 @@ function onCreatePost()
 	black.camera = game.camHUD;
 	game.add(black);
 
+	fade = FlxGradient.createGradientFlxSprite(500, 250, [0x00FFFFFF, 0xFFFFFFFF, 0xFFFFFFFF], 20);
+	fade.screenCenter();
+	fade.y = 400;
+	fade.scrollFactor.set(0, 0);
+
 	end = new FlxSprite();
-	end.frames = Paths.getSparrowAtlas('herworld/sarahher');
+	end.frames = Paths.getSparrowAtlas('herworld/sarah ending');
 	end.animation.addByPrefix('loop', 'saraxd', 24, true);
 	end.animation.play('loop');
 	end.scale.set(1, 1);
+	end.scrollFactor.set(0, 0);
 	end.alpha = 0.001;
 	end.screenCenter();
-	end.camera = game.camHUD;
-	game.insert(0, end);
 
 	white = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
 	white.alpha = 0;
-	white.camera = game.camHUD;
-	game.insert(0, white);
+	white.scrollFactor.set(0, 0);
+	white.scale.set(3, 3);
 
 	game.getLuaObject('exeScoreTxt').visible = false;
 
@@ -311,6 +316,7 @@ var brightValue:Float = 0;
 var time:Float = 0;
 function onUpdate(e) 
 {
+	camHUD.alpha = 1;
 	time += e;
 	glitch.setFloat('iTime', time / 2);
 	camGlitch.setFloat('iTime', time);

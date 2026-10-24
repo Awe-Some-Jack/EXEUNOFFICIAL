@@ -10,7 +10,7 @@ var chaosBG:Array<BackgroundSprite> = [
 	{path: 'bg/2', tag: '2', position: [720, 600], scale: [0.9, 0.9], layer: 'top'},
 	{path: 'bg/sonic', tag: 'sonic', position: [2255, 1640], scale: [0.545, 0.545], layer: 'top', isAtlas: true, animation: [{name: 'intro'}, {name: 'fuentes', indices: [92, 92]}]},
 	{path: 'bg/1', tag: 'pillars', position: [1400, 500], scale: [0.9, 1.1], scroll: [1.3, 1.1], layer: 'top'},
-	{path: 'bg/puelco', tag: 'cochinito', position: [4000, 2150], scale: [1.2, 1.2], scroll: [1.3, 1.3], front: true, animation: [{name: 'Porker Lewis'}]}
+	{path: 'bg/puelco', tag: 'cochinito', position: [3900, 2150], scale: [1.2, 1.2], scroll: [1.3, 1.3], front: true, animation: [{name: 'Porker Lewis'}]}
 ];
 
 var firstTime:Bool = true;
@@ -99,6 +99,7 @@ function onCreate()
 	camOpp = new FlxCamera();
 	camOpp.width = FlxG.width / 2 - 80; camOpp.height = 200;
 	camOpp.x = -camOpp.width; camOpp.y = 40;
+	camOpp.scroll.set(600, 500);
 	camOpp.target = dad;
 	camOpp.targetOffset.set(camOppOffset[0], camOppOffset[1]);
 	camOpp.followLerp = 0.07;
@@ -177,8 +178,8 @@ function onUpdate(e)
 	switch(dad.animation.name) {
 		case 'singLEFT': camOpp.targetOffset.set(camOppOffset[0] + -75, camOppOffset[1] + 0);
 		case 'singDOWN': camOpp.targetOffset.set(camOppOffset[0] + 0, camOppOffset[1] + 150);
-		case 'singUP': camOpp.targetOffset.set(camOppOffset[0] + 0, camOppOffset[1] + -100);
-		case 'singRIGHT': camOpp.targetOffset.set(camOppOffset[0] + 90, camOppOffset[1] + 30);
+		case 'singUP': camOpp.targetOffset.set(camOppOffset[0] + 0, camOppOffset[1] + -130);
+		case 'singRIGHT': camOpp.targetOffset.set(camOppOffset[0] + 100, camOppOffset[1] + 60);
 		default: camOpp.targetOffset.set(camOppOffset[0], camOppOffset[1]);
 	}
 }

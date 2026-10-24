@@ -394,6 +394,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 		if (_gameplayStarted)
 		{
 			if (_deathPhase == 0) player.handleInput(elapsed, 146.0, 134.0);
+			if (_deathPhase == 0 && !player.cinematic && player.y - player.offset.y > bg.cutY(player.x + player.width * 0.5)) _fallDeath();
 
 			for (g in tileMap.garys) g.npcUpdate(elapsed);
 			if (_deathPhase == 0) _updateEasterEggs();
@@ -467,6 +468,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 			}
 		}
 
+		gameCamera.bottom = bg.cutY(gameCamera.x) - 4;
 		gameCamera.update(elapsed);
 		_burnFlash.update(elapsed, player);
 		_scream.update(elapsed);
@@ -954,6 +956,14 @@ class TheValley extends MusicBeatState implements ExeWorld
 		player.body.type = BodyType.KINEMATIC;
 		player.body.velocity.setxy(0, 0);
 		player.body.position.y += 18;
+	}
+
+	function _fallDeath():Void
+	{
+		if (!_startDeath(0.5)) return;
+		player.body.type = BodyType.KINEMATIC;
+		player.body.velocity.setxy(0, 0);
+		player.setGravity(false);
 	}
 
 	function _stopBurnSound(fade:Float):Void

@@ -213,6 +213,23 @@ class BGValley
 		return -1;
 	}
 
+	public function cutY(x:Float):Float
+	{
+		var cut = Math.NEGATIVE_INFINITY;
+		var before:MapPart = null;
+		var after:MapPart = null;
+		for (p in _parts)
+		{
+			if (x >= p.x && x < p.x + p.width) cut = Math.max(cut, p.y + p.height);
+			else if (p.x + p.width <= x) { if (before == null || p.x + p.width > before.x + before.width) before = p; }
+			else if (after == null || p.x < after.x) after = p;
+		}
+		if (cut > Math.NEGATIVE_INFINITY) return cut;
+		if (before == null) return after == null ? bottom : after.y + after.height;
+		if (after == null) return before.y + before.height;
+		return Math.min(before.y + before.height, after.y + after.height);
+	}
+
 	public function getOcclusionAmount(target:FlxSprite, ?extraSprites:Array<FlxSprite>):Float
 	{
 		_near.resize(0);

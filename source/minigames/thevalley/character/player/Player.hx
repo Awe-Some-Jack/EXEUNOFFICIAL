@@ -378,15 +378,22 @@ class Player extends FlxSprite implements CameraTarget
 		if (!isGrounded || mode != Ground || !_gravityOn || _jumpLock > 0 || body.velocity.y < -60) return;
 		body.velocity.y -= TVNapeWorld.GRAVITY * elapsed;
 
-		final footY = body.position.y + cfg.hitbox.height * 0.5;
-		_ray.origin.setxy(body.position.x, footY - 2);
+		final h     = cfg.hitbox;
+		final rad   = h.footRadius ?? h.width * 0.5;
+		final footY = body.position.y + h.height * 0.5;
+		var gap = Math.POSITIVE_INFINITY;
 		_ray.direction.setxy(0, 1);
-		_ray.maxDistance = 12.0;
-		final res = body.space.rayCast(_ray, false);
-		if (res == null) return;
-		final gap = res.distance - 2;
-		res.dispose();
-		if (gap > 1.0) body.position.y += gap - 0.5;
+		for (k in -2...3)
+		{
+			final dx = k * rad * 0.45;
+			_ray.origin.setxy(body.position.x + dx, footY - (rad - Math.sqrt(rad * rad - dx * dx)) - 2);
+			_ray.maxDistance = 12.0;
+			final res = body.space.rayCast(_ray, false);
+			if (res == null) continue;
+			gap = Math.min(gap, res.distance - 2);
+			res.dispose();
+		}
+		if (gap > 1.0 && gap <= 10.0) body.position.y += gap - 0.5;
 	}
 
 	function _stepUp(dir:Int):Void

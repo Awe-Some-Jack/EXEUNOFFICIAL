@@ -9,9 +9,9 @@ function onCreate()
 
 function onUpdatePost(e)
 {
-	for (i in 0...notes.length)
+	for (i in 0...game.notes.length)
 	{
-		var note:Note = notes.members[i];
+		var note:Note = game.notes.members[i];
 		if (note.noteType == 'Miss Note')
 		{
 			if ((Conductor.songPosition - note.strumTime) > 10 && note.active)

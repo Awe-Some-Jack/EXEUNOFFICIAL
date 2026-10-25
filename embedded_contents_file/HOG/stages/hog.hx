@@ -775,9 +775,10 @@ function opponentNoteHitPre(note)
 var _oldMHS:Bool = false;
 function onSectionHit()
 {
-	if (songPhase == 'evil' && _oldMHS != mustHitSection)
+	if (songPhase == 'evil' && _oldMHS != mustHitSection && !tweenCamZoom)
 	{
-		cam.OGZoom = mustHitSection ? 0.7 : 0.47;
+		game.triggerEvent("Tween Camera Zoom", mustHitSection ? "0.7" : "0.47", "");
+		//cam.OGZoom = mustHitSection ? 0.7 : 0.47;
 	}
 	_oldMHS = mustHitSection;
 

@@ -18,8 +18,14 @@ import flixel.sound.FlxSound;
 typedef ExtrasMenuThemeEntry = {
     var name:String;
     var src:String;
-    var volume:Float;
     var author:String;
+    @:optional
+    var volume:Float;
+    @:optional
+    var timeStamps:{
+        var start:Float;
+        var end:Float;
+    }
 }
 
 class ExtrasMenu extends MusicBeatState
@@ -80,6 +86,12 @@ class ExtrasMenu extends MusicBeatState
         {
             name: "Door Into Summer (Reimagined)",
             src: "extras4",
+            author: "MeDicenKay",
+            volume: 1
+        },
+        {
+            name: "Flying Battery (Reimagineed)",
+            src: "extras5",
             author: "MeDicenKay",
             volume: 1
         },

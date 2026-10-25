@@ -3,6 +3,7 @@
 // - Once red, every drum beat shakes the camera.
 // - Your mom
 import psychlua.LuaUtils;
+import flixel.tweens.FlxTween.FlxTweenType;
 typedef BackgroundSpriteAlt =
 {
 	var path:String;
@@ -59,6 +60,7 @@ var wave     :ShaderStuff  = {daShader: null, uniforms: ["amount"     =>   0]};
 var lilGlitch:ShaderStuff  = {daShader: null, uniforms: ["size"       =>   0]};
 
 var vg:FlxSprite;
+var darkerVG:FlxSprite;
 function onCreate()
 {
 	makeBackgroundAlt(starv);
@@ -67,6 +69,13 @@ function onCreate()
 	vg = new FlxSprite().loadGraphic(Paths.image('starved/vinevrom'));
 	vg.camera = camHUD;
 	add(vg);
+	
+	darkerVG = new FlxSprite().loadGraphic(Paths.image('VG'));
+	darkerVG.camera = camHUD;
+	darkerVG.color = FlxColor.BLACK;
+	darkerVG.alpha = 0;
+	add(darkerVG);
+
 
 	game.gameplayCam._targetAlpha = 0.5;
 
@@ -148,6 +157,14 @@ function onEvent(n, v1, v2)
 				lilGlitch.shaderTweens['lilGlitchTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
 					lilGlitch.uniforms.set("size", v);
 				});
+		}
+	}
+	if (n == 'starvedEvents')
+	{
+		switch(v1)
+		{
+			case "flickerDark1":
+				FlxTween.tween(darkerVG, {alpha: 0.8}, 0.2, {type: FlxTweenType.PINGPONG});
 		}
 	}
 	if (n == 'Hide') FlxTween.tween(camHUD, {alpha: Std.int(v1)}, 0.3);

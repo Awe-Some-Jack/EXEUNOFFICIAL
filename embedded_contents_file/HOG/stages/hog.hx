@@ -117,7 +117,7 @@ var modcharts:Array<Void -> Void> = [
 var oppIcons:Map<String, String> = [
 	"idle-g1"
 	"singLEFT-g1"
-]
+];
 
 var illegalInstruction1:FlxBackdrop;
 var illegalInstruction2:FlxBackdrop;

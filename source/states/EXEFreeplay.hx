@@ -106,6 +106,9 @@ class EXEFreeplay extends MusicBeatState
 	var stopMusicPlay:Bool = false;
 	
 	var holdCheck:Float = 0;
+	#if !final
+	public static var inDevMode:Bool = false;
+	#end
 
 	public static var maniaUnlock:Bool = false;
 
@@ -300,7 +303,7 @@ class EXEFreeplay extends MusicBeatState
 
 				final songPath:String = Paths.formatToSongPath(sName);
 				if (songPath == 'stardust-speedway' && Mods.currentModDirectory == 'STARVED') continue;
-				if (unlocked.indexOf(songPath) == -1 && !(backend.BurningBot.active && songPath == 'burning')) continue;
+				if (unlocked.indexOf(songPath) == -1 && !(backend.BurningBot.active && songPath == 'burning') #if !final && !inDevMode #end) continue;
 
 				final info:ExeSongInfo = {
 					songName: sName,
@@ -522,6 +525,10 @@ class EXEFreeplay extends MusicBeatState
 	{
 		super.update(elapsed);
 		if (subState != null) return;
+
+		#if !final
+		if (#if mobile shortPress && !inDevMode || #end FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
+		#end
 
 		#if mobile if (COOLDOWN_TIMER > 0) COOLDOWN_TIMER -= elapsed; #end
 

@@ -3310,6 +3310,16 @@ class PlayState extends MusicBeatState
        
 		checkSavedSongs(formattedSong);
 
+		if (isStoryMode && states.SoundTest.fromSoundTest && states.SoundTest.enterTheValleyAfterBlackSun && formattedSong == 'black-sun')
+		{
+			states.SoundTest.enterTheValleyAfterBlackSun = false;
+			storyPlaylist = [];
+			isStoryMode = false;
+			FlxG.sound.music?.stop();
+			FlxG.switchState(() -> new minigames.thevalley.TheValley());
+			return true;
+		}
+
 		final exitToMenu = () -> {
 			Mods.loadTopMod();
 			#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end

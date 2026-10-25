@@ -56,6 +56,7 @@ class SoundTest extends MusicBeatState
 	static var menuSong:Bool = false;
 
 	public static var fromSoundTest:Bool = false;
+	public static var enterTheValleyAfterBlackSun:Bool = false;
 
 	var save:FlxSave;
 
@@ -456,6 +457,7 @@ class SoundTest extends MusicBeatState
 
 	function loadSong(name:String, isWeek:Bool = false):Void
 	{
+		enterTheValleyAfterBlackSun = false;
 		minigames.preymini.PreyMini.songLives = 0;
 		if (isWeek)
 		{
@@ -527,6 +529,7 @@ class SoundTest extends MusicBeatState
 			FlxG.switchState(() -> new states.access.cutscene.SharpyCutscene());
 			return;
 		}
+		enterTheValleyAfterBlackSun = isWeek && name.toLowerCase() == 'exe';
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());
 		FlxG.sound.music?.stop();

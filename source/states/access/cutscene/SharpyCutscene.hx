@@ -139,12 +139,15 @@ class SharpyCutscene extends MusicBeatState
 		_dialogBox.cameras = [_top];
 		_dialogBox.visible = false;
 		add(_dialogBox);
+
 		_dialogFace = new FlxSprite();
 		_dialogFace.cameras = [_top];
 		_dialogFace.visible = false;
 		add(_dialogFace);
+
 		_dialogText = new FlxText(_dialogBox.x + 60 * s + 12, _dialogBox.y + 5 * s + 8, 171 * s - 24, '', Language.cjkSize(26));
-		_dialogText.font = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : 'assets/exe/access/sharpy/box/ballot.ttf';
+		_dialogText.font = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : 'assets/exe/access/sharpy/box/palette.ttf';
+		_dialogText.antialiasing = ClientPrefs.data.antialiasing;
 		_dialogText.color = 0xFFFFFFFF;
 		_dialogText.cameras = [_top];
 		_dialogText.visible = false;
@@ -154,6 +157,7 @@ class SharpyCutscene extends MusicBeatState
 		_white.cameras = [_top];
 		_white.visible = false;
 		add(_white);
+		
 		_black = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 		_black.cameras = [_top];
 		add(_black);

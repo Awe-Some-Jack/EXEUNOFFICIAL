@@ -112,6 +112,12 @@ class ExtrasMenu extends MusicBeatState
             src: "credits",
             author: "MeDicenKay ft. Suonima",
             volume: 1
+        },
+        {
+            name: "Principle of Monotony",
+            src: "extras6",
+            author: "Kiv.FLP",
+            volume: 1
         }
     ];
 

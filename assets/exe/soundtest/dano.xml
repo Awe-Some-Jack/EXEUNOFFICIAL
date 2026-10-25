@@ -1,5 +1,6 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="dano.webp">
-<SubTexture name="dano idle0000" x="0" y="0" width="52" height="19" frameX="0" frameY="0" frameWidth="46" frameHeight="13" />
-<SubTexture name="dano selected0000" x="0" y="19" width="52" height="19" frameX="0" frameY="0" frameWidth="46" frameHeight="13" />
+	<!-- Created with FNF Spritesheet and XML Maker -->
+	<SubTexture name="dano idle0000" x="2" y="2" width="46" height="13" frameX="0" frameY="0" frameWidth="46" frameHeight="13"/>
+	<SubTexture name="dano selected0000" x="2" y="19" width="46" height="13" frameX="0" frameY="0" frameWidth="46" frameHeight="13"/>
 </TextureAtlas>

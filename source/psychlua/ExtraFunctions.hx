@@ -110,7 +110,8 @@ class ExtraFunctions
 
 		LuaUtilsHx.addFunction(lua, 'checkFileExists', function(filename:String, absolute:Bool = false) {
 			#if MODS_ALLOWED
-			return absolute ? FileSystem.exists(filename) : FileSystem.exists(Paths.getPath(filename, TEXT));
+			final checkPath:String = absolute ? filename : Paths.getPath(filename, TEXT);
+			return FileSystem.exists(checkPath) || Assets.exists(checkPath, TEXT);
 			#else
 			return absolute ? Assets.exists(filename, TEXT) : Assets.exists(Paths.getPath(filename, TEXT));
 			#end

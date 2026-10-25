@@ -20,11 +20,6 @@
     "assets/exe/soundtest/",
     "assets/exe/story/padLock.webp",
     "assets/shared/images/pixelUI/",
-    "assets/exe/access/fatal/box.webp",
-    "assets/exe/access/fatal/boxred.webp",
-    "assets/exe/access/fatal/boxbig.webp",
-    "assets/exe/access/fatal/face.webp",
-    "assets/exe/access/fatal/cutscene/errok.webp",
-    "assets/exe/access/fatal/cutscene/errsorry.webp"
+    "assets/exe/access/fatal/"
   ]
 }

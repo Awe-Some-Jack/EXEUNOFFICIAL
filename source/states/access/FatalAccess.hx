@@ -132,7 +132,10 @@ class FatalAccess extends MusicBeatState
 
 	public static function menuScene():Null<FatalScene>
 	{
-		#if (sys && !mobile)
+		#if mobile
+		if (granted() || denied() || StoryModeState.weekCompleted.get('exe') != true) return null;
+		return FlxG.save.data.fatalMobileSeen == true ? REMINDER : TRANSMISSION;
+		#elseif sys
 		if (granted() || denied() || StoryModeState.weekCompleted.get('exe') != true) return null;
 		if (!FileSystem.exists(folderPath())) return TRANSMISSION;
 		if (FileSystem.exists(filePath())) return REMINDER;
@@ -213,6 +216,9 @@ class FatalAccess extends MusicBeatState
 		return null;
 	}
 
+	public static function parseAnswer(text:String):Null<Bool>
+		return _readAnswer('>' + text);
+
 	static function _readAnswer(content:String):Null<Bool>
 	{
 		final mark = content.lastIndexOf('>');
@@ -287,10 +293,17 @@ class FatalAccess extends MusicBeatState
 
 	static function _sound(path:String):Sound
 	{
-		#if sys
-		if (FileSystem.exists(path)) return Sound.fromFile(path);
+		#if (sys && !mobile)
+		if (FileSystem.exists(path))
+		{
+			try return Sound.fromFile(path) catch (e:Dynamic) {}
+		}
 		#end
-		return Assets.exists(path) ? Assets.getSound(path) : null;
+		if (Assets.exists(path))
+		{
+			try return Assets.getSound(path) catch (e:Dynamic) {}
+		}
+		return null;
 	}
 
 	static function _fontPath():String
@@ -931,18 +944,39 @@ class FatalAccess extends MusicBeatState
 	{
 		switch (_scene)
 		{
-			case TRANSMISSION | DENIED:
-				#if (sys && !mobile)
+			case TRANSMISSION:
+				#if mobile
+				_toMobileAccess(true);
+				#elseif sys
 				Sys.exit(0);
 				#else
 				Mods.loadTopMod();
 				FlxG.switchState(() -> new EXETitle());
 				#end
+			case DENIED:
+				Sys.exit(0);
 			case GRANTED:
 				_playCutscene();
 			default:
+				#if mobile
+				_toMobileAccess(false);
+				#else
 				_backToMenu();
+				#end
 		}
+	}
+
+	function _toMobileAccess(first:Bool):Void
+	{
+		if (first)
+		{
+			FlxG.save.data.fatalMobileSeen = true;
+			FlxG.save.flush();
+		}
+		_restoreWindow();
+		FlxTransitionableState.skipNextTransIn = true;
+		FlxTransitionableState.skipNextTransOut = true;
+		FlxG.switchState(() -> new FatalAccessMobile());
 	}
 
 	function _backToMenu():Void

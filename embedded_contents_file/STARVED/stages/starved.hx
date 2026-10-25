@@ -164,7 +164,10 @@ function onEvent(n, v1, v2)
 		switch(v1)
 		{
 			case "flickerDark1":
-				FlxTween.tween(darkerVG, {alpha: 0.8}, 0.2, {type: FlxTweenType.PINGPONG});
+				FlxTween.tween(darkerVG, {alpha: 1}, 2, {type: FlxTweenType.PINGPONG});
+			case "stopFlickerDark":
+				FlxTween.cancelTweensOf(darkerVG);
+				FlxTween.tween(darkerVG, {alpha: 0}, 2);
 		}
 	}
 	if (n == 'Hide') FlxTween.tween(camHUD, {alpha: Std.int(v1)}, 0.3);

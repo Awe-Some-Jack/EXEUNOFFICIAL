@@ -404,8 +404,12 @@
 		{
 			"name": "KraimYT",
 			"icon": "kraim",
+			"quote": "KraimYT is an independent musician and composer known in the Friday Night Funkin' modding community for his tracks, particularly within projects inspired by Sonic.EXE and creepypastas. Notably, he approved that \"Tribal,\" co-produced with Kiv.flp, for potential inclusion in a potential but unconfirmed upcoming update for the mod Vs. Sonic.EXE (Unofficial).",
 			"nation": "chile",
-			"description": "Composer"
+			"description": "Composer",
+			"twitter": "https://x.com/KraimYT1",
+			"youtube": "https://www.youtube.com/@KraimYT",
+			"discord": "kraimyt1"
 		},
 		{
 			"name": "DX Black Fire",

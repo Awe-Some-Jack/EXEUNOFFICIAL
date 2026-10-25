@@ -144,7 +144,7 @@ class SharpyCutscene extends MusicBeatState
 		_dialogFace.visible = false;
 		add(_dialogFace);
 		_dialogText = new FlxText(_dialogBox.x + 60 * s + 12, _dialogBox.y + 5 * s + 8, 171 * s - 24, '', Language.cjkSize(26));
-		_dialogText.font = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : 'assets/exe/access/sharpy/box/ballot.ttf';
+		_dialogText.font = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : 'assets/exe/access/sharpy/box/palette.ttf';
 		_dialogText.color = 0xFFFFFFFF;
 		_dialogText.cameras = [_top];
 		_dialogText.visible = false;

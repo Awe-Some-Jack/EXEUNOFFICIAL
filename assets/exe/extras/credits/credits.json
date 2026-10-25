@@ -494,6 +494,16 @@
 			"extra": ["image", "chinito.jpg"]
 		},
 		{
+			"name": "Szilváspite",
+			"icon": "szilva",
+			"nation": "template",
+			"description": "Pixel Artist",
+			"quote": "Hey im Szilváspite im a pixel artist for the mod i just did the b4cksl4sh bgs\nAND the hungarian translation for the mod, thats why its not utter dogshit like in other games.\nIll do more if more updates come out so get ready for 1.5 cause what were planning is gonna be insane.\nDid you know b4cksl4sh was originally going to have 9 keys?\nNo?",
+			"youtube": "https://www.youtube.com/channel/UCVdoNUnIFgLyyoOuRKzRZdA",
+			"colors": [[128, 0, 128], [1, 5, 1]],
+			"extra": ["video", "minecra"]
+		},
+		{
 			"name": "Alex_Hamud",
 			"icon": "alex",
 			"nation": "russia",

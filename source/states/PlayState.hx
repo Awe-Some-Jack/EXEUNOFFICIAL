@@ -2452,6 +2452,11 @@ class PlayState extends MusicBeatState
 					}
 				}
 			}
+
+			#if !final
+			if (controls.justPressed('debug_2'))
+				openCharacterEditor();
+			#end
 		}
 
 		if (healthBar.bounds.max != null && health > healthBar.bounds.max)
@@ -2610,6 +2615,19 @@ class PlayState extends MusicBeatState
 			}
 			checkEventNote();
 		}
+
+		#if !final
+		if(!endingSong && !startingSong) {
+			if (FlxG.keys.justPressed.ONE) {
+				KillNotes();
+				FlxG.sound.music.onComplete();
+			}
+			if(FlxG.keys.justPressed.TWO) { 
+				setSongTime(Conductor.songPosition + 10000);
+				clearNotesBefore(Conductor.songPosition);
+			}
+		}
+		#end
 
 		if (hasScripts) {
 			setOnScripts('botPlay', cpuControlled);

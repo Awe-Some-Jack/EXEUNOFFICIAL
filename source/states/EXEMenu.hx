@@ -88,6 +88,9 @@ class EXEMenu extends MusicBeatState
 	#end
 
 	var unlocked:Array<String> = [];
+	#if !final
+	public static var inDevMode:Bool = false;
+	#end
 
 	override function create()
 	{
@@ -174,6 +177,9 @@ class EXEMenu extends MusicBeatState
 		var save:FlxSave = new FlxSave();
 		save.bind('savedSongs', CoolUtil.getSavePath());
 		unlocked = cast (save.data.songs ?? []);
+		#if !final
+		if (inDevMode) unlocked = ['f', 'u', 'c', 'k', 'y', 'o', 'u'];
+		#end
 
 		var colorSwap = new ColorSwap();
 		colorSwap.saturation = -1;
@@ -322,6 +328,21 @@ class EXEMenu extends MusicBeatState
 			_fatalTimer -= elapsed;
 			if (_fatalTimer <= 0) _startFatalGlitch();
 		}
+
+		#if !final
+		if (#if mobile shortPress && !inDevMode || #end FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
+
+		if (FlxG.keys.justPressed.T) FlxG.switchState(() -> new states.CreditsRollState());
+		if (FlxG.keys.justPressed.F && canInteract)
+		{
+			FatalAccess.resetForTesting();
+			if (!FlxG.keys.pressed.SHIFT)
+			{
+				_fatalScene = TRANSMISSION;
+				_startFatalGlitch();
+			}
+		}
+		#end
 
 		soundHold += elapsed;
 

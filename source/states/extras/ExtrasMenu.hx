@@ -90,14 +90,20 @@ class ExtrasMenu extends MusicBeatState
             volume: 1
         },
         {
-            name: "Flying Battery (Reimagineed)",
+            name: "Flying Battery (Reimagined)",
             src: "extras5",
             author: "MeDicenKay",
             volume: 1
         },
         {
-            name: "Chao Garden",
+            name: "Chaos Garden",
             src: "chaogarden",
+            author: "Kiv.FLP",
+            volume: 1
+        },
+        {
+            name: "Principle of Monotony",
+            src: "extras6",
             author: "Kiv.FLP",
             volume: 1
         },
@@ -111,12 +117,6 @@ class ExtrasMenu extends MusicBeatState
             name: "Hall of Fame",
             src: "credits",
             author: "MeDicenKay ft. Suonima",
-            volume: 1
-        },
-        {
-            name: "Principle of Monotony",
-            src: "extras6",
-            author: "Kiv.FLP",
             volume: 1
         }
     ];

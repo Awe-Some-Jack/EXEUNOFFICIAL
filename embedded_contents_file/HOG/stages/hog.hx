@@ -1,6 +1,7 @@
 import psychlua.LuaUtils;
 import flixel.math.FlxMath;
 import flixel.math.FlxAngle;
+import flixel.addons.display.FlxBackdrop;
 
 using StringTools;
 
@@ -18,6 +19,8 @@ typedef Shader = {
 	@:optional var shaderTweens:Map<String, FlxTween>;
 }
 
+typedef RollEmber = { spr:FlxSprite, vy:Float, phase:Float, sway:Float, base:Float }
+
 var hogBG:Array<BackgroundSprite> = [
 	{path: 'bg/normal/sky', position: [-820, -1100], scroll: [0.2, 0.2]},
 	{path: 'bg/normal/clouds', position: [-820, -600], scroll: [0.2, 0.2], backdrop: ['x', [25, 0]]},
@@ -26,16 +29,22 @@ var hogBG:Array<BackgroundSprite> = [
 	{path: 'bg/normal/hogwaterfall', position: [-270, 70], scroll: [0.4, 0.4], animation: [{name: 'leftwatermark', fps: 12, looped: true}]},
 	{path: 'bg/normal/mountain2', position: [-730, 90], scroll: [0.4, 0.4]},
 	{path: 'bg/normal/hogwaterfall', position: [600, 50], scroll: [0.4, 0.4], animation: [{name: 'rightwaterfall', fps: 12, looped: true}]},
-	{path: 'bg/normal/hill', position: [-850, -130], scroll: [0.6, 0.6], isAtlas: true, animation: [{name: 'creepy', fps: 36, looped: true}, {name: 'normal', fps: 36, looped: true}]},
+	{path: 'bg/normal/hill', tag: 'hill', position: [-850, -130], scroll: [0.6, 0.6], isAtlas: true, animation: [{name: 'evil'}, {name: 'creepy', fps: 36, looped: true}, {name: 'normal', fps: 36, looped: true}]},
 	{path: 'bg/normal/floor', position: [-900, -450]},
-	{path: 'characters/tailsatlas', tag: 'tails', position: [-80, -100], scale: [0.8, 0.8], scroll: [0.8, 0.8], isAtlas: true, animation: [{name: 'evilidleg1'}, {name: 'evilidleg2'}, {name: 'evilidleg3'}, {name: 'evilidle'}, {name: 'normalidle'}]},
+	{path: 'characters/tailsatlas', tag: 'tails', position: [-80, -100], scale: [0.8, 0.8], scroll: [0.8, 0.8], isAtlas: true, animation: [{name: 'evilidleg1'}, {name: 'evilidleg2'}, {name: 'evilidleg3'}, {name: 'evilidle'}, {name: 'normalidle'}, {name: 'normalidle1'}, {name: 'normalidle2'}, {name: 'normalidle3'}, {name: 'normalidle4'}]},
 	{path: 'characters/knuxatlas', tag: 'knux', position: [1350, 350], isAtlas: true, animation: [{name: 'evilidleg1'}, {name: 'evilidleg2'}, {name: 'evilidleg3'}, {name: 'evilidle'}, {name: 'normalidle'}], layer: 'top'},
 	{path: 'bg/normal/fg', position: [-1050, -1150], scroll: [1.5, 1.5], scale: [1.1, 1.1], layer: 'top'},
-	{path: 'bg/normal/overlay', position: [-900, -650], scroll: [1.5, 1.5], layer: 'top', blend: 'add', color: 0xFFFF781E, alpha: 0.5}
+	{path: 'bg/normal/overlay', tag: 'overlay', position: [-900, -650], scroll: [1.5, 1.5], layer: 'top', blend: 'add', color: 0xFFFF781E, alpha: 0.5}
 ];
 
 var scorchedBG:Array<BackgroundSprite> = [
-	{path: 'bg/evil/fg', position: [-1654, -310], scroll: [1.5, 1.5], scale: [1.1, 1.1], layer: 'top'},
+	{path: 'bg/evil/sky', position: [-820 - 548, -1100], scroll: [0.2, 0.2]},
+	{path: 'bg/evil/mountains', position: [-820 - 548, -320 - 126], scroll: [0.4, 0.4]},
+	{path: 'bg/evil/hogwaterfall', position: [-270, 70], scroll: [0.4, 0.4], animation: [{name: 'leftwatermark', fps: 12, looped: true}]},
+	{path: 'bg/evil/mountain2', position: [-730, 90], scroll: [0.4, 0.4]},
+	{path: 'bg/evil/hogwaterfall', position: [600, 50], scroll: [0.4, 0.4], animation: [{name: 'rightwaterfall', fps: 12, looped: true}]},
+	{path: 'bg/evil/floor', position: [-900 - 548, -450 - 731]}
+	{path: 'bg/evil/fg', position: [-1254, -650], scroll: [1.5, 1.5], scale: [1.1, 1.1], layer: 'top'},
 ];
 
 final game:PlayState = PlayState.instance;
@@ -60,6 +69,8 @@ var bloom:Shader = {shader: null, config: ['saturation' => 1, 'brightness' => 0,
 var aberration:Shader = {shader: null, config: ['amount' => 0.1], defaultConfig: ['amount' => 0.1]};
 var chromatic:Shader = {shader: null};
 var glitch:Shader = {shader: null};
+var smear:Shader = {shader: null};
+var glitch2:Shader = {shader: null, config: ['amount' => 0.1]};
 
 var shaderChars:Array<DropShadow> = [
 	{shader: null, char: game.dad, tag: 'dad'},
@@ -103,10 +114,39 @@ var modcharts:Array<Void -> Void> = [
 	}
 ];
 
+var oppIcons:Map<String, String> = [
+	"idle-g1"
+	"singLEFT-g1"
+]
+
+var illegalInstruction1:FlxBackdrop;
+var illegalInstruction2:FlxBackdrop;
 var _isAttacking:Bool = false;
 function onCreate()
 {
 	if (Paths.formatToSongPath(PlayState.SONG.song) == 'manual-blast') isManualBlast = true;
+
+	if (isManualBlast)
+	{
+		illegalInstruction1 = new FlxBackdrop(Paths.image('bg/evil/illegalinstruction'), 0x11, 36, 14);
+		illegalInstruction1.color = 0xFF000000;
+		illegalInstruction1.scrollFactor.set();
+		illegalInstruction1.antialiasing = false;
+		illegalInstruction1.alpha = 0;
+		illegalInstruction1.velocity.set(250, 100);
+		illegalInstruction1.scale.set(2.5, 2.5); illegalInstruction1.updateHitbox();
+		insert(0, illegalInstruction1);
+
+		illegalInstruction2 = new FlxBackdrop(Paths.image('bg/evil/illegalinstruction'), 0x11, 36, 14);
+		illegalInstruction2.color = 0xFF000000;
+		illegalInstruction2.scrollFactor.set();
+		illegalInstruction2.antialiasing = false;
+		illegalInstruction2.alpha = 0;
+		illegalInstruction2.velocity.set(200, 100);
+		illegalInstruction2.y += 35;
+		illegalInstruction2.scale.set(2.5, 2.5); illegalInstruction2.updateHitbox();
+		insert(0, illegalInstruction2);
+	}
 
 	gf.scrollFactor.set(1, 1);
 	makeBackground(hogBG);
@@ -114,7 +154,8 @@ function onCreate()
 	if (isManualBlast)
 	{
 		makeBackground(scorchedBG);
-		for (spr in scorchedBG) spr.sprite.alpha = 0.0001;
+		for (spr in scorchedBG) spr.sprite.alpha = 0;
+		hogBG[7].sprite.animation.play('creepy', true);
 	}
 	
 	vignette = new FlxSprite().loadGraphic(Paths.image('VG'));
@@ -163,7 +204,7 @@ function onCreate()
 		dropShadow.setFloat('saturation', 0);
 		dropShadow.setFloat('str', 1);
 		dropShadow.setFloat('dist', 0);
-		dropShadow.setFloat('thr', 0.15);
+		dropShadow.setFloat('thr', 0.1);
 		dropShadow.setFloatArray('dropColor', [137 / 255, 96 / 255, 0 / 255]);
 
 		switch(c.tag) {
@@ -192,8 +233,6 @@ function onCreate()
 	aberration.shader.setFloat('amount', aberration.config.get('amount'));
 	aberration.shaderTweens = [];
 
-	camGame.filters = camHUD.filters = [new ShaderFilter(aberration.shader), new ShaderFilter(bloom.shader)];
-
 	if (!isManualBlast)
 	{
 		chromatic.shader = new ErrorHandledRuntimeShader('chromatic', File.getContent(Paths.shaderFragment('chromatic')));
@@ -204,8 +243,19 @@ function onCreate()
 		glitch.shader = new ErrorHandledRuntimeShader('glitchChromatic', File.getContent(Paths.shaderFragment('glitchChromatic')));
 		camGame.filters = camHUD.filters = [new ShaderFilter(aberration.shader), new ShaderFilter(bloom.shader), new ShaderFilter(chromatic.shader), new ShaderFilter(glitch.shader)];
 	}
+	else
+	{
+		smear.shader = new ErrorHandledRuntimeShader('smear', File.getContent(Paths.shaderFragment('smear')));
+
+		glitch2.shader = new ErrorHandledRuntimeShader('glitchb', File.getContent(Paths.shaderFragment('glitchb')));
+		glitch2.shader.setFloatArray('iResolution', [FlxG.width, FlxG.height]);
+		glitch2.shader.setFloat('Amount', 0);
+	}
+
+	camGame.filters = camHUD.filters = [new ShaderFilter(aberration.shader), new ShaderFilter(bloom.shader)];
 }
 
+var _particleGroup:Array<RollEmber> = [];
 function onCreatePost()
 {
 	for (i in 0...4)
@@ -230,6 +280,19 @@ function onCreatePost()
 			}
 		}
 	}
+
+	for (i in 0...75)
+	{
+		final big = FlxG.random.bool(30);
+		final e = new FlxSprite().loadGraphic(Paths.image('bg/evil/logo'));
+		e.setGraphicSize(big ? 30 : 15, big ? 30 : 15); e.updateHitbox();
+		e.active = false;
+		e.visible = false;
+		e.scrollFactor.set(FlxG.random.float(0.5, 1.5), FlxG.random.float(0.5, 1.5));
+		e.setPosition(FlxG.random.float(-1100, 2500), FlxG.random.float(-850, 800));
+		insert(game.members.indexOf(scorchedBG[5].sprite), e);
+		_particleGroup.push({spr: e, vy: FlxG.random.float(big ? 30 : 12, big ? 60 : 30), phase: FlxG.random.float(0, Math.PI * 2), sway: FlxG.random.float(6, 22), base: e.x});
+	}
 }
 
 var animationOffsets:Map<String, Map<String, Array<Float>>> = [
@@ -248,13 +311,15 @@ var animationOffsets:Map<String, Map<String, Array<Float>>> = [
 		'evilidleg3' => [-30, 214]
 	]
 ];
+
+var _idleSuffix:String = '';
 function onBeatHit()
 {
 	for (spr in hogBG)
 	{
 		if ((spr.tag == 'tails' || spr.tag == 'knux') && curBeat % 2 == 0 && spr.sprite != null)
 		{
-			var anim:String = 'normalidle';
+			var anim:String = 'normalidle' + (spr.tag == 'tails' ? _idleSuffix : '');
 			if (songPhase == 'evil') anim = 'evilidle';
 			if (songPhase == 'glitch') anim = 'evilidleg' + FlxG.random.int(1,3);
 
@@ -268,6 +333,16 @@ function onBeatHit()
 	}
 
 	if (curBeat % 2 == 0 && spacebar != null && spacebar.alpha >= 0.5) spacebar.animation.play('idle', true);
+
+	if (songPhase == 'glitch' && FlxG.random.bool(35))
+	{
+		var illegal = new FlxSprite().loadGraphic(Paths.image('bg/evil/illegalinstruction'));
+		illegal.antialiasing = false;
+		illegal.camera = camHUD;
+		illegal.setPosition(FlxG.random.int(0, FlxG.width - illegal.width), FlxG.random.int(0, FlxG.height - illegal.height));
+		add(illegal);
+		new FlxTimer().start(2, _ -> illegal.destroy());
+	}
 }
 
 var _suffix:Array<String> = [];
@@ -275,7 +350,6 @@ var _sine:Float = 0;
 function onUpdatePost(e:Float)
 {
 	_sine += e;
-	
 	bloom.shader.setFloat('saturation', bloom.config.get('saturation') + bloom.configOffset.get('saturation'));
 	bloom.shader.setFloat('brightness', bloom.config.get('brightness') + bloom.configOffset.get('brightness'));
 	bloom.shader.setFloat('contrast', bloom.config.get('contrast') + bloom.configOffset.get('contrast'));
@@ -332,6 +406,31 @@ function onUpdatePost(e:Float)
 			{
 				if (note.animSuffix == _suffix[1]) continue;
 				note.animSuffix = _suffix[1];
+			}
+		}
+
+		hogBG[7].sprite.shader.setFloat('iTime', _sine);
+		for (spr in scorchedBG)
+		{
+			spr.sprite.shader.setFloat('iTime', _sine);
+		}
+
+		glitch2.config.set('amount', FlxMath.lerp(glitch2.config.get('amount'), 0.1, 5 * e));
+		glitch2.shader.setFloat('Amount', glitch2.config.get('amount'));
+		smear.shader.setFloat('amount', FlxG.random.float(0, 0.075));
+		smear.shader.setFloat('angle', FlxG.random.float(0, 2));
+		glitch2.shader.setFloat('iTime', _sine);
+		for (h in _particleGroup)
+		{
+			if (h.spr == null) continue;
+			h.phase += e * 6;
+			h.spr.y -= h.vy * e * 6;
+			h.spr.x = h.base + Math.sin(h.phase * 0.9) * h.sway;
+			h.spr.alpha = 0.5 + 0.3 * Math.sin(h.phase * 2.3);
+			if (h.spr.y < -850)
+			{
+				h.spr.y = 800 + FlxG.random.float(5, 60);
+				h.base = FlxG.random.float(-1100, 2500);
 			}
 		}
 	}
@@ -496,8 +595,12 @@ function onEvent(n,v1,v2)
 			//manual blast events here vvvvvvvvv
 
 			case 'mbstart':
+				_idleSuffix = '1';
 				songPhase = 'transform';
 				FlxTween.tween(camHUD, {alpha: 0}, Conductor.crochet / 250);
+			case 'tails1': _idleSuffix = '2';
+			case 'tails2': _idleSuffix = '3';
+			case 'tails3': _idleSuffix = '4';
 			case 'fadeinmb':
 				FlxTween.tween(vignette, {alpha: 0.8}, Conductor.crochet / 250);
 				FlxTween.tween(blackScreen, {alpha: 1}, Conductor.crochet / 250);
@@ -510,6 +613,7 @@ function onEvent(n,v1,v2)
 				blackScreen.alpha = 0;
 				FlxTween.tween(blackScreen, {alpha: 1}, Conductor.crochet / 250);
 			case 'updateidles':
+				_idleSuffix = '';
 				songPhase = 'evil';
 
 				boyfriend.idleSuffix = '-mb';
@@ -517,15 +621,25 @@ function onEvent(n,v1,v2)
 
 				gf.idleSuffix = '-g';
 				gf.recalculateDanceIdle();
-				
-				hogBG[7].sprite.animation.play('creepy', true);
-				hogBG[12].sprite.alpha = 0;
+				game.remove(hogBG[7].sprite, true);
+				game.insert(game.members.indexOf(scorchedBG[4].sprite) + 1, hogBG[7].sprite);
+				game.remove(hogBG[9].sprite, true);
+				game.insert(game.members.indexOf(scorchedBG[5].sprite) + 1, hogBG[9].sprite);
+				hogBG[7].sprite.animation.play('evil', true);
+				hogBG[7].sprite.setPosition(hogBG[7].sprite.x + 50, hogBG[7].sprite.y - 50);
 
-				hogBG[11].sprite.alpha = 0;
+				for (spr in hogBG)
+				{
+					if (spr.tag != null) continue;
+					spr.sprite.destroy();
+					spr.sprite = null;
+					spr = null;
+				}
+				hogBG[12].sprite.alpha = 0;
 				for (spr in scorchedBG) spr.sprite.alpha = spr.alpha ?? 1;
 
-				bloom.defaultConfig = ['saturation' => 1, 'brightness' => -0.075, 'contrast' => 1.05];
-				bloom.config = ['saturation' => 1, 'brightness' => -0.075, 'contrast' => 1.05];
+				bloom.defaultConfig = ['saturation' => 1, 'brightness' => -0.05, 'contrast' => 1.03];
+				bloom.config = ['saturation' => 1, 'brightness' => -0.05, 'contrast' => 1.03];
 
 				bloom.configOffset = ['saturation' => 0, 'brightness' => 0, 'contrast' => 0];
 			case 'mbscorched':
@@ -545,8 +659,96 @@ function onEvent(n,v1,v2)
 				cam.BFy = 350;
 
 				cam.OverrideZoom = false;
+			case 'aayaay':
+				if (aberration.shaderTweens['abb']?.active ?? false) aberration.shaderTweens['abb'].cancel();
+		
+				aberration.shaderTweens['abb'] = FlxTween.num(0, 1, Conductor.crochet / (1000 / 10), {ease: FlxEase.cubeIn}, v -> {
+					aberration.shader.setFloat('amount', aberration.defaultConfig.get('amount') + v * 2);
+				});
+			case 'preglitch':
+				camHUD.fade(0x75FFFFFF, Conductor.crochet / 250, false, null, true);
 			case 'worlddying':
+				camHUD.fade(0x00FFFFFF, 0.0001, false, null, true);
+				camHUD.flash(0xFFFFFFFF, 2, null, true);
+				debugPrint('[ILLEGAL INSTRUCTION] THE ENVIRONMENT IS CORRUPTED AND IS BEING PREPARED FOR ELIMINATION.', 0xFFFF0000);
 				songPhase = 'glitch';
+				camGame.bgColor = 0xFFFFFFFF;
+				camGame.filters = camHUD.filters = [new ShaderFilter(aberration.shader), new ShaderFilter(bloom.shader), new ShaderFilter(smear.shader), new ShaderFilter(glitch2.shader)];
+				for (e in _particleGroup) e.spr.visible = true;
+				hogBG[7].sprite.shader = new ErrorHandledRuntimeShader('manualblastglitching', File.getContent(Paths.shaderFragment('manualblastglitching')));
+				for (spr in scorchedBG)
+				{
+					spr.sprite.shader = new ErrorHandledRuntimeShader('manualblastglitching', File.getContent(Paths.shaderFragment('manualblastglitching')));
+				}
+				hogBG[12].sprite.color = 0xFFFFFFFF;
+				hogBG[12].sprite.scale.set(2, 1.5);
+				hogBG[12].sprite.y -= 300;
+
+				//this might be the WORST code ever LMAO 🗣️🗣️🗣️🗣️🗣️🗣️🗣️
+			case 'delete1':
+				debugPrint('[WARNING] ASSET "contents/HOG/images/bg/hedge/sky.webp" MAY BE CORRUPTED. PREPARING FOR ITS REMOVAL.', 0xFFFF0000);
+				FlxTween.tween(hogBG[12].sprite, {alpha: 0.2}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(scorchedBG[0].sprite, {alpha: 0}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(scorchedBG[0].sprite.scale, {x: 2, y: 0.0001}, Conductor.crochet / (1000 / 8), {ease: FlxEase.expoIn});
+
+				FlxTween.tween(illegalInstruction1, {alpha: 1}, 30);
+				FlxTween.tween(illegalInstruction2, {alpha: 1}, 30);
+			case 'delete2':
+				debugPrint('[WARNING] ASSET "contents/HOG/images/bg/hedge/mountains.webp" MAY BE CORRUPTED. PREPARING FOR ITS REMOVAL.', 0xFFFF0000);
+				FlxTween.tween(hogBG[12].sprite, {alpha: 0.4}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(scorchedBG[1].sprite, {alpha: 0}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(scorchedBG[1].sprite.scale, {x: 2, y: 0.0001}, Conductor.crochet / (1000 / 8), {ease: FlxEase.expoIn});
+				FlxTween.tween(scorchedBG[4].sprite, {alpha: 0}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(scorchedBG[4].sprite.scale, {x: 2, y: 0.0001}, Conductor.crochet / (1000 / 8), {ease: FlxEase.expoIn});
+			case 'delete3':
+				debugPrint('[WARNING] ASSET "contents/HOG/images/bg/hedge/prowler.webp" MAY BE CORRUPTED. PREPARING FOR ITS REMOVAL.', 0xFFFF0000);
+				FlxTween.tween(hogBG[9].sprite, {alpha: 0}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(hogBG[9].sprite.scale, {x: 2, y: 0.0001}, Conductor.crochet / (1000 / 8), {ease: FlxEase.expoIn});
+			case 'delete4':
+				debugPrint('[WARNING] ASSET "contents/HOG/images/bg/hedge/waterfalls.webp" MAY BE CORRUPTED. PREPARING FOR ITS REMOVAL.', 0xFFFF0000);
+				FlxTween.tween(scorchedBG[2].sprite, {alpha: 0}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(scorchedBG[2].sprite.scale, {x: 2, y: 0.0001}, Conductor.crochet / (1000 / 8), {ease: FlxEase.expoIn});
+				FlxTween.tween(scorchedBG[3].sprite, {alpha: 0}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(scorchedBG[3].sprite.scale, {x: 2, y: 0.0001}, Conductor.crochet / (1000 / 8), {ease: FlxEase.expoIn});
+			case 'delete5':
+				debugPrint('[WARNING] ASSET "contents/HOG/images/bg/hedge/hills.webp" MAY BE CORRUPTED. PREPARING FOR ITS REMOVAL.', 0xFFFF0000);
+				FlxTween.tween(hogBG[12].sprite, {alpha: 0.6}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(hogBG[7].sprite, {alpha: 0}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(hogBG[7].sprite.scale, {x: 2, y: 0.0001}, Conductor.crochet / (1000 / 8), {ease: FlxEase.expoIn});
+			case 'delete6':
+				debugPrint('[WARNING] ASSET "contents/HOG/images/bg/hedge/fists.webp" MAY BE CORRUPTED. PREPARING FOR ITS REMOVAL.', 0xFFFF0000);
+				FlxTween.tween(hogBG[10].sprite, {alpha: 0}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(hogBG[10].sprite.scale, {x: 2, y: 0.0001}, Conductor.crochet / (1000 / 8), {ease: FlxEase.expoIn});
+			case 'delete7':
+				debugPrint('[WARNING] ASSET "contents/HOG/images/bg/hedge/foreground.webp" MAY BE CORRUPTED. PREPARING FOR ITS REMOVAL.', 0xFFFF0000);
+				FlxTween.tween(hogBG[12].sprite, {alpha: 0.75}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(scorchedBG[6].sprite, {alpha: 0}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(scorchedBG[6].sprite.scale, {x: 2, y: 0.0001}, Conductor.crochet / (1000 / 8), {ease: FlxEase.expoIn});
+			case 'delete8':
+				debugPrint('[WARNING] ASSET "assets/shared/images/characters/unofficialGF/spritemap1.webp" MAY BE CORRUPTED. PREPARING FOR ITS REMOVAL.', 0xFFFF0000);
+				FlxTween.tween(gf, {alpha: 0}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(gf.scale, {x: 2, y: 0.0001}, Conductor.crochet / (1000 / 8), {ease: FlxEase.expoIn});
+			case 'delete9':
+				debugPrint('[WARNING] ASSET "contents/HOG/images/bg/hedge/floor.webp" MAY BE CORRUPTED. PREPARING FOR ITS REMOVAL.', 0xFFFF0000);
+				FlxTween.tween(hogBG[12].sprite, {alpha: 1}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(scorchedBG[5].sprite, {alpha: 0}, Conductor.crochet / (1000 / 8));
+				FlxTween.tween(scorchedBG[5].sprite.scale, {x: 2, y: 0.0001}, Conductor.crochet / (1000 / 8), {ease: FlxEase.expoIn});
+			case 'delete10':
+				debugPrint('[WARNING] THE ENVIRONMENT IS COMPLETELY CORRUPTED; THE ELIMINATION OF THE CODE BEGINS.', 0xFFFF0000);
+				FlxTween.tween(hogBG[12].sprite, {alpha: 0}, Conductor.crochet / (1000 / 16));
+				FlxTween.tween(camHUD, {alpha: 0}, Conductor.crochet / (1000 / 12));
+				FlxTween.tween(boyfriend, {alpha: 0}, Conductor.crochet / (1000 / 16));
+				FlxTween.tween(dad, {alpha: 0}, Conductor.crochet / (1000 / 16));
+
+			case 'scoretxt': game.getLuaObject('exeScoreTxt').alpha = 0;
+			case 'hbbg': game.getLuaObject('healthBG').alpha = 0;
+			case 'hbtrue': game.getLuaObject('hbBG').alpha = 0;
+			case 'combo': game.comboGroup.visible = false;
+			case 'separator': game.getLuaObject('separatorHealth').alpha = 0;
+			case 'leftbar': game.getLuaObject('hbHealth2').alpha = 0;
+			case 'rightbar': game.getLuaObject('hbHealth').alpha = 0;
+			case 'scorchedicon': game.getLuaObject('iconOpp').alpha = 0;
+			case 'bficon': game.getLuaObject('iconBF').alpha = 0;
 		}
 	}
 }
@@ -566,6 +768,8 @@ function opponentNoteHitPre(note)
 	{
 		note.noAnimation = true;
 	}
+
+	if (songPhase == 'glitch') glitch2.config.set('amount', 0.25);
 }
 
 var _oldMHS:Bool = false;
@@ -579,6 +783,8 @@ function onSectionHit()
 
 	if (songPhase == 'glitch')
 	{
+		glitch2.config.set('amount', 0.4);
+
 		gf.skipDance = true;
 		gf.playAnim('idle-alt' + FlxG.random.int(1,9), true);
 		gf.specialAnim = true;
@@ -680,3 +886,6 @@ function revertDirection()
 		}
 	}
 }
+
+function onDestroy() FlxG.camera.bgColor = 0x0;
+function onGameOverStart() FlxG.camera.bgColor = 0x0;

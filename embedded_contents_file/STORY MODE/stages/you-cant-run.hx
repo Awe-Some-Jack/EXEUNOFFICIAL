@@ -224,14 +224,6 @@ function onUpdatePost(e:Float) {
 			}
 		}
 	}
-
-		
-	if (curStep >= 800){
-		@:privateAccess
-		if (game.dad.curCharacter.startsWith("sonic") && game.getLuaObject('iconOpp').char != "XENO-P22"){
-			game.getLuaObject('iconOpp').changeIcon('XENO-P22');
-		}
-	}
 }
 
 function onStepHit()

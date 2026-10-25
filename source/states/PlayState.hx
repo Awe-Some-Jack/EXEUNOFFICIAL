@@ -1372,6 +1372,7 @@ class PlayState extends MusicBeatState
 		seenCutscene = true;
 		firstPlay = true;
 		inCutscene = false;
+		canKeyAction = true;
 		var ret:Dynamic = callOnScripts('onStartCountdown', null, true);
 		if(ret != LuaUtils.Function_Stop) {
 			if (skipCountdown || startOnTime > 0) skipArrowStartTween = true;
@@ -2255,6 +2256,8 @@ class PlayState extends MusicBeatState
 	private final _spawnArgs:Array<Dynamic> = [0, 0, '', false, 0.0];
 	private final _keyArgs:Array<Dynamic>   = [0];
 
+	public var canKeyAction:Bool = false;
+
 	var sunkyPending:Bool = false;
 	function openSunkyOffer():Void
 	{
@@ -2417,32 +2420,36 @@ class PlayState extends MusicBeatState
 		{
 			if (controls.justPressed('debug_1'))
 			{
-				if (FlxG.keys.pressed.SPACE && FlxG.keys.pressed.SHIFT) { openChartEditor(); } // mor safe
-				else
-				{
-					Sys.println((FlxG.random.bool(15) ? "Luis" : "Xeno") + ': NO CHEATING!!');
-
-					paused = true;
-					canResync = false;
-					canPause = false;
-					#if VIDEOS_ALLOWED
-					if(videoCutscene != null)
+				if (Main.DEVELOPMENT_BUILD){
+					openChartEditor();
+				}else{
+					if (FlxG.keys.pressed.SPACE && FlxG.keys.pressed.SHIFT) { openChartEditor(); } // mor safe
+					else
 					{
-						videoCutscene.destroy();
-						videoCutscene = null;
+						Sys.println((FlxG.random.bool(15) ? "Luis" : "Xeno") + ': NO CHEATING!!');
+
+						paused = true;
+						canResync = false;
+						canPause = false;
+						#if VIDEOS_ALLOWED
+						if(videoCutscene != null)
+						{
+							videoCutscene.destroy();
+							videoCutscene = null;
+						}
+						#end
+
+						persistentUpdate = false;
+						persistentDraw = false;
+						FlxTimer.globalManager.clear();
+						FlxTween.globalManager.clear();
+						FlxG.camera.filters = [];
+
+						vocals.stop();
+						opponentVocals.stop();
+						FlxG.sound.music.stop();
+						openSubState(new NOCHEATING());
 					}
-					#end
-
-					persistentUpdate = false;
-					persistentDraw = false;
-					FlxTimer.globalManager.clear();
-					FlxTween.globalManager.clear();
-					FlxG.camera.filters = [];
-
-					vocals.stop();
-					opponentVocals.stop();
-					FlxG.sound.music.stop();
-					openSubState(new NOCHEATING());
 				}
 			}
 		}
@@ -3715,6 +3722,8 @@ class PlayState extends MusicBeatState
 		var eventKey:FlxKey = event.keyCode;
 		var key:Int = getKeyFromEvent(keysArray, eventKey);
 
+		if (!canKeyAction) return;
+
 		if (!controls.controllerMode)
 		{
 			#if debug
@@ -3732,7 +3741,7 @@ class PlayState extends MusicBeatState
 
 	private function keyPressed(key:Int)
 	{
-		if(cpuControlled || paused || inCutscene || key < 0 || key >= playerStrums.length || !generatedMusic || endingSong || boyfriend.stunned) return;
+		if(!startedCountdown || cpuControlled || paused || inCutscene || key < 0 || key >= playerStrums.length || !generatedMusic || endingSong || boyfriend.stunned) return;
 
 		final lastTime:Float = Conductor.songPosition;
 		if(Conductor.songPosition >= 0)

@@ -98,7 +98,7 @@ class GameplayCamera
 		var curStage:String = PlayState.curStage;
 
 		var jsonPath:String = Paths.json('$songPath/cameraSettings');
-		if (FileSystem.exists(jsonPath) #if mobile || OpenFlAssets.exists(jsonPath) #end)
+		if (FileSystem.exists(jsonPath) || OpenFlAssets.exists(jsonPath))
 		{
 			try
 			{

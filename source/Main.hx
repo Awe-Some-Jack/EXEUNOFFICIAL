@@ -187,6 +187,22 @@ class Main extends Sprite
 		#end
     	#end
 
+		#if (flixel_animate && desktop)
+		final originalAnimateList = animate.FlxAnimateAssets.list;
+		animate.FlxAnimateAssets.list = function(path, ?type, ?library, includeSubDirectories = false) {
+			final result = originalAnimateList(path, type, library, includeSubDirectories);
+			final prefix = path + '/';
+			for (id in FlxG.assets.list(type))
+			{
+				if (!id.startsWith(prefix)) continue;
+				final relative = id.substr(prefix.length);
+				if (!includeSubDirectories && relative.indexOf('/') != -1) continue;
+				if (result.indexOf(relative) == -1) result.push(relative);
+			}
+			return result;
+		};
+		#end
+
 		FlxG.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (e) ->
 		{
 			if (e.keyCode == FlxKey.F11 && !states.PlayState.isFixedAspectRatio) FlxG.fullscreen = !FlxG.fullscreen;

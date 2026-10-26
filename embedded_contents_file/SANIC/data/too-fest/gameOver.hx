@@ -2,6 +2,9 @@ import states.substates.GameOverSubstate;
 import objects.Character;
 import flixel.sound.FlxSound;
 import backend.Controls;
+import states.SoundTest;
+import states.EXEFreeplay;
+import backend.Mods;
 
 var inGameOver:Bool = false;
 var menuVideo:hxvlc.flixel.FlxVideoSprite;
@@ -34,14 +37,33 @@ function onGameOverStart()
 	GameOverSubstate.instance.add(dieVideo);
 }
 
+var once:Bool = false;
 function onUpdate()
 {
 	if (!inGameOver) return;
 
-	if (Controls.instance.ACCEPT)
+	if (!once && controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
 	{
+		once = true;
 		dieVideo?.destroy();
 		FlxG.cameras.remove(gameOverHUD, true);
 		FlxG.resetState();
+	}
+
+	if (!once && controls.BACK #if mobile || backPressed #end)
+	{
+		once = true;
+		dieVideo?.destroy();
+		FlxG.cameras.remove(gameOverHUD, true);
+		#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+		PlayState.deathCounter = 0;
+		PlayState.resetSunkyHelp();
+		PlayState.seenCutscene = false;
+		PlayState.firstPlay = false;
+		PlayState.chartingMode = false;
+
+		Mods.loadTopMod();
+		if (SoundTest.fromSoundTest) { SoundTest.fromSoundTest = false; FlxG.switchState(() -> new SoundTest()); }
+		else FlxG.switchState(() -> new EXEFreeplay());
 	}
 }

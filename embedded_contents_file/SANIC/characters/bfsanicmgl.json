@@ -1,0 +1,119 @@
+{
+	"animations": [
+		{
+			"offsets": [0, 0],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": true,
+			"name": "idle"
+		},
+		{
+			"offsets": [133, 39],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left"
+		},
+		{
+			"offsets": [15, -13],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down"
+		},
+		{
+			"offsets": [-20, 53],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up"
+		},
+		{
+			"offsets": [-5, -4],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right"
+		},
+		{
+			"offsets": [133, 33],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "miss left"
+		},
+		{
+			"offsets": [15, -1],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "miss down"
+		},
+		{
+			"offsets": [-8, 53],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "miss up"
+		},
+		{
+			"offsets": [-7, 4],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "miss right"
+		},
+		{
+			"offsets": [133, 33],
+			"indices": [9, 10, 11, 12],
+			"fps": 24,
+			"anim": "singLEFTmiss-loop",
+			"loop": true,
+			"name": "miss left"
+		},
+		{
+			"offsets": [15, -1],
+			"indices": [9, 10, 11, 12],
+			"fps": 24,
+			"anim": "singDOWNmiss-loop",
+			"loop": true,
+			"name": "miss down"
+		},
+		{
+			"offsets": [-8, 53],
+			"indices": [9, 10, 11, 12],
+			"fps": 24,
+			"anim": "singUPmiss-loop",
+			"loop": true,
+			"name": "miss up"
+		},
+		{
+			"offsets": [-7, 4],
+			"indices": [9, 10, 11, 12],
+			"fps": 24,
+			"anim": "singRIGHTmiss-loop",
+			"loop": true,
+			"name": "miss right"
+		}
+	],
+	"vocals_file": "",
+	"no_antialiasing": false,
+	"image": "characters/Bf-MLG-part",
+	"position": [0, 0],
+	"healthicon": "boyfdaasriend",
+	"flip_x": true,
+	"healthbar_colors": [154, 217, 234],
+	"camera_position": [0, 0],
+	"sing_duration": 5,
+	"scale": 1,
+	"_editor_isPlayer": true
+}

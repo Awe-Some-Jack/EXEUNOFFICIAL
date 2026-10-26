@@ -40,10 +40,68 @@ class CrashHandler
             #elseif hl
             hl.Api.setErrorHandler(onError);
             #end
+            #if sys
+            openfl.display.Shader.onShaderError = onShaderError;
+            #end
         } catch (e:Exception) {
             trace("Failed to initialize crash handler: " + e.message);
         }
     }
+
+    #if sys
+    private static function onShaderError(message:String, shaderType:String):Void
+    {
+        saveShaderLog(message, shaderType);
+        lime.utils.Log.error('Error compiling $shaderType shader $message');
+    }
+
+    private static function saveShaderLog(message:String, shaderType:String):Void
+    {
+        try {
+            if (!FileSystem.exists(LOGS_DIR))
+                FileSystem.createDirectory(LOGS_DIR);
+
+            var now = Date.now();
+            var timestamp = '${now.getFullYear()}-${lpad(Std.string(now.getMonth() + 1), "0", 2)}'
+                + '-${lpad(Std.string(now.getDate()), "0", 2)}_${lpad(Std.string(now.getHours()), "0", 2)}'
+                + '-${lpad(Std.string(now.getMinutes()), "0", 2)}-${lpad(Std.string(now.getSeconds()), "0", 2)}';
+
+            var log = new StringBuf();
+            log.add('======================= SHADER ERROR =======================\n\n');
+            log.add('TIME: ${now.toString()}\n');
+            log.add('TYPE: $shaderType\n');
+            log.add('OS: ${getOsInfo()}\n');
+            log.add('GPU: ${getGpuInfo()}\n');
+            log.add('GL: ${getGlInfo()}\n');
+            log.add('\n------ COMPILER OUTPUT ------\n$message\n');
+
+            var source:String = Reflect.field(openfl.display.Shader, "lastFailedShaderSource");
+            if (source != null) {
+                log.add('\n------ SHADER SOURCE ------\n');
+                var n = 1;
+                for (line in source.split("\n"))
+                    log.add('${lpad(Std.string(n++), " ", 4)} | $line\n');
+            }
+
+            File.saveContent(LOGS_DIR + 'shader_error_$timestamp.txt', log.toString());
+        } catch (e:Dynamic) {
+            trace('Failed to save shader log: $e');
+        }
+    }
+
+    private static function getGlInfo():String
+    {
+        try {
+            @:privateAccess {
+                var gl = FlxG.stage?.context3D?.gl;
+                if (gl != null)
+                    return 'vendor=${gl.getParameter(gl.VENDOR)} renderer=${gl.getParameter(gl.RENDERER)} version=${gl.getParameter(gl.VERSION)} glsl=${gl.getParameter(gl.SHADING_LANGUAGE_VERSION)}';
+            }
+        } catch (e:Dynamic) {}
+
+        return "Unknown GL";
+    }
+    #end
 
     private static function onUncaughtError(e:UncaughtErrorEvent):Void
     {

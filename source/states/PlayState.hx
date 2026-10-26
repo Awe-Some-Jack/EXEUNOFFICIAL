@@ -230,17 +230,7 @@ class PlayState extends MusicBeatState
 	public var pressMissDamage:Float = 0.05;
 
 	public var sunkyBot:SunkyBOT;
-	public var botplaySine(get, set):Float;
 	public var sunkyBotSprite(get, never):FlxSprite;
-
-	function get_botplaySine():Float
-		return sunkyBot != null ? sunkyBot.sine : 0;
-
-	function set_botplaySine(value:Float):Float
-	{
-		if (sunkyBot != null) sunkyBot.sine = value;
-		return value;
-	}
 
 	function get_sunkyBotSprite():FlxSprite
 		return sunkyBot?.sprite;

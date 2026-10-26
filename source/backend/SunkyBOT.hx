@@ -8,7 +8,6 @@ class SunkyBOT
 	static final spriteScale:Float = 0.6;
 	static final spritePath:String = 'assets/exe/botplay/sunkyplaying';
 
-	public var sine:Float = 0;
 	public var sprite(default, null):FlxSprite;
 
 	/**
@@ -68,14 +67,6 @@ class SunkyBOT
 
 	public function update(elapsed:Float):Void
 	{
-		if (text != null && text.visible)
-		{
-			sine += 90 * elapsed;
-			if (sine >= 360) sine -= 360;
-			text.color = FlxColor.fromHSB(sine, 1.0, 1.0);
-			text.alpha = 1.0;
-		}
-
 		if (game.cpuControlled)
 		{
 			if (sprite == null)

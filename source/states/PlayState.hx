@@ -711,7 +711,7 @@ class PlayState extends MusicBeatState
 		switch(Paths.formatToSongPath(SONG.song))
 		{
 			case 'yourself':
-				appName = "Friday Night Funkin': Vs Youself";
+				appName = "Friday Night Funkin': Vs Yourself";
 			case 'cycles', 'hellbent', 'fate', 'gotta-go':
 				appName = "Friday Night Funkin': Vs Soulless PC Sonic";
 			case 'sunshine':

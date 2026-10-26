@@ -752,7 +752,6 @@ class EXEMenu extends MusicBeatState
 
 	override function destroy():Void
 	{
-		FlxG.mouse.visible = false;
 		FlxG.autoPause = true;
 		super.destroy();
 	}

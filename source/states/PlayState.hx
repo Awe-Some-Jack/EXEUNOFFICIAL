@@ -352,6 +352,10 @@ class PlayState extends MusicBeatState
 	public static var pauseButton:FlxSprite;
 
 	var spaceHitbox:FlxSprite = null;
+	var dpadIdleSpr:FlxSprite = null;
+	var dpadLitSprs:Array<FlxSprite> = [];
+	var acceptPressSpr:FlxSprite = null;
+	var acceptShownHeld:Bool = false;
 	var spaceHeld:Bool = false;
 	var spaceJustPressed:Bool = false;
 	var spaceJustReleased:Bool = false;
@@ -1010,8 +1014,9 @@ class PlayState extends MusicBeatState
 		boyfriend.useRenderTexture = dad.useRenderTexture = true;
 		if(gf != null) gf.useRenderTexture = true;
 
+		initComboLayout();
+
 		#if mobile
-		updateMobileComboOffset();
 		if(usesMobileStrumLayout())
 		{
 			for(n in notes) {
@@ -1081,15 +1086,86 @@ class PlayState extends MusicBeatState
 				add(hitbox);
 			}
 		}
+		else if(ClientPrefs.data.controlsType == 'mixed')
+		{
+			final gamepadDir:String = 'assets/exe/mobile/gamepad/';
+			final dpadScale:Float = 0.4 * ClientPrefs.data.dpadScale;
+			final padAlpha:Float = ClientPrefs.data.dpadAlpha;
+
+			dpadIdleSpr = new FlxSprite().loadGraphic(Paths.getBitmapData(gamepadDir + 'dpad_hq.png'));
+			dpadIdleSpr.scale.set(dpadScale, dpadScale);
+			dpadIdleSpr.updateHitbox();
+			dpadIdleSpr.setPosition(30, FlxG.height - dpadIdleSpr.height - 30);
+			dpadIdleSpr.alpha = padAlpha;
+			dpadIdleSpr.cameras = [camOther];
+			add(dpadIdleSpr);
+
+			dpadLitSprs = [];
+			for(file in ['left_hq', 'down_hq', 'up_hq', 'right_hq']) {
+				final lit:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData(gamepadDir + file + '.png'));
+				lit.scale.set(dpadScale, dpadScale);
+				lit.updateHitbox();
+				lit.setPosition(dpadIdleSpr.x, dpadIdleSpr.y);
+				lit.alpha = padAlpha;
+				lit.visible = false;
+				lit.cameras = [camOther];
+				dpadLitSprs.push(lit);
+				add(lit);
+			}
+
+			final dx:Float = dpadIdleSpr.x;
+			final dy:Float = dpadIdleSpr.y;
+			final dw:Float = dpadIdleSpr.width;
+			final dh:Float = dpadIdleSpr.height;
+			final zones:Array<Array<Float>> = [
+				[dx, dy + dh * 0.25, dw * 0.36, dh * 0.5],
+				[dx + dw * 0.25, dy + dh * 0.64, dw * 0.5, dh * 0.36],
+				[dx + dw * 0.25, dy, dw * 0.5, dh * 0.36],
+				[dx + dw * 0.64, dy + dh * 0.25, dw * 0.36, dh * 0.5]
+			];
+			for(zone in zones) {
+				final hitbox:FlxSprite = new FlxSprite(zone[0], zone[1]).makeGraphic(Std.int(zone[2]), Std.int(zone[3]));
+				hitbox.visible = false;
+				hitbox.cameras = [camOther];
+				hitboxesGroup.push(hitbox);
+				add(hitbox);
+			}
+		}
 
 		if(usesSpaceHitbox())
 		{
-			spaceHitbox = new FlxSprite().makeGraphic(150, Std.int(FlxG.height/1.6));
-			spaceHitbox.color = 0xFFFFCC00;
-			spaceHitbox.alpha = ClientPrefs.data.defHitboxAlpha;
-			spaceHitbox.cameras = [camOther];
-			add(spaceHitbox);
-			positionSpaceHitbox();
+			if(ClientPrefs.data.controlsType == 'mixed')
+			{
+				acceptShownHeld = false;
+				final acceptScale:Float = 0.3;
+				final acceptAlpha:Float = ClientPrefs.data.dpadAlpha;
+
+				spaceHitbox = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/mobile/gamepad/accept_hq.png'));
+				spaceHitbox.scale.set(acceptScale, acceptScale);
+				spaceHitbox.updateHitbox();
+				spaceHitbox.setPosition(FlxG.width - spaceHitbox.width - 30, FlxG.height - spaceHitbox.height - 30);
+				spaceHitbox.alpha = acceptAlpha;
+				spaceHitbox.cameras = [camOther];
+				add(spaceHitbox);
+
+				acceptPressSpr = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/mobile/gamepad/accpet_p_hq.png'));
+				acceptPressSpr.scale.set(acceptScale, acceptScale);
+				acceptPressSpr.updateHitbox();
+				acceptPressSpr.setPosition(spaceHitbox.x, spaceHitbox.y);
+				acceptPressSpr.alpha = acceptAlpha;
+				acceptPressSpr.visible = false;
+				acceptPressSpr.cameras = [camOther];
+				add(acceptPressSpr);
+			}
+			else
+			{
+				spaceHitbox = new FlxSprite().makeGraphic(150, Std.int(FlxG.height/1.6));
+				spaceHitbox.color = 0xFFFFCC00;
+				spaceHitbox.alpha = ClientPrefs.data.defHitboxAlpha;
+				spaceHitbox.cameras = [camOther];
+				add(spaceHitbox);
+				positionSpaceHitbox();
+			}
 		}
 
 		pauseButton = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/pause/pauseButton.webp'));
@@ -1853,9 +1929,20 @@ class PlayState extends MusicBeatState
 	}
 
 	public var skipArrowStartTween:Bool = false; //for lua
+	var playerDefaultXs:Array<Float> = [];
+	var playerDefaultYs:Array<Float> = [];
+	var playerDefaultW:Float = 0;
+	var playerDefaultH:Float = 0;
+
 	function updateStrumDefaults():Void
 	{
+		playerDefaultXs = [];
+		playerDefaultYs = [];
 		for (i in 0...playerStrums.length) {
+			playerDefaultXs.push(playerStrums.members[i].x);
+			playerDefaultYs.push(playerStrums.members[i].y);
+			playerDefaultW = playerStrums.members[i].width;
+			playerDefaultH = playerStrums.members[i].height;
 			setOnScripts('defaultPlayerStrumX' + i, playerStrums.members[i].x);
 			setOnScripts('defaultPlayerStrumY' + i, playerStrums.members[i].y);
 		}
@@ -1892,26 +1979,6 @@ class PlayState extends MusicBeatState
 	function usesMobileStrumLayout():Bool
 		return ClientPrefs.data.middleScroll && (ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes);
 
-	function updateMobileComboOffset():Void
-	{
-		mobileComboOffsetX = 0;
-		mobileComboOffsetY = 0;
-		comboGroupBaseX = comboGroup.x;
-		comboGroupBaseY = comboGroup.y;
-		if(disableMobileComboOffset || !ClientPrefs.data.middleScroll || playerStrums.length < 4) return;
-
-		if(!usesMobileStrumLayout())
-		{
-			final playerRightEdge:Float = playerStrums.members[3].x + playerStrums.members[3].width;
-			mobileComboOffsetX = (FlxG.width + playerRightEdge) / 4 - 20;
-			mobileComboOffsetY = (ClientPrefs.data.downScroll ? -1 : 1) * (FlxG.height / 2 - 90);
-		}
-		else if(ClientPrefs.data.middlescrollType == 'pc')
-		{
-			mobileComboOffsetX = playerStrums.members[0].x / 2 - FlxG.width / 2;
-		}
-	}
-
 	function isMobileRingNote(n:Note):Bool
 		return n.noteType == 'Ring Note' && usesMobileStrumLayout();
 
@@ -1938,7 +2005,7 @@ class PlayState extends MusicBeatState
 
 	function positionSpaceHitbox():Void
 	{
-		if (spaceHitbox == null) return;
+		if (spaceHitbox == null || ClientPrefs.data.controlsType == 'mixed') return;
 
 		final isPsych:Bool = ClientPrefs.data.controlsType == 'psych';
 		var midX:Float = FlxG.width / 2;
@@ -1980,7 +2047,36 @@ class PlayState extends MusicBeatState
 		spaceJustPressed = held && !spaceHeld;
 		spaceJustReleased = !held && spaceHeld;
 		spaceHeld = held;
-		spaceHitbox.alpha = held ? ClientPrefs.data.pressHitboxAlpha : ClientPrefs.data.defHitboxAlpha;
+		if (ClientPrefs.data.controlsType == 'mixed')
+		{
+			if (held != acceptShownHeld)
+			{
+				acceptShownHeld = held;
+				spaceHitbox.visible = !held;
+				acceptPressSpr.visible = held;
+			}
+		}
+		else
+			spaceHitbox.alpha = held ? ClientPrefs.data.pressHitboxAlpha : ClientPrefs.data.defHitboxAlpha;
+	}
+
+	function updateDpadVisuals():Void
+	{
+		if (dpadIdleSpr == null) return;
+
+		var lit:Int = -1;
+		for (i in 0...4)
+		{
+			if (hitboxesHeld[i])
+			{
+				lit = i;
+				break;
+			}
+		}
+
+		dpadIdleSpr.visible = lit == -1;
+		for (i in 0...dpadLitSprs.length)
+			dpadLitSprs[i].visible = i == lit;
 	}
 
 	function applyMobileMiddlescrollStrums():Void
@@ -2279,6 +2375,7 @@ class PlayState extends MusicBeatState
 		syncMobileComboOffset();
 		#if mobile
 		updateSpaceHitbox();
+		updateDpadVisuals();
 		for(i in 0...4) {
 			final ownerId = hitboxOwner[i];
 			final ownerHeld = ownerId != -1 && pointerHeld(ownerId);
@@ -3582,6 +3679,24 @@ class PlayState extends MusicBeatState
 	var comboGroupBaseX:Float = 0;
 	var comboGroupBaseY:Float = 0;
 
+	function initComboLayout():Void
+	{
+		mobileComboOffsetX = 0;
+		mobileComboOffsetY = 0;
+		comboGroupBaseX = comboGroup.x;
+		comboGroupBaseY = comboGroup.y;
+	}
+
+	function comboLayoutMode():Int
+	{
+		if(disableMobileComboOffset || !ClientPrefs.data.middleScroll || playerStrums.length < 4) return 0;
+		if(comboGroup.x != comboGroupBaseX || comboGroup.y != comboGroupBaseY) return 0;
+		#if mobile
+		if(ClientPrefs.data.middlescrollType == 'mobile') return 2;
+		#end
+		return 1;
+	}
+
 	function syncMobileComboOffset():Void
 	{
 		if((mobileComboOffsetX != 0 || mobileComboOffsetY != 0) && (comboGroup.x != comboGroupBaseX || comboGroup.y != comboGroupBaseY))
@@ -3681,14 +3796,40 @@ class PlayState extends MusicBeatState
 		rating.loadGraphic(Paths.image(uiFolder + daRating.image + uiPostfix));
 		rating.visible = !ClientPrefs.data.hideHud;
 		rating.cameras = [camHUD];
-		rating.alpha = 1;
 		
 		if (!PlayState.isPixelStage) rating.setGraphicSize(Std.int(rating.width * 0.6 * 1.1));
 		else rating.setGraphicSize(Std.int(rating.width * 4 * 1.1));
 		rating.updateHitbox();
+
+		final comboMode:Int = comboLayoutMode();
+		final comboStartAlpha:Float = comboMode == 1 ? 0.7 : 1;
+		var comboOffX:Float = mobileComboOffsetX;
+		var comboOffY:Float = mobileComboOffsetY;
+		if(comboMode != 0)
+		{
+			final downScroll:Bool = ClientPrefs.data.downScroll;
+			final haveDefaults:Bool = playerDefaultXs.length >= 4;
+			final strumW:Float = haveDefaults ? playerDefaultW : playerStrums.members[0].width;
+			final strumH:Float = haveDefaults ? playerDefaultH : playerStrums.members[0].height;
+			final strumX:Array<Float> = haveDefaults ? playerDefaultXs : [for (i in 0...4) playerStrums.members[i].x];
+			final strumTop:Float = haveDefaults ? playerDefaultYs[0] : playerStrums.members[0].y;
+			final strumBottom:Float = strumTop + strumH;
+			final centerX:Float = comboMode == 2
+				? (strumX[1] + strumW + strumX[2]) / 2
+				: (strumX[0] + strumX[3] + strumW) / 2;
+			final blockTop:Float = downScroll ? FlxG.height - rating.height - 90 : 40;
+			final blockBottom:Float = downScroll ? FlxG.height - 40 : 90 + rating.height;
+
+			comboOffX = centerX - FlxG.width / 2;
+			comboOffY = comboMode == 1
+				? (downScroll ? (strumTop - 12) - blockBottom : (strumBottom + 12) - blockTop)
+				: (strumTop + strumBottom) / 2 - (blockTop + blockBottom) / 2;
+		}
+		rating.alpha = comboStartAlpha;
+
 		rating.screenCenter(X);
-		rating.y = comboGroup.y + mobileComboOffsetY + (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
-		rating.x += comboGroup.x + mobileComboOffsetX;
+		rating.y = comboGroup.y + comboOffY + (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
+		rating.x += comboGroup.x + comboOffX;
 
 		final targetScale:Float = PlayState.isPixelStage ? 4 : 0.6;
 		rating.scale.set(targetScale * 1.15, targetScale * 1.15);
@@ -3708,14 +3849,14 @@ class PlayState extends MusicBeatState
 			numScore.loadGraphic(Paths.image(uiFolder + 'num' + Std.parseInt(separatedScore.charAt(i)) + uiPostfix));
 			numScore.visible = !ClientPrefs.data.hideHud;
 			numScore.cameras = [camHUD];
-			numScore.alpha = 1;
+			numScore.alpha = comboStartAlpha;
 			
 			if (!PlayState.isPixelStage) numScore.setGraphicSize(Std.int(numScore.width * 0.6 * 1.1));
 			else numScore.setGraphicSize(Std.int(numScore.width * 4 * 1.1));
 			numScore.updateHitbox();
 			
-			numScore.x = comboGroup.x + mobileComboOffsetX + FlxG.width / 2 - numScore.width / 2 + (i - (separatedScore.length - 1) / 2) * 50;
-			numScore.y = comboGroup.y + mobileComboOffsetY + (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
+			numScore.x = comboGroup.x + comboOffX + FlxG.width / 2 - numScore.width / 2 + (i - (separatedScore.length - 1) / 2) * 50;
+			numScore.y = comboGroup.y + comboOffY + (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
 			
 			numScore.scale.set(targetScale * 1.15, targetScale * 1.15);
 		

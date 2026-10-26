@@ -20,6 +20,7 @@
     "assets/exe/soundtest/",
     "assets/exe/story/padLock.webp",
     "assets/shared/images/pixelUI/",
-    "assets/exe/access/fatal/"
+    "assets/exe/access/fatal/",
+    "assets/exe/mobile/"
   ]
 }

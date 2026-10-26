@@ -33,7 +33,7 @@
 	"options.controls": "STEROWANIE",
 	"options.controls.labels": ["NUTY", "UI", "AKCJE", "LEWO", "DÓŁ", "GÓRA", "PRAWO", "POTWIERDŹ", "WRÓĆ", "PAUZA", "RESETUJ"],
 	"options.mobilecontrols": "STEROWANIE MOBILNE",
-	"options.mobilecontrols.labels": ["PRZESUWANIE NUT", "MIDDLESCROLL", "NUTY PRZECIWNIKA NA MOBILNYCH", "TYP STEROWANIA", "TYP MIDDLESCROLL", "ALFA HITBOXA (DOMYŚLNA)", "ALFA HITBOXA (WCIŚNIĘTY)", "WIDOCZNY PRZYCISK PAUZY"],
+	"options.mobilecontrols.labels": ["PRZESUWANIE NUT", "MIDDLESCROLL", "NUTY PRZECIWNIKA NA MOBILNYCH", "TYP STEROWANIA", "TYP MIDDLESCROLL", "ALFA HITBOXA (DOMYŚLNA)", "ALFA HITBOXA (WCIŚNIĘTY)", "WIDOCZNY PRZYCISK PAUZY", "SKALA D-PADA", "ALFA D-PADA"],
 	"options.visuals": "WYGLĄD",
 	"options.visuals.labels": ["UKRYJ HUD", "MIGAJĄCE ŚWIATŁA", "ZOOM KAMERY", "ZOOM TEKSTU WYNIKU", "LICZNIK FPS"],
 	"options.gameplay": "ROZGRYWKA",

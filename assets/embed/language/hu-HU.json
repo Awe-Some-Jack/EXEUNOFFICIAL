@@ -33,7 +33,7 @@
 	"options.controls": "IRÁNYÍTÁS",
 	"options.controls.labels": ["NOTEOK", "UI", "ACTIONS", "BAL", "LE", "FEL", "JOBB", "ELFOGAD", "VISSZA", "PAUSE", "ALAPELYZET"],
 	"options.mobilecontrols": "MOBILE IRÁNYÍTÁS",
-	"options.mobilecontrols.labels": ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA", "VISIBLE PAUSE BUTTON"],
+	"options.mobilecontrols.labels": ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA", "VISIBLE PAUSE BUTTON", "D-PAD SCALE", "D-PAD ALPHA"],
 	"options.visuals": "VIZUÁLIS",
 	"options.visuals.labels": ["ELREJTETT HUD", "VILLOGÓ FÉNYEK", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS SZÁMLÁLÓ"],
 	"options.gameplay": "JÁTÉK",

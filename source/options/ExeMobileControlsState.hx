@@ -43,6 +43,8 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 			{label: lbl[5], getValue: () -> ClientPrefs.data.defHitboxAlpha, setValue: (v) -> ClientPrefs.data.defHitboxAlpha = v, isFloat: true},
 			{label: lbl[6], getValue: () -> ClientPrefs.data.pressHitboxAlpha, setValue: (v) -> ClientPrefs.data.pressHitboxAlpha = v, isFloat: true},
 			{label: lbl[7], getValue: () -> ClientPrefs.data.visiblePauseButton, setValue: (v) -> ClientPrefs.data.visiblePauseButton = v},
+			{label: lbl.length > 8 ? lbl[8] : 'D-PAD SCALE', getValue: () -> ClientPrefs.data.dpadScale, setValue: (v) -> ClientPrefs.data.dpadScale = v, isFloat: true, min: 0.5, max: 2, step: 0.05},
+			{label: lbl.length > 9 ? lbl[9] : 'D-PAD ALPHA', getValue: () -> ClientPrefs.data.dpadAlpha, setValue: (v) -> ClientPrefs.data.dpadAlpha = v, isFloat: true, min: 0, max: 1, step: 0.05},
 		];
 
 		final saved = CONTROL_TYPES.indexOf(ClientPrefs.data.controlsType);
@@ -135,8 +137,11 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 				}
 				else if (opt.isFloat == true)
 				{
-					var n = Math.round((cast(val, Float) + (isRight ? 0.01 : -0.01)) * 100) / 100;
-					n = Math.max(0.0, Math.min(1.0, n));
+					final step:Float = opt.step != null ? opt.step : 0.01;
+					final lo:Float = opt.min != null ? opt.min : 0.0;
+					final hi:Float = opt.max != null ? opt.max : 1.0;
+					var n = Math.round((cast(val, Float) + (isRight ? step : -step)) * 100) / 100;
+					n = Math.max(lo, Math.min(hi, n));
 					opt.setValue(n); txt.text = Std.string(n);
 				}
 				ClientPrefs.saveSettings();

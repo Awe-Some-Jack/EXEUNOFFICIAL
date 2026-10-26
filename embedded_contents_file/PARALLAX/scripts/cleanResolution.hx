@@ -12,7 +12,6 @@ function onCreate()
     }
     PlayState.isLetterboxedAspectRatio = true;
     PlayState.instance.closeOpponentStrumGap = true;
-    PlayState.instance.disableMobileComboOffset = true;
 }
 
 function onDestroy()

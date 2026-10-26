@@ -44,6 +44,8 @@ import Main;
 	public var slideMechanic:Bool = true;
 	public var mobileOpponentNotes:Bool = true;
 	public var visiblePauseButton:Bool = true;
+	public var dpadScale:Float = 1;
+	public var dpadAlpha:Float = 0.8;
 	#end
 	public var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,

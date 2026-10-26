@@ -54,7 +54,7 @@
 	"options.controls": "CONTROLS",
 	"options.controls.labels": ["NOTES", "UI", "ACTIONS", "PORT", "DOWN", "UP", "STARBOARD", "ACCEPT", "RETREAT", "PAUSE", "RESET"],
 	"options.mobilecontrols": "MOBILE HELM",
-	"options.mobilecontrols.labels": ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE ENEMY NOTES", "HELM TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA", "VISIBLE PAUSE BUTTON"],
+	"options.mobilecontrols.labels": ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE ENEMY NOTES", "HELM TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA", "VISIBLE PAUSE BUTTON", "D-PAD SIZE", "D-PAD ALPHA"],
 	"options.visuals": "SPYGLASS",
 	"options.visuals.labels": ["HIDE HUD", "FLASHING LIGHTS", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS COUNTER"],
 	"options.gameplay": "SEAFARIN'",

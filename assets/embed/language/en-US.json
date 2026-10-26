@@ -33,7 +33,7 @@
 	"options.controls": "CONTROLS",
 	"options.controls.labels": ["NOTES", "UI", "ACTIONS", "LEFT", "DOWN", "UP", "RIGHT", "ACCEPT", "BACK", "PAUSE", "RESET"],
 	"options.mobilecontrols": "MOBILE CONTROLS",
-	"options.mobilecontrols.labels": ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA", "VISIBLE PAUSE BUTTON"],
+	"options.mobilecontrols.labels": ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA", "VISIBLE PAUSE BUTTON", "D-PAD SCALE", "D-PAD ALPHA"],
 	"options.visuals": "VISUALS",
 	"options.visuals.labels": ["HIDE HUD", "FLASHING LIGHTS", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS COUNTER"],
 	"options.gameplay": "GAMEPLAY",

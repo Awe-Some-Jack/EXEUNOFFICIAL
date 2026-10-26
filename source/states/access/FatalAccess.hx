@@ -966,6 +966,7 @@ class FatalAccess extends MusicBeatState
 		}
 	}
 
+	#if mobile
 	function _toMobileAccess(first:Bool):Void
 	{
 		if (first)
@@ -978,6 +979,7 @@ class FatalAccess extends MusicBeatState
 		FlxTransitionableState.skipNextTransOut = true;
 		FlxG.switchState(() -> new FatalAccessMobile());
 	}
+	#end
 
 	function _backToMenu():Void
 	{

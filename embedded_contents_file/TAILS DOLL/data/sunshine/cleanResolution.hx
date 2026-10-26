@@ -12,12 +12,11 @@ function onCreate()
     }
     PlayState.isLetterboxedAspectRatio = true;
     PlayState.instance.closeOpponentStrumGap = true;
-    PlayState.instance.disableMobileComboOffset = true;
 }
 
 function onCreatePost() 
 {
-    comboGroup.y += 100 * (ClientPrefs.data.downScroll ? -1 : 1);
+    if(!ClientPrefs.data.middleScroll) comboGroup.y += 100 * (ClientPrefs.data.downScroll ? -1 : 1);
 }
 
 function onDestroy()

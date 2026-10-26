@@ -33,7 +33,7 @@
 	"options.controls": "按键设置",
 	"options.controls.labels": ["音符", "界面", "操作", "左", "下", "上", "右", "确认", "返回", "暂停", "重置"],
 	"options.mobilecontrols": "移动端操作",
-	"options.mobilecontrols.labels": ["音符滑动", "MIDDLESCROLL", "移动端对手音符", "操作类型", "MIDDLESCROLL 类型", "默认判定框 Alpha", "按下判定框 Alpha", "显示暂停按钮"],
+	"options.mobilecontrols.labels": ["音符滑动", "MIDDLESCROLL", "移动端对手音符", "操作类型", "MIDDLESCROLL 类型", "默认判定框 Alpha", "按下判定框 Alpha", "显示暂停按钮", "方向键大小", "方向键 Alpha"],
 	"options.visuals": "视觉效果",
 	"options.visuals.labels": ["隐藏界面", "闪烁灯光", "镜头缩放", "分数文字缩放", "帧数显示"],
 	"options.gameplay": "游戏玩法",

@@ -100,6 +100,8 @@ var frameCounter:Int = 0;
 
 function onCreate()
 {
+	PlayState.instance.disableMobileComboOffset = true;
+
 	makeBackgroundAlt(normal, true);
 	makeBackgroundAlt(xeno, true);
 	makeBackgroundAlt(tails);

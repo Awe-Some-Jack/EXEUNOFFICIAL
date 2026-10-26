@@ -137,7 +137,7 @@ class GameplayCamera
 
 		if (curStage == 'stage') _applyStagePreset();
 
-		if (camGame.zCameraFix != true && (settings.Angle != 0 || settings.DADAngle != 0)) camGame.zCameraFix = true;
+		if (PlayState.instance.camGame.zCameraFix != true && (settings.Angle != 0 || settings.DADAngle != 0)) PlayState.instance.camGame.zCameraFix = true;
 	}
 
 	private function _applyStagePreset()
@@ -197,7 +197,7 @@ class GameplayCamera
 		}
 
 		function tweenAngle(target:Float){
-			if (camGame.zCameraFix != true) camGame.zCameraFix = true;
+			if (PlayState.instance.camGame.zCameraFix != true) PlayState.instance.camGame.zCameraFix = true;
 			return FunkinLua.oldTweenFunction('camGameAngleMovement', 'camGame', {angle: target}, 0.6, 'quadOut', 'doTweenAngle');
 		}
 

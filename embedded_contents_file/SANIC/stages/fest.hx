@@ -39,6 +39,8 @@ var precacheVideos:Array<String> = [
 	'Illuminaticonfirmed'
 ];
 
+final prefs = ClientPrefs.data;
+var oldGT:Bool = false;
 var sanicSentimental:Character;
 var bfSentimental:Character;
 function onCreate()
@@ -147,8 +149,8 @@ function onCreate()
 
 function onCreatePost()
 {
-	game.canPause = false;
 	game.canReset = false;
+	oldGT = prefs.ghostTapping;
 
 	var bandicam:FlxSprite = new FlxSprite(0, 5).loadGraphic(Paths.image('bandimark'));
 	bandicam.camera = camOther;
@@ -225,8 +227,8 @@ function onEvent(n,v1,v2)
 				if (sanicBG?.loadVideo(Paths.video('bg${FlxG.random.int(1,2)}'), [VideoSprite.ARG_MUTED])) sanicBG?.playDelayed();
 				FlxTween.tween(camHUD, {alpha: 1}, Conductor.crochet / 250);
 			case 'removeintro':
-				game.canPause = true;
 				game.canReset = true;
+				prefs.ghostTapping = true;
 				camGame.alpha = 1;
 				introCutscene.stop();
 				introCutscene.destroy();
@@ -340,3 +342,4 @@ function onSectionHit()
 
 function preloadCharacter(char:Int, target:String) game.addCharacterToList(target, char);
 function changeCharacter(char:String, target:String) game.triggerEvent('Change Character', char, target, Conductor.songPosition);
+function onDestroy() prefs.ghostTapping = oldGT;

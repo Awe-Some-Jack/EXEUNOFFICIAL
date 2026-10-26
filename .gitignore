@@ -32,4 +32,6 @@ generated/
 !.vscode/extensions.json
 art/build_html.bat
 art/build_html-debug.bat
+launcher/out/
+wolfietodo
 *.hxml

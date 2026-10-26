@@ -94,6 +94,9 @@ class Controls
 	{
 		var result:Bool = (FlxG.keys.anyJustPressed(keyboardBinds[key]) == true);
 		if(result) controllerMode = false;
+		#if mobile
+		if(!result) result = minigames.MiniTouchPad.justPressed(key);
+		#end
 
 		return result || _myGamepadJustPressed(gamepadBinds[key]) == true;
 	}
@@ -102,6 +105,9 @@ class Controls
 	{
 		var result:Bool = (FlxG.keys.anyPressed(keyboardBinds[key]) == true);
 		if(result) controllerMode = false;
+		#if mobile
+		if(!result) result = minigames.MiniTouchPad.pressed(key);
+		#end
 
 		return result || _myGamepadPressed(gamepadBinds[key]) == true;
 	}
@@ -110,6 +116,9 @@ class Controls
 	{
 		var result:Bool = (FlxG.keys.anyJustReleased(keyboardBinds[key]) == true);
 		if(result) controllerMode = false;
+		#if mobile
+		if(!result) result = minigames.MiniTouchPad.justReleased(key);
+		#end
 
 		return result || _myGamepadJustReleased(gamepadBinds[key]) == true;
 	}

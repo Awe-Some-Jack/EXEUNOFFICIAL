@@ -168,6 +168,10 @@ class TheValley extends MusicBeatState implements ExeWorld
 		uiCam.bgColor = 0x00000000;
 		FlxG.cameras.add(uiCam, false);
 
+		#if mobile
+		add(new minigames.MiniTouchPad(uiCam));
+		#end
+
 		_mapParts = BGValley.loadParts(MAP_PARTS);
 		bg = new BGValley(this, _mapParts);
 

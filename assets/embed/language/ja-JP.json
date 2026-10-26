@@ -33,7 +33,7 @@
 	"options.controls": "操作設定",
 	"options.controls.labels": ["ノーツ", "UI", "アクション", "左", "下", "上", "右", "決定", "戻る", "ポーズ", "リセット"],
 	"options.mobilecontrols": "モバイル操作",
-	"options.mobilecontrols.labels": ["ノートスライド", "MIDDLESCROLL", "モバイルで相手ノートを表示", "操作タイプ", "MIDDLESCROLLタイプ", "通常時のヒットボックスAlpha", "押下時のヒットボックスAlpha", "ポーズボタンを表示"],
+	"options.mobilecontrols.labels": ["ノートスライド", "MIDDLESCROLL", "モバイルで相手ノートを表示", "操作タイプ", "MIDDLESCROLLタイプ", "通常時のヒットボックスAlpha", "押下時のヒットボックスAlpha", "ポーズボタンを表示", "Dパッドのサイズ", "DパッドのAlpha"],
 	"options.visuals": "ビジュアル",
 	"options.visuals.labels": ["HUD非表示", "フラッシュ演出", "カメラズーム", "スコアテキストズーム", "FPSカウンター"],
 	"options.gameplay": "ゲームプレイ",

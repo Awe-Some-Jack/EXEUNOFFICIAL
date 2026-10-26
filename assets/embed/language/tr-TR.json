@@ -33,7 +33,7 @@
 	"options.controls":  "KONTROLLER",
 	"options.controls.labels": ["NOTALAR", "ARAYÜZ", "EYLEMLER", "SOL", "AŞAĞI", "YUKARI", "SAĞ", "ONAYLA", "GERİ", "DURAKLAT", "SIFIRLA"],
 	"options.mobilecontrols": "MOBİL KONTROLLER",
-	"options.mobilecontrols.labels": ["NOTA KAYDIRMA", "MIDDLESCROLL", "MOBİL RAKİP NOTALARI", "KONTROL TÜRÜ", "MIDDLESCROLL TÜRÜ", "VARSAYILAN HITBOX ALFA", "BASILI HITBOX ALFA", "GÖRÜNÜR DURAKLATMA DÜĞMESİ"],
+	"options.mobilecontrols.labels": ["NOTA KAYDIRMA", "MIDDLESCROLL", "MOBİL RAKİP NOTALARI", "KONTROL TÜRÜ", "MIDDLESCROLL TÜRÜ", "VARSAYILAN HITBOX ALFA", "BASILI HITBOX ALFA", "GÖRÜNÜR DURAKLATMA DÜĞMESİ", "D-PAD ÖLÇEĞİ", "D-PAD ALFA"],
 	"options.visuals": "GÖRSELLER",
 	"options.visuals.labels": ["ARAYÜZÜ GİZLE", "YANIP SÖNEN IŞIKLAR", "KAMERA YAKINLAŞTIRMALARI", "SKOR YAZISI YAKINLAŞTIRMASI", "FPS SAYACI"],
 	"options.gameplay": "OYNANIŞ",

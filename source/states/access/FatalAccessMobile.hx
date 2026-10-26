@@ -1,8 +1,10 @@
 package states.access;
 
 import flixel.text.FlxText;
+#if mobile
 import openfl.events.TextEvent;
 import flixel.input.touch.FlxTouch;
+#end
 import flixel.addons.transition.FlxTransitionableState;
 import states.access.FatalAccess.FatalScene;
 
@@ -75,6 +77,7 @@ class FatalAccessMobile extends MusicBeatState
     var iconDragDist:Float = 0;
     var fileText:FlxText;
     var fileHitbox:FlxSprite;
+    var typedLabel:FlxText;
     var folderInd:Int = 0;
     var subfolderInd:Int = 0;
     var maxSubfolderInd:Int = 0;
@@ -263,10 +266,10 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
             hitbox.setPosition(icon.x, icon.y);
             hitbox.alpha = 0;
 
-            var text:FlxText = new FlxText(0, 0, 200, paths[i][0]);
-            text.setPosition(icon.x - icon.width + 8, icon.y + (icon.height));
-            text.setFormat(Paths.font("UbuntuSans.ttf"), 20, 0xFFFFFFFF, CENTER);
-            text.scale.set(0.4, 0.4);
+            var text:FlxText = new FlxText(0, 0, 1000, paths[i][0]);
+            text.setPosition(icon.x - icon.width + 10, icon.y + (icon.height)+3);
+            text.setFormat(Paths.font("UbuntuSans.ttf"), 100, 0xFFFFFFFF, CENTER);
+            text.scale.set(0.08, 0.08);
             text.updateHitbox();
             icons.push([icon, hitbox, text]);
 
@@ -291,12 +294,12 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
             add(icon);
         }
 
-        clockText = new FlxText(0, 0, 200, DateTools.format(Date.now(), "%H:%M"));
-        clockText.setFormat(Paths.font("UbuntuSans.ttf"), 20, 0xFFFFFFFF, CENTER);
-        clockText.setBorderStyle(FlxTextBorderStyle.OUTLINE, 0xFFFFFFFF, 0.4, 1);
-        clockText.scale.set(0.4, 0.4);
+        clockText = new FlxText(0, 0, 1000, DateTools.format(Date.now(), "%H:%M"));
+        clockText.setFormat(Paths.font("UbuntuSans.ttf"), 100, 0xFFFFFFFF, CENTER);
+        clockText.setBorderStyle(FlxTextBorderStyle.OUTLINE, 0xFFFFFFFF, 2, 1);
+        clockText.scale.set(0.08, 0.08);
         clockText.updateHitbox();
-        clockText.setPosition(FlxG.width - clockText.width + 21, bar.y + 5);
+        clockText.setPosition(FlxG.width - clockText.width + 30, bar.y + 8);
         add(clockText);
 
         var soundIcon:FlxSprite = new FlxSprite(0, 0).loadGraphic(img("volume"));
@@ -428,11 +431,11 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
         sidebarItems = [];
         add(arrowDown);
 
-        var myComputer:FlxText = new FlxText(0, 0, 200, 'My Computer');
-        myComputer.setPosition(arrowDown.x+16, arrowDown.y+4);
-        myComputer.setFormat(Paths.font("UbuntuSans.ttf"), 20, 0xFFFFFFFF, LEFT);
-        myComputer.setBorderStyle(FlxTextBorderStyle.OUTLINE, 0xFFFFFFFF, 0.4, 1);
-        myComputer.scale.set(0.4, 0.4);
+        var myComputer:FlxText = new FlxText(0, 0, 1000, 'My Computer');
+        myComputer.setPosition(arrowDown.x+20, arrowDown.y+7);
+        myComputer.setFormat(Paths.font("UbuntuSans.ttf"), 100, 0xFFFFFFFF, LEFT);
+        myComputer.setBorderStyle(FlxTextBorderStyle.OUTLINE, 0xFFFFFFFF, 2, 1);
+        myComputer.scale.set(0.08, 0.08);
         myComputer.updateHitbox();
         explorerSprites.push(myComputer);
         add(myComputer);
@@ -443,15 +446,15 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
             var iconThing:FlxSprite = new FlxSprite(0, 0).loadGraphic(img(fileNm[i].toLowerCase()));
             iconThing.scale.set(0.16, 0.16);
             iconThing.updateHitbox();
-            iconThing.setPosition(bgSide.x+17, myComputer.y+(16*i)+17);
+            iconThing.setPosition(bgSide.x+17, myComputer.y+(16*i)+14);
             explorerSprites.push(iconThing);
             sidebarItems.push(iconThing);
             add(iconThing);
 
-            var iconTxt:FlxText = new FlxText(0, 0, 200, fileNm[i]);
-            iconTxt.setPosition(iconThing.x+14, iconThing.y+1);
-            iconTxt.setFormat(Paths.font("UbuntuSans.ttf"), 20, 0xFFFFFFFF, LEFT);
-            iconTxt.scale.set(0.4, 0.4);
+            var iconTxt:FlxText = new FlxText(0, 0, 1000, fileNm[i]);
+            iconTxt.setPosition(iconThing.x+16, iconThing.y+4);
+            iconTxt.setFormat(Paths.font("UbuntuSans.ttf"), 100, 0xFFFFFFFF, LEFT);
+            iconTxt.scale.set(0.08, 0.08);
             iconTxt.updateHitbox();
             explorerSprites.push(iconTxt);
             sidebarItems.push(iconTxt);
@@ -475,10 +478,10 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
             add(hit2);
         }
 
-        var folderName:FlxText = new FlxText(0, 0, 100, 'Unofficial');
-        folderName.setPosition(bgTop.x+265, bgTop.y+6);
-        folderName.setFormat(Paths.font("UbuntuSans.ttf"), 20, 0xFFFFFFFF, CENTER);
-        folderName.scale.set(0.4, 0.4);
+        var folderName:FlxText = new FlxText(0, 0, 500, 'Unofficial');
+        folderName.setPosition(bgTop.x+269, bgTop.y+6);
+        folderName.setFormat(Paths.font("UbuntuSans.ttf"), 100, 0xFFFFFFFF, CENTER);
+        folderName.scale.set(0.08, 0.08);
         folderName.updateHitbox();
         explorerSprites.push(folderName);
         add(folderName);
@@ -497,10 +500,10 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
         explorerSprites.push(_Icon);
         add(_Icon);
 
-        var flText = new FlxText(0, 0, 32.4, 'File'); // 40
-        flText.setPosition(bgTop.x+4, bgTop.y+10);
-        flText.setFormat(Paths.font("UbuntuSans.ttf"), 20, 0xFFFFFFFF, LEFT);
-        flText.scale.set(0.4, 0.4);
+        var flText = new FlxText(0, 0, 202, 'File'); // 40
+        flText.setPosition(bgTop.x+10, bgTop.y+10);
+        flText.setFormat(Paths.font("UbuntuSans.ttf"), 100, 0xFFFFFFFF, LEFT);
+        flText.scale.set(0.08, 0.08);
         flText.updateHitbox();
         explorerSprites.push(flText);
         add(flText);
@@ -543,6 +546,7 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
 
     function closeTextEditor() {
         underline2.visible = inEditor = false;
+        typedLabel = null;
         #if mobile
         setKeyboard(false);
         #end
@@ -649,10 +653,10 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
             hitbox.setPosition(icon.x, icon.y);
             hitbox.alpha = 0;
 
-            var text:FlxText = new FlxText(0, 0, 170, names[i]);
-            text.setPosition(icon.x - (icon.width/2)-2, icon.y + (icon.height));
-            text.setFormat(Paths.font("UbuntuSans.ttf"), 20, 0xFFFFFFFF, CENTER);
-            text.scale.set(0.45, 0.45);
+            var text:FlxText = new FlxText(0, 0, 850, names[i]);
+            text.setPosition(icon.x - (icon.width/2)+2, icon.y + (icon.height)+1);
+            text.setFormat(Paths.font("UbuntuSans.ttf"), 100, 0xFFFFFFFF, CENTER);
+            text.scale.set(0.09, 0.09);
             text.updateHitbox();
             folderIcons.push([icon, hitbox, text, canMoveForward, names[i]]);
 
@@ -744,10 +748,10 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
         editorSprites.push(editorText);
         add(editorText);
 
-        fileText = new FlxText(0, 0, 32.4, 'File');
-        fileText.setPosition(bottom.x+4, bottom.y-50);
-        fileText.setFormat(Paths.font("UbuntuSans.ttf"), 20, 0xFFFFFFFF, LEFT);
-        fileText.scale.set(0.4, 0.4);
+        fileText = new FlxText(0, 0, 200, 'File');
+        fileText.setPosition(bottom.x+10, bottom.y-50);
+        fileText.setFormat(Paths.font("UbuntuSans.ttf"), 100, 0xFFFFFFFF, LEFT);
+        fileText.scale.set(0.08, 0.08);
         fileText.updateHitbox();
         editorSprites.push(fileText);
         add(fileText);
@@ -761,7 +765,7 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
         add(iconS);
 
         var fileText2:FlxText = new FlxText(0, 0, 2000, 'ContainFatalError.cnt');
-        fileText2.setPosition(iconS.x+10, iconS.y);
+        fileText2.setPosition(iconS.x+11, iconS.y+2);
         fileText2.setFormat(Paths.font("UbuntuSans.ttf"), 20, 0xFFFFFFFF, LEFT);
         fileText2.scale.set(0.3, 0.3);
         fileText2.updateHitbox();
@@ -769,7 +773,7 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
         add(fileText2);
 
         var fileText3:FlxText = new FlxText(0, 0, 2000, 'Ln 9, Col 2         INS');
-        fileText3.setPosition(bottom.x+250, bottom.y+bottom.height-13);
+        fileText3.setPosition(bottom.x+254, bottom.y+bottom.height-11);
         fileText3.setFormat(Paths.font("UbuntuSans.ttf"), 20, 0xFFFFFFFF, LEFT);
         fileText3.scale.set(0.4, 0.4);
         fileText3.updateHitbox();
@@ -812,11 +816,22 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
         editorSprites.push(xIcon2);
         add(xIcon2);
 
-        fileHitbox = new FlxSprite(0, 0).makeGraphic(Std.int(fileText.textField.textWidth * 0.4 + 6), Std.int(fileText.height + 2), 0xFFFFFFFF);
+        fileHitbox = new FlxSprite(0, 0).makeGraphic(Std.int(fileText.textField.textWidth * 0.08 + 6), Std.int(fileText.height + 2), 0xFFFFFFFF);
         fileHitbox.setPosition(fileText.x - 3, fileText.y - 1);
         fileHitbox.alpha = 0;
         editorSprites.push(fileHitbox);
         add(fileHitbox);
+
+        var promptEnd = editorText.textField.getCharBoundaries(unlockText.length - 1);
+        var labelX:Float = editorText.x + (promptEnd != null ? (promptEnd.x + promptEnd.width - 2) * 0.4 : 4);
+        var labelY:Float = editorText.y + (promptEnd != null ? (promptEnd.y - 2) * 0.4 : 0);
+
+        typedLabel = new FlxText(labelX, labelY, 0, '');
+        typedLabel.setFormat(Paths.font("UbuntuSans.ttf"), 20, 0xFFFFFFFF, LEFT);
+        typedLabel.scale.set(0.4, 0.4);
+        typedLabel.updateHitbox();
+        editorSprites.push(typedLabel);
+        add(typedLabel);
 
         inEditor = true;
         popIn(editorSprites);
@@ -1288,7 +1303,10 @@ Y̸̺͐͊ O̸̱̟͑́͛ U̸͓̼̳͗ Ṛ̵̛̘  ̵̼̆̇̾Ȃ̸͙̂̕ N̸̨̎ S̷�
 
         if(inEditor) {
             pollTyping();
-            editorSprites[11].text = unlockText+typedText;
+            if(typedLabel != null && typedLabel.text != typedText) {
+                typedLabel.text = typedText;
+                typedLabel.updateHitbox();
+            }
             if(clicked() && FlxG.mouse.overlaps(taskbarIcons[8])) {
                 minimizeWindow(editorSprites, 'editor', taskbarIcons[8]);
             } else if(FlxG.mouse.overlaps(editorSprites[17])) {

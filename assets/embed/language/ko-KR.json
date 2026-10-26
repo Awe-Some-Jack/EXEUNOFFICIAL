@@ -33,7 +33,7 @@
 	"options.controls": "조작 설정",
 	"options.controls.labels": ["노트", "UI", "액션", "왼쪽", "아래", "위", "오른쪽", "확인", "뒤로", "일시정지", "초기화"],
 	"options.mobilecontrols": "모바일 조작",
-	"options.mobilecontrols.labels": ["노트 슬라이드", "MIDDLESCROLL", "모바일 상대 노트", "조작 유형", "MIDDLESCROLL 유형", "기본 히트박스 알파", "누름 히트박스 알파", "일시정지 버튼 표시"],
+	"options.mobilecontrols.labels": ["노트 슬라이드", "MIDDLESCROLL", "모바일 상대 노트", "조작 유형", "MIDDLESCROLL 유형", "기본 히트박스 알파", "누름 히트박스 알파", "일시정지 버튼 표시", "D-PAD 크기", "D-PAD 알파"],
 	"options.visuals": "비주얼",
 	"options.visuals.labels": ["HUD 숨기기", "깜박임 효과", "카메라 줌", "점수 텍스트 줌", "FPS 표시"],
 	"options.gameplay": "게임플레이",

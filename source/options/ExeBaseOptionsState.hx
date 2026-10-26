@@ -25,6 +25,9 @@ typedef ExeGenericOption = {
 	var setValue:Dynamic->Void;
 	@:optional var isInt:Bool;
 	@:optional var isFloat:Bool;
+	@:optional var min:Float;
+	@:optional var max:Float;
+	@:optional var step:Float;
 }
 
 typedef ExeRowData = {

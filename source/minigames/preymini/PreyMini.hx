@@ -87,6 +87,10 @@ class PreyMini extends MusicBeatState
 		overlay.pixelPerfectRender = true;
 		FlxG.cameras.add(overlay, false);
 
+		#if mobile
+		add(new minigames.MiniTouchPad(overlay));
+		#end
+
 		_bg = new BGPrey(this, overlay);
 		_bg.setLit(true);
 		_terrain = Terrain.load("minigame/preymini/bg/map/hitbox", false);

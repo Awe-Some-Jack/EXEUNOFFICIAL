@@ -352,6 +352,24 @@ public class InstallManager {
     }
 
     private static void unzip(File zipFile, File destDir) throws Exception {
+        if (IS_MAC) {
+            try {
+                ProcessBuilder pb = new ProcessBuilder("unzip", "-o", zipFile.getAbsolutePath(), "-d", destDir.getAbsolutePath());
+                Process process = pb.start();
+                int exitCode = process.waitFor();
+                
+                if (exitCode == 0) {
+                    return; 
+                }
+            } catch (Exception e) {
+                System.out.println("Error running native unzip on macOS, falling back to Java unzip: " + e.getMessage());
+            }
+        }
+        
+        unzipJava(zipFile, destDir);
+    }
+
+    private static void unzipJava(File zipFile, File destDir) throws Exception {
         try (ZipInputStream zipIn = new ZipInputStream(new BufferedInputStream(new java.io.FileInputStream(zipFile)))) {
             ZipEntry entry = zipIn.getNextEntry();
 

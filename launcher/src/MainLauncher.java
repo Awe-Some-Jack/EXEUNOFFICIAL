@@ -1287,6 +1287,7 @@ public class MainLauncher extends Application {
 
                 @Override
                 public void onError(String message) {
+                    System.out.println("Error on download: " + message);
                     isActionInProgress = false;
                     btnStartGame.setDisable(false);
                     updateButtonStates();
@@ -1298,6 +1299,10 @@ public class MainLauncher extends Application {
             isActionInProgress = false;
             btnStartGame.setDisable(false);
             updateButtonStates();
+            Throwable exception = fetchTask.getException();
+            if (exception != null) {
+                exception.printStackTrace();
+            }
         });
 
         Thread t = new Thread(fetchTask);

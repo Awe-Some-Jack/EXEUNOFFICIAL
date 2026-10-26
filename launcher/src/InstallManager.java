@@ -58,7 +58,12 @@ public class InstallManager {
                 base = home + File.separator + ".local" + File.separator + "share";
             }
         }
-        return new File(base + File.separator + "EXEUNOFFICIAL" + File.separator + "sonicexeunofficial");
+        
+        File dir = new File(base + File.separator + "EXEUNOFFICIAL" + File.separator + "sonicexeunofficial");
+        if (!dir.exists() && IS_MAC) {
+            dir.mkdirs();
+        }
+        return dir;
     }
 
     public static File getInstallDirectory() {
@@ -135,9 +140,12 @@ public class InstallManager {
         String fallbackUrl = "";
         String bestMatchUrl = "";
 
+        System.out.println("cur OS: " + OS_NAME + " | Arch: " + OS_ARCH);
+
         while (matcher.find()) {
             String url = matcher.group(1);
             String filename = url.substring(url.lastIndexOf('/') + 1).toLowerCase();
+            System.out.println("Asset encontrado en GitHub: " + filename);
 
             if (fallbackUrl.isEmpty()) {
                 fallbackUrl = url;
@@ -165,19 +173,21 @@ public class InstallManager {
                     }
                 }
 
-                if (filename.endsWith("-mac.zip")) {
+                if (filename.endsWith("-mac.zip") || filename.contains("mac") || filename.contains("osx")) {
                     bestMatchUrl = url;
                     break;
                 }
             } else if (IS_LINUX) {
-                if (filename.endsWith("-linux.zip")) {
+                if (filename.endsWith("-linux.zip") || filename.contains("linux")) {
                     bestMatchUrl = url;
                     break;
                 }
             }
         }
 
-        return bestMatchUrl.isEmpty() ? fallbackUrl : bestMatchUrl;
+        String selected = bestMatchUrl.isEmpty() ? fallbackUrl : bestMatchUrl;
+        System.out.println("final Selected URL: " + selected);
+        return selected;
     }
 
     public static File getVersionFile() {

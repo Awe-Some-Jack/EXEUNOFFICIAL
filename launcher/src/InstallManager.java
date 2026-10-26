@@ -221,7 +221,30 @@ public class InstallManager {
         }
     }
 
+    private static ReleaseInfo fetchLatestReleaseFromRedirect(String repoOwner, String repoName) throws Exception {
+        String base = "https://github.com/" + repoOwner + "/" + repoName;
+        HttpURLConnection conn = (HttpURLConnection) new URL(base + "/releases/latest").openConnection();
+        conn.setInstanceFollowRedirects(false);
+        conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+        int status = conn.getResponseCode();
+        String location = conn.getHeaderField("Location");
+        conn.disconnect();
+        if (status < 300 || status >= 400 || location == null || !location.contains("/tag/")) {
+            throw new Exception("Could not resolve latest release");
+        }
+        String tag = location.substring(location.lastIndexOf("/tag/") + 5);
+        String platform = IS_WINDOWS ? "windows" : IS_MAC ? "mac" : "linux";
+        return new ReleaseInfo(tag, base + "/releases/download/" + tag + "/bin-" + platform + ".zip");
+    }
+
     public static ReleaseInfo fetchLatestRelease(String repoOwner, String repoName) throws Exception {
+        try {
+            return fetchLatestReleaseFromRedirect(repoOwner, repoName);
+        } catch (Exception ignored) {}
+        return fetchLatestReleaseFromApi(repoOwner, repoName);
+    }
+
+    private static ReleaseInfo fetchLatestReleaseFromApi(String repoOwner, String repoName) throws Exception {
         String apiUrl = "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/releases/latest";
         URL url = new URL(apiUrl);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();

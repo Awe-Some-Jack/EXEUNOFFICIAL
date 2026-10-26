@@ -234,7 +234,29 @@ public class InstallManager {
         }
         String tag = location.substring(location.lastIndexOf("/tag/") + 5);
         String platform = IS_WINDOWS ? "windows" : IS_MAC ? "mac" : "linux";
-        return new ReleaseInfo(tag, base + "/releases/download/" + tag + "/bin-" + platform + ".zip");
+        String prefix = base + "/releases/download/" + tag + "/bin-";
+        if (IS_MAC) {
+            String archUrl = prefix + "mac-" + (IS_ARM64 ? "silicon" : "intel") + ".zip";
+            if (assetExists(archUrl)) {
+                return new ReleaseInfo(tag, archUrl);
+            }
+        }
+        return new ReleaseInfo(tag, prefix + platform + ".zip");
+    }
+
+    private static boolean assetExists(String url) {
+        try {
+            HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+            conn.setRequestMethod("HEAD");
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(5000);
+            int status = conn.getResponseCode();
+            conn.disconnect();
+            return status == 200;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public static ReleaseInfo fetchLatestRelease(String repoOwner, String repoName) throws Exception {

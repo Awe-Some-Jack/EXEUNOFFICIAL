@@ -32,7 +32,8 @@ def rpaths(path):
 
 
 def resolve_rpath(name, src):
-    dirs = rpaths(src) + ["/opt/homebrew/lib", "/usr/local/lib", "/opt/local/lib"] + glob.glob("/opt/homebrew/opt/*/lib")
+    dirs = rpaths(src) + ["/opt/homebrew/lib", "/usr/local/lib", "/opt/local/lib"]
+    dirs += glob.glob("/opt/homebrew/opt/*/lib") + glob.glob("/usr/local/opt/*/lib")
     for d in dirs:
         c = os.path.join(d, name)
         if os.path.exists(c):

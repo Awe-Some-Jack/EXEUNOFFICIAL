@@ -39,7 +39,7 @@ var hogBG:Array<BackgroundSprite> = [
 ];
 
 var scorchedBG:Array<BackgroundSprite> = [
-	{path: 'bg/evil/sky', position: [-820 - 548, -1100], scroll: [0.2, 0.2]},
+	{path: 'bg/evil/sky', position: [-820 - 548, -620], scroll: [0.2, 0.2], scale: [1, 0.6]},
 	{path: 'bg/evil/mountains', position: [-820 - 548, -320 - 126], scroll: [0.4, 0.4]},
 	{path: 'bg/evil/hogwaterfall', position: [-270, 70], scroll: [0.4, 0.4], animation: [{name: 'leftwatermark', fps: 12, looped: true}]},
 	{path: 'bg/evil/mountain2', position: [-730, 90], scroll: [0.4, 0.4]},
@@ -68,7 +68,7 @@ var blackScreen:FlxSprite;
 
 //shaders
 var bloom:Shader = {shader: null, config: ['saturation' => 1, 'brightness' => 0, 'contrast' => 1]};
-var aberration:Shader = {shader: null, config: ['amount' => 0.1], defaultConfig: ['amount' => 0.1]};
+var aberration:Shader = {shader: null, config: ['amount' => 0.05], defaultConfig: ['amount' => 0.05]};
 var chromatic:Shader = {shader: null};
 var glitch:Shader = {shader: null};
 var smear:Shader = {shader: null};
@@ -711,6 +711,12 @@ function onEvent(n,v1,v2)
 				bloom.configOffset = ['saturation' => 0, 'brightness' => 0, 'contrast' => 0];
 
 				scorchedBG[5].sprite.alpha = 0;
+
+				hogBG[9].sprite.shader = null;
+				hogBG[10].sprite.shader = null;
+				gf.shader = null;
+				dad.shader = null;
+				boyfriend.shader = null;
 			case 'mbscorched':
 				FlxTween.cancelTweensOf(camHUD);
 				FlxTween.tween(camHUD, {alpha: 1}, Conductor.crochet / 250);
@@ -731,6 +737,8 @@ function onEvent(n,v1,v2)
 				cam.BFy = 350;
 
 				cam.OverrideZoom = false;
+			case 'm1xd':
+				
 			case 'g2xd':
 				_xdd = true;
 			case 'g3xd':
@@ -744,8 +752,6 @@ function onEvent(n,v1,v2)
 			case 'preglitch':
 				camHUD.fade(0x75FFFFFF, Conductor.crochet / 250, false, null, true);
 			case 'worlddying':
-				dad.shader = null;
-				boyfriend.shader = null;
 				camHUD.fade(0x00FFFFFF, 0.0001, false, null, true);
 				camHUD.flash(0xFFFFFFFF, 2, null, true);
 				debugPrint('[ILLEGAL INSTRUCTION] THE ENVIRONMENT IS CORRUPTED AND IS BEING PREPARED FOR ELIMINATION.', 0xFFFF0000);

@@ -230,12 +230,8 @@ class PlayState extends MusicBeatState
 	public var pressMissDamage:Float = 0.05;
 
 	public var sunkyBot:SunkyBOT;
-	public var botplayTxt(get, never):FlxText;
 	public var botplaySine(get, set):Float;
 	public var sunkyBotSprite(get, never):FlxSprite;
-
-	function get_botplayTxt():FlxText
-		return sunkyBot?.text;
 
 	function get_botplaySine():Float
 		return sunkyBot != null ? sunkyBot.sine : 0;
@@ -940,7 +936,6 @@ class PlayState extends MusicBeatState
 		uiGroup.add(iconP2);
 
 		sunkyBot = new SunkyBOT(this);
-		uiGroup.add(sunkyBot.createText(healthBar.y - 35));
 
 		uiGroup.cameras = [camHUD];
 		noteGroup.cameras = [camHUD];
@@ -2363,7 +2358,6 @@ class PlayState extends MusicBeatState
 			{
 				sunkyHelp = true;
 				cpuControlled = true;
-				sunkyBot.text.visible = true;
 			}
 			startCallback();
 		}));

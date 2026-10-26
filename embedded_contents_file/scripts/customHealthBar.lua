@@ -263,6 +263,7 @@ function onEvent(n, v1)
     end
 end
 
+local sine = 0
 function onUpdatePost(e)
     lerpHealth = lerp(getHealth(), lerpHealth, math.exp(-e * 12 * playbackRate))
 
@@ -283,10 +284,18 @@ function onUpdatePost(e)
     end
 
     if not healthProps.healthBar.hideScore and getVar('canChangeTxt') then
-        setTextString('exeScoreTxt', getPhrase('score_text', 'Score: {1} | Misses: {2}', {callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {score, false}), misses}))
+        local text = getPhrase('score_text', 'Score: {1} | Misses: {2}', {callMethodFromClass('flixel.util.FlxStringUtil', 'formatMoney', {score, false}), misses})
+        if getProperty('cpuControlled') then text = getPhrase('sunky_is_playing', 'SUNKY IS PLAYING'):upper()
+        setTextString('exeScoreTxt', text)
         if oldScoreTxt ~= getTextString('exeScoreTxt') then scaleObject('exeScoreTxt', healthProps.healthBar.textBopAmount, healthProps.healthBar.textBopAmount, false) end
         oldScoreTxt = getTextString('exeScoreTxt')
         scaleObject('exeScoreTxt', lerp(getProperty('exeScoreTxt.scale.x'), 1, e * 10), lerp(getProperty('exeScoreTxt.scale.y'), 1, e * 10), false)
+    end
+
+    if getProperty('cpuControlled') and getProperty('exeScoreTxt.visible') then
+        sine = sine + 90 * e
+        if sine >= 360 then sine = sine - 360;
+        setTextColor('exeScoreTxt', getColorFromHex(fromHSB(sine, 1, 1)))
     end
 
     setProperty('iconBF.animation.curAnim.curFrame', (getHealth() < 0.4 and 1 or 0))
@@ -312,4 +321,10 @@ end
 
 function bound(number, min, max)
 	return math.max(min, math.min(max, number))
+end
+
+function fromHSB(hue, sat, br)
+    alpha = alpha or 1
+    local c = callMethodFromClass("flixel.util.FlxColor", "fromHSB", {hue, sat, br, 1})
+    return string.format("%06X", c)
 end

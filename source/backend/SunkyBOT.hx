@@ -8,7 +8,6 @@ class SunkyBOT
 	static final spriteScale:Float = 0.6;
 	static final spritePath:String = 'assets/exe/botplay/sunkyplaying';
 
-	public var text(default, null):FlxText;
 	public var sine:Float = 0;
 	public var sprite(default, null):FlxSprite;
 
@@ -26,16 +25,6 @@ class SunkyBOT
 	public function new(game:PlayState)
 	{
 		this.game = game;
-	}
-
-	public function createText(y:Float):FlxText
-	{
-		text = new FlxText(400, y, FlxG.width - 800, Language.getPhrase("sunky_is_playing", "SUNKY IS PLAYING").toUpperCase(), 20);
-		text.setFormat(Paths.font(Language.fontOrCJK('vcr.ttf')), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		text.scrollFactor.set();
-		text.borderSize = 1.25;
-		text.visible = game.cpuControlled;
-		return text;
 	}
 
 	public function createSprite():Void

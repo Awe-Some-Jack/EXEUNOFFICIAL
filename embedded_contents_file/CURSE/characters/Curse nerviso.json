@@ -2,15 +2,7 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [43, 3],
-			"anim": "idle",
-			"fps": 24,
-			"name": "Idle",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [87, 23],
+			"offsets": [109, 20],
 			"anim": "singLEFT",
 			"fps": 24,
 			"name": "Left",
@@ -18,37 +10,141 @@
 		},
 		{
 			"loop": false,
-			"offsets": [42, 3],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [43, 15],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "Right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [106, 81],
+			"offsets": [156, 100],
 			"anim": "singUP",
 			"fps": 24,
 			"name": "Up",
 			"indices": []
+		},
+		{
+			"offsets": [43, 3],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "hIdle"
+		},
+		{
+			"offsets": [42, 2],
+			"indices": [],
+			"fps": 24,
+			"anim": "2idle",
+			"loop": false,
+			"name": "nIdle"
+		},
+		{
+			"offsets": [43, -54],
+			"indices": [],
+			"fps": 24,
+			"anim": "sing2DOWN",
+			"loop": false,
+			"name": "nDown"
+		},
+		{
+			"offsets": [126, 44],
+			"indices": [],
+			"fps": 24,
+			"anim": "sing2LEFT",
+			"loop": false,
+			"name": "nLeft"
+		},
+		{
+			"offsets": [168, 93],
+			"indices": [],
+			"fps": 24,
+			"anim": "sing2UP",
+			"loop": false,
+			"name": "nUp"
+		},
+		{
+			"offsets": [51, -14],
+			"indices": [],
+			"fps": 24,
+			"anim": "3idle",
+			"loop": false,
+			"name": "e1Idle"
+		},
+		{
+			"offsets": [130, 46],
+			"indices": [],
+			"fps": 24,
+			"anim": "sing3LEFT",
+			"loop": false,
+			"name": "e1Left"
+		},
+		{
+			"offsets": [21, -72],
+			"indices": [],
+			"fps": 24,
+			"anim": "sing3DOWN",
+			"loop": false,
+			"name": "e1Down"
+		},
+		{
+			"offsets": [26, 18],
+			"indices": [],
+			"fps": 24,
+			"anim": "sing3RIGHT",
+			"loop": false,
+			"name": "e1Right"
+		},
+		{
+			"offsets": [118, 136],
+			"indices": [],
+			"fps": 24,
+			"anim": "sing3UP",
+			"loop": false,
+			"name": "e1Up"
+		},
+		{
+			"offsets": [34, -13],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle4",
+			"loop": false,
+			"name": "idle2alt"
+		},
+		{
+			"offsets": [105, 132],
+			"indices": [],
+			"fps": 24,
+			"anim": "sing4UP",
+			"loop": false,
+			"name": "up2alt"
+		},
+		{
+			"offsets": [177, -12],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "down2alt"
+		},
+		{
+			"offsets": [310, 59],
+			"indices": [],
+			"fps": 24,
+			"anim": "sing4LEFT",
+			"loop": false,
+			"name": "left2alt"
+		},
+		{
+			"offsets": [118, 20],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right2alt"
 		}
 	],
 	"vocals_file": "",
 	"no_antialiasing": false,
-	"image": "characters/curse nervioso",
+	"image": "characters/curse",
 	"position": [0, 0],
 	"healthicon": "cursenerv",
 	"flip_x": false,
 	"healthbar_colors": [52, 59, 113],
-	"camera_position": [20, 70],
+	"camera_position": [-1880, -650],
 	"sing_duration": 6.1,
 	"scale": 0.8,
 	"_editor_isPlayer": false

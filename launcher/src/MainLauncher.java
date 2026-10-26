@@ -246,7 +246,10 @@ public class MainLauncher extends Application {
         Scene scene = new Scene(root, 950, 580);
         scene.setFill(Color.TRANSPARENT);
 
-        if (getClass().getResource(STYLE_CSS_PATH) != null) {
+        File cssFile = new File(STYLE_CSS_PATH);
+        if (cssFile.exists()) {
+            scene.getStylesheets().add(cssFile.toURI().toString());
+        } else if (getClass().getResource(STYLE_CSS_PATH) != null) {
             scene.getStylesheets().add(getClass().getResource(STYLE_CSS_PATH).toExternalForm());
         }
 

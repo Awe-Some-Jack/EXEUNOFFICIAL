@@ -33,12 +33,27 @@ public class InstallManager {
         }
     }
 
+    private static final String OS_NAME = System.getProperty("os.name", "").toLowerCase();
+    public static final boolean IS_WINDOWS = OS_NAME.contains("win");
+    public static final boolean IS_MAC = OS_NAME.contains("mac") || OS_NAME.contains("darwin");
+
     public static File getDefaultInstallDirectory() {
-        String localAppData = System.getenv("LOCALAPPDATA");
-        if (localAppData == null || localAppData.isEmpty()) {
-            localAppData = System.getProperty("user.home") + File.separator + "AppData" + File.separator + "Local";
+        String home = System.getProperty("user.home");
+        String base;
+        if (IS_WINDOWS) {
+            base = System.getenv("LOCALAPPDATA");
+            if (base == null || base.isEmpty()) {
+                base = home + File.separator + "AppData" + File.separator + "Local";
+            }
+        } else if (IS_MAC) {
+            base = home + File.separator + "Library" + File.separator + "Application Support";
+        } else {
+            base = System.getenv("XDG_DATA_HOME");
+            if (base == null || base.isEmpty()) {
+                base = home + File.separator + ".local" + File.separator + "share";
+            }
         }
-        return new File(localAppData + File.separator + "EXEUNOFFICIAL" + File.separator + "sonicexeunofficial");
+        return new File(base + File.separator + "EXEUNOFFICIAL" + File.separator + "sonicexeunofficial");
     }
 
     public static File getInstallDirectory() {
@@ -72,16 +87,62 @@ public class InstallManager {
     }
 
     public static File getGameExecutable() {
-        return new File(getInstallDirectory(), "SonicExe.exe");
+        File dir = getInstallDirectory();
+        if (IS_WINDOWS) {
+            return new File(dir, "SonicExe.exe");
+        }
+        File[] candidates = {
+            new File(dir, "SonicExe"),
+            new File(dir, "SonicExe.app/Contents/MacOS/SonicExe"),
+            new File(dir, "SonicExe.sh")
+        };
+        for (File candidate : candidates) {
+            if (candidate.isFile()) {
+                return candidate;
+            }
+        }
+        return candidates[IS_MAC ? 1 : 0];
+    }
+
+    private static void markExecutables(File dir) {
+        if (IS_WINDOWS) return;
+        for (String rel : new String[] {"SonicExe", "SonicExe.sh", "SonicExe.app/Contents/MacOS/SonicExe"}) {
+            File f = new File(dir, rel);
+            if (f.isFile()) {
+                f.setExecutable(true, false);
+            }
+        }
     }
 
     public static void closeGameIfRunning() {
         try {
             String exeName = getGameExecutable().getName();
-            ProcessBuilder pb = new ProcessBuilder("taskkill", "/F", "/IM", exeName);
+            ProcessBuilder pb = IS_WINDOWS
+                ? new ProcessBuilder("taskkill", "/F", "/IM", exeName)
+                : new ProcessBuilder("pkill", "-x", exeName);
             Process process = pb.start();
             process.waitFor();
         } catch (Exception ignored) {}
+    }
+
+    private static String pickDownloadUrl(String jsonResponse) {
+        Matcher matcher = Pattern.compile("\"browser_download_url\"\\s*:\\s*\"([^\"]+)\"").matcher(jsonResponse);
+        String first = "";
+        String match = "";
+        while (matcher.find()) {
+            String url = matcher.group(1);
+            String name = url.substring(url.lastIndexOf('/') + 1).toLowerCase();
+            if (first.isEmpty()) first = url;
+            if (!name.endsWith(".zip")) continue;
+            boolean forWindows = name.contains("win");
+            boolean forMac = name.contains("mac") || name.contains("osx");
+            boolean forLinux = name.contains("linux");
+            if ((IS_WINDOWS && forWindows) || (IS_MAC && forMac) || (!IS_WINDOWS && !IS_MAC && forLinux)) {
+                match = url;
+                break;
+            }
+        }
+        return match.isEmpty() ? first : match;
     }
 
     public static File getVersionFile() {
@@ -132,9 +193,7 @@ public class InstallManager {
             Matcher tagMatcher = tagPattern.matcher(jsonResponse);
             String tagName = tagMatcher.find() ? tagMatcher.group(1) : "";
 
-            Pattern urlPattern = Pattern.compile("\"browser_download_url\"\\s*:\\s*\"([^\"]+)\"");
-            Matcher urlMatcher = urlPattern.matcher(jsonResponse);
-            String downloadUrl = urlMatcher.find() ? urlMatcher.group(1) : "";
+            String downloadUrl = pickDownloadUrl(jsonResponse);
 
             if (!tagName.isEmpty() && !downloadUrl.isEmpty()) {
                 return new ReleaseInfo(tagName, downloadUrl);
@@ -190,6 +249,7 @@ public class InstallManager {
 
                     cleanDirectoryExceptTempZip(targetDir, tempZip);
                     unzip(tempZip, targetDir);
+                    markExecutables(targetDir);
 
                     if (tempZip.exists()) {
                         tempZip.delete();

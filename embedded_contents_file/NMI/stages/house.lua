@@ -7,6 +7,7 @@ precacheImage('noteSkins/NOTERED_assets')
 setProperty('skipArrowStartTween', true)
 function onCreatePost()
 	--precache video
+	setProperty('camGame.alpha', 0)
 	startVideo('fakebabyfinal', false, true, false, false)
 	startVideo('fakebaby', false, true, false, false)
 	setProperty('inCutscene', false)
@@ -130,6 +131,7 @@ function onTimerCompleted(t)
 	if t == 'startVideo' then
 		startVideo('fakebaby', false, true)
 		runTimer('lol', 0.2)
+		setProperty('camGame.alpha', 1)
 		setProperty('inCutscene', false)
 		setProperty('videoCutscene.videoSprite.volumeAdjust', 0)
 	end

@@ -34,8 +34,13 @@ public class InstallManager {
     }
 
     private static final String OS_NAME = System.getProperty("os.name", "").toLowerCase();
+    private static final String OS_ARCH = System.getProperty("os.arch", "").toLowerCase();
+
     public static final boolean IS_WINDOWS = OS_NAME.contains("win");
     public static final boolean IS_MAC = OS_NAME.contains("mac") || OS_NAME.contains("darwin");
+    public static final boolean IS_LINUX = OS_NAME.contains("nux") || OS_NAME.contains("nix") || OS_NAME.contains("aix");
+
+    public static final boolean IS_ARM64 = OS_ARCH.contains("aarch64") || OS_ARCH.contains("arm64");
 
     public static File getDefaultInstallDirectory() {
         String home = System.getProperty("user.home");
@@ -127,22 +132,52 @@ public class InstallManager {
 
     private static String pickDownloadUrl(String jsonResponse) {
         Matcher matcher = Pattern.compile("\"browser_download_url\"\\s*:\\s*\"([^\"]+)\"").matcher(jsonResponse);
-        String first = "";
-        String match = "";
+        String fallbackUrl = "";
+        String bestMatchUrl = "";
+
         while (matcher.find()) {
             String url = matcher.group(1);
-            String name = url.substring(url.lastIndexOf('/') + 1).toLowerCase();
-            if (first.isEmpty()) first = url;
-            if (!name.endsWith(".zip")) continue;
-            boolean forWindows = name.contains("win");
-            boolean forMac = name.contains("mac") || name.contains("osx");
-            boolean forLinux = name.contains("linux");
-            if ((IS_WINDOWS && forWindows) || (IS_MAC && forMac) || (!IS_WINDOWS && !IS_MAC && forLinux)) {
-                match = url;
-                break;
+            String filename = url.substring(url.lastIndexOf('/') + 1).toLowerCase();
+
+            if (fallbackUrl.isEmpty()) {
+                fallbackUrl = url;
+            }
+
+            if (!filename.endsWith(".zip")) {
+                continue;
+            }
+
+            if (IS_WINDOWS) {
+                if (filename.endsWith("-win.zip") || filename.endsWith("-windows.zip") || filename.contains("win")) {
+                    bestMatchUrl = url;
+                    break;
+                }
+            } else if (IS_MAC) {
+                if (IS_ARM64) {
+                    if (filename.endsWith("-mac-arm64.zip") || filename.endsWith("-mac-silicon.zip") || filename.endsWith("-mac-m1.zip")) {
+                        bestMatchUrl = url;
+                        break;
+                    }
+                } else {
+                    if (filename.endsWith("-mac-intel.zip") || filename.endsWith("-mac-x64.zip")) {
+                        bestMatchUrl = url;
+                        break;
+                    }
+                }
+
+                if (filename.endsWith("-mac.zip")) {
+                    bestMatchUrl = url;
+                    break;
+                }
+            } else if (IS_LINUX) {
+                if (filename.endsWith("-linux.zip")) {
+                    bestMatchUrl = url;
+                    break;
+                }
             }
         }
-        return match.isEmpty() ? first : match;
+
+        return bestMatchUrl.isEmpty() ? fallbackUrl : bestMatchUrl;
     }
 
     public static File getVersionFile() {

@@ -1079,7 +1079,7 @@ class DAGarden extends SonicSubState
 
     function buildDrawer():Void
     {
-        drawerGroup = new flixel.group.FlxSpriteGroup(485.0, 402.0);
+        drawerGroup = new flixel.group.FlxSpriteGroup(0.0, 402.0);
         add(drawerGroup);
 
         sharedCapShader = new shaders.RoundedBorderShader(5.0, 0.0, 0xFF000000);
@@ -1103,8 +1103,6 @@ class DAGarden extends SonicSubState
         drawerTabTxt.updateHitbox();
         drawerTabTxt.antialiasing = ClientPrefs.data.antialiasing;
         drawerGroup.add(drawerTabTxt);
-
-        _redrawDrawerBg();
 
         final rows = [
             {key: 'dagarden_play',    action: () -> { if (player.isPlaying) player.pause(); else player.playAudio(songs.selectedSong(), songs.selectedMod()); }},
@@ -1142,7 +1140,9 @@ class DAGarden extends SonicSubState
             _keycapInkOffsetX.push(0.0);
             _keycapInkOffsetY.push(0.0);
 
+            final placeholderText:String = Language.getArray('extras.dagarden', ['LOOP: '])[3] + Language.get('options.on', "ON");
             final lbl = new FlxText(8.0 + 22.0 + 8.0, rowY, 0, '', 20);
+            lbl.text = placeholderText; // The largest text to measure correctly the width
             lbl.setFormat(Paths.font('NiseSegaSonic.ttf'), 20, FlxColor.BLACK, LEFT);
             lbl.wordWrap = false;
             lbl.scale.set(0.5, 0.5);
@@ -1151,6 +1151,10 @@ class DAGarden extends SonicSubState
             drawerGroup.add(lbl);
             drawerBtnTxt.push(lbl);
         }
+
+        drawerW = drawerGroup.width;
+        _redrawDrawerBg();
+        drawerGroup.x = 604.0 - drawerGroup.width + 60.0;
     }
 
     function _redrawDrawerBg():Void
@@ -1344,16 +1348,16 @@ class DAGarden extends SonicSubState
         if (localX <= 0)
             spr.clipRect = null; // show all of it
         else if (localX >= spr.frameWidth)
-            spr.clipRect = new FlxRect(0, 0, 0, spr.frameHeight); // then hide all of it
+            spr.clipRect = FlxRect.get(0, 0, 0, spr.frameHeight); // then hide all of it
         else
-            spr.clipRect = new FlxRect(localX, 0, spr.frameWidth - localX, spr.frameHeight);
+            spr.clipRect = FlxRect.get(localX, 0, spr.frameWidth - localX, spr.frameHeight);
     }
 
     function toggleDrawer():Void
     {
         drawerOpen = !drawerOpen;
         FlxTween.cancelTweensOf(drawerGroup);
-        final targetX = drawerOpen ? 604.0 : 485.0;
+        final targetX = drawerOpen ? 604.0 : 604.0 - drawerGroup.width + 60.0;
         FlxTween.tween(drawerGroup, {x: targetX}, 0.3, {ease: drawerOpen ? FlxEase.expoOut : FlxEase.expoIn});
     }
 

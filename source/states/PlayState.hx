@@ -659,7 +659,7 @@ class PlayState extends MusicBeatState
 
 		songName = Paths.formatToSongPath(SONG.song);
 
-		camGame = initPsychCamera();
+		camGame = initCamera();
 
 		if(songName == 'flash') {
 			camBack = new FlxCamera();

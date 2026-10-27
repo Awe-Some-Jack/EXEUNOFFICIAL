@@ -40,7 +40,7 @@ var scaleMult:Float = 1;
 var velocityMult:Float = 0.5;
 var radiusMult:Float = 1;
 var LERP_VELOCITY:Float = 15;
-var INITIAL_SCALE:Float = 0.35;
+var INITIAL_SCALE:Float = 0.3;
 
 var emeraldsData:Array<EmeraldData> = [];
 
@@ -49,7 +49,7 @@ function onCreatePost()
     var guh = FlxG.random.bool(1);
     masterEmerald = new FlxSprite();
     masterEmerald.setPosition(1925, 1050);
-    masterEmerald.scale.set(0.28, 0.28);
+    masterEmerald.scale.set(0.5, 0.5);
     if(guh) 
     {
         masterEmerald.loadGraphic(Paths.image('bg/emerals/placeholder'));

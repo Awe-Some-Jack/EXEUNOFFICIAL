@@ -292,9 +292,20 @@ class Paths
 		trimmedFrames.set(graph.key, atlas);
 	}
 
-	public static function imageFramesOf(graph:FlxGraphic):FlxFramesCollection
+	static function trimmedFramesOf(graph:FlxGraphic):FlxAtlasFrames
 	{
 		final trimmed:FlxAtlasFrames = trimmedFrames.get(graph.key);
+		if (trimmed != null && trimmed.parent != graph)
+		{
+			trimmedFrames.remove(graph.key);
+			return null;
+		}
+		return trimmed;
+	}
+
+	public static function imageFramesOf(graph:FlxGraphic):FlxFramesCollection
+	{
+		final trimmed:FlxAtlasFrames = trimmedFramesOf(graph);
 		return trimmed != null ? trimmed : graph.imageFrame;
 	}
 
@@ -598,7 +609,7 @@ class Paths
 
 	public static function registerBitmapTrim(graph:FlxGraphic, bitmap:BitmapData):Void
 	{
-		if (graph == null || trimmedFrames.exists(graph.key))
+		if (graph == null || trimmedFramesOf(graph) != null)
 			return;
 
 		final key:String = bitmapTrimKeys.get(bitmap);
@@ -622,7 +633,9 @@ class Paths
 				{
 					try {
 						var astcBytes = openfl.utils.ByteArray.fromBytes(sys.io.File.getBytes(testPath));
-						return BitmapData.fromTexture(FlxG.stage.context3D.createASTCTexture(astcBytes), false);
+						final astc:BitmapData = BitmapData.fromTexture(FlxG.stage.context3D.createASTCTexture(astcBytes), false);
+						if (astc != null) return astc;
+						trace('ASTC load returned null: $testPath');
 					} catch (e:Dynamic) {
 						trace('Error loading ASTC from sys: $testPath ($e)');
 					}
@@ -632,7 +645,9 @@ class Paths
 				if (OpenFlAssets.exists(testPath))
 				{
 					try {
-						return OpenFlAssets.getBitmapData(testPath, useCache);
+						final astcAsset:BitmapData = OpenFlAssets.getBitmapData(testPath, useCache);
+						if (astcAsset != null) return astcAsset;
+						trace('ASTC load from OpenFL Assets returned null: $testPath');
 					} catch (e:Dynamic) {
 						trace('Error loading ASTC from OpenFL Assets: $testPath ($e)');
 					}
@@ -645,7 +660,9 @@ class Paths
 			if (sys.FileSystem.exists(testPath))
 			{
 				try {
-					return BitmapData.fromFile(sys.FileSystem.fullPath(testPath));
+					final fromDisk:BitmapData = BitmapData.fromFile(sys.FileSystem.fullPath(testPath));
+					if (fromDisk != null) return fromDisk;
+					trace('Bitmap load from disk returned null: $testPath');
 				} catch (e:Dynamic) {
 					trace('Error loading bitmap from sys: $testPath ($e)');
 				}
@@ -655,7 +672,9 @@ class Paths
 			if (OpenFlAssets.exists(testPath))
 			{
 				try {
-					return OpenFlAssets.getBitmapData(testPath, useCache);
+					final fromAssets:BitmapData = OpenFlAssets.getBitmapData(testPath, useCache);
+					if (fromAssets != null) return fromAssets;
+					trace('Bitmap load from OpenFL Assets returned null: $testPath');
 				} catch (e:Dynamic) {
 					trace('Error loading bitmap from OpenFL Assets: $testPath ($e)');
 				}

@@ -402,7 +402,7 @@ class EXETitle extends MusicBeatState
 				confirmStart();
 		}
 
-		if (!transitioning && canStart && unlocked.length >= 5)
+		if (!transitioning && canStart #if final && unlocked.length >= 5 #end)
 		{
 			final threshold:Float = FlxG.width * PARALLAX_THRESHOLD;
 			final arrowW:Float = parallaxArrow.width;

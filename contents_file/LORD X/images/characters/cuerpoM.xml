@@ -1,37 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="cuerpoM.png">
-	<!-- Created with Adobe Animate version 24.0.12.3 -->
-	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 28 instancia 10000" x="100" y="100" width="426" height="621" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10001" x="565" y="100" width="426" height="620" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10002" x="1030" y="100" width="426" height="623" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10003" x="1495" y="100" width="426" height="623" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10004" x="1960" y="100" width="426" height="624" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10005" x="2425" y="100" width="426" height="624" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10006" x="2890" y="100" width="426" height="625" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10007" x="3355" y="100" width="426" height="624" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10008" x="100" y="764" width="426" height="625" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10009" x="565" y="764" width="426" height="625" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10010" x="1030" y="764" width="426" height="625" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10011" x="1495" y="764" width="426" height="625" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10012" x="1960" y="764" width="426" height="626" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10013" x="2425" y="764" width="426" height="626" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10014" x="2890" y="764" width="426" height="625" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10015" x="3355" y="764" width="426" height="625" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10016" x="100" y="1429" width="426" height="625" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10017" x="565" y="1429" width="426" height="624" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10018" x="1030" y="1429" width="426" height="624" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10019" x="1495" y="1429" width="426" height="624" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10020" x="1960" y="1429" width="429" height="619" frameX="0" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10021" x="2428" y="1429" width="426" height="618" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10022" x="2893" y="1429" width="426" height="616" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10023" x="3358" y="1429" width="426" height="616" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10024" x="100" y="2093" width="426" height="616" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10025" x="565" y="2093" width="426" height="616" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10026" x="1030" y="2093" width="426" height="615" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10027" x="1495" y="2093" width="426" height="616" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10028" x="1960" y="2093" width="426" height="615" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10029" x="2425" y="2093" width="426" height="617" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10030" x="2890" y="2093" width="426" height="616" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
-	<SubTexture name="Símbolo 28 instancia 10031" x="3355" y="2093" width="426" height="619" frameX="-3" frameY="0" frameWidth="429" frameHeight="626"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="cuerpoM.png" width="3003" height="3171">
+	<SubTexture name="SÃ­mbolo 28 instancia 10000.png" x="2117" y="629" width="426" height="620" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10001.png" x="2147" y="1" width="425" height="620" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10002.png" x="1" y="1917" width="623" height="425" rotated="true" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10003.png" x="1879" y="1885" width="622" height="425" rotated="true" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10004.png" x="1259" y="630" width="425" height="624" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10005.png" x="628" y="1917" width="623" height="425" rotated="true" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10006.png" x="1289" y="1" width="425" height="624" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10007.png" x="1259" y="1258" width="425" height="624" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10008.png" x="431" y="1" width="425" height="625" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10009.png" x="1" y="1" width="426" height="624" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10010.png" x="1" y="630" width="625" height="425" rotated="true" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10011.png" x="1" y="1488" width="624" height="425" rotated="true" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10012.png" x="630" y="630" width="625" height="425" rotated="true" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10013.png" x="860" y="1" width="425" height="625" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10014.png" x="1" y="1059" width="625" height="425" rotated="true" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10015.png" x="629" y="1488" width="624" height="425" rotated="true" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10016.png" x="630" y="1059" width="625" height="425" rotated="true" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10017.png" x="1688" y="629" width="425" height="624" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10018.png" x="1718" y="1" width="425" height="624" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10019.png" x="1688" y="1257" width="425" height="624" frameX="-4" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10020.png" x="1257" y="1886" width="618" height="429" rotated="true" frameX="-0" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10021.png" x="1879" y="2314" width="618" height="426" rotated="true" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10022.png" x="1255" y="2319" width="616" height="426" rotated="true" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10023.png" x="2547" y="625" width="426" height="615" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10024.png" x="2576" y="1" width="426" height="615" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10025.png" x="2547" y="1244" width="426" height="615" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10026.png" x="2501" y="2496" width="426" height="615" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10027.png" x="1" y="2346" width="616" height="426" rotated="true" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10028.png" x="1875" y="2744" width="615" height="426" rotated="true" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10029.png" x="621" y="2346" width="616" height="426" rotated="true" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10030.png" x="2505" y="1876" width="426" height="616" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
+	<SubTexture name="SÃ­mbolo 28 instancia 10031.png" x="2117" y="1253" width="426" height="619" frameX="-3" frameY="-0" frameWidth="429" frameHeight="626"/>
 </TextureAtlas>

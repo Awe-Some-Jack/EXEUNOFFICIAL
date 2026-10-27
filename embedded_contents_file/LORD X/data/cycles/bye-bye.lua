@@ -12,7 +12,7 @@ local curText = {}
 local curStringText = ''
 
 function onCreate()
-	-- preloading this thing bruh
+	-- preloading this thing bruh (Precacche script by AssmanBruh)
 	precacheSound("DIGA-BYE-BYE")
 end
 

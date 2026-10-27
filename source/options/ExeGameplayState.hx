@@ -96,10 +96,10 @@ class ExeGameplayState extends ExeBaseOptionsState
 					var n = cast(val, Float);
 					var step = 0.1; var mn = 0.0; var mx = 1.0;
 
-					if (optIdx == 2)      { step = 0.5; mn = 15.0; mx = 45.0; }
-					else if (optIdx == 3) { step = 1.0; mn = 15.0; mx = 90.0; }
-					else if (optIdx == 4) { step = 1.5; mn = 15.0; mx = 135.0; }
-					else if (optIdx == 5) { step = 0.1; mn = 2.0;  mx = 10.0; }
+					if (optIdx == 3)      { step = 0.5; mn = 15.0; mx = 45.0; }
+					else if (optIdx == 4) { step = 1.0; mn = 15.0; mx = 90.0; }
+					else if (optIdx == 5) { step = 1.5; mn = 15.0; mx = 135.0; }
+					else if (optIdx == 6) { step = 0.1; mn = 2.0;  mx = 10.0; }
 
 					n = Math.round((n + (isRight ? step : -step)) * 10) / 10;
 					n = Math.max(mn, Math.min(mx, n));

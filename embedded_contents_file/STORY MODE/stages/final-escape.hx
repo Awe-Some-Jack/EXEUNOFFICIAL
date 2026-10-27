@@ -217,8 +217,10 @@ function onCreatePost()
 	//shader
 	chrom = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('ChromaticAbberation')));
     chrom.setFloat('amount', 0.3);
-
-	camGame.filters = [new ShaderFilter(game.getLuaObject('sexo').shader), new ShaderFilter(chrom)];
+	
+	camGame.filters = [new ShaderFilter(chrom)];
+	final sexoShader = game.getLuaObject('sexo').shader;
+	if(sexoShader != null) camGame.filters.push(new ShaderFilter(sexoShader));
 
 	for (i in 0...4)
 	{

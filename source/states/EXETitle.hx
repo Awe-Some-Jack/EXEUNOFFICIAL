@@ -346,12 +346,15 @@ class EXETitle extends MusicBeatState
 	override function update(elapsed:Float):Void
 	{
 		final gamepad:FlxGamepad = FlxG.gamepads.lastActive;
+		
+		#if !final
 		if (videoPlaying)
 		{
 			if (controls.ACCEPT #if mobile || shortPress #end || (gamepad != null && gamepad.justPressed.START #if switch || gamepad.justPressed.B #end)) video?.setVideoPercent(1);
 			super.update(elapsed);
 			return;
 		}
+		#end
 
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;

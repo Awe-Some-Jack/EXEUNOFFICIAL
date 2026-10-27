@@ -515,34 +515,37 @@ class VideoSprite extends FlxSpriteGroup
 			}
 		}
 
-		if ((FlxG.keys.pressed.SPACE #if mobile || PlayState.instance?.pressHolding #end) && skipKeyReleasedOnce)
+		if(canSkip) 
 		{
-			skipHold += elapsed;
-
-			final progress:Float = skipHold / skipNeed;
-			pie.scale.set(SKIP_RING_SCALE * progress, SKIP_RING_SCALE * progress);
-			pie.alpha = FlxMath.remapToRange(progress, 0.025, 1, 0, 1);
-			pieTrack.alpha = FlxMath.lerp(pieTrack.alpha, 0.35, 15 * elapsed);
-
-			if (skipHold >= skipNeed)
+			if ((FlxG.keys.pressed.SPACE #if mobile || PlayState.instance?.pressHolding #end) && skipKeyReleasedOnce)
 			{
-				if (onSkip != null)
-					onSkip();
+				skipHold += elapsed;
 
-				stop();
-				destroy();
+				final progress:Float = skipHold / skipNeed;
+				pie.scale.set(SKIP_RING_SCALE * progress, SKIP_RING_SCALE * progress);
+				pie.alpha = FlxMath.remapToRange(progress, 0.025, 1, 0, 1);
+				pieTrack.alpha = FlxMath.lerp(pieTrack.alpha, 0.35, 15 * elapsed);
+
+				if (skipHold >= skipNeed)
+				{
+					if (onSkip != null)
+						onSkip();
+
+					stop();
+					destroy();
+				}
 			}
-		}
-		else
-		{
-			if (!FlxG.keys.pressed.SPACE #if mobile && PlayState.instance != null && !PlayState.instance.pressHolding #end)
-				skipKeyReleasedOnce = true;
+			else
+			{
+				if (!FlxG.keys.pressed.SPACE #if mobile && PlayState.instance != null && !PlayState.instance.pressHolding #end)
+					skipKeyReleasedOnce = true;
 
-			skipHold = 0;
+				skipHold = 0;
 
-			pieTrack.alpha = FlxMath.lerp(pieTrack.alpha, 0, 22 * elapsed);
-			pie.scale.x = FlxMath.lerp(pie.scale.x, 0, 22 * elapsed);
-			pie.scale.y = FlxMath.lerp(pie.scale.y, 0, 22 * elapsed);
+				pieTrack.alpha = FlxMath.lerp(pieTrack.alpha, 0, 22 * elapsed);
+				pie.scale.x = FlxMath.lerp(pie.scale.x, 0, 22 * elapsed);
+				pie.scale.y = FlxMath.lerp(pie.scale.y, 0, 22 * elapsed);
+			}
 		}
 	}
 

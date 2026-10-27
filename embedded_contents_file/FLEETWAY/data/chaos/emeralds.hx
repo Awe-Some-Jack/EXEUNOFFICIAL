@@ -333,7 +333,7 @@ function setupHUDEmeralds():Void
 {
     hudEmeralds = new FlxSpriteGroup();
     hudEmeralds.camera = camHUD;
-    add(hudEmeralds);
+    insert(0, hudEmeralds);
 
 	for(i in 0...7)
     {
@@ -348,7 +348,7 @@ function setupHUDEmeralds():Void
         // FlxTween.tween(emerald.offset, {y: 45}, 2, {ease: FlxEase.sineInOut, type: 4, startDelay: 0.2 * i});
     }
 
-    hudEmeralds.setPosition((FlxG.width - hudEmeralds.width) / 2, 590);
+    hudEmeralds.setPosition((FlxG.width - hudEmeralds.width) / 2, ClientPrefs.data.downScroll ? 160 : 590);
 
     new FlxTimer().start(5, bumpHUDEmeralds, 0);
 }

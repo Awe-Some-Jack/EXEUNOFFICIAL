@@ -546,7 +546,12 @@ class FlxSprite extends FlxObject
 		if (animated)
 			frames = FlxTileFrames.fromGraphic(graph, frameWidth, frameHeight);
 		else
-			frames = graph.imageFrame;
+		{
+			if (graphic is BitmapData)
+				backend.Paths.registerBitmapTrim(graph, cast graphic);
+
+			frames = backend.Paths.imageFramesOf(graph);
+		}
 
 		return this;
 	}

@@ -1,9 +1,11 @@
 package backend;
 
+import flixel.graphics.frames.FlxFrame;
 import flixel.graphics.frames.FlxFrame.FlxFrameAngle;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.frames.FlxFramesCollection;
 import flixel.graphics.FlxGraphic;
+import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.system.FlxAssets;
 
@@ -215,8 +217,90 @@ class Paths
 		}
 	}
 
+	static var imageTrims:Map<String, Array<Float>> = null;
+	static final trimmedFrames:Map<String, FlxAtlasFrames> = [];
+
+	static function loadImageTrims():Void
+	{
+		imageTrims = [];
+		final path:String = getPath('data/image_trims.json', TEXT, null, false);
+		final content:String = getContent(path);
+		if (content == null)
+			return;
+
+		try
+		{
+			final data:Dynamic = Json.parse(content);
+			for (field in Reflect.fields(data))
+				imageTrims.set(field, Reflect.field(data, field));
+		}
+		catch (e:Dynamic)
+		{
+			trace('Error parsing image_trims.json ($e)');
+		}
+	}
+
+	static function trimOf(file:String, bitmap:BitmapData):Array<Float>
+	{
+		if (file == null || bitmap == null)
+			return null;
+
+		var start:Int = -1;
+		if (file.startsWith('assets/'))
+			start = 7;
+		else
+			start = file.lastIndexOf('contents/');
+
+		if (start < 0)
+			return null;
+
+		if (imageTrims == null)
+			loadImageTrims();
+
+		final dot:Int = file.lastIndexOf('.');
+		final trim:Array<Float> = imageTrims.get(file.substring(start, dot > start ? dot : file.length));
+		if (trim == null || bitmap.width != trim[4] || bitmap.height != trim[5])
+			return null;
+
+		return trim;
+	}
+
+	static function restoreTrimmed(bitmap:BitmapData, trim:Array<Float>):BitmapData
+	{
+		if (bitmap.image == null || trim.length > 6)
+			return bitmap;
+
+		final full:BitmapData = new BitmapData(Std.int(trim[2]), Std.int(trim[3]), true, 0);
+		full.copyPixels(bitmap, bitmap.rect, new openfl.geom.Point(trim[0], trim[1]));
+		return full;
+	}
+
+	static function registerImageTrim(graph:FlxGraphic, file:String, bitmap:BitmapData):Void
+	{
+		final trim:Array<Float> = trimOf(file, bitmap);
+		if (trim == null)
+			return;
+
+		final atlas:FlxAtlasFrames = new FlxAtlasFrames(graph);
+		final frame:FlxFrame = atlas.addAtlasFrame(FlxRect.get(0, 0, trim[4], trim[5]), FlxPoint.get(trim[2], trim[3]), FlxPoint.get(trim[0], trim[1]), 'trimmed');
+		if (trim.length > 6)
+		{
+			frame.texScale = trim[6];
+			frame.cacheFrameMatrix();
+		}
+
+		trimmedFrames.set(graph.key, atlas);
+	}
+
+	public static function imageFramesOf(graph:FlxGraphic):FlxFramesCollection
+	{
+		final trimmed:FlxAtlasFrames = trimmedFrames.get(graph.key);
+		return trimmed != null ? trimmed : graph.imageFrame;
+	}
+
 	inline static function destroyGraphic(graphic:FlxGraphic)
 	{
+		trimmedFrames.remove(graphic?.key);
 		// free some gpu memory
 		graphic?.bitmap?.__texture?.dispose();
 		FlxG.bitmap.remove(graphic);
@@ -377,9 +461,11 @@ class Paths
 
 	public static function cacheBitmap(key:String, ?parentFolder:String = null, ?bitmap:BitmapData, ?allowGPU:Bool = true):FlxGraphic
 	{
+		var trimFile:String = null;
 		if (bitmap == null)
 		{
 			var file:String = getPath(key, IMAGE, parentFolder, true);
+			trimFile = file;
 			#if (!js && !html5)
 			final useOptimized:Bool = allowGPU && ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null;
 			#else
@@ -433,6 +519,15 @@ class Paths
 			}
 		}
 
+		var trimmedBitmap:Bool = false;
+		final trim:Array<Float> = trimOf(trimFile, bitmap);
+		if (trim != null)
+		{
+			final restored:BitmapData = restoreTrimmed(bitmap, trim);
+			trimmedBitmap = restored == bitmap;
+			bitmap = restored;
+		}
+
 		if (allowGPU && ClientPrefs.data.cacheOnGPU && bitmap.image != null && FlxG.stage.context3D != null)
 		{
 			bitmap.lock();
@@ -451,6 +546,8 @@ class Paths
 		final graph:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, key);
 		graph.persist = true;
 		graph.destroyOnNoUse = false;
+		if (trimmedBitmap)
+			registerImageTrim(graph, trimFile, bitmap);
 
 		currentTrackedAssets.set(key, graph);
 		localTrackedAssets.push(key);
@@ -490,7 +587,26 @@ class Paths
 		return 'assets/$folderKey';
 	}
 
+	static final bitmapTrimKeys:haxe.ds.WeakMap<BitmapData, String> = new haxe.ds.WeakMap();
+
 	public static function getBitmapData(key:String, ?useCache:Bool = true) {
+		final bitmap:BitmapData = loadBitmapData(key, useCache);
+		if (bitmap != null)
+			bitmapTrimKeys.set(bitmap, key);
+		return bitmap;
+	}
+
+	public static function registerBitmapTrim(graph:FlxGraphic, bitmap:BitmapData):Void
+	{
+		if (graph == null || trimmedFrames.exists(graph.key))
+			return;
+
+		final key:String = bitmapTrimKeys.get(bitmap);
+		if (key != null)
+			registerImageTrim(graph, key, bitmap);
+	}
+
+	static function loadBitmapData(key:String, ?useCache:Bool = true) {
 		var lastDot:Int = key.lastIndexOf('.');
 		var baseKey:String = lastDot != -1 ? key.substr(0, lastDot) : key;
 

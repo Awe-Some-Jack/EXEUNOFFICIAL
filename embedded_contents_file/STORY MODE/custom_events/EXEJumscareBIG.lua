@@ -1,5 +1,5 @@
 local jumpscareBIGSprite = {
-    {name = 'jumpscareBIG', path = 'slow/simplejump', x = 0, y = 0, scaleX = 0.8, scaleY = 0.8, antialisasing = true, alpha = 0, camera = 'camOther', front = true}
+    {name = 'jumpscareBIG', path = 'slow/simplejump', x = 0, y = 0, scaleX = 0.8, scaleY = 0.8, antialisasing = true, alpha = 0.001, camera = 'camOther', front = true}
 }
 
 precacheImage('slow/simplejump')

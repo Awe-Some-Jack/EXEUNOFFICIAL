@@ -6,7 +6,7 @@ function onCreatePost()
 	addLuaSprite('jumpscare')
 	scaleObject('jumpscare', 1.25, 1.25)
 	screenCenter('jumpscare')
-	setProperty('jumpscare.alpha', 0)
+	setProperty('jumpscare.alpha', 0.001)
 	setBlendMode('jumpscare', 'MULTIPLY')
 end
 

@@ -37,7 +37,7 @@
 	"options.visuals": "GÖRSELLER",
 	"options.visuals.labels": ["ARAYÜZÜ GİZLE", "YANIP SÖNEN IŞIKLAR", "KAMERA YAKINLAŞTIRMALARI", "SKOR YAZISI YAKINLAŞTIRMASI", "FPS SAYACI"],
 	"options.gameplay": "OYNANIŞ",
-	 "options.gameplay.labels": ["AŞAĞI KAYDIRMA", "GHOST TAPPING", "DONDURMA SENKRON GECİKMESİ", "SICK PENCERESİ", "GOOD PENCERESİ", "BAD PENCERESİ", "GÜVENLİ KARELER", "AKIŞ SESİ"],
+	"options.gameplay.labels": ["AŞAĞI KAYDIRMA", "GHOST TAPPING", "DONDURMA SENKRON GECİKMESİ", "SICK PENCERESİ", "GOOD PENCERESİ", "BAD PENCERESİ", "GÜVENLİ KARELER", "AKIŞ SESİ"],
     "options.graphics": "GRAFİKLER",
     "options.graphics.labels": ["PATATES MODU", "ANTİ ALYASING", "GPU ÖNBELLEĞE ALMA", "GÖLGELENDİRİCİ KALİTESİ", "GÖLGELENDİRİCİLER", "SINIRSIZ FPS", "KARE HIZI"],
 	"options.language": "DİL",
@@ -108,6 +108,9 @@
 	"achievement_tumbalacasamami": "EVİ YIK, MAMI", "achievement_description_tumbalacasamami": "Fatality gizli sürprizini bul",
 	"achievement_sonichu": "Aşırıya kadar zapla!", "achievement_description_sonichu": "Sonichu'yu bul ve yen",
 	"achievement_shocks": "Sana Volt Tackle atmışlar, ha?!", "achievement_description_shocks": "Sonichu'nun elektro şoklarıyla öl",
+	"achievement_exechallenge": "Yani... Exe Challenge hâlâ devam ediyor mu?", "achievement_description_exechallenge": "Luigikid’i The Valley’de bul",
+  	"achievement_lukas": "LUKAS WORLD", "achievement_description_lukas": "le luter’i Her World’de bul",
+  	"achievement_mehead": "AKLIMDAN ÇIK ARTIK BE ADAM!", "achievement_description_mehead": "Jenerik menüsünde geliştiricilerden birinin kafasını patlat",
 	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
 
 	"gamejolt.labels": ["KULLANICI ADI", "JETON", "İŞLEM", "KUPALAR"],

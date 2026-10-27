@@ -108,6 +108,9 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Encontre o easter-egg de Fatality",
 	"achievement_sonichu": "Zap ao extremo!", "achievement_description_sonichu": "Encontre e derrote o Sonichu",
 	"achievement_shocks": "Que Investida Trovão foi essa, hein?!", "achievement_description_shocks": "Morra pelos choques elétricos do Sonichu",
+	"achievement_exechallenge": "Então... o EXE Challenge ainda está rolando?", "achievement_description_exechallenge": "Encontre o Luigikid em The Valley",
+  	"achievement_lukas": "LUKAS WORLD", "achievement_description_lukas": "Encontre le luter em Her World",
+  	"achievement_mehead": "SAI DA MINHA CABEÇA, CARA!", "achievement_description_mehead": "Exploda a cabeça de um dos devs no menu de créditos",
 	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
 
 	"gamejolt.labels": ["USUÁRIO", "TOKEN", "AÇÃO", "TROFÉUS"],

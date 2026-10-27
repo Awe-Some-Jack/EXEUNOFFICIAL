@@ -53,13 +53,13 @@
 	},
 	{
 		"name": "Magos y Magas!",
-		"description": "Find Pepe el Mago in The Valley.",
+		"description": "Find Pepe el Mago in The Valley",
 		"id": "magosymagas",
 		"secret": true
 	},
 	{
 		"name": "So... Is the Exe Challenge still going?",
-		"description": "Find Luigikid in The Valley.",
+		"description": "Find Luigikid in The Valley",
 		"id": "exechallenge",
 		"secret": true
 	},
@@ -116,7 +116,7 @@
 		"secret": true
 	},
 	{
-		"name": "The hedgehog of the night.",
+		"name": "The hedgehog of the night",
 		"description": "Find and beat Devoid",
 		"id": "devoid"
 	},
@@ -137,7 +137,7 @@
 		"id": "soink"
 	},
 	{
-		"name": "Uh... ¿Meow?",
+		"name": "Uh... Meow?",
 		"description": "Find and beat Movie Sonic",
 		"id": "ugly"
 	},
@@ -238,7 +238,7 @@
 	},
 	{
 		"name": "GET OUT OF ME HEAD MAN",
-		"description": "Explode one of the Devs heads in the Credits menu.",
+		"description": "Explode one of the Devs heads in the Credits menu",
 		"id": "mehead",
 		"secret": true
 	},

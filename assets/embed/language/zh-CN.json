@@ -108,6 +108,9 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "找到 Fatality 彩蛋",
 	"achievement_sonichu": "极限电击！", "achievement_description_sonichu": "找到并击败 Sonichu",
 	"achievement_shocks": "这伏特攻击可真猛啊？！", "achievement_description_shocks": "死于 Sonichu 的电击",
+	"achievement_exechallenge": "所以……Exe Challenge 还在进行吗？", "achievement_description_exechallenge": "在 The Valley 找到 Luigikid",
+    "achievement_lukas": "LUKAS WORLD", "achievement_description_lukas": "在 Her World 找到 le luter",
+    "achievement_mehead": "从我的脑袋里滚出去！", "achievement_description_mehead": "在制作人员菜单中引爆一名开发者的脑袋",
 	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
 
 	"gamejolt.labels": ["用户名", "令牌", "操作", "奖杯"],

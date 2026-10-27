@@ -108,6 +108,9 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Fatality 이스터에그를 찾으세요",
 	"achievement_sonichu": "극한의 짜릿함!", "achievement_description_sonichu": "Sonichu를 찾고 쓰러뜨리세요",
 	"achievement_shocks": "엄청난 볼트태클이네, 안 그래?!", "achievement_description_shocks": "Sonichu의 전기 충격으로 죽으세요",
+	"achievement_exechallenge": "그래서... Exe Challenge는 아직도 진행 중이야?", "achievement_description_exechallenge": "The Valley에서 Luigikid를 찾으세요",
+  	"achievement_lukas": "LUKAS WORLD", "achievement_description_lukas": "Her World에서 le luter를 찾으세요",
+	"achievement_mehead": "내 머릿속에서 나가, 야!", "achievement_description_mehead": "크레딧 메뉴에서 개발자 중 한 명의 머리를 폭발시키세요",
 	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
 
 	"gamejolt.labels": ["사용자 이름", "토큰", "작업", "트로피"],

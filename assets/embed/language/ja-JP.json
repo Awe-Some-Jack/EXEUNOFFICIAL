@@ -108,6 +108,9 @@
 	"achievement_tumbalacasamami": "Tumba la casa mami", "achievement_description_tumbalacasamami": "Fatalityのイースターエッグを見つける",
 	"achievement_sonichu": "極限までザップ！", "achievement_description_sonichu": "Sonichuを見つけて倒す",
 	"achievement_shocks": "すごいボルテッカーだな？！", "achievement_description_shocks": "Sonichuの電撃で死ぬ",
+	"achievement_exechallenge": "それで... Exe Challengeってまだやってるの？", "achievement_description_exechallenge": "The ValleyでLuigikidを見つける",
+  	"achievement_lukas": "LUKAS WORLD", "achievement_description_lukas": "Her Worldでle luterを見つける",
+  	"achievement_mehead": "俺の頭から出ていけよ、なあ！", "achievement_description_mehead": "クレジットメニューで開発者の誰かの頭を爆発させる",
 	"achievement_mattpro": "Mattpro", "achievement_description_mattpro": "Mattpro",
 
 	"gamejolt.labels": ["ユーザー名", "トークン", "アクション", "トロフィー"],

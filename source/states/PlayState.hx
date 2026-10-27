@@ -2501,6 +2501,7 @@ class PlayState extends MusicBeatState
 		{
 			if (controls.justPressed('debug_1'))
 			{
+				callOnHScript('onSongExit', []);
 				if (Main.DEVELOPMENT_BUILD){
 					openChartEditor();
 				}else{
@@ -2535,8 +2536,10 @@ class PlayState extends MusicBeatState
 			}
 
 			#if !final
-			if (controls.justPressed('debug_2'))
+			if (controls.justPressed('debug_2')){
+				callOnHScript('onSongExit', []);
 				openCharacterEditor();
+			}
 			#end
 		}
 

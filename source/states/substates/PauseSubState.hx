@@ -356,6 +356,7 @@ class PauseSubState extends MusicBeatSubstate
 					OptionsState.onPlayState = true;
 					FlxG.switchState(() -> new OptionsState());
 					FlxG.sound.playMusic(Assets.getSound('assets/exe/music/pause.ogg'), 1);
+					PlayState.instance?.callOnHScript('onSongExit', []);
 				case 3:
 					if (standaloneExit != null)
 					{
@@ -381,6 +382,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode      = false;
 					FlxG.camera.followLerp      = 0;
+					PlayState.instance?.callOnHScript('onSongExit', []);
 			}
 		});
 	}

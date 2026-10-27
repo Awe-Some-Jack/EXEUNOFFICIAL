@@ -169,7 +169,6 @@ class HScript extends Iris
 		set('FlxSpriteGroup',  flixel.group.FlxSpriteGroup);
 		set('FlxText',         flixel.text.FlxText);
 		set('FlxCamera',       flixel.FlxCamera);
-		set('PsychCamera',     backend.PsychCamera);
 		set('FlxTimer',        flixel.util.FlxTimer);
 		set('FlxTween',        flixel.tweens.FlxTween);
 		set('FlxEase',         flixel.tweens.FlxEase);

@@ -68,7 +68,7 @@ class SoundTest extends MusicBeatState
 		if (FlxG.stage?.window != null)
 			previousWindowTitle = FlxG.stage.window.title;
 
-		initPsychCamera();
+		initCamera();
 		loadMusic();
 		createBackground();
 		createTitle();

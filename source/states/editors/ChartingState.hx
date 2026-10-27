@@ -242,7 +242,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		opponentVocals.autoDestroy = false;
 		opponentVocals.looped = true;
 
-		initPsychCamera();
+		initCamera();
 		camUI = new FlxCamera();
 		camUI.bgColor.alpha = 0;
 		FlxG.cameras.add(camUI, false);

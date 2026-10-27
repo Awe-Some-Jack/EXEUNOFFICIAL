@@ -160,7 +160,7 @@ class Main extends Sprite
 
 		#if switch
 		probeGraphics();
-		switchvideo.backend.SwitchVideoLog.logCallBack = function(msg:String, ?pos:haxe.PosInfos):Void boot('video: ' + msg);
+		switchvideo.backend.SwitchVideoLog.logCallBack = (msg:String, ?pos:haxe.PosInfos) -> boot('video: ' + msg);
 		probeImage('assets/exe/ring.webp');
 		probeImage('assets/shared/images/minigame/preymini/bg/map/back.png');
 		#end
@@ -279,7 +279,6 @@ class Main extends Sprite
 		crowplexus.iris.macro.AbstractMacro.init();
 		#end
 
-		//#if LUA_ALLOWED Lua.set_callbacks_function(cpp.Callable.fromStaticFunction(psychlua.CallbackHandler.call)); #end
 		FunkinCache.init();
 		Paths.initStateSignals();
 

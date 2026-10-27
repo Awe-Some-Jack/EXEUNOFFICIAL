@@ -1,7 +1,7 @@
 package backend;
 
 import flixel.FlxState;
-import backend.PsychCamera;
+import flixel.FlxCamera;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.input.touch.FlxTouch;
@@ -41,7 +41,7 @@ class MusicBeatState extends FlxTransitionableState
 		return Controls.instance;
 	}
 
-	var _psychCameraInitialized:Bool = false;
+	var _cameraInitialized:Bool = false;
 
 	public var variables:Map<String, Dynamic> = new Map<String, Dynamic>();
 	public static function getVariables()
@@ -53,7 +53,7 @@ class MusicBeatState extends FlxTransitionableState
 
 		persistentUpdate = persistentDraw = true;
 
-		if(!_psychCameraInitialized) initPsychCamera();
+		if(!_cameraInitialized) initCamera();
 
 		super.create();
 
@@ -76,12 +76,12 @@ class MusicBeatState extends FlxTransitionableState
 	}
 	#end
 
-	public function initPsychCamera():PsychCamera
+	public function initCamera():FlxCamera
 	{
-		var camera = new PsychCamera();
+		final camera = new FlxCamera();
 		FlxG.cameras.reset(camera);
 		FlxG.cameras.setDefaultDrawTarget(camera, true);
-		_psychCameraInitialized = true;
+		_cameraInitialized = true;
 		//trace('initialized psych camera ' + Sys.cpuTime());
 		return camera;
 	}

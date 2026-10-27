@@ -26,6 +26,8 @@ local shaders = {
 }
 luaDebugMode = true
 function onCreatePost()
+    if not shadersEnabled then return end
+
     for num, shad in ipairs(shaders) do
         makeLuaSprite(shad.name, nil, shad.x)
         setSpriteShader(shad.name, shad.shader)
@@ -65,6 +67,8 @@ local onTween2 = false
 local onTween3 = false
 local onTween4 = false
 function onEvent(eventName, value1, value2)
+    if not shadersEnabled then return end
+
     local shaderValues = stringSplit(value1, ',')
     local tweenSettings = stringSplit(value2, ',')
     if eventName == "bloomFlash" then
@@ -113,6 +117,8 @@ end
 
 
 function onUpdatePost()
+    if not shadersEnabled then return end
+    
     if onTween1 then
         setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
         setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))

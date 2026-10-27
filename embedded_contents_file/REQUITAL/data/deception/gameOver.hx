@@ -4,6 +4,8 @@ import flixel.sound.FlxSound;
 import openfl.system.System;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.text.FlxText.FlxTextAlign;
+import psychlua.ExtraFunctions;
+import backend.Language;
 
 var deadBoyfriend:Character;
 var inGameOver:Bool = false;
@@ -23,6 +25,7 @@ var subtitleBG:FlxSprite;
 var subtitle:FlxText;
 
 var gameOverHUD:FlxCamera;
+var subtitleData:Dynamic;
 
 function onCreate()
 {
@@ -64,6 +67,7 @@ function onGameOverStart()
 
 	addPixelStuff();
 
+	subtitleData = ExtraFunctions.getLyricsData('deception', 'REQUITAL');
 	var voiceLine = FlxG.random.int(1,5);
 	makeSubtitle(voiceLine);
 
@@ -78,15 +82,9 @@ function onGameOverStart()
 
 function makeSubtitle(daLine:String):Void
 {
-	var subtitles:Map<String, String> = [
-		"1" => "YOU'RE TOO SLOW",
-		"2" => "COME ON, SONIC",
-		"3" => "*laughter*",
-		"4" => "RUN, RUN, RUN",
-		"5" => "*laughter*"
-	];
+	var subtitleText:String = getSubtitleLine(daLine);
 
-	subtitle = new FlxText(0, Std.int(FlxG.height * 0.8), Std.int(FlxG.width * 0.75), subtitles.get(daLine));
+	subtitle = new FlxText(0, Std.int(FlxG.height * 0.8), Std.int(FlxG.width * 0.75), subtitleText);
 	subtitle.setFormat(Paths.font("vcr.ttf"), 25, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 	subtitle.borderSize = 2;
 	subtitle.camera = gameOverHUD;
@@ -99,6 +97,17 @@ function makeSubtitle(daLine:String):Void
 
 	GameOverSubstate.instance.add(subtitleBG);
 	GameOverSubstate.instance.add(subtitle);
+}
+
+function getSubtitleLine(daLine:String):Void
+{
+	var lang = ClientPrefs.data.language ?? 'auto';
+	if (lang.length == 0) lang = 'auto';
+	if (lang == 'auto') lang = Language.getSystemLanguage();
+
+	var langData:Dynamic = ExtraFunctions.resolveLyricsLangData(subtitleData, lang);
+	var text:String = Reflect.field(langData, "gameover.deception." + daLine);
+	return text;
 }
 
 var timer:Float = 0;

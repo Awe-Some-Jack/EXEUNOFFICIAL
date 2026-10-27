@@ -124,8 +124,6 @@ function onEvent(eventName, value1, value2)
         elseif value1 == 'destroyVideo' then
             if getProperty('videoCutscene') == nil then return end
             callMethod('remove', {instanceArg('videoCutscene')})
-        elseif value1 == 'fadeLights' then
-            doTweenAlpha('lucesAlpha', 'luces', split[1], split[2])
         elseif value1 == 'brokenStage' then
             for _, norms in ipairs({'norm2', 'norm3', 'norm4', 'norm5', 'norm6', 'luces'}) do  triggerEvent('yourselfEvents', 'removeSprite', norms) end
             for _, broken in ipairs({'broken1', 'broken2', 'broken3', 'broken4', 'broken5'}) do setProperty(broken..'.alpha', 1) end

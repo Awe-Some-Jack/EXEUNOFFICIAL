@@ -32,9 +32,9 @@ class VideoSprite extends FlxSpriteGroup
 	public var isStateAffected(default, set):Bool = true;
 	public var autoDestroyOnComplete:Bool = true;
 
-	public var canSkip:Bool = false;
+	public var canSkip:Bool = false; // Deprecated?
 	public var skipHold:Float = 0;
-	public var skipNeed:Float = 1;
+	public var skipNeed:Float = 1.5;
 	public var pie:FlxSprite;
 	public var pieTrack:FlxSprite;
 
@@ -515,41 +515,34 @@ class VideoSprite extends FlxSpriteGroup
 			}
 		}
 
-		if (canSkip)
+		if ((FlxG.keys.pressed.SPACE #if mobile || PlayState.instance?.pressHolding #end) && skipKeyReleasedOnce)
 		{
-			pieTrack.visible = true;
-			pieTrack.alpha = 0.35;
+			skipHold += elapsed;
 
-			if ((FlxG.keys.pressed.SPACE #if mobile || PlayState.instance?.pressHolding #end) && skipKeyReleasedOnce)
+			final progress:Float = skipHold / skipNeed;
+			pie.scale.set(SKIP_RING_SCALE * progress, SKIP_RING_SCALE * progress);
+			pie.alpha = FlxMath.remapToRange(progress, 0.025, 1, 0, 1);
+			pieTrack.alpha = FlxMath.lerp(pieTrack.alpha, 0.35, 15 * elapsed);
+
+			if (skipHold >= skipNeed)
 			{
-				skipHold += elapsed;
+				if (onSkip != null)
+					onSkip();
 
-				final progress:Float = skipHold / skipNeed;
-				pie.scale.set(SKIP_RING_SCALE * progress, SKIP_RING_SCALE * progress);
-				pie.alpha = FlxMath.remapToRange(progress, 0.025, 1, 0, 1);
-
-				if (skipHold >= skipNeed)
-				{
-					if (onSkip != null)
-						onSkip();
-
-					stop();
-					destroy();
-				}
-			}
-			else
-			{
-				if (!FlxG.keys.pressed.SPACE #if mobile && PlayState.instance != null && !PlayState.instance.pressHolding #end)
-					skipKeyReleasedOnce = true;
-
-				skipHold = 0;
-				pie.scale.set(0, 0);
+				stop();
+				destroy();
 			}
 		}
 		else
 		{
-			pie.visible = false;
-			pieTrack.visible = false;
+			if (!FlxG.keys.pressed.SPACE #if mobile && PlayState.instance != null && !PlayState.instance.pressHolding #end)
+				skipKeyReleasedOnce = true;
+
+			skipHold = 0;
+
+			pieTrack.alpha = FlxMath.lerp(pieTrack.alpha, 0, 22 * elapsed);
+			pie.scale.x = FlxMath.lerp(pie.scale.x, 0, 22 * elapsed);
+			pie.scale.y = FlxMath.lerp(pie.scale.y, 0, 22 * elapsed);
 		}
 	}
 

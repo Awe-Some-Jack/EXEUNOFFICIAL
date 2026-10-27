@@ -214,7 +214,7 @@ var stepEvents = [
 		{ 
 			step: 4760, callback: () -> {
 				FlxTween.cancelTweensOf(end);
-				FlxTween.tween(end, {alpha: 0}, 4);
+				FlxTween.tween(end, {alpha: 0}, 2.5);
 			}
 		},
 		{ 
@@ -245,15 +245,19 @@ function onCreatePost()
 	camGlitch.setFloat('SPEED', 0.0);
 	camGlitch.setFloat('wVel', 0.1);
 	camGlitch.setFloat('wIntensity', 0.1);
-	game.camGame.filters.push(new ShaderFilter(camGlitch));
-	game.camHUD.filters.push(new ShaderFilter(camGlitch));
 
 	bright = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('brightness')));
 	bright.setFloat('brightness', 0);
 	bright.setFloat('contrast', 1);
 	bright.setFloat('saturation', 1);
-	game.camGame.filters.push(new ShaderFilter(bright));
-	game.camHUD.filters.push(new ShaderFilter(bright));
+
+	if(ClientPrefs.data.shaders)
+	{
+		game.camGame.filters.push(new ShaderFilter(camGlitch));
+		game.camHUD.filters.push(new ShaderFilter(camGlitch));
+		game.camGame.filters.push(new ShaderFilter(bright));
+		game.camHUD.filters.push(new ShaderFilter(bright));
+	}
 
 	water = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('water')));
 	water.setFloat('waveAmplitude', 0.003);
@@ -282,7 +286,7 @@ function onCreatePost()
 	fade.scrollFactor.set(0, 0);
 
 	end = new FlxSprite();
-	end.frames = Paths.getSparrowAtlas('herworld/sarah ending');
+	end.frames = Paths.getSparrowAtlas('herworld/sarahher');
 	end.animation.addByPrefix('loop', 'saraxd', 24, true);
 	end.animation.play('loop');
 	end.scale.set(1, 1);
@@ -316,6 +320,8 @@ var brightValue:Float = 0;
 var time:Float = 0;
 function onUpdate(e) 
 {
+	if(ClientPrefs.data.shaders) return;
+
 	camHUD.alpha = 1;
 	time += e;
 	glitch.setFloat('iTime', time / 2);
@@ -415,9 +421,12 @@ function makeBackgroundAlt(background:Array<BackgroundSpriteAlt>)
 		activeSprites.push(sprite);
 		
 		var name = spriteDef.path.split('/')[1];
-		switch(name) {
-			case 'sky', 'bg3', 'bg2', 'lava', 'bg1', 'foreground':  sprite.shader = glitch;
-			case 'bg', '2', '1': sprite.shader = water;
+
+		if(ClientPrefs.data.shaders) {
+			switch(name) {
+				case 'sky', 'bg3', 'bg2', 'lava', 'bg1', 'foreground':  sprite.shader = glitch;
+				case 'bg', '2', '1': sprite.shader = water;
+			}
 		}
 	}
 }

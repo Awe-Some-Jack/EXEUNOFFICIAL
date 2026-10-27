@@ -66,6 +66,7 @@ function onUpdate(e) {
         FlxTween.tween(luzther, {alpha: 1}, 0.5);
     }
 
+    if(!ClientPrefs.data.shaders) return;
     if(boyfriend.shader == null) {
         boyfriend.shader = bfColor.shader;
         for(strum in playerStrums.members) {
@@ -99,7 +100,7 @@ function onUpdate(e) {
 }
 
 function onSpawnNote(note:Note) {
-    if(curStep < 816 || curStep > 1500) return;
+    if(!ClientPrefs.data.shaders || curStep < 816 || curStep > 1500) return;
     if(note.mustPress){
         note.shader = bfColor.shader;
     }

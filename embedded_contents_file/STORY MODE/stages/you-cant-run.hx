@@ -229,9 +229,8 @@ function onUpdatePost(e:Float) {
 function onStepHit()
 {
 	if (curStep == 520 || curStep == 1176){
-		game.camHUD.shake(0.036, 1/game.playbackRate);
-		FlxG.camera.shake(0.026, 1/game.playbackRate);
-		// initOppStrumsShaking(false);		
+		game.camHUD.shake(0.036, 1);
+		FlxG.camera.shake(0.026, 1);
 	}
 
 	if (curStep == 528){
@@ -273,7 +272,7 @@ function onStepHit()
 	final offset = (curStep - 1184) % 32;
 	if (curStep >= 1192 && curStep <= 1418 && (offset == 8 || offset == 12)) spinStrums();
 
-	if (curStep == 1439 ) FlxTween.tween(camHUD, {alpha: 0}, 0.6/game.playbackRate);
+	if (curStep == 1439 ) FlxTween.tween(camHUD, {alpha: 0}, 0.6);
 }
 
 function spinStrums()
@@ -286,7 +285,7 @@ function spinStrums()
 			{
 				FlxTween.cancelTweensOf(note);
 				note.angle = 0;
-				FlxTween.tween(note, {angle: 360}, 0.3/game.playbackRate, {ease: FlxEase.circOut});
+				FlxTween.tween(note, {angle: 360}, 0.3, {ease: FlxEase.circOut});
 			}
 		}
 	}
@@ -294,7 +293,7 @@ function spinStrums()
 
 function initOppStrumsShaking(loop:Bool){
 	for (oppStrum in game.opponentStrums){
-		oppStrum.shakeStrum(8, loop ? -1 : 1);
+		oppStrum.shakeStrum(5.5, loop ? -1 : 1);
 	}
 }
 
@@ -327,7 +326,7 @@ function reloadNotes()
 }
 
 function opponentNoteHit()
-	FlxG.camera.shake(shakeIntensity, 0.05/game.playbackRate);
+	FlxG.camera.shake(shakeIntensity, 0.05);
 
 function destroyStage(stage)
 	for (stg in stage) stg.spr.destroy();

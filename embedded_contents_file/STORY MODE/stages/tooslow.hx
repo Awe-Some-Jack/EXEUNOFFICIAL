@@ -55,15 +55,10 @@ var sprites:Array<SprDef> = [
 
 var flashBackBG:Array<SprDef> = [
 	{name: 'static',        path: 'slow/flashback/static-flashback', x:  -950, y:  450, animated: true, animName: 'idle', animPrefix: 'static', fps: 24, loop: true, scaleX:   3, scaleY: 1.5, scrollX: 1, scrollY: 1, alpha: 0},
-	{name: 'mount',         path: 'slow/flashback/idk',              x:  -950, y:  -50,                                                                              scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, alpha: 0},
-	{name: 'plant',         path: 'slow/flashback/plants',           x:    50, y:  830,                                                                              scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, alpha: 0},
-	{name: 'floor',         path: 'slow/flashback/ground',           x:  -950, y: 1300,                                                                              scaleX: 0.5, scaleY: 0.5, scrollX: 1, scrollY: 1, alpha: 0},
-	{name: 'gfDead',        path: 'slow/flashback/GF_ded',           x:  2300, y: 1600,                                                                              scaleX: 0.3, scaleY: 0.3, scrollX: 1, scrollY: 1, alpha: 0},
-	{name: 'skidPumpDead',  path: 'slow/flashback/skid_Pump_ded',    x:   500, y: 1400,                                                                              scaleX: 0.7, scaleY: 0.7, scrollX: 1, scrollY: 1, alpha: 0},
+	{name: 'mount',         path: 'slow/flashback/idk',              x:  -650, y:  650,                                                                              scaleX: 1, scaleY: 1, scrollX: 1, scrollY: 1, alpha: 0},
+	{name: 'plant',         path: 'slow/flashback/plants',           x:  -400, y:  730,                                                                              scaleX: 0.9, scaleY: 0.9, scrollX: 1, scrollY: 1, alpha: 0},
+	{name: 'floor',         path: 'slow/flashback/ground',           x:  -1000,y: 1100,                                                                              scaleX: 1.4, scaleY: 1.4, scrollX: 1, scrollY: 1, alpha: 0},
 	{name: 'picoDead',      path: 'slow/flashback/pico_ded',         x:   470, y: 1050,                                                                              scaleX: 0.6, scaleY: 0.6, scrollX: 1, scrollY: 1, alpha: 0, front: true},
-	{name: 'ojos_pico',     path: 'slow/ojos_tails',                 x:   390, y: 1150, animated: true, prefix: 'Símbolo 10 instancia', fps: 24,                     scale:  1.5,                                      alpha: 0, front: true},
-	{name: 'darnellDead',   path: 'slow/flashback/darnell_ded',      x:  2450, y: 1150,                                                                              scaleX: 0.3, scaleY: 0.3, scrollX: 1, scrollY: 1, alpha: 0},
-	{name: 'neneDead',      path: 'slow/flashback/nene_ded',         x:  1250, y: 1500,                                                                              scaleX: 0.6, scaleY: 0.6, scrollX: 1, scrollY: 1, alpha: 0},
 ];
 
 var spritesLQ:Array<SprDef> = [

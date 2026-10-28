@@ -2,25 +2,25 @@
 <TextureAtlas imagePath="sarahher.png">
 	<!-- Created with Adobe Animate version 24.0.3.19 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="saraxd instancia 10000" x="100" y="100" width="394" height="491" frameX="-38" frameY="-4" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10001" x="100" y="100" width="394" height="491" frameX="-38" frameY="-4" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10002" x="100" y="100" width="394" height="491" frameX="-38" frameY="-4" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10003" x="594" y="100" width="393" height="485" frameX="-27" frameY="-5" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10004" x="594" y="100" width="393" height="485" frameX="-27" frameY="-5" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10005" x="594" y="100" width="393" height="485" frameX="-27" frameY="-5" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10006" x="1087" y="100" width="399" height="498" frameX="-16" frameY="0" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10007" x="1087" y="100" width="399" height="498" frameX="-16" frameY="0" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10008" x="1087" y="100" width="399" height="498" frameX="-16" frameY="0" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10009" x="100" y="698" width="421" height="498" frameX="-2" frameY="-1" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10010" x="100" y="698" width="421" height="498" frameX="-2" frameY="-1" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10011" x="100" y="698" width="421" height="498" frameX="-2" frameY="-1" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10012" x="621" y="698" width="412" height="499" frameX="0" frameY="-7" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10013" x="621" y="698" width="412" height="499" frameX="0" frameY="-7" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10014" x="621" y="698" width="412" height="499" frameX="0" frameY="-7" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10015" x="1133" y="698" width="415" height="496" frameX="-2" frameY="-12" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10016" x="1133" y="698" width="415" height="496" frameX="-2" frameY="-12" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10017" x="1133" y="698" width="415" height="496" frameX="-2" frameY="-12" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10018" x="100" y="1297" width="393" height="488" frameX="-28" frameY="-12" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10019" x="100" y="1297" width="393" height="488" frameX="-28" frameY="-12" frameWidth="432" frameHeight="508"/>
-	<SubTexture name="saraxd instancia 10020" x="100" y="1297" width="393" height="488" frameX="-28" frameY="-12" frameWidth="432" frameHeight="508"/>
+	<SubTexture name="saraxd instancia 10000" x="1497" y="0" width="393" height="490" frameX="-38" frameY="-4" frameWidth="432" frameHeight="508"/>
+	<SubTexture name="saraxd instancia 10001" x="1497" y="0" width="393" height="490" frameX="-38" frameY="-4" frameWidth="432" frameHeight="508"/>
+	<SubTexture name="saraxd instancia 10002" x="1497" y="0" width="393" height="490" frameX="-38" frameY="-4" frameWidth="432" frameHeight="508"/>
+	<SubTexture name="saraxd instancia 10003" x="0" y="423" width="484" height="392" frameX="-27" frameY="-5" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10004" x="0" y="423" width="484" height="392" frameX="-27" frameY="-5" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10005" x="0" y="423" width="484" height="392" frameX="-27" frameY="-5" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10006" x="997" y="414" width="497" height="398" frameX="-16" frameY="0" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10007" x="997" y="414" width="497" height="398" frameX="-16" frameY="0" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10008" x="997" y="414" width="497" height="398" frameX="-16" frameY="0" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10009" x="0" y="0" width="498" height="421" frameX="-2" frameY="-1" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10010" x="0" y="0" width="498" height="421" frameX="-2" frameY="-1" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10011" x="0" y="0" width="498" height="421" frameX="-2" frameY="-1" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10012" x="997" y="0" width="498" height="412" frameX="0" frameY="-7" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10013" x="997" y="0" width="498" height="412" frameX="0" frameY="-7" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10014" x="997" y="0" width="498" height="412" frameX="0" frameY="-7" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10015" x="500" y="0" width="495" height="415" frameX="-2" frameY="-12" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10016" x="500" y="0" width="495" height="415" frameX="-2" frameY="-12" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10017" x="500" y="0" width="495" height="415" frameX="-2" frameY="-12" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10018" x="500" y="417" width="487" height="393" frameX="-28" frameY="-12" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10019" x="500" y="417" width="487" height="393" frameX="-28" frameY="-12" frameWidth="432" frameHeight="508" rotated="true" />
+	<SubTexture name="saraxd instancia 10020" x="500" y="417" width="487" height="393" frameX="-28" frameY="-12" frameWidth="432" frameHeight="508" rotated="true" />
 </TextureAtlas>

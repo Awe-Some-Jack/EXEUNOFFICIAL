@@ -1584,6 +1584,12 @@ class PlayState extends MusicBeatState
 
 	public function setSongTime(time:Float)
 	{
+		if (startingSong)
+		{
+			Conductor.songPosition = time;
+			return;
+		}
+
 		FlxG.sound.music.pause();
 		vocals.pause();
 		opponentVocals.pause();
@@ -2188,6 +2194,9 @@ class PlayState extends MusicBeatState
 			if (videoCutscene?.isPlaying()) videoCutscene.pause();
 			#end
 
+			for (cam in [FlxG.camera, camVideo, camHUD, camOther])
+				if (cam != null) cam.fxActive = false;
+
 			#if !mac
 			FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
 			if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + " (Paused)";
@@ -2219,6 +2228,9 @@ class PlayState extends MusicBeatState
 			#if VIDEOS_ALLOWED
 			videoCutscene?.resume();
 			#end
+
+			for (cam in [FlxG.camera, camVideo, camHUD, camOther])
+				if (cam != null) cam.fxActive = true;
 
 			paused = false;
 			callOnScripts('onResume');
@@ -3910,7 +3922,7 @@ class PlayState extends MusicBeatState
 
 	private function keyPressed(key:Int)
 	{
-		if(!startedCountdown || cpuControlled || paused || inCutscene || key < 0 || key >= playerStrums.length || !generatedMusic || endingSong || boyfriend.stunned) return;
+		if(!startedCountdown || cpuControlled || paused || (subState != null && !persistentUpdate) || inCutscene || key < 0 || key >= playerStrums.length || !generatedMusic || endingSong || boyfriend.stunned) return;
 
 		final lastTime:Float = Conductor.songPosition;
 		if(Conductor.songPosition >= 0)
@@ -5231,6 +5243,13 @@ class PlayState extends MusicBeatState
 	function checkForResync()
 	{
 		if (paused) return;
+
+		if (startingSong)
+		{
+			requiresSyncing = false;
+			gameFroze = false;
+			return;
+		}
 
 		if (requiresSyncing)
 		{

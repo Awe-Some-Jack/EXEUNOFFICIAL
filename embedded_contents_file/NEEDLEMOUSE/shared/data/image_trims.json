@@ -1,0 +1,58 @@
+{
+ "images/herworld/1": [
+  0,
+  15,
+  2783,
+  976,
+  2783,
+  961
+ ],
+ "images/herworld/black": [
+  55,
+  55,
+  1080,
+  1080,
+  979,
+  979
+ ],
+ "images/herworld/luz": [
+  34,
+  0,
+  699,
+  1012,
+  585,
+  985
+ ],
+ "images/roundabout/ave": [
+  0,
+  1298,
+  3000,
+  2500,
+  3000,
+  805
+ ],
+ "images/roundabout/bg1": [
+  0,
+  20,
+  3076,
+  1499,
+  3016,
+  1479
+ ],
+ "images/roundabout/bg3": [
+  1,
+  46,
+  3285,
+  1153,
+  3279,
+  1107
+ ],
+ "images/roundabout/foreground": [
+  0,
+  53,
+  3877,
+  1316,
+  3866,
+  1263
+ ]
+}

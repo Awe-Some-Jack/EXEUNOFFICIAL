@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="fountain.png">
-<SubTexture name="fountain fountain0000" x="1390" y="0" width="695" height="769" frameX="0" frameY="-15" frameWidth="675" frameHeight="764" />
-<SubTexture name="fountain fountain0001" x="695" y="0" width="695" height="770" frameX="0" frameY="-14" frameWidth="675" frameHeight="764" />
-<SubTexture name="fountain fountain0002" x="0" y="771" width="695" height="768" frameX="0" frameY="-16" frameWidth="675" frameHeight="764" />
-<SubTexture name="fountain fountain0003" x="0" y="0" width="695" height="771" frameX="0" frameY="-13" frameWidth="675" frameHeight="764" />
+<SubTexture name="fountain fountain0000" x="646" y="662" width="645" height="659" frameX="-14" frameY="-15" frameWidth="675" frameHeight="764" />
+<SubTexture name="fountain fountain0001" x="646" y="0" width="644" height="660" frameX="-14" frameY="-14" frameWidth="675" frameHeight="764" />
+<SubTexture name="fountain fountain0002" x="0" y="663" width="644" height="658" frameX="-14" frameY="-16" frameWidth="675" frameHeight="764" />
+<SubTexture name="fountain fountain0003" x="0" y="0" width="644" height="661" frameX="-14" frameY="-13" frameWidth="675" frameHeight="764" />
 </TextureAtlas>

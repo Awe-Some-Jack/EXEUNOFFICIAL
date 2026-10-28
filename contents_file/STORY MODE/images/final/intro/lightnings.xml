@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="lightnings.png">
-<SubTexture name="variant10000" x="6794" y="2570" width="379" height="310" frameX="-871" frameY="-91" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant10001" x="4424" y="3709" width="2201" height="1089" frameX="-868" frameY="-38" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant10002" x="0" y="1225" width="2389" height="1151" frameX="-758" frameY="-29" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant10003" x="2189" y="2399" width="2228" height="1213" frameX="-866" frameY="-10" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant10004" x="0" y="2378" width="2187" height="1247" frameX="-886" frameY="0" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant10005" x="4814" y="0" width="2183" height="1269" frameX="-881" frameY="0" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant10006" x="4821" y="1271" width="2103" height="1297" frameX="-932" frameY="0" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant10007" x="2391" y="3709" width="2031" height="1278" frameX="-912" frameY="0" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant20000" x="6627" y="3709" width="452" height="328" frameX="-2393" frameY="0" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant20001" x="5858" y="4800" width="1294" height="1094" frameX="-1479" frameY="0" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant20002" x="4424" y="4800" width="1432" height="1084" frameX="-1427" frameY="0" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant20003" x="4088" y="5886" width="1316" height="1006" frameX="-1411" frameY="-60" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant20004" x="0" y="5817" width="1331" height="1004" frameX="-1433" frameY="-58" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant20005" x="2776" y="6036" width="1287" height="960" frameX="-1434" frameY="-104" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant20006" x="1333" y="6082" width="1348" height="835" frameX="-1409" frameY="-125" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant20007" x="5406" y="5896" width="1406" height="920" frameX="-1347" frameY="-126" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant30000" x="6627" y="4039" width="509" height="276" frameX="-2381" frameY="-21" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant30001" x="0" y="4725" width="1425" height="1090" frameX="-1504" frameY="-33" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant30002" x="2776" y="4989" width="1310" height="1045" frameX="-1479" frameY="-66" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant30003" x="1427" y="4989" width="1347" height="1091" frameX="-1495" frameY="0" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant30004" x="4419" y="2570" width="2373" height="1137" frameX="-1467" frameY="0" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant30005" x="0" y="3627" width="2389" height="1096" frameX="-1451" frameY="-45" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant30006" x="2391" y="1271" width="2428" height="1126" frameX="-1412" frameY="0" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant30007" x="0" y="0" width="2525" height="1223" frameX="-1315" frameY="0" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="variant30008" x="2527" y="0" width="2285" height="1214" frameX="-1292" frameY="-15" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant10000" x="1804" y="6085" width="379" height="310" frameX="-871" frameY="-91" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant10001" x="3646" y="3671" width="2201" height="1089" frameX="-868" frameY="-38" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant10002" x="1216" y="2527" width="2389" height="1151" frameX="-758" frameY="-29" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant10003" x="4733" y="0" width="2228" height="1213" frameX="-866" frameY="-10" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant10004" x="3484" y="4808" width="1247" height="2187" frameX="-886" frameY="0" frameWidth="3840" frameHeight="2160" rotated="true" />
+<SubTexture name="variant10005" x="0" y="4814" width="2183" height="1269" frameX="-881" frameY="0" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant10006" x="2185" y="4808" width="1297" height="2103" frameX="-932" frameY="0" frameWidth="3840" frameHeight="2160" rotated="true" />
+<SubTexture name="variant10007" x="3607" y="2391" width="2031" height="1278" frameX="-912" frameY="0" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant20000" x="1350" y="6085" width="452" height="328" frameX="-2393" frameY="0" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant20001" x="5826" y="4880" width="1294" height="1094" frameX="-1479" frameY="0" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant20002" x="5849" y="3446" width="1084" height="1432" frameX="-1427" frameY="0" frameWidth="3840" frameHeight="2160" rotated="true" />
+<SubTexture name="variant20003" x="2537" y="0" width="1006" height="1316" frameX="-1411" frameY="-60" frameWidth="3840" frameHeight="2160" rotated="true" />
+<SubTexture name="variant20004" x="5826" y="5976" width="1331" height="1004" frameX="-1433" frameY="-58" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant20005" x="2147" y="1318" width="1287" height="960" frameX="-1434" frameY="-104" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant20006" x="0" y="6085" width="1348" height="835" frameX="-1409" frameY="-125" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant20007" x="1225" y="1047" width="920" height="1406" frameX="-1347" frameY="-126" frameWidth="3840" frameHeight="2160" rotated="true" />
+<SubTexture name="variant30000" x="1350" y="6415" width="276" height="509" frameX="-2381" frameY="-21" frameWidth="3840" frameHeight="2160" rotated="true" />
+<SubTexture name="variant30001" x="5640" y="2354" width="1425" height="1090" frameX="-1504" frameY="-33" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant30002" x="1225" y="0" width="1310" height="1045" frameX="-1479" frameY="-66" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant30003" x="4733" y="4762" width="1091" height="1347" frameX="-1495" frameY="0" frameWidth="3840" frameHeight="2160" rotated="true" />
+<SubTexture name="variant30004" x="4733" y="1215" width="2373" height="1137" frameX="-1467" frameY="0" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant30005" x="3607" y="0" width="1096" height="2389" frameX="-1451" frameY="-45" frameWidth="3840" frameHeight="2160" rotated="true" />
+<SubTexture name="variant30006" x="1216" y="3680" width="2428" height="1126" frameX="-1412" frameY="0" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="variant30007" x="0" y="0" width="1223" height="2525" frameX="-1315" frameY="0" frameWidth="3840" frameHeight="2160" rotated="true" />
+<SubTexture name="variant30008" x="0" y="2527" width="1214" height="2285" frameX="-1292" frameY="-15" frameWidth="3840" frameHeight="2160" rotated="true" />
 </TextureAtlas>

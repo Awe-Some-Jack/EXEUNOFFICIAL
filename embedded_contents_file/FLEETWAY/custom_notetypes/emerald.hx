@@ -15,6 +15,7 @@ function onCreate() {
 	for (note in unspawnNotes) {
 		if (note.noteType == 'emerald') {
             note.texture = 'bg/emerals/${colors[count]}';
+            note.extraData.set('emeraldIndex', count);
             note.scale.set(0.45, 0.45);
             note.updateHitbox();
             note.ratingDisabled = true;

@@ -77,8 +77,14 @@ function updateHUD()
 end
 
 local oldTime = ''
+local oldHealth = -1
 function onUpdatePost()
 	if not inGameOver then
+		if postCreate and getHealth() ~= oldHealth then
+			oldHealth = getHealth()
+			updateHUD()
+		end
+
 		--time
 		local daTime = formatTime(bound(getSongPosition() - noteOffset, 0, songLength))
 		if oldTime ~= daTime then

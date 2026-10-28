@@ -1,162 +1,162 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="exe.png">
-<SubTexture name="exe idle0000" x="199" y="75" width="96" height="43" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe run0000" x="314" y="374" width="120" height="77" frameX="-9" frameY="-20" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0001" x="121" y="412" width="119" height="75" frameX="-10" frameY="-22" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0002" x="326" y="529" width="119" height="72" frameX="-9" frameY="-25" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0003" x="577" y="381" width="75" height="117" frameX="-12" frameY="-22" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe run0004" x="0" y="404" width="119" height="76" frameX="-10" frameY="-21" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0005" x="532" y="500" width="119" height="73" frameX="-9" frameY="-24" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0006" x="314" y="374" width="120" height="77" frameX="-9" frameY="-20" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0007" x="121" y="412" width="119" height="75" frameX="-10" frameY="-21" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0008" x="326" y="529" width="119" height="72" frameX="-9" frameY="-25" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0009" x="577" y="381" width="75" height="117" frameX="-12" frameY="-22" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe run0010" x="0" y="404" width="119" height="76" frameX="-10" frameY="-21" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0011" x="532" y="500" width="119" height="73" frameX="-9" frameY="-24" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0012" x="314" y="374" width="120" height="77" frameX="-9" frameY="-20" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0013" x="121" y="412" width="119" height="75" frameX="-10" frameY="-21" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0014" x="326" y="529" width="119" height="72" frameX="-9" frameY="-25" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0015" x="577" y="381" width="75" height="117" frameX="-12" frameY="-22" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe run0016" x="0" y="404" width="119" height="76" frameX="-10" frameY="-21" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0017" x="532" y="500" width="119" height="73" frameX="-9" frameY="-24" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe run0018" x="314" y="374" width="120" height="77" frameX="-9" frameY="-20" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe brake0000" x="0" y="482" width="96" height="74" frameX="-3" frameY="-23" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe brake0001" x="436" y="441" width="94" height="75" frameX="-5" frameY="-22" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe brake0002" x="0" y="482" width="96" height="74" frameX="-3" frameY="-23" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe brake0003" x="436" y="441" width="94" height="75" frameX="-5" frameY="-22" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe brake0004" x="0" y="482" width="96" height="74" frameX="-3" frameY="-23" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe brake0005" x="436" y="441" width="94" height="75" frameX="-5" frameY="-22" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe brake0006" x="483" y="362" width="92" height="77" frameX="-6" frameY="-20" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe brake0007" x="150" y="325" width="82" height="78" frameX="-18" frameY="-19" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe searching0000" x="400" y="316" width="81" height="56" frameX="-31" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0001" x="150" y="268" width="82" height="55" frameX="-32" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0002" x="564" y="243" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0003" x="564" y="243" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0004" x="564" y="243" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0005" x="515" y="301" width="81" height="59" frameX="-33" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0006" x="234" y="350" width="78" height="60" frameX="-30" frameY="-19" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0007" x="317" y="303" width="81" height="59" frameX="-30" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0008" x="234" y="286" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0009" x="234" y="286" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0010" x="234" y="286" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0011" x="431" y="258" width="82" height="56" frameX="-31" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0012" x="400" y="316" width="81" height="56" frameX="-31" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0013" x="150" y="268" width="82" height="55" frameX="-32" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0014" x="564" y="243" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0015" x="564" y="243" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0016" x="564" y="243" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0017" x="515" y="301" width="81" height="59" frameX="-33" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0018" x="234" y="350" width="78" height="60" frameX="-30" frameY="-19" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0019" x="317" y="303" width="81" height="59" frameX="-30" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0020" x="234" y="286" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0021" x="234" y="286" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0022" x="234" y="286" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0023" x="234" y="286" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0024" x="347" y="242" width="82" height="59" frameX="-28" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0025" x="90" y="192" width="85" height="62" frameX="-25" frameY="-12" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe searching0026" x="609" y="96" width="57" height="93" frameX="-29" frameY="-4" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe searching0027" x="0" y="91" width="95" height="44" frameX="-42" frameY="-2" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0000" x="0" y="137" width="92" height="49" frameX="-42" frameY="-5" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0001" x="0" y="137" width="92" height="49" frameX="-42" frameY="-5" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0002" x="0" y="188" width="88" height="52" frameX="-40" frameY="-9" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0003" x="0" y="188" width="88" height="52" frameX="-40" frameY="-9" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0004" x="277" y="190" width="87" height="49" frameX="-42" frameY="-10" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0005" x="277" y="190" width="87" height="49" frameX="-42" frameY="-10" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0006" x="186" y="175" width="89" height="46" frameX="-45" frameY="-8" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0007" x="186" y="175" width="89" height="46" frameX="-45" frameY="-8" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0008" x="414" y="134" width="92" height="52" frameX="-39" frameY="-5" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0009" x="414" y="134" width="92" height="52" frameX="-39" frameY="-5" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0010" x="478" y="195" width="84" height="61" frameX="-31" frameY="-10" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0011" x="478" y="195" width="84" height="61" frameX="-31" frameY="-10" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0012" x="388" y="188" width="88" height="52" frameX="-40" frameY="-9" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0013" x="388" y="188" width="88" height="52" frameX="-40" frameY="-9" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0014" x="94" y="143" width="90" height="47" frameX="-45" frameY="-7" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe walk0015" x="94" y="143" width="90" height="47" frameX="-45" frameY="-7" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe charge0000" x="362" y="453" width="70" height="74" frameX="-28" frameY="-23" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe charge0001" x="598" y="301" width="63" height="78" frameX="-30" frameY="-19" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe takeoff0000" x="630" y="0" width="39" height="94" frameX="-44" frameY="-3" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe airandfalling0000" x="316" y="74" width="96" height="66" frameX="-37" frameY="0" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe landing0000" x="172" y="535" width="70" height="66" frameX="-32" frameY="-31" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe landing0001" x="447" y="518" width="72" height="67" frameX="-33" frameY="-30" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe faker0000" x="80" y="340" width="40" height="31" frameX="-50" frameY="-57" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe transform0000" x="515" y="258" width="43" height="39" frameX="-51" frameY="-54" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe transform0001" x="0" y="558" width="69" height="48" frameX="-31" frameY="-49" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe transform0002" x="0" y="340" width="78" height="62" frameX="-37" frameY="-19" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe transform0003" x="508" y="137" width="91" height="56" frameX="-36" frameY="-6" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe transform0004" x="199" y="120" width="94" height="53" frameX="-36" frameY="-3" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe transform0005" x="512" y="89" width="95" height="46" frameX="-41" frameY="-2" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe transform0006" x="414" y="89" width="96" height="43" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe grow0000" x="295" y="142" width="91" height="46" frameX="-13" frameY="-13" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0001" x="295" y="142" width="91" height="46" frameX="-13" frameY="-13" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0002" x="564" y="195" width="84" height="46" frameX="-17" frameY="-20" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0003" x="564" y="195" width="84" height="46" frameX="-17" frameY="-20" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0004" x="98" y="489" width="74" height="44" frameX="-21" frameY="-30" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0005" x="242" y="412" width="41" height="75" frameX="-22" frameY="-29" frameWidth="84" frameHeight="104" />
-<SubTexture name="exe grow0006" x="174" y="489" width="74" height="44" frameX="-21" frameY="-30" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0007" x="285" y="453" width="75" height="41" frameX="-22" frameY="-29" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0008" x="250" y="496" width="74" height="44" frameX="-21" frameY="-30" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0009" x="177" y="223" width="83" height="43" frameX="-17" frameY="-21" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0010" x="262" y="241" width="83" height="43" frameX="-17" frameY="-21" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0011" x="106" y="0" width="103" height="73" frameX="-6" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0012" x="106" y="0" width="103" height="73" frameX="-6" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0013" x="316" y="0" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0014" x="316" y="0" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0015" x="316" y="0" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0016" x="316" y="0" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0017" x="316" y="0" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0018" x="316" y="0" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0019" x="316" y="0" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0020" x="211" y="0" width="103" height="73" frameX="-11" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0021" x="211" y="0" width="103" height="73" frameX="-11" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe grow0022" x="0" y="0" width="104" height="46" frameX="-13" frameY="0" frameWidth="84" frameHeight="104" rotated="true" />
-<SubTexture name="exe mad0000" x="421" y="0" width="103" height="43" frameX="-73" frameY="0" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0001" x="526" y="0" width="102" height="43" frameX="-73" frameY="-1" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0002" x="524" y="45" width="99" height="42" frameX="-74" frameY="-4" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0003" x="421" y="45" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0004" x="421" y="45" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0005" x="421" y="45" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0006" x="0" y="48" width="99" height="41" frameX="-73" frameY="-3" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0007" x="421" y="45" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0008" x="0" y="48" width="99" height="41" frameX="-73" frameY="-3" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0009" x="421" y="45" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0010" x="0" y="48" width="99" height="41" frameX="-73" frameY="-3" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0011" x="421" y="45" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0012" x="0" y="48" width="99" height="41" frameX="-73" frameY="-3" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0013" x="0" y="256" width="148" height="82" frameX="-63" frameY="-20" frameWidth="211" frameHeight="103" />
-<SubTexture name="exe mad0014" x="366" y="190" width="19" height="47" frameX="-37" frameY="-83" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0015" x="521" y="575" width="69" height="31" frameX="-15" frameY="-71" frameWidth="211" frameHeight="103" />
-<SubTexture name="exe mad0016" x="592" y="575" width="71" height="29" frameX="-12" frameY="-73" frameWidth="211" frameHeight="103" />
-<SubTexture name="exe mad0017" x="80" y="373" width="55" height="29" frameX="-9" frameY="-73" frameWidth="211" frameHeight="103" />
-<SubTexture name="exe mad0018" x="71" y="558" width="25" height="49" frameX="-6" frameY="-77" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0019" x="532" y="441" width="26" height="46" frameX="-5" frameY="-76" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0020" x="436" y="374" width="29" height="47" frameX="0" frameY="-73" frameWidth="211" frameHeight="103" rotated="true" />
-<SubTexture name="exe mad0021" x="671" y="0" width="1" height="1" frameX="0" frameY="0" frameWidth="211" frameHeight="103" />
-<SubTexture name="exe mad0022" x="671" y="0" width="1" height="1" frameX="0" frameY="0" frameWidth="211" frameHeight="103" />
-<SubTexture name="exe jumpangry0000" x="101" y="75" width="96" height="66" frameX="-37" frameY="0" frameWidth="120" frameHeight="97" rotated="true" />
-<SubTexture name="exe jumpangry0001" x="244" y="542" width="70" height="66" frameX="-32" frameY="-31" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe jumpangry0002" x="98" y="535" width="72" height="67" frameX="-33" frameY="-30" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe breathing0000" x="0" y="610" width="43" height="96" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe breathing0001" x="45" y="610" width="43" height="96" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe breathing0002" x="90" y="610" width="44" height="97" frameX="-43" frameY="0" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe breathing0003" x="136" y="610" width="44" height="99" frameX="-43" frameY="2" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe breathing0004" x="136" y="610" width="44" height="99" frameX="-43" frameY="2" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe breathing0005" x="90" y="610" width="44" height="97" frameX="-43" frameY="0" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe breathing0006" x="45" y="610" width="43" height="96" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe scream0000" x="182" y="610" width="65" height="80" frameX="-41" frameY="-17" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe scream0001" x="249" y="610" width="61" height="84" frameX="-43" frameY="-13" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe scream0002" x="312" y="610" width="63" height="89" frameX="-42" frameY="-8" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe scream0003" x="377" y="610" width="61" height="84" frameX="-43" frameY="-13" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0000" x="440" y="610" width="43" height="96" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0001" x="485" y="610" width="42" height="96" frameX="-45" frameY="-1" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0002" x="529" y="610" width="44" height="95" frameX="-43" frameY="-2" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0003" x="575" y="610" width="47" height="94" frameX="-41" frameY="-3" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0004" x="0" y="711" width="49" height="91" frameX="-40" frameY="-6" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0005" x="51" y="711" width="47" height="94" frameX="-41" frameY="-3" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0006" x="100" y="711" width="44" height="95" frameX="-43" frameY="-2" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0007" x="146" y="711" width="43" height="96" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0008" x="191" y="711" width="45" height="97" frameX="-42" frameY="0" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0009" x="238" y="711" width="38" height="97" frameX="-44" frameY="0" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0010" x="278" y="711" width="39" height="98" frameX="-42" frameY="1" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0011" x="319" y="711" width="38" height="97" frameX="-44" frameY="0" frameWidth="120" frameHeight="97" />
-<SubTexture name="exe turnhead0012" x="359" y="711" width="45" height="97" frameX="-42" frameY="0" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe idle0000" x="449" y="241" width="96" height="43" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe run0000" x="150" y="0" width="120" height="77" frameX="-9" frameY="-20" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0001" x="393" y="0" width="119" height="75" frameX="-10" frameY="-22" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0002" x="514" y="75" width="119" height="72" frameX="-9" frameY="-25" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0003" x="393" y="77" width="117" height="75" frameX="-12" frameY="-22" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0004" x="272" y="0" width="119" height="76" frameX="-10" frameY="-21" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0005" x="514" y="0" width="119" height="73" frameX="-9" frameY="-24" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0006" x="150" y="0" width="120" height="77" frameX="-9" frameY="-20" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0007" x="393" y="0" width="119" height="75" frameX="-10" frameY="-21" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0008" x="514" y="75" width="119" height="72" frameX="-9" frameY="-25" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0009" x="393" y="77" width="117" height="75" frameX="-12" frameY="-22" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0010" x="272" y="0" width="119" height="76" frameX="-10" frameY="-21" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0011" x="514" y="0" width="119" height="73" frameX="-9" frameY="-24" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0012" x="150" y="0" width="120" height="77" frameX="-9" frameY="-20" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0013" x="393" y="0" width="119" height="75" frameX="-10" frameY="-21" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0014" x="514" y="75" width="119" height="72" frameX="-9" frameY="-25" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0015" x="393" y="77" width="117" height="75" frameX="-12" frameY="-22" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0016" x="272" y="0" width="119" height="76" frameX="-10" frameY="-21" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0017" x="514" y="0" width="119" height="73" frameX="-9" frameY="-24" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe run0018" x="150" y="0" width="120" height="77" frameX="-9" frameY="-20" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe brake0000" x="558" y="206" width="96" height="74" frameX="-3" frameY="-23" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe brake0001" x="588" y="327" width="94" height="75" frameX="-5" frameY="-22" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe brake0002" x="558" y="206" width="96" height="74" frameX="-3" frameY="-23" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe brake0003" x="588" y="327" width="94" height="75" frameX="-5" frameY="-22" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe brake0004" x="558" y="206" width="96" height="74" frameX="-3" frameY="-23" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe brake0005" x="588" y="327" width="94" height="75" frameX="-5" frameY="-22" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe brake0006" x="488" y="373" width="92" height="77" frameX="-6" frameY="-20" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe brake0007" x="451" y="503" width="82" height="78" frameX="-18" frameY="-19" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe searching0000" x="535" y="577" width="81" height="56" frameX="-31" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0001" x="168" y="546" width="82" height="55" frameX="-32" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0002" x="0" y="526" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0003" x="0" y="526" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0004" x="0" y="526" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0005" x="619" y="538" width="59" height="81" frameX="-33" frameY="-16" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe searching0006" x="160" y="603" width="78" height="60" frameX="-30" frameY="-19" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0007" x="335" y="561" width="81" height="59" frameX="-30" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0008" x="252" y="548" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0009" x="252" y="548" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0010" x="252" y="548" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0011" x="84" y="545" width="82" height="56" frameX="-31" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0012" x="535" y="577" width="81" height="56" frameX="-31" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0013" x="168" y="546" width="82" height="55" frameX="-32" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0014" x="0" y="526" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0015" x="0" y="526" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0016" x="0" y="526" width="82" height="56" frameX="-34" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0017" x="619" y="538" width="59" height="81" frameX="-33" frameY="-16" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe searching0018" x="160" y="603" width="78" height="60" frameX="-30" frameY="-19" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0019" x="335" y="561" width="81" height="59" frameX="-30" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0020" x="252" y="548" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0021" x="252" y="548" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0022" x="252" y="548" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0023" x="252" y="548" width="81" height="62" frameX="-29" frameY="-16" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0024" x="535" y="516" width="82" height="59" frameX="-28" frameY="-15" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0025" x="549" y="452" width="85" height="62" frameX="-25" frameY="-12" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0026" x="0" y="355" width="93" height="57" frameX="-29" frameY="-4" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe searching0027" x="98" y="308" width="95" height="44" frameX="-42" frameY="-2" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0000" x="287" y="386" width="92" height="49" frameX="-42" frameY="-5" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0001" x="287" y="386" width="92" height="49" frameX="-42" frameY="-5" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0002" x="370" y="444" width="88" height="52" frameX="-40" frameY="-9" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0003" x="370" y="444" width="88" height="52" frameX="-40" frameY="-9" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0004" x="460" y="452" width="87" height="49" frameX="-42" frameY="-10" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0005" x="460" y="452" width="87" height="49" frameX="-42" frameY="-10" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0006" x="279" y="437" width="89" height="46" frameX="-45" frameY="-8" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0007" x="279" y="437" width="89" height="46" frameX="-45" frameY="-8" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0008" x="193" y="382" width="92" height="52" frameX="-39" frameY="-5" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0009" x="193" y="382" width="92" height="52" frameX="-39" frameY="-5" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0010" x="0" y="463" width="84" height="61" frameX="-31" frameY="-10" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0011" x="0" y="463" width="84" height="61" frameX="-31" frameY="-10" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0012" x="92" y="446" width="88" height="52" frameX="-40" frameY="-9" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0013" x="92" y="446" width="88" height="52" frameX="-40" frameY="-9" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0014" x="0" y="414" width="90" height="47" frameX="-45" frameY="-7" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe walk0015" x="0" y="414" width="90" height="47" frameX="-45" frameY="-7" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe charge0000" x="500" y="635" width="74" height="70" frameX="-28" frameY="-23" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe charge0001" x="0" y="584" width="78" height="63" frameX="-30" frameY="-19" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe takeoff0000" x="97" y="354" width="94" height="39" frameX="-44" frameY="-3" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe airandfalling0000" x="99" y="240" width="96" height="66" frameX="-37" frameY="0" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe landing0000" x="314" y="665" width="70" height="66" frameX="-32" frameY="-31" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe landing0001" x="240" y="655" width="72" height="67" frameX="-33" frameY="-30" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe faker0000" x="645" y="282" width="31" height="40" frameX="-50" frameY="-57" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe transform0000" x="491" y="286" width="43" height="39" frameX="-51" frameY="-54" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe transform0001" x="576" y="681" width="69" height="48" frameX="-31" frameY="-49" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe transform0002" x="80" y="603" width="78" height="62" frameX="-37" frameY="-19" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe transform0003" x="381" y="386" width="91" height="56" frameX="-36" frameY="-6" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe transform0004" x="392" y="331" width="94" height="53" frameX="-36" frameY="-3" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe transform0005" x="295" y="289" width="95" height="46" frameX="-41" frameY="-2" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe transform0006" x="197" y="244" width="96" height="43" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe grow0000" x="582" y="404" width="91" height="46" frameX="-13" frameY="-13" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0001" x="582" y="404" width="91" height="46" frameX="-13" frameY="-13" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0002" x="636" y="452" width="46" height="84" frameX="-17" frameY="-20" frameWidth="84" frameHeight="104" />
+<SubTexture name="exe grow0003" x="636" y="452" width="46" height="84" frameX="-17" frameY="-20" frameWidth="84" frameHeight="104" />
+<SubTexture name="exe grow0004" x="576" y="635" width="74" height="44" frameX="-21" frameY="-30" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0005" x="240" y="612" width="75" height="41" frameX="-22" frameY="-29" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0006" x="0" y="649" width="74" height="44" frameX="-21" frameY="-30" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0007" x="317" y="622" width="75" height="41" frameX="-22" frameY="-29" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0008" x="394" y="650" width="74" height="44" frameX="-21" frameY="-30" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0009" x="86" y="500" width="83" height="43" frameX="-17" frameY="-21" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0010" x="171" y="501" width="83" height="43" frameX="-17" frameY="-21" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0011" x="272" y="78" width="103" height="73" frameX="-6" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0012" x="272" y="78" width="103" height="73" frameX="-6" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0013" x="0" y="84" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0014" x="0" y="84" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0015" x="0" y="84" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0016" x="0" y="84" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0017" x="0" y="84" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0018" x="0" y="84" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0019" x="0" y="84" width="103" height="72" frameX="-10" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0020" x="150" y="79" width="103" height="73" frameX="-11" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0021" x="150" y="79" width="103" height="73" frameX="-11" frameY="-1" frameWidth="84" frameHeight="104" rotated="true" />
+<SubTexture name="exe grow0022" x="635" y="0" width="46" height="104" frameX="-13" frameY="0" frameWidth="84" frameHeight="104" />
+<SubTexture name="exe mad0000" x="105" y="84" width="43" height="103" frameX="-73" frameY="0" frameWidth="211" frameHeight="103" />
+<SubTexture name="exe mad0001" x="512" y="149" width="102" height="43" frameX="-73" frameY="-1" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0002" x="358" y="154" width="99" height="42" frameX="-74" frameY="-4" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0003" x="255" y="153" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0004" x="255" y="153" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0005" x="255" y="153" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0006" x="0" y="158" width="99" height="41" frameX="-73" frameY="-3" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0007" x="255" y="153" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0008" x="0" y="158" width="99" height="41" frameX="-73" frameY="-3" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0009" x="255" y="153" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0010" x="0" y="158" width="99" height="41" frameX="-73" frameY="-3" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0011" x="255" y="153" width="101" height="42" frameX="-74" frameY="-2" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0012" x="0" y="158" width="99" height="41" frameX="-73" frameY="-3" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0013" x="0" y="0" width="148" height="82" frameX="-63" frameY="-20" frameWidth="211" frameHeight="103" />
+<SubTexture name="exe mad0014" x="656" y="206" width="19" height="47" frameX="-37" frameY="-83" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0015" x="0" y="695" width="69" height="31" frameX="-15" frameY="-71" frameWidth="211" frameHeight="103" />
+<SubTexture name="exe mad0016" x="652" y="621" width="29" height="71" frameX="-12" frameY="-73" frameWidth="211" frameHeight="103" rotated="true" />
+<SubTexture name="exe mad0017" x="386" y="696" width="55" height="29" frameX="-9" frameY="-73" frameWidth="211" frameHeight="103" />
+<SubTexture name="exe mad0018" x="459" y="154" width="49" height="25" frameX="-6" frameY="-77" frameWidth="211" frameHeight="103" />
+<SubTexture name="exe mad0019" x="393" y="244" width="46" height="26" frameX="-5" frameY="-76" frameWidth="211" frameHeight="103" />
+<SubTexture name="exe mad0020" x="200" y="200" width="47" height="29" frameX="0" frameY="-73" frameWidth="211" frameHeight="103" />
+<SubTexture name="exe mad0021" x="377" y="78" width="1" height="1" frameX="0" frameY="0" frameWidth="211" frameHeight="103" />
+<SubTexture name="exe mad0022" x="377" y="78" width="1" height="1" frameX="0" frameY="0" frameWidth="211" frameHeight="103" />
+<SubTexture name="exe jumpangry0000" x="0" y="241" width="96" height="66" frameX="-37" frameY="0" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe jumpangry0001" x="76" y="667" width="70" height="66" frameX="-32" frameY="-31" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe jumpangry0002" x="160" y="665" width="72" height="67" frameX="-33" frameY="-30" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe breathing0000" x="449" y="241" width="96" height="43" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe breathing0001" x="295" y="244" width="96" height="43" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe breathing0002" x="350" y="198" width="97" height="44" frameX="-43" frameY="0" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe breathing0003" x="150" y="154" width="99" height="44" frameX="-43" frameY="2" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe breathing0004" x="150" y="154" width="99" height="44" frameX="-43" frameY="2" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe breathing0005" x="350" y="198" width="97" height="44" frameX="-43" frameY="0" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe breathing0006" x="295" y="244" width="96" height="43" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe scream0000" x="418" y="583" width="80" height="65" frameX="-41" frameY="-17" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe scream0001" x="279" y="485" width="84" height="61" frameX="-43" frameY="-13" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe scream0002" x="188" y="436" width="89" height="63" frameX="-42" frameY="-8" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe scream0003" x="365" y="498" width="84" height="61" frameX="-43" frameY="-13" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0000" x="547" y="282" width="96" height="43" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0001" x="197" y="289" width="96" height="42" frameX="-45" frameY="-1" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0002" x="0" y="309" width="95" height="44" frameX="-43" frameY="-2" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0003" x="195" y="333" width="94" height="47" frameX="-41" frameY="-3" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0004" x="95" y="395" width="91" height="49" frameX="-40" frameY="-6" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0005" x="291" y="337" width="94" height="47" frameX="-41" frameY="-3" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0006" x="491" y="327" width="95" height="44" frameX="-43" frameY="-2" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0007" x="393" y="286" width="96" height="43" frameX="-44" frameY="-1" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0008" x="459" y="194" width="97" height="45" frameX="-42" frameY="0" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0009" x="101" y="200" width="97" height="38" frameX="-44" frameY="0" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0010" x="635" y="106" width="39" height="98" frameX="-42" frameY="1" frameWidth="120" frameHeight="97" />
+<SubTexture name="exe turnhead0011" x="0" y="201" width="97" height="38" frameX="-44" frameY="0" frameWidth="120" frameHeight="97" rotated="true" />
+<SubTexture name="exe turnhead0012" x="251" y="197" width="97" height="45" frameX="-42" frameY="0" frameWidth="120" frameHeight="97" rotated="true" />
 </TextureAtlas>

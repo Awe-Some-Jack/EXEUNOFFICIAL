@@ -57,7 +57,7 @@ function onCreate()
     fore.scrollFactor.set(1.3, 1.3);
     add(fore);
 
-    if (ClientPrefs.data.shaders) wavyShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("wavyDistortion")));
+    wavyShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("wavyDistortion")));
 
     makeCloud();
     new FlxTimer().start(10, (_) -> { makeCloud(); }, 0);
@@ -102,13 +102,10 @@ function onEvent(name:String, value1:String, value2:String)
             case 'evil':
                 for (spr in bgSprites) 
                 {
-                    if if (ClientPrefs.data.shaders)
+                    if (spr != null) 
                     {
-                        if (spr != null) 
-                        {
-                            spr.shader = wavyShader;
-                            spr.shader.setFloat('amount', 0.1);
-                        }
+                        spr.shader = wavyShader;
+                        spr.shader.setFloat('amount', 0.1);
                     }
                 }
                 if (menuSTATIC != null) menuSTATIC.alpha = 0.4;
@@ -123,7 +120,7 @@ function onEvent(name:String, value1:String, value2:String)
                 }
                 for (spr in bgSprites) 
                 {
-                   if (ClientPrefs.data.shaders) if (spr != null) spr.shader = null;
+                    if (spr != null) spr.shader = null;
                 }
                 FlxG.camera.flash(0xFF5D4493, 1, null, true);
             case 'fadeHUD':
@@ -139,7 +136,7 @@ function onUpdatePost(elapsed:Float)
     for (i in 0...bgSprites.length) 
     {
         final spr = bgSprites[i];
-        if (ClientPrefs.data.shaders) spr?.shader.setFloat('iTime', wavyness + (i + 1));
+        spr?.shader?.setFloat('iTime', wavyness + (i + 1));
     }
 
     if (tails?.animation?.curAnim?.finished == true && tails?.visible == true) 

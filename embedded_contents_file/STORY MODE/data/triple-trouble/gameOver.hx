@@ -60,10 +60,10 @@ function onGameOverStart()
 	}
 
 	var voiceLine:String = '1';
-	if (PauseSubState.miniSonicImage == 'triple-trouble') voiceLine = 't';
-	if (PauseSubState.miniSonicImage == 'triple-trouble-2') voiceLine = FlxG.random.int(1,3);
-	if (PauseSubState.miniSonicImage == 'triple-trouble-3') voiceLine = 'k';
-	if (PauseSubState.miniSonicImage == 'triple-trouble-4') voiceLine = 'e';
+	if (PauseSubState.miniSonicImage == 'triple-trouble' || PauseSubState.miniSonicImage == 'triple-trouble-2') voiceLine = 't';
+	if (PauseSubState.miniSonicImage == 'triple-trouble-7') voiceLine = FlxG.random.int(1,3);
+	if (PauseSubState.miniSonicImage == 'triple-trouble-3' || PauseSubState.miniSonicImage == 'triple-trouble-4') voiceLine = 'k';
+	if (PauseSubState.miniSonicImage == 'triple-trouble-5' || PauseSubState.miniSonicImage == 'triple-trouble-6') voiceLine = 'e';
 
 	makeSubtitle(voiceLine);
 

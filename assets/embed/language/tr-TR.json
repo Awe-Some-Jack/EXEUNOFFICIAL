@@ -189,5 +189,9 @@
 	"tripletrouble_death_t": "Ne oldu? Tails seni kuyruğundan mı yakaladı?",
 	"tripletrouble_death_k": "Görünüşe göre Knuckles'ımla baş edemedin. Yazık!",
 	"tripletrouble_death_e": "BEN EGGMAN'IM!",
-	"tripletrouble_death_font": "ari-w9500-bold.ttf"
+	"tripletrouble_death_font": "ari-w9500-bold.ttf",
+	"prey_ending_1": "Vay!",
+	"prey_ending_2": "Şu badnik'lere bak...",
+	"prey_ending_3": "Hepsi nereye gidiyor?",
+	"prey_ending_4": "Neler olduğunu öğrensem iyi olacak!"
 }

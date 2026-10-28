@@ -80,18 +80,16 @@ function onEvent(e, v1, v2)
         tooSlowEvents[v1](split[1], split[2], split[3])
     end
 end
-local time = 0
-function onUpdatePost(elapsed)
-    time = time + elapsed / 2
 
+function onUpdatePost(elapsed)
     if waveX then
         for i = 0, 7 do
-            setPropertyFromGroup('strumLineNotes', i, 'x', getPropertyFromGroup('strumLineNotes', i, 'x') + (math.cos(time / speed + i)) * intensity)
+            setPropertyFromGroup('strumLineNotes', i, 'x', _G['default'..(i < 4 and 'Opponent' or 'Player')..'StrumX'..(i % 4)] + (math.cos(getSongPosition() / speed + i)) * (intensity * 30))
         end
     end
     if waveY then
         for i = 0, 7 do
-            setPropertyFromGroup('strumLineNotes', i, 'y', getPropertyFromGroup('strumLineNotes', i, 'y') + (math.sin(getSongPosition() / speed + i)) * intensity)
+            setPropertyFromGroup('strumLineNotes', i, 'y', _G['default'..(i < 4 and 'Opponent' or 'Player')..'StrumY'..(i % 4)] + (math.sin(getSongPosition() / speed + i)) * (intensity * 30))
         end
     end
 end

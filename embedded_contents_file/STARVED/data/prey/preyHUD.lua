@@ -6,6 +6,8 @@ local function killMainHUD()
 end
 
 local rings = 10
+local carriedRings = getPropertyFromClass('minigames.preymini.PreyMini', 'songRings')
+if carriedRings ~= nil and carriedRings >= 0 then rings = math.min(carriedRings, 150) end
 setVar('rings', rings)
 local postCreate = false
 function onCreatePost()

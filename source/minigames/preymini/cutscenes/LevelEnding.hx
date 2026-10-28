@@ -9,6 +9,8 @@ import minigames.preymini.map.SkyParade;
 import minigames.preymini.map.Terrain;
 import openfl.display.BitmapData;
 import openfl.display.BlendMode;
+import flixel.text.FlxText.FlxTextAlign;
+import flixel.text.FlxText.FlxTextBorderStyle;
 
 class LevelEnding
 {
@@ -35,6 +37,7 @@ class LevelEnding
 	final _top:FlxSprite;
 	final _bottom:FlxSprite;
 	final _black:FlxSprite;
+	final _subtitle:FlxText;
 	final _halos:Array<FlxSprite> = [];
 	final _haloSpots:Array<Array<Float>> = [];
 
@@ -63,6 +66,9 @@ class LevelEnding
 	var _faceX:Float = 0;
 	var _faceY:Float = 0;
 	var _panX:Float = 0;
+	var _words:Array<String> = [];
+	var _shown:Int = 0;
+	var _wordTime:Float = 0;
 
 	public function new(state:FlxState, sonic:Sonic, terrain:Terrain, camera:Camera, bg:BGPrey, hud:HUD, overlay:FlxCamera)
 	{
@@ -112,6 +118,11 @@ class LevelEnding
 		_render.visible = false;
 		_top = _screen(new FlxSprite(0, -60).makeGraphic(FlxG.width, 60, FlxColor.BLACK), overlay);
 		_bottom = _screen(new FlxSprite(0, FlxG.height).makeGraphic(FlxG.width, 60, FlxColor.BLACK), overlay);
+		_subtitle = new FlxText((FlxG.width - 860) / 2, 0, 860, "", 28);
+		_subtitle.setFormat(Paths.font("sonichud.ttf"), 28, 0xFF4848B4, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		_subtitle.borderSize = 2;
+		_subtitle.alpha = 0;
+		_screen(_subtitle, overlay);
 		_black = _screen(new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK), overlay);
 		_black.alpha = 0;
 	}
@@ -140,6 +151,7 @@ class LevelEnding
 		_prev = _t;
 		_t += elapsed;
 		_script();
+		_updateSubtitle(elapsed);
 		_animateActor(elapsed);
 		_updateRunner(elapsed);
 		_updateGhosts(elapsed);
@@ -204,6 +216,14 @@ class LevelEnding
 	function _script():Void
 	{
 		if (_at(0.55)) FlxG.sound.play(Paths.sound("minigame/preymini/sonicvoiceline"));
+		if (_at(0.75)) _say(1);
+		if (_at(1.15)) _say(0);
+		if (_at(1.85)) _say(2);
+		if (_at(3.35)) _say(0);
+		if (_at(4.05)) _say(3);
+		if (_at(5.25)) _say(0);
+		if (_at(7.05)) _say(4);
+		if (_at(9.05)) _say(0);
 		if (_at(5.45)) _playSeq([10, 11, 12, 13]);
 		if (_at(5.55)) _bg.ignite();
 		if (_at(5.85)) _closeT = 0;
@@ -229,6 +249,32 @@ class LevelEnding
 	}
 
 	inline function _at(time:Float):Bool return _prev < time && _t >= time;
+
+	function _say(line:Int):Void
+	{
+		if (line == 0)
+		{
+			FlxTween.tween(_subtitle, {alpha: 0}, 1);
+			return;
+		}
+		final english = ["Woah!", "Check out all those badniks...", "Where are they all heading?", "Better go find out what's going on!"];
+		_words = Language.getPhrase('prey_ending_$line', english[line - 1]).split(" ");
+		_shown = 0;
+		_wordTime = 0;
+		FlxTween.cancelTweensOf(_subtitle);
+		_subtitle.text = "";
+		_subtitle.alpha = 1;
+	}
+
+	function _updateSubtitle(elapsed:Float):Void
+	{
+		if (_shown >= _words.length) return;
+		_wordTime -= elapsed;
+		if (_wordTime > 0) return;
+		_wordTime = 0.18;
+		_shown++;
+		_subtitle.text = _words.slice(0, _shown).join(" ");
+	}
 
 	function _playSeq(frames:Array<Int>):Void
 	{

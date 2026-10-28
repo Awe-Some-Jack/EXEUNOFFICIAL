@@ -189,5 +189,9 @@
 	"tripletrouble_death_t": "どうした？Tailsに尻尾をつかまれたか？",
 	"tripletrouble_death_k": "俺のKnucklesには敵わなかったようだな。残念！",
 	"tripletrouble_death_e": "我こそはEGGMANだ！",
-	"tripletrouble_death_font": "japanese.ttf"
+	"tripletrouble_death_font": "japanese.ttf",
+	"prey_ending_1": "うおっ！",
+	"prey_ending_2": "あんなにたくさんのバドニクが…",
+	"prey_ending_3": "みんなどこへ向かってるんだ？",
+	"prey_ending_4": "何が起きてるか確かめに行かなきゃな！"
 }

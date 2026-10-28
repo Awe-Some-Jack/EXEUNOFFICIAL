@@ -999,6 +999,7 @@ class EXEFreeplay extends MusicBeatState
 		}
 
 		minigames.preymini.PreyMini.songLives = 0;
+		minigames.preymini.PreyMini.songRings = -1;
 		Mods.currentModDirectory = entry.folder;
 		PlayState.storyWeek = entry.week;
 		Difficulty.loadFromWeek();

@@ -20,14 +20,16 @@ function onUpdatePost(elapsed)
 
 		for (i in 0...4) 
 		{
-			game.playerStrums.members[i].angle = FlxG.random.float(-1, 1) * _hold * 10;
+			final strum = game.playerStrums.members[i];
+			if (strum != null) strum.angle = FlxG.random.float(-1, 1) * _hold * 10;
 		}
 	}
 	if (_hold <= 0)
 	{
 		for (i in 0...4)
 		{
-			if (game.playerStrums.members[i].angle != 0) game.playerStrums.members[i].angle = 0;
+			final strum = game.playerStrums.members[i];
+			if (strum != null && strum.angle != 0) strum.angle = 0;
 		}
 	}
 }

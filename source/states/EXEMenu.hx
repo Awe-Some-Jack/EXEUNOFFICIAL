@@ -414,7 +414,7 @@ class EXEMenu extends MusicBeatState
 	}
 
 	inline function extrasLocked():Bool
-		return FlxG.save.data.storyModeDone != true && !inDevMode;
+		return FlxG.save.data.storyModeDone != true #if !final && !inDevMode #end;
 
 	function changeSelection(dir:Int, up:Bool, sound:Bool = true):Void
 	{

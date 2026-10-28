@@ -100,6 +100,7 @@ function updateHUD()
 end
 
 local oldTime = ''
+local oldHealth = -1
 function onUpdatePost()
 	local shouldShow = curBeat >= 132 and curBeat < 200
 
@@ -156,6 +157,12 @@ function onUpdatePost()
 	end
 
 	if not inGameOver then
+		local hp = math.floor(getHealth() * 1000)
+		if isShown and hp ~= oldHealth then
+			oldHealth = hp
+			updateHUD()
+		end
+
 		--time
 		local daTime = formatTime(bound(getSongPosition() - noteOffset, 0, songLength))
 		if oldTime ~= daTime then

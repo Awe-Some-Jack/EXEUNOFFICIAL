@@ -2,12 +2,12 @@
 <TextureAtlas imagePath="white.png">
 	<!-- Created with Adobe Animate version 22.0.7.214 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="white instancia 10000" x="50" y="50" width="125" height="125"/>
-	<SubTexture name="white instancia 10001" x="50" y="50" width="125" height="125"/>
-	<SubTexture name="white instancia 10002" x="225" y="50" width="125" height="125"/>
-	<SubTexture name="white instancia 10003" x="225" y="50" width="125" height="125"/>
-	<SubTexture name="white instancia 10004" x="50" y="225" width="125" height="125"/>
-	<SubTexture name="white instancia 10005" x="50" y="225" width="125" height="125"/>
-	<SubTexture name="white instancia 10006" x="225" y="225" width="125" height="125"/>
-	<SubTexture name="white instancia 10007" x="225" y="225" width="125" height="125"/>
+	<SubTexture name="white instancia 10000" x="0" y="113" width="125" height="103" frameX="0" frameY="-22" frameWidth="125" frameHeight="125" />
+	<SubTexture name="white instancia 10001" x="0" y="113" width="125" height="103" frameX="0" frameY="-22" frameWidth="125" frameHeight="125" />
+	<SubTexture name="white instancia 10002" x="0" y="0" width="125" height="111" frameX="0" frameY="-14" frameWidth="125" frameHeight="125" />
+	<SubTexture name="white instancia 10003" x="0" y="0" width="125" height="111" frameX="0" frameY="-14" frameWidth="125" frameHeight="125" />
+	<SubTexture name="white instancia 10004" x="0" y="218" width="125" height="102" frameX="0" frameY="-23" frameWidth="125" frameHeight="125" />
+	<SubTexture name="white instancia 10005" x="0" y="218" width="125" height="102" frameX="0" frameY="-23" frameWidth="125" frameHeight="125" />
+	<SubTexture name="white instancia 10006" x="0" y="322" width="125" height="102" frameX="0" frameY="-23" frameWidth="125" frameHeight="125" />
+	<SubTexture name="white instancia 10007" x="0" y="322" width="125" height="102" frameX="0" frameY="-23" frameWidth="125" frameHeight="125" />
 </TextureAtlas>

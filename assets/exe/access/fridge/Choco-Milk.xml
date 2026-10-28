@@ -2,6 +2,6 @@
 <TextureAtlas imagePath="Choco-Milk.webp">
 	<!-- Created with Adobe Animate version 22.0.7.214 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="chocolate instancia 10000" x="0" y="0" width="290" height="387"/>
-	<SubTexture name="chocolate selected instancia 10000" x="300" y="0" width="305" height="402"/>
+	<SubTexture name="chocolate instancia 10000" x="307" y="0" width="289" height="387" frameX="0" frameY="0" frameWidth="290" frameHeight="387" />
+	<SubTexture name="chocolate selected instancia 10000" x="0" y="0" width="305" height="402"/>
 </TextureAtlas>

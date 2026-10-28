@@ -2,62 +2,62 @@
 <TextureAtlas imagePath="microfono_lookalike.webp">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="micro instancia 10000" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10001" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10002" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10003" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10004" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10005" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10006" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10007" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10008" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10009" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10010" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10011" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10012" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10013" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10014" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10015" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10016" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10017" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10018" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10019" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10020" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10021" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10022" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10023" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10024" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10025" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10026" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10027" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10028" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10029" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10030" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10031" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10032" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10033" x="36" y="36" width="127" height="123" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10034" x="183" y="36" width="122" height="127" frameX="-2" frameY="-1" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10035" x="183" y="36" width="122" height="127" frameX="-2" frameY="-1" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10036" x="325" y="36" width="120" height="129" frameX="-3" frameY="-5" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10037" x="325" y="36" width="120" height="129" frameX="-3" frameY="-5" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10038" x="465" y="36" width="114" height="134" frameX="-10" frameY="-36" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10039" x="465" y="36" width="114" height="134" frameX="-10" frameY="-36" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10040" x="599" y="36" width="70" height="248" frameX="-38" frameY="-96" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10041" x="689" y="36" width="142" height="102" frameX="-22" frameY="-327" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10042" x="851" y="36" width="137" height="111" frameX="-124" frameY="-210" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10043" x="851" y="36" width="137" height="111" frameX="-124" frameY="-210" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10044" x="1008" y="36" width="80" height="152" frameX="-174" frameY="-167" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10045" x="1008" y="36" width="80" height="152" frameX="-174" frameY="-167" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10046" x="1108" y="36" width="139" height="107" frameX="-164" frameY="-194" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10047" x="1108" y="36" width="139" height="107" frameX="-164" frameY="-194" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10048" x="36" y="304" width="86" height="149" frameX="-208" frameY="-194" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10049" x="36" y="304" width="86" height="149" frameX="-208" frameY="-194" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10050" x="142" y="304" width="81" height="151" frameX="-256" frameY="-230" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10051" x="142" y="304" width="81" height="151" frameX="-256" frameY="-230" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10052" x="243" y="304" width="152" height="80" frameX="-267" frameY="-424" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10053" x="243" y="304" width="152" height="80" frameX="-267" frameY="-424" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10054" x="415" y="304" width="116" height="237" frameX="-367" frameY="-709" frameWidth="526" frameHeight="1381"/>
-	<SubTexture name="micro instancia 10055" x="551" y="304" width="138" height="432" frameX="-388" frameY="-949" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10000" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10001" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10002" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10003" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10004" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10005" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10006" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10007" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10008" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10009" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10010" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10011" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10012" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10013" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10014" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10015" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10016" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10017" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10018" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10019" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10020" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10021" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10022" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10023" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10024" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10025" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10026" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10027" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10028" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10029" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10030" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10031" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10032" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10033" x="0" y="328" width="126" height="122" frameX="0" frameY="0" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10034" x="128" y="328" width="126" height="122" frameX="-2" frameY="-1" frameWidth="526" frameHeight="1381" rotated="true" />
+	<SubTexture name="micro instancia 10035" x="128" y="328" width="126" height="122" frameX="-2" frameY="-1" frameWidth="526" frameHeight="1381" rotated="true" />
+	<SubTexture name="micro instancia 10036" x="256" y="328" width="129" height="120" frameX="-3" frameY="-5" frameWidth="526" frameHeight="1381" rotated="true" />
+	<SubTexture name="micro instancia 10037" x="256" y="328" width="129" height="120" frameX="-3" frameY="-5" frameWidth="526" frameHeight="1381" rotated="true" />
+	<SubTexture name="micro instancia 10038" x="387" y="328" width="113" height="134" frameX="-10" frameY="-36" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10039" x="387" y="328" width="113" height="134" frameX="-10" frameY="-36" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10040" x="441" y="0" width="67" height="243" frameX="-38" frameY="-96" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10041" x="154" y="0" width="141" height="101" frameX="-22" frameY="-327" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10042" x="0" y="82" width="136" height="110" frameX="-125" frameY="-210" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10043" x="0" y="82" width="136" height="110" frameX="-125" frameY="-210" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10044" x="233" y="452" width="151" height="80" frameX="-174" frameY="-167" frameWidth="526" frameHeight="1381" rotated="true" />
+	<SubTexture name="micro instancia 10045" x="233" y="452" width="151" height="80" frameX="-174" frameY="-167" frameWidth="526" frameHeight="1381" rotated="true" />
+	<SubTexture name="micro instancia 10046" x="297" y="0" width="139" height="107" frameX="-164" frameY="-194" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10047" x="297" y="0" width="139" height="107" frameX="-164" frameY="-194" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10048" x="138" y="103" width="149" height="86" frameX="-208" frameY="-194" frameWidth="526" frameHeight="1381" rotated="true" />
+	<SubTexture name="micro instancia 10049" x="138" y="103" width="149" height="86" frameX="-208" frameY="-194" frameWidth="526" frameHeight="1381" rotated="true" />
+	<SubTexture name="micro instancia 10050" x="289" y="109" width="150" height="81" frameX="-256" frameY="-230" frameWidth="526" frameHeight="1381" rotated="true" />
+	<SubTexture name="micro instancia 10051" x="289" y="109" width="150" height="81" frameX="-256" frameY="-230" frameWidth="526" frameHeight="1381" rotated="true" />
+	<SubTexture name="micro instancia 10052" x="0" y="0" width="152" height="80" frameX="-267" frameY="-424" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10053" x="0" y="0" width="152" height="80" frameX="-267" frameY="-424" frameWidth="526" frameHeight="1381"/>
+	<SubTexture name="micro instancia 10054" x="0" y="452" width="231" height="112" frameX="-367" frameY="-710" frameWidth="526" frameHeight="1381" rotated="true" />
+	<SubTexture name="micro instancia 10055" x="0" y="194" width="423" height="132" frameX="-389" frameY="-951" frameWidth="526" frameHeight="1381" rotated="true" />
 	<SubTexture name="micro instancia 10056" x="709" y="304" width="0" height="0" frameX="-63" frameY="-265" frameWidth="526" frameHeight="1381"/>
 	<SubTexture name="micro instancia 10057" x="709" y="304" width="0" height="0" frameX="-63" frameY="-265" frameWidth="526" frameHeight="1381"/>
 	<SubTexture name="micro instancia 10058" x="709" y="304" width="0" height="0" frameX="-63" frameY="-265" frameWidth="526" frameHeight="1381"/>

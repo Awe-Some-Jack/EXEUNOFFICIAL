@@ -2,23 +2,23 @@
 <TextureAtlas imagePath="black.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="a instancia 10000" x="12" y="12" width="919" height="974"/>
-	<SubTexture name="scremer instancia 10000" x="953" y="12" width="921" height="976" frameX="-24" frameY="-9" frameWidth="986" frameHeight="996"/>
-	<SubTexture name="scremer instancia 10001" x="1896" y="12" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10002" x="2904" y="12" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10003" x="3912" y="12" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10004" x="4920" y="12" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10005" x="12" y="1030" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10006" x="1020" y="1030" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10007" x="2028" y="1030" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10008" x="3036" y="1030" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10009" x="4044" y="1030" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10010" x="12" y="2048" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10011" x="1020" y="2048" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10012" x="2028" y="2048" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10013" x="3036" y="2048" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10014" x="4044" y="2048" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10015" x="12" y="3066" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10016" x="1020" y="3066" width="986" height="996"/>
-	<SubTexture name="scremer instancia 10017" x="2028" y="3066" width="986" height="996"/>
+	<SubTexture name="a instancia 10000" x="0" y="1909" width="919" height="974"/>
+	<SubTexture name="scremer instancia 10000" x="0" y="931" width="921" height="976" frameX="-24" frameY="-9" frameWidth="986" frameHeight="996"/>
+	<SubTexture name="scremer instancia 10001" x="921" y="1909" width="900" height="937" frameX="-33" frameY="-24" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10002" x="2768" y="0" width="877" height="895" frameX="-45" frameY="-48" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10003" x="3575" y="1837" width="808" height="916" frameX="-79" frameY="-52" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10004" x="3570" y="2785" width="808" height="928" frameX="-79" frameY="-40" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10005" x="0" y="0" width="986" height="929" frameX="0" frameY="-38" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10006" x="2701" y="1857" width="872" height="926" frameX="-47" frameY="-40" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10007" x="988" y="0" width="896" height="925" frameX="-41" frameY="-38" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10008" x="1886" y="0" width="880" height="925" frameX="-47" frameY="-39" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10009" x="1833" y="2791" width="877" height="924" frameX="-47" frameY="-41" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10010" x="2702" y="927" width="860" height="928" frameX="-59" frameY="-42" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10011" x="1818" y="927" width="882" height="928" frameX="-32" frameY="-43" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10012" x="918" y="2885" width="913" height="926" frameX="-41" frameY="-45" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10013" x="923" y="931" width="893" height="936" frameX="-30" frameY="-43" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10014" x="1823" y="1857" width="876" height="932" frameX="-62" frameY="-42" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10015" x="0" y="2885" width="916" height="935" frameX="-47" frameY="-39" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10016" x="2712" y="2785" width="856" height="935" frameX="-57" frameY="-40" frameWidth="986" frameHeight="996" />
+	<SubTexture name="scremer instancia 10017" x="3564" y="897" width="834" height="938" frameX="-91" frameY="-44" frameWidth="986" frameHeight="996" />
 </TextureAtlas>

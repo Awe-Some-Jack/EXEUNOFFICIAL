@@ -1,0 +1,3090 @@
+{
+ "CHAOTIX/images/bg/horizonFg": [
+  0,
+  50,
+  683,
+  406,
+  683,
+  355
+ ],
+ "CHAOTIX/images/bg/horizonFuckedUp": [
+  0,
+  50,
+  683,
+  406,
+  683,
+  355
+ ],
+ "CHAOTIX/images/characters/Beast_Chaotix_sheet": [
+  2,
+  15,
+  1024,
+  512,
+  990,
+  364
+ ],
+ "CHAOTIX/images/characters/updated_Beast": [
+  48,
+  20,
+  1024,
+  1024,
+  943,
+  540
+ ],
+ "CHAOTIX/images/hud/hud_chaotix_beast": [
+  264,
+  154,
+  3058,
+  693,
+  2497,
+  429
+ ],
+ "CHAOTIX/images/hud/hud_chaotix_normal": [
+  308,
+  154,
+  3058,
+  693,
+  2453,
+  429
+ ],
+ "COLDSTEEL/images/hitboxes/healthBG": [
+  407,
+  184,
+  3167,
+  564,
+  2302,
+  146
+ ],
+ "CRAZY TAILS/images/bg/estre2": [
+  62,
+  22,
+  883,
+  238,
+  786,
+  183
+ ],
+ "CRAZY TAILS/images/bg/estre3": [
+  145,
+  20,
+  883,
+  238,
+  738,
+  171
+ ],
+ "CRAZY TAILS/images/bg/never": [
+  7,
+  7,
+  3800,
+  2195,
+  3772,
+  2167
+ ],
+ "CRAZY TAILS/images/hud/hud_mania": [
+  197,
+  177,
+  3118,
+  564,
+  2639,
+  228
+ ],
+ "CRAZY TAILS/images/sonicpov": [
+  0,
+  10,
+  3041,
+  1289,
+  3041,
+  1279
+ ],
+ "CURSE/images/chains/1": [
+  349,
+  0,
+  1280,
+  720,
+  546,
+  720
+ ],
+ "CURSE/images/chains/2": [
+  471,
+  0,
+  1280,
+  720,
+  613,
+  720
+ ],
+ "CURSE/images/chains/3": [
+  0,
+  0,
+  1280,
+  720,
+  1280,
+  579
+ ],
+ "CURSE/images/chains/4": [
+  0,
+  0,
+  1280,
+  720,
+  1280,
+  681
+ ],
+ "CURSE/images/chains/5": [
+  566,
+  0,
+  1280,
+  720,
+  501,
+  720
+ ],
+ "CURSE/images/chains/6": [
+  0,
+  305,
+  1280,
+  720,
+  1280,
+  219
+ ],
+ "DEVOID/images/hollow/city": [
+  0,
+  70,
+  3840,
+  2160,
+  3840,
+  918
+ ],
+ "DEVOID/images/hollow/cloud1": [
+  2512,
+  0,
+  3840,
+  2160,
+  1290,
+  447
+ ],
+ "DEVOID/images/hollow/cloud2": [
+  23,
+  0,
+  3840,
+  2160,
+  1756,
+  239
+ ],
+ "DEVOID/images/hollow/floor": [
+  0,
+  369,
+  3840,
+  2160,
+  3840,
+  1791
+ ],
+ "DEVOID/images/hud/hud_hollow": [
+  291,
+  42,
+  3118,
+  564,
+  2543,
+  487
+ ],
+ "EXE/images/black sun/1": [
+  0,
+  50,
+  742,
+  698,
+  717,
+  643
+ ],
+ "EXE/images/black sun/4": [
+  13,
+  13,
+  1903,
+  1160,
+  1890,
+  1144
+ ],
+ "EXE/images/black sun/5": [
+  0,
+  56,
+  2053,
+  1347,
+  2053,
+  1283
+ ],
+ "EXE/images/black sun/51": [
+  1,
+  423,
+  2047,
+  2047,
+  2046,
+  1417
+ ],
+ "EXE/images/black sun/52": [
+  0,
+  251,
+  2047,
+  2047,
+  2047,
+  1544
+ ],
+ "EXE/images/black sun/53": [
+  0,
+  314,
+  2047,
+  2047,
+  2047,
+  1733
+ ],
+ "EXE/images/black sun/6": [
+  0,
+  0,
+  2053,
+  1084,
+  2053,
+  1047
+ ],
+ "EXE/images/faker/newBG/glow": [
+  0,
+  17,
+  1300,
+  1000,
+  1300,
+  983
+ ],
+ "EXE/images/faker/newBG/moon": [
+  1428,
+  218,
+  3000,
+  1479,
+  71,
+  71
+ ],
+ "EXE/images/faker/newBG/sun": [
+  1461,
+  216,
+  3000,
+  1479,
+  75,
+  75
+ ],
+ "EXE/images/faker/newBG/sunshine": [
+  1394,
+  149,
+  3000,
+  1479,
+  209,
+  210
+ ],
+ "EXE/images/faker/newBG/water": [
+  0,
+  12,
+  2200,
+  445,
+  2200,
+  433
+ ],
+ "EXE/images/god/1": [
+  0,
+  50,
+  742,
+  698,
+  717,
+  643
+ ],
+ "EXE/images/god/son": [
+  5,
+  1,
+  2100,
+  1050,
+  2093,
+  1014
+ ],
+ "EXE/images/god/totem1": [
+  13,
+  1,
+  1080,
+  1600,
+  1019,
+  1577
+ ],
+ "EXE/images/god/totem2": [
+  28,
+  12,
+  1080,
+  1600,
+  1028,
+  1570
+ ],
+ "EXE/images/god/totems/totem1-2": [
+  12,
+  3,
+  1040,
+  1540,
+  982,
+  1518
+ ],
+ "EXE/images/god/totems/totem2-2": [
+  26,
+  11,
+  1040,
+  1540,
+  991,
+  1511
+ ],
+ "EXE/images/hud/hud_faker": [
+  313,
+  80,
+  3118,
+  564,
+  2493,
+  393
+ ],
+ "EXETIOR/images/SS/arch": [
+  0,
+  110,
+  2098,
+  1127,
+  2098,
+  1017
+ ],
+ "EXETIOR/images/SS/crystal-walls": [
+  0,
+  159,
+  3000,
+  2000,
+  3000,
+  1667
+ ],
+ "FATAL/images/fatality/new/final/bush": [
+  0,
+  349,
+  800,
+  500,
+  800,
+  151
+ ],
+ "FATAL/images/fatality/new/final/floor": [
+  0,
+  379,
+  800,
+  500,
+  800,
+  121
+ ],
+ "FLEETWAY/images/bg/1": [
+  0,
+  0,
+  3840,
+  2160,
+  3741,
+  2160
+ ],
+ "FLEETWAY/images/bg/2": [
+  1165,
+  1410,
+  3840,
+  2160,
+  1480,
+  309
+ ],
+ "FLEETWAY/images/bg/3": [
+  0,
+  380,
+  3840,
+  2160,
+  3840,
+  1780
+ ],
+ "FLEETWAY/images/bg/4": [
+  0,
+  0,
+  3840,
+  2160,
+  3840,
+  1738
+ ],
+ "FLEETWAY/images/hud/emerald": [
+  16,
+  25,
+  364,
+  273,
+  319,
+  229
+ ],
+ "FLEETWAY/images/hud/hud_chaos": [
+  250,
+  123,
+  3118,
+  564,
+  2537,
+  348
+ ],
+ "GRIEVING/images/grieving/haze/2nd/idk": [
+  0,
+  94,
+  5000,
+  2724,
+  5000,
+  2630
+ ],
+ "GRIEVING/images/grieving/haze/2nd/mountains": [
+  0,
+  625,
+  5000,
+  5000,
+  5000,
+  4017
+ ],
+ "GRIEVING/images/grieving/haze/2nd/totems": [
+  19,
+  1,
+  4111,
+  2848,
+  4091,
+  2835
+ ],
+ "GRIEVING/images/grieving/haze/4th/ff": [
+  312,
+  35,
+  1312,
+  1944,
+  733,
+  1909
+ ],
+ "GRIEVING/images/grieving/haze/4th/gg": [
+  73,
+  10,
+  1312,
+  1944,
+  982,
+  1895
+ ],
+ "GRIEVING/images/grieving/uh-oh/new/trees": [
+  0,
+  24,
+  3375,
+  1975,
+  3375,
+  1949
+ ],
+ "GRIEVING/images/grieving/uh-oh/new/trees2": [
+  0,
+  10,
+  3375,
+  2129,
+  3375,
+  2119
+ ],
+ "GRIEVING/images/grieving/uh-oh/new/trees3": [
+  0,
+  45,
+  3375,
+  2362,
+  3375,
+  2317
+ ],
+ "GRIEVING/images/hud/hud_grieving": [
+  331,
+  160,
+  3118,
+  565,
+  2525,
+  305
+ ],
+ "HOG/images/bg/evil/fg": [
+  0,
+  13,
+  3975,
+  1488,
+  3975,
+  1475
+ ],
+ "HOG/images/bg/evil/floor": [
+  0,
+  824,
+  3975,
+  2475,
+  3975,
+  1651
+ ],
+ "HOG/images/bg/evil/mountain2": [
+  7,
+  30,
+  678,
+  273,
+  655,
+  234
+ ],
+ "HOG/images/bg/normal/clouds": [
+  0,
+  7,
+  2880,
+  463,
+  2880,
+  447
+ ],
+ "HOG/images/bg/normal/fg": [
+  0,
+  406,
+  2880,
+  2025,
+  2880,
+  1619
+ ],
+ "HOG/images/bg/normal/floor": [
+  0,
+  31,
+  2880,
+  1520,
+  2880,
+  1489
+ ],
+ "HOG/images/bg/normal/mountain2": [
+  7,
+  30,
+  678,
+  273,
+  656,
+  233
+ ],
+ "HOG/images/bg/normal/mountains": [
+  0,
+  14,
+  2880,
+  1441,
+  2880,
+  1409
+ ],
+ "HOG/images/hud/hud_hedge": [
+  263,
+  143,
+  3118,
+  564,
+  2497,
+  295
+ ],
+ "HOG/images/hud/hud_manual_blast": [
+  263,
+  142,
+  3118,
+  564,
+  2497,
+  295
+ ],
+ "LORD X/images/cycles/clouds": [
+  249,
+  517,
+  4698,
+  2335,
+  4122,
+  685
+ ],
+ "LORD X/images/cycles/fondo animado/IMG_9638": [
+  275,
+  4,
+  2000,
+  2000,
+  1599,
+  1983
+ ],
+ "LORD X/images/cycles/fondo animado/plant": [
+  110,
+  2,
+  800,
+  800,
+  640,
+  793
+ ],
+ "LORD X/images/cycles/grass": [
+  0,
+  30,
+  4540,
+  2335,
+  4471,
+  2305
+ ],
+ "LORD X/images/cycles/motains": [
+  0,
+  170,
+  4470,
+  1862,
+  4470,
+  1692
+ ],
+ "LORD X/images/cycles/motains_alpha": [
+  0,
+  47,
+  1279,
+  768,
+  1279,
+  556
+ ],
+ "LORD X/images/cycles/shadows": [
+  182,
+  0,
+  2148,
+  219,
+  1904,
+  193
+ ],
+ "LORD X/images/fate/YOUR-FATE/cover1": [
+  54,
+  126,
+  900,
+  900,
+  804,
+  589
+ ],
+ "LORD X/images/fate/YOUR-FATE/cover2": [
+  106,
+  11,
+  900,
+  900,
+  703,
+  870
+ ],
+ "LORD X/images/fate/YOUR-FATE/cover3": [
+  8,
+  67,
+  900,
+  900,
+  892,
+  751
+ ],
+ "LORD X/images/fate/YOUR-FATE/cover4": [
+  0,
+  76,
+  900,
+  900,
+  899,
+  824
+ ],
+ "LORD X/images/fate/YOUR-FATE/cover5": [
+  90,
+  11,
+  900,
+  900,
+  771,
+  880
+ ],
+ "LORD X/images/fate/YOUR-FATE/cover6": [
+  0,
+  60,
+  900,
+  900,
+  898,
+  713
+ ],
+ "LORD X/images/fate/lets-begin/begin_normal": [
+  48,
+  1226,
+  2048,
+  2048,
+  1937,
+  566
+ ],
+ "LORD X/images/fate/lets-begin/begin_pixel": [
+  49,
+  1229,
+  2048,
+  2048,
+  1940,
+  560
+ ],
+ "LORD X/images/fate/lets-begin/lets_normal": [
+  51,
+  654,
+  2048,
+  2048,
+  926,
+  365
+ ],
+ "LORD X/images/fate/lets-begin/lets_pixel": [
+  49,
+  659,
+  2048,
+  2048,
+  930,
+  360
+ ],
+ "LORD X/images/fate/overlay": [
+  527,
+  0,
+  3226,
+  767,
+  2280,
+  716
+ ],
+ "LORD X/images/gameovers/ring": [
+  427,
+  818,
+  9000,
+  6000,
+  8184,
+  3921
+ ],
+ "LORD X/images/gottago/ring": [
+  287,
+  693,
+  9000,
+  6000,
+  8426,
+  4054
+ ],
+ "LORD X/images/hellbent/BG-N1": [
+  0,
+  557,
+  2665,
+  1611,
+  2665,
+  1054
+ ],
+ "LORD X/images/hud/hud_lord_x": [
+  296,
+  180,
+  3118,
+  564,
+  2497,
+  271
+ ],
+ "MAJIN/images/gameovers/jp/1": [
+  459,
+  694,
+  3840,
+  2160,
+  2991,
+  1347
+ ],
+ "MAJIN/images/gameovers/jp/11": [
+  279,
+  510,
+  3840,
+  2160,
+  3331,
+  1650
+ ],
+ "MAJIN/images/hud/hud_endless-us": [
+  268,
+  163,
+  3119,
+  564,
+  2503,
+  242
+ ],
+ "MAJIN/images/hud/hud_majin": [
+  268,
+  163,
+  3119,
+  564,
+  2503,
+  242
+ ],
+ "MAJIN/images/majin/gofun": [
+  239,
+  201,
+  760,
+  600,
+  281,
+  197
+ ],
+ "MAJIN/images/majin/one": [
+  206,
+  201,
+  760,
+  600,
+  346,
+  197
+ ],
+ "MAJIN/images/majin/three": [
+  81,
+  201,
+  760,
+  600,
+  596,
+  197
+ ],
+ "MAJIN/images/majin/two": [
+  206,
+  201,
+  760,
+  600,
+  346,
+  197
+ ],
+ "MAJIN/images/mazin/gofun": [
+  239,
+  201,
+  760,
+  600,
+  281,
+  197
+ ],
+ "MAJIN/images/mazin/one": [
+  206,
+  201,
+  760,
+  600,
+  346,
+  197
+ ],
+ "MAJIN/images/mazin/three": [
+  81,
+  201,
+  760,
+  600,
+  596,
+  197
+ ],
+ "MAJIN/images/mazin/two": [
+  206,
+  201,
+  760,
+  600,
+  346,
+  197
+ ],
+ "MONO/images/bg/glitch/montanas 4": [
+  0,
+  272,
+  3840,
+  2160,
+  3840,
+  873
+ ],
+ "MONO/images/bg/glitch/nubes 6": [
+  181,
+  16,
+  3840,
+  2160,
+  3603,
+  473
+ ],
+ "MONO/images/bg/glitch/roca 1": [
+  2696,
+  1164,
+  3840,
+  2160,
+  1144,
+  996
+ ],
+ "MONO/images/bg/glitch/suelo 3": [
+  0,
+  901,
+  3840,
+  2160,
+  3840,
+  1259
+ ],
+ "MONO/images/bg/glitch/torre fea con bocas bien feas 2": [
+  0,
+  1066,
+  3840,
+  2160,
+  1085,
+  1094
+ ],
+ "MONO/images/bg/montanas 4": [
+  0,
+  273,
+  3840,
+  2160,
+  3840,
+  872
+ ],
+ "MONO/images/bg/nubes 6": [
+  181,
+  16,
+  3840,
+  2160,
+  3603,
+  473
+ ],
+ "MONO/images/bg/roca 1": [
+  2696,
+  1164,
+  3840,
+  2160,
+  1144,
+  996
+ ],
+ "MONO/images/bg/suelo 3": [
+  0,
+  901,
+  3840,
+  2160,
+  3840,
+  1259
+ ],
+ "MONO/images/bg/torre fea con bocas bien feas 2": [
+  0,
+  1066,
+  3840,
+  2160,
+  1085,
+  1094
+ ],
+ "MONO/images/hud/hud_mono": [
+  308,
+  185,
+  3167,
+  564,
+  2496,
+  236
+ ],
+ "MOVIE/images/bg/1": [
+  1953,
+  112,
+  3840,
+  2160,
+  76,
+  234
+ ],
+ "MOVIE/images/bg/2": [
+  0,
+  1113,
+  3840,
+  2160,
+  1118,
+  1047
+ ],
+ "NEEDLEMOUSE/images/herworld/1": [
+  0,
+  15,
+  2783,
+  976,
+  2783,
+  961
+ ],
+ "NEEDLEMOUSE/images/herworld/black": [
+  55,
+  55,
+  1080,
+  1080,
+  979,
+  979
+ ],
+ "NEEDLEMOUSE/images/herworld/luz": [
+  34,
+  0,
+  699,
+  1012,
+  585,
+  985
+ ],
+ "NEEDLEMOUSE/images/hud/hud_needlemouse": [
+  308,
+  184,
+  3168,
+  564,
+  2497,
+  237
+ ],
+ "NEEDLEMOUSE/images/roundabout/ave": [
+  0,
+  1298,
+  3000,
+  2500,
+  3000,
+  805
+ ],
+ "NEEDLEMOUSE/images/roundabout/bg1": [
+  0,
+  20,
+  3076,
+  1499,
+  3016,
+  1479
+ ],
+ "NEEDLEMOUSE/images/roundabout/bg3": [
+  1,
+  46,
+  3285,
+  1153,
+  3279,
+  1107
+ ],
+ "NEEDLEMOUSE/images/roundabout/foreground": [
+  0,
+  53,
+  3877,
+  1316,
+  3866,
+  1263
+ ],
+ "NMI/images/bg/pov/bg1": [
+  0,
+  503,
+  1920,
+  1175,
+  1920,
+  655
+ ],
+ "NMI/images/bg/pov/bg2": [
+  0,
+  507,
+  1920,
+  1097,
+  1920,
+  589
+ ],
+ "NMI/images/bg/pov/bg3": [
+  468,
+  372,
+  1366,
+  485,
+  884,
+  97
+ ],
+ "NMI/images/bg/pov/clouds": [
+  0,
+  133,
+  3840,
+  596,
+  3840,
+  371
+ ],
+ "NMI/images/bg/pov/floor": [
+  0,
+  226,
+  1920,
+  1452,
+  1920,
+  1226
+ ],
+ "NMI/images/bg/room/1": [
+  2847,
+  0,
+  3388,
+  2160,
+  541,
+  2160
+ ],
+ "NMI/images/bg/room/2": [
+  0,
+  1420,
+  3388,
+  2160,
+  1312,
+  740
+ ],
+ "NMI/images/bg/room/3": [
+  1180,
+  1618,
+  3388,
+  2160,
+  898,
+  542
+ ],
+ "NMI/images/bg/tv/1": [
+  0,
+  1284,
+  3840,
+  2160,
+  710,
+  876
+ ],
+ "NMI/images/bg/tv/2": [
+  3414,
+  639,
+  3840,
+  2160,
+  426,
+  1430
+ ],
+ "NMI/images/bg/tv/glow": [
+  937,
+  181,
+  3840,
+  2160,
+  1966,
+  1772
+ ],
+ "NMI/images/gameover/gf": [
+  558,
+  471,
+  1280,
+  720,
+  148,
+  195
+ ],
+ "NMI/images/gameover/jp1": [
+  504,
+  9,
+  1280,
+  190,
+  278,
+  181
+ ],
+ "NMI/images/gameover/lefthand": [
+  369,
+  452,
+  1280,
+  720,
+  152,
+  169
+ ],
+ "NMI/images/gameover/nmi": [
+  557,
+  172,
+  1280,
+  720,
+  220,
+  292
+ ],
+ "NMI/images/gameover/nmi go": [
+  1110,
+  518,
+  3840,
+  2160,
+  1552,
+  1344
+ ],
+ "NMI/images/gameover/righthand": [
+  753,
+  448,
+  1280,
+  720,
+  135,
+  172
+ ],
+ "NMI/images/hud/hud_fakebaby": [
+  314,
+  150,
+  3118,
+  564,
+  2499,
+  298
+ ],
+ "NORMALCD/images/bg/foreground": [
+  0,
+  902,
+  1920,
+  1080,
+  1920,
+  178
+ ],
+ "NORMALCD/images/bg/glow": [
+  0,
+  74,
+  1920,
+  1080,
+  1912,
+  1006
+ ],
+ "OMW/images/longstrider/bg/floor": [
+  0,
+  303,
+  721,
+  469,
+  368,
+  166
+ ],
+ "OMW/images/universal-collapse/2": [
+  0,
+  19,
+  2133,
+  811,
+  2133,
+  792
+ ],
+ "OMW/images/universal-collapse/final": [
+  0,
+  6,
+  3840,
+  2160,
+  3816,
+  2154
+ ],
+ "OMW/images/universal-collapse/noche/2": [
+  0,
+  18,
+  2133,
+  811,
+  2132,
+  792
+ ],
+ "PARALLAX/images/math/triangle": [
+  99,
+  39,
+  256,
+  114,
+  58,
+  47
+ ],
+ "REQUITAL/images/bg/bg-g": [
+  0,
+  0,
+  1280,
+  973,
+  824,
+  973
+ ],
+ "REQUITAL/images/bg/deception/bg-g 2": [
+  0,
+  0,
+  1280,
+  973,
+  822,
+  973
+ ],
+ "REQUITAL/images/bg/deception/overlay": [
+  0,
+  0,
+  1740,
+  1500,
+  1740,
+  1481
+ ],
+ "REQUITAL/images/bg/deception/pixel/deco": [
+  104,
+  0,
+  640,
+  648,
+  472,
+  648
+ ],
+ "REQUITAL/images/bg/deception/pixel/torches1": [
+  52,
+  70,
+  640,
+  338,
+  542,
+  268
+ ],
+ "REQUITAL/images/bg/deception/pixel/torches2": [
+  52,
+  70,
+  640,
+  338,
+  542,
+  268
+ ],
+ "SANIC/images/hud/hud_too-fest": [
+  301,
+  180,
+  3168,
+  564,
+  2511,
+  248
+ ],
+ "SANIC/images/spotlight": [
+  181,
+  0,
+  800,
+  600,
+  393,
+  593
+ ],
+ "SL4SH/images/newbg/bg2": [
+  0,
+  0,
+  427,
+  240,
+  329,
+  184
+ ],
+ "SL4SH/images/newbg/fg": [
+  0,
+  121,
+  427,
+  240,
+  122,
+  119
+ ],
+ "SONICJAM/images/bg/eagleeamericaaausalibertyyyystatueburgersss": [
+  866,
+  161,
+  1395,
+  844,
+  229,
+  336
+ ],
+ "SONICJAM/images/bg/floor": [
+  0,
+  772,
+  1471,
+  1068,
+  1471,
+  296
+ ],
+ "SONICJAM/images/bg/floorst": [
+  0,
+  628,
+  1920,
+  1080,
+  1920,
+  452
+ ],
+ "SONICJAM/images/bg/pillars": [
+  226,
+  555,
+  1471,
+  1068,
+  1019,
+  367
+ ],
+ "SONICJAM/images/bg/pillarsbg": [
+  226,
+  555,
+  1471,
+  1068,
+  1019,
+  367
+ ],
+ "SONICJAM/images/bg/skyy": [
+  0,
+  0,
+  1395,
+  844,
+  1395,
+  491
+ ],
+ "SONICJAM/images/bg/table": [
+  547,
+  748,
+  1471,
+  1068,
+  382,
+  140
+ ],
+ "SONICJAM/images/bg/tablesh": [
+  512,
+  862,
+  1471,
+  1068,
+  449,
+  24
+ ],
+ "SONICJAM/images/bg/trees": [
+  0,
+  48,
+  1395,
+  844,
+  1395,
+  527
+ ],
+ "STARVED/images/hud/hud_fight-or-flight": [
+  36,
+  51,
+  141,
+  780,
+  65,
+  686
+ ],
+ "STARVED/images/prey/bg/bg1": [
+  0,
+  0,
+  768,
+  768,
+  768,
+  32
+ ],
+ "STARVED/images/prey/bg/bg10": [
+  0,
+  224,
+  768,
+  768,
+  768,
+  192
+ ],
+ "STARVED/images/prey/bg/bg11": [
+  0,
+  240,
+  768,
+  768,
+  768,
+  168
+ ],
+ "STARVED/images/prey/bg/bg12": [
+  0,
+  256,
+  768,
+  768,
+  768,
+  144
+ ],
+ "STARVED/images/prey/bg/bg13": [
+  0,
+  272,
+  768,
+  768,
+  768,
+  120
+ ],
+ "STARVED/images/prey/bg/bg14": [
+  0,
+  288,
+  768,
+  768,
+  768,
+  96
+ ],
+ "STARVED/images/prey/bg/bg15": [
+  0,
+  296,
+  768,
+  768,
+  768,
+  80
+ ],
+ "STARVED/images/prey/bg/bg2": [
+  0,
+  32,
+  768,
+  768,
+  768,
+  736
+ ],
+ "STARVED/images/prey/bg/bg3": [
+  0,
+  64,
+  768,
+  768,
+  768,
+  560
+ ],
+ "STARVED/images/prey/bg/bg4": [
+  0,
+  80,
+  768,
+  768,
+  768,
+  416
+ ],
+ "STARVED/images/prey/bg/bg5": [
+  0,
+  96,
+  768,
+  768,
+  768,
+  392
+ ],
+ "STARVED/images/prey/bg/bg6": [
+  0,
+  112,
+  768,
+  768,
+  768,
+  368
+ ],
+ "STARVED/images/prey/bg/bg7": [
+  0,
+  144,
+  768,
+  768,
+  768,
+  320
+ ],
+ "STARVED/images/prey/bg/bg8": [
+  0,
+  176,
+  768,
+  768,
+  768,
+  272
+ ],
+ "STARVED/images/prey/bg/bg9": [
+  0,
+  192,
+  768,
+  768,
+  768,
+  240
+ ],
+ "STARVED/images/prey/floor-variants/1/floor2": [
+  80,
+  0,
+  3840,
+  704,
+  3728,
+  704
+ ],
+ "STARVED/images/prey/floor-variants/2/floor2": [
+  16,
+  0,
+  3840,
+  704,
+  3808,
+  704
+ ],
+ "STARVED/images/prey/floor-variants/3/floor2": [
+  16,
+  0,
+  2816,
+  704,
+  2784,
+  594
+ ],
+ "STARVED/images/prey/floor-variants/4/floor2": [
+  80,
+  0,
+  3328,
+  704,
+  3232,
+  600
+ ],
+ "STARVED/images/prey/floor-variants/5/floor2": [
+  80,
+  0,
+  3328,
+  704,
+  3232,
+  600
+ ],
+ "STARVED/images/prey/floor-variants/6/floor2": [
+  16,
+  3,
+  2560,
+  704,
+  2528,
+  701
+ ],
+ "STARVED/images/starved/bee": [
+  18,
+  41,
+  400,
+  400,
+  358,
+  341
+ ],
+ "STARVED/images/starved/dark/bee": [
+  16,
+  41,
+  400,
+  400,
+  362,
+  334
+ ],
+ "STARVED/images/starved/dark/fish": [
+  0,
+  40,
+  1728,
+  312,
+  1728,
+  272
+ ],
+ "STARVED/images/starved/dark/moto": [
+  8,
+  124,
+  400,
+  400,
+  375,
+  244
+ ],
+ "STARVED/images/starved/dark/mrcrabs": [
+  75,
+  155,
+  412,
+  375,
+  299,
+  206
+ ],
+ "STARVED/images/starved/dark/sonic": [
+  1,
+  1,
+  421,
+  301,
+  375,
+  272
+ ],
+ "STARVED/images/starved/fish": [
+  0,
+  40,
+  1728,
+  312,
+  1728,
+  272
+ ],
+ "STARVED/images/starved/moto": [
+  13,
+  126,
+  400,
+  400,
+  373,
+  243
+ ],
+ "STARVED/images/starved/new bg/light": [
+  0,
+  0,
+  3200,
+  2800,
+  3200,
+  2466
+ ],
+ "STORY MODE/images/eye/alabre": [
+  603,
+  0,
+  3840,
+  2402,
+  3237,
+  622
+ ],
+ "STORY MODE/images/eye/edificio_de_adelante": [
+  0,
+  178,
+  3840,
+  2402,
+  3840,
+  2224
+ ],
+ "STORY MODE/images/eye/edificio_fondo": [
+  0,
+  23,
+  3840,
+  2402,
+  3840,
+  2379
+ ],
+ "STORY MODE/images/eye/luz bf": [
+  101,
+  0,
+  1133,
+  2160,
+  894,
+  1987
+ ],
+ "STORY MODE/images/eye/luz espejo": [
+  101,
+  0,
+  1139,
+  2160,
+  894,
+  1987
+ ],
+ "STORY MODE/images/eye/spotlight": [
+  179,
+  0,
+  1200,
+  800,
+  842,
+  624
+ ],
+ "STORY MODE/images/eye/yourself/back/1-azul": [
+  164,
+  0,
+  3506,
+  1642,
+  3104,
+  1642
+ ],
+ "STORY MODE/images/eye/yourself/broken/1-glassBroken": [
+  0,
+  619,
+  4000,
+  2000,
+  4000,
+  1072
+ ],
+ "STORY MODE/images/eye/yourself/buddies/1-og": [
+  15,
+  54,
+  838,
+  1034,
+  788,
+  942
+ ],
+ "STORY MODE/images/eye/yourself/buddies/2-jacket": [
+  23,
+  84,
+  1070,
+  738,
+  1000,
+  634
+ ],
+ "STORY MODE/images/eye/yourself/buddies/3-damn": [
+  10,
+  24,
+  828,
+  880,
+  765,
+  835
+ ],
+ "STORY MODE/images/eye/yourself/buddies/4-small": [
+  49,
+  6,
+  824,
+  608,
+  732,
+  565
+ ],
+ "STORY MODE/images/eye/yourself/buddies/5-horn": [
+  76,
+  8,
+  1038,
+  840,
+  924,
+  832
+ ],
+ "STORY MODE/images/eye/yourself/buddies/6-uh": [
+  22,
+  0,
+  1030,
+  758,
+  976,
+  708
+ ],
+ "STORY MODE/images/eye/yourself/buddies/7-white": [
+  13,
+  16,
+  740,
+  664,
+  710,
+  628
+ ],
+ "STORY MODE/images/final/escape/bg1": [
+  0,
+  238,
+  2688,
+  1512,
+  2688,
+  712
+ ],
+ "STORY MODE/images/final/escape/bg2": [
+  0,
+  0,
+  2688,
+  1512,
+  2688,
+  911
+ ],
+ "STORY MODE/images/final/escape/clouds1": [
+  97,
+  77,
+  5376,
+  1138,
+  5039,
+  803
+ ],
+ "STORY MODE/images/final/escape/clouds2": [
+  60,
+  19,
+  5376,
+  1138,
+  5290,
+  1080
+ ],
+ "STORY MODE/images/final/escape/objects1": [
+  251,
+  168,
+  2688,
+  1512,
+  2291,
+  1021
+ ],
+ "STORY MODE/images/final/escape/objects2": [
+  246,
+  392,
+  2688,
+  1512,
+  2132,
+  1019
+ ],
+ "STORY MODE/images/final/escape/objects3": [
+  29,
+  343,
+  2688,
+  1512,
+  2183,
+  1088
+ ],
+ "STORY MODE/images/final/intro/clouds1": [
+  0,
+  27,
+  1920,
+  501,
+  1920,
+  471
+ ],
+ "STORY MODE/images/final/intro/clouds2": [
+  0,
+  44,
+  1920,
+  381,
+  1920,
+  319
+ ],
+ "STORY MODE/images/final/ringfinalescape": [
+  0,
+  0,
+  1830,
+  835,
+  1592,
+  835
+ ],
+ "STORY MODE/images/hud/hud_lookalike": [
+  210,
+  136,
+  3119,
+  565,
+  2535,
+  326
+ ],
+ "STORY MODE/images/hud/hud_too-slow": [
+  308,
+  185,
+  3167,
+  564,
+  2496,
+  236
+ ],
+ "STORY MODE/images/potatomode/fe/runningbfmech": [
+  4,
+  3,
+  2431,
+  2432,
+  2421,
+  2423
+ ],
+ "STORY MODE/images/potatomode/slow/1": [
+  14,
+  8,
+  1681,
+  995,
+  1667,
+  987
+ ],
+ "STORY MODE/images/potatomode/slow/2": [
+  1,
+  13,
+  1664,
+  518,
+  1663,
+  505
+ ],
+ "STORY MODE/images/slow/b1 front": [
+  2,
+  1060,
+  3603,
+  2155,
+  3601,
+  1095
+ ],
+ "STORY MODE/images/slow/bg1": [
+  2,
+  17,
+  3603,
+  2155,
+  3601,
+  2138
+ ],
+ "STORY MODE/images/slow/bg2": [
+  1,
+  670,
+  3603,
+  2155,
+  3602,
+  1485
+ ],
+ "STORY MODE/images/slow/eggman": [
+  122,
+  59,
+  1046,
+  575,
+  820,
+  383
+ ],
+ "STORY MODE/images/slow/flashback/ground": [
+  0,
+  90,
+  3600,
+  817,
+  3600,
+  727
+ ],
+ "STORY MODE/images/slow/fondo": [
+  0,
+  0,
+  3603,
+  2155,
+  3603,
+  1836
+ ],
+ "STORY MODE/images/tt/bgn/fire/floor": [
+  54,
+  1,
+  2556,
+  1804,
+  2444,
+  1799
+ ],
+ "STORY MODE/images/tt/bgn/fire/foreground": [
+  0,
+  1,
+  2558,
+  1742,
+  2554,
+  1703
+ ],
+ "STORY MODE/images/tt/bgn/fire/trees3": [
+  0,
+  210,
+  2558,
+  1536,
+  2554,
+  1322
+ ],
+ "STORY MODE/images/tt/bgn/floor": [
+  54,
+  1,
+  2552,
+  1800,
+  2444,
+  1799
+ ],
+ "STORY MODE/images/tt/bgn/foreground": [
+  0,
+  1,
+  2554,
+  1738,
+  2554,
+  1703
+ ],
+ "STORY MODE/images/tt/bgn/trees3": [
+  0,
+  210,
+  2554,
+  1532,
+  2554,
+  1322
+ ],
+ "STORY MODE/images/tt/bgx/fire/floor": [
+  0,
+  371,
+  2250,
+  2250,
+  2246,
+  1875
+ ],
+ "STORY MODE/images/tt/bgx/fire/foreground": [
+  143,
+  0,
+  3906,
+  504,
+  3460,
+  500
+ ],
+ "STORY MODE/images/tt/bgx/fire/trees1": [
+  5,
+  0,
+  2240,
+  1346,
+  2231,
+  1342
+ ],
+ "STORY MODE/images/tt/bgx/fire/trees3": [
+  33,
+  0,
+  2031,
+  1038,
+  1995,
+  1034
+ ],
+ "STORY MODE/images/tt/bgx/floor": [
+  0,
+  371,
+  2246,
+  2246,
+  2246,
+  1875
+ ],
+ "STORY MODE/images/tt/bgx/foreground": [
+  143,
+  0,
+  3902,
+  500,
+  3460,
+  500
+ ],
+ "STORY MODE/images/tt/bgx/trees3": [
+  33,
+  0,
+  2028,
+  1034,
+  1995,
+  1034
+ ],
+ "STORY MODE/images/tt/egg/bg1": [
+  0,
+  0,
+  2250,
+  2250,
+  2250,
+  1982
+ ],
+ "STORY MODE/images/tt/egg/bg2": [
+  0,
+  0,
+  2250,
+  2250,
+  2250,
+  1925
+ ],
+ "STORY MODE/images/tt/egg/bg3": [
+  0,
+  100,
+  2250,
+  2250,
+  2250,
+  2150
+ ],
+ "STORY MODE/images/tt/egg/floor": [
+  0,
+  649,
+  2250,
+  2250,
+  2250,
+  1601
+ ],
+ "STORY MODE/images/tt/egg/overlay": [
+  0,
+  271,
+  2250,
+  2250,
+  2250,
+  1979
+ ],
+ "STORY MODE/images/tt/knux/floor": [
+  0,
+  142,
+  2558,
+  2132,
+  2558,
+  1990
+ ],
+ "STORY MODE/images/tt/knux/fog": [
+  0,
+  499,
+  2558,
+  2132,
+  2558,
+  1167
+ ],
+ "STORY MODE/images/tt/knux/fog2": [
+  0,
+  41,
+  2560,
+  2133,
+  2560,
+  1451
+ ],
+ "STORY MODE/images/tt/knux/platform": [
+  74,
+  189,
+  2558,
+  2132,
+  2462,
+  1350
+ ],
+ "STORY MODE/images/tt/knux/platform2": [
+  41,
+  662,
+  2560,
+  1440,
+  2498,
+  609
+ ],
+ "STORY MODE/images/tt/knux/platform3": [
+  719,
+  232,
+  2560,
+  2133,
+  1757,
+  762
+ ],
+ "STORY MODE/images/tt/tails/bg5": [
+  0,
+  416,
+  2250,
+  2250,
+  2140,
+  1684
+ ],
+ "STORY MODE/images/tt/tails/floor": [
+  746,
+  1532,
+  4500,
+  4500,
+  3649,
+  2968
+ ],
+ "STORY MODE/images/yrc/backBackRocks": [
+  71,
+  164,
+  3603,
+  2155,
+  3461,
+  1567
+ ],
+ "STORY MODE/images/yrc/backRocks": [
+  38,
+  67,
+  3603,
+  2155,
+  3551,
+  1913
+ ],
+ "STORY MODE/images/yrc/backRocksCrystal": [
+  38,
+  67,
+  3603,
+  2155,
+  3551,
+  1913
+ ],
+ "STORY MODE/images/yrc/bush": [
+  0,
+  862,
+  2700,
+  1800,
+  2700,
+  557
+ ],
+ "STORY MODE/images/yrc/crystallBG": [
+  0,
+  449,
+  2700,
+  1800,
+  2700,
+  840
+ ],
+ "STORY MODE/images/yrc/crystallFG": [
+  0,
+  561,
+  3200,
+  1800,
+  3200,
+  1239
+ ],
+ "STORY MODE/images/yrc/floor": [
+  364,
+  7,
+  3603,
+  2155,
+  2875,
+  2148
+ ],
+ "STORY MODE/images/yrc/floorCrystal": [
+  364,
+  7,
+  3603,
+  2155,
+  2875,
+  2148
+ ],
+ "STORY MODE/images/yrc/fondocaberna": [
+  0,
+  0,
+  1024,
+  528,
+  1024,
+  384
+ ],
+ "STORY MODE/images/yrc/frontRocks": [
+  0,
+  11,
+  3603,
+  2155,
+  3603,
+  2091
+ ],
+ "STORY MODE/images/yrc/frontRocksCrystal": [
+  0,
+  10,
+  3603,
+  2155,
+  3602,
+  2088
+ ],
+ "STORY MODE/images/yrc/hill1": [
+  639,
+  0,
+  2700,
+  1800,
+  2061,
+  1749
+ ],
+ "STORY MODE/images/yrc/hill2": [
+  0,
+  0,
+  2700,
+  1800,
+  1569,
+  1586
+ ],
+ "STORY MODE/images/yrc/middleRocks": [
+  85,
+  107,
+  3603,
+  2155,
+  3357,
+  1848
+ ],
+ "STORY MODE/images/yrc/sky": [
+  9,
+  0,
+  2700,
+  1800,
+  2655,
+  1800
+ ],
+ "STORY MODE/images/yrc/trees": [
+  1,
+  0,
+  2700,
+  1800,
+  2699,
+  1709
+ ],
+ "SUNKY/images/chocolate/bg/cereal": [
+  255,
+  189,
+  1000,
+  750,
+  483,
+  317
+ ],
+ "SUNKY/images/chocolate/bg/floot": [
+  146,
+  492,
+  1280,
+  892,
+  994,
+  400
+ ],
+ "SUNKY/images/chocolate/bg/milk": [
+  230,
+  182,
+  1000,
+  750,
+  398,
+  395
+ ],
+ "SUNKY/images/chocolate/light": [
+  142,
+  0,
+  1091,
+  1468,
+  804,
+  1318
+ ],
+ "SUNKY/images/chocolate/renders/SUNKYYYYSYSYSYSYSYSY": [
+  144,
+  87,
+  982,
+  982,
+  647,
+  833
+ ],
+ "SUNKY/images/chocolate/renders/captain": [
+  66,
+  35,
+  1075,
+  1075,
+  933,
+  1035
+ ],
+ "SUNKY/images/chocolate/renders/cardoso": [
+  67,
+  37,
+  840,
+  473,
+  745,
+  436
+ ],
+ "SUNKY/images/chocolate/renders/cooks": [
+  120,
+  83,
+  984,
+  986,
+  803,
+  875
+ ],
+ "SUNKY/images/chocolate/renders/jajaxd": [
+  9,
+  12,
+  507,
+  387,
+  483,
+  363
+ ],
+ "SUNKY/images/chocolate/renders/lunky": [
+  164,
+  130,
+  1432,
+  1860,
+  925,
+  1688
+ ],
+ "SUNKY/images/chocolate/renders/rabty": [
+  209,
+  160,
+  900,
+  918,
+  525,
+  724
+ ],
+ "SUNKY/images/chocolate/renders/schio": [
+  20,
+  20,
+  600,
+  600,
+  553,
+  509
+ ],
+ "SUNKY/images/chocolate/renders/sunkasd": [
+  52,
+  81,
+  697,
+  655,
+  573,
+  544
+ ],
+ "SUNKY/images/chocolate/renders/sunkehhh": [
+  34,
+  62,
+  698,
+  1210,
+  639,
+  1083
+ ],
+ "SUNKY/images/chocolate/renders/sunkyMunch": [
+  34,
+  27,
+  692,
+  681,
+  609,
+  598
+ ],
+ "SUNKY/images/chocolate/renders/sunkyPose": [
+  5,
+  13,
+  683,
+  766,
+  665,
+  706
+ ],
+ "SUNKY/images/chocolate/renders/sunkyevil": [
+  2,
+  21,
+  614,
+  614,
+  592,
+  578
+ ],
+ "SUNKY/images/chocolate/renders/sunkyhog": [
+  12,
+  123,
+  1000,
+  1000,
+  976,
+  742
+ ],
+ "SUNKY/images/chocolate/renders/sunkypiss": [
+  18,
+  87,
+  459,
+  459,
+  399,
+  360
+ ],
+ "SUNKY/images/chocolate/renders/sunkyrender": [
+  124,
+  89,
+  768,
+  768,
+  577,
+  625
+ ],
+ "SUNKY/images/chocolate/renders/sunkyrtx": [
+  304,
+  15,
+  900,
+  900,
+  398,
+  875
+ ],
+ "TAILS DOLL/images/bg/new_floor": [
+  0,
+  540,
+  1920,
+  1080,
+  1920,
+  540
+ ],
+ "TAILS DOLL/images/gradient": [
+  24,
+  20,
+  400,
+  400,
+  360,
+  360
+ ],
+ "TAILS DOLL/images/hud/hud_sunshine": [
+  308,
+  188,
+  3164,
+  564,
+  2496,
+  236
+ ],
+ "TAILS DOLL/images/soullessbg/sombra2": [
+  0,
+  0,
+  1280,
+  960,
+  1280,
+  913
+ ],
+ "TRILOGY/images/bg/clouds": [
+  0,
+  0,
+  2560,
+  1440,
+  2266,
+  927
+ ],
+ "TRILOGY/images/bg/terrain": [
+  779,
+  0,
+  2560,
+  1440,
+  1781,
+  1440
+ ],
+ "TRILOGY/images/hud/hud_life-and-death": [
+  442,
+  82,
+  3118,
+  564,
+  2251,
+  410
+ ],
+ "images/StartScreens/Circle-Endless JP": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/Circle-Endless US": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/Circle-Faker": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/Circle-Fight or Flight": [
+  352,
+  236,
+  1280,
+  720,
+  492,
+  312
+ ],
+ "images/StartScreens/Circle-Forestall Desire": [
+  512,
+  224,
+  1280,
+  720,
+  375,
+  278
+ ],
+ "images/StartScreens/Circle-Hedge": [
+  518,
+  224,
+  1280,
+  720,
+  370,
+  278
+ ],
+ "images/StartScreens/Circle-Manual Blast": [
+  518,
+  224,
+  1280,
+  720,
+  370,
+  278
+ ],
+ "images/StartScreens/Circle-Too Fest": [
+  511,
+  223,
+  1280,
+  720,
+  370,
+  274
+ ],
+ "images/StartScreens/Circle-Too-Slow": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/Circle-Triple Trouble": [
+  518,
+  225,
+  1280,
+  720,
+  369,
+  277
+ ],
+ "images/StartScreens/Circle-You Can't Run": [
+  518,
+  224,
+  1280,
+  720,
+  370,
+  278
+ ],
+ "images/StartScreens/Circle-cycles": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/Text-Endless JP": [
+  298,
+  242,
+  1280,
+  720,
+  600,
+  228
+ ],
+ "images/StartScreens/Text-Endless US": [
+  298,
+  242,
+  1280,
+  720,
+  600,
+  228
+ ],
+ "images/StartScreens/Text-Faker": [
+  542,
+  327,
+  1280,
+  720,
+  242,
+  169
+ ],
+ "images/StartScreens/Text-Fight or Flight": [
+  390,
+  218,
+  1280,
+  720,
+  391,
+  269
+ ],
+ "images/StartScreens/Text-Forestall Desire": [
+  18,
+  214,
+  1280,
+  720,
+  800,
+  293
+ ],
+ "images/StartScreens/Text-Hedge": [
+  320,
+  215,
+  1280,
+  720,
+  498,
+  292
+ ],
+ "images/StartScreens/Text-Manual Blast": [
+  119,
+  230,
+  1280,
+  720,
+  718,
+  269
+ ],
+ "images/StartScreens/Text-Too Fest": [
+  264,
+  224,
+  1280,
+  720,
+  560,
+  314
+ ],
+ "images/StartScreens/Text-Too-Slow": [
+  265,
+  236,
+  1280,
+  720,
+  553,
+  271
+ ],
+ "images/StartScreens/Text-Triple Trouble": [
+  148,
+  264,
+  1280,
+  720,
+  758,
+  247
+ ],
+ "images/StartScreens/Text-You Can't Run": [
+  117,
+  251,
+  1280,
+  720,
+  720,
+  248
+ ],
+ "images/StartScreens/Text-cycles": [
+  345,
+  257,
+  1280,
+  720,
+  483,
+  239
+ ],
+ "images/StartScreens/b4cksl4sh/circle": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  277
+ ],
+ "images/StartScreens/b4cksl4sh/text": [
+  240,
+  236,
+  1280,
+  720,
+  604,
+  271
+ ],
+ "images/StartScreens/cycles/circle": [
+  518,
+  210,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/cycles/text": [
+  345,
+  257,
+  1280,
+  720,
+  483,
+  239
+ ],
+ "images/StartScreens/endless-jp/circle": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/endless-jp/text": [
+  298,
+  242,
+  1280,
+  720,
+  600,
+  228
+ ],
+ "images/StartScreens/endless-us/circle": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/endless-us/text": [
+  298,
+  242,
+  1280,
+  720,
+  600,
+  228
+ ],
+ "images/StartScreens/faker/circle": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/faker/text": [
+  542,
+  327,
+  1280,
+  720,
+  242,
+  169
+ ],
+ "images/StartScreens/fate/circle": [
+  518,
+  210,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/fate/text": [
+  477,
+  259,
+  1280,
+  720,
+  349,
+  237
+ ],
+ "images/StartScreens/fight-or-flight/circle": [
+  352,
+  236,
+  1280,
+  720,
+  492,
+  312
+ ],
+ "images/StartScreens/fight-or-flight/text": [
+  390,
+  218,
+  1280,
+  720,
+  391,
+  269
+ ],
+ "images/StartScreens/forestall-desire/circle": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/forestall-desire/text": [
+  353,
+  243,
+  1280,
+  720,
+  450,
+  261
+ ],
+ "images/StartScreens/gotta-go/circle": [
+  518,
+  210,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/gotta-go/text": [
+  236,
+  259,
+  1280,
+  720,
+  602,
+  237
+ ],
+ "images/StartScreens/haze/circle": [
+  518,
+  210,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/haze/text": [
+  476,
+  262,
+  1280,
+  720,
+  350,
+  234
+ ],
+ "images/StartScreens/hedge/circle": [
+  518,
+  210,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/hedge/text": [
+  414,
+  262,
+  1280,
+  720,
+  389,
+  234
+ ],
+ "images/StartScreens/hellbent/circle": [
+  518,
+  210,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/hellbent/text": [
+  236,
+  259,
+  1280,
+  720,
+  590,
+  237
+ ],
+ "images/StartScreens/her-world/circle": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  277
+ ],
+ "images/StartScreens/her-world/text": [
+  273,
+  239,
+  1280,
+  720,
+  651,
+  272
+ ],
+ "images/StartScreens/introdown": [
+  0,
+  160,
+  320,
+  224,
+  320,
+  64
+ ],
+ "images/StartScreens/introleft": [
+  0,
+  0,
+  320,
+  224,
+  120,
+  224
+ ],
+ "images/StartScreens/introtxt": [
+  73,
+  56,
+  320,
+  224,
+  215,
+  53
+ ],
+ "images/StartScreens/life-and-death/circle": [
+  518,
+  210,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/life-and-death/text": [
+  441,
+  243,
+  1280,
+  720,
+  385,
+  261
+ ],
+ "images/StartScreens/malediction/circle": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  277
+ ],
+ "images/StartScreens/malediction/text": [
+  228,
+  236,
+  1280,
+  720,
+  628,
+  271
+ ],
+ "images/StartScreens/mania/circle": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/mania/text": [
+  416,
+  261,
+  1280,
+  720,
+  410,
+  235
+ ],
+ "images/StartScreens/manual-blast/circle": [
+  518,
+  210,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/manual-blast/text": [
+  414,
+  262,
+  1280,
+  720,
+  389,
+  234
+ ],
+ "images/StartScreens/miasma/text": [
+  50,
+  35,
+  568,
+  290,
+  470,
+  234
+ ],
+ "images/StartScreens/round-a-bout/circle": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  277
+ ],
+ "images/StartScreens/round-a-bout/text": [
+  179,
+  239,
+  1280,
+  720,
+  730,
+  268
+ ],
+ "images/StartScreens/sharpy-showdown/circle": [
+  518,
+  210,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/sharpy-showdown/text": [
+  341,
+  243,
+  1280,
+  720,
+  485,
+  261
+ ],
+ "images/StartScreens/too-fest/circle": [
+  511,
+  223,
+  1280,
+  720,
+  370,
+  274
+ ],
+ "images/StartScreens/too-fest/text": [
+  264,
+  224,
+  1280,
+  720,
+  560,
+  314
+ ],
+ "images/StartScreens/too-slow/circle": [
+  518,
+  224,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/too-slow/text": [
+  265,
+  236,
+  1280,
+  720,
+  553,
+  271
+ ],
+ "images/StartScreens/triple-trouble/circle": [
+  518,
+  225,
+  1280,
+  720,
+  369,
+  277
+ ],
+ "images/StartScreens/triple-trouble/text": [
+  148,
+  264,
+  1280,
+  720,
+  758,
+  247
+ ],
+ "images/StartScreens/uh-oh/circle": [
+  518,
+  210,
+  1280,
+  720,
+  369,
+  278
+ ],
+ "images/StartScreens/uh-oh/text": [
+  384,
+  262,
+  1280,
+  720,
+  419,
+  234
+ ],
+ "images/StartScreens/you-can't-run/circle": [
+  518,
+  224,
+  1280,
+  720,
+  370,
+  278
+ ],
+ "images/StartScreens/you-can't-run/text": [
+  117,
+  251,
+  1280,
+  720,
+  720,
+  248
+ ],
+ "images/hud/hud_general": [
+  308,
+  185,
+  3167,
+  564,
+  2496,
+  236
+ ],
+ "images/intro-chocolate": [
+  331,
+  165,
+  1280,
+  720,
+  639,
+  419
+ ],
+ "images/intro-vanilla": [
+  331,
+  178,
+  1280,
+  720,
+  530,
+  355
+ ]
+}

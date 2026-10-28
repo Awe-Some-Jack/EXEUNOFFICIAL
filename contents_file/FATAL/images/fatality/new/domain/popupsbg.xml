@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="popupsbg.png">
-<SubTexture name="idle0000" x="0" y="0" width="780" height="180" frameX="-10" frameY="0" frameWidth="790" frameHeight="177" />
-<SubTexture name="idle0001" x="783" y="358" width="785" height="166" frameX="-5" frameY="-3" frameWidth="790" frameHeight="177" />
-<SubTexture name="idle0002" x="0" y="358" width="783" height="168" frameX="-9" frameY="0" frameWidth="790" frameHeight="177" />
-<SubTexture name="idle0003" x="0" y="180" width="780" height="178" frameX="-8" frameY="-3" frameWidth="790" frameHeight="177" />
-<SubTexture name="idle0004" x="780" y="0" width="794" height="176" frameX="0" frameY="-2" frameWidth="790" frameHeight="177" />
-<SubTexture name="idle0005" x="780" y="176" width="790" height="170" frameX="-2" frameY="-3" frameWidth="790" frameHeight="177" />
+<SubTexture name="idle0000" x="0" y="0" width="776" height="176" frameX="-10" frameY="0" frameWidth="790" frameHeight="177" />
+<SubTexture name="idle0001" x="0" y="862" width="781" height="162" frameX="-5" frameY="-3" frameWidth="790" frameHeight="177" />
+<SubTexture name="idle0002" x="0" y="696" width="779" height="164" frameX="-9" frameY="0" frameWidth="790" frameHeight="177" />
+<SubTexture name="idle0003" x="0" y="178" width="776" height="174" frameX="-8" frameY="-3" frameWidth="790" frameHeight="177" />
+<SubTexture name="idle0004" x="0" y="354" width="790" height="172" frameX="0" frameY="-2" frameWidth="790" frameHeight="177" />
+<SubTexture name="idle0005" x="0" y="528" width="786" height="166" frameX="-2" frameY="-3" frameWidth="790" frameHeight="177" />
 </TextureAtlas>

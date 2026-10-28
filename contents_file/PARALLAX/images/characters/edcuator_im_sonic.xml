@@ -2,42 +2,42 @@
 <TextureAtlas imagePath="edcuator Im sonic.png">
 	<!-- Created using the Spritesheet and XML generator -->
 	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
-	<SubTexture name="Edcuator im sonic00000000" x="497" y="643" width="123" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00010000" x="743" y="643" width="121" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00020000" x="930" y="432" width="116" height="216" frameX="-102" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00030000" x="1280" y="0" width="113" height="216" frameX="-102" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00040000" x="1280" y="648" width="113" height="216" frameX="-99" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00050000" x="1280" y="432" width="113" height="216" frameX="-95" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00060000" x="1280" y="216" width="113" height="216" frameX="-93" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00070000" x="1165" y="0" width="115" height="216" frameX="-91" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00080000" x="930" y="216" width="116" height="216" frameX="-90" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00090000" x="1049" y="0" width="116" height="215" frameX="-90" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00100000" x="1049" y="430" width="116" height="215" frameX="-90" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00110000" x="0" y="859" width="116" height="215" frameX="-90" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00120000" x="1049" y="215" width="116" height="215" frameX="-90" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00130000" x="1165" y="216" width="115" height="215" frameX="-91" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00140000" x="1165" y="647" width="114" height="216" frameX="-94" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00150000" x="1165" y="431" width="114" height="216" frameX="-97" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00160000" x="930" y="0" width="119" height="216" frameX="-101" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00170000" x="0" y="643" width="125" height="216" frameX="-102" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00180000" x="673" y="0" width="129" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00190000" x="0" y="428" width="131" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00200000" x="540" y="0" width="133" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00210000" x="269" y="214" width="134" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00220000" x="0" y="214" width="135" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00230000" x="405" y="0" width="135" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00240000" x="135" y="0" width="135" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00250000" x="0" y="0" width="135" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00260000" x="270" y="0" width="135" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00270000" x="135" y="214" width="134" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00280000" x="403" y="214" width="133" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00290000" x="540" y="214" width="132" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00300000" x="131" y="428" width="131" height="214" frameX="-102" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00310000" x="673" y="215" width="129" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00320000" x="802" y="0" width="128" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00330000" x="802" y="215" width="126" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00340000" x="125" y="643" width="125" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00350000" x="250" y="643" width="124" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00360000" x="620" y="643" width="123" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="Edcuator im sonic00370000" x="374" y="643" width="123" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="Edcuator im sonic00000000" x="213" y="355" width="211" height="119" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00010000" x="1067" y="428" width="117" height="211" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="Edcuator im sonic00020000" x="428" y="0" width="212" height="112" frameX="-104" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00030000" x="1070" y="214" width="109" height="212" frameX="-104" frameY="-15" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="Edcuator im sonic00040000" x="428" y="114" width="212" height="109" frameX="-101" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00050000" x="214" y="117" width="212" height="109" frameX="-97" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00060000" x="0" y="123" width="212" height="109" frameX="-95" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00070000" x="856" y="0" width="212" height="111" frameX="-93" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00080000" x="642" y="0" width="212" height="112" frameX="-92" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00090000" x="640" y="366" width="211" height="112" frameX="-92" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00100000" x="426" y="474" width="211" height="112" frameX="-92" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00110000" x="213" y="476" width="211" height="112" frameX="-92" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00120000" x="0" y="481" width="211" height="112" frameX="-92" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00130000" x="853" y="470" width="211" height="111" frameX="-93" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00140000" x="1070" y="0" width="110" height="212" frameX="-96" frameY="-15" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="Edcuator im sonic00150000" x="856" y="113" width="212" height="110" frameX="-99" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00160000" x="214" y="0" width="212" height="115" frameX="-103" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00170000" x="0" y="0" width="212" height="121" frameX="-104" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00180000" x="428" y="225" width="211" height="125" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00190000" x="642" y="114" width="211" height="127" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00200000" x="212" y="723" width="210" height="129" frameX="-104" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00210000" x="638" y="613" width="210" height="130" frameX="-104" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00220000" x="639" y="480" width="210" height="131" frameX="-104" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00230000" x="426" y="588" width="210" height="131" frameX="-104" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00240000" x="213" y="590" width="210" height="131" frameX="-104" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00250000" x="0" y="595" width="210" height="131" frameX="-104" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00260000" x="851" y="583" width="210" height="131" frameX="-104" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00270000" x="425" y="721" width="210" height="130" frameX="-104" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00280000" x="0" y="728" width="210" height="129" frameX="-104" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00290000" x="850" y="716" width="210" height="128" frameX="-104" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00300000" x="637" y="745" width="210" height="127" frameX="-104" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00310000" x="214" y="228" width="211" height="125" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00320000" x="0" y="234" width="211" height="124" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00330000" x="855" y="225" width="211" height="122" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00340000" x="641" y="243" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00350000" x="427" y="352" width="211" height="120" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00360000" x="0" y="360" width="211" height="119" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="Edcuator im sonic00370000" x="854" y="349" width="211" height="119" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
 </TextureAtlas>

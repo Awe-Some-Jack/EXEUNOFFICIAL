@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="sunky.png">
-	<SubTexture name="sunky0000" x="69" y="75" width="25" height="18" frameX="0" frameY="-19" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0001" x="96" y="75" width="25" height="18" frameX="0" frameY="-19" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0002" x="0" y="105" width="25" height="18" frameX="0" frameY="-19" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0003" x="37" y="75" width="30" height="22" frameX="0" frameY="-15" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0004" x="0" y="75" width="35" height="28" frameX="0" frameY="-9" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0005" x="39" y="39" width="36" height="30" frameX="0" frameY="-7" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0006" x="78" y="0" width="39" height="34" frameX="0" frameY="-3" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0007" x="39" y="0" width="37" height="36" frameX="0" frameY="-1" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0008" x="0" y="0" width="37" height="37" frameX="0" frameY="0" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0009" x="0" y="39" width="37" height="34" frameX="0" frameY="-3" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0010" x="77" y="39" width="35" height="30" frameX="0" frameY="-7" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0011" x="27" y="105" width="29" height="18" frameX="0" frameY="-19" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0012" x="58" y="105" width="25" height="18" frameX="0" frameY="-19" frameWidth="39" frameHeight="37"/>
-	<SubTexture name="sunky0013" x="85" y="105" width="25" height="18" frameX="0" frameY="-19" frameWidth="39" frameHeight="37"/>
+	<SubTexture name="sunky0000" x="38" y="95" width="25" height="18" frameX="0" frameY="-19" frameWidth="39" frameHeight="37"/>
+	<SubTexture name="sunky0001" x="0" y="106" width="25" height="18" frameX="0" frameY="-19" frameWidth="39" frameHeight="37"/>
+	<SubTexture name="sunky0002" x="65" y="98" width="25" height="18" frameX="0" frameY="-19" frameWidth="39" frameHeight="37"/>
+	<SubTexture name="sunky0003" x="78" y="74" width="30" height="22" frameX="0" frameY="-15" frameWidth="39" frameHeight="37"/>
+	<SubTexture name="sunky0004" x="80" y="37" width="28" height="35" frameX="0" frameY="-9" frameWidth="39" frameHeight="37" rotated="true" />
+	<SubTexture name="sunky0005" x="0" y="74" width="36" height="30" frameX="0" frameY="-7" frameWidth="39" frameHeight="37"/>
+	<SubTexture name="sunky0006" x="0" y="0" width="39" height="34" frameX="0" frameY="-3" frameWidth="39" frameHeight="37"/>
+	<SubTexture name="sunky0007" x="0" y="36" width="37" height="36" frameX="0" frameY="-1" frameWidth="39" frameHeight="37"/>
+	<SubTexture name="sunky0008" x="41" y="0" width="37" height="37" frameX="0" frameY="0" frameWidth="39" frameHeight="37"/>
+	<SubTexture name="sunky0009" x="39" y="39" width="37" height="34" frameX="0" frameY="-3" frameWidth="39" frameHeight="37"/>
+	<SubTexture name="sunky0010" x="80" y="0" width="30" height="35" frameX="0" frameY="-7" frameWidth="39" frameHeight="37" rotated="true" />
+	<SubTexture name="sunky0011" x="38" y="75" width="29" height="18" frameX="0" frameY="-19" frameWidth="39" frameHeight="37"/>
+	<SubTexture name="sunky0012" x="92" y="98" width="18" height="25" frameX="0" frameY="-19" frameWidth="39" frameHeight="37" rotated="true" />
+	<SubTexture name="sunky0013" x="38" y="95" width="25" height="18" frameX="0" frameY="-19" frameWidth="39" frameHeight="37"/>
 </TextureAtlas>

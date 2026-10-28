@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="lordxtransition.png">
-<SubTexture name="p10000" x="1855" y="0" width="596" height="499" frameX="-175" frameY="-104" frameWidth="1000" frameHeight="1000" />
-<SubTexture name="p10001" x="1855" y="499" width="591" height="495" frameX="-177" frameY="-97" frameWidth="1000" frameHeight="1000" />
-<SubTexture name="p10002" x="925" y="775" width="596" height="581" frameX="-175" frameY="-98" frameWidth="1000" frameHeight="1000" />
-<SubTexture name="p20000" x="959" y="0" width="896" height="769" frameX="-45" frameY="-104" frameWidth="1000" frameHeight="1000" />
-<SubTexture name="p20001" x="0" y="775" width="925" height="764" frameX="-44" frameY="-112" frameWidth="1000" frameHeight="1000" />
-<SubTexture name="p20002" x="0" y="0" width="959" height="775" frameX="-43" frameY="-102" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="p10000" x="926" y="1477" width="593" height="498" frameX="-175" frameY="-104" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="p10001" x="0" y="1539" width="590" height="493" frameX="-177" frameY="-98" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="p10002" x="926" y="896" width="595" height="579" frameX="-175" frameY="-98" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="p20000" x="960" y="0" width="768" height="894" frameX="-46" frameY="-104" frameWidth="1000" frameHeight="1000" rotated="true" />
+<SubTexture name="p20001" x="0" y="776" width="924" height="761" frameX="-44" frameY="-112" frameWidth="1000" frameHeight="1000" />
+<SubTexture name="p20002" x="0" y="0" width="958" height="774" frameX="-43" frameY="-102" frameWidth="1000" frameHeight="1000" />
 </TextureAtlas>

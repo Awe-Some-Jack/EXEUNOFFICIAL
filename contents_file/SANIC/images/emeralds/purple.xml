@@ -2,12 +2,12 @@
 <TextureAtlas imagePath="purple.png">
 	<!-- Created with Adobe Animate version 22.0.7.214 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="purple0000" x="50" y="50" width="125" height="125"/>
-	<SubTexture name="purple0001" x="50" y="50" width="125" height="125"/>
-	<SubTexture name="purple0002" x="225" y="50" width="125" height="125"/>
-	<SubTexture name="purple0003" x="225" y="50" width="125" height="125"/>
-	<SubTexture name="purple0004" x="50" y="225" width="125" height="125"/>
-	<SubTexture name="purple0005" x="50" y="225" width="125" height="125"/>
-	<SubTexture name="purple0006" x="225" y="225" width="125" height="125"/>
-	<SubTexture name="purple0007" x="225" y="225" width="125" height="125"/>
+	<SubTexture name="purple0000" x="0" y="0" width="125" height="111" frameX="0" frameY="-14" frameWidth="125" frameHeight="125" />
+	<SubTexture name="purple0001" x="0" y="0" width="125" height="111" frameX="0" frameY="-14" frameWidth="125" frameHeight="125" />
+	<SubTexture name="purple0002" x="0" y="113" width="125" height="111" frameX="0" frameY="-14" frameWidth="125" frameHeight="125" />
+	<SubTexture name="purple0003" x="0" y="113" width="125" height="111" frameX="0" frameY="-14" frameWidth="125" frameHeight="125" />
+	<SubTexture name="purple0004" x="0" y="226" width="125" height="110" frameX="0" frameY="-15" frameWidth="125" frameHeight="125" />
+	<SubTexture name="purple0005" x="0" y="226" width="125" height="110" frameX="0" frameY="-15" frameWidth="125" frameHeight="125" />
+	<SubTexture name="purple0006" x="0" y="338" width="125" height="110" frameX="0" frameY="-15" frameWidth="125" frameHeight="125" />
+	<SubTexture name="purple0007" x="0" y="338" width="125" height="110" frameX="0" frameY="-15" frameWidth="125" frameHeight="125" />
 </TextureAtlas>

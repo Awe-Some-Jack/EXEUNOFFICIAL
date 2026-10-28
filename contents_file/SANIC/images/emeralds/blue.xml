@@ -2,12 +2,12 @@
 <TextureAtlas imagePath="blue.png">
 	<!-- Created with Adobe Animate version 22.0.7.214 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="blue0000" x="50" y="50" width="125" height="125"/>
-	<SubTexture name="blue0001" x="50" y="50" width="125" height="125"/>
-	<SubTexture name="blue0002" x="225" y="50" width="125" height="125"/>
-	<SubTexture name="blue0003" x="225" y="50" width="125" height="125"/>
-	<SubTexture name="blue0004" x="50" y="225" width="125" height="125"/>
-	<SubTexture name="blue0005" x="50" y="225" width="125" height="125"/>
-	<SubTexture name="blue0006" x="225" y="225" width="125" height="125"/>
-	<SubTexture name="blue0007" x="225" y="225" width="125" height="125"/>
+	<SubTexture name="blue0000" x="127" y="0" width="125" height="111" frameX="0" frameY="-14" frameWidth="125" frameHeight="125" />
+	<SubTexture name="blue0001" x="127" y="0" width="125" height="111" frameX="0" frameY="-14" frameWidth="125" frameHeight="125" />
+	<SubTexture name="blue0002" x="0" y="0" width="125" height="112" frameX="0" frameY="-13" frameWidth="125" frameHeight="125" />
+	<SubTexture name="blue0003" x="0" y="0" width="125" height="112" frameX="0" frameY="-13" frameWidth="125" frameHeight="125" />
+	<SubTexture name="blue0004" x="127" y="113" width="125" height="111" frameX="0" frameY="-14" frameWidth="125" frameHeight="125" />
+	<SubTexture name="blue0005" x="127" y="113" width="125" height="111" frameX="0" frameY="-14" frameWidth="125" frameHeight="125" />
+	<SubTexture name="blue0006" x="0" y="114" width="125" height="110" frameX="0" frameY="-15" frameWidth="125" frameHeight="125" />
+	<SubTexture name="blue0007" x="0" y="114" width="125" height="110" frameX="0" frameY="-15" frameWidth="125" frameHeight="125" />
 </TextureAtlas>

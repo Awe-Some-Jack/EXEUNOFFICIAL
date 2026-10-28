@@ -2,20 +2,20 @@
 <TextureAtlas imagePath="lava.png">
 	<!-- Created with Adobe Animate version 24.0.10.14 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 17 instancia 10000" x="40" y="40" width="1793" height="966" frameX="-156" frameY="-157" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10001" x="1908" y="40" width="1816" height="1006" frameX="-136" frameY="-137" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10002" x="3799" y="40" width="1854" height="1044" frameX="-117" frameY="-118" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10003" x="40" y="1159" width="1894" height="1084" frameX="-97" frameY="-98" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10004" x="2009" y="1159" width="1932" height="1122" frameX="-78" frameY="-79" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10005" x="4016" y="1159" width="1972" height="1162" frameX="-58" frameY="-59" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10006" x="40" y="2396" width="2012" height="1202" frameX="-38" frameY="-39" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10007" x="2127" y="2396" width="2049" height="1240" frameX="-20" frameY="-20" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10008" x="40" y="3711" width="2089" height="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10009" x="2204" y="3711" width="1914" height="1104" frameX="-87" frameY="-88" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10010" x="4193" y="3711" width="1878" height="1068" frameX="-105" frameY="-106" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10011" x="40" y="5066" width="1842" height="1032" frameX="-123" frameY="-124" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10012" x="1957" y="5066" width="1815" height="996" frameX="-141" frameY="-142" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10013" x="3847" y="5066" width="1796" height="958" frameX="-160" frameY="-161" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10014" x="40" y="6173" width="1732" height="922" frameX="-178" frameY="-179" frameWidth="2089" frameHeight="1280"/>
-	<SubTexture name="Símbolo 17 instancia 10015" x="1847" y="6173" width="1702" height="886" frameX="-196" frameY="-197" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10000" x="1800" y="4064" width="1773" height="907" frameX="-175" frameY="-191" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10001" x="3632" y="3163" width="1789" height="938" frameX="-159" frameY="-176" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10002" x="0" y="3149" width="1798" height="972" frameX="-142" frameY="-160" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10003" x="3720" y="2160" width="1829" height="1001" frameX="-127" frameY="-147" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10004" x="0" y="1155" width="1860" height="1031" frameX="-111" frameY="-133" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10005" x="3942" y="1097" width="1890" height="1061" frameX="-96" frameY="-119" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10006" x="3942" y="0" width="1924" height="1095" frameX="-79" frameY="-103" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10007" x="1986" y="0" width="1954" height="1123" frameX="-64" frameY="-90" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10008" x="0" y="0" width="1984" height="1153" frameX="-49" frameY="-76" frameWidth="2089" frameHeight="1280" />
+	<SubTexture name="Símbolo 17 instancia 10009" x="1986" y="1125" width="1887" height="1015" frameX="-98" frameY="-139" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10010" x="1862" y="2142" width="1856" height="989" frameX="-113" frameY="-151" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10011" x="0" y="2188" width="1821" height="959" frameX="-131" frameY="-165" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10012" x="1823" y="3133" width="1807" height="929" frameX="-148" frameY="-179" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10013" x="5423" y="3163" width="898" height="1789" frameX="-166" frameY="-194" frameWidth="2089" frameHeight="1280" rotated="true" />
+	<SubTexture name="Símbolo 17 instancia 10014" x="3575" y="4103" width="1719" height="871" frameX="-182" frameY="-207" frameWidth="2089" frameHeight="1280"/>
+	<SubTexture name="Símbolo 17 instancia 10015" x="0" y="4123" width="1697" height="841" frameX="-200" frameY="-221" frameWidth="2089" frameHeight="1280"/>
 </TextureAtlas>

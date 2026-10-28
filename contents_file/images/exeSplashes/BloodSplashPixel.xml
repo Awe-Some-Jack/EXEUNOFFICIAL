@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TextureAtlas imagePath="spritesheet.png">
-	<SubTexture name="Squirt0000" x="0" y="0" width="43" height="29" frameX="0" frameY="0" frameWidth="43" frameHeight="29" />
-	<SubTexture name="Squirt0001" x="0" y="0" width="43" height="29" frameX="0" frameY="0" frameWidth="43" frameHeight="29" />
-	<SubTexture name="Squirt0002" x="43" y="0" width="43" height="29" frameX="0" frameY="0" frameWidth="43" frameHeight="29" />
-	<SubTexture name="Squirt0003" x="43" y="0" width="43" height="29" frameX="0" frameY="0" frameWidth="43" frameHeight="29" />
-	<SubTexture name="Squirt0004" x="86" y="0" width="43" height="29" frameX="0" frameY="0" frameWidth="43" frameHeight="29" />
-	<SubTexture name="Squirt0005" x="86" y="0" width="43" height="29" frameX="0" frameY="0" frameWidth="43" frameHeight="29" />
-	<SubTexture name="Squirt0006" x="0" y="29" width="43" height="29" frameX="0" frameY="0" frameWidth="43" frameHeight="29" />
-	<SubTexture name="Squirt0007" x="0" y="29" width="43" height="29" frameX="0" frameY="0" frameWidth="43" frameHeight="29" />
-	<SubTexture name="Squirt0008" x="43" y="29" width="43" height="29" frameX="0" frameY="0" frameWidth="43" frameHeight="29" />
-	<SubTexture name="Squirt0009" x="43" y="29" width="43" height="29" frameX="0" frameY="0" frameWidth="43" frameHeight="29" />
+	<SubTexture name="Squirt0000" x="43" y="45" width="19" height="12" frameX="-12" frameY="-7" frameWidth="43" frameHeight="29" />
+	<SubTexture name="Squirt0001" x="43" y="45" width="19" height="12" frameX="-12" frameY="-7" frameWidth="43" frameHeight="29" />
+	<SubTexture name="Squirt0002" x="0" y="55" width="37" height="23" frameX="-3" frameY="0" frameWidth="43" frameHeight="29" />
+	<SubTexture name="Squirt0003" x="0" y="55" width="37" height="23" frameX="-3" frameY="0" frameWidth="43" frameHeight="29" />
+	<SubTexture name="Squirt0004" x="0" y="0" width="41" height="26" frameX="-1" frameY="0" frameWidth="43" frameHeight="29" />
+	<SubTexture name="Squirt0005" x="0" y="0" width="41" height="26" frameX="-1" frameY="0" frameWidth="43" frameHeight="29" />
+	<SubTexture name="Squirt0006" x="0" y="28" width="41" height="25" frameX="-1" frameY="-3" frameWidth="43" frameHeight="29" />
+	<SubTexture name="Squirt0007" x="0" y="28" width="41" height="25" frameX="-1" frameY="-3" frameWidth="43" frameHeight="29" />
+	<SubTexture name="Squirt0008" x="43" y="0" width="21" height="43" frameX="0" frameY="-8" frameWidth="43" frameHeight="29" rotated="true" />
+	<SubTexture name="Squirt0009" x="43" y="0" width="21" height="43" frameX="0" frameY="-8" frameWidth="43" frameHeight="29" rotated="true" />
 </TextureAtlas>

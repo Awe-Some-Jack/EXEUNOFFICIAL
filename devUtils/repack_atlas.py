@@ -9,6 +9,8 @@ import sys
 
 from PIL import Image
 
+Image.MAX_IMAGE_PIXELS = None
+
 XML_TAG = re.compile(r'<SubTexture\b(?:"[^"]*"|[^>"])*>')
 JSON_SPRITE = re.compile(
     r'("name"\s*:\s*")([^"]*)("\s*,\s*"x"\s*:\s*)\d+(\s*,\s*"y"\s*:\s*)\d+(\s*,\s*"w"\s*:\s*)\d+(\s*,\s*"h"\s*:\s*)\d+(\s*,\s*"rotated"\s*:\s*)(?:true|false)'
@@ -43,9 +45,13 @@ def set_rotated(tag, rotated):
     return tag
 
 
+MODES = ("bssf", "baf", "bl")
+
+
 class MaxRects:
-    def __init__(self, w, h):
+    def __init__(self, w, h, mode="bssf"):
         self.w, self.h = w, h
+        self.mode = mode
         self.free = [(0, 0, w, h)]
 
     def place(self, rw, rh, allow_rotate=False):
@@ -56,7 +62,12 @@ class MaxRects:
         for fx, fy, fw, fh in self.free:
             for w, h, rot in orients:
                 if w <= fw and h <= fh:
-                    score = (min(fw - w, fh - h), max(fw - w, fh - h), fy, fx, rot)
+                    if self.mode == "baf":
+                        score = (fw * fh - w * h, min(fw - w, fh - h), fy, fx, rot)
+                    elif self.mode == "bl":
+                        score = (fy + h, fx, rot)
+                    else:
+                        score = (min(fw - w, fh - h), max(fw - w, fh - h), fy, fx, rot)
                     if best is None or score < best[0]:
                         best = (score, fx, fy, w, h, rot)
         if best is None:
@@ -110,7 +121,13 @@ SORTS = {
 }
 
 
-def pack(items, gap, max_w, max_h, allow_rotate=False):
+def padded_area(w, h, block):
+    if block <= 1:
+        return w * h
+    return (-(-w // block) * block) * (-(-h // block) * block)
+
+
+def pack(items, gap, max_w, max_h, allow_rotate=False, modes=MODES, block=8):
     sizes = [(k, i, (w + gap, h + gap)) for k, (i, w, h) in enumerate(items)]
     total = sum(w * h for _, _, (w, h) in sizes)
     widest = max(w for _, _, (w, h) in sizes)
@@ -119,80 +136,144 @@ def pack(items, gap, max_w, max_h, allow_rotate=False):
     cands = sorted({min(hi, max(lo, int(lo * f))) for f in (1.0, 1.05, 1.1, 1.2, 1.3, 1.45, 1.6, 1.8, 2.0, 2.5)} | {hi})
     best = None
     for bw in cands:
-        for name, key in SORTS.items():
-            bin_ = MaxRects(bw, max_h + gap)
-            pos = {}
-            ok = True
-            for k, i, (w, h) in sorted(sizes, key=key):
-                p = bin_.place(w, h, allow_rotate)
-                if p is None:
-                    ok = False
-                    break
-                pos[k] = p
-            if not ok:
-                continue
-            uw = max(pos[k][0] + (items[k][2] if pos[k][2] else items[k][1]) for k in pos)
-            uh = max(pos[k][1] + (items[k][1] if pos[k][2] else items[k][2]) for k in pos)
-            score = (uw * uh, max(uw, uh))
-            if best is None or score < best[0]:
-                best = (score, uw, uh, pos)
+        for mode in modes:
+            for name, key in SORTS.items():
+                bin_ = MaxRects(bw, max_h + gap, mode)
+                pos = {}
+                ok = True
+                for k, i, (w, h) in sorted(sizes, key=key):
+                    p = bin_.place(w, h, allow_rotate)
+                    if p is None:
+                        ok = False
+                        break
+                    pos[k] = p
+                if not ok:
+                    continue
+                uw = max(pos[k][0] + (items[k][2] if pos[k][2] else items[k][1]) for k in pos)
+                uh = max(pos[k][1] + (items[k][1] if pos[k][2] else items[k][2]) for k in pos)
+                score = (padded_area(uw, uh, block), uw * uh, max(uw, uh))
+                if best is None or score < best[0]:
+                    best = (score, uw, uh, pos)
     return best
 
 
-def load_xml(path):
+def twin_dir(d):
+    parts = os.path.normpath(d).split(os.sep)
+    for i, part in enumerate(parts):
+        if part.startswith("embedded_"):
+            parts[i] = part[len("embedded_"):]
+            return os.sep.join(parts)
+    return None
+
+
+def locate_image(path, name):
+    base = os.path.dirname(path)
+    dirs = [base]
+    twin = twin_dir(base)
+    if twin:
+        dirs.append(twin)
+    names = [os.path.splitext(os.path.basename(path))[0]]
+    if name:
+        names.insert(0, os.path.splitext(name)[0])
+        for d in dirs:
+            if os.path.exists(os.path.join(d, name)):
+                return os.path.join(d, name)
+    for d in dirs:
+        for n in names:
+            for e in IMAGE_EXTS:
+                if os.path.exists(os.path.join(d, n + e)):
+                    return os.path.join(d, n + e)
+    return os.path.join(base, name) if name else None
+
+
+class FractionalRect(Exception):
+    pass
+
+
+def fmt(value):
+    f = float(value)
+    if abs(f - round(f)) < 1e-4:
+        return str(int(round(f)))
+    return ("%.4f" % f).rstrip("0").rstrip(".")
+
+
+def snap(value):
+    f = float(value)
+    return round(f) if abs(f - round(f)) < 1e-3 else f
+
+
+def shifted(value, delta):
+    f = float(value) - delta
+    return int(f) if f == int(f) else round(f, 4)
+
+
+def load_xml(path, round_frac=True):
     text = open(path, encoding="utf-8").read()
     m = re.search(r'imagePath="([^"]*)"', text)
     if not m:
         return None
-    img = os.path.join(os.path.dirname(path), m.group(1))
-    if not os.path.exists(img):
-        stem = os.path.splitext(path)[0]
-        for e in IMAGE_EXTS:
-            if os.path.exists(stem + e):
-                img = stem + e
-                break
+    img = locate_image(path, m.group(1))
     tags = XML_TAG.findall(text)
     sprites = []
+    expand = {}
     for t in tags:
-        sprites.append((attr(t, "name"), int(attr(t, "x")), int(attr(t, "y")), int(attr(t, "width")), int(attr(t, "height")), attr(t, "rotated") == "true"))
-    return text, img, sprites
+        name = attr(t, "name")
+        x, y, w, h = (snap(attr(t, k)) for k in ("x", "y", "width", "height"))
+        rot = attr(t, "rotated") == "true"
+        if all(float(v) == int(v) for v in (x, y, w, h)):
+            sprites.append((name, int(x), int(y), int(w), int(h), rot))
+            continue
+        if rot or not round_frac:
+            raise FractionalRect(name)
+        nx, ny = math.floor(x + 1e-3), math.floor(y + 1e-3)
+        nr, nb = math.ceil(x + w - 1e-3), math.ceil(y + h - 1e-3)
+        expand[name] = (x - nx, y - ny, w, h)
+        sprites.append((name, nx, ny, nr - nx, nb - ny, rot))
+    return text, img, sprites, expand
 
 
 def load_json(path):
     text = open(path, encoding="utf-8-sig").read()
     data = json.loads(text)
-    img = None
-    meta = data.get("meta", {})
-    if meta.get("image"):
-        img = os.path.join(os.path.dirname(path), meta["image"])
-    if img is None or not os.path.exists(img):
-        stem = os.path.splitext(path)[0]
-        for e in IMAGE_EXTS:
-            if os.path.exists(stem + e):
-                img = stem + e
-                break
+    img = locate_image(path, data.get("meta", {}).get("image"))
     sprites = []
     for s in data["ATLAS"]["SPRITES"]:
         s = s["SPRITE"]
         sprites.append((s["name"], s["x"], s["y"], s["w"], s["h"], bool(s.get("rotated"))))
-    return open(path, encoding="utf-8").read(), img, sprites
+    return open(path, encoding="utf-8").read(), img, sprites, {}
 
 
-def encode(im, path):
+def clear_hidden(im):
+    mask = im.getchannel("A").point(lambda v: 255 if v else 0)
+    return Image.composite(im, Image.new("RGBA", im.size, (0, 0, 0, 0)), mask)
+
+
+def visible_equal(a, b):
+    if a.size != b.size or a.getchannel("A").tobytes() != b.getchannel("A").tobytes():
+        return False
+    return clear_hidden(a).tobytes() == clear_hidden(b).tobytes()
+
+
+def encode(im, path, exact=False):
+    if not exact:
+        im = clear_hidden(im)
     buf = io.BytesIO()
     if path.lower().endswith(".webp"):
-        im.save(buf, "WEBP", lossless=True, quality=100, method=6, exact=True)
+        im.save(buf, "WEBP", lossless=True, quality=100, method=6, exact=exact)
     else:
         im.save(buf, "PNG", optimize=True)
     return buf.getvalue()
 
 
-def process(path, gap, apply, allow_rotate, trim):
+def process(path, gap, apply, allow_rotate, trim, round_frac=True, exact=True, modes=MODES, block=8):
     is_xml = path.lower().endswith(".xml")
-    loaded = load_xml(path) if is_xml else load_json(path)
+    try:
+        loaded = load_xml(path, round_frac) if is_xml else load_json(path)
+    except FractionalRect:
+        return "skip: fractional or rotated-fractional sprite rect (use without --no-round, or re-export with whole-number rects)"
     if not loaded:
         return "skip: not a texture atlas"
-    text, img_path, sprites = loaded
+    text, img_path, sprites, expand = loaded
     if not img_path or not os.path.exists(img_path):
         return "skip: image missing"
     if not sprites:
@@ -254,9 +335,9 @@ def process(path, gap, apply, allow_rotate, trim):
     uniq = list(crops)
     items = [(k, crops[k].width, crops[k].height) for k in uniq]
     max_h = min(H * 2, max(H, 4096))
-    best = pack(items, gap, W, max_h)
+    best = pack(items, gap, W, max_h, False, modes, block)
     if allow_rotate:
-        alt = pack(items, gap, W, max_h, True)
+        alt = pack(items, gap, W, max_h, True, modes, block)
         if alt is not None and (best is None or alt[0] < best[0]):
             best = alt
     if best is None:
@@ -266,7 +347,9 @@ def process(path, gap, apply, allow_rotate, trim):
     info = "%dx%d -> %dx%d (%.1f%%), %d sprites, %d unique" % (orig_w, orig_h, nw, nh, 100.0 * new_area / old_area, len(keys), len(uniq))
     if ntrimmed:
         info += ", %d trimmed" % ntrimmed
-    if new_area >= old_area:
+    if expand:
+        info += ", %d fractional rects rounded out" % len(expand)
+    if padded_area(nw, nh, block) >= padded_area(orig_w, orig_h, block):
         return "keep: " + info
 
     newpos = {}
@@ -292,7 +375,9 @@ def process(path, gap, apply, allow_rotate, trim):
         if got.tobytes() != c.tobytes():
             return "error: pixel verification failed"
 
-    data = encode(out, img_path)
+    data = encode(out, img_path, exact)
+    if not exact and not visible_equal(Image.open(io.BytesIO(data)).convert("RGBA"), out):
+        return "error: encoded image differs from packed image"
     old_bytes = os.path.getsize(img_path)
     info += ", %.0fKB -> %.0fKB" % (old_bytes / 1024, len(data) / 1024)
 
@@ -312,10 +397,18 @@ def process(path, gap, apply, allow_rotate, trim):
                 return t
             x, y, w, h, rot, (tl, tt), (dw, dh), cut = by_name[attr(t, "name")][0]
             t = set_attr(set_attr(set_attr(set_attr(t, "x", x), "y", y), "width", w), "height", h)
-            if cut:
+            exp = expand.get(attr(t, "name"))
+            if exp:
+                dx, dy, ow, oh = exp
+                fx = float(attr(t, "frameX") or 0) + dx - (tl if cut else 0)
+                fy = float(attr(t, "frameY") or 0) + dy - (tt if cut else 0)
+                t = add_attr(add_attr(t, "frameX", fmt(fx)), "frameY", fmt(fy))
+                if attr(t, "frameWidth") is None:
+                    t = add_attr(add_attr(t, "frameWidth", fmt(ow)), "frameHeight", fmt(oh))
+            elif cut:
                 if attr(t, "frameX") is not None:
-                    t = set_attr(t, "frameX", int(attr(t, "frameX")) - tl)
-                    t = set_attr(t, "frameY", int(attr(t, "frameY")) - tt)
+                    t = set_attr(t, "frameX", shifted(attr(t, "frameX"), tl))
+                    t = set_attr(t, "frameY", shifted(attr(t, "frameY"), tt))
                 else:
                     t = add_attr(add_attr(add_attr(add_attr(t, "frameX", -tl), "frameY", -tt), "frameWidth", dw), "frameHeight", dh)
             return set_rotated(t, rot)
@@ -345,12 +438,33 @@ def process(path, gap, apply, allow_rotate, trim):
     return "repacked: " + info
 
 
-def find_atlases(root):
-    for d, _, files in os.walk(root):
-        for f in sorted(files):
-            low = f.lower()
-            if low.endswith(".xml") or (low.startswith("spritemap") and low.endswith(".json")):
-                yield os.path.join(d, f)
+def mirror_root(norm):
+    parts = norm.split(os.sep)
+    for i in range(len(parts)):
+        if parts[i] and not parts[i].startswith("embedded_"):
+            cand = list(parts)
+            cand[i] = "embedded_" + parts[i]
+            path = os.sep.join(cand)
+            if os.path.isdir(path):
+                return path
+    return None
+
+
+def find_atlases(root, only=()):
+    norm = os.path.normpath(root)
+    roots = [norm]
+    mirror = mirror_root(norm)
+    if mirror:
+        roots.append(mirror)
+    for r in roots:
+        for d, _, files in os.walk(r):
+            for f in sorted(files):
+                low = f.lower()
+                if low.endswith(".xml") or (low.startswith("spritemap") and low.endswith(".json")):
+                    rel = os.path.relpath(os.path.join(d, f), r).replace(os.sep, "/")
+                    if only and not any(rel.startswith(o) for o in only):
+                        continue
+                    yield os.path.join(d, f)
 
 
 def main():
@@ -360,18 +474,32 @@ def main():
     ap.add_argument("--gap", type=int, default=2, help="pixels between sprites")
     ap.add_argument("--no-rotate", action="store_true", help="never store sprites rotated 90 degrees")
     ap.add_argument("--no-trim", action="store_true", help="keep transparent borders on XML sprites")
+    ap.add_argument("--clear-hidden-pixels", action="store_true", help="discard color values under fully transparent pixels (smaller files; default keeps them)")
+    ap.add_argument("--block", type=int, default=8, help="round sheet dimensions up to this block size when comparing layouts, to match compressed-texture memory (0 = plain area)")
+    ap.add_argument("--fast", action="store_true", help="try only one placement rule (faster, slightly larger sheets)")
+    ap.add_argument("--no-round", action="store_true", help="skip atlases with fractional sprite rects instead of rounding them out to whole pixels")
+    ap.add_argument("--only", action="append", default=[], help="only atlases whose path (relative to the root) starts with this; repeatable")
+    ap.add_argument("--error-log", default="repack_atlas_errors.log", help="file to write errors to (only created if something fails)")
     args = ap.parse_args()
 
+    errors = []
     saved = 0
-    for path in find_atlases(args.root):
+    for path in find_atlases(args.root, args.only):
         print("... %s" % path)
         sys.stdout.flush()
         try:
-            res = process(path, args.gap, args.apply, not args.no_rotate, not args.no_trim)
+            res = process(path, args.gap, args.apply, not args.no_rotate, not args.no_trim, not args.no_round, not args.clear_hidden_pixels, MODES[:1] if args.fast else MODES, args.block)
         except Exception as e:
             res = "error: %s" % e
         print("%s: %s" % (path, res))
         sys.stdout.flush()
+        if str(res).startswith("error"):
+            errors.append("%s: %s" % (path, res))
+
+    if errors:
+        with open(args.error_log, "w", encoding="utf-8") as fh:
+            fh.write("\n".join(errors) + "\n")
+        print("%d errors written to %s" % (len(errors), args.error_log))
 
 
 if __name__ == "__main__":

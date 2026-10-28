@@ -211,11 +211,7 @@ class InfoBioParallaxState extends MusicBeatState
 		for (renders in data.render)
 		{
 			final basePath = 'assets/exe/parallax/info/' + data.folder + '/' + renders.asset + '.webp';
-			#if (sys && !mobile)
-			final bitmap = sys.FileSystem.exists(basePath) ? openfl.display.BitmapData.fromFile(basePath) : null;
-			#else
 			final bitmap = Paths.getBitmapData(basePath);
-			#end
 
 			if (bitmap != null)
 			{

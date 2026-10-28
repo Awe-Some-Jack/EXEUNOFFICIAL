@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="sonic-jump.png">
-<SubTexture name="jump0000" x="0" y="0" width="38" height="38" frameX="-16" frameY="-16" frameWidth="59" frameHeight="59" />
-<SubTexture name="jump0001" x="38" y="0" width="37" height="38" frameX="-16" frameY="-16" frameWidth="59" frameHeight="59" />
-<SubTexture name="jump0002" x="0" y="38" width="38" height="37" frameX="-16" frameY="-16" frameWidth="59" frameHeight="59" />
-<SubTexture name="jump0003" x="75" y="0" width="37" height="38" frameX="-17" frameY="-16" frameWidth="59" frameHeight="59" />
-<SubTexture name="jump0004" x="38" y="38" width="38" height="37" frameX="-16" frameY="-17" frameWidth="59" frameHeight="59" />
+<SubTexture name="jump0000" x="0" y="0" width="30" height="30" frameX="-16" frameY="-16" frameWidth="59" frameHeight="59" />
+<SubTexture name="jump0001" x="32" y="0" width="29" height="30" frameX="-16" frameY="-16" frameWidth="59" frameHeight="59" />
+<SubTexture name="jump0002" x="31" y="32" width="30" height="29" frameX="-16" frameY="-16" frameWidth="59" frameHeight="59" />
+<SubTexture name="jump0003" x="0" y="32" width="29" height="30" frameX="-17" frameY="-16" frameWidth="59" frameHeight="59" />
+<SubTexture name="jump0004" x="31" y="63" width="30" height="29" frameX="-16" frameY="-17" frameWidth="59" frameHeight="59" />
 </TextureAtlas>

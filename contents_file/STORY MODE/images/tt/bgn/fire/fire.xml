@@ -2,14 +2,14 @@
 <TextureAtlas imagePath="fire.png">
 	<!-- Created with Adobe Animate version 24.0.10.14 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="fuego true instancia 10000" x="100" y="100" width="1192" height="264" frameX="0" frameY="0" frameWidth="1206" frameHeight="266"/>
-	<SubTexture name="fuego true instancia 10001" x="100" y="100" width="1192" height="264" frameX="0" frameY="0" frameWidth="1206" frameHeight="266"/>
-	<SubTexture name="fuego true instancia 10002" x="100" y="464" width="1188" height="258" frameX="-1" frameY="-8" frameWidth="1206" frameHeight="266"/>
-	<SubTexture name="fuego true instancia 10003" x="100" y="464" width="1188" height="258" frameX="-1" frameY="-8" frameWidth="1206" frameHeight="266"/>
-	<SubTexture name="fuego true instancia 10004" x="100" y="822" width="1177" height="266" frameX="-1" frameY="0" frameWidth="1206" frameHeight="266"/>
-	<SubTexture name="fuego true instancia 10005" x="100" y="822" width="1177" height="266" frameX="-1" frameY="0" frameWidth="1206" frameHeight="266"/>
-	<SubTexture name="fuego true instancia 10006" x="100" y="1188" width="1206" height="255" frameX="0" frameY="-10" frameWidth="1206" frameHeight="266"/>
-	<SubTexture name="fuego true instancia 10007" x="100" y="1188" width="1206" height="255" frameX="0" frameY="-10" frameWidth="1206" frameHeight="266"/>
-	<SubTexture name="fuego true instancia 10008" x="100" y="1543" width="1194" height="263" frameX="0" frameY="-2" frameWidth="1206" frameHeight="266"/>
-	<SubTexture name="fuego true instancia 10009" x="100" y="1543" width="1194" height="263" frameX="0" frameY="-2" frameWidth="1206" frameHeight="266"/>
+	<SubTexture name="fuego true instancia 10000" x="1196" y="257" width="8" height="581" frameX="-611" frameY="-256" frameWidth="1206" frameHeight="266" rotated="true" />
+	<SubTexture name="fuego true instancia 10001" x="1196" y="257" width="8" height="581" frameX="-611" frameY="-256" frameWidth="1206" frameHeight="266" rotated="true" />
+	<SubTexture name="fuego true instancia 10002" x="0" y="656" width="818" height="258" frameX="-371" frameY="-8" frameWidth="1206" frameHeight="266"/>
+	<SubTexture name="fuego true instancia 10003" x="0" y="656" width="818" height="258" frameX="-371" frameY="-8" frameWidth="1206" frameHeight="266"/>
+	<SubTexture name="fuego true instancia 10004" x="0" y="522" width="1177" height="132" frameX="-1" frameY="0" frameWidth="1206" frameHeight="266"/>
+	<SubTexture name="fuego true instancia 10005" x="0" y="522" width="1177" height="132" frameX="-1" frameY="0" frameWidth="1206" frameHeight="266"/>
+	<SubTexture name="fuego true instancia 10006" x="0" y="0" width="1206" height="255" frameX="0" frameY="-10" frameWidth="1206" frameHeight="266"/>
+	<SubTexture name="fuego true instancia 10007" x="0" y="0" width="1206" height="255" frameX="0" frameY="-10" frameWidth="1206" frameHeight="266"/>
+	<SubTexture name="fuego true instancia 10008" x="0" y="257" width="1194" height="263" frameX="0" frameY="-2" frameWidth="1206" frameHeight="266"/>
+	<SubTexture name="fuego true instancia 10009" x="0" y="257" width="1194" height="263" frameX="0" frameY="-2" frameWidth="1206" frameHeight="266"/>
 </TextureAtlas>

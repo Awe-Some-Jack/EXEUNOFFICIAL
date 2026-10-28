@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="Badnik_2.webp">
-<SubTexture name="Badnik_20000" x="0" y="0" width="79" height="80" frameX="0" frameY="0" frameWidth="79" frameHeight="80" />
-<SubTexture name="Badnik_20001" x="81" y="0" width="79" height="80" frameX="0" frameY="0" frameWidth="79" frameHeight="80" />
-<SubTexture name="Badnik_20002" x="162" y="0" width="79" height="80" frameX="0" frameY="0" frameWidth="79" frameHeight="80" />
-<SubTexture name="Badnik_20003" x="243" y="0" width="79" height="80" frameX="0" frameY="0" frameWidth="79" frameHeight="80" />
-<SubTexture name="Badnik_20004" x="324" y="0" width="79" height="80" frameX="0" frameY="0" frameWidth="79" frameHeight="80" />
+<SubTexture name="Badnik_20000" x="0" y="0" width="48" height="32" frameX="-15" frameY="-6" frameWidth="79" frameHeight="80" />
+<SubTexture name="Badnik_20001" x="0" y="34" width="48" height="31" frameX="-15" frameY="-7" frameWidth="79" frameHeight="80" />
+<SubTexture name="Badnik_20002" x="0" y="132" width="47" height="28" frameX="-16" frameY="-9" frameWidth="79" frameHeight="80" />
+<SubTexture name="Badnik_20003" x="0" y="100" width="44" height="30" frameX="-18" frameY="-6" frameWidth="79" frameHeight="80" />
+<SubTexture name="Badnik_20004" x="0" y="67" width="47" height="31" frameX="-15" frameY="-6" frameWidth="79" frameHeight="80" />
 </TextureAtlas>

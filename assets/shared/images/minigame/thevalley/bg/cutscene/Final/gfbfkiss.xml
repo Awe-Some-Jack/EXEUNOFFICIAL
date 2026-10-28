@@ -15,10 +15,10 @@
 	<SubTexture name="gfbfkiss0012" x="0" y="96" width="55" height="46" frameX="0" frameY="0" frameWidth="56" frameHeight="46"/>
 	<SubTexture name="gfbfkiss0013" x="0" y="96" width="55" height="46" frameX="0" frameY="0" frameWidth="56" frameHeight="46"/>
 	<SubTexture name="gfbfkiss0014" x="57" y="96" width="46" height="45" frameX="-4" frameY="-1" frameWidth="56" frameHeight="46"/>
-	<SubTexture name="gfbfkiss0015" x="105" y="96" width="42" height="43" frameX="-7" frameY="-3" frameWidth="56" frameHeight="46"/>
-	<SubTexture name="gfbfkiss0016" x="46" y="144" width="42" height="42" frameX="-7" frameY="-4" frameWidth="56" frameHeight="46"/>
-	<SubTexture name="gfbfkiss0017" x="90" y="144" width="43" height="42" frameX="-6" frameY="-4" frameWidth="56" frameHeight="46"/>
-	<SubTexture name="gfbfkiss0018" x="149" y="96" width="43" height="43" frameX="-6" frameY="-3" frameWidth="56" frameHeight="46"/>
-	<SubTexture name="gfbfkiss0019" x="0" y="144" width="44" height="43" frameX="-5" frameY="-3" frameWidth="56" frameHeight="46"/>
-	<SubTexture name="gfbfkiss0020" x="135" y="144" width="44" height="42" frameX="-5" frameY="-4" frameWidth="56" frameHeight="46"/>
+	<SubTexture name="gfbfkiss0015" x="57" y="143" width="42" height="43" frameX="-7" frameY="-3" frameWidth="56" frameHeight="46"/>
+	<SubTexture name="gfbfkiss0016" x="0" y="144" width="42" height="42" frameX="-7" frameY="-4" frameWidth="56" frameHeight="46"/>
+	<SubTexture name="gfbfkiss0017" x="151" y="141" width="43" height="42" frameX="-6" frameY="-4" frameWidth="56" frameHeight="46"/>
+	<SubTexture name="gfbfkiss0018" x="151" y="96" width="43" height="43" frameX="-6" frameY="-3" frameWidth="56" frameHeight="46"/>
+	<SubTexture name="gfbfkiss0019" x="105" y="96" width="44" height="43" frameX="-5" frameY="-3" frameWidth="56" frameHeight="46"/>
+	<SubTexture name="gfbfkiss0020" x="105" y="141" width="44" height="42" frameX="-5" frameY="-4" frameWidth="56" frameHeight="46"/>
 </TextureAtlas>

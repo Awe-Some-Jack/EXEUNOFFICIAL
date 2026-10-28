@@ -2,63 +2,63 @@
 <TextureAtlas imagePath="soink.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="risagameover instancia 10000" x="36" y="36" width="470" height="523"/>
-	<SubTexture name="risagameover instancia 10001" x="526" y="36" width="467" height="520" frameX="0" frameY="-3" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10002" x="1013" y="36" width="422" height="487" frameX="-12" frameY="-36" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10003" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10004" x="36" y="36" width="470" height="523"/>
-	<SubTexture name="risagameover instancia 10005" x="526" y="36" width="467" height="520" frameX="0" frameY="-3" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10006" x="1013" y="36" width="422" height="487" frameX="-12" frameY="-36" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10007" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10008" x="36" y="36" width="470" height="523"/>
-	<SubTexture name="risagameover instancia 10009" x="526" y="36" width="467" height="520" frameX="0" frameY="-3" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10010" x="1013" y="36" width="422" height="487" frameX="-12" frameY="-36" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10011" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10012" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10013" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10014" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10015" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10016" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10017" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10018" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10019" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10020" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10021" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10022" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10023" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10024" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10025" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10026" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10027" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10028" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10029" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10030" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10031" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10032" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10033" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10034" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10035" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10036" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10037" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10038" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10039" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10040" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10041" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10042" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10043" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10044" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10045" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10046" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10047" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10048" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10049" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10050" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10051" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10052" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10053" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10054" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10055" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10056" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="risagameover instancia 10057" x="1455" y="36" width="404" height="433" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523"/>
-	<SubTexture name="uy instancia 10000" x="1879" y="36" width="403" height="433"/>
+	<SubTexture name="risagameover instancia 10000" x="0" y="0" width="522" height="469" frameX="0" frameY="0" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10001" x="524" y="0" width="519" height="466" frameX="0" frameY="-3" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10002" x="1045" y="0" width="486" height="421" frameX="-12" frameY="-36" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10003" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10004" x="0" y="0" width="522" height="469" frameX="0" frameY="0" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10005" x="524" y="0" width="519" height="466" frameX="0" frameY="-3" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10006" x="1045" y="0" width="486" height="421" frameX="-12" frameY="-36" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10007" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10008" x="0" y="0" width="522" height="469" frameX="0" frameY="0" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10009" x="524" y="0" width="519" height="466" frameX="0" frameY="-3" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10010" x="1045" y="0" width="486" height="421" frameX="-12" frameY="-36" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10011" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10012" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10013" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10014" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10015" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10016" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10017" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10018" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10019" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10020" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10021" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10022" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10023" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10024" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10025" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10026" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10027" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10028" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10029" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10030" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10031" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10032" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10033" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10034" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10035" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10036" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10037" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10038" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10039" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10040" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10041" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10042" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10043" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10044" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10045" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10046" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10047" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10048" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10049" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10050" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10051" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10052" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10053" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10054" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10055" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10056" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="risagameover instancia 10057" x="1533" y="0" width="432" height="403" frameX="-13" frameY="-90" frameWidth="470" frameHeight="523" rotated="true" />
+	<SubTexture name="uy instancia 10000" x="1967" y="0" width="432" height="403" frameX="0" frameY="0" frameWidth="403" frameHeight="433" rotated="true" />
 </TextureAtlas>

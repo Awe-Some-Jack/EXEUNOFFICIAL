@@ -2,13 +2,13 @@
 <TextureAtlas imagePath="anto.png">
 	<!-- Created with Adobe Animate version 24.0.10.14 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 9 instancia 10000" x="40" y="40" width="706" height="580"/>
-	<SubTexture name="Símbolo 9 instancia 10001" x="40" y="40" width="706" height="580"/>
-	<SubTexture name="Símbolo 9 instancia 10002" x="821" y="40" width="706" height="580"/>
-	<SubTexture name="Símbolo 9 instancia 10003" x="1602" y="40" width="706" height="580"/>
-	<SubTexture name="Símbolo 9 instancia 10004" x="2383" y="40" width="706" height="580"/>
-	<SubTexture name="Símbolo 9 instancia 10005" x="3164" y="40" width="706" height="580"/>
-	<SubTexture name="Símbolo 9 instancia 10006" x="40" y="695" width="706" height="580"/>
-	<SubTexture name="Símbolo 9 instancia 10007" x="821" y="695" width="706" height="580"/>
-	<SubTexture name="Símbolo 9 instancia 10008" x="40" y="40" width="706" height="580"/>
+	<SubTexture name="Símbolo 9 instancia 10000" x="797" y="870" width="337" height="379" frameX="-187" frameY="-72" frameWidth="706" frameHeight="580" />
+	<SubTexture name="Símbolo 9 instancia 10001" x="797" y="870" width="337" height="379" frameX="-187" frameY="-72" frameWidth="706" frameHeight="580" />
+	<SubTexture name="Símbolo 9 instancia 10002" x="407" y="870" width="388" height="354" frameX="-178" frameY="-63" frameWidth="706" frameHeight="580" rotated="true" />
+	<SubTexture name="Símbolo 9 instancia 10003" x="0" y="868" width="405" height="373" frameX="-169" frameY="-53" frameWidth="706" frameHeight="580" rotated="true" />
+	<SubTexture name="Símbolo 9 instancia 10004" x="0" y="488" width="411" height="378" frameX="-166" frameY="-50" frameWidth="706" frameHeight="580" rotated="true" />
+	<SubTexture name="Símbolo 9 instancia 10005" x="521" y="478" width="424" height="390" frameX="-160" frameY="-43" frameWidth="706" frameHeight="580" rotated="true" />
+	<SubTexture name="Símbolo 9 instancia 10006" x="521" y="0" width="513" height="476" frameX="-117" frameY="0" frameWidth="706" frameHeight="580" rotated="true" />
+	<SubTexture name="Símbolo 9 instancia 10007" x="0" y="0" width="519" height="486" frameX="-112" frameY="0" frameWidth="706" frameHeight="580" rotated="true" />
+	<SubTexture name="Símbolo 9 instancia 10008" x="797" y="870" width="337" height="379" frameX="-187" frameY="-72" frameWidth="706" frameHeight="580" />
 </TextureAtlas>

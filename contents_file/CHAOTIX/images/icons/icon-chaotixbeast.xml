@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="icon-chaotixbeast.png">
 <SubTexture name="icon-chaotixbeast normal0000" x="0" y="0" width="30" height="26" frameX="-33" frameY="-15" frameWidth="104" frameHeight="56" />
-<SubTexture name="icon-chaotixbeast normal0001" x="30" y="0" width="30" height="26" frameX="-33" frameY="-14" frameWidth="104" frameHeight="56" />
-<SubTexture name="icon-chaotixbeast normal0002" x="60" y="52" width="29" height="24" frameX="-34" frameY="-14" frameWidth="104" frameHeight="56" />
-<SubTexture name="icon-chaotixbeast normal0003" x="0" y="52" width="30" height="25" frameX="-34" frameY="-14" frameWidth="104" frameHeight="56" />
-<SubTexture name="icon-chaotixbeast normal0004" x="30" y="52" width="30" height="25" frameX="-34" frameY="-16" frameWidth="104" frameHeight="56" />
-<SubTexture name="icon-chaotixbeast losing0000" x="0" y="26" width="28" height="26" frameX="-6" frameY="-2" frameWidth="39" frameHeight="31" />
-<SubTexture name="icon-chaotixbeast losing0001" x="28" y="26" width="29" height="26" frameX="-6" frameY="-3" frameWidth="39" frameHeight="31" />
-<SubTexture name="icon-chaotixbeast losing0002" x="60" y="26" width="27" height="25" frameX="-5" frameY="-4" frameWidth="39" frameHeight="31" />
-<SubTexture name="icon-chaotixbeast losing0003" x="89" y="24" width="25" height="23" frameX="-6" frameY="-6" frameWidth="39" frameHeight="31" />
-<SubTexture name="icon-chaotixbeast losing0004" x="0" y="77" width="27" height="23" frameX="-7" frameY="-6" frameWidth="39" frameHeight="31" />
-<SubTexture name="icon-chaotixbeast losing0005" x="49" y="77" width="22" height="18" frameX="-8" frameY="-10" frameWidth="39" frameHeight="31" />
-<SubTexture name="icon-chaotixbeast losing0006" x="115" y="0" width="21" height="16" frameX="-9" frameY="-9" frameWidth="39" frameHeight="31" />
-<SubTexture name="icon-chaotixbeast losing0007" x="27" y="77" width="22" height="19" frameX="-7" frameY="-6" frameWidth="39" frameHeight="31" />
-<SubTexture name="icon-chaotixbeast losing0008" x="71" y="77" width="25" height="17" frameX="-5" frameY="-8" frameWidth="39" frameHeight="31" />
-<SubTexture name="icon-chaotixbeast losing0009" x="60" y="0" width="29" height="26" frameX="-6" frameY="-3" frameWidth="39" frameHeight="31" />
-<SubTexture name="icon-chaotixbeast losing0010" x="89" y="0" width="26" height="24" frameX="-6" frameY="-4" frameWidth="39" frameHeight="31" />
-<SubTexture name="icon-chaotixbeast losing0011" x="89" y="47" width="26" height="22" frameX="-7" frameY="-3" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast normal0001" x="32" y="0" width="30" height="26" frameX="-33" frameY="-14" frameWidth="104" frameHeight="56" />
+<SubTexture name="icon-chaotixbeast normal0002" x="94" y="28" width="29" height="24" frameX="-34" frameY="-14" frameWidth="104" frameHeight="56" />
+<SubTexture name="icon-chaotixbeast normal0003" x="0" y="28" width="30" height="25" frameX="-34" frameY="-14" frameWidth="104" frameHeight="56" />
+<SubTexture name="icon-chaotixbeast normal0004" x="32" y="28" width="30" height="25" frameX="-34" frameY="-16" frameWidth="104" frameHeight="56" />
+<SubTexture name="icon-chaotixbeast losing0000" x="64" y="28" width="28" height="26" frameX="-6" frameY="-2" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast losing0001" x="64" y="0" width="29" height="26" frameX="-6" frameY="-3" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast losing0002" x="94" y="54" width="27" height="25" frameX="-5" frameY="-4" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast losing0003" x="57" y="56" width="25" height="23" frameX="-6" frameY="-6" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast losing0004" x="28" y="55" width="27" height="23" frameX="-7" frameY="-6" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast losing0005" x="80" y="81" width="22" height="18" frameX="-8" frameY="-10" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast losing0006" x="104" y="81" width="21" height="16" frameX="-9" frameY="-9" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast losing0007" x="56" y="81" width="22" height="19" frameX="-7" frameY="-6" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast losing0008" x="0" y="81" width="25" height="17" frameX="-5" frameY="-8" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast losing0009" x="95" y="0" width="29" height="26" frameX="-6" frameY="-3" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast losing0010" x="0" y="55" width="26" height="24" frameX="-6" frameY="-4" frameWidth="39" frameHeight="31" />
+<SubTexture name="icon-chaotixbeast losing0011" x="28" y="80" width="26" height="22" frameX="-7" frameY="-3" frameWidth="39" frameHeight="31" />
 </TextureAtlas>

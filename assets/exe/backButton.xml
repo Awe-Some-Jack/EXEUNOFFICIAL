@@ -2,6 +2,6 @@
 <TextureAtlas imagePath="backButton.webp">
 	<!-- Created using the Spritesheet and XML generator -->
 	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
-	<SubTexture name="press0000" x="0" y="0" width="891" height="985" frameX="-301" frameY="-159" frameWidth="1500" frameHeight="1300"/>
-	<SubTexture name="idle0000" x="891" y="0" width="891" height="985" frameX="-301" frameY="-159" frameWidth="1500" frameHeight="1300"/>
+	<SubTexture name="press0000" x="0" y="0" width="887" height="981" frameX="-303" frameY="-161" frameWidth="1500" frameHeight="1300"/>
+	<SubTexture name="idle0000" x="0" y="983" width="887" height="981" frameX="-303" frameY="-161" frameWidth="1500" frameHeight="1300"/>
 </TextureAtlas>

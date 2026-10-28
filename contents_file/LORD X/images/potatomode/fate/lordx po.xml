@@ -2,100 +2,100 @@
 <TextureAtlas imagePath="lordx po.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 101 copia 3 instancia 10000" x="12" y="12" width="274" height="319" frameX="0" frameY="-13" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10001" x="12" y="12" width="274" height="319" frameX="0" frameY="-13" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10002" x="308" y="12" width="248" height="322" frameX="-26" frameY="-10" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10003" x="308" y="12" width="248" height="322" frameX="-26" frameY="-10" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10004" x="578" y="12" width="243" height="319" frameX="-31" frameY="-13" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10005" x="578" y="12" width="243" height="319" frameX="-31" frameY="-13" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10006" x="843" y="12" width="233" height="320" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10007" x="843" y="12" width="233" height="320" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10008" x="1098" y="12" width="234" height="320" frameX="-40" frameY="-12" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10009" x="1354" y="12" width="233" height="320" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10010" x="1354" y="12" width="233" height="320" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10011" x="1354" y="12" width="233" height="320" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10012" x="1354" y="12" width="233" height="320" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10013" x="1354" y="12" width="233" height="320" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10014" x="1609" y="12" width="232" height="320" frameX="-42" frameY="-10" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10015" x="1609" y="12" width="232" height="320" frameX="-42" frameY="-10" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10016" x="1863" y="12" width="229" height="309" frameX="-47" frameY="-10" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10017" x="1863" y="12" width="229" height="309" frameX="-47" frameY="-10" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10018" x="2114" y="12" width="249" height="323" frameX="-30" frameY="0" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10019" x="2385" y="12" width="249" height="322" frameX="-30" frameY="0" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10020" x="2656" y="12" width="260" height="322" frameX="-18" frameY="-1" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10021" x="2938" y="12" width="261" height="322" frameX="-18" frameY="-1" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10022" x="12" y="357" width="262" height="323" frameX="-16" frameY="-1" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 101 copia 3 instancia 10023" x="296" y="357" width="263" height="322" frameX="-16" frameY="-1" frameWidth="279" frameHeight="332"/>
-	<SubTexture name="Símbolo 122 copia instancia 10000" x="581" y="357" width="290" height="305" frameX="-46" frameY="-19" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10001" x="581" y="357" width="290" height="305" frameX="-46" frameY="-19" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10002" x="893" y="357" width="285" height="302" frameX="-46" frameY="-23" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10003" x="893" y="357" width="285" height="302" frameX="-46" frameY="-23" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10004" x="1200" y="357" width="280" height="299" frameX="-46" frameY="-26" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10005" x="1200" y="357" width="280" height="299" frameX="-46" frameY="-26" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10006" x="1502" y="357" width="274" height="298" frameX="-46" frameY="-27" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10007" x="1502" y="357" width="274" height="298" frameX="-46" frameY="-27" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10008" x="1798" y="357" width="274" height="300" frameX="-45" frameY="-25" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10009" x="1798" y="357" width="274" height="300" frameX="-45" frameY="-25" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10010" x="2094" y="357" width="275" height="301" frameX="-45" frameY="-24" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10011" x="2094" y="357" width="275" height="301" frameX="-45" frameY="-24" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10012" x="2094" y="357" width="275" height="301" frameX="-45" frameY="-24" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10013" x="2094" y="357" width="275" height="301" frameX="-45" frameY="-24" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10014" x="2391" y="357" width="272" height="302" frameX="-45" frameY="-23" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10015" x="2391" y="357" width="272" height="302" frameX="-45" frameY="-23" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10016" x="2685" y="357" width="263" height="308" frameX="-30" frameY="-17" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10017" x="2685" y="357" width="263" height="308" frameX="-30" frameY="-17" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10018" x="12" y="702" width="258" height="321" frameX="-8" frameY="-3" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10019" x="292" y="702" width="258" height="320" frameX="-8" frameY="-3" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10020" x="572" y="702" width="261" height="320" frameX="-2" frameY="-1" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10021" x="855" y="702" width="262" height="321" frameX="-2" frameY="-1" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10022" x="1139" y="702" width="262" height="321" frameX="0" frameY="0" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 122 copia instancia 10023" x="1423" y="702" width="263" height="322" frameX="0" frameY="0" frameWidth="336" frameHeight="325"/>
-	<SubTexture name="Símbolo 42 copia 3 instancia 10000" x="1708" y="702" width="263" height="321" frameX="0" frameY="-4" frameWidth="263" frameHeight="326"/>
-	<SubTexture name="Símbolo 42 copia 3 instancia 10001" x="1993" y="702" width="263" height="323" frameX="0" frameY="-3" frameWidth="263" frameHeight="326"/>
-	<SubTexture name="Símbolo 42 copia 3 instancia 10002" x="2278" y="702" width="262" height="323" frameX="-1" frameY="-2" frameWidth="263" frameHeight="326"/>
-	<SubTexture name="Símbolo 42 copia 3 instancia 10003" x="2562" y="702" width="262" height="324" frameX="-1" frameY="-2" frameWidth="263" frameHeight="326"/>
-	<SubTexture name="Símbolo 42 copia 3 instancia 10004" x="2846" y="702" width="262" height="325" frameX="-1" frameY="0" frameWidth="263" frameHeight="326"/>
-	<SubTexture name="Símbolo 42 copia 3 instancia 10005" x="12" y="1049" width="262" height="326" frameX="-1" frameY="0" frameWidth="263" frameHeight="326"/>
-	<SubTexture name="Símbolo 42 copia 3 instancia 10006" x="296" y="1049" width="259" height="323" frameX="-4" frameY="-2" frameWidth="263" frameHeight="326"/>
-	<SubTexture name="Símbolo 42 copia 3 instancia 10007" x="577" y="1049" width="259" height="324" frameX="-4" frameY="-2" frameWidth="263" frameHeight="326"/>
-	<SubTexture name="Símbolo 42 copia 3 instancia 10008" x="858" y="1049" width="260" height="320" frameX="-3" frameY="-5" frameWidth="263" frameHeight="326"/>
-	<SubTexture name="Símbolo 42 copia 3 instancia 10009" x="1140" y="1049" width="260" height="321" frameX="-3" frameY="-5" frameWidth="263" frameHeight="326"/>
-	<SubTexture name="atack instancia 10000" x="1422" y="1049" width="442" height="309" frameX="0" frameY="-17" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="atack instancia 10001" x="1422" y="1049" width="442" height="309" frameX="0" frameY="-17" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="atack instancia 10002" x="1886" y="1049" width="623" height="307" frameX="0" frameY="-19" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="atack instancia 10003" x="1886" y="1049" width="623" height="307" frameX="0" frameY="-19" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="atack instancia 10004" x="2531" y="1049" width="616" height="305" frameX="0" frameY="-21" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="atack instancia 10005" x="2531" y="1049" width="616" height="305" frameX="0" frameY="-21" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="atack instancia 10006" x="12" y="1397" width="642" height="326"/>
-	<SubTexture name="atack instancia 10007" x="12" y="1397" width="642" height="326"/>
-	<SubTexture name="atack instancia 10008" x="676" y="1397" width="639" height="324" frameX="0" frameY="-2" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="atack instancia 10009" x="676" y="1397" width="639" height="324" frameX="0" frameY="-2" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="atack instancia 10010" x="1337" y="1397" width="640" height="322" frameX="0" frameY="-4" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="atack instancia 10011" x="1337" y="1397" width="640" height="322" frameX="0" frameY="-4" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="atack instancia 10012" x="1337" y="1397" width="640" height="322" frameX="0" frameY="-4" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="atack instancia 10013" x="1337" y="1397" width="640" height="322" frameX="0" frameY="-4" frameWidth="642" frameHeight="326"/>
-	<SubTexture name="up copia 7 instancia 10000" x="1999" y="1397" width="224" height="390" frameX="-30" frameY="0" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10001" x="1999" y="1397" width="224" height="390" frameX="-30" frameY="0" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10002" x="2245" y="1397" width="235" height="376" frameX="-28" frameY="-14" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10003" x="2245" y="1397" width="235" height="376" frameX="-28" frameY="-14" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10004" x="2502" y="1397" width="240" height="378" frameX="-22" frameY="-12" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10005" x="2502" y="1397" width="240" height="378" frameX="-22" frameY="-12" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10006" x="2764" y="1397" width="239" height="377" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10007" x="2764" y="1397" width="239" height="377" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10008" x="12" y="1809" width="236" height="377" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10009" x="12" y="1809" width="236" height="377" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10010" x="270" y="1809" width="239" height="377" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10011" x="270" y="1809" width="239" height="377" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10012" x="270" y="1809" width="239" height="377" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10013" x="270" y="1809" width="239" height="377" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10014" x="531" y="1809" width="239" height="376" frameX="-19" frameY="-15" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10015" x="531" y="1809" width="239" height="376" frameX="-19" frameY="-15" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10016" x="792" y="1809" width="243" height="331" frameX="-18" frameY="-63" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10017" x="792" y="1809" width="243" height="331" frameX="-18" frameY="-63" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10018" x="1057" y="1809" width="260" height="326" frameX="-10" frameY="-73" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10019" x="1339" y="1809" width="260" height="325" frameX="-10" frameY="-73" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10020" x="1621" y="1809" width="261" height="323" frameX="-1" frameY="-77" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10021" x="1904" y="1809" width="261" height="322" frameX="-1" frameY="-77" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10022" x="2187" y="1809" width="262" height="322" frameX="0" frameY="-78" frameWidth="270" frameHeight="400"/>
-	<SubTexture name="up copia 7 instancia 10023" x="2471" y="1809" width="263" height="321" frameX="0" frameY="-78" frameWidth="270" frameHeight="400"/>
+	<SubTexture name="Símbolo 101 copia 3 instancia 10000" x="2545" y="309" width="274" height="319" frameX="0" frameY="-13" frameWidth="279" frameHeight="332"/>
+	<SubTexture name="Símbolo 101 copia 3 instancia 10001" x="2545" y="309" width="274" height="319" frameX="0" frameY="-13" frameWidth="279" frameHeight="332"/>
+	<SubTexture name="Símbolo 101 copia 3 instancia 10002" x="324" y="1426" width="322" height="248" frameX="-26" frameY="-10" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10003" x="324" y="1426" width="322" height="248" frameX="-26" frameY="-10" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10004" x="981" y="1487" width="243" height="319" frameX="-31" frameY="-13" frameWidth="279" frameHeight="332"/>
+	<SubTexture name="Símbolo 101 copia 3 instancia 10005" x="981" y="1487" width="243" height="319" frameX="-31" frameY="-13" frameWidth="279" frameHeight="332"/>
+	<SubTexture name="Símbolo 101 copia 3 instancia 10006" x="1135" y="1905" width="320" height="233" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10007" x="1135" y="1905" width="320" height="233" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10008" x="1226" y="1669" width="320" height="234" frameX="-40" frameY="-12" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10009" x="1457" y="1910" width="320" height="233" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10010" x="1457" y="1910" width="320" height="233" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10011" x="1457" y="1910" width="320" height="233" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10012" x="1457" y="1910" width="320" height="233" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10013" x="1457" y="1910" width="320" height="233" frameX="-41" frameY="-12" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10014" x="1779" y="1913" width="320" height="232" frameX="-42" frameY="-10" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10015" x="1779" y="1913" width="320" height="232" frameX="-42" frameY="-10" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10016" x="2101" y="1913" width="309" height="229" frameX="-47" frameY="-10" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10017" x="2101" y="1913" width="309" height="229" frameX="-47" frameY="-10" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10018" x="2205" y="1421" width="323" height="249" frameX="-30" frameY="0" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10019" x="0" y="1426" width="322" height="249" frameX="-30" frameY="0" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10020" x="327" y="1164" width="322" height="260" frameX="-18" frameY="-1" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10021" x="1235" y="1142" width="322" height="261" frameX="-18" frameY="-1" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10022" x="0" y="886" width="323" height="262" frameX="-16" frameY="-1" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 101 copia 3 instancia 10023" x="1720" y="616" width="322" height="263" frameX="-16" frameY="-1" frameWidth="279" frameHeight="332" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10000" x="1088" y="326" width="305" height="290" frameX="-46" frameY="-19" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10001" x="1088" y="326" width="305" height="290" frameX="-46" frameY="-19" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10002" x="1395" y="326" width="302" height="285" frameX="-46" frameY="-23" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10003" x="1395" y="326" width="302" height="285" frameX="-46" frameY="-23" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10004" x="0" y="328" width="299" height="280" frameX="-46" frameY="-26" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10005" x="0" y="328" width="299" height="280" frameX="-46" frameY="-26" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10006" x="0" y="610" width="298" height="274" frameX="-46" frameY="-27" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10007" x="0" y="610" width="298" height="274" frameX="-46" frameY="-27" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10008" x="301" y="605" width="300" height="274" frameX="-45" frameY="-25" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10009" x="301" y="605" width="300" height="274" frameX="-45" frameY="-25" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10010" x="301" y="328" width="301" height="275" frameX="-45" frameY="-24" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10011" x="301" y="328" width="301" height="275" frameX="-45" frameY="-24" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10012" x="301" y="328" width="301" height="275" frameX="-45" frameY="-24" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10013" x="301" y="328" width="301" height="275" frameX="-45" frameY="-24" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10014" x="2552" y="0" width="272" height="302" frameX="-45" frameY="-23" frameWidth="336" frameHeight="325"/>
+	<SubTexture name="Símbolo 122 copia instancia 10015" x="2552" y="0" width="272" height="302" frameX="-45" frameY="-23" frameWidth="336" frameHeight="325"/>
+	<SubTexture name="Símbolo 122 copia instancia 10016" x="926" y="635" width="308" height="263" frameX="-30" frameY="-17" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10017" x="926" y="635" width="308" height="263" frameX="-30" frameY="-17" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10018" x="1560" y="1408" width="321" height="258" frameX="-8" frameY="-3" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10019" x="1883" y="1408" width="320" height="258" frameX="-8" frameY="-3" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10020" x="1883" y="1145" width="320" height="261" frameX="-2" frameY="-1" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10021" x="649" y="900" width="321" height="262" frameX="-2" frameY="-1" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 122 copia instancia 10022" x="2542" y="895" width="262" height="321" frameX="0" frameY="0" frameWidth="336" frameHeight="325"/>
+	<SubTexture name="Símbolo 122 copia instancia 10023" x="2044" y="616" width="322" height="263" frameX="0" frameY="0" frameWidth="336" frameHeight="325" rotated="true" />
+	<SubTexture name="Símbolo 42 copia 3 instancia 10000" x="2368" y="630" width="321" height="263" frameX="0" frameY="-4" frameWidth="263" frameHeight="326" rotated="true" />
+	<SubTexture name="Símbolo 42 copia 3 instancia 10001" x="1395" y="613" width="323" height="263" frameX="0" frameY="-3" frameWidth="263" frameHeight="326" rotated="true" />
+	<SubTexture name="Símbolo 42 copia 3 instancia 10002" x="2217" y="895" width="323" height="262" frameX="-1" frameY="-2" frameWidth="263" frameHeight="326" rotated="true" />
+	<SubTexture name="Símbolo 42 copia 3 instancia 10003" x="1891" y="881" width="324" height="262" frameX="-1" frameY="-2" frameWidth="263" frameHeight="326" rotated="true" />
+	<SubTexture name="Símbolo 42 copia 3 instancia 10004" x="1564" y="881" width="325" height="262" frameX="-1" frameY="0" frameWidth="263" frameHeight="326" rotated="true" />
+	<SubTexture name="Símbolo 42 copia 3 instancia 10005" x="1236" y="878" width="326" height="262" frameX="-1" frameY="0" frameWidth="263" frameHeight="326" rotated="true" />
+	<SubTexture name="Símbolo 42 copia 3 instancia 10006" x="1235" y="1408" width="323" height="259" frameX="-4" frameY="-2" frameWidth="263" frameHeight="326" rotated="true" />
+	<SubTexture name="Símbolo 42 copia 3 instancia 10007" x="2533" y="1218" width="259" height="324" frameX="-4" frameY="-2" frameWidth="263" frameHeight="326"/>
+	<SubTexture name="Símbolo 42 copia 3 instancia 10008" x="913" y="1225" width="320" height="260" frameX="-3" frameY="-5" frameWidth="263" frameHeight="326" rotated="true" />
+	<SubTexture name="Símbolo 42 copia 3 instancia 10009" x="651" y="1164" width="260" height="321" frameX="-3" frameY="-5" frameWidth="263" frameHeight="326"/>
+	<SubTexture name="atack instancia 10000" x="644" y="324" width="442" height="309" frameX="0" frameY="-17" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="atack instancia 10001" x="644" y="324" width="442" height="309" frameX="0" frameY="-17" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="atack instancia 10002" x="1927" y="0" width="623" height="307" frameX="0" frameY="-19" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="atack instancia 10003" x="1927" y="0" width="623" height="307" frameX="0" frameY="-19" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="atack instancia 10004" x="1927" y="309" width="616" height="305" frameX="0" frameY="-21" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="atack instancia 10005" x="1927" y="309" width="616" height="305" frameX="0" frameY="-21" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="atack instancia 10006" x="0" y="0" width="642" height="326"/>
+	<SubTexture name="atack instancia 10007" x="0" y="0" width="642" height="326"/>
+	<SubTexture name="atack instancia 10008" x="1286" y="0" width="639" height="324" frameX="0" frameY="-2" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="atack instancia 10009" x="1286" y="0" width="639" height="324" frameX="0" frameY="-2" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="atack instancia 10010" x="644" y="0" width="640" height="322" frameX="0" frameY="-4" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="atack instancia 10011" x="644" y="0" width="640" height="322" frameX="0" frameY="-4" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="atack instancia 10012" x="644" y="0" width="640" height="322" frameX="0" frameY="-4" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="atack instancia 10013" x="644" y="0" width="640" height="322" frameX="0" frameY="-4" frameWidth="642" frameHeight="326"/>
+	<SubTexture name="up copia 7 instancia 10000" x="2412" y="1913" width="390" height="224" frameX="-30" frameY="0" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10001" x="2412" y="1913" width="390" height="224" frameX="-30" frameY="0" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10002" x="757" y="1808" width="376" height="235" frameX="-28" frameY="-14" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10003" x="757" y="1808" width="376" height="235" frameX="-28" frameY="-14" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10004" x="1560" y="1668" width="378" height="240" frameX="-22" frameY="-12" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10005" x="1560" y="1668" width="378" height="240" frameX="-22" frameY="-12" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10006" x="1940" y="1672" width="377" height="239" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10007" x="1940" y="1672" width="377" height="239" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10008" x="378" y="1732" width="377" height="236" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10009" x="378" y="1732" width="377" height="236" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10010" x="2319" y="1672" width="377" height="239" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10011" x="2319" y="1672" width="377" height="239" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10012" x="2319" y="1672" width="377" height="239" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10013" x="2319" y="1672" width="377" height="239" frameX="-21" frameY="-13" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10014" x="0" y="1677" width="376" height="239" frameX="-19" frameY="-15" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10015" x="0" y="1677" width="376" height="239" frameX="-19" frameY="-15" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10016" x="648" y="1487" width="331" height="243" frameX="-18" frameY="-63" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10017" x="648" y="1487" width="331" height="243" frameX="-18" frameY="-63" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10018" x="2205" y="1159" width="326" height="260" frameX="-10" frameY="-73" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10019" x="0" y="1164" width="325" height="260" frameX="-10" frameY="-73" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10020" x="972" y="900" width="261" height="323" frameX="-1" frameY="-77" frameWidth="270" frameHeight="400"/>
+	<SubTexture name="up copia 7 instancia 10021" x="1559" y="1145" width="322" height="261" frameX="-1" frameY="-77" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10022" x="325" y="900" width="322" height="262" frameX="0" frameY="-78" frameWidth="270" frameHeight="400" rotated="true" />
+	<SubTexture name="up copia 7 instancia 10023" x="603" y="635" width="321" height="263" frameX="0" frameY="-78" frameWidth="270" frameHeight="400" rotated="true" />
 </TextureAtlas>

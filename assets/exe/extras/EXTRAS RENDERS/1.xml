@@ -2,10 +2,10 @@
 <TextureAtlas imagePath="1.webp">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="cutscene instancia 10000" x="40" y="40" width="1462" height="1437"/>
-	<SubTexture name="cutscene instancia 10001" x="40" y="40" width="1462" height="1437"/>
-	<SubTexture name="cutscene instancia 10002" x="1558" y="40" width="1462" height="1437"/>
-	<SubTexture name="cutscene instancia 10003" x="1558" y="40" width="1462" height="1437"/>
-	<SubTexture name="cutscene instancia 10004" x="3076" y="40" width="1462" height="1437"/>
-	<SubTexture name="cutscene instancia 10005" x="3076" y="40" width="1462" height="1437"/>
+	<SubTexture name="cutscene instancia 10000" x="0" y="0" width="1461" height="1436" frameX="0" frameY="0" frameWidth="1462" frameHeight="1437" />
+	<SubTexture name="cutscene instancia 10001" x="0" y="0" width="1461" height="1436" frameX="0" frameY="0" frameWidth="1462" frameHeight="1437" />
+	<SubTexture name="cutscene instancia 10002" x="1463" y="0" width="1461" height="1436" frameX="0" frameY="0" frameWidth="1462" frameHeight="1437" />
+	<SubTexture name="cutscene instancia 10003" x="1463" y="0" width="1461" height="1436" frameX="0" frameY="0" frameWidth="1462" frameHeight="1437" />
+	<SubTexture name="cutscene instancia 10004" x="2926" y="0" width="1461" height="1436" frameX="0" frameY="0" frameWidth="1462" frameHeight="1437" />
+	<SubTexture name="cutscene instancia 10005" x="2926" y="0" width="1461" height="1436" frameX="0" frameY="0" frameWidth="1462" frameHeight="1437" />
 </TextureAtlas>

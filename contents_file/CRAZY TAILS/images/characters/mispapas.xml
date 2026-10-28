@@ -2,18 +2,18 @@
 <TextureAtlas imagePath="mispapas.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 243 instancia 10000" x="36" y="36" width="375" height="567" frameX="-5" frameY="-15" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10001" x="36" y="36" width="375" height="567" frameX="-5" frameY="-15" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10002" x="431" y="36" width="373" height="569" frameX="-5" frameY="-13" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10003" x="431" y="36" width="373" height="569" frameX="-5" frameY="-13" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10004" x="824" y="36" width="378" height="581" frameX="0" frameY="-1" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10005" x="824" y="36" width="378" height="581" frameX="0" frameY="-1" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10006" x="1222" y="36" width="378" height="582" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10007" x="1222" y="36" width="378" height="582" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10008" x="1222" y="36" width="378" height="582" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10009" x="1222" y="36" width="378" height="582" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10010" x="1222" y="36" width="378" height="582" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10011" x="1222" y="36" width="378" height="582" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10012" x="1222" y="36" width="378" height="582" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
-	<SubTexture name="Símbolo 243 instancia 10013" x="1222" y="36" width="378" height="582" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10000" x="0" y="583" width="374" height="566" frameX="-5" frameY="-15" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10001" x="0" y="583" width="374" height="566" frameX="-5" frameY="-15" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10002" x="379" y="582" width="373" height="568" frameX="-5" frameY="-13" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10003" x="379" y="582" width="373" height="568" frameX="-5" frameY="-13" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10004" x="379" y="0" width="378" height="580" frameX="0" frameY="-1" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10005" x="379" y="0" width="378" height="580" frameX="0" frameY="-1" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10006" x="0" y="0" width="377" height="581" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10007" x="0" y="0" width="377" height="581" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10008" x="0" y="0" width="377" height="581" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10009" x="0" y="0" width="377" height="581" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10010" x="0" y="0" width="377" height="581" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10011" x="0" y="0" width="377" height="581" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10012" x="0" y="0" width="377" height="581" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
+	<SubTexture name="Símbolo 243 instancia 10013" x="0" y="0" width="377" height="581" frameX="-1" frameY="0" frameWidth="380" frameHeight="582"/>
 </TextureAtlas>

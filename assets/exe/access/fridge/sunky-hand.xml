@@ -4,25 +4,25 @@
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="sunky hand instancia 10000" x="0" y="0" width="0" height="0" frameX="-697" frameY="290" frameWidth="1680" frameHeight="998"/>
 	<SubTexture name="sunky hand instancia 10001" x="0" y="0" width="0" height="0" frameX="-697" frameY="290" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10002" x="10" y="0" width="499" height="345" frameX="-273" frameY="-653" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10003" x="10" y="0" width="499" height="345" frameX="-273" frameY="-653" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10004" x="519" y="0" width="546" height="414" frameX="-601" frameY="-518" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10005" x="519" y="0" width="546" height="414" frameX="-601" frameY="-518" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10006" x="1075" y="0" width="660" height="499" frameX="-843" frameY="-316" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10007" x="1075" y="0" width="660" height="499" frameX="-843" frameY="-316" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10008" x="1745" y="0" width="924" height="478" frameX="-756" frameY="-376" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10009" x="1745" y="0" width="924" height="478" frameX="-756" frameY="-376" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10010" x="2679" y="0" width="746" height="435" frameX="-896" frameY="-373" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10011" x="0" y="509" width="570" height="422" frameX="-722" frameY="-375" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10012" x="0" y="509" width="570" height="422" frameX="-722" frameY="-375" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10013" x="580" y="509" width="834" height="768" frameX="0" frameY="0" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10014" x="1424" y="509" width="807" height="679" frameX="-45" frameY="-139" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10015" x="1424" y="509" width="807" height="679" frameX="-45" frameY="-139" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10016" x="2241" y="509" width="507" height="814" frameX="-316" frameY="-74" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10017" x="2241" y="509" width="507" height="814" frameX="-316" frameY="-74" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10018" x="2758" y="509" width="394" height="396" frameX="-635" frameY="-521" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10019" x="2758" y="509" width="394" height="396" frameX="-635" frameY="-521" frameWidth="1680" frameHeight="998"/>
-	<SubTexture name="sunky hand instancia 10020" x="0" y="1333" width="404" height="120" frameX="-636" frameY="-684" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10002" x="1515" y="1409" width="499" height="344" frameX="-273" frameY="-654" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10003" x="1515" y="1409" width="499" height="344" frameX="-273" frameY="-654" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10004" x="571" y="1248" width="545" height="413" frameX="-601" frameY="-519" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10005" x="571" y="1248" width="545" height="413" frameX="-601" frameY="-519" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10006" x="1651" y="0" width="498" height="659" frameX="-843" frameY="-317" frameWidth="1680" frameHeight="998" rotated="true" />
+	<SubTexture name="sunky hand instancia 10007" x="1651" y="0" width="498" height="659" frameX="-843" frameY="-317" frameWidth="1680" frameHeight="998" rotated="true" />
+	<SubTexture name="sunky hand instancia 10008" x="808" y="769" width="923" height="477" frameX="-756" frameY="-377" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10009" x="808" y="769" width="923" height="477" frameX="-756" frameY="-377" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10010" x="1733" y="661" width="434" height="746" frameX="-896" frameY="-374" frameWidth="1680" frameHeight="998" rotated="true" />
+	<SubTexture name="sunky hand instancia 10011" x="0" y="1190" width="569" height="421" frameX="-722" frameY="-376" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10012" x="0" y="1190" width="569" height="421" frameX="-722" frameY="-376" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10013" x="816" y="0" width="833" height="767" frameX="0" frameY="-1" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10014" x="0" y="509" width="806" height="679" frameX="-45" frameY="-139" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10015" x="0" y="509" width="806" height="679" frameX="-45" frameY="-139" frameWidth="1680" frameHeight="998"/>
+	<SubTexture name="sunky hand instancia 10016" x="0" y="0" width="814" height="507" frameX="-316" frameY="-74" frameWidth="1680" frameHeight="998" rotated="true" />
+	<SubTexture name="sunky hand instancia 10017" x="0" y="0" width="814" height="507" frameX="-316" frameY="-74" frameWidth="1680" frameHeight="998" rotated="true" />
+	<SubTexture name="sunky hand instancia 10018" x="1118" y="1248" width="395" height="394" frameX="-635" frameY="-522" frameWidth="1680" frameHeight="998" rotated="true" />
+	<SubTexture name="sunky hand instancia 10019" x="1118" y="1248" width="395" height="394" frameX="-635" frameY="-522" frameWidth="1680" frameHeight="998" rotated="true" />
+	<SubTexture name="sunky hand instancia 10020" x="0" y="1613" width="404" height="119" frameX="-636" frameY="-685" frameWidth="1680" frameHeight="998"/>
 	<SubTexture name="sunky hand instancia 10021" x="0" y="0" width="0" height="0" frameX="-697" frameY="290" frameWidth="1680" frameHeight="998"/>
 	<SubTexture name="sunky hand instancia 10022" x="0" y="0" width="0" height="0" frameX="-697" frameY="290" frameWidth="1680" frameHeight="998"/>
 	<SubTexture name="sunky hand instancia 10023" x="0" y="0" width="0" height="0" frameX="-697" frameY="290" frameWidth="1680" frameHeight="998"/>

@@ -1,94 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="jina.png">
-	<SubTexture name="jina0000" x="0" y="0" width="30" height="30" frameX="-31" frameY="-16" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0001" x="31" y="0" width="34" height="44" frameX="-18" frameY="-15" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0002" x="66" y="0" width="34" height="44" frameX="-18" frameY="-15" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0003" x="101" y="0" width="34" height="43" frameX="-20" frameY="-16" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0004" x="136" y="0" width="35" height="46" frameX="-20" frameY="-13" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0005" x="172" y="0" width="35" height="50" frameX="-18" frameY="-9" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0006" x="208" y="0" width="35" height="52" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0007" x="244" y="0" width="34" height="52" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0008" x="279" y="0" width="34" height="52" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0009" x="314" y="0" width="34" height="52" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0010" x="349" y="0" width="34" height="52" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0011" x="349" y="0" width="34" height="52" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0012" x="384" y="0" width="34" height="52" frameX="-29" frameY="-9" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0013" x="419" y="0" width="34" height="52" frameX="-29" frameY="-9" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0014" x="454" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0015" x="494" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0016" x="534" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0017" x="494" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0018" x="454" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0019" x="494" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0020" x="534" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0021" x="494" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0022" x="454" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0023" x="494" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0024" x="534" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0025" x="494" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0026" x="454" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0027" x="574" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0028" x="614" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0029" x="654" y="0" width="39" height="53" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0030" x="694" y="0" width="39" height="51" frameX="-23" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0031" x="734" y="0" width="39" height="50" frameX="-23" frameY="-8" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0032" x="774" y="0" width="39" height="52" frameX="-23" frameY="-6" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0033" x="814" y="0" width="39" height="51" frameX="-23" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0034" x="814" y="0" width="39" height="51" frameX="-23" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0035" x="854" y="0" width="39" height="53" frameX="-27" frameY="-4" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0036" x="894" y="0" width="39" height="53" frameX="-27" frameY="-4" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0037" x="934" y="0" width="39" height="53" frameX="-27" frameY="-4" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0038" x="974" y="0" width="39" height="53" frameX="-27" frameY="-4" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0039" x="0" y="54" width="39" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0040" x="40" y="54" width="39" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0041" x="80" y="54" width="39" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0042" x="120" y="54" width="39" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0043" x="160" y="54" width="39" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0044" x="200" y="54" width="39" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0045" x="240" y="54" width="40" height="53" frameX="-15" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0046" x="281" y="54" width="37" height="53" frameX="-14" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0047" x="319" y="54" width="40" height="53" frameX="-15" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0048" x="360" y="54" width="39" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0049" x="400" y="54" width="40" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0050" x="441" y="54" width="40" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0051" x="482" y="54" width="40" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0052" x="482" y="54" width="40" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0053" x="482" y="54" width="40" height="53" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0054" x="523" y="54" width="39" height="50" frameX="-27" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0055" x="563" y="54" width="40" height="48" frameX="-27" frameY="-9" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0056" x="604" y="54" width="39" height="52" frameX="-27" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0057" x="644" y="54" width="34" height="52" frameX="-29" frameY="-10" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0058" x="679" y="54" width="34" height="52" frameX="-29" frameY="-10" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0059" x="714" y="54" width="33" height="52" frameX="-30" frameY="-10" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0060" x="714" y="54" width="33" height="52" frameX="-30" frameY="-10" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0061" x="748" y="54" width="33" height="52" frameX="-30" frameY="-10" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0062" x="782" y="54" width="34" height="52" frameX="-29" frameY="-10" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0063" x="817" y="54" width="40" height="53" frameX="-21" frameY="-9" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0064" x="858" y="54" width="40" height="53" frameX="-21" frameY="-9" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0065" x="899" y="54" width="40" height="53" frameX="-21" frameY="-9" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0066" x="940" y="54" width="39" height="53" frameX="-23" frameY="-9" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0067" x="980" y="54" width="39" height="49" frameX="-23" frameY="-13" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0068" x="980" y="54" width="39" height="49" frameX="-23" frameY="-13" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0069" x="0" y="108" width="39" height="51" frameX="-23" frameY="-11" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0070" x="40" y="108" width="34" height="52" frameX="-29" frameY="-10" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0071" x="75" y="108" width="34" height="52" frameX="-13" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0072" x="110" y="108" width="34" height="52" frameX="-11" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0073" x="145" y="108" width="34" height="52" frameX="-11" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0074" x="180" y="108" width="34" height="52" frameX="-11" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0075" x="215" y="108" width="34" height="52" frameX="-12" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0076" x="250" y="108" width="34" height="52" frameX="-14" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0077" x="285" y="108" width="34" height="52" frameX="-16" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0078" x="320" y="108" width="34" height="52" frameX="-15" frameY="-5" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0079" x="355" y="108" width="40" height="51" frameX="-14" frameY="-8" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0080" x="396" y="108" width="40" height="53" frameX="-14" frameY="-6" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0081" x="437" y="108" width="34" height="52" frameX="-15" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0082" x="472" y="108" width="34" height="52" frameX="-14" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0083" x="507" y="108" width="34" height="52" frameX="-14" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0084" x="542" y="108" width="34" height="52" frameX="-14" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0085" x="577" y="108" width="34" height="52" frameX="-14" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0086" x="612" y="108" width="34" height="52" frameX="-14" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0087" x="647" y="108" width="35" height="52" frameX="-15" frameY="-7" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0088" x="683" y="108" width="35" height="50" frameX="-16" frameY="-9" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0089" x="719" y="108" width="35" height="43" frameX="-18" frameY="-16" frameWidth="93" frameHeight="67"/>
-	<SubTexture name="jina0090" x="755" y="108" width="35" height="45" frameX="-18" frameY="-14" frameWidth="93" frameHeight="67"/>
+	<SubTexture name="jina0000" x="464" y="124" width="30" height="30" frameX="-31" frameY="-16" frameWidth="93" frameHeight="67"/>
+	<SubTexture name="jina0001" x="432" y="273" width="44" height="34" frameX="-18" frameY="-15" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0002" x="54" y="274" width="44" height="34" frameX="-18" frameY="-15" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0003" x="100" y="274" width="43" height="34" frameX="-20" frameY="-16" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0004" x="196" y="165" width="46" height="35" frameX="-20" frameY="-13" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0005" x="92" y="165" width="50" height="35" frameX="-18" frameY="-9" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0006" x="55" y="138" width="35" height="52" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67"/>
+	<SubTexture name="jina0007" x="336" y="165" width="52" height="34" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0008" x="390" y="165" width="52" height="34" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0009" x="444" y="165" width="52" height="34" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0010" x="0" y="201" width="52" height="34" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0011" x="0" y="201" width="52" height="34" frameX="-17" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0012" x="336" y="201" width="52" height="34" frameX="-29" frameY="-9" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0013" x="390" y="201" width="52" height="34" frameX="-29" frameY="-9" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0014" x="103" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0015" x="158" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0016" x="213" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0017" x="158" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0018" x="103" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0019" x="158" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0020" x="213" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0021" x="158" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0022" x="103" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0023" x="158" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0024" x="213" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0025" x="158" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0026" x="103" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0027" x="268" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0028" x="323" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0029" x="378" y="42" width="53" height="39" frameX="-23" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0030" x="150" y="124" width="51" height="39" frameX="-23" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0031" x="309" y="124" width="50" height="39" frameX="-23" frameY="-8" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0032" x="55" y="84" width="39" height="52" frameX="-23" frameY="-6" frameWidth="93" frameHeight="67"/>
+	<SubTexture name="jina0033" x="203" y="124" width="51" height="39" frameX="-23" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0034" x="203" y="124" width="51" height="39" frameX="-23" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0035" x="433" y="42" width="53" height="39" frameX="-27" frameY="-4" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0036" x="268" y="42" width="53" height="39" frameX="-27" frameY="-4" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0037" x="323" y="42" width="53" height="39" frameX="-27" frameY="-4" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0038" x="378" y="42" width="53" height="39" frameX="-27" frameY="-4" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0039" x="103" y="83" width="53" height="39" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0040" x="158" y="83" width="53" height="39" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0041" x="213" y="83" width="53" height="39" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0042" x="268" y="83" width="53" height="39" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0043" x="323" y="83" width="53" height="39" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0044" x="378" y="83" width="53" height="39" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0045" x="0" y="0" width="53" height="40" frameX="-15" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0046" x="0" y="125" width="53" height="37" frameX="-14" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0047" x="55" y="0" width="53" height="40" frameX="-15" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0048" x="433" y="83" width="53" height="39" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0049" x="110" y="0" width="53" height="40" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0050" x="165" y="0" width="53" height="40" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0051" x="220" y="0" width="53" height="40" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0052" x="220" y="0" width="53" height="40" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0053" x="220" y="0" width="53" height="40" frameX="-16" frameY="-3" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0054" x="361" y="124" width="50" height="39" frameX="-27" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0055" x="53" y="42" width="48" height="40" frameX="-27" frameY="-9" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0056" x="96" y="124" width="52" height="39" frameX="-27" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0057" x="444" y="201" width="52" height="34" frameX="-29" frameY="-10" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0058" x="54" y="202" width="52" height="34" frameX="-29" frameY="-10" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0059" x="145" y="274" width="52" height="33" frameX="-30" frameY="-10" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0060" x="145" y="274" width="52" height="33" frameX="-30" frameY="-10" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0061" x="199" y="274" width="52" height="33" frameX="-30" frameY="-10" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0062" x="108" y="202" width="52" height="34" frameX="-29" frameY="-10" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0063" x="275" y="0" width="53" height="40" frameX="-21" frameY="-9" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0064" x="330" y="0" width="53" height="40" frameX="-21" frameY="-9" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0065" x="385" y="0" width="53" height="40" frameX="-21" frameY="-9" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0066" x="0" y="84" width="53" height="39" frameX="-23" frameY="-9" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0067" x="413" y="124" width="49" height="39" frameX="-23" frameY="-13" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0068" x="413" y="124" width="49" height="39" frameX="-23" frameY="-13" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0069" x="256" y="124" width="51" height="39" frameX="-23" frameY="-11" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0070" x="162" y="202" width="52" height="34" frameX="-29" frameY="-10" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0071" x="216" y="202" width="52" height="34" frameX="-13" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0072" x="270" y="202" width="52" height="34" frameX="-11" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0073" x="0" y="237" width="52" height="34" frameX="-11" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0074" x="324" y="237" width="52" height="34" frameX="-11" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0075" x="378" y="237" width="52" height="34" frameX="-12" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0076" x="432" y="237" width="52" height="34" frameX="-14" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0077" x="54" y="238" width="52" height="34" frameX="-16" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0078" x="108" y="238" width="52" height="34" frameX="-15" frameY="-5" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0079" x="0" y="42" width="51" height="40" frameX="-14" frameY="-8" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0080" x="440" y="0" width="53" height="40" frameX="-14" frameY="-6" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0081" x="162" y="238" width="52" height="34" frameX="-15" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0082" x="216" y="238" width="52" height="34" frameX="-14" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0083" x="270" y="238" width="52" height="34" frameX="-14" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0084" x="0" y="273" width="52" height="34" frameX="-14" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0085" x="324" y="273" width="52" height="34" frameX="-14" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0086" x="378" y="273" width="52" height="34" frameX="-14" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0087" x="0" y="164" width="52" height="35" frameX="-15" frameY="-7" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0088" x="144" y="165" width="50" height="35" frameX="-16" frameY="-9" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0089" x="291" y="165" width="43" height="35" frameX="-18" frameY="-16" frameWidth="93" frameHeight="67" rotated="true" />
+	<SubTexture name="jina0090" x="244" y="165" width="45" height="35" frameX="-18" frameY="-14" frameWidth="93" frameHeight="67" rotated="true" />
 </TextureAtlas>

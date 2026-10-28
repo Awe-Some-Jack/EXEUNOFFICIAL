@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="faketotem.png">
-<SubTexture name="faketotem idle0000" x="0" y="0" width="26" height="65" frameX="-33" frameY="0" frameWidth="93" frameHeight="55" />
-<SubTexture name="faketotem press0000" x="26" y="0" width="33" height="65" frameX="-29" frameY="0" frameWidth="93" frameHeight="55" />
-<SubTexture name="faketotem press0001" x="59" y="0" width="40" height="63" frameX="-26" frameY="-2" frameWidth="93" frameHeight="55" />
-<SubTexture name="faketotem press0002" x="99" y="0" width="48" height="54" frameX="-26" frameY="-11" frameWidth="93" frameHeight="55" />
-<SubTexture name="faketotem press0003" x="0" y="65" width="66" height="47" frameX="-15" frameY="-18" frameWidth="93" frameHeight="55" />
-<SubTexture name="faketotem press0004" x="66" y="65" width="74" height="43" frameX="-11" frameY="-22" frameWidth="93" frameHeight="55" />
-<SubTexture name="faketotem press0005" x="147" y="0" width="82" height="38" frameX="-6" frameY="-27" frameWidth="93" frameHeight="55" />
-<SubTexture name="faketotem press0006" x="0" y="112" width="88" height="38" frameX="-4" frameY="-27" frameWidth="93" frameHeight="55" />
-<SubTexture name="faketotem press0007" x="88" y="112" width="93" height="38" frameX="-3" frameY="-27" frameWidth="93" frameHeight="55" />
-<SubTexture name="faketotem press0008" x="0" y="150" width="100" height="38" frameX="0" frameY="-27" frameWidth="93" frameHeight="55" />
-<SubTexture name="faketotem press0009" x="100" y="150" width="102" height="38" frameX="0" frameY="-27" frameWidth="93" frameHeight="55" />
-<SubTexture name="faketotem fake0000" x="0" y="188" width="103" height="38" frameX="0" frameY="-27" frameWidth="93" frameHeight="55" />
+<SubTexture name="faketotem idle0000" x="0" y="159" width="55" height="16" frameX="-33" frameY="0" frameWidth="93" frameHeight="55" rotated="true" />
+<SubTexture name="faketotem press0000" x="104" y="152" width="55" height="23" frameX="-29" frameY="0" frameWidth="93" frameHeight="55" rotated="true" />
+<SubTexture name="faketotem press0001" x="104" y="120" width="53" height="30" frameX="-26" frameY="-2" frameWidth="93" frameHeight="55" rotated="true" />
+<SubTexture name="faketotem press0002" x="58" y="120" width="44" height="38" frameX="-26" frameY="-11" frameWidth="93" frameHeight="55" rotated="true" />
+<SubTexture name="faketotem press0003" x="0" y="120" width="56" height="37" frameX="-15" frameY="-18" frameWidth="93" frameHeight="55" />
+<SubTexture name="faketotem press0004" x="92" y="85" width="64" height="33" frameX="-11" frameY="-22" frameWidth="93" frameHeight="55" />
+<SubTexture name="faketotem press0005" x="0" y="90" width="72" height="28" frameX="-6" frameY="-27" frameWidth="93" frameHeight="55" />
+<SubTexture name="faketotem press0006" x="125" y="0" width="28" height="78" frameX="-4" frameY="-27" frameWidth="93" frameHeight="55" rotated="true" />
+<SubTexture name="faketotem press0007" x="95" y="0" width="28" height="83" frameX="-3" frameY="-27" frameWidth="93" frameHeight="55" rotated="true" />
+<SubTexture name="faketotem press0008" x="0" y="60" width="90" height="28" frameX="0" frameY="-27" frameWidth="93" frameHeight="55" />
+<SubTexture name="faketotem press0009" x="0" y="30" width="92" height="28" frameX="0" frameY="-27" frameWidth="93" frameHeight="55" />
+<SubTexture name="faketotem fake0000" x="0" y="0" width="93" height="28" frameX="0" frameY="-27" frameWidth="93" frameHeight="55" />
 </TextureAtlas>

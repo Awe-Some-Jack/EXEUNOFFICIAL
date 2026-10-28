@@ -2,12 +2,12 @@
 <TextureAtlas imagePath="anto oscuridad.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 1 instancia 10000" x="58" y="58" width="1111" height="1110"/>
-	<SubTexture name="Símbolo 1 instancia 10001" x="1227" y="58" width="1111" height="1110"/>
-	<SubTexture name="Símbolo 1 instancia 10002" x="1227" y="58" width="1111" height="1110"/>
-	<SubTexture name="Símbolo 1 instancia 10003" x="2396" y="58" width="1111" height="1110"/>
-	<SubTexture name="Símbolo 1 instancia 10004" x="58" y="1226" width="1111" height="1110"/>
-	<SubTexture name="Símbolo 1 instancia 10005" x="1227" y="1226" width="1111" height="1110"/>
-	<SubTexture name="Símbolo 1 instancia 10006" x="2396" y="1226" width="1111" height="1110"/>
-	<SubTexture name="Símbolo 1 instancia 10007" x="58" y="2394" width="1111" height="1110"/>
+	<SubTexture name="Símbolo 1 instancia 10000" x="514" y="0" width="573" height="739" frameX="-173" frameY="-139" frameWidth="1111" frameHeight="1110" />
+	<SubTexture name="Símbolo 1 instancia 10001" x="0" y="0" width="512" height="776" frameX="-224" frameY="-102" frameWidth="1111" frameHeight="1110" />
+	<SubTexture name="Símbolo 1 instancia 10002" x="0" y="0" width="512" height="776" frameX="-224" frameY="-102" frameWidth="1111" frameHeight="1110" />
+	<SubTexture name="Símbolo 1 instancia 10003" x="3241" y="0" width="520" height="691" frameX="-216" frameY="-187" frameWidth="1111" frameHeight="1110" />
+	<SubTexture name="Símbolo 1 instancia 10004" x="2716" y="0" width="523" height="697" frameX="-213" frameY="-182" frameWidth="1111" frameHeight="1110" />
+	<SubTexture name="Símbolo 1 instancia 10005" x="2187" y="0" width="527" height="701" frameX="-209" frameY="-178" frameWidth="1111" frameHeight="1110" />
+	<SubTexture name="Símbolo 1 instancia 10006" x="1656" y="0" width="529" height="705" frameX="-207" frameY="-174" frameWidth="1111" frameHeight="1110" />
+	<SubTexture name="Símbolo 1 instancia 10007" x="1089" y="0" width="565" height="735" frameX="-177" frameY="-143" frameWidth="1111" frameHeight="1110" />
 </TextureAtlas>

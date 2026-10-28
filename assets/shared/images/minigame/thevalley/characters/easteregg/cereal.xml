@@ -4,5 +4,5 @@
 	<SubTexture name="cereal loop0001" x="14" y="0" width="12" height="81" frameX="-3" frameY="-13" frameWidth="16" frameHeight="96"/>
 	<SubTexture name="cereal loop0002" x="28" y="0" width="11" height="81" frameX="-3" frameY="-15" frameWidth="16" frameHeight="96"/>
 	<SubTexture name="cereal end0000" x="41" y="0" width="9" height="59" frameX="-4" frameY="-35" frameWidth="16" frameHeight="96"/>
-	<SubTexture name="cereal end0001" x="52" y="0" width="9" height="14" frameX="-4" frameY="-82" frameWidth="16" frameHeight="96"/>
+	<SubTexture name="cereal end0001" x="41" y="61" width="9" height="14" frameX="-4" frameY="-82" frameWidth="16" frameHeight="96"/>
 </TextureAtlas>

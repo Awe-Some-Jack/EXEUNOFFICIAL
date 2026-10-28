@@ -2,19 +2,19 @@
 <TextureAtlas imagePath="sol rojo.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="sun instancia 10000" x="36" y="36" width="606" height="244" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10001" x="36" y="36" width="606" height="244" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10002" x="36" y="36" width="606" height="244" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10003" x="36" y="36" width="606" height="244" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10004" x="36" y="36" width="606" height="244" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10005" x="36" y="300" width="606" height="249" frameX="0" frameY="0" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10006" x="36" y="300" width="606" height="249" frameX="0" frameY="0" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10007" x="36" y="300" width="606" height="249" frameX="0" frameY="0" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10008" x="36" y="300" width="606" height="249" frameX="0" frameY="0" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10009" x="36" y="300" width="606" height="249" frameX="0" frameY="0" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10010" x="36" y="569" width="606" height="254" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10011" x="36" y="569" width="606" height="254" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10012" x="36" y="569" width="606" height="254" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10013" x="36" y="569" width="606" height="254" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
-	<SubTexture name="sun instancia 10014" x="36" y="569" width="606" height="254" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10000" x="0" y="505" width="606" height="243" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10001" x="0" y="505" width="606" height="243" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10002" x="0" y="505" width="606" height="243" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10003" x="0" y="505" width="606" height="243" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10004" x="0" y="505" width="606" height="243" frameX="0" frameY="-1" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10005" x="0" y="255" width="605" height="248" frameX="-1" frameY="0" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10006" x="0" y="255" width="605" height="248" frameX="-1" frameY="0" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10007" x="0" y="255" width="605" height="248" frameX="-1" frameY="0" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10008" x="0" y="255" width="605" height="248" frameX="-1" frameY="0" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10009" x="0" y="255" width="605" height="248" frameX="-1" frameY="0" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10010" x="0" y="0" width="605" height="253" frameX="-1" frameY="-1" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10011" x="0" y="0" width="605" height="253" frameX="-1" frameY="-1" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10012" x="0" y="0" width="605" height="253" frameX="-1" frameY="-1" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10013" x="0" y="0" width="605" height="253" frameX="-1" frameY="-1" frameWidth="606" frameHeight="255"/>
+	<SubTexture name="sun instancia 10014" x="0" y="0" width="605" height="253" frameX="-1" frameY="-1" frameWidth="606" frameHeight="255"/>
 </TextureAtlas>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="Burned_Box.webp">
-<SubTexture name="Burned_Box0000" x="0" y="0" width="200" height="100" frameX="0" frameY="0" frameWidth="200" frameHeight="100" />
-<SubTexture name="Burned_Box0001" x="202" y="0" width="200" height="100" frameX="0" frameY="0" frameWidth="200" frameHeight="100" />
-<SubTexture name="Burned_Box0002" x="404" y="0" width="200" height="100" frameX="0" frameY="0" frameWidth="200" frameHeight="100" />
-<SubTexture name="Burned_Box0003" x="606" y="0" width="200" height="100" frameX="0" frameY="0" frameWidth="200" frameHeight="100" />
+<SubTexture name="Burned_Box0000" x="0" y="31" width="94" height="27" frameX="-52" frameY="-53" frameWidth="200" frameHeight="100" />
+<SubTexture name="Burned_Box0001" x="0" y="0" width="94" height="29" frameX="-52" frameY="-51" frameWidth="200" frameHeight="100" />
+<SubTexture name="Burned_Box0002" x="0" y="89" width="94" height="26" frameX="-52" frameY="-54" frameWidth="200" frameHeight="100" />
+<SubTexture name="Burned_Box0003" x="0" y="60" width="94" height="27" frameX="-52" frameY="-53" frameWidth="200" frameHeight="100" />
 </TextureAtlas>

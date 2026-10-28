@@ -2,70 +2,70 @@
 <TextureAtlas imagePath="milk trasition.png">
 	<!-- Created with Adobe Animate version 22.0.7.214 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="milk falls0000" x="10" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0001" x="10" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0002" x="980" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0003" x="980" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0004" x="1950" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0005" x="1950" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0006" x="2920" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0007" x="2920" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0008" x="3890" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0009" x="4860" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0010" x="5830" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0011" x="5830" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0012" x="6800" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0013" x="6800" y="10" width="960" height="720"/>
-	<SubTexture name="milk falls0014" x="10" y="740" width="960" height="720"/>
-	<SubTexture name="milk falls0015" x="10" y="740" width="960" height="720"/>
-	<SubTexture name="milk falls0016" x="980" y="740" width="960" height="720"/>
-	<SubTexture name="milk falls0017" x="980" y="740" width="960" height="720"/>
-	<SubTexture name="milk falls0018" x="1950" y="740" width="960" height="720"/>
-	<SubTexture name="milk falls0019" x="1950" y="740" width="960" height="720"/>
-	<SubTexture name="milk falls0020" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk falls0021" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk go0000" x="3890" y="740" width="960" height="720"/>
-	<SubTexture name="milk go0001" x="3890" y="740" width="960" height="720"/>
-	<SubTexture name="milk go0002" x="4860" y="740" width="960" height="720"/>
-	<SubTexture name="milk go0003" x="4860" y="740" width="960" height="720"/>
-	<SubTexture name="milk go0004" x="5830" y="740" width="960" height="720"/>
-	<SubTexture name="milk go0005" x="6800" y="740" width="960" height="720"/>
-	<SubTexture name="milk go0006" x="10" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0007" x="980" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0008" x="980" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0009" x="1950" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0010" x="1950" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0011" x="2920" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0012" x="2920" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0013" x="3890" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0014" x="3890" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0015" x="4860" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0016" x="4860" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0017" x="5830" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0018" x="5830" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0019" x="5830" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0020" x="5830" y="1470" width="960" height="720"/>
-	<SubTexture name="milk go0021" x="5830" y="1470" width="960" height="720"/>
-	<SubTexture name="milk static0000" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0001" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0002" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0003" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0004" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0005" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0006" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0007" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0008" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0009" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0010" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0011" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0012" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0013" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0014" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0015" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0016" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0017" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0018" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0019" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0020" x="2920" y="740" width="960" height="720"/>
-	<SubTexture name="milk static0021" x="2920" y="740" width="960" height="720"/>
+	<SubTexture name="milk falls0000" x="3189" y="0" width="22" height="21" frameX="-456" frameY="0" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk falls0001" x="3189" y="0" width="22" height="21" frameX="-456" frameY="0" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk falls0002" x="3053" y="1090" width="82" height="194" frameX="-437" frameY="0" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk falls0003" x="3053" y="1090" width="82" height="194" frameX="-437" frameY="0" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk falls0004" x="2886" y="962" width="165" height="444" frameX="-389" frameY="0" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk falls0005" x="2886" y="962" width="165" height="444" frameX="-389" frameY="0" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk falls0006" x="2886" y="0" width="162" height="684" frameX="-377" frameY="0" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk falls0007" x="2886" y="0" width="162" height="684" frameX="-377" frameY="0" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk falls0008" x="1924" y="2166" width="720" height="670" frameX="-120" frameY="0" frameWidth="960" frameHeight="720" rotated="true" />
+	<SubTexture name="milk falls0009" x="1924" y="1444" width="890" height="720" frameX="0" frameY="0" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk falls0010" x="0" y="0" width="960" height="720"/>
+	<SubTexture name="milk falls0011" x="0" y="0" width="960" height="720"/>
+	<SubTexture name="milk falls0012" x="962" y="0" width="960" height="720"/>
+	<SubTexture name="milk falls0013" x="962" y="0" width="960" height="720"/>
+	<SubTexture name="milk falls0014" x="1924" y="0" width="960" height="720"/>
+	<SubTexture name="milk falls0015" x="1924" y="0" width="960" height="720"/>
+	<SubTexture name="milk falls0016" x="0" y="722" width="960" height="720"/>
+	<SubTexture name="milk falls0017" x="0" y="722" width="960" height="720"/>
+	<SubTexture name="milk falls0018" x="962" y="722" width="960" height="720"/>
+	<SubTexture name="milk falls0019" x="962" y="722" width="960" height="720"/>
+	<SubTexture name="milk falls0020" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk falls0021" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk go0000" x="0" y="1444" width="960" height="720"/>
+	<SubTexture name="milk go0001" x="0" y="1444" width="960" height="720"/>
+	<SubTexture name="milk go0002" x="0" y="2166" width="960" height="646" frameX="0" frameY="-74" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk go0003" x="0" y="2166" width="960" height="646" frameX="0" frameY="-74" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk go0004" x="962" y="2166" width="960" height="604" frameX="0" frameY="-116" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk go0005" x="2816" y="1444" width="378" height="960" frameX="0" frameY="-342" frameWidth="960" frameHeight="720" rotated="true" />
+	<SubTexture name="milk go0006" x="3050" y="0" width="114" height="960" frameX="0" frameY="-606" frameWidth="960" frameHeight="720" rotated="true" />
+	<SubTexture name="milk go0007" x="3166" y="0" width="21" height="960" frameX="0" frameY="-699" frameWidth="960" frameHeight="720" rotated="true" />
+	<SubTexture name="milk go0008" x="3166" y="0" width="21" height="960" frameX="0" frameY="-699" frameWidth="960" frameHeight="720" rotated="true" />
+	<SubTexture name="milk go0009" x="3053" y="962" width="174" height="126" frameX="-402" frameY="-546" frameWidth="960" frameHeight="720" rotated="true" />
+	<SubTexture name="milk go0010" x="3053" y="962" width="174" height="126" frameX="-402" frameY="-546" frameWidth="960" frameHeight="720" rotated="true" />
+	<SubTexture name="milk go0011" x="2886" y="686" width="112" height="202" frameX="-408" frameY="-518" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk go0012" x="2886" y="686" width="112" height="202" frameX="-408" frameY="-518" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk go0013" x="3137" y="1090" width="87" height="169" frameX="-412" frameY="-551" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk go0014" x="3137" y="1090" width="87" height="169" frameX="-412" frameY="-551" frameWidth="960" frameHeight="720" />
+	<SubTexture name="milk go0015" x="3137" y="1261" width="91" height="86" frameX="-412" frameY="-629" frameWidth="960" frameHeight="720" rotated="true" />
+	<SubTexture name="milk go0016" x="3137" y="1261" width="91" height="86" frameX="-412" frameY="-629" frameWidth="960" frameHeight="720" rotated="true" />
+	<SubTexture name="milk go0017" x="962" y="1444" width="960" height="720"/>
+	<SubTexture name="milk go0018" x="962" y="1444" width="960" height="720"/>
+	<SubTexture name="milk go0019" x="962" y="1444" width="960" height="720"/>
+	<SubTexture name="milk go0020" x="962" y="1444" width="960" height="720"/>
+	<SubTexture name="milk go0021" x="962" y="1444" width="960" height="720"/>
+	<SubTexture name="milk static0000" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0001" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0002" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0003" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0004" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0005" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0006" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0007" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0008" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0009" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0010" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0011" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0012" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0013" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0014" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0015" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0016" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0017" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0018" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0019" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0020" x="1924" y="722" width="960" height="720"/>
+	<SubTexture name="milk static0021" x="1924" y="722" width="960" height="720"/>
 </TextureAtlas>

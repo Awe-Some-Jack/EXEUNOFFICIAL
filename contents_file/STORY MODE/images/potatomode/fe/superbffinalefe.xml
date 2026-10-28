@@ -2,96 +2,96 @@
 <TextureAtlas imagePath="superbffinalefe.png">
 	<!-- Created with Adobe Animate version 23.0.0.407 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 213 instancia 10000" x="13" y="13" width="575" height="358" frameX="-6" frameY="-10" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="Símbolo 213 instancia 10001" x="593" y="13" width="575" height="363" frameX="-6" frameY="-5" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="Símbolo 213 instancia 10002" x="1173" y="13" width="571" height="366" frameX="-4" frameY="-25" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="Símbolo 213 instancia 10003" x="1749" y="13" width="571" height="360" frameX="-4" frameY="-31" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="Símbolo 213 instancia 10004" x="2325" y="13" width="571" height="367" frameX="-1" frameY="-14" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="Símbolo 213 instancia 10005" x="2901" y="13" width="571" height="366" frameX="-1" frameY="-15" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="Símbolo 213 instancia 10006" x="3477" y="13" width="570" height="363" frameX="0" frameY="-13" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="Símbolo 213 instancia 10007" x="4052" y="13" width="570" height="370" frameX="0" frameY="-6" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="Símbolo 213 instancia 10008" x="4627" y="13" width="571" height="369" frameX="0" frameY="-4" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="Símbolo 213 instancia 10009" x="5203" y="13" width="571" height="366" frameX="0" frameY="-7" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="Símbolo 213 instancia 10010" x="5779" y="13" width="572" height="371" frameX="0" frameY="0" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="Símbolo 213 instancia 10011" x="6356" y="13" width="572" height="367" frameX="0" frameY="-4" frameWidth="581" frameHeight="391"/>
-	<SubTexture name="down S MISS instancia 10000" x="6933" y="13" width="505" height="360" frameX="-45" frameY="-17" frameWidth="561" frameHeight="383"/>
-	<SubTexture name="down S MISS instancia 10001" x="7443" y="13" width="530" height="359" frameX="-31" frameY="-17" frameWidth="561" frameHeight="383"/>
-	<SubTexture name="down S MISS instancia 10002" x="13" y="389" width="484" height="378" frameX="-24" frameY="-3" frameWidth="561" frameHeight="383"/>
-	<SubTexture name="down S MISS instancia 10003" x="502" y="389" width="509" height="377" frameX="-17" frameY="-6" frameWidth="561" frameHeight="383"/>
-	<SubTexture name="down S MISS instancia 10004" x="1016" y="389" width="491" height="354" frameX="-16" frameY="-12" frameWidth="561" frameHeight="383"/>
-	<SubTexture name="down S MISS instancia 10005" x="1512" y="389" width="507" height="374" frameX="-13" frameY="-3" frameWidth="561" frameHeight="383"/>
-	<SubTexture name="down S MISS instancia 10006" x="2024" y="389" width="498" height="350" frameX="-9" frameY="-10" frameWidth="561" frameHeight="383"/>
-	<SubTexture name="down S MISS instancia 10007" x="2527" y="389" width="514" height="370" frameX="-5" frameY="-6" frameWidth="561" frameHeight="383"/>
-	<SubTexture name="down S MISS instancia 10008" x="3046" y="389" width="503" height="354" frameX="0" frameY="-7" frameWidth="561" frameHeight="383"/>
-	<SubTexture name="down S MISS instancia 10009" x="3554" y="389" width="498" height="360" frameX="-9" frameY="0" frameWidth="561" frameHeight="383"/>
-	<SubTexture name="down S instancia 10000" x="4057" y="389" width="505" height="361" frameX="-30" frameY="-11" frameWidth="535" frameHeight="379"/>
-	<SubTexture name="down S instancia 10001" x="4567" y="389" width="511" height="364" frameX="-24" frameY="-8" frameWidth="535" frameHeight="379"/>
-	<SubTexture name="down S instancia 10002" x="5083" y="389" width="482" height="366" frameX="-17" frameY="-13" frameWidth="535" frameHeight="379"/>
-	<SubTexture name="down S instancia 10003" x="5570" y="389" width="482" height="370" frameX="-17" frameY="-9" frameWidth="535" frameHeight="379"/>
-	<SubTexture name="down S instancia 10004" x="6057" y="389" width="491" height="353" frameX="-7" frameY="-11" frameWidth="535" frameHeight="379"/>
-	<SubTexture name="down S instancia 10005" x="6553" y="389" width="491" height="358" frameX="-7" frameY="-6" frameWidth="535" frameHeight="379"/>
-	<SubTexture name="down S instancia 10006" x="7049" y="389" width="498" height="358" frameX="0" frameY="0" frameWidth="535" frameHeight="379"/>
-	<SubTexture name="down S instancia 10007" x="7552" y="389" width="498" height="352" frameX="0" frameY="-6" frameWidth="535" frameHeight="379"/>
-	<SubTexture name="down S instancia 10008" x="13" y="772" width="498" height="358" frameX="0" frameY="0" frameWidth="535" frameHeight="379"/>
-	<SubTexture name="down S instancia 10009" x="7049" y="389" width="498" height="358" frameX="0" frameY="0" frameWidth="535" frameHeight="379"/>
-	<SubTexture name="left S MISS instancia 10000" x="516" y="772" width="508" height="361" frameX="-8" frameY="-20" frameWidth="560" frameHeight="403"/>
-	<SubTexture name="left S MISS instancia 10001" x="1029" y="772" width="517" height="379" frameX="0" frameY="-24" frameWidth="560" frameHeight="403"/>
-	<SubTexture name="left S MISS instancia 10002" x="1551" y="772" width="528" height="365" frameX="-16" frameY="0" frameWidth="560" frameHeight="403"/>
-	<SubTexture name="left S MISS instancia 10003" x="2084" y="772" width="527" height="368" frameX="-16" frameY="-10" frameWidth="560" frameHeight="403"/>
-	<SubTexture name="left S MISS instancia 10004" x="2616" y="772" width="522" height="359" frameX="-32" frameY="-14" frameWidth="560" frameHeight="403"/>
-	<SubTexture name="left S MISS instancia 10005" x="3143" y="772" width="537" height="373" frameX="-14" frameY="-14" frameWidth="560" frameHeight="403"/>
-	<SubTexture name="left S MISS instancia 10006" x="3685" y="772" width="519" height="362" frameX="-41" frameY="-13" frameWidth="560" frameHeight="403"/>
-	<SubTexture name="left S MISS instancia 10007" x="4209" y="772" width="533" height="376" frameX="-24" frameY="-13" frameWidth="560" frameHeight="403"/>
-	<SubTexture name="left S MISS instancia 10008" x="4747" y="772" width="531" height="359" frameX="-29" frameY="-13" frameWidth="560" frameHeight="403"/>
-	<SubTexture name="left S MISS instancia 10009" x="5283" y="772" width="519" height="364" frameX="-41" frameY="-11" frameWidth="560" frameHeight="403"/>
-	<SubTexture name="left S instancia 10000" x="5807" y="772" width="508" height="362" frameX="0" frameY="-36" frameWidth="546" frameHeight="398"/>
-	<SubTexture name="left S instancia 10001" x="6320" y="772" width="519" height="367" frameX="0" frameY="-21" frameWidth="546" frameHeight="398"/>
-	<SubTexture name="left S instancia 10002" x="6844" y="772" width="516" height="378" frameX="-14" frameY="0" frameWidth="546" frameHeight="398"/>
-	<SubTexture name="left S instancia 10003" x="7365" y="772" width="516" height="365" frameX="-14" frameY="-13" frameWidth="546" frameHeight="398"/>
-	<SubTexture name="left S instancia 10004" x="13" y="1156" width="522" height="363" frameX="-18" frameY="-23" frameWidth="546" frameHeight="398"/>
-	<SubTexture name="left S instancia 10005" x="540" y="1156" width="522" height="360" frameX="-18" frameY="-26" frameWidth="546" frameHeight="398"/>
-	<SubTexture name="left S instancia 10006" x="1067" y="1156" width="519" height="368" frameX="-27" frameY="-20" frameWidth="546" frameHeight="398"/>
-	<SubTexture name="left S instancia 10007" x="1591" y="1156" width="519" height="370" frameX="-27" frameY="-18" frameWidth="546" frameHeight="398"/>
-	<SubTexture name="left S instancia 10008" x="2115" y="1156" width="519" height="363" frameX="-27" frameY="-25" frameWidth="546" frameHeight="398"/>
-	<SubTexture name="left S instancia 10009" x="1067" y="1156" width="519" height="368" frameX="-27" frameY="-20" frameWidth="546" frameHeight="398"/>
-	<SubTexture name="right S MISS instancia 10000" x="2639" y="1156" width="580" height="361" frameX="-30" frameY="-5" frameWidth="643" frameHeight="397"/>
-	<SubTexture name="right S MISS instancia 10001" x="3224" y="1156" width="634" height="372" frameX="-9" frameY="0" frameWidth="643" frameHeight="397"/>
-	<SubTexture name="right S MISS instancia 10002" x="3863" y="1156" width="606" height="373" frameX="-34" frameY="-11" frameWidth="643" frameHeight="397"/>
-	<SubTexture name="right S MISS instancia 10003" x="4474" y="1156" width="614" height="372" frameX="-18" frameY="0" frameWidth="643" frameHeight="397"/>
-	<SubTexture name="right S MISS instancia 10004" x="5093" y="1156" width="585" height="389" frameX="-23" frameY="0" frameWidth="643" frameHeight="397"/>
-	<SubTexture name="right S MISS instancia 10005" x="5683" y="1156" width="598" height="373" frameX="-2" frameY="-8" frameWidth="643" frameHeight="397"/>
-	<SubTexture name="right S MISS instancia 10006" x="6286" y="1156" width="584" height="385" frameX="-22" frameY="-11" frameWidth="643" frameHeight="397"/>
-	<SubTexture name="right S MISS instancia 10007" x="6875" y="1156" width="599" height="389" frameX="0" frameY="-1" frameWidth="643" frameHeight="397"/>
-	<SubTexture name="right S MISS instancia 10008" x="7479" y="1156" width="596" height="387" frameX="-10" frameY="-10" frameWidth="643" frameHeight="397"/>
-	<SubTexture name="right S MISS instancia 10009" x="13" y="1550" width="584" height="384" frameX="-22" frameY="-12" frameWidth="643" frameHeight="397"/>
-	<SubTexture name="right S instancia 10000" x="602" y="1550" width="580" height="362" frameX="-10" frameY="-8" frameWidth="594" frameHeight="383"/>
-	<SubTexture name="right S instancia 10001" x="1187" y="1550" width="576" height="375" frameX="-11" frameY="0" frameWidth="594" frameHeight="383"/>
-	<SubTexture name="right S instancia 10002" x="1768" y="1550" width="581" height="366" frameX="-13" frameY="-9" frameWidth="594" frameHeight="383"/>
-	<SubTexture name="right S instancia 10003" x="2354" y="1550" width="581" height="370" frameX="-13" frameY="-5" frameWidth="594" frameHeight="383"/>
-	<SubTexture name="right S instancia 10004" x="2940" y="1550" width="568" height="378" frameX="-1" frameY="-5" frameWidth="594" frameHeight="383"/>
-	<SubTexture name="right S instancia 10005" x="3513" y="1550" width="568" height="374" frameX="-1" frameY="-9" frameWidth="594" frameHeight="383"/>
-	<SubTexture name="right S instancia 10006" x="4086" y="1550" width="560" height="374" frameX="0" frameY="-9" frameWidth="594" frameHeight="383"/>
-	<SubTexture name="right S instancia 10007" x="4651" y="1550" width="560" height="377" frameX="0" frameY="-6" frameWidth="594" frameHeight="383"/>
-	<SubTexture name="right S instancia 10008" x="5216" y="1550" width="560" height="372" frameX="0" frameY="-11" frameWidth="594" frameHeight="383"/>
-	<SubTexture name="right S instancia 10009" x="5781" y="1550" width="560" height="374" frameX="0" frameY="-9" frameWidth="594" frameHeight="383"/>
-	<SubTexture name="up S MISS instancia 10000" x="6346" y="1550" width="542" height="414" frameX="-57" frameY="-14" frameWidth="603" frameHeight="441"/>
-	<SubTexture name="up S MISS instancia 10001" x="6893" y="1550" width="550" height="405" frameX="-41" frameY="-20" frameWidth="603" frameHeight="441"/>
-	<SubTexture name="up S MISS instancia 10002" x="7448" y="1550" width="564" height="410" frameX="-33" frameY="-8" frameWidth="603" frameHeight="441"/>
-	<SubTexture name="up S MISS instancia 10003" x="13" y="1969" width="580" height="419" frameX="0" frameY="0" frameWidth="603" frameHeight="441"/>
-	<SubTexture name="up S MISS instancia 10004" x="598" y="1969" width="566" height="378" frameX="-33" frameY="-37" frameWidth="603" frameHeight="441"/>
-	<SubTexture name="up S MISS instancia 10005" x="1169" y="1969" width="581" height="387" frameX="-2" frameY="-45" frameWidth="603" frameHeight="441"/>
-	<SubTexture name="up S MISS instancia 10006" x="1755" y="1969" width="566" height="379" frameX="-32" frameY="-45" frameWidth="603" frameHeight="441"/>
-	<SubTexture name="up S MISS instancia 10007" x="2326" y="1969" width="581" height="404" frameX="-1" frameY="-37" frameWidth="603" frameHeight="441"/>
-	<SubTexture name="up S MISS instancia 10008" x="2912" y="1969" width="584" height="377" frameX="-19" frameY="-45" frameWidth="603" frameHeight="441"/>
-	<SubTexture name="up S MISS instancia 10009" x="3501" y="1969" width="566" height="381" frameX="-32" frameY="-43" frameWidth="603" frameHeight="441"/>
-	<SubTexture name="up S instancia 10000" x="4072" y="1969" width="543" height="414" frameX="-25" frameY="-13" frameWidth="568" frameHeight="427"/>
-	<SubTexture name="up S instancia 10001" x="4620" y="1969" width="546" height="414" frameX="-22" frameY="-12" frameWidth="568" frameHeight="427"/>
-	<SubTexture name="up S instancia 10002" x="5171" y="1969" width="565" height="407" frameX="-1" frameY="-10" frameWidth="568" frameHeight="427"/>
-	<SubTexture name="up S instancia 10003" x="5741" y="1969" width="565" height="417" frameX="-1" frameY="0" frameWidth="568" frameHeight="427"/>
-	<SubTexture name="up S instancia 10004" x="6311" y="1969" width="567" height="374" frameX="-1" frameY="-40" frameWidth="568" frameHeight="427"/>
-	<SubTexture name="up S instancia 10005" x="6883" y="1969" width="567" height="372" frameX="-1" frameY="-42" frameWidth="568" frameHeight="427"/>
-	<SubTexture name="up S instancia 10006" x="7455" y="1969" width="567" height="383" frameX="0" frameY="-40" frameWidth="568" frameHeight="427"/>
-	<SubTexture name="up S instancia 10007" x="13" y="2393" width="567" height="383" frameX="0" frameY="-40" frameWidth="568" frameHeight="427"/>
-	<SubTexture name="up S instancia 10008" x="585" y="2393" width="567" height="377" frameX="0" frameY="-46" frameWidth="568" frameHeight="427"/>
-	<SubTexture name="up S instancia 10009" x="7455" y="1969" width="567" height="383" frameX="0" frameY="-40" frameWidth="568" frameHeight="427"/>
+	<SubTexture name="Símbolo 213 instancia 10000" x="1007" y="3398" width="575" height="358" frameX="-6" frameY="-10" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="Símbolo 213 instancia 10001" x="1038" y="2672" width="575" height="363" frameX="-6" frameY="-5" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="Símbolo 213 instancia 10002" x="3373" y="2304" width="571" height="366" frameX="-4" frameY="-25" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="Símbolo 213 instancia 10003" x="3232" y="3036" width="571" height="360" frameX="-4" frameY="-31" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="Símbolo 213 instancia 10004" x="2800" y="2304" width="571" height="367" frameX="-1" frameY="-14" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="Símbolo 213 instancia 10005" x="3946" y="2304" width="571" height="366" frameX="-1" frameY="-15" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="Símbolo 213 instancia 10006" x="3373" y="2672" width="570" height="362" frameX="0" frameY="-13" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="Símbolo 213 instancia 10007" x="1660" y="1934" width="570" height="369" frameX="0" frameY="-6" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="Símbolo 213 instancia 10008" x="3470" y="1934" width="571" height="368" frameX="0" frameY="-4" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="Símbolo 213 instancia 10009" x="1660" y="2305" width="571" height="365" frameX="0" frameY="-7" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="Símbolo 213 instancia 10010" x="1147" y="1185" width="572" height="371" frameX="0" frameY="0" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="Símbolo 213 instancia 10011" x="2800" y="1935" width="572" height="367" frameX="0" frameY="-4" frameWidth="581" frameHeight="391"/>
+	<SubTexture name="down S MISS instancia 10000" x="4328" y="3036" width="505" height="360" frameX="-45" frameY="-17" frameWidth="561" frameHeight="383"/>
+	<SubTexture name="down S MISS instancia 10001" x="1540" y="3037" width="530" height="359" frameX="-31" frameY="-17" frameWidth="561" frameHeight="383"/>
+	<SubTexture name="down S MISS instancia 10002" x="3445" y="799" width="484" height="378" frameX="-24" frameY="-3" frameWidth="561" frameHeight="383"/>
+	<SubTexture name="down S MISS instancia 10003" x="586" y="805" width="509" height="377" frameX="-17" frameY="-6" frameWidth="561" frameHeight="383"/>
+	<SubTexture name="down S MISS instancia 10004" x="4230" y="3398" width="491" height="354" frameX="-16" frameY="-12" frameWidth="561" frameHeight="383"/>
+	<SubTexture name="down S MISS instancia 10005" x="3970" y="1183" width="507" height="374" frameX="-13" frameY="-3" frameWidth="561" frameHeight="383"/>
+	<SubTexture name="down S MISS instancia 10006" x="2583" y="3399" width="498" height="350" frameX="-9" frameY="-10" frameWidth="561" frameHeight="383"/>
+	<SubTexture name="down S MISS instancia 10007" x="562" y="1934" width="514" height="370" frameX="-5" frameY="-6" frameWidth="561" frameHeight="383"/>
+	<SubTexture name="down S MISS instancia 10008" x="3725" y="3398" width="503" height="354" frameX="0" frameY="-7" frameWidth="561" frameHeight="383"/>
+	<SubTexture name="down S MISS instancia 10009" x="507" y="3037" width="498" height="360" frameX="-9" frameY="0" frameWidth="561" frameHeight="383"/>
+	<SubTexture name="down S instancia 10000" x="0" y="3037" width="505" height="360" frameX="-30" frameY="-11" frameWidth="535" frameHeight="379"/>
+	<SubTexture name="down S instancia 10001" x="2138" y="2672" width="511" height="363" frameX="-24" frameY="-8" frameWidth="535" frameHeight="379"/>
+	<SubTexture name="down S instancia 10002" x="3470" y="1561" width="482" height="366" frameX="-17" frameY="-13" frameWidth="535" frameHeight="379"/>
+	<SubTexture name="down S instancia 10003" x="636" y="1560" width="482" height="370" frameX="-17" frameY="-9" frameWidth="535" frameHeight="379"/>
+	<SubTexture name="down S instancia 10004" x="0" y="3399" width="491" height="352" frameX="-7" frameY="-11" frameWidth="535" frameHeight="379"/>
+	<SubTexture name="down S instancia 10005" x="3232" y="3398" width="491" height="357" frameX="-7" frameY="-6" frameWidth="535" frameHeight="379"/>
+	<SubTexture name="down S instancia 10006" x="1584" y="3398" width="498" height="357" frameX="0" frameY="0" frameWidth="535" frameHeight="379"/>
+	<SubTexture name="down S instancia 10007" x="493" y="3399" width="498" height="351" frameX="0" frameY="-6" frameWidth="535" frameHeight="379"/>
+	<SubTexture name="down S instancia 10008" x="2084" y="3398" width="497" height="357" frameX="-1" frameY="0" frameWidth="535" frameHeight="379"/>
+	<SubTexture name="down S instancia 10009" x="1584" y="3398" width="498" height="357" frameX="0" frameY="0" frameWidth="535" frameHeight="379"/>
+	<SubTexture name="left S MISS instancia 10000" x="0" y="2674" width="507" height="361" frameX="-8" frameY="-20" frameWidth="560" frameHeight="403"/>
+	<SubTexture name="left S MISS instancia 10001" x="3938" y="407" width="517" height="379" frameX="0" frameY="-24" frameWidth="560" frameHeight="403"/>
+	<SubTexture name="left S MISS instancia 10002" x="2233" y="2305" width="528" height="365" frameX="-16" frameY="0" frameWidth="560" frameHeight="403"/>
+	<SubTexture name="left S MISS instancia 10003" x="4043" y="1934" width="527" height="368" frameX="-16" frameY="-10" frameWidth="560" frameHeight="403"/>
+	<SubTexture name="left S MISS instancia 10004" x="2072" y="3037" width="522" height="359" frameX="-32" frameY="-14" frameWidth="560" frameHeight="403"/>
+	<SubTexture name="left S MISS instancia 10005" x="2315" y="1559" width="537" height="373" frameX="-14" frameY="-14" frameWidth="560" frameHeight="403"/>
+	<SubTexture name="left S MISS instancia 10006" x="3945" y="2672" width="519" height="362" frameX="-41" frameY="-13" frameWidth="560" frameHeight="403"/>
+	<SubTexture name="left S MISS instancia 10007" x="3435" y="1183" width="533" height="376" frameX="-24" frameY="-13" frameWidth="560" frameHeight="403"/>
+	<SubTexture name="left S MISS instancia 10008" x="1007" y="3037" width="531" height="359" frameX="-29" frameY="-13" frameWidth="560" frameHeight="403"/>
+	<SubTexture name="left S MISS instancia 10009" x="517" y="2307" width="519" height="364" frameX="-41" frameY="-11" frameWidth="560" frameHeight="403"/>
+	<SubTexture name="left S instancia 10000" x="517" y="2673" width="507" height="362" frameX="0" frameY="-36" frameWidth="546" frameHeight="398"/>
+	<SubTexture name="left S instancia 10001" x="4572" y="1934" width="518" height="367" frameX="0" frameY="-21" frameWidth="546" frameHeight="398"/>
+	<SubTexture name="left S instancia 10002" x="1168" y="416" width="515" height="378" frameX="-14" frameY="0" frameWidth="546" frameHeight="398"/>
+	<SubTexture name="left S instancia 10003" x="0" y="2307" width="515" height="365" frameX="-14" frameY="-13" frameWidth="546" frameHeight="398"/>
+	<SubTexture name="left S instancia 10004" x="1615" y="2672" width="521" height="363" frameX="-18" frameY="-23" frameWidth="546" frameHeight="398"/>
+	<SubTexture name="left S instancia 10005" x="3805" y="3036" width="521" height="360" frameX="-18" frameY="-26" frameWidth="546" frameHeight="398"/>
+	<SubTexture name="left S instancia 10006" x="4572" y="2303" width="518" height="367" frameX="-27" frameY="-21" frameWidth="546" frameHeight="398"/>
+	<SubTexture name="left S instancia 10007" x="2344" y="1184" width="519" height="370" frameX="-27" frameY="-18" frameWidth="546" frameHeight="398"/>
+	<SubTexture name="left S instancia 10008" x="4466" y="2672" width="518" height="362" frameX="-27" frameY="-26" frameWidth="546" frameHeight="398"/>
+	<SubTexture name="left S instancia 10009" x="4572" y="2303" width="518" height="367" frameX="-27" frameY="-21" frameWidth="546" frameHeight="398"/>
+	<SubTexture name="right S MISS instancia 10000" x="2651" y="2673" width="580" height="361" frameX="-30" frameY="-5" frameWidth="643" frameHeight="397"/>
+	<SubTexture name="right S MISS instancia 10001" x="0" y="1560" width="634" height="372" frameX="-9" frameY="0" frameWidth="643" frameHeight="397"/>
+	<SubTexture name="right S MISS instancia 10002" x="1736" y="1184" width="606" height="373" frameX="-34" frameY="-11" frameWidth="643" frameHeight="397"/>
+	<SubTexture name="right S MISS instancia 10003" x="2854" y="1561" width="614" height="372" frameX="-18" frameY="0" frameWidth="643" frameHeight="397"/>
+	<SubTexture name="right S MISS instancia 10004" x="3351" y="408" width="585" height="389" frameX="-23" frameY="0" frameWidth="643" frameHeight="397"/>
+	<SubTexture name="right S MISS instancia 10005" x="1147" y="1559" width="598" height="373" frameX="-2" frameY="-8" frameWidth="643" frameHeight="397"/>
+	<SubTexture name="right S MISS instancia 10006" x="582" y="418" width="584" height="385" frameX="-22" frameY="-11" frameWidth="643" frameHeight="397"/>
+	<SubTexture name="right S MISS instancia 10007" x="4470" y="406" width="599" height="389" frameX="0" frameY="-1" frameWidth="643" frameHeight="397"/>
+	<SubTexture name="right S MISS instancia 10008" x="1696" y="415" width="596" height="387" frameX="-10" frameY="-10" frameWidth="643" frameHeight="397"/>
+	<SubTexture name="right S MISS instancia 10009" x="3938" y="797" width="584" height="384" frameX="-22" frameY="-12" frameWidth="643" frameHeight="397"/>
+	<SubTexture name="right S instancia 10000" x="2651" y="3036" width="579" height="361" frameX="-10" frameY="-8" frameWidth="594" frameHeight="383"/>
+	<SubTexture name="right S instancia 10001" x="0" y="1184" width="576" height="374" frameX="-11" frameY="0" frameWidth="594" frameHeight="383"/>
+	<SubTexture name="right S instancia 10002" x="1078" y="2305" width="580" height="365" frameX="-13" frameY="-9" frameWidth="594" frameHeight="383"/>
+	<SubTexture name="right S instancia 10003" x="1078" y="1934" width="580" height="369" frameX="-13" frameY="-5" frameWidth="594" frameHeight="383"/>
+	<SubTexture name="right S instancia 10004" x="1736" y="804" width="567" height="378" frameX="-1" frameY="-5" frameWidth="594" frameHeight="383"/>
+	<SubTexture name="right S instancia 10005" x="578" y="1184" width="567" height="374" frameX="-1" frameY="-9" frameWidth="594" frameHeight="383"/>
+	<SubTexture name="right S instancia 10006" x="3970" y="1559" width="560" height="373" frameX="0" frameY="-9" frameWidth="594" frameHeight="383"/>
+	<SubTexture name="right S instancia 10007" x="2873" y="1182" width="560" height="376" frameX="0" frameY="-6" frameWidth="594" frameHeight="383"/>
+	<SubTexture name="right S instancia 10008" x="0" y="1934" width="560" height="371" frameX="0" frameY="-11" frameWidth="594" frameHeight="383"/>
+	<SubTexture name="right S instancia 10009" x="4532" y="1559" width="560" height="373" frameX="0" frameY="-9" frameWidth="594" frameHeight="383"/>
+	<SubTexture name="up S MISS instancia 10000" x="2241" y="0" width="542" height="413" frameX="-57" frameY="-15" frameWidth="603" frameHeight="441"/>
+	<SubTexture name="up S MISS instancia 10001" x="3918" y="0" width="550" height="405" frameX="-41" frameY="-20" frameWidth="603" frameHeight="441"/>
+	<SubTexture name="up S MISS instancia 10002" x="2785" y="0" width="564" height="410" frameX="-33" frameY="-8" frameWidth="603" frameHeight="441"/>
+	<SubTexture name="up S MISS instancia 10003" x="0" y="0" width="580" height="419" frameX="0" frameY="0" frameWidth="603" frameHeight="441"/>
+	<SubTexture name="up S MISS instancia 10004" x="2305" y="804" width="566" height="378" frameX="-33" frameY="-37" frameWidth="603" frameHeight="441"/>
+	<SubTexture name="up S MISS instancia 10005" x="2294" y="415" width="581" height="387" frameX="-2" frameY="-45" frameWidth="603" frameHeight="441"/>
+	<SubTexture name="up S MISS instancia 10006" x="1168" y="804" width="566" height="379" frameX="-32" frameY="-45" frameWidth="603" frameHeight="441"/>
+	<SubTexture name="up S MISS instancia 10007" x="4470" y="0" width="581" height="404" frameX="-1" frameY="-37" frameWidth="603" frameHeight="441"/>
+	<SubTexture name="up S MISS instancia 10008" x="0" y="805" width="584" height="377" frameX="-19" frameY="-45" frameWidth="603" frameHeight="441"/>
+	<SubTexture name="up S MISS instancia 10009" x="2877" y="799" width="566" height="381" frameX="-32" frameY="-43" frameWidth="603" frameHeight="441"/>
+	<SubTexture name="up S instancia 10000" x="1696" y="0" width="543" height="413" frameX="-25" frameY="-13" frameWidth="568" frameHeight="427"/>
+	<SubTexture name="up S instancia 10001" x="1149" y="0" width="545" height="414" frameX="-22" frameY="-12" frameWidth="568" frameHeight="427"/>
+	<SubTexture name="up S instancia 10002" x="3351" y="0" width="565" height="406" frameX="-1" frameY="-10" frameWidth="568" frameHeight="427"/>
+	<SubTexture name="up S instancia 10003" x="582" y="0" width="565" height="416" frameX="-1" frameY="0" frameWidth="568" frameHeight="427"/>
+	<SubTexture name="up S instancia 10004" x="1747" y="1559" width="566" height="373" frameX="-1" frameY="-40" frameWidth="568" frameHeight="427"/>
+	<SubTexture name="up S instancia 10005" x="2232" y="1934" width="566" height="369" frameX="-1" frameY="-44" frameWidth="568" frameHeight="427"/>
+	<SubTexture name="up S instancia 10006" x="0" y="421" width="566" height="382" frameX="0" frameY="-40" frameWidth="568" frameHeight="427"/>
+	<SubTexture name="up S instancia 10007" x="4524" y="797" width="566" height="382" frameX="0" frameY="-40" frameWidth="568" frameHeight="427"/>
+	<SubTexture name="up S instancia 10008" x="4524" y="1181" width="566" height="376" frameX="0" frameY="-46" frameWidth="568" frameHeight="427"/>
+	<SubTexture name="up S instancia 10009" x="0" y="421" width="566" height="382" frameX="0" frameY="-40" frameWidth="568" frameHeight="427"/>
 </TextureAtlas>

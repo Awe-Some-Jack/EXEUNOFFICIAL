@@ -2,57 +2,57 @@
 <TextureAtlas imagePath="tail doll pov.png">
 	<!-- Created using the Spritesheet and XML generator -->
 	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
-	<SubTexture name="tails doll pov down00010000" x="1628" y="928" width="378" height="424" frameX="-239" frameY="-166" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00020000" x="2006" y="0" width="372" height="426" frameX="-239" frameY="-161" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00030000" x="2006" y="426" width="355" height="433" frameX="-239" frameY="-146" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00040000" x="2006" y="859" width="334" height="445" frameX="-238" frameY="-127" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00050000" x="0" y="1600" width="307" height="463" frameX="-237" frameY="-107" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00060000" x="793" y="2063" width="286" height="478" frameX="-235" frameY="-90" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00070000" x="2906" y="0" width="274" height="489" frameX="-229" frameY="-77" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00080000" x="2906" y="1008" width="267" height="495" frameX="-219" frameY="-69" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00090000" x="2906" y="2019" width="258" height="497" frameX="-211" frameY="-66" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00100000" x="2646" y="1020" width="256" height="499" frameX="-200" frameY="-64" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00110000" x="2646" y="520" width="256" height="500" frameX="-189" frameY="-64" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00120000" x="2646" y="2018" width="255" height="499" frameX="-183" frameY="-65" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov down00130000" x="2646" y="1519" width="255" height="499" frameX="-180" frameY="-65" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov idle00010000" x="0" y="992" width="327" height="608" frameX="-145" frameY="-6" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00010000" x="2378" y="1564" width="260" height="478" frameX="-107" frameY="-101" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00020000" x="1502" y="2584" width="259" height="479" frameX="-109" frameY="-100" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00030000" x="0" y="3095" width="254" height="482" frameX="-115" frameY="-96" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00040000" x="3426" y="2010" width="248" height="486" frameX="-123" frameY="-91" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00050000" x="3180" y="514" width="240" height="490" frameX="-134" frameY="-85" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00060000" x="3426" y="2496" width="239" height="493" frameX="-146" frameY="-80" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00070000" x="3426" y="1513" width="244" height="497" frameX="-157" frameY="-75" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00080000" x="3426" y="1015" width="246" height="498" frameX="-168" frameY="-72" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00090000" x="1253" y="2584" width="249" height="500" frameX="-175" frameY="-69" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00100000" x="1003" y="2584" width="250" height="500" frameX="-179" frameY="-68" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00110000" x="752" y="2584" width="251" height="501" frameX="-180" frameY="-67" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00120000" x="248" y="2584" width="252" height="501" frameX="-181" frameY="-67" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov left00130000" x="500" y="2584" width="252" height="501" frameX="-181" frameY="-67" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00010000" x="3426" y="508" width="248" height="507" frameX="-255" frameY="-68" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00020000" x="3426" y="0" width="248" height="508" frameX="-253" frameY="-67" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00030000" x="0" y="2584" width="248" height="511" frameX="-247" frameY="-64" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00040000" x="3180" y="0" width="246" height="514" frameX="-239" frameY="-60" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00050000" x="2906" y="1503" width="250" height="516" frameX="-224" frameY="-57" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00060000" x="2906" y="489" width="256" height="519" frameX="-207" frameY="-53" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00070000" x="2646" y="0" width="260" height="520" frameX="-192" frameY="-51" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00080000" x="0" y="2063" width="265" height="521" frameX="-178" frameY="-49" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00090000" x="2378" y="0" width="268" height="522" frameX="-168" frameY="-48" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00100000" x="2378" y="522" width="267" height="521" frameX="-164" frameY="-48" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00110000" x="2378" y="1043" width="266" height="521" frameX="-162" frameY="-48" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00120000" x="265" y="2063" width="264" height="520" frameX="-162" frameY="-48" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov right00130000" x="529" y="2063" width="264" height="520" frameX="-161" frameY="-48" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00010000" x="1628" y="465" width="377" height="463" frameX="-119" frameY="-84" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00020000" x="1628" y="0" width="378" height="465" frameX="-119" frameY="-82" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00030000" x="1109" y="992" width="381" height="470" frameX="-119" frameY="-79" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00040000" x="724" y="992" width="385" height="478" frameX="-120" frameY="-74" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00050000" x="821" y="499" width="389" height="486" frameX="-121" frameY="-69" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00060000" x="1226" y="499" width="393" height="492" frameX="-123" frameY="-66" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00070000" x="327" y="992" width="397" height="497" frameX="-125" frameY="-64" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00080000" x="1226" y="0" width="402" height="499" frameX="-127" frameY="-64" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00090000" x="821" y="0" width="405" height="499" frameX="-129" frameY="-66" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00100000" x="0" y="495" width="408" height="497" frameX="-131" frameY="-68" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00110000" x="0" y="0" width="410" height="495" frameX="-132" frameY="-70" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00120000" x="410" y="0" width="411" height="493" frameX="-133" frameY="-72" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="tails doll pov up00130000" x="410" y="493" width="410" height="493" frameX="-134" frameY="-72" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="tails doll pov down00010000" x="2335" y="2672" width="420" height="374" frameX="-241" frameY="-168" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov down00020000" x="1911" y="2605" width="422" height="368" frameX="-241" frameY="-163" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov down00030000" x="2414" y="2241" width="351" height="429" frameX="-241" frameY="-148" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="tails doll pov down00040000" x="0" y="2713" width="441" height="330" frameX="-240" frameY="-129" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov down00050000" x="480" y="2532" width="459" height="303" frameX="-239" frameY="-109" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov down00060000" x="1470" y="1981" width="474" height="282" frameX="-237" frameY="-92" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov down00070000" x="983" y="1916" width="485" height="270" frameX="-231" frameY="-79" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov down00080000" x="2504" y="1271" width="263" height="491" frameX="-221" frameY="-71" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="tails doll pov down00090000" x="995" y="1423" width="493" height="254" frameX="-213" frameY="-68" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov down00100000" x="498" y="1258" width="495" height="252" frameX="-202" frameY="-66" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov down00110000" x="1014" y="769" width="496" height="252" frameX="-191" frameY="-66" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov down00120000" x="0" y="1316" width="495" height="251" frameX="-185" frameY="-67" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov down00130000" x="2009" y="775" width="495" height="251" frameX="-182" frameY="-67" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov idle00010000" x="0" y="0" width="604" height="323" frameX="-147" frameY="-8" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov left00010000" x="972" y="2188" width="474" height="256" frameX="-109" frameY="-103" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov left00020000" x="2480" y="1764" width="255" height="475" frameX="-111" frameY="-102" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="tails doll pov left00030000" x="0" y="2461" width="478" height="250" frameX="-117" frameY="-98" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov left00040000" x="0" y="2215" width="482" height="244" frameX="-125" frameY="-93" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov left00050000" x="0" y="1977" width="486" height="236" frameX="-136" frameY="-87" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov left00060000" x="992" y="1679" width="489" height="235" frameX="-148" frameY="-82" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov left00070000" x="497" y="1512" width="493" height="240" frameX="-159" frameY="-77" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov left00080000" x="2506" y="775" width="242" height="494" frameX="-170" frameY="-74" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="tails doll pov left00090000" x="0" y="1069" width="496" height="245" frameX="-177" frameY="-71" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov left00100000" x="499" y="1010" width="496" height="246" frameX="-181" frameY="-70" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov left00110000" x="1532" y="526" width="497" height="247" frameX="-182" frameY="-69" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov left00120000" x="0" y="819" width="497" height="248" frameX="-183" frameY="-69" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov left00130000" x="2163" y="525" width="497" height="248" frameX="-183" frameY="-69" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00010000" x="509" y="764" width="503" height="244" frameX="-257" frameY="-70" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00020000" x="1026" y="523" width="504" height="244" frameX="-255" frameY="-69" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00030000" x="0" y="573" width="507" height="244" frameX="-249" frameY="-66" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00040000" x="514" y="520" width="510" height="242" frameX="-241" frameY="-62" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00050000" x="0" y="325" width="512" height="246" frameX="-226" frameY="-59" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00060000" x="606" y="266" width="515" height="252" frameX="-209" frameY="-55" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00070000" x="1126" y="265" width="516" height="256" frameX="-194" frameY="-53" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00080000" x="2164" y="0" width="517" height="261" frameX="-180" frameY="-51" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00090000" x="606" y="0" width="518" height="264" frameX="-170" frameY="-50" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00100000" x="1126" y="0" width="517" height="263" frameX="-166" frameY="-50" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00110000" x="1645" y="0" width="517" height="262" frameX="-164" frameY="-50" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00120000" x="2164" y="263" width="516" height="260" frameX="-164" frameY="-50" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov right00130000" x="1645" y="264" width="516" height="260" frameX="-163" frameY="-50" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00010000" x="972" y="2446" width="459" height="373" frameX="-121" frameY="-86" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00020000" x="1448" y="2265" width="461" height="374" frameX="-121" frameY="-84" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00030000" x="1946" y="2226" width="466" height="377" frameX="-121" frameY="-81" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00040000" x="1981" y="1843" width="474" height="381" frameX="-122" frameY="-76" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00050000" x="488" y="2145" width="482" height="385" frameX="-123" frameY="-71" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00060000" x="493" y="1754" width="488" height="389" frameX="-125" frameY="-68" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00070000" x="1494" y="1178" width="493" height="393" frameX="-127" frameY="-66" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00080000" x="997" y="1023" width="495" height="398" frameX="-129" frameY="-66" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00090000" x="1512" y="775" width="495" height="401" frameX="-131" frameY="-68" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00100000" x="2009" y="1028" width="493" height="404" frameX="-133" frameY="-70" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00110000" x="0" y="1569" width="491" height="406" frameX="-134" frameY="-72" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00120000" x="1989" y="1434" width="489" height="407" frameX="-135" frameY="-74" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="tails doll pov up00130000" x="1490" y="1573" width="489" height="406" frameX="-136" frameY="-74" frameWidth="626" frameHeight="619" rotated="true" />
 </TextureAtlas>

@@ -2,41 +2,41 @@
 <TextureAtlas imagePath="ga.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="feto instancia 10000" x="36" y="36" width="450" height="448" frameX="-171" frameY="0" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10001" x="506" y="36" width="457" height="436" frameX="-165" frameY="-10" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10002" x="983" y="36" width="464" height="425" frameX="-158" frameY="-18" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10003" x="1467" y="36" width="470" height="415" frameX="-152" frameY="-26" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10004" x="1957" y="36" width="477" height="406" frameX="-145" frameY="-35" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10005" x="2454" y="36" width="485" height="399" frameX="-138" frameY="-43" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10006" x="2959" y="36" width="491" height="391" frameX="-132" frameY="-51" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10007" x="3470" y="36" width="498" height="384" frameX="-125" frameY="-59" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10008" x="36" y="504" width="505" height="381" frameX="-118" frameY="-63" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10009" x="561" y="504" width="512" height="380" frameX="-112" frameY="-66" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10010" x="1093" y="504" width="519" height="378" frameX="-105" frameY="-69" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10011" x="1632" y="504" width="526" height="377" frameX="-98" frameY="-72" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10012" x="2178" y="504" width="533" height="378" frameX="-92" frameY="-73" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10013" x="2731" y="504" width="541" height="379" frameX="-85" frameY="-74" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10014" x="3292" y="504" width="549" height="382" frameX="-78" frameY="-73" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10015" x="36" y="906" width="556" height="383" frameX="-72" frameY="-73" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10016" x="612" y="906" width="563" height="386" frameX="-65" frameY="-72" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10017" x="1195" y="906" width="571" height="389" frameX="-58" frameY="-71" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10018" x="1786" y="906" width="578" height="392" frameX="-52" frameY="-70" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10019" x="2384" y="906" width="586" height="398" frameX="-45" frameY="-68" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10020" x="2990" y="906" width="604" height="415" frameX="-38" frameY="-65" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10021" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10022" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10023" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10024" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10025" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10026" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10027" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10028" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10029" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10030" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10031" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10032" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10033" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10034" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="feto instancia 10035" x="36" y="1341" width="642" height="535" frameX="0" frameY="-13" frameWidth="642" frameHeight="548"/>
-	<SubTexture name="xd instancia 10000" x="698" y="1341" width="514" height="466"/>
+	<SubTexture name="feto instancia 10000" x="0" y="1984" width="450" height="447" frameX="-171" frameY="-1" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10001" x="979" y="1955" width="457" height="436" frameX="-165" frameY="-10" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10002" x="1522" y="1903" width="464" height="425" frameX="-158" frameY="-18" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10003" x="0" y="1568" width="470" height="414" frameX="-152" frameY="-27" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10004" x="500" y="1564" width="477" height="406" frameX="-145" frameY="-35" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10005" x="1035" y="1554" width="485" height="399" frameX="-138" frameY="-43" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10006" x="1613" y="1511" width="491" height="390" frameX="-132" frameY="-52" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10007" x="0" y="1183" width="498" height="383" frameX="-125" frameY="-60" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10008" x="528" y="1181" width="505" height="381" frameX="-118" frameY="-63" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10009" x="1100" y="1172" width="511" height="380" frameX="-112" frameY="-66" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10010" x="1665" y="1131" width="519" height="378" frameX="-105" frameY="-69" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10011" x="0" y="804" width="526" height="377" frameX="-98" frameY="-72" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10012" x="565" y="802" width="533" height="377" frameX="-92" frameY="-74" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10013" x="1122" y="791" width="541" height="379" frameX="-85" frameY="-74" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10014" x="1786" y="580" width="381" height="549" frameX="-78" frameY="-74" frameWidth="642" frameHeight="548" rotated="true" />
+	<SubTexture name="feto instancia 10015" x="565" y="417" width="555" height="383" frameX="-72" frameY="-73" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10016" x="0" y="416" width="563" height="386" frameX="-65" frameY="-72" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10017" x="1213" y="400" width="571" height="389" frameX="-58" frameY="-71" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10018" x="1801" y="0" width="392" height="578" frameX="-52" frameY="-70" frameWidth="642" frameHeight="548" rotated="true" />
+	<SubTexture name="feto instancia 10019" x="1213" y="0" width="586" height="398" frameX="-45" frameY="-68" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10020" x="607" y="0" width="604" height="415" frameX="-38" frameY="-65" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10021" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10022" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10023" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10024" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10025" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10026" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10027" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10028" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10029" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10030" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10031" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10032" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10033" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10034" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="feto instancia 10035" x="0" y="0" width="605" height="414" frameX="-37" frameY="-64" frameWidth="642" frameHeight="548"/>
+	<SubTexture name="xd instancia 10000" x="472" y="1972" width="460" height="451" frameX="-1" frameY="-1" frameWidth="514" frameHeight="466" rotated="true" />
 </TextureAtlas>

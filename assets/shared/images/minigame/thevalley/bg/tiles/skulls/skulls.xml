@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="skulls.png">
 	<!-- Created with FNF Spritesheet and XML Maker -->
-	<SubTexture name="skulls skulls destroying0000" x="2" y="2" width="59" height="22" frameX="0" frameY="0" frameWidth="59" frameHeight="22"/>
-	<SubTexture name="skulls destroying0001" x="2" y="28" width="59" height="19" frameX="0" frameY="-3" frameWidth="59" frameHeight="22"/>
-	<SubTexture name="skulls destroy0000" x="2" y="51" width="59" height="14" frameX="0" frameY="-8" frameWidth="59" frameHeight="22"/>
+	<SubTexture name="skulls skulls destroying0000" x="0" y="0" width="59" height="22" frameX="0" frameY="0" frameWidth="59" frameHeight="22"/>
+	<SubTexture name="skulls destroying0001" x="0" y="24" width="59" height="19" frameX="0" frameY="-3" frameWidth="59" frameHeight="22"/>
+	<SubTexture name="skulls destroy0000" x="0" y="45" width="59" height="14" frameX="0" frameY="-8" frameWidth="59" frameHeight="22"/>
 </TextureAtlas>

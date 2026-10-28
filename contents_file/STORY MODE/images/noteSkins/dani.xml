@@ -2,8 +2,8 @@
 <TextureAtlas imagePath="dani.png">
 	<!-- Created with Adobe Animate version 24.0.10.14 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="blue0000" x="40" y="40" width="194" height="196"/>
-	<SubTexture name="green0000" x="309" y="40" width="194" height="196"/>
-	<SubTexture name="purple0000" x="40" y="311" width="196" height="194"/>
-	<SubTexture name="red0000" x="311" y="311" width="196" height="192"/>
+	<SubTexture name="blue0000" x="0" y="562" width="187" height="184" frameX="-3" frameY="-2" frameWidth="194" frameHeight="196" rotated="true" />
+	<SubTexture name="green0000" x="0" y="374" width="188" height="186" frameX="-2" frameY="-3" frameWidth="194" frameHeight="196" rotated="true" />
+	<SubTexture name="purple0000" x="0" y="187" width="187" height="185" frameX="-3" frameY="-3" frameWidth="196" frameHeight="194" />
+	<SubTexture name="red0000" x="0" y="0" width="188" height="185" frameX="-2" frameY="-2" frameWidth="196" frameHeight="192" />
 </TextureAtlas>

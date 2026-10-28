@@ -2,27 +2,27 @@
 <TextureAtlas imagePath="sebasolas.png">
 	<!-- Created with Adobe Animate version 24.0.3.19 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="olas instancia 10000" x="100" y="100" width="561" height="96" frameX="-44" frameY="-33" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10001" x="100" y="100" width="561" height="96" frameX="-44" frameY="-33" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10002" x="100" y="100" width="561" height="96" frameX="-44" frameY="-33" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10003" x="761" y="100" width="606" height="139" frameX="-24" frameY="-6" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10004" x="761" y="100" width="606" height="139" frameX="-24" frameY="-6" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10005" x="761" y="100" width="606" height="139" frameX="-24" frameY="-6" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10006" x="100" y="339" width="619" height="162" frameX="-19" frameY="0" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10007" x="100" y="339" width="619" height="162" frameX="-19" frameY="0" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10008" x="100" y="339" width="619" height="162" frameX="-19" frameY="0" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10009" x="819" y="339" width="628" height="166" frameX="-11" frameY="-2" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10010" x="819" y="339" width="628" height="166" frameX="-11" frameY="-2" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10011" x="819" y="339" width="628" height="166" frameX="-11" frameY="-2" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10012" x="100" y="605" width="630" height="171" frameX="-6" frameY="-3" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10013" x="100" y="605" width="630" height="171" frameX="-6" frameY="-3" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10014" x="100" y="605" width="630" height="171" frameX="-6" frameY="-3" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10015" x="830" y="605" width="633" height="169" frameX="-3" frameY="-5" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10016" x="830" y="605" width="633" height="169" frameX="-3" frameY="-5" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10017" x="830" y="605" width="633" height="169" frameX="-3" frameY="-5" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10018" x="100" y="876" width="638" height="169" frameX="0" frameY="-5" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10019" x="100" y="876" width="638" height="169" frameX="0" frameY="-5" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10020" x="100" y="876" width="638" height="169" frameX="0" frameY="-5" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10021" x="838" y="876" width="418" height="93" frameX="-109" frameY="-16" frameWidth="639" frameHeight="174"/>
-	<SubTexture name="olas instancia 10022" x="838" y="876" width="418" height="93" frameX="-109" frameY="-16" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10000" x="0" y="984" width="561" height="95" frameX="-44" frameY="-34" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10001" x="0" y="984" width="561" height="95" frameX="-44" frameY="-34" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10002" x="0" y="984" width="561" height="95" frameX="-44" frameY="-34" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10003" x="0" y="844" width="606" height="138" frameX="-24" frameY="-7" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10004" x="0" y="844" width="606" height="138" frameX="-24" frameY="-7" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10005" x="0" y="844" width="606" height="138" frameX="-24" frameY="-7" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10006" x="0" y="681" width="618" height="161" frameX="-19" frameY="-1" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10007" x="0" y="681" width="618" height="161" frameX="-19" frameY="-1" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10008" x="0" y="681" width="618" height="161" frameX="-19" frameY="-1" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10009" x="0" y="514" width="628" height="165" frameX="-11" frameY="-3" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10010" x="0" y="514" width="628" height="165" frameX="-11" frameY="-3" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10011" x="0" y="514" width="628" height="165" frameX="-11" frameY="-3" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10012" x="0" y="0" width="630" height="171" frameX="-6" frameY="-3" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10013" x="0" y="0" width="630" height="171" frameX="-6" frameY="-3" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10014" x="0" y="0" width="630" height="171" frameX="-6" frameY="-3" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10015" x="0" y="344" width="632" height="168" frameX="-3" frameY="-6" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10016" x="0" y="344" width="632" height="168" frameX="-3" frameY="-6" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10017" x="0" y="344" width="632" height="168" frameX="-3" frameY="-6" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10018" x="0" y="173" width="638" height="169" frameX="0" frameY="-5" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10019" x="0" y="173" width="638" height="169" frameX="0" frameY="-5" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10020" x="0" y="173" width="638" height="169" frameX="0" frameY="-5" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10021" x="632" y="0" width="2" height="1" frameX="-470" frameY="-96" frameWidth="639" frameHeight="174"/>
+	<SubTexture name="olas instancia 10022" x="632" y="0" width="2" height="1" frameX="-470" frameY="-96" frameWidth="639" frameHeight="174"/>
 </TextureAtlas>

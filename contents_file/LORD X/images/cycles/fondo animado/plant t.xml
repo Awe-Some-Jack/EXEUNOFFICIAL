@@ -2,54 +2,54 @@
 <TextureAtlas imagePath="plant t.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 50 instancia 10000" x="36" y="36" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10001" x="1227" y="36" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10002" x="2418" y="36" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10003" x="3609" y="36" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10004" x="4800" y="36" width="1171" height="978" frameX="0" frameY="-4" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10005" x="5991" y="36" width="1171" height="978" frameX="0" frameY="-4" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10006" x="36" y="1035" width="1170" height="976" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10007" x="1226" y="1035" width="1170" height="976" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10008" x="2416" y="1035" width="1170" height="976" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10009" x="3606" y="1035" width="1170" height="976" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10010" x="4796" y="1035" width="1170" height="976" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10011" x="5986" y="1035" width="1170" height="976" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10012" x="36" y="2031" width="1170" height="976" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10013" x="1226" y="2031" width="1170" height="976" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10014" x="2416" y="2031" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10015" x="3607" y="2031" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10016" x="4798" y="2031" width="1171" height="981" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10017" x="5989" y="2031" width="1171" height="981" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10018" x="36" y="3032" width="1172" height="982"/>
-	<SubTexture name="Símbolo 50 instancia 10019" x="1228" y="3032" width="1172" height="982"/>
-	<SubTexture name="Símbolo 50 instancia 10020" x="2420" y="3032" width="1172" height="982"/>
-	<SubTexture name="Símbolo 50 instancia 10021" x="3612" y="3032" width="1172" height="982"/>
-	<SubTexture name="Símbolo 50 instancia 10022" x="4804" y="3032" width="1172" height="982"/>
-	<SubTexture name="Símbolo 50 instancia 10023" x="5996" y="3032" width="1172" height="982"/>
-	<SubTexture name="Símbolo 50 instancia 10024" x="36" y="4034" width="1172" height="982"/>
-	<SubTexture name="Símbolo 50 instancia 10025" x="1228" y="4034" width="1172" height="982"/>
-	<SubTexture name="Símbolo 50 instancia 10026" x="36" y="4034" width="1172" height="982"/>
-	<SubTexture name="Símbolo 50 instancia 10027" x="2420" y="4034" width="1171" height="981" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10028" x="3611" y="4034" width="1171" height="981" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10029" x="4802" y="4034" width="1171" height="981" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10030" x="5993" y="4034" width="1171" height="981" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10031" x="36" y="5036" width="1171" height="981" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10032" x="1227" y="5036" width="1171" height="981" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10033" x="2418" y="5036" width="1171" height="980" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10034" x="3609" y="5036" width="1171" height="980" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10035" x="2418" y="5036" width="1171" height="980" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10036" x="4800" y="5036" width="1171" height="980" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10037" x="5991" y="5036" width="1171" height="980" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10038" x="4800" y="5036" width="1171" height="980" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10039" x="36" y="6037" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10040" x="1227" y="6037" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10041" x="2418" y="6037" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10042" x="3609" y="6037" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10043" x="4800" y="6037" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10044" x="5991" y="6037" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10045" x="1227" y="36" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10046" x="36" y="36" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10047" x="1227" y="36" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10048" x="36" y="36" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
-	<SubTexture name="Símbolo 50 instancia 10049" x="1227" y="36" width="1171" height="979" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10000" x="2346" y="2947" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10001" x="3519" y="2947" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10002" x="4692" y="2947" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10003" x="5865" y="2947" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10004" x="4689" y="4907" width="1171" height="977" frameX="0" frameY="-4" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10005" x="5862" y="4907" width="1171" height="977" frameX="0" frameY="-4" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10006" x="0" y="4908" width="1170" height="975" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10007" x="1172" y="4908" width="1170" height="975" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10008" x="0" y="5885" width="1170" height="975" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10009" x="1172" y="5885" width="1170" height="975" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10010" x="4689" y="5886" width="1170" height="975" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10011" x="5861" y="5886" width="1170" height="975" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10012" x="2344" y="5887" width="1170" height="975" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10013" x="3516" y="5887" width="1170" height="975" frameX="0" frameY="-6" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10014" x="2346" y="3927" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10015" x="3519" y="3927" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10016" x="2346" y="983" width="1171" height="980" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10017" x="3519" y="983" width="1171" height="980" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10018" x="0" y="0" width="1172" height="981" frameX="0" frameY="0" frameWidth="1172" frameHeight="982" />
+	<SubTexture name="Símbolo 50 instancia 10019" x="1174" y="0" width="1172" height="981" frameX="0" frameY="0" frameWidth="1172" frameHeight="982" />
+	<SubTexture name="Símbolo 50 instancia 10020" x="2348" y="0" width="1172" height="981" frameX="0" frameY="0" frameWidth="1172" frameHeight="982" />
+	<SubTexture name="Símbolo 50 instancia 10021" x="3522" y="0" width="1172" height="981" frameX="0" frameY="0" frameWidth="1172" frameHeight="982" />
+	<SubTexture name="Símbolo 50 instancia 10022" x="5870" y="0" width="1171" height="981" frameX="0" frameY="0" frameWidth="1172" frameHeight="982" />
+	<SubTexture name="Símbolo 50 instancia 10023" x="0" y="983" width="1171" height="981" frameX="0" frameY="0" frameWidth="1172" frameHeight="982" />
+	<SubTexture name="Símbolo 50 instancia 10024" x="1173" y="983" width="1171" height="981" frameX="0" frameY="0" frameWidth="1172" frameHeight="982" />
+	<SubTexture name="Símbolo 50 instancia 10025" x="4696" y="0" width="1172" height="981" frameX="0" frameY="0" frameWidth="1172" frameHeight="982" />
+	<SubTexture name="Símbolo 50 instancia 10026" x="1173" y="983" width="1171" height="981" frameX="0" frameY="0" frameWidth="1172" frameHeight="982" />
+	<SubTexture name="Símbolo 50 instancia 10027" x="4692" y="983" width="1171" height="980" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10028" x="5865" y="983" width="1171" height="980" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10029" x="2346" y="1965" width="1171" height="980" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10030" x="3519" y="1965" width="1171" height="980" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10031" x="4692" y="1965" width="1171" height="980" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10032" x="5865" y="1965" width="1171" height="980" frameX="0" frameY="-1" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10033" x="0" y="1966" width="1171" height="979" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10034" x="1173" y="1966" width="1171" height="979" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10035" x="0" y="1966" width="1171" height="979" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10036" x="0" y="2947" width="1171" height="979" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10037" x="1173" y="2947" width="1171" height="979" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10038" x="0" y="2947" width="1171" height="979" frameX="0" frameY="-2" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10039" x="4692" y="3927" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10040" x="5865" y="3927" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10041" x="0" y="3928" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10042" x="1173" y="3928" width="1170" height="978" frameX="-1" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10043" x="2345" y="4907" width="1170" height="978" frameX="-1" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10044" x="3517" y="4907" width="1170" height="978" frameX="-1" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10045" x="3519" y="2947" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10046" x="2346" y="2947" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10047" x="3519" y="2947" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10048" x="2346" y="2947" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
+	<SubTexture name="Símbolo 50 instancia 10049" x="3519" y="2947" width="1171" height="978" frameX="0" frameY="-3" frameWidth="1172" frameHeight="982"/>
 </TextureAtlas>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="obstaclesfinal.png">
-<SubTexture name="10000" x="426" y="0" width="158" height="153" frameX="-166" frameY="-166" frameWidth="480" frameHeight="480" />
-<SubTexture name="20000" x="426" y="153" width="155" height="120" frameX="-160" frameY="-184" frameWidth="480" frameHeight="480" />
-<SubTexture name="30000" x="0" y="0" width="284" height="277" frameX="-104" frameY="-92" frameWidth="480" frameHeight="480" />
-<SubTexture name="40000" x="284" y="0" width="142" height="156" frameX="-171" frameY="-164" frameWidth="480" frameHeight="480" />
-<SubTexture name="50000" x="306" y="277" width="177" height="102" frameX="-161" frameY="-186" frameWidth="480" frameHeight="480" />
-<SubTexture name="60000" x="127" y="277" width="179" height="115" frameX="-146" frameY="-187" frameWidth="480" frameHeight="480" />
-<SubTexture name="70000" x="0" y="277" width="127" height="128" frameX="-179" frameY="-178" frameWidth="480" frameHeight="480" />
+<SubTexture name="10000" x="282" y="140" width="154" height="149" frameX="-166" frameY="-166" frameWidth="480" frameHeight="480" />
+<SubTexture name="20000" x="438" y="125" width="116" height="151" frameX="-160" frameY="-184" frameWidth="480" frameHeight="480" rotated="true" />
+<SubTexture name="30000" x="0" y="0" width="280" height="273" frameX="-104" frameY="-92" frameWidth="480" frameHeight="480" />
+<SubTexture name="40000" x="282" y="0" width="152" height="138" frameX="-171" frameY="-164" frameWidth="480" frameHeight="480" rotated="true" />
+<SubTexture name="50000" x="177" y="291" width="173" height="98" frameX="-161" frameY="-186" frameWidth="480" frameHeight="480" />
+<SubTexture name="60000" x="0" y="275" width="175" height="111" frameX="-146" frameY="-187" frameWidth="480" frameHeight="480" />
+<SubTexture name="70000" x="436" y="0" width="124" height="123" frameX="-179" frameY="-178" frameWidth="480" frameHeight="480" rotated="true" />
 </TextureAtlas>

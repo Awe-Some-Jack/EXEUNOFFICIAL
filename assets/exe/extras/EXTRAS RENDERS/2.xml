@@ -2,10 +2,10 @@
 <TextureAtlas imagePath="2.webp">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="xaf instancia 10000" x="40" y="40" width="1486" height="1449"/>
-	<SubTexture name="xaf instancia 10001" x="40" y="40" width="1486" height="1449"/>
-	<SubTexture name="xaf instancia 10002" x="1582" y="40" width="1486" height="1449"/>
-	<SubTexture name="xaf instancia 10003" x="1582" y="40" width="1486" height="1449"/>
-	<SubTexture name="xaf instancia 10004" x="1582" y="40" width="1486" height="1449"/>
-	<SubTexture name="xaf instancia 10005" x="1582" y="40" width="1486" height="1449"/>
+	<SubTexture name="xaf instancia 10000" x="0" y="0" width="1460" height="1435" frameX="-8" frameY="-5" frameWidth="1486" frameHeight="1449" />
+	<SubTexture name="xaf instancia 10001" x="0" y="0" width="1460" height="1435" frameX="-8" frameY="-5" frameWidth="1486" frameHeight="1449" />
+	<SubTexture name="xaf instancia 10002" x="0" y="1437" width="1460" height="1435" frameX="-8" frameY="-5" frameWidth="1486" frameHeight="1449" />
+	<SubTexture name="xaf instancia 10003" x="0" y="1437" width="1460" height="1435" frameX="-8" frameY="-5" frameWidth="1486" frameHeight="1449" />
+	<SubTexture name="xaf instancia 10004" x="0" y="1437" width="1460" height="1435" frameX="-8" frameY="-5" frameWidth="1486" frameHeight="1449" />
+	<SubTexture name="xaf instancia 10005" x="0" y="1437" width="1460" height="1435" frameX="-8" frameY="-5" frameWidth="1486" frameHeight="1449" />
 </TextureAtlas>

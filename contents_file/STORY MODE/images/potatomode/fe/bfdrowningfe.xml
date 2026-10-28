@@ -2,39 +2,39 @@
 <TextureAtlas imagePath="bfdrowningfe.png">
 	<!-- Created with Adobe Animate version 23.0.0.407 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="bfdrown instancia 10000" x="1317" y="988" width="416" height="444" frameX="-47" frameY="-46" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10001" x="883" y="1433" width="416" height="444" frameX="-47" frameY="-46" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10002" x="891" y="516" width="422" height="447" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10003" x="462" y="516" width="419" height="454" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10004" x="462" y="516" width="419" height="454" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10005" x="462" y="516" width="419" height="454" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10006" x="912" y="5" width="415" height="491" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10007" x="912" y="5" width="415" height="491" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10008" x="912" y="5" width="415" height="491" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10009" x="5" y="5" width="442" height="525" frameX="0" frameY="0" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10010" x="5" y="5" width="442" height="525" frameX="0" frameY="0" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10011" x="5" y="1518" width="386" height="477" frameX="-56" frameY="-48" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10012" x="1240" y="1887" width="384" height="468" frameX="-56" frameY="-49" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10013" x="1240" y="1887" width="384" height="468" frameX="-56" frameY="-49" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10014" x="1240" y="1887" width="384" height="468" frameX="-56" frameY="-49" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10015" x="401" y="1914" width="391" height="462" frameX="-47" frameY="-48" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10016" x="401" y="1914" width="391" height="462" frameX="-47" frameY="-48" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10017" x="401" y="1914" width="391" height="462" frameX="-47" frameY="-48" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10018" x="1634" y="1442" width="394" height="455" frameX="-47" frameY="-49" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10019" x="418" y="1443" width="400" height="461" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10020" x="418" y="1443" width="400" height="461" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10021" x="5" y="1049" width="403" height="459" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10022" x="5" y="1049" width="403" height="459" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10023" x="1337" y="496" width="410" height="482" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10024" x="1337" y="5" width="411" height="481" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10025" x="1337" y="5" width="411" height="481" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10026" x="457" y="5" width="445" height="501" frameX="0" frameY="0" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10027" x="5" y="540" width="447" height="499" frameX="0" frameY="0" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10028" x="1634" y="1907" width="391" height="452" frameX="-56" frameY="-47" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10029" x="1634" y="1907" width="391" height="452" frameX="-56" frameY="-47" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10030" x="828" y="1887" width="402" height="453" frameX="-56" frameY="-46" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10031" x="828" y="1887" width="402" height="453" frameX="-56" frameY="-46" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10032" x="462" y="980" width="411" height="453" frameX="-47" frameY="-46" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10033" x="891" y="973" width="416" height="450" frameX="-47" frameY="-46" frameWidth="463" frameHeight="525"/>
-	<SubTexture name="bfdrown instancia 10034" x="891" y="973" width="416" height="450" frameX="-47" frameY="-46" frameWidth="463" frameHeight="525"/>
+	<SubTexture name="bfdrown instancia 10000" x="449" y="1675" width="444" height="415" frameX="-47" frameY="-46" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10001" x="1361" y="1692" width="444" height="415" frameX="-47" frameY="-46" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10002" x="0" y="1659" width="447" height="421" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10003" x="1431" y="879" width="454" height="419" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10004" x="1431" y="879" width="454" height="419" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10005" x="1431" y="879" width="454" height="419" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10006" x="1531" y="0" width="414" height="491" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525"/>
+	<SubTexture name="bfdrown instancia 10007" x="1531" y="0" width="414" height="491" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525"/>
+	<SubTexture name="bfdrown instancia 10008" x="1531" y="0" width="414" height="491" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525"/>
+	<SubTexture name="bfdrown instancia 10009" x="0" y="0" width="525" height="441" frameX="0" frameY="0" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10010" x="0" y="0" width="525" height="441" frameX="0" frameY="0" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10011" x="967" y="448" width="477" height="386" frameX="-56" frameY="-48" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10012" x="1446" y="493" width="467" height="384" frameX="-56" frameY="-50" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10013" x="1446" y="493" width="467" height="384" frameX="-56" frameY="-50" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10014" x="1446" y="493" width="467" height="384" frameX="-56" frameY="-50" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10015" x="967" y="836" width="462" height="391" frameX="-47" frameY="-48" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10016" x="967" y="836" width="462" height="391" frameX="-47" frameY="-48" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10017" x="967" y="836" width="462" height="391" frameX="-47" frameY="-48" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10018" x="924" y="1229" width="454" height="393" frameX="-47" frameY="-50" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10019" x="0" y="854" width="461" height="399" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10020" x="0" y="854" width="461" height="399" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10021" x="463" y="858" width="459" height="402" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10022" x="463" y="858" width="459" height="402" frameX="-41" frameY="-43" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10023" x="0" y="443" width="482" height="409" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10024" x="484" y="446" width="481" height="410" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10025" x="484" y="446" width="481" height="410" frameX="-34" frameY="-20" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10026" x="527" y="0" width="501" height="444" frameX="0" frameY="0" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10027" x="1030" y="0" width="499" height="446" frameX="0" frameY="0" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10028" x="1380" y="1300" width="452" height="390" frameX="-56" frameY="-47" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10029" x="1380" y="1300" width="452" height="390" frameX="-56" frameY="-47" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10030" x="0" y="1255" width="453" height="402" frameX="-56" frameY="-46" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10031" x="0" y="1255" width="453" height="402" frameX="-56" frameY="-46" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10032" x="455" y="1262" width="452" height="411" frameX="-47" frameY="-46" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10033" x="909" y="1624" width="450" height="415" frameX="-47" frameY="-46" frameWidth="463" frameHeight="525" rotated="true" />
+	<SubTexture name="bfdrown instancia 10034" x="909" y="1624" width="450" height="415" frameX="-47" frameY="-46" frameWidth="463" frameHeight="525" rotated="true" />
 </TextureAtlas>

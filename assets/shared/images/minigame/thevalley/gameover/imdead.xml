@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="imdead.png">
-<SubTexture name="imdead dead0000" x="0" y="0" width="660" height="380" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
-<SubTexture name="imdead dead0001" x="660" y="0" width="660" height="380" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
-<SubTexture name="imdead dead0002" x="0" y="380" width="660" height="380" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
-<SubTexture name="imdead dead0003" x="660" y="380" width="660" height="380" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
-<SubTexture name="imdead dead0004" x="0" y="760" width="660" height="380" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
-<SubTexture name="imdead dead0005" x="0" y="760" width="660" height="380" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
+<SubTexture name="imdead dead0000" x="0" y="0" width="640" height="360" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
+<SubTexture name="imdead dead0001" x="0" y="362" width="640" height="360" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
+<SubTexture name="imdead dead0002" x="0" y="724" width="640" height="360" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
+<SubTexture name="imdead dead0003" x="0" y="1086" width="640" height="360" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
+<SubTexture name="imdead dead0004" x="0" y="1448" width="640" height="360" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
+<SubTexture name="imdead dead0005" x="0" y="1448" width="640" height="360" frameX="0" frameY="0" frameWidth="640" frameHeight="360" />
 </TextureAtlas>

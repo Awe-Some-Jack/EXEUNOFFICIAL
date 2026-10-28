@@ -1,92 +1,92 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="sonic.webp">
-<SubTexture name="idle0000" x="0" y="0" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="bored0000" x="0" y="65" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="bored0001" x="65" y="0" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="bored-loop0000" x="0" y="65" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="bored-loop0001" x="65" y="65" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkNon000" x="130" y="0" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkNon001" x="130" y="65" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkNon002" x="0" y="130" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkNon003" x="65" y="130" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkNon004" x="130" y="130" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkNon0005" x="195" y="0" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkAngled0000" x="195" y="65" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkAngled0001" x="195" y="130" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkAngled0002" x="0" y="195" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkAngled0003" x="65" y="195" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkAngled0004" x="130" y="195" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="walkAngled0005" x="195" y="195" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="timetravel0000" x="260" y="0" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="timetravel0001" x="260" y="65" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="timetravel0002" x="260" y="130" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="timetravel0003" x="260" y="195" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="timetravel0004" x="0" y="260" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="skid0000" x="65" y="260" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="skid0001" x="130" y="260" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="push0000" x="195" y="260" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="push0001" x="260" y="260" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="push0002" x="325" y="0" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="push0003" x="325" y="65" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="peelout0000" x="325" y="130" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="peelout0001" x="325" y="195" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="peelout0002" x="325" y="260" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="peelout0003" x="0" y="325" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="peeloutAngled0000" x="65" y="325" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="peeloutAngled0001" x="130" y="325" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="peeloutAngled0002" x="195" y="325" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="peeloutAngled0003" x="260" y="325" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="down0000" x="325" y="325" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="up0000" x="390" y="0" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="jump0000" x="390" y="65" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="jump0001" x="390" y="130" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="jump0002" x="390" y="195" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="jump0003" x="390" y="260" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="jump0004" x="390" y="325" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0000" x="0" y="390" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0001" x="65" y="390" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0002" x="130" y="390" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0003" x="65" y="390" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0004" x="130" y="390" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0005" x="0" y="390" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0006" x="195" y="390" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0007" x="260" y="390" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0008" x="325" y="390" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0009" x="390" y="390" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0010" x="455" y="0" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="outtahere0011" x="455" y="65" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="death0000" x="455" y="130" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="hit0000" x="455" y="195" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="balance-forward0000" x="455" y="260" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="balance-forward0001" x="455" y="325" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="balance-forward0002" x="455" y="390" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="balance-forward0003" x="0" y="455" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="balance-back0000" x="65" y="455" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="balance-back0001" x="130" y="455" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="balance-back0002" x="195" y="455" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="balance-back0003" x="260" y="455" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="baserunNon0000" x="325" y="455" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="baserunNon0001" x="390" y="455" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="baserunNon0002" x="455" y="455" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="baserunNon0003" x="520" y="0" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="baserunAngled0000" x="520" y="65" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="baserunAngled0001" x="520" y="130" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="baserunAngled0002" x="520" y="195" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="baserunAngled0003" x="520" y="260" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0000" x="0" y="520" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0001" x="65" y="520" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0002" x="130" y="520" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0003" x="195" y="520" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0004" x="260" y="520" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0005" x="325" y="520" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0006" x="390" y="520" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0007" x="455" y="520" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0008" x="0" y="585" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0009" x="65" y="585" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0010" x="130" y="585" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0011" x="195" y="585" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0012" x="260" y="585" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0013" x="325" y="585" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0014" x="390" y="585" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
-<SubTexture name="spindash0015" x="455" y="585" width="65" height="65" frameX="0" frameY="0" frameWidth="59" frameHeight="59" />
+<SubTexture name="idle0000" x="240" y="180" width="39" height="29" frameX="-15" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="bored0000" x="321" y="148" width="38" height="30" frameX="-17" frameY="-13" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="bored0001" x="361" y="148" width="38" height="30" frameX="-17" frameY="-13" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="bored-loop0000" x="321" y="148" width="38" height="30" frameX="-17" frameY="-13" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="bored-loop0001" x="281" y="180" width="38" height="29" frameX="-17" frameY="-13" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="walkNon000" x="153" y="240" width="37" height="24" frameX="-19" frameY="-13" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="walkNon001" x="206" y="78" width="37" height="36" frameX="-13" frameY="-13" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="walkNon002" x="321" y="180" width="38" height="29" frameX="-14" frameY="-13" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="walkNon003" x="371" y="211" width="37" height="27" frameX="-18" frameY="-13" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="walkNon004" x="0" y="36" width="37" height="37" frameX="-14" frameY="-13" frameWidth="59" frameHeight="59" />
+<SubTexture name="walkNon0005" x="366" y="114" width="38" height="32" frameX="-18" frameY="-13" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="walkAngled0000" x="38" y="111" width="37" height="34" frameX="-15" frameY="-11" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="walkAngled0001" x="317" y="40" width="43" height="36" frameX="-15" frameY="-11" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="walkAngled0002" x="283" y="78" width="40" height="35" frameX="-15" frameY="-11" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="walkAngled0003" x="337" y="0" width="38" height="38" frameX="-13" frameY="-13" frameWidth="59" frameHeight="59" />
+<SubTexture name="walkAngled0004" x="208" y="0" width="43" height="38" frameX="-13" frameY="-13" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="walkAngled0005" x="0" y="0" width="41" height="34" frameX="-13" frameY="-13" frameWidth="59" frameHeight="59" />
+<SubTexture name="timetravel0000" x="194" y="180" width="44" height="29" frameX="-17" frameY="-9" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="timetravel0001" x="270" y="241" width="44" height="20" frameX="-20" frameY="-9" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="timetravel0002" x="63" y="237" width="43" height="25" frameX="-20" frameY="-9" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="timetravel0003" x="108" y="239" width="43" height="25" frameX="-18" frameY="-9" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="timetravel0004" x="316" y="241" width="44" height="20" frameX="-23" frameY="-9" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="skid0000" x="38" y="147" width="35" height="30" frameX="-15" frameY="-15" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="skid0001" x="328" y="115" width="36" height="31" frameX="-14" frameY="-15" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="push0000" x="37" y="179" width="36" height="29" frameX="-12" frameY="-15" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="push0001" x="192" y="240" width="37" height="24" frameX="-17" frameY="-14" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="push0002" x="333" y="211" width="36" height="28" frameX="-13" frameY="-15" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="push0003" x="231" y="240" width="37" height="24" frameX="-17" frameY="-14" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="peelout0000" x="126" y="0" width="39" height="31" frameX="-11" frameY="-20" frameWidth="59" frameHeight="59" />
+<SubTexture name="peelout0001" x="85" y="0" width="39" height="32" frameX="-11" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="peelout0002" x="167" y="0" width="39" height="31" frameX="-11" frameY="-20" frameWidth="59" frameHeight="59" />
+<SubTexture name="peelout0003" x="377" y="0" width="32" height="38" frameX="-12" frameY="-19" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="peeloutAngled0000" x="43" y="30" width="37" height="41" frameX="-15" frameY="-12" frameWidth="59" frameHeight="59" />
+<SubTexture name="peeloutAngled0001" x="122" y="110" width="40" height="34" frameX="-15" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="peeloutAngled0002" x="126" y="33" width="43" height="37" frameX="-15" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="peeloutAngled0003" x="325" y="78" width="39" height="35" frameX="-15" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="down0000" x="262" y="211" width="29" height="26" frameX="-19" frameY="-25" frameWidth="59" frameHeight="59" />
+<SubTexture name="up0000" x="293" y="211" width="38" height="28" frameX="-15" frameY="-13" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="jump0000" x="162" y="149" width="30" height="30" frameX="-16" frameY="-16" frameWidth="59" frameHeight="59" />
+<SubTexture name="jump0001" x="361" y="180" width="30" height="29" frameX="-16" frameY="-16" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="jump0002" x="194" y="149" width="30" height="29" frameX="-16" frameY="-16" frameWidth="59" frameHeight="59" />
+<SubTexture name="jump0003" x="0" y="181" width="30" height="29" frameX="-17" frameY="-16" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="jump0004" x="75" y="177" width="30" height="29" frameX="-16" frameY="-17" frameWidth="59" frameHeight="59" />
+<SubTexture name="outtahere0000" x="121" y="146" width="39" height="30" frameX="-18" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="outtahere0001" x="287" y="115" width="39" height="31" frameX="-17" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="outtahere0002" x="239" y="148" width="39" height="30" frameX="-18" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="outtahere0003" x="287" y="115" width="39" height="31" frameX="-17" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="outtahere0004" x="239" y="148" width="39" height="30" frameX="-18" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="outtahere0005" x="121" y="146" width="39" height="30" frameX="-18" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="outtahere0006" x="77" y="145" width="42" height="30" frameX="-18" frameY="-9" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="outtahere0007" x="0" y="212" width="26" height="39" frameX="-18" frameY="-12" frameWidth="59" frameHeight="59" />
+<SubTexture name="outtahere0008" x="245" y="78" width="36" height="35" frameX="-13" frameY="-16" frameWidth="59" frameHeight="59" />
+<SubTexture name="outtahere0009" x="270" y="40" width="45" height="36" frameX="-13" frameY="-9" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="outtahere0010" x="171" y="40" width="48" height="36" frameX="-13" frameY="-7" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="outtahere0011" x="221" y="40" width="47" height="36" frameX="-13" frameY="-8" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="death0000" x="366" y="78" width="43" height="34" frameX="-13" frameY="-9" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="hit0000" x="43" y="0" width="40" height="28" frameX="-11" frameY="-17" frameWidth="59" frameHeight="59" />
+<SubTexture name="balance-forward0000" x="362" y="40" width="40" height="36" frameX="-7" frameY="-11" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="balance-forward0001" x="245" y="115" width="40" height="31" frameX="-9" frameY="-11" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="balance-forward0002" x="77" y="111" width="39" height="32" frameX="-7" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="balance-forward0003" x="280" y="148" width="39" height="30" frameX="-9" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="balance-back0000" x="253" y="0" width="40" height="38" frameX="-12" frameY="-11" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="balance-back0001" x="81" y="73" width="39" height="36" frameX="-12" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="balance-back0002" x="0" y="75" width="36" height="39" frameX="-12" frameY="-12" frameWidth="59" frameHeight="59" />
+<SubTexture name="balance-back0003" x="295" y="0" width="40" height="38" frameX="-12" frameY="-11" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="baserunNon0000" x="202" y="116" width="35" height="31" frameX="-15" frameY="-16" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="baserunNon0001" x="0" y="116" width="36" height="31" frameX="-15" frameY="-15" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="baserunNon0002" x="0" y="149" width="35" height="30" frameX="-16" frameY="-16" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="baserunNon0003" x="164" y="116" width="36" height="31" frameX="-15" frameY="-15" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="baserunAngled0000" x="82" y="34" width="39" height="37" frameX="-13" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="baserunAngled0001" x="123" y="72" width="40" height="36" frameX="-14" frameY="-11" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="baserunAngled0002" x="165" y="78" width="39" height="36" frameX="-13" frameY="-12" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="baserunAngled0003" x="39" y="73" width="40" height="36" frameX="-14" frameY="-11" frameWidth="59" frameHeight="59" rotated="true" />
+<SubTexture name="spindash0000" x="107" y="178" width="30" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0001" x="139" y="181" width="29" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0002" x="107" y="178" width="30" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0003" x="107" y="207" width="29" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0004" x="107" y="178" width="30" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0005" x="75" y="208" width="29" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0006" x="107" y="178" width="30" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0007" x="32" y="210" width="29" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0008" x="107" y="178" width="30" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0009" x="138" y="210" width="29" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0010" x="107" y="178" width="30" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0011" x="169" y="211" width="29" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0012" x="107" y="178" width="30" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0013" x="200" y="211" width="29" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0014" x="107" y="178" width="30" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
+<SubTexture name="spindash0015" x="231" y="211" width="29" height="27" frameX="-16" frameY="-19" frameWidth="59" frameHeight="59" />
 </TextureAtlas>

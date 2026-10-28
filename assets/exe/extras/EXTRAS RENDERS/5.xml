@@ -2,10 +2,10 @@
 <TextureAtlas imagePath="5.webp">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="oro instancia 10000" x="40" y="40" width="1486" height="1454"/>
-	<SubTexture name="oro instancia 10001" x="40" y="40" width="1486" height="1454"/>
-	<SubTexture name="oro instancia 10002" x="1582" y="40" width="1486" height="1454"/>
-	<SubTexture name="oro instancia 10003" x="1582" y="40" width="1486" height="1454"/>
-	<SubTexture name="oro instancia 10004" x="3124" y="40" width="1486" height="1454"/>
-	<SubTexture name="oro instancia 10005" x="3124" y="40" width="1486" height="1454"/>
+	<SubTexture name="oro instancia 10000" x="0" y="0" width="1478" height="1441" frameX="-7" frameY="-3" frameWidth="1486" frameHeight="1454" />
+	<SubTexture name="oro instancia 10001" x="0" y="0" width="1478" height="1441" frameX="-7" frameY="-3" frameWidth="1486" frameHeight="1454" />
+	<SubTexture name="oro instancia 10002" x="1480" y="0" width="1460" height="1441" frameX="-8" frameY="-3" frameWidth="1486" frameHeight="1454" />
+	<SubTexture name="oro instancia 10003" x="1480" y="0" width="1460" height="1441" frameX="-8" frameY="-3" frameWidth="1486" frameHeight="1454" />
+	<SubTexture name="oro instancia 10004" x="2942" y="0" width="1460" height="1441" frameX="-8" frameY="-3" frameWidth="1486" frameHeight="1454" />
+	<SubTexture name="oro instancia 10005" x="2942" y="0" width="1460" height="1441" frameX="-8" frameY="-3" frameWidth="1486" frameHeight="1454" />
 </TextureAtlas>

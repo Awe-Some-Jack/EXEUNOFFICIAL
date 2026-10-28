@@ -2,199 +2,199 @@
 <TextureAtlas imagePath="digitalized boyfriend.png">
 	<!-- Created using the Spritesheet and XML generator -->
 	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
-	<SubTexture name="xterion bf down00010000" x="3814" y="4406" width="268" height="412" frameX="-189" frameY="-205" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00020000" x="4349" y="4406" width="267" height="411" frameX="-187" frameY="-208" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00030000" x="5046" y="4322" width="269" height="412" frameX="-184" frameY="-208" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00040000" x="2729" y="4406" width="274" height="414" frameX="-179" frameY="-206" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00050000" x="2451" y="4406" width="278" height="414" frameX="-174" frameY="-204" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00060000" x="2340" y="1778" width="278" height="416" frameX="-175" frameY="-201" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00070000" x="816" y="4853" width="274" height="417" frameX="-180" frameY="-198" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00080000" x="5046" y="3048" width="268" height="418" frameX="-188" frameY="-196" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00090000" x="5574" y="419" width="261" height="419" frameX="-196" frameY="-193" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00100000" x="5315" y="1278" width="259" height="424" frameX="-200" frameY="-187" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00110000" x="5315" y="0" width="259" height="427" frameX="-201" frameY="-182" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00120000" x="5046" y="3894" width="260" height="428" frameX="-201" frameY="-180" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00130000" x="5046" y="2195" width="263" height="435" frameX="-201" frameY="-172" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00140000" x="5046" y="1321" width="267" height="439" frameX="-202" frameY="-166" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00150000" x="4027" y="3959" width="271" height="443" frameX="-202" frameY="-161" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00160000" x="4774" y="1789" width="272" height="446" frameX="-203" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00170000" x="4495" y="3614" width="272" height="447" frameX="-204" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00180000" x="4774" y="447" width="271" height="448" frameX="-205" frameY="-153" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00190000" x="4774" y="3133" width="270" height="449" frameX="-206" frameY="-152" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf down00200000" x="4774" y="2235" width="270" height="449" frameX="-206" frameY="-151" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00010000" x="0" y="3959" width="291" height="447" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00020000" x="1455" y="3959" width="291" height="447" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00030000" x="4203" y="2680" width="291" height="447" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00040000" x="4203" y="3127" width="291" height="447" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00050000" x="291" y="3959" width="291" height="447" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00060000" x="873" y="3959" width="291" height="447" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00070000" x="879" y="3512" width="291" height="446" frameX="-194" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00080000" x="1751" y="3512" width="290" height="446" frameX="-194" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00090000" x="1746" y="3959" width="290" height="447" frameX="-194" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00100000" x="2036" y="3959" width="290" height="447" frameX="-194" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00110000" x="2326" y="3959" width="290" height="447" frameX="-194" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00120000" x="2621" y="3512" width="290" height="446" frameX="-194" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00130000" x="3490" y="3512" width="289" height="446" frameX="-194" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00140000" x="2616" y="3959" width="289" height="447" frameX="-194" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00150000" x="2905" y="3959" width="289" height="447" frameX="-194" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00160000" x="3779" y="3512" width="289" height="446" frameX="-194" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00170000" x="3201" y="3512" width="289" height="446" frameX="-194" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00180000" x="3194" y="3959" width="289" height="446" frameX="-194" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00190000" x="2911" y="3512" width="290" height="446" frameX="-193" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00200000" x="2041" y="3512" width="290" height="446" frameX="-193" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00210000" x="2331" y="3512" width="290" height="446" frameX="-193" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00220000" x="1461" y="3512" width="290" height="446" frameX="-193" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00230000" x="582" y="3959" width="291" height="447" frameX="-192" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00240000" x="1170" y="3512" width="291" height="446" frameX="-192" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00250000" x="4203" y="2234" width="292" height="446" frameX="-192" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00260000" x="4203" y="1788" width="292" height="446" frameX="-192" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00270000" x="4203" y="1341" width="292" height="447" frameX="-192" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00280000" x="4203" y="0" width="292" height="447" frameX="-192" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00290000" x="293" y="3512" width="293" height="446" frameX="-192" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00300000" x="586" y="3512" width="293" height="446" frameX="-192" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00310000" x="0" y="3512" width="293" height="447" frameX="-192" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00320000" x="4203" y="447" width="292" height="447" frameX="-193" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00330000" x="4203" y="894" width="292" height="447" frameX="-193" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00340000" x="1164" y="3959" width="291" height="447" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf idle00350000" x="0" y="3959" width="291" height="447" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00010000" x="1706" y="0" width="335" height="429" frameX="-137" frameY="-153" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00020000" x="682" y="874" width="344" height="428" frameX="-124" frameY="-150" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00030000" x="1028" y="0" width="345" height="431" frameX="-123" frameY="-146" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00040000" x="0" y="439" width="344" height="435" frameX="-124" frameY="-142" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00050000" x="0" y="0" width="342" height="439" frameX="-127" frameY="-139" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00060000" x="0" y="874" width="338" height="439" frameX="-132" frameY="-140" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00070000" x="1373" y="438" width="333" height="438" frameX="-138" frameY="-142" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00080000" x="2658" y="436" width="327" height="436" frameX="-145" frameY="-146" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00090000" x="656" y="2201" width="322" height="434" frameX="-151" frameY="-149" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00100000" x="977" y="1768" width="317" height="433" frameX="-156" frameY="-151" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00110000" x="1618" y="1313" width="314" height="431" frameX="-160" frameY="-153" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00120000" x="1605" y="1768" width="311" height="430" frameX="-163" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00130000" x="1706" y="884" width="308" height="429" frameX="-166" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00140000" x="1026" y="874" width="306" height="428" frameX="-168" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00150000" x="1910" y="2201" width="304" height="428" frameX="-170" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00160000" x="308" y="3076" width="302" height="427" frameX="-172" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00170000" x="911" y="3076" width="301" height="427" frameX="-173" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00180000" x="1212" y="3076" width="300" height="427" frameX="-174" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00190000" x="2112" y="3076" width="300" height="427" frameX="-174" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf left00200000" x="2412" y="3076" width="299" height="427" frameX="-175" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00010000" x="1706" y="429" width="315" height="455" frameX="-205" frameY="-141" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00020000" x="2340" y="0" width="318" height="449" frameX="-205" frameY="-144" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00030000" x="2658" y="1746" width="324" height="438" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00040000" x="975" y="1313" width="329" height="432" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00050000" x="1373" y="876" width="331" height="432" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00060000" x="330" y="1768" width="330" height="433" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00070000" x="328" y="2201" width="328" height="435" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00080000" x="2658" y="872" width="326" height="437" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00090000" x="2658" y="2184" width="324" height="438" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00100000" x="2985" y="1814" width="321" height="440" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00110000" x="640" y="2636" width="319" height="440" frameX="-205" frameY="-149" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00120000" x="2340" y="1338" width="317" height="440" frameX="-205" frameY="-150" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00130000" x="959" y="2636" width="314" height="439" frameX="-205" frameY="-152" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00140000" x="1899" y="2636" width="312" height="439" frameX="-205" frameY="-153" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00150000" x="2521" y="2636" width="310" height="437" frameX="-205" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00160000" x="2831" y="2636" width="308" height="436" frameX="-205" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00170000" x="3606" y="0" width="307" height="437" frameX="-205" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00180000" x="3606" y="1752" width="306" height="437" frameX="-205" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00190000" x="3606" y="2626" width="305" height="438" frameX="-205" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf right00200000" x="3606" y="1313" width="305" height="439" frameX="-205" frameY="-154" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00010000" x="2041" y="0" width="299" height="478" frameX="-188" frameY="-123" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00020000" x="2985" y="876" width="302" height="469" frameX="-183" frameY="-132" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00030000" x="2041" y="956" width="297" height="462" frameX="-180" frameY="-140" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00040000" x="3913" y="911" width="287" height="457" frameX="-179" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00050000" x="4495" y="0" width="279" height="452" frameX="-178" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00060000" x="4495" y="2718" width="275" height="448" frameX="-177" frameY="-161" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00070000" x="3483" y="3959" width="272" height="444" frameX="-177" frameY="-165" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00080000" x="1086" y="4406" width="273" height="439" frameX="-176" frameY="-170" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00090000" x="1359" y="4406" width="273" height="434" frameX="-176" frameY="-175" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00100000" x="1905" y="4406" width="273" height="433" frameX="-177" frameY="-176" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00110000" x="271" y="4853" width="271" height="436" frameX="-178" frameY="-172" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00120000" x="5046" y="441" width="269" height="441" frameX="-180" frameY="-166" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00130000" x="0" y="4406" width="271" height="447" frameX="-180" frameY="-159" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00140000" x="4495" y="2266" width="274" height="452" frameX="-180" frameY="-153" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00150000" x="4495" y="904" width="277" height="455" frameX="-180" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00160000" x="3913" y="2743" width="283" height="459" frameX="-179" frameY="-143" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00170000" x="3913" y="1826" width="286" height="458" frameX="-179" frameY="-141" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00180000" x="3309" y="920" width="288" height="458" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00190000" x="3309" y="1378" width="289" height="456" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion bf up00200000" x="3913" y="0" width="290" height="454" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00010000" x="3546" y="4406" width="268" height="412" frameX="-189" frameY="-205" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00020000" x="4082" y="4406" width="267" height="411" frameX="-187" frameY="-208" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00030000" x="3277" y="4406" width="269" height="412" frameX="-184" frameY="-208" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00040000" x="3003" y="4406" width="274" height="414" frameX="-179" frameY="-206" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00050000" x="3288" y="3076" width="278" height="414" frameX="-174" frameY="-204" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00060000" x="3010" y="3076" width="278" height="416" frameX="-175" frameY="-201" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00070000" x="542" y="4853" width="274" height="417" frameX="-180" frameY="-198" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00080000" x="5046" y="2630" width="268" height="418" frameX="-188" frameY="-196" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00090000" x="5574" y="0" width="261" height="419" frameX="-196" frameY="-193" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00100000" x="5315" y="854" width="259" height="424" frameX="-200" frameY="-187" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00110000" x="5315" y="427" width="259" height="427" frameX="-201" frameY="-182" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00120000" x="5046" y="3466" width="260" height="428" frameX="-201" frameY="-180" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00130000" x="5046" y="1760" width="263" height="435" frameX="-201" frameY="-172" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00140000" x="5046" y="882" width="267" height="439" frameX="-202" frameY="-166" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00150000" x="542" y="4406" width="271" height="443" frameX="-202" frameY="-161" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00160000" x="4774" y="1343" width="272" height="446" frameX="-203" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00170000" x="4774" y="0" width="272" height="447" frameX="-204" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00180000" x="4774" y="895" width="271" height="448" frameX="-205" frameY="-153" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00190000" x="4774" y="3582" width="270" height="449" frameX="-206" frameY="-152" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissDown instance00200000" x="4774" y="2684" width="270" height="449" frameX="-206" frameY="-151" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00010000" x="689" y="439" width="335" height="429" frameX="-137" frameY="-153" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00020000" x="338" y="874" width="344" height="428" frameX="-124" frameY="-150" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00030000" x="344" y="439" width="345" height="431" frameX="-123" frameY="-146" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00040000" x="684" y="0" width="344" height="435" frameX="-124" frameY="-142" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00050000" x="342" y="0" width="342" height="439" frameX="-127" frameY="-139" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00060000" x="1028" y="431" width="338" height="439" frameX="-132" frameY="-140" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00070000" x="1373" y="0" width="333" height="438" frameX="-138" frameY="-142" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00080000" x="2658" y="0" width="327" height="436" frameX="-145" frameY="-146" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00090000" x="978" y="2201" width="322" height="434" frameX="-151" frameY="-149" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00100000" x="660" y="1768" width="317" height="433" frameX="-156" frameY="-151" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00110000" x="1304" y="1313" width="314" height="431" frameX="-160" frameY="-153" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00120000" x="1294" y="1768" width="311" height="430" frameX="-163" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00130000" x="1916" y="1768" width="308" height="429" frameX="-166" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00140000" x="1300" y="2201" width="306" height="428" frameX="-168" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00150000" x="1606" y="2201" width="304" height="428" frameX="-170" frameY="-157" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00160000" x="2214" y="2201" width="302" height="427" frameX="-172" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00170000" x="610" y="3076" width="301" height="427" frameX="-173" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00180000" x="1512" y="3076" width="300" height="427" frameX="-174" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00190000" x="1812" y="3076" width="300" height="427" frameX="-174" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissLeft instance00200000" x="2711" y="3076" width="299" height="427" frameX="-175" frameY="-158" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00010000" x="0" y="1313" width="315" height="455" frameX="-205" frameY="-141" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00020000" x="2340" y="449" width="318" height="449" frameX="-205" frameY="-144" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00030000" x="2985" y="438" width="324" height="438" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00040000" x="646" y="1313" width="329" height="432" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00050000" x="315" y="1313" width="331" height="432" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00060000" x="0" y="1768" width="330" height="433" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00070000" x="0" y="2201" width="328" height="435" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00080000" x="2658" y="1309" width="326" height="437" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00090000" x="2985" y="0" width="324" height="438" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00100000" x="0" y="2636" width="321" height="440" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00110000" x="321" y="2636" width="319" height="440" frameX="-205" frameY="-149" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00120000" x="2340" y="898" width="317" height="440" frameX="-205" frameY="-150" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00130000" x="1273" y="2636" width="314" height="439" frameX="-205" frameY="-152" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00140000" x="1587" y="2636" width="312" height="439" frameX="-205" frameY="-153" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00150000" x="2211" y="2636" width="310" height="437" frameX="-205" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00160000" x="0" y="3076" width="308" height="436" frameX="-205" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00170000" x="3606" y="437" width="307" height="437" frameX="-205" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00180000" x="3606" y="2189" width="306" height="437" frameX="-205" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00190000" x="3606" y="3064" width="305" height="438" frameX="-205" frameY="-155" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissRight instance00200000" x="3606" y="874" width="305" height="439" frameX="-205" frameY="-154" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00010000" x="2041" y="478" width="299" height="478" frameX="-188" frameY="-123" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00020000" x="2985" y="1345" width="302" height="469" frameX="-183" frameY="-132" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00030000" x="3309" y="0" width="297" height="462" frameX="-180" frameY="-140" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00040000" x="3913" y="454" width="287" height="457" frameX="-179" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00050000" x="4495" y="452" width="279" height="452" frameX="-178" frameY="-156" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00060000" x="4495" y="3166" width="275" height="448" frameX="-177" frameY="-161" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00070000" x="3755" y="3959" width="272" height="444" frameX="-177" frameY="-165" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00080000" x="813" y="4406" width="273" height="439" frameX="-176" frameY="-170" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00090000" x="1632" y="4406" width="273" height="434" frameX="-176" frameY="-175" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00100000" x="2178" y="4406" width="273" height="433" frameX="-177" frameY="-176" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00110000" x="0" y="4853" width="271" height="436" frameX="-178" frameY="-172" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00120000" x="5046" y="0" width="269" height="441" frameX="-180" frameY="-166" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00130000" x="271" y="4406" width="271" height="447" frameX="-180" frameY="-159" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00140000" x="4495" y="1814" width="274" height="452" frameX="-180" frameY="-153" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00150000" x="4495" y="1359" width="277" height="455" frameX="-180" frameY="-148" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00160000" x="3913" y="2284" width="283" height="459" frameX="-179" frameY="-143" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00170000" x="3913" y="1368" width="286" height="458" frameX="-179" frameY="-141" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00180000" x="3309" y="462" width="288" height="458" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00190000" x="3309" y="1834" width="289" height="456" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619"/>
-	<SubTexture name="xterion MissUp instance00200000" x="3309" y="2290" width="290" height="454" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion bf down00010000" x="834" y="4574" width="412" height="252" frameX="-205" frameY="-205" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00020000" x="1248" y="4696" width="411" height="267" frameX="-187" frameY="-208" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00030000" x="4793" y="2367" width="63" height="386" frameX="-184" frameY="-208" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion bf down00040000" x="3009" y="4543" width="414" height="274" frameX="-179" frameY="-206" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00050000" x="2153" y="4535" width="414" height="278" frameX="-174" frameY="-204" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00060000" x="0" y="4511" width="416" height="278" frameX="-175" frameY="-201" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00070000" x="1661" y="4893" width="274" height="154" frameX="-180" frameY="-198" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion bf down00080000" x="1284" y="4503" width="418" height="191" frameX="-188" frameY="-196" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00090000" x="3880" y="4464" width="419" height="261" frameX="-196" frameY="-193" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00100000" x="429" y="4275" width="424" height="259" frameX="-200" frameY="-187" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00110000" x="0" y="4250" width="427" height="259" frameX="-201" frameY="-182" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00120000" x="4761" y="4417" width="135" height="410" frameX="-201" frameY="-198" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion bf down00130000" x="3083" y="3209" width="435" height="114" frameX="-201" frameY="-172" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00140000" x="3321" y="4858" width="338" height="150" frameX="-202" frameY="-267" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00150000" x="4049" y="1987" width="443" height="271" frameX="-202" frameY="-161" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00160000" x="2691" y="1745" width="446" height="272" frameX="-203" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00170000" x="4624" y="1029" width="272" height="447" frameX="-204" frameY="-155" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion bf down00180000" x="4174" y="855" width="448" height="271" frameX="-205" frameY="-153" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00190000" x="1827" y="590" width="449" height="270" frameX="-206" frameY="-152" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf down00200000" x="2278" y="590" width="449" height="270" frameX="-206" frameY="-151" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00010000" x="449" y="900" width="447" height="291" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00020000" x="898" y="903" width="447" height="291" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00030000" x="4174" y="1128" width="447" height="291" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00040000" x="3157" y="1131" width="447" height="291" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00050000" x="3606" y="1132" width="447" height="291" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00060000" x="2259" y="1156" width="447" height="291" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00070000" x="1796" y="1450" width="446" height="291" frameX="-194" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00080000" x="1347" y="1454" width="446" height="290" frameX="-194" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00090000" x="1347" y="1162" width="447" height="290" frameX="-194" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00100000" x="0" y="1184" width="447" height="290" frameX="-194" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00110000" x="449" y="1193" width="447" height="290" frameX="-194" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00120000" x="0" y="1476" width="446" height="290" frameX="-194" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00130000" x="3153" y="1697" width="446" height="289" frameX="-194" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00140000" x="892" y="1779" width="443" height="289" frameX="-194" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00150000" x="898" y="1196" width="447" height="289" frameX="-194" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00160000" x="3601" y="1720" width="446" height="289" frameX="-194" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00170000" x="1795" y="1743" width="446" height="289" frameX="-194" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00180000" x="2243" y="1744" width="446" height="289" frameX="-194" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00190000" x="448" y="1485" width="446" height="290" frameX="-193" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00200000" x="896" y="1487" width="446" height="290" frameX="-193" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00210000" x="4504" y="1478" width="290" height="446" frameX="-193" frameY="-158" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion bf idle00220000" x="4054" y="1695" width="446" height="290" frameX="-193" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00230000" x="1808" y="1157" width="447" height="291" frameX="-192" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00240000" x="2705" y="1452" width="446" height="291" frameX="-192" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00250000" x="0" y="4791" width="409" height="292" frameX="-192" frameY="-194" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00260000" x="3541" y="2969" width="436" height="292" frameX="-192" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00270000" x="2259" y="862" width="447" height="292" frameX="-192" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00280000" x="2708" y="865" width="447" height="292" frameX="-192" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00290000" x="3606" y="1425" width="446" height="293" frameX="-192" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00300000" x="2257" y="1449" width="446" height="293" frameX="-192" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00310000" x="1810" y="862" width="447" height="293" frameX="-192" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00320000" x="1359" y="868" width="447" height="292" frameX="-193" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00330000" x="0" y="890" width="447" height="292" frameX="-193" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00340000" x="2708" y="1159" width="447" height="291" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf idle00350000" x="449" y="900" width="447" height="291" frameX="-194" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00010000" x="3449" y="4521" width="415" height="335" frameX="-137" frameY="-167" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00020000" x="1302" y="3855" width="428" height="344" frameX="-124" frameY="-150" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00030000" x="2182" y="3563" width="431" height="345" frameX="-123" frameY="-146" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00040000" x="0" y="3008" width="435" height="344" frameX="-124" frameY="-142" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00050000" x="4502" y="1926" width="342" height="439" frameX="-127" frameY="-139" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion bf left00060000" x="442" y="2051" width="439" height="338" frameX="-132" frameY="-140" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00070000" x="0" y="2361" width="438" height="333" frameX="-138" frameY="-142" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00080000" x="1759" y="2931" width="436" height="327" frameX="-145" frameY="-146" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00090000" x="2635" y="3243" width="434" height="322" frameX="-151" frameY="-149" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00100000" x="3071" y="3325" width="433" height="317" frameX="-156" frameY="-151" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00110000" x="1743" y="3592" width="431" height="314" frameX="-160" frameY="-153" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00120000" x="870" y="3650" width="430" height="311" frameX="-163" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00130000" x="1725" y="4254" width="426" height="308" frameX="-166" frameY="-159" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00140000" x="3481" y="3911" width="428" height="306" frameX="-168" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00150000" x="2569" y="4801" width="393" height="304" frameX="-170" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00160000" x="0" y="3946" width="427" height="302" frameX="-172" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00170000" x="867" y="3963" width="427" height="301" frameX="-173" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00180000" x="4370" y="4115" width="427" height="300" frameX="-174" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00190000" x="3911" y="4162" width="427" height="300" frameX="-174" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf left00200000" x="2592" y="4220" width="427" height="299" frameX="-175" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00010000" x="2197" y="3246" width="434" height="315" frameX="-205" frameY="-141" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00020000" x="457" y="580" width="449" height="318" frameX="-205" frameY="-144" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00030000" x="880" y="2410" width="438" height="324" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00040000" x="3955" y="3521" width="432" height="329" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00050000" x="4415" y="3445" width="432" height="331" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00060000" x="1747" y="3260" width="433" height="330" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00070000" x="874" y="3045" width="435" height="328" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00080000" x="3544" y="2641" width="437" height="326" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00090000" x="4467" y="2367" width="324" height="438" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion bf right00100000" x="3584" y="2011" width="440" height="321" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00110000" x="1337" y="2020" width="440" height="319" frameX="-205" frameY="-149" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00120000" x="2221" y="2035" width="440" height="317" frameX="-205" frameY="-150" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00130000" x="2662" y="2617" width="438" height="314" frameX="-205" frameY="-153" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00140000" x="3048" y="3644" width="431" height="312" frameX="-205" frameY="-161" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00150000" x="0" y="2696" width="437" height="310" frameX="-205" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00160000" x="2645" y="2933" width="436" height="308" frameX="-205" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00170000" x="4340" y="4417" width="419" height="307" frameX="-205" frameY="-174" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00180000" x="4455" y="2807" width="437" height="306" frameX="-205" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00190000" x="1765" y="2624" width="438" height="305" frameX="-205" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf right00200000" x="3574" y="2334" width="439" height="305" frameX="-205" frameY="-154" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00010000" x="0" y="0" width="478" height="299" frameX="-188" frameY="-123" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00020000" x="960" y="0" width="469" height="302" frameX="-183" frameY="-132" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00030000" x="1902" y="0" width="462" height="297" frameX="-180" frameY="-140" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00040000" x="3750" y="290" width="457" height="287" frameX="-179" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00050000" x="3021" y="4262" width="426" height="279" frameX="-178" frameY="-182" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00060000" x="3274" y="854" width="448" height="275" frameX="-177" frameY="-161" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00070000" x="0" y="1768" width="444" height="272" frameX="-177" frameY="-165" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00080000" x="2663" y="2342" width="439" height="273" frameX="-176" frameY="-170" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00090000" x="3979" y="3246" width="434" height="273" frameX="-176" frameY="-175" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00100000" x="874" y="3375" width="433" height="273" frameX="-177" frameY="-176" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00110000" x="4668" y="437" width="130" height="123" frameX="-319" frameY="-172" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion bf up00120000" x="4846" y="1898" width="27" height="301" frameX="-180" frameY="-166" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion bf up00130000" x="0" y="3673" width="430" height="271" frameX="-180" frameY="-159" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00140000" x="3728" y="579" width="452" height="274" frameX="-180" frameY="-153" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00150000" x="457" y="301" width="455" height="277" frameX="-180" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00160000" x="2830" y="0" width="459" height="283" frameX="-179" frameY="-143" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00170000" x="2830" y="285" width="458" height="286" frameX="-179" frameY="-141" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00180000" x="3752" y="0" width="458" height="288" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00190000" x="1902" y="299" width="456" height="289" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion bf up00200000" x="1371" y="304" width="454" height="290" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00010000" x="2964" y="4819" width="355" height="255" frameX="-189" frameY="-205" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00020000" x="4301" y="4726" width="411" height="267" frameX="-187" frameY="-208" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00030000" x="768" y="4828" width="353" height="269" frameX="-184" frameY="-208" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00040000" x="411" y="4816" width="355" height="274" frameX="-179" frameY="-206" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00050000" x="418" y="4536" width="414" height="278" frameX="-174" frameY="-204" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00060000" x="2591" y="4521" width="416" height="278" frameX="-175" frameY="-201" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00070000" x="1123" y="4965" width="274" height="131" frameX="-180" frameY="-198" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion MissDown instance00080000" x="4796" y="1478" width="80" height="418" frameX="-188" frameY="-196" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion MissDown instance00090000" x="3880" y="4464" width="419" height="261" frameX="-196" frameY="-193" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00100000" x="429" y="4275" width="424" height="259" frameX="-200" frameY="-187" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00110000" x="0" y="4250" width="427" height="259" frameX="-201" frameY="-182" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00120000" x="2119" y="4815" width="376" height="185" frameX="-201" frameY="-180" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00130000" x="4672" y="0" width="172" height="435" frameX="-201" frameY="-172" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion MissDown instance00140000" x="1765" y="2355" width="439" height="267" frameX="-202" frameY="-166" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00150000" x="3139" y="1988" width="443" height="271" frameX="-202" frameY="-161" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00160000" x="1344" y="1746" width="446" height="272" frameX="-203" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00170000" x="4055" y="1421" width="447" height="272" frameX="-204" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00180000" x="4636" y="579" width="255" height="448" frameX="-205" frameY="-153" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion MissDown instance00190000" x="1359" y="596" width="449" height="270" frameX="-206" frameY="-152" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissDown instance00200000" x="0" y="618" width="449" height="270" frameX="-206" frameY="-151" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00010000" x="4389" y="3778" width="429" height="335" frameX="-137" frameY="-153" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00020000" x="1732" y="3908" width="428" height="344" frameX="-124" frameY="-150" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00030000" x="2615" y="3567" width="431" height="345" frameX="-123" frameY="-146" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00040000" x="437" y="3038" width="435" height="344" frameX="-124" frameY="-142" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00050000" x="3983" y="2902" width="436" height="342" frameX="-127" frameY="-142" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00060000" x="883" y="2070" width="439" height="338" frameX="-132" frameY="-140" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00070000" x="440" y="2391" width="438" height="333" frameX="-138" frameY="-142" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00080000" x="1704" y="4564" width="413" height="327" frameX="-145" frameY="-169" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00090000" x="2162" y="3910" width="428" height="322" frameX="-151" frameY="-149" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00100000" x="0" y="3354" width="433" height="317" frameX="-156" frameY="-151" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00110000" x="3506" y="3595" width="431" height="314" frameX="-160" frameY="-153" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00120000" x="435" y="3659" width="430" height="311" frameX="-163" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00130000" x="3939" y="3852" width="429" height="308" frameX="-166" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00140000" x="858" y="4266" width="424" height="306" frameX="-168" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00150000" x="2592" y="3914" width="428" height="304" frameX="-170" frameY="-157" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00160000" x="3022" y="3958" width="427" height="302" frameX="-172" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00170000" x="429" y="3972" width="427" height="301" frameX="-173" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00180000" x="1296" y="4201" width="427" height="300" frameX="-174" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00190000" x="3451" y="4219" width="427" height="300" frameX="-174" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissLeft instance00200000" x="2162" y="4234" width="427" height="299" frameX="-175" frameY="-158" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00010000" x="0" y="301" width="455" height="315" frameX="-205" frameY="-141" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00020000" x="908" y="583" width="449" height="318" frameX="-205" frameY="-144" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00030000" x="3104" y="2575" width="438" height="324" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00040000" x="1309" y="3524" width="432" height="329" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00050000" x="3866" y="4727" width="410" height="331" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00060000" x="3520" y="3263" width="433" height="330" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00070000" x="4421" y="3115" width="435" height="328" frameX="-206" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00080000" x="1320" y="2648" width="437" height="326" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00090000" x="4015" y="2576" width="438" height="324" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00100000" x="2691" y="2019" width="440" height="321" frameX="-205" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00110000" x="1779" y="2034" width="440" height="319" frameX="-205" frameY="-149" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00120000" x="0" y="2042" width="440" height="317" frameX="-205" frameY="-150" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00130000" x="4026" y="2260" width="439" height="314" frameX="-205" frameY="-152" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00140000" x="3133" y="2261" width="439" height="312" frameX="-205" frameY="-153" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00150000" x="439" y="2726" width="437" height="310" frameX="-205" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00160000" x="2197" y="2936" width="436" height="308" frameX="-205" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00170000" x="878" y="2736" width="437" height="307" frameX="-205" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00180000" x="3102" y="2901" width="437" height="306" frameX="-205" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00190000" x="2205" y="2629" width="438" height="305" frameX="-205" frameY="-155" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissRight instance00200000" x="1324" y="2341" width="439" height="305" frameX="-205" frameY="-154" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00010000" x="480" y="0" width="478" height="299" frameX="-188" frameY="-123" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00020000" x="1431" y="0" width="469" height="302" frameX="-183" frameY="-132" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00030000" x="2366" y="0" width="462" height="297" frameX="-180" frameY="-140" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00040000" x="4209" y="290" width="457" height="287" frameX="-179" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00050000" x="3274" y="573" width="452" height="279" frameX="-178" frameY="-156" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00060000" x="3724" y="855" width="448" height="275" frameX="-177" frameY="-161" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00070000" x="446" y="1777" width="444" height="272" frameX="-177" frameY="-165" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00080000" x="2221" y="2354" width="439" height="273" frameX="-176" frameY="-170" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00090000" x="1311" y="3249" width="434" height="273" frameX="-176" frameY="-175" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00100000" x="435" y="3384" width="433" height="273" frameX="-177" frameY="-176" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00110000" x="1317" y="2976" width="436" height="271" frameX="-178" frameY="-172" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00120000" x="4846" y="0" width="40" height="339" frameX="-180" frameY="-268" frameWidth="626" frameHeight="619"/>
+	<SubTexture name="xterion MissUp instance00130000" x="3157" y="1424" width="447" height="271" frameX="-180" frameY="-159" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00140000" x="4182" y="579" width="452" height="274" frameX="-180" frameY="-153" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00150000" x="914" y="304" width="455" height="277" frameX="-180" frameY="-148" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00160000" x="3291" y="0" width="459" height="283" frameX="-179" frameY="-143" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00170000" x="3290" y="285" width="458" height="286" frameX="-179" frameY="-141" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00180000" x="4212" y="0" width="458" height="288" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00190000" x="2360" y="299" width="456" height="289" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619" rotated="true" />
+	<SubTexture name="xterion MissUp instance00200000" x="2818" y="573" width="454" height="290" frameX="-179" frameY="-139" frameWidth="626" frameHeight="619" rotated="true" />
 </TextureAtlas>

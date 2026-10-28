@@ -2,154 +2,154 @@
 <TextureAtlas imagePath="Edcuator_Hi_me_sonic.png">
 	<!-- Created using the Spritesheet and XML generator -->
 	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
-	<SubTexture name="edcuator sonic00010000" x="759" y="2143" width="126" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00020000" x="759" y="2143" width="126" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00030000" x="759" y="2143" width="126" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00040000" x="759" y="2143" width="126" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00050000" x="2263" y="1722" width="128" height="215" frameX="-99" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00060000" x="2263" y="1075" width="130" height="216" frameX="-96" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00070000" x="2263" y="1291" width="129" height="216" frameX="-95" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00080000" x="2263" y="859" width="130" height="216" frameX="-93" frameY="-13" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00090000" x="2263" y="644" width="131" height="215" frameX="-90" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00100000" x="2263" y="215" width="135" height="215" frameX="-85" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00110000" x="1978" y="1284" width="141" height="214" frameX="-79" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00120000" x="605" y="1499" width="148" height="214" frameX="-71" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00130000" x="0" y="1499" width="156" height="214" frameX="-63" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00140000" x="1654" y="857" width="164" height="214" frameX="-55" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00150000" x="1219" y="1285" width="172" height="214" frameX="-47" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00160000" x="1478" y="1065" width="175" height="214" frameX="-44" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00170000" x="525" y="1285" width="175" height="214" frameX="-44" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00180000" x="0" y="1285" width="175" height="214" frameX="-44" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00190000" x="175" y="1285" width="175" height="214" frameX="-44" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00200000" x="546" y="858" width="176" height="214" frameX="-43" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00210000" x="880" y="1072" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00220000" x="1302" y="213" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00230000" x="528" y="1072" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00240000" x="1478" y="852" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00250000" x="1302" y="639" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00260000" x="1478" y="213" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00270000" x="1302" y="1065" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00280000" x="1478" y="639" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00290000" x="704" y="1072" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00300000" x="898" y="858" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00310000" x="741" y="645" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00320000" x="0" y="1072" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00330000" x="722" y="858" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00340000" x="1302" y="426" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00350000" x="1302" y="852" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00360000" x="1302" y="0" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00370000" x="352" y="1072" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00380000" x="176" y="1072" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00390000" x="1478" y="426" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00400000" x="1056" y="1072" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00410000" x="1478" y="0" width="176" height="213" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00420000" x="370" y="858" width="176" height="214" frameX="-43" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00430000" x="700" y="1285" width="175" height="214" frameX="-44" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00440000" x="1047" y="1285" width="172" height="214" frameX="-47" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00450000" x="1654" y="215" width="169" height="214" frameX="-50" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00460000" x="1654" y="643" width="165" height="214" frameX="-54" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00470000" x="1654" y="1286" width="159" height="213" frameX="-60" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00480000" x="1824" y="1286" width="153" height="214" frameX="-66" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00490000" x="456" y="1499" width="149" height="214" frameX="-70" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00500000" x="1196" y="1499" width="147" height="214" frameX="-72" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00510000" x="1343" y="1499" width="146" height="214" frameX="-73" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00520000" x="1489" y="1499" width="145" height="214" frameX="-74" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00530000" x="1634" y="1499" width="145" height="214" frameX="-74" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00540000" x="1978" y="0" width="145" height="213" frameX="-74" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00550000" x="1978" y="857" width="145" height="212" frameX="-74" frameY="-17" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00560000" x="1180" y="1713" width="146" height="212" frameX="-73" frameY="-17" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00570000" x="1824" y="1500" width="147" height="212" frameX="-72" frameY="-17" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00580000" x="753" y="1499" width="148" height="214" frameX="-71" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00590000" x="307" y="1499" width="149" height="214" frameX="-70" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00600000" x="1824" y="0" width="154" height="215" frameX="-65" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00610000" x="1654" y="1071" width="162" height="215" frameX="-57" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00620000" x="1654" y="0" width="170" height="215" frameX="-49" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00630000" x="1118" y="643" width="178" height="215" frameX="-41" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00640000" x="1118" y="0" width="184" height="215" frameX="-35" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00650000" x="561" y="0" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00660000" x="374" y="0" width="187" height="215" frameX="-32" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00670000" x="0" y="0" width="187" height="215" frameX="-32" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00680000" x="187" y="0" width="187" height="215" frameX="-32" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00690000" x="0" y="215" width="187" height="215" frameX="-32" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00700000" x="373" y="215" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00710000" x="558" y="430" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00720000" x="747" y="0" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00730000" x="561" y="215" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00740000" x="372" y="430" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00750000" x="187" y="215" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00760000" x="0" y="430" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00770000" x="0" y="430" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00780000" x="0" y="430" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00790000" x="0" y="430" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00800000" x="186" y="430" width="186" height="215" frameX="-33" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00810000" x="0" y="645" width="186" height="213" frameX="-33" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00820000" x="556" y="645" width="185" height="213" frameX="-34" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00830000" x="186" y="645" width="185" height="213" frameX="-34" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00840000" x="371" y="645" width="185" height="213" frameX="-34" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00850000" x="933" y="642" width="185" height="214" frameX="-34" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00860000" x="185" y="858" width="185" height="214" frameX="-34" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00870000" x="933" y="214" width="185" height="214" frameX="-34" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00880000" x="933" y="0" width="185" height="214" frameX="-34" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00890000" x="933" y="428" width="185" height="214" frameX="-34" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00900000" x="0" y="858" width="185" height="214" frameX="-34" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00910000" x="747" y="430" width="185" height="215" frameX="-34" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00920000" x="747" y="215" width="185" height="215" frameX="-34" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00930000" x="1118" y="215" width="184" height="214" frameX="-35" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00940000" x="1118" y="429" width="182" height="214" frameX="-37" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00950000" x="1118" y="858" width="178" height="214" frameX="-41" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00960000" x="350" y="1285" width="175" height="214" frameX="-44" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00970000" x="875" y="1285" width="172" height="214" frameX="-47" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00980000" x="1654" y="429" width="168" height="214" frameX="-51" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic00990000" x="1391" y="1285" width="162" height="214" frameX="-57" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01000000" x="1824" y="215" width="154" height="214" frameX="-65" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01010000" x="1049" y="1499" width="147" height="214" frameX="-72" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01020000" x="1978" y="213" width="144" height="214" frameX="-75" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01030000" x="1978" y="1498" width="141" height="214" frameX="-78" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01040000" x="2123" y="0" width="140" height="214" frameX="-79" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01050000" x="2123" y="429" width="139" height="214" frameX="-80" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01060000" x="2123" y="1072" width="138" height="214" frameX="-81" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01070000" x="2123" y="1286" width="138" height="214" frameX="-81" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01080000" x="548" y="1928" width="137" height="214" frameX="-82" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01090000" x="274" y="1928" width="137" height="214" frameX="-82" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01100000" x="411" y="1928" width="137" height="214" frameX="-82" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01110000" x="137" y="1928" width="137" height="214" frameX="-82" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01120000" x="2123" y="1500" width="137" height="215" frameX="-82" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01130000" x="0" y="1928" width="137" height="215" frameX="-82" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01140000" x="2123" y="858" width="138" height="214" frameX="-81" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01150000" x="2123" y="214" width="139" height="215" frameX="-80" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01160000" x="1978" y="427" width="143" height="215" frameX="-78" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01170000" x="901" y="1499" width="148" height="214" frameX="-74" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01180000" x="156" y="1499" width="151" height="214" frameX="-71" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01190000" x="1824" y="1072" width="153" height="214" frameX="-70" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01200000" x="1824" y="429" width="154" height="214" frameX="-70" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01210000" x="1824" y="643" width="154" height="214" frameX="-70" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01220000" x="1824" y="857" width="153" height="215" frameX="-71" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01230000" x="0" y="1713" width="151" height="215" frameX="-73" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01240000" x="151" y="1713" width="150" height="215" frameX="-74" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01250000" x="301" y="1713" width="149" height="215" frameX="-75" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01260000" x="450" y="1713" width="148" height="215" frameX="-76" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01270000" x="598" y="1713" width="147" height="215" frameX="-77" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01280000" x="745" y="1713" width="146" height="215" frameX="-78" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01290000" x="891" y="1713" width="145" height="215" frameX="-79" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01300000" x="1036" y="1713" width="144" height="215" frameX="-80" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01310000" x="1978" y="642" width="143" height="215" frameX="-81" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01320000" x="1978" y="1069" width="142" height="215" frameX="-82" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01330000" x="1978" y="1712" width="140" height="215" frameX="-84" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01340000" x="2123" y="643" width="138" height="215" frameX="-86" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01350000" x="2263" y="0" width="136" height="215" frameX="-88" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01360000" x="2263" y="430" width="133" height="214" frameX="-90" frameY="-16" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01370000" x="2263" y="1507" width="129" height="215" frameX="-92" frameY="-15" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01380000" x="381" y="2143" width="126" height="215" frameX="-95" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01390000" x="1135" y="2143" width="124" height="215" frameX="-98" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01400000" x="1259" y="2143" width="124" height="215" frameX="-100" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01410000" x="1010" y="2143" width="125" height="215" frameX="-99" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01420000" x="0" y="2143" width="127" height="215" frameX="-98" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01430000" x="254" y="2143" width="127" height="215" frameX="-99" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01440000" x="127" y="2143" width="127" height="215" frameX="-100" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01450000" x="507" y="2143" width="126" height="215" frameX="-101" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01460000" x="885" y="2143" width="125" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01470000" x="633" y="2143" width="126" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01480000" x="759" y="2143" width="126" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01490000" x="759" y="2143" width="126" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
-	<SubTexture name="edcuator sonic01500000" x="759" y="2143" width="126" height="215" frameX="-102" frameY="-14" frameWidth="320" frameHeight="240"/>
+	<SubTexture name="edcuator sonic00010000" x="1065" y="636" width="211" height="122" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00020000" x="1065" y="636" width="211" height="122" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00030000" x="1065" y="636" width="211" height="122" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00040000" x="1065" y="636" width="211" height="122" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00050000" x="426" y="601" width="211" height="124" frameX="-101" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00060000" x="0" y="0" width="212" height="126" frameX="-98" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00070000" x="428" y="0" width="212" height="125" frameX="-97" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00080000" x="214" y="0" width="212" height="126" frameX="-95" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00090000" x="1919" y="511" width="211" height="127" frameX="-92" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00100000" x="2133" y="510" width="211" height="131" frameX="-87" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00110000" x="212" y="1336" width="210" height="137" frameX="-81" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00120000" x="424" y="1246" width="210" height="144" frameX="-73" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00130000" x="1486" y="1114" width="210" height="152" frameX="-65" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00140000" x="0" y="1084" width="210" height="160" frameX="-57" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00150000" x="636" y="946" width="210" height="168" frameX="-49" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00160000" x="424" y="910" width="210" height="171" frameX="-46" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00170000" x="0" y="911" width="210" height="171" frameX="-46" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00180000" x="1277" y="938" width="210" height="171" frameX="-46" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00190000" x="1489" y="941" width="210" height="171" frameX="-46" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00200000" x="1490" y="767" width="210" height="172" frameX="-45" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00210000" x="1906" y="1547" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00220000" x="2117" y="1547" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00230000" x="635" y="1548" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00240000" x="846" y="1548" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00250000" x="1057" y="1548" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00260000" x="1268" y="1548" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00270000" x="211" y="1606" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00280000" x="422" y="1714" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00290000" x="0" y="1715" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00300000" x="1906" y="1721" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00310000" x="2117" y="1721" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00320000" x="633" y="1722" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00330000" x="844" y="1722" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00340000" x="1055" y="1722" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00350000" x="1266" y="1722" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00360000" x="1477" y="1730" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00370000" x="1688" y="1730" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00380000" x="211" y="1780" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00390000" x="422" y="1888" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00400000" x="0" y="1889" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00410000" x="1899" y="1895" width="209" height="172" frameX="-45" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00420000" x="212" y="849" width="210" height="172" frameX="-45" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00430000" x="2131" y="942" width="210" height="171" frameX="-46" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00440000" x="1701" y="946" width="210" height="168" frameX="-49" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00450000" x="848" y="948" width="210" height="165" frameX="-52" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00460000" x="424" y="1083" width="210" height="161" frameX="-56" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00470000" x="2110" y="1895" width="209" height="155" frameX="-62" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00480000" x="1060" y="1116" width="210" height="149" frameX="-68" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00490000" x="212" y="1189" width="210" height="145" frameX="-72" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00500000" x="1060" y="1267" width="210" height="143" frameX="-74" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00510000" x="2122" y="1267" width="210" height="142" frameX="-75" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00520000" x="636" y="1268" width="210" height="141" frameX="-76" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00530000" x="1486" y="1268" width="210" height="141" frameX="-76" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00540000" x="633" y="1896" width="209" height="141" frameX="-76" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00550000" x="1264" y="1896" width="208" height="141" frameX="-76" frameY="-19" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00560000" x="1054" y="1896" width="208" height="142" frameX="-75" frameY="-19" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00570000" x="844" y="1896" width="208" height="143" frameX="-74" frameY="-19" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00580000" x="1910" y="1266" width="210" height="144" frameX="-73" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00590000" x="0" y="1246" width="210" height="145" frameX="-72" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00600000" x="426" y="311" width="211" height="150" frameX="-67" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00610000" x="1280" y="185" width="211" height="158" frameX="-59" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00620000" x="1067" y="185" width="211" height="166" frameX="-51" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00630000" x="854" y="185" width="211" height="174" frameX="-43" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00640000" x="641" y="185" width="211" height="180" frameX="-37" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00650000" x="1494" y="0" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00660000" x="642" y="0" width="211" height="183" frameX="-34" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00670000" x="855" y="0" width="211" height="183" frameX="-34" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00680000" x="1068" y="0" width="211" height="183" frameX="-34" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00690000" x="1281" y="0" width="211" height="183" frameX="-34" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00700000" x="1707" y="0" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00710000" x="1920" y="0" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00720000" x="2133" y="0" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00730000" x="428" y="127" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00740000" x="0" y="128" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00750000" x="213" y="128" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00760000" x="1494" y="184" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00770000" x="1494" y="184" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00780000" x="1494" y="184" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00790000" x="1494" y="184" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00800000" x="1707" y="184" width="211" height="182" frameX="-35" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00810000" x="0" y="1531" width="209" height="182" frameX="-35" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00820000" x="424" y="1531" width="209" height="181" frameX="-36" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00830000" x="1484" y="1547" width="209" height="181" frameX="-36" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00840000" x="1695" y="1547" width="209" height="181" frameX="-36" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00850000" x="426" y="727" width="210" height="181" frameX="-36" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00860000" x="0" y="728" width="210" height="181" frameX="-36" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00870000" x="1278" y="755" width="210" height="181" frameX="-36" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00880000" x="1065" y="760" width="210" height="181" frameX="-36" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00890000" x="638" y="763" width="210" height="181" frameX="-36" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00900000" x="1919" y="764" width="210" height="181" frameX="-36" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00910000" x="1920" y="184" width="211" height="181" frameX="-36" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00920000" x="2133" y="184" width="211" height="181" frameX="-36" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00930000" x="850" y="766" width="210" height="180" frameX="-37" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00940000" x="1706" y="766" width="210" height="178" frameX="-39" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00950000" x="2131" y="766" width="210" height="174" frameX="-43" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00960000" x="1062" y="943" width="210" height="171" frameX="-46" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00970000" x="1913" y="947" width="210" height="168" frameX="-49" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00980000" x="212" y="1023" width="210" height="164" frameX="-53" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic00990000" x="1274" y="1111" width="210" height="158" frameX="-59" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01000000" x="848" y="1115" width="210" height="150" frameX="-67" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01010000" x="1698" y="1267" width="210" height="143" frameX="-74" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01020000" x="1272" y="1271" width="210" height="140" frameX="-77" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01030000" x="424" y="1392" width="210" height="137" frameX="-80" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01040000" x="0" y="1393" width="210" height="136" frameX="-81" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01050000" x="636" y="1411" width="210" height="135" frameX="-82" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01060000" x="1484" y="1411" width="210" height="134" frameX="-83" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01070000" x="2122" y="1411" width="210" height="134" frameX="-83" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01080000" x="1696" y="1412" width="210" height="133" frameX="-84" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01090000" x="1908" y="1412" width="210" height="133" frameX="-84" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01100000" x="848" y="1413" width="210" height="133" frameX="-84" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01110000" x="1272" y="1413" width="210" height="133" frameX="-84" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01120000" x="852" y="507" width="211" height="133" frameX="-84" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01130000" x="1706" y="509" width="211" height="133" frameX="-84" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01140000" x="1060" y="1412" width="210" height="134" frameX="-83" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01150000" x="1280" y="493" width="211" height="135" frameX="-82" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01160000" x="1706" y="368" width="211" height="139" frameX="-80" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01170000" x="848" y="1267" width="210" height="144" frameX="-76" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01180000" x="1910" y="1117" width="210" height="147" frameX="-73" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01190000" x="1698" y="1116" width="210" height="149" frameX="-72" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01200000" x="2125" y="1115" width="210" height="150" frameX="-72" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01210000" x="636" y="1116" width="210" height="150" frameX="-72" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01220000" x="0" y="312" width="211" height="149" frameX="-73" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01230000" x="213" y="312" width="211" height="147" frameX="-75" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01240000" x="1280" y="345" width="211" height="146" frameX="-76" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01250000" x="1067" y="353" width="211" height="145" frameX="-77" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01260000" x="854" y="361" width="211" height="144" frameX="-78" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01270000" x="639" y="367" width="211" height="143" frameX="-79" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01280000" x="1920" y="367" width="211" height="142" frameX="-80" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01290000" x="2133" y="367" width="211" height="141" frameX="-81" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01300000" x="1493" y="368" width="211" height="140" frameX="-82" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01310000" x="213" y="461" width="211" height="139" frameX="-83" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01320000" x="0" y="463" width="211" height="138" frameX="-84" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01330000" x="426" y="463" width="211" height="136" frameX="-86" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01340000" x="1067" y="500" width="211" height="134" frameX="-88" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01350000" x="1493" y="510" width="211" height="132" frameX="-90" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01360000" x="212" y="1475" width="210" height="129" frameX="-92" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01370000" x="639" y="512" width="211" height="125" frameX="-94" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01380000" x="639" y="639" width="211" height="122" frameX="-97" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01390000" x="1706" y="644" width="211" height="120" frameX="-100" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01400000" x="213" y="727" width="211" height="120" frameX="-102" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01410000" x="2132" y="643" width="211" height="121" frameX="-101" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01420000" x="213" y="602" width="211" height="123" frameX="-100" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01430000" x="0" y="603" width="211" height="123" frameX="-101" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01440000" x="1280" y="630" width="211" height="123" frameX="-102" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01450000" x="1919" y="640" width="211" height="122" frameX="-103" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01460000" x="1493" y="644" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01470000" x="852" y="642" width="211" height="122" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01480000" x="1065" y="636" width="211" height="122" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01490000" x="1065" y="636" width="211" height="122" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator sonic01500000" x="1065" y="636" width="211" height="122" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
 </TextureAtlas>

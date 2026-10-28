@@ -2,8 +2,8 @@
 <TextureAtlas imagePath="laD1.png">
 	<!-- Created with Adobe Animate version 22.0.4.185 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 71 instancia 10000" x="25" y="25" width="1739" height="1482"/>
-	<SubTexture name="Símbolo 71 instancia 10001" x="1779" y="25" width="1739" height="1482"/>
-	<SubTexture name="Símbolo 71 instancia 10002" x="25" y="1522" width="1739" height="1482"/>
-	<SubTexture name="Símbolo 71 instancia 10003" x="1779" y="1522" width="1739" height="1482"/>
+	<SubTexture name="Símbolo 71 instancia 10000" x="0" y="0" width="1739" height="1482"/>
+	<SubTexture name="Símbolo 71 instancia 10001" x="1741" y="0" width="1739" height="1482"/>
+	<SubTexture name="Símbolo 71 instancia 10002" x="0" y="1484" width="1739" height="1482"/>
+	<SubTexture name="Símbolo 71 instancia 10003" x="1741" y="1484" width="1739" height="1482"/>
 </TextureAtlas>

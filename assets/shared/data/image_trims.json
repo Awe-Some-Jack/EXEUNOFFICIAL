@@ -133,5 +133,437 @@
   3603,
   727,
   1.7119
+ ],
+ "exe/access/mania/mania-notif": [
+  9,
+  11,
+  1619,
+  581,
+  1593,
+  551
+ ],
+ "exe/access/sharpy/box/faces/eggman": [
+  19,
+  34,
+  350,
+  315,
+  273,
+  259
+ ],
+ "exe/access/sharpy/box/faces/exetior_confuso": [
+  28,
+  35,
+  330,
+  315,
+  298,
+  280
+ ],
+ "exe/access/sharpy/box/faces/knuckles_normal": [
+  31,
+  31,
+  310,
+  315,
+  249,
+  275
+ ],
+ "exe/access/sharpy/box/faces/tails_normal": [
+  31,
+  50,
+  310,
+  315,
+  255,
+  252
+ ],
+ "exe/botplay/sunkybot/Mancha": [
+  1,
+  0,
+  1485,
+  570,
+  1482,
+  539
+ ],
+ "exe/botplay/sunkybot/Sunky": [
+  5,
+  5,
+  910,
+  1020,
+  885,
+  1015
+ ],
+ "exe/extras/bios/backdrop": [
+  0,
+  0,
+  1280,
+  1069,
+  433,
+  1069
+ ],
+ "exe/extras/bios/biosCircle": [
+  28,
+  28,
+  2048,
+  2048,
+  1992,
+  1992
+ ],
+ "exe/extras/bios/idle_atlas": [
+  1,
+  0,
+  4676,
+  5776,
+  4673,
+  5773
+ ],
+ "exe/extras/boxhitbox": [
+  13,
+  296,
+  1479,
+  1451,
+  1452,
+  910
+ ],
+ "exe/extras/credits/extra/captain": [
+  66,
+  35,
+  1075,
+  1075,
+  933,
+  1035
+ ],
+ "exe/extras/credits/extra/cardoso": [
+  67,
+  37,
+  840,
+  473,
+  745,
+  436
+ ],
+ "exe/extras/credits/extra/cooks": [
+  120,
+  83,
+  984,
+  986,
+  803,
+  875
+ ],
+ "exe/extras/credits/extra/rabty": [
+  209,
+  160,
+  900,
+  918,
+  525,
+  724
+ ],
+ "exe/extras/credits/extra/schio": [
+  20,
+  20,
+  600,
+  600,
+  553,
+  509
+ ],
+ "exe/extras/dagarden/objects/4": [
+  47,
+  5,
+  494,
+  1095,
+  436,
+  1090
+ ],
+ "exe/extras/dagarden/objects/arrow": [
+  7,
+  9,
+  222,
+  1784,
+  201,
+  1771
+ ],
+ "exe/extras/dagarden/sprites/box": [
+  98,
+  1,
+  1883,
+  1753,
+  1785,
+  1752
+ ],
+ "exe/extras/dagarden/sprites/marcogris": [
+  0,
+  0,
+  3840,
+  2160,
+  3792,
+  2160
+ ],
+ "exe/freeplayassets/FreeBox": [
+  295,
+  85,
+  1280,
+  720,
+  690,
+  554
+ ],
+ "exe/freeplayassets/spikesup": [
+  0,
+  0,
+  3808,
+  2160,
+  3808,
+  293
+ ],
+ "exe/mobile/dagarden/forward": [
+  40,
+  24,
+  287,
+  216,
+  228,
+  174
+ ],
+ "exe/mobile/dagarden/forward-p": [
+  37,
+  24,
+  286,
+  226,
+  228,
+  152
+ ],
+ "exe/mobile/dagarden/novocals": [
+  11,
+  0,
+  323,
+  248,
+  244,
+  238
+ ],
+ "exe/mobile/dagarden/novocals-p": [
+  22,
+  0,
+  298,
+  260,
+  244,
+  214
+ ],
+ "exe/mobile/dagarden/pause-p": [
+  25,
+  10,
+  222,
+  249,
+  165,
+  185
+ ],
+ "exe/mobile/dagarden/rewind": [
+  8,
+  24,
+  269,
+  224,
+  228,
+  174
+ ],
+ "exe/mobile/dagarden/rewind-p": [
+  10,
+  24,
+  266,
+  229,
+  228,
+  152
+ ],
+ "exe/mobile/gamepad/accept_hq": [
+  122,
+  98,
+  855,
+  840,
+  654,
+  655
+ ],
+ "exe/mobile/gamepad/accpet_p_hq": [
+  122,
+  98,
+  855,
+  840,
+  654,
+  655
+ ],
+ "exe/mobile/gamepad/down_hq": [
+  69,
+  103,
+  872,
+  897,
+  741,
+  741
+ ],
+ "exe/mobile/gamepad/dpad_hq": [
+  69,
+  103,
+  872,
+  897,
+  741,
+  741
+ ],
+ "exe/mobile/gamepad/left_hq": [
+  69,
+  103,
+  872,
+  897,
+  741,
+  741
+ ],
+ "exe/mobile/gamepad/right_hq": [
+  69,
+  103,
+  872,
+  897,
+  741,
+  741
+ ],
+ "exe/mobile/gamepad/up_hq": [
+  69,
+  103,
+  872,
+  897,
+  741,
+  741
+ ],
+ "exe/options/optionsTitle": [
+  68,
+  0,
+  2133,
+  365,
+  1987,
+  364
+ ],
+ "exe/parallax/info/educator/educator": [
+  1130,
+  352,
+  3840,
+  2160,
+  1218,
+  1306
+ ],
+ "exe/parallax/info/educator/hand": [
+  1877,
+  1000,
+  3840,
+  2160,
+  583,
+  551
+ ],
+ "exe/parallax/info/ring": [
+  1010,
+  879,
+  3840,
+  2160,
+  2095,
+  1147
+ ],
+ "exe/parallax/info/ringdown": [
+  979,
+  805,
+  3840,
+  2160,
+  2057,
+  1115
+ ],
+ "exe/parallax/ringparallax": [
+  31,
+  47,
+  5814,
+  4122,
+  5782,
+  4039
+ ],
+ "exe/story/clouds/1": [
+  0,
+  0,
+  2285,
+  1006,
+  2285,
+  91
+ ],
+ "exe/story/clouds/2": [
+  0,
+  91,
+  2285,
+  1006,
+  2285,
+  78
+ ],
+ "exe/story/clouds/3": [
+  0,
+  169,
+  2285,
+  1006,
+  2285,
+  104
+ ],
+ "exe/story/clouds/4": [
+  0,
+  273,
+  2285,
+  1006,
+  2285,
+  119
+ ],
+ "exe/story/clouds/5": [
+  0,
+  392,
+  2285,
+  1006,
+  2285,
+  122
+ ],
+ "exe/story/clouds/6": [
+  0,
+  514,
+  2285,
+  1006,
+  2285,
+  492
+ ],
+ "exe/story/greybox": [
+  103,
+  182,
+  2631,
+  3480,
+  2528,
+  3298
+ ],
+ "exe/story/hand": [
+  4,
+  10,
+  571,
+  491,
+  563,
+  460
+ ],
+ "exe/title/logo/eyes": [
+  86,
+  100,
+  524,
+  302,
+  367,
+  153
+ ],
+ "exe/title/logo/ring": [
+  21,
+  0,
+  2649,
+  1457,
+  2621,
+  1444
+ ],
+ "exe/title/spikesdown": [
+  0,
+  1827,
+  3808,
+  2160,
+  3808,
+  333
+ ],
+ "shared/images/go": [
+  124,
+  96,
+  558,
+  430,
+  309,
+  238
  ]
 }

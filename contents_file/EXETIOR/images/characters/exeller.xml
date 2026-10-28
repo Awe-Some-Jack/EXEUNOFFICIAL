@@ -2,18 +2,18 @@
 <TextureAtlas imagePath="exeller.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 23 instancia 10000" x="36" y="36" width="818" height="1025" frameX="-4" frameY="-22" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10001" x="36" y="36" width="818" height="1025" frameX="-4" frameY="-22" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10002" x="874" y="36" width="821" height="1025" frameX="0" frameY="-17" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10003" x="874" y="36" width="821" height="1025" frameX="0" frameY="-17" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10004" x="1715" y="36" width="801" height="1027" frameX="-46" frameY="-1" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10005" x="1715" y="36" width="801" height="1027" frameX="-46" frameY="-1" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10006" x="36" y="1083" width="794" height="1027" frameX="-61" frameY="0" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10007" x="36" y="1083" width="794" height="1027" frameX="-61" frameY="0" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10008" x="850" y="1083" width="792" height="1026" frameX="-64" frameY="-1" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10009" x="850" y="1083" width="792" height="1026" frameX="-64" frameY="-1" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10010" x="850" y="1083" width="792" height="1026" frameX="-64" frameY="-1" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10011" x="850" y="1083" width="792" height="1026" frameX="-64" frameY="-1" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10012" x="850" y="1083" width="792" height="1026" frameX="-64" frameY="-1" frameWidth="856" frameHeight="1047"/>
-	<SubTexture name="Símbolo 23 instancia 10013" x="850" y="1083" width="792" height="1026" frameX="-64" frameY="-1" frameWidth="856" frameHeight="1047"/>
+	<SubTexture name="Símbolo 23 instancia 10000" x="1028" y="1028" width="817" height="1025" frameX="-4" frameY="-22" frameWidth="856" frameHeight="1047"/>
+	<SubTexture name="Símbolo 23 instancia 10001" x="1028" y="1028" width="817" height="1025" frameX="-4" frameY="-22" frameWidth="856" frameHeight="1047"/>
+	<SubTexture name="Símbolo 23 instancia 10002" x="0" y="1579" width="1024" height="820" frameX="0" frameY="-17" frameWidth="856" frameHeight="1047" rotated="true" />
+	<SubTexture name="Símbolo 23 instancia 10003" x="0" y="1579" width="1024" height="820" frameX="0" frameY="-17" frameWidth="856" frameHeight="1047" rotated="true" />
+	<SubTexture name="Símbolo 23 instancia 10004" x="1028" y="0" width="792" height="1026" frameX="-54" frameY="-1" frameWidth="856" frameHeight="1047"/>
+	<SubTexture name="Símbolo 23 instancia 10005" x="1028" y="0" width="792" height="1026" frameX="-54" frameY="-1" frameWidth="856" frameHeight="1047"/>
+	<SubTexture name="Símbolo 23 instancia 10006" x="0" y="0" width="1026" height="793" frameX="-61" frameY="0" frameWidth="856" frameHeight="1047" rotated="true" />
+	<SubTexture name="Símbolo 23 instancia 10007" x="0" y="0" width="1026" height="793" frameX="-61" frameY="0" frameWidth="856" frameHeight="1047" rotated="true" />
+	<SubTexture name="Símbolo 23 instancia 10008" x="0" y="795" width="1026" height="782" frameX="-73" frameY="-1" frameWidth="856" frameHeight="1047" rotated="true" />
+	<SubTexture name="Símbolo 23 instancia 10009" x="0" y="795" width="1026" height="782" frameX="-73" frameY="-1" frameWidth="856" frameHeight="1047" rotated="true" />
+	<SubTexture name="Símbolo 23 instancia 10010" x="0" y="795" width="1026" height="782" frameX="-73" frameY="-1" frameWidth="856" frameHeight="1047" rotated="true" />
+	<SubTexture name="Símbolo 23 instancia 10011" x="0" y="795" width="1026" height="782" frameX="-73" frameY="-1" frameWidth="856" frameHeight="1047" rotated="true" />
+	<SubTexture name="Símbolo 23 instancia 10012" x="0" y="795" width="1026" height="782" frameX="-73" frameY="-1" frameWidth="856" frameHeight="1047" rotated="true" />
+	<SubTexture name="Símbolo 23 instancia 10013" x="0" y="795" width="1026" height="782" frameX="-73" frameY="-1" frameWidth="856" frameHeight="1047" rotated="true" />
 </TextureAtlas>

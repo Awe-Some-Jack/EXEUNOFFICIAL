@@ -2,36 +2,36 @@
 <TextureAtlas imagePath="caraM.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 408 instancia 10000" x="100" y="100" width="210" height="281"/>
-	<SubTexture name="Símbolo 408 instancia 10001" x="349" y="100" width="210" height="281"/>
-	<SubTexture name="Símbolo 408 instancia 10002" x="100" y="100" width="210" height="281"/>
-	<SubTexture name="Símbolo 408 instancia 10003" x="598" y="100" width="210" height="280" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10004" x="847" y="100" width="210" height="280" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10005" x="598" y="100" width="210" height="280" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10006" x="1096" y="100" width="210" height="276" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10007" x="1345" y="100" width="210" height="276" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10008" x="1096" y="100" width="210" height="276" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10009" x="1594" y="100" width="210" height="272" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10010" x="1594" y="100" width="210" height="272" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10011" x="1594" y="100" width="210" height="272" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10012" x="100" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10013" x="349" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10014" x="100" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10015" x="100" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10016" x="349" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10017" x="100" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10018" x="349" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10019" x="100" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10020" x="349" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10021" x="100" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10022" x="349" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10023" x="100" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10024" x="349" y="420" width="210" height="271" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10025" x="598" y="420" width="210" height="272" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10026" x="847" y="420" width="210" height="272" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10027" x="598" y="420" width="210" height="272" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10028" x="847" y="420" width="210" height="272" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10029" x="1096" y="420" width="210" height="277" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10030" x="1345" y="420" width="210" height="277" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
-	<SubTexture name="Símbolo 408 instancia 10031" x="1096" y="420" width="210" height="277" frameX="0" frameY="0" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10000" x="0" y="0" width="210" height="280" frameX="0" frameY="-1" frameWidth="210" frameHeight="281" />
+	<SubTexture name="Símbolo 408 instancia 10001" x="212" y="0" width="210" height="280" frameX="0" frameY="-1" frameWidth="210" frameHeight="281" />
+	<SubTexture name="Símbolo 408 instancia 10002" x="0" y="0" width="210" height="280" frameX="0" frameY="-1" frameWidth="210" frameHeight="281" />
+	<SubTexture name="Símbolo 408 instancia 10003" x="424" y="0" width="210" height="278" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10004" x="636" y="0" width="210" height="278" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10005" x="424" y="0" width="210" height="278" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10006" x="1060" y="0" width="210" height="275" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10007" x="1272" y="0" width="210" height="275" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10008" x="1060" y="0" width="210" height="275" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10009" x="1272" y="277" width="210" height="271" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10010" x="1272" y="277" width="210" height="271" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10011" x="1272" y="277" width="210" height="271" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10012" x="636" y="280" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10013" x="0" y="282" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10014" x="636" y="280" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10015" x="636" y="280" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10016" x="0" y="282" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10017" x="636" y="280" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10018" x="0" y="282" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10019" x="636" y="280" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10020" x="0" y="282" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10021" x="636" y="280" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10022" x="0" y="282" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10023" x="636" y="280" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10024" x="0" y="282" width="210" height="270" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10025" x="848" y="278" width="210" height="271" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10026" x="424" y="280" width="210" height="271" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10027" x="848" y="278" width="210" height="271" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10028" x="424" y="280" width="210" height="271" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10029" x="1060" y="277" width="210" height="275" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10030" x="848" y="0" width="210" height="276" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
+	<SubTexture name="Símbolo 408 instancia 10031" x="1060" y="277" width="210" height="275" frameX="0" frameY="-1" frameWidth="210" frameHeight="281"/>
 </TextureAtlas>

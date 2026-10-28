@@ -7,22 +7,39 @@ import sys
 
 from PIL import Image
 
+Image.MAX_IMAGE_PIXELS = None
+
 MANIFEST = os.path.join("shared", "data", "image_trims.json")
-DEFAULT_EXCLUDES = ["icons", "fonts", "embed", "minigame"]
+DEFAULT_EXCLUDES = ["icons", "fonts", "embed", "minigame", "transitions", "exe/freeplayassets/FreeBox.webp"]
 IMAGE_EXTS = (".png", ".webp")
+ATLAS_PREFIXES = ("spritemap", "spritesheet")
+
+
+def mirror_roots(root):
+    norm = os.path.normpath(root)
+    pairs = [(norm, norm)]
+    parts = norm.split(os.sep)
+    for i in range(len(parts)):
+        if parts[i] and not parts[i].startswith("embedded_"):
+            cand = list(parts)
+            cand[i] = "embedded_" + parts[i]
+            path = os.sep.join(cand)
+            if os.path.isdir(path):
+                pairs.append((path, norm))
+                break
+    return pairs
 
 
 def atlas_stems(root):
     stems = set()
-    for d, _, files in os.walk(root):
-        for f in files:
-            low = f.lower()
-            if low.endswith(".xml"):
-                stems.add(os.path.join(d, os.path.splitext(f)[0]))
-            elif low.startswith("spritemap") and low.endswith(".json"):
-                stems.add(os.path.join(d, os.path.splitext(f)[0]))
-                for e in IMAGE_EXTS:
-                    stems.add(os.path.join(d, os.path.splitext(f)[0]))
+    for scan, target in mirror_roots(root):
+        for d, _, files in os.walk(scan):
+            rel = os.path.relpath(d, scan)
+            out = target if rel == "." else os.path.join(target, rel)
+            for f in files:
+                low = f.lower()
+                if low.endswith(".xml") or (low.startswith("spritemap") and low.endswith(".json")):
+                    stems.add(os.path.join(out, os.path.splitext(f)[0]).lower())
     return stems
 
 
@@ -47,7 +64,9 @@ def main():
     ap.add_argument("--min-saved", type=int, default=20000, help="skip images that would save fewer pixels than this")
     ap.add_argument("--only", action="append", default=[], help="only touch paths (relative to the root) starting with this; repeatable")
     ap.add_argument("--exclude", action="append", default=None, help="skip paths containing this folder name or starting with this; repeatable (default: %s)" % ", ".join(DEFAULT_EXCLUDES))
+    ap.add_argument("--error-log", default="trim_images_errors.log", help="file to write errors to (only created if something fails)")
     args = ap.parse_args()
+    errors = []
     excludes = DEFAULT_EXCLUDES if args.exclude is None else args.exclude
 
     manifest_path = os.path.join(args.root, MANIFEST)
@@ -66,7 +85,7 @@ def main():
             path = os.path.join(d, f)
             rel = os.path.relpath(path, args.root).replace(os.sep, "/")
             key = os.path.splitext(rel)[0]
-            if os.path.join(d, os.path.splitext(f)[0]) in stems:
+            if f.lower().startswith(ATLAS_PREFIXES) or os.path.join(d, os.path.splitext(f)[0]).lower() in stems:
                 continue
             if excluded(rel, excludes):
                 continue
@@ -81,6 +100,7 @@ def main():
                 im = im.convert("RGBA")
             except Exception as e:
                 print("%s: error: %s" % (rel, e))
+                errors.append("%s: error: %s" % (rel, e))
                 continue
             box = im.getchannel("A").getbbox()
             if box is None:
@@ -97,9 +117,14 @@ def main():
             if not args.apply:
                 continue
 
-            data = encode(im.crop(box), path)
-            with open(path, "wb") as fh:
-                fh.write(data)
+            try:
+                data = encode(im.crop(box), path)
+                with open(path, "wb") as fh:
+                    fh.write(data)
+            except Exception as e:
+                print("%s: error: %s" % (rel, e))
+                errors.append("%s: error: %s" % (rel, e))
+                continue
             manifest[key] = [box[0], box[1], w, h, tw, th]
 
     if args.apply and changed:
@@ -107,6 +132,10 @@ def main():
         with open(manifest_path, "w", encoding="utf-8") as fh:
             json.dump(dict(sorted(manifest.items())), fh, indent=1)
     print("%s %d images, %d px saved" % ("trimmed" if args.apply else "would trim", changed, saved_total))
+    if errors:
+        with open(args.error_log, "w", encoding="utf-8") as fh:
+            fh.write("\n".join(errors) + "\n")
+        print("%d errors written to %s" % (len(errors), args.error_log))
 
 
 if __name__ == "__main__":

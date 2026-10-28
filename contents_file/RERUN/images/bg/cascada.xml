@@ -2,8 +2,8 @@
 <TextureAtlas imagePath="cascada.png">
 	<!-- Created with Adobe Animate version 22.0.4.185 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 9 instancia 10000" x="25" y="25" width="215" height="367" frameX="-5" frameY="-2" frameWidth="251" frameHeight="380"/>
-	<SubTexture name="Símbolo 9 instancia 10001" x="255" y="25" width="220" height="371" frameX="-2" frameY="-2" frameWidth="251" frameHeight="380"/>
-	<SubTexture name="Símbolo 9 instancia 10002" x="490" y="25" width="247" height="380" frameX="0" frameY="0" frameWidth="251" frameHeight="380"/>
-	<SubTexture name="Símbolo 9 instancia 10003" x="752" y="25" width="231" height="373" frameX="-20" frameY="-2" frameWidth="251" frameHeight="380"/>
+	<SubTexture name="Símbolo 9 instancia 10000" x="248" y="0" width="215" height="367" frameX="-5" frameY="-2" frameWidth="251" frameHeight="380"/>
+	<SubTexture name="Símbolo 9 instancia 10001" x="232" y="381" width="220" height="371" frameX="-2" frameY="-2" frameWidth="251" frameHeight="380"/>
+	<SubTexture name="Símbolo 9 instancia 10002" x="0" y="0" width="246" height="379" frameX="0" frameY="0" frameWidth="251" frameHeight="380"/>
+	<SubTexture name="Símbolo 9 instancia 10003" x="0" y="381" width="230" height="372" frameX="-20" frameY="-2" frameWidth="251" frameHeight="380"/>
 </TextureAtlas>

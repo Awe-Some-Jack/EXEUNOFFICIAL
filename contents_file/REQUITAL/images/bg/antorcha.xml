@@ -2,12 +2,12 @@
 <TextureAtlas imagePath="antorcha.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 3 instancia 10000" x="28" y="28" width="424" height="395"/>
-	<SubTexture name="Símbolo 3 instancia 10001" x="474" y="28" width="424" height="395"/>
-	<SubTexture name="Símbolo 3 instancia 10002" x="474" y="28" width="424" height="395"/>
-	<SubTexture name="Símbolo 3 instancia 10003" x="920" y="28" width="424" height="395"/>
-	<SubTexture name="Símbolo 3 instancia 10004" x="1366" y="28" width="424" height="395"/>
-	<SubTexture name="Símbolo 3 instancia 10005" x="28" y="445" width="424" height="395"/>
-	<SubTexture name="Símbolo 3 instancia 10006" x="474" y="445" width="424" height="395"/>
-	<SubTexture name="Símbolo 3 instancia 10007" x="920" y="445" width="424" height="395"/>
+	<SubTexture name="Símbolo 3 instancia 10000" x="0" y="0" width="424" height="395"/>
+	<SubTexture name="Símbolo 3 instancia 10001" x="426" y="0" width="424" height="395"/>
+	<SubTexture name="Símbolo 3 instancia 10002" x="426" y="0" width="424" height="395"/>
+	<SubTexture name="Símbolo 3 instancia 10003" x="852" y="0" width="424" height="395"/>
+	<SubTexture name="Símbolo 3 instancia 10004" x="1278" y="0" width="424" height="395"/>
+	<SubTexture name="Símbolo 3 instancia 10005" x="0" y="397" width="424" height="395"/>
+	<SubTexture name="Símbolo 3 instancia 10006" x="426" y="397" width="424" height="395"/>
+	<SubTexture name="Símbolo 3 instancia 10007" x="852" y="397" width="424" height="395"/>
 </TextureAtlas>

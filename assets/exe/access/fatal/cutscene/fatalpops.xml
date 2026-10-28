@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="fatalpops.png">
-	<SubTexture name="pop0 0000" x="0" y="492" width="204" height="148" frameX="-10" frameY="-3" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop0 0001" x="0" y="0" width="205" height="162" frameX="-5" frameY="-3" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop0 0002" x="207" y="0" width="207" height="162" frameX="-9" frameY="0" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop0 0003" x="209" y="328" width="206" height="152" frameX="-8" frameY="-5" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop0 0004" x="416" y="0" width="212" height="162" frameX="0" frameY="-2" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop0 0005" x="618" y="492" width="210" height="142" frameX="-2" frameY="-3" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop1 0000" x="630" y="0" width="207" height="162" frameX="-9" frameY="0" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop1 0001" x="417" y="328" width="206" height="152" frameX="-8" frameY="-5" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop1 0002" x="0" y="164" width="212" height="162" frameX="0" frameY="-2" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop1 0003" x="0" y="642" width="210" height="142" frameX="-2" frameY="-3" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop1 0004" x="206" y="492" width="204" height="148" frameX="-10" frameY="-3" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop1 0005" x="214" y="164" width="205" height="162" frameX="-5" frameY="-3" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop2 0000" x="421" y="164" width="212" height="162" frameX="0" frameY="-14" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop2 0001" x="212" y="642" width="210" height="142" frameX="-2" frameY="-15" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop2 0002" x="412" y="492" width="204" height="148" frameX="-10" frameY="-15" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop2 0003" x="635" y="164" width="205" height="162" frameX="-5" frameY="-15" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop2 0004" x="0" y="328" width="207" height="162" frameX="-9" frameY="-12" frameWidth="216" frameHeight="177"/>
-	<SubTexture name="pop2 0005" x="625" y="328" width="206" height="152" frameX="-8" frameY="-17" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop0 0000" x="0" y="318" width="204" height="148" frameX="-10" frameY="-3" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop0 0001" x="208" y="308" width="205" height="162" frameX="-5" frameY="-3" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop0 0002" x="214" y="144" width="207" height="162" frameX="-9" frameY="0" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop0 0003" x="0" y="164" width="206" height="152" frameX="-8" frameY="-5" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop0 0004" x="0" y="0" width="212" height="162" frameX="0" frameY="-2" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop0 0005" x="214" y="0" width="210" height="142" frameX="-2" frameY="-3" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop1 0000" x="214" y="144" width="207" height="162" frameX="-9" frameY="0" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop1 0001" x="0" y="164" width="206" height="152" frameX="-8" frameY="-5" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop1 0002" x="0" y="0" width="212" height="162" frameX="0" frameY="-2" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop1 0003" x="214" y="0" width="210" height="142" frameX="-2" frameY="-3" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop1 0004" x="0" y="318" width="204" height="148" frameX="-10" frameY="-3" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop1 0005" x="208" y="308" width="205" height="162" frameX="-5" frameY="-3" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop2 0000" x="0" y="0" width="212" height="162" frameX="0" frameY="-14" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop2 0001" x="214" y="0" width="210" height="142" frameX="-2" frameY="-15" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop2 0002" x="0" y="318" width="204" height="148" frameX="-10" frameY="-15" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop2 0003" x="208" y="308" width="205" height="162" frameX="-5" frameY="-15" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop2 0004" x="214" y="144" width="207" height="162" frameX="-9" frameY="-12" frameWidth="216" frameHeight="177"/>
+	<SubTexture name="pop2 0005" x="0" y="164" width="206" height="152" frameX="-8" frameY="-17" frameWidth="216" frameHeight="177"/>
 </TextureAtlas>

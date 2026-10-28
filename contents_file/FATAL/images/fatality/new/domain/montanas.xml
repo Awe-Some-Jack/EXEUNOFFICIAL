@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="montanas.png">
-<SubTexture name="idle0000" x="0" y="164" width="1009" height="162" frameX="0" frameY="-274" frameWidth="1005" frameHeight="586" />
-<SubTexture name="idle0001" x="0" y="0" width="1009" height="164" frameX="0" frameY="-272" frameWidth="1005" frameHeight="586" />
-<SubTexture name="idle0002" x="0" y="774" width="1009" height="140" frameX="0" frameY="-296" frameWidth="1005" frameHeight="586" />
-<SubTexture name="idle0003" x="0" y="628" width="1009" height="146" frameX="0" frameY="-290" frameWidth="1005" frameHeight="586" />
-<SubTexture name="idle0004" x="0" y="326" width="1009" height="151" frameX="0" frameY="-285" frameWidth="1005" frameHeight="586" />
-<SubTexture name="idle0005" x="0" y="477" width="1009" height="151" frameX="0" frameY="-285" frameWidth="1005" frameHeight="586" />
+<SubTexture name="idle0000" x="0" y="162" width="1005" height="158" frameX="0" frameY="-274" frameWidth="1005" frameHeight="586" />
+<SubTexture name="idle0001" x="0" y="0" width="1005" height="160" frameX="0" frameY="-272" frameWidth="1005" frameHeight="586" />
+<SubTexture name="idle0002" x="0" y="764" width="1005" height="136" frameX="0" frameY="-296" frameWidth="1005" frameHeight="586" />
+<SubTexture name="idle0003" x="0" y="620" width="1005" height="142" frameX="0" frameY="-290" frameWidth="1005" frameHeight="586" />
+<SubTexture name="idle0004" x="0" y="322" width="1005" height="147" frameX="0" frameY="-285" frameWidth="1005" frameHeight="586" />
+<SubTexture name="idle0005" x="0" y="471" width="1005" height="147" frameX="0" frameY="-285" frameWidth="1005" frameHeight="586" />
 </TextureAtlas>

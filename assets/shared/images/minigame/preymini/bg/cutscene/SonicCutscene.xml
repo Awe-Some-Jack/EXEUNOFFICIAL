@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="SonicCutscene.webp">
-<SubTexture name="SonicCutscene0000" x="0" y="0" width="29" height="39" frameX="-30" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0001" x="31" y="0" width="27" height="39" frameX="-30" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0002" x="60" y="0" width="26" height="39" frameX="-32" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0003" x="88" y="0" width="30" height="39" frameX="-30" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0004" x="120" y="0" width="26" height="39" frameX="-31" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0005" x="148" y="0" width="24" height="39" frameX="-35" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0006" x="148" y="0" width="24" height="39" frameX="-35" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0007" x="148" y="0" width="24" height="39" frameX="-35" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0008" x="148" y="0" width="24" height="39" frameX="-35" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0009" x="148" y="0" width="24" height="39" frameX="-35" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0010" x="174" y="0" width="29" height="39" frameX="-32" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0011" x="205" y="0" width="28" height="38" frameX="-33" frameY="-41" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0012" x="235" y="0" width="28" height="39" frameX="-33" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0013" x="265" y="0" width="28" height="39" frameX="-33" frameY="-40" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0014" x="295" y="0" width="25" height="41" frameX="-33" frameY="-38" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0015" x="322" y="0" width="33" height="37" frameX="-29" frameY="-42" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0016" x="357" y="0" width="34" height="29" frameX="-29" frameY="-50" frameWidth="87" frameHeight="101" />
-<SubTexture name="SonicCutscene0017" x="393" y="0" width="34" height="31" frameX="-29" frameY="-48" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0000" x="27" y="0" width="29" height="39" frameX="-30" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0001" x="88" y="0" width="27" height="39" frameX="-30" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0002" x="93" y="41" width="26" height="39" frameX="-32" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0003" x="0" y="43" width="30" height="39" frameX="-30" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0004" x="117" y="0" width="26" height="39" frameX="-31" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0005" x="121" y="41" width="24" height="39" frameX="-35" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0006" x="121" y="41" width="24" height="39" frameX="-35" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0007" x="121" y="41" width="24" height="39" frameX="-35" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0008" x="121" y="41" width="24" height="39" frameX="-35" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0009" x="121" y="41" width="24" height="39" frameX="-35" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0010" x="32" y="41" width="29" height="39" frameX="-32" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0011" x="145" y="0" width="28" height="38" frameX="-33" frameY="-41" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0012" x="58" y="0" width="28" height="39" frameX="-33" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0013" x="63" y="41" width="28" height="39" frameX="-33" frameY="-40" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0014" x="0" y="0" width="25" height="41" frameX="-33" frameY="-38" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0015" x="147" y="40" width="33" height="37" frameX="-29" frameY="-42" frameWidth="87" frameHeight="101" />
+<SubTexture name="SonicCutscene0016" x="182" y="36" width="29" height="34" frameX="-29" frameY="-50" frameWidth="87" frameHeight="101" rotated="true" />
+<SubTexture name="SonicCutscene0017" x="175" y="0" width="31" height="34" frameX="-29" frameY="-48" frameWidth="87" frameHeight="101" rotated="true" />
 </TextureAtlas>

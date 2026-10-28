@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="amy.png">
-<SubTexture name="amy dead0000" x="0" y="135" width="68" height="41" frameX="0" frameY="-4" frameWidth="58" frameHeight="35" />
-<SubTexture name="amy dead0001" x="68" y="135" width="68" height="39" frameX="0" frameY="-6" frameWidth="58" frameHeight="35" />
-<SubTexture name="amy dead0002" x="136" y="135" width="68" height="39" frameX="0" frameY="-6" frameWidth="58" frameHeight="35" />
-<SubTexture name="amy dead0003" x="136" y="43" width="68" height="42" frameX="0" frameY="-3" frameWidth="58" frameHeight="35" />
-<SubTexture name="amy dead0004" x="136" y="0" width="68" height="43" frameX="0" frameY="-2" frameWidth="58" frameHeight="35" />
-<SubTexture name="amy dead0005" x="0" y="0" width="68" height="45" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
-<SubTexture name="amy dead0006" x="68" y="0" width="68" height="45" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
-<SubTexture name="amy dead0007" x="0" y="45" width="68" height="45" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
-<SubTexture name="amy dead0008" x="68" y="45" width="68" height="45" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
-<SubTexture name="amy dead0009" x="0" y="90" width="68" height="45" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
-<SubTexture name="amy dead0010" x="68" y="90" width="68" height="45" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
-<SubTexture name="amy dead0011" x="136" y="85" width="68" height="42" frameX="0" frameY="-3" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0000" x="0" y="146" width="58" height="31" frameX="0" frameY="-4" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0001" x="0" y="179" width="58" height="29" frameX="0" frameY="-6" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0002" x="60" y="179" width="58" height="29" frameX="0" frameY="-6" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0003" x="60" y="111" width="58" height="32" frameX="0" frameY="-3" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0004" x="0" y="111" width="58" height="33" frameX="0" frameY="-2" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0005" x="0" y="0" width="58" height="35" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0006" x="60" y="0" width="58" height="35" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0007" x="0" y="37" width="58" height="35" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0008" x="60" y="37" width="58" height="35" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0009" x="0" y="74" width="58" height="35" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0010" x="60" y="74" width="58" height="35" frameX="0" frameY="0" frameWidth="58" frameHeight="35" />
+<SubTexture name="amy dead0011" x="60" y="145" width="58" height="32" frameX="0" frameY="-3" frameWidth="58" frameHeight="35" />
 </TextureAtlas>

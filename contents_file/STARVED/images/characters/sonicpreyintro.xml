@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="sonicpreyintro.png">
-<SubTexture name="idle0000" x="197" y="0" width="200" height="257" frameX="-34" frameY="-7" frameWidth="254" frameHeight="256" />
-<SubTexture name="idle0001" x="397" y="0" width="203" height="256" frameX="-32" frameY="-8" frameWidth="254" frameHeight="256" />
-<SubTexture name="idle0002" x="0" y="0" width="197" height="260" frameX="-32" frameY="-4" frameWidth="254" frameHeight="256" />
-<SubTexture name="idle0003" x="0" y="260" width="192" height="256" frameX="-37" frameY="-8" frameWidth="254" frameHeight="256" />
-<SubTexture name="idle0004" x="192" y="260" width="203" height="256" frameX="-32" frameY="-8" frameWidth="254" frameHeight="256" />
+<SubTexture name="idle0000" x="254" y="0" width="192" height="249" frameX="-34" frameY="-7" frameWidth="254" frameHeight="256" />
+<SubTexture name="idle0001" x="0" y="191" width="248" height="195" frameX="-32" frameY="-8" frameWidth="254" frameHeight="256" rotated="true" />
+<SubTexture name="idle0002" x="0" y="0" width="252" height="189" frameX="-32" frameY="-4" frameWidth="254" frameHeight="256" rotated="true" />
+<SubTexture name="idle0003" x="0" y="388" width="248" height="184" frameX="-37" frameY="-8" frameWidth="254" frameHeight="256" rotated="true" />
+<SubTexture name="idle0004" x="250" y="251" width="195" height="248" frameX="-32" frameY="-8" frameWidth="254" frameHeight="256" />
 </TextureAtlas>

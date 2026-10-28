@@ -2,6 +2,6 @@
 <TextureAtlas imagePath="bf-icon.png">
 	<!-- Created using the Spritesheet and XML generator -->
 	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
-	<SubTexture name="finished bf10000" x="0" y="0" width="296" height="217" frameX="-36" frameY="-65" frameWidth="339" frameHeight="280"/>
-	<SubTexture name="finished bf20000" x="296" y="0" width="296" height="217" frameX="-36" frameY="-65" frameWidth="339" frameHeight="280"/>
+	<SubTexture name="finished bf10000" x="0" y="0" width="292" height="213" frameX="-38" frameY="-67" frameWidth="339" frameHeight="280"/>
+	<SubTexture name="finished bf20000" x="294" y="0" width="292" height="213" frameX="-38" frameY="-67" frameWidth="339" frameHeight="280"/>
 </TextureAtlas>

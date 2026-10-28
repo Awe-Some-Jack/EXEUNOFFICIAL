@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="exetior.png">
-	<SubTexture name="exetior0000" x="0" y="0" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0001" x="32" y="0" width="30" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0002" x="63" y="0" width="29" height="38" frameX="-98" frameY="-103" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0003" x="93" y="0" width="28" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0004" x="122" y="0" width="29" height="40" frameX="-98" frameY="-101" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0005" x="0" y="0" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0006" x="152" y="0" width="30" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0007" x="183" y="0" width="30" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0008" x="214" y="0" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0009" x="246" y="0" width="28" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0010" x="275" y="0" width="29" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0011" x="305" y="0" width="31" height="39" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0012" x="337" y="0" width="31" height="39" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0013" x="337" y="0" width="31" height="39" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0014" x="369" y="0" width="31" height="39" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0015" x="401" y="0" width="31" height="39" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0016" x="433" y="0" width="31" height="39" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0017" x="433" y="0" width="31" height="39" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0018" x="433" y="0" width="31" height="39" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0019" x="465" y="0" width="32" height="39" frameX="-87" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0020" x="498" y="0" width="33" height="66" frameX="-131" frameY="-61" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0021" x="532" y="0" width="44" height="65" frameX="-128" frameY="-62" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0022" x="577" y="0" width="44" height="52" frameX="-127" frameY="-75" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0023" x="622" y="0" width="46" height="61" frameX="-124" frameY="-68" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0024" x="669" y="0" width="50" height="64" frameX="-120" frameY="-63" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0025" x="720" y="0" width="49" height="63" frameX="-120" frameY="-64" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0026" x="770" y="0" width="48" height="58" frameX="-120" frameY="-70" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0027" x="819" y="0" width="47" height="62" frameX="-120" frameY="-65" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0028" x="867" y="0" width="47" height="61" frameX="-119" frameY="-67" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0029" x="915" y="0" width="46" height="60" frameX="-119" frameY="-67" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0030" x="962" y="0" width="45" height="59" frameX="-119" frameY="-69" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0031" x="0" y="67" width="45" height="60" frameX="-118" frameY="-70" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0032" x="46" y="67" width="44" height="60" frameX="-118" frameY="-70" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0033" x="91" y="67" width="44" height="58" frameX="-117" frameY="-72" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0034" x="136" y="67" width="42" height="57" frameX="-117" frameY="-72" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0035" x="179" y="67" width="42" height="56" frameX="-116" frameY="-74" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0036" x="222" y="67" width="41" height="56" frameX="-116" frameY="-74" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0037" x="264" y="67" width="40" height="55" frameX="-115" frameY="-76" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0038" x="305" y="67" width="40" height="54" frameX="-114" frameY="-77" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0039" x="346" y="67" width="39" height="52" frameX="-114" frameY="-79" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0040" x="386" y="67" width="37" height="52" frameX="-114" frameY="-79" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0041" x="424" y="67" width="37" height="51" frameX="-113" frameY="-81" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0042" x="462" y="67" width="36" height="48" frameX="-112" frameY="-85" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0043" x="499" y="67" width="35" height="49" frameX="-111" frameY="-84" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0044" x="535" y="67" width="35" height="47" frameX="-110" frameY="-86" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0045" x="571" y="67" width="34" height="46" frameX="-109" frameY="-88" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0046" x="606" y="67" width="34" height="44" frameX="-108" frameY="-90" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0047" x="641" y="67" width="34" height="42" frameX="-106" frameY="-93" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0048" x="676" y="67" width="33" height="40" frameX="-105" frameY="-95" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0049" x="710" y="67" width="31" height="40" frameX="-105" frameY="-96" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0050" x="742" y="67" width="30" height="39" frameX="-105" frameY="-98" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0051" x="773" y="67" width="31" height="39" frameX="-102" frameY="-99" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0052" x="805" y="67" width="30" height="40" frameX="-101" frameY="-100" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0053" x="836" y="67" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0054" x="868" y="67" width="31" height="40" frameX="-98" frameY="-101" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0055" x="900" y="67" width="33" height="41" frameX="-98" frameY="-100" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0056" x="934" y="67" width="34" height="42" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0057" x="969" y="67" width="37" height="42" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0058" x="0" y="128" width="39" height="42" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0059" x="40" y="128" width="41" height="43" frameX="-98" frameY="-98" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0060" x="82" y="128" width="42" height="43" frameX="-98" frameY="-98" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0061" x="125" y="128" width="44" height="42" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0062" x="170" y="128" width="45" height="43" frameX="-98" frameY="-98" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0063" x="216" y="128" width="47" height="42" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0064" x="264" y="128" width="47" height="42" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0065" x="312" y="128" width="50" height="42" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0066" x="363" y="128" width="52" height="41" frameX="-98" frameY="-100" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0067" x="416" y="128" width="50" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0068" x="467" y="128" width="55" height="41" frameX="-98" frameY="-100" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0069" x="523" y="128" width="55" height="41" frameX="-98" frameY="-100" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0070" x="579" y="128" width="56" height="41" frameX="-98" frameY="-100" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0071" x="636" y="128" width="55" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0072" x="692" y="128" width="56" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0073" x="749" y="128" width="62" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0074" x="0" y="0" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0075" x="0" y="0" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0076" x="0" y="0" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0077" x="812" y="128" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0078" x="844" y="128" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0079" x="876" y="128" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0080" x="908" y="128" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0081" x="940" y="128" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0082" x="940" y="128" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0083" x="940" y="128" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0084" x="972" y="128" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0085" x="972" y="128" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0086" x="0" y="172" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0087" x="32" y="172" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0088" x="64" y="172" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0089" x="64" y="172" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0090" x="64" y="172" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0091" x="96" y="172" width="34" height="64" frameX="-95" frameY="-78" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0092" x="131" y="172" width="40" height="64" frameX="-95" frameY="-78" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0093" x="172" y="172" width="40" height="64" frameX="-95" frameY="-78" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0094" x="213" y="172" width="48" height="63" frameX="-87" frameY="-78" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0095" x="262" y="172" width="63" height="64" frameX="-72" frameY="-78" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0096" x="326" y="172" width="48" height="63" frameX="-69" frameY="-78" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0097" x="375" y="172" width="40" height="63" frameX="-68" frameY="-78" frameWidth="172" frameHeight="151"/>
-	<SubTexture name="exetior0098" x="416" y="172" width="32" height="63" frameX="-68" frameY="-78" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0000" x="42" y="216" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0001" x="641" y="0" width="30" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0002" x="554" y="249" width="38" height="29" frameX="-98" frameY="-103" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0003" x="82" y="250" width="39" height="28" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0004" x="512" y="249" width="40" height="29" frameX="-98" frameY="-101" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0005" x="42" y="216" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0006" x="281" y="249" width="39" height="30" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0007" x="322" y="249" width="39" height="30" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0008" x="159" y="216" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0009" x="405" y="248" width="28" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0010" x="286" y="139" width="29" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0011" x="200" y="216" width="39" height="31" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0012" x="241" y="216" width="39" height="31" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0013" x="241" y="216" width="39" height="31" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0014" x="282" y="216" width="39" height="31" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0015" x="323" y="216" width="39" height="31" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0016" x="472" y="216" width="39" height="31" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0017" x="472" y="216" width="39" height="31" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0018" x="472" y="216" width="39" height="31" frameX="-88" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0019" x="438" y="183" width="32" height="39" frameX="-87" frameY="-102" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0020" x="39" y="181" width="66" height="33" frameX="-131" frameY="-61" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0021" x="557" y="92" width="65" height="44" frameX="-128" frameY="-62" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0022" x="122" y="93" width="52" height="44" frameX="-127" frameY="-75" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0023" x="432" y="52" width="61" height="46" frameX="-124" frameY="-68" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0024" x="471" y="0" width="64" height="50" frameX="-120" frameY="-63" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0025" x="589" y="41" width="63" height="49" frameX="-120" frameY="-64" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0026" x="196" y="43" width="58" height="48" frameX="-120" frameY="-70" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0027" x="256" y="43" width="62" height="47" frameX="-120" frameY="-65" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0028" x="320" y="43" width="61" height="47" frameX="-119" frameY="-67" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0029" x="0" y="65" width="60" height="46" frameX="-119" frameY="-67" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0030" x="256" y="92" width="59" height="45" frameX="-119" frameY="-69" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0031" x="495" y="88" width="60" height="45" frameX="-118" frameY="-70" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0032" x="317" y="92" width="60" height="44" frameX="-118" frameY="-70" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0033" x="62" y="93" width="58" height="44" frameX="-117" frameY="-72" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0034" x="176" y="93" width="57" height="42" frameX="-117" frameY="-72" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0035" x="430" y="100" width="56" height="42" frameX="-116" frameY="-74" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0036" x="488" y="135" width="56" height="41" frameX="-116" frameY="-74" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0037" x="317" y="138" width="55" height="40" frameX="-115" frameY="-76" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0038" x="612" y="138" width="54" height="40" frameX="-114" frameY="-77" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0039" x="110" y="139" width="52" height="39" frameX="-114" frameY="-79" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0040" x="424" y="144" width="52" height="37" frameX="-114" frameY="-79" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0041" x="0" y="157" width="37" height="51" frameX="-113" frameY="-81" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0042" x="478" y="178" width="48" height="36" frameX="-112" frameY="-85" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0043" x="164" y="179" width="49" height="35" frameX="-111" frameY="-84" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0044" x="110" y="180" width="47" height="35" frameX="-110" frameY="-86" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0045" x="281" y="180" width="46" height="34" frameX="-109" frameY="-88" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0046" x="528" y="180" width="44" height="34" frameX="-108" frameY="-90" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0047" x="329" y="180" width="42" height="34" frameX="-106" frameY="-93" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0048" x="495" y="52" width="40" height="33" frameX="-105" frameY="-95" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0049" x="618" y="215" width="40" height="31" frameX="-105" frameY="-96" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0050" x="471" y="249" width="39" height="30" frameX="-105" frameY="-98" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0051" x="513" y="216" width="39" height="31" frameX="-102" frameY="-99" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0052" x="239" y="249" width="40" height="30" frameX="-101" frameY="-100" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0053" x="554" y="216" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0054" x="0" y="216" width="40" height="31" frameX="-98" frameY="-101" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0055" x="618" y="180" width="41" height="33" frameX="-98" frameY="-100" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0056" x="574" y="180" width="42" height="34" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0057" x="374" y="175" width="42" height="37" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0058" x="242" y="139" width="42" height="39" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0059" x="379" y="132" width="43" height="41" frameX="-98" frameY="-98" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0060" x="0" y="113" width="43" height="42" frameX="-98" frameY="-98" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0061" x="624" y="92" width="44" height="42" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0062" x="383" y="87" width="45" height="43" frameX="-98" frameY="-98" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0063" x="383" y="43" width="47" height="42" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0064" x="537" y="44" width="47" height="42" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0065" x="537" y="0" width="50" height="42" frameX="-98" frameY="-99" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0066" x="417" y="0" width="52" height="41" frameX="-98" frameY="-100" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0067" x="589" y="0" width="50" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0068" x="246" y="0" width="55" height="41" frameX="-98" frameY="-100" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0069" x="303" y="0" width="55" height="41" frameX="-98" frameY="-100" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0070" x="130" y="0" width="56" height="41" frameX="-98" frameY="-100" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0071" x="360" y="0" width="55" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0072" x="188" y="0" width="56" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0073" x="66" y="0" width="62" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0074" x="42" y="216" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0075" x="42" y="216" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0076" x="42" y="216" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0077" x="83" y="217" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0078" x="124" y="217" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0079" x="438" y="224" width="31" height="39" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151"/>
+	<SubTexture name="exetior0080" x="364" y="248" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0081" x="595" y="248" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0082" x="595" y="248" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0083" x="595" y="248" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0084" x="0" y="249" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0085" x="0" y="249" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0086" x="41" y="249" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0087" x="157" y="249" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0088" x="198" y="249" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0089" x="198" y="249" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0090" x="198" y="249" width="39" height="31" frameX="-98" frameY="-102" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0091" x="215" y="180" width="64" height="34" frameX="-95" frameY="-78" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0092" x="176" y="137" width="64" height="40" frameX="-95" frameY="-78" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0093" x="546" y="138" width="64" height="40" frameX="-95" frameY="-78" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0094" x="66" y="43" width="63" height="48" frameX="-87" frameY="-78" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0095" x="0" y="0" width="64" height="63" frameX="-72" frameY="-78" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0096" x="131" y="43" width="63" height="48" frameX="-69" frameY="-78" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0097" x="45" y="139" width="63" height="40" frameX="-68" frameY="-78" frameWidth="172" frameHeight="151" rotated="true" />
+	<SubTexture name="exetior0098" x="373" y="214" width="63" height="32" frameX="-68" frameY="-78" frameWidth="172" frameHeight="151" rotated="true" />
 </TextureAtlas>

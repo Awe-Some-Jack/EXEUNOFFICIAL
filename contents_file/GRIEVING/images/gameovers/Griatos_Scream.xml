@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="Griatos_Scream.png">
 <SubTexture name="Griatos_Scream scream0000" x="0" y="0" width="960" height="672" frameX="0" frameY="0" frameWidth="960" frameHeight="672" />
-<SubTexture name="Griatos_Scream scream0001" x="960" y="0" width="960" height="672" frameX="0" frameY="0" frameWidth="960" frameHeight="672" />
+<SubTexture name="Griatos_Scream scream0001" x="0" y="674" width="960" height="672" frameX="0" frameY="0" frameWidth="960" frameHeight="672" />
 <SubTexture name="Griatos_Scream scream0002" x="0" y="0" width="960" height="672" frameX="0" frameY="0" frameWidth="960" frameHeight="672" />
-<SubTexture name="Griatos_Scream scream0003" x="0" y="672" width="960" height="672" frameX="0" frameY="0" frameWidth="960" frameHeight="672" />
+<SubTexture name="Griatos_Scream scream0003" x="0" y="1348" width="960" height="672" frameX="0" frameY="0" frameWidth="960" frameHeight="672" />
 </TextureAtlas>

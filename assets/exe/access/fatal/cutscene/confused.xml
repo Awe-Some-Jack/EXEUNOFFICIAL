@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="confused.png">
-	<SubTexture name="confused0000" x="0" y="0" width="111" height="134" frameX="-20" frameY="0" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0001" x="113" y="0" width="111" height="134" frameX="-20" frameY="0" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0002" x="339" y="0" width="111" height="133" frameX="-20" frameY="-1" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0003" x="693" y="0" width="111" height="127" frameX="-20" frameY="-7" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0004" x="142" y="136" width="111" height="125" frameX="-20" frameY="-9" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0005" x="255" y="136" width="111" height="125" frameX="-20" frameY="-9" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0006" x="568" y="0" width="123" height="128" frameX="-6" frameY="-11" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0007" x="452" y="0" width="114" height="131" frameX="-17" frameY="-4" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0008" x="226" y="0" width="111" height="134" frameX="-19" frameY="0" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0009" x="368" y="136" width="150" height="125" frameX="0" frameY="-37" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0010" x="520" y="136" width="150" height="124" frameX="0" frameY="-38" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0011" x="672" y="136" width="143" height="122" frameX="-3" frameY="-40" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0012" x="284" y="264" width="140" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0013" x="426" y="264" width="141" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0014" x="0" y="264" width="140" height="122" frameX="-6" frameY="-40" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0015" x="0" y="136" width="140" height="126" frameX="-6" frameY="-36" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0016" x="142" y="264" width="140" height="122" frameX="-6" frameY="-40" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0017" x="569" y="264" width="140" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0018" x="0" y="388" width="140" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0019" x="142" y="388" width="140" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0020" x="284" y="388" width="140" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0021" x="426" y="388" width="141" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0022" x="286" y="510" width="141" height="119" frameX="-5" frameY="-43" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0023" x="572" y="510" width="144" height="116" frameX="-2" frameY="-46" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0024" x="0" y="632" width="144" height="116" frameX="-2" frameY="-46" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0025" x="146" y="632" width="144" height="116" frameX="-2" frameY="-46" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0026" x="429" y="510" width="141" height="119" frameX="-5" frameY="-43" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0027" x="569" y="388" width="141" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0028" x="0" y="510" width="141" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
-	<SubTexture name="confused0029" x="143" y="510" width="141" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0000" x="0" y="0" width="134" height="111" frameX="-20" frameY="0" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0001" x="136" y="0" width="134" height="111" frameX="-20" frameY="0" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0002" x="408" y="0" width="133" height="111" frameX="-20" frameY="-1" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0003" x="130" y="113" width="127" height="111" frameX="-20" frameY="-7" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0004" x="553" y="116" width="125" height="111" frameX="-20" frameY="-9" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0005" x="130" y="226" width="125" height="111" frameX="-20" frameY="-9" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0006" x="0" y="113" width="128" height="123" frameX="-6" frameY="-11" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0007" x="543" y="0" width="131" height="114" frameX="-17" frameY="-4" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0008" x="272" y="0" width="134" height="111" frameX="-19" frameY="0" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0009" x="401" y="116" width="150" height="125" frameX="0" frameY="-37" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0010" x="257" y="243" width="150" height="124" frameX="0" frameY="-38" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0011" x="409" y="243" width="143" height="122" frameX="-3" frameY="-40" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0012" x="389" y="489" width="140" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0013" x="124" y="339" width="120" height="141" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0014" x="554" y="229" width="122" height="140" frameX="-6" frameY="-40" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0015" x="259" y="113" width="140" height="126" frameX="-6" frameY="-36" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0016" x="0" y="238" width="122" height="140" frameX="-6" frameY="-40" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0017" x="122" y="491" width="140" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0018" x="264" y="491" width="120" height="140" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0019" x="531" y="514" width="140" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0020" x="0" y="523" width="120" height="140" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0021" x="409" y="367" width="141" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0022" x="386" y="611" width="141" height="119" frameX="-5" frameY="-43" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0023" x="122" y="633" width="144" height="116" frameX="-2" frameY="-46" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0024" x="529" y="636" width="144" height="116" frameX="-2" frameY="-46" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0025" x="122" y="633" width="144" height="116" frameX="-2" frameY="-46" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0026" x="386" y="611" width="141" height="119" frameX="-5" frameY="-43" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0027" x="246" y="369" width="141" height="120" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162"/>
+	<SubTexture name="confused0028" x="552" y="371" width="120" height="141" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162" rotated="true" />
+	<SubTexture name="confused0029" x="0" y="380" width="120" height="141" frameX="-5" frameY="-42" frameWidth="150" frameHeight="162" rotated="true" />
 </TextureAtlas>

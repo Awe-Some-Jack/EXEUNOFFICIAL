@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="heart.png">
-	<SubTexture name="heart0000" x="0" y="0" width="9" height="21"/>
-	<SubTexture name="heart0001" x="11" y="0" width="9" height="21"/>
-	<SubTexture name="heart0002" x="22" y="0" width="9" height="21"/>
-	<SubTexture name="heart0003" x="33" y="0" width="9" height="21"/>
-	<SubTexture name="heart0004" x="44" y="0" width="9" height="21"/>
-	<SubTexture name="heart0005" x="55" y="0" width="9" height="21"/>
-	<SubTexture name="heart0006" x="66" y="0" width="9" height="21"/>
-	<SubTexture name="heart0007" x="77" y="0" width="9" height="21"/>
+	<SubTexture name="heart0000" x="0" y="0" width="9" height="8" frameX="0" frameY="-13" frameWidth="9" frameHeight="21" />
+	<SubTexture name="heart0001" x="0" y="0" width="9" height="8" frameX="0" frameY="-12" frameWidth="9" frameHeight="21" />
+	<SubTexture name="heart0002" x="0" y="0" width="9" height="8" frameX="0" frameY="-11" frameWidth="9" frameHeight="21" />
+	<SubTexture name="heart0003" x="0" y="0" width="9" height="8" frameX="0" frameY="-8" frameWidth="9" frameHeight="21" />
+	<SubTexture name="heart0004" x="11" y="0" width="9" height="8" frameX="0" frameY="-6" frameWidth="9" frameHeight="21" />
+	<SubTexture name="heart0005" x="11" y="0" width="9" height="8" frameX="0" frameY="-4" frameWidth="9" frameHeight="21" />
+	<SubTexture name="heart0006" x="22" y="0" width="9" height="8" frameX="0" frameY="-2" frameWidth="9" frameHeight="21" />
+	<SubTexture name="heart0007" x="22" y="0" width="9" height="8" frameX="0" frameY="0" frameWidth="9" frameHeight="21" />
 </TextureAtlas>

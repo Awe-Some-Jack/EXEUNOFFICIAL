@@ -2,8 +2,8 @@
 <TextureAtlas imagePath="loop.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 4 instancia 10000" x="12" y="12" width="2489" height="542"/>
-	<SubTexture name="Símbolo 4 instancia 10001" x="12" y="12" width="2489" height="542"/>
-	<SubTexture name="Símbolo 4 instancia 10002" x="12" y="576" width="2489" height="542"/>
-	<SubTexture name="Símbolo 4 instancia 10003" x="12" y="576" width="2489" height="542"/>
+	<SubTexture name="Símbolo 4 instancia 10000" x="0" y="0" width="2489" height="541" frameX="0" frameY="-1" frameWidth="2489" frameHeight="542" />
+	<SubTexture name="Símbolo 4 instancia 10001" x="0" y="0" width="2489" height="541" frameX="0" frameY="-1" frameWidth="2489" frameHeight="542" />
+	<SubTexture name="Símbolo 4 instancia 10002" x="0" y="543" width="2489" height="541" frameX="0" frameY="-1" frameWidth="2489" frameHeight="542" />
+	<SubTexture name="Símbolo 4 instancia 10003" x="0" y="543" width="2489" height="541" frameX="0" frameY="-1" frameWidth="2489" frameHeight="542" />
 </TextureAtlas>

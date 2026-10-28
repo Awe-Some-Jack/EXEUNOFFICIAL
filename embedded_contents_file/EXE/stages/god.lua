@@ -1,5 +1,9 @@
 local count = 1
 
+local mount1Scale = 1 / 0.7484
+local mount2Scale = 1 / 0.898
+local floorScale = 1 / 0.7014
+
 local exespk = stringSplit(getTextFromFile('data/godspeed/exeSpeak.txt'), '\n')
 local daLines, usedLines = {}, {}
 for i = 1, #exespk do table.insert(daLines, exespk[i]) end
@@ -56,8 +60,8 @@ function onCreatePost()
 
 	createInstance('mount00', 'flixel.addons.display.FlxBackdrop', {nil, 0x01, -500})
 	loadGraphic('mount00', 'god/mount1')
-	scaleObject('mount00', 2, 2)
-	setProperty('mount00.y', -300)
+	scaleObject('mount00', 2 * mount1Scale, 2 * mount1Scale)
+	setProperty('mount00.y', -300 + 21 * 2)
 	setProperty('mount00.color', getColorFromHex('555555'))
 	setScrollFactor('mount00', 0.2, 0.2)
 	setProperty('mount00.velocity.x', -2000)
@@ -67,8 +71,8 @@ function onCreatePost()
 
 	createInstance('mount0', 'flixel.addons.display.FlxBackdrop', {nil, 0x01, -500})
 	loadGraphic('mount0', 'god/mount1')
-	scaleObject('mount0', 1.5, 1.5)
-	setProperty('mount0.y', -100)
+	scaleObject('mount0', 1.5 * mount1Scale, 1.5 * mount1Scale)
+	setProperty('mount0.y', -100 + 21 * 1.5)
 	setProperty('mount0.color', getColorFromHex('AAAAAA'))
 	setScrollFactor('mount0', 0.5, 0.5)
 	setProperty('mount0.velocity.x', -3000)
@@ -76,9 +80,9 @@ function onCreatePost()
 
 	createInstance('mount1', 'flixel.addons.display.FlxBackdrop', {nil, 0x01, -200})
 	loadGraphic('mount1', 'god/mount1')
-	scaleObject('mount1', 1.5, 1.5)
+	scaleObject('mount1', 1.5 * mount1Scale, 1.5 * mount1Scale)
 	setScrollFactor('mount1', 0.6, 0.6)
-	setProperty('mount1.y', -300)
+	setProperty('mount1.y', -300 + 21 * 1.5)
 	setProperty('mount1.velocity.x', -4000)
 	addInstance('mount1')
 
@@ -86,9 +90,9 @@ function onCreatePost()
 
 	createInstance('mount2', 'flixel.addons.display.FlxBackdrop', {nil, 0x01, -200})
 	loadGraphic('mount2', 'god/mount2')
-	scaleObject('mount2', 1, 1)
+	scaleObject('mount2', mount2Scale, mount2Scale)
 	setScrollFactor('mount2', 0.8, 0.8)
-	setProperty('mount2.y', 200)
+	setProperty('mount2.y', 200 + 266)
 	setProperty('mount2.velocity.x', -5000)
 	addInstance('mount2')
 
@@ -128,11 +132,11 @@ function onCreatePost()
 
 		createInstance('floor'..i, 'flixel.addons.display.FlxBackdrop', {nil, 0x01, -100})
 		loadGraphic('floor'..i, 'god/floor')
-		scaleObject('floor'..i, 0.9 + (0.2 * (i - 1)), 0.9 + (0.2 * (i - 1)))
+		scaleObject('floor'..i, (0.9 + (0.2 * (i - 1))) * floorScale, (0.9 + (0.2 * (i - 1))) * floorScale)
 		setScrollFactor('floor'..i, 1 + (0.2 * (i - 1)), 1 + (0.2 * (i - 1)))
 		setProperty('floor'..i..'.velocity.x', -6000 - (1500 * (i - 1)))
 		addInstance('floor'..i, i > 1)
-		setProperty('floor'..i..'.y', 100 + 80 * (i - 1))
+		setProperty('floor'..i..'.y', 100 + 80 * (i - 1) + 468 * (0.9 + (0.2 * (i - 1))))
 		
 		if i == 1 then
 			setProperty('floor1.color', getColorFromHex('555555'))

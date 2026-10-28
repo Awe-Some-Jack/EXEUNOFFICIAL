@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TextureAtlas imagePath="spritesheet.png">
-	<SubTexture name="dance0000" x="0" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0001" x="0" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0002" x="85" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0003" x="85" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0004" x="170" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0005" x="170" y="0" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0006" x="0" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0007" x="0" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0008" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0009" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0010" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0011" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0012" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
-	<SubTexture name="dance0013" x="85" y="293" width="85" height="293" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" />
+	<SubTexture name="dance0000" x="0" y="248" width="286" height="84" frameX="-384" frameY="-129" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0001" x="0" y="248" width="286" height="84" frameX="-384" frameY="-129" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0002" x="0" y="334" width="285" height="82" frameX="-384" frameY="-131" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0003" x="0" y="334" width="285" height="82" frameX="-384" frameY="-131" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0004" x="0" y="0" width="293" height="81" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0005" x="0" y="0" width="293" height="81" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0006" x="0" y="165" width="292" height="81" frameX="-383" frameY="-124" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0007" x="0" y="165" width="292" height="81" frameX="-383" frameY="-124" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0008" x="0" y="83" width="293" height="80" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0009" x="0" y="83" width="293" height="80" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0010" x="0" y="83" width="293" height="80" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0011" x="0" y="83" width="293" height="80" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0012" x="0" y="83" width="293" height="80" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" rotated="true" />
+	<SubTexture name="dance0013" x="0" y="83" width="293" height="80" frameX="-383" frameY="-123" frameWidth="792" frameHeight="495" rotated="true" />
 </TextureAtlas>

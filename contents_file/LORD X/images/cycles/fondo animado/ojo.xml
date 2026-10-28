@@ -2,20 +2,20 @@
 <TextureAtlas imagePath="ojo.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 12 instancia 10000" x="36" y="36" width="587" height="650" frameX="0" frameY="-4" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10001" x="36" y="36" width="587" height="650" frameX="0" frameY="-4" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10002" x="643" y="36" width="589" height="654" frameX="0" frameY="0" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10003" x="643" y="36" width="589" height="654" frameX="0" frameY="0" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10004" x="643" y="36" width="589" height="654" frameX="0" frameY="0" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10005" x="1252" y="36" width="607" height="652" frameX="0" frameY="-2" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10006" x="1252" y="36" width="607" height="652" frameX="0" frameY="-2" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10007" x="1252" y="36" width="607" height="652" frameX="0" frameY="-2" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10008" x="36" y="710" width="609" height="649" frameX="0" frameY="-5" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10009" x="36" y="710" width="609" height="649" frameX="0" frameY="-5" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10010" x="665" y="710" width="591" height="645" frameX="0" frameY="-9" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10011" x="665" y="710" width="591" height="645" frameX="0" frameY="-9" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10012" x="665" y="710" width="591" height="645" frameX="0" frameY="-9" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10013" x="1276" y="710" width="584" height="647" frameX="0" frameY="-7" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10014" x="1276" y="710" width="584" height="647" frameX="0" frameY="-7" frameWidth="609" frameHeight="654"/>
-	<SubTexture name="Símbolo 12 instancia 10015" x="1276" y="710" width="584" height="647" frameX="0" frameY="-7" frameWidth="609" frameHeight="654"/>
+	<SubTexture name="Símbolo 12 instancia 10000" x="0" y="1200" width="649" height="586" frameX="0" frameY="-5" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10001" x="0" y="1200" width="649" height="586" frameX="0" frameY="-5" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10002" x="0" y="610" width="653" height="588" frameX="0" frameY="-1" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10003" x="0" y="610" width="653" height="588" frameX="0" frameY="-1" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10004" x="0" y="610" width="653" height="588" frameX="0" frameY="-1" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10005" x="0" y="0" width="652" height="606" frameX="0" frameY="-2" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10006" x="0" y="0" width="652" height="606" frameX="0" frameY="-2" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10007" x="0" y="0" width="652" height="606" frameX="0" frameY="-2" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10008" x="654" y="0" width="648" height="608" frameX="0" frameY="-6" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10009" x="654" y="0" width="648" height="608" frameX="0" frameY="-6" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10010" x="655" y="610" width="645" height="590" frameX="0" frameY="-9" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10011" x="655" y="610" width="645" height="590" frameX="0" frameY="-9" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10012" x="655" y="610" width="645" height="590" frameX="0" frameY="-9" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10013" x="651" y="1202" width="647" height="583" frameX="0" frameY="-7" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10014" x="651" y="1202" width="647" height="583" frameX="0" frameY="-7" frameWidth="609" frameHeight="654" rotated="true" />
+	<SubTexture name="Símbolo 12 instancia 10015" x="651" y="1202" width="647" height="583" frameX="0" frameY="-7" frameWidth="609" frameHeight="654" rotated="true" />
 </TextureAtlas>

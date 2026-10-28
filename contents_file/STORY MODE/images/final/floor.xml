@@ -2,9 +2,9 @@
 <TextureAtlas imagePath="floor.png">
 	<!-- Created with Adobe Animate version 23.0.0.407 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Símbolo 2071 instancia 10000" x="5" y="5" width="2521" height="958"/>
-	<SubTexture name="Símbolo 2071 instancia 10001" x="2536" y="973" width="2496" height="957" frameX="-1" frameY="-1" frameWidth="2521" frameHeight="958"/>
-	<SubTexture name="Símbolo 2071 instancia 10002" x="2536" y="1940" width="2496" height="957" frameX="-1" frameY="-1" frameWidth="2521" frameHeight="958"/>
-	<SubTexture name="Símbolo 2071 instancia 10003" x="2536" y="5" width="2496" height="958" frameX="-1" frameY="0" frameWidth="2521" frameHeight="958"/>
-	<SubTexture name="Símbolo 2071 instancia 10004" x="5" y="973" width="2521" height="958"/>
+	<SubTexture name="Símbolo 2071 instancia 10000" x="0" y="0" width="2521" height="958"/>
+	<SubTexture name="Símbolo 2071 instancia 10001" x="2523" y="0" width="957" height="2496" frameX="-1" frameY="-1" frameWidth="2521" frameHeight="958" rotated="true" />
+	<SubTexture name="Símbolo 2071 instancia 10002" x="3482" y="0" width="957" height="2496" frameX="-1" frameY="-1" frameWidth="2521" frameHeight="958" rotated="true" />
+	<SubTexture name="Símbolo 2071 instancia 10003" x="0" y="1920" width="2496" height="957" frameX="-1" frameY="-1" frameWidth="2521" frameHeight="958"/>
+	<SubTexture name="Símbolo 2071 instancia 10004" x="0" y="960" width="2521" height="958"/>
 </TextureAtlas>

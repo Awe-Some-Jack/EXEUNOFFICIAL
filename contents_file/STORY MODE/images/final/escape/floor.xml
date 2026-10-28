@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <TextureAtlas imagePath="floor.png">
 <SubTexture name="idle0000" x="0" y="0" width="2426" height="942" frameX="-1414" frameY="-1218" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="idle0001" x="0" y="942" width="2425" height="938" frameX="-1415" frameY="-1222" frameWidth="3840" frameHeight="2160" />
-<SubTexture name="idle0002" x="2426" y="0" width="2425" height="932" frameX="-1415" frameY="-1228" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="idle0001" x="0" y="944" width="2425" height="938" frameX="-1415" frameY="-1222" frameWidth="3840" frameHeight="2160" />
+<SubTexture name="idle0002" x="0" y="1884" width="2425" height="932" frameX="-1415" frameY="-1228" frameWidth="3840" frameHeight="2160" />
 </TextureAtlas>

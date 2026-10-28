@@ -223,20 +223,22 @@ class Paths
 	static function loadImageTrims():Void
 	{
 		imageTrims = [];
-		final path:String = getPath('data/image_trims.json', TEXT, null, false);
-		final content:String = getContent(path);
-		if (content == null)
-			return;
+		for (path in [getPath('data/image_trims.json', TEXT, null, false), mods('shared/data/image_trims.json', true)])
+		{
+			final content:String = getContent(path);
+			if (content == null)
+				continue;
 
-		try
-		{
-			final data:Dynamic = Json.parse(content);
-			for (field in Reflect.fields(data))
-				imageTrims.set(field, Reflect.field(data, field));
-		}
-		catch (e:Dynamic)
-		{
-			trace('Error parsing image_trims.json ($e)');
+			try
+			{
+				final data:Dynamic = Json.parse(content);
+				for (field in Reflect.fields(data))
+					imageTrims.set(field, Reflect.field(data, field));
+			}
+			catch (e:Dynamic)
+			{
+				trace('Error parsing image_trims.json at $path ($e)');
+			}
 		}
 	}
 
@@ -249,7 +251,10 @@ class Paths
 		if (file.startsWith('assets/'))
 			start = 7;
 		else
-			start = file.lastIndexOf('contents/');
+		{
+			final idx:Int = file.lastIndexOf('contents/');
+			start = idx < 0 ? -1 : idx + 9;
+		}
 
 		if (start < 0)
 			return null;

@@ -85,7 +85,7 @@ function makeSubtitle(daLine:String):Void
 	var subtitleText:String = getSubtitleLine(daLine);
 
 	subtitle = new FlxText(0, Std.int(FlxG.height * 0.8), Std.int(FlxG.width * 0.75), subtitleText);
-	subtitle.setFormat(Paths.font("vcr.ttf"), 25, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+	subtitle.setFormat(Paths.font(subtitleFont()), 25, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 	subtitle.borderSize = 2;
 	subtitle.camera = gameOverHUD;
 	subtitle.screenCenter(0x01);
@@ -97,6 +97,19 @@ function makeSubtitle(daLine:String):Void
 
 	GameOverSubstate.instance.add(subtitleBG);
 	GameOverSubstate.instance.add(subtitle);
+}
+
+function subtitleFont():String
+{
+	var lang = ClientPrefs.data.language ?? 'auto';
+	if (lang.length == 0) lang = 'auto';
+	if (lang == 'auto') lang = Language.getSystemLanguage();
+
+	if (lang == 'ja-JP') return 'japanese.ttf';
+	if (lang == 'zh-CN') return 'chinese.ttf';
+	if (lang == 'ko-KR') return 'korean.ttf';
+	if (lang == 'pl-PL' || lang == 'tr-TR' || lang == 'hu-HU') return 'ari-w9500-bold.ttf';
+	return 'vcr.ttf';
 }
 
 function getSubtitleLine(daLine:String):Void

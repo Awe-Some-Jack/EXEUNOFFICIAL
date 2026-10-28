@@ -2,12 +2,12 @@
 <TextureAtlas imagePath="lava.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Dance instancia 10000" x="0" y="1196" width="2076" height="555" frameX="0" frameY="-41" frameWidth="2076" frameHeight="596" />
-	<SubTexture name="Dance instancia 10001" x="0" y="1196" width="2076" height="555" frameX="0" frameY="-41" frameWidth="2076" frameHeight="596" />
-	<SubTexture name="Dance instancia 10002" x="0" y="1753" width="2076" height="555" frameX="0" frameY="-41" frameWidth="2076" frameHeight="596" />
-	<SubTexture name="Dance instancia 10003" x="0" y="1753" width="2076" height="555" frameX="0" frameY="-41" frameWidth="2076" frameHeight="596" />
-	<SubTexture name="Dance instancia 10004" x="0" y="0" width="2076" height="596"/>
-	<SubTexture name="Dance instancia 10005" x="0" y="0" width="2076" height="596"/>
-	<SubTexture name="Dance instancia 10006" x="0" y="598" width="2076" height="596"/>
-	<SubTexture name="Dance instancia 10007" x="0" y="598" width="2076" height="596"/>
+	<SubTexture name="Dance instancia 10000" x="12" y="12" width="2076" height="596"/>
+	<SubTexture name="Dance instancia 10001" x="12" y="12" width="2076" height="596"/>
+	<SubTexture name="Dance instancia 10002" x="12" y="630" width="2076" height="596"/>
+	<SubTexture name="Dance instancia 10003" x="12" y="630" width="2076" height="596"/>
+	<SubTexture name="Dance instancia 10004" x="12" y="1248" width="2076" height="596"/>
+	<SubTexture name="Dance instancia 10005" x="12" y="1248" width="2076" height="596"/>
+	<SubTexture name="Dance instancia 10006" x="12" y="1866" width="2076" height="596"/>
+	<SubTexture name="Dance instancia 10007" x="12" y="1866" width="2076" height="596"/>
 </TextureAtlas>

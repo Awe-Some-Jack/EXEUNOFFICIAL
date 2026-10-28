@@ -3916,7 +3916,7 @@ class PlayState extends MusicBeatState
 
 	private function keyPressed(key:Int)
 	{
-		if(!startedCountdown || cpuControlled || paused || inCutscene || key < 0 || key >= playerStrums.length || !generatedMusic || endingSong || boyfriend.stunned) return;
+		if(!startedCountdown || cpuControlled || paused || (subState != null && !persistentUpdate) || inCutscene || key < 0 || key >= playerStrums.length || !generatedMusic || endingSong || boyfriend.stunned) return;
 
 		final lastTime:Float = Conductor.songPosition;
 		if(Conductor.songPosition >= 0)

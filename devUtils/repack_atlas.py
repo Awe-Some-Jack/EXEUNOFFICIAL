@@ -316,17 +316,15 @@ def process(path, gap, apply, allow_rotate, trim, round_frac=True, exact=True, m
     ntrimmed = 0
     for k in keys:
         c = src.crop((k[0], k[1], k[0] + k[2], k[1] + k[3]))
-        if k[4]:
-            c = c.transpose(Image.ROTATE_90)
         shown[k] = (c.width, c.height)
         trims[k] = (0, 0)
-        if trim:
+        if trim and not k[4]:
             box = c.getchannel("A").getbbox()
             if box and box != (0, 0, c.width, c.height):
                 trims[k] = (box[0], box[1])
                 c = c.crop(box)
                 ntrimmed += 1
-        sig = (c.width, c.height, c.tobytes())
+        sig = (c.width, c.height, k[4], c.tobytes())
         if sig in seen:
             remap[k] = seen[sig]
         else:
@@ -334,6 +332,7 @@ def process(path, gap, apply, allow_rotate, trim, round_frac=True, exact=True, m
             crops[k] = c
     uniq = list(crops)
     items = [(k, crops[k].width, crops[k].height) for k in uniq]
+    allow_rotate = allow_rotate and not any(k[4] for k in keys)
     max_h = min(H * 2, max(H, 4096))
     best = pack(items, gap, W, max_h, False, modes, block)
     if allow_rotate:
@@ -389,7 +388,7 @@ def process(path, gap, apply, allow_rotate, trim, round_frac=True, exact=True, m
         x, y, rot = newpos[k]
         w, h = (crops_dims[k][1], crops_dims[k][0]) if rot else crops_dims[k]
         for n in names:
-            by_name.setdefault(n, []).append((x, y, w, h, rot, trims[k], shown[k], crops_dims[k] != shown[k]))
+            by_name.setdefault(n, []).append((x, y, w, h, rot or k[4], trims[k], shown[k], crops_dims[k] != shown[k]))
     if is_xml:
         def fix(m):
             t = m.group(0)
@@ -497,7 +496,8 @@ def main():
     ap.add_argument("root", nargs="?", default="assets")
     ap.add_argument("--apply", action="store_true", help="write changes (default is a dry run)")
     ap.add_argument("--gap", type=int, default=2, help="pixels between sprites")
-    ap.add_argument("--no-rotate", action="store_true", help="never store sprites rotated 90 degrees")
+    ap.add_argument("--rotate", action="store_true", help="allow storing sprites rotated 90 degrees (off by default; atlases that already contain rotated sprites are never rotated further)")
+    ap.add_argument("--no-rotate", action="store_true", help="kept for compatibility; rotation is already off unless --rotate is given")
     ap.add_argument("--no-trim", action="store_true", help="keep transparent borders on XML sprites")
     ap.add_argument("--clear-hidden-pixels", action="store_true", help="discard color values under fully transparent pixels (smaller files; default keeps them)")
     ap.add_argument("--block", type=int, default=8, help="round sheet dimensions up to this block size when comparing layouts, to match compressed-texture memory (0 = plain area)")
@@ -518,7 +518,7 @@ def main():
             if img and os.path.exists(img) and image_key(img) in shared:
                 res = "skip: image shared with another atlas"
             else:
-                res = process(path, args.gap, args.apply, not args.no_rotate, not args.no_trim, not args.no_round, not args.clear_hidden_pixels, MODES[:1] if args.fast else MODES, args.block)
+                res = process(path, args.gap, args.apply, args.rotate and not args.no_rotate, not args.no_trim, not args.no_round, not args.clear_hidden_pixels, MODES[:1] if args.fast else MODES, args.block)
         except Exception as e:
             res = "error: %s" % e
         print("%s: %s" % (path, res))

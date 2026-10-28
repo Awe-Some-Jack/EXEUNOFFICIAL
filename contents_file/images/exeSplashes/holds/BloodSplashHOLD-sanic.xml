@@ -2,23 +2,23 @@
 <TextureAtlas imagePath="BloodSplashHOLD-sanic.png">
 	<!-- Created with Adobe Animate version 22.0.7.214 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="sustain cover end0000" x="1229" y="251" width="120" height="43" frameX="-88" frameY="-112" frameWidth="305" frameHeight="276" />
-	<SubTexture name="sustain cover end0001" x="1229" y="251" width="120" height="43" frameX="-88" frameY="-112" frameWidth="305" frameHeight="276" />
-	<SubTexture name="sustain cover end0002" x="597" y="218" width="224" height="161" frameX="-37" frameY="-47" frameWidth="305" frameHeight="276" />
-	<SubTexture name="sustain cover end0003" x="1162" y="0" width="192" height="249" frameX="-18" frameY="-32" frameWidth="305" frameHeight="276" rotated="true" />
-	<SubTexture name="sustain cover end0004" x="1162" y="0" width="192" height="249" frameX="-18" frameY="-32" frameWidth="305" frameHeight="276" rotated="true" />
-	<SubTexture name="sustain cover end0005" x="887" y="0" width="273" height="223" frameX="-14" frameY="-17" frameWidth="305" frameHeight="276" />
-	<SubTexture name="sustain cover end0006" x="597" y="0" width="288" height="216" frameX="-4" frameY="-24" frameWidth="305" frameHeight="276" />
-	<SubTexture name="sustain cover end0007" x="307" y="0" width="288" height="240" frameX="-9" frameY="-8" frameWidth="305" frameHeight="276" />
-	<SubTexture name="sustain cover end0008" x="307" y="0" width="288" height="240" frameX="-9" frameY="-8" frameWidth="305" frameHeight="276" />
-	<SubTexture name="sustain cover end0009" x="0" y="0" width="305" height="276"/>
-	<SubTexture name="sustain cover intro0000" x="1107" y="251" width="120" height="105" frameX="-101" frameY="-65" frameWidth="306" frameHeight="276" />
-	<SubTexture name="sustain cover intro0001" x="106" y="278" width="97" height="96" frameX="-104" frameY="-98" frameWidth="306" frameHeight="276" />
-	<SubTexture name="sustain cover intro0002" x="307" y="242" width="123" height="107" frameX="-98" frameY="-102" frameWidth="306" frameHeight="276" rotated="true" />
-	<SubTexture name="sustain cover intro0003" x="823" y="225" width="144" height="107" frameX="-97" frameY="-82" frameWidth="306" frameHeight="276" rotated="true" />
-	<SubTexture name="sustain cover intro0004" x="205" y="278" width="97" height="96" frameX="-101" frameY="-82" frameWidth="306" frameHeight="276" />
-	<SubTexture name="sustain cover loop0000" x="1229" y="296" width="96" height="82" frameX="-111" frameY="-100" frameWidth="306" frameHeight="275" rotated="true" />
-	<SubTexture name="sustain cover loop0001" x="432" y="242" width="123" height="96" frameX="-100" frameY="-100" frameWidth="306" frameHeight="275" rotated="true" />
-	<SubTexture name="sustain cover loop0002" x="969" y="225" width="136" height="104" frameX="-96" frameY="-84" frameWidth="306" frameHeight="275" rotated="true" />
-	<SubTexture name="sustain cover loop0003" x="0" y="278" width="104" height="96" frameX="-100" frameY="-84" frameWidth="306" frameHeight="275" />
+	<SubTexture name="sustain cover end0000" x="0" y="0" width="305" height="276"/>
+	<SubTexture name="sustain cover end0001" x="0" y="0" width="305" height="276"/>
+	<SubTexture name="sustain cover end0002" x="315" y="0" width="305" height="276"/>
+	<SubTexture name="sustain cover end0003" x="630" y="0" width="305" height="276"/>
+	<SubTexture name="sustain cover end0004" x="630" y="0" width="305" height="276"/>
+	<SubTexture name="sustain cover end0005" x="945" y="0" width="305" height="276"/>
+	<SubTexture name="sustain cover end0006" x="1260" y="0" width="305" height="276"/>
+	<SubTexture name="sustain cover end0007" x="1575" y="0" width="305" height="276"/>
+	<SubTexture name="sustain cover end0008" x="1575" y="0" width="305" height="276"/>
+	<SubTexture name="sustain cover end0009" x="0" y="286" width="305" height="276"/>
+	<SubTexture name="sustain cover intro0000" x="315" y="286" width="306" height="276"/>
+	<SubTexture name="sustain cover intro0001" x="631" y="286" width="306" height="276"/>
+	<SubTexture name="sustain cover intro0002" x="947" y="286" width="306" height="276"/>
+	<SubTexture name="sustain cover intro0003" x="1263" y="286" width="306" height="276"/>
+	<SubTexture name="sustain cover intro0004" x="1579" y="286" width="306" height="276"/>
+	<SubTexture name="sustain cover loop0000" x="0" y="572" width="306" height="275"/>
+	<SubTexture name="sustain cover loop0001" x="316" y="572" width="306" height="275"/>
+	<SubTexture name="sustain cover loop0002" x="632" y="572" width="306" height="275"/>
+	<SubTexture name="sustain cover loop0003" x="948" y="572" width="306" height="275"/>
 </TextureAtlas>

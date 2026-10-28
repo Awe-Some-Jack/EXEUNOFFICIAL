@@ -510,7 +510,7 @@ class Paths
 				}
 				else #end if (OpenFlAssets.exists(file))
 				{
-					bitmap = OpenFlAssets.getBitmapData(file);
+					bitmap = OpenFlAssets.getBitmapData(file, false);
 				}
 			}
 			else if (fileExistsSys)
@@ -522,7 +522,7 @@ class Paths
 			}
 			else if (OpenFlAssets.exists(file))
 			{
-				bitmap = useOptimized ? OptimizedBitmapData.fromOpenFlAssets(file) : OpenFlAssets.getBitmapData(file);
+				bitmap = useOptimized ? OptimizedBitmapData.fromOpenFlAssets(file) : OpenFlAssets.getBitmapData(file, false);
 			}
 
 			if (bitmap == null)

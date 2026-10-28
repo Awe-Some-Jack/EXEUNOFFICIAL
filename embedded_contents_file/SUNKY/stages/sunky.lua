@@ -184,10 +184,22 @@ function onDestroy()
 	end
 end
 
+local pausedVideos = {}
+
+function onPause()
+	pausedVideos = {}
+	for _, video in ipairs(videos) do
+		if getProperty(video) ~= nil and getProperty(video .. '.bitmap.isPlaying') then
+			callMethod(video .. '.pause')
+			pausedVideos[video] = true
+		end
+	end
+end
+
 function onResume()
 	for _, video in ipairs(videos) do
 		if getProperty(video) ~= nil then
-			callMethod(video .. '.resume')
+			if pausedVideos[video] then callMethod(video .. '.resume') end
 
 			if not callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg(video .. '.videoSprite.pause')}) then
 				callMethodFromClass('flixel.FlxG', 'signals.focusLost.add', {instanceArg(video .. '.videoSprite.pause')})

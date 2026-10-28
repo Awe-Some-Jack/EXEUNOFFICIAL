@@ -72,6 +72,7 @@ class PreyMini extends MusicBeatState
 	{
 		_prevWindowTitle = FlxG.stage.window.title;
 		super.create();
+		FlxG.sound.music?.stop();
 		songLives = 0;
 		_prevUpdateFps = FlxG.updateFramerate;
 		_prevDrawFps = FlxG.drawFramerate;

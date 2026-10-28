@@ -362,7 +362,7 @@ function getHUDEmerald(idx:Int):Void
     FlxTween.tween(emerald, {"scale.x": 0.22, "scale.y": 0.22}, 0.25, {ease: FlxEase.cubeOut});
     FlxTween.tween(emerald, {"scale.x": 0.18, "scale.y": 0.18}, 0.3, {ease: FlxEase.cubeIn, startDelay: 0.3});
 
-    if(idx == 6) FlxTween.tween(hudEmeralds, {alpha: 0}, 2);
+    if(idx == 6 && missedEmeralds == 0) FlxTween.tween(hudEmeralds, {alpha: 0}, 2);
 }
 
 function bumpHUDEmeralds():Void

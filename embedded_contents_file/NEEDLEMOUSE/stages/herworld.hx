@@ -320,7 +320,7 @@ var brightValue:Float = 0;
 var time:Float = 0;
 function onUpdate(e) 
 {
-	if(ClientPrefs.data.shaders) return;
+	if(!ClientPrefs.data.shaders) return;
 
 	camHUD.alpha = 1;
 	time += e;

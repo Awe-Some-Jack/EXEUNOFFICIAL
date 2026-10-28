@@ -287,6 +287,33 @@
   717,
   643
  ],
+ "EXE/images/god/floor": [
+  0.0,
+  467.63,
+  2100,
+  1500,
+  1473,
+  556,
+  1.4257
+ ],
+ "EXE/images/god/mount1": [
+  0.0,
+  21.38,
+  2265,
+  975,
+  1695,
+  714,
+  1.3361
+ ],
+ "EXE/images/god/mount2": [
+  10.0,
+  266.71,
+  2265,
+  975,
+  1693,
+  575,
+  1.1113
+ ],
  "EXE/images/god/son": [
   5,
   1,
@@ -623,6 +650,15 @@
   1904,
   193
  ],
+ "LORD X/images/fate/YOUR-FATE/IMG_3166": [
+  0.0,
+  0.0,
+  1895,
+  1363,
+  569,
+  409,
+  3.3304
+ ],
  "LORD X/images/fate/YOUR-FATE/cover1": [
   54,
   126,
@@ -670,6 +706,15 @@
   900,
   898,
   713
+ ],
+ "LORD X/images/fate/YOUR-FATE/ground-dark": [
+  0.0,
+  1.26,
+  4500,
+  1495,
+  3582,
+  1190,
+  1.2563
  ],
  "LORD X/images/fate/lets-begin/begin_normal": [
   48,
@@ -1727,6 +1772,24 @@
   710,
   628
  ],
+ "STORY MODE/images/final/carnival/bg-lol": [
+  0.0,
+  0.0,
+  3660,
+  1063,
+  2685,
+  781,
+  1.3631
+ ],
+ "STORY MODE/images/final/carnival/carnivalbg": [
+  734.39,
+  0.0,
+  6000,
+  1000,
+  2687,
+  561,
+  1.7825
+ ],
  "STORY MODE/images/final/escape/bg1": [
   0,
   238,
@@ -1887,6 +1950,24 @@
   3600,
   727
  ],
+ "STORY MODE/images/slow/flashback/idk": [
+  2.78,
+  866.17,
+  10000,
+  4500,
+  3602,
+  1305,
+  2.7762
+ ],
+ "STORY MODE/images/slow/flashback/plants": [
+  0.0,
+  0.0,
+  6168,
+  1243,
+  3603,
+  727,
+  1.7119
+ ],
  "STORY MODE/images/slow/fondo": [
   0,
   0,
@@ -1913,11 +1994,11 @@
  ],
  "STORY MODE/images/tt/bgn/fire/trees3": [
   0,
-  210,
+  183,
   2558,
   1536,
   2554,
-  1322
+  1349
  ],
  "STORY MODE/images/tt/bgn/floor": [
   54,
@@ -1937,11 +2018,11 @@
  ],
  "STORY MODE/images/tt/bgn/trees3": [
   0,
-  210,
+  183,
   2554,
   1532,
   2554,
-  1322
+  1349
  ],
  "STORY MODE/images/tt/bgx/fire/floor": [
   0,

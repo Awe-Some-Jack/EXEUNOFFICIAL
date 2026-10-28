@@ -1584,6 +1584,12 @@ class PlayState extends MusicBeatState
 
 	public function setSongTime(time:Float)
 	{
+		if (startingSong)
+		{
+			Conductor.songPosition = time;
+			return;
+		}
+
 		FlxG.sound.music.pause();
 		vocals.pause();
 		opponentVocals.pause();
@@ -5231,6 +5237,13 @@ class PlayState extends MusicBeatState
 	function checkForResync()
 	{
 		if (paused) return;
+
+		if (startingSong)
+		{
+			requiresSyncing = false;
+			gameFroze = false;
+			return;
+		}
 
 		if (requiresSyncing)
 		{

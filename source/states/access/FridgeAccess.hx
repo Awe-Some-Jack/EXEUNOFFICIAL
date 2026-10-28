@@ -25,6 +25,7 @@ class FridgeAccess extends MusicBeatState
 	override function create()
 	{
 		super.create();
+		FlxG.mouse.visible = true;
 
 		CustomShapeTransition.shape = SUNKY;
 

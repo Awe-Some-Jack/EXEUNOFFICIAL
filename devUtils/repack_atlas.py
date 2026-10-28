@@ -174,7 +174,7 @@ def locate_image(path, name):
         dirs.append(twin)
     names = [os.path.splitext(os.path.basename(path))[0]]
     if name:
-        names.insert(0, os.path.splitext(name)[0])
+        names.append(os.path.splitext(name)[0])
         for d in dirs:
             if os.path.exists(os.path.join(d, name)):
                 return os.path.join(d, name)
@@ -467,6 +467,31 @@ def find_atlases(root, only=()):
                     yield os.path.join(d, f)
 
 
+def atlas_image(path):
+    try:
+        if path.lower().endswith(".xml"):
+            m = re.search(r'imagePath="([^"]*)"', open(path, encoding="utf-8").read())
+            return locate_image(path, m.group(1)) if m else None
+        return locate_image(path, json.load(open(path, encoding="utf-8-sig")).get("meta", {}).get("image"))
+    except Exception:
+        return None
+
+
+def image_key(img):
+    st = os.stat(img)
+    return (st.st_dev, st.st_ino)
+
+
+def shared_images(root):
+    counts = {}
+    for path in find_atlases(root):
+        img = atlas_image(path)
+        if img and os.path.exists(img):
+            key = image_key(img)
+            counts[key] = counts.get(key, 0) + 1
+    return {k for k, n in counts.items() if n > 1}
+
+
 def main():
     ap = argparse.ArgumentParser(description="Repack sprite atlases losslessly to reduce dead space.")
     ap.add_argument("root", nargs="?", default="assets")
@@ -484,11 +509,16 @@ def main():
 
     errors = []
     saved = 0
+    shared = shared_images(args.root)
     for path in find_atlases(args.root, args.only):
         print("... %s" % path)
         sys.stdout.flush()
         try:
-            res = process(path, args.gap, args.apply, not args.no_rotate, not args.no_trim, not args.no_round, not args.clear_hidden_pixels, MODES[:1] if args.fast else MODES, args.block)
+            img = atlas_image(path)
+            if img and os.path.exists(img) and image_key(img) in shared:
+                res = "skip: image shared with another atlas"
+            else:
+                res = process(path, args.gap, args.apply, not args.no_rotate, not args.no_trim, not args.no_round, not args.clear_hidden_pixels, MODES[:1] if args.fast else MODES, args.block)
         except Exception as e:
             res = "error: %s" % e
         print("%s: %s" % (path, res))

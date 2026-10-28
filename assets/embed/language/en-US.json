@@ -161,6 +161,7 @@
 	"sharpy.line.19": "Hmm...",
 	"sharpy.line.20": "H-Hey, should we maybe test it? You know... singing and stuff... Just you and me-",
 	"sharpy.line.21": "What?",
+
 	"valley_tutorial_title": "HOW TO SURVIVE",
 	"valley_tutorial_move": "MOVE",
 	"valley_tutorial_run": "HOLD TO RUN",
@@ -172,17 +173,21 @@
 	"valley_tutorial_story_3": "In this lifeless place, search for your loved one while hiding from the unknown. But be aware that $IT$ will not let you go easily.",
 	"valley_tutorial_story_4": "Search for #Safe Spots# and #Small Entrances#. Do NOT let $him$ find you.",
 	"valley_tutorial_continue": "PRESS ENTER TO CONTINUE",
+
 	"sunky_offer_message": "Sunky has noticed that you're having a hard time with this song, so he's offering to help you!\nDo you want to accept his offer?",
+	"sunky_offer_yes": "YEAH, PLEASE",
+	"sunky_offer_no": "NO, THANKS",
+
 	"pause_continue": "CONTINUE",
 	"pause_restart": "RESTART",
 	"pause_options": "OPTIONS",
 	"pause_exit": "EXIT",
-	"sunky_offer_yes": "YEAH PLEASE",
-	"sunky_offer_no": "NO THANKS",
+
 	"valley_tutorial_skull": "SEARCH THE SKULL",
 	"valley_tutorial_hide": "HIDE IN THE TOTEM",
 	"valley_tutorial_unhide": "GET OUT OF THE TOTEM",
 	"valley_skip_cutscene": "PRESS SPACE TO SKIP CUTSCENE",
+
 	"tripletrouble_death_1": "You've entered hell, and I'm not talking about Michigan.",
 	"tripletrouble_death_2": "After all that, I'm quite disappointed.",
 	"tripletrouble_death_3": "Out of rings, out of luck, and now out of time.",

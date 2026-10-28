@@ -12,6 +12,16 @@ function onCreate()
 	GameOverSubstate.deathSoundName = 'empty';
 }
 
+function onCreatePost()
+{
+	var preload:Character = new Character(0, 0, GameOverSubstate.characterName, true);
+	preload.destroy();
+	Paths.sound('empty');
+	Paths.sound('explosion');
+	Paths.music('gameOver');
+	Paths.music('gameOverEnd');
+}
+
 function onGameOverStart()
 {
 	inGameOver = true;

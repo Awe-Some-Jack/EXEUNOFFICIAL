@@ -123,7 +123,7 @@ class EXEFreeplay extends MusicBeatState
 		Mods.loadTopMod();
 		WeekData.reloadWeekFiles(false);
 
-		if (backend.BurningBot.active) backend.BurningBot.resetFreeplayState();
+		backend.BurningBot.resetFreeplayState();
 
 		buildSongList();
 		if (selectedBox < 0 || selectedBox >= songEntries.length) selectedBox = 0;
@@ -304,7 +304,8 @@ class EXEFreeplay extends MusicBeatState
 
 				final songPath:String = Paths.formatToSongPath(sName);
 				if (songPath == 'stardust-speedway' && Mods.currentModDirectory == 'STARVED') continue;
-				if (unlocked.indexOf(songPath) == -1 && !(backend.BurningBot.active && songPath == 'burning') #if !final && !inDevMode #end) continue;
+				final burningOpen:Bool = backend.BurningBot.active || FlxG.save.data.burningCutsceneDone == true || FlxG.save.data.burningWon == true;
+				if (unlocked.indexOf(songPath) == -1 && !(burningOpen && songPath == 'burning') #if !final && !inDevMode #end) continue;
 
 				final info:ExeSongInfo = {
 					songName: sName,

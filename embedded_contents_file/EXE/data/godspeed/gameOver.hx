@@ -40,7 +40,7 @@ function onGameOverStart()
 var toggleOnce:Bool = false;
 var triggerOnce:Bool = false;
 var timer:Float = 10;
-function onUpdatePost(elapsed:Float)
+function onUpdate(elapsed:Float)
 {
 	if (!inGameOver) return;
 

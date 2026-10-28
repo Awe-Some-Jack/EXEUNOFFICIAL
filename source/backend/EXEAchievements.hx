@@ -124,18 +124,29 @@ class EXEAchievements
         final a = get('die');
         if(a == null) return;
 
-        final deathList:Array<String> = cast(a.extra ?? []);
-        if(!deathList.contains(songId))
+        final saved:Array<String> = cast(a.extra ?? []);
+        final deathList:Array<String> = [for(s in saved) Paths.formatToSongPath(s)];
+        final id:String = Paths.formatToSongPath(songId);
+        if(!deathList.contains(id))
         {
-            deathList.push(songId);
+            deathList.push(id);
             a.extra = deathList;
-            
+
+            final keepList = WeekData.weeksList;
+            final keepLoaded = WeekData.weeksLoaded;
+            WeekData.weeksLoaded = new Map<String, WeekData>();
+            WeekData.reloadWeekFiles(false);
             final allSongs:Array<String> = [];
             for(week in WeekData.weeksLoaded)
                 for(song in week.songs)
-                    allSongs.push(Paths.formatToSongPath(song[0]));
+                {
+                    final name:String = Paths.formatToSongPath(song[0]);
+                    if(name != 'stardust-speedway' && name != 'the-valley' && !allSongs.contains(name)) allSongs.push(name);
+                }
+            WeekData.weeksList = keepList;
+            WeekData.weeksLoaded = keepLoaded;
 
-            if(deathList.length >= allSongs.length)
+            if(allSongs.length > 0 && Lambda.foreach(allSongs, name -> deathList.contains(name)))
             {
                 unlock(a.id);
             }

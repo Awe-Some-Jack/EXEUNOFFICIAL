@@ -2,62 +2,62 @@
 <TextureAtlas imagePath="FIRE.png">
 	<!-- Created with Adobe Animate version 24.0.10.14 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="fire instancia 10000" x="0" y="712" width="615" height="243" frameX="-16" frameY="-12" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10001" x="1693" y="712" width="450" height="208" frameX="0" frameY="-48" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10002" x="1693" y="712" width="450" height="208" frameX="0" frameY="-48" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10003" x="0" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10004" x="0" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10005" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10006" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10007" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10008" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10009" x="633" y="356" width="623" height="354" frameX="-8" frameY="0" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10010" x="633" y="356" width="623" height="354" frameX="-8" frameY="0" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10011" x="1881" y="356" width="446" height="354" frameX="0" frameY="0" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10012" x="1881" y="356" width="446" height="354" frameX="0" frameY="0" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10013" x="1266" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10014" x="1266" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10015" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10016" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10017" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10018" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10019" x="1258" y="356" width="621" height="354" frameX="-10" frameY="0" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10020" x="1258" y="356" width="621" height="354" frameX="-10" frameY="0" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10021" x="1899" y="0" width="435" height="354" frameX="0" frameY="0" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10022" x="1899" y="0" width="435" height="354" frameX="0" frameY="0" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10023" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10024" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10025" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10026" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10027" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10028" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10029" x="0" y="712" width="615" height="243" frameX="-16" frameY="-12" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10030" x="0" y="712" width="615" height="243" frameX="-16" frameY="-12" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10031" x="1071" y="712" width="620" height="234" frameX="-11" frameY="-99" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10032" x="1071" y="712" width="620" height="234" frameX="-11" frameY="-99" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10033" x="617" y="712" width="452" height="242" frameX="0" frameY="-93" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10034" x="617" y="712" width="452" height="242" frameX="0" frameY="-93" frameWidth="631" frameHeight="354" />
-	<SubTexture name="fire instancia 10035" x="0" y="356" width="631" height="354"/>
-	<SubTexture name="fire instancia 10036" x="0" y="356" width="631" height="354"/>
-	<SubTexture name="fire instancia 10037" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10038" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10039" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10040" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10041" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10042" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10043" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10044" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10045" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10046" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10047" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10048" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10049" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10050" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10051" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10052" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10053" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10054" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10055" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10056" x="633" y="0" width="631" height="354"/>
-	<SubTexture name="fire instancia 10057" x="633" y="0" width="631" height="354"/>
+	<SubTexture name="fire instancia 10000" x="100" y="100" width="631" height="354"/>
+	<SubTexture name="fire instancia 10001" x="831" y="100" width="631" height="354"/>
+	<SubTexture name="fire instancia 10002" x="831" y="100" width="631" height="354"/>
+	<SubTexture name="fire instancia 10003" x="1562" y="100" width="631" height="354"/>
+	<SubTexture name="fire instancia 10004" x="1562" y="100" width="631" height="354"/>
+	<SubTexture name="fire instancia 10005" x="2293" y="100" width="631" height="354"/>
+	<SubTexture name="fire instancia 10006" x="2293" y="100" width="631" height="354"/>
+	<SubTexture name="fire instancia 10007" x="3024" y="100" width="631" height="354"/>
+	<SubTexture name="fire instancia 10008" x="3024" y="100" width="631" height="354"/>
+	<SubTexture name="fire instancia 10009" x="100" y="554" width="631" height="354"/>
+	<SubTexture name="fire instancia 10010" x="100" y="554" width="631" height="354"/>
+	<SubTexture name="fire instancia 10011" x="831" y="554" width="631" height="354"/>
+	<SubTexture name="fire instancia 10012" x="831" y="554" width="631" height="354"/>
+	<SubTexture name="fire instancia 10013" x="1562" y="554" width="631" height="354"/>
+	<SubTexture name="fire instancia 10014" x="1562" y="554" width="631" height="354"/>
+	<SubTexture name="fire instancia 10015" x="2293" y="554" width="631" height="354"/>
+	<SubTexture name="fire instancia 10016" x="2293" y="554" width="631" height="354"/>
+	<SubTexture name="fire instancia 10017" x="3024" y="554" width="631" height="354"/>
+	<SubTexture name="fire instancia 10018" x="3024" y="554" width="631" height="354"/>
+	<SubTexture name="fire instancia 10019" x="100" y="1008" width="631" height="354"/>
+	<SubTexture name="fire instancia 10020" x="100" y="1008" width="631" height="354"/>
+	<SubTexture name="fire instancia 10021" x="831" y="1008" width="631" height="354"/>
+	<SubTexture name="fire instancia 10022" x="831" y="1008" width="631" height="354"/>
+	<SubTexture name="fire instancia 10023" x="1562" y="1008" width="631" height="354"/>
+	<SubTexture name="fire instancia 10024" x="1562" y="1008" width="631" height="354"/>
+	<SubTexture name="fire instancia 10025" x="2293" y="1008" width="631" height="354"/>
+	<SubTexture name="fire instancia 10026" x="2293" y="1008" width="631" height="354"/>
+	<SubTexture name="fire instancia 10027" x="3024" y="1008" width="631" height="354"/>
+	<SubTexture name="fire instancia 10028" x="3024" y="1008" width="631" height="354"/>
+	<SubTexture name="fire instancia 10029" x="100" y="100" width="631" height="354"/>
+	<SubTexture name="fire instancia 10030" x="100" y="100" width="631" height="354"/>
+	<SubTexture name="fire instancia 10031" x="100" y="1462" width="631" height="354"/>
+	<SubTexture name="fire instancia 10032" x="100" y="1462" width="631" height="354"/>
+	<SubTexture name="fire instancia 10033" x="831" y="1462" width="631" height="354"/>
+	<SubTexture name="fire instancia 10034" x="831" y="1462" width="631" height="354"/>
+	<SubTexture name="fire instancia 10035" x="1562" y="1462" width="631" height="354"/>
+	<SubTexture name="fire instancia 10036" x="1562" y="1462" width="631" height="354"/>
+	<SubTexture name="fire instancia 10037" x="2293" y="1462" width="631" height="354"/>
+	<SubTexture name="fire instancia 10038" x="2293" y="1462" width="631" height="354"/>
+	<SubTexture name="fire instancia 10039" x="3024" y="1462" width="631" height="354"/>
+	<SubTexture name="fire instancia 10040" x="3024" y="1462" width="631" height="354"/>
+	<SubTexture name="fire instancia 10041" x="100" y="1916" width="631" height="354"/>
+	<SubTexture name="fire instancia 10042" x="100" y="1916" width="631" height="354"/>
+	<SubTexture name="fire instancia 10043" x="831" y="1916" width="631" height="354"/>
+	<SubTexture name="fire instancia 10044" x="831" y="1916" width="631" height="354"/>
+	<SubTexture name="fire instancia 10045" x="1562" y="1916" width="631" height="354"/>
+	<SubTexture name="fire instancia 10046" x="1562" y="1916" width="631" height="354"/>
+	<SubTexture name="fire instancia 10047" x="2293" y="1916" width="631" height="354"/>
+	<SubTexture name="fire instancia 10048" x="2293" y="1916" width="631" height="354"/>
+	<SubTexture name="fire instancia 10049" x="3024" y="1916" width="631" height="354"/>
+	<SubTexture name="fire instancia 10050" x="3024" y="1916" width="631" height="354"/>
+	<SubTexture name="fire instancia 10051" x="100" y="2370" width="631" height="354"/>
+	<SubTexture name="fire instancia 10052" x="100" y="2370" width="631" height="354"/>
+	<SubTexture name="fire instancia 10053" x="831" y="2370" width="631" height="354"/>
+	<SubTexture name="fire instancia 10054" x="831" y="2370" width="631" height="354"/>
+	<SubTexture name="fire instancia 10055" x="1562" y="2370" width="631" height="354"/>
+	<SubTexture name="fire instancia 10056" x="1562" y="2370" width="631" height="354"/>
+	<SubTexture name="fire instancia 10057" x="2293" y="2370" width="631" height="354"/>
 </TextureAtlas>

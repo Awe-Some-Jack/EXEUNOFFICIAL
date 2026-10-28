@@ -623,6 +623,7 @@ function onEvent(n,v1,v2)
 
 	if (n == 'Change Character')
 	{
+		if (songPhase != 'intro') return;
 		for (c in shaderChars)
 		{
 			if (c.tag == v1)

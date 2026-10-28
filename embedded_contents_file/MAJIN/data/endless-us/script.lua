@@ -1,6 +1,19 @@
 local chillModchart = false
 local fastModchart = false
-function onEvent(n, v1)
+function onEvent(n, v1, v2)
+    if n == 'colorFlash' and (not shadersEnabled or lowQuality or not flashingLights) then
+        local values = stringSplit(v1, ',')
+        local settings = stringSplit(v2, ',')
+        if tonumber(values[2]) <= -100 then
+            makeLuaSprite('endBlack', nil, 0, 0)
+            makeGraphic('endBlack', screenWidth * 4, screenHeight * 4, '000000')
+            setScrollFactor('endBlack', 0, 0)
+            screenCenter('endBlack')
+            setProperty('endBlack.alpha', 0)
+            addLuaSprite('endBlack', true)
+            doTweenAlpha('endBlackAlpha', 'endBlack', 1, tonumber(settings[1]), stringTrim(settings[2]))
+        end
+    end
     if n == 'USModchart' then
         if v1 == 'slow' then
             chillModchart = true

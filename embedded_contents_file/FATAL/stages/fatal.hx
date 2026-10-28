@@ -68,9 +68,12 @@ function onCreatePost()
 	FlxSprite.defaultAntialiasing = false;
 	FlxG.camera.pixelPerfectRender = true;
 	camHUD.pixelPerfectRender = true;
-
-	rainShader = new ErrorHandledRuntimeShader('fatalrain', File.getContent('contents/FATAL/shaders/fatalrain.frag'));
-	rainShader.setFloat('rainIntensity', 0);
+	
+	if (prefs.shaders)
+	{
+		rainShader = new ErrorHandledRuntimeShader('fatalrain', File.getContent('contents/FATAL/shaders/fatalrain.frag'));
+		rainShader.setFloat('rainIntensity', 0);
+	}
 
 	makeBackground(bgIntro);
 	makeBackground(bgGlitch);
@@ -111,19 +114,22 @@ function onCreatePost()
 		note.texture = 'noteSkins/NOTEFATAL_assets';
 	}
 
-	pseudo = new ErrorHandledRuntimeShader('pseudo', File.getContent('contents/FATAL/shaders/pseudo.frag'));
-	pseudo.setFloat('sort', 0);
-	camGame.filters = [new ShaderFilter(pseudo)]; camHUD.filters = [new ShaderFilter(pseudo)];
-
-	rgbcurves = new ErrorHandledRuntimeShader('rgbcurves', File.getContent('contents/FATAL/shaders/rgbcurves.frag'));
-
-	decimate = new ErrorHandledRuntimeShader('decimate', File.getContent('contents/FATAL/shaders/decimate.frag'));
-	decimate.setFloat('amount', 0.3);
-	decimate.setFloat('colorize', 0.1);
-	decimate.setFloat('speed', 1);
-	decimate.setFloat('scale', 1);
-
-	smear = new ErrorHandledRuntimeShader('smear', File.getContent('contents/FATAL/shaders/smear.frag'));
+	if (prefs.shaders)
+	{
+		pseudo = new ErrorHandledRuntimeShader('pseudo', File.getContent('contents/FATAL/shaders/pseudo.frag'));
+		pseudo.setFloat('sort', 0);
+		camGame.filters = [new ShaderFilter(pseudo)]; camHUD.filters = [new ShaderFilter(pseudo)];
+		
+		rgbcurves = new ErrorHandledRuntimeShader('rgbcurves', File.getContent('contents/FATAL/shaders/rgbcurves.frag'));
+		
+		decimate = new ErrorHandledRuntimeShader('decimate', File.getContent('contents/FATAL/shaders/decimate.frag'));
+		decimate.setFloat('amount', 0.3);
+		decimate.setFloat('colorize', 0.1);
+		decimate.setFloat('speed', 1);
+		decimate.setFloat('scale', 1);
+		
+		smear = new ErrorHandledRuntimeShader('smear', File.getContent('contents/FATAL/shaders/smear.frag'));
+	}
 
 	bgLoad = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
 	bgLoad.camera = camOther;
@@ -148,7 +154,7 @@ function onBeatHit()
 {
 	for (spr in bgGlitch) if (curBeat % spr.bopInt == 0 && curBG == 'fatal' && !_on) spr.sprite.animation.play('dance', true);
 
-	if (curBG == 'fatal' && curBeat % 4 == 0) bgMatrix.setFloat('brightint', 1);
+	if (curBG == 'fatal' && curBeat % 4 == 0) if (prefs.shaders) bgMatrix.setFloat('brightint', 1);
 }
 
 var _intro:Bool = true;
@@ -159,27 +165,31 @@ function onEvent(n,v1)
 		switch(v1)
 		{
 			case 'xd':
-				FlxTween.num(0, 1, Conductor.crochet / 500, null, v -> {
-					pseudo.setFloat('sort', v);
-				});
+				if (prefs.shaders)
+					FlxTween.num(0, 1, Conductor.crochet / 500, null, v -> {
+						pseudo.setFloat('sort', v);
+					});
 			case 'flash':
 				canRain = false;
 				_intro = false;
 				rainVelocity = 1;
-				rainShader.setFloat('rainIntensity', 0);
+				if (prefs.shaders) rainShader.setFloat('rainIntensity', 0);
 				game.cameraSpeed = 9999;
 				new FlxTimer().start(0.1, (_) -> {game.cameraSpeed = 1;});
-				camGame.filters = []; camHUD.filters = [];
+				if (prefs.shaders) camGame.filters = []; camHUD.filters = [];
 				for (spr in bgIntro) spr.sprite.destroy();
 				for (spr in bgGlitch) spr.sprite.visible = true;
 
-				bgMatrix = new ErrorHandledRuntimeShader('fatal', File.getContent('contents/FATAL/shaders/fatal.frag'));
-				bgGlitch[0].sprite.shader = bgMatrix;
-				bgMatrix.setFloat('brightint', 0.2);
+				if (prefs.shaders)
+				{
+					bgMatrix = new ErrorHandledRuntimeShader('fatal', File.getContent('contents/FATAL/shaders/fatal.frag'));
+					bgGlitch[0].sprite.shader = bgMatrix;
+					bgMatrix.setFloat('brightint', 0.2);
+				}
 				curBG = 'fatal';
 			case 'rain':
 				canRain = !canRain;
-				rainShader.setFloat('rainIntensity', 0);
+				if (prefs.shaders) rainShader.setFloat('rainIntensity', 0);
 			case 'rgbcurves':
 				_on = !_on;
 				if (_on)
@@ -193,7 +203,7 @@ function onEvent(n,v1)
 					bgGlitch[3].sprite.color = 0xFFFFFFFF;
 					FlxG.camera.shake(0.02, Conductor.crochet / 2000);
 					camHUD.shake(0.01, Conductor.crochet / 2000);
-					camGame.filters = [new ShaderFilter(rgbcurves)]; camHUD.filters = [new ShaderFilter(rgbcurves)];
+					if (prefs.shaders) camGame.filters = [new ShaderFilter(rgbcurves)]; camHUD.filters = [new ShaderFilter(rgbcurves)];
 				}
 				else
 				{
@@ -204,7 +214,7 @@ function onEvent(n,v1)
 					}
 					bgGlitch[1].sprite.color = 0xFF474747;
 					bgGlitch[3].sprite.color = 0xFFBBBBBB;
-					camGame.filters = []; camHUD.filters = [];
+					if (prefs.shaders) camGame.filters = []; camHUD.filters = [];
 					FlxTween.cancelTweensOf(bgLoad);
 					bgLoad.color = 0xFFFFA023;
 					bgLoad.blend = BlendMode.ADD;
@@ -236,15 +246,18 @@ function onEvent(n,v1)
 			case 'glitch':
 				game.camZoomingDecay = 0;
 				camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = false;
-				FlxTween.num(0, 1, Conductor.crochet / 500, null, v -> {
-					pseudo.setFloat('sort', v);
-				});
+
+				if (prefs.shaders)
+					FlxTween.num(0, 1, Conductor.crochet / 500, null, v -> {
+						pseudo.setFloat('sort', v);
+					});
+
 				bgLoad.color = 0xFFFFFFFF;
 				bgLoad.blend = BlendMode.NORMAL;
 				FlxTween.cancelTweensOf(bgLoad);
 				FlxTween.tween(bgLoad, {alpha: 0.5}, 0.2);
 			case 'glitchbgg':
-				camGame.filters = [new ShaderFilter(smear)]; camHUD.filters = [new ShaderFilter(smear)];
+				if (prefs.shaders) camGame.filters = [new ShaderFilter(smear)]; camHUD.filters = [new ShaderFilter(smear)];
 				for (spr in bgFinal) spr.sprite.shader = decimate; 
 				targetRain = 0.5;
 				rainVelocity = 2;
@@ -257,12 +270,15 @@ function onEvent(n,v1)
 				bgFinal[0].sprite.acceleration.x = -1000;
 				bgFinal[1].sprite.acceleration.x = -2000;
 			case 'scream':
-				camGame.filters = [new ShaderFilter(smear), new ShaderFilter(pseudo)]; camHUD.filters = [new ShaderFilter(smear), new ShaderFilter(pseudo)];
-				FlxTween.num(0, 2, Conductor.crochet / (1000 / 8), null, v -> {
-					pseudo.setFloat('sort', v);
-				});
+				if (prefs.shaders)
+				{
+					camGame.filters = [new ShaderFilter(smear), new ShaderFilter(pseudo)]; camHUD.filters = [new ShaderFilter(smear), new ShaderFilter(pseudo)];
+					FlxTween.num(0, 2, Conductor.crochet / (1000 / 8), null, v -> {
+						pseudo.setFloat('sort', v);
+					});
+				}
 			case 'bluescreen':
-				camGame.filters = []; camHUD.filters = [];
+				if (prefs.shaders) camGame.filters = []; camHUD.filters = [];
 				camGame.visible = camHUD.visible = false;
 		}
 	}
@@ -274,7 +290,7 @@ var _iM:Float = 0;
 var _iD:Float = 0;
 function onUpdatePost(e)
 {
-	if (canRain)
+	if (prefs.shaders && canRain)
 	{
 		if (_intro) rainShader.setFloat('rainIntensity', rainShader.getFloat('rainIntensity') + e / 100);
 		else rainShader.setFloat('rainIntensity', FlxMath.bound(rainShader.getFloat('rainIntensity') + e / 10, 0, targetRain));
@@ -284,16 +300,22 @@ function onUpdatePost(e)
 
 	if (curBG != 'intro')
 	{
-		_iM += e * (bgMatrix.getFloat('brightint') * 5);
-		bgMatrix.setFloat('iTime', _iM);
-		bgMatrix.setFloat('brightint', FlxMath.lerp(bgMatrix.getFloat('brightint'), targetMatrix, e * 3));
+		if (prefs.shaders)
+		{
+			_iM += e * (bgMatrix.getFloat('brightint') * 5);
+			bgMatrix.setFloat('iTime', _iM);
+			bgMatrix.setFloat('brightint', FlxMath.lerp(bgMatrix.getFloat('brightint'), targetMatrix, e * 3));
+		}
 	}
 	if (curBG == 'ending')
 	{
-		_iD += e;
-		decimate.setFloat('iTime', _iD);
-		smear.setFloat('amount', FlxG.random.float(0, 0.035));
-		smear.setFloat('angle', FlxG.random.float(0, 1));
+		if (prefs.shaders)
+		{
+			_iD += e;
+			decimate.setFloat('iTime', _iD);
+			smear.setFloat('amount', FlxG.random.float(0, 0.035));
+			smear.setFloat('angle', FlxG.random.float(0, 1));
+		}
 	}
 }
 

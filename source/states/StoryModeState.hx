@@ -658,6 +658,8 @@ class StoryModeState extends MusicBeatState
 
 		if (songLower == "too-slow")
 			fromTooSlow = true;
+		else
+			fromTooSlow = false;
 
 		#if !SHOW_LOADING_SCREEN FlxG.sound.music.stop(); #end
 	}

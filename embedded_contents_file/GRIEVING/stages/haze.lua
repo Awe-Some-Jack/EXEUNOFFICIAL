@@ -188,15 +188,17 @@ local stageMode = {
         callMethod('boyfriend.setPosition', {getProperty('boyfriend.x') - 20, getProperty('boyfriend.y') + 260})
         callMethod('dad.setPosition', {getProperty('dad.x') - 80, getProperty('dad.y') - 30})
         setProperty('dad.visible', true)
-        runHaxeCode([[
-            import shaders.AdjustColorShader;
-            var playerColor = new AdjustColorShader();
-            playerColor.brightness = -27;
-            playerColor.contrast = -19;
-            playerColor.hue = -10;
-            playerColor.saturation = -9;    
-            game.boyfriend.shader = playerColor; 
-        ]])
+        if shadersEnabled then
+            runHaxeCode([[
+                import shaders.AdjustColorShader;
+                var playerColor = new AdjustColorShader();
+                playerColor.brightness = -27;
+                playerColor.contrast = -19;
+                playerColor.hue = -10;
+                playerColor.saturation = -9;    
+                game.boyfriend.shader = playerColor; 
+            ]])
+        end
     end,
     ['3'] = function () --Phase 3
         for _, phase2 in ipairs(spriteGroups.phase2) do setProperty(phase2..'.visible', false) end

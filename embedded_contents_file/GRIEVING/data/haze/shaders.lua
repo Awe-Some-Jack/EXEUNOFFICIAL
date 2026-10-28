@@ -56,19 +56,19 @@ runHaxeCode([[
 
 luaDebugMode = true
 function onCreatePost()
-    for num, shad in ipairs(shaders) do
-        makeLuaSprite(shad.name, nil, shad.x)
-        setSpriteShader(shad.name, shad.shader)
-        setProperty(shad.name..'.alpha', shad.alpha)
-        setProperty(shad.name..'.angle', shad.angle)
-        scaleObject(shad.name, shad.scaleX, shad.scaleY)
-        for u, v in pairs(shad.uniforms) do
-            setShaderFloat(shad.name, u, v)
-        end
-    end
     if shadersEnabled and not lowQuality then
-        local neutrals = {
-            chrom = {amount = 0},
+        for num, shad in ipairs(shaders) do
+            makeLuaSprite(shad.name, nil, shad.x)
+            setSpriteShader(shad.name, shad.shader)
+            setProperty(shad.name..'.alpha', shad.alpha)
+            setProperty(shad.name..'.angle', shad.angle)
+            scaleObject(shad.name, shad.scaleX, shad.scaleY)
+            for u, v in pairs(shad.uniforms) do
+                setShaderFloat(shad.name, u, v)
+            end
+        end
+            local neutrals = {
+                chrom = {amount = 0},
             bw = {grayness = 0},
             shine = {brightness = 0, contrast = 1, saturation = 1},
             wave = {amount = 0},
@@ -99,66 +99,45 @@ local onTween6 = false
 function onEvent(eventName, value1, value2)
     local shaderValues = stringSplit(value1, ',')
     local tweenSettings = stringSplit(value2, ',')
-    if eventName == "bloomFlash" then
-        cancelTween('shineX')
-        setProperty('shine.x', tonumber(shaderValues[1]))
-        doTweenX('shineX', 'shine', tonumber(shaderValues[2]), tonumber(tweenSettings[1]) / playbackRate, tweenSettings[2])
-        onTween1 = true
-    end
-    if eventName == "chromFlash" then
-        cancelTween('chromX')
-        setProperty('chrom.x', tonumber(shaderValues[1]))
-        doTweenX('chromX', 'chrom', tonumber(shaderValues[2]), tonumber(tweenSettings[1]) / playbackRate, tweenSettings[2])
-        onTween2 = true
-    end
-    if eventName == "bwFlash" then
-        cancelTween('bwX')
-        setProperty('bw.x', tonumber(shaderValues[1]))
-        doTweenX('bwX', 'bw', tonumber(shaderValues[2]), tonumber(tweenSettings[1]) / playbackRate, tweenSettings[2])
-        onTween3 = true
-    end
-    if eventName == "pseudoFlash" then
-        cancelTween('pseudoX')
-        setProperty('pseudo.x', tonumber(shaderValues[1]))
-        doTweenX('pseudoX', 'pseudo', tonumber(shaderValues[2]), tonumber(tweenSettings[1]) / playbackRate, tweenSettings[2])
-        onTween5 = true
-    end
-    if eventName == "waveFlash" then
-        cancelTween('waveTween')
-        setProperty('wave.x', tonumber(shaderValues[1]))
-        doTweenX('waveTween', 'wave', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween6 = true
-    end
-    -- HAZE Events --
-    if eventName == 'hazeEvents' then
-        if value1 == 'setCharShaders' then
-            lightningPhase[tonumber(value2)]()
-        elseif value1 == 'removeCharShaders' then
-            for _, char in ipairs({'dad', 'boyfriend'}) do removeSpriteShader(char) end
+    if shadersEnabled then
+        if eventName == "bloomFlash" then
+            cancelTween('shineX')
+            setProperty('shine.x', tonumber(shaderValues[1]))
+            doTweenX('shineX', 'shine', tonumber(shaderValues[2]), tonumber(tweenSettings[1]) / playbackRate, tweenSettings[2])
+            onTween1 = true
         end
-        if value1 == 'stageMode' then if value2 == '5' then return else triggerEvent('waveFlash', '10, 0', '1, circOut') end end
-    end
-
-    if eventName == "Change Character" then
-        if shadersEnabled and not lowQuality then
-            for _, char in ipairs({'dad'}) do
-                if dadName == 'griatosA' or dadName == 'griatosB' or dadName == 'griatosC' then
-                    setSpriteShader(char, 'DropShadowShader')
-
-                    if getProperty(char .. '.shader') ~= nil then
-                        setShaderFloat(char, 'hue', 0)
-                        setShaderFloat(char, 'saturation', 0)
-                        setShaderFloat(char, 'contrast', 0)
-                        setShaderFloat(char, 'str', 1)
-                        setShaderFloat(char, 'brightness', char == 'dad' and 0 or -30)
-                        setShaderFloat(char, 'thr', 0.1)
-                        setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
-                        runHaxeFunction('setShaderFrameInfo', {char})
-                        setShaderFloat('dad', 'ang', math.rad(75))
-                        setShaderFloat('dad', 'dist', 10)
-                    end
-                end
+        if eventName == "chromFlash" then
+            cancelTween('chromX')
+            setProperty('chrom.x', tonumber(shaderValues[1]))
+            doTweenX('chromX', 'chrom', tonumber(shaderValues[2]), tonumber(tweenSettings[1]) / playbackRate, tweenSettings[2])
+            onTween2 = true
+        end
+        if eventName == "bwFlash" then
+            cancelTween('bwX')
+            setProperty('bw.x', tonumber(shaderValues[1]))
+            doTweenX('bwX', 'bw', tonumber(shaderValues[2]), tonumber(tweenSettings[1]) / playbackRate, tweenSettings[2])
+            onTween3 = true
+        end
+        if eventName == "pseudoFlash" then
+            cancelTween('pseudoX')
+            setProperty('pseudo.x', tonumber(shaderValues[1]))
+            doTweenX('pseudoX', 'pseudo', tonumber(shaderValues[2]), tonumber(tweenSettings[1]) / playbackRate, tweenSettings[2])
+            onTween5 = true
+        end
+        if eventName == "waveFlash" then
+            cancelTween('waveTween')
+            setProperty('wave.x', tonumber(shaderValues[1]))
+            doTweenX('waveTween', 'wave', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween6 = true
+        end
+        -- HAZE Events --
+        if eventName == 'hazeEvents' then
+            if value1 == 'setCharShaders' then
+                lightningPhase[tonumber(value2)]()
+            elseif value1 == 'removeCharShaders' then
+                for _, char in ipairs({'dad', 'boyfriend'}) do removeSpriteShader(char) end
             end
+            if value1 == 'stageMode' then if value2 == '5' then return else triggerEvent('waveFlash', '10, 0', '1, circOut') end end
         end
     end
 end
@@ -166,23 +145,25 @@ end
 local holdYes = 0
 function onUpdatePost(yes)
     holdYes = holdYes + yes
-    if onTween1 then
-        setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
-        setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))
+    if shadersEnabled then
+        if onTween1 then
+            setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
+            setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))
+        end
+        if onTween2 then
+            setShaderFloat('chrom', 'amount', getProperty('chrom.x'))
+        end
+        if onTween3 then
+            setShaderFloat('bw', 'grayness', getProperty('bw.x'))
+        end
+        if onTween5 then
+            setShaderFloat('pseudo', 'sort', getProperty('pseudo.x'))
+        end
+        if onTween6 then
+            setShaderFloat('wave', 'amount', getProperty('wave.x'))
+        end
+        if luaSpriteExists('wave') then setShaderFloat('wave', 'iTime', holdYes) end
     end
-    if onTween2 then
-        setShaderFloat('chrom', 'amount', getProperty('chrom.x'))
-    end
-    if onTween3 then
-        setShaderFloat('bw', 'grayness', getProperty('bw.x'))
-    end
-    if onTween5 then
-        setShaderFloat('pseudo', 'sort', getProperty('pseudo.x'))
-    end
-    if onTween6 then
-        setShaderFloat('wave', 'amount', getProperty('wave.x'))
-    end
-    if luaSpriteExists('wave') then setShaderFloat('wave', 'iTime', holdYes) end
 end
 
 function onTweenCompleted(tag)

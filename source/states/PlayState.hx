@@ -3584,6 +3584,8 @@ class PlayState extends MusicBeatState
 			if (formattedSong == 'burning')
 			{
 				backend.BurningBot.resetFreeplayState();
+				FlxG.save.data.burningBot = false;
+				FlxG.save.flush();
 				FlxG.save.data.burningWon = true;
 				FlxG.save.flush();
 			}

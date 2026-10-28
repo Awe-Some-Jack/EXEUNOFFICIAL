@@ -63,8 +63,6 @@ class EXETitle extends MusicBeatState
 
 		if (FlxG.save.data.burningBot == true)
 		{
-			FlxG.save.data.burningBot = false;
-			FlxG.save.flush();
 			backend.BurningBot.active = true;
 		}
 

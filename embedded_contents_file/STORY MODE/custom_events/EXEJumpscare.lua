@@ -1,5 +1,5 @@
 local jumpscareSprite = {
-    {name = 'jumpscare', path = 'characters/jumcare', x = 0, y = -200, animName = 'aidel', animPrefix = 'jum', fps = 24, loop = false, scaleX = 1, scaleY = 1, antialisasing = true, alpha = 0.0001, camera = 'camHUD', front = true}
+    {name = 'jumpscare', path = 'characters/jumcare', x = 0, y = -200, animName = 'aidel', animPrefix = 'jum', fps = 24, loop = false, scaleX = 1, scaleY = 1, antialisasing = true, alpha = 0, camera = 'camHUD', front = true}
 }
 
 local isScaringYou = false
@@ -27,7 +27,6 @@ function onEvent(lol)
             playAnim('jumpscare', 'aidel', true)
             playSound('jumpscareSound', 1, "xenoScream")
             setProperty('cameraSpeed', 1)
-            runHaxeCode("camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = true;")
         end
     end
 end
@@ -35,7 +34,7 @@ end
 function onUpdate(elapsed)
     if isScaringYou then
         if getProperty('jumpscare.animation.curAnim.finished') then
-            setProperty('jumpscare.alpha', 0)
+            removeLuaSprite('jumpscare', true)
             setProperty('camZoomingMult', 1)
             setProperty('camZoomingDecay', 1)
             isScaringYou = false

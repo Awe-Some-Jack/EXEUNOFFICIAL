@@ -1,17 +1,20 @@
 function onCreatePost()
-	makeLuaSprite('bloom')
-	setSpriteShader('bloom', 'brightness')
-	setShaderFloat('bloom', 'brightness', 0)
-	setShaderFloat('bloom', 'contrast', 1)
-	setShaderFloat('bloom', 'saturation', 1)
-
-	makeLuaSprite('chrom', nil, 0)
-	setSpriteShader('chrom', 'chromabber')
-	setShaderFloat('chrom', 'amount', 0)
-
-	makeLuaSprite("pixel", nil, 0.0001)
-	setSpriteShader("pixel", "pixelsplash")
-	setShaderFloat('pixel', 'pixelsize', 0.0001)
+	if shadersEnabled then
+		
+		makeLuaSprite('bloom')
+		setSpriteShader('bloom', 'brightness')
+		setShaderFloat('bloom', 'brightness', 0)
+		setShaderFloat('bloom', 'contrast', 1)
+		setShaderFloat('bloom', 'saturation', 1)
+		
+		makeLuaSprite('chrom', nil, 0)
+		setSpriteShader('chrom', 'chromabber')
+		setShaderFloat('chrom', 'amount', 0)
+		
+		makeLuaSprite("pixel", nil, 0.0001)
+		setSpriteShader("pixel", "pixelsplash")
+		setShaderFloat('pixel', 'pixelsize', 0.0001)
+	end
 
 	if shadersEnabled and not lowQuality then
 		local neutrals = {
@@ -37,37 +40,52 @@ local defaultBright = 1
 local istwning = false
 local thing = 0
 function onUpdatePost(e)
-	thing = thing + e * 3
-
-	setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
-	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4))
-
-	if istwning then
-		setShaderFloat('pixel', 'pixelsize', getProperty('pixel.x'))
-		setShaderFloat('chrom', 'amount', getProperty('chrom.x'))
+	if shadersEnabled then
+		
+		thing = thing + e * 3
+		
+		setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
+		setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4))
+		
+		if istwning then
+			setShaderFloat('pixel', 'pixelsize', getProperty('pixel.x'))
+			setShaderFloat('chrom', 'amount', getProperty('chrom.x'))
+		end
 	end
 end
 
 function onEvent(n,v1)
-	if n == 'bright zoom' and flashingLights then
-		cancelTween('bloom')
-		setProperty('bloom.x', 0.1)
-		doTweenX('bloom', 'bloom', 0, crochet / 250, 'cubeOut')
-	end
-	if n == 'saturation' then
-		setShaderFloat('bloom', 'saturation', tonumber(v1))
-	end
-	if n == 'trilogyEvents' then
-		if v1 == 'startEnd' then
-			istwning = true
-			doTweenX('xdd', 'chrom', 3, crochet / (1000 / 10), 'cubeIn')
-			doTweenX('bloom', 'bloom', 0.25, crochet / (1000 / 10), 'cubeIn')
-			doTweenAlpha('44123123', 'camHUD', 0, crochet / (1000 / 5), 'cubeInOut')
+	if shadersEnabled then
+		
+		if n == 'bright zoom' and flashingLights then
+			cancelTween('bloom')
+			setProperty('bloom.x', 0.1)
+			doTweenX('bloom', 'bloom', 0, crochet / 250, 'cubeOut')
 		end
-		if v1 == 'ending' then
-			doTweenX('pixel', 'pixel', 200, crochet / 500, 'expoIn')
-			doTweenZoom('casdadsda', 'camGame', 0.4, crochet / 500, 'expoIn')
-			doTweenAlpha('xasjdias', 'BlackGraphicOther', 1, crochet / 500, 'expoIn')
+		if n == 'saturation' then
+			setShaderFloat('bloom', 'saturation', tonumber(v1))
+		end
+		if n == 'trilogyEvents' then
+			if v1 == 'startEnd' then
+				istwning = true
+				doTweenX('xdd', 'chrom', 3, crochet / (1000 / 10), 'cubeIn')
+				doTweenX('bloom', 'bloom', 0.25, crochet / (1000 / 10), 'cubeIn')
+				doTweenAlpha('44123123', 'camHUD', 0, crochet / (1000 / 5), 'cubeInOut')
+			end
+			if v1 == 'ending' then
+				doTweenX('pixel', 'pixel', 200, crochet / 500, 'expoIn')
+				doTweenZoom('casdadsda', 'camGame', 0.4, crochet / 500, 'expoIn')
+				doTweenAlpha('xasjdias', 'BlackGraphicOther', 1, crochet / 500, 'expoIn')
+			end
+		end
+	else
+		if n == 'trilogyEvents' then
+			if v1 == 'startEnd' then
+				doTweenAlpha('44123123', 'camHUD', 0, crochet / (1000 / 5), 'cubeInOut')
+			end
+			if v1 == 'ending' then
+				doTweenAlpha('xasjdias', 'BlackGraphicOther', 1, crochet / 500, 'expoIn')
+			end
 		end
 	end
 end

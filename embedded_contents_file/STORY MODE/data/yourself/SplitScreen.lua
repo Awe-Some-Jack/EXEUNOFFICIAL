@@ -29,8 +29,8 @@ function onCreatePost()
 
 	makeLuaSprite('zoomoffset')
 	runHaxeCode([[
-		getVar("camLeft").filters = game.camGame.filters;
-		getVar("camRight").filters = game.camGame.filters;
+		game.getLuaObject("camLeft").filters = game.camGame.filters;
+		game.getLuaObject("camRight").filters = game.camGame.filters;
 	]])
 end
 
@@ -46,16 +46,16 @@ function onUpdate()
 		--callMethod('camFollowYour.setPosition', {getCharacterCameraPos('dad').x + offsetX, getCharacterCameraPos('dad').y + offsetY})
 		if followX then
 			callMethod('camFollowYour.setPosition', {(getProperty('camGame.scroll.x') * -1) + 1350 + (getCharacterCameraPos('dad').x + offsetX), getProperty('camGame.scroll.y') - 790 + (getCharacterCameraPos('dad').y + offsetY)})
-			callMethod('camFollowYour.snapToTarget')
+			--callMethod('camFollowYour.snapToTarget')
 
 			callMethod('camFollowBF.setPosition', {(getProperty('camGame.scroll.x') * -1) + 1350 + (getCharacterCameraPos('boyfriend').x + offsetBFX), getProperty('camGame.scroll.y') - 790 + (getCharacterCameraPos('boyfriend').y + offsetBFY)})
-			callMethod('camFollowBF.snapToTarget')
+			--callMethod('camFollowBF.snapToTarget')
 		else
 			callMethod('camFollowYour.setPosition', {getCharacterCameraPos('dad').x + offsetX, getCharacterCameraPos('dad').y + offsetY})
-			callMethod('camFollowYour.snapToTarget')
+			--callMethod('camFollowYour.snapToTarget')
 
 			callMethod('camFollowBF.setPosition', {getCharacterCameraPos('boyfriend').x + offsetBFX, getCharacterCameraPos('boyfriend').y + offsetBFY})
-			callMethod('camFollowBF.snapToTarget')
+			--callMethod('camFollowBF.snapToTarget')
 		end
 	end
 end
@@ -69,7 +69,7 @@ function onEvent(n,v1,v2)
 			startTween('LMAO', 'camLeft', {width = screenWidth}, crochet / (1000 / 8), {ease = 'cubeOut'})
 			startTween('LMAOFollow', 'camFollowYour', {x = getProperty('camFollowYour.x') + 50, y = getProperty('camFollowYour.x') - 50}, crochet / (1000 / 8), {ease = 'cubeOut'})
 			doTweenX('fuckyuh', 'zoomoffset', 0, crochet / (1000 / 10) / playbackRate, 'smoothStepInOut')
-			doTweenX('camRightlol', 'camRight', screenWidth, crochet / (1000 / 8) / playbackRate, 'cubeOut')
+			doTweenX('camRightlol', 'camRight', screenWidth + 50, crochet / (1000 / 8) / playbackRate, 'cubeOut')
 			setProperty('camGame.zoom', getProperty('camGame.zoom') + 0.3)
 			doTweenZoom('camgame', 'camGame', getProperty('camGame.zoom') - 0.3, crochet / (1000 / 4) / playbackRate, 'cubeOut')
 			offsetX = -100

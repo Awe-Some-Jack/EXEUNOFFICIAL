@@ -209,7 +209,7 @@ function onUpdatePost(elapsed:Float)
 		if (_glitchTimer <= 0)
 		{
 			_glitchTimer = 0.5;
-			glitch.setFloat('time', FlxG.random.float(0,50));
+			if (prefs.shaders) glitch.setFloat('time', FlxG.random.float(0,50));
 		}
 		if (deadBoyfriend.getAnimationName() == 'deathLoop')
 		{
@@ -312,7 +312,7 @@ function onEvent(n, v1, v2)
 				lyrics.animation.play('idle', true);
 			case 'glitchness':
 				FlxTween.tween(vg, {alpha: 1}, 10);
-				glitch.setFloat('prob', 0.4);
+				if (prefs.shaders) glitch.setFloat('prob', 0.4);
 			case 'speed':
 				speed = Std.parseInt(v2);
 			case 'end':
@@ -362,8 +362,9 @@ function onEvent(n, v1, v2)
 
 function onBeatHit()
 {
-	if (curBeat % speed == 0)
-		glitch.setFloat('time', FlxG.random.float(0,50));
+	if (prefs.shaders)
+		if (curBeat % speed == 0)
+			glitch.setFloat('time', FlxG.random.float(0,50));
 }
 
 function onDestroy() prefs.ghostTapping = oldGT;
@@ -371,15 +372,19 @@ function onDestroy() prefs.ghostTapping = oldGT;
 function onGameOverStart()
 {
 	lyrics.visible = false;
-	glitch.setFloat('prob', 0.45);
-	glitch2.setFloat('binaryIntensity', 0);
-	bgCamera.filters = [new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
-	FlxG.camera.filters = [new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
-	pixelShader.setFloat('pixelsize', 15);
-	if (pixelTween?.active ?? false) pixelTween.cancel();
-	pixelTween = FlxTween.num(15, 0, Conductor.crochet / 250, {ease: FlxEase.cubeOut}, v -> {
-		pixelShader.setFloat('pixelsize', v);
-	});
+	if (prefs.shaders)
+	{
+
+		glitch.setFloat('prob', 0.45);
+		glitch2.setFloat('binaryIntensity', 0);
+		bgCamera.filters = [new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
+		FlxG.camera.filters = [new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
+		pixelShader.setFloat('pixelsize', 15);
+		if (pixelTween?.active ?? false) pixelTween.cancel();
+		pixelTween = FlxTween.num(15, 0, Conductor.crochet / 250, {ease: FlxEase.cubeOut}, v -> {
+			pixelShader.setFloat('pixelsize', v);
+		});
+	}
 
 	game.gameplayCam.settings.OverrideZoom = true;
 	game.gameplayCam.overrideZoomValue = 0.6;
@@ -424,16 +429,20 @@ function onGameOverConfirm(retry)
 	if (retry) {
 		for (sound in FlxG.sound.list) if (sound.playing && sound != deadMusic) sound.volume = 0;
 
-		glitch.setFloat('prob', 0.8);
-		glitch2.setFloat('binaryIntensity', 0.1);
-		new FlxTimer().start(0.2, _ -> {glitch2.setFloat('binaryIntensity', 6);});
-		new FlxTimer().start(0.3, _ -> {glitch2.setFloat('binaryIntensity', 5);});
-		new FlxTimer().start(0.6, _ -> {glitch2.setFloat('binaryIntensity', 8);});
-		new FlxTimer().start(0.7, _ -> {glitch2.setFloat('binaryIntensity', 2);});
-		new FlxTimer().start(1, _ -> {glitch2.setFloat('binaryIntensity', 5);});
-		new FlxTimer().start(1.2, _ -> {glitch2.setFloat('binaryIntensity', 1);});
-		new FlxTimer().start(1.3, _ -> {glitch2.setFloat('binaryIntensity', 7);});
-		new FlxTimer().start(1.5, _ -> {glitch2.setFloat('binaryIntensity', 6);});
+
+		if (prefs.shaders)
+		{
+			glitch.setFloat('prob', 0.8);
+			glitch2.setFloat('binaryIntensity', 0.1);
+			new FlxTimer().start(0.2, _ -> {glitch2.setFloat('binaryIntensity', 6);});
+			new FlxTimer().start(0.3, _ -> {glitch2.setFloat('binaryIntensity', 5);});
+			new FlxTimer().start(0.6, _ -> {glitch2.setFloat('binaryIntensity', 8);});
+			new FlxTimer().start(0.7, _ -> {glitch2.setFloat('binaryIntensity', 2);});
+			new FlxTimer().start(1, _ -> {glitch2.setFloat('binaryIntensity', 5);});
+			new FlxTimer().start(1.2, _ -> {glitch2.setFloat('binaryIntensity', 1);});
+			new FlxTimer().start(1.3, _ -> {glitch2.setFloat('binaryIntensity', 7);});
+			new FlxTimer().start(1.5, _ -> {glitch2.setFloat('binaryIntensity', 6);});
+		}
 		new FlxTimer().start(1.7, _ -> {for (cam in FlxG.cameras.list) cam.alpha = 0;});
 		FlxG.camera.flash(0x811414FF, 1, null, true);
 		FlxG.sound.play(Paths.music('gameOverEndGo'));

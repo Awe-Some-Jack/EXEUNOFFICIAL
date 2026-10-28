@@ -215,12 +215,15 @@ function onCreatePost()
 	game.canPause = false;
 	game.canReset = false;
 	//shader
-	chrom = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('ChromaticAbberation')));
-    chrom.setFloat('amount', 0.3);
-	
-	camGame.filters = [new ShaderFilter(chrom)];
-	final sexoShader = game.getLuaObject('sexo').shader;
-	if(sexoShader != null) camGame.filters.push(new ShaderFilter(sexoShader));
+	if (prefs.shaders)
+	{
+		chrom = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment('ChromaticAbberation')));
+		chrom.setFloat('amount', 0.3);
+		
+		camGame.filters = [new ShaderFilter(chrom)];
+		final sexoShader = game.getLuaObject('sexo').shader;
+		if(sexoShader != null) camGame.filters.push(new ShaderFilter(sexoShader));
+	}
 
 	for (i in 0...4)
 	{
@@ -594,7 +597,7 @@ function onEvent(n,v1,v2)
 				var lightning:FlxSprite = bgIntro[1].sprite;
 				lightning.animation.play('variant' + FlxG.random.int(1,3), true);
 				lightning.alpha = 1;
-				game.triggerEvent('bloomFlash', '0.15, 0', '0.5', Conductor.songPosition);
+				if (prefs.shaders) game.triggerEvent('bloomFlash', '0.15, 0', '0.5', Conductor.songPosition);
 				
 			case 'fuckYouVideo':
 				introCutscene?.destroy();
@@ -999,7 +1002,7 @@ function onEvent(n,v1,v2)
 				curBG = 'nulo jajaja para q no pase nada aca';
 				FlxTween.tween(camHUD, {alpha: 0}, Conductor.crochet / 250);
 			case 'superbf':
-				chrom.setFloat('amount', 0.4);
+				if (prefs.shaders) chrom.setFloat('amount', 0.4);
 				for (s in 0...ballList.length - 2) FlxTween.cancelTweensOf(shields.members[s]);
 				shields?.destroy();
 				for (spr in hbvanilla) game.getLuaObject(spr).alpha = 0;
@@ -1090,7 +1093,7 @@ function onEvent(n,v1,v2)
 				blackBG.color = 0xFFFFFFFF;
 				FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / 250, {ease: FlxEase.expoIn});
 				game.triggerEvent('Tween Camera Zoom', '1, true', Std.string(Conductor.crochet / 250) + ', expoIn', Conductor.songPosition);
-				game.triggerEvent('bloomFlash', '0, 2', Std.string(Conductor.crochet / 250) + ', expoIn', Conductor.songPosition);
+				if (prefs.shaders) game.triggerEvent('bloomFlash', '0, 2', Std.string(Conductor.crochet / 250) + ', expoIn', Conductor.songPosition);
 			case 'normal':
 				speed = 2;
 				for (spr in hudSprites) game.getLuaObject(spr).alpha = 1;
@@ -1101,7 +1104,7 @@ function onEvent(n,v1,v2)
 				whiteBG = null;
 				boyfriend.visible = true;
 				dad.visible = true;
-				chrom.setFloat('amount', 0.5);
+				if (prefs.shaders) chrom.setFloat('amount', 0.5);
 				xdringbg?.destroy();
 				camHUD.flash(0xFFFFFFFF, Conductor.crochet / 250, null, true);
 				for (spr in bgIntro) if (spr.sprite != bgIntro[1].sprite) spr.sprite?.destroy();

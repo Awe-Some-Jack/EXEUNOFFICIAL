@@ -68,9 +68,12 @@ function onGameOverStart()
 	blackfuck.screenCenter();
 	GameOverSubstate.instance.add(blackfuck);
 
-	game.camGame.filters = [
-		new ShaderFilter(game.getLuaObject('sexo').shader), new ShaderFilter(game.getLuaObject('cab').shader), new ShaderFilter(game.getLuaObject('glitch').shader)
-	];
+	if (ClientPrefs.data.shaders)
+	{
+		game.camGame.filters = [
+			new ShaderFilter(game.getLuaObject('sexo').shader), new ShaderFilter(game.getLuaObject('cab').shader), new ShaderFilter(game.getLuaObject('glitch').shader)
+		];
+	}
 
 	new FlxTimer().start(1, function(_) {
 		deadMusic.fadeIn(3, 0, 1);

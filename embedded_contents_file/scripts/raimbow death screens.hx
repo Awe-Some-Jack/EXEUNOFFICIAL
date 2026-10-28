@@ -224,11 +224,15 @@ function addVoiceLines() {
 function addShaders() {
     switch(songName){
         case "yourself":
-            var fragSrc:String = Paths.getContent(Paths.shaderFragment('pixelsplash'));
-            pixel = new FlxRuntimeShader(fragSrc);
-            pixel.setFloat("pixelsize", 0.1);
+            if (ClientPrefs.data.shaders)
+            {
 
-            FlxG.camera.filters = [new ShaderFilter(pixel)];
+                var fragSrc:String = Paths.getContent(Paths.shaderFragment('pixelsplash'));
+                pixel = new FlxRuntimeShader(fragSrc);
+                pixel.setFloat("pixelsize", 0.1);
+                
+                FlxG.camera.filters = [new ShaderFilter(pixel)];
+            }
     }
 }
 
@@ -459,7 +463,7 @@ function onGameOverConfirm(retry)
         case "yourself":
         if (retry) new FlxTimer().start(0.7, (_) ->
         {
-            FlxTween.num(0.1, 50, 4, {ease:FlxEase.sineInOut}, (val:Float) -> pixel.setFloat("pixelsize", val));
+            if (ClientPrefs.data.shaders) FlxTween.num(0.1, 50, 4, {ease:FlxEase.sineInOut}, (val:Float) -> pixel.setFloat("pixelsize", val));
             FlxTween.tween(FlxG.camera, {zoom: 0.5, y: FlxG.camera.y - 90}, 4, {ease: FlxEase.smootherStepInOut});
             FlxG.camera.stopFade();
             FlxG.camera.fade(FlxColor.BLACK, 4, false, function()
@@ -540,24 +544,30 @@ function onCustomSubstateUpdate(n)
         boyfriend.animation.paused = true;
         dad.animation.paused = true;
 
-        pseudo.setFloat("iTime", holdTime);
-        wave.setFloat("iTime", holdTime * 2);
+        if (ClientPrefs.data.shaders)
+        {
+            pseudo.setFloat("iTime", holdTime);
+            wave.setFloat("iTime", holdTime * 2);
+        }
     }
 }
 
 function setupHazeGameOver() {
     FlxG.stage.window.title = PlayState.instance.appName + " | Was Playing: " + PlayState.SONG.song;
     //Shader shit
-    for (guys in [boyfriend, dad]) guys.shader = null;
-    
-    var fragSrc:String = Paths.getContent(Paths.shaderFragment('pseudo'));
-    pseudo = new FlxRuntimeShader(fragSrc);
-    pseudo.setFloat("sort", 0);
-    var fragSrc2:String = Paths.getContent(Paths.shaderFragment('wavyDistortion'));
-    wave = new FlxRuntimeShader(fragSrc2);
-    wave.setFloat("amount", 0);
+    if (ClientPrefs.data.shaders)
+    {
+        for (guys in [boyfriend, dad]) guys.shader = null;
 
-    FlxG.camera.filters = [new ShaderFilter(pseudo), new ShaderFilter(wave)];
+        var fragSrc:String = Paths.getContent(Paths.shaderFragment('pseudo'));
+        pseudo = new FlxRuntimeShader(fragSrc);
+        pseudo.setFloat("sort", 0);
+        var fragSrc2:String = Paths.getContent(Paths.shaderFragment('wavyDistortion'));
+        wave = new FlxRuntimeShader(fragSrc2);
+        wave.setFloat("amount", 0);
+        
+        FlxG.camera.filters = [new ShaderFilter(pseudo), new ShaderFilter(wave)];
+    }
     
     PlayState.instance.camHUD.visible = false;
     FlxTween.cancelTweensOf(FlxG.camera);
@@ -582,9 +592,12 @@ function startScreamShit() {
     
     new FlxTimer().start(2.5, () -> showJumpscare());
 
-    wave.setFloat("amount", 0.2);
+    if (ClientPrefs.data.shaders)
+    {
+        wave.setFloat("amount", 0.2);
 
-    new FlxTimer().start(0.6, () -> pseudo.setFloat("sort", 0.4));
+        new FlxTimer().start(0.6, () -> pseudo.setFloat("sort", 0.4));
+    } 
 }
 
 function configureChars()
@@ -626,8 +639,8 @@ function showJumpscare() {
     for (guys in [boyfriend, dad]) guys.alpha -= 0.2;
 
     new FlxTimer().start(1.4,   () -> {griatosScream.alpha += 0.2; for (guys in [boyfriend, dad]) guys.alpha -= 0.2;});
-    new FlxTimer().start(1.8,   () -> {griatosScream.alpha += 0.2; for (guys in [boyfriend, dad]) guys.alpha -= 0.2; pseudo.setFloat("sort", 0.6);});
-    new FlxTimer().start(2.4,   () -> {griatosScream.alpha += 0.6; for (guys in [boyfriend, dad]) guys.alpha -= 0.6; pseudo.setFloat("sort", 0.9);});
+    new FlxTimer().start(1.8,   () -> {griatosScream.alpha += 0.2; for (guys in [boyfriend, dad]) guys.alpha -= 0.2; if (ClientPrefs.data.shaders) pseudo.setFloat("sort", 0.6);});
+    new FlxTimer().start(2.4,   () -> {griatosScream.alpha += 0.6; for (guys in [boyfriend, dad]) guys.alpha -= 0.6; if (ClientPrefs.data.shaders) pseudo.setFloat("sort", 0.9);});
     
     new FlxTimer().start(3.3,   () -> hideThem());
 }
@@ -635,12 +648,12 @@ function showJumpscare() {
 function hideThem() {
     for (guys in [boyfriend, dad, griatosScream, redGraphicShit])
         guys.alpha = 0;
-    pseudo.setFloat("sort", 0);
+    if (ClientPrefs.data.shaders) pseudo.setFloat("sort", 0);
 }
 
 function bfCreepy() {
     FlxG.camera.zoom = 1.1;
-    wave.setFloat("amount", 0.6);
+    if (ClientPrefs.data.shaders) wave.setFloat("amount", 0.6);
     FlxG.sound.play(Paths.sound("deathSounds/hazeLoop", 1, true));
     FlxTween.tween(bfEerie, {alpha: 1}, 3, {onComplete: () -> canPress = true});
 }

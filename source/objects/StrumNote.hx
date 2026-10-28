@@ -261,7 +261,7 @@ class StrumNote extends FlxSprite
 				holdTimer = 0;
 				if (note != null)
 				{
-					confirmDuration = note.isSustainNote ? 1.3 : 4;
+					confirmDuration = note.isSustainNote ? 1.45 : 4;
 				}
 			}
 

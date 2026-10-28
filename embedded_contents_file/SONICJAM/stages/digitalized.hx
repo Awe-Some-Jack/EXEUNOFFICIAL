@@ -16,6 +16,8 @@ var graphic:FlxSprite;
 
 var canGenerateStars:Bool = true;
 
+final prefs = ClientPrefs.data;
+
 //mirror shader lol
 var mirror = new ErrorHandledRuntimeShader('MirrorRepeatEffect', File.getContent('contents/SONICJAM/shaders/MirrorRepeatEffect.frag'));
 
@@ -37,7 +39,7 @@ var bg:FlxSprite;
 
 function onCreate()
 {
-	if(ClientPrefs.data.middleScroll && (ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes)) PlayState.instance.opponentStrumOffsetY = -60;
+	if(prefs.middleScroll && (prefs.middlescrollType == 'mobile' || prefs.mobileOpponentNotes)) PlayState.instance.opponentStrumOffsetY = -60;
 
 	setupCameras();
 
@@ -229,44 +231,46 @@ function onEvent(n,v1,v2)
 				//third value its the duration or time, time can be either a regular in seconds ruler (like 0.5 for half second and 1 for a second) or in crochet (for beat based time) so if you see for example c3 it will mean "crochet / (1000 / 3)" and that means the tween will last 3 beats.
 				//and the fourth value its basically just the ease of the tween
 
-				if (mirrorTween != null) mirrorTween.cancel();
-				final settings:Array<String> = v2.split('>');
-
-				trace(settings);
-
-				//mode setup
-				var mode:String = '0';
-				if (settings[0] != null && settings[0] != '') mode = settings[0];
-
-				//target values setup
-				var targets:Array<String> = ['1'];
-				if (settings[1] != null && settings[1] != '') targets = settings[1].replace('[', '').replace(']', '').split(',');
-
-				//duration setup
-				var duration:Float = 1;
-				if (settings[2] != null && settings[2] != '')
-				{
-					if (settings[2].startsWith('c')) duration = Conductor.crochet / (1000 / Std.parseFloat(settings[2].substr(1)));
-					else duration = Std.parseFloat(settings[2]);
-				}
-
-				//ease setup
-				var mirrorEase:String = 'linear';
-				if (settings[3] != null && settings[3] != '') mirrorEase = settings[3];
-
-				//da start values so it doesnt start from scratch making an ugly ass effect lol
-				final startValue:Array<Float> = [
-					mirror.getFloat('zoom'),
-					mirror.getFloat('x'),
-					mirror.getFloat('y'),
-					mirror.getFloat('angle')
-				];
-
-				//the actual tween here
-				mirrorTween = FlxTween.num(0, 1, duration, {
-					ease: LuaUtils.getTweenEaseByString(mirrorEase),
-					onComplete: (_) -> {mirrorTween = null;}
-				}, (v:Float) -> {
+				if (prefs.shaders)
+				{	
+					if (mirrorTween != null) mirrorTween.cancel();
+					final settings:Array<String> = v2.split('>');
+					
+					trace(settings);
+					
+					//mode setup
+					var mode:String = '0';
+					if (settings[0] != null && settings[0] != '') mode = settings[0];
+					
+					//target values setup
+					var targets:Array<String> = ['1'];
+					if (settings[1] != null && settings[1] != '') targets = settings[1].replace('[', '').replace(']', '').split(',');
+					
+					//duration setup
+					var duration:Float = 1;
+					if (settings[2] != null && settings[2] != '')
+					{
+						if (settings[2].startsWith('c')) duration = Conductor.crochet / (1000 / Std.parseFloat(settings[2].substr(1)));
+						else duration = Std.parseFloat(settings[2]);
+					}
+					
+					//ease setup
+					var mirrorEase:String = 'linear';
+					if (settings[3] != null && settings[3] != '') mirrorEase = settings[3];
+					
+					//da start values so it doesnt start from scratch making an ugly ass effect lol
+					final startValue:Array<Float> = [
+						mirror.getFloat('zoom'),
+						mirror.getFloat('x'),
+						mirror.getFloat('y'),
+						mirror.getFloat('angle')
+					];
+					
+					//the actual tween here
+					mirrorTween = FlxTween.num(0, 1, duration, {
+						ease: LuaUtils.getTweenEaseByString(mirrorEase),
+						onComplete: (_) -> {mirrorTween = null;}
+					}, (v:Float) -> {
 					for (i in 0...mode.length)
 					{
 						if (i >= targets.length) break;
@@ -280,6 +284,7 @@ function onEvent(n,v1,v2)
 						}
 					}
 				});
+			}
 		}
 	}
 }
@@ -333,7 +338,7 @@ function onStepHit() {
 
 function onCreatePost()
 {
-	if (ClientPrefs.data.shaders) {
+	if (prefs.shaders) {
 		var fishEye = new ErrorHandledRuntimeShader('fisheye', File.getContent('contents/SONICJAM/shaders/fisheye.frag'));
 		fishEye.setFloat('amount', -0.75);
 

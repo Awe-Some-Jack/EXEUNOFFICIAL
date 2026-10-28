@@ -1620,11 +1620,21 @@ class PlayState extends MusicBeatState
 		FlxG.sound.music.onComplete = finishSong.bind();
 		vocals.play();
 		opponentVocals.play();
-		FlxG.sound.music.volume = 1;
-		vocals.volume = 1;
-		opponentVocals.volume = 1;
-		inst.volume = 1;
-		trace('inst and vocals started playing');
+
+		vocals.onComplete = () -> {
+			if (vocals != null) {
+				vocals.stop();
+				vocals.volume = 0;
+			}
+		};
+
+		opponentVocals.onComplete = () -> {
+			if (opponentVocals != null) {
+				opponentVocals.stop();
+				opponentVocals.volume = 0;
+			}
+		};
+
 		backend.SongGc.start();
 
 		setSongTime(Math.max(0, startOnTime - 500) + Conductor.offset);
@@ -1691,16 +1701,12 @@ class PlayState extends MusicBeatState
 		}
 		catch (e:Dynamic) {}
 
-		#if FLX_PITCH
-		vocals.pitch = playbackRate;
-		opponentVocals.pitch = playbackRate;
-		#end
 		FlxG.sound.list.add(vocals);
 		FlxG.sound.list.add(opponentVocals);
 
-		if(FlxG.sound.music != null) FlxG.sound.music.volume = 0;
-		vocals.volume = 0;
-		opponentVocals.volume = 0;
+		#if FLX_PITCH
+		FlxG.sound.list.forEach((sound:FlxSound) -> if (sound != null) sound.pitch = playbackRate);
+		#end
 
 		inst = new FlxSound();
 		try
@@ -1711,7 +1717,6 @@ class PlayState extends MusicBeatState
 		FlxG.sound.list.add(inst);
 
 		inst.volume = 0;
-		trace('inst loaded and added to sound list');
 
 		notes = new FlxTypedGroup<Note>();
 		noteGroup.add(notes);
@@ -2174,14 +2179,10 @@ class PlayState extends MusicBeatState
 		stagesFunc(function(stage:BaseStage) stage.openSubState(SubState));
 		if (paused)
 		{
-			if (FlxG.sound.music != null)
-			{
-				FlxG.sound.music.pause();
-				vocals.pause();
-				opponentVocals.pause();
-			}
-			FlxTimer.globalManager.forEach(function(tmr:FlxTimer) if(!tmr.finished) tmr.active = false);
-			FlxTween.globalManager.forEach(function(twn:FlxTween) if(!twn.finished) twn.active = false);
+			FlxG.sound.list.forEach(s -> s?.pause());
+
+			FlxTimer.globalManager.forEach((tmr:FlxTimer) -> if(!tmr.finished) tmr.active = false);
+			FlxTween.globalManager.forEach((twn:FlxTween) -> if(!twn.finished) twn.active = false);
 
 			#if VIDEOS_ALLOWED
 			if (videoCutscene?.isPlaying()) videoCutscene.pause();
@@ -2202,7 +2203,7 @@ class PlayState extends MusicBeatState
 	{
 		super.closeSubState();
 
-		stagesFunc(function(stage:BaseStage) stage.closeSubState());
+		stagesFunc((stage:BaseStage) -> stage.closeSubState());
 		if (paused)
 		{
 			if (FlxG.sound.music != null && !startingSong && canResync)
@@ -2210,8 +2211,10 @@ class PlayState extends MusicBeatState
 				resyncVocals();
 			}
 
-			FlxTimer.globalManager.forEach(function(tmr:FlxTimer) if(!tmr.finished) tmr.active = true);
-			FlxTween.globalManager.forEach(function(twn:FlxTween) if(!twn.finished) twn.active = true);
+			FlxG.sound.list.forEach(s -> s?.resume());
+
+			FlxTimer.globalManager.forEach((tmr:FlxTimer) -> if(!tmr.finished) tmr.active = true);
+			FlxTween.globalManager.forEach((twn:FlxTween) -> if(!twn.finished) twn.active = true);
 
 			#if VIDEOS_ALLOWED
 			videoCutscene?.resume();
@@ -2224,7 +2227,8 @@ class PlayState extends MusicBeatState
 
 			if (ClientPrefs.data.shaders)
 			{
-				for (cam in [FlxG.camera, camVideo, camHUD, camOther]) {
+				for (cam in [FlxG.camera, camVideo, camHUD, camOther]) 
+				{
 					cam.filters?.pop();
 					cam.filters = cam.filters;
 				}
@@ -2351,18 +2355,22 @@ class PlayState extends MusicBeatState
 	{
 		sunkyPending = false;
 		persistentUpdate = false;
+
 		if (startTimer != null) startTimer.active = false;
-		final playing = [for (snd in [FlxG.sound.music, vocals, opponentVocals]) if (snd != null && snd.playing) snd];
-		for (snd in playing) snd.pause();
+		
+		FlxG.sound.list.forEach(s -> s?.pause());
+
 		openSubState(new states.substates.SunkySubstate(accepted -> {
 			if (accepted)
 			{
 				sunkyHelp = true;
 				cpuControlled = true;
 			}
+			
 			persistentUpdate = true;
 			if (startTimer != null) startTimer.active = true;
-			for (snd in playing) snd.resume();
+
+			FlxG.sound.list.forEach(s -> s?.resume());
 		}));
 	}
 
@@ -2540,13 +2548,14 @@ class PlayState extends MusicBeatState
 
 						persistentUpdate = false;
 						persistentDraw = false;
+
 						FlxTimer.globalManager.clear();
 						FlxTween.globalManager.clear();
+
 						FlxG.camera.filters = [];
 
-						vocals.stop();
-						opponentVocals.stop();
-						FlxG.sound.music.stop();
+						FlxG.sound.list.forEach((sound:FlxSound) -> sound?.stop());
+
 						openSubState(new NOCHEATING());
 					}
 				}
@@ -2576,19 +2585,20 @@ class PlayState extends MusicBeatState
 			if (FlxG.sound.music != null && Conductor.songPosition >= Conductor.offset)
 			{
 				Conductor.songPosition = FlxMath.lerp(FlxG.sound.music.time + Conductor.offset, Conductor.songPosition, Math.exp(-elapsed * 5));
-				var timeDiff:Float = Math.abs((FlxG.sound.music.time + Conductor.offset) - Conductor.songPosition);
+
+				final timeDiff:Float = Math.abs((FlxG.sound.music.time + Conductor.offset) - Conductor.songPosition);
 				if (timeDiff > 1000 * playbackRate)
 					Conductor.songPosition = Conductor.songPosition + 1000 * FlxMath.signOf(timeDiff);
 			}
 
-			if (!startingSong && !endingSong && FlxG.sound.music != null && FlxG.sound.music.playing)
+			if (!startingSong && !endingSong && FlxG.sound.music?.playing)
 			{
 				syncVocal(vocals, FlxG.sound.music.time);
 				syncVocal(opponentVocals, FlxG.sound.music.time);
 			}
 		}
 
-		if (!endingSong && !startingSong && generatedMusic && songLength > 0 && FlxG.sound.music != null && FlxG.sound.music.playing && FlxG.sound.music.time >= songLength - 100)
+		if (!endingSong && !startingSong && generatedMusic && songLength > 0 && FlxG.sound.music?.playing && FlxG.sound.music.time >= songLength - 100)
 		{
 			finishSong();
 		}
@@ -2718,12 +2728,15 @@ class PlayState extends MusicBeatState
 		}
 
 		#if !final
-		if(!endingSong && !startingSong) {
-			if (FlxG.keys.justPressed.ONE) {
+		if(!endingSong && !startingSong) 
+		{
+			if (FlxG.keys.justPressed.ONE) 
+			{
 				KillNotes();
 				FlxG.sound.music.onComplete();
 			}
-			if(FlxG.keys.justPressed.TWO) { 
+			if(FlxG.keys.justPressed.TWO) 
+			{ 
 				setSongTime(Conductor.songPosition + 10000);
 				clearNotesBefore(Conductor.songPosition);
 			}
@@ -2817,11 +2830,8 @@ class PlayState extends MusicBeatState
 		persistentDraw = true;
 		paused = true;
 
-		if(FlxG.sound.music != null) {
-			FlxG.sound.music.pause();
-			vocals.pause();
-			opponentVocals.pause();
-		}
+		FlxG.sound.list.forEach(s -> s?.pause());
+		
 		if(!cpuControlled)
 		{
 			for (note in playerStrums)
@@ -2858,12 +2868,7 @@ class PlayState extends MusicBeatState
 		firstPlay = false;
 		paused = true;
 
-		if(FlxG.sound.music != null)
-			FlxG.sound.music.stop();
-		if(vocals != null)
-			vocals.pause();
-		if(opponentVocals != null)
-			opponentVocals.pause();
+		FlxG.sound.list.forEach(s -> s?.pause());
 
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("Chart Editor", null, null, true);
@@ -2931,12 +2936,7 @@ class PlayState extends MusicBeatState
 		firstPlay = false;
 		paused = true;
 
-		if(FlxG.sound.music != null)
-			FlxG.sound.music.stop();
-		if(vocals != null)
-			vocals.pause();
-		if(opponentVocals != null)
-			opponentVocals.pause();
+		FlxG.sound.list.forEach(s -> s?.stop());
 
 		#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 		FlxG.switchState(() -> new CharacterEditorState(SONG.player2));
@@ -2969,26 +2969,24 @@ class PlayState extends MusicBeatState
 
 				persistentUpdate = false;
 				persistentDraw = false;
+
 				FlxTimer.globalManager.clear();
 				FlxTween.globalManager.clear();
+
 				FlxG.camera.filters = [];
 
 				if(GameOverSubstate.deathDelay > 0)
 				{
 					gameOverTimer = new FlxTimer().start(GameOverSubstate.deathDelay, function(_)
 					{
-						vocals.stop();
-						opponentVocals.stop();
-						FlxG.sound.music.stop();
+						FlxG.sound.list.forEach((sound:FlxSound) -> sound?.stop());
 						openSubState(new GameOverSubstate(boyfriend));
 						gameOverTimer = null;
 					});
 				}
 				else
 				{
-					vocals.stop();
-					opponentVocals.stop();
-					FlxG.sound.music.stop();
+					FlxG.sound.list.forEach((sound:FlxSound) -> sound?.stop());
 					openSubState(new GameOverSubstate(boyfriend));
 				}
 
@@ -3341,12 +3339,12 @@ class PlayState extends MusicBeatState
 
 		if (instance != this || vocals == null || opponentVocals == null) return;
 
-		FlxG.sound.music.volume = 0;
-
-		vocals.volume = 0;
-		vocals.pause();
-		opponentVocals.volume = 0;
-		opponentVocals.pause();
+		FlxG.sound.list.forEach((sound:FlxSound) -> {
+			if (sound != null && sound.playing) {
+				sound.stop();
+				sound.volume = 0;
+			}
+		});
 
 		if(ClientPrefs.data.noteOffset <= 0 || ignoreNoteOffset) {
 			endCallback();
@@ -4715,7 +4713,7 @@ class PlayState extends MusicBeatState
 
 		hscriptArray = null;
 		#end
-		stagesFunc(function(stage:BaseStage) stage.destroy());
+		stagesFunc((stage:BaseStage) -> stage.destroy());
 
 		#if VIDEOS_ALLOWED
 		if(videoCutscene != null)
@@ -4734,18 +4732,23 @@ class PlayState extends MusicBeatState
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 
 		FlxG.camera.filters = [];
+		
+		FlxG.sound.list.forEach((sound:FlxSound) -> {
+			if (sound != null) 
+			{
+				#if FLX_PITCH
+				sound.pitch = 1;
+				#end
+				sound.onComplete = null;
+			}
+		});
 
-		if (FlxG.sound.music != null) FlxG.sound.music.onComplete = null;
-		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
 		FlxG.timeScale = 1;
 
 		backend.NoteTypesConfig.clearNoteTypesData();
 
-		if (inst != null) { inst.stop(); inst.destroy(); inst = null; }
-		if (vocals != null) { vocals.stop(); vocals.destroy(); vocals = null; }
-		if (opponentVocals != null) { opponentVocals.stop(); opponentVocals.destroy(); opponentVocals = null; }
-
-		if (enableFreezeSync) {
+		if (enableFreezeSync) 
+		{
 			shutdownThread = true;
 			FlxG.signals.preUpdate.remove(checkForResync);
 		}
@@ -4759,9 +4762,8 @@ class PlayState extends MusicBeatState
 	{
 		super.stepHit();
 
-		if(curStep == lastStepHit) {
+		if(curStep == lastStepHit)
 			return;
-		}
 
 		lastStepHit = curStep;
 		setOnScripts('curStep', curStep);

@@ -50,7 +50,6 @@ function onCreate()
 	introCutscene.onFormat(() -> {
 		introCutscene.setGraphicSize(FlxG.width, FlxG.height);
 		introCutscene.screenCenter();
-		introCutscene.video.antialiasing = ClientPrefs.data.antialiasing;
 	});
 	introCutscene.onEnd(() -> {camGame.alpha = 1; introCutscene.destroy();});
 	add(introCutscene);
@@ -60,7 +59,6 @@ function onCreate()
 	sanicBG.onFormat(() -> { 
 		sanicBG.scale.set(1.5, 1.5);
 		sanicBG.updateHitbox();
-		sanicBG.video.antialiasing = ClientPrefs.data.antialiasing;
 	});
 	sanicBG.onEnd(() -> {sanicBG.destroy();});
 	insert(0, sanicBG);
@@ -169,9 +167,7 @@ function makePreloadedVideo(name:String):VideoSprite
 	video.onFormat(() -> {
 		video.setGraphicSize(FlxG.width, FlxG.height);
 		video.screenCenter();
-		video.video.antialiasing = ClientPrefs.data.antialiasing;
 	});
-	video.video.antialiasing = ClientPrefs.data.antialiasing;
 	video.video.shader = new ErrorHandledRuntimeShader('GreenScreenShader', File.getContent('contents/SANIC/shaders/GreenScreenShader.frag'));
 	video.onEnd(() -> {
 		remove(video);

@@ -224,7 +224,8 @@ function onCreatePost()
 				if splashes.skin ~= nil then holdSplashConf.skin = splashes.skin..'HOLD' end
 				if splashes.holdConfig.skin ~= nil then holdSplashConf.skin = splashes.holdConfig.skin end
 				if splashes.holdConfig.scale ~= nil then holdSplashConf.scale = splashes.holdConfig.scale end
-				if splashes.holdConfig.antialiasing ~= nil then holdSplashConf.antialiasing = splashes.holdConfig.antialiasing else holdSplashConf.antialiasing = getPropertyFromClass('backend.ClientPrefs', 'data.antialiasing') end
+				if splashes.holdConfig.antialiasing ~= nil then holdSplashConf.antialiasing = splashes.holdConfig.antialiasing 
+				else holdSplashConf.antialiasing = getPropertyFromClass('backend.ClientPrefs', 'data.antialiasing') end
 				if splashes.holdConfig.offset ~= nil then for z,v in pairs(splashes.holdConfig.offset) do if v ~= nil then holdSplashConf.offset[z] = v end end end
 				for n,d in pairs(splashes.holdConfig) do if type(v) == 'table' then for k,v in pairs(d) do if v ~= nil then holdSplashConf[n][k] = v end end end end
 				if splashes.holdConfig.multiKeyHold then
@@ -241,6 +242,10 @@ function onCreatePost()
 
 			break
 		end
+	end
+
+	if holdSplashConf.antialiasing == nil then
+		holdSplashConf.antialiasing = getPropertyFromClass('backend.ClientPrefs', 'data.antialiasing')
 	end
 
 	if holdsEnabled then

@@ -89,14 +89,12 @@ function onCreate()
 	ring.loadGraphic(Paths.image('gottago/ring'));
 	ring.scale.set(0.3, 0.3);
 	ring.updateHitbox();
-	ring.antialiasing = prefs.antialiasing;
 	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), ring);
 
 	ringBlue = new FlxSprite(-1090, -500);
 	ringBlue.loadGraphic(Paths.image('gameovers/ring'));
 	ringBlue.scale.set(0.3, 0.3);
 	ringBlue.updateHitbox();
-	ringBlue.antialiasing = prefs.antialiasing;
 	ringBlue.alpha = 0.0001;
 	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), ringBlue);
 
@@ -104,7 +102,6 @@ function onCreate()
 	vg.updateHitbox();
 	vg.color = 0xFF000000;
 	vg.alpha = 0.5;
-	vg.antialiasing = prefs.antialiasing;
 	vg.camera = camHUD;
 	vg.screenCenter();
 	add(vg);

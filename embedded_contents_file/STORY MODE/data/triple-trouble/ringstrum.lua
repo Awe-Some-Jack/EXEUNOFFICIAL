@@ -14,7 +14,7 @@ function onCreatePost()
 	makeLuaSprite('ringCounter', 'tt/Counter')
 	setObjectCamera('ringCounter', 'hud')
 	addLuaSprite('ringCounter', true)
-	scaleObject('ringCounter', 0.67)
+	scaleObject('ringCounter', 0.67, 0.67)
 	callMethod('ringCounter.setPosition', {screenWidth - getProperty('ringCounter.width') - 40, (downscroll and 10 or (screenHeight - getProperty('ringCounter.height') - 10))})
 
 	makeLuaText('ringTxt', tostring(rings))

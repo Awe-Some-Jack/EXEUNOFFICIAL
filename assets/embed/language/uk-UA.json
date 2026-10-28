@@ -162,6 +162,7 @@
 	"sharpy.line.19": "Хм...",
 	"sharpy.line.20": "Е-ей, може, перевіримо її? Ну знаєш... поспіваємо і таке інше... Тільки ти і я-",
 	"sharpy.line.21": "Що?",
+
 	"valley_tutorial_title": "ЯК ВИЖИТИ",
 	"valley_tutorial_move": "РУХ",
 	"valley_tutorial_run": "УТРИМУЙ ДЛЯ БІГУ",
@@ -173,21 +174,25 @@
 	"valley_tutorial_story_3": "У цьому безживному місці шукай коханого, ховаючись від невідомого. Але пам'ятай: $ВОНО$ так просто тебе не відпустить.",
 	"valley_tutorial_story_4": "Шукай #Безпечні Місця# та #Вузькі Проходи#. НЕ дай $йому$ себе знайти.",
 	"valley_tutorial_continue": "НАТИСНИ ENTER, ЩОБ ПРОДОВЖИТИ",
-	"sunky_offer_message": "Sunky помітив, що тобі важко дається ця пісня, і пропонує свою допомогу!\nПрийняти його пропозицію?",
-	"pause_continue": "ПРОДОВЖИТИ",
-	"pause_restart": "ЗАНОВО",
-	"pause_options": "ОПЦІЇ",
-	"pause_exit": "ВИХІД",
+
+	"sunky_offer_message": "Санкі помітив, що тобі важко дається ця пісня, і пропонує свою допомогу!\nПрийняти його пропозицію?",
 	"sunky_offer_yes": "ТАК, БУДЬ ЛАСКА",
 	"sunky_offer_no": "НІ, ДЯКУЮ",
+
+	"pause_continue": "ПРОДОВЖИТИ",
+	"pause_restart": "РЕСТАРТ",
+	"pause_options": "НАЛАШТУВАННЯ",
+	"pause_exit": "ВИХІД",
+	
 	"valley_tutorial_skull": "ОБШУКАЙ ЧЕРЕП",
 	"valley_tutorial_hide": "СХОВАЙСЯ В ТОТЕМІ",
 	"valley_tutorial_unhide": "ВИЙДИ З ТОТЕМА",
-	"valley_skip_cutscene": "НАТИСНИ ПРОБІЛ, ЩОБ ПРОПУСТИТИ СЦЕНУ",
+	"valley_skip_cutscene": "НАТИСНИ ПРОБІЛ, ЩОБ ПРОПУСТИТИ КАТСЦЕНУ",
+
 	"tripletrouble_death_1": "Ти потрапив у пекло, і я не про Мічиган.",
 	"tripletrouble_death_2": "Після всього цього я досить розчарований.",
 	"tripletrouble_death_3": "Ні кілець, ні удачі, а тепер і ні часу.",
-	"tripletrouble_death_t": "Що таке? Tails схопив тебе за хвіст?",
-	"tripletrouble_death_k": "Схоже, ти не впорався з моїми Knuckles. Шкода!",
-	"tripletrouble_death_e": "Я І Є EGGMAN!"
+	"tripletrouble_death_t": "Що таке? Тейлз схопив тебе за хвіст?",
+	"tripletrouble_death_k": "Схоже, ти не впорався з моїм Наклзом. Як шкода!",
+	"tripletrouble_death_e": "Я І Є ЕҐҐМАН!"
 }

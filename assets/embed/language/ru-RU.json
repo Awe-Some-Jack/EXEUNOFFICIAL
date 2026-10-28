@@ -173,21 +173,25 @@
 	"valley_tutorial_story_3": "В этом безжизненном месте ищи любимого, прячась от неизвестного. Но помни: $ОНО$ так просто тебя не отпустит.",
 	"valley_tutorial_story_4": "Ищи #Безопасные Места# и #Узкие Проходы#. НЕ дай $ему$ себя найти.",
 	"valley_tutorial_continue": "НАЖМИ ENTER, ЧТОБЫ ПРОДОЛЖИТЬ",
-	"sunky_offer_message": "Sunky заметил, что тебе тяжело даётся эта песня, и предлагает свою помощь!\nПринять его предложение?",
+
+	"sunky_offer_message": "Санки заметил, что тебе тяжело даётся эта песня, и предлагает свою помощь!\nПринять его предложение?",
+	"sunky_offer_yes": "ДА, ПЖ",
+	"sunky_offer_no": "НЕТ, СПC",
+
 	"pause_continue": "ПРОДОЛЖИТЬ",
-	"pause_restart": "ЗАНОВО",
+	"pause_restart": "РЕСТАРТ",
 	"pause_options": "НАСТРОЙКИ",
 	"pause_exit": "ВЫХОД",
-	"sunky_offer_yes": "ДА, ПОЖАЛУЙСТА",
-	"sunky_offer_no": "НЕТ, СПАСИБО",
+
 	"valley_tutorial_skull": "ОБЫЩИ ЧЕРЕП",
 	"valley_tutorial_hide": "СПРЯЧЬСЯ В ТОТЕМЕ",
 	"valley_tutorial_unhide": "ВЫЙДИ ИЗ ТОТЕМА",
-	"valley_skip_cutscene": "НАЖМИ ПРОБЕЛ, ЧТОБЫ ПРОПУСТИТЬ СЦЕНУ",
+	"valley_skip_cutscene": "НАЖМИ ПРОБЕЛ, ЧТОБЫ ПРОПУСТИТЬ КАТСЦЕНУ",
+
 	"tripletrouble_death_1": "Ты попал в ад, и я говорю не о Мичигане.",
 	"tripletrouble_death_2": "После всего этого я весьма разочарован.",
 	"tripletrouble_death_3": "Ни колец, ни удачи, а теперь и ни времени.",
-	"tripletrouble_death_t": "Что такое? Tails схватил тебя за хвост?",
-	"tripletrouble_death_k": "Похоже, ты не справился с моими Knuckles. Жаль!",
-	"tripletrouble_death_e": "Я И ЕСТЬ EGGMAN!"
+	"tripletrouble_death_t": "Что такое? Тэйлс схватил тебя за хвост?",
+	"tripletrouble_death_k": "Похоже, ты не справился с моим Наклзом. Как жаль!",
+	"tripletrouble_death_e": "Я И ЕСТЬ ЭГГМАН!"
 }

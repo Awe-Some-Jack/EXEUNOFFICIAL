@@ -171,17 +171,21 @@
 	"valley_tutorial_story_3": "En este lugar sin vida, busca a tu ser querido mientras te escondes de lo desconocido. Pero ten cuidado: $ESO$ no te dejará ir tan fácil.",
 	"valley_tutorial_story_4": "Busca #Lugares Seguros# y #Entradas Pequeñas#. NO dejes que $él$ te encuentre.",
 	"valley_tutorial_continue": "PRESIONA ENTER PARA CONTINUAR",
+
 	"sunky_offer_message": "¡Sunky notó que estás teniendo problemas con esta canción, así que te ofrece su ayuda!\n¿Quieres aceptar su oferta?",
+	"sunky_offer_yes": "SÍ, POR FAVOR",
+	"sunky_offer_no": "NO, GRACIAS",
+
 	"pause_continue": "CONTINUAR",
 	"pause_restart": "REINICIAR",
 	"pause_options": "OPCIONES",
 	"pause_exit": "SALIR",
-	"sunky_offer_yes": "SÍ, POR FAVOR",
-	"sunky_offer_no": "NO, GRACIAS",
+
 	"valley_tutorial_skull": "BUSCA EN EL CRÁNEO",
 	"valley_tutorial_hide": "ESCÓNDETE EN EL TÓTEM",
 	"valley_tutorial_unhide": "SAL DEL TÓTEM",
 	"valley_skip_cutscene": "PRESIONA ESPACIO PARA SALTAR LA ESCENA",
+
 	"tripletrouble_death_1": "Entraste al infierno, y no hablo de Michigan.",
 	"tripletrouble_death_2": "Después de todo eso, estoy bastante decepcionado.",
 	"tripletrouble_death_3": "Sin anillos, sin suerte, y ahora sin tiempo.",

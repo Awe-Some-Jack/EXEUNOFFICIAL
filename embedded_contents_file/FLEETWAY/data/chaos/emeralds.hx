@@ -143,15 +143,19 @@ function onUpdate(e:Float)
     if(FlxG.keys.justPressed.C) setVar('canTransform', true);
 }
 
+function emeraldIndex(note:Note):Int
+{
+    var idx = note.extraData.get('emeraldIndex');
+    return idx != null ? idx : collectedEmeralds + missedEmeralds;
+}
+
 function goodNoteHit(note:Note)
 {
-    var curEmeraldIndex:Int = collectedEmeralds + missedEmeralds;
-    if(curEmeraldIndex > 6) return;
-
-    if(note.noteType == 'emerald') 
+    if(note.noteType == 'emerald')
     {
+        var curEmeraldIndex:Int = emeraldIndex(note);
         var curEmerald = emeraldsData[curEmeraldIndex];
-        if(curEmerald == null) return;
+        if(curEmerald == null || !curEmerald.moving || curEmerald.targetRef != masterEmerald) return;
 
         FlxG.sound.play(Paths.sound('emerald'));
         curEmerald.moving = false;
@@ -214,9 +218,7 @@ function onSpawnNote(note:Note)
 
     if(note.noteType == 'emerald') 
     {
-        var curEmeraldIndex:Int = collectedEmeralds + missedEmeralds;
-
-        gradient.color = colorsHex[curEmeraldIndex];
+        gradient.color = colorsHex[emeraldIndex(note)];
         gradient.scale.set(1, 1);
         gradient.x = note.x - 25;
         FlxTween.tween(gradient, {alpha: 0.6, "scale.y": 8}, 1.75);

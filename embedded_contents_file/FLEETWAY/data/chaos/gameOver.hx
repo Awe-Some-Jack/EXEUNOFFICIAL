@@ -5,6 +5,8 @@ import states.substates.PauseSubState;
 import flixel.text.FlxText;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.FlxCamera;
+import psychlua.ExtraFunctions;
+import backend.Language;
 
 var deadBoyfriend:Character;
 var inGameOver:Bool = false;
@@ -72,8 +74,11 @@ function makeSubtitle(daLine:String):Void
 		"12" => "Imagine being in an executable file... Heh.. couldn't be me."
 	];
 
-	subtitle = new FlxText(0, Std.int(FlxG.height * 0.8), Std.int(FlxG.width * 0.75), subtitles.get(daLine));
-	subtitle.setFormat(Paths.font("vcr.ttf"), 25, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+	var subtitleText:String = getSubtitleLine(daLine);
+	if (subtitleText == null || subtitleText.length == 0) subtitleText = subtitles.get(daLine);
+
+	subtitle = new FlxText(0, Std.int(FlxG.height * 0.8), Std.int(FlxG.width * 0.75), subtitleText);
+	subtitle.setFormat(Paths.font(subtitleFont()), 25, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 	subtitle.borderSize = 2;
 	subtitle.camera = gameOverHUD;
 	subtitle.screenCenter(0x01);
@@ -85,6 +90,33 @@ function makeSubtitle(daLine:String):Void
 
 	GameOverSubstate.instance.add(subtitleBG);
 	GameOverSubstate.instance.add(subtitle);
+}
+
+function subtitleLang():String
+{
+	var lang = ClientPrefs.data.language ?? 'auto';
+	if (lang.length == 0) lang = 'auto';
+	if (lang == 'auto') lang = Language.getSystemLanguage();
+	return lang;
+}
+
+function subtitleFont():String
+{
+	var lang = subtitleLang();
+	if (lang == 'ja-JP') return 'japanese.ttf';
+	if (lang == 'zh-CN') return 'chinese.ttf';
+	if (lang == 'ko-KR') return 'korean.ttf';
+	if (lang == 'pl-PL' || lang == 'tr-TR' || lang == 'hu-HU') return 'ari-w9500-bold.ttf';
+	return 'vcr.ttf';
+}
+
+function getSubtitleLine(daLine:String):String
+{
+	var data:Dynamic = ExtraFunctions.getLyricsData('chaos', 'FLEETWAY');
+	if (data == null) return null;
+	var langData:Dynamic = ExtraFunctions.resolveLyricsLangData(data, subtitleLang());
+	if (langData == null) return null;
+	return Reflect.field(langData, "gameover.chaos." + daLine);
 }
 
 var toggleOnce:Bool = false;

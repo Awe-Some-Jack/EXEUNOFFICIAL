@@ -1,0 +1,98 @@
+{
+  "en-US": {
+    "gameover.lordx.1": "Hello.... Old friend.",
+    "gameover.lordx.2": "I am the first, but not the original.",
+    "gameover.lordx.3": "Do you enjoy the promise I made?",
+    "gameover.lordx.4": "Once I have your soul, we will play forever."
+  },
+  "en-PIRATE": {
+    "gameover.lordx.1": "Ahoy.... Old friend.",
+    "gameover.lordx.2": "I be the first, but not the original.",
+    "gameover.lordx.3": "Do ye enjoy the promise I made?",
+    "gameover.lordx.4": "Once I have yer soul, we'll play forevermore."
+  },
+  "es-419": {
+    "gameover.lordx.1": "Hola.... Viejo amigo.",
+    "gameover.lordx.2": "Soy el primero, pero no el original.",
+    "gameover.lordx.3": "¿Disfrutas la promesa que hice?",
+    "gameover.lordx.4": "Una vez que tenga tu alma, jugaremos para siempre."
+  },
+  "pt-BR": {
+    "gameover.lordx.1": "Olá.... Velho amigo.",
+    "gameover.lordx.2": "Eu sou o primeiro, mas não o original.",
+    "gameover.lordx.3": "Está gostando da promessa que eu fiz?",
+    "gameover.lordx.4": "Quando eu tiver sua alma, vamos brincar para sempre."
+  },
+  "fr-FR": {
+    "gameover.lordx.1": "Bonjour.... Vieil ami.",
+    "gameover.lordx.2": "Je suis le premier, mais pas l'original.",
+    "gameover.lordx.3": "Apprécies-tu la promesse que j'ai faite ?",
+    "gameover.lordx.4": "Une fois que j'aurai ton âme, nous jouerons pour toujours."
+  },
+  "de-DE": {
+    "gameover.lordx.1": "Hallo.... Alter Freund.",
+    "gameover.lordx.2": "Ich bin der Erste, aber nicht das Original.",
+    "gameover.lordx.3": "Gefällt dir das Versprechen, das ich gegeben habe?",
+    "gameover.lordx.4": "Sobald ich deine Seele habe, spielen wir für immer."
+  },
+  "it-IT": {
+    "gameover.lordx.1": "Ciao.... Vecchio amico.",
+    "gameover.lordx.2": "Sono il primo, ma non l'originale.",
+    "gameover.lordx.3": "Ti piace la promessa che ho fatto?",
+    "gameover.lordx.4": "Una volta che avrò la tua anima, giocheremo per sempre."
+  },
+  "pl-PL": {
+    "gameover.lordx.1": "Witaj.... Stary przyjacielu.",
+    "gameover.lordx.2": "Jestem pierwszy, ale nie oryginalny.",
+    "gameover.lordx.3": "Podoba ci się obietnica, którą złożyłem?",
+    "gameover.lordx.4": "Kiedy zdobędę twoją duszę, będziemy bawić się wiecznie."
+  },
+  "hu-HU": {
+    "gameover.lordx.1": "Helló.... Régi barátom.",
+    "gameover.lordx.2": "Én vagyok az első, de nem az eredeti.",
+    "gameover.lordx.3": "Élvezed az ígéretet, amit tettem?",
+    "gameover.lordx.4": "Ha megszerzem a lelked, örökké játszani fogunk."
+  },
+  "tr-TR": {
+    "gameover.lordx.1": "Merhaba.... Eski dostum.",
+    "gameover.lordx.2": "Ben ilkim, ama orijinal değilim.",
+    "gameover.lordx.3": "Verdiğim sözden hoşlanıyor musun?",
+    "gameover.lordx.4": "Ruhunu aldığımda, sonsuza dek oynayacağız."
+  },
+  "ru-RU": {
+    "gameover.lordx.1": "Привет.... Старый друг.",
+    "gameover.lordx.2": "Я первый, но не оригинал.",
+    "gameover.lordx.3": "Тебе нравится обещание, которое я дал?",
+    "gameover.lordx.4": "Когда твоя душа станет моей, мы будем играть вечно."
+  },
+  "uk-UA": {
+    "gameover.lordx.1": "Привіт.... Старий друже.",
+    "gameover.lordx.2": "Я перший, але не оригінал.",
+    "gameover.lordx.3": "Тобі подобається обіцянка, яку я дав?",
+    "gameover.lordx.4": "Коли твоя душа стане моєю, ми гратимемо вічно."
+  },
+  "uz-UZ": {
+    "gameover.lordx.1": "Salom.... Eski do'stim.",
+    "gameover.lordx.2": "Men birinchiman, lekin asli emasman.",
+    "gameover.lordx.3": "Bergan va'dam senga yoqyaptimi?",
+    "gameover.lordx.4": "Joningni olganimdan so'ng, abadiy o'ynaymiz."
+  },
+  "ja-JP": {
+    "gameover.lordx.1": "やあ…。古き友よ。",
+    "gameover.lordx.2": "我は最初の者、だが本物ではない。",
+    "gameover.lordx.3": "我が交わした約束を楽しんでいるか？",
+    "gameover.lordx.4": "お前の魂を手に入れたら、永遠に遊ぼう。"
+  },
+  "ko-KR": {
+    "gameover.lordx.1": "안녕…. 오랜 친구여.",
+    "gameover.lordx.2": "나는 최초지만, 원본은 아니다.",
+    "gameover.lordx.3": "내가 한 약속이 마음에 드나?",
+    "gameover.lordx.4": "네 영혼을 손에 넣으면, 우리는 영원히 놀게 될 거다."
+  },
+  "zh-CN": {
+    "gameover.lordx.1": "你好……老朋友。",
+    "gameover.lordx.2": "我是第一个，但不是原版。",
+    "gameover.lordx.3": "你喜欢我许下的承诺吗？",
+    "gameover.lordx.4": "一旦得到你的灵魂，我们就能永远玩下去。"
+  }
+}

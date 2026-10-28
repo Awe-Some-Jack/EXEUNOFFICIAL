@@ -1,0 +1,114 @@
+{
+    "en-US": {
+        "gameover.forestall.1": "I'm not Sonic...",
+        "gameover.forestall.2": "I'm not Sonic...",
+        "gameover.forestall.3": "*laughter*",
+        "gameover.forestall.4": "*laughter*",
+        "gameover.forestall.5": "*laughter*"
+    },
+    "es-419": {
+        "gameover.forestall.1": "No soy Sonic...",
+        "gameover.forestall.2": "No soy Sonic...",
+        "gameover.forestall.3": "*risas*",
+        "gameover.forestall.4": "*risas*",
+        "gameover.forestall.5": "*risas*"
+    },
+    "pt-BR": {
+        "gameover.forestall.1": "Eu não sou o Sonic...",
+        "gameover.forestall.2": "Eu não sou o Sonic...",
+        "gameover.forestall.3": "*risadas*",
+        "gameover.forestall.4": "*risadas*",
+        "gameover.forestall.5": "*risadas*"
+    },
+    "fr-FR": {
+        "gameover.forestall.1": "Je ne suis pas Sonic...",
+        "gameover.forestall.2": "Je ne suis pas Sonic...",
+        "gameover.forestall.3": "*rires*",
+        "gameover.forestall.4": "*rires*",
+        "gameover.forestall.5": "*rires*"
+    },
+    "de-DE": {
+        "gameover.forestall.1": "Ich bin nicht Sonic...",
+        "gameover.forestall.2": "Ich bin nicht Sonic...",
+        "gameover.forestall.3": "*Gelächter*",
+        "gameover.forestall.4": "*Gelächter*",
+        "gameover.forestall.5": "*Gelächter*"
+    },
+    "ru-RU": {
+        "gameover.forestall.1": "Я не Sonic...",
+        "gameover.forestall.2": "Я не Sonic...",
+        "gameover.forestall.3": "*смех*",
+        "gameover.forestall.4": "*смех*",
+        "gameover.forestall.5": "*смех*"
+    },
+    "uk-UA": {
+        "gameover.forestall.1": "Я не Sonic...",
+        "gameover.forestall.2": "Я не Sonic...",
+        "gameover.forestall.3": "*сміх*",
+        "gameover.forestall.4": "*сміх*",
+        "gameover.forestall.5": "*сміх*"
+    },
+    "uz-UZ": {
+        "gameover.forestall.1": "Men Sonic emasman...",
+        "gameover.forestall.2": "Men Sonic emasman...",
+        "gameover.forestall.3": "*kulgi*",
+        "gameover.forestall.4": "*kulgi*",
+        "gameover.forestall.5": "*kulgi*"
+    },
+    "ja-JP": {
+        "gameover.forestall.1": "俺はSonicじゃない…",
+        "gameover.forestall.2": "俺はSonicじゃない…",
+        "gameover.forestall.3": "*笑い声*",
+        "gameover.forestall.4": "*笑い声*",
+        "gameover.forestall.5": "*笑い声*"
+    },
+    "zh-CN": {
+        "gameover.forestall.1": "我不是Sonic……",
+        "gameover.forestall.2": "我不是Sonic……",
+        "gameover.forestall.3": "*笑声*",
+        "gameover.forestall.4": "*笑声*",
+        "gameover.forestall.5": "*笑声*"
+    },
+    "ko-KR": {
+        "gameover.forestall.1": "난 Sonic이 아니야...",
+        "gameover.forestall.2": "난 Sonic이 아니야...",
+        "gameover.forestall.3": "*웃음소리*",
+        "gameover.forestall.4": "*웃음소리*",
+        "gameover.forestall.5": "*웃음소리*"
+    },
+    "it-IT": {
+        "gameover.forestall.1": "Non sono Sonic...",
+        "gameover.forestall.2": "Non sono Sonic...",
+        "gameover.forestall.3": "*risate*",
+        "gameover.forestall.4": "*risate*",
+        "gameover.forestall.5": "*risate*"
+    },
+    "pl-PL": {
+        "gameover.forestall.1": "Nie jestem Sonikiem...",
+        "gameover.forestall.2": "Nie jestem Sonikiem...",
+        "gameover.forestall.3": "*śmiech*",
+        "gameover.forestall.4": "*śmiech*",
+        "gameover.forestall.5": "*śmiech*"
+    },
+    "tr-TR": {
+        "gameover.forestall.1": "Ben Sonic değilim...",
+        "gameover.forestall.2": "Ben Sonic değilim...",
+        "gameover.forestall.3": "*kahkaha*",
+        "gameover.forestall.4": "*kahkaha*",
+        "gameover.forestall.5": "*kahkaha*"
+    },
+    "en-PIRATE": {
+        "gameover.forestall.1": "I ain't Sonic...",
+        "gameover.forestall.2": "I ain't Sonic...",
+        "gameover.forestall.3": "*laughter*",
+        "gameover.forestall.4": "*laughter*",
+        "gameover.forestall.5": "*laughter*"
+    },
+    "hu-HU": {
+        "gameover.forestall.1": "Nem én vagyok Sonic...",
+        "gameover.forestall.2": "Nem én vagyok Sonic...",
+        "gameover.forestall.3": "*nevetés*",
+        "gameover.forestall.4": "*nevetés*",
+        "gameover.forestall.5": "*nevetés*"
+    }
+}

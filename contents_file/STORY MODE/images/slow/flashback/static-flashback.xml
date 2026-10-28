@@ -3,17 +3,17 @@
 <SubTexture name="static-flashback static0000" x="0" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
 <SubTexture name="static-flashback static0001" x="1282" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
 <SubTexture name="static-flashback static0002" x="2564" y="0" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
-<SubTexture name="static-flashback static0003" x="0" y="722" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
-<SubTexture name="static-flashback static0004" x="0" y="2004" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
-<SubTexture name="static-flashback static0005" x="0" y="3286" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
-<SubTexture name="static-flashback static0006" x="722" y="722" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
-<SubTexture name="static-flashback static0007" x="722" y="2004" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
-<SubTexture name="static-flashback static0008" x="1282" y="3286" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="static-flashback static0003" x="0" y="1444" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
+<SubTexture name="static-flashback static0004" x="0" y="2726" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
+<SubTexture name="static-flashback static0005" x="0" y="722" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
+<SubTexture name="static-flashback static0006" x="722" y="1444" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
+<SubTexture name="static-flashback static0007" x="722" y="2726" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
+<SubTexture name="static-flashback static0008" x="1282" y="722" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
 <SubTexture name="static-flashback static0009" x="2564" y="722" width="1280" height="720" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" />
-<SubTexture name="static-flashback static0010" x="1444" y="722" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
-<SubTexture name="static-flashback static0011" x="1444" y="2004" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
+<SubTexture name="static-flashback static0010" x="1444" y="1444" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
+<SubTexture name="static-flashback static0011" x="1444" y="2726" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
 <SubTexture name="static-flashback static0012" x="2166" y="1444" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
-<SubTexture name="static-flashback static0013" x="2564" y="2726" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
+<SubTexture name="static-flashback static0013" x="2166" y="2726" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
 <SubTexture name="static-flashback static0014" x="2888" y="1444" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
-<SubTexture name="static-flashback static0015" x="3286" y="2726" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
+<SubTexture name="static-flashback static0015" x="2888" y="2726" width="720" height="1280" frameX="0" frameY="0" frameWidth="1280" frameHeight="720" rotated="true" />
 </TextureAtlas>

@@ -2,21 +2,21 @@
 <TextureAtlas imagePath="glassbreak.png">
 	<!-- Created with Adobe Animate version 23.0.0.407 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="vidrio instancia 10000" x="1284" y="3009" width="1313" height="735" frameX="-58" frameY="-67" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10001" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10002" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10003" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10004" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10005" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10006" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10007" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10008" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10009" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10010" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10011" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10012" x="1614" y="2168" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10013" x="0" y="2950" width="1282" height="774" frameX="-47" frameY="-51" frameWidth="1520" frameHeight="973"/>
-	<SubTexture name="vidrio instancia 10014" x="0" y="2950" width="1282" height="774" frameX="-47" frameY="-51" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10000" x="1614" y="1577" width="1313" height="735" frameX="-58" frameY="-67" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10001" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10002" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10003" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10004" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10005" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10006" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10007" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10008" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10009" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10010" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10011" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10012" x="0" y="2950" width="1365" height="839" frameX="-6" frameY="0" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10013" x="1367" y="2950" width="1282" height="774" frameX="-47" frameY="-51" frameWidth="1520" frameHeight="973"/>
+	<SubTexture name="vidrio instancia 10014" x="1367" y="2950" width="1282" height="774" frameX="-47" frameY="-51" frameWidth="1520" frameHeight="973"/>
 	<SubTexture name="vidrio instancia 10015" x="0" y="1076" width="1520" height="970" frameX="0" frameY="-3" frameWidth="1520" frameHeight="973"/>
 	<SubTexture name="vidrio instancia 10016" x="0" y="1076" width="1520" height="970" frameX="0" frameY="-3" frameWidth="1520" frameHeight="973"/>
 	<SubTexture name="vidrio instancia 10017" x="0" y="1076" width="1520" height="970" frameX="0" frameY="-3" frameWidth="1520" frameHeight="973"/>
@@ -32,6 +32,6 @@
 	<SubTexture name="vidrio2 instancia 10002" x="1566" y="0" width="980" height="1575" frameX="-121" frameY="-110" frameWidth="1696" frameHeight="1090" rotated="true" />
 	<SubTexture name="vidrio2 instancia 10003" x="0" y="0" width="1564" height="1074" frameX="-72" frameY="0" frameWidth="1696" frameHeight="1090"/>
 	<SubTexture name="vidrio2 instancia 10004" x="0" y="0" width="1564" height="1074" frameX="-72" frameY="0" frameWidth="1696" frameHeight="1090"/>
-	<SubTexture name="vidrio2 instancia 10005" x="1614" y="1577" width="884" height="589" frameX="-161" frameY="-90" frameWidth="1696" frameHeight="1090" rotated="true" />
-	<SubTexture name="vidrio2 instancia 10006" x="1614" y="1577" width="884" height="589" frameX="-161" frameY="-90" frameWidth="1696" frameHeight="1090" rotated="true" />
+	<SubTexture name="vidrio2 instancia 10005" x="1614" y="2314" width="884" height="589" frameX="-161" frameY="-90" frameWidth="1696" frameHeight="1090" rotated="true" />
+	<SubTexture name="vidrio2 instancia 10006" x="1614" y="2314" width="884" height="589" frameX="-161" frameY="-90" frameWidth="1696" frameHeight="1090" rotated="true" />
 </TextureAtlas>

@@ -2,14 +2,14 @@
 <TextureAtlas imagePath="bgomw.png">
 	<!-- Created with Adobe Animate version 23.0.0.407 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="sexo instancia 10000" x="0" y="2160" width="1647" height="1170" frameX="0" frameY="0" frameWidth="1725" frameHeight="1171"/>
-	<SubTexture name="sexo instancia 10001" x="0" y="2160" width="1647" height="1170" frameX="0" frameY="0" frameWidth="1725" frameHeight="1171"/>
-	<SubTexture name="sexo instancia 10002" x="0" y="1062" width="1674" height="1096" frameX="-27" frameY="-16" frameWidth="1725" frameHeight="1171"/>
-	<SubTexture name="sexo instancia 10003" x="0" y="1062" width="1674" height="1096" frameX="-27" frameY="-16" frameWidth="1725" frameHeight="1171"/>
-	<SubTexture name="sexo instancia 10004" x="0" y="0" width="1711" height="1060" frameX="-14" frameY="-39" frameWidth="1725" frameHeight="1171"/>
-	<SubTexture name="sexo instancia 10005" x="0" y="0" width="1711" height="1060" frameX="-14" frameY="-39" frameWidth="1725" frameHeight="1171"/>
-	<SubTexture name="sexo instancia 10006" x="1713" y="0" width="1090" height="1685" frameX="-19" frameY="-24" frameWidth="1725" frameHeight="1171" rotated="true" />
-	<SubTexture name="sexo instancia 10007" x="1713" y="0" width="1090" height="1685" frameX="-19" frameY="-24" frameWidth="1725" frameHeight="1171" rotated="true" />
-	<SubTexture name="sexo instancia 10008" x="1676" y="1687" width="1069" height="1655" frameX="-37" frameY="-26" frameWidth="1725" frameHeight="1171" rotated="true" />
-	<SubTexture name="sexo instancia 10009" x="1676" y="1687" width="1069" height="1655" frameX="-37" frameY="-26" frameWidth="1725" frameHeight="1171" rotated="true" />
+	<SubTexture name="sexo instancia 10000" x="1092" y="0" width="1647" height="1170" frameX="0" frameY="0" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10001" x="1092" y="0" width="1647" height="1170" frameX="0" frameY="0" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10002" x="1092" y="1172" width="1674" height="1096" frameX="-27" frameY="-16" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10003" x="1092" y="1172" width="1674" height="1096" frameX="-27" frameY="-16" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10004" x="1071" y="2270" width="1711" height="1060" frameX="-14" frameY="-39" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10005" x="1071" y="2270" width="1711" height="1060" frameX="-14" frameY="-39" frameWidth="1725" frameHeight="1171"/>
+	<SubTexture name="sexo instancia 10006" x="0" y="0" width="1090" height="1685" frameX="-19" frameY="-24" frameWidth="1725" frameHeight="1171" rotated="true" />
+	<SubTexture name="sexo instancia 10007" x="0" y="0" width="1090" height="1685" frameX="-19" frameY="-24" frameWidth="1725" frameHeight="1171" rotated="true" />
+	<SubTexture name="sexo instancia 10008" x="0" y="1687" width="1069" height="1655" frameX="-37" frameY="-26" frameWidth="1725" frameHeight="1171" rotated="true" />
+	<SubTexture name="sexo instancia 10009" x="0" y="1687" width="1069" height="1655" frameX="-37" frameY="-26" frameWidth="1725" frameHeight="1171" rotated="true" />
 </TextureAtlas>

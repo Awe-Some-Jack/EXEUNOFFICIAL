@@ -2,53 +2,53 @@
 <TextureAtlas imagePath="edcuator_click_me_for_help.png">
 	<!-- Created using the Spritesheet and XML generator -->
 	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
-	<SubTexture name="edcuator click00010000" x="1283" y="290" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00020000" x="1070" y="292" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00030000" x="213" y="294" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00040000" x="857" y="301" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00050000" x="426" y="310" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00060000" x="639" y="325" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00070000" x="425" y="433" width="210" height="127" frameX="-98" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00080000" x="844" y="893" width="209" height="130" frameX="-95" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00090000" x="422" y="886" width="209" height="132" frameX="-92" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00100000" x="1270" y="869" width="209" height="138" frameX="-86" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00110000" x="0" y="866" width="209" height="142" frameX="-81" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00120000" x="633" y="782" width="209" height="147" frameX="-76" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00130000" x="847" y="740" width="209" height="151" frameX="-72" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00140000" x="1059" y="738" width="209" height="154" frameX="-69" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00150000" x="422" y="728" width="209" height="156" frameX="-67" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00160000" x="211" y="736" width="209" height="156" frameX="-67" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00170000" x="636" y="623" width="209" height="157" frameX="-66" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00180000" x="0" y="707" width="209" height="157" frameX="-66" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00190000" x="1059" y="578" width="209" height="158" frameX="-65" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00200000" x="848" y="578" width="209" height="160" frameX="-64" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00210000" x="211" y="573" width="209" height="161" frameX="-64" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00220000" x="425" y="562" width="209" height="164" frameX="-61" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00230000" x="644" y="155" width="211" height="168" frameX="-58" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00240000" x="1075" y="0" width="212" height="165" frameX="-61" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00250000" x="1289" y="0" width="212" height="160" frameX="-66" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00010000" x="857" y="416" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00020000" x="639" y="418" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00030000" x="426" y="446" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00040000" x="213" y="464" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00050000" x="0" y="482" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00060000" x="852" y="539" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00070000" x="639" y="664" width="210" height="127" frameX="-98" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00080000" x="844" y="1131" width="209" height="130" frameX="-95" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00090000" x="0" y="1382" width="209" height="132" frameX="-92" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00100000" x="0" y="1242" width="209" height="138" frameX="-86" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00110000" x="211" y="1240" width="209" height="142" frameX="-81" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00120000" x="422" y="1192" width="209" height="147" frameX="-76" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00130000" x="633" y="1126" width="209" height="151" frameX="-72" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00140000" x="845" y="975" width="209" height="154" frameX="-69" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00150000" x="211" y="1082" width="209" height="156" frameX="-67" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00160000" x="0" y="1084" width="209" height="156" frameX="-67" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00170000" x="847" y="816" width="209" height="157" frameX="-66" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00180000" x="634" y="967" width="209" height="157" frameX="-66" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00190000" x="0" y="924" width="209" height="158" frameX="-65" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00200000" x="211" y="920" width="209" height="160" frameX="-64" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00210000" x="0" y="761" width="209" height="161" frameX="-64" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00220000" x="423" y="867" width="209" height="164" frameX="-61" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00230000" x="0" y="312" width="211" height="168" frameX="-58" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00240000" x="430" y="155" width="212" height="165" frameX="-61" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00250000" x="215" y="156" width="212" height="160" frameX="-66" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
 	<SubTexture name="edcuator click00260000" x="0" y="0" width="213" height="155" frameX="-71" frameY="-14" frameWidth="320" frameHeight="240" rotated="true" />
 	<SubTexture name="edcuator click00270000" x="215" y="0" width="213" height="154" frameX="-72" frameY="-14" frameWidth="320" frameHeight="240" rotated="true" />
 	<SubTexture name="edcuator click00280000" x="430" y="0" width="213" height="153" frameX="-73" frameY="-14" frameWidth="320" frameHeight="240" rotated="true" />
 	<SubTexture name="edcuator click00290000" x="645" y="0" width="213" height="153" frameX="-73" frameY="-14" frameWidth="320" frameHeight="240" rotated="true" />
 	<SubTexture name="edcuator click00300000" x="860" y="0" width="213" height="153" frameX="-73" frameY="-14" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00310000" x="430" y="155" width="212" height="153" frameX="-73" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00320000" x="213" y="417" width="210" height="154" frameX="-72" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00330000" x="1270" y="710" width="209" height="157" frameX="-69" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00340000" x="633" y="931" width="208" height="160" frameX="-66" frameY="-19" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00350000" x="1055" y="894" width="208" height="164" frameX="-62" frameY="-19" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00360000" x="211" y="894" width="208" height="169" frameX="-57" frameY="-19" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00370000" x="637" y="448" width="209" height="173" frameX="-53" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00380000" x="1282" y="536" width="209" height="172" frameX="-54" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00390000" x="0" y="537" width="209" height="168" frameX="-58" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00400000" x="1070" y="415" width="210" height="161" frameX="-65" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00410000" x="852" y="424" width="210" height="152" frameX="-74" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00420000" x="857" y="155" width="211" height="144" frameX="-82" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00430000" x="215" y="156" width="211" height="136" frameX="-89" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00440000" x="0" y="157" width="211" height="131" frameX="-95" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00450000" x="1289" y="162" width="211" height="126" frameX="-99" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00460000" x="1070" y="167" width="211" height="123" frameX="-102" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00470000" x="0" y="290" width="211" height="122" frameX="-103" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00480000" x="1283" y="413" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
-	<SubTexture name="edcuator click00490000" x="0" y="414" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00310000" x="0" y="157" width="212" height="153" frameX="-73" frameY="-15" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00320000" x="0" y="605" width="210" height="154" frameX="-72" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00330000" x="422" y="1033" width="209" height="157" frameX="-69" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00340000" x="422" y="1341" width="208" height="160" frameX="-66" frameY="-19" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00350000" x="633" y="1279" width="208" height="164" frameX="-62" frameY="-19" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00360000" x="844" y="1263" width="208" height="169" frameX="-57" frameY="-19" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00370000" x="425" y="692" width="209" height="173" frameX="-53" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00380000" x="636" y="793" width="209" height="172" frameX="-54" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00390000" x="212" y="750" width="209" height="168" frameX="-58" frameY="-18" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00400000" x="213" y="587" width="210" height="161" frameX="-65" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00410000" x="852" y="662" width="210" height="152" frameX="-74" frameY="-17" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00420000" x="213" y="318" width="211" height="144" frameX="-82" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00430000" x="644" y="155" width="211" height="136" frameX="-89" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00440000" x="857" y="155" width="211" height="131" frameX="-95" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00450000" x="857" y="288" width="211" height="126" frameX="-99" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00460000" x="644" y="293" width="211" height="123" frameX="-102" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00470000" x="426" y="322" width="211" height="122" frameX="-103" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00480000" x="639" y="541" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
+	<SubTexture name="edcuator click00490000" x="426" y="569" width="211" height="121" frameX="-104" frameY="-16" frameWidth="320" frameHeight="240" rotated="true" />
 </TextureAtlas>

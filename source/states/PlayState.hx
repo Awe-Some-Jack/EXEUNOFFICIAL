@@ -265,7 +265,14 @@ class PlayState extends MusicBeatState
 	public static var campaignMisses:SecureInt = 0;
 	public static var seenCutscene:Bool = false;
 	public static var firstPlay:Bool = false;
-	public static var deathCounter:SecureInt = 0;
+	public static var deathCounter(get, set):Int;
+	static var _deathCounter:SecureInt = 0;
+	static function get_deathCounter():Int return _deathCounter.toInt();
+	static function set_deathCounter(value:Int):Int
+	{
+		_deathCounter = value;
+		return value;
+	}
 	public static var sunkyHelp:Bool = false;
 	static var sunkySong:String = null;
 	static var sunkyDeaths:Int = 0;
@@ -981,7 +988,7 @@ class PlayState extends MusicBeatState
 			sunkyAskedAt = sunkyDeaths;
 			sunkyPending = true;
 		}
-		else startCallback();
+		startCallback();
 		RecalculateRating(false, false);
 
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
@@ -2343,19 +2350,29 @@ class PlayState extends MusicBeatState
 	function openSunkyOffer():Void
 	{
 		sunkyPending = false;
+		persistentUpdate = false;
+		if (startTimer != null) startTimer.active = false;
+		final playing = [for (snd in [FlxG.sound.music, vocals, opponentVocals]) if (snd != null && snd.playing) snd];
+		for (snd in playing) snd.pause();
 		openSubState(new states.substates.SunkySubstate(accepted -> {
 			if (accepted)
 			{
 				sunkyHelp = true;
 				cpuControlled = true;
 			}
-			startCallback();
+			persistentUpdate = true;
+			if (startTimer != null) startTimer.active = true;
+			for (snd in playing) snd.resume();
 		}));
 	}
 
 	override public function update(elapsed:Float)
 	{
-		if (sunkyPending && subState == null) openSunkyOffer();
+		if (sunkyPending && subState == null)
+		{
+			openSunkyOffer();
+			return;
+		}
 		syncMobileComboOffset();
 		#if mobile
 		updateSpaceHitbox();
@@ -3019,7 +3036,7 @@ class PlayState extends MusicBeatState
 						' '
 					]
 				];
-				if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = message[_phase][Std.int(Math.min(deathCounter.toInt() - 1, 8))];
+				if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = message[_phase][Std.int(Math.min(deathCounter - 1, 8))];
 				if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = 'Lets try that again, shall we ${dausername}?';
 				#end
 				isDead = true;
@@ -3345,7 +3362,11 @@ class PlayState extends MusicBeatState
 	public function endSong()
 	{
 		// Scripts Anticheat shit uuu ;p
-		if (!Main.DEVELOPMENT_BUILD && !chartingMode && sunkyBot.wasActivated && !sunkyHelp) FlxG.resetState();
+		if (!Main.DEVELOPMENT_BUILD && !chartingMode && sunkyBot.wasActivated && !sunkyHelp)
+		{
+			FlxG.resetState();
+			return false;
+		}
 
 		if(!startingSong)
 		{
@@ -3372,7 +3393,6 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 
 		deathCounter = 0;
-		resetSunkyHelp();
 		seenCutscene = false;
 		firstPlay = false;
 		hasRestarted = false;
@@ -3382,6 +3402,7 @@ class PlayState extends MusicBeatState
 			return true;
 
 		transitioning = true;
+		resetSunkyHelp();
 
 		#if !switch
 		final percent:Float = Math.isNaN(ratingPercent) ? 0 : ratingPercent;
@@ -3422,6 +3443,7 @@ class PlayState extends MusicBeatState
 		if (isStoryMode && states.SoundTest.fromSoundTest && states.SoundTest.enterTheValleyAfterBlackSun && formattedSong == 'black-sun')
 		{
 			states.SoundTest.enterTheValleyAfterBlackSun = false;
+			minigames.thevalley.TheValley.fromFreeplay = false;
 			storyPlaylist = [];
 			isStoryMode = false;
 			FlxG.sound.music?.stop();
@@ -3478,10 +3500,11 @@ class PlayState extends MusicBeatState
 				case "you-cant-run":
 					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 1;
 				case "triple-trouble":
-					FlxG.save.data.goToFinalEscape = true;
+					final closing = StoryModeState.fromTooSlow || !FlxG.save.data.storyModeDone;
+					if (closing) FlxG.save.data.goToFinalEscape = true;
 					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 2;
 					FlxG.save.flush();
-					if (StoryModeState.fromTooSlow || !FlxG.save.data.storyModeDone)
+					if (closing)
 					{	
 						trace("Save Data for Final Escape is: " + FlxG.save.data.goToFinalEscape);
 						
@@ -4424,8 +4447,6 @@ class PlayState extends MusicBeatState
 
 	function handleCommonNote(note:Note):Void
 	{
-		if(note.noAnimation) return;
-
 		var animToPlay:String =
 			singAnimations[Std.int(Math.abs(Math.min(singAnimations.length - 1, note.noteData)))]
 			+ note.animSuffix;
@@ -4439,7 +4460,7 @@ class PlayState extends MusicBeatState
 			animCheck = 'cheer';
 		}
 
-		if(char != null)
+		if(char != null && !note.noAnimation)
 			handleCharacterHit(char, note, animToPlay, animCheck);
 
 		if(!cpuControlled)

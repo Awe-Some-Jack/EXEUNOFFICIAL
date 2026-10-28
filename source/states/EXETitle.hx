@@ -153,9 +153,6 @@ class EXETitle extends MusicBeatState
 				
 				states.StoryModeState.fromStoryMode = true;
 				StoryModeState.fromTooSlow = true;
-				
-				FlxG.save.data.goToFinalEscape = null;
-				FlxG.save.flush();
 
 				LoadingState.loadAndSwitchState(new PlayState(), true);
 				return;

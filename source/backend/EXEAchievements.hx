@@ -50,7 +50,34 @@ class EXEAchievements
     static function get_achievements():Map<String, EXEAchievement>
     {
         if(FlxG.save.data.EXEAchievements == null) init();
+        else if(!_synced) sync();
+        _synced = true;
         return FlxG.save.data.EXEAchievements;
+    }
+
+    static var _synced:Bool = false;
+
+    static function sync():Void
+    {
+        final saved:Map<String, EXEAchievement> = FlxG.save.data.EXEAchievements;
+        final renamed = ['pepe' => 'magosymagas', 'luigikid' => 'exechallenge', 'explotion' => 'mehead'];
+        final rawJson = Paths.getContent('assets/exe/extras/achievements/achievements.json').trim();
+        final parsed:Array<EXEAchievement> = cast tjson.TJSON.parse(rawJson);
+
+        for(achieve in parsed)
+        {
+            var old = saved.get(achieve.id);
+            if(old == null)
+                for(from => to in renamed)
+                    if(to == achieve.id && saved.exists(from)) old = saved.get(from);
+            if(old != null)
+            {
+                achieve.unlocked = old.unlocked;
+                achieve.extra = old.extra;
+            }
+            saved.set(achieve.id, achieve);
+        }
+        for(from in renamed.keys()) saved.remove(from);
     }
 
     public static function init():Void

@@ -59,6 +59,8 @@ class TheValley extends MusicBeatState implements ExeWorld
 {
 	public static inline final MAP_PARTS:Int = 11;
 
+	public static var fromFreeplay:Bool = false;
+
 	var _mapParts:Array<MapPart> = [];
 
 	public var bgCam:FlxCamera;
@@ -82,6 +84,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 	var _gameplayStarted:Bool = false;
 	var _finalCS:minigames.thevalley.cutscenes.FinalCutscene;
+	var _tutorial:minigames.thevalley.cutscenes.Tutorial;
 	var _sunkyGag:minigames.thevalley.cutscenes.SunkyGag;
 
 	var _ambientSound:FlxSound;
@@ -243,7 +246,8 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 		cutscene.onSkullWin = _onShardFound;
 		cutscene.onSkullCS2Done = _onShardFound;
-		cutscene.playIntro();
+		final tutorial = !IntroCutscene.quickStart && FlxG.save.data.tvTutorialSeen != true;
+		if (!tutorial) cutscene.playIntro();
 
 		_ambientSound = FlxG.sound.load(Paths.music("minigame/thevalley/ambient"), 0, true, null, false, true);
 		_breath = new minigames.thevalley.character.monster.Monster.ExeBreath();
@@ -313,6 +317,15 @@ class TheValley extends MusicBeatState implements ExeWorld
 			PlayState.instance = dummyPlayState;
 		}
 
+		if (tutorial)
+		{
+			FlxG.sound.music?.stop();
+			_tutorial = new minigames.thevalley.cutscenes.Tutorial(this, bgCam, uiCam, player, gameCamera);
+			_tutorial.onDone = () -> {
+				_tutorial = null;
+				cutscene.playIntro();
+			};
+		}
 	}
 
 	override public function update(elapsed:Float):Void
@@ -348,6 +361,15 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 		final nape = FlxG.plugins.get(FlxNapeSpace);
 		if (nape != null) nape.active = true;
+
+		if (_tutorial != null)
+		{
+			bg.update(elapsed, player);
+			player.updateAnim(elapsed);
+			player.handleInput(elapsed, 146.0, 134.0);
+			_tutorial.update(elapsed);
+			return;
+		}
 
 		FlxG.sound.music?.play();
 
@@ -772,7 +794,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 			final dy = player.y + player.height * 0.5 - (e.y + e.height * 0.5);
 			if (dx * dx + dy * dy > 90 * 90) continue;
 			egg.found = true;
-			final id = egg.type == "pepeelmago" ? "pepe" : egg.type;
+			final id = egg.type == "pepeelmago" ? "magosymagas" : "exechallenge";
 			if (backend.EXEAchievements.isUnlocked(id)) continue;
 			backend.EXEAchievements.unlock(id);
 			backend.EXEAchievements.save();
@@ -893,10 +915,14 @@ class TheValley extends MusicBeatState implements ExeWorld
 		}
 	}
 
-	function _onExeSpotted(x:Float, y:Float):Bool
+	function _onExeSpotted(m:Monster):Bool
 	{
 		if (_deathPhase != 0 || _finalTriggered || player.cinematic) return false;
-		_scream.scream(x < bgCam.viewX + bgCam.viewWidth * 0.5 ? -1 : 1, (y - bgCam.viewY) * bgCam.zoom);
+		_scream.source = () -> {
+			final p = m.mouth();
+			return { x: (p.x - bgCam.viewX) * bgCam.zoom, y: (p.y - bgCam.viewY) * bgCam.zoom };
+		};
+		_scream.scream(m.body.position.x < player.x + player.width * 0.5 ? -1 : 1, (m.body.position.y - bgCam.viewY) * bgCam.zoom);
 		gameCamera.shake(0.0025, 3.2);
 		return true;
 	}
@@ -1198,12 +1224,13 @@ class TheValley extends MusicBeatState implements ExeWorld
 		_chase.stop();
 		_windSound?.fadeOut(1.0, 0.0);
 
+		_saveScore();
 		_finalCS = new minigames.thevalley.cutscenes.FinalCutscene(this);
 		_finalCS.onDone = _finishFinalCutscene;
 		_setTitle(false);
 	}
 
-	function _finishFinalCutscene():Void
+	function _exeNormalDiff():Int
 	{
 		Mods.currentModDirectory = "EXE";
 		WeekData.reloadWeekFiles(false);
@@ -1211,7 +1238,30 @@ class TheValley extends MusicBeatState implements ExeWorld
 		Difficulty.loadFromWeek();
 
 		final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
-		final launchDiff = (normalIdx > -1) ? normalIdx : 0;
+		return (normalIdx > -1) ? normalIdx : 0;
+	}
+
+	function _saveScore():Void
+	{
+		final diff = _exeNormalDiff();
+		final previous = Highscore.getScore('the-valley', diff);
+		Highscore.saveScore('the-valley', hud.score, diff);
+		if (hud.score >= previous)
+			backend.GameJoltManager.submitSongScore('the-valley', hud.score, ok -> if (ok) backend.GameJoltManager.submitTotalScore());
+	}
+
+	function _finishFinalCutscene():Void
+	{
+		if (fromFreeplay)
+		{
+			fromFreeplay = false;
+			Mods.loadTopMod();
+			FlxG.sound.music?.stop();
+			FlxG.switchState(() -> new states.EXEFreeplay());
+			return;
+		}
+
+		final launchDiff = _exeNormalDiff();
 
 		try
 		{

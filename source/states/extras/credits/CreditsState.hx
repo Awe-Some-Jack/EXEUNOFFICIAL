@@ -587,7 +587,7 @@ private class CreditPopup extends MusicBeatSubstate
 			explosion.alpha = 1; explosion.animation.play('idle');
 			userIcon.alpha = 0; FlxG.sound.play(Paths.sound('explosion'));
 
-			backend.EXEAchievements.unlock('explotion');
+			backend.EXEAchievements.unlock('mehead');
 			backend.EXEAchievements.save();
 		}
 	}

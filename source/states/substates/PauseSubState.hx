@@ -10,6 +10,8 @@ import states.substates.PauseSubState;
 import backend.EXEAchievements;
 
 import openfl.utils.Assets;
+import openfl.display.BitmapData;
+import openfl.geom.Point;
 
 class PauseSubState extends MusicBeatSubstate
 {
@@ -186,9 +188,14 @@ class PauseSubState extends MusicBeatSubstate
 		final itemX:Float       = cameraWidth - 241;
 		for (i in 0...selectionButtons.length)
 		{
-			var menuItem:FlxSprite = new FlxSprite(itemX, itemHeight * (i + 1) + itemSpacing * (i + 1) - 40)
-				.loadGraphic(Paths.getBitmapData('assets/exe/pause/${selectionButtons[i]}.webp'));
-			menuItem.scale.set(3, 3);
+			final key = selectionButtons[i];
+			final label = Language.getPhrase('pause_$key', key.toUpperCase());
+			final pixel = !Language.isCJK() || Language.getFontForLanguage() != 'chinese.ttf';
+			var menuItem:FlxSprite = new FlxSprite(itemX, itemHeight * (i + 1) + itemSpacing * (i + 1) - 40);
+			if (label == key.toUpperCase()) menuItem.loadGraphic(Paths.getBitmapData('assets/exe/pause/$key.webp'));
+			else menuItem.loadGraphic(labelBitmap(label, pixel), false, 0, 0, true);
+			final size = pixel ? 3 : 1;
+			menuItem.scale.set(Math.min(size, (cameraWidth - itemX - 8) / menuItem.frameWidth), size);
 			menuItem.updateHitbox();
 			menuItem.antialiasing = false;
 			menuItem.alpha = 0;
@@ -308,6 +315,32 @@ class PauseSubState extends MusicBeatSubstate
 		FlxTween.tween(selBar, {x: (cameraWidth - (selBar.width - 56))}, 0.1);
 
 		FlxG.sound.play(Paths.sound('changeCD'), 0.5);
+	}
+
+	static function labelBitmap(label:String, pixel:Bool):BitmapData
+	{
+		final text = new FlxText(0, 0, 0, label, pixel ? (Language.isCJK() ? 14 : 16) : 36);
+		text.font = Paths.font(Language.isCJK() ? Language.getFontForLanguage() : 'SonicFont.ttf');
+		text.drawFrame(true);
+		final src = text.pixels;
+		final shadow = pixel ? 1 : 3;
+		final out = new BitmapData(src.width + shadow, src.height + shadow, true, 0);
+		for (pass in 0...2)
+			for (y in 0...src.height)
+				for (x in 0...src.width)
+				{
+					if ((src.getPixel32(x, y) >>> 24) < 100) continue;
+					final off = pass == 0 ? shadow : 0;
+					out.setPixel32(x + off, y + off, pass == 0 ? 0xFFB3B2DE : 0xFFF8FDF9);
+				}
+		text.destroy();
+
+		final bounds = out.getColorBoundsRect(0xFF000000, 0, false);
+		if (bounds.width < 1 || bounds.height < 1) return out;
+		final trimmed = new BitmapData(Std.int(bounds.width), Std.int(bounds.height), true, 0);
+		trimmed.copyPixels(out, bounds, new Point());
+		out.dispose();
+		return trimmed;
 	}
 
 	override function destroy()

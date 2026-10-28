@@ -44,7 +44,7 @@ using minigames.thevalley.libs.ai.behavior.BlackboardTools;
 
 enum MonsterAnim
 {
-	Idle; Walk; Run; Brake; Charge; Takeoff; AirFalling; Landing; Searching; GivingUp; Faker; Transform;
+	Idle; Walk; Run; Brake; Charge; Takeoff; AirFalling; Landing; Searching; GivingUp; Faker; Transform; Scream; TurnHead;
 }
 
 enum MonsterMood
@@ -140,7 +140,7 @@ class Monster implements NavAgent
 	var _ambushTime:Float = 5.0;
 
 	public var onLostYou:(hidden:Bool, closest:Float) -> Void = null;
-	public var onSpotted:(x:Float, y:Float) -> Bool = null;
+	public var onSpotted:Monster -> Bool = null;
 	var _screamTime:Float = -999;
 	var _screamHold:Float = 0;
 	var _locked:Bool = false;
@@ -161,6 +161,10 @@ class Monster implements NavAgent
 	var _leaveAmbush:Bool = false;
 
 	var _graceTimer:Float = 0;
+	var _comeBackRetry:Float = 0;
+	var _goneX:Float = 0;
+	var _goneY:Float = 0;
+	var _feint:Bool = false;
 	var _ambushTimer:Float = 0;
 	var _directorTimer:Float = 0;
 	var _directorChance:Float = 0;
@@ -198,7 +202,7 @@ class Monster implements NavAgent
 		sprite.frames = Paths.getSparrowAtlas("minigame/thevalley/characters/exe/exe");
 
 		final walk = _seq("walk", [0, 2, 4, 6, 8, 10, 12, 14]);
-		sprite.animation.add("Idle",       _seq("idle", [0]), 1, true);
+		sprite.animation.add("Idle",       _seq("breathing", [0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6]), 5, true);
 		sprite.animation.add("Walk",       walk, Std.int(8.0), true);
 		sprite.animation.add("Run",        _seq("run", [0, 1, 2, 3, 4, 5]), Std.int(16.0), true);
 		sprite.animation.add("Brake",      _seq("brake", [0, 1, 0, 1, 6, 7]), 22, false);
@@ -213,6 +217,8 @@ class Monster implements NavAgent
 		sprite.animation.add("GivingUp",   walk, 4, true);
 		sprite.animation.add("Faker",      _seq("faker", [0]), 1, true);
 		sprite.animation.add("Transform",  _seq("transform", [0, 1, 2, 3, 4, 5, 6]), 7, false);
+		sprite.animation.add("Scream",     _seq("scream", [0, 1].concat([for (_ in 0...31) 2]).concat([3])), 10, false);
+		sprite.animation.add("TurnHead",   _seq("turnhead", [0, 1, 2, 3].concat([for (_ in 0...10) 4]).concat([5, 5, 6, 7, 8, 9]).concat([for (_ in 0...10) 10]).concat([11, 12])), 10, false);
 
 		sprite.animation.play("Idle");
 
@@ -335,6 +341,7 @@ class Monster implements NavAgent
 	{
 		mood = Dormant;
 		final dt = _dt();
+		if (_comeBackRetry > 0) _comeBackRetry -= dt;
 
 		if (_graceTimer > 0)
 		{
@@ -349,22 +356,16 @@ class Monster implements NavAgent
 		if (_ambushTimer > 0)
 		{
 			_ambushTimer -= dt;
-			if (!hidden && _dist(_ambushX, _ambushY, _playerFeetX(), _playerFeetY()) <= 420.0)
-			{
-				_comeBack(true);
+			if (!hidden && _dist(_ambushX, _ambushY, _playerFeetX(), _playerFeetY()) <= 420.0 && _comeBack(true))
 				return SUCCESS;
-			}
 			if (_ambushTimer <= 0) _relocate();
 			return RUNNING;
 		}
 
 		if (_player.cinematic) return RUNNING;
 
-		if (!hidden && _heard)
-		{
-			_comeBack(true);
+		if (!hidden && _heard && _comeBack(true))
 			return SUCCESS;
-		}
 
 		_directorTimer += dt;
 		if (!fakerSpent)
@@ -381,26 +382,29 @@ class Monster implements NavAgent
 			return RUNNING;
 		}
 
-		if (!hidden && _directorTimer >= _returnDelay)
-		{
-			_comeBack(false);
+		if (!hidden && _directorTimer >= _returnDelay && _comeBack(false))
 			return SUCCESS;
-		}
 		return RUNNING;
 	}
 
 	var _returnDelay:Float = 12.0;
 
-	function _comeBack(heardHer:Bool):Void
+	function _comeBack(heardHer:Bool):Bool
 	{
-		if (!_offScreen(body.position.x, _feetY()) || _distToPlayer() < 700.0 * 0.8) _relocate();
+		if (_comeBackRetry > 0) return false;
+		if (!_relocate())
+		{
+			_comeBackRetry = 0.5;
+			return false;
+		}
 		_wake(false);
 		if (heardHer) _setLead(_playerFeetX(), _playerFeetY());
+		return true;
 	}
 
-	inline function _relocate():Void
+	inline function _relocate():Bool
 	{
-		_teleportNear(_playerFeetX(), _playerFeetY(), 700.0, 1100.0, true);
+		return _teleportNear(_playerFeetX(), _playerFeetY(), 700.0, 1100.0, true);
 	}
 
 	function _aimAtPlayer():NODE_STATUS
@@ -492,6 +496,7 @@ class Monster implements NavAgent
 			_suspectTotem = null;
 			_searchTimer = 0;
 			_startLeaving(true);
+			_feint = true;
 			return SUCCESS;
 		}
 		return RUNNING;
@@ -522,6 +527,7 @@ class Monster implements NavAgent
 		_darkUses.set(_edgeZone, uses);
 		_ambushTime = 5.0 * Math.min(2.0, 1 + 0.5 * (uses - 1));
 		_startLeaving(true);
+		_feint = true;
 		return SUCCESS;
 	}
 
@@ -591,6 +597,27 @@ class Monster implements NavAgent
 	{
 		if (!_leaving) _startLeaving(false);
 		mood = Leaving;
+
+		if (_feint)
+		{
+			_pose = TurnHead;
+			_setDir(_leaveDir);
+			if (!_playerHidden())
+			{
+				_feint = false;
+				_leaving = false;
+				_locked = true;
+				_lastSeenTime = _time;
+				_lastKnownX = _playerFeetX();
+				_lastKnownY = _playerFeetY();
+				_lastKnownVx = _player.body.velocity.x;
+				return SUCCESS;
+			}
+			final cur = sprite.animation.curAnim;
+			if (cur != null && cur.name == "TurnHead" && cur.finished) _feint = false;
+			return RUNNING;
+		}
+
 		_pose = GivingUp;
 
 		_leaveTimer += _dt();
@@ -768,7 +795,7 @@ class Monster implements NavAgent
 
 		if (hidden) _locked = false;
 		final hunting = _isHunting();
-		if (hunting && !_wasHunting && _canSee && _fakerPhase == 0 && _time - _screamTime >= 8.0 && FlxG.random.bool(45) && onSpotted != null && onSpotted(body.position.x, body.position.y))
+		if (hunting && !_wasHunting && _canSee && _fakerPhase == 0 && _time - _screamTime >= 8.0 && FlxG.random.bool(45) && onSpotted != null && onSpotted(this))
 		{
 			_screamTime = _time;
 			_screamHold = 3.4;
@@ -836,6 +863,7 @@ class Monster implements NavAgent
 
 	function _startLeaving(ambush:Bool):Void
 	{
+		_feint = false;
 		_leaveSpeed = 40.0;
 		_leaving = true;
 		_leaveTimer = 0;
@@ -849,6 +877,10 @@ class Monster implements NavAgent
 			onLostYou(_playerHidden(), _huntClosest);
 		forgetHunt();
 
+		_goneX = body.position.x;
+		_goneY = _feetY();
+		_graceTimer = Math.max(_graceTimer, 5.0);
+		_feint = false;
 		_dormant = true;
 		_trickTotem = null;
 		_lurking = false;
@@ -1019,7 +1051,7 @@ class Monster implements NavAgent
 		if (_fakerPhase == 1)
 		{
 			_pose = Faker;
-			final ready = !_playerHidden() && _player.isGrounded && !_player.cinematic && _world.exeCanKill();
+			final ready = !_playerHidden() && !_player.cinematic && _world.exeCanKill();
 			final close = _distToPlayer() <= 470.0 && Math.abs(_feetY() - _playerFeetY()) <= 160.0;
 			if (ready && (close || _inView(0)))
 			{
@@ -1087,6 +1119,7 @@ class Monster implements NavAgent
 				final n = graph.nodes[i];
 				final d = _dist(n.x, n.y, px, py);
 				if (d < ring[0] || d > ring[1]) continue;
+				if (_dormant && _dist(n.x, n.y, _goneX, _goneY) < 450.0) continue;
 				final hidden = _offScreen(n.x, n.y);
 				if (canReach.exists(i) && graph.walkDegree(i) >= 2) (hidden ? good : onScreen).push(n);
 				else if (hidden) unreachable.push(n);
@@ -1379,7 +1412,7 @@ class Monster implements NavAgent
 			_screamHold -= elapsed;
 			body.velocity.x = 0;
 			_face(_playerFeetX());
-			if (isGrounded) _playAnim(Idle);
+			if (isGrounded) _playAnim(Scream);
 			_finishFrame(elapsed);
 			return;
 		}
@@ -2105,14 +2138,7 @@ class Monster implements NavAgent
 			for (p in _dust) if (p.life <= 0) { d = p; break; }
 			if (d == null)
 			{
-				static var _dustGraphic:FlxGraphic = null;
-
-				if (_dustGraphic == null) 
-				{
-					_dustGraphic = FlxG.bitmap.create(3, 3, 0xFFB4ACC0, true, "valley_dust_particle");
-					_dustGraphic.persist = true;
-				}
-				final spr = new FlxSprite().loadGraphic(_dustGraphic);
+				final spr = new FlxSprite().makeGraphic(3, 3, 0xFFB4ACC0, false, "valley_dust_particle");
 				spr.active = false;
 
 				final at = _layer.members.indexOf(sprite);
@@ -2146,6 +2172,12 @@ class Monster implements NavAgent
 	}
 
 	inline function _feetY():Float return body.position.y + 92.0 * 0.5;
+
+	public function mouth():{ x:Float, y:Float }
+	{
+		final mx = sprite.flipX ? sprite.frameWidth - 88 : 88;
+		return { x: sprite.x - sprite.offset.x + mx, y: sprite.y - sprite.offset.y + 27 };
+	}
 
 	inline function _playerFeetX():Float return _player.x + _player.width * 0.5;
 

@@ -187,6 +187,9 @@ class EXEMenu extends MusicBeatState
 		{
 			menuOptions[0].shader = colorSwap.shader;
 			menuTexts[0].color = 0xFFACACAC;
+		}
+		if (extrasLocked())
+		{
 			menuOptions[3].shader = colorSwap.shader;
 			menuTexts[3].color = 0xFFACACAC;
 		}
@@ -410,6 +413,9 @@ class EXEMenu extends MusicBeatState
 		}
 	}
 
+	inline function extrasLocked():Bool
+		return FlxG.save.data.storyModeDone != true && !inDevMode;
+
 	function changeSelection(dir:Int, up:Bool, sound:Bool = true):Void
 	{
 		isMovingUpward = up;
@@ -424,7 +430,7 @@ class EXEMenu extends MusicBeatState
 
 	function startBlink():Void
 	{
-		if (unlocked.length < 5 && (selectedOptionIndex == 0 || selectedOptionIndex == 3))
+		if ((unlocked.length < 5 && selectedOptionIndex == 0) || (selectedOptionIndex == 3 && extrasLocked()))
 		{
 			if (soundHold > 0.5)
 			{

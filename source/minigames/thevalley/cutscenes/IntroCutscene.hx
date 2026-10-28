@@ -101,8 +101,9 @@ class IntroCutscene
 		_flash = _screen(state, uiCam, FlxColor.WHITE);
 		_flash.alpha = 0;
 
-		_skipText = new FlxText(0, FlxG.height - 44, FlxG.width - 24, "PRESS SPACE TO SKIP CUTSCENE", 20);
-		_skipText.font = "assets/fonts/SonicFont.ttf";
+		_skipText = new FlxText(0, FlxG.height - 44, FlxG.width - 24, Language.getPhrase("valley_skip_cutscene", "PRESS SPACE TO SKIP CUTSCENE"), 20);
+		final skipFont = Language.getPhrase("valley_subtitle_font", "");
+		_skipText.font = skipFont.length > 0 ? Paths.font(skipFont) : "assets/fonts/SonicFont.ttf";
 		_skipText.alignment = FlxTextAlign.RIGHT;
 		_skipText.setBorderStyle(FlxTextBorderStyle.SHADOW, FlxColor.BLACK, 2);
 		_skipText.alpha = 0;

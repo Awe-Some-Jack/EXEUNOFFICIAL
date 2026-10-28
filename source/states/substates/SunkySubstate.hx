@@ -32,6 +32,7 @@ class SunkySubstate extends MusicBeatSubstate
 	var _title:FlxSprite;
 	var _subtitle:FlxSprite;
 	var _message:FlxSprite;
+	var _messageText:FlxText;
 	var _shadow:FlxSprite;
 	var _shadowTween:FlxTween;
 	var _shadowShift:Float = 0;
@@ -116,6 +117,11 @@ class SunkySubstate extends MusicBeatSubstate
 		_message.setGraphicSize(Std.int(508 * _k));
 		_message.updateHitbox();
 		_message.setPosition(-_message.width - 20, _oy + 128 * _k);
+
+		_messageText = place(new FlxText(0, 0, _message.width * 0.72, Language.getPhrase('sunky_offer_message',
+			"Sunky has noticed that you're having a hard time with this song, so he's offering to help you!\nDo you want to accept his offer?")));
+		_messageText.setFormat(Language.isCJK() ? Paths.font(Language.getFontForLanguage()) : Paths.font('UbuntuSans.ttf'), Std.int(32 * _k), FlxColor.BLACK, CENTER);
+		while (_messageText.height > _message.height * 0.62 && _messageText.size > 12) _messageText.size -= 2;
 
 		_shadow = place(new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/mainmenu/options/shadow.webp')));
 		_shadow.scale.set(0.18 * _k, 0.18 * _k);
@@ -256,6 +262,7 @@ class SunkySubstate extends MusicBeatSubstate
 			final label = _labels[i];
 			label.setPosition(box.x + (box.width - label.width) * 0.5 - 4 * _k, box.y + (box.height - label.height) * 0.5 + 2 * _k);
 		}
+		_messageText.setPosition(_message.x + (_message.width - _messageText.width) * 0.5, _message.y + (_message.height - _messageText.height) * 0.5);
 		final picked = _boxes[_selected];
 		_shadow.setPosition(picked.x + FlxMath.lerp(22, 89, _shadowShift) * 0.2 * _k, picked.y + FlxMath.lerp(50, 72, _shadowShift) * 0.2 * _k);
 

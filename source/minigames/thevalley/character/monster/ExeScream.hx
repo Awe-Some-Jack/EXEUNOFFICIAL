@@ -13,6 +13,7 @@ import openfl.display.BlendMode;
 class ExeScream
 {
 	public var target:Void->{ x:Float, y:Float };
+	public var source:Void->{ x:Float, y:Float };
 
 	final _cam:FlxCamera;
 	final _shade:FlxSprite;
@@ -99,9 +100,11 @@ class ExeScream
 		final gap = 42.0;
 		final amp = 8 + 22 * env;
 		final tgt = target != null ? target() : { x: FlxG.width * 0.5, y: _rowY };
-		final ex = _side < 0 ? 60.0 : FlxG.width - 60.0;
+		final src = source != null ? source() : { x: _side < 0 ? 60.0 : FlxG.width - 60.0, y: _rowY };
+		final ex = Math.max(30.0, Math.min(FlxG.width - 30.0, src.x));
+		final ey = Math.max(60.0, Math.min(FlxG.height - 60.0, src.y));
 		final midX = ex + (tgt.x - ex) * 0.5;
-		final len = Math.max(200.0, Math.sqrt((tgt.x - ex) * (tgt.x - ex) + (tgt.y - _rowY) * (tgt.y - _rowY)));
+		final len = Math.max(200.0, Math.sqrt((tgt.x - ex) * (tgt.x - ex) + (tgt.y - ey) * (tgt.y - ey)));
 		var alive = false;
 		for (i in 0..._letters.length)
 		{
@@ -120,9 +123,9 @@ class ExeScream
 
 			final iu = 1 - u;
 			final px = iu * iu * ex + 2 * iu * u * midX + u * u * tgt.x;
-			final py = iu * iu * _rowY + 2 * iu * u * _rowY + u * u * tgt.y;
+			final py = iu * iu * ey + 2 * iu * u * ey + u * u * tgt.y;
 			final tx = 2 * iu * (midX - ex) + 2 * u * (tgt.x - midX);
-			final ty = 2 * u * (tgt.y - _rowY);
+			final ty = 2 * u * (tgt.y - ey);
 			final tl = Math.max(1, Math.sqrt(tx * tx + ty * ty));
 
 			final pop = FlxEase.backOut(Math.min(1, l.age / 0.15));

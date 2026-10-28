@@ -6,6 +6,7 @@ import flixel.text.FlxText;
 import flixel.text.FlxText.FlxTextBorderStyle;
 import flixel.FlxCamera;
 import backend.EXEAchievements;
+import backend.Language;
 
 var deadBoyfriend:Character;
 var inGameOver:Bool = false;
@@ -100,8 +101,8 @@ function makeSubtitle(daLine:String):Void
 		"e" => "I AM THE EGGMAN!"
 	];
 
-	subtitle = new FlxText(0, Std.int(FlxG.height * 0.8), Std.int(FlxG.width * 0.75), subtitles.get(daLine));
-	subtitle.setFormat(Paths.font("vcr.ttf"), 25, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+	subtitle = new FlxText(0, Std.int(FlxG.height * 0.8), Std.int(FlxG.width * 0.75), Language.getPhrase('tripletrouble_death_' + daLine, subtitles.get(daLine)));
+	subtitle.setFormat(Paths.font(Language.getPhrase('tripletrouble_death_font', 'vcr.ttf')), 25, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
 	subtitle.borderSize = 2;
 	subtitle.camera = gameOverHUD;
 	subtitle.screenCenter(0x01);

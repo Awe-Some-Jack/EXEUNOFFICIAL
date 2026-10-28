@@ -90,6 +90,12 @@ class GameOver
 		_timer += elapsed;
 		final songTime = _song != null && _song.playing ? _song.time / 1000.0 : 0.0;
 
+		if ((_phase == Titles || _phase == Falling || _phase == Body) && _timer >= 1.0 && Controls.instance.ACCEPT)
+		{
+			_retry();
+			return;
+		}
+
 		switch (_phase)
 		{
 			case Titles:
@@ -103,7 +109,7 @@ class GameOver
 				final t = Math.min(1, _timer / 1.8);
 				_fakerback.alpha = t * t * (3 - 2 * t);
 				_jitter(0);
-				if (songTime >= 21.0) _startCountdown();
+				if (songTime >= 17.0) _startCountdown();
 
 			case Body:
 				_wiggle.update(elapsed);
@@ -114,29 +120,29 @@ class GameOver
 					_game.x = _lerp(FlxG.width, _gameX, _cubicOut(Math.min(1, t / 1.8)));
 					_over.x = _lerp(FlxG.width, _overX, _cubicOut(Math.min(1, t / 2.6)));
 				}
-				if (songTime >= 21.0) _startCountdown();
+				if (songTime >= 17.0) _startCountdown();
 
 			case Countdown:
 				_updateCountdown(elapsed);
 
 			case Dark:
 				if (_breath != null) _breath.volume = Math.min(0.9, _timer / 0.5 * 0.9);
-				if (_timer >= 4.0) _jumpscare();
+				if (_timer >= 2.0) _jumpscare();
 
 			case Silence:
-				if (_timer >= 3.5) _jumpscare();
+				if (_timer >= 1.5) _jumpscare();
 
 			case Jumpscare:
 				if (_scare.animation.finished) _setPhase(AfterScare);
 
 			case AfterScare:
-				if (_timer < 2.0) return;
+				if (_timer < 1.0) return;
 				_scare.visible = false;
 				if (_byExe && _scares == 1) _showBody();
 				else _setPhase(End);
 
 			case End:
-				if (_timer >= 1.5)
+				if (_timer >= 0.6)
 				{
 					_setPhase(Idle);
 					if (onQuit != null) onQuit();
@@ -174,7 +180,7 @@ class GameOver
 		_over.setPosition(FlxG.width, top + _game.height + gap);
 
 		_makeCountdown();
-		_playSong();
+		_playSong(8.0);
 		_setPhase(Titles);
 	}
 
@@ -214,7 +220,7 @@ class GameOver
 		_wiggle.waveAmplitude = 0.006;
 		_ui.filters = [new ShaderFilter(_wiggle.shader)];
 
-		_playSong();
+		_playSong(13.0);
 		_setPhase(Body);
 	}
 
@@ -254,11 +260,7 @@ class GameOver
 
 		if (Controls.instance.ACCEPT)
 		{
-			_black.alpha = 0;
-			_black.visible = true;
-			_state.remove(_black, true);
-			_state.add(_black);
-			_setPhase(Continue);
+			_retry();
 			return;
 		}
 
@@ -275,6 +277,15 @@ class GameOver
 			_clearScreen();
 			_setPhase(Silence);
 		}
+	}
+
+	function _retry():Void
+	{
+		_black.alpha = 0;
+		_black.visible = true;
+		_state.remove(_black, true);
+		_state.add(_black);
+		_setPhase(Continue);
 	}
 
 	function _jumpscare():Void
@@ -344,10 +355,11 @@ class GameOver
 		_count.visible = false;
 	}
 
-	function _playSong():Void
+	function _playSong(from:Float):Void
 	{
 		if (_song != null) _song.stop();
 		_song = FlxG.sound.play(Paths.sound("minigame/thevalley/oversong"), 1.0, false, null, false);
+		_song.time = from * 1000;
 	}
 
 	function _add<T:FlxSprite>(spr:T, scale:Float = 1.0):T

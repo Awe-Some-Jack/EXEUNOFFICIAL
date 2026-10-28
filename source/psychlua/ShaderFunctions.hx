@@ -103,7 +103,7 @@ class ShaderFunctions
 		LuaUtilsHx.addFunction(lua, 'setShaderSampler2D', function(obj:String, prop:String, bitmapdataPath:String) {
 			#if (!flash && MODS_ALLOWED && sys)
 			var shader = getShader(obj);
-			if (shader == null) { FunkinLua.luaTrace('setShaderSampler2D: Shader is not FlxRuntimeShader!', false, false, FlxColor.RED); return false; }
+			if (shader == null) { if (ClientPrefs.data.shaders) FunkinLua.luaTrace('setShaderSampler2D: Shader is not FlxRuntimeShader!', false, false, FlxColor.RED); return false; }
 			var value = Paths.image(bitmapdataPath);
 			if (value != null && value.bitmap != null) { shader.setSampler2D(prop, value.bitmap); return true; }
 			return false;
@@ -138,7 +138,7 @@ class ShaderFunctions
 	{
 		LuaUtilsHx.addFunction(lua, name, function(obj:String, prop:String) {
 			var shader = getShader(obj);
-			if (shader == null) { FunkinLua.luaTrace('$name: Shader is not FlxRuntimeShader!', false, false, FlxColor.RED); return null; }
+			if (shader == null) { if (ClientPrefs.data.shaders) FunkinLua.luaTrace('$name: Shader is not FlxRuntimeShader!', false, false, FlxColor.RED); return null; }
 			return fn(shader, prop);
 		});
 	}
@@ -147,7 +147,7 @@ class ShaderFunctions
 	{
 		LuaUtilsHx.addFunction(lua, name, function(obj:String, prop:String, value:Dynamic) {
 			var shader = getShader(obj);
-			if (shader == null) { FunkinLua.luaTrace('$name: Shader is not FlxRuntimeShader!', false, false, FlxColor.RED); return false; }
+			if (shader == null) { if (ClientPrefs.data.shaders) FunkinLua.luaTrace('$name: Shader is not FlxRuntimeShader!', false, false, FlxColor.RED); return false; }
 			fn(shader, prop, value);
 			return true;
 		});

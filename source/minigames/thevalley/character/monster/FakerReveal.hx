@@ -9,6 +9,7 @@ import flixel.util.FlxColor;
 
 import minigames.Camera;
 import minigames.thevalley.character.player.Player;
+import minigames.thevalley.character.player.Player.PlayerMode;
 
 // the little cutscene when she finds the FAKER you know the one guy that goes like eee a u eeau eoeeeee eee aa auuuu
 class FakerReveal
@@ -25,6 +26,7 @@ class FakerReveal
 	var _bars:Float = 0;
 	var _grew:Bool = false;
 	var _opened:Bool = false;
+	var _looking:Bool = false;
 
 	public function new(state:FlxState, ui:FlxCamera, camera:Camera, player:Player)
 	{
@@ -66,6 +68,8 @@ class FakerReveal
 			if (!_exe.revealing) _end();
 			else
 			{
+				if (!_player.isGrounded) _player.body.velocity.x = 0;
+				else if (!_looking) _look();
 				if (_exe.transforming && !_opened)
 				{
 					_opened = true;
@@ -93,11 +97,19 @@ class FakerReveal
 		_exe = exe;
 		_grew = false;
 		_opened = false;
+		_looking = false;
 		_player.cinematic = true;
 		_player.body.velocity.x = 0;
+		if (_player.mode != Ground) _player.mode = Air;
+		if (_player.isGrounded) _look();
+		_shot(_camera.baseZoom + 0.7, 1.4, FlxEase.sineInOut);
+	}
+
+	function _look():Void
+	{
+		_looking = true;
 		_player.lockedAnim = "looking";
 		_player.animation.play("looking", true);
-		_shot(_camera.baseZoom + 0.7, 1.4, FlxEase.sineInOut);
 	}
 
 	function _shot(zoom:Float, time:Float, ease:EaseFunction):Void

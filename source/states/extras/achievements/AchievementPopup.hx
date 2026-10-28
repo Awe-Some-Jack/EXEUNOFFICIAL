@@ -174,7 +174,7 @@ class AchievementPopup extends Sprite
                 x = (_startX + (_targetX - _startX) * FlxEase.expoOut(_slideProgress)) * _lastScale;
                 if (_slideProgress >= 1) _state = 1;
                 
-                if (activateOnce) { FlxG.sound.play(Paths.sound('achievement')); activateOnce = false;}
+                if (activateOnce) { FlxG.sound.play(Paths.sound('achievement')).persist = true; activateOnce = false;}
 
             case 1:
                 _stayTimer += elapsed;

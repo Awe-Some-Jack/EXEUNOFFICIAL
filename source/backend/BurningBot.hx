@@ -439,7 +439,7 @@ class BurningBot
         overlay.alpha = 0;
         state.add(overlay);
 
-        final cover = state.covers.members[targetBox];
+        final cover = state.covers.members[targetBox >= 0 ? targetBox : EXEFreeplay.selectedBox];
         if (cover != null)
         {
             final mid = cover.getMidpoint();

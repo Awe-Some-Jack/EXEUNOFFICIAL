@@ -20,6 +20,10 @@ import objects.VideoSprite;
 
 import animate.FlxAnimate;
 
+import psychlua.ExtraFunctions;
+import backend.Language;
+import flixel.text.FlxText.FlxTextBorderStyle;
+
 var exeGameOvers:Bool = false;
 var songs:Array<String> = ["yourself", "cycles", "hellbent", "fate", 'hollow', 'endless-us', 'starline', 'uh-oh', 'sharpy-showdown', 'substantial', 'digitalized'];
 var voicelineSongs:Array<String> = ["cycles", "hellbent", "fate"];
@@ -31,6 +35,11 @@ var head:FlxSprite;
 var deadChar:Character;
 var deadMusic:FlxSound;
 var voiceline:FlxSound;
+var voicelineNum:Int = 0;
+var subtitleTimes:Array<Float> = [5.1, 6, 6.2, 9.2];
+var subtitle:FlxText;
+var subtitleBG:FlxSprite;
+var subtitleCam:FlxCamera;
 
 var hasVoicelines:Bool = false;
 
@@ -216,9 +225,76 @@ function setCustomEvents() {
 }
 
 function addVoiceLines() {
+    voicelineNum = FlxG.random.int(1, maxVoicelines);
     voiceline = new FlxSound();
-    voiceline.load(Paths.sound("voicelines/" + Std.string(FlxG.random.int(1, maxVoicelines))), true);
+    voiceline.load(Paths.sound("voicelines/" + Std.string(voicelineNum)), true);
     FlxG.sound.list.add(voiceline);
+    makeSubtitle();
+}
+
+function makeSubtitle() {
+    if (voicelineNum == 5) return;
+
+    var fallback:Array<String> = [
+        "Hello.... Old friend.",
+        "I am the first, but not the original.",
+        "Do you enjoy the promise I made?",
+        "Once I have your soul, we will play forever."
+    ];
+    var subtitleText:String = getSubtitleLine(voicelineNum);
+    if (subtitleText == null || subtitleText.length == 0) subtitleText = fallback[voicelineNum - 1];
+
+    subtitleCam = new FlxCamera();
+    subtitleCam.bgColor = 0x0;
+    FlxG.cameras.add(subtitleCam, false);
+
+    subtitle = new FlxText(0, Std.int(FlxG.height * 0.85), Std.int(FlxG.width * 0.75), subtitleText);
+    subtitle.setFormat(Paths.font(subtitleFont()), 25, 0xFFFFFFFF, "center", FlxTextBorderStyle.OUTLINE, 0xFF000000);
+    subtitle.borderSize = 2;
+    subtitle.camera = subtitleCam;
+    subtitle.screenCenter(0x01);
+
+    subtitleBG = new FlxSprite(0, subtitle.y).makeGraphic(subtitle.textField.textWidth + 8, subtitle.height + 2, 0xFF000000);
+    subtitleBG.screenCenter(0x01);
+    subtitleBG.alpha = 0.6;
+    subtitleBG.camera = subtitleCam;
+
+    subtitle.visible = subtitleBG.visible = false;
+    GameOverSubstate.instance.add(subtitleBG);
+    GameOverSubstate.instance.add(subtitle);
+}
+
+function updateSubtitle() {
+    if (subtitle == null) return;
+    var talking:Bool = voiceline.playing && voiceline.volume > 0 && voiceline.time / 1000 < subtitleTimes[voicelineNum - 1];
+    subtitle.visible = subtitleBG.visible = talking;
+}
+
+function subtitleLang():String
+{
+    var lang = ClientPrefs.data.language ?? 'auto';
+    if (lang.length == 0) lang = 'auto';
+    if (lang == 'auto') lang = Language.getSystemLanguage();
+    return lang;
+}
+
+function subtitleFont():String
+{
+    var lang = subtitleLang();
+    if (lang == 'ja-JP') return 'japanese.ttf';
+    if (lang == 'zh-CN') return 'chinese.ttf';
+    if (lang == 'ko-KR') return 'korean.ttf';
+    if (lang == 'pl-PL' || lang == 'tr-TR' || lang == 'hu-HU') return 'ari-w9500-bold.ttf';
+    return 'vcr.ttf';
+}
+
+function getSubtitleLine(num:Int):String
+{
+    var data:Dynamic = ExtraFunctions.getLyricsData('cycles', 'LORD X');
+    if (data == null) return null;
+    var langData:Dynamic = ExtraFunctions.resolveLyricsLangData(data, subtitleLang());
+    if (langData == null) return null;
+    return Reflect.field(langData, "gameover.lordx." + num);
 }
 
 function addShaders() {
@@ -253,6 +329,7 @@ function onUpdatePost()
                 voiceline?.play();
             }
         }
+        updateSubtitle();
 
         if (deadChar.animation.curAnim.name == 'deathConfirm' && deadChar.animation.curAnim.finished && deadChar.visible)
         {
@@ -261,7 +338,7 @@ function onUpdatePost()
             if(head != null) head.visible = false;
             FlxG.sound.play(Paths.music('gameOverEnd'));
             deadMusic.stop();
-            voiceline.stop();
+            voiceline?.stop();
         }
     }
 
@@ -394,8 +471,8 @@ function startCountdownMajin()
             countdownText.x = FlxG.width / 2 - 20;
             var t:Float = 1.0 - (secondsLeft / 10.0);
             var r:Int = 255;
-            var g:Int = Std.int(255 (1.0 - t));
-            var b:Int = Std.int(255 (1.0 - t));
+            var g:Int = Std.int(255 * (1.0 - t));
+            var b:Int = Std.int(255 * (1.0 - t));
             countdownText.color = FlxColor.fromRGB(r, g, b);
         }
         if (secondsLeft <= 0) {
@@ -439,6 +516,8 @@ function onGameOverConfirm(retry)
 {
 
 	actuallynotfuckd = true;
+    if (subtitle != null) subtitle.visible = subtitleBG.visible = false;
+    subtitle = null;
 
 	if (retry) {
         for (sound in FlxG.sound.list) if (sound.playing && sound != deadMusic && exeGameOvers) sound.volume = 0;

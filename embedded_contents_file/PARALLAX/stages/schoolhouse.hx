@@ -85,6 +85,8 @@ function getSchoolFont():String {
 }
 
 function onCreate() {
+	canHandleMouse = true;
+
 	bg1 = new FlxSprite(-345, -280).loadGraphic(Paths.image('bg/bg-phase1', 'PARALLAX'));
 	bg1.scale.set(0.8, 0.8);
 	bg1.antialiasing = false;
@@ -1010,6 +1012,7 @@ function handleMouseLogic() {
 
 function onDestroy() {
 	FlxG.autoPause = true;
+	Mouse.cursor = MouseCursor.ARROW;
 }
 
 function onGameOverStart() {

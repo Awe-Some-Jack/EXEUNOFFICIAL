@@ -26,29 +26,30 @@ local shaders = {
 }
 luaDebugMode = true
 function onCreatePost()
-    for num, shad in ipairs(shaders) do
-        makeLuaSprite(shad.name, nil, shad.x)
-        setSpriteShader(shad.name, shad.shader)
-        setProperty(shad.name..'.angle', shad.angle)
-        scaleObject(shad.name, shad.scaleX, shad.scaleY)
-        for u, v in pairs(shad.uniforms) do
-            setShaderFloat(shad.name, u, v)
-        end
-    end
     if shadersEnabled then
-        local neutrals = {
-            chrom = {amount = 0},
-            bw = {grayness = 0},
-            shine = {brightness = 0, contrast = 1, saturation = 1},
-        }
-        local cameraFilters = {
-            {'camGame', {'chrom', 'bw', 'shine', 'color'}},
-            {'camHUD', {'color'}},
-        }
-        for _, entry in ipairs(cameraFilters) do
-            for _, name in ipairs(entry[2]) do
-                if neutrals[name] then
-                    for uniform, neutral in pairs(neutrals[name]) do
+        for num, shad in ipairs(shaders) do
+            makeLuaSprite(shad.name, nil, shad.x)
+            setSpriteShader(shad.name, shad.shader)
+            setProperty(shad.name..'.angle', shad.angle)
+            scaleObject(shad.name, shad.scaleX, shad.scaleY)
+            for u, v in pairs(shad.uniforms) do
+                setShaderFloat(shad.name, u, v)
+            end
+        end
+        if shadersEnabled then
+            local neutrals = {
+                chrom = {amount = 0},
+                bw = {grayness = 0},
+                shine = {brightness = 0, contrast = 1, saturation = 1},
+            }
+            local cameraFilters = {
+                {'camGame', {'chrom', 'bw', 'shine', 'color'}},
+                {'camHUD', {'color'}},
+            }
+            for _, entry in ipairs(cameraFilters) do
+                for _, name in ipairs(entry[2]) do
+                    if neutrals[name] then
+                        for uniform, neutral in pairs(neutrals[name]) do
                         addPrunedFilter(entry[1], name, uniform, neutral)
                     end
                 else
@@ -58,6 +59,7 @@ function onCreatePost()
         end
     end
 end
+end
 
 local onTween1 = false
 local onTween2 = false
@@ -66,70 +68,73 @@ local onTween4 = false
 function onEvent(eventName, value1, value2)
     local shaderValues = stringSplit(value1, ',')
     local tweenSettings = stringSplit(value2, ',')
-    if eventName == "bloomFlash" then
-        cancelTween('shineX')
-        setProperty('shine.x', tonumber(shaderValues[1]))
-        doTweenX('shineX', 'shine', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween1 = true
-    end
-    if eventName == "chromFlash" then
-        cancelTween('chromX')
-        setProperty('chrom.x', tonumber(shaderValues[1]))
-        doTweenX('chromX', 'chrom', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween2 = true
-    end
-    if eventName == "bwFlash" then
-        cancelTween('bwX')
-        setProperty('bw.x', tonumber(shaderValues[1]))
-        doTweenX('bwX', 'bw', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween3 = true
-    end
-    if eventName == "hueFlash" then
-        cancelTween('colorX')
-        setProperty('color.x', tonumber(shaderValues[1]))
-        doTweenX('colorX', 'color', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween4 = true
-    end
-    if eventName == "contrastFlash" then
-        cancelTween('colorScaleX')
-        setProperty('color.scale.x', tonumber(shaderValues[1]))
-        doTweenX('colorScaleX', 'color.scale', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween4 = true
-    end
-    if eventName == "brightnessFlash" then
-        cancelTween('colorScaleY')
-        setProperty('color.scale.y', tonumber(shaderValues[1]))
-        doTweenY('colorScaleY', 'color.scale', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween4 = true
-    end
-    if eventName == "saturationFlash" then
-        cancelTween('colorAngle')
-        setProperty('color.angle', tonumber(shaderValues[1]))
-        doTweenAngle('colorAngle', 'color', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween4 = true
+    if shadersEnabled then
+        if eventName == "bloomFlash" then
+            cancelTween('shineX')
+            setProperty('shine.x', tonumber(shaderValues[1]))
+            doTweenX('shineX', 'shine', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween1 = true
+        end
+        if eventName == "chromFlash" then
+            cancelTween('chromX')
+            setProperty('chrom.x', tonumber(shaderValues[1]))
+            doTweenX('chromX', 'chrom', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween2 = true
+        end
+        if eventName == "bwFlash" then
+            cancelTween('bwX')
+            setProperty('bw.x', tonumber(shaderValues[1]))
+            doTweenX('bwX', 'bw', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween3 = true
+        end
+        if eventName == "hueFlash" then
+            cancelTween('colorX')
+            setProperty('color.x', tonumber(shaderValues[1]))
+            doTweenX('colorX', 'color', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween4 = true
+        end
+        if eventName == "contrastFlash" then
+            cancelTween('colorScaleX')
+            setProperty('color.scale.x', tonumber(shaderValues[1]))
+            doTweenX('colorScaleX', 'color.scale', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween4 = true
+        end
+        if eventName == "brightnessFlash" then
+            cancelTween('colorScaleY')
+            setProperty('color.scale.y', tonumber(shaderValues[1]))
+            doTweenY('colorScaleY', 'color.scale', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween4 = true
+        end
+        if eventName == "saturationFlash" then
+            cancelTween('colorAngle')
+            setProperty('color.angle', tonumber(shaderValues[1]))
+            doTweenAngle('colorAngle', 'color', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween4 = true
+        end
     end
 end
 
-
 function onUpdatePost()
-	setShaderFloat('color', 'uSpriteAlpha', getProperty('color.alpha'))
-	--setShaderFloatArray('color', 'uSpriteColor', {(math.floor(getProperty('color.color') / 65536) % 256) / 255, (math.floor(getProperty('color.color') / 256) % 256) / 255, (getProperty('color.color') % 256) / 255})
+    if shadersEnabled and not lowQuality then
+        setShaderFloat('color', 'uSpriteAlpha', getProperty('color.alpha'))
+        --setShaderFloatArray('color', 'uSpriteColor', {(math.floor(getProperty('color.color') / 65536) % 256) / 255, (math.floor(getProperty('color.color') / 256) % 256) / 255, (getProperty('color.color') % 256) / 255})
 
-    if onTween1 then
-        setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
-        setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))
-    end
-    if onTween2 then
-        setShaderFloat('chrom', 'amount', getProperty('chrom.x'))
-    end
-    if onTween3 then
-        setShaderFloat('bw', 'grayness', getProperty('bw.x'))
-    end
-    if onTween4 then
-        setShaderFloat('color', 'hue', getProperty('color.x'))
-        setShaderFloat('color', 'brightness', getProperty('color.scale.y'))
-        setShaderFloat('color', 'saturation', getProperty('color.angle'))
-        setShaderFloat('color', 'contrast', getProperty('color.scale.x'))
+        if onTween1 then
+            setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
+            setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))
+        end
+        if onTween2 then
+            setShaderFloat('chrom', 'amount', getProperty('chrom.x'))
+        end
+        if onTween3 then
+            setShaderFloat('bw', 'grayness', getProperty('bw.x'))
+        end
+        if onTween4 then
+            setShaderFloat('color', 'hue', getProperty('color.x'))
+            setShaderFloat('color', 'brightness', getProperty('color.scale.y'))
+            setShaderFloat('color', 'saturation', getProperty('color.angle'))
+            setShaderFloat('color', 'contrast', getProperty('color.scale.x'))
+        end
     end
 end
 

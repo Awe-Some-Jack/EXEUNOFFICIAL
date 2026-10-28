@@ -356,23 +356,25 @@ local starlineEvents = {
 	['glitchBG'] = function(intensity)
 		for _, bg in ipairs(starlineAssets['BGAssets']) do
 			for _, healthShit in ipairs({'hbHealth', 'hbHealth2', 'healthBG', 'hbBG', 'separatorHealth', 'bfStarlineIcon', 'chaotixBeastStarlineIcon'}) do doTweenAlpha(healthShit..'Alpha', healthShit, 0, 0.5) end
-			if getProperty(bg.name..'.shader') == nil then setSpriteShader(bg.name, 'glitchChromatic') end
-			if getProperty('tails.shader') == nil then setSpriteShader('tails', 'glitchChromatic') end setShaderFloat('tails', 'GLITCH', intensity)
-			bgShaderTime = true
-			crazyTime    = true
+			if shadersEnabled then
+				if getProperty(bg.name..'.shader') == nil then setSpriteShader(bg.name, 'glitchChromatic') end
+				if getProperty('tails.shader') == nil then setSpriteShader('tails', 'glitchChromatic') end setShaderFloat('tails', 'GLITCH', intensity)
+				bgShaderTime = true
+				setShaderFloat(bg.name, 'GLITCH', intensity)
+				crazyTime = true
+			end
 			runTimer('tailsTime', tailsTimer, 0)
-			setShaderFloat(bg.name, 'GLITCH', intensity)
 		end
-		setProperty('bg2.y', getProperty('bg2.y') - 30)
+		if shadersEnabled then setProperty('bg2.y', getProperty('bg2.y') - 30) end
 	end,
 	['setTailsTimer'] = function(timer)	tailsTimer = timer end,
 	['stopTails'] = function()
-		crazyTime  = false
+		if shadersEnabled then crazyTime = false end
 		removeSpriteShader('dad')
 		cancelTimer('returnChaotixGlitch')
 		tailsTimer = 40
 		cancelTimer('tailsTime')
-		setProperty('bg2.y', getProperty('bg2.y') - 20)
+		if shadersEnabled then setProperty('bg2.y', getProperty('bg2.y') - 20) end
 		for i = 1, tailsCount do
 			local tailsCount = 'tailsText'..i
 			if luaSpriteExists(tailsCount) then
@@ -612,7 +614,7 @@ function onBeatHit()
 
 	if not glitchedActive then spawnStar() else spawnGlitch() end
 
-	if crazyTime then
+	if crazyTime and shadersEnabled then
 		triggerEvent("glitchFlash", "0.1, 0.001", "0.5")
 		triggerEvent("chromFlash", "0.5, 0.1", "0.5")
 	end
@@ -681,7 +683,7 @@ function onUpdatePost(e)
 		end
 	end
 
-	for _, bg in ipairs(starlineAssets['BGAssets']) do if bgShaderTime then setShaderFloat(bg.name, 'iTime', shaderHold) end end
+	for _, bg in ipairs(starlineAssets['BGAssets']) do if bgShaderTime and shadersEnabled then setShaderFloat(bg.name, 'iTime', shaderHold) end end
 
 	setIconsAnims()
 end
@@ -698,9 +700,9 @@ function opponentNoteHitPre(i)
 	end
 
 	if crazyTime then
-		if getProperty('dad.shader') == nil then setSpriteShader('dad', 'NewGlitch2') end
+		if getProperty('dad.shader') == nil and shadersEnabled then setSpriteShader('dad', 'NewGlitch2') end
 
-		if getRandomInt(0, 1) == 1 then
+		if shadersEnabled and getRandomInt(0, 1) == 1 then
 			setShaderFloat('dad', 'binaryIntensity', getRandomFloat(0.2, 0.8))
 			setShaderFloat('dad', 'negativity', getRandomInt(0, 1))
 			runTimer('returnChaotixGlitch', 0.5)
@@ -714,5 +716,5 @@ function onTimerCompleted(t)
 	if t == 'spawnPeaceStars' then createPeaceStars() end
 	if t ==       'tailsTime' then   spawnTailsText() end
 
-	if t == 'returnChaotixGlitch' then setShaderFloat('dad', 'binaryIntensity', 0.001) setShaderFloat('dad', 'negativity', 0) end
+	if t == 'returnChaotixGlitch' and shadersEnabled then setShaderFloat('dad', 'binaryIntensity', 0.001) setShaderFloat('dad', 'negativity', 0) end
 end

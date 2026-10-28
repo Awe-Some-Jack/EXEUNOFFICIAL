@@ -79,35 +79,46 @@ function onCreate()
 
 	game.gameplayCam._targetAlpha = 0.5;
 
-	bloom.daShader = new ErrorHandledRuntimeShader("brightness", File.getContent(Paths.shaderFragment('brightness')));
-	bloom.uniforms      = ["brightness" => 0, "contrast" => 1, "saturation" => 1]; 
-	bloom.defaultValues = ["brightness" => 0, "contrast" => 1, "saturation" => 1]; 
-	bloom.shaderTweens  = [];
-	
-	chrom.daShader = new ErrorHandledRuntimeShader("chromabber", File.getContent(Paths.shaderFragment('chromabber')));
-	chrom.daShader.setFloat("amount", chrom.uniforms.get("amount"));
-	chrom.shaderTweens = [];
-	
-	wave.daShader = new ErrorHandledRuntimeShader("wavyDistortion", File.getContent(Paths.shaderFragment('wavyDistortion')));
-	wave.uniforms      = ["amount" => 0];
-	wave.shaderTweens  = [];
-	
-	lilGlitch.daShader = new ErrorHandledRuntimeShader("followedglitch", File.getContent(Paths.shaderFragment('followedglitch')));
-	lilGlitch.uniforms      = ["size" => 0.001];
-	lilGlitch.shaderTweens  = [];
-
-	camGame.filters = camHUD.filters = [new ShaderFilter(bloom.daShader), new ShaderFilter(chrom.daShader), new ShaderFilter(wave.daShader), new ShaderFilter(lilGlitch.daShader)];
+	if (ClientPrefs.data.shaders)
+	{
+		bloom.daShader = new ErrorHandledRuntimeShader("brightness", File.getContent(Paths.shaderFragment('brightness')));
+		bloom.uniforms      = ["brightness" => 0, "contrast" => 1, "saturation" => 1]; 
+		bloom.defaultValues = ["brightness" => 0, "contrast" => 1, "saturation" => 1]; 
+		bloom.shaderTweens  = [];
+		
+		chrom.daShader = new ErrorHandledRuntimeShader("chromabber", File.getContent(Paths.shaderFragment('chromabber')));
+		chrom.daShader.setFloat("amount", chrom.uniforms.get("amount"));
+		chrom.shaderTweens = [];
+		
+		wave.daShader = new ErrorHandledRuntimeShader("wavyDistortion", File.getContent(Paths.shaderFragment('wavyDistortion')));
+		wave.uniforms      = ["amount" => 0];
+		wave.shaderTweens  = [];
+		
+		lilGlitch.daShader = new ErrorHandledRuntimeShader("followedglitch", File.getContent(Paths.shaderFragment('followedglitch')));
+		lilGlitch.uniforms      = ["size" => 0.001];
+		lilGlitch.shaderTweens  = [];
+		
+		camGame.filters = camHUD.filters = [new ShaderFilter(bloom.daShader), new ShaderFilter(chrom.daShader), new ShaderFilter(wave.daShader), new ShaderFilter(lilGlitch.daShader)];
+	}
 }
 
 var _inTrans:Bool = false;
+var shakeSection:Bool = false;
+var oldMHS:Bool = false;
 function onSectionHit(x)
 {
 	if (_inTrans) return;
-	if (!tweenCamZoom)
+	if (!tweenCamZoom && oldMHS != mustHitSection)
 	{
 		if (x.mustHitSection == false) game.triggerEvent("Tween Camera Zoom", "0.9", "");
 		else game.triggerEvent("Tween Camera Zoom", "0.65", "");
 	}
+	if (shakeSection && curSection %2 == 0)
+	{
+		game.triggerEvent('Screen Shake', "0.3, 0.008", "0.3, 0.03");
+		game.triggerEvent('shaderTween', "wave, 2, 0", "2.4, circOut");
+	}
+	oldMHS = mustHitSection;
 }
 
 var _isDark:Bool = false;
@@ -121,42 +132,58 @@ function onEvent(n, v1, v2)
 	//(sorry dudu i took some things from ya)
 	if (n == "shaderTween")
 	{
-		var split1:Array<String> = v1.split(", ");
-		var shaderName:String = split1[0];
-		var from:Float = Std.parseFloat(split1[1]);
-		var to:Float = Std.parseFloat(split1[2]);
-		
-		var split2:Array<String> = v2.split(", ");
-		var time:Float = Std.parseFloat(split2[0]);
-		var easeValue:String = (split2[1] == null || split2[1] == '') ? "linear" : split2[1];
-
-		switch(split1[0])
+		if (ClientPrefs.data.shaders)
 		{
-			case "bloom":
-				if (bloom.shaderTweens['bloomBaby']?.active ?? false) bloom.shaderTweens['bloomBaby'].cancel();
+			var split1:Array<String> = v1.split(", ");
+			var shaderName:String = split1[0];
+			var from:Float = Std.parseFloat(split1[1]);
+			var to:Float = Std.parseFloat(split1[2]);
+			
+			var split2:Array<String> = v2.split(", ");
+			var time:Float = Std.parseFloat(split2[0]);
+			var easeValue:String = (split2[1] == null || split2[1] == '') ? "linear" : split2[1];
 
-				bloom.shaderTweens['bloomBaby'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
-					bloom.uniforms.set("brightness", bloom.defaultValues.get("brightness") + v * 2);
-					bloom.uniforms.set("contrast", bloom.defaultValues.get("contrast") + v * 4);
-				});
-			case "chrom":
-				if (chrom.shaderTweens['chromTween']?.active ?? false) chrom.shaderTweens['chromTween'].cancel();
+			switch(split1[0])
+			{
+				case "bloom":
+					if (bloom.shaderTweens['bloomBaby']?.active ?? false) bloom.shaderTweens['bloomBaby'].cancel();
 
-				chrom.shaderTweens['chromTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
-					chrom.uniforms.set("amount", v);
-				});
-			case "wave":
-				if (wave.shaderTweens['waveTween']?.active ?? false) wave.shaderTweens['waveTween'].cancel();
+					bloom.shaderTweens['bloomBaby'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
+						bloom.uniforms.set("brightness", bloom.defaultValues.get("brightness") + v * 2);
+						bloom.uniforms.set("contrast", bloom.defaultValues.get("contrast") + v * 4);
+					});
+				case "saturation":
+					if (bloom.shaderTweens['satTween']?.active ?? false) bloom.shaderTweens['satTween'].cancel();
 
-				wave.shaderTweens['waveTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
-					wave.uniforms.set("amount", v);
-				});
-			case "glitchie":
-				if (lilGlitch.shaderTweens['lilGlitchTween']?.active ?? false) lilGlitch.shaderTweens['lilGlitchTween'].cancel();
+					bloom.shaderTweens['satTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
+						bloom.uniforms.set("saturation", v);
+					});
+				case "contrast":
+					if (bloom.shaderTweens['contrastTween']?.active ?? false) bloom.shaderTweens['contrastTween'].cancel();
 
-				lilGlitch.shaderTweens['lilGlitchTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
-					lilGlitch.uniforms.set("size", v);
-				});
+					bloom.shaderTweens['contrastTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
+						bloom.uniforms.set("contrast", bloom.defaultValues.get("contrast") + v);
+					});
+
+				case "chrom":
+					if (chrom.shaderTweens['chromTween']?.active ?? false) chrom.shaderTweens['chromTween'].cancel();
+
+					chrom.shaderTweens['chromTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
+						chrom.uniforms.set("amount", v);
+					});
+				case "wave":
+					if (wave.shaderTweens['waveTween']?.active ?? false) wave.shaderTweens['waveTween'].cancel();
+
+					wave.shaderTweens['waveTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
+						wave.uniforms.set("amount", v);
+					});
+				case "glitchie":
+					if (lilGlitch.shaderTweens['lilGlitchTween']?.active ?? false) lilGlitch.shaderTweens['lilGlitchTween'].cancel();
+
+					lilGlitch.shaderTweens['lilGlitchTween'] = FlxTween.num(from, to, time, {ease: LuaUtils.getTweenEaseByString(easeValue)}, (v:Float) -> {
+						lilGlitch.uniforms.set("size", v);
+					});
+				}
 		}
 	}
 	if (n == 'starvedEvents')
@@ -168,6 +195,8 @@ function onEvent(n, v1, v2)
 			case "stopFlickerDark":
 				FlxTween.cancelTweensOf(darkerVG);
 				FlxTween.tween(darkerVG, {alpha: 0}, 2);
+			case "setShakeSection":
+				shakeSection = v2 == "true" ? true : false;
 		}
 	}
 	if (n == 'Hide') FlxTween.tween(camHUD, {alpha: Std.int(v1)}, 0.3);
@@ -176,6 +205,7 @@ function onEvent(n, v1, v2)
 		switch(v1)
 		{
 			case 'fadeout':
+				if (ClientPrefs.data.shaders) game.triggerEvent('shaderTween', "saturation, 1, 0", "2");
 				_inTrans = true;
 				for (spr in starv) if (spr.hide == null || spr.hide == true) FlxTween.color(spr.sprite, 1, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.color(boyfriend, 3, 0xFFFFFFFF, 0xFF000000);
@@ -187,7 +217,10 @@ function onEvent(n, v1, v2)
 					notesPosition[0][i][1] = opponentStrums.members[i].y; notesPosition[1][i][1] = playerStrums.members[i].y;
 				}
 			case 'fight':
+				shakeSection = true;
 				_inTrans = false;
+
+				if (ClientPrefs.data.shaders) game.triggerEvent('shaderTween', "saturation, 1, 1", "0.1");
 				for (spr in starv)
 				{
 					if (spr.tag == 'starvTV' || spr.tag == 'tv') FlxTween.color(spr.sprite, 1, 0xFFFFFFFF, 0xFFFF0000);
@@ -211,6 +244,9 @@ function onEvent(n, v1, v2)
 			case 'fadein':
 				_inTrans = false;
 				_isDark = false;
+				shakeSection = false;
+
+				if (ClientPrefs.data.shaders) game.triggerEvent('shaderTween', "glitchie, 0.01, 0.001", "3, smootherStepInOut");
 				for (i in 0...4)
 				{
 					opponentStrums.members[i].setPosition(notesPosition[0][i][0], notesPosition[0][i][1]);
@@ -245,18 +281,21 @@ function onUpdatePost(e)
 {
 	holdTime += e;
 
-	//Shaders uniforms should be updated getting their numbers, duh. 
-	bloom.daShader.setFloat('brightness', bloom.uniforms.get('brightness'));
-	bloom.daShader.setFloat('saturation', bloom.uniforms.get('saturation'));
-	bloom.daShader.setFloat('contrast',   bloom.uniforms.get('contrast'));
-	
-	chrom.daShader.setFloat('amount', chrom.uniforms.get('amount'));
-	
-	wave.daShader.setFloat('amount', wave.uniforms.get('amount'));
-	
-	lilGlitch.daShader.setFloat('size', lilGlitch.uniforms.get('size'));
-	
-	for (holdShit in [wave, lilGlitch]) holdShit.daShader.setFloat('iTime', holdTime);
+	if (ClientPrefs.data.shaders)
+	{
+		//Shaders uniforms should be updated getting their numbers, duh. 
+		bloom.daShader.setFloat('brightness', bloom.uniforms.get('brightness'));
+		bloom.daShader.setFloat('saturation', bloom.uniforms.get('saturation'));
+		bloom.daShader.setFloat('contrast',   bloom.uniforms.get('contrast'));
+		
+		chrom.daShader.setFloat('amount', chrom.uniforms.get('amount'));
+		
+		wave.daShader.setFloat('amount', wave.uniforms.get('amount'));
+		
+		lilGlitch.daShader.setFloat('size', lilGlitch.uniforms.get('size'));
+		
+		for (holdShit in [wave, lilGlitch]) holdShit.daShader.setFloat('iTime', holdTime);
+	}
 	
 	if (_isDark)
 	{

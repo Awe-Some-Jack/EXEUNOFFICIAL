@@ -63,11 +63,12 @@
 			"icon": "raimbow",
 			"nation": "espana",
 			"description": "Coder and Charter",
-			"quote": "[ENG]\nI'm Raimbow! Just your average Stickman. I am one of coders and charters that has worked in many of the songs here, I hope you enjoy them, hehe.\nI don't really wanna drag out sentimental stuff, but I'm grateful for EVERYONE in this development team. It's because of them that I have REALLY improved in my coding/charting skills, and thanks to it i can push harder on future proyects. Don't forget to check the devs' works, they're also INCREDIBLE.\nAnyways check this peak GIF/Video right here.\n[ESP]\nSoy Raimbow! Tu Stickman Promedio. Soy uno de los programadores y charters que se ha encargado de unas cuantas canciones del mod. Espero que te hayan gustado, jeje. No es por ser sentimental ni nada, pero estoy MUUUY agradecido con todo el equipo de este mod. De no ser por ellos, no habría mejorado, ni divertido tanto como lo he hecho hasta ahora. En fin, mira este pedazo GIF/Vídeo.",
+			"quote": "Name's Raimbow! Just your average green-eyed stickman.\nI'm just a guy who assisted in most of the coding and some charting in here. I may be known for the camera events I've done on almost all the songs here, but that doesn't matter to me at all.\n\nAt first I was not sure if joining this mod was a great idea, but as we were developing this mod, it slowly became more worth it. I started meeting the team, joined VCs almost everyday to see how they were going, and eventually, I started enjoying myself here, and realised it was the right call.\n\nYou may think it's stupid, but finding a group so compatible with your stupidities, who can support you on the good and the bad things, who also helps you improve both as a worker and a person really does great things to you.\nTrust me, you'll see these kind of messages in here, so you'll get used to it!\n\nWords cannot describe how happy I am to meet everyone and I thank EVERYONE for the moments I've been with them, I promise I will never forget this age of my FNF career, it was really special. I hope everyone enjoyed this mod, like really. Our hearts and sweats were poured into this mod with all our strength, despite having it's bugs.\n\nAnd don't forget: 'Despite everything, it's still you.'",
 			"twitter": "https://x.com/raimbowcore12",
 			"youtube": "https://www.youtube.com/@raimbowcore12",
+			"discord": "raimbowcore12alt",
 			"colors": [[40, 247, 17], [27, 173, 10]],
-			"extra": ["video", "el putisimo pan de ayer", true]
+			"extra": ["video", "el putisimo pan de ayer"]
 		},
 		{
 			"name": "AssmanBruh",

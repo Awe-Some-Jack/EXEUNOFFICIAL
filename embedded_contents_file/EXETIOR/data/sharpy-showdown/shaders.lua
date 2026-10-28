@@ -26,13 +26,12 @@ local shaders = {
 }
 luaDebugMode = true
 function onCreatePost()
-    if not shadersEnabled then return end
-
-    for num, shad in ipairs(shaders) do
-        makeLuaSprite(shad.name, nil, shad.x)
-        setSpriteShader(shad.name, shad.shader)
-        setProperty(shad.name..'.alpha', shad.alpha)
-        setProperty(shad.name..'.angle', shad.angle)
+    if shadersEnabled then
+        for num, shad in ipairs(shaders) do
+            makeLuaSprite(shad.name, nil, shad.x)
+            setSpriteShader(shad.name, shad.shader)
+            setProperty(shad.name..'.alpha', shad.alpha)
+            setProperty(shad.name..'.angle', shad.angle)
         scaleObject(shad.name, shad.scaleX, shad.scaleY)
         for u, v in pairs(shad.uniforms) do
             setShaderFloat(shad.name, u, v)
@@ -61,6 +60,7 @@ function onCreatePost()
         end
     end
 end
+end
 
 local onTween1 = false
 local onTween2 = false
@@ -71,47 +71,49 @@ function onEvent(eventName, value1, value2)
 
     local shaderValues = stringSplit(value1, ',')
     local tweenSettings = stringSplit(value2, ',')
-    if eventName == "bloomFlash" then
-        cancelTween('shineX')
-        setProperty('shine.x', tonumber(shaderValues[1]))
-        doTweenX('shineX', 'shine', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween1 = true
-    end
-    if eventName == "chromFlash" then
-        cancelTween('chromX')
-        setProperty('chrom.x', tonumber(shaderValues[1]))
-        doTweenX('chromX', 'chrom', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween2 = true
-    end
-    if eventName == "bwFlash" then
-        cancelTween('bwX')
-        setProperty('bw.x', tonumber(shaderValues[1]))
-        doTweenX('bwX', 'bw', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween3 = true
-    end
-    if eventName == "hueFlash" then
-        cancelTween('colorX')
-        setProperty('color.x', tonumber(shaderValues[1]))
-        doTweenX('colorX', 'color', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween4 = true
-    end
-    if eventName == "contrastFlash" then
-        cancelTween('colorX')
-        setProperty('color.scale.x', tonumber(shaderValues[1]))
-        doTweenX('colorX', 'color.scale', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween4 = true
-    end
-    if eventName == "brightnessFlash" then
-        cancelTween('colorY')
-        setProperty('color.scale.y', tonumber(shaderValues[1]))
-        doTweenY('colorY', 'color.scale', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween4 = true
-    end
-    if eventName == "saturationFlash" then
-        cancelTween('colorAngle')
-        setProperty('color.angle', tonumber(shaderValues[1]))
-        doTweenAngle('colorAngle', 'color', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween4 = true
+    if shadersEnabled then
+        if eventName == "bloomFlash" then
+            cancelTween('shineX')
+            setProperty('shine.x', tonumber(shaderValues[1]))
+            doTweenX('shineX', 'shine', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween1 = true
+        end
+        if eventName == "chromFlash" then
+            cancelTween('chromX')
+            setProperty('chrom.x', tonumber(shaderValues[1]))
+            doTweenX('chromX', 'chrom', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween2 = true
+        end
+        if eventName == "bwFlash" then
+            cancelTween('bwX')
+            setProperty('bw.x', tonumber(shaderValues[1]))
+            doTweenX('bwX', 'bw', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween3 = true
+        end
+        if eventName == "hueFlash" then
+            cancelTween('colorX')
+            setProperty('color.x', tonumber(shaderValues[1]))
+            doTweenX('colorX', 'color', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween4 = true
+        end
+        if eventName == "contrastFlash" then
+            cancelTween('colorX')
+            setProperty('color.scale.x', tonumber(shaderValues[1]))
+            doTweenX('colorX', 'color.scale', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween4 = true
+        end
+        if eventName == "brightnessFlash" then
+            cancelTween('colorY')
+            setProperty('color.scale.y', tonumber(shaderValues[1]))
+            doTweenY('colorY', 'color.scale', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween4 = true
+        end
+        if eventName == "saturationFlash" then
+            cancelTween('colorAngle')
+            setProperty('color.angle', tonumber(shaderValues[1]))
+            doTweenAngle('colorAngle', 'color', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween4 = true
+        end
     end
 end
 

@@ -1,9 +1,12 @@
 function onCreatePost()
-	makeLuaSprite('bloom')
-	setSpriteShader('bloom', 'brightness')
-	setShaderFloat('bloom', 'brightness', 0)
-	setShaderFloat('bloom', 'contrast', 1)
-	setShaderFloat('bloom', 'saturation', 1)
+	if shadersEnabled then
+		
+		makeLuaSprite('bloom')
+		setSpriteShader('bloom', 'brightness')
+		setShaderFloat('bloom', 'brightness', 0)
+		setShaderFloat('bloom', 'contrast', 1)
+		setShaderFloat('bloom', 'saturation', 1)
+	end
 
 	if shadersEnabled and not lowQuality then
 		local neutrals = {
@@ -29,27 +32,33 @@ local _lerp = 0
 local istwning = false
 local thing = 0
 function onUpdatePost(e)
-	thing = thing + e * 3
-	_lerp = bound(lerp(_lerp, _sat, e * 10), 0, 1)
-
-	setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
-	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4))
-	setShaderFloat('bloom', 'saturation', (_lerp * 5) + _s)
+	if shadersEnabled then
+		
+		thing = thing + e * 3
+		_lerp = bound(lerp(_lerp, _sat, e * 10), 0, 1)
+		
+		setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
+		setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4))
+		setShaderFloat('bloom', 'saturation', (_lerp * 5) + _s)
+	end
 end
 
 function onEvent(n,v1)
-	if n == 'bright zoom' and flashingLights then
-		cancelTween('bloom')
-		setProperty('bloom.x', 0.1)
-		doTweenX('bloom', 'bloom', 0, crochet / 350, 'cubeOut')
-	end
-	if n == 'saturation' then
-		_s = tonumber(v1)
-	end
-	if n == 'Dadbattle Spotlight' then
-		cancelTimer('xd')
-		_sat = 1
-		runTimer('xd', crochet / 500)
+	if shadersEnabled then
+		
+		if n == 'bright zoom' and flashingLights then
+			cancelTween('bloom')
+			setProperty('bloom.x', 0.1)
+			doTweenX('bloom', 'bloom', 0, crochet / 350, 'cubeOut')
+		end
+		if n == 'saturation' then
+			_s = tonumber(v1)
+		end
+		if n == 'Dadbattle Spotlight' then
+			cancelTimer('xd')
+			_sat = 1
+			runTimer('xd', crochet / 500)
+		end
 	end
 end
 

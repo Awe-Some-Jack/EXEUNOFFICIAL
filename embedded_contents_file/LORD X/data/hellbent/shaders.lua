@@ -1,18 +1,21 @@
 local tweening = false
 function onCreatePost()
-	makeLuaSprite('bloom')
-	setSpriteShader('bloom', 'brightness')
-	setShaderFloat('bloom', 'saturation', 1)
-	setShaderFloat('bloom', 'brightness', -0.2)
-	setShaderFloat('bloom', 'contrast', 0.8)
+	if shadersEnabled then
 
-	makeLuaSprite('dss')
-	setSpriteShader('dss', 'colorAdjust')
-	setShaderFloat('dss', 'hue', -38)
-	setShaderFloat('dss', 'saturation', -20)
-	setShaderFloat('dss', 'brightness',-46)
-	setShaderFloat('dss', 'contrast', -25)
-	setProperty('BlackGraphicOther.alpha', 1)
+		makeLuaSprite('bloom')
+		setSpriteShader('bloom', 'brightness')
+		setShaderFloat('bloom', 'saturation', 1)
+		setShaderFloat('bloom', 'brightness', -0.2)
+		setShaderFloat('bloom', 'contrast', 0.8)
+
+		makeLuaSprite('dss')
+		setSpriteShader('dss', 'colorAdjust')
+		setShaderFloat('dss', 'hue', -38)
+		setShaderFloat('dss', 'saturation', -20)
+		setShaderFloat('dss', 'brightness',-46)
+		setShaderFloat('dss', 'contrast', -25)
+	end
+		setProperty('BlackGraphicOther.alpha', 1)
 
 	if shadersEnabled then
 		runHaxeCode([[
@@ -43,18 +46,21 @@ function onEvent(n, v1)
 			doTweenAlpha('icon2Xd', 'iconOpp', 0, crochet / (1000 / 4) / playbackRate)
 			for i = 0,7 do noteTweenAlpha('noteAlpha'..i, i, 0, crochet / (1000 / 4) / playbackRate) end
 		end
-		if v1 == 'lessdark' then
-			for i = 0,7 do cancelTween('noteAlpha'..i) setProperty('strumLineNotes.members['..i..'].alpha', 1) end
-			cancelTween('icon1Xd') setProperty('iconBF.alpha', 1)
-			cancelTween('icon2Xd') setProperty('iconOpp.alpha', 1)
-			cancelTween('BlackGraphicHUD')
-			cameraFlash('game', 'FFFFFF', 1, true)
-			setProperty('BlackGraphicHUD.alpha', 0)
-			setShaderFloat('dss', 'saturation', -10)
-			setShaderFloat('dss', 'brightness',-23)
-			setShaderFloat('dss', 'contrast', -17)
-			setShaderFloat('bloom', 'brightness', -0.1)
-			setShaderFloat('bloom', 'contrast', 0.9)
+		if shadersEnabled then
+			
+			if v1 == 'lessdark' then
+				for i = 0,7 do cancelTween('noteAlpha'..i) setProperty('strumLineNotes.members['..i..'].alpha', 1) end
+				cancelTween('icon1Xd') setProperty('iconBF.alpha', 1)
+				cancelTween('icon2Xd') setProperty('iconOpp.alpha', 1)
+				cancelTween('BlackGraphicHUD')
+				cameraFlash('game', 'FFFFFF', 1, true)
+				setProperty('BlackGraphicHUD.alpha', 0)
+				setShaderFloat('dss', 'saturation', -10)
+				setShaderFloat('dss', 'brightness',-23)
+				setShaderFloat('dss', 'contrast', -17)
+				setShaderFloat('bloom', 'brightness', -0.1)
+				setShaderFloat('bloom', 'contrast', 0.9)
+			end
 		end
 		if v1 == 'startwhite' then
 			for i = 0,7 do cancelTween('noteAlpha'..i) setProperty('strumLineNotes.members['..i..'].alpha', 1) end

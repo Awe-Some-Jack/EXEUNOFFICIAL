@@ -109,10 +109,12 @@ end
 local h = 0
 function onUpdatePost(e)
 	h = h + e * 2
-	setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
-	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4))
-	setShaderFloat('wave', 'amount', getProperty('wave.x'))
-	setShaderFloat('wave', 'iTime', h)
+	if shadersEnabled then
+		setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
+		setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4))
+		setShaderFloat('wave', 'amount', getProperty('wave.x'))
+		setShaderFloat('wave', 'iTime', h)
+	end
 
 	if _sex ~= true then for _, name in ipairs(hs) do setProperty(name .. '.alpha', 0) end end
 end
@@ -142,15 +144,18 @@ function onCountdownStarted()
 end
 
 function onEvent(n,v1,v2)
-	if n == 'bright zoom' and flashingLights then
-		local divide = v2 == '' and 4 or tonumber(v2)
-		local amount = v1 == '' and 0.1 or tonumber(v1)
-		cancelTween('bloom')
-		setProperty('bloom.x', amount * 3)
-		doTweenX('bloom', 'bloom', 0, crochet / (1000 / divide), 'cubeOut')
-	end
-	if n == 'saturation' then
-		setShaderFloat('bloom', 'saturation', tonumber(v1))
+	if shadersEnabled then
+		
+		if n == 'bright zoom' and flashingLights then
+			local divide = v2 == '' and 4 or tonumber(v2)
+			local amount = v1 == '' and 0.1 or tonumber(v1)
+			cancelTween('bloom')
+			setProperty('bloom.x', amount * 3)
+			doTweenX('bloom', 'bloom', 0, crochet / (1000 / divide), 'cubeOut')
+		end
+		if n == 'saturation' then
+			setShaderFloat('bloom', 'saturation', tonumber(v1))
+		end
 	end
 	if n == 'Dadbattle Spotlight' and v1 == 'xd' then
 		setProperty('wave.x', 0.5)

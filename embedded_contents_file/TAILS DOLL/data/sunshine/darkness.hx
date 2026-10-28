@@ -16,25 +16,30 @@ function onCreatePost()
     FlxG.cameras.add(camDark, false);
     camDark.visible = false;
 
-    invertAlpha = new FlxRuntimeShader(
-        '#pragma header
+    if (ClientPrefs.data.shaders)
+    {
 
+        
+        invertAlpha = new FlxRuntimeShader(
+        '#pragma header
+        
         void main()
         {
             vec2 uv = openfl_TextureCoordv;
             
             vec4 color = texture2D(bitmap, uv);
-
+            
             float colorAmount = (color.r + color.g + color.b) / 3.0;
-
+            
             color.a = 1.0 - color.a;
-
-
+            
+            
             gl_FragColor = color;
         }'
-    );
-
-    camDark.filters = [new ShaderFilter(invertAlpha)];
+        );
+        
+        camDark.filters = [new ShaderFilter(invertAlpha)];
+    }
 
     gradientGraphic = FlxG.bitmap.add(Paths.image('gradient'));
 

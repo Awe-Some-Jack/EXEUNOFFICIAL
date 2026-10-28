@@ -3,9 +3,12 @@ var notesPosition:Array<Array<Array<Float>>> = [[0,0],[0,0],[0,0],[0,0]];
 var _savedDS:Bool = false;
 function onCreatePost()
 {
-	glitch = new ErrorHandledRuntimeShader('glitch', File.getContent('contents/GENESYS/shaders/glitch.frag'));
-	game.camGame.filters = [new ShaderFilter(glitch)];
-	//game.camHUD.filters = [new ShaderFilter(glitch)];
+	if (ClientPrefs.data.shaders)
+	{
+		glitch = new ErrorHandledRuntimeShader('glitch', File.getContent('contents/GENESYS/shaders/glitch.frag'));
+		game.camGame.filters = [new ShaderFilter(glitch)];
+		//game.camHUD.filters = [new ShaderFilter(glitch)];
+	}
 }
 
 var _hold:Float = 0;
@@ -57,8 +60,11 @@ function onEvent(n, v1)
 				applyToNotes();
 				_hold = 0.5;
 
-				glitch.setFloat('prob', 0.1);
-				glitch.setFloat('time', FlxG.random.float(0,10));
+				if (ClientPrefs.data.shaders)
+				{
+					glitch.setFloat('prob', 0.1);
+					glitch.setFloat('time', FlxG.random.float(0,10));
+				}
 			case 'b':
 				for (i in 0...4) 
 				{
@@ -69,7 +75,7 @@ function onEvent(n, v1)
 				applyToNotes();
 				_hold = 0.5;
 
-				glitch.setFloat('prob', 0);
+				if (ClientPrefs.data.shaders) glitch.setFloat('prob', 0);
 		}
 	}
 }

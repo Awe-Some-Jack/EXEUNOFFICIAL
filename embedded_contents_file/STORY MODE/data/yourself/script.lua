@@ -1,3 +1,4 @@
+local justMoved = false
 function onCreatePost()
     for i = 0, 7 do setPropertyFromGroup('strumLineNotes', i, 'y', getPropertyFromClass('backend.ClientPrefs', 'data.downScroll') and 800 or -500) end
 
@@ -7,6 +8,7 @@ function onCreatePost()
         setProperty('opponentStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('opponentStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('opponentStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
     end
     for _, healthStuff in ipairs({'iconBF', 'iconOpp', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'exeScoreTxt'}) do setProperty(healthStuff..'.alpha', 0) end
+    justMoved = true
 end
 
 function onSongStart()
@@ -14,6 +16,18 @@ function onSongStart()
        noteTweenAlpha(i..'Alpha', i, 0, 0.001)
     end
     setProperty('BlackGraphicGame.alpha', 1)
+
+    --This again, just in case
+    if not justMoved then
+        for i = 0, 7 do setPropertyFromGroup('strumLineNotes', i, 'y', getPropertyFromClass('backend.ClientPrefs', 'data.downScroll') and 800 or -500) end
+
+        local separation = 50
+        for i = 0, 3 do
+            setProperty('playerStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('playerStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+            setProperty('opponentStrums.members['..i..'].x', (screenWidth / 2) + (separation / 2) - (((getProperty('opponentStrums.members['..i..'].width') + (separation * 2)) * 4) / 2) + ((getProperty('opponentStrums.members['..i..'].width')) + separation * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i)
+        end
+        for _, healthStuff in ipairs({'iconBF', 'iconOpp', 'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'exeScoreTxt'}) do setProperty(healthStuff..'.alpha', 0) end
+    end
 end
 
 function onUpdatePost()

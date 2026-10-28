@@ -117,8 +117,6 @@ class Paths
 		openfl.Assets.cache.clear("music");
 		openfl.Assets.cache.clear("sounds");
 		#end
-
-		FlxG.bitmap.clearUnused();
 	}
 
 	static var streamedSounds:Map<String, Sound> = [];

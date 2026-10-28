@@ -26,7 +26,7 @@
 		}
 	],
 	"vocals_file": "",
-	"no_antialiasing": false,
+	"no_antialiasing": true,
 	"image": "gameovers/youcantrun/Bf-Pixel-Death",
 	"position": [155, 580],
 	"healthicon": "bf",

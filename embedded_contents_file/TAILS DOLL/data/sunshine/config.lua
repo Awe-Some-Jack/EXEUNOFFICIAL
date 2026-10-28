@@ -12,17 +12,18 @@ function onCreatePost()
 			setProperty('playerStrums.members[' .. i .. '].x', (screenWidth - 10 - (strumW * 4)) + (strumW * i))
 		end
 	end
+	if shadersEnabled then
+		makeLuaSprite("creepy")
+		makeLuaSprite("VHS")
+		setSpriteShader("VHS", "tvcrt")
 
-	makeLuaSprite("creepy")
-	makeLuaSprite("VHS")
-	setSpriteShader("VHS", "tvcrt")
+		makeLuaSprite('bloom')
+		setSpriteShader('bloom', 'brightness')
+		setShaderFloat('bloom', 'brightness', 0)
+		setShaderFloat('bloom', 'contrast', 1)
+		setShaderFloat('bloom', 'saturation', 1)
+	end
 
-	makeLuaSprite('bloom')
-	setSpriteShader('bloom', 'brightness')
-	setShaderFloat('bloom', 'brightness', 0)
-	setShaderFloat('bloom', 'contrast', 1)
-	setShaderFloat('bloom', 'saturation', 1)
-	
 	if shadersEnabled then
 		local neutrals = {
 			bloom = {brightness = 0, contrast = 1, saturation = 1},
@@ -58,21 +59,25 @@ function onUpdate(e)
 		})
 	end
 
-	setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
-	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4) + (getProperty('creepy.x') * 1.25))
-	setShaderFloat('bloom', 'saturation', _sat + (getProperty('creepy.x') / 2))
+	if shadersEnabled then
+		setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
+		setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4) + (getProperty('creepy.x') * 1.25))
+		setShaderFloat('bloom', 'saturation', _sat + (getProperty('creepy.x') / 2))
+	end
 end
 
 function onEvent(n,v1,v2)
-	if n == 'bright zoom' and flashingLights then
-		local divide = v2 == '' and 4 or tonumber(v2)
-		local amount = v1 == '' and 0.1 or tonumber(v1)
-		cancelTween('bloom')
-		setProperty('bloom.x', amount * 3)
-		doTweenX('bloom', 'bloom', 0, crochet / (1000 / divide), 'cubeOut')
-	end
-	if n == 'saturation' then
-		_sat = tonumber(v1)
+	if shadersEnabled then
+		if n == 'bright zoom' and flashingLights then
+			local divide = v2 == '' and 4 or tonumber(v2)
+			local amount = v1 == '' and 0.1 or tonumber(v1)
+			cancelTween('bloom')
+			setProperty('bloom.x', amount * 3)
+			doTweenX('bloom', 'bloom', 0, crochet / (1000 / divide), 'cubeOut')
+		end
+		if n == 'saturation' then
+			_sat = tonumber(v1)
+		end
 	end
 	if n == 'sunshinEvent' then
 		if v1 == 'startdark' then

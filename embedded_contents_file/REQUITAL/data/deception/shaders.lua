@@ -1,21 +1,24 @@
 local tweening = false
 function onCreate()
-	makeLuaSprite('hws')
-	setSpriteShader('hws', 'HeatwaveShader')
-	setShaderSampler2D('hws', 'distortTexture', 'bg/heatwave')
-
-	makeLuaSprite('cab')
-	setSpriteShader('cab', 'chromabber')
-	setShaderFloat('cab', 'amount', 0.05)
-
-	makeLuaSprite('bloom')
-	setSpriteShader('bloom', 'brightness')
-	setShaderFloat('bloom', 'brightness', 0)
-	setShaderFloat('bloom', 'contrast', 1)
-	setShaderFloat('bloom', 'saturation', 1)
-
-	makeLuaSprite('speedLines')
-	setSpriteShader('speedLines', 'speedLines')
+	if shadersEnabled then
+		
+		makeLuaSprite('hws')
+		setSpriteShader('hws', 'HeatwaveShader')
+		setShaderSampler2D('hws', 'distortTexture', 'bg/heatwave')
+		
+		makeLuaSprite('cab')
+		setSpriteShader('cab', 'chromabber')
+		setShaderFloat('cab', 'amount', 0.05)
+		
+		makeLuaSprite('bloom')
+		setSpriteShader('bloom', 'brightness')
+		setShaderFloat('bloom', 'brightness', 0)
+		setShaderFloat('bloom', 'contrast', 1)
+		setShaderFloat('bloom', 'saturation', 1)
+		
+		makeLuaSprite('speedLines')
+		setSpriteShader('speedLines', 'speedLines')
+	end
 
 	if shadersEnabled and not lowQuality then
 		local neutrals = {
@@ -42,12 +45,15 @@ end
 local thing = 0
 function onUpdatePost(e)
 	thing = thing + e
-	setShaderFloat('hws', 'iTime', thing)
-	setShaderFloat('speedLines', 'iTime', thing)
-
-	setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2.6)
-	setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 5))
-	setShaderFloat('cab', 'amount', 0.05 + (getProperty('bloom.x') * 4) + getProperty('cab.x'))
+	if shadersEnabled then
+		
+		setShaderFloat('hws', 'iTime', thing)
+		setShaderFloat('speedLines', 'iTime', thing)
+		
+		setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2.6)
+		setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 5))
+		setShaderFloat('cab', 'amount', 0.05 + (getProperty('bloom.x') * 4) + getProperty('cab.x'))
+	end
 end
 
 function lerp(a, b, t)
@@ -55,32 +61,39 @@ function lerp(a, b, t)
 end
 
 function onEvent(n, v1)
-	if n == 'bright zoom' and flashingLights then
-		cancelTween('bloom')
-		setProperty('bloom.x', 0.2)
-		doTweenX('bloom', 'bloom', 0, crochet / 250 / playbackRate, 'cubeOut')
-	end
-	if n == 'Add Camera Zoom' then
-		cancelTween('cab.x')
-		setProperty('cab.x', 0.2)
-		doTweenX('cab', 'cab', 0, crochet / 250 / playbackRate, 'cubeOut')
-		setProperty('camHUD.zoom', 1)
-	end
-	if n == 'BGchange' then
-		if v1 == 'back' or v1 == 'running' then
-			setStaticFilterActive('camGame', 'speedLines', true)
+	if shadersEnabled then
+		if n == 'bright zoom' and flashingLights then
+			cancelTween('bloom')
+			setProperty('bloom.x', 0.2)
+			doTweenX('bloom', 'bloom', 0, crochet / 250 / playbackRate, 'cubeOut')
 		end
-		if v1 == 'endcine' or v1 == 'xdddd' then
-			setStaticFilterActive('camGame', 'speedLines', false)
+		if n == 'Add Camera Zoom' then
+			cancelTween('cab.x')
+			setProperty('cab.x', 0.2)
+			doTweenX('cab', 'cab', 0, crochet / 250 / playbackRate, 'cubeOut')
+			setProperty('camHUD.zoom', 1)
 		end
+		if n == 'BGchange' then
+			if v1 == 'back' or v1 == 'running' then
+				setStaticFilterActive('camGame', 'speedLines', true)
+			end
+			if v1 == 'endcine' or v1 == 'xdddd' then
+				setStaticFilterActive('camGame', 'speedLines', false)
+			end
+		end
+	else
+		if n == 'Add Camera Zoom' then setProperty('camHUD.zoom', 1) end
 	end
 end
 
 function onSectionHit()
-	if getProperty('camZoomingMult') > 0 then
-		cancelTween('cab.x')
-		setProperty('cab.x', 0.2)
-		doTweenX('cab', 'cab', 0, crochet / 250 / playbackRate, 'cubeOut')
-		setProperty('camHUD.zoom', 1)
+	if shadersEnabled then
+		if getProperty('camZoomingMult') > 0 then
+			cancelTween('cab.x')
+			setProperty('cab.x', 0.2)
+			doTweenX('cab', 'cab', 0, crochet / 250 / playbackRate, 'cubeOut')
+			setProperty('camHUD.zoom', 1)
+		end
+	else if getProperty('camZoomingMult') > 0 then setProperty('camHUD.zoom', 1) end
 	end
 end

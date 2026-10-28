@@ -27,14 +27,17 @@ local shaders = {
     }},
 }
 function onCreatePost()
-    for num, shad in ipairs(shaders) do
-        makeLuaSprite(shad.name, nil, shad.x)
-        setSpriteShader(shad.name, shad.shader)
-        for u, v in pairs(shad.uniforms) do
-            setShaderFloat(shad.name, u, v)
+    if shadersEnabled then
+        
+        for num, shad in ipairs(shaders) do
+            makeLuaSprite(shad.name, nil, shad.x)
+            setSpriteShader(shad.name, shad.shader)
+            for u, v in pairs(shad.uniforms) do
+                setShaderFloat(shad.name, u, v)
+            end
         end
     end
-    if shadersEnabled and not lowQuality then
+        if shadersEnabled and not lowQuality then
         local neutrals = {
             chrom = {amount = 0},
             bw = {grayness = 0},
@@ -64,55 +67,61 @@ local onTween4 = false
 function onEvent(eventName, value1, value2)
     local shaderValues = stringSplit(value1, ',')
     local tweenSettings = stringSplit(value2, ',')
-    if eventName == "bloomFlash" and flashingLights then
-        cancelTween('shineX')
-        setProperty('shine.x', tonumber(shaderValues[1]))
-        doTweenX('shineX', 'shine', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween1 = true
-    end
-    if eventName == "chromFlash" and flashingLights then
-        cancelTween('chromX')
-        setProperty('chrom.x', tonumber(shaderValues[1]))
-        doTweenX('chromX', 'chrom', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween2 = true
-    end
-    if eventName == "bwFlash" and flashingLights then
-        cancelTween('bwX')
-        setProperty('bw.x', tonumber(shaderValues[1]))
-        doTweenX('bwX', 'bw', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween3 = true
-    end
-    if eventName == "colorFlash" and flashingLights then
-        cancelTween('colorX')
-        setProperty('color.x', tonumber(shaderValues[1]))
-        doTweenX('colorX', 'color', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
-        doTweenColor('dad', 'dad', '0000FF', tonumber(tweenSettings[1]), tweenSettings[2])
-        doTweenColor('boyfriend', 'boyfriend', '0000FF', tonumber(tweenSettings[1]), tweenSettings[2])
-        doTweenAlpha('camUD', 'camHUD', 0, tonumber(tweenSettings[1]), tweenSettings[2])
-        onTween4 = true
-    end
-
-    if eventName == 'mazinEvents' then
-        if value1 == 'saturation' then
-            setShaderFloat('shine', 'saturation', tonumber(value2))
+    if shadersEnabled then
+        
+        if eventName == "bloomFlash" and flashingLights then
+            cancelTween('shineX')
+            setProperty('shine.x', tonumber(shaderValues[1]))
+            doTweenX('shineX', 'shine', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween1 = true
+        end
+        if eventName == "chromFlash" and flashingLights then
+            cancelTween('chromX')
+            setProperty('chrom.x', tonumber(shaderValues[1]))
+            doTweenX('chromX', 'chrom', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween2 = true
+        end
+        if eventName == "bwFlash" and flashingLights then
+            cancelTween('bwX')
+            setProperty('bw.x', tonumber(shaderValues[1]))
+            doTweenX('bwX', 'bw', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween3 = true
+        end
+        if eventName == "colorFlash" and flashingLights then
+            cancelTween('colorX')
+            setProperty('color.x', tonumber(shaderValues[1]))
+            doTweenX('colorX', 'color', tonumber(shaderValues[2]), tonumber(tweenSettings[1]), tweenSettings[2])
+            doTweenColor('dad', 'dad', '0000FF', tonumber(tweenSettings[1]), tweenSettings[2])
+            doTweenColor('boyfriend', 'boyfriend', '0000FF', tonumber(tweenSettings[1]), tweenSettings[2])
+            doTweenAlpha('camUD', 'camHUD', 0, tonumber(tweenSettings[1]), tweenSettings[2])
+            onTween4 = true
+        end
+        
+        if eventName == 'mazinEvents' then
+            if value1 == 'saturation' then
+                setShaderFloat('shine', 'saturation', tonumber(value2))
+            end
         end
     end
 end
 
 
 function onUpdatePost(e)
-    if onTween1 then
-        setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
-        setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))
-    end
-    if onTween2 then
-        setShaderFloat('chrom', 'amount', getProperty('chrom.x'))
-    end
-    if onTween3 then
-        setShaderFloat('bw', 'grayness', getProperty('bw.x'))
-    end
-    if onTween4 then
-        setShaderFloat('color', 'brightness', getProperty('color.x'))
+    if shadersEnabled then
+        
+        if onTween1 then
+            setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
+            setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))
+        end
+        if onTween2 then
+            setShaderFloat('chrom', 'amount', getProperty('chrom.x'))
+        end
+        if onTween3 then
+            setShaderFloat('bw', 'grayness', getProperty('bw.x'))
+        end
+        if onTween4 then
+            setShaderFloat('color', 'brightness', getProperty('color.x'))
+        end
     end
     --setShaderFloat('uhoh', 'md', 1 + e)
 end

@@ -27,31 +27,41 @@ function loadShader(name:String)
 }
 
 function onCreate() {
-    chrom = loadShader('ChromaticAbberation');
-    glitch = loadShader('glitchChromatic');
-
-    if (chrom != null) chrom.setFloat('amount', 0.0);
-    if (glitch != null)
+    if (ClientPrefs.data.shaders)
     {
-        glitch.setFloat("iTime", 0);
-        glitch.setFloat('GLITCH', 0.0);
-    }
 
-    if (glitch != null) FilterPruner.add(camGame, glitch, 'GLITCH', 0);
-    if (chrom != null) FilterPruner.add(camGame, chrom, 'amount', 0);
+        chrom = loadShader('ChromaticAbberation');
+        glitch = loadShader('glitchChromatic');
+        
+        if (chrom != null) chrom.setFloat('amount', 0.0);
+        if (glitch != null)
+        {
+            glitch.setFloat("iTime", 0);
+            glitch.setFloat('GLITCH', 0.0);
+        }
+        
+        if (glitch != null) FilterPruner.add(camGame, glitch, 'GLITCH', 0);
+        if (chrom != null) FilterPruner.add(camGame, chrom, 'amount', 0);
+    }
 }
 
 function onEvent(n, v1, v2){
     var split1 = v1.split(', ');
     var split2 = v2.split(', ');
-    if (n == 'chromFlash' && chrom != null)
-        FlxTween.num(split1[0], split1[1], split2[0], {ease: split2[1]}, (val:Float) -> chrom.setFloat("amount", val));
-    if (n == 'glitchFlash' && glitch != null)
-        FlxTween.num(split1[0], split1[1], split2[0], {ease: split2[1]}, (val:Float) -> glitch.setFloat("GLITCH", val));
+    if (ClientPrefs.data.shaders)
+    {
+        if (n == 'chromFlash' && chrom != null)
+            FlxTween.num(split1[0], split1[1], split2[0], {ease: split2[1]}, (val:Float) -> chrom.setFloat("amount", val));
+        if (n == 'glitchFlash' && glitch != null)
+            FlxTween.num(split1[0], split1[1], split2[0], {ease: split2[1]}, (val:Float) -> glitch.setFloat("GLITCH", val));
+    }
 }
 
 function onUpdate(elapsed) {
-    if (glitch == null) return;
-    glitchTime += elapsed / 1000;
-    glitch.setFloat("iTime", glitchTime);
+    if (ClientPrefs.data.shaders)
+    {
+        if (glitch == null) return;
+        glitchTime += elapsed / 1000;
+        glitch.setFloat("iTime", glitchTime);
+    }
 }

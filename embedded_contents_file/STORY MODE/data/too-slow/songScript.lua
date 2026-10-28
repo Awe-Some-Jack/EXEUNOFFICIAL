@@ -86,7 +86,7 @@ function onUpdatePost(elapsed)
 
     if waveX then
         for i = 0, 7 do
-            setPropertyFromGroup('strumLineNotes', i, 'x', getPropertyFromGroup('strumLineNotes', i, 'x') + (math.cos(getSongPosition() / speed + i / elapsed)) * intensity)
+            setPropertyFromGroup('strumLineNotes', i, 'x', getPropertyFromGroup('strumLineNotes', i, 'x') + (math.cos(time / speed + i)) * intensity)
         end
     end
     if waveY then

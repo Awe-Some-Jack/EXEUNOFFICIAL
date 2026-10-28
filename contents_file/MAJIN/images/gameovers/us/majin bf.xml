@@ -2,123 +2,123 @@
 <TextureAtlas imagePath="majin bf.png">
 	<!-- Created with Adobe Animate version 24.0.12.3 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="bf dies instancia 10000" x="559" y="2815" width="458" height="559" frameX="-12" frameY="0" frameWidth="500" frameHeight="559"/>
-	<SubTexture name="bf dies instancia 10001" x="2236" y="2949" width="458" height="559" frameX="-12" frameY="0" frameWidth="500" frameHeight="559"/>
-	<SubTexture name="bf dies instancia 10002" x="0" y="1372" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10003" x="1963" y="1134" width="557" height="486" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10004" x="1963" y="1134" width="557" height="486" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10005" x="1404" y="1134" width="557" height="500" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10006" x="559" y="1372" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10007" x="559" y="1372" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10008" x="559" y="1372" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10009" x="559" y="1372" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10010" x="559" y="1372" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10011" x="559" y="1372" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10012" x="559" y="1372" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10013" x="559" y="1372" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10014" x="559" y="1372" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10015" x="2522" y="1506" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10016" x="2522" y="1506" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10017" x="2522" y="1506" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10018" x="1963" y="1622" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10019" x="1963" y="1622" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10020" x="1118" y="1636" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10021" x="1118" y="1636" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10022" x="3081" y="1703" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10023" x="3081" y="1703" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10024" x="3640" y="1703" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10025" x="4199" y="1741" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10026" x="4199" y="1741" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10027" x="4758" y="1753" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10028" x="4758" y="1753" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10029" x="5317" y="1753" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10030" x="5317" y="1753" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10031" x="0" y="1853" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10032" x="0" y="1853" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10033" x="559" y="1853" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10034" x="559" y="1853" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10035" x="2522" y="1987" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10036" x="1677" y="2103" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10037" x="1118" y="2117" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10038" x="3081" y="2184" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10039" x="3640" y="2184" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10040" x="4199" y="2222" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10041" x="4758" y="2234" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10042" x="5317" y="2234" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10043" x="0" y="2334" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10044" x="559" y="2334" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10045" x="2236" y="2468" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10046" x="1677" y="2584" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10047" x="1118" y="2598" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10048" x="2795" y="2665" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10049" x="3354" y="2665" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10050" x="3913" y="2703" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10051" x="4472" y="2715" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10052" x="5031" y="2715" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10053" x="5590" y="2715" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10054" x="0" y="2815" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10055" x="0" y="2815" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10056" x="0" y="2815" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="bf dies instancia 10057" x="0" y="2815" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
-	<SubTexture name="majinbf instancia 10000" x="4173" y="3647" width="517" height="441" frameX="-631" frameY="-689" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10001" x="4692" y="3647" width="500" height="441" frameX="-631" frameY="-706" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10002" x="4692" y="3647" width="500" height="441" frameX="-631" frameY="-706" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10003" x="3680" y="3647" width="491" height="442" frameX="-631" frameY="-715" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10004" x="3680" y="3647" width="491" height="442" frameX="-631" frameY="-715" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10005" x="3182" y="3636" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10006" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10007" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10008" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10009" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10010" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10011" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10012" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10013" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10014" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10015" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10016" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10017" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10018" x="5563" y="3196" width="486" height="446" frameX="-631" frameY="-720" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10019" x="0" y="3296" width="486" height="446" frameX="-631" frameY="-720" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10020" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10021" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10022" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10023" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10024" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10025" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10026" x="2683" y="3598" width="497" height="443" frameX="-631" frameY="-709" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10027" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10028" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10029" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10030" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10031" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10032" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10033" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10034" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10035" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10036" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10037" x="5563" y="3644" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10038" x="974" y="3531" width="495" height="444" frameX="-631" frameY="-711" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10039" x="974" y="3531" width="495" height="444" frameX="-631" frameY="-711" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10040" x="974" y="3531" width="495" height="444" frameX="-631" frameY="-711" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10041" x="2192" y="3510" width="489" height="445" frameX="-631" frameY="-717" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10042" x="2192" y="3510" width="489" height="445" frameX="-631" frameY="-717" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10043" x="1499" y="3524" width="489" height="445" frameX="-631" frameY="-717" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10044" x="4605" y="3196" width="477" height="449" frameX="-631" frameY="-729" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10045" x="4605" y="3196" width="477" height="449" frameX="-631" frameY="-729" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10046" x="5084" y="3196" width="477" height="449" frameX="-631" frameY="-729" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10047" x="5084" y="3196" width="477" height="449" frameX="-631" frameY="-729" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10048" x="2696" y="3146" width="474" height="450" frameX="-631" frameY="-732" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10049" x="2696" y="3146" width="474" height="450" frameX="-631" frameY="-732" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10050" x="3172" y="3146" width="474" height="450" frameX="-631" frameY="-732" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10051" x="3648" y="3184" width="474" height="450" frameX="-631" frameY="-732" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10052" x="3648" y="3184" width="474" height="450" frameX="-631" frameY="-732" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10053" x="1019" y="3079" width="478" height="450" frameX="-631" frameY="-728" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10054" x="4124" y="3196" width="479" height="449" frameX="-631" frameY="-727" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10055" x="4124" y="3196" width="479" height="449" frameX="-631" frameY="-727" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10056" x="488" y="3376" width="484" height="446" frameX="-631" frameY="-722" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10057" x="488" y="3376" width="484" height="446" frameX="-631" frameY="-722" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10058" x="1677" y="3065" width="513" height="457" frameX="-631" frameY="-694" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="bf dies instancia 10000" x="2545" y="948" width="458" height="559" frameX="-12" frameY="0" frameWidth="500" frameHeight="559"/>
+	<SubTexture name="bf dies instancia 10001" x="3005" y="948" width="458" height="559" frameX="-12" frameY="0" frameWidth="500" frameHeight="559"/>
+	<SubTexture name="bf dies instancia 10002" x="559" y="1372" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10003" x="0" y="1372" width="557" height="486" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10004" x="0" y="1372" width="557" height="486" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10005" x="1974" y="1134" width="557" height="500" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10006" x="2533" y="1509" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10007" x="2533" y="1509" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10008" x="2533" y="1509" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10009" x="2533" y="1509" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10010" x="2533" y="1509" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10011" x="2533" y="1509" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10012" x="2533" y="1509" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10013" x="2533" y="1509" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10014" x="2533" y="1509" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10015" x="1974" y="1636" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10016" x="1974" y="1636" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10017" x="1974" y="1636" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10018" x="1118" y="1692" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10019" x="1118" y="1692" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10020" x="3092" y="1703" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10021" x="3092" y="1703" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10022" x="3651" y="1703" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10023" x="3651" y="1703" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10024" x="4210" y="1741" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10025" x="4769" y="1753" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10026" x="4769" y="1753" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10027" x="5328" y="1753" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10028" x="5328" y="1753" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10029" x="559" y="1853" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10030" x="559" y="1853" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10031" x="0" y="1860" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10032" x="0" y="1860" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10033" x="2533" y="1990" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10034" x="2533" y="1990" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10035" x="1677" y="2117" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10036" x="1118" y="2173" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10037" x="3092" y="2184" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10038" x="3651" y="2184" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10039" x="4210" y="2222" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10040" x="4769" y="2234" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10041" x="5328" y="2234" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10042" x="559" y="2334" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10043" x="0" y="2341" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10044" x="2236" y="2471" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10045" x="1677" y="2598" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10046" x="1118" y="2654" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10047" x="2795" y="2665" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10048" x="3354" y="2665" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10049" x="3913" y="2703" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10050" x="4472" y="2715" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10051" x="5031" y="2715" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10052" x="5590" y="2715" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10053" x="559" y="2815" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10054" x="0" y="2822" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10055" x="0" y="2822" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10056" x="0" y="2822" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="bf dies instancia 10057" x="0" y="2822" width="557" height="479" frameX="0" frameY="-1" frameWidth="500" frameHeight="559" rotated="true" />
+	<SubTexture name="majinbf instancia 10000" x="5142" y="3644" width="517" height="441" frameX="-631" frameY="-689" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10001" x="5661" y="3644" width="500" height="441" frameX="-631" frameY="-706" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10002" x="5661" y="3644" width="500" height="441" frameX="-631" frameY="-706" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10003" x="3644" y="3635" width="491" height="442" frameX="-631" frameY="-715" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10004" x="3644" y="3635" width="491" height="442" frameX="-631" frameY="-715" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10005" x="2648" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10006" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10007" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10008" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10009" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10010" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10011" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10012" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10013" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10014" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10015" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10016" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10017" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10018" x="5142" y="3196" width="486" height="446" frameX="-631" frameY="-720" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10019" x="5630" y="3196" width="486" height="446" frameX="-631" frameY="-720" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10020" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10021" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10022" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10023" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10024" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10025" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10026" x="1045" y="3587" width="497" height="443" frameX="-631" frameY="-709" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10027" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10028" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10029" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10030" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10031" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10032" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10033" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10034" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10035" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10036" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10037" x="3146" y="3598" width="496" height="443" frameX="-631" frameY="-710" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10038" x="1594" y="3531" width="495" height="444" frameX="-631" frameY="-711" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10039" x="1594" y="3531" width="495" height="444" frameX="-631" frameY="-711" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10040" x="1594" y="3531" width="495" height="444" frameX="-631" frameY="-711" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10041" x="0" y="3303" width="489" height="445" frameX="-631" frameY="-717" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10042" x="0" y="3303" width="489" height="445" frameX="-631" frameY="-717" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10043" x="2157" y="3411" width="489" height="445" frameX="-631" frameY="-717" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10044" x="4184" y="3196" width="477" height="449" frameX="-631" frameY="-729" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10045" x="4184" y="3196" width="477" height="449" frameX="-631" frameY="-729" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10046" x="4663" y="3196" width="477" height="449" frameX="-631" frameY="-729" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10047" x="4663" y="3196" width="477" height="449" frameX="-631" frameY="-729" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10048" x="1118" y="3135" width="474" height="450" frameX="-631" frameY="-732" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10049" x="1118" y="3135" width="474" height="450" frameX="-631" frameY="-732" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10050" x="2751" y="3146" width="474" height="450" frameX="-631" frameY="-732" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10051" x="3227" y="3146" width="474" height="450" frameX="-631" frameY="-732" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10052" x="3227" y="3146" width="474" height="450" frameX="-631" frameY="-732" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10053" x="1677" y="3079" width="478" height="450" frameX="-631" frameY="-728" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10054" x="3703" y="3184" width="479" height="449" frameX="-631" frameY="-727" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10055" x="3703" y="3184" width="479" height="449" frameX="-631" frameY="-727" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10056" x="559" y="3296" width="484" height="446" frameX="-631" frameY="-722" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10057" x="559" y="3296" width="484" height="446" frameX="-631" frameY="-722" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10058" x="2236" y="2952" width="513" height="457" frameX="-631" frameY="-694" frameWidth="1777" frameHeight="1760" rotated="true" />
 	<SubTexture name="majinbf instancia 10059" x="0" y="0" width="1402" height="1370" frameX="-200" frameY="-177" frameWidth="1777" frameHeight="1760" rotated="true" />
 	<SubTexture name="majinbf instancia 10060" x="1404" y="0" width="1139" height="1132" frameX="-319" frameY="-308" frameWidth="1777" frameHeight="1760" rotated="true" />
 	<SubTexture name="majinbf instancia 10061" x="2545" y="0" width="952" height="946" frameX="-409" frameY="-405" frameWidth="1777" frameHeight="1760"/>
@@ -128,154 +128,154 @@
 	<SubTexture name="majinbf instancia 10065" x="5287" y="883" width="870" height="868" frameX="-450" frameY="-444" frameWidth="1777" frameHeight="1760"/>
 	<SubTexture name="majinbf instancia 10066" x="4395" y="885" width="858" height="854" frameX="-457" frameY="-451" frameWidth="1777" frameHeight="1760"/>
 	<SubTexture name="majinbf instancia 10067" x="3499" y="890" width="814" height="811" frameX="-478" frameY="-473" frameWidth="1777" frameHeight="1760"/>
-	<SubTexture name="majinbf instancia 10068" x="2545" y="948" width="568" height="556" frameX="-607" frameY="-631" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10069" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10070" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10071" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10072" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10073" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10074" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10075" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10076" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10077" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10078" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10079" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10080" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10081" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10082" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10083" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10084" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10085" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10086" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10087" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10088" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10089" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10090" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10091" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10092" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10093" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10094" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10095" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10096" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10097" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10098" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10099" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10100" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10101" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10102" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10103" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10104" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10105" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10106" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10107" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10108" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10109" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10110" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10111" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10112" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10113" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10114" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10115" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10116" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10117" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10118" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10119" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10120" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10121" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10122" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10123" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10124" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10125" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10126" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10127" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10128" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10129" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10130" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10131" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10132" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10133" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10134" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10135" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10136" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10137" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10138" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10139" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10140" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10141" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10142" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10143" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10144" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10145" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10146" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10147" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10148" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10149" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10150" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10151" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10152" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10153" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10154" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10155" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10156" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10157" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10158" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10159" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10160" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10161" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10162" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10163" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10164" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10165" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10166" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10167" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10168" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10169" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10170" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10171" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10172" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10173" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10174" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10175" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10176" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10177" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10178" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10179" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10180" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10181" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10182" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10183" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10184" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10185" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10186" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10187" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10188" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10189" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10190" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10191" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10192" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10193" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10194" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10195" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10196" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10197" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10198" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10199" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10200" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10201" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10202" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10203" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10204" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10205" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10206" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10207" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10208" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10209" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10210" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10211" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10212" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10213" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10214" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10215" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10216" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
-	<SubTexture name="majinbf instancia 10217" x="2545" y="948" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10068" x="1404" y="1134" width="568" height="556" frameX="-607" frameY="-631" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10069" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10070" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10071" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10072" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10073" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10074" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10075" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10076" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10077" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10078" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10079" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10080" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10081" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10082" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10083" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10084" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10085" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10086" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10087" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10088" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10089" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10090" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10091" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10092" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10093" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10094" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10095" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10096" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10097" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10098" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10099" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10100" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10101" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10102" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10103" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10104" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10105" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10106" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10107" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10108" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10109" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10110" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10111" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10112" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10113" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10114" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10115" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10116" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10117" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10118" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10119" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10120" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10121" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10122" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10123" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10124" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10125" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10126" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10127" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10128" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10129" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10130" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10131" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10132" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10133" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10134" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10135" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10136" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10137" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10138" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10139" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10140" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10141" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10142" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10143" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10144" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10145" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10146" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10147" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10148" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10149" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10150" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10151" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10152" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10153" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10154" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10155" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10156" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10157" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10158" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10159" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10160" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10161" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10162" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10163" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10164" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10165" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10166" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10167" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10168" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10169" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10170" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10171" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10172" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10173" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10174" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10175" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10176" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10177" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10178" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10179" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10180" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10181" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10182" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10183" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10184" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10185" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10186" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10187" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10188" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10189" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10190" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10191" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10192" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10193" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10194" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10195" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10196" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10197" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10198" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10199" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10200" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10201" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10202" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10203" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10204" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10205" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10206" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10207" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10208" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10209" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10210" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10211" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10212" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10213" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10214" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10215" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10216" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
+	<SubTexture name="majinbf instancia 10217" x="1404" y="1134" width="568" height="556" frameX="-843" frameY="-893" frameWidth="1777" frameHeight="1760" rotated="true" />
 </TextureAtlas>

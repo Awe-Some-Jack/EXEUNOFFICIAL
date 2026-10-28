@@ -459,6 +459,7 @@ class SoundTest extends MusicBeatState
 	{
 		enterTheValleyAfterBlackSun = false;
 		minigames.preymini.PreyMini.songLives = 0;
+		minigames.preymini.PreyMini.songRings = -1;
 		if (isWeek)
 		{
 			final leWeek:WeekData = WeekData.weeksLoaded.get(name);

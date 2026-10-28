@@ -174,7 +174,6 @@ function makeLight(bmd, col:Int, at:Int)
 	var s = new FlxSprite().loadGraphic(bmd);
 	s.color = col;
 	s.blend = LuaUtils.blendModeFromString('add');
-	s.antialiasing = true;
 	s.alpha = 0;
 	s.visible = false;
 	s.active = false;

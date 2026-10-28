@@ -183,7 +183,7 @@
 	"pause_options": "SOZLAMALAR",
 	"pause_exit": "CHIQISH",
 
-	"valley_tutorial_skull": "BOSH SUYAGINI TEKSHIRING",
+	"valley_tutorial_skull": "BOSH SUYAKLARI UYUMINI TEKSHIRING",
 	"valley_tutorial_hide": "TOTEMGA YASHIRINING",
 	"valley_tutorial_unhide": "TOTEMDAN CHIQING",
 	"valley_skip_cutscene": "KATSENANI O‘TKAZISH UCHUN PROBELNI BOSING",
@@ -193,5 +193,9 @@
 	"tripletrouble_death_3": "Halqa yo‘q, omad yo‘q, endi vaqt ham yo‘q.",
 	"tripletrouble_death_t": "Nima bo‘ldi? Tails seni dumingdan ushladimi?",
 	"tripletrouble_death_k": "Shekilli, mening Knucklesimga bardosh berolmading. Afsus!",
-	"tripletrouble_death_e": "MEN EGGMANMAN!"
+	"tripletrouble_death_e": "MEN EGGMANMAN!",
+	"prey_ending_1": "Voy!",
+	"prey_ending_2": "Anavi badniklarni qara...",
+	"prey_ending_3": "Ularning hammasi qayoqqa ketyapti?",
+	"prey_ending_4": "Nima bo'layotganini bilib kelganim ma'qul!"
 }

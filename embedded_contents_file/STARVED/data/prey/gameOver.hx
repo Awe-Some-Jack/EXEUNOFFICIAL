@@ -23,6 +23,7 @@ var gameOverShown:Bool = false;
 function onGameOver()
 {
 	if (backToMinigame) return Function_Stop;
+	PreyMini.songRings = -1;
 	if (PreyMini.songLives <= 0) return Function_Continue;
 	PreyMini.songLives--;
 	setVar('preyLives', PreyMini.songLives);

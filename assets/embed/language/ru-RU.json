@@ -184,7 +184,7 @@
 	"pause_options": "НАСТРОЙКИ",
 	"pause_exit": "ВЫХОД",
 
-	"valley_tutorial_skull": "ОБЫЩИ ЧЕРЕП",
+	"valley_tutorial_skull": "ОБЫЩИ КУЧКУ ЧЕРЕПОВ",
 	"valley_tutorial_hide": "СПРЯЧЬСЯ В ТОТЕМЕ",
 	"valley_tutorial_unhide": "ВЫЙДИ ИЗ ТОТЕМА",
 	"valley_skip_cutscene": "НАЖМИ ПРОБЕЛ, ЧТОБЫ ПРОПУСТИТЬ КАТСЦЕНУ",
@@ -194,5 +194,9 @@
 	"tripletrouble_death_3": "Ни колец, ни удачи, а теперь и ни времени.",
 	"tripletrouble_death_t": "Что такое? Тэйлс схватил тебя за хвост?",
 	"tripletrouble_death_k": "Похоже, ты не справился с моим Наклзом. Как жаль!",
-	"tripletrouble_death_e": "Я И ЕСТЬ ЭГГМАН!"
+	"tripletrouble_death_e": "Я И ЕСТЬ ЭГГМАН!",
+	"prey_ending_1": "Ого!",
+	"prey_ending_2": "Посмотри на всех этих бадников...",
+	"prey_ending_3": "Куда это они все направляются?",
+	"prey_ending_4": "Лучше пойду выясню, что происходит!"
 }

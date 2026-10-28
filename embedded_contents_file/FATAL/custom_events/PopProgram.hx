@@ -215,6 +215,9 @@ function onStepHit() {
     if(!isFatalitySong) return;
 
     switch(curStep) {
+        case 2559:
+            closeAllPrograms();
+            showFatalScreen();
         case 255:
             var proc = getVar('corruptionBarProcess');
 			if(proc != null) {
@@ -323,6 +326,34 @@ function floodWithPopups() {
             shutdownTimer = new FlxTimer().start(1.5, function(_) shutEverythingDown());
         }
     }, 24);
+}
+
+function closeAllPrograms() {
+    stopPopupHost();
+    closeCorruptionBar();
+
+    var hbProc = getVar('healthBarProcess');
+    if(hbProc != null) {
+        killProcess(hbProc);
+        setVar('healthBarProcess', null);
+    }
+}
+
+var fatalScreen:FlxSprite = null;
+function showFatalScreen() {
+    if(fatalScreen != null) return;
+
+    PlayState.isFixedAspectRatio = false;
+    FlxG.fullscreen = true;
+
+    fatalScreen = new FlxSprite().loadGraphic(Paths.image('fatality/fatalscreen'));
+    fatalScreen.antialiasing = false;
+    fatalScreen.setGraphicSize(FlxG.width, FlxG.height);
+    fatalScreen.updateHitbox();
+    fatalScreen.screenCenter();
+    fatalScreen.scrollFactor.set();
+    fatalScreen.cameras = [game.camOther];
+    game.add(fatalScreen);
 }
 
 function shutEverythingDown() {

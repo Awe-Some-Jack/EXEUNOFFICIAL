@@ -26,6 +26,7 @@ class PreyMini extends MusicBeatState
 	public static var fromSoundTest:Bool = false;
 
 	public static var songLives:Int = 0;
+	public static var songRings:Int = -1;
 
 	static final CHAIN_SCORE:Array<Int> = [100, 200, 500, 1000];
 
@@ -74,6 +75,7 @@ class PreyMini extends MusicBeatState
 		super.create();
 		FlxG.sound.music?.stop();
 		songLives = 0;
+		songRings = -1;
 		_prevUpdateFps = FlxG.updateFramerate;
 		_prevDrawFps = FlxG.drawFramerate;
 		_setFps(60, 60);
@@ -302,6 +304,7 @@ class PreyMini extends MusicBeatState
 		WeekData.setDirectoryFromWeek(data);
 		PlayState.storyWeek = week;
 		songLives = Std.int(Math.max(1, _lives));
+		songRings = _hud.rings;
 		Difficulty.loadFromWeek();
 		final normal = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == "normal");
 		final diff = normal > -1 ? normal : 0;

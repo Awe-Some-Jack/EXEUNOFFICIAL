@@ -4,7 +4,6 @@ import flixel.util.FlxAxes;
 import objects.VideoSprite;
 import objects.Character;
 import openfl.display.BlendMode;
-import haxe.ds.Map;
 
 final game = PlayState.instance;
 
@@ -24,7 +23,7 @@ var botBar:FlxSprite;
 var sanics1:FlxBackdrop;
 var sanics2:FlxBackdrop;
 
-var preloadedVideos:Dynamic = {};
+var preloadedVideos:Array<VideoSprite> = [];
 var precacheVideos:Array<String> = [
 	'Mlg',
 	'Explosion',
@@ -159,30 +158,30 @@ function onCreatePost()
 	bandicam.screenCenter(0x01);
 	add(bandicam);
 
-	preloadedVideos = {};
-	for (v in precacheVideos)
-	{
-		trace(v);
-		var video:VideoSprite = new VideoSprite(0, 0, false);
-		video.camera = camHUD;
-		video.onFormat(() -> {
-			video.setGraphicSize(FlxG.width, FlxG.height);
-			video.screenCenter();
-			video.video.antialiasing = ClientPrefs.data.antialiasing;
-		});
+	preloadedVideos = [];
+	for (v in precacheVideos) preloadedVideos.push(makePreloadedVideo(v));
+}
+
+function makePreloadedVideo(name:String):VideoSprite
+{
+	var video:VideoSprite = new VideoSprite(0, 0, false);
+	video.camera = camHUD;
+	video.onFormat(() -> {
+		video.setGraphicSize(FlxG.width, FlxG.height);
+		video.screenCenter();
 		video.video.antialiasing = ClientPrefs.data.antialiasing;
-		video.video.shader = new ErrorHandledRuntimeShader('GreenScreenShader', File.getContent('contents/SANIC/shaders/GreenScreenShader.frag'));
-		video.onEnd(() -> {
-			remove(video);
-			video.stop();
-		});
-		if (video.loadVideo(Paths.video(v), [VideoSprite.ARG_MUTED])) {
-			add(video);
-			video.alpha = 0.0001; 
-			video.play();
-		}
-		Reflect.setField(preloadedVideos, v, video);
-	}
+	});
+	video.video.antialiasing = ClientPrefs.data.antialiasing;
+	video.video.shader = new ErrorHandledRuntimeShader('GreenScreenShader', File.getContent('contents/SANIC/shaders/GreenScreenShader.frag'));
+	video.onEnd(() -> {
+		remove(video);
+		video.stop();
+	});
+	if (!video.loadVideo(Paths.video(name), [VideoSprite.ARG_MUTED])) return null;
+	add(video);
+	video.alpha = 0.0001;
+	video.play();
+	return video;
 }
 
 var iTime:Float = 0;

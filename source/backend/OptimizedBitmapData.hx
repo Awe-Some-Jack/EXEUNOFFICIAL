@@ -19,7 +19,7 @@ class OptimizedBitmapData extends BitmapData
 
 	public static function fromOpenFlAssets(id:String):OptimizedBitmapData
 	{
-		var src:BitmapData = OpenFlAssets.getBitmapData(id);
+		var src:BitmapData = OpenFlAssets.getBitmapData(id, false);
 		if (src == null) return null;
 		var bitmapData = new OptimizedBitmapData(0, 0, true, 0);
 		@:privateAccess bitmapData.__fromImage(@:privateAccess src.image);

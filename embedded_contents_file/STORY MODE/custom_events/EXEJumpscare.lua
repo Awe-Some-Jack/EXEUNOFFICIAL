@@ -5,6 +5,7 @@ local jumpscareSprite = {
 local isScaringYou = false
 
 precacheImage('characters/jumcare')
+precacheSound('jumpscareSound')
 
 function onCreatePost()
     for _, jum in ipairs(jumpscareSprite) do
@@ -24,7 +25,7 @@ function onEvent(lol)
             isScaringYou = true
             setProperty('jumpscare.alpha', 1)
             playAnim('jumpscare', 'aidel', true)
-            playSound('jumpscareSound')
+            playSound('jumpscareSound', 1, "xenoScream")
             setProperty('cameraSpeed', 1)
             runHaxeCode("camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = true;")
         end
@@ -41,3 +42,9 @@ function onUpdate(elapsed)
         end
     end
 end
+
+function onPause() pauseSound("xenoScream") end
+
+function onResume() resumeSound("xenoScream") end
+
+function onDestroy() stopSound("xenoScream") end

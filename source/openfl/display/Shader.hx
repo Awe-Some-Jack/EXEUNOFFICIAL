@@ -393,7 +393,6 @@ class Shader
 		
 		var message = "";
 		var lines = source.split("\n");
-		var failingLine:String = null;
 
 		var nvidiaRegex = ~/^\d+\((\d+)\)\s*:\s*(.+)$/;
 		var amdRegex = ~/^\w+?:\s*\d+:(\d+):?\s*(.+)$/;
@@ -415,25 +414,25 @@ class Shader
 				lineNumber = Std.parseInt(amdRegex.matched(1));
 				info = amdRegex.matched(2);
 			} 
-			else 
+			else
 			{
-				failingLine = log;
-				break;
+				message += '\n\n $log';
+				continue;
 			}
 
 			if (lineNumber > 0 && lineNumber <= lines.length)
 			{
-				var lineCode = StringTools.trim(lines[lineNumber - 1]);
 				var indent = StringTools.lpad("|", " ", Std.string(lineNumber).length + 3);
-				message += '\n\n $lineNumber | $lineCode\n$indent $info';
+				message += '\n\n';
+				for (n in Std.int(Math.max(1, lineNumber - 3))...Std.int(Math.min(lines.length, lineNumber + 2)) + 1)
+					message += ' ' + (n == lineNumber ? '>' : ' ') + ' $n | ${StringTools.trim(lines[n - 1])}\n';
+				message += '$indent $info';
 			}
 			else 
 			{
 				message += '\n\n $lineNumber | $info';
 			}
 		}
-
-		if (failingLine != null) message = '\nFailed to parse log: "$failingLine"\n$infoLog';
 
 		if (onShaderError != null) 
 		{

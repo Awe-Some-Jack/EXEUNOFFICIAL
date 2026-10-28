@@ -185,7 +185,7 @@ class EnemySpawner
 	{
 		if (_sonic.dead || _sonic.leaving || _sonic.grabbed || !_sonic.controllable) return false;
 		if (_sonic.posX < 450 || screenRight + 400 > _terrain.width) return false;
-		return _bees.length + _hooks.length + _rushes.length + _kamas.length < 3 + (_progress() > 0.25 ? 1 : 0) + (_progress() > 2 / 3 ? 1 : 0);
+		return _bees.length + _hooks.length + _rushes.length + _kamas.length < 2 + (_progress() > 0.25 ? 1 : 0) + (_progress() > 2 / 3 ? 1 : 0);
 	}
 
 	function _send(x:Float):Void
@@ -354,7 +354,7 @@ class EnemySpawner
 
 	function _nextGap():Float
 	{
-		final gap = 620 + (-320) * _progress();
+		final gap = 720 + (-370) * _progress();
 		return gap * FlxG.random.float(0.75, 1.25);
 	}
 

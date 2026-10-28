@@ -605,6 +605,7 @@ local function spawnSpikes()
 	if getProperty('cpuControlled') then
 		runTimer('botJump'..id..'spikes', math.max(0.05, (start - getProperty('sonicHitboxFix.x') - 160) / speed - 0.12))
 	end
+	return true
 end
 
 local function spawnRush()
@@ -710,7 +711,7 @@ function onSectionHit()
 			skipSections = 1
 			return
 		end
-		if roll <= 22 then spawnRings() else spawnSpikes() end
+		if roll <= 22 then spawnRings() elseif spawnSpikes() then skipSections = 1 end
 	end
 end
 

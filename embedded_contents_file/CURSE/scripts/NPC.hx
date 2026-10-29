@@ -1,35 +1,37 @@
 import flixel.FlxSprite;
 
-var tag:String;
-var DEFAULT_BEATS_PER_BEATS:Int = 2;
-var dancePerBeats:Int = DEFAULT_BEATS_PER_BEATS;
-var beatProgress:Int = -1;
+public class NPC extends FlxSprite {
+    public var tag:String;
+    public static var DEFAULT_BEATS_PER_BEATS:Int = 2;
+    public var dancePerBeats:Int = DEFDAULT_BEATS_PER_BEATS;
+    public var beatProgress:Int = -1;
 
-// for now, default states are DANCE, STATIC, ACTION
-var curState:String = "DANCE";
+    // for now, default states are DANCE, STATIC, ACTION
+    public var curState:String = "DANCE";
+   
+    public var animTimer:Float = 2;
 
-var animTimer:Float = 2;
+    public function new (tag:String, dancePerBeats:Int, initialState:String){
+        super();
 
-function onSongStart()
-{
-	// BOTPLAY ON (borrar esta línea después)
-	game.cpuControlled = true;
-}
+        this.tag = tag;
+        this.dancePerBeats = dancePerBeats;
+        this.curState = initialState; 
+    }
 
-function onUpdatePost(elapsed:Float)
-{
-	animTimer -= elapsed;
-}
+    override function update(elapsed:Float) {
+        super.update(elapsed);
 
-function onBeatHit()
-{
-	beatProgress++;
+        animTimer -= elapsed;
+    }
 
-	if (curState == "DANCE")
-	{
-		if (curBeat % 2 == 0)
-		{
-			// danz danz danze
-		}
-	}
+    public function onBeatHit(beats:Int){
+        beatProgress += beats;
+
+        if (curState == "DANCE"){
+            if (beats % 2 == 0){
+                // danz danz danze
+            }
+        }
+    }
 }

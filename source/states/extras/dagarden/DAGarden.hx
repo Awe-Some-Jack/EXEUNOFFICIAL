@@ -254,7 +254,7 @@ class DAGSongs extends MusicBeatSubstate
 
     function buildBoxes():Void
     {
-        final bmp = Paths.getBitmapData("assets/exe/extras/dagarden/sprites/gardenbox.webp");
+        final bmp = Paths.getBitmapData("assets/exe/extras/dagarden/sprites/gardenbox.webp", true, true);
         for (i in 0...songList.length)
         {
             final y     = 116.0 + i * 120.0;
@@ -286,7 +286,7 @@ class DAGSongs extends MusicBeatSubstate
         final cv = new FlxSprite(bx, by);
         final basePath = 'assets/exe/extras/dagarden/cover/$song';
         
-        final bitmap = Paths.getBitmapData(basePath);
+        final bitmap = Paths.getBitmapData(basePath, true, true);
 
         if (bitmap != null)
         {
@@ -572,7 +572,7 @@ class DAGPlayer extends FlxGroup
     inline function spr(x:Float, y:Float, file:String, sc:Float):FlxSprite
     {
         final s = new FlxSprite(x, y);
-        s.loadGraphic(Paths.getBitmapData("assets/exe/extras/dagarden/" + file));
+        s.loadGraphic(Paths.getBitmapData("assets/exe/extras/dagarden/" + file, true, true));
         s.scale.set(sc, sc);
         s.updateHitbox();
         s.antialiasing = ClientPrefs.data.antialiasing;
@@ -1407,7 +1407,7 @@ class DAGarden extends SonicSubState
         }
 
         arrow  = spr(490, 90, "objects/arrow.webp", 0.34);
-        spikes = new FlxBackdrop(Paths.getBitmapData("assets/exe/extras/dagarden/sprites/spikes.webp"), Y, 0, 0);
+        spikes = new FlxBackdrop(Paths.getBitmapData("assets/exe/extras/dagarden/sprites/spikes.webp", true, true), Y, 0, 0);
         spikes.setPosition(70, 87);
         spikes.scale.set(0.34, 0.34);
         spikes.updateHitbox();
@@ -1438,7 +1438,7 @@ class DAGarden extends SonicSubState
     inline function spr(x:Float, y:Float, file:String, sc:Float):FlxSprite
     {
         final s = new FlxSprite(x, y);
-        s.loadGraphic(Paths.getBitmapData("assets/exe/extras/dagarden/" + file));
+        s.loadGraphic(Paths.getBitmapData("assets/exe/extras/dagarden/" + file, true, true));
         s.scale.set(sc, sc);
         s.updateHitbox();
         add(s);

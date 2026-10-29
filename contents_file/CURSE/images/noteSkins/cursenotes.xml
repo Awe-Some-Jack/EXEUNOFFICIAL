@@ -2,8 +2,8 @@
 <TextureAtlas imagePath="cursenotes.png">
 	<!-- Created with Adobe Animate version 23.0.0.407 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="blue0000" x="0" y="158" width="168" height="156"/>
-	<SubTexture name="purple0000" x="170" y="0" width="168" height="155" frameX="-1" frameY="0" frameWidth="157" frameHeight="168" rotated="true" />
-	<SubTexture name="red0000" x="0" y="0" width="168" height="156" rotated="true" />
-	<SubTexture name="green0000" x="170" y="157" width="168" height="164" frameX="0" frameY="0" frameWidth="169" frameHeight="165" />
+	<SubTexture name="blue0000" x="0" y="166" width="168" height="156"/>
+	<SubTexture name="purple0000" x="0" y="482" width="168" height="155" frameX="-1" frameY="0" frameWidth="157" frameHeight="168" rotated="true" />
+	<SubTexture name="red0000" x="0" y="324" width="168" height="156" rotated="true" />
+	<SubTexture name="green0000" x="0" y="0" width="168" height="164" frameX="0" frameY="0" frameWidth="169" frameHeight="165" />
 </TextureAtlas>

@@ -58,7 +58,7 @@ var flashBackBG:Array<SprDef> = [
 	{name: 'mount',         path: 'slow/flashback/idk',              x:  -650, y:  650,                                                                              scaleX: 1, scaleY: 1, scrollX: 1, scrollY: 1, alpha: 0},
 	{name: 'plant',         path: 'slow/flashback/plants',           x:  -400, y:  730,                                                                              scaleX: 0.9, scaleY: 0.9, scrollX: 1, scrollY: 1, alpha: 0},
 	{name: 'floor',         path: 'slow/flashback/ground',           x:  -1000,y: 1100,                                                                              scaleX: 1.4, scaleY: 1.4, scrollX: 1, scrollY: 1, alpha: 0},
-	{name: 'picoDead',      path: 'slow/flashback/pico_ded',         x:   470, y: 1050,                                                                              scaleX: 0.6, scaleY: 0.6, scrollX: 1, scrollY: 1, alpha: 0, front: true},
+	{name: 'picoDead',      path: 'slow/flashback/pico_ded',         x:   370, y: 900,                                                                              scaleX: 0.6, scaleY: 0.6, scrollX: 1, scrollY: 1, alpha: 0, front: true},
 ];
 
 var spritesLQ:Array<SprDef> = [
@@ -107,8 +107,8 @@ function onCreate()
 {
 	if (!lq)
 	{
-		for (spr in sprites)    addSpr(spr);
 		for (fl in flashBackBG) addSpr(fl);
+		for (spr in sprites)    addSpr(spr);
 	}
 	else
 	{
@@ -153,7 +153,7 @@ function onEvent(e, v1, v2)
 	if (v2 == '')
 	{
 		for (yes in flashBackBG) FlxTween.tween(getSpr(yes.name), {alpha: 1}, 2);
-		for (yes in sprites)     FlxTween.tween(getSpr(yes.name), {alpha: 0}, 2);
+		for (yes in sprites) if (yes.prefix != 'Símbolo 10 instancia') FlxTween.tween(getSpr(yes.name), {alpha: 0}, 2);
 		
 		FlxTween.tween(gfGroup, {alpha: 0}, 2);
 
@@ -177,16 +177,16 @@ function onEvent(e, v1, v2)
 	}
 	else if (v2 == 'fade')
 	{
+		tweenBack = true;
 		if (prefs.shaders)
 		{
-			tweenBack = true;
 			FlxTween.num(waveVal, 0, 4, {}, function(v) { waveVal = v; });
 			FlxTween.num(bwVal,   0, 4, {}, function(v) { bwVal = v; });
-			for (yes in flashBackBG) FlxTween.tween(getSpr(yes.name), {alpha: 0}, 4, {onComplete: (_) -> getSpr(yes.name).destroy});
-			for (yes in sprites)     FlxTween.tween(getSpr(yes.name), {alpha: 1}, 4);
-
-			FlxTween.tween(gfGroup, {alpha: 1}, 4);
 		}
+		for (yes in flashBackBG) FlxTween.tween(getSpr(yes.name), {alpha: 0}, 4, {onComplete: (_) -> getSpr(yes.name).destroy});
+		for (yes in sprites)     FlxTween.tween(getSpr(yes.name), {alpha: 1}, 4);
+
+		FlxTween.tween(gfGroup, {alpha: 1}, 4);
 	}
 }
 

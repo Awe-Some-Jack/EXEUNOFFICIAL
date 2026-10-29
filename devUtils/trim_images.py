@@ -10,6 +10,7 @@ from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 
 MANIFEST = os.path.join("shared", "data", "image_trims.json")
+MANIFEST_ROOTS = {"assets": "assets", "contents_file": "embedded_contents_file"}
 DEFAULT_EXCLUDES = ["icons", "fonts", "embed", "minigame", "transitions", "exe/freeplayassets/FreeBox.webp"]
 IMAGE_EXTS = (".png", ".webp")
 ATLAS_PREFIXES = ("spritemap", "spritesheet")
@@ -69,7 +70,10 @@ def main():
     errors = []
     excludes = DEFAULT_EXCLUDES if args.exclude is None else args.exclude
 
-    manifest_path = os.path.join(args.root, MANIFEST)
+    root_name = os.path.normpath(args.root)
+    if root_name not in MANIFEST_ROOTS:
+        sys.exit("error: root must be one of: %s (use --only to limit to a folder); got '%s'" % (", ".join(MANIFEST_ROOTS), args.root))
+    manifest_path = os.path.join(MANIFEST_ROOTS[root_name], MANIFEST)
     manifest = {}
     if os.path.exists(manifest_path):
         manifest = json.load(open(manifest_path, encoding="utf-8"))

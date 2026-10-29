@@ -1,6 +1,6 @@
 #pragma header
-    vec2 uv = openfl_TextureCoordv.xy;
-    vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
+    vec2 uv;
+    vec2 fragCoord;
     uniform float iTime;
 
     vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
@@ -117,6 +117,7 @@
     
     void main()
     {
+        fragCoord = openfl_TextureCoordv*openfl_TextureSize;
         vec2 uv = fragCoord.xy / openfl_TextureSize.xy;
         //float n = 1.5;
         float n = noise(fragCoord.y + iTime);

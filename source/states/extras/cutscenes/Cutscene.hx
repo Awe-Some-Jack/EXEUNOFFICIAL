@@ -260,7 +260,7 @@ class Cutscene extends SonicSubState
         _boxThumbPath  = path;
         _boxThumbReady = false;
 
-        if (boxThumb != null) { remove(boxThumb, true); boxThumb.destroy(); boxThumb = null; }
+        if (boxThumb != null) { remove(boxThumb, true); boxThumb.destroy(); boxThumb = null; FlxG.signals.postUpdate.addOnce(backend.MemoryUtil.clearMinor); }
 
         final thumb = new VideoSprite(0, 0, false);
         thumb.autoDestroyOnComplete = false;
@@ -932,6 +932,7 @@ class Cutscene extends SonicSubState
                 ease: FlxEase.expoIn,
                 onComplete: (_) -> {
                     remove(vidRef,    true); vidRef.destroy();
+                    FlxG.signals.postUpdate.addOnce(backend.MemoryUtil.clearMinor);
                     remove(borderRef, true); borderRef.destroy();
          
                     if (dimRef != null) { remove(dimRef, true); dimRef.destroy(); }
@@ -1157,5 +1158,13 @@ class Cutscene extends SonicSubState
             _hud.destroy(); 
             _hud = null; 
         }
+
+        #if VIDEOS_ALLOWED
+        if (_vidSprite != null) { remove(_vidSprite, true); _vidSprite.destroy(); _vidSprite = null; }
+        if (boxThumb != null) { remove(boxThumb, true); boxThumb.destroy(); boxThumb = null; }
+        #end
+
+        super.destroy();
+        backend.MemoryUtil.clearMinor();
     }
 }

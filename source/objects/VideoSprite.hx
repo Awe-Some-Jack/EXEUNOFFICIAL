@@ -551,6 +551,10 @@ class VideoSprite extends FlxSpriteGroup
 
 	override public function destroy():Void
 	{
+		#if !switch
+		final player = video?.bitmap;
+		#end
+
 		#if switch
 		if (video != null)
 		{
@@ -581,6 +585,14 @@ class VideoSprite extends FlxSpriteGroup
 		#end
 
 		super.destroy();
+
+		#if !switch
+		if (player != null)
+		{
+			@:privateAccess player.videoOutput = null;
+			@:privateAccess player.mediaEvents = null;
+		}
+		#end
 	}
 }
 #end

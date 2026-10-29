@@ -73,7 +73,7 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
             }else{
                 var render = new FlxSprite(x,y);
                 render.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow(
-                    Paths.getBitmapData('assets/exe/extras/EXTRAS RENDERS/'+entry.src+'.webp'),
+                    Paths.getBitmapData('assets/exe/extras/EXTRAS RENDERS/'+entry.src+'.webp', true, true),
                     openfl.utils.Assets.getText('assets/exe/extras/EXTRAS RENDERS/'+entry.src+'.xml')
                 );
                 render.animation.addByPrefix("render", entry.animName, 24, true);

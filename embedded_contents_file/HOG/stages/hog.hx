@@ -49,6 +49,9 @@ var scorchedBG:Array<BackgroundSprite> = [
 	{path: 'bg/evil/fg', position: [-1254, -650], scroll: [1.5, 1.5], scale: [1.1, 1.1], layer: 'top'},
 ];
 
+var glitchBG:FlxSprite;
+var glitchFG:FlxSprite;
+
 final game:PlayState = PlayState.instance;
 final prefs = ClientPrefs.data;
 final cam = game.gameplayCam.settings;
@@ -194,6 +197,15 @@ function onCreate()
 		for (spr in scorchedBG) spr.sprite.alpha = 0;
 		hogBG[7].sprite.animation.play('creepy', true);
 	}
+	else
+	{
+		glitchBG = new FlxSprite(-930, -920).loadGraphic(Paths.image('bg/normal/bgg'));
+		glitchBG.alpha = 0.0001;
+		insert(0, glitchBG);
+		glitchFG = new FlxSprite(-930, -920).loadGraphic(Paths.image('bg/normal/fgg'));
+		glitchFG.alpha = 0.0001;
+		add(glitchFG);
+	}
 	
 	vignette = new FlxSprite().loadGraphic(Paths.image('VG'));
 	vignette.color = 0xFF000000;
@@ -287,9 +299,9 @@ function onCreate()
 		glitch2.shader = new ErrorHandledRuntimeShader('glitchb', File.getContent(Paths.shaderFragment('glitchb')));
 		glitch2.shader.setFloatArray('iResolution', [FlxG.width, FlxG.height]);
 		glitch2.shader.setFloat('Amount', 0);
-	}
 
-	camGame.filters = camHUD.filters = [new ShaderFilter(aberration.shader), new ShaderFilter(bloom.shader)];
+		camGame.filters = camHUD.filters = [new ShaderFilter(aberration.shader), new ShaderFilter(bloom.shader)];
+	}
 }
 
 var glitchOppIcon:HealthIcon;
@@ -588,6 +600,11 @@ function onEvent(n,v1,v2)
 		{
 			_isGlitch = !_isGlitch;
 
+			glitch.shader.setFloat('GLITCH', _isGlitch ? 1 : 0);
+			for (spr in hogBG) if (spr.tag != 'tails' && spr.tag != 'knux') spr.sprite.visible = !_isGlitch;
+			glitchFG.alpha = _isGlitch ? 1 : 0.0001;
+			glitchBG.alpha = _isGlitch ? 1 : 0.0001;
+
 			if (_isGlitch)
 			{
 				modchartStyle++;
@@ -606,6 +623,7 @@ function onEvent(n,v1,v2)
 
 	if (n == 'Change Character')
 	{
+		if (songPhase != 'intro') return;
 		for (c in shaderChars)
 		{
 			if (c.tag == v1)

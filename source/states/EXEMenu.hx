@@ -112,7 +112,7 @@ class EXEMenu extends MusicBeatState
 		add(menuVideo);
 		#end
 
-		menuLogo = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/mainmenu/logo.png'));
+		menuLogo = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/mainmenu/logo.png', true, true));
 		menuLogo.scale.set(0.4, 0.4);
 		menuLogo.updateHitbox();
 		menuLogo.antialiasing = ClientPrefs.data.antialiasing;
@@ -124,13 +124,13 @@ class EXEMenu extends MusicBeatState
 		add(menuLogo);
 
 		shadowSprite = new FlxSprite();
-		shadowSprite.loadGraphic(Paths.getBitmapData("assets/exe/mainmenu/options/shadow.webp"));
+		shadowSprite.loadGraphic(Paths.getBitmapData("assets/exe/mainmenu/options/shadow.webp", true, true));
 		shadowSprite.updateHitbox();
 		shadowSprite.alpha = 0;
 		add(shadowSprite);
 
 		final translatedTexts = getOptionTexts();
-		final boxBitmap = Paths.getBitmapData("assets/exe/mainmenu/options/box.webp");
+		final boxBitmap = Paths.getBitmapData("assets/exe/mainmenu/options/box.webp", true, true);
 		final menuFont = Language.needsCustomFont() ? Paths.font(Language.getFontForLanguage()) : Paths.font("SonicFont.ttf");
 		final maxFontSize:Int = Language.needsCustomFont() ? 180 : 280;
 		final minFontSize:Int = 40;
@@ -199,7 +199,7 @@ class EXEMenu extends MusicBeatState
 		{
 			new FlxTimer().start(0.4, (_) -> maniaEmail());
 			heylookanemail = new FlxSprite();
-			heylookanemail.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/access/mania/Mail Box.webp'), 'assets/exe/access/mania/Mail Box.xml');
+			heylookanemail.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/access/mania/Mail Box.webp', true, true), 'assets/exe/access/mania/Mail Box.xml');
 			heylookanemail.animation.addByPrefix('email', 'Mail', 24, false);
 			heylookanemail.scale.set(0.5, 0.5);
 			heylookanemail.alpha = 0;
@@ -414,7 +414,7 @@ class EXEMenu extends MusicBeatState
 	}
 
 	inline function extrasLocked():Bool
-		return FlxG.save.data.storyModeDone != true && !inDevMode;
+		return FlxG.save.data.storyModeDone != true #if !final && !inDevMode #end;
 
 	function changeSelection(dir:Int, up:Bool, sound:Bool = true):Void
 	{

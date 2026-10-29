@@ -2194,6 +2194,9 @@ class PlayState extends MusicBeatState
 			if (videoCutscene?.isPlaying()) videoCutscene.pause();
 			#end
 
+			for (cam in [FlxG.camera, camVideo, camHUD, camOther])
+				if (cam != null) cam.fxActive = false;
+
 			#if !mac
 			FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
 			if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + " (Paused)";
@@ -2225,6 +2228,9 @@ class PlayState extends MusicBeatState
 			#if VIDEOS_ALLOWED
 			videoCutscene?.resume();
 			#end
+
+			for (cam in [FlxG.camera, camVideo, camHUD, camOther])
+				if (cam != null) cam.fxActive = true;
 
 			paused = false;
 			callOnScripts('onResume');
@@ -4749,9 +4755,21 @@ class PlayState extends MusicBeatState
 			}
 		});
 
+		for (songSound in [inst, vocals, opponentVocals])
+			if (songSound != null) Paths.releaseSound(@:privateAccess songSound._sound);
+
 		FlxG.timeScale = 1;
 
 		backend.NoteTypesConfig.clearNoteTypesData();
+
+		for (note in unspawnNotes)
+			note?.destroy();
+		unspawnNotes = [];
+		eventNotes = [];
+
+		#if LUA_ALLOWED
+		psychlua.FunkinLua.lastCalledScript = null;
+		#end
 
 		if (enableFreezeSync) 
 		{

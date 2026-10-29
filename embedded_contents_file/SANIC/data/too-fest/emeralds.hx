@@ -101,4 +101,11 @@ function onBeatHit()
                 curEmerald.moving = true;
             }});
         }
+
+    if(curBeat == 324)
+        for(idx => curEmerald in emeraldsData)
+        {
+            curEmerald.moving = false;
+            curEmerald.sprite.visible = false;
+        }
 }

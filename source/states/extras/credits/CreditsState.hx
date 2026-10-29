@@ -380,7 +380,7 @@ private class CreditPopup extends MusicBeatSubstate
 		var exp:String = 'explosion';
 		if (user.name.toLowerCase() == 'vn2' ) exp = 'lava';
 		explosion = new FlxSprite(userIcon.x - (exp == 'lava' ? 80 : 50), userIcon.y - (exp == 'lava' ? 80 : 100));
-		explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/extras/credits/$exp.webp'), 'assets/exe/extras/credits/$exp.xml');
+		explosion.frames = flixel.graphics.frames.FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/extras/credits/$exp.webp', true, true), 'assets/exe/extras/credits/$exp.xml');
 		explosion.animation.addByPrefix('idle', 'idle', 16, false);
 		explosion.animation.play('idle');
 		explosion.scale.set((exp == 'lava' ? 0.5 : 3), (exp == 'lava' ? 0.5 : 3)); explosion.antialiasing = false; explosion.updateHitbox();
@@ -419,7 +419,7 @@ private class CreditPopup extends MusicBeatSubstate
 		}
 		else if (user.extra[0] == 'image')
 		{
-			final img = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/extra/${user.extra[1]}'));
+			final img = new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/extras/credits/extra/${user.extra[1]}', true, true));
 			fit(img, 200, 200);
 			img.setPosition(bg.x + 40 + ((bg.width / 2 - 50) - img.width) / 2, bg.y + bg.height - img.height - 50);
 			final ish = new shaders.RoundedBorderShader(10.0, 0.0, 0xFF000000); ish.setSize(img.frameWidth, img.frameHeight); img.shader = ish;

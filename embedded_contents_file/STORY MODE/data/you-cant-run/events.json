@@ -9,7 +9,7 @@
 		[
 			1714.28571428571,
 			[
-				["Tweening Camera", "500, 120", "0.001, linear"],
+				["Tweening Camera", "400, 120", "0.001, linear"],
 				["FlashCamera", "FF0000, 0.8", "1.2, ADD"],
 				["Set Property", "cameraSpeed", "100000"]
 			]

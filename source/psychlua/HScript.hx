@@ -340,17 +340,27 @@ class HScript extends Iris
 		});
 
 		funk.addLocalCallback('runHaxeFunction', function(funcToRun:String, funcArgs:Array<Dynamic> = null) {
-			if (funk.hscript != null)
-			{
-				var retVal:IrisCall = funk.hscript.call(funcToRun, funcArgs);
+			if (funk.hscript?.exists(funcToRun)) {
+				final retVal:IrisCall = funk.hscript.call(funcToRun, funcArgs);
 				if (retVal != null) return LuaUtils.isLuaSupported(retVal.returnValue) ? retVal.returnValue : null;
 			}
-			else
-			{
-				var pos:HScriptInfos = cast {fileName: funk.scriptName, showLine: false};
-				if (funk.lastCalledFunction != '') pos.funcName = funk.lastCalledFunction;
-				Iris.error('runHaxeFunction: HScript has not been initialized yet! Use "runHaxeCode" to initialize it', pos);
+			
+			for (script in PlayState.instance.luaArray) {
+				if (script.hscript?.exists(funcToRun)) {
+					final retVal:IrisCall = script.hscript.call(funcToRun, funcArgs);
+					if (retVal != null) return LuaUtils.isLuaSupported(retVal.returnValue) ? retVal.returnValue : null;
+				}
 			}
+			
+			if (funk.hscript == null)
+				initHaxeModule(funk);
+				
+			if (funk.hscript != null)
+			{
+				final retVal:IrisCall = funk.hscript.call(funcToRun, funcArgs);
+				if (retVal != null) return LuaUtils.isLuaSupported(retVal.returnValue) ? retVal.returnValue : null;
+			}
+			
 			return null;
 		});
 

@@ -903,9 +903,15 @@ class FunkinLua
 			var isString:Bool = false;
 
 			if (OpenFlAssets.exists(scriptName))
-				result = LuaL.dostring(lua, OpenFlAssets.getText(scriptName));
+			{
+				final scriptText:String = OpenFlAssets.getText(scriptName);
+				final bytes = haxe.io.Bytes.ofString(scriptText);
+				
+				result = LuaL.loadbuffer(lua, scriptText, bytes.length, "@" + scriptName);
+				if (result == 0)
+					result = Lua.pcall(lua, 0, 0, 0);
+			}
 			else
-
 			#if sys
 			if (sys.FileSystem.exists(scriptName))
 				result = LuaL.dofile(lua, scriptName);
@@ -916,7 +922,7 @@ class FunkinLua
 				isString = true;
 			}
 
-			var resultStr:String = Lua.tostring(lua, result);
+			var resultStr:String = Lua.tostring(lua, -1);
 			if (resultStr != null && result != 0)
 			{
 				#if windows

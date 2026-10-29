@@ -61,6 +61,7 @@ function onCreate() {
     whiteGraphic.cameras = blackGraphic.cameras = bluescreen.cameras = eas.cameras = stat.cameras = [camOther];
     blackGraphic.alpha = bgGraphic.alpha = whiteGraphic.alpha = bluescreen.alpha = eas.alpha = stat.alpha = 0.00001;
 
+    //ссанина
     final fragCode = "
         #pragma header
         uniform float uTime;
@@ -110,8 +111,9 @@ function onCreate() {
     glitchShader = new ErrorHandledRuntimeShader("GottaGoGlitch", fragCode);
 }
 
+// all squished together for you
 function onUpdate(elapsed:Float) {
-    if(curStep >= 68 && dad.animation.curAnim.name == 'jarona') 
+    if(curStep >= 68 && dad.animation.curAnim.name == 'jarona') //JARONA JAJAJAJAJAJA
     {
         switch(dad.animation.curAnim.curFrame) 
         {
@@ -159,6 +161,7 @@ function onEndSong() {
         
         isGlitching = true;
         
+        //ну крч вас нахуй без выбора в gotta goon отправят
         new FlxTimer().start(1.5, (tmr:FlxTimer) -> {
             bluescreen.alpha = 0.00001;
             camOther.filters = [];

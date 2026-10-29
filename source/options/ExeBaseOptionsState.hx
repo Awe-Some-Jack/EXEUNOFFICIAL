@@ -100,6 +100,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 	var scrollTrack:FlxSprite;
 	var scrollThumb:FlxSprite;
+	var warningText:FlxText;
 	var listCount:Int = 0;
 	var lastValueRow:FlxText = null;
 	var lastValueText:String = null;
@@ -203,12 +204,21 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		scrollThumb.origin.set(0, 0); scrollThumb.scrollFactor.set(0, 0); scrollThumb.alpha = 0;
 		add(scrollThumb);
 
+		final warnSize = backend.Language.scaledFontSize(16);
+		warningText = new FlxText(0, 605, FlxG.width, backend.Language.get('options.warning.unfinished', 'WARNING: THIS OPTION IS NOT FULLY IMPLEMENTED YET'), warnSize);
+		warningText.setFormat(Paths.font(getLangFont()), warnSize, 0xFFFFDD00, CENTER, flixel.text.FlxText.FlxTextBorderStyle.OUTLINE, 0xFF000000);
+		warningText.borderSize = 2;
+		warningText.scrollFactor.set(0, 0);
+		warningText.alpha = 0;
+		add(warningText);
+
 		loadPage();
 		playIntro(rectX);
 	}
 
 	public dynamic function loadPage() {}
 	public dynamic function getCurrentSelectionIndex():Int { return 0; }
+	public dynamic function showWarning():Bool { return false; }
 
 	public function clearPage()
 	{
@@ -350,7 +360,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		for (spr in rightGroup)
 			FlxTween.tween(spr, {x: offRight}, dur, {ease: ease});
 
-		for (spr in [scrollTrack, scrollThumb, arrowLeft, arrowRight])
+		for (spr in [scrollTrack, scrollThumb, arrowLeft, arrowRight, warningText])
 		{
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 0}, dur * 0.5);
@@ -401,6 +411,9 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 			optionGroups[i].valueText.color = rowColor;
 		}
 		updateScrollBar();
+
+		FlxTween.cancelTweensOf(warningText);
+		FlxTween.tween(warningText, {alpha: showWarning() ? 1 : 0}, 0.2);
 
 		selectionClone.setPosition(group.nameBG.x - 3, group.nameBG.y - 3);
 

@@ -4824,10 +4824,14 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 
 		for (directory in Mods.directoriesWithFile(Paths.getSharedPath(), mainFolder))
 		{
-			for (file in FileSystem.readDirectory(directory))
+			final onDisk:Bool = FileSystem.exists(directory) && FileSystem.isDirectory(directory);
+			final prefix:String = directory.endsWith('/') ? directory : directory + '/';
+			final files:Array<String> = onDisk ? FileSystem.readDirectory(directory)
+				: [for (asset in OpenFlAssets.list()) if (asset.startsWith(prefix) && asset.indexOf('/', prefix.length) < 0) asset.substr(prefix.length)];
+			for (file in files)
 			{
 				var path = haxe.io.Path.join([directory, file.trim()]);
-				if (!FileSystem.isDirectory(path) && !file.startsWith('readme.'))
+				if ((!onDisk || !FileSystem.isDirectory(path)) && !file.startsWith('readme.'))
 				{
 					for (fileType in fileTypes)
 					{

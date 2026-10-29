@@ -31,6 +31,16 @@ class CreditsRollState extends MusicBeatState
 	var _speedTxt:FlxText;
 	var _hintTxt:FlxText;
 	var _pulse:Float = 0;
+	var _section:Int = 0;
+	var _bar:Int = 0;
+	final _tempo:Array<{start:Float, bpm:Float, bars:Int}> = [
+		{start: 1.65,   bpm: 89,  bars: 27},
+		{start: 74.07,  bpm: 134, bars: 15},
+		{start: 102.33, bpm: 89,  bars: 1},
+		{start: 105.65, bpm: 110, bars: 19},
+		{start: 147.33, bpm: 134, bars: 16},
+		{start: 176.19, bpm: 120, bars: 6}
+	];
 	var _intro:Float = 0;
 	var _hintTime:Float = 0;
 	var _cardCount:Int = 0;
@@ -213,6 +223,10 @@ class CreditsRollState extends MusicBeatState
 		_hintTxt.alpha = 0;
 		add(_hintTxt);
 
+		Conductor.bpmChangeMap = [];
+		Conductor.bpm = 89;
+		Conductor.songPosition = 0;
+
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/creditsroll.ogg'), 1, false);
 		FlxG.sound.music.pause();
 		FlxG.sound.music.onComplete = () -> {
@@ -272,6 +286,15 @@ class CreditsRollState extends MusicBeatState
 		Conductor.songPosition = _songTime;
 
 		final t = _songTime / 1000;
+		while (_section < _tempo.length && t >= _tempo[_section].start + _bar * 240 / _tempo[_section].bpm)
+		{
+			_pulse = 1;
+			if (++_bar >= _tempo[_section].bars)
+			{
+				_bar = 0;
+				_section++;
+			}
+		}
 		final offset = _finished ? _dEnd : Math.max(_scrolled, _offsetAt(t));
 		final amount = offset - _scrolled;
 		_scrolled = offset;
@@ -416,7 +439,6 @@ class CreditsRollState extends MusicBeatState
 	override function beatHit():Void
 	{
 		super.beatHit();
-		if (curBeat % 4 == 0) _pulse = 1;
 		switch(curBeat)
 		{
 			case 4: playVideo('assets/videos/introcutscene.mp4');

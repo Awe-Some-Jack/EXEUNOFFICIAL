@@ -303,6 +303,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 			FlxTween.cancelTweensOf(g.nameBG); FlxTween.cancelTweensOf(g.valueBG);
 			FlxTween.cancelTweensOf(g.nameText); FlxTween.cancelTweensOf(g.valueText);
+			g.nameBG.alpha = g.valueBG.alpha = g.nameText.alpha = g.valueText.alpha = 1;
 
 			FlxTween.tween(g.nameBG,   {y: targetY}, 0.22, {ease: FlxEase.quadInOut});
 			FlxTween.tween(g.valueBG,  {y: targetY}, 0.22, {ease: FlxEase.quadInOut});

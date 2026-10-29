@@ -220,6 +220,8 @@ function onEvent(n, v1, v2)
 				shakeSection = true;
 				_inTrans = false;
 
+				dad.animSuffix = "-alt";
+
 				if (ClientPrefs.data.shaders) game.triggerEvent('shaderTween', "saturation, 1, 1", "0.1");
 				for (spr in starv)
 				{
@@ -236,6 +238,7 @@ function onEvent(n, v1, v2)
 				FlxTween.tween(camHUD, {alpha: 1}, 1);
 				_isDark = true;
 			case 'starved':
+				dad.animSuffix = "";
 				_inTrans = true;
 				for (spr in starv) if (spr.darkVariant != null && spr.spriteDark != null && (spr.hide == null || spr.hide == true) && (spr.tag != 'starvTV' || spr.tag != 'tv')) FlxTween.color(spr.spriteDark, 1, 0xFFFFFFFF, 0xFF000000);
 				FlxTween.color(boyfriend, 1, 0xFFFF0000, 0xFF000000);

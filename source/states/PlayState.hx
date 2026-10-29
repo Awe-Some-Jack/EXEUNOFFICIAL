@@ -4878,7 +4878,9 @@ class PlayState extends MusicBeatState
 			case 'soulless':
 				if (curBeat >= 136) PauseSubState.miniSonicImage = 'soulless-2';
 			case 'too-fest':
-				if (curBeat >= 296) PauseSubState.miniSonicImage = 'too-fest-2';
+				if (curBeat >= 196) PauseSubState.miniSonicImage = 'too-fest-2';
+				if (curBeat >= 260) PauseSubState.miniSonicImage = 'too-fest-3';
+				if (curBeat >= 324) PauseSubState.miniSonicImage = 'too-fest';
 			case 'starline':
 				if (curBeat >= 272) PauseSubState.miniSonicImage = 'starline-2';
 			case 'manual-blast':

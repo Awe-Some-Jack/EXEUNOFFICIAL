@@ -241,13 +241,13 @@ function onEvent(n,v1,v2)
 			case 'bfsent':
 				FlxTween.tween(sanicSentimental, {alpha: 0.5, x: -300}, 6, {ease: FlxEase.cubeOut});
 				FlxTween.tween(bfSentimental, {alpha: 0.5, x: 1000}, 6, {ease: FlxEase.cubeOut});
-			case 'fadespotlight':
-				camGame.fade(0x75FFFFFF, Conductor.crochet / 250, false, null, true);
-				FlxTween.tween(spotlights[0], {alpha: 0}, Conductor.crochet / 500, {ease: FlxEase.cubeIn});
-
+			case 'sevanxd':
 				FlxTween.cancelTweensOf(sanicSentimental); FlxTween.cancelTweensOf(bfSentimental);
 				FlxTween.tween(sanicSentimental, {alpha: 0, x: -1300}, 1, {ease: FlxEase.cubeIn});
 				FlxTween.tween(bfSentimental, {alpha: 0, x: 1700}, 1, {ease: FlxEase.cubeIn});
+			case 'fadespotlight':
+				camGame.fade(0x75FFFFFF, Conductor.crochet / 250, false, null, true);
+				FlxTween.tween(spotlights[0], {alpha: 0}, Conductor.crochet / 500, {ease: FlxEase.cubeIn});
 			case 'mgl':
 				sanics1.alpha = sanics2.alpha = 1;
 				game.gameplayCam.settings.DADy = 100;

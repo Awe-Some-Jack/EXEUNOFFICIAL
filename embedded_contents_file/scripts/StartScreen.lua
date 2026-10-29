@@ -1,7 +1,7 @@
 local modConfigs = {
 	['SANIC'] = {
 		type = 'slide',
-		skipSongs = {},
+		skipSongs = {'too-fest'},
 		useSeenCutscene = false,
 		useSongPosition = true,
 		alwaysSkipCountdown = true,

@@ -5,7 +5,7 @@ local botplayRingIgnore = false --if true and botplay is enabled it will ignore 
 --dont really touch from here
 
 
-local rings = 0
+local rings = 0 setVar('rings', rings)
 local resetAnim = 0
 local hasBeenPressed = false --why is keyboardReleased so evil...
 local swapped = false
@@ -117,8 +117,7 @@ function noteMiss(id,nd,nt,isn)
 		addHealth(0.1 * healthLossMult)
 	end
 	if isn then return end
-	rings = math.max(rings - 1, 0)
-	setTextString('ringTxt', tostring(rings))
+	updateRingCounter(-1)
 end
 
 --Ring Functions
@@ -126,8 +125,7 @@ end
 function ringHit(id)
 	playSound('Ringer', 0.5)
 	if notPressedAny then notPressedAny = false end
-	rings = math.min(rings + 1, 99)
-	setTextString('ringTxt', tostring(rings))
+	updateRingCounter(1)
 
 	setProperty('notes.members['..id..'].wasGoodHit', true)
 	setProperty('notes.members['..id..'].active', false)
@@ -135,6 +133,14 @@ function ringHit(id)
 	setProperty('notes.members['..id..'].visible', false)
 
 	callOnScripts('ringHit', {id})
+end
+
+function updateRingCounter(add)
+	rings = math.min(math.max(getVar('rings') + add, 0), 99)
+	setVar('rings', rings)
+	setTextString('ringTxt', tostring(rings))
+
+	callOnScripts('updateRingCounter', {add})
 end
 
 function ringAnim(anim, time)
@@ -180,13 +186,6 @@ function onTimerCompleted(t, l, ll)
 
 		cancelTween('notemove'..i)
 		noteTweenY('notemove'..i, i + 4, _G['defaultPlayerStrumY'..(i > 1 and (i - 1) or i)] + ((l - ll) < 6 and -30 or 0), 1.1, 'cubeInOut')
-	end
-end
-
-function goodNoteHit(id,nd,nt,isn)
-	if not isn and nt == 'Phantom Note' then
-		rings = math.max(rings - 1, 0)
-		setTextString('ringTxt', tostring(rings))
 	end
 end
 

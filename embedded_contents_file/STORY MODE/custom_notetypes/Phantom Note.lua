@@ -15,6 +15,7 @@ function onCreate()
 end
 
 function onUpdatePost(e)
+	if getVar('rings') > 0 then return end
 	if dropTime > 0 then
 		dropTime = dropTime - e
 		addHealth(-healthDrop * (e / (1 / 120)))
@@ -27,6 +28,15 @@ end
 
 function goodNoteHit(id,nd,nt,isn)
 	if not isn and nt == 'Phantom Note' then
+		debugPrint('a')
+		debugPrint('a2: '..getVar('rings'))
+		if getVar('rings') > 0 then
+			local rings = math.max(getVar('rings') - 1, 0)
+			setVar('rings', rings)
+			setTextString('ringTxt', tostring(rings))
+			return
+		end
+		debugPrint('d')
 		playSound('phantom', 0.35)
 		healthDrop = healthDrop + 0.00025
 		dropTime = 10

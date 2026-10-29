@@ -561,7 +561,7 @@ class StoryModeState extends MusicBeatState
 
 		updateCoverVisibility();
 
-		arrow.visible = arrow2.visible = true;
+		updateArrows();
 
 		arrowTween  = FlxTween.tween(arrow,  {x: arrow.x  - 6}, 1.2, {ease: FlxEase.sineInOut, type: PINGPONG});
 		arrow2Tween = FlxTween.tween(arrow2, {x: arrow2.x + 6}, 1.2, {ease: FlxEase.sineInOut, type: PINGPONG});
@@ -602,11 +602,19 @@ class StoryModeState extends MusicBeatState
 		selectedCover = newIndex;
 
 		updateCoverVisibility();
+		updateArrows();
 		flashStaticScreen();
 		updateScoreDisplay();
 
 		final staticSound = FlxG.sound.play(Paths.sound('static'), 0.2);
 		staticSound?.fadeOut(0.3, 0);
+	}
+
+	function updateArrows():Void
+	{
+		final unlocked:Int = getUnlockedCovers() ?? 0;
+		arrow.visible = yt != true && selectedCover > 0;
+		arrow2.visible = yt != true && selectedCover < unlocked;
 	}
 
 	function updateCoverVisibility():Void

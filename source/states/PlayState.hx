@@ -4755,9 +4755,21 @@ class PlayState extends MusicBeatState
 			}
 		});
 
+		for (songSound in [inst, vocals, opponentVocals])
+			if (songSound != null) Paths.releaseSound(@:privateAccess songSound._sound);
+
 		FlxG.timeScale = 1;
 
 		backend.NoteTypesConfig.clearNoteTypesData();
+
+		for (note in unspawnNotes)
+			note?.destroy();
+		unspawnNotes = [];
+		eventNotes = [];
+
+		#if LUA_ALLOWED
+		psychlua.FunkinLua.lastCalledScript = null;
+		#end
 
 		if (enableFreezeSync) 
 		{

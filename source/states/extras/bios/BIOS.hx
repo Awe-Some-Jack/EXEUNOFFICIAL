@@ -314,7 +314,7 @@ class BIOS extends SonicSubState
 		add(variantDots);
 
 		final charBiosSprite = new FlxSprite(36, 19);
-		charBiosSprite.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios.webp'));
+		charBiosSprite.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios.webp', true, true));
 		charBiosSprite.scrollFactor.set();
 		add(charBiosSprite);
 	}
@@ -370,7 +370,7 @@ class BIOS extends SonicSubState
 		final charBiosOverlay = new FlxSprite(36, 19);
 		if (Assets.exists('assets/exe/extras/bios/characterbios_overlay.webp'))
 		{
-			charBiosOverlay.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios_overlay.webp'));
+			charBiosOverlay.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios_overlay.webp', true, true));
 			charBiosOverlay.scrollFactor.set();
 			add(charBiosOverlay);
 		}

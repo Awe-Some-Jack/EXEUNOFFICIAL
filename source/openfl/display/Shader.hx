@@ -320,12 +320,40 @@ class Shader
 	**/
 	public function new(code:ByteArray = null)
 	{
+		__live.set(this, true);
 		byteCode = code;
 		precisionHint = FULL;
 
 		__glSourceDirty = true;
 		__numPasses = 1;
 		__data = new ShaderData(code);
+	}
+
+	@:noCompletion private static var __live:haxe.ds.WeakMap<Shader, Bool> = new haxe.ds.WeakMap();
+
+	@:noCompletion public static function __pruneUnusedPrograms(context:Context3D):Int
+	{
+		if (context == null || context.__programs == null) return 0;
+
+		var used = new haxe.ds.ObjectMap<Program3D, Bool>();
+		for (shader in __live.keys())
+		{
+			if (shader != null && shader.program != null) used.set(shader.program, true);
+		}
+
+		var removed = 0;
+		for (id in [for (key in context.__programs.keys()) key])
+		{
+			var program = context.__programs.get(id);
+			if (!used.exists(program))
+			{
+				context.__programs.remove(id);
+				program.dispose();
+				removed++;
+			}
+		}
+
+		return removed;
 	}
 
 	@:noCompletion private function __clearUseArray():Void
@@ -466,6 +494,9 @@ class Shader
 		gl.attachShader(program, vertexShader);
 		gl.attachShader(program, fragmentShader);
 		gl.linkProgram(program);
+
+		gl.deleteShader(vertexShader);
+		gl.deleteShader(fragmentShader);
 
 		if (gl.getProgramParameter(program, gl.LINK_STATUS) == 0)
 		{

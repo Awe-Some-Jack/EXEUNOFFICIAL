@@ -232,7 +232,7 @@ class EXEMenu extends MusicBeatState
 
 		FatalAccess.startWatching();
 		final fatalScene = FatalAccess.menuScene();
-		if (fatalScene != null && FlxG.random.bool(fatalScene == TRANSMISSION ? 35 : 20) && unlocked.length > 5)
+		if (fatalScene != null && FlxG.random.bool(fatalScene == TRANSMISSION ? 35 : 20))
 		{
 			_fatalScene = fatalScene;
 			_fatalTimer = FlxG.random.float(1, 4);

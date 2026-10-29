@@ -232,10 +232,10 @@ class EXEMenu extends MusicBeatState
 
 		FatalAccess.startWatching();
 		final fatalScene = FatalAccess.menuScene();
-		if (fatalScene != null && FlxG.random.bool(fatalScene == TRANSMISSION ? 15 : 8))
+		if (fatalScene != null && FlxG.random.bool(fatalScene == TRANSMISSION ? 35 : 20) && unlocked.length > 5)
 		{
 			_fatalScene = fatalScene;
-			_fatalTimer = FlxG.random.float(4, 10);
+			_fatalTimer = FlxG.random.float(1, 4);
 		}
 
 		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end

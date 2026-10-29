@@ -6,11 +6,11 @@ local starlineAssets = {
 		{name = 'bg2',         path =      'bg/piso2', x = -1600, y = -1000,                                                                scaleX = 6, scaleY = 6, scrollX =   1, scrollY = 1, antialiasing = false, alpha = 0, front = false},
 	},
 	['characters'] = {
-		{name = 'espio',    character = 'espio',      x =   930, y = 130,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
-		{name = 'amy',      character =    'amy',     x =   730, y =  85,                                       scaleX = 6, scaleY = 6, alpha = 1, front = false},
-		{name = 'mighty',   character = 'mighty',     x =  -100, y =  65,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
-		{name = 'knux',     character =   'knux',     x =  -640, y =  85,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
-		{name = 'vector',   character = 'vector',     x =  -880, y =  65,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'espio',    character = 'espio',      x =   972, y = 121.5,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'amy',      character =    'amy',     x =   761, y =  85,                                       scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'mighty',   character = 'mighty',     x =  -110, y =  66.5,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'knux',     character =   'knux',     x =  -666.5, y =  91.5,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'vector',   character = 'vector',     x =  -920, y =  57.5,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 		{name = 'charmy',   character = 'charmy',     x =   480, y = -95,  canFloat = true,  beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 	},
 	['cutsceneChars'] = {

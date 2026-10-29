@@ -18,8 +18,6 @@ var glitchIntensity:Float = 0;
 var isGlitching:Bool = false;
 
 function onCreate() {
-    PlayState.sunkyHelp = true;
-
     bgGraphic = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.RED);
     bgGraphic.scale.set(2, 2);
     bgGraphic.screenCenter();

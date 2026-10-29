@@ -417,10 +417,22 @@ class ExtrasMenu extends MusicBeatState
         super.openSubState(subState);
     }
 
+    function releaseSubStateMemory():Void
+    {
+        if (_requestSubStateReset)
+        {
+            FlxG.signals.postUpdate.addOnce(releaseSubStateMemory);
+            return;
+        }
+        FlxG.bitmap.clearUnused();
+        backend.MemoryUtil.clearMinor();
+    }
+
     override function closeSubState():Void
     {
         canMove = true;
         super.closeSubState();
+        FlxG.signals.postUpdate.addOnce(releaseSubStateMemory);
         if (nowPlayingSong != null)
         {
             final daName  = states.extras.dagarden.DAGarden.currentSong;
@@ -521,7 +533,7 @@ class ExtrasMenu extends MusicBeatState
     var discoTween:FlxTween;
     function buildDisco():Void
     {
-        final bmp = Paths.getBitmapData("assets/exe/extras/disco.webp");
+        final bmp = Paths.getBitmapData("assets/exe/extras/disco.webp", true, true);
         for (off in [{x: -2, y: -2}, {x: 0, y: -2}, {x: 2, y: -2}, {x: -2, y: 0}, {x: 2, y: 0}, {x: -2, y: 2}, {x: 0, y: 2}, {x: 2, y: 2}])
         {
             final s = new FlxSprite(41 + off.x, 541 + off.y).loadGraphic(bmp);
@@ -540,7 +552,7 @@ class ExtrasMenu extends MusicBeatState
 
     function buildLogo():Void
     {
-        extrasLogo = new FlxSprite(44.62, 58.31).loadGraphic(Paths.getBitmapData("assets/exe/extras/extras.webp"));
+        extrasLogo = new FlxSprite(44.62, 58.31).loadGraphic(Paths.getBitmapData("assets/exe/extras/extras.webp", true, true));
         extrasLogo.scale.set(0.18, 0.18);
         extrasLogo.updateHitbox();
         add(extrasLogo);

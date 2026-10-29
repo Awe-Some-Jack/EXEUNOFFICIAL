@@ -44,40 +44,40 @@ class ParallaxState extends MusicBeatState
             paraBg.playDelayed();
 		#end
 
-		spikestop = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.webp'), X);
+		spikestop = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.webp', true, true), X);
 		spikestop.updateHitbox();
 		spikestop.velocity.x = 50;
 		spikestop.flipY = true;
 		add(spikestop);
 
-		spikesbot = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.webp'), X);
+		spikesbot = new FlxBackdrop(Paths.getBitmapData('assets/exe/parallax/spike.webp', true, true), X);
 		spikesbot.updateHitbox();
 		spikesbot.y = FlxG.height - spikesbot.height;
 		spikesbot.velocity.x = -50;
 		add(spikesbot);
 
-		barstory = new FlxSprite(((curSelected == 0) ? -80 : -140)).loadGraphic(Paths.getBitmapData('assets/exe/parallax/tile.webp'));
+		barstory = new FlxSprite(((curSelected == 0) ? -80 : -140)).loadGraphic(Paths.getBitmapData('assets/exe/parallax/tile.webp', true, true));
 		barstory.y = (FlxG.height / 2) - barstory.height - 20;
 		add(barstory);
 
-		barinfo = new FlxSprite(((curSelected == 0) ? -140 : -80)).loadGraphic(Paths.getBitmapData('assets/exe/parallax/tile.webp'));
+		barinfo = new FlxSprite(((curSelected == 0) ? -140 : -80)).loadGraphic(Paths.getBitmapData('assets/exe/parallax/tile.webp', true, true));
 		barinfo.y = (FlxG.height / 2) + 20;
 		add(barinfo);
 
-		textstory = new FlxSprite(barstory.x + 140, barstory.y + 28).loadGraphic(Paths.getBitmapData('assets/exe/parallax/story.webp'));
+		textstory = new FlxSprite(barstory.x + 140, barstory.y + 28).loadGraphic(Paths.getBitmapData('assets/exe/parallax/story.webp', true, true));
 		add(textstory);
 
-		textinfo = new FlxSprite(barinfo.x + 140, barinfo.y + 32).loadGraphic(Paths.getBitmapData('assets/exe/parallax/info-bio.webp'));
+		textinfo = new FlxSprite(barinfo.x + 140, barinfo.y + 32).loadGraphic(Paths.getBitmapData('assets/exe/parallax/info-bio.webp', true, true));
 		add(textinfo);
 
-		ringParallax = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/ringparallax.webp'));
+		ringParallax = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/ringparallax.webp', true, true));
 		ringParallax.scale.set(0.1, 0.1);
 		ringParallax.updateHitbox();
 		ringParallax.setPosition(636, 154);
 		add(ringParallax);
 
 		sonic = new FlxSprite();
-		sonic.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/parallax/paralax.webp'), 'assets/exe/parallax/paralax.xml');
+		sonic.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/parallax/paralax.webp', true, true), 'assets/exe/parallax/paralax.xml');
 		sonic.animation.addByPrefix('idle', 'Símbolo 27 instancia 1', 24, true);
 		sonic.animation.addByPrefix('selected', 'satanos instancia 1', 24, false);
 		sonic.animation.play('idle');

@@ -42,6 +42,7 @@ final class MemoryUtil
 		Gc.run(true);
 		Gc.compact();
 		cpp.NativeGc.compact();
+		NativeMemory.trimHeap();
 		#elseif hl
 		Gc.major();
 		#elseif (java || neko)
@@ -149,6 +150,7 @@ final class MemoryUtil
 #elseif linux
 @:headerCode('
 #include <unistd.h>
+#include <malloc.h>
 #include <sys/sysinfo.h>
 #include <fstream>
 #include <string>
@@ -156,11 +158,28 @@ final class MemoryUtil
 #elseif mac
 @:headerCode('
 #include <unistd.h>
+#include <malloc/malloc.h>
 #include <mach/mach.h>
 #include <sys/sysctl.h>
 ')
 #end
 final class NativeMemory {
+	public static function tuneAllocator():Void {
+		#if (linux && !android)
+		untyped __cpp__('mallopt(M_ARENA_MAX, 2); mallopt(M_MMAP_THRESHOLD, 262144); mallopt(M_TRIM_THRESHOLD, 524288)');
+		#end
+	}
+
+	public static function trimHeap():Void {
+		#if windows
+		untyped __cpp__('SetProcessWorkingSetSize(GetCurrentProcess(), (SIZE_T)-1, (SIZE_T)-1)');
+		#elseif (linux && !android)
+		untyped __cpp__('malloc_trim(0)');
+		#elseif mac
+		untyped __cpp__('malloc_zone_pressure_relief(NULL, 0)');
+		#end
+	}
+
 	public static function getProcessMemoryUsage():Float {
 		#if windows
 		var result:Float = -1.0;

@@ -414,9 +414,9 @@ class EXEFreeplay extends MusicBeatState
 		try
 		{
 			#if (sys && !mobile)
-			return BitmapData.fromFile(path);
+			return Paths.uploadBitmap(BitmapData.fromFile(path));
 			#else
-			return Paths.getBitmapData(path);
+			return Paths.getBitmapData(path, true, true);
 			#end
 		}
 		catch (e:Dynamic) {}
@@ -431,7 +431,7 @@ class EXEFreeplay extends MusicBeatState
 		centerX = FlxG.width / 2;
 		centerY = FlxG.height / 2;
 
-		final screenstaticFrames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/screenstatic.webp'), 'assets/exe/story/screenstatic.xml');
+		final screenstaticFrames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/screenstatic.webp', true, true), 'assets/exe/story/screenstatic.xml');
 		final placeholderBitmap = loadRawBitmap('assets/exe/freeplayassets/covers/placeholder.webp');
 		final entryLangFont = Paths.font(Language.getFontForLanguage());
 		final entryExeSize = Language.cjkSize(34);
@@ -1536,6 +1536,14 @@ class EXEFreeplay extends MusicBeatState
 		pincushionShader = null;
 
 		cancelAllTweens();
+
+		for (gfx in coverCache)
+		{
+			gfx.persist = false;
+			if (!gfx.isDestroyed) gfx.destroy();
+		}
+		coverCache.clear();
+		coverCacheOrder = [];
 
 		if (!stopMusicPlay)
 			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));

@@ -130,7 +130,7 @@ class StoryModeState extends MusicBeatState
 		final cloudSpeeds:Array<Float> = [120, 85, 58, 38, 24, 12];
 		for (i in 0...6)
 		{
-			final bmp = Paths.getBitmapData('assets/exe/story/clouds/${i + 1}.webp');
+			final bmp = Paths.getBitmapData('assets/exe/story/clouds/${i + 1}.webp', true, true);
 			final cloud = new FlxBackdrop(bmp, FlxAxes.X);
 			cloud.setGraphicSize(FlxG.width, FlxG.height);
 			cloud.updateHitbox();
@@ -139,7 +139,7 @@ class StoryModeState extends MusicBeatState
 		}
 
 		var smmStatic:FlxSprite = new FlxSprite(0, 0);
-		smmStatic.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/SMMStatic.webp'), 'assets/exe/story/SMMStatic.xml');
+		smmStatic.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/SMMStatic.webp', true, true), 'assets/exe/story/SMMStatic.xml');
 		smmStatic.animation.addByPrefix('static', 'static', 24);
 		smmStatic.animation.play('static');
 		smmStatic.setGraphicSize(FlxG.width, FlxG.height);
@@ -148,7 +148,7 @@ class StoryModeState extends MusicBeatState
 		add(smmStatic);
 
 		var dataSelect:FlxSprite = new FlxSprite(0, 312);
-		dataSelect.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/dataselect.webp'), 'assets/exe/story/dataselect.xml');
+		dataSelect.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/dataselect.webp', true, true), 'assets/exe/story/dataselect.xml');
 		dataSelect.animation.addByPrefix('idle', 'dataselect dataselect', 6);
 		dataSelect.animation.play('idle');
 		dataSelect.setGraphicSize(FlxG.width * 0.885);
@@ -157,7 +157,7 @@ class StoryModeState extends MusicBeatState
 		add(dataSelect);
 		
 		// ── BOX 1 ──
-		final greyBoxBitmap = Paths.getBitmapData('assets/exe/story/greybox.webp');
+		final greyBoxBitmap = Paths.getBitmapData('assets/exe/story/greybox.webp', true, true);
 
 		greyBOX = new FlxSprite();
 		greyBOX.loadGraphic(greyBoxBitmap);
@@ -166,7 +166,7 @@ class StoryModeState extends MusicBeatState
 		greyBOX.setPosition(175, 64);
 		add(greyBOX);
 		
-		final tooSlowBitmap = Paths.getBitmapData('assets/exe/cover/too-slow.webp');
+		final tooSlowBitmap = Paths.getBitmapData('assets/exe/cover/too-slow.webp', true, true);
 
 		tooSlowCover = new FlxSprite();
 		tooSlowCover.loadGraphic(tooSlowBitmap);
@@ -176,28 +176,28 @@ class StoryModeState extends MusicBeatState
 		add(tooSlowCover);
 		
 		youCantRunCover = new FlxSprite();
-		youCantRunCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/you-cant-run.webp'));
+		youCantRunCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/you-cant-run.webp', true, true));
 		youCantRunCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		youCantRunCover.updateHitbox();
 		youCantRunCover.visible = false;
 		add(youCantRunCover);
 		
 		tripleTroubleCover = new FlxSprite();
-		tripleTroubleCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/triple-trouble.webp'));
+		tripleTroubleCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/triple-trouble.webp', true, true));
 		tripleTroubleCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		tripleTroubleCover.updateHitbox();
 		tripleTroubleCover.visible = false;
 		add(tripleTroubleCover);
 		
 		finalEscapeCover = new FlxSprite();
-		finalEscapeCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/final-escape.webp'));
+		finalEscapeCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/final-escape.webp', true, true));
 		finalEscapeCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		finalEscapeCover.updateHitbox();
 		finalEscapeCover.visible = false;
 		add(finalEscapeCover);
 		
 		yourselfCover = new FlxSprite();
-		yourselfCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/yourself.webp'));
+		yourselfCover.loadGraphic(Paths.getBitmapData('assets/exe/cover/yourself.webp', true, true));
 		yourselfCover.setGraphicSize(Std.int(FlxG.width * 0.24));
 		yourselfCover.updateHitbox();
 		if (yt == true) yourselfCover.setColorTransform(1, 1, 1, 1, 255, 255, 255, 0);
@@ -206,7 +206,7 @@ class StoryModeState extends MusicBeatState
 
 		if (FlxG.save.data.theYourselfCutscene != null){	
 			microphone = new FlxSprite();
-			microphone.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/microfono_lookalike.webp'), 'assets/exe/story/microfono_lookalike.xml');
+			microphone.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/microfono_lookalike.webp', true, true), 'assets/exe/story/microfono_lookalike.xml');
 			microphone.animation.addByIndices('idle', 'micro', [0], '', 24, false);
 			microphone.setGraphicSize(Std.int(FlxG.width * 0.183));
 			microphone.setPosition(302, 116);
@@ -216,7 +216,7 @@ class StoryModeState extends MusicBeatState
 		
 		for (coversPos in [tooSlowCover, youCantRunCover, tripleTroubleCover, finalEscapeCover, yourselfCover]) coversPos.setPosition(192, 74);
 		
-		final screenstaticFrames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/screenstatic.webp'), 'assets/exe/story/screenstatic.xml');
+		final screenstaticFrames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/screenstatic.webp', true, true), 'assets/exe/story/screenstatic.xml');
 
 		staticscreen = new FlxSprite();
 		staticscreen.frames = screenstaticFrames;
@@ -229,7 +229,7 @@ class StoryModeState extends MusicBeatState
 		add(staticscreen);
 		
 		bfBOX = new FlxSprite();
-		bfBOX.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/bf_menu.webp'), 'assets/exe/story/bf_menu.xml');
+		bfBOX.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/bf_menu.webp', true, true), 'assets/exe/story/bf_menu.xml');
 		bfBOX.animation.addByPrefix('idle', 'idle', 24, true);
 		bfBOX.animation.addByPrefix('ouch', 'ay', 24, false);
 		bfBOX.animation.addByPrefix('black', 'nega', 24, true);
@@ -240,7 +240,7 @@ class StoryModeState extends MusicBeatState
 		bfBOX.setPosition(270, 300);
 		add(bfBOX);
 		
-		final yellowBoxBitmap = Paths.getBitmapData('assets/exe/story/yellowbox.webp');
+		final yellowBoxBitmap = Paths.getBitmapData('assets/exe/story/yellowbox.webp', true, true);
 
 		var yellowBOX:FlxSprite = new FlxSprite();
 		yellowBOX.loadGraphic(yellowBoxBitmap);
@@ -277,7 +277,7 @@ class StoryModeState extends MusicBeatState
 		add(staticscreen2);
 		
 		gfBOX = new FlxSprite();
-		gfBOX.loadGraphic(Paths.getBitmapData('assets/exe/story/gf.webp'));
+		gfBOX.loadGraphic(Paths.getBitmapData('assets/exe/story/gf.webp', true, true));
 		gfBOX.setGraphicSize(Std.int(FlxG.width * 0.09));
 		gfBOX.updateHitbox();
 		gfBOX.setPosition(910, 300);
@@ -285,7 +285,7 @@ class StoryModeState extends MusicBeatState
 		add(gfBOX);
 		
 		padLock = new FlxSprite();
-		padLock.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/padLock.webp'), 'assets/exe/story/padLock.xml');
+		padLock.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/padLock.webp', true, true), 'assets/exe/story/padLock.xml');
 		padLock.animation.addByPrefix('idle', 'idle', 24, true);
 		padLock.animation.play('idle');
 		padLock.setGraphicSize(Std.int(padLock.width * 0.27));
@@ -303,7 +303,7 @@ class StoryModeState extends MusicBeatState
 		
 		// ── REDBOX ──
 		redBOX = new FlxSprite();
-		redBOX.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/cuadro.webp'), 'assets/exe/story/cuadro.xml');
+		redBOX.frames = FlxAtlasFrames.fromSparrow(Paths.getBitmapData('assets/exe/story/cuadro.webp', true, true), 'assets/exe/story/cuadro.xml');
 		redBOX.animation.addByPrefix('idle', 'cuandrado', 1, true);
 		redBOX.animation.addByPrefix('break', 'evet', 16, false);
 		redBOX.animation.play('idle', true);
@@ -312,7 +312,7 @@ class StoryModeState extends MusicBeatState
 		redBOX.setPosition(greyBOX.x - 25, greyBOX.y - 17);
 		add(redBOX);
 		
-		final arrowBitmap = Paths.getBitmapData('assets/exe/story/arrow.webp');
+		final arrowBitmap = Paths.getBitmapData('assets/exe/story/arrow.webp', true, true);
 
 		arrow = new FlxSprite();
 		arrow.loadGraphic(arrowBitmap);

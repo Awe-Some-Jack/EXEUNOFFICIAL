@@ -493,7 +493,8 @@ class EXETitle extends MusicBeatState
 			if (hit)
 			{
 				fridgeStatus++;
-				trace(hit + " " + fridgeStatus);
+				var snd = FlxG.sound.play(Paths.sound('secretKeyPress'));
+					snd.pitch = FlxG.random.float(0.7, 1.3);
 				if (fridgeStatus == 4)
 				{
 					FlxG.sound.play(Paths.sound('ringSound'));

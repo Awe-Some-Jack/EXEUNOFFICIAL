@@ -393,7 +393,7 @@ class Main extends Sprite
 	static function loadCursor(screenScale:Float):Void
 	{
 		_cursorScale = screenScale;
-		_cursorSource ??= #if sys sys.FileSystem.exists('assets/exe/cursor.png') ? openfl.display.BitmapData.fromFile('assets/exe/cursor.png') : #end Assets.getBitmapData('assets/exe/cursor.png', false);
+		_cursorSource ??= #if sys sys.FileSystem.exists('assets/exe/cursor.webp') ? openfl.display.BitmapData.fromFile('assets/exe/cursor.webp') : #end Assets.getBitmapData('assets/exe/cursor.webp', false);
 		if (_cursorSource == null)
 		{
 			FlxG.mouse.useSystemCursor = true;

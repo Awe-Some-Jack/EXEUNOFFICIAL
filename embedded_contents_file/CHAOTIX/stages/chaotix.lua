@@ -712,7 +712,7 @@ end
 
 function onTimerCompleted(t)
 	if t ==     'gfReaction3' then playAnim('gf', 'reaction3', true) end
-	if t ==     'waitToSpawn' then runTimer('spawnPeaceStars', 0.5, 0) end
+	if t ==     'waitToSpawn' then runTimer('spawnPeaceStars', 0.3, 0) end
 	if t == 'spawnPeaceStars' then createPeaceStars() end
 	if t ==       'tailsTime' then   spawnTailsText() end
 

@@ -1,84 +1,84 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [41, 112],
+			"loop": false,
+			"fps": 12,
 			"anim": "idle",
-			"fps": 12,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [188, 217],
+			"loop": false,
+			"fps": 12,
 			"anim": "singUP",
-			"fps": 12,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
-			"loop": false,
 			"offsets": [107, 220],
+			"loop": false,
+			"fps": 12,
 			"anim": "singRIGHT",
-			"fps": 12,
-			"name": "right",
-			"indices": []
+			"indices": [],
+			"name": "right"
 		},
 		{
-			"loop": false,
 			"offsets": [133, 220],
+			"loop": false,
+			"fps": 12,
 			"anim": "singDOWN",
-			"fps": 12,
-			"name": "down",
-			"indices": []
+			"indices": [],
+			"name": "down"
 		},
 		{
-			"loop": false,
 			"offsets": [191, 220],
+			"loop": false,
+			"fps": 12,
 			"anim": "singLEFT",
-			"fps": 12,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": true,
 			"offsets": [188, 216],
+			"loop": true,
+			"fps": 12,
 			"anim": "singUP-loop",
-			"fps": 12,
-			"name": "up",
-			"indices": [1, 2, 3]
+			"indices": [1, 2, 3],
+			"name": "up"
 		},
 		{
-			"loop": true,
 			"offsets": [107, 219],
+			"loop": true,
+			"fps": 12,
 			"anim": "singRIGHT-loop",
-			"fps": 12,
-			"name": "right",
-			"indices": [1, 2, 3]
+			"indices": [1, 2, 3],
+			"name": "right"
 		},
 		{
-			"loop": true,
 			"offsets": [191, 220],
-			"anim": "singLEFT-loop",
-			"fps": 12,
-			"name": "left",
-			"indices": [1, 2, 3]
-		},
-		{
 			"loop": true,
-			"offsets": [133, 220],
-			"anim": "singDOWN-loop",
 			"fps": 12,
-			"name": "down",
-			"indices": [1, 2, 3]
+			"anim": "singLEFT-loop",
+			"indices": [1, 2, 3],
+			"name": "left"
 		},
 		{
-			"loop": false,
+			"offsets": [133, 220],
+			"loop": true,
+			"fps": 12,
+			"anim": "singDOWN-loop",
+			"indices": [1, 2, 3],
+			"name": "down"
+		},
+		{
 			"offsets": [168, 321],
-			"anim": "thanos",
+			"loop": false,
 			"fps": 24,
-			"name": "chaotix_beast thanos",
-			"indices": []
+			"anim": "thanos",
+			"indices": [],
+			"name": "chaotix_beast thanos"
 		}
 	],
 	"vocals_file": "",
@@ -87,7 +87,7 @@
 	"position": [30, 10],
 	"healthicon": "chaotix-beast-pixel",
 	"flip_x": false,
-	"healthbar_colors": [204, 51, 51],
+	"healthbar_colors": [148, 146, 148],
 	"camera_position": [-520, -330],
 	"sing_duration": 4,
 	"scale": 6,

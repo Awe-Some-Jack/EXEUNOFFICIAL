@@ -15,19 +15,6 @@ class Mods
 {
 	static public var currentModDirectory:String = '';
 
-	public static final CONTENTS_LIST:String = 'contentsList.dat';
-
-	public static function contentsListReadPath():String
-	{
-		#if switch
-		if (FileSystem.exists(contentsListSavePath())) return contentsListSavePath();
-		#end
-		return CONTENTS_LIST;
-	}
-
-	inline public static function contentsListSavePath():String
-		return #if switch SwitchStorage.ROOT + #end CONTENTS_LIST;
-
 	public static final ignoreModFolders:Array<String> = [
 		'characters',
 		'custom_events',
@@ -219,86 +206,47 @@ class Mods
 		return null;
 	}
 
+	private static var _cachedModsList:ModsList = null;
 	public static var updatedOnState:Bool = false;
-	inline public static function parseList():ModsList {
-		if(!updatedOnState) updateModList();
-		var list:ModsList = {enabled: [], disabled: [], all: []};
 
-		#if MODS_ALLOWED
-		try {
-			for (mod in CoolUtil.coolTextFile(contentsListReadPath()))
-			{
-				//trace('Mod: $mod');
-				if(mod.trim().length < 1) continue;
-
-				var dat = mod.split("|");
-				list.all.push(dat[0]);
-				if(dat[1] == "1")
-					list.enabled.push(dat[0]);
-				else
-					list.disabled.push(dat[0]);
-			}
-		} catch(e) {
-			trace(e);
-		}
-		#end
-		return list;
-	}
-	
-	private static function updateModList()
+	inline public static function parseList():ModsList 
 	{
-		#if MODS_ALLOWED
-		// Find all that are already ordered
-		var list:Array<Array<Dynamic>> = [];
-		var added:Array<String> = [];
-		try {
-			for (mod in CoolUtil.coolTextFile(contentsListReadPath()))
+		if (!updatedOnState || _cachedModsList == null) 
+		{
+			_cachedModsList = {enabled: [], disabled: [], all: []};
+			var added:Array<String> = [];
+
+			#if MODS_ALLOWED
+			for (def in ContentsList.defaultMods)
 			{
-				var dat:Array<String> = mod.split("|");
-				var folder:String = dat[0];
-				
-				if(folder.trim().length > 0 && modFolderExists(folder) && !added.contains(folder))
+				if (modFolderExists(def.name) && !added.contains(def.name))
 				{
-					added.push(folder);
-					list.push([folder, (dat[1] == "1")]);
+					added.push(def.name);
+					_cachedModsList.all.push(def.name);
+					
+					if (def.enabled)
+                        _cachedModsList.enabled.push(def.name);
+					else
+                        _cachedModsList.disabled.push(def.name);
 				}
 			}
-		} catch(e) {
-			trace(e);
-		}
-		
-		// Scan for folders that aren't on contentsList.dat yet
-		for (folder in getModDirectories())
-		{
-			var trimmed = folder.trim();
-			if(trimmed.length > 0 && !added.contains(trimmed))
+
+			for (folder in getModDirectories())
 			{
-				added.push(trimmed);
-				list.push([trimmed, true]);
+				var trimmed = folder.trim();
+				if(trimmed.length > 0 && !added.contains(trimmed))
+				{
+					added.push(trimmed);
+					_cachedModsList.all.push(trimmed);
+					_cachedModsList.enabled.push(trimmed);
+				}
 			}
+			#end
+			
+			updatedOnState = true;
 		}
 
-		// Now save file
-		var fileStr:String = '';
-		for (values in list)
-		{
-			if(fileStr.length > 0) fileStr += '\n';
-			fileStr += values[0] + '|' + (values[1] ? '1' : '0');
-		}
-
-		/*#if mobile
-		File.saveBytes('contentsList.dat', Assets.getBytes('contentsList.dat'));
-		#else*/
-		try {
-			File.saveContent(#if mobile MobileUtil.getDirectory() + #end contentsListSavePath(), fileStr);
-		} catch(e) {
-			trace(e);
-		}
-		//#end
-
-		updatedOnState = true;
-		//trace('Saved contentsList.dat');
-		#end
+		return _cachedModsList;
 	}
 
 	public static function loadTopMod()

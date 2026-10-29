@@ -103,7 +103,7 @@ class FatalAccessMobile extends MusicBeatState
         ["videos"],
         ["flowery"],
         ["Mirror Modulation"],
-        ["Unofficial", "$assets,contents,contentsList.dat", "$exe,fonts,shared,videos", "access,$OPEN ME PLAYER,freeplayassets,mainmenu,parallax,story", "ContainFatalError.cnt"]
+        ["Unofficial", "$exe,fonts,shared,videos", "access,$OPEN ME PLAYER,freeplayassets,mainmenu,parallax,story", "ContainFatalError.cnt"]
     ];
 
     var unlockText:String = "

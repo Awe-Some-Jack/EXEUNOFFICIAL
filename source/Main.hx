@@ -156,10 +156,7 @@ class Main extends Sprite
 
 		#if switch
 		backend.SwitchStorage.init();
-		boot('storage ready, cwd=' + Sys.getCwd() + ' assets=' + FileSystem.exists('assets') + ' list=' + FileSystem.exists('contentsList.dat') + ' contents=' + FileSystem.exists(Paths.mods()));
-		#end
 
-		#if switch
 		probeGraphics();
 		switchvideo.backend.SwitchVideoLog.logCallBack = (msg:String, ?pos:haxe.PosInfos) -> boot('video: ' + msg);
 		probeImage('assets/exe/ring.webp');

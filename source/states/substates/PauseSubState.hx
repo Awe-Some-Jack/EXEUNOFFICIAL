@@ -404,7 +404,7 @@ class PauseSubState extends MusicBeatSubstate
 					else if (states.parallax.StoryParallaxState.fromParallax) { states.parallax.StoryParallaxState.fromParallax = false; FlxG.switchState(() -> new states.parallax.StoryParallaxState()); }
 					else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
 					else if (states.access.MajinAccess.fromMajin) { states.access.MajinAccess.fromMajin = false; FlxG.switchState(() -> new states.access.MajinAccess()); }
-					else if (states.EXEMenu.secretSong) { states.EXEMenu.secretSong = false; FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg')); FlxG.switchState(() -> new states.EXEMenu()); }
+					else if (states.EXEMenu.secretSong) { states.EXEMenu.secretSong = false; states.EXEMenu._canPlaySong = true; FlxG.switchState(() -> new states.EXEMenu()); }
 					else FlxG.switchState(() -> new EXEFreeplay());
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode      = false;

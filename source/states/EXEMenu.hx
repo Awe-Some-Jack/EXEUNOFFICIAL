@@ -92,6 +92,8 @@ class EXEMenu extends MusicBeatState
 	public static var inDevMode:Bool = false;
 	#end
 
+	public static var _canPlaySong:Bool = false;
+
 	override function create()
 	{
 		Paths.clearStoredMemory();
@@ -219,6 +221,12 @@ class EXEMenu extends MusicBeatState
 		curKey = [for (_ in secretCodes) 0];
 
 		FlxG.mouse.visible = true;
+
+		if (_canPlaySong)
+		{
+			FlxG.sound.playMusic(openfl.utils.Assets.getSound('assets/exe/music/menu.ogg'));
+			_canPlaySong = false;
+		}
 
 		super.create();
 
@@ -403,7 +411,11 @@ class EXEMenu extends MusicBeatState
 			{
 				final keyName = charToKeyName(code.substr(curKey[i], 1));
 				if (Reflect.getProperty(FlxG.keys.justPressed, keyName))
+				{
+					var snd = FlxG.sound.play(Paths.sound('secretKeyPress'));
+					snd.pitch = FlxG.random.float(0.7, 1.3);
 					curKey[i]++;
+				}
 				else
 					curKey[i] = 0;
 			}

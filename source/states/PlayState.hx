@@ -3488,7 +3488,7 @@ class PlayState extends MusicBeatState
 				FlxG.switchState(() -> new states.access.MajinAccess());
 			}
 			else if (fromSecretSong) {
-				FlxG.sound.playMusic(openfl.utils.Assets.getSound('assets/exe/music/menu.ogg'));
+				states.EXEMenu._canPlaySong = true;
 				FlxG.switchState(() -> new states.EXEMenu());
 			}
 			else {

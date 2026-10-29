@@ -33,7 +33,8 @@ class SoundTestSubState extends MusicBeatSubstate
 			video = new VideoSprite(0, 0, true);
 			
 			video.onFormat(() -> {
-				setImageSize(video.video, FlxG.width, FlxG.height, 1, false);
+				final scale:Float = Math.min(FlxG.width / video.video.frameWidth, FlxG.height / video.video.frameHeight);
+				video.setGraphicSize(Math.floor(video.video.frameWidth * scale), Math.floor(video.video.frameHeight * scale));
 				video.screenCenter();
 			});
 			video.onEnd(onVideoEnd, true);

@@ -326,11 +326,11 @@ class SharpyCutscene extends MusicBeatState
 		_line(37.417, 45.25, 'Eggman', 'eggman', 'sharpy.line.06', "The energy from these rings are on another level... something unexpected might come out of this.");
 		_line(49.125, 56.417, 'Exetior', 'exetior_serio2', 'sharpy.line.07', "Interesting... I didn't think anyone had the balls to try and enter here without my permission.");
 		_line(56.75, 62.542, 'Exetior', 'exetior_serio1', 'sharpy.line.08', "Come with me Ivo, I need you to help figure out exactly what's happening.");
-		_line(76.333, 80.5, 'Jina', 'jina_Normal1', 'sharpy.line.09', "Oh c'mon guys, sing with me! It'll be fun!");
+		_line(76.333, 80.5, 'Jina', 'jina_Normal2', 'sharpy.line.09', "Oh c'mon guys, sing with me! It'll be fun!");
 		_line(80.958, 84.375, 'DemonTails', 'tails_normal', 'sharpy.line.10', "I think i'll pass.");
 		_line(84.542, 87.958, 'DemonKnuckles', 'knuckles_normal', 'sharpy.line.11', "Not a chance.");
 		_line(90.042, 93.542, 'Jina', 'jina_molesta', 'sharpy.line.12', "UGHH! You guys are SOOOOO BORING!");
-		_line(93.958, 97.75, 'Jina', 'jina_Normal2', 'sharpy.line.13', "Maybe Exetior will have some-");
+		_line(93.958, 97.75, 'Jina', 'jina_molesta', 'sharpy.line.13', "Maybe Exetior will have some-");
 		_line(99.792, 103.583, 'Jina', 'jina_enamorada', 'sharpy.line.14', "Exetior!");
 		_line(107.292, 111.083, 'Jina', 'jina_Normal1', 'sharpy.line.15', "What great timing! Look what just appeared!");
 		_line(113.667, 117.458, 'Exetior', 'exetior_confuso', 'sharpy.line.16', "A speaker?");

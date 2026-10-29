@@ -73,17 +73,19 @@ function onCreatePost()
     dashadsHUD = dashadsHUD..']; return;'
     if shadersEnabled and not lowQuality then runHaxeCode(dashads) runHaxeCode(dashadsHUD) end
 
-    for _,char in ipairs({'boyfriend'}) do
-        setSpriteShader(char, 'DropShadowShader')
-        setShaderFloat(char, 'hue', 0)
-        setShaderFloat(char, 'saturation', 0)
-        setShaderFloat(char, 'contrast', 0)
-        setShaderFloat(char, 'str', 1)
-        setShaderFloat(char, 'brightness', 0)
-        setShaderFloat(char, 'thr', 0.1)
-        setShaderFloat(char, 'uSpriteAlpha', getProperty(char..'.alpha'))
-        setShaderFloat(char, 'AA_STAGES', 4.0)
-        runHaxeFunction('setShaderFrameInfo', {char})
+    if shadersEnabled then
+        for _,char in ipairs({'boyfriend'}) do
+            setSpriteShader(char, 'DropShadowShader')
+            setShaderFloat(char, 'hue', 0)
+            setShaderFloat(char, 'saturation', 0)
+            setShaderFloat(char, 'contrast', 0)
+            setShaderFloat(char, 'str', 1)
+            setShaderFloat(char, 'brightness', 0)
+            setShaderFloat(char, 'thr', 0.1)
+            setShaderFloat(char, 'uSpriteAlpha', getProperty(char..'.alpha'))
+            setShaderFloat(char, 'AA_STAGES', 4.0)
+            runHaxeFunction('setShaderFrameInfo', {char})
+        end
     end
 end
 
@@ -98,7 +100,7 @@ local onTween5 = false
 local glitchTime = false
 
 function onStepHit()
-    if curStep == 893 then
+    if curStep == 893 and shadersEnabled then
         for _,char in ipairs({'boyfriend'}) do
             setSpriteShader(char, 'DropShadowShader')
             setShaderFloat(char, 'hue', 10)

@@ -1236,6 +1236,13 @@ function noteMiss(note)
 	if (curBG == 'fourth' && bfLegs4 != null) bfLegs4.playAnim(game.singAnimations[note.noteData] + 'miss', true);
 }
 
+function noteMissPress(note)
+{
+	if (curBG == 'second' && bfLegs2 != null && bfLegs2back != null) bfLegs2.playAnim(game.singAnimations[note] + 'miss', true);
+	if (curBG == 'third' && bfLegs3 != null) bfLegs3.playAnim(game.singAnimations[note] + 'miss', true);
+	if (curBG == 'fourth' && bfLegs4 != null) bfLegs4.playAnim(game.singAnimations[note] + 'miss', true);
+}
+
 var _angulo:Bool = false;
 function onBeatHit()
 {

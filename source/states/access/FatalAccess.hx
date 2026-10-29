@@ -988,7 +988,7 @@ class FatalAccess extends MusicBeatState
 		FlxTransitionableState.skipNextTransIn = true;
 		FlxTransitionableState.skipNextTransOut = true;
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
-		#if FLX_PITCH FlxG.sound.music.pitch = 1; #end
+		FlxG.sound.music.pitch = 1;
 		FlxG.switchState(() -> new EXEMenu());
 	}
 

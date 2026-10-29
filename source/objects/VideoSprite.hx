@@ -212,10 +212,8 @@ class VideoSprite extends FlxSpriteGroup
 			final success = video.load(videoPath, loadArgs);
 			if (success)
 			{
-				#if FLX_PITCH
 				if (video.bitmap != null && FlxG.sound.music != null)
 					video.bitmap.rate = FlxG.sound.music.pitch;
-				#end
 			}
 			#end
 
@@ -277,7 +275,7 @@ class VideoSprite extends FlxSpriteGroup
 		else
 			new FlxTimer().start(delay, _ -> play());
 
-		#if (FLX_PITCH && !switch)
+		#if !switch
 		if (video.bitmap != null)
 			video.bitmap.rate = PlayState.instance?.playbackRate ?? 1.0;
 		#end

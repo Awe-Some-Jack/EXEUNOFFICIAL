@@ -668,9 +668,7 @@ class Sonic extends FlxSprite implements CameraTarget
 	function _rev():Void
 	{
 		_revSound ??= FlxG.sound.load(Paths.sound("minigame/preymini/spindash"));
-		#if FLX_PITCH
 		_revSound.pitch = 1 + rev / 8 * 0.4;
-		#end
 		_revSound.play(true);
 	}
 

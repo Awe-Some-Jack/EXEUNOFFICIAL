@@ -345,9 +345,7 @@ class PreyMini extends MusicBeatState
 	{
 		final sound = FlxG.sound.play(Paths.sound("minigame/preymini/explosion"), 0.14 + 0.1 * size);
 		sound.pan = pan * 0.7;
-		#if FLX_PITCH
 		sound.pitch = FlxG.random.float(0.55, 0.8);
-		#end
 		_cut?.boom(pan, size);
 	}
 

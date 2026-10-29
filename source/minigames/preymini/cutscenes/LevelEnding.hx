@@ -240,9 +240,7 @@ class LevelEnding
 				if (_at(23.3 + i * 0.28))
 				{
 					final knock = FlxG.sound.play(Paths.sound("minigame/preymini/tung"), 0.9);
-					#if FLX_PITCH
 					knock.pitch = 1 - i * 0.04;
-					#end
 				}
 		_black.alpha = Math.floor(Math.max(0, Math.min(1, (_t - 25.2) / 1.6)) * 8) / 8;
 		if (_at(27.6) && onDone != null) onDone();
@@ -386,10 +384,8 @@ class LevelEnding
 		final clank = FlxG.sound.play(Paths.sound("minigame/preymini/hit"), 0.45 + 0.55 * k);
 		final thud = FlxG.sound.play(Paths.sound("minigame/preymini/explosion"), 0.25 + 0.35 * k);
 		clank.pan = thud.pan = -0.8 + 0.4 * k;
-		#if FLX_PITCH
 		clank.pitch = 0.45;
 		thud.pitch = 0.3;
-		#end
 	}
 
 	function _strike():Void
@@ -404,9 +400,7 @@ class LevelEnding
 	function _thunder(volume:Float, pitch:Float):Void
 	{
 		final sound = FlxG.sound.play(Paths.sound("minigame/preymini/explosion"), volume);
-		#if FLX_PITCH
 		sound.pitch = pitch;
-		#end
 	}
 
 	function _updateFire(elapsed:Float):Void

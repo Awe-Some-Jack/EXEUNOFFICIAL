@@ -346,7 +346,7 @@ class Character extends #if flixel_animate FlxAnimate #else FlxSprite #end
 		if (_lastPlayedAnimation?.startsWith('sing')) holdTimer += elapsed;
 
 		final holdThreshold:Float = playerMissHold >= 0 ? playerMissHold
-			: (Conductor.stepCrochet * (0.0011 #if FLX_PITCH / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1) #end) * singDuration);
+			: (Conductor.stepCrochet * (0.0011 / (FlxG.sound.music?.pitch ?? 1)) * singDuration);
 		if (holdTimer >= holdThreshold)
 		{
 			dance();

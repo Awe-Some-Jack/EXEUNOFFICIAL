@@ -526,10 +526,8 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			"Shift + R - Go Back to the Start of the Song",
 			"Z/X - Zoom in/out",
 			"Left/Right - Change Snap",
-			#if FLX_PITCH
 			"Left Bracket / Right Bracket - Change Song Playback Rate",
 			"ALT + Left Bracket / Right Bracket - Reset Song Playback Rate",
-			#end
 			"",
 			"Ctrl + Z - Undo",
 			"Ctrl + Y - Redo",
@@ -1893,12 +1891,10 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 	var playbackRate:Float = 1;
 	function setPitch(?value:Null<Float>)
 	{
-		#if FLX_PITCH
 		value ??= playbackRate;
 		FlxG.sound.music.pitch = value;
 		vocals.pitch = value;
 		opponentVocals.pitch = value;
-		#end
 	}
 
 	function setSongPlaying(doPlay:Bool)
@@ -5117,9 +5113,9 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 		}
 		
 		@:privateAccess
-		if (sound != null && sound._sound != null && sound._sound.__buffer != null)
+		if (sound?._sound?.__buffer != null)
 		{
-			var bytes:Bytes = sound._sound.__buffer.data.toBytes();
+			final bytes:Bytes = sound._sound.__buffer.data.buffer;
 			wavData = waveformData(sound._sound.__buffer, bytes, cachedSectionTimes[curSec] - Conductor.offset, cachedSectionTimes[curSec+1] - Conductor.offset, 1, wavData, height);
 		}
 

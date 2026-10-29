@@ -67,9 +67,7 @@ class EditorPlayState extends MusicBeatSubstate
 		this.startPos = Conductor.songPosition;
 		Conductor.songPosition = startPos;
 
-		#if FLX_PITCH
 		playbackRate = FlxG.sound.music.pitch;
-		#end
 	}
 
 	override function create()

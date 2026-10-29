@@ -138,11 +138,7 @@ class FunkinLua
 			set('healthGainMult', game.healthGain);
 			set('healthLossMult', game.healthLoss);
 
-			#if FLX_PITCH
 			set('playbackRate', game.playbackRate);
-			#else
-			set('playbackRate', 1);
-			#end
 
 			set('guitarHeroSustains', game.guitarHeroSustains);
 			set('instakillOnMiss',    game.instakillOnMiss);
@@ -848,16 +844,10 @@ class FunkinLua
 			if (snd != null) snd.time = value;
 		});
 		LuaUtilsHx.addFunction(lua, 'getSoundPitch', function(tag:String) {
-			#if FLX_PITCH
 			var snd:FlxSound = MusicBeatState.getVariables().get(LuaUtils.formatVariable('sound_$tag'));
 			return snd != null ? snd.pitch : 1;
-			#else
-			luaTrace("getSoundPitch: Sound Pitch is not supported on this platform!", false, false, FlxColor.RED);
-			return 1;
-			#end
 		});
 		LuaUtilsHx.addFunction(lua, 'setSoundPitch', function(tag:String, value:Float, doPause:Bool = false) {
-			#if FLX_PITCH
 			inline function applyPitch(snd:FlxSound) {
 				var wasPlaying = snd.playing;
 				if (doPause) snd.pause();
@@ -865,11 +855,9 @@ class FunkinLua
 				if (doPause && wasPlaying) snd.play();
 			}
 			if (tag == null || tag.length < 1) { if (FlxG.sound.music != null) applyPitch(FlxG.sound.music); return; }
+			
 			var snd:FlxSound = MusicBeatState.getVariables().get(LuaUtils.formatVariable('sound_$tag'));
 			if (snd != null) applyPitch(snd);
-			#else
-			luaTrace("setSoundPitch: Sound Pitch is not supported on this platform!", false, false, FlxColor.RED);
-			#end
 		});
 
 		addLocalCallback('getModSetting', function(saveTag:String, modName:String = null) {

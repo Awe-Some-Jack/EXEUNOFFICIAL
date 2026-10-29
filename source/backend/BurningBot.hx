@@ -27,10 +27,8 @@ class BurningBot
         final progress = FlxMath.bound(tensionElapsed / 10.0, 0, 1);
         final pitch = FlxMath.lerp(1.0, 0.65, progress);
 
-        #if FLX_PITCH
         FlxG.sound.list.forEach((sound:FlxSound) -> if (sound != null) sound.pitch = pitch);
         if (FlxG.sound.music != null) FlxG.sound.music.pitch = pitch;
-        #end
     }
 
     public static function resetAudio():Void
@@ -38,10 +36,8 @@ class BurningBot
         tensionElapsed = 0.0;
         approachPitch = 0.65;
 
-        #if FLX_PITCH
         FlxG.sound.list.forEach((sound:FlxSound) -> if (sound != null) sound.pitch = 1.0);
         if (FlxG.sound.music != null) FlxG.sound.music.pitch = 1.0;
-        #end
     }
 
     public static function applyApproachPitch(elapsed:Float, targetProgress:Float):Void
@@ -49,10 +45,8 @@ class BurningBot
         final target = FlxMath.lerp(0.65, 0.02, FlxMath.bound(targetProgress, 0, 1));
         approachPitch = FlxMath.lerp(target, approachPitch, Math.exp(-elapsed * 3));
 
-        #if FLX_PITCH
         FlxG.sound.list.forEach((sound:FlxSound) -> if (sound != null) sound.pitch = approachPitch);
         if (FlxG.sound.music != null) FlxG.sound.music.pitch = approachPitch;
-        #end
     }
 
     public static function stopAllAudio():Void

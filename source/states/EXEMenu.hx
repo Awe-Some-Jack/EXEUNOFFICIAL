@@ -695,9 +695,8 @@ class EXEMenu extends MusicBeatState
 	{
 		canInteract = false;
 		FlxG.sound.play(Paths.sound('static'), 0.8);
-		#if FLX_PITCH
 		if (FlxG.sound.music != null) FlxTween.tween(FlxG.sound.music, {pitch: 0.6}, 1.2);
-		#end
+		
 		final w = 640;
 		final h = 190;
 		final x = (FlxG.width - w) * 0.5;

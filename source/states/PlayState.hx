@@ -1213,7 +1213,6 @@ class PlayState extends MusicBeatState
 
 	function set_playbackRate(value:Float):Float
 	{
-		#if FLX_PITCH
 		if(generatedMusic)
 		{
 			FlxG.sound.list.forEach((sound:FlxSound) -> if (sound != null) sound.pitch = value);
@@ -1233,9 +1232,6 @@ class PlayState extends MusicBeatState
 		if(videoCutscene?.video?.bitmap != null) videoCutscene.video.bitmap.rate = value;
 		#end
 		setOnScripts('playbackRate', playbackRate);
-		#else
-		playbackRate = 1.0; // ensuring -Crow
-		#end
 		return playbackRate;
 	}
 
@@ -1595,13 +1591,13 @@ class PlayState extends MusicBeatState
 		opponentVocals.pause();
 
 		FlxG.sound.music.time = time - Conductor.offset;
-		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
+		FlxG.sound.music.pitch = playbackRate;
 		FlxG.sound.music.play();
 
 		if (Conductor.songPosition < vocals.length)
 		{
 			vocals.time = time - Conductor.offset;
-			#if FLX_PITCH vocals.pitch = playbackRate; #end
+			vocals.pitch = playbackRate;
 			vocals.play();
 		}
 		else vocals.pause();
@@ -1609,7 +1605,7 @@ class PlayState extends MusicBeatState
 		if (Conductor.songPosition < opponentVocals.length)
 		{
 			opponentVocals.time = time - Conductor.offset;
-			#if FLX_PITCH opponentVocals.pitch = playbackRate; #end
+			opponentVocals.pitch = playbackRate;
 			opponentVocals.play();
 		}
 		else opponentVocals.pause();
@@ -1622,7 +1618,7 @@ class PlayState extends MusicBeatState
 
 		@:privateAccess
 		FlxG.sound.playMusic(inst._sound, 1, false);
-		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
+		FlxG.sound.music.pitch = playbackRate;
 		FlxG.sound.music.onComplete = finishSong.bind();
 		vocals.play();
 		opponentVocals.play();
@@ -1710,9 +1706,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.list.add(vocals);
 		FlxG.sound.list.add(opponentVocals);
 
-		#if FLX_PITCH
 		FlxG.sound.list.forEach((sound:FlxSound) -> if (sound != null) sound.pitch = playbackRate);
-		#end
 
 		inst = new FlxSound();
 		try
@@ -2309,7 +2303,7 @@ class PlayState extends MusicBeatState
 		{
 			voc.time = musicTime;
 			voc.play(false, musicTime);
-			#if FLX_PITCH voc.pitch = playbackRate; #end
+			voc.pitch = playbackRate;
 		}
 	}
 
@@ -2320,7 +2314,7 @@ class PlayState extends MusicBeatState
 		trace('resynced vocals at ' + Math.floor(Conductor.songPosition));
 
 		FlxG.sound.music.play();
-		#if FLX_PITCH FlxG.sound.music.pitch = playbackRate; #end
+		FlxG.sound.music.pitch = playbackRate;
 		Conductor.songPosition = FlxG.sound.music.time + Conductor.offset;
 
 		final checkVocals = [vocals, opponentVocals];
@@ -2329,7 +2323,7 @@ class PlayState extends MusicBeatState
 			if (FlxG.sound.music.time < vocals.length)
 			{
 				voc.time = FlxG.sound.music.time;
-				#if FLX_PITCH voc.pitch = playbackRate; #end
+				voc.pitch = playbackRate;
 				voc.play();
 			}
 			else voc.pause();
@@ -4748,9 +4742,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.list.forEach((sound:FlxSound) -> {
 			if (sound != null) 
 			{
-				#if FLX_PITCH
 				sound.pitch = 1;
-				#end
 				sound.onComplete = null;
 			}
 		});

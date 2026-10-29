@@ -246,7 +246,7 @@ class CreditsRollState extends MusicBeatState
 
 	function set_speed(value:Float):Float
 	{
-		#if FLX_PITCH FlxG.sound.music.pitch = value; #end
+		FlxG.sound.music.pitch = value;
 		speed = value;
 		return value;
 	}

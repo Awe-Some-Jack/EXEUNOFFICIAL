@@ -1057,51 +1057,23 @@ class Paths
 		return getPath('$translatedKey.$SOUND_EXT', SOUND, path, modsAllowed);
 	}
 
-	static final SOUND_CODEC_MAP:Map<String, lime.media.AudioCodec> = [
-		"ogg" => OGG,
-		"opus" => OPUS,
-		"flac" => FLAC,
-		"mp3" => MP3,
-		"wav" => WAV
-	];
-
-	static function decodeAudioBuffer(decoder:lime.media.AudioDecoder):Null<Sound>
-	{
-		if (decoder == null) return null;
-
-		final buffer = new lime.media.AudioBuffer();
-		buffer.sampleRate = decoder.sampleRate;
-		buffer.channels = decoder.channels;
-		buffer.dataFormat = S16;
-		buffer.data = lime.utils.UInt8Array.fromBytes(decoder.decode(haxe.Int64.toInt(decoder.total()), buffer.dataFormat));
-		return Sound.fromAudioBuffer(buffer);
-	}
-
 	static function loadSoundFromFile(file:String):Sound
 	{
-		final codec = SOUND_CODEC_MAP.get(haxe.io.Path.extension(file).toLowerCase());
-
-		if (codec != null)
-		{
-			final decoded = decodeAudioBuffer(lime.media.AudioDecoder.fromFile(file, codec));
-			if (decoded != null) return decoded;
-		}
-
+		final buffer = lime.media.AudioBuffer.fromFile(file);
+		if (buffer != null) 
+			return Sound.fromAudioBuffer(buffer);
+		
 		return Sound.fromFile(file);
 	}
 
 	static function loadSoundFromAssets(file:String):Sound
 	{
-		final codec = SOUND_CODEC_MAP.get(haxe.io.Path.extension(file).toLowerCase());
-
-		if (codec != null)
+		final bytes = OpenFlAssets.getBytes(file);
+		if (bytes != null)
 		{
-			final bytes = OpenFlAssets.getBytes(file);
-			if (bytes != null)
-			{
-				final decoded = decodeAudioBuffer(lime.media.AudioDecoder.fromBytes(bytes, codec));
-				if (decoded != null) return decoded;
-			}
+			final buffer = lime.media.AudioBuffer.fromBytes(bytes);
+			if (buffer != null) 
+				return Sound.fromAudioBuffer(buffer);
 		}
 
 		return OpenFlAssets.getSound(file);
@@ -1181,35 +1153,18 @@ class Paths
 
 				var buffer:lime.media.AudioBuffer = null;
 
-				if (ext == 'ogg')
-				{
-					var vorbisFile = null;
-
-					#if sys
-					if (sys.FileSystem.exists(file))
-					{
-						vorbisFile = lime.media.vorbis.VorbisFile.fromFile(file);
-					}
-					#end
-
-					if (vorbisFile == null && OpenFlAssets.exists(file))
-					{
-						var bytes = OpenFlAssets.getBytes(file);
-						if (bytes != null) vorbisFile = lime.media.vorbis.VorbisFile.fromBytes(bytes);
-					}
-
-					if (vorbisFile != null)
-					{
-						buffer = lime.media.AudioBuffer.fromVorbisFile(vorbisFile);
-					}
-				}
-				
 				#if sys
-				if (buffer == null && sys.FileSystem.exists(file))
+				if (sys.FileSystem.exists(file))
 				{
-					buffer = lime.media.AudioBuffer.fromFileStream(file);
+					buffer = lime.media.AudioBuffer.fromFile(file, true);
 				}
 				#end
+
+				if (buffer == null && OpenFlAssets.exists(file))
+				{
+					var bytes = OpenFlAssets.getBytes(file);
+					if (bytes != null) buffer = lime.media.AudioBuffer.fromBytes(bytes, true);
+				}
 
 				if (buffer != null)
 				{

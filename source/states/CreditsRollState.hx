@@ -459,12 +459,12 @@ class CreditsRollState extends MusicBeatState
             case 92: addImage('assets/exe/creditsroll/3.webp');
             case 96: addImage('assets/exe/creditsroll/4.webp');
             case 100: addImage('assets/exe/creditsroll/5.webp');
-            case 104: addImage('assets/exe/creditsroll/18.webp'); //needs new screenshot
+            case 104: addImage('assets/exe/creditsroll/18.webp');
             case 108: addImage('assets/exe/creditsroll/6.webp');
             case 112: addImage('assets/exe/creditsroll/19.webp');
-            case 116: addImage('assets/exe/creditsroll/7.webp'); //needs new screenshot
+            case 116: addImage('assets/exe/creditsroll/7.webp');
             case 120: addImage('assets/exe/creditsroll/8.webp');
-            case 124: addImage('assets/exe/creditsroll/20.webp'); //needs new screenshot
+            case 124: addImage('assets/exe/creditsroll/20.webp');
             case 128: addImage('assets/exe/creditsroll/21.webp');
             case 132: addImage('assets/exe/creditsroll/9.webp');
             case 136: addImage('assets/exe/creditsroll/10.webp');
@@ -473,11 +473,11 @@ class CreditsRollState extends MusicBeatState
             case 148: addImage('assets/exe/creditsroll/11.webp');
             case 152: addImage('assets/exe/creditsroll/12.webp');
             case 156: addImage('assets/exe/creditsroll/13.webp');
-            case 160: addImage('assets/exe/creditsroll/23.webp'); //needs new screenshot
+            case 160: addImage('assets/exe/creditsroll/23.webp');
             case 164: addImage('assets/exe/creditsroll/14.webp');
             case 168: addImage('contents/REQUITAL/images/finale.webp');
             case 172: addImage('assets/exe/creditsroll/24.webp');
-            case 176: addImage('assets/exe/creditsroll/25.webp'); //needs new screenshot
+            case 176: addImage('assets/exe/creditsroll/25.webp');
             case 180: addImage('assets/exe/creditsroll/26.webp'); //needs new screenshot
             case 184: addImage('assets/exe/creditsroll/27.webp');
             case 188: addImage('assets/exe/creditsroll/17.webp');

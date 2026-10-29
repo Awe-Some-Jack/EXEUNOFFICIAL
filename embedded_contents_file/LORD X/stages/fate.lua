@@ -104,17 +104,20 @@ local trailExists = false
 
 local function pumpCloneBF()
     runHaxeCode([[
-        trail = new Character(0, 0, boyfriend.curCharacter, boyfriend.isPlayer);
+        var trail = new Character(0, 0, boyfriend.curCharacter, boyfriend.isPlayer);
         trail.updateHitbox();
         trail.setPosition(boyfriend.x, boyfriend.y);
         trail.scale.set(boyfriend.scale.x, boyfriend.scale.x);
         trail.alpha = 0.8;
         trail.playAnim(boyfriend.animation.curAnim.name);
         game.add(trail);
+        setVar('fateTrail', trail);
 
         FlxTween.tween(trail.scale, {x: boyfriend.scale.x + 0.4, y: boyfriend.scale.y + 0.4}, 1);
         FlxTween.tween(trail, {alpha: 0}, 1, {ease: FlxEase.circOut, onComplete: (_) -> {
-            remove(trail);
+            if (getVar('fateTrail') == trail) setVar('fateTrail', null);
+            FlxTween.cancelTweensOf(trail.scale);
+            game.remove(trail, true);
             trail.destroy();
         }});
     ]])
@@ -366,8 +369,12 @@ local function onUpdateFate(elapsed)
 
     if trailExists then
         runHaxeCode([[
-            trail.playAnim(boyfriend.animation.curAnim.name);
-            trail.animation.curAnim.curFrame = boyfriend.animation.curAnim.curFrame;
+            var trail = getVar('fateTrail');
+            if (trail != null && trail.animation != null && trail.animation.curAnim != null)
+            {
+                trail.playAnim(boyfriend.animation.curAnim.name);
+                trail.animation.curAnim.curFrame = boyfriend.animation.curAnim.curFrame;
+            }
         ]])
     end
 

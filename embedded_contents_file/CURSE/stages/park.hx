@@ -72,7 +72,7 @@ function onCreate()
     sky.scrollFactor.set(0.6, 0.6);
     addBehindGF(sky);
 
-    floor = new FlxSprite(-1280, -360).loadGraphic(Paths.image('Park/bg'));
+    floor = new FlxSprite(-1240, -365).loadGraphic(Paths.image('Park/bg'));
     floor.scale.set(0.86, 0.86); floor.updateHitbox();
     addBehindGF(floor);
 
@@ -82,6 +82,8 @@ function onCreate()
     fuente.animation.play('idle', true);
     fuente.scale.set(1.2, 1.2);
     addBehindGF(fuente);
+
+    //320
 
     menuSTATIC = new VideoSprite();
     if (menuSTATIC.loadVideo(Paths.video('STATIC'), [VideoSprite.ARG_LOOPING, VideoSprite.ARG_MUTED])) menuSTATIC.playDelayed();
@@ -126,7 +128,6 @@ function onCreatePost()
 
     gfGroup.scrollFactor.set(1, 1);
 
-    // Fade negro encima de todo (camHUD)
     blackFade = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
     blackFade.scrollFactor.set();
     blackFade.camera = camHUD;
@@ -302,7 +303,7 @@ function onBeatHit()
 
 function onStepHit()
 {
-    // Fade negro (camHUD, encima de todo)
+    // negro
     if (curStep == 717)
     {
         blackFadeTween?.cancel();
@@ -325,19 +326,16 @@ function onStepHit()
         dadPhase = 'enojado';
         if (dad != null) dad.playAnim('3idle', true);
     }
-    // FASE 4 (placeholder - poner el step):
-    // else if (curStep == ???)
-    // {
-    //     dadPhase = 'phase4';
-    //     if (dad != null) dad.playAnim('idle4', true);
-    // }
     else if (curStep == 977)
+    {
+        dadPhase = 'phase4';
+        if (dad != null) dad.playAnim('idle4', true);
+    }
+    else if (curStep == 1232)
     {
         dadPhase = 'happy';
         if (dad != null) dad.playAnim('idle', true);
     }
-
-    // Dancers: activar su animación en el step configurado
     for (d in dancers)
     {
         if (curStep == d.step)
@@ -384,9 +382,8 @@ function opponentNoteHit(note)
 
 function pulseBrightness()
 {
-    // cancelable: reinicia el pulso cada vez que se dispara (sube a 0.4 al instante)
     brightnessPulseTime = 0;
-    if (brightnessShader != null) brightnessShader.setFloat('brightness', 0.4);
+    if (brightnessShader != null) brightnessShader.setFloat('brightness', 0.3);
 }
 
 function updateBrightnessPulse(elapsed:Float)
@@ -395,7 +392,7 @@ function updateBrightnessPulse(elapsed:Float)
 
     brightnessPulseTime += elapsed;
 
-    final peak:Float = 0.4;
+    final peak:Float = 0.3;
     final downTime:Float = 0.7;
 
     var val:Float = 0;
@@ -409,7 +406,6 @@ function updateBrightnessPulse(elapsed:Float)
 
 function pulseChromatic(intensity:Float)
 {
-    // cancelable: reinicia el pulso con la nueva intensidad (sube al instante)
     chromaticIntensity = intensity;
     chromaticPulseTime = 0;
     if (chromaticShader != null)
@@ -441,8 +437,6 @@ function updateChromaticPulse(elapsed:Float)
 
 function pulseContrast(intensity:Float)
 {
-    // value1 = intensidad objetivo (0 = normal). Va a esa intensidad en 0.2s y se queda.
-    // cancelable: si se vuelve a disparar, reinicia el tween desde el valor actual.
     contrastTarget = intensity;
     contrastFrom = contrastValue;
     contrastTweenTime = 0;
@@ -460,7 +454,7 @@ function updateContrastPulse(elapsed:Float)
     if (p >= 1.0)
     {
         p = 1.0;
-        contrastTweenTime = -1; // se queda en el objetivo
+        contrastTweenTime = -1;
     }
 
     contrastValue = contrastFrom + (contrastTarget - contrastFrom) * p;

@@ -118,7 +118,7 @@ class LevelEnding
 		_render.visible = false;
 		_top = _screen(new FlxSprite(0, -60).makeGraphic(FlxG.width, 60, FlxColor.BLACK), overlay);
 		_bottom = _screen(new FlxSprite(0, FlxG.height).makeGraphic(FlxG.width, 60, FlxColor.BLACK), overlay);
-		_subtitle = new FlxText((FlxG.width - 860) / 2, 0, 860, "", 28);
+		_subtitle = new FlxText(40, FlxG.height, FlxG.width - 80, "", 28);
 		_subtitle.setFormat(Paths.font("sonichud.ttf"), 28, 0xFF4848B4, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		_subtitle.borderSize = 2;
 		_subtitle.alpha = 0;
@@ -138,6 +138,7 @@ class LevelEnding
 		final bars = FlxEase.quadOut(Math.min(1, _age / 0.6));
 		_top.y = -60 + 60 * bars;
 		_bottom.y = FlxG.height - 60 * bars;
+		_subtitle.y = _bottom.y + (_bottom.height - _subtitle.height) * 0.5;
 		final hud = Math.max(0, 1 - _age / 0.5);
 		for (s in _hud.members) if (s != null) s.alpha = hud;
 		_updateFire(elapsed);

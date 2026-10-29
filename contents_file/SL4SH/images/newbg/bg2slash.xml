@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bg2slash.png">
+	<!-- Created with FNF Spritesheet and XML Maker -->
+	<SubTexture name="Bg2W0000" x="2" y="2" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0001" x="317" y="2" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0002" x="632" y="2" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0003" x="947" y="2" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0004" x="2" y="211" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0005" x="317" y="211" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0006" x="632" y="211" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0007" x="947" y="211" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0008" x="2" y="420" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0009" x="317" y="420" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0010" x="632" y="420" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0011" x="947" y="420" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0012" x="2" y="629" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0013" x="317" y="629" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0014" x="632" y="629" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0015" x="947" y="629" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0016" x="2" y="838" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0017" x="317" y="838" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0018" x="632" y="838" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0019" x="947" y="838" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0020" x="2" y="1047" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0021" x="317" y="1047" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0022" x="632" y="1047" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+	<SubTexture name="Bg2W0023" x="947" y="1047" width="311" height="205" frameX="0" frameY="0" frameWidth="311" frameHeight="205"/>
+</TextureAtlas>

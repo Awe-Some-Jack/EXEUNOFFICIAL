@@ -148,9 +148,7 @@ class Main extends Sprite
 
 	public function new()
 	{
-		#if cpp
-		backend.MemoryUtil.NativeMemory.tuneAllocator();
-		#end
+		MemoryUtil.tuneAllocator();
 		super();
 
 		boot('new');

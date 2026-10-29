@@ -125,7 +125,6 @@ class Paths
 	@:access(flixel.system.frontEnds.BitmapFrontEnd._cache)
 	public static function clearStoredMemory()
 	{
-		final ramBefore:Int = Std.int(MemoryUtil.getAccurateRamUsage() / 1048576);
 		clearResolvedPaths();
 		
 		// clear anything not in the tracked assets list
@@ -167,22 +166,6 @@ class Paths
 		#if (!js && !html5)
 		openfl.display.Shader.__pruneUnusedPrograms(FlxG.stage?.context3D);
 		#end
-		trace('[mem] after clear: (was ${ramBefore}MB) ${Std.int(MemoryUtil.getAccurateRamUsage() / 1048576)}MB ram, ${Std.int(MemoryUtil.currentMemUsage() / 1048576)}MB haxe heap (${Std.int(MemoryUtil.heapInUse() / 1048576)}MB reserved), ${[for (_ in FlxG.bitmap._cache) 1].length} graphics, ${[for (_ in currentTrackedSounds) 1].length} sounds, ${glProgramCount()} gl programs, ${scriptInstanceCount()} scripts');
-	}
-
-	static function glProgramCount():Int
-	{
-		final context = FlxG.stage?.context3D;
-		return context == null ? -1 : [for (_ in @:privateAccess context.__programs) 1].length;
-	}
-
-	static function scriptInstanceCount():Int
-	{
-		#if HSCRIPT_ALLOWED
-		return [for (_ in crowplexus.iris.Iris.instances) 1].length;
-		#else
-		return -1;
-		#end
 	}
 
 	static inline function isLargeAudioKey(key:String):Bool
@@ -223,10 +206,6 @@ class Paths
 		return false;
 	}
 
-	/**
-	 * Immediately closes a song/music `Sound` loaded through `Paths` and drops every cache reference to it,
-	 * so its decoded audio can be reclaimed without waiting for the next state's `clearStoredMemory`.
-	 */
 	public static function releaseSound(snd:Sound):Void
 	{
 		if (snd == null) return;

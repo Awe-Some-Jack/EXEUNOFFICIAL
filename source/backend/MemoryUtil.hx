@@ -26,6 +26,13 @@ final class MemoryUtil
 		if (disableCount > 0) disable() else enable();
 	}
 
+	public static function tuneAllocator():Void
+	{
+		#if cpp
+		NativeMemory.tuneAllocator();
+		#end
+	}
+
 	public static function clearMinor():Void
 	{
 		#if (cpp || java || neko)

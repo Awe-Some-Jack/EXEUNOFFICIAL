@@ -169,6 +169,7 @@ class ExtrasMenu extends MusicBeatState
     }
 
     public static var instance:ExtrasMenu = null;
+    public static var openCutscenes:Bool = false;
 
     public function new()
     {
@@ -256,6 +257,15 @@ class ExtrasMenu extends MusicBeatState
         arrowsGrp.add(arrowRight); 
 
         updateArrowPositions();
+
+        if (openCutscenes)
+        {
+            openCutscenes = false;
+            curSelected = 3;
+            changeSelection(0);
+            canMove = false;
+            new FlxTimer().start(0.05, (_) -> openOption());
+        }
 
         #if DISCORD_ALLOWED DiscordClient.changePresence("In the Extras", null); #end
 

@@ -46,15 +46,14 @@ function onEvent(n, v1)
 			doTweenAlpha('icon2Xd', 'iconOpp', 0, crochet / (1000 / 4) / playbackRate)
 			for i = 0,7 do noteTweenAlpha('noteAlpha'..i, i, 0, crochet / (1000 / 4) / playbackRate) end
 		end
-		if shadersEnabled then
-			
-			if v1 == 'lessdark' then
-				for i = 0,7 do cancelTween('noteAlpha'..i) setProperty('strumLineNotes.members['..i..'].alpha', 1) end
-				cancelTween('icon1Xd') setProperty('iconBF.alpha', 1)
-				cancelTween('icon2Xd') setProperty('iconOpp.alpha', 1)
-				cancelTween('BlackGraphicHUD')
-				cameraFlash('game', 'FFFFFF', 1, true)
-				setProperty('BlackGraphicHUD.alpha', 0)
+		if v1 == 'lessdark' then
+			for i = 0,7 do cancelTween('noteAlpha'..i) setProperty('strumLineNotes.members['..i..'].alpha', 1) end
+			cancelTween('icon1Xd') setProperty('iconBF.alpha', 1)
+			cancelTween('icon2Xd') setProperty('iconOpp.alpha', 1)
+			cancelTween('BlackGraphicHUD')
+			cameraFlash('game', 'FFFFFF', 1, true)
+			setProperty('BlackGraphicHUD.alpha', 0)
+			if shadersEnabled then
 				setShaderFloat('dss', 'saturation', -10)
 				setShaderFloat('dss', 'brightness',-23)
 				setShaderFloat('dss', 'contrast', -17)

@@ -12,6 +12,7 @@ function onGameOverStart()
 	if (GameOverSubstate.instance.boyfriend != null && deadBoyfriend == null) deadBoyfriend = GameOverSubstate.instance.boyfriend;
 	deadBoyfriend.scrollFactor.set();
 	deadBoyfriend.setPosition(320, 200);
+	deadBoyfriend.flipX = !deadBoyfriend.flipX;
 
 	FlxG.camera.follow();
 	FlxG.camera.scroll.set(0, 0);

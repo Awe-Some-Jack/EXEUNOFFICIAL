@@ -543,6 +543,7 @@ class FunkinLua
 			else if (states.parallax.StoryParallaxState.fromParallax) { states.parallax.StoryParallaxState.fromParallax = false; FlxG.switchState(() -> new states.parallax.StoryParallaxState()); }
 			else if (states.access.FridgeAccess.fromFridge) { states.access.FridgeAccess.fromFridge = false; FlxG.switchState(() -> new states.access.FridgeAccess()); }
 			else if (states.access.MajinAccess.fromMajin) { states.access.MajinAccess.fromMajin = false; FlxG.switchState(() -> new states.access.MajinAccess()); }
+			else if (states.EXEMenu.secretSong) { states.EXEMenu.secretSong = false; FlxG.switchState(() -> new states.EXEMenu()); }
 			else FlxG.switchState(() -> new EXEFreeplay());
 			#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 			FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));

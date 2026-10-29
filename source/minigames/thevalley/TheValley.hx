@@ -60,6 +60,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	public static inline final MAP_PARTS:Int = 11;
 
 	public static var fromFreeplay:Bool = false;
+	public static var cutsceneReplay:String = null;
 
 	var _mapParts:Array<MapPart> = [];
 
@@ -238,15 +239,21 @@ class TheValley extends MusicBeatState implements ExeWorld
 		cutscene.addSprites(this, uiCam);
 
 		cutscene.onGameplayStart = () -> {
+			if (cutsceneReplay == 'intro')
+			{
+				_exitReplay();
+				return;
+			}
 			_gameplayStarted  = true;
 			player.cinematic  = false;
 			hud.timerRunning  = true;
 			gameCamera.followTarget();
+			if (cutsceneReplay == 'ending') _placeForEnding();
 		};
 
 		cutscene.onSkullWin = _onShardFound;
 		cutscene.onSkullCS2Done = _onShardFound;
-		final tutorial = !IntroCutscene.quickStart && FlxG.save.data.tvTutorialSeen != true;
+		final tutorial = cutsceneReplay == null && !IntroCutscene.quickStart && FlxG.save.data.tvTutorialSeen != true;
 		if (!tutorial) cutscene.playIntro();
 
 		_ambientSound = FlxG.sound.load(Paths.music("minigame/thevalley/ambient"), 0, true, null, false, true);
@@ -618,8 +625,28 @@ class TheValley extends MusicBeatState implements ExeWorld
 	final _pausedSounds:Array<FlxSound> = [];
 	final _pausedTweens:Array<FlxTween> = [];
 
+	function _placeForEnding():Void
+	{
+		@:privateAccess shardHunt.found = 6;
+		final ray = nape.geom.Ray.fromSegment(nape.geom.Vec2.weak(10620, -20000), nape.geom.Vec2.weak(10620, 20000));
+		ray.maxDistance = 40000;
+		final hit = FlxNapeSpace.space.rayCast(ray, false);
+		final groundY = hit != null ? -20000 + hit.distance : _checkY;
+		hit?.dispose();
+		minigames.thevalley.map.TVNapeWorld.setBodyPos(player.body, 10620, groundY - player.height * 0.5 - 4);
+		gameCamera.followTarget();
+	}
+
+	function _exitReplay():Void
+	{
+		cutsceneReplay = null;
+		IntroCutscene.quickStart = false;
+		states.extras.cutscenes.Cutscene.returnToExtras();
+	}
+
 	function _openPause():Void
 	{
+		if (cutsceneReplay != null) return;
 		states.substates.PauseSubState.miniSonicImage = 'the-valley';
 		persistentUpdate = false;
 		persistentDraw   = true;
@@ -1224,7 +1251,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 		_chase.stop();
 		_windSound?.fadeOut(1.0, 0.0);
 
-		_saveScore();
+		if (cutsceneReplay == null) _saveScore();
 		_finalCS = new minigames.thevalley.cutscenes.FinalCutscene(this);
 		_finalCS.onDone = _finishFinalCutscene;
 		_setTitle(false);
@@ -1252,6 +1279,12 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 	function _finishFinalCutscene():Void
 	{
+		if (cutsceneReplay != null)
+		{
+			_exitReplay();
+			return;
+		}
+
 		if (fromFreeplay)
 		{
 			fromFreeplay = false;

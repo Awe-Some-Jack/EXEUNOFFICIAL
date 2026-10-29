@@ -20,7 +20,7 @@ class ExeGraphicsState extends ExeBaseOptionsState
 		scrollOffset = 0;
 
 		menuTitle = Language.get('options.graphics', 'GRAPHICS');
-		var lbl = Language.getArray('options.graphics.labels', ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "UNCAPPED FPS", "FRAMERATE"]);
+		var lbl = Language.getArray('options.graphics.labels', ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "UNCAPPED FPS", "FRAMERATE", "SAFE SYNC"]);
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.lowQuality,  setValue: (v) -> ClientPrefs.data.lowQuality   = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.antialiasing, setValue: (v) -> ClientPrefs.data.antialiasing = v},
@@ -29,6 +29,7 @@ class ExeGraphicsState extends ExeBaseOptionsState
 			{label: lbl[4], getValue: () -> ClientPrefs.data.shaders,     setValue: (v) -> ClientPrefs.data.shaders      = v},
 			{label: lbl[5], getValue: () -> ClientPrefs.data.uncappedFPS, setValue: (v) -> ClientPrefs.data.uncappedFPS  = v},
 			{label: lbl[6], getValue: () -> ClientPrefs.data.framerate,   setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true},
+			{label: lbl[7], getValue: () -> ClientPrefs.data.freezeSyncDelay, setValue: (v) -> ClientPrefs.data.freezeSyncDelay = v},
 		];
 
 		super.create();

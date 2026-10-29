@@ -123,9 +123,12 @@ function onGameOverStart() {
 	new FlxTimer().start(4.1, function(_) {
 		if(!retryi) {
 			var pixelShader = game.getLuaObject('pixel').shader;
-			var gameFilters = [new ShaderFilter(pixelShader)];
-			FlxG.camera.filters = gameFilters;
-			game.getLuaObject('pixel').x = 40;
+			if (ClientPrefs.data.shaders && pixelShader != null)
+			{
+				var gameFilters = [new ShaderFilter(pixelShader)];
+				FlxG.camera.filters = gameFilters;
+				game.getLuaObject('pixel').x = 40;
+			}
 		}
 	});
 

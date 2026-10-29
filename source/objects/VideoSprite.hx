@@ -502,7 +502,7 @@ class VideoSprite extends FlxSpriteGroup
 		#end
 
 		final isGamePaused:Bool = PlayState.instance?.paused ?? true;
-		if (isPlaying() && !isGamePaused && ClientPrefs.data?.freezeSyncDelay && !_isLooped && Conductor.songPosition > 0)
+		if (isPlaying() && !isGamePaused && !PlayState.instance.inCutscene && ClientPrefs.data?.freezeSyncDelay && !_isLooped && Conductor.songPosition > 0)
 		{
 			final targetTime:Float = Conductor.songPosition - initialConductTime - Conductor.offset;
 			if (targetTime >= 0)

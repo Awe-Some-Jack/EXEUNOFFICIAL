@@ -65,6 +65,8 @@ class SharpyActor
 
 class SharpyCutscene extends MusicBeatState
 {
+	public static var replay:Bool = false;
+
 	var _cam:FlxCamera;
 	var _top:FlxCamera;
 	var _music:FlxSound;
@@ -455,6 +457,12 @@ class SharpyCutscene extends MusicBeatState
 	{
 		_finished = true;
 		_music?.stop();
+		if (replay)
+		{
+			replay = false;
+			states.extras.cutscenes.Cutscene.returnToExtras();
+			return;
+		}
 		FlxG.save.data.sharpyCutsceneSeen = true;
 		FlxG.save.flush();
 		LoadingState.prepareToSong();

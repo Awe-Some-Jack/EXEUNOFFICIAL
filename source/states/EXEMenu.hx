@@ -413,8 +413,12 @@ class EXEMenu extends MusicBeatState
 		}
 	}
 
-	inline function extrasLocked():Bool
-		return FlxG.save.data.storyModeDone != true #if !final && !inDevMode #end;
+	var _extrasLocked:Null<Bool> = null;
+	function extrasLocked():Bool
+	{
+		_extrasLocked ??= !backend.SongProgress.gameComplete();
+		return _extrasLocked #if !final && !inDevMode #end;
+	}
 
 	function changeSelection(dir:Int, up:Bool, sound:Bool = true):Void
 	{
@@ -453,7 +457,7 @@ class EXEMenu extends MusicBeatState
 			return;
 		}
 
-		if (unlocked.length < 6 && selectedOptionIndex == 1)
+		if (unlocked.length < 6 && selectedOptionIndex == 1 && !backend.BurningBot.active)
 		{
 			if (soundHold > 0.5)
 			{

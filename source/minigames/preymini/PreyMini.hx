@@ -27,6 +27,7 @@ class PreyMini extends MusicBeatState
 
 	public static var songLives:Int = 0;
 	public static var songRings:Int = -1;
+	public static var cutsceneReplay:Bool = false;
 
 	static final CHAIN_SCORE:Array<Int> = [100, 200, 500, 1000];
 
@@ -115,7 +116,7 @@ class PreyMini extends MusicBeatState
 		add(_terrain.addSprite("minigame/preymini/objects/carteles/goal", 10138, 1022 - 28));
 		add(_terrain.addSprite("minigame/preymini/objects/carteles/cartel2", 14401, 1213 - 59));
 		add(_terrain.addSprite("minigame/preymini/objects/carteles/signpost", 16433, 1213 - 59));
-		_sonic = new Sonic(_terrain, 220);
+		_sonic = new Sonic(_terrain, cutsceneReplay ? 15900 : 220);
 		_sonic.anchored = true;
 		_sonic.anchorX = 177;
 		add(_sonic);
@@ -149,6 +150,13 @@ class PreyMini extends MusicBeatState
 		add(_escape);
 
 		_sonic.controllable = false;
+		if (cutsceneReplay)
+		{
+			_enemies.quiet = true;
+			_sonic.autoDir = 1;
+			FlxG.sound.playMusic(Paths.music("minigame/preymini/stardustspeedway"), 1, true);
+			return;
+		}
 		final intro = new LevelIntro(overlay);
 		intro.onFade = () ->
 		{
@@ -192,7 +200,7 @@ class PreyMini extends MusicBeatState
 				_enemies.quiet = true;
 				_bg.rally(true, _farBoom);
 			}
-			if (_cut == null && _sonic.controllable && _sonic.posX >= 16480 && _sonic.grounded && !_sonic.grabbed && !_sonic.hurting) _startEnding();
+			if (_cut == null && (_sonic.controllable || cutsceneReplay) && _sonic.posX >= 16480 && _sonic.grounded && !_sonic.grabbed && !_sonic.hurting) _startEnding();
 			_cut?.update(elapsed);
 			_arrival?.update(elapsed);
 			if (_arrival != null && controls.JUMP_P) _arrival.skip();
@@ -237,7 +245,13 @@ class PreyMini extends MusicBeatState
 		FlxG.sound.music?.fadeOut(1.5, 0);
 		_cut = new LevelEnding(this, _sonic, _terrain, _camera, _bg, _hud, _overlay);
 		_cut.furnaceLimit = 16369;
-		_cut.onDone = _playPreySong;
+		_cut.onDone = cutsceneReplay ? _exitReplay : _playPreySong;
+	}
+
+	function _exitReplay():Void
+	{
+		cutsceneReplay = false;
+		states.extras.cutscenes.Cutscene.returnToExtras();
 	}
 
 	function _pause():Void
@@ -287,7 +301,8 @@ class PreyMini extends MusicBeatState
 
 	function _exitMinigame():Void
 	{
-		if (fromSoundTest) FlxG.switchState(() -> new states.SoundTest());
+		if (cutsceneReplay) _exitReplay();
+		else if (fromSoundTest) FlxG.switchState(() -> new states.SoundTest());
 		else FlxG.switchState(() -> new states.EXEFreeplay());
 	}
 

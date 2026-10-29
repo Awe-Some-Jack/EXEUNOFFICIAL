@@ -329,7 +329,16 @@ class Main extends Sprite
         cheatCheckTimer.run = () -> backend.AntiCheat.checkDebugger();
 		#end
 
+		#if mobile
 		FlxG.mouse.useSystemCursor = true;
+		#else
+		loadCursor(1);
+		FlxG.signals.postUpdate.add(() -> {
+			FlxG.mouse.visible = true;
+			final screenScale:Float = FlxG.scaleMode.scale.y;
+			if (Math.abs(screenScale - _cursorScale) > 0.01) loadCursor(screenScale);
+		});
+		#end
 
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		fpsVar.visible = false;
@@ -378,6 +387,32 @@ class Main extends Sprite
 				resetSpriteCache(FlxG.game);
 		});
 		boot('setup finished');
+	}
+
+	static var _cursorSource:openfl.display.BitmapData = null;
+	static var _cursorBitmap:openfl.display.BitmapData = null;
+	static var _cursorScale:Float = -1;
+
+	static function loadCursor(screenScale:Float):Void
+	{
+		_cursorScale = screenScale;
+		_cursorSource ??= #if sys sys.FileSystem.exists('assets/exe/cursor.png') ? openfl.display.BitmapData.fromFile('assets/exe/cursor.png') : #end Assets.getBitmapData('assets/exe/cursor.png', false);
+		if (_cursorSource == null)
+		{
+			FlxG.mouse.useSystemCursor = true;
+			return;
+		}
+
+		final scale:Float = 36 * screenScale / _cursorSource.height;
+		final cursor = new openfl.display.BitmapData(Math.ceil(_cursorSource.width * scale), Math.ceil(_cursorSource.height * scale), true, 0);
+		final matrix = new openfl.geom.Matrix();
+		matrix.scale(scale, scale);
+		cursor.draw(_cursorSource, matrix, null, null, null, true);
+
+		FlxG.mouse.useSystemCursor = false;
+		FlxG.mouse.load(cursor, 1, -Math.round(124 * scale), -Math.round(17 * scale));
+		_cursorBitmap?.dispose();
+		_cursorBitmap = cursor;
 	}
 
 	public static function resetSpriteCache(sprite:Sprite):Void {

@@ -39,7 +39,7 @@
 	"options.gameplay": "SEAFARIN'",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"],
 	"options.graphics": "GRAPHICS",
-	"options.graphics.labels": ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "UNCAPPED FPS", "FRAMERATE"],
+	"options.graphics.labels": ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "UNCAPPED FPS", "FRAMERATE", "SAFE SYNC"],
 	"options.language": "TONGUE",
 	"options.on": "AYE",
 	"options.off": "NAY",

@@ -1323,13 +1323,15 @@ class PlayState extends MusicBeatState
 	public var videoCutscene:VideoSprite = null;
 	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = true)
 	{
+		final watchKey:String = endingSong ? '$songName-end' : songName;
+
 		function endVideo()
 		{
-			if (!forMidSong && !cutsceneWatched(songName))
+			if (!forMidSong && !cutsceneWatched(watchKey))
 			{
 				var watched:Array<String> = FlxG.save.data.watchedCutscenes;
 				if (watched == null) watched = [];
-				watched.push(songName);
+				watched.push(watchKey);
 				FlxG.save.data.watchedCutscenes = watched;
 				FlxG.save.flush();
 			}
@@ -1354,7 +1356,7 @@ class PlayState extends MusicBeatState
 
 		videoCutscene = new VideoSprite(0, 0, true);
 		videoCutscene.camera = camVideo;
-		videoCutscene.canSkip = canSkip && (forMidSong || cutsceneWatched(songName));
+		videoCutscene.canSkip = canSkip && (forMidSong || cutsceneWatched(watchKey));
 		add(videoCutscene);
 
 		if (videoCutscene.canSkip)
@@ -2188,8 +2190,9 @@ class PlayState extends MusicBeatState
 			if (videoCutscene?.isPlaying()) videoCutscene.pause();
 			#end
 
-			for (cam in [FlxG.camera, camVideo, camHUD, camOther])
-				if (cam != null) cam.fxActive = false;
+			if (!Std.isOfType(SubState, GameOverSubstate))
+				for (cam in [FlxG.camera, camVideo, camHUD, camOther])
+					if (cam != null) cam.fxActive = false;
 
 			#if !mac
 			FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
@@ -3442,6 +3445,7 @@ class PlayState extends MusicBeatState
             });
         }
        
+		final fromSecretSong:Bool = states.EXEMenu.secretSong;
 		checkSavedSongs(formattedSong);
 
 		if (isStoryMode && states.SoundTest.fromSoundTest && states.SoundTest.enterTheValleyAfterBlackSun && formattedSong == 'black-sun')
@@ -3481,7 +3485,11 @@ class PlayState extends MusicBeatState
 			}
 			else if (states.access.MajinAccess.fromMajin) { 
 				states.access.MajinAccess.fromMajin = false; 
-				FlxG.switchState(() -> new states.access.MajinAccess()); 
+				FlxG.switchState(() -> new states.access.MajinAccess());
+			}
+			else if (fromSecretSong) {
+				FlxG.sound.playMusic(openfl.utils.Assets.getSound('assets/exe/music/menu.ogg'));
+				FlxG.switchState(() -> new states.EXEMenu());
 			}
 			else {
 				FlxG.switchState(() -> new EXEFreeplay());
@@ -3575,15 +3583,18 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			exitToMenu();
-
 			if (formattedSong == 'personel' && FlxG.save.data.burningCutsceneDone != true && FlxG.save.data.burningWon != true)
 			{
 				FlxG.save.data.burningBot = true;
 				FlxG.save.data.burningCutsceneDone = true;
 				FlxG.save.flush();
-				haxe.Timer.delay(() -> Application.current.window.close(), 3000);
+				FlxG.sound.music?.stop();
+				vocals?.stop();
+				opponentVocals?.stop();
+				for (cam in FlxG.cameras.list) cam.fade(FlxColor.BLACK, 0.4, false, null, true);
+				haxe.Timer.delay(() -> Application.current.window.close(), 1500);
 			}
+			else exitToMenu();
 
 			if (formattedSong == 'burning')
 			{

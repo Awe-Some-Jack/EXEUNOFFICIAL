@@ -98,6 +98,12 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 	var selectionCloneTweenV:FlxTween;
 	var cloneColorTweenV:FlxTween;
 
+	var scrollTrack:FlxSprite;
+	var scrollThumb:FlxSprite;
+	var listCount:Int = 0;
+	var lastValueRow:FlxText = null;
+	var lastValueText:String = null;
+
 	override public function create()
 	{
 		super.create();
@@ -189,6 +195,14 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		arrowRight.scale.set(ARR_SCALE, ARR_SCALE); arrowRight.updateHitbox();
 		arrowRight.x = ARR_R_X; arrowRight.flipX = true; arrowRight.scrollFactor.set(0, 0); arrowRight.visible = false;
 
+		scrollTrack = new FlxSprite(1210, NB_Y).makeGraphic(6, Std.int(ROW_GAP * (MAX_VISIBLE_ROWS - 1) + 45), 0x66000000);
+		scrollTrack.scrollFactor.set(0, 0); scrollTrack.alpha = 0;
+		add(scrollTrack);
+
+		scrollThumb = new FlxSprite(1210, NB_Y).makeGraphic(6, 1, FlxColor.WHITE);
+		scrollThumb.origin.set(0, 0); scrollThumb.scrollFactor.set(0, 0); scrollThumb.alpha = 0;
+		add(scrollThumb);
+
 		loadPage();
 		playIntro(rectX);
 	}
@@ -201,6 +215,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		for (g in optionGroups)
 			destroyRow(g);
 		optionGroups = [];
+		listCount = 0;
 	}
 
 	public function buildRow(label:String, valueStr:String, rowY:Float, offscreen:Bool, ?valueFont:String, ?valueFontSize:Int):ExeMenuOptionGroup
@@ -237,14 +252,15 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 	public function destroyRow(g:ExeMenuOptionGroup):Void
 	{
-		rightGroup.remove(g.nameBG);   remove(g.nameBG);   g.nameBG.destroy();
-		rightGroup.remove(g.valueBG);  remove(g.valueBG);  g.valueBG.destroy();
-		rightGroup.remove(g.nameText); remove(g.nameText); g.nameText.destroy();
-		rightGroup.remove(g.valueText);remove(g.valueText);g.valueText.destroy();
+		rightGroup.remove(g.nameBG);   remove(g.nameBG, true);   g.nameBG.destroy();
+		rightGroup.remove(g.valueBG);  remove(g.valueBG, true);  g.valueBG.destroy();
+		rightGroup.remove(g.nameText); remove(g.nameText, true); g.nameText.destroy();
+		rightGroup.remove(g.valueText);remove(g.valueText, true);g.valueText.destroy();
 	}
 
 	public function buildVisibleRows(totalCount:Int, getRowData:Int->ExeRowData, ?valueFont:String, ?valueFontSize:Int):Void
 	{
+		listCount = totalCount;
 		var visibleCount = Std.int(Math.min(totalCount, MAX_VISIBLE_ROWS));
 		for (i in 0...visibleCount)
 		{
@@ -256,6 +272,7 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 	public function scrollList(dir:Int, totalCount:Int, getRowData:Int->ExeRowData, ?valueFont:String, ?valueFontSize:Int):Void
 	{
+		listCount = totalCount;
 		var visibleCount = Std.int(Math.min(totalCount, MAX_VISIBLE_ROWS));
 
 		var leaving = dir > 0 ? optionGroups.shift() : optionGroups.pop();
@@ -333,6 +350,12 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		for (spr in rightGroup)
 			FlxTween.tween(spr, {x: offRight}, dur, {ease: ease});
 
+		for (spr in [scrollTrack, scrollThumb, arrowLeft, arrowRight])
+		{
+			FlxTween.cancelTweensOf(spr);
+			FlxTween.tween(spr, {alpha: 0}, dur * 0.5);
+		}
+
 		new FlxTimer().start(dur + 0.05, (_) -> close());
 	}
 
@@ -370,6 +393,15 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		selectionCloneV.visible = !hideSelectionCloneValue;
 		selectionCloneWhiteV.visible = !hideSelectionCloneValue;
 		final group = optionGroups[idx];
+
+		for (i in 0...optionGroups.length)
+		{
+			final rowColor:FlxColor = i == idx ? FlxColor.WHITE : 0xFFA8959A;
+			optionGroups[i].nameText.color = rowColor;
+			optionGroups[i].valueText.color = rowColor;
+		}
+		updateScrollBar();
+
 		selectionClone.setPosition(group.nameBG.x - 3, group.nameBG.y - 3);
 
 		selectionCloneTween?.cancel();
@@ -408,8 +440,10 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 
 		remove(arrowLeft, true);
 		remove(arrowRight, true);
-		add(arrowLeft);
-		add(arrowRight);
+		insert(members.length, arrowLeft);
+		insert(members.length, arrowRight);
+		arrowLeft.scale.set(ARR_SCALE, ARR_SCALE);
+		arrowRight.scale.set(ARR_SCALE, ARR_SCALE);
 
 		arrowLeft.y  = rowY; arrowLeft.x  = ARR_L_X + 12; arrowLeft.visible  = true; arrowLeft.alpha  = 0;
 		arrowRight.y = rowY; arrowRight.x = ARR_R_X - 12; arrowRight.visible = true; arrowRight.alpha = 0;
@@ -432,6 +466,60 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		arrowRight.visible = false;
 	}
 
+	function updateScrollBar():Void
+	{
+		final visibleCount = Std.int(Math.min(listCount, MAX_VISIBLE_ROWS));
+		final show = listCount > visibleCount && !introAnimating;
+
+		FlxTween.cancelTweensOf(scrollTrack);
+		FlxTween.cancelTweensOf(scrollThumb);
+		FlxTween.tween(scrollTrack, {alpha: show ? 1 : 0}, 0.2);
+		if (!show)
+		{
+			FlxTween.tween(scrollThumb, {alpha: 0}, 0.2);
+			return;
+		}
+
+		final thumbH = Math.max(24, scrollTrack.height * visibleCount / listCount);
+		scrollThumb.scale.y = thumbH;
+		scrollThumb.updateHitbox();
+		final targetY = scrollTrack.y + (scrollTrack.height - thumbH) * scrollOffset / (listCount - visibleCount);
+		FlxTween.tween(scrollThumb, {alpha: 1, y: targetY}, 0.2, {ease: FlxEase.quadOut});
+	}
+
+	function updateFeedback():Void
+	{
+		if (optionGroups == null || introAnimating) return;
+
+		final idx = getCurrentSelectionIndex();
+		final txt = (idx >= 0 && idx < optionGroups.length) ? optionGroups[idx].valueText : null;
+		if (txt != lastValueRow)
+		{
+			lastValueRow = txt;
+			lastValueText = txt?.text;
+		}
+		else if (txt != null && txt.text != lastValueText)
+		{
+			lastValueText = txt.text;
+			FlxTween.cancelTweensOf(txt.scale);
+			txt.scale.set(1.2, 1.2);
+			FlxTween.tween(txt.scale, {x: 1, y: 1}, 0.25, {ease: FlxEase.backOut});
+		}
+
+		if (editingValue && arrowLeft.visible)
+		{
+			if (controls.UI_LEFT_P) pulseArrow(arrowLeft);
+			if (controls.UI_RIGHT_P) pulseArrow(arrowRight);
+		}
+	}
+
+	function pulseArrow(arrow:FlxSprite):Void
+	{
+		FlxTween.cancelTweensOf(arrow.scale);
+		arrow.scale.set(ARR_SCALE * 1.35, ARR_SCALE * 1.35);
+		FlxTween.tween(arrow.scale, {x: ARR_SCALE, y: ARR_SCALE}, 0.2, {ease: FlxEase.quadOut});
+	}
+
 	public function nudgeSelectedText(up:Bool)
 	{
 		final idx = getCurrentSelectionIndex();
@@ -444,8 +532,8 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 		FlxTween.tween(g.valueText, {y: targetY}, 0.15, {ease: FlxEase.quadOut});
 	}
 
-	#if mobile
 	override function update(elapsed:Float) {
+		#if mobile
 		if (cooldownTimer > 0) cooldownTimer -= elapsed;
 
 		mouseX = FlxG.mouse.x;
@@ -498,9 +586,10 @@ class ExeBaseOptionsState extends MusicBeatSubstate
 			}
 		}
 
+		#end
 		super.update(elapsed);
+		updateFeedback();
 	}
-	#end
 
 	override function destroy()
 	{

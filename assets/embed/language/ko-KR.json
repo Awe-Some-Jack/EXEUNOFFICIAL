@@ -39,7 +39,7 @@
 	"options.gameplay": "게임플레이",
 	"options.gameplay.labels": ["DOWNSCROLL", "고스트 탭", "SICK 판정 구간", "GOOD 판정 구간", "BAD 판정 구간", "세이프 프레임", "스트리밍 오디오"],
 	"options.graphics": "그래픽",
-	"options.graphics.labels": ["포테이토 모드", "안티앨리어싱", "GPU 캐싱", "셰이더 품질", "셰이더", "FPS 제한 해제", "프레임 레이트"],
+	"options.graphics.labels": ["포테이토 모드", "안티앨리어싱", "GPU 캐싱", "셰이더 품질", "셰이더", "FPS 제한 해제", "프레임 레이트", "세이프 싱크"],
 	"options.language": "언어",
 	"options.on": "켜짐",
 	"options.off": "꺼짐",

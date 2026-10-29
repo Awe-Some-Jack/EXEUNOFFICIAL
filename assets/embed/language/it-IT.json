@@ -39,7 +39,7 @@
 	"options.gameplay": "GAMEPLAY",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "FINESTRA SICK", "FINESTRA GOOD", "FINESTRA BAD", "FRAME DI SICUREZZA", "AUDIO IN STREAMING"],
 	"options.graphics": "GRAFICA",
-	"options.graphics.labels": ["MODALITÀ PATATA", "ANTI ALIASING", "CACHE GPU", "QUALITÀ SHADER", "SHADER", "FPS ILLIMITATI", "FREQUENZA FPS"],
+	"options.graphics.labels": ["MODALITÀ PATATA", "ANTI ALIASING", "CACHE GPU", "QUALITÀ SHADER", "SHADER", "FPS ILLIMITATI", "FREQUENZA FPS", "SYNC SICURA"],
 	"options.language": "LINGUA",
 	"options.on": "ATTIVO",
 	"options.off": "DISATTIVO",

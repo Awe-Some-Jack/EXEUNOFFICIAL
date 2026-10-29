@@ -39,7 +39,7 @@
 	"options.gameplay": "ГЕЙМПЛЕЙ",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "ВІКНО SICK", "ВІКНО GOOD", "ВІКНО BAD", "БЕЗПЕЧНІ КАДРИ", "ПОТОКОВЕ АУДІО"],
 	"options.graphics": "ГРАФІКА",
-	"options.graphics.labels": ["РЕЖИМ КАРТОПЛІ", "ЗГЛАДЖУВАННЯ", "КЕШУВАННЯ GPU", "ЯКІСТЬ ШЕЙДЕРІВ", "ШЕЙДЕРИ", "РОЗБЛОК. FPS", "ЧАСТОТА КАДРІВ"],
+	"options.graphics.labels": ["РЕЖИМ КАРТОПЛІ", "ЗГЛАДЖУВАННЯ", "КЕШУВАННЯ GPU", "ЯКІСТЬ ШЕЙДЕРІВ", "ШЕЙДЕРИ", "РОЗБЛОК. FPS", "ЧАСТОТА КАДРІВ", "БЕЗПЕЧНА СИНХР."],
 	"options.language": "МОВА",
 	"options.on": "УВІМК",
 	"options.off": "ВИМК",

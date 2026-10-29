@@ -304,7 +304,7 @@ class EXEFreeplay extends MusicBeatState
 
 				final songPath:String = Paths.formatToSongPath(sName);
 				if (songPath == 'stardust-speedway' && Mods.currentModDirectory == 'STARVED') continue;
-				final burningOpen:Bool = backend.BurningBot.active || FlxG.save.data.burningCutsceneDone == true || FlxG.save.data.burningWon == true;
+				final burningOpen:Bool = backend.BurningBot.active || FlxG.save.data.burningRevealed == true || FlxG.save.data.burningWon == true;
 				if (unlocked.indexOf(songPath) == -1 && !(burningOpen && songPath == 'burning') #if !final && !inDevMode #end) continue;
 
 				final info:ExeSongInfo = {

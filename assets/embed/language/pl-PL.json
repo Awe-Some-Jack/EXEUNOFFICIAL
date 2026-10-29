@@ -39,7 +39,7 @@
 	"options.gameplay": "ROZGRYWKA",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "OKNO SICK", "OKNO GOOD", "OKNO BAD", "BEZPIECZNE RAMKI", "STRUMIENIOWANIE AUDIO"],
 	"options.graphics": "GRAFIKA",
-	"options.graphics.labels": ["TRYB ZIEMNIAKA", "ANTYALIASING", "CACHE GPU", "JAKOŚĆ SHADERÓW", "SHADERY", "FPS BEZ LIMITU", "LICZBA FPS"],
+	"options.graphics.labels": ["TRYB ZIEMNIAKA", "ANTYALIASING", "CACHE GPU", "JAKOŚĆ SHADERÓW", "SHADERY", "FPS BEZ LIMITU", "LICZBA FPS", "BEZPIECZNY SYNC"],
 	"options.language": "JĘZYK",
 	"options.on": "WŁĄCZONE",
 	"options.off": "WYŁĄCZONE",

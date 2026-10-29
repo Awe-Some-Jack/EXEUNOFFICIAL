@@ -49,6 +49,7 @@ class EXETitle extends MusicBeatState
 	var canStart:Bool = false;
 
 	var unlocked:Array<String> = [];
+	var parallaxUnlocked:Bool = false;
 
 	public static var AFK_TIMER_VALUE:Float = 60;
 	var afkTimer:Float = AFK_TIMER_VALUE;
@@ -103,6 +104,7 @@ class EXETitle extends MusicBeatState
 		var save:FlxSave = new FlxSave();
 		save.bind('savedSongs', CoolUtil.getSavePath());
 		unlocked = cast (save.data.songs ?? []);
+		parallaxUnlocked = backend.SongProgress.soundTestComplete();
 
 		super.create();
 	}
@@ -135,7 +137,8 @@ class EXETitle extends MusicBeatState
 		{
 			if (FlxG.save.data.goToFinalEscape != null){
 				initialized = true;
-				
+				Main.fpsVar.visible = ClientPrefs.data.showFPS;
+
 				Mods.currentModDirectory = "STORY MODE";
 				WeekData.reloadWeekFiles(false);
 				Difficulty.loadFromWeek();
@@ -397,7 +400,7 @@ class EXETitle extends MusicBeatState
 				confirmStart();
 		}
 
-		if (!transitioning && canStart #if final && unlocked.length >= 5 #end)
+		if (!transitioning && canStart #if final && parallaxUnlocked #end)
 		{
 			final threshold:Float = FlxG.width * PARALLAX_THRESHOLD;
 			final arrowW:Float = parallaxArrow.width;

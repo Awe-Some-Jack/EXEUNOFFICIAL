@@ -133,6 +133,9 @@ class Paths
 			if (!currentTrackedAssets.exists(key))
 				destroyGraphic(FlxG.bitmap.get(key));
 		}
+		#if flixel_animate
+		@:privateAccess FlxAnimateFrames._cachedAtlases.clear();
+		#end
 
 		// clear all sounds that are cached
 		final staleSounds:Array<String> = [];

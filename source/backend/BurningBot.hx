@@ -353,6 +353,9 @@ class BurningBot
         burningLocked = true;
         resetAudio();
 
+        FlxG.save.data.burningRevealed = true;
+        FlxG.save.flush();
+
         _namesRevealing = true;
         new FlxTimer().start(0.8, (_) -> revealNames(state));
     }

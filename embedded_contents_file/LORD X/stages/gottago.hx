@@ -43,26 +43,26 @@ function onCreate()
 	if (prefs.shaders)
 	{
 		brightness = new ErrorHandledRuntimeShader('brightness', File.getContent('contents/LORD X/shaders/brightness.frag'));
-		brightness.setFloat('saturation', 1);
-		brightness.setFloat('brightness', 0);
-		brightness.setFloat('contrast', 1);
+		brightness?.setFloat('saturation', 1);
+		brightness?.setFloat('brightness', 0);
+		brightness?.setFloat('contrast', 1);
 
 		pixelShader = new ErrorHandledRuntimeShader('pixel', File.getContent('contents/LORD X/shaders/pixel.frag'));
-		pixelShader.setFloat('pixelsize', 0);
+		pixelShader?.setFloat('pixelsize', 0);
 
 		cloneImage = new ErrorHandledRuntimeShader('CloneImageError', File.getContent('contents/LORD X/shaders/CloneImageError.frag'));
-		cloneImage.setFloat('interval', Conductor.stepCrochet / 1000);
+		cloneImage?.setFloat('interval', Conductor.stepCrochet / 1000);
 
 		antiPiracy = new ErrorHandledRuntimeShader('AntiPiracyShader', File.getContent('contents/LORD X/shaders/AntiPiracyShader.frag'));
 
 		glitch = new ErrorHandledRuntimeShader('glitch', File.getContent('contents/LORD X/shaders/glitch.frag'));
-		glitch.setFloat('prob', 0);
+		glitch?.setFloat('prob', 0);
 
 		glitch2 = new ErrorHandledRuntimeShader('individualGlitches', File.getContent('contents/LORD X/shaders/individualGlitches.frag'));
-		glitch2.setFloat('binaryIntensity', 0);
+		glitch2?.setFloat('binaryIntensity', 0);
 
 		fishEye = new ErrorHandledRuntimeShader('fisheye', File.getContent('contents/LORD X/shaders/fisheye.frag'));
-		fishEye.setFloat('amount', -0.4);
+		fishEye?.setFloat('amount', -0.4);
 	}
 
 	bg = new FlxBackdrop(Paths.image('gottago/bg'), 0x01);
@@ -206,7 +206,7 @@ function onUpdatePost(elapsed:Float)
 		if (_glitchTimer <= 0)
 		{
 			_glitchTimer = 0.5;
-			if (prefs.shaders) glitch.setFloat('time', FlxG.random.float(0,50));
+			if (prefs.shaders) glitch?.setFloat('time', FlxG.random.float(0,50));
 		}
 		if (deadBoyfriend.getAnimationName() == 'deathLoop')
 		{
@@ -223,7 +223,7 @@ function onUpdatePost(elapsed:Float)
 	_iT += elapsed;
 	if (_phase == 'clone')
 	{
-		cloneImage.setFloat('iTime', _iT);
+		cloneImage?.setFloat('iTime', _iT);
 
 		game.getLuaObject('iconBF').scale.set(savedThings[0], savedThings[0]);
 		game.getLuaObject('iconOpp').scale.set(savedThings[0], savedThings[0]);
@@ -246,21 +246,21 @@ function onEvent(n, v1, v2)
 		{
 			case 'fadeout':
 				pixelTween = FlxTween.num(0, 200, Conductor.crochet / 1000, {ease: FlxEase.cubeIn}, v -> {
-					pixelShader.setFloat('pixelsize', v);
+					pixelShader?.setFloat('pixelsize', v);
 				});
 			case 'fadeback':
 				if (pixelTween?.active ?? false) pixelTween.cancel();
 				camHUD.flash(0x55FF0000, 1, null, true);
-				pixelShader.setFloat('pixelsize', 0);
+				pixelShader?.setFloat('pixelsize', 0);
 				bg.velocity.x = -2000;
-				glitch.setFloat('prob', 0.15);
+				glitch?.setFloat('prob', 0.15);
 				for (i in 0...unspawnNotes.length) if (!unspawnNotes[i].mustPress) unspawnNotes[i].multSpeed = Math.abs(bg.velocity.x) / threshold;
 				for (i in 0...notes.length) if (!notes.members[i].mustPress) notes.members[i].multSpeed = Math.abs(bg.velocity.x) / threshold;
 			case 'XD': prefs.ghostTapping = true;
 			case 'pauseshit':
 				illegalInstruction.visible = true;
-				glitch.setFloat('prob', 0.5);
-				glitch2.setFloat('binaryIntensity', 6);
+				glitch?.setFloat('prob', 0.5);
+				glitch2?.setFloat('binaryIntensity', 6);
 				_iT = 0;
 				savedThings = [game.getLuaObject('iconBF').scale.x, game.getLuaObject('exeScoreTxt').scale.x];
 				_phase = 'clone';
@@ -289,7 +289,7 @@ function onEvent(n, v1, v2)
 				bgCamera.visible = false;
 				camGame.visible = camHUD.visible = false;
 			case 'resumeshit':
-				glitch.setFloat('prob', 0.3);
+				glitch?.setFloat('prob', 0.3);
 				bg.velocity.x = -2500;
 				for (i in 0...unspawnNotes.length) if (!unspawnNotes[i].mustPress) unspawnNotes[i].multSpeed = Math.abs(bg.velocity.x) / threshold;
 				for (i in 0...notes.length) if (!notes.members[i].mustPress) notes.members[i].multSpeed = Math.abs(bg.velocity.x) / threshold;
@@ -309,7 +309,7 @@ function onEvent(n, v1, v2)
 				lyrics.animation.play('idle', true);
 			case 'glitchness':
 				FlxTween.tween(vg, {alpha: 1}, 10);
-				if (prefs.shaders) glitch.setFloat('prob', 0.4);
+				if (prefs.shaders) glitch?.setFloat('prob', 0.4);
 			case 'speed':
 				speed = Std.parseInt(v2);
 			case 'end':
@@ -352,7 +352,7 @@ function onEvent(n, v1, v2)
 
 		if (bloomTween?.active ?? false) bloomTween.cancel();
 		bloomTween = FlxTween.num(Std.parseInt(bloomValues[0]), Std.parseInt(bloomValues[1]), Std.parseInt(tweenSettings[0]), {ease: LuaUtils.getTweenEaseByString(tweenSettings[1])}, v -> {
-			brightness.setFloat('brightness', v);
+			brightness?.setFloat('brightness', v);
 		});
 	}
 }
@@ -361,7 +361,7 @@ function onBeatHit()
 {
 	if (prefs.shaders)
 		if (curBeat % speed == 0)
-			glitch.setFloat('time', FlxG.random.float(0,50));
+			glitch?.setFloat('time', FlxG.random.float(0,50));
 }
 
 function onDestroy() prefs.ghostTapping = oldGT;
@@ -372,14 +372,14 @@ function onGameOverStart()
 	if (prefs.shaders)
 	{
 
-		glitch.setFloat('prob', 0.45);
-		glitch2.setFloat('binaryIntensity', 0);
+		glitch?.setFloat('prob', 0.45);
+		glitch2?.setFloat('binaryIntensity', 0);
 		bgCamera.filters = [new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
 		FlxG.camera.filters = [new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
-		pixelShader.setFloat('pixelsize', 15);
+		pixelShader?.setFloat('pixelsize', 15);
 		if (pixelTween?.active ?? false) pixelTween.cancel();
 		pixelTween = FlxTween.num(15, 0, Conductor.crochet / 250, {ease: FlxEase.cubeOut}, v -> {
-			pixelShader.setFloat('pixelsize', v);
+			pixelShader?.setFloat('pixelsize', v);
 		});
 	}
 
@@ -429,16 +429,16 @@ function onGameOverConfirm(retry)
 
 		if (prefs.shaders)
 		{
-			glitch.setFloat('prob', 0.8);
-			glitch2.setFloat('binaryIntensity', 0.1);
-			new FlxTimer().start(0.2, _ -> {glitch2.setFloat('binaryIntensity', 6);});
-			new FlxTimer().start(0.3, _ -> {glitch2.setFloat('binaryIntensity', 5);});
-			new FlxTimer().start(0.6, _ -> {glitch2.setFloat('binaryIntensity', 8);});
-			new FlxTimer().start(0.7, _ -> {glitch2.setFloat('binaryIntensity', 2);});
-			new FlxTimer().start(1, _ -> {glitch2.setFloat('binaryIntensity', 5);});
-			new FlxTimer().start(1.2, _ -> {glitch2.setFloat('binaryIntensity', 1);});
-			new FlxTimer().start(1.3, _ -> {glitch2.setFloat('binaryIntensity', 7);});
-			new FlxTimer().start(1.5, _ -> {glitch2.setFloat('binaryIntensity', 6);});
+			glitch?.setFloat('prob', 0.8);
+			glitch2?.setFloat('binaryIntensity', 0.1);
+			new FlxTimer().start(0.2, _ -> {glitch2?.setFloat('binaryIntensity', 6);});
+			new FlxTimer().start(0.3, _ -> {glitch2?.setFloat('binaryIntensity', 5);});
+			new FlxTimer().start(0.6, _ -> {glitch2?.setFloat('binaryIntensity', 8);});
+			new FlxTimer().start(0.7, _ -> {glitch2?.setFloat('binaryIntensity', 2);});
+			new FlxTimer().start(1, _ -> {glitch2?.setFloat('binaryIntensity', 5);});
+			new FlxTimer().start(1.2, _ -> {glitch2?.setFloat('binaryIntensity', 1);});
+			new FlxTimer().start(1.3, _ -> {glitch2?.setFloat('binaryIntensity', 7);});
+			new FlxTimer().start(1.5, _ -> {glitch2?.setFloat('binaryIntensity', 6);});
 		}
 		new FlxTimer().start(1.7, _ -> {for (cam in FlxG.cameras.list) cam.alpha = 0;});
 		FlxG.camera.flash(0x811414FF, 1, null, true);

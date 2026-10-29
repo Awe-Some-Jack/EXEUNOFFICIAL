@@ -46,7 +46,15 @@ class Cutscene extends SonicSubState
     var nowPlaying:FlxText;
     var nowPlayingSong:FlxText;
 
-    var videoEntries:Array<{name:String, displayName:String, path:String}> = [];
+    var videoEntries:Array<{name:String, displayName:String, path:String, ?launch:Void->Void}> = [];
+
+    public static function returnToExtras():Void
+    {
+        ExtrasMenu.openCutscenes = true;
+        Mods.loadTopMod();
+        FlxG.sound.music?.stop();
+        FlxG.switchState(() -> new ExtrasMenu());
+    }
     var menuItems:Array<FlxText> = [];
     // select box for the selection shit 
     var _selLeft:FlxSprite;
@@ -297,11 +305,13 @@ class Cutscene extends SonicSubState
 
         if (boxThumb != null && boxHitboxRect != null && box != null)
         {
-            boxThumb.x = box.x + boxHitboxRect.x * box.scale.x;
-            boxThumb.y = box.y + boxHitboxRect.y * box.scale.y;
+            final thumbW = boxHitboxRect.w * box.scale.x;
+            final thumbH = boxHitboxRect.h * box.scale.y;
+            boxThumb.x = box.x + (box.width - thumbW) * 0.5;
+            boxThumb.y = box.y + (box.height - thumbH) * 0.5;
             if (_boxThumbReady)
             {
-                boxThumb.setGraphicSize(boxHitboxRect.w * box.scale.x, boxHitboxRect.h * box.scale.y);
+                boxThumb.setGraphicSize(thumbW, thumbH);
                 boxThumb.visible = !_vidOpen;
             }
         }
@@ -369,7 +379,7 @@ class Cutscene extends SonicSubState
         var unlocked:Array<String> = save.data.songs;
 
         // bye bye read json for load videos!! HAahahah 
-        final rawList:Array<{name:String, displayName:String, path:String}> = [
+        final rawList:Array<{name:String, displayName:String, ?path:String, ?launch:Void->Void}> = [
             {name: "too-slow",           displayName: "Too Slow Cutscene",              path: "contents/STORY MODE/videos/tooslow.mp4"},
             {name: "you-cant-run",       displayName: "You Can't Run Cutscene",         path: "contents/STORY MODE/videos/YRC.mp4"},
             {name: "triple-trouble",     displayName: "Triple Trouble Cutscene",        path: "contents/STORY MODE/videos/tripletrouble.mp4"},
@@ -381,9 +391,13 @@ class Cutscene extends SonicSubState
             {name: "sunshine",           displayName: "Sunshine Ending Cutscene",       path: "contents/TAILS DOLL/videos/dollending.mp4"},
             {name: "soulless",           displayName: "Soulless Cutscene",              path: "contents/TAILS DOLL/videos/soulless.mp4"},
             {name: "black-sun",          displayName: "Black Sun Ending Cutscene",      path: "contents/EXE/videos/Black Sun Transition.mp4"},
+            {name: "black-sun",          displayName: "The Valley Intro",               launch: () -> _launchValley('intro')},
+            {name: "black-sun",          displayName: "The Valley Ending",              launch: () -> _launchValley('ending')},
             {name: "godspeed",           displayName: "Godspeed Cutscene",              path: "contents/EXE/videos/good speed.mp4"},
             {name: "universal-collapse", displayName: "Universal Collapse Cutscene",    path: "contents/OMW/videos/omwintro.mp4"},
             {name: "pre-design",         displayName: "Movie Ugly Sonic Cutscene",      path: "contents/MOVIE/videos/SONIC FEO.mp4"},
+            {name: "sharpy-showdown",    displayName: "Sharpy Showdown Cutscene",       launch: _launchSharpy},
+            {name: "prey",               displayName: "Stardust Speedway Ending",       launch: _launchPrey},
             {name: "fight-or-flight",    displayName: "Fight or Flight Cutscene",       path: "contents/STARVED/videos/intro.mp4"},
             {name: "mania",              displayName: "Mania Ending Cutscene",          path: "contents/CRAZY TAILS/videos/Who is he.mp4"},
             {name: "personel",           displayName: "Personel Cutscene",              path: "contents/COLDSTEEL/videos/intro.mp4"},
@@ -397,7 +411,11 @@ class Cutscene extends SonicSubState
             final songKey:String = Paths.formatToSongPath(entry.name);
             final isUnlocked:Bool = debugMode || unlocked.contains(songKey);
 
-            if (isUnlocked)
+            if (isUnlocked && entry.launch != null)
+            {
+                videoEntries.push({name: entry.name, displayName: entry.displayName, path: null, launch: entry.launch});
+            }
+            else if (isUnlocked)
             {
                 trace("unlocked "+entry.name);
                 final fullPath = Paths.mods(entry.path);
@@ -590,7 +608,13 @@ class Cutscene extends SonicSubState
         _updateSelectBox();
 
         #if VIDEOS_ALLOWED
-        if (videoEntries.length > 0)
+        if (videoEntries.length > 0 && videoEntries[curSelected].launch != null)
+        {
+            _boxThumbPendingPath = null;
+            _boxThumbPath = null;
+            if (boxThumb != null) { remove(boxThumb, true); boxThumb.destroy(); boxThumb = null; }
+        }
+        else if (videoEntries.length > 0)
         {
             _boxThumbPendingPath = videoEntries[curSelected].path;
             _boxThumbDebounce = (change != 0) ? 0.18 : 0.0;
@@ -1121,10 +1145,40 @@ class Cutscene extends SonicSubState
             onComplete: (_) -> {
                 FlxTween.tween(menuItems[curSelected].scale, {x: 0.525, y: 0.525}, 0.15, {
                     ease: FlxEase.smootherStepInOut,
-                    onComplete: (_) -> _slideOutAndOpenVideo()
+                    onComplete: (_) -> {
+                        final launch = videoEntries[curSelected].launch;
+                        if (launch != null) launch();
+                        else _slideOutAndOpenVideo();
+                    }
                 });
             }
         });
+    }
+
+    static function _launchSharpy():Void
+    {
+        FlxG.sound.music?.stop();
+        states.access.cutscene.SharpyCutscene.replay = true;
+        FlxG.switchState(() -> new states.access.cutscene.SharpyCutscene());
+    }
+
+    static function _launchValley(scene:String):Void
+    {
+        FlxG.sound.music?.stop();
+        Mods.currentModDirectory = 'EXE';
+        minigames.thevalley.TheValley.fromFreeplay = false;
+        minigames.thevalley.TheValley.cutsceneReplay = scene;
+        minigames.thevalley.cutscenes.IntroCutscene.quickStart = scene == 'ending';
+        FlxG.switchState(() -> new minigames.thevalley.TheValley());
+    }
+
+    static function _launchPrey():Void
+    {
+        FlxG.sound.music?.stop();
+        Mods.currentModDirectory = 'STARVED';
+        minigames.preymini.PreyMini.fromSoundTest = false;
+        minigames.preymini.PreyMini.cutsceneReplay = true;
+        FlxG.switchState(() -> new minigames.preymini.PreyMini(3, 0, false));
     }
 
     override function destroy()

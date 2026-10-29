@@ -131,7 +131,6 @@ function onTimerCompleted(t)
 	if t == 'startVideo' then
 		startVideo('fakebaby', false, true)
 		runTimer('lol', 0.2)
-		setProperty('camGame.alpha', 1)
 		setProperty('inCutscene', false)
 		setProperty('videoCutscene.videoSprite.volumeAdjust', 0)
 	end
@@ -162,6 +161,7 @@ function onEvent(n,v1,v2)
 		end
 		if v1 == 'appear' then
 			cancelTimer('startVideo')
+			setProperty('camGame.alpha', 1)
 			if getProperty('videoCutscene') == nil then return end
     		callMethod('remove', {instanceArg('videoCutscene')})
 		end

@@ -19,16 +19,15 @@ class ExeGameplayState extends ExeBaseOptionsState
 		scrollOffset = 0;
 
 		menuTitle = Language.get('options.gameplay', 'GAMEPLAY');
-		var lbl = Language.getArray('options.gameplay.labels', ["DOWNSCROLL", "GHOST TAPPING", "FREEZE SYNC DELAY", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"]);
+		var lbl = Language.getArray('options.gameplay.labels', ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"]);
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.downScroll,   setValue: (v) -> ClientPrefs.data.downScroll   = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.ghostTapping, setValue: (v) -> ClientPrefs.data.ghostTapping = v},
-			{label: lbl[2], getValue: () -> ClientPrefs.data.freezeSyncDelay, setValue: (v) -> ClientPrefs.data.freezeSyncDelay = v},
-			{label: lbl[3], getValue: () -> ClientPrefs.data.sickWindow,   setValue: (v) -> ClientPrefs.data.sickWindow   = v, isFloat: true},
-			{label: lbl[4], getValue: () -> ClientPrefs.data.goodWindow,   setValue: (v) -> ClientPrefs.data.goodWindow   = v, isFloat: true},
-			{label: lbl[5], getValue: () -> ClientPrefs.data.badWindow,    setValue: (v) -> ClientPrefs.data.badWindow    = v, isFloat: true},
-			{label: lbl[6], getValue: () -> ClientPrefs.data.safeFrames,   setValue: (v) -> ClientPrefs.data.safeFrames   = v, isFloat: true},
-			{label: lbl[7], getValue: () -> ClientPrefs.data.streamedAudio,   setValue: (v) -> ClientPrefs.data.streamedAudio   = v, isFloat: true},
+			{label: lbl[2], getValue: () -> ClientPrefs.data.sickWindow,   setValue: (v) -> ClientPrefs.data.sickWindow   = v, isFloat: true},
+			{label: lbl[3], getValue: () -> ClientPrefs.data.goodWindow,   setValue: (v) -> ClientPrefs.data.goodWindow   = v, isFloat: true},
+			{label: lbl[4], getValue: () -> ClientPrefs.data.badWindow,    setValue: (v) -> ClientPrefs.data.badWindow    = v, isFloat: true},
+			{label: lbl[5], getValue: () -> ClientPrefs.data.safeFrames,   setValue: (v) -> ClientPrefs.data.safeFrames   = v, isFloat: true},
+			{label: lbl[6], getValue: () -> ClientPrefs.data.streamedAudio,   setValue: (v) -> ClientPrefs.data.streamedAudio   = v, isFloat: true},
 		];
 
 		super.create();
@@ -45,7 +44,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 			return (optIdx == 1) ? (cast(val, Bool) ? Language.get('options.ghosttapping.on', 'PUSSY') : Language.get('options.ghosttapping.off', 'OFF')) : (cast(val, Bool) ? on : off);
 		else if (Std.isOfType(val, Float))
 		{
-			var suffix = (optIdx >= 2 && optIdx <= 5) ? "MS" : "";
+			var suffix = (optIdx >= 2 && optIdx <= 4) ? "MS" : "";
 			return Std.string(Math.round(cast(val, Float) * 10) / 10) + suffix;
 		}
 		return Std.string(val);
@@ -96,16 +95,16 @@ class ExeGameplayState extends ExeBaseOptionsState
 					var n = cast(val, Float);
 					var step = 0.1; var mn = 0.0; var mx = 1.0;
 
-					if (optIdx == 3)      { step = 0.5; mn = 15.0; mx = 45.0; }
-					else if (optIdx == 4) { step = 1.0; mn = 15.0; mx = 90.0; }
-					else if (optIdx == 5) { step = 1.5; mn = 15.0; mx = 135.0; }
-					else if (optIdx == 6) { step = 0.1; mn = 2.0;  mx = 10.0; }
+					if (optIdx == 2)      { step = 0.5; mn = 15.0; mx = 45.0; }
+					else if (optIdx == 3) { step = 1.0; mn = 15.0; mx = 90.0; }
+					else if (optIdx == 4) { step = 1.5; mn = 15.0; mx = 135.0; }
+					else if (optIdx == 5) { step = 0.1; mn = 2.0;  mx = 10.0; }
 
 					n = Math.round((n + (isRight ? step : -step)) * 10) / 10;
 					n = Math.max(mn, Math.min(mx, n));
 					opt.setValue(n);
 
-					var suffix = (optIdx >= 2 && optIdx <= 5) ? "MS" : "";
+					var suffix = (optIdx >= 2 && optIdx <= 4) ? "MS" : "";
 					txt.text = Std.string(n) + suffix;
 				}
 				ClientPrefs.saveSettings();

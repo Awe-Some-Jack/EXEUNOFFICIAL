@@ -39,7 +39,7 @@
 	"options.gameplay": "GAMEPLAY",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK-FENSTER", "GOOD-FENSTER", "BAD-FENSTER", "SICHERE FRAMES", "AUDIO-STREAMING"],
 	"options.graphics": "GRAFIK",
-	"options.graphics.labels": ["KARTOFFELMODUS", "KANTENGLÄTTUNG", "GPU-CACHING", "SHADER-QUALITÄT", "SHADER", "FPS ENTSPERREN", "FRAMERATE"],
+	"options.graphics.labels": ["KARTOFFELMODUS", "KANTENGLÄTTUNG", "GPU-CACHING", "SHADER-QUALITÄT", "SHADER", "FPS ENTSPERREN", "FRAMERATE", "SICHERE SYNC"],
 	"options.language": "SPRACHE",
 	"options.on": "AN",
 	"options.off": "AUS",

@@ -193,5 +193,6 @@
 	"prey_ending_1": "哇！",
 	"prey_ending_2": "瞧瞧那么多恶棍机器人……",
 	"prey_ending_3": "它们都要去哪儿？",
-	"prey_ending_4": "最好去看看到底发生了什么！"
+	"prey_ending_4": "最好去看看到底发生了什么！",
+	"options.warning.unfinished": "警告：此选项尚未完全实现"
 }

@@ -191,5 +191,6 @@
 	"prey_ending_1": "Waouh !",
 	"prey_ending_2": "Regarde-moi tous ces badniks...",
 	"prey_ending_3": "Mais où vont-ils tous ?",
-	"prey_ending_4": "Je ferais mieux d'aller voir ce qui se passe !"
+	"prey_ending_4": "Je ferais mieux d'aller voir ce qui se passe !",
+	"options.warning.unfinished": "ATTENTION : CETTE OPTION N'EST PAS ENCORE ENTIÈREMENT IMPLÉMENTÉE"
 }

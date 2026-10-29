@@ -193,5 +193,6 @@
 	"prey_ending_1": "うおっ！",
 	"prey_ending_2": "あんなにたくさんのバドニクが…",
 	"prey_ending_3": "みんなどこへ向かってるんだ？",
-	"prey_ending_4": "何が起きてるか確かめに行かなきゃな！"
+	"prey_ending_4": "何が起きてるか確かめに行かなきゃな！",
+	"options.warning.unfinished": "注意：このオプションはまだ完全には実装されていません"
 }

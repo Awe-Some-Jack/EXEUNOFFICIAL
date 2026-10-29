@@ -34,6 +34,7 @@ class ExeVisualsState extends ExeBaseOptionsState
 	}
 
 	override public function getCurrentSelectionIndex():Int { return curSelected; }
+	override public function showWarning():Bool { return curPage == 0 && curSelected == 1; }
 
 	override public function loadPage()
 	{

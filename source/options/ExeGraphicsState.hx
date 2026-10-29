@@ -36,6 +36,7 @@ class ExeGraphicsState extends ExeBaseOptionsState
 	}
 
 	override public function getCurrentSelectionIndex():Int { return curSelected - scrollOffset; }
+	override public function showWarning():Bool { return curSelected == 0; }
 
 	function formatValue(opt:ExeBaseOptionsState.ExeGenericOption):String
 	{

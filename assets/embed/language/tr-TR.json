@@ -193,5 +193,6 @@
 	"prey_ending_1": "Vay!",
 	"prey_ending_2": "Şu badnik'lere bak...",
 	"prey_ending_3": "Hepsi nereye gidiyor?",
-	"prey_ending_4": "Neler olduğunu öğrensem iyi olacak!"
+	"prey_ending_4": "Neler olduğunu öğrensem iyi olacak!",
+	"options.warning.unfinished": "UYARI: BU SEÇENEK HENÜZ TAM OLARAK UYGULANMADI"
 }

@@ -1159,14 +1159,14 @@ class Paths
 				#if sys
 				if (sys.FileSystem.exists(file))
 				{
-					buffer = lime.media.AudioBuffer.fromFile(file, true);
+					buffer = lime.media.AudioBuffer.fromFile(file);
 				}
 				#end
 
 				if (buffer == null && OpenFlAssets.exists(file))
 				{
 					var bytes = OpenFlAssets.getBytes(file);
-					if (bytes != null) buffer = lime.media.AudioBuffer.fromBytes(bytes, true);
+					if (bytes != null) buffer = lime.media.AudioBuffer.fromBytes(bytes);
 				}
 
 				if (buffer != null)

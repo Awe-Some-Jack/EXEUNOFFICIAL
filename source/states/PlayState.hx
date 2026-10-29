@@ -3508,13 +3508,13 @@ class PlayState extends MusicBeatState
 			switch(formattedSong)
 			{
 				case "too-slow":
-					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 0;
+					saveStoryProgress(0);
 				case "you-cant-run":
-					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 1;
+					saveStoryProgress(1);
 				case "triple-trouble":
 					final closing = StoryModeState.fromTooSlow || !FlxG.save.data.storyModeDone;
 					if (closing) FlxG.save.data.goToFinalEscape = true;
-					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 2;
+					saveStoryProgress(2);
 					FlxG.save.flush();
 					if (closing)
 					{	
@@ -3523,7 +3523,7 @@ class PlayState extends MusicBeatState
 						Application.current.window.close();
 					}
 				case "final-escape":
-					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 3;
+					saveStoryProgress(3);
 					FlxG.save.data.goToFinalEscape = null;
 					FlxG.save.data.theYourselfCutscene = true;
 					FlxG.save.flush();
@@ -3531,7 +3531,7 @@ class PlayState extends MusicBeatState
 					FlxG.switchState(() -> new StoryModeState());
 					return true;
 				case "yourself":
-					if (!FlxG.save.data.storyModeDone) FlxG.save.data.lastCoverPlay = 4;
+					saveStoryProgress(4);
 					if (StoryModeState.fromTooSlow == true) StoryModeState.fromTooSlow = false;
 					FlxG.save.data.theYourselfCutscene = null;
 					FlxG.save.data.storyModeDone = true;
@@ -3607,6 +3607,13 @@ class PlayState extends MusicBeatState
 		}
 
 		return true;
+	}
+
+	function saveStoryProgress(cover:Int):Void
+	{
+		if (FlxG.save.data.storyModeDone) return;
+		final current:Int = FlxG.save.data.lastCoverPlay ?? 0;
+		if (cover > current) FlxG.save.data.lastCoverPlay = cover;
 	}
 
 	public function checkSavedSongs(formattedSong){

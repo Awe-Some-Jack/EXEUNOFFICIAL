@@ -58,13 +58,8 @@ var clouds:Array<FlxSprite> = [];
 var speedTween:FlxTween = null;
 
 var dadPhase:String = 'happy';
-
-// {step, hold} — override del hold de la pose de canto del sprite COPIA phase4, en SEGUNDOS
-// 1.5 segundos alcanza para que la animación complete antes de volver al idle. (solo aplica a la copia)
 var dadHoldSongs:Array<{step:Int, hold:Float}> = [
     {step: 0, hold: 1.5},
-    // {step: 976, hold: 3},   // ejemplo: mantener más desde step 976
-    // {step: 1200, hold: 1.5}, // ejemplo: volver a la normalidad
 ];
 
 // BG chars
@@ -196,8 +191,6 @@ function onCreate()
 
     idleBaseOffX = idle.offset.x; idleBaseOffY = idle.offset.y;
     idleconejosBaseOffX = idleconejos.offset.x; idleconejosBaseOffY = idleconejos.offset.y;
-
-    //320
 
     cstatic = new FlxSprite();
     cstatic.frames = Paths.getSparrowAtlas('Park/staticurse');
@@ -529,8 +522,6 @@ function onEvent(name:String, value1:String, value2:String)
                 FlxTween.tween(camGame.targetOffset, {x: camx, y: camy}, time, {ease: LuaUtils.getTweenEaseByString(ease)});
             }
         }
-
-        // bloquea la cámara para que se quede en esa posición
         gameplayCam.customCameraEnabled = false;
         gameplayCam.isCameraOnForcedPos = true;
     }
@@ -789,8 +780,6 @@ function getDadSingAnim(noteData:Int):String
 function opponentNoteHit(note)
 {
     if (note.gfNote || note.noAnimation || note.noteType == 'Hey!' || note.noteType == 'GF2Sing') return;
-
-    // la copia phase4 canta mientras sea visible (incluido el fade-out)
     if (phase4Copy != null && phase4Copy.alpha > 0.01)
     {
         var p4anim:String = getPhase4SingAnim(note.noteData);
@@ -800,8 +789,6 @@ function opponentNoteHit(note)
             phase4Copy.holdTimer = 0;
         }
     }
-
-    // el dad canta su fase si no está en happy y es visible
     if (dad != null && dadPhase != 'happy' && dad.alpha > 0.01)
     {
         var anim:String = getDadSingAnim(note.noteData);
@@ -998,9 +985,6 @@ function updateDadHold()
             holdSeconds = cfg.hold;
         }
     }
-
-    // convierte segundos al multiplicador singDuration que usa Character.hx
-    // (holdThreshold = stepCrochet * 0.0011 / pitch * singDuration)
     final pitch:Float = (FlxG.sound.music != null && FlxG.sound.music.pitch > 0) ? FlxG.sound.music.pitch : 1;
     final sd:Float = (holdSeconds * pitch) / (Conductor.stepCrochet * 0.0011);
 

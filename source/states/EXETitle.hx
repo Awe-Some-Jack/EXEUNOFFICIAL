@@ -91,8 +91,13 @@ class EXETitle extends MusicBeatState
 		if (!initialized)
 		{
 			Main.fpsVar.visible = false;
-			playVideo('introexe');
-			videoPlaying = true;
+			if(FlxG.save.data.firstBoot == null) 
+				playWarningScreen();
+			else
+			{
+				playVideo('introexe');
+				videoPlaying = true;
+			}
 		}
 		else
 		{
@@ -107,6 +112,30 @@ class EXETitle extends MusicBeatState
 		parallaxUnlocked = backend.SongProgress.soundTestComplete();
 
 		super.create();
+	}
+
+	var warningText:FlxText;
+	var warningText2:FlxText;
+	var pressContinue:Bool;
+	function playWarningScreen()
+	{
+		warningText = new FlxText(0, 0, 620, "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nViewer discretion is advised.", 40);
+		warningText.scale.set(0, 0);
+		warningText.setFormat("SonicFont.ttf", 30, FlxColor.WHITE, CENTER);
+		warningText.screenCenter();
+		add(warningText);
+
+		warningText2 = new FlxText(0, 0, 620, "Press Enter To Continue.", 40);
+		warningText2.scale.set(0, 0);
+		warningText2.setFormat("SonicFont.ttf", 30, FlxColor.WHITE, CENTER);
+		warningText2.screenCenter(X);
+		add(warningText2);
+		warningText2.y = warningText.y + 440;
+
+		FlxTween.tween(warningText.scale, {x: 1, y: 1}, 2, {ease: FlxEase.cubeOut});
+
+		new FlxTimer().start(2.5, (_) -> FlxTween.tween(warningText2.scale, {x: 1, y: 1}, 1, {ease: FlxEase.cubeOut}));
+		new FlxTimer().start(4, (_) -> pressContinue = true); 
 	}
 
 	function playVideo(vid:String, ?byAfk:Bool = false)
@@ -390,6 +419,18 @@ class EXETitle extends MusicBeatState
 			#if switch
 			if (gamepad.justPressed.B) pressedEnter = true;
 			#end
+		}
+
+		if (pressContinue && !canStart)
+		{
+			if (controls.ACCEPT)
+			{
+				pressContinue = false;
+				FlxG.sound.play(Paths.sound('menumomentclick'));
+				FlxG.camera.flash(FlxColor.RED, 1);
+				new FlxTimer().start(2, (_) -> playVideo('introexe'));
+				warningText.alpha = warningText2.alpha = 0;
+			}
 		}
 
 		if (initialized && !transitioning && canStart)

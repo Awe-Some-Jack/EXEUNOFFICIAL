@@ -5,7 +5,7 @@ function onCreatePost()
 	setProperty('hbHealth.alpha', 0)
 	setProperty('hbHealth2.alpha', 0)
 	setProperty('healthBG.alpha', 0)
-	
+
 	makeLuaSprite('bghb',  'pixelUI/hud/hbBG', 0, 0)
 	setObjectCamera('bghb', 'camHUD')
 	scaleObject('bghb', 2.5, 2.5)

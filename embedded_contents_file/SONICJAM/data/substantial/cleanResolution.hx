@@ -15,10 +15,8 @@ function onCreate()
     PlayState.instance.closeOpponentStrumGap = true;
 }
 
-function onCreatePost() 
-{
+function onCreatePost()
     if(!ClientPrefs.data.middleScroll) comboGroup.y += 100 * (ClientPrefs.data.downScroll ? -1 : 1);
-}
 
 function onDestroy()
 {
@@ -57,21 +55,5 @@ function onResume()
     }
 }
 
-function onEvent(n,v1)
-{
-    if (n == 'substantialEvent')
-    {
-        switch(v1)
-        {
-            case 'fullscreen':
-                PlayState.canPause = true;
-                var daWindow = Lib.application.window;
-                PlayState.tweenWindow(daWindow.stage.fullScreenWidth + 1, daWindow.stage.fullScreenHeight + 1, 0, 0, Conductor.crochet / (1000 / 4), FlxEase.cubeInOut, () -> PlayState.fullscreenLetterbox());
-        }
-    }
-}
-
 function onGameOverConfirm(retry)
-{
     if (retry) isRestarting = true;
-}

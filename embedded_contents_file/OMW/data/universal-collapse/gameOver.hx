@@ -6,6 +6,7 @@ import objects.VideoSprite;
 var deadBoyfriend:Character;
 var inGameOver:Bool = false;
 var deadMusic:FlxSound;
+var animTimer:FlxTimer;
 
 function onCreate()
 {
@@ -32,7 +33,10 @@ function onGameOverStart()
 	bfDeath = new FlxSprite();
 	bfDeath.frames = Paths.getSparrowAtlas('characters/ga');
 	bfDeath.animation.addByPrefix('idle', 'feto', 24, false);
-	new FlxTimer().start(0.7, _ -> { bfDeath.animation.play('idle', true); });
+	animTimer = new FlxTimer().start(0.7, _ -> { 
+		if(bfDeath != null) 
+			bfDeath.animation.play('idle', true); 
+	});
 	bfDeath.scale.set(2, 2); bfDeath.updateHitbox();
 	bfDeath.screenCenter();
 	bfDeath.x -= 100; bfDeath.y += 100;
@@ -63,6 +67,7 @@ function onGameOverConfirm(retry)
 		FlxG.sound.play(Paths.music('gameOverUCEnd'));
 		deadMusic.stop();
 		bfDeath.destroy();
+		animTimer?.cancel();
 	}
 	else for (sound in FlxG.sound.list) if (sound.playing && sound != null) sound.volume = 0;
 }

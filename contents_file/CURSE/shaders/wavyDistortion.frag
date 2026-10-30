@@ -15,15 +15,18 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	vec2 uv = fragCoord.xy / iResolution.xy;
 	
 	//uv.y = -1.0 - uv.y;
-	
-	uv.x += cos(uv.y*5.2+iTime*1.4)/50.0*amount;
-    uv.y += sin(uv.x*5.1+iTime*1.4)/50.0*amount;
-	uv.x -= cos(uv.y*5.2+iTime*1.4)/100.0*amount;
-	uv.x -= cos(uv.x*5.1+iTime*1.4)/100.0*amount;
-	
-	vec4 color = texture(iChannel0, uv);
-	
-	fragColor = color;
+
+	float margin = 0.08;
+	float falloffX = smoothstep(0.0, margin, uv.x) * (1.0 - smoothstep(1.0 - margin, 1.0, uv.x));
+	float falloffY = smoothstep(0.0, margin, uv.y) * (1.0 - smoothstep(1.0 - margin, 1.0, uv.y));
+	float falloff = falloffX * falloffY;
+
+	uv.x += cos(uv.y*5.2+iTime*1.4)/50.0*amount*falloff;
+    uv.y += sin(uv.x*5.1+iTime*1.4)/50.0*amount*falloff;
+	uv.x -= cos(uv.y*5.2+iTime*1.4)/100.0*amount*falloff;
+	uv.x -= cos(uv.x*5.1+iTime*1.4)/100.0*amount*falloff;
+
+	fragColor = texture(iChannel0, clamp(uv, 0.0, 1.0));
 }
 
 void main() {

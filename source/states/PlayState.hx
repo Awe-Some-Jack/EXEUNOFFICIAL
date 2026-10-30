@@ -752,7 +752,6 @@ class PlayState extends MusicBeatState
 		PauseSubState.miniSonicImage = Paths.formatToSongPath(SONG.song);
 		switch(Paths.formatToSongPath(SONG.song))
 		{
-			case 'manual-blast': PauseSubState.miniSonicImage = 'hedge';
 			case 'prey': PauseSubState.miniSonicImage = 'sonic';
 			case 'fate': PauseSubState.miniSonicOffsets = [-6, 0];
 			case 'hijacked-transmission': PauseSubState.miniSonicOffsets = [-12, 0];

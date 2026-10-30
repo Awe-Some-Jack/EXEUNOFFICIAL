@@ -709,7 +709,11 @@ class PlayState extends MusicBeatState
 		if (isStoryMode)
 		{
 			final curWeek = WeekData.getCurrentWeek();
-			detailsText = "Story Mode: " + (curWeek?.weekName ?? SONG.song);
+
+			if(curWeek != null && curWeek.exeTitle == 'SONIC.EXE') 
+				detailsText = "Story Mode: " + (curWeek?.exeTitle ?? SONG.song);
+			else
+				detailsText = "Sound Test: " + (curWeek?.exeTitle ?? SONG.song);
 		}
 		else
 			detailsText = "Freeplay";

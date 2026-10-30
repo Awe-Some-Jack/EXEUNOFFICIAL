@@ -121,6 +121,10 @@ class AchievementsState extends SonicSubState
         FlxTween.tween(achievementGroup, {x: 30}, 1.2, {ease: FlxEase.expoOut});
 
         #if mobile createBackButton(FlxG.width - 245, FlxG.height - 710); #end
+        		
+        #if DISCORD_ALLOWED
+		DiscordClient.changePresence("In the Achievements Menu", null);
+		#end
     }
 
     var isScrolling:Bool = false;

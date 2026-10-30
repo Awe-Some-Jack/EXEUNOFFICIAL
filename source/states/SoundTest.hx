@@ -321,6 +321,10 @@ class SoundTest extends MusicBeatState
 	{
 		setDigitFrames(pcmDigits, pcmValue);
 		setDigitFrames(daDigits, daValue);
+
+		#if DISCORD_ALLOWED
+		DiscordClient.changePresence("In the Sound test", 'PCM NO. $pcmValue - DA NO. $daValue');
+		#end
 	}
 
 	inline function setDigitFrames(digits:Array<FlxSprite>, value:Int):Void

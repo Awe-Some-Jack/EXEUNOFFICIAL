@@ -3,6 +3,7 @@ import flixel.math.FlxMath;
 import flixel.math.FlxAngle;
 import flixel.addons.display.FlxBackdrop;
 import objects.HealthIcon;
+import backend.EXEAchievements;
 
 using StringTools;
 
@@ -58,6 +59,7 @@ final cam = game.gameplayCam.settings;
 
 var isManualBlast:Bool = false;
 var songPhase:String = 'normal';
+var unlockRingAchievement:Bool = true;
 
 //objs
 
@@ -941,6 +943,8 @@ function goodNoteHit(note)
 		glitchBFIcon.changeIcon('bf/' + bfIcons[boyfriend.getAnimationName()]);
 		FlxTween.tween(glitchBFIcon, {alpha: 0}, 1);
 	}
+
+	if (note.noteType == 'Red Ring' || note.noteType == 'Yellow Ring') unlockRingAchievement = false;
 }
 
 function opponentNoteHit(note)
@@ -1103,3 +1107,4 @@ function revertDirection()
 
 function onDestroy() FlxG.camera.bgColor = 0x0;
 function onGameOverStart() FlxG.camera.bgColor = 0x0;
+function onEndSong() if(unlockRingAchievement) EXEAchievements.unlock('norings');

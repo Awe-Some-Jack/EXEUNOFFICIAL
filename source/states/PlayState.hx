@@ -741,6 +741,7 @@ class PlayState extends MusicBeatState
 
 		#if !mac
 		if (Paths.formatToSongPath(SONG.song) != 'burning' && Paths.formatToSongPath(SONG.song) != 'final-escape') FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Loading)";
+		if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: Hedge (Loading)";
 		#end
 
 		GameOverSubstate.resetVariables();
@@ -1437,6 +1438,7 @@ class PlayState extends MusicBeatState
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song;
 		if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 		if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = prevWindowTitle + '?';
+		if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: Hedge";
 		#end
 
 		seenCutscene = true;
@@ -2178,6 +2180,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	var _targetPause:String = 'Hedge';
 	override function openSubState(SubState:FlxSubState)
 	{
 		stagesFunc(function(stage:BaseStage) stage.openSubState(SubState));
@@ -2200,6 +2203,7 @@ class PlayState extends MusicBeatState
 			FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
 			if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + " (Paused)";
 			if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
+			if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: " + _targetPause + " (Paused)";
 			#end
 		}
 
@@ -2248,6 +2252,7 @@ class PlayState extends MusicBeatState
 			#if !mac
 			FlxG.stage.window.title = appName + " | Playing: " + SONG.song;
 			if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
+			if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: " + _targetPause;
 			#end
 		}
 	}
@@ -2863,6 +2868,7 @@ class PlayState extends MusicBeatState
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
 		if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + " (Paused)";
 		if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
+		if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: " + _targetPause + " (Paused)";
 		#end
 
 		#if DISCORD_ALLOWED
@@ -3009,6 +3015,7 @@ class PlayState extends MusicBeatState
 				#end
 				#if (!mac && DISCORD_ALLOWED)
 				FlxG.stage.window.title = appName + " | Was Playing: " + SONG.song;
+				if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Was Playing: " + _targetPause;
 				var dausername:String = DiscordClient.username ?? 'boyfriend';
 				final message:Array<Array<String>> = [
 					[ // INTRO
@@ -4875,6 +4882,8 @@ class PlayState extends MusicBeatState
 			case 'manual-blast':
 				if (curBeat >= 192) 
 				{
+					_targetPause = 'Manual Blast';
+					if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: " + _targetPause;
 					PauseSubState.miniSonicOffsets = [-3, 0];
 					PauseSubState.miniSonicImage = 'manual-blast-2';
 				}
@@ -4919,6 +4928,8 @@ class PlayState extends MusicBeatState
 				if(curBeat >= 552) PauseSubState.miniSonicImage = 'her-world-3';
 				if(curBeat >= 832) PauseSubState.miniSonicImage = 'her-world-4';
 				if(curBeat >= 1064) PauseSubState.miniSonicImage = 'her-world-5';
+			case 'monochromatic':
+				if (curBeat >= 260) PauseSubState.miniSonicImage = 'monochromatic-2';
 		}
 
 		setOnScripts('curBeat', curBeat);

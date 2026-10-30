@@ -365,6 +365,18 @@ function onSectionHit()
 	oldHitSection = mustHitSection
 end
 
+function noteMiss()
+	if getProperty('boyfriend.curCharacter') == 'handdd' then
+		playAnim('boyfriend', 'miss', true)
+	end
+end
+
+function noteMissPress()
+	if getProperty('boyfriend.curCharacter') == 'handdd' then
+		playAnim('boyfriend', 'miss', true)
+	end
+end
+
 --video functions, ignore
 
 function onGameOver()

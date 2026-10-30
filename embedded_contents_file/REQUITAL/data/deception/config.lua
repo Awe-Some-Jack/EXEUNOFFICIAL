@@ -222,6 +222,12 @@ function setupCustomHUD()
         hudPositions['ReqText'..i].x = -140 + reqOffset
         hudPositions['ReqText'..i].y = reqTextY + reqOffset
     end
+
+    if hideHud then
+        for _, name in ipairs({'BFIcon', 'PicoIcon', 'ReqIcon', 'BFHealth', 'PicoHealth', 'ReqHealth', 'BFText0', 'BFText1', 'PicoText0', 'PicoText1', 'ReqText0', 'ReqText1'}) do
+            setProperty(name..'.visible', false)
+        end
+    end
 end
 
 function createKnife(target, strumTime)

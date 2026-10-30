@@ -357,6 +357,7 @@ function onCreatePost()
 	glitchBFIcon.alpha = 0;
 	glitchBFIcon.camera = camHUD;
 	add(glitchBFIcon);
+	glitchOppIcon.visible = glitchBFIcon.visible = !ClientPrefs.data.hideHud;
 }
 
 var animationOffsets:Map<String, Map<String, Array<Float>>> = [

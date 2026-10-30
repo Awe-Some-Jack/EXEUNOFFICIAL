@@ -238,7 +238,7 @@ function makeSubtitle() {
     var fallback:Array<String> = [
         "Hello.... Old friend.",
         "I am the first, but not the original.",
-        "Do you enjoy the promise I made?",
+        "Do you enjoy the improvements I've made?",
         "Once I have your soul, we will play forever."
     ];
     var subtitleText:String = getSubtitleLine(voicelineNum);

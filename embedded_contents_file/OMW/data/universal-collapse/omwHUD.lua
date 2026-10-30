@@ -49,6 +49,7 @@ function onCreatePost()
 	setProperty('hbHealth2.alpha', 0)
 	setProperty('separatorHealth.alpha', 0)
 	setProperty('healthbaromw.alpha', 0)
+	if hideHud then for _, tag in ipairs({'healthbaromw', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp'}) do setProperty(tag..'.visible', false) end end
 end
 
 local lerpHealth = 1

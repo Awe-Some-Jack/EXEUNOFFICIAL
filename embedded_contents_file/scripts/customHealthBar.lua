@@ -240,6 +240,11 @@ function onCreatePost()
 		setProperty('exeScoreTxt.x', math.floor(getProperty('exeScoreTxt.x') + healthProps.healthBar.offsetX))
 		setObjectOrder('exeScoreTxt', getObjectOrder('iconOpp') + 1)
 	end
+
+	if hideHud then
+		for _, tag in ipairs({'hbBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'healthBG'}) do setProperty(tag..'.visible', false) end
+		if not healthProps.healthBar.hideScore then setProperty('exeScoreTxt.visible', false) end
+	end
 end
 
 function onEvent(n, v1)

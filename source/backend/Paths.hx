@@ -148,20 +148,24 @@ class Paths
 
 	static function closeStreamedSounds():Void
 	{
-		final playing:Sound = @:privateAccess FlxG.sound.music?._sound;
 		for (key => snd in streamedSounds)
 		{
-			if (dumpExclusions.contains(key) || snd == playing) continue;
+			if (dumpExclusions.contains(key) || isStreamedSoundInUse(snd)) continue;
 			try snd.close() catch (e:Dynamic) {}
 			streamedSounds.remove(key);
 		}
 
+		final stillUsed:Array<Sound> = [];
 		for (snd in orphanedStreamedSounds)
 		{
-			if (snd == playing) continue;
+			if (isStreamedSoundInUse(snd))
+			{
+				stillUsed.push(snd);
+				continue;
+			}
 			try snd.close() catch (e:Dynamic) {}
 		}
-		orphanedStreamedSounds = [];
+		orphanedStreamedSounds = stillUsed;
 	}
 
 	public static function freeGraphicsFromMemory()
@@ -1072,7 +1076,7 @@ class Paths
 					final old:Sound = streamedSounds.get(file);
 					if (old != null)
 					{
-						if (isStreamedSoundUsedByOther(old)) orphanedStreamedSounds.push(old);
+						if (isStreamedSoundInUse(old)) orphanedStreamedSounds.push(old);
 						else try old.close() catch (e:Dynamic) {}
 					}
 					streamedSounds.set(file, snd);

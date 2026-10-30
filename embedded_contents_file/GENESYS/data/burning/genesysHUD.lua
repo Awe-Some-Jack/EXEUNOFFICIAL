@@ -25,6 +25,8 @@ function onCreatePost()
 	addInstance('iconFurn')
 	makeHUDSprite('futureHealthFurn', 'healthFuture', getProperty('iconFurn.x') + iconOffset + 72 + 12, getProperty('iconFurn.y') + iconOffset + 18)
 
+	if hideHud then for _, tag in ipairs({'iconSonic', 'iconFurn'}) do setProperty(tag..'.visible', false) end end
+
 	updateHUD()
 end
 
@@ -110,6 +112,7 @@ function makeHUDSprite(tag, path, x, y, num)
 	setObjectCamera(tag, 'hud')
 	setProperty(tag..'.antialiasing', false)
 	setProperty(tag..'.moves', false)
+	setProperty(tag..'.visible', not hideHud)
 	addLuaSprite(tag)
 end
 

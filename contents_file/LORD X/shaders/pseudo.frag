@@ -13,20 +13,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 uv = fragCoord.xy / iResolution.xy;
     vec4 tex = texture(iChannel0, uv);
 
-    float delay = 0.0; // Espera de 1 segundo antes de empezar la animacin
-
-    if (iTime < delay) {
-        fragColor = tex;
-        return;
-    }
-
-    float t = iTime;
-
-    // Control de tiempo para ida y reversa
-    float anim_duration = 6.5;
-    float reverse_duration = 6.5;
-    float total_duration = anim_duration + 4.0 + reverse_duration; // incluye 4 segundos en negro
-
     // Mscara
     float mask_softness = 1.4;
     float mask_threshold = 0.6;
@@ -45,11 +31,13 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float displacement = pow(sort, 2.0 + (sort * 2.0)) * mask * turbulence;
     transition_uv.y += displacement;
 
-    vec4 result;
-    if (transition_uv.y > 1.0) {
-        result = texture(iChannel0, sort_uv);
-    } else {
-        result = texture(iChannel0, transition_uv);
+    vec4 result = tex;
+    if (displacement > 0.0) {
+        if (transition_uv.y > 1.0) {
+            result = texture(iChannel0, sort_uv);
+        } else {
+            result = texture(iChannel0, transition_uv);
+        }
     }
 
     // Mezclar progresivamente con negro segn la intensidad del sort

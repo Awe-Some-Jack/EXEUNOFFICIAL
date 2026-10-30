@@ -13,17 +13,17 @@ uniform float amount;
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	vec2 uv = fragCoord.xy / iResolution.xy;
+	float t = iTime * 1.4;
+	float k = amount * 0.01;
 	
 	//uv.y = -1.0 - uv.y;
 	
-	uv.x += cos(uv.y*5.2+iTime*1.4)/100.0*amount;
-    uv.y += sin(uv.x*5.1+iTime*1.4)/100.0*amount;
-	uv.x -= cos(uv.y*5.2+iTime*1.4)/100.0*amount;
-	uv.x -= cos(uv.x*5.2+iTime*1.4)/100.0*amount;
+	uv.x += cos(uv.y*5.2+t)*k;
+    uv.y += sin(uv.x*5.1+t)*k;
+	uv.x -= cos(uv.y*5.2+t)*k;
+	uv.x -= cos(uv.x*5.2+t)*k;
 	
-	vec4 color = texture(iChannel0, uv);
-	
-	fragColor = color;
+	fragColor = texture(iChannel0, uv);
 }
 
 void main() {

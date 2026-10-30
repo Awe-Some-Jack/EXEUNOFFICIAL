@@ -40,6 +40,7 @@ function onCreatePost()
 		setObjectCamera('livesIcon', 'hud')
 		setProperty('livesIcon.antialiasing', false)
 		setProperty('livesIcon.moves', false)
+		setProperty('livesIcon.visible', not hideHud)
 		addLuaSprite('livesIcon')
 
 		local digits = splitShit(math.min(lives, 99), false)
@@ -52,9 +53,11 @@ function onCreatePost()
 	setProperty('cardBar.y', -getProperty('cardBar.height'))
 	screenCenter('cardBar', 'x')
 	setObjectCamera('cardBar', 'other')
+	setProperty('cardBar.visible', true)
 
 	makeHUDSprite('cardText', 'card/cardText', screenWidth, 72 * 3)
 	setObjectCamera('cardText', 'other')
+	setProperty('cardText.visible', true)
 end
 
 function onUpdateScore() if postCreate then updateHUD() end end
@@ -82,8 +85,10 @@ function updateRings()
 	if #splittedRings ~= oldScore[2] then for i = 1,oldScore[2] do if i > #splittedRings and luaSpriteExists('ringsNum'..i) then removeLuaSprite('ringsNum'..i) end end end
 	oldScore[2] = #splittedRings
 
-	setProperty('ringsText-alt.visible', (getVar('rings') == 0 and true or false))
-	setProperty('ringsText.visible', (getVar('rings') == 0 and false or true))
+	if not hideHud then
+		setProperty('ringsText-alt.visible', (getVar('rings') == 0 and true or false))
+		setProperty('ringsText.visible', (getVar('rings') == 0 and false or true))
+	end
 end
 
 local oldTime = ''
@@ -115,6 +120,7 @@ function makeHUDSprite(tag, path, x, y, num)
 	setObjectCamera(tag, 'hud')
 	setProperty(tag..'.antialiasing', false)
 	setProperty(tag..'.moves', false)
+	setProperty(tag..'.visible', not hideHud)
 	addLuaSprite(tag)
 end
 
@@ -125,7 +131,7 @@ function onBeatHit()
 		runTimer('endIntroCard', crochet / (1000 / 6) / playbackRate)
 	end
 
-	if getVar('rings') == 0 then
+	if getVar('rings') == 0 and not hideHud then
 		setProperty('ringsText-alt.visible', curBeat % 2 == 0)
 		setProperty('ringsText.visible', curBeat % 2 == 1)
 	end

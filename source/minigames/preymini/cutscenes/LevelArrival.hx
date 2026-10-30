@@ -52,11 +52,6 @@ class LevelArrival
 		_actor.visible = true;
 	}
 
-	public function skip():Void
-	{
-		if (_t >= 0) _finish();
-	}
-
 	public function update(elapsed:Float):Void
 	{
 		if (_t < 0) return;

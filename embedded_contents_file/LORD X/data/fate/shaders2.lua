@@ -1,52 +1,23 @@
 local activated = false;
-local enabled = false;
 local invertRN = false;
-local invertRN2 = false;
 local dadFrame = 0;
 
 -- luaDebugMode = true;
 
-function updateCameraFilters()
-    --debugPrint('updated');
-    if shadersEnabled then
-
-        runHaxeCode([[
-            var sexoShader = game.getLuaObject('sexo').shader;
-            var glitchShader = game.getLuaObject('glitch').shader;
-            var chromShader = game.getLuaObject('chromGraphic').shader;
-            var invertShader = game.getLuaObject('invertGraphic').shader;
-            var invertShader2 = game.getLuaObject('invertGraphic2').shader;
-            var pixelShader = game.getLuaObject('pixel').shader;
-            var glihShader = game.getLuaObject('glih').shader;
-            
-            var gameFilters = [new ShaderFilter(sexoShader), new ShaderFilter(glitchShader), new ShaderFilter(pixelShader), new ShaderFilter(glihShader), new ShaderFilter(chromShader)];
-            if (]] .. tostring(enabled) .. [[) {
-                
-            }
-            if (]] .. tostring(invertRN) .. [[) {
-            gameFilters.push(new ShaderFilter(invertShader));
-            }
-            game.camGame.filters = gameFilters;
-            
-            var hudFilters = [new ShaderFilter(game.getLuaObject('sexo2').shader), new ShaderFilter(glitchShader), new ShaderFilter(pixelShader), new ShaderFilter(glihShader)];
-            if (]] .. tostring(invertRN2) .. [[) {
-                hudFilters.push(new ShaderFilter(invertShader2));
-                }
-                game.camHUD.filters = hudFilters;
-            ]])
-        end
+local shaderSent = {}
+local function sendShaderFloat(obj, uniform, value)
+    local key = obj..'.'..uniform
+    if shaderSent[key] ~= value then
+        shaderSent[key] = value
+        setShaderFloat(obj, uniform, value)
     end
-        -- function onStepHit()
-                --     if curStep == 80 then
-                    --         updateCameraFilters()
-                    --     end
--- end
+end
 
 function invertToggle()
     if shadersEnabled then 
         invertRN = not invertRN
-        invertRN2 = invertRN
-        updateCameraFilters()
+        setStaticFilterActive('camGame', 'invertGraphic', invertRN)
+        setStaticFilterActive('camHUD', 'invertGraphic2', invertRN)
     end
 end
 
@@ -96,6 +67,30 @@ function onCreatePost()
         setProperty('sexo.y', 1);
         setProperty('sexo2.y', 1);
         setProperty('glitch.x', 0.0000001);
+
+        local neutrals = {
+            sexo = {brightness = 0, contrast = 1, saturation = 1},
+            sexo2 = {brightness = 0, contrast = 1, saturation = 1},
+            glitch = {binaryIntensity = 0},
+            pixel = {pixelsize = 0},
+            glih = {sort = 0},
+            chromGraphic = {amount = 0},
+        }
+        local cameraFilters = {
+            {'camGame', {'sexo', 'glitch', 'pixel', 'glih', 'chromGraphic', 'invertGraphic'}},
+            {'camHUD', {'sexo2', 'glitch', 'pixel', 'glih', 'invertGraphic2'}},
+        }
+        for _, entry in ipairs(cameraFilters) do
+            for _, name in ipairs(entry[2]) do
+                if neutrals[name] then
+                    for uniform, neutral in pairs(neutrals[name]) do
+                        addPrunedFilter(entry[1], name, uniform, neutral)
+                    end
+                else
+                    addStaticFilter(entry[1], name, false)
+                end
+            end
+        end
     end
 end
 
@@ -106,7 +101,6 @@ local tweening4 = false
 
 function onGameOver()
     pixelChange = true;
-    enabled = true;
 end
 
 function onUpdate(e)
@@ -115,10 +109,6 @@ function onUpdate(e)
         
         if dadName == 'lord x p3scream' then
             if dadFrame == 0 then
-                if not enabled then
-                    enabled = true;
-                    updateCameraFilters()
-                end
                 doTweenX('glihT', 'glih', 0.5, 0.3, 'smootherStepOut');
                 doTweenX('glitchT', 'glitch', 2, 0.3, 'smootherStepOut');
             elseif dadFrame == 25 then
@@ -177,11 +167,9 @@ function onUpdate(e)
             end
         end
 
-        setShaderFloat("invertGraphic", "iTime", os.clock())
-        setShaderFloat("invertGraphic2", "iTime", os.clock())
-
-        setShaderFloat('chromGraphic', "amount", getProperty('chromGraphic.x'))
-        setShaderFloat('glitch', "binaryIntensity", getProperty('glitch.x'))
+        local glitchX = getProperty('glitch.x')
+        sendShaderFloat('chromGraphic', "amount", getProperty('chromGraphic.x'))
+        sendShaderFloat('glitch', "binaryIntensity", glitchX > 0.001 and glitchX or 0)
     end
 end
 
@@ -189,17 +177,17 @@ local thing = 0;
 function onUpdatePost(e)
     thing = thing + e
     if shadersEnabled then
-        setShaderFloat('sexo', 'brightness', getProperty('sexo.x') * 2)
-        setShaderFloat('sexo', 'contrast', 1 + (getProperty('sexo.x') * 4))
+        sendShaderFloat('sexo', 'brightness', getProperty('sexo.x') * 2)
+        sendShaderFloat('sexo', 'contrast', 1 + (getProperty('sexo.x') * 4))
 
-        setShaderFloat('sexo2', 'brightness', getProperty('sexo2.x') * 2)
-        setShaderFloat('sexo2', 'contrast', 1 + (getProperty('sexo2.x') * 4))
+        sendShaderFloat('sexo2', 'brightness', getProperty('sexo2.x') * 2)
+        sendShaderFloat('sexo2', 'contrast', 1 + (getProperty('sexo2.x') * 4))
 
-        setShaderFloat('sexo', 'saturation', getProperty('sexo.y'))
-        setShaderFloat('sexo2', 'saturation', getProperty('sexo2.y'))
+        sendShaderFloat('sexo', 'saturation', getProperty('sexo.y'))
+        sendShaderFloat('sexo2', 'saturation', getProperty('sexo2.y'))
 
-        setShaderFloat('glih', 'sort', getProperty('glih.x'))
+        sendShaderFloat('glih', 'sort', getProperty('glih.x'))
 
-        setShaderFloat('pixel', 'pixelsize', getProperty('pixel.x'))
+        sendShaderFloat('pixel', 'pixelsize', getProperty('pixel.x'))
     end
 end

@@ -79,11 +79,12 @@ function makeHUDSprite(tag, path, x, y, num)
 	setObjectCamera(tag, 'hud')
 	setProperty(tag..'.antialiasing', false)
 	setProperty(tag..'.moves', false)
+	setProperty(tag..'.visible', not hideHud)
 	addLuaSprite(tag)
 end
 
 function onBeatHit()
-	if misses >= 1 then
+	if misses >= 1 and not hideHud then
 		setProperty('missesText.visible', curBeat % 2 == 0)
 		setProperty('missesText-alt.visible', curBeat % 2 == 1)
 	end

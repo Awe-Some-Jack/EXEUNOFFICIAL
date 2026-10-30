@@ -69,6 +69,7 @@ class EXEMenu extends MusicBeatState
 	var canInteract:Bool = true;
 	var _fatalScene:Null<FatalScene> = null;
 	var _fatalTimer:Float = -1;
+	var _fatalStarted:Bool = false;
 	var canManiaInteract:Bool = false;
 	var cooldownTimer:Float = 0.0;
 	var isBlinking:Bool = false;
@@ -232,10 +233,14 @@ class EXEMenu extends MusicBeatState
 
 		FatalAccess.startWatching();
 		final fatalScene = FatalAccess.menuScene();
-		if (fatalScene != null && FlxG.random.bool(fatalScene == TRANSMISSION ? 35 : 20))
+		if (fatalScene != null)
 		{
-			_fatalScene = fatalScene;
-			_fatalTimer = FlxG.random.float(1, 4);
+			final chance = (fatalScene == TRANSMISSION ? 50 : 35) + backend.SongProgress.beatenSongs().length * 2;
+			if (FlxG.random.bool(Math.min(chance, 95)))
+			{
+				_fatalScene = fatalScene;
+				_fatalTimer = FlxG.random.float(1, 4);
+			}
 		}
 
 		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
@@ -337,8 +342,11 @@ class EXEMenu extends MusicBeatState
 		if (_fatalTimer > 0 && canInteract)
 		{
 			_fatalTimer -= elapsed;
-			if (_fatalTimer <= 0) _startFatalGlitch();
+			if (_fatalTimer <= 0 || FlxG.keys.justPressed.ANY || FlxG.mouse.justPressed || FlxG.mouse.deltaWheel.y != 0
+				|| controls.ACCEPT || controls.BACK || controls.UI_UP_P || controls.UI_DOWN_P #if mobile || backPressed #end)
+				_startFatalGlitch();
 		}
+		if (_fatalStarted) return;
 
 		#if !final
 		if (#if mobile shortPress && !inDevMode || #end FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
@@ -710,6 +718,7 @@ class EXEMenu extends MusicBeatState
 	function _startFatalGlitch():Void
 	{
 		canInteract = false;
+		_fatalStarted = true;
 		FlxG.sound.play(Paths.sound('static'), 0.8);
 		if (FlxG.sound.music != null) FlxTween.tween(FlxG.sound.music, {pitch: 0.6}, 1.2);
 		

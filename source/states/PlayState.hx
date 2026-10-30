@@ -2371,8 +2371,11 @@ class PlayState extends MusicBeatState
 		sunkyPending = false;
 		persistentUpdate = false;
 
-		if (startTimer != null) startTimer.active = false;
-		
+		final pausedTimers:Array<FlxTimer> = [];
+		final pausedTweens:Array<FlxTween> = [];
+		FlxTimer.globalManager.forEach(tmr -> if (tmr.active && !tmr.finished) { tmr.active = false; pausedTimers.push(tmr); });
+		FlxTween.globalManager.forEach(twn -> if (twn.active && !twn.finished) { twn.active = false; pausedTweens.push(twn); });
+
 		FlxG.sound.list.forEach(s -> s?.pause());
 
 		openSubState(new states.substates.SunkySubstate(accepted -> {
@@ -2381,9 +2384,12 @@ class PlayState extends MusicBeatState
 				sunkyHelp = true;
 				cpuControlled = true;
 			}
-			
+
 			persistentUpdate = true;
-			if (startTimer != null) startTimer.active = true;
+			for (tmr in pausedTimers) tmr.active = true;
+			for (twn in pausedTweens) twn.active = true;
+			gameplayCam.update(0);
+			FlxG.camera.snapToTarget();
 
 			FlxG.sound.list.forEach(s -> s?.resume());
 		}));

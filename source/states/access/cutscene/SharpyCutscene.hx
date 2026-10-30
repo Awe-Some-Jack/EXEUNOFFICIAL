@@ -37,10 +37,9 @@ class SharpyActor
 	public var moveStart:Float = 0;
 	public var moveLength:Float = 0;
 	public var height:Float = 0;
-	public var crouchAmount:Float = 0;
-	public var crouchStart:Float = 0;
-	public var crouchHold:Float = 0;
-	public var crouchRise:Float = 0;
+	public var spinStart:Float = 0;
+	public var spinFps:Float = 0;
+	public var spinSteps:Int = 0;
 
 	public function new(spr:FlxSprite)
 	{
@@ -56,10 +55,13 @@ class SharpyActor
 		spr.animation.frameIndex = frames[i];
 		final p = moveLength > 0 ? Math.max(0, Math.min(1, (t - moveStart) / moveLength)) : 1;
 		spr.setPosition(Math.round(fromX + (toX - fromX) * p), Math.round(fromY + (toY - fromY) * p - height * 4 * p * (1 - p)));
-		final c = crouchAmount <= 0 ? 0 : t < crouchStart + crouchHold ? crouchAmount
-			: crouchAmount * (1 - FlxEase.backOut(Math.min(1, (t - crouchStart - crouchHold) / crouchRise)));
-		spr.origin.set(spr.frameWidth * 0.5, spr.frame.offset.y + spr.frame.frame.height);
-		spr.scale.set(1 + c * 0.5, 1 - c);
+		final step = Std.int((t - spinStart) * spinFps);
+		if (step >= 0 && step < spinSteps)
+		{
+			spr.origin.set(spr.frame.offset.x + spr.frame.frame.width * 0.5, spr.frame.offset.y + spr.frame.frame.height * 0.5);
+			spr.angle = 90 * step;
+		}
+		else spr.angle = 0;
 	}
 }
 
@@ -99,6 +101,7 @@ class SharpyCutscene extends MusicBeatState
 	var _eggman:SharpyActor;
 	var _exetior:SharpyActor;
 	var _jina:SharpyActor;
+	var _jinaFlip:SharpyActor;
 	var _flashExetior:SharpyActor;
 	var _flashExetiorFlip:SharpyActor;
 	var _flashEggman:SharpyActor;
@@ -124,6 +127,8 @@ class SharpyCutscene extends MusicBeatState
 		_eggman = _actor('eggman');
 		_exetior = _actor('exetior');
 		_jina = _actor('jina');
+		_jinaFlip = _actor('jina');
+		_jinaFlip.spr.flipX = true;
 		_flashExetior = _actor('exetior');
 		_flashExetiorFlip = _actor('exetior');
 		_flashExetiorFlip.spr.flipX = true;
@@ -224,7 +229,7 @@ class SharpyCutscene extends MusicBeatState
 		_at(50.0, () -> _play(_eggman, 167, 141, _range(1, 5), 10));
 		_at(56.708, () -> _play(_exetior, 168, 63, _range(2, 5), 10));
 		_at(59.5, () -> {
-			_play(_eggman, 167, 141, _range(6, 23), 20);
+			_play(_eggman, 167, 141, [6, 7, 8, 9, 10, 10, 10, 11, 12, 13, 13, 14, 14, 14, 15, 16, 16, 17], 20);
 			_play(_exetior, 168, 63, _range(77, 94), 20);
 		});
 		_at(60.375, () -> {
@@ -270,10 +275,17 @@ class SharpyCutscene extends MusicBeatState
 		_at(107.25, () -> {
 			_show(_jina, 230, 110, 0);
 			_jump(_jina, 188, 154, 0.5, 14);
+			_spin(_jina, 4, 12);
 		});
-		_at(108.0, () -> {
+		_at(107.792, () -> {
+			_hide(_jina);
+			_show(_jinaFlip, 174, 145, 2);
+		});
+		_at(109.542, () -> _play(_jinaFlip, 174, 145, _range(3, 7), 12));
+		_at(110.625, () -> _play(_jinaFlip, 174, 145, [8, 9, 9], 24));
+		_at(110.75, () -> {
+			_hide(_jinaFlip);
 			_show(_jina, 187, 142, 57);
-			_crouch(_jina, 0.15, 1.54, 0.35);
 		});
 		_at(108.625, () -> _show(_exetior, 33, 63, 15));
 		_at(112.917, () -> _hide(_jina));
@@ -282,7 +294,7 @@ class SharpyCutscene extends MusicBeatState
 			_show(_eggman, 127, 141, 5);
 		});
 		_at(123.75, () -> {
-			_loop(_eggman, 127, 141, [29, 30, 31, 32, 33, 34, 35, 36, 28], 10);
+			_loop(_eggman, 127, 141, [23, 24, 25, 26, 27, 28, 29, 30, 22], 10);
 			_slide(_eggman, 212, 141, 1.7);
 		});
 		_at(123.875, () -> _play(_jina, 187, 142, [58, 59], 20));
@@ -294,7 +306,7 @@ class SharpyCutscene extends MusicBeatState
 		_at(134.175, () -> _play(_jina, 202, 147, _range(71, 78), 10));
 		_at(138.875, () -> {
 			_play(_jina, 191, 145, _range(79, 86), 12);
-			_show(_flashEggman, 265, 99, 26);
+			_show(_flashEggman, 265, 99, 20);
 		});
 		_at(139.0, () -> {
 			_hide(_flashEggman);
@@ -312,7 +324,6 @@ class SharpyCutscene extends MusicBeatState
 		});
 		_at(139.75, () -> _show(_eggman, 212, 141, 5));
 		_at(142.875, () -> _play(_jina, 191, 145, _range(87, 90), 12));
-		_at(143.167, () -> _show(_jina, 189, 145, 4));
 		_at(143.333, () -> _loop(_eggman, 212, 141, [6, 5], 5));
 		_at(144.0, () -> _show(_exetior, 49, 63, 15));
 		_at(144.833, () -> _show(_eggman, 212, 141, 6));
@@ -493,16 +504,16 @@ class SharpyCutscene extends MusicBeatState
 		a.loop = false;
 		a.fromX = a.toX = x;
 		a.fromY = a.toY = y;
-		a.moveLength = a.height = a.crouchAmount = 0;
+		a.moveLength = a.height = 0;
+		a.spinSteps = 0;
 		a.spr.visible = true;
 	}
 
-	function _crouch(a:SharpyActor, amount:Float, hold:Float, rise:Float):Void
+	function _spin(a:SharpyActor, steps:Int, fps:Float):Void
 	{
-		a.crouchAmount = amount;
-		a.crouchStart = _eventTime;
-		a.crouchHold = hold;
-		a.crouchRise = rise;
+		a.spinStart = _eventTime;
+		a.spinSteps = steps;
+		a.spinFps = fps;
 	}
 
 	function _loop(a:SharpyActor, x:Float, y:Float, frames:Array<Int>, fps:Float):Void

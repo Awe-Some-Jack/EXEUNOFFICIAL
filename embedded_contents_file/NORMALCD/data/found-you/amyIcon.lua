@@ -2,6 +2,7 @@ function onCreatePost()
 	createInstance('amyIcon', 'objects.HealthIcon', {'amy', true})
 	addToGroup('uiGroup', 'amyIcon', getObjectOrder('iconBF', 'uiGroup') + 1)
 	setProperty('amyIcon.alpha', 0)
+	setProperty('amyIcon.visible', not hideHud)
 end
 
 local _alphatween = false

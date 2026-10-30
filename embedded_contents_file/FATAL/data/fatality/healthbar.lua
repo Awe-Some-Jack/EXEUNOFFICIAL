@@ -43,10 +43,10 @@ end
 local function closeHealthBar()
 	setPropertyFromClass('openfl.Lib', 'application.window.borderless', false)
 
-	setProperty('healthBar.visible', true)
-	setProperty('healthBarBG.visible', true)
-	setProperty('iconP1.visible', true)
-	setProperty('iconP2.visible', true)
+	setProperty('healthBar.visible', not hideHud)
+	setProperty('healthBarBG.visible', not hideHud)
+	setProperty('iconP1.visible', not hideHud)
+	setProperty('iconP2.visible', not hideHud)
 
 	runHaxeCode([[
 		var proc = getVar('healthBarProcess');

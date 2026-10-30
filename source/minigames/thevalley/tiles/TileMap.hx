@@ -61,13 +61,14 @@ class TileMap
 		each("grabbed",  (x, y) -> grabbedTiles.push(new GrabbedTile(x, y, state)));
 		each("bridge",   (x, y) -> bridges.push(new SonicBridge(x, y, state)));
 		each("loop",     (x, y) -> { final l = new LoopTile(x, y); loops.push(l); place(l); });
-		each("tails",    (x, y) ->
-		{
-			final t = new FlxSprite(x, y, Paths.image('minigame/thevalley/bg/tiles/tails/tails'));
-			t.active = false;
-			tails.push(t);
-			place(t);
-		});
+		each("tails",    (x, y) -> { final t = tailsSprite(x, y); tails.push(t); place(t); });
+	}
+
+	public static function tailsSprite(x:Float, y:Float):FlxSprite
+	{
+		final t = new FlxSprite(x, y, Paths.image('minigame/thevalley/bg/tiles/tails/tails'));
+		t.active = false;
+		return t;
 	}
 
 	public function insertSpineSprites(state:FlxState, map7Spr:FlxSprite):Void

@@ -4,6 +4,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import backend.Song;
 import states.LoadingState;
 import states.PlayState;
+import states.SoundTest;
 
 var stat:FlxSprite;
 var bgGraphic:FlxSprite;
@@ -11,11 +12,19 @@ var blackGraphic:FlxSprite;
 var whiteGraphic:FlxSprite;
 var eas:FlxSprite;
 var bluescreen:FlxSprite;
+var bsodPercent:FlxText;
 
 var glitchShader:ErrorHandledRuntimeShader;
 var shaderTime:Float = 0;
-var glitchIntensity:Float = 0;
-var isGlitching:Bool = false;
+var glitchBase:Float = 0;
+var glitchBurst:Float = 0;
+
+var sceneGlitch:ErrorHandledRuntimeShader;
+var sceneTime:Float = 0;
+var sceneBase:Float = 0;
+var sceneBurst:Float = 0;
+var sceneSpikeTimer:Float = 0;
+var jaronaFrame:Int = -1;
 
 function onCreate() {
     bgGraphic = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.RED);
@@ -52,63 +61,79 @@ function onCreate() {
     bluescreen.screenCenter();
     add(bluescreen);
 
+    bsodPercent = new FlxText(136.67, 401.67, 0, '0% complete', 28);
+    bsodPercent.font = Paths.font('UbuntuSans.ttf');
+    bsodPercent.scrollFactor.set();
+    add(bsodPercent);
+
     blackGraphic = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
     blackGraphic.scale.set(2, 2);
     blackGraphic.screenCenter();
     blackGraphic.scrollFactor.set();
     add(blackGraphic);
 
-    whiteGraphic.cameras = blackGraphic.cameras = bluescreen.cameras = eas.cameras = stat.cameras = [camOther];
-    blackGraphic.alpha = bgGraphic.alpha = whiteGraphic.alpha = bluescreen.alpha = eas.alpha = stat.alpha = 0.00001;
+    whiteGraphic.cameras = blackGraphic.cameras = bluescreen.cameras = bsodPercent.cameras = eas.cameras = stat.cameras = [camOther];
+    blackGraphic.alpha = bgGraphic.alpha = whiteGraphic.alpha = bluescreen.alpha = bsodPercent.alpha = eas.alpha = stat.alpha = 0.00001;
 
     //ссанина
-    final fragCode = "
-        #pragma header
-        uniform float uTime;
-        uniform float uIntensity;
-        
-        float rand(vec2 co) {
-            return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
-        }
-
-        void main() {
-            vec2 uv = openfl_TextureCoordv;
-            
-            float melt = rand(vec2(uv.x, uTime)) * 0.15 * uIntensity;
-            uv.y = fract(uv.y - melt);
-            
-            float blockY = floor(uv.y * (30.0 - uIntensity * 15.0));
-            float blockNoise = rand(vec2(blockY, uTime));
-            if (blockNoise > (0.98 - uIntensity * 0.6)) {
-                uv.x += (rand(vec2(blockY, uTime + 1.0)) - 0.5) * 0.6 * uIntensity;
-            }
-            
-            float tearNoise = fract(sin(dot(uv.yy, vec2(12.9898, 78.233))) * 43758.5453 + uTime);
-            if (tearNoise > (0.95 - uIntensity * 0.5)) {
-                uv.x += 0.15 * sin(uTime * 150.0) * uIntensity;
-            }
-            
-            float splitAmt = uIntensity * (0.02 + 0.15 * rand(vec2(uTime, blockY)));
-            
-            vec4 col;
-            col.r = flixel_texture2D(bitmap, fract(uv + vec2(splitAmt, 0.0))).r;
-            col.g = flixel_texture2D(bitmap, fract(uv)).g;
-            col.b = flixel_texture2D(bitmap, fract(uv - vec2(splitAmt, 0.0))).b;
-            col.a = flixel_texture2D(bitmap, uv).a;
-            
-            float grain = rand(uv * uTime) * 0.6 * uIntensity;
-            col.rgb = mix(col.rgb, vec3(rand(uv + 1.0), rand(uv + 2.0), rand(uv + 3.0)), grain * 0.4);
-            col.rgb -= grain;
-
-            if (uIntensity > 0.5 && rand(vec2(uTime, uv.y)) > (1.0 - uIntensity * 0.2)) {
-                col.rgb = 1.0 - col.rgb;
-            }
-
-            gl_FragColor = col;
-        }
-    ";
+    final fragCode:String = Paths.getContent(Paths.shaderFragment('bsodGlitch'));
     
     glitchShader = new ErrorHandledRuntimeShader("GottaGoGlitch", fragCode);
+    glitchShader.setFloat('uIntensity', 0);
+    if (ClientPrefs.data.shaders) FilterPruner.add(camOther, glitchShader, 'uIntensity', 0);
+
+    sceneGlitch = new ErrorHandledRuntimeShader("FateSceneGlitch", fragCode);
+    sceneGlitch.setFloat('uIntensity', 0);
+}
+
+function onCreatePost()
+{
+    if (!ClientPrefs.data.shaders) return;
+
+    FilterPruner.add(camGame, sceneGlitch, 'uIntensity', 0);
+    FilterPruner.add(camHUD, sceneGlitch, 'uIntensity', 0);
+}
+
+function jaronaHit(frame:Int)
+{
+    sceneBase = 0.08;
+    if (frame >= 92 && frame < 117) sceneBase += (frame - 92) / 25 * 0.4;
+    if (frame >= 161 && frame < 185) sceneBase = 0.3;
+
+    switch (frame)
+    {
+        case 0:
+            sceneBurst = 1;
+            camGame.shake(0.01, 0.3);
+        case 25:
+            sceneBurst = 0.9;
+            glitchBurst = 0.9;
+        case 43:
+            sceneBurst = 0.5;
+            glitchBurst = 0.6;
+        case 55:
+            sceneBurst = 0.8;
+        case 117:
+            sceneBurst = 1;
+            camGame.shake(0.015, 0.2);
+        case 125, 139:
+            sceneBurst = 0.85;
+        case 131, 144:
+            sceneBurst = 0.6;
+        case 161:
+            sceneBurst = 1;
+            camGame.shake(0.02, 0.25);
+        case 185:
+            sceneBurst = 0.9;
+        case 230:
+            sceneBurst = 0.7;
+            glitchBurst = 1;
+        case 243:
+            glitchBurst = 0.6;
+        case 256:
+            sceneBurst = 0.8;
+            glitchBurst = 0.9;
+    }
 }
 
 // all squished together for you
@@ -127,56 +152,81 @@ function onUpdate(elapsed:Float) {
             case 230: eas.alpha = 1;
             case 256: eas.alpha = 0;
         }
+
+        final frame:Int = dad.animation.curAnim.curFrame;
+        if (frame != jaronaFrame && bluescreen.alpha != 1)
+        {
+            jaronaFrame = frame;
+            jaronaHit(frame);
+        }
+    }
+
+    if (sceneGlitch != null && (sceneBase > 0 || sceneBurst > 0))
+    {
+        sceneTime += elapsed;
+        sceneBurst = Math.max(0, sceneBurst - elapsed * 2.5);
+
+        sceneSpikeTimer -= elapsed;
+        if (sceneBase > 0 && sceneSpikeTimer <= 0)
+        {
+            sceneSpikeTimer = FlxG.random.float(0.4, 1.5);
+            sceneBurst = Math.max(sceneBurst, FlxG.random.float(0.3, 0.6));
+        }
+
+        sceneGlitch.setFloat('uTime', sceneTime);
+        sceneGlitch.setFloat('uIntensity', Math.max(sceneBase, sceneBurst));
     }
     
-    if (isGlitching && glitchShader != null) 
+    if (glitchShader != null && (glitchBase > 0 || glitchBurst > 0))
     {
         shaderTime += elapsed;
-        
-        glitchIntensity += elapsed / 1.5;
-        if (glitchIntensity > 1.0)
-            glitchIntensity = 1.0;
-        
+        glitchBurst = Math.max(0, glitchBurst - elapsed * 2.5);
+
         glitchShader.setFloat('uTime', shaderTime);
-        glitchShader.setFloat('uIntensity', glitchIntensity);
+        glitchShader.setFloat('uIntensity', Math.max(glitchBase, glitchBurst));
     }
 }
 
 function onStepHit() {
     switch(curStep) {
-        case 3428: FlxTween.tween(whiteGraphic, {alpha: 0.4}, 0.4, {ease: FlxEase.linear});
-        case 3462: bluescreen.alpha = 1;
+        case 3428:
+            FlxTween.tween(whiteGraphic, {alpha: 0.4}, 0.4, {ease: FlxEase.linear});
+            glitchBurst = 0.45;
+        case 3462:
+            bluescreen.alpha = bsodPercent.alpha = 1;
+            sceneBase = sceneBurst = glitchBase = glitchBurst = 0;
+            sceneGlitch.setFloat('uIntensity', 0);
+            glitchShader.setFloat('uIntensity', 0);
     }
 }
 
+function onPause()
+{
+    glitchShader?.setFloat('uIntensity', 0);
+    sceneGlitch?.setFloat('uIntensity', 0);
+}
+
+function onGameOverStart()
+{
+    glitchShader?.setFloat('uIntensity', 0);
+    sceneGlitch?.setFloat('uIntensity', 0);
+}
+
 function onEndSong() {
-    if (states.SoundTest.fromSoundTest) 
+    if (SoundTest.fromSoundTest) 
     {
         camGame.alpha = 0.000001;
-        bluescreen.alpha = 1;
-
-        final daFilters = camOther.filters ?? [];
-        daFilters.push(new ShaderFilter(glitchShader));
-        camOther.filters = daFilters;
-        
-        isGlitching = true;
+        bluescreen.alpha = bsodPercent.alpha = 1;
         
         //ну крч вас нахуй без выбора в gotta goon отправят
-        new FlxTimer().start(1.5, (tmr:FlxTimer) -> {
-            bluescreen.alpha = 0.00001;
-            camOther.filters = [];
-            isGlitching = false;
-            glitchIntensity = 0;
+        FlxTransitionableState.skipNextTransIn = true;
+        FlxTransitionableState.skipNextTransOut = true;
 
-            FlxTransitionableState.skipNextTransIn = true;
-            FlxTransitionableState.skipNextTransOut = true;
-
-            PlayState.SONG = Song.loadFromJson('gotta-go', 'gotta-go');
-            PlayState.isStoryMode = false;
-            
-            LoadingState.prepareToSong();
-            LoadingState.loadAndSwitchState(new PlayState());
-        });
+        PlayState.SONG = Song.loadFromJson('gotta-go', 'gotta-go');
+        PlayState.isStoryMode = false;
+        
+        LoadingState.prepareToSong();
+        LoadingState.loadAndSwitchState(new PlayState(), false, false);
 
         return Function_Stop;
     }

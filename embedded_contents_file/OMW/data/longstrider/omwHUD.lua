@@ -58,6 +58,7 @@ function onCreatePost()
 	setObjectOrder('healthbaromw', getObjectOrder('separatorHealth'))
     addInstance('iconBF')
     addInstance('iconOpp')
+	if hideHud then for _, tag in ipairs({'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp'}) do setProperty(tag..'.visible', false) end end
 
 	updateHUD()
 
@@ -67,9 +68,11 @@ function onCreatePost()
 	setProperty('cardBar.y', -getProperty('cardBar.height'))
 	screenCenter('cardBar', 'x')
 	setObjectCamera('cardBar', 'other')
+	setProperty('cardBar.visible', true)
 
 	makeHUDSprite('cardText', 'card/cardText', screenWidth, 72 * 3)
 	setObjectCamera('cardText', 'other')
+	setProperty('cardText.visible', true)
 end
 
 function onUpdateScore() if postCreate then updateHUD() end end
@@ -138,6 +141,7 @@ function makeHUDSprite(tag, path, x, y, num)
 	setObjectCamera(tag, 'hud')
 	setProperty(tag..'.antialiasing', false)
 	setProperty(tag..'.moves', false)
+	setProperty(tag..'.visible', not hideHud)
 	addLuaSprite(tag)
 end
 
@@ -151,7 +155,7 @@ function onBeatHit()
 		runTimer('endIntroCard', crochet / (1000 / 6) / playbackRate)
 	end
 
-	if misses >= 1 then
+	if misses >= 1 and not hideHud then
 		setProperty('missesText.visible', curBeat % 2 == 0)
 		setProperty('missesText-alt.visible', curBeat % 2 == 1)
 	end

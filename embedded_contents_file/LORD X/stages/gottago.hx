@@ -176,7 +176,7 @@ function setupCameras()
 
 var threshold:Float = 1550;
 final separation:Float = 50;
-function onCreatePost()
+function onCountdownStarted()
 {
 	for (i in 0...4)
 	{
@@ -191,6 +191,10 @@ function onCreatePost()
 		playerStrums.members[i].y += (ClientPrefs.data.downScroll ? 10 : -10);
 		playerStrums.members[i].x = (FlxG.width / 2) + (separation / 2) - (((playerStrums.members[i].width + (separation * 2)) * 4) / 2) + ((playerStrums.members[i].width) + separation * (i > 1 ? (i == 3 ? 2.33 : 3) : 1)) * i;
 	}
+}
+
+function onCreatePost()
+{
 	for (i in 0...unspawnNotes.length)
 	{
 		var note:Note = unspawnNotes[i];

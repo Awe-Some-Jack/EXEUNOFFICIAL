@@ -203,7 +203,6 @@ class PreyMini extends MusicBeatState
 			if (_cut == null && (_sonic.controllable || cutsceneReplay) && _sonic.posX >= 16480 && _sonic.grounded && !_sonic.grabbed && !_sonic.hurting) _startEnding();
 			_cut?.update(elapsed);
 			_arrival?.update(elapsed);
-			if (_arrival != null && controls.JUMP_P) _arrival.skip();
 			_moveWorld(elapsed);
 			_spikes.update(_sonic);
 			final onFloor = _sonic.grounded && _sonic.mode == 0;

@@ -154,10 +154,16 @@ vec3 createDropShadow(vec3 col, float curThreshold, bool useMask) {
 void main()
 {
     vec4 col = texture2D(bitmap, openfl_TextureCoordv);
-    vec3 unpremultipliedColor = col.a > 0.0 ? col.rgb / col.a : col.rgb;
+    if (col.a == 0.0) {
+        gl_FragColor = vec4(0.0);
+        return;
+    }
+    vec3 unpremultipliedColor = col.rgb / col.a;
 
     vec3 outColor = applyHSBCEffect(unpremultipliedColor);
-    outColor = createDropShadow(outColor, thr, useMask);
+    if (dropColor != vec3(0.0)) {
+        outColor = createDropShadow(outColor, thr, useMask);
+    }
 
     float finalAlpha = col.a * uSpriteAlpha;
     gl_FragColor = vec4(outColor.rgb * finalAlpha, finalAlpha);

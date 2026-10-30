@@ -22,8 +22,6 @@ local shaders = {
     }}
 }
 
-local dashads = ''
-local dashadsHUD = ''
 luaDebugMode = true
 function onCreatePost()
     addHaxeLibrary('FlxAngle', 'flixel.math')
@@ -52,10 +50,8 @@ function onCreatePost()
         ]])
     end
 
-    dashads = 'game.camGame.filters = ['
-    dashadsHUD = 'game.camHUD.filters = ['
     if shadersEnabled then
-        for num, shad in ipairs(shaders) do
+        for _, shad in ipairs(shaders) do
             makeLuaSprite(shad.name, nil, shad.x)
             setSpriteShader(shad.name, shad.shader)
             setProperty(shad.name..'.alpha', shad.alpha)
@@ -64,14 +60,24 @@ function onCreatePost()
             for u, v in pairs(shad.uniforms) do
                 setShaderFloat(shad.name, u, v)
             end
-            if num == 1 then dashads = dashads..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' dashadsHUD = dashadsHUD..'new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)'
-            elseif num > 1 then dashads = dashads..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' dashadsHUD = dashadsHUD..', new ShaderFilter(game.getLuaObject("'..shad.name..'").shader)' end
+        end
+
+        if not lowQuality then
+            local neutrals = {
+                chrom = {amount = 0},
+                bw = {grayness = 0},
+                shine = {brightness = 0, contrast = 1, saturation = 1},
+                pseudo = {sort = 0},
+            }
+            for _, cam in ipairs({'camGame', 'camHUD'}) do
+                for _, shad in ipairs(shaders) do
+                    for uniform, neutral in pairs(neutrals[shad.name]) do
+                        addPrunedFilter(cam, shad.name, uniform, neutral)
+                    end
+                end
+            end
         end
     end
-
-    dashads = dashads..']; return;'
-    dashadsHUD = dashadsHUD..']; return;'
-    if shadersEnabled and not lowQuality then runHaxeCode(dashads) runHaxeCode(dashadsHUD) end
 
     if shadersEnabled then
         for _,char in ipairs({'boyfriend'}) do
@@ -185,49 +191,52 @@ function onEvent(eventName, value1, value2)
 end
 
 
-function onUpdatePost()
-    if shadersEnabled and not lowQuality then
-        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'uSpriteAlpha', getProperty('dad.alpha')) end
-        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'uSpriteAlpha', getProperty('boyfriend.alpha')) end
-        if onTween1 then
-            setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
-            setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))
-        end
-        if onTween2 then
-            setShaderFloat('chrom', 'amount', getProperty('chrom.x'))
-        end
-        if onTween3 then
-            setShaderFloat('bw', 'grayness', getProperty('bw.x'))
-        end
-        if onTween4Hue then
-            if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'hue', getProperty('color.angle')) end
-            if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'hue', getProperty('color.angle')) end
-        end
-        if onTween4Brightness then 
-            if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'brightness', getProperty('color.scale.y')) end
-            if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'brightness', getProperty('color.scale.y')) end
-        end
-        if onTween4Saturation then
-            if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'saturation', getProperty('color.x')) end
-            if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'saturation', getProperty('color.x')) end
-        end
-        if onTween4Contrast then
-            if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'contrast', getProperty('color.scale.x')) end
-            if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'contrast', getProperty('color.scale.x')) end
-        end
+local function sendShaderValues()
+    if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'uSpriteAlpha', getProperty('dad.alpha')) end
+    if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'uSpriteAlpha', getProperty('boyfriend.alpha')) end
+    if onTween1 then
+        setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
+        setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))
+    end
+    if onTween2 then
+        setShaderFloat('chrom', 'amount', getProperty('chrom.x'))
+    end
+    if onTween3 then
+        setShaderFloat('bw', 'grayness', getProperty('bw.x'))
+    end
+    if onTween4Hue then
+        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'hue', getProperty('color.angle')) end
+        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'hue', getProperty('color.angle')) end
+    end
+    if onTween4Brightness then 
+        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'brightness', getProperty('color.scale.y')) end
+        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'brightness', getProperty('color.scale.y')) end
+    end
+    if onTween4Saturation then
+        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'saturation', getProperty('color.x')) end
+        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'saturation', getProperty('color.x')) end
+    end
+    if onTween4Contrast then
+        if getProperty('boyfriend.shader') ~= nil then setShaderFloat('boyfriend', 'contrast', getProperty('color.scale.x')) end
+        if getProperty('dad.shader') ~= nil then setShaderFloat('dad', 'contrast', getProperty('color.scale.x')) end
+    end
 
-        if onTween5 then
-            setShaderFloat('pseudo', 'sort', getProperty('pseudo.x'))
-        end
+    if onTween5 then
+        setShaderFloat('pseudo', 'sort', getProperty('pseudo.x'))
+    end
 
-        -- Glitch --
-        if glitchTime then
-            setShaderFloat('lordXBite', 'binaryIntensity', math.random(0.3, 0.9))
-        end
+    -- Glitch --
+    if glitchTime then
+        setShaderFloat('lordXBite', 'binaryIntensity', math.random(0.3, 0.9))
     end
 end
 
+function onUpdatePost()
+    if shadersEnabled and not lowQuality then sendShaderValues() end
+end
+
 function onTweenCompleted(tag)
+    if shadersEnabled and not lowQuality then sendShaderValues() end
     if tag == 'shineX' then
         onTween1 = false
     end

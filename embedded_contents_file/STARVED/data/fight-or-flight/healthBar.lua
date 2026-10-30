@@ -44,6 +44,10 @@ function onCreatePost()
     addInstance('iconBF')
     addInstance('iconOpp')
     addLuaText('exeScoreTxt')
+
+    if hideHud then
+        for _, tag in ipairs({'healthBG', 'hbHealth', 'hbHealth2', 'separatorHealth', 'iconBF', 'iconOpp', 'exeScoreTxt'}) do setProperty(tag..'.visible', false) end
+    end
 end
 
 local oldScoreTxt = ''

@@ -43,9 +43,6 @@ class FunkinCache extends AssetCache
 		for (k => b in bitmapData2)
 			FlxG.bitmap.removeByKey(k);
 
-		for (snd in sound2)
-			Paths.releaseUnusedSound(snd);
-
 		bitmapData2 = [];
 		font2       = [];
 		sound2      = [];

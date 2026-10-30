@@ -19,6 +19,12 @@ typedef LuaTweenOptions = {
 	ease:EaseFunction
 }
 
+typedef VarPath = {
+	base:String,
+	indices:Array<String>,
+	parsed:Array<Null<Int>>
+}
+
 class LuaUtils
 {
 	public static final Function_Stop:String         = '##PSYCHLUA_FUNCTIONSTOP';
@@ -41,19 +47,61 @@ class LuaUtils
 		};
 	}
 
-	public static function setVarInArray(instance:Dynamic, variable:String, value:Dynamic, allowMaps:Bool = false):Any
-	{
-		var splitProps = variable.split('[');
-		if (splitProps.length > 1)
-		{
-			var target:Dynamic = MusicBeatState.getVariables().exists(splitProps[0])
-				? MusicBeatState.getVariables().get(splitProps[0])
-				: Reflect.getProperty(instance, splitProps[0]);
+	static inline var PATH_CACHE_LIMIT:Int = 4096;
+	static final dotCache:Map<String, Array<String>> = new Map();
+	static final varPathCache:Map<String, VarPath> = new Map();
+	static var dotCacheSize:Int = 0;
+	static var varPathCacheSize:Int = 0;
 
+	public static function splitDots(variable:String):Array<String>
+	{
+		var split = dotCache.get(variable);
+		if (split == null)
+		{
+			if (dotCacheSize >= PATH_CACHE_LIMIT) { dotCache.clear(); dotCacheSize = 0; }
+			split = variable.split('.');
+			dotCache.set(variable, split);
+			dotCacheSize++;
+		}
+		return split;
+	}
+
+	static function parseVarPath(variable:String):VarPath
+	{
+		var path = varPathCache.get(variable);
+		if (path == null)
+		{
+			if (varPathCacheSize >= PATH_CACHE_LIMIT) { varPathCache.clear(); varPathCacheSize = 0; }
+			var splitProps = variable.split('[');
+			var indices:Array<String> = [];
+			var parsed:Array<Null<Int>> = [];
 			for (i in 1...splitProps.length)
 			{
-				var j:Dynamic = splitProps[i].substr(0, splitProps[i].length - 1);
-				if (i >= splitProps.length - 1) target[j] = value;
+				var idx = splitProps[i].substr(0, splitProps[i].length - 1);
+				indices.push(idx);
+				parsed.push(Std.parseInt(idx));
+			}
+			path = {base: splitProps[0], indices: indices, parsed: parsed};
+			varPathCache.set(variable, path);
+			varPathCacheSize++;
+		}
+		return path;
+	}
+
+	public static function setVarInArray(instance:Dynamic, variable:String, value:Dynamic, allowMaps:Bool = false):Any
+	{
+		var path = parseVarPath(variable);
+		if (path.indices.length > 0)
+		{
+			var target:Dynamic = MusicBeatState.getVariables().exists(path.base)
+				? MusicBeatState.getVariables().get(path.base)
+				: Reflect.getProperty(instance, path.base);
+
+			var last = path.indices.length - 1;
+			for (i in 0...path.indices.length)
+			{
+				var j:Dynamic = path.indices[i];
+				if (i >= last) target[j] = value;
 				else target = target[j];
 			}
 			return target;
@@ -77,18 +125,17 @@ class LuaUtils
 
 	public static function getVarInArray(instance:Dynamic, variable:String, allowMaps:Bool = false):Any
 	{
-		var splitProps = variable.split('[');
-		if (splitProps.length > 1)
+		var path = parseVarPath(variable);
+		if (path.indices.length > 0)
 		{
-			var target:Dynamic = MusicBeatState.getVariables().exists(splitProps[0])
-				? MusicBeatState.getVariables().get(splitProps[0])
-				: Reflect.getProperty(instance, splitProps[0]);
+			var target:Dynamic = MusicBeatState.getVariables().exists(path.base)
+				? MusicBeatState.getVariables().get(path.base)
+				: Reflect.getProperty(instance, path.base);
 
-			for (i in 1...splitProps.length)
+			for (i in 0...path.indices.length)
 			{
-				var idx:String = splitProps[i].substr(0, splitProps[i].length - 1);
-				var parsed = Std.parseInt(idx);
-				target = (parsed != null) ? (target : Array<Dynamic>)[parsed] : Reflect.field(target, idx);
+				var parsed = path.parsed[i];
+				target = (parsed != null) ? (target : Array<Dynamic>)[parsed] : Reflect.field(target, path.indices[i]);
 			}
 
 			return target;
@@ -178,7 +225,7 @@ class LuaUtils
 
 	public static function setGroupStuff(leArray:Dynamic, variable:String, value:Dynamic, allowMaps:Bool = false):Dynamic
 	{
-		var split = variable.split('.');
+		var split = splitDots(variable);
 		if (split.length > 1)
 		{
 			var obj:Dynamic = Reflect.getProperty(leArray, split[0]);
@@ -193,7 +240,7 @@ class LuaUtils
 
 	public static function getGroupStuff(leArray:Dynamic, variable:String, allowMaps:Bool = false):Dynamic
 	{
-		var split = variable.split('.');
+		var split = splitDots(variable);
 		if (split.length > 1)
 		{
 			var obj:Dynamic = Reflect.getProperty(leArray, split[0]);

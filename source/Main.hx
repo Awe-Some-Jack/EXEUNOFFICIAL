@@ -149,7 +149,6 @@ class Main extends Sprite
 
 	public function new()
 	{
-		MemoryUtil.tuneAllocator();
 		super();
 
 		boot('new');

@@ -1643,8 +1643,6 @@ class PlayState extends MusicBeatState
 			}
 		};
 
-		backend.SongGc.start();
-
 		setSongTime(Math.max(0, startOnTime - 500) + Conductor.offset);
 		startOnTime = 0;
 
@@ -2777,7 +2775,7 @@ class PlayState extends MusicBeatState
 				freed++;
 			}
 		}
-		if (freed > 0) Paths.clearUnusedMemoryGradual();
+		if (freed > 0) Paths.clearUnusedMemory();
 	}
 	#end
 
@@ -4752,7 +4750,6 @@ class PlayState extends MusicBeatState
 		#end
 
 		backend.FilterPruner.clear();
-		backend.SongGc.stop();
 
 		gameplayCam?.destroy();
 
@@ -4769,21 +4766,9 @@ class PlayState extends MusicBeatState
 			}
 		});
 
-		for (songSound in [inst, vocals, opponentVocals])
-			if (songSound != null) Paths.releaseSound(@:privateAccess songSound._sound);
-
 		FlxG.timeScale = 1;
 
 		backend.NoteTypesConfig.clearNoteTypesData();
-
-		for (note in unspawnNotes)
-			note?.destroy();
-		unspawnNotes = [];
-		eventNotes = [];
-
-		#if LUA_ALLOWED
-		psychlua.FunkinLua.lastCalledScript = null;
-		#end
 
 		if (enableFreezeSync) 
 		{

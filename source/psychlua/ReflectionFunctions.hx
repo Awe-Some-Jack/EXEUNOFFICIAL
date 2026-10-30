@@ -14,14 +14,14 @@ class ReflectionFunctions
 		var lua:Null<RawPointer<Lua_State>> = funk.lua;
 
 		LuaUtilsHx.addFunction(lua, 'getProperty', function(variable:String, allowMaps:Bool = false) {
-			var split = variable.split('.');
+			var split = LuaUtils.splitDots(variable);
 			if (split.length > 1) return LuaUtils.getVarInArray(LuaUtils.getPropertyLoop(split, true, allowMaps), split[split.length - 1], allowMaps);
 			return LuaUtils.getVarInArray(LuaUtils.getTargetInstance(), variable, allowMaps);
 		});
 
 		LuaUtilsHx.addFunction(lua, 'setProperty', function(variable:String, value:Dynamic, allowMaps:Bool = false, allowInstances:Bool = false) {
 			var val = allowInstances ? parseInstances(value) : value;
-			var split = variable.split('.');
+			var split = LuaUtils.splitDots(variable);
 			if (split.length > 1) { LuaUtils.setVarInArray(LuaUtils.getPropertyLoop(split, true, allowMaps), split[split.length - 1], val, allowMaps); return value; }
 			LuaUtils.setVarInArray(LuaUtils.getTargetInstance(), variable, val, allowMaps);
 			return value;
@@ -30,7 +30,7 @@ class ReflectionFunctions
 		LuaUtilsHx.addFunction(lua, 'getPropertyFromClass', function(classVar:String, variable:String, allowMaps:Bool = false) {
 			var myClass:Dynamic = Type.resolveClass(classVar);
 			if (myClass == null) { FunkinLua.luaTrace('getPropertyFromClass: Class $classVar not found', false, false, FlxColor.RED); return null; }
-			var split = variable.split('.');
+			var split = LuaUtils.splitDots(variable);
 			if (split.length > 1)
 			{
 				var obj:Dynamic = LuaUtils.getVarInArray(myClass, split[0], allowMaps);
@@ -44,7 +44,7 @@ class ReflectionFunctions
 			var myClass:Dynamic = Type.resolveClass(classVar);
 			if (myClass == null) { FunkinLua.luaTrace('setPropertyFromClass: Class $classVar not found', false, false, FlxColor.RED); return null; }
 			var val = allowInstances ? parseInstances(value) : value;
-			var split = variable.split('.');
+			var split = LuaUtils.splitDots(variable);
 			if (split.length > 1)
 			{
 				var obj:Dynamic = LuaUtils.getVarInArray(myClass, split[0], allowMaps);

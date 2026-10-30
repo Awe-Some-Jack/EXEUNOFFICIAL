@@ -70,135 +70,19 @@ class Paths
 	// haya I love you for the base cache dump I took to the max
 	public static function clearUnusedMemory()
 	{
-		dropUnusedGraphics();
-		purgeBitmapCache();
+		// clear non local assets in the tracked assets list
+		for (key in currentTrackedAssets.keys())
+		{
+			// if it is not currently contained within the used local assets
+			if (!localTrackedAssets.contains(key) && !dumpExclusions.contains(key))
+			{
+				destroyGraphic(currentTrackedAssets.get(key)); // get rid of the graphic
+				currentTrackedAssets.remove(key); // and remove the key from local cache map
+			}
+		}
 
 		MemoryUtil.clearMinor();
 		FlxG.bitmap.clearUnused();
-	}
-
-	static inline var CLEANUP_BUDGET_SECONDS:Float = 0.001;
-
-	static var gradualKeys:Array<String> = [];
-	static var gradualLive:haxe.ds.ObjectMap<BitmapData, Bool> = null;
-	static var gradualPhase:Int = 0;
-	static var gradualHooked:Bool = false;
-
-	public static function clearUnusedMemoryGradual():Void
-	{
-		if (gradualPhase != 0) return;
-
-		gradualKeys = [for (k in currentTrackedAssets.keys()) k];
-		gradualPhase = 1;
-
-		if (!gradualHooked)
-		{
-			gradualHooked = true;
-			FlxG.signals.postUpdate.add(tickGradualCleanup);
-		}
-	}
-
-	static function tickGradualCleanup():Void
-	{
-		if (gradualPhase == 0) return;
-
-		final deadline:Float = haxe.Timer.stamp() + CLEANUP_BUDGET_SECONDS;
-
-		while (gradualPhase == 1)
-		{
-			if (gradualKeys.length == 0)
-			{
-				gradualLive = new haxe.ds.ObjectMap();
-				for (graphic in currentTrackedAssets)
-					if (graphic.bitmap != null) gradualLive.set(graphic.bitmap, true);
-
-				final cache = Std.downcast(openfl.Assets.cache, openfl.utils.AssetCache);
-				gradualKeys = (cache == null || cache.bitmapData == null) ? [] : [for (k in cache.bitmapData.keys()) k];
-				gradualPhase = 2;
-				break;
-			}
-
-			final key:String = gradualKeys.pop();
-			final graphic:FlxGraphic = currentTrackedAssets.get(key);
-			if (graphic != null && !localTrackedAssets.contains(key) && !dumpExclusions.contains(key))
-			{
-				destroyGraphic(graphic);
-				currentTrackedAssets.remove(key);
-			}
-
-			if (haxe.Timer.stamp() >= deadline) return;
-		}
-
-		while (gradualPhase == 2)
-		{
-			if (gradualKeys.length == 0)
-			{
-				gradualLive = null;
-				gradualPhase = 3;
-				break;
-			}
-
-			final cache = Std.downcast(openfl.Assets.cache, openfl.utils.AssetCache);
-			final id:String = gradualKeys.pop();
-			if (cache != null && cache.bitmapData != null)
-			{
-				final bmp:BitmapData = cache.bitmapData.get(id);
-				if (bmp != null && !gradualLive.exists(bmp)) cache.removeBitmapData(id);
-			}
-
-			if (haxe.Timer.stamp() >= deadline) return;
-		}
-
-		if (gradualPhase == 3)
-		{
-			FlxG.bitmap.clearUnused();
-			gradualPhase = 0;
-		}
-	}
-
-	static function dropUnusedGraphics():Void
-	{
-		for (key in [for (k in currentTrackedAssets.keys()) k])
-		{
-			if (!localTrackedAssets.contains(key) && !dumpExclusions.contains(key))
-			{
-				destroyGraphic(currentTrackedAssets.get(key));
-				currentTrackedAssets.remove(key);
-			}
-		}
-	}
-
-	static function purgeSoundCache():Void
-	{
-		final cache = Std.downcast(openfl.Assets.cache, openfl.utils.AssetCache);
-		if (cache == null || cache.sound == null) return;
-
-		for (id in [for (k in cache.sound.keys()) k])
-		{
-			if (!isLargeAudioKey(id) || dumpExclusions.contains(id)) continue;
-
-			final snd:Sound = cache.sound.get(id);
-			if (isSoundPlaying(snd)) continue;
-
-			cache.removeSound(id);
-			closeSound(snd);
-		}
-	}
-
-	static function purgeBitmapCache():Void
-	{
-		final cache = Std.downcast(openfl.Assets.cache, openfl.utils.AssetCache);
-		if (cache == null || cache.bitmapData == null) return;
-
-		final live = new haxe.ds.ObjectMap<BitmapData, Bool>();
-		for (graphic in currentTrackedAssets)
-			if (graphic.bitmap != null) live.set(graphic.bitmap, true);
-
-		for (id in [for (k in cache.bitmapData.keys()) k])
-		{
-			if (!live.exists(cache.bitmapData.get(id)))
-				cache.removeBitmapData(id);
-		}
 	}
 
 	// define the locally tracked assets
@@ -207,6 +91,7 @@ class Paths
 	@:access(flixel.system.frontEnds.BitmapFrontEnd._cache)
 	public static function clearStoredMemory()
 	{
+		MemoryUtil.clearMajor();
 		clearResolvedPaths();
 		
 		// clear anything not in the tracked assets list
@@ -220,103 +105,22 @@ class Paths
 		#end
 
 		// clear all sounds that are cached
-		final staleSounds:Array<String> = [];
 		for (key => asset in currentTrackedSounds)
 		{
-			if (!localTrackedAssets.contains(key) && !dumpExclusions.contains(key) && asset != null && !isSoundPlaying(asset))
-				staleSounds.push(key);
-		}
-
-		for (key in staleSounds)
-		{
-			final snd:Sound = currentTrackedSounds.get(key);
-			currentTrackedSounds.remove(key);
-			Assets.cache.clear(key);
-			if (isLargeAudioKey(key)) closeSound(snd);
+			if (!localTrackedAssets.contains(key) && !dumpExclusions.contains(key) && asset != null)
+			{
+				Assets.cache.clear(key);
+				currentTrackedSounds.remove(key);
+			}
 		}
 		closeStreamedSounds();
-		purgeSoundCache();
+		// flags everything to be cleared out next unused memory clear
 		localTrackedAssets = [];
 		#if !html5
 		openfl.Assets.cache.clear("songs");
 		openfl.Assets.cache.clear("music");
 		openfl.Assets.cache.clear("sounds");
 		#end
-
-		dropUnusedGraphics();
-		purgeBitmapCache();
-		FlxG.bitmap.clearUnused();
-
-		MemoryUtil.clearMajor();
-		#if (!js && !html5)
-		openfl.display.Shader.__pruneUnusedPrograms(FlxG.stage?.context3D);
-		#end
-	}
-
-	static inline function isLargeAudioKey(key:String):Bool
-		return key.indexOf("songs/") != -1 || key.indexOf("music/") != -1;
-
-	static function closeSound(snd:Sound):Void
-	{
-		if (snd == null) return;
-		try snd.close() catch (e:Dynamic) {}
-	}
-
-	public static function isSoundTracked(snd:Sound):Bool
-	{
-		for (tracked in currentTrackedSounds)
-			if (tracked == snd) return true;
-		for (tracked in streamedSounds)
-			if (tracked == snd) return true;
-		return false;
-	}
-
-	public static function releaseUnusedSound(snd:Sound):Void
-	{
-		if (snd == null || isSoundPlaying(snd) || isSoundTracked(snd)) return;
-		closeSound(snd);
-	}
-
-	static function isSoundPlaying(snd:Sound):Bool
-	{
-		if (snd == null) return false;
-
-		final music = FlxG.sound.music;
-		if (music != null && (music.playing || @:privateAccess music._paused) && @:privateAccess music._sound == snd) return true;
-
-		if (FlxG.sound.list != null)
-			for (s in FlxG.sound.list.members)
-				if (s != null && s.exists && (s.playing || @:privateAccess s._paused) && @:privateAccess s._sound == snd) return true;
-
-		return false;
-	}
-
-	public static function releaseSound(snd:Sound):Void
-	{
-		if (snd == null) return;
-
-		var tracked:Bool = orphanedStreamedSounds.remove(snd);
-
-		for (key in [for (k => v in streamedSounds) if (v == snd) k])
-		{
-			streamedSounds.remove(key);
-			tracked = true;
-		}
-
-		for (key in [for (k => v in currentTrackedSounds) if (v == snd) k])
-		{
-			if (dumpExclusions.contains(key)) return;
-			currentTrackedSounds.remove(key);
-			Assets.cache.clear(key);
-			tracked = true;
-		}
-
-		if (!tracked) return;
-
-		final music = FlxG.sound.music;
-		if (music != null && @:privateAccess music._sound == snd) music.stop();
-
-		closeSound(snd);
 	}
 
 	static var streamedSounds:Map<String, Sound> = [];
@@ -344,19 +148,20 @@ class Paths
 
 	static function closeStreamedSounds():Void
 	{
-		for (key in [for (k => v in streamedSounds) if (!dumpExclusions.contains(k) && !isSoundPlaying(v)) k])
+		final playing:Sound = @:privateAccess FlxG.sound.music?._sound;
+		for (key => snd in streamedSounds)
 		{
-			closeSound(streamedSounds.get(key));
+			if (dumpExclusions.contains(key) || snd == playing) continue;
+			try snd.close() catch (e:Dynamic) {}
 			streamedSounds.remove(key);
 		}
 
-		final stillOrphaned:Array<Sound> = [];
 		for (snd in orphanedStreamedSounds)
 		{
-			if (isSoundPlaying(snd)) stillOrphaned.push(snd);
-			else closeSound(snd);
+			if (snd == playing) continue;
+			try snd.close() catch (e:Dynamic) {}
 		}
-		orphanedStreamedSounds = stillOrphaned;
+		orphanedStreamedSounds = [];
 	}
 
 	public static function freeGraphicsFromMemory()
@@ -767,7 +572,17 @@ class Paths
 
 		if (allowGPU && ClientPrefs.data.cacheOnGPU && bitmap.image != null && FlxG.stage.context3D != null)
 		{
-			uploadToGPU(bitmap);
+			bitmap.lock();
+			if (bitmap.__texture == null)
+			{
+				bitmap.image.premultiplied = true;
+				bitmap.getTexture(FlxG.stage.context3D);
+			}
+			bitmap.getSurface();
+			bitmap.disposeImage();
+			bitmap.image.data = null;
+			bitmap.image = null;
+			bitmap.readable = true;
 		}
 
 		final graph:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, false, key);

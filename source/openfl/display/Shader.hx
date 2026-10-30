@@ -285,6 +285,7 @@ class Shader
 	@:noCompletion private var __blendBitmapMergeTransform:ShaderParameter<Float>;
 	@:noCompletion private var __colorMultiplier:ShaderParameter<Float>;
 	@:noCompletion private var __colorOffset:ShaderParameter<Float>;
+	@:noCompletion private static var __sourceCache:Map<String, Map<String, {vertexSource:String, vertex:String, fragment:String, id:String}>> = new Map();
 	@:noCompletion private var __context:Context3D;
 	@:noCompletion private var __data:ShaderData;
 	@:noCompletion private var __glVertexExtensions:Array<{name:String, behavior:String}>;
@@ -779,13 +780,30 @@ class Shader
 
 			var vertex:String;
 			var fragment:String;
+			var id:String;
 
-			vertex = __buildSourcePrefix(false) + glVertexSource;
-			// do NOT mess with the frag data if the shader has it's own!
-			fragment = __buildSourcePrefix(true)
-				+ (~/gl_FragData\s*\[\s*[0-9]/.match(glFragmentSource) ? glFragmentSource : __applyFragData(glFragmentSource));
-
-			var id = vertex + fragment;
+			var cacheKey = Type.getClassName(Type.getClass(this)) + "|" + __glVersion + "|" + precisionHint;
+			var byFragment = __sourceCache.get(cacheKey);
+			if (byFragment == null)
+			{
+				byFragment = new Map();
+				__sourceCache.set(cacheKey, byFragment);
+			}
+			var cached = byFragment.get(glFragmentSource);
+			if (cached != null && cached.vertexSource == glVertexSource)
+			{
+				vertex = cached.vertex;
+				fragment = cached.fragment;
+				id = cached.id;
+			}
+			else
+			{
+				vertex = __buildSourcePrefix(false) + glVertexSource;
+				fragment = __buildSourcePrefix(true)
+					+ (~/gl_FragData\s*\[\s*[0-9]/.match(glFragmentSource) ? glFragmentSource : __applyFragData(glFragmentSource));
+				id = vertex + fragment;
+				byFragment.set(glFragmentSource, {vertexSource: glVertexSource, vertex: vertex, fragment: fragment, id: id});
+			}
 
 			if (__context.__programs.exists(id))
 			{

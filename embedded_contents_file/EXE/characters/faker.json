@@ -1,116 +1,116 @@
 {
 	"animations": [
 		{
-			"offsets": [110, 144],
 			"loop": true,
-			"fps": 24,
+			"offsets": [110, 144],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
-		},
-		{
-			"offsets": [364, 174],
-			"loop": false,
 			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [109, 142],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [144, 225],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [108, 141],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [41, 117],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN-alt",
-			"indices": [],
-			"name": "adown"
-		},
-		{
-			"offsets": [119, 213],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP-alt",
-			"indices": [],
-			"name": "aup"
-		},
-		{
-			"offsets": [97, 165],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT-alt",
-			"indices": [],
-			"name": "aright"
-		},
-		{
-			"loop": false,
-			"offsets": [166, 188],
-			"anim": "singLEFT-alt",
-			"fps": 24,
-			"name": "aleft",
+			"name": "idle",
 			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [364, 174],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [109, 142],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [144, 225],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [177, 149],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [41, 117],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "adown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [119, 213],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "aup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [97, 165],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "aright",
+			"indices": []
+		},
+		{
+			"offsets": [166, 188],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "aleft"
+		},
+		{
+			"loop": false,
 			"offsets": [110, 170],
-			"loop": false,
-			"fps": 24,
 			"anim": "intro",
-			"indices": [],
-			"name": "intro"
+			"fps": 24,
+			"name": "intro",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [444, 363],
-			"loop": true,
-			"fps": 24,
 			"anim": "singLEFT-final",
-			"indices": [],
-			"name": "TransformationLEFT"
+			"fps": 24,
+			"name": "TransformationLEFT",
+			"indices": []
 		},
 		{
+			"loop": true,
 			"offsets": [109, 435],
-			"loop": true,
-			"fps": 24,
 			"anim": "singDOWN-final",
-			"indices": [],
-			"name": "TransformationDOWN"
+			"fps": 24,
+			"name": "TransformationDOWN",
+			"indices": []
 		},
 		{
-			"offsets": [304, 542],
 			"loop": true,
-			"fps": 24,
+			"offsets": [304, 542],
 			"anim": "singUP-final",
-			"indices": [],
-			"name": "TransformationUP"
+			"fps": 24,
+			"name": "TransformationUP",
+			"indices": []
 		},
 		{
-			"offsets": [821, 642],
 			"loop": false,
-			"fps": 24,
+			"offsets": [821, 642],
 			"anim": "singRIGHT-final",
-			"indices": [],
-			"name": "TransformationRIGHT"
+			"fps": 24,
+			"name": "TransformationRIGHT",
+			"indices": []
 		}
 	],
 	"vocals_file": "",

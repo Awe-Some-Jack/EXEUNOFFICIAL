@@ -11,7 +11,7 @@ final dancerValues:Array<Int> = [32, 28, 24, 20, 16, 12, 8];
 var randomDancer:Int = 32;
 var beats:Int = 0;
 var wavyShader:FlxRuntimeShader;
-var wavyShaderBG:FlxRuntimeShader;
+var wavyShaderHUD:FlxRuntimeShader;
 var wavyness:Float = 0.0;
 var wavynessMult:Float = 1;
 
@@ -54,8 +54,12 @@ var bv:FlxSprite;
 var blackFade:FlxSprite;
 var blackFadeTween:FlxTween = null;
 
+var colorPulse:FlxSprite;
+var colorPulseTween:FlxTween = null;
+
 final bgSprites:Array<FlxSprite> = [];
 var clouds:Array<FlxSprite> = [];
+var cloudsAlpha:Float = 0.6;
 
 var speedTween:FlxTween = null;
 
@@ -86,8 +90,8 @@ var vineteTarget:Float = 0;
 var vineteUpDur:Float = 1;
 var vineteDownDur:Float = 0.2;
 
-var talkOffsetX:Float = 68;
-var talkOffsetY:Float = 7;
+var talkOffsetX:Float = 65;
+var talkOffsetY:Float = 6;
 var conversandoOffsetX:Float = 0;
 var conversandoOffsetY:Float = 8;
 var idleBaseOffX:Float = 0;
@@ -132,26 +136,15 @@ function playDancerAnim(spr:FlxAnimate, anim:String)
     }
 }
 
+function playTalkTogether()
+{
+    if (idle != null) playDancerAnim(idle, 'conversando');
+    if (idleconejos != null) playDancerAnim(idleconejos, 'talk');
+}
+
 function triggerTalk()
 {
-    if (idle == null && idleconejos == null) return;
-
-    var r:Int = FlxG.random.int(0, 99);
-    if (r < 20)
-    {
-        playDancerAnim(idle, 'conversando');
-        playDancerAnim(idleconejos, 'talk');
-    }
-    else if (lastTalker == 'idle')
-    {
-        playDancerAnim(idleconejos, 'talk');
-        lastTalker = 'idleconejos';
-    }
-    else
-    {
-        playDancerAnim(idle, 'conversando');
-        lastTalker = 'idle';
-    }
+    playTalkTogether();
 }
 
 function updateTalkRevert()
@@ -164,6 +157,9 @@ function updateTalkRevert()
 
 function onCreate()
 {
+    dadPhase = 'nervioso';
+    if (dad != null) dad.playAnim('2idle', true);
+
     sky = new FlxSprite(-950, -450).loadGraphic(Paths.image('Park/city'));
     sky.scale.set(0.86, 0.86); sky.updateHitbox();
     sky.scrollFactor.set(0.6, 0.6);
@@ -182,15 +178,15 @@ function onCreate()
     fuente.scale.set(1.2, 1.2);
     addBehindGF(fuente);
 
-    eggman = makeDancer('eggman', null, -620, -300, 20, 1, 0);
-    knux = makeDancer('knux', null, 350, -200, 70, 1, 0);
     rata = makeDancer('rata', null, 1150, 140, 100, 0.4, 1);
     oso = makeDancer('oso', null, 650, 50, 100, 0.725, 1);
     vieja = makeDancer('vieja', null, 1230, 200, 20, 0.6, 1);
     idle = makeDancer('idle', 'conversando', -1050, 140, 20, 0.6, 1);
     idleconejos = makeDancer('idleconejos', 'talk', -780, 160, 70, 0.56, 1);
-    tails1 = makeDancer('tails1', null, -440, 50, 20, 0.65, 1);
-    tails2 = makeDancer('tails2', null, -560, 80, 50, 0.9, 0);
+    tails1 = makeDancer('tails1', null, -370, 70, 20, 0.6, 1);
+    tails2 = makeDancer('tails2', null, -378, 59, 0, 0.6, 0);
+    eggman = makeDancer('eggman', null, -1030, 30, 0, 0.85, 0);
+    knux = makeDancer('knux', null, 824, 56, 0, 0.8, 0);
 
     idleBaseOffX = idle.offset.x; idleBaseOffY = idle.offset.y;
     idleconejosBaseOffX = idleconejos.offset.x; idleconejosBaseOffY = idleconejos.offset.y;
@@ -213,8 +209,7 @@ function onCreate()
     add(fore);
 
     wavyShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("wavyDistortion")));
-    wavyShaderBG = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("wavyDistortion")));
-    wavyShaderBG.setFloat('amount', 0.8);
+    wavyShaderHUD = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("wavyDistortionHUD")));
 
     brightnessShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("brightness")));
     brightnessShader.setFloat('contrast', 1);
@@ -235,11 +230,11 @@ function onCreate()
     glitchShader.setFloat('iTime', 0);
 
     FlxG.camera.filters = [new ShaderFilter(wavyShader), new ShaderFilter(brightnessShader), new ShaderFilter(chromaticShader), new ShaderFilter(contrastShader), new ShaderFilter(glitchShader)];
-    camHUD.filters = [new ShaderFilter(chromaticShader), new ShaderFilter(wavyShader)];
+    camHUD.filters = [new ShaderFilter(chromaticShader), new ShaderFilter(wavyShaderHUD)];
 
     makeCloud();
     new FlxTimer().start(10, (_) -> { makeCloud(); }, 0);
-    new FlxTimer().start(5, (_) -> { triggerTalk(); }, 0);
+    new FlxTimer().start(4, (_) -> { triggerTalk(); }, 0);
 }
 
 function onCreatePost()
@@ -274,6 +269,13 @@ function onCreatePost()
     bv.alpha = 0.00001;
     bv.screenCenter();
     insert(game.members.indexOf(blackFade), bv);
+
+    colorPulse = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
+    colorPulse.scrollFactor.set();
+    colorPulse.camera = camHUD;
+    colorPulse.alpha = 0;
+    colorPulse.screenCenter();
+    insert(game.members.indexOf(blackFade), colorPulse);
 
     makePhase4Copy();
 }
@@ -409,7 +411,7 @@ function makeCloud()
     var cloud:FlxSprite = new FlxSprite(-100, -200).loadGraphic(Paths.image('Park/nube' + FlxG.random.int(1,3)));
     final randomSize:Float = FlxG.random.float(1.5, 2.5);
     cloud.scale.set(randomSize, randomSize); cloud.updateHitbox();
-    cloud.alpha = 0.6;
+    cloud.alpha = cloudsAlpha;
     cloud.scrollFactor.set(0.6, 0.6);
     cloud.velocity.x = FlxG.random.float(40,80);
     insert(game.members.indexOf(floor), cloud);
@@ -419,6 +421,7 @@ function makeCloud()
 
 function cursetweenClouds(alpha:Float, duration:Float, ?color:Int)
 {
+    cloudsAlpha = alpha;
     for (c in clouds)
         if (c != null && c.exists) cursetween(c, alpha, duration, color);
 }
@@ -469,13 +472,6 @@ function onEvent(name:String, value1:String, value2:String)
                 speedTween = FlxTween.tween(game, {songSpeed: PlayState.SONG.speed}, Conductor.crochet / 2000, {ease: FlxEase.cubeOut});
                 pulseBrightness();
             case 'evil':
-                for (spr in bgSprites) 
-                {
-                    if (spr != null) 
-                    {
-                        spr.shader = wavyShaderBG;
-                    }
-                }
                 if (cstatic != null) cstatic.alpha = 1;
                 FlxG.camera.flash(0xFF5D4493, 1, null, true);
 
@@ -485,10 +481,6 @@ function onEvent(name:String, value1:String, value2:String)
                     remove(cstatic, true);
                     cstatic.destroy();
                     cstatic = null;
-                }
-                for (spr in bgSprites) 
-                {
-                    if (spr != null) spr.shader = null;
                 }
                 FlxG.camera.flash(0xFF5D4493, 1, null, true);
             case 'fadeHUD':
@@ -505,6 +497,7 @@ function onEvent(name:String, value1:String, value2:String)
                 game.songSpeed = PlayState.SONG.speed * 0.75;
                 speedTween = FlxTween.tween(game, {songSpeed: PlayState.SONG.speed}, Conductor.crochet / 2000, {ease: FlxEase.cubeOut});
                 cursetween2(0.7, 0, 0.6, 0xFF5100FF);
+                pulseColor(0xFF4600DE, 0.25, 0.7);
         }
     }
 
@@ -542,7 +535,7 @@ function onUpdatePost(elapsed:Float)
 {
     wavyness += (elapsed * wavynessMult);
     wavyShader.setFloat('iTime', wavyness);
-    wavyShaderBG.setFloat('iTime', wavyness * 2);
+    wavyShaderHUD.setFloat('iTime', wavyness);
 
     if (tails?.animation?.curAnim?.finished == true && tails?.visible == true) 
     {
@@ -657,7 +650,7 @@ function onStepHit()
             cursetween(fore, 0, 0.2);
             cursetween(bv, 0.2, 1, 0xFF5100FF);
             cursetween2(1, 0.2, 1, 0xFF5100FF);
-            cursetweenClouds(0.2, 0.2);
+            cursetweenClouds(0.1, 0.2);
 
         case 780:
         cursetween(bv, 0.5, 0.2, 0xFF5100FF);
@@ -681,24 +674,21 @@ function onStepHit()
             dadPhase = 'nervioso';
             if (dad != null) dad.playAnim('2idle', true);
             FlxTween.num(0.0, 0.3, 2, null, val -> wavyShader.setFloat('amount', val));
+            FlxTween.num(0.0, 0.3, 2, null, val -> wavyShaderHUD.setFloat('amount', val));
 
         case 752:
             cursetween(cstatic, 0.6, 0.7);
 
         case 784:
-            phase4(0, 1, 0.2);   // enojado alpha 0, p4 alpha 1
             cursetween(cstatic, 1, 0.7);
 
         case 816:
-            phase4(1, 0, 0.15);   // revierte
             cursetween(cstatic, 0.5, 0.5);
             
         case 847:
-            phase4(0, 1, 0.15);   // dura 0.2 s
             cursetween(cstatic, 1, 0.7);
 
         case 878:
-            phase4(1, 0, 0.15);
             cursetween(cstatic, 0.5, 0.5);
 
         case 910:
@@ -717,42 +707,60 @@ function onStepHit()
             cursetween2(1, 0.2, 1, 0xFF31009C);
             cursetweenClouds(0.2, 0.3);
 
+        case 992, 1024, 1056, 1088, 1120, 1152, 1184:
+            cursetween(cstatic, 0.9, 0.7);
+
+        case 1008, 1040, 1072, 1104, 1136, 1168, 1200:
+            cursetween(cstatic, 0.5, 0.6);
+
         case 1170:
             dadPhase = 'happy';
             if (dad != null) dad.playAnim('idle', true);
 
 
-        case 1200:
-            phase4(1, 0, 1.7);
-            cursetween(eggman, 0, 0.3);
-            cursetween(knux, 0, 0.3);
-            cursetween(tails2, 0, 0.3);
+        case 1231:
+            phase4(1, 0, 0.1);
+            cursetween(eggman, 0, 0.1);
+            cursetween(knux, 0, 0.1);
+            cursetween(tails2, 0, 0.1);
 
-            FlxTween.num(0.8, 0.0, 2.5, null, val -> wavyShaderBG.setFloat('amount', val));
-            FlxTween.num(0.3, 0.0, 5, null, val -> wavyShader.setFloat('amount', val));
-            cursetween(cstatic, 0, 2);
-            cursetween(vieja, 1, 1.7);
-            cursetween(idle, 1, 1.7);
-            cursetween(idleconejos, 1, 1.7);
-            cursetween(oso, 1, 1.7);
-            cursetween(rata, 1, 1.7);
-            cursetween(fuente, 1, 2);
-            cursetween(floor, 1, 1.8);
-            cursetween(sky, 1, 2);
-            cursetween(fore, 1, 2);
-            cursetween(bv, 0, 1.5, 0xFF7029FF);
-            cursetweenClouds(1, 2);
+            FlxTween.num(0.3, 0.0, 0.2, null, val -> wavyShader.setFloat('amount', val));
+            FlxTween.num(0.3, 0.0, 0.2, null, val -> wavyShaderHUD.setFloat('amount', val));
+            cursetween(cstatic, 0, 0.1);
+            cursetween(vieja, 1, 0.1);
+            cursetween(idle, 1, 0.1);
+            cursetween(idleconejos, 1, 0.1);
+            cursetween(oso, 1, 0.1);
+            cursetween(rata, 1, 0.1);
+            cursetween(fuente, 1, 0.1);
+            cursetween(floor, 1, 0.1);
+            cursetween(sky, 1, 0.1);
+            cursetween(fore, 1, 0.1);
+            cursetween(bv, 0, 0.1, 0xFF7029FF);
+            cursetweenClouds(1, 0.1);
 
         case 1216:
             pulseBrightness();
     }
 
+    var talkTriggered:Bool = false;
     for (d in dancers)
     {
         if (curStep == d.step)
         {
-            var anim:String = (d.alt != null) ? d.alt : d.name;
-            playDancerAnim(d.spr, anim);
+            if (d.spr == idle || d.spr == idleconejos)
+            {
+                if (!talkTriggered)
+                {
+                    playTalkTogether();
+                    talkTriggered = true;
+                }
+            }
+            else
+            {
+                var anim:String = (d.alt != null) ? d.alt : d.name;
+                playDancerAnim(d.spr, anim);
+            }
         }
     }
 }
@@ -805,6 +813,17 @@ function pulseBrightness()
 {
     brightnessPulseTime = 0;
     if (brightnessShader != null) brightnessShader.setFloat('brightness', 0.3);
+}
+
+function pulseColor(color:Int = 0xFF5100FF, alpha:Float = 0.3, duration:Float = 0.7)
+{
+    if (colorPulse == null) return;
+    if (colorPulseTween != null && colorPulseTween.active) colorPulseTween.cancel();
+
+    colorPulse.color = color;
+    colorPulse.alpha = alpha;
+    if (duration > 0)
+        colorPulseTween = FlxTween.tween(colorPulse, {alpha: 0}, duration, {ease: FlxEase.linear});
 }
 
 function updateBrightnessPulse(elapsed:Float)

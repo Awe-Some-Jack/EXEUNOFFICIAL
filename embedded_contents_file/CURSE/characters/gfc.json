@@ -2,7 +2,7 @@
 	"animations": [
 		{
 			"loop": false,
-			"offsets": [0, 18],
+			"offsets": [-3, 8],
 			"anim": "danceLeftALT",
 			"fps": 24,
 			"name": "dance eat",
@@ -10,7 +10,7 @@
 		},
 		{
 			"loop": false,
-			"offsets": [0, 17],
+			"offsets": [-3, 7],
 			"anim": "danceRightALT",
 			"fps": 24,
 			"name": "dance eat",

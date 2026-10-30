@@ -11,7 +11,9 @@ final dancerValues:Array<Int> = [32, 28, 24, 20, 16, 12, 8];
 var randomDancer:Int = 32;
 var beats:Int = 0;
 var wavyShader:FlxRuntimeShader;
+var wavyShaderBG:FlxRuntimeShader;
 var wavyness:Float = 0.0;
+var wavynessMult:Float = 1;
 
 var brightnessShader:FlxRuntimeShader;
 var brightnessPulseTime:Float = -1;
@@ -166,10 +168,12 @@ function onCreate()
     sky.scale.set(0.86, 0.86); sky.updateHitbox();
     sky.scrollFactor.set(0.6, 0.6);
     addBehindGF(sky);
+    bgSprites.push(sky);
 
     floor = new FlxSprite(-1240, -365).loadGraphic(Paths.image('Park/bg'));
     floor.scale.set(0.86, 0.86); floor.updateHitbox();
     addBehindGF(floor);
+    bgSprites.push(floor);
 
     fuente = new FlxSprite(-80, -90);
     fuente.frames = Paths.getSparrowAtlas('Park/fountain');
@@ -180,12 +184,12 @@ function onCreate()
 
     eggman = makeDancer('eggman', null, -620, -300, 20, 1, 0);
     knux = makeDancer('knux', null, 350, -200, 70, 1, 0);
-    rata = makeDancer('rata', null, 1060, 140, 100, 0.4, 1);
-    oso = makeDancer('oso', null, 650, 50, 100, 0.58, 1);
-    vieja = makeDancer('vieja', null, 1180, 200, 20, 0.6, 1);
-    idle = makeDancer('idle', 'conversando', -960, 140, 20, 0.6, 1);
-    idleconejos = makeDancer('idleconejos', 'talk', -690, 160, 70, 0.56, 1);
-    tails1 = makeDancer('tails1', null, -850, 100, 20, 0.9, 1);
+    rata = makeDancer('rata', null, 1150, 140, 100, 0.4, 1);
+    oso = makeDancer('oso', null, 650, 50, 100, 0.725, 1);
+    vieja = makeDancer('vieja', null, 1230, 200, 20, 0.6, 1);
+    idle = makeDancer('idle', 'conversando', -1050, 140, 20, 0.6, 1);
+    idleconejos = makeDancer('idleconejos', 'talk', -780, 160, 70, 0.56, 1);
+    tails1 = makeDancer('tails1', null, -440, 50, 20, 0.65, 1);
     tails2 = makeDancer('tails2', null, -560, 80, 50, 0.9, 0);
 
     idleBaseOffX = idle.offset.x; idleBaseOffY = idle.offset.y;
@@ -209,6 +213,8 @@ function onCreate()
     add(fore);
 
     wavyShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("wavyDistortion")));
+    wavyShaderBG = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("wavyDistortion")));
+    wavyShaderBG.setFloat('amount', 0.8);
 
     brightnessShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("brightness")));
     brightnessShader.setFloat('contrast', 1);
@@ -228,8 +234,8 @@ function onCreate()
     glitchShader.setFloat('SPEED', 1);
     glitchShader.setFloat('iTime', 0);
 
-    FlxG.camera.filters = [new ShaderFilter(brightnessShader), new ShaderFilter(chromaticShader), new ShaderFilter(contrastShader), new ShaderFilter(glitchShader)];
-    camHUD.filters = [new ShaderFilter(chromaticShader)];
+    FlxG.camera.filters = [new ShaderFilter(wavyShader), new ShaderFilter(brightnessShader), new ShaderFilter(chromaticShader), new ShaderFilter(contrastShader), new ShaderFilter(glitchShader)];
+    camHUD.filters = [new ShaderFilter(chromaticShader), new ShaderFilter(wavyShader)];
 
     makeCloud();
     new FlxTimer().start(10, (_) -> { makeCloud(); }, 0);
@@ -242,6 +248,8 @@ function onCreatePost()
         game.triggerEvent('Change Character', 'gf', 'gfc2');
 
     gfGroup.scrollFactor.set(1, 1);
+    gf.scale.set(0.35, 0.35);
+    gf.updateHitbox();
 
     blackFade = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
     blackFade.scrollFactor.set();
@@ -465,8 +473,7 @@ function onEvent(name:String, value1:String, value2:String)
                 {
                     if (spr != null) 
                     {
-                        spr.shader = wavyShader;
-                        spr.shader.setFloat('amount', 0.1);
+                        spr.shader = wavyShaderBG;
                     }
                 }
                 if (cstatic != null) cstatic.alpha = 1;
@@ -533,13 +540,9 @@ function onEvent(name:String, value1:String, value2:String)
 
 function onUpdatePost(elapsed:Float) 
 {
-    wavyness += (elapsed * 10);
-    
-    for (i in 0...bgSprites.length) 
-    {
-        final spr = bgSprites[i];
-        spr?.shader?.setFloat('iTime', wavyness + (i + 1));
-    }
+    wavyness += (elapsed * wavynessMult);
+    wavyShader.setFloat('iTime', wavyness);
+    wavyShaderBG.setFloat('iTime', wavyness * 2);
 
     if (tails?.animation?.curAnim?.finished == true && tails?.visible == true) 
     {
@@ -677,6 +680,7 @@ function onStepHit()
         case 558:
             dadPhase = 'nervioso';
             if (dad != null) dad.playAnim('2idle', true);
+            FlxTween.num(0.0, 0.3, 2, null, val -> wavyShader.setFloat('amount', val));
 
         case 752:
             cursetween(cstatic, 0.6, 0.7);
@@ -724,6 +728,8 @@ function onStepHit()
             cursetween(knux, 0, 0.3);
             cursetween(tails2, 0, 0.3);
 
+            FlxTween.num(0.8, 0.0, 2.5, null, val -> wavyShaderBG.setFloat('amount', val));
+            FlxTween.num(0.3, 0.0, 5, null, val -> wavyShader.setFloat('amount', val));
             cursetween(cstatic, 0, 2);
             cursetween(vieja, 1, 1.7);
             cursetween(idle, 1, 1.7);

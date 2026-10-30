@@ -186,8 +186,7 @@ function onCreate()
     idle = makeDancer('idle', 'conversando', -960, 140, 20, 0.6, 1);
     idleconejos = makeDancer('idleconejos', 'talk', -690, 160, 70, 0.56, 1);
     tails1 = makeDancer('tails1', null, -850, 100, 20, 0.9, 1);
-    tails2 = makeDancer('tails2', null, 960, 80, 50, 0.9, 0);
-    tails2.flipX = true;
+    tails2 = makeDancer('tails2', null, -560, 80, 50, 0.9, 0);
 
     idleBaseOffX = idle.offset.x; idleBaseOffY = idle.offset.y;
     idleconejosBaseOffX = idleconejos.offset.x; idleconejosBaseOffY = idleconejos.offset.y;

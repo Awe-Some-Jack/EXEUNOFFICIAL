@@ -49,7 +49,7 @@ final class MemoryUtil
 		Gc.run(true);
 		Gc.compact();
 		cpp.NativeGc.compact();
-		NativeMemory.trimHeap();
+		if (!Std.isOfType(FlxG.state, states.PlayState)) NativeMemory.trimHeap();
 		#elseif hl
 		Gc.major();
 		#elseif (java || neko)
@@ -173,7 +173,7 @@ final class MemoryUtil
 final class NativeMemory {
 	public static function tuneAllocator():Void {
 		#if (linux && !android)
-		untyped __cpp__('mallopt(M_ARENA_MAX, 2); mallopt(M_MMAP_THRESHOLD, 262144); mallopt(M_TRIM_THRESHOLD, 524288)');
+		untyped __cpp__('mallopt(M_ARENA_MAX, 2)');
 		#end
 	}
 

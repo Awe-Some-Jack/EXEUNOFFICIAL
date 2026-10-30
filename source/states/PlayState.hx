@@ -2773,7 +2773,7 @@ class PlayState extends MusicBeatState
 				freed++;
 			}
 		}
-		if (freed > 0) Paths.clearUnusedMemory();
+		if (freed > 0) Paths.clearUnusedMemoryGradual();
 	}
 	#end
 

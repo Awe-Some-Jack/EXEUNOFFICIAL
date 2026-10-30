@@ -4,7 +4,7 @@ import flixel.tweens.FlxEase;
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.utils.Assets;
 
-import objects.VideoSprite;
+import psychlua.LuaUtils;
 
 final dancerValues:Array<Int> = [32, 28, 24, 20, 16, 12, 8];
 
@@ -26,38 +26,92 @@ var contrastTarget:Float = 0;
 var contrastFrom:Float = 0;
 var contrastTweenTime:Float = -1;
 
+var glitchShader:FlxRuntimeShader;
+var glitchTime:Float = 0;
+var glitchAMT:Float = 0;
+var glitchPhase:Int = -1;
+var glitchPhaseTime:Float = 0;
+var glitchFrom:Float = 0;
+var glitchTarget:Float = 0;
+var glitchInDur:Float = 0;
+var glitchOutDur:Float = 0;
+
 var sad:Bool = false;
 var happy:Bool = false;
 
+var sky:FlxSprite;
 var floor:FlxSprite;
 var tails:FlxSprite;
 var fuente:FlxSprite;
-var menuSTATIC:VideoSprite;
+var fore:FlxSprite;
+
+var cstatic:FlxSprite;
+var vinete:FlxSprite;
+var bv:FlxSprite;
 
 var blackFade:FlxSprite;
 var blackFadeTween:FlxTween = null;
 
 final bgSprites:Array<FlxSprite> = [];
+var clouds:Array<FlxSprite> = [];
 
 var speedTween:FlxTween = null;
 
 var dadPhase:String = 'happy';
 
-// DANCERS (gente del fondo) - { spr, name, alt, step }
-var dancers:Array<Dynamic> = [];
+// {step, hold} — override del hold de la pose de canto del sprite COPIA phase4, en SEGUNDOS
+// 1.5 segundos alcanza para que la animación complete antes de volver al idle. (solo aplica a la copia)
+var dadHoldSongs:Array<{step:Int, hold:Float}> = [
+    {step: 0, hold: 1.5},
+    // {step: 976, hold: 3},   // ejemplo: mantener más desde step 976
+    // {step: 1200, hold: 1.5}, // ejemplo: volver a la normalidad
+];
 
-function makeDancer(name:String, alt:String, x:Float, y:Float, step:Int, scale:Float = 1)
+// BG chars
+var dancers:Array<Dynamic> = [];
+var tails1:FlxAnimate;
+var tails2:FlxAnimate;
+var knux:FlxAnimate;
+var rata:FlxAnimate;
+var vieja:FlxAnimate;
+var idle:FlxAnimate;
+var idleconejos:FlxAnimate;
+var oso:FlxAnimate;
+var eggman:FlxAnimate;
+var phase4Copy:Character = null;
+var phase4DadTween:FlxTween = null;
+var phase4CopyTween:FlxTween = null;
+var phase4Active:Bool = false;
+var cursetweenSprites:Array<FlxSprite> = [];
+var cursetweenTweens:Array<FlxTween> = [];
+var vineteTween:FlxTween = null;
+var vineteTarget:Float = 0;
+var vineteUpDur:Float = 1;
+var vineteDownDur:Float = 0.2;
+
+var talkOffsetX:Float = 68;
+var talkOffsetY:Float = 7;
+var conversandoOffsetX:Float = 0;
+var conversandoOffsetY:Float = 8;
+var idleBaseOffX:Float = 0;
+var idleBaseOffY:Float = 0;
+var idleconejosBaseOffX:Float = 0;
+var idleconejosBaseOffY:Float = 0;
+var lastTalker:String = 'idleconejos';
+
+function makeDancer(name:String, alt:String, x:Float, y:Float, step:Int, scale:Float = 1, alpha:Float = 1)
 {
     var spr:FlxAnimate = new FlxAnimate(x, y);
     spr.frames = Paths.getAnimateAtlas('Park/Characters');
     spr.antialiasing = ClientPrefs.data.antialiasing;
 
     spr.anim.addBySymbol(name, name, 24, true);
-    if (alt != null) spr.anim.addBySymbol(alt, alt, 24, true);
+    if (alt != null) spr.anim.addBySymbol(alt, alt, 24, false);
     spr.anim.play(name, true);
 
     spr.scale.set(scale, scale);
     spr.updateHitbox();
+    spr.alpha = alpha;
 
     insert(game.members.indexOf(fuente), spr);
 
@@ -65,9 +119,55 @@ function makeDancer(name:String, alt:String, x:Float, y:Float, step:Int, scale:F
     return spr;
 }
 
+function playDancerAnim(spr:FlxAnimate, anim:String)
+{
+    if (spr == null) return;
+    spr.anim.play(anim, true);
+    if (spr == idleconejos)
+    {
+        if (anim == 'talk') spr.offset.set(idleconejosBaseOffX + talkOffsetX, idleconejosBaseOffY + talkOffsetY);
+        else spr.offset.set(idleconejosBaseOffX, idleconejosBaseOffY);
+    }
+    else if (spr == idle)
+    {
+        if (anim == 'conversando') spr.offset.set(idleBaseOffX + conversandoOffsetX, idleBaseOffY + conversandoOffsetY);
+        else spr.offset.set(idleBaseOffX, idleBaseOffY);
+    }
+}
+
+function triggerTalk()
+{
+    if (idle == null && idleconejos == null) return;
+
+    var r:Int = FlxG.random.int(0, 99);
+    if (r < 20)
+    {
+        playDancerAnim(idle, 'conversando');
+        playDancerAnim(idleconejos, 'talk');
+    }
+    else if (lastTalker == 'idle')
+    {
+        playDancerAnim(idleconejos, 'talk');
+        lastTalker = 'idleconejos';
+    }
+    else
+    {
+        playDancerAnim(idle, 'conversando');
+        lastTalker = 'idle';
+    }
+}
+
+function updateTalkRevert()
+{
+    if (idle != null && idle.anim.curAnim != null && idle.anim.curAnim.name == 'conversando' && idle.anim.curAnim.finished)
+        playDancerAnim(idle, 'idle');
+    if (idleconejos != null && idleconejos.anim.curAnim != null && idleconejos.anim.curAnim.name == 'talk' && idleconejos.anim.curAnim.finished)
+        playDancerAnim(idleconejos, 'idleconejos');
+}
+
 function onCreate()
 {
-    var sky:FlxSprite = new FlxSprite(-950, -450).loadGraphic(Paths.image('Park/city'));
+    sky = new FlxSprite(-950, -450).loadGraphic(Paths.image('Park/city'));
     sky.scale.set(0.86, 0.86); sky.updateHitbox();
     sky.scrollFactor.set(0.6, 0.6);
     addBehindGF(sky);
@@ -83,18 +183,35 @@ function onCreate()
     fuente.scale.set(1.2, 1.2);
     addBehindGF(fuente);
 
+    eggman = makeDancer('eggman', null, -620, -300, 20, 1, 0);
+    knux = makeDancer('knux', null, 350, -200, 70, 1, 0);
+    rata = makeDancer('rata', null, 1060, 140, 100, 0.4, 1);
+    oso = makeDancer('oso', null, 650, 50, 100, 0.58, 1);
+    vieja = makeDancer('vieja', null, 1180, 200, 20, 0.6, 1);
+    idle = makeDancer('idle', 'conversando', -960, 140, 20, 0.6, 1);
+    idleconejos = makeDancer('idleconejos', 'talk', -690, 160, 70, 0.56, 1);
+    tails1 = makeDancer('tails1', null, -850, 100, 20, 0.9, 1);
+    tails2 = makeDancer('tails2', null, 960, 80, 50, 0.9, 0);
+    tails2.flipX = true;
+
+    idleBaseOffX = idle.offset.x; idleBaseOffY = idle.offset.y;
+    idleconejosBaseOffX = idleconejos.offset.x; idleconejosBaseOffY = idleconejos.offset.y;
+
     //320
 
-    menuSTATIC = new VideoSprite();
-    if (menuSTATIC.loadVideo(Paths.video('STATIC'), [VideoSprite.ARG_LOOPING, VideoSprite.ARG_MUTED])) menuSTATIC.playDelayed();
-    menuSTATIC.scale.set((FlxG.width / menuSTATIC.width) * 1.5, (FlxG.height / menuSTATIC.height) * 1.5);
-    menuSTATIC.screenCenter();
-    menuSTATIC.x -= 650;
-    menuSTATIC.y -= 50;
-    menuSTATIC.alpha = 0.00001;
-    addBehindGF(menuSTATIC);
+    cstatic = new FlxSprite();
+    cstatic.frames = Paths.getSparrowAtlas('Park/staticurse');
+    cstatic.animation.addByPrefix('menuSTATICNEW instance 1', 'menuSTATICNEW instance 1', 24, true);
+    cstatic.animation.play('menuSTATICNEW instance 1', true);
+    cstatic.scale.set((FlxG.width / cstatic.width) * 2.4, (FlxG.height / cstatic.height) * 2.4);
+    cstatic.updateHitbox();
+    cstatic.screenCenter();
+    cstatic.x -= 380;
+    cstatic.y -= -120;
+    cstatic.alpha = 0.00001;
+    addBehindGF(cstatic);
 
-    var fore:FlxSprite = new FlxSprite(-1500, 600).loadGraphic(Paths.image('Park/foreground'));
+    fore = new FlxSprite(-1500, 600).loadGraphic(Paths.image('Park/foreground'));
     fore.scale.set(0.6, 0.6); fore.updateHitbox();
     fore.scrollFactor.set(1.25, 1.25);
     add(fore);
@@ -114,11 +231,17 @@ function onCreate()
     contrastShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("contrast")));
     contrastShader.setFloat('contrast', 0);
 
-    FlxG.camera.filters = [new ShaderFilter(brightnessShader), new ShaderFilter(chromaticShader), new ShaderFilter(contrastShader)];
+    glitchShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("glitch")));
+    glitchShader.setFloat('AMT', 0);
+    glitchShader.setFloat('SPEED', 1);
+    glitchShader.setFloat('iTime', 0);
+
+    FlxG.camera.filters = [new ShaderFilter(brightnessShader), new ShaderFilter(chromaticShader), new ShaderFilter(contrastShader), new ShaderFilter(glitchShader)];
     camHUD.filters = [new ShaderFilter(chromaticShader)];
 
     makeCloud();
     new FlxTimer().start(10, (_) -> { makeCloud(); }, 0);
+    new FlxTimer().start(5, (_) -> { triggerTalk(); }, 0);
 }
 
 function onCreatePost()
@@ -133,6 +256,152 @@ function onCreatePost()
     blackFade.camera = camHUD;
     blackFade.alpha = 0;
     add(blackFade);
+
+    vinete = new FlxSprite().loadGraphic(Paths.image('Park/vg'));
+    vinete.setGraphicSize(FlxG.width, FlxG.height);
+    vinete.updateHitbox();
+    vinete.scrollFactor.set();
+    vinete.camera = camHUD;
+    vinete.alpha = 0.00001;
+    vinete.screenCenter();
+    insert(game.members.indexOf(blackFade), vinete);
+
+    bv = new FlxSprite().loadGraphic(Paths.image('Park/black_vignette'));
+    bv.setGraphicSize(FlxG.width, FlxG.height);
+    bv.updateHitbox();
+    bv.scrollFactor.set();
+    bv.camera = camHUD;
+    bv.alpha = 0.00001;
+    bv.screenCenter();
+    insert(game.members.indexOf(blackFade), bv);
+
+    makePhase4Copy();
+}
+
+function makePhase4Copy()
+{
+    if (dad == null || phase4Copy != null) return;
+
+    phase4Copy = new Character(dad.x - dadGroup.x, dad.y - dadGroup.y, dad.curCharacter, false);
+    phase4Copy.scale.set(dad.scale.x, dad.scale.y);
+    phase4Copy.flipX = dad.flipX;
+    phase4Copy.scrollFactor.set(dad.scrollFactor.x, dad.scrollFactor.y);
+    phase4Copy.alpha = 0.00001;
+    dadGroup.add(phase4Copy);
+    phase4Copy.playAnim('idle4', true);
+    if (phase4Copy.anim.curAnim != null) phase4Copy.anim.curAnim.looped = true;
+}
+function phase4(dadAlpha:Float, copyAlpha:Float, duration:Float)
+{
+    if (dad == null) return;
+    if (phase4Copy == null) makePhase4Copy();
+    if (phase4Copy == null) return;
+
+    if (phase4DadTween != null && phase4DadTween.active) phase4DadTween.cancel();
+    if (phase4CopyTween != null && phase4CopyTween.active) phase4CopyTween.cancel();
+
+    if (duration <= 0)
+    {
+        dad.alpha = dadAlpha;
+        phase4Copy.alpha = copyAlpha;
+        phase4DadTween = null;
+        phase4CopyTween = null;
+    }
+    else
+    {
+        phase4DadTween = FlxTween.tween(dad, {alpha: dadAlpha}, duration, {ease: FlxEase.linear});
+        phase4CopyTween = FlxTween.tween(phase4Copy, {alpha: copyAlpha}, duration, {ease: FlxEase.linear});
+    }
+
+    phase4Active = (copyAlpha > 0.5);
+    if (phase4Active && phase4Copy.getAnimationName() != 'idle4')
+        phase4Copy.playAnim('idle4', true);
+}
+
+function updatePhase4Idle()
+{
+    if (phase4Copy == null || phase4Copy.alpha <= 0.01) return;
+    if (phase4Copy.specialAnim) return;
+
+    final n:String = phase4Copy.getAnimationName();
+    if (n == 'idle' || (n == 'idle4' && phase4Copy.isAnimationFinished()))
+        phase4Copy.playAnim('idle4', true);
+}
+
+function getPhase4SingAnim(noteData:Int):String
+{
+    var d:Int = Std.int(Math.abs(noteData)) % 4;
+    return ['sing4LEFT', 'sing4DOWN', 'sing4UP', 'sing4RIGHT'][d];
+}
+
+function cursetween(spr:FlxSprite, alpha:Float, duration:Float, ?color:Int)
+{
+    if (spr == null) return;
+
+    final idx:Int = cursetweenSprites.indexOf(spr);
+    if (idx >= 0)
+    {
+        final prev:FlxTween = cursetweenTweens[idx];
+        if (prev != null && prev.active) prev.cancel();
+        cursetweenSprites.splice(idx, 1);
+        cursetweenTweens.splice(idx, 1);
+    }
+
+    if (color != null) spr.color = color;
+
+    if (alpha > 0) spr.visible = true;
+
+    final t:FlxTween = FlxTween.tween(spr, {alpha: alpha}, duration, {
+        ease: FlxEase.linear,
+        onComplete: (_) -> { if (alpha <= 0) spr.visible = false; }
+    });
+    cursetweenSprites.push(spr);
+    cursetweenTweens.push(t);
+}
+
+function cursetween2(target:Float, upDuration:Float, downDuration:Float, ?color:Int)
+{
+    if (vinete == null) return;
+    if (vineteTween != null && vineteTween.active) vineteTween.cancel();
+
+    vineteTarget = target;
+    vineteUpDur = upDuration;
+    vineteDownDur = downDuration;
+
+    if (color != null) vinete.color = color;
+
+    if (vineteUpDur <= 0)
+    {
+        vinete.alpha = vineteTarget;
+        tweenVineteDown();
+    }
+    else
+    {
+        tweenVineteUp();
+    }
+}
+
+function tweenVineteUp()
+{
+    vineteTween = FlxTween.tween(vinete, {alpha: vineteTarget}, vineteUpDur, {
+        ease: FlxEase.linear,
+        onComplete: (_) -> { tweenVineteDown(); }
+    });
+}
+
+function tweenVineteDown()
+{
+    if (vineteDownDur <= 0)
+    {
+        vinete.alpha = 0;
+        vineteTween = null;
+        return;
+    }
+
+    vineteTween = FlxTween.tween(vinete, {alpha: 0}, vineteDownDur, {
+        ease: FlxEase.linear,
+        onComplete: (_) -> { vineteTween = null; }
+    });
 }
 
 function makeCloud()
@@ -144,7 +413,14 @@ function makeCloud()
     cloud.scrollFactor.set(0.6, 0.6);
     cloud.velocity.x = FlxG.random.float(40,80);
     insert(game.members.indexOf(floor), cloud);
-    new FlxTimer().start(20, (_) -> { cloud.destroy(); });
+    clouds.push(cloud);
+    new FlxTimer().start(20, (_) -> { clouds.remove(cloud); cloud.destroy(); });
+}
+
+function cursetweenClouds(alpha:Float, duration:Float, ?color:Int)
+{
+    for (c in clouds)
+        if (c != null && c.exists) cursetween(c, alpha, duration, color);
 }
 
 function onEvent(name:String, value1:String, value2:String)
@@ -161,22 +437,37 @@ function onEvent(name:String, value1:String, value2:String)
         if (Math.isNaN(intensity)) intensity = 0;
         pulseChromatic(intensity);
     }
+    else if (name == 'curseglitch')
+    {
+        var parts:Array<String> = value1.split(',');
+        var intensity:Float = 0;
+        var inDur:Float = 0;
+        var outDur:Float = 0;
+        if (parts.length > 0) intensity = Std.parseFloat(StringTools.trim(parts[0]));
+        if (parts.length > 1) inDur = Std.parseFloat(StringTools.trim(parts[1]));
+        if (parts.length > 2) outDur = Std.parseFloat(StringTools.trim(parts[2]));
+        if (Math.isNaN(intensity)) intensity = 0;
+        if (Math.isNaN(inDur)) inDur = 0;
+        if (Math.isNaN(outDur)) outDur = 0;
+        pulseGlitch(intensity, inDur, outDur);
+    }
     else if (name == 'curseEvent') 
     {
-        pulseBrightness();
-
         switch (value1) 
         {
-            case 'tails':
+            case '':
+            pulseBrightness();
+            
+            case 'tails': //scrapped
                 tails?.animation?.play('anim', true);
                 if (tails != null) tails.visible = true;
                 fuente?.animation?.play('anim', true);
-
+                pulseBrightness();
             case 'noteeffect':
                 speedTween?.cancel();
                 game.songSpeed = PlayState.SONG.speed * 0.75;
                 speedTween = FlxTween.tween(game, {songSpeed: PlayState.SONG.speed}, Conductor.crochet / 2000, {ease: FlxEase.cubeOut});
-
+                pulseBrightness();
             case 'evil':
                 for (spr in bgSprites) 
                 {
@@ -186,15 +477,15 @@ function onEvent(name:String, value1:String, value2:String)
                         spr.shader.setFloat('amount', 0.1);
                     }
                 }
-                if (menuSTATIC != null) menuSTATIC.alpha = 0.4;
+                if (cstatic != null) cstatic.alpha = 1;
                 FlxG.camera.flash(0xFF5D4493, 1, null, true);
 
             case 'normal':
-                if (menuSTATIC != null) 
+                if (cstatic != null) 
                 {
-                    remove(menuSTATIC, true);
-                    menuSTATIC.destroy();
-                    menuSTATIC = null;
+                    remove(cstatic, true);
+                    cstatic.destroy();
+                    cstatic = null;
                 }
                 for (spr in bgSprites) 
                 {
@@ -203,7 +494,45 @@ function onEvent(name:String, value1:String, value2:String)
                 FlxG.camera.flash(0xFF5D4493, 1, null, true);
             case 'fadeHUD':
                 FlxTween.tween(camHUD, {alpha: 0}, 2);
+                pulseBrightness();
         }
+    }
+    else if (name == 'curseEvent2') 
+    {
+        switch (value1) 
+        {
+            case 'noteeffect':
+                speedTween?.cancel();
+                game.songSpeed = PlayState.SONG.speed * 0.75;
+                speedTween = FlxTween.tween(game, {songSpeed: PlayState.SONG.speed}, Conductor.crochet / 2000, {ease: FlxEase.cubeOut});
+                cursetween2(0.7, 0, 0.6, 0xFF5100FF);
+        }
+    }
+
+    else if (name == 'cursetweencamera')
+    {
+        var split = value1.split(',');
+        if (split.length >= 2)
+        {
+            var camx = Std.parseFloat(StringTools.trim(split[0]));
+            var camy = Std.parseFloat(StringTools.trim(split[1]));
+            if (Math.isNaN(camx)) camx = 0;
+            if (Math.isNaN(camy)) camy = 0;
+
+            var split2 = value2.split(',');
+            if (split2.length >= 2)
+            {
+                var time = Std.parseFloat(StringTools.trim(split2[0]));
+                var ease = StringTools.trim(split2[1]);
+                if (Math.isNaN(time)) time = 0;
+
+                FlxTween.tween(camGame.targetOffset, {x: camx, y: camy}, time, {ease: LuaUtils.getTweenEaseByString(ease)});
+            }
+        }
+
+        // bloquea la cámara para que se quede en esa posición
+        gameplayCam.customCameraEnabled = false;
+        gameplayCam.isCameraOnForcedPos = true;
     }
     else if (name == 'CurseHudFinal')
     {
@@ -258,9 +587,12 @@ function onUpdatePost(elapsed:Float)
     }
 
     updateDadIdle();
+    updatePhase4Idle();
+    updateTalkRevert();
     updateBrightnessPulse(elapsed);
     updateChromaticPulse(elapsed);
     updateContrastPulse(elapsed);
+    updateGlitch(elapsed);
 }
 
 function updateNotesSuffix(suffix:String):Void 
@@ -303,45 +635,128 @@ function onBeatHit()
 
 function onStepHit()
 {
-    // negro
-    if (curStep == 717)
+    updateDadHold();
+
+    switch (curStep)
     {
-        blackFadeTween?.cancel();
-        blackFadeTween = FlxTween.tween(blackFade, {alpha: 1}, 0.2);
-    }
-    else if (curStep == 720)
-    {
-        blackFadeTween?.cancel();
-        blackFadeTween = null;
-        if (blackFade != null) blackFade.alpha = 0;
+        // negro
+        case 717:
+            blackFadeTween?.cancel();
+            blackFadeTween = FlxTween.tween(blackFade, {alpha: 1}, 0.2);
+
+        case 720: //720
+            blackFadeTween?.cancel();
+            blackFadeTween = null;
+            if (blackFade != null) blackFade.alpha = 0;
+
+            dadPhase = 'enojado';
+            if (dad != null) dad.playAnim('3idle', true);
+
+            cursetween(tails1, 0, 0.1);
+            cursetween(vieja, 0, 0.1);
+            cursetween(idle, 0, 0.1);
+            cursetween(idleconejos, 0, 0.1);
+            cursetween(oso, 0, 0.1);
+            cursetween(rata, 0, 0.1);
+            cursetween(fuente, 0.1, 0.2);
+            cursetween(floor, 0.2, 0.2);
+            cursetween(sky, 0, 0.2);
+            cursetween(fore, 0, 0.2);
+            cursetween(bv, 0.2, 1, 0xFF5100FF);
+            cursetween2(1, 0.2, 1, 0xFF5100FF);
+            cursetweenClouds(0.2, 0.2);
+
+        case 780:
+        cursetween(bv, 0.5, 0.2, 0xFF5100FF);
+
+        case 832:
+        cursetween(bv, 0.7, 0.2, 0xFF5100FF);
+
+        case 848:
+        cursetween(bv, 0.5, 0.1, 0xFF5100FF);
+
+        case 908:
+        cursetween(bv, 0.7, 0.1, 0xFF5100FF);
+
+        case 944:
+        cursetween(bv, 0.9, 0.2, 0xFF5100FF);
+
+        case 960:
+        cursetween(bv, 0.5, 0.2, 0xFF5100FF);
+            
+        case 558:
+            dadPhase = 'nervioso';
+            if (dad != null) dad.playAnim('2idle', true);
+
+        case 752:
+            cursetween(cstatic, 0.6, 0.7);
+
+        case 784:
+            phase4(0, 1, 0.2);   // enojado alpha 0, p4 alpha 1
+            cursetween(cstatic, 1, 0.7);
+
+        case 816:
+            phase4(1, 0, 0.15);   // revierte
+            cursetween(cstatic, 0.5, 0.5);
+            
+        case 847:
+            phase4(0, 1, 0.15);   // dura 0.2 s
+            cursetween(cstatic, 1, 0.7);
+
+        case 878:
+            phase4(1, 0, 0.15);
+            cursetween(cstatic, 0.5, 0.5);
+
+        case 910:
+            cursetween(cstatic, 1, 0.7);
+
+        case 976:
+            phase4(0, 1, 0.01);
+            cursetween(cstatic, 0.5, 0.1);
+            cursetween(eggman, 1, 0.1);
+            cursetween(knux, 1, 0.1);
+            cursetween(tails2, 1, 0.1);
+            cursetween(fuente, 0.1, 0.2);
+            cursetween(floor, 0.2, 0.2);
+            cursetween(fore, 0.1, 0.2);
+            cursetween(bv, 1, 1, 0xFF7029FF);
+            cursetween2(1, 0.2, 1, 0xFF31009C);
+            cursetweenClouds(0.2, 0.3);
+
+        case 1170:
+            dadPhase = 'happy';
+            if (dad != null) dad.playAnim('idle', true);
+
+
+        case 1200:
+            phase4(1, 0, 1.7);
+            cursetween(eggman, 0, 0.3);
+            cursetween(knux, 0, 0.3);
+            cursetween(tails2, 0, 0.3);
+
+            cursetween(cstatic, 0, 2);
+            cursetween(vieja, 1, 1.7);
+            cursetween(idle, 1, 1.7);
+            cursetween(idleconejos, 1, 1.7);
+            cursetween(oso, 1, 1.7);
+            cursetween(rata, 1, 1.7);
+            cursetween(fuente, 1, 2);
+            cursetween(floor, 1, 1.8);
+            cursetween(sky, 1, 2);
+            cursetween(fore, 1, 2);
+            cursetween(bv, 0, 1.5, 0xFF7029FF);
+            cursetweenClouds(1, 2);
+
+        case 1216:
+            pulseBrightness();
     }
 
-    if (curStep == 558)
-    {
-        dadPhase = 'nervioso';
-        if (dad != null) dad.playAnim('2idle', true);
-    }
-    else if (curStep == 720)
-    {
-        dadPhase = 'enojado';
-        if (dad != null) dad.playAnim('3idle', true);
-    }
-    else if (curStep == 977)
-    {
-        dadPhase = 'phase4';
-        if (dad != null) dad.playAnim('idle4', true);
-    }
-    else if (curStep == 1232)
-    {
-        dadPhase = 'happy';
-        if (dad != null) dad.playAnim('idle', true);
-    }
     for (d in dancers)
     {
         if (curStep == d.step)
         {
             var anim:String = (d.alt != null) ? d.alt : d.name;
-            d.spr.anim.play(anim, true);
+            playDancerAnim(d.spr, anim);
         }
     }
 }
@@ -373,11 +788,25 @@ function getDadSingAnim(noteData:Int):String
 
 function opponentNoteHit(note)
 {
-    if (dad == null || dadPhase == 'happy') return;
     if (note.gfNote || note.noAnimation || note.noteType == 'Hey!' || note.noteType == 'GF2Sing') return;
 
-    var anim:String = getDadSingAnim(note.noteData);
-    if (dad.hasAnimation(anim)) dad.playAnim(anim, true);
+    // la copia phase4 canta mientras sea visible (incluido el fade-out)
+    if (phase4Copy != null && phase4Copy.alpha > 0.01)
+    {
+        var p4anim:String = getPhase4SingAnim(note.noteData);
+        if (phase4Copy.hasAnimation(p4anim))
+        {
+            phase4Copy.playAnim(p4anim, true);
+            phase4Copy.holdTimer = 0;
+        }
+    }
+
+    // el dad canta su fase si no está en happy y es visible
+    if (dad != null && dadPhase != 'happy' && dad.alpha > 0.01)
+    {
+        var anim:String = getDadSingAnim(note.noteData);
+        if (dad.hasAnimation(anim)) dad.playAnim(anim, true);
+    }
 }
 
 function pulseBrightness()
@@ -459,4 +888,121 @@ function updateContrastPulse(elapsed:Float)
 
     contrastValue = contrastFrom + (contrastTarget - contrastFrom) * p;
     contrastShader.setFloat('contrast', contrastValue);
+}
+
+function pulseGlitch(intensity:Float, inDur:Float, outDur:Float)
+{
+    if (glitchShader == null) return;
+
+    if (intensity <= 0)
+    {
+        glitchPhase = -1;
+        glitchPhaseTime = 0;
+        glitchAMT = 0;
+        glitchFrom = 0;
+        glitchTarget = 0;
+        glitchInDur = 0;
+        glitchOutDur = 0;
+        glitchShader.setFloat('AMT', 0);
+        return;
+    }
+
+    glitchTarget = intensity;
+    glitchInDur = inDur;
+    glitchOutDur = outDur;
+    glitchFrom = glitchAMT;
+    glitchPhaseTime = 0;
+
+    if (inDur <= 0)
+    {
+        glitchAMT = intensity;
+        glitchShader.setFloat('AMT', glitchAMT);
+
+        if (outDur > 0)
+        {
+            glitchPhase = 1;
+            glitchFrom = intensity;
+            glitchPhaseTime = 0;
+        }
+        else
+        {
+            glitchPhase = -1;
+        }
+    }
+    else
+    {
+        glitchPhase = 0;
+    }
+}
+
+function updateGlitch(elapsed:Float)
+{
+    if (glitchShader == null) return;
+
+    glitchTime += elapsed;
+    glitchShader.setFloat('iTime', glitchTime);
+
+    if (glitchPhase < 0) return;
+
+    glitchPhaseTime += elapsed;
+
+    if (glitchPhase == 0)
+    {
+        final p:Float = (glitchInDur <= 0) ? 1.0 : (glitchPhaseTime / glitchInDur);
+        if (p >= 1.0)
+        {
+            glitchAMT = glitchTarget;
+            if (glitchOutDur > 0)
+            {
+                glitchPhase = 1;
+                glitchPhaseTime = 0;
+                glitchFrom = glitchTarget;
+            }
+            else
+            {
+                glitchPhase = -1;
+            }
+        }
+        else
+        {
+            glitchAMT = glitchFrom + (glitchTarget - glitchFrom) * p;
+        }
+        glitchShader.setFloat('AMT', glitchAMT);
+    }
+    else if (glitchPhase == 1)
+    {
+        final p:Float = (glitchOutDur <= 0) ? 1.0 : (glitchPhaseTime / glitchOutDur);
+        if (p >= 1.0)
+        {
+            glitchAMT = 0;
+            glitchPhase = -1;
+        }
+        else
+        {
+            glitchAMT = glitchFrom * (1.0 - p);
+        }
+        glitchShader.setFloat('AMT', glitchAMT);
+    }
+}
+
+function updateDadHold()
+{
+    var holdSeconds:Float = 1.5;
+    var bestStep:Int = 0;
+
+    for (cfg in dadHoldSongs)
+    {
+        if (curStep >= cfg.step && cfg.step >= bestStep)
+        {
+            bestStep = cfg.step;
+            holdSeconds = cfg.hold;
+        }
+    }
+
+    // convierte segundos al multiplicador singDuration que usa Character.hx
+    // (holdThreshold = stepCrochet * 0.0011 / pitch * singDuration)
+    final pitch:Float = (FlxG.sound.music != null && FlxG.sound.music.pitch > 0) ? FlxG.sound.music.pitch : 1;
+    final sd:Float = (holdSeconds * pitch) / (Conductor.stepCrochet * 0.0011);
+
+    if (phase4Copy != null) phase4Copy.singDuration = sd;
 }

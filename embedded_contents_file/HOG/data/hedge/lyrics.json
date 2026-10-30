@@ -1,66 +1,146 @@
 {
     "en-US": {
         "lyrics.hedge.1": "Watch; this!",
-        "lyrics.hedge.2": "Good; job,; my; turn!"
+        "lyrics.hedge.2": "Good; job,; my; turn!",
+        "gameover.hedge.1": "Aw, maybe next!",
+        "gameover.hedge.2": "Let's try again!",
+        "gameover.hedge.3": "C'mon, You can do it!",
+        "gameover.hedge.4": "Practice make best!",
+        "gameover.hedge.5": "One more time, C'mon!"
     },
     "es-419": {
         "lyrics.hedge.1": "¡Mira; esto!",
-        "lyrics.hedge.2": "¡Bien; hecho,; mi; turno!"
+        "lyrics.hedge.2": "¡Bien; hecho,; mi; turno!",
+        "gameover.hedge.1": "¡Ay, quizás la próxima!",
+        "gameover.hedge.2": "¡Intentémoslo de nuevo!",
+        "gameover.hedge.3": "¡Vamos, tú puedes!",
+        "gameover.hedge.4": "¡La práctica hace al maestro!",
+        "gameover.hedge.5": "¡Una vez más, vamos!"
     },
     "pt-BR": {
         "lyrics.hedge.1": "Toma; essa!",
-        "lyrics.hedge.2": "Bom; trabalho,; minha; vez!"
+        "lyrics.hedge.2": "Bom; trabalho,; minha; vez!",
+        "gameover.hedge.1": "Ah, quem sabe na próxima!",
+        "gameover.hedge.2": "Vamos tentar de novo!",
+        "gameover.hedge.3": "Vamos lá, você consegue!",
+        "gameover.hedge.4": "A prática leva à perfeição!",
+        "gameover.hedge.5": "Mais uma vez, vamos lá!"
     },
     "fr-FR": {
         "lyrics.hedge.1": "Regarde; ça!",
-        "lyrics.hedge.2": "Bien; joué,; mon; tour!"
+        "lyrics.hedge.2": "Bien; joué,; mon; tour!",
+        "gameover.hedge.1": "Oh, peut-être la prochaine fois!",
+        "gameover.hedge.2": "Essayons encore!",
+        "gameover.hedge.3": "Allez, tu peux le faire!",
+        "gameover.hedge.4": "C'est en forgeant qu'on devient forgeron!",
+        "gameover.hedge.5": "Encore une fois, allez!"
     },
     "de-DE": {
         "lyrics.hedge.1": "Schau; mal!",
-        "lyrics.hedge.2": "Gut; gemacht,; ich; bin dran!"
+        "lyrics.hedge.2": "Gut; gemacht,; ich; bin dran!",
+        "gameover.hedge.1": "Ach, vielleicht nächstes Mal!",
+        "gameover.hedge.2": "Versuchen wir's nochmal!",
+        "gameover.hedge.3": "Komm schon, du schaffst das!",
+        "gameover.hedge.4": "Übung macht den Meister!",
+        "gameover.hedge.5": "Noch einmal, komm schon!"
     },
     "ru-RU": {
         "lyrics.hedge.1": "Смо;три!",
-        "lyrics.hedge.2": "Хорошо,; моя; оче;редь!"
+        "lyrics.hedge.2": "Хорошо,; моя; оче;редь!",
+        "gameover.hedge.1": "Эх, может, в следующий раз!",
+        "gameover.hedge.2": "Давай попробуем ещё раз!",
+        "gameover.hedge.3": "Давай, у тебя получится!",
+        "gameover.hedge.4": "Повторение - мать учения!",
+        "gameover.hedge.5": "Ещё разок, давай!"
     },
     "uk-UA": {
         "lyrics.hedge.1": "Ди;вись!",
-        "lyrics.hedge.2": "Мо;лодець,; моя; черга!"
+        "lyrics.hedge.2": "Мо;лодець,; моя; черга!",
+        "gameover.hedge.1": "Ех, може, наступного разу!",
+        "gameover.hedge.2": "Спробуймо ще раз!",
+        "gameover.hedge.3": "Давай, у тебе вийде!",
+        "gameover.hedge.4": "Практика робить майстром!",
+        "gameover.hedge.5": "Ще разок, давай!"
     },
     "uz-UZ": {
         "lyrics.hedge.1": "Bunga; qara!",
-        "lyrics.hedge.2": "Yax;shi,; mening; navbatim!"
+        "lyrics.hedge.2": "Yax;shi,; mening; navbatim!",
+        "gameover.hedge.1": "Eh, balki keyingi safar!",
+        "gameover.hedge.2": "Keling, yana urinib ko'ramiz!",
+        "gameover.hedge.3": "Qani, sen uddalaysan!",
+        "gameover.hedge.4": "Mashq qilsang, usta bo'lasan!",
+        "gameover.hedge.5": "Yana bir marta, qani!"
     },
     "ja-JP": {
         "lyrics.hedge.1": "見てお;け!",
-        "lyrics.hedge.2": "よく;やった、; 俺の;番だ!"
+        "lyrics.hedge.2": "よく;やった、; 俺の;番だ!",
+        "gameover.hedge.1": "あー、次こそは!",
+        "gameover.hedge.2": "もう一回やってみよう!",
+        "gameover.hedge.3": "ほら、君ならできる!",
+        "gameover.hedge.4": "習うより慣れろ!",
+        "gameover.hedge.5": "もう一回だ、ほら!"
     },
     "zh-CN": {
         "lyrics.hedge.1": "看; 好了!",
-        "lyrics.hedge.2": "干; 得好,; 轮; 到我 了!"
+        "lyrics.hedge.2": "干; 得好,; 轮; 到我 了!",
+        "gameover.hedge.1": "哎,下次一定!",
+        "gameover.hedge.2": "我们再试一次!",
+        "gameover.hedge.3": "加油,你能行的!",
+        "gameover.hedge.4": "熟能生巧!",
+        "gameover.hedge.5": "再来一次,加油!"
     },
     "ko-KR": {
         "lyrics.hedge.1": "잘; 봐봐!",
-        "lyrics.hedge.2": "잘;했어,; 내; 차례야!"
+        "lyrics.hedge.2": "잘;했어,; 내; 차례야!",
+        "gameover.hedge.1": "아, 다음엔 될 거야!",
+        "gameover.hedge.2": "다시 해보자!",
+        "gameover.hedge.3": "힘내, 넌 할 수 있어!",
+        "gameover.hedge.4": "연습이 최고야!",
+        "gameover.hedge.5": "한 번 더, 힘내!"
     },
     "en-PIRATE": {
         "lyrics.hedge.1": "Watch; this!",
-        "lyrics.hedge.2": "Good; job,; me; turn!"
+        "lyrics.hedge.2": "Good; job,; me; turn!",
+        "gameover.hedge.1": "Aw, maybe next voyage!",
+        "gameover.hedge.2": "Let's try again, matey!",
+        "gameover.hedge.3": "C'mon, ye can do it!",
+        "gameover.hedge.4": "Practice make best, arr!",
+        "gameover.hedge.5": "One more time, C'mon, matey!"
     },
     "it-IT": {
         "lyrics.hedge.1": "Guar;da; que;sto!",
-        "lyrics.hedge.2": "Bra;vo,; toc;ca; a; me!"
+        "lyrics.hedge.2": "Bra;vo,; toc;ca; a; me!",
+        "gameover.hedge.1": "Ah, magari la prossima!",
+        "gameover.hedge.2": "Riproviamo!",
+        "gameover.hedge.3": "Dai, ce la puoi fare!",
+        "gameover.hedge.4": "La pratica rende perfetti!",
+        "gameover.hedge.5": "Ancora una volta, dai!"
     },
     "pl-PL": {
         "lyrics.hedge.1": "Pa;trz; na; to!",
-        "lyrics.hedge.2": "Do;bra; ro;bo;ta,; mo;ja; ko;lej!"
+        "lyrics.hedge.2": "Do;bra; ro;bo;ta,; mo;ja; ko;lej!",
+        "gameover.hedge.1": "Ech, może następnym razem!",
+        "gameover.hedge.2": "Spróbujmy jeszcze raz!",
+        "gameover.hedge.3": "Dawaj, dasz radę!",
+        "gameover.hedge.4": "Praktyka czyni mistrza!",
+        "gameover.hedge.5": "Jeszcze raz, dawaj!"
     },
     "tr-TR": {
         "lyrics.hedge.1": "İzle; bunu!",
-        "lyrics.hedge.2": "Afe;rin,; sıra; bende!"
+        "lyrics.hedge.2": "Afe;rin,; sıra; bende!",
+        "gameover.hedge.1": "Ah, belki bir dahaki sefere!",
+        "gameover.hedge.2": "Hadi tekrar deneyelim!",
+        "gameover.hedge.3": "Hadi, yapabilirsin!",
+        "gameover.hedge.4": "Pratik mükemmelleştirir!",
+        "gameover.hedge.5": "Bir kez daha, hadi!"
     },
     "hu-HU": {
         "lyrics.hedge.1": "Ezt; nézd!",
-        "lyrics.hedge.2": "Szép; volt,; én; jövök!"
+        "lyrics.hedge.2": "Szép; volt,; én; jövök!",
+        "gameover.hedge.1": "Ah, talán legközelebb!",
+        "gameover.hedge.2": "Próbáljuk újra!",
+        "gameover.hedge.3": "Gyerünk, menni fog!",
+        "gameover.hedge.4": "Gyakorlat teszi a mestert!",
+        "gameover.hedge.5": "Még egyszer, gyerünk!"
     }
 }

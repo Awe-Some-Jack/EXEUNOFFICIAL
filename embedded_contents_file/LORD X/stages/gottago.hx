@@ -85,15 +85,15 @@ function onCreate()
 	bgBlue.alpha = 0.0001;
 	add(bgBlue);
 
-	ring = new FlxSprite(-1090, -500);
+	ring = new FlxSprite(-1100, -310);
 	ring.loadGraphic(Paths.image('gottago/ring'));
-	ring.scale.set(0.3, 0.3);
+	ring.scale.set(0.65, 0.65);
 	ring.updateHitbox();
 	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), ring);
 
-	ringBlue = new FlxSprite(-1090, -500);
+	ringBlue = new FlxSprite(-1100, -310);
 	ringBlue.loadGraphic(Paths.image('gameovers/ring'));
-	ringBlue.scale.set(0.3, 0.3);
+	ringBlue.scale.set(0.65, 0.65);
 	ringBlue.updateHitbox();
 	ringBlue.alpha = 0.0001;
 	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), ringBlue);

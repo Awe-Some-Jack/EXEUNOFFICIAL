@@ -19,7 +19,8 @@ local modConfigs = {
 	['EXE'] = {
 		type = 'slide',
 		skipSongs = {},
-		dontShowSlide = true,
+		dontShowSlide = {'black-sun', 'godspeed'},
+		dontShowSlideStory = {'faker'},
 		useSeenCutscene = true,
 		phase = 'post',
 		snapDelay = 0.05,
@@ -203,6 +204,11 @@ local function createCountdownIntro()
 end
 
 local function slideHidden()
+	if isStoryMode and cfg.dontShowSlideStory then
+		for _, s in ipairs(cfg.dontShowSlideStory) do
+			if songPath == s then return true end
+		end
+	end
 	if type(cfg.dontShowSlide) ~= 'table' then return cfg.dontShowSlide end
 	for _, s in ipairs(cfg.dontShowSlide) do
 		if songPath == s then return true end

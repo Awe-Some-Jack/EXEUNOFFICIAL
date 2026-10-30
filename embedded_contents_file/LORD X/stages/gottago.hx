@@ -106,7 +106,9 @@ function onCreate()
 	vg.screenCenter();
 	add(vg);
 
-	black = new FlxSprite(-4000, -4000).makeGraphic(8000, 8000, 0xFF000000);
+	black = new FlxSprite().makeGraphic(1, 1, 0xFF000000);
+	black.scale.set(8000, 8000);
+	black.updateHitbox();
 	black.alpha = 0;
 	black.camera = camHUD;
 	black.screenCenter();
@@ -134,8 +136,25 @@ function onCreate()
 	boyfriend.alpha = 0;
 	if (prefs.shaders)
 	{
-		bgCamera.filters = [new ShaderFilter(fishEye), new ShaderFilter(brightness), new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
-		camGame.filters = camHUD.filters = [new ShaderFilter(brightness), new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
+		FilterPruner.addStatic(bgCamera, fishEye);
+		for (cam in [bgCamera, camGame, camHUD])
+		{
+			FilterPruner.add(cam, brightness, 'brightness', 0);
+			FilterPruner.addStatic(cam, antiPiracy, false);
+			FilterPruner.addStatic(cam, cloneImage, false);
+			FilterPruner.add(cam, pixelShader, 'pixelsize', 0);
+			FilterPruner.add(cam, glitch, 'prob', 0);
+			FilterPruner.add(cam, glitch2, 'binaryIntensity', 0);
+		}
+	}
+}
+
+function setClonePhaseFilters(active:Bool)
+{
+	for (cam in [bgCamera, camGame, camHUD])
+	{
+		FilterPruner.setActive(cam, antiPiracy, active);
+		FilterPruner.setActive(cam, cloneImage, active);
 	}
 }
 
@@ -272,19 +291,15 @@ function onEvent(n, v1, v2)
 				game.noteKillOffset = 9999999999;
 				for (i in 0...notes.length) notes.members[i].copyY = false;
 				for (i in 0...unspawnNotes.length) unspawnNotes[i].copyY = false;
-				if (prefs.shaders)
-				{
-					bgCamera.filters = [new ShaderFilter(fishEye), new ShaderFilter(brightness), new ShaderFilter(antiPiracy), new ShaderFilter(cloneImage), new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
-					camGame.filters = camHUD.filters = [new ShaderFilter(brightness), new ShaderFilter(antiPiracy), new ShaderFilter(cloneImage), new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
-				}
+				if (prefs.shaders) setClonePhaseFilters(true);
 			case 'blackshit':
 				illegalInstruction.visible = false;
 				vg.alpha = 0.75;
 				_phase = 'halfway';
 				if (prefs.shaders)
 				{
-					bgCamera.filters = [new ShaderFilter(fishEye), new ShaderFilter(brightness), new ShaderFilter(pixelShader), new ShaderFilter(glitch)];
-					camGame.filters = camHUD.filters = [new ShaderFilter(brightness), new ShaderFilter(pixelShader), new ShaderFilter(glitch)];
+					glitch2?.setFloat('binaryIntensity', 0);
+					setClonePhaseFilters(false);
 				}
 				bgCamera.visible = false;
 				camGame.visible = camHUD.visible = false;
@@ -364,6 +379,12 @@ function onBeatHit()
 			glitch?.setFloat('time', FlxG.random.float(0,50));
 }
 
+function onSongStart()
+{
+	bgBlue.visible = false;
+	ringBlue.visible = false;
+}
+
 function onDestroy() prefs.ghostTapping = oldGT;
 
 function onGameOverStart()
@@ -374,8 +395,10 @@ function onGameOverStart()
 
 		glitch?.setFloat('prob', 0.45);
 		glitch2?.setFloat('binaryIntensity', 0);
-		bgCamera.filters = [new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
-		FlxG.camera.filters = [new ShaderFilter(pixelShader), new ShaderFilter(glitch), new ShaderFilter(glitch2)];
+		if (bloomTween?.active ?? false) bloomTween.cancel();
+		brightness?.setFloat('brightness', 0);
+		FilterPruner.setActive(bgCamera, fishEye, false);
+		setClonePhaseFilters(false);
 		pixelShader?.setFloat('pixelsize', 15);
 		if (pixelTween?.active ?? false) pixelTween.cancel();
 		pixelTween = FlxTween.num(15, 0, Conductor.crochet / 250, {ease: FlxEase.cubeOut}, v -> {
@@ -417,6 +440,7 @@ function onGameOverStart()
 	bgBlue.velocity.x -10;
 	bg.destroy();
 	ring.destroy();
+	bgBlue.visible = ringBlue.visible = true;
 	bgBlue.alpha = 1;
 	ringBlue.alpha = 1;
 }

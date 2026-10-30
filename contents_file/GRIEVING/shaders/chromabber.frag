@@ -5,9 +5,7 @@
     vec2 PincushionDistortion(in vec2 uv, float strength) 
     {
 	    vec2 st = uv - 0.5;
-        float uvA = atan(st.x, st.y);
-        float uvD = dot(st, st);
-        return 0.5 + vec2(sin(uvA), cos(uvA)) * sqrt(uvD) * (1.0 - strength * uvD);
+        return 0.5 + st * (1.0 - strength * dot(st, st));
     }
 
     vec3 ChromaticAbberation(sampler2D tex, in vec2 uv) 

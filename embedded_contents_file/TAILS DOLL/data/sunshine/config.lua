@@ -1,6 +1,21 @@
 local intensity = 50
 local velocity = 2
 
+local neutrals = {
+	bloom = {brightness = 0, contrast = 1, saturation = 1},
+}
+local function addCameraFilters(camera)
+	for _, name in ipairs({'bloom', 'VHS'}) do
+		if neutrals[name] then
+			for uniform, neutral in pairs(neutrals[name]) do
+				addPrunedFilter(camera, name, uniform, neutral)
+			end
+		else
+			addStaticFilter(camera, name)
+		end
+	end
+end
+
 local dadX, dadY = 0, 0
 function onCreatePost()
 	dadX, dadY = getProperty('dad.x'), getProperty('dad.y')
@@ -25,31 +40,33 @@ function onCreatePost()
 	end
 
 	if shadersEnabled then
-		local neutrals = {
-			bloom = {brightness = 0, contrast = 1, saturation = 1},
-		}
-		local cameraFilters = {
-			{'camGame', {'bloom', 'VHS'}},
-			{'camVideo', {'bloom', 'VHS'}},
-			{'camHUD', {'bloom', 'VHS'}},
-		}
-		for _, entry in ipairs(cameraFilters) do
-			for _, name in ipairs(entry[2]) do
-				if neutrals[name] then
-					for uniform, neutral in pairs(neutrals[name]) do
-						addPrunedFilter(entry[1], name, uniform, neutral)
-					end
-				else
-					addStaticFilter(entry[1], name)
-				end
-			end
-		end
+		addCameraFilters('camGame')
+		addCameraFilters('camHUD')
 	end
+end
+
+local videoFilters = false
+local function addVideoFilters()
+	if shadersEnabled and not videoFilters then
+		videoFilters = true
+		addCameraFilters('camVideo')
+	end
+end
+
+function onGameOverStart()
+	addVideoFilters()
 end
 
 local canFloat = true
 local floatTime = 0
 local _sat = 1
+local bloomSent = {}
+local function sendBloom(uniform, value)
+	if bloomSent[uniform] ~= value then
+		bloomSent[uniform] = value
+		setShaderFloat('bloom', uniform, value)
+	end
+end
 function onUpdate(e)
 	floatTime = floatTime + e
 	if canFloat then
@@ -60,9 +77,10 @@ function onUpdate(e)
 	end
 
 	if shadersEnabled then
-		setShaderFloat('bloom', 'brightness', getProperty('bloom.x') * 2)
-		setShaderFloat('bloom', 'contrast', 1 + (getProperty('bloom.x') * 4) + (getProperty('creepy.x') * 1.25))
-		setShaderFloat('bloom', 'saturation', _sat + (getProperty('creepy.x') / 2))
+		local bloomX, creepyX = getProperty('bloom.x'), getProperty('creepy.x')
+		sendBloom('brightness', bloomX * 2)
+		sendBloom('contrast', 1 + (bloomX * 4) + (creepyX * 1.25))
+		sendBloom('saturation', _sat + (creepyX / 2))
 	end
 end
 
@@ -89,5 +107,6 @@ function onEvent(n,v1,v2)
 			canFloat = false
 		end
 		if v1 == 'back' then canFloat = true end
+		if v1 == 'videoend' then addVideoFilters() end
 	end
 end

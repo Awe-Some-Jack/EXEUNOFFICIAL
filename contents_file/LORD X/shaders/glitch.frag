@@ -122,12 +122,11 @@ void glitchSwap(inout vec2 p) {
     seed = glitchSeed(glitchCoord(pGlitched, groupSize), speed);
     float applyBase = shouldApply(seed);
     if (applyBase > 0.0) {
-        float combinedApply = applyBase * shouldApply(seed);
-        swapBlocks(pGlitched, groupSize, subGrid, blockSize, seed.seed + 1.0, combinedApply);
-        swapBlocks(pGlitched, groupSize, subGrid, blockSize, seed.seed + 2.0, combinedApply);
-        swapBlocks(pGlitched, groupSize, subGrid, blockSize, seed.seed + 3.0, combinedApply);
-        swapBlocks(pGlitched, groupSize, subGrid, blockSize, seed.seed + 4.0, combinedApply);
-        swapBlocks(pGlitched, groupSize, subGrid, blockSize, seed.seed + 5.0, combinedApply);
+        swapBlocks(pGlitched, groupSize, subGrid, blockSize, seed.seed + 1.0, applyBase);
+        swapBlocks(pGlitched, groupSize, subGrid, blockSize, seed.seed + 2.0, applyBase);
+        swapBlocks(pGlitched, groupSize, subGrid, blockSize, seed.seed + 3.0, applyBase);
+        swapBlocks(pGlitched, groupSize, subGrid, blockSize, seed.seed + 4.0, applyBase);
+        swapBlocks(pGlitched, groupSize, subGrid, blockSize, seed.seed + 5.0, applyBase);
     }
     
     groupSize = vec2(1.2, 0.2) * glitchScale;

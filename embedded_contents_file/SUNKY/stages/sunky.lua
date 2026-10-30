@@ -184,23 +184,33 @@ function onDestroy()
 	end
 end
 
-local pausedVideos = {}
-
 function onPause()
-	pausedVideos = {}
-	for _, video in ipairs(videos) do
-		if getProperty(video) ~= nil and getProperty(video .. '.bitmap.isPlaying') then
-			callMethod(video .. '.pause')
-			pausedVideos[video] = true
-		end
-	end
+	runHaxeCode([[
+		var paused = [];
+		for (name in ['ahh', 'bestday', 'arin'])
+		{
+			var video = game.getLuaObject(name);
+			if (video != null && video.bitmap != null && video.bitmap.isPlaying)
+			{
+				video.pause();
+				paused.push(name);
+			}
+		}
+		setVar('sunkyPausedVideos', paused);
+	]])
 end
 
 function onResume()
+	runHaxeCode([[
+		var paused = getVar('sunkyPausedVideos');
+		if (paused != null)
+			for (name in paused)
+				game.getLuaObject(name)?.resume();
+		setVar('sunkyPausedVideos', null);
+	]])
+
 	for _, video in ipairs(videos) do
 		if getProperty(video) ~= nil then
-			if pausedVideos[video] then callMethod(video .. '.resume') end
-
 			if not callMethodFromClass('flixel.FlxG', 'signals.focusLost.has', {instanceArg(video .. '.videoSprite.pause')}) then
 				callMethodFromClass('flixel.FlxG', 'signals.focusLost.add', {instanceArg(video .. '.videoSprite.pause')})
 			end

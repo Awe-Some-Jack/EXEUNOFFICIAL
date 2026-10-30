@@ -12,7 +12,7 @@ function onUpdatePost(e)
 	for (i in 0...game.notes.length)
 	{
 		var note:Note = game.notes.members[i];
-		if (note.noteType == 'Miss Note')
+		if (note != null && note.noteType == 'Miss Note')
 		{
 			if ((Conductor.songPosition - note.strumTime) > 10 && note.active)
 			{

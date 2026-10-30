@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [1068, 646],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "left",
-			"indices": []
+			"indices": [],
+			"name": "left"
 		},
 		{
-			"loop": false,
 			"offsets": [689, 1364],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "up",
-			"indices": []
+			"indices": [],
+			"name": "up"
 		},
 		{
+			"loop": false,
 			"offsets": [765, 595],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
-		},
-		{
-			"offsets": [525, 664],
-			"loop": false,
 			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "rigth"
-		},
-		{
-			"loop": true,
-			"offsets": [610, 604],
-			"anim": "idle",
-			"fps": 24,
-			"name": "idle griatos grande",
+			"name": "down",
 			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [525, 664],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "rigth",
+			"indices": []
+		},
+		{
+			"offsets": [610, 604],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle griatos grande"
 		}
 	],
 	"vocals_file": "",
@@ -47,7 +47,7 @@
 	"position": [480, 930],
 	"healthicon": "griatos2",
 	"flip_x": false,
-	"healthbar_colors": [53, 54, 102],
+	"healthbar_colors": [46, 21, 24],
 	"camera_position": [-380, -20],
 	"sing_duration": 6,
 	"scale": 1.9,

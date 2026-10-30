@@ -25,7 +25,7 @@ function onGameOverStart()
 
 	daGameOver = new FlxSprite();
 	daGameOver.frames = Paths.getSparrowAtlas('characters/Bf_dancin-vanilla');
-	daGameOver.animation.addByPrefix('loop', 'Dance', 24, true);
+	daGameOver.animation.addByPrefix('loop', 'dance', 24, true);
 	daGameOver.animation.play('loop');
 	daGameOver.screenCenter();
 	daGameOver.scrollFactor.set();

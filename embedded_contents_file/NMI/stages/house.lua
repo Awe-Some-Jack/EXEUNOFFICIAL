@@ -326,6 +326,12 @@ function onEvent(n,v1,v2)
 			for i = 0,3 do
 				startTween('sexo'..i, 'playerStrums.members['..i..']', {y = _G['defaultPlayerStrumY'..i] + (downscroll and 25 or -25), alpha = 0}, crochet / (1000 / 8), {startDelay = (i / 2), ease = 'cubeOut'})
 			end
+			for i = 0, getProperty('unspawnNotes.length') - 1 do
+				if getPropertyFromGroup('unspawnNotes', i, 'mustPress') then setPropertyFromGroup('unspawnNotes', i, 'ignoreNote', true) end
+			end
+			for i = 0, getProperty('notes.length') - 1 do
+				if getPropertyFromGroup('notes', i, 'mustPress') then setPropertyFromGroup('notes', i, 'ignoreNote', true) end
+			end
 
 			startVideo('fakebabyfinal', false, true)
 			setProperty('inCutscene', false)

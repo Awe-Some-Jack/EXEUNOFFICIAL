@@ -5,6 +5,7 @@ import backend.NoteTypesConfig;
 
 import objects.StrumNote;
 
+import flixel.graphics.frames.FlxTileFrames;
 import flixel.math.FlxRect;
 
 using StringTools;
@@ -349,13 +350,13 @@ class Note extends FlxSprite
 			if (isSustainNote)
 			{
 				final graphic = Paths.image('pixelUI/' + skinPixel + 'ENDS' + skinPostfix);
-				loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 2));
+				frames = FlxTileFrames.fromBitmapAddSpacesAndBorders(graphic, FlxPoint.get(Math.floor(graphic.width / 4), Math.floor(graphic.height / 2)), null, FlxPoint.get(1, 1));
 				originalHeight = graphic.height / 2;
 			}
 			else
 			{
 				final graphic = Paths.image('pixelUI/' + skinPixel + skinPostfix);
-				loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 5));
+				frames = FlxTileFrames.fromBitmapAddSpacesAndBorders(graphic, FlxPoint.get(Math.floor(graphic.width / 4), Math.floor(graphic.height / 5)), null, FlxPoint.get(1, 1));
 			}
 			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 			loadPixelNoteAnims();

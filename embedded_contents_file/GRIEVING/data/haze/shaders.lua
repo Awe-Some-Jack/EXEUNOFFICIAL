@@ -72,6 +72,7 @@ function onCreatePost()
             bw = {grayness = 0},
             shine = {brightness = 0, contrast = 1, saturation = 1},
             wave = {amount = 0},
+            pseudo = {sort = 0},
         }
         local cameraFilters = {
             {'camGame', {'chrom', 'bw', 'shine', 'pseudo', 'wave'}},

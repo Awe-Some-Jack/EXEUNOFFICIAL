@@ -40,13 +40,8 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
         vec2 proj = rp * tan(beta) / hd;
         suv = proj * 0.5 + 0.5;
     } else {
-        float dx, dy, rr, r2, theta;
-        rr = sqrt(dot(ndc, ndc) * 0.25);
-        r2 = rr * (1.0 + c * (rr * rr));
-        theta = atan(ndc.x * 0.5, ndc.y * 0.5);
-        dx = sin(theta) * r2;
-        dy = cos(theta) * r2;
-        suv = vec2(dx, dy) + 0.5;
+        vec2 centered = ndc * 0.5;
+        suv = centered * (1.0 + c * dot(centered, centered)) + 0.5;
     }
     
     vec4 col = texture(iChannel0, suv);

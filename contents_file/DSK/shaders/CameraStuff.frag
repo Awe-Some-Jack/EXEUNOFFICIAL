@@ -14,31 +14,22 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
 
     if (cangle != 0.0)
     {
-        vec2 pixelCoord = fragCoord;
-        vec2 center = iResolution.xy * 0.5;
-        vec2 centered = pixelCoord - center;
-        vec2 normalized = centered / iResolution.y;
         float angInRad = radians(cangle);
         mat2 rotation = mat2(
             cos(angInRad), -sin(angInRad),
             sin(angInRad),  cos(angInRad)
         );
-        normalized = rotation * normalized;
-        vec2 finalCoord = normalized * iResolution.y + center;
-        uv = finalCoord / iResolution.xy;
+        uv = rotation * (fragCoord - iResolution.xy * 0.5) / iResolution.xy + 0.5;
+
+        if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0)
+        {
+            fragColor = vec4(0.0);
+            return;
+        }
     }
 
-    if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0)
-    {
-        fragColor = vec4(0.0);
-    }
-    else
-    {
-        vec4 tex = texture(iChannel0, uv);
-        vec3 finalColor = tex.rgb * brightness;
-        finalColor = mix(vec3(0.5), finalColor, contrast);
-        fragColor = vec4(finalColor, tex.a);
-    }
+    vec4 tex = texture(iChannel0, uv);
+    fragColor = vec4(tex.rgb * (brightness * contrast) + 0.5 - 0.5 * contrast, tex.a);
 }
 
 void main()

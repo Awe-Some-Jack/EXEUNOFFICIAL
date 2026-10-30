@@ -2,6 +2,7 @@ package objects;
 
 import backend.animation.PsychAnimationController;
 import flixel.FlxSprite;
+import flixel.graphics.frames.FlxTileFrames;
 import flixel.math.FlxPoint;
 import flixel.math.FlxMath;
 import flixel.FlxG;
@@ -100,7 +101,7 @@ class StrumNote extends FlxSprite
 			loadGraphic(Paths.image('pixelUI/' + texture));
 			final fw:Int = Math.floor(width / 4);
 			final fh:Int = Math.floor(height / 5);
-			loadGraphic(Paths.image('pixelUI/' + texture), true, fw, fh);
+			frames = FlxTileFrames.fromBitmapAddSpacesAndBorders(Paths.image('pixelUI/' + texture), FlxPoint.get(fw, fh), null, FlxPoint.get(1, 1));
 
 			antialiasing = false;
 			setGraphicSize(Std.int(width * PlayState.daPixelZoom));

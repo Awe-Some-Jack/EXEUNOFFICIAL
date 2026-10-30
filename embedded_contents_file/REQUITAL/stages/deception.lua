@@ -149,6 +149,7 @@ local running = false
 local inPixel = false
 local current = 'bgrun'
 local repeatbg = false
+local prevIconScale = 0.5
 function onEvent(n,v1)
 	if n == 'BGchange' then
 		if v1 == 'intro' then
@@ -182,6 +183,20 @@ function onEvent(n,v1)
 		if v1 == 'pixel' then
 			setProperty('gameplayCam.settings.MiddleY', 800)
 			inPixel = true
+
+			prevIconScale = getProperty('BFIcon.scale.x')
+			callMethod('BFIcon.changeIcon', {'bf-pixel'})
+			setProperty('BFIcon.scale.x', 5)
+			setProperty('BFIcon.scale.y', 5)
+
+			callMethod('PicoIcon.changeIcon', {'pico-pixel'})
+			setProperty('PicoIcon.scale.x', 5)
+			setProperty('PicoIcon.scale.y', 5)
+
+			callMethod('ReqIcon.changeIcon', {'requital-pixel'})
+			setProperty('ReqIcon.scale.x', 5)
+			setProperty('ReqIcon.scale.y', 5)
+
 			cameraFlash('FFFFFF', 'game', 1, true)
 			setProperty('cameraSpeed', 9999)
 			setProperty('gf.alpha', 0) setProperty('picolegs.alpha', 0)
@@ -207,6 +222,19 @@ function onEvent(n,v1)
 		end
 		if v1 == 'back' then
 			inPixel = false
+
+			callMethod('BFIcon.changeIcon', {'bf-req'})
+			setProperty('BFIcon.scale.x', prevIconScale)
+			setProperty('BFIcon.scale.y', prevIconScale)
+
+			callMethod('PicoIcon.changeIcon', {'pico-req'})
+			setProperty('PicoIcon.scale.x', prevIconScale)
+			setProperty('PicoIcon.scale.y', prevIconScale)
+
+			callMethod('ReqIcon.changeIcon', {'icon-requital'})
+			setProperty('ReqIcon.scale.x', prevIconScale)
+			setProperty('ReqIcon.scale.y', prevIconScale)
+
 			cameraFlash('FFFFFF', 'game', 1, true)
 			setProperty('gf.alpha', 1) setProperty('picolegs.alpha', 1)
 			triggerEvent('cameracenter', 'false')

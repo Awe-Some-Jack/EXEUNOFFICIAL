@@ -351,6 +351,8 @@ class Monster implements NavAgent
 			return RUNNING;
 		}
 
+		if (_playerFeetX() >= 9300.0) return RUNNING;
+
 		final hidden = _playerHidden();
 
 		if (_ambushTimer > 0)
@@ -1029,7 +1031,7 @@ class Monster implements NavAgent
 		{
 			final n = graph.nodes[i];
 			final along = (n.x - px) * ahead;
-			if (along < 1000.0 || along > 1500.0 || Math.abs(n.y - py) > 160) continue;
+			if (along < 1000.0 || along > 1500.0 || Math.abs(n.y - py) > 160 || n.x >= 9300.0) continue;
 			if (graph.walkDegree(i) < 1) continue;
 			final score = along + (_offScreen(n.x, n.y) ? 0 : 1000) + Math.abs(n.y - py) * 0.5;
 			if (score < bestScore)
@@ -1117,6 +1119,7 @@ class Monster implements NavAgent
 			{
 				if (!graph.usable(i)) continue;
 				final n = graph.nodes[i];
+				if (n.x >= 9300.0) continue;
 				final d = _dist(n.x, n.y, px, py);
 				if (d < ring[0] || d > ring[1]) continue;
 				if (_dormant && _dist(n.x, n.y, _goneX, _goneY) < 450.0) continue;
@@ -1398,6 +1401,13 @@ class Monster implements NavAgent
 			_killTimer -= elapsed;
 			body.velocity.x *= 0.8;
 			if (_killTimer <= 0) _vanish();
+			_finishFrame(elapsed);
+			return;
+		}
+
+		if (!_dormant && _playerFeetX() >= 9300.0)
+		{
+			_vanish();
 			_finishFrame(elapsed);
 			return;
 		}

@@ -82,7 +82,7 @@ class GameOver
 		_spikes = spikes;
 		_scares = 0;
 		_black = _add(new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK));
-		if (byExe) _darkness();
+		if (_byExe) _darkness();
 		else _titles();
 	}
 

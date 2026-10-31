@@ -2497,7 +2497,7 @@ class PlayState extends MusicBeatState
 		#end
 
 		#if (!js && !html5)
-		if (ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null)
+		if (ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null && songName != 'prey')
 		{
 			if (!_freedCpuImages)
 			{
@@ -2789,7 +2789,6 @@ class PlayState extends MusicBeatState
 				freed++;
 			}
 		}
-		if (freed > 0) Paths.clearUnusedMemoryGradual();
 	}
 	#end
 

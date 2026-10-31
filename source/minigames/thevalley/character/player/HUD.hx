@@ -114,14 +114,6 @@ class HUD
 	var _shardsHud:FlxSprite;
 	var _shards:Array<FlxSprite> = [];
 
-	var _radarCenter:FlxSprite;
-	var _radarDot:FlxSprite;
-	var _radarAlpha:Float = 0;
-	var _radarTarget:Float = 0;
-	var _radarPulse:Float = 0;
-
-	public var radarHidden:Bool = false;
-
 	var _targetAlpha:Float = 0.0;
 	var _alpha:Float       = 0.0;
 
@@ -235,20 +227,6 @@ class HUD
 		_timeSep.visible = false;
 		_group.add(_timeSep);
 
-		_radarCenter = new FlxSprite(FlxG.width - 60.0 - 3, 660.0 - 3);
-		_radarCenter.makeGraphic(6, 6, 0xFF555555);
-		_radarCenter.scrollFactor.set(0, 0);
-		_radarCenter.cameras = [cam];
-		_radarCenter.alpha = 0;
-		_group.add(_radarCenter);
-
-		_radarDot = new FlxSprite(FlxG.width - 60.0 - 5, 660.0 - 5);
-		_radarDot.makeGraphic(10, 10, 0xFFFF3030);
-		_radarDot.scrollFactor.set(0, 0);
-		_radarDot.cameras = [cam];
-		_radarDot.alpha = 0;
-		_group.add(_radarDot);
-
 		for (_ in 0...3)
 		{
 			final t = new FlxText(-200.0, 662.0, 0, "", 16);
@@ -324,18 +302,6 @@ class HUD
 		}
 	}
 
-	public function setMonsterDirection(dx:Float, dy:Float, active:Bool):Void
-	{
-		_radarTarget = active ? 1.0 : 0.0;
-		if (!active) return;
-
-		var angle = Math.atan2(dy, dx);
-		var cx = FlxG.width - 60.0;
-		var cy = 660.0;
-		_radarDot.x = cx + Math.cos(angle) * 22.0 - 5;
-		_radarDot.y = cy + Math.sin(angle) * 22.0 - 5;
-	}
-
 	public function update(elapsed:Float):Void
 	{
 		if (timerRunning && timeElapsed < (9 * 60 + 59))
@@ -404,16 +370,6 @@ class HUD
 		}
 		_shardsHud.alpha  = _shardAlpha;
 		_shardsDisp.alpha = _shardAlpha;
-
-		if (_radarAlpha != _radarTarget)
-		{
-			var rspd = 1.0 - Math.pow(1.0 / 4.0, elapsed);
-			_radarAlpha += (_radarTarget - _radarAlpha) * rspd;
-			if (Math.abs(_radarAlpha - _radarTarget) < 0.01) _radarAlpha = _radarTarget;
-		}
-		_radarPulse = radarHidden ? _radarPulse + elapsed : 0;
-		_radarCenter.alpha = _radarAlpha * 0.6;
-		_radarDot.alpha    = _radarAlpha * (radarHidden ? 0.3 + 0.2 * Math.sin(_radarPulse * 2.5) : 1.0);
 
 		var a = _shardAlpha;
 		for (i in 0..._shards.length)

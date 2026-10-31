@@ -399,22 +399,6 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 		hud.timerRunning = _gameplayStarted && !cutscene.skullCSPlaying && (_deathPhase == 0);
 
-		var nearestActiveMonster:Monster = null;
-		var nearestActiveDist = Math.POSITIVE_INFINITY;
-		for (m in monsters)
-		{
-			if (m.isDormant || m.disguised) continue;
-			final dx = m.sprite.x - player.x;
-			final dy = m.sprite.y - player.y;
-			final d = Math.sqrt(dx * dx + dy * dy);
-			if (d < nearestActiveDist) { nearestActiveDist = d; nearestActiveMonster = m; }
-		}
-		
-		if (nearestActiveMonster != null)
-			hud.setMonsterDirection(nearestActiveMonster.sprite.x - player.x, nearestActiveMonster.sprite.y - player.y, true);
-		else
-			hud.setMonsterDirection(0, 0, false);
-
 		hud.update(elapsed);
 		tileMap.update(elapsed, player);
 
@@ -513,7 +497,6 @@ class TheValley extends MusicBeatState implements ExeWorld
 		final cover = bg.darkness(player);
 		player.inDark = cover >= (player.inDark ? 0.35 : 0.6);
 		player.darkZone = player.inDark ? bg.darkZone : -1;
-		hud.radarHidden = player.inDark;
 	}
 
 	function _updatePlayerOcclusion(elapsed:Float):Void

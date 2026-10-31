@@ -191,6 +191,8 @@ class ClientPrefs {
 		if (data.framerate > MAX_FRAMERATE)
 			data.framerate = MAX_FRAMERATE;
 
+		data.camZooms = true;
+
 		FlxG.autoPause = ClientPrefs.data.autoPause;
 
 		if (data.uncappedFPS)

@@ -160,7 +160,7 @@ class Main extends Sprite
 		probeGraphics();
 		switchvideo.backend.SwitchVideoLog.logCallBack = (msg:String, ?pos:haxe.PosInfos) -> boot('video: ' + msg);
 		probeImage('assets/exe/ring.webp');
-		probeImage('assets/shared/images/minigame/preymini/bg/map/back.png');
+		probeImage('assets/shared/images/minigame/preymini/bg/map/back.webp');
 		#end
 
 		#if CRASH_HANDLER

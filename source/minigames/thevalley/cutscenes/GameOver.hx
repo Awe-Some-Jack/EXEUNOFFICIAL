@@ -43,6 +43,7 @@ class GameOver
 	var _phase:GameOverPhase = Idle;
 	var _timer:Float = 0;
 	var _byExe:Bool = false;
+	var _spikes:Bool = false;
 	var _scares:Int = 0;
 
 	var _song:FlxSound;
@@ -74,10 +75,11 @@ class GameOver
 		_ui = ui;
 	}
 
-	public function start(byExe:Bool):Void
+	public function start(byExe:Bool, spikes:Bool = false):Void
 	{
 		if (active) return;
-		_byExe = byExe;
+		_byExe = byExe || spikes;
+		_spikes = spikes;
 		_scares = 0;
 		_black = _add(new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK));
 		if (byExe) _darkness();
@@ -193,13 +195,21 @@ class GameOver
 	function _showBody():Void
 	{
 		_body = new FlxSprite();
-		_body.frames = Paths.getSparrowAtlas("minigame/thevalley/gameover/imdead");
-		_body.animation.addByPrefix("dead", "imdead dead", 4, false);
-		_add(_body, 1.5);
+		if (_spikes)
+		{
+			_body.loadGraphic(_img("gameoverspike"));
+			_growBase = 0.8;
+		}
+		else
+		{
+			_body.frames = Paths.getSparrowAtlas("minigame/thevalley/gameover/imdead");
+			_body.animation.addByPrefix("dead", "imdead dead", 4, false);
+			_body.animation.play("dead", true);
+			_growBase = 1.5;
+		}
+		_add(_body, _growBase);
 		_body.setPosition((FlxG.width - _body.width) * 0.5, (FlxG.height - _body.height) * 0.5);
-		_body.animation.play("dead", true);
 		_grower = _body;
-		_growBase = 1.5;
 
 		_makeTitles(3.0);
 		final gap = 12.0;

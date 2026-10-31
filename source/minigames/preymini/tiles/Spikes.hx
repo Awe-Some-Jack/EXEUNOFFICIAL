@@ -16,7 +16,7 @@ class Spikes
 
 	public function new(terrain:Terrain, key:String)
 	{
-		final bmd = Paths.getBitmapData(Paths.getPath('images/$key.png', IMAGE));
+		final bmd = Terrain.read(key);
 		_findBlocks(bmd);
 		for (b in _blocks) terrain.fill(Std.int(b.x), Std.int(b.y), Std.int(b.right), Std.int(b.bottom), Solid);
 		art = terrain.addArt(bmd);

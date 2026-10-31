@@ -102,6 +102,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	var _deathFade:FlxSprite;
 	public var gameOver:GameOver;
 	var _lastDeathByExe:Bool = false;
+	var _lastDeathBySpikes:Bool = false;
 	var _deathPhase:Int = 0;
 	var _deathHop:Bool = false;
 	var _burning:Bool = false;
@@ -1003,12 +1004,13 @@ class TheValley extends MusicBeatState implements ExeWorld
 		if (FlxG.sound.music != null) FlxG.sound.music.stop();
 		for (snd in FlxG.sound.list) if (snd != null && snd.looped && snd.playing) snd.stop();
 		bgCam.visible = false;
-		gameOver.start(_lastDeathByExe);
+		gameOver.start(_lastDeathByExe, _lastDeathBySpikes);
 	}
 
 	function _startSpikesDeath():Void
 	{
 		if (!_startDeath(0.9)) return;
+		_lastDeathBySpikes = true;
 		gameCamera.shake(0.0025, 0.3);
 		player.body.type = BodyType.KINEMATIC;
 		player.body.velocity.setxy(0, 0);
@@ -1090,6 +1092,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	{
 		if (_deathPhase != 0) return false;
 		_lastDeathByExe = byExe;
+		_lastDeathBySpikes = false;
 		for (sk in skullPrompts) sk.interrupt();
 		for (tm in totems) tm.interrupt();
 		for (m in monsters)

@@ -37,7 +37,7 @@ class Terrain
 
 	public static function load(hitboxKey:String, repeat:Bool):Terrain
 	{
-		final hitbox = _read(hitboxKey);
+		final hitbox = read(hitboxKey);
 		final terrain = new Terrain(hitbox, repeat);
 		hitbox.dispose();
 		return terrain;
@@ -55,7 +55,7 @@ class Terrain
 
 	public function loadArt(key:String):FlxTypedGroup<FlxSprite>
 	{
-		return addArt(_read(key));
+		return addArt(read(key));
 	}
 
 	public function addArt(art:BitmapData):FlxTypedGroup<FlxSprite>
@@ -154,9 +154,18 @@ class Terrain
 		return Empty;
 	}
 
-	static function _read(key:String):BitmapData
+	public static function read(key:String):BitmapData
 	{
-		return Paths.getBitmapData(Paths.getPath('images/$key.png', IMAGE));
+		final left = Paths.getBitmapData(Paths.getPath('images/$key.webp', IMAGE));
+		final right = Paths.getBitmapData(Paths.getPath('images/${key}2.webp', IMAGE));
+		if (left == null || right == null) return left;
+
+		final full = new BitmapData(left.width + right.width, left.height, true, 0);
+		full.copyPixels(left, left.rect, new Point());
+		full.copyPixels(right, right.rect, new Point(left.width, 0));
+		left.dispose();
+		right.dispose();
+		return full;
 	}
 
 	function _add(layer:FlxTypedGroup<FlxSprite>, sprite:FlxSprite, offsetX:Float, offsetY:Float):Void

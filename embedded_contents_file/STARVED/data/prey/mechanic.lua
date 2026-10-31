@@ -26,6 +26,7 @@ function onCreatePost()
 	setVar('isJumping', false)
 
 	for _, snd in ipairs({'badnickfast', 'breakbadnik', 'dropbox', 'hit', 'warning'}) do precacheSound('minigame/preymini/'..snd) end
+	precacheSound('warnin')
 	precacheImage('prey/spike')
 
 	for i = 1, RUSH_LANE do
@@ -179,7 +180,7 @@ local function killBadnik(tag, cx, cy)
 	removeLuaSprite(tag, true)
 end
 
-local function showWarning(tag, withSound)
+local function showWarning(tag)
 	makeAnimatedLuaSprite(tag, 'prey/warning', 500, (getVar('floorY') - 420))
 	scaleObject(tag, 2, 2)
 	addAnimationByPrefix(tag, '1', '1', 12, false)
@@ -187,7 +188,7 @@ local function showWarning(tag, withSound)
 	playAnim(tag, '1', true)
 	setProperty(tag..'.antialiasing', false)
 	addLuaSprite(tag, true)
-	if withSound then playSound('warnin', 0.8) end
+	playSound('warnin', 0.8)
 	runTimer(tag, crochet / 1000)
 end
 
@@ -323,7 +324,7 @@ local function updateBee(b, e)
 			local fall = math.max(1, b.surf - (getProperty(box..'.y') + 77 * 6))
 			setProperty(box..'.acceleration.y', 2 * fall / (beat * beat))
 			playSound('minigame/preymini/dropbox', 0.8)
-			if b.warn then showWarning(b.warn, true) end
+			showWarning(b.warn)
 		end
 	elseif not b.beeGone then
 		local tau = b.t - b.leaveT
@@ -544,13 +545,9 @@ function onEvent(n, v1)
 	end
 end
 
-local playSoundOnce = true
 local id = 0
 local ringId = 0
 local skipSections = 0
-local firstRush = true
-local firstBee = true
-local firstBird = true
 
 local function hazardWindow(beats)
 	return (curBeat >= 96 and curBeat + beats < 379) or (curBeat >= 448 and curBeat + beats < 823)
@@ -601,7 +598,7 @@ local function spawnSpikes()
 	end
 	table.insert(spikeGroups, group)
 
-	showWarning('warning'..id, playSoundOnce)
+	showWarning('warning'..id)
 	if getProperty('cpuControlled') then
 		runTimer('botJump'..id..'spikes', math.max(0.05, (start - getProperty('sonicHitboxFix.x') - 160) / speed - 0.12))
 	end
@@ -619,9 +616,8 @@ local function spawnRush()
 	addLuaSprite(tag, true)
 	table.insert(badniks, {kind = 'rush', tag = tag, t = 0, launched = false, lane = 0})
 
-	showWarning('warningRush'..badnikId, firstRush)
+	showWarning('warningRush'..badnikId)
 	playSound('minigame/preymini/warning', 0.7)
-	firstRush = false
 	if getProperty('cpuControlled') then runTimer('botJump'..badnikId, crochet / 1000 * 2) end
 end
 
@@ -665,8 +661,7 @@ local function spawnBee()
 	addLuaSprite(tag, true)
 
 	table.insert(badniks, {kind = 'bee', tag = tag, box = box, t = 0, state = 'carry', detect = true, surf = surf,
-		hoverX = landX - 333, hoverY = hoverY, drop = land - beat, warn = firstBee and 'badWarn'..badnikId or nil})
-	firstBee = false
+		hoverX = landX - 333, hoverY = hoverY, drop = land - beat, warn = 'badWarn'..badnikId})
 
 	if getProperty('cpuControlled') then runTimer('botJump'..badnikId, arrive - 0.25) end
 	return true
@@ -684,8 +679,7 @@ local function spawnBird()
 	addLuaSprite(tag, true)
 	table.insert(badniks, {kind = 'bird', tag = tag, t = 0, y0 = y0, detect = true})
 
-	showWarning('badWarn'..badnikId, firstBird)
-	firstBird = false
+	showWarning('badWarn'..badnikId)
 	if getProperty('cpuControlled') then runTimer('botJump'..badnikId, crochet / 1000 * 3 - 0.18) end
 end
 
@@ -771,8 +765,7 @@ end
 function onTimerCompleted(t)
 	if stringStartsWith(t, 'warning') or stringStartsWith(t, 'badWarn') then
 		playAnim(t, '2', true)
-		if playSoundOnce and stringStartsWith(t, 'warning') then playSound('warnin', 0.8) end
-		if stringStartsWith(t, 'warning') then playSoundOnce = false end
+		playSound('warnin', 0.8)
 		runTimer('2'..t, crochet / 1000)
 	end
 	if stringStartsWith(t, '2warning') or stringStartsWith(t, '2badWarn') then removeLuaSprite(t:sub(2), true) end

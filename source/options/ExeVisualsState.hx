@@ -24,7 +24,6 @@ class ExeVisualsState extends ExeBaseOptionsState
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.hideHud,   setValue: (v) -> ClientPrefs.data.hideHud   = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.flashing,  setValue: (v) -> ClientPrefs.data.flashing  = v},
-			{label: lbl[2], getValue: () -> ClientPrefs.data.camZooms,  setValue: (v) -> ClientPrefs.data.camZooms  = v},
 			{label: lbl[3], getValue: () -> ClientPrefs.data.scoreZoom, setValue: (v) -> ClientPrefs.data.scoreZoom = v}
 		];
 		var i = 0;

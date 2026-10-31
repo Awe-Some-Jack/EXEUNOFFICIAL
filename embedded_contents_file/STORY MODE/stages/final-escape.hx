@@ -210,6 +210,9 @@ final ballList:Array<String> = ['water', 'electric', 'fire', 'rings', 'super'];
 var notesPosition:Array<Array<Array<Float>>> = [[[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0]]];
 final separation:Float = 50;
 var _particleGroup:Array<RollEmber> = [];
+
+var upSign:FlxSprite;
+var downSign:FlxSprite;
 function onCreatePost()
 {
 	game.canPause = false;
@@ -261,6 +264,16 @@ function onCreatePost()
 	jumpscare.camera = camHUD;
 	jumpscare.alpha = 0.0001;
 	game.add(jumpscare);
+
+	upSign = new FlxSprite(-350, 900).loadGraphic(Paths.image('final/up'));
+	upSign.alpha = 0.0001;
+	upSign.scale.set(0.75, 0.75); upSign.updateHitbox();
+	game.add(upSign);
+
+	downSign = new FlxSprite(-350, -200).loadGraphic(Paths.image('final/down'));
+	downSign.alpha = 0.0001;
+	downSign.scale.set(0.75, 0.75); downSign.updateHitbox();
+	game.add(downSign);
 
 	drowningBf = new FlxSprite(100, -250);
 	drowningBf.frames = Paths.getSparrowAtlas('characters/bfdrowningfe');
@@ -751,6 +764,15 @@ function onEvent(n,v1,v2)
 			case 'startingrun':
 				FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / (1000 / 4));
 			case 'startfifthsection':
+				upSign.alpha = 1;
+				upSign.x -= downSign.width;
+				downSign.alpha = 1;
+				FlxTween.tween(upSign, {y: 400}, 1, {ease: FlxEase.backOut, onComplete: function(_) {
+					FlxTween.tween(upSign, {y: 900}, 1, {ease: FlxEase.backIn});
+				}});
+				FlxTween.tween(downSign, {y: 400}, 1, {ease: FlxEase.backOut, onComplete: function(_) {
+					FlxTween.tween(downSign, {y: -200}, 1, {ease: FlxEase.backIn});
+				}});
 				prefs.ghostTapping = true;
 				camHUD.flash(0xFFFFFFFF, Conductor.crochet / 250, null, true);
 				FlxTween.cancelTweensOf(blackBG);

@@ -9,8 +9,9 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 {
 	var allOptions:Array<ExeBaseOptionsState.ExeGenericOption>;
 
-	static final CONTROL_TYPES:Array<String> = ["psych", "base", "buttons", "mixed"];
+	static final CONTROL_TYPES:Array<String> = ["psych", "base", "mixed"];
 	static final MIDDLESCROLL_TYPES:Array<String> = ["pc", "mobile"];
+	static final HITBOX_POSITIONS:Array<String> = ["bottom", "top"];
 	var controlsIndex:Int = 0;
 
 	public static var curSelected:Int = 0;
@@ -20,8 +21,10 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 
 	var controlTypeLabels:Array<String>;
 	var middlescrollTypeLabels:Array<String>;
+	var hitboxPositionLabels:Array<String>;
 	var controlsTypeOption:ExeBaseOptionsState.ExeGenericOption;
 	var middlescrollTypeOption:ExeBaseOptionsState.ExeGenericOption;
+	var hitboxPositionOption:ExeBaseOptionsState.ExeGenericOption;
 
 	override public function create()
 	{
@@ -30,16 +33,19 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 
 		menuTitle = Language.get('options.mobilecontrols', 'MOBILE CONTROLS');
 		var lbl = Language.getArray('options.mobilecontrols.labels', ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA", "VISIBLE PAUSE BUTTON"]);
-		controlTypeLabels = Language.getArray('controls_type.labels', ["PSYCH", "BASE", "BUTTONS", "D-PAD"]);
+		controlTypeLabels = Language.getArray('controls_type.labels', ["PSYCH", "BASE", "D-PAD"]);
 		middlescrollTypeLabels = Language.getArray('middlescroll_type.labels', ["PC", "MOBILE"]);
+		hitboxPositionLabels = Language.getArray('hitbox_position.labels', ["BOTTOM", "TOP"]);
 		controlsTypeOption = {label: lbl[3], getValue: () -> ClientPrefs.data.controlsType, setValue: (v) -> ClientPrefs.data.controlsType = v};
 		middlescrollTypeOption = {label: lbl[4], getValue: () -> ClientPrefs.data.middlescrollType, setValue: (v) -> ClientPrefs.data.middlescrollType = v};
+		hitboxPositionOption = {label: lbl.length > 10 ? lbl[10] : 'HITBOX POSITION', getValue: () -> ClientPrefs.data.hitboxPosition, setValue: (v) -> ClientPrefs.data.hitboxPosition = v};
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.slideMechanic,  setValue: (v) -> ClientPrefs.data.slideMechanic = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.middleScroll, setValue: (v) -> ClientPrefs.data.middleScroll = v},
 			{label: lbl[2], getValue: () -> ClientPrefs.data.mobileOpponentNotes, setValue: (v) -> ClientPrefs.data.mobileOpponentNotes = v},
 			controlsTypeOption,
 			middlescrollTypeOption,
+			hitboxPositionOption,
 			{label: lbl[5], getValue: () -> ClientPrefs.data.defHitboxAlpha, setValue: (v) -> ClientPrefs.data.defHitboxAlpha = v, isFloat: true},
 			{label: lbl[6], getValue: () -> ClientPrefs.data.pressHitboxAlpha, setValue: (v) -> ClientPrefs.data.pressHitboxAlpha = v, isFloat: true},
 			{label: lbl[7], getValue: () -> ClientPrefs.data.visiblePauseButton, setValue: (v) -> ClientPrefs.data.visiblePauseButton = v},
@@ -67,6 +73,12 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 		return (idx >= 0 && idx < middlescrollTypeLabels.length) ? middlescrollTypeLabels[idx] : type;
 	}
 
+	function getHitboxPositionLabel(type:String):String
+	{
+		final idx = HITBOX_POSITIONS.indexOf(type);
+		return (idx >= 0 && idx < hitboxPositionLabels.length) ? hitboxPositionLabels[idx] : type;
+	}
+
 	function formatValue(opt:ExeBaseOptionsState.ExeGenericOption):String
 	{
 		var val = opt.getValue();
@@ -74,6 +86,7 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 		if (Std.isOfType(val, Bool)) return cast(val, Bool) ? on : off;
 		if (opt == controlsTypeOption) return getControlLabel(cast(val, String));
 		if (opt == middlescrollTypeOption) return getMiddlescrollLabel(cast(val, String));
+		if (opt == hitboxPositionOption) return getHitboxPositionLabel(cast(val, String));
 		if (opt.isFloat == true) return Std.string(Math.round(cast(val, Float) * 100) / 100);
 		return Std.string(val);
 	}
@@ -134,6 +147,12 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 					var idx = FlxMath.wrap(MIDDLESCROLL_TYPES.indexOf(cast(val, String)) + (isRight ? 1 : -1), 0, MIDDLESCROLL_TYPES.length - 1);
 					var newType = MIDDLESCROLL_TYPES[idx];
 					opt.setValue(newType); txt.text = getMiddlescrollLabel(newType);
+				}
+				else if (opt == hitboxPositionOption)
+				{
+					var idx = FlxMath.wrap(HITBOX_POSITIONS.indexOf(cast(val, String)) + (isRight ? 1 : -1), 0, HITBOX_POSITIONS.length - 1);
+					var newType = HITBOX_POSITIONS[idx];
+					opt.setValue(newType); txt.text = getHitboxPositionLabel(newType);
 				}
 				else if (opt.isFloat == true)
 				{

@@ -89,6 +89,14 @@ class EXETitle extends MusicBeatState
 			return;
 		}
 
+		if (FlxG.save.data.parallaxUnlockNoticePending == true)
+		{
+			transitioning = true;
+			super.create();
+			FlxG.switchState(() -> new ParallaxUnlockState());
+			return;
+		}
+
 		if (!initialized)
 		{
 			Main.fpsVar.visible = false;
@@ -425,7 +433,7 @@ class EXETitle extends MusicBeatState
 
 		if (pressContinue && !canStart)
 		{
-			if (controls.ACCEPT)
+			if (controls.ACCEPT #if mobile || shortPress #end)
 			{
 				pressContinue = false;
 				FlxG.sound.play(Paths.sound('menumomentclick'));

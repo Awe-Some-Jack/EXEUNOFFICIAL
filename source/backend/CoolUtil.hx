@@ -10,6 +10,19 @@ import winapi.WindowsAPI.MessageBoxType;
 
 class CoolUtil
 {
+	#if mac
+	public static function userDataDir(sub:String = ''):String
+	{
+		final dir:String = haxe.io.Path.addTrailingSlash(lime.system.System.applicationStorageDirectory) + sub;
+		try
+		{
+			if (!sys.FileSystem.exists(dir)) sys.FileSystem.createDirectory(dir);
+		}
+		catch (e:Dynamic) {}
+		return dir;
+	}
+	#end
+
 	inline public static function quantize(f:Float, snap:Float){
 		// changed so this actually works lol
 		final m:Float = Math.fround(f * snap);

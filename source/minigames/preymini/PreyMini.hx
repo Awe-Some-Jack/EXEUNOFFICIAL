@@ -322,6 +322,9 @@ class PreyMini extends MusicBeatState
 		Difficulty.loadFromWeek();
 		final normal = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == "normal");
 		final diff = normal > -1 ? normal : 0;
+		if (!fromSoundTest)
+			Highscore.saveScore("stardust-speedway", _hud.score, diff);
+
 		try
 		{
 			if (fromSoundTest)

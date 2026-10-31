@@ -81,7 +81,7 @@ class FPSCounter extends Sprite
 	private var totalFPS:Float = 0;
 
 	private var logEnabled:Bool = false;
-	private var logFile:String = "fps_log.txt";
+	private var logFile:String = #if mac backend.CoolUtil.userDataDir() + "fps_log.txt" #else "fps_log.txt" #end;
 	private var logTimer:Float = 0;
 	private var logInterval:Float = 1.0;
 

@@ -37,8 +37,18 @@ class BIOSCharacter
 	public static function upToDate(pairs:Array<{mod:String, charId:String}>):Bool
 		return exists() && FileSystem.exists(atlasKeys()) && File.getContent(atlasKeys()) == keysOf(pairs);
 
-	static inline function atlasDir():String
-		return #if mobile MobileUtil.getAssetDirectory() + #end 'assets/exe/extras/bios/';
+	static function atlasDir():String
+	{
+		#if mobile
+		return MobileUtil.getAssetDirectory() + 'assets/exe/extras/bios/';
+		#elseif desktop
+		final dir:String = haxe.io.Path.addTrailingSlash(lime.system.System.applicationStorageDirectory) + 'bios/';
+		if (!FileSystem.exists(dir)) FileSystem.createDirectory(dir);
+		return dir;
+		#else
+		return 'assets/exe/extras/bios/';
+		#end
+	}
 
 	public static function capture(ch:Character):BitmapData
 	{

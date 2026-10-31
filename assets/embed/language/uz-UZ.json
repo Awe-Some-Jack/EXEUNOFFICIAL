@@ -1,8 +1,9 @@
 {
 	"soundtray.volume": "OVOZ",
 	"language": "O‘ZBEKCHA",
-	"controls_type.labels": ["PSYCH", "BASE", "TUGMALAR", "D-PAD"],
+	"controls_type.labels": ["PSYCH", "BASE", "D-PAD"],
 	"middlescroll_type.labels": ["PC", "MOBIL"],
+	"hitbox_position.labels": ["PASTDA", "YUQORIDA"],
 	"language_auto": "TIZIM STANDARTI",
 	"mainmenu.soundtest": "OVOZ TESTI",
 	"mainmenu.freeplay": "ERKIN O‘YIN",
@@ -33,7 +34,7 @@
 	"options.controls": "BOSHQARUV",
 	"options.controls.labels": ["TUGMALAR", "INTERFEYS", "HARAKATLAR", "CHAP", "PAST", "TEPA", "O‘NG", "QABUL QILISH", "ORQAGA", "PAUZA", "QAYTARISH"],
 	"options.mobilecontrols": "MOBIL BOSHQARUV",
-	"options.mobilecontrols.labels": ["NOTALARNI SURISH", "MIDDLESCROLL", "MOBILDA RAQIB NOTALARI", "BOSHQARUV TURI", "MIDDLESCROLL TURI", "HITBOX ALFA (STANDART)", "HITBOX ALFA (BOSILGAN)", "PAUZA TUGMASI KO‘RINADI", "D-PAD O‘LCHAMI", "D-PAD ALFA"],
+    "options.mobilecontrols.labels": ["NOTA SURILISHI", "O‘RTA SKROLLING", "MOBIL RAQIB NOTALARI", "BOSHQARUV TURI", "O‘RTA SKROLLING TURI", "STANDART HITBOKS SHAFFOFLIGI", "BOSILGAN HITBOKS SHAFFOFLIGI", "KO‘RINADIGAN PAUZA TUGMASI", "D-PAD O‘LCHAMI", "D-PAD SHAFFOFLIGI", "HITBOKS JOYLASHUVI"],
 	"options.visuals": "VIZUAL SOZLAMALAR",
 	"options.visuals.labels": ["HUD'NI YASHIRISH", "MILTILLOVCHI CHIROQLAR", "KAMERA YAQINLASHUVI", "HISOB MATNI KATTALASHUVI", "FPS KO‘RSATISH"],
 	"options.gameplay": "GEYMPLEY",
@@ -88,6 +89,9 @@
 	"achievement_tripledeaths": "Oldinga borishda muammolar bormi?", "achievement_description_tripledeaths": "Triple Trouble'dagi barcha o‘limlarni ko‘ring",
 	"achievement_dagarden": "MUSIQA SHAYDOSI!", "achievement_description_dagarden": "D.A Bog‘ning qo‘shiqlar kutubxonasini to‘ldiring",
 	"achievement_parallax": "Uzukning narigi tomoni", "achievement_description_parallax": "PARALLAX menyusiga kiring",
+	"parallax.unlock.title": "PARALLAX MENYU OCHILDI!",
+	"parallax.unlock.message": "Menyuga kirish uchun titul ekraniga qayting.",
+	"parallax.unlock.prompt": "Titul ekraniga qaytish uchun ENTERni bosing.",
 	"achievement_secondary": "Nimalar bo‘lyapti o‘zi...", "achievement_description_secondary": "Barcha maxfiy kodlarni toping",
 	"achievement_sega": "XABAR QABUL QILINDI", "achievement_description_sega": "SEGA Enterprise dan xabarnoma oling",
 	"achievement_super": "Super O‘yinchi!", "achievement_description_super": "5 ta qo‘shiqda A yoki undan yuqori baho oling",
@@ -169,9 +173,9 @@
 	"valley_tutorial_glide": "SIRPANISH UCHUN HAVODA YANA BOSING",
 	"valley_tutorial_interact": "HARAKAT QILISH",
 	"valley_tutorial_story_1": "Siz yigitingizdan hech qanday darak topmay uyg‘ondingiz...",
-	"valley_tutorial_story_2": "Lekin sizi doim kimdir kuzatayotgandek his qilyapsiz.",
-	"valley_tutorial_story_3": "Bu jonsiz joyda noma'lumdan yashirinib, sevganingizni qidiring. Ammo ehtiyot bo‘ling: $U NARSA$ sizi osonlikcha qo‘yib yubormaydi.",
-	"valley_tutorial_story_4": "#Xavfsiz Joylar# va #Kichik Kirishlar#ni qidiring. $Uning$ sizi topishiga YO‘L QO‘YMANG.",
+	"valley_tutorial_story_2": "Lekin sizni doim kimdir kuzatayotgandek his qilyapsiz.",
+	"valley_tutorial_story_3": "Bu jonsiz joyda noma'lumdan yashirinib, sevganingizni qidiring. Ammo ehtiyot bo‘ling: $U NARSA$ sizni osonlikcha qo‘yib yubormaydi.",
+	"valley_tutorial_story_4": "#Xavfsiz Joylar# va #Kichik Kirishlar#ni qidiring. $Uning$ sizni topishiga YO‘L QO‘YMANG.",
 	"valley_tutorial_continue": "DAVOM ETISH UCHUN ENTER NI BOSING",
 
 	"sunky_offer_message": "Sunky bu qo‘shiqda qiynalayotganingizni payqadi, shuning uchun sizga yordam berishni taklif qilyapti!\nUning taklifini qabul qilasizmi?",
@@ -199,8 +203,10 @@
 	"prey_ending_2": "Anavi badniklarni qara...",
 	"prey_ending_3": "Ularning hammasi qayoqqa ketyapti?",
 	"prey_ending_4": "Nima bo‘layotganini bilib kelganim ma'qul!",
-	"options.warning.unfinished": "DIQQAT: BU SOZLAMA HALI TO'LIQ AMALGA OSHIRILMAGAN",
+
+	"options.warning.unfinished": "DIQQAT: BU SOZLAMA HALI TO‘LIQ AMALGA OSHIRILMAGAN",
+
 	"sonichu_reveal_1": "Demak, shu yergacha yetib kelding...",
 	"sonichu_reveal_2": "Tayyorlan, chunki bu oxiri.",
-	"sonichu_reveal_3": "Mening so'nggi kuchim..."
+	"sonichu_reveal_3": "Mening so‘nggi kuchim..."
 }

@@ -1,8 +1,9 @@
 {
 	"soundtray.volume": "VOLUME",
 	"language": "ENGLISH",
-	"controls_type.labels": ["PSYCH", "BASE", "BUTTONS", "D-PAD"],
+	"controls_type.labels": ["PSYCH", "BASE", "D-PAD"],
 	"middlescroll_type.labels": ["PC", "MOBILE"],
+	"hitbox_position.labels": ["BOTTOM", "TOP"],
 	"language_auto": "SYSTEM DEFAULT",
 	"mainmenu.soundtest": "SOUND TEST",
 	"mainmenu.freeplay": "FREEPLAY",
@@ -33,7 +34,7 @@
 	"options.controls": "CONTROLS",
 	"options.controls.labels": ["NOTES", "UI", "ACTIONS", "LEFT", "DOWN", "UP", "RIGHT", "ACCEPT", "BACK", "PAUSE", "RESET"],
 	"options.mobilecontrols": "MOBILE CONTROLS",
-	"options.mobilecontrols.labels": ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA", "VISIBLE PAUSE BUTTON", "D-PAD SCALE", "D-PAD ALPHA"],
+	"options.mobilecontrols.labels": ["NOTE SLIDE", "MIDDLESCROLL", "MOBILE OPPONENT NOTES", "CONTROLS TYPE", "MIDDLESCROLL TYPE", "DEFAULT HITBOX ALPHA", "PRESSED HITBOX ALPHA", "VISIBLE PAUSE BUTTON", "D-PAD SCALE", "D-PAD ALPHA", "HITBOX POSITION"],
 	"options.visuals": "VISUALS",
 	"options.visuals.labels": ["HIDE HUD", "FLASHING LIGHTS", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS COUNTER"],
 	"options.gameplay": "GAMEPLAY",
@@ -88,6 +89,9 @@
 	"achievement_tripledeaths": "Some Trouble Going Forward?", "achievement_description_tripledeaths": "Check all Triple Trouble deaths",
 	"achievement_dagarden": "MUSIC ENJOYER!", "achievement_description_dagarden": "Complete the D.A Garden Song Library",
 	"achievement_parallax": "The other side of the ring", "achievement_description_parallax": "Enter the PARALLAX Menu",
+	"parallax.unlock.title": "YOU UNLOCKED THE PARALLAX MENU!",
+	"parallax.unlock.message": "Return to the title screen to enter the menu.",
+	"parallax.unlock.prompt": "Press ENTER to return to the title screen.",
 	"achievement_secondary": "The hell is happening...", "achievement_description_secondary": "Find all secondary codes",
 	"achievement_sega": "MESSAGE RECEIVED", "achievement_description_sega": "Get a Notification from SEGA Enterprise",
 	"achievement_super": "Super Player!", "achievement_description_super": "Get A or higher rank in 5 songs",
@@ -199,7 +203,9 @@
 	"prey_ending_2": "Check out all those badniks...",
 	"prey_ending_3": "Where are they all heading?",
 	"prey_ending_4": "Better go find out what's going on!",
+	
 	"options.warning.unfinished": "WARNING: THIS OPTION IS NOT FULLY IMPLEMENTED YET",
+
 	"sonichu_reveal_1": "So you made it this far...",
 	"sonichu_reveal_2": "Get ready, because this is the end.",
 	"sonichu_reveal_3": "My final power..."

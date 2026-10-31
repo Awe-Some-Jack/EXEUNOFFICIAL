@@ -279,7 +279,7 @@ class SunkySubstate extends MusicBeatSubstate
 		for (i in 0..._boxes.length) if (FlxG.mouse.overlaps(_boxes[i], _cam)) hovered = i;
 		if (hovered >= 0 && FlxG.mouse.justMoved && hovered != _selected) select(hovered);
 
-		if (controls.ACCEPT || (FlxG.mouse.justPressed && hovered >= 0))
+		if (controls.ACCEPT || (#if desktop FlxG.mouse.justPressed #else shortPress #end && hovered >= 0))
 		{
 			if (hovered >= 0 && hovered != _selected) select(hovered, false);
 			choose();

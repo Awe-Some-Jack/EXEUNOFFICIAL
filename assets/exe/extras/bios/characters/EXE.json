@@ -11,11 +11,11 @@
 				690,
 				465
 			],
-			"char_scale": 0.55,
+			"char_scale": 0.45,
 			"mod": "EXE",
 			"char_offset": [
-				484,
-				178
+				434,
+				160
 			],
 			"char": "faker",
 			"flip_x": false,

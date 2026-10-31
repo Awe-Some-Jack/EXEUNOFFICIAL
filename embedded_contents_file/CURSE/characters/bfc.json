@@ -236,12 +236,12 @@
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/bfc",
-	"position": [0, 0],
+	"position": [35, 50],
 	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [58, 205, 241],
 	"camera_position": [0, 0],
 	"sing_duration": 4,
-	"scale": 0.8,
+	"scale": 0.9,
 	"_editor_isPlayer": true
 }

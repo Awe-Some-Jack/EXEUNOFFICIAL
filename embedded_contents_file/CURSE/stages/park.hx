@@ -64,9 +64,6 @@ var cloudsAlpha:Float = 0.6;
 var speedTween:FlxTween = null;
 
 var dadPhase:String = 'happy';
-var dadHoldSongs:Array<{step:Int, hold:Float}> = [
-    {step: 0, hold: 1.5},
-];
 
 // BG chars
 var dancers:Array<Dynamic> = [];
@@ -136,23 +133,40 @@ function playDancerAnim(spr:FlxAnimate, anim:String)
     }
 }
 
-function playTalkTogether()
+function isTalking():Bool
 {
-    if (idle != null) playDancerAnim(idle, 'conversando');
-    if (idleconejos != null) playDancerAnim(idleconejos, 'talk');
+    return (idle != null && idle.anim.curAnim != null && idle.anim.curAnim.name == 'conversando')
+        || (idleconejos != null && idleconejos.anim.curAnim != null && idleconejos.anim.curAnim.name == 'talk');
 }
 
-function triggerTalk()
+function startTalk()
 {
-    playTalkTogether();
+    if (isTalking()) return;
+
+    if (lastTalker == 'idleconejos')
+    {
+        lastTalker = 'idle';
+        if (idle != null) playDancerAnim(idle, 'conversando');
+    }
+    else
+    {
+        lastTalker = 'idleconejos';
+        if (idleconejos != null) playDancerAnim(idleconejos, 'talk');
+    }
 }
 
 function updateTalkRevert()
 {
     if (idle != null && idle.anim.curAnim != null && idle.anim.curAnim.name == 'conversando' && idle.anim.curAnim.finished)
+    {
         playDancerAnim(idle, 'idle');
+        startTalk();
+    }
     if (idleconejos != null && idleconejos.anim.curAnim != null && idleconejos.anim.curAnim.name == 'talk' && idleconejos.anim.curAnim.finished)
+    {
         playDancerAnim(idleconejos, 'idleconejos');
+        startTalk();
+    }
 }
 
 function onCreate()
@@ -209,7 +223,7 @@ function onCreate()
     add(fore);
 
     wavyShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("wavyDistortion")));
-    wavyShaderHUD = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("wavyDistortionHUD")));
+    wavyShaderHUD = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("wavyDistortion")));
 
     brightnessShader = new FlxRuntimeShader(Paths.getContent(Paths.shaderFragment("brightness")));
     brightnessShader.setFloat('contrast', 1);
@@ -234,7 +248,7 @@ function onCreate()
 
     makeCloud();
     new FlxTimer().start(10, (_) -> { makeCloud(); }, 0);
-    new FlxTimer().start(4, (_) -> { triggerTalk(); }, 0);
+    startTalk();
 }
 
 function onCreatePost()
@@ -243,7 +257,6 @@ function onCreatePost()
         game.triggerEvent('Change Character', 'gf', 'gfc2');
 
     gfGroup.scrollFactor.set(1, 1);
-    gf.scale.set(0.35, 0.35);
     gf.updateHitbox();
 
     blackFade = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
@@ -292,6 +305,7 @@ function makePhase4Copy()
     dadGroup.add(phase4Copy);
     phase4Copy.playAnim('idle4', true);
     if (phase4Copy.anim.curAnim != null) phase4Copy.anim.curAnim.looped = true;
+    phase4Copy.singDuration = 999999.0;
 }
 function phase4(dadAlpha:Float, copyAlpha:Float, duration:Float)
 {
@@ -327,6 +341,8 @@ function updatePhase4Idle()
 
     final n:String = phase4Copy.getAnimationName();
     if (n == 'idle' || (n == 'idle4' && phase4Copy.isAnimationFinished()))
+        phase4Copy.playAnim('idle4', true);
+    else if ((n == 'sing4LEFT' || n == 'sing4DOWN' || n == 'sing4UP' || n == 'sing4RIGHT') && phase4Copy.isAnimationFinished())
         phase4Copy.playAnim('idle4', true);
 }
 
@@ -750,11 +766,11 @@ function onStepHit()
         {
             if (d.spr == idle || d.spr == idleconejos)
             {
-                if (!talkTriggered)
-                {
-                    playTalkTogether();
-                    talkTriggered = true;
-                }
+            if (!talkTriggered)
+            {
+                startTalk();
+                talkTriggered = true;
+            }
             }
             else
             {
@@ -998,19 +1014,5 @@ function updateGlitch(elapsed:Float)
 
 function updateDadHold()
 {
-    var holdSeconds:Float = 1.5;
-    var bestStep:Int = 0;
-
-    for (cfg in dadHoldSongs)
-    {
-        if (curStep >= cfg.step && cfg.step >= bestStep)
-        {
-            bestStep = cfg.step;
-            holdSeconds = cfg.hold;
-        }
-    }
-    final pitch:Float = (FlxG.sound.music != null && FlxG.sound.music.pitch > 0) ? FlxG.sound.music.pitch : 1;
-    final sd:Float = (holdSeconds * pitch) / (Conductor.stepCrochet * 0.0011);
-
-    if (phase4Copy != null) phase4Copy.singDuration = sd;
+    if (phase4Copy != null) phase4Copy.singDuration = 999999.0;
 }

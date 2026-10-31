@@ -36,12 +36,12 @@
 	"vocals_file": "",
 	"no_antialiasing": false,
 	"image": "characters/gfa",
-	"position": [-450, -630],
+	"position": [-430, -582],
 	"healthicon": "gf",
 	"flip_x": false,
 	"healthbar_colors": [165, 0, 77],
 	"camera_position": [490, 0],
 	"sing_duration": 4,
-	"scale": 0.7,
+	"scale": 0.3,
 	"_editor_isPlayer": false
 }

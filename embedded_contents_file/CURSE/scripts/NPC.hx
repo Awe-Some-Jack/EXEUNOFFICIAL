@@ -10,12 +10,6 @@ var curState:String = "DANCE";
 
 var animTimer:Float = 2;
 
-function onSongStart()
-{
-	// BOTPLAY ON (borrar esta línea después)
-	game.cpuControlled = true;
-}
-
 function onUpdatePost(elapsed:Float)
 {
 	animTimer -= elapsed;

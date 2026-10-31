@@ -335,12 +335,12 @@ class Main extends Sprite
 		FlxG.stage.scaleMode = StageScaleMode.NO_SCALE;
 
 		#if FLX_MOUSE
-		EXEMouse.init();
-		#end
+        @:privateAccess 
+        FlxG.mouse = new backend.EXEMouse(FlxG.game._inputContainer); 
+        #end
 
 		#if (linux || mac) // fix the app icon not showing up on the Linux Panel / Mac Dock
-		var icon = Image.fromFile("icon.webp");
-		FlxG.stage.window.setIcon(icon);
+		FlxG.stage.window.setIcon(Image.fromFile("icon.webp"));
 		#end
 
 		#if html5

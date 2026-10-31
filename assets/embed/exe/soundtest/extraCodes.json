@@ -10,6 +10,11 @@
 		"path": "assets/exe/soundtest/videos/mattpro.mp4"
 	},
 	{
+		"code": [31, 8],
+		"type": "image",
+		"path": "assets/exe/creditsroll/everyone.webp"
+	},
+	{
 		"code": [4,10],
 		"type": "video",
 		"path": "assets/exe/soundtest/videos/darwinunofficial.mp4"

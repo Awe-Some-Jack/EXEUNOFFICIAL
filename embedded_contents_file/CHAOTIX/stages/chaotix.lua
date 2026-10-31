@@ -11,7 +11,7 @@ local starlineAssets = {
 		{name = 'mighty',   character = 'mighty',     x =  -110, y =  66.5,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 		{name = 'knux',     character =   'knux',     x =  -666.5, y =  91.5,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 		{name = 'vector',   character = 'vector',     x =  -920, y =  57.5,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
-		{name = 'charmy',   character = 'charmy',     x =   480, y = -95,  canFloat = true,  beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = true},
+		{name = 'charmy',   character = 'charmy',     x =   480, y = -95,  canFloat = true,  beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 	},
 	['cutsceneChars'] = {
 		{name = 'wech',  char =   'anim',  x = 500, y = 300, scaleX =  4.6, scaleY = 4.6, antialiasing = false, alpha = 0, front = false},
@@ -325,6 +325,7 @@ local starlineEvents = {
 
 		for _, chars in ipairs(starlineAssets['characters']) do setProperty(chars.name..'.idleSuffix', '-alt') setProperty(chars.name..'.alpha', 1) playAnim(chars.name, 'idle-alt', true) end
 		callMethod('charmy.setPosition', {getProperty('charmy.x') + 110, getProperty('charmy.y') + 280})
+		setObjectOrder('charmy', getObjectOrder('boyfriendGroup') + 1)
 		setProperty('bg1.alpha', 0)
 		setProperty('cieeelo.alpha', 0)
 		setProperty('bg2.alpha', 1)

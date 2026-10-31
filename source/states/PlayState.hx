@@ -2245,13 +2245,9 @@ class PlayState extends MusicBeatState
 			if (enableFreezeSync) runSongSyncThread();
 			resetRPC(startTimer?.finished);
 
-			if (ClientPrefs.data.shaders)
-			{
-				for (cam in [FlxG.camera, camVideo, camHUD, camOther]) 
-				{
-					cam.filters?.pop();
-					cam.filters = cam.filters;
-				}
+			for (cam in [FlxG.camera, camVideo, camHUD, camOther]) {
+				cam.filters?.pop();
+				cam.filters = cam.filters;
 			}
 
 			#if !mac
@@ -2840,18 +2836,15 @@ class PlayState extends MusicBeatState
 	var _daPauseTarget:Int = 1;
 	public function openPauseMenu()
 	{
-		if (ClientPrefs.data.shaders)
-		{
-			final colorSwap:ColorSwap = new ColorSwap();
-			colorSwap.hue = -1;
-			colorSwap.brightness = -0.5;
-			colorSwap.saturation = -1;
+		final colorSwap:ColorSwap = new ColorSwap();
+		colorSwap.hue = -1;
+		colorSwap.brightness = -0.5;
+		colorSwap.saturation = -1;
 
-			for (cam in [FlxG.camera, camVideo, camHUD, camOther]) {
-				final daFilters = cam.filters ?? [];
-				daFilters.push(new ShaderFilter(colorSwap.shader));
-				cam.filters = daFilters;
-			}
+		for (cam in [FlxG.camera, camVideo, camHUD, camOther]) {
+			final daFilters = cam.filters ?? [];
+			daFilters.push(new ShaderFilter(colorSwap.shader));
+			cam.filters = daFilters;
 		}
 
 		FlxG.camera.followLerp = 0;

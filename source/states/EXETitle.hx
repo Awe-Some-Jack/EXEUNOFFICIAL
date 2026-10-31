@@ -89,14 +89,6 @@ class EXETitle extends MusicBeatState
 			return;
 		}
 
-		if (FlxG.save.data.parallaxUnlockNoticePending == true)
-		{
-			transitioning = true;
-			super.create();
-			FlxG.switchState(() -> new ParallaxUnlockState());
-			return;
-		}
-
 		if (!initialized)
 		{
 			Main.fpsVar.visible = false;

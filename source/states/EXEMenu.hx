@@ -67,6 +67,7 @@ class EXEMenu extends MusicBeatState
 	var previousSelectedIndex:Int = 2;
 	var isMovingUpward:Bool = false;
 	var canInteract:Bool = true;
+	var _introDone:Bool = false;
 	var _fatalScene:Null<FatalScene> = null;
 	var _fatalTimer:Float = -1;
 	var _fatalStarted:Bool = false;
@@ -218,6 +219,21 @@ class EXEMenu extends MusicBeatState
 
 		refreshSelection();
 		changeSelection(0, false, false);
+		for (i in 0...TOTAL_OPTIONS)
+		{
+			final parts:Array<Dynamic> = [menuOptions[i], menuOptions[i].scale, menuTexts[i], menuTexts[i].scale, menuHitboxes[i], menuHitboxes[i].scale];
+			for (part in parts) FlxTween.completeTweensOf(part);
+
+			final delay = 0.1 + ((i - selectedOptionIndex + CENTER_POSITION + TOTAL_OPTIONS) % TOTAL_OPTIONS) * 0.07;
+			final sprites:Array<FlxSprite> = [menuOptions[i], menuTexts[i], menuHitboxes[i]];
+			for (spr in sprites)
+			{
+				final targetX = spr.x;
+				spr.x += FlxG.width;
+				FlxTween.tween(spr, {x: targetX}, 0.7, {ease: FlxEase.quintOut, startDelay: delay});
+			}
+		}
+		new FlxTimer().start(0.1 + 4 * 0.07 + 0.7, (_) -> _introDone = true);
 
 		curKey = [for (_ in secretCodes) 0];
 
@@ -369,14 +385,14 @@ class EXEMenu extends MusicBeatState
 
 		if (cooldownTimer > 0) cooldownTimer -= elapsed;
 
-		updateShadow(elapsed);
+		if (_introDone) updateShadow(elapsed);
 
 		if (canManiaInteract && (controls.ACCEPT #if mobile || shortPress #end))
 		{
 			goToMania();
 		}
 
-		if (canInteract && !isBlinking)
+		if (canInteract && _introDone && !isBlinking)
 		{
 			if (backend.BurningBot.active)
 			{

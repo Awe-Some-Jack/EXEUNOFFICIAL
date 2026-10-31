@@ -34,6 +34,7 @@ class EXETitle extends MusicBeatState
 	
 	var video:VideoSprite;
 	var videoPlaying:Bool = false;
+	var videoKey:String = null;
 	var titleText:FlxSprite;
 	var blackScreen:FlxSprite;
 	var screenBg:VideoSprite;
@@ -142,6 +143,7 @@ class EXETitle extends MusicBeatState
 	{
 		video?.destroy();
 
+		videoKey = vid;
 		video = new VideoSprite();
 		video.loadVideo(Paths.video(vid));
 		video.onEnd(()->{
@@ -377,7 +379,7 @@ class EXETitle extends MusicBeatState
 		#if !final
 		if (videoPlaying)
 		{
-			if (controls.ACCEPT #if mobile || shortPress #end || (gamepad != null && gamepad.justPressed.START #if switch || gamepad.justPressed.B #end)) video?.setVideoPercent(1);
+			if (videoKey != 'introexe' && (controls.ACCEPT #if mobile || shortPress #end || (gamepad != null && gamepad.justPressed.START #if switch || gamepad.justPressed.B #end))) video?.setVideoPercent(1);
 			super.update(elapsed);
 			return;
 		}

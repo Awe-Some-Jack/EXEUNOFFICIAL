@@ -222,6 +222,9 @@ function onEndSong() {
         camGame.alpha = 0.000001;
         bluescreen.alpha = bsodPercent.alpha = 1;
 
+        final formattedSong = Paths.formatToSongPath(PlayState.SONG.song);
+        game.checkSavedSongs(formattedSong);
+        
         PlayState.storyPlaylist.shift();
         
         //ну крч вас нахуй без выбора в gotta goon отправят

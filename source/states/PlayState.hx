@@ -3468,7 +3468,17 @@ class PlayState extends MusicBeatState
         }
        
 		final fromSecretSong:Bool = states.EXEMenu.secretSong;
+#if final
+		final parallaxWasUnlocked:Bool = backend.SongProgress.soundTestComplete();
+#end
 		checkSavedSongs(formattedSong);
+#if final
+		if (!parallaxWasUnlocked && backend.SongProgress.soundTestComplete())
+		{
+			FlxG.save.data.parallaxUnlockNoticePending = true;
+			FlxG.save.flush();
+		}
+#end
 
 		if (isStoryMode && states.SoundTest.fromSoundTest && states.SoundTest.enterTheValleyAfterBlackSun && formattedSong == 'black-sun')
 		{

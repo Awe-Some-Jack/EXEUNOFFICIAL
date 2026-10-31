@@ -76,6 +76,7 @@ function addPixelStuff() {
 	continuePixel = new FlxSprite();
 	continuePixel.loadGraphic(Paths.image('gameovers/youcantrun/continue'));
 	continuePixel.setPosition(FlxG.width / 2 - 40, FlxG.height / 2 - 50);
+	continuePixel.antialiasing = false;
 	continuePixel.alpha = 0;
 	continuePixel.scale.set(3, 3);
 	GameOverSubstate.instance.add(continuePixel);
@@ -83,6 +84,7 @@ function addPixelStuff() {
 	star1 = new FlxSprite();
 	star1.loadGraphic(Paths.image('gameovers/youcantrun/star'));
 	star1.setPosition(FlxG.width / 2 - 40, FlxG.height / 2 + 40);
+	star1.antialiasing = false;
 	star1.alpha = 0;
 	star1.scale.set(3, 3);
 	GameOverSubstate.instance.add(star1);
@@ -90,6 +92,7 @@ function addPixelStuff() {
 	star2 = new FlxSprite();
 	star2.loadGraphic(Paths.image('gameovers/youcantrun/star'));
 	star2.setPosition(FlxG.width / 2 + 50, FlxG.height / 2 + 40);
+	star2.antialiasing = false;
 	star2.alpha = 0;
 	star2.scale.set(3, 3);
 	GameOverSubstate.instance.add(star2);

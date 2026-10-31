@@ -70,13 +70,17 @@ function onUpdatePost(e)
 			setShaderFloat('cab', 'amount', getProperty('cab.x'))
 		end
 		
-		defaultBright = 0.85 + 0.15 * ((songLength - getSongPosition()) / songLength)
+		local ratio = 1
+		if songLength > 0 then
+			ratio = (songLength - getSongPosition()) / songLength
+		end
+		defaultBright = 0.85 + 0.15 * ratio
 		
 		setShaderFloat('gf', 'ang', math.rad(lerp(100, 65, (getProperty('camGame.scroll.x') + 40) / 700)))
 		setShaderFloat('boyfriend', 'ang', math.rad(lerp(160, 130, (getProperty('camGame.scroll.x') + 40) / 600)))
 		setShaderFloat('dad', 'ang', math.rad(lerp(80, 40, (getProperty('camGame.scroll.x') + 40) / 600)))
 		
-		for _,char in ipairs({'dad', 'gf', 'boyfriend'}) do setShaderFloat(char, 'dist', 7 + 8 * ((songLength - getSongPosition()) / songLength)) end
+		for _,char in ipairs({'dad', 'gf', 'boyfriend'}) do setShaderFloat(char, 'dist', 7 + 8 * ratio) end
 	end
 end
 

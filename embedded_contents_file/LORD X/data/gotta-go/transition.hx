@@ -43,6 +43,7 @@ function onCreatePost()
     bsodPercent.font = Paths.font('UbuntuSans.ttf');
     bsodPercent.scrollFactor.set();
     bsodPercent.camera = camBSOD;
+    bsodPercent.antialiasing = ClientPrefs.data.antialiasing;
     add(bsodPercent);
 
     if (ClientPrefs.data.shaders)

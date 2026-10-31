@@ -64,6 +64,7 @@ function onCreate() {
     bsodPercent = new FlxText(136.67, 401.67, 0, '0% complete', 28);
     bsodPercent.font = Paths.font('UbuntuSans.ttf');
     bsodPercent.scrollFactor.set();
+    bsodPercent.antialiasing = ClientPrefs.data.antialiasing;
     add(bsodPercent);
 
     blackGraphic = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -213,16 +214,21 @@ function onGameOverStart()
 }
 
 function onEndSong() {
-    if (SoundTest.fromSoundTest) 
+    if (SoundTest.fromSoundTest && PlayState.storyPlaylist.length <= 0) 
     {
+        PlayState.campaignScore += score;
+		PlayState.campaignMisses += misses;
+
         camGame.alpha = 0.000001;
         bluescreen.alpha = bsodPercent.alpha = 1;
+
+        PlayState.storyPlaylist.shift();
         
         //ну крч вас нахуй без выбора в gotta goon отправят
         FlxTransitionableState.skipNextTransIn = true;
         FlxTransitionableState.skipNextTransOut = true;
 
-        PlayState.SONG = Song.loadFromJson('gotta-go', 'gotta-go');
+        PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0], PlayState.storyPlaylist[0]);
         PlayState.isStoryMode = false;
         
         LoadingState.prepareToSong();

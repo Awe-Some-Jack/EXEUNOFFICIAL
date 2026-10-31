@@ -2245,13 +2245,9 @@ class PlayState extends MusicBeatState
 			if (enableFreezeSync) runSongSyncThread();
 			resetRPC(startTimer?.finished);
 
-			if (ClientPrefs.data.shaders)
-			{
-				for (cam in [FlxG.camera, camVideo, camHUD, camOther]) 
-				{
-					cam.filters?.pop();
-					cam.filters = cam.filters;
-				}
+			for (cam in [FlxG.camera, camVideo, camHUD, camOther]) {
+				cam.filters?.pop();
+				cam.filters = cam.filters;
 			}
 
 			#if !mac
@@ -2501,7 +2497,7 @@ class PlayState extends MusicBeatState
 		#end
 
 		#if (!js && !html5)
-		if (ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null)
+		if (ClientPrefs.data.cacheOnGPU && FlxG.stage.context3D != null && songName != 'prey')
 		{
 			if (!_freedCpuImages)
 			{
@@ -2793,7 +2789,6 @@ class PlayState extends MusicBeatState
 				freed++;
 			}
 		}
-		if (freed > 0) Paths.clearUnusedMemoryGradual();
 	}
 	#end
 
@@ -2840,18 +2835,15 @@ class PlayState extends MusicBeatState
 	var _daPauseTarget:Int = 1;
 	public function openPauseMenu()
 	{
-		if (ClientPrefs.data.shaders)
-		{
-			final colorSwap:ColorSwap = new ColorSwap();
-			colorSwap.hue = -1;
-			colorSwap.brightness = -0.5;
-			colorSwap.saturation = -1;
+		final colorSwap:ColorSwap = new ColorSwap();
+		colorSwap.hue = -1;
+		colorSwap.brightness = -0.5;
+		colorSwap.saturation = -1;
 
-			for (cam in [FlxG.camera, camVideo, camHUD, camOther]) {
-				final daFilters = cam.filters ?? [];
-				daFilters.push(new ShaderFilter(colorSwap.shader));
-				cam.filters = daFilters;
-			}
+		for (cam in [FlxG.camera, camVideo, camHUD, camOther]) {
+			final daFilters = cam.filters ?? [];
+			daFilters.push(new ShaderFilter(colorSwap.shader));
+			cam.filters = daFilters;
 		}
 
 		FlxG.camera.followLerp = 0;
@@ -3468,17 +3460,19 @@ class PlayState extends MusicBeatState
         }
        
 		final fromSecretSong:Bool = states.EXEMenu.secretSong;
-#if final
+		#if final
 		final parallaxWasUnlocked:Bool = backend.SongProgress.soundTestComplete();
-#end
+		#end
+		
 		checkSavedSongs(formattedSong);
-#if final
+
+		#if final
 		if (!parallaxWasUnlocked && backend.SongProgress.soundTestComplete())
 		{
 			FlxG.save.data.parallaxUnlockNoticePending = true;
 			FlxG.save.flush();
 		}
-#end
+		#end
 
 		if (isStoryMode && states.SoundTest.fromSoundTest && states.SoundTest.enterTheValleyAfterBlackSun && formattedSong == 'black-sun')
 		{

@@ -2,12 +2,29 @@ import flixel.sound.FlxSound;
 using StringTools;
 
 var playedCutscene:Bool = false;
-var firstTime:Bool = false;
 var windMusic:FlxSound;
-final cam = FlxG.camera;
 var blackBG:FlxSprite;
+var firstTime:Bool = false;
+final cam = FlxG.camera;
 
 function onCreate() firstTime = !PlayState.seenCutscene;
+function onCreatePost()
+{
+	if (playedCutscene || !PlayState.isStoryMode || !firstTime) return;
+	
+	blackBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
+	blackBG.scrollFactor.set();
+	game.insert(game.members.indexOf(dadGroup), blackBG);
+
+	game.inCutscene = true;
+
+	cam.zoom = 1;
+	cam.targetOffset.x = -1;
+	cam.targetOffset.y = 345;
+
+	camHUD.alpha = 0;
+}
+
 function onStartCountdown()
 {
 	if (playedCutscene || !PlayState.isStoryMode || !firstTime) return;
@@ -15,23 +32,14 @@ function onStartCountdown()
 	game.remove(dadGroup, true);
 	game.insert(game.members.indexOf(boyfriendGroup) + 1, dadGroup);
 
-	blackBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
-	blackBG.scrollFactor.set();
-	game.insert(game.members.indexOf(dadGroup), blackBG);
-
-	game.inCutscene = true;
 	dad.playAnim('intro', true);
-	cam.zoom = 1;
-	cam.targetOffset.x = -350;
-	cam.targetOffset.y = 150;
-	camHUD.alpha = 0;
 	getVar('glowfaker').alpha = 0;
 	new FlxTimer().start(3, (_) -> {
 		FlxTween.tween(getVar('glowfaker'), {alpha: 0.4}, 3, {ease: FlxEase.cubeInOut});
 		FlxTween.tween(blackBG, {alpha: 0}, 3, {ease: FlxEase.cubeInOut});
 		FlxTween.tween(cam, {zoom: 0.6}, 3, {ease: FlxEase.cubeInOut});
 		FlxTween.num(1, 0, 3, {ease: FlxEase.cubeInOut}, n -> {
-			cam.targetOffset.x = n * -350;
+			cam.targetOffset.x = n * -305;
 			cam.targetOffset.y = n * 150;
 			cam.snapToTarget();
 		});

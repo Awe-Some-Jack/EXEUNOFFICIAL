@@ -629,7 +629,7 @@ function onBeatHit()
         
         if (curBeat >= 180 && curBeat < 244) 
         {
-            final animName = 'dance' + ((curBeat % 2 == 0) ? 'Left' : 'Right') + '-sad';
+            final animName = 'dance' + ((curBeat % 2 == 0) ? 'Left' : 'Right') + '-a';
             gf.playAnim(animName, true);
         }
     }
@@ -647,6 +647,7 @@ function onStepHit()
             blackFadeTween = FlxTween.tween(blackFade, {alpha: 1}, 0.2);
 
         case 720: //720
+            game.getLuaObject('iconOpp').changeIcon('cursemad');
             blackFadeTween?.cancel();
             blackFadeTween = null;
             if (blackFade != null) blackFade.alpha = 0;
@@ -735,6 +736,7 @@ function onStepHit()
 
 
         case 1231:
+            game.getLuaObject('iconOpp').changeIcon('cursehappy');
             phase4(1, 0, 0.1);
             cursetween(eggman, 0, 0.1);
             cursetween(knux, 0, 0.1);

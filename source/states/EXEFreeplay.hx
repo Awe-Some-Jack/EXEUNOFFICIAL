@@ -129,6 +129,7 @@ class EXEFreeplay extends MusicBeatState
 		if (selectedBox < 0 || selectedBox >= songEntries.length) selectedBox = 0;
 
 		if (maniaUnlock && FlxG.save.data.unlockManiaOnce == null) new FlxTimer().start(0.6, (_) -> maniaNotif());
+		else maniaUnlock = false;
 
 		covers = new FlxTypedGroup<FlxSprite>();
 		freeBoxes = new FlxTypedGroup<FlxSprite>();

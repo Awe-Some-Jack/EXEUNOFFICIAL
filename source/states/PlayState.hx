@@ -3560,11 +3560,10 @@ class PlayState extends MusicBeatState
 						FlxTransitionableState.skipNextTransOut = true;
 					}
 				case "fight-or-flight":
-					if (states.SoundTest.fromSoundTest) 
+					if (states.SoundTest.fromSoundTest && FlxG.save.data.unlockManiaOnce == null)
 					{
 						EXEFreeplay.maniaUnlock = true;
 						states.SoundTest.fromSoundTest = false;
-						FlxG.switchState(() -> new states.EXEFreeplay());
 					}
 			}
 			if (!FlxG.save.data.storyModeDone) trace(FlxG.save.data.lastCoverPlay);

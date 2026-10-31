@@ -90,6 +90,7 @@ local modConfigs = {
 	['GRIEVING'] = {
 		type = 'slide',
 		skipSongs = {'triple-trouble'},
+		forceSkipCountdownFalseOnSongs = {'haze'},
 		useSeenCutscene = true,
 		phase = 'countdown',
 		snapDelay = 0.025,
@@ -238,6 +239,10 @@ local function createSlideIntro()
 
 	if cfg.forceSkipCountdown == false then
 		setProperty('skipCountdown', false)
+	end
+
+	for _, s in ipairs(cfg.forceSkipCountdownFalseOnSongs) do
+		if songPath == s then setProperty('skipCountdown', false) end
 	end
 
 	doTweenX('circlemove', 'circle', 0, 1, 'quintOut')
@@ -390,6 +395,10 @@ function onCreate()
 		setProperty('skipCountdown', true)
 	elseif shouldSkip() then
 		setProperty('skipCountdown', true)
+	end
+
+	for _, s in ipairs(cfg.forceSkipCountdownFalseOnSongs) do
+		if songPath == s then setProperty('skipCountdown', false) end
 	end
 
 	if cfg.type == 'bounce' then

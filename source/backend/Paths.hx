@@ -1060,7 +1060,7 @@ class Paths
 				#if sys
 				if (sys.FileSystem.exists(file))
 				{
-					buffer = lime.media.AudioBuffer.fromFile(file, true);
+					buffer = lime.media.AudioBuffer.fromBytes(sys.io.File.getBytes(file), true);
 				}
 				#end
 

@@ -11,7 +11,7 @@ local starlineAssets = {
 		{name = 'mighty',   character = 'mighty',     x =  -110, y =  66.5,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 		{name = 'knux',     character =   'knux',     x =  -666.5, y =  91.5,                    beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
 		{name = 'vector',   character = 'vector',     x =  -920, y =  57.5,                    beatIntervals = 1, scaleX = 6, scaleY = 6, alpha = 1, front = false},
-		{name = 'charmy',   character = 'charmy',     x =   480, y = -95,  canFloat = true,  beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = false},
+		{name = 'charmy',   character = 'charmy',     x =   480, y = -95,  canFloat = true,  beatIntervals = 2, scaleX = 6, scaleY = 6, alpha = 1, front = true},
 	},
 	['cutsceneChars'] = {
 		{name = 'wech',  char =   'anim',  x = 500, y = 300, scaleX =  4.6, scaleY = 4.6, antialiasing = false, alpha = 0, front = false},

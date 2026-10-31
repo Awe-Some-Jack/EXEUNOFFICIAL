@@ -8,14 +8,14 @@
 			"display_name": "NEEDLEMOUSE",
 			"icon": "needlemouse",
 			"icon_offset": [
-				691,
-				475
+				697,
+				469
 			],
 			"char_scale": 0.4,
 			"mod": "NEEDLEMOUSE",
 			"char_offset": [
-				522,
-				209
+				495,
+				232
 			],
 			"char": "Needlemouse",
 			"flip_x": false,

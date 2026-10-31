@@ -8,14 +8,14 @@
 			"display_name": "LOOKALIKE",
 			"icon": "lookalike",
 			"icon_offset": [
-				690,
-				470
+				695,
+				475
 			],
 			"char_scale": 0.55,
 			"mod": "STORY MODE",
 			"char_offset": [
-				499,
-				198
+				484,
+				183
 			],
 			"char": "LookALike",
 			"flip_x": false,

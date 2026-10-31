@@ -8,14 +8,14 @@
 			"display_name": "CHAOTIX",
 			"icon": "chaotix-pixel",
 			"icon_offset": [
-				681,
-				480
+				698,
+				469
 			],
 			"char_scale": 5.7,
 			"mod": "CHAOTIX",
 			"char_offset": [
-				386,
-				75
+				375,
+				13
 			],
 			"char": "faker_chaotix",
 			"flip_x": false,

@@ -8,7 +8,7 @@
 			"display_name": "HOG",
 			"icon": "hog",
 			"icon_offset": [
-				696,
+				698,
 				470
 			],
 			"char_scale": 0.55,
@@ -26,7 +26,7 @@
 			"display_name": "SCORCHED",
 			"icon": "scorched",
 			"icon_offset": [
-				701,
+				696,
 				465
 			],
 			"char_scale": 0.25,

@@ -8,8 +8,8 @@
 			"display_name": "TAILS DOLL",
 			"icon": "taildoll",
 			"icon_offset": [
-				691,
-				455
+				698,
+				474
 			],
 			"char_scale": 0.66,
 			"mod": "TAILS DOLL",
@@ -25,8 +25,12 @@
 			"icon": "soultails",
 			"char_scale": 0.6,
 			"char_offset": [
-				454,
-				42
+				452,
+				41
+			],
+			"icon_offset": [
+				696,
+				473
 			],
 			"char": "p2doll"
 		}

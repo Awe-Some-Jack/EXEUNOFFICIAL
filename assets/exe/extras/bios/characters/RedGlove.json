@@ -8,12 +8,12 @@
 	"bio": "RedGlove is an enigmatic, highly intelligent entity composed entirely of pure VOID matter, making him biologically similar to Lord X. According to his core narrative, he was floating through the void when he stumbled across an old, rotting Sonic the Hedgehog vessel that Lord X had long since abandoned and discarded. RedGlove hijacked the vessel to physically manifest himself, inadvertently binding his fate to Lord X's world.\n\nRather than standard mindless violence, RedGlove behaves like a dark, cynical narrator. He is deeply fascinated by Lord X's work but harbors intense opinions about what X has \"done wrong\" with his godhood. He uses his platform to openly critique and mock Lord X, forcing a tense, begrudging dynamic where Lord X actually listens to his input.\n\nAside from possessing passive VOID abilities identical to Lord X, RedGlove moves with distorted cartoon biology. He can instantly elongate his fingers like vines to entangle survivors and drain their life force, and he often rapidly disintegrates and reforms to travel rather than utilizing standard teleportation.",
 	"mod": "LORD X",
 	"icon_offset": [
-		692,
-		466
+		697,
+		474
 	],
 	"char_offset": [
-		358,
-		182
+		347,
+		147
 	],
 	"flip_x": false,
 	"char": "RedGlove",

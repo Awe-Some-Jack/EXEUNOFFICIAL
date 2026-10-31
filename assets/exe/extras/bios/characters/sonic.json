@@ -8,13 +8,13 @@
 			"char": "rerun",
 			"char_scale": 0.36,
 			"char_offset": [
-				448,
-				121
+				444,
+				150
 			],
 			"icon": "rerun-sonic",
 			"icon_offset": [
-				696,
-				465
+				698,
+				474
 			],
 			"flip_x": false,
 			"mod": "RERUN",
@@ -26,7 +26,7 @@
 			"char": "lili",
 			"char_scale": 0.5,
 			"char_offset": [
-				432,
+				446,
 				199
 			],
 			"icon": "face",
@@ -38,8 +38,12 @@
 			"char": "sonic",
 			"char_scale": 0.52,
 			"char_offset": [
-				479.88,
+				468.88,
 				240.28
+			],
+			"icon_offset": [
+				697,
+				474
 			],
 			"icon": "sonic",
 			"artist": "ErickAnimations",

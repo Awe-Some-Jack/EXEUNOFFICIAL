@@ -8,8 +8,8 @@
 			"display_name": "MAJIN",
 			"icon": "majin",
 			"icon_offset": [
-				701,
-				470
+				699,
+				472
 			],
 			"char_scale": 0.7,
 			"mod": "MAJIN",
@@ -26,13 +26,13 @@
 			"display_name": "MAZIN",
 			"icon": "mazin",
 			"icon_offset": [
-				706,
-				460
+				698,
+				472
 			],
 			"char_scale": 0.7,
 			"char_offset": [
-				483,
-				201
+				467,
+				178
 			],
 			"char": "mazin"
 		}

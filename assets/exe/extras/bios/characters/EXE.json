@@ -8,14 +8,14 @@
 			"display_name": "FAKER",
 			"icon": "faker",
 			"icon_offset": [
-				690,
-				465
+				695,
+				469
 			],
-			"char_scale": 0.45,
+			"char_scale": 0.35,
 			"mod": "EXE",
 			"char_offset": [
-				434,
-				160
+				482,
+				213
 			],
 			"char": "faker",
 			"flip_x": false,

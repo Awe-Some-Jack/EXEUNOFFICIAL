@@ -8,14 +8,14 @@
 			"display_name": "GRIATOS",
 			"icon": "griatos",
 			"icon_offset": [
-				696,
-				460
+				698,
+				473
 			],
 			"char_scale": 0.31,
 			"mod": "GRIEVING",
 			"char_offset": [
-				474,
-				204
+				433,
+				203
 			],
 			"char": "griatos",
 			"flip_x": false,

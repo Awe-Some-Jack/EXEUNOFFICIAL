@@ -8,8 +8,8 @@
 			"display_name": "SUNKY",
 			"icon": "sunky",
 			"icon_offset": [
-				696,
-				465
+				697,
+				473
 			],
 			"char_scale": 0.5,
 			"icon_scale": 0.74,
@@ -26,8 +26,8 @@
 			"display_name": "SUNKY CLASSIC",
 			"char_scale": 0.37,
 			"icon_offset": [
-				786,
-				425
+				697,
+				473
 			],
 			"char_offset": [
 				443,
@@ -40,8 +40,8 @@
 			"char_scale": 0.5,
 			"icon": "sunkympeg",
 			"icon_offset": [
-				786,
-				425
+				697,
+				473
 			],
 			"char_offset": [
 				451,

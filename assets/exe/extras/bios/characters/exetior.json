@@ -7,12 +7,12 @@
 	"bio": "Exetior is the Chosen One of Chaos. He was originally an Elite Highest, but was transformed into an Arch-Demon due to his demonization awakening his gift from the Great Chaos. Because of his background and how others in his homeworld treated him, he is very prone to losing his composure and having outbursts of anger when agitated. Among Demons and mortals, he is seen by others as very calculating, charismatic and persuasive. His ferocious personality and reputation is well known among Demons across the universe, as well as ones sealed away such as Xato.",
 	"mod": "EXETIOR",
 	"icon_offset": [
-		701,
-		465
+		700,
+		477
 	],
 	"char_offset": [
-		509,
-		205
+		479,
+		201
 	],
 	"flip_x": false,
 	"char": "exetior",

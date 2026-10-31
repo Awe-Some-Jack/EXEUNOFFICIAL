@@ -8,14 +8,14 @@
 			"display_name": "XTERION",
 			"icon": "xterion",
 			"icon_offset": [
-				681,
-				480
+				696,
+				468
 			],
 			"char_scale": 0.75,
 			"mod": "SONICJAM",
 			"char_offset": [
-				485,
-				155
+				481,
+				167
 			],
 			"char": "jamsonic",
 			"flip_x": false,
@@ -25,7 +25,7 @@
 			"display_name": "XTERION",
 			"icon": "face",
 			"char_offset": [
-				410,
+				403,
 				100
 			],
 			"char": "madjamsonic"

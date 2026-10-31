@@ -8,8 +8,8 @@
 			"display_name": "TAILS",
 			"icon": "tails",
 			"icon_offset": [
-				688,
-				467
+				694,
+				473
 			],
 			"char_scale": 0.6,
 			"mod": "STORY MODE",
@@ -26,8 +26,8 @@
 			"display_name": "KNUCKLES",
 			"icon": "knux",
 			"icon_offset": [
-				693,
-				470
+				698,
+				475
 			],
 			"char_scale": 0.9,
 			"char_offset": [
@@ -42,8 +42,8 @@
 			"display_name": "EGGMAN",
 			"icon": "eggman",
 			"icon_offset": [
-				695,
-				472
+				699,
+				475
 			],
 			"char_scale": 0.8,
 			"char_angle": 0,

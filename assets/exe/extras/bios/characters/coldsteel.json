@@ -8,11 +8,11 @@
 	"mod": "COLDSTEEL",
 	"icon_offset": [
 		696,
-		460
+		470
 	],
 	"char_offset": [
-		512,
-		230
+		490,
+		196
 	],
 	"flip_x": false,
 	"char": "coldsteel",

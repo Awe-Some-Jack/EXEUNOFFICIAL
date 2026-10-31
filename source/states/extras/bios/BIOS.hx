@@ -314,7 +314,7 @@ class BIOS extends SonicSubState
 		add(variantDots);
 
 		final charBiosSprite = new FlxSprite(36, 19);
-		charBiosSprite.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios.webp', true, true));
+		charBiosSprite.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios.webp'));
 		charBiosSprite.scrollFactor.set();
 		add(charBiosSprite);
 	}
@@ -370,7 +370,7 @@ class BIOS extends SonicSubState
 		final charBiosOverlay = new FlxSprite(36, 19);
 		if (Assets.exists('assets/exe/extras/bios/characterbios_overlay.webp'))
 		{
-			charBiosOverlay.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios_overlay.webp', true, true));
+			charBiosOverlay.loadGraphic(Paths.getBitmapData('assets/exe/extras/bios/characterbios_overlay.webp'));
 			charBiosOverlay.scrollFactor.set();
 			add(charBiosOverlay);
 		}
@@ -466,16 +466,6 @@ class BIOS extends SonicSubState
 		_fitToBoxes(charAngle);
 		icon.updateHitbox();
 		icon.setPosition(iconOff[0], iconOff[1]);
-		if (icon != null && circleIcon != null){
-			var circleCenterX:Float = circleIcon.x + (circleIcon.width / 2);
-			var circleCenterY:Float = circleIcon.y + (circleIcon.height / 2);
-			var iconWidth:Float = icon.frameWidth * icon.scale.x;
-			var iconHeight:Float = icon.frameHeight * icon.scale.y;
-			icon.x = circleCenterX - (iconWidth / 2) + (icon.offset.x * icon.scale.x);
-			icon.y = circleCenterY - (iconHeight / 2) + (icon.offset.y * icon.scale.y);
-			icon.x -= iconWidth/2;
-			icon.y -= iconHeight/2;
-		}
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("In the Bios Menu", 'Checking $dispName');
 		#end

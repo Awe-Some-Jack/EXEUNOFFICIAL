@@ -12,8 +12,8 @@
 				181
 			],
 			"icon_offset": [
-				693,
-				464
+				695,
+				474
 			],
 			"icon_scale": 0.44,
 			"icon": "requital-bios",
@@ -26,12 +26,12 @@
 			"display_name": "REQUITAL (BEAST)",
 			"char": "requital-beast",
 			"char_offset": [
-				502,
-				172
+				478,
+				150
 			],
 			"icon_offset": [
-				786,
-				430
+				694,
+				473
 			],
 			"icon": "requital-beast-bios"
 		}

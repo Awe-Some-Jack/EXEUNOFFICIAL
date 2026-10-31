@@ -8,8 +8,8 @@
 			"display_name": "LORDX",
 			"icon": "lord-x",
 			"icon_offset": [
-				696,
-				465
+				697,
+				473
 			],
 			"char_scale": 0.5,
 			"mod": "LORD X",
@@ -28,14 +28,18 @@
 				450,
 				212.5
 			],
+			"icon_offset": [
+				697,
+				473
+			],
 			"char": "lord x podrido"
 		},
 		{
 			"display_name": "LORDX (true form)",
 			"icon": "lordx-p3",
 			"icon_offset": [
-				691,
-				465
+				697,
+				473
 			],
 			"char_scale": 0.61,
 			"char_angle": 0,

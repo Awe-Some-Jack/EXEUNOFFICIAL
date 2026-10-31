@@ -1,0 +1,20 @@
+{
+    "characters": [
+        {
+            "name": "XENOPHANES",
+            "variants": [
+                {
+                    "bio": "blah blah blah en español"
+                }
+            ]
+        },
+        {
+            "name": "CHAOTIX",
+            "variants": [
+                {
+                    "bio": "blah blah blah de chaotix en español"
+                }
+            ]
+        }
+    ]
+}

@@ -7,12 +7,12 @@
 	"bio": "Fleetway Super Sonic is a highly unique variant of the character who debuted in Sonic the Comic, published by the British company Fleetway Editions. Unlike the classic mainline video game version who acts as a righteous, heroic savior, this incarnation is written as a deeply psychotic, sadistic, and villainous alter-ego. He was born when Sonic original absorbed the Chaos Emeralds at the Freedom Fighters headquarters; because the gems contained highly volatile negative and evil energies, the radiation permanently altered Sonic's subconscious, creating a dangerous and uncontrollable monster trapped inside him.\n\nAs time passed, Sonic absorbed so much residual Chaos energy throughout his adventures that he no longer needed the Emeralds to transform. Instead, this malevolent alter-ego would violently break free and hijack Sonic’s body whenever the blue hedgehog was pushed into states of extreme anger or high mental stress. While transformed, Sonic has absolutely no memory of what happens, leaving his close friends like Tails in constant danger of being targeted by Super Sonic's destructive rages, laser vision, and reality-warping powers. The only consistent way to force the demon back into dormancy was for Tails to use intense emotional triggers or reverse psychology to calm the entity down.",
 	"mod": "FLEETWAY",
 	"icon_offset": [
-		701,
-		465
+		698,
+		473
 	],
 	"char_offset": [
-		445,
-		154
+		432,
+		145
 	],
 	"flip_x": false,
 	"char": "fletway",

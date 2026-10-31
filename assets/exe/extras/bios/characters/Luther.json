@@ -8,14 +8,14 @@
 			"display_name": "LUTHER",
 			"icon": "luther",
 			"icon_offset": [
-				691,
-				475
+				696,
+				473
 			],
 			"char_scale": 0.75,
 			"mod": "NEEDLEMOUSE",
 			"char_offset": [
-				485,
-				230
+				446,
+				197
 			],
 			"char": "luther",
 			"flip_x": false,

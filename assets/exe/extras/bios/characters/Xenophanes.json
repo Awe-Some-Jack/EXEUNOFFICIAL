@@ -8,15 +8,15 @@
 			"display_name": "LUIS",
 			"icon": "sonicexe",
 			"icon_offset": [
-				693,
-				470
+				698,
+				474
 			],
 			"char_scale": 0.85,
 			"char_angle": 0,
 			"mod": "STORY MODE",
 			"char_offset": [
-				494.3,
-				170.95
+				488.3,
+				165.95
 			],
 			"char": "sonic.exe",
 			"flip_x": false,
@@ -26,12 +26,12 @@
 			"bio": "This version of Xenophanes represents a transitional stage in his evolution—unstable, aggressive, and increasingly monstrous. During “You Can’t Run,” he begins shifting away from his classic Sonic disguise into something far more distorted and unnatural.\n\nHis body shows early signs of crystallization, his form becoming more chaotic as his true nature slowly breaks through.",
 			"icon": "XENO-P2",
 			"icon_offset": [
-				460,
-				40
+				698,
+				474
 			],
 			"char_scale": 0.55,
 			"char_offset": [
-				462,
+				438,
 				157
 			],
 			"char": "sonic.exe 2"
@@ -41,12 +41,12 @@
 			"display_name": "XENOPHANES (BEAST)",
 			"icon": "XENO-P3",
 			"icon_offset": [
-				696,
-				467
+				698,
+				474
 			],
 			"char_scale": 0.82,
 			"char_offset": [
-				473,
+				449,
 				114
 			],
 			"char": "BEAST"

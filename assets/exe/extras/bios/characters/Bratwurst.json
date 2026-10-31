@@ -7,12 +7,12 @@
 	"bio": "Eggman's attempt at the perfect Sonic-killer, spliced together from Sonic's cells and a modified Metal Sonic base. The build had a fatal error buried in the code that Eggman just ignored, and the second this thing woke up it smashed his head into a glass tube and walked out. Egotistical, sadistic, gets off on toying with victims before finishing them — killed Tails, Knuckles, and Eggman himself to fuel a transformation, growing more monstrous and less recognizable with every soul he collects, then moved on to Amy and Cream too, reanimating Amy's corpse as his own puppet afterward. Basically unkillable, regenerates fast, flies, teleports, claws that shred through anything, and can straight-up move objects with his mind (ripped a tree out of the ground and turned it into spikes). Every soul taken pushes him toward being less \"Sonic\" and more some twisted, godlike mass — and he genuinely believes he IS the universe, life, death, all of it.",
 	"mod": "TRILOGY",
 	"icon_offset": [
-		691,
+		694.72,
 		465
 	],
 	"char_offset": [
-		499,
-		147
+		489,
+		146
 	],
 	"flip_x": false,
 	"char": "bratwurst",

@@ -8,11 +8,11 @@
 	"mod": "MOVIE",
 	"icon_offset": [
 		696,
-		465
+		473
 	],
 	"char_offset": [
-		534,
-		191
+		516,
+		175
 	],
 	"flip_x": false,
 	"char": "movie_sonic",

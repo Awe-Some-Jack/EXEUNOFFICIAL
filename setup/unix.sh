@@ -1,36 +1,28 @@
-#!/bin/sh
-# SETUP FOR MAC AND LINUX SYSTEMS!!!
-# REMINDER THAT YOU NEED HAXE INSTALLED PRIOR TO USING THIS
-# https://haxe.org/download
-# ditto -c -k --keepParent "export/release/macos/bin/Vs Sonic.app" "export/release/macos/bin/Vs Sonic.zip"
-cd ..
-echo Makking the main haxelib and setuping folder in same time..
-mkdir ~/haxelib && haxelib setup ~/haxelib
-echo Installing dependencies...
-echo This might take a few moments depending on your internet speed.
-haxelib git lime https://github.com/GreenColdTea/lime-fc.git
-haxelib git hx-gamejolt https://github.com/cocoCode17/hx-gamejolt
-haxelib git flixel-addons https://github.com/GreenColdTea/flixel-addons.git funkin-before-rebase --skip-dependencies
-haxelib install flixel-tools 1.5.1
-haxelib install tjson 1.4.0
-haxelib git hxdiscord_rpc https://github.com/Wolfie1985yt/hxdiscord_rpc.git
-haxelib install hxp 1.3.1
-haxelib install nape-haxe4
-haxelib install hxgamemode --quiet
-haxelib git astc-compressor https://github.com/Wolfie1985yt/astc-compressor.git --skip-dependencies
-haxelib git extension-androidtools https://github.com/LimeExtensions/extension-androidtools.git --skip-dependencies
-haxelib git hscript-iris https://github.com/GreenColdTea/hscript-iris.git
-haxelib git flixel-animate https://github.com/FNF-CC-ENGINE/flixel-animate.git --skip-dependencies
-haxelib git hxluajit https://github.com/MAJigsaw77/hxluajit.git
-haxelib git hxluajit-wrapper https://github.com/MAJigsaw77/hxluajit-wrapper.git --skip-dependencies
-haxelib git hxvlc https://github.com/MAJigsaw77/hxvlc.git feat/miniaudio --skip-dependencies
-haxelib git funkin.vis https://github.com/FunkinCrew/funkVis 22b1ce089dd924f15cdc4632397ef3504d464e90
-haxelib git grig.audio https://github.com/osakared/grig.audio.git
-haxelib install tink_core 1.26.0
-haxelib git flixel https://github.com/FNF-CC-ENGINE/flixel.git --skip-dependencies
-haxelib git openfl https://github.com/FNF-CC-ENGINE/openfl-fc.git
-haxelib git hxcpp https://github.com/Wolfie1985yt/hxcpp.git
-haxelib set lime git
-haxelib set hxcpp git
-haxelib remove hxcpp 4.3.2
-echo Finished!
+#!/bin/bash
+
+cd "$(dirname "$0")/.."
+
+echo "Installing dependencies with HMM..."
+echo
+
+if [ ! -f "hmm.json" ]; then
+    echo "ERROR: hmm.json not found!"
+    exit 1
+fi
+
+if ! haxelib list | grep -q "^hmm"; then
+    echo "hmm not found. Installing hmm globally..."
+    haxelib --global install hmm
+    haxelib --global run hmm setup
+fi
+
+haxelib run hmm install
+
+if [ $? -ne 0 ]; then
+    echo
+    echo "ERROR: Failed to install dependencies."
+    exit 1
+fi
+
+echo
+echo "Dependencies installed successfully!"

@@ -878,6 +878,8 @@ function onEvent(n,v1,v2)
 				camHUD.visible = true;
 				fifthFloor.visible = true;
 			case 'waterxd':
+				FlxTween.cancelTweensOf(upSign); FlxTween.cancelTweensOf(downSign);
+				upSign.destroy(); downSign.destroy();
 				prefs.ghostTapping = oldGT;
 				if (Conductor.songPosition >= 133923.077) return;
 				new FlxTimer().start(Conductor.crochet / 500, function(_)

@@ -263,7 +263,7 @@ class EXEMenu extends MusicBeatState
 			if (FlxG.random.bool(Math.min(chance, 95)))
 			{
 				_fatalScene = fatalScene;
-				_fatalTimer = FlxG.random.float(1, 4);
+				_fatalTimer = FlxG.random.float(0.5, 2.5);
 			}
 		}
 

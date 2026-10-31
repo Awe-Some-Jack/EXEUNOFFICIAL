@@ -347,13 +347,13 @@ class Note extends FlxSprite
 			if (isSustainNote)
 			{
 				final graphic = Paths.image('pixelUI/' + skinPixel + 'ENDS' + skinPostfix);
-				frames = FlxTileFrames.fromBitmapAddSpacesAndBorders(graphic, FlxPoint.get(Math.floor(graphic.width / 4), Math.floor(graphic.height / 2)), null, FlxPoint.get(1, 1));
+				loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 2));
 				originalHeight = graphic.height / 2;
 			}
 			else
 			{
 				final graphic = Paths.image('pixelUI/' + skinPixel + skinPostfix);
-				frames = FlxTileFrames.fromBitmapAddSpacesAndBorders(graphic, FlxPoint.get(Math.floor(graphic.width / 4), Math.floor(graphic.height / 5)), null, FlxPoint.get(1, 1));
+				loadGraphic(graphic, true, Math.floor(graphic.width / 4), Math.floor(graphic.height / 5));
 			}
 			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 			loadPixelNoteAnims();

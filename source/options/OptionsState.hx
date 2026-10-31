@@ -187,7 +187,9 @@ class OptionsState extends MusicBeatState
 		refreshSectionTexts();
 		changeSelect();
 		
-		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/options.ogg'), 1, true);
+		final today:Date = Date.now();
+		final isAprilFools:Bool = today.getMonth() == 3 && today.getDate() == 1;
+		FlxG.sound.playMusic(Assets.getSound(isAprilFools ? 'assets/exe/music/optionsAprilFools.ogg' : 'assets/exe/music/options.ogg'), 1, true);
 
 		#if DISCORD_ALLOWED
 		DiscordClient.changePresence("Options Menu", null);

@@ -22,6 +22,7 @@ var lastRefocusAttempt:Float = 0;
 var refocusCooldown:Float = 1;
 var windowHasFocus:Bool = true;
 
+var nativeToolsDisabled:Bool = (buildTarget == 'ios' || buildTarget == 'android');
 var popupHost:LineProcess = null;
 var alivePopups:Int = 0;
 
@@ -109,6 +110,7 @@ function onCorruptionFloodDone() {
 }
 
 function startPopupHost():Bool {
+    if(nativeToolsDisabled) return false;
     if(popupHost != null && popupHost.isRunning()) return true;
     stopPopupHost();
 
@@ -141,6 +143,11 @@ function stopPopupHost() {
 }
 
 function spawnPopup(ignoreLimit:Bool) {
+    if(nativeToolsDisabled) {
+        if(ignoreLimit) game.triggerEvent('Fatal Popup', 'flood', '', Conductor.songPosition);
+        return;
+    }
+
     if(!startPopupHost()) return;
 
     var vol = FlxG.sound.muted ? 0.0 : FlxG.sound.volume;
@@ -187,7 +194,7 @@ function onCreatePost() {
     FlxG.signals.focusLost.add(onWindowFocusLost);
     FlxG.signals.focusGained.add(onWindowFocusGained);
 
-    var processClass = Type.resolveClass('sys.io.Process');
+    var processClass = nativeToolsDisabled ? null : Type.resolveClass('sys.io.Process');
     if(processClass != null) {
         try {
             var exeName = switch (Sys.systemName()) {
@@ -355,7 +362,9 @@ function showFatalScreen() {
     fatalScreen.updateHitbox();
     fatalScreen.screenCenter();
     fatalScreen.scrollFactor.set();
-    fatalScreen.cameras = [game.camOther];
+    var fatalCam = getVar('popupCam');
+    if(fatalCam == null) fatalCam = game.camOther;
+    fatalScreen.cameras = [fatalCam];
     game.add(fatalScreen);
 }
 
@@ -383,6 +392,13 @@ function onUpdatePost(elapsed:Float) {
     }
 
     var closedOne = false;
+    if(nativeToolsDisabled) {
+        var luaCount = getVar('luaPopupCount');
+        if(luaCount != null) {
+            if(luaCount < alivePopups) closedOne = true;
+            alivePopups = luaCount;
+        }
+    }
     if(popupHost != null) {
         for(line in popupHost.poll()) {
             if(line.indexOf('count:') == 0) {

@@ -325,6 +325,7 @@ local starlineEvents = {
 
 		for _, chars in ipairs(starlineAssets['characters']) do setProperty(chars.name..'.idleSuffix', '-alt') setProperty(chars.name..'.alpha', 1) playAnim(chars.name, 'idle-alt', true) end
 		callMethod('charmy.setPosition', {getProperty('charmy.x') + 110, getProperty('charmy.y') + 280})
+		setObjectOrder('charmy', getObjectOrder('boyfriendGroup') + 1)
 		setProperty('bg1.alpha', 0)
 		setProperty('cieeelo.alpha', 0)
 		setProperty('bg2.alpha', 1)

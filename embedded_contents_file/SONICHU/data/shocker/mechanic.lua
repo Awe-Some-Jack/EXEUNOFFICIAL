@@ -12,19 +12,27 @@ function opponentNoteHit(id,nd,nt,isn)
 		addLuaSprite(tag, true)
 		table.insert(lightings, tag)
 
-		if getHealth() > 0.1 then addHealth(-0.05) end
+		addHealth(-0.075)
 		playAnim('boyfriend', 'shock', true)
 		setProperty('boyfriend.specialAnim', true)
 		zappedRecently = true
+		cancelTimer('asdaj')
+		runTimer('asdaj', 0.5)
 	end
 end
 
+function onTimerCompleted(t) if t == 'asdaj' then zappedRecently = false end end
+
 function onGameOver()
 	if zappedRecently and not getProperty('cpuControlled') and not getProperty('practiceMode') then
+		addHaxeLibrary('EXEAchievements', "backend")
 		runHaxeCode([[
-			backend.EXEAchievements.unlock('shocks');
-			backend.EXEAchievements.save();
+			import backend.EXEAchievements;
+			EXEAchievements.unlock('shocks');
+			EXEAchievements.save();
 		]])
+
+		
 	end
 end
 

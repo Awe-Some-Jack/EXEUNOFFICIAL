@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="hand.webp">
+<SubTexture name="hand up0000" x="0" y="0" width="78" height="146" frameX="-1" frameY="0" frameWidth="62" frameHeight="126" />
+<SubTexture name="hand up0001" x="0" y="0" width="78" height="146" frameX="-1" frameY="0" frameWidth="62" frameHeight="126" />
+<SubTexture name="hand up0002" x="0" y="0" width="78" height="146" frameX="-1" frameY="0" frameWidth="62" frameHeight="126" />
+<SubTexture name="hand up0003" x="0" y="0" width="78" height="146" frameX="-1" frameY="0" frameWidth="62" frameHeight="126" />
+<SubTexture name="hand up0004" x="78" y="0" width="82" height="146" frameX="0" frameY="0" frameWidth="62" frameHeight="126" />
+<SubTexture name="hand grab 0000" x="0" y="146" width="67" height="56" frameX="-11" frameY="-24" frameWidth="62" frameHeight="126" />
+<SubTexture name="hand grab 0001" x="67" y="146" width="66" height="56" frameX="-10" frameY="-30" frameWidth="62" frameHeight="126" />
+<SubTexture name="hand grab 0002" x="160" y="0" width="65" height="57" frameX="-11" frameY="-31" frameWidth="62" frameHeight="126" />
+</TextureAtlas>

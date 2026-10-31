@@ -201,6 +201,7 @@ function onCreate()
 	}
 	else
 	{
+		unlockRingAchievement = false;
 		glitchBG = new FlxSprite(-930, -920).loadGraphic(Paths.image('bg/normal/bgg'));
 		glitchBG.alpha = 0.0001;
 		insert(0, glitchBG);

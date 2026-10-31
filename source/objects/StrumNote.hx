@@ -101,7 +101,7 @@ class StrumNote extends FlxSprite
 			loadGraphic(Paths.image('pixelUI/' + texture));
 			final fw:Int = Math.floor(width / 4);
 			final fh:Int = Math.floor(height / 5);
-			frames = FlxTileFrames.fromBitmapAddSpacesAndBorders(Paths.image('pixelUI/' + texture), FlxPoint.get(fw, fh), null, FlxPoint.get(1, 1));
+			loadGraphic(Paths.image('pixelUI/' + texture), true, fw, fh);
 
 			antialiasing = false;
 			setGraphicSize(Std.int(width * PlayState.daPixelZoom));

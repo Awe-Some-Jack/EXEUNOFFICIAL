@@ -20,7 +20,7 @@ function onEndSong()
     if seenVideo == false then
         finalCutscene = true
         startVideo('tripletrouble')
-        setProperty('camGame.visible', false)  setProperty('camHUD.visible', false)
+        setProperty('camGame.visible', false)  setProperty('camHUD.visible', false) setProperty('camOther.visible', false)
         seenVideo = true
         return Function_Stop
     end

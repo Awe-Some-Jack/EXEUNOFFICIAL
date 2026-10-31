@@ -225,7 +225,7 @@ function onEndSong()
         cancelTween('BlackGraphicOtherAlpha')
         setProperty('BlackGraphicOther.alpha', 0)
         startVideo('soundtestcodes')
-        setProperty('camGame.visible', false)  setProperty('camHUD.visible', false)
+        setProperty('camGame.visible', false)  setProperty('camHUD.visible', false)  setProperty('camOther.visible', false)
         seenVideo = true
         return Function_Stop
     end

@@ -251,6 +251,7 @@ function onCreate()
     startTalk();
 }
 
+var curseOfX:Character;
 function onCreatePost()
 {
     if (FlxG.random.bool(50))
@@ -291,6 +292,10 @@ function onCreatePost()
     insert(game.members.indexOf(blackFade), colorPulse);
 
     makePhase4Copy();
+
+    curseOfX = new Character(dad.x + 200, dad.y, 'curseofx', false);
+    insert(game.members.indexOf(dadGroup), curseOfX);
+    curseOfX.alpha = 0;
 }
 
 function makePhase4Copy()
@@ -818,6 +823,11 @@ function opponentNoteHit(note)
         {
             phase4Copy.playAnim(p4anim, true);
             phase4Copy.holdTimer = 0;
+
+            FlxTween.cancelTweensOf(curseOfX);
+            curseOfX.playAnim(game.singAnimations[note.noteData], true);
+            curseOfX.alpha = 0.75;
+            FlxTween.tween(curseOfX, {alpha: 0}, 0.25, {ease: FlxEase.cubeOut});
         }
     }
     if (dad != null && dadPhase != 'happy' && dad.alpha > 0.01)

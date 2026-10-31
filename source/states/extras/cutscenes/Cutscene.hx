@@ -439,14 +439,17 @@ class Cutscene extends SonicSubState
         }
     }
 
+    static function videoJsonPath():String
+        return #if mac backend.CoolUtil.userDataDir() + 'video.json' #else 'assets/exe/extras/cutscenes/video.json' #end;
+
     function _loadJsonManifest():Void
     {
         videoEntries = [];
-        if (!FileSystem.exists('assets/exe/extras/cutscenes/video.json')) return;
+        if (!FileSystem.exists(videoJsonPath())) return;
 
         try
         {
-            final json:Dynamic = haxe.Json.parse(File.getContent('assets/exe/extras/cutscenes/video.json'));
+            final json:Dynamic = haxe.Json.parse(File.getContent(videoJsonPath()));
             final arr:Array<Dynamic> = cast json.videos;
             if (arr != null)
                 for (v in arr)
@@ -505,7 +508,7 @@ class Cutscene extends SonicSubState
         for (e in videoEntries)
             arr.push({name: e.name, displayName: e.displayName, path: e.path});
         final json = haxe.Json.stringify({videos: arr}, null, '  ');
-        try { File.saveContent('assets/exe/extras/cutscenes/video.json', json); } catch (_:Dynamic) {}
+        try { File.saveContent(videoJsonPath(), json); } catch (_:Dynamic) {}
     }
 
     function _buildMenu():Void

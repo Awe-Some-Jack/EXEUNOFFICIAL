@@ -82,6 +82,10 @@ class EXEMenu extends MusicBeatState
 	public static var secretSong:Bool = false;
 	final secretCodes:Array<String> = ['personel', '2005'];
 	var curKey:Array<Int>;
+	#if mobile
+	var _kbOpen:Bool = false;
+	var _typed:String = '';
+	#end
 
 	var heylookanemail:FlxSprite;
 
@@ -237,6 +241,10 @@ class EXEMenu extends MusicBeatState
 
 		curKey = [for (_ in secretCodes) 0];
 
+		#if mobile
+		FlxG.stage.addEventListener(openfl.events.TextEvent.TEXT_INPUT, _onTextInput);
+		#end
+
 		FlxG.mouse.visible = true;
 
 		if (_canPlaySong)
@@ -364,6 +372,28 @@ class EXEMenu extends MusicBeatState
 		}
 		if (_fatalStarted) return;
 
+		#if mobile
+		if (unlocked.length >= 5 && canInteract)
+		{
+			var held = 0;
+			var fresh = false;
+			for (t in FlxG.touches.list)
+				if (t.pressed)
+				{
+					held++;
+					if (t.justPressed) fresh = true;
+				}
+			if (held >= 2 && fresh) _setKeyboard(!_kbOpen);
+
+			if (_kbOpen)
+			{
+				if (FlxG.keys.justPressed.BACKSPACE && _typed.length > 0)
+					_typed = _typed.substr(0, _typed.length - 1);
+				return;
+			}
+		}
+		#end
+
 		#if !final
 		if (#if mobile shortPress && !inDevMode || #end FlxG.keys.justPressed.TAB && !inDevMode) { inDevMode = true; FlxG.resetState(); }
 
@@ -416,9 +446,9 @@ class EXEMenu extends MusicBeatState
 			#if mobile
 			if(pressHolding && deltaMouseY != 0 && cooldownTimer <= 0)
 				if(deltaMouseY > 5)
-					changeSelection(-1, false);
+					changeSelection(-1, true);
 				else if(deltaMouseY < -5)
-					changeSelection(1, true);
+					changeSelection(1, false);
 			#end
 
 			final centerHitbox = menuHitboxes[selectedOptionIndex];
@@ -698,6 +728,35 @@ class EXEMenu extends MusicBeatState
 		previousSelectedIndex = selectedOptionIndex;
 	}
 
+	#if mobile
+	function _setKeyboard(on:Bool):Void
+	{
+		_kbOpen = on;
+		_typed = '';
+		FlxG.stage.window.textInputEnabled = on;
+	}
+
+	function _onTextInput(e:openfl.events.TextEvent):Void
+	{
+		if (!_kbOpen) return;
+		for (ch in e.text.toLowerCase().split(''))
+		{
+			final snd = FlxG.sound.play(Paths.sound('secretKeyPress'));
+			snd.pitch = FlxG.random.float(0.7, 1.3);
+			_typed += ch;
+		}
+		if (_typed.length > 16) _typed = _typed.substr(_typed.length - 16);
+
+		for (i in 0...secretCodes.length)
+			if (StringTools.endsWith(_typed, secretCodes[i]))
+			{
+				_setKeyboard(false);
+				correctCode(i);
+				break;
+			}
+	}
+	#end
+
 	function charToKeyName(char:String):String
 	{
 		return switch(char)
@@ -799,6 +858,10 @@ class EXEMenu extends MusicBeatState
 	override function destroy():Void
 	{
 		FlxG.autoPause = true;
+		#if mobile
+		FlxG.stage.removeEventListener(openfl.events.TextEvent.TEXT_INPUT, _onTextInput);
+		if (_kbOpen) FlxG.stage.window.textInputEnabled = false;
+		#end
 		super.destroy();
 	}
 }

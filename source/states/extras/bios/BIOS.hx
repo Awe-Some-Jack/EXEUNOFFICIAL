@@ -268,7 +268,7 @@ class BIOS extends SonicSubState
 		final e0 = entries.length > 0 ? entries[0] : null;
 
 		circleIcon = new FlxSprite(721, 495);
-		circleIcon.loadGraphic("assets/exe/extras/bios/biosCircle.webp");
+		circleIcon.loadGraphic(Paths.getBitmapData("assets/exe/extras/bios/biosCircle.webp"));
 		circleIcon.setGraphicSize(102,102);
 		circleIcon.antialiasing = ClientPrefs?.data?.antialiasing;
 		circleIcon.updateHitbox();

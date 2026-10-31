@@ -60,6 +60,17 @@ class EXEMouse
 
 	static var _activeBitmap:BitmapData;
 
+	public static var forceSystemCursor:Bool = false;
+
+	@:keep public static function setForceSystemCursor(value:Bool):Void
+	{
+		forceSystemCursor = value;
+		#if !mobile
+		if (FlxG.mouse != null)
+			applyCursor(normalizeType(Std.string(Mouse.__cursor)), true);
+		#end
+	}
+
 	static var _initialized:Bool = false;
 	static var _lastAppliedType:String = "";
 	static var _lastScale:Float = -1;
@@ -133,6 +144,13 @@ class EXEMouse
 		return;
 		#else
 		if (FlxG.mouse == null) return;
+
+		if (forceSystemCursor)
+		{
+			FlxG.mouse.useSystemCursor = true;
+			FlxG.mouse.visible = true;
+			return;
+		}
 
 		final normType:String = normalizeType(type);
 		final screenScale:Float = getScreenScale();

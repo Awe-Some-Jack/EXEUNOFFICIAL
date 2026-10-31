@@ -425,7 +425,7 @@ class EXETitle extends MusicBeatState
 
 		if (pressContinue && !canStart)
 		{
-			if (controls.ACCEPT)
+			if (controls.ACCEPT #if mobile || shortPress #end)
 			{
 				pressContinue = false;
 				FlxG.sound.play(Paths.sound('menumomentclick'));

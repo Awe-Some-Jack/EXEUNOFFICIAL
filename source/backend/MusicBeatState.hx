@@ -139,32 +139,29 @@ class MusicBeatState extends FlxTransitionableState
 
 		#if mobile
 		if(backButton != null) {
+			buttonOverlaps = FlxG.mouse.overlaps(backButton);
+			
 			if(FlxG.mouse.pressedRight) {
 				backButton.x += deltaMouseX;
 				backButton.y += deltaMouseY;
 				trace(backButton.x + ' ' + backButton.y);
 			}
 
-			buttonOverlaps = FlxG.mouse.overlaps(backButton);
+			backPressed = buttonOverlaps && shortPress;
 
-			if(buttonOverlaps) {
+			if(backPressed) {
 				backButton.animation.play('press', true);
-
-				backPressed = shortPress;
 
 				if(backButton.scale.x != 0.19 && tweenScale == null) {
 					FlxTween.cancelTweensOf(backButton);
 					FlxTween.cancelTweensOf(backButton.scale);
-					tweenScale = FlxTween.tween(backButton.scale, {x: 0.19, y: 0.19}, 0.2, {ease: FlxEase.backOut, onComplete: function(_) tweenScale = null});
-					FlxTween.tween(backButton, {alpha: 1}, 0.2, {ease: FlxEase.smootherStepOut});
-				}
-			} else {
-				backButton.animation.play('idle', true);
-				if(backButton.scale.x != 0.17 && tweenScale == null) {
-					FlxTween.cancelTweensOf(backButton);
-					FlxTween.cancelTweensOf(backButton.scale);
-					tweenScale = FlxTween.tween(backButton.scale, {x: 0.17, y: 0.17}, 0.2, {ease: FlxEase.backOut, onComplete: function(_) tweenScale = null});
-					FlxTween.tween(backButton, {alpha: 0.6}, 0.2, {ease: FlxEase.smootherStepOut});
+					tweenScale = FlxTween.tween(backButton.scale, {x: 0.19, y: 0.19}, 0.1, {ease: FlxEase.backOut, onComplete: function(_) tweenScale = null});
+					FlxTween.tween(backButton, {alpha: 1}, 0.1, {ease: FlxEase.smootherStepOut, onComplete: (_) -> {
+						backButton.animation.play('idle', true);
+						FlxTween.cancelTweensOf(backButton.scale);
+						tweenScale = FlxTween.tween(backButton.scale, {x: 0.17, y: 0.17}, 0.1, {ease: FlxEase.backOut, onComplete: function(_) tweenScale = null});
+						FlxTween.tween(backButton, {alpha: 0.6}, 0.1, {ease: FlxEase.smootherStepOut});
+					}});
 				}
 			}
 		}

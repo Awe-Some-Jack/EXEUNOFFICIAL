@@ -510,7 +510,7 @@ class CreditsRollState extends MusicBeatState
 	function addImage(path:String, ?scale:Float = 1, ?centered:Bool = false)
 	{
 		final c = _newCard(centered);
-		final spr = new FlxSprite().loadGraphic(path);
+		final spr = new FlxSprite().loadGraphic(Paths.getBitmapData(path));
 		final fit:Float = Math.min((FlxG.width * 0.4) / spr.width, (FlxG.height * 0.4) / spr.height);
 		spr.setGraphicSize(Std.int(spr.width * fit * scale), Std.int(spr.height * fit * scale));
 		spr.updateHitbox();

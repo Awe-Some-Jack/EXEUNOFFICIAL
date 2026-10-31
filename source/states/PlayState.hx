@@ -1032,7 +1032,7 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.data.controlsType == 'base')
 		{
 			for(i in 0...4) {
-				var hitbox:FlxSprite = new FlxSprite(0, 0).makeGraphic(172, Std.int(FlxG.height/1.6));
+				var hitbox:FlxSprite = new FlxSprite(0, 0).makeGraphic(172 + BASE_HITBOX_GROW * 2, Std.int(FlxG.height/1.6));
 				hitbox.color = 0xFFFF0000;
 
 				switch(i) {
@@ -1341,6 +1341,7 @@ class PlayState extends MusicBeatState
 			}
 			callOnScripts('onVideoCompleted', [name]);
 			canPause = true;
+			videoCutscene = null;
 
 			if(!forMidSong) startAndEnd();
 		}
@@ -1984,18 +1985,23 @@ class PlayState extends MusicBeatState
 	function isMobileRingNote(n:Note):Bool
 		return n.noteType == 'Ring Note' && usesMobileStrumLayout();
 
+	static inline final BASE_HITBOX_GROW:Int = 5;
+
 	function positionBaseHitboxes():Void
 	{
-		if (ClientPrefs.data.controlsType == 'base' && playerStrums.length >= 4)
+		if (ClientPrefs.data.controlsType == 'base' && hitboxesGroup.length >= 4)
 		{
+			final spacing:Float = 172;
+			final pairGap:Float = 150;
+			final start:Float = FlxG.width / 2 - spacing * 2;
+
 			for (i in 0...hitboxesGroup.length)
 			{
 				final hitbox:FlxSprite = hitboxesGroup[i];
-				final strum:StrumNote = playerStrums.members[i];
-				if (hitbox == null || strum == null) continue;
+				if (hitbox == null) continue;
 
-				hitbox.x = strum.x + (strum.width - hitbox.width) / 2;
-				hitbox.y = ClientPrefs.data.downScroll ? FlxG.height - hitbox.height : 0;
+				hitbox.x = start + spacing * i + (i < 2 ? -pairGap / 2 : pairGap / 2) - BASE_HITBOX_GROW;
+				hitbox.y = ClientPrefs.data.hitboxPosition == 'top' ? 0 : FlxG.height - hitbox.height;
 			}
 		}
 
@@ -2029,7 +2035,7 @@ class PlayState extends MusicBeatState
 		}
 
 		spaceHitbox.x = isPsych ? boxWidth * 2 : midX - spaceHitbox.width / 2;
-		spaceHitbox.y = isPsych || !ClientPrefs.data.downScroll ? 0 : FlxG.height - spaceHitbox.height;
+		spaceHitbox.y = isPsych || ClientPrefs.data.hitboxPosition == 'top' ? 0 : FlxG.height - spaceHitbox.height;
 	}
 
 	function updateSpaceHitbox():Void
@@ -2429,7 +2435,9 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if(shortPress && startedCountdown && canPause && (Paths.formatToSongPath(SONG.song) != 'burning' || FlxG.save.data.burningWon == true) && FlxG.mouse.overlaps(pauseButton, camOther))
+		pauseButton.visible = ClientPrefs.data.visiblePauseButton && !inCutscene && !(videoCutscene != null && videoCutscene.alive && videoCutscene.isPlaying() == true);
+
+		if(shortPress && startedCountdown && canPause && pauseButton.visible && (Paths.formatToSongPath(SONG.song) != 'burning' || FlxG.save.data.burningWon == true) && FlxG.mouse.overlaps(pauseButton, camOther))
 			openPauseMenu();
 		#end
 

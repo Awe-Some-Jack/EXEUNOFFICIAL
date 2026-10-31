@@ -143,7 +143,7 @@ class SoundTest extends MusicBeatState
 
 	function createBackground():Void
 	{
-		backdrop = new FlxBackdrop('assets/exe/soundtest/bgtest.webp', FlxAxes.XY);
+		backdrop = new FlxBackdrop(Paths.getBitmapData('assets/exe/soundtest/bgtest.webp'), FlxAxes.XY);
 		backdrop.scale.set(3.0, 3.0);
 		backdrop.velocity.set(-50.0, -50.0);
 		add(backdrop);
@@ -190,7 +190,7 @@ class SoundTest extends MusicBeatState
 	function createNumbers():Void
 	{
 		final frames = FlxAtlasFrames.fromSparrow(
-			'assets/exe/soundtest/numbers.webp',
+			Paths.getBitmapData('assets/exe/soundtest/numbers.webp', true, true),
 			'assets/exe/soundtest/numbers.xml'
 		);
 		

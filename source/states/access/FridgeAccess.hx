@@ -174,7 +174,10 @@ class FridgeAccess extends MusicBeatState
 		DiscordClient.changePresence("In the Fridge!", "Selecting da Sunky");
 		#end
 
-		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 710); #end
+		#if mobile
+		createBackButton(FlxG.width - 245, FlxG.height - 710);
+		backButton.scrollFactor.set(0, 0);
+		#end
 
 		//object = doorup;
 	}

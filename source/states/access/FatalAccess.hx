@@ -132,7 +132,7 @@ class FatalAccess extends MusicBeatState
 
 	public static function menuScene():Null<FatalScene>
 	{
-		#if mobile
+		#if (mobile || mac)
 		if (granted() || denied() || StoryModeState.weekCompleted.get('exe') != true) return null;
 		return FlxG.save.data.fatalMobileSeen == true ? REMINDER : TRANSMISSION;
 		#elseif sys
@@ -151,7 +151,7 @@ class FatalAccess extends MusicBeatState
 		FlxG.save.data.fatalGranted = false;
 		FlxG.save.data.fatalDenied = false;
 		FlxG.save.flush();
-		#if (sys && !mobile)
+		#if (sys && !mobile && !mac)
 		try
 		{
 			if (FileSystem.exists(filePath())) FileSystem.deleteFile(filePath());
@@ -163,7 +163,7 @@ class FatalAccess extends MusicBeatState
 
 	public static function startWatching():Void
 	{
-		#if (sys && !mobile)
+		#if (sys && !mobile && !mac)
 		if (_watching) return;
 		_watching = true;
 		FlxG.signals.postUpdate.add(_poll);
@@ -172,7 +172,7 @@ class FatalAccess extends MusicBeatState
 
 	static function _poll():Void
 	{
-		#if (sys && !mobile)
+		#if (sys && !mobile && !mac)
 		_pollTimer -= FlxG.elapsed;
 		if (_pollTimer > 0) return;
 		_pollTimer = 0.5;
@@ -193,7 +193,7 @@ class FatalAccess extends MusicBeatState
 
 	public static function bootScene():Null<FatalScene>
 	{
-		#if (sys && !mobile)
+		#if (sys && !mobile && !mac)
 		final path = filePath();
 		if (granted() || denied() || !FileSystem.exists(path)) return null;
 		try
@@ -230,7 +230,7 @@ class FatalAccess extends MusicBeatState
 
 	static function _createFile():Void
 	{
-		#if (sys && !mobile)
+		#if (sys && !mobile && !mac)
 		try
 		{
 			FileSystem.createDirectory(folderPath());
@@ -706,7 +706,7 @@ class FatalAccess extends MusicBeatState
 		_redLine = false;
 		FlxG.camera.stopFX();
 		_off = 0;
-		#if (sys && !mobile)
+		#if (sys && !mobile && !mac)
 		try
 		{
 			if (FileSystem.exists(filePath())) FileSystem.deleteFile(filePath());
@@ -945,7 +945,7 @@ class FatalAccess extends MusicBeatState
 		switch (_scene)
 		{
 			case TRANSMISSION:
-				#if mobile
+				#if (mobile || mac)
 				_toMobileAccess(true);
 				#elseif sys
 				Sys.exit(0);
@@ -958,7 +958,7 @@ class FatalAccess extends MusicBeatState
 			case GRANTED:
 				_playCutscene();
 			default:
-				#if mobile
+				#if (mobile || mac)
 				_toMobileAccess(false);
 				#else
 				_backToMenu();
@@ -966,7 +966,7 @@ class FatalAccess extends MusicBeatState
 		}
 	}
 
-	#if mobile
+	#if (mobile || mac)
 	function _toMobileAccess(first:Bool):Void
 	{
 		if (first)

@@ -1,6 +1,7 @@
 import openfl.Lib;
 import flixel.input.keyboard.FlxKey;
 import backend.LineProcess;
+import backend.EXEMouse;
 
 var isFatalitySong:Bool = false;
 var corruptionTriggered = false;
@@ -120,6 +121,7 @@ function startPopupHost():Bool {
         popupHost = new LineProcess('contents/FATAL/tools/' + exeName, ['--host']);
         popupHost.send('max:' + maxPopups);
         setVar('fatalPopupHost', popupHost);
+        if(Sys.systemName() == 'Mac') EXEMouse.setForceSystemCursor(true);
         return true;
     } catch (e:Dynamic) {
         trace('popup host failed to start: ' + e);
@@ -135,6 +137,7 @@ function stopPopupHost() {
     }
     setVar('fatalPopupHost', null);
     alivePopups = 0;
+    if(Sys.systemName() == 'Mac') EXEMouse.setForceSystemCursor(false);
 }
 
 function spawnPopup(ignoreLimit:Bool) {

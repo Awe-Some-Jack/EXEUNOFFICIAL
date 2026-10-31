@@ -107,7 +107,9 @@ function onGameOverConfirm(retry)
 	if (retry) {
 		FlxG.cameras.remove(gameOverHUD, true);
 		for (sound in FlxG.sound.list) if (sound.playing && sound != deadMusic) sound.volume = 0;
-		FlxG.camera.flash(0xFFFF0000, 1, null, true);
+		var flashCam = getVar('popupCam');
+		if (flashCam == null) flashCam = FlxG.camera;
+		flashCam.flash(0xFFFF0000, 1, null, true);
 		FlxG.sound.play(Paths.music('gameOverEnd'));
 		deadMusic.stop();
 		fatalLine.stop();

@@ -1,5 +1,10 @@
 import objects.Character;
 import openfl.display.BlendMode;
+import openfl.geom.Rectangle;
+import objects.VideoSprite;
+import flixel.text.FlxText;
+import DateTools;
+import Date;
 
 var bgIntro:Array<BackgroundSprite> = [
 	{path: "fatality/new/launchbase/fondo1", scale: [4, 4, false], animation: [{name: "fondo_gif", looped: true}], scroll: [0.2, 0.2]},
@@ -56,6 +61,92 @@ var rainShader:ErrorHandledRuntimeShader;
 
 var curBG:String = 'intro';
 
+var wallpaperCamera:FlxCamera;
+var wallpaperVideo:VideoSprite;
+
+final isMobile:Bool = (buildTarget == 'ios' || buildTarget == 'android');
+
+final desktopFolders:Array<String> = ['Android Studio', 'Memes', 'Godot', 'Funkin Lullaby Reboot', 'videos', 'flowery', 'Mirror Modulation', 'Unofficial'];
+
+function desktopImage(key:String):FlxSprite
+{
+	return wallpaperSprite(new FlxSprite(0, 0).loadGraphic(Paths.getBitmapData('assets/exe/access/fatal/mobile/' + key + '.webp')));
+}
+
+function wallpaperSprite(spr:FlxSprite):FlxSprite
+{
+	spr.camera = wallpaperCamera;
+	game.add(spr);
+	return spr;
+}
+
+function buildWallpaperDesktop()
+{
+	for (i in 0...desktopFolders.length)
+	{
+		var icon:FlxSprite = desktopImage('desktopIcons/1');
+		icon.scale.set(0.325, 0.325);
+		icon.updateHitbox();
+		icon.setPosition(30, (icon.height * i) + (30 * i));
+
+		var label:FlxText = new FlxText(0, 0, 1000, desktopFolders[i]);
+		label.setPosition(icon.x - icon.width + 10, icon.y + icon.height + 3);
+		label.setFormat(Paths.font('UbuntuSans.ttf'), 100, 0xFFFFFFFF, 'center');
+		label.scale.set(0.08, 0.08);
+		label.updateHitbox();
+		wallpaperSprite(label);
+	}
+
+	var bar:FlxSprite = wallpaperSprite(new FlxSprite(0, 0).makeGraphic(FlxG.width, 20, 0xFF1C1C20));
+	bar.setPosition(0, FlxG.height - bar.height);
+
+	var mint:FlxSprite = desktopImage('desktopIcons/mint');
+	mint.scale.set(0.043, 0.043);
+	mint.updateHitbox();
+	mint.setPosition(bar.x + 2, bar.y + 2);
+
+	for (i in 1...9)
+	{
+		var icon:FlxSprite = desktopImage('desktopIcons/' + i);
+		icon.scale.set(0.16, 0.16);
+		icon.updateHitbox();
+		icon.setPosition(10 + (icon.width * i) + (6 * i), bar.y + 2);
+	}
+
+	var clock:FlxText = new FlxText(0, 0, 1000, DateTools.format(Date.now(), '%H:%M'));
+	clock.setFormat(Paths.font('UbuntuSans.ttf'), 100, 0xFFFFFFFF, 'center');
+	clock.scale.set(0.08, 0.08);
+	clock.updateHitbox();
+	clock.setPosition(FlxG.width - clock.width + 30, bar.y + 8);
+	wallpaperSprite(clock);
+
+	var tray:Array<String> = ['volume', 'network', 'printer', 'notifications'];
+	var trayX:Float = clock.x + clock.width / 2 - 17;
+	for (i in 0...tray.length)
+	{
+		var icon:FlxSprite = desktopImage(tray[i]);
+		icon.scale.set(0.14, 0.14);
+		icon.updateHitbox();
+		trayX -= icon.width + (i == 0 ? 0 : 8);
+		icon.setPosition(trayX, bar.y + 5);
+	}
+
+	var mintLine:FlxSprite = wallpaperSprite(new FlxSprite(0, 0).makeGraphic(1, Std.int(bar.height - 2), 0xFF303036));
+	mintLine.setPosition(mint.x + 23, mint.y - 1);
+}
+var popupCam:FlxCamera;
+var windowBorder:FlxSprite;
+var borderCam:FlxCamera;
+var barCam:FlxCamera;
+
+final borderThickness:Int = 6;
+final borderLayers:Array<Array<Int>> = [[0xFFFFFFFF, 1], [0xFFC0C0C0, 3], [0xFF808080, 1], [0xFF000000, 1]];
+
+final camWidth:Int = 960;
+final camHeight:Int = 720;
+final displayWidth:Int = 720;
+final displayScale:Float = displayWidth / camWidth;
+
 var targetMatrix:Float = 0.2;
 var rainIntensity:Float = 0;
 var rainVelocity:Float = 0.5;
@@ -63,8 +154,92 @@ var targetRain:Float = 0.2;
 
 var canRain:Bool = false;
 
+function onCreate() {
+	if (!isMobile) return;
+
+	wallpaperCamera = new FlxCamera();
+	wallpaperCamera.bgColor = 0xFF000000;
+
+	wallpaperVideo = new VideoSprite(0, 0, false);
+	wallpaperVideo.onFormat(() -> {
+		wallpaperVideo.setGraphicSize(FlxG.width, FlxG.height);
+		wallpaperVideo.screenCenter();
+	});
+	wallpaperVideo.camera = wallpaperCamera;
+	game.add(wallpaperVideo);
+	var videoLoaded:Bool = wallpaperVideo.loadVideo('assets/exe/access/fatal/mobile/bakamitai.mp4', [VideoSprite.ARG_LOOPING, VideoSprite.ARG_MUTED, VideoSprite.ARG_HW_ACCEL, VideoSprite.ARG_DROP_LATE, VideoSprite.ARG_SKIP_FRAMES]);
+	if (videoLoaded) wallpaperVideo.playDelayed();
+
+	buildWallpaperDesktop();
+
+	FlxG.cameras.remove(camGame, false);
+	FlxG.cameras.remove(camVideo, false);
+	FlxG.cameras.remove(camHUD, false);
+	FlxG.cameras.remove(camOther, false);
+	FlxG.cameras.add(wallpaperCamera, false);
+	FlxG.cameras.add(camGame);
+	FlxG.cameras.add(camVideo, false);
+	FlxG.cameras.add(camHUD, false);
+	FlxG.cameras.add(camOther, false);
+
+	camGame.bgColor = 0xFF000000;
+
+	for (cam in [camGame, camVideo, camHUD, camOther])
+	{
+		cam.setSize(camWidth, camHeight);
+		cam.x = (FlxG.width - camWidth) / 2;
+		cam.y = (FlxG.height - camHeight) / 2;
+		cam.flashSprite.scaleX = cam.flashSprite.scaleY = displayScale;
+	}
+
+	borderCam = new FlxCamera();
+	borderCam.bgColor = 0x0;
+	FlxG.cameras.add(borderCam, false);
+
+	barCam = new FlxCamera();
+	barCam.bgColor = 0x0;
+	FlxG.cameras.add(barCam, false);
+	setVar('barCam', barCam);
+
+	popupCam = new FlxCamera();
+	popupCam.bgColor = 0x0;
+	FlxG.cameras.add(popupCam, false);
+	setVar('popupCam', popupCam);
+	setVar('fatalBoxW', displayWidth);
+	setVar('fatalBoxH', displayWidth * camHeight / camWidth);
+	setVar('fatalBoxX', (FlxG.width - displayWidth) / 2);
+	setVar('fatalBoxY', (FlxG.height - displayWidth * camHeight / camWidth) / 2);
+	setVar('fatalCamBaseX', (FlxG.width - camWidth) / 2);
+	setVar('fatalCamBaseY', (FlxG.height - camHeight) / 2);
+
+	var boxW:Int = Std.int(displayWidth);
+	var boxH:Int = Std.int(displayWidth * camHeight / camWidth);
+	var borderW:Int = boxW + borderThickness * 2;
+	var borderH:Int = boxH + borderThickness * 2;
+	windowBorder = new FlxSprite((FlxG.width - boxW) / 2 - borderThickness, (FlxG.height - boxH) / 2 - borderThickness);
+	windowBorder.makeGraphic(borderW, borderH, 0x00000000);
+	windowBorder.antialiasing = false;
+	windowBorder.scrollFactor.set();
+	var inset:Int = 0;
+	for (layer in borderLayers)
+	{
+		windowBorder.pixels.fillRect(new Rectangle(inset, inset, borderW - inset * 2, borderH - inset * 2), layer[0]);
+		inset += layer[1];
+	}
+	windowBorder.pixels.fillRect(new Rectangle(borderThickness, borderThickness, boxW, boxH), 0x00000000);
+	windowBorder.dirty = true;
+	windowBorder.cameras = [borderCam];
+	game.add(windowBorder);
+}
+
 function onCreatePost()
 {
+	if (isMobile && !ClientPrefs.data.middleScroll)
+	{
+		game.comboGroup.x -= (FlxG.width - camWidth) / 2;
+		game.comboGroup.y += 100 * (ClientPrefs.data.downScroll ? -1 : 1);
+	}
+
 	FlxSprite.defaultAntialiasing = false;
 	FlxG.camera.pixelPerfectRender = true;
 	camHUD.pixelPerfectRender = true;
@@ -105,7 +280,7 @@ function onCreatePost()
 			strum.texture = 'noteSkins/NOTEFATAL_assets';
 			if (!ClientPrefs.data.middleScroll) strum.x = 10 + (strum.width * i);
 		}
-		else if (!ClientPrefs.data.middleScroll) strum.x = (FlxG.width - 10 - (strum.width * 4)) + (strum.width * (i - 4));
+		else if (!ClientPrefs.data.middleScroll) strum.x = ((isMobile ? camWidth : FlxG.width) - 10 - (strum.width * 4)) + (strum.width * (i - 4));
 	}
 	for (i in 0...unspawnNotes.length-1)
 	{
@@ -290,6 +465,12 @@ var _iM:Float = 0;
 var _iD:Float = 0;
 function onUpdatePost(e)
 {
+	if (windowBorder != null)
+	{
+		windowBorder.x = (FlxG.width - displayWidth) / 2 - borderThickness + camGame.x - (FlxG.width - camWidth) / 2;
+		windowBorder.y = (FlxG.height - displayWidth * camHeight / camWidth) / 2 - borderThickness + camGame.y - (FlxG.height - camHeight) / 2;
+	}
+
 	if (prefs.shaders && canRain)
 	{
 		if (_intro) rainShader.setFloat('rainIntensity', rainShader.getFloat('rainIntensity') + e / 100);

@@ -1,6 +1,8 @@
 import openfl.Lib;
 import lime.system.System;
 
+final isMobile:Bool = (buildTarget == 'ios' || buildTarget == 'android');
+
 final margin:Float = 24;
 
 final floatEase:Float = 1.5;
@@ -68,6 +70,7 @@ function clean(value:String):String {
 }
 
 function onEvent(name:String, value1:String, value2:String, strumTime:Float) {
+    if(isMobile) return;
     switch(name) {
         case 'Fatal Hand':
             handEvent(clean(value1).toLowerCase(), clean(value2));
@@ -396,20 +399,24 @@ function updateRoam(elapsed:Float) {
 }
 
 function onUpdatePost(elapsed:Float) {
+    if(isMobile) return;
     if(windowMode == 'float') updateFloat(elapsed);
     else if(windowMode == 'roam') updateRoam(elapsed);
 }
 
 function onEndSong() {
+    if(isMobile) return Function_Continue;
     finishMotion();
     return Function_Continue;
 }
 
 function onGameOver() {
+    if(isMobile) return Function_Continue;
     finishMotion();
     return Function_Continue;
 }
 
 function onDestroy() {
+    if(isMobile) return;
     finishMotion();
 }

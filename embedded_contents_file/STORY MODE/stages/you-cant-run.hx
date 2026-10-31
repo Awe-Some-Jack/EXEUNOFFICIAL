@@ -256,15 +256,20 @@ function onStepHit()
 			oppStrum.visible = true;
 		}
 
-		if (game.unspawnNotes != null)
-			for (note in game.unspawnNotes)
-				if (note != null)
-					if (!note.mustPress)
-						note.visible = true;
+		var mobileOpponent:Bool = (buildTarget == 'ios' || buildTarget == 'android') && ClientPrefs.data.middleScroll && (ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes);
 
-		if (game.notes != null)
-			for (note in game.notes.members)
-				if (note != null && !note.mustPress) note.visible = true;
+		if (!mobileOpponent)
+		{
+			if (game.unspawnNotes != null)
+				for (note in game.unspawnNotes)
+					if (note != null)
+						if (!note.mustPress)
+							note.visible = true;
+
+			if (game.notes != null)
+				for (note in game.notes.members)
+					if (note != null && !note.mustPress) note.visible = true;
+		}
 
 		initOppStrumsShaking(true);
 	}

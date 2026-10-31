@@ -68,11 +68,24 @@ function onCreatePost()
 	addLuaSprite('floot')
 	setProperty('floot.alpha', 0)
 
+	runHaxeCode([[
+		for (strum in game.strumLineNotes)
+		{
+			strum.animOffsets.clear();
+			strum.playAnim('static', true);
+		}
+	]])
+
 	if not getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') then
+		local strumW = 0
 		for i = 0, 3 do
-			local strumW = getProperty('opponentStrums.members[' .. i .. '].width')
-			setProperty('opponentStrums.members[' .. i .. '].x', 10 + (strumW * i))
-			setProperty('playerStrums.members[' .. i .. '].x', (screenWidth - 10 - (strumW * 4)) + (strumW * i))
+			strumW = math.max(strumW, getProperty('opponentStrums.members[' .. i .. '].frameWidth') * getProperty('opponentStrums.members[' .. i .. '].scale.x'))
+		end
+		strumW = math.min(strumW, (screenWidth - 20 - 60) / 8)
+		for i = 0, 3 do
+			local pad = (strumW - getProperty('opponentStrums.members[' .. i .. '].width')) / 2
+			setProperty('opponentStrums.members[' .. i .. '].x', 10 + (strumW * i) + pad)
+			setProperty('playerStrums.members[' .. i .. '].x', (screenWidth - 10 - (strumW * 4)) + (strumW * i) + pad)
 		end
 	end
 

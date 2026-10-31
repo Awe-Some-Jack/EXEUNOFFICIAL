@@ -136,9 +136,11 @@ class AchievementsState extends SonicSubState
         
         if(controls.BACK #if mobile || backPressed #end) back();
         
+        #if !final
         // RECUERDEN BORRAR ESTO CUADNO SUBAN EL MOD OJO
         if(FlxG.keys.justPressed.G) EXEAchievements.unlockAll();
         if(FlxG.keys.justPressed.H) EXEAchievements.lockAll();
+        #end
 
         achievementGroup.y = FlxMath.lerp(achievementGroup.y, 160 - achievementGroup.height * scrollValue, LERP_SPEED * elapsed);
         

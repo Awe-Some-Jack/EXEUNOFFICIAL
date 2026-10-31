@@ -4,12 +4,13 @@ using StringTools;
 var playedCutscene:Bool = false;
 var windMusic:FlxSound;
 var blackBG:FlxSprite;
-
+var firstTime:Bool = false;
 final cam = FlxG.camera;
 
+function onCreate() firstTime = !PlayState.seenCutscene;
 function onCreatePost()
 {
-	if (playedCutscene) return;
+	if (playedCutscene || !PlayState.isStoryMode || !firstTime) return;
 	
 	blackBG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
 	blackBG.scrollFactor.set();
@@ -26,7 +27,7 @@ function onCreatePost()
 
 function onStartCountdown()
 {
-	if (playedCutscene) return;
+	if (playedCutscene || !PlayState.isStoryMode || !firstTime) return;
 	
 	game.remove(dadGroup, true);
 	game.insert(game.members.indexOf(boyfriendGroup) + 1, dadGroup);
@@ -59,9 +60,15 @@ function onStartCountdown()
 	return Function_Stop;
 }
 
+function onCountdownStarted()
+{
+	if (!firstTime || !PlayState.isStoryMode) return;
+	game.skipCountdown = true;
+}
+
 function onUpdatePost()
 {
-	if (playedCutscene) return;
+	if (playedCutscene || !firstTime || !PlayState.isStoryMode) return;
 
 	blackBG.scale.set(1 / cam.zoom, 1 / cam.zoom);
 	if (dad.getAnimationName() == 'intro' && dad.isAnimationFinished())

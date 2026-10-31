@@ -268,9 +268,6 @@ class Note extends FlxSprite
 			centerOrigin();
 		}
 		x += offsetX;
-
-		adjustColor = new shaders.AdjustColorShader();
-		shader = adjustColor;
 	}
 
 	private function set_noteType(value:String):String
@@ -554,10 +551,12 @@ class Note extends FlxSprite
 	public function desat(){
 		alpha = 0.7;
 		multAlpha = 0.7;
-		if (adjustColor != null) {
-			adjustColor.brightness = 30;
-			adjustColor.contrast = 25;
-			adjustColor.saturation = -100;
+		if (adjustColor == null) {
+			adjustColor = new shaders.AdjustColorShader();
+			if (shader == null) shader = adjustColor;
 		}
+		adjustColor.brightness = 30;
+		adjustColor.contrast = 25;
+		adjustColor.saturation = -100;
 	}
 }

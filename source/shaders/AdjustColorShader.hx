@@ -96,28 +96,28 @@ class AdjustColorShader extends FlxShader
 
     private function set_hue(value:Float):Float
     {
-        this._hue.value = [value];
+        if (_hue != null) _hue.value = [value];
         hue = value;
         return hue;
     }
 
     private function set_saturation(value:Float):Float
     {
-        this._saturation.value = [value];
+        if (_saturation != null) _saturation.value = [value];
         saturation = value;
         return saturation;
     }
 
     private function set_brightness(value:Float):Float
     {
-        this._brightness.value = [value];
+        if (_brightness != null) _brightness.value = [value];
         brightness = value;
         return brightness;
     }
 
     private function set_contrast(value:Float):Float
     {
-        this._contrast.value = [value];
+        if (_contrast != null) _contrast.value = [value];
         contrast = value;
         return contrast;
     }

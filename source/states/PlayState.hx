@@ -3481,7 +3481,10 @@ class PlayState extends MusicBeatState
 			canResync = false;
 			changedDifficulty = false;
 
-			if (states.StoryModeState.fromStoryMode) { 
+			if (states.SonichuUnlockState.pending) {
+				FlxG.switchState(() -> new states.SonichuUnlockState());
+			}
+			else if (states.StoryModeState.fromStoryMode) {
 				states.StoryModeState.fromStoryMode = false; 
 				FlxG.switchState(() -> new states.StoryModeState()); 
 			}
@@ -3689,6 +3692,7 @@ class PlayState extends MusicBeatState
             if (!unlocked.contains(secretSongPath))
             {
                 unlocked.push(secretSongPath);
+                states.SonichuUnlockState.pending = true;
                 trace('[DEBUG] Secret song '+secretSongPath+" unlocked!");
             }
         }

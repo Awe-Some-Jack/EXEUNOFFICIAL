@@ -216,7 +216,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 		objectGroup = new FlxTypedGroup<FlxSprite>();
 		add(objectGroup);
 
-		player = new Player(146.0, 134.0, "assets/shared/images/minigame/thevalley/characters/fakergf/fakergf.json");
+		player = new Player(176.0, 134.0, "assets/shared/images/minigame/thevalley/characters/fakergf/fakergf.json");
 		player.cinematic = true;
 		add(player);
 
@@ -373,7 +373,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 		{
 			bg.update(elapsed, player);
 			player.updateAnim(elapsed);
-			player.handleInput(elapsed, 146.0, 134.0);
+			player.handleInput(elapsed, 176.0, 134.0);
 			_tutorial.update(elapsed);
 			return;
 		}
@@ -426,7 +426,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 		if (_gameplayStarted)
 		{
-			if (_deathPhase == 0) player.handleInput(elapsed, 146.0, 134.0);
+			if (_deathPhase == 0) player.handleInput(elapsed, 176.0, 134.0);
 			if (_deathPhase == 0 && !player.cinematic && player.y - player.offset.y > bg.cutY(player.x + player.width * 0.5)) _fallDeath();
 
 			for (g in tileMap.garys) g.npcUpdate(elapsed);
@@ -928,7 +928,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 	var _lastGetaway:Float = -999;
 	var _clock:Float = 0;
-	var _checkX:Float = 146.0;
+	var _checkX:Float = 176.0;
 	var _checkY:Float = 134.0;
 
 	function _onShardFound():Void

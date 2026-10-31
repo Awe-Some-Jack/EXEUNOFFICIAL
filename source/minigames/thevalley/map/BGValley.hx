@@ -169,11 +169,6 @@ class BGValley
 		_pendingFront.resize(0);
 	}
 
-	public function showFades(on:Bool):Void
-	{
-		for (f in _fades) f.spr.visible = on;
-	}
-
 	public function update(elapsed:Float, ?player:Player):Void
 	{
 		_fx.update(elapsed);

@@ -1017,9 +1017,9 @@ class Monster implements NavAgent
 		final ahead = _aheadDir();
 		final reach = _nodesThatReach(graph.nearestNode(px, py));
 
-		if (px < 1935.0 - 250.0)
+		if (px < 1610.0 - 250.0)
 		{
-			final tree = graph.nearestNode(1935.0, -210.0);
+			final tree = graph.nearestNode(1610.0, -28.0);
 			if (reach.exists(tree)) return graph.nodes[tree];
 		}
 
@@ -1171,18 +1171,16 @@ class Monster implements NavAgent
 			_closerTimer = 0;
 			_progressBest = Math.POSITIVE_INFINITY;
 			_progressX = body.position.x;
-			_progressY = _feetY();
 			return;
 		}
 
 		final d = _dist(body.position.x, _feetY(), _follower.targetX, _follower.targetY);
-		final travelled = _dist(body.position.x, _feetY(), _progressX, _progressY);
+		final travelled = Math.abs(body.position.x - _progressX);
 		if (d < _progressBest - 24 || travelled > 56)
 		{
 			if (d < _progressBest - 24) _closerTimer = 0;
 			_progressBest = Math.min(_progressBest, d);
 			_progressX = body.position.x;
-			_progressY = _feetY();
 			_progressTimer = 0;
 			_lunges = 0;
 		}
@@ -1198,7 +1196,6 @@ class Monster implements NavAgent
 	}
 
 	var _progressX:Float = 0;
-	var _progressY:Float = 0;
 	var _closerTimer:Float = 0;
 
 	function _unstick():Void

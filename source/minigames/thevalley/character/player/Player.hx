@@ -382,6 +382,7 @@ class Player extends FlxSprite implements CameraTarget
 		final rad   = h.footRadius ?? h.width * 0.5;
 		final footY = body.position.y + h.height * 0.5;
 		var gap = Math.POSITIVE_INFINITY;
+		var underFoot = false;
 		_ray.direction.setxy(0, 1);
 		for (k in -2...3)
 		{
@@ -390,10 +391,11 @@ class Player extends FlxSprite implements CameraTarget
 			_ray.maxDistance = 12.0;
 			final res = body.space.rayCast(_ray, false);
 			if (res == null) continue;
+			if (k == 0) underFoot = true;
 			gap = Math.min(gap, res.distance - 2);
 			res.dispose();
 		}
-		if (gap > 1.0 && gap <= 10.0) body.position.y += gap - 0.5;
+		if (underFoot && gap > 1.0 && gap <= 10.0) body.position.y += gap - 0.5;
 	}
 
 	function _stepUp(dir:Int):Void

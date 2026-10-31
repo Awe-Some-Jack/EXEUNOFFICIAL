@@ -153,13 +153,13 @@ class IntroCutscene
 
 		_skyY = _eButton.camera.height * 0.5 - BGValley.ECLIPSE_DISK_Y;
 		_bg.skyOffset(0, Math.min(_skyY, _skyRoom(6.6)));
-		_camera.lookAt(146.0, -216.0, 6.6);
+		_camera.lookAt(176.0, -216.0, 6.6);
 
 		_player.cinematic = true;
 		_player.mode = minigames.thevalley.character.player.Player.PlayerMode.Ground;
 		_player.wingOpenTimer = 0;
 		_player.glideCooldown = 0;
-		_player.body.position.setxy(146.0 + _player.width * 0.5, 153.0 + _player.height * 0.5);
+		_player.body.position.setxy(176.0 + _player.width * 0.5, 153.0 + _player.height * 0.5);
 		_player.body.velocity.setxy(0, 0);
 		_baseOffsetY = _player.cfg.hitbox.offsetY;
 		_player.offset.y = _baseOffsetY;
@@ -221,7 +221,7 @@ class IntroCutscene
 				if (_timer >= 2.8)
 				{
 					_setPhase(Descend);
-					_camera.lookAt(143.5, 162.5, 3.7, 9.0, FlxEase.smootherStepInOut, true);
+					_camera.lookAt(173.5, 162.5, 3.7, 9.0, FlxEase.smootherStepInOut, true);
 				}
 
 			case Descend:
@@ -294,7 +294,7 @@ class IntroCutscene
 		musicMix = _mixFrom + (_mixTo - _mixFrom) * Math.min(1, _mixTime / _mixLength);
 
 		final trapped = _phase == Trapped;
-		_meter.update(elapsed, trapped ? _shown : 1, trapped ? _heat : 0, trapped && _sincePress > 0.45 && _progress > 0, trapped, 143.5, 186.0);
+		_meter.update(elapsed, trapped ? _shown : 1, trapped ? _heat : 0, trapped && _sincePress > 0.45 && _progress > 0, trapped, 173.5, 186.0);
 		if (_directing) _updateDirector(elapsed);
 		_sink();
 		_flash.alpha = Math.max(0, _flash.alpha - elapsed * 2.5);
@@ -340,9 +340,9 @@ class IntroCutscene
 
 		_shown += (_progress - _shown) * (1.0 - Math.pow(0.001, elapsed * 2.5));
 
-		_camera.lookAt(143.5, 162.5, 3.7 + _shown * 0.6, 0, null, true);
+		_camera.lookAt(173.5, 162.5, 3.7 + _shown * 0.6, 0, null, true);
 
-		_eButton.x = 143.5 - _eButton.width * 0.5;
+		_eButton.x = 173.5 - _eButton.width * 0.5;
 		_eButton.y = 139.0 - _eButton.height - 6.0;
 		_eButton.alpha += (0.4 - _eButton.alpha) * (1.0 - Math.pow(0.01, elapsed * 8.0));
 
@@ -385,7 +385,7 @@ class IntroCutscene
 		FlxG.sound.play(Paths.sound("minigame/thevalley/ropesnap"), 0.45);
 		_camera.shake(0.006, 0.35);
 		_flash.alpha = 0.7;
-		_camera.lookAt(143.5 + 4, 162.5 + 10, 3.7 + 0.6 + 0.9, 0.35, FlxEase.expoOut, true);
+		_camera.lookAt(173.5 + 4, 162.5 + 10, 3.7 + 0.6 + 0.9, 0.35, FlxEase.expoOut, true);
 	}
 
 	function _finish():Void
@@ -418,7 +418,7 @@ class IntroCutscene
 		_bg.skyOffset(0, 0);
 		_directing = false;
 		_player.mode = minigames.thevalley.character.player.Player.PlayerMode.Ground;
-		_player.body.position.setxy(146.0 + _player.width * 0.5 + 52.0, 153.0 + _player.height * 0.5);
+		_player.body.position.setxy(176.0 + _player.width * 0.5 + 52.0, 153.0 + _player.height * 0.5);
 		_player.body.velocity.setxy(0, 0);
 		_baseOffsetY = _player.cfg.hitbox.offsetY;
 		_player.offset.y = _baseOffsetY;

@@ -11,7 +11,7 @@ JFX_DIR="${JAVAFX_SDK:-$HOME/javafx-sdk-$JFX_VERSION}"
 JDK="${JAVA_HOME:-$(/usr/libexec/java_home 2>/dev/null || true)}"
 WORK="${WORK_DIR:-${TMPDIR:-/tmp}/vssonic-launcher-build-mac}"
 ARCH="$(uname -m)"
-ARCH_LABEL="$([ "$ARCH" = arm64 ] && echo silicon || echo "$ARCH")"
+ARCH_LABEL="$([ "$ARCH" = arm64 ] && echo silicon || echo intel)"
 
 if [ ! -x "$JDK/bin/jpackage" ] || [ ! -x "$JDK/bin/javac" ]; then
     echo "JAVA_HOME must point to a full JDK 17+ that has javac and jpackage (got: $JDK)"

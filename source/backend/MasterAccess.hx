@@ -102,54 +102,62 @@ class MasterAccess {
         #if desktop
         var filePath = "assets/debug_tools.hx";
         var content:String = 
-'var curSpeed:Float = 1;
-var curBotplay:Bool = false;
-var devControlBotplay:Bool = true;
+        "var curSpeed:Float = 1;
+        var curBotplay:Bool = false;
+        var devControlBotplay:Bool = true;
 
-function onUpdatePost(e){
-    @:privateAccess
-    if (FlxG.keys.justPressed.ONE && generatedMusic) {
-        game.KillNotes();
-        FlxG.sound?.music?.onComplete();
-    }
+        function onUpdatePost(e){
+            @:privateAccess
+            if (FlxG.keys.justPressed.ONE && generatedMusic) {
+                game.KillNotes();
+                FlxG.sound?.music?.onComplete();
+            }
 
-    if (FlxG.keys.justPressed.TWO) curSpeed -= 0.1;
-    if (FlxG.keys.justPressed.THREE) curSpeed = 1;
-    if (FlxG.keys.justPressed.FOUR) curSpeed += 0.1;
-    
-    curSpeed = FlxMath.bound(curSpeed, 0.1, 2);
+            if (FlxG.keys.justPressed.TWO) curSpeed -= 0.1;
+            if (FlxG.keys.justPressed.THREE) curSpeed = 1;
+            if (FlxG.keys.justPressed.FOUR) curSpeed += 0.1;
+            
+            curSpeed = FlxMath.bound(curSpeed, 0.1, 2);
 
-    game.playbackRate = FlxG.keys.pressed.FIVE ? 20 : curSpeed;
+            game.playbackRate = FlxG.keys.pressed.FIVE ? 20 : curSpeed;
 
-    if (FlxG.keys.justPressed.SIX) curBotplay = !curBotplay;
-    if (devControlBotplay){
-        game.cpuControlled = FlxG.keys.pressed.FIVE || curBotplay;
-    } 
-    
-    if (FlxG.keys.justPressed.F1){
-        setSongTime(Conductor.songPosition - 1000);
-        clearNotesBefore(Conductor.songPosition);
-    }
-    if (FlxG.keys.justPressed.F2){
-        setSongTime(Conductor.songPosition + 1000);
-        clearNotesBefore(Conductor.songPosition);
-    }
-    if (FlxG.keys.justPressed.F4){
-        game.KillNotes();
-        FlxG.sound?.music?.stop();
-        FlxG.sound.playMusic(Assets.getSound(\'assets/exe/music/menu.ogg\'));
-        FlxG.switchState(new states.EXEMenu());
-    }
-    if (FlxG.keys.justPressed.F5){
-        PlayState.nextReloadAll = true;
-        FlxG.resetState();
-    }
-}
+            if (FlxG.keys.justPressed.SIX) curBotplay = !curBotplay;
+            if (devControlBotplay){
+                game.cpuControlled = FlxG.keys.pressed.FIVE || curBotplay;
+            } 
+            
+            if (FlxG.keys.justPressed.F1){
+                setSongTime(Conductor.songPosition - 1000);
+                clearNotesBefore(Conductor.songPosition);
+            }
+            if (FlxG.keys.justPressed.F2){
+                setSongTime(Conductor.songPosition + 1000);
+                clearNotesBefore(Conductor.songPosition);
+            }
+            if (FlxG.keys.justPressed.F4){
+                PlayState.deathCounter    = 0;
+                PlayState.resetSunkyHelp();
+                PlayState.seenCutscene    = false;
+                PlayState.firstPlay       = false;
+                PlayState.changedDifficulty = false;
+                PlayState.chartingMode      = false;
+                FlxG.camera.followLerp      = 0;
+                PlayState.instance?.callOnHScript('onSongExit', []);
+                game.KillNotes();
+                FlxG.sound?.music?.stop();
+                FlxG.sound.playMusic('assets/exe/music/menu.ogg');
+                FlxG.switchState(new states.EXEMenu());
+            }
+            if (FlxG.keys.justPressed.F5){
+                PlayState.nextReloadAll = true;
+                FlxG.resetState();
+            }
+        }
 
-function destroy() {
-    game.playbackRate = 1;
-    FlxG.sound?.muted = false;
-}';
+        function destroy() {
+            game.playbackRate = 1;
+            FlxG.sound?.muted = false;
+        }";
 
         if (!FileSystem.exists(filePath)) {
             try {

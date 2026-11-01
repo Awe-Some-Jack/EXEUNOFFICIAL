@@ -163,6 +163,7 @@ class HScript extends Iris
 		set('File', File);
 		set('FileSystem', FileSystem);
 		#end
+		set('Main', 		   Main);
 		set('FlxG',            flixel.FlxG);
 		set('FlxMath',         flixel.math.FlxMath);
 		set('FlxSprite',       flixel.FlxSprite);

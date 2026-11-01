@@ -189,6 +189,15 @@ class ClientPrefs {
 			if (key != 'gameplaySettings' && Reflect.hasField(FlxG.save.data, key))
 				Reflect.setField(data, key, Reflect.field(FlxG.save.data, key));
 
+		if (data.uncappedFPS)
+		{
+			data.uncappedFPS = false;
+			data.framerate = 60;
+			FlxG.save.data.uncappedFPS = false;
+			FlxG.save.data.framerate = 60;
+			FlxG.save.flush();
+		}
+
 		if (data.framerate > MAX_FRAMERATE)
 			data.framerate = MAX_FRAMERATE;
 
@@ -196,23 +205,15 @@ class ClientPrefs {
 
 		FlxG.autoPause = ClientPrefs.data.autoPause;
 
-		if (data.uncappedFPS)
+		if(data.framerate > FlxG.drawFramerate)
 		{
-			FlxG.drawFramerate = 0;
-			FlxG.updateFramerate = 0;
+			FlxG.updateFramerate = data.framerate;
+			FlxG.drawFramerate = data.framerate;
 		}
 		else
 		{
-			if(data.framerate > FlxG.drawFramerate)
-			{
-				FlxG.updateFramerate = data.framerate;
-				FlxG.drawFramerate = data.framerate;
-			}
-			else
-			{
-				FlxG.drawFramerate = data.framerate;
-				FlxG.updateFramerate = data.framerate;
-			}
+			FlxG.drawFramerate = data.framerate;
+			FlxG.updateFramerate = data.framerate;
 		}
 
 		if(FlxG.save.data.gameplaySettings != null)

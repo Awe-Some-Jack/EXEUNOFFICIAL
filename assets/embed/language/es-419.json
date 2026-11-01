@@ -40,7 +40,7 @@
 	"options.gameplay": "JUGABILIDAD",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "VENTANA SICK", "VENTANA GOOD", "VENTANA BAD", "FRAMES DE SEGURIDAD", "AUDIO EN STREAMING"],
 	"options.graphics": "GRÁFICOS",
-	"options.graphics.labels": ["MODO PATATA", "ANTIALIASING", "CACHÉ DE GPU", "CALIDAD DE SHADERS", "SHADERS", "FPS SIN LÍMITE", "TASA DE FPS", "SINCRONÍA SEGURA"],
+	"options.graphics.labels": ["MODO PATATA", "ANTIALIASING", "CACHÉ DE GPU", "CALIDAD DE SHADERS", "SHADERS", "TASA DE FPS", "SINCRONÍA SEGURA"],
 	"options.language": "IDIOMA",
 	"options.on": "ACTIVADO",
 	"options.off": "DESACTIVADO",
@@ -196,12 +196,18 @@
 	"tripletrouble_death_t": "¿Qué pasa? ¿Te agarró Tails por la cola?",
 	"tripletrouble_death_k": "Parece que no pudiste con mis Knuckles. ¡Qué lástima!",
 	"tripletrouble_death_e": "¡YO SOY EL EGGMAN!",
+
 	"prey_ending_1": "¡Wow!",
 	"prey_ending_2": "Mira todos esos badniks...",
 	"prey_ending_3": "¿A dónde van todos?",
 	"prey_ending_4": "¡Mejor voy a averiguar qué está pasando!",
+
 	"options.warning.unfinished": "ADVERTENCIA: ESTA OPCIÓN NO ESTÁ DEL TODO IMPLEMENTADA",
+
 	"sonichu_reveal_1": "Así que llegaste hasta aquí...",
 	"sonichu_reveal_2": "Prepárate, porque este es el final.",
-	"sonichu_reveal_3": "Mi último poder..."
+	"sonichu_reveal_3": "Mi último poder...",
+
+	"warning_text_main": "BIENVENIDO.\n\nAntes de continuar, debes tener en cuenta que este mod contiene luces parpadeantes y efectos que pueden causar convulsiones.\n\nSi te sientes incómodo o eres sensible a estos eventos, NO JUEGUES ESTO Y CIERRA EL JUEGO.\n\nSe recomienda discreción del espectador.",
+	"warning_text_enter": "Presiona Enter Para Continuar."
 }

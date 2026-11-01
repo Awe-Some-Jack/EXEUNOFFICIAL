@@ -40,7 +40,7 @@
 	"options.gameplay": "GAMEPLAY",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "FINESTRA SICK", "FINESTRA GOOD", "FINESTRA BAD", "FRAME DI SICUREZZA", "AUDIO IN STREAMING"],
 	"options.graphics": "GRAFICA",
-	"options.graphics.labels": ["MODALITÀ PATATA", "ANTI ALIASING", "CACHE GPU", "QUALITÀ SHADER", "SHADER", "FPS ILLIMITATI", "FREQUENZA FPS", "SYNC SICURA"],
+	"options.graphics.labels": ["MODALITÀ PATATA", "ANTI ALIASING", "CACHE GPU", "QUALITÀ SHADER", "SHADER", "FREQUENZA FPS", "SYNC SICURA"],
 	"options.language": "LINGUA",
 	"options.on": "ATTIVO",
 	"options.off": "DISATTIVO",
@@ -175,29 +175,40 @@
 	"valley_tutorial_story_3": "In questo luogo senza vita, cerca la persona che ami nascondendoti dall'ignoto. Ma attenta: $ESSO$ non ti lascerà andare facilmente.",
 	"valley_tutorial_story_4": "Cerca #Punti Sicuri# e #Piccoli Ingressi#. NON lasciare che $lui$ ti trovi.",
 	"valley_tutorial_continue": "PREMI INVIO PER CONTINUARE",
+
 	"sunky_offer_message": "Sunky ha notato che stai avendo difficoltà con questa canzone, quindi si offre di aiutarti!\nVuoi accettare la sua offerta?",
+
 	"pause_continue": "CONTINUA",
 	"pause_restart": "RICOMINCIA",
 	"pause_options": "OPZIONI",
 	"pause_exit": "ESCI",
+
 	"sunky_offer_yes": "SÌ, GRAZIE",
 	"sunky_offer_no": "NO, GRAZIE",
+
 	"valley_tutorial_skull": "CERCA NEL TESCHIO",
 	"valley_tutorial_hide": "NASCONDITI NEL TOTEM",
 	"valley_tutorial_unhide": "ESCI DAL TOTEM",
 	"valley_skip_cutscene": "PREMI SPAZIO PER SALTARE LA SCENA",
+
 	"tripletrouble_death_1": "Sei entrato all'inferno, e non sto parlando del Michigan.",
 	"tripletrouble_death_2": "Dopo tutto questo, sono piuttosto deluso.",
 	"tripletrouble_death_3": "Niente anelli, niente fortuna, e ora niente tempo.",
 	"tripletrouble_death_t": "Che succede? Tails ti ha preso per la coda?",
 	"tripletrouble_death_k": "Sembra che tu non abbia retto i miei Knuckles. Peccato!",
 	"tripletrouble_death_e": "IO SONO L'EGGMAN!",
+
 	"prey_ending_1": "Wow!",
 	"prey_ending_2": "Guarda quanti badnik...",
 	"prey_ending_3": "Dove staranno andando tutti?",
 	"prey_ending_4": "Meglio andare a scoprire cosa sta succedendo!",
+
 	"options.warning.unfinished": "ATTENZIONE: QUESTA OPZIONE NON È ANCORA DEL TUTTO IMPLEMENTATA",
+
 	"sonichu_reveal_1": "Quindi sei arrivato fin qui...",
 	"sonichu_reveal_2": "Preparati, perché questa è la fine.",
-	"sonichu_reveal_3": "Il mio ultimo potere..."
+	"sonichu_reveal_3": "Il mio ultimo potere...",
+
+	"warning_text_main": "BENVENUTO.\n\nPrima di proseguire, devi essere consapevole che questa mod contiene luci lampeggianti e immagini che possono causare crisi epilettiche.\n\nSe ti senti a disagio o sei sensibile a questi eventi, NON GIOCARE A QUESTO TITOLO E CHIUDI IL GIOCO.\n\nSi consiglia la discrezione dello spettatore.",
+	"warning_text_enter": "Premi Invio Per Continuare."
 }

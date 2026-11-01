@@ -2,7 +2,6 @@ package objects;
 
 import backend.animation.PsychAnimationController;
 import flixel.FlxSprite;
-import flixel.graphics.frames.FlxTileFrames;
 import flixel.math.FlxPoint;
 import flixel.math.FlxMath;
 import flixel.FlxG;

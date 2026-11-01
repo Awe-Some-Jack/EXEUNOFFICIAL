@@ -549,6 +549,7 @@ class Note extends FlxSprite
 	}
 
 	public function desat(){
+		if (noteType == "emerald") return;
 		alpha = 0.7;
 		multAlpha = 0.7;
 		if (adjustColor == null) {

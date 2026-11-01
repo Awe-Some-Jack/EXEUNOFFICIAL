@@ -3810,7 +3810,7 @@ class PlayState extends MusicBeatState
 		score = daRating.score;
 
 		// Combo counter moved here for the desaturated note feature to work properly
-		if (daRating.comboBreak){
+		if (daRating.comboBreak && note.noteType != "emerald"){
 			combo = 0;
 			
 			// correctly?
@@ -4710,7 +4710,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public function invalidateNote(note:Note, ?byHit:Bool = false):Void {
-		if (byHit && (note.comboBreak)) return;
+		if (byHit && (note.comboBreak) && note.noteType != "emerald") return;
 
 		if (note.noteData >= 0 && note.noteData < 4) {
 			noteQueues[note.noteData].remove(note);

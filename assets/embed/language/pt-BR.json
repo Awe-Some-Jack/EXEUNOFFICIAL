@@ -40,7 +40,7 @@
 	"options.gameplay": "JOGABILIDADE",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "JANELA INCRIVEL", "JANELA BOA", "JANELA RUIM", "FRAMES SEGUROS", "ÁUDIO EM STREAMING"],
 	"options.graphics": "GRAFICOS",
-	"options.graphics.labels": ["MODO BATATA", "ANTI-ALIASING", "CACHE DE GPU", "QUALIDADE DOS SHADERS", "SHADERS", "FPS ILIMITADO", "TAXA DE QUADROS", "SINCRONIA SEGURA"],
+	"options.graphics.labels": ["MODO BATATA", "ANTI-ALIASING", "CACHE DE GPU", "QUALIDADE DOS SHADERS", "SHADERS", "TAXA DE QUADROS", "SINCRONIA SEGURA"],
 	"options.language": "IDIOMA",
 	"options.on": "ON",
 	"options.off": "OFF",
@@ -164,6 +164,7 @@
 	"sharpy.line.19": "Hmm...",
 	"sharpy.line.20": "E-Ei, e se a gente testasse? Sabe... cantar e tal... Só você e eu-",
 	"sharpy.line.21": "O quê?",
+
 	"valley_tutorial_title": "COMO SOBREVIVER",
 	"valley_tutorial_move": "MOVER",
 	"valley_tutorial_run": "SEGURE PARA CORRER",
@@ -175,29 +176,40 @@
 	"valley_tutorial_story_3": "Neste lugar sem vida, procure quem você ama enquanto se esconde do desconhecido. Mas cuidado: $ISSO$ não vai te deixar ir tão fácil.",
 	"valley_tutorial_story_4": "Procure #Lugares Seguros# e #Entradas Pequenas#. NÃO deixe que $ele$ te encontre.",
 	"valley_tutorial_continue": "APERTE ENTER PARA CONTINUAR",
+
 	"sunky_offer_message": "Sunky percebeu que você está tendo dificuldades com essa música, então ele está se oferecendo para te ajudar!\nVocê quer aceitar a oferta dele?",
+
 	"pause_continue": "CONTINUAR",
 	"pause_restart": "REINICIAR",
 	"pause_options": "OPÇÕES",
 	"pause_exit": "SAIR",
+
 	"sunky_offer_yes": "SIM, POR FAVOR",
 	"sunky_offer_no": "NÃO, OBRIGADO",
+
 	"valley_tutorial_skull": "PROCURE NO CRÂNIO",
 	"valley_tutorial_hide": "ESCONDA-SE NO TOTEM",
 	"valley_tutorial_unhide": "SAIA DO TOTEM",
 	"valley_skip_cutscene": "APERTE ESPAÇO PARA PULAR A CENA",
+
 	"tripletrouble_death_1": "Você entrou no inferno, e não estou falando de Michigan.",
 	"tripletrouble_death_2": "Depois de tudo isso, estou bem decepcionado.",
 	"tripletrouble_death_3": "Sem anéis, sem sorte, e agora sem tempo.",
 	"tripletrouble_death_t": "Qual é o problema? O Tails te pegou pelo rabo?",
 	"tripletrouble_death_k": "Parece que você não aguentou meus Knuckles. Que pena!",
 	"tripletrouble_death_e": "EU SOU O EGGMAN!",
+
 	"prey_ending_1": "Uau!",
 	"prey_ending_2": "Olha só quantos badniks...",
 	"prey_ending_3": "Pra onde eles estão indo?",
 	"prey_ending_4": "Melhor eu ir descobrir o que está acontecendo!",
+
 	"options.warning.unfinished": "AVISO: ESTA OPÇÃO AINDA NÃO ESTÁ TOTALMENTE IMPLEMENTADA",
+
 	"sonichu_reveal_1": "Então você chegou até aqui...",
 	"sonichu_reveal_2": "Prepare-se, porque este é o fim.",
-	"sonichu_reveal_3": "Meu último poder..."
+	"sonichu_reveal_3": "Meu último poder...",
+
+	"warning_text_main": "BEM-VINDO.\n\nAntes de continuar, saiba que este mod contém luzes piscantes e efeitos que podem causar convulsões.\n\nSe você se sentir desconfortável ou for sensível a isso, NÃO JOGUE E FECHE O JOGO.\n\nRecomenda-se discrição por parte do jogador.",
+	"warning_text_enter": "Pressione Enter Para Continuar."
 }

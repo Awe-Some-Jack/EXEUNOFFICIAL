@@ -128,18 +128,19 @@ class EXETitle extends MusicBeatState
 	var pressContinue:Bool;
 	function playWarningScreen()
 	{
-		warningText = new FlxText(0, 0, 620, "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nViewer discretion is advised.", 40);
+		final mainText = Language.get('warning_text_main', "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nViewer discretion is advised.");
+		warningText = new FlxText(0, 0, 620, mainText, 40);
 		warningText.scale.set(0, 0);
-		warningText.setFormat("SonicFont.ttf", 30, FlxColor.WHITE, CENTER);
+		warningText.setFormat(Language.fontOrCJK("SonicFont.ttf"), 30, FlxColor.WHITE, CENTER);
 		warningText.screenCenter();
 		add(warningText);
 
-		warningText2 = new FlxText(0, 0, 620, "Press Enter To Continue.", 40);
+		warningText2 = new FlxText(0, 0, 620, Language.get('warning_text_enter', "Press Enter To Continue."), 40);
 		warningText2.scale.set(0, 0);
-		warningText2.setFormat("SonicFont.ttf", 30, FlxColor.WHITE, CENTER);
+		warningText2.setFormat(Language.fontOrCJK("SonicFont.ttf"), 30, FlxColor.WHITE, CENTER);
 		warningText2.screenCenter(X);
-		add(warningText2);
 		warningText2.y = warningText.y + 440;
+		add(warningText2);
 
 		FlxTween.tween(warningText.scale, {x: 1, y: 1}, 2, {ease: FlxEase.cubeOut});
 

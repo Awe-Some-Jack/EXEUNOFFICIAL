@@ -20,16 +20,15 @@ class ExeGraphicsState extends ExeBaseOptionsState
 		scrollOffset = 0;
 
 		menuTitle = Language.get('options.graphics', 'GRAPHICS');
-		var lbl = Language.getArray('options.graphics.labels', ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "UNCAPPED FPS", "FRAMERATE", "SAFE SYNC"]);
+		var lbl = Language.getArray('options.graphics.labels', ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "FRAMERATE", "SAFE SYNC"]);
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.lowQuality,  setValue: (v) -> ClientPrefs.data.lowQuality   = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.antialiasing, setValue: (v) -> ClientPrefs.data.antialiasing = v},
 			{label: lbl[2], getValue: () -> ClientPrefs.data.cacheOnGPU,  setValue: (v) -> ClientPrefs.data.cacheOnGPU   = v},
 			{label: lbl[3], getValue: () -> ClientPrefs.data.shaderQuality, setValue: (v) -> ClientPrefs.data.shaderQuality = v, isFloat: true},
 			{label: lbl[4], getValue: () -> ClientPrefs.data.shaders,     setValue: (v) -> ClientPrefs.data.shaders      = v},
-			{label: lbl[5], getValue: () -> ClientPrefs.data.uncappedFPS, setValue: (v) -> ClientPrefs.data.uncappedFPS  = v},
-			{label: lbl[6], getValue: () -> ClientPrefs.data.framerate,   setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true},
-			{label: lbl[7], getValue: () -> ClientPrefs.data.freezeSyncDelay, setValue: (v) -> ClientPrefs.data.freezeSyncDelay = v},
+			{label: lbl[5], getValue: () -> ClientPrefs.data.framerate,   setValue: (v) -> ClientPrefs.data.framerate    = v, isInt: true},
+			{label: lbl[6], getValue: () -> ClientPrefs.data.freezeSyncDelay, setValue: (v) -> ClientPrefs.data.freezeSyncDelay = v},
 		];
 
 		super.create();
@@ -104,7 +103,7 @@ class ExeGraphicsState extends ExeBaseOptionsState
 				ClientPrefs.saveSettings();
 
 				var optIdx = allOptions.indexOf(opt);
-				if (optIdx == 6) // FRAMERATE
+				if (optIdx == 5) // FRAMERATE
 				{
 					if (!ClientPrefs.data.uncappedFPS)
 					{
@@ -119,21 +118,6 @@ class ExeGraphicsState extends ExeBaseOptionsState
 				}
 				else if (optIdx == 1) // ANTI ALIASING
 					FlxSprite.defaultAntialiasing = ClientPrefs.data.antialiasing;
-				else if (optIdx == 5) // UNCAPPED FPS
-				{
-					if (ClientPrefs.data.uncappedFPS) {
-						FlxG.drawFramerate = 0;
-						FlxG.updateFramerate = 0;
-					} else {
-						if (ClientPrefs.data.framerate > FlxG.drawFramerate) {
-							FlxG.updateFramerate = ClientPrefs.data.framerate;
-							FlxG.drawFramerate = ClientPrefs.data.framerate;
-						} else {
-							FlxG.drawFramerate = ClientPrefs.data.framerate;
-							FlxG.updateFramerate = ClientPrefs.data.framerate;
-						}
-					}
-				}
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
 			if ((controls.ACCEPT || controls.BACK) #if mobile || backPressed #end)

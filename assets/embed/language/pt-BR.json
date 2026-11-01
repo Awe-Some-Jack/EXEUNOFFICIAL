@@ -40,7 +40,7 @@
 	"options.gameplay": "JOGABILIDADE",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "JANELA INCRIVEL", "JANELA BOA", "JANELA RUIM", "FRAMES SEGUROS", "ÁUDIO EM STREAMING"],
 	"options.graphics": "GRAFICOS",
-	"options.graphics.labels": ["MODO BATATA", "ANTI-ALIASING", "CACHE DE GPU", "QUALIDADE DOS SHADERS", "SHADERS", "FPS ILIMITADO", "TAXA DE QUADROS", "SINCRONIA SEGURA"],
+	"options.graphics.labels": ["MODO BATATA", "ANTI-ALIASING", "CACHE DE GPU", "QUALIDADE DOS SHADERS", "SHADERS", "TAXA DE QUADROS", "SINCRONIA SEGURA"],
 	"options.language": "IDIOMA",
 	"options.on": "ON",
 	"options.off": "OFF",

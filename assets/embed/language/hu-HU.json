@@ -40,7 +40,7 @@
 	"options.gameplay": "JÁTÉK",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMELT HANG"],
 	"options.graphics": "GRAFIKAI",
-	"options.graphics.labels": ["KRUMPLI MODE", "ANTI ALIASING", "GPU CACHING", "SHADER MINŐSÉG", "SHADEREK", "UNCAPPED FPS", "FRAMERATE", "BIZTONSÁGOS SZINKRON"],
+	"options.graphics.labels": ["KRUMPLI MODE", "ANTI ALIASING", "GPU CACHING", "SHADER MINŐSÉG", "SHADEREK", "FRAMERATE", "BIZTONSÁGOS SZINKRON"],
 	"options.language": "NYELV",
 	"options.on": "BE",
 	"options.off": "KI",

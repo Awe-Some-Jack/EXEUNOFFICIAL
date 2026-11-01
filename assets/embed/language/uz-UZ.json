@@ -40,7 +40,7 @@
 	"options.gameplay": "GEYMPLEY",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "ZO‘R (SICK) DARCHASI", "YAXSHI (GOOD) DARCHASI", "YOMON (BAD) DARCHASI", "XAVFSIZ FREYMLAR", "OQIMLI AUDIO (STREAMED)"],
 	"options.graphics": "GRAFIKA",
-	"options.graphics.labels": ["KARTOSHKA REJIMI", "SILLIQLASH (AA)", "GPU KESH", "SHEYDER SIFATI", "SHEYDERLAR", "CHEKLANMAGAN FPS", "KADRLAR CHASTOTASI", "XAVFSIZ SINXRON"],
+	"options.graphics.labels": ["KARTOSHKA REJIMI", "SILLIQLASH (AA)", "GPU KESH", "SHEYDER SIFATI", "SHEYDERLAR", "KADRLAR CHASTOTASI", "XAVFSIZ SINXRON"],
 	"options.language": "TIL",
 	"options.on": "YONIQ",
 	"options.off": "O‘CHIQ",

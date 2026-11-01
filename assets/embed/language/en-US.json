@@ -40,7 +40,7 @@
 	"options.gameplay": "GAMEPLAY",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"],
 	"options.graphics": "GRAPHICS",
-	"options.graphics.labels": ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "UNCAPPED FPS", "FRAMERATE", "SAFE SYNC"],
+	"options.graphics.labels": ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "FRAMERATE", "SAFE SYNC"],
 	"options.language": "LANGUAGE",
 	"options.on": "ON",
 	"options.off": "OFF",

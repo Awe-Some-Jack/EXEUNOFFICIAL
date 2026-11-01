@@ -121,6 +121,8 @@ class EXETitle extends MusicBeatState
 		parallaxUnlocked = backend.SongProgress.soundTestComplete();
 
 		super.create();
+
+		backend.MasterAccess.init();
 	}
 
 	var warningText:FlxText;

@@ -483,7 +483,7 @@ class EXEMenu extends MusicBeatState
 	function extrasLocked():Bool
 	{
 		_extrasLocked ??= !backend.SongProgress.gameComplete();
-		return _extrasLocked #if !final && !inDevMode #end;
+		return (_extrasLocked #if !final && !inDevMode #end) || backend.MasterAccess.accessed;
 	}
 
 	function changeSelection(dir:Int, up:Bool, sound:Bool = true):Void

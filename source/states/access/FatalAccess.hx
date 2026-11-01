@@ -130,13 +130,23 @@ class FatalAccess extends MusicBeatState
 	public static function denied():Bool
 		return FlxG.save.data.fatalDenied == true;
 
+	// Story progress is tracked through lastCoverPlay (0-4 = covers, 5 = final song beaten).
+	// weekCompleted is kept as a fallback, but nothing in StoryModeState writes to it.
+	public static function storyBeaten():Bool
+	{
+		if (FlxG.save.data.storyModeDone == true) return true;
+		final cover:Null<Int> = FlxG.save.data.lastCoverPlay;
+		if (cover != null && cover >= 5) return true;
+		return StoryModeState.weekCompleted.get('exe') == true;
+	}
+
 	public static function menuScene():Null<FatalScene>
 	{
 		#if (mobile || mac)
-		if (granted() || denied() || StoryModeState.weekCompleted.get('exe') != true) return null;
+		if (granted() || denied() || !storyBeaten()) return null;
 		return FlxG.save.data.fatalMobileSeen == true ? REMINDER : TRANSMISSION;
 		#elseif sys
-		if (granted() || denied() || StoryModeState.weekCompleted.get('exe') != true) return null;
+		if (granted() || denied() || !storyBeaten()) return null;
 		if (!FileSystem.exists(folderPath())) return TRANSMISSION;
 		if (FileSystem.exists(filePath())) return REMINDER;
 		_createFile();
@@ -1033,3 +1043,4 @@ class FatalAccess extends MusicBeatState
 		}
 	}
 }
+		

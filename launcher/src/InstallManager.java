@@ -259,7 +259,38 @@ public class InstallManager {
         }
     }
 
+    public static final String DRIVE_MANIFEST_NAME = "drive.json";
+
+    private static String jsonString(String json, String key) {
+        Matcher m = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*\"([^\"]+)\"").matcher(json);
+        return m.find() ? m.group(1) : "";
+    }
+
+    private static ReleaseInfo fetchLatestReleaseFromDrive(String repoOwner, String repoName) throws Exception {
+        String manifestUrl = "https://github.com/" + repoOwner + "/" + repoName + "/releases/latest/download/" + DRIVE_MANIFEST_NAME;
+        HttpURLConnection conn = openConnectionWithRedirects(manifestUrl);
+        if (conn.getResponseCode() != 200) {
+            throw new Exception("Could not read Drive manifest");
+        }
+        String json = new String(conn.getInputStream().readAllBytes());
+        conn.disconnect();
+
+        String version = jsonString(json, "version");
+        String platform = IS_WINDOWS ? "windows" : IS_MAC ? "mac-" + (IS_ARM64 ? "silicon" : "intel") : "linux";
+        String file = jsonString(json, platform);
+        if (file.isEmpty() && IS_MAC) {
+            file = jsonString(json, "mac");
+        }
+        if (version.isEmpty() || file.isEmpty()) {
+            throw new Exception("Drive manifest missing version or " + platform + " file");
+        }
+        return new ReleaseInfo(version, file);
+    }
+
     public static ReleaseInfo fetchLatestRelease(String repoOwner, String repoName) throws Exception {
+        try {
+            return fetchLatestReleaseFromDrive(repoOwner, repoName);
+        } catch (Exception ignored) {}
         try {
             return fetchLatestReleaseFromRedirect(repoOwner, repoName);
         } catch (Exception ignored) {}

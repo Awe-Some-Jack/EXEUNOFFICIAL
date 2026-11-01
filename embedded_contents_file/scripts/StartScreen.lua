@@ -241,7 +241,7 @@ local function createSlideIntro()
 		setProperty('skipCountdown', false)
 	end
 
-	for _, s in ipairs(cfg.forceSkipCountdownFalseOnSongs) do
+	for _, s in ipairs(cfg.forceSkipCountdownFalseOnSongs or {}) do
 		if songPath == s then setProperty('skipCountdown', false) end
 	end
 
@@ -397,7 +397,7 @@ function onCreate()
 		setProperty('skipCountdown', true)
 	end
 
-	for _, s in ipairs(cfg.forceSkipCountdownFalseOnSongs) do
+	for _, s in ipairs(cfg.forceSkipCountdownFalseOnSongs or {}) do
 		if songPath == s then setProperty('skipCountdown', false) end
 	end
 

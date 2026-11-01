@@ -1052,8 +1052,9 @@ class EXEFreeplay extends MusicBeatState
 			backend.BurningBot.startBurningLaunch(this, finishLaunch);
 		else
 		{
-			if (songEntries[selectedBox].songs[0].transitionShape != null)
-				CustomShapeTransition.shape = CustomShapeTransition.getShapeByString(songEntries[selectedBox].songs[0].transitionShape);
+			final selectedInfo = songEntries[selectedBox].songs[songSelector];
+			if (selectedInfo.transitionShape != null)
+				CustomShapeTransition.shape = CustomShapeTransition.getShapeByString(selectedInfo.transitionShape);
 
 			finishLaunch();
 		}

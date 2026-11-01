@@ -535,6 +535,14 @@ class SoundTest extends MusicBeatState
 			return;
 		}
 		enterTheValleyAfterBlackSun = isWeek && name.toLowerCase() == 'exe';
+
+		if (isWeek)
+		{
+			final leWeek = WeekData.weeksLoaded.get(name);
+			if (leWeek != null && leWeek.transitionShape != null && leWeek.transitionShape.length > 0)
+				CustomShapeTransition.shape = CustomShapeTransition.getShapeByString(leWeek.transitionShape);
+		}
+
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());
 		FlxG.sound.music?.stop();

@@ -176,17 +176,22 @@
 	"valley_tutorial_story_3": "이 생명 없는 곳에서 미지의 존재를 피해 숨으며 사랑하는 사람을 찾아라. 하지만 조심해. $그것$은 너를 쉽게 놓아주지 않을 거야.",
 	"valley_tutorial_story_4": "#안전한 장소#와 #작은 입구#를 찾아라. $그$에게 절대 들키지 마.",
 	"valley_tutorial_continue": "ENTER를 눌러 계속",
+
 	"sunky_offer_message": "Sunky가 당신이 이 노래 때문에 고생하는 걸 알아채고 도와주겠다고 하네요!\n그의 제안을 받아들일까요?",
+
 	"pause_continue": "계속하기",
 	"pause_restart": "다시 시작",
 	"pause_options": "옵션",
 	"pause_exit": "나가기",
+
 	"sunky_offer_yes": "응, 부탁해",
 	"sunky_offer_no": "아니, 괜찮아",
+
 	"valley_tutorial_skull": "해골을 뒤지기",
 	"valley_tutorial_hide": "토템에 숨기",
 	"valley_tutorial_unhide": "토템에서 나오기",
 	"valley_skip_cutscene": "스페이스로 컷신 건너뛰기",
+
 	"tripletrouble_death_1": "지옥에 온 걸 환영한다. 미시간 얘기가 아니야.",
 	"tripletrouble_death_2": "그렇게 해놓고 이 정도라니, 꽤 실망이군.",
 	"tripletrouble_death_3": "링도 없고, 운도 없고, 이제 시간도 없지.",
@@ -194,12 +199,18 @@
 	"tripletrouble_death_k": "내 Knuckles를 감당하지 못했나 보군. 안됐네!",
 	"tripletrouble_death_e": "나는 EGGMAN이다!",
 	"tripletrouble_death_font": "korean.ttf",
+
 	"prey_ending_1": "우와!",
 	"prey_ending_2": "저 배드닉들 좀 봐...",
 	"prey_ending_3": "다들 어디로 가는 거지?",
 	"prey_ending_4": "무슨 일인지 알아보러 가야겠어!",
+
 	"options.warning.unfinished": "경고: 이 옵션은 아직 완전히 구현되지 않았습니다",
+
 	"sonichu_reveal_1": "여기까지 왔단 말이지...",
 	"sonichu_reveal_2": "각오해라, 이것이 끝이다.",
-	"sonichu_reveal_3": "나의 마지막 힘..."
+	"sonichu_reveal_3": "나의 마지막 힘...",
+
+	"warning_text_main": "환영합니다.\n\n계속 진행하기 전에, 이 모드에는 광과민성 발작을 일으킬 수 있는 깜박이는 불빛과 시각적 효과가 포함되어 있음을 알려드립니다.\n\n불편함을 느끼거나 이러한 연출에 민감하시다면, 플레이하지 마시고 게임을 종료해 주십시오.\n\n플레이어의 각별한 주의가 필요합니다.",
+	"warning_text_enter": "Enter를 눌러 계속."
 }

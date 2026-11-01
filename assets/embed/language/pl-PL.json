@@ -177,17 +177,22 @@
 	"valley_tutorial_story_3": "W tym martwym miejscu szukaj ukochanego, ukrywając się przed nieznanym. Ale uważaj: $TO$ nie pozwoli ci łatwo odejść.",
 	"valley_tutorial_story_4": "Szukaj #Bezpiecznych Miejsc# i #Małych Wejść#. NIE pozwól, by $on$ cię znalazł.",
 	"valley_tutorial_continue": "NACIŚNIJ ENTER, ABY KONTYNUOWAĆ",
+
 	"sunky_offer_message": "Sunky zauważył, że masz problem z tą piosenką, więc oferuje ci swoją pomoc!\nCzy chcesz przyjąć jego ofertę?",
+
 	"pause_continue": "KONTYNUUJ",
 	"pause_restart": "RESTART",
 	"pause_options": "OPCJE",
 	"pause_exit": "WYJDŹ",
+
 	"sunky_offer_yes": "TAK, PROSZĘ",
 	"sunky_offer_no": "NIE, DZIĘKI",
+
 	"valley_tutorial_skull": "PRZESZUKAJ CZASZKĘ",
 	"valley_tutorial_hide": "SCHOWAJ SIĘ W TOTEMIE",
 	"valley_tutorial_unhide": "WYJDŹ Z TOTEMU",
 	"valley_skip_cutscene": "NACIŚNIJ SPACJĘ, ABY POMINĄĆ SCENKĘ",
+
 	"tripletrouble_death_1": "Trafiłeś do piekła, i nie mówię o Michigan.",
 	"tripletrouble_death_2": "Po tym wszystkim jestem dość rozczarowany.",
 	"tripletrouble_death_3": "Bez pierścieni, bez szczęścia, a teraz bez czasu.",
@@ -195,12 +200,18 @@
 	"tripletrouble_death_k": "Chyba nie poradziłeś sobie z moimi Knuckles. Szkoda!",
 	"tripletrouble_death_e": "JESTEM EGGMAN!",
 	"tripletrouble_death_font": "ari-w9500-bold.ttf",
+
 	"prey_ending_1": "Łał!",
 	"prey_ending_2": "Patrz na te wszystkie badniki...",
 	"prey_ending_3": "Dokąd one wszystkie lecą?",
 	"prey_ending_4": "Lepiej sprawdzę, co się dzieje!",
+
 	"options.warning.unfinished": "UWAGA: TA OPCJA NIE JEST JESZCZE W PEŁNI ZAIMPLEMENTOWANA",
+
 	"sonichu_reveal_1": "Więc dotarłeś aż tutaj...",
 	"sonichu_reveal_2": "Przygotuj się, bo to jest koniec.",
-	"sonichu_reveal_3": "Moja ostatnia moc..."
+	"sonichu_reveal_3": "Moja ostatnia moc...",
+
+	"warning_text_main": "WITAJ.\n\nZanim przejdziesz dalej, musisz wiedzieć, że ten mod zawiera migające światła i efekty mogące wywołać napady padaczkowe.\n\nJeśli czujesz się niekomfortowo lub jesteś wrażliwy na takie bodźce, NIE GRAJ W TO I ZAMKNIJ GRĘ.\n\nZalecana jest ostrożność gracza.",
+	"warning_text_enter": "Naciśnij Enter, aby kontynuować."
 }

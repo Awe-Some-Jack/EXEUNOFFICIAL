@@ -208,5 +208,8 @@
 
 	"sonichu_reveal_1": "Demak, shu yergacha yetib kelding...",
 	"sonichu_reveal_2": "Tayyorlan, chunki bu oxiri.",
-	"sonichu_reveal_3": "Mening so‘nggi kuchim..."
+	"sonichu_reveal_3": "Mening so‘nggi kuchim...",
+
+	"warning_text_main": "XUSH KELIBSIZ.\n\nDavom etishdan oldin shuni bilishingiz kerakki, bu mod miltillovchi chiroqlar va tutqanoq chaqiruvchi effektlarni o‘z ichiga oladi.\n\nAgar siz o‘zingizni noqulay his qilsangiz yoki bunday narsalarga ta'sirchan bo‘lsangiz, BUNI O‘YNAMANG VA O‘YINNI YOPING.\n\nO‘yinchining ehtiyotkorligi tavsiya etiladi.",
+	"warning_text_enter": "Davom etish uchun ENTERni bosing."
 }

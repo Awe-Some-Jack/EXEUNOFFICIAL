@@ -183,22 +183,30 @@
 	"pause_exit": "BEENDEN",
 	"sunky_offer_yes": "JA, BITTE",
 	"sunky_offer_no": "NEIN, DANKE",
+
 	"valley_tutorial_skull": "DURCHSUCHE DEN SCHÄDEL",
 	"valley_tutorial_hide": "VERSTECK DICH IM TOTEM",
 	"valley_tutorial_unhide": "VERLASSE DAS TOTEM",
 	"valley_skip_cutscene": "DRÜCKE LEERTASTE, UM DIE SZENE ZU ÜBERSPRINGEN",
+
 	"tripletrouble_death_1": "Du bist in der Hölle gelandet, und ich rede nicht von Michigan.",
 	"tripletrouble_death_2": "Nach alldem bin ich ziemlich enttäuscht.",
 	"tripletrouble_death_3": "Keine Ringe, kein Glück und jetzt auch keine Zeit mehr.",
 	"tripletrouble_death_t": "Was ist los? Hat Tails dich am Schwanz erwischt?",
 	"tripletrouble_death_k": "Sieht aus, als wärst du meinen Knuckles nicht gewachsen. Schade!",
 	"tripletrouble_death_e": "ICH BIN DER EGGMAN!",
+
 	"prey_ending_1": "Wow!",
 	"prey_ending_2": "Sieh dir all die Badniks an...",
 	"prey_ending_3": "Wo wollen die alle hin?",
 	"prey_ending_4": "Ich finde besser heraus, was hier los ist!",
+
 	"options.warning.unfinished": "WARNUNG: DIESE OPTION IST NOCH NICHT VOLLSTÄNDIG UMGESETZT",
+
 	"sonichu_reveal_1": "Du hast es also bis hierher geschafft...",
 	"sonichu_reveal_2": "Mach dich bereit, denn das ist das Ende.",
-	"sonichu_reveal_3": "Meine letzte Kraft..."
+	"sonichu_reveal_3": "Meine letzte Kraft...",
+
+	"warning_text_main": "WILLKOMMEN.\n\nBevor du fortfährst, musst du dir bewusst sein, dass dieser Mod blinkende Lichter und potenziell anfallsauslösende Effekte enthält.\n\nWenn du dich unwohl fühlst oder durch solche Ereignisse getriggert wirst, SPIELE DIES NICHT UND SCHLIESSE DAS SPIEL.\n\nZuschauerdiskretion wird empfohlen.",
+	"warning_text_enter": "Drücke Enter, um fortzufahren."
 }

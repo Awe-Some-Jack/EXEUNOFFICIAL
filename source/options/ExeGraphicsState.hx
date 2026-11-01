@@ -47,7 +47,7 @@ class ExeGraphicsState extends ExeBaseOptionsState
 	}
 
 	function formatQuality(v:Float):String
-		return Std.string(Math.round(v * 20) / 20);
+		return Std.string(Math.round(v * 100)) + "%";
 
 	function getRowData(i:Int):ExeBaseOptionsState.ExeRowData
 		return {label: allOptions[i].label, value: formatValue(allOptions[i])};

@@ -165,6 +165,7 @@
 	"sharpy.line.19": "Hmm...",
 	"sharpy.line.20": "H-Hey, belki bunu bir deneyelim mi? Bilirsin... şarkı söylemek falan... Sadece sen ve ben-",
 	"sharpy.line.21": "Ne?",
+
 	"valley_tutorial_title": "NASIL HAYATTA KALINIR",
 	"valley_tutorial_move": "HAREKET",
 	"valley_tutorial_run": "KOŞMAK İÇİN BASILI TUT",
@@ -176,17 +177,22 @@
 	"valley_tutorial_story_3": "Bu cansız yerde, bilinmeyenden saklanırken sevdiğini ara. Ama dikkatli ol: $O ŞEY$ seni kolayca bırakmayacak.",
 	"valley_tutorial_story_4": "#Güvenli Noktalar# ve #Küçük Girişler# ara. $Onun$ seni bulmasına İZİN VERME.",
 	"valley_tutorial_continue": "DEVAM ETMEK İÇİN ENTER'A BAS",
+
 	"sunky_offer_message": "Sunky bu şarkıda zorlandığını fark etti, bu yüzden sana yardım etmeyi teklif ediyor!\nTeklifini kabul etmek ister misin?",
+
 	"pause_continue": "DEVAM ET",
 	"pause_restart": "TEKRAR",
 	"pause_options": "AYARLAR",
 	"pause_exit": "ÇIKIŞ",
+
 	"sunky_offer_yes": "EVET, LÜTFEN",
 	"sunky_offer_no": "HAYIR, SAĞ OL",
+
 	"valley_tutorial_skull": "KAFATASINI ARA",
 	"valley_tutorial_hide": "TOTEMİN İÇİNE SAKLAN",
 	"valley_tutorial_unhide": "TOTEMDEN ÇIK",
 	"valley_skip_cutscene": "SAHNEYİ GEÇMEK İÇİN BOŞLUK TUŞUNA BAS",
+
 	"tripletrouble_death_1": "Cehenneme girdin, ve Michigan'dan bahsetmiyorum.",
 	"tripletrouble_death_2": "Onca şeyden sonra oldukça hayal kırıklığına uğradım.",
 	"tripletrouble_death_3": "Halka yok, şans yok, ve artık zaman da yok.",
@@ -194,12 +200,18 @@
 	"tripletrouble_death_k": "Görünüşe göre Knuckles'ımla baş edemedin. Yazık!",
 	"tripletrouble_death_e": "BEN EGGMAN'IM!",
 	"tripletrouble_death_font": "ari-w9500-bold.ttf",
+
 	"prey_ending_1": "Vay!",
 	"prey_ending_2": "Şu badnik'lere bak...",
 	"prey_ending_3": "Hepsi nereye gidiyor?",
 	"prey_ending_4": "Neler olduğunu öğrensem iyi olacak!",
+
 	"options.warning.unfinished": "UYARI: BU SEÇENEK HENÜZ TAM OLARAK UYGULANMADI",
+
 	"sonichu_reveal_1": "Demek buraya kadar geldin...",
 	"sonichu_reveal_2": "Hazır ol, çünkü bu son.",
-	"sonichu_reveal_3": "Son gücüm..."
+	"sonichu_reveal_3": "Son gücüm...",
+	
+	"warning_text_main": "HOŞ GELDİNİZ.\n\nDevam etmeden önce, bu modun yanıp sönen ışıklar ve nöbet tetikleyici efektler içerdiğini bilmeniz gerekir.\n\nEğer rahatsız hissediyorsanız veya bu tür efektlere karşı hassasiyetiniz varsa, BUNU OYNAMAYIN VE OYUNU KAPATIN.\n\nİzleyici takdiri tavsiye edilir.",
+	"warning_text_enter": "Devam Etmek İçin Enter'a Basın."
 }

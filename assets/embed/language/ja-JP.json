@@ -176,17 +176,22 @@
 	"valley_tutorial_story_3": "この命のない場所で、未知のものから隠れながら愛する人を探そう。でも気をつけて。$アレ$は簡単には逃がしてくれない。",
 	"valley_tutorial_story_4": "#安全な場所#と#小さな入口#を探そう。$彼$に見つかってはいけない。",
 	"valley_tutorial_continue": "ENTERで続ける",
+
 	"sunky_offer_message": "Sunkyは、あなたがこの曲に苦戦していることに気づいて、手伝おうかと言っています！\n彼の申し出を受けますか？",
+
 	"pause_continue": "再開",
 	"pause_restart": "リスタート",
 	"pause_options": "オプション",
 	"pause_exit": "終了",
+
 	"sunky_offer_yes": "お願い！",
 	"sunky_offer_no": "結構です",
+
 	"valley_tutorial_skull": "ドクロを調べる",
 	"valley_tutorial_hide": "トーテムに隠れる",
 	"valley_tutorial_unhide": "トーテムから出る",
 	"valley_skip_cutscene": "スペースでスキップ",
+
 	"tripletrouble_death_1": "地獄へようこそ。ミシガンの話じゃないぞ。",
 	"tripletrouble_death_2": "あれだけやって、この程度か。がっかりだ。",
 	"tripletrouble_death_3": "リングも運も尽きた。そして時間もな。",
@@ -194,12 +199,18 @@
 	"tripletrouble_death_k": "俺のKnucklesには敵わなかったようだな。残念！",
 	"tripletrouble_death_e": "我こそはEGGMANだ！",
 	"tripletrouble_death_font": "japanese.ttf",
+
 	"prey_ending_1": "うおっ！",
 	"prey_ending_2": "あんなにたくさんのバドニクが…",
 	"prey_ending_3": "みんなどこへ向かってるんだ？",
 	"prey_ending_4": "何が起きてるか確かめに行かなきゃな！",
+
 	"options.warning.unfinished": "注意：このオプションはまだ完全には実装されていません",
+
 	"sonichu_reveal_1": "ここまで来たのか……",
 	"sonichu_reveal_2": "覚悟しろ、これが最後だ。",
-	"sonichu_reveal_3": "我が最後の力……"
+	"sonichu_reveal_3": "我が最後の力……",
+
+	"warning_text_main": "ようこそ。\n\nこれ以上進む前に、このMODにはフラッシュ効果や光過敏性発作を引き起こす可能性のある表現が含まれていることに注意してください。\n\n不快感を感じたり、これらの表現に敏感な場合は、プレイせずにゲームを終了してください。\n\n視聴には十分ご注意ください。",
+	"warning_text_enter": "Enterキーを押して続行してください。"
 }

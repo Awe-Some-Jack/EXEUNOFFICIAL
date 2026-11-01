@@ -164,6 +164,7 @@
 	"sharpy.line.19": "Hmm...",
 	"sharpy.line.20": "H-Hé, on devrait peut-être l'essayer ? Tu sais... chanter et tout ça... Juste toi et moi-",
 	"sharpy.line.21": "Quoi ?",
+
 	"valley_tutorial_title": "COMMENT SURVIVRE",
 	"valley_tutorial_move": "SE DÉPLACER",
 	"valley_tutorial_run": "MAINTENIR POUR COURIR",
@@ -175,29 +176,40 @@
 	"valley_tutorial_story_3": "Dans cet endroit sans vie, cherche l'être aimé tout en te cachant de l'inconnu. Mais prends garde : $ÇA$ ne te laissera pas partir si facilement.",
 	"valley_tutorial_story_4": "Cherche des #Endroits Sûrs# et des #Petites Entrées#. Ne $le$ laisse SURTOUT PAS te trouver.",
 	"valley_tutorial_continue": "APPUIE SUR ENTRÉE POUR CONTINUER",
+
 	"sunky_offer_message": "Sunky a remarqué que tu as du mal avec cette chanson, alors il te propose son aide !\nVeux-tu accepter son offre ?",
+
 	"pause_continue": "CONTINUER",
 	"pause_restart": "REJOUER",
 	"pause_options": "OPTIONS",
 	"pause_exit": "QUITTER",
+
 	"sunky_offer_yes": "OUI, MERCI",
 	"sunky_offer_no": "NON MERCI",
+
 	"valley_tutorial_skull": "FOUILLE LE CRÂNE",
 	"valley_tutorial_hide": "CACHE-TOI DANS LE TOTEM",
 	"valley_tutorial_unhide": "SORS DU TOTEM",
 	"valley_skip_cutscene": "APPUIE SUR ESPACE POUR PASSER LA CINÉMATIQUE",
+
 	"tripletrouble_death_1": "Tu es entré en enfer, et je ne parle pas du Michigan.",
 	"tripletrouble_death_2": "Après tout ça, je suis plutôt déçu.",
 	"tripletrouble_death_3": "Plus d'anneaux, plus de chance, et maintenant plus de temps.",
 	"tripletrouble_death_t": "Qu'y a-t-il ? Tails t'a attrapé par la queue ?",
 	"tripletrouble_death_k": "On dirait que tu n'as pas su gérer mes Knuckles. Dommage !",
 	"tripletrouble_death_e": "JE SUIS L'EGGMAN !",
+
 	"prey_ending_1": "Waouh !",
 	"prey_ending_2": "Regarde-moi tous ces badniks...",
 	"prey_ending_3": "Mais où vont-ils tous ?",
 	"prey_ending_4": "Je ferais mieux d'aller voir ce qui se passe !",
+
 	"options.warning.unfinished": "ATTENTION : CETTE OPTION N'EST PAS ENCORE ENTIÈREMENT IMPLÉMENTÉE",
+
 	"sonichu_reveal_1": "Alors tu es arrivé jusqu'ici...",
 	"sonichu_reveal_2": "Prépare-toi, car c'est la fin.",
-	"sonichu_reveal_3": "Mon dernier pouvoir..."
+	"sonichu_reveal_3": "Mon dernier pouvoir...",
+
+	"warning_text_main": "BIENVENUE.\n\nAvant d'aller plus loin, sachez que ce mod contient des lumières clignotantes pouvant provoquer des crises d'épilepsie.\n\nSi vous vous sentez mal à l'aise ou sensible à ces effets, NE JOUEZ PAS À CE JEU ET FERMEZ-LE.\n\nLa discrétion du spectateur est conseillée.",
+	"warning_text_enter": "Appuyez sur Entrée pour continuer."
 }

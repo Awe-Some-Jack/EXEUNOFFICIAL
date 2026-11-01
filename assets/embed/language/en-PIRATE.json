@@ -164,6 +164,7 @@
 	"sharpy.line.19": "Hmm...",
 	"sharpy.line.20": "H-Hey, should we maybe test it? Ye know... singin' an' such... Just ye an' me-",
 	"sharpy.line.21": "What?",
+
 	"valley_tutorial_title": "HOW T' SURVIVE",
 	"valley_tutorial_move": "MOVE",
 	"valley_tutorial_run": "HOLD T' RUN",
@@ -175,6 +176,7 @@
 	"valley_tutorial_story_3": "In this lifeless place, search fer yer loved one while hidin' from th' unknown. But beware, $IT$ won't let ye go easy.",
 	"valley_tutorial_story_4": "Seek #Safe Spots# an' #Small Entrances#. Do NOT let $him$ find ye.",
 	"valley_tutorial_continue": "PRESS ENTER T' CONTINUE",
+
 	"sunky_offer_message": "Sunky be noticin' ye be havin' a rough time with this here shanty, so he be offerin' t' help ye!\nWill ye accept his offer?",
 	"pause_continue": "CONTINUE",
 	"pause_restart": "RESTART",
@@ -192,12 +194,18 @@
 	"tripletrouble_death_t": "What be the matter? Caught by th' Tails?",
 	"tripletrouble_death_k": "Seems ye couldn't handle me Knuckles. Too bad, matey!",
 	"tripletrouble_death_e": "I BE TH' EGGMAN!",
+
 	"prey_ending_1": "Blimey!",
 	"prey_ending_2": "Look at all them badniks...",
 	"prey_ending_3": "Where be they all headin'?",
 	"prey_ending_4": "Best go find out what be goin' on!",
+
 	"options.warning.unfinished": "WARNING: THIS OPTION BE NOT FULLY BUILT YET, MATEY",
+
 	"sonichu_reveal_1": "So ye made it this far, matey...",
 	"sonichu_reveal_2": "Brace yerself, fer this be the end.",
-	"sonichu_reveal_3": "Me final power..."
+	"sonichu_reveal_3": "Me final power...",
+
+	"warning_text_main": "AHOY MATEY.\n\n'Fore ye set sail any further, ye must know this voyage holds flashin' lights and fits.\n\nIf ye be feelin' seasick or triggered by such sights, DO NOT PLAY THIS AND ABANDON SHIP.\n\nViewer discretion be advised, arrr.",
+	"warning_text_enter": "Press Enter T' Continue."
 }

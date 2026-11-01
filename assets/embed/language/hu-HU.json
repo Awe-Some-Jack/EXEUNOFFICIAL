@@ -166,6 +166,7 @@
 	"sharpy.line.19": "Hmm...",
 	"sharpy.line.20": "H-Hé, nem kéne kipróbálnunk? Tudod... éneklés meg minden... Csak te és én-",
 	"sharpy.line.21": "Mi?",
+
 	"valley_tutorial_title": "HOGYAN ÉLD TÚL",
 	"valley_tutorial_move": "MOZGÁS",
 	"valley_tutorial_run": "TARTSD LENYOMVA A FUTÁSHOZ",
@@ -177,17 +178,22 @@
 	"valley_tutorial_story_3": "Ezen az élettelen helyen keresd meg a szerelmedet, miközben bujkálsz az ismeretlen elől. De vigyázz: $AZ$ nem enged el könnyen.",
 	"valley_tutorial_story_4": "Keress #Biztonságos Helyeket# és #Kis Bejáratokat#. NE hagyd, hogy $ő$ megtaláljon.",
 	"valley_tutorial_continue": "NYOMJ ENTERT A FOLYTATÁSHOZ",
+
 	"sunky_offer_message": "Sunky észrevette, hogy nehezen boldogulsz ezzel a dallal, ezért felajánlja a segítségét!\nElfogadod az ajánlatát?",
+
 	"pause_continue": "FOLYTATÁS",
 	"pause_restart": "ÚJRA",
 	"pause_options": "OPCIÓK",
 	"pause_exit": "KILÉPÉS",
+
 	"sunky_offer_yes": "IGEN, KÉREM",
 	"sunky_offer_no": "NEM, KÖSZI",
+
 	"valley_tutorial_skull": "KUTASD ÁT A KOPONYÁT",
 	"valley_tutorial_hide": "BÚJJ EL A TOTEMBEN",
 	"valley_tutorial_unhide": "GYERE KI A TOTEMBŐL",
 	"valley_skip_cutscene": "NYOMD MEG A SZÓKÖZT A JELENET ÁTUGRÁSÁHOZ",
+
 	"tripletrouble_death_1": "Beléptél a pokolba, és nem Michiganről beszélek.",
 	"tripletrouble_death_2": "Mindezek után elég csalódott vagyok.",
 	"tripletrouble_death_3": "Nincs gyűrű, nincs szerencse, és most már idő sincs.",
@@ -195,12 +201,18 @@
 	"tripletrouble_death_k": "Úgy tűnik, nem bírtál a Knucklesommal. Kár!",
 	"tripletrouble_death_e": "ÉN VAGYOK AZ EGGMAN!",
 	"tripletrouble_death_font": "ari-w9500-bold.ttf",
+
 	"prey_ending_1": "Hűha!",
 	"prey_ending_2": "Nézd ezt a sok badniket...",
 	"prey_ending_3": "Vajon hová tartanak mind?",
 	"prey_ending_4": "Jobb, ha kiderítem, mi folyik itt!",
+
 	"options.warning.unfinished": "FIGYELEM: EZ AZ OPCIÓ MÉG NINCS TELJESEN MEGVALÓSÍTVA",
+
 	"sonichu_reveal_1": "Szóval eljutottál idáig...",
 	"sonichu_reveal_2": "Készülj fel, mert ez a vég.",
-	"sonichu_reveal_3": "Az utolsó erőm..."
+	"sonichu_reveal_3": "Az utolsó erőm...",
+
+	"warning_text_main": "ÜDVÖZÖLLEK.\n\nMielőtt továbbmennél, tudnod kell, hogy ez a mod villogó fényeket és rohamokat kiváltó effekteket tartalmaz.\n\nHa kényelmetlenül érzed magad, vagy érzékeny vagy ezekre az eseményekre, NE JÁTSSZ EZZEL, ÉS ZÁRD BE A JÁTÉKOT.\n\nNézői mérlegelés javasolt.",
+	"warning_text_enter": "Nyomd meg az Entert a folytatáshoz."
 }

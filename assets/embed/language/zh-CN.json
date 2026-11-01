@@ -176,17 +176,22 @@
 	"valley_tutorial_story_3": "在这片死寂之地，一边躲避未知，一边寻找你所爱的人。但要小心：$它$不会轻易放过你。",
 	"valley_tutorial_story_4": "寻找#安全地点#和#狭小入口#。绝对不要让$他$找到你。",
 	"valley_tutorial_continue": "按 ENTER 继续",
+
 	"sunky_offer_message": "Sunky 发现你在这首歌上遇到了困难，所以他想帮你一把！\n你要接受他的帮助吗？",
+
 	"pause_continue": "继续",
 	"pause_restart": "重新开始",
 	"pause_options": "选项",
 	"pause_exit": "退出",
+
 	"sunky_offer_yes": "好啊，拜托了",
 	"sunky_offer_no": "不用了，谢谢",
+
 	"valley_tutorial_skull": "搜索头骨",
 	"valley_tutorial_hide": "躲进图腾",
 	"valley_tutorial_unhide": "离开图腾",
 	"valley_skip_cutscene": "按空格键跳过过场动画",
+
 	"tripletrouble_death_1": "你已进入地狱，我说的可不是密歇根。",
 	"tripletrouble_death_2": "折腾了这么久，我还挺失望的。",
 	"tripletrouble_death_3": "没了圆环，没了运气，现在也没时间了。",
@@ -194,12 +199,18 @@
 	"tripletrouble_death_k": "看来你招架不住我的Knuckles啊。真可惜！",
 	"tripletrouble_death_e": "我就是EGGMAN！",
 	"tripletrouble_death_font": "chinese.ttf",
+
 	"prey_ending_1": "哇！",
 	"prey_ending_2": "瞧瞧那么多恶棍机器人……",
 	"prey_ending_3": "它们都要去哪儿？",
 	"prey_ending_4": "最好去看看到底发生了什么！",
+
 	"options.warning.unfinished": "警告：此选项尚未完全实现",
+
 	"sonichu_reveal_1": "所以你走到了这一步……",
 	"sonichu_reveal_2": "做好准备吧，这就是终结。",
-	"sonichu_reveal_3": "我最后的力量……"
+	"sonichu_reveal_3": "我最后的力量……",
+
+	"warning_text_main": "欢迎。\n\n在继续之前，请注意本模组包含闪烁的灯光和可能引起光敏性癫痫发作的视觉效果。\n\n如果你感到不适或对此类画面敏感，请勿游玩并关闭游戏。\n\n建议玩家谨慎游玩。",
+	"warning_text_enter": "按 Enter 键继续。"
 }

@@ -208,5 +208,8 @@
 
 	"sonichu_reveal_1": "So you made it this far...",
 	"sonichu_reveal_2": "Get ready, because this is the end.",
-	"sonichu_reveal_3": "My final power..."
+	"sonichu_reveal_3": "My final power...",
+
+	"warning_text_main": "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nViewer discretion is advised.",
+	"warning_text_enter": "Press Enter To Continue."
 }

@@ -80,7 +80,7 @@ import Main;
 	public var discordRPC:Bool = true;
 	public var loadingScreen:Bool = true;
 	public var language:String = 'auto';
-	public var streamedAudio:Bool = true;
+	public var streamedAudio:Bool = false;
 }
 
 class ClientPrefs {

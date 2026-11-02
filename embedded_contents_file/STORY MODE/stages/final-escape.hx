@@ -224,7 +224,7 @@ function onCreatePost()
 		chrom.setFloat('amount', 0.3);
 		
 		camGame.filters = [new ShaderFilter(chrom)];
-		final sexoShader = game.getLuaObject('sexo').shader;
+		final sexoShader = game.getLuaObject('sexo')?.shader;
 		if(sexoShader != null) camGame.filters.push(new ShaderFilter(sexoShader));
 	}
 
@@ -621,22 +621,28 @@ function onEvent(n,v1,v2)
 				camGame.snapToTarget();
 				FlxTween.tween(camGame, {zoom: 0.8}, Conductor.crochet / (1000 / 20), {ease: FlxEase.expoInOut});
 				FlxTween.tween(camGame.targetOffset, {y: 0}, Conductor.crochet / (1000 / 12), {ease: FlxEase.cubeOut});
-				dad.alpha = 0; eyes.alpha = 0; boyfriend.alpha = 0;
+				if (dad != null) dad.alpha = 0;
+				if (eyes != null) eyes.alpha = 0; 
+				if (boyfriend != null) boyfriend.alpha = 0;
 				var t = {v: (-410 - 1000)};
 				FlxTween.tween(t, {v: -410}, Conductor.crochet / (1000 / 20), {ease: FlxEase.cubeOut, onUpdate: function(_) {introYPos = t.v;}});
 			case 'fadeEyes':
-				FlxTween.tween(eyes, {alpha: 1}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
+				if (eyes != null) FlxTween.tween(eyes, {alpha: 1}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
 			case 'fadeDad':
 				FlxTween.cancelTweensOf(eyes);
-				FlxTween.tween(eyes, {alpha: 0}, Conductor.crochet / (1000 / 2), {ease: FlxEase.cubeInOut});
-				FlxTween.tween(dad, {alpha: 1}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
+				if (eyes != null) FlxTween.tween(eyes, {alpha: 0}, Conductor.crochet / (1000 / 2), {ease: FlxEase.cubeInOut});
+				if (dad != null) FlxTween.tween(dad, {alpha: 1}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
 			case 'intro':
-				FlxTween.tween(blackBG, {alpha: 0}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
-				FlxTween.tween(boyfriend, {alpha: 1}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
+				if (blackBG != null) FlxTween.tween(blackBG, {alpha: 0}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
+				if (boyfriend != null) FlxTween.tween(boyfriend, {alpha: 1}, Conductor.crochet / (1000 / 4), {ease: FlxEase.cubeInOut});
 				FlxTween.color(bgIntro[bgIntro.length - 1].sprite, Conductor.crochet / (1000 / 4), 0xFF000000, 0xFFFFFFFF, {ease: FlxEase.cubeInOut});
 				eyes?.destroy();
 			case 'fadeNotes':
-				for (i in 0...4) FlxTween.tween(playerStrums.members[i], {alpha: 1, y: (playerStrums.members[i].y + (prefs.downScroll ? -10 : 10))}, Conductor.crochet / 250, {ease: FlxEase.cubeInOut, startDelay: i / 4});
+				for (i in 0...4) {
+					if (playerStrums.members[i] != null) {
+						FlxTween.tween(playerStrums.members[i], {alpha: 1, y: (playerStrums.members[i].y + (prefs.downScroll ? -10 : 10))}, Conductor.crochet / 250, {ease: FlxEase.cubeInOut, startDelay: i / 4});
+					}
+				}
 			case 'yeahbf':
 				dad.alpha = 0;
 				bfYeah.visible = true;
@@ -701,13 +707,17 @@ function onEvent(n,v1,v2)
 				bfLegs2.visible = false;
 				bfLegs2back.visible = false;
 			case 'fadecam':
-				FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / (1000 / 2.5));
-				blackBG.camera = camOther;
+				if (blackBG != null) {
+					FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / (1000 / 2.5));
+					blackBG.camera = camOther;
+				}
 				offsetScale = 2;
 			case 'backsecondsection':
 				FlxTween.cancelTweensOf(blackBG);
-				blackBG.alpha = 1;
-				FlxTween.tween(blackBG, {alpha: 0}, Conductor.crochet / 1000);
+				if (blackBG != null) {
+					blackBG.alpha = 1;
+					FlxTween.tween(blackBG, {alpha: 0}, Conductor.crochet / 1000);
+				}
 				changeCharacter('dad', 'xeno-fe2');
 				changeCharacter('bf', 'bf-fe2');
 				for (spr in bgIntro) spr.sprite.visible = false; bgIntro[1].sprite.visible = true;
@@ -762,7 +772,9 @@ function onEvent(n,v1,v2)
 				cam.DADx = 150;
 				cam.DADy = 150;
 			case 'startingrun':
-				FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / (1000 / 4));
+				if (blackBG != null) {
+					FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / (1000 / 4));
+				}
 			case 'startfifthsection':
 				upSign.alpha = 1;
 				upSign.x -= downSign.width;
@@ -818,7 +830,9 @@ function onEvent(n,v1,v2)
 				FlxG.sound.play(Paths.sound('warnin'), 0.9);
 				warning.scale.set(1.1, 1.1);
 				warning.angle = 5 * (v2 == 'bot' ? 1 : -1);
-				FlxTween.tween(warning, {alpha: 0, angle: 0}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
+				if (warning != null) {
+					FlxTween.tween(warning, {alpha: 0, angle: 0}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
+				}
 				FlxTween.tween(warning.scale, {x: 1, y: 1}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
 				new FlxTimer().start(Conductor.crochet / 1000, function(tmr)
 				{
@@ -859,7 +873,9 @@ function onEvent(n,v1,v2)
 						warning.alpha = 1;
 						warning.scale.set(1.1, 1.1);
 						warning.angle = 5 * (v2 == 'bot' ? -1 : 1);
-						FlxTween.tween(warning, {alpha: 0, angle: 0, y: warning.y + (v2 == 'bot' ? 10 : -10)}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
+						if (warning != null) {
+							FlxTween.tween(warning, {alpha: 0, angle: 0, y: warning.y + (v2 == 'bot' ? 10 : -10)}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
+						}
 						FlxTween.tween(warning.scale, {x: 1, y: 1}, Conductor.crochet / 1000, {ease: FlxEase.cubeOut});
 					}
 					else if (tmr.loopsLeft == 0) obstacle?.destroy();
@@ -921,7 +937,9 @@ function onEvent(n,v1,v2)
 						fadewhite?.destroy();
 						bfFalling?.destroy();
 						water.y -= 2000;
-						FlxTween.tween(water, {alpha: 0}, 3, {ease: FlxEase.cubeInOut, onComplete: function(_) { water?.destroy(); }});
+						if (water != null) {
+							FlxTween.tween(water, {alpha: 0}, 3, {ease: FlxEase.cubeInOut, onComplete: function(_) { water?.destroy(); }});
+						}
 					});
 				});
 			case 'fadewaterxd':
@@ -929,14 +947,18 @@ function onEvent(n,v1,v2)
 				game.cameraSpeed = 1;
 				for (spr in hudSprites) game.getLuaObject(spr).alpha = 0;
 				FlxTween.tween(camHUD, {alpha: 1}, 2.2);
-				FlxTween.tween(drowningBf, {alpha: 1}, 3);
+				if (drowningBf != null) {
+					FlxTween.tween(drowningBf, {alpha: 1}, 3);
+				}
 				for (i in 0...4)
 				{
 					opponentStrums.members[i].x = -1000;
 					playerStrums.members[i].x = (FlxG.width / 2) + (separation / 2) - (((playerStrums.members[i].width + (separation * 2)) * 4) / 2) + ((playerStrums.members[i].width) + separation * (i > 1 ? (i == 3 ? 2.33 : 3) : 1)) * i;
 					playerStrums.members[i].alpha = 0;
 					playerStrums.members[i].y += (prefs.downScroll ? 30 : -30);
-					FlxTween.tween(playerStrums.members[i], {alpha: 1, y: (playerStrums.members[i].y + (prefs.downScroll ? -30 : 30))}, Conductor.crochet / 250, {ease: FlxEase.cubeOut, startDelay: i / 4});
+					if (playerStrums.members[i] != null) {
+						FlxTween.tween(playerStrums.members[i], {alpha: 1, y: (playerStrums.members[i].y + (prefs.downScroll ? -30 : 30))}, Conductor.crochet / 250, {ease: FlxEase.cubeOut, startDelay: i / 4});
+					}
 				}
 
 				//just in case
@@ -956,7 +978,9 @@ function onEvent(n,v1,v2)
 				fbs.screenCenter(0x10);
 				fbs.alpha = 0;
 				game.add(fbs);
-				FlxTween.tween(fbs, {x: 0, alpha: 0.7}, 1, {ease: FlxEase.cubeOut, onComplete: function(_) { FlxTween.tween(fbs, {alpha: 0, y: fbs.y - 50}, 1, {ease: FlxEase.cubeIn}); }});
+				if (fbs != null) {
+					FlxTween.tween(fbs, {x: 0, alpha: 0.7}, 1, {ease: FlxEase.cubeOut, onComplete: function(_) { FlxTween.tween(fbs, {alpha: 0, y: fbs.y - 50}, 1, {ease: FlxEase.cubeIn}); }});
+				}
 			case 'endwatersection':
 				FlxTween.cancelTweensOf(bfDrowningPlayable);
 				FlxTween.tween(bfDrowningPlayable, {x: 2000}, 6, {ease: FlxEase.cubeIn});
@@ -1022,7 +1046,9 @@ function onEvent(n,v1,v2)
 				for (spr in bgCarnival) spr.sprite.visible = true;
 			case 'aaacinematica':
 				FlxTween.cancelTweensOf(blackBG);
-				FlxTween.tween(blackBG, {alpha: 0}, Conductor.crochet / 250, {ease: FlxEase.expoIn});
+				if (blackBG != null) {
+					FlxTween.tween(blackBG, {alpha: 0}, Conductor.crochet / 250, {ease: FlxEase.expoIn});
+				}
 				curBG = 'nulo jajaja para q no pase nada aca';
 				FlxTween.tween(camHUD, {alpha: 0}, Conductor.crochet / 250);
 			case 'superbf':
@@ -1113,9 +1139,13 @@ function onEvent(n,v1,v2)
 				FlxTween.tween(palsSuperRender.scale, {x: 0.85, y: 0.85}, Conductor.crochet / 250, {ease: FlxEase.cubeOut});
 				FlxTween.tween(palsSuperRender, {y: palsSuperRender.y - 75, alpha: 0.85}, Conductor.crochet / 250, {ease: FlxEase.cubeOut});
 
-				FlxTween.tween(whiteBG, {alpha: 1}, Conductor.crochet / 250, {ease: FlxEase.expoIn});
+				if (whiteBG != null) {
+					FlxTween.tween(whiteBG, {alpha: 1}, Conductor.crochet / 250, {ease: FlxEase.expoIn});
+				}
 				blackBG.color = 0xFFFFFFFF;
-				FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / 250, {ease: FlxEase.expoIn});
+				if (blackBG != null) {
+					FlxTween.tween(blackBG, {alpha: 1}, Conductor.crochet / 250, {ease: FlxEase.expoIn});
+				}
 				game.triggerEvent('Tween Camera Zoom', '1, true', Std.string(Conductor.crochet / 250) + ', expoIn', Conductor.songPosition);
 				if (prefs.shaders) game.triggerEvent('bloomFlash', '0, 2', Std.string(Conductor.crochet / 250) + ', expoIn', Conductor.songPosition);
 			case 'normal':

@@ -53,7 +53,11 @@ var positionsArray:Array<Float> = [];
 var luaObjects:Array<String> = ['hbBG', 'iconOpp', 'iconBF', 'hbHealth', 'hbHealth2', 'separatorHealth', 'healthBG', 'exeScoreTxt'];
 var bubbleCount:Int = 0;
 
+var alreadyWasFullscreen:Bool = false;
+
 function onCreate() {
+    if (FlxG.fullscreen) alreadyWasFullscreen = true;
+
     FlxG.fullscreen = true;
 
     wallpaper = new FlxSprite(0, 0, Paths.image('bg/desktop', 'SOINK'));
@@ -218,7 +222,16 @@ function goodNoteHitPre(note:Note):Void {
 	boyfriend.recalculateDanceIdle();
 }
 
+var lastFS:Bool = flase;
 function onUpdate(elapsed:Float) {
+    
+    if(!debugMode){
+        if (FlxG.fullscreen != lastFS){
+            FlxG.fullscreen = true;
+            lastFS = fullscreen;
+        }
+    }
+
     // formatting 🗣️🗣️🗣️
     for(i in 0...bubbleArray.length) {
         if(bubbleArray[i].active) {
@@ -586,4 +599,12 @@ function crackerFlash(time:Float, alpha:Float) {
     cracker.alpha = alpha;
     cracker.blend = LuaUtils.blendModeFromString('add');
     FlxTween.tween(cracker, {alpha: 0}, time, {ease: FlxEase.smoothStepOut});
+}
+
+function onEndSong() {
+    if (!alreadyWasFullscreen) FlxG.fullscreen = false;
+}
+
+function onSongExit(){
+    if (!alreadyWasFullscreen) FlxG.fullscreen = false;
 }

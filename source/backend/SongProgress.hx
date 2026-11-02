@@ -25,7 +25,8 @@ class SongProgress
 	{
 		final save:FlxSave = new FlxSave();
 		save.bind('savedSongs', CoolUtil.getSavePath());
-		final songs:Array<String> = save.data.openedSongs ?? [];
+		final saved:Null<Array<String>> = save.data.openedSongs;
+		final songs:Array<String> = saved ?? [];
 		if (songs.contains(song)) return;
 		songs.push(song);
 		save.data.openedSongs = songs;

@@ -70,7 +70,20 @@ function onCreate()
 	insert(dadGroup.members.length, whiteGraphic);
 }
 
-function onSongStart()  makeStar();
+var lastFPS:Int = 60;
+
+function onSongStart()  {
+	makeStar();
+
+	
+	if (lastFPS != FlxG.drawFramerate)
+		lastFPS = FlxG.drawFramerate;
+
+	if (FlxG.drawFramerate > 120){
+		FlxG.updateFramerate = 120;
+		FlxG.drawFramerate = 120;
+	}
+}
 function onSectionHit() makeStar();
 
 var starID  :Int  =    0;
@@ -285,5 +298,19 @@ function onEvent(e, v1, v2)
 		    FlxTween.tween(camHUD, {alpha: 0}, 2.2, {startDelay: 3.5});
 		    FlxTween.tween(game.getLuaObject("BlackGraphicOther"), {alpha: 1}, 2, {startDelay: 5});
 		}
+	}
+}
+
+function onEndSong() {
+    if (FlxG.drawFramerate != lastFPS) {
+		FlxG.updateFramerate = lastFPS;
+		FlxG.drawFramerate = lastFPS;
+	}
+}
+
+function onSongExit(){
+	if (FlxG.drawFramerate != lastFPS) {
+		FlxG.updateFramerate = lastFPS;
+		FlxG.drawFramerate = lastFPS;
 	}
 }

@@ -75,7 +75,6 @@ var lastFPS:Int = 60;
 function onSongStart()  {
 	makeStar();
 
-	
 	if (lastFPS != FlxG.drawFramerate)
 		lastFPS = FlxG.drawFramerate;
 

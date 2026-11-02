@@ -44,7 +44,7 @@ class EXEAchievements
         'genesys' => ['burning'],
         'educator' => ['expulsion'],
         'sonichu' => ['shocker'],
-        'fileextensions' => ['b4cksl4sh', 'monochromatic', 'found-you', 'forestall-desire', 'deception', 'sharpy-showdown', 'substantial', 'digitalized', 'fakebaby', 'miasma']
+        'fileextensions' => ['b4cksl4sh', 'monochromatic', 'found-you', 'forestall-desire', 'deception', 'sharpy-showdown', 'substantial', 'digitalized', 'fakebaby', 'miasma', 'malediction']
     ];
 
     static function get_achievements():Map<String, EXEAchievement>
@@ -217,7 +217,7 @@ class EXEAchievements
         {
             if (!itsFinale) break;
             if (a == get('finale')) continue;
-            if (!isUnlocked(a.name)) itsFinale = false;
+            if (!isUnlocked(a.id)) itsFinale = false;
         }
         if (itsFinale) unlock('finale');
         save();

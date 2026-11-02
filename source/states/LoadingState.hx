@@ -293,6 +293,7 @@ class LoadingState extends MusicBeatState
 			return;
 		}
 
+		Paths.localTrackedAssets = [];
 		_startPool();
 		imagesToPrepare = [];
 		soundsToPrepare = [];

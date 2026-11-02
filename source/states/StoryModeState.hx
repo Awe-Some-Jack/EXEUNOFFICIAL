@@ -623,7 +623,7 @@ class StoryModeState extends MusicBeatState
 			covers[i].visible = (i == selectedCover);
 	}
 
-	static final STORY_SONGS:Array<String> = ['too-slow', 'you-cant-run', 'triple-trouble', 'final-escape', 'yourself'];
+	public static final STORY_SONGS:Array<String> = ['too-slow', 'you-cant-run', 'triple-trouble', 'final-escape', 'yourself'];
 	static final STORY_MOD:String = 'STORY MODE';
 
 	function launchSong():Void

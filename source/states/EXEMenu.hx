@@ -259,7 +259,8 @@ class EXEMenu extends MusicBeatState
 		final fatalScene = FatalAccess.menuScene();
 		if (fatalScene != null)
 		{
-			final chance = (fatalScene == TRANSMISSION ? 50 : 35) + backend.SongProgress.beatenSongs().length * 2;
+			final extraSongs:Int = [for (song in backend.SongProgress.beatenSongs()) if (!StoryModeState.STORY_SONGS.contains(song)) song].length;
+			final chance:Float = FatalAccess.denied() ? 5 : 5 + extraSongs * 2;
 			if (FlxG.random.bool(Math.min(chance, 95)))
 			{
 				_fatalScene = fatalScene;
@@ -301,6 +302,7 @@ class EXEMenu extends MusicBeatState
 			try
 			{
 				Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
+				backend.SongProgress.markOpened(song);
 				PlayState.isStoryMode = false;
 				PlayState.storyDifficulty = 1;
 			}
@@ -813,6 +815,7 @@ class EXEMenu extends MusicBeatState
 			add(spr);
 		}
 		final scene = _fatalScene;
+		FatalAccess.reopen();
 		new FlxTimer().start(0.35, _ -> label.visible = true);
 		new FlxTimer().start(2.6, _ -> {
 			FlxG.sound.music?.stop();

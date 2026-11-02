@@ -2333,13 +2333,25 @@ class PlayState extends MusicBeatState
 	}
 
 	static inline final VOCAL_DRIFT_THRESHOLD:Float = 20.0;
+	static inline final VOCAL_DRIFT_FRAMES:Int = 6;
+
+	final vocalDriftFrames:Map<FlxSound, Int> = new Map();
 
 	function syncVocal(voc:FlxSound, musicTime:Float):Void
 	{
 		if (voc == null || voc.length <= 0 || musicTime >= voc.length) return;
 
 		if (Math.abs(voc.time - musicTime) > VOCAL_DRIFT_THRESHOLD)
-			voc.time = musicTime;
+		{
+			final frames:Int = (vocalDriftFrames.get(voc) ?? 0) + 1;
+			if (frames >= VOCAL_DRIFT_FRAMES)
+			{
+				voc.time = musicTime;
+				vocalDriftFrames.set(voc, 0);
+			}
+			else vocalDriftFrames.set(voc, frames);
+		}
+		else vocalDriftFrames.set(voc, 0);
 
 		if (!voc.playing)
 		{

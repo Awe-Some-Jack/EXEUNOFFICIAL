@@ -143,10 +143,10 @@ class FatalAccess extends MusicBeatState
 	public static function menuScene():Null<FatalScene>
 	{
 		#if (mobile || mac)
-		if (granted() || denied() || !storyBeaten()) return null;
+		if (granted() || !storyBeaten()) return null;
 		return FlxG.save.data.fatalMobileSeen == true ? REMINDER : TRANSMISSION;
 		#elseif sys
-		if (granted() || denied() || !storyBeaten()) return null;
+		if (granted() || !storyBeaten()) return null;
 		if (!FileSystem.exists(folderPath())) return TRANSMISSION;
 		if (FileSystem.exists(filePath())) return REMINDER;
 		_createFile();
@@ -154,6 +154,14 @@ class FatalAccess extends MusicBeatState
 		#else
 		return null;
 		#end
+	}
+
+	public static function reopen():Void
+	{
+		if (!denied()) return;
+		FlxG.save.data.fatalDenied = false;
+		FlxG.save.flush();
+		_createFile();
 	}
 
 	public static function resetForTesting():Void
@@ -1027,6 +1035,7 @@ class FatalAccess extends MusicBeatState
 		{
 			Mods.currentModDirectory = 'FATAL';
 			Song.loadFromJson('fatality', 'fatality');
+			backend.SongProgress.markOpened('fatality');
 			EXEMenu.secretSong = true;
 			PlayState.storyPlaylist = ['fatality'];
 			PlayState.isStoryMode = false;

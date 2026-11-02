@@ -395,7 +395,7 @@ var speed:Float = 1;
 var _ep:Bool = false;
 function onUpdatePost(elapsed:Float)
 {
-	blackBG.scale.set((1 / camGame.zoom) * offsetScale, (1 / camGame.zoom) * offsetScale);
+	blackBG?.scale.set((1 / camGame.zoom) * offsetScale, (1 / camGame.zoom) * offsetScale);
 	if (whiteBG != null) whiteBG.scale.set((1 / camGame.zoom), (1 / camGame.zoom));
 	floatSine += elapsed * floatIntensity;
 

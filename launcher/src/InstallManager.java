@@ -343,15 +343,22 @@ public class InstallManager {
                 if (responseCode == HttpURLConnection.HTTP_OK) {
                     long contentLength = httpConn.getContentLengthLong();
                     InputStream inputStream = new BufferedInputStream(httpConn.getInputStream());
-                    FileOutputStream outputStream = new FileOutputStream(tempZip);
+                    java.io.OutputStream outputStream = new java.io.BufferedOutputStream(new FileOutputStream(tempZip), 1 << 20);
 
-                    byte[] buffer = new byte[8192];
+                    byte[] buffer = new byte[1 << 18];
                     int bytesRead;
                     long totalBytesRead = 0;
+                    long lastUpdate = 0;
 
                     while ((bytesRead = inputStream.read(buffer)) != -1) {
                         outputStream.write(buffer, 0, bytesRead);
                         totalBytesRead += bytesRead;
+
+                        long now = System.currentTimeMillis();
+                        if (now - lastUpdate < 100 && totalBytesRead != contentLength) {
+                            continue;
+                        }
+                        lastUpdate = now;
 
                         double currentMb = totalBytesRead / (1024.0 * 1024.0);
                         double totalMb = contentLength > 0 ? contentLength / (1024.0 * 1024.0) : 0;
@@ -437,48 +444,69 @@ public class InstallManager {
         file.delete();
     }
 
-    private static void unzip(File zipFile, File destDir) throws Exception {
-        if (IS_MAC) {
-            try {
-                ProcessBuilder pb = new ProcessBuilder("unzip", "-o", zipFile.getAbsolutePath(), "-d", destDir.getAbsolutePath());
-                Process process = pb.start();
-                int exitCode = process.waitFor();
-                
-                if (exitCode == 0) {
-                    return; 
-                }
-            } catch (Exception e) {
-                System.out.println("Error running native unzip on macOS, falling back to Java unzip: " + e.getMessage());
-            }
+    private static boolean runExtractor(File destDir, String... command) {
+        try {
+            ProcessBuilder pb = new ProcessBuilder(command);
+            pb.directory(destDir);
+            pb.redirectErrorStream(true);
+            pb.redirectOutput(ProcessBuilder.Redirect.DISCARD);
+            return pb.start().waitFor() == 0;
+        } catch (Exception e) {
+            System.out.println("Native extractor failed (" + command[0] + "), falling back to Java unzip: " + e.getMessage());
+            return false;
         }
-        
+    }
+
+    private static void unzip(File zipFile, File destDir) throws Exception {
+        String zip = zipFile.getAbsolutePath();
+        String dest = destDir.getAbsolutePath();
+
+        if (IS_WINDOWS) {
+            if (runExtractor(destDir, "tar", "-xf", zip, "-C", dest)) return;
+        } else if (runExtractor(destDir, "unzip", "-o", "-q", zip, "-d", dest)) {
+            return;
+        }
+
         unzipJava(zipFile, destDir);
     }
 
     private static void unzipJava(File zipFile, File destDir) throws Exception {
-        try (ZipInputStream zipIn = new ZipInputStream(new BufferedInputStream(new java.io.FileInputStream(zipFile)))) {
-            ZipEntry entry = zipIn.getNextEntry();
+        String destRoot = destDir.getCanonicalPath() + File.separator;
+        int threads = Math.max(2, Math.min(8, Runtime.getRuntime().availableProcessors()));
+        java.util.concurrent.ExecutorService pool = java.util.concurrent.Executors.newFixedThreadPool(threads);
+        java.util.List<java.util.concurrent.Future<?>> jobs = new java.util.ArrayList<>();
 
-            while (entry != null) {
-                File filePath = new File(destDir, entry.getName());
-                if (!entry.isDirectory()) {
-                    File parentDir = filePath.getParentFile();
-                    if (!parentDir.exists()) {
-                        parentDir.mkdirs();
-                    }
-                    try (FileOutputStream fos = new FileOutputStream(filePath)) {
-                        byte[] bytes = new byte[8192];
+        try (java.util.zip.ZipFile zf = new java.util.zip.ZipFile(zipFile)) {
+            java.util.Enumeration<? extends ZipEntry> entries = zf.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = entries.nextElement();
+                File out = new File(destDir, entry.getName());
+                if (!out.getCanonicalPath().startsWith(destRoot)) {
+                    continue;
+                }
+                if (entry.isDirectory()) {
+                    out.mkdirs();
+                    continue;
+                }
+                jobs.add(pool.submit(() -> {
+                    File parent = out.getParentFile();
+                    if (!parent.exists()) parent.mkdirs();
+                    byte[] buffer = new byte[1 << 20];
+                    try (InputStream in = zf.getInputStream(entry);
+                         java.io.OutputStream os = new java.io.BufferedOutputStream(new FileOutputStream(out), 1 << 20)) {
                         int read;
-                        while ((read = zipIn.read(bytes)) != -1) {
-                            fos.write(bytes, 0, read);
+                        while ((read = in.read(buffer)) != -1) {
+                            os.write(buffer, 0, read);
                         }
                     }
-                } else {
-                    filePath.mkdirs();
-                }
-                zipIn.closeEntry();
-                entry = zipIn.getNextEntry();
+                    return null;
+                }));
             }
+            for (java.util.concurrent.Future<?> job : jobs) {
+                job.get();
+            }
+        } finally {
+            pool.shutdown();
         }
     }
 }

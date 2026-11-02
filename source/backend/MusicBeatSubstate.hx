@@ -122,6 +122,8 @@ class MusicBeatSubstate extends FlxSubState
 					FlxTween.cancelTweensOf(backButton.scale);
 					tweenScale = FlxTween.tween(backButton.scale, {x: 0.19, y: 0.19}, 0.1, {ease: FlxEase.backOut, onComplete: function(_) tweenScale = null});
 					FlxTween.tween(backButton, {alpha: 1}, 0.1, {ease: FlxEase.smootherStepOut, onComplete: (_) -> {
+						if (backButton == null || backButton.animation == null)
+							return;
 						backButton.animation.play('idle', true);
 						FlxTween.cancelTweensOf(backButton.scale);
 						tweenScale = FlxTween.tween(backButton.scale, {x: 0.17, y: 0.17}, 0.1, {ease: FlxEase.backOut, onComplete: function(_) tweenScale = null});

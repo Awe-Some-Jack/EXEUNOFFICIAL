@@ -1,25 +1,51 @@
 local movingNotes = {}
 
+local function usesMobileLayout()
+	if buildTarget ~= 'ios' and buildTarget ~= 'android' then return false end
+	if not getPropertyFromClass('backend.ClientPrefs', 'data.middleScroll') then return false end
+	return getPropertyFromClass('backend.ClientPrefs', 'data.middlescrollType') == 'mobile' or getPropertyFromClass('backend.ClientPrefs', 'data.mobileOpponentNotes') == true
+end
+
+local function swapOpponentX(i)
+	if usesMobileLayout() then
+		return (screenWidth / 2) - (100 + (5 + getPropertyFromClass('objects.Note', 'swagWidth')) * (4 - i))
+	end
+	return _G['defaultOpponentStrumX'..i]
+end
+
+local function swapPlayerX(i)
+	if usesMobileLayout() then
+		return (screenWidth / 2) + (100 + (5 + getPropertyFromClass('objects.Note', 'swagWidth')) * i)
+	end
+	return _G['defaultPlayerStrumX'..i]
+end
+
 function onEvent(n,v1)
 	if n == 'yourselfEvents' then
 		if v1 == 'modchart1' then
+			if usesMobileLayout() then
+				for i = 0,3 do
+					noteTweenY('noteoy'..i, i, _G['defaultPlayerStrumY'..i], crochet / 250, 'cubeIn')
+					if i < 2 then noteTweenX('noteox'..i, i, swapOpponentX(i), crochet / 250, 'cubeIn') end
+				end
+			end
 			for i = 0,3 do
 				if i < 2 then
-					noteTweenX('notep'..i, i + 4, _G['defaultOpponentStrumX'..(i + 2)], crochet / 250, 'cubeIn')
+					noteTweenX('notep'..i, i + 4, swapOpponentX(i + 2), crochet / 250, 'cubeIn')
 				else
-					noteTweenX('notep'..i, i + 4, _G['defaultPlayerStrumX'..(i - 2)], crochet / 250, 'cubeIn')
-					noteTweenX('noteo'..i, i, _G['defaultPlayerStrumX'..i], crochet / 250, 'cubeIn')
+					noteTweenX('notep'..i, i + 4, swapPlayerX(i - 2), crochet / 250, 'cubeIn')
+					noteTweenX('noteo'..i, i, swapPlayerX(i), crochet / 250, 'cubeIn')
 				end
 			end
 		end
 		if v1 == 'modchart1dot5' then
 			for i = 0,3 do
 				if i < 2 then
-					noteTweenX('noteo'..i, i, _G['defaultPlayerStrumX'..(i + 2)], crochet / 250, 'cubeIn')
-					noteTweenX('notep'..i, i + 4, _G['defaultPlayerStrumX'..i], crochet / 250, 'cubeIn')
+					noteTweenX('noteo'..i, i, swapPlayerX(i + 2), crochet / 250, 'cubeIn')
+					noteTweenX('notep'..i, i + 4, swapPlayerX(i), crochet / 250, 'cubeIn')
 				else
-					noteTweenX('noteo'..i, i, _G['defaultOpponentStrumX'..i], crochet / 250, 'cubeIn')
-					noteTweenX('notep'..i, i + 4, _G['defaultOpponentStrumX'..(i - 2)], crochet / 250, 'cubeIn')
+					noteTweenX('noteo'..i, i, swapOpponentX(i), crochet / 250, 'cubeIn')
+					noteTweenX('notep'..i, i + 4, swapOpponentX(i - 2), crochet / 250, 'cubeIn')
 				end
 			end
 		end

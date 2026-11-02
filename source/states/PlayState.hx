@@ -1645,6 +1645,8 @@ class PlayState extends MusicBeatState
 			}
 		};
 
+		backend.SongGc.start();
+
 		setSongTime(Math.max(0, startOnTime - 500) + Conductor.offset);
 		startOnTime = 0;
 
@@ -2087,6 +2089,35 @@ class PlayState extends MusicBeatState
 			dpadLitSprs[i].visible = i == lit;
 	}
 
+	function updateControlsVisibility():Void
+	{
+		final show:Bool = !inCutscene && !(videoCutscene != null && videoCutscene.alive && videoCutscene.isPlaying() == true);
+
+		for (hitbox in hitboxesGroup)
+			if (hitbox != null) hitbox.visible = show;
+
+		if (spaceHitbox != null)
+		{
+			if (!show)
+			{
+				spaceHitbox.visible = false;
+				if (acceptPressSpr != null) acceptPressSpr.visible = false;
+			}
+			else if (acceptPressSpr != null)
+			{
+				spaceHitbox.visible = !acceptShownHeld;
+				acceptPressSpr.visible = acceptShownHeld;
+			}
+			else spaceHitbox.visible = true;
+		}
+
+		if (!show && dpadIdleSpr != null)
+		{
+			dpadIdleSpr.visible = false;
+			for (lit in dpadLitSprs) lit.visible = false;
+		}
+	}
+
 	function applyMobileMiddlescrollStrums():Void
 	{
 		if (opponentStrums.length < 4 || playerStrums.length < 4) return;
@@ -2408,6 +2439,7 @@ class PlayState extends MusicBeatState
 		#if mobile
 		updateSpaceHitbox();
 		updateDpadVisuals();
+		updateControlsVisibility();
 		for(i in 0...4) {
 			final ownerId = hitboxOwner[i];
 			final ownerHeld = ownerId != -1 && pointerHeld(ownerId);
@@ -4777,6 +4809,7 @@ class PlayState extends MusicBeatState
 		#end
 
 		backend.FilterPruner.clear();
+		backend.SongGc.stop();
 
 		gameplayCam?.destroy();
 

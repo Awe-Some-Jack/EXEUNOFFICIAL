@@ -98,8 +98,8 @@ function onCreate()
 	preloadCharacter(1, 'sanicsad');
 	preloadCharacter(0, 'bfsanicsad');
 
-	sanics2 = new FlxBackdrop(Paths.image('characters/sanic'), 0x01);
-	sanics2.frames = Paths.getSparrowAtlas('characters/sanic');
+	sanics2 = new FlxBackdrop(Paths.image('characters/Sanic'), 0x01);
+	sanics2.frames = Paths.getSparrowAtlas('characters/Sanic');
 	sanics2.animation.addByPrefix('singLEFT', 'left', 24, false);
 	sanics2.animation.addByPrefix('singDOWN', 'down', 24, false);
 	sanics2.animation.addByPrefix('singUP', 'up', 24, false);
@@ -110,8 +110,8 @@ function onCreate()
 	sanics2.velocity.x = 1000;
 	insert(game.members.indexOf(dadGroup), sanics2);
 
-	sanics1 = new FlxBackdrop(Paths.image('characters/sanic'), 0x01);
-	sanics1.frames = Paths.getSparrowAtlas('characters/sanic');
+	sanics1 = new FlxBackdrop(Paths.image('characters/Sanic'), 0x01);
+	sanics1.frames = Paths.getSparrowAtlas('characters/Sanic');
 	sanics1.animation.addByPrefix('singLEFT', 'left', 24, false);
 	sanics1.animation.addByPrefix('singDOWN', 'down', 24, false);
 	sanics1.animation.addByPrefix('singUP', 'up', 24, false);

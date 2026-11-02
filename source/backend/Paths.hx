@@ -370,6 +370,12 @@ class Paths
 		if (file == null || bitmap == null)
 			return null;
 
+		#if mobile
+		final deviceRoot:String = MobileUtil.getDirectory();
+		if (file.startsWith(deviceRoot))
+			file = file.substr(deviceRoot.length);
+		#end
+
 		var start:Int = -1;
 		if (file.startsWith('assets/'))
 			start = 7;

@@ -222,13 +222,13 @@ function goodNoteHitPre(note:Note):Void {
 	boyfriend.recalculateDanceIdle();
 }
 
-var lastFS:Bool = flase;
+var lastFS:Bool = false;
 function onUpdate(elapsed:Float) {
     
     if(!debugMode){
         if (FlxG.fullscreen != lastFS){
             FlxG.fullscreen = true;
-            lastFS = fullscreen;
+            lastFS = FlxG.fullscreen;
         }
     }
 

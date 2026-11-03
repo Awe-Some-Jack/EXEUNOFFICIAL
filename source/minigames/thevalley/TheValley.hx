@@ -341,6 +341,14 @@ class TheValley extends MusicBeatState implements ExeWorld
 		super.update(elapsed);
 		_clock += elapsed;
 
+		#if !final
+		if (_finalCS == null && FlxG.keys.justPressed.ONE)
+		{
+			_startFinalCutscene();
+			return;
+		}
+		#end
+
 		if (_finalCS != null)
 		{
 			if (controls.PAUSE && !_finalCS.skipping)

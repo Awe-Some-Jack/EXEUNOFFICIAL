@@ -66,6 +66,8 @@ class FatalAccess extends MusicBeatState
 	var _keys:Array<FatalKey> = [];
 	var _keyIndex:Int = 0;
 	var _clock:Float = 0;
+	var _trackStarted:Bool = false;
+	var _trackWait:Float = 0;
 	var _time:Float = 0;
 	var _track:FlxSound;
 	var _voice:FlxSound;
@@ -140,13 +142,17 @@ class FatalAccess extends MusicBeatState
 		return StoryModeState.weekCompleted.get('exe') == true;
 	}
 
+	public static function fatalityUnlocked():Bool
+		return backend.SongProgress.beatenSongs().contains('fatality') || backend.SongProgress.openedSongs().contains('fatality');
+
 	public static function menuScene():Null<FatalScene>
 	{
+		if (fatalityUnlocked()) return null;
 		#if (mobile || mac)
-		if (granted() || denied() || !storyBeaten()) return null;
+		if (granted() || !storyBeaten()) return null;
 		return FlxG.save.data.fatalMobileSeen == true ? REMINDER : TRANSMISSION;
 		#elseif sys
-		if (granted() || denied() || !storyBeaten()) return null;
+		if (granted() || !storyBeaten()) return null;
 		if (!FileSystem.exists(folderPath())) return TRANSMISSION;
 		if (FileSystem.exists(filePath())) return REMINDER;
 		_createFile();
@@ -154,6 +160,14 @@ class FatalAccess extends MusicBeatState
 		#else
 		return null;
 		#end
+	}
+
+	public static function reopen():Void
+	{
+		if (!denied()) return;
+		FlxG.save.data.fatalDenied = false;
+		FlxG.save.flush();
+		_createFile();
 	}
 
 	public static function resetForTesting():Void
@@ -218,6 +232,8 @@ class FatalAccess extends MusicBeatState
 			}
 			FlxG.save.data.fatalGranted = true;
 			FlxG.save.flush();
+			backend.EXEAchievements.unlock('fatal');
+			backend.EXEAchievements.save();
 			File.saveContent(path, 'ACCESS GRANTED.\r\n\r\nThank you, player.\r\n\r\n- F\r\n');
 			return GRANTED;
 		}
@@ -549,7 +565,7 @@ class FatalAccess extends MusicBeatState
 		{
 			final track = _sound('assets/exe/access/fatal/fatalvoicelines.ogg');
 			_track = track != null ? FlxG.sound.play(track) : null;
-			end = track != null ? track.length / 1000 : 50.9;
+			end = 50.9;
 
 			_at(0.75, () -> _showBox(_line("finally.", '', 0, 0, 0.26, 0.65, 0.48, 0.28)));
 			_at(2.2, () -> _noise(1));
@@ -939,7 +955,13 @@ class FatalAccess extends MusicBeatState
 			_fall.update(elapsed);
 			return;
 		}
-		_clock = _track != null && _track.playing ? _track.time / 1000 : _clock + elapsed;
+		if (_track != null && !_trackStarted)
+		{
+			_trackWait += elapsed;
+			_trackStarted = _track.time > 0 || _trackWait > 1;
+		}
+		if (_track == null || _trackStarted)
+			_clock += elapsed;
 		while (_keyIndex < _keys.length && _clock >= _keys[_keyIndex].at)
 			_keys[_keyIndex++].run();
 	}
@@ -1027,6 +1049,7 @@ class FatalAccess extends MusicBeatState
 		{
 			Mods.currentModDirectory = 'FATAL';
 			Song.loadFromJson('fatality', 'fatality');
+			backend.SongProgress.markOpened('fatality');
 			EXEMenu.secretSong = true;
 			PlayState.storyPlaylist = ['fatality'];
 			PlayState.isStoryMode = false;

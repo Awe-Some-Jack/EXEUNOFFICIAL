@@ -560,10 +560,25 @@ class PlayState extends MusicBeatState
 				FlxG.fullscreen = true;
 			}
 			#end
+
+			refreshScaleAfterLetterbox();
 		}
 		#end
 
 		return value;
+	}
+
+	static function refreshScaleAfterLetterbox():Void
+	{
+		var frames:Int = 0;
+		var fix:Void->Void = null;
+		fix = () -> {
+			frames++;
+			if (FlxG.scaleMode.deviceSize.x != FlxG.stage.stageWidth || FlxG.scaleMode.deviceSize.y != FlxG.stage.stageHeight)
+				@:privateAccess FlxG.game.onResize(null);
+			if (frames >= 120) FlxG.signals.postUpdate.remove(fix);
+		};
+		FlxG.signals.postUpdate.add(fix);
 	}
 
 	public static function fullscreenLetterbox():Void
@@ -984,6 +999,7 @@ class PlayState extends MusicBeatState
 		{
 			for (event in eventNotes) event.strumTime -= eventEarlyTrigger(event);
 			eventNotes.sort(sortByTime);
+			preloadEventVideos();
 		}
 
 		if (sunkyDeaths > 0 && sunkyDeaths % 5 == 0 && sunkyAskedAt != sunkyDeaths && !cpuControlled && !chartingMode
@@ -1325,6 +1341,44 @@ class PlayState extends MusicBeatState
 	}
 
 	public var videoCutscene:VideoSprite = null;
+	var preloadedVideos:Map<String, VideoSprite> = [];
+	function preloadEventVideos():Void
+	{
+		#if VIDEOS_ALLOWED
+		for (event in eventNotes)
+		{
+			if (event.event != 'Video Player' && event.event != 'Video_Player') continue;
+
+			final settings:Array<String> = (event.value2 ?? '').toLowerCase().split(' ').join('').split(',');
+			if (settings.length < 4 || settings[1] != 'true' || settings[3] != 'true') continue;
+
+			preloadVideo(StringTools.trim((event.value1 ?? '').split(',')[0]), settings[2] == 'true');
+		}
+		#end
+	}
+
+	public function preloadVideo(name:String, loop:Bool = false):Bool
+	{
+		#if VIDEOS_ALLOWED
+		if (name == null || name == '') return false;
+		if (preloadedVideos.exists(name)) return true;
+
+		final filePath:String = Paths.video(name);
+		if (filePath == null) return false;
+
+		final video:VideoSprite = new VideoSprite(0, 0, true);
+		video.camera = camVideo;
+		if (video.precacheVideo(filePath, loop ? [VideoSprite.ARG_LOOPING] : []))
+		{
+			preloadedVideos.set(name, video);
+			return true;
+		}
+
+		video.destroy();
+		#end
+		return false;
+	}
+
 	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = true)
 	{
 		final watchKey:String = endingSong ? '$songName-end' : songName;
@@ -1359,7 +1413,9 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		videoCutscene = new VideoSprite(0, 0, true);
+		final preloaded:VideoSprite = forMidSong && (playOnLoad ?? true) ? preloadedVideos.get(name) : null;
+		if (preloaded != null) preloadedVideos.remove(name);
+		videoCutscene = preloaded ?? new VideoSprite(0, 0, true);
 		videoCutscene.camera = camVideo;
 		videoCutscene.canSkip = canSkip && (forMidSong || cutsceneWatched(watchKey));
 		add(videoCutscene);
@@ -1368,7 +1424,7 @@ class PlayState extends MusicBeatState
 			videoCutscene.onSkip = () -> endVideo();
 		videoCutscene.onEnd(() -> endVideo());
 
-		videoCutscene.onFormat(() -> {
+		final fitVideo:Void->Void = () -> {
 			#if switch
 			final hasFrame = videoCutscene.video != null;
 			#else
@@ -1391,7 +1447,9 @@ class PlayState extends MusicBeatState
 				videoCutscene.video.x = 0;
 				videoCutscene.video.y = 0;
 			}
-		});
+		};
+		videoCutscene.onFormat(fitVideo);
+		if (preloaded != null) fitVideo();
 
 		final loadArgs:Array<String> = loop ? [VideoSprite.ARG_LOOPING] : [];
 		if (playOnLoad) 
@@ -1644,6 +1702,8 @@ class PlayState extends MusicBeatState
 				opponentVocals.volume = 0;
 			}
 		};
+
+		backend.SongGc.start();
 
 		setSongTime(Math.max(0, startOnTime - 500) + Conductor.offset);
 		startOnTime = 0;
@@ -2087,6 +2147,35 @@ class PlayState extends MusicBeatState
 			dpadLitSprs[i].visible = i == lit;
 	}
 
+	function updateControlsVisibility():Void
+	{
+		final show:Bool = !inCutscene && !(videoCutscene != null && videoCutscene.alive && videoCutscene.isPlaying() == true);
+
+		for (hitbox in hitboxesGroup)
+			if (hitbox != null) hitbox.visible = show;
+
+		if (spaceHitbox != null)
+		{
+			if (!show)
+			{
+				spaceHitbox.visible = false;
+				if (acceptPressSpr != null) acceptPressSpr.visible = false;
+			}
+			else if (acceptPressSpr != null)
+			{
+				spaceHitbox.visible = !acceptShownHeld;
+				acceptPressSpr.visible = acceptShownHeld;
+			}
+			else spaceHitbox.visible = true;
+		}
+
+		if (!show && dpadIdleSpr != null)
+		{
+			dpadIdleSpr.visible = false;
+			for (lit in dpadLitSprs) lit.visible = false;
+		}
+	}
+
 	function applyMobileMiddlescrollStrums():Void
 	{
 		if (opponentStrums.length < 4 || playerStrums.length < 4) return;
@@ -2302,13 +2391,25 @@ class PlayState extends MusicBeatState
 	}
 
 	static inline final VOCAL_DRIFT_THRESHOLD:Float = 20.0;
+	static inline final VOCAL_DRIFT_FRAMES:Int = 6;
+
+	final vocalDriftFrames:Map<FlxSound, Int> = new Map();
 
 	function syncVocal(voc:FlxSound, musicTime:Float):Void
 	{
 		if (voc == null || voc.length <= 0 || musicTime >= voc.length) return;
 
 		if (Math.abs(voc.time - musicTime) > VOCAL_DRIFT_THRESHOLD)
-			voc.time = musicTime;
+		{
+			final frames:Int = (vocalDriftFrames.get(voc) ?? 0) + 1;
+			if (frames >= VOCAL_DRIFT_FRAMES)
+			{
+				voc.time = musicTime;
+				vocalDriftFrames.set(voc, 0);
+			}
+			else vocalDriftFrames.set(voc, frames);
+		}
+		else vocalDriftFrames.set(voc, 0);
 
 		if (!voc.playing)
 		{
@@ -2408,6 +2509,7 @@ class PlayState extends MusicBeatState
 		#if mobile
 		updateSpaceHitbox();
 		updateDpadVisuals();
+		updateControlsVisibility();
 		for(i in 0...4) {
 			final ownerId = hitboxOwner[i];
 			final ownerHeld = ownerId != -1 && pointerHeld(ownerId);
@@ -3496,6 +3598,11 @@ class PlayState extends MusicBeatState
 			if (states.SonichuUnlockState.pending) {
 				FlxG.switchState(() -> new states.SonichuUnlockState());
 			}
+			else if (formattedSong == 'shocker' && FlxG.save.data.shockerCreditsSeen != true) {
+				FlxG.save.data.shockerCreditsSeen = true;
+				FlxG.save.flush();
+				FlxG.switchState(() -> new states.CreditsRollState());
+			}
 			else if (states.StoryModeState.fromStoryMode) {
 				states.StoryModeState.fromStoryMode = false; 
 				FlxG.switchState(() -> new states.StoryModeState()); 
@@ -3650,7 +3757,7 @@ class PlayState extends MusicBeatState
         save.data.songs ??= [];
         var unlocked:Array<String> = save.data.songs;
 
-        if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong || isStoryMode || formattedSong == 'burning')
+        if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong || isStoryMode || ['mania', 'fatality', 'burning', 'godspeed'].contains(formattedSong))
         {
             states.EXEMenu.secretSong = false;
 
@@ -4729,6 +4836,9 @@ class PlayState extends MusicBeatState
 		}
 
 		#if !mac FlxG.stage.window.title = prevWindowTitle; #end
+		FlxSprite.defaultAntialiasing = ClientPrefs.data.antialiasing;
+		for (video in preloadedVideos) video.destroy();
+		preloadedVideos.clear();
 
 		#if LUA_ALLOWED
 		for (lua in luaArray)
@@ -4777,6 +4887,7 @@ class PlayState extends MusicBeatState
 		#end
 
 		backend.FilterPruner.clear();
+		backend.SongGc.stop();
 
 		gameplayCam?.destroy();
 

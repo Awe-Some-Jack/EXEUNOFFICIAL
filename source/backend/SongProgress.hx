@@ -13,6 +13,26 @@ class SongProgress
 		return songs ?? [];
 	}
 
+	public static function openedSongs():Array<String>
+	{
+		final save:FlxSave = new FlxSave();
+		save.bind('savedSongs', CoolUtil.getSavePath());
+		final songs:Array<String> = save.data.openedSongs;
+		return songs ?? [];
+	}
+
+	public static function markOpened(song:String):Void
+	{
+		final save:FlxSave = new FlxSave();
+		save.bind('savedSongs', CoolUtil.getSavePath());
+		final saved:Null<Array<String>> = save.data.openedSongs;
+		final songs:Array<String> = saved ?? [];
+		if (songs.contains(song)) return;
+		songs.push(song);
+		save.data.openedSongs = songs;
+		save.flush();
+	}
+
 	static function allWeeks():Map<String, WeekData>
 	{
 		final keepList = WeekData.weeksList;

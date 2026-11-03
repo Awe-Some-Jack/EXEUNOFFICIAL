@@ -281,6 +281,7 @@ class EXEFreeplay extends MusicBeatState
 		save.bind('savedSongs', CoolUtil.getSavePath());
 		var unlocked:Array<String> = save.data.songs;
 		if (unlocked == null) unlocked = [];
+		final opened:Array<String> = backend.SongProgress.openedSongs();
 
 		for (i in 0...WeekData.weeksList.length)
 		{
@@ -306,7 +307,8 @@ class EXEFreeplay extends MusicBeatState
 				final songPath:String = Paths.formatToSongPath(sName);
 				if (songPath == 'stardust-speedway' && Mods.currentModDirectory == 'STARVED') continue;
 				final burningOpen:Bool = backend.BurningBot.active || FlxG.save.data.burningRevealed == true || FlxG.save.data.burningWon == true;
-				if (unlocked.indexOf(songPath) == -1 && !(burningOpen && songPath == 'burning') #if !final && !inDevMode #end) continue;
+				if (burningOpen && songPath == 'burning') backend.SongProgress.markOpened(songPath);
+				if (unlocked.indexOf(songPath) == -1 && !opened.contains(songPath) && !(burningOpen && songPath == 'burning') #if !final && !inDevMode #end) continue;
 
 				final info:ExeSongInfo = {
 					songName: sName,
@@ -1015,6 +1017,12 @@ class EXEFreeplay extends MusicBeatState
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = launchDiff;
 			PlayState.storyWeek = entry.week;
+			StoryModeState.fromStoryMode = false;
+			SoundTest.fromSoundTest = false;
+			states.parallax.StoryParallaxState.fromParallax = false;
+			states.access.FridgeAccess.fromFridge = false;
+			states.access.MajinAccess.fromMajin = false;
+			EXEMenu.secretSong = false;
 		}
 		catch (e:haxe.Exception)
 		{

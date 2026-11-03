@@ -49,7 +49,7 @@ final class MemoryUtil
 		Gc.run(true);
 		Gc.compact();
 		cpp.NativeGc.compact();
-		if (!Std.isOfType(FlxG.state, states.PlayState)) NativeMemory.trimHeap();
+		if (states.PlayState.instance == null) NativeMemory.trimHeap();
 		#elseif hl
 		Gc.major();
 		#elseif (java || neko)

@@ -122,6 +122,7 @@ class SonichuUnlockState extends MusicBeatState
 	{
 		Mods.currentModDirectory = 'SONICHU';
 		Song.loadFromJson('shocker', 'shocker');
+		backend.SongProgress.markOpened('shocker');
 
 		EXEMenu.secretSong = true;
 		PlayState.storyPlaylist = ['shocker'];

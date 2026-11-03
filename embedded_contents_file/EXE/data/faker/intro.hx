@@ -19,8 +19,8 @@ function onCreatePost()
 	game.inCutscene = true;
 
 	cam.zoom = 1;
-	cam.targetOffset.x = -1;
-	cam.targetOffset.y = 345;
+	cam.targetOffset.x = -305;
+	cam.targetOffset.y = 150;
 
 	camHUD.alpha = 0;
 }

@@ -184,7 +184,7 @@ function onCreate() {
 
 	camGame.bgColor = 0xFF000000;
 
-	for (cam in [camGame, camVideo, camHUD, camOther])
+	for (cam in [camGame, camVideo, camHUD])
 	{
 		cam.setSize(camWidth, camHeight);
 		cam.x = (FlxG.width - camWidth) / 2;

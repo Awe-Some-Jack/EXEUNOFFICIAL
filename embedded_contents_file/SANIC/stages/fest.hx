@@ -54,6 +54,7 @@ function onCreate()
 	introCutscene.onEnd(() -> {camGame.alpha = 1; introCutscene.destroy();});
 	add(introCutscene);
 	videos.push(introCutscene);
+	introCutscene.precacheVideo(Paths.video('Sanic Intro'), [VideoSprite.ARG_MUTED]);
 
 	sanicBG = new VideoSprite(-1700, -1100);
 	sanicBG.onFormat(() -> { 
@@ -63,7 +64,8 @@ function onCreate()
 	sanicBG.onEnd(() -> {sanicBG.destroy();});
 	insert(0, sanicBG);
 	videos.push(sanicBG);
-	sanicBG.precacheVideo(Paths.video('bg${FlxG.random.int(1,2)}'), [VideoSprite.ARG_MUTED]);
+	sanicBGName = 'bg${FlxG.random.int(1,2)}';
+	sanicBG.precacheVideo(Paths.video(sanicBGName), [VideoSprite.ARG_MUTED]);
 
 	stars = new FlxBackdrop(null, FlxAxes.XY);
 	stars.drawBlit = false;
@@ -98,8 +100,8 @@ function onCreate()
 	preloadCharacter(1, 'sanicsad');
 	preloadCharacter(0, 'bfsanicsad');
 
-	sanics2 = new FlxBackdrop(Paths.image('characters/sanic'), 0x01);
-	sanics2.frames = Paths.getSparrowAtlas('characters/sanic');
+	sanics2 = new FlxBackdrop(Paths.image('characters/Sanic'), 0x01);
+	sanics2.frames = Paths.getSparrowAtlas('characters/Sanic');
 	sanics2.animation.addByPrefix('singLEFT', 'left', 24, false);
 	sanics2.animation.addByPrefix('singDOWN', 'down', 24, false);
 	sanics2.animation.addByPrefix('singUP', 'up', 24, false);
@@ -110,8 +112,8 @@ function onCreate()
 	sanics2.velocity.x = 1000;
 	insert(game.members.indexOf(dadGroup), sanics2);
 
-	sanics1 = new FlxBackdrop(Paths.image('characters/sanic'), 0x01);
-	sanics1.frames = Paths.getSparrowAtlas('characters/sanic');
+	sanics1 = new FlxBackdrop(Paths.image('characters/Sanic'), 0x01);
+	sanics1.frames = Paths.getSparrowAtlas('characters/Sanic');
 	sanics1.animation.addByPrefix('singLEFT', 'left', 24, false);
 	sanics1.animation.addByPrefix('singDOWN', 'down', 24, false);
 	sanics1.animation.addByPrefix('singUP', 'up', 24, false);
@@ -180,6 +182,7 @@ function makePreloadedVideo(name:String):VideoSprite
 	return video;
 }
 
+var sanicBGName:String = 'bg1';
 var iTime:Float = 0;
 function onUpdatePost(e)
 {
@@ -219,7 +222,7 @@ function onEvent(n,v1,v2)
 		switch(v1)
 		{
 			case 'hud':
-				if (sanicBG?.loadVideo(Paths.video('bg${FlxG.random.int(1,2)}'), [VideoSprite.ARG_MUTED])) sanicBG?.playDelayed();
+				if (sanicBG?.loadVideo(Paths.video(sanicBGName), [VideoSprite.ARG_MUTED])) sanicBG?.playDelayed();
 				FlxTween.tween(camHUD, {alpha: 1}, Conductor.crochet / 250);
 			case 'removeintro':
 				game.canReset = true;

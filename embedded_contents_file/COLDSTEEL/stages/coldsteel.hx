@@ -15,10 +15,10 @@ function onCreatePost()
 	introCutscene.onFormat(() -> {
 		introCutscene.setGraphicSize(FlxG.width, FlxG.height);
 		introCutscene.screenCenter();
-		camGame.alpha = 1;
 	});
 	introCutscene.camera = camVideo;
 	game.add(introCutscene);
+	introCutscene.precacheVideo(Paths.video('intro'));
 }
 
 function onEvent(n,v1)
@@ -37,7 +37,14 @@ function onSectionHit()
 }
 
 function onDestroy() FlxG.camera.bgColor = 0x0;
-function onSongStart() if (introCutscene?.loadVideo(Paths.video('intro'))) introCutscene.playDelayed();
+function onSongStart()
+{
+	if (introCutscene?.loadVideo(Paths.video('intro')))
+	{
+		camGame.alpha = 1;
+		introCutscene.playDelayed();
+	}
+}
 function onGameOverStart() { introCutscene?.destroy(); FlxG.camera.bgColor = 0x0; }
 function onPause() introCutscene?.pause();
 function onResume() introCutscene?.resume();

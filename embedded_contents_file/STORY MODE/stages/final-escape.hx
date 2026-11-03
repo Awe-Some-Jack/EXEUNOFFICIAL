@@ -110,17 +110,17 @@ function onCreate()
 	});
 	introCutscene.camera = camVideo;
 	game.add(introCutscene);
+	introCutscene.precacheVideo(Paths.video('fake intro'));
 
 	//You wont get away!
 	YWGA = new VideoSprite();
 	YWGA.onFormat(() -> {
 		YWGA.setGraphicSize(FlxG.width, FlxG.height);
 		YWGA.screenCenter();
-		camHUD.visible = false;
-		camOther.flash(0xFFFFFFFF, Conductor.crochet / 500, null, true);
 	});
 	YWGA.camera = camVideo;
 	game.add(YWGA);
+	YWGA.precacheVideo(Paths.video('you know'));
 
 	//da bgs
 
@@ -886,7 +886,12 @@ function onEvent(n,v1,v2)
 					jumpscare?.destroy();
 				});
 			case 'wontgetaway':
-				if (curBeat <= 404 && YWGA?.loadVideo(Paths.video('you know'))) YWGA.playDelayed();
+				if (Conductor.songPosition < 125000 && YWGA?.loadVideo(Paths.video('you know')))
+				{
+					camHUD.visible = false;
+					camOther.flash(0xFFFFFFFF, Conductor.crochet / 500, null, true);
+					YWGA.playDelayed();
+				}
 			case 'wontgetaway2':
 				if (curBeat <= 409) YWGA?.destroy();
 				boyfriend.visible = true;

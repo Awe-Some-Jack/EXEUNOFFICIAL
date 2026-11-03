@@ -28,7 +28,16 @@ function onCreatePost()
 	setObjectOrder('rosechu', getObjectOrder('gfGroup') + 1)
 end
 
-function onEvent(n,v1) if n == 'Play Animation' then if v1 == 'gf' then playAnim('rosechu', 'anim', true) setProperty('rosechu.specialAnim', true) end end end
+function onEvent(n,v1) 
+	if n == 'Play Animation' then 
+		if v1 == 'gf' then 
+			playAnim('rosechu', 'anim', true) 
+			setProperty('rosechu.specialAnim', true) 
+			setProperty('dad.specialAnim', true)
+			setProperty('dad.skipDance', true)
+		end 
+	end 
+end
 
 function onUpdate()
 	callMethod('rosechu.update')

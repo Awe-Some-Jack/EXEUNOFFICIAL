@@ -4,6 +4,7 @@ import flixel.system.scaleModes.RelativeScaleMode;
 import flixel.system.scaleModes.RatioScaleMode;
 import flixel.text.FlxText;
 import flixel.text.FlxText.FlxTextAlign;
+import flixel.math.FlxMath;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxAxes;
 import flixel.util.FlxTimer;
@@ -71,6 +72,10 @@ var counter:Float = 0;
 var correctHovering:Bool = false;
 var numHovering:Bool = false;
 var dadHovering:Bool = false;
+var hoverGlow:Float = 0;
+var questionReady:Bool = true;
+var clickHintLeft:Float = 0;
+var clickWasPlaying:Bool = false;
 var stoplightHovering:Bool = false;
 
 final separation:Int = 50;
@@ -317,6 +322,7 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 	
 	if(!flash && !inQuestion) {
 		inQuestion = true;
+		questionReady = false;
 		clicked = false;
 		isSixSeven = false;
 
@@ -607,6 +613,7 @@ function createProblem(types:Array<Int>, ?flash:Bool = false, ?preNum:Int, ?hard
 				
 				if(thingy == 8) FlxTween.tween(triangle, {alpha: 1}, 0.4, {ease: FlxEase.smoothStepOut});
 				game.canPress = false;
+				questionReady = true;
 			}
 		});
 	} else if(flash && !inQuestion) {
@@ -843,8 +850,27 @@ function updateHUD() {
 	}
 }
 
+function isClickHint():Bool {
+	var playing:Bool = false;
+	for (educator in [dad, gf])
+		if (educator != null && educator.alpha > 0.1 && educator.getAnimationName() == 'click' && !educator.isAnimationFinished()) playing = true;
+	if (playing && !clickWasPlaying) clickHintLeft = 1.2;
+	clickWasPlaying = playing;
+	clickHintLeft = Math.max(0, clickHintLeft - FlxG.elapsed);
+	return clickHintLeft > 0;
+}
+
+function updateEducatorGlow(active:Bool) {
+	var target:Float = active ? 70 : (isClickHint() ? 40 + Math.sin(ela * 12) * 30 : 0);
+	hoverGlow = FlxMath.lerp(hoverGlow, target, FlxMath.bound(FlxG.elapsed * 14, 0, 1));
+	if (hoverGlow < 0.5 && target == 0) hoverGlow = 0;
+	for (educator in [dad, gf])
+		if (educator != null) educator.setColorTransform(educator.color.redFloat, educator.color.greenFloat, educator.color.blueFloat, educator.alpha, hoverGlow, hoverGlow, hoverGlow, 0);
+}
+
 function handleMouseLogic() {
 	if (!canHandleMouse) {
+		updateEducatorGlow(false);
 		Mouse.cursor = MouseCursor.ARROW;
 		return;
 	}
@@ -853,8 +879,14 @@ function handleMouseLogic() {
 	dadHovering = false;
 	stoplightHovering = false;
 
+	if (inQuestion && !questionReady) {
+		updateEducatorGlow(false);
+		Mouse.cursor = MouseCursor.ARROW;
+		return;
+	}
+
 	for(i in 0...numbers.length) {
-		numbersHitbox[i].x = numbers[i].x + 26;
+		numbersHitbox[i].x = isSixSeven && i == 7 ? 10000 : numbers[i].x + 26;
 		numbersHitbox[i].y = numbers[i].y;
 
 		if(inQuestion && !clicked && FlxG.mouse.overlaps(numbersHitbox[i], camOther)) {
@@ -1007,6 +1039,7 @@ function handleMouseLogic() {
 		}
 	}
 
+	updateEducatorGlow(dadHovering);
 	Mouse.cursor = (numHovering || dadHovering || stoplightHovering) ? MouseCursor.BUTTON : MouseCursor.ARROW;		
 }
 

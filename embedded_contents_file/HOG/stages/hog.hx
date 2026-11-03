@@ -427,7 +427,7 @@ function onUpdatePost(e:Float)
 
 	if (_isAttacking)
 	{
-		if (FlxG.keys.justPressed.SPACE && boyfriend.getAnimationName() != 'dodge' && !game.cpuControlled)
+		if (keyboardJustPressed('SPACE') && boyfriend.getAnimationName() != 'dodge' && !game.cpuControlled)
 		{
 			spacebar.alpha = 0;
 			boyfriend.playAnim('dodge', true);
@@ -1109,4 +1109,4 @@ function revertDirection()
 
 function onDestroy() FlxG.camera.bgColor = 0x0;
 function onGameOverStart() FlxG.camera.bgColor = 0x0;
-function onEndSong() if(unlockRingAchievement) EXEAchievements.unlock('norings');
+function onEndSong() if(unlockRingAchievement && !game.practiceMode && !game.cpuControlled) EXEAchievements.unlock('norings');

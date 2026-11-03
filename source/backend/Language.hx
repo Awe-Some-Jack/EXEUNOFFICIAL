@@ -117,6 +117,13 @@ class Language
 		return fallback ?? [];
 	}
 
+	public static function upper(text:String):String
+	{
+		if (currentKey == 'tr-TR')
+			text = StringTools.replace(StringTools.replace(text, 'i', 'İ'), 'ı', 'I');
+		return text.toUpperCase();
+	}
+
 	public static function getFontForLanguage():String
 	{
 		return switch (currentKey) {

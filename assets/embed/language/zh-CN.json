@@ -38,9 +38,11 @@
 	"options.visuals": "视觉效果",
 	"options.visuals.labels": ["隐藏界面", "闪烁灯光", "镜头缩放", "分数文字缩放", "帧数显示"],
 	"options.gameplay": "游戏玩法",
-	"options.gameplay.labels": ["DOWNSCROLL", "虚空点击", "SICK 判定窗口", "GOOD 判定窗口", "BAD 判定窗口", "安全帧数", "流式音频"],
+	"options.gameplay.labels": ["DOWNSCROLL", "虚空点击", "SICK 判定窗口", "GOOD 判定窗口", "BAD 判定窗口", "安全帧数", "流式音频", "重置存档数据"],
+	"options.reset.select": "选择",
+	"options.reset.confirm": "确定吗？",
 	"options.graphics": "图形设置",
-	"options.graphics.labels": ["土豆模式", "抗锯齿", "GPU 缓存", "着色器质量", "着色器", "帧率", "安全同步"],
+	"options.graphics.labels": ["抗锯齿", "GPU 缓存", "着色器质量", "着色器", "帧率", "安全同步"],
 	"options.language": "语言",
 	"options.on": "开启",
 	"options.off": "关闭",
@@ -211,6 +213,6 @@
 	"sonichu_reveal_2": "做好准备吧，这就是终结。",
 	"sonichu_reveal_3": "我最后的力量……",
 
-	"warning_text_main": "欢迎。\n\n在继续之前，请注意本模组包含闪烁的灯光和可能引起光敏性癫痫发作的视觉效果。\n\n如果你感到不适或对此类画面敏感，请勿游玩并关闭游戏。\n\n建议玩家谨慎游玩。",
+	"warning_text_main": "欢迎。\n\n在继续之前，请注意本模组包含闪烁的灯光和可能引起光敏性癫痫发作的视觉效果。\n\n如果你感到不适或对此类画面敏感，请勿游玩并关闭游戏。\n\n此外，如果你的设备配置较低，可能会出现加载问题。建议降低着色器质量，或使用内存（RAM）更大的设备游玩。\n\n建议玩家谨慎游玩。",
 	"warning_text_enter": "按 Enter 键继续。"
 }

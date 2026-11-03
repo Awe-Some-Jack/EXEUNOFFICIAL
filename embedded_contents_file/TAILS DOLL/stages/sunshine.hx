@@ -20,6 +20,7 @@ function onCreatePost()
 		introCutscene.screenCenter();
 	});
 	introCutscene.visible = false;
+	introCutscene.precacheVideo(Paths.video('dollending'));
 	introCutscene.camera = camVideo;
 	game.add(introCutscene);
 

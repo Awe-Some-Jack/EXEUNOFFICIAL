@@ -55,9 +55,9 @@ var sprites:Array<SprDef> = [
 
 var flashBackBG:Array<SprDef> = [
 	{name: 'static',        path: 'slow/flashback/static-flashback', x:  -950, y:  450, animated: true, animName: 'idle', animPrefix: 'static', fps: 24, loop: true, scaleX:   3, scaleY: 1.5, scrollX: 1, scrollY: 1, alpha: 0},
-	{name: 'mount',         path: 'slow/flashback/idk',              x:  -650, y:  650,                                                                              scaleX: 1, scaleY: 1, scrollX: 1, scrollY: 1, alpha: 0},
-	{name: 'plant',         path: 'slow/flashback/plants',           x:  -400, y:  730,                                                                              scaleX: 0.9, scaleY: 0.9, scrollX: 1, scrollY: 1, alpha: 0},
-	{name: 'floor',         path: 'slow/flashback/ground',           x:  -1000,y: 1100,                                                                              scaleX: 1.4, scaleY: 1.4, scrollX: 1, scrollY: 1, alpha: 0},
+	{name: 'mount',         path: 'slow/flashback/idk',              x:  -651, y:  338,                                                                              scaleX: 0.3602, scaleY: 0.3602, scrollX: 1, scrollY: 1, alpha: 0},
+	{name: 'plant',         path: 'slow/flashback/plants',           x:  -400, y:  730,                                                                              scaleX: 0.5257, scaleY: 0.5257, scrollX: 1, scrollY: 1, alpha: 0},
+	{name: 'floor',         path: 'slow/flashback/ground',           x:  -1000,y: 974,                                                                               scaleX: 1.4, scaleY: 1.4, scrollX: 1, scrollY: 1, alpha: 0},
 	{name: 'picoDead',      path: 'slow/flashback/pico_ded',         x:   370, y: 900,                                                                              scaleX: 0.6, scaleY: 0.6, scrollX: 1, scrollY: 1, alpha: 0, front: true},
 ];
 

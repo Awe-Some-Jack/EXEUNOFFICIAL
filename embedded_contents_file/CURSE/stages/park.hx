@@ -76,10 +76,6 @@ var idle:FlxAnimate;
 var idleconejos:FlxAnimate;
 var oso:FlxAnimate;
 var eggman:FlxAnimate;
-var phase4Copy:Character = null;
-var phase4DadTween:FlxTween = null;
-var phase4CopyTween:FlxTween = null;
-var phase4Active:Bool = false;
 var cursetweenSprites:Array<FlxSprite> = [];
 var cursetweenTweens:Array<FlxTween> = [];
 var vineteTween:FlxTween = null;
@@ -97,13 +93,22 @@ var idleconejosBaseOffX:Float = 0;
 var idleconejosBaseOffY:Float = 0;
 var lastTalker:String = 'idleconejos';
 
-function makeDancer(name:String, alt:String, x:Float, y:Float, step:Int, scale:Float = 1, alpha:Float = 1)
+function makeDancer(name:String, alt:String, x:Float, y:Float, step:Int, scale:Float = 1, alpha:Float = 1, frameLimit:Int = -1)
 {
     var spr:FlxAnimate = new FlxAnimate(x, y);
     spr.frames = Paths.getAnimateAtlas('Park/Characters');
     spr.antialiasing = ClientPrefs.data.antialiasing;
 
-    spr.anim.addBySymbol(name, name, 24, true);
+    if (frameLimit > 0)
+    {
+        var indices:Array<Int> = [];
+        for (i in 0...frameLimit) indices.push(i);
+        spr.anim.addBySymbolIndices(name, name, indices, 24, true);
+    }
+    else
+    {
+        spr.anim.addBySymbol(name, name, 24, true);
+    }
     if (alt != null) spr.anim.addBySymbol(alt, alt, 24, false);
     spr.anim.play(name, true);
 
@@ -113,7 +118,7 @@ function makeDancer(name:String, alt:String, x:Float, y:Float, step:Int, scale:F
 
     insert(game.members.indexOf(fuente), spr);
 
-    dancers.push({ spr: spr, name: name, alt: alt, step: step });
+    dancers.push({ spr: spr, name: name, alt: alt, step: step, danceToggle: false });
     return spr;
 }
 
@@ -121,6 +126,7 @@ function playDancerAnim(spr:FlxAnimate, anim:String)
 {
     if (spr == null) return;
     spr.anim.play(anim, true);
+    if (spr == tails1 && spr.anim.curAnim != null) spr.anim.curAnim.looped = false;
     if (spr == idleconejos)
     {
         if (anim == 'talk') spr.offset.set(idleconejosBaseOffX + talkOffsetX, idleconejosBaseOffY + talkOffsetY);
@@ -192,15 +198,16 @@ function onCreate()
     fuente.scale.set(1.2, 1.2);
     addBehindGF(fuente);
 
-    rata = makeDancer('rata', null, 1150, 140, 100, 0.4, 1);
-    oso = makeDancer('oso', null, 650, 50, 100, 0.725, 1);
-    vieja = makeDancer('vieja', null, 1230, 200, 20, 0.6, 1);
-    idle = makeDancer('idle', 'conversando', -1050, 140, 20, 0.6, 1);
-    idleconejos = makeDancer('idleconejos', 'talk', -780, 160, 70, 0.56, 1);
-    tails1 = makeDancer('tails1', null, -370, 70, 20, 0.6, 1);
-    tails2 = makeDancer('tails2', null, -378, 59, 0, 0.6, 0);
-    eggman = makeDancer('eggman', null, -1030, 30, 0, 0.85, 0);
-    knux = makeDancer('knux', null, 824, 56, 0, 0.8, 0);
+    rata = makeDancer('rata', null, 1150, 140, 100, 0.4, 1, -1);
+    oso = makeDancer('oso', null, 650, 50, 100, 0.725, 1, -1);
+    vieja = makeDancer('vieja', null, 1230, 200, 20, 0.6, 1, -1);
+    idle = makeDancer('idle', 'conversando', -1050, 140, 20, 0.6, 1, -1);
+    idleconejos = makeDancer('idleconejos', 'talk', -780, 160, 70, 0.56, 1, -1);
+    tails1 = makeDancer('tails1', null, -370, 70, 20, 0.6, 1, -1);
+    if (tails1.anim.curAnim != null) tails1.anim.curAnim.looped = false;
+    tails2 = makeDancer('tails2', null, -378, 59, 0, 0.6, 0, -1);
+    eggman = makeDancer('eggman', null, -1030, 30, 0, 0.85, 0, -1);
+    knux = makeDancer('knux', null, 824, 56, 0, 0.8, 0, -1);
 
     idleBaseOffX = idle.offset.x; idleBaseOffY = idle.offset.y;
     idleconejosBaseOffX = idleconejos.offset.x; idleconejosBaseOffY = idleconejos.offset.y;
@@ -252,6 +259,20 @@ function onCreate()
 }
 
 var curseOfX:Character;
+var curseOfXBaseX:Float = 0;
+var curseOfXBaseY:Float = -400;
+var curseOfXHold:Float = 0;
+var curseOfXHoldTime:Float = 0.3;
+var curseOfXMaxAlpha:Float = 0.55;
+var curseOfXFlickerCount:Int = 1.5;
+var curseOfXFlickerTween:FlxTween = null;
+var curseOfXMoveTween:FlxTween = null;
+var curseOfXScale:Float = 0.5;
+var curseOfXSustained:Bool = false;
+var curseOfXBobTime:Float = 0;
+var curseOfXBobAmount:Float = 20;
+var curseOfXBobSpeed:Float = 18;
+
 function onCreatePost()
 {
     if (FlxG.random.bool(50))
@@ -291,70 +312,155 @@ function onCreatePost()
     colorPulse.screenCenter();
     insert(game.members.indexOf(blackFade), colorPulse);
 
-    makePhase4Copy();
-
     curseOfX = new Character(dad.x + 200, dad.y, 'curseofx', false);
+    curseOfX.scale.set(curseOfX.scale.x * curseOfXScale, curseOfX.scale.y * curseOfXScale);
+    curseOfXBobAmount = curseOfX.frameHeight * Math.abs(curseOfX.scale.y) * 0.03;
+    curseOfXBobSpeed = (Conductor.crochet > 0) ? (Math.PI * 2) / (Conductor.crochet / 1000) * 0.5 : 6.283;
     insert(game.members.indexOf(dadGroup), curseOfX);
+    curseOfXBaseX = curseOfX.x + curseOfXBaseX;
+    curseOfXBaseY = curseOfX.y + curseOfXBaseY;
+    curseOfX.x = curseOfXBaseX;
+    curseOfX.y = curseOfXBaseY;
     curseOfX.alpha = 0;
+    curseOfX.singDuration = 999999.0;
 }
 
-function makePhase4Copy()
-{
-    if (dad == null || phase4Copy != null) return;
-
-    phase4Copy = new Character(dad.x - dadGroup.x, dad.y - dadGroup.y, dad.curCharacter, false);
-    phase4Copy.scale.set(dad.scale.x, dad.scale.y);
-    phase4Copy.flipX = dad.flipX;
-    phase4Copy.scrollFactor.set(dad.scrollFactor.x, dad.scrollFactor.y);
-    phase4Copy.alpha = 0.00001;
-    dadGroup.add(phase4Copy);
-    phase4Copy.playAnim('idle4', true);
-    if (phase4Copy.anim.curAnim != null) phase4Copy.anim.curAnim.looped = true;
-    phase4Copy.singDuration = 999999.0;
-}
-function phase4(dadAlpha:Float, copyAlpha:Float, duration:Float)
-{
-    if (dad == null) return;
-    if (phase4Copy == null) makePhase4Copy();
-    if (phase4Copy == null) return;
-
-    if (phase4DadTween != null && phase4DadTween.active) phase4DadTween.cancel();
-    if (phase4CopyTween != null && phase4CopyTween.active) phase4CopyTween.cancel();
-
-    if (duration <= 0)
-    {
-        dad.alpha = dadAlpha;
-        phase4Copy.alpha = copyAlpha;
-        phase4DadTween = null;
-        phase4CopyTween = null;
-    }
-    else
-    {
-        phase4DadTween = FlxTween.tween(dad, {alpha: dadAlpha}, duration, {ease: FlxEase.linear});
-        phase4CopyTween = FlxTween.tween(phase4Copy, {alpha: copyAlpha}, duration, {ease: FlxEase.linear});
-    }
-
-    phase4Active = (copyAlpha > 0.5);
-    if (phase4Active && phase4Copy.getAnimationName() != 'idle4')
-        phase4Copy.playAnim('idle4', true);
-}
-
-function updatePhase4Idle()
-{
-    if (phase4Copy == null || phase4Copy.alpha <= 0.01) return;
-    if (phase4Copy.specialAnim) return;
-
-    final n:String = phase4Copy.getAnimationName();
-    if (n == 'idle' || (n == 'idle4' && phase4Copy.isAnimationFinished()))
-        phase4Copy.playAnim('idle4', true);
-    else if ((n == 'sing4LEFT' || n == 'sing4DOWN' || n == 'sing4UP' || n == 'sing4RIGHT') && phase4Copy.isAnimationFinished())
-        phase4Copy.playAnim('idle4', true);
-}
-
-function getPhase4SingAnim(noteData:Int):String
+function getCurseOfXAnim(noteData:Int):String
 {
     var d:Int = Std.int(Math.abs(noteData)) % 4;
-    return ['sing4LEFT', 'sing4DOWN', 'sing4UP', 'sing4RIGHT'][d];
+    return ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'][d];
+}
+
+function getCurseOfXOffset(anim:String):Array<Float>
+{
+    switch (anim)
+    {
+        case 'singLEFT':  return [230.0, -30];
+        case 'singRIGHT': return [-300.0, -50];
+        case 'singDOWN':  return [20, 150.0];
+        case 'singUP':    return [-100, -100.0];
+    }
+    return [0.0, 0.0];
+}
+
+function setCurseOfXPos(anim:String)
+{
+    if (curseOfX == null) return;
+    var off:Array<Float> = getCurseOfXOffset(anim);
+    curseOfX.x = curseOfXBaseX + off[0];
+    curseOfX.y = curseOfXBaseY + off[1];
+}
+
+function moveCurseOfX(anim:String)
+{
+    if (curseOfX == null) return;
+    if (curseOfXMoveTween != null && curseOfXMoveTween.active) curseOfXMoveTween.cancel();
+
+    var off:Array<Float> = getCurseOfXOffset(anim);
+    var targetX:Float = curseOfXBaseX + off[0];
+    var targetY:Float = curseOfXBaseY + off[1];
+
+    curseOfXMoveTween = FlxTween.tween(curseOfX, {x: targetX, y: targetY}, 0.1, {
+        ease: FlxEase.quadOut,
+        onComplete: (_) -> {
+            curseOfXMoveTween = FlxTween.tween(curseOfX, {x: curseOfXBaseX, y: curseOfXBaseY}, 0.2, {ease: FlxEase.quadInOut});
+        }
+    });
+}
+
+function playCurseOfXIdle()
+{
+    if (curseOfX == null) return;
+    curseOfXSustained = false;
+    if (curseOfXMoveTween != null && curseOfXMoveTween.active) curseOfXMoveTween.cancel();
+    curseOfX.playAnim('idle', true);
+    if (curseOfX.animation.curAnim != null) curseOfX.animation.curAnim.looped = true;
+    setCurseOfXPos('idle');
+}
+
+function flickerCurseOfX()
+{
+    if (curseOfX == null) return;
+    if (curseOfXFlickerTween != null && curseOfXFlickerTween.active) curseOfXFlickerTween.cancel();
+
+    curseOfX.alpha = 0;
+    curseOfXFlickerTween = FlxTween.num(0, 1, curseOfXHoldTime, {
+        ease: FlxEase.linear,
+        onComplete: (_) -> {
+            if (curseOfX != null) curseOfX.alpha = 0;
+            curseOfXFlickerTween = null;
+        }
+    }, v -> {
+        if (curseOfX == null) return;
+        var pulse:Float = Math.abs(Math.sin(v * Math.PI * curseOfXFlickerCount));
+        curseOfX.alpha = curseOfXMaxAlpha * pulse * (1.0 - v * 0.1);
+    });
+}
+
+function playCurseOfXPose(noteData:Int)
+{
+    if (curseOfX == null) return;
+    curseOfXSustained = false;
+
+    var anim:String = getCurseOfXAnim(noteData);
+    if (!curseOfX.hasAnimation(anim)) return;
+
+    curseOfX.playAnim(anim, true);
+    curseOfX.holdTimer = 0;
+    curseOfXHold = curseOfXHoldTime;
+    moveCurseOfX(anim);
+    flickerCurseOfX();
+}
+
+function updateCurseOfX(elapsed:Float)
+{
+    if (curseOfX == null) return;
+
+    if (curseOfXSustained)
+    {
+        curseOfXBobTime += elapsed;
+        curseOfX.y = curseOfXBaseY + Math.sin(curseOfXBobTime * curseOfXBobSpeed) * (curseOfXBobAmount * 0.5);
+    }
+
+    if (curseOfXHold <= 0) return;
+
+    curseOfXHold -= elapsed;
+    if (curseOfXHold <= 0)
+    {
+        curseOfXHold = 0;
+        playCurseOfXIdle();
+    }
+}
+
+function sustainCurseOfX(note)
+{
+    if (curseOfX == null) return;
+
+    var anim:String = getCurseOfXAnim(note.noteData);
+    if (!curseOfX.hasAnimation(anim)) return;
+
+    var parentNote = note.parent;
+    var start:Float = (parentNote != null) ? parentNote.strumTime : note.strumTime;
+    var length:Float = (parentNote != null) ? parentNote.sustainLength : note.sustainLength;
+    var remaining:Float = (start + length) - Conductor.songPosition;
+
+    if (remaining > Conductor.stepCrochet * 3)
+    {
+        if (curseOfXFlickerTween != null && curseOfXFlickerTween.active) curseOfXFlickerTween.cancel();
+        if (curseOfXMoveTween != null && curseOfXMoveTween.active) curseOfXMoveTween.cancel();
+        if (!curseOfXSustained) curseOfXBobTime = 0;
+        curseOfXSustained = true;
+        curseOfX.alpha = curseOfXMaxAlpha;
+        curseOfX.x = curseOfXBaseX;
+        curseOfX.y = curseOfXBaseY;
+        curseOfX.playAnim(anim, true);
+        curseOfX.holdTimer = 0;
+        curseOfXHold = curseOfXHoldTime;
+        return;
+    }
+
+    curseOfXSustained = false;
+    playCurseOfXPose(note.noteData);
 }
 
 function cursetween(spr:FlxSprite, alpha:Float, duration:Float, ?color:Int)
@@ -555,8 +661,8 @@ function onEvent(name:String, value1:String, value2:String)
 function onUpdatePost(elapsed:Float) 
 {
     wavyness += (elapsed * wavynessMult);
-    wavyShader.setFloat('iTime', wavyness);
-    wavyShaderHUD.setFloat('iTime', wavyness);
+    if (wavyShader != null) wavyShader.setFloat('iTime', wavyness);
+    if (wavyShaderHUD != null) wavyShaderHUD.setFloat('iTime', wavyness);
 
     if (tails?.animation?.curAnim?.finished == true && tails?.visible == true) 
     {
@@ -568,14 +674,14 @@ function onUpdatePost(elapsed:Float)
     if (fuente?.animation?.curAnim?.finished == true && fuente?.animation?.curAnim?.name == 'anim') 
         fuente.animation.play('idle', true);
 
-    if (curBeat >= 180 && curBeat < 244 && !sad) 
+    if (curBeat >= 180 && curStep < 1231 && !sad) 
     {
         sad = true;
         if (boyfriend != null) boyfriend.idleSuffix = '-sad';
         updateNotesSuffix('-sad');
     }
     
-    if (curBeat >= 244 && !happy) 
+    if (curStep >= 1231 && !happy) 
     {
         happy = true; 
         sad = false;
@@ -594,7 +700,7 @@ function onUpdatePost(elapsed:Float)
     }
 
     updateDadIdle();
-    updatePhase4Idle();
+    updateCurseOfX(elapsed);
     updateTalkRevert();
     updateBrightnessPulse(elapsed);
     updateChromaticPulse(elapsed);
@@ -632,18 +738,33 @@ function onBeatHit()
             randomDancer = dancerValues[FlxG.random.int(0, dancerValues.length - 1)];
         }
         
-        if (curBeat >= 180 && curBeat < 244) 
+        if (curBeat >= 180 && curStep < 1231) 
         {
             final animName = 'dance' + ((curBeat % 2 == 0) ? 'Left' : 'Right') + '-a';
             gf.playAnim(animName, true);
+        }
+    }
+
+    if (curBeat % 2 == 0)
+    {
+        for (d in dancers)
+        {
+            if (d.spr == idle || d.spr == idleconejos) continue;
+            if (d.alt != null)
+            {
+                d.danceToggle = !d.danceToggle;
+                playDancerAnim(d.spr, d.danceToggle ? d.alt : d.name);
+            }
+            else
+            {
+                playDancerAnim(d.spr, d.name);
+            }
         }
     }
 }
 
 function onStepHit()
 {
-    updateDadHold();
-
     switch (curStep)
     {
         // negro
@@ -695,8 +816,8 @@ function onStepHit()
         case 558:
             dadPhase = 'nervioso';
             if (dad != null) dad.playAnim('2idle', true);
-            FlxTween.num(0.0, 0.3, 2, null, val -> wavyShader.setFloat('amount', val));
-            FlxTween.num(0.0, 0.3, 2, null, val -> wavyShaderHUD.setFloat('amount', val));
+            FlxTween.num(0.0, 0.3, 2, null, val -> { if (wavyShader != null) wavyShader.setFloat('amount', val); });
+            FlxTween.num(0.0, 0.3, 2, null, val -> { if (wavyShaderHUD != null) wavyShaderHUD.setFloat('amount', val); });
 
         case 752:
             cursetween(cstatic, 0.6, 0.7);
@@ -717,7 +838,12 @@ function onStepHit()
             cursetween(cstatic, 1, 0.7);
 
         case 976:
-            phase4(0, 1, 0.01);
+            dadPhase = 'phase4';
+            if (dad != null)
+            {
+                dad.playAnim('idle4', true);
+                if (dad.animation.curAnim != null) dad.animation.curAnim.looped = true;
+            }
             cursetween(cstatic, 0.5, 0.1);
             cursetween(eggman, 1, 0.1);
             cursetween(knux, 1, 0.1);
@@ -730,25 +856,27 @@ function onStepHit()
             cursetweenClouds(0.2, 0.3);
 
         case 992, 1024, 1056, 1088, 1120, 1152, 1184:
-            cursetween(cstatic, 0.9, 0.7);
+            cursetween(cstatic, 0.8, 0.7);
 
         case 1008, 1040, 1072, 1104, 1136, 1168, 1200:
             cursetween(cstatic, 0.5, 0.6);
 
-        case 1170:
-            dadPhase = 'happy';
-            if (dad != null) dad.playAnim('idle', true);
-
-
         case 1231:
             game.getLuaObject('iconOpp').changeIcon('cursehappy');
-            phase4(1, 0, 0.1);
+            dadPhase = 'happy';
+            if (dad != null) dad.playAnim('idle', true);
+            if (gf != null)
+            {
+                gf.playAnim('dance' + ((curBeat % 2 == 0) ? 'Left' : 'Right'), true);
+                gf.danced = (curBeat % 2 != 0);
+            }
             cursetween(eggman, 0, 0.1);
             cursetween(knux, 0, 0.1);
+            cursetween(tails1, 1, 0.1);
             cursetween(tails2, 0, 0.1);
 
-            FlxTween.num(0.3, 0.0, 0.2, null, val -> wavyShader.setFloat('amount', val));
-            FlxTween.num(0.3, 0.0, 0.2, null, val -> wavyShaderHUD.setFloat('amount', val));
+            FlxTween.num(0.3, 0.0, 0.2, null, val -> { if (wavyShader != null) wavyShader.setFloat('amount', val); });
+            FlxTween.num(0.3, 0.0, 0.2, null, val -> { if (wavyShaderHUD != null) wavyShaderHUD.setFloat('amount', val); });
             cursetween(cstatic, 0, 0.1);
             cursetween(vieja, 1, 0.1);
             cursetween(idle, 1, 0.1);
@@ -769,20 +897,12 @@ function onStepHit()
     var talkTriggered:Bool = false;
     for (d in dancers)
     {
-        if (curStep == d.step)
+        if (curStep == d.step && (d.spr == idle || d.spr == idleconejos))
         {
-            if (d.spr == idle || d.spr == idleconejos)
-            {
             if (!talkTriggered)
             {
                 startTalk();
                 talkTriggered = true;
-            }
-            }
-            else
-            {
-                var anim:String = (d.alt != null) ? d.alt : d.name;
-                playDancerAnim(d.spr, anim);
             }
         }
     }
@@ -816,19 +936,10 @@ function getDadSingAnim(noteData:Int):String
 function opponentNoteHit(note)
 {
     if (note.gfNote || note.noAnimation || note.noteType == 'Hey!' || note.noteType == 'GF2Sing') return;
-    if (phase4Copy != null && phase4Copy.alpha > 0.01)
+    if (dadPhase == 'phase4')
     {
-        var p4anim:String = getPhase4SingAnim(note.noteData);
-        if (phase4Copy.hasAnimation(p4anim))
-        {
-            phase4Copy.playAnim(p4anim, true);
-            phase4Copy.holdTimer = 0;
-
-            FlxTween.cancelTweensOf(curseOfX);
-            curseOfX.playAnim(game.singAnimations[note.noteData], true);
-            curseOfX.alpha = 0.75;
-            FlxTween.tween(curseOfX, {alpha: 0}, 0.25, {ease: FlxEase.cubeOut});
-        }
+        if (note.isSustainNote) sustainCurseOfX(note);
+        else playCurseOfXPose(note.noteData);
     }
     if (dad != null && dadPhase != 'happy' && dad.alpha > 0.01)
     {
@@ -1022,9 +1133,4 @@ function updateGlitch(elapsed:Float)
         }
         glitchShader.setFloat('AMT', glitchAMT);
     }
-}
-
-function updateDadHold()
-{
-    if (phase4Copy != null) phase4Copy.singDuration = 999999.0;
 }

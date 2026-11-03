@@ -53,6 +53,7 @@ class VideoSprite extends FlxSpriteGroup
 
 	private var _shouldBePlaying:Bool = false;
 	private var _isLooped:Bool = false;
+	private var _preloadKey:String = null;
 
 	#if switch
 	var _endCallbacks:Array<Void->Void> = [];
@@ -183,6 +184,18 @@ class VideoSprite extends FlxSpriteGroup
 		{
 			var loadArgs:Array<String> = args?.copy() ?? [];
 
+			#if !switch
+			if (_preloadKey != null)
+			{
+				if (_preloadKey == preloadKeyOf(videoPath, args))
+				{
+					_isLooped = args?.contains(ARG_LOOPING) ?? false;
+					return true;
+				}
+				_preloadKey = null;
+			}
+			#end
+
 			#if switch
 			final wantsLoop:Bool = loadArgs.remove(ARG_LOOPING);
 			loadArgs.remove(ARG_MUTED);
@@ -250,7 +263,9 @@ class VideoSprite extends FlxSpriteGroup
 			if (!loadArgs.contains(ARG_SKIP_FRAMES))
 				loadArgs.push(ARG_SKIP_FRAMES);
 
-			return video.precache(videoPath, loadArgs);
+			final cached:Bool = video.precache(videoPath, loadArgs);
+			_preloadKey = cached ? preloadKeyOf(videoPath, args) : null;
+			return cached;
 			#end
 		}
 		catch (e:Dynamic)
@@ -281,12 +296,29 @@ class VideoSprite extends FlxSpriteGroup
 		#end
 	}
 
-	public inline function play():Void
+	public function play():Void
 	{
 		_shouldBePlaying = true;
 		initialConductTime = Conductor.songPosition;
+
+		#if !switch
+		if (_preloadKey != null)
+		{
+			_preloadKey = null;
+			video.resume();
+			new FlxTimer().start(0.15, _ -> {
+				if (alive && _shouldBePlaying && !isPlaying())
+					video.play();
+			});
+			return;
+		}
+		#end
+
 		video.play();
 	}
+
+	static function preloadKeyOf(path:String, args:Array<String>):String
+		return path + '|' + (args ?? []).join(',');
 
 	public inline function pause():Void
 		video?.pause();

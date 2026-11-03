@@ -111,7 +111,7 @@ class AchievementPopup extends Sprite
         _drawText(Language.get('popup_achievement_unlocked', 'ACHIEVEMENT UNLOCKED'), 18, 0xBD0033, 0xFFFFFF,
                   textX, (POP_H >> 1) - 22, textW);
 
-        _drawText(Language.getPhrase('achievement_' + id, achieveName).toUpperCase(), 24, 0xFFFFFF, 0x000000,
+        _drawText(Language.upper(Language.getPhrase('achievement_' + id, achieveName)), 24, 0xFFFFFF, 0x000000,
                   textX, (POP_H >> 1) + 2, textW);
     }
 

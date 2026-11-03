@@ -118,8 +118,10 @@ local modConfigs = {
 		snapDelay = 0.1,
 	},
 	['EXETIOR'] = {
-		useSeenCutscene = true,
+		type = 'slide',
 		skipSongs = {},
+		useSeenCutscene = true,
+		phase = 'post',
 		snapDelay = 0.0025,
 		forceSkipCountdown = true,
 	},
@@ -205,7 +207,8 @@ local function createCountdownIntro()
 end
 
 local function slideHidden()
-	if isStoryMode and cfg.dontShowSlideStory then
+	local fromSoundTest = getPropertyFromClass('states.SoundTest', 'fromSoundTest')
+	if isStoryMode and not fromSoundTest and cfg.dontShowSlideStory then
 		for _, s in ipairs(cfg.dontShowSlideStory) do
 			if songPath == s then return true end
 		end

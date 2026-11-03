@@ -34,6 +34,7 @@ var emeraldsAmount:Int = 7;
 var emeralds:Array = [];
 var emeraldsMoving:Array = [];
 var muteOpponentVocals:Bool = false;
+var finalKill:Bool = false;
 
 // Properties
 var scaleMult:Float = 1;
@@ -50,19 +51,9 @@ function onCreatePost()
     masterEmerald = new FlxSprite();
     masterEmerald.setPosition(1925, 1050);
     masterEmerald.scale.set(0.5, 0.5);
-    if(guh) 
-    {
-        masterEmerald.loadGraphic(Paths.image('bg/emerals/placeholder'));
-        masterEmerald.scale.set(9, 9);
-        masterEmerald.x += 550;
-        masterEmerald.y += 150;
-    }
-    else 
-    {
-        masterEmerald.frames = Paths.getSparrowAtlas('bg/emerals/master');
-        masterEmerald.animation.addByPrefix('anim', 'Símbolo', 24, true);
-        masterEmerald.animation.play('anim');
-    }
+    masterEmerald.frames = Paths.getSparrowAtlas('bg/emerals/master');
+    masterEmerald.animation.addByPrefix('anim', 'Símbolo', 24, true);
+    masterEmerald.animation.play('anim');
     insert(5, masterEmerald);   // In front of the beam and behind the beam blend
 
     for(i in 0...7)
@@ -139,8 +130,11 @@ function onUpdate(e:Float)
         emerald.sprite.offset.y = (waveSine * waveAmplitude)+50;
     }
 
-    //! Debug, delete on release
-    if(FlxG.keys.justPressed.C) setVar('canTransform', true);
+    if(!finalKill && curStep >= 1999 && !getVar('canTransform'))
+    {
+        finalKill = true;
+        game.health = -10;
+    }
 }
 
 function emeraldIndex(note:Note):Int
@@ -318,11 +312,6 @@ function onStepHit()
             if(getVar('canTransform')) {
                 triggerEvent('Normal Lyrics', 'lyrics.chaos.8', '5');
             }
-        case 1999: 
-            if(!getVar('canTransform')) {
-                game.health = -10;
-            }
-        
         case 1039, 1230, 1359: muteOpponentVocals = false;
         case 1221: if(!getVar('canTransform')) triggerEvent('Change Health Damage', '0.035');
         case 1328: if(!getVar('canTransform')) triggerEvent('Change Health Damage', '0.045');

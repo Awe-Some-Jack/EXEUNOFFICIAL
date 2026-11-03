@@ -16,6 +16,7 @@ function onCreate()
 function onGameOverStart()
 {
 	inGameOver = true;
+	GameOverSubstate.instance.canSkip = false;
 	if (GameOverSubstate.instance.boyfriend != null && deadBoyfriend == null) deadBoyfriend = GameOverSubstate.instance.boyfriend;
 	deadBoyfriend.alpha = 0;
 

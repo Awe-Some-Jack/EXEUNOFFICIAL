@@ -63,5 +63,5 @@ function onUpdatePost(elapsed:Float)
 	game.getLuaObject('iconOpp').angle = FlxG.random.float(-1, 1);
 	game.getLuaObject('iconOpp').animation.curAnim.curFrame = game.health < 0.4 ? 1 : 0;
 
-	game.health -= 0.0025 * elapsed;
+	game.health -= 0.0015 * elapsed;
 }

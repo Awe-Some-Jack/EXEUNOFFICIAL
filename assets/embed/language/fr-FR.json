@@ -38,9 +38,11 @@
 	"options.visuals": "AFFICHAGE",
 	"options.visuals.labels": ["MASQUER L'HUD", "LUMIÈRES CLIGNOTANTES", "ZOOM DE LA CAMÉRA", "ZOOM DU TEXTE DE SCORE", "COMPTEUR FPS"],
 	"options.gameplay": "GAMEPLAY",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "FENÊTRE SICK", "FENÊTRE GOOD", "FENÊTRE BAD", "FRAMES DE SÉCURITÉ", "AUDIO EN STREAMING"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "FENÊTRE SICK", "FENÊTRE GOOD", "FENÊTRE BAD", "FRAMES DE SÉCURITÉ", "AUDIO EN STREAMING", "EFFACER LA SAUVEGARDE"],
+	"options.reset.select": "CHOISIR",
+	"options.reset.confirm": "CONFIRMER ?",
 	"options.graphics": "GRAPHISMES",
-	"options.graphics.labels": ["MODE PATATE", "ANTICRÉNELAGE", "CACHE GPU", "QUALITÉ DES SHADERS", "SHADERS", "FRÉQUENCE D'IMAGES", "SYNCHRO SÛRE"],
+	"options.graphics.labels": ["ANTICRÉNELAGE", "CACHE GPU", "QUALITÉ DES SHADERS", "SHADERS", "FRÉQUENCE D'IMAGES", "SYNCHRO SÛRE"],
 	"options.language": "LANGUE",
 	"options.on": "ACTIVÉ",
 	"options.off": "DÉSACTIVÉ",
@@ -210,6 +212,6 @@
 	"sonichu_reveal_2": "Prépare-toi, car c'est la fin.",
 	"sonichu_reveal_3": "Mon dernier pouvoir...",
 
-	"warning_text_main": "BIENVENUE.\n\nAvant d'aller plus loin, sachez que ce mod contient des lumières clignotantes pouvant provoquer des crises d'épilepsie.\n\nSi vous vous sentez mal à l'aise ou sensible à ces effets, NE JOUEZ PAS À CE JEU ET FERMEZ-LE.\n\nLa discrétion du spectateur est conseillée.",
+	"warning_text_main": "BIENVENUE.\n\nAvant d'aller plus loin, sachez que ce mod contient des lumières clignotantes pouvant provoquer des crises d'épilepsie.\n\nSi vous vous sentez mal à l'aise ou sensible à ces effets, NE JOUEZ PAS À CE JEU ET FERMEZ-LE.\n\nDe plus, si votre appareil est moins puissant, des problèmes de chargement peuvent survenir. Pensez à réduire la qualité des shaders ou à jouer sur un appareil avec plus de RAM.\n\nLa discrétion du spectateur est conseillée.",
 	"warning_text_enter": "Appuyez sur Entrée pour continuer."
 }

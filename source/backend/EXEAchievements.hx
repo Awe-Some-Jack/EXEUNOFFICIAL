@@ -44,7 +44,7 @@ class EXEAchievements
         'genesys' => ['burning'],
         'educator' => ['expulsion'],
         'sonichu' => ['shocker'],
-        'fileextensions' => ['b4cksl4sh', 'monochromatic', 'found-you', 'forestall-desire', 'deception', 'sharpy-showdown', 'substantial', 'digitalized', 'fakebaby', 'miasma']
+        'fileextensions' => ['b4cksl4sh', 'monochromatic', 'found-you', 'forestall-desire', 'deception', 'sharpy-showdown', 'substantial', 'digitalized', 'fakebaby', 'miasma', 'malediction']
     ];
 
     static function get_achievements():Map<String, EXEAchievement>
@@ -217,7 +217,7 @@ class EXEAchievements
         {
             if (!itsFinale) break;
             if (a == get('finale')) continue;
-            if (!isUnlocked(a.name)) itsFinale = false;
+            if (!isUnlocked(a.id)) itsFinale = false;
         }
         if (itsFinale) unlock('finale');
         save();
@@ -234,8 +234,8 @@ class EXEAchievements
         final a = get('secondary');
         if(a == null) return;
 
-        final codes = cast(a.extra ?? []);
-        if (codes.length >= SECONDARY_CODES.length) 
+        final codes:Array<Array<Int>> = cast(a.extra ?? []);
+        if (Lambda.foreach(SECONDARY_CODES, req -> Lambda.exists(codes, c -> c[0] == req[0] && c[1] == req[1]))) 
         {
             unlock(a.id);
             save();

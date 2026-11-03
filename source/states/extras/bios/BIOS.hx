@@ -445,7 +445,7 @@ class BIOS extends SonicSubState
 		}
 		
 		// sera bueno?, quizas en un futuro un personaje con letras minusculas... q haremos en ese caso? 
-		charName.text = dispName.toUpperCase();
+		charName.text = Language.upper(dispName);
 		
 		_fitCharName();
 		_setArtists(artist);

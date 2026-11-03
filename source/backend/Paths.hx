@@ -59,6 +59,9 @@ class Paths
 			tempFramesCache.clear();
 			clearResolvedPaths();
 		});
+		FlxG.signals.preStateCreate.add(state -> {
+			if (Std.isOfType(state, states.PlayState)) clearStoredMemory(true);
+		});
 	}
 
 	public static function excludeAsset(key:String) {
@@ -96,7 +99,7 @@ class Paths
 
 		for (id in [for (k in cache.sound.keys()) k])
 		{
-			if (!isLargeAudioKey(id) || dumpExclusions.contains(id)) continue;
+			if (!isLargeAudioKey(id) || dumpExclusions.contains(id) || localTrackedAssets.contains(id)) continue;
 
 			final snd:Sound = cache.sound.get(id);
 			if (isSoundPlaying(snd)) continue;
@@ -126,7 +129,7 @@ class Paths
 	public static var localTrackedAssets:Array<String> = [];
 
 	@:access(flixel.system.frontEnds.BitmapFrontEnd._cache)
-	public static function clearStoredMemory()
+	public static function clearStoredMemory(keepLocalAssets:Bool = false)
 	{
 		clearResolvedPaths();
 		
@@ -157,7 +160,7 @@ class Paths
 		}
 		closeStreamedSounds();
 		purgeSoundCache();
-		localTrackedAssets = [];
+		if (!keepLocalAssets) localTrackedAssets = [];
 		#if !html5
 		openfl.Assets.cache.clear("songs");
 		openfl.Assets.cache.clear("music");
@@ -369,6 +372,12 @@ class Paths
 	{
 		if (file == null || bitmap == null)
 			return null;
+
+		#if mobile
+		final deviceRoot:String = MobileUtil.getDirectory();
+		if (file.startsWith(deviceRoot))
+			file = file.substr(deviceRoot.length);
+		#end
 
 		var start:Int = -1;
 		if (file.startsWith('assets/'))

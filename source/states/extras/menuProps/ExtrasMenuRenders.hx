@@ -64,6 +64,7 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
                 render.frames = getAtlasRender(entry.src);
                 render.anim.addBySymbol('render', entry.animName, 24, true);
                 render.anim.play('render', true);
+                render.useRenderTexture = true;
                 render.ID = i;
                 render.scale.set(0.5,0.5);
                 render.visible = false;

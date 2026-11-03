@@ -323,6 +323,8 @@ function onCreatePost()
 	{
 		dad.idleSuffix = '-alt';
 		dad.recalculateDanceIdle();
+		gf.idleSuffix = '-alt';
+		gf.recalculateDanceIdle();
 		for (i in 0...game.unspawnNotes.length)
 		{
 			final note:Note = game.unspawnNotes[i];

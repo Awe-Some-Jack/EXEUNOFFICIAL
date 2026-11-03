@@ -249,7 +249,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 			player.cinematic  = false;
 			hud.timerRunning  = true;
 			gameCamera.followTarget();
-			if (cutsceneReplay == 'ending') _placeForEnding();
+			if (cutsceneReplay == 'ending') _endingPending = true;
 		};
 
 		cutscene.onSkullWin = _onShardFound;
@@ -340,6 +340,17 @@ class TheValley extends MusicBeatState implements ExeWorld
 	{
 		super.update(elapsed);
 		_clock += elapsed;
+
+		if (_endingPending)
+		{
+			_endingPending = false;
+			_placeForEnding();
+			gameCamera.bottom = bg.cutY(player.x) - 4;
+			gameCamera.update(1 / 60);
+			_finalTriggered = true;
+			_startFinalCutscene();
+			return;
+		}
 
 		#if !final
 		if (_finalCS == null && FlxG.keys.justPressed.ONE)
@@ -617,16 +628,18 @@ class TheValley extends MusicBeatState implements ExeWorld
 	final _pausedSounds:Array<FlxSound> = [];
 	final _pausedTweens:Array<FlxTween> = [];
 
+	var _endingPending:Bool = false;
+
 	function _placeForEnding():Void
 	{
 		@:privateAccess shardHunt.found = 6;
-		final ray = nape.geom.Ray.fromSegment(nape.geom.Vec2.weak(10620, -20000), nape.geom.Vec2.weak(10620, 20000));
-		ray.maxDistance = 40000;
-		final hit = FlxNapeSpace.space.rayCast(ray, false);
-		final groundY = hit != null ? -20000 + hit.distance : _checkY;
-		hit?.dispose();
-		minigames.thevalley.map.TVNapeWorld.setBodyPos(player.body, 10620, groundY - player.height * 0.5 - 4);
+		minigames.thevalley.map.TVNapeWorld.setBodyPos(player.body, 10620, 138.0 - player.height * 0.5);
+		player.body.velocity.setxy(0, 0);
+		player.setGravity(false);
+		player.mode = Ground;
+		player.isGrounded = true;
 		gameCamera.followTarget();
+		gameCamera.cut();
 	}
 
 	function _exitReplay():Void

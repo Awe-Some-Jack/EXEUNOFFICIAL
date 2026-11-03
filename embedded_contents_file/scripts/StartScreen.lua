@@ -118,8 +118,10 @@ local modConfigs = {
 		snapDelay = 0.1,
 	},
 	['EXETIOR'] = {
-		useSeenCutscene = true,
+		type = 'slide',
 		skipSongs = {},
+		useSeenCutscene = true,
+		phase = 'post',
 		snapDelay = 0.0025,
 		forceSkipCountdown = true,
 	},

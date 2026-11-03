@@ -256,6 +256,11 @@ var curseOfXMaxAlpha:Float = 0.9;
 var curseOfXFlickerCount:Int = 2;
 var curseOfXFlickerTween:FlxTween = null;
 var curseOfXMoveTween:FlxTween = null;
+var curseOfXScale:Float = 0.7;
+var curseOfXSustained:Bool = false;
+var curseOfXBobTime:Float = 0;
+var curseOfXBobAmount:Float = 12;
+var curseOfXBobSpeed:Float = 18;
 
 function onCreatePost()
 {
@@ -297,9 +302,14 @@ function onCreatePost()
     insert(game.members.indexOf(blackFade), colorPulse);
 
     curseOfX = new Character(dad.x + 200, dad.y, 'curseofx', false);
+    curseOfX.scale.set(curseOfX.scale.x * curseOfXScale, curseOfX.scale.y * curseOfXScale);
+    curseOfXBobAmount = curseOfX.frameHeight * Math.abs(curseOfX.scale.y) * 0.03;
+    curseOfXBobSpeed = (Conductor.crochet > 0) ? (Math.PI * 2) / (Conductor.crochet / 1000) * 0.5 : 6.283;
     insert(game.members.indexOf(dadGroup), curseOfX);
-    curseOfXBaseX = curseOfX.x;
-    curseOfXBaseY = curseOfX.y;
+    curseOfXBaseX = curseOfX.x + curseOfXBaseX;
+    curseOfXBaseY = curseOfX.y + curseOfXBaseY;
+    curseOfX.x = curseOfXBaseX;
+    curseOfX.y = curseOfXBaseY;
     curseOfX.alpha = 0;
     curseOfX.singDuration = 999999.0;
 }
@@ -350,6 +360,7 @@ function moveCurseOfX(anim:String)
 function playCurseOfXIdle()
 {
     if (curseOfX == null) return;
+    curseOfXSustained = false;
     if (curseOfXMoveTween != null && curseOfXMoveTween.active) curseOfXMoveTween.cancel();
     curseOfX.playAnim('idle', true);
     if (curseOfX.animation.curAnim != null) curseOfX.animation.curAnim.looped = true;
@@ -378,6 +389,7 @@ function flickerCurseOfX()
 function playCurseOfXPose(noteData:Int)
 {
     if (curseOfX == null) return;
+    curseOfXSustained = false;
 
     var anim:String = getCurseOfXAnim(noteData);
     if (!curseOfX.hasAnimation(anim)) return;
@@ -391,7 +403,15 @@ function playCurseOfXPose(noteData:Int)
 
 function updateCurseOfX(elapsed:Float)
 {
-    if (curseOfX == null || curseOfXHold <= 0) return;
+    if (curseOfX == null) return;
+
+    if (curseOfXSustained)
+    {
+        curseOfXBobTime += elapsed;
+        curseOfX.y = curseOfXBaseY + Math.sin(curseOfXBobTime * curseOfXBobSpeed) * (curseOfXBobAmount * 0.5);
+    }
+
+    if (curseOfXHold <= 0) return;
 
     curseOfXHold -= elapsed;
     if (curseOfXHold <= 0)
@@ -399,6 +419,37 @@ function updateCurseOfX(elapsed:Float)
         curseOfXHold = 0;
         playCurseOfXIdle();
     }
+}
+
+function sustainCurseOfX(note)
+{
+    if (curseOfX == null) return;
+
+    var anim:String = getCurseOfXAnim(note.noteData);
+    if (!curseOfX.hasAnimation(anim)) return;
+
+    var parentNote = note.parent;
+    var start:Float = (parentNote != null) ? parentNote.strumTime : note.strumTime;
+    var length:Float = (parentNote != null) ? parentNote.sustainLength : note.sustainLength;
+    var remaining:Float = (start + length) - Conductor.songPosition;
+
+    if (remaining > Conductor.stepCrochet * 3)
+    {
+        if (curseOfXFlickerTween != null && curseOfXFlickerTween.active) curseOfXFlickerTween.cancel();
+        if (curseOfXMoveTween != null && curseOfXMoveTween.active) curseOfXMoveTween.cancel();
+        if (!curseOfXSustained) curseOfXBobTime = 0;
+        curseOfXSustained = true;
+        curseOfX.alpha = curseOfXMaxAlpha;
+        curseOfX.x = curseOfXBaseX;
+        curseOfX.y = curseOfXBaseY;
+        curseOfX.playAnim(anim, true);
+        curseOfX.holdTimer = 0;
+        curseOfXHold = curseOfXHoldTime;
+        return;
+    }
+
+    curseOfXSustained = false;
+    playCurseOfXPose(note.noteData);
 }
 
 function cursetween(spr:FlxSprite, alpha:Float, duration:Float, ?color:Int)
@@ -612,14 +663,14 @@ function onUpdatePost(elapsed:Float)
     if (fuente?.animation?.curAnim?.finished == true && fuente?.animation?.curAnim?.name == 'anim') 
         fuente.animation.play('idle', true);
 
-    if (curBeat >= 180 && curBeat < 244 && !sad) 
+    if (curBeat >= 180 && curStep < 1231 && !sad) 
     {
         sad = true;
         if (boyfriend != null) boyfriend.idleSuffix = '-sad';
         updateNotesSuffix('-sad');
     }
     
-    if (curBeat >= 244 && !happy) 
+    if (curStep >= 1231 && !happy) 
     {
         happy = true; 
         sad = false;
@@ -676,7 +727,7 @@ function onBeatHit()
             randomDancer = dancerValues[FlxG.random.int(0, dancerValues.length - 1)];
         }
         
-        if (curBeat >= 180 && curBeat < 244) 
+        if (curBeat >= 180 && curStep < 1231) 
         {
             final animName = 'dance' + ((curBeat % 2 == 0) ? 'Left' : 'Right') + '-a';
             gf.playAnim(animName, true);
@@ -786,6 +837,11 @@ function onStepHit()
             game.getLuaObject('iconOpp').changeIcon('cursehappy');
             dadPhase = 'happy';
             if (dad != null) dad.playAnim('idle', true);
+            if (gf != null)
+            {
+                gf.playAnim('dance' + ((curBeat % 2 == 0) ? 'Left' : 'Right'), true);
+                gf.danced = (curBeat % 2 != 0);
+            }
             cursetween(eggman, 0, 0.1);
             cursetween(knux, 0, 0.1);
             cursetween(tails2, 0, 0.1);
@@ -859,7 +915,11 @@ function getDadSingAnim(noteData:Int):String
 function opponentNoteHit(note)
 {
     if (note.gfNote || note.noAnimation || note.noteType == 'Hey!' || note.noteType == 'GF2Sing') return;
-    if (dadPhase == 'phase4') playCurseOfXPose(note.noteData);
+    if (dadPhase == 'phase4')
+    {
+        if (note.isSustainNote) sustainCurseOfX(note);
+        else playCurseOfXPose(note.noteData);
+    }
     if (dad != null && dadPhase != 'happy' && dad.alpha > 0.01)
     {
         var anim:String = getDadSingAnim(note.noteData);

@@ -50,19 +50,9 @@ function onCreatePost()
     masterEmerald = new FlxSprite();
     masterEmerald.setPosition(1925, 1050);
     masterEmerald.scale.set(0.5, 0.5);
-    if(guh) 
-    {
-        masterEmerald.loadGraphic(Paths.image('bg/emerals/placeholder'));
-        masterEmerald.scale.set(9, 9);
-        masterEmerald.x += 550;
-        masterEmerald.y += 150;
-    }
-    else 
-    {
-        masterEmerald.frames = Paths.getSparrowAtlas('bg/emerals/master');
-        masterEmerald.animation.addByPrefix('anim', 'Símbolo', 24, true);
-        masterEmerald.animation.play('anim');
-    }
+    masterEmerald.frames = Paths.getSparrowAtlas('bg/emerals/master');
+    masterEmerald.animation.addByPrefix('anim', 'Símbolo', 24, true);
+    masterEmerald.animation.play('anim');
     insert(5, masterEmerald);   // In front of the beam and behind the beam blend
 
     for(i in 0...7)

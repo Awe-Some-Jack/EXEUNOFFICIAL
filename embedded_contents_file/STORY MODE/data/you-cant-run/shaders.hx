@@ -1,9 +1,12 @@
 import openfl.filters.ShaderFilter;
 import flixel.math.FlxMath;
+import psychlua.LuaUtils;
 
 var chrom = null;
 var glitch = null;
 var glitchTime:Float = 0;
+var chromTween:FlxTween = null;
+var glitchTween:FlxTween = null;
 
 function loadShader(name:String)
 {
@@ -51,9 +54,15 @@ function onEvent(n, v1, v2){
     if (ClientPrefs.data.shaders)
     {
         if (n == 'chromFlash' && chrom != null)
-            FlxTween.num(split1[0], split1[1], split2[0], {ease: split2[1]}, (val:Float) -> chrom.setFloat("amount", val));
+        {
+            if (chromTween != null) chromTween.cancel();
+            chromTween = FlxTween.num(Std.parseFloat(split1[0]), Std.parseFloat(split1[1]), Std.parseFloat(split2[0]), {ease: LuaUtils.getTweenEaseByString(split2.length > 1 ? split2[1] : '')}, (val:Float) -> chrom.setFloat("amount", val));
+        }
         if (n == 'glitchFlash' && glitch != null)
-            FlxTween.num(split1[0], split1[1], split2[0], {ease: split2[1]}, (val:Float) -> glitch.setFloat("GLITCH", val));
+        {
+            if (glitchTween != null) glitchTween.cancel();
+            glitchTween = FlxTween.num(Std.parseFloat(split1[0]), Std.parseFloat(split1[1]), Std.parseFloat(split2[0]), {ease: LuaUtils.getTweenEaseByString(split2.length > 1 ? split2[1] : '')}, (val:Float) -> glitch.setFloat("GLITCH", val));
+        }
     }
 }
 

@@ -101,6 +101,7 @@ class PlayState extends MusicBeatState
 	public var noteQueues:Array<Array<Note>> = [[], [], [], []];
 
 	private var shutdownThread:Bool = false;
+	private var syncThreadGen:Int = 0;
 	private var gameFroze:Bool = false;
 	private var requiresSyncing:Bool = false;
 	private var lastCorrectSongPos:Float = -1.0;
@@ -680,6 +681,13 @@ class PlayState extends MusicBeatState
 		guitarHeroSustains = ClientPrefs.data.guitarHeroSustains;
 
 		songName = Paths.formatToSongPath(SONG.song);
+
+		if (isStoryMode && (songName == 'final-escape' || songName == 'yourself'))
+		{
+			saveStoryProgress(songName == 'yourself' ? 4 : 3);
+			backend.SongProgress.markOpened(songName);
+			FlxG.save.flush();
+		}
 
 		camGame = initCamera();
 
@@ -1376,12 +1384,18 @@ class PlayState extends MusicBeatState
 		return false;
 	}
 
+	var videoRetried:Bool = false;
+
 	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = true)
 	{
 		final watchKey:String = endingSong ? '$songName-end' : songName;
+		var videoEnded:Bool = false;
+		var videoReady:Bool = false;
 
 		function endVideo()
 		{
+			if (videoEnded) return;
+			videoEnded = true;
 			if (!forMidSong && !cutsceneWatched(watchKey))
 			{
 				var watched:Array<String> = FlxG.save.data.watchedCutscenes;
@@ -1422,6 +1436,7 @@ class PlayState extends MusicBeatState
 		videoCutscene.onEnd(() -> endVideo());
 
 		final fitVideo:Void->Void = () -> {
+			videoReady = true;
 			#if switch
 			final hasFrame = videoCutscene.video != null;
 			#else
@@ -1449,6 +1464,36 @@ class PlayState extends MusicBeatState
 		if (preloaded != null) fitVideo();
 
 		final loadArgs:Array<String> = loop ? [VideoSprite.ARG_LOOPING] : [];
+
+		#if !switch
+		if (!forMidSong && playOnLoad)
+		{
+			final failVideo:String->Void = (reason:String) -> {
+				if (videoEnded) return;
+				trace('Video "$name" failed ($reason)');
+				if (!videoRetried && !VideoSprite.softwareDecode())
+				{
+					videoRetried = true;
+					videoEnded = true;
+					VideoSprite.forceSoftwareDecode = true;
+					FlxG.save.data.videoSoftwareDecode = true;
+					FlxG.save.flush();
+					final broken:VideoSprite = videoCutscene;
+					videoCutscene = null;
+					if (broken != null)
+					{
+						remove(broken, true);
+						broken.destroy();
+					}
+					startVideo(name, canSkip, forMidSong, loop, playOnLoad);
+				}
+				else endVideo();
+			};
+			videoCutscene.video.bitmap.onEncounteredError.add((err:String) -> failVideo(err));
+			new FlxTimer().start(10, (_) -> if (!videoReady) failVideo('no frames after 10s'));
+		}
+		#end
+
 		if (playOnLoad) 
 		{
 			if(videoCutscene.loadVideo(filePath, loadArgs)) {
@@ -3747,7 +3792,7 @@ class PlayState extends MusicBeatState
 
 	public function checkSavedSongs(formattedSong){
         final save:FlxSave = new FlxSave();
-        save.bind('savedSongs', CoolUtil.getSavePath());
+        backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
         save.data.songs ??= [];
         var unlocked:Array<String> = save.data.songs;
 
@@ -3842,6 +3887,7 @@ class PlayState extends MusicBeatState
 	public var mobileComboOffsetX:Float = 0;
 	public var mobileComboOffsetY:Float = 0;
 	public var disableMobileComboOffset:Bool = false;
+	public var comboBarInset:Float = 0;
 	var comboGroupBaseX:Float = 0;
 	var comboGroupBaseY:Float = 0;
 
@@ -3991,10 +4037,18 @@ class PlayState extends MusicBeatState
 				? (downScroll ? (strumTop - 12) - blockBottom : (strumBottom + 12) - blockTop)
 				: (strumTop + strumBottom) / 2 - (blockTop + blockBottom) / 2;
 		}
+		var comboBarShift:Float = 0;
+		if(comboBarInset > 0)
+		{
+			if(!ClientPrefs.data.downScroll)
+				comboBarShift = Math.max(0, comboBarInset - (40 + comboOffY + comboGroup.y));
+			else
+				comboBarShift = -Math.max(0, (FlxG.height - 40 + comboOffY + comboGroup.y) - (FlxG.height - comboBarInset));
+		}
 		rating.alpha = comboStartAlpha;
 
 		rating.screenCenter(X);
-		rating.y = comboGroup.y + comboOffY + (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
+		rating.y = comboGroup.y + comboOffY + comboBarShift + (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
 		rating.x += comboGroup.x + comboOffX;
 
 		final targetScale:Float = PlayState.isPixelStage ? 4 : 0.6;
@@ -4022,7 +4076,7 @@ class PlayState extends MusicBeatState
 			numScore.updateHitbox();
 			
 			numScore.x = comboGroup.x + comboOffX + FlxG.width / 2 - numScore.width / 2 + (i - (separatedScore.length - 1) / 2) * 50;
-			numScore.y = comboGroup.y + comboOffY + (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
+			numScore.y = comboGroup.y + comboOffY + comboBarShift + (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
 			
 			numScore.scale.set(targetScale * 1.15, targetScale * 1.15);
 		
@@ -5426,10 +5480,15 @@ class PlayState extends MusicBeatState
 	public function runSongSyncThread()
 	{
 		#if target.threaded
+		final gen:Int = ++syncThreadGen;
 		Thread.create(() -> {
-			while (!endingSong && !paused && !shutdownThread)
+			while (gen == syncThreadGen && !endingSong && !paused && !shutdownThread)
 			{
-				if (requiresSyncing) continue;
+				if (requiresSyncing)
+				{
+					Sys.sleep(0.05);
+					continue;
+				}
 
 				if (gameFroze)
 				{

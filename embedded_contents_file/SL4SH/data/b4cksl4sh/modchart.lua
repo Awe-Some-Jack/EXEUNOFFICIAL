@@ -1,3 +1,6 @@
+local FLIP_SPEED = 0.5
+local SUSTAIN_UPSCROLL_OFFSET = 56.204081
+
 local triggerChangeNotesOnce = false
 local triggerChangeNotesTwice = false
 local restY = {}
@@ -41,7 +44,7 @@ function onUpdatePost(e)
         end
         ]]
 
-        triggerEvent('Change Scroll Speed', "0.05", tostring(0.5 / playbackRate))
+        triggerEvent('Change Scroll Speed', tostring(FLIP_SPEED), tostring(0.5 / playbackRate))
     end
     if triggerChangeNotesTwice then
         triggerChangeNotesTwice = false
@@ -94,7 +97,7 @@ function setUpscroll()
 		if getPropertyFromGroup('notes',i,'mustPress') then
 			if getPropertyFromGroup('notes',i,'isSustainNote') then
 				setPropertyFromGroup('notes', i, 'flipY', false)
-				setPropertyFromGroup('notes', i, 'correctionOffset', 56.204081 * (downscroll and 1 or 0))
+				setPropertyFromGroup('notes', i, 'correctionOffset', SUSTAIN_UPSCROLL_OFFSET)
 			end
 			updateHitbox('notes.members['..i..']')
 		end
@@ -103,7 +106,7 @@ function setUpscroll()
 		if getPropertyFromGroup('unspawnNotes',i,'mustPress') then
 			if getPropertyFromGroup('unspawnNotes',i,'isSustainNote') then
 				setPropertyFromGroup('unspawnNotes',i,'flipY', false)
-				setPropertyFromGroup('unspawnNotes', i, 'correctionOffset', 56.204081 * (downscroll and 1 or 0))
+				setPropertyFromGroup('unspawnNotes', i, 'correctionOffset', SUSTAIN_UPSCROLL_OFFSET)
 			end
 			updateHitbox('unspawnNotes['..i..']')
 		end
@@ -116,7 +119,7 @@ function setDownscroll()
 		if getPropertyFromGroup('notes',i,'mustPress') then
 			if getPropertyFromGroup('notes',i,'isSustainNote') then
 				setPropertyFromGroup('notes', i, 'flipY', true)
-				setPropertyFromGroup('notes', i, 'correctionOffset', 56.204081 * (downscroll and 1 or 0))
+				setPropertyFromGroup('notes', i, 'correctionOffset', 0)
 			end
 			updateHitbox('notes.members['..i..']')
 		end
@@ -125,7 +128,7 @@ function setDownscroll()
 		if getPropertyFromGroup('unspawnNotes',i,'mustPress') then
 			if getPropertyFromGroup('unspawnNotes',i,'isSustainNote') then
 				setPropertyFromGroup('unspawnNotes',i,'flipY', true)
-				setPropertyFromGroup('unspawnNotes', i, 'correctionOffset', 56.204081 * (downscroll and 1 or 0))
+				setPropertyFromGroup('unspawnNotes', i, 'correctionOffset', 0)
 			end
 			updateHitbox('unspawnNotes['..i..']')
 		end

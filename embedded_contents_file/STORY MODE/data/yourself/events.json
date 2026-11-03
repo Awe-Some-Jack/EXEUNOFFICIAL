@@ -499,7 +499,7 @@
 				["Set Property", "spotlight1.scale.y", "3"],
 				["Set Property", "spotlight1.alpha", "0.6"],
 				["yourselfEvents", "modchartstart", ""],
-				["Cinematics (With HUD)", "1", "80"]
+				["Cinematics (With HUD)", "1", "110"]
 			]
 		],
 		[

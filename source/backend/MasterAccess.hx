@@ -55,7 +55,7 @@ class MasterAccess {
   public static function unlockEverything() {
         try {
             var save = new flixel.util.FlxSave();
-            save.bind('savedSongs', CoolUtil.getSavePath());
+            backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
             
             if (save.data.songs == null) {
                 save.data.songs = [];

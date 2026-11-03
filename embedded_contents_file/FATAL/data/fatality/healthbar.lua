@@ -234,13 +234,11 @@ function onCreatePost()
 	isFatalitySong = (songName == 'Fatality' or songName:lower() == 'fatality')
 	lastSentSquares = -1
 	if not isFatalitySong then return end
-	if nativeToolsDisabled then
-		setProperty('healthBar.visible', false)
-		setProperty('healthBarBG.visible', false)
-		setProperty('iconP1.visible', false)
-		setProperty('iconP2.visible', false)
-		return
-	end
+	setProperty('healthBar.visible', false)
+	setProperty('healthBarBG.visible', false)
+	setProperty('iconP1.visible', false)
+	setProperty('iconP2.visible', false)
+	if nativeToolsDisabled then return end
 
 	runTimer('fatalHealthBarInit', 0.15)
 end

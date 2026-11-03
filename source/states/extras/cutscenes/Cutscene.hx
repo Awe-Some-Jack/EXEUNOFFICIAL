@@ -374,7 +374,7 @@ class Cutscene extends SonicSubState
         videoEntries = [];
 
         final save:flixel.util.FlxSave = new flixel.util.FlxSave();
-        save.bind('savedSongs', CoolUtil.getSavePath());
+        backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
         save.data.songs ??= [];
         var unlocked:Array<String> = save.data.songs;
 

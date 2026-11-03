@@ -22,6 +22,7 @@ class StoryParallaxState extends MusicBeatState
 	override function create()
 	{
 		super.create();
+		CustomShapeTransition.shape = HEAD;
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.getBitmapData('assets/exe/parallax/story mode/1.webp', true, true));
 		bg.scale.set(0.34, 0.34);

@@ -222,6 +222,7 @@ local seenVideo = false
 
 function onEndSong()
     if seenVideo == false then
+        runHaxeCode("game.checkSavedSongs('yourself');")
         cancelTween('BlackGraphicOtherAlpha')
         setProperty('BlackGraphicOther.alpha', 0)
         startVideo('soundtestcodes')

@@ -82,7 +82,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 		states.access.FatalAccess.resetForTesting();
 
 		final songs:flixel.util.FlxSave = new flixel.util.FlxSave();
-		songs.bind('savedSongs', backend.CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(songs, 'savedSongs', backend.CoolUtil.getSavePath());
 		songs.erase();
 		songs.flush();
 

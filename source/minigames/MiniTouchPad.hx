@@ -161,6 +161,21 @@ class MiniTouchPad extends FlxSpriteGroup
 
 		cameras = [cam];
 		refreshVisuals();
+
+		FlxG.signals.postUpdate.add(keepOnTop);
+	}
+
+	function keepOnTop():Void
+	{
+		final state = FlxG.state;
+		if (state == null) return;
+
+		final members = state.members;
+		if (members.length > 0 && members[members.length - 1] != this && members.indexOf(this) != -1)
+		{
+			state.remove(this, true);
+			state.add(this);
+		}
 	}
 
 	function piece(file:String, scale:Float):FlxSprite
@@ -322,6 +337,7 @@ class MiniTouchPad extends FlxSpriteGroup
 
 	override function destroy():Void
 	{
+		FlxG.signals.postUpdate.remove(keepOnTop);
 		padAlive = false;
 		current = [];
 		previous = [];

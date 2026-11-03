@@ -2,6 +2,7 @@ import states.substates.GameOverSubstate;
 import objects.Character;
 import flixel.sound.FlxSound;
 import minigames.preymini.PreyMini;
+import backend.EXEAchievements;
 
 var deadBoyfriend:Character;
 var inGameOver:Bool = false;
@@ -30,6 +31,7 @@ function onGameOver()
 	if (PreyMini.songLives > 0) return Function_Continue;
 
 	backToMinigame = true;
+	EXEAchievements.achieveGameOver(PlayState.SONG.song);
 	final game = PlayState.instance;
 	game.canPause = false;
 	game.boyfriend.stunned = true;

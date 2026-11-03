@@ -124,7 +124,7 @@ class EXETitle extends MusicBeatState
 		}
 
 		var save:FlxSave = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
 		try { unlocked = cast (save.data.songs ?? []); } catch(e:Dynamic) { trace("Error loading unlocked songs: " + e); }
 		parallaxUnlocked = backend.SongProgress.soundTestComplete();
 

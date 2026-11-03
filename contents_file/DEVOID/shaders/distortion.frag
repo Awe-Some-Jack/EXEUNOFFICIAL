@@ -17,7 +17,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     float effectRadius = size;
     float effectAngle = amount * PI;
 
-    vec2 center = vec2(xPos, yPos) / iResolution.xy;
+    vec2 center = vec2(xPos, yPos);
     vec2 uv = fragCoord.xy / iResolution.xy - center;
 
     float len = length(

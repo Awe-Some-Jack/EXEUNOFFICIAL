@@ -64,6 +64,7 @@ class SoundTest extends MusicBeatState
 	{
 		Paths.clearStoredMemory();
 		super.create();
+		CustomShapeTransition.shape = HEAD;
 
 		if (FlxG.stage?.window != null)
 			previousWindowTitle = FlxG.stage.window.title;
@@ -95,7 +96,7 @@ class SoundTest extends MusicBeatState
 		#end
 
 		save = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
 		if (save.data.songs == null) save.data.songs = [];
 
 		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end

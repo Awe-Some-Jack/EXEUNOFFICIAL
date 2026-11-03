@@ -97,6 +97,7 @@ class StoryModeState extends MusicBeatState
 		#end
 
 		super.create();
+		CustomShapeTransition.shape = HEAD;
 
 		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}

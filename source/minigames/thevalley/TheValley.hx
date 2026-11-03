@@ -1327,6 +1327,8 @@ class TheValley extends MusicBeatState implements ExeWorld
 			return;
 		}
 
+		backend.SongProgress.markOpened('godspeed');
+
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());
 

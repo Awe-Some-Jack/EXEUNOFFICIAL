@@ -278,7 +278,7 @@ class EXEFreeplay extends MusicBeatState
 		songEntries = [];
 
 		var save:FlxSave = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
 		var unlocked:Array<String> = save.data.songs;
 		if (unlocked == null) unlocked = [];
 		final opened:Array<String> = backend.SongProgress.openedSongs();

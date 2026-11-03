@@ -214,7 +214,7 @@ class Main extends Sprite
 		Mods.loadTopMod();
 		boot('mods loaded: ' + Mods.currentModDirectory);
 
-		FlxG.save.bind('funkin', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(FlxG.save, 'funkin', CoolUtil.getSavePath());
 		Highscore.load();
 		boot('save loaded');
 		backend.GameJoltManager.autoLogin((_) -> {});

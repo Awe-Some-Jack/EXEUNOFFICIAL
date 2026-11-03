@@ -3,6 +3,7 @@ import flixel.sound.FlxSound;
 import flixel.FlxCameraFollowStyle;
 import flixel.tweens.FlxTween.FlxTweenType;
 import backend.MusicBeatState;
+import backend.EXEAchievements;
 
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
@@ -569,6 +570,7 @@ var canPress:Bool = false;
 
 function onGameOver() {
     if (songName == 'haze'){
+        EXEAchievements.achieveGameOver(PlayState.SONG.song);
         persistentDraw = false;
         CustomSubstate.openCustomSubstate("hazeGameOver", true);
         return Function_Stop;

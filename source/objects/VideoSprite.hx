@@ -20,6 +20,12 @@ class VideoSprite extends FlxSpriteGroup
 	public static final ARG_LOOPING:String = ':input-repeat=2147483647';
 	public static final ARG_MUTED:String = ':no-audio';
 	public static final ARG_HW_ACCEL:String = ':avcodec-hw=any';
+	public static final ARG_SW_DECODE:String = ':avcodec-hw=none';
+
+	public static var forceSoftwareDecode:Bool = false;
+
+	public static function softwareDecode():Bool
+		return forceSoftwareDecode || FlxG.save.data.videoSoftwareDecode == true;
 	public static final ARG_DROP_LATE:String = ':drop-late-frames';
     public static final ARG_SKIP_FRAMES:String = ':skip-frames';
 
@@ -214,7 +220,7 @@ class VideoSprite extends FlxSpriteGroup
 			if (!loadArgs.contains(ARG_MUTED) && shouldMute(videoPath))
 				loadArgs.push(ARG_MUTED);
 			if (!loadArgs.contains(ARG_HW_ACCEL))
-				loadArgs.push(ARG_HW_ACCEL);
+				loadArgs.push(softwareDecode() ? ARG_SW_DECODE : ARG_HW_ACCEL);
 			if (!loadArgs.contains(ARG_DROP_LATE))
 				loadArgs.push(ARG_DROP_LATE);
 			if (!loadArgs.contains(ARG_SKIP_FRAMES))
@@ -257,7 +263,7 @@ class VideoSprite extends FlxSpriteGroup
 			if (!loadArgs.contains(ARG_MUTED) && shouldMute(videoPath))
 				loadArgs.push(ARG_MUTED);
 			if (!loadArgs.contains(ARG_HW_ACCEL))
-				loadArgs.push(ARG_HW_ACCEL);
+				loadArgs.push(softwareDecode() ? ARG_SW_DECODE : ARG_HW_ACCEL);
 			if (!loadArgs.contains(ARG_DROP_LATE))
 				loadArgs.push(ARG_DROP_LATE);
 			if (!loadArgs.contains(ARG_SKIP_FRAMES))

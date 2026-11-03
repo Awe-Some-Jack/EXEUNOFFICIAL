@@ -207,6 +207,31 @@ class CoolUtil
 		#end
 	}
 
+	public static function bindSave(save:flixel.util.FlxSave, name:String, ?path:String):Bool
+	{
+		if (save.bind(name, path, (raw:String, e:haxe.Exception) -> {
+			backupCorruptSave(name, raw);
+			return {};
+		})) return true;
+
+		trace('Save "$name" could not be loaded: ${save.status}');
+		@:privateAccess save.data = {};
+		return false;
+	}
+
+	static function backupCorruptSave(name:String, raw:String):Void
+	{
+		#if sys
+		try
+		{
+			final file:String = haxe.io.Path.join([lime.system.System.applicationStorageDirectory, '$name-corrupt-${Std.int(Date.now().getTime() / 1000)}.txt']);
+			sys.io.File.saveContent(file, raw);
+			trace('Corrupt save "$name" backed up to $file');
+		}
+		catch (e:Dynamic) {}
+		#end
+	}
+
 	public static function setTextBorderFromString(text:FlxText, border:String)
 	{
 		switch(border.toLowerCase().trim())

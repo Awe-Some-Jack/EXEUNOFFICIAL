@@ -72,7 +72,7 @@ class ExtraFunctions
 			if (!variables.exists(key))
 			{
 				var save:FlxSave = new FlxSave();
-				save.bind(name, CoolUtil.getSavePath() + '/' + folder);
+				backend.CoolUtil.bindSave(save, name, CoolUtil.getSavePath() + '/' + folder);
 				variables.set(key, save);
 				return;
 			}

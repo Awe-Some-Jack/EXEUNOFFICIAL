@@ -396,11 +396,15 @@ local function onUpdateFate(elapsed)
     end
 end
 
+local DODGE_WINDOW = 180
+
 local DODGE_CONFIG = {
     START = false,
     BEATS = 0,
-    CANDODGE = false,
+    FINAL_TIME = nil,
     HASDODGED = false,
+    LOCKED = false,
+    RESOLVED = true,
 }
 
 local function popUpSpace()
@@ -410,18 +414,38 @@ local function popUpSpace()
     doTweenScale('spaceBar', 'spaceBar', 0.85, 0.5, 'circOut') doTweenScale('dodgeText', 'dodgeText', 1, 0.5, 'circOut') doTweenAngle('dodgeTextAngle', 'dodgeText', 0, 0.5, 'circOut')
 end
 
+local function doDodge()
+    DODGE_CONFIG.HASDODGED = true
+    setProperty('spaceBar.alpha', 0)
+    if DODGE_CONFIG.BEATS <= 0 then
+        playAnim('boyfriend', 'dodge', true) setProperty('boyfriend.specialAnim', true)
+    end
+end
+
+local function resolveDodge()
+    DODGE_CONFIG.RESOLVED = true
+    setProperty('spaceBar.alpha', 0)
+    if DODGE_CONFIG.HASDODGED then return end
+
+    loseHealthBitch = true
+    setProperty('healthShit.x', getProperty('health')) doTweenX('healthLose', 'healthShit', getProperty('healthShit.x') - 2, 0.6, 'circOut')
+    runTimer('stopLosingShit', 0.6)
+end
+
 local function dodgeMechanic()
     DODGE_CONFIG.BEATS = DODGE_CONFIG.BEATS - 1
 
-    if not DODGE_CONFIG.HASDODGED then popUpSpace() end
+    if not DODGE_CONFIG.HASDODGED and not DODGE_CONFIG.LOCKED then popUpSpace() end
 
     playSound('Metronome_Tick', 0.5)
 
     if luaTextExists('dodgeText') then setTextString('dodgeText', DODGE_CONFIG.BEATS) end
 
-    runTimer('activateCanDodge', 0.001)
+    if DODGE_CONFIG.BEATS == 1 then DODGE_CONFIG.FINAL_TIME = getSongPosition() + crochet end
 
-    if DODGE_CONFIG.BEATS == 0 then
+    if DODGE_CONFIG.BEATS <= 0 then
+        if DODGE_CONFIG.FINAL_TIME == nil then DODGE_CONFIG.FINAL_TIME = getSongPosition() end
+
         playSound('fatewhip')
         runTimer('dodgeTextDissapear', 1)
         playAnim('dad', 'hey', true) setProperty('dad.specialAnim', true)
@@ -430,13 +454,8 @@ local function dodgeMechanic()
         setTextString('dodgeText', 'NOW')
         if DODGE_CONFIG.HASDODGED then
             playAnim('boyfriend', 'dodge', true) setProperty('boyfriend.specialAnim', true)
-        else
-            loseHealthBitch = true
-            setProperty('healthShit.x', getProperty('health')) doTweenX('healthLose', 'healthShit', getProperty('healthShit.x') - 2, 0.6, 'circOut')
-            runTimer('stopLosingShit', 0.6)
         end
-        DODGE_CONFIG.CANDODGE = false DODGE_CONFIG.START = false
-        setProperty('spaceBar.alpha', 0)
+        DODGE_CONFIG.START = false
     end
 end
 
@@ -467,7 +486,11 @@ function onEvent(eventName, value1, value2)
     end
     if eventName == 'fateDodge' then
         DODGE_CONFIG.START = true
-        DODGE_CONFIG.BEATS = value1
+        DODGE_CONFIG.BEATS = tonumber(value1) or 0
+        DODGE_CONFIG.FINAL_TIME = nil
+        DODGE_CONFIG.HASDODGED = false
+        DODGE_CONFIG.LOCKED = false
+        DODGE_CONFIG.RESOLVED = false
 
         if not luaTextExists('dodgeText') then
             makeLuaText('dodgeText', DODGE_CONFIG.BEATS, 0, 550, 250)
@@ -498,19 +521,31 @@ function onTweenCompleted(tag)
 end
 
 function onTimerCompleted(t)
-    if t == 'activateCanDodge'   then DODGE_CONFIG.CANDODGE = true end
     if t == 'dodgeTextDissapear' then removeLuaText('dodgeText', true) DODGE_CONFIG.HASDODGED = false end
     if t == 'itdoesntexist'      then trailExists = false end
     if t == 'removeTransition'   then for _, trans in ipairs({'transition', 'transition2'}) do removeLuaSprite(trans, true) end end
 end
 
 function onUpdate()
-    if DODGE_CONFIG.CANDODGE then
-        if keyboardJustPressed('SPACE') or getProperty('cpuControlled') then
-            DODGE_CONFIG.HASDODGED = true DODGE_CONFIG.CANDODGE  = false
-            setProperty('spaceBar.alpha', 0)
+    if DODGE_CONFIG.RESOLVED then return end
+
+    local pos = getSongPosition()
+    local inWindow = DODGE_CONFIG.FINAL_TIME ~= nil and math.abs(pos - DODGE_CONFIG.FINAL_TIME) <= DODGE_WINDOW
+
+    if not DODGE_CONFIG.HASDODGED and not DODGE_CONFIG.LOCKED then
+        if getProperty('cpuControlled') then
+            if inWindow then doDodge() end
+        elseif keyboardJustPressed('SPACE') then
+            if inWindow then
+                doDodge()
+            else
+                DODGE_CONFIG.LOCKED = true
+                setProperty('spaceBar.alpha', 0)
+            end
         end
     end
+
+    if DODGE_CONFIG.FINAL_TIME ~= nil and pos > DODGE_CONFIG.FINAL_TIME + DODGE_WINDOW then resolveDodge() end
 end
 
 function onSectionHit()

@@ -8,7 +8,7 @@ class SongProgress
 	public static function beatenSongs():Array<String>
 	{
 		final save:FlxSave = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
 		final songs:Array<String> = save.data.songs;
 		return songs ?? [];
 	}
@@ -16,7 +16,7 @@ class SongProgress
 	public static function openedSongs():Array<String>
 	{
 		final save:FlxSave = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
 		final songs:Array<String> = save.data.openedSongs;
 		return songs ?? [];
 	}
@@ -24,7 +24,7 @@ class SongProgress
 	public static function markOpened(song:String):Void
 	{
 		final save:FlxSave = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
 		final saved:Null<Array<String>> = save.data.openedSongs;
 		final songs:Array<String> = saved ?? [];
 		if (songs.contains(song)) return;

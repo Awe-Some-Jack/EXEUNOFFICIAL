@@ -1047,7 +1047,7 @@ class DAGarden extends SonicSubState
 
         if(!backend.EXEAchievements.isUnlocked('dagarden') && songs.songList.length > 0) {
             var _save = new flixel.util.FlxSave();
-            _save.bind('savedSongs', backend.CoolUtil.getSavePath());
+            backend.CoolUtil.bindSave(_save, 'savedSongs', backend.CoolUtil.getSavePath());
             var _saved:Array<String> = cast(_save.data.songs ?? []);
             var _allFound = true;
             for(s in songs.songList) if(!_saved.contains(s)) { _allFound = false; break; }

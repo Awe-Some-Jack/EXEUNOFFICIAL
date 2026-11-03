@@ -621,6 +621,7 @@ class Player extends FlxSprite implements CameraTarget
 				_projectOnSlope();
 				_glue(elapsed);
 				_dustTimer -= elapsed;
+				
 				if (_dustTimer <= 0 && Math.abs(body.velocity.x) > 30)
 				{
 					_dustTimer = 0.05;

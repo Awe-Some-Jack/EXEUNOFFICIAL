@@ -28,15 +28,6 @@ var sceneSpikeTimer:Float = 0;
 var jaronaFrame:Int = -1;
 
 function onCreate() {
-    setVar('wasFPSActive', false);
-    setVar('wasFullscreen', false);
-
-    trace(getVar('wasFullscreen'));
-
-    if (Main.fpsVar.visible) setVar('wasFPSActive', true);
-    if (FlxG.fullscreen) setVar('wasFullscreen', true);
-    trace("BEFORE "+getVar('wasFullscreen'));
-
     bgGraphic = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.RED);
     bgGraphic.scale.set(2, 2);
     bgGraphic.screenCenter();
@@ -227,13 +218,7 @@ function onGameOverStart()
 
 function onEndSong() {
     if (SoundTest.fromSoundTest && PlayState.storyPlaylist.length <= 0) 
-    {      
-        // for a best blue screen crash experience hehehe
-        trace("FULL SCREEN 1 "+FlxG.fullscreen);
-        if (Main.fpsVar.visible) Main.fpsVar.visible = false;
-        if (!FlxG.fullscreen) FlxG.fullscreen = true;
-        trace("FULL SCREEN 2 "+FlxG.fullscreen);
-
+    {
         PlayState.campaignScore += score;
 		PlayState.campaignMisses += misses;
 

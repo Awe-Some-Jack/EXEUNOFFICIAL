@@ -126,13 +126,5 @@ function onSongStart()
         FlxG.cameras.remove(camStrums, false);
         bluescreen.destroy();
         bsodPercent.destroy();
-
-        trace("Transition " + getVar('wasFullscreen'));
-
-        if (getVar('wasFPSActive')){
-            if (!Main.fpsVar.visible) Main.fpsVar.visible = true;
-        }
-
-        if (!getVar('wasFullscreen')) FlxG.fullscreen = false;
     }});
 }

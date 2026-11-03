@@ -108,6 +108,12 @@ class ExtrasMenu extends MusicBeatState
             volume: 1
         },
         {
+            name: "Palmtree Panic "P" Mix (ReImagined)",
+            src: "extras7",
+            author: "MeDicenKay",
+            volume: 1
+        },
+        {
             name: "Parallel Zone",
             src: "extras3",
             author: "Alex Hamud",

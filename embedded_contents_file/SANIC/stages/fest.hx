@@ -14,6 +14,7 @@ var brightness:ErrorHandledRuntimeShader;
 var stars:FlxBackdrop;
 var introCutscene:VideoSprite;
 var sanicBG:VideoSprite;
+var sanicBGName:String = 'bg1';
 var videos:Array<VideoSprite> = [];
 var spotlights:Array<FlxSprite> = [];
 
@@ -182,7 +183,6 @@ function makePreloadedVideo(name:String):VideoSprite
 	return video;
 }
 
-var sanicBGName:String = 'bg1';
 var iTime:Float = 0;
 function onUpdatePost(e)
 {

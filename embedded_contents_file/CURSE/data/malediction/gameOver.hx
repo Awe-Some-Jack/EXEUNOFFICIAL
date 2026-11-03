@@ -47,7 +47,7 @@ function onGameOverStart()
 	makeSubtitle(voiceLine);
 
 	curseLine = new FlxSound();
-	curseLine.load(Paths.sound('voicelines/CurseDeath' + voiceLine), true);
+	curseLine.load(Paths.sound('voicelines/curseDeath' + voiceLine), true);
 	curseLine.onComplete = function() {
 		subtitleBG.destroy();
 		subtitle.destroy();

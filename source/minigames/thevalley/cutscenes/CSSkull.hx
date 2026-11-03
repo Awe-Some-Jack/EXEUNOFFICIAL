@@ -114,7 +114,7 @@ class CSSkull
 
 		if (_timer >= 1.2 && _voice == null)
 		{
-			_voice = FlxG.sound.play("assets/shared/sounds/minigame/thevalley/voiceline.ogg", 1.0);
+			_voice = FlxG.sound.play(Paths.sound("minigame/thevalley/voiceline"), 1.0);
 			_subs.open();
 		}
 

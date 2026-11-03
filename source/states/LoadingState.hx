@@ -468,7 +468,7 @@ class LoadingState extends MusicBeatState
 	{
 		clearInvalidFrom(imagesToPrepare, 'images', '.webp', IMAGE);
 		clearInvalidFrom(soundsToPrepare, 'sounds', '.${Paths.SOUND_EXT}', SOUND);
-		clearInvalidFrom(musicToPrepare, 'music',' .${Paths.SOUND_EXT}', SOUND);
+		clearInvalidFrom(musicToPrepare, 'music', '.${Paths.SOUND_EXT}', SOUND);
 		clearInvalidFrom(songsToPrepare, 'songs', '.${Paths.SOUND_EXT}', SOUND, 'songs');
 
 		for (arr in [imagesToPrepare, soundsToPrepare, musicToPrepare, songsToPrepare])
@@ -591,9 +591,14 @@ class LoadingState extends MusicBeatState
 
 		if(!Paths.currentTrackedSounds.exists(file))
 		{
-			if (#if (!mobile && sys) FileSystem.exists(file) || #end OpenFlAssets.exists(file, SOUND))
+			#if sys
+			final onDisk:Bool = FileSystem.exists(file);
+			#else
+			final onDisk:Bool = false;
+			#end
+			if (onDisk || OpenFlAssets.exists(file, SOUND))
 			{
-				var sound:Sound = #if (sys && !mobile) Sound.fromFile(file) #else OpenFlAssets.getSound(file, false) #end;
+				var sound:Sound = #if sys onDisk ? Sound.fromFile(file) : #end OpenFlAssets.getSound(file, false);
 				mutex.acquire();
 				Paths.currentTrackedSounds.set(file, sound);
 
@@ -615,14 +620,15 @@ class LoadingState extends MusicBeatState
 	static function preloadSongPath(key:String):Void
 	{
 		var file:String = Paths.getPath(Language.getFileTranslation(key) + '.${Paths.SOUND_EXT}', SOUND, 'songs', true);
-		#if (sys && !mobile)
+		#if sys
 		if (FileSystem.exists(file))
 		{
 			mutex.acquire();
 			Paths.localTrackedAssets.push(file);
 			mutex.release();
 		}
-		#else
+		else
+		#end
 		if (OpenFlAssets.exists(file, SOUND))
 		{
 			mutex.acquire();
@@ -630,7 +636,6 @@ class LoadingState extends MusicBeatState
 
 			mutex.release();
 		}
-		#end
 	}
 
 	static function preloadGraphic(key:String):Void

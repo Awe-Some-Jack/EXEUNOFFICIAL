@@ -132,13 +132,14 @@ class FatalAccess extends MusicBeatState
 	public static function denied():Bool
 		return FlxG.save.data.fatalDenied == true;
 
-	// Story progress is tracked through lastCoverPlay (0-4 = covers, 5 = final song beaten).
-	// weekCompleted is kept as a fallback, but nothing in StoryModeState writes to it.
 	public static function storyBeaten():Bool
 	{
-		if (FlxG.save.data.storyModeDone == true) return true;
+		if (FlxG.save.data.storyModeDone == true) 
+			return true;
+
 		final cover:Null<Int> = FlxG.save.data.lastCoverPlay;
 		if (cover != null && cover >= 5) return true;
+
 		return StoryModeState.weekCompleted.get('exe') == true;
 	}
 
@@ -175,7 +176,7 @@ class FatalAccess extends MusicBeatState
 		FlxG.save.data.fatalGranted = false;
 		FlxG.save.data.fatalDenied = false;
 		FlxG.save.flush();
-		#if (sys && !mobile && !mac)
+		#if (sys && (!mobile || !mac))
 		try
 		{
 			if (FileSystem.exists(filePath())) FileSystem.deleteFile(filePath());
@@ -187,7 +188,7 @@ class FatalAccess extends MusicBeatState
 
 	public static function startWatching():Void
 	{
-		#if (sys && !mobile && !mac)
+		#if (sys && (!mobile || !mac))
 		if (_watching) return;
 		_watching = true;
 		FlxG.signals.postUpdate.add(_poll);
@@ -196,7 +197,7 @@ class FatalAccess extends MusicBeatState
 
 	static function _poll():Void
 	{
-		#if (sys && !mobile && !mac)
+		#if (sys && (!mobile || !mac))
 		_pollTimer -= FlxG.elapsed;
 		if (_pollTimer > 0) return;
 		_pollTimer = 0.5;
@@ -217,7 +218,7 @@ class FatalAccess extends MusicBeatState
 
 	public static function bootScene():Null<FatalScene>
 	{
-		#if (sys && !mobile && !mac)
+		#if (sys && (!mobile || !mac))
 		final path = filePath();
 		if (granted() || denied() || !FileSystem.exists(path)) return null;
 		try

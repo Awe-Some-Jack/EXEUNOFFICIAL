@@ -15,7 +15,7 @@ class Project extends HXProject
     static final TITLE:String = "Friday Night Funkin': Vs Sonic.EXE";
     static final EXECUTABLE:String = "Vs Sonic";
     static final PACKAGE_NAME:String = "com.exeunofficial.vssonicexe";
-    static final VERSION:String = "1.0";
+    static final VERSION:String = "1.0.2";
     static final COMPANY:String = "SonicEXEUnofficial"; //change of company again so everyone has a fresh new build with no progress on it.
     static final MAIN_CLASS:String = "Main";
     static final PRELOADER:String = "flixel.system.FlxPreloader";
@@ -220,6 +220,11 @@ class Project extends HXProject
         else if (!debug)
         {
             setHaxedef("analyzer-optimize");
+        }
+
+        if (defines.exists("final"))
+        {
+            setHaxedef("no-traces");
         }
 
         if (FileSystem.exists("keys.xml"))

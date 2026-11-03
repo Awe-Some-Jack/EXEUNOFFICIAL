@@ -754,10 +754,8 @@ class PlayState extends MusicBeatState
 				appName = "Friday Night Funkin': Vs Sonic.EXE";
 		}
 
-		#if !mac
 		if (Paths.formatToSongPath(SONG.song) != 'burning' && Paths.formatToSongPath(SONG.song) != 'final-escape') FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Loading)";
 		if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: Hedge (Loading)";
-		#end
 
 		GameOverSubstate.resetVariables();
 		if(SONG.stage == null || SONG.stage.length < 1)
@@ -1492,12 +1490,10 @@ class PlayState extends MusicBeatState
 			return false;
 		}
 
-		#if !mac
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song;
 		if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 		if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = prevWindowTitle + '?';
 		if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: Hedge";
-		#end
 
 		seenCutscene = true;
 		firstPlay = true;
@@ -2293,12 +2289,10 @@ class PlayState extends MusicBeatState
 				for (cam in [FlxG.camera, camVideo, camHUD, camOther])
 					if (cam != null) cam.fxActive = false;
 
-			#if !mac
 			FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
 			if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + " (Paused)";
 			if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 			if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: " + _targetPause + " (Paused)";
-			#end
 		}
 
 		super.openSubState(SubState);
@@ -2339,11 +2333,9 @@ class PlayState extends MusicBeatState
 				cam.filters = cam.filters;
 			}
 
-			#if !mac
 			FlxG.stage.window.title = appName + " | Playing: " + SONG.song;
 			if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 			if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: " + _targetPause;
-			#end
 		}
 	}
 
@@ -2390,8 +2382,13 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
+	#if mobile
+	static inline final VOCAL_DRIFT_THRESHOLD:Float = 60.0;
+	static inline final VOCAL_DRIFT_FRAMES:Int = 15;
+	#else
 	static inline final VOCAL_DRIFT_THRESHOLD:Float = 20.0;
 	static inline final VOCAL_DRIFT_FRAMES:Int = 6;
+	#end
 
 	final vocalDriftFrames:Map<FlxSound, Int> = new Map();
 
@@ -2971,12 +2968,10 @@ class PlayState extends MusicBeatState
 		if(chartingMode) openSubState(new PauseSubState());
 		else openSubState(new PauseSubState());
 
-		#if !mac
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
 		if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + " (Paused)";
 		if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 		if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: " + _targetPause + " (Paused)";
-		#end
 
 		#if DISCORD_ALLOWED
 		if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song + " (Paused)", iconP2.getCharacter(), true, 0, "icon", 0, Conductor.songPosition);
@@ -3120,7 +3115,7 @@ class PlayState extends MusicBeatState
 				// Game Over doesn't get his its variable because it's only used here
 				if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song + " | Game Over.", iconP2.getCharacter());
 				#end
-				#if (!mac && DISCORD_ALLOWED)
+				#if DISCORD_ALLOWED
 				FlxG.stage.window.title = appName + " | Was Playing: " + SONG.song;
 				if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Was Playing: " + _targetPause;
 				var dausername:String = DiscordClient.username ?? 'boyfriend';
@@ -4835,7 +4830,7 @@ class PlayState extends MusicBeatState
 			resetSubState();
 		}
 
-		#if !mac FlxG.stage.window.title = prevWindowTitle; #end
+		FlxG.stage.window.title = prevWindowTitle;
 		FlxSprite.defaultAntialiasing = ClientPrefs.data.antialiasing;
 		for (video in preloadedVideos) video.destroy();
 		preloadedVideos.clear();

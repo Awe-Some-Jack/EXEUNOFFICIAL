@@ -189,6 +189,14 @@ class ClientPrefs {
 			if (key != 'gameplaySettings' && Reflect.hasField(FlxG.save.data, key))
 				Reflect.setField(data, key, Reflect.field(FlxG.save.data, key));
 
+		if (FlxG.save.data.streamedAudioReset != true)
+		{
+			FlxG.save.data.streamedAudioReset = true;
+			data.streamedAudio = false;
+			FlxG.save.data.streamedAudio = false;
+			FlxG.save.flush();
+		}
+
 		if (data.uncappedFPS)
 		{
 			data.uncappedFPS = false;

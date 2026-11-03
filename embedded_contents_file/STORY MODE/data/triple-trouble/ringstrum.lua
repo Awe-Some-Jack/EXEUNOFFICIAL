@@ -10,12 +10,25 @@ local resetAnim = 0
 local hasBeenPressed = false --why is keyboardReleased so evil...
 local swapped = false
 local notPressedAny = true
+local isMobileLayout = false
 function onCreatePost()
+	isMobileLayout = getPropertyFromClass('flixel.FlxG', 'onMobile')
+	
 	makeLuaSprite('ringCounter', 'tt/Counter')
 	setObjectCamera('ringCounter', 'hud')
 	addLuaSprite('ringCounter', true)
 	scaleObject('ringCounter', 0.67, 0.67)
-	callMethod('ringCounter.setPosition', {screenWidth - getProperty('ringCounter.width') - 40, (downscroll and 10 or (screenHeight - getProperty('ringCounter.height') - 10))})
+	
+	local targetY = 10
+	if isMobileLayout then
+		targetY = screenHeight - getProperty('ringCounter.height') - 10
+	elseif downscroll then
+		targetY = 10
+	else
+		targetY = screenHeight - getProperty('ringCounter.height') - 10
+	end
+
+	callMethod('ringCounter.setPosition', {screenWidth - getProperty('ringCounter.width') - 40, targetY})
 
 	makeLuaText('ringTxt', tostring(rings))
 	setTextSize('ringTxt', 60)
@@ -25,8 +38,9 @@ function onCreatePost()
 	setProperty('ringTxt.antialiasing', getPropertyFromClass('backend.ClientPrefs', 'data.antialiasing'))
 	setObjectCamera('ringTxt', 'hud')
 	addLuaText('ringTxt')
+	
 	callMethod('ringTxt.setPosition', {getProperty('ringCounter.x') + 76, getProperty('ringCounter.y') - 6})
-	callMethod('comboGroup.setPosition', {-((screenWidth - 275) / 2), (downscroll and (-(screenHeight - 200)) or (screenHeight - 200))})
+	callMethod('comboGroup.setPosition', {-((screenWidth - 275) / 2), ((downscroll or isMobileLayout) and (-(screenHeight - 200)) or (screenHeight - 200))})
 end
 
 function usesMobileLayout()

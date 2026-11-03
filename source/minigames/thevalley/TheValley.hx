@@ -1303,14 +1303,15 @@ class TheValley extends MusicBeatState implements ExeWorld
 			return;
 		}
 
-		if (fromFreeplay)
+		//kinda unfair toward the player
+		/*if (fromFreeplay)
 		{
 			fromFreeplay = false;
 			Mods.loadTopMod();
 			FlxG.sound.music?.stop();
 			FlxG.switchState(() -> new states.EXEFreeplay());
 			return;
-		}
+		}*/
 
 		final launchDiff = _exeNormalDiff();
 

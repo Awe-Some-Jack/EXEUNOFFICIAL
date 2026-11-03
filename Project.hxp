@@ -222,6 +222,11 @@ class Project extends HXProject
             setHaxedef("analyzer-optimize");
         }
 
+        if (defines.exists("final"))
+        {
+            haxeflags.push("--no-traces");
+        }
+
         if (FileSystem.exists("keys.xml"))
         {
             final content:String = File.getContent("keys.xml");

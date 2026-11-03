@@ -3583,6 +3583,11 @@ class PlayState extends MusicBeatState
 			if (states.SonichuUnlockState.pending) {
 				FlxG.switchState(() -> new states.SonichuUnlockState());
 			}
+			else if (formattedSong == 'shocker' && FlxG.save.data.shockerCreditsSeen != true) {
+				FlxG.save.data.shockerCreditsSeen = true;
+				FlxG.save.flush();
+				FlxG.switchState(() -> new states.CreditsRollState());
+			}
 			else if (states.StoryModeState.fromStoryMode) {
 				states.StoryModeState.fromStoryMode = false; 
 				FlxG.switchState(() -> new states.StoryModeState()); 

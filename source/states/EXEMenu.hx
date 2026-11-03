@@ -485,7 +485,7 @@ class EXEMenu extends MusicBeatState
 	function extrasLocked():Bool
 	{
 		if (backend.MasterAccess.accessed) return false;
-		_extrasLocked ??= !backend.SongProgress.gameComplete();
+		_extrasLocked ??= FlxG.save.data.shockerCreditsSeen != true;
 		return (_extrasLocked #if !final && !inDevMode #end);
 	}
 

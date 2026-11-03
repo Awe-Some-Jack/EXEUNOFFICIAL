@@ -142,8 +142,12 @@ class FatalAccess extends MusicBeatState
 		return StoryModeState.weekCompleted.get('exe') == true;
 	}
 
+	public static function fatalityUnlocked():Bool
+		return backend.SongProgress.beatenSongs().contains('fatality') || backend.SongProgress.openedSongs().contains('fatality');
+
 	public static function menuScene():Null<FatalScene>
 	{
+		if (fatalityUnlocked()) return null;
 		#if (mobile || mac)
 		if (granted() || !storyBeaten()) return null;
 		return FlxG.save.data.fatalMobileSeen == true ? REMINDER : TRANSMISSION;

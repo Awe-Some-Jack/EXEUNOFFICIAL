@@ -108,7 +108,7 @@ class ExtrasMenu extends MusicBeatState
             volume: 1
         },
         {
-            name: "Palmtree Panic "P" Mix (ReImagined)",
+            name: "Palmtree Panic \"P\" Mix (ReImagined)",
             src: "extras7",
             author: "MeDicenKay",
             volume: 1

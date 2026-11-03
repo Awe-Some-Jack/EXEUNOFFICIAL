@@ -3806,6 +3806,8 @@ class PlayState extends MusicBeatState
             {
                 unlocked.push(secretSongPath);
                 states.SonichuUnlockState.pending = true;
+                FlxG.save.data.sonichuUnlockPending = true;
+                FlxG.save.flush();
                 trace('[DEBUG] Secret song '+secretSongPath+" unlocked!");
             }
         }

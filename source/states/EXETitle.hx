@@ -89,6 +89,14 @@ class EXETitle extends MusicBeatState
 			return;
 		}
 
+		if (FlxG.save.data.sonichuUnlockPending == true)
+		{
+			transitioning = true;
+			super.create();
+			FlxG.switchState(() -> new SonichuUnlockState());
+			return;
+		}
+
 		if (FlxG.save.data.parallaxUnlockNoticePending == true)
 		{
 			transitioning = true;

@@ -102,7 +102,7 @@ class StoryModeState extends MusicBeatState
 	}
 
 	static function getUnlockedCovers(){
-		return FlxG.save.data.lastCoverPlay;
+		return #if final FlxG.save.data.lastCoverPlay #else 4 #end;
 	}
 
 	public function unlockCoverIndex(cover:Int){

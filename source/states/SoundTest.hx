@@ -557,7 +557,7 @@ class SoundTest extends MusicBeatState
 		transitioning = false;
 		FlxTween.tween(whiteBG, {alpha: 0}, 0.2);
 
-		if (savedCode == [24, 4])
+		if (savedCode.length >= 2 && (savedCode[0] == 24 && savedCode[1] == 4))
 		{
 			backend.EXEAchievements.unlock('mattpro');
 			backend.EXEAchievements.save();

@@ -64,11 +64,13 @@ function onEvent(n,v1)
 				)
 				if i < 4 then setProperty('strumLineNotes.members['..i..'].alpha', 0.3) end
 			end
+			setProperty('pressMissDamage', 0.025)
 			runTimer('nextnote', crochet / 1000, 0)
 			noteTweenAlpha('note'..i..'OP', i, 0.3, crochet / 250, 'cubeIn')
 		end
 		if v1 == 'endmodchart' then
 			cancelTimer('nextnote')
+			setProperty('pressMissDamage', 0.05)
 			for i = 0,7 do
 				cancelTween('xd'..i)
 				setProperty('strumLineNotes.members['..i..'].x', _G['default'..(i < 4 and 'Opponent' or 'Player')..'StrumX'..(i % 4)])

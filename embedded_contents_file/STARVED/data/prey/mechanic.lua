@@ -691,21 +691,21 @@ function onSectionHit()
 		return
 	end
 
-	if getRandomBool(75) then
+	if getRandomBool(65) then
 		local roll = getRandomInt(1, 100)
-		if roll > 64 and roll <= 70 and hazardWindow(4) then
+		if roll > 67 and roll <= 72 and hazardWindow(4) then
 			spawnBird()
 			return
 		end
-		if roll > 70 and roll <= 78 and hazardWindow(4) then
+		if roll > 72 and roll <= 80 and hazardWindow(4) then
 			spawnRush()
 			return
 		end
-		if roll > 78 and hazardWindow(6) and spawnBee() then
+		if roll > 80 and hazardWindow(6) and spawnBee() then
 			skipSections = 1
 			return
 		end
-		if roll <= 22 then spawnRings() elseif spawnSpikes() then skipSections = 1 end
+		if roll <= 30 then spawnRings() elseif spawnSpikes() then skipSections = 1 end
 	end
 end
 

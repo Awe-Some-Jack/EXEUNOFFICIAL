@@ -93,13 +93,22 @@ var idleconejosBaseOffX:Float = 0;
 var idleconejosBaseOffY:Float = 0;
 var lastTalker:String = 'idleconejos';
 
-function makeDancer(name:String, alt:String, x:Float, y:Float, step:Int, scale:Float = 1, alpha:Float = 1)
+function makeDancer(name:String, alt:String, x:Float, y:Float, step:Int, scale:Float = 1, alpha:Float = 1, frameLimit:Int = -1)
 {
     var spr:FlxAnimate = new FlxAnimate(x, y);
     spr.frames = Paths.getAnimateAtlas('Park/Characters');
     spr.antialiasing = ClientPrefs.data.antialiasing;
 
-    spr.anim.addBySymbol(name, name, 24, true);
+    if (frameLimit > 0)
+    {
+        var indices:Array<Int> = [];
+        for (i in 0...frameLimit) indices.push(i);
+        spr.anim.addBySymbolIndices(name, name, indices, 24, true);
+    }
+    else
+    {
+        spr.anim.addBySymbol(name, name, 24, true);
+    }
     if (alt != null) spr.anim.addBySymbol(alt, alt, 24, false);
     spr.anim.play(name, true);
 
@@ -109,7 +118,7 @@ function makeDancer(name:String, alt:String, x:Float, y:Float, step:Int, scale:F
 
     insert(game.members.indexOf(fuente), spr);
 
-    dancers.push({ spr: spr, name: name, alt: alt, step: step });
+    dancers.push({ spr: spr, name: name, alt: alt, step: step, danceToggle: false });
     return spr;
 }
 
@@ -117,6 +126,7 @@ function playDancerAnim(spr:FlxAnimate, anim:String)
 {
     if (spr == null) return;
     spr.anim.play(anim, true);
+    if (spr == tails1 && spr.anim.curAnim != null) spr.anim.curAnim.looped = false;
     if (spr == idleconejos)
     {
         if (anim == 'talk') spr.offset.set(idleconejosBaseOffX + talkOffsetX, idleconejosBaseOffY + talkOffsetY);
@@ -188,15 +198,16 @@ function onCreate()
     fuente.scale.set(1.2, 1.2);
     addBehindGF(fuente);
 
-    rata = makeDancer('rata', null, 1150, 140, 100, 0.4, 1);
-    oso = makeDancer('oso', null, 650, 50, 100, 0.725, 1);
-    vieja = makeDancer('vieja', null, 1230, 200, 20, 0.6, 1);
-    idle = makeDancer('idle', 'conversando', -1050, 140, 20, 0.6, 1);
-    idleconejos = makeDancer('idleconejos', 'talk', -780, 160, 70, 0.56, 1);
-    tails1 = makeDancer('tails1', null, -370, 70, 20, 0.6, 1);
-    tails2 = makeDancer('tails2', null, -378, 59, 0, 0.6, 0);
-    eggman = makeDancer('eggman', null, -1030, 30, 0, 0.85, 0);
-    knux = makeDancer('knux', null, 824, 56, 0, 0.8, 0);
+    rata = makeDancer('rata', null, 1150, 140, 100, 0.4, 1, -1);
+    oso = makeDancer('oso', null, 650, 50, 100, 0.725, 1, -1);
+    vieja = makeDancer('vieja', null, 1230, 200, 20, 0.6, 1, -1);
+    idle = makeDancer('idle', 'conversando', -1050, 140, 20, 0.6, 1, -1);
+    idleconejos = makeDancer('idleconejos', 'talk', -780, 160, 70, 0.56, 1, -1);
+    tails1 = makeDancer('tails1', null, -370, 70, 20, 0.6, 1, -1);
+    if (tails1.anim.curAnim != null) tails1.anim.curAnim.looped = false;
+    tails2 = makeDancer('tails2', null, -378, 59, 0, 0.6, 0, -1);
+    eggman = makeDancer('eggman', null, -1030, 30, 0, 0.85, 0, -1);
+    knux = makeDancer('knux', null, 824, 56, 0, 0.8, 0, -1);
 
     idleBaseOffX = idle.offset.x; idleBaseOffY = idle.offset.y;
     idleconejosBaseOffX = idleconejos.offset.x; idleconejosBaseOffY = idleconejos.offset.y;
@@ -249,17 +260,17 @@ function onCreate()
 
 var curseOfX:Character;
 var curseOfXBaseX:Float = 0;
-var curseOfXBaseY:Float = 0;
+var curseOfXBaseY:Float = -400;
 var curseOfXHold:Float = 0;
 var curseOfXHoldTime:Float = 0.3;
-var curseOfXMaxAlpha:Float = 0.9;
-var curseOfXFlickerCount:Int = 2;
+var curseOfXMaxAlpha:Float = 0.55;
+var curseOfXFlickerCount:Int = 1.5;
 var curseOfXFlickerTween:FlxTween = null;
 var curseOfXMoveTween:FlxTween = null;
-var curseOfXScale:Float = 0.7;
+var curseOfXScale:Float = 0.5;
 var curseOfXSustained:Bool = false;
 var curseOfXBobTime:Float = 0;
-var curseOfXBobAmount:Float = 12;
+var curseOfXBobAmount:Float = 20;
 var curseOfXBobSpeed:Float = 18;
 
 function onCreatePost()
@@ -324,10 +335,10 @@ function getCurseOfXOffset(anim:String):Array<Float>
 {
     switch (anim)
     {
-        case 'singLEFT':  return [-40.0, 0.0];
-        case 'singRIGHT': return [40.0, 0.0];
-        case 'singDOWN':  return [0.0, 30.0];
-        case 'singUP':    return [0.0, -30.0];
+        case 'singLEFT':  return [230.0, -30];
+        case 'singRIGHT': return [-300.0, -50];
+        case 'singDOWN':  return [20, 150.0];
+        case 'singUP':    return [-100, -100.0];
     }
     return [0.0, 0.0];
 }
@@ -733,6 +744,23 @@ function onBeatHit()
             gf.playAnim(animName, true);
         }
     }
+
+    if (curBeat % 2 == 0)
+    {
+        for (d in dancers)
+        {
+            if (d.spr == idle || d.spr == idleconejos) continue;
+            if (d.alt != null)
+            {
+                d.danceToggle = !d.danceToggle;
+                playDancerAnim(d.spr, d.danceToggle ? d.alt : d.name);
+            }
+            else
+            {
+                playDancerAnim(d.spr, d.name);
+            }
+        }
+    }
 }
 
 function onStepHit()
@@ -828,7 +856,7 @@ function onStepHit()
             cursetweenClouds(0.2, 0.3);
 
         case 992, 1024, 1056, 1088, 1120, 1152, 1184:
-            cursetween(cstatic, 0.9, 0.7);
+            cursetween(cstatic, 0.8, 0.7);
 
         case 1008, 1040, 1072, 1104, 1136, 1168, 1200:
             cursetween(cstatic, 0.5, 0.6);
@@ -844,6 +872,7 @@ function onStepHit()
             }
             cursetween(eggman, 0, 0.1);
             cursetween(knux, 0, 0.1);
+            cursetween(tails1, 1, 0.1);
             cursetween(tails2, 0, 0.1);
 
             FlxTween.num(0.3, 0.0, 0.2, null, val -> { if (wavyShader != null) wavyShader.setFloat('amount', val); });
@@ -868,20 +897,12 @@ function onStepHit()
     var talkTriggered:Bool = false;
     for (d in dancers)
     {
-        if (curStep == d.step)
+        if (curStep == d.step && (d.spr == idle || d.spr == idleconejos))
         {
-            if (d.spr == idle || d.spr == idleconejos)
-            {
             if (!talkTriggered)
             {
                 startTalk();
                 talkTriggered = true;
-            }
-            }
-            else
-            {
-                var anim:String = (d.alt != null) ? d.alt : d.name;
-                playDancerAnim(d.spr, anim);
             }
         }
     }

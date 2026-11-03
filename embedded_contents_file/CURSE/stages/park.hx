@@ -76,10 +76,6 @@ var idle:FlxAnimate;
 var idleconejos:FlxAnimate;
 var oso:FlxAnimate;
 var eggman:FlxAnimate;
-var phase4Copy:Character = null;
-var phase4DadTween:FlxTween = null;
-var phase4CopyTween:FlxTween = null;
-var phase4Active:Bool = false;
 var cursetweenSprites:Array<FlxSprite> = [];
 var cursetweenTweens:Array<FlxTween> = [];
 var vineteTween:FlxTween = null;
@@ -252,6 +248,15 @@ function onCreate()
 }
 
 var curseOfX:Character;
+var curseOfXBaseX:Float = 0;
+var curseOfXBaseY:Float = 0;
+var curseOfXHold:Float = 0;
+var curseOfXHoldTime:Float = 0.3;
+var curseOfXMaxAlpha:Float = 0.9;
+var curseOfXFlickerCount:Int = 2;
+var curseOfXFlickerTween:FlxTween = null;
+var curseOfXMoveTween:FlxTween = null;
+
 function onCreatePost()
 {
     if (FlxG.random.bool(50))
@@ -291,70 +296,109 @@ function onCreatePost()
     colorPulse.screenCenter();
     insert(game.members.indexOf(blackFade), colorPulse);
 
-    makePhase4Copy();
-
     curseOfX = new Character(dad.x + 200, dad.y, 'curseofx', false);
     insert(game.members.indexOf(dadGroup), curseOfX);
+    curseOfXBaseX = curseOfX.x;
+    curseOfXBaseY = curseOfX.y;
     curseOfX.alpha = 0;
+    curseOfX.singDuration = 999999.0;
 }
 
-function makePhase4Copy()
-{
-    if (dad == null || phase4Copy != null) return;
-
-    phase4Copy = new Character(dad.x - dadGroup.x, dad.y - dadGroup.y, dad.curCharacter, false);
-    phase4Copy.scale.set(dad.scale.x, dad.scale.y);
-    phase4Copy.flipX = dad.flipX;
-    phase4Copy.scrollFactor.set(dad.scrollFactor.x, dad.scrollFactor.y);
-    phase4Copy.alpha = 0.00001;
-    dadGroup.add(phase4Copy);
-    phase4Copy.playAnim('idle4', true);
-    if (phase4Copy.anim.curAnim != null) phase4Copy.anim.curAnim.looped = true;
-    phase4Copy.singDuration = 999999.0;
-}
-function phase4(dadAlpha:Float, copyAlpha:Float, duration:Float)
-{
-    if (dad == null) return;
-    if (phase4Copy == null) makePhase4Copy();
-    if (phase4Copy == null) return;
-
-    if (phase4DadTween != null && phase4DadTween.active) phase4DadTween.cancel();
-    if (phase4CopyTween != null && phase4CopyTween.active) phase4CopyTween.cancel();
-
-    if (duration <= 0)
-    {
-        dad.alpha = dadAlpha;
-        phase4Copy.alpha = copyAlpha;
-        phase4DadTween = null;
-        phase4CopyTween = null;
-    }
-    else
-    {
-        phase4DadTween = FlxTween.tween(dad, {alpha: dadAlpha}, duration, {ease: FlxEase.linear});
-        phase4CopyTween = FlxTween.tween(phase4Copy, {alpha: copyAlpha}, duration, {ease: FlxEase.linear});
-    }
-
-    phase4Active = (copyAlpha > 0.5);
-    if (phase4Active && phase4Copy.getAnimationName() != 'idle4')
-        phase4Copy.playAnim('idle4', true);
-}
-
-function updatePhase4Idle()
-{
-    if (phase4Copy == null || phase4Copy.alpha <= 0.01) return;
-    if (phase4Copy.specialAnim) return;
-
-    final n:String = phase4Copy.getAnimationName();
-    if (n == 'idle' || (n == 'idle4' && phase4Copy.isAnimationFinished()))
-        phase4Copy.playAnim('idle4', true);
-    else if ((n == 'sing4LEFT' || n == 'sing4DOWN' || n == 'sing4UP' || n == 'sing4RIGHT') && phase4Copy.isAnimationFinished())
-        phase4Copy.playAnim('idle4', true);
-}
-
-function getPhase4SingAnim(noteData:Int):String
+function getCurseOfXAnim(noteData:Int):String
 {
     var d:Int = Std.int(Math.abs(noteData)) % 4;
-    return ['sing4LEFT', 'sing4DOWN', 'sing4UP', 'sing4RIGHT'][d];
+    return ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'][d];
+}
+
+function getCurseOfXOffset(anim:String):Array<Float>
+{
+    switch (anim)
+    {
+        case 'singLEFT':  return [-40.0, 0.0];
+        case 'singRIGHT': return [40.0, 0.0];
+        case 'singDOWN':  return [0.0, 30.0];
+        case 'singUP':    return [0.0, -30.0];
+    }
+    return [0.0, 0.0];
+}
+
+function setCurseOfXPos(anim:String)
+{
+    if (curseOfX == null) return;
+    var off:Array<Float> = getCurseOfXOffset(anim);
+    curseOfX.x = curseOfXBaseX + off[0];
+    curseOfX.y = curseOfXBaseY + off[1];
+}
+
+function moveCurseOfX(anim:String)
+{
+    if (curseOfX == null) return;
+    if (curseOfXMoveTween != null && curseOfXMoveTween.active) curseOfXMoveTween.cancel();
+
+    var off:Array<Float> = getCurseOfXOffset(anim);
+    var targetX:Float = curseOfXBaseX + off[0];
+    var targetY:Float = curseOfXBaseY + off[1];
+
+    curseOfXMoveTween = FlxTween.tween(curseOfX, {x: targetX, y: targetY}, 0.1, {
+        ease: FlxEase.quadOut,
+        onComplete: (_) -> {
+            curseOfXMoveTween = FlxTween.tween(curseOfX, {x: curseOfXBaseX, y: curseOfXBaseY}, 0.2, {ease: FlxEase.quadInOut});
+        }
+    });
+}
+
+function playCurseOfXIdle()
+{
+    if (curseOfX == null) return;
+    if (curseOfXMoveTween != null && curseOfXMoveTween.active) curseOfXMoveTween.cancel();
+    curseOfX.playAnim('idle', true);
+    if (curseOfX.animation.curAnim != null) curseOfX.animation.curAnim.looped = true;
+    setCurseOfXPos('idle');
+}
+
+function flickerCurseOfX()
+{
+    if (curseOfX == null) return;
+    if (curseOfXFlickerTween != null && curseOfXFlickerTween.active) curseOfXFlickerTween.cancel();
+
+    curseOfX.alpha = 0;
+    curseOfXFlickerTween = FlxTween.num(0, 1, curseOfXHoldTime, {
+        ease: FlxEase.linear,
+        onComplete: (_) -> {
+            if (curseOfX != null) curseOfX.alpha = 0;
+            curseOfXFlickerTween = null;
+        }
+    }, v -> {
+        if (curseOfX == null) return;
+        var pulse:Float = Math.abs(Math.sin(v * Math.PI * curseOfXFlickerCount));
+        curseOfX.alpha = curseOfXMaxAlpha * pulse * (1.0 - v * 0.1);
+    });
+}
+
+function playCurseOfXPose(noteData:Int)
+{
+    if (curseOfX == null) return;
+
+    var anim:String = getCurseOfXAnim(noteData);
+    if (!curseOfX.hasAnimation(anim)) return;
+
+    curseOfX.playAnim(anim, true);
+    curseOfX.holdTimer = 0;
+    curseOfXHold = curseOfXHoldTime;
+    moveCurseOfX(anim);
+    flickerCurseOfX();
+}
+
+function updateCurseOfX(elapsed:Float)
+{
+    if (curseOfX == null || curseOfXHold <= 0) return;
+
+    curseOfXHold -= elapsed;
+    if (curseOfXHold <= 0)
+    {
+        curseOfXHold = 0;
+        playCurseOfXIdle();
+    }
 }
 
 function cursetween(spr:FlxSprite, alpha:Float, duration:Float, ?color:Int)
@@ -555,8 +599,8 @@ function onEvent(name:String, value1:String, value2:String)
 function onUpdatePost(elapsed:Float) 
 {
     wavyness += (elapsed * wavynessMult);
-    wavyShader.setFloat('iTime', wavyness);
-    wavyShaderHUD.setFloat('iTime', wavyness);
+    if (wavyShader != null) wavyShader.setFloat('iTime', wavyness);
+    if (wavyShaderHUD != null) wavyShaderHUD.setFloat('iTime', wavyness);
 
     if (tails?.animation?.curAnim?.finished == true && tails?.visible == true) 
     {
@@ -594,7 +638,7 @@ function onUpdatePost(elapsed:Float)
     }
 
     updateDadIdle();
-    updatePhase4Idle();
+    updateCurseOfX(elapsed);
     updateTalkRevert();
     updateBrightnessPulse(elapsed);
     updateChromaticPulse(elapsed);
@@ -642,8 +686,6 @@ function onBeatHit()
 
 function onStepHit()
 {
-    updateDadHold();
-
     switch (curStep)
     {
         // negro
@@ -695,8 +737,8 @@ function onStepHit()
         case 558:
             dadPhase = 'nervioso';
             if (dad != null) dad.playAnim('2idle', true);
-            FlxTween.num(0.0, 0.3, 2, null, val -> wavyShader.setFloat('amount', val));
-            FlxTween.num(0.0, 0.3, 2, null, val -> wavyShaderHUD.setFloat('amount', val));
+            FlxTween.num(0.0, 0.3, 2, null, val -> { if (wavyShader != null) wavyShader.setFloat('amount', val); });
+            FlxTween.num(0.0, 0.3, 2, null, val -> { if (wavyShaderHUD != null) wavyShaderHUD.setFloat('amount', val); });
 
         case 752:
             cursetween(cstatic, 0.6, 0.7);
@@ -717,7 +759,12 @@ function onStepHit()
             cursetween(cstatic, 1, 0.7);
 
         case 976:
-            phase4(0, 1, 0.01);
+            dadPhase = 'phase4';
+            if (dad != null)
+            {
+                dad.playAnim('idle4', true);
+                if (dad.animation.curAnim != null) dad.animation.curAnim.looped = true;
+            }
             cursetween(cstatic, 0.5, 0.1);
             cursetween(eggman, 1, 0.1);
             cursetween(knux, 1, 0.1);
@@ -735,20 +782,16 @@ function onStepHit()
         case 1008, 1040, 1072, 1104, 1136, 1168, 1200:
             cursetween(cstatic, 0.5, 0.6);
 
-        case 1170:
-            dadPhase = 'happy';
-            if (dad != null) dad.playAnim('idle', true);
-
-
         case 1231:
             game.getLuaObject('iconOpp').changeIcon('cursehappy');
-            phase4(1, 0, 0.1);
+            dadPhase = 'happy';
+            if (dad != null) dad.playAnim('idle', true);
             cursetween(eggman, 0, 0.1);
             cursetween(knux, 0, 0.1);
             cursetween(tails2, 0, 0.1);
 
-            FlxTween.num(0.3, 0.0, 0.2, null, val -> wavyShader.setFloat('amount', val));
-            FlxTween.num(0.3, 0.0, 0.2, null, val -> wavyShaderHUD.setFloat('amount', val));
+            FlxTween.num(0.3, 0.0, 0.2, null, val -> { if (wavyShader != null) wavyShader.setFloat('amount', val); });
+            FlxTween.num(0.3, 0.0, 0.2, null, val -> { if (wavyShaderHUD != null) wavyShaderHUD.setFloat('amount', val); });
             cursetween(cstatic, 0, 0.1);
             cursetween(vieja, 1, 0.1);
             cursetween(idle, 1, 0.1);
@@ -816,20 +859,7 @@ function getDadSingAnim(noteData:Int):String
 function opponentNoteHit(note)
 {
     if (note.gfNote || note.noAnimation || note.noteType == 'Hey!' || note.noteType == 'GF2Sing') return;
-    if (phase4Copy != null && phase4Copy.alpha > 0.01)
-    {
-        var p4anim:String = getPhase4SingAnim(note.noteData);
-        if (phase4Copy.hasAnimation(p4anim))
-        {
-            phase4Copy.playAnim(p4anim, true);
-            phase4Copy.holdTimer = 0;
-
-            FlxTween.cancelTweensOf(curseOfX);
-            curseOfX.playAnim(game.singAnimations[note.noteData], true);
-            curseOfX.alpha = 0.75;
-            FlxTween.tween(curseOfX, {alpha: 0}, 0.25, {ease: FlxEase.cubeOut});
-        }
-    }
+    if (dadPhase == 'phase4') playCurseOfXPose(note.noteData);
     if (dad != null && dadPhase != 'happy' && dad.alpha > 0.01)
     {
         var anim:String = getDadSingAnim(note.noteData);
@@ -1022,9 +1052,4 @@ function updateGlitch(elapsed:Float)
         }
         glitchShader.setFloat('AMT', glitchAMT);
     }
-}
-
-function updateDadHold()
-{
-    if (phase4Copy != null) phase4Copy.singDuration = 999999.0;
 }

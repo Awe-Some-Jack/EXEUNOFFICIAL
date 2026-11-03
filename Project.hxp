@@ -224,7 +224,7 @@ class Project extends HXProject
 
         if (defines.exists("final"))
         {
-            haxeflags.push("-no-traces");
+            haxeflags.push("--no-traces");
         }
 
         if (FileSystem.exists("keys.xml"))

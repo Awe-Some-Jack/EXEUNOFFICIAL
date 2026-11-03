@@ -613,11 +613,10 @@ class Player extends FlxSprite implements CameraTarget
 		if (_knockTimer > 0 && lockedAnim != "slide") _knockTimer = 0;
 		if (_knockTimer > 0)
 		{
-			_knockTimer -= elapsed;
-			
 			if (coyoteTimer > 0 && isGrounded)
 			{
 				mode = Ground;
+				_knockTimer -= elapsed;
 				body.velocity.x = _approach(body.velocity.x, 0, 520.0 * elapsed);
 				_projectOnSlope();
 				_glue(elapsed);
@@ -627,14 +626,15 @@ class Player extends FlxSprite implements CameraTarget
 					_dustTimer = 0.05;
 					_puff(body.velocity.x > 0 ? 1 : -1, 1, 50);
 				}
+
+				if (_knockTimer <= 0 && isGrounded)
+				{
+					lockedAnim = null;
+					_landTimer = _squatTimer = 0.25;
+					_squash(0.1, 0.18);
+				}
 			}
-			
-			if (_knockTimer <= 0 && isGrounded)
-			{
-				lockedAnim = null;
-				_landTimer = _squatTimer = 0.25;
-				_squash(0.1, 0.18);
-			}
+
 			return false;
 		}
 

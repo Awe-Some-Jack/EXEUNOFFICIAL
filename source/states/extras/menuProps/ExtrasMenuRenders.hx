@@ -18,11 +18,6 @@ class ExtrasMenuRenders extends FlxSpriteGroup{
     public var selectionIndex:Int = 0;
     private var rendersEntry:Array<RenderEntry> = [
         {
-            src: "4",
-            animName: "sunkia",
-            type: "atlas" 
-        },
-        {
             src: "3",
             animName: "characters",
             type: "sparrow"

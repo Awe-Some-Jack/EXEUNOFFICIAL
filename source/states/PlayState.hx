@@ -823,7 +823,6 @@ class PlayState extends MusicBeatState
 		}
 
 		var oppChar:String = SONG.player2;
-		if (Paths.formatToSongPath(SONG.song) == 'soulless' && ClientPrefs.data.lowQuality) oppChar = 'p2doll-potato';
 		dad = new Character(0, 0, oppChar);
 		startCharacterPos(dad, true);
 		dadGroup.add(dad);

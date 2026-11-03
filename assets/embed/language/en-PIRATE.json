@@ -38,7 +38,9 @@
 	"options.visuals": "SPYGLASS",
 	"options.visuals.labels": ["HIDE HUD", "FLASHING LIGHTS", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS COUNTER"],
 	"options.gameplay": "SEAFARIN'",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO", "SCUTTLE SAVE DATA"],
+	"options.reset.select": "SELECT",
+	"options.reset.confirm": "YE SURE?",
 	"options.graphics": "GRAPHICS",
 	"options.graphics.labels": ["ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "FRAMERATE", "SAFE SYNC"],
 	"options.language": "TONGUE",
@@ -206,6 +208,6 @@
 	"sonichu_reveal_2": "Brace yerself, fer this be the end.",
 	"sonichu_reveal_3": "Me final power...",
 
-	"warning_text_main": "AHOY MATEY.\n\n'Fore ye set sail any further, ye must know this voyage holds flashin' lights and fits.\n\nIf ye be feelin' seasick or triggered by such sights, DO NOT PLAY THIS AND ABANDON SHIP.\n\nAlso, if yer vessel be a rickety one, consider lowerin' the shader quality.\n\nViewer discretion be advised, arrr.",
+	"warning_text_main": "AHOY MATEY.\n\n'Fore ye set sail any further, ye must know this voyage holds flashin' lights and fits.\n\nIf ye be feelin' seasick or triggered by such sights, DO NOT PLAY THIS AND ABANDON SHIP.\n\nAlso, if yer vessel be a rickety one, ye may run into trouble loadin' the cargo. Consider lowerin' the shader quality or sailin' on a vessel with more RAM.\n\nViewer discretion be advised, arrr.",
 	"warning_text_enter": "Press Enter T' Continue."
 }

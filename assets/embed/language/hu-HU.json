@@ -38,7 +38,9 @@
 	"options.visuals": "VIZUÁLIS",
 	"options.visuals.labels": ["ELREJTETT HUD", "VILLOGÓ FÉNYEK", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS SZÁMLÁLÓ"],
 	"options.gameplay": "JÁTÉK",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMELT HANG"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMELT HANG", "MENTÉS TÖRLÉSE"],
+	"options.reset.select": "VÁLASZT",
+	"options.reset.confirm": "BIZTOS?",
 	"options.graphics": "GRAFIKAI",
 	"options.graphics.labels": ["ANTI ALIASING", "GPU CACHING", "SHADER MINŐSÉG", "SHADEREK", "FRAMERATE", "BIZTONSÁGOS SZINKRON"],
 	"options.language": "NYELV",
@@ -213,6 +215,6 @@
 	"sonichu_reveal_2": "Készülj fel, mert ez a vég.",
 	"sonichu_reveal_3": "Az utolsó erőm...",
 
-	"warning_text_main": "ÜDVÖZÖLLEK.\n\nMielőtt továbbmennél, tudnod kell, hogy ez a mod villogó fényeket és rohamokat kiváltó effekteket tartalmaz.\n\nHa kényelmetlenül érzed magad, vagy érzékeny vagy ezekre az eseményekre, NE JÁTSSZ EZZEL, ÉS ZÁRD BE A JÁTÉKOT.\n\nTovábbá, ha az eszközöd gyengébb, fontold meg a shader minőség csökkentését.\n\nNézői mérlegelés javasolt.",
+	"warning_text_main": "ÜDVÖZÖLLEK.\n\nMielőtt továbbmennél, tudnod kell, hogy ez a mod villogó fényeket és rohamokat kiváltó effekteket tartalmaz.\n\nHa kényelmetlenül érzed magad, vagy érzékeny vagy ezekre az eseményekre, NE JÁTSSZ EZZEL, ÉS ZÁRD BE A JÁTÉKOT.\n\nTovábbá, ha az eszközöd gyengébb, betöltési problémák léphetnek fel. Fontold meg a shader minőség csökkentését, vagy játssz több RAM-mal rendelkező eszközön.\n\nNézői mérlegelés javasolt.",
 	"warning_text_enter": "Nyomd meg az Entert a folytatáshoz."
 }

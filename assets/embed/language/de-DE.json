@@ -38,7 +38,9 @@
 	"options.visuals": "OPTIK",
 	"options.visuals.labels": ["HUD AUSBLENDEN", "BLINKENDE LICHTER", "KAMERA-ZOOM", "SCORE-ZOOM", "FPS-ANZEIGE"],
 	"options.gameplay": "GAMEPLAY",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK-FENSTER", "GOOD-FENSTER", "BAD-FENSTER", "SICHERE FRAMES", "AUDIO-STREAMING"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK-FENSTER", "GOOD-FENSTER", "BAD-FENSTER", "SICHERE FRAMES", "AUDIO-STREAMING", "SPIELSTAND LÖSCHEN"],
+	"options.reset.select": "AUSWÄHLEN",
+	"options.reset.confirm": "SICHER?",
 	"options.graphics": "GRAFIK",
 	"options.graphics.labels": ["KANTENGLÄTTUNG", "GPU-CACHING", "SHADER-QUALITÄT", "SHADER", "FRAMERATE", "SICHERE SYNC"],
 	"options.language": "SPRACHE",
@@ -207,6 +209,6 @@
 	"sonichu_reveal_2": "Mach dich bereit, denn das ist das Ende.",
 	"sonichu_reveal_3": "Meine letzte Kraft...",
 
-	"warning_text_main": "WILLKOMMEN.\n\nBevor du fortfährst, musst du dir bewusst sein, dass dieser Mod blinkende Lichter und potenziell anfallsauslösende Effekte enthält.\n\nWenn du dich unwohl fühlst oder durch solche Ereignisse getriggert wirst, SPIELE DIES NICHT UND SCHLIESSE DAS SPIEL.\n\nAußerdem: Wenn dein Gerät leistungsschwächer ist, solltest du die Shader-Qualität senken.\n\nZuschauerdiskretion wird empfohlen.",
+	"warning_text_main": "WILLKOMMEN.\n\nBevor du fortfährst, musst du dir bewusst sein, dass dieser Mod blinkende Lichter und potenziell anfallsauslösende Effekte enthält.\n\nWenn du dich unwohl fühlst oder durch solche Ereignisse getriggert wirst, SPIELE DIES NICHT UND SCHLIESSE DAS SPIEL.\n\nAußerdem: Wenn dein Gerät leistungsschwächer ist, können Probleme beim Laden auftreten. Bitte senke die Shader-Qualität oder spiele auf einem Gerät mit mehr RAM.\n\nZuschauerdiskretion wird empfohlen.",
 	"warning_text_enter": "Drücke Enter, um fortzufahren."
 }

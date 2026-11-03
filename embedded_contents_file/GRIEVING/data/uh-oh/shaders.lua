@@ -54,24 +54,29 @@ function onCreatePost()
         end
     end
     if shadersEnabled and not lowQuality then
-        for _,char in ipairs({'dad', 'boyfriend'}) do
-			setSpriteShader(char, 'DropShadowShader')
-			setShaderFloat(char, 'hue', 0)
-			setShaderFloat(char, 'saturation', 0)
-			setShaderFloat(char, 'contrast', 0)
-			setShaderFloat(char, 'str', 1)
-			setShaderFloat(char, 'brightness', -30)
-            setShaderFloat(char, 'thr', 0.1)
-            setShaderFloat(char, 'uSpriteAlpha', 1.0)
-            setShaderFloat(char, 'AA_STAGES', 1.0)
-			setShaderFloatArray(char, 'dropColor', {255 / 255, 0 / 255, 0 / 255})
-			runHaxeFunction('setShaderFrameInfo', {char})
-		end
-		setShaderFloat('dad', 'ang', math.rad(75))
-		setShaderFloat('dad', 'dist', 10)
-		setShaderFloat('boyfriend', 'dist', 0)
-		setShaderFloat('boyfriend', 'brightness', -40)
-		setShaderFloat('boyfriend', 'contrast', 15)
+        setSpriteShader('dad', 'DropShadowShader')
+        setShaderFloat('dad', 'hue', 0)
+        setShaderFloat('dad', 'saturation', 0)
+        setShaderFloat('dad', 'contrast', 0)
+        setShaderFloat('dad', 'str', 1)
+        setShaderFloat('dad', 'brightness', -30)
+        setShaderFloat('dad', 'thr', 0.1)
+        setShaderFloat('dad', 'uSpriteAlpha', 1.0)
+        setShaderFloat('dad', 'AA_STAGES', 1.0)
+        setShaderFloatArray('dad', 'dropColor', {255 / 255, 0 / 255, 0 / 255})
+        runHaxeFunction('setShaderFrameInfo', {'dad'})
+        setShaderFloat('dad', 'ang', math.rad(75))
+        setShaderFloat('dad', 'dist', 10)
+
+        runHaxeCode([[
+            import shaders.AdjustColorShader;
+            var playerColor = new AdjustColorShader();
+            playerColor.brightness = -27;
+            playerColor.contrast = -19;
+            playerColor.hue = -10;
+            playerColor.saturation = -9;
+            game.boyfriend.shader = playerColor;
+        ]])
 
         local neutrals = {
             chrom = {amount = 0},

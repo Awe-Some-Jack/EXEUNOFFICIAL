@@ -560,10 +560,25 @@ class PlayState extends MusicBeatState
 				FlxG.fullscreen = true;
 			}
 			#end
+
+			refreshScaleAfterLetterbox();
 		}
 		#end
 
 		return value;
+	}
+
+	static function refreshScaleAfterLetterbox():Void
+	{
+		var frames:Int = 0;
+		var fix:Void->Void = null;
+		fix = () -> {
+			frames++;
+			if (FlxG.scaleMode.deviceSize.x != FlxG.stage.stageWidth || FlxG.scaleMode.deviceSize.y != FlxG.stage.stageHeight)
+				@:privateAccess FlxG.game.onResize(null);
+			if (frames >= 120) FlxG.signals.postUpdate.remove(fix);
+		};
+		FlxG.signals.postUpdate.add(fix);
 	}
 
 	public static function fullscreenLetterbox():Void
@@ -3742,7 +3757,7 @@ class PlayState extends MusicBeatState
         save.data.songs ??= [];
         var unlocked:Array<String> = save.data.songs;
 
-        if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong || isStoryMode || formattedSong == 'burning')
+        if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong || isStoryMode || ['mania', 'fatality', 'burning', 'godspeed'].contains(formattedSong))
         {
             states.EXEMenu.secretSong = false;
 

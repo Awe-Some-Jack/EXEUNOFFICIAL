@@ -527,7 +527,7 @@ class Cutscene extends SonicSubState
         {
             for (i in 0...videoEntries.length)
             {
-                final lbl = new FlxText(50.0, 180.0 + (i * 58.0), 0, videoEntries[i].displayName.toUpperCase(), Language.cjkSize(88));
+                final lbl = new FlxText(50.0, 180.0 + (i * 58.0), 0, Language.upper(videoEntries[i].displayName), Language.cjkSize(88));
                 lbl.setFormat(Paths.font("bigass.otf"), Language.cjkSize(60), FlxColor.WHITE, LEFT);
                 lbl.setBorderStyle(OUTLINE_FAST, FlxColor.BLACK, Language.cjkBorder(8));
                 lbl.antialiasing = ClientPrefs.data.antialiasing;

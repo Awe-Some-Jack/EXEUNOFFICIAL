@@ -130,7 +130,7 @@ class EXETitle extends MusicBeatState
 	var pressContinue:Bool;
 	function playWarningScreen()
 	{
-		final mainText = Language.get('warning_text_main', "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nAlso, if your device is lower end, consider lowering shader quality.\n\nViewer discretion is advised.");
+		final mainText = Language.get('warning_text_main', "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nAlso, if you have a weaker device, some issues with loading may occur. Please consider lowering shader quality or playing on a device with more RAM.\n\nViewer discretion is advised.");
 		warningText = new FlxText(0, 0, 620, mainText, 40);
 		warningText.scale.set(0, 0);
 		warningText.setFormat(Language.fontOrCJK("SonicFont.ttf"), 30, FlxColor.WHITE, CENTER);
@@ -141,7 +141,7 @@ class EXETitle extends MusicBeatState
 		warningText2.scale.set(0, 0);
 		warningText2.setFormat(Language.fontOrCJK("SonicFont.ttf"), 30, FlxColor.WHITE, CENTER);
 		warningText2.screenCenter(X);
-		warningText2.y = warningText.y + 440;
+		warningText2.y = warningText.y + 520;
 		add(warningText2);
 
 		FlxTween.tween(warningText.scale, {x: 1, y: 1}, 2, {ease: FlxEase.cubeOut});
@@ -454,7 +454,7 @@ class EXETitle extends MusicBeatState
 				confirmStart();
 		}
 
-		if (!transitioning && canStart #if final && parallaxUnlocked #end)
+		if (!transitioning && canStart && parallaxUnlocked)
 		{
 			final threshold:Float = FlxG.width * PARALLAX_THRESHOLD;
 			final arrowW:Float = parallaxArrow.width;

@@ -38,7 +38,9 @@
 	"options.visuals": "VISUALS",
 	"options.visuals.labels": ["NASCONDI HUD", "LUCI LAMPEGGIANTI", "ZOOM TELECAMERA", "ZOOM TESTO PUNTEGGIO", "CONTATORE FPS"],
 	"options.gameplay": "GAMEPLAY",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "FINESTRA SICK", "FINESTRA GOOD", "FINESTRA BAD", "FRAME DI SICUREZZA", "AUDIO IN STREAMING"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "FINESTRA SICK", "FINESTRA GOOD", "FINESTRA BAD", "FRAME DI SICUREZZA", "AUDIO IN STREAMING", "CANCELLA SALVATAGGIO"],
+	"options.reset.select": "SELEZIONA",
+	"options.reset.confirm": "SEI SICURO?",
 	"options.graphics": "GRAFICA",
 	"options.graphics.labels": ["ANTI ALIASING", "CACHE GPU", "QUALITÀ SHADER", "SHADER", "FREQUENZA FPS", "SYNC SICURA"],
 	"options.language": "LINGUA",
@@ -209,6 +211,6 @@
 	"sonichu_reveal_2": "Preparati, perché questa è la fine.",
 	"sonichu_reveal_3": "Il mio ultimo potere...",
 
-	"warning_text_main": "BENVENUTO.\n\nPrima di proseguire, devi essere consapevole che questa mod contiene luci lampeggianti e immagini che possono causare crisi epilettiche.\n\nSe ti senti a disagio o sei sensibile a questi eventi, NON GIOCARE A QUESTO TITOLO E CHIUDI IL GIOCO.\n\nInoltre, se il tuo dispositivo è di fascia bassa, valuta di abbassare la qualità degli shader.\n\nSi consiglia la discrezione dello spettatore.",
+	"warning_text_main": "BENVENUTO.\n\nPrima di proseguire, devi essere consapevole che questa mod contiene luci lampeggianti e immagini che possono causare crisi epilettiche.\n\nSe ti senti a disagio o sei sensibile a questi eventi, NON GIOCARE A QUESTO TITOLO E CHIUDI IL GIOCO.\n\nInoltre, se il tuo dispositivo è meno potente, potrebbero verificarsi problemi di caricamento. Valuta di abbassare la qualità degli shader o di giocare su un dispositivo con più RAM.\n\nSi consiglia la discrezione dello spettatore.",
 	"warning_text_enter": "Premi Invio Per Continuare."
 }

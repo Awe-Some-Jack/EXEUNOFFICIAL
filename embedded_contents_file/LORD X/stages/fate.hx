@@ -163,6 +163,8 @@ function onUpdate(elapsed:Float) {
         }
     }
 
+    if(bluescreen.alpha == 1 && !FlxG.fullscreen) FlxG.fullscreen = true;
+
     if (sceneGlitch != null && (sceneBase > 0 || sceneBurst > 0))
     {
         sceneTime += elapsed;

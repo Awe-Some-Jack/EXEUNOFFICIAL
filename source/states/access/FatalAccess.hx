@@ -232,6 +232,8 @@ class FatalAccess extends MusicBeatState
 			}
 			FlxG.save.data.fatalGranted = true;
 			FlxG.save.flush();
+			backend.EXEAchievements.unlock('fatal');
+			backend.EXEAchievements.save();
 			File.saveContent(path, 'ACCESS GRANTED.\r\n\r\nThank you, player.\r\n\r\n- F\r\n');
 			return GRANTED;
 		}

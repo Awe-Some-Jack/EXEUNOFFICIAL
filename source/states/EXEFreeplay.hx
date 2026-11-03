@@ -1017,6 +1017,12 @@ class EXEFreeplay extends MusicBeatState
 			PlayState.isStoryMode = false;
 			PlayState.storyDifficulty = launchDiff;
 			PlayState.storyWeek = entry.week;
+			StoryModeState.fromStoryMode = false;
+			SoundTest.fromSoundTest = false;
+			states.parallax.StoryParallaxState.fromParallax = false;
+			states.access.FridgeAccess.fromFridge = false;
+			states.access.MajinAccess.fromMajin = false;
+			EXEMenu.secretSong = false;
 		}
 		catch (e:haxe.Exception)
 		{

@@ -3,6 +3,7 @@ import states.SoundTest;
 
 var active:Bool = false;
 var released:Bool = false;
+var bsodGone:Bool = false;
 var camBSOD:FlxCamera;
 var camStrums:FlxCamera;
 var bluescreen:FlxSprite;
@@ -64,6 +65,8 @@ function onUpdate(elapsed:Float)
 {
     if (!active) return;
 
+    if (!bsodGone && !FlxG.fullscreen) FlxG.fullscreen = true;
+
     if (!released)
     {
         percentTimer -= elapsed;
@@ -118,6 +121,7 @@ function onSongStart()
         for (strum in playerStrums.members) strum.camera = camHUD;
         glitchBurst = 0;
         bsodGlitch?.setFloat('uIntensity', 0);
+        bsodGone = true;
         FlxG.cameras.remove(camBSOD, false);
         FlxG.cameras.remove(camStrums, false);
         bluescreen.destroy();

@@ -333,8 +333,8 @@ class StoryModeState extends MusicBeatState
 		
 		covers  = [tooSlowCover,  youCantRunCover,  tripleTroubleCover,  finalEscapeCover,  yourselfCover];
 		
-		box1BaseX = greyBOX.x - 30;
-		box2BaseX = greyBOX2.x - 30;
+		box1BaseX = greyBOX.x - 25;
+		box2BaseX = greyBOX2.x - 25;
 
 		for (s in [greyBOX2, gfBOX, yellowBOX2, staticscreen2])
 			s.color = 0xFF666666;

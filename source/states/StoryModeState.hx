@@ -626,6 +626,12 @@ class StoryModeState extends MusicBeatState
 	public static final STORY_SONGS:Array<String> = ['too-slow', 'you-cant-run', 'triple-trouble', 'final-escape', 'yourself'];
 	static final STORY_MOD:String = 'STORY MODE';
 
+	function buildPlaylist(startIndex:Int):Array<String>
+	{
+		if (FlxG.save.data.storyModeDone) return [STORY_SONGS[startIndex]];
+		return STORY_SONGS.slice(startIndex).filter(song -> song == STORY_SONGS[startIndex] || song != 'yourself');
+	}
+
 	function launchSong():Void
 	{
 		if (selectedCover < 0 || selectedCover >= STORY_SONGS.length) return;
@@ -645,7 +651,7 @@ class StoryModeState extends MusicBeatState
 		{
 			Song.loadFromJson(Highscore.formatSong(songLower, launchDiff), songLower);
 			PlayState.isStoryMode     = true;
-			PlayState.storyPlaylist   = STORY_SONGS.slice(curIndex).filter(song -> song == songLower || song != 'yourself');
+			PlayState.storyPlaylist   = buildPlaylist(curIndex);
 			PlayState.storyDifficulty = launchDiff;
 		}
 		catch (e:haxe.Exception)

@@ -40,7 +40,7 @@
 	"options.gameplay": "JUGABILIDAD",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "VENTANA SICK", "VENTANA GOOD", "VENTANA BAD", "FRAMES DE SEGURIDAD", "AUDIO EN STREAMING"],
 	"options.graphics": "GRÁFICOS",
-	"options.graphics.labels": ["MODO PATATA", "ANTIALIASING", "CACHÉ DE GPU", "CALIDAD DE SHADERS", "SHADERS", "TASA DE FPS", "SINCRONÍA SEGURA"],
+	"options.graphics.labels": ["ANTIALIASING", "CACHÉ DE GPU", "CALIDAD DE SHADERS", "SHADERS", "TASA DE FPS", "SINCRONÍA SEGURA"],
 	"options.language": "IDIOMA",
 	"options.on": "ACTIVADO",
 	"options.off": "DESACTIVADO",
@@ -208,6 +208,6 @@
 	"sonichu_reveal_2": "Prepárate, porque este es el final.",
 	"sonichu_reveal_3": "Mi último poder...",
 
-	"warning_text_main": "BIENVENIDO.\n\nAntes de continuar, debes tener en cuenta que este mod contiene luces parpadeantes y efectos que pueden causar convulsiones.\n\nSi te sientes incómodo o eres sensible a estos eventos, NO JUEGUES ESTO Y CIERRA EL JUEGO.\n\nSe recomienda discreción del espectador.",
+	"warning_text_main": "BIENVENIDO.\n\nAntes de continuar, debes tener en cuenta que este mod contiene luces parpadeantes y efectos que pueden causar convulsiones.\n\nSi te sientes incómodo o eres sensible a estos eventos, NO JUEGUES ESTO Y CIERRA EL JUEGO.\n\nAdemás, si tu dispositivo es de gama baja, considera reducir la calidad de los shaders.\n\nSe recomienda discreción del espectador.",
 	"warning_text_enter": "Presiona Enter Para Continuar."
 }

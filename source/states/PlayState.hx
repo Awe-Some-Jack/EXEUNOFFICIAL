@@ -984,6 +984,7 @@ class PlayState extends MusicBeatState
 		{
 			for (event in eventNotes) event.strumTime -= eventEarlyTrigger(event);
 			eventNotes.sort(sortByTime);
+			preloadEventVideos();
 		}
 
 		if (sunkyDeaths > 0 && sunkyDeaths % 5 == 0 && sunkyAskedAt != sunkyDeaths && !cpuControlled && !chartingMode
@@ -1325,6 +1326,44 @@ class PlayState extends MusicBeatState
 	}
 
 	public var videoCutscene:VideoSprite = null;
+	var preloadedVideos:Map<String, VideoSprite> = [];
+	function preloadEventVideos():Void
+	{
+		#if VIDEOS_ALLOWED
+		for (event in eventNotes)
+		{
+			if (event.event != 'Video Player' && event.event != 'Video_Player') continue;
+
+			final settings:Array<String> = (event.value2 ?? '').toLowerCase().split(' ').join('').split(',');
+			if (settings.length < 4 || settings[1] != 'true' || settings[3] != 'true') continue;
+
+			preloadVideo(StringTools.trim((event.value1 ?? '').split(',')[0]), settings[2] == 'true');
+		}
+		#end
+	}
+
+	public function preloadVideo(name:String, loop:Bool = false):Bool
+	{
+		#if VIDEOS_ALLOWED
+		if (name == null || name == '') return false;
+		if (preloadedVideos.exists(name)) return true;
+
+		final filePath:String = Paths.video(name);
+		if (filePath == null) return false;
+
+		final video:VideoSprite = new VideoSprite(0, 0, true);
+		video.camera = camVideo;
+		if (video.precacheVideo(filePath, loop ? [VideoSprite.ARG_LOOPING] : []))
+		{
+			preloadedVideos.set(name, video);
+			return true;
+		}
+
+		video.destroy();
+		#end
+		return false;
+	}
+
 	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = true)
 	{
 		final watchKey:String = endingSong ? '$songName-end' : songName;
@@ -1359,7 +1398,9 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		videoCutscene = new VideoSprite(0, 0, true);
+		final preloaded:VideoSprite = forMidSong && (playOnLoad ?? true) ? preloadedVideos.get(name) : null;
+		if (preloaded != null) preloadedVideos.remove(name);
+		videoCutscene = preloaded ?? new VideoSprite(0, 0, true);
 		videoCutscene.camera = camVideo;
 		videoCutscene.canSkip = canSkip && (forMidSong || cutsceneWatched(watchKey));
 		add(videoCutscene);
@@ -1368,7 +1409,7 @@ class PlayState extends MusicBeatState
 			videoCutscene.onSkip = () -> endVideo();
 		videoCutscene.onEnd(() -> endVideo());
 
-		videoCutscene.onFormat(() -> {
+		final fitVideo:Void->Void = () -> {
 			#if switch
 			final hasFrame = videoCutscene.video != null;
 			#else
@@ -1391,7 +1432,9 @@ class PlayState extends MusicBeatState
 				videoCutscene.video.x = 0;
 				videoCutscene.video.y = 0;
 			}
-		});
+		};
+		videoCutscene.onFormat(fitVideo);
+		if (preloaded != null) fitVideo();
 
 		final loadArgs:Array<String> = loop ? [VideoSprite.ARG_LOOPING] : [];
 		if (playOnLoad) 
@@ -4773,6 +4816,9 @@ class PlayState extends MusicBeatState
 		}
 
 		#if !mac FlxG.stage.window.title = prevWindowTitle; #end
+		FlxSprite.defaultAntialiasing = ClientPrefs.data.antialiasing;
+		for (video in preloadedVideos) video.destroy();
+		preloadedVideos.clear();
 
 		#if LUA_ALLOWED
 		for (lua in luaArray)

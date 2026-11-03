@@ -44,6 +44,7 @@ function onCreate()
 		hellBG.updateHitbox();
 	});
 	hellBG.alpha = 0.0001;
+	hellBG.precacheVideo(Paths.video('../images/hellbent/hellbebt-1'), [VideoSprite.ARG_LOOPING]);
 	hellBG.onEnd(() -> {hellBG.seekToSeconds(0); hellBG.play();});
 	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), hellBG);
 

@@ -40,7 +40,7 @@
 	"options.gameplay": "OYNANIŞ",
 	"options.gameplay.labels": ["AŞAĞI KAYDIRMA", "GHOST TAPPING", "SICK PENCERESİ", "GOOD PENCERESİ", "BAD PENCERESİ", "GÜVENLİ KARELER", "AKIŞ SESİ"],
     "options.graphics": "GRAFİKLER",
-    "options.graphics.labels": ["PATATES MODU", "ANTİ ALYASING", "GPU ÖNBELLEĞE ALMA", "GÖLGELENDİRİCİ KALİTESİ", "GÖLGELENDİRİCİLER", "KARE HIZI", "GÜVENLİ SENKRON"],
+    "options.graphics.labels": ["ANTİ ALYASING", "GPU ÖNBELLEĞE ALMA", "GÖLGELENDİRİCİ KALİTESİ", "GÖLGELENDİRİCİLER", "KARE HIZI", "GÜVENLİ SENKRON"],
 	"options.language": "DİL",
 	"options.on": "AÇIK",
 	"options.off": "KAPALI",
@@ -212,6 +212,6 @@
 	"sonichu_reveal_2": "Hazır ol, çünkü bu son.",
 	"sonichu_reveal_3": "Son gücüm...",
 	
-	"warning_text_main": "HOŞ GELDİNİZ.\n\nDevam etmeden önce, bu modun yanıp sönen ışıklar ve nöbet tetikleyici efektler içerdiğini bilmeniz gerekir.\n\nEğer rahatsız hissediyorsanız veya bu tür efektlere karşı hassasiyetiniz varsa, BUNU OYNAMAYIN VE OYUNU KAPATIN.\n\nİzleyici takdiri tavsiye edilir.",
+	"warning_text_main": "HOŞ GELDİNİZ.\n\nDevam etmeden önce, bu modun yanıp sönen ışıklar ve nöbet tetikleyici efektler içerdiğini bilmeniz gerekir.\n\nEğer rahatsız hissediyorsanız veya bu tür efektlere karşı hassasiyetiniz varsa, BUNU OYNAMAYIN VE OYUNU KAPATIN.\n\nAyrıca, cihazınız düşük seviyeliyse, gölgelendirici kalitesini düşürmeyi düşünün.\n\nİzleyici takdiri tavsiye edilir.",
 	"warning_text_enter": "Devam Etmek İçin Enter'a Basın."
 }

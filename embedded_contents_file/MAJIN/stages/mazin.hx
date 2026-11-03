@@ -32,6 +32,7 @@ function onCreate()
 		commercial.updateHitbox();
 	});
 	commercial.alpha = 0.0001;
+	commercial.precacheVideo(Paths.video('../images/mazin/commercial'), [VideoSprite.ARG_LOOPING]);
 	commercial.onEnd(() -> {commercial.seekToSeconds(0); commercial.play();});
 	game.insert(game.members.indexOf(LuaUtils.getLowestCharacterGroup()), commercial);
 

@@ -854,7 +854,7 @@ function handleMouseLogic() {
 	stoplightHovering = false;
 
 	for(i in 0...numbers.length) {
-		numbersHitbox[i].x = numbers[i].x + 26;
+		numbersHitbox[i].x = isSixSeven && i == 7 ? 10000 : numbers[i].x + 26;
 		numbersHitbox[i].y = numbers[i].y;
 
 		if(inQuestion && !clicked && FlxG.mouse.overlaps(numbersHitbox[i], camOther)) {

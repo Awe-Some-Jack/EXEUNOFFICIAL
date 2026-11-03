@@ -66,6 +66,8 @@ class FatalAccess extends MusicBeatState
 	var _keys:Array<FatalKey> = [];
 	var _keyIndex:Int = 0;
 	var _clock:Float = 0;
+	var _trackStarted:Bool = false;
+	var _trackWait:Float = 0;
 	var _time:Float = 0;
 	var _track:FlxSound;
 	var _voice:FlxSound;
@@ -557,7 +559,7 @@ class FatalAccess extends MusicBeatState
 		{
 			final track = _sound('assets/exe/access/fatal/fatalvoicelines.ogg');
 			_track = track != null ? FlxG.sound.play(track) : null;
-			end = track != null ? track.length / 1000 : 50.9;
+			end = 50.9;
 
 			_at(0.75, () -> _showBox(_line("finally.", '', 0, 0, 0.26, 0.65, 0.48, 0.28)));
 			_at(2.2, () -> _noise(1));
@@ -947,7 +949,13 @@ class FatalAccess extends MusicBeatState
 			_fall.update(elapsed);
 			return;
 		}
-		_clock = _track != null && _track.playing ? _track.time / 1000 : _clock + elapsed;
+		if (_track != null && !_trackStarted)
+		{
+			_trackWait += elapsed;
+			_trackStarted = _track.time > 0 || _trackWait > 1;
+		}
+		if (_track == null || _trackStarted)
+			_clock += elapsed;
 		while (_keyIndex < _keys.length && _clock >= _keys[_keyIndex].at)
 			_keys[_keyIndex++].run();
 	}

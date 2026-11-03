@@ -198,6 +198,13 @@ class ClientPrefs {
 			FlxG.save.flush();
 		}
 
+		if (data.lowQuality)
+		{
+			data.lowQuality = false;
+			FlxG.save.data.lowQuality = false;
+			FlxG.save.flush();
+		}
+
 		if (data.framerate > MAX_FRAMERATE)
 			data.framerate = MAX_FRAMERATE;
 

@@ -337,7 +337,10 @@ function onEvent(n, v1, v2)
 				camGame.visible = false;
 			case 'l1':
 				var p = game.getLuaObject('exeScoreTxt').text.split('|').map(s -> s.split(':'));
-				saveScore = [StringTools.trim(p[0][0]), Std.parseInt(StringTools.trim(p[0][1])), StringTools.trim(p[1][0]), Std.parseInt(StringTools.trim(p[1][1]))];
+				var hasScore = p.length > 1 && p[0].length > 1 && p[1].length > 1;
+				saveScore = hasScore
+					? [StringTools.trim(p[0][0]), StringTools.trim(p[0][1]), StringTools.trim(p[1][0]), StringTools.trim(p[1][1])]
+					: ['Score', Std.string(score), 'Misses', Std.string(misses)];
 				setVar('canChangeTxt', false);
 				game.getLuaObject('exeScoreTxt').text = 'It\'s: ' + saveScore[1] + ' | ' + saveScore[2] + ': ' + saveScore[3];
 			case 'l2': game.getLuaObject('exeScoreTxt').text = 'It\'s: gone | ' + saveScore[2] + ': ' + saveScore[3];

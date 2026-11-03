@@ -2,6 +2,7 @@ import flixel.FlxSprite;
 import flixel.util.FlxTimer;
 import flixel.addons.transition.FlxTransitionableState;
 import backend.Song;
+import backend.EXEAchievements;
 import states.LoadingState;
 import states.PlayState;
 import states.SoundTest;
@@ -223,6 +224,8 @@ function onEndSong() {
         bluescreen.alpha = bsodPercent.alpha = 1;
 
         final formattedSong = Paths.formatToSongPath(PlayState.SONG.song);
+        if (!game.practiceMode && !game.cpuControlled)
+            EXEAchievements.checkSongCompletion(formattedSong, game.songMisses, Math.isNaN(game.ratingPercent) ? 0 : game.ratingPercent);
         game.checkSavedSongs(formattedSong);
         
         PlayState.storyPlaylist.shift();

@@ -40,7 +40,7 @@
 	"options.gameplay": "GAMEPLAY",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"],
 	"options.graphics": "GRAPHICS",
-	"options.graphics.labels": ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "FRAMERATE", "SAFE SYNC"],
+	"options.graphics.labels": ["ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "FRAMERATE", "SAFE SYNC"],
 	"options.language": "LANGUAGE",
 	"options.on": "ON",
 	"options.off": "OFF",
@@ -210,6 +210,6 @@
 	"sonichu_reveal_2": "Get ready, because this is the end.",
 	"sonichu_reveal_3": "My final power...",
 
-	"warning_text_main": "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nViewer discretion is advised.",
+	"warning_text_main": "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nAlso, if your device is lower end, consider lowering shader quality.\n\nViewer discretion is advised.",
 	"warning_text_enter": "Press Enter To Continue."
 }

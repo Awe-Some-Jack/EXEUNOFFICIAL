@@ -100,6 +100,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	var forcedReset:Bool = false;
 	var canRestart:Bool = true;
+	public var canSkip:Bool = true;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -122,11 +123,11 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if(!isEnding)
 		{
-			if (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
+			if (canSkip && (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end))
 			{
 				endBullshit();
 			}
-			else if (controls.BACK #if mobile || backPressed #end)
+			else if (canSkip && (controls.BACK #if mobile || backPressed #end))
 			{
 				#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 				FlxG.camera.visible = false;
@@ -160,7 +161,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 		else
 		{
-			if (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
+			if (canSkip && (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end))
 			{
 				forcedReset = true;
 				FlxG.resetState();

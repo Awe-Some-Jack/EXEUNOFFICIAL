@@ -76,7 +76,7 @@ class YourselfCutscene
 
 		Mods.currentModDirectory = STORY_MOD;
 		WeekData.reloadWeekFiles(false);
-		PlayState.storyWeek = 1;
+		PlayState.storyWeek = 0;
 		Difficulty.loadFromWeek();
 
 		final normalIdx = Lambda.findIndex(Difficulty.list, d -> d.toLowerCase() == 'normal');
@@ -84,10 +84,10 @@ class YourselfCutscene
 
 		try
 		{
-			Song.loadFromJson(song, Highscore.formatSong(song, launchDiff));
+			Song.loadFromJson(Highscore.formatSong(song, launchDiff), song);
 			PlayState.isStoryMode     = true;
 			PlayState.storyPlaylist   = [song];
-			PlayState.storyDifficulty = 1;
+			PlayState.storyDifficulty = launchDiff;
 		}
 		catch (e:haxe.Exception)
 		{

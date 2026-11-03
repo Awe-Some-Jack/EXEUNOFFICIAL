@@ -40,7 +40,7 @@
 	"options.gameplay": "ROZGRYWKA",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "OKNO SICK", "OKNO GOOD", "OKNO BAD", "BEZPIECZNE RAMKI", "STRUMIENIOWANIE AUDIO"],
 	"options.graphics": "GRAFIKA",
-	"options.graphics.labels": ["TRYB ZIEMNIAKA", "ANTYALIASING", "CACHE GPU", "JAKOŚĆ SHADERÓW", "SHADERY", "LICZBA FPS", "BEZPIECZNY SYNC"],
+	"options.graphics.labels": ["ANTYALIASING", "CACHE GPU", "JAKOŚĆ SHADERÓW", "SHADERY", "LICZBA FPS", "BEZPIECZNY SYNC"],
 	"options.language": "JĘZYK",
 	"options.on": "WŁĄCZONE",
 	"options.off": "WYŁĄCZONE",
@@ -212,6 +212,6 @@
 	"sonichu_reveal_2": "Przygotuj się, bo to jest koniec.",
 	"sonichu_reveal_3": "Moja ostatnia moc...",
 
-	"warning_text_main": "WITAJ.\n\nZanim przejdziesz dalej, musisz wiedzieć, że ten mod zawiera migające światła i efekty mogące wywołać napady padaczkowe.\n\nJeśli czujesz się niekomfortowo lub jesteś wrażliwy na takie bodźce, NIE GRAJ W TO I ZAMKNIJ GRĘ.\n\nZalecana jest ostrożność gracza.",
+	"warning_text_main": "WITAJ.\n\nZanim przejdziesz dalej, musisz wiedzieć, że ten mod zawiera migające światła i efekty mogące wywołać napady padaczkowe.\n\nJeśli czujesz się niekomfortowo lub jesteś wrażliwy na takie bodźce, NIE GRAJ W TO I ZAMKNIJ GRĘ.\n\nPonadto, jeśli Twoje urządzenie jest słabsze, rozważ obniżenie jakości shaderów.\n\nZalecana jest ostrożność gracza.",
 	"warning_text_enter": "Naciśnij Enter, aby kontynuować."
 }

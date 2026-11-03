@@ -40,7 +40,7 @@
 	"options.gameplay": "SEAFARIN'",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"],
 	"options.graphics": "GRAPHICS",
-	"options.graphics.labels": ["POTATO MODE", "ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "FRAMERATE", "SAFE SYNC"],
+	"options.graphics.labels": ["ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "FRAMERATE", "SAFE SYNC"],
 	"options.language": "TONGUE",
 	"options.on": "AYE",
 	"options.off": "NAY",
@@ -206,6 +206,6 @@
 	"sonichu_reveal_2": "Brace yerself, fer this be the end.",
 	"sonichu_reveal_3": "Me final power...",
 
-	"warning_text_main": "AHOY MATEY.\n\n'Fore ye set sail any further, ye must know this voyage holds flashin' lights and fits.\n\nIf ye be feelin' seasick or triggered by such sights, DO NOT PLAY THIS AND ABANDON SHIP.\n\nViewer discretion be advised, arrr.",
+	"warning_text_main": "AHOY MATEY.\n\n'Fore ye set sail any further, ye must know this voyage holds flashin' lights and fits.\n\nIf ye be feelin' seasick or triggered by such sights, DO NOT PLAY THIS AND ABANDON SHIP.\n\nAlso, if yer vessel be a rickety one, consider lowerin' the shader quality.\n\nViewer discretion be advised, arrr.",
 	"warning_text_enter": "Press Enter T' Continue."
 }

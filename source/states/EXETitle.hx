@@ -130,7 +130,7 @@ class EXETitle extends MusicBeatState
 	var pressContinue:Bool;
 	function playWarningScreen()
 	{
-		final mainText = Language.get('warning_text_main', "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nViewer discretion is advised.");
+		final mainText = Language.get('warning_text_main', "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nAlso, if your device is lower end, consider lowering shader quality.\n\nViewer discretion is advised.");
 		warningText = new FlxText(0, 0, 620, mainText, 40);
 		warningText.scale.set(0, 0);
 		warningText.setFormat(Language.fontOrCJK("SonicFont.ttf"), 30, FlxColor.WHITE, CENTER);

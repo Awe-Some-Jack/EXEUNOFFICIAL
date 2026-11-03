@@ -56,6 +56,7 @@ function onCreate()
 	introCutscene.camera = camVideo;
 	introCutscene.alpha = 0;
 	game.add(introCutscene);
+	introCutscene.precacheVideo(Paths.video('introdigitalized'));
 	
 	graphic = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
 	graphic.camera = camVideo;

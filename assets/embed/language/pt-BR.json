@@ -40,7 +40,7 @@
 	"options.gameplay": "JOGABILIDADE",
 	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "JANELA INCRIVEL", "JANELA BOA", "JANELA RUIM", "FRAMES SEGUROS", "ÁUDIO EM STREAMING"],
 	"options.graphics": "GRAFICOS",
-	"options.graphics.labels": ["MODO BATATA", "ANTI-ALIASING", "CACHE DE GPU", "QUALIDADE DOS SHADERS", "SHADERS", "TAXA DE QUADROS", "SINCRONIA SEGURA"],
+	"options.graphics.labels": ["ANTI-ALIASING", "CACHE DE GPU", "QUALIDADE DOS SHADERS", "SHADERS", "TAXA DE QUADROS", "SINCRONIA SEGURA"],
 	"options.language": "IDIOMA",
 	"options.on": "ON",
 	"options.off": "OFF",
@@ -210,6 +210,6 @@
 	"sonichu_reveal_2": "Prepare-se, porque este é o fim.",
 	"sonichu_reveal_3": "Meu último poder...",
 
-	"warning_text_main": "BEM-VINDO.\n\nAntes de continuar, saiba que este mod contém luzes piscantes e efeitos que podem causar convulsões.\n\nSe você se sentir desconfortável ou for sensível a isso, NÃO JOGUE E FECHE O JOGO.\n\nRecomenda-se discrição por parte do jogador.",
+	"warning_text_main": "BEM-VINDO.\n\nAntes de continuar, saiba que este mod contém luzes piscantes e efeitos que podem causar convulsões.\n\nSe você se sentir desconfortável ou for sensível a isso, NÃO JOGUE E FECHE O JOGO.\n\nAlém disso, se o seu dispositivo for mais fraco, considere diminuir a qualidade dos shaders.\n\nRecomenda-se discrição por parte do jogador.",
 	"warning_text_enter": "Pressione Enter Para Continuar."
 }

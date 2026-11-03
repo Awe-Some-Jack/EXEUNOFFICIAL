@@ -1064,7 +1064,13 @@ class Monster implements NavAgent
 			else if (_fakerTimer >= 1.0)
 			{
 				_fakerTimer = 0;
-				if (_fakerLeftBehind()) _placeFaker();
+				if (_fakerLeftBehind()) {
+					if (!_placeFaker()) {
+						_fakerPhase = 0;
+						_playAnim(Idle);
+						return SUCCESS;
+					}
+				}
 			}
 			return RUNNING;
 		}
@@ -1323,16 +1329,10 @@ class Monster implements NavAgent
 	function _maybeSuspectNearbyTotem(x:Float, y:Float):Void
 	{
 		final r = 260.0;
-		final busy = _busyTotem();
-		if (busy != null && _dist(_totemFeetX(busy), _totemFeetY(busy), x, y) <= r && FlxG.random.float() < 0.6)
-		{
-			_suspectTotem = busy;
-			return;
-		}
-
-		if (FlxG.random.float() >= 0.25) return;
-		final near = [for (tm in _world.exeTotems()) if (_dist(_totemFeetX(tm), _totemFeetY(tm), x, y) <= r * 0.8) tm];
-		if (near.length > 0) _suspectTotem = near[FlxG.random.int(0, near.length - 1)];
+		final near = [for (tm in _world.exeTotems()) if (_dist(_totemFeetX(tm), _totemFeetY(tm), x, y) <= r) tm];
+		
+		if (near.length > 0 && FlxG.random.float() < 0.85)
+			_suspectTotem = near[FlxG.random.int(0, near.length - 1)];
 	}
 
 	inline function _totemFeetX(t:Totem):Float return t.totemX + @:privateAccess t._sprite.width * 0.5;

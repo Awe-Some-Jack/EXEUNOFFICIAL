@@ -467,10 +467,21 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 			var busyTotem:Totem = null;
 			for (tm in totems) if (tm.isBusy()) { busyTotem = tm; break; }
-			
+
 			if (busyTotem != null)
 			{
-				busyTotem.updateActive(elapsed, busyTotem.getDist());
+				var danger = false;
+				for (m in monsters) {
+					if (!m.isDormant && !m.disguised) {
+						final dx = m.sprite.x - busyTotem.totemX;
+						final dy = m.sprite.y - busyTotem.totemY;
+						if (dx * dx + dy * dy < 280.0 * 280.0) { 
+							danger = true; 
+							break; 
+						}
+					}
+				}
+				busyTotem.updateActive(elapsed, busyTotem.getDist(), danger);
 			}
 			else
 			{
@@ -481,7 +492,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 					final d = tm.getDist();
 					if (d < nearTotemDist) { nearTotemDist = d; nearestTotem = tm; }
 				}
-				nearestTotem?.updateActive(elapsed, nearTotemDist);
+				nearestTotem?.updateActive(elapsed, nearTotemDist, false);
 			}
 
 			var dread = 0.0;

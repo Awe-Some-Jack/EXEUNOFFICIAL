@@ -101,7 +101,7 @@ class MiniTouchPad extends FlxSpriteGroup
 	var runDir:String = null;
 	var lastDown:Map<String, Float> = [];
 
-	public function new(dpadOffsetX:Float = 0)
+	public function new()
 	{
 		super();
 		current = [];
@@ -126,7 +126,7 @@ class MiniTouchPad extends FlxSpriteGroup
 		dpadRadius = dpadSize / 2;
 		buttonRadius = buttonSize / 2;
 
-		final dpadX = MARGIN + dpadOffsetX;
+		final dpadX = MARGIN;
 		final dpadY = FlxG.height - dpadSize - MARGIN;
 		for (s in [dpadIdle, dpadLeft, dpadRight, dpadUp, dpadDown])
 			s.setPosition(dpadX, dpadY);

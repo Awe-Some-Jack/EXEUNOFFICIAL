@@ -174,7 +174,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 		FlxG.cameras.add(uiCam, false);
 
 		#if mobile
-		add(new minigames.MiniTouchPad(190));
+		add(new minigames.MiniTouchPad());
 		#end
 
 		_mapParts = BGValley.loadParts(MAP_PARTS);

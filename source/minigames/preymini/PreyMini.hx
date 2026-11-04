@@ -92,7 +92,7 @@ class PreyMini extends MusicBeatState
 		FlxG.cameras.add(overlay, false);
 
 		#if mobile
-		add(new minigames.MiniTouchPad(overlay));
+		add(new minigames.MiniTouchPad());
 		#end
 
 		_bg = new BGPrey(this, overlay);

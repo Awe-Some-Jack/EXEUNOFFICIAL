@@ -1412,6 +1412,12 @@ class PlayState extends MusicBeatState
 		}
 
 		#if VIDEOS_ALLOWED
+		if (!(playOnLoad ?? true))
+		{
+			if (!preloadVideo(name, loop)) trace('Failed to precache video: $name');
+			return;
+		}
+
 		inCutscene = !forMidSong;
 		canPause = forMidSong;
 
@@ -1424,7 +1430,7 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		final preloaded:VideoSprite = forMidSong && (playOnLoad ?? true) ? preloadedVideos.get(name) : null;
+		final preloaded:VideoSprite = forMidSong ? preloadedVideos.get(name) : null;
 		if (preloaded != null) preloadedVideos.remove(name);
 		videoCutscene = preloaded ?? new VideoSprite(0, 0, true);
 		videoCutscene.camera = camVideo;
@@ -1466,7 +1472,7 @@ class PlayState extends MusicBeatState
 		final loadArgs:Array<String> = loop ? [VideoSprite.ARG_LOOPING] : [];
 
 		#if !switch
-		if (!forMidSong && playOnLoad)
+		if (!forMidSong)
 		{
 			final failVideo:String->Void = (reason:String) -> {
 				if (videoEnded) return;
@@ -1494,19 +1500,10 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (playOnLoad) 
-		{
-			if(videoCutscene.loadVideo(filePath, loadArgs)) {
-				videoCutscene.playDelayed();
-			} else {
-				if(!forMidSong) startAndEnd();
-			}
-		} 
-		else 
-		{
-			if (!videoCutscene.precacheVideo(filePath, loadArgs)) {
-				trace('Failed to precache video: $name');
-			}
+		if(videoCutscene.loadVideo(filePath, loadArgs)) {
+			videoCutscene.playDelayed();
+		} else {
+			if(!forMidSong) startAndEnd();
 		}
 		#else
 		FlxG.log.warn('Platform not supported!');

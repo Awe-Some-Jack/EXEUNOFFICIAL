@@ -111,33 +111,9 @@ class BIOSLoadingState extends SonicSubState
 		{
 			if (currentIndex < totalPairs)
 			{
-				var p = pairsToProcess[currentIndex];
-				try
-				{
-					Mods.currentModDirectory = p.mod;
-					final ch = new objects.Character(0, 0, p.charId, false);
-					ch.update(1 / 60);
-					ch.update(1 / 60);
-					ch.update(1 / 60);
-
-					var animName:String = null;
-					if (ch.danceIdle && ch.hasAnimation('danceLeft')) animName = 'danceLeft';
-					else if (ch.hasAnimation('idle')) animName = 'idle';
-					else if (ch.hasAnimation('danceLeft')) animName = 'danceLeft';
-
-					if (animName != null) ch.playAnim(animName, true, false, 0);
-					final fp = BIOSCharacter.capture(ch);
-					if (fp != null && fp.width > 0 && fp.height > 0)
-					{
-						final owned = new BitmapData(fp.width, fp.height, true, 0x00000000);
-						owned.copyPixels(fp, fp.rect, new Point(0, 0));
-						captured.push({key: '${p.mod}|${p.charId}', bmp: owned, offX: ch.offset.x, offY: ch.offset.y});
-					}
-
-					ch.destroy();
-					Paths.freeGraphicsFromMemory();
-				}
-				catch (e:Dynamic) {}
+				final p = pairsToProcess[currentIndex];
+				final c = BIOSCharacter.captureOne(p.mod, p.charId);
+				if (c != null) captured.push(c);
 
 				currentIndex++;
 

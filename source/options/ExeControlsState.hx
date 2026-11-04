@@ -54,6 +54,10 @@ class ExeControlsState extends ExeBaseOptionsState
 	public static var curSelected:Int = 0;
 	var onKeyboardMode:Bool = true;
 
+	#if mobile
+	var keyboardCheckTimer:Float = 1;
+	#end
+
 	override public function create()
 	{
 		curSelected = 0;
@@ -136,6 +140,20 @@ class ExeControlsState extends ExeBaseOptionsState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		#if mobile
+		keyboardCheckTimer -= elapsed;
+		if (keyboardCheckTimer <= 0 && !introAnimating && !OptionsState.reopenControls)
+		{
+			keyboardCheckTimer = 1;
+			if (!MobileUtil.hasPhysicalKeyboard())
+			{
+				OptionsState.reopenControls = true;
+				playOutro();
+				return;
+			}
+		}
+		#end
 
 		if (introAnimating || backLock) { backLock = false; return; }
 

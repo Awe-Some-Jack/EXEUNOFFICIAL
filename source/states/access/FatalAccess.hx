@@ -114,10 +114,13 @@ class FatalAccess extends MusicBeatState
 	var _winHomeY:Int = 0;
 	var _winTimer:Float = 0;
 
+	static var _remindedThisSession:Bool = false;
+
 	public function new(scene:FatalScene)
 	{
 		super();
 		_scene = scene;
+		if (scene == REMINDER || scene == TRANSMISSION) _remindedThisSession = true;
 	}
 
 	public static function folderPath():String
@@ -146,9 +149,27 @@ class FatalAccess extends MusicBeatState
 	public static function fatalityUnlocked():Bool
 		return backend.SongProgress.beatenSongs().contains('fatality') || backend.SongProgress.openedSongs().contains('fatality');
 
+	public static function grant():Void
+	{
+		FlxG.save.data.fatalGranted = true;
+		FlxG.save.data.fatalDenied = false;
+		FlxG.save.flush();
+		backend.SongProgress.markOpened('fatality');
+		backend.EXEAchievements.unlock('fatal');
+		backend.EXEAchievements.save();
+	}
+
+	public static function repairSave():Void
+	{
+		if (fatalityUnlocked()) return;
+		if (granted() || backend.EXEAchievements.isUnlocked('fatal')) grant();
+	}
+
 	public static function menuScene():Null<FatalScene>
 	{
+		repairSave();
 		if (fatalityUnlocked()) return null;
+		if (_remindedThisSession) return null;
 		#if (mobile || mac)
 		if (granted() || !storyBeaten()) return null;
 		return FlxG.save.data.fatalMobileSeen == true ? REMINDER : TRANSMISSION;
@@ -220,10 +241,16 @@ class FatalAccess extends MusicBeatState
 	{
 		#if (sys && (!mobile || !mac))
 		final path = filePath();
-		if (granted() || denied() || !FileSystem.exists(path)) return null;
+		if (granted() || denied()) return null;
 		try
 		{
-			final answer = _readAnswer(File.getContent(path));
+			var answer:Null<Bool> = null;
+			for (file in _answerFiles())
+			{
+				try { answer = _readAnswer(_readText(file)); }
+				catch (e:Dynamic) {}
+				if (answer != null) break;
+			}
 			if (answer == null) return null;
 			if (!answer)
 			{
@@ -231,10 +258,7 @@ class FatalAccess extends MusicBeatState
 				FlxG.save.flush();
 				return DENIED;
 			}
-			FlxG.save.data.fatalGranted = true;
-			FlxG.save.flush();
-			backend.EXEAchievements.unlock('fatal');
-			backend.EXEAchievements.save();
+			grant();
 			File.saveContent(path, 'ACCESS GRANTED.\r\n\r\nThank you, player.\r\n\r\n- F\r\n');
 			return GRANTED;
 		}
@@ -249,11 +273,69 @@ class FatalAccess extends MusicBeatState
 	static function _readAnswer(content:String):Null<Bool>
 	{
 		final mark = content.lastIndexOf('>');
-		final answer = StringTools.trim(mark >= 0 ? content.substr(mark + 1) : '').toUpperCase();
+		final tail = ~/\\[a-zA-Z]+-?[0-9]* ?/g.replace(mark >= 0 ? content.substr(mark + 1) : '', ' ');
+		final word = ~/[A-Za-z]+/;
+		final answer = word.match(tail) ? word.matched(0).toUpperCase() : '';
 		if (StringTools.startsWith(answer, 'YES') || StringTools.startsWith(answer, 'SI') || answer == 'Y') return true;
 		if (StringTools.startsWith(answer, 'NO') || answer == 'N') return false;
 		return null;
 	}
+
+	#if sys
+	static function _answerFiles():Array<String>
+	{
+		final main = filePath();
+		final files:Array<String> = FileSystem.exists(main) ? [main] : [];
+		try
+		{
+			for (name in FileSystem.readDirectory(folderPath()))
+			{
+				final full = Path.join([folderPath(), name]);
+				if (full != main && StringTools.startsWith(name.toLowerCase(), 'containfatalerror') && !FileSystem.isDirectory(full)) files.push(full);
+			}
+		}
+		catch (e:Dynamic) {}
+		return files;
+	}
+
+	static function _readText(path:String):String
+	{
+		final bytes = File.getBytes(path);
+		if (bytes.length >= 4 && bytes.get(0) == 0x50 && bytes.get(1) == 0x4B) return _docxText(bytes);
+		if (bytes.length >= 2 && bytes.get(0) == 0xFF && bytes.get(1) == 0xFE) return _utf16(bytes, 2, true);
+		if (bytes.length >= 2 && bytes.get(0) == 0xFE && bytes.get(1) == 0xFF) return _utf16(bytes, 2, false);
+		var zeros:Int = 0;
+		for (i in 0...bytes.length) if (bytes.get(i) == 0) zeros++;
+		if (zeros > bytes.length / 4) return _utf16(bytes, 0, bytes.length > 1 && bytes.get(1) == 0);
+		return bytes.toString();
+	}
+
+	static function _utf16(bytes:haxe.io.Bytes, start:Int, little:Bool):String
+	{
+		final buf = new StringBuf();
+		var i = start;
+		while (i + 1 < bytes.length)
+		{
+			final code = little ? bytes.get(i) | (bytes.get(i + 1) << 8) : (bytes.get(i) << 8) | bytes.get(i + 1);
+			buf.addChar(code < 128 ? code : 32);
+			i += 2;
+		}
+		return buf.toString();
+	}
+
+	static function _docxText(bytes:haxe.io.Bytes):String
+	{
+		for (entry in haxe.zip.Reader.readZip(new haxe.io.BytesInput(bytes)))
+		{
+			if (entry.fileName != 'word/document.xml') continue;
+			var xml = haxe.zip.Reader.unzip(entry).toString();
+			xml = ~/<\/w:p>/g.replace(xml, '\n');
+			xml = ~/<[^>]*>/g.replace(xml, '');
+			return StringTools.htmlUnescape(xml);
+		}
+		return '';
+	}
+	#end
 
 	static function _createFile():Void
 	{

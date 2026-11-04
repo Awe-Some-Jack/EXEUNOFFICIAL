@@ -323,8 +323,6 @@ function onCreatePost()
 	{
 		dad.idleSuffix = '-alt';
 		dad.recalculateDanceIdle();
-		gf.idleSuffix = '-alt';
-		gf.recalculateDanceIdle();
 		for (i in 0...game.unspawnNotes.length)
 		{
 			final note:Note = game.unspawnNotes[i];
@@ -948,7 +946,7 @@ function goodNoteHit(note)
 		FlxTween.tween(glitchBFIcon, {alpha: 0}, 1);
 	}
 
-	if (note.noteType == 'Red Ring' || note.noteType == 'Yellow Ring') unlockRingAchievement = false;
+	if (note.noteType == 'Red Ring' || (note.noteType == 'Yellow Ring' && note.texture == 'noteSkins/yellow-ring')) unlockRingAchievement = false;
 }
 
 function opponentNoteHit(note)

@@ -5,7 +5,7 @@ function onCreatePost()
 {
 	if (ClientPrefs.data.shaders)
 	{
-		glitch = new ErrorHandledRuntimeShader('glitch', File.getContent('contents/GENESYS/shaders/glitch.frag'));
+		glitch = new ErrorHandledRuntimeShader('glitch', File.getContent(Paths.mods('GENESYS/shaders/glitch.frag')));
 		game.camGame.filters = [new ShaderFilter(glitch)];
 		//game.camHUD.filters = [new ShaderFilter(glitch)];
 	}

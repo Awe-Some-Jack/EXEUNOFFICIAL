@@ -246,7 +246,7 @@ function onCreatePost()
 	
 	if (prefs.shaders)
 	{
-		rainShader = new ErrorHandledRuntimeShader('fatalrain', File.getContent('contents/FATAL/shaders/fatalrain.frag'));
+		rainShader = new ErrorHandledRuntimeShader('fatalrain', File.getContent(Paths.mods('FATAL/shaders/fatalrain.frag')));
 		rainShader.setFloat('rainIntensity', 0);
 	}
 
@@ -282,6 +282,18 @@ function onCreatePost()
 		}
 		else if (!ClientPrefs.data.middleScroll) strum.x = ((isMobile ? camWidth : FlxG.width) - 10 - (strum.width * 4)) + (strum.width * (i - 4));
 	}
+	if (isMobile && ClientPrefs.data.middleScroll)
+	{
+		var shift:Float = (camWidth - FlxG.width) / 2;
+		var mobileOpponents:Bool = ClientPrefs.data.middlescrollType == 'mobile' || ClientPrefs.data.mobileOpponentNotes;
+		for (i in 0...8)
+		{
+			var strum:StrumNote = game.strumLineNotes.members[i];
+			if (i >= 4 || !mobileOpponents) strum.x += shift;
+			else if (strum.x > FlxG.width / 2) strum.x += shift * 2;
+		}
+		try { game.updateStrumDefaults(); } catch (e:Dynamic) {}
+	}
 	for (i in 0...unspawnNotes.length-1)
 	{
 		var note:Note = game.unspawnNotes[i];
@@ -291,19 +303,19 @@ function onCreatePost()
 
 	if (prefs.shaders)
 	{
-		pseudo = new ErrorHandledRuntimeShader('pseudo', File.getContent('contents/FATAL/shaders/pseudo.frag'));
+		pseudo = new ErrorHandledRuntimeShader('pseudo', File.getContent(Paths.mods('FATAL/shaders/pseudo.frag')));
 		pseudo.setFloat('sort', 0);
 		camGame.filters = [new ShaderFilter(pseudo)]; camHUD.filters = [new ShaderFilter(pseudo)];
 		
-		rgbcurves = new ErrorHandledRuntimeShader('rgbcurves', File.getContent('contents/FATAL/shaders/rgbcurves.frag'));
+		rgbcurves = new ErrorHandledRuntimeShader('rgbcurves', File.getContent(Paths.mods('FATAL/shaders/rgbcurves.frag')));
 		
-		decimate = new ErrorHandledRuntimeShader('decimate', File.getContent('contents/FATAL/shaders/decimate.frag'));
+		decimate = new ErrorHandledRuntimeShader('decimate', File.getContent(Paths.mods('FATAL/shaders/decimate.frag')));
 		decimate.setFloat('amount', 0.3);
 		decimate.setFloat('colorize', 0.1);
 		decimate.setFloat('speed', 1);
 		decimate.setFloat('scale', 1);
 		
-		smear = new ErrorHandledRuntimeShader('smear', File.getContent('contents/FATAL/shaders/smear.frag'));
+		smear = new ErrorHandledRuntimeShader('smear', File.getContent(Paths.mods('FATAL/shaders/smear.frag')));
 	}
 
 	bgLoad = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFFFFFFFF);
@@ -357,7 +369,7 @@ function onEvent(n,v1)
 
 				if (prefs.shaders)
 				{
-					bgMatrix = new ErrorHandledRuntimeShader('fatal', File.getContent('contents/FATAL/shaders/fatal.frag'));
+					bgMatrix = new ErrorHandledRuntimeShader('fatal', File.getContent(Paths.mods('FATAL/shaders/fatal.frag')));
 					bgGlitch[0].sprite.shader = bgMatrix;
 					bgMatrix.setFloat('brightint', 0.2);
 				}

@@ -149,7 +149,9 @@ class EXETitle extends MusicBeatState
 		warningText2.scale.set(0, 0);
 		warningText2.setFormat(Language.fontOrCJK("SonicFont.ttf"), 30, FlxColor.WHITE, CENTER);
 		warningText2.screenCenter(X);
-		warningText2.y = warningText.y + 520;
+		final warningGap:Float = 40;
+		warningText.y = (FlxG.height - (warningText.height + warningGap + warningText2.height)) / 2;
+		warningText2.y = warningText.y + warningText.height + warningGap;
 		add(warningText2);
 
 		FlxTween.tween(warningText.scale, {x: 1, y: 1}, 2, {ease: FlxEase.cubeOut});

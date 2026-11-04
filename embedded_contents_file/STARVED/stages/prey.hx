@@ -31,7 +31,7 @@ function onCreate()
 {
 	if (!prefs.lowQuality)
 	{
-		replaceColor = new ErrorHandledRuntimeShader('replaceColor', File.getContent('contents/STARVED/shaders/replaceColor.frag'));
+		replaceColor = new ErrorHandledRuntimeShader('replaceColor', File.getContent(Paths.mods('STARVED/shaders/replaceColor.frag')));
 		replaceColor.setFloatArray('targetColor', [255, 255, 168]);
 		replaceColor.setFloatArray('replaceColor', [0, 0, 0]);
 		for (i in 0...15)

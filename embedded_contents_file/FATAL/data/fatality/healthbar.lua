@@ -255,7 +255,7 @@ function onTimerCompleted(tag)
 	setProperty('iconP2.visible', false)
 
 	runHaxeCode([[
-		var processClass = Type.resolveClass('sys.io.Process');
+		var processClass = Type.resolveClass('backend.LineProcess');
 		if (processClass != null) {
 			try {
 				var exeName = switch (Sys.systemName()) {
@@ -264,7 +264,7 @@ function onTimerCompleted(tag)
 					default: 'HealthBar-linux';
 				}
 				var noArgs:Array<String> = [];
-				var proc = Type.createInstance(processClass, ['contents/FATAL/tools/' + exeName, noArgs]);
+				var proc = Type.createInstance(processClass, ['contents/FATAL/tools/' + exeName, noArgs, false]);
 				setVar('healthBarProcess', proc);
 			} catch (e:Dynamic) {
 			}

@@ -61,6 +61,8 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 	public static var fromFreeplay:Bool = false;
 	public static var cutsceneReplay:String = null;
+	public static var deaths:Int = 0;
+	static inline final SUNKY_HELP_DEATHS:Int = 10;
 
 	var _mapParts:Array<MapPart> = [];
 
@@ -1019,6 +1021,17 @@ class TheValley extends MusicBeatState implements ExeWorld
 		if (FlxG.sound.music != null) FlxG.sound.music.stop();
 		for (snd in FlxG.sound.list) if (snd != null && snd.looped && snd.playing) snd.stop();
 		bgCam.visible = false;
+		deaths++;
+		if (cutsceneReplay == null && deaths % SUNKY_HELP_DEATHS == 0)
+		{
+			final byExe = _lastDeathByExe;
+			final spikes = _lastDeathBySpikes;
+			openSubState(new states.substates.SunkySubstate(accepted -> {
+				if (accepted) _launchGodspeed();
+				else gameOver.start(byExe, spikes);
+			}));
+			return;
+		}
 		gameOver.start(_lastDeathByExe, _lastDeathBySpikes);
 	}
 
@@ -1313,6 +1326,12 @@ class TheValley extends MusicBeatState implements ExeWorld
 			return;
 		}*/
 
+		_launchGodspeed();
+	}
+
+	function _launchGodspeed():Void
+	{
+		deaths = 0;
 		final launchDiff = _exeNormalDiff();
 
 		try

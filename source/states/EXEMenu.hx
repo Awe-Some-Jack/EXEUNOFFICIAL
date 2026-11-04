@@ -84,6 +84,8 @@ class EXEMenu extends MusicBeatState
 	var curKey:Array<Int>;
 	#if mobile
 	var _kbOpen:Bool = false;
+	var _kbTap:Bool = false;
+	var _kbMulti:Bool = false;
 	var _typed:String = '';
 	#end
 
@@ -386,13 +388,41 @@ class EXEMenu extends MusicBeatState
 					held++;
 					if (t.justPressed) fresh = true;
 				}
-			if (held >= 2 && fresh) _setKeyboard(!_kbOpen);
+			if (held >= 2 && fresh)
+			{
+				_kbMulti = true;
+				_kbTap = false;
+				_setKeyboard(!_kbOpen);
+			}
+			else if (held >= 2) _kbMulti = true;
 
 			if (_kbOpen)
 			{
+				if (held == 1 && fresh && !_kbMulti) _kbTap = true;
+				if (held == 0)
+				{
+					final tapped = _kbTap && !_kbMulti;
+					_kbTap = false;
+					_kbMulti = false;
+					if (tapped)
+					{
+						_setKeyboard(false);
+						return;
+					}
+				}
+				if (FlxG.keys.justPressed.ENTER)
+				{
+					_setKeyboard(false);
+					return;
+				}
 				if (FlxG.keys.justPressed.BACKSPACE && _typed.length > 0)
 					_typed = _typed.substr(0, _typed.length - 1);
 				return;
+			}
+			if (held == 0)
+			{
+				_kbTap = false;
+				_kbMulti = false;
 			}
 		}
 		#end
@@ -486,7 +516,7 @@ class EXEMenu extends MusicBeatState
 	function extrasLocked():Bool
 	{
 		if (backend.MasterAccess.accessed) return false;
-		_extrasLocked ??= FlxG.save.data.shockerCreditsSeen != true;
+		_extrasLocked ??= FlxG.save.data.shockerCreditsSeen != true && !backend.SongProgress.beatenSongs().contains('shocker') && !backend.SongProgress.gameComplete();
 		return (_extrasLocked #if !final && !inDevMode #end);
 	}
 

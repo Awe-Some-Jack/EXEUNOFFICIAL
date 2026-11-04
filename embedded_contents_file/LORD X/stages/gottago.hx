@@ -42,26 +42,26 @@ function onCreate()
 
 	if (prefs.shaders)
 	{
-		brightness = new ErrorHandledRuntimeShader('brightness', File.getContent('contents/LORD X/shaders/brightness.frag'));
+		brightness = new ErrorHandledRuntimeShader('brightness', File.getContent(Paths.mods('LORD X/shaders/brightness.frag')));
 		brightness?.setFloat('saturation', 1);
 		brightness?.setFloat('brightness', 0);
 		brightness?.setFloat('contrast', 1);
 
-		pixelShader = new ErrorHandledRuntimeShader('pixel', File.getContent('contents/LORD X/shaders/pixel.frag'));
+		pixelShader = new ErrorHandledRuntimeShader('pixel', File.getContent(Paths.mods('LORD X/shaders/pixel.frag')));
 		pixelShader?.setFloat('pixelsize', 0);
 
-		cloneImage = new ErrorHandledRuntimeShader('CloneImageError', File.getContent('contents/LORD X/shaders/CloneImageError.frag'));
+		cloneImage = new ErrorHandledRuntimeShader('CloneImageError', File.getContent(Paths.mods('LORD X/shaders/CloneImageError.frag')));
 		cloneImage?.setFloat('interval', Conductor.stepCrochet / 1000);
 
-		antiPiracy = new ErrorHandledRuntimeShader('AntiPiracyShader', File.getContent('contents/LORD X/shaders/AntiPiracyShader.frag'));
+		antiPiracy = new ErrorHandledRuntimeShader('AntiPiracyShader', File.getContent(Paths.mods('LORD X/shaders/AntiPiracyShader.frag')));
 
-		glitch = new ErrorHandledRuntimeShader('glitch', File.getContent('contents/LORD X/shaders/glitch.frag'));
+		glitch = new ErrorHandledRuntimeShader('glitch', File.getContent(Paths.mods('LORD X/shaders/glitch.frag')));
 		glitch?.setFloat('prob', 0);
 
-		glitch2 = new ErrorHandledRuntimeShader('individualGlitches', File.getContent('contents/LORD X/shaders/individualGlitches.frag'));
+		glitch2 = new ErrorHandledRuntimeShader('individualGlitches', File.getContent(Paths.mods('LORD X/shaders/individualGlitches.frag')));
 		glitch2?.setFloat('binaryIntensity', 0);
 
-		fishEye = new ErrorHandledRuntimeShader('fisheye', File.getContent('contents/LORD X/shaders/fisheye.frag'));
+		fishEye = new ErrorHandledRuntimeShader('fisheye', File.getContent(Paths.mods('LORD X/shaders/fisheye.frag')));
 		fishEye?.setFloat('amount', -0.4);
 	}
 

@@ -1,6 +1,6 @@
 package backend;
 
-#if desktop
+#if (desktop || mobile)
 import sys.FileSystem;
 import sys.io.File;
 #end
@@ -23,19 +23,34 @@ class MasterAccess {
                 verifyKey(true); 
             }
         });
+        #elseif mobile
+        verifyKey(false);
+
+        FlxG.signals.focusGained.add(function() {
+            if (!accessed) verifyKey(!(FlxG.state is states.PlayState));
+        });
+        #end
+    }
+
+    static function keyPaths():Array<String> {
+        #if mobile
+        final root:String = haxe.io.Path.addTrailingSlash(mobile.backend.MobileUtil.getDirectory());
+        final assetRoot:String = haxe.io.Path.addTrailingSlash(mobile.backend.MobileUtil.getAssetDirectory());
+        return [root + "UnofficialCrew.key", assetRoot + "assets/UnofficialCrew.key", root + "contents/UnofficialCrew.key"];
+        #else
+        return ["UnofficialCrew.key", "assets/UnofficialCrew.key"];
         #end
     }
 
     public static function verifyKey(resetCurrentState:Bool = false, unlockAll:Bool = true, createDebug:Bool = true) {
-        #if desktop
-        var keyPath = "UnofficialCrew.key";
-        var altKeyPath = "assets/UnofficialCrew.key";
-        
-        if (FileSystem.exists(keyPath) || FileSystem.exists(altKeyPath)) {
+        #if (desktop || mobile)
+        if (Lambda.exists(keyPaths(), path -> FileSystem.exists(path))) {
             var justUnlocked = !accessed;
             accessed = true;
             unlockEverything();
+            #if desktop
             createDebugToolsFile();
+            #end
             
             if (justUnlocked) {
                 trace("'UnofficialCrew.key' founded, master mode active");

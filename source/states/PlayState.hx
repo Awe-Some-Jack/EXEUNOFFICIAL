@@ -3616,6 +3616,7 @@ class PlayState extends MusicBeatState
 		{
 			states.SoundTest.enterTheValleyAfterBlackSun = false;
 			minigames.thevalley.TheValley.fromFreeplay = false;
+			minigames.thevalley.TheValley.deaths = 0;
 			storyPlaylist = [];
 			isStoryMode = false;
 			FlxG.sound.music?.stop();

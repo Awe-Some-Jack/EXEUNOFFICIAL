@@ -997,6 +997,7 @@ class EXEFreeplay extends MusicBeatState
 			FlxG.sound.music?.fadeOut(0.3);
 			stopMusicPlay = true;
 			minigames.thevalley.TheValley.fromFreeplay = true;
+			minigames.thevalley.TheValley.deaths = 0;
 			FlxG.switchState(() -> new minigames.thevalley.TheValley());
 			return;
 		}

@@ -6,6 +6,7 @@ import states.PlayState;
 class SongGc
 {
 	static inline var CAP_BYTES:Float = 120 * 1048576;
+	static inline var DISABLED:Bool = true;
 
 	static var active:Bool = false;
 	static var suspended:Bool = false;
@@ -14,7 +15,7 @@ class SongGc
 	public static function start():Void
 	{
 		#if mobile
-		if (active) return;
+		if (DISABLED || active) return;
 		active = true;
 		baseMem = MemoryUtil.heapInUse();
 		setSuspended(true);

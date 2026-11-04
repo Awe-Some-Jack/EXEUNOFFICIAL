@@ -432,12 +432,16 @@ function onEvent(n,v1)
 				FlxTween.cancelTweensOf(bgLoad);
 				FlxTween.tween(bgLoad, {alpha: 0.5}, 0.2);
 			case 'glitchbgg':
+				camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = true;
 				if (prefs.shaders) camGame.filters = [new ShaderFilter(smear)]; camHUD.filters = [new ShaderFilter(smear)];
 				for (spr in bgFinal) spr.sprite.shader = decimate; 
 				targetRain = 0.5;
 				rainVelocity = 2;
-				FlxTween.cancelTweensOf(bgLoad);
-				bgLoad.destroy();
+				if (bgLoad != null)
+				{
+					FlxTween.cancelTweensOf(bgLoad);
+					bgLoad.destroy();
+				}
 				camHUD.flash(0xFFFF0000, 1, null, true);
 				game.camZoomingDecay = 1;
 				camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = true;
@@ -465,6 +469,9 @@ var _iM:Float = 0;
 var _iD:Float = 0;
 function onUpdatePost(e)
 {
+	if (curStep >= 2242 && (!camHUD.exists || !camHUD.alive || !camGame.exists || !camGame.alive))
+		camGame.alive = camGame.exists = camHUD.alive = camHUD.exists = true;
+
 	if (windowBorder != null)
 	{
 		windowBorder.x = (FlxG.width - displayWidth) / 2 - borderThickness + camGame.x - (FlxG.width - camWidth) / 2;

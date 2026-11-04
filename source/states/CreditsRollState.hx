@@ -231,6 +231,8 @@ class CreditsRollState extends MusicBeatState
 		FlxG.sound.music.pause();
 		FlxG.sound.music.onComplete = () -> {
 			_songDone = true;
+			backend.EXEAchievements.unlock('credits');
+			backend.EXEAchievements.save();
 			_exitRoll(3);
 		};
 
@@ -244,6 +246,8 @@ class CreditsRollState extends MusicBeatState
 			_finalAt = _tQ;
 		}
 		else _finalAt = Math.max(_tA, _tE - 10);
+
+		_preloadImages();
 
 		new FlxTimer().start(0.1, _ -> {
 			FlxG.sound.music.resume();
@@ -436,56 +440,75 @@ class CreditsRollState extends MusicBeatState
 		FlxG.sound.music?.fadeOut(fade);
 	}
 
+	final _media:Map<Int, {path:String, video:Bool}> = [
+		4 => { path: 'assets/videos/introcutscene.mp4', video: true },
+		12 => { path: 'assets/videos/postIntro.mp4', video: true },
+		20 => { path: 'contents/STORY MODE/videos/tooslow.mp4', video: true },
+		28 => { path: 'contents/STORY MODE/videos/YRC.mp4', video: true },
+		36 => { path: 'contents/STORY MODE/videos/tripletrouble.mp4', video: true },
+		44 => { path: 'contents/STORY MODE/videos/fake intro.mp4', video: true },
+		52 => { path: 'contents/STORY MODE/videos/EYE_TO_EYE intro.mp4', video: true },
+		60 => { path: 'assets/exe/creditsroll/ts.webp', video: false },
+		64 => { path: 'assets/exe/creditsroll/ycr.webp', video: false },
+		68 => { path: 'assets/exe/creditsroll/tt.webp', video: false },
+		72 => { path: 'contents/STORY MODE/images/final/finale.webp', video: false },
+		76 => { path: 'assets/exe/creditsroll/y.webp', video: false },
+		80 => { path: 'assets/exe/creditsroll/1.webp', video: false },
+		84 => { path: 'assets/exe/creditsroll/2.webp', video: false },
+		88 => { path: 'assets/exe/creditsroll/16.webp', video: false },
+		92 => { path: 'assets/exe/creditsroll/3.webp', video: false },
+		96 => { path: 'assets/exe/creditsroll/4.webp', video: false },
+		100 => { path: 'assets/exe/creditsroll/5.webp', video: false },
+		104 => { path: 'assets/exe/creditsroll/18.webp', video: false },
+		108 => { path: 'assets/exe/creditsroll/6.webp', video: false },
+		112 => { path: 'assets/exe/creditsroll/19.webp', video: false },
+		116 => { path: 'assets/exe/creditsroll/7.webp', video: false },
+		120 => { path: 'assets/exe/creditsroll/8.webp', video: false },
+		124 => { path: 'assets/exe/creditsroll/20.webp', video: false },
+		128 => { path: 'assets/exe/creditsroll/21.webp', video: false },
+		132 => { path: 'assets/exe/creditsroll/9.webp', video: false },
+		136 => { path: 'assets/exe/creditsroll/10.webp', video: false },
+		140 => { path: 'assets/exe/creditsroll/22.webp', video: false },
+		144 => { path: 'assets/exe/creditsroll/32.webp', video: false },
+		148 => { path: 'assets/exe/creditsroll/11.webp', video: false },
+		152 => { path: 'assets/exe/creditsroll/12.webp', video: false },
+		156 => { path: 'assets/exe/creditsroll/13.webp', video: false },
+		160 => { path: 'assets/exe/creditsroll/23.webp', video: false },
+		164 => { path: 'assets/exe/creditsroll/14.webp', video: false },
+		168 => { path: 'contents/REQUITAL/images/finale.webp', video: false },
+		172 => { path: 'assets/exe/creditsroll/24.webp', video: false },
+		176 => { path: 'assets/exe/creditsroll/25.webp', video: false },
+		180 => { path: 'assets/exe/creditsroll/26.webp', video: false },
+		184 => { path: 'assets/exe/creditsroll/27.webp', video: false },
+		188 => { path: 'assets/exe/creditsroll/17.webp', video: false },
+		192 => { path: 'assets/exe/creditsroll/28.webp', video: false },
+		196 => { path: 'assets/exe/creditsroll/15.webp', video: false },
+		200 => { path: 'assets/exe/creditsroll/29.webp', video: false },
+		204 => { path: 'assets/exe/creditsroll/31.webp', video: false },
+		208 => { path: 'assets/exe/creditsroll/30.webp', video: false }
+	];
+	final _bitmaps:Map<String, BitmapData> = [];
+
 	override function beatHit():Void
 	{
 		super.beatHit();
-		switch(curBeat)
+		final item = _media.get(curBeat);
+		if (item != null)
 		{
-			case 4: playVideo('assets/videos/introcutscene.mp4');
-			case 12: playVideo('assets/videos/postIntro.mp4');
-			case 20: playVideo('contents/STORY MODE/videos/tooslow.mp4');
-            case 28: playVideo('contents/STORY MODE/videos/YRC.mp4');
-            case 36: playVideo('contents/STORY MODE/videos/tripletrouble.mp4');
-            case 44: playVideo('contents/STORY MODE/videos/fake intro.mp4');
-            case 52: playVideo('contents/STORY MODE/videos/EYE_TO_EYE intro.mp4');
-            case 60: addImage('assets/exe/creditsroll/ts.webp');
-            case 64: addImage('assets/exe/creditsroll/ycr.webp');
-            case 68: addImage('assets/exe/creditsroll/tt.webp');
-            case 72: addImage('contents/STORY MODE/images/final/finale.webp');
-            case 76: addImage('assets/exe/creditsroll/y.webp');
-            case 80: addImage('assets/exe/creditsroll/1.webp');
-            case 84: addImage('assets/exe/creditsroll/2.webp');
-            case 88: addImage('assets/exe/creditsroll/16.webp');
-            case 92: addImage('assets/exe/creditsroll/3.webp');
-            case 96: addImage('assets/exe/creditsroll/4.webp');
-            case 100: addImage('assets/exe/creditsroll/5.webp');
-            case 104: addImage('assets/exe/creditsroll/18.webp');
-            case 108: addImage('assets/exe/creditsroll/6.webp');
-            case 112: addImage('assets/exe/creditsroll/19.webp');
-            case 116: addImage('assets/exe/creditsroll/7.webp');
-            case 120: addImage('assets/exe/creditsroll/8.webp');
-            case 124: addImage('assets/exe/creditsroll/20.webp');
-            case 128: addImage('assets/exe/creditsroll/21.webp');
-            case 132: addImage('assets/exe/creditsroll/9.webp');
-            case 136: addImage('assets/exe/creditsroll/10.webp');
-            case 140: addImage('assets/exe/creditsroll/22.webp');
-            case 144: addImage('assets/exe/creditsroll/32.webp');
-            case 148: addImage('assets/exe/creditsroll/11.webp');
-            case 152: addImage('assets/exe/creditsroll/12.webp');
-            case 156: addImage('assets/exe/creditsroll/13.webp');
-            case 160: addImage('assets/exe/creditsroll/23.webp');
-            case 164: addImage('assets/exe/creditsroll/14.webp');
-            case 168: addImage('contents/REQUITAL/images/finale.webp');
-            case 172: addImage('assets/exe/creditsroll/24.webp');
-            case 176: addImage('assets/exe/creditsroll/25.webp');
-            case 180: addImage('assets/exe/creditsroll/26.webp'); //needs new screenshot
-            case 184: addImage('assets/exe/creditsroll/27.webp');
-            case 188: addImage('assets/exe/creditsroll/17.webp');
-            case 192: addImage('assets/exe/creditsroll/28.webp');
-            case 196: addImage('assets/exe/creditsroll/15.webp');
-            case 200: addImage('assets/exe/creditsroll/29.webp');
-            case 204: addImage('assets/exe/creditsroll/31.webp');
-            case 208: addImage('assets/exe/creditsroll/30.webp');
+			if (item.video) playVideo(item.path);
+			else addImage(item.path);
+		}
+	}
+
+	function _preloadImages():Void
+	{
+		final paths:Array<String> = [for (item in _media) if (!item.video) item.path];
+		paths.push('assets/exe/creditsroll/everyone.webp');
+		for (path in paths)
+		{
+			if (_bitmaps.exists(path)) continue;
+			final bmd = Paths.getBitmapData(path);
+			if (bmd != null) _bitmaps.set(path, bmd);
 		}
 	}
 
@@ -510,7 +533,9 @@ class CreditsRollState extends MusicBeatState
 	function addImage(path:String, ?scale:Float = 1, ?centered:Bool = false)
 	{
 		final c = _newCard(centered);
-		final spr = new FlxSprite().loadGraphic(Paths.getBitmapData(path));
+		final bmd = _bitmaps.exists(path) ? _bitmaps.get(path) : Paths.getBitmapData(path);
+		_bitmaps.remove(path);
+		final spr = new FlxSprite().loadGraphic(bmd);
 		final fit:Float = Math.min((FlxG.width * 0.4) / spr.width, (FlxG.height * 0.4) / spr.height);
 		spr.setGraphicSize(Std.int(spr.width * fit * scale), Std.int(spr.height * fit * scale));
 		spr.updateHitbox();
@@ -613,6 +638,7 @@ class CreditsRollState extends MusicBeatState
 	{
 		if (FlxG.sound.music != null) FlxG.sound.music.onComplete = null;
 		FlxG.sound.playMusic(Assets.getSound('assets/exe/music/menu.ogg'));
+		_bitmaps.clear();
 		super.destroy();
 	}
 }

@@ -14,6 +14,7 @@ var brightness:ErrorHandledRuntimeShader;
 var stars:FlxBackdrop;
 var introCutscene:VideoSprite;
 var sanicBG:VideoSprite;
+var sanicBGName:String = 'bg1';
 var videos:Array<VideoSprite> = [];
 var spotlights:Array<FlxSprite> = [];
 
@@ -182,7 +183,6 @@ function makePreloadedVideo(name:String):VideoSprite
 	return video;
 }
 
-var sanicBGName:String = 'bg1';
 var iTime:Float = 0;
 function onUpdatePost(e)
 {
@@ -308,15 +308,20 @@ function onGameOverStart()
 	for (video in videos) video?.destroy();
 	for (video in preloadedVideos) video?.destroy();
 }
+var pausedVideos:Array<VideoSprite> = [];
 function onPause() 
 {
-	for (video in videos) video?.pause();
-	for (video in preloadedVideos) video?.pause();
+	pausedVideos = [];
+	for (video in videos.concat(preloadedVideos))
+	{
+		if (video?.isPlaying() == true) pausedVideos.push(video);
+		video?.pause();
+	}
 }
 function onResume() 
 {
-	for (video in videos) video?.resume();
-	for (video in preloadedVideos) video?.resume();
+	for (video in pausedVideos) video?.resume();
+	pausedVideos = [];
 }
 
 function onBeatHit()

@@ -38,7 +38,9 @@
 	"options.visuals": "WYGLĄD",
 	"options.visuals.labels": ["UKRYJ HUD", "MIGAJĄCE ŚWIATŁA", "ZOOM KAMERY", "ZOOM TEKSTU WYNIKU", "LICZNIK FPS"],
 	"options.gameplay": "ROZGRYWKA",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "OKNO SICK", "OKNO GOOD", "OKNO BAD", "BEZPIECZNE RAMKI", "STRUMIENIOWANIE AUDIO"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "OKNO SICK", "OKNO GOOD", "OKNO BAD", "BEZPIECZNE RAMKI", "STRUMIENIOWANIE AUDIO", "USUŃ ZAPIS GRY"],
+	"options.reset.select": "WYBIERZ",
+	"options.reset.confirm": "NA PEWNO?",
 	"options.graphics": "GRAFIKA",
 	"options.graphics.labels": ["ANTYALIASING", "CACHE GPU", "JAKOŚĆ SHADERÓW", "SHADERY", "LICZBA FPS", "BEZPIECZNY SYNC"],
 	"options.language": "JĘZYK",
@@ -212,6 +214,6 @@
 	"sonichu_reveal_2": "Przygotuj się, bo to jest koniec.",
 	"sonichu_reveal_3": "Moja ostatnia moc...",
 
-	"warning_text_main": "WITAJ.\n\nZanim przejdziesz dalej, musisz wiedzieć, że ten mod zawiera migające światła i efekty mogące wywołać napady padaczkowe.\n\nJeśli czujesz się niekomfortowo lub jesteś wrażliwy na takie bodźce, NIE GRAJ W TO I ZAMKNIJ GRĘ.\n\nPonadto, jeśli Twoje urządzenie jest słabsze, rozważ obniżenie jakości shaderów.\n\nZalecana jest ostrożność gracza.",
+	"warning_text_main": "WITAJ.\n\nZanim przejdziesz dalej, musisz wiedzieć, że ten mod zawiera migające światła i efekty mogące wywołać napady padaczkowe.\n\nJeśli czujesz się niekomfortowo lub jesteś wrażliwy na takie bodźce, NIE GRAJ W TO I ZAMKNIJ GRĘ.\n\nPonadto, jeśli Twoje urządzenie jest słabsze, mogą wystąpić problemy z ładowaniem. Rozważ obniżenie jakości shaderów lub grę na urządzeniu z większą ilością RAM.\n\nZalecana jest ostrożność gracza.",
 	"warning_text_enter": "Naciśnij Enter, aby kontynuować."
 }

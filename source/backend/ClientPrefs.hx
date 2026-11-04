@@ -177,7 +177,7 @@ class ClientPrefs {
 
 		//Placing this in a separate save so that it can be manually deleted without removing your Score and stuff
 		var save:FlxSave = new FlxSave();
-		save.bind('controls_v3', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'controls_v3', CoolUtil.getSavePath());
 		save.data.keyboard = keyBinds;
 		save.data.gamepad = gamepadBinds;
 		save.flush();
@@ -188,6 +188,14 @@ class ClientPrefs {
 		for (key in Reflect.fields(data))
 			if (key != 'gameplaySettings' && Reflect.hasField(FlxG.save.data, key))
 				Reflect.setField(data, key, Reflect.field(FlxG.save.data, key));
+
+		if (FlxG.save.data.streamedAudioReset != true)
+		{
+			FlxG.save.data.streamedAudioReset = true;
+			data.streamedAudio = false;
+			FlxG.save.data.streamedAudio = false;
+			FlxG.save.flush();
+		}
 
 		if (data.uncappedFPS)
 		{
@@ -242,7 +250,7 @@ class ClientPrefs {
 
 		// controls on a separate save file
 		var save:FlxSave = new FlxSave();
-		save.bind('controls_v3', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'controls_v3', CoolUtil.getSavePath());
 		if(save != null)
 		{
 			if(save.data.keyboard != null)

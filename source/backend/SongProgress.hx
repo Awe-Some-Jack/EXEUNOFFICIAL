@@ -8,7 +8,7 @@ class SongProgress
 	public static function beatenSongs():Array<String>
 	{
 		final save:FlxSave = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
 		final songs:Array<String> = save.data.songs;
 		return songs ?? [];
 	}
@@ -16,7 +16,7 @@ class SongProgress
 	public static function openedSongs():Array<String>
 	{
 		final save:FlxSave = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
 		final songs:Array<String> = save.data.openedSongs;
 		return songs ?? [];
 	}
@@ -24,7 +24,7 @@ class SongProgress
 	public static function markOpened(song:String):Void
 	{
 		final save:FlxSave = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
 		final saved:Null<Array<String>> = save.data.openedSongs;
 		final songs:Array<String> = saved ?? [];
 		if (songs.contains(song)) return;
@@ -38,7 +38,8 @@ class SongProgress
 		final keepList = WeekData.weeksList;
 		final keepLoaded = WeekData.weeksLoaded;
 		WeekData.weeksLoaded = new Map<String, WeekData>();
-		WeekData.reloadWeekFiles(false);
+		try { WeekData.reloadWeekFiles(false); }
+		catch (e:Dynamic) {}
 		final allLoaded = WeekData.weeksLoaded;
 		WeekData.weeksList = keepList;
 		WeekData.weeksLoaded = keepLoaded;
@@ -65,28 +66,36 @@ class SongProgress
 		try { codes = Json.parse(openfl.utils.Assets.getText(path)); }
 		catch (e:Dynamic) { return false; }
 
-		final weeks = allWeeks();
-		final beaten = beatenSongs();
-		var anyWeek = false;
-		for (code in codes)
+		try
 		{
-			if (code.type != 'week') continue;
-			anyWeek = true;
-			if (!weekBeaten(weeks.get(code.weekName), beaten)) return false;
+			final weeks = allWeeks();
+			final beaten = beatenSongs();
+			var anyWeek = false;
+			for (code in codes)
+			{
+				if (code.type != 'week') continue;
+				anyWeek = true;
+				if (!weekBeaten(weeks.get(code.weekName), beaten)) return false;
+			}
+			return anyWeek;
 		}
-		return anyWeek;
+		catch (e:Dynamic) { return false; }
 	}
 
 	public static function gameComplete():Bool
 	{
-		final weeks = allWeeks();
-		final beaten = beatenSongs();
-		var anyWeek = false;
-		for (week in weeks)
+		try
 		{
-			anyWeek = true;
-			if (!weekBeaten(week, beaten)) return false;
+			final weeks = allWeeks();
+			final beaten = beatenSongs();
+			var anyWeek = false;
+			for (week in weeks)
+			{
+				anyWeek = true;
+				if (!weekBeaten(week, beaten)) return false;
+			}
+			return anyWeek;
 		}
-		return anyWeek;
+		catch (e:Dynamic) { return false; }
 	}
 }

@@ -310,22 +310,25 @@ function reloadNotes()
 					note.antialiasing = (PlayState.stageUI == 'pixel' ? false : true);
 				}
 
-	if (game.unspawnNotes != null)
-		for (note in game.unspawnNotes)
-			if (note != null)
-				if (note.noteType == '')
-				{
-					note.reloadNote();
-					note.antialiasing = (PlayState.stageUI == 'pixel' ? false : true);
-				}
-
 	if (game.notes != null)
 		for (note in game.notes.members)
 			if (note != null && note.noteType == '')
-				{
-					note.antialiasing = (PlayState.stageUI == 'pixel' ? false : true);
-					note.reloadNote();
-				}
+				refreshNoteSkin(note);
+}
+
+function refreshNoteSkin(note)
+{
+	note.antialiasing = (PlayState.stageUI == 'pixel' ? false : true);
+	note.reloadNote();
+	note.extraData.set('ycrUI', PlayState.stageUI);
+}
+
+function onSpawnNote(note)
+{
+	if (note.noteType != '') return;
+	var ui = note.extraData.get('ycrUI');
+	if (ui == null) ui = 'normal';
+	if (ui != PlayState.stageUI) refreshNoteSkin(note);
 }
 
 function opponentNoteHit()

@@ -101,6 +101,7 @@ class PlayState extends MusicBeatState
 	public var noteQueues:Array<Array<Note>> = [[], [], [], []];
 
 	private var shutdownThread:Bool = false;
+	private var syncThreadGen:Int = 0;
 	private var gameFroze:Bool = false;
 	private var requiresSyncing:Bool = false;
 	private var lastCorrectSongPos:Float = -1.0;
@@ -560,10 +561,25 @@ class PlayState extends MusicBeatState
 				FlxG.fullscreen = true;
 			}
 			#end
+
+			refreshScaleAfterLetterbox();
 		}
 		#end
 
 		return value;
+	}
+
+	static function refreshScaleAfterLetterbox():Void
+	{
+		var frames:Int = 0;
+		var fix:Void->Void = null;
+		fix = () -> {
+			frames++;
+			if (FlxG.scaleMode.deviceSize.x != FlxG.stage.stageWidth || FlxG.scaleMode.deviceSize.y != FlxG.stage.stageHeight)
+				@:privateAccess FlxG.game.onResize(null);
+			if (frames >= 120) FlxG.signals.postUpdate.remove(fix);
+		};
+		FlxG.signals.postUpdate.add(fix);
 	}
 
 	public static function fullscreenLetterbox():Void
@@ -666,6 +682,13 @@ class PlayState extends MusicBeatState
 
 		songName = Paths.formatToSongPath(SONG.song);
 
+		if (isStoryMode && (songName == 'final-escape' || songName == 'yourself'))
+		{
+			saveStoryProgress(songName == 'yourself' ? 4 : 3);
+			backend.SongProgress.markOpened(songName);
+			FlxG.save.flush();
+		}
+
 		camGame = initCamera();
 
 		if(songName == 'flash') {
@@ -739,10 +762,8 @@ class PlayState extends MusicBeatState
 				appName = "Friday Night Funkin': Vs Sonic.EXE";
 		}
 
-		#if !mac
 		if (Paths.formatToSongPath(SONG.song) != 'burning' && Paths.formatToSongPath(SONG.song) != 'final-escape') FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Loading)";
 		if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: Hedge (Loading)";
-		#end
 
 		GameOverSubstate.resetVariables();
 		if(SONG.stage == null || SONG.stage.length < 1)
@@ -810,7 +831,6 @@ class PlayState extends MusicBeatState
 		}
 
 		var oppChar:String = SONG.player2;
-		if (Paths.formatToSongPath(SONG.song) == 'soulless' && ClientPrefs.data.lowQuality) oppChar = 'p2doll-potato';
 		dad = new Character(0, 0, oppChar);
 		startCharacterPos(dad, true);
 		dadGroup.add(dad);
@@ -1364,12 +1384,18 @@ class PlayState extends MusicBeatState
 		return false;
 	}
 
+	var videoRetried:Bool = false;
+
 	public function startVideo(name:String, canSkip:Bool = true, forMidSong:Bool = false, loop:Bool = false, ?playOnLoad:Bool = true)
 	{
 		final watchKey:String = endingSong ? '$songName-end' : songName;
+		var videoEnded:Bool = false;
+		var videoReady:Bool = false;
 
 		function endVideo()
 		{
+			if (videoEnded) return;
+			videoEnded = true;
 			if (!forMidSong && !cutsceneWatched(watchKey))
 			{
 				var watched:Array<String> = FlxG.save.data.watchedCutscenes;
@@ -1386,6 +1412,12 @@ class PlayState extends MusicBeatState
 		}
 
 		#if VIDEOS_ALLOWED
+		if (!(playOnLoad ?? true))
+		{
+			if (!preloadVideo(name, loop)) trace('Failed to precache video: $name');
+			return;
+		}
+
 		inCutscene = !forMidSong;
 		canPause = forMidSong;
 
@@ -1398,7 +1430,7 @@ class PlayState extends MusicBeatState
 			return;
 		}
 
-		final preloaded:VideoSprite = forMidSong && (playOnLoad ?? true) ? preloadedVideos.get(name) : null;
+		final preloaded:VideoSprite = forMidSong ? preloadedVideos.get(name) : null;
 		if (preloaded != null) preloadedVideos.remove(name);
 		videoCutscene = preloaded ?? new VideoSprite(0, 0, true);
 		videoCutscene.camera = camVideo;
@@ -1410,6 +1442,7 @@ class PlayState extends MusicBeatState
 		videoCutscene.onEnd(() -> endVideo());
 
 		final fitVideo:Void->Void = () -> {
+			videoReady = true;
 			#if switch
 			final hasFrame = videoCutscene.video != null;
 			#else
@@ -1437,19 +1470,40 @@ class PlayState extends MusicBeatState
 		if (preloaded != null) fitVideo();
 
 		final loadArgs:Array<String> = loop ? [VideoSprite.ARG_LOOPING] : [];
-		if (playOnLoad) 
+
+		#if !switch
+		if (!forMidSong)
 		{
-			if(videoCutscene.loadVideo(filePath, loadArgs)) {
-				videoCutscene.playDelayed();
-			} else {
-				if(!forMidSong) startAndEnd();
-			}
-		} 
-		else 
-		{
-			if (!videoCutscene.precacheVideo(filePath, loadArgs)) {
-				trace('Failed to precache video: $name');
-			}
+			final failVideo:String->Void = (reason:String) -> {
+				if (videoEnded) return;
+				trace('Video "$name" failed ($reason)');
+				if (!videoRetried && !VideoSprite.softwareDecode())
+				{
+					videoRetried = true;
+					videoEnded = true;
+					VideoSprite.forceSoftwareDecode = true;
+					FlxG.save.data.videoSoftwareDecode = true;
+					FlxG.save.flush();
+					final broken:VideoSprite = videoCutscene;
+					videoCutscene = null;
+					if (broken != null)
+					{
+						remove(broken, true);
+						broken.destroy();
+					}
+					startVideo(name, canSkip, forMidSong, loop, playOnLoad);
+				}
+				else endVideo();
+			};
+			videoCutscene.video.bitmap.onEncounteredError.add((err:String) -> failVideo(err));
+			new FlxTimer().start(10, (_) -> if (!videoReady) failVideo('no frames after 10s'));
+		}
+		#end
+
+		if(videoCutscene.loadVideo(filePath, loadArgs)) {
+			videoCutscene.playDelayed();
+		} else {
+			if(!forMidSong) startAndEnd();
 		}
 		#else
 		FlxG.log.warn('Platform not supported!');
@@ -1477,12 +1531,10 @@ class PlayState extends MusicBeatState
 			return false;
 		}
 
-		#if !mac
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song;
 		if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 		if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = prevWindowTitle + '?';
 		if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: Hedge";
-		#end
 
 		seenCutscene = true;
 		firstPlay = true;
@@ -2278,12 +2330,10 @@ class PlayState extends MusicBeatState
 				for (cam in [FlxG.camera, camVideo, camHUD, camOther])
 					if (cam != null) cam.fxActive = false;
 
-			#if !mac
 			FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
 			if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + " (Paused)";
 			if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 			if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: " + _targetPause + " (Paused)";
-			#end
 		}
 
 		super.openSubState(SubState);
@@ -2324,11 +2374,9 @@ class PlayState extends MusicBeatState
 				cam.filters = cam.filters;
 			}
 
-			#if !mac
 			FlxG.stage.window.title = appName + " | Playing: " + SONG.song;
 			if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 			if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: " + _targetPause;
-			#end
 		}
 	}
 
@@ -2375,8 +2423,13 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
+	#if mobile
+	static inline final VOCAL_DRIFT_THRESHOLD:Float = 60.0;
+	static inline final VOCAL_DRIFT_FRAMES:Int = 15;
+	#else
 	static inline final VOCAL_DRIFT_THRESHOLD:Float = 20.0;
 	static inline final VOCAL_DRIFT_FRAMES:Int = 6;
+	#end
 
 	final vocalDriftFrames:Map<FlxSound, Int> = new Map();
 
@@ -2956,12 +3009,10 @@ class PlayState extends MusicBeatState
 		if(chartingMode) openSubState(new PauseSubState());
 		else openSubState(new PauseSubState());
 
-		#if !mac
 		FlxG.stage.window.title = appName + " | Playing: " + SONG.song + " (Paused)";
 		if (Paths.formatToSongPath(SONG.song) == 'final-escape') FlxG.stage.window.title = "Playing: " + SONG.song + " (Paused)";
 		if (Paths.formatToSongPath(SONG.song) == 'burning') FlxG.stage.window.title = SONG.song;
 		if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Playing: " + _targetPause + " (Paused)";
-		#end
 
 		#if DISCORD_ALLOWED
 		if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song + " (Paused)", iconP2.getCharacter(), true, 0, "icon", 0, Conductor.songPosition);
@@ -3105,7 +3156,7 @@ class PlayState extends MusicBeatState
 				// Game Over doesn't get his its variable because it's only used here
 				if(autoUpdateRPC) DiscordClient.changePresence(detailsText, SONG.song + " | Game Over.", iconP2.getCharacter());
 				#end
-				#if (!mac && DISCORD_ALLOWED)
+				#if DISCORD_ALLOWED
 				FlxG.stage.window.title = appName + " | Was Playing: " + SONG.song;
 				if (Paths.formatToSongPath(SONG.song) == 'manual-blast') FlxG.stage.window.title = appName + " | Was Playing: " + _targetPause;
 				var dausername:String = DiscordClient.username ?? 'boyfriend';
@@ -3583,6 +3634,11 @@ class PlayState extends MusicBeatState
 			if (states.SonichuUnlockState.pending) {
 				FlxG.switchState(() -> new states.SonichuUnlockState());
 			}
+			else if (formattedSong == 'shocker' && FlxG.save.data.shockerCreditsSeen != true) {
+				FlxG.save.data.shockerCreditsSeen = true;
+				FlxG.save.flush();
+				FlxG.switchState(() -> new states.CreditsRollState());
+			}
 			else if (states.StoryModeState.fromStoryMode) {
 				states.StoryModeState.fromStoryMode = false; 
 				FlxG.switchState(() -> new states.StoryModeState()); 
@@ -3733,11 +3789,11 @@ class PlayState extends MusicBeatState
 
 	public function checkSavedSongs(formattedSong){
         final save:FlxSave = new FlxSave();
-        save.bind('savedSongs', CoolUtil.getSavePath());
+        backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
         save.data.songs ??= [];
         var unlocked:Array<String> = save.data.songs;
 
-        if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong || isStoryMode || formattedSong == 'burning')
+        if (states.SoundTest.fromSoundTest || states.access.FridgeAccess.fromFridge || states.access.MajinAccess.fromMajin || states.EXEMenu.secretSong || isStoryMode || ['mania', 'fatality', 'burning', 'godspeed'].contains(formattedSong))
         {
             states.EXEMenu.secretSong = false;
 
@@ -3791,6 +3847,8 @@ class PlayState extends MusicBeatState
             {
                 unlocked.push(secretSongPath);
                 states.SonichuUnlockState.pending = true;
+                FlxG.save.data.sonichuUnlockPending = true;
+                FlxG.save.flush();
                 trace('[DEBUG] Secret song '+secretSongPath+" unlocked!");
             }
         }
@@ -3826,6 +3884,7 @@ class PlayState extends MusicBeatState
 	public var mobileComboOffsetX:Float = 0;
 	public var mobileComboOffsetY:Float = 0;
 	public var disableMobileComboOffset:Bool = false;
+	public var comboBarInset:Float = 0;
 	var comboGroupBaseX:Float = 0;
 	var comboGroupBaseY:Float = 0;
 
@@ -3975,10 +4034,18 @@ class PlayState extends MusicBeatState
 				? (downScroll ? (strumTop - 12) - blockBottom : (strumBottom + 12) - blockTop)
 				: (strumTop + strumBottom) / 2 - (blockTop + blockBottom) / 2;
 		}
+		var comboBarShift:Float = 0;
+		if(comboBarInset > 0)
+		{
+			if(!ClientPrefs.data.downScroll)
+				comboBarShift = Math.max(0, comboBarInset - (40 + comboOffY + comboGroup.y));
+			else
+				comboBarShift = -Math.max(0, (FlxG.height - 40 + comboOffY + comboGroup.y) - (FlxG.height - comboBarInset));
+		}
 		rating.alpha = comboStartAlpha;
 
 		rating.screenCenter(X);
-		rating.y = comboGroup.y + comboOffY + (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
+		rating.y = comboGroup.y + comboOffY + comboBarShift + (ClientPrefs.data.downScroll ? ((FlxG.height - rating.height) - 90) : 90);
 		rating.x += comboGroup.x + comboOffX;
 
 		final targetScale:Float = PlayState.isPixelStage ? 4 : 0.6;
@@ -4006,7 +4073,7 @@ class PlayState extends MusicBeatState
 			numScore.updateHitbox();
 			
 			numScore.x = comboGroup.x + comboOffX + FlxG.width / 2 - numScore.width / 2 + (i - (separatedScore.length - 1) / 2) * 50;
-			numScore.y = comboGroup.y + comboOffY + (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
+			numScore.y = comboGroup.y + comboOffY + comboBarShift + (ClientPrefs.data.downScroll ? ((FlxG.height - numScore.height) - 40) : 40);
 			
 			numScore.scale.set(targetScale * 1.15, targetScale * 1.15);
 		
@@ -4815,7 +4882,7 @@ class PlayState extends MusicBeatState
 			resetSubState();
 		}
 
-		#if !mac FlxG.stage.window.title = prevWindowTitle; #end
+		FlxG.stage.window.title = prevWindowTitle;
 		FlxSprite.defaultAntialiasing = ClientPrefs.data.antialiasing;
 		for (video in preloadedVideos) video.destroy();
 		preloadedVideos.clear();
@@ -5410,10 +5477,15 @@ class PlayState extends MusicBeatState
 	public function runSongSyncThread()
 	{
 		#if target.threaded
+		final gen:Int = ++syncThreadGen;
 		Thread.create(() -> {
-			while (!endingSong && !paused && !shutdownThread)
+			while (gen == syncThreadGen && !endingSong && !paused && !shutdownThread)
 			{
-				if (requiresSyncing) continue;
+				if (requiresSyncing)
+				{
+					Sys.sleep(0.05);
+					continue;
+				}
 
 				if (gameFroze)
 				{

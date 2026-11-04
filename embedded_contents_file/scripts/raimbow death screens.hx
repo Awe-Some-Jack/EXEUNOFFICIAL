@@ -3,6 +3,7 @@ import flixel.sound.FlxSound;
 import flixel.FlxCameraFollowStyle;
 import flixel.tweens.FlxTween.FlxTweenType;
 import backend.MusicBeatState;
+import backend.EXEAchievements;
 
 import flixel.addons.display.FlxRuntimeShader;
 import openfl.filters.ShaderFilter;
@@ -542,12 +543,13 @@ function onGameOverConfirm(retry)
         case "yourself":
         if (retry) new FlxTimer().start(0.7, (_) ->
         {
-            if (ClientPrefs.data.shaders) FlxTween.num(0.1, 50, 4, {ease:FlxEase.sineInOut}, (val:Float) -> pixel.setFloat("pixelsize", val));
+            if (ClientPrefs.data.shaders) FlxTween.num(0.1, 50, 4, {ease:FlxEase.sineInOut}, (val:Float) -> { if (pixel != null) pixel.setFloat("pixelsize", val); });
             FlxTween.tween(FlxG.camera, {zoom: 0.5, y: FlxG.camera.y - 90}, 4, {ease: FlxEase.smootherStepInOut});
             FlxG.camera.stopFade();
             FlxG.camera.fade(FlxColor.BLACK, 4, false, function()
             {
-                for (tweens in [pixel, FlxG.camera]) FlxTween.cancelTweensOf(tweens);
+                if (pixel != null) FlxTween.cancelTweensOf(pixel);
+                FlxTween.cancelTweensOf(FlxG.camera);
                 FlxG.resetState();
             });
         });
@@ -568,6 +570,7 @@ var canPress:Bool = false;
 
 function onGameOver() {
     if (songName == 'haze'){
+        EXEAchievements.achieveGameOver(PlayState.SONG.song);
         persistentDraw = false;
         CustomSubstate.openCustomSubstate("hazeGameOver", true);
         return Function_Stop;

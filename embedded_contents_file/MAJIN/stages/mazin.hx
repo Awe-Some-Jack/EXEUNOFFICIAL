@@ -82,5 +82,6 @@ function onEvent(n,v1,v2)
 
 
 function onGameOverStart()  commercial?.destroy();
-function onPause() commercial?.pause();
-function onResume() commercial?.resume();
+var commercialWasPlaying:Bool = false;
+function onPause() { commercialWasPlaying = commercial?.isPlaying() == true; commercial?.pause(); }
+function onResume() if (commercialWasPlaying) commercial?.resume();

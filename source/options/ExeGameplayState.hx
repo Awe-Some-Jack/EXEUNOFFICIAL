@@ -12,6 +12,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 
 	var holdTimer:Float = 0;
 	var holdRepeat:Float = 0;
+	var confirmReset:Bool = false;
 
 	override public function create()
 	{
@@ -19,7 +20,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 		scrollOffset = 0;
 
 		menuTitle = Language.get('options.gameplay', 'GAMEPLAY');
-		var lbl = Language.getArray('options.gameplay.labels', ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"]);
+		var lbl = Language.getArray('options.gameplay.labels', ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO", "RESET SAVE DATA"]);
 		allOptions = [
 			{label: lbl[0], getValue: () -> ClientPrefs.data.downScroll,   setValue: (v) -> ClientPrefs.data.downScroll   = v},
 			{label: lbl[1], getValue: () -> ClientPrefs.data.ghostTapping, setValue: (v) -> ClientPrefs.data.ghostTapping = v},
@@ -28,6 +29,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 			{label: lbl[4], getValue: () -> ClientPrefs.data.badWindow,    setValue: (v) -> ClientPrefs.data.badWindow    = v, isFloat: true},
 			{label: lbl[5], getValue: () -> ClientPrefs.data.safeFrames,   setValue: (v) -> ClientPrefs.data.safeFrames   = v, isFloat: true},
 			{label: lbl[6], getValue: () -> ClientPrefs.data.streamedAudio,   setValue: (v) -> ClientPrefs.data.streamedAudio   = v, isFloat: true},
+			{label: lbl[7] ?? 'RESET SAVE DATA', getValue: () -> confirmReset ? Language.get('options.reset.confirm', 'ARE YOU SURE?') : Language.get('options.reset.select', 'SELECT'), setValue: (v) -> {}},
 		];
 
 		super.create();
@@ -38,6 +40,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 	function formatValue(opt:ExeBaseOptionsState.ExeGenericOption, optIdx:Int):String
 	{
 		var val = opt.getValue();
+		if (optIdx == allOptions.length - 1) return Std.string(val);
 		var on = Language.get('options.on', 'ON'); var off = Language.get('options.off', 'OFF');
 
 		if (Std.isOfType(val, Bool))
@@ -61,6 +64,59 @@ class ExeGameplayState extends ExeBaseOptionsState
 		buildVisibleRows(allOptions.length, getRowData);
 
 		if (!introAnimating) changeSelection();
+	}
+
+	function refreshResetRow():Void
+	{
+		final row = allOptions.length - 1 - scrollOffset;
+		if (row >= 0 && row < optionGroups.length)
+			optionGroups[row].valueText.text = formatValue(allOptions[allOptions.length - 1], allOptions.length - 1);
+	}
+
+	function resetSaveData():Void
+	{
+		FlxG.sound.play(Paths.sound('cancelMenu'));
+		backLock = true;
+		confirmReset = false;
+
+		states.access.FatalAccess.resetForTesting();
+
+		final songs:flixel.util.FlxSave = new flixel.util.FlxSave();
+		backend.CoolUtil.bindSave(songs, 'savedSongs', backend.CoolUtil.getSavePath());
+		songs.erase();
+		songs.flush();
+
+		FlxG.save.erase();
+		FlxG.save.flush();
+
+		backend.Highscore.weekScores.clear();
+		backend.Highscore.songScores.clear();
+		backend.Highscore.songRating.clear();
+		states.StoryModeState.weekCompleted = new Map<String, Bool>();
+		states.EXETitle.initialized = false;
+		ClientPrefs.saveSettings();
+
+		FlxG.sound.music?.stop();
+		restartGame();
+	}
+
+	function restartGame():Void
+	{
+		#if (sys && !mobile && !switch)
+		try
+		{
+			final exe:String = Sys.programPath();
+			final dir:String = haxe.io.Path.directory(exe);
+			#if windows
+			new sys.io.Process('cmd', ['/c', 'start', '', '/D', dir, exe]);
+			#else
+			new sys.io.Process('sh', ['-c', "cd \"$0\" && nohup \"$1\" >/dev/null 2>&1 &", dir, exe]);
+			#end
+			Sys.exit(0);
+		}
+		catch (e:Dynamic) {}
+		#end
+		FlxG.resetGame();
 	}
 
 	override public function update(elapsed:Float)
@@ -135,6 +191,7 @@ class ExeGameplayState extends ExeBaseOptionsState
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				curSelected = newSelected;
 				hideArrows();
+				if (confirmReset) { confirmReset = false; refreshResetRow(); }
 
 				if (newSelected < scrollOffset)
 				{
@@ -154,6 +211,14 @@ class ExeGameplayState extends ExeBaseOptionsState
 		}
 		if (controls.ACCEPT #if mobile || (shortPress && !buttonOverlaps) #end)
 		{
+			if (curSelected == allOptions.length - 1)
+			{
+				if (confirmReset) { resetSaveData(); return; }
+				FlxG.sound.play(Paths.sound('scrollMenu'));
+				confirmReset = true;
+				refreshResetRow();
+				return;
+			}
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			editingValue = true; backLock = true; nudgeSelectedText(true);
 			var g = optionGroups[curSelected - scrollOffset];

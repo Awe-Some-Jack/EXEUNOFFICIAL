@@ -46,7 +46,7 @@ class SoundTestSubState extends MusicBeatSubstate
 		else
 		{
 			image = new FlxSprite();
-			image.loadGraphic(AssetPaths.getBitmapData(daPath));
+			image.loadGraphic(Paths.getBitmapData(daPath));
 			setImageSize(image, FlxG.width, FlxG.height);
 			image.screenCenter();
 			add(image);
@@ -68,7 +68,7 @@ class SoundTestSubState extends MusicBeatSubstate
 		}
 		else
 		{
-			if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.ESCAPE || FlxG.keys.justPressed.SPACE)
+			if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.ESCAPE || FlxG.keys.justPressed.SPACE #if mobile || FlxG.mouse.justPressed #end)
 			{
 				transitioning = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));

@@ -120,8 +120,12 @@ class SonichuUnlockState extends MusicBeatState
 
 	function _playShocker():Void
 	{
+		FlxG.save.data.sonichuUnlockPending = false;
+		FlxG.save.flush();
+
 		Mods.currentModDirectory = 'SONICHU';
 		Song.loadFromJson('shocker', 'shocker');
+		backend.SongProgress.markOpened('shocker');
 
 		EXEMenu.secretSong = true;
 		PlayState.storyPlaylist = ['shocker'];

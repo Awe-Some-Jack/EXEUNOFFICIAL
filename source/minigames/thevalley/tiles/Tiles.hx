@@ -908,6 +908,7 @@ class Totem
 	var _slideT:Float = 1.0;
 	var _exitT:Float = 0.0;
 	var _exitTime:Float = 0.3;
+	var _originalGroupIndex:Int = -1;
 
 	inline function get_totemX() return _sprite.x;
 
@@ -1012,7 +1013,7 @@ class Totem
 		return Math.abs(dy) > 40.0 ? 9999.0 : Math.sqrt(dx * dx + dy * dy);
 	}
 
-	public function updateActive(elapsed:Float, dist:Float = 0):Void
+	public function updateActive(elapsed:Float, dist:Float = 0, danger:Bool = false):Void
 	{
 		if (_state != ToIdle) _eButton.alpha = 0;
 		else _uncoverWhenClear();
@@ -1055,7 +1056,7 @@ class Totem
 
 			case ToHidden:
 				_snapPlayerInside();
-				hiddenTime += elapsed;
+				if (!danger) hiddenTime += elapsed;
 				if (isDecoy)
 				{
 					if (hiddenTime >= DECOY_CALM + DECOY_BREAK) _collapse();
@@ -1265,6 +1266,7 @@ class Totem
 		final pieces = _disguise != null ? [_sprite, _disguise] : [_sprite];
 		if (on)
 		{
+			_originalGroupIndex = _group.members.indexOf(pieces[0]);
 			for (piece in pieces) _group.remove(piece, true);
 			final i = _flxState.members.indexOf(_player);
 			for (k in 0...pieces.length)
@@ -1278,7 +1280,8 @@ class Totem
 			for (piece in pieces)
 			{
 				_flxState.remove(piece, true);
-				_group.add(piece);
+				if (_originalGroupIndex >= 0) _group.insert(_originalGroupIndex, piece);
+				else _group.add(piece);
 			}
 		}
 	}

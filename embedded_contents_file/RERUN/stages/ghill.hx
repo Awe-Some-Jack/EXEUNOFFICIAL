@@ -130,8 +130,18 @@ function opponentNoteHit(note:Note):Void {
 	}
 }
 
+var lastHandledStep:Int = 0;
+
 function onStepHit() {
-	switch(curStep) {
+	if (curStep <= lastHandledStep) lastHandledStep = curStep - 1;
+	while (lastHandledStep < curStep) {
+		lastHandledStep++;
+		handleStep(lastHandledStep);
+	}
+}
+
+function handleStep(step:Int) {
+	switch(step) {
 		case 44:
 			FlxTween.tween(logo, {alpha: 1}, 4.1, {ease: FlxEase.sineInOut});
 			FlxTween.tween(black2, {alpha: 0}, 4.1, {ease: FlxEase.sineInOut});
@@ -153,10 +163,12 @@ function onStepHit() {
 		case 1840:
 			FlxTween.tween(black, {alpha: 1}, 1.23, {ease: FlxEase.smootherStepOut});
 		case 1856:
+			FlxTween.cancelTweensOf(black);
 			black3.alpha = 1;
 			overlay.alpha = 0;
 			FlxTween.tween(black, {alpha: 0}, 0.3075, {ease: FlxEase.linear});
 		case 1980:
+			FlxTween.cancelTweensOf(black);
 			FlxTween.tween(black, {alpha: 1}, 0.3075, {ease: FlxEase.smootherStepIn});
 			FlxTween.tween(camHUD, {alpha: 0}, 0.3075, {ease: FlxEase.smootherStepIn});
 			FlxTween.tween(Hijacked.instance.gf2, {alpha: 0}, 0.3075, {
@@ -178,11 +190,14 @@ function onStepHit() {
 			}
 			for (i in 0...4) opponentStrums.members[i].x = -1000;
 		case 2036:
+			FlxTween.cancelTweensOf(black);
 			FlxTween.tween(black, {alpha: 0}, 0.3075, {ease: FlxEase.smootherStepIn});
 			if(!ClientPrefs.data.middleScroll) comboGroup.x = -500;
 		case 2076:
+			FlxTween.cancelTweensOf(black);
 			FlxTween.tween(black, {alpha: 1}, 0.3, {ease: FlxEase.smootherStepIn});
 		case 2080:
+			FlxTween.cancelTweensOf(black);
 			black.alpha = black3.alpha = 0;
 			overlay.alpha = 0.3;
 			PlayState.instance.health = 1;

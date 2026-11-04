@@ -207,14 +207,18 @@ function onSongStart() {
     alreadyPlayed = true;
 }
 
+var introWasPlaying:Bool = false;
+var ribbonsWasPlaying:Bool = false;
 function onPause() {
-    intro.pause();
-    ribbons.pause();
+    introWasPlaying = intro?.isPlaying() == true;
+    ribbonsWasPlaying = ribbons?.isPlaying() == true;
+    intro?.pause();
+    ribbons?.pause();
 }
 
 function onResume() {
-    if(alreadyPlayed) intro.play();
-    if(alreadyPlayed2) ribbons.play();
+    if(introWasPlaying) intro.resume();
+    if(ribbonsWasPlaying) ribbons.resume();
 }
 
 function goodNoteHitPre(note:Note):Void {
@@ -222,13 +226,13 @@ function goodNoteHitPre(note:Note):Void {
 	boyfriend.recalculateDanceIdle();
 }
 
-var lastFS:Bool = flase;
+var lastFS:Bool = false;
 function onUpdate(elapsed:Float) {
     
     if(!debugMode){
         if (FlxG.fullscreen != lastFS){
             FlxG.fullscreen = true;
-            lastFS = fullscreen;
+            lastFS = FlxG.fullscreen;
         }
     }
 

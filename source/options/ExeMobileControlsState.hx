@@ -26,6 +26,10 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 	var middlescrollTypeOption:ExeBaseOptionsState.ExeGenericOption;
 	var hitboxPositionOption:ExeBaseOptionsState.ExeGenericOption;
 
+	#if mobile
+	var keyboardCheckTimer:Float = 1;
+	#end
+
 	override public function create()
 	{
 		curSelected = 0;
@@ -107,6 +111,20 @@ class ExeMobileControlsState extends ExeBaseOptionsState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		#if mobile
+		keyboardCheckTimer -= elapsed;
+		if (keyboardCheckTimer <= 0 && !introAnimating && !OptionsState.reopenControls)
+		{
+			keyboardCheckTimer = 1;
+			if (MobileUtil.hasPhysicalKeyboard())
+			{
+				OptionsState.reopenControls = true;
+				playOutro();
+				return;
+			}
+		}
+		#end
 		if (introAnimating || backLock) { backLock = false; return; }
 
 		if (editingValue)

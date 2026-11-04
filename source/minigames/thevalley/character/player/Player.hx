@@ -621,18 +621,21 @@ class Player extends FlxSprite implements CameraTarget
 				_projectOnSlope();
 				_glue(elapsed);
 				_dustTimer -= elapsed;
+				
 				if (_dustTimer <= 0 && Math.abs(body.velocity.x) > 30)
 				{
 					_dustTimer = 0.05;
 					_puff(body.velocity.x > 0 ? 1 : -1, 1, 50);
 				}
-				if (_knockTimer <= 0)
+
+				if (_knockTimer <= 0 && isGrounded)
 				{
 					lockedAnim = null;
 					_landTimer = _squatTimer = 0.25;
 					_squash(0.1, 0.18);
 				}
 			}
+
 			return false;
 		}
 

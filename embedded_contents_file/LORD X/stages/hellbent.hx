@@ -158,5 +158,19 @@ function onPause(){ hellBG?.pause(); }
 
 function onResume(){ hellBG?.play(); }
 
+function stopHellBG()
+{
+	if (hellBG == null) return;
+	hellBG.video?.bitmap?.onEndReached.removeAll();
+	hellBG.video?.bitmap?.onFormatSetup.removeAll();
+	hellBG.stop();
+}
+
+function onEndSong() stopHellBG();
+
+function onGameOverStart() stopHellBG();
+
+function onDestroy() stopHellBG();
+
 function preloadCharacter(char:Int, target:String) game.addCharacterToList(target, char);
 function changeCharacter(char:String, target:String) game.triggerEvent('Change Character', char, target, Conductor.songPosition);

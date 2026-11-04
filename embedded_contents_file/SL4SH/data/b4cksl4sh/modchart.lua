@@ -1,8 +1,13 @@
+local FLIP_SPEED = 0.5
+local SUSTAIN_UPSCROLL_OFFSET = 56.204081
+
 local triggerChangeNotesOnce = false
 local triggerChangeNotesTwice = false
+local restY = {}
 local sl4shModchart = {
     ['beginModchart'] = function()
         for i = 0,3 do
+            restY[i] = getPropertyFromGroup('playerStrums', i, 'y')
             doTweenX('notePlayer'..i..'TweenStart', 'playerStrums.members['..i..']', (screenWidth / 2) + (50 / 2) - (((getProperty('playerStrums.members['..i..'].width') + (50 * 2)) * 4) / 2) + ((getProperty('playerStrums.members['..i..'].width')) + 50 * (i > 1 and (i == 3 and 2.33 or 3) or 1)) * i, 2 / playbackRate, 'circInOut')
         end
     end,
@@ -10,6 +15,15 @@ local sl4shModchart = {
         triggerChangeNotesOnce = true
         for i = 0,3 do
             doTweenY('notePlayer'..i..'DownScroll1', 'playerStrums.members['..i..']', 330, 0.5 / playbackRate, 'circOut')
+        end
+    end,
+    ['restore'] = function()
+        triggerChangeNotesTwice = true
+        if downscroll then setDownscroll() else setUpscroll() end
+        for i = 0,3 do
+            if restY[i] ~= nil then
+                doTweenY('notePlayer'..i..'Restore', 'playerStrums.members['..i..']', restY[i], 0.5 / playbackRate, 'circInOut')
+            end
         end
     end,
     ['goUp'] = function()
@@ -30,7 +44,7 @@ function onUpdatePost(e)
         end
         ]]
 
-        triggerEvent('Change Scroll Speed', "0.05", tostring(0.5 / playbackRate))
+        triggerEvent('Change Scroll Speed', tostring(FLIP_SPEED), tostring(0.5 / playbackRate))
     end
     if triggerChangeNotesTwice then
         triggerChangeNotesTwice = false
@@ -83,7 +97,7 @@ function setUpscroll()
 		if getPropertyFromGroup('notes',i,'mustPress') then
 			if getPropertyFromGroup('notes',i,'isSustainNote') then
 				setPropertyFromGroup('notes', i, 'flipY', false)
-				setPropertyFromGroup('notes', i, 'correctionOffset', 56.204081 * (downscroll and 1 or 0))
+				setPropertyFromGroup('notes', i, 'correctionOffset', SUSTAIN_UPSCROLL_OFFSET)
 			end
 			updateHitbox('notes.members['..i..']')
 		end
@@ -92,7 +106,7 @@ function setUpscroll()
 		if getPropertyFromGroup('unspawnNotes',i,'mustPress') then
 			if getPropertyFromGroup('unspawnNotes',i,'isSustainNote') then
 				setPropertyFromGroup('unspawnNotes',i,'flipY', false)
-				setPropertyFromGroup('unspawnNotes', i, 'correctionOffset', 56.204081 * (downscroll and 1 or 0))
+				setPropertyFromGroup('unspawnNotes', i, 'correctionOffset', SUSTAIN_UPSCROLL_OFFSET)
 			end
 			updateHitbox('unspawnNotes['..i..']')
 		end
@@ -105,7 +119,7 @@ function setDownscroll()
 		if getPropertyFromGroup('notes',i,'mustPress') then
 			if getPropertyFromGroup('notes',i,'isSustainNote') then
 				setPropertyFromGroup('notes', i, 'flipY', true)
-				setPropertyFromGroup('notes', i, 'correctionOffset', 56.204081 * (downscroll and 1 or 0))
+				setPropertyFromGroup('notes', i, 'correctionOffset', 0)
 			end
 			updateHitbox('notes.members['..i..']')
 		end
@@ -114,7 +128,7 @@ function setDownscroll()
 		if getPropertyFromGroup('unspawnNotes',i,'mustPress') then
 			if getPropertyFromGroup('unspawnNotes',i,'isSustainNote') then
 				setPropertyFromGroup('unspawnNotes',i,'flipY', true)
-				setPropertyFromGroup('unspawnNotes', i, 'correctionOffset', 56.204081 * (downscroll and 1 or 0))
+				setPropertyFromGroup('unspawnNotes', i, 'correctionOffset', 0)
 			end
 			updateHitbox('unspawnNotes['..i..']')
 		end

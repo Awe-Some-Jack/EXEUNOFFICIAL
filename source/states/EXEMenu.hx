@@ -183,7 +183,7 @@ class EXEMenu extends MusicBeatState
 		}
 
 		var save:FlxSave = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
 		unlocked = cast (save.data.songs ?? []);
 		#if !final
 		if (inDevMode) unlocked = ['f', 'u', 'c', 'k', 'y', 'o', 'u'];
@@ -254,6 +254,7 @@ class EXEMenu extends MusicBeatState
 		}
 
 		super.create();
+		CustomShapeTransition.shape = HEAD;
 
 		FatalAccess.startWatching();
 		final fatalScene = FatalAccess.menuScene();
@@ -485,7 +486,7 @@ class EXEMenu extends MusicBeatState
 	function extrasLocked():Bool
 	{
 		if (backend.MasterAccess.accessed) return false;
-		_extrasLocked ??= !backend.SongProgress.gameComplete();
+		_extrasLocked ??= FlxG.save.data.shockerCreditsSeen != true;
 		return (_extrasLocked #if !final && !inDevMode #end);
 	}
 

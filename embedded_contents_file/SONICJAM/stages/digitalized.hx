@@ -372,7 +372,8 @@ function setupCameras()
 }
 
 function onGameOverStart()  introCutscene?.destroy();
-function onPause() introCutscene?.pause();
-function onResume() introCutscene?.resume();
+var introWasPlaying:Bool = false;
+function onPause() { introWasPlaying = introCutscene?.isPlaying() == true; introCutscene?.pause(); }
+function onResume() if (introWasPlaying) introCutscene?.resume();
 
 function lua(obj:String) return game.getLuaObject(obj); 

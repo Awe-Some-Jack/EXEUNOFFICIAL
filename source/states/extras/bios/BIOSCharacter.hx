@@ -27,11 +27,60 @@ class BIOSCharacter
 	public static inline function atlasKeys():String
 		return atlasDir() + 'idle_atlas.keys';
 
+	static final ATLAS_VERSION:Int = 2;
+
 	public static function keysOf(pairs:Array<{mod:String, charId:String}>):String
 	{
 		final keys = [for (p in pairs) '${p.mod}|${p.charId}'];
 		keys.sort((a, b) -> a < b ? -1 : (a > b ? 1 : 0));
-		return keys.join('\n');
+		final appVersion:String = lime.app.Application.current?.meta?.get('version') ?? '';
+		return 'v$ATLAS_VERSION|$appVersion\n' + keys.join('\n');
+	}
+
+	public static function captureOne(mod:String, charId:String):{key:String, bmp:BitmapData, offX:Float, offY:Float}
+	{
+		final prevGPU:Bool = ClientPrefs.data.cacheOnGPU;
+		ClientPrefs.data.cacheOnGPU = false;
+		Paths.tempFramesCache.clear();
+		Paths.freeGraphicsFromMemory();
+
+		var result:{key:String, bmp:BitmapData, offX:Float, offY:Float} = null;
+		var ch:Character = null;
+		try
+		{
+			Mods.currentModDirectory = mod;
+			ch = new Character(0, 0, charId, false);
+			if (!ch.missingCharacter)
+			{
+				ch.update(1 / 60);
+				ch.update(1 / 60);
+				ch.update(1 / 60);
+
+				var animName:String = null;
+				if (ch.danceIdle && ch.hasAnimation('danceLeft')) animName = 'danceLeft';
+				else if (ch.hasAnimation('idle')) animName = 'idle';
+				else if (ch.hasAnimation('danceLeft')) animName = 'danceLeft';
+
+				if (animName != null) ch.playAnim(animName, true, false, 0);
+				final fp = capture(ch);
+				if (fp != null && fp.width > 0 && fp.height > 0 && !isBlank(fp))
+				{
+					final owned = new BitmapData(fp.width, fp.height, true, 0x00000000);
+					owned.copyPixels(fp, fp.rect, new Point(0, 0));
+					result = {key: '$mod|$charId', bmp: owned, offX: ch.offset.x, offY: ch.offset.y};
+				}
+			}
+		}
+		catch (e:Dynamic)
+		{
+			trace('BIOS: failed to capture $mod|$charId: $e');
+		}
+
+		ch?.destroy();
+		Paths.tempFramesCache.clear();
+		Paths.freeGraphicsFromMemory();
+		ClientPrefs.data.cacheOnGPU = prevGPU;
+		return result;
 	}
 
 	public static function upToDate(pairs:Array<{mod:String, charId:String}>):Bool
@@ -101,32 +150,8 @@ class BIOSCharacter
 
 		for (p in pairs)
 		{
-			try
-			{
-				Mods.currentModDirectory = p.mod;
-				final ch = new Character(0, 0, p.charId, false);
-				ch.update(1 / 60);
-				ch.update(1 / 60);
-				ch.update(1 / 60);
-
-				var animName:String = null;
-				if (ch.danceIdle && ch.hasAnimation('danceLeft')) animName = 'danceLeft';
-				else if (ch.hasAnimation('idle')) animName = 'idle';
-				else if (ch.hasAnimation('danceLeft')) animName = 'danceLeft';
-
-				if (animName != null) ch.playAnim(animName, true, false, 0);
-				final fp = capture(ch);
-				if (fp != null && fp.width > 0 && fp.height > 0)
-				{
-					final owned = new BitmapData(fp.width, fp.height, true, 0x00000000);
-					owned.copyPixels(fp, fp.rect, new Point(0, 0));
-					captured.push({key: '${p.mod}|${p.charId}', bmp: owned, offX: ch.offset.x, offY: ch.offset.y});
-				}
-
-				ch.destroy();
-				Paths.freeGraphicsFromMemory();
-			}
-			catch (e:Dynamic) {}
+			final c = captureOne(p.mod, p.charId);
+			if (c != null) captured.push(c);
 		}
 
 		Mods.currentModDirectory = prevMod;

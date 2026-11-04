@@ -460,11 +460,14 @@ class Paths
 
 	public static function getPath(file:String, ?type:AssetType = TEXT, ?parentfolder:String, ?modsAllowed:Bool = true):String
 	{
+		if (file.indexOf('..') != -1) file = haxe.io.Path.normalize(file);
+
 		#if MODS_ALLOWED
 		if(modsAllowed)
 		{
 			var customFile:String = file;
 			if (parentfolder != null) customFile = '$parentfolder/$file';
+			if (customFile.indexOf('..') != -1) customFile = haxe.io.Path.normalize(customFile);
 
 			final modded:String = modFolders(customFile);
 			#if sys

@@ -323,6 +323,8 @@ function onCreatePost()
 	{
 		dad.idleSuffix = '-alt';
 		dad.recalculateDanceIdle();
+		gf.idleSuffix = '-alt';
+		gf.recalculateDanceIdle();
 		for (i in 0...game.unspawnNotes.length)
 		{
 			final note:Note = game.unspawnNotes[i];
@@ -1109,4 +1111,4 @@ function revertDirection()
 
 function onDestroy() FlxG.camera.bgColor = 0x0;
 function onGameOverStart() FlxG.camera.bgColor = 0x0;
-function onEndSong() if(unlockRingAchievement) EXEAchievements.unlock('norings');
+function onEndSong() if(unlockRingAchievement && !game.practiceMode && !game.cpuControlled) EXEAchievements.unlock('norings');

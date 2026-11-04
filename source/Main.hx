@@ -48,6 +48,9 @@ import backend.Highscore;
 import states.EXEFreeplay;
 
 // // // // // // // // //
+#if (cpp && (mac || linux) && !android)
+@:cppFileCode('#include <signal.h>')
+#end
 class Main extends Sprite
 {
 	public static final game = {
@@ -150,6 +153,9 @@ class Main extends Sprite
 	public function new()
 	{
 		MemoryUtil.tuneAllocator();
+		#if (cpp && (mac || linux) && !android)
+		untyped __cpp__('signal(SIGPIPE, SIG_IGN)');
+		#end
 		super();
 
 		boot('new');
@@ -214,7 +220,7 @@ class Main extends Sprite
 		Mods.loadTopMod();
 		boot('mods loaded: ' + Mods.currentModDirectory);
 
-		FlxG.save.bind('funkin', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(FlxG.save, 'funkin', CoolUtil.getSavePath());
 		Highscore.load();
 		boot('save loaded');
 		backend.GameJoltManager.autoLogin((_) -> {});

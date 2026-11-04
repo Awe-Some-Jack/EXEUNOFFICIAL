@@ -105,20 +105,22 @@ local onTween4Contrast = false
 local onTween5 = false
 local glitchTime = false
 
-function onStepHit()
-    if curStep == 893 and shadersEnabled then
-        for _,char in ipairs({'boyfriend'}) do
-            setSpriteShader(char, 'DropShadowShader')
-            setShaderFloat(char, 'hue', 10)
-            setShaderFloat(char, 'saturation', -70)
-            setShaderFloat(char, 'contrast', 0)
-            setShaderFloat(char, 'str', 1)
-            setShaderFloat(char, 'brightness', 0)
-            setShaderFloat(char, 'thr', 0.1)
-            setShaderFloat(char, 'uSpriteAlpha', getProperty(char..'.alpha'))
-            setShaderFloat(char, 'AA_STAGES', 4.0)
-            runHaxeFunction('setShaderFrameInfo', {char})
-        end
+local bf085Shaded = false
+local function shadeBF085()
+    if bf085Shaded or not shadersEnabled then return end
+    if getProperty('boyfriend.curCharacter') ~= 'bf085' then return end
+    bf085Shaded = true
+    for _,char in ipairs({'boyfriend'}) do
+        setSpriteShader(char, 'DropShadowShader')
+        setShaderFloat(char, 'hue', 10)
+        setShaderFloat(char, 'saturation', -70)
+        setShaderFloat(char, 'contrast', 0)
+        setShaderFloat(char, 'str', 1)
+        setShaderFloat(char, 'brightness', 0)
+        setShaderFloat(char, 'thr', 0.1)
+        setShaderFloat(char, 'uSpriteAlpha', getProperty(char..'.alpha'))
+        setShaderFloat(char, 'AA_STAGES', 4.0)
+        runHaxeFunction('setShaderFrameInfo', {char})
     end
 end
 
@@ -232,6 +234,7 @@ local function sendShaderValues()
 end
 
 function onUpdatePost()
+    shadeBF085()
     if shadersEnabled and not lowQuality then sendShaderValues() end
 end
 

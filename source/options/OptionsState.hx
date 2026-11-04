@@ -378,7 +378,7 @@ class OptionsState extends MusicBeatState
 
 			switch (SECTION_KEYS[curSelected])
 			{
-				case "CONTROLS":  openSubState(new #if mobile options.ExeMobileControlsState() #else options.ExeControlsState() #end);
+				case "CONTROLS":  openControls();
 				case "VISUALS":   openSubState(new options.ExeVisualsState());
 				case "GRAPHICS":  openSubState(new options.ExeGraphicsState());
 				case "GAMEPLAY":  openSubState(new options.ExeGameplayState());
@@ -425,6 +425,20 @@ class OptionsState extends MusicBeatState
 		});
 	}
 
+	public static var reopenControls:Bool = false;
+
+	function openControls()
+	{
+		#if mobile
+		if (MobileUtil.hasPhysicalKeyboard())
+			openSubState(new options.ExeControlsState());
+		else
+			openSubState(new options.ExeMobileControlsState());
+		#else
+		openSubState(new options.ExeControlsState());
+		#end
+	}
+
 	override function closeSubState()
 	{
 		super.closeSubState();
@@ -448,6 +462,13 @@ class OptionsState extends MusicBeatState
 		sectionBGCloneWhite.alpha = 0;
 		
 		canAction = true;
+
+		if (reopenControls)
+		{
+			reopenControls = false;
+			canAction = false;
+			openControls();
+		}
 
 		titleAlphaTween?.cancel();
 		titleAlphaTween = FlxTween.tween(title, {alpha: 1.0}, 0.3, {ease: FlxEase.sineInOut, onComplete: (_) -> titleAlphaTween = null});

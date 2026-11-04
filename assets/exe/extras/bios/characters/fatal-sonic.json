@@ -9,8 +9,8 @@
 			"char_scale": 1.1,
 			"char_angle": 0,
 			"icon_offset": [
-				690,
-				482
+				697,
+				473
 			],
 			"icon": "fatal-sonic",
 			"mod": "FATAL",
@@ -27,8 +27,8 @@
 			"display_name": "TRUE FATAL",
 			"char_scale": 1.4,
 			"icon_offset": [
-				691,
-				481
+				697,
+				473
 			],
 			"icon": "true-fatal",
 			"char_offset": [

@@ -24,16 +24,16 @@
 		{
 			"bio": "Sarah Henderson is the human identity behind Needlem0use, originally a normal young woman before becoming a vengeful spirit tied to a corrupted Sonic game. She started as a college student with friends, but after an argument during a party, she was accidentally killed and her death was covered up, leaving her abandoned and forgotten.\n\nAfter her death, her consciousness did not disappear. Instead, she became trapped and eventually connected to a Sonic game, where she took the form of a distorted Sonic-like entity. From there, she begins targeting the people involved in her death, turning her actions into a revenge-driven cycle.",
 			"display_name": "SARAH",
-			"icon": "mom",
+			"icon": "needlemouse",
 			"icon_offset": [
-				681,
-				480
+				697,
+				469
 			],
 			"char_offset": [
 				518,
 				188
 			],
-			"char": "Sarah"
+			"char": "sarah"
 		}
 	]
 }

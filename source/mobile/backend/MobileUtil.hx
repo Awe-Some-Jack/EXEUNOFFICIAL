@@ -362,4 +362,27 @@ class MobileUtil
 		};
 	}
 	#end
+
+	public static function hasPhysicalKeyboard():Bool
+	{
+		#if android
+		try {
+			final getDeviceIds:Null<Dynamic> = extension.androidtools.jni.JNICache.createStaticMethod('android/view/InputDevice', 'getDeviceIds', '()[I');
+			final getDevice:Null<Dynamic> = extension.androidtools.jni.JNICache.createStaticMethod('android/view/InputDevice', 'getDevice', '(I)Landroid/view/InputDevice;');
+			final getKeyboardType:Null<Dynamic> = extension.androidtools.jni.JNICache.createMemberMethod('android/view/InputDevice', 'getKeyboardType', '()I');
+			final isVirtual:Null<Dynamic> = extension.androidtools.jni.JNICache.createMemberMethod('android/view/InputDevice', 'isVirtual', '()Z');
+			if (getDeviceIds == null || getDevice == null || getKeyboardType == null || isVirtual == null) return false;
+
+			final ids:Array<Int> = getDeviceIds();
+			if (ids == null) return false;
+			for (id in ids) {
+				final device:Dynamic = getDevice(id);
+				if (device != null && getKeyboardType(device) == 2 && !isVirtual(device)) return true;
+			}
+		} catch (e:Dynamic) {
+			trace('Keyboard check failed: ' + e);
+		}
+		#end
+		return false;
+	}
 }

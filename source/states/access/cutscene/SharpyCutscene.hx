@@ -353,6 +353,7 @@ class SharpyCutscene extends MusicBeatState
 
 		_events.sort((a, b) -> Reflect.compare(a.t, b.t));
 		_canSkip = FlxG.save.data.sharpyCutsceneSeen == true;
+		FlxG.sound.music?.stop();
 		_music = FlxG.sound.play(Assets.getSound('assets/exe/access/sharpy/cutscene.ogg'), 1);
 		_apply();
 	}

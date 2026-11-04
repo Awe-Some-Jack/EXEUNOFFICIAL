@@ -64,6 +64,7 @@ class SoundTest extends MusicBeatState
 	{
 		Paths.clearStoredMemory();
 		super.create();
+		CustomShapeTransition.shape = HEAD;
 
 		if (FlxG.stage?.window != null)
 			previousWindowTitle = FlxG.stage.window.title;
@@ -95,7 +96,7 @@ class SoundTest extends MusicBeatState
 		#end
 
 		save = new FlxSave();
-		save.bind('savedSongs', CoolUtil.getSavePath());
+		backend.CoolUtil.bindSave(save, 'savedSongs', CoolUtil.getSavePath());
 		if (save.data.songs == null) save.data.songs = [];
 
 		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
@@ -557,7 +558,7 @@ class SoundTest extends MusicBeatState
 		transitioning = false;
 		FlxTween.tween(whiteBG, {alpha: 0}, 0.2);
 
-		if (savedCode == [24, 4])
+		if (savedCode.length >= 2 && (savedCode[0] == 24 && savedCode[1] == 4))
 		{
 			backend.EXEAchievements.unlock('mattpro');
 			backend.EXEAchievements.save();

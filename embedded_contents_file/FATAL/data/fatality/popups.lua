@@ -258,7 +258,15 @@ function onEvent(n,v1)
 		addLuaSprite('popup'..daPopup, true)
 
 		stopSound('tumbalacasamami')
-		if popupIndex == 9 then playSound('tumbalacasamami', 0.5, 'tumbalacasamami') end
+		if popupIndex == 9 then
+			playSound('tumbalacasamami', 0.5, 'tumbalacasamami')
+			addHaxeLibrary('EXEAchievements', "backend")
+			runHaxeCode([[
+				import backend.EXEAchievements;
+				EXEAchievements.unlock('tumbalacasamami');
+				EXEAchievements.save();
+			]])
+		end
 
 		--update hitbox
 		setProperty('popup'..daPopup..'.width', math.floor(popupSettings[popupIndex].width * randomScale))

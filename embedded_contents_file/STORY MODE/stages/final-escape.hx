@@ -119,6 +119,7 @@ function onCreate()
 		YWGA.screenCenter();
 	});
 	YWGA.camera = camVideo;
+	YWGA.visible = false;
 	game.add(YWGA);
 	YWGA.precacheVideo(Paths.video('you know'));
 
@@ -380,8 +381,18 @@ function onGameOverStart()  {
 	YWGA?.destroy(); 
 }
 
-function onPause() { introCutscene?.pause(); YWGA?.pause(); }
-function onResume() { introCutscene?.resume(); YWGA?.resume(); }
+var introWasPlaying:Bool = false;
+var ywgaWasPlaying:Bool = false;
+function onPause() {
+	introWasPlaying = introCutscene?.isPlaying() == true;
+	ywgaWasPlaying = YWGA?.isPlaying() == true;
+	introCutscene?.pause();
+	YWGA?.pause();
+}
+function onResume() {
+	if (introWasPlaying) introCutscene?.resume();
+	if (ywgaWasPlaying) YWGA?.resume();
+}
 
 var inFront:Bool = true;
 var floatSine:Float = 0;
@@ -890,6 +901,7 @@ function onEvent(n,v1,v2)
 				{
 					camHUD.visible = false;
 					camOther.flash(0xFFFFFFFF, Conductor.crochet / 500, null, true);
+					YWGA.visible = true;
 					YWGA.playDelayed();
 				}
 			case 'wontgetaway2':

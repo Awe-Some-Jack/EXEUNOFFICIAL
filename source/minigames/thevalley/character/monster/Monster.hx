@@ -181,6 +181,10 @@ class Monster implements NavAgent
 	var _ambushX:Float = 0;
 	var _ambushY:Float = 0;
 
+	var _playerAgression:Float = 0.0;
+	var _lastNoiseX:Float = 0;
+	var _lastNoiseY:Float = 0;
+
 	var _fallSpeed:Float = 0;
 	var _lastRunFrame:Int = -1;
 	var _stepSound:FlxSound = null;
@@ -587,9 +591,17 @@ class Monster implements NavAgent
 		if (!_hasHunch || _dist(body.position.x, _feetY(), _hunchX, _hunchY) < 50)
 		{
 			_hasHunch = true;
-			final err = 200.0 * (_playerHidden() ? 2.5 : 1.0);
-			_hunchX = _playerFeetX() + FlxG.random.float(-err, err);
-			_hunchY = _playerFeetY();
+			if (_playerAgression > 2.0 && FlxG.random.bool(70))
+			{
+				_hunchX = _lastNoiseX;
+				_hunchY = _lastNoiseY;
+			}
+			else
+			{
+				final err = 200.0 * (_playerHidden() ? 2.5 : 1.0);
+				_hunchX = _lastKnownX + FlxG.random.float(-err, err);
+				_hunchY = _lastKnownY;
+			}
 		}
 		_setTarget(_hunchX, _hunchY, 48, 0.8);
 		return SUCCESS;
@@ -744,12 +756,24 @@ class Monster implements NavAgent
 		}
 
 		var loudness = 0.0;
+		var predictDist = 0.0;
+
 		if (p.isMakingNoise)
-			loudness = 560.0;
+		{
+			loudness = 650.0;
+			predictDist = p.body.velocity.x * 0.8;
+		}
 		else if (p.isGrounded && Math.abs(p.body.velocity.x) > p.cfg.physics.walkMax)
-			loudness = 340.0;
-		if (p.isGrounded && !_wasPlayerGrounded && _playerFallSpeed > 760.0)
-			loudness = Math.max(loudness, 260.0);
+		{
+			loudness = 420.0;
+			predictDist = p.body.velocity.x * 0.5;
+		}
+		
+		if (p.isGrounded && !_wasPlayerGrounded && _playerFallSpeed > 500.0)
+		{
+			loudness = Math.max(loudness, 600.0);
+			predictDist = 0;
+		}
 		_playerFallSpeed = p.isGrounded ? 0 : Math.max(_playerFallSpeed, p.body.velocity.y);
 		_wasPlayerGrounded = p.isGrounded;
 		if (p.inDark) loudness = 0;
@@ -757,8 +781,22 @@ class Monster implements NavAgent
 		_heard = loudness > 0 && d <= loudness;
 		if (_heard && !_dormant && !(_canSee || _smells))
 		{
-			final err = (d / loudness) * 70;
-			_setLead(pcx + FlxG.random.float(-err, err), p.y + p.height);
+			final targetX = pcx + predictDist;
+			_setLead(targetX, p.y + p.height);
+			
+			if (mood == Prowling || mood == Dormant)
+				_wake(false);
+		}
+
+		if (_heard)
+		{
+			_playerAgression = Math.min(5.0, _playerAgression + 0.5);
+			_lastNoiseX = pcx;
+			_lastNoiseY = p.y + p.height;
+		}
+		else 
+		{
+			_playerAgression = Math.max(0.0, _playerAgression - elapsed * 0.1);
 		}
 
 		if (p.inDark && !_wasPlayerInDark && !_dormant && _killTimer <= 0 && _time - _lastSeenTime <= 1.0)
@@ -1064,7 +1102,13 @@ class Monster implements NavAgent
 			else if (_fakerTimer >= 1.0)
 			{
 				_fakerTimer = 0;
-				if (_fakerLeftBehind()) _placeFaker();
+				if (_fakerLeftBehind()) {
+					if (!_placeFaker()) {
+						_fakerPhase = 0;
+						_playAnim(Idle);
+						return SUCCESS;
+					}
+				}
 			}
 			return RUNNING;
 		}
@@ -1323,16 +1367,10 @@ class Monster implements NavAgent
 	function _maybeSuspectNearbyTotem(x:Float, y:Float):Void
 	{
 		final r = 260.0;
-		final busy = _busyTotem();
-		if (busy != null && _dist(_totemFeetX(busy), _totemFeetY(busy), x, y) <= r && FlxG.random.float() < 0.6)
-		{
-			_suspectTotem = busy;
-			return;
-		}
-
-		if (FlxG.random.float() >= 0.25) return;
-		final near = [for (tm in _world.exeTotems()) if (_dist(_totemFeetX(tm), _totemFeetY(tm), x, y) <= r * 0.8) tm];
-		if (near.length > 0) _suspectTotem = near[FlxG.random.int(0, near.length - 1)];
+		final near = [for (tm in _world.exeTotems()) if (_dist(_totemFeetX(tm), _totemFeetY(tm), x, y) <= r) tm];
+		
+		if (near.length > 0 && FlxG.random.float() < 0.85)
+			_suspectTotem = near[FlxG.random.int(0, near.length - 1)];
 	}
 
 	inline function _totemFeetX(t:Totem):Float return t.totemX + @:privateAccess t._sprite.width * 0.5;

@@ -44,8 +44,6 @@ end
 
 function onCreatePost()
 	startVideo('good speed', false, true, false, false) setProperty('inCutscene', false)
-	callMethod('videoCutscene.destroy')
-    callMethod('remove', {instanceArg('videoCutscene')})
 
 	makeLuaSprite('godOffsetX')
 	

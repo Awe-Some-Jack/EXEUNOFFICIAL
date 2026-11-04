@@ -1,7 +1,7 @@
 {
   "input": "./assets",
   "output": "./astc-textures/",
-  "quality": "thorough",
+  "quality": "medium",
   "blocksize": "8x8",
   "colorprofile": "cl",
   "premultiplyAlpha": true,
@@ -21,6 +21,8 @@
     "assets/exe/story/padLock.webp",
     "assets/shared/images/pixelUI/",
     "assets/exe/access/fatal/",
-    "assets/exe/mobile/"
+    "assets/exe/mobile/",
+    "assets/exe/access/majin/",
+    "assets/exe/access/sharpy/"
   ]
 }

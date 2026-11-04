@@ -234,8 +234,8 @@ class EXEAchievements
         final a = get('secondary');
         if(a == null) return;
 
-        final codes = cast(a.extra ?? []);
-        if (codes.length >= SECONDARY_CODES.length) 
+        final codes:Array<Array<Int>> = cast(a.extra ?? []);
+        if (Lambda.foreach(SECONDARY_CODES, req -> Lambda.exists(codes, c -> c[0] == req[0] && c[1] == req[1]))) 
         {
             unlock(a.id);
             save();

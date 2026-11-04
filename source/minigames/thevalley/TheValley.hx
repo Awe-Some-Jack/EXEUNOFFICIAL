@@ -174,7 +174,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 		FlxG.cameras.add(uiCam, false);
 
 		#if mobile
-		add(new minigames.MiniTouchPad(uiCam));
+		add(new minigames.MiniTouchPad());
 		#end
 
 		_mapParts = BGValley.loadParts(MAP_PARTS);
@@ -249,7 +249,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 			player.cinematic  = false;
 			hud.timerRunning  = true;
 			gameCamera.followTarget();
-			if (cutsceneReplay == 'ending') _placeForEnding();
+			if (cutsceneReplay == 'ending') _endingPending = true;
 		};
 
 		cutscene.onSkullWin = _onShardFound;
@@ -340,6 +340,25 @@ class TheValley extends MusicBeatState implements ExeWorld
 	{
 		super.update(elapsed);
 		_clock += elapsed;
+
+		if (_endingPending)
+		{
+			_endingPending = false;
+			_placeForEnding();
+			gameCamera.bottom = bg.cutY(player.x) - 4;
+			gameCamera.update(1 / 60);
+			_finalTriggered = true;
+			_startFinalCutscene();
+			return;
+		}
+
+		#if !final
+		if (_finalCS == null && FlxG.keys.justPressed.ONE)
+		{
+			_startFinalCutscene();
+			return;
+		}
+		#end
 
 		if (_finalCS != null)
 		{
@@ -448,10 +467,21 @@ class TheValley extends MusicBeatState implements ExeWorld
 
 			var busyTotem:Totem = null;
 			for (tm in totems) if (tm.isBusy()) { busyTotem = tm; break; }
-			
+
 			if (busyTotem != null)
 			{
-				busyTotem.updateActive(elapsed, busyTotem.getDist());
+				var danger = false;
+				for (m in monsters) {
+					if (!m.isDormant && !m.disguised) {
+						final dx = m.sprite.x - busyTotem.totemX;
+						final dy = m.sprite.y - busyTotem.totemY;
+						if (dx * dx + dy * dy < 280.0 * 280.0) { 
+							danger = true; 
+							break; 
+						}
+					}
+				}
+				busyTotem.updateActive(elapsed, busyTotem.getDist(), danger);
 			}
 			else
 			{
@@ -462,7 +492,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 					final d = tm.getDist();
 					if (d < nearTotemDist) { nearTotemDist = d; nearestTotem = tm; }
 				}
-				nearestTotem?.updateActive(elapsed, nearTotemDist);
+				nearestTotem?.updateActive(elapsed, nearTotemDist, false);
 			}
 
 			var dread = 0.0;
@@ -609,16 +639,18 @@ class TheValley extends MusicBeatState implements ExeWorld
 	final _pausedSounds:Array<FlxSound> = [];
 	final _pausedTweens:Array<FlxTween> = [];
 
+	var _endingPending:Bool = false;
+
 	function _placeForEnding():Void
 	{
 		@:privateAccess shardHunt.found = 6;
-		final ray = nape.geom.Ray.fromSegment(nape.geom.Vec2.weak(10620, -20000), nape.geom.Vec2.weak(10620, 20000));
-		ray.maxDistance = 40000;
-		final hit = FlxNapeSpace.space.rayCast(ray, false);
-		final groundY = hit != null ? -20000 + hit.distance : _checkY;
-		hit?.dispose();
-		minigames.thevalley.map.TVNapeWorld.setBodyPos(player.body, 10620, groundY - player.height * 0.5 - 4);
+		minigames.thevalley.map.TVNapeWorld.setBodyPos(player.body, 10620, 138.0 - player.height * 0.5);
+		player.body.velocity.setxy(0, 0);
+		player.setGravity(false);
+		player.mode = Ground;
+		player.isGrounded = true;
 		gameCamera.followTarget();
+		gameCamera.cut();
 	}
 
 	function _exitReplay():Void
@@ -1271,14 +1303,15 @@ class TheValley extends MusicBeatState implements ExeWorld
 			return;
 		}
 
-		if (fromFreeplay)
+		//kinda unfair toward the player
+		/*if (fromFreeplay)
 		{
 			fromFreeplay = false;
 			Mods.loadTopMod();
 			FlxG.sound.music?.stop();
 			FlxG.switchState(() -> new states.EXEFreeplay());
 			return;
-		}
+		}*/
 
 		final launchDiff = _exeNormalDiff();
 
@@ -1293,6 +1326,8 @@ class TheValley extends MusicBeatState implements ExeWorld
 			trace('Error loading godspeed: ' + e.message);
 			return;
 		}
+
+		backend.SongProgress.markOpened('godspeed');
 
 		LoadingState.prepareToSong();
 		LoadingState.loadAndSwitchState(new PlayState());

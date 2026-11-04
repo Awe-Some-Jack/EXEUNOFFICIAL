@@ -445,7 +445,7 @@ class BIOS extends SonicSubState
 		}
 		
 		// sera bueno?, quizas en un futuro un personaje con letras minusculas... q haremos en ese caso? 
-		charName.text = dispName.toUpperCase();
+		charName.text = Language.upper(dispName);
 		
 		_fitCharName();
 		_setArtists(artist);
@@ -496,19 +496,20 @@ class BIOS extends SonicSubState
 			if (mod != '')
 			{
 				final mp = Paths.mods('$mod/$charPath');
-				if (FileSystem.exists(mp)) fullPath = mp;
+				if (FileSystem.exists(mp) || Assets.exists('contents/$mod/$charPath')) fullPath = mp;
 			}
 			else
 			{
 				final mp = Paths.modFolders(charPath);
-				if (FileSystem.exists(mp)) fullPath = mp;
+				if (FileSystem.exists(mp) || Assets.exists(mp)) fullPath = mp;
 			}
 			#end
 
-			if (!FileSystem.exists(fullPath)) { charSprite.visible = false; return; }
+			final rawJson:String = Paths.getContent(fullPath);
+			if (rawJson == null) { charSprite.visible = false; return; }
 
 			var json:Dynamic;
-			try { json = Json.parse(File.getContent(fullPath)); }
+			try { json = Json.parse(rawJson); }
 			catch (e:Dynamic) { charSprite.visible = false; return; }
 
 			if (json.image == null) { charSprite.visible = false; return; }

@@ -97,12 +97,13 @@ class StoryModeState extends MusicBeatState
 		#end
 
 		super.create();
+		CustomShapeTransition.shape = HEAD;
 
 		#if mobile createBackButton(FlxG.width - 245, FlxG.height - 240); #end
 	}
 
 	static function getUnlockedCovers(){
-		return FlxG.save.data.lastCoverPlay;
+		return #if final FlxG.save.data.lastCoverPlay #else 4 #end;
 	}
 
 	public function unlockCoverIndex(cover:Int){
@@ -333,8 +334,8 @@ class StoryModeState extends MusicBeatState
 		
 		covers  = [tooSlowCover,  youCantRunCover,  tripleTroubleCover,  finalEscapeCover,  yourselfCover];
 		
-		box1BaseX = greyBOX.x - 30;
-		box2BaseX = greyBOX2.x - 30;
+		box1BaseX = greyBOX.x - 25;
+		box2BaseX = greyBOX2.x - 25;
 
 		for (s in [greyBOX2, gfBOX, yellowBOX2, staticscreen2])
 			s.color = 0xFF666666;

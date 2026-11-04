@@ -38,7 +38,9 @@
 	"options.visuals": "VISUALS",
 	"options.visuals.labels": ["HIDE HUD", "FLASHING LIGHTS", "CAMERA ZOOMS", "SCORE TEXT ZOOM", "FPS COUNTER"],
 	"options.gameplay": "GAMEPLAY",
-	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO"],
+	"options.gameplay.labels": ["DOWNSCROLL", "GHOST TAPPING", "SICK WINDOW", "GOOD WINDOW", "BAD WINDOW", "SAFE FRAMES", "STREAMED AUDIO", "RESET SAVE DATA"],
+	"options.reset.select": "SELECT",
+	"options.reset.confirm": "ARE YOU SURE?",
 	"options.graphics": "GRAPHICS",
 	"options.graphics.labels": ["ANTI ALIASING", "GPU CACHING", "SHADER QUALITY", "SHADERS", "FRAMERATE", "SAFE SYNC"],
 	"options.language": "LANGUAGE",
@@ -210,6 +212,6 @@
 	"sonichu_reveal_2": "Get ready, because this is the end.",
 	"sonichu_reveal_3": "My final power...",
 
-	"warning_text_main": "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nAlso, if your device is lower end, consider lowering shader quality.\n\nViewer discretion is advised.",
+	"warning_text_main": "WELCOME.\n\nBefore you continue any further, you have to be aware this mod contains flashing lights and seizures.\n\nIf you feel uncomfortable or triggered by these events, DO NOT PLAY THIS AND CLOSE THE GAME.\n\nAlso, if you have a weaker device, some issues with loading may occur. Please consider lowering shader quality or playing on a device with more RAM.\n\nViewer discretion is advised.",
 	"warning_text_enter": "Press Enter To Continue."
 }

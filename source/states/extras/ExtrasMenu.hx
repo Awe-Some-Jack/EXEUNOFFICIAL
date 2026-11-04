@@ -31,7 +31,6 @@ typedef ExtrasMenuThemeEntry = {
 class ExtrasMenu extends MusicBeatState
 {
     static final MENU_KEYS = [
-        "extras.menu.gallery",
         "extras.menu.character",
         "extras.menu.dagarden",
         "extras.menu.cutscenes",
@@ -105,6 +104,12 @@ class ExtrasMenu extends MusicBeatState
             name: "Principle of Monotony",
             src: "extras6",
             author: "Kiv.FLP",
+            volume: 1
+        },
+        {
+            name: "Palmtree Panic \"P\" Mix (ReImagined)",
+            src: "extras7",
+            author: "MeDicenKay",
             volume: 1
         },
         {
@@ -261,7 +266,7 @@ class ExtrasMenu extends MusicBeatState
         if (openCutscenes)
         {
             openCutscenes = false;
-            curSelected = 3;
+            curSelected = 2;
             changeSelection(0);
             canMove = false;
             new FlxTimer().start(0.05, (_) -> openOption());
@@ -578,8 +583,7 @@ class ExtrasMenu extends MusicBeatState
                 default: 'bigass.otf';
             }
             final fallback = switch (i) {
-                case 0: ['GALLERY', 'View the community gallery'];
-                case 1: ['CHARACTER BIOS', 'Learn more about the cast'];
+                case 0: ['CHARACTER BIOS', 'Learn more about the cast'];
                 default: ['?', ''];
             }
             final label = Language.getArray(MENU_KEYS[i], fallback)[0];
@@ -645,8 +649,7 @@ class ExtrasMenu extends MusicBeatState
                 default: 'smallass.ttf';
             }
             final fallback = switch (i) {
-                case 0: ['GALLERY', 'View the community gallery'];
-                case 1: ['CHARACTER BIOS', 'Learn more about the cast'];
+                case 0: ['CHARACTER BIOS', 'Learn more about the cast'];
                 default: ['?', ''];
             }
 
@@ -787,14 +790,11 @@ class ExtrasMenu extends MusicBeatState
 
         switch (curSelected)
         {
-            case 0:
-                lime.system.System.openURL('https://vsexeunofficial.com/gallery');
-                canMove = true;
-            case 1: nextSubState = new states.extras.bios.BIOSLoadingState();
-            case 2: nextSubState = new states.extras.dagarden.DAGarden();
-            case 3: nextSubState = new states.extras.cutscenes.Cutscene();
-            case 4: nextSubState = new states.extras.achievements.AchievementsState();
-            case 5: nextSubState = new states.extras.credits.CreditsState();
+            case 0: nextSubState = new states.extras.bios.BIOSLoadingState();
+            case 1: nextSubState = new states.extras.dagarden.DAGarden();
+            case 2: nextSubState = new states.extras.cutscenes.Cutscene();
+            case 3: nextSubState = new states.extras.achievements.AchievementsState();
+            case 4: nextSubState = new states.extras.credits.CreditsState();
         }
 
         if (nextSubState != null)

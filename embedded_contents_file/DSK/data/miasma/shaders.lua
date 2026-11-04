@@ -894,12 +894,17 @@ function shaderCoordFix()
             if (game.camGame != null) resetCamCache(game.camGame.flashSprite);
             if (game.camHUD != null) resetCamCache(game.camHUD.flashSprite);
         }
+        game.variables.set('fixShaderCoordFix', fixShaderCoordFix);
         FlxG.signals.gameResized.add(fixShaderCoordFix);
         fixShaderCoordFix();
     ]])
     local temp = onDestroy
     function onDestroy()
-        runHaxeCode([[ FlxG.signals.gameResized.remove(fixShaderCoordFix); ]])
+        runHaxeCode([[
+            var fix = game.variables.get('fixShaderCoordFix');
+            if (fix != null) FlxG.signals.gameResized.remove(fix);
+            game.variables.remove('fixShaderCoordFix');
+        ]])
         if temp then temp() end
     end
 end

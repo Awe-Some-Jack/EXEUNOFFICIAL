@@ -177,19 +177,15 @@ function opponentNoteHit(id,nd,nt,isn)
 end
 
 local iTime = 0
-local xRatio = 0
-local yRatio = 0
 function onUpdatePost(e)
     iTime = iTime + e
     if shadersEnabled then
         
-        xRatio = getPropertyFromClass('flixel.FlxG', 'stage.window.width') / 1280;
-        yRatio = getPropertyFromClass('flixel.FlxG', 'stage.window.width') / 720;
         setShaderFloat('distortion', 'iTime', iTime * 2)
         setShaderFloat('distortion', 'amount', getProperty('distortion.x'))
         setShaderFloat('distortion', 'size', (10 + math.sin(iTime * 2) * 0.15) * getProperty('camGame.zoom'))
-        setShaderFloat('distortion', 'xPos', ((_pos[1] - (getProperty('camGame.scroll.x') + screenWidth / 2)) * getProperty('camGame.zoom') + screenWidth / 2) * xRatio)
-        setShaderFloat('distortion', 'yPos', ((_pos[2] - 225 - (getProperty('camGame.scroll.y') + screenHeight / 2)) * getProperty('camGame.zoom') + screenHeight / 2) * yRatio)
+        setShaderFloat('distortion', 'xPos', ((_pos[1] - (getProperty('camGame.scroll.x') + screenWidth / 2)) * getProperty('camGame.zoom') + screenWidth / 2) / screenWidth)
+        setShaderFloat('distortion', 'yPos', ((_pos[2] - 225 - (getProperty('camGame.scroll.y') + screenHeight / 2)) * getProperty('camGame.zoom') + screenHeight / 2) * (screenWidth / screenHeight) / screenHeight)
         if onTween1 then
             setShaderFloat('shine', 'brightness', getProperty('shine.x') * 2)
             setShaderFloat('shine', 'contrast', 1 + (getProperty('shine.x') * 4))

@@ -90,6 +90,7 @@ class MiniTouchPad extends FlxSpriteGroup
 	var buttonRadius:Float = 0;
 
 	var pauseBtn:FlxSprite;
+	var padCam:FlxCamera;
 	var acceptDown:Bool = false;
 	var acceptWasDown:Bool = false;
 	var acceptHeld:Float = 0;
@@ -100,7 +101,7 @@ class MiniTouchPad extends FlxSpriteGroup
 	var runDir:String = null;
 	var lastDown:Map<String, Float> = [];
 
-	public function new(cam:FlxCamera)
+	public function new()
 	{
 		super();
 		current = [];
@@ -159,8 +160,33 @@ class MiniTouchPad extends FlxSpriteGroup
 		#end
 		add(pauseBtn);
 
-		cameras = [cam];
+		padCam = new FlxCamera();
+		padCam.bgColor = 0x00000000;
+		FlxG.cameras.add(padCam, false);
+		cameras = [padCam];
 		refreshVisuals();
+
+		FlxG.signals.postUpdate.add(keepOnTop);
+	}
+
+	function keepOnTop():Void
+	{
+		final state = FlxG.state;
+		if (state == null) return;
+
+		final camList = FlxG.cameras.list;
+		if (state.subState == null && camList.indexOf(padCam) != -1 && camList[camList.length - 1] != padCam)
+		{
+			FlxG.cameras.remove(padCam, false);
+			FlxG.cameras.add(padCam, false);
+		}
+
+		final members = state.members;
+		if (members.length > 0 && members[members.length - 1] != this && members.indexOf(this) != -1)
+		{
+			state.remove(this, true);
+			state.add(this);
+		}
 	}
 
 	function piece(file:String, scale:Float):FlxSprite
@@ -322,6 +348,10 @@ class MiniTouchPad extends FlxSpriteGroup
 
 	override function destroy():Void
 	{
+		FlxG.signals.postUpdate.remove(keepOnTop);
+		if (padCam != null && FlxG.cameras.list.indexOf(padCam) != -1)
+			FlxG.cameras.remove(padCam);
+		padCam = null;
 		padAlive = false;
 		current = [];
 		previous = [];

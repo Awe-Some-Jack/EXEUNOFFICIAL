@@ -61,11 +61,6 @@ var flashBackBG:Array<SprDef> = [
 	{name: 'picoDead',      path: 'slow/flashback/pico_ded',         x:   370, y: 900,                                                                              scaleX: 0.6, scaleY: 0.6, scrollX: 1, scrollY: 1, alpha: 0, front: true},
 ];
 
-var spritesLQ:Array<SprDef> = [
-	{name: 'fondoLQ',  path: 'potatomode/slow/1', x: -850, y: -500, scale: 2.8, alpha: 1},
-	{name: 'fondoLQ2', path: 'potatomode/slow/2', x: -850, y:  800, scale: 2.8, alpha: 1, front: true},
-];
-
 function addSpr(def:SprDef)
 {
 	var spr:FlxSprite;
@@ -105,26 +100,10 @@ function addSpr(def:SprDef)
 
 function onCreate()
 {
-	if (!lq)
-	{
-		for (fl in flashBackBG) addSpr(fl);
-		for (spr in sprites)    addSpr(spr);
-	}
-	else
-	{
-		for (spr in spritesLQ) addSpr(spr);
-	}
+	for (fl in flashBackBG) addSpr(fl);
+	for (spr in sprites)    addSpr(spr);
 
 	game.gfGroup.scrollFactor.set(1, 1);
-}
-
-function onCreatePost()
-{
-	if (lq)
-	{
-		triggerEvent('Change Character', 'gf', 'gfLQ');
-		triggerEvent('Change Character', 'dad', 'sonic.exeLQ');
-	}
 }
 
 function getLowestGroup()

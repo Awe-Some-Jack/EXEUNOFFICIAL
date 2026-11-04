@@ -46,5 +46,6 @@ function onSongStart()
 	}
 }
 function onGameOverStart() { introCutscene?.destroy(); FlxG.camera.bgColor = 0x0; }
-function onPause() introCutscene?.pause();
-function onResume() introCutscene?.resume();
+var introWasPlaying:Bool = false;
+function onPause() { introWasPlaying = introCutscene?.isPlaying() == true; introCutscene?.pause(); }
+function onResume() if (introWasPlaying) introCutscene?.resume();

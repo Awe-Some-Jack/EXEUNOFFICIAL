@@ -646,7 +646,7 @@ class ExtrasMenu extends MusicBeatState
                 case 'ja-JP': 'noto-serif/japanese.ttf';
                 case 'ko-KR': 'noto-serif/korean.ttf';
                 case 'zh-CN': 'noto-serif/simplified-chinese.ttf';
-                default: 'smallass.ttf';
+                default: 'smallass.TTF';
             }
             final fallback = switch (i) {
                 case 0: ['CHARACTER BIOS', 'Learn more about the cast'];

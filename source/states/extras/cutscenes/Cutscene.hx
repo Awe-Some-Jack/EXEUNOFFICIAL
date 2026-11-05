@@ -118,7 +118,7 @@ class Cutscene extends SonicSubState
         add(descBar);
 
         final descTemp = new FlxText(0, 0, 0, Language.getArray('extras.menu.cutscenes', ['', 'In here you can rewatch cutscenes used in gameplay! Just that!'])[1], Language.cjkSize(56));
-        descTemp.setFormat(Paths.font(Language.fontOrCJK("smallass.ttf")), Language.cjkSize(56), FlxColor.WHITE, LEFT);
+        descTemp.setFormat(Paths.font(Language.fontOrCJK("smallass.TTF")), Language.cjkSize(56), FlxColor.WHITE, LEFT);
         descTemp.antialiasing = ClientPrefs.data.antialiasing;
         descTemp.updateHitbox();
         descTemp.drawFrame(true);

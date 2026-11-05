@@ -28,6 +28,8 @@ class PreyMini extends MusicBeatState
 	public static var songLives:Int = 0;
 	public static var songRings:Int = -1;
 	public static var cutsceneReplay:Bool = false;
+	public static var deaths:Int = 0;
+	static inline final SUNKY_HELP_DEATHS:Int = 6;
 
 	static final CHAIN_SCORE:Array<Int> = [100, 200, 500, 1000];
 
@@ -307,6 +309,7 @@ class PreyMini extends MusicBeatState
 
 	function _playPreySong():Void
 	{
+		deaths = 0;
 		WeekData.reloadWeekFiles(false);
 		final week = WeekData.weeksList.indexOf("starv");
 		final data = WeekData.weeksLoaded.get("starv");
@@ -459,6 +462,23 @@ class PreyMini extends MusicBeatState
 		_ending = true;
 		_hud.timing = false;
 		final quit = _sonic.leaving;
+		if (!quit)
+		{
+			deaths++;
+			if (!cutsceneReplay && deaths % SUNKY_HELP_DEATHS == 0)
+			{
+				openSubState(new states.substates.SunkySubstate(accepted -> {
+					if (accepted) _playPreySong();
+					else _finishRun(false);
+				}));
+				return;
+			}
+		}
+		_finishRun(quit);
+	}
+
+	function _finishRun(quit:Bool):Void
+	{
 		if (!quit && _lives <= 0)
 		{
 			_hud.showGameOver();

@@ -139,7 +139,7 @@ class MusicBeatState extends FlxTransitionableState
 
 		#if mobile
 		if(backButton != null) {
-			buttonOverlaps = FlxG.mouse.overlaps(backButton);
+			buttonOverlaps = FlxG.mouse.overlaps(backButton, backButton.cameras[0]);
 			
 			if(FlxG.mouse.pressedRight) {
 				backButton.x += deltaMouseX;

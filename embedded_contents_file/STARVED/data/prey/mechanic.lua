@@ -7,6 +7,7 @@ local invulnerableTimer = 0
 local INVULN_DURATION = 2.0
 
 local RUSH_LANE = 20
+local MAX_SCATTERED_RINGS = 32
 
 function onCreatePost()
 	makeAnimatedLuaSprite('sonic-jump', 'prey/sonic-jump')
@@ -27,7 +28,12 @@ function onCreatePost()
 
 	for _, snd in ipairs({'badnickfast', 'breakbadnik', 'dropbox', 'hit', 'warning'}) do precacheSound('minigame/preymini/'..snd) end
 	precacheSound('warnin')
+	precacheSound('sonicJump')
+	precacheSound('Ringer')
+	precacheSound('loseRings')
 	precacheImage('prey/spike')
+	precacheImage('prey/ring')
+	precacheImage('prey/warning')
 
 	for i = 1, RUSH_LANE do
 		local tag = 'rushLane'..i
@@ -57,7 +63,7 @@ local function hurtSonic()
 		isInvulnerable = true
 		invulnerableTimer = INVULN_DURATION
 
-		for j = 1, getVar('rings') do
+		for j = 1, math.min(getVar('rings'), MAX_SCATTERED_RINGS) do
 			local missedRing = 'missedRing'..j
 			makeAnimatedLuaSprite(missedRing, 'prey/ring', getProperty('boyfriend.x'), getProperty('boyfriend.y'))
 			addAnimationByPrefix(missedRing, 'idle', 'ring', 8, true)

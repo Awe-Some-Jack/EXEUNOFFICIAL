@@ -62,7 +62,7 @@ class TheValley extends MusicBeatState implements ExeWorld
 	public static var fromFreeplay:Bool = false;
 	public static var cutsceneReplay:String = null;
 	public static var deaths:Int = 0;
-	static inline final SUNKY_HELP_DEATHS:Int = 10;
+	static inline final SUNKY_HELP_DEATHS:Int = 6;
 
 	var _mapParts:Array<MapPart> = [];
 

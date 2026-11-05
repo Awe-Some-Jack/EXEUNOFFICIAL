@@ -69,7 +69,12 @@ function onCreate()
 		SkyParade.halo();
 
 		lights = new MapLights();
-		for (id in 1...SongFloors.count() + 1) SongFloors.clear(id);
+		for (id in 1...SongFloors.count() + 1)
+		{
+			SongFloors.clear(id);
+			Paths.image('prey/floor-variants/$id/floor1');
+			Paths.image('prey/floor-variants/$id/floor2');
+		}
 		for (i in 0...2)
 		{
 			final v = FlxG.random.int(1, SongFloors.count());
@@ -131,6 +136,7 @@ function onCreatePost()
 }
 
 var lightningActive:Bool = false;
+var lightningTween:FlxTween = null;
 function onUpdatePost(elapsed:Float)
 {
 	if (getVar('ending'))
@@ -151,19 +157,19 @@ function onUpdatePost(elapsed:Float)
 		{
 			if (lightning.animation.curAnim.finished)
 			{
-				FlxTween.num(0, 1, 2, null, n -> {
-					var r = 216 + (9 - 216) * n;
-					var g = 108 + (0 - 108) * n;
-					var b = 180 + (0 - 180) * n;
-
-					replaceColor.setFloatArray('replaceColor', [r, g, b]);
-				});
 				lightning.alpha -= (elapsed * 0.75);
 			}
 			if (lightning.alpha <= 0)
 			{
 				lightningActive = false;
 				lightning.visible = false;
+				lightningTween = FlxTween.num(0, 1, 2, null, n -> {
+					var r = 216 + (9 - 216) * n;
+					var g = 108 + (0 - 108) * n;
+					var b = 180 + (0 - 180) * n;
+
+					replaceColor.setFloatArray('replaceColor', [r, g, b]);
+				});
 			}
 		}
 
@@ -250,6 +256,8 @@ function doLightning()
 		stopNextShock = false;
 		return;
 	}
+	if (lightningTween != null && !lightningTween.finished) lightningTween.cancel();
+	lightningTween = null;
 	lightningActive = true;
 	lightning.visible = true;
 	lightning.alpha = 1;

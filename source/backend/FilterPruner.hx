@@ -291,7 +291,7 @@ class FilterPruner
 		}
 
 		final filtered:Bool = camera.filtersEnabled && camera.filters != null && camera.filters.length > 0;
-		if (filtered)
+		if (filtered || sprite.cacheAsBitmap)
 		{
 			final bounds:Rectangle = new Rectangle();
 			sprite.__getFilterBounds(bounds, new Matrix(a, 0, 0, d));

@@ -186,6 +186,9 @@ class Main extends Sprite
 		MobileUtil.initDirectory();
 		#end
 		Sys.setCwd(MobileUtil.getAssetDirectory());
+		#if ios
+		MobileUtil.prepareDocumentsFolder();
+		#end
 		MobileUtil.mountAssets();
 		#if ios
 		MobileUtil.watchHardwareKeyboard();

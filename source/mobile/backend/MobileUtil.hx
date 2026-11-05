@@ -213,6 +213,20 @@ class MobileUtil
 	#end
 
 	@:access(lime.utils.AssetLibrary)
+	#if ios
+	public static function prepareDocumentsFolder():Void
+	{
+		final readme:String = Path.join([getAssetDirectory(), 'README.txt']);
+		try
+		{
+			if (!FileSystem.exists(readme))
+				File.saveContent(readme, 'Copy the "assets" and "contents" folders from the game download into this folder.\n');
+		}
+		catch (e:Dynamic)
+			trace('Could not write $readme ($e)');
+	}
+	#end
+
 	public static function mountAssets():Void
 	{
 		#if (mobile && sys)

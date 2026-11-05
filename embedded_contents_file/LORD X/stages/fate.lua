@@ -396,7 +396,7 @@ local function onUpdateFate(elapsed)
     end
 end
 
-local DODGE_WINDOW = 180
+local DODGE_WINDOW = 240
 
 local DODGE_CONFIG = {
     START = false,
@@ -428,7 +428,7 @@ local function resolveDodge()
     if DODGE_CONFIG.HASDODGED then return end
 
     loseHealthBitch = true
-    setProperty('healthShit.x', getProperty('health')) doTweenX('healthLose', 'healthShit', getProperty('healthShit.x') - 2, 0.6, 'circOut')
+    setProperty('healthShit.x', getProperty('health')) doTweenX('healthLose', 'healthShit', getProperty('healthShit.x') - 0.7, 0.6, 'circOut')
     runTimer('stopLosingShit', 0.6)
 end
 

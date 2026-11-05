@@ -14,7 +14,7 @@ local lifeOffsetY = 29
 local squareCount = 22
 local barMargin = 24
 local handDistance = 140
-local handReach = 20
+local handInset = 9
 local handSlideTime = 0.45
 local minButtonX = 372
 local closeButtonX = 390
@@ -119,8 +119,8 @@ local function handTarget(edge, position)
 	local boxY = getProperty('fatalBoxY')
 	local boxW = getProperty('fatalBoxW')
 	local boxH = getProperty('fatalBoxH')
-	if edge == 'top' then return boxX + position * boxW, boxY, 180 end
-	if edge == 'bottom' then return boxX + position * boxW, boxY + boxH, 0 end
+	if edge == 'top' then return boxX + position * boxW, boxY, 0 end
+	if edge == 'bottom' then return boxX + position * boxW, boxY + boxH, 180 end
 	if edge == 'left' then return boxX, boxY + position * boxH, 270 end
 	return boxX + boxW, boxY + position * boxH, 90
 end
@@ -139,14 +139,14 @@ local function spawnHand(edge, position)
 	handCount = handCount + 1
 	local tag = 'fatalHand'..handCount
 	local targetX, targetY, angle = handTarget(edge, position)
-	local outX, outY = outwardOffset(edge, handReach)
+	local outX, outY = outwardOffset(edge, -handInset)
 	local awayX, awayY = outwardOffset(edge, handDistance)
 
 	makeAnimatedLuaSprite(tag, handImage, 0, 0)
 	addAnimationByPrefix(tag, 'up', 'hand up', 12, false)
 	addAnimationByPrefix(tag, 'grab', 'hand grab ', 8, false)
 	playAnim(tag, 'up', true)
-	setObjectCamera(tag, 'barCam')
+	setObjectCamera(tag, 'handCam')
 	setProperty(tag..'.antialiasing', false)
 	setProperty(tag..'.angle', angle)
 	addLuaSprite(tag, true)

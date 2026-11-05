@@ -177,6 +177,10 @@ function onCreate() {
 	FlxG.cameras.remove(camHUD, false);
 	FlxG.cameras.remove(camOther, false);
 	FlxG.cameras.add(wallpaperCamera, false);
+	var handCam:FlxCamera = new FlxCamera();
+	handCam.bgColor = 0x0;
+	FlxG.cameras.add(handCam, false);
+	setVar('handCam', handCam);
 	FlxG.cameras.add(camGame);
 	FlxG.cameras.add(camVideo, false);
 	FlxG.cameras.add(camHUD, false);

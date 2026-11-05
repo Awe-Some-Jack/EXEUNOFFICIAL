@@ -363,9 +363,26 @@ class MobileUtil
 	}
 	#end
 
+	#if ios
+	static var _hardwareKeyboardSeen:Bool = false;
+	static var _watchingHardwareKeyboard:Bool = false;
+
+	public static function watchHardwareKeyboard():Void
+	{
+		if (_watchingHardwareKeyboard) return;
+		_watchingHardwareKeyboard = true;
+		openfl.Lib.current.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (_) -> {
+			final window = Application.current?.window;
+			if (window != null && !window.textInputEnabled) _hardwareKeyboardSeen = true;
+		});
+	}
+	#end
+
 	public static function hasPhysicalKeyboard():Bool
 	{
-		#if android
+		#if ios
+		if (_hardwareKeyboardSeen) return true;
+		#elseif android
 		try {
 			final getDeviceIds:Null<Dynamic> = extension.androidtools.jni.JNICache.createStaticMethod('android/view/InputDevice', 'getDeviceIds', '()[I');
 			final getDevice:Null<Dynamic> = extension.androidtools.jni.JNICache.createStaticMethod('android/view/InputDevice', 'getDevice', '(I)Landroid/view/InputDevice;');

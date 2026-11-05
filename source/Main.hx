@@ -187,6 +187,9 @@ class Main extends Sprite
 		#end
 		Sys.setCwd(MobileUtil.getAssetDirectory());
 		MobileUtil.mountAssets();
+		#if ios
+		MobileUtil.watchHardwareKeyboard();
+		#end
 		#if flixel_animate
 		MobileUtil.initAnimateAssetOverrides();
 		#end

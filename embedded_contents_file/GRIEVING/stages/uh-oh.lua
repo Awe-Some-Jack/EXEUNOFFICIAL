@@ -44,7 +44,8 @@ function onCreatePost()
         addLuaSprite(urmom.name, urmom.front)
     end
 
-    if shadersEnabled and not lowQuality then
+    local spiralSource = getTextFromFile('shaders/uhOh.frag')
+    if shadersEnabled and not lowQuality and spiralSource and string.find(spiralSource, 'spiralFade', 1, true) then
         makeLuaSprite('spiralBG')
         makeGraphic('spiralBG', screenWidth, screenHeight, 'FFFFFF')
         scaleObject('spiralBG', 3, 3)

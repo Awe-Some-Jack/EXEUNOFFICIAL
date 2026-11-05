@@ -4,8 +4,8 @@
 
 #define iResolution vec3(openfl_TextureSize, 0.)
 uniform float iTime;
-uniform float mr;
-uniform float md;
+uniform float spiralScroll;
+uniform float spiralFade;
 
 // end of ShadertoyToFlixel header
 
@@ -79,7 +79,8 @@ vec4 voronoi( in vec2 x )
 
 void mainImage( out vec4 O, vec2 p )
 {
-    vec2 b = 6.0 * p / iResolution.x;
+    vec2 b = 12.0 * p / iResolution.x;
+    b.y += spiralScroll;
     vec4 v = voronoi( b );
     vec2 q = v.yz;
 
@@ -94,11 +95,10 @@ void mainImage( out vec4 O, vec2 p )
 #endif
     o = mix( 0.0, o, smoothstep( 0.04, 0.07, v.x ) );
 
-    O = vec4( vec3( o ), 2.0 );
+    O = vec4( o * vec3( 1.0, 0.0, 0.0 ), 1.0 ) * spiralFade;
 }
 
 
 void main() {
 	mainImage(gl_FragColor, openfl_TextureCoordv*openfl_TextureSize);
-    gl_FragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
 }

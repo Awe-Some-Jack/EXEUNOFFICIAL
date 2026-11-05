@@ -773,6 +773,7 @@ class Project extends HXProject
         {
             config.push("android.permission", "android.permission.MANAGE_EXTERNAL_STORAGE");
             config.set("android.target-sdk-version", "33");
+            excludeArchitectures.push(Architecture.ARMV7);
         }
     }
 

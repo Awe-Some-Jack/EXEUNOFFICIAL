@@ -163,6 +163,7 @@ class FilterPruner
 			if (group == null)
 			{
 				group = new PrunedGroup(camera);
+				camera.flashSprite.cacheAsBitmap = true;
 				groups.set(camera, group);
 			}
 
@@ -216,6 +217,10 @@ class FilterPruner
 
 	public static function clear():Void
 	{
+		for (group in groups)
+			if (group.camera.flashSprite != null)
+				group.camera.flashSprite.cacheAsBitmap = false;
+
 		groups.clear();
 		byShader.clear();
 

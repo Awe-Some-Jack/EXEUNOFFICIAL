@@ -17,28 +17,6 @@ function onSongStart()
 end
 
 
-local trailShit = false
-
-local function createTrail(create) trailShit = create and true or false end
-
-function opponentNoteHit()
-    if trailShit then
-        runHaxeCode([[
-            var trail = new Character(0, 0, dad.curCharacter, dad.isPlayer);
-            trail.updateHitbox();
-            trail.setPosition(dad.x, dad.y);
-            trail.alpha = 0.8;
-            trail.playAnim(dad.animation.curAnim.name);
-            game.add(trail);
-
-            FlxTween.tween(trail, {alpha: 0}, 0.5, {ease: FlxEase.circOut, onComplete: (_) -> {
-                remove(trail);
-                trail.destroy();
-            }});
-        ]])
-    end
-end
-
 function onStepHit()
     if curStep == 8 then
         removeLuaSprite('render1', true)
@@ -61,11 +39,5 @@ function onStepHit()
         doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', .6, 0.6)
     elseif curStep == 544 or curStep == 1056 or curStep == 1312 or curStep == 1824 then
         doTweenAlpha('BlackGraphicBehindAlpha', 'BlackGraphicBehind', 0, 0.4)
-    end
-    if curStep == 1568 then
-        createTrail(true)
-    end
-    if curStep == 1824 then
-        createTrail()
     end
 end
